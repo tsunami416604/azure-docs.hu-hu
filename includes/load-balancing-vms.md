@@ -1,42 +1,42 @@
 <properties title="Load Balancing for Azure Infrastructure Services" pageTitle="Load Balancing for Azure Infrastructure Services" description="Describes the facilities to perform load balancing with Traffic Manager and load balancer." metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="cherylmc" videoId="" scriptId="" manager="adinah" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="cherylmc" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="cherylmc"></tags>
 
-#Load Balancing for Azure Infrastructure Services#
+# Load Balancing for Azure Infrastructure Services
 
 There are two levels of load balancing available for Azure infrastructure services:
 
-- **DNS Level**:  Load balancing for traffic to different cloud services located in different data centers, to different Azure websites located in different data centers, or to external endpoints. This is done with Traffic Manager and the Round Robin load balancing method.
-- **Network Level**:  Load balancing of incoming Internet traffic to different virtual machines of a cloud service, or load balancing of traffic between virtual machines in a cloud service or virtual network. This is done with the Azure load balancer.
+-   **DNS Level**: Load balancing for traffic to different cloud services located in different data centers, to different Azure websites located in different data centers, or to external endpoints. This is done with Traffic Manager and the Round Robin load balancing method.
+-   **Network Level**: Load balancing of incoming Internet traffic to different virtual machines of a cloud service, or load balancing of traffic between virtual machines in a cloud service or virtual network. This is done with the Azure load balancer.
 
-##Traffic Manager load balancing for cloud services and websites##
+## Traffic Manager load balancing for cloud services and websites
 
-Azure Traffic Manager allows you to control the distribution of user traffic to endpoints, which can include cloud services, websites, external sites, and other Traffic Manager profiles. Traffic Manager works by applying an intelligent policy engine to Domain Name System (DNS) queries for the domain names of your Internet resources. Your cloud services or websites can be running in different datacenters across the world. 
+Azure Traffic Manager allows you to control the distribution of user traffic to endpoints, which can include cloud services, websites, external sites, and other Traffic Manager profiles. Traffic Manager works by applying an intelligent policy engine to Domain Name System (DNS) queries for the domain names of your Internet resources. Your cloud services or websites can be running in different datacenters across the world.
 
-You must use either REST or Windows PowerShell to configure external endpoints or Traffic Manager profiles as endpoints. 
+You must use either REST or Windows PowerShell to configure external endpoints or Traffic Manager profiles as endpoints.
 
 Azure Traffic Manager uses three load-balancing methods to distribute traffic:
 
-- **Failover**:  Use this method when you want to use a primary endpoint for all traffic, but provide backups in case the primary becomes unavailable.
-- **Performance**:  Use this method when you have endpoints in different geographic locations and you want requesting clients to use the "closest" endpoint in terms of the lowest latency.
-- **Round Robin:**  Use this method when you want to distribute load across a set of cloud services in the same datacenter or across cloud services or websites in different datacenters.
+-   **Failover**: Use this method when you want to use a primary endpoint for all traffic, but provide backups in case the primary becomes unavailable.
+-   **Performance**: Use this method when you have endpoints in different geographic locations and you want requesting clients to use the "closest" endpoint in terms of the lowest latency.
+-   **Round Robin:** Use this method when you want to distribute load across a set of cloud services in the same datacenter or across cloud services or websites in different datacenters.
 
-For more information, see [About Traffic Manager Load Balancing Methods](http://msdn.microsoft.com/en-us/library/azure/dn339010.aspx).
+For more information, see [About Traffic Manager Load Balancing Methods][About Traffic Manager Load Balancing Methods].
 
 The following figure shows an example of the Round Robin load balancing method for distributing traffic between different cloud services.
 
-![loadbalancing](./media/load-balancing-vms/TMSummary.png)
+![loadbalancing][loadbalancing]
 
 The basic process is the following:
 
-1.	An Internet client queries a domain name corresponding to a web service.
-2.	DNS forwards the name query request to Traffic Manager.
-3.	Traffic Manager sends back the DNS name of the cloud service in the round robin list. The Internet client's DNS server resolves the name to an IP address and sends it to the Internet client.
-4.	The Internet client connects with the chosen cloud service.
+1.  An Internet client queries a domain name corresponding to a web service.
+2.  DNS forwards the name query request to Traffic Manager.
+3.  Traffic Manager sends back the DNS name of the cloud service in the round robin list. The Internet client's DNS server resolves the name to an IP address and sends it to the Internet client.
+4.  The Internet client connects with the chosen cloud service.
 
-For more information, see [Traffic Manager](http://msdn.microsoft.com/en-us/library/azure/hh745750.aspx).
+For more information, see [Traffic Manager][Traffic Manager].
 
-## Azure load balancing for virtual machines ##
+## Azure load balancing for virtual machines
 
 Virtual machines in the same cloud service or virtual network can communicate with each other directly using their private IP addresses. Computers and services outside the cloud service or virtual network can only communicate with virtual machines in a cloud service or virtual network with a configured endpoint. An endpoint is a mapping of a public IP address and port to that private IP address and port of a virtual machine or web role within an Azure cloud service.
 
@@ -44,23 +44,32 @@ The Azure Load Balancer randomly distributes a specific type of incoming traffic
 
 The following figure shows a load-balanced endpoint for standard (unencrypted) web traffic that is shared among three virtual machines for the public and private TCP port of 80. These three virtual machines are in a load-balanced set.
 
-![loadbalancing](./media/load-balancing-vms/LoadBalancing.png)
+![loadbalancing][1]
 
-For more information, see [Azure Load Balancer](http://msdn.microsoft.com/en-us/library/azure/dn655058.aspx). For the steps to create a load-balanced set, see [Configure a load-balanced set](http://msdn.microsoft.com/en-us/library/azure/dn655055.aspx).
+For more information, see [Azure Load Balancer][Azure Load Balancer]. For the steps to create a load-balanced set, see [Configure a load-balanced set][Configure a load-balanced set].
 
 Azure can also load balance within a cloud service or virtual network. This is known as internal load balancing and can be used in the following ways:
 
-- To load balance between servers in different tiers of a multi-tier application (for example, between web and database tiers).
-- Load balancing for line-of-business (LOB) applications hosted in Azure without requiring additional load balancer hardware or software. 
-- Including on-premises servers in the set of computers whose traffic that is load balanced.
+-   To load balance between servers in different tiers of a multi-tier application (for example, between web and database tiers).
+-   Load balancing for line-of-business (LOB) applications hosted in Azure without requiring additional load balancer hardware or software.
+-   Including on-premises servers in the set of computers whose traffic that is load balanced.
 
-Similar to Azure load balancing, internal load balancing is facilitated by configuring an internal load-balanced set. 
+Similar to Azure load balancing, internal load balancing is facilitated by configuring an internal load-balanced set.
 
-The following figure shows an example of an internal load-balanced endpoint for a line of business (LOB) application that is shared among three virtual machines in a cross-premises virtual network. 
+The following figure shows an example of an internal load-balanced endpoint for a line of business (LOB) application that is shared among three virtual machines in a cross-premises virtual network.
 
-![loadbalancing](./media/load-balancing-vms/LOBServers.png)
+![loadbalancing][2]
 
-For more information, see [Internal load balancing](http://msdn.microsoft.com/en-us/library/azure/dn690121.aspx). For the steps to create a load-balanced set, see [Configure an internal load-balanced set](http://msdn.microsoft.com/en-us/library/azure/dn690125.aspx).
+For more information, see [Internal load balancing][Internal load balancing]. For the steps to create a load-balanced set, see [Configure an internal load-balanced set][Configure an internal load-balanced set].
 
 <!-- LINKS -->
 
+  [About Traffic Manager Load Balancing Methods]: http://msdn.microsoft.com/en-us/library/azure/dn339010.aspx
+  [loadbalancing]: ./media/load-balancing-vms/TMSummary.png
+  [Traffic Manager]: http://msdn.microsoft.com/en-us/library/azure/hh745750.aspx
+  [1]: ./media/load-balancing-vms/LoadBalancing.png
+  [Azure Load Balancer]: http://msdn.microsoft.com/en-us/library/azure/dn655058.aspx
+  [Configure a load-balanced set]: http://msdn.microsoft.com/en-us/library/azure/dn655055.aspx
+  [2]: ./media/load-balancing-vms/LOBServers.png
+  [Internal load balancing]: http://msdn.microsoft.com/en-us/library/azure/dn690121.aspx
+  [Configure an internal load-balanced set]: http://msdn.microsoft.com/en-us/library/azure/dn690125.aspx

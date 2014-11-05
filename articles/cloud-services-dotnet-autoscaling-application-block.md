@@ -1,34 +1,29 @@
 <properties urlDisplayName="Autoscaling" pageTitle="Use the autoscaling application block (.NET) - Azure" metaKeywords="Azure autoscaling, Azure autoscaling C#, Azure autoscaling .NET" description="Learn how to use the Autoscaling Application for Azure. Code samples are written in C# and use the .NET API." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="How to Use the Autoscaling Application Block" authors="timlt" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="timlt" />
-
-
-
-
-
-
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="timlt"></tags>
 
 # How to Use the Autoscaling Application Block
 
 This guide will demonstrate how to perform common scenarios using the
 Autoscaling Application Block from the [Microsoft Enterprise Library 5.0
-Integration Pack for Azure][]. The samples are written in C\#
+Integration Pack for Azure][Microsoft Enterprise Library 5.0
+Integration Pack for Azure]. The samples are written in C#
 and use the .NET API. The scenarios covered include **hosting the
 block**, **using constraint rules**, and **using reactive rules**. For
-more information on the Autoscaling Application Block, see the [Next Steps][] section.
+more information on the Autoscaling Application Block, see the [Next Steps][Next Steps] section.
 
 ## Table of Contents
 
-[What is the Autoscaling Application Block?][]   
- [Concepts][]   
- [Collect Performance Counter Data from your Target Azure Application][]   
- [Set up a Host Application for the Autoscaling Application Block][]   
- [How to: Instantiate and Run the Autoscaler][] [How To: Define your Service Model][]   
- [How To: Define your Autoscaling Rules][]   
- [How To: Configure the Autoscaling Application Block][]   
- [Next Steps][]
+[What is the Autoscaling Application Block?][What is the Autoscaling Application Block?]
+ [Concepts][Concepts]
+ [Collect Performance Counter Data from your Target Azure Application][Collect Performance Counter Data from your Target Azure Application]
+ [Set up a Host Application for the Autoscaling Application Block][Set up a Host Application for the Autoscaling Application Block]
+ [How to: Instantiate and Run the Autoscaler][How to: Instantiate and Run the Autoscaler] [How To: Define your Service Model][How To: Define your Service Model]
+ [How To: Define your Autoscaling Rules][How To: Define your Autoscaling Rules]
+ [How To: Configure the Autoscaling Application Block][How To: Configure the Autoscaling Application Block]
+ [Next Steps][Next Steps]
 
-## <a id="WhatIs"> </a>What is the Autoscaling Application Block?
+## <span id="WhatIs"></span> </a>What is the Autoscaling Application Block?
 
 The Autoscaling Application Block can automatically scale your Windows
 Azure application based on rules that you define specifically for your
@@ -44,16 +39,17 @@ using custom-defined actions.
 You can choose to host the block in an Azure role or in an
 on-premises application.
 
-The Autoscaling Application Block is part of the [Microsoft Enterprise Library 5.0 Integration Pack for Azure][].
+The Autoscaling Application Block is part of the [Microsoft Enterprise Library 5.0 Integration Pack for Azure][Microsoft Enterprise Library 5.0
+Integration Pack for Azure].
 
-## <a id="Concepts"> </a>Concepts
+## <span id="Concepts"></span> </a>Concepts
 
 In the following diagram, the green line shows a plot of the number of
 running instances of an Azure role over two days. The number of
 instances changes automatically over time in response to a set of
 autoscaling rules.
 
-![diagram of sample autoscaling](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling01.png)
+![diagram of sample autoscaling][diagram of sample autoscaling]
 
 The block uses two types of rules to define the autoscaling behavior for
 your application:
@@ -93,7 +89,7 @@ The block stores its configuration settings in two stores:
     collect data points from the target Azure application and to
     perform scaling operations.
 
-## <a id="PerfCounter"> </a>Collect Performance Counter Data from your Target Azure Application
+## <span id="PerfCounter"></span> </a>Collect Performance Counter Data from your Target Azure Application
 
 Reactive rules can use performance counter data from roles as part of
 the rule definition. For example, a reactive rule may monitor the CPU
@@ -106,9 +102,9 @@ By default, Azure does not write performance counter data to the
 Azure Diagnostics table in Azure storage. Therefore, you
 should modify the roles from which you need to collect performance
 counter data to save this data. For details about how to enable
-performance counters in your application, see [Using performance counters in Azure][].
+performance counters in your application, see [Using performance counters in Azure][Using performance counters in Azure].
 
-## <a id="CreateHost"> </a>Set up a Host Application for the Autoscaling Application Block
+## <span id="CreateHost"></span> </a>Set up a Host Application for the Autoscaling Application Block
 
 You can host the Autoscaling Application Block either in an Azure
 role or in an on-premises application. The Autoscaling Application Block
@@ -125,7 +121,7 @@ Visual Studio extension makes it easy to install and update libraries
 and tools in Visual Studio and Visual Web Developer. The Autoscaling
 Application Block NuGet package is the easiest way to get the Autscaling
 Application Block APIs. For more information about **NuGet**, and how to
-install and use the **NuGet** Visual Studio extension, see the [NuGet][]
+install and use the **NuGet** Visual Studio extension, see the [NuGet][NuGet]
 website.
 
 Once you have the NuGet Package Manager installed, to install the Autoscaling NuGet
@@ -147,8 +143,7 @@ the autoscaling rule definitions and autoscaling service information.
 The project now also includes a readme file that contains important
 information about the Autoscaling Application Block:
 
-![files configured by autoscaling NuGet package](./media/cloud-services-dotnet-autoscaling-application-block/auotscaling02.png)
-
+![files configured by autoscaling NuGet package][files configured by autoscaling NuGet package]
 
 ### Set the Target Framework to .NET Framework 4
 
@@ -160,19 +155,18 @@ target framework:
 
 2.  In the **Application** tab of the Properties window, make sure Target framework is set to **.NET Framework 4**.
 
-	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling03.png)
-
+    ![image][image]
 
 ### Add Namespace References
 
-Add the following code namespace declarations to the top of any C\# file
+Add the following code namespace declarations to the top of any C# file
 in which you wish to programmatically access the Autoscaling Application
 Block:
 
     using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
     using Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Autoscaling;
 
-## <a id="Instantiate"> </a>How to: Instantiate and Run the Autoscaler
+## <span id="Instantiate"></span> </a>How to: Instantiate and Run the Autoscaler
 
 Use the **IServiceLocator.GetInstance** method to instantiate the
 Autoscaler, and then call the **Autoscaler.Start** method to run the
@@ -182,7 +176,7 @@ Autoscaler, and then call the **Autoscaler.Start** method to run the
         EnterpriseLibraryContainer.Current.GetInstance<Autoscaler>();
     scaler.Start();
 
-## <a id="DefineServiceModel"> </a>How To: Define your Service Model
+## <span id="DefineServiceModel"></span> </a>How To: Define your Service Model
 
 Typically, you store your service model (a description of your Windows
 Azure environment that includes information about subscriptions, hosted
@@ -202,40 +196,31 @@ to the output folder. To do this:
 2.  Within the Properties pane, set the **Copy to Output Directory**
     value to **Copy always**.
 
-    ![Set Copy to Output Directory value](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling04.png)
+    ![Set Copy to Output Directory value][Set Copy to Output Directory value]
 
+    The following code sample shows an example service model in a **services.xml** file:
 
-	The following code sample shows an example service model in a **services.xml** file:
-
-    <?xml version="1.0" encoding="utf-8" ?>
-    <serviceModel xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel">
-      <subscriptions>
-        <subscription name="[subscriptionname]"
-                      certificateThumbprint="[managementcertificatethumbprint]"
-                      subscriptionId="[subscriptionid]"
-                      certificateStoreLocation="CurrentUser"
-                      certificateStoreName="My">
-          <services>
-            <service dnsPrefix="[hostedservicednsprefix]" slot="Staging">
-              <roles>
-                <role alias="AutoscalingApplicationRole"
-                      roleName="[targetrolename]"
-                      wadStorageAccountName="targetstorage"/>
-              </roles>
-            </service>
-          </services>
-          <storageAccounts>
-            <storageAccount alias="targetstorage"
-              connectionString="DefaultEndpointsProtocol=https;AccountName=[storageaccountname];AccountKey=[storageaccountkey]">
-            </storageAccount>
-          </storageAccounts>
-        </subscription>
-      </subscriptions>
-    </serviceModel>
+    <servicemodel xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel">
+     <subscriptions>
+     <subscription name="[subscriptionname]" certificatethumbprint="[managementcertificatethumbprint]" subscriptionid="[subscriptionid]" certificatestorelocation="CurrentUser" certificatestorename="My">
+     <services>
+     <service dnsprefix="[hostedservicednsprefix]" slot="Staging">
+     <roles>
+     <role alias="AutoscalingApplicationRole" rolename="[targetrolename]" wadstorageaccountname="targetstorage"></role>
+     </roles>
+     </service>
+     </services>
+     <storageaccounts>
+     <storageaccount alias="targetstorage" connectionstring="DefaultEndpointsProtocol=https;AccountName=[storageaccountname];AccountKey=[storageaccountkey]">
+     </storageaccount>
+     </storageaccounts>
+     </subscription>
+     </subscriptions>
+    </servicemodel>
 
 You must replace the values in square brackets with values specific to
 your environment and target application. To find many of these values,
-you will need to log in to the [Azure Management Portal][].
+you will need to log in to the [Azure Management Portal][Azure Management Portal].
 
 Sign in to the management portal.
 
@@ -255,10 +240,9 @@ Sign in to the management portal.
         Quick Glance pane on the right will display the
         **Subscription ID**.
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling05.png)
+        ![image][1]
 
-  
-	-   **[hostedservicednsprefix]:** The DNS Prefix of the hosted service in which you want to use auto-scaling.
+    -   **[hostedservicednsprefix]:** The DNS Prefix of the hosted service in which you want to use auto-scaling.
 
     1.  In the Azure Management Portal, click
         **Cloud Services**.
@@ -267,49 +251,46 @@ Sign in to the management portal.
         application in which you want to use autoscaling. The name of
         the cloud serviceClick is the **DNS Prefix**.
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling06.png)
- 
-	-   **[targetrolename]:** The name of the role that is the target of your auto-scaling rules.
+        ![image][2]
+
+    -   **[targetrolename]:** The name of the role that is the target of your auto-scaling rules.
 
     1.  In the Azure Management Portal, click
         **Cloud Services**.
 
     2.  In the list of Cloud Services, click on the service that hosts the
         application in which you want to use autoscaling, then click
-        **Instances**. The **Role* column displays the name of your target
+        **Instances**. The \*\*Role\* column displays the name of your target
         role.
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling07.png)
+        ![image][3]
 
-
-	-   **[storageaccountname]** and **[storageaccountkey]:** The name of the Azure storage account that you are using for your target Azure application.
+    -   **[storageaccountname]** and **[storageaccountkey]:** The name of the Azure storage account that you are using for your target Azure application.
 
     1.  In the Azure Management Portal, click
         **Storage**.
 
-    2.  In the list of Storage Accounts, select  the storage account you are using. The
+    2.  In the list of Storage Accounts, select the storage account you are using. The
         **Name** column will display the **Name**.
 
     3.  Click the **Manage Keys** button at the bottom of the screen
         to get the primary access key.
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling08.png)
-  
- 
-	-   **[managementcertificatethumbprint]:** The **Thumbprint** of the Management Certificate that the block will use to secure scaling requests to the target application.
+        ![image][4]
+
+    -   **[managementcertificatethumbprint]:** The **Thumbprint** of the Management Certificate that the block will use to secure scaling requests to the target application.
 
     1.  In the Azure Management Portal, click
         **Settings**.
 
     2.  The **Thumbprint** column will display the **Thumbprint**.
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling09.png)
- 
+        ![image][5]
 
 To find out more about the content of the service model file, see
-[Storing Your Service Information Data][].
+[Storing Your Service Information Data][Storing Your Service Information Data].
 
-## <a id="DefineAutoscalingRules"> </a>How To: Define your Autoscaling Rules
+## <span id="DefineAutoscalingRules"></span> </a>How To: Define your Autoscaling Rules
 
 Typically, you store the autoscaling rules that control the number of
 role instances in your target application in an XML file. You can find a
@@ -393,7 +374,7 @@ the **service model**:
     instance count of the target role by one if the average CPU
     utilization over the last five minutes has been less than 60%.
 
-## <a id="Configure"> </a>How To: Configure the Autoscaling Application Block
+## <span id="Configure"></span> </a>How To: Configure the Autoscaling Application Block
 
 After you have defined your service model and autoscaling rules, you
 must configure the Autoscaling Application Block to use them. This
@@ -410,41 +391,38 @@ system.
 1.  Right-click on the **App.config** file in Solution Explorer and then
     click **Edit Configuration File**.
 
-2.  In the **Blocks** menu, click **Add Autoscaling Settings**:  
-	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling10.png)
-  
+2.  In the **Blocks** menu, click **Add Autoscaling Settings**:
+    ![image][6]
+
 3.  Expand the **Autoscaling Settings** and then click the ellipsis (...)
     next to the **Data Points Store Storage Account**, add the **Account
     name** and **Account key** of the Azure storage account
     where the block will store the data points that it collects (see
-    [How To: Define your Service Model][] if you are unsure about where
-    to find these values), and then click **OK**:  
+    [How To: Define your Service Model][How To: Define your Service Model] if you are unsure about where
+    to find these values), and then click **OK**:
 
-	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling11.png)
+    ![image][7]
 
 4.  Expand the **Autoscaling Settings** section to reveal the **Rules
     Store** and **Service Information Store** sections. By default, they
-    are configured to use Azure blob storage:  
-	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling12.png)
-
+    are configured to use Azure blob storage:
+    ![image][8]
 
 5.  Click the plus sign (+) next to **Rules Store**, point to **Set
     Rules Store**, then click **Use Local File Rules Store**, and then
     click **Yes**.
 
 6.  In the **File Name** box, type **rules.xml**. This is the name of
-    the file that contains your autoscaling rules:  
-	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling13.png)
-
+    the file that contains your autoscaling rules:
+    ![image][9]
 
 7.  Click the plus sign (+) next to **Service Information Store**, point
     to **Set Service Information Store**, then click **Use Local File
     Service Information Store**, and then click **Yes**.
 
 8.  In the **File Name** box, type **services.xml**. This is the name of
-    the file that contains your autoscaling rules:  
-	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling14.png)
-
+    the file that contains your autoscaling rules:
+    ![image][10]
 
 9.  In the Enterprise Library Configuration window, on the **File**
     menu, click **Save** to save your configuration changes. Then in the
@@ -518,26 +496,26 @@ the block and what actions the block is taking.
     "InstanceChanges":{"AutoscalingApplicationRole":{"CurrentValue":1,"DesiredValue":2}},
     "SettingChanges":{},"RequestID":"f8ca3ada07c24559b1cb075534f02d44"}
 
-## <a id="NextSteps"> </a>Next Steps
+## <span id="NextSteps"></span> </a>Next Steps
 
 Now that you've learned the basics of using the Autoscaling Application
 Block, follow these links to learn how to implement more complex
 autoscaling scenarios:
 
--   [Hosting the Autoscaling Application Block in a Worker Role][]
--   [Implementing Throttling Behavior][]
--   [Understanding Rule Ranks and Reconciliation][]
--   [Extending and Modifying the Autoscaling Application Block][]
--   [Using the Optimizing Stabilizer to prevent high frequency oscillation and to optimize costs][]
--   [Using Notifications and Manual Scaling][]
--   [Defining Scale Groups][]
--   [Using the WASABiCmdlets for manipulating the block via Windows PowerShell][]
--   [Developer's Guide to the Enterprise Library 5.0 Integration Pack for Azure][]
--   [How Sage Reduces Azure Hosting Costs Using Autoscaling][]
--   [Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure][]
+-   [Hosting the Autoscaling Application Block in a Worker Role][Hosting the Autoscaling Application Block in a Worker Role]
+-   [Implementing Throttling Behavior][Implementing Throttling Behavior]
+-   [Understanding Rule Ranks and Reconciliation][Understanding Rule Ranks and Reconciliation]
+-   [Extending and Modifying the Autoscaling Application Block][Extending and Modifying the Autoscaling Application Block]
+-   [Using the Optimizing Stabilizer to prevent high frequency oscillation and to optimize costs][Using the Optimizing Stabilizer to prevent high frequency oscillation and to optimize costs]
+-   [Using Notifications and Manual Scaling][Using Notifications and Manual Scaling]
+-   [Defining Scale Groups][Defining Scale Groups]
+-   [Using the WASABiCmdlets for manipulating the block via Windows PowerShell][Using the WASABiCmdlets for manipulating the block via Windows PowerShell]
+-   [Developer's Guide to the Enterprise Library 5.0 Integration Pack for Azure][Developer's Guide to the Enterprise Library 5.0 Integration Pack for Azure]
+-   [How Sage Reduces Azure Hosting Costs Using Autoscaling][How Sage Reduces Azure Hosting Costs Using Autoscaling]
+-   [Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure][Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure]
 
-  [Microsoft Enterprise Library 5.0 Integration Pack for Azure]:
-    http://go.microsoft.com/fwlink/?LinkID=235134
+  [Microsoft Enterprise Library 5.0
+  Integration Pack for Azure]: http://go.microsoft.com/fwlink/?LinkID=235134
   [Next Steps]: #NextSteps
   [What is the Autoscaling Application Block?]: #WhatIs
   [Concepts]: #Concepts
@@ -547,10 +525,24 @@ autoscaling scenarios:
   [How To: Define your Service Model]: #DefineServiceModel
   [How To: Define your Autoscaling Rules]: #DefineAutoscalingRules
   [How To: Configure the Autoscaling Application Block]: #Configure
+  [diagram of sample autoscaling]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling01.png
   [Using performance counters in Azure]: http://www.windowsazure.com/en-us/develop/net/common-tasks/performance-profiling/
   [NuGet]: http://nuget.org/
+  [files configured by autoscaling NuGet package]: ./media/cloud-services-dotnet-autoscaling-application-block/auotscaling02.png
+  [image]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling03.png
+  [Set Copy to Output Directory value]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling04.png
   [Azure Management Portal]: http://manage.windowsazure.com
-  [Storing Your Service Information Data]: http://msdn.microsoft.com/en-us/library/hh680878(PandP.50).aspx		
+  [1]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling05.png
+  [2]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling06.png
+  [3]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling07.png
+  [4]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling08.png
+  [5]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling09.png
+  [Storing Your Service Information Data]: http://msdn.microsoft.com/en-us/library/hh680878(PandP.50).aspx
+  [6]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling10.png
+  [7]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling11.png
+  [8]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling12.png
+  [9]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling13.png
+  [10]: ./media/cloud-services-dotnet-autoscaling-application-block/autoscaling14.png
   [Hosting the Autoscaling Application Block in a Worker Role]: http://msdn.microsoft.com/en-us/library/hh680914(PandP.50).aspx
   [Implementing Throttling Behavior]: http://msdn.microsoft.com/en-us/library/hh680896(PandP.50).aspx
   [Understanding Rule Ranks and Reconciliation]: http://msdn.microsoft.com/en-us/library/hh680923(PandP.50).aspx

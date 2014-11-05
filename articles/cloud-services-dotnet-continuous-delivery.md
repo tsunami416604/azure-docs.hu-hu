@@ -1,6 +1,6 @@
 <properties urlDisplayName="Continuous Delivery" pageTitle="Continuous delivery for cloud services with TFS in Azure" metaKeywords="Azure continuous delivery, continuous delivery sample code, continuous delivery PowerShell" description="Learn how to set up continuous delivery for Azure cloud apps. Code samples for MSBuild command-line statements and PowerShell scripts." metaCanonical="" services="" documentationCenter="" title="Continuous Delivery for Cloud Services in Azure" authors="ghogen" solutions="" manager="douge" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen" />
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen"></tags>
 
 # Continuous Delivery for Cloud Services in Azure
 
@@ -17,46 +17,46 @@ Foundation Server - Team Build definitions to use the MSBuild commands
 and PowerShell scripts. The process is customizable for your build
 environment and Azure target environments.
 
-You can also use Visual Studio Online, a version of TFS that is hosted in Azure, to do this more easily. For more information, see [Continuous Delivery to Azure by Using Visual Studio Online][].
+You can also use Visual Studio Online, a version of TFS that is hosted in Azure, to do this more easily. For more information, see [Continuous Delivery to Azure by Using Visual Studio Online][Continuous Delivery to Azure by Using Visual Studio Online].
 
 Before you start, you should publish your application from Visual Studio.
-This will ensure that all the resources are available and initialized when you 
+This will ensure that all the resources are available and initialized when you
 attempt to automate the publication process.
 
 This task includes the following steps:
 
--   [Step 1: Configure the Build Server][]
--   [Step 2: Build a Package using MSBuild Commands][]
--   [Step 3: Build a Package using TFS Team Build (Optional)][]
--   [Step 4: Publish a Package using a PowerShell Script][]
--   [Step 5: Publish a Package using TFS Team Build (Optional)][]
+-   [Step 1: Configure the Build Server][Step 1: Configure the Build Server]
+-   [Step 2: Build a Package using MSBuild Commands][Step 2: Build a Package using MSBuild Commands]
+-   [Step 3: Build a Package using TFS Team Build (Optional)][Step 3: Build a Package using TFS Team Build (Optional)]
+-   [Step 4: Publish a Package using a PowerShell Script][Step 4: Publish a Package using a PowerShell Script]
+-   [Step 5: Publish a Package using TFS Team Build (Optional)][Step 5: Publish a Package using TFS Team Build (Optional)]
 
-<h2> <a name="step1"> </a><span class="short-header">Configure the Build Server</span>Step 1: Configure the Build Server</h2>
+## <a name="step1"> </a><span class="short-header">Configure the Build Server</span>Step 1: Configure the Build Server
 
 Before you can create an Azure package by using MSBuild, you must
 install the required software and tools on the build server.
 
 Visual Studio is not required to be installed on the build server. If
 you want to use Team Foundation Build Service to manage your build
-server, follow the instructions in the [Team Foundation Build Service][]
+server, follow the instructions in the [Team Foundation Build Service][Team Foundation Build Service]
 documentation.
 
-1.  On the build server, install the [.NET Framework 4][] or [.NET Framework 4.5][], which
+1.  On the build server, install the [.NET Framework 4][.NET Framework 4] or [.NET Framework 4.5][.NET Framework 4.5], which
     includes MSBuild.
-2.  Install the [Azure Authoring Tools][] (look for
+2.  Install the [Azure Authoring Tools][Azure Authoring Tools] (look for
     WindowsAzureAuthoringTools-x86.msi or WindowsAzureAuthoringTools-x64.msi,
     depending on your build server's processor).
-3. Install the [Windows Azure Libraries][] (look for WindowsAzureLibsForNet-x86.msi or WindowsAzureLibsForNet-x64.msi).
+3.  Install the [Windows Azure Libraries][Windows Azure Libraries] (look for WindowsAzureLibsForNet-x86.msi or WindowsAzureLibsForNet-x64.msi).
 4.  Copy the Microsoft.WebApplication.targets file from a Visual Studio
     installation to the build server.On a computer with Visual Studio
     installed, the file is located in the directory C:\\Program Files
     (x86)\\MSBuild\\Microsoft\\VisualStudio\\v11.0\\WebApplications (v12.0
     for Visual Studio 2013). You
     should copy it to the same directory on the build server.
-5.  Install the [Azure Tools for Visual Studio][].
+5.  Install the [Azure Tools for Visual Studio][Windows Azure Libraries].
     Look for WindowsAzureTools.VS110.exe to build Visual Studio 2012 projects, and WindowsAzureTools.VS120.exe to build Visual Studio 2013 projects.
 
-<h2><a name="step2"> </a><span class="short-header">Build a Package Using MSBuild</span>Step 2: Build a Package using MSBuild Commands</h2>
+## <a name="step2"> </a><span class="short-header">Build a Package Using MSBuild</span>Step 2: Build a Package using MSBuild Commands
 
 This section describes how to construct an MSBuild command that builds a
 Azure package. Run this step on the build server to verify that
@@ -64,7 +64,7 @@ everything is configured correctly and that the MSBuild command does
 what you want it to do. You can either add this command line to existing
 build scripts on the build server, or you can use the command line in a
 TFS Build Definition, as described in the next section. For more
-information about command-line parameters and MSBuild, see [MSBuild Command Line Reference][].
+information about command-line parameters and MSBuild, see [MSBuild Command Line Reference][MSBuild Command Line Reference].
 
 1.  If Visual Studio is installed on the build server, click
     **Start**, click **All Programs**, and then locate and click
@@ -73,13 +73,13 @@ information about command-line parameters and MSBuild, see [MSBuild Command Line
 
     If Visual Studio is not installed on the build server, open a
     command prompt and make sure that MSBuild.exe is accessible on the
-    path. MSBuild is installed with the .NET Framework in the path   
+    path. MSBuild is installed with the .NET Framework in the path
     %WINDIR%\\Microsoft.NET\\Framework\\*Version*. For example, to
     add MSBuild.exe to the PATH environment variable when you have .NET
     Framework 4 installed, type the following command at the command
     prompt:
 
-        set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\4.0"
+        set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework.0"
 
 2.  At the command prompt, navigate to the folder containing the Windows
     Azure project file that you want to build.
@@ -99,7 +99,8 @@ information about command-line parameters and MSBuild, see [MSBuild Command Line
     Optionally, you can specify the project name as an MSBuild
     parameter. If not specified, the current directory is used. For more
     information about MSBuild command line options, see [MSBuild Command
-    Line Reference][1].
+    Line Reference][MSBuild Command
+    Line Reference].
 
 4.  Locate the output. By default, this command creates a directory in
     relation to the root folder for the project, such as
@@ -129,7 +130,7 @@ information about command-line parameters and MSBuild, see [MSBuild Command Line
     /p:PublishDir=*Directory*\\ option, including the trailing
     backslash separator, as in the following example:
 
-        MSBuild /target:Publish /p:PublishDir=\\myserver\drops\
+        MSBuild /target:Publish /p:PublishDir=\myserver\drops\
 
     Once you've constructed and tested an appropriate MSBuild command
     line to build your projects and combine them into an Azure package,
@@ -139,15 +140,15 @@ information about command-line parameters and MSBuild, see [MSBuild Command Line
     build environment, then you can follow the instructions in the next
     step to add the Azure package build to your build process.
 
-<h2> <a name="step3"> </a><span class="short-header">Build a Package Using TFS </span>Step 3: Build a Package using TFS Team Build (Optional)</h2>
+## <a name="step3"> </a><span class="short-header">Build a Package Using TFS </span>Step 3: Build a Package using TFS Team Build (Optional)
 
 If you have Team Foundation Server (TFS) set up as a build controller
 and the build server set up as a TFS build machine, then you can set up
 an automated build for your Azure package. For information on
 how to set up and use Team Foundation server as a build system, see
-[Understanding the Team Foundation Build System][]. In particular, the
+[Understanding the Team Foundation Build System][Understanding the Team Foundation Build System]. In particular, the
 following procedure assumes that you have configured your build server
-as described in [Configure a Build Machine][].
+as described in [Configure a Build Machine][Configure a Build Machine].
 
 To configure TFS to build Azure packages, perform the following
 steps:
@@ -161,7 +162,7 @@ steps:
 
 2.  Click the **Process** tab. On the Process tab, choose the default
     template, under Items to Build, choose the project,
-    and expand the **Advanced** section in the grid. 
+    and expand the **Advanced** section in the grid.
 
 3.  Choose **MSBuild Arguments**, and set the appropriate MSBuild
     command line arguments as described in Step 2 above. For example,
@@ -169,7 +170,7 @@ steps:
     package and copy the package files to the location
     \\\\myserver\\drops\\:
 
-    ![][2]
+    ![][1]
 
     **Note:** Copying the files to a public share makes it easier to
     manually deploy the packages from your development computer.
@@ -180,16 +181,16 @@ steps:
     control check-in occurs.
 
 5.  Choose the **Build Defaults** tab, and under Build controller, verify
-    the name of the build server.  Also, choose the option **Copy build 
+    the name of the build server. Also, choose the option **Copy build
     output to the following drop folder** and specify the desired drop
     location.
 
-5.  Test the success of your build step by checking in a change to your
+6.  Test the success of your build step by checking in a change to your
     project, or queue up a new build. To queue up a new build, in the
     Team Explorer, right-click **All Build Definitions,** and then
     choose **Queue New Build**.
 
-<h2> <a name="step4"> </a><span class="short-header">Publish Using Powershell</span>Step 4: Publish a Package using a Powershell Script</h2>
+## <a name="step4"> </a><span class="short-header">Publish Using Powershell</span>Step 4: Publish a Package using a Powershell Script
 
 This section describes how to construct a Windows PowerShell script that
 will publish the Cloud app package output to Azure using
@@ -197,7 +198,7 @@ optional parameters. This script can be called after the build step in
 your custom build automation. It can also be called from Process
 Template workflow activities in Visual Studio TFS Team Build.
 
-1.  Install the [Azure PowerShell cmdlets][] (v0.6.1 or higher).
+1.  Install the [Azure PowerShell cmdlets][Azure PowerShell cmdlets] (v0.6.1 or higher).
     During the cmdlet setup phase choose to install as a snap-in. Note
     that this officially supported version replaces the older version
     offered through CodePlex, although the previous versions were numbered 2.x.x.
@@ -214,7 +215,7 @@ Template workflow activities in Visual Studio TFS Team Build.
 4.  Verify that you can connect to your Azure subscription by
     importing your subscription information from the .publishsettings file.
 
-    Import-AzurePublishSettingsFile c:\scripts\WindowsAzure\default.publishsettings
+    Import-AzurePublishSettingsFile c:\\scripts\\WindowsAzure\\default.publishsettings
 
     Then give the command
 
@@ -222,15 +223,15 @@ Template workflow activities in Visual Studio TFS Team Build.
 
     This will display information about your subscription. Verify that everything is correct.
 
-4.  Save the script template provided at the [end of this article][] to
+5.  Save the script template provided at the [end of this article][end of this article] to
     your scripts folder as
     c:\\scripts\\WindowsAzure\\**PublishCloudService.ps1**.
 
-5.  Review the parameters section of the script. Add or modify any
+6.  Review the parameters section of the script. Add or modify any
     default values. These values can always be overridden by passing in
     explicit parameters.
 
-6.  Ensure there are valid cloud service and storage accounts created
+7.  Ensure there are valid cloud service and storage accounts created
     in your subscription that can be targeted by the publish script. The
     storage account (blob storage) will be used to upload and
     temporarily store the deployment package and config file while the
@@ -251,7 +252,7 @@ Template workflow activities in Visual Studio TFS Team Build.
 
             New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
-7.  Call the script directly from Azure PowerShell, or wire up this
+8.  Call the script directly from Azure PowerShell, or wire up this
     script to your host build automation to occur after the package
     build.
 
@@ -294,7 +295,7 @@ Template workflow activities in Visual Studio TFS Team Build.
     Upload Remote Desktop certificates as a one-time setup step using
     the following cmdlet script:
 
-        Add-AzureCertificate -serviceName <CLOUDSERVICENAME> -certToDeploy (get-item cert:\CurrentUser\MY\<THUMBPRINT>)
+        Add-AzureCertificate -serviceName <CLOUDSERVICENAME> -certToDeploy (get-item cert:\CurrentUser\MYAdd-AzureCertificate -serviceName <CLOUDSERVICENAME> -certToDeploy (get-item cert:\CurrentUser\MY\<THUMBPRINT>)lt;THUMBPRINT>)
 
     For example:
 
@@ -304,7 +305,7 @@ Template workflow activities in Visual Studio TFS Team Build.
     key and upload certificates to each target cloud service using the
     Azure Management Portal. Read the following article to learn
     more:
-    [http://msdn.microsoft.com/en-us/library/windowsazure/gg443832.aspx][].
+    [<http://msdn.microsoft.com/en-us/library/windowsazure/gg443832.aspx>][<http://msdn.microsoft.com/en-us/library/windowsazure/gg443832.aspx>].
 
     **Upgrade Deployment vs. Delete Deployment -\> New Deployment**
 
@@ -327,7 +328,7 @@ Template workflow activities in Visual Studio TFS Team Build.
     enable continuous delivery from automation where no user/operator
     prompting is possible.
 
-<h2><a name="step5"> </a><span class="short-header">Publish Using TFS </span>Step 5: Publish a Package using TFS Team Build (Optional)</h2>
+## <a name="step5"> </a><span class="short-header">Publish Using TFS </span>Step 5: Publish a Package using TFS Team Build (Optional)
 
 This step will wire up TFS Team Build to the script created in step 4,
 which handles publishing of the package build to Azure. This
@@ -367,7 +368,7 @@ piped into the standard build output.
         PublishScriptLocation
         ServiceName
 
-    ![][3]
+    ![][2]
 
     The corresponding XAML looks like this:
 
@@ -426,7 +427,7 @@ piped into the standard build output.
 
         -   PublishScriptFilePath, of type String
 
-            ![][4]
+            ![][3]
 
     4.  Add a ConvertWorkspaceItem activity at the beginning of the new
         Sequence. Direction=ServerToLocal, DisplayName='Convert publish
@@ -480,12 +481,12 @@ piped into the standard build output.
     The final result of the publish workflow activities will look like
     this in the designer:
 
-    ![][5]
+    ![][4]
 
     The final result of the publish workflow activities will look like
     this in XAML:
 
-        	</TryCatch>
+            </TryCatch>
               <If Condition="[Not String.IsNullOrEmpty(PublishScriptLocation)]" sap:VirtualizedContainerService.HintSize="1539,552">
                 <If.Then>
                   <Sequence DisplayName="Start publish" sap:VirtualizedContainerService.HintSize="297,446">
@@ -537,23 +538,23 @@ piped into the standard build output.
 9.  Set the parameter property values in the Misc section as follows:
 
     1.  CloudConfigLocation =
-        'c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg'   
+        'c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg'
         *This value is derived from:
         ($PublishDir)ServiceConfiguration.Cloud.cscfg*
 
     2.  PackageLocation =
-        'c:\\drops\\app.publish\\ContactManager.Azure.cspkg'   
+        'c:\\drops\\app.publish\\ContactManager.Azure.cspkg'
         *This value is derived from: ($PublishDir)($ProjectName).cspkg*
 
     3.  PublishScriptLocation =
         'c:\\scripts\\WindowsAzure\\PublishCloudService.ps1'
 
-    4.  ServiceName = 'mycloudservicename'   
+    4.  ServiceName = 'mycloudservicename'
         *Use the appropriate cloud service name here*
 
     5.  Environment = 'Staging'
 
-    6.  StorageAccountName = 'mystorageaccountname'   
+    6.  StorageAccountName = 'mystorageaccountname'
         *Use the appropriate storage account name here*
 
     7.  SubscriptionDataFileLocation =
@@ -561,7 +562,7 @@ piped into the standard build output.
 
     8.  SubscriptionName = 'default'
 
-    ![][6]
+    ![][5]
 
 10. Save the changes to the Build Definition.
 
@@ -571,210 +572,208 @@ piped into the standard build output.
 
 ### <a name="script"> </a>PublishCloudService.ps1 script template
 
-<pre>
-Param(  $serviceName = "",
-        $storageAccountName = "",
-        $packageLocation = "",
-        $cloudConfigLocation = "",
-        $environment = "Staging",
-        $deploymentLabel = "ContinuousDeploy to $servicename",
-        $timeStampFormat = "g",
-        $alwaysDeleteExistingDeployments = 1,
-        $enableDeploymentUpgrade = 1,
-        $selectedsubscription = "default",
-        $subscriptionDataFile = ""
-     )
-      
+    Param(  $serviceName = "",
+            $storageAccountName = "",
+            $packageLocation = "",
+            $cloudConfigLocation = "",
+            $environment = "Staging",
+            $deploymentLabel = "ContinuousDeploy to $servicename",
+            $timeStampFormat = "g",
+            $alwaysDeleteExistingDeployments = 1,
+            $enableDeploymentUpgrade = 1,
+            $selectedsubscription = "default",
+            $subscriptionDataFile = ""
+         )
+          
 
-function Publish()
-{
-	$deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot -ErrorVariable a -ErrorAction silentlycontinue 
-    if ($a[0] -ne $null)
+    function Publish()
     {
-        Write-Output "$(Get-Date -f $timeStampFormat) - No deployment is detected. Creating a new deployment. "
-    }
-    #check for existing deployment and then either upgrade, delete + deploy, or cancel according to $alwaysDeleteExistingDeployments and $enableDeploymentUpgrade boolean variables
-	if ($deployment.Name -ne $null)
-	{
-		switch ($alwaysDeleteExistingDeployments)
-	    {
-	        1 
-			{
-                switch ($enableDeploymentUpgrade)
+        $deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot -ErrorVariable a -ErrorAction silentlycontinue 
+        if ($a[0] -ne $null)
+        {
+            Write-Output "$(Get-Date -f $timeStampFormat) - No deployment is detected. Creating a new deployment. "
+        }
+        #check for existing deployment and then either upgrade, delete + deploy, or cancel according to $alwaysDeleteExistingDeployments and $enableDeploymentUpgrade boolean variables
+        if ($deployment.Name -ne $null)
+        {
+            switch ($alwaysDeleteExistingDeployments)
+            {
+                1 
                 {
-                    1  #Update deployment inplace (usually faster, cheaper, won't destroy VIP)
+                    switch ($enableDeploymentUpgrade)
                     {
-                        Write-Output "$(Get-Date -f $timeStampFormat) - Deployment exists in $servicename.  Upgrading deployment."
-				        UpgradeDeployment
-                    }
-                    0  #Delete then create new deployment
-                    {
-                        Write-Output "$(Get-Date -f $timeStampFormat) - Deployment exists in $servicename.  Deleting deployment."
-				        DeleteDeployment
-                        CreateNewDeployment
-                        
-                    }
-                } # switch ($enableDeploymentUpgrade)
-			}
-	        0
-			{
-				Write-Output "$(Get-Date -f $timeStampFormat) - ERROR: Deployment exists in $servicename.  Script execution cancelled."
-				exit
-			}
-	    } #switch ($alwaysDeleteExistingDeployments)
-	} else {
-            CreateNewDeployment
+                        1  #Update deployment inplace (usually faster, cheaper, won't destroy VIP)
+                        {
+                            Write-Output "$(Get-Date -f $timeStampFormat) - Deployment exists in $servicename.  Upgrading deployment."
+                            UpgradeDeployment
+                        }
+                        0  #Delete then create new deployment
+                        {
+                            Write-Output "$(Get-Date -f $timeStampFormat) - Deployment exists in $servicename.  Deleting deployment."
+                            DeleteDeployment
+                            CreateNewDeployment
+                            
+                        }
+                    } # switch ($enableDeploymentUpgrade)
+                }
+                0
+                {
+                    Write-Output "$(Get-Date -f $timeStampFormat) - ERROR: Deployment exists in $servicename.  Script execution cancelled."
+                    exit
+                }
+            } #switch ($alwaysDeleteExistingDeployments)
+        } else {
+                CreateNewDeployment
+        }
     }
-}
 
-function CreateNewDeployment()
-{
-	write-progress -id 3 -activity "Creating New Deployment" -Status "In progress"
-	Write-Output "$(Get-Date -f $timeStampFormat) - Creating New Deployment: In progress"
-
-	$opstat = New-AzureDeployment -Slot $slot -Package $packageLocation -Configuration $cloudConfigLocation -label $deploymentLabel -ServiceName $serviceName
-	    
-    $completeDeployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
-    $completeDeploymentID = $completeDeployment.deploymentid
-
-    write-progress -id 3 -activity "Creating New Deployment" -completed -Status "Complete"
-	Write-Output "$(Get-Date -f $timeStampFormat) - Creating New Deployment: Complete, Deployment ID: $completeDeploymentID"
-    
-	StartInstances
-}
-
-function UpgradeDeployment()
-{
-	write-progress -id 3 -activity "Upgrading Deployment" -Status "In progress"
-	Write-Output "$(Get-Date -f $timeStampFormat) - Upgrading Deployment: In progress"
-
-    # perform Update-Deployment
-	$setdeployment = Set-AzureDeployment -Upgrade -Slot $slot -Package $packageLocation -Configuration $cloudConfigLocation -label $deploymentLabel -ServiceName $serviceName -Force
-    
-    $completeDeployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
-    $completeDeploymentID = $completeDeployment.deploymentid
-    
-    write-progress -id 3 -activity "Upgrading Deployment" -completed -Status "Complete"
-	Write-Output "$(Get-Date -f $timeStampFormat) - Upgrading Deployment: Complete, Deployment ID: $completeDeploymentID"
-}
-
-function DeleteDeployment()
-{
-
-	write-progress -id 2 -activity "Deleting Deployment" -Status "In progress"
-	Write-Output "$(Get-Date -f $timeStampFormat) - Deleting Deployment: In progress"
-
-    #WARNING - always deletes with force
-	$removeDeployment = Remove-AzureDeployment -Slot $slot -ServiceName $serviceName -Force
-
-	write-progress -id 2 -activity "Deleting Deployment: Complete" -completed -Status $removeDeployment
-	Write-Output "$(Get-Date -f $timeStampFormat) - Deleting Deployment: Complete"
-	
-}
-
-function StartInstances()
-{
-	write-progress -id 4 -activity "Starting Instances" -status "In progress"
-	Write-Output "$(Get-Date -f $timeStampFormat) - Starting Instances: In progress"
-
-    $deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
-    $runstatus = $deployment.Status
-
-    if ($runstatus -ne 'Running') 
+    function CreateNewDeployment()
     {
-	    $run = Set-AzureDeployment -Slot $slot -ServiceName $serviceName -Status Running
+        write-progress -id 3 -activity "Creating New Deployment" -Status "In progress"
+        Write-Output "$(Get-Date -f $timeStampFormat) - Creating New Deployment: In progress"
+
+        $opstat = New-AzureDeployment -Slot $slot -Package $packageLocation -Configuration $cloudConfigLocation -label $deploymentLabel -ServiceName $serviceName
+            
+        $completeDeployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
+        $completeDeploymentID = $completeDeployment.deploymentid
+
+        write-progress -id 3 -activity "Creating New Deployment" -completed -Status "Complete"
+        Write-Output "$(Get-Date -f $timeStampFormat) - Creating New Deployment: Complete, Deployment ID: $completeDeploymentID"
+        
+        StartInstances
     }
-	$deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
-	$oldStatusStr = @("") * $deployment.RoleInstanceList.Count
-	
-	while (-not(AllInstancesRunning($deployment.RoleInstanceList)))
-	{
-		$i = 1
-		foreach ($roleInstance in $deployment.RoleInstanceList)
-		{
-			$instanceName = $roleInstance.InstanceName
-			$instanceStatus = $roleInstance.InstanceStatus
 
-			if ($oldStatusStr[$i - 1] -ne $roleInstance.InstanceStatus)
-			{
-				$oldStatusStr[$i - 1] = $roleInstance.InstanceStatus
-				Write-Output "$(Get-Date -f $timeStampFormat) - Starting Instance '$instanceName': $instanceStatus"
-			}
+    function UpgradeDeployment()
+    {
+        write-progress -id 3 -activity "Upgrading Deployment" -Status "In progress"
+        Write-Output "$(Get-Date -f $timeStampFormat) - Upgrading Deployment: In progress"
 
-			write-progress -id (4 + $i) -activity "Starting Instance '$instanceName'" -status "$instanceStatus"
-			$i = $i + 1
-		}
+        # perform Update-Deployment
+        $setdeployment = Set-AzureDeployment -Upgrade -Slot $slot -Package $packageLocation -Configuration $cloudConfigLocation -label $deploymentLabel -ServiceName $serviceName -Force
+        
+        $completeDeployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
+        $completeDeploymentID = $completeDeployment.deploymentid
+        
+        write-progress -id 3 -activity "Upgrading Deployment" -completed -Status "Complete"
+        Write-Output "$(Get-Date -f $timeStampFormat) - Upgrading Deployment: Complete, Deployment ID: $completeDeploymentID"
+    }
 
-		sleep -Seconds 1
+    function DeleteDeployment()
+    {
 
-		$deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
-	}
+        write-progress -id 2 -activity "Deleting Deployment" -Status "In progress"
+        Write-Output "$(Get-Date -f $timeStampFormat) - Deleting Deployment: In progress"
 
-	$i = 1
-	foreach ($roleInstance in $deployment.RoleInstanceList)
-	{
-		$instanceName = $roleInstance.InstanceName
-		$instanceStatus = $roleInstance.InstanceStatus
+        #WARNING - always deletes with force
+        $removeDeployment = Remove-AzureDeployment -Slot $slot -ServiceName $serviceName -Force
 
-		if ($oldStatusStr[$i - 1] -ne $roleInstance.InstanceStatus)
-		{
-			$oldStatusStr[$i - 1] = $roleInstance.InstanceStatus
-			Write-Output "$(Get-Date -f $timeStampFormat) - Starting Instance '$instanceName': $instanceStatus"
-		}
+        write-progress -id 2 -activity "Deleting Deployment: Complete" -completed -Status $removeDeployment
+        Write-Output "$(Get-Date -f $timeStampFormat) - Deleting Deployment: Complete"
+        
+    }
 
-		$i = $i + 1
-	}
-	
-    $deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
-	$opstat = $deployment.Status 
-	
-	write-progress -id 4 -activity "Starting Instances" -completed -status $opstat
-	Write-Output "$(Get-Date -f $timeStampFormat) - Starting Instances: $opstat"
-}
+    function StartInstances()
+    {
+        write-progress -id 4 -activity "Starting Instances" -status "In progress"
+        Write-Output "$(Get-Date -f $timeStampFormat) - Starting Instances: In progress"
 
-function AllInstancesRunning($roleInstanceList)
-{
-	foreach ($roleInstance in $roleInstanceList)
-	{
-		if ($roleInstance.InstanceStatus -ne "ReadyRole")
-		{
-			return $false
-		}
-	}
-	
-	return $true
-}
+        $deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
+        $runstatus = $deployment.Status
 
-#configure powershell with Azure 1.7 modules
-Import-Module Azure
+        if ($runstatus -ne 'Running') 
+        {
+            $run = Set-AzureDeployment -Slot $slot -ServiceName $serviceName -Status Running
+        }
+        $deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
+        $oldStatusStr = @("") * $deployment.RoleInstanceList.Count
+        
+        while (-not(AllInstancesRunning($deployment.RoleInstanceList)))
+        {
+            $i = 1
+            foreach ($roleInstance in $deployment.RoleInstanceList)
+            {
+                $instanceName = $roleInstance.InstanceName
+                $instanceStatus = $roleInstance.InstanceStatus
 
-#configure powershell with publishsettings for your subscription
-$pubsettings = $subscriptionDataFile
-Import-AzurePublishSettingsFile $pubsettings
-Set-AzureSubscription -CurrentStorageAccount $storageAccountName -SubscriptionName $selectedsubscription
+                if ($oldStatusStr[$i - 1] -ne $roleInstance.InstanceStatus)
+                {
+                    $oldStatusStr[$i - 1] = $roleInstance.InstanceStatus
+                    Write-Output "$(Get-Date -f $timeStampFormat) - Starting Instance '$instanceName': $instanceStatus"
+                }
 
-#set remaining environment variables for Azure cmdlets
-$subscription = Get-AzureSubscription $selectedsubscription
-$subscriptionname = $subscription.subscriptionname
-$subscriptionid = $subscription.subscriptionid
-$slot = $environment
+                write-progress -id (4 + $i) -activity "Starting Instance '$instanceName'" -status "$instanceStatus"
+                $i = $i + 1
+            }
 
-#main driver - publish & write progress to activity log
-Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy script started."
-Write-Output "$(Get-Date -f $timeStampFormat) - Preparing deployment of $deploymentLabel for $subscriptionname with Subscription ID $subscriptionid."
+            sleep -Seconds 1
 
-Publish
+            $deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
+        }
 
-$deployment = Get-AzureDeployment -slot $slot -serviceName $servicename
-$deploymentUrl = $deployment.Url
+        $i = 1
+        foreach ($roleInstance in $deployment.RoleInstanceList)
+        {
+            $instanceName = $roleInstance.InstanceName
+            $instanceStatus = $roleInstance.InstanceStatus
 
-Write-Output "$(Get-Date -f $timeStampFormat) - Created Cloud Service with URL $deploymentUrl."
-Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy script finished."
-</pre>
+            if ($oldStatusStr[$i - 1] -ne $roleInstance.InstanceStatus)
+            {
+                $oldStatusStr[$i - 1] = $roleInstance.InstanceStatus
+                Write-Output "$(Get-Date -f $timeStampFormat) - Starting Instance '$instanceName': $instanceStatus"
+            }
+
+            $i = $i + 1
+        }
+        
+        $deployment = Get-AzureDeployment -ServiceName $serviceName -Slot $slot
+        $opstat = $deployment.Status 
+        
+        write-progress -id 4 -activity "Starting Instances" -completed -status $opstat
+        Write-Output "$(Get-Date -f $timeStampFormat) - Starting Instances: $opstat"
+    }
+
+    function AllInstancesRunning($roleInstanceList)
+    {
+        foreach ($roleInstance in $roleInstanceList)
+        {
+            if ($roleInstance.InstanceStatus -ne "ReadyRole")
+            {
+                return $false
+            }
+        }
+        
+        return $true
+    }
+
+    #configure powershell with Azure 1.7 modules
+    Import-Module Azure
+
+    #configure powershell with publishsettings for your subscription
+    $pubsettings = $subscriptionDataFile
+    Import-AzurePublishSettingsFile $pubsettings
+    Set-AzureSubscription -CurrentStorageAccount $storageAccountName -SubscriptionName $selectedsubscription
+
+    #set remaining environment variables for Azure cmdlets
+    $subscription = Get-AzureSubscription $selectedsubscription
+    $subscriptionname = $subscription.subscriptionname
+    $subscriptionid = $subscription.subscriptionid
+    $slot = $environment
+
+    #main driver - publish & write progress to activity log
+    Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy script started."
+    Write-Output "$(Get-Date -f $timeStampFormat) - Preparing deployment of $deploymentLabel for $subscriptionname with Subscription ID $subscriptionid."
+
+    Publish
+
+    $deployment = Get-AzureDeployment -slot $slot -serviceName $servicename
+    $deploymentUrl = $deployment.Url
+
+    Write-Output "$(Get-Date -f $timeStampFormat) - Created Cloud Service with URL $deploymentUrl."
+    Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy script finished."
 
 ## Next steps
 
-To enable remote debugging when using continuous delivery, see [these instructions](http://go.microsoft.com/fwlink/p/?LinkID=402354). 
+To enable remote debugging when using continuous delivery, see [these instructions][these instructions].
 
   [Continuous Delivery to Azure by Using Visual Studio Online]: ../cloud-services-continuous-delivery-use-vso/
   [Step 1: Configure the Build Server]: #step1
@@ -786,19 +785,18 @@ To enable remote debugging when using continuous delivery, see [these instructio
   [.NET Framework 4]: http://go.microsoft.com/fwlink/?LinkId=239538
   [.NET Framework 4.5]: http://go.microsoft.com/fwlink/?LinkId=245484
   [Azure Authoring Tools]: http://go.microsoft.com/fwlink/?LinkId=239600
-[Windows Azure Libraries]: http://go.microsoft.com/fwlink/?LinkId=257862
-  [Azure Tools for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=257862
+  [Windows Azure Libraries]: http://go.microsoft.com/fwlink/?LinkId=257862
   [MSBuild Command Line Reference]: http://msdn.microsoft.com/en-us/library/ms164311(v=VS.90).aspx
-  [1]: http://go.microsoft.com/fwlink/p/?LinkId=239966
+  [MSBuild Command
+  Line Reference]: http://go.microsoft.com/fwlink/p/?LinkId=239966
   [Understanding the Team Foundation Build System]: http://go.microsoft.com/fwlink/?LinkId=238798
   [Configure a Build Machine]: http://go.microsoft.com/fwlink/?LinkId=238799
   [0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01.png
-  [2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
+  [1]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
   [Azure PowerShell cmdlets]: http://go.microsoft.com/fwlink/?LinkId=256262
-  [the .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0
   [end of this article]: #script
-  
-  [3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png
-  [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
-  [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
-  [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
+  [2]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png
+  [3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
+  [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
+  [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
+  [these instructions]: http://go.microsoft.com/fwlink/p/?LinkID=402354

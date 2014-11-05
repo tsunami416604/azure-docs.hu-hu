@@ -1,32 +1,32 @@
 <properties pageTitle="Get started with Azure API Management" metaKeywords="" description="Learn how to create APIs, operations, and get started with API Management." metaCanonical="" services="api-management" documentationCenter="API Management" title="Get started with Azure API Management" authors="sdanie" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
 
 # Get started with Azure API Management
 
 This guide shows you how to quickly get started using API Management and make your first API call.
 
-> To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][].
+> To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][Azure Free Trial].
 
-The first step in working with API Management is to create a service instance. Log in to the [Management Portal][] and click **New**, **App Services**, **API Management**, **Create**.
+The first step in working with API Management is to create a service instance. Log in to the [Management Portal][Management Portal] and click **New**, **App Services**, **API Management**, **Create**.
 
-![API Management new instance][api-management-create-instance-menu]
+![API Management new instance][API Management new instance]
 
 For **URL**, specify a unique sub-domain name to use for the service URL.
 
 Choose the desired **Pricing Tier**, **Subscription**, and **Region** for your service instance. All pricing tiers can be used for this tutorial. After making your selections, click the next button.
 
-![New API Management service][api-management-create-instance-step1]
+![New API Management service][New API Management service]
 
 Enter **Contoso Ltd.** for the **Organization Name**, and enter your email address in the administrator e-mail field.
 
->This email address is used for notifications from the API Management system. For more information, see [Configure Notifications][].
+> This email address is used for notifications from the API Management system. For more information, see [Configure Notifications][Configure Notifications].
 
 Click the check box to create your service instance.
 
-![New API Management service][api-management-create-instance-step2]
+![New API Management service][1]
 
-![New API Management service][api-management-instance-created]
+![New API Management service][2]
 
 Once the service instance is created, the next step is to create an API.
 
@@ -38,55 +38,52 @@ Each API Management service instance comes pre-configured with a sample Echo API
 
 APIs are created and configured from the API Management console, which is accessed through the Azure management portal. To reach the API Management console, click **Management Console** in the Azure Portal for your API Management service.
 
-![New API Management console][api-management-management-console]
+![New API Management console][New API Management console]
 
 To create the **My Echo API**, click **APIs** from the **API Management** menu on the left, and then click **add API**.
 
-![Create API][api-management-create-api]
+![Create API][Create API]
 
-![Add new API][api-management-add-new-api]
+![Add new API][Add new API]
 
 The following three fields are used to configure the new API.
 
--	Type **My Echo API** into the **Web API Title** textbox. **Web API Title** provides a unique and descriptive name for the API. It is displayed in the developer and management portals.
--	Type **http://echoapi.cloudapp.net/api** into the **Web service URL**. **Web service URL** references the HTTP service implementing the API. API management forwards requests to this address.
--	Type **myecho** into the **Web API URL suffix**. **Web API URL suffix** is appended to the base URL for the API management service. Your APIs will share a common base URL and be distinguished by a unique suffix appended after the base.
+-   Type **My Echo API** into the **Web API Title** textbox. **Web API Title** provides a unique and descriptive name for the API. It is displayed in the developer and management portals.
+-   Type **<http://echoapi.cloudapp.net/api>** into the **Web service URL**. **Web service URL** references the HTTP service implementing the API. API management forwards requests to this address.
+-   Type **myecho** into the **Web API URL suffix**. **Web API URL suffix** is appended to the base URL for the API management service. Your APIs will share a common base URL and be distinguished by a unique suffix appended after the base.
 
 Click **Save** to create the API. Once the new API is created, the summary page for the API is displayed in the management portal.
 
-![API summary][api-management-new-api-summary]
+![API summary][API summary]
 
-
->The sample echo API doesn't use authentication, but for more information about configuring authentication, see [Configure API settings][].
-
+> The sample echo API doesn't use authentication, but for more information about configuring authentication, see [Configure API settings][Configure API settings].
 
 ## <a name="add-operation"> </a>Add an operation
 
 Click **Operations** to display the operations pane for the API. The operation definitions are used to validate incoming requests and to automatically generate documentation. Since we have not yet added any operations, there are none displayed.
 
-![Operations][api-management-myecho-operations]
+![Operations][Operations]
 
 Click **add operation** to add a new operation. The **New operation** window will be displayed and the **Signature** tab will be selected by default.
 
-![Operation signature][api-management-operation-signature]
+![Operation signature][Operation signature]
 
 In this example, we will specify a GET operation on the echo service. Enter the following values into the fields on the **Signature** tab.
 
--	Type **GET** into the **HTTP verb** text box. As you start typing you can select **GET** from the displayed list of http verbs.
--	Type **/resource** into the **URL template** text box.
--	Type **GET resource** into the **Display** name text box.
--	Type **A demonstration of a GET call on a sample resource. It is handled by an "echo" backend which returns a response equal to the request (the supplied headers and body are being returned as received).** into the **Description** text box. This description is used to generate documentation for this operation when developers use this API.
+-   Type **GET** into the **HTTP verb** text box. As you start typing you can select **GET** from the displayed list of http verbs.
+-   Type **/resource** into the **URL template** text box.
+-   Type **GET resource** into the **Display** name text box.
+-   Type **A demonstration of a GET call on a sample resource. It is handled by an "echo" backend which returns a response equal to the request (the supplied headers and body are being returned as received).** into the **Description** text box. This description is used to generate documentation for this operation when developers use this API.
 
 Click **Parameters** to configure the query string parameters for this operation. To add a query parameter click **Add query parameter** and specify the following values.
 
--	Type **param1** into the **Name** text box.
--	Type **A sample parameter that is required.** into the **Description** text box.
--	Click the **Type** field and choose **string** from the list. Supported types are **string**, **number**, **boolean**, and **dateTime**.
--	Click the **Values** field, type **sample** into the text box, and click the plus sign to add the default value text to the parameter. After adding the default text, click anywhere outside the **Values** field to dismiss the add value window.
--	Check the **Required** check box.
+-   Type **param1** into the **Name** text box.
+-   Type **A sample parameter that is required.** into the **Description** text box.
+-   Click the **Type** field and choose **string** from the list. Supported types are **string**, **number**, **boolean**, and **dateTime**.
+-   Click the **Values** field, type **sample** into the text box, and click the plus sign to add the default value text to the parameter. After adding the default text, click anywhere outside the **Values** field to dismiss the add value window.
+-   Check the **Required** check box.
 
 Click **Save** to add the newly configured operation to the API.
-
 
 ## <a name="add-api-to-product"> </a>Add the new API to a product
 
@@ -94,28 +91,28 @@ Developers must first subscribe to a product before they can make API calls. A p
 
 Click **Products** from the **API Management** menu on the left to view and configure the products available in this API Instance.
 
-![Products][api-management-list-products]
+![Products][Products]
 
 By default, each API Management instance comes with two sample products:
 
--	**Starter**
--	**Unlimited**
+-   **Starter**
+-   **Unlimited**
 
 In this tutorial we will use the **Starter** product. Click **Starter** to view the settings, including the APIs that are associated with that product.
 
-![Add API][api-management-add-api-to-product]
+![Add API][Add API]
 
 Click **Add API to product**.
 
-![Add API][api-management-add-myechoapi-to-product]
+![Add API][3]
 
 Check the box for **My Echo API**, and click **Save**.
 
-![API added][api-management-api-added-to-product]
+![API added][API added]
 
 Now that **My Echo API** is associated with a product, developers can subscribe to it and begin using the API.
 
->This tutorial step used the **Starter** product, which comes pre-configured and ready for use. For a step-by-step guide on creating and publishing a new product, see [How create and publish a product][].
+> This tutorial step used the **Starter** product, which comes pre-configured and ready for use. For a step-by-step guide on creating and publishing a new product, see [How create and publish a product][How create and publish a product].
 
 The Administrator user is automatically subscribed to all products and can access the APIs that they provide access to. It is therefore not necessary to manually subscribe to the just created product before a call can be made.
 
@@ -123,27 +120,25 @@ The Administrator user is automatically subscribed to all products and can acces
 
 Operations can be called directly from the Developer portal, which provides a convenient way to view and test the operations of an API. In this tutorial step you will call the Get method that was added to **My Echo API**. Click **Developer portal** from the menu at the top right of the Management portal.
 
-![Developer portal][api-management-developer-portal-menu]
+![Developer portal][Developer portal]
 
 Click **APIs** from the top menu, and then click **My Echo API** to see the operations available.
 
-![Developer portal][api-management-developer-portal-myecho-api]
+![Developer portal][4]
 
 Note that the description and parameters that were added when you created the operation are displayed, providing documentation for the developers that will use this operation.
 
-Click **GET Resource** and then click **Open Console**. 
+Click **GET Resource** and then click **Open Console**.
 
-![Operation console][api-management-developer-portal-myecho-api-console]
+![Operation console][Operation console]
 
 Enter some values for the parameters, and specify your developer key, and click **HTTP Get**.
 
-![HTTP Get][api-management-invoke-get]
+![HTTP Get][HTTP Get]
 
-After an operation is invoked, the developer portal displays the **Requested URL** from the back-end service, the **Response status**, the **Response headers**, and any **Response content**. 
+After an operation is invoked, the developer portal displays the **Requested URL** from the back-end service, the **Response status**, the **Response headers**, and any **Response content**.
 
-![Response][api-management-invoke-get-response]
-
-
+![Response][Response]
 
 ## <a name="next-steps"> </a>Next steps
 
@@ -151,61 +146,27 @@ After an operation is invoked, the developer portal displays the **Requested URL
 -   Customize the developer portal
 -   Trace calls using API inspector
 
-[Azure Free Trial]: http://www.windowsazure.com/en-us/pricing/free-trial/
-
-[Create an API Management instance]: #create-service-instance
-[Create an API]: #create-api
-[Add an operation]: #add-operation
-[Add the new API to a product]: #add-api-to-product
-[Subscribe to the product that contains the API]: #subscribe
-[Call an operation from the Developer Portal]: #call-operation
-[View analytics]: #view-analytics
-[Next steps]: #next-steps
-
-[Configure API settings]: ../api-management-howto-create-apis/#configure-api-settings
-[Configure Notifications]: ../api-management-howto-configure-notifications
-[Responses]: ../api-management-howto-add-operations/#responses
-[How create and publish a product]: ../api-management-howto-add-products
-[Get started with advanced API configuration]: ../api-management-get-started-advanced
-
-[Management Portal]: https://manage.windowsazure.com/
-
-[Configure policies]: ../api-management-howto-policies
-[Customize the developer portal]: ../api-management-customize-portal
-[Trace calls using API inspector]: ../api-management-howto-api-inspector
-
-[api-management-management-console]: ./media/api-management-get-started/api-management-management-console.png
-[api-management-create-instance-menu]: ./media/api-management-get-started/api-management-create-instance-menu.png
-[api-management-create-instance-step1]: ./media/api-management-get-started/api-management-create-instance-step1.png
-[api-management-create-instance-step2]: ./media/api-management-get-started/api-management-create-instance-step2.png
-[api-management-instance-created]: ./media/api-management-get-started/api-management-instance-created.png
-[api-management-create-api]: ./media/api-management-get-started/api-management-create-api.png
-[api-management-add-new-api]: ./media/api-management-get-started/api-management-add-new-api.png
-[api-management-new-api-summary]: ./media/api-management-get-started/api-management-new-api-summary.png
-[api-management-myecho-operations]: ./media/api-management-get-started/api-management-myecho-operations.png
-[api-management-operation-signature]: ./media/api-management-get-started/api-management-operation-signature.png
-[api-management-list-products]: ./media/api-management-get-started/api-management-list-products.png
-[api-management-add-api-to-product]: ./media/api-management-get-started/api-management-add-api-to-product.png
-[api-management-add-myechoapi-to-product]: ./media/api-management-get-started/api-management-add-myechoapi-to-product.png
-[api-management-api-added-to-product]: ./media/api-management-get-started/api-management-api-added-to-product.png
-[api-management-developers]: ./media/api-management-get-started/api-management-developers.png
-[api-management-add-subscription]: ./media/api-management-get-started/api-management-add-subscription.png
-[api-management-add-subscription-window]: ./media/api-management-get-started/api-management-add-subscription-window.png
-[api-management-subscription-added]: ./media/api-management-get-started/api-management-subscription-added.png
-[api-management-developer-portal-menu]: ./media/api-management-get-started/api-management-developer-portal-menu.png
-[api-management-developer-portal-myecho-api]: ./media/api-management-get-started/api-management-developer-portal-myecho-api.png
-[api-management-developer-portal-myecho-api-console]: ./media/api-management-get-started/api-management-developer-portal-myecho-api-console.png
-[api-management-invoke-get]: ./media/api-management-get-started/api-management-invoke-get.png
-[api-management-invoke-get-response]: ./media/api-management-get-started/api-management-invoke-get-response.png
-[api-management-manage-menu]: ./media/api-management-get-started/api-management-manage-menu.png
-[api-management-dashboard]: ./media/api-management-get-started/api-management-dashboard.png
-
-[api-management-add-response]: ./media/api-management-get-started/api-management-add-response.png
-[api-management-add-response-window]: ./media/api-management-get-started/api-management-add-response-window.png
-[api-management-developer-key]: ./media/api-management-get-started/api-management-developer-key.png
-[api-management-mouse-over]: ./media/api-management-get-started/api-management-mouse-over.png
-[api-management-api-summary-metrics]: ./media/api-management-get-started/api-management-api-summary-metrics.png
-[api-management-analytics-overview]: ./media/api-management-get-started/api-management-analytics-overview.png
-[api-management-analytics-usage]: ./media/api-management-get-started/api-management-analytics-usage.png
-[api-management-]: ./media/api-management-get-started/api-management-.png
-[api-management-]: ./media/api-management-get-started/api-management-.png
+  [Azure Free Trial]: http://www.windowsazure.com/en-us/pricing/free-trial/
+  [Management Portal]: https://manage.windowsazure.com/
+  [API Management new instance]: ./media/api-management-get-started/api-management-create-instance-menu.png
+  [New API Management service]: ./media/api-management-get-started/api-management-create-instance-step1.png
+  [Configure Notifications]: ../api-management-howto-configure-notifications
+  [1]: ./media/api-management-get-started/api-management-create-instance-step2.png
+  [2]: ./media/api-management-get-started/api-management-instance-created.png
+  [New API Management console]: ./media/api-management-get-started/api-management-management-console.png
+  [Create API]: ./media/api-management-get-started/api-management-create-api.png
+  [Add new API]: ./media/api-management-get-started/api-management-add-new-api.png
+  [API summary]: ./media/api-management-get-started/api-management-new-api-summary.png
+  [Configure API settings]: ../api-management-howto-create-apis/#configure-api-settings
+  [Operations]: ./media/api-management-get-started/api-management-myecho-operations.png
+  [Operation signature]: ./media/api-management-get-started/api-management-operation-signature.png
+  [Products]: ./media/api-management-get-started/api-management-list-products.png
+  [Add API]: ./media/api-management-get-started/api-management-add-api-to-product.png
+  [3]: ./media/api-management-get-started/api-management-add-myechoapi-to-product.png
+  [API added]: ./media/api-management-get-started/api-management-api-added-to-product.png
+  [How create and publish a product]: ../api-management-howto-add-products
+  [Developer portal]: ./media/api-management-get-started/api-management-developer-portal-menu.png
+  [4]: ./media/api-management-get-started/api-management-developer-portal-myecho-api.png
+  [Operation console]: ./media/api-management-get-started/api-management-developer-portal-myecho-api-console.png
+  [HTTP Get]: ./media/api-management-get-started/api-management-invoke-get.png
+  [Response]: ./media/api-management-get-started/api-management-invoke-get-response.png

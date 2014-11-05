@@ -1,27 +1,27 @@
 <properties title="Using load-balanced sets to clusterize MySQL on Linux" pageTitle="Using load-balanced sets to clusterize MySQL on Linux" description="An article that illustrates patterns to setup a load-balanced, high availability Linux cluster on Azure using MySQL as an example" metaKeywords="mysql, linux, cluster, azure, ha, high availability, corosync, pacemaker, drbd, heartbeat" services="virtual-machines" solutions="" documentationCenter="" authors="jparrel" videoId="" scriptId="" manager="timlt" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jparrel" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jparrel"></tags>
 
 # Using load-balanced sets to clusterize MySQL on Linux
 
-* [Getting ready](#getting-ready)
-* [Setting up the cluster](#setting-up-the-cluster)
-* [Setting up MySQL](#setting-up-mysql)
-* [Setting up Corosync](#setting-up-corosync)
-* [Setting up Pacemaker](#setting-up-pacemaker)
-* [Testing](#testing)
-* [STONITH](#stonith)
-* [Limitations](#limitations)
+-   [Getting ready][Getting ready]
+-   [Setting up the cluster][Setting up the cluster]
+-   [Setting up MySQL][Setting up MySQL]
+-   [Setting up Corosync][Setting up Corosync]
+-   [Setting up Pacemaker][Setting up Pacemaker]
+-   [Testing][Testing]
+-   [STONITH][STONITH]
+-   [Limitations][Limitations]
 
 ## Introduction
 
-The purpose of this article is to explore and illustrate the different approaches available to deploy highly available Linux-based services on Microsoft Azure, exploring MySQL Server high availability as a primer. A video illustrating this approach is available on [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL).
+The purpose of this article is to explore and illustrate the different approaches available to deploy highly available Linux-based services on Microsoft Azure, exploring MySQL Server high availability as a primer. A video illustrating this approach is available on [Channel 9][Channel 9].
 
 We outline a shared-nothing two-node single-master MySQL high availability solution based on DRBD, Corosync and Pacemaker. Only one node is running MySQL at a time. Reading and writing from the DRBD resource is also limited to only one node at a time.
 
 There is no need for a VIP solution like LVS since we use Microsoft Azure's Load Balanced Sets to provide both the round-robin functionality and the endpoint detection, removal and graceful recovery of the VIP. The VIP is a globally routable IPv4 address assigned by Microsoft Azure when we first create the cloud service.
 
-There are other possible architectures for MySQL including NBD Cluster, Percona and Galera as well as several middleware solutions, including at least one available as a VM on [VM Depot](http://vmdepot.msopentech.com). As long as these solutions can replicate on unicast vs. multicast or broadcast and don't rely on shared storage or multiple network interfaces, the scenarios should be easy to deploy on Microsoft Azure.
+There are other possible architectures for MySQL including NBD Cluster, Percona and Galera as well as several middleware solutions, including at least one available as a VM on [VM Depot][VM Depot]. As long as these solutions can replicate on unicast vs. multicast or broadcast and don't rely on shared storage or multiple network interfaces, the scenarios should be easy to deploy on Microsoft Azure.
 
 Of course these clustering architectures can be extended to other products like PostgreSQL and OpenLDAP on a similar fashion. For example, this load balancing procedure with shared nothing was successfully tested with multi-master OpenLDAP, and you can watch it on our Channel 9 blog.
 
@@ -31,10 +31,10 @@ You will need a Microsoft Azure account with a valid subscription able to create
 
 ### Tested environment
 
-- Ubuntu 13.10
-  - DRBD
-  - MySQL Server
-  - Corosync and Pacemaker
+-   Ubuntu 13.10
+-   DRBD
+-   MySQL Server
+-   Corosync and Pacemaker
 
 ### Affinity group
 
@@ -178,7 +178,7 @@ Corosync is the underlying cluster infrastructure required for Pacemaker to work
 
 The main constraint for Corosync on Azure is that Corosync prefers multicast over broadcast over unicast communications, but Microsoft Azure networking only supports unicast.
 
-Fortunately, Corosync has a working unicast mode and the only real constraint is that, since all nodes are not communicating among themselves *automagically*, you need to define the nodes in your configuration files, including their IP addresses. We can use the Corosync example files for Unicast and just change bind address, node lists and logging directory (Ubuntu uses `/var/log/corosync` while the example files use `/var/log/cluster`) and enabling quorum tools. 
+Fortunately, Corosync has a working unicast mode and the only real constraint is that, since all nodes are not communicating among themselves *automagically*, you need to define the nodes in your configuration files, including their IP addresses. We can use the Corosync example files for Unicast and just change bind address, node lists and logging directory (Ubuntu uses `/var/log/corosync` while the example files use `/var/log/cluster`) and enabling quorum tools.
 
 **Note the `transport: udpu` directive below and the manually defined IP addresses for the nodes**.
 
@@ -236,7 +236,7 @@ Shortly after starting the service the cluster should be established in the curr
 
 An output similar to the image below should follow:
 
-![corosync-quorumtool -l sample output](media/virtual-machines-linux-mysql-cluster/image001.png)
+![corosync-quorumtool -l sample output][corosync-quorumtool -l sample output]
 
 ## Setting up Pacemaker
 
@@ -257,7 +257,7 @@ Check it by running `sudo crm configure show`. Now, create a file (say, `/tmp/cl
           params drbd_resource="r0" \
           op monitor interval="29s" role="Master" \
           op monitor interval="31s" role="Slave"
-    
+
     ms ms_drbd_mysql drbd_mysql \
           meta master-max="1" master-node-max="1" \
             clone-max="2" clone-node-max="1" \
@@ -296,15 +296,15 @@ After a few seconds, and using `sudo crm_mon –L`, verify that one of your node
 
 The following screenshot shows `crm_mon` with one node stopped (exit using Control-C)
 
-![crm_mon node stopped](media/virtual-machines-linux-mysql-cluster/image002.png)
+![crm\_mon node stopped][crm\_mon node stopped]
 
 And this screenshot shows both nodes, with one master and one slave:
 
-![crm_mon operational master/slave](media/virtual-machines-linux-mysql-cluster/image003.png) 
+![crm\_mon operational master/slave][crm\_mon operational master/slave]
 
 ## Testing
 
-We're ready for an automatic failover simulation. There are two ways to doing this: soft and hard. The soft way is using the cluster's shutdown function: ``crm_standby -U `uname -n` -v on``. Using this on the master, the slave will take over. Remember to set this back to off (crm_mon will tell you one node is on standby otherwise)
+We're ready for an automatic failover simulation. There are two ways to doing this: soft and hard. The soft way is using the cluster's shutdown function: `` crm_standby -U `uname -n` -v on ``. Using this on the master, the slave will take over. Remember to set this back to off (crm\_mon will tell you one node is on standby otherwise)
 
 The hard way is shutting down the primary VM (hadb01) via the Portal or changing the runlevel on the VM (i.e., halt, shutdown) then we're helping Corosync and Pacemaker by signaling master's going down. We can test this (useful for maintenance windows) but we can also force the scenario by just freezing the VM.
 
@@ -312,7 +312,7 @@ The hard way is shutting down the primary VM (hadb01) via the Portal or changing
 
 It should be possible to issue a VM shutdown via Azure Command Line Tools for Linux in lieu of a STONITH script that controls a physical device. You can use `/usr/lib/stonith/plugins/external/ssh` as a base and enable STONITH in the cluster's configuration. Azure CLI should be globally installed and the publish settings/profile should be loaded for the cluster's user.
 
-Sample code for the resource available on [GitHub](https://github.com/bureado/aztonith). You need to change the cluster's configuration by adding the following to `sudo crm configure`:
+Sample code for the resource available on [GitHub][GitHub]. You need to change the cluster's configuration by adding the following to `sudo crm configure`:
 
     primitive st-azure stonith:external/azure \
       params hostlist="hadb01 hadb02" \
@@ -326,9 +326,24 @@ Sample code for the resource available on [GitHub](https://github.com/bureado/az
 
 The following limitations apply:
 
-- The linbit DRBD resource script that manages DRBD as a resource in Pacemaker uses `drbdadm down` when shutting down a node, even if the node is just going standby. This is not ideal since the slave will not be synchronizing the DRBD resource while the master gets writes. If the master does not fail graciously, the slave can take over an older filesystem state. There are two potential ways of solving this:
-  - Enforcing a `drbdadm up r0` in all cluster nodes via a local (not clusterized) watchdog, or,
-  - Editing the linbit DRBD script making sure that `down` is not called, in `/usr/lib/ocf/resource.d/linbit/drbd`.
-- Load balancer needs at least 5 seconds to respond, so applications should be cluster aware and be more tolerant of timeout; other architectures can also help, for example in-app queues, query middlewares, etc.
-- MySQL tuning is necessary to ensure writing is done at a sane pace and caches are flushed to disk as frequently as possible to minimize memory loss
-- Write performance will be dependent in VM interconnect in the virtual switch as this is the mechanism used by DRBD to replicate the device
+-   The linbit DRBD resource script that manages DRBD as a resource in Pacemaker uses `drbdadm down` when shutting down a node, even if the node is just going standby. This is not ideal since the slave will not be synchronizing the DRBD resource while the master gets writes. If the master does not fail graciously, the slave can take over an older filesystem state. There are two potential ways of solving this:
+-   Enforcing a `drbdadm up r0` in all cluster nodes via a local (not clusterized) watchdog, or,
+-   Editing the linbit DRBD script making sure that `down` is not called, in `/usr/lib/ocf/resource.d/linbit/drbd`.
+-   Load balancer needs at least 5 seconds to respond, so applications should be cluster aware and be more tolerant of timeout; other architectures can also help, for example in-app queues, query middlewares, etc.
+-   MySQL tuning is necessary to ensure writing is done at a sane pace and caches are flushed to disk as frequently as possible to minimize memory loss
+-   Write performance will be dependent in VM interconnect in the virtual switch as this is the mechanism used by DRBD to replicate the device
+
+  [Getting ready]: #getting-ready
+  [Setting up the cluster]: #setting-up-the-cluster
+  [Setting up MySQL]: #setting-up-mysql
+  [Setting up Corosync]: #setting-up-corosync
+  [Setting up Pacemaker]: #setting-up-pacemaker
+  [Testing]: #testing
+  [STONITH]: #stonith
+  [Limitations]: #limitations
+  [Channel 9]: http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL
+  [VM Depot]: http://vmdepot.msopentech.com
+  [corosync-quorumtool -l sample output]: media/virtual-machines-linux-mysql-cluster/image001.png
+  [crm\_mon node stopped]: media/virtual-machines-linux-mysql-cluster/image002.png
+  [crm\_mon operational master/slave]: media/virtual-machines-linux-mysql-cluster/image003.png
+  [GitHub]: https://github.com/bureado/aztonith

@@ -6,3 +6,6 @@
     <li>You can <a href="/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">activate MSDN subscriber benefits</a> - Your MSDN subscription gives you credits every month that you can use for paid Azure services.</li>
   <ul>
 </div>
+
+  [open an Azure account for free]: /en-us/pricing/free-trial/?WT.mc_id=A261C142F
+  [activate MSDN subscriber benefits]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F

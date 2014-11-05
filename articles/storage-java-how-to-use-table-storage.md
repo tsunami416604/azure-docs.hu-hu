@@ -1,38 +1,38 @@
 <properties urlDisplayName="Table Service" pageTitle="How to use table storage (Java) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Java, table storage Java" description="Learn how to use the table storage service in Azure. Code samples are written in Java code." metaCanonical="" services="storage" documentationCenter="Java" title="How to use the Table storage service from Java" authors="tamram" solutions="" manager="adinah" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
 
 # How to use Table Storage from Java
 
-This guide will show you how to perform common scenarios using the Azure Table storage service. The samples are written in Java and use the [Azure Storage SDK for Java][]. The scenarios covered include **creating**, **listing**, and **deleting** tables, as well as **inserting**, **querying**, **modifying**, and **deleting** entities in a table. For more information on tables, see the [Next steps](#NextSteps) section.
+This guide will show you how to perform common scenarios using the Azure Table storage service. The samples are written in Java and use the [Azure Storage SDK for Java][Azure Storage SDK for Java]. The scenarios covered include **creating**, **listing**, and **deleting** tables, as well as **inserting**, **querying**, **modifying**, and **deleting** entities in a table. For more information on tables, see the [Next steps][Next steps] section.
 
-Note: An SDK is available for developers who are using Azure Storage on Android devices. For more information, see the [Azure Storage SDK for Android][]. 
+Note: An SDK is available for developers who are using Azure Storage on Android devices. For more information, see the [Azure Storage SDK for Android][Azure Storage SDK for Android].
 
 ## <a name="Contents"> </a>Table of Contents
 
-* [What is Table Storage](#what-is)
-* [Concepts](#Concepts)
-* [Create an Azure storage account](#CreateAccount)
-* [Create a Java application](#CreateApplication)
-* [Configure your application to access Table Storage](#ConfigureStorage)
-* [Setup an Azure storage connection string](#ConnectionString)
-* [How to: Create a table](#CreateTable)
-* [How to: List the tables](#ListTables)
-* [How to: Add an entity to a table](#AddEntity)
-* [How to: Insert a batch of entities](#InsertBatch)
-* [How to: Retrieve all entities in a partition](#RetrieveEntities)
-* [How to: Retrieve a range of entities in a partition](#RetrieveRange)
-* [How to: Retrieve a single entity](#RetriveSingle)
-* [How to: Modify an entity](#ModifyEntity)
-* [How to: Query a subset of entity properties](#QueryProperties)
-* [How to: Insert or Replace an entity](#InsertOrReplace)
-* [How to: Delete an entity](#DeleteEntity)
-* [How to: Delete a table](#DeleteTable)
-* [Next steps](#NextSteps)
+-   [What is Table Storage][What is Table Storage]
+-   [Concepts][Concepts]
+-   [Create an Azure storage account][Create an Azure storage account]
+-   [Create a Java application][Create a Java application]
+-   [Configure your application to access Table Storage][Configure your application to access Table Storage]
+-   [Setup an Azure storage connection string][Setup an Azure storage connection string]
+-   [How to: Create a table][How to: Create a table]
+-   [How to: List the tables][How to: List the tables]
+-   [How to: Add an entity to a table][How to: Add an entity to a table]
+-   [How to: Insert a batch of entities][How to: Insert a batch of entities]
+-   [How to: Retrieve all entities in a partition][How to: Retrieve all entities in a partition]
+-   [How to: Retrieve a range of entities in a partition][How to: Retrieve a range of entities in a partition]
+-   [How to: Retrieve a single entity][How to: Retrieve a single entity]
+-   [How to: Modify an entity][How to: Modify an entity]
+-   [How to: Query a subset of entity properties][How to: Query a subset of entity properties]
+-   [How to: Insert or Replace an entity][How to: Insert or Replace an entity]
+-   [How to: Delete an entity][How to: Delete an entity]
+-   [How to: Delete a table][How to: Delete a table]
+-   [Next steps][Next steps]
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-##<a name="CreateAccount"></a>Create an Azure storage account
+## <a name="CreateAccount"></a>Create an Azure storage account
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
@@ -40,7 +40,7 @@ Note: An SDK is available for developers who are using Azure Storage on Android 
 
 In this guide, you will use storage features which can be run within a Java application locally, or in code running within a web role or worker role in Azure.
 
-To do so, you will need to install the Java Development Kit (JDK) and create an Azure storage account in your Azure subscription. Once you have done so, you will need to verify that your development system meets the minimum requirements and dependencies which are listed in the [Azure Storage SDK for Java][] repository on GitHub. If your system meets those requirements, you can follow the instructions for downloading and installing the Azure Storage Libraries for Java on your system from that repository. Once you have completed those tasks, you will be able to create a Java application which uses the examples in this article.
+To do so, you will need to install the Java Development Kit (JDK) and create an Azure storage account in your Azure subscription. Once you have done so, you will need to verify that your development system meets the minimum requirements and dependencies which are listed in the [Azure Storage SDK for Java][Azure Storage SDK for Java] repository on GitHub. If your system meets those requirements, you can follow the instructions for downloading and installing the Azure Storage Libraries for Java on your system from that repository. Once you have completed those tasks, you will be able to create a Java application which uses the examples in this article.
 
 ## <a name="ConfigureStorage"> </a>Configure your application to access table storage
 
@@ -73,21 +73,21 @@ The following samples assume that you have used one of these two methods to get 
 
 A **CloudTableClient** object lets you get reference objects for tables
 and entities. The following code creates a **CloudTableClient** object
-and uses it to create a new **CloudTable** object which represents a table named "people". (Note: There are additional ways to create **CloudStorageAccount** objects; for more information, see **CloudStorageAccount** in the [Azure Storage Client SDK Reference].)
+and uses it to create a new **CloudTable** object which represents a table named "people". (Note: There are additional ways to create **CloudStorageAccount** objects; for more information, see **CloudStorageAccount** in the [Azure Storage Client SDK Reference][Azure Storage Client SDK Reference].)
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-	   // Create the table client.
-	   CloudTableClient tableClient = storageAccount.createCloudTableClient();
+       // Create the table client.
+       CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-	   // Create the table if it doesn't exist.
-	   String tableName = "people";
-	   CloudTable cloudTable = new CloudTable(tableName,tableClient);
-	   cloudTable.createIfNotExists();
+       // Create the table if it doesn't exist.
+       String tableName = "people";
+       CloudTable cloudTable = new CloudTable(tableName,tableClient);
+       cloudTable.createIfNotExists();
     }
     catch (Exception e)
     {
@@ -101,19 +101,19 @@ To get a list of tables, call the **CloudTableClient.listTables()** method to re
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the table client.
-    	CloudTableClient tableClient = storageAccount.createCloudTableClient();
+        // Create the table client.
+        CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    	// Loop through the collection of table names.
-    	for (String table : tableClient.listTables())
-    	{
-		  // Output each table name.
-		  System.out.println(table);
-	   }
+        // Loop through the collection of table names.
+        for (String table : tableClient.listTables())
+        {
+          // Output each table name.
+          System.out.println(table);
+       }
     }
     catch (Exception e)
     {
@@ -157,26 +157,26 @@ Table operations involving entities require a **TableOperation** object. This ob
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the table client.
-    	CloudTableClient tableClient = storageAccount.createCloudTableClient();
-			
-    	// Create a cloud table object for the table.
-    	CloudTable cloudTable = tableClient.getTableReference("people");
-			
-    	// Create a new customer entity.
-    	CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
-    	customer1.setEmail("Walter@contoso.com");
-    	customer1.setPhoneNumber("425-555-0101");
-			
-    	// Create an operation to add the new customer to the people table.
-    	TableOperation insertCustomer1 = TableOperation.insertOrReplace(customer1);
+        // Create the table client.
+        CloudTableClient tableClient = storageAccount.createCloudTableClient();
+            
+        // Create a cloud table object for the table.
+        CloudTable cloudTable = tableClient.getTableReference("people");
+            
+        // Create a new customer entity.
+        CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
+        customer1.setEmail("Walter@contoso.com");
+        customer1.setPhoneNumber("425-555-0101");
+            
+        // Create an operation to add the new customer to the people table.
+        TableOperation insertCustomer1 = TableOperation.insertOrReplace(customer1);
 
-    	// Submit the operation to the table service.
-    	cloudTable.execute(insertCustomer1);
+        // Submit the operation to the table service.
+        cloudTable.execute(insertCustomer1);
     }
     catch (Exception e)
     {
@@ -190,39 +190,39 @@ You can insert a batch of entities to the table service in one write operation. 
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the table client.
-    	CloudTableClient tableClient = storageAccount.createCloudTableClient();
+        // Create the table client.
+        CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    	// Define a batch operation.
-    	TableBatchOperation batchOperation = new TableBatchOperation();
+        // Define a batch operation.
+        TableBatchOperation batchOperation = new TableBatchOperation();
 
-    	// Create a cloud table object for the table.
-    	CloudTable cloudTable = tableClient.getTableReference("people");
+        // Create a cloud table object for the table.
+        CloudTable cloudTable = tableClient.getTableReference("people");
 
-    	// Create a customer entity to add to the table.
-    	CustomerEntity customer = new CustomerEntity("Smith", "Jeff");
-    	customer.setEmail("Jeff@contoso.com");
-    	customer.setPhoneNumber("425-555-0104");
-    	batchOperation.insertOrReplace(customer);
+        // Create a customer entity to add to the table.
+        CustomerEntity customer = new CustomerEntity("Smith", "Jeff");
+        customer.setEmail("Jeff@contoso.com");
+        customer.setPhoneNumber("425-555-0104");
+        batchOperation.insertOrReplace(customer);
 
-	   // Create another customer entity to add to the table.
-	   CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
-	   customer2.setEmail("Ben@contoso.com");
-	   customer2.setPhoneNumber("425-555-0102");
-	   batchOperation.insertOrReplace(customer2);
+       // Create another customer entity to add to the table.
+       CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
+       customer2.setEmail("Ben@contoso.com");
+       customer2.setPhoneNumber("425-555-0102");
+       batchOperation.insertOrReplace(customer2);
 
-	   // Create a third customer entity to add to the table.
-	   CustomerEntity customer3 = new CustomerEntity("Smith", "Denise");
-	   customer3.setEmail("Denise@contoso.com");
-	   customer3.setPhoneNumber("425-555-0103");
-	   batchOperation.insertOrReplace(customer3);
+       // Create a third customer entity to add to the table.
+       CustomerEntity customer3 = new CustomerEntity("Smith", "Denise");
+       customer3.setEmail("Denise@contoso.com");
+       customer3.setPhoneNumber("425-555-0103");
+       batchOperation.insertOrReplace(customer3);
 
-	   // Execute the batch of operations on the "people" table.
-	   cloudTable.execute(batchOperation);
+       // Execute the batch of operations on the "people" table.
+       cloudTable.execute(batchOperation);
     }
     catch (Exception e)
     {
@@ -232,10 +232,10 @@ You can insert a batch of entities to the table service in one write operation. 
 
 Some things to note on batch operations:
 
-- You can perform up to 100 insert, delete, merge, replace, insert or merge, and insert or replace operations in any combination in a single batch.
-- A batch operation can have a retrieve operation, if it is the only operation in the batch.
-- All entities in a single batch operation must have the same partition key.
-- A batch operation is limited to a 4MB data payload.
+-   You can perform up to 100 insert, delete, merge, replace, insert or merge, and insert or replace operations in any combination in a single batch.
+-   A batch operation can have a retrieve operation, if it is the only operation in the batch.
+-   All entities in a single batch operation must have the same partition key.
+-   A batch operation is limited to a 4MB data payload.
 
 ## <a name="RetrieveEntities"> </a>How to: Retrieve all entities in a partition
 
@@ -243,31 +243,31 @@ To query a table for entities in a partition, you can use a **TableQuery**. Call
 
     try
     {
-    	// Define constants for filters.
-    	final String PARTITION_KEY = "PartitionKey";
-    	final String ROW_KEY = "RowKey";
-    	final String TIMESTAMP = "Timestamp";
+        // Define constants for filters.
+        final String PARTITION_KEY = "PartitionKey";
+        final String ROW_KEY = "RowKey";
+        final String TIMESTAMP = "Timestamp";
 
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the table client.
-    	CloudTableClient tableClient = storageAccount.createCloudTableClient();
-			
-	   // Create a cloud table object for the table.
-	   CloudTable cloudTable = tableClient.getTableReference("people");
+        // Create the table client.
+        CloudTableClient tableClient = storageAccount.createCloudTableClient();
+            
+       // Create a cloud table object for the table.
+       CloudTable cloudTable = tableClient.getTableReference("people");
 
-    	// Create a filter condition where the partition key is "Smith".
-    	String partitionFilter = TableQuery.generateFilterCondition(
-	       PARTITION_KEY, 
-	       QueryComparisons.EQUAL,
-	       "Smith");
+        // Create a filter condition where the partition key is "Smith".
+        String partitionFilter = TableQuery.generateFilterCondition(
+           PARTITION_KEY, 
+           QueryComparisons.EQUAL,
+           "Smith");
 
-	   // Specify a partition query, using "Smith" as the partition key filter.
-	   TableQuery<CustomerEntity> partitionQuery =
-	       TableQuery.from(CustomerEntity.class)
-	       .where(partitionFilter);
+       // Specify a partition query, using "Smith" as the partition key filter.
+       TableQuery<CustomerEntity> partitionQuery =
+           TableQuery.from(CustomerEntity.class)
+           .where(partitionFilter);
 
         // Loop through the results, displaying information about the entity.
         for (CustomerEntity entity : cloudTable.execute(partitionQuery)) {
@@ -275,7 +275,7 @@ To query a table for entities in a partition, you can use a **TableQuery**. Call
                 " " + entity.getRowKey() + 
                 "\t" + entity.getEmail() +
                 "\t" + entity.getPhoneNumber());
-	   }
+       }
     }
     catch (Exception e)
     {
@@ -289,44 +289,44 @@ If you don't want to query all the entities in a partition, you can specify a ra
 
     try
     {
-    	// Define constants for filters.
-    	final String PARTITION_KEY = "PartitionKey";
-    	final String ROW_KEY = "RowKey";
-    	final String TIMESTAMP = "Timestamp";
-			
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Define constants for filters.
+        final String PARTITION_KEY = "PartitionKey";
+        final String ROW_KEY = "RowKey";
+        final String TIMESTAMP = "Timestamp";
+            
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-	   // Create the table client.
-	   CloudTableClient tableClient = storageAccount.createCloudTableClient();
+       // Create the table client.
+       CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-	   // Create a cloud table object for the table.
-	   CloudTable cloudTable = tableClient.getTableReference("people");
+       // Create a cloud table object for the table.
+       CloudTable cloudTable = tableClient.getTableReference("people");
 
-    	// Create a filter condition where the partition key is "Smith".
-    	String partitionFilter = TableQuery.generateFilterCondition(
-	       PARTITION_KEY, 
-	       QueryComparisons.EQUAL,
-	       "Smith");
+        // Create a filter condition where the partition key is "Smith".
+        String partitionFilter = TableQuery.generateFilterCondition(
+           PARTITION_KEY, 
+           QueryComparisons.EQUAL,
+           "Smith");
 
-    	// Create a filter condition where the row key is less than the letter "E".
-    	String rowFilter = TableQuery.generateFilterCondition(
-	       ROW_KEY, 
-	       QueryComparisons.LESS_THAN,
-	       "E");
+        // Create a filter condition where the row key is less than the letter "E".
+        String rowFilter = TableQuery.generateFilterCondition(
+           ROW_KEY, 
+           QueryComparisons.LESS_THAN,
+           "E");
 
-    	// Combine the two conditions into a filter expression.
-    	String combinedFilter = TableQuery.combineFilters(partitionFilter, 
-	        Operators.AND, rowFilter);
+        // Combine the two conditions into a filter expression.
+        String combinedFilter = TableQuery.combineFilters(partitionFilter, 
+            Operators.AND, rowFilter);
 
-    	// Specify a range query, using "Smith" as the partition key,
-    	// with the row key being up to the letter "E".
-    	TableQuery<CustomerEntity> rangeQuery =
-	       TableQuery.from(CustomerEntity.class)
-	       .where(combinedFilter);
+        // Specify a range query, using "Smith" as the partition key,
+        // with the row key being up to the letter "E".
+        TableQuery<CustomerEntity> rangeQuery =
+           TableQuery.from(CustomerEntity.class)
+           .where(combinedFilter);
 
-    	// Loop through the results, displaying information about the entity
+        // Loop through the results, displaying information about the entity
         for (CustomerEntity entity : cloudTable.execute(rangeQuery)) {
             System.out.println(entity.getPartitionKey() +
                 " " + entity.getRowKey() +
@@ -346,32 +346,32 @@ You can write a query to retrieve a single, specific entity. The following code 
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the table client.
-    	CloudTableClient tableClient = storageAccount.createCloudTableClient();
+        // Create the table client.
+        CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    	// Create a cloud table object for the table.
-    	CloudTable cloudTable = tableClient.getTableReference("people");
+        // Create a cloud table object for the table.
+        CloudTable cloudTable = tableClient.getTableReference("people");
 
-    	// Retrieve the entity with partition key of "Smith" and row key of "Jeff"
-    	TableOperation retrieveSmithJeff = 
-	       TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
+        // Retrieve the entity with partition key of "Smith" and row key of "Jeff"
+        TableOperation retrieveSmithJeff = 
+           TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
 
-	   // Submit the operation to the table service and get the specific entity.
-	   CustomerEntity specificEntity =
-    		cloudTable.execute(retrieveSmithJeff).getResultAsType();
-			
-    	// Output the entity.
-    	if (specificEntity != null)
-    	{
+       // Submit the operation to the table service and get the specific entity.
+       CustomerEntity specificEntity =
+            cloudTable.execute(retrieveSmithJeff).getResultAsType();
+            
+        // Output the entity.
+        if (specificEntity != null)
+        {
             System.out.println(specificEntity.getPartitionKey() +
                 " " + specificEntity.getRowKey() +
                 "\t" + specificEntity.getEmail() +
                 "\t" + specificEntity.getPhoneNumber());
-	   }
+       }
     }
     catch (Exception e)
     {
@@ -385,32 +385,32 @@ To modify an entity, retrieve it from the table service, make changes to the ent
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the table client.
-    	CloudTableClient tableClient = storageAccount.createCloudTableClient();
+        // Create the table client.
+        CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    	// Create a cloud table object for the table.
-    	CloudTable cloudTable = tableClient.getTableReference("people");
+        // Create a cloud table object for the table.
+        CloudTable cloudTable = tableClient.getTableReference("people");
 
-    	// Retrieve the entity with partition key of "Smith" and row key of "Jeff".
-    	TableOperation retrieveSmithJeff = 
-	       TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
+        // Retrieve the entity with partition key of "Smith" and row key of "Jeff".
+        TableOperation retrieveSmithJeff = 
+           TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
 
-    	// Submit the operation to the table service and get the specific entity.
-    	CustomerEntity specificEntity =
-		  cloudTable.execute(retrieveSmithJeff).getResultAsType();
+        // Submit the operation to the table service and get the specific entity.
+        CustomerEntity specificEntity =
+          cloudTable.execute(retrieveSmithJeff).getResultAsType();
 
-    	// Specify a new phone number.
-    	specificEntity.setPhoneNumber("425-555-0105");
+        // Specify a new phone number.
+        specificEntity.setPhoneNumber("425-555-0105");
 
-    	// Create an operation to replace the entity.
-    	TableOperation replaceEntity = TableOperation.replace(specificEntity);
+        // Create an operation to replace the entity.
+        TableOperation replaceEntity = TableOperation.replace(specificEntity);
 
-    	// Submit the operation to the table service.
-    	cloudTable.execute(replaceEntity);
+        // Submit the operation to the table service.
+        cloudTable.execute(replaceEntity);
     }
     catch (Exception e)
     {
@@ -420,7 +420,7 @@ To modify an entity, retrieve it from the table service, make changes to the ent
 
 ## <a name="QueryProperties"> </a>How to: Query a subset of entity properties
 
-A query to a table can retrieve just a few properties from an entity. This technique, called projection, reduces bandwidth and can improve query performance, especially for large entities. The query in the following code uses the **select** method to return only the email addresses of entities in the table. The results are projected into a collection of **String** with the help of an **EntityResolver**, which does the type conversion on the entities returned from the server. You can learn more about projection in this [blog post][]. Note that projection is not supported on the local storage emulator, so this code runs only when using an account on the table service.
+A query to a table can retrieve just a few properties from an entity. This technique, called projection, reduces bandwidth and can improve query performance, especially for large entities. The query in the following code uses the **select** method to return only the email addresses of entities in the table. The results are projected into a collection of **String** with the help of an **EntityResolver**, which does the type conversion on the entities returned from the server. You can learn more about projection in this [blog post][blog post]. Note that projection is not supported on the local storage emulator, so this code runs only when using an account on the table service.
 
     try
     {
@@ -428,19 +428,19 @@ A query to a table can retrieve just a few properties from an entity. This techn
         CloudStorageAccount storageAccount =
             CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the table client.
-    	CloudTableClient tableClient = storageAccount.createCloudTableClient();
+        // Create the table client.
+        CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    	// Create a cloud table object for the table.
-    	CloudTable cloudTable = tableClient.getTableReference("people");
+        // Create a cloud table object for the table.
+        CloudTable cloudTable = tableClient.getTableReference("people");
 
-    	// Define a projection query that retrieves only the Email property
-    	TableQuery<CustomerEntity> projectionQuery = 
-	       TableQuery.from(CustomerEntity.class)
-	       .select(new String[] {"Email"});
+        // Define a projection query that retrieves only the Email property
+        TableQuery<CustomerEntity> projectionQuery = 
+           TableQuery.from(CustomerEntity.class)
+           .select(new String[] {"Email"});
 
-    	// Define a Entity resolver to project the entity to the Email value.
-    	EntityResolver<String> emailResolver = new EntityResolver<String>() {
+        // Define a Entity resolver to project the entity to the Email value.
+        EntityResolver<String> emailResolver = new EntityResolver<String>() {
             @Override
             public String resolve(String PartitionKey, String RowKey, Date timeStamp, HashMap<String, EntityProperty> properties, String etag) {
                 return properties.get("Email").getValueAsString();
@@ -461,7 +461,7 @@ A query to a table can retrieve just a few properties from an entity. This techn
 
 ## <a name="InsertOrReplace"> </a>How to: Insert or Replace an entity
 
-Often you want to add an entity to a table without knowing if it already exists in the table. An insert-or-replace operation allows you to make a single request which will insert the entity if it does not exist or replace the existing one if it does. Building on prior examples, the following code inserts or replaces the entity for "Walter Harp". After creating a new entity, this code calls the **TableOperation.insertOrReplace** method. This code then calls **execute** on the **CloudTable** object with the table and the insert or replace table operation as the parameters. To update only part of an entity, the **TableOperation.insertOrMerge** method can be used instead. Note that insert-or-replace is not supported on the local storage emulator, so this code runs only when using an account on the table service. You can learn more about insert-or-replace and insert-or-merge in this [blog post][].
+Often you want to add an entity to a table without knowing if it already exists in the table. An insert-or-replace operation allows you to make a single request which will insert the entity if it does not exist or replace the existing one if it does. Building on prior examples, the following code inserts or replaces the entity for "Walter Harp". After creating a new entity, this code calls the **TableOperation.insertOrReplace** method. This code then calls **execute** on the **CloudTable** object with the table and the insert or replace table operation as the parameters. To update only part of an entity, the **TableOperation.insertOrMerge** method can be used instead. Note that insert-or-replace is not supported on the local storage emulator, so this code runs only when using an account on the table service. You can learn more about insert-or-replace and insert-or-merge in this [blog post][blog post].
 
     try
     {
@@ -554,15 +554,35 @@ Finally, the following code deletes a table from a storage account. A table whic
 
 Now that you've learned the basics of table storage, follow these links to learn how to do more complex storage tasks.
 
-- [Azure Storage SDK for Java]
-- [Azure Storage Client SDK Reference]
-- [Azure Storage REST API]
-- [Azure Storage Team Blog]
+-   [Azure Storage SDK for Java][Azure Storage SDK for Java]
+-   [Azure Storage Client SDK Reference][Azure Storage Client SDK Reference]
+-   [Azure Storage REST API][Azure Storage REST API]
+-   [Azure Storage Team Blog][Azure Storage Team Blog]
 
-[Azure SDK for Java]: http://www.windowsazure.com/en-us/develop/java/
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
-[Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure Storage Client SDK Reference]: http://dl.windowsazure.com/storage/javadoc/
-[Azure Storage REST API]: http://msdn.microsoft.com/en-us/library/azure/gg433040.aspx
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[blog post]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
+  [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+  [Next steps]: #NextSteps
+  [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
+  [What is Table Storage]: #what-is
+  [Concepts]: #Concepts
+  [Create an Azure storage account]: #CreateAccount
+  [Create a Java application]: #CreateApplication
+  [Configure your application to access Table Storage]: #ConfigureStorage
+  [Setup an Azure storage connection string]: #ConnectionString
+  [How to: Create a table]: #CreateTable
+  [How to: List the tables]: #ListTables
+  [How to: Add an entity to a table]: #AddEntity
+  [How to: Insert a batch of entities]: #InsertBatch
+  [How to: Retrieve all entities in a partition]: #RetrieveEntities
+  [How to: Retrieve a range of entities in a partition]: #RetrieveRange
+  [How to: Retrieve a single entity]: #RetriveSingle
+  [How to: Modify an entity]: #ModifyEntity
+  [How to: Query a subset of entity properties]: #QueryProperties
+  [How to: Insert or Replace an entity]: #InsertOrReplace
+  [How to: Delete an entity]: #DeleteEntity
+  [How to: Delete a table]: #DeleteTable
+  [howto-table-storage]: ../includes/howto-table-storage.md
+  [create-storage-account]: ../includes/create-storage-account.md
+  [Azure Storage Client SDK Reference]: http://dl.windowsazure.com/storage/javadoc/
+  [blog post]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
+  [Azure Storage REST API]: http://msdn.microsoft.com/en-us/library/azure/gg433040.aspx
+  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/

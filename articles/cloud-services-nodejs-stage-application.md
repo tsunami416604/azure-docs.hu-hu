@@ -1,12 +1,6 @@
 <properties urlDisplayName="Staging Deployment" pageTitle="Stage a cloud service deployment (Node.js) - Azure" metaKeywords="Azure staging, Azure application staging, Azure test environment, Azure staging environment, Azure Virtual IP swap, Azure VIP swap" description="Learn how to deploy your Azure application to a staging environment, then deploy to a production environment using Virtual IP (VIP) swap." metaCanonical=" " services="cloud-services" documentationCenter="nodejs" title="Staging an Application in Azure" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett" />
-
-
-
-
-
-
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett"></tags>
 
 # Staging an Application in Azure
 
@@ -20,16 +14,16 @@ application is working correctly, it can be deployed to the production
 environment by performing a Virtual IP (VIP) swap.
 
 <div class="dev-callout">
-	<b>Note</b>
-	<p>The steps in this article only apply to node applications hosted as an Azure Cloud Service.</p>
-	</div>
+    <b>Note</b>
+    <p>The steps in this article only apply to node applications hosted as an Azure Cloud Service.</p>
+    </div>
 
 This task includes the following steps:
 
--   [Step 1: Stage an Application]
--   [Step 2: Deploy an Application to Production by Swapping VIPs]
+-   [Step 1: Stage an Application][Step 1: Stage an Application]
+-   [Step 2: Deploy an Application to Production by Swapping VIPs][Step 2: Deploy an Application to Production by Swapping VIPs]
 
-<h2><a id="step1"></a>Step 1: Stage an Application</h2>
+## <span id="step1"></span></a>Step 1: Stage an Application
 
 This task covers how to stage an application by using the **Windows
 Azure PowerShell**.
@@ -39,17 +33,17 @@ Azure PowerShell**.
 
     **Publish-AzureServiceProject -Slot staging**
 
-2.  Log on to the [Azure Management Portal] and select **Cloud Services**. After the cloud service is created and the **Staging** column status has been updated to **Running**, click on the service name.
+2.  Log on to the [Azure Management Portal][Azure Management Portal] and select **Cloud Services**. After the cloud service is created and the **Staging** column status has been updated to **Running**, click on the service name.
 
-	![portal displaying a running service][cloud-service]
+    ![portal displaying a running service][portal displaying a running service]
 
 3.  Select the **Dashboard**, and then select **Staging**.
 
-	![cloud service dashboard][cloud-service-dashboard]
+    ![cloud service dashboard][cloud service dashboard]
 
-4. Note the value in the **Site URL** entry to the right. The DNS name is an obfuscated internal ID that Azure generated.
+4.  Note the value in the **Site URL** entry to the right. The DNS name is an obfuscated internal ID that Azure generated.
 
-    ![site url][cloud-service-staging-url]
+    ![site url][site url]
 
 Now you can verify that the application is working correctly in the staging environment by using the staging site URL.
 
@@ -58,7 +52,7 @@ version of one that has already been deployed to production, you can
 [upgrade the application in the production environment by swapping the
 VIPs][Step 2: Deploy an Application to Production by Swapping VIPs].
 
-<h2><a id="step2"></a>Step 2: Upgrade an Application in Production by Swapping VIPs</h2>
+## <span id="step2"></span></a>Step 2: Upgrade an Application in Production by Swapping VIPs
 
 After you have verified the upgraded version of an application in the
 staging environment, you can quickly make it available in production by
@@ -72,13 +66,13 @@ application to production and staged the upgraded version of the
 application.</p>
 </div>
 
-1.  Log into the [Azure Management Portal],
+1.  Log into the [Azure Management Portal][Azure Management Portal],
     click **Cloud Services** and then select the service name.
 
 2.  From the **Dashboard**, select **Staging**, and then click **Swap** at the bottom of the page. This opens the VIP Swap
     dialog.
 
-    ![vip swap dialog][vip-swap-dialog]
+    ![vip swap dialog][vip swap dialog]
 
 3.  Review the information, and then click **OK**. The two deployments
     begin updating as the staging deployment switches to production and
@@ -89,15 +83,15 @@ deployment by swapping VIPs with the deployment in staging.
 
 ## Additional Resources
 
-- [How to Deploy a Service Upgrade to Production by Swapping VIPs in Azure]
-- [Overview of Managing Deployments in Azure]
+-   [How to Deploy a Service Upgrade to Production by Swapping VIPs in Azure][How to Deploy a Service Upgrade to Production by Swapping VIPs in Azure]
+-   [Overview of Managing Deployments in Azure][Overview of Managing Deployments in Azure]
 
   [Step 1: Stage an Application]: #step1
   [Step 2: Deploy an Application to Production by Swapping VIPs]: #step2
   [Azure Management Portal]: http://manage.windowsazure.com
-[cloud-service]: ./media/cloud-services-nodejs-stage-application/staging-cloud-service-running.png
-[cloud-service-dashboard]: ./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png
-  [cloud-service-staging-url]: ./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png
-  [vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
+  [portal displaying a running service]: ./media/cloud-services-nodejs-stage-application/staging-cloud-service-running.png
+  [cloud service dashboard]: ./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png
+  [site url]: ./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png
+  [vip swap dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
   [How to Deploy a Service Upgrade to Production by Swapping VIPs in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/ee517253.aspx
   [Overview of Managing Deployments in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/hh386336.aspx

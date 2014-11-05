@@ -1,11 +1,6 @@
 <properties urlDisplayName="Deploying with Cloud9" pageTitle="Node.js deploying with Cloud9 - Azure tutorial" metaKeywords="Cloud9 IDE Azure, Azure node.js, Azure node apps" description="Learn how to use Cloud9 IDE to develop, build, and deploy a Node.js application to Azure." metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Deploying an Azure App from Cloud9" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett" />
-
-
-
-
-
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett"></tags>
 
 # Deploying an Azure App from Cloud9
 
@@ -19,7 +14,7 @@ In this tutorial you will learn how to:
 -   Update an existing Azure deployment
 -   Move projects between staging and production deployments
 
-[Cloud9 IDE][] provides a cross-platform, browser-based development
+[Cloud9 IDE][Cloud9 IDE] provides a cross-platform, browser-based development
 environment. One of the features Cloud9 supports for Node.js projects is
 that you can directly deploy to Azure from within the IDE.
 Cloud9 also integrates with the GitHub and BitBucket repository
@@ -36,37 +31,38 @@ To use Cloud9, you first need to visit their website and [register for a
 subscription][Cloud9 IDE]. You can sign in with either an existing
 GitHub or BitBucket account, or create a Cloud9 account. A free
 subscription offering is available, as well as a paid offering which
-provides more features. For more information, see [Cloud9 IDE][].
+provides more features. For more information, see [Cloud9 IDE][Cloud9 IDE].
 
 ## Create a Node.js Project
 
 1.  Sign in to Cloud9, click the **+** symbol beside **My Projects**,
     and then select **Create a new project**.
 
-	![create new Cloud9 project](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_create_project.png)
+    ![create new Cloud9 project][create new Cloud9 project]
 
 2.  In the **Create a new project** dialog, enter a project name,
     access, and project type. Click **Create** to create the project.
 
-	![create new project dialog Cloud9](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_project.png)
+    ![create new project dialog Cloud9][create new project dialog Cloud9]
 
-	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Some options require a paid Cloud9 plan.</p>
-	</div>
-	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>The project name of your Cloud9 project is not used when deploying to Azure.</p>
-	</div>
+    <div class="dev-callout">
+<strong>Note</strong>
+<p>Some options require a paid Cloud9 plan.</p>
+</div>
+
+    <div class="dev-callout">
+<strong>Note</strong>
+<p>The project name of your Cloud9 project is not used when deploying to Azure.</p>
+</div>
 
 3.  After the project has been created, click **Start Editing**. If this is the first time you have used the Cloud9 IDE, you will be offered the option to take a tour of the service. If you wish to skip the tour and view it at a later date, select **Just the editor,please**.
 
-	![start editing the Cloud9 project](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_startediting.png)
+    ![start editing the Cloud9 project][start editing the Cloud9 project]
 
 4.  To create a new Node application, select **File** and then **New
     File**.
 
-	![create new file in the Cloud9 project](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_filenew.png)
+    ![create new file in the Cloud9 project][create new file in the Cloud9 project]
 
 5.  A new tab titled **Untitled1** will be displayed. Enter the
     following code on the **Untitled1** tab to create the Node
@@ -78,23 +74,22 @@ provides more features. For more information, see [Cloud9 IDE][].
             res.writeHead(200, { 'Content-Type': 'text/plain' });
             res.end('hello azure\n');
         }).listen(port);
-	
-	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Using process.env.PORT ensures that the application picks up the correct port whether ran in the Cloud9 debugger or when deployed to Azure.</p>
-	</div>
+
+    <div class="dev-callout">
+<strong>Note</strong>
+<p>Using process.env.PORT ensures that the application picks up the correct port whether ran in the Cloud9 debugger or when deployed to Azure.</p>
+</div>
 
 6.  To save the code, select **File** and then **Save as**. In the
     **Save As** dialog, enter **server.js** as the file name, and then
     click **Save**.
 
+    <div class="dev-callout">
+<strong>Note</strong>
+<p>You may notice a warning symbol indicating that the req variable is unused. You may safely ignore this warning.</p>
+</div>
 
-	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>You may notice a warning symbol indicating that the req variable is unused. You may safely ignore this warning.</p>
-	</div>
-
-	![save the server.js file](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_saveas.png)
+    ![save the server.js file][save the server.js file]
 
 ## Run the Application
 
@@ -104,17 +99,17 @@ provides more features. For more information, see [Cloud9 IDE][].
 </div>
 
 1.  Click **Debug** to run the application in the Cloud9 debugger.
-	
-	![run in the debugger](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug.png)
+
+    ![run in the debugger][run in the debugger]
 
 2.  An output window will be displayed. Click on the URL listed to
     access your application through a browser window.
 
-	![output window](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_output.png)
+    ![output window][output window]
 
-	The resulting application will look as follows:
+    The resulting application will look as follows:
 
-	![application running in browser](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug_browser.png)
+    ![application running in browser][application running in browser]
 
 3.  To stop debugging the application, click **stop**.
 
@@ -126,12 +121,11 @@ trial by following these steps:
 
 [WACOM.INCLUDE [create-azure-account](../includes/create-azure-account.md)]
 
-
 ## Create a Deployment
 
 1.  To create a new deployment, select **Deploy**, and then click **+** to create a deploy server.
 
-    ![create a new deployment][create a new deployment]
+    [create a new deployment][create a new deployment]
 
 2.  In the **Add a deploy target** dialog, enter a deployment name and then select **Azure** in the **Choose type** list. The deployment name you specify will be used to identify the deployment within Cloud9; it will not correspond to a deployment name within Azure.
 
@@ -139,7 +133,7 @@ trial by following these steps:
 
     1.  Click **Download Azure Settings**.
 
-        ![download publish settings](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_choosetypeandcert.png)
+        ![download publish settings][download publish settings]
 
         This will open the Azure Management Portal and prompt you to download the Azure publishing settings. You will be required to log in to your Azure account before you can begin.
 
@@ -150,24 +144,23 @@ trial by following these steps:
 
     4.  After selecting the file, click **Upload**.
 
-4.  Click **+ Create new** to create a new hosted service. A *hosted service* is the container in which your application is hosted when it is deployed to Azure. For more information, see [Overview of Creating a Hosted Service for Azure][].
+4.  Click **+ Create new** to create a new hosted service. A *hosted service* is the container in which your application is hosted when it is deployed to Azure. For more information, see [Overview of Creating a Hosted Service for Azure][Overview of Creating a Hosted Service for Azure].
 
-	![create a new deployment](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createdeployment.png)
+    ![create a new deployment][create a new deployment]
 
 5.  You will be prompted for the name of the new hosted service and configuration options such as the number of instances, host OS, and data center. The deployment name specified will be used as the hosted service name in Azure. This name must be unique within the Azure system.
-	
-	![create a new hosted service](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_hosted_service_settings.png)
 
-	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>In the <strong>Add a deploy target</strong> dialog, any existing Azure hosted services will be listed under the <strong>Choose existing deployment</strong> section; selecting an existing hosted service will result in this project being deployed to that service.</p>
-	</div>
+    ![create a new hosted service][create a new hosted service]
 
-	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Selecting <strong>Enable RDP</strong> and providing a username and password will enable remote desktop for your deployment.</p>
-	</div>
+    <div class="dev-callout">
+<strong>Note</strong>
+<p>In the <strong>Add a deploy target</strong> dialog, any existing Azure hosted services will be listed under the <strong>Choose existing deployment</strong> section; selecting an existing hosted service will result in this project being deployed to that service.</p>
+</div>
 
+    <div class="dev-callout">
+<strong>Note</strong>
+<p>Selecting <strong>Enable RDP</strong> and providing a username and password will enable remote desktop for your deployment.</p>
+</div>
 
 ## Deploy to the Azure Production Environment
 
@@ -176,34 +169,34 @@ trial by following these steps:
     as the production URL that will be used after deployment to Windows
     Azure.
 
-	![select a deployment](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_select_deployment.png)
+    ![select a deployment][select a deployment]
 
 2.  Select **Deploy to Production environment**.
 
 3.  Click **Deploy** to begin deployment.
 
 4.  If this is the first time you have deployed this project to Azure, you will receive an error of **'No web.config found'**. Select **Yes** to create the file. This will add a 'Web.cloud.config' file to your project.
-	
-	![no web.config file found message](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_no_web_config.png)
 
-5.  If this is the first time you have deployed this project to Azure, you will receive an error of **'No 'csdef' file present'**. Select **Yes** to create the .csdef file. This will add a'ServiceDefinition.csdef' file to your project.    ServiceDefinition.csdef is an Azure-specific files necessary for publishing your application. For more information, see [Overview of Creating a Hosted Service for Azure][].
+    ![no web.config file found message][no web.config file found message]
 
-6.  You will be prompted to select the instance size for this application. Select **Small**, and then click **Create**. For more details about Azure VM sizes, see [How to Configure Virtual Machine Sizes][].
+5.  If this is the first time you have deployed this project to Azure, you will receive an error of **'No 'csdef' file present'**. Select **Yes** to create the .csdef file. This will add a'ServiceDefinition.csdef' file to your project. ServiceDefinition.csdef is an Azure-specific files necessary for publishing your application. For more information, see [Overview of Creating a Hosted Service for Azure][Overview of Creating a Hosted Service for Azure].
 
-	![specify csdef file values](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createcsdef.png)
+6.  You will be prompted to select the instance size for this application. Select **Small**, and then click **Create**. For more details about Azure VM sizes, see [How to Configure Virtual Machine Sizes][How to Configure Virtual Machine Sizes].
+
+    ![specify csdef file values][specify csdef file values]
 
 7.  The deployment entry will display the status of the deployment process. Once complete, the deployment will display as **Active**.
 
-	![deployment status](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_deployment_status.png)
+    ![deployment status][deployment status]
 
-	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Projects deployed through the Cloud 9 IDE are assigned a GUID as the deployment name in Azure.</p>
-	</div>
+    <div class="dev-callout">
+<strong>Note</strong>
+<p>Projects deployed through the Cloud 9 IDE are assigned a GUID as the deployment name in Azure.</p>
+</div>
 
 8.  The deployment dialog includes a link to the production URL. When the deployment is complete, click the URL to browse to your application running in Azure.
 
-	![Azure production URL link](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_production_url.png)
+    ![Azure production URL link][Azure production URL link]
 
 ## Update the Application
 
@@ -226,11 +219,11 @@ When you make changes to your application, you can use Cloud9 to deploy the upda
 
 2.  Click **Deploy** to begin deployment.
 
-	Each Azure hosted service supports two environments, staging and production. The staging environment is exactly like the production environment, except that you can only access the staged application with an obfuscated, GUID-based URL that is generated by Azure. You can use the staging environment to test your application, and after verifying changes you can move the staging version into production by performing a virtual IP (VIP) swap, as described later in this tutorial.
+    Each Azure hosted service supports two environments, staging and production. The staging environment is exactly like the production environment, except that you can only access the staged application with an obfuscated, GUID-based URL that is generated by Azure. You can use the staging environment to test your application, and after verifying changes you can move the staging version into production by performing a virtual IP (VIP) swap, as described later in this tutorial.
 
 3.  When your application is deployed to staging, the guid-based staging URL will be displayed in the Console output, as shown in the screenshot below. Click the URL to open your staged application in a browser.
 
-	![console output showing staging URL](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_staging_console_output.png)
+    ![console output showing staging URL][console output showing staging URL]
 
 ## Move the Update to Production using VIP Swap
 
@@ -241,38 +234,38 @@ environment to the production environment, you can do so without
 redeploying by doing a VIP Swap, which swaps the staging and production
 deployments. A VIP swap puts your tested, staged application into
 production with no downtime in the production environment. For more
-details, see [Overview of Managing Deployments in Azure.][]
+details, see [Overview of Managing Deployments in Azure.][Overview of Managing Deployments in Azure.]
 
 1.  In the deploy dialog, click on the **Open portal** link to open the
     Azure Management Portal.
 
-	![Link from deploy dialog to Azure Management Portal][Link from deploy dialog to Azure Management Portal]
+    [Link from deploy dialog to Azure Management Portal][Link from deploy dialog to Azure Management Portal]
 
 2.  Sign in to the portal with your credentials.
 
 3.  On the left of the web page, select **Hosted Services, Storage
     Accounts & CDN**, and then click **Hosted Services**.
 
-	![Azure Management Portal][Azure Management Portal]
+    [Azure Management Portal][Azure Management Portal]
 
-	The results pane shows the hosted service with the name you specified in Cloud9, and two deployments, one with the    **Environment** value **Staging**, the second **Production**.
+    The results pane shows the hosted service with the name you specified in Cloud9, and two deployments, one with the **Environment** value **Staging**, the second **Production**.
 
 4.  To perform the VIP Swap, select the hosted service, and then click **Swap VIP** in the ribbon.
 
-	![VIP SWAP](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_vipswap.png)
+    ![VIP SWAP][VIP SWAP]
 
 5.  Click **OK** in the Swap VIPs dialog that appears.
 
 6.  Browse to your production application. You will see that the version of the application previously deployed to stage is now in production.
 
-	![Production application running on Azure](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_production_on_azure.png)
+    ![Production application running on Azure][Production application running on Azure]
 
 ## Using Remote Desktop
 
 If you enabled RDP and specified a username and password when creating your deployment, you can use Remote Desktop to connect to your Hosted Service by selecting a specific instance, and then selecting Connect on
 the ribbon.
 
-![Connect to an instance](./media/cloud-services-nodejs-develop-deploy-cloud9/connect.png)
+![Connect to an instance][Connect to an instance]
 
 When you click Connect, you will be prompted to open or download a .RDP file. This file contains the information required to connect to your remote desktop session. Running this file on a Windows system will prompt you for the username and password you entered when creating your deployment, and will then connect you to the desktop of the selected
 instance.
@@ -292,7 +285,7 @@ Cloud9 focuses on providing an IDE and does not provide a direct method of stopp
 
 1.  In the deploy dialog, click on the **Open portal** link to open the Azure Management Portal.
 
-	![Link from deploy dialog to Azure Management Portal](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_link.png)
+    ![Link from deploy dialog to Azure Management Portal][Link from deploy dialog to Azure Management Portal]
 
 2.  Sign in to the portal with your credentials.
 
@@ -300,17 +293,39 @@ Cloud9 focuses on providing an IDE and does not provide a direct method of stopp
 
 4.  Select the staging deployment (indicated by the **Environment** value). Click **Delete** in the ribbon to delete the application.
 
-	![delete the deployment](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_deletedeployment.png)
+    ![delete the deployment][delete the deployment]
 
 5.  Select the production deployment, and click **Delete** to delete that application as well.
 
 ## Additional Resources
 
--   [Cloud9 documentation][]
+-   [Cloud9 documentation][Cloud9 documentation]
 
-
-  [Cloud9 IDE]: http://cloud9ide.com/ 
+  [Cloud9 IDE]: http://cloud9ide.com/
+  [create new Cloud9 project]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_create_project.png
+  [create new project dialog Cloud9]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_project.png
+  [start editing the Cloud9 project]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_startediting.png
+  [create new file in the Cloud9 project]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_filenew.png
+  [save the server.js file]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_saveas.png
+  [run in the debugger]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug.png
+  [output window]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_output.png
+  [application running in browser]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug_browser.png
+  [create-azure-account]: ../includes/create-azure-account.md
+  [download publish settings]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_choosetypeandcert.png
   [Overview of Creating a Hosted Service for Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/jj155995.aspx
+  [create a new deployment]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createdeployment.png
+  [create a new hosted service]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_hosted_service_settings.png
+  [select a deployment]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_select_deployment.png
+  [no web.config file found message]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_no_web_config.png
   [How to Configure Virtual Machine Sizes]: http://msdn.microsoft.com/en-us/library/windowsazure/ee814754.aspx
+  [specify csdef file values]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createcsdef.png
+  [deployment status]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_deployment_status.png
+  [Azure production URL link]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_production_url.png
+  [console output showing staging URL]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_staging_console_output.png
   [Overview of Managing Deployments in Azure.]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433027.aspx
+  [VIP SWAP]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_vipswap.png
+  [Production application running on Azure]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_production_on_azure.png
+  [Connect to an instance]: ./media/cloud-services-nodejs-develop-deploy-cloud9/connect.png
+  [Link from deploy dialog to Azure Management Portal]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_link.png
+  [delete the deployment]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_deletedeployment.png
   [Cloud9 documentation]: http://go.microsoft.com/fwlink/?LinkId=241421&clcid=0x409
