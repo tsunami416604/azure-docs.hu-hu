@@ -1,467 +1,353 @@
-<properties  linkid="manage-scenarios-choose-web-app-service" urlDisplayName="Web Options for Azure" pageTitle="Azure Web Sites, Cloud Services and Virtual Machines comparison" metaKeywords="Cloud Services, Virtual Machines, Web Sites" description="Learn when to use Azure Web Sites, Cloud Services, and Virtual Machines for hosting web applications. Review a feature comparison." metaCanonical="" services="web-sites,virtual-machines,cloud-services" documentationCenter="" title=" Cloud Services" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
+<properties pageTitle="Azure Websites, Cloud Services and Virtual Machines comparison" metaKeywords="Cloud Services, Virtual Machines, Web Sites" description="Learn when to use Azure Websites, Cloud Services, and Virtual Machines for hosting web applications." metaCanonical="" services="web-sites,virtual-machines,cloud-services" documentationCenter="" title=" Cloud Services" authors="tdykstra" solutions="" manager="wpickett" editor="jimbe" />
 
-# Az Azure Webhelyek, Felhőszolgáltatások és Virtuális gépek szolgáltatások összehasonlítása
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/24/2014" ms.author="tdykstra" />
 
-Az Azure számos lehetőséget kínál a webalkalmazások üzemeltetésére. Ilyen például az [Azure Webhelyek][1], a [Felhőszolgáltatások][2] és a
-[Virtuális gépek][3] szolgáltatás. A különböző lehetőségeket áttekintve talán bizonytalan lehet abban, hogy melyik felelne meg leginkább igényeinek, illetve előfordulhat, hogy nem teljesen egyértelmű néhány fogalom, például az infrastruktúraszolgáltatás (IaaS) és a platformszolgáltatás (PaaS) fogalma. Ez a cikk segít átlátni a különböző lehetőségeket, valamint meghozni az adott webes használati helyzetnek leginkább megfelelő döntést. Ugyan mindhárom esetben rendkívül jól méretezhető webalkalmazásokat futtathat az Azure-ban, mégis vannak az egyes lehetőségek között különbségek, amelyek megkönnyíthetik a döntést.
+# Azure Websites, Cloud Services, and Virtual Machines comparison
 
-Számos helyzetben az Azure webhelyek jelenti a legjobb megoldást. Egyszerű, rugalmas telepítési és felügyeleti lehetőségeket biztosít, és nagyméretű webhelyek tárolására is alkalmas. A webalkalmazások gyűjteményéből gyorsan hozhat létre új webhelyet olyan népszerű szoftverekkel, mint a WordPress, de akár meglévő webhelyet is áttelepíthet az Azure webhelyekbe. A jelenleg előzetes verzióként elérhető [Azure WebJobs SDK][4] a háttérben futó feladatok feldolgozására is lehetőséget nyújt.
+## Overview
 
-Webalkalmazásai üzemeltetéséhez ezenkívül az Azure felhőszolgáltatásokat és az Azure virtuális gépeket is használhatja. Ezek akkor bizonyulhatnak jó megoldásnak, ha az adott webes réteg megköveteli az általuk biztosított további irányítási és testreszabási lehetőségeket. A nagyobb mértékű irányítás ugyanakkor az alkalmazások létrehozásának, kezelésének és telepítésének nagyobb bonyolultságával jár. Az alábbi diagram a három lehetőség előnyeit és hátrányait mutatja be.
+Azure offers several ways to host web sites: [Azure Websites][], [Cloud Services][], and [Virtual Machines][]. This article helps you understand the options and make the right choice for your web application.
 
-![Választható lehetőségek
-diagramja](./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_2.png)
+Azure Websites is the best choice for most web apps. Deployment and management are integrated into the platform, sites can scale quickly to handle high traffic loads, and the built-in load balancing and traffic manager provide high availability. You can move existing sites to Azure Websites easily with an [online migration tool](https://www.migratetoazure.net/), use an open-source app from the Web Application Gallery, or create a new site using the framework and tools of your choice. The [WebJobs][] feature (currently in preview) makes it easy to add background job processing to your app. 
 
-A Webhelyek megkönnyíti a beállítást, a kezelést és a figyelést, azonban kevesebb konfigurációs lehetőséget biztosít. A lényeg, hogy ha nincs nyomós oka arra, hogy a webes kezelőfelületet a Felhőszolgáltatásokban vagy a Virtuális gépeken helyezze el, érdemes az Azure webhelyeket választani. Az alábbiakban megtalálhatja a megalapozott döntés meghozatalához szükséges információkat. A dokumentum a következő szakaszokra tagolódik:
+If you need more control over the web server environment, such as the ability to remote into your server or configure server startup tasks, Azure Cloud Services is typically the best option.
 
-* [Alkalmazási területek](#scenarios)
-* [A szolgáltatások összefoglalása](#services)
-* [A funkciók összehasonlítása](#features)
+If you have an existing application that would require substantial modifications to run in Azure Websites or Azure Cloud Services, you could choose Azure Virtual Machines in order to simplify migrating to the cloud. However, correctly configuring, securing, and maintaining VMs requires much more time and IT expertise compared to Azure Websites and Cloud Services. If you are considering Azure Virtual Machines, make sure you take into account the ongoing maintenance effort required to patch, update, and manage your VM environment.  
 
-## <a name="scenarios"></a>Alkalmazási területek
+The following diagram illustrates the relative degree of control versus ease of use for each of these web hosting options on Azure. 
 
-### Kisvállalkozásom van, és költségkímélő, ugyanakkor későbbi növekedést is lehetővé tevő megoldásra van szükségem webhelyem üzemeltetésére
+![ChoicesDiagram][ChoicesDiagram]
 
-Ebben az esetben remek megoldást jelent az Azure webhelyek (WAWS), hiszen használatát ingyenesen megkezdheti, és a szolgáltatást később szükség szerint további lehetőségekkel egészítheti ki. Minden ingyenes webhelyhez jár például egy Azure-beli tartomány
-(*cegnev*.azurewebsites.net). Ha készen áll saját tartományneve használatára, mindössze havi 9,80 USD-ért kiegészítheti a szolgáltatást ezzel a lehetőséggel (az ár a 2014. januári állapotot tükrözi). Számos további szolgáltatás és méretezési lehetőség segíti a webhely fejlődését megnövekedett felhasználói érdeklődés esetén. Az **Azure webhelyek** a következő lehetőségeket kínálja:
+## Table of contents
 
-* Használat megkezdése ingyenesen, később pedig lehetőség a szükség
-  szerinti bővítésre.
-* Népszerű webalkalmazások, például a WordPress gyors beállítása az
-  alkalmazások gyűjteményéből.
-* Az alkalmazás szükség szerinti kiegészítése további
-  Azure-szolgáltatásokkal és -funkciókkal.
-* A webhely biztonságossá tétele a HTTPS protokoll és a saját
-  *cegnev*.azurewebsites.net tartománynevéhez tartozó tanúsítvány
-  használatával.
+- [Scenarios and recommendations](#scenarios)
+- [Feature comparison](#features)
+- [Next Steps](#nextsteps)
 
-### Webes vagy grafikus tervezőként dolgozom, és webhelyeket szeretnék tervezni, illetve kiépíteni ügyfeleim számára
+##<a name="scenarios"></a>Scenarios and recommendations
 
-Az Azure webhelyekben a webes fejlesztők megtalálnak mindent, amire az összetett webalkalmazások létrehozásához szükségük lehet. A Webhelyek szorosan együttműködik a Visual Studióval, az SQL-adatbázissal és más eszközökkel. A **Webhelyek** a következő lehetőségeket kínálja fejlesztőknek:
+Here are some common application scenarios with recommendations as to which Azure web hosting option might be most appropriate for each.
 
-* [Feladatok automatizálása][5] parancssori eszközökkel.
-* Olyan népszerű nyelvek használata, mint a [.NET][6], a [PHP][7], a
-  [Node.js][8] és a [Python][9].
-* Bővítés három különböző méretezési szint közül választva, akár igen
-  nagy kapacitásig is.
-* Integráció más Azure-szolgáltatásokkal, például az
-  [SQL-adatbázissal][10], a [Szolgáltatásbusszal][11] és a
-  [Tárolással][12], valamint partnereink [Azure Áruházból][13] elérhető
-  termékeivel, például a MySQL-lel és a MongoDB-vel.
-* Integráció olyan eszközökkel, mint a Visual Studio, a Git, a
-  WebMatrix, a WebDeploy, a TFS és az FTP.
+- [I need a web front end with background processing and database backend to run business applications integrated with on premise assets.](#onprem)
+- [I need a reliable way to host my corporate website that scales well and offers global reach.](#corp)
+- [I have an IIS6 application running on Windows Server 2003.](#iis6)
+- [I'm a small business owner, and I need an inexpensive way to host my site but with future growth in mind.](#smallbusiness)
+- [I'm a web or graphic designer, and I want to design and build web sites for my customers.](#designer)
+- [I'm migrating my multi-tier application with a web front-end to the Cloud.](#multitier)
+- [My application depends on highly customized Windows or Linux environments and I want to move it to the cloud.](#custom)
+- [My site uses open source software, and I want to host it in Azure.](#oss)
+- [I have a line-of-business application that needs to connect to the corporate network.](#lob)
+- [I want to host a REST API or web service for mobile clients.](#mobile)
 
-### Többrétegű, webes kezelőfelülettel rendelkező alkalmazásomat szeretném áttelepíteni a felhőbe
 
-Az Azure számos lehetőséget kínál arra az esetre, ha többrétegű alkalmazást, például egy webhely adatainak tárolása és visszakeresése céljából adatbázis-kiszolgálóval kommunikáló webkiszolgálót futtat. Ilyen architekturális lehetőségek többek között a Webhelyek, a Felhőszolgáltatások és a Virtuális gépek. A **Webhelyek** jó választásnak bizonyulhat a megoldások webes rétegéhez, és az Azure SQL-adatbázissal együttesen alkalmazva kétrétegű architektúra kialakítására is használható. A Webhelyek ezenkívül az Azure WebJobs SDK előzetes verziója segítségével háttérben vagy hosszabb ideig futó folyamatok futtatását is lehetővé teszi. Ha összetettebb architektúrára vagy rugalmasabb méretezési lehetőségekre van szüksége, érdemesebb a Felhőszolgáltatásokat vagy a Virtuális gépeket választani.
+### <a id="onprem"></a> I need a web front end with background processing and database backend to run business applications integrated with on premise assets.
 
-A **Felhőszolgáltatások** a következő lehetőségeket kínálja:
+Azure Websites is a great solution for complex business applications. It lets you develop apps that scale automatically on a load balanced platform, are secured with Active Directory, and connect to your on-premises resources. It makes managing those apps easy through a world-class management portal and APIs, and allows you to gain insight into how customers are using them with app insight tools. The new [Webjobs][] feature lets you run background processes and tasks as part of your web tier, while hybrid connectivity and [VNET features](../fundamentals-networking/) make it easy to connect back to on-premises resources. Azure Websites provides three 9's SLA and enables you to:
 
-* Webes, középső rétegbeli és háttérszolgáltatások üzemeltetése
-  méretezhető webes és munkavégző szerepkörökben.
-* Csak a középső rétegbeli és háttérszolgáltatások üzemeltetése a
-  munkavégző szerepkörökben, miközben a kezelőfelület az Azure
-  webhelyekben kap helyet.
-* Az előtér- és háttérszolgáltatások egymástól független méretezése.
+* Run your applications reliably on a self-healing, auto-patching cloud platform. 
+* Scale automatically across a global network of datacenters.
+* Back up and restore for disaster recovery. 
+* Be ISO, SOC2, and PCI compliant.
+* Integrate with Active Directory
 
-A **Virtuális gépek** a következő lehetőségeket kínálja:
+### <a id="corp"></a> I need a reliable way to host my corporate website that scales well and offers global reach. 
 
-* Nagymértékben testre szabott környezetek könnyebb áttelepítése
-  virtuális gép lemezképeként.
-* A Webhelyekben és a Felhőszolgáltatásokban nem konfigurálható
-  szoftverek és szolgáltatások futtatása.
+Azure Websites is a great solution for hosting corporate websites. It enables sites to scale quickly and easily to meet demand across a global network of datacenters. It offers local reach, fault tolerance, and intelligent traffic management. All on a platform that provides world-class management tools, allowing you to gain insight into site health and site traffic quickly and easily. Azure Websites provides three 9's SLA and enables you to:
 
-### Az alkalmazásomhoz nagymértékben testre szabott Windows- vagy Linux-alapú környezetre van szükségem
+* Run your Websites reliably on a self-healing, auto-patching cloud platform. 
+* Scale automatically across a global network of datacenters.
+* Back up and restore for disaster recovery. 
+* Manage logs and traffic with integrated tools. 
+* Be ISO, SOC2, and PCI compliant.
+* Integrate with Active Directory
 
-Ha alkalmazásához a szoftverekkel és az operációs rendszerrel kapcsolatos összetett telepítési vagy konfigurálási műveletekre van szükség, valószínűleg a Virtuális gépek jelenti a legjobb megoldást. A **Virtuális gépek** a következő lehetőségeket kínálja:
+### <a id="iis6"></a> I have an IIS6 application running on Windows Server 2003.
 
-* Kiindulási operációs rendszer -- például Windows vagy Linux --
-  választása a virtuális gépek gyűjteményéből, amely aztán testre
-  szabható az alkalmazás követelményeinek megfelelően.
-* Meglévő helyszíni kiszolgáló egyéni lemezképének létrehozása és
-  feltöltése Azure-beli virtuális gépen való futtatásra.
+Azure Websites makes it easy to avoid the infrastructure costs associated with migrating older IIS6 applications. Microsoft has created [easy to use migration tools and detailed migration guidance](https://www.movemetowebsites.net/) that enable you to check compatibility and identify any changes that need to be made. Integration with Visual Studio, TFS, and common CMS tools makes it easy to deploy IIS6 applications directly to the cloud. Once deployed, the Azure management portal provides robust management tools that enable you to scale down to manage costs and up to meet demand as necessary. With the migration tool you can:
 
-### Nyílt forráskódú szoftvert használó webhelyet szeretnék üzemeltetni az Azure-ban
+* Quickly and easily migrate your legacy Windows Server 2003 web application to the cloud.
+* Opt to leave your attached SQL database on-premise to create a hybrid application. 
+* Automatically move your SQL database along with your legacy application. 
 
-Mindhárom lehetőség támogatja a nyílt forráskódú nyelveket és keretrendszereket. A **Felhőszolgáltatások** használata némi előkészítési tevékenységekkel jár: telepíteni és konfigurálni kell a Windowson futó nyílt forráskódú szoftvereket. A **Virtuális gépek** esetén az akár Windows-, akár Linux-alapú gép lemezképén kell telepítenie és konfigurálnia a szoftvereket. Ha a Webhelyek támogatja a használni kívánt nyílt forráskódú keretrendszert, egyszerűbb lehetőség kínálkozik az ilyen típusú alkalmazások üzemeltetésére, mivel a Webhelyek automatikusan beállítható az alkalmazás számára szükséges nyelvek és keretrendszerek használatára. A **Webhelyek** a következő lehetőségeket kínálja:
+### <a id="smallbusiness"></a>I'm a small business owner, and I need an inexpensive way to host my site but with future growth in mind.
 
-* Számos népszerű nyílt forráskódú nyelv, például a [.NET][6], a
-  [PHP][7], a [Node.js][8] és a [Python][9] használata.
-* A WordPress, a Drupal, az Umbraco, a DNN és számos más, független
-  gyártótól származó webalkalmazás telepítése.
-* Meglévő alkalmazás áttelepítése, vagy új létrehozása az alkalmazások
-  gyűjteményéből.
+Azure Websites is a great solution for this scenario, because you can start using it for free and then add more capabilities when you need them. Each free website comes with a domain provided by Azure (*your_company*.azurewebsites.net), and the platform includes integrated deployment and management tools as well as an application gallery that make it easy to get started. There are many other services and scaling options that allow the site to evolve with increased user demand. With Azure Websites, you can:
 
-### Egy üzleti alkalmazást kell összekapcsolni a vállalati hálózattal
+- Begin with the free tier and then scale up as needed.
+- Use the Application Gallery to quickly set up popular web applications, such as WordPress.
+- Add additional Azure services and features to your application as needed.
+- Secure your website with HTTPS.
 
-Ha üzleti alkalmazást szeretne létrehozni, előfordulhat, hogy webhelyének közvetlenül hozzá kell férnie a vállalati hálózaton lévő szolgáltatásokhoz és adatokhoz. Erre a **Webhelyek**, a **Felhőszolgáltatások** és a **Virtuális gépek** egyaránt lehetőséget nyújt, az alkalmazott módszer szempontjából azonban vannak közöttük különbségek, például a következők:
+### <a id="designer"></a> I'm a web or graphic designer, and I want to design and build websites for my customers
 
-* A Webhelyek szolgáltatásbuszon keresztüli közvetítővel tud
-  biztonságosan csatlakozni a helyszíni erőforrásokhoz. Ez lehetővé
-  teszi, hogy a vállalati hálózaton futó szolgáltatások anélkül
-  végezzenek feladatokat a webalkalmazás nevében, hogy mindent át
-  kellene telepíteni a felhőbe, illetve virtuális hálózatot kellene
-  beállítani.
-* A Felhőszolgáltatások és a Virtuális gépek ki tudja aknázni a
-  Virtuális hálózat lehetőségeit. A Virtuális hálózat lényegében
-  lehetővé teszi, hogy az Azure-ban futó gépek helyszíni hálózathoz
-  csatlakozzanak. Az Azure így a vállalati adatközpont kiterjesztésévé
-  válik.
+For web developers and designers, Azure Websites integrates easily with a variety of frameworks and tools, includes deployment support for Git and FTP, and offers tight integration with tools and services such as Visual Studio and SQL Database. With Websites, you can:
 
-### REST-alapú API-t vagy webszolgáltatást szeretnék üzemeltetni mobilügyfelek számára
+- Use command-line tools for [automated tasks][scripting].
+- Work with popular languages such as [.Net][dotnet], [PHP][], [Node.js][nodejs], and [Python][].
+- Select three different scaling levels for scaling up to very high capacities.
+- Integrate with other Azure services, such as [SQL Database][sqldatabase], [Service Bus][servicebus] and [Storage][], or partner offerings from the [Azure Store][azurestore], such as MySQL and MongoDB.
+- Integrate with tools such as Visual Studio, Git, WebMatrix, WebDeploy, TFS, and FTP.
 
-A HTTP-alapú webszolgáltatásokkal számos különböző ügyfélhez, így mobilügyfelekhez is biztosíthat támogatást. Az ASP.NET Web API és más hasonló keretrendszerek a Visual Studióba beépülve megkönnyítik a REST-alapú szolgáltatások létrehozását és felhasználását. Ezek a szolgáltatások webes végpontról érhetők el, így ez a forgatókönyv az Azure-ban bármilyen webszolgáltatói technikával támogatható. A **Webhelyek** azonban különösen jó megoldást jelent a REST API-k üzemeltetésére. A Webhelyek a következő lehetőségeket kínálja:
+### <a id="multitier"></a>I'm migrating my multi-tier application with a web front-end to the Cloud
 
-* Webhely gyors létrehozása a HTTP-alapú webszolgáltatásnak az Azure
-  globálisan elosztott adatközpontjainak valamelyikében való
-  üzemeltetéséhez.
-* Meglévő szolgáltatások áttelepítése, illetve újak létrehozása, adott
-  esetben kihasználva a Visual Studióban az ASP.NET Web API kínálta
-  lehetőségeket.
-* Rendelkezésre állási SLA teljesítése egyetlen példány használatával,
-  vagy kiterjesztés több dedikált gépre.
-* REST-alapú API-k szolgáltatása a közzétett webhelyen keresztül
-  bármilyen HTTP-alapú ügyfél, így mobilügyfelek számára is.
+If you’re running a multi-tier application, such as a web server that connects to a database, Azure Websites is a good option that offers tight integration with Azure SQL Database. And you can use the new WebJobs (in preview) feature for running backend processes.
 
-## <a name="services"></a>A szolgáltatások összefoglalása
+Choose Cloud Service for one or more of your tiers if you need more control over the server environment, such as the ability to remote into your server or configure server startup tasks.
 
-Az [Azure webhelyekkel][1] gyorsan építhet ki nagyon jól méretezhető webhelyeket az Azure-ban. Az Azure portál vagy a parancssori eszközök segítségével népszerű nyelvek -- például a .NET, a PHP, a Node.js és a Python -- használatával építhet ki webhelyeket. A támogatott keretrendszerek előre telepítve vannak, így nincs szükség külön telepítési lépésekre. Az Azure webhelyek gyűjteményében számos, független gyártótól származó alkalmazás -- például a Drupal és a WordPress --, valamint olyan fejlesztési keretrendszerek is megtalálhatók, mint a Django és a CakePHP. Webhelye létrehozása után áttelepíthet egy meglévő webhelyet, de akár teljesen újat is kiépíthet. A Webhelyek kiküszöböli a fizikai hardver kezelésének szükségességét, és számos méretezési lehetőséget is biztosít. Megosztott, többvállalatos modellről normál módra állhat át, amelyben dedikált gépek szolgálják ki a bejövő forgalmat. A Webhelyek emellett más Azure-szolgáltatásokkal, például az SQL-adatbázissal, a Szolgáltatásbusszal és a Tárolással is lehetővé teszi az integrációt. Az [Azure WebJobs SDK][4] előzetes verziójával háttérfeladat-feldolgozást is alkalmazhat. Összegzésként elmondható, hogy az Azure webhelyek a nyelvek, nyílt forráskódú alkalmazások és telepítési módszerek (FTP, Git, Web Deploy, illetve TFS) széles választékát támogatja, így megkönnyíti az alkalmazásfejlesztésre való összpontosítást. Ha nincsenek speciális igényei, amelyek indokolnák a Felhőszolgáltatások vagy a Virtuális gépek használatát, valószínűleg az Azure webhelyek jelenti a legjobb választást.
+Choose Virtual Machines for one or more of your tiers if you want to use your own machine image or run server software or services that you can't configure on Cloud Services. 
 
-A [Felhőszolgáltatások][2] magas rendelkezésre állású, méretezhető webalkalmazások fejlesztését teszi lehetővé gazdag funkciókészletű PaaS-környezetben. A webhelyekkel ellentétben a felhőszolgáltatásokat az Azure-ban történő üzembe helyezésük előtt létre kell hozni valamilyen fejlesztési környezetben, például a Visual Studióban. A PHP és más keretrendszerek esetén a keretrendszert a szerepkör indításakor egyéni telepítési lépésekkel vagy feladatokkal telepíteni kell. A Felhőszolgáltatások fő előnye, hogy az összetettebb többrétegű architektúrákat is támogatja. Egy adott felhőszolgáltatás tartalmazhat egy előtérbeli webes, valamint egy vagy több munkavégző szerepkört. Az egyes rétegek egymástól függetlenül méretezhetők. A szolgáltatás ezenkívül nagyobb fokú irányítást biztosít a webalkalmazás-infrastruktúra felett. Csatlakozhat például távoli asztali kapcsolattal a szerepkörpéldányokat futtató gépekhez. Ezenkívül parancsfájlokat készíthet a szerepkör indításakor futtatott összetettebb IIS- és számítógép-konfigurációs módosításokhoz, beleértve a rendszergazdai szabályozást igénylő feladatokat.
+### <a id="custom"></a>My application depends on highly customized Windows or Linux environments and I want to move it to the cloud.
 
-A [Virtuális gépekkel][3] virtuális gépeken futtathat webalkalmazásokat az Azure-ban. Ezt infrastruktúraszolgáltatásnak (IaaS) is nevezik. A portálon keresztül új Windows Server- vagy Linux-alapú gépeket hozhat létre, illetve meglévő virtuális gép lemezképét is feltöltheti. A Virtuális gépek biztosítja a legnagyobb fokú kontrollt az operációs rendszer, a konfiguráció, valamint a telepített szoftverek és szolgáltatások felett. Jó megoldást jelent abban az esetben, ha gyorsan kell összetett helyszíni webalkalmazásokat áttelepíteni a felhőbe, mivel a gépek teljes egészükben áttelepíthetők. A Virtuális hálózattal helyszíni vállalati hálózatokhoz is csatlakoztathatja a virtuális gépeket. A Felhőszolgáltatásokhoz hasonlóan a gépek táveléréssel is elérhetők, és rendszergazdai szintű konfigurációs módosítások végezhetők. A Webhelyekkel és a Felhőszolgáltatásokkal ellentétben azonban a virtuális gépek lemezképeit és az alkalmazásarchitektúrát teljes egészében az infrastruktúra szintjén kell kezelni. Ez azt jelenti például, hogy saját hatáskörben kell gondoskodni az operációs rendszer javítócsomagjainak telepítéséről.
+If your application requires complex installation or configuration of software and the operating system, Virtual Machines is probably the best solution. With Virtual Machines, you can:
 
-## <a name="features"></a>A funkciók összehasonlítása
+- Use the Virtual Machine gallery to start with an operating system, such as Windows or Linux, and then customize it for your application requirements. 
+- Create and upload a custom image of an existing on-premises server to run on a virtual machine in Azure. 
 
-Az alábbi táblázatban a Webhelyek, a Felhőszolgáltatások és a Virtuális gépek lehetőségeinek összehasonlítását tekintheti át, ami segíthet a megfelelő döntés meghozatalában. A csillaggal jelölt rovatokról további információkat találhat a táblázat alatti megjegyzésekben.
+### <a id="oss"></a>My site uses open source software, and I want to host it in Azure
 
-<table  cellspacing="0" border="1">
+If your open source framework is supported on Websites, the languages and frameworks needed by your application are configured for you automatically. Websites enables you to:
+
+- Use many popular open source languages, such as [.NET][dotnet], [PHP][], [Node.js][nodejs], and [Python][]. 
+- Set up WordPress, Drupal, Umbraco, DNN, and many other third-party web applications. 
+- Migrate an existing application or create a new one from the Application Gallery. 
+
+If your open source framework is not supported on Websites, you can run it on either of the other two Azure web hosting options. With Cloud Services, you use startup tasks to install and configure any required open source software that runs on Windows. With Virtual Machines, you install and configure the software on the machine image, which can be Windows or Linux-based. 
+
+### <a id="lob"></a>I have a line-of-business application that needs to connect to the corporate network
+
+If you want to create a line-of-business application, your website might require direct access to services or data on the corporate network. This is possible on Websites, Cloud Services, and Virtual Machines using the [Azure Virtual Network service](/en-us/services/virtual-network/). On Websites you can use the new [VNET integration feature](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/), which allows your Azure applications to run as if they were on your corporate network.
+
+### <a id="mobile"></a>I want to host a REST API or web service for mobile clients
+
+HTTP-based web services enable you to support a wide variety of clients, including mobile clients. Frameworks like ASP.NET Web API integrate with Visual Studio to make it easier to create and consume REST services.  These services are exposed from a web endpoint, so it is possible to use any web hosting technique on Azure to support this scenario. However, Websites is a great choice for hosting REST APIs. With Websites, you can:
+
+- Quickly create a website to host the HTTP web service in one of Azure’s globally distributed datacenters.
+- Migrate existing services or create new ones.
+- Achieve SLA for availability with a single instance, or scale out to multiple dedicated machines. 
+- Use the published site to provide REST APIs to any HTTP clients, including mobile clients.
+
+##<a name="features"></a>Feature Comparison
+
+The following table compares the capabilities of Websites, Cloud Services, and Virtual Machines to help you make the best choice. For current information about the SLA for each option, see [Azure Service Level Agreements](/en-us/support/legal/sla/).
+
+<table cellspacing="0" border="1">
 <tr>
-   <th  align="left" valign="middle">Funkció</th>
-
-   <th  align="left" valign="middle">Webhelyek</th>
-
-   <th  align="left" valign="middle">Felhőszolgáltatások (webes szerepkörök)</th>
-
-   <th  align="left" valign="middle">Virtuális gépek</th>
-
+   <th align="left" valign="middle">Feature</th>
+   <th align="left" valign="middle">Websites</th>
+   <th align="left" valign="middle">Cloud Services (web roles)</th>
+   <th align="left" valign="middle">Virtual Machines</th>
+   <th align="left" valign="middle">Notes</th>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Hozzáférés olyan szolgáltatásokhoz, mint a Szolgáltatásbusz, a Tárolás és az SQL-adatbázis</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Near-instant deployment</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle"></td>
+   <td valign="middle">Deploying an application or an application update to a Cloud Service, or creating a VM, takes several minutes at least; deploying an application to a Website takes seconds.</td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Többrétegű architektúra webes vagy webszolgáltatási rétegének üzemeltetése</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Scale up to larger machines without redeploy</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle"></td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Többrétegű architektúra középső rétegének üzemeltetése</p>
-</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Web server instances share content and configuration, which means you don't have to redeploy or reconfigure as you scale.</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle"></td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Integrált MySQL-szolgáltatás támogatása</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X <sup>1</sup>
-</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Multiple deployment environments (production and staging)</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Az ASP.NET, a klasszikus ASP, a Node.js, a PHP és a Python támogatása</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Automatic OS update management</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Kiterjesztés több példányra újratelepítés nélkül</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X <sup>2</sup>
-</td>
-
+   <td valign="middle"><p>Seamless platform switching (easily move between 32 bit and 64 bit)</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>SSL-támogatás</p>
-</td>
-
-   <td  valign="middle">X <sup>3</sup>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Deploy code with GIT, FTP</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Visual Studio-integráció</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Deploy code with Web Deploy</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle">X</td>
+   <td valign="middle">Cloud Services supports the use of Web Deploy to deploy updates to individual role instances. However, you can't use it for initial deployment of a role, and if you use Web Deploy for an update you have to deploy separately to each instance of a role. Multiple instances are required in order to qualify for the Cloud Service SLA for production environments.</td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Távoli hibakeresés</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>WebMatrix support</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Kódtelepítés a TFS segítségével</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Access to services like Service Bus, Storage, SQL Database</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Kódtelepítés a GIT és FTP segítségével</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Host web or web services tier of a multi-tier architecture</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Kódtelepítés a Web Deploy segítségével</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle"><sup>4</sup>
-</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Host middle tier of a multi-tier architecture</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">Websites can easily host a REST API middle tier, and the <a href="http://go.microsoft.com/fwlink/?linkid=390226">WebJobs</a> feature of Websites (currently in Preview) can host background processing jobs. You can run WebJobs in a dedicated website to achieve independent scalability for the tier.</td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>WebMatrix-támogatás</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Integrated MySQL-as-a-service support</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">Cloud Services can integrate MySQL-as-a-service through ClearDB's offerings, but not as part of the Management Portal workflow.</td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Szinte azonnali telepítés</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle" />
-
+   <td valign="middle"><p>Support for ASP.NET, classic ASP, Node.js, PHP, Python</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>A példányok között közös a tartalom és a konfiguráció</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle" />
-
+   <td valign="middle"><p>Scale out to multiple instances without redeploy</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">Virtual Machines can scale out to multiple instances, but the services running on them must be written to handle this scale-out. You have to configure a load balancer to route requests across the machines, and create an Affinity Group to prevent simultaneous restarts of all instances due to maintenance or hardware failures.</td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Kiterjesztés nagyobb gépekre újratelepítés nélkül</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle" />
-
+   <td valign="middle"><p>Support for SSL</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">For Websites, SSL for custom domain names is only supported for Basic and Standard mode. For information about using SSL with Websites, see <a href="../web-sites-configure-ssl-certificate/">Configuring an SSL certificate for an Azure Website</a>.</td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Több telepítési környezet használata (éles és átmeneti)</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle" />
-
+   <td valign="middle"><p>Visual Studio integration</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Hálózatelkülönítés az Azure virtuális hálózat használatával</p>
-</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Remote Debugging</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Az Azure forgalomkezelő támogatása</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Deploy code with TFS</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Távoli asztali hozzáférés kiszolgálókhoz</p>
-</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Network isolation with <a href="/en-us/services/virtual-network/">Azure Virtual Network</a></p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">See also <a href="/blog/2014/09/15/azure-websites-virtual-network-integration/">Azure Websites Virtual Network Integration</a></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Indítási feladatok definiálásának/végrehajtásának lehetősége</p>
-</td>
-
-   <td  valign="middle" />
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Support for <a href="/en-us/services/traffic-manager/">Azure Traffic Manager</a></p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Operációs rendszer frissítésének automatikus kezelése</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle" />
-
+   <td valign="middle"><p>Integrated Endpoint Monitoring</p></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Integrált végpontfigyelés</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
+   <td valign="middle"><p>Remote desktop access to servers</p></td>
+   <td valign="middle"></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
 <tr>
-   <td  valign="middle"><p>Zökkenőmentes váltás 32 és 64 bites platform között</p>
-</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle">X</td>
-
-   <td  valign="middle" />
-
+   <td valign="middle"><p>Install any custom MSI</p></td>
+   <td valign="middle"></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
 </tr>
-
+<tr>
+   <td valign="middle"><p>Ability to define/execute start-up tasks</p></td>
+   <td valign="middle"></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+</tr>
+<tr>
+   <td valign="middle"><p>Can use custom ETW events for tracing and debugging</p></td>
+   <td valign="middle"></td>
+   <td valign="middle">X</td>
+   <td valign="middle">X</td>
+   <td valign="middle"></td>
+</tr>
 </table>
 
-<sup>1</sup>A webes, illetve munkavégző szerepkörök lehetővé teszik a MySQL-szolgáltatás integrációját a ClearDB lehetőségeinek használatával, a kezelési portál munkafolyamatának részeként azonban nem.
+## <a id="nextsteps"></a> Next Steps
 
-<sup>2</sup>A Virtuális gépek ugyan több példányra is kiterjeszthető, a gépeken futó szolgáltatásoknak azonban eleve tudniuk kell kezelni ezt a kiterjesztést. A kérések gépek közötti irányításához külön terheléselosztót kell konfigurálni. Végül pedig javasolt affinitáscsoportot létrehozni az összes, ugyanazon szerepkörben részt vevő géphez, hogy a gépek megóvhatók legyenek a karbantartás vagy hardverhiba miatti egyidejű újraindításoktól.
+For more information about the three web hosting options, see the following resources:
 
-<sup>3</sup>A Webhelyek szolgáltatásban az SSL-t csak szabványos módban lehet saját tartománynevekhez használni. Az SSL protokoll Webhelyekkel való használatáról az [SSL-tanúsítvány beállítása Azure-webhelyhez][14] című cikkben olvashat részletesebben.
+* [Introducing Azure](../fundamentals-introduction-to-azure/)
+* [Azure Execution Models](../fundamentals-application-models/)
 
-<sup>4</sup> A Web Deploy használata egypéldányos szerepkörökre telepítendő felhőszolgáltatások esetén támogatott. Az éles szerepkörök esetén azonban több példány használatára van szükség az Azure SLA teljesítéséhez. A Web Deploy éppen ezért az éles felhőszolgáltatásokhoz nem megfelelő telepítési mechanizmus.
+To get started with the option(s) you choose for your application, see the following resources:
 
+* [Azure Websites](/en-us/documentation/services/websites/)
+* [Azure Cloud Services](/en-us/documentation/services/cloud-services/)
+* [Azure Virtual Machines](/en-us/documentation/services/virtual-machines/)
 
-
-[1]: http://go.microsoft.com/fwlink/?LinkId=306051
-[2]: http://go.microsoft.com/fwlink/?LinkId=306052
-[3]: http://go.microsoft.com/fwlink/?LinkID=306053
-[4]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs
-[5]: http://www.windowsazure.com/en-us/documentation/scripts/?services=web-sites
-[6]: http://www.windowsazure.com/en-us/develop/net/
-[7]: http://www.windowsazure.com/en-us/develop/php/
-[8]: http://www.windowsazure.com/en-us/develop/nodejs/
-[9]: http://www.windowsazure.com/en-us/develop/python/
-[10]: http://www.windowsazure.com/en-us/documentation/services/sql-database/
-[11]: http://www.windowsazure.com/en-us/documentation/services/service-bus/
-[12]: http://www.windowsazure.com/en-us/documentation/services/storage/
-[13]: http://www.windowsazure.com/en-us/gallery/store/
-[14]: http://www.windowsazure.com/en-us/develop/net/common-tasks/enable-ssl-web-site/
+  [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
+  [Azure Websites]: http://go.microsoft.com/fwlink/?LinkId=306051
+  [Cloud Services]: http://go.microsoft.com/fwlink/?LinkId=306052
+  [Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
+  [ClearDB]: http://www.cleardb.com/
+  [WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
+  [Configuring an SSL certificate for an Azure Website]: http://www.windowsazure.com/en-us/develop/net/common-tasks/enable-ssl-web-site/
+  [azurestore]: http://www.windowsazure.com/en-us/gallery/store/
+  [scripting]: http://www.windowsazure.com/en-us/documentation/scripts/?services=web-sites
+  [dotnet]: http://www.windowsazure.com/en-us/develop/net/
+  [nodejs]: http://www.windowsazure.com/en-us/develop/nodejs/
+  [PHP]: http://www.windowsazure.com/en-us/develop/php/
+  [Python]: http://www.windowsazure.com/en-us/develop/python/
+  [servicebus]: http://www.windowsazure.com/en-us/documentation/services/service-bus/
+  [sqldatabase]: http://www.windowsazure.com/en-us/documentation/services/sql-database/
+  [Storage]: http://www.windowsazure.com/en-us/documentation/services/storage/

@@ -1,241 +1,202 @@
-<properties  umbracoNaviHide="0" pageTitle="Application Model" metaKeywords="Azure, Azure, application model, Azure application model, development model, Azure development model, hosted service, Azure hosted service, web role, worker role" description="Learn about the Azure hosted service application model. Understand core concepts, design considerations, defining and configuring your application, and scaling." linkid="dev-net-fundamentals-application-model" urlDisplayName="Application Model" headerExpose="" footerExpose="" disqusComments="1" title="Application Model" authors="" />
+<properties umbracoNaviHide="0" pageTitle="Application Model" metaKeywords="Azure, Azure, application model, Azure application model, development model, Azure development model, hosted service, Azure hosted service, web role, worker role" description="Learn about the Azure hosted service application model. Understand core concepts, design considerations, defining and configuring your application, and scaling." urlDisplayName="Application Model" headerExpose="" footerExpose="" disqusComments="1" title="Application Model" authors="robb" manager="johndaw" />
 
-# Az Azure üzemeltetési modelljei
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="robb" />
 
-Az Azure különböző üzemeltetési modelleket biztosít az alkalmazások futtatásához. Minden modell más szolgáltatások együtteséből áll, ezért a modellválasztást a végrehajtani kívánt tevékenységek határozzák meg. Ez a cikk három modellt mutat be, ismerteti az egyes technológiákat, és példákat ad a használatukra.
 
-## Tartalom
 
-* [Virtuális gépek](#VMachine)
-* [Webhelyek](#WebSites)
-* [Felhőszolgáltatások](#CloudServices)
-* [Milyen modellt használjak? A választás szempontjai](#WhatShouldIUse)
+#Azure Execution Models
 
-<h2><a  id="VMachine" ></a>Virtuális gépek</h2>
+Azure provides different execution models for running applications. Each one provides a different set of services, and so which one you choose depends on exactly what you're trying to do. This article looks at three, describing each technology and giving examples of when you'd use it.
 
+##Table of Contents
 
-Az Azure Virtuális gépek szolgáltatással a fejlesztők, az üzemeltetők és mások létrehozhatnak és használhatnak virtuális gépeket a felhőben. Ez az *infrastruktúraszolgáltatás (IaaS)* sokoldalúan használható. Az [1.ábra](#Fig1) bemutatja az alapösszetevőket.
+- [Virtual Machines](#VMachine)
+- [Web Sites](#WebSites)
+- [Cloud Services](#CloudServices)
+- [What Should I Use? Making a Choice](#WhatShouldIUse)
 
-<a name="Fig1"></a>![Virtuális gépek
-létrehozása](./media/fundamentals-application-models/ExecModels_01_CreatingVMs.png)
+<h2><a id="VMachine"></a>Virtual Machines</h2>
+Azure Virtual Machines lets developers, IT operations people, and others create and use virtual machines in the cloud. Providing what's known as *Infrastructure as a Service (IaaS)*, this technology can be used in variety of ways. [Figure 1](#Fig1) shows its basic components.
 
-**1. ábra: Az Azure Virtuális gépek infrastruktúraszolgáltatást biztosít**
+<a name="Fig1"></a>![01_CreatingVMs][01_CreatingVMs]
 
-Amint az ábrán látható, virtuális gépeket létrehozhat akár az Azure felügyeleti portálján, akár a REST-alapú Azure szolgáltatásfelügyeleti API-val. A felügyeleti portál megnyitható bármilyen elterjedt böngészőprogram, például Internet Explorer, Mozilla vagy Chrome használatával. A REST API-hoz a Microsoft ügyféloldali parancsprogramozási eszközöket biztosít Windows, Linux és Macintosh rendszerre. Más szoftverekkel is szabadon használható ez a felület.
+**Figure 1: Azure Virtual Machines provides Infrastructure as a Service.**
 
-Bármilyen módon éri el a platformot, új virtuális gép létrehozásához választania kell egy virtuális merevlemezt (VHD) a virtuális gép lemezképe számára. A virtuális merevlemezek az Azure blobjaiban találhatók.
+As the figure shows, you can create virtual machines using either the Azure Management Portal or the REST-based Azure Service Management API. The Management Portal can be accessed from any popular browser, including Internet Explorer, Mozilla, and Chrome. For the REST API, Microsoft provides client scripting tools for Windows, Linux, and Macintosh systems. Other software is also free to use this interface.
 
-Induláskor két lehetősége van:
+However you access the platform, creating a new VM requires choosing a virtual hard disk (VHD) for the VM's image. These VHDs are stored in Azure blobs. 
 
-1.  Saját virtuális merevlemez feltöltése. 2.  A Microsoft és partnerei által az Azure virtuálisgép-tárában vagy a
-    Microsoft nyílt forráskódú szoftvereket szolgáltató [VMDepot][1]
-    webhelyén rendelkezésre bocsátott virtuális merevlemezek használata.
+To get started you have two choices 
 
-A tárban és a VMDepot webhelyen található virtuális merevlemezek között vannak Microsoftos és Linux operációs rendszereket önállóan tartalmazó lemezképek, valamint olyanok, amelyekre a Microsoft és külső gyártók termékei vannak telepítve. A lehetőségek állandóan bővülnek. Az alábbiakhoz elérhetők például különböző verziók, kiadások és konfigurációk:
+1. Upload your own VHD 
+2. Use VHDs provided by Microsoft and its partners in the Azure Virtual Machines gallery or on the Microsoft open source [VMDepot](http://vmdepot.msopentech.com/) website. 
 
-* Windows Server
-* Linux-kiszolgálók, például Suse, Ubuntu és CentOS
-* SQL Server
-* BizTalk Server
-* SharePoint Server
+The VHDs in the gallery and on VMDepot include clean Microsoft and Linux operating system images as well as images that include Microsoft and other third party products installed on them.  The options are growing all the time. Examples include various versions, editions and configurations of:
+ 
+-	Windows Server 
+-	Linux servers such as Suse, Ubuntu and CentOS
+-	SQL Server
+-	BizTalk Server 
+-	SharePoint Server
 
-A virtuális merevlemezen kívül meg kell adni az új virtuális gép méretét is. Az egyes méretek részleteit az [Azure könyvtárban][2] találja meg.
 
-* **Nagyon kicsi**, megosztott maggal és 768 MB memóriával.
-* **Kicsi**, 1 maggal és 1,75 GB memóriával.
-* **Közepes**, 2 maggal és 3,5 GB memóriával.
-* **Nagy**, 4 maggal és 7 GB memóriával.
-* **Nagyon nagy**, 8 maggal és 14 GB memóriával.
-* **A6**, 4 maggal és 28 GB memóriával.
-* **A7**, 8 maggal és 56 GB memóriával.
 
-Végül válassza ki, hogy mely Azure-adatközpontban fusson az új virtuális gépe: az Egyesült Államokban, Európában vagy Ázsiában.
+Along with a VHD, you specify the size of your new VM.  The full stats for each size are listed [in the Azure library](http://msdn.microsoft.com/en-us/library/windowsazure/dn197896.aspx).  
 
-A virtuális gépek használatának díjazása üzemórákon alapul, és az egyes gépek után csak eltávolításukig kell fizetni. A fizetendő összeget nem befolyásolja az adott gép kihasználtságának foka, a díjazás tehát tisztán az üzemidőn alapul. Az egy órán át tétlenül várakozó virtuális gép ugyanannyiba kerül, mint az erősen kihasznált.
+-	**Extra Small**, with a shared core and 768MB  of memory.
+-	**Small**, with 1 core and 1.75GB  of memory.
+-	**Medium**, with 2 cores and 3.5GB  of memory.
+-	**Large**, with 4 cores and 7GB of memory.
+-	**Extra Large**, with 8 cores and 14GB of memory.
+-	**A6**, with 4 cores and 28GB of memory.
+-	**A7**, with 8 cores and 56GB of memory.
 
-Minden futó virtuális géphez tartozik egy *operációsrendszer-lemez*, amely egy blobban található. Ha tárbeli virtuális merevlemezzel hoz létre virtuális gépet, akkor az adott virtuális merevlemez a virtuális gép operációsrendszer-lemezére lesz másolva. A futó virtuális gép operációs rendszerén végzett minden módosítás itt van tárolva. Ha például olyan alkalmazást telepít, amely módosítja a Windows beállításjegyzékét, ez a módosítás a virtuális gép operációsrendszer-lemezén lesz tárolva. Amikor legközelebb virtuális gépet hoz létre abból az operációsrendszer-lemezből, a virtuális gép az előzőleg létrejött állapotban fog futni. A tárbeli virtuális merevlemezek esetén a Microsoft alkalmazza a szükséges frissítéseket, például az operációs rendszerek javítócsomagjait. A saját operációsrendszer-lemezeken lévő virtuális merevlemezek esetében azonban az Ön dolga ezen frissítések alkalmazása (bár a Windows Update alapértelmezésben be van kapcsolva).
 
-A futó virtuális gépek is módosíthatók, majd a sysprep eszközzel rögzíthetők. A sysprep eltávolítja a példányspecifikus dolgokat, például a gépnevet, hogy a virtuális merevlemez lemezképéből további virtuális gépeket lehessen létrehozni ugyanazzal az általános konfigurációval. Ezek a lemezképek a felügyeleti portálon találhatók a feltöltött lemezképekkel együtt, ahol felhasználhatók további virtuális gépek létrehozására.
+Finally, you choose which Azure datacenter your new VM should run in, whether in the US, Europe, or Asia. 
 
-A Virtuális gépek szolgáltatás figyeli az egyes létrehozott virtuális gépeket futtató hardvert is. Ha egy virtuális gépet futtató fizikai kiszolgáló meghibásodik, a platform ezt észleli, és elindítja ugyanazt a virtuális gépet egy másik gépen. Ha rendelkezik megfelelő licenccel, a módosított virtuális merevlemezt kimásolhatja az operációsrendszer-lemezről, majd futtathatja máshol, például saját helyi adatközpontjában vagy egy másik felhőszolgáltatónál.
+Once a VM is running, you pay for each hour it runs, and you stop paying when you remove that VM. The amount you pay doesn't depend on how much your VM is used -- it's based solely on wall-clock time. A VM that sits idle for an hour costs the same as one that's heavily loaded. 
 
-Az operációsrendszer-lemezen kívül a virtuális gépnek van egy vagy több adatlemeze is. Bár a virtuális gép számára mindegyik úgy néz ki, mint egy csatlakoztatott lemezmeghajtó, valójában mindegyiknek a tartalma egy blobban van tárolva. Az adatlemezen végzett minden írás maradandóan tárolódik az alapul szolgáló blobban. Mint minden blob esetében, az Azure replikálja ezeket egyetlen adatközponton belül is, és több adatközpont között is, a meghibásodások okozta problémák elkerülése
-érdekében.
+Each running VM has an associated *OS disk*, kept in a blob. When you create a VM using a gallery VHD, that VHD is copied to your VM's OS disk. Any changes you make to the operating system of your running VM are stored here. For example, if you install an application that modifies the Windows registry, that change will be stored in your VM's OS disk. The next time you create a VM from that OS disk, the VM continues running in the same state you left it in. For VHDs stored in the gallery, Microsoft applies updates when needed, such as operating system patches. For the VHDs in your own OS disks, however, you're responsible for applying these updates (although Windows Update is turned on by default).
 
-A futó virtuális gépek kezelhetők a felügyeleti portál, a PowerShell és más parancsfájlkezelő eszközök, valamint közvetlenül a REST API használatával. (Tulajdonképpen ami a felügyeleti portálról elvégezhető, az programozottan is megtehető ezzel az API-val.) A Microsoft partnerei, például a RightScale és a ScaleXtreme szintén biztosítanak a REST API-t használó kezelési szolgáltatásokat.
+Running VMs can also be modified and then captured using the sysprep tool. Sysprep removes specifics like the machine name so that a VHD image can be used to create additional VMs with the same general configuration. These images are stored in the Management portal alongside your uploaded images so they can be used as a starting point for additional VMs. 
 
-Az Azure virtuális gépei többféleképpen használhatók. A Microsoft által elsődlegesen megcélzott forgatókönyvek az alábbiak:
+Virtual Machines also monitors the hardware hosting each VM you create. If a physical server running a VM fails, the platform notices this and starts the same VM on another machine. And assuming you have the right licensing, you can copy a changed VHD out of your OS disk, then run it someplace else, such as in your own on-premises datacenter or at another cloud provider. 
 
-* **Virtuális gépek fejlesztéshez és teszteléshez:** A fejlesztői
-  csoportoknak gyakran van szükségük virtuális gépekre adott
-  konfigurációval alkalmazások létrehozásához. Az Azure Virtuális gépek
-  szolgáltatás egyszerű és gazdaságos módot kínál a virtuális gépek
-  létrehozására, használatára, valamint az eltávolításukra, ha már nincs
-  rájuk szükség.
-* **Alkalmazások futtatása a felhőben:** Bizonyos alkalmazásokhoz a
-  nyilvános felhőben történő futtatás gazdaságos megoldás. Ilyenek
-  például azok az alkalmazások, amelyek kihasználtsága időnként kiugróan
-  magas. Az is megoldás, ha elegendő gépet vásárol saját adatközpontjába
-  az ilyen alkalmazások futtatásához, azonban a gépek többsége
-  valószínűleg kihasználatlan lesz az idő nagy részében. Ha az Azure-ban
-  futtatja az ilyen alkalmazásokat, csak akkor kell további virtuális
-  gépeket vásárolnia, amikor szükségesek, és leállíthatja őket, amikor a
-  kihasználtsági csúcs véget ért. Vagy tételezzük fel, hogy egy start-up
-  cége van, amelynek igény szerint elérhető számítási erőforrásokra van
-  szüksége -- gyorsan, és elkötelezettség nélkül. Az Azure ilyen esetben
-  is megfelelő megoldás lehet.
-* **Saját adatközpont kiterjesztése a nyilvános felhőbe:** Az Azure
-  Virtuális hálózat szolgáltatással a cége virtuális hálózatot hozhat
-  létre, amelyben az Azure-ban lévő virtuálisgép-csoport a saját,
-  helyszíni hálózatának részeként látszik. Így futtathatja a
-  SharePointot és más alkalmazásokat az Azure-ban, ami adott esetben
-  egyszerűbb telepítéssel, illetve alacsonyabb költséggel jár, mintha
-  saját adatközpontjában tenné ezt.
-* **Katasztrófa utáni helyreállítás:** Ahelyett, hogy folyamatosan
-  fizetné egy ritkán használt adatközpont költségét, az
-  infrastruktúraszolgáltatáson alapuló helyreállítással csak akkor kell
-  fizetnie a számítási kapacitásokért, amikor valóban szüksége van
-  rájuk. Ha például az elsődleges adatközpontja meghibásodik,
-  létrehozhat az Azure-ban futó virtuális gépeket a legfontosabb
-  alkalmazások futtatásához, majd leállíthatja őket, amikor már nincs
-  rájuk szükség.
+Along with its OS disk, your VM has one or more data disks. Even though each of these looks like a mounted disk drive to your VM, the contents of each one is in fact stored in a blob. Every write made to a data disk is stored persistently in the underlying blob. As with all blobs, Azure replicates these both within a single datacenter and across datacenters to guard against failures.
 
-Ezeken kívül egyéb lehetőségei is vannak, de a fentiek tipikus példák arra, hogy mire használhatók az Azure virtuális gépei.
+Running VMs can be managed using the Management Portal, PowerShell and other scripting tools, or directly through the REST API. (In fact, whatever you can do through the Management Portal can be done programmatically through this API.) Microsoft partners such as RightScale and ScaleXtreme also provide management services that rely on the REST API.
 
-### Virtuális gépek csoportba szervezése: Felhőszolgáltatások
+Azure Virtual Machines can be used in a variety of ways. The primary scenarios that Microsoft targets include these:
 
-Az Azure Virtuális gépek szolgáltatásban létrehozott virtuális gépek önállóan is futtathatók, de más virtuális gépekkel közös csoportokba, úgynevezett *felhőszolgáltatásba* is szervezhetők. (A hasonló nevek ellenére ne tévessze össze ezt a fogalmat a Felhőszolgáltatásokkal, Azure platformszolgáltatási technológiájával, mert a kettő nem ugyanaz.) Minden önálló virtuális gép saját nyilvános IP-címet kap, az ugyanazon felhőszolgáltatásban lévő összes virtuális gép pedig egy közös nyilvános IP-címen érhető el. A [2. ábra](#Fig2) ezt mutatja be.
+- **VMs for development and test.** Development groups commonly need VMs with specific configurations for creating applications. Azure Virtual Machines provides a straightforward and economical way to create these VMs, use them, then remove them when they're no longer needed.
+- **Running applications in the cloud.** For some applications, running on the public cloud makes economic sense. Think about an application with large spikes in demand, for example. It's always possible to buy enough machines for your own datacenter to run this application, but most of those machines are likely to sit unused much of the time. Running this application on Azure lets you pay for extra VMs only when you need them, shutting them down when a demand spike has ended. Or suppose you're a start-up that needs on-demand computing resources quickly and with no commitment. Once again, Azure can be the right choice.
+- **Extending your own datacenter into the public cloud.** With Azure Virtual Network, your organization can create a virtual network (VNET) that makes a group of Azure VMs appear to be part of your own on-premises network. This allows running applications such as SharePoint and others on Azure, an approach that might be easier to deploy and/or less expensive than running them in your own datacenter.
+- **Disaster recovery.** Rather than paying continuously for a backup datacenter that's rarely used, IaaS-based disaster recovery lets you pay for the computing resources you need only when you really need them.  For example, if your primary datacenter goes down, you can create VMs running on Azure to run essential applications, then shut them down when they're no longer needed. 
 
-<a name="Fig2"></a>![Felhőszolgáltatások](./media/fundamentals-application-models/ExecModels_02_CloudServices.png)
+These aren't the only possibilities, but they're good examples of how you might use Azure Virtual Machines.  
 
-**2. ábra: Minden önálló virtuális gépnek saját nyilvános IP-címe van, a felhőszolgáltatásba csoportosított virtuális gépek pedig egy közös nyilvános IP-címen érhetők el**
 
-Egy egyszerűbb alkalmazás fejlesztéséhez és teszteléséhez nyilvánvalóan elegendő egy önálló virtuális gép. A webes előtérbeli rétegből, adatbázisrétegből és esetleges középső rétegekből álló többrétegű alkalmazásokhoz viszont általában több virtuális gépet kell összekapcsolni egy felhőszolgáltatásba, ahogyan a 2. ábrán látható.
+###Grouping VMs: Cloud Services 
 
-A virtuális gépek felhőszolgáltatásba csoportosításával más lehetőségek is elérhetővé válnak. Az Azure terheléselosztást is biztosít az egy felhőszolgáltatásban lévő virtuális gépekhez, elosztva köztük a felhasználói kérelmeket. Az így összekapcsolt virtuális gépek közvetlenül is kommunikálhatnak egymással a helyi hálózaton az Azure adatközponton belül.
+When you create a new VM with Azure Virtual Machines, you can choose to run it standalone or make it part of a group of VMs running together in a *cloud service*. (Despite the similar names, don't confuse this concept with Cloud Services, the name of Azure's PaaS technology; the two aren't the same.)  Each standalone VM is assigned its own public IP address, while all of the VMs in the same cloud service are accessed through a single public IP address. [Figure 2](#Fig2) shows how this looks.
+ 
+<a name="Fig2"></a>![02_CloudServices][02_CloudServices]
 
-Az egy-egy felhőszolgáltatásban lévő virtuális gépek *rendelkezésre állási készletekbe* csoportosíthatók. Ennek fontossága egy példával szemléltethető: képzeljen el egy webalkalmazást, amely több előtérbeli virtuális gépen fut. Ha az összes virtuális gép ugyanazon a fizikai gépen, vagy akár csak ugyanabban a hardverszekrényben tárolt gépeken van telepítve, egyetlen hardvermeghibásodás az összeset elérhetetlenné teheti. Ha azonban ezek a virtuális gépek egy rendelkezésre állási készletbe vannak csoportosítva, az Azure az adatközpont különböző részeire telepíti őket, hogy ne legyen közös meghibásodási pontjuk.
+**Figure 2: Each standalone VM has its own public IP address, while VMs grouped into a cloud service are exposed via a single public IP address.**
 
-### Forgatókönyv: SQL Server-adatbázist használó alkalmazás futtatása
+For example, if you were creating a virtual machine to create and test a simple application, you'd probably use a standalone VM. If you're creating a multi-tier application, though, with a web front end, a database, and maybe even a middle tier, you'd most likely connect multiple VMs into a cloud service, as Figure 2 suggests.
 
-Hogy kézzelfoghatóbbá váljon az Azure virtuális gépeinek működése, érdemes megnézni néhány forgatókönyvet részletesebben. Tegyük fel például, hogy megbízható és méretezhető webalkalmazást szeretne létrehozni és az Azure-on futtatni. Ennek egyik módja, hogy az alkalmazáslogikát egy (vagy több) Azure-beli virtuális gépein futtatja, az adatok kezeléséhez pedig SQL Servert használ. A [3. ábra](#Fig3) ezt mutatja be.
+Grouping VMs into a cloud service lets you use other options as well. Azure provides load balancing for VMs in the same cloud service, spreading user requests across them. VMs connected in this way can also communicate directly with one another over the local network within an Azure datacenter. 
 
-<a name="Fig3"></a>![SQL Server-alapú alkalmazás](./media/fundamentals-application-models/ExecModels_03_AppUsingSQLServer.png)
+VMs in the same cloud service can also be grouped into one or more *availability sets*. To understand why this is important, think about a web application that runs multiple front-end VMs. If all of these VMs are deployed on the same physical machine or even in the same rack of machines, a single hardware failure can make them all inaccessible. If these VMs are grouped into an availability set, however, Azure will deploy them across the datacenter so that none of them share a single point of failure.
 
-**3. ábra: Az Azure virtuális gépein futó alkalmazás használhatja az SQL
-Servert adattároláshoz**
+###Scenario: Running an Application with SQL Server
 
-Ebben a példában mindkét virtuális gép a tárban lévő szokásos virtuális merevlemezekből lett létrehozva. Az alkalmazáslogika Windows Server 2008 R2-n fut, ezért a fejlesztőcsapat létrehoz három virtuális gépet ebből a virtuális merevlemezből, majd mindegyikre telepíti az alkalmazást. Mivel mindegyik virtuális gép ugyanabban a felhőszolgáltatásban van, hardveres terheléselosztás is beállítható a kérelmek gépközi elosztására. A fejlesztőcsapat létrehoz még két virtuális gépet a tár SQL Server 2012 rendszert tartalmazó virtuális merevlemezéből. Ezt követően mindkét SQL Serveren beállítják az adatbázis-tükrözést és az automatikus feladatátvételt. Ez nem kötelező -- az alkalmazás használhatna egyetlen SQL Server-példányt is --, azonban ez a megoldás nagyobb megbízhatóságot ad.
+To get a better sense of how Azure Virtual Machines works, it's useful to look at a couple of scenarios in a little more detail. Suppose, for example, that you want to create a reliable and scalable web application running on Azure. One way to do this is to run the application's logic in one or more Azure VMs, then use SQL Server for data management. [Figure 3](#Fig3) shows how this looks.
 
-### Forgatókönyv: SharePoint-farm futtatása
+<a name="Fig3"></a>![03_AppUsingSQLServer][03_AppUsingSQLServer]
 
-Tételezzük fel, hogy egy cég létre szeretne hozni egy SharePoint-farmot, de nem szeretné azt saját adatközpontban futtatni. Lehet, hogy a helyben lévő adatközpont nem elegendő erre, vagy a farmot létrehozó részleg nem szeretné belső informatikai csoportjára bízni a feladatot. Ilyen esetekben a SharePoint futtatása az Azure virtuális gépein jó megoldás lehet. A [4. ábra](#Fig4) ezt mutatja be.
+**Figure 3: An application running in Azure Virtual Machines can use SQL Server for storage.**
 
-<a name="Fig4"></a>![SharePoint-farm](./media/fundamentals-application-models/ExecModels_04_SharePointFarm.png)
+In this example, both kinds of VMs are created from standard VHDs in the gallery. The application's logic runs on Windows Server 2008 R2, so the developer creates three VMs from this VHD, then installs his application in each one. Since all of these VMs are in the same cloud service, he can configure hardware load balancing to spread requests across them. The developer also creates two VMs from the gallery's VHD containing SQL Server 2012. Once they're running, he configures SQL Server in each instance to use database mirroring with automatic failover. This isn't required -- the application could use just a single SQL Server instance -- but taking this approach improves reliability. 
 
-**4. ábra: Az Azure Virtuális gépekkel lehetséges egy SharePoint-farm futtatása a felhőben**
+###Scenario: Running a SharePoint Farm 
 
-A SharePoint-farm számos összetevőből áll, amelyek mindegyike egy másik virtuális merevlemezzel létrehozott Azure-beli virtuális gépen fut. Az ehhez szükséges összetevők:
+Suppose an organization wishes to create a SharePoint farm but doesn't want to run the farm in its own datacenter. Maybe the on-premises datacenter is short of resources, or perhaps the business unit creating the farm doesn't want to deal with its internal IT group. In cases like these, running SharePoint on Azure Virtual Machines can make sense. [Figure 4](#Fig4) shows how this looks.
 
-* Microsoft SharePoint: A tárban vannak próbaverziós rendszereket
-  tartalmazó lemezképek, de természetesen a cég saját rendszereit
-  tartalmazó virtuális merevlemezek is használhatók.
-* Microsoft SQL Server: A SharePointhoz szükséges az SQL Server, ezért a
-  tárbeli normál virtuális merevlemezekből olyan virtuális gépeket kell
-  létrehozni, amelyeken SQL Server 2012 fut.
-* Windows Server Active Directory: A SharePointhoz az Active Directory
-  is szükséges, ezért létre kell hozni tartományvezérlőket a felhőben
-  egy tárbeli Windows Server-lemezképből. Ez nem kötelező -- a
-  tartományvezérlőket helyben is létre lehet hozni --, de a SharePoint
-  gyakran kommunikál az Active Directoryval, ezért az itt bemutatott
-  megoldás jobb teljesítményt nyújt.
+<a name="Fig4"></a>![04_SharePointFarm][04_SharePointFarm]
+ 
+**Figure 4: Azure Virtual Machines allows running a SharePoint farm in the cloud.**
 
-Bár az ábrán ez nem látható, ez a SharePoint-farm valószínűleg egy helyszíni hálózathoz csatlakozik az Azure Virtuális hálózat segítségével. Így lehetővé válik, hogy a virtuális gépek -- és a rajtuk futó alkalmazások -- helyiként látsszanak a hálózat felhasználói számára.
+A SharePoint farm has several components, each running in an Azure VM created from a different VHD. What's needed is the following:
 
-Amint a példákban látható, az Azure Virtuális gépekkel létrehozhat és futtathat új alkalmazásokat a felhőben, futtathat meglévő alkalmazásokat, és egyéb lehetőségei is vannak. Bármelyik lehetőséget választja, a technológia célja ugyanaz: általános célú alap biztosítása felhőbeli infrastruktúrához.
+- Microsoft SharePoint. There are trial images in the gallery or the organization provides its own VHD.
+- Microsoft SQL Server. SharePoint depends on SQL Server, so the organization creates VMs running SQL Server 2012 from a standard gallery VHD.
+- Windows Server Active Directory. SharePoint also requires Active Directory, so the organization creates domain controllers in the cloud using a Windows Server image from the gallery. This isn't strictly required -- it's also possible to use on-premises domain controllers -- but SharePoint interacts frequently with Active Directory, and so the approach shown here will have better performance.
 
-<h2><a  id="WebSites" ></a>Webhelyek</h2>
+Although it's not shown in the figure, this SharePoint farm is probably connected to an on-premises network using Azure Virtual Network. This lets the VMs -- and the applications they contain -- appear to be local to the people using that network.
 
+As these examples show, you can use Azure Virtual Machines to create and run new applications in the cloud, to run existing applications, or in other ways. Whatever option you choose, the technology's goal is the same: providing a general-purpose foundation for public cloud computing.
 
-A webes technológiák sokféleképpen használhatók. Előfordulhat, hogy egy cégnek át kell telepítenie vagy ki kell alakítania egy heti több millió kérés kiszolgálására alkalmas kommunikációs portált, amelyet a világ különböző részein üzemelő adatközpontokban szeretne üzemeltetni. Egy webdesigner-ügynökség és egy fejlesztőcsapat közösen szeretne kialakítani egy több ezer felhasználó kezelésére képes saját webalkalmazást. Egy vállalati fejlesztőcsapatnak egy költségkimutatások nyilvántartására szolgáló felhőbeli alkalmazást kell üzembe helyeznie, amelynek a céges Active Directoryban kell hitelesítenie a felhasználókat. Egy informatikai tanácsadó egy népszerű, nyílt forráskódú alkalmazással valósít meg egy tartalomkezelési rendszert egy kis cég számára. Ezek a feladatok mind megoldhatók az Azure virtuális gépeivel. Azonban a nyers virtuális gépek létrehozása és kezelése igényel némi hozzáértést és erőfeszítést. Ha webhelyet vagy webalkalmazást kell megvalósítania, van egyszerűbb (és olcsóbb) megoldás is: a platformszolgáltatás, azaz PaaS nevű lehetőség. Ahogy az 5. ábrán látható, az Azure a Webhelyek szolgáltatással biztosítja ezt.
 
-<a name="Fig5"></a>![Webhelyek](./media/fundamentals-application-models/ExecModels_05_Websites.png)
 
-**5. ábra: Az Azure webhelyek támogatja a statikus webhelyeket, az elterjedt webalkalmazásokat és a különféle technológiákkal készült egyéni webalkalmazásokat**
+<h2><a id="WebSites"></a>Websites</h2>
 
-Az Azure webhelyek alapját az Azure felhőszolgáltatások adják, így a webalkalmazások futtatására optimalizált, szolgáltatásként nyújtott platformot tud biztosítani. Amint az ábrán látható, a Webhelyek önálló virtuális gépek készletén fut, amelyek tartalmazhatják több felhasználó több webhelyét is, valamint használ normál virtuális gépeket is, amelyek az egyes felhasználókhoz tartoznak. A virtuális gépek egy erőforráskészlet részei, amelyet az Azure webhelyek kezel, ezért magas szintű megbízhatóságot és hibatűrést tesznek lehetővé. Az első lépések megtétele egyszerű. Az Azure webhelyek használatakor a felhasználók választhatnak számos alkalmazás, keretrendszer és sablon közül, és pillanatok alatt elkészíthetnek egy webhelyet. Ezután a megszokott fejlesztőeszközeikkel (WebMatrix, Visual Studio vagy bármilyen más kódszerkesztő eszköz) és verziókezelő rendszereikkel beállíthatják a kód folyamatos integrációját, és csapatként dolgozhatnak. A MySQL-adatbázist használó alkalmazások számára elérhető egy MySQL-szolgáltató, amelyet egy Microsoft-partner, a ClearDB biztosít az Azure számára. A fejlesztők létrehozhatnak nagy, méretezhető webalkalmazásokat a Webhelyek használatával. A technológia támogatja az alkalmazások létrehozását ASP.NET, PHP, Node.js és Python használatával. Az alkalmazások használhatnak például fix kiszolgálású munkameneteket, és a meglévő webalkalmazások módosítás nélkül áttehetők a felhőbeli platformra. A Webhelyek szolgáltatáson alapuló alkalmazások használhatják az Azure más lehetőségeit is, például a Szolgáltatásbuszt, az SQL adatbázist és a blobtárolót. Egy alkalmazás több példányát is futtathatja különböző virtuális gépeken, és a Webhelyek automatikusan elvégzi a terheléselosztást ezek között. Mivel a Webhelyek új példányai már meglévő virtuális gépeken jönnek létre, az új alkalmazáspéldány elindítása nagyon gyors, lényegesen gyorsabb annál, mintha új virtuális gép létrehozására kellene várni. Amint az [5. ábrán](#Fig5) látható, a Webhelyeken többféleképpen tehet közzé kódot és más webes tartalmakat. Használhat FTP-t, FTPS-t vagy a Microsoft WebDeploy technológiáját. A Webhelyekre közzétehet kódot verziókövetési rendszerekből is, amilyen például a Git, a GitHub, a CodePlex, a BitBucket, a Dropbox, a Mercurial, a Team Foundation Server és a felhőalapú Team Foundation Service.
+People use web technologies in many different ways. A corporation may need to migrate or setup a presence website that can handle millions of hits a week and be deployed in several data centers across the globe. A web design agency might work with a team of developers to build a custom web application capable of handling thousands of users. A corporate developer may need to setup an application to track expense reports in the Cloud for authenticated users from his corporate Active Directory. An IT consultant might use a popular open source application to set up a content management system for a small business.
+All of these things could be accomplished using Azure Virtual Machines. But creating and managing raw VMs requires some skill and takes effort. If you need to implement a website or web application, there's an easier (and cheaper) solution: the approach commonly known as Platform as a Service (PaaS). As Figure 5 shows, Azure provides this with Websites.
 
-<h2><a  id="CloudServices" ></a>Felhőszolgáltatások</h2>
 
+<a name="Fig5"></a>![05_Websites][05_Websites]
+ 
+**Figure 5: Azure Websites supports static websites, popular web applications, and custom web applications built with various technologies.** 
 
-Az Azure Virtuális gépek infrastruktúraszolgáltatást, az Azure Webhelyek pedig webüzemeltetési szolgáltatást biztosít. A harmadik lehetőség, a Felhőszolgáltatások *platformszolgáltatást (PaaS)* kínál. Ez a technológia azzal a céllal készült, hogy méretezhető, megbízható és alacsony költséggel üzemeltethető alkalmazásokat támogasson. Másik célja, hogy felszabadítsa a fejlesztőket a használt platform kezelésének terhe alól, hogy teljesen az alkalmazásokra koncentrálhassanak. A [6.ábra](#Fig6) ezt mutatja be.
+Azure Websites is built on top of Azure Cloud Services to create a Platform as a Service solution optimized for running web applications. As the figure shows, Websites runs on a set of single VMs that may contain multiple websites created by multiple users as well as standard VMs that belong to an individual user. VMs are a part of a pool of resources managed by Azure Websites and thus allow for high reliability and fault tolerance.
+Getting started is easy. With Azure Websites, users can select from a range of applications, frameworks and template and create a website in seconds. They can then use their favorite development tools (WebMatrix, Visual Studio, any other editor) and source control options to setup continuous integration and develop as a team. Applications that rely on a MySQL DB can consume a MySQL service provided for Azure by ClearDB, a Microsoft partner.
+Developers can create large, scalable web applications with Websites. The technology supports creating applications using ASP.NET, PHP, Node.js and Python. Applications can use sticky sessions, for example, and existing web applications can be moved to this cloud platform with no changes. Applications built on Websites are free to use other aspects of Azure, such as Service Bus, SQL Database, and Blob Storage. You can also run multiple copies of an application in different VMs, with Websites automatically load balancing requests across them. And because new Websites instances are created in VMs that already exist, starting a new application instance happens very quickly; it's significantly faster than waiting for a new VM to be created.
+As [Figure 5](#Fig5) shows, you can publish code and other web content into Websites in several ways. You can use FTP, FTPS, or Microsoft's WebDeploy technology. Websites also supports publishing code from source control systems, including Git, GitHub, CodePlex, BitBucket, Dropbox, Mercurial, Team Foundation Server, and the cloud-based Team Foundation Service.
 
-<a name="Fig6"></a>![Felhőszolgáltatások](./media/fundamentals-application-models/ExecModels_06_CloudServices2.png)
 
-**6. ábra: Az Azure felhőszolgáltatások platformszolgáltatást kínál**
+<h2><a id="CloudServices"></a>Cloud Services</h2>
 
-Az Azure többi IT-erőforrásához hasonlóan a Felhőszolgáltatások is virtuális gépeken alapul. A technológia két kissé eltérő virtuálisgép-lehetőséget kínál: a *webszerepkörök* példányai egy Windows Server-változatot futtatnak IIS-szel, a *munkavégző szerepkörök* pedig ugyanazt a Windows Server-változatot futtatják IIS nélkül. A Felhőszolgáltatásokon alapuló alkalmazás a két lehetőség valamilyen kombinációját használja.
+Azure Virtual Machines provides IaaS, while Azure Websites provides web hosting. The third compute option, Cloud Services, provides *Platform as a Service (PaaS)*. This technology is designed to support applications that are scalable, reliable, and cheap to operate. It's also meant to free developers from worrying about managing the platform they're using, letting them focus entirely on their applications. [Figure 6](#Fig6) illustrates the idea.
 
-Például lehet, hogy egy egyszerű alkalmazás mindössze egy webszerepkört használ, míg egy összetettebb alkalmazás kezelheti a felhasználóktól beérkező kérelmeket egy webszerepkörrel, majd a kérelmek által generált munkát átadhatja egy munkavégző szerepkörnek feldolgozásra. (Ez a kommunikáció használhatja a Szolgáltatásbuszt vagy az Azure-üzenetsort.)
+<a name="Fig6"></a>![06_CloudServices2][06_CloudServices2] 
 
-Ahogy az ábra mutatja, egy alkalmazás összes virtuális gépe ugyanabban a felhőszolgáltatásban fut, amint azt az Azure Virtuális gépekről szóló részben ismertettük. Így a felhasználók egyetlen nyilvános IP-címen
-érhetik el az alkalmazást, és a kérelmek terheléselosztása automatikusan történik az alkalmazás virtuális gépei között. Az Azure Virtuális gépekkel létrehozott felhőszolgáltatásokhoz hasonlóan a platform a Felhőszolgáltatásokat használó alkalmazás virtuális gépeit úgy telepíti, hogy ne legyen közös hardvermeghibásodási pontjuk.
+**Figure 6: Azure Cloud Services provides Platform as a Service.**
 
-Bár az alkalmazások virtuális gépeken futnak, fontos megérteni, hogy a Felhőszolgáltatások platformot, és nem infrastruktúrát szolgáltat. Ez a következőképpen képzelhető el: infrastruktúraszolgáltatás, például az Azure Virtuális gépek esetén először létrehozza és konfigurálja azt a környezetet, amelyben az alkalmazások futni fognak, majd telepíti az alkalmazást ebbe a környezetbe. Az Ön dolga az infrastruktúra nagy részének kezelése, például az operációs rendszer új, javított verzióinak telepítése minden virtuális gépre. Ezzel szemben a platformszolgáltatás esetében már létezik a környezet. Önnek csak az alkalmazást kell telepítenie. A futtatási platform kezelését, például az operációs rendszer új verzióinak telepítését elvégezzük Önnek.
+Like the other Azure compute options, Cloud Services relies on VMs. The technology provides two slightly different VM options: instances of *web roles* run a variant of Windows Server with IIS, while instances of *worker roles* run the same Windows Server variant without IIS. A Cloud Services application relies on some combination of these two options. 
 
-A Felhőszolgáltatások esetében nem kell létrehoznia virtuális gépeket. Egy konfigurációs fájlt kell megadnia, amelyből az Azure tudni fogja, miből mennyit igényel (például három webszerepkörpéldányt és két munkavégzőszerepkör-példányt), és a platform létrehozza ezeket. Ekkor is Ön adja meg, hogy mekkorák legyenek a virtuális gépek -- a lehetőségek megegyeznek az Azure Virtuális gépekben választhatókkal --, de nem Önnek kell létrehoznia azokat. Ha az alkalmazásának nagyobb terheléseket kell kezelnie, kérhet további virtuális gépeket, és az Azure létrehozza ezeket a példányokat. Ha a terhelés csökken, leállíthatja ezeket a példányokat, így nem kell tovább fizetnie értük.
+For example, a simple application might use just a web role, while a more complex application might use a web role to handle incoming requests from users, then pass the work those requests create to a worker role for processing. (This communication could use Service Bus or Azure Queues.)
 
-A Felhőszolgáltatásokon alapuló alkalmazást általában két lépésben teszik elérhetővé a felhasználóknak. Először egy fejlesztő feltölti az alkalmazást a platform átmeneti tárolóterületére. Amikor a fejlesztő készen áll az alkalmazás élő környezetben való bevezetésére, az Azure felügyeleti portálon kéri annak közzétételét. Az ideiglenes és az éles indítás közötti átmenet nem jár időkieséssel, így egy futó alkalmazás frissíthető új verzióra a felhasználók megzavarása nélkül.
+As the figure suggests, all of the VMs in a single application run in the same cloud service, as described earlier with Azure Virtual Machines. Because of this, users access the application through a single public IP address, with requests automatically load balanced across the application's VMs. And as with cloud services created using Azure Virtual Machines, the platform will deploy the VMs in a Cloud Services application in a way that avoids a single point of hardware failure.
 
-A Felhőszolgáltatások figyelést is biztosít. Mint az Azure Virtuális gépek esetében, észleli a meghibásodott fizikai kiszolgálót, és újraindítja a rajta futtatott virtuális gépeket egy új gépen. A Felhőszolgáltatások a hardverhibákon kívül észleli a meghibásodott virtuális gépeket és alkalmazásokat is. A Virtuális gépektől eltérően minden web- és munkavégző szerepkörben van egy ügynöke, így hiba esetén új virtuális gépeket és alkalmazáspéldányokat tud indítani.
+Even though applications run in virtual machines, it's important to understand that Cloud Services provides PaaS, not IaaS. Here's one way to think about it: With IaaS, such as Azure Virtual Machines, you first create and configure the environment your application will run in, then deploy your application into this environment. You're responsible for managing much of this world, doing things such as deploying new patched versions of the operating system in each VM. In PaaS, by contrast, it's as if the environment already exists. All you have to do is deploy your application. Management of the platform it runs on, including deploying new versions of the operating system, is handled for you.
 
-A Felhőszolgáltatások platformszolgáltatási jellegének más következményei is vannak. Az egyik legfontosabb az, hogy az ezen technológiára épülő alkalmazásokat úgy kell megírni, hogy megfelelően fussanak egy web- vagy munkavégző szerepkör meghibásodása esetén is. Ennek eléréséhez a Felhőszolgáltatásokon alapuló alkalmazás nem tárolhat állapotokat saját virtuális gépe fájlrendszerében. Az Azure Virtuális gépekkel létrehozott virtuális gépektől eltérően a Felhőszolgáltatások virtuális gépein végzett írások nem perzisztensek; nem létezik olyan, hogy a virtuális gép adatlemeze. Ehelyett a Felhőszolgáltatásokon alapuló alkalmazásnak minden állapotot SQL adatbázisba, blobokba, táblákba vagy más külső tárolóba kell írnia. Ha így építi fel az alkalmazásokat, egyszerűbb lesz a méretezésük, és ellenállóbbak lesznek a meghibásodásokkal szemben -- mindkettő fontos célja a Felhőszolgáltatásoknak.
+With Cloud Services, you don't create virtual machines. Instead, you provide a configuration file that tells Azure how many of each you'd like, such as three web role instances and two worker role instances, and the platform creates them for you.  You still choose what size those VMs should be -- the options are the same as with Azure VMs -- but you don't explicitly create them yourself. If your application needs to handle a greater load, you can ask for more VMs, and Azure will create those instances. If the load decreases, you can shut those instances down and stop paying for them.
 
-<h2><a  id="WhatShouldIUse" ></a>Milyen modellt használjak? A választás szempontjai</h2>
+A Cloud Services application is typically made available to users via a two-step process. A developer first uploads the application to the platform's staging area. When the developer is ready to make the application live, she uses the Azure Management Portal to request that it be put into production. This switch between staging and production can be done with no downtime, which lets a running application be upgraded to a new version without disturbing its users. 
 
+Cloud Services also provides monitoring. Like Azure Virtual Machines, it will detect a failed physical server and restart the VMs that were running on that server on a new machine. But Cloud Services also detects failed VMs and applications, not just hardware failures. Unlike Virtual Machines, it has an agent inside each web and worker role, and so it's able to start new VMs and application instances when failures occur.
 
-Az Azure mindhárom üzemeltetési modellje lehetővé teszi a méretezhető és megbízható alkalmazások létrehozását a felhőben. Ha alapvetően hasonlóak, melyiket érdemes választania? Ez attól függ, hogy mire szeretné használni.
+The PaaS nature of Cloud Services has other implications, too. One of the most important is that applications built on this technology should be written to run correctly when any web or worker role instance fails. To achieve this, a Cloud Services application shouldn't maintain state in the file system of its own VMs. Unlike VMs created with Azure Virtual Machines, writes made to Cloud Services VMs aren't persistent; there's nothing like a Virtual Machines data disk. Instead, a Cloud Services application should explicitly write all state to SQL Database, blobs, tables, or some other external storage. Building applications this way makes them easier to scale and more resistant to failure, both important goals of Cloud Services.
 
-A Virtuális gépek biztosítja a legáltalánosabb megoldást. Ha a lehető legtöbb befolyást szeretné, vagy ha általános virtuális gépekre van szüksége, például fejlesztéshez és teszteléshez, ez a legjobb választás. A Virtuális gépek szintén a legjobb választás készen vásárolt, helyszíni alkalmazások felhőbeli futtatására, amint azt a korábbi SharePoint-példában bemutattuk. És mivel az ezen technológiával létrehozott virtuális gépek ugyanúgy nézhetnek ki, mint a helyszíni virtuális gépei, katasztrófa utáni helyreállítás céljára is ez lehet a legmegfelelőbb választás. A hátrány természetesen az, hogy a nagy hatalommal nagy felelősség jár -- az infrastruktúraszolgáltatás felügyeleti és adminisztratív teendőkkel jár.
 
-A Webhelyek a megfelelő választás, ha egy egyszerű webhelyet szeretne létrehozni. Ez főleg igaz akkor, ha a webhelye egy meglévő alkalmazáson (például Joomla, WordPress vagy Drupal) fog alapulni. A Webhelyek jó választás egy kevés adminisztrációt igénylő webalkalmazás létrehozásához is, abban az esetben is, ha méretezhetőnek kell lennie, vagy ha egy meglévő IIS-webalkalmazást kell áthelyezni a nyilvános felhőbe. A telepítés is gyorsan elvégezhető. Az alkalmazás új példányát szinte azonnal futtathatja, míg egy új virtuális gép telepítése a Virtuális gépek vagy a Felhőszolgáltatások használatával percekig is eltarthat.
+<h2><a id="WhatShouldIUse"></a>What Should I Use? Making a Choice</h2>
 
-A Felhőszolgáltatások, amely az Azure eredeti üzemeltetési modellje volt, kimondottan platformszolgáltatási megoldás. Míg a platformszolgáltatás és a webhelyszolgáltatás között nincs éles határvonal, a Felhőszolgáltatások fontos vonatkozásokban eltér a Webhelyektől, például az alábbiakban:
+All three Azure execution models let you build scalable, reliable applications in the cloud. Given this essential similarity, which one should you use? The answer depends on what you're trying to do.
 
-* A Webhelyektől eltérően a Felhőszolgáltatások adminisztratív
-  hozzáférést ad az alkalmazásokat futtató virtuális gépekhez. Így az
-  alkalmazáshoz szükséges bármilyen szoftvert telepíthet, amire a
-  Webhelyekben nincs lehetőség.
-* Mivel a Felhőszolgáltatások webszerepköröket és munkavégző
-  szerepköröket is biztosít, a Webhelyeknél jobb választás többszintű
-  alkalmazásokhoz, amelyek külön virtuális gépeket igényelnek a
-  munkavégző programkódjuk futtatásához.
-* A Felhőszolgáltatások külön átmeneti és éles környezetet biztosít, így
-  az alkalmazások frissítése valamivel gyorsabb, mint a Webhelyek
-  esetén.
-* A Webhelyektől eltérően használhat hálózati technológiákat, például az
-  Azure Virtuális hálózat és az Azure Connect lehetőséget a helyszíni
-  számítógépek és a Felhőszolgáltatásokban futó alkalmazások
-  összekapcsolásához.
-* A Felhőszolgáltatásokban csatlakozhat közvetlenül egy alkalmazás
-  virtuális gépéhez távoli asztallal, amire nincs lehetősége a Webhelyek
-  esetén.
+Virtual Machines provides the most general solution. If you want the most control possible, or if you need generic VMs, such as for development and test, this is the best option. Virtual Machines is also the best choice for running off-the-shelf on-premises applications in the cloud, as illustrated by the SharePoint example described earlier. And because the VMs you create with this technology can look just like your on-premises VMs, it's also likely to be the best choice for disaster recovery. The trade-off, of course, is that with great power comes great responsibility -- IaaS requires you to take on some administrative work.  
 
-Platformszolgáltatás lévén, a Felhőszolgáltatások az Azure Virtuális gépekhez képest is nyújt előnyöket. Több kezelési feladatot végzünk el Ön helyett, például telepítjük az operációs rendszerek frissítéseit, így működtetési költségei alacsonyabbak lehetnek, mint az Azure Virtuális gépek infrastruktúraszolgáltatás esetén.
+Websites is the right option when you want to create a simple website. This is especially true if your site will be based on an existing application such as Joomla, WordPress, or Drupal. Websites is also a good choice for creating a low-administration web application, even one that must be quite scalable, or moving an existing IIS web app to the public cloud. It provides fast deployment as well. A new instance of your application can start running almost immediately, while deploying a new VM with either Virtual Machines or Cloud Services can take several minutes. 
 
-Az Azure mindhárom üzemeltetési modelljének vannak előnyei és hátrányai. Hogy megfelelően döntsön, ismernie kell ezeket, tisztában kell lennie a céljaival, és így kell kiválasztani a legmegfelelőbbet.
+Cloud Services, which was the initial execution model provided by Azure, is an explicitly PaaS approach. While the line between PaaS and web hosting is blurry, Cloud Services differs in some important ways from Websites, including the following:
 
-Előfordulhat, hogy egyetlen üzemeltetési modell nem felel meg az igényeknek. Ilyen esetekben nyugodtan kombinálhatja a lehetőségeket. Tételezzük fel például, hogy olyan alkalmazást készít, amelyhez szeretné kihasználni a Felhőszolgáltatások webszerepköreinek előnyeit, de szüksége van normál SQL Serverre is a kompatibilitás és a teljesítmény miatt. Ilyenkor a legjobb az üzemeltetési modellek kombinálása, ahogyan a [7. ábrán](#Fig7) látható.
+- Unlike Websites, Cloud Services gives you administrative access to your application's VMs. This lets you install arbitrary software that your application needs, something that's not possible with Websites.
+- Because Cloud Services offers both web roles and worker roles, it's a better choice than Websites for multi-tier applications that need separate VMs for their business logic.
+- Cloud Services provides separate staging and production environments, making application updates somewhat smoother than Websites. 
+- Unlike Websites, you can use networking technologies such as Azure Virtual Network and Azure Connect to hook on-premises computers to Cloud Services applications. 
+- Cloud Services lets you use Remote Desktop to connect directly to an application's VMs, something that's not possible with Websites.
 
-<a name="Fig7"></a>![07_CombineTechnologies](./media/fundamentals-application-models/ExecModels_07_CombineTechnologies.png)
+Because it's PaaS, Cloud Services also offers some advantages over Azure Virtual Machines. More management tasks are done for you, for instance, such as deploying operating system updates, and so your operations costs are likely to be lower than with the IaaS approach of Azure Virtual Machines.
 
-**7. ábra: Egyetlen alkalmazás használhat többféle üzemeltetési modellt**
+All three Azure execution models have pros and cons. Making the best choice requires understanding these, knowing what you're trying to accomplish, then choosing the one that's the best fit.
 
-Ahogyan az ábrán látható, a Felhőszolgáltatásokban és a Virtuális gépekben létrehozott virtuális gépek külön felhőszolgáltatásokban futnak. A kettő mégis hatékonyan tud egymással kommunikálni, ezért bizonyos alkalmazásokhoz ez a legjobb lehetőség.
+Sometimes, no single execution model is right. In situations like this, it's perfectly legal to combine options. For example, suppose you're building an application where you'd like the management benefits of Cloud Services web roles, but you also need to use standard SQL Server for compatibility or performance reasons. In this case, the best option is to combine execution models, as [Figure 7](#Fig7) shows.
 
-Az Azure azért biztosít különböző üzemeltetési modelleket, mert a felhőplatformoknak sokféle forgatókönyvet kell támogatniuk. Aki hatékonyan szeretné használni ezt a platformot -- és ha ezt végigolvasta, valószínűleg Ön is ilyen --, annak mindegyikkel tisztában kell lennie.
+<a name="Fig7"></a>![07_CombineTechnologies][07_CombineTechnologies] 
+ 
+**Figure 7: A single application can use multiple execution models.**
 
+As the figure illustrates, the Cloud Services VMs run in a separate cloud service from the Virtual Machines VMs. Still, the two can communicate quite efficiently, so building an app this way is sometimes the best option.
 
+Azure provides different execution models because cloud platforms need to support many different scenarios. Anybody who wants to use this platform effectively -- and if you've read this far, that probably includes you -- needs to understand each one.
 
-[1]: http://vmdepot.msopentech.com/
-[2]: http://msdn.microsoft.com/en-us/library/windowsazure/dn197896.aspx
+[01_CreatingVMs]: ./media/fundamentals-application-models/ExecModels_01_CreatingVMs.png
+[02_CloudServices]: ./media/fundamentals-application-models/ExecModels_02_CloudServices.png
+[03_AppUsingSQLServer]: ./media/fundamentals-application-models/ExecModels_03_AppUsingSQLServer.png
+[04_SharePointFarm]: ./media/fundamentals-application-models/ExecModels_04_SharePointFarm.png
+[05_Websites]: ./media/fundamentals-application-models/ExecModels_05_Websites.png
+[06_CloudServices2]: ./media/fundamentals-application-models/ExecModels_06_CloudServices2.png
+[07_CombineTechnologies]: ./media/fundamentals-application-models/ExecModels_07_CombineTechnologies.png
+
+
