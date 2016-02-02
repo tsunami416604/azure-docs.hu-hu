@@ -1,1 +1,5 @@
->[WACOM.NOTE] It looks like we don't have this content ready right now, but we wanted to let you know about it. If you're particularly interested in this topic, let us know by tweeting [@AzureMobile](https://twitter.com/AzureMobile), or post in the [Forums](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azuremobile), [Feedback](http://feedback.azure.com/forums/216254-mobile-services), or in the Disqus thread for this topic.
+>[AZURE.NOTE] 看起來現在這個內容還沒準備好，但是我們想讓您認識它。 如果您是這個主題特別有興趣，讓我們知道特 [@AzureMobile](https://twitter.com/AzureMobile), ，或在 [論壇](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuremobile), ，[意見](http://feedback.azure.com/forums/216254-mobile-services), ，或如本主題的 disqus。
+
+
+
+

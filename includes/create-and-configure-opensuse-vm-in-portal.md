@@ -1,79 +1,65 @@
-<properties writer="kathydav" editor="tysonn" manager="jeffreyg" />
+<properties writer="kathydav" editor="tysonn" manager="timlt" />
 
-**Important**: If you want your virtual machine to use a virtual network, make sure you specify the virtual network when you create the virtual machine. A virtual machine can be configured to join a virtual network only when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview][Azure Virtual Network Overview].
 
-1.  Login to the [Azure Management Portal][Azure Management Portal] using your Azure account.
+1. 登入 [Azure 入口網站](http://manage.windowsazure.com)。 簽出 [免費試用版](http://azure.microsoft.com/pricing/free-trial/) 提供如果您沒有訂閱。
 
-2.  In the Management Portal, at the bottom left of the web page, click **+New**, click **Virtual Machine**, and then click **From Gallery**.
+2. 在視窗底部的命令列上，按一下 [新增]****。
 
-    ![Create a New Virtual Machine][Create a New Virtual Machine]
+3. 在 [計算]**** 下，依序按一下 [虛擬機器]**** 及 [從映像庫]****。
 
-3.  Select an OpenSUSE virtual machine image from **Platform Images**, and then click the next arrow at the bottom right of the page.
+    ![建立新的虛擬機器][image1]
 
-4.  On the **Virtual machine configuration** page, provide the following information:
+4. 在 **SUSE** 群組之下，選取 OpenSUSE 虛擬機器映像，然後按一下箭號以繼續作業。
 
-    -   Provide a **Virtual Machine Name**, such as "testlinuxvm".
-    -   Specify a **New User Name**, such as "newuser", which will be added to the Sudoers list file.
-    -   In the **New Password** box, type a [strong password][strong password].
-    -   In the **Confirm Password** box, retype the password.
-    -   Select the appropriate **Size** from the drop down list.
+5. 在第一個 **[虛擬機器組態]** 頁面上：
 
-    Click the next arrow to continue.
+    - 輸入 [**虛擬機器名稱**] (如 "testlinuxvm")。
+    - 驗證 [**階層**] 並挑選 [**大小**]。 階層可決定您可以選擇的大小。 大小會影響其使用成本以及組態選項 (例如您可連接的資料磁碟數目)。 如需詳細資訊，請參閱 [虛擬機器的大小](../articles/virtual-machines-size-specs.md)。
+    - 輸入**新的使用者名稱**，或接受預設值 **azureuser**。 這個名稱會新增至 Sudoers 清單檔案。
+    - 決定要使用的 [**驗證**] 類型。 如需一般密碼指導方針，請參閱 [強式密碼](http://msdn.microsoft.com/library/ms161962.aspx)。
 
-5.  On the **Virtual machine mode** page, provide the following information:
+6. 在下一個 **[虛擬機器組態]** 頁面中：
 
-    -   Select **Standalone Virtual Machine**.
-    -   In the **DNS Name** box, type a valid DNS address. For example, "testlinuxvm".
-    -   In the **Region/Affinity Group/Virtual Network** box, select a region where this virtual image will be hosted.
+    - 使用預設 [**建立新的雲端服務**]。
+    - 在 [**DNS 名稱**] 方塊中，輸入有效的 DNS 名稱以作為位址的一部分 (如 "testlinuxvm")。
+    - 在 [區域/同質群組/虛擬網路]**** 方塊中，選取這個虛擬映像將託管於的區域。
+    - 在**端點**下，保留 SSH 端點。 您可以立即新增其他內容，或在建立虛擬機器之後新增、變更或刪除它們。
+    >[AZURE.NOTE] 如果您想要讓虛擬機器使用虛擬網路，就「必須」****在建立虛擬機器時指定虛擬網路。 在建立虛擬機器之後，您就無法將虛擬機器加入至虛擬網路。 如需詳細資訊，請參閱 [虛擬網路概觀](virtual-networks-overview.md)。
 
-Click the next arrow to continue.
+7.  在最後一個 **[虛擬機器組態]** 頁面上，保留預設設定，然後按一下核取記號以完成作業。
 
-1.  On the **Virtual machine options** page, select **(none)** in the **Availability Set** box. Click the check mark to continue.
+入口網站會在 **[虛擬機器]** 底下列出新的虛擬機器。 雖然狀態報告為 **(佈建)**，仍會設定虛擬機器。 當狀態報告為**執行**，您可以移至下一個步驟。
 
-2.  Wait while Azure prepares your virtual machine.
+## 連線至虛擬機器
 
-## Configure Endpoints
+視您將連結之電腦上的作業系統而定，您將使用 SSH 或 PuTTY 連線至虛擬機器：
 
-Once the virtual machine is created you must configure endpoints in order to remotely connect.
+- 請從執行 Linux 的電腦使用 SSH。 在命令提示字元中，輸入：
 
-1.  In the Management Portal, click **Virtual Machines**, then click the name of your new virtual machine, then click **Endpoints**.
+    `$ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180`
 
-2.  Click **Edit Endpoint** at the bottom of the page, and edit the SSH endpoint so that its **Public Port** is 22.
+    輸入使用者的密碼。
 
-## Connect to the Virtual Machine
+- 請從執行 Windows 的電腦使用 PuTTY。 如果您沒有安裝此軟體，下載從 [PuTTY 下載頁面 ][puttydownload]。
 
-When the virtual machine has been provisioned and the endpoints configured you can connect to it using SSH or PuTTY.
+    將 **putty.exe** 儲存至您電腦上的目錄中。 開啟命令提示字元，瀏覽至該資料夾，然後執行 **putty.exe**。
 
-### Connecting Using SSH
+    輸入主機名稱 (例如 "testlinuxvm.cloudapp.net")，然後針對 [**連接埠**] 輸入 "22"。
 
-If you are using a linux computer, connect to the VM using SSH. At the command prompt, run:
+    ![PuTTY 畫面][image6]
 
-    $ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180
+## 更新虛擬機器 (選用)
 
-Enter the user's password.
-
-### Connecting using PuTTY
-
-If you are using a Windows computer, connect to the VM using PuTTY. PuTTY can be downloaded from the [PuTTY Download Page][PuTTY Download Page].
-
-1.  Download and save **putty.exe** to a directory on your computer. Open a command prompt, navigate to that folder, and execute **putty.exe**.
-
-2.  Enter "testlinuxvm.cloudapp.net" for the **Host Name** and "22" for the **Port**.
-    ![PuTTY Screen][PuTTY Screen]
-
-## Update the Virtual Machine (optional)
-
-1.  Once you've connected to the virtual machine, you can optionally install system updates and patches. Run:
+1. 連線至虛擬機器之後，您可以選擇性地安裝系統更新和修補程式。 若要執行更新，請輸入：
 
     `$ sudo zypper update`
 
-2.  Select **Software** then **Online Update**. A list of updates is displayed. Select **Accept** to start the installation and apply all new patches (except the optional ones) that are currently available for your system.
+2. 選取 [**軟體**]，然後選取 [**線上更新**] 以列出可用的更新。 選取 [**接受**] 即可開始安裝並套用所有可用的新修補程式 (選用修補程式除外)。
 
-3.  After installation is complete, select **Finish**. Your system is now up to date.
+3. 安裝完成之後，選取 [**完成**]。 您的系統現在已是最新版本。
 
-  [Azure Virtual Network Overview]: http://go.microsoft.com/fwlink/p/?LinkID=294063
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Create a New Virtual Machine]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png
-  [strong password]: http://msdn.microsoft.com/en-us/library/ms161962.aspx
-  [PuTTY Download Page]: http://www.puttyssh.org/download.html
-  [PuTTY Screen]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
+
+[puttydownload]: http://www.puttyssh.org/download.html 
+[image1]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png 
+[image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png 
+

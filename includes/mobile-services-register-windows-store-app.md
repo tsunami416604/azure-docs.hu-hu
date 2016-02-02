@@ -1,70 +1,63 @@
+1. 如果您尚未註冊您的應用程式，請瀏覽 [提交應用程式頁面]，Windows 市集應用程式之開發人員中心，使用您的 Microsoft 帳戶登入，然後按一下 **應用程式名稱**。
 
-1. If you have not already registered your app, navigate to the [Submit an app page] at the Dev Center for Windows Store apps, log on with your Microsoft account, and then click **App name**.
+    ![](./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png)
 
-   	![](./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png)
+2. 選取 [保留唯一名稱來建立新應用程式]****，再按一下 [繼續]****，然後在 [應用程式名稱]**** 中輸入應用程式的名稱，按一下 [保留應用程式名稱]****，然後按一下 [儲存]****。
 
-2. Type a name for your app in **App name**, click **Reserve app name**, and then click **Save**.
+    ![](./media/mobile-services-register-windows-store-app/mobile-services-win8-app-name.png)
 
-   	![](./media/mobile-services-register-windows-store-app/mobile-services-win8-app-name.png)
+    This creates a new Windows Store registration for your app.
 
-   	This creates a new Windows Store registration for your app.
+3. 在 Visual Studio 中，開啟您完成教學課程時所建立的專案 [開始使用行動服務]。
 
-3. In Visual Studio, open the project that you created when you completed the tutorial [Get started with Mobile Services].
+4. 在 [方案總管] 中，以滑鼠右鍵按一下 Windows 市集應用程式專案，然後依序按一下 [市集]**** 和 [將應用程式與市集建立關聯...]****。
 
-4. In solution explorer, right-click the project, click **Store**, and then click **Associate App with the Store...**. 
+    ![](./media/mobile-services-register-windows-store-app/mobile-services-store-association.png)
 
-  	![](./media/mobile-services-register-windows-store-app/mobile-services-store-association.png)
+    這將會顯示 **[將您的應用程式與 Windows 市集建立關聯]** 精靈。
 
-   	This displays the **Associate Your App with the Windows Store** Wizard.
+5. 在精靈中，按一下 [登入]****，然後以您的 Microsoft 帳戶登入，選取您在步驟 2 註冊的應用程式，按 [下一步]****，然後按一下  [關聯]****。
 
-5. In the wizard, click **Sign in** and then login with your Microsoft account.
+    這會將所需的 Windows 市集註冊資訊新增至應用程式資訊清單。
 
-6. Select the app that you registered in step 2, click **Next**, and then click **Associate**.
+6. (選擇性) 若為 Windows 通用 app，請針對 Windows Phone 市集專案重複執行步驟 4 與 5。
 
-   	![](./media/mobile-services-register-windows-store-app/mobile-services-select-app-name.png)
+6. 回到新應用程式的 Windows 開發人員中心頁面，按一下 **[服務]**。
 
-   	This adds the required Windows Store registration information to the application manifest.    
+    ![](./media/mobile-services-register-windows-store-app/mobile-services-win8-edit-app.png)
 
-7. Back in the Windows Dev Center page for your new app, click **Services**. 
+7. 在 [服務] 頁面中，按一下 [Azure 行動服務]**** 下的 [Live Services site]****。
 
-   	![](./media/mobile-services-register-windows-store-app/mobile-services-win8-edit-app.png) 
+    ![](./media/mobile-services-register-windows-store-app/mobile-services-win8-edit2-app.png)
 
-8. In the Services page, click **Live Services site** under **Azure Mobile Services**.
+8. 按一下 [ **API 設定**, ，選取 [啟用 **行動或桌面用戶端應用程式**, ，提供行動服務 URL 當成 **目標網域**, ，提供的值 `https://<mobile_service>.azure-mobile.net/login/microsoftaccount/` 中 **重新導向 URL**, ，然後按一下 [ **儲存**。
 
-	![](./media/mobile-services-register-windows-store-app/mobile-services-win8-edit2-app.png) 
+    ![](./media/mobile-services-register-windows-store-app/mobile-services-win8-app-push-auth-2.png)
 
-9. In **App settings**, make a note of the values of **Client ID**, **Client secret**, and **Package security identifier (SID)**. 
+9. 在 [API 設定]**** 中，記下 [用戶端識別碼]****、[用戶端密碼]**** 與 [封裝安全性識別碼 (SID)]**** 的值。
 
-   	![](./media/mobile-services-register-windows-store-app/mobile-services-win8-app-push-auth.png)
+    ![](./media/mobile-services-register-windows-store-app/mobile-services-win8-app-push-auth.png)
+    >[AZURE.NOTE]用戶端密碼和封裝 SID 是重要的安全性認證。 請勿與任何人共用這些密碼，或與您的應用程式一起散發密碼。
 
-    >[WACOM.NOTE]The client secret and package SID are important security credentials. Do not share these secrets with anyone or distribute them with your app.
+10. 登入 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **行動電話服務**, ，然後按一下您的應用程式。
 
-10. (Optional) Click **API Settings**, enable **Enhanced redirection security**, supply a value of `https://<mobile_service>.azure-mobile.net/login/microsoftaccount` in **Redirect URL**, then click **Save**.
+11. 按一下 [身分識別]**** 索引標籤，輸入您在步驟 4 中從 WNS 取得的 [用戶端密碼]**** 和 [封裝 SID]**** 值，然後按一下 [儲存]****。
 
-	![](./media/mobile-services-register-windows-store-app/mobile-services-win8-app-push-auth-2.png)
+    ![](./media/mobile-services-register-windows-store-app/mobile-push-tab.png)
 
-	This enables Microsoft Account authentication for your app.
+13. 按一下 [身分識別]**** 索引標籤。 請注意，[用戶端密碼] **** 及 [封裝 SID]**** 的值已在上個步驟設定。 輸入您之前記下的 [用戶端識別碼] ****，然後按一下 [儲存] ****。
 
-11. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your app.
+    ![](./media/mobile-services-register-windows-store-app/mobile-services-identity-tab.png)
 
-   	![](./media/mobile-services-register-windows-store-app/mobile-services-selection.png)
+現在，您已可在應用程式中使用 Microsoft 帳戶進行驗證。
 
-12. Click the **Push** tab, enter the **Client Secret** and **Package SID** values obtained from WNS in Step 4, and then click **Save**.
 
-   	![](./media/mobile-services-register-windows-store-app/mobile-push-tab.png)
 
-13. Click the **Identity** tab. Notice the **Client Secret** and **Package SID** values are already set from the previous step. Enter the **Client ID** you previously made note of, and then click **Save**.
 
-   	![](./media/mobile-services-register-windows-store-app/mobile-services-identity-tab.png)
- 
-You are now ready to use a Microsoft Account for authentication in your app.  
 
-<!-- Anchors. -->
 
-<!-- Images. -->
- 
 
-<!-- URLs. -->
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[Azure Management Portal]: https://manage.windowsazure.com/
+
+[get started with mobile services]: /develop/mobile/tutorials/get-started/#create-new-service 
+[submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582 
+

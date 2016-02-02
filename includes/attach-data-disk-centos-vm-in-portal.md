@@ -1,104 +1,107 @@
-1.  In the Azure [Management Portal][Management Portal], click **Virtual Machines** and then select the virtual machine you just created (**testlinuxvm**).
+1. 在 Azure [管理入口網站](http://manage.windowsazure.com), ，按一下 [ **虛擬機器** ，然後選取您剛建立的虛擬機器 (**testlinuxvm**)。
 
-2.  On the command bar click **Attach** and then click **Attach Empty Disk**.
+2. 在命令列上，按一下 [連接]****，然後按一下 [連接空的磁碟]****。
 
-    The **Attach Empty Disk** dialog box appears.
+    [連接空的磁碟]**** 對話方塊隨即出現。
 
-3.  The **Virtual Machine Name**, **Storage Location**, and **File Name** are already defined for you. All you have to do is enter the size that you want for the disk. Type **5** in the **Size** field.
+3. 系統已為您定義 [虛擬機器名稱]****、[儲存位置]**** 和 [檔案名稱]****。 您只需要輸入想要的磁碟大小。 在 [大小]**** 欄位中輸入 **5**。
 
-    ![Attach Empty Disk][Attach Empty Disk]
+    ![連接空的磁碟][image2]
 
-    **Note:** All disks are created from a .vhd file in Azure storage. You can provide a name for the .vhd file that is added to storage, but Azure generates the name of the disk automatically.
+    **注意：**所有磁碟都是從 Azure 儲存體中的 VHD 檔案建立。 您可以為新增至儲存體的 VHD 檔案提供名稱，但是 Azure 會自動產生磁碟的名稱。
 
-4.  Click the check mark to attach the data disk to the virtual machine.
+4. 按一下核取記號將資料磁碟連接至虛擬機器。
 
-5.  Click the name of the virtual machine to display the dashboard so you can verify that the data disk was successfully attached to the virtual machine. The disk that you attached is listed in the **Disks** table.
+5. 按一下虛擬機器名稱來顯示儀表板；您便可確認資料磁碟已順利連接至虛擬機器。 您連接的磁碟會列在 [磁碟]**** 表格中。
 
-    When you attach a data disk, it's not ready for use until you log in to complete the setup.
+    當您連接資料磁碟時，其將在您登入並完成設定後才可使用。
 
-## Connect to the Virtual Machine Using SSH or PuTTY and Complete Setup
+## 使用 SSH 或 PuTTY 連接至虛擬機器並完成安裝
 
-Log on to the virtual machine to complete setup of the disk so you can use it to store data.
+您必須登入虛擬機器並完成磁碟的設定，才能使用磁碟來儲存資料。
 
-1.  After the virtual machine is provisioned, connect using SSH or PuTTY and login as **newuser** (as described in the steps above).
+1. 佈建虛擬機器之後，請使用 SSH 或 PuTTY 連接，並以 **newuser** 身分登入 (如前面步驟所述)。
 
-2.  In the SSH or PuTTY window type the following command and then enter the account password:
+2. 在 SSH 或 PuTTY 視窗中，輸入下列命令，然後輸入帳戶密碼：
 
     `$ sudo grep SCSI /var/log/messages`
 
-    You can find the identifier of the last data disk that was added in the messages that are displayed (**sdc**, in this example).
+    您可以在所顯示的訊息中，找到最後一個新增之資料磁碟的識別碼 (在此範例中為 **sdc**)。
 
-    ![GREP][GREP]
+    ![GREP][image4]
 
-3.  In the SSH or PuTTY window, enter the following command to partition the disk **/dev/sdc**:
+3. 在 SSH 或 PuTTY 視窗中，輸入下列命令，以將磁碟 **/dev/sdc** 進行分割：
 
     `$ sudo fdisk /dev/sdc`
 
-4.  Enter **n** to create a new partition.
+4. 輸入 **n** 建立新的磁碟分割。
 
-    ![FDISK][FDISK]
+    ![FDISK][image5]
 
-5.  Type **p** to make the partition the primary partition, type **1** to make it the first partition, and then type enter to accept the default value (1) for the cylinder.
+5. 輸入 **p** 將磁碟分割設為主要磁碟分割、輸入 **1** 將它設為第一個磁碟分割，然後按 Enter 鍵接受磁柱的預設值 (1)。
 
-    ![FDISK][1]
+    ![FDISK][image6]
 
-6.  Type **p** to see the details about the disk that is being partitioned.
+6. 輸入 **p** 查看目前分割之磁碟的詳細資料。
 
-    ![FDISK][2]
+    ![FDISK][image7]
 
-7.  Type **w** to write the settings for the disk.
+7. 輸入 **w** 寫入磁碟的設定。
 
-    ![FDISK][3]
+    ![FDISK][image8]
 
-8.  Format the new disk using the **mkfs** command:
+8. 使用 **mkfs** 命令，將新磁碟格式化：
 
     `$ sudo mkfs -t ext4 /dev/sdc1`
 
-9.  Next you must have a directory available to mount the new file system. As an example, type the following command to make a new directory for mounting the drive, and then enter the account password:
+9. 接下來您必須有可供掛接新檔案系統的目錄。 做為範例，請輸入下列命令建立新目錄來掛接磁碟機，然後輸入帳戶密碼：
 
     `sudo mkdir /datadrive`
 
-10. Type the following command to mount the drive:
+10. 輸入下列命令來掛接磁碟機：
 
     `sudo mount /dev/sdc1 /datadrive`
 
-    The data disk is now ready to use as **/datadrive**.
+    資料磁碟現在可以當做 **/datadrive** 來使用。
 
-11. Add the new drive to /etc/fstab:
+11. 將新的磁碟機新增至 /etc/fstab：
 
-    To ensure the drive is re-mounted automatically after a reboot it must be added to the /etc/fstab file. In addition, it is highly recommended that the UUID (Universally Unique IDentifier) is used in /etc/fstab to refer to the drive rather than just the device name (i.e. /dev/sdc1). To find the UUID of the new drive you can use the **blkid** utility:
+    為了確保重新開機之後自動重新掛接磁碟機，必須將磁碟機新增至 /etc/fstab 檔案。 此外，強烈建議在 /et/fstab 中使用全域唯一識別碼 (Universally Unique IDentifier, UUID) 來參考磁碟機，而不只是裝置名稱 (例如，/dev/sdc1)。 若要尋找新磁碟機的 UUID，您可以使用 **blkid** 公用程式：
 
         `sudo -i blkid`
 
-    The output will look similar to the following:
+    輸出類似如下範例：
 
         `/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"`
         `/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"`
         `/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"`
 
-    > [WACOM.NOTE] blkid may not require sudo access in all cases, however, it may be easier to run with `sudo -i` on some distributions if /sbin or /usr/sbin are not in your `$PATH`.
+    >[AZURE.NOTE] blkid 並不要求在所有情況下 sudo 存取權，不過，可能與執行的工作變得更容易 `sudo-i` 在一些散發，如果 /sbin 或 /usr/sbin 不在您 `$PATH`。
 
-    **Caution:** Improperly editing the /etc/fstab file could result in an unbootable system. If unsure, please refer to the distribution's documentation for information on how to properly edit this file. It is also recommended that a backup of the /etc/fstab file is created before editing.
+    **注意：**不當編輯 /etc/fstab 檔案會導致系統無法開機。 如果不確定，請參閱散發套件的文件，以取得如何適當編輯此檔案的相關資訊。 在編輯之前，也建議先備份 /etc/fstab 檔案。
 
-    Using a text editor, enter the information about the new file system at the end of the /etc/fstab file. In this example we will use the UUID value for the new **/dev/sdc1** device that was created in the previous steps, and the mountpoint **/datadrive**:
+    請使用文字編輯器，在 /etc/fstab 檔案的結尾輸入新檔案系統的相關資訊。 在此範例中，我們使用先前步驟所建立之新的 **/dev/sdc1** 裝置的 UUID 值，並使用掛接點 **/datadrive**：
 
         `UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2`
 
-    If additional data drives or partitions are created you will need to enter them into /etc/fstab separately as well.
+    如果還有建立其他資料磁碟機或磁碟分割，同樣也需要分別在 /etc/fstab 中輸入。
 
-    You can now test that the file system is mounted properly by simply unmounting and then re-mounting the file system, i.e. using the example mount point `/datadrive` created in the earlier steps:
+    現在，您可以測試檔案系統是否適當掛接，方法是取消掛接檔案系統，再重新掛接，例如使用先前步驟中建立的範例掛接點 `/datadrive`：
 
         `sudo umount /datadrive`
         `sudo mount /datadrive`
 
-    If the second command produces an error, check the /etc/fstab file for correct syntax.
+    如果第二個命令會產生錯誤，請檢查 /etc/fstab 檔案的正確語法。
 
-    > [WACOM.NOTE] Subsequently removing a data disk without editing fstab could cause the VM to fail to boot. If this is a common occurrence, then most distributions provide either the `nofail` and/or `nobootwait` fstab options that will allow a system to boot even if the disk is not present. Please consult your distribution's documentation for more information on these parameters.
+    >[AZURE.NOTE] 後續移除資料磁碟而不編輯 fstab，可能會造成 VM 無法開機。 如果這是常見情況，那麼多數散發套件會提供 `nofail` 和/或 `nobootwait` fstab 選項，使得即使沒有磁碟，也能讓系統開機。 請查閱散發套件的文件，以取得這些參數的相關資訊。
 
-  [Management Portal]: http://manage.windowsazure.com
-  [Attach Empty Disk]: ./media/attach-data-disk-centos-vm-in-portal/AttachDataDiskLinuxVM2.png
-  [GREP]: ./media/attach-data-disk-centos-vm-in-portal/GrepScsiMessages.png
-  [FDISK]: ./media/attach-data-disk-centos-vm-in-portal/fdisk1.png
-  [1]: ./media/attach-data-disk-centos-vm-in-portal/fdisk2.png
-  [2]: ./media/attach-data-disk-centos-vm-in-portal/fdisk3.png
-  [3]: ./media/attach-data-disk-centos-vm-in-portal/fdisk4.png
+
+
+[image2]: ./media/attach-data-disk-centos-vm-in-portal/AttachDataDiskLinuxVM2.png 
+[image4]: ./media/attach-data-disk-centos-vm-in-portal/GrepScsiMessages.png 
+[image5]: ./media/attach-data-disk-centos-vm-in-portal/fdisk1.png 
+[image6]: ./media/attach-data-disk-centos-vm-in-portal/fdisk2.png 
+[image7]: ./media/attach-data-disk-centos-vm-in-portal/fdisk3.png 
+[image8]: ./media/attach-data-disk-centos-vm-in-portal/fdisk4.png 
+[image9]: ./media/attach-data-disk-centos-vm-in-portal/mkfs.png 
+

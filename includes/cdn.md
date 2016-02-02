@@ -1,169 +1,149 @@
-# Using CDN for Azure
+# 使用 Azure 的 CDN
 
-The Azure Content Delivery Network (CDN) offers developers a
-global solution for delivering high-bandwidth content by caching blobs
-and static content of compute instances at physical nodes in the United
-States, Europe, Asia, Australia and South America. For a current list of
-CDN node locations, see [Azure CDN Node Locations][Azure CDN Node Locations].
+Azure 內容傳遞網路 (CDN) 為開發人員提供
+一個全球解決方案，透過在美國、歐洲、亞洲、澳洲和南美洲的實體節點
+快取運算執行個體的 Blob 和靜態內容，
+傳遞高頻寬的內容。 如需最新的
+CDN 節點位置清單，請參閱 [Azure CDN 節點位置]。
 
-This task includes the following steps:
+此工作包含下列步驟：
 
--   [Step 1: Create a storage account][Step 1: Create a storage account]
--   [Step 2: Create a new CDN endpoint for your storage account][Step 2: Create a new CDN endpoint for your storage account]
--   [Step 3: Access your CDN content][Step 3: Access your CDN content]
--   [Step 4: Delete your CDN content][Step 4: Delete your CDN content]
+* [步驟 1: 建立儲存體帳戶](#Step1)
+* [步驟 2: 建立新的儲存體帳戶的 CDN 端點](#Step2)
+* [步驟 3: 存取 CDN 內容](#Step3)
+* [步驟 4: 移除 CDN 內容](#Step4)
 
-The benefits of using CDN to cache Azure data include:
+使用 CDN 來快取 Azure 資料的優點包括：
 
--   Better performance and user experience for end users who are far from a content source, and are using applications where many 'internet trips' are required to load content
--   Large distributed scale to better handle instantaneous high load, say, at the start of an event such as a product launch
+-   讓離內容來源很遙遠、且所使用的應用程式需要在網際網路上歷經長途跋涉才能載入內容的使用者，享有更好的效能和使用者經驗
+-   大型的分散式規模可更妥善處理瞬間大量負載 (例如產品上市等活動的開頭)
 
-Existing CDN customers can now use the Azure CDN in the [Azure Management Portal][Azure Management Portal]. The CDN is an add-on feature to your subscription and has a separate [billing plan][billing plan].
+現有 CDN 客戶現在可以在 [Azure 傳統入口網站] 中，使用 Azure CDN。 CDN 是一項可用於您訂閱的附加元件功能，且有自己的計費方案。
 
-<span id="Step1"></span> </a>
+<a id="Step1"> </a>
+<h2>步驟 1：建立儲存體帳戶</h2>
 
-## Step 1: Create a storage account
+使用下列程序，為 Azure 訂閱建立新的儲存體帳戶
+。 儲存體帳戶可存取 
+Azure 儲存體服務。 儲存體帳戶代表命名空間的最高層級，
+可存取每個 Azure 儲存體服務
+元件: Blob 服務、 佇列服務和表格服務。 如需
+Azure 儲存體服務的相關資訊，請參閱 [使用
+Azure 儲存體服務] (http://msdn.microsoft.com/library/azure/gg433040.aspx)。
 
-</p>
-Use the following procedure to create a new storage account for a
-Azure subscription. A storage account gives access to
-Azure storage services. The storage account represents the highest level
-of the namespace for accessing each of the Azure storage service
-components: Blob services, Queue services, and Table services. For more
-information about the Azure storage services, see [Using the
-Azure Storage Services].
+若要建立儲存體帳戶，您必須是服務
+系統管理員或相關聯訂閱的共同管理員。
+> [AZURE.NOTE] 如需關於使用 Azure 服務管理 API
+Azure 服務管理 API，請參閱 [建立儲存體帳戶](http://msdn.microsoft.com/library/windowsazure/hh264518.aspx) 參考主題。
 
-To create a storage account, you must be either the service
-administrator or a co-administrator for the associated subscription.
+**為 Azure 訂用帳戶建立儲存體帳戶**
 
-<div class="dev-callout">
-<strong>Note</strong>
-<p>For information about performing this operation by using the
-Azure Service Management API, see the <a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx">Create Storage Account</a> reference topic.</p>
-</div>
+1.  登入 [Azure 傳統入口網站]。
+2.  按一下左下角的 [**新增**]。 在 [**新增**] 對話方塊中，選取 [**資料服務**]，然後依序按一下 [**儲存體**] 和 [**快速建立**]。
 
-**To create a storage account for an Azure subscription**
+    [建立儲存體帳戶]**** 對話方塊隨即出現。
 
-1.  Log into the [Azure Management Portal][Azure Management Portal].
-2.  In the lower left corner, click **New**, and then click **Storage**.
-3.  Click **Quick Create**.
+    ![建立儲存體帳戶][create-new-storage-account]
 
-    The **Create Storage Account** dialog appears.
+4. 在 [URL]**** 欄位中，輸入子網域名稱。 此項目可以包含 3 至 24 個小寫字母與數字。
 
-    ![Create Storage Account][1]
+    此值會變成 URI 內，用來
+    定址訂閱的 Blob、佇列或對應表資源的主機名稱。 收件人
+    定址 Blob 服務中的容器資源，您要使用
+    URI 格式如下，其中 *< StorageAccountLabel >* 參考
+    您輸入的值在 **輸入 URL**:
 
-4.  In the **URL** field, type a subdomain name. This entry can contain from 3-24 lowercase letters and numbers.
+    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
 
-    This value becomes the host name within the URI that is used to
-    address Blob, Queue, or Table resources for the subscription. To
-    address a container resource in the Blob service, you would use a
-    URI in the following format, where *\<StorageAccountLabel\>* refers
-    to the value you typed in **Enter a URL**:
+    **重要事項:** URL 標籤會形成儲存體的子網域
+    而且在 Azure 的所有託管服務中 
+    Azure。
 
-    <http://>*\<StorageAcountLabel\>*.blob.core.windows.net/*\<mycontainer\>*
+    此值也用作這個儲存體帳戶在入口網站中的名稱，或用於透過程式設計方式存取此帳戶時。
 
-    **Important:** The URL label forms the subdomain of the storage
-    account URI and must be unique among all hosted services in
-    Azure.
+5.  從 [區域/同質群組]**** 下拉式清單中，選取儲存體帳戶的區域或同質群組。 如果您想要在您使用其他 Windows Azure 服務相同的資料中心儲存體服務，請選取同質群組而非區域。 這麼做可改善效能，而且出口流量不會產生任何費用。
 
-    This value is also used as the name of this storage account in the portal, or when accessing this account programmatically.
+    **注意：**若要建立同質群組，請開啟管理入口網站的 [**設定**] 區域，並按一下 [**同質群組**]，然後按一下 [**新增同質群組**] 或 [**新增**]。 您也可以建立和管理同質群組使用 Windows Azure 服務管理 API。 如需詳細資訊，請參閱 [同質群組的相關作業]。
 
-5.  From the **Region/Affinity Group** drop-down list, select a region or affinity group for the storage account. Select an affinity group instead of a region if you want your storage services to be in the same data center with other Windows Azure services that you are using. This can improve performance, and no charges are incurred for egress.
+6. 從 [訂用帳戶]**** 下拉式清單中，選取將與儲存體帳戶搭配使用的訂用帳戶。
+7.  按一下 [建立儲存體帳戶]****。 建立儲存體帳戶的程序可能需要幾分鐘才能完成。
+8.  若要確認已順利建立儲存體帳戶，請確認帳戶出現在 [儲存體]**** 所列出的項目中，且狀態為 [線上]****。
 
-    **Note:** To create an affinity group, open the **Settings** area of the Management Portal, click **Affinity Groups**, and then click either **Add an affinity group** or **Add**. You can also create and manage affinity groups using the Windows Azure Service Management API. For more information, see [Operations on Affinity Groups][Operations on Affinity Groups].
+<a id="Step2"> </a>
+<h2>步驟 2：為儲存體帳戶建立新的 CDN 端點</h2>
 
-6.  From the **Subscription** drop-down list, select the subscription that the storage account will be used with.
-7.  Click **Create Storage Account**. The process of creating the storage account might take several minutes to complete.
-8.  To verify that the storage account was created successfully, verify that the account appears in the items listed for **Storage** with a status of **Online**.
+一旦您啟用 CDN 對儲存體帳戶或託管服務的存取之後，所有
+公開可用的物件皆適用於 CDN 邊緣快取。 如果您
+修改目前在 CDN 中快取的物件，將無法
+透過 CDN 使用新內容，直到快取的內容
+存留時間期限到期時，CDN 重新整理其內容為止。
 
-<span id="Step2"></span> </a>
+**為儲存體帳戶建立新的 CDN 端點**
 
-## Step 2: Create a new CDN endpoint for your storage account
+1. 在 [Azure 傳統入口網站]，在瀏覽窗格中，按一下 [ **CDN**。
 
-</p>
-Once you enable CDN access to a storage account or hosted service, all
-publicly available objects are eligible for CDN edge caching. If you
-modify an object that is currently cached in the CDN, the new content
-will not be available via the CDN until the CDN refreshes its content
-when the cached content time-to-live period expires.
+2. 在功能區中，按一下 [新增]****。 在 [新增]**** 對話方塊中，依序選取 [應用程式服務]****、[CDN]****、[快速建立]****。
 
-**To create a new CDN endpoint for your storage account**
+3. 在 [原始網域]**** 下拉式清單中，從可用儲存體帳戶清單中選取您在上一節建立的儲存體帳戶。
 
-1.  In the [Azure Management Portal][Azure Management Portal], in the navigation pane, click **CDN**.
+4. 按一下 [建立]**** 按鈕，建立新的端點。
 
-2.  On the ribbon, click **New**. In the **New** dialog, select **App Services**, then **CDN**, then **Quick Create**.
+5. 端點建立完畢之後，即會出現在訂用帳戶的端點清單中。 此清單檢視會顯示用來存取所快取內容的 URL 以及原始網域。
 
-3.  In the **Origin Domain** dropdown, select the storage account you created in the previous section from the list of your available storage accounts.
+    原始網域是指 CDN 從其快取內容過來的位置
+    。 原始網域可以是儲存體帳戶或雲端服務；就此範例的目的而言，我們使用的是儲存體帳戶。 根據您指定的 cache-control 設定或是根據快取網路的預設啟發學習法，儲存體內容會被快取至 Edge Server。
 
-4.  Click the **Create** button to create the new endpoint.
+    > [AZURE.NOTE] 為端點建立的組態
+    無法立即使用；最多需要 60 分鐘
+    進行註冊，才能透過 CDN 網路傳播。 嘗試立即
+    使用 CDN 網域名稱的使用者可能會收到狀態碼 400
+    (不正確的要求)，直到可透過 CDN 使用內容為止。
 
-5.  Once the endpoint is created, it appears in a list of endpoints for the subscription. The list view shows the URL to use to access cached content, as well as the origin domain.
+<a id="Step3"> </a>
+<h2>步驟 3：存取 CDN 內容</h2>
 
-    The origin domain is the location from which the CDN caches
-    content. The origin domain can be either a storage account or a cloud service; a storage account is used for the purposes of this example. Storage content is cached to edge servers according either to a cache-control setting that you specify, or to the default heuristics of the caching network. See [How to Manage Expiration of Blob Content][How to Manage Expiration of Blob Content] for more information.
+若要存取 CDN 上快取的內容，請使用入口網站中提供的 CDN URL。 所快取 Blob 的位址將類似如下：
 
-    <div class="dev-callout">
-<strong>Note</strong>
-<p>The configuration created for the endpoint will not
-immediately be available; it can take up to 60 minutes for the
-registration to propagate through the CDN network. Users who try to
-use the CDN domain name immediately may receive status code 400
-(Bad Request) until the content is available via the CDN.</p>
-</div>
+http://<*CDNNamespace*\>.vo.msecnd.net/<*myPublicContainer*\>/<*BlobName*\>
 
-<span id="Step3"></span> </a>
+<a id="Step4"> </a>
+<h2>步驟 4：從 CDN 移除內容</h2>
 
-## Step 3: Access CDN content
+如果您不想再快取 Azure 內容
+傳遞網路 (CDN) 中的物件，可以採取下列其中一個步驟：
 
-</p>
-To access cached content on the CDN, use the CDN URL provided in the portal. The address for a cached blob will be similar to the following:
+-   對於 Azure Blob，您可以從公用容器中刪除 Blob
+    。
+-   您可以將容器設為私人而非公用。 請參閱 [限制對容器和 Blob 的存取](http://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/#restrict-access-to-containers-and-blobs) 如需詳細資訊。
+-   您可以使用管理入口網站來停用或刪除 CDN 端點
+    。
+-   您可以修改託管服務，使其不再回應物件的要求
+    。
 
-<http://>\<*CDNNamespace*\>.vo.msecnd.net/\<*myPublicContainer*\>/\<*BlobName*\>
+已在 CDN 中快取的物件會保持快取狀態，直到
+物件的存留時間期限到期為止。 當存留時間期限
+到期時，CDN 將會檢查以查看 CDN 端點是否仍然
+有效，且物件是否仍然可以匿名存取。 若非如此，則
+將無法再存取物件。
 
-<span id="Step4"></span> </a>
+Azure 管理入口網站目前不支援立即清除內容的功能。 請連絡 [Azure 支援](http://azure.microsoft.com/support/options/)  如果您需要立即清除內容。
 
-## Step 4: Remove content from the CDN
+## 其他資源
 
-</p>
-If you no longer wish to cache an object in the Azure Content
-Delivery Network (CDN), you can take one of the following steps:
+-   [如何在 Azure 中建立同質群組]
+-   [如何：管理 Azure 訂用帳戶的儲存體帳戶]
+-   [關於服務管理 API]
+-   [如何將 CDN 內容對應至自訂網域]
 
--   For an Azure blob, you can delete the blob from the public
-    container.
--   You can make the container private instead of public. See [Restrict Access to Containers and Blobs][Restrict Access to Containers and Blobs] for more information.
--   You can disable or delete the CDN endpoint using the Management
-    Portal.
--   You can modify your hosted service to no longer respond to requests for the
-    object.
 
-An object already cached in the CDN will remain cached until the
-time-to-live period for the object expires. When the time-to-live period
-expires, the CDN will check to see whether the CDN endpoint is still
-valid and the object still anonymously accessible. If it is not, then
-the object will no longer be cached.
+[create storage account]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/ 
+[azure cdn node locations]: http://msdn.microsoft.com/library/windowsazure/gg680302.aspx 
+[azure classic portal]: https://manage.windowsazure.com/ 
+[billing plan]: /pricing/calculator/?scenario=full 
+[how to create an affinity group in azure]: http://msdn.microsoft.com/library/azure/ee460798.aspx 
+[overview of the azure cdn]: http://msdn.microsoft.com/library/windowsazure/ff919703.aspx 
+[about the service management api]: http://msdn.microsoft.com/library/windowsazure/ee460807.aspx 
+[how to map cdn content to a custom domain]: http://msdn.microsoft.com/library/windowsazure/gg680307.aspx 
+[create-new-storage-account]: ./media/cdn/CDN_CreateNewStorageAcct.png 
+[previous management portal]: ../../Shared/Media/previous-portal.png 
 
-No explicit "purge" tool is currently available for the Azure
-CDN.
-
-## Additional resources
-
--   [How to Create an Affinity Group in Azure]
--   [How to: Manage Storage Accounts for an Azure Subscription][How to: Manage Storage Accounts for an Azure Subscription]
--   [About the Service Management API][About the Service Management API]
--   [How to Map CDN Content to a Custom Domain][How to Map CDN Content to a Custom Domain]
-
-  [Azure CDN Node Locations]: http://msdn.microsoft.com/en-us/library/windowsazure/gg680302.aspx
-  [Step 1: Create a storage account]: #Step1
-  [Step 2: Create a new CDN endpoint for your storage account]: #Step2
-  [Step 3: Access your CDN content]: #Step3
-  [Step 4: Delete your CDN content]: #Step4
-  [Azure Management Portal]: https://manage.windowsazure.com/
-  [billing plan]: /en-us/pricing/calculator/?scenario=full
-  [Create Storage Account]: http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx
-  [1]: ./media/cdn/CDN_CreateNewStorageAcct.png
-  [Operations on Affinity Groups]: http://msdn.microsoft.com/library/azure/ee460798.aspx
-  [How to Manage Expiration of Blob Content]: http://msdn.microsoft.com/en-us/library/gg680306.aspx
-  [Restrict Access to Containers and Blobs]: http://msdn.microsoft.com/en-us/library/dd179354.aspx
-  [How to: Manage Storage Accounts for an Azure Subscription]: http://msdn.microsoft.com/en-us/library/windowsazure/hh531567.aspx
-  [About the Service Management API]: http://msdn.microsoft.com/en-us/library/windowsazure/ee460807.aspx
-  [How to Map CDN Content to a Custom Domain]: http://msdn.microsoft.com/en-us/library/windowsazure/gg680307.aspx

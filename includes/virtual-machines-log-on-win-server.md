@@ -1,31 +1,25 @@
-<properties linkid="manage-windows-howto-logon" urlDisplayName="Log on to a VM" pageTitle="Log on to a virtual machine running Windows Server" metaKeywords="Azure logging on vm, vm portal" description="Learn how to log on to a virtual machine running Windows Server 2008 R2 by using the Azure Management Portal." metaCanonical="" services="virtual-machines" documentationCenter="" title="How to Log on to a Virtual Machine Running Windows Server" authors="kathydav" solutions="" manager="dongill" editor="tysonn" />
+<properties services="virtual-machines" title="How to Log on to a Virtual Machine Running Windows Server" authors="cynthn" solutions="" manager="timlt" editor="tysonn" />
 
-> [WACOM.NOTE] For requirements and troubleshooting tips, see [Connect to an Azure virtual machine with RDP or SSH][Connect to an Azure virtual machine with RDP or SSH].
 
-1.  If you have not already done so, sign in to the [Azure Management Portal][Azure Management Portal].
+4. 按一下 [連接]**** 建立並下載 [遠端桌面通訊協定] 檔案 (.rdp file)。 按一下 [開啟]**** 使用這個檔案。
 
-2.  Click **Virtual Machines**, and then select the appropriate virtual machine.
+5. 在 [遠端桌面] 視窗中按一下 [連接]**** 以繼續。
 
-3.  On the command bar, click **Connect**.
+    ![繼續連接](./media/virtual-machines-log-on-win-server/connectpublisher.png)
 
-    ![Log on to the virtual machine][Log on to the virtual machine]
+6. 在 [Windows 安全性] 視窗中，輸入虛擬機器上帳戶的認證，然後按一下 [確定]****。
 
-4.  Click **Open** to use the Remote Desktop Protocol file that was automatically created for the virtual machine.
+    在大多數案例中，這是您在建立虛擬機器時所指定的本機帳戶使用者名稱和密碼。 在此案例中，虛擬機器的名稱是網域，而它的輸入格式為 *vmname*&#92;*username*。
 
-5.  Click **Connect** to proceed with the connection process.
+    如果虛擬機器隸屬於貴公司的網域，請確定使用者名稱會包含該網域的名稱且格式為 *Domain*&#92;*Username*。 此帳戶也必須屬於系統管理員群組，或者已授與遠端存取 VM 的權限。
 
-    ![Continue with connecting][Continue with connecting]
+    如果虛擬機器是網域控制站，請輸入該網域的網域系統管理員帳戶的使用者名稱和密碼。
 
-6.  Type the user name and password of the administrative account on the virtual machine, and then click **OK**.
+7.  按一下 [是]**** 來確認虛擬機器的身分識別，並完成登入。
 
-7.  Click **Yes** to verify the identity of the virtual machine.
+    ![驗證機器的身分識別](./media/virtual-machines-log-on-win-server/connectverify.png)
 
-    ![Verify the identity of the machine][Verify the identity of the machine]
 
-    You can now work with the virtual machine just as you would with any other server.
 
-  [Connect to an Azure virtual machine with RDP or SSH]: http://go.microsoft.com/fwlink/p/?LinkId=398294
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Log on to the virtual machine]: ./media/virtual-machines-log-on-win-server/connectwindows.png
-  [Continue with connecting]: ./media/virtual-machines-log-on-win-server/connectpublisher.png
-  [Verify the identity of the machine]: ./media/virtual-machines-log-on-win-server/connectverify.png
+
+

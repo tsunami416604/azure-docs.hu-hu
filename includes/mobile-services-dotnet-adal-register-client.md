@@ -1,32 +1,34 @@
-## <a name="register-app-aad"></a>Register your client app with the Azure Active Directory
+## <a name="register-app-aad"></a>向 Azure Active Directory 註冊您的用戶端應用程式
 
-1. Navigate to **Active Directory** in the [Azure Management Portal], then click your directory.
+1. 瀏覽至 **Active Directory** 中 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，然後按一下您的目錄。
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-select-aad.png)
 
-2. Click the **Applications** tab at the top, then click to **ADD** an app. 
+2. 按一下頂端的 [應用程式]**** 索引標籤，然後按一下以**新增**應用程式。
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-aad-applications-tab.png)
 
-3. Click **Add an application my organization is developing**.
+3. 按一下 [Add an application my organization is developing]****。
 
-4. In the Add Application Wizard, enter a **Name** for your application and click the  **Native Client Application** type. Then click to continue.
+4. 在 [新增應用程式精靈] 中，輸入 **名稱** 您的應用程式，然後按一下 [  **原生用戶端應用程式** 型別。 接著，按一下以繼續。
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-native-selection.png)
 
-5. In the **Redirect URI** box, enter the /login/done endpoint for your mobile service. This value should be similar to https://todolist.azure-mobile.net/login/done.
+5. 在 [重新導向 URI]**** 方塊中，輸入行動服務的 /login/done 端點。 此值應與 https://todolist.azure-mobile.net/login/done 類似。
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-native-redirect-uri.png)
 
-6. Click the **Configure** tab for the native application and copy the **Client ID**. You will need this later.
+6. 按一下原生應用程式的 [設定]**** 索引標籤，並複製 [用戶端識別碼]****。 稍後您將會需要此資訊。
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-native-client-id.png)
 
-7. Scroll the page down to the **permissions to other applications** section and grant full access to the mobile service application that you registered earlier. Then click **Save**
+7. 將頁面向下捲動至 [其他應用程式的權限] 區段****，然後按一下 [新增應用程式] 按鈕****。 選擇 [顯示] 功能表中的 [其他]****，然後搜尋 todo。 按一下 [TodoList]****以新增您稍早註冊的行動服務，然後按一下代表完成的勾號。 授與行動服務應用程式的存取權限。 然後按一下 [儲存]****
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-native-add-permissions.png)
 
-Your mobile service is now configured in AAD to receive single sign-on logins from your app.
+已在 AAD 中設定您的行動服務接收來自應用程式的單一登入。
 
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+
+
+

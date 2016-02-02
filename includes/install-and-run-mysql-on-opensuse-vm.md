@@ -1,86 +1,83 @@
-1.  To escalate privileges, run:
+1. 若要提升權限，請輸入：
 
         sudo -s
 
-    Enter your password.
+    輸入您的密碼。
 
-2.  Run the following command to install MySQL Community Server edition:
+2. 若要安裝 MySQL Community Server 版本，請輸入：
 
         # zypper install mysql-community-server
 
-    Wait while MySQL downloads and installs.
+    等待 MySQL 進行下載和安裝。
 
-3.  To set MySQL to start when the system boots, execute the following command:
+3. 若要將 MySQL 設為在系統開機時啟動，請輸入：
 
         # insserv mysql
 
-4.  Now you can manually start the MySQL daemon (mysqld) with the following command:
+4. 使用此命令來手動啟動 MySQL 精靈 (mysqld)：
 
         # rcmysql start
 
-    To check the status of the MySQL daemon, run:
+    若要檢查 MySQL 精靈的狀態，請輸入：
 
         # rcmysql status
 
-    If you want to stop the MySQL daemon, run:
+    如果您要停止 MySQL 精靈，請輸入：
 
         # rcmysql stop
 
-5.  Warning! After installation, the MySQL root password is empty by default. It's recommended that you run **mysql\_secure\_installation**, a script that helps secure MySQL. When running **mysql\_secure\_installation**, you will be prompted to change the MySQL root password, remove anonymous user accounts, disable remote root logins, remove test databases, and reload the privileges table. It is recommended that you answer yes to all of these options and change the root password. Run the following command to execute the script:
+    > [AZURE.IMPORTANT] 安裝之後，MySQL 根密碼預設為空白。 我們建議您執行 **mysql\_secure\_installation**, ，該指令碼有助於保護 MySQL 的安全。 指令碼會提示您變更 MySQL 根密碼、移除匿名使用者帳戶、停用遠端根登入、移除測試資料庫，以及重新載入權限資料表。 建議您對所有的選項回答「是」並且變更根密碼。
+
+5. 輸入以下內容，執行指令碼 MySQL 安裝指令碼：
 
         $ mysql_secure_installation
 
-6.  After you run, you can login to MySQL:
+6. 執行之後，即可登入 MySQL：
 
         $ mysql -u root -p
 
-    Enter the MySQL root password (which you changed in the previous step) and you'll be presented with a prompt where you can issue SQL statements to interact with the database.
+    輸入 MySQL 根密碼 (您在前一個步驟中變更的密碼)，畫面上將會出現提示，以便您發出 SQL 陳述式來與資料庫互動。
 
-7.  To create a new MySQL user, run the following at the **mysql\>** prompt:
+7. 若要建立新的 MySQL 使用者，請在 **mysql>** 提示字元中執行下列命令：
 
         mysql> CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
-    Note, the semi-colons (;) at the end of the lines are crucial for ending the commands.
+    請注意，行尾的分號 (;) 對結束命令而言十分重要。
 
-8.  To create a database and grant the `mysqluser` user permissions on it, issue the following commands:
+8. 若要建立資料庫並授與其 `mysqluser` 使用者權限，請發出下列命令：
 
         mysql> CREATE DATABASE testdatabase;
         mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
-    Note that database user names and passwords are only used by scripts connecting to the database. Database user account names do not necessarily represent actual user accounts on the system.
+    請注意，只有連線到資料庫的指令碼會使用資料庫使用者名稱和密碼。 資料庫使用者帳戶名稱不一定代表系統上的實際使用者帳戶。
 
-9.  To login from another computer, execute the following:
+9. 若要從另一部電腦登入，請輸入：
 
         mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
 
-    where `ip-address` is the IP address of the computer from which you will connect to MySQL.
+    其中 `ip-address` 是您從中連線到 MySQL 的電腦 IP 位址。
 
-10. To exit the MySQL database administration utility, issue the following command:
+10. 若要結束 MySQL 資料庫管理公用程式，請輸入：
 
         quit
 
-11. Once MySQL is installed you must configure an endpoint so that MySQL can be accessed remotely. Log in to the [Azure Management Portal][Azure Management Portal]. In the Azure portal, click **Virtual Machines**, then click the name of your new VM, then click **Endpoints**.
+11. 安裝 MySQL 後，您必須設定端點，以便遠端存取 MySQL。 登入 [Azure 入口網站 ][azureportal]。 按一下 [虛擬機器]****，再按一下新虛擬機器的名稱，然後按一下 [端點]****。
 
-    ![Endpoints][Endpoints]
+12. 按一下頁面底部的 [新增]****。
 
-12. Click **Add Endpoint** at the bottom of the page.
-    ![Endpoints][1]
+13. 新增名為 "MySQL" 的端點，通訊協定為 **TCP**，且 [**公開**] 及 [**私人**] 連接埠均設為 "3306"。
 
-13. Add an endpoint with name "MySQL", protocol **TCP**, and both **Public** and **Private** ports set to "3306". This will allow MySQL to be accessed remotely.
-    ![Endpoints][2]
-
-14. To remotely connect to MySQL running on your OpenSUSE virtual machine in Azure, run the following command on your local computer:
+14. 若要從您的電腦遠端連線到虛擬機器，請輸入：
 
         mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
 
-    For example, using the virual machine we created in this tutorial, the command would be:
+    例如，使用我們在本教學課程中建立的虛擬機器，輸入以下命令：
 
         mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
 
-15. You've successfully configured MySQL, created a database, and a new user. For more information on MySQL, see the [MySQL Documentation][MySQL Documentation].
 
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Endpoints]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpoint.png
-  [1]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpoint2.png
-  [2]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
-  [MySQL Documentation]: http://dev.mysql.com/doc/
+
+[mysqldocs]: http://dev.mysql.com/doc/ 
+[azureportal]: http://manage.windowsazure.com 
+[image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png 
+

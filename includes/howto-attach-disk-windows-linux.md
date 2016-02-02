@@ -1,58 +1,60 @@
-For more information about disks in Azure virtual machines, see [About Virtual Machine Disks in Azure][About Virtual Machine Disks in Azure].
+如需有關磁碟的詳細資訊，請參閱 [關於磁碟和虛擬機器的 Vhd](../articles/virtual-machines-disks-vhds.md)。
 
-## <span id="attachempty"></span></a>How to: Attach an empty disk
+## <a id="attachempty"></a>如何: 連接空的磁碟
 
-Attaching an empty disk is the simpler way to add a data disk, because Azure creates the .vhd file for you and stores it in the storage account.
+新增資料磁碟的一個較為簡易方式是連接空的磁碟，因為 Azure 會為您建立 .vhd 檔案並將它儲存在儲存體帳戶中。
 
-1.  Click **Virtual Machines**, and then select the appropriate virtual machine.
+1. 按一下 [虛擬機器]****，然後選取適當的虛擬機器。
 
-2.  On the command bar, click **Attach**, and then select **Attach Empty Disk**.
+2. 在命令列上，按一下 [連接]****，然後按一下 [連接空的磁碟]****。
 
-    ![Attach an empty disk][Attach an empty disk]
+    ![連接空的磁碟](./media/howto-attach-disk-window-linux/AttachEmptyDisk.png)
 
-    The **Attach Empty Disk** dialog box appears.
+3.  [**連接空的磁碟**] 對話方塊隨即出現。
 
-    ![Attach a new empty disk][Attach a new empty disk]
+    ![連接新的空磁碟](./media/howto-attach-disk-window-linux/AttachEmptyDetail.png)
 
-3.  In **File Name**, either accept the automatically generated name or type a descriptive name. The data disk that is created from the .vhd file will always use the automatically generated name.
+    執行下列動作：
 
-4.  In **Size**, enter the size of the data disk.
+    - 在 [**檔案名稱**] 中，接受預設名稱，或為用於該磁碟的 .vhd 檔案輸入另一個名稱。 資料磁碟會使用自動產生的名稱，即使您為 .vhd 檔案輸入另一個名稱亦然。
 
-5.  Click the check mark to attach the empty data disk.
+    - 輸入資料磁碟的 [**大小 (GB)**]。
 
-    You will now see the data disk listed on the dashboard of the virtual machine.
+    - 按一下核取記號完成工作。
 
-    ![Empty data disk successfully attached][Empty data disk successfully attached]
+4.  建立並連接資料磁碟之後，它會列在虛擬機器的儀表板。
 
-## <span id="attachexisting"></span></a>How to: Attach an existing disk
+    ![成功連接空的資料磁碟](./media/howto-attach-disk-window-linux/AttachEmptySuccess.png)
 
-Attaching an existing disk requires that you have a .vhd available in a storage account. Use the [Add-AzureVhd][Add-AzureVhd] cmdlet to upload the .vhd file to the storage account. After you've created and uploaded the .vhd file, you can attach it to a virtual machine.
+> [AZURE.NOTE]
+> 加入新的資料磁碟之後，您必須登入虛擬機器並初始化磁碟，這樣虛擬機器可以使用磁碟來儲存。 
 
-1.  Click **Virtual Machines**, and then select the appropriate virtual machine.
+## <a id="attachexisting"></a>如何: 連接現有磁碟
 
-2.  On the command bar, click **Attach**, and then select **Attach Disk**.
+連接現有磁碟要求您在儲存體帳戶中需要有可用的 .vhd。 使用 [Add-azurevhd](http://go.microsoft.com/FWLink/p/?LinkID=391684) 指令程式可將.vhd 檔案上傳至儲存體帳戶。 在建立並上傳 .vhd 檔案之後，就可將它連接至虛擬機器。
 
-    ![Attach data disk][Attach data disk]
+1. 按一下 [虛擬機器]****，然後選取適當的虛擬機器。
 
-    The **Attach Disk** dialog box appears.
+2. 在命令列上，按一下 [連接]****，然後選取 [連接磁碟]****。
 
-    ![Enter data disk details][Enter data disk details]
+    ![連接資料磁碟](./media/howto-attach-disk-window-linux/AttachExistingDisk.png)
 
-3.  Select the data disk that you want to attach to the virtual machine.
-4.  Click the check mark to attach the data disk to the virtual machine.
+    [連接磁碟]**** 對話方塊隨即出現。
 
-    You will now see the data disk listed on the dashboard of the virtual machine.
 
-    ![Data disk successfully attached][Data disk successfully attached]
+    ![輸入資料磁碟詳細資料](./media/howto-attach-disk-window-linux/AttachExistingDetail.png)
 
-> [WACOM.NOTE]
-> After you add a data disk, you'll need to log on to the virtual machine and initialize the disk so the virtual machine can use the disk for storage.
+3. 選取要連接至虛擬機器的資料磁碟。
 
-  [About Virtual Machine Disks in Azure]: http://go.microsoft.com/fwlink/p/?LinkId=403697
-  [Attach an empty disk]: ./media/howto-attach-disk-window-linux/AttachDiskWindows.png
-  [Attach a new empty disk]: ./media/howto-attach-disk-window-linux/AttachNewDiskWindows.png
-  [Empty data disk successfully attached]: ./media/howto-attach-disk-window-linux/AttachEmptySuccess.png
-  [Add-AzureVhd]: http://go.microsoft.com/FWLink/p/?LinkID=391684
-  [Attach data disk]: ./media/howto-attach-disk-window-linux/AttachExistingDiskWindows.png
-  [Enter data disk details]: ./media/howto-attach-disk-window-linux/AttachExistingDisk.png
-  [Data disk successfully attached]: ./media/howto-attach-disk-window-linux/AttachSuccess.png
+4. 按一下核取記號將資料磁碟連接至虛擬機器。
+
+5.  連接資料磁碟之後，它會列在虛擬機器的儀表板。
+
+    ![成功連接資料磁碟](./media/howto-attach-disk-window-linux/AttachExistingSuccess.png)
+
+
+
+
+
+
+

@@ -1,55 +1,36 @@
-1.  Sign in to the Azure [Management Portal][Management Portal]. Check out the [Free Trial][Free Trial] offer if you don't have a subscription yet.
+1. 登入 [Azure 入口網站](http://manage.windowsazure.com)。 簽出 [免費試用版](http://azure.microsoft.com/pricing/free-trial/) 提供如果您沒有訂閱。
 
-2.  On the command bar at the bottom of the window, click **New**.
+2. 在視窗底部的命令列上，按一下 [新增]****。
 
-3.  Under **Compute**, click **Virtual Machine**, and then click **From Gallery**.
+3. 在 [計算]**** 下，依序按一下 [虛擬機器]**** 及 [從映像庫]****。
 
-    ![Navigate to From Gallery in the Command Bar][Navigate to From Gallery in the Command Bar]
+    ![瀏覽命令列中的來源資源庫](./media/virtual-machines-create-WindowsVM/fromgallery.png)
 
-4.  The first screen lets you **Choose an Image** for your virtual machine from one of the lists in the Image Gallery. (The available images may differ depending on the subscription you're using.) Click the arrow to continue.
+4. 之後的第一個畫面可讓您從可用的映像清單中，為您的虛擬機器 [**選擇映像**]。 (視您使用的訂用帳戶而定，可用的映像可能有所不同)。
 
-    ![Choose an image][Choose an image]
+5. 第二個畫面可讓您挑選電腦名稱、大小，及系統管理使用者名稱和密碼。 使用執行應用程式或工作負載所需的層次和大小。 以下是一些秘訣：
 
-5.  The second screen lets you pick a computer name, size, and administrative user name and password. If you just want to try out Azure Virtual Machines, fill in the fields as shown in the image below. Otherwise, chose the tier and size required to run your app or workload. Here are some details to help you fill this out:
+    - **新使用者名稱**是指用來管理伺服器的系統管理帳戶。 建立此帳戶的唯一密碼，並確定記住此密碼。 **您將需要使用者名稱和密碼才能登入虛擬機器**。
 
-    -   **New User Name** refers to the administrative account that you use to manage the server. Create a unique password for this account and make sure to remember it. **You'll need the user name and password to log on to the virtual machine**.
+    - 虛擬機器的大小會影響其使用成本以及組態選項 (例如您可連接的資料磁碟數目)。 如需詳細資訊，請參閱 [虛擬機器的大小](../articles/virtual-machines-size-specs.md)。
 
-    -   A virtual machine's size affects the cost of using it, as well as configuration options such as the number of data disks you can attach. For details, see [Virtual Machine and Cloud Service Sizes for Azure][Virtual Machine and Cloud Service Sizes for Azure].
+6. 第三個畫面可讓您設定網路、儲存體和可用性的資源。 以下是一些祕訣：
 
-    ![Configure the properties of the virtual machine][Configure the properties of the virtual machine]
+    - [Cloud Service DNS Name]**** 是全域 DNS 名稱，它會成為用來連絡虛擬機器的 URI 一部分。 您將必須想出自己的雲端服務名稱，因為它在 Azure 中必須是唯一的。 雲端服務是很重要的使用案例 [多部虛擬機器](../articles/cloud-services-connect-virtual-machine.md)。
 
-6.  The third screen lets you configure resources for networking, storage, and availability. Here are some details to help you fill this out:
+    - 在 [區域/同質群組/虛擬網路]**** 中，使用適合您位置的區域。 您也可以改選指定虛擬網路。
+    >[AZURE.NOTE] 如果您想要讓虛擬機器使用虛擬網路，就「必須」****在建立虛擬機器時指定虛擬網路。 在建立 VM 後，您無法將虛擬機器加入虛擬網路。 如需詳細資訊，請參閱 [Azure 虛擬網路概觀](virtual-networks-overview.md)。
+    >
+    > 如需有關設定端點的詳細資訊，請參閱 [如何設定端點的虛擬機器](../articles/virtual-machines-set-up-endpoints.md)。
 
-    -   The **Cloud Service DNS Name** is the global DNS name that becomes part of the URI that's used to contact the virtual machine. You'll need to come up with your own cloud service name because it must be unique in Azure. Cloud services are important for scenarios using [multiple virtual machines][multiple virtual machines].
+7. 第四個組態畫面可讓您安裝 VM 代理程式及設定部分可用延伸模組。
+    >[AZURE.NOTE] VM 代理程式提供環境讓您安裝延伸模組，以協助您與虛擬機器互動或管理虛擬機器。 如需詳細資訊，請參閱 [有關 VM 代理程式和擴充功能](virtual-machines-extensions-agent-about.md)。  
 
-    -   For **Region/Affinity Group/Virtual Network**, use a region that's appropriate to your location. You can also choose to specify a virtual network instead.
+8. 建立虛擬機器後，入口網站會在 [虛擬機器]**** 底下列出新的虛擬機器。 並建立對應的雲端服務和儲存體帳戶，且列於這些區段中。 虛擬機器和雲端服務都會自動啟動，而且它們的狀態會顯示為 [執行中]****。
 
-    > [WACOM.NOTE] If you want a virtual machine to use a virtual network, you **must** specify the virtual network when you create the virtual machine. You can't join the virtual machine to a virtual network after you create the VM. For more information, see [Azure Virtual Network Overview][Azure Virtual Network Overview].
+    ![設定 VM 代理程式和需擬機器端點](./media/virtual-machines-create-WindowsVM/vmcreated.png)
 
-    -   For details about configuring endpoints, see [How to Set Up Endpoints to a Virtual Machine][How to Set Up Endpoints to a Virtual Machine].
 
-    ![Configure the connected resources of the virtual machine][Configure the connected resources of the virtual machine]
 
-7.  The fourth configuration screen lets you configure the VM Agent and some of the available extensions. Click the check mark to create the virtual machine.
 
-    ![Configure VM Agent and extensions for the virtual machine][Configure VM Agent and extensions for the virtual machine]
 
-    > [WACOM.NOTE] The VM agent provides the environment for you to install extensions that can help you interact with or manage the virtual machine. For details, see [Using Extensions][Using Extensions].
-
-8.  After the virtual machine is created, the Management Portal lists the new virtual machine under **Virtual Machines**. The corresponding cloud service and storage account also are created and are listed in those sections. Both the virtual machine and cloud service are started automatically and the Management Portal shows their status as **Running**.
-
-    ![Configure VM Agent and the endpoints of the virtual machine][Configure VM Agent and the endpoints of the virtual machine]
-
-  [Management Portal]: http://manage.windowsazure.com
-  [Free Trial]: http://www.windowsazure.com/en-us/pricing/free-trial/
-  [Navigate to From Gallery in the Command Bar]: ./media/virtual-machines-create-WindowsVM/fromgallery.png
-  [Choose an image]: ./media/virtual-machines-create-WindowsVM/chooseimage.png
-  [Virtual Machine and Cloud Service Sizes for Azure]: http://go.microsoft.com/fwlink/p/?LinkId=466520
-  [Configure the properties of the virtual machine]: ./media/virtual-machines-create-WindowsVM/vmconfiguration.png
-  [multiple virtual machines]: http://www.windowsazure.com/en-us/documentation/articles/cloud-services-connect-virtual-machine/
-  [Azure Virtual Network Overview]: http://go.microsoft.com/fwlink/p/?LinkID=294063
-  [How to Set Up Endpoints to a Virtual Machine]: http://www.windowsazure.com/en-us/documentation/articles/virtual-machines-set-up-endpoints/
-  [Configure the connected resources of the virtual machine]: ./media/virtual-machines-create-WindowsVM/resourceconfiguration.png
-  [Configure VM Agent and extensions for the virtual machine]: ./media/virtual-machines-create-WindowsVM/agent-and-extensions.png
-  [Using Extensions]: http://go.microsoft.com/FWLink/p/?LinkID=390493
-  [Configure VM Agent and the endpoints of the virtual machine]: ./media/virtual-machines-create-WindowsVM/vmcreated.png

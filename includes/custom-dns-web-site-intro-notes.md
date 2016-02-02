@@ -1,5 +1,8 @@
-> [WACOM.NOTE] **This article is for Azure Websites**; for Cloud Services, see <a href="/en-us/develop/net/common-tasks/custom-dns/">Configuring a Custom Domain Name in Azure</a>.
+這篇文章是針對應用程式服務 (Web 應用程式、 API 應用程式、 行動應用程式、 邏輯應用程式)。對於雲端服務，請參閱 <a href="/develop/net/common-tasks/custom-dns/">在 Azure 中設定自訂網域名稱</a>。
+> [AZURE.NOTE]  **如需「使用流量管理員將流量負載平衡到 Web 應用程式」的指示**，請使用本文頂端的選取器來選取流量管理員專屬步驟。
 >
-> **For instructions on using Traffic Manager to load balance traffic to websites**, use the selector at the top of this article to select the Traffic Manager specific steps.
->
-> **Custom domain names cannot be used with Free websites**. You must configure your websites for Shared, Basic, or Standard mode, which may change how much you are billed for your subscription. See <a href=/en-us/pricing/details/web-sites/">Websites Pricing Details</a> for more information.
+> **自訂網域名稱無法搭配免費的 Web 應用程式使用**。您必須將 Web 應用程式設定為 [**共用**]、[**基本**] 或 [**標準**] 模式，但這可能會變更您的訂用帳戶費用。請參閱 <a href=/pricing/details/web-sites/">Web 應用程式定價詳細資料</a> 如需詳細資訊。
+
+
+
+

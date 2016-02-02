@@ -1,94 +1,95 @@
+先前範例所示範的標準登入，在每次應用程式啟動時，皆需要用戶端連絡身分識別提供者和行動服務。 這個方法不只效率不彰，而且如果同時有許多用戶試圖啟用您的應用程式時，還可能遇到使用量相關的問題。 更好的方法就是快取行動服務傳回的驗證權杖，然後嘗試在使用提供者形式登入前先使用此方法。
+>[AZURE.NOTE]無論您使用用戶端管理或服務管理驗證，皆可以快取行動服務發行的權杖。 本教學課程使用服務管理驗證。
 
-The previous example showed a standard sign-in, which requires the client to contact both the identity provider and the mobile service every time that the app starts. Not only is this method inefficient, you can run into usage-relates issues should many customers try to start you app at the same time. A better approach is to cache the authorization token returned by Mobile Services and try to use this first before using a provider-based sign-in. 
+1. 在 MainPage.xaml.cs 專案檔中，新增下列 **using** 陳述式：
 
->[WACOM.NOTE]You can cache the token issued by Mobile Services regardless of whether you are using client-managed or service-managed authentication. This tutorial uses service-managed authentication.
+        using System.IO.IsolatedStorage;
+        using System.Security.Cryptography;     
 
-1. In the MainPage.xaml.cs project file, add the following **using** statements:
+2. 使用下列程式碼來取代 **AuthenticateAsync** 方法：
 
-		using System.IO.IsolatedStorage;
-		using System.Security.Cryptography;		
+     private async System.Threading.Tasks.Task AuthenticateAsync()
+     {
+         string message;
+         // This sample uses the Facebook provider.
+         var provider = "Facebook";
+    
+         // Provide some additional app-specific security for the encryption.
+         byte [] entropy = { 1, 8, 3, 6, 5 };
+    
+         // Authorization credential.
+         MobileServiceUser user = null;
+    
+         // Isolated storage for the app.
+         IsolatedStorageSettings settings =
+             IsolatedStorageSettings.ApplicationSettings;
+    
+         while (user == null)
+         {
+             // Try to get an existing encrypted credential from isolated storage.                    
+             if (settings.Contains(provider))
+             {
+                 // Get the encrypted byte array, decrypt and deserialize the user.
+                 var encryptedUser = settings[provider] as byte[];
+                 var userBytes = ProtectedData.Unprotect(encryptedUser, entropy);
+                 user = JsonConvert.DeserializeObject<MobileServiceUser>(
+                     System.Text.Encoding.Unicode.GetString(userBytes, 0, userBytes.Length));
+             }
+             if (user != null)
+             {
+                 // Set the user from the stored credentials.
+                 App.MobileService.CurrentUser = user;
+    
+                 try
+                 {
+                     // Try to return an item now to determine if the cached credential has expired.
+                     await App.MobileService.GetTable<TodoItem>().Take(1).ToListAsync();
+                 }
+                 catch (MobileServiceInvalidOperationException ex)
+                 {
+                     if (ex.Response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                     {
+                         // Remove the credential with the expired token.
+                         settings.Remove(provider);
+                         user = null;
+                         continue;
+                     }
+                 }
+             }
+             else
+             {
+                 try
+                 {
+                     // Login with the identity provider.
+                     user = await App.MobileService
+                         .LoginAsync(provider);
+    
+                     // Serialize the user into an array of bytes and encrypt with DPAPI.
+                     var userBytes = System.Text.Encoding.Unicode
+                         .GetBytes(JsonConvert.SerializeObject(user));
+                     byte[] encryptedUser = ProtectedData.Protect(userBytes, entropy);
+    
+                     // Store the encrypted user credentials in local settings.
+                     settings.Add(provider, encryptedUser);
+                     settings.Save();
+                 }
+                 catch (MobileServiceInvalidOperationException ex)
+                 {
+                     message = "You must log in. Login Required";
+                 }
+             }
+             message = string.Format("You are now logged in - {0}", user.UserId);
+             MessageBox.Show(message);
+         }
+     }
 
-2. Replace the **AuthenticateAsync** method with the following code:
+ 在這個版本的 **AuthenticateAsync** 中，應用程式會嘗試使用已在本機儲存體中加密儲存的認證來存取行動服務。 系統會傳送簡單的查詢，以確認儲存的權杖尚未到期。 傳回 401 時，即會嘗試以提供者為主的一般登入。 如果沒有儲存任何認證，也會執行一般登入。
+ >[AZURE.NOTE]這個應用程式會在登入期間測試到期的權杖，但是權杖可能會在應用程式使用期間經驗證之後到期。 如需處理與權杖到期相關之授權錯誤的方案，請參閱下列文章 [快取和處理到期的權杖，在 Azure 行動服務管理的 SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)。 
 
-        private async System.Threading.Tasks.Task AuthenticateAsync()
-        {
-            string message;
-            // This sample uses the Facebook provider.
-            var provider = "Facebook";
+3. 重新啟動應用程式兩次。
 
-            // Provide some additional app-specific security for the encryption.
-            byte [] entropy = { 1, 8, 3, 6, 5 };
+    請注意，第一次啟動時，需要再次使用該提供者登入。 不過，在第二次重新啟動時，可以使用快取的認證，並略過登入。
 
-            // Authorization credential.
-            MobileServiceUser user = null;
 
-            // Isolated storage for the app.
-            IsolatedStorageSettings settings =
-                IsolatedStorageSettings.ApplicationSettings;
 
-            while (user == null)
-            {
-                // Try to get an existing encrypted credential from isolated storage.                    
-                if (settings.Contains(provider))
-                {
-                    // Get the encrypted byte array, decrypt and deserialize the user.
-                    var encryptedUser = settings[provider] as byte[];
-                    var userBytes = ProtectedData.Unprotect(encryptedUser, entropy);
-                    user = JsonConvert.DeserializeObject<MobileServiceUser>(
-                        System.Text.Encoding.Unicode.GetString(userBytes, 0, userBytes.Length));
-                }
-                if (user != null)
-                {
-                    // Set the user from the stored credentials.
-                    App.MobileService.CurrentUser = user;
 
-                    try
-                    {
-                        // Try to return an item now to determine if the cached credential has expired.
-                        await App.MobileService.GetTable<TodoItem>().Take(1).ToListAsync();
-                    }
-                    catch (MobileServiceInvalidOperationException ex)
-                    {
-                        if (ex.Response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                        {
-                            // Remove the credential with the expired token.
-                            settings.Remove(provider);
-                            user = null;
-                            continue;
-                        }
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        // Login with the identity provider.
-                        user = await App.MobileService
-                            .LoginAsync(provider);
-
-                        // Serialize the user into an array of bytes and encrypt with DPAPI.
-                        var userBytes = System.Text.Encoding.Unicode
-                            .GetBytes(JsonConvert.SerializeObject(user));
-                        byte[] encryptedUser = ProtectedData.Protect(userBytes, entropy);
-
-                        // Store the encrypted user credentials in local settings.
-                        settings.Add(provider, encryptedUser);
-                        settings.Save();
-                    }
-                    catch (MobileServiceInvalidOperationException ex)
-                    {
-                        message = "You must log in. Login Required";
-                    }
-                }
-                message = string.Format("You are now logged in - {0}", user.UserId);
-                MessageBox.Show(message);
-            }
-        }
-
-	In this version of **AuthenticateAsync**, the app tries to use credentials stored encrypted in local storage to access the mobile service. A simple query is sent to verify that the stored token is not expired. When a 401 is returned, a regular provider-based sign-in is attempted. A regular sign-in is also performed when there is no stored credential.	
-
-	>[WACOM.NOTE]This app tests for expired tokens during login, but token expiration can occur after authentication when the app is in use. For a solution to handling authorization errors related to expiring tokens, see the post [Caching and handling expired tokens in Azure Mobile Services managed SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
-	
-3. Restart the app twice.
-
-	Notice that on the first start-up, sign-in with the provider is again required. However, on the second restart the cached credentials are used and sign-in is bypassed. 

@@ -1,3 +1,8 @@
-####Learn More
+#### 詳細資訊
 
-Not using Azure SQL Database Elastic Scale yet? Check out our [Getting Started Guide](./sql-database-elastic-scale-get-started.md) and [Documentation Map](./sql-database-elastic-scale-documentation-map.md).  For questions, please reach out to us on the [SQL Database forum](http://social.msdn.microsoft.com/forums/azure/en-US/home?forum=ssdsgetstarted) and for feature requests, please add them to the [SQL Database feedback forum](http://feedback.azure.com/forums/217321-sql-database).
+尚未使用彈性資料庫工具？ 請查看我們 [入門指南](../articles/sql-database/sql-database-elastic-scale-get-started.md) 和 [文件地圖](../articles/sql-database/sql-database-elastic-scale-documentation-map.md)。 如有問題，請將與我們在 [SQL Database 論壇](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) 功能要求，請將它們加入 [SQL Database 意見反應論壇](http://feedback.azure.com/forums/217321-sql-database)。
+
+
+
+
+

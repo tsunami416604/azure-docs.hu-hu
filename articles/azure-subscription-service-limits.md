@@ -1,372 +1,294 @@
-<properties urlDisplayName="Azure Subscription and Service Limits, Quotas, and Constraints" pageTitle="Microsoft Azure Subscription and Service Limits, Quotas, and Constraints" metaKeywords="Cloud Services, Virtual Machines, Web Sites, Virtual Network, SQL Database, Subscription, Storage" description="Provides a list of common Azure subscription and service limits along with maximum values." metaCanonical="" services="web-sites,virtual-machines,cloud-services" documentationCenter="" title="" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
+<properties
+    pageTitle="Microsoft Azure 訂用帳戶及服務限制、配額與限制"
+    description="提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。這包括如何增加限制和最大值的詳細資訊。"
+    services=""
+    documentationCenter=""
+    authors="rothja"
+    manager="jeffreyg"
+    editor="monicar"/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jroth"></tags>
+<tags
+    ms.service="multiple"
+    ms.workload="multiple"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="12/03/2015"
+    ms.author="jroth"/>
 
-# Azure Subscription and Service Limits, Quotas, and Constraints
 
-The following document specifies some of the most common Microsoft Azure limits. Note that this document does not currently cover all Azure services. Over time, these limits will be expanded and updated to cover more of the platform.
+# Azure 訂閱和服務限制、配額與限制
 
--   [Subscription Limits][Subscription Limits]
--   [Cloud Service Limits][Cloud Service Limits]
--   [Virtual Machine Limits][Virtual Machine Limits]
--   [Websites Limits][Websites Limits]
--   [Networking Limits][Networking Limits]
--   [Storage Limits][Storage Limits]
--   [DocumentDB Preview Limits][DocumentDB Preview Limits]
--   [SQL Database Limits][SQL Database Limits]
--   [Media Services Limits][Media Services Limits]
--   [Service Bus Limits][Service Bus Limits]
+## 概觀
 
-> [WACOM.NOTE] If you want to raise the limit above the **Default Limit**, you can [open an online customer support request at no charge][open an online customer support request at no charge]. The limits cannot be raised above the **Maximum Limit** value in the tables below. If there is no **Maximum Limit** column, then the specified resource does not have adjustable limits.
+本文件說明一些最常見的 Microsoft Azure 限制。 請注意，這目前未涵蓋所有 Azure 服務。 這些限制將隨著時間擴展並更新以涵蓋更多平台。
+> [AZURE.NOTE] 您無法將限制提升到高於下表中所示的**上限**值。 如果沒有**上限**欄，指定的資源即沒有可調整的限制。
 
-## <a name="subscription"></a>Subscription Limits
+## 限制和 Azure 資源管理員
 
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Resource</th>
-<th align="left">Default Limit</th>
-<th align="left">Maximum Limit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><p>Cores per <a href="http://msdn.microsoft.com/en-us/library/azure/hh531793.aspx">subscription</a><sup>1</sup></p></td>
-<td align="left"><p>20</p></td>
-<td align="left"><p>10,000</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p><a href="http://msdn.microsoft.com/en-us/library/azure/gg456328.aspx">Co-administrators</a> per subscription</p></td>
-<td align="left"><p>200</p></td>
-<td align="left"><p>200</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p><a href="http://azure.microsoft.com/en-us/documentation/articles/storage-whatis-account/">Storage accounts</a> per subscription</p></td>
-<td align="left"><p>100</p></td>
-<td align="left"><p>100</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p><a href="http://azure.microsoft.com/en-us/documentation/articles/cloud-services-what-is/">Cloud services</a> per subscription</p></td>
-<td align="left"><p>20</p></td>
-<td align="left"><p>200</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p><a href="http://msdn.microsoft.com/library/azure/jj156007.aspx">Virtual networks</a> per subscription<sup>2</sup></p></td>
-<td align="left"><p>10</p></td>
-<td align="left"><p>100</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p><a href="http://msdn.microsoft.com/en-us/library/jj157100.aspx">Local networks</a> per subscription</p></td>
-<td align="left"><p>10</p></td>
-<td align="left"><p>100</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>SQL Databases per subscription</p></td>
-<td align="left"><p>150</p></td>
-<td align="left"><p>500</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Logical SQL Database servers per subscription</p></td>
-<td align="left"><p>6</p></td>
-<td align="left"><p>150</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>DNS servers per subscription</p></td>
-<td align="left"><p>9</p></td>
-<td align="left"><p>100</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Reserved IPs per subscription</p></td>
-<td align="left"><p>5</p></td>
-<td align="left"><p>100</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Hosted service certificates per subscription</p></td>
-<td align="left"><p>400</p></td>
-<td align="left"><p>400</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p><a href="http://msdn.microsoft.com/en-us/library/azure/jj156085.aspx">Affinity groups</a> per subscription</p></td>
-<td align="left"><p>256</p></td>
-<td align="left"><p>256</p></td>
-</tr>
-</tbody>
-</table>
+現在您可以結合多個 Azure 中的資源到單一的 Azure 資源群組。 使用資源群組時的限制是，在全域時會使用 Azure 資源管理員在地區層級管理。
 
-<sup>1</sup>Extra Small instances count as one core towards the core limit despite using a partial core.
+在以下的限制中，已加入了新資料表，以反映在使用 Azure 資源管理員時的限制方面的任何差異。 例如，有**訂用帳戶限制**資料表和**訂用帳戶限制 - Azure 資源管理員**資料表。 當某個限制同時適用於這兩個案例時，只會顯示在第一個資料表中。 除非另有說明，限制在所有區域中全域適用。
+> [AZURE.NOTE] 請務必強調 Azure 資源群組中資源的配額是基於您的訂閱可以存取的每一區域，而不是每一訂閱 (服務管理配額則是)。 讓我們以核心配額為例。 如果您需要要求增加配額以支援核心，您必須決定您想要在哪些區域中使用多少個核心，然後提出 Azure 資源群組核心配額的特定要求，以取得您想要的數量和區域。 因此，如果您需要在西歐使用 30 個核心以在該處執行應用程式，您應該在西歐特別要求 30 個核心。 但是您在任何其他區域中的核心配額將不會增加 -- 僅西歐會有 30 個核心配額。
 
-<sup>2</sup>Each virtual network supports a single virtual network gateway.
 
-## <a name="webworkerlimits"></a>Cloud Service Limits
 
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Resource</th>
-<th align="left">Default Limit</th>
-<th align="left">Maximum Limit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><p><a href="http://azure.microsoft.com/en-us/documentation/articles/cloud-services-what-is/">Web/worker roles per deployment<sup>1</sup></a></p></td>
-<td align="left"><p>25</p></td>
-<td align="left"><p>25</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p><a href="http://msdn.microsoft.com/en-us/library/gg557552.aspx#InstanceInputEndpoint">Instance Input Endpoints</a> per deployment</p></td>
-<td align="left"><p>25</p></td>
-<td align="left"><p>25</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p><a href="http://msdn.microsoft.com/en-us/library/gg557552.aspx#InputEndpoint">Input Endpoints</a> per deployment</p></td>
-<td align="left"><p>25</p></td>
-<td align="left"><p>25</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p><a href="http://msdn.microsoft.com/en-us/library/gg557552.aspx#InternalEndpoint">Internal Endpoints</a> per deployment</p></td>
-<td align="left"><p>25</p></td>
-<td align="left"><p>25</p></td>
-</tr>
-</tbody>
-</table>
 
-<sup>1</sup>Each Cloud Service with Web/Worker roles can have two deployments, one for production and one for staging. Also note that this limit refers to the number of distinct roles (configuration) and not the number of instances per role (scaling).
+## 特定服務的限制
 
-## <a name="vmlimits"></a>Virtual Machine Limits
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
 
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Resource</th>
-<th align="left">Default Limit</th>
-<th align="left">Maximum Limit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><p><a href="http://azure.microsoft.com/en-us/documentation/services/virtual-machines/">Virtual machines</a> per cloud service<sup>1</sup></p></td>
-<td align="left"><p>50</p></td>
-<td align="left"><p>50</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Input Endpoints per cloud service<sup>2</sup></p></td>
-<td align="left"><p>150</p></td>
-<td align="left"><p>150</p></td>
-</tr>
-</tbody>
-</table>
 
-<sup>1</sup>When you create a virtual machine, a cloud service is automatically created to contain the machine. You can then add multiple virtual machines in that same Cloud Service.
+### 訂閱限制
 
-<sup>2</sup>Input endpoints are used to allow communication to the virtual machines that is external to the containing cloud service. Virtual machines within the same cloud service automatically allow communication between all UDP and TCP ports for internal communication.
+#### 訂閱限制
 
-## <a name="websiteslimits"></a>Websites Limits
+[AZURE.INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
-[WACOM.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
+#### 訂用帳戶限制 - Azure 資源管理員
 
-## <a name="networkinglimits"></a>Networking Limits
+使用 Azure 資源管理員和 Azure 資源群組時，適用下列限制。 使用 Azure 資源管理員時未變更的限制不會在以下列出。 請參閱先前的資料表來瞭解這些限制。
 
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Resource</th>
-<th align="left">Default Limit</th>
-<th align="left">Maximum Limit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><p>Total machines<sup>1</sup> per <a href="http://msdn.microsoft.com/library/azure/jj156007.aspx">Virtual Network</a><sup>2</sup></p></td>
-<td align="left"><p>2048</p></td>
-<td align="left"><p>2048</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Concurrent TCP connections for a virtual machine or role instance</p></td>
-<td align="left"><p>500K</p></td>
-<td align="left"><p>500K</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Access Control Lists (ACLs) per endpoint<sup>3</sup></p></td>
-<td align="left"><p>50</p></td>
-<td align="left"><p>50</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Local network sites per virtual network</p></td>
-<td align="left"><p>10</p></td>
-<td align="left"><p>10</p></td>
-</tr>
-</tbody>
-</table>
+[AZURE.INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-<sup>1</sup>The total number of machines includes Virtual Machines and Web/Worker role instances.
 
-<sup>2</sup>Each virtual network supports a single [virtual network gateway][virtual network gateway].
+### 資源群組限制
 
-<sup>3</sup>ACL is supported on Input Endpoints for Virtual Machines. For web/worker roles, it is supported on Input and Instance Input endpoints.
+[AZURE.INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
-## <a name="storagelimits"></a>Storage Limits
 
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Resource<sup>1</sup></th>
-<th align="left">Default Limit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><p>TB per storage account</p></td>
-<td align="left"><p>500 TB</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Max size of a single blob container, table, or queue</p></td>
-<td align="left"><p>500 TB</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Max number of blob containers, blobs, file shares, tables, queues, entities, or messages per storage account</p></td>
-<td align="left"><p>Only limit is the 500 TB storage account capacity</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Max size of a file share</p></td>
-<td align="left"><p>5 TB</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Max number of files in a file share</p></td>
-<td align="left"><p>Only limit is the 5 TB total capacity of the file share</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Max 8 KB IOPS per persistent disk (Basic Tier)</p></td>
-<td align="left"><p>300<sup>2</sup></p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Max 8 KB IOPS per persistent disk (Standard Tier)</p></td>
-<td align="left"><p>500<sup>2</sup></p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Total Request Rate (assuming 1KB object size) per storage account</p></td>
-<td align="left"><p>Up to 20,000 entities or messages per second</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Target Throughput for Single Blob</p></td>
-<td align="left"><p>Up to 60 MB per second, or up to 500 requests per second</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Target Throughput for Single Queue (1 KB messages)</p></td>
-<td align="left"><p>Up to 2000 messages per second</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Target Throughput for Single Table Partition (1 KB entities)</p></td>
-<td align="left"><p>Up to 2000 entities per second</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Max ingress per storage account (US Regions)</p></td>
-<td align="left"><p>10 Gbps if GRS<sup>3</sup> enabled, 20 Gbps for LRS</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Max egress per storage account (US Regions)</p></td>
-<td align="left"><p>20 Gbps if GRS<sup>3</sup> enabled, 30 Gbps for LRS</p></td>
-</tr>
-<tr class="even">
-<td align="left"><p>Max ingress per storage account (European and Asian Regions)</p></td>
-<td align="left"><p>5 Gbps if GRS<sup>3</sup> enabled, 10 Gbps for LRS</p></td>
-</tr>
-<tr class="odd">
-<td align="left"><p>Max egress per storage account (European and Asian Regions)</p></td>
-<td align="left"><p>10 Gbps if GRS<sup>3</sup> enabled, 15 Gbps for LRS</p></td>
-</tr>
-</tbody>
-</table>
+### 虛擬機器限制
 
-<sup>1</sup>For more details on these limits, see [Azure Storage Scalability and Performance Targets][Azure Storage Scalability and Performance Targets].
+#### 虛擬機器限制
 
-<sup>2</sup>For virtual machines in the Basic Tier, do not place more than 66 highly used VHDs in a storage account to avoid the 20,000 total request rate limit (20,000/300). For virtual machines in the Standard Tier, do not place more than 40 highly used VHDs in a storage account (20,000/500). For more information, see [Virtual Machine and Cloud Service Sizes for Azure][Virtual Machine and Cloud Service Sizes for Azure].
+[AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
-<sup>3</sup>GRS is [Geo Redundant Storage][Geo Redundant Storage]. LRS is [Locally Redundant Storage][Locally Redundant Storage]. Note that GRS is also locally redundant.
 
-## <a name="documentdblimits"></a>DocumentDB Preview Limits
+#### 虛擬機器限制 - Azure 資源管理員
 
-[WACOM.INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
+使用 Azure 資源管理員和 Azure 資源群組時，適用下列限制。 使用 Azure 資源管理員時未變更的限制不會在以下列出。 請參閱先前的資料表來瞭解這些限制。
 
-## <a name="sqldblimits"></a>SQL Database Limits
+[AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
-For SQL Database Limits, please see the following topics:
 
--   [Azure SQL Database Service Tiers (Editions)][Azure SQL Database Service Tiers (Editions)]
--   [Azure SQL Database Service Tiers and Performance Levels][Azure SQL Database Service Tiers and Performance Levels]
--   [Database Throughput Unit (DTU) Quotas][Database Throughput Unit (DTU) Quotas]
--   [SQL Database Resource Limits][SQL Database Resource Limits]
+### 網路限制
 
-## <a name="mediaserviceslimits"></a>Media Services Limits
+[AZURE.INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
-[WACOM.INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
+#### 網路限制
 
-## <a name="servicebuslimits"></a>Service Bus Limits
+[AZURE.INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
-[WACOM.INCLUDE [azure-servicebus-limits](../includes/azure-servicebus-limits.md)]
+#### 流量管理員限制
 
-## <a name="seealso"></a>See Also
+[AZURE.INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
-[Understanding Azure Limits and Increases][open an online customer support request at no charge]
+#### DNS 限制
 
-[Virtual Machine and Cloud Service Sizes for Azure][Virtual Machine and Cloud Service Sizes for Azure]
+[AZURE.INCLUDE [dns-limits](../includes/dns-limits.md)]
 
-  [Subscription Limits]: #subscription
-  [Cloud Service Limits]: #webworkerlimits
-  [Virtual Machine Limits]: #vmlimits
-  [Websites Limits]: #websiteslimits
-  [Networking Limits]: #networkinglimits
-  [Storage Limits]: #storagelimits
-  [DocumentDB Preview Limits]: #documentdblimits
-  [SQL Database Limits]: #sqldblimits
-  [Media Services Limits]: #mediaserviceslimits
-  [Service Bus Limits]: #servicebuslimits
-  [open an online customer support request at no charge]: http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
-  [subscription]: http://msdn.microsoft.com/en-us/library/azure/hh531793.aspx
-  [Co-administrators]: http://msdn.microsoft.com/en-us/library/azure/gg456328.aspx
-  [Storage accounts]: http://azure.microsoft.com/en-us/documentation/articles/storage-whatis-account/
-  [Cloud services]: http://azure.microsoft.com/en-us/documentation/articles/cloud-services-what-is/
-  [Virtual networks]: http://msdn.microsoft.com/library/azure/jj156007.aspx
-  [Local networks]: http://msdn.microsoft.com/en-us/library/jj157100.aspx
-  [Affinity groups]: http://msdn.microsoft.com/en-us/library/azure/jj156085.aspx
-  [Instance Input Endpoints]: http://msdn.microsoft.com/en-us/library/gg557552.aspx#InstanceInputEndpoint
-  [Input Endpoints]: http://msdn.microsoft.com/en-us/library/gg557552.aspx#InputEndpoint
-  [Internal Endpoints]: http://msdn.microsoft.com/en-us/library/gg557552.aspx#InternalEndpoint
-  [Virtual machines]: http://azure.microsoft.com/en-us/documentation/services/virtual-machines/
-  [azure-websites-limits]: ../includes/azure-websites-limits.md
-  [virtual network gateway]: http://msdn.microsoft.com/en-us/library/azure/jj156210.aspx
-  [Azure Storage Scalability and Performance Targets]: http://msdn.microsoft.com/library/azure/dn249410.aspx
-  [Virtual Machine and Cloud Service Sizes for Azure]: http://msdn.microsoft.com/en-us/library/azure/dn197896.aspx
-  [Geo Redundant Storage]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx
-  [Locally Redundant Storage]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/08/introducing-locally-redundant-storage-for-windows-azure-storage.aspx
-  [azure-documentdb-limits]: ../includes/azure-documentdb-limits.md
-  [Azure SQL Database Service Tiers (Editions)]: http://msdn.microsoft.com/en-us/library/azure/dn741340.aspx
-  [Azure SQL Database Service Tiers and Performance Levels]: http://msdn.microsoft.com/en-us/library/azure/dn741336.aspx
-  [Database Throughput Unit (DTU) Quotas]: http://msdn.microsoft.com/en-us/library/azure/ee336245.aspx#DTUs
-  [SQL Database Resource Limits]: http://msdn.microsoft.com/en-us/library/azure/dn338081.aspx
-  [azure-mediaservices-limits]: ../includes/azure-mediaservices-limits.md
-  [azure-servicebus-limits]: ../includes/azure-servicebus-limits.md
+### 儲存體限制
+
+
+
+#### 儲存體服務限制
+
+[AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+
+#### 虛擬機器磁碟限制
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
+
+
+
+**標準儲存體帳戶**
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
+
+**進階儲存體帳戶**
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
+
+#### 儲存體資源提供者限制
+
+[AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
+
+
+### 雲端服務限制
+
+[AZURE.INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
+
+
+### 應用程式服務限制
+
+下列應用程式服務限制包含 Web 應用程式、行動應用程式、API 應用程式和邏輯應用程式的限制。
+
+[AZURE.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
+
+### 排程器限制
+
+[AZURE.INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
+
+### Batch 限制
+
+[AZURE.INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
+
+### BizTalk 服務限制
+
+下表顯示 Azure Biztalk 服務的限制。
+
+[AZURE.INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
+
+
+### DocumentDB 限制
+
+[AZURE.INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
+
+
+### Mobile Engagement 限制
+
+[AZURE.INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
+
+
+### 搜尋限制
+
+定價層會決定容量及您搜尋服務的限制。
+
+#### 標準層級
+
+[AZURE.INCLUDE [azure-search-limits-standard](../includes/azure-search-limits-standard.md)]
+
+#### 共用層級 (多租用戶服務的一部分，Azure 訂閱者可免費使用)
+
+[AZURE.INCLUDE [azure-search-limits-free](../includes/azure-search-limits-free.md)]
+
+
+
+### 媒體服務限制
+
+[AZURE.INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
+
+### CDN 限制
+
+[AZURE.INCLUDE [cdn-limits](../includes/cdn-limits.md)]
+
+### 行動服務限制
+
+[AZURE.INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
+
+### 通知中樞服務限制
+
+[AZURE.INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
+
+
+### 服務匯流排限制
+
+[AZURE.INCLUDE [azure-servicebus-limits](../includes/service-bus-quotas-table.md)]
+
+### IoT 中樞限制
+
+[AZURE.INCLUDE [azure-iothub-limits](../includes/iot-hub-limits.md)]
+
+### Data Factory 限制
+
+[AZURE.INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
+
+
+### 串流分析限制
+
+[AZURE.INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
+
+### Active Directory 限制
+
+[AZURE.INCLUDE [AAD-service-limits](../includes/active-directory-service-limits-include.md)]
+
+
+### Azure RemoteApp 限制
+
+[AZURE.INCLUDE [azure-remoteapp-limits](../includes/azure-remoteapp-limits.md)]
+
+### StorSimple 系統限制
+
+[AZURE.INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
+
+
+### Operational Insights 限制
+
+[AZURE.INCLUDE [operational-insights-limits](../includes/operational-insights-limits.md)]
+
+### 備份限制
+
+[AZURE.INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
+
+### 網站復原限制
+
+[AZURE.INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]
+
+### Application Insights 限制
+
+[AZURE.INCLUDE [application-insights-limits](../includes/application-insights-limits.md)]
+
+### API 管理限制
+
+[AZURE.INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]
+
+### Azure Redis 快取限制
+
+[AZURE.INCLUDE [redis-cache-service-limits](../includes/redis-cache-service-limits.md)]
+
+### 金鑰保存庫限制
+
+[AZURE.INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
+
+### Multi-Factor Authentication
+
+[AZURE.INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
+
+### SQL Database 限制
+
+
+
+## 另請參閱
+
+
+
+
+
+
+
+
+

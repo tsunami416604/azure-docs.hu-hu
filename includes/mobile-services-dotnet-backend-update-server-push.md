@@ -1,35 +1,38 @@
+1. 在 Visual Studio 的 [方案總管] 中，展開行動服務專案中的 **Controllers** 資料夾。 開啟 TodoItemController.cs，並以下列程式碼更新 `PostTodoItem` 方法定義：
 
-1. In Visual Studio Solution Explorer, expand the **Controllers** folder in the mobile service project. Open TodoItemController.cs and update the `PostTodoItem` method definition with the following code:  
+     public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
+     {
+         TodoItem current = await InsertAsync(item);
+    
+         // Create a WNS native toast.
+         WindowsPushMessage message = new WindowsPushMessage();
+    
+         // Define the XML paylod for a WNS native toast notification 
+         // that contains the text of the inserted item.
+         message.XmlPayload = @"<?xml version=""1.0"" encoding=""utf-8""?>" +
+                              @"<toast><visual><binding template=""ToastText01"">" +
+                              @"<text id=""1"">" + item.Text + @"</text>" +
+                              @"</binding></visual></toast>";
+         try
+         {
+             var result = await Services.Push.SendAsync(message);
+             Services.Log.Info(result.State.ToString());
+         }
+         catch (System.Exception ex)
+         {
+             Services.Log.Error(ex.Message, null, "Push.SendAsync Error");
+         }
+         return CreatedAtRoute("Tables", new { id = current.Id }, current);
+     }
 
-        public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
-        {
-            TodoItem current = await InsertAsync(item);
+ 此程式碼會在插入 todo 項目之後傳送推播通知 (含所插入項目的文字)。 發生錯誤時，程式碼會將錯誤記錄檔項目來檢視 **記錄** ] 索引標籤中的行動服務的 [Azure 傳統入口網站](https://manage.windowsazure.com/)。
+ >[AZURE.NOTE] 您可以使用範本通知傳送單一推播通知至多個平台的用戶端。 如需詳細資訊，請參閱 [支援從單一行動服務的多個裝置平台](../articles/mobile-services-how-to-use-multiple-clients-single-service.md#push)。
 
-            // Create a WNS native toast.
-            WindowsPushMessage message = new WindowsPushMessage();
+2. 將行動服務專案重新發佈至 Azure。
 
-            // Define the XML paylod for a WNS native toast notification 
-			// that contains the text of the inserted item.
-            message.XmlPayload = @"<?xml version=""1.0"" encoding=""utf-8""?>" +
-                                 @"<toast><visual><binding template=""ToastText01"">" +
-                                 @"<text id=""1"">" + item.Text + @"</text>" +
-                                 @"</binding></visual></toast>";
-            try
-            {
-                var result = await Services.Push.SendAsync(message);
-                Services.Log.Info(result.State.ToString());
-            }
-            catch (System.Exception ex)
-            {
-                Services.Log.Error(ex.Message, null, "Push.SendAsync Error");
-            }
-            return CreatedAtRoute("Tables", new { id = current.Id }, current);
-        }
 
-    This code sends a push notification (with the text of the inserted item) after inserting a todo item. In the event of an error, the code will add an error log entry which is viewable on the **Logs** tab of the mobile service in the Management Portal.
 
-	>[WACOM.NOTE] You can use template notifications to send a single push notification to clients on multiple platforms. For more information, see [Supporting multiple device platforms from a single mobile service](/en-us/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service/#push).
 
-2. Republish the mobile service project to Azure.
+
 
 

@@ -1,21 +1,23 @@
-When you provision a MongoLab database, MongoLab transmits a connection URI to Azure in MongoDB's standard connection string format. This value is used to initiate a MongoDB connection through your choice of MongoDB driver. For more information about connection strings, see [Connections](http://www.mongodb.org/display/DOCS/Connections) at mongodb.org.
+當您佈建 MongoLab 資料庫時，MongoLab 會以 MongoDB 標準連接字串格式，將連線 URI 傳送至 Azure。 此值會透過您選擇的 MongoDB 驅動程式，初始化 MongoDB 連線。 如需連接字串的詳細資訊，請參閱 [連線](http://www.mongodb.org/display/DOCS/Connections) mongodb.org。
 
-**This URI contains your database user name and password.  Treat it as sensitive information and do not share it.**
+* * 此 URI 包含您的資料庫使用者名稱和密碼。 將它當做敏感資訊，請勿。 * *
 
-You can retrieve this URI in the Azure Portal using the following steps:
+在 Azure 入口網站中，您可以利用下列步驟來擷取此 URI：
 
-1. Select **Add-ons**.  
+1. 選取 **附加元件**。  
 ![AddonsButton][button-addons]
-1. Locate your MongoLab service in your add-on list.  
+1. 在附加元件清單中，找出您的 MongoLab 服務。  
 ![MongolabEntry][entry-mongolabaddon]
-1. Cick the name of your add-on to reach the add-on page.
-1. Click **Connection Info**.  
+1. 按一下附加元件的名稱，前往附加元件頁面。
+1. 按一下 [連線資訊]****。  
 ![ConnectionInfoButton][button-connectioninfo]  
-Your MongoLab URI displays:  
-![ConnectionInfoScreen][screen-connectioninfo]  
-1.  Click the clipboard button to the right of the MONGOLAB_URI value to copy the full value to the clipboard.
+MongoLab URI 隨即出現：  
+![ConnectionInfoScreen][screen-connectioninfo]
+1.  按一下 MONGOLAB_URI 值右側的剪貼簿按鈕，將整個值複製到剪貼簿。
 
-[entry-mongolabaddon]: ./media/howto-get-connectioninfo-mongolab/entry-mongolabaddon.png
-[button-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/button-connectioninfo.png
-[screen-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/dialog-mongolab_connectioninfo.png
-[button-addons]: ./media/howto-get-connectioninfo-mongolab/button-addons.png
+
+[entry-mongolabaddon]: ./media/howto-get-connectioninfo-mongolab/entry-mongolabaddon.png 
+[button-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/button-connectioninfo.png 
+[screen-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/dialog-mongolab_connectioninfo.png 
+[button-addons]: ./media/howto-get-connectioninfo-mongolab/button-addons.png 
+

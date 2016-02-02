@@ -1,52 +1,57 @@
-The Domain Name System (DNS) is used to locate resources on the internet. For example, when you enter a website address in your browser, or click a link on a web page, it uses DNS to translate the domain into an IP address. The IP address is sort of like a street address, but it's not very human friendly. For example, it is much easier to remember a DNS name like **contoso.com** than it is to remember an IP address such as 192.168.1.88 or 2001:0:4137:1f67:24a2:3888:9cce:fea3.
+網域名稱系統 (DNS) 主要用來尋找網際網路上的資源。 例如，當您在瀏覽器中輸入 Web 應用程式位址，或按一下網頁上的連結時，它會使用 DNS 將網域轉譯成 IP 位址。 IP 位址如同街道地址，但它不是很容易使用。 例如，記憶像 **contoso.com** 的 DNS 名稱，比記憶如 192.168.1.88 或 2001:0:4137:1f67:24a2:3888:9cce:fea3 之類的 IP 位址容易得多。
 
-The DNS system is based on *records*. Records associate a specific *name*, such as **contoso.com**, with either an IP address or another DNS name. When an application, such as a web browser, looks up a name in DNS, it finds the record, and uses whatever it points to as the address. If the value it points to is an IP address, the browser will use that value. If it points to another DNS name, then the application has to do resolution again. Ultimately, all name resolution will end in an IP address.
+DNS 系統是根據*記錄*。 記錄會將特定的*名稱* (如 **contoso.com**)，與 IP 位址或其他 DNS 名稱相關聯。 當應用程式 (如網頁瀏覽器) 查詢 DNS 中的名稱時，它會尋找記錄，並使用它指向為位址的任何值。 如果指向的值為 IP 位址，瀏覽器將使用該值。 如果指向其他 DNS 名稱，則應用程式必須重新解析。 所有名稱解析最終會導出一個 IP 位址。
 
-When you create an Azure Website, a DNS name is automatically assigned to the site. This name takes the form of **&lt;yoursitename&gt;.azurewebsites.net**. There is also a virtual IP address available for use when creating DNS records, so you can either create records that point to the **.azurewebsites.net**, or you can point to the IP address.
+當您在 App Service 中建立 Web 應用程式時，會將 DNS 名稱自動指派給 Web 應用程式。 此名稱將採用的形式 **< yourwebappname >。 azurewebsites.net**。 建立 DNS 記錄時也可以使用虛擬 IP 位址，因此您可建立指向 **.azurewebsites.net**，或指向 IP 位址的記錄。
+> [AZURE.NOTE] 如果您刪除後重新建立 Web 應用程式，或在 App Service 計劃模式設定為 [**基本**]、[**共用**] 或 [**標準**] 之後變更為 [**免費**]，則您 Web 應用程式的 IP 位址將會變更。
 
-> [WACOM.NOTE] The IP address of your website will change if you delete and recreate your website, or change the website mode to free after it has been set to basic, shared, or standard.
+有多種記錄類型，每種記錄都有其本身的功能與限制，但對於 Web 應用程式只需要關注兩種記錄，即 *A* 和 *CNAME*。
 
-There are also multiple types of records, each with their own functions and limitations, but for websites we only care about two, *A* and *CNAME* records.
+### 位址記錄 (A 記錄)
 
-###Address record (A record)
+A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*或萬用字元網域* 例如 **\*.contoso.com**, ，IP 位址。 以 App Service 中的 Web 應用程式而言，就是指服務的虛擬 IP 或您為 Web 應用程式購買的特定 IP 位址。
 
-An A record maps a domain, such as **contoso.com** or **www.contoso.com**, *or a wildcard domain* such as **\*.contoso.com**, to an IP address. In the case of an Azure Website, either the virtual IP of the service or a specific IP address that you purchased for your website.
+相較於 CNAME 記錄，A 記錄的主要優點為：
 
-The main benefits of an A record over a CNAME record are:
+* 您可以將根網域 (如 **contoso.com**) 對應至 IP 位址；許多註冊機報僅允許使用 A 記錄執行此動作
 
-* You can map a root domain such as **contoso.com** to an IP address; many registrars only allow this using A records
+* 您可以有一個項目使用萬用字元，例如 **\*.contoso.com**, ，這會處理多個子網域的要求，例如 **mail.contoso.com**, ，**blogs.contoso.com**, ，或 **www.contso.com**。
 
-* You can have one entry that uses a wildcard, such as **\*.contoso.com**, which would handle requests for multiple sub-domains such as **mail.contoso.com**, **blogs.contoso.com**, or **www.contso.com**.
+> [AZURE.NOTE] 因為 A 記錄會對應至靜態 IP 位址，所以無法自動解析 Web 應用程式 IP 位址的變更。 您在設定 Web 應用程式的自訂網域名稱設定時會提供搭配 A 記錄所使用的 IP 位址。不過，如果您刪除後重新建立 Web 應用程式，或將 App Service 計劃模式變回 [**免費**]，此值就可能會變更。
 
-> [WACOM.NOTE] Since an A record is mapped to a static IP address, it cannot automatically resolve changes to the IP address of your website. An IP address for use with A records is provided when you configure custom domain name settings for your website; however, this value may change if you delete and recreate your website, or change the website mode to back to free.
+### 別名記錄 (CNAME 記錄)
 
-###Alias record (CNAME record)
+CNAME 記錄將*特定的*網域 (例如 **mail.contoso.com** 或 **www.contoso.com**) 對應到其他 (正式) 網域名稱。 在應用程式服務 Web 應用程式，正式網域名稱是 **< yourwebappname >。 azurewebsites.net** web 應用程式的網域名稱。 CNAME 建立之後，建立一個別名 **< yourwebappname >。 azurewebsites.net** 網域名稱。 CNAME 項目會解析為 IP 位址的您 **< yourwebappname >。 azurewebsites.net** 網域名稱，如果 web 應用程式的 IP 位址變更，您不需要採取任何動作。
+> [AZURE.NOTE] 使用 CNAME 記錄時，某些網域註冊機構只允許您對應子網域 (如 **www.contoso.com**)，而不是根名稱 (如 **contoso.com**)。 如需 CNAME 記錄的詳細資訊，請參閱您的註冊機構提供的文件 <a href="http://en.wikipedia.org/wiki/CNAME_record">CNAME 記錄的 Wikipedia 項目</a>, ，或 <a href="http://tools.ietf.org/html/rfc1035">IETF 網域名稱-實作與規格</a> 文件。
 
-A CNAME record maps a *specific* DNS name, such as **mail.contoso.com** or **www.contoso.com**, to another (canonical) domain name. In the case of Azure Websites, the canonical domain name is the **&lt;yoursitename>.azurewebsites.net** domain name of your website. Once created, the CNAME creates an alias for the **&lt;yoursitename>.azurewebsites.net** domain name. The CNAME entry will resolve to the IP address of your **&lt;yoursitename>.azurewebsites.net** domain name automatically, so if the IP address of the website changes, you do not have to take any action.
+### Web 應用程式 DNS 詳細規格
 
-> [WACOM.NOTE] Some domain registrars only allow you to map subdomains when using a CNAME record, such as **www.contoso.com**, and not root names, such as **contoso.com**. For more information on CNAME records, see the documentation provided by your registrar, <a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record</a>, or the <a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> document.
+若要搭配 Web 應用程式使用 A 記錄，您必須先建立下列其中一筆 CNAME 記錄：
 
-###Azure Website DNS specifics
+* **根網域或萬用字元子網域的** -的 DNS 名稱 **awverify** 至  **awverify.< yourwebappname >。 azurewebsites.net**。
 
-Using an A record with Azure Websites requires you to first create one of the following CNAME records:
+* **對於特定子網域** -的 DNS 名稱 **awverify.< 子網域 >** 至 **awverify.< yourwebappname >。 azurewebsites.net**。 例如，**awverify.blogs** (如果 A 記錄要提供給 **blogs.contoso.com** 使用)。
 
-* **For the root domain or wildcard sub-dodmains** - A DNS name of **awverify** to  **awverify.&lt;yourwebsitename&gt;.azurewebsites.net**.
+此 CNAME 記錄可用來驗證您擁有正在嘗試使用的網域。 這是建立指向 Web 應用程式之虛擬 IP 位址的 A 記錄以外的動作。
 
-* **For a specific sub-domain** - A DNS name of **awverify.&lt;sub-domain>** to **awverify.&lt;yourwebsitename&gt;.azurewebsites.net**. For example, **awverify.blogs** if the A record is for **blogs.contoso.com**.
+您可以執行下列步驟來尋找您 Web 應用程式的 IP 位址，以及 **awverify** 名稱和 **.azurewebsites.net** 名稱。
 
-This CNAME record is used to verify that you own the domain you are attempting to use. This is in addition to creating an A record pointing to the virtual IP address of your website.
+1. 在瀏覽器中開啟 [Azure 入口網站](https://portal.azure.com)。
 
-You can find the IP address, as well as the **awverify** name and **.azurewebsites.net** names for your website by performing the following steps:
+2. 在 [**Web 應用程式**] 刀鋒視窗中，按一下您 Web 應用程式的名稱，選取 [**所有設定**]，然後從頁面底部選取 [**自訂網域和 SSL**]。
 
-1. In your browser, open the [Azure Management Portal](https://manage.windowsazure.com).
+    ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 
-2. In the **Websites** tab, click the name of your site, select **Dashboard**, and then select **Manage Domains** from the bottom of the page.
+3. 在 **自訂網域和 SSL** 刀鋒視窗中，按一下 [ **讓外部網域**。
 
-	![](./media/custom-dns-web-site/dncmntask-cname-6.png)
+    ![](./media/custom-dns-web-site/dncmntask-cname-7.png)
+    > [AZURE.NOTE] 您無法使用的自訂網域名稱 **免費** web 應用程式，且必須升級的應用程式服務計劃 **共用**, ，**基本**, ，**標準**, ，或 **Premium** 層。 如需有關應用程式服務方案的價格層，包括如何變更定價層的 web 應用程式，請參閱 [如何調整 web 應用程式](../articles/web-sites-scale.md)。
 
-	> [WACOM.NOTE] If **Manage Domains** is not enabled, you are using a free website. You cannot use custom domain names with a free website, and must upgrade to Shared, Basic, or Standard mode. For more information on the Website modes modes, including how to change the mode of your site, see [How to scale websites](http://www.windowsazure.com/en-us/documentation/articles/web-sites-scale/).
+6. 在 **讓外部網域** 刀鋒視窗中，您會看到 **awverify** 資訊、 目前指派 **。 azurewebsites.net** 網域名稱，以及虛擬 IP 位址。 儲存此資訊，在建立 DNS 記錄時會用得到。
 
-6. In the **MANAGE CUSTOM DOMAINS** dialog, you will see the **awverify** information, the currently assigned **.azurewebsites.net** domain name, and the virtual IP address. Save this information, as it will be used when creating DNS records.
+    ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
 
-	![](./media/custom-dns-web-site/managecustomdomains.png)
+
+
+
 

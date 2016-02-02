@@ -1,36 +1,47 @@
-1.  Sign in to the Azure [Management Portal][Management Portal].
-    On the command bar, click **New**.
+1. 登入 Azure 訂閱中使用所列的步驟 [從 Azure CLI 連接到 Azure](../articles/xplat-cli-connect.md)。
 
-2.  Click **Virtual Machine**, and then click **From Gallery**.
+2. 請使用下列項目確定您處於服務管理模式中：
 
-3.  From **Choose an Image**, select an image from one of the lists. (The available images may differ depending on the subscription you're using.) Click the arrow to continue.
+        azure config mode asm
 
-4.  If multiple versions of the image are available, in **Version Release Date**, pick the version you want to use.
+3. 找出您想要從可用映像載入的 Linux 映像：
 
-5.  In **Virtual Machine Name**, type the name that you want to use. For this virtual machine, type **MyTestVM1**.
+        azure vm image list | grep "Linux"
 
-6.  In **Size**, select the size that you want to use for the virtual machine. The size that you choose depends on the number of cores that are needed for your application. For this virtual machine, choose the smallest available size.
+   在 Windows 命令提示字元視窗中，請使用 find 而不要使用 grep。
 
-7.  In **New User Name**, type the name of the account that you will use to administer the virtual machine. You cannot use root for the user name. For this virtual machine, type **NewUser1**.
+4. 使用 `azure vm 建立` 使用上述清單中的 Linux 映像建立新的虛擬機器。 這個步驟會建立新的雲端服務以及新的儲存體帳戶。 您也可以連接至此虛擬機器到現有的雲端服務與 `-c` 選項。 它也會建立登入 Linux 虛擬機器的 SSH 端點 `-e` 選項。
 
-8.  Under Authentication, check **Provide a Password**. Then, provide the required information and click the arrow to continue.
+        ~$ azure vm create "MyTestVM" b4590d9e3ed742e4a1d46e5424aa335e__suse-opensuse-13.1-20141216-x86-64 "adminUser" -z "Small" -e -l "West US"
+        info:    Executing command vm create
+        + Looking up image b4590d9e3ed742e4a1d46e5424aa335e__suse-opensuse-13.1-20141216-x86-64
+        Enter VM 'adminUser' password:*********
+        Confirm password: *********
+        + Looking up cloud service
+        info:    cloud service MyTestVM not found.
+        + Creating cloud service
+        + Retrieving storage accounts
+        + Creating a new storage account 'mytestvm1437604756125'
+        + Creating VM
+        info:    vm create command OK
 
-9.  You can place virtual machines together in the cloud service, but for this tutorial, you're only creating a single virtual machine. To do this, select **Create a new cloud service**.
+    >[AZURE.NOTE] 針對 Linux 虛擬機器時，您必須提供 `-e` 選項 `vm 建立`; 不是在建立虛擬機器之後，啟用 SSH。 如需 SSH 的詳細資訊，請參閱 [如何搭配使用 SSH 與 Azure 上的 Linux](../articles/virtual-machines/virtual-machines-linux-use-ssh-key.md)。
 
-10. In **Cloud Service DNS Name**, type a name that uses between 3 and 24 lowercase letters and numbers. You'll need to come up with your own cloud service name because it must be unique in Azure. The clouse service name becomes part of the URI that is used to contact the virtual machine through the cloud service.
+    請注意，映像 *b4590d9e3ed742e4a1d46e5424aa335e__suse-opensuse-13.1-20141216-x86-64* 就是我們在上述步驟中從映像清單所選擇的映像。 *MyTestVM* 是新虛擬機器的名稱，而 *adminUser* 是我們將在虛擬機器中用於 SSH 的使用者名稱。 您可以根據您的需求來取代這些變數。 如需此命令的詳細資訊，請瀏覽 [使用 Azure CLI 與 Azure 服務管理](../articles/virtual-machines/virtual-machines-command-line-tools.md)。
 
-11. In **Region/Affinity Group/Virtual Network**, select where you want to locate the virtual machine.
+5. 新建立的 Linux 虛擬機器會出現在清單中，前提是：
 
-12. You can select a storage account where the VHD file is stored. For this tutorial, accept the default setting of **Use an Automatically Generated Storage Account**.
+        azure vm list
 
-13. Under **Availability Set**, for the purposes of this tutorial use the default setting of **None**.
+6. 您可以使用命令來確認虛擬機器的屬性：
 
-14. Under **Endpoints**, review the endpoint that's automatically created to allow Secure Shell (SSH) connections to the virtual machine. (Endpoints allow resources on the Internet or other virtual networks to communicate with a virtual machine.) You can add more endpoints now, or create them later. For instructions on creating them later, see [How to Set Up Endpoints to a Virtual Machine][How to Set Up Endpoints to a Virtual Machine].
+        azure vm show MyTestVM
 
-15. Under **VM Agent**, review the available extensions. These extensions provide various features that make it easier to use and manage a virtual machine. For details, see [Azure VM Extensions][Azure VM Extensions].
+7. 新建立的虛擬機器已經準備開始使用 `azure vm start` 命令。
 
-After Azure creates the virtual machine and cloud service, the Management Portal lists the new virtual machine under **Virtual Machines** and lists the cloud service under **Cloud Services**. Both the virtual machine and the cloud service are started automatically.
+如需這些 Azure CLI 虛擬機器命令的詳細資訊，請閱讀 [使用 Azure CLI 搭配服務管理 API](../articles/virtual-machines/virtual-machines-command-line-tools.md)。
 
-  [Management Portal]: http://manage.windowsazure.com
-  [How to Set Up Endpoints to a Virtual Machine]: http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-set-up-endpoints/
-  [Azure VM Extensions]: http://go.microsoft.com/FWLink/p/?LinkID=390493
+
+
+
+

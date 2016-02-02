@@ -1,808 +1,817 @@
-#Azure Security Guidance
-
-##Abstract
-
-When developing applications for Azure, identity and
-access are the primary security concerns that you need to keep in mind.
-This topic explains the key security concerns related to identity and access in the cloud and how you
-can best protect your cloud applications.
-
-##Overview
-
-An application's security is a function of its surface. The more surface
-that the application exposes the greater the security concerns. For
-example, an application that runs as an unattended batch process exposes
-less, from a security perspective, than a publically available website.
-
-When you move to the cloud you gain a certain peace of mind about
-infrastructure and networking since these are managed in data centers
-with world-class security practices, tools, technology. On the other
-hand, the cloud intrinsically exposes more surface area for your
-application that can be potentially exploited by attackers. This is
-because many cloud technologies and services are exposed as end points
-vs. in-memory components. Azure storage, Service Bus, SQL
-Database (formerly SQL Azure), and many other services are accessible
-via their endpoints over the wire.
-
-In cloud applications more responsibility lays on the shoulders of the
-application developers to design, develop, and maintain their cloud
-applications to high security standards to keep attackers at bay.
-Consider the following diagram (from J.D. Meier's [Azure Security
-Notes PDF](http://blogs.msdn.com/b/jmeier/archive/2010/08/03/now-available-azure-security-notes-pdf.aspx)): notice how the infrastructure part is being addressed by the
-cloud provider--in our case by Azure--leaving more security work
-to the application developers:
-
-![Securing the application][01]
-
-The good news is that all of the security development practices,
-principles, and techniques you already know still apply when developing
-cloud applications. Consider the following key areas that must be
-addressed:
-
--   All input is validated for type, length, range, and string patterns
-    to avoid injection attacks, and all the data your app echoes back is
-    properly sanitized.
--   Sensitive data should be protected at rest and on the wire to
-    mitigate information disclosure and data tampering threats.
--   Auditing and logging must be properly implemented to mitigate non
-    repudiation threats.
--   Authentication and Authorization should be implemented using proven
-    mechanisms offered by the platform to prevent identity spoofing and
-    elevation of privileges threats.
-
-For a complete list of threats, attacks, vulnerabilities, and
-countermeasures refer to patterns & practices' [Cheat Sheet: Web
-Application Security Frame](http://msdn.microsoft.com/en-us/library/ff649461.aspx) and [Security Guidance for Applications Index](http://msdn.microsoft.com/en-us/library/ff650760.aspx).
-
-In the cloud, authentication and access control mechanisms are very
-different than those available for on-premises applications. There are
-many more authentication and access options offered for cloud
-applications that can lead to confusion, and as a result, to flawed
-implementations. More confusion is introduced when defining what a cloud
-app is. For example, the application could be deployed to the cloud yet
-its authentication mechanism might be provided by Active Directory. On
-other hand, the application could be deployed on-premises but with
-authentication mechanisms in the cloud (for example, by Azure
-Active Directory Access Control (previously known as Access Control
-Service or ACS)).
-
-##Threats, Vulnerabilities, and Attacks
-
-A threat is a potential bad outcome that you want to avoid such as the
-disclosure of sensitive information or a service becoming unavailable.
-It is common practice to classify threats by using the acronym "STRIDE":
-
--   **S**poofing or identity theft
--   **T**ampering with data
--   **R**epudiation of actions
--   **I**nformation disclosure
--   **D**enial of service
--   **E**levation of privileges
-
-Vulnerabilities are bugs that we, as developers, introduce into the code
-that make an application exploitable by attackers. For example, sending
-sensitive data in clear text makes an information disclosure threat
-possible by a traffic sniffing attack.
-
-Attacks are the exploitation of those vulnerabilities to cause harm to
-an application. For example, a Cross Site Scripting, or XSS, is an
-attack that exploits unsanitized output. Another example is
-eavesdropping on the wire to capture credentials sent in clear. These
-attacks can lead to an identity spoof threat being realized. To make it
-simple consider threats, vulnerabilities, and attacks as bad things.
-Consider the following diagrams as a balcony view of the bad things
-related to a Web application deployed to Azure (from J.D.
-Meier's [Azure Security Notes PDF](http://blogs.msdn.com/b/jmeier/archive/2010/08/03/now-available-azure-security-notes-pdf.aspx)):
-
-![Threats Vulnerabilities and Attacks][02]
-
-You, as a developer, have control over the vulnerabilities. The fewer
-vulnerabilities that you introduce, the fewer options that are left to
-attacker to exploit.
-
-Identity and access related vulnerabilities leave you open to all
-threats in the STRIDE model. For example, an improperly implemented
-authentication mechanism may lead to an identity spoof and, as a result,
-information disclosure, data tampering, elevated privileges operations,
-or even shutting down the service altogether. Consider the following
-questions that may point to potential vulnerabilities in your cloud
-app's identity and access implementation:
-
--   Are you sending credentials in clear over the wire to your
-    Azure services?
--   Do you store Azure services credentials in clear?
--   Do your Azure services credentials follow strong password
-    policies?
--   Do you rely on Azure to verify credentials vs.
-    using custom verification mechanisms?
--   Do you limit Azure services authentication sessions or token
-    lifetime to a reasonable time window?
--   Do you verify permissions for each Azure entry point of your
-    distributed cloud app?
--   Does your authorization mechanism fail securely without exposing
-    sensitive information, or without allowing limitless access?
-
-##Countermeasures
-
-The best countermeasure against an attack is by using the identity and
-access mechanisms offered by the platform rather than implementing your
-own. Consider the following prominent identity and access technologies:
-
-**Windows Identity Foundation (WIF).** WIF is a .NET runtime library
-included with the .NET Framework 4.5 (it is also available as separate
-download for .NET 3.5/4.0). WIF does the heavy lifting for handling
-protocols such as WS-Federation and WS-Trust and tokens handling such as
-Security Assertion Markup Language (SAML) so you don't need to write
-very complex security-related code in your application. The following
-resources provide in-depth information about WIF:
-
--   [Windows Identity Foundation 4.5 Samples](http://code.msdn.microsoft.com/site/search?f%5B0%5D.Type=SearchText&f%5B0%5D.Value=wif&f%5B1%5D.Type=Topic&f%5B1%5D.Value=claims-based%20authentication) on MSDN Code Gallery.
--   [Windows Identity Foundation 4.5 tools for Visual Studio 11 Beta](http://visualstudiogallery.msdn.microsoft.com/e21bf653-dfe1-4d81-b3d3-795cb104066e) on
-    MSDN Code Gallery.
--   [Windows Identity Foundation runtime (.Net 3.5/4.0)](http://www.microsoft.com/en-us/download/details.aspx?id=17331) on MSDN.
--   [Windows Identity Foundation 3.5/4.0 samples and Visual Studio
-    2008/2010 templates](http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=4451) on MSDN.
-
-**Azure AD Access Control (previously known as ACS)**. 
-Azure AD Access Control is a cloud service that provides Security Token
-Service (STS) and allows federation with different identity providers
-(IdPs) such as a corporate Active Directory or Internet IdPs such as
-Windows Live ID / Microsoft Account, Facebook, Google, Yahoo!, and Open
-ID 2.0 identity providers. The following resources provide in-depth
-information about Azure AD Access Control:
-
--   [Access Control Service 2.0](http://msdn.microsoft.com/library/gg429786.aspx) 
--   [Scenarios and Solutions Using ACS](http://msdn.microsoft.com/en-us/library/gg185920.aspx)
--   [ACS How To's](http://msdn.microsoft.com/en-us/library/windowsazure/gg185939.aspx)
--   [A Guide to Claims-Based Identity and Access Control](http://msdn.microsoft.com/en-us/library/ff423674.aspx)
--   [Identity Developer Training Kit](http://www.microsoft.com/en-us/download/details.aspx?id=14347)
--   [MSDN-hosted Identity Developer Training Course](http://msdn.microsoft.com/en-us/IdentityTrainingCourse)
-
-**Active Directory Federation Services (AD FS).**Active Directory
-Federation Services (AD FS) 2.0 provides support for claims-aware
-identity solutions that involve Windows Server?? and Active Directory
-technology. AD FS 2.0 supports the WS-Trust, WS-Federation, and SAML
-protocols. The following resources provide in-depth information about AD
-FS:
-
--   [AD FS 2.0 Content Map](http://social.technet.microsoft.com/wiki/contents/articles/2735.ad-fs-2-0-content-map.aspx)
--   [Web SSO Design][Web SSO Design]
--   [Federated Web SSO Design][Federated Web SSO Design]
-
-**Azure Shared Access Signatures.** Shared Access Signatures
-enable you to fine-tune access to a blob or container resource. The
-following resources provide in-depth information about Shared Access
-Signatures.
-
--   [Managing Access to Blobs and Containers](http://msdn.microsoft.com/en-us/library/ee393343.aspx)
--   [New Storage Feature: Shared Access Signatures](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures)
--   [Shared Access Signatures Are Easy These Days](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
-
-##Scenarios Map
-
-This section briefly outlines the key scenarios covered in this topic.
-Use it as a map to determine the right identity solution for your
-application.
-
--   **ASP.NET Web Form Application with Federated Authentication.** In
-    this scenario you control access to your ASP.NET Web Forms app using
-    either Internet identity such as Live ID / Microsoft Account or
-    corporate identity managed in Windows Server Active Directory.
--   **WCF (SOAP) Service with Federated Authentication.**In this
-    scenario you control access to your WCF (SOAP) service using Service
-    Identities managed by Azure AD Access Control.
--   **WCF (SOAP) Service with Federated Authentication, Identities in
-    Active Directory.** In this scenario you control access to your WCF
-    (SOAP) web service using identities managed by corporate Windows
-    Server Active Directory.
--   **WCF (REST) Service With Federated Authentication.**In this
-    scenario you control access to your WCF (REST) service using Service
-    Identities managed by Azure AD Access Control.
--   **WCF (REST) Service With Live ID / Microsoft Account, Facebook,
-    Google, Yahoo!, Open ID.** In this scenario you control access to
-    your WCF (REST) service using Internet identity such as Live ID /
-    Microsoft Account.
--   **ASP.NET Web App to REST WCF Service Using Shared SWT Token.** In
-    this scenario you have distributed application with front end
-    ASP.NET web app and downstream REST service and you want to flow end
-    user's context through physical tiers.
--   **Role-Based Access Control (RBAC) Authorization In Claims-Aware
-    Applications and Services.** In this scenario you want to implement
-    authorization logic in your app based on roles.
--   **Claims-Based Authorization In Claims-Aware Applications and
-    Services.** In this scenario you want to implement authorization
-    logic in your app based on complex authorization rules.
--   **Azure Storage Service Identity and Access Scenarios.**In
-    this scenario you need to securely share access to Azure
-    storage blobs and containers.
--   **Azure SQL Database Identity and Access Scenarios.**SQL
-    Database supports only SQL Server Authentication. Windows
-    Authentication (integrated security) is not supported. Users must
-    provide credentials (login and password) every time they connect to
-    SQL Database.
--   **Azure Service Bus Identity and Access Scenarios.**In this
-    scenario you need securely access Azure Service Bus queues.
--   **In-Memory Cache Identity and Access Scenarios.**In this scenario
-    you need to securely access data managed by in-memory cache.
--   **Azure Marketplace Identity and Access Scenarios.**In this
-    scenario you need to securely access Azure Marketplace
-    datasets.
-
-##Azure Identity and Access Scenarios
-
-This section outlines common identity and access scenarios for different
-application architectures. Use the Scenarios Map for a quick
-orientation.
-
-###ASP.NET Web Form Application with Federated Authentication
-
-In this application architecture scenario your web application may be
-deployed to Azure or on-premises. The application requires that
-its users will be authenticated by either corporate Active Directory or
-Internet identity providers.
-
-To solve this scenarios use Azure AD Access control and Windows
-Identity Foundation.
-
-![Azure Active Directory Access control][03]
-
-Refer to the following resources to implement this scenario:
-
--   [How To: Create My First Claims-Aware ASP.NET Application Using ACS](http://msdn.microsoft.com/en-us/library/gg429779.aspx)
--   [How To: Host Login Pages in Your ASP.NET Web Application](http://msdn.microsoft.com/en-us/library/gg185926.aspx)
--   [How To: Implement Claims Authorization in a Claims-Aware ASP.NET Application Using WIF and ACS](http://msdn.microsoft.com/en-us/library/gg185907.aspx)    
--   [How To: Implement Role Based Access Control (RBAC) in a Claims-Aware
-    ASP.NET Application Using WIF and ACS](http://msdn.microsoft.com/en-us/library/gg185914.aspx)
--   [How To: Configure Trust Between ACS and ASP.NET Web Applications
-    Using X.509 Certificates](http://msdn.microsoft.com/en-us/library/gg185947.aspx)
--   [Code Sample: ASP.NET Simple Forms](http://msdn.microsoft.com/en-us/library/gg185938.aspx)
-
-###WCF (SOAP) Service with Service Identity
-
-In this application architecture scenario your WCF (SOAP) service may be
-deployed to Azure or on-premises. The service is being accessed
-as a downstream service by a web application or even by another web
-service. You need to control access to it using application specific
-identity. Think of it in terms of the type of app pool account that you
-used in IIS - although the technology is different, the approaches are
-similar in that the service is accessed using an application scope
-account vs. end user account.
-
-Use the Service Identity feature in Azure AD Access control.
-This is similar to the IIS app pool account you were using when
-deploying your apps to Windows Server and IIS. Configure Azure
-AD Access Control to issue SAML tokens that will be handled by WIF at
-the WCF (SOAP) service.
-
-![WCF (SOAP) Service][04]
-
-
-Refer to the following resources to implement this scenario:
-
--   [How To: Add Service Identities with an X.509 Certificate, Password,
-    or Symmetric Key](http://msdn.microsoft.com/en-us/library/gg185924.aspx)
--   [How To: Authenticate with a Client Certificate to a WCF Service
-    Protected by ACS](http://msdn.microsoft.com/en-us/library/hh289316.aspx)
--   [How To: Authenticate with a Username and Password to a WCF Service
-    Protected by ACS](http://msdn.microsoft.com/en-us/library/gg185954.aspx)
--   [Code Sample: WCF Certificate Authentication](http://msdn.microsoft.com/en-us/library/gg185952.aspx)
--   [Code Sample: WCF Username Authentication](http://msdn.microsoft.com/en-us/library/gg185927.aspx)
-
-###WCF (SOAP) Service With Federated Authentication, Identities In Active Directory
-
-In this application architecture scenario your WCF (SOAP) service may be
-deployed to Azure or on-premises. You need to control access to
-it by using an identity that is managed by a corporate Windows Server
-Active Directory (AD).
-
-Use Azure AD Access Control configured for federation with
-Windows Server AD FS. In this case you do not need to configure Service
-Identity with Azure AD Access Control. The agent that needs to
-access the WCF (SOAP) service provides credentials to AD FS and upon
-successful authentication is issued the token by AD FS. The token is
-then submitted to Azure AD Access Control and reissued back to
-the agent. The agent uses the token to submit request to the WCF (SOAP)
-service.
-
-![WCF (SOAP) Service With AD][05]
-
-Refer to the following resources to implement this scenario:
-
--   [How To: Add Service Identities with an X.509 Certificate, Password,
-    or Symmetric Key](http://msdn.microsoft.com/en-us/library/gg185924.aspx)
--   [How To: Configure AD FS 2.0 as an Identity Provider](http://msdn.microsoft.com/en-us/library/gg185961.aspx)
--   [How To: Use Management Service to Configure AD FS 2.0 as an
-    Enterprise Identity Provider](http://msdn.microsoft.com/en-us/library/gg185905.aspx)
--   [Code Sample: WCF Federated Authentication With AD FS 2.0
-](http://msdn.microsoft.com/en-us/library/hh127796.aspx)
-
-###WCF (REST) Service With Service Identities
-
-In this scenario your WCF (REST) service may be deployed to 
-Azure or on-premises. The service is accessed as a downstream service by
-a web application or by another web service. You need to control access
-to it using an application-specific identity Think of it in terms of the
-type of app pool account that you used in IIS - although the technology
-is different, the approaches are similar in that the service is accessed
-using an application scope account vs. end user account.
-
-Use the Service Identity feature in Azure AD Access Control.
-Configure Azure AD Access Control to issue Simple Web Token
-(SWT) tokens. To handle the SWT token on the REST service side, you can
-either implement a custom token handler and plug it into the WIF
-pipeline, or you can parse it "manually" without using the WIF
-infrastructure.
-
-Consider the following diagram (WIF is optional):
-
-![REST Service][06]
-
-Refer to the following resources to implement this scenario:
-
--   [How To: Configure Trust Between ACS and WCF Service Using Symmetric
-    Keys](http://msdn.microsoft.com/en-us/library/gg185958.aspx)
--   [How To: Authenticate to a REST WCF Service Deployed to Azure
-    Using ACS](http://msdn.microsoft.com/en-us/library/hh289317.aspx)
--   [Code Sample: ASP.NET Web Service](http://msdn.microsoft.com/en-us/library/gg983271.aspx)
--   [Code Sample: Windows Phone 7 Application](http://msdn.microsoft.com/en-us/library/gg983271.aspx)
--   [REST WCF With SWT Token Issued By Azure Access Control
-    Service (ACS)](http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0)
-
-###WCF (REST) Service with Live ID / Microsoft Account, Facebook, Google, Yahoo!, Open ID
-
-In this scenario, your WCF (REST) service can be deployed to 
-Azure or on-premises. You need to control access to it using a public
-Internet identity, such as Live ID / Microsoft Account or Facebook.
-
-Use Azure AD Access Control to issue SWT tokens. To handle the
-SWT token on the REST service side, you can implement a custom token
-handler and plug it into a WIF pipeline, or you can parse it "manually"
-without using the WIF infrastructure.
-
-It is important to note that in order to implement this scenario, the
-application needs to use web browser control to collect end user
-credentials. This makes it unsuitable for scenarios in which the REST
-service is accessed from an ASP.NET web app. It is only suitable for
-scenarios in which the REST service is being accessed by the user's
-client application, such as a Windows Phone 7 app or a rich desktop
-client. The key reason for popping the web browser control is that
-Internet identities don't natively support active profile scenarios (web
-services scenario). Internet identities mainly support passive profile
-scenarios (web apps) that rely on browser redirects: this is where web
-browser control comes handy.
-
-Consider the following diagram (WIF is optional, and thus not shown):
-
-![WIF is optional][07]
-
-Refer to the following resources to implement this scenario:
-
--   [How To: Authenticate to a REST WCF Service Deployed to Azure Using ACS](http://msdn.microsoft.com/en-us/library/hh289317.aspx)
--   [How To: Configure Google as an Identity Provider](http://msdn.microsoft.com/en-us/library/gg185976.aspx)
--   [How To: Configure Facebook as an Identity Provider](http://msdn.microsoft.com/en-us/library/gg185919.aspx)
--   [How To: Configure Yahoo! as an Identity Provider](http://msdn.microsoft.com/en-us/library/gg185977.aspx)
--  [ Code Sample: Windows Phone 7 Application](http://msdn.microsoft.com/en-us/library/gg983271.aspx)
--   [REST WCF With SWT Token Issued By Azure Access Control
-    Service (ACS)](http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0)
-
-
-###ASP.NET Web App to REST WCF Service Using Shared SWT Token
-
-In this scenario you have a distributed application with a front-end
-ASP.NET web app and a downstream REST service and you want to maintain
-the end user's context across physical tiers. This is sometimes needed
-when implementing authorization logic or logging based on the end user's
-identity in the downstream REST service.
-
-Configure Azure AD Access Control to issue SWT token. The SWT
-token is issued to the front-end ASP.NET web app and then shared with
-the downstream REST service. In this case, there is only one relying
-party configured in Azure AD Access Control. However, there are
-several caveats:
-
--   Since WIF does not provide a SWT token handler out of the box you
-    need to implement a custom token handler to be used with the ASP.NET
-    web app. You should rely on the heavy lifting that WIF does to
-    support the WS-Federation protocol that relies on browser redirects
-    vs. implementing it yourself.
--   When implementing a SWT custom token handler, make sure the
-    bootstrap token is being addressed to make sure it's retained.
-    Otherwise you won't be able to share it and send it to the
-    downstream REST service.
--   You don't have to use WIF on a REST service; rather, you can parse
-    the token "manually" since there is no need to handle redirects in
-    this case.
-
-![ASP.NET Web Application][08]
-
-Refer to the following resources to implement this scenario:
-
--   [How To: Configure Google as an Identity Provider](http://msdn.microsoft.com/en-us/library/gg185976.aspx)
--   [How To: Configure Facebook as an Identity Provider](http://msdn.microsoft.com/en-us/library/gg185919.aspx)
--   [How To: Configure Yahoo! as an Identity Provider](http://msdn.microsoft.com/en-us/library/gg185977.aspx)
--   [ASP.NET Web App To REST WCF Service Delegation Using Shared SWT
-    Token](http://code.msdn.microsoft.com/ASPNET-Web-App-To-REST-WCF-b2b95f82)
-
-###Role-Based Access Control (RBAC) In Claims-Aware Applications and Services
-
-In this scenario you need to implement authorization in your web
-application or service based on user roles: user with required roles get
-access and those that don't have required roles are denied. Simply put,
-your application needs to answer simple question - is the user in role
-X?
-
-There are several ways to solve this scenario. You can use Azure
-AD Access Control, WIF Claims Authentication Manager,
-samlSecurityTokenRequirement mapping, or Customer Role Manager.
-
-WIF is used in all cases. WIF supports the IPrincipal.IsInRole("MyRole")
-method. In most of the cases the key is to make sure there is role type
-claim with URI of
-http://schemas.microsoft.com/ws/2008/06/identity/claims/role in the
-token so that WIF can successfully verify role membership when the
-IsInRole method is called.
-
-**Azure AD Access Control**. In this implementation the 
-Azure AD Access Control claims transformation rule engine is used. Using
-the claims transformation rule engine rules you can transform any
-incoming claim into a role type claim so that when the token hits the
-application or a service WIF can parse this role claim to make sure
-IsInRole method call is succesful.
+# Azure 安全性指引
+
+## 摘要
+
+開發 Azure 的應用程式時，身分識別和
+存取權是您需要記住的主要安全性考量。
+本主題說明與雲端中身分識別與存取權相關的重要安全性考量，以及如何
+提供雲端應用程式的最佳保護。
+
+## 概觀
+
+應用程式的安全性是其介面的功能之一。 應用程式公開越多介面，
+安全性疑慮也就越高。 如需
+如，從安全性角度來看，以自動批次處理方式執行之應用程式的公開介面
+少從安全性角度來看，比公開可用的網站。
+
+在移往雲端時，您無需再擔心
+基礎結構和網路，因為資料中心會使用世界級安全性作法、工具、技術
+來管理基礎結構和網路。 但另一
+方面，雲端在本質上會為您的應用程式公開較多的介面區域，
+因而有可能會遭到攻擊者所利用。 這是
+因為許多雲端技術和服務會以端點
+(而非記憶體內部元件) 的方式公開。 Azure 儲存體, 服務匯流排, SQL
+Database (之前稱為 SQL Azure) 和
+許多其他服務。
+
+在雲端應用程式中，應用程式開發人員會擔負更多
+設計、開發及維護其雲端應用程式以符合高安全性標準的重責大任，
+來將攻擊者阻擋於千里之外。
+請細想下圖 (出處源自 J.D.Meier 的 [Azure 安全性
+注意事項 PDF] (http://blogs.msdn.com/b/jmeier/archive/2010/08/03/now-available-azure-security-notes-pdf.aspx)): 請注意如何基礎結構的部分會負責解決
+雲端提供者 (在我們的案子中是 Azure) 會負責解決基礎結構這個部分，
+而更多的安全性工作會留給應用程式開發人員：
+
+![保護應用程式的安全][01]
+
+好消息是您所熟悉的所有安全性開發作法、
+原則和技術都仍然適用於
+雲端應用程式的開發。 請考量下列必須
+解決的主要區域：
+
+-   所有輸入都會經過類型、長度、範圍及字串模式
+    的驗證以避免插入式攻擊，應用程式回應的所有資料也會
+    受到妥善處理。
+-   在靜止狀態和在線路上的敏感性資料應受到保護，
+    來減輕資訊洩漏與資料遭到竄改等威脅。
+-   稽核和記錄必須已正確實作，才能減輕非
+    否認性威脅。
+-   驗證與授權必須使用平台所提供的已經實證機制進行實作，
+    來防止身分詐騙和
+    提升權限等威脅。
+
+如需威脅、攻擊、弱點和
+因應對策，請參閱模式與作法 [速查表: Web
+應用程式安全性框架] (http://msdn.microsoft.com/library/ff649461.aspx) 和 [應用程式索引安全性指南](http://msdn.microsoft.com/library/ff650760.aspx)。
+
+雲端的驗證和存取控制機制，與內部部署應用程式所使用的驗證和存取控制機制
+有極大的差異。 有
+雲端應用程式有更多的驗證和存取選項，
+這些驗證和存取選項有可能會引起混淆，
+最終讓實作出現瑕疵。 在定義什麼是雲端應用程式時
+則會產生更多的誤解。 例如，您可在雲端中部署應用程式，
+但可能由 Active Directory 提供其驗證機制。 另一
+方面，您也可在內部部署中部署應用程式，
+但將驗證機制放在雲端 (例如，由 Azure
+Active Directory Access Control (先前稱為存取控制服務
+或 ACS) 進行驗證)。
+
+## 威脅、弱點及攻擊
+
+威脅是您要避免的潛在不良結果，例如
+洩漏敏感性資訊或服務無法使用。
+使用縮寫字 "STRIDE" 來將威脅分類是個常見的作法：
+
+-   **S**poofing or identity theft (詐騙或身分盜用)
+-   **T**ampering with data (竄改資料)
+-   **R**epudiation of actions (否認動作)
+-   **I**nformation disclosure (資訊洩漏)
+-   **D**enial of service (拒絕服務)
+-   **E**levation of privileges (提升權限)
+
+弱點是指開發人員引進程式碼的錯誤，
+使得應用程式容易受到攻擊者的利用。 例如，
+以純文字方式傳送敏感性資料，流量探查攻擊會
+讓資訊洩漏威脅成為可能。
+
+攻擊是指這些弱點遭人利用，
+而對應用程式造成傷害。 例如，跨網站指令碼或 XSS 是指
+利用未淨化輸出的攻擊。 另一個範例是
+竊聽線路，以擷取以純文字方式傳送的認證。 這
+攻擊都會演變成您我所熟知的身分詐騙威脅。 簡而言之，
+請將威脅、弱點和攻擊看成是壞東西。
+將下圖視為與部署到 Microsoft Azure 之 Web 應用程式相關
+壞東西的上層檢視 (出處源自 J.D.
+Meier 的 [Azure 安全性注意事項 PDF](http://blogs.msdn.com/b/jmeier/archive/2010/08/03/now-available-azure-security-notes-pdf.aspx)):
+
+![威脅、弱點及攻擊][02]
+
+作為開發人員，您可以掌控弱點。 您引進的弱點越少，
+留給攻擊者利用的選項
+也就越少。
+
+STRIDE 模式中的身分識別與存取相關弱點會讓您暴露在所有
+威脅下。 例如，未正確實作的
+驗證機制可能會演變成身分詐騙，
+結果將造成資訊外洩、資料遭到竄改、提高權限的操作，
+或甚至是完全關閉服務。 請思考下列
+問題，這些問題可能點出您的雲端應用程式
+在身分識別與存取實作方面的潛在弱點：
+
+-   您是否以純文字方式透過線路將認證傳送到
+    Azure 服務？
+-   您是否以純文字方式儲存 Azure 服務認證？
+-   您的 Azure 服務認證是否符合強式密碼
+    原則？
+-   您依賴 Azure 來驗證認證，還是
+    使用自訂的驗證機制？
+-   您是否有將 Azure 服務驗證工作階段或權杖
+    存留期限制在合理的時間範圍內？
+-   您是否有驗證所發佈雲端應用程式的
+    每個 Azure 進入點權限？
+-   您的授權機制是否會在不暴露敏感性資訊
+    或不允許無限存取的情況下安全地失敗？
+
+## 對策
+
+面對攻擊威脅的最佳對策是使用平台所提供
+(而非自己實作) 的身分識別與存取
+機制。 請考慮下列著名的身分識別與存取技術：
+
+**Windows Identity Foundation (WIF)。**WIF 是 .NET Framework 4.5
+隨附的 .NET 執行階段程式庫 (在 .NET 3.5/4.0 中亦可當作獨立項目來
+下載)。 WIF 擔負處理通訊協定的重責大任，
+例如 WS-同盟和 WS-Trust 及權杖處理 (例如
+安全性判斷提示標記語言 (SAML))，因此您無需在應用程式中編寫
+很複雜的安全性相關程式碼。 下列
+資源提供有關 WIF 的深入資訊：
+
+-   [Windows Identity Foundation 4.5 範例](http://code.msdn.microsoft.com/site/search?f%5B0%5D.Type=SearchText&f%5B0%5D.Value=wif&f%5B1%5D.Type=Topic&f%5B1%5D.Value=claims-based%20authentication) MSDN Code Gallery 上。
+-   [Visual Studio 11 Beta 的 Windows Identity Foundation 4.5 工具](http://visualstudiogallery.msdn.microsoft.com/e21bf653-dfe1-4d81-b3d3-795cb104066e) 上
+    。
+-   [Windows Identity Foundation 執行階段 (.Net 3.5/4.0)](http://www.microsoft.com/download/details.aspx?id=17331) MSDN 上。
+-   [Windows Identity Foundation 3.5/4.0 範例和 Visual Studio
+    2008/2010年範本] (http://www.microsoft.com/download/details.aspx?displaylang=en 與 id = 4451) MSDN 上。
+
+**Azure AD 存取控制 (先前稱為 ACS)**。 
+Azure AD 存取控制是個雲端服務，可提供 Security Token
+Service (STS)，並允許與其他身分識別提供者
+(IdP) 建立同盟，例如企業 Active Directory 或網際網路 IdP (例如
+Windows Live ID/Microsoft 帳戶、Facebook、Google、Yahoo! 和 Open
+ID 2.0 等身分識別提供者)。 下列資源提供有關
+Azure AD 存取控制的深入資訊：
+
+-   [存取控制服務 2.0](http://msdn.microsoft.com/library/gg429786.aspx)
+-   [使用 ACS 案例與解決方案](http://msdn.microsoft.com/library/gg185920.aspx)
+-   [ACS 的作法的](http://msdn.microsoft.com/library/windowsazure/gg185939.aspx)
+-   [宣告式身分識別和存取控制指南](http://msdn.microsoft.com/library/ff423674.aspx)
+-   [身分識別開發人員訓練套件](http://www.microsoft.com/download/details.aspx?id=14347)
+-   [MSDN 代管的身分識別開發人員訓練課程](http://msdn.microsoft.com/IdentityTrainingCourse)
+
+**Active Directory Federation Services (AD FS)。**Active Directory
+Federation Services (AD FS) 2.0 可支援
+牽涉到 Windows Server 的身分識別解決方案。 與 Active Directory
+技術的宣告感知身分識別解決方案。 AD FS 2.0 支援 WS-Trust、WS-同盟和 SAML
+通訊協定。 下列資源提供有關 AD
+FS 的深入資訊：
+
+-   [AD FS 2.0 內容對應表](http://social.technet.microsoft.com/wiki/contents/articles/2735.ad-fs-2-0-content-map.aspx)
+-   [網頁 SSO 設計 ][web sso design]
+-   [同盟網頁 SSO 設計 ][federated web sso design]
+
+**Azure 共用存取簽章。**共用存取簽章
+可讓您微調對 Blob 或容器資源的存取。 Auch die Eigenschaften
+下列資源提供有關共用存取
+簽章的深入資訊。
+
+-   [管理對 Blob 和容器的存取權](http://msdn.microsoft.com/library/ee393343.aspx)
+-   [新的儲存功能: 共用存取簽章](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures)
+-   [共用的存取簽章非常簡單這幾天](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
+
+## 案例對應表
+
+本節將簡短概述本主題所涵蓋的重要案例。
+請將它當作對應表，來為您的應用程式找出適合的身分識別
+重新接收。
+
+-   **使用同盟驗證的 ASP.NET Web Form 應用程式。**在
+    此案例中，您將使用網際網路身分識別 (例如 Live ID/Microsoft 帳戶)
+    或 Windows Server Active Directory 中所管理的企業身分識別，
+    來控制對 ASP.NET Web Forms 應用程式的存取。
+-   **使用同盟驗證的 WCF (SOAP) 服務。**在此
+    案例中，您將使用由 Microsoft Azure AD 存取控制所管理的服務身分識別，
+    來控制對 WCF (SOAP) 服務的存取。
+-   * * 使用同盟驗證，身分識別中的 WCF (SOAP) 服務
+    使用中 Directory.* * 在此案例中您控制對 WCF 存取
+    Windows Server Active Directory 所管理的身分識別，
+    來控制對 WCF (SOAP) Web 服務的存取。
+-   **使用同盟驗證的 WCF (REST) 服務。**在此
+    案例中，您將使用由 Microsoft Azure AD 存取控制所管理的服務身分識別，
+    來控制對 WCF (REST) 服務的存取。
+-   * * WCF (REST) 服務使用 Live ID / Microsoft 帳戶、 Facebook、
+    Google、 yahoo!、 Open ID * 在此案例中控制存取權
+    (例如 Live ID/Microsoft 帳戶)，
+    來控制對 WCF (REST) 服務的存取。
+-   **使用共用 SWT 權杖，從 ASP.NET Web 應用程式到 REST WCF 服務。**在
+    此案例中，您擁有使用前端
+    ASP.NET Web 應用程式和下游 REST 服務的分散式應用程式，
+    而且您想要透過實體層來流動使用者的內容。
+-   * * 在宣告感知的角色型存取控制 (RBAC) 授權
+    應用程式和 Services.* * 在此案例中您想要實作
+    授權邏輯。
+-   * * 在宣告感知應用程式中的宣告型授權和
+    Services.* * 在此案例中您想要實作授權
+    實作授權邏輯。
+-   **Azure 儲存體服務身分識別與存取案例。**在
+    此案例中，您必須安全地共用對 Azure
+    儲存 Blob 和容器的存取。
+-   **Azure SQL Database 身分識別與存取案例。**SQL
+    Database 僅支援 SQL Server 驗證。 Windows
+    驗證 (整合式安全性)。 使用者必須
+    在每次連線到 SQL Database 時
+    提供認證 (登入和密碼)。
+-   **Azure 服務匯流排身分識別與存取案例。**在此
+    案例中，您需要安全地存取 Microsoft Azure 服務匯流排佇列。
+-   **記憶體中快取身分識別與存取案例。**在此案例中
+    您需要安全地存取記憶體內部快取所管理的資料。
+-   **Azure Marketplace 身分識別與存取案例。**在此
+    案例中，您需要安全地存取 Microsoft Azure Marketplace
+    資料集。
+
+## Azure 身分識別與存取案例
+
+本節將概述其他
+應用程式架構的常見身分識別與存取案例。 使用此案例對應表來快速
+定位。
+
+### 使用同盟驗證的 ASP.NET Web Form 應用程式
+
+在此應用程式架構案例中，您的 Web 應用程式可能會
+部署到 Microsoft Azure 或內部部署。 應用程式要求
+其使用者須經過企業 Active Directory 或
+網際網路身分識別提供者的驗證。
+
+若要解決此案例，請使用 Azure AD 存取控制和 Windows
+Identity Foundation。
+
+![Azure Active Directory 存取控制][03]
+
+若要實作此案例，請參閱下列資源：
+
+-   [如何: 建立第一個宣告感知 ASP.NET 應用程式使用 ACS](http://msdn.microsoft.com/library/gg429779.aspx)
+-   [How To: ASP.NET Web 應用程式中主控登入頁面](http://msdn.microsoft.com/library/gg185926.aspx)
+-   [How To: 實作宣告授權在宣告感知 ASP.NET 應用程式中使用 WIF 與 ACS](http://msdn.microsoft.com/library/gg185907.aspx)
+-   [How To: 實作以角色為基礎的存取控制 (RBAC) 在宣告感知
+    使用 WIF 與 ACS 的 ASP.NET 應用程式] (http://msdn.microsoft.com/library/gg185914.aspx)
+-   [如何: 設定 ACS 與 ASP.NET Web 應用程式之間的信任
+    使用 X.509 憑證] (http://msdn.microsoft.com/library/gg185947.aspx)
+-   [程式碼範例: ASP.NET 簡易表單](http://msdn.microsoft.com/library/gg185938.aspx)
+
+### 使用服務身分識別的 WCF (SOAP) 服務
+
+在此應用程式架構案例中，您的 WCF (SOAP) 服務可能會
+部署到 Microsoft Azure 或內部部署。 Web 應用程式或
+甚至另一個 Web 服務會將此服務當作下游
+服務。 您必須使用應用程式特定
+身分識別來控制對此服務的存取。 把它想像成您在 IIS 中使用的
+應用程式集區帳戶類型，即使技術不同，
+但使用應用程式範圍帳戶或使用者帳戶來存取服務的方法
+卻很類似。
+
+在 Azure AD 存取控制中使用服務身分識別功能。
+這與將應用程式部署到 Windows Server 和 IIS 時所使用的 IIS 應用程式集區帳戶
+十分類似。 設定 Azure
+AD 存取控制，簽發將由 WCF (SOAP) 服務中的 WIF
+進行處理的 SAML 權杖。
+
+![WCF (SOAP) 服務][04]
+
+
+若要實作此案例，請參閱下列資源：
+
+-   [如何: 使用 X.509 憑證、 密碼、 新增
+    或對稱金鑰] (http://msdn.microsoft.com/library/gg185924.aspx)
+-   [如何: 使用 WCF 服務用戶端憑證進行驗證
+    保護的 wcf 服務] (http://msdn.microsoft.com/library/hh289316.aspx)
+-   [如何: 使用使用者名稱和密碼的 WCF 服務進行驗證
+    保護的 wcf 服務] (http://msdn.microsoft.com/library/gg185954.aspx)
+-   [程式碼範例: WCF 憑證驗證](http://msdn.microsoft.com/library/gg185952.aspx)
+-   [程式碼範例: WCF 使用者名稱驗證](http://msdn.microsoft.com/library/gg185927.aspx)
+
+### 使用同盟驗證 (Active Directory 中的身分識別) 的 WCF (SOAP) 服務
+
+在此應用程式架構案例中，您的 WCF (SOAP) 服務可能會
+部署到 Microsoft Azure 或內部部署。 您需要控制
+對此服務的存取，方法是使用由企業 Windows Server
+Active Directory (AD) 所管理的身分識別。
+
+使用針對 Windows Server AD FS 同盟
+所設定的 Azure AD 存取控制。 在此情況中，您不需要使用 Azure AD 存取控制來設定服務
+身分識別。 需要存取 WCF (SOAP) 服務的代理程式
+會提供 AD FS 認證，並在驗證成功時
+收到由 AD FS 簽發的權杖。 此權杖
+會接著提交到 Azure AD 存取控制，然後重新簽發還給
+代理程式。 該代理程式會使用此權杖來提交要求給 WCF (SOAP)
+服務。
+
+![使用 AD 的 WCF (SOAP) 服務][05]
+
+若要實作此案例，請參閱下列資源：
+
+-   [如何: 使用 X.509 憑證、 密碼、 新增
+    或對稱金鑰] (http://msdn.microsoft.com/library/gg185924.aspx)
+-   [How To: 將 AD FS 2.0 設定身分識別提供者](http://msdn.microsoft.com/library/gg185961.aspx)
+-   [如何: 使用管理服務來設定 AD FS 2.0
+    企業身分識別提供者] (http://msdn.microsoft.com/library/gg185905.aspx)
+-   [程式碼範例: 以 AD FS 2.0 驗證 WCF 同盟
+] (http://msdn.microsoft.com/library/hh127796.aspx)
+
+### 使用服務身分識別的 WCF (REST) 服務
+
+在此案例中，您的 WCF (REST) 服務可能會部署到 
+Azure 或內部部署。 Web 應用程式或另一個 Web 服務會將此服務當作
+下游服務來進行存取。 您必須使用
+應用程式特定身分識別來控制對此服務的存取。把它想像成
+您在 IIS 中使用的應用程式集區帳戶類型，
+即使技術不同，但使用應用程式範圍帳戶或使用者帳戶來存取服務的方法
+卻很類似。
+
+在 Azure AD 存取控制中使用服務身分識別功能。
+設定 Azure AD 存取控制以簽發簡式 Web 權杖
+(SWT) 權杖。 若要在 REST 服務端處理 SWT 權杖，
+您可以實作自訂權杖處理常式並將它插入 WIF
+管線，或者您可以在無需使用 WIF
+基礎結構的情況下「手動」剖析權杖。
+
+請細想下圖 (WIF 是選擇性的)：
+
+![REST 服務][06]
+
+若要實作此案例，請參閱下列資源：
+
+-   [如何: 設定 ACS 與 WCF 服務使用對稱金鑰
+    索引鍵] (http://msdn.microsoft.com/library/gg185958.aspx)
+-   [如何: 驗證部署至 Azure 的 REST WCF 服務
+    使用 [ACS] (http://msdn.microsoft.com/library/hh289317.aspx)
+-   [程式碼範例: ASP.NET Web 服務](http://msdn.microsoft.com/library/gg983271.aspx)
+-   [Windows Phone 7 應用程式的程式碼範例:](http://msdn.microsoft.com/library/gg983271.aspx)
+-   由 Azure 存取控制所簽發之 SWT 權杖的 [REST WCF
+    服務 (ACS)] (http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0)
+
+### 使用 Live ID / Microsoft 帳戶、Facebook、Google、Yahoo!、Open ID 的 WCF (REST) 服務
+
+在此案例中，您的 WCF (REST) 服務可能會部署到 
+Azure 或內部部署。 您需要使用公用網際網路身分識別 (例如
+Live ID/Microsoft 帳戶或 Facebook)，來控制對此服務的存取。
+
+使用 Azure AD 存取控制來簽發 SWT 權杖。 若要在 REST 服務端處理
+在 REST 服務端處理 SWT 權杖，您可以實作自訂權杖處理常式並將它插入 WIF 管線，
+或者您可以在無需使用 WIF 基礎結構的情況下
+「手動」剖析權杖。
+
+要注意的重點是，為了實作此案例，
+應用程式必須使用網頁瀏覽器控制項來收集使用者
+認證。 如此一來，它便不適用於從 ASP.NET Web 應用程式存取 REST
+服務的案例。 它只適用於
+由使用者用戶端應用程式 (例如 Windows Phone 7 應用程式或豐富型桌面
+用戶端) 存取 REST 服務的案例
+。 提出網頁瀏覽器控制項的主要原因是，
+網際網路身分識別並不直接支援作用中設定檔案例 (Web
+服務案例)。 網際網路身分識別主要支援依賴瀏覽器重新導向的被動式設定檔
+依賴瀏覽器重新導向的案例 (web 應用程式): 案例中，此網頁
+能派上用場。
+
+請細想下圖 (WIF 是選擇性的，因此未顯示)：
+
+![WIF 是選擇性的][07]
+
+若要實作此案例，請參閱下列資源：
+
+-   [作法: 驗證部署到 Azure 使用 ACS 的 REST WCF 服務](http://msdn.microsoft.com/library/hh289317.aspx)
+-   [How To: 將 Google 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185976.aspx)
+-   [How To: 將 Facebook 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185919.aspx)
+-   [如何: 將 yahoo! 設定 身分識別提供者] (http://msdn.microsoft.com/library/gg185977.aspx)
+-  [ Windows Phone 7 應用程式的程式碼範例:](http://msdn.microsoft.com/library/gg983271.aspx)
+-   由 Azure 存取控制所簽發之 SWT 權杖的 [REST WCF
+    服務 (ACS)] (http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0)
+
+
+### 使用共用 SWT 權杖，從 ASP.NET Web 應用程式到 REST WCF 服務
+
+在此案例中，您擁有使用前端
+ASP.NET Web 應用程式和下游 REST 服務的分散式應用程式，
+而且您想要跨實體層來維護使用者的內容。 在下游 REST 服務中實作授權邏輯或
+根據使用者的身分識別登入時，
+這一點有時候是必要的。
+
+設定 Azure AD 存取控制來簽發 SWT 權杖。 SWT
+權杖會簽發給前端 ASP.NET Web 應用程式，然後與
+下游 REST 服務共用。 在此情況中，在 Microsoft Azure AD 存取控制中
+只設定一個信賴憑證者。 但是，
+請注意以下幾點情況：
+
+-   由於 WIF 不提供現成的 SWT 權杖處理常式，
+    您必須實作自訂權杖處理常式才能與 ASP.NET
+    Web 應用程式搭配使用。 您應依賴 WIF 執行繁重工作以支援
+    依賴瀏覽器重新導向的 WS-同盟通訊協定，
+    而非自己進行實作。
+-   實作 SWT 自訂權杖處理常式時，
+    請確保會處理啟動程序權杖以確實保留該權杖。
+    否則，您將無法將其共用並傳送至
+    下游 REST 服務。
+-   您不需要在 REST 服務上使用 WIF，反過來，您可以
+    「手動」剖析權杖，因為此案例沒有處理重新導向的
+    必要。
+
+![ASP.NET Web 應用程式][08]
+
+若要實作此案例，請參閱下列資源：
+
+-   [How To: 將 Google 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185976.aspx)
+-   [How To: 將 Facebook 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185919.aspx)
+-   [如何: 將 yahoo! 設定 身分識別提供者] (http://msdn.microsoft.com/library/gg185977.aspx)
+-   [ASP.NET Web 應用程式到 REST WCF 服務使用共用的 SWT
+    語彙基元] (http://code.msdn.microsoft.com/ASPNET-Web-App-To-REST-WCF-b2b95f82)
+
+### 在宣告感知應用程式與服務中以角色為基礎的存取控制 (RBAC)
+
+在此案例中，您需要在 Web 應用程式或服務中
+應用程式或服務根據使用者角色: 具有必要的角色取得的使用者
+存取權，而不具備所需角色的那些使用者會遭到拒絕。 簡言之，
+您的應用程式必須回答這個簡單的問題 - 使用者的角色是否為
+X？
+
+有數種方式可以解決此案例。 您可以使用 Azure
+AD 存取控制、WIF Claims Authentication Manager、
+samlSecurityTokenRequirement 對應或 Customer Role Manager。
+
+所有案例都使用 WIF。 WIF 支援 IPrincipal.IsInRole("MyRole")
+方法將程式碼部署至服務。 在大多數的情況下，重點是確定
+使用權杖中包含
+http://schemas.microsoft.com/ws/2008/06/identity/claims/role 的角色類型宣告，
+因此當呼叫 IsInRole 方法時，
+WIF 可順利地驗證角色成員。
+
+**Azure AD 存取控制**。 在此實作中， 
+我們將會用到 Azure AD 存取控制宣告轉換規則引擎。 使用
+宣告轉換規則引擎規則，您可以將任何
+傳入宣告轉換成角色類型宣告，因此當權杖傳到應用程式或服務時，
+WIF 可以剖析此角色宣告以確保順利呼叫
+IsInRole 方法。
 
 ![][09]
 
-**WIF ClaimsAuthenticationManager**. In this implementation use
-ClaimsAuthenticationManager as WIF's extensibility point. Using this
-approach you transform any arbitrary incoming claims to a role claim
-type at the application. The complexity of the transformation is only
-limited by the code you write.
+**WIF ClaimsAuthenticationManager**。 在此實作中，我們將會使用
+ClaimsAuthenticationManager 做為 WIF 的延伸點。 使用此
+方法，您可以在應用程式中將任何任意傳入宣告轉換成
+角色宣告類型。 轉換的複雜度只會
+受到所編寫程式碼的限制。
 
 ![][10]
 
-**samlSecurityTokenRequriement mapping**. In this implementation you use
-the samlSecurityTokenRequirement configuration in web.config to tell WIF
-which claim types behave as if they were role claim types. For example,
-if the token carries a claim of group type, you can map it to role claim
-type. You can achieve only simple mappings using this approach.
+**samlSecurityTokenRequriement 對應**。 在此實作中，您將使用
+web.config 中的 samlSecurityTokenRequirement 組態，來告訴 WIF
+哪個宣告類型要表現出角色宣告類型的行為方式。 例如，
+如果權杖夾帶了群組類型的宣告，則您可以將它對應至角色宣告
+類型。 若使用此方法，您只能執行簡易對應。
 
 ![][11]
 
-**Custom RoleManager.** In this implementation you implement custom
-RoleManger. WIF is used to inspect the incoming claims when implementing
-custom RoleManager interface methods such as GetAllRoles().
+**自訂 RoleManager。**在此實作中，您將實作自訂
+RoleManger。 實作自訂 RoleManager 介面方法 (例如 GetAllRoles()) 時，
+我們將使用 WIF 來檢查傳入宣告。
 
 ![][12]
 
-Refer to the following resources to implement this scenario:
+若要實作此案例，請參閱下列資源：
 
--   [How To: Implement Role Based Access Control (RBAC) in a Claims-Aware
-    ASP.NET Application Using WIF and ACS](http://msdn.microsoft.com/en-us/library/gg185914.aspx)
--   [How To: Implement Token Transformation Logic Using Rules](http://msdn.microsoft.com/en-us/library/gg185955.aspx)
--   [Authorization With RoleManager For Claims Aware (WIF) ASP.NET Web
-    Applications](http://blogs.msdn.com/b/alikl/archive/2010/11/18/authorization-with-rolemanager-for-claims-aware-wif-asp-net-web-applications.aspx)
--   Code Sample: Using Claims In IsInRole in [Windows Identity Foundation
-    SDK](http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504)
+-   [How To: 實作以角色為基礎的存取控制 (RBAC) 在宣告感知
+    使用 WIF 與 ACS 的 ASP.NET 應用程式] (http://msdn.microsoft.com/library/gg185914.aspx)
+-   [How To: 實作權杖轉換邏輯使用規則](http://msdn.microsoft.com/library/gg185955.aspx)
+-   [使用 RoleManager 進行授權宣告感知 (WIF) ASP.NET Web
+    應用程式] (http://blogs.msdn.com/b/alikl/archive/2010/11/18/authorization-with-rolemanager-for-claims-aware-wif-asp-net-web-applications.aspx)
+-   程式碼範例: 在 [Windows Identity Foundation 的 IsInRole 中使用宣告
+    SDK] (http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504)
 
-###Claims-Based Authorization In Claims-Aware Applications and Services
+### 宣告感知應用程式與服務中的宣告型授權
 
-In this scenario you need to implement complex authorization logic in
-your web application or service and the IsInRole() method is not
-satisfactory for your authorization needs. If your authorization
-approach relies on roles then consider implementing role-based access
-control outlined in previous section.
+在此案例中，您需要在 Web 應用程式或服務中
+實作複雜的授權邏輯，且 IsInRole() 方法無法
+滿足您的授權需求。 如果您的授權
+方法依賴角色，那麼請考慮實作以角色為基礎的存取控制，
+如上一節所概述。
 
-Use ClaimsAuthorizationManager as the WIF extensibility point.
-ClaimsAuthorizationManager allows external access check calls so that
-your application code looks cleaner and more maintainable than when
-access checks implemented in the application's code.
+使用 ClaimsAuthorizationManager 作為 WIF 延伸點。
+ClaimsAuthorizationManager 允許外部存取檢查呼叫，
+因此，與在應用程式程式碼中實作存取檢查的情況比起來，
+您的應用程式程式碼看起來會較為簡潔且較容易維護。
 
 ![][13]
 
-Refer to the following resources to implement this scenario:
+若要實作此案例，請參閱下列資源：
 
--   [How To: Implement Token Transformation Logic Using Rules](http://msdn.microsoft.com/en-us/library/gg185955.aspx)
--   [How To: Implement Claims Authorization in a Claims-Aware ASP.NET
-    Application Using WIF and ACS](http://msdn.microsoft.com/en-us/library/gg185907.aspx)
--   Code Sample: Claims based Authorization in [Windows Identity
-    Foundation SDK](http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504)
+-   [How To: 實作權杖轉換邏輯使用規則](http://msdn.microsoft.com/library/gg185955.aspx)
+-   [How To: 實作宣告授權與 acs 在宣告感知 ASP.NET
+    使用 WIF 與 ACS 應用程式] (http://msdn.microsoft.com/library/gg185907.aspx)
+-   程式碼範例: 宣告型授權，在 [Windows 身分識別
+    Foundation SDK] (http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504)
 
 
-##Azure Storage Service Identity and Access Scenarios
+## Azure 儲存服務身分識別與存取案例
 
-In this scenario you need to securely share access to Azure
-storage blobs and containers.
+在此案例中，您必須安全地共用對 Azure
+儲存 Blob 和容器的存取。
 
-Use Shared Access Signatures. To access your storage service account
-from your own application, use the shared hash that is available through
-Azure portal when you configure and manage your storage service
-accounts. When you want to give someone else access to the blobs and
-containers in your storage service account use Shared Access Signatures
-URL's.
+使用共用存取簽章。 若要從自己的應用程式存取儲存服務帳戶，
+請使用設定並管理儲存服務帳戶時透過
+Azure 入口網站取得的共用雜湊
+。 想要提供他人對儲存服務帳戶中 Blob 和
+容器的存取權時，請使用共用存取簽章
+URL。
 
-Pay special attention to securely managing the information to avoid its
-exposure; also, pay special attention to the lifetime of the Shared
-Access Signatures.
+請特別注意要安全地管理此資訊以免
+曝光，另外，還要特別注意共用存取簽章的
+存留期。
 
 ![][14]
 
-Refer to the following resources to solve this scenario
+若要解決此案例，請參閱下列資源
 
--   [Managing Access to Blobs and Containers](http://msdn.microsoft.com/en-us/library/ee393343.aspx)
--   [New Storage Feature: Shared Access Signatures](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures)
--   [Shared Access Signatures Are Easy These Days](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
+-   [管理對 Blob 和容器的存取權](http://msdn.microsoft.com/library/ee393343.aspx)
+-   [新的儲存功能: 共用存取簽章](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures)
+-   [共用的存取簽章非常簡單這幾天](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
 
 
-##Azure SQL Database Identity and Access Scenarios
+## Azure SQL Database 身分識別與存取案例
 
-SQL Database only supports SQL Server Authentication. Windows
-Authentication (integrated security) is not supported. Users must
-provide credentials (login and password) every time they connect to a
-SQL Database. Pay special attention when managing your username and
-password to avoid information disclosure.
+SQL Database 僅支援 SQL Server 驗證。 Windows
+驗證 (整合式安全性)。 使用者必須
+在每次連線到 SQL Database 時
+提供認證 (登入和密碼)。 管理使用者名稱和密碼時請特別小心，
+以避免資訊外洩。
+
 
 ![][15]
 
-Refer to the following resources to solve this scenario:
 
--   [Security Guidelines and Limitations (SQL Database)](http://msdn.microsoft.com/en-us/library/windowsazure/ff394108.aspx#authentication)
--   [How to: Connect to SQL Database Using sqlcmd](http://msdn.microsoft.com/en-us/library/windowsazure/ee336280.aspx)
--   [How to: Connect to SQL Database Using ADO.NET](http://msdn.microsoft.com/en-us/library/windowsazure/ee336243.aspx)
--   [How to: Connect to SQL Database Through ASP.NET](http://msdn.microsoft.com/en-us/library/windowsazure/ee621781.aspx)
--   [How to: Connect to SQL Database Through WCF Data Services](http://msdn.microsoft.com/en-us/library/windowsazure/ee621789.aspx)
--  [ How to: Connect to SQL Database Using PHP](http://msdn.microsoft.com/en-us/library/windowsazure/ff394110.aspx)
--   [How to: Connect to SQL Database Using JDBC](http://msdn.microsoft.com/en-us/library/windowsazure/gg715284.aspx)
--   [How to: Connect to SQL Database Using the ADO.NET Entity Framework](http://msdn.microsoft.com/en-us/library/windowsazure/ff951633.aspx)
+若要解決這種情況下，請參閱下列說明主題:<br/>
+[Azure SQL Database 開發: 使用說明主題](http://msdn.microsoft.com/library/azure/ee621787.aspx)
 
-##Azure Service Bus Identity and Access Scenarios
 
-The Service Bus and Azure AD Access Control have a special
-relationship in that each Service Bus service namespace is paired with a
-matching Access Control service namespace of the same name, with the
-suffix "-sb". The reason for this special relationship is in the way
-that Service Bus and Access Control manage their mutual trust
-relationship and the associated cryptographic secrets. Refer to the
-resources listed below for more details.
+或參閱其中一個子主題，其中包括：
+
+
+- [如何: 連接到 SQL 資料庫使用 sqlcmd](http://msdn.microsoft.com/library/azure/ee336280.aspx)
+- [程式碼範例: 重試邏輯來連接到 Azure SQL 資料庫與 ADO.NET](http://msdn.microsoft.com/library/azure/ee336243.aspx)
+- [如何: 使用連接到 SQL Database PHP](http://msdn.microsoft.com/library/azure/ff394110.aspx)
+- [如何: 使用 JDBC 的 SQL 資料庫連接](http://msdn.microsoft.com/library/azure/gg715284.aspx)
+
+
+或者，請參閱:<br/>
+[Azure SQL Database 安全性方針和限制](http://msdn.microsoft.com/library/azure/ff394108.aspx#authentication)
+
+
+## Azure 服務匯流排身分識別與存取案例
+
+服務匯流排和 Azure AD 存取控制有著特殊的
+關係，那就是每個服務匯流排服務命名空間會與
+相同名稱 (尾碼是 "-sb") 的相同存取控制服務命名空間
+配對。 此種特別關係的原因在於
+服務匯流排和存取控制管理其相互信任
+關係和關聯加密編譯密碼的方法。 如需詳細資訊，
+請參閱下面所列資源。
 
 ![][16]
 
-Refer to the following resources to solve this scenario:
+若要解決此案例，請參閱下列資源：
 
--   [Securing Service Bus with ACS](http://channel9.msdn.com/posts/Securing-Service-Bus-with-ACS) (Video)
--   [Securing Service Bus with ACS](https://skydrive.live.com/view.aspx?cid=123CCD2A7AB10107&resid=123CCD2A7AB10107%211849) (Slides)
--   [Service Bus Authentication and Authorization with the Access Control
-    Service](http://msdn.microsoft.com/en-us/library/hh403962.aspx)
+-   [保護 ACS 使用服務匯流排](http://channel9.msdn.com/posts/Securing-Service-Bus-with-ACS) (影片)
+-   [保護 ACS 使用服務匯流排](https://skydrive.live.com/view.aspx?cid=123CCD2A7AB10107&resid=123CCD2A7AB10107%211849) (投影片)
+-   [服務匯流排驗證與授權的存取控制
+    服務] (http://msdn.microsoft.com/library/hh403962.aspx)
 
-##In-Memory Cache Identity and Access Scenarios
+## 記憶體內部快取身分識別與存取案例
 
-In-memory cache (formerly known as Azure Cache) relies on
-Azure AD Access Control for authentication. It uses shared keys
-available through the management portal. Use the keys in your code or
-configuration files when accessing the cache. Be sure to store the keys
-securely so as to avoid information disclosure.
+記憶體內部快取 (先前稱為 Azure Cache) 仰賴
+Azure AD 存取控制來進行驗證。 它會使用
+透過管理入口網站取得的共用金鑰。 存取快取時，
+請使用程式碼或組態檔中的金鑰。 請務必安全地儲存金鑰，
+以避免資訊外洩。
 
 ![][17]
 
 
-Refer to the following resources to solve this scenario:
+若要解決此案例，請參閱下列資源：
 
--   [How to: Configure a Cache Client Programmatically for Azure
-    Caching](http://msdn.microsoft.com/en-us/library/windowsazure/gg618003.aspx)
--   [How to: Configure a Cache Client using the Application Configuration
-    File for Azure Caching](http://msdn.microsoft.com/en-us/library/windowsazure/gg278346.aspx)
--   [Azure Service Bus and Caching Samples](http://msdn.microsoft.com/en-us/library/ee706741.aspx) (Caching Samples
-    section)
+-   [如何: 設定以程式設計方式適用於 Azure 快取用戶端
+    快取] (http://msdn.microsoft.com/library/windowsazure/gg618003.aspx)
+-   [如何: 設定快取用戶端使用應用程式組態
+    檔案快取用戶端] (http://msdn.microsoft.com/library/windowsazure/gg278346.aspx)
+-   [Azure 服務匯流排和快取範例](http://msdn.microsoft.com/library/ee706741.aspx) (快取範例
+    一節)
 
-##Azure Marketplace Identity and Access Scenarios
+## Azure Marketplace 身分識別與存取案例
 
-Every access to an Azure Marketplace dataset, whether free or
-paid, must authenticate the user before access is granted. When you
-create an application the authentication process must be included in
-your code. Consider the following common scenarios:
+每次要存取 Azure Marketplace 資料集時，不論是免費或
+付費，都必須先驗證使用者才能授與存取權。 當您
+應用程式時，您的程式碼必須包含
+您的程式碼。 請細想下列常見案例：
 
-###I Access My Dataset
+### 我要存取我的資料集
 
-In this scenario you are building an application that consumes datasets
-in your Marketplace subscription. You are the user of the application.
-The application can be deployed either to Azure, on-premises, or Marketplace.
+在此案例中，您打算建立將使用 Marketplace 訂閱中
+之資料集的應用程式。 您是應用程式的使用者。
+應用程式可能會部署到 Azure、內部部署或 Marketplace。
 
-Use the shared key that's available through your Marketplace
-subscription. You obtain the shared key using the Marketplace portal.
+使用透過 Marketplace 訂閱取得的共用金鑰
+。 您可以使用 Marketplace 入口網站來取得該共用金鑰。
 
 ![][18]
 
-Refer to the following resources to solve this scenario:
+若要解決此案例，請參閱下列資源：
 
--   [Use HTTP Basic Auth in your Marketplace App](http://msdn.microsoft.com/en-us/library/gg193417.aspx)
+-   [在您的 Marketplace 應用程式中使用 HTTP 基本驗證](http://msdn.microsoft.com/library/gg193417.aspx)
 
-###Users Access My Datasets
+### 使用者要存取我的資料集
 
-In this scenario you are building an application that allows users to
-access your dataset. The application can be deployed on Azure,
-on-premises, or Marketplace.
+在此案例中，您打算建立將允許使用者
+存取您資料集的應用程式。 應用程式可能會在 Azure、
+內部部署或 Marketplace 中部署。
 
-To solve this scenario, use OAuth delegation. Users will be prompted to
-provide their Live ID / Microsoft Account credentials, and then they
-will be taken through the consent process.
+若要解決此案例，請使用 OAuth 委派。 系統會出現提示要求使用者
+提供其 Live ID/Microsoft 帳戶認證，然後使用者
+會被引導完成同意程序。
 
 ![][19]
 
-Refer to the following resources to solve this scenario:
+若要解決此案例，請參閱下列資源：
 
--   [OAuth Web Client Example](http://go.microsoft.com/fwlink/?LinkId=219162)
--   [OAuth Rich Client Example](http://go.microsoft.com/fwlink/?LinkId=219163)
+-   [OAuth Web 用戶端範例](http://go.microsoft.com/fwlink/?LinkId=219162)
+-   [OAuth 豐富型用戶端範例](http://go.microsoft.com/fwlink/?LinkId=219163)
 
-###Application Access Marketplace API
+### 應用程式存取 Marketplace API
 
-In this scenario you are building an application that accesses the
-Marketplace API. The Marketplace API requires authentication to
-successfully accomplish calls to it. The application is deployed to
-Azure Marketplace.
+在此案例中，您打算建立一個存取
+Marketplace API 的應用程式。 Marketplace API 需要驗證
+才能順利完成對它的呼叫。 應用程式會部署到
+Azure Marketplace。
 
 ![][20]
 
-Consult the Marketplace publishing kit for details about the
-authentication implementation.
+請參考 Marketplace 發佈套件，以取得有關
+驗證實作的詳細資訊。
 
-Refer to the following resources to solve this scenario:
+若要解決此案例，請參閱下列資源：
 
--   [Download the App Publishing Kit](http://go.microsoft.com/fwlink/?LinkId=221323)
--   [Introduction to Azure Marketplace for Applications](https://datamarket.azure.com/)
+-   [下載應用程式發佈套件](http://go.microsoft.com/fwlink/?LinkId=221323)
+-   [應用程式的 Azure Marketplace 簡介](https://datamarket.azure.com/)
 
-##Security Knobs
+## 安全性旋鈕
 
-This section outlines security knobs for Windows Identity Foundation and
-Azure AD Access Control. Use it as a basic security checklist
-for these technologies when designing and deploying your application.
+本節將概述 Windows Identity Foundation 和
+Azure AD 存取控制的安全性旋鈕。 設計與部署您的應用程式時，
+您可以把它當成這些技術的基本安全性檢查清單。
 
-###Windows Identity Foundation
+### Windows Identity Foundation
 
-The following are key security knobs of WIF. The information below is a
-digest from [WIF Design Considerations](http://msdn.microsoft.com/en-us/library/ee517298.aspx) and [Windows Identity Foundation
-(WIF) Security for ASP.NET Web Applications - Threats & Countermeasures](http://blogs.msdn.com/b/alikl/archive/2010/12/02/windows-identity-foundation-wif-security-for-asp-net-web-applications-threats-amp-countermeasures.aspx)
-.
+下列是 WIF 的主要安全性旋鈕。 以下資訊
+摘錄自 [WIF 設計考量](http://msdn.microsoft.com/library/ee517298.aspx) 和 [Windows Identity Foundation
+(WIF)安全的 ASP.NET Web 應用程式-威脅與對策] (http://blogs.msdn.com/b/alikl/archive/2010/12/02/windows-identity-foundation-wif-security-for-asp-net-web-applications-threats-amp-countermeasures.aspx)
+。
 
--   **IssuerNameRegistry**. Specifies trusted Security Token Services
-    (STS's). Make sure only trusted STS are listed.
--   **cookieHandler requireSsl="true"**. Specifies whether session
-    cookies transferred over the SSL protocol.
--   **wsFederation's requireHttps="true"**. Specifies whether the
-    federation protocol communication with identity provider performed
-    over SSL protocol.
--   **tokenReplayDetection enabled="true"**. Specifies whether token
-    replay detection feature is enabled. Be aware that this feature
-    creates server affinity as it manages local copies of used tokens.
--   **audienceUris**. Specifies intended audience of the token. If your
-    application receives a token that was not intended for your app it
-    will be rejected by WIF.
--   **requestValidation** and **httpRuntime requestValidationType**.
-    Enables/disables ASP.NET validation feature. See guidance as
-    outlined in [Windows Identity Foundation (WIF): A Potentially
+-   **IssuerNameRegistry**。 指定信任的安全性權杖服務
+    (STS)。 請確認只會列出信任的 STS。
+-   **cookieHandler requireSsl="true"**。 指定是否透過 SSL 通訊協定
+    傳送工作階段 Cookie。
+-   **wsFederation's requireHttps="true"**。 指定是否
+    透過 SSL 通訊協定執行與身分識別提供者的同盟通訊協定
+    通訊。
+-   **tokenReplayDetection enabled="true"**。 指定是否
+    啟用權杖重新執行偵測功能。 請注意，因為此功能管理已使用權杖的本機複本，
+    所以它會建立伺服器相似性。
+-   **audienceUris**。 指定權杖的適用對象。 如果
+    應用程式收到不適用的權杖，則 WIF 會
+    拒絕此權杖。
+-   **requestValidation** 和 **httpRuntime requestValidationType**。
+    啟用/停用 ASP.NET 驗證功能。 請參閱指引，如
+    中所述 [Windows Identity Foundation (WIF): 潛在
     Dangerous Request.Form Value Was Detected from the Client](http://social.technet.microsoft.com/wiki/contents/articles/1725.windows-identity-foundation-wif-a-potentially-dangerous-request-form-value-was-detected-from-the-client-wresult-t-requestsecurityto.aspx)
 
-###Azure AD Access Control
+### Azure AD 存取控制
 
-Consider the following security knobs in Azure AD Access Control
-deployment. The information below is a digest from [ACS Security
-Guidelines](http://msdn.microsoft.com/en-us/library/gg185962.aspx) and [Certificates and Keys Management Guidelines](http://msdn.microsoft.com/en-us/library/hh204521.aspx).
+請細想在 Azure AD 存取控制部署中的下列
+安全性旋鈕。 以下資訊是摘錄自 [ACS 安全性
+指導方針] (http://msdn.microsoft.com/library/gg185962.aspx) 和 [憑證和金鑰管理指導方針](http://msdn.microsoft.com/library/hh204521.aspx)。
 
--   **STS tokens expiration**. Use Azure AD Access Control
-    management portal to set aggressive token expiration.
--   **Data validation when using the Error URL feature**. Azure
-    AD Access Control Error URL feature requires anonymous access to the
-    app's page where it sends error messages. Assume all data coming to
-    this page as dangerous from untrusted source.
--   **Encrypting tokens for highly sensitive scenarios**. To mitigate
-    threat of information disclosure that available in the token
-    consider encrypting the tokens.
--   **Encrypting cookies using RSA when deploying to Azure**.
-    WIF encrypts cookies using DPAPI by default. It creates server
-    affinity and may result in exceptions when deployed to web farm and
-    Azure environments. Use RSA instead in web farm and 
-    Azure scenarios.
--   **Token signing certificates**. Renew token signing certificates
-    periodically to avoid denial of service. Azure AD Access
-    Control signs all security tokens it issues. X.509 certificates are
-    used for signing when you build an application that consumes SAML
-    tokens issued by ACS. When signing certificates expire you will
-    receive errors when trying to request a token.
--   **Token signing keys**. Renew token signing keys periodically to
-    avoid denial of service. Azure AD Access Control signs all
-    security tokens it issues. 256-bit symmetric signing keys are used
-    when you build an application that consumes SWT tokens issued by
-    ACS. When signing keys expire you will receive errors when trying to
-    request a token.
--   **Token encryption certificates**. Renew token encryption
-    certificates periodically to avoid denial of service. Token
-    encryption is required if a relying party application is a web
-    service using proof-of-possession tokens over the WS-Trust protocol,
-    in other cases token encryption is optional. When encryption
-    certificates expire you will receive errors when trying to request a
-    token.
--   **Token decryption certificates**. Renew token decryption
-    certificates periodically to avoid denial of service. Azure
-    AD Access Control can accept encrypted tokens from WS-Federation
-    identity providers (for example, AD FS 2.0). An X.509 certificate
-    hosted in Azure AD Access Control is used for decryption.
-    When decryption certificates expire you will receive errors when
-    trying to request a token.
--   **Service identity credentials**. Renew Service Identity credentials
-    periodically to avoid denial of service. Service identities use
-    credentials that are configured globally for your Azure AD
-    Access Control namespace that allow applications or clients to
-    authenticate directly with Azure AD Access Control and
-    receive a token. There are three credential types that Azure
-    AD Access Control service identity can be associated with: Symmetric
-    key, Password, and X.509 certificate. You will start receiving
-    exception when the credentials are expired.
--   **Azure AD Access Control Management Service account
-    credentials**. Renew Management service credentials periodically to
-    avoid denial of service. The Azure AD Access Control
-    Management Service is a key component that allows you to
-    programmatically manage and configure settings for your 
-    Azure AD Access Control namespace. There are three credential types
-    that the Management service account can be associated with. These
-    are symmetric key, password, and an X.509 certificate. You will
-    start receiving exception when the credentials are expired.
--   **WS-Federation identity provider signing and encryption
-    certificates**. Query for WS-Federation identity provider's
-    certificate validity to avoid denial of service. WS-Federation
-    identity provider certificate is available through its metadata.
-    When configuring WS-Federation identity provider, such as AD FS, the
-    WS-Federation signing certificate is configured through
-    WS-Federation metadata available via URL or as a file. After the
-    WS-Federation identity provider configured use Azure AD
-    Access Control management service to query it for its certificates
-    validness. When the certificate expires you will start receiving
-    exceptions.
+-   **STS 權杖到期日**。 使用 Azure AD 存取控制
+    管理入口網站來設定積極的權杖到期日。
+-   **使用錯誤 URL 功能時的資料驗證**。 Azure
+    AD 存取控制錯誤 URL 功能會要求對傳送錯誤訊息的
+    應用程式頁面進行匿名存取。 將傳入此頁面的所有資料都當作
+    未受信任的來源般危險。
+-   **針對高度敏感的案例加密權杖**。 若要減輕
+    資訊在權杖中洩漏的威脅，
+    請考慮加密權杖。
+-   **部署到 Azure 時使用 RSA 加密 Cookie**。
+    依預設，WIF 會使用 DPAPI 來加密 Cookie。 當部署到
+    Web 伺服陣列和 Azure 環境時，它會建立伺服器相似性，
+    並可能產生例外狀況。 在 Web 伺服陣列和 Azure 案例中 
+    請改用 RSA。
+-   **權杖簽署憑證**。 定期更新權杖簽署憑證，
+    以防止阻斷服務發生。 Azure AD 存取
+    控制會簽署它所簽發的所有安全性權杖。 當您建立
+    應用程式來使用由 ACS 所簽發的 SAML 權杖時，
+    會使用 X.509 憑證進行簽署。 當簽署憑證到期時，您在
+    嘗試要求權杖時會收到錯誤訊息。
+-   **權杖簽署金鑰**。 定期更新權杖簽署金鑰，
+    以防止阻斷服務發生。 Azure AD 存取控制會簽署
+    它所簽發的所有安全性權杖。 當您建立
+    應用程式來使用由 ACS 所簽發的 SWT 權杖時，
+    會使用 256 位元對稱簽署金鑰。 當簽署金鑰到期時，您在嘗試要求權杖時
+    會收到錯誤訊息。
+-   **權杖加密憑證**。 定期更新權杖加密憑證，
+    以防止阻斷服務發生。 權杖
+    信賴憑證者應用程式是在 WS-Trust 通訊協定上使用持有證明權杖的 Web
+    服務，則需要權杖加密，
+    否則權杖加密是選擇性的。 當加密
+    憑證到期時，您在嘗試要求權杖時
+    會收到錯誤訊息。
+-   **權杖解密憑證**。 定期更新權杖解密憑證，
+    以防止阻斷服務發生。 Azure
+    AD 存取控制可以接受來自 WS-同盟
+    身分識別提供者 (例如 AD FS 2.0) 的加密權杖。 在 Microsoft Azure AD 存取控制中代管的 X.509 憑證
+    可用於解密。
+    當解密憑證到期時，您在嘗試要求權杖時
+    會收到錯誤訊息。
+-   **服務身分識別認證**。 定期更新服務身分識別認證，
+    以防止阻斷服務發生。 服務身分識別會使用
+    針對 zure AD 存取控制命名空間全域設定的認證，
+    可讓應用程式或用戶端直接使用 Azure AD 存取控制
+    進行驗證，並接收權杖
+    。 Azure AD 存取控制服務身分識別
+    AD 存取控制服務身分識別類型有三種: 對稱
+    金鑰、密碼和 X.509 憑證。 認證到期時，您將會開始收到
+    例外狀況。
+-   * * Azure AD 存取控制管理服務帳戶
+    認證 * *。 定期更新管理服務認證，
+    以防止阻斷服務發生。 Azure AD 存取控制
+    管理服務是一個重要元件，
+    可讓您以程式設計的方式來管理與設定 Azure AD 存取控制命名空間的 
+    設定值。 管理服務帳戶可以關聯的
+    認證類型有三種。 這
+    三種類型分別是對稱金鑰、密碼和 X.509 憑證。 您
+    開始收到例外狀況。
+-   * * WS-同盟身分識別提供者簽署與加密
+    憑證 * *。 查詢 WS-同盟身分識別提供者
+    憑證的有效性，以防止阻斷服務發生。 WS-同盟
+    身分識別提供者憑證可透過其中繼資料取得。
+    設定 WS-同盟身分識別提供者 (如 AD FS) 時，
+    WS-同盟簽署憑證可透過經由 URL 或作為檔案取得的
+    WS-同盟中繼資料進行設定。 在
+    設定 WS-同盟身分識別提供者之後，您可以使用 Azure AD
+    存取控制管理服務來查詢其憑證
+    是否有效。 憑證到期時，您將會開始收到
+    例外狀況。
 
-##Shared Hosting Using Azure Websites
+## 使用 Azure 網站共用主控功能
 
-All scenarios and solutions outlined in this topic are valid when the
-application is hosted on Azure Websites.
+本主題中概述在 Azure 網站上代管應用程式時
+所有有效的案例和解決方案。
 
-##Azure Virtual Machines
+## Azure 虛擬機器
 
-All scenarios and solutions outlined in this topic are valid when the
-application is hosted on Azure Virtual Machines.
+本主題中概述在 Azure 虛擬機器上代管應用程式時
+所有有效的案例和解決方案。
 
-##Resources
+## 資源
 
--   [Identity Developer Training Kit](http://go.microsoft.com/fwlink/?LinkId=214555)
--   [MSDN-hosted Identity Developer Training Course](http://go.microsoft.com/fwlink/?LinkId=214561)
--   [A Guide to Claims-based Identity and Access Control](http://go.microsoft.com/fwlink/?LinkId=214562)
--   [Access Control Service](http://msdn.microsoft.com/en-us/library/windowsazure/gg429786.aspx)
--   [ACS How To's](http://msdn.microsoft.com/en-us/library/windowsazure/gg185939.aspx)
--   [Secure Azure Web Role ASP.NET Web Application Using Access Control Service v2.0](http://social.technet.microsoft.com/wiki/contents/articles/2590.aspx)
--   [Azure AD Access Control Service (ACS) Academy Videos](http://social.technet.microsoft.com/wiki/contents/articles/2777.aspx)
--   [Microsoft Security Development Lifecycle](http://www.microsoft.com/security/sdl/default.aspx)
--   [SDL Threat Modeling Tool 3.1.8](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=2955)
--   [Security and Privacy Blogs](http://www.microsoft.com/about/twc/en/us/blogs.aspx)
--   [Security Response Center](http://www.microsoft.com/security/msrc/default.aspx)
--   [Security Intelligence Report](http://www.microsoft.com/security/sir/)
--   [Security Development Lifecycle](http://www.microsoft.com/security/sdl/default.aspx)
--   [Security Developer Center (MSDN)](http://msdn.microsoft.com/security/)
+-   [身分識別開發人員訓練套件](http://go.microsoft.com/fwlink/?LinkId=214555)
+-   [MSDN 代管的身分識別開發人員訓練課程](http://go.microsoft.com/fwlink/?LinkId=214561)
+-   [宣告式身分識別和存取控制指南](http://go.microsoft.com/fwlink/?LinkId=214562)
+-   [存取控制服務](http://msdn.microsoft.com/library/windowsazure/gg429786.aspx)
+-   [ACS 的作法的](http://msdn.microsoft.com/library/windowsazure/gg185939.aspx)
+-   [保護 Azure Web 角色 ASP.NET Web 應用程式使用存取控制服務 v2.0 來](http://social.technet.microsoft.com/wiki/contents/articles/2590.aspx)
+-   [Azure AD 存取控制服務 (ACS) 學術影片](http://social.technet.microsoft.com/wiki/contents/articles/2777.aspx)
+-   [Microsoft 安全性開發生命週期](http://www.microsoft.com/security/sdl/default.aspx)
+-   [SDL 威脅模型化工具 3.1.8](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=2955)
+-   [安全性與隱私權部落格](http://www.microsoft.com/about/twc/en/us/blogs.aspx)
+-   [安全性回應中心](http://www.microsoft.com/security/msrc/default.aspx)
+-   [安全性智慧型報告](http://www.microsoft.com/security/sir/)
+-   [安全性開發生命週期](http://www.microsoft.com/security/sdl/default.aspx)
+-   [安全性開發人員中心 (MSDN)](http://msdn.microsoft.com/security/)
 
 
-[01]:./media/SecurityRX/01_SecuringTheApplication.gif
-[02]:./media/SecurityRX/02_ThreatsVulnerabilitiesandAttacks.gif
-[03]:./media/SecurityRX/03_WindowsAzureADAccesscontrol.gif
-[04]:./media/SecurityRX/04_WCF(SOAP)Service.gif
-[05]:./media/SecurityRX/05_AzureADAccessControl.gif
-[06]:./media/SecurityRX/06_RESTService.gif
-[07]:./media/SecurityRX/07_WIFisOptional.gif
-[08]:./media/SecurityRX/08_ASPNETWebApptoREST.gif
-[09]:./media/SecurityRX/09_RBAC.gif
-[10]:./media/SecurityRX/10_WIFClaimsAuthenticationManager.gif
-[11]:./media/SecurityRX/11_SecurityTokenRequriementmapping.gif
-[12]:./media/SecurityRX/12_CustomRoleManager.gif
-[13]:./media/SecurityRX/13_ClaimsAuthorizationManager.gif
-[14]:./media/SecurityRX/14_WindowsAzurestorage.gif
-[15]:./media/SecurityRX/15_SQLAzureIdentityandAccessScenarios.gif
-[16]:./media/SecurityRX/16_WindowsAzureServiceBusIdentity.gif
-[17]:./media/SecurityRX/17_WindowsAzureCacheIdentity.gif
-[18]:./media/SecurityRX/18_IAccessMyDataset.gif
-[19]:./media/SecurityRX/19_UsersAccessMyDatasets.gif
-[20]:./media/SecurityRX/20_ApplicationAccessMarketplaceAPI.gif
 
-[Web SSO Design]: http://technet.microsoft.com/en-us/library/dd807033(WS.10).aspx
-[Federated Web SSO Design]: http://technet.microsoft.com/en-us/library/dd807050(WS.10).aspx
+[01]: ./media/SecurityRX/01_SecuringTheApplication.gif 
+[02]: ./media/SecurityRX/02_ThreatsVulnerabilitiesandAttacks.gif 
+[03]: ./media/SecurityRX/03_WindowsAzureADAccesscontrol.gif 
+[04]: ./media/SecurityRX/04_WCF(SOAP)Service.gif 
+[05]: ./media/SecurityRX/05_AzureADAccessControl.gif 
+[06]: ./media/SecurityRX/06_RESTService.gif 
+[07]: ./media/SecurityRX/07_WIFisOptional.gif 
+[08]: ./media/SecurityRX/08_ASPNETWebApptoREST.gif 
+[09]: ./media/SecurityRX/09_RBAC.gif 
+[10]: ./media/SecurityRX/10_WIFClaimsAuthenticationManager.gif 
+[11]: ./media/SecurityRX/11_SecurityTokenRequriementmapping.gif 
+[12]: ./media/SecurityRX/12_CustomRoleManager.gif 
+[13]: ./media/SecurityRX/13_ClaimsAuthorizationManager.gif 
+[14]: ./media/SecurityRX/14_WindowsAzurestorage.gif 
+[15]: ./media/SecurityRX/15_SQLAzureIdentityandAccessScenarios.gif 
+[16]: ./media/SecurityRX/16_WindowsAzureServiceBusIdentity.gif 
+[17]: ./media/SecurityRX/17_WindowsAzureCacheIdentity.gif 
+[18]: ./media/SecurityRX/18_IAccessMyDataset.gif 
+[19]: ./media/SecurityRX/19_UsersAccessMyDatasets.gif 
+[20]: ./media/SecurityRX/20_ApplicationAccessMarketplaceAPI.gif 
+[web sso design]: http://technet.microsoft.com/library/dd807033(WS.10).aspx 
+[federated web sso design]: http://technet.microsoft.com/library/dd807050(WS.10).aspx 
+

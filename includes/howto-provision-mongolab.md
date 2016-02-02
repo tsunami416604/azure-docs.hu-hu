@@ -1,35 +1,37 @@
-You can subscribe to an Azure-hosted, fully-managed MongoDB database in the Azure Store. To do so, follow these steps:
+您可以在 Azure 市集訂用由 Azure 託管、完整管理的 MongoDB 資料庫。 若要這樣做，請依照下列步驟執行：
 
-1. Log into the Azure Management Portal.
-1. Click **New**.  
-![New][button-new]
-1. Select **Store**.  
-![Store][button-store]
-1. Select MongoLab. You can find us in the **App Services** category, as well as under **All**.  
+1. 登入 Azure 管理入口網站。
+1. 按一下 [新增]****。  
+![新增][button-new]
+1. 選取 **存放區**。  
+![存放區][button-store]
+1. 選取 [MongoLab]。 您可以找到我們在 **應用程式服務** 類別，以及下 **所有**。  
 ![MongoLab][entry-mongolab]
-1. Click **Next**.  
-![Next][button-next]  
-  The MongoLab store entry displays.  
+1. 按 [下一步]****。  
+![下一步][button-next]  
+  MongoLab 市集項目隨即出現。  
 ![NewMongoLab][screen-newmongolab]
-1. Select your desired **Subscription** option.
-1. Enter a **Name** for your database. Your name can only contain alphanumeric characters, dashes, dots, and underscores. MongoLab also requires that this name be unique, so you may be asked to re-submit your request if the name is taken.
-1. Select your desired **Region**.
-1. Click **Next**.  
-![Next][button-next]
-1. Review your store purchase information, and then click **Purchase** to confirm.  
-![Next][button-purchase]  
-1. The toolbar progress button provides your provisioning status.  
-![ProgressButton][button-progress]  
-A success message displays when provisioning completes.  
-![SuccessMessage][message-success]
+1. 選取想要的 [訂用帳戶]**** 選項。
+1. 輸入資料庫的 [名稱]****。 名稱只能包含英數字元、虛線、點和底線。 MongoLab 也要求此名稱必須是唯一的，如果此名稱已被使用，系統可能會請您重新提交要求。
+1. 選取想要的 [區域]****。
+1. 按 [下一步]****。  
+![下一步][button-next]
+1. 檢閱您的市集購買資訊，然後按一下 **購買** 確認。  
+![下一步][button-purchase]
+1. 工具列進度按鈕會提供佈建狀態。  
+![進度按鈕][button-progress]  
+佈建完成時會顯示成功訊息。  
+![成功訊息][message-success]
 
-Congratulations! MongoLab has just provisioned a MongoDB database in the Azure region you selected. You now have access to our management UI and 24/7 support.
+恭喜！ MongoLab 剛才已在您選取的 Azure 區域佈建 MongoDB 資料庫。 您現在可以存取我們的管理 UI，並享有 24/7 的支援。
 
-[button-new]: ./media/howto-provision-mongolab/button-new.png
-[button-store]: ./media/howto-provision-mongolab/button-store.png
-[button-next]: ./media/howto-provision-mongolab/button-next.png
-[button-purchase]: ./media/howto-provision-mongolab/button-purchase.png
-[button-progress]: ./media/howto-provision-mongolab/button-progress.png
+
+[button-new]: ./media/howto-provision-mongolab/button-new.png 
+[button-store]: ./media/howto-provision-mongolab/button-store.png 
+[button-next]: ./media/howto-provision-mongolab/button-next.png 
+[button-purchase]: ./media/howto-provision-mongolab/button-purchase.png 
+[button-progress]: ./media/howto-provision-mongolab/button-progress.png 
 [entry-mongolab]: ./media/howto-provision-mongolab/entry-mongolab.png 
 [screen-newmongolab]: ./media/howto-provision-mongolab/screen-newmongolab.png 
-[message-success]: ./media/howto-provision-mongolab/message-provisionsuccess.png
+[message-success]: ./media/howto-provision-mongolab/message-provisionsuccess.png 
+

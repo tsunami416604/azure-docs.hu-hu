@@ -1,70 +1,70 @@
-Your first step is to create a new account to use for the tutorial. You can use the FREE Sandbox plan, it's perfect for this tutorial.
+第一個步驟是建立要用於本教學課程的新帳戶。 您可以使用免費的「沙箱」計畫，它非常適合本教學課程。
 
-### To sign up for a Pusher account
+### 註冊 Pusher 帳戶
 
-1. Log in to the [Azure Management Portal][].
+1. 登入 [Azure 管理入口網站的 []][]。
 
-2. In the lower pane of the management portal, click **New**.
+2. 在管理入口網站的下方窗格中，按一下 [新增]****。
 
-	![command-bar-new][command-bar-new]
+    ![command-bar-new][command-bar-new]
 
-3. Click **Store**.
+3. 按一下 [市集]****。
 
-	![pusher-store][pusher-store]
+    ![pusher-store][pusher-store]
 
-4. In the **Choose an Add-on** dialog, select **Pusher** and click the right arrow.
+4. 在 [選擇附加元件]**** 對話方塊中，選取 [Pusher]**** 並按一下向右鍵。
 
-5. In the **Personalize Add-on** dialog select the **Pusher** plan you want to sign up for.
+5. 在 [個人化附加元件]**** 對話方塊中，選取您想要註冊的 **[Pusher]** 方案。
 
-6. Enter a name to identify your **Pusher** service in your Azure settings, or use the default value of **Pusher**. Names must be between 1 and 100 characters in length and contain only alphanumeric characters, dashes, dots, and underscores. The name must be unique in your list of subscribed Azure Store Items.
+6. 在您的 Azure 設定中輸入一個可識別 [Pusher]**** 服務的名稱，或使用 [Pusher]**** 的預設值。 名稱的長度必須介於 1 到 100 個字元之間，而且只能包含英數字元、連字號、句點和底線。 此名稱在已訂用的 Azure 市集項目清單中必須是唯一的。
 
-	![store-screen-1][store-screen-1]
+    ![store-screen-1][store-screen-1]
 
-8. Choose a value for the region; for example, West US. 
+8. 選擇地區值，例如美國西部。
 
-9. Click the right arrow.
+9. 按一下向右箭頭。
 
-10. On the **Review Purchase** tab, review the plan and pricing information, and review the legal terms. If you agree to the terms, click the check mark. After you click the check mark, your Pusher account will begin the provisioning process. 
+10. 在 [檢閱購買項目]**** 索引標籤中，檢閱方案和價格資訊，並檢閱法律條款。 如果您同意接受這些條款，請按一下核取記號。 按一下核取記錄之後，您的 Pusher 帳戶將會開始佈建程序。
 
-	![store-screen-2][store-screen-2]
+    ![store-screen-2][store-screen-2]
 
-11. After confirming your purchase you are redirected to the add-ons dashboard and you will see the message **Purchasing Pusher**.
+11. 確認購買項目之後，系統會將您重新導向至附加元件儀表板，您將會看到 [正在購買 Pusher]**** 的訊息。
 
-	![store-screen-3][store-screen-3]
+    ![store-screen-3][store-screen-3]
 
-Your Pusher account is provisioned immediately and you will see the message **Successfully purchased Add-On Pusher**. Your account has been created and you are now ready to use the Pusher service.
+系統會立即佈建您的 Pusher 帳戶，您將會看到 **[已成功購買附加元件 Pusher]** 的訊息。 現在已建立好帳戶，您已準備好開始使用 Pusher 服務。
 
-To modify your subscription plan or see the Pusher contact settings, click the name of your Pusher service to open the Pusher add-ons dashboard.
+若要修改您的訂用計畫或查看 Pusher 連絡人設定，請按一下您的 Pusher 服務名稱，以開啟 Pusher 附加元件儀表板。
 
 ![pusher-add-on-dashboard][pusher-add-on-dashboard]
-	
-When using Pusher you will need to supply your Pusher app connection settings.
 
-### To find your Pusher connection settings ###
+使用 Pusher 時，您必須提供 Pusher 應用程式連線設定。
 
-1. Click **Connection Info**.
+### 尋找您的 Pusher 連線設定
 
-	![pusher-connection-info-button][pusher-connection-info-button]
+1. 按一下 [連線資訊]****。
 
-2. In the *Connection info* dialog you will see your app ID, key and secret. You will use these values later in the tutorial so copy them for late use.
+    ![pusher-connection-info-button][pusher-connection-info-button]
 
-	![pusher-connection-info][pusher-connection-info]
+2. 在 *[連線資訊]* 對話方塊中，您將會看到您的應用程式 ID、金鑰和密碼。 您稍後會在本教學課程中使用這些值，所以請進行複製以供稍後使用。
 
-For more information on getting started with Pusher, see [Understanding Pusher][].
+    ![pusher-connection-info][pusher-connection-info]
 
-<!--images-->
+如需有關如何開始使用 Pusher 的詳細資訊，請參閱 [[了解 Pusher]][]。
 
-[command-bar-new]: ./media/pusher-sign-up/1-command-bar-new.png
-[pusher-store]: ./media/pusher-sign-up/2-pusher-store.png
-[store-screen-1]: ./media/pusher-sign-up/3-pusher-store-screen-1.png
-[store-screen-2]: ./media/pusher-sign-up/4-pusher-store-screen-2.png
-[store-screen-3]: ./media/pusher-sign-up/5-pusher-store-screen-3.png
-[pusher-add-on-dashboard]: ./media/pusher-sign-up/6-pusher-add-on-dashboard.png
-[pusher-connection-info-button]: ./media/pusher-sign-up/7-pusher-connection-info-button.png
-[pusher-connection-info]: ./media/pusher-sign-up/8-pusher-connection-info.png
 
-<!--Links-->
 
-[Azure Management Portal]: https://manage.windowsazure.com
-[Understanding Pusher]: http://pusher.com/docs
+
+
+
+[command-bar-new]: ./media/pusher-sign-up/1-command-bar-new.png 
+[pusher-store]: ./media/pusher-sign-up/2-pusher-store.png 
+[store-screen-1]: ./media/pusher-sign-up/3-pusher-store-screen-1.png 
+[store-screen-2]: ./media/pusher-sign-up/4-pusher-store-screen-2.png 
+[store-screen-3]: ./media/pusher-sign-up/5-pusher-store-screen-3.png 
+[pusher-add-on-dashboard]: ./media/pusher-sign-up/6-pusher-add-on-dashboard.png 
+[pusher-connection-info-button]: ./media/pusher-sign-up/7-pusher-connection-info-button.png 
+[pusher-connection-info]: ./media/pusher-sign-up/8-pusher-connection-info.png 
+[azure management portal]: https://manage.windowsazure.com 
+[understanding pusher]: http://pusher.com/docs 
 

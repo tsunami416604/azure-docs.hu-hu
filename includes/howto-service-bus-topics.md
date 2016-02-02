@@ -1,100 +1,62 @@
-<h2><a name="what-are-service-bus-topics"></a>What are Service Bus Topics and Subscriptions</h2>
+## 什麼是服務匯流排主題和訂用帳戶？
 
-Service Bus topics and subscriptions support a **publish/subscribe
-messaging communication** model. When using topics and subscriptions,
-components of a distributed application do not communicate directly with
-each other, they instead exchange messages via a topic, which acts as an
-intermediary.
+服務匯流排主題和訂用帳戶支援*發佈/訂用帳戶*訊息通訊模型。 使用主題和訂用帳戶時，分散式應用程式的元件彼此不直接通訊，相反的，他們會透過扮演中繼角色的主題來交換訊息。
 
-![TopicConcepts](./media/howto-service-bus-topics/sb-topics-01.png)
+![主題概念](./media/howto-service-bus-topics/sb-topics-01.png)
 
-In contrast to Service Bus queues, where each message is processed by a
-single consumer, topics and subscriptions provide a **one-to-many** form
-of communication, using a publish/subscribe pattern. It is possible to
-register multiple subscriptions to a topic. When a message is sent to a
-topic, it is then made available to each subscription to handle/process
-independently.
+有別於服務匯流排佇列，服務匯流排佇列中的每個訊息只會由單一取用者處理，主題和訂用帳戶採用發佈/訂用帳戶模式，提供一對多的通訊形式。 可以
+登錄多個訂閱的主題。 當訊息傳送至主題時，每個訂閱都可取得訊息來個別處理。
 
-A topic subscription resembles a virtual queue that receives copies of
-the messages that were sent to the topic. You can optionally register
-filter rules for a topic on a per-subscription basis, which allows you
-to filter/restrict which messages to a topic are received by which topic
-subscriptions.
+主題的訂用帳戶類似於虛擬佇列，同樣可接收已傳送到主題的訊息複本。 您可以選擇為個別訂用帳戶來登錄主題的篩選規則，以篩選/限制主題的哪些訊息由哪些主題訂用帳戶接收。
 
-Service Bus topics and subscriptions enable you to scale to process a
-very large number of messages across a very large number of users and
-applications.
+服務匯流排主題和訂閱可讓您擴大並處理非常多使用者和應用程式上非常大量的訊息。
 
-<h2><a name="create-a-service-namespace"></a>Create a Service Namespace</h2>
+## 建立服務命名空間
 
-To begin using Service Bus topics and subscriptions in Azure,
-you must first create a service namespace. A service namespace provides
-a scoping container for addressing Service Bus resources within your
-application.
+若要開始在 Azure 中使用服務匯流排主題和訂用帳戶，首先必須建立服務命名空間。 命名空間提供範圍容器，可在應用程式內定址服務匯流排資源。
 
-To create a service namespace:
+建立服務命名空間：
 
-1.  Log on to the [Azure Management Portal][].
+1.  登入 [Azure 入口網站的 []][]。
 
-2.  In the left navigation pane of the Management Portal, click
-    **Service Bus**.
+2.  在入口網站的左方瀏覽窗格中，按一下 [服務匯流排]****。
 
-3.  In the lower pane of the Management Portal, click **Create**.   
+3.  在入口網站的下方窗格中，按一下 [建立]****。   
     ![][0]
 
-4.  In the **Add a new namespace** dialog, enter a namespace name.
-    The system immediately checks to see if the name is available.   
+4.  在 [Add a new namespace]**** 對話方塊中，輸入命名空間名稱。 系統會立即檢查此名稱是否可用。   
     ![][2]
 
-5.  After making sure the namespace name is available, choose the
-    country or region in which your namespace should be hosted (make
-    sure you use the same country/region in which you are deploying your
-    compute resources).
+5.  確定命名空間名稱可用之後，請選擇要代管命名空間的國家或區域 (必須使用您要部署計算資源的相同國家/區域)。
+    > [AZURE.IMPORTANT] 請挑選您想要選擇來部署應用程式的**相同區域**。 這樣可以獲得最佳效能。
 
-	IMPORTANT: Pick the **same region** that you intend to choose for
-    deploying your application. This will give you the best performance.
+6.  讓對話方塊中的其他欄位保留其預設值 ([**傳訊**] 和 [**標準層**])，然後按一下核取記號。 此時系統會建立並啟用服務命名空間。 系統為帳戶提供資源時，您可能需要等幾分鐘。
 
-6. 	Click the check mark. The system now creates your service
-    namespace and enables it. You might have to wait several minutes as
-    the system provisions resources for your account.
+    ![][6]
 
-	![][6]
+## 取得命名空間的預設管理認證
 
+若要在新的命名空間上執行管理作業，例如建立主題或訂用帳戶，您必須取得命名空間的管理認證。 您可以從 Azure 入口網站取得這些認證。
 
-<h2><a name="obtain-default-credentials"></a>Obtain the Default Management Credentials for the Namespace</h2>
+### 從入口網站取得管理認證
 
-In order to perform management operations, such as creating a topic or
-subscription on the new namespace, you must obtain the management
-credentials for the namespace. You can obtain these credentials from either the Management Portal, or from the Visual Studio Server Explorer.
-
-###To obtain management credentials from the portal
-
-1.  In the left navigation pane, click the **Service Bus** node to
-    display the list of available namespaces:   
+1.  在左方瀏覽窗格中，按一下 [服務匯流排]**** 節點，以顯示可用的命名空間清單：   
     ![][0]
 
-2.  Select the namespace you just created from the list shown:   
+2.  從顯示的清單中，選取您剛建立的命名空間：   
     ![][3]
 
-3.  Click **Connection Information**.   
+3.  按一下 [連線資訊]****。   
     ![][4]
 
-4.  In the **Access connection information** dialog, find the **Default Issuer** and **Default Key** entries. Make a note of these values, as you will use this information below to perform operations with the namespace. 
+4.  在 [**存取連線資訊**] 對話方塊中，尋找包含 SAS 金鑰和金鑰名稱的連接字串。 請記下這些值，稍後您將會利用此資訊對命名空間執行作業。
 
-###To obtain management credentials from Server Explorer
 
-To obtain connection information using Visual Studio instead of the Management Portal, follow the procedure described [here](http://http://msdn.microsoft.com/en-us/library/windowsazure/ff687127.aspx), in the section titled **To connect to Azure from Visual Studio**. When you sign in to Azure, the **Service Bus** node under the **Microsoft Azure** tree in Server Explorer is automatically populated with any namespaces you've already created. Right-click any namespace, and then click **Properties** to see the connection string and other metadata associated with this namespace displayed in the Visual Studio **Properties** pane. 
 
-Make a note of the **SharedAccessKey** value, or copy it to the clipboard:
+[azure portal]: http://manage.windowsazure.com 
+[0]: ./media/howto-service-bus-topics/sb-queues-13.png 
+[2]: ./media/howto-service-bus-topics/sb-queues-04.png 
+[3]: ./media/howto-service-bus-topics/sb-queues-09.png 
+[4]: ./media/howto-service-bus-topics/sb-queues-06.png 
+[6]: ./media/howto-service-bus-topics/getting-started-multi-tier-27.png 
 
-![][34]
-
- 
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [0]: ./media/howto-service-bus-topics/sb-queues-13.png
-  [2]: ./media/howto-service-bus-topics/sb-queues-04.png
-  [3]: ./media/howto-service-bus-topics/sb-queues-09.png
-  [4]: ./media/howto-service-bus-topics/sb-queues-06.png
-  
-  [6]: ./media/howto-service-bus-topics/getting-started-multi-tier-27.png
-  [34]: ./media/howto-service-bus-topics/VSProperties.png

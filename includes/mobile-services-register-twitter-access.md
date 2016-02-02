@@ -1,43 +1,38 @@
 
+新的 Twitter v1.1 API 會要求您的應用程式先進行驗證再存取資源。 首先，您需要使用 OAuth 2.0 取得所需的認證以要求存取權。 接著針對您的行動服務，將它們安全地儲存在應用程式設定中。
 
-The new Twitter v1.1 APIs requires your app to authenticate before accessing resources. First, you need to get the credentials needed to request access by using OAuth 2.0. Then, you will store them securely in the app settings for your mobile service.
+1. 如果您尚未這樣做，請完成本主題中的步驟 <a href="../articles/mobile-services/mobile-services-how-to-register-twitter-authentication.md/" target="_blank">行動服務註冊應用程式，以進行 Twitter 登入</a>。
 
-1. If you haven't already done so, complete the steps in the topic <a href="/en-us/documentation/articles/mobile-services-how-to-register-twitter-authentication/" target="_blank">Register your apps for Twitter login with Mobile Services</a>. 
-  
-  	Twitter generates the credentials needed to enable you to access Twitter v1.1 APIs. You can get these credentials from the Twitter Developers website. 
+    Twitter 會產生需要的認證，讓您可以存取 Twitter v1.1 API。 您可以從 Twitter Developers 網站取得這些認證。
 
-2. Navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268300" target="_blank">Twitter Developers</a> website, sign-in with your Twitter account credentials, navigate to **My Applications**, and select your Twitter app.
+2. 瀏覽至 <a href="http://go.microsoft.com/fwlink/p/?LinkId=268300" target="_blank">Twitter 開發人員</a> 網站，使用您的 Twitter 帳戶認證登入，並選取您的 Twitter 應用程式。
 
-    ![](./media/mobile-services-register-twitter-access/mobile-twitter-my-apps.png)
+3. 在應用程式的 [金鑰與存取權杖]**** 索引標籤上，將下列的值記下：
 
-3. In the **Details** tab for the app, make a note of the following values:
+    + **取用者金鑰**
+    + **取用者密碼**
+    + **存取權杖**
+    + **存取權杖密碼**
 
-	+ **Consumer key**
-	+ **Consumer secret**
-	+ **Access token**
-	+ **Access token secret**
+4. 登入 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **行動電話服務**, ，然後按一下您的行動服務。
 
-	![](./media/mobile-services-register-twitter-access/mobile-twitter-app-secrets.png)
+5. 按一下 [身分識別]**** 索引標籤，輸入從 Twitter 取得的 [消費者金鑰]**** 和 [消費者密碼]**** 值，然後按 [儲存]****。
 
-4. Log on to the [Windows Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+    ![](./media/mobile-services-register-twitter-access/mobile-identity-tab-twitter-only.png)
 
-5. Click the **Identity** tab, enter the **Consumer key** and **Consumer secret** values obtained from Twitter, and click **Save**. 
+2. 按一下 [設定]**** 索引標籤，向下捲動至 [應用程式設定]****，並輸入您從 Twitter 網站取得之下列各項的 [名稱]**** 和 [值]**** 組，然後按 [儲存]****。
 
-	![](./media/mobile-services-register-twitter-access/mobile-identity-tab-twitter-only.png)
+    + `TWITTER_ACCESS_TOKEN`
+    + `TWITTER_ACCESS_TOKEN_SECRET`
 
-2. Click the **Configure** tab, scroll down to **App settings** and enter a **Name** and **Value** pair for each of the following that you obtained from the Twitter site, then click **Save**.
+    ![](./media/mobile-services-register-twitter-access/mobile-schedule-job-app-settings.png)
 
-	+ `TWITTER_ACCESS_TOKEN`
-	+ `TWITTER_ACCESS_TOKEN_SECRET`
+    這會在應用程式設定中儲存 Twitter 存取權杖。 如同 [身分識別]**** 索引標籤上的消費者認證，也可以在應用程式設定中加密儲存存取認證，您可以用伺服器指令碼存取它們，不需將它們硬式編碼至指令碼檔案中。 如需詳細資訊，請參閱 [應用程式設定]。
 
-	![](./media/mobile-services-register-twitter-access/mobile-schedule-job-app-settings.png)
 
-	This stores the Twitter access token in app settings. Like the consumer credentials on the **Identity** tab, the access credentials are also stored encrypted in app settings, and you can access them in your server scripts without hard-coding them in the script file. For more information, see [App settings].
 
-<!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[WindowsAzure.com]: http://www.windowsazure.com/
-[Windows Azure Management Portal]: https://manage.windowsazure.com/
-[Register your apps for Twitter login with Mobile Services]: /en-us/documentation/articles/mobile-services-how-to-register-twitter-authentication
-[Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[App settings]: http://msdn.microsoft.com/en-us/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[mobile services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293 
+[register your apps for twitter login with mobile services]: ../articles/mobile-services/mobile-services-how-to-register-twitter-authentication.md 
+[twitter developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300 
+[app settings]: http://msdn.microsoft.com/library/azure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7 
+

@@ -1,42 +1,26 @@
-Follow these steps to create a new mobile service.
 
-1.  Log into the [Management Portal][Management Portal].
+依照下列步驟即可建立新的行動服務。
 
-2.  At the bottom of the navigation pane, click **+NEW**.
+1.  登入 [Azure 傳統入口網站](https://manage.windowsazure.com/)。 在導覽窗格的底端，按一下 **[新增]**。 展開 **[計算]** 和 **[行動服務]**，然後按一下 **[建立]**。
 
-    ![][0]
+    ![](./media/mobile-services-create-new-service/mobile-create.png)
 
-3.  Expand **Compute** and **Mobile Service**, then click **Create**.
+    [建立行動服務] ****對話方塊隨即出現。
 
-    ![][1]
+2.  在 [**建立行動服務**] 對話方塊中，選取 [**建立免費的 20 MB SQL Database**]，選取 **JavaScript**] 執行階段，然後在 [**URL**] 文字方塊中輸入新行動服務的子網域名稱。 按一下向右鍵按鈕以移至下一個頁面。
 
-    This displays the **New Mobile Service** dialog.
+    ![](./media/mobile-services-create-new-service/mobile-create-page1.png)
 
-4.  In the **Create a mobile service** page, select **Create a free 20 MB SQL Database**, select **Node.js** runtime, then type a subdomain name for the new mobile service in the **URL** textbox and wait for name verification. Once name verification completes, click the right arrow button to go to the next page.
+    這將顯示 **[指定資料庫設定]** 頁面。
+    >[AZURE.NOTE]作為本教學課程的一部分，您需要建立新的 SQL 資料庫執行個體和伺服器。 您可以如同任何其他 SQL Database 執行個體般重新使用這個新資料庫，並加以管理 如果新行動服務的區域已經有資料庫存在，您可以改選 **[使用現有資料庫]**，然後選取該資料庫。 不建議您使用位在不同區域的資料庫，因為這會需要額外的頻寬成本和產生更高的延遲。
 
-    ![][2]
+3.  在 **[名稱]** 中輸入新資料庫的名稱，然後輸入 **[登入名稱]** (也就是新 SQL Database 伺服器的系統管理員登入名稱)，輸入並確認密碼，然後按一下核取按鈕以完成程序。
+    ![](./media/mobile-services-create-new-service/mobile-create-page2.png)
 
-    This displays the **Specify database settings** page.
+您現在已經建立可供行動應用程式使用的新行動服務。
 
-    <div class="dev-callout"> 
-<b>Note</b> 
-<p>As part of this tutorial, you create a new SQL Database instance and server. You can reuse this new database and administer it as you would any other SQL Database instance. If you already have a database in the same region as the new mobile service, you can instead choose <strong>Use existing Database</strong> and then select that database. The use of a database in a different region is not recommended because of additional bandwidth costs and higher latencies.</p></div>
 
-5.  In **Name**, type the name of the new database, then type **Login name**, which is the administrator login name for the new SQL Database server, type and confirm the password, and click the check button to complete the process.
 
-    ![][3]
 
-    <div class="dev-callout"> 
-<b>Note</b> 
-<p>When the password that you supply does not meet the minimum requirements or when there is a mismatch, a warning is displayed. <br/>We recommend that you make a note of the administrator login name and password that you specify; you will need this information to reuse the SQL Database instance or the server in the future.</p> 
-</div>
 
-You have now created a new mobile service that can be used by your mobile apps.
 
-<!-- URLs. -->
-
-  [Management Portal]: https://manage.windowsazure.com/
-  [0]: ./media/mobile-services-create-new-service/plus-new.png
-  [1]: ./media/mobile-services-create-new-service/mobile-create.png
-  [2]: ./media/mobile-services-create-new-service/mobile-create-page1.png
-  [3]: ./media/mobile-services-create-new-service/mobile-create-page2.png

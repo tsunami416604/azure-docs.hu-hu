@@ -1,14 +1,12 @@
+驗證使用者提交的資料長度一向是最佳做法。 在本節中，您會將程式碼新增到行動服務，此服務會驗證傳送至行動服務之字串資料長度，並拒絕太長的字串，在此案例中為超過 10 個字元。
 
-It is always a good practice to validate the length of data that is submitted by users. In this section you will add code to the mobile service that validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+1. 啟動 Visual Studio **系統管理員身分執行** 選項，並開啟包含您在 [開始] 課程中使用的行動服務專案的方案或 [開始使用資料](../articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md)  教學課程。
 
-1. Start Visual Studio with the **Run as administrator** option and open the solution that contains the mobile service project that you worked with in the [Getting Started] or [Get started with data](/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/)  tutorial.
+2. 在 [方案總管] 視窗中展開 Todo 清單服務專案，然後展開 [控制器]****。 開啟行動服務專案的 TodoItemController.cs 檔案。
 
-2. In the Solution Explorer window expand the todo list service project and expand **Contollers**. Open the TodoItemController.cs file which is part of the mobile service project.  
+    ![](./media/mobile-services-dotnet-backend-add-validation/mobile-services-open-todoitemcontroller.png)
 
-   	![](./media/mobile-services-dotnet-backend-add-validation/mobile-services-open-todoitemcontroller.png)
-
-3. Replace the `PostTodoItem` method with the following method which will validate that the text string is not greater than 10 characters. For items that do have a text length greater than 10 characters, the method returns an HTTP Status code 400 Bad Request with a descriptive message included as content.
-
+3. 以下列將驗證文字字串不超過 10 個字元的方法，取代 `PostTodoItem` 方法。 若為文字字串不超過 10 個字元的項目，此方法將傳回內含描述訊息內容的「HTTP 狀態碼 400 不正確的要求」。
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
@@ -23,15 +21,12 @@ It is always a good practice to validate the length of data that is submitted by
             } 
         }
 
+4. 在服務專案上按一下滑鼠右鍵，再按一下 [組建]**** 以組建行動服務專案。 驗證未發生錯誤。
 
+    ![](./media/mobile-services-dotnet-backend-add-validation/mobile-services-build-dotnet-service.png)
 
-4. Right click the service project and click **Build** to build the mobile service project. Verify no errors occurred.
-
-   	![](./media/mobile-services-dotnet-backend-add-validation/mobile-services-build-dotnet-service.png)
-
-5. Right click the service project and click **Publish**. Publish the mobile service to your Microsoft Azure account using the publishing settings you previously used in the [Getting Started] or [Get started with data](/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/)  tutorial.
- 
-     >[WACOM.NOTE] You can alternatively test with the service hosted locally in IIS Express. For more information see the [Get started with data](/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/) tutorial.
+5. 再次以滑鼠右鍵按一下服務專案，然後按一下 [發行]****。 行動服務發佈至 Microsoft Azure 帳戶使用您先前使用 [快速入門] 中的發行設定或 [開始使用資料](../articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md)  教學課程。
+     >[AZURE.NOTE] 您可以在 IIS Express 中，使用本機主控的服務進行其他測試。 如需詳細資訊，請參閱 [開始使用資料](../articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md) 教學課程。
 
     ![](./media/mobile-services-dotnet-backend-add-validation/mobile-services-publish-dotnet-service.png)
 
@@ -39,5 +34,7 @@ It is always a good practice to validate the length of data that is submitted by
 
 
 
-<!-- URLs. -->
-[Getting Started]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
+
+
+[getting started]: ../articles/mobile-services/mobile-services-dotnet-backend-windows-store-dotnet-get-started.md 
+

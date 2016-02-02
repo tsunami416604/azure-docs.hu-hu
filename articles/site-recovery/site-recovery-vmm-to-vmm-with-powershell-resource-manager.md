@@ -1,0 +1,192 @@
+<properties
+    pageTitle="利用 PowerShell 和 Microsoft Azure 資源管理員到另一個保護 Vm 從一個 VMM 站台"
+    description="使用 PowerShell 和 Azure 資源管理員，自動化兩個內部部署 VMM 網站與 Azure 之間的保護。"
+    services="site-recovery"
+    documentationCenter=""
+    authors="rayne-wiselman"
+    manager="jwhit"
+    editor="tysonn"/>
+
+<tags
+    ms.service="site-recovery"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="backup-recovery"
+    ms.date="08/26/2015"
+    ms.author="raynew"/>
+
+
+
+# 在兩個 VMM 網站之間使用 PowerShell 和 Azure 資源管理員
+
+## 概觀
+
+Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容錯移轉及復原，為您的商務持續性與災害復原 (BCDR) 做出貢獻。 如需完整清單的部署案例，請參閱 [Azure Site Recovery 概觀](site-recovery-overview.md)。
+
+Azure PowerShell 是個模組，其提供了各種 Cmdlet 來透過 Windows PowerShell 管理 Azure。 它可以搭配兩種模組類型使用：Azure 設定檔模組或 Azure 資源管理員 (ARM) 模組。
+
+本文說明如何搭配 ARM 使用 Windows PowerShell® 來部署 Azure Site Recovery，以設定及協調兩個 VMM 網站之間的虛擬機器保護。 在 Hyper-V 主機伺服器上執行並位於主要網站之 VMM 私人雲端中的虛擬機器，使用 HYPER-V 複本複寫和容錯移轉至次要 VMM 網站。
+
+您不需要是 PowerShell 專家就能使用本文，但本文假設您了解模組、Cmdlet 和工作階段等基本概念。 如需有關 Windows PowerShell 的詳細資訊，請參閱 [開始使用 Windows PowerShell](http://technet.microsoft.com/library/hh857337.aspx)。
+- 深入了解 [使用 Azure PowerShell 與 Azure 資源管理員](powershell-azure-resource-manager.md)。
+
+發行項包含案例的必要條件，並說明如何設定 Azure PowerShell 使用站台復原、 建立站台復原保存庫、 VMM 伺服器上安裝 「 Azure 站台復原提供者和註冊他們的保存庫中，設定將套用到所有受保護虛擬機器，然後啟用那些虛擬機器的保護 VMM 雲端的保護設定。 您將測試容錯移轉，確認一切如預期般運作以完成動作。
+
+
+## 開始之前
+
+確認您已備妥這些必要條件：
+
+- 您將需要 [Microsoft Azure](http://azure.microsoft.com/) 帳戶。 您將需要 [Microsoft Azure](http://azure.microsoft.com/) 帳戶。 您可以開始 [免費試用版](pricing/free-trial/)。 此外，您可以閱讀 [Azure Site Recovery 管理員價格](http://azure.microsoft.com/pricing/details/site-recovery/)。
+- 主要和次要網站上必須有執行 System Center 2012 R2 的 VMM 伺服器。
+- 每部 VMM 伺服器至少應該有一個雲端包含：
+    - 一或多個 VMM 主機群組。
+    - 每個主機群組中的一或多個 Hyper-V 主機伺服器或叢集。
+    - 來源 Hyper-V 伺服器上的一或多部虛擬機器。
+    - 深入了解設定 VMM 雲端：
+
+        - [What’s New in Private Cloud with System Center 2012 R2 VMM](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/MDC-B357#fbid=dfgvHAmYryA) and in [VMM 2012 and the clouds](http://www.server-log.com/blog/2011/8/26/vmm-2012-and-the-clouds.html).
+        - [Configuring the VMM cloud fabric](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)
+        - [Creating a private cloud in VMM](https://technet.microsoft.com/library/jj860425.aspx) and [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx).
+
+- 一或多部 Hyper-V 伺服器至少執行具有 Hyper-V 角色的 Windows Server 2012，並且已安裝最新更新。 VMM 雲端中必須包含伺服器或叢集。
+- 如果您在叢集中執行 Hyper-V，請注意，如果您具有靜態 IP 位址叢集，並不會自動建立叢集代理。 您必須手動設定叢集代理。 如需指示，請參閱 [設定 HYPER-V 複本代理人](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)。
+
+    - 您將需要 Azure PowerShell。 請確定您執行的是 Azure PowerShell 0.9.6 版或更新版本。 讀取 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
+    - 安裝 Azure PowerShell 也會安裝自訂的主控台。 您可以從這個主控台或任何其他主機程式，例如 Windows PowerShell ISE，來執行 PowerShell 命令。
+
+## 步驟 1：設定 PowerShell
+
+1. 開啟 PowerShell 主控台並執行這個命令來切換至 ARM 模組：
+
+    `Switch-AzureMode AzureResourceManager`
+
+3. 現在執行這個命令，將您的 Azure 帳戶加入 PowerShell 工作階段。 這個 Cmdlet 會提示您輸入帳戶的登入認證。
+
+    `Add-AzureAccount`
+
+    請注意，如果您是代表租用戶工作的 CSP 合作夥伴，當您加入 Azure 帳戶時，需要指定做為租用戶的客戶：
+
+    `新增 AzureAccount-租用戶 「 客戶 」`
+
+5. 一個帳戶可以有多個訂用帳戶，因此您必須將要使用的訂用帳戶與帳戶建立關聯。
+
+    `Select-azuresubscription SubscriptionName $SubscriptionName`
+
+6. 如果您是第一次在訂用帳戶中使用 Site Recovery Cmdlet，您需要註冊 Site Recovery 的 Azure 提供者：
+
+    `暫存器 AzureProvider-ProviderNamespace Microsoft.SiteRecovery`
+
+## 步驟 2：設定 Site Recovery 保存庫
+
+1. 如果您目前還沒有站台復原保存庫必須執行 [新增 AzureSiteRecoveryVault](https://msdn.microsoft.com/library/azure/dn954225.aspx) 指令程式:
+
+    ' 新 AzureSiteRecoveryVault-位置 $VaultGeo-名稱 $VaultName;
+    $vault = get AzureSiteRecoveryVault-名稱 $VaultName;'
+
+## 步驟 3：產生保存庫註冊金鑰
+
+1. 執行 [Get AzureSiteRecoveryVaultSettingsFile](https://msdn.microsoft.com/library/azure/dn850404.aspx) cmdlet 來取得保存庫註冊金鑰。 您需要這個金鑰，才能在保存庫中註冊 VMM 伺服器：
+
+    `$VaultSettingsFile = get AzureSiteRecoveryVaultSettingsFile-位置 $VaultGeo-名稱 $VaultName-路徑 $OutputPathForSettingsFile;`
+
+## 步驟 4：安裝 Azure Site Recovery 提供者
+
+1. 從 Site Recovery 保存庫的 [快速入門] 頁面下載提供者安裝檔案。
+2. 使用下列命令在每部 VMM 伺服器上建立資料夾：
+
+    `C:\ASR\ pushd`
+
+3. 執行下列命令從下載的提供者解壓縮檔案：
+
+    ' AzureSiteRecoveryProvider.exe /x。 /q'
+
+4. 執行下列命令以安裝提供者：
+
+    `.\SetupDr.exe/i`
+    ' $installationRegPath ="hklm: \ software\microsoft\microsoft System Center Virtual Machine Manager Server\DRAdapter 」
+    do
+    {
+                $isNotInstalled = $true;
+                如果 (Test-path $installationRegPath)
+                {
+                                $isNotInstalled = $false;
+                }
+    } While($isNotInstalled)'
+
+5. 等候安裝完成，然後在保存庫中註冊伺服器：
+
+    ' $BinPath = $env: SystemDrive +"files\microsoft System Center 2012 R2\Virtual Machine Manager\bin 」
+    $BinPath pushd
+    $encryptionFilePath ="C:\temp\"
+    .\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env: COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice'
+
+## 步驟 5：設定保存庫內容
+
+1. 執行 Get-AzureSiteRecoveryVault Cmdlet，以確定所有命令都會在特定保存庫下執行：
+
+    `$Vault = get AzureSiteRecoveryVault ResouceGroupName $ResourceGroupName |其中 {$_。名稱-eq $VaultName}`
+
+2. 下載保存庫設定：
+
+    `$VaultSettingsFile = get AzureSiteRecoveryVaultSettingsFile-保存庫 $Vault-$OutputPathForSettingsFile 路徑`
+
+3. 若要確定 Cmdlet 會在保存庫下執行：
+
+    `匯入 AzureSiteRecoveryVaultSettingsFile-路徑 $VaultSetingsFile.FilePath`
+
+## 步驟 3：設定雲端保護設定
+
+在保存庫中註冊 VMM 伺服器之後，您可以設定雲端保護設定，以套用至已註冊 VMM 伺服器之雲端中 HYPER-V 主機上的所有虛擬機器。
+
+1. 在保存庫中為主要和次要雲端建立容器：
+
+    `$PrimaryContainer = get AzureSiteRecoveryProtectionContainer FriendlyName $PrimaryCloudName`
+    `$RecoveryContainer = Get AzureSiteRecoveryProtectionContainer FriendlyName $RecoveryCloudName`
+
+2. 設定要套用至雲端的保護設定：
+
+    `新 AzureSiteRecoveryProtectionProfile-名稱 $ProtectionProfileName-ReplicationProvider HyperVReplica ReplicationMethod 線上 ReplicationFrequencyInSeconds 30-RecoveryPoints 1-ApplicationConsistentSnapshotFrequencyInHours 0-ReplicationPort 8083-Kerberos 驗證-AllowReplicaDeletion`
+
+3. 啟動將雲端容器與雲端保護設定建立關聯的工作：
+
+    `開始 AzureSiteRecoveryProtectionProfileAssociationJob-ProtectionProfile $ProtectionProfile-PrimaryProtectionContainer $PrimaryContainer-RecoveryProtectionContainer $RecoveryContainer`
+
+
+## 步驟 4：啟用 VM 保護
+
+為 VMM 雲端中的 VM 啟用保護：
+
+1. 取得您要保護的 VM：
+
+    `$VM = get AzureSiteRecoveryProtectionEntity-ProtectionContainer $PrimaryContainer FriendlyName $VMName `
+
+2. 為 VM 啟用保護：
+
+    `設定 AzureSiteRecoveryProtectionEntity ProtectionEntity $VM-啟用保護`
+
+
+## 步驟 5：執行測試容錯移轉
+
+1.  選取您要容錯移轉的 VM：
+
+    `$VM = get AzureSiteRecoveryProtectionEntity-ProtectionContainer $PrimaryContainer FriendlyName $VMName`
+
+2. 執行測試容錯移轉工作：
+
+    `$ currentJob = 開始 AzureSiteRecoveryTestFailoverJob ProtectionEntity $VM-方向 PrimaryToRecovery`
+
+3. 檢查容錯移轉後的 VM 是否出現在次要網站上，並完成容錯移轉：
+
+    `繼續 AzureSiteRecoveryJob-Id $currentJob.Name`
+
+
+## 後續步驟
+
+如提出問題或意見，在這種情況下，請造訪 [站台復原論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr/)
+
+
+
+
+

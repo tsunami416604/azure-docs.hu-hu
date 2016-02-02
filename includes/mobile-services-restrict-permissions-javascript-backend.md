@@ -1,9 +1,12 @@
+為了保護您的端點，您必須限定只有經過驗證的用戶端才能存取。
+
+1. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，瀏覽至您的行動服務，然後按一下 [  **資料** > 您的資料表名稱 (**TodoItem**) > **權限**。
+
+2. 將所有資料表作業權限設為 [**僅限驗證的使用者**]。
+
+     這可確保針對資料表所做的所有作業都需要通過驗證的使用者，這是本教學課程的必要條件。 您可以在每個作業設定不同的權限，以支援您的特定案例。
 
 
-1. In the Management Portal, click the **Data** tab, and then click the **TodoItem** table. 
 
-   	![](./media/mobile-services-restrict-permissions-javascript-backend/mobile-portal-data-tables.png)
 
-2. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user. This also simplifies the scripts in the next tutorial because they will not have to allow for the possibility of anonymous users.
 
-   	![](./media/mobile-services-restrict-permissions-javascript-backend/mobile-portal-change-table-perms.png)

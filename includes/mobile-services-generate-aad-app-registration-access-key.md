@@ -1,35 +1,37 @@
-1. Click **Applications** tab on your directory page in the [Azure Management Portal](https://manage.windowsazure.com/).
-  
-2. Click your integrated application registration.
+1. 按一下 [ **應用程式** 在目錄頁面上的索引標籤 [Azure 傳統入口網站](https://manage.windowsazure.com/)。
 
-3. Click **Configure** on the application page and scroll down the the **keys** section of the page. 
-4. Click **1 year** duration for a new key. Then click **Save** and the portal will display your new key value.
-5. Copy the **Client ID** and **Key** shown after you save. Note that the key value will only be shown to you a single time after you have saved. 
+2. 按一下整合的應用程式登錄。
+
+3. 按一下應用程式頁面上的 [設定]****，並向下捲動至頁面中的 [金鑰] ****區段。
+4. 針對新金鑰的期限，按一下 [1 年]****。 然後按一下 [儲存]****，入口網站將會顯示您的新金鑰值。
+5. 複製儲存後顯示的**用戶端識別碼**和**金鑰**。 請注意，儲存後金鑰值只會顯示一次。
 
     ![](./media/mobile-services-generate-aad-app-registration-access-key/client-id-and-key.png)
 
-6. Scroll down to the bottom of the integrated application configuration page and enable the **Read directory data** permission for the application and click **Save**.
+6. 向下捲動整合應用程式設定頁面至底部，並啟用應用程式的 [讀取目錄資料] ****權限，然後按一下 [儲存]****。
 
     ![](./media/mobile-services-generate-aad-app-registration-access-key/app-perms.png)
 
-
-7. In the [Azure Management Portal](https://manage.windowsazure.com/) navigate back to your mobile service and click the **Configure** tab. Scroll down to the **app settings** section and add the following app settings and click **Save**. 
+7. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，瀏覽回到您的行動服務，然後按一下 **設定** ] 索引標籤。 向下捲動至 [應用程式設定] ****區段，並加入下列應用程式設定，然後按一下 [儲存]****。
 
     <table border="1">
     <tr>
-    <th>App Setting Name</th><th>Description</th>
+    <th>應用程式設定名稱</th><th>描述</th>
     </tr>
     <tr>
-    <td>AAD_CLIENT_ID</td><td>The client id you copied from your integrated app in the steps above.</td>
+    <td>AAD_CLIENT_ID</td><td>您從整合應用程式在上述步驟中複製的用戶端識別碼。</td>
     </tr>
     <tr>
-    <td>AAD_CLIENT_KEY</td><td>The app key you generated in your AAD integrated app in the steps above.</td>
+    <td>AAD_CLIENT_KEY</td><td>您 AAD 中產生的應用程式金鑰整合在上述步驟中的應用程式。</td>
     </tr>
     <tr>
-    <td>AAD_TENANT_DOMAIN</td><td>Your AAD domain name. Should be similar to "mydomain.onmicrosoft.com"</td>
+    <td>AAD_TENANT_DOMAIN</td><td>您的 AAD 網域名稱。應該會類似於"mydomain.onmicrosoft.com"</td>
     </tr>
     </table><br/>
 
- 
     ![](./media/mobile-services-generate-aad-app-registration-access-key/aad-app-settings.png)
-  
+
+
+
+
+

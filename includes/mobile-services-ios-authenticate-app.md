@@ -1,28 +1,28 @@
+* 開啟 **QSTodoListViewController.m**，並加入下列方法： 如果您不使用 Facebook 作為識別提供者，請將 _facebook_ 變更為 _microsoftaccount_、_twitter_、_google_ 或 _windowsazureactivedirectory_。
 
-
-1. Open the project file QSTodoListViewController.m and in the **viewDidLoad** method, remove the following code that reloads the data into the table:
-
-        [self refresh];
-
-2.	Just after the **viewDidLoad** method, add the following code:  
-
-        - (void)viewDidAppear:(BOOL)animated
+```
+        - (void) loginAndGetData
         {
             MSClient *client = self.todoService.client;
-            
             if (client.currentUser != nil) {
                 return;
             }
-            
+
             [client loginWithProvider:@"facebook" controller:self animated:YES completion:^(MSUser *user, NSError *error) {
                 [self refresh];
             }];
         }
+```
 
-    <div class="dev-callout"><b>Note</b>
-	<p>If you are using an identity provider other than Facebook, change the value passed to <strong>loginWithProvider</strong> above to one of the following: <em>microsoftaccount</em>, <em>facebook</em>, <em>twitter</em>, <em>google</em>, or <em>windowsazureactivedirectory</em>.</p>
-    </div>
-		
-3. Press the **Run** button to build the project, start the app in the iPhone emulator, then log-on with your chosen identity provider.
+* 取代 `[自動重新整理]` 中 `viewDidLoad` 取代為下列:
 
-   	When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.
+```
+        [self loginAndGetData];
+```
+
+* 按下  **執行** 以啟動應用程式，然後登入。 當您登入時，應該能夠檢視待辦事項清單並進行更新。
+
+
+
+
+

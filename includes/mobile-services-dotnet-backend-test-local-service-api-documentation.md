@@ -1,32 +1,34 @@
-
-1. In Visual Studio in Solution Explorer, right click the service project and click **Start new instance** under the **Debug** context menu.
+1. 在 Visual Studio 的 [方案總管] 中，以滑鼠右鍵按一下服務專案，然後按一下 [偵錯]**** 內容功能表之下的 [開始新執行個體]****。
 
     ![start mobile service project locally](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/vs-start-debug-service-project.png)
 
-    Visual Studio opens the default web page for your service. By default, Visual Studio hosts your mobile service locally in IIS Express.
+    Visual Studio 會為您的服務開啟預設網頁。 依預設，Visual Studio 使用 IIS Express 在本機代管您的行動服務。
 
-2. Right-click the tray icon for IIS Express on the Windows taskbar and verify that your mobile service has started.
+2. 以滑鼠右鍵按一下 Windows 工作列中的 IIS Express 系統匣圖示，然後驗證行動服務是否已啟動。
 
-	 ![verify the mobile service in the taskbar](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/iis-express-tray.png)
+     ![verify the mobile service in the taskbar](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/iis-express-tray.png)
 
-3. On the start page of your mobile service, click **try it out**.
+3. 在 .NET 後端的開始頁面中按一下 [**立即試用**]。
 
     ![mobile service start up page](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-welcome-page.png)
 
-    This displays the API documentation page, which you can use to test the mobile service.
+    如此能顯示 API 文件頁面，您可以使用它來測試行動服務。
+    >[AZURE.NOTE]在本機執行時，您不需要通過驗證即可存取此頁面。 在 Azure 中執行時，您必須提供應用程式金鑰以做為存取此頁面的密碼 (不需要使用者名稱)。
 
-	>[WACOM.NOTE]Authentication is not required to access this page when running locally. When running in Azure, you must supply the application key as the password (with no username) to access this page.
+4. 按一下 [GET tables/TodoItem]**** 連結。
 
-4. Click the **GET tables/TodoItem** link.
+    ![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-api-documentation-page.png)
 
-	![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-api-documentation-page.png)
-   	
-	This displays the GET response page for the API.
+    如此能顯示 API 的 GET 回應頁面。
 
-5. Click **try this out** and then click **send**.
- 
-	![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-todoitems.png)
+5. 依序按一下 [try this out]**** 和 [傳送]****。
 
-	This sends a GET request to the local mobile service to return all rows in the TodoItem table. Because the table is seeded by the initializer, two TodoItem objects are returned in the body of the response message. For more information about initializers, see [How to make data model changes to a .NET backend mobile service](./en-us/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations/).
+    ![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-todoitems.png)
 
-	![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-response.png)
+    如此能傳送 GET 要求給本機行動服務，以傳回 TodoItem 資料表中的所有資料列。 由於初始設定式已植入資料表，因此系統會在回應訊息的本文中傳回兩個 TodoItem 物件。 如需初始設定式的詳細資訊，請參閱 [如何對.NET 後端行動服務進行資料模型變更](../articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)。
+
+    ![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-response.png)
+
+
+
+

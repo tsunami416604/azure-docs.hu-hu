@@ -1,13 +1,16 @@
+   * 按一下 [登入]****，再輸入 Azure 帳戶的認證。
 
-   * Click **Sign In**, and then enter the credentials for your Azure account.
+     此方法較快速且較容易，但如果使用此方法，您將無法在 [伺服器總管]**** 視窗中看到 Azure SQL Database 或行動服務。
 
-     This method is quicker and easier, but if you use this method you won't be able to see Azure SQL Database or Mobile Services in the **Server Explorer** window.
+   * 按一下 [管理訂閱]****，以便安裝可用來存取您帳戶的管理憑證。
 
-   * Click **Manage subscriptions** in order to install a management certificate that enables access to your account.
+     在 [管理 Azure 訂閱]**** 對話方塊中，按一下 [憑證]**** 索引標籤，再按一下 [匯入]****。 依照指示下載並匯入 Azure 帳戶的訂閱檔案 (也稱為 *.publishsettings* 檔案)。
 
-     In the **Manage Azure Subscriptions** dialog box, click the **Certificates** tab, and then click **Import**. Follow the directions to download and import a subscription file (also called a *.publishsettings* file) for your Azure account.
+     > [AZURE.NOTE] 將訂用帳戶檔案下載至原始程式碼目錄以外的資料夾 (例如，[下載] 資料夾)，然後在完成匯入之後將其刪除。 惡意使用者一旦能夠存取此訂用帳戶檔案，就能夠編輯、建立和刪除您的 Azure 服務。
 
-     <div class="dev-callout"><strong>Security Note:</strong>
-     <p>Download the subscription file to a folder outside your source code directories (for example, in the Downloads folder), and then delete it once the import has completed. A malicious user who gains access to the subscription file can edit, create, and delete your Azure services.</p></div>
+   如需詳細資訊，請參閱 [如何從 Visual Studio 連接到 Azure](http://go.microsoft.com/fwlink/?LinkId=324796)。
 
-   For more information, see [How to Connect to Azure from Visual Studio](http://go.microsoft.com/fwlink/?LinkId=324796).
+
+
+
+
