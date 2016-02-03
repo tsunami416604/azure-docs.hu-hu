@@ -50,7 +50,7 @@
 
 - System.Data.Entity.Core.EntityCommandExecutionException: 執行命令定義時發生錯誤。 請參閱內部例外狀況，如需詳細資訊。 ---> System.Data.SqlClient.SqlException: 從伺服器接收結果時發生傳輸層級錯誤。 (提供者: 工作階段提供者，錯誤: 19-實體連線便無法使用)
 
-暫時性錯誤應該會提示您的用戶端應用程式，執行設計用來重試操作的*重試邏輯*。 如需重試邏輯的程式碼範例，請參閱：
+暫時性錯誤應該會提示您的用戶端應用程式，執行設計用來重試操作的 *重試邏輯* 。 如需重試邏輯的程式碼範例，請參閱：
 
 
 - [用戶端開發和快速入門程式碼範例 SQL 資料庫](sql-database-develop-quick-start-client-code-samples.md)
