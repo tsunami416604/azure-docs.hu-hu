@@ -46,8 +46,8 @@
 * 在 Eclipse 的 [專案總管] 檢視中，展開 [MyHelloWorld]****。 在 **WebContent** 上按一下滑鼠右鍵、按一下 [新增]****，然後按一下 [JSP File]****。
 * 在 [New JSP File]**** 對話方塊中，將檔案命名為 **index.jsp**。
     ![][ic659262]
-* 在 [選取 JSP 範本]**** 對話方塊中，基於此教學課程的目的，請選取 [新增 JSP 檔案 (html)]**** 並按一下 [完成]****。
-* 
+* 在 **[選取 JSP 範本]** 對話方塊中，基於此教學課程的目的，請選取 **[新增 JSP 檔案 (html)]** 並按一下 **[完成]**。
+* When the index.jsp file opens in Eclipse, add in text to dynamically display **Hello World!** within the existing `&lt;body&gt;` element. Your updated `&lt;body&gt;` content should appear as the following:
 ```
     <body>
     <b><% out.println("Hello World!"); %></b>

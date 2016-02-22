@@ -40,7 +40,7 @@ Fabrikam 飛機的引擎由各種感應器進行檢測，而這些感應器會�
 
 Azure IoT 預先設定的預防性維護解決方案會利用此範本所建立的迴歸模型 (此模型會部署到您的 Azure 訂用帳戶，並透過發行的 API 加以公開)。 此解決方案包含了代表 4 具 (全部共 100 具) 引擎之測試資料與 4 個 (全部共 21 個) 感應器之資料流的交集，並由定型的模型提供精確的結果。
 
-* \[1\] A.Saxena< 和 K Goebel (2008)。 「 Turbofan 引擎降低模擬資料集 」、 NASA 名稱 Prognostics 資料儲存機制 (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、 NASA 名稱參考資料中心、 Moffett 欄位，CA *
+*\[1\] A.Saxena< 和 K Goebel (2008)。 「 Turbofan 引擎降低模擬資料集 」、 NASA 名稱 Prognostics 資料儲存機制 (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、 NASA 名稱參考資料中心、 Moffett 欄位，CA*
 
 ## 後續步驟
 
