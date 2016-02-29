@@ -15,7 +15,6 @@
    ms.date="09/30/2015"
    ms.author="sstein" />
 
-
 # Web 和 Business 版本終止常見問題集
 
 Azure SQL Web 和 Business 資料庫現已淘汰。 基本、標準、高階和彈性層取代淘汰 Web 和商務資料庫。
@@ -24,10 +23,10 @@ Azure SQL Web 和 Business 資料庫現已淘汰。 基本、標準、高階和�
 
 **若要取得定價層建議：**
 
-- [升級至 SQL Database V12，使用 Azure 入口網站](sql-database-upgrade-server-portal.md)
-- [使用 PowerShell 進行升級至 SQL Database V12](sql-database-upgrade-server-powershell.md)
-- [變更定價層的 Web 或 Business 資料庫](sql-database-service-tier-advisor.md)
-
+- [使用 Azure 入口網站升級至 SQL Database V12](sql-database-upgrade-server-portal.md)
+- [使用 PowerShell 升級至 SQL Database V12](sql-database-upgrade-server-powershell.md)
+- [變更 Web 或 Business 資料庫的定價層](sql-database-service-tier-advisor.md)
+ 
 
 
 ## 為什麼 Azure 入口網站沒有將我的 Web 和 Business 版本資料庫顯示為「已淘汰」？
@@ -36,7 +35,7 @@ Azure SQL Web 和 Business 資料庫現已淘汰。 基本、標準、高階和�
 
 ## 哪一個新服務層是將我現有的 Web 或 Business 資料庫升級的最佳選擇？
 
-為您的現有 Web 或 Business 資料庫選取適當的新服務層和效能層級，取決於您的應用程式的特定功能和效能需求。
+為您的現有 Web 或 Business 資料庫選取適當的新服務層和效能層級，取決於您的應用程式的特定功能和效能需求。 
 
 使用可協助您選取適當的新服務層的定價層建議所述的上方，或如需詳細資訊，請參閱 [SQL Database Web/Business 資料庫升級至新的服務層](sql-database-upgrade-new-service-tiers.md)。
 
@@ -63,13 +62,9 @@ Microsoft 也會變更 Premium 資料庫的資料庫複製體驗。 高階資料
 
 [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-[Web 和商務定價](https://azure.microsoft.com/pricing/details/sql-database/web-business/)
+[Web 和 Business 價格](https://azure.microsoft.com/pricing/details/sql-database/web-business/)
 
 [服務層](sql-database-service-tiers.md)
 
-[SQL Database Web/商務資料庫升級至新的服務層](sql-database-upgrade-new-service-tiers.md)
-
-
-
-
+[將 SQL Database Web/商務資料庫升級至新的服務層](sql-database-upgrade-new-service-tiers.md)
 

@@ -16,15 +16,14 @@
     ms.date="12/09/2015"
     ms.author="brandwe"/>
 
-
 # 應用程式模型 v2.0 預覽：使用 node.js 保護 Web API
 
 > [AZURE.NOTE]
-此資訊適用於 v2.0 應用程式模型公開預覽版本。
+此資訊適用於 v2.0 應用程式模型公開預覽版本。  如需如何公開上市的 Azure AD 整合服務，請參閱 [Azure Active Directory 開發人員指南](active-directory-developers-guide.md)。
 
+您可以使用 2.0 版的應用程式模型，Web API 使用 protecet [OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) 存取權杖，讓使用者能夠使用這兩個個人的 Microsoft 帳戶和工作或學校帳戶來安全地存取您的 Web API。
 
-
-**Passport** 是 Node.js 的驗證中介軟體。 您可以暗中將極具彈性且模組化的 Passport 放入任何 Express 或 Resitify Web 應用程式。 一組完整的策略可支援使用使用者名稱和密碼、Facebook、Twitter 及其他等驗證。 我們已為 Microsoft Azure Active Directory 開發一項策略。
+**Passport** 是 Node.js 的驗證中介軟體。 您可以暗中將極具彈性且模組化的 Passport 放入任何 Express 或 Resitify Web 應用程式。 一組完整的策略可支援使用使用者名稱和密碼、Facebook、Twitter 及其他等驗證。 我們已為 Microsoft Azure Active Directory 開發一項策略。 我們將安裝此模組，然後加入 Microsoft Azure Active Directory `passport-azure-ad` 外掛程式。
 
 若要執行此作業，您需要執行下列動作：
 
@@ -32,34 +31,33 @@
 2. 設定您的 App 來使用 Passport 的 azure-ad-passport 外掛程式。
 3. 設定用戶端應用程式呼叫待辦事項清單 Web API
 
+本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs)。  若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/skeleton.zip) 或再製基本架構:
 
-
-
+```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```
 
 本教學課程最後也會提供完整的應用程式。
 
 
 ## 1.註冊應用程式
+建立新的應用程式在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com), ，或請遵循下列 [詳細步驟](active-directory-v2-app-registration.md)。  請確定：
 
-請確定：
-
-- 將指派給您應用程式的**應用程式識別碼**複製起來，您很快會需要用到這些識別碼。
-- 為您的應用程式新增**行動**平台。
-- 從入口網站複製完整的**重新導向 URI**。
+- 複製 **應用程式識別碼** 指派給您的應用程式，您將需要它很快。
+- 新增 **行動** 平台應用程式。
+- 複製 **重新導向 URI** 從入口網站。 您必須使用 `urn:ietf:wg:oauth:2.0:oob` 的預設值。
 
 
 ## 2：下載適用於您平台的 node.js
-
 若要成功使用此範例，您必須具備已成功安裝的 Node.js。
 
-
+請從 [http://nodejs.org](http://nodejs.org)。
 
 ## 3：在您的平台上安裝 MongoDB
 
 若要成功使用此範例，您必須具備已成功安裝的 MongoDB。 我們將會使用 MongoDB 讓 REST API 得以在不同伺服器執行個體之間持續使用。
 
+安裝從 MongoDB [http://mongodb.org](http://www.mongodb.org)。
 
-> [AZURE.NOTE] 
+> [AZURE.NOTE] 本逐步解說假設您使用 MongoDB，這在撰寫本文時是預設安裝和伺服器端點: mongodb://localhost
 
 ## 4：在您的 Web API 上安裝 Restify 模組
 
@@ -67,19 +65,19 @@
 
 ### 安裝 Restify
 
-從命令列將目錄變更至 azuread 目錄。 如果 **azuread** 目錄不存在，請予以建立。
+從命令列將目錄變更至 azuread 目錄。 如果 **azuread** 目錄不存在，請建立它。
 
-
+`cd azuread` 或 `mkdir azuread;`
 
 輸入以下命令：
 
-
+`npm install restify`
 
 此命令會安裝 Restify。
 
 #### 您有收到錯誤訊息嗎？
 
-若發生這個情況，使用 sudo 命令以更高的權限層級執行 npm。
+當使用 npm，在某些作業系統上，您可能會收到錯誤的錯誤: EPERM，chmod ' / usr/本機/bin /..' 並要求您以系統管理員身分執行該帳戶。 若發生這個情況，使用 sudo 命令以更高的權限層級執行 npm。
 
 #### 您有收到有關 DTRACE 的錯誤訊息嗎？
 
@@ -130,15 +128,16 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
     ├── http-signature@0.10.0 (assert-plus@0.1.2, asn1@0.1.11, ctype@0.5.2)
     └── bunyan@0.22.0 (mv@0.0.5)
 
+
 ## 5：在您的 Web API 上安裝 Passport.js
 
-您可以暗中將極具彈性且模組化的 Passport 放入任何 Express 或 Resitify Web 應用程式。 一組完整的策略可支援使用使用者名稱和密碼、Facebook、Twitter 及其他等驗證。 我們已為 Azure Active Directory 開發一個策略。 我們將會安裝此模組，然後加入 Azure Active Directory 的策略外掛程式。
+[Passport](http://passportjs.org/) 是 Node.js 的驗證中介軟體。 您可以暗中將極具彈性且模組化的 Passport 放入任何 Express 或 Resitify Web 應用程式。 一組完整的策略可支援使用使用者名稱和密碼、Facebook、Twitter 及其他等驗證。 我們已為 Azure Active Directory 開發一個策略。 我們將會安裝此模組，然後加入 Azure Active Directory 的策略外掛程式。
 
 從命令列將目錄變更至 azuread 目錄。
 
 輸入以下命令以安裝 passport.js
 
-
+`npm install passport`
 
 此命令的輸出應類似這樣：
 
@@ -148,30 +147,31 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
 
 ## 6：將 Passport-Azure-AD 加入您的 Web API
 
-在這個 Rest API 範例中，我們將針對 Bearer Tokens 使用此策略。
-> [AZURE.NOTE] 雖然 OAuth2 提供可發行任何已知權杖類型的架構，但只會普遍使用特定的權杖類型。 在保護端點中，這會是持有者權杖。 持有者權杖是在 OAuth2 中最普遍發行的權杖類型，而且許多實作假設持有者權杖會是唯一發行的權杖類型。
+接下來，我們會將 OAuth 策略中，使用 passport azuread，套件的 Azure Active Directory 進行交流 Passport 的策略。 在這個 Rest API 範例中，我們將針對 Bearer Tokens 使用此策略。
+
+> [AZURE.NOTE] 雖然 OAuth2 提供可發行任何已知權杖類型的架構，但只有特定的權杖類型獲得普遍使用。 在保護端點中，這會是持有者權杖。 持有者權杖是在 OAuth2 中最普遍發行的權杖類型，而且許多實作假設持有者權杖會是唯一發行的權杖類型。
 
 從命令列中，將目錄變更到 azuread 目錄
 
 輸入下列命令來安裝 Passport.js passport-azure-ad 模組：
 
-
+`npm install passport-azure-ad`
 
 此命令的輸出應類似這樣：
 
 ``
-
-
-
-
-
-
-
-
-
-
-
-
+passport-azure-ad@1.0.0 node_modules/passport-azure-ad
+├── xtend@4.0.0
+├── xmldom@0.1.19
+├── passport-http-bearer@1.0.1 (passport-strategy@1.0.0)
+├── underscore@1.8.3
+├── async@1.3.0
+├── jsonwebtoken@5.0.2
+├── xml-crypto@0.5.27 (xpath.js@1.0.6)
+├── ursa@0.8.5 (bindings@1.2.1, nan@1.8.4)
+├── jws@3.0.0 (jwa@1.0.1, base64url@1.0.4)
+├── request@2.58.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, tunnel-agent@0.4.1, oauth-sign@0.8.0, isstream@0.1.2, extend@2.0.1, json-stringify-safe@5.0.1, node-uuid@1.4.3, qs@3.1.0, combined-stream@1.0.5, mime-types@2.0.14, form-data@1.0.0-rc1, http-signature@0.11.0, bl@0.9.4, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+└── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
 ``
 
 ## 7：將 MongoDB 模組加入您的 Web API
@@ -179,51 +179,51 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
 我們將使用 MongoDB 作為資料存放區。基於這個理由，我們必須安裝兩個廣泛使用的外掛程式才能管理名為 Mongoose 的模型與結構描述，以及同樣稱為 MongoDB 的 MongoDB 的資料庫驅動程式。
 
 
-* 
-* 
+* `npm install mongoose`
+* `npm install mongodb`
 
 ## 8：安裝其他模組
 
 接下來，我們將會安裝其餘所需的模組。
 
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
-
+`cd azuread`
 
 
 請輸入下列命令，在您的 node_modules 目錄中安裝下列模組：
 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
+* `npm install crypto`
+* `npm install assert-plus`
+* `npm install posix-getopt`
+* `npm install util`
+* `npm install path`
+* `npm install connect`
+* `npm install xml-crypto`
+* `npm install xml2js`
+* `npm install xmldom`
+* `npm install async`
+* `npm install request`
+* `npm install underscore`
+* `npm install grunt-contrib-jshint@0.1.1`
+* `npm install grunt-contrib-nodeunit@0.1.2`
+* `npm install grunt-contrib-watch@0.2.0`
+* `npm install grunt@0.4.1`
+* `npm install xtend@2.0.3`
+* `npm install bunyan`
+* `npm update`
 
 
 ## 9：使用您的相依性建立 server.js
 
 server.js 檔案可提供我們 Web API 伺服器的大部分功能。 我們將在此檔案中加入大部分的程式碼。 基於生產目的，您會將功能重整成較小的檔案，例如單獨分開的路徑和控制器。 基於此示範的目的，我們將在這項功能中使用 server.js。
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
+`cd azuread`
 
-
-
+在偏好的編輯器中建立 `server.js` 檔案，並加入下列資訊：
 
 ```Javascript
 'use strict';
@@ -247,11 +247,11 @@ var OIDCBearerStrategy = require('passport-azure-ad').OIDCStrategy;
 這個程式碼檔會將設定參數從您的 Azure Active Directory 入口網站傳遞到 Passport.js。 您會在將 Web API 加入入口網站 (本逐步解說的第一個部分) 時建立這些設定值。 在您完成複製程式碼之後，我們將說明要放入這些參數值的內容。
 
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
+`cd azuread`
 
-
-
+在偏好的編輯器中建立 `config.js` 檔案，並加入下列資訊：
 
 ```Javascript
 // Don't commit this file to your public repos. This config is for first-run
@@ -261,15 +261,17 @@ issuer: 'https://sts.windows.net/**<your application id>**/',
 audience: '<your redirect URI>',
 identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-configuration' // For using Microsoft you should never need to change this.
 };
+
 ```
 
 
 
 ### 必要值
 
-*IdentityMetadata*：passport-azure-ad 將在此處尋找適用於 IdP 的組態資料，以及用來驗證 JWT 權杖的金鑰。 如果使用 Azure Active Directory，您可能不想變更此項目。
+*IdentityMetadata*: 這是 passport azure ad 將在其中尋找 IdP 的金鑰來驗證 JWT 權杖將組態資料。 如果使用 Azure Active Directory，您可能不想變更此項目。
 
-*audience*：來自入口網站的重新導向 URI。
+*對象*: 您的重新導向 URI 從入口網站。
+
 > [AZURE.NOTE]
 我們會經常變更金鑰。 請確定您總是從 "openid_keys" URL 中進行提取，而且應用程式可以存取網際網路。
 
@@ -278,16 +280,16 @@ identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-c
 
 我們必須從您剛才跨應用程式建立的組態檔中讀取這些值。 若要這樣做，我們只需在應用程式中將 .config 檔案作為必要資源加入，然後將全域變數設定為 config.js 文件中的那些值即可
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
+`cd azuread`
 
-
-
+在偏好的編輯器中開啟 `server.js` 檔案，並加入下列資訊：
 
 ```Javascript
 var config = require('./config');
 ```
-
+然後，使用下列程式碼在 `server.js` 中加入新的區段：
 
 ```Javascript
 // We pass these options in to the ODICBearerStrategy.
@@ -310,9 +312,9 @@ name: 'Microsoft Azure Active Directory Sample'
 
 現在，當我們將這三個檔案整合一起提供給 REST API 服務時，您便會開始看到所有準備工作的成效。
 
+此逐步解說中我們將使用 MongoDB 來儲存工作中所述 ***步驟 4***。
 
-
-如果您回想在步驟 11 中建立的 config.js 檔案，應該會想起我們呼叫了資料庫 *tasklist*，呼叫該資料庫的原因是因為那是我們放在 mogoose_auth_local 連接 URL 結尾處的內容。 您不需要在 MongoDB 中事先建立此資料庫，它會在您第一次執行伺服器應用程式時為您建立 (假設此資料庫不存在)。
+如果您還記得我們在步驟 11 中建立 config.js 檔案中，我們會呼叫資料庫 *tasklist*, ，因為那是我們放在 mogoose_auth_local 連線 URL 結尾。 您不需要在 MongoDB 中事先建立此資料庫，它會在您第一次執行伺服器應用程式時為您建立 (假設此資料庫不存在)。
 
 既然我們已經告訴伺服器想要使用哪個 MongoDB 資料庫，我們必須撰寫一些額外程式碼，以建立伺服器工作的模型和結構描述。
 
@@ -320,21 +322,22 @@ name: 'Microsoft Azure Active Directory Sample'
 
 我們的結構描述模型十分簡單，而且您可以視需要加以開發。
 
-名稱 - 指派給工作的人員名稱。
+名稱 - 指派給工作的人員名稱。 A ***字串***
 
-工作 - 工作本身。
+工作 - 工作本身。 A ***字串***
 
-日期 - 工作到期的日期。
+日期 - 工作到期的日期。 A ***日期時間***
 
-已完成 - 工作是否已完成。
+已完成 - 工作是否已完成。 A ***布林值***
 
 #### 在程式碼中建立結構描述
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
 
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
+`cd azuread`
 
-
+在偏好的編輯器中開啟 `server.js` 檔案，並在組態項目下方加入下列資訊：
 
 ```Javascript
 // MongoDB setup
@@ -364,7 +367,7 @@ date: Date
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-
+您可以從程式碼中得知，我們建立我們的結構描述，然後建立將用來儲存整個程式碼資料時，我們定義模型物件我們 ***路由***。
 
 ## 13：在工作 REST API 伺服器中加入路由
 
@@ -394,11 +397,11 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
 
 我們現在可以新增建立、擷取、更新和刪除的基本 CRUD 路由。
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
+`cd azuread`
 
-
-
+在偏好的編輯器中開啟 `server.js` 檔案，並在您先前製作的資料庫項目底下加入下列資訊：
 
 ```Javascript
 /**
@@ -637,20 +640,20 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 這樣做的最簡單方式是在命令列中使用 curl。 在執行此動作之前，我們需要一個可讓我們將輸出剖析為 JSON 的簡單公用程式。 若要這樣做，請安裝 json 工具，以供下面所有範例使用。
 
-
+`$npm install -g jsontool`
 
 這會全域安裝 JSON 工具。 現在已完成此動作，讓我們開始使用伺服器：
 
 首先，請確定 monogoDB 執行個體正在執行中...
 
-
+`$sudo mongod`
 
 然後，變更目錄並啟動 curling...
 
+`$ cd azuread`
+`$ node server.js`
 
-
-
-
+`$ curl -isS http://127.0.0.1:8080 | json`
 
 ```Shell
 HTTP/1.1 200 OK
@@ -671,7 +674,7 @@ Date: Tue, 14 Jul 2015 05:43:38 GMT
 
 接著，我們可以透過以下方式新增工作：
 
-
+`$ curl -isS -X POST http://127.0.0.1:8888/tasks/brandon/Hello`
 
 回應應為：
 
@@ -687,7 +690,7 @@ Hello
 ```
 而且我們可以透過以下方式列出 Brandon 的工作：
 
-`$ curl-isS http://127.0.0.1:8080/工作/brandon /`
+`$ curl -isS http://127.0.0.1:8080/tasks/brandon/`
 
 如果所有項目都沒問題，我們便可以開始將 OAuth 加入 REST API 伺服器。
 
@@ -695,11 +698,11 @@ Hello
 
 ## 17：將驗證加入 REST API 伺服器
 
-讓我們開始進行 Azure ad。
+既然我們已經擁有執行中的 REST API (順道恭喜您！)，我們可以開始讓它在 Azure AD 中發揮其價值。
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
-
+`cd azuread`
 
 ### 1：使用 passport-azure-ad 包含的 oidcbearerstrategy
 
@@ -762,7 +765,8 @@ return done(null, user, token);
 passport.use(oidcStrategy);
 ```
 
-Passport 所有使用類似的模式是 (Twitter、 Facebook 等) 的策略 所有的策略編寫器遵守。 查看此策略，您會看見我們將它當成 function() 來傳遞，其中含有一個 token 和一個 done 做為參數。 一旦策略完成所有工作之後，便會盡責地返回。 當它完成之後，我們會想要儲存使用者並隱藏權杖，因此我們不需再次要求它。
+Passport 會使用適用於它的所有策略 (Twitter、Facebook 等) 且所有策略寫入器都依循的類似模式。 查看此策略，您會看見我們將它當成 function() 來傳遞，其中含有一個 token 和一個 done 做為參數。 一旦策略完成所有工作之後，便會盡責地返回。 當它完成之後，我們會想要儲存使用者並隱藏權杖，因此我們不需再次要求它。
+
 > [AZURE.IMPORTANT]
 上述程式碼會讓所有使用者經歷伺服器的驗證。 這就是所謂的自動註冊。 在生產伺服器中，您想要讓所有人都必須先經歷您所決定的註冊過程。 這通常是您在取用者 App 中看到的模式，可讓您向 Facebook 註冊，但接著會要求您填寫其他資訊。 如果這不是命令列程式，我們就只能從傳回的權杖物件中擷取電子郵件，然後要求他們填寫其他資訊。 由於這是測試伺服器，因此，我們只會將它們直接加入記憶體中的資料庫。
 
@@ -810,7 +814,7 @@ next();
 
 ## 18：再次執行伺服器應用程式，並確保它會拒絕您的要求
 
-讓我們使用 `curl` 即可查看我們現在是否有 OAuth2 保護對我們的端點。 我們會在針對這個端點執行任何用戶端 SDK 之前，執行此動作。 傳回的標頭應該足以說明我們執行的作業步驟正確無誤。
+讓我們再次使用 `curl`，以查看我們現在是否有針對端點的 OAuth2 保護。 我們會在針對這個端點執行任何用戶端 SDK 之前，執行此動作。 傳回的標頭應該足以說明我們執行的作業步驟正確無誤。
 
 首先，請確定 monogoDB 執行個體正在執行中...
 
@@ -823,7 +827,7 @@ next();
 
 嘗試基本的 POST 方法：
 
-`$ curl-isS-X POST http://127.0.0.1:8080/工作/brandon/Hello`
+`$ curl -isS -X POST http://127.0.0.1:8080/tasks/brandon/Hello`
 
 ```Shell
 HTTP/1.1 401 Unauthorized
@@ -836,7 +840,7 @@ Transfer-Encoding: chunked
 此時 401 是您期待的回應，其會指出 Passport 層正嘗試重新導向到授權端點，這也正是您想要的結果。
 
 
-## 恭喜！您現在擁有一項使用 OAuth2 的 REST API 服務！
+## 恭喜！ 您現在擁有一項使用 OAuth2 的 REST API 服務！
 
 在未使用 OAuth2 相容用戶端的情況下，您已經儘可能地使用此伺服器的所有功能。 您還必須完成其他逐步解說。
 
@@ -846,17 +850,13 @@ Transfer-Encoding: chunked
 
 (不含您的設定值) 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip), ，或您可以從 GitHub 複製它:
 
-`git 複製-分支完成 https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git`
+```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```
 
-您現在可以進入更進階的主題。 您可以嘗試：
+您現在可以進入更進階的主題。  您可以嘗試：
 
-[保護 Web 應用程式使用 2.0 版應用程式模型在 Node.js 中 >>](active-directory-v2-devquickstarts-node-web.md)
+[在 Node.js 中使用 v2.0 應用程式模型保護 Web APP >>](active-directory-v2-devquickstarts-node-web.md)
 
 如需其他資源，請參閱：
 - [應用程式模型 v2.0 預覽 >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow [azure-active directory 的 「 標記 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
-
-
-
-
 

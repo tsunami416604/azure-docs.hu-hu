@@ -15,7 +15,6 @@
    ms.date="08/26/2015"
    ms.author="alkohli" />
 
-
 # 安全地安裝和操作您的 StorSimple 裝置
 
 ![警告圖示](./media/storsimple-safety/IC740879.png)
@@ -27,22 +26,22 @@
 
 以下是您在檢閱安全性預防措施時會發現的圖示，這些措施可在設定與執行 Microsoft Azure StorSimple 裝置時觀查到。
 
-| 圖示| 說明|
-|:------|:-------------|
-| ![危險圖示](./media/storsimple-safety/IC740879.png) **危險!**| 指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。此訊號文字僅限用於最極端的情況。|
-| ![警告圖示](./media/storsimple-safety/IC740879.png) **警告!**| 指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。|
-| ![警告圖示](./media/storsimple-safety/IC740879.png) **警告!**| 指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。|
-| ![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項:**| 表示重要資訊，但與危險無關。|
-| ![電擊圖示](./media/storsimple-safety/IC740882.png) **電擊危險**| 高電壓|
-| ![重量圖示](./media/storsimple-safety/IC740883.png) **超重**| |
-| ![沒有使用者可自行維修零件圖示](./media/storsimple-safety/IC740879.png) **沒有使用者可自行維修零件**| 除非受過適當訓練，否則請勿觸碰。|
-| ![閱讀安全注意事項圖示](./media/storsimple-safety/IC740885.png)**先閱讀所有指示**| |
-| ![傾倒危險圖示](./media/storsimple-safety/IC740886.png) **傾倒危險**| |
+| 圖示  | 說明  |
+|:------|:-------------| 
+|![危險圖示](./media/storsimple-safety/IC740879.png) **危險!**|指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。| 
+|![警告圖示](./media/storsimple-safety/IC740879.png) **警告!**|指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。|
+|![警告圖示](./media/storsimple-safety/IC740879.png) **警告!**|指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。|
+|![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項:**|表示重要資訊，但與危險無關。|
+|![電擊圖示](./media/storsimple-safety/IC740882.png) **電擊危險** |高電壓|
+|![重量圖示](./media/storsimple-safety/IC740883.png) **重量**| |
+|![沒有使用者可自行維修零件圖示](./media/storsimple-safety/IC740879.png) **沒有使用者可自行維修的零件**|除非受過適當訓練，否則請勿觸碰。|
+|![閱讀安全注意事項圖示](./media/storsimple-safety/IC740885.png)**先閱讀所有指示**| |
+|![傾倒危險圖示](./media/storsimple-safety/IC740886.png) **傾倒危險**| |
 
 
 ## 處理預防措施
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![重量圖示](./media/storsimple-safety/IC740883.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png) ![重量圖示](./media/storsimple-safety/IC740883.png) **警告!** 
 
 
 減少受傷的風險：
@@ -94,7 +93,7 @@
 在機櫃中掛接裝置時，必須考量下列安全性需求。
 
 ![警告圖示](./media/storsimple-safety/IC740879.png) ![傾倒危險圖示](./media/storsimple-safety/IC740886.png) **警告!**
-
+ 
 減少因為傾倒而受傷的可能性：
 
 - 機架設計應該支援已安裝機箱的總重量，而且應該納入穩定功能，適用於防止機架在安裝或正常使用期間傾倒或推倒。
@@ -180,9 +179,5 @@
 - 如為 8100 裝置，請移至 [安裝 StorSimple 8100 裝置](storsimple-8100-hardware-installation.md)。
 
 - 8600 裝置，請移至 [安裝 StorSimple 8600 裝置](storsimple-8600-hardware-installation.md)。
-
-
-
-
 
 

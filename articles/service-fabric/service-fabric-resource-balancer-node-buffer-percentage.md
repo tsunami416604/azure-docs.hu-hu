@@ -16,7 +16,6 @@
    ms.date="09/03/2015"
    ms.author="masnider"/>
 
-
 # 節點緩衝區百分比概觀
 
 目前，客戶可以將節點的容量限制指定為條件約束，而資源平衡器會根據優先順序來遵守此條件約束。 如果容量的條件約束優先順序較高 (不能違反節點容量) 且叢集節點高度使用時，有可能不會立即容錯移轉，或可能違反節點容量。
@@ -35,19 +34,16 @@
     <Parameter Name="MetricName" Value="0.1"/>
   </Section>
 </FabricSettings>
+
 ```
 
 名稱為 "MetricName" 的度量值 0.1 表示，針對 "MetricName" 度量的每個節點容量都應保持 10% 的可用容量。
 
 如果在這個區段中未指定值，則將使用預設值 0。
 
-
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
 如需詳細資訊: [資源平衡器架構](service-fabric-resource-balancer-architecture.md)
-
-
-
-
-
+ 
 

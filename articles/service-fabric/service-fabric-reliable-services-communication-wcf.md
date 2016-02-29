@@ -16,14 +16,11 @@
    ms.date="11/17/2015"
    ms.author="bharatn@microsoft.com"/>
 
-
 # 可靠服務的 WCF 式通訊堆疊
-
 可靠服務架構允許服務作者決定其想要使用服務的通訊堆疊。 他們可以透過他們選擇的通訊堆疊外掛程式 `ICommunicationListener` 傳回 [CreateServiceReplicaListeners 或 CreateServiceInstanceListeners](service-fabric-reliable-service-communication.md) 方法。 服務作者如果想要使用 WCF 式通訊，架構提供以 WCF 式實作的通訊堆疊。
 
 ## WCF 通訊接聽程式
-
-WCF 的特定實作 `ICommunicationListener` 係由 `Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener` 類別。
+WCF 的 `ICommunicationListener` 特定實作是由 `Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener` 類別所提供。
 
 ```csharp
 
@@ -46,11 +43,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
         }
     )};
 }
+
 ```
 
 ## 撰寫 WCF 通訊堆疊的用戶端
-
-撰寫用戶端使用 WCF 服務通訊，架構提供 `WcfClientCommunicationFactory`, ，這是 WCF 的特定實作 [`ClientCommunicationFactoryBase`] (服務的網狀架構-可靠-服務-communication.md)。
+撰寫用戶端使用 WCF 服務通訊，架構提供 `WcfClientCommunicationFactory`, ，這是 WCF 的特定實作 [`ClientCommunicationFactoryBase`](service-fabric-reliable-service-communication.md)。
 
 ```csharp
 
@@ -60,9 +57,10 @@ public WcfCommunicationClientFactory(
     object callback = null,
     IList<IExceptionHandler> exceptionHandlers = null,
     IEnumerable<Type> doNotRetryExceptionTypes = null)
+
 ```
 
-您可以從存取 WCF 通訊通道 `WcfCommunicationClient` 由 `WcfCommunicationClientFactory`
+可以從 `WcfCommunicationClientFactory` 建立的 `WcfCommunicationClient` 存取 WCF 通訊通道
 
 ```csharp
 
@@ -71,9 +69,10 @@ public class WcfCommunicationClient<TChannel> : ICommunicationClient where TChan
     public TChannel Channel { get; }
     public ResolvedServicePartition ResolvedServicePartition { get; set; }
 }
+
 ```
 
-用戶端程式碼可以使用 `WcfCommunicationClientFactory` 連同 `ServicePartitionClient` 來決定服務端點，並與服務進行通訊。
+用戶端程式碼可以使用 `WcfCommunicationClientFactory` 連同 `ServicePartitionClient` 以判斷服務端點，並與服務進行通訊。
 
 ```csharp
 
@@ -107,15 +106,11 @@ var calculatorServicePartitionClient = new ServicePartitionClient<WcfCommunicati
 //
 var result = calculatorServicePartitionClient.InvokeWithRetryAsync(
     client => client.Channel.AddAsync(2, 3)).Result;
+
 ```
-
+ 
 ## 後續步驟
+* [使用 Reliable Services 遠端服務進行遠端程序呼叫](service-fabric-reliable-services-communication-remoting.md)
 
-* [可靠的服務遠端處理的遠端程序呼叫](service-fabric-reliable-services-communication-remoting.md)
-
-* [Web API 與 OWIN 中可靠的服務](service-fabric-reliable-services-communication-webapi.md)
-
-
-
-
+* [在 Reliable Services 中搭配 OWIN 使用 Web API](service-fabric-reliable-services-communication-webapi.md)
 

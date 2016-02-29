@@ -1,6 +1,6 @@
 <properties 
     pageTitle="下載媒體資產" 
-    description="了解如何將資產下載到您的電腦。程式碼範例以 C# 撰寫，並使用 Media Services SDK for .NET。" 
+    description="了解如何將資產下載到您的電腦。 程式碼範例以 C# 撰寫，並使用 Media Services SDK for .NET。" 
     services="media-services" 
     documentationCenter="" 
     authors="juliako" 
@@ -16,14 +16,13 @@
     ms.date="12/05/2015" 
     ms.author="juliako"/>
 
-
-# 作法：透過下載來傳遞資產
+#作法：透過下載來傳遞資產
 
 此主題將討論已上傳至媒體服務的媒體資產有哪些傳遞選項。 您可以透過多種應用程式案例來傳遞媒體服務內容。 您可以下載媒體資產，或使用定位器加以存取。 您可以將媒體內容傳送至另一個應用程式，或是另一個內容提供者。 若要改善效能和延展性，您也可以使用內容傳遞網路 (CDN) 傳遞內容。
 
-這個範例示範如何從媒體服務下載媒體資產到本機電腦。 程式碼會以工作 ID 查詢與媒體服務帳戶相關聯的工作，並存取其 **OutputMediaAssets** 集合 (這是執行工作後所產生的一或多個輸出媒體資產)。 此範例說明如何從工作下載輸出媒體資產，但您可以套用相同的方式，來下載其他資產。
+這個範例示範如何從媒體服務下載媒體資產到本機電腦。 程式碼會查詢作業識別碼並存取與媒體服務帳戶相關聯的工作及其 **Outputmediaasset** 集合 (這是執行工作的一或多個輸出媒體資產集合)。 此範例說明如何從工作下載輸出媒體資產，但您可以套用相同的方式，來下載其他資產。
 
-
+    
     // Download the output asset of the specified job to a local folder.
     static IAsset DownloadAssetToLocal( string jobId, string outputFolder)
     {
@@ -73,21 +72,19 @@
         Console.WriteLine(string.Format("{0} % download progress. ", e.Progress));
     }
 
-## 媒體服務學習路徑
+
+
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-## 另請參閱
+   
+##另請參閱 
 
 [傳遞串流內容](media-services-deliver-streaming-content.md)
-
-
-
-
 
 

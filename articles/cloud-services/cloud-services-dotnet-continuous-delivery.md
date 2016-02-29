@@ -1,6 +1,6 @@
 <properties
     pageTitle="在 Azure 中使用 TFS 連續傳遞雲端服務 | Microsoft Azure"
-    description="了解如何設定 Azure 雲端應用程式的連續傳遞。MSBuild 命令列陳述式和 PowerShell 指令碼的程式碼範例。"
+    description="了解如何設定 Azure 雲端應用程式的連續傳遞。 MSBuild 命令列陳述式和 PowerShell 指令碼的程式碼範例。"
     services="cloud-services"
     documentationCenter=""
     authors="TomArcher"
@@ -15,7 +15,6 @@
     ms.topic="article"
     ms.date="11/18/2015"
     ms.author="tarcher"/>
-
 
 # Azure 中雲端服務的連續傳遞
 
@@ -32,7 +31,7 @@ Foundation Server-Team Build 定義來使用 MSBuild 命令
 和 PowerShell 指令碼。 您可針對組建
 環境及 Azure 目標環境自訂此程序。
 
-此動作也可以用 Visual Studio Team Services (託管於 Azure 中的 TFS 版本) 來執行，這樣會變得更容易。 如需詳細資訊，請參閱 [連續傳遞至 Azure 使用 Visual Studio Team Services []][]。
+此動作也可以用 Visual Studio Team Services (託管於 Azure 中的 TFS 版本) 來執行，這樣會變得更容易。 如需詳細資訊，請參閱 [連續傳遞至 Azure 使用 Visual Studio Team Services][]。
 
 開始之前，您應該先從 Visual Studio 發佈應用程式。
 如此可確保當您嘗試將發佈程序自動化時，
@@ -45,10 +44,10 @@ Foundation Server-Team Build 定義來使用 MSBuild 命令
 
 組建伺服器上不需要安裝 Visual Studio。 If
 要使用 Team Foundation Build Service 來管理您的組建
-伺服器上，依照 [Team Foundation Build 服務 []][]
+伺服器上，依照 [Team Foundation Build Service][]
 文件的指示。
 
-1.  在組建伺服器上安裝 [[.NET Framework 4.5.2]][], ，其中包括 MSBuild。
+1.  在組建伺服器上安裝 [.NET Framework 4.5.2][], ，其中包括 MSBuild。
 2.  安裝最新 [適用於.NET 的 Azure 製作工具](https://azure.microsoft.com/develop/net/)。
 3.  安裝 [Azure Libraries for.NET](http://go.microsoft.com/fwlink/?LinkId=623519)。
 4.  將 Microsoft.WebApplication.targets 檔案從 Visual Studio 安裝複製到組建伺服器上。
@@ -107,7 +106,7 @@ TFS 組建定義中使用命令列，如下一節所述。 如需
     檔案本身和伴隨的組態檔：
 
     -   Project.cspkg
-    -   ServiceConfiguration.*TargetProfile*.cscfg
+    -   ServiceConfiguration。*TargetProfile*.cscfg
 
     根據預設，每個 Azure 專案包含一個
     本機 (偵錯) 組建的 (.cscfg 檔)，
@@ -144,9 +143,9 @@ TFS 組建定義中使用命令列，如下一節所述。 如需
 設定組建伺服器作為 TFS 組建機器，然後您可以選擇性地設定
 Azure 封裝設定自動化組建。 如需
 如何設定和使用 Team Foundation Server 做為組建系統的詳細資訊，請參閱
-[擴充您的建置系統 []][]。 特別是，
+[擴充您的建置系統][]。 特別是，
 下列程序假設您已
-中所述 [部署和設定組建伺服器 []][], ，而且您已建立
+中所述 [部署和設定組建伺服器][], ，而且您已建立
 在 Team 專案，並在 Team 專案中建立雲端服務專案。
 
 若要設定 TFS 來建置 Azure 套件，請執行下列
@@ -168,11 +167,11 @@ Azure 封裝設定自動化組建。 如需
     在 **原始檔控制資料夾** 資料行，以及狀態是 **Active**。
 
 4.  選擇 **組建預設值** 索引標籤，然後在 [組建控制器，驗證
-    組建伺服器的名稱。 而且請選擇選項 * * 將組建複製
-    輸出至下列置放資料夾 * *，並指定所需的置放
+    組建伺服器的名稱。  而且請選擇選項 **複製組建
+    輸出至下列置放資料夾** 並指定所需的置放
     位置。
 
-5.  選擇 [處理序]**** 索引標籤。 在 [處理序] 索引標籤上選擇預設
+5.  選擇 **程序** ] 索引標籤。 在 [處理序] 索引標籤上選擇預設
     範本下 **建置**, ，選擇專案如果未選取，
     展開 **進階** 一節中 **建置** 方格的區段。
 
@@ -184,7 +183,7 @@ Azure 封裝設定自動化組建。 如需
 
     ![][2]
 
-    **附註:** 將檔案複製至公用共用可讓您更輕鬆地
+    **注意:** 將檔案複製至公用共用可讓您更輕鬆地
     從開發電腦手動部署封裝。
 
 5.  簽入專案的變更來測試組建步驟是否成功，
@@ -200,7 +199,7 @@ Azure 封裝設定自動化組建。 如需
 執行自訂組建自動化中的組建步驟之後。 也可以從
 Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
 
-1.  安裝 [Azure PowerShell cmdlet []][] (0.6.1 版或更高版本)。
+1.  安裝 [Azure PowerShell cmdlet][] (0.6.1 版或更高版本)。
     在 Cmdlet 設定階段期間，請選擇安裝為嵌入式管理單元。 注意
     此正式支援的版本會取代 CodePlex 提供的較舊版本，
     雖然舊版本的編號為 2.x.x。
@@ -209,7 +208,7 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
     將會載入 Azure PowerShell Cmdlet。
 
 3.  在 PowerShell 提示字元中
-    輸入部分命令 `Get-azure` 然後按下 Tab 鍵陳述式
+    輸入部分命令 `Get-Azure` 然後按下 Tab 鍵陳述式
     確認已載入 PowerShell Cmdlet。
 
     如果您重覆按 Tab 鍵，應該會看到各種 Azure PowerShell 命令。
@@ -254,10 +253,10 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
 
             New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
-
 7.  直接從 Azure PowerShell 呼叫指令碼，或將此
     指令碼連線您的主機，以便在封裝組建後自動建置
     。
+
     >[AZURE.IMPORTANT] 指令碼將永遠刪除或取代現有的
     部署 (如果偵測到)。 此為不得不的方式，
     因為如此一來，完全省去使用者互動過程的自動化程序才有辦法進行連續傳遞
@@ -307,7 +306,7 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
     並使用 Azure 管理入口網站將憑證上傳至每個目標雲端服務
     Azure 管理入口網站。 若要深入了解，請閱讀下列文章
     ：
-    [[http://msdn.microsoft.com/library/windowsazure/gg443832.aspx]][]。
+    [] http://msdn.microsoft.com/library/windowsazure/gg443832.aspx[].
 
     **升級部署以及刪除部署-\ > 新的部署**
 
@@ -324,6 +323,7 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
     *-enableDeploymentUpgrade 0* 做為參數，這會改變
     指令碼的行為，即先刪除任何現有的部署，然後
     建立新的部署。
+
     >[AZURE.IMPORTANT] 指令碼將永遠刪除或取代現有的
     部署 (如果偵測到)。 此為不得不的方式，
     因為如此一來，才有辦法執行完全省去使用者/操作者互動過程的自動連續傳遞
@@ -341,7 +341,7 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
 
 1.  編輯負責連續部署的「組建定義」。
 
-2.  選取 [處理序]**** 索引標籤。
+2.  選取 **程序** ] 索引標籤。
 
 3.  請依照下列 [這些指示](http://msdn.microsoft.com/library/dd647551.aspx) 新增
     活動專案，下載預設範本，將它加入至
@@ -350,64 +350,64 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
 
 3.  返回 **程序** 索引標籤，然後使用 **顯示詳細資料** 以顯示可用的清單
     建置流程範本的清單。 選擇 **新增...** ] 按鈕，然後巡覽至專案
-    剛才加入及簽入中。 找出剛才建立的範本並選擇 [**確定**]。
+    剛才加入及簽入中。 找出您剛才建立的範本，然後選擇 [ **確定**。
 
 4.  開啟選取的流程範本進行編輯。 您可以
     在工作流程設計工具或在 XML 編輯器中直接開啟，以使用
     XAML。
 
 5.  在工作流程設計工具的引數索引標籤中，
-分行新增下列清單中的新引數。 所有引數都應該
-具有 direction=In 及 type=String。 這些引數可將
-參數從組建定義傳至工作流程，然後用來
-呼叫發行指令碼。
+    分行新增下列清單中的新引數。 所有引數都應該
+    具有 direction=In 及 type=String。 這些引數可將
+    參數從組建定義傳至工作流程，然後用來
+    呼叫發行指令碼。
 
-    SubscriptionName
-    StorageAccountName
-    CloudConfigLocation
-    PackageLocation
-    Environment
-    SubscriptionDataFileLocation
-    PublishScriptLocation
-    ServiceName
+        SubscriptionName
+        StorageAccountName
+        CloudConfigLocation
+        PackageLocation
+        Environment
+        SubscriptionDataFileLocation
+        PublishScriptLocation
+        ServiceName
 
-![][3]
+    ![][3]
 
-對應的 XAML 看起來如下：
+    對應的 XAML 看起來如下：
 
-    <Activity  _ />
-      <x:Members>
-        <x:Property Name="BuildSettings" Type="InArgument(mtbwa:BuildSettings)" />
-        <x:Property Name="TestSpecs" Type="InArgument(mtbwa:TestSpecList)" />
-        <x:Property Name="BuildNumberFormat" Type="InArgument(x:String)" />
-        <x:Property Name="CleanWorkspace" Type="InArgument(mtbwa:CleanWorkspaceOption)" />
-        <x:Property Name="RunCodeAnalysis" Type="InArgument(mtbwa:CodeAnalysisOption)" />
-        <x:Property Name="SourceAndSymbolServerSettings" Type="InArgument(mtbwa:SourceAndSymbolServerSettings)" />
-        <x:Property Name="AgentSettings" Type="InArgument(mtbwa:AgentSettings)" />
-        <x:Property Name="AssociateChangesetsAndWorkItems" Type="InArgument(x:Boolean)" />
-        <x:Property Name="CreateWorkItem" Type="InArgument(x:Boolean)" />
-        <x:Property Name="DropBuild" Type="InArgument(x:Boolean)" />
-        <x:Property Name="MSBuildArguments" Type="InArgument(x:String)" />
-        <x:Property Name="MSBuildPlatform" Type="InArgument(mtbwa:ToolPlatform)" />
-        <x:Property Name="PerformTestImpactAnalysis" Type="InArgument(x:Boolean)" />
-        <x:Property Name="CreateLabel" Type="InArgument(x:Boolean)" />
-        <x:Property Name="DisableTests" Type="InArgument(x:Boolean)" />
-        <x:Property Name="GetVersion" Type="InArgument(x:String)" />
-        <x:Property Name="PrivateDropLocation" Type="InArgument(x:String)" />
-        <x:Property Name="Verbosity" Type="InArgument(mtbw:BuildVerbosity)" />
-        <x:Property Name="Metadata" Type="mtbw:ProcessParameterMetadataCollection" />
-        <x:Property Name="SupportedReasons" Type="mtbc:BuildReason" />
-        <x:Property Name="SubscriptionName" Type="InArgument(x:String)" />
-        <x:Property Name="StorageAccountName" Type="InArgument(x:String)" />
-        <x:Property Name="CloudConfigLocation" Type="InArgument(x:String)" />
-        <x:Property Name="PackageLocation" Type="InArgument(x:String)" />
-        <x:Property Name="Environment" Type="InArgument(x:String)" />
-        <x:Property Name="SubscriptionDataFileLocation" Type="InArgument(x:String)" />
-        <x:Property Name="PublishScriptLocation" Type="InArgument(x:String)" />
-        <x:Property Name="ServiceName" Type="InArgument(x:String)" />
-      </x:Members>
-    
-      <this:Process.MSBuildArguments>
+        <Activity  _ />
+          <x:Members>
+            <x:Property Name="BuildSettings" Type="InArgument(mtbwa:BuildSettings)" />
+            <x:Property Name="TestSpecs" Type="InArgument(mtbwa:TestSpecList)" />
+            <x:Property Name="BuildNumberFormat" Type="InArgument(x:String)" />
+            <x:Property Name="CleanWorkspace" Type="InArgument(mtbwa:CleanWorkspaceOption)" />
+            <x:Property Name="RunCodeAnalysis" Type="InArgument(mtbwa:CodeAnalysisOption)" />
+            <x:Property Name="SourceAndSymbolServerSettings" Type="InArgument(mtbwa:SourceAndSymbolServerSettings)" />
+            <x:Property Name="AgentSettings" Type="InArgument(mtbwa:AgentSettings)" />
+            <x:Property Name="AssociateChangesetsAndWorkItems" Type="InArgument(x:Boolean)" />
+            <x:Property Name="CreateWorkItem" Type="InArgument(x:Boolean)" />
+            <x:Property Name="DropBuild" Type="InArgument(x:Boolean)" />
+            <x:Property Name="MSBuildArguments" Type="InArgument(x:String)" />
+            <x:Property Name="MSBuildPlatform" Type="InArgument(mtbwa:ToolPlatform)" />
+            <x:Property Name="PerformTestImpactAnalysis" Type="InArgument(x:Boolean)" />
+            <x:Property Name="CreateLabel" Type="InArgument(x:Boolean)" />
+            <x:Property Name="DisableTests" Type="InArgument(x:Boolean)" />
+            <x:Property Name="GetVersion" Type="InArgument(x:String)" />
+            <x:Property Name="PrivateDropLocation" Type="InArgument(x:String)" />
+            <x:Property Name="Verbosity" Type="InArgument(mtbw:BuildVerbosity)" />
+            <x:Property Name="Metadata" Type="mtbw:ProcessParameterMetadataCollection" />
+            <x:Property Name="SupportedReasons" Type="mtbc:BuildReason" />
+            <x:Property Name="SubscriptionName" Type="InArgument(x:String)" />
+            <x:Property Name="StorageAccountName" Type="InArgument(x:String)" />
+            <x:Property Name="CloudConfigLocation" Type="InArgument(x:String)" />
+            <x:Property Name="PackageLocation" Type="InArgument(x:String)" />
+            <x:Property Name="Environment" Type="InArgument(x:String)" />
+            <x:Property Name="SubscriptionDataFileLocation" Type="InArgument(x:String)" />
+            <x:Property Name="PublishScriptLocation" Type="InArgument(x:String)" />
+            <x:Property Name="ServiceName" Type="InArgument(x:String)" />
+          </x:Members>
+
+          <this:Process.MSBuildArguments>
 
 6.  在 [在代理程式上執行] 結尾新增一個順序：
 
@@ -525,15 +525,16 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
           </If>
         </Sequence>
 
+
 7.  儲存建置流程範本工作流程，並簽入此檔案。
 
 8.  編輯組建定義 (如果已開啟則將其關閉)，然後選取
-    **新增** ] 按鈕，如果您不尚未看到新範本的流程範本清單中。
+     **新增** ] 按鈕，如果您不尚未看到新範本的流程範本清單中。
 
 9.  在 Misc 區段中設定如下參數屬性值：
 
     1.  CloudConfigLocation ='c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg'
-        *該值衍生自：
+        *這個值會衍生自:
         ($PublishDir)ServiceConfiguration.Cloud.cscfg*
 
     2.  PackageLocation = 'c:\\drops\\app.publish\\ContactManager.Azure.cspkg'
@@ -770,20 +771,19 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 
 若要啟用遠端偵錯使用連續傳遞時，請參閱 [啟用遠端偵錯使用連續傳遞來發行至 Azure 時](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md)。
 
-
-[continuous delivery to azure by using visual studio team services]: cloud-services-continuous-delivery-use-vso.md 
-[team foundation build service]: https://msdn.microsoft.com/library/ee259687.aspx 
-[.net framework 4]: https://www.microsoft.com/download/details.aspx?id=17851 
-[.net framework 4.5]: https://www.microsoft.com/download/details.aspx?id=30653 
-[.net framework 4.5.2]: https://www.microsoft.com/download/details.aspx?id=42643 
-[scale out your build system]: https://msdn.microsoft.com/library/dd793166.aspx 
-[deploy and configure a build server]: https://msdn.microsoft.com/library/ms181712.aspx 
-[azure powershell cmdlets]: powershell-install-configure.md 
-[the .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0 
-[0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01bc.png 
-[2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png 
-[3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png 
-[4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png 
-[5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png 
-[6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png 
+  [Continuous Delivery to Azure by Using Visual Studio Team Services]: cloud-services-continuous-delivery-use-vso.md  
+  [Team Foundation Build Service]: https://msdn.microsoft.com/library/ee259687.aspx
+  [.NET Framework 4]: https://www.microsoft.com/download/details.aspx?id=17851
+  [.NET Framework 4.5]: https://www.microsoft.com/download/details.aspx?id=30653
+  [.NET Framework 4.5.2]: https://www.microsoft.com/download/details.aspx?id=42643
+  [Scale out your build system]: https://msdn.microsoft.com/library/dd793166.aspx
+  [Deploy and configure a build server]: https://msdn.microsoft.com/library/ms181712.aspx
+  [Azure PowerShell cmdlets]: powershell-install-configure.md
+  [the .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0
+  [0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01bc.png
+  [2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
+  [3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png
+  [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
+  [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
+  [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 

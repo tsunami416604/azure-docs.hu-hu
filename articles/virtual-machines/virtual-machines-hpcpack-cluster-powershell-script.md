@@ -16,7 +16,6 @@
    ms.date="09/29/2015"
    ms.author="danlep"/>
 
-
 # 使用 HPC Pack IaaS 部署指令碼在 Azure VM 中建立高效能運算 (HPC) 叢集
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
@@ -32,17 +31,20 @@
 
 
 如需規劃 HPC Pack 叢集的背景資訊，請參閱 [產品評估與規劃](https://technet.microsoft.com/library/jj899596.aspx) 和 [開始](https://technet.microsoft.com/library/jj899590.aspx) HPC Pack TechNet 文件庫中的內容。
+
 >[AZURE.NOTE]您也可以使用 Azure 資源管理員範本來部署 HPC Pack 叢集。 如需範例，請參閱 [建立 HPC 叢集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/), ，[使用自訂的運算節點映像建立 HPC 叢集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/), ，或 [建立 HPC 叢集使用 Linux 運算節點](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)。
 
 ## 必要條件
 
-* **Azure 訂用帳戶** - 您可以在 Azure 全域或 Azure China 服務中使用訂用帳戶。 您的訂用帳戶限制將會影響到您可以部署的叢集節點類型與數量。 如需資訊，請參閱 [Azure 訂用帳戶和服務限制、 配額和條件約束](../azure-subscription-service-limits.md)。
+* **Azure 訂用帳戶** -您可以使用 Azure 全域或 Azure China 服務中的訂閱。 您的訂用帳戶限制將會影響到您可以部署的叢集節點類型與數量。 如需資訊，請參閱 [Azure 訂用帳戶和服務限制、 配額和條件約束](../azure-subscription-service-limits.md)。
+
 
 * **Windows 用戶端電腦使用 Azure PowerShell 0.8.7 版或更新版本安裝並設定** -請參閱 [如何安裝和設定 Azure PowerShell](../powershell-install-configure.md)。 指令碼會在 Azure 服務管理中執行。
 
-* **HPC Pack IaaS 部署指令碼** -下載並解壓縮最新版的指令碼的 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=44949)。 您可以執行檢查的指令碼版本 `New-hpciaascluster.ps1 – 版本`。 這篇文章是根據 4.4.0 版的指令碼撰寫的。
 
-* **指令碼組態檔** - 您必須建立讓指令碼用來設定 HPC 叢集的 XML 檔案。 如需相關資訊和範例，請參閱本文稍後的章節。
+* **HPC Pack IaaS 部署指令碼** -下載並解壓縮最新版的指令碼從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=44949)。 執行 `New-HPCIaaSCluster.ps1 –Version` 即可檢查指令碼的版本。 這篇文章是根據 4.4.0 版的指令碼撰寫的。
+
+* **指令碼組態檔** -您需要建立指令碼來設定 HPC 叢集所使用的 XML 檔案。 如需相關資訊和範例，請參閱本文稍後的章節。
 
 
 ## 語法
@@ -54,23 +56,25 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 
 ### 參數
 
-* **/ConfigFile** - 指定說明 HPC 叢集之組態檔的檔案路徑。 如需詳細資訊，請參閱 [組態檔](#Configuration-file) 在本主題中或 Manual.rtf 檔案，該資料夾包含指令碼。
+* **ConfigFile** -指定描述 HPC 叢集的組態檔的檔案路徑。 如需詳細資訊，請參閱 [組態檔](#Configuration-file) 在本主題中或 Manual.rtf 檔案，該資料夾包含指令碼。
 
-* **AdminUserName** - 指定使用者名稱。 如果網域樹系是由指令碼所建立，這將會成為所有 VM 的本機系統管理員使用者名稱和網域系統管理員名稱。 如果網域樹系已存在，則會將網域使用者指定為安裝 HPC Pack 的本機系統管理員使用者名稱。
+* **AdminUserName** -指定的使用者名稱。 如果網域樹系是由指令碼所建立，這將會成為所有 VM 的本機系統管理員使用者名稱和網域系統管理員名稱。 如果網域樹系已存在，則會將網域使用者指定為安裝 HPC Pack 的本機系統管理員使用者名稱。
 
 * **AdminPassword** -指定系統管理員的密碼。 如果未在命令列中指定，指令碼會提示您輸入密碼。
 
-* **HPCImageName** (選擇性) - 指定用來部署 HPC 叢集的 HPC Pack VM 映像名稱。 它必須是 Microsoft 在 Azure Marketplace 中提供的 HPC Pack 映像。 如果未指定 (在大部分的情況下建議使用)，指令碼會選擇最新發佈的 HPC Pack 映像。
-    >[AZURE.NOTE] 若未指定有效的 HPC Pack 映像，部署將會失敗。
+* **HPCImageName** (選用)-指定 HPC Pack VM 映像名稱，用來部署 HPC 叢集。 它必須是 Microsoft 在 Azure Marketplace 中提供的 HPC Pack 映像。 如果未指定 (在大部分的情況下建議使用)，指令碼會選擇最新發佈的 HPC Pack 映像。
 
-* **LogFile** (選擇性) - 指定部署記錄檔路徑。 若未指定，指令碼會在執行指令碼之電腦的暫存目錄中建立記錄檔。
+    >[AZURE.NOTE] 如果您未指定有效的 HPC Pack 映像，部署將會失敗。
 
-* **Force** (選擇性) - 抑制所有的確認提示。
+* **記錄檔** (選用)-指定部署記錄檔路徑。 若未指定，指令碼會在執行指令碼之電腦的暫存目錄中建立記錄檔。
 
-* **NoCleanOnFailure** (選擇性) - 指定未成功部署的 Azure VM 將不會移除。 您必須先手動移除這些 VM 才能重新執行指令碼以繼續部署，否則部署可能會失敗。
+* **強制** (選用)-隱藏所有確認提示。
 
-* **PSSessionSkipCACheck** (選擇性) - 針對每個使用此指令碼部署 VM 的雲端服務，都會由 Azure 自動產生自我簽署憑證，且雲端服務中的所有 VM 都會使用此憑證做為預設 Windows 遠端管理 (WinRM) 憑證。 若要部署 HPC 功能，這些 Azure Vm 中，預設的指令碼暫時安裝這些憑證以隱藏 「 不受信任的 CA 」 安全性錯誤指令碼執行期間，用戶端電腦的本機 Computer\\Trusted 根憑證授權單位存放區中指令碼完成時移除憑證。 如果指定此參數，則不會在用戶端電腦上安裝憑證，並且會抑制安全性警告。
-    >[AZURE.IMPORTANT] 此參數不建議用於生產部署。
+* **NoCleanOnFailure** (選用)-指定將不會移除未成功部署在 Azure Vm。 您必須先手動移除這些 VM 才能重新執行指令碼以繼續部署，否則部署可能會失敗。
+
+* **PSSessionSkipCACheck** (選用)-使用此指令碼部署的每個雲端服務，自我簽署的憑證自動由 Azure 產生，並在雲端服務中的所有 Vm 會都使用此憑證做為預設的 Windows 遠端管理 (WinRM) 憑證。 若要部署 HPC 功能，這些 Azure Vm 中，預設的指令碼暫時安裝這些憑證以隱藏 「 不受信任的 CA 」 安全性錯誤指令碼執行期間，用戶端電腦的本機 Computer\\Trusted 根憑證授權單位存放區中指令碼完成時移除憑證。 如果指定此參數，則不會在用戶端電腦上安裝憑證，並且會抑制安全性警告。
+
+    >[AZURE.IMPORTANT] 這個參數不建議用於實際部署。
 
 ### 範例
 
@@ -87,6 +91,7 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> 
 * 指令碼會使用 Azure Marketplace 中的 HPC Pack VM 映像來建立叢集前端節點。 目前的映像是基於已安裝 HPC Pack 2012 R2 Update 3 的 Windows Server 2012 R2 Datacenter。
 
 * 指令碼可選擇性地讓工作透過 HPC Pack Web 入口網站或 HPC Pack REST API 來提交。
+
 
 * 如果您想要安裝其他軟體或進行其他設定，指令碼可以選擇性地在前端節點上執行自訂的前置和後置組態指令碼。
 
@@ -172,6 +177,7 @@ MyHPCCNService03 和 mycnstorage03)。 從建立計算節點
     <CertificateId>1</CertificateId>
   </AutoGrowShrink>
 </IaaSClusterConfig>
+
 ```
 
 ### 範例 2
@@ -409,12 +415,13 @@ Windows Server 2008 R2 作業系統中。 所有雲端服務
 ```
 ## 已知問題
 
+
 * **「 VNet 不存在 」 錯誤** -如果您執行的 HPC Pack IaaS 部署指令碼來部署多個
 在 Azure 中下一個訂用帳戶一或多個並行的叢集
 部署可能會失敗，發生錯誤 「 VNet *VNet\_Name* 不存在 」。
 如果發生此錯誤，請對失敗的部署重新執行指令碼。
 
-* **存取網際網路，從 Azure 虛擬網路的問題** -如果您建立新的網域控制站的 HPC Pack 叢集使用
+* **從 Azure 虛擬網路存取網際網路的問題** -如果您建立新的網域控制站的 HPC Pack 叢集使用
 部署指令碼，或您手動將升級網域的 VM
 控制站，您可能會遇到問題，在 Azure 中的 Vm 連線
 虛擬網路到網際網路。 這可能會發生 DNS 轉寄站
@@ -426,7 +433,7 @@ Windows Server 2008 R2 作業系統中。 所有雲端服務
     轉寄站 DNS 伺服器。 若要這樣做，請在 [伺服器管理員中，按一下 **工具** >
     **DNS** 來開啟 [DNS 管理員]，然後按兩下 [ **轉寄站**。
 
-* **問題存取 RDMA 網路從大小為 A8 或 A9 Vm** -如果您新增 Windows Server 的運算節點或代理程式節點 Vm 的大小為 A8 或
+* **存取 RDMA 網路從大小為 A8 或 A9 Vm 問題** -如果您新增 Windows Server 的運算節點或代理程式節點 Vm 的大小為 A8 或
 A9 使用部署指令碼，您可能會遇到的問題
 這些 Vm 連線到 rdma 應用程式。 其中一個原因這
 可能是如果 HpcVmDrivers 延伸模組未正確安裝
@@ -446,8 +453,4 @@ A9 使用部署指令碼，您可能會遇到的問題
 * 使用指令碼來建立叢集，並執行 HPC 工作負載的教學課程，請參閱 [開始使用 Azure 來執行 Excel 和 SOA 工作負載中的 HPC Pack 叢集](virtual-machines-excel-cluster-hpcpac), ，[執行 NAMD 使用 Microsoft HPC Pack linux 運算節點，在 Azure 中的](virtual-machines-linux-cluster-hpcpack-namd.md), ，或 [執行 OpenFOAM 使用 Microsoft HPC Pack linux 運算節點，在 Azure 中的](virtual-machines-linux-cluster-hpcpack-openfoam.md)。
 
 * 嘗試以 HPC Pack 的工具啟動、停止、新增和移除您所建立之叢集中的運算節點。 請參閱 [管理計算節點的 HPC Pack 叢集在 Azure 中](virtual-machines-hpcpack-cluster-node-manage.md)
-
-
-
-
 

@@ -16,29 +16,26 @@
     ms.date="08/05/2015"
     ms.author="MehrdadMzfr" />
 
-
-# 升級程序
+#升級程序
 
 如果您已經整合舊版 Engagement 到您的應用程式，在升級 SDK 時您必須考慮以下幾點。
 
 針對每個新版 SDK，您必須先取代 (在 xcode 中移除並重新匯入) EngagementSDK 與 EngagementReach 資料夾。
 
-## 從 2.0.0 到 3.0.0
-
+##從 2.0.0 到 3.0.0
 停止支援 iOS 4.X。 從此版本開始，您的應用程式部署目標必須至少為 iOS 6。
 
-如果您在應用程式中使用範圍，您必須新增 `遠端通知` 值 `UIBackgroundModes` 以接收遠端通知 Info.plist 檔案中的陣列。
+如果您在應用程式中使用 Reach，必須將`remote-notification` 值新增至 Info.plist 檔案中的 `UIBackgroundModes` 陣列，以接收遠端通知。
 
-此方法 `應用程式: didReceiveRemoteNotification:` 需要更換的 `應用程式: didReceiveRemoteNotification:fetchCompletionHandler:` 應用程式委派中。
+在您的應用程式委派中，方法 `application:didReceiveRemoteNotification:` 需由 `application:didReceiveRemoteNotification:fetchCompletionHandler:` 取代。
 
-"AEPushDelegate.h" 是已被取代的介面，且您必須移除所有參考。 這包括在移除 `[[共用的 EngagementAgent] setPushDelegate:self]` 和委派方法，從您的應用程式委派:
+"AEPushDelegate.h" 是已被取代的介面，且您必須移除所有參考。 這包括從您的應用程式委派移除 `[[EngagementAgent shared] setPushDelegate:self]` 以及委派方法：
 
     -(void)willRetrieveLaunchMessage;
     -(void)didFailToRetrieveLaunchMessage;
     -(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-## 從 1.16.0 到 2.0.0
-
+##從 1.16.0 到 2.0.0
 以下說明如何將 SDK 整合從 Capptain SAS 提供的 Capptain 服務，移轉到由 Azure Mobile Engagement 提供的應用程式內。
 如果您是從較早版本移轉，請參閱 Capptain 網站，先移轉到 1.16 後再套用以下程序。
 
@@ -46,7 +43,7 @@
 
 ### 代理程式
 
-此方法 `registerApp:` 已被新方法取代 `init:`。 您的應用程式委派必須隨之更新，並使用連接字串：
+`registerApp:` 方法已被新方法 `init:` 取代。 您的應用程式委派必須隨之更新，並使用連接字串：
 
             - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
             {
@@ -55,7 +52,7 @@
               [...]
             }
 
-您只需要移除的所有執行個體的 SDK 中已移除 SmartAd 追蹤 `AETrackModule` 類別
+SmartAd 追蹤已從 SDK 移除，因此您必須移除 `AETrackModule` 類別的所有執行個體
 
 ### 類別名稱變更
 
@@ -71,12 +68,8 @@
 
 範例：
 
--   類別 `CapptainAgent` 已重新命名為 `EngagementAgent`。
--   類別 `CapptainTableViewController` 已重新命名為 `EngagementTableViewController`。
--   類別 `CapptainUtils` 已重新命名為 `EngagementUtils`。
--   類別 `CapptainViewController` 已重新命名為 `EngagementViewController`。
-
-
-
-
+-   `CapptainAgent` 類別已重新命名為 `EngagementAgent`。
+-   `CapptainTableViewController` 類別已重新命名為 `EngagementTableViewController`。
+-   `CapptainUtils` 類別已重新命名為 `EngagementUtils`。
+-   `CapptainViewController` 類別已重新命名為 `EngagementViewController`。
 

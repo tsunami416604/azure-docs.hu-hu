@@ -2,7 +2,3 @@
 
   Register-AzureRmProviderFeature -FeatureName vmssApiPreviewV2Access -ProviderNamespace Microsoft.Compute
 
-
-
-
-

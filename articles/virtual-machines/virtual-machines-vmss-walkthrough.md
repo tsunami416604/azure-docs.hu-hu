@@ -17,7 +17,6 @@
     ms.date="11/19/2015"
     ms.author="davidmu"/>
 
-
 # 在虛擬機器調整集中自動調整機器
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [傳統部署模型](virtual-machines-create-windows-powershell-service-manager.md)。
@@ -34,27 +33,26 @@
 
 ## 步驟 1：建立資源群組和儲存體帳戶
 
-1.  **登入 Microsoft Azure**。 開啟 Microsoft Azure PowerShell 視窗，並執行 **Login-AzureRmAccount**。
+1.  **登入 Microsoft Azure**。 開啟 Microsoft Azure PowerShell 視窗並執行 **登入 AzureRmAccount**。
 
-2.  **建立資源群組** – 所有資源都必須部署至資源群組。 在本教學課程中，我們將資源群組命名為 **vmss-test1**。 請參閱 [新 AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)。
+2.  **建立資源群組** – 所有資源必須都部署至資源群組。 本教學課程中，資源群組的名稱 **vmss test1**。 請參閱 [新 AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)。
 
-3.  **將儲存體帳戶部署到新的資源群組中** – 本教學課程使用數個儲存體帳戶，以利虛擬機器調整集的運作。 使用 [新增 AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) 來建立名為的儲存體帳戶 **vmssstore1**。 將 Azure PowerShell 保持在開啟狀態，供本教學課程後續的步驟使用。
+3.  **將儲存體帳戶部署到新的資源群組** – 本教學課程使用數個儲存體帳戶以利進行虛擬機器調整集。 使用 [新增 AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) 來建立名為的儲存體帳戶 **vmssstore1**。 將 Azure PowerShell 保持在開啟狀態，供本教學課程後續的步驟使用。
 
 ## 步驟 2：建立範本
-
 有了 Azure 資源管理員範本之後，您就可以使用 JSON 來說明資源、相關設定和部署參數，一起部署和管理 Azure 資源。
 
 1.  在您慣用的文字編輯器中，建立檔案 C:\VMSSTemplate.json ，並新增初始的 JSON 結構以支援範本。
 
     ```
 {
-        "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/VM.json",
-   "contentVersion": "1.0.0.0",
+        「 $schema 」: 「 http://schema.management.azure.com/schemas/2014-04-01-preview/VM.json 」，
+   "contentVersion":"1.0.0.0"，
  "parameters": {
         }
         "variables": {
         }
-        "resources": [
+        「 資源 」: [
         ]
     }
     ```
@@ -68,6 +66,7 @@
     - 最初在調整集內建立的虛擬機器執行個體數目。
     - 虛擬機器之系統管理帳戶的名稱和密碼。
     - 調整集內的虛擬機器所使用之儲存體帳戶名稱的前置詞。
+
 
     ```
     "vmName": {
@@ -92,6 +91,7 @@
         "type": "string"
       }
     ```
+
 
 3.  變數可以在範本中用來指定會經常變更的值或需要透過參數值組合建立的值。
 
@@ -272,6 +272,7 @@
 
 8.  新增 Jumpbox 虛擬機器所使用的網路介面資源。
 
+
     ```
     {
         "apiVersion": "2015-05-01-preview",
@@ -300,6 +301,7 @@
         }
     },
     ```
+
 
 9.  在與調整集相同的網路中新增虛擬機器資源。 由於虛擬機器調整集內的虛擬機器無法直接使用公用 IP 位址來存取，因此必須在與調整集相同的虛擬網路中建立 Jumpbox 虛擬機器，並用它從遠端存取調整集內的機器。
 
@@ -350,9 +352,9 @@
 
 10. 新增虛擬機器調整集資源，並指定在調整集內的所有虛擬機器上安裝的診斷延伸模組。 此資源有許多設定都與虛擬機器資源相類似。 以下是兩者的主要差異：
 
-    - **capacity** - 指定在調整集內應初始化的虛擬機器數目。 您可以指定 instanceCount 參數的值，以設定此值。
+    - **容量** -指定虛擬機器數目應該初始化調整集合中。 您可以指定 instanceCount 參數的值，以設定此值。
 
-    - **upgradePolicy** – 指定如何對調整集內的虛擬機器進行更新。 「手動」會指定在重新部署範本時，範本中的變更只會影響到新的虛擬機器。 「自動」會指定調整集內的所有機器都會更新並重新啟動。
+    - **upgradePolicy** – 指定小數位數的集合中虛擬機器進行更新的方式。 「手動」會指定在重新部署範本時，範本中的變更只會影響到新的虛擬機器。 「自動」會指定調整集內的所有機器都會更新並重新啟動。
 
     在依照 dependsOn 元素的指定建立所有的儲存體帳戶之前，將不會建立虛擬機器調整集。
 
@@ -465,18 +467,18 @@
 
 11. 新增 autoscaleSettings 資源，以定義如何根據調整集內各機器的處理器使用情形進行調整集的調整。 在本教學課程中，以下是重要的值：
 
- - **metricName** - 這與我們在 wadperfcounter 變數中定義的效能計數器相同。 使用該變數，診斷擴充功能會收集  **處理器 (_Total) \ %處理器時間** 計數器。
- - **metricResourceUri** - 這是虛擬機器調整集的資源識別碼。
- - **timeGrain** – 這是所收集之計量的精細度。 此範本中，此值設為 1 分鐘。
- - **statistic** – 這會決定如何結合計量以因應自動調整動作的需要。 可能的值為：Average、Min、Max。 在此範本中，我們將求取調整集內各個虛擬機器之間的平均 CPU 使用率總計。
- - **timeWindow** – 這是收集執行個體資料的時間範圍。 其值必須介於 5 分鐘到 12 小時之間。
- - **timeAggregation** – 這會決定收集的資料應如何隨著時間結合。 預設值為 Average。 可能的值為：Average、Minimum、Maximum、Last、Total、Count。
- - **operator** – 這是用來比較計量資料和臨界值的運算子。 可能的值為：Equals、NotEquals、GreaterThan、GreaterThanOrEqual、LessThan、LessThanOrEqual。
- - **threshold** – 這是觸發調整動作的值。 在此範本中，會在調整集內的機器之間的平均 CPU 使用率超過 50% 時，將機器新增至調整集。
- - **direction** – 這會決定達到臨界值時所採取的動作。 可能的值為 Increase 或 Decrease。 在此範本中，如果臨界值在定義的時間範圍內超過 50%，則會增加調整集內的虛擬機器數目。
- - **type** – 這是所應採取的動作類型，必須設為 ChangeCount。
- - **value** – 這是在調整集內新增或移除的虛擬機器數目。 此值必須是 1 或更大。 預設值為 1。 在此範本中，會在達到臨界值時，將調整集內的機器數目加 1。
- - **cooldown** – 這是在上一個調整動作之後、下一個動作執行之前的等待時間量。 其值必須介於 1 分鐘到 1 週之間。
+ - **metricName** -這是我們 wadperfcounter 變數中所定義的效能計數器相同。 使用該變數，診斷擴充功能會收集  **處理器 (_Total) \ %處理器時間** 計數器。
+ - **metricResourceUri** -這是虛擬機器調整集的資源識別碼。
+ - **timeGrain** – 這是收集的度量資料粒度。 此範本中，此值設為 1 分鐘。
+ - **統計資料** – 這會決定如何結合的度量，以容納自動調整動作。 可能的值為：Average、Min、Max。 在此範本中，我們將求取調整集內各個虛擬機器之間的平均 CPU 使用率總計。
+ - **timeWindow** – 這是否會收集到的執行個體資料的時間範圍。 其值必須介於 5 分鐘到 12 小時之間。
+ - **timeAggregation** – 這會決定如何隨著時間結合收集的資料。 預設值為 Average。 可能的值為：Average、Minimum、Maximum、Last、Total、Count。
+ - **運算子** – 這是用來比較度量資料與臨界值的運算子。 可能的值為：Equals、NotEquals、GreaterThan、GreaterThanOrEqual、LessThan、LessThanOrEqual。
+ - **閾值** – 這是觸發調整動作的值。 在此範本中，會在調整集內的機器之間的平均 CPU 使用率超過 50% 時，將機器新增至調整集。
+ - **方向** – 這會決定達到臨界值時，所採取的動作。 可能的值為 Increase 或 Decrease。 在此範本中，如果臨界值在定義的時間範圍內超過 50%，則會增加調整集內的虛擬機器數目。
+ - **型別** – 這是所採取的動作類型，這必須設定為 ChangeCount。
+ - **值** – 這是加入或移除從調整集的虛擬機器數目。 此值必須是 1 或更大。 預設值為 1。 在此範本中，會在達到臨界值時，將調整集內的機器數目加 1。
+ - **cooldown** – 這是自上次調整動作的下一個動作發生之前的等待時間量。 其值必須介於 1 分鐘到 1 週之間。
 
     ```
     {
@@ -526,7 +528,7 @@
     }
     ```
 
-12. 儲存範本檔案。
+12. 儲存範本檔案。    
 
 ## 步驟 3：將範本上傳至儲存體
 
@@ -557,7 +559,6 @@
         $fileName = "C:\" + $BlobName
         Set-AzureStorageBlobContent -File $fileName -Container $ContainerName -Blob  $BlobName -Context $ctx
 
-
 ## 步驟 4：部署範本
 
 在建立範本後，現在您已可開始部署資源。 使用下列命令啟動程序：
@@ -575,7 +576,8 @@
     resourcePrefix: vmsstest
 
 所有資源要順利部署完成約需要 15 分鐘，。
->[AZURE.NOTE]您也可以利用入口網站的功能來部署資源。 若要這樣做，請使用此連結:
+
+>[AZURE.NOTE]您也可以進行部署的資源使用的入口網站的能力。 若要這樣做，請使用此連結:
 https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>
 
 ## 步驟 4：監視資源
@@ -583,7 +585,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JS
 您可以使用下列方法，取得關於虛擬機器調整集的某些資訊：
 
  - Azure 入口網站 - 目前，使用入口網站可以取得限定數量的資訊。
- - [Azure 資源總管](https://resources.azure.com/) -這是最適合的工具來瀏覽調整集的目前狀態。 按照此路徑，您應該會看到您所建立之調整集的執行個體檢視：
+ -  [Azure 資源總管](https://resources.azure.com/) -這是最適合的工具來瀏覽調整集的目前狀態。 按照此路徑，您應該會看到您所建立之調整集的執行個體檢視：
 
         subscriptions > {your subscription} > resourceGroups > vmss-test1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
 
@@ -593,7 +595,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JS
 
  - 比照任何其他機器連接到 Jumpbox 虛擬機器，您即可從遠端存取調整集內的虛擬機器，以監視個別程序。
 
->[AZURE.NOTE]完整的 REST API，以取得關於擴充集合的資訊，請參閱 [虛擬機器規模設定](https://msdn.microsoft.com/library/mt589023.aspx)
+>[AZURE.NOTE]完整的 REST API，以取得關於擴充集合的資訊可在 [虛擬機器調整設定](https://msdn.microsoft.com/library/mt589023.aspx)
 
 ## 步驟 5：移除資源
 
@@ -604,6 +606,4 @@ https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JS
 如果您想要保留資源群組，您可以只刪除調整集。
 
     Remove-AzureRmResource -Name vmsstest1 -ResourceGroupName vmss-test1 -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
-
-
 

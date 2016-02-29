@@ -16,15 +16,14 @@
    ms.date="10/06/2015"
    ms.author="sahajs"/>
 
-
 # 搭配使用 Azure 機器學習服務與 SQL 資料倉儲
 
-Azure 機器學習服務是一項完全受管理的預測性分析服務，您可用來在 SQL 資料倉儲中針對您的資料建立預測模型，並將這些模型發佈為可供取用 Web 服務。 您可以了解基本的預測分析和機器學習讀取 [Azure [] 上的機器學習服務簡介][]。 然後，您就可以了解如何建立、 定型、 評分和測試機器學習模型使用 [建立實驗教學課程 []][]。
+Azure 機器學習服務是一項完全受管理的預測性分析服務，您可用來在 SQL 資料倉儲中針對您的資料建立預測模型，並將這些模型發佈為可供取用 Web 服務。 您可以了解基本的預測分析和機器學習讀取 [Azure 上的機器學習服務簡介][]。  然後，您就可以了解如何建立、 定型、 評分和測試機器學習模型使用 [建立實驗教學課程][]。
 
-在本文中，您將學習如何將下列 using [Azure Machine Learning Studio 的 []][]:
+在本文中，您將學習如何將下列 using [Azure Machine Learning Studio][]:
 
 - 從您的資料庫讀取資料來建立、定型和評分預測模型
-- 將資料寫入您的資料庫
+- 將資料寫入您的資料庫 
 
 
 ## 從 SQL 資料倉儲讀取資料
@@ -45,12 +44,12 @@ Azure 機器學習服務是一項完全受管理的預測性分析服務，您�
 選取 [讀取器] 模組並填寫屬性窗格。
 
 1. 選取 Azure SQL Database 做為資料來源。
-2. 資料庫伺服器名稱：輸入伺服器名稱。 您可以使用 [Azure 傳統入口網站 []][] 進行搜尋。
+2. 資料庫伺服器名稱：輸入伺服器名稱。 您可以使用 [Azure 傳統入口網站][] 進行搜尋。
 
 ![][server_name]
 
-3. 資料庫名稱：輸入您剛指定的伺服器上的資料庫名稱。
-4. 伺服器使用者帳戶名稱: 輸入具有資料庫的存取權限的帳戶的使用者名稱。
+3. 資料庫名稱：輸入您剛指定的伺服器上的資料庫名稱。 
+4. 伺服器使用者帳戶名稱: 輸入具有資料庫的存取權限的帳戶的使用者名稱。 
 5. 伺服器使用者帳戶名稱：提供指定之使用者帳戶的密碼。
 6. 接受任何伺服器憑證：如果您想要在讀取資料前跳過檢閱網站憑證，請使用這個選項 (較不安全)。
 7. 資料庫查詢：輸入 SQL 陳述式，描述您要讀取的資料。 在此情況下，我們將使用下列查詢從 Product 資料表讀取資料。
@@ -82,11 +81,11 @@ FROM dbo.DimProduct;
 - 建立模型：處理資料並定義功能
 - 定型模型：選擇並套用學習演算法
 - 對模型評分和測試：預測新的自行車價格
-
+ 
 
 ![][model]
 
-若要深入了解如何建立、 訓練、 評分和測試機器學習模型，請使用 [建立實驗教學課程 []][]。
+若要深入了解如何建立、 訓練、 評分和測試機器學習模型，請使用 [建立實驗教學課程][]。
 
 ## 將資料寫入至 Azure SQL 資料倉儲
 
@@ -103,9 +102,9 @@ FROM dbo.DimProduct;
 選取 [寫入器] 模組並填寫屬性窗格。
 
 1. 選取 Azure SQL Database 做為資料目的地。
-2. 資料庫伺服器名稱：輸入伺服器名稱。 您可以使用 [Azure 傳統入口網站 []][] 進行搜尋。
-3. 資料庫名稱：輸入您剛指定的伺服器上的資料庫名稱。
-4. 伺服器使用者帳戶名稱: 輸入具有資料庫的寫入權限的帳戶的使用者名稱。
+2. 資料庫伺服器名稱：輸入伺服器名稱。 您可以使用 [Azure 傳統入口網站][] 進行搜尋。 
+3. 資料庫名稱：輸入您剛指定的伺服器上的資料庫名稱。 
+4. 伺服器使用者帳戶名稱: 輸入具有資料庫的寫入權限的帳戶的使用者名稱。 
 5. 伺服器使用者帳戶名稱：提供指定之使用者帳戶的密碼。
 6. 接受任何伺服器憑證 (不安全)：如果您不想檢視憑證，請選取此選項。
 7. 要儲存之資料行的逗號分隔清單：提供您要輸出的資料集或結果資料行清單。
@@ -118,35 +117,37 @@ FROM dbo.DimProduct;
 ### 步驟 3
 
 1. 按一下實驗畫布下方的 [執行]，以執行實驗。
-2. 實驗完成時，所有模組都會呈現綠色核取標記，表示它們已順利完成。
+2. 實驗完成時，所有模組都會呈現綠色核取標記，表示它們已順利完成。 
 
 ## 後續步驟
 
-如需整合的概觀，請參閱 [SQL 資料倉儲整合概觀 []][]。
+如需整合的概觀，請參閱 [SQL 資料倉儲整合概觀][]。
 
-如需更多開發秘訣，請參閱 [SQL 資料倉儲開發概觀 []][]。
+如需更多開發秘訣，請參閱 [SQL 資料倉儲開發概觀][]。
 
+<!--Image references-->
 
+[drag_reader]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-drag-reader.png
+[server_name]: ./media/sql-data-warehouse-integrate-azure-machine-learning/dw-server-name.png
+[reader_properties]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-reader-properties.png
+[run]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-finished-running.png
+[model]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-create-train-score-model.png
+[drag_writer]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-drag-writer.png
+[writer_properties]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-writer-properties.png
 
+<!--Article references-->
 
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop/
+[SQL Data Warehouse integration overview]: ./sql-data-warehouse-overview-integration/
+[Create experiment tutorial]: https://azure.microsoft.com/en-us/documentation/articles/machine-learning-create-experiment/
+[Introduction to machine learning on Azure]: https://azure.microsoft.com/en-us/documentation/articles/machine-learning-what-is-machine-learning/
+[Azure Machine Learning Studio]: https://studio.azureml.net/Home
+[Azure Classic Portal]: https://portal.azure.com/
 
+<!--MSDN references-->
 
+<!--Other Web references-->
 
+[Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-
-
-[drag_reader]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-drag-reader.png 
-[server_name]: ./media/sql-data-warehouse-integrate-azure-machine-learning/dw-server-name.png 
-[reader_properties]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-reader-properties.png 
-[run]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-finished-running.png 
-[model]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-create-train-score-model.png 
-[drag_writer]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-drag-writer.png 
-[writer_properties]: ./media/sql-data-warehouse-integrate-azure-machine-learning/ml-writer-properties.png 
-[sql data warehouse development overview]: ./sql-data-warehouse-overview-develop/ 
-[sql data warehouse integration overview]: ./sql-data-warehouse-overview-integration/ 
-[create experiment tutorial]: https://azure.microsoft.com/en-us/documentation/articles/machine-learning-create-experiment/ 
-[introduction to machine learning on azure]: https://azure.microsoft.com/en-us/documentation/articles/machine-learning-what-is-machine-learning/ 
-[azure machine learning studio]: https://studio.azureml.net/Home 
-[azure classic portal]: https://portal.azure.com/ 
-[azure machine learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/ 
 

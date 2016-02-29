@@ -10,7 +10,7 @@
           --                             ----    
           example@contoso.com            User       ...   
 
-2. 如果您有多個訂用帳戶，請提供您想要用於部署的訂用帳戶識別碼。
+2. 如果您有多個訂用帳戶，請提供您想要用於部署的訂用帳戶識別碼。 
 
           Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
 
@@ -34,10 +34,10 @@
                     *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-5. 若要建立資源群組的新部署，請執行 **New-AzureResourceGroupDeployment** 命令，並提供必要的參數。 參數會包含您部署的名稱、資源群組的名稱、您建立之範本的路徑或 URL，以及您的案例所需的任何其他參數。
-
-   您有下列選項可以用來提供參數值：
-
+5. 若要建立新的部署資源群組，請執行 **New-azureresourcegroupdeployment** 命令，並提供必要的參數。 參數會包含您部署的名稱、資源群組的名稱、您建立之範本的路徑或 URL，以及您的案例所需的任何其他參數。 
+   
+   您有下列選項可以用來提供參數值： 
+   
    - 使用內嵌參數。
 
             New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -myParameterName "parameterValue"
@@ -60,7 +60,6 @@
              Mode              : Incremental
              ...
 
-
 6. 取得部署失敗的相關資訊。
 
         Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed
@@ -68,9 +67,4 @@
 7. 取得部署失敗的詳細資訊。
 
         Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
-
-
-
-
-
 

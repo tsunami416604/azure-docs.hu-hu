@@ -17,15 +17,12 @@
     ms.date="11/17/2015"
     ms.author="heidist"/>
 
-
 # 使用 REST API 建立 Azure 搜尋服務索引
-
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-an-index.md)
-- [Portal](search-create-index-portal.md)
+- [概觀](search-what-is-an-index.md)
+- [入口網站](search-create-index-portal.md)
 - [.NET](search-create-index-dotnet.md)
 - [REST](search-create-index-rest-api.md)
-
 
 本文將說明如何建立索引使用 [Azure 搜尋服務 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)。 下列內容的一些取自 [建立索引 (Azure 搜尋服務 REST API)](https://msdn.microsoft.com/library/azure/dn798941.aspx)。 請參閱上層文章以取得更多內容。
 
@@ -35,7 +32,7 @@
 
 若要使用 REST API 建立索引，您將會發出 POST 要求到 Azure 搜尋服務 URL 端點。 您會在要求主體中使用 JSON 定義索引的結構。
 
-**要求和要求標頭**：
+**要求和要求標頭**:
 
 在下列範例中，您將必須使用您的服務的 URL 端點，特別要注意服務名稱和適當的 API 版本 (發行這份文件時最新的 API 版本是 "2015-02-28")。 在要求標頭，您也必須提供服務的主要系統管理金鑰時收到 [建立服務](https://msdn.microsoft.com/library/azure/dn798941.aspx/)。
 
@@ -43,7 +40,8 @@
     Content-Type: application/JSON
     api-key:[primary admin key]
 
-**要求本文**：
+
+**要求本文**:
 
 這是您用來識別您的索引名稱 ("hotels"，在此情況下)，以及 [名稱、 類型和欄位的屬性](https://msdn.microsoft.com/library/azure/dn798941.aspx)。
 
@@ -66,8 +64,4 @@
     }
 
 對於成功的要求，您應該會看到狀態碼「201 已建立」。 如需有關建立索引，透過 REST API 的詳細資訊，請瀏覽 [本頁](https://msdn.microsoft.com/library/azure/dn798941.aspx)。
-
-
-
-
 

@@ -16,7 +16,6 @@
     ms.date="11/19/2015" 
     ms.author="billmath"/>
 
-
 # 使用 RADIUS 的遠端桌面閘道和 Azure Multi-Factor Authentication Server
 
 在許多情況下，遠端桌面閘道器會使用本機 NPS 來驗證使用者。 本文件說明如何將 RADIUS 要求從遠端桌面閘道器 (透過本機 NPS) 傳送至 Multi-Factor Authentication Server。
@@ -46,21 +45,17 @@ RD 閘道器使用 NPS 將 RADIUS 要求傳送到 Azure Multi-Factor Authenticat
 
 ## 設定 Azure Multi-Factor Authentication
 
+
 --------------------------------------------------------------------------------
 
 
 
-
-Azure Multi-Factor Authentication Server 設定為 RD 閘道器和 NPS 之間的 RADIUS Proxy。 它應該安裝在 RD 閘道器伺服器之外另一部加入網域的伺服器上。 使用下列程序來設定 Azure Multi-Factor Authentication Server。
+Azure Multi-Factor Authentication Server 設定為 RD 閘道器和 NPS 之間的 RADIUS Proxy。  它應該安裝在 RD 閘道器伺服器之外另一部加入網域的伺服器上。 使用下列程序來設定 Azure Multi-Factor Authentication Server。
 
 1. 開啟 Azure Multi-Factor Authentication Server，然後按一下 [RADIUS 驗證] 圖示。 核取 [啟用 RADIUS 驗證] 核取方塊。
 2. 在用戶端] 索引標籤，確定連接埠符合 NPS 中的設定，並按一下 [新增... 按鈕。 新增 RD 閘道器伺服器 IP 位址、應用程式名稱 (選擇性) 和共用密碼。 共用密碼在 Azure Multi-Factor Authentication Server 和 RD 閘道器上必須相同。
 3. 按一下 [目標] 索引標籤，然後選擇 [RADIUS 伺服器] 選項按鈕。
-4. 按一下 [新增... 按鈕。 輸入 NPS 伺服器的 IP 位址、共用密碼和連接埠。 除非使用中央 NPS，否則 RADIUS 用戶端和 RADIUS 目標會相同。 共用密碼必須符合 NPS 伺服器的 RADIUS 用戶端區段中設定的共用密碼。
+4. 按一下 [新增... 按鈕。 輸入 NPS 伺服器的 IP 位址、共用密碼和連接埠。 除非使用中央 NPS，否則 RADIUS 用戶端和 RADIUS 目標會相同。 共用密碼必須符合 NPS 伺服器的 RADIUS 用戶端區段中設定的共用密碼。 
 
 ![Radius 驗證](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
-
-
-
-
 

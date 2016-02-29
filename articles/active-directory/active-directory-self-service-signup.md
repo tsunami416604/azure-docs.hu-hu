@@ -1,5 +1,5 @@
 <properties
-    pageTitle="什麼是 Azure 的自助式註冊？| Microsoft Azure"
+    pageTitle="什麼是 Azure 的自助式註冊？ | Microsoft Azure"
     description="Azure 的自助式註冊、如何管理註冊程序及其作法的概觀。"
     services="active-directory"
     documentationCenter=""
@@ -17,10 +17,9 @@
     ms.author="stevenpo"/>
 
 
-
 # 什麼是 Azure 的自助式註冊？
 
-本主題說明自助式註冊程序 (有時稱為爆紅註冊)，以及如何接管 DNS 網域名稱。
+本主題說明自助式註冊程序 (有時稱為爆紅註冊)，以及如何接管 DNS 網域名稱。  
 
 ## 為何使用自助式註冊？
 
@@ -31,9 +30,9 @@
 
 ## 詞彙和定義
 
-+ **自助式註冊**：這是使用者用以註冊雲端服務的方法，系統會根據其電子郵件網域在 Azure Active Directory 中自動建立身分識別。
-+ **未受管理的 Azure 租用戶**： 這是該身分識別建立所在的目錄。 未受管理的租用戶是沒有全域管理員的目錄。
-+ **電子郵件驗證的使用者**：這是 Azure AD 中的使用者帳戶類型。 在註冊自助式供應項目後自動建立身分識別的使用者，就是所謂的電子郵件驗證的使用者。 電子郵件驗證的使用者是加上 creationmethod=EmailVerified 標記之目錄的一般成員。
++ **自助式註冊**: 這是依據使用者用以註冊雲端服務，自動建立在 Azure Active Directory (AD) 的身分識別會根據其電子郵件網域的方法。
++ **受管理的 Azure 租用戶**: 這是該身分識別建立所在的目錄。 未受管理的租用戶是沒有全域管理員的目錄。
++ **電子郵件驗證的使用者**: 這是 Azure AD 中的使用者帳戶的類型。 在註冊自助式供應項目後自動建立身分識別的使用者，就是所謂的電子郵件驗證的使用者。 電子郵件驗證的使用者是加上 creationmethod=EmailVerified 標記之目錄的一般成員。
 
 ## 使用者體驗
 
@@ -72,13 +71,13 @@
 
 您可能會想要驗證您擁有的網域，因為您在使用者執行自助式註冊後接管未受管理的租用戶，或您可能在將新網域加入至現有的受管理租用戶。 例如，您擁有名為 contoso.com 的網域，而您想要加入名為 contoso.co.uk 或 contoso.uk 的新網域。
 
-## 什麼是網域接管？
+## 什麼是網域接管？  
 
 本節說明如何驗證您擁有的網域。
 
 ### 什麼是網域驗證，以及為何使用？
 
-為了在租用戶上執行作業，Azure AD 會要求您驗證 DNS 網域的擁有權。 網域驗證可讓您宣告租用戶，將自助式租用戶提升為受管理的租用戶，或將自助式租用戶合併到現有受管理的租用戶中。
+為了在租用戶上執行作業，Azure AD 會要求您驗證 DNS 網域的擁有權。  網域驗證可讓您宣告租用戶，將自助式租用戶提升為受管理的租用戶，或將自助式租用戶合併到現有受管理的租用戶中。
 
 ## 網域驗證範例
 
@@ -107,7 +106,7 @@
 
 您不想管理兩個不同的租用戶，所以將 contoso.co.uk 的未受管理租用戶合併到 contoso.com 現有的 IT 受管理租用戶。
 
-外部接管會遵循與內部接管相同的 DNS 驗證程序。 差異是：使用者和服務會重新對應至 IT 受管理的租用戶。
+外部接管會遵循與內部接管相同的 DNS 驗證程序。  差異是：使用者和服務會重新對應至 IT 受管理的租用戶。
 
 #### 執行外部接管的影響為何？
 
@@ -135,9 +134,9 @@
 
 1.  Azure 管理入口網站
 
-    接管是由執行網域新增所觸發。 如果網域已存在租用戶，您將會有執行外部接管的選項。
+    接管是由執行網域新增所觸發。  如果網域已存在租用戶，您將會有執行外部接管的選項。
 
-    使用您的認證登入 Azure 入口網站。 瀏覽至現有的租用戶，然後瀏覽至 [**新增網域**]。
+    使用您的認證登入 Azure 入口網站。  瀏覽至現有的租用戶然後 **新增網域**。
 
 2.  Office 365
 
@@ -147,15 +146,14 @@
 
     下列步驟是使用 Windows PowerShell 執行驗證的必要步驟。
 
-     步驟| 要使用的 Cmdlet
+    步驟    |   要使用的 Cmdlet
     ------- | -------------
-     建立認證物件| Get-Credential
-     連接至 Azure AD| Connect-MsolService
-     取得網域清單| Get-MsolDomain
-     建立挑戰| Get-MsolDomainVerificationDns
-     建立 DNS 記錄| 在您的 DNS 伺服器上執行這項操作
-     驗證挑戰| Confirm-MsolEmailVerifiedDomain
-
+    建立認證物件 | Get-Credential
+    連接至 Azure AD | Connect-MsolService
+    取得網域清單   | Get-MsolDomain
+    建立挑戰  | Get-MsolDomainVerificationDns
+    建立 DNS 記錄   | 在您的 DNS 伺服器上執行這項操作
+    驗證挑戰    | Confirm-MsolEmailVerifiedDomain
 
 例如：
 
@@ -170,7 +168,7 @@
 
 3. 然後執行 Get-MsolDomainVerificationDns Cmdlet 來建立挑戰：
 
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+    Get-msoldomainverificationdns-DomainName *your_domain_name* – 模式 DnsTxtRecord
 
     例如：
 
@@ -188,7 +186,7 @@
 
 6. 執行 onfirm-MsolDomain Cmdlet 來驗證挑戰：
 
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+    Confirm-msolemailverifieddomain DomainName *your_domain_name*
 
     例如：
 
@@ -232,9 +230,8 @@
 
 -  [Azure Cmdlet 參考](https://msdn.microsoft.com/library/azure/jj554330.aspx)
 
--  [Set-msolcompanysettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)
+-  [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)
 
-
-
-[1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png 
+<!--Image references-->
+[1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 

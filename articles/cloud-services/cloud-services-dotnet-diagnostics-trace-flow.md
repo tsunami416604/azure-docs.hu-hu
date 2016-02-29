@@ -18,7 +18,6 @@
 
 
 
-
 # 使用 Azure 診斷追蹤雲端服務應用程式的流程
 
 追蹤是一種方式，可讓您在應用程式執行時加以監視。 您可以使用 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx), ，[System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx), ，和 [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) 類別，以記錄錯誤和記錄檔、 文字檔案，或其他裝置，以便稍後進行分析的應用程式執行的相關資訊。 如需追蹤的詳細資訊，請參閱 [追蹤和檢測應用程式](https://msdn.microsoft.com/library/zs6s4h68.aspx)。
@@ -26,7 +25,7 @@
 
 ## 使用追蹤陳述式和追蹤參數
 
-藉由新增應用程式雲端服務中的實作追蹤 [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) ，應用程式設定，並且在應用程式程式碼進行將 System.Diagnostics.Trace 或 System.Diagnostics.Debug 的呼叫。 將組態檔 *app.config* 用於背景工作角色和 *web.config* 用於 Web 角色。 使用 Visual Studio 範本建立新的託管服務時，Azure 診斷會自動加入至專案，並且 DiagnosticMonitorTraceListener 會加入至您所加入角色的適當組態檔。
+藉由新增應用程式雲端服務中的實作追蹤 [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) ，應用程式設定，並且在應用程式程式碼進行將 System.Diagnostics.Trace 或 System.Diagnostics.Debug 的呼叫。 使用組態檔 *app.config* 背景工作角色和 *web.config* web 角色。 使用 Visual Studio 範本建立新的託管服務時，Azure 診斷會自動加入至專案，並且 DiagnosticMonitorTraceListener 會加入至您所加入角色的適當組態檔。
 
 如需放置追蹤陳述式，請參閱 [How to: 將追蹤陳述式加入應用程式程式碼](https://msdn.microsoft.com/library/zd83saa2.aspx)。
 
@@ -62,8 +61,8 @@ Trace、Debug 和 TraceSource，需要您設定「接聽程式」來收集和記
         </trace>
     </system.diagnostics>
     ```
-    >[AZURE.IMPORTANT] 請確定您有參照 Microsoft.WindowsAzure.Diagnostics 組件的專案參考。 更新上述 xml 中的版本號碼，以和參考的 Microsoft.WindowsAzure.Diagnostics 組件版本相符。 
-
+    >[AZURE.IMPORTANT] 請確定您有 Microsoft.WindowsAzure.Diagnostics 組件的專案參考。 更新上述 xml 中的版本號碼，以和參考的 Microsoft.WindowsAzure.Diagnostics 組件版本相符。 
+    
 3. 儲存組態檔。
 
 如需接聽程式的詳細資訊，請參閱 [追蹤接聽項](https://msdn.microsoft.com/library/4y5y10s7.aspx)。
@@ -73,15 +72,11 @@ Trace、Debug 和 TraceSource，需要您設定「接聽程式」來收集和記
 
 ### 將追蹤陳述式加入至您的程式碼
 
-1. 開啟您的應用程式的原始程式檔。例如， <RoleName>.cs 檔案中的背景工作角色或 web 角色。
+1. 開啟您的應用程式的原始程式檔。 例如， <RoleName>背景工作角色或 web 角色的.cs 檔案。
 2. 新增下列 using 陳述式，如果它已經尚未加入:
     ```
         using System.Diagnostics;
     ```
 3. 在您想要用來擷取應用程式狀態資訊的位置加入 Trace 陳述式。 您可以使用各種方法來格式化 Trace 陳述式的輸出。 如需詳細資訊，請參閱 [How to: 將追蹤陳述式加入應用程式程式碼](https://msdn.microsoft.com/library/zd83saa2.aspx)。
 4. 儲存原始程式檔。
-
-
-
-
 

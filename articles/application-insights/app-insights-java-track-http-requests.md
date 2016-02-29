@@ -14,13 +14,12 @@
     ms.topic="article" 
     ms.date="10/21/2015" 
     ms.author="awills"/>
-
-
+ 
 # 在 Java Web 應用程式中追蹤 HTTP 要求
 
 如果執行 Java Web 應用程式，您可以檢視傳送至您的應用程式的 HTTP 要求相關資訊，例如要求的來源、失敗的要求和回應時間，全都在 Application Insights 入口網站中進行。
 
-安裝 [Application Insights SDK for Java ][java], ，如果您還沒有完成。
+安裝 [Application Insights SDK for Java][java], ，如果您還沒有完成。
 
 
 ## 將程式庫加入至專案
@@ -86,7 +85,7 @@
 
 找到並開啟 ApplicationInsights.xml 檔案，在您的專案，並合併程式碼中的下列程式碼片段 <TelemetryInitializers> 項目。
 
-如果沒有此檔案中的 < TelemetryInitializers > 項目下, 加入一個 <ApplicationInsights> 項目。
+如果沒有此檔案中的 < TelemetryInitializers > 項目，加入下一個 <ApplicationInsights> 項目。
 
     <TelemetryInitializers>
      <Add  type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
@@ -95,6 +94,7 @@
      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
     </TelemetryInitializers>
+
 
 ## 在 Application Insights 中檢視要求資訊
 
@@ -105,19 +105,19 @@
 [概觀] 分頁上會顯示 HTTP 要求資料。 (如果沒有出現，請稍等片刻，然後按一下 [重新整理]。)
 
 ![](./media/app-insights-java-track-http-requests/5-results.png)
+ 
 
-
-逐一點選任何圖表以查看更詳細的度量。
+按一下任何圖表以查看詳細度量。 
 
 ![](./media/app-insights-java-track-http-requests/6-barchart.png)
 
 
-[進一步了解度量。][metrics]
+[深入了解度量。][metrics]
 
-
+ 
 
 而檢視要求的屬性時，您可以查看與它關聯的遙測事件，例如要求和例外狀況。
-
+ 
 ![](./media/app-insights-java-track-http-requests/7-instance.png)
 
 
@@ -125,16 +125,16 @@
 
 ## 後續步驟
 
-* [搜尋事件和記錄 ][diagnostic] 以協助診斷問題。
-* [擷取 java、 Log4J 或 Logback 追蹤 ][javalogs]
+* [搜尋事件和記錄][diagnostic] 以協助診斷問題。
+* [擷取 Java、Log4J 或 Logback 追蹤][javalogs]
 
 
 
+<!--Link references-->
 
+[diagnostic]: app-insights-diagnostic-search.md
+[java]: app-insights-java-get-started.md
+[javalogs]: app-insights-java-trace-logs.md
+[metrics]: app-insights-metrics-explorer.md
 
-
-[diagnostic]: app-insights-diagnostic-search.md 
-[java]: app-insights-java-get-started.md 
-[javalogs]: app-insights-java-trace-logs.md 
-[metrics]: app-insights-metrics-explorer.md 
-
+ 

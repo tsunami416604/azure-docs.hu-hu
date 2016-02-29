@@ -17,13 +17,12 @@
     ms.author="carlrab"/>
 
 
-
 # 將資料庫移轉至 Azure VM 上的 SQL Server
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
 
 
-有多個方法可將內部部署 SQL Server 使用者資料庫移轉至 Azure VM 中 SQL Server。 這篇文章將簡短討論各種方法建議各種案例中，最好的方法，包括 [教學課程](#azure-vm-deployment-wizard-tutorial) 引導您透過使用的 **將 SQL Server 資料庫部署到 Microsoft Azure VM** 精靈。
+有多個方法可將內部部署 SQL Server 使用者資料庫移轉至 Azure VM 中 SQL Server。 這篇文章將簡短討論各種方法建議各種案例中，最好的方法，包括 [教學課程](#azure-vm-deployment-wizard-tutorial) 引導您使用 **將 SQL Server 資料庫部署到 Microsoft Azure VM** 精靈。
 
 ## 主要的移轉方法有哪些？
 
@@ -43,26 +42,27 @@
 為了達到最佳的資料傳輸效能，資料庫檔案移轉至 Azure VM 時使用壓縮的備份檔案通常是最好的方法。 這種方法， [將 SQL Server 資料庫部署到 Microsoft Azure VM 精靈](#azure-vm-deployment-wizard-tutorial) 使用。 當壓縮的資料庫備份檔時小於 1 TB 時，建議的方法是使用此精靈將執行 SQL Server 2005 或更新版本的內部部署使用者資料庫移轉到 SQL Server 2014 或更新版本。
 
 如果因為資料庫備份檔案太大，或您的目的地 SQL Server 執行個體不是 SQL Server 2014 或更新版本而無法使用精靈，則移轉程序會成為手動程序，通常會從資料庫備份開始，接著將資料庫備份複製到 Azure，然後完成資料庫還原。 您也可以將資料庫檔案本身複製到 Azure。 若要將資料庫移轉到 Azure VM，有數種方法可以完成此手動程序。
-> [AZURE.NOTE] 當您從舊版 SQL Server 升級至 SQL Server 2014 或 SQL Server 2016 時，您應該考慮是否需要變更。 我們建議您先解決所有新版本 SQL Server 不支援的功能相依性作為移轉專案的一部分。 如需有關支援的版本和案例的詳細資訊，請參閱 [升級到 SQL Server](https://msdn.microsoft.com/library/bb677622.aspx)。
+
+> [AZURE.NOTE] 當您從舊版的 SQL Server 升級至 SQL Server 2014 或 SQL Server 2016 時，您應該考慮是否需要變更。 我們建議您先解決所有新版本 SQL Server 不支援的功能相依性作為移轉專案的一部分。 如需有關支援的版本和案例的詳細資訊，請參閱 [升級到 SQL Server](https://msdn.microsoft.com/library/bb677622.aspx)。
 
 下表會列出每個主要的移轉方法，並討論何時使用每個方法是最合適的。
 
-| 方法| 來源資料庫版本| 目的地資料庫版本| 來源資料庫備份的大小條件約束| 注意事項|
+| 方法  | 來源資料庫版本  |  目的地資料庫版本 | 來源資料庫備份的大小條件約束  | 注意事項  |
 |---|---|---|---|---|
-| [使用將部署到 Microsoft Azure VM 」 精靈的 SQL Server 資料庫](#azure-vm-deployment-wizard-tutorial)| SQL Server 2005 或更新版本| SQL Server 2014 或更新版本| > 1 TB| 盡可能使用最快速且最簡單的方法來移轉到 Azure 虛擬機器中新的或現有 SQL Server 執行個體|
-| [在內部使用壓縮執行備份，並手動將備份檔案複製到 Azure 虛擬機器](#backup-to-file-and-copy-to-vm-and-restore)| SQL Server 2005 或更新版本| SQL Server 2005 或更新版本| [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/)| 使用時機僅限於當您無法使用此精靈時，例如當目的地資料庫版本早於 SQL Server 2012 SP1 CU2，或資料庫備份大小大於 1 TB (使用 SQL Server 2016 時則為 12.8 TB)|
-| [執行備份至 URL 並還原到 Azure 虛擬機器從 URL](#backup-to-url-and-restore)| SQL Server 2012 SP1 CU2 或更新版本| SQL Server 2012 SP1 CU2 或更新版本| > 1 TB (對於 SQL Server 2016，則為 < 12.8 TB)| 通常使用 [備份至 URL](https://msdn.microsoft.com/library/dn435916.aspx) 是相當於使用精靈] 的效能並不簡單|
-| [卸離，然後將資料和記錄檔複製到 Azure blob 儲存體，然後到 SQL Server Azure 虛擬機器中從 URL 連結](#detach-and-copy-to-url-and-attach-from-url)| SQL Server 2005 或更新版本| SQL Server 2014 或更新版本| [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/)| 使用這個方法，當您計劃 [儲存這些檔案的使用 Azure Blob 儲存體服務](https://msdn.microsoft.com/library/dn385720.aspx) 並將它們附加至 Azure VM，尤其是針對極大的資料庫中執行的 SQL Server|
-| [將內部部署機器轉換成 HYPER-V Vhd 上傳至 Azure Blob 儲存，然後部署新的虛擬機器，使用上傳的 VHD](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm)| SQL Server 2005 或更新版本| SQL Server 2005 或更新版本| [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/)| 使用時機 [將帶您自己的 SQL Server 授權](../data-management-azure-sql-database-and-sql-server-iaas/), 、 移轉的資料庫，您將舊版的 SQL Server 上執行時，或做為相依於其他使用者資料庫和/或系統資料庫的資料庫移轉的一部分一起移轉系統和使用者資料庫。|
-| [寄送硬碟機，使用 Windows 匯入/匯出服務](#ship-hard-drive)| SQL Server 2005 或更新版本| SQL Server 2005 或更新版本| [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/)| 使用 [Windows 匯入/匯出服務](../storage-import-export-service/) 手動複製方法太慢，例如包含極大資料庫時|
+| [使用「將 SQL Server Database 部署到 Microsoft Azure VM」精靈](#azure-vm-deployment-wizard-tutorial) | SQL Server 2005 或更新版本 | SQL Server 2014 或更新版本 | > 1 TB  | 盡可能使用最快速且最簡單的方法來移轉到 Azure 虛擬機器中新的或現有 SQL Server 執行個體 |
+| [使用壓縮執行在內部部署備份，並手動將備份檔案複製到 Azure 虛擬機器](#backup-to-file-and-copy-to-vm-and-restore) | SQL Server 2005 或更新版本 | SQL Server 2005 或更新版本 | [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | 使用時機僅限於當您無法使用此精靈時，例如當目的地資料庫版本早於 SQL Server 2012 SP1 CU2，或資料庫備份大小大於 1 TB (使用 SQL Server 2016 時則為 12.8 TB) |
+| [執行備份至 URL 並從 URL 還原到 Azure 虛擬機器](#backup-to-url-and-restore) | SQL Server 2012 SP1 CU2 或更新版本 | SQL Server 2012 SP1 CU2 或更新版本 | > 1 TB (對於 SQL Server 2016，則為 < 12.8 TB) | 通常使用 [備份至 URL](https://msdn.microsoft.com/library/dn435916.aspx) 是相當於使用精靈] 的效能並不簡單 |
+| [中斷連結並將資料和記錄檔複製到 Azure blob 儲存體，然後從 URL 連結至 Azure 虛擬機器中的 SQL Server](#detach-and-copy-to-url-and-attach-from-url) | SQL Server 2005 或更新版本 | SQL Server 2014 或更新版本 | [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | 使用這個方法，當您計劃 [儲存這些檔案的使用 Azure Blob 儲存體服務](https://msdn.microsoft.com/library/dn385720.aspx) 並將它們附加至 Azure VM，尤其是針對極大的資料庫中執行的 SQL Server |
+| [將內部部署機器轉換為 Hyper-V VHD，接著上傳至 Azure Blob 儲存體，然後使用上傳的 VHD 部署新的虛擬機器](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) | SQL Server 2005 或更新版本 | SQL Server 2005 或更新版本 | [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | 使用時機 [將帶您自己的 SQL Server 授權](../data-management-azure-sql-database-and-sql-server-iaas/), 、 移轉的資料庫，您將舊版的 SQL Server 上執行時，或做為相依於其他使用者資料庫和/或系統資料庫的資料庫移轉的一部分一起移轉系統和使用者資料庫。 |
+| [使用 Windows 匯入/匯出服務寄送硬碟機](#ship-hard-drive) | SQL Server 2005 或更新版本 | SQL Server 2005 或更新版本 | [Azure VM 儲存體限制](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | 使用 [Windows 匯入/匯出服務](../storage-import-export-service/) 手動複製方法太慢，例如包含極大資料庫時 |
 
 ## Azure VM 部署精靈教學課程
 
-使用 Microsoft SQL Server Management Studio 中的「將 SQL Server Database 部署到 Microsoft Azure VM」****精靈，將 SQL Server 2005、SQL Server 2008、SQL Server 2008 R2、SQL Server 2012、SQL Server 2014 或 SQL Server 2016 內部部署使用者資料庫 (最多 1 TB) 移轉到 Azure 虛擬機器中的 SQL Server 2014 或 SQL Server 2016。 使用此精靈將使用者資料庫移轉到現有的 Azure 虛擬機器，或使用移轉程序期間由精靈所建立 SQL Server 的 Azure VM。 當您將資料庫移轉到更新版本的 SQL Server 時，資料庫會自動在程序期間進行升級。
+使用 **部署到 Microsoft Azure VM 的 SQL Server 資料庫** 精靈在 Microsoft SQL Server Management Studio 移轉 SQL Server 2005、 SQL Server 2008、 SQL Server 2008 R2、 SQL Server 2012、 SQL Server 2014 或 SQL Server 2016 的內部部署使用者資料庫 (多達 1 TB) 複製到 SQL Server 2014 或 SQL Server 2016 Azure 的虛擬機器中。 使用此精靈將使用者資料庫移轉到現有的 Azure 虛擬機器，或使用移轉程序期間由精靈所建立 SQL Server 的 Azure VM。 當您將資料庫移轉到更新版本的 SQL Server 時，資料庫會自動在程序期間進行升級。
 
 ### 取得「將 SQL Server Database 部署到 Microsoft Azure VM」精靈的最新版本
 
-使用最新版本的 Microsoft SQL Server Management Studio for SQL Server，以確定您已擁有「將 SQL Server Database 部署到 Microsoft Azure VM」****精靈的最新版本。 此精靈的最新版本會併入 Azure 傳統入口網站的最新更新，且支援資源庫中最新的 Azure VM 映像 (較舊版本的精靈可能無法運作)。 若要取得最新版本的 Microsoft SQL Server Management Studio for SQL Server [下載](http://go.microsoft.com/fwlink/?LinkId=616025) 並將它安裝在用戶端電腦連線到您規劃移轉，網際網路的資料庫。
+使用最新版的 Microsoft SQL Server Management Studio for SQL Server，以確保您擁有最新版的 **將 SQL Server 資料庫部署到 Microsoft Azure VM** 精靈。 此精靈的最新版本會併入 Azure 傳統入口網站的最新更新，且支援資源庫中最新的 Azure VM 映像 (較舊版本的精靈可能無法運作)。 若要取得最新版本的 Microsoft SQL Server Management Studio for SQL Server [下載](http://go.microsoft.com/fwlink/?LinkId=616025) 並將它安裝在用戶端電腦連線到您規劃移轉，網際網路的資料庫。
 
 ### 設定現有的 Azure 虛擬機器和 SQL Server 執行個體 (如果適用)
 
@@ -86,7 +86,7 @@
 
     ![來源設定](./media/virtual-machines-migrate-onpremises-database/source-settings.png)
 
-6. 按一下 [下一步]。
+6. 按 [下一步]。
 7. 在 [Microsoft Azure 登入]頁面上，按一下 [登入] 並登入至您的 Azure 帳戶。
 8. 選取您要使用的訂用帳戶，然後按一下 [下一步]。
 
@@ -103,12 +103,12 @@
  - 指定現有的雲端服務名稱和新的虛擬機器名稱，以在現有的雲端服務中建立新的 Azure 虛擬機器。 僅指定 SQL Server 2014 或 SQL Server 2016 資源庫映像。
  - 指定現有的雲端服務名稱和虛擬機器名稱來使用現有的 Azure 虛擬機器。 這必須是使用 SQL Server 2014 或 SQL Server 2016 資源庫映像所建置的映像。
 
-        ![Deploymnent 設定](./media/virtual-machines-migrate-onpremises-database/deployment-settings.png)
+        ![Deploymnent Settings](./media/virtual-machines-migrate-onpremises-database/deployment-settings.png)
 
 10. 按一下 [設定]
   - 如果您已指定現有的雲端服務名稱和虛擬機器名稱，系統會提示您提供使用者名稱和密碼。
 
-        ![Azure 機器設定](./media/virtual-machines-migrate-onpremises-database/azure-machine-settings.png)
+        ![Azure machine settings](./media/virtual-machines-migrate-onpremises-database/azure-machine-settings.png)
 
     - 如果您指定新的虛擬機器名稱，系統會提示您從資源庫映像清單中選取映像，並提供下列資訊：
       - 映像 – 僅選取 SQL Server 2014 或 SQL Server 2016
@@ -167,8 +167,4 @@
 ## 後續步驟
 
 如需 Azure 虛擬機器上執行 SQL Server 的詳細資訊，請參閱 [SQL Server 的 Azure 虛擬機器總覽](virtual-machines-sql-server-infrastructure-services.md)。
-
-
-
-
 

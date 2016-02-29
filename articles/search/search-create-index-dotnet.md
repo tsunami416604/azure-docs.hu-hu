@@ -17,19 +17,16 @@
     ms.date="11/09/2015"
     ms.author="heidist"/>
 
-
 # 建立使用.NET 的 Azure 搜尋服務索引
-
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-an-index.md)
-- [Portal](search-create-index-portal.md)
+- [概觀](search-what-is-an-index.md)
+- [入口網站](search-create-index-portal.md)
 - [.NET](search-create-index-dotnet.md)
 - [REST](search-create-index-rest-api.md)
 
-
 本文將說明如何建立索引使用 [Azure 搜尋服務.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)。 下列內容是子集 [如何使用.NET 應用程式的 Azure 搜尋服務](search-howto-dotnet-sdk.md)。 請參閱上層文章中的端對端步驟。
 
-若要建立索引的先決條件包括具有先前建立的搜尋服務，通常透過連接 `SearchServiceClient`。 確保無阻力的重新部署的最佳作法是刪除現有的同名索引 (若已存在)。
+建立索引的必要條件包括先前已建立您的搜尋服務連線，通常是透過 `SearchServiceClient` 完成。 確保無阻力的重新部署的最佳作法是刪除現有的同名索引 (若已存在)。 
 
 假設有名為  'hotels' 的索引，您可以為此建構一個方法，如下所示：
 
@@ -41,7 +38,7 @@
         }
     }
 
-這個方法會使用給定 `SearchServiceClient` 若要查看是否有索引，如果是的話就刪除它。
+此方法使用指定的 `SearchServiceClient` 查看索引是否存在，如果存在，就加以刪除。
 
 若要建立新的 "hotels" 索引，請建構如下所示的方法：
 
@@ -63,12 +60,8 @@
                 new Field("location", DataType.GeographyPoint)              { IsFilterable = true, IsSortable = true }
             }
         };
-    
+
         serviceClient.Indexes.Create(definition);
     }
 
-這個方法會建立新 `索引` 物件的清單 `欄位` 定義新索引的結構描述的物件。 每個欄位均有一個名稱、資料類型和一些屬性，以用於定義欄位的搜尋行為。 除了欄位之外，您還可以新增評分設定檔、建議工具或 CORS 選項到 Index (基於簡化目的，範例已省略這些選項)。 您可以找到更多資訊 Index 物件以及其組成部分 SDK 參考上 [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.index_members.aspx), 、 以及如下所示 [Azure 搜尋服務 REST API 參考](https://msdn.microsoft.com/library/azure/dn798935.aspx)。
-
-
-
-
+此方法會以定義新索引結構描述的 `Field` 物件清單，建立新的 `Index` 物件。 每個欄位均有一個名稱、資料類型和一些屬性，以用於定義欄位的搜尋行為。 除了欄位之外，您還可以新增評分設定檔、建議工具或 CORS 選項到 Index (基於簡化目的，範例已省略這些選項)。 您可以找到更多資訊 Index 物件以及其組成部分 SDK 參考上 [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.index_members.aspx), 、 以及如下所示 [Azure 搜尋服務 REST API 參考](https://msdn.microsoft.com/library/azure/dn798935.aspx)。

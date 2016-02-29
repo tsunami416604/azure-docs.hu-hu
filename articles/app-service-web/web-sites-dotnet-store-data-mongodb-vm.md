@@ -18,65 +18,65 @@
     ms.author="cephalin"/>
 
 
-
 # 在連線至在虛擬機器上執行之 MongoDB 的 Azure 中建立 Web 應用程式
 
-使用 Git，即可將 ASP.NET 應用程式部署至 Azure App Service Web Apps。 在本教學課程中，您將建置簡易的前端 ASP.NET MVC 工作清單應用程式，以連接至在 Azure 的虛擬機器上執行的 MongoDB 資料庫。 [MongoDB ][mongodb] 是受歡迎的開放原始碼、 高效能的 NoSQL 資料庫。 在部署電腦上執行和測試 ASP.NET 應用程式之後，您將使用 Git 將此應用程式上傳至 App Service Web Apps。
+使用 Git，即可將 ASP.NET 應用程式部署至 Azure App Service Web Apps。 在本教學課程中，您將建置簡易的前端 ASP.NET MVC 工作清單應用程式，以連接至在 Azure 的虛擬機器上執行的 MongoDB 資料庫。  [MongoDB][MongoDB] 是受歡迎的開放原始碼、 高效能的 NoSQL 資料庫。 在部署電腦上執行和測試 ASP.NET 應用程式之後，您將使用 Git 將此應用程式上傳至 App Service Web Apps。
+
 >[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
 
 
-## 背景知識
+## 背景知識 ##
 
 下列知識雖然並非必要，但是對本教學課程很實用：
 
-* MongoDB 的 C# 驅動程式。 如需有關如何開發 C# 應用程式針對 MongoDB 的詳細資訊，請參閱 MongoDB [CSharp Language Center ][mongoc#langcenter]。
-* ASP .NET Web 應用程式架構。 您可以了解在 [ASP.net website][asp.net]。
-* ASP .NET MVC Web 應用程式架構。 您可以了解在 [ASP.NET MVC 網站 ][mvcwebsite]。
-* Azure。 您可以開始在讀取 [Azure ][windowsazure]。
+* MongoDB 的 C# 驅動程式。 如需有關如何開發 C# 應用程式針對 MongoDB 的詳細資訊，請參閱 MongoDB [CSharp Language Center][MongoC#LangCenter]。 
+* ASP .NET Web 應用程式架構。 您可以了解在 [ASP.net 網站][ASP.NET]。
+* ASP .NET MVC Web 應用程式架構。 您可以了解在 [ASP.NET MVC 網站][MVCWebSite]。
+* Azure。 您可以開始在讀取 [Azure][WindowsAzure]。
 
-## 必要條件
+## 先決條件 ##
 
-- [Visual Studio Express 2013 for Web ][vseweb] 或 [Visual Studio 2013 ][vsult]
-- [Azure SDK for.NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
+- [Visual Studio Express 2013 for Web] [VSEWeb] 或 [Visual Studio 2013] [VSUlt]
+- [Azure SDK for .NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 - 使用中的 Microsoft Azure 訂用帳戶
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-<a id="virtualmachine"></a>
-## 建立虛擬機器和安裝 MongoDB
+<a id="virtualmachine"></a> 
+## 建立虛擬機器和安裝 MongoDB ##
 
 本教學課程假設您已在 Azure 中建立虛擬機器。 建立虛擬機器之後，您必須在這部虛擬機器上安裝 MongoDB：
 
-* 若要建立 Windows 虛擬機器和安裝 MongoDB，請參閱 [Azure ][installmongoonwindowsvm]。
-* 或者，若要建立 Linux 虛擬機器和安裝 MongoDB，請參閱 [Azure ][installmongooncentoslinuxvm]。
+* 若要建立 Windows 虛擬機器和安裝 MongoDB，請參閱 [在 Azure 中執行 Windows Server 的虛擬機器上安裝 MongoDB][InstallMongoOnWindowsVM]。
+* 或者，若要建立 Linux 虛擬機器和安裝 MongoDB，請參閱 [在 Azure 中執行 CentOS Linux 的虛擬機器上安裝 MongoDB][InstallMongoOnCentOSLinuxVM]。
 
-在 Azure 中建立虛擬機器並安裝 MongoDB 之後，請務必記住虛擬機器的 DNS 名稱 (例如，"testlinuxvm.cloudapp.net") 以及您在端點中指定之 MongoDB 的外部連接埠。 稍後在教學課程中需要此資訊。
+在 Azure 中建立虛擬機器並安裝 MongoDB 之後，請務必記住虛擬機器的 DNS 名稱 (例如，"testlinuxvm.cloudapp.net") 以及您在端點中指定之 MongoDB 的外部連接埠。  稍後在教學課程中需要此資訊。
 
 <a id="createapp"></a>
-## 建立應用程式
+## 建立應用程式 ##
 
 在這一節中，您將使用 Visual Studio 建立名為 "My Task List" 的 ASP.NET 應用程式，並執行初始部署至 Azure App Service Web Apps。 您會在本機執行此應用程式，但該應用程式將會連接至 Azure 上的虛擬機器並使用您在那裡建立的 MongoDB 執行個體。
 
-1. 在 Visual Studio 中按一下 [新增專案]****。
+1. 在 Visual Studio 中，按一下 [ **新的專案**。
 
-    ![Start Page New Project][startpagenewproject]
+    ![Start Page New Project][StartPageNewProject]
 
-1. 在 [新增專案]**** 視窗的左窗格中，選取 [Visual C#]****，然後選取 [Web]****。 在中間窗格中，選取 **ASP.NET Web 應用程式**。 在底部將您的專案命名為 "MyTaskListApp"，然後按一下 [確定]****。
+1. 在 **新的專案** ] 視窗中的，在左窗格中，選取 **Visual C#**, ，然後選取 **Web**。 在中間窗格中，選取 **ASP.NET Web 應用程式**。 在底部，將您的專案"為 MyTaskListApp"，再按一下 **確定**。
 
-    ![New Project Dialog][newprojectmytasklistapp]
+    ![新專案對話][NewProjectMyTaskListApp]
 
-1. 在 [新增 ASP.NET 專案]**** 對話方塊中，選取 [MVC]****，然後按一下 [確定]****。
+1. 在 **新增 ASP.NET 專案** 對話方塊中，選取 **MVC**, ，然後按一下 [ **確定**。
 
-    ![Select MVC Template][vs2013selectmvctemplate]
+    ![Select MVC Template][VS2013SelectMVCTemplate]
 
 1. 如果您尚未登入 Microsoft Azure，系統將提示您登入。 請依照提示登入 Azure。
-2. 當您登入之後，即可開始設定您的 App Service Web 應用程式。 指定 **Web 應用程式名稱**、**App Service 計劃**、**資源群組**以及**區域**，然後按一下 [**建立**]。
+2. 當您登入之後，即可開始設定您的 App Service Web 應用程式。 指定 **Web 應用程式名稱**, ，**應用程式服務方案**, ，**資源群組**, ，和 **區域**, ，然後按一下 [ **建立**。
 
     ![](./media/web-sites-dotnet-store-data-mongodb-vm/VSConfigureWebAppSettings.png)
 
-1. 當專案建立完成之後，如 [Azure App Service 活動]**** 視窗所示，等待 Web 應用程式在 Azure App Service 中建立。 然後，按一下 [立即將 MyTaskListApp 發佈至此 Web 應用程式]****。
+1. 專案建立完成後，等待 web 應用程式所示，在 Azure App Service 中建立 **Azure App Service 活動** 視窗。 然後按一下 [ **MyTaskListApp 發佈至此 Web 應用程式現在**。
 
-1. 按一下 [發行]****。
+1. 按一下 [ **發行**。
 
     ![](./media/web-sites-dotnet-store-data-mongodb-vm/VSPublishWeb.png)
 
@@ -88,27 +88,26 @@ MongoDB 透過驅動程式提供 C# 應用程式的用戶端支援，您必須�
 
 若要安裝 MongoDB C# 驅動程式：
 
-1. 在 [方案總管]**** 中，以滑鼠右鍵按一下 **MyTaskListApp** 專案並選取 [管理 NuGet 封裝]****。
+1. 在 **方案總管] 中**, ，以滑鼠右鍵按一下 **MyTaskListApp** 專案，然後選取 **管理 nuget 封裝**。
 
-    ![Manage NuGet Packages][vs2013managenugetpackages]
+    ![Manage NuGet Packages][VS2013ManageNuGetPackages]
 
-2. 在 [Manage NuGet Packages]**** 視窗的左窗格中，按一下 [線上]****。 在右邊的 [**線上搜尋**] 方塊中，輸入「mongodb.driver」。 按一下 [安裝]**** 以安裝驅動程式。
+2. 在 **管理 NuGet 封裝** ] 視窗中的，在左窗格中，按一下 [ **線上**。 在 **線上搜尋** 右邊方塊中，輸入 「 mongodb.driver 」。  按一下 [ **安裝** 安裝驅動程式。
 
-    ![Search for MongoDB C# Driver][searchformongodbcsharpdriver]
+    ![Search for MongoDB C# Driver][SearchforMongoDBCSharpDriver]
 
-3. 按一下 [我接受]**** 以接受 10gen, Inc. 授權條款。
+3. 按一下 [ **我接受** 以接受 10gen，Inc.授權條款。
 
-4. 在安裝驅動程式後，按一下 [關閉]****。
-    ![MongoDB C# Driver Installed][mongodbcsharpdriverinstalled]
+4. 按一下 [ **關閉** 驅動程式安裝之後。
+    ![MongoDB C# 驅動程式安裝][MongoDBCsharpDriverInstalled]
 
 
-MongoDB C# 驅動程式現已安裝。 參考 **MongoDB.Bson**, ，**MongoDB.Driver**, ，和 **MongoDB.Driver.Core**  程式庫已加入至專案。
+MongoDB C# 驅動程式現已安裝。  參考 **MongoDB.Bson**, ，**MongoDB.Driver**, ，和 **MongoDB.Driver.Core**  程式庫已加入至專案。
 
-![MongoDB C# Driver References][mongodbcsharpdriverreferences]
+![MongoDB C# Driver References][MongoDBCSharpDriverReferences]
 
-## 新增模型
-
-在 [方案總管]**** 中，於 *Models* 資料夾上按一下滑鼠右鍵，然後 [新增]**** 一個新 [類別]****，將其命名為 *TaskModel.cs*。 在 *TaskModel.cs*，以下列程式碼取代現有程式碼：
+## 新增模型 ##
+在 **方案總管] 中**, ，以滑鼠右鍵按一下 *模型* 資料夾和 **新增** 新 **類別** ，並將它 *TaskModel.cs*。  在 *TaskModel.cs*, ，以下列程式碼取代現有的程式碼:
 
     using System;
     using System.Collections.Generic;
@@ -140,9 +139,8 @@ MongoDB C# 驅動程式現已安裝。 參考 **MongoDB.Bson**, ，**MongoDB.Dri
         }
     }
 
-## 新增資料存取層
-
-在 [方案總管]**** 中，於 *MyTaskListApp* 專案上按一下滑鼠右鍵，然後 [新增]**** 一個名為 **DAL** 的 [新資料夾]**。 於 *DAL* 資料夾上按一下滑鼠右鍵，然後 [新增]**** 一個新 [類別]****。 將類名命名為 *Dal.cs*。 在 *Dal.cs*，以下列程式碼取代現有程式碼：
+## 新增資料存取層 ##
+在 **方案總管] 中**, ，以滑鼠右鍵按一下 *MyTaskListApp* 專案和 **新增**  **新資料夾** 名為 *DAL*。  以滑鼠右鍵按一下 *DAL* 資料夾和 **新增** 新 **類別**。 類別檔案命名為 *Dal.cs*。  在 *Dal.cs*, ，以下列程式碼取代現有的程式碼:
 
     using System;
     using System.Collections.Generic;
@@ -249,9 +247,8 @@ MongoDB C# 驅動程式現已安裝。 參考 **MongoDB.Bson**, ，**MongoDB.Dri
         }
     }
 
-## 新增控制器
-
-在 [方案總管]** 中開啟 **Controllers\HomeController.cs** 檔案，然後以下列程式碼取代現有程式碼：
+## 新增控制器 ##
+開啟 *controllers\ homecontroller.cs* 檔案中 **方案總管] 中** 和現有的程式碼取代為下列:
 
     using System;
     using System.Collections.Generic;
@@ -331,14 +328,13 @@ MongoDB C# 驅動程式現已安裝。 參考 **MongoDB.Bson**, ，**MongoDB.Dri
         }
     }
 
-## 設定樣式
-
+## 設定樣式 ##
 若要變更頁面頂端的標題，請開啟 *Views\Shared\\_Layout.cshtml* 檔案中 **方案總管] 中** 並取代"Application name"導覽列中，以"My Task List Application"使它看起來像這樣:
 
     @Html.ActionLink("My Task List Application", "Index", "Home", null, new { @class = "navbar-brand" })
 
-若要設定 Task List 功能表，請開啟 *\Views\Home\Index.cshtml* 檔案並以下列程式碼取代現有程式碼：
-
+若要設定 Task List 功能表，開啟 *\Views\Home\Index.cshtml* 檔案並以下列程式碼取代現有的程式碼:
+    
     @model IEnumerable<MyTaskListApp.Models.MyTask>
     
     @{
@@ -352,7 +348,7 @@ MongoDB C# 驅動程式現已安裝。 參考 **MongoDB.Bson**, ，**MongoDB.Dri
             <th>Task</th>
             <th>Category</th>
             <th>Date</th>
-    
+            
         </tr>
     
     @foreach (var item in Model) {
@@ -366,14 +362,15 @@ MongoDB C# 驅動程式現已安裝。 參考 **MongoDB.Bson**, ，**MongoDB.Dri
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
-    
+            
         </tr>
     }
     
     </table>
     <div>  @Html.Partial("Create", new MyTaskListApp.Models.MyTask())</div>
 
-若要新增建立新工作的能力，以滑鼠右鍵按一下 *Views\Home\\* 資料夾和 **新增**  **檢視**。 將檢視命名為 *Create*。 使用下列程式碼來取代此程式碼：
+
+若要新增建立新工作的能力，以滑鼠右鍵按一下 *Views\Home\\* 資料夾和 **新增**  **檢視**。  將檢視命名為 *建立*。 使用下列程式碼來取代此程式碼：
 
     @model MyTaskListApp.Models.MyTask
     
@@ -416,17 +413,16 @@ MongoDB C# 驅動程式現已安裝。 參考 **MongoDB.Bson**, ，**MongoDB.Dri
         </fieldset>
     }
 
-[方案總管]**** 看起來如下所示：
+**方案總管] 中** 應該看起來像這樣:
 
-![方案總管][solutionexplorermytasklistapp]
+![Solution Explorer][SolutionExplorerMyTaskListApp]
 
-## 設定 MongoDB 連接字串
-
-在 [方案總管]**** 中開啟 *DAL/Dal.cs* 檔案。 尋找下列程式碼行：
+## 設定 MongoDB 連接字串 ##
+在 **方案總管] 中**, ，開啟 *dal/Dal.cs* 檔案。 尋找下列程式碼行：
 
     private string connectionString = "mongodb://<vm-dns-name>";
 
-取代 `< vm 的 dns 名稱的 >` 與執行您在中建立的 MongoDB 的虛擬機器的 DNS 名稱 [建立虛擬機器和安裝 MongoDB []][] 本教學課程的步驟。若要尋找虛擬機器的 DNS 名稱，請移至 Azure 入口網站，選取 [虛擬機器]****，然後尋找 [DNS 名稱]****。
+取代 `<vm-dns-name>` 執行 MongoDB 之虛擬機器的 DNS 名稱與您在 [建立虛擬機器和安裝 MongoDB] [] 本教學課程步驟。  若要尋找您的虛擬機器的 DNS 名稱，請移至 Azure 入口網站中，選取 **虛擬機器**, ，並尋找 **DNS 名稱**。
 
 如果虛擬機器的 DNS 名稱為 "testlinuxvm.cloudapp.net"，且 MongoDB 是在預設連接埠 27017 上接聽，則連接字串程式碼行如下所示：
 
@@ -436,71 +432,72 @@ MongoDB C# 驅動程式現已安裝。 參考 **MongoDB.Bson**, ，**MongoDB.Dri
 
     private string connectionString = "mongodb://testlinuxvm.cloudapp.net:12345";
 
-如需 MongoDB 連接字串的詳細資訊，請參閱 [連線 ][mongoconnectionstrings]。
+如需 MongoDB 連接字串的詳細資訊，請參閱 [連線][MongoConnectionStrings]。
 
-## 測試本機部署
+## 測試本機部署 ##
 
-若要在部署電腦上執行您的應用程式，請選取 [偵錯]**** 功能表中的 [開始偵錯]**** 或按 **F5**。 IIS Express 會啟動，瀏覽器會開啟並啟動應用程式的首頁。 您可以新增一項工作，該工作將會新增至在 Azure 中您的虛擬機器上執行的 MongoDB 資料庫。
+若要執行您的應用程式開發電腦上，選取 **開始偵錯** 從 **偵錯** 功能表或按 **F5**。 IIS Express 會啟動，瀏覽器會開啟並啟動應用程式的首頁。  您可以新增一項工作，該工作將會新增至在 Azure 中您的虛擬機器上執行的 MongoDB 資料庫。
 
-![My Task List Application][tasklistappblank]
+![My Task List Application][TaskListAppBlank]
 
 ## 發佈至 Azure App Service Web Apps
 
 在本節中，您會將您的變更發佈至 Azure App Service Web Apps。
 
-1. 在 [方案總管] 中，再次以滑鼠右鍵按一下 **MyTaskListApp**，然後按一下 [發佈] ****。
-2. 按一下 [發行]****。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 **MyTaskListApp** 再次按一下 **發行**。
+2. 按一下 [ **發行**。
 
     現在，您應該會看到您的 Web 應用程式在 Azure App Service 中執行，並且存取 Azure Virtual Machines 中的 MongoDB 資料庫。
 
-## 摘要
+## 摘要 ##
 
 您現在已成功將 ASP.NET 應用程式部署至 Azure App Service Web Apps。 若要檢視 Web 應用程式：
 
 1. 登入 Azure 入口網站。
-2. 按一下 [Web 應用程式]****。
-3. 在 [Web Apps]**** 清單中選取您的 Web 應用程式。
+2. 按一下 [ **Web 應用程式**。 
+3. 選取您的 web 應用程式中 **Web 應用程式** 清單。
 
-如需有關如何開發 C# 應用程式針對 MongoDB 的詳細資訊，請參閱 [CSharp Language Center ][mongoc#langcenter]。
+如需有關如何開發 C# 應用程式針對 MongoDB 的詳細資訊，請參閱 [CSharp Language Center][MongoC#LangCenter]。 
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
+ 
+
+<!-- HYPERLINKS -->
+
+[AzurePortal]: http://manage.windowsazure.com
+[WindowsAzure]: http://www.windowsazure.com
+[MongoC#LangCenter]: http://docs.mongodb.org/ecosystem/drivers/csharp/
+[MVCWebSite]: http://www.asp.net/mvc
+[ASP.NET]: http://www.asp.net/
+[MongoConnectionStrings]: http://www.mongodb.org/display/DOCS/Connections
+[MongoDB]: http://www.mongodb.org
+[InstallMongoOnCentOSLinuxVM]: /manage/linux/common-tasks/mongodb-on-a-linux-vm/
+[InstallMongoOnWindowsVM]: /manage/windows/common-tasks/install-mongodb/
+[VSEWeb]: http://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express
+[VSUlt]: http://www.microsoft.com/visualstudio/eng/2013-downloads
+
+<!-- IMAGES -->
 
 
+[StartPageNewProject]: ./media/web-sites-dotnet-store-data-mongodb-vm/NewProject.png
+[NewProjectMyTaskListApp]: ./media/web-sites-dotnet-store-data-mongodb-vm/NewProjectMyTaskListApp.png
+[VS2013SelectMVCTemplate]: ./media/web-sites-dotnet-store-data-mongodb-vm/VS2013SelectMVCTemplate.png
+[VS2013DefaultMVCApplication]: ./media/web-sites-dotnet-store-data-mongodb-vm/VS2013DefaultMVCApplication.png
+[VS2013ManageNuGetPackages]: ./media/web-sites-dotnet-store-data-mongodb-vm/VS2013ManageNuGetPackages.png
+[SearchforMongoDBCSharpDriver]: ./media/web-sites-dotnet-store-data-mongodb-vm/SearchforMongoDBCSharpDriver.png
+[MongoDBCsharpDriverInstalled]: ./media/web-sites-dotnet-store-data-mongodb-vm/MongoDBCsharpDriverInstalled.png
+[MongoDBCSharpDriverReferences]: ./media/web-sites-dotnet-store-data-mongodb-vm/MongoDBCSharpDriverReferences.png
+[SolutionExplorerMyTaskListApp]: ./media/web-sites-dotnet-store-data-mongodb-vm/SolutionExplorerMyTaskListApp.png
+[TaskListAppBlank]: ./media/web-sites-dotnet-store-data-mongodb-vm/TaskListAppBlank.png
+[WAWSCreateWebSite]: ./media/web-sites-dotnet-store-data-mongodb-vm/WAWSCreateWebSite.png
+[WAWSDashboardMyTaskListApp]: ./media/web-sites-dotnet-store-data-mongodb-vm/WAWSDashboardMyTaskListApp.png
+[Image9]: ./media/web-sites-dotnet-store-data-mongodb-vm/RepoReady.png
+[Image10]: ./media/web-sites-dotnet-store-data-mongodb-vm/GitInstructions.png
+[Image11]: ./media/web-sites-dotnet-store-data-mongodb-vm/GitDeploymentComplete.png
 
-
-
-
-
-
-
-[azureportal]: http://manage.windowsazure.com 
-[windowsazure]: http://www.windowsazure.com 
-[mongoc#langcenter]: http://docs.mongodb.org/ecosystem/drivers/csharp/ 
-[mvcwebsite]: http://www.asp.net/mvc 
-[asp.net]: http://www.asp.net/ 
-[mongoconnectionstrings]: http://www.mongodb.org/display/DOCS/Connections 
-[mongodb]: http://www.mongodb.org 
-[installmongooncentoslinuxvm]: /manage/linux/common-tasks/mongodb-on-a-linux-vm/ 
-[installmongoonwindowsvm]: /manage/windows/common-tasks/install-mongodb/ 
-[vseweb]: http://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express 
-[vsult]: http://www.microsoft.com/visualstudio/eng/2013-downloads 
-[startpagenewproject]: ./media/web-sites-dotnet-store-data-mongodb-vm/NewProject.png 
-[newprojectmytasklistapp]: ./media/web-sites-dotnet-store-data-mongodb-vm/NewProjectMyTaskListApp.png 
-[vs2013selectmvctemplate]: ./media/web-sites-dotnet-store-data-mongodb-vm/VS2013SelectMVCTemplate.png 
-[vs2013defaultmvcapplication]: ./media/web-sites-dotnet-store-data-mongodb-vm/VS2013DefaultMVCApplication.png 
-[vs2013managenugetpackages]: ./media/web-sites-dotnet-store-data-mongodb-vm/VS2013ManageNuGetPackages.png 
-[searchformongodbcsharpdriver]: ./media/web-sites-dotnet-store-data-mongodb-vm/SearchforMongoDBCSharpDriver.png 
-[mongodbcsharpdriverinstalled]: ./media/web-sites-dotnet-store-data-mongodb-vm/MongoDBCsharpDriverInstalled.png 
-[mongodbcsharpdriverreferences]: ./media/web-sites-dotnet-store-data-mongodb-vm/MongoDBCSharpDriverReferences.png 
-[solutionexplorermytasklistapp]: ./media/web-sites-dotnet-store-data-mongodb-vm/SolutionExplorerMyTaskListApp.png 
-[tasklistappblank]: ./media/web-sites-dotnet-store-data-mongodb-vm/TaskListAppBlank.png 
-[wawscreatewebsite]: ./media/web-sites-dotnet-store-data-mongodb-vm/WAWSCreateWebSite.png 
-[wawsdashboardmytasklistapp]: ./media/web-sites-dotnet-store-data-mongodb-vm/WAWSDashboardMyTaskListApp.png 
-[image9]: ./media/web-sites-dotnet-store-data-mongodb-vm/RepoReady.png 
-[image10]: ./media/web-sites-dotnet-store-data-mongodb-vm/GitInstructions.png 
-[image11]: ./media/web-sites-dotnet-store-data-mongodb-vm/GitDeploymentComplete.png 
-[create a virtual machine and install mongodb]: #virtualmachine 
-[create and run the my task list asp.net application on your development computer]: #createapp 
-[create an azure web site]: #createwebsite 
-[deploy the asp.net application to the web site using git]: #deployapp 
-
+<!-- TOC BOOKMARKS -->
+[Create a virtual machine and install MongoDB]: #virtualmachine
+[Create and run the My Task List ASP.NET application on your development computer]: #createapp
+[Create an Azure web site]: #createwebsite
+[Deploy the ASP.NET application to the web site using Git]: #deployapp
+ 

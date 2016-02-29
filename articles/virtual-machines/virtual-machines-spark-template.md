@@ -17,7 +17,6 @@
     ms.date="05/16/2015"
     ms.author="paolosalvatori"/>
 
-
 # 在 Ubuntu 上使用資源管理員範本的 Spark
 
 Apache Spark 是進行大規模資料處理的快速引擎。 Spark 有支援循環資料流程和記憶體內部計算的進階 DAG 執行引擎，而且它可以存取不同的資料來源，包括 HDFS、Spark、HBase 和 S3。
@@ -27,9 +26,9 @@ Apache Spark 是進行大規模資料處理的快速引擎。 Spark 有支援循
 
 除了在 Mesos 或 YARN 叢集管理員上執行，Spark 也提供簡單的獨立部署模式。 本教學課程將引導您了解如何使用範例 Azure 資源管理員範本部署到 Ubuntu Vm 上的 Spark 叢集 [PowerShell](../powershell-install-configure.md) 或 [Azure CLI](../xplat-cli-install.md)。
 
-這個範本會在 Ubuntu 虛擬機器上部署 Spark 叢集。 這個範本也會佈建安裝所需的儲存體帳戶、虛擬網路、可用性設定組、公用 IP 位址和網路介面。 Spark 叢集是建立在子網路後面，因此，不會有公用 IP 可存取叢集。 您可以在部署期間，選擇部署「跳躍箱」。 這個「跳躍箱」也是部署於子網路中的 Ubuntu VM，但是它*會*使用您可以連節的公開 SSH 連接埠來公開公用 IP 位址。 接著，從「跳躍箱」，您可以 SSH 到子網路中的所有 Spark VM。
+這個範本會在 Ubuntu 虛擬機器上部署 Spark 叢集。 這個範本也會佈建安裝所需的儲存體帳戶、虛擬網路、可用性設定組、公用 IP 位址和網路介面。 Spark 叢集是建立在子網路後面，因此，不會有公用 IP 可存取叢集。  您可以在部署期間，選擇部署「跳躍箱」。 這個 「 跳躍箱 」 是 Ubuntu VM 部署在子網路，但它 *沒有* 公開公用 IP 位址使用，您可以連接到開啟 SSH 連接埠。 接著，從「跳躍箱」，您可以 SSH 到子網路中的所有 Spark VM。
 
-這個範本會利用「T 恤尺寸」概念，來指定「小型」、「中型」或「大型」Spark 叢集設定。 當範本語言支援多個動態範本大小設定時，這可以變更來指定 Spark 叢集主要節點和從屬節點的數目、VM 大小等項目。現在您可以查看檔案 azuredeploy.json 中，以變數 **tshirtSizeS**、**tshirtSizeM** 和 **tshirtSizeL** 定義的 VM 大小與主要和從屬節點的數目：
+這個範本會利用「T 恤尺寸」概念，來指定「小型」、「中型」或「大型」Spark 叢集設定。  當範本語言支援多個動態範本大小設定時，這可以變更來指定 Spark 叢集主要節點和從屬節點的數目、VM 大小等項目。現在，您所見的 VM 大小與變數中的檔案 azuredeploy.json 中所定義的主要和從屬的數目 **tshirtSizeS**, ，**tshirtSizeM**, ，和 **tshirtSizeL**:
 
 - S：1 主要，1 從屬
 - M：1 主要，4 從屬
@@ -48,7 +47,7 @@ Apache Spark 是進行大規模資料處理的快速引擎。 Spark 有支援循
 -   四個從屬節點，在與主要節點相同的虛擬子網路和可用性設定組中執行。
 -   位於相同虛擬網路和子網路的跳躍箱 VM，可以用來存取叢集。
 
-Spark 3.0.0 版為預設版本，而且可以變更為 Spark 儲存機制上可用的任何預先建置之二進位檔。 另外還有指令碼中的佈建，可從來源取消註解組建。 靜態 IP 位址將指派給每個 Spark 主要節點：10.0.0.10。 靜態 IP 位址將指派給每個 Spark 從屬節點，以便解決目前無法從範本內動態撰寫 IP 位址清單的限制。 (根據預設，第一個節點將獲指派私人 IP 位址 10.0.0.30，而第二個節點將獲指派 10.0.0.31，依此類推)。 若要檢查部署錯誤，請移至 Azure 入口網站，然後查看 [資源群組]**** > [最後部署]**** > [檢查作業詳細資料]****。
+Spark 3.0.0 版為預設版本，而且可以變更為 Spark 儲存機制上可用的任何預先建置之二進位檔。 另外還有指令碼中的佈建，可從來源取消註解組建。 靜態 IP 位址將指派給每個 Spark 主要節點：10.0.0.10。 靜態 IP 位址將指派給每個 Spark 從屬節點，以便解決目前無法從範本內動態撰寫 IP 位址清單的限制。 (根據預設，第一個節點將獲指派私人 IP 位址 10.0.0.30，而第二個節點將獲指派 10.0.0.31，依此類推)。若要檢查部署錯誤，請前往 Azure 入口網站並尋找下 **資源群組** > **上次部署** > **檢查作業詳細資料**。
 
 在深入了解與 Azure 資源管理員和將針對此次部署使用之範本的詳細資訊之前，請確定您已正確設定 Azure PowerShell 或 Azure CLI。
 
@@ -96,7 +95,7 @@ foreach ($file in $files)
 
     git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完成複製後，請尋找 C:\Azure\Templates 目錄中的 **spark-on-ubuntu** 資料夾。
+複製完成後，尋找 **spark 上 ubuntu** C:\Azure\Templates 目錄中的資料夾。
 
 ### 步驟 2：(選用) 了解範本參數
 
@@ -247,7 +246,7 @@ foreach ($file in $files)
 
 藉由建立 JSON 檔案 (其中包含適用於所有參數的執行階段值)，來為您的部署準備參數檔案。 接著將此檔案當成單一實體傳遞給部署命令。 如果未包含參數檔案，Azure PowerShell 將使用範本中指定的任何預設值，然後提示您填寫剩餘的值。
 
-以下是來自 azuredeploy-parameters.json 檔案的參數集範例。 請注意，您必須為參數 **storageAccountName**、**adminUsername** 及 **adminPassword** 提供有效值，以及為其他參數提供任何自訂項：
+以下是來自 azuredeploy-parameters.json 檔案的參數集範例。 請注意，您必須提供有效的值的參數 **storageAccountName**, ，**adminUsername**, ，和 **adminPassword**, ，再加上其他參數的任何自訂:
 
 ```json
 {
@@ -307,9 +306,9 @@ $templateParameterFile= $folderName + "\azuredeploy-parameters.json"
 New-AzureResourceGroup -Name $RGName -Location $locName
 New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateParamterFile $templateParameterFile -TemplateFile $templateFile
 ```
-> [AZURE.NOTE] **$RGName** 在您的訂用帳戶內必須是唯一的。
+> [AZURE.NOTE] **$RGName** 您訂用帳戶內必須是唯一。
 
-執行 **New-AzureResourceGroupDeployment** 命令時，這將會從 JSON 參數檔案中擷取參數值，然後據以開始執行範本。 定義以及使用不同環境 (測試、 生產環境) 中的多個參數檔案 有利範本的重複使用以及簡化複雜的多重環境解決方案。
+當您執行 **New-azureresourcegroupdeployment** 命令時，這將會從 JSON 參數檔案中，擷取參數值，然後開始執行範本。 定義以及使用不同環境 (測試、實際執行等) 所需的參數檔案，有利範本的重複使用以及簡化複雜的多重環境解決方案。
 
 部署時，請記得需要建立新的 Azure 儲存體帳戶，所以您提供來做為儲存體帳戶參數的名稱必須是唯一且符合 Azure 儲存體帳戶的所有需求 (僅限小寫字母和數字)。
 
@@ -384,9 +383,9 @@ Parameters        :
 
 若要這樣做，請移至 [Azure 入口網站](https://portal.azure.com) 並執行下列動作:
 
-- 按一下左側導覽列上的 [瀏覽]****，然後向下捲動並按一下 [資源群組]****。
+- 按一下 [ **瀏覽** 在左側導覽列，然後向下的捲動並按一下 **資源群組**。
 - 按一下剛建立的資源群組，以顯示 [資源群組] 刀鋒視窗。
-- 在 [資源群組] 刀鋒視窗的 [監視]**** 部分中，按一下 [事件]**** 長條圖，就能看見部署的事件。
+- 依序按一下 **事件** 橫條圖中 **監視** 組件的 [資源群組] 刀鋒視窗中，您可以查看事件，為您的部署。
 - 按一下個別事件，您可以進一步查看不是由範本親自進行的各項操作的詳細資料。
 
 ![portal-events](media/virtual-machines-spark-template/portal-events.png)
@@ -454,7 +453,7 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 },
 ```
 
-> [AZURE.NOTE] 請注意，您可以指定 **defaultValue** 以及 **allowedValues**。
+> [AZURE.NOTE] 請注意， **defaultValue** 可能指定以及 **allowedValues**。
 
 ### "variables" 區段
 
@@ -491,16 +490,16 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 },
 ```
 
-**VmStorageAccountContainerName** 變數是簡單名稱/值變數的範例。 **vnetID** 是計算在執行階段使用函式的變數範例 **resourceId** 和 **參數**。 **numberOfMasterInstances** 和 **vmSize** 變數的值是在執行階段使用 **concat**、**variables** 和 **parameters** 函式計算而得的。
+ **VmStorageAccountContainerName** 變數是簡單名稱/值變數的範例。  **vnetID** 是計算在執行階段使用函式的變數範例 **resourceId** 和 **參數**。  值 **numberOfMasterInstances** 和 **vmSize** 變數在執行的階段使用計算 **concat**, ，**變數**, ，和 **參數** 函式。  
 
-如果您想要自訂 Spark 叢集部署的大小，則可在 azuredeploy.json 範本中變更變數 **tshirtSizeS**、**tshirtSizeM** 和 **tshirtSizeL** 的屬性。
+如果您想要自訂 Spark 叢集部署的大小，則您可以變更變數的屬性 **tshirtSizeS**, ，**tshirtSizeM**, ，和 **tshirtSizeL** azuredeploy.json 範本中。  
 
 關於範本語言的詳細資訊可以在 MSDN 上找到 [Azure 資源管理員範本語言](../resource-group-authoring-templates.md)。
 
 
 ### "resources" 區段
 
-絕大多數的動作是在 "resources" 區段進行。 請仔細查看這個區段，您會立即找出兩個不同的案例。 第一個是型別定義的項目 `Microsoft.Resources/deployments` ，基本上都會叫用主要檔案內的巢狀的部署。 第二個是 **templateLink** 屬性 (和相關的 **contentVersion** 屬性)，能夠指定要叫用的連結範本檔案，傳遞一組參數做為輸入。 您可以下列範本片段中查看這些內容：
+絕大多數的動作是在 "resources" 區段進行。 請仔細查看這個區段，您會立即找出兩個不同的案例。 第一個是定義為 `Microsoft.Resources/deployments` 類型的元素，基本上它會叫用主要檔案內的巢狀部署。 第二個是 **templateLink** 屬性 (和相關 **contentVersion** 屬性)，讓您能夠指定連結的範本檔案，就會叫用，傳遞一組參數做為輸入。 您可以下列範本片段中查看這些內容：
 
 ```json
 "resources": [
@@ -542,14 +541,14 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 
 特別是，下列連結的範本將用於此部署：
 
--   **shared-resource.json**：包含所有要在整個部署中共用的資源定義。 例如，用來儲存 VM 的作業系統磁碟和虛擬網路的儲存體帳戶。
--   **jumpbox-resources-enabled.json**：部署「跳躍箱」VM 及所有相關資源，例如，網路介面、公用 IP 位址，以及用來 SSH 到環境的輸入端點。
+-   **shared-resource.json**: 包含定義的整個部署中共用的所有資源。 例如，用來儲存 VM 的作業系統磁碟和虛擬網路的儲存體帳戶。
+-   **jumpbox-資源-enabled.json**: 部署 「 跳躍箱 」 VM 及所有相關的資源，例如網路介面、 公用 IP 位址，以及輸入的端點用來 SSH 到環境。
 
-叫用這兩個範本之後，azuredeploy.json 會佈建所有 Spark 叢集節點 VM 和連接的資源 (網路介面卡、私人 IP 等)。 此範本也會部署 VM 延伸模組 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼 (spark-cluster-install.sh)，在每一個節點上實際安裝並設定 Spark。
+叫用這兩個範本之後，azuredeploy.json 會佈建所有 Spark 叢集節點 VM 和連接的資源 (網路介面卡、私人 IP 等)。 此範本也會部署 VM 延伸模組 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼 (spark-cluster-install.sh)，在每一個節點上實際安裝並設定 Spark。  
 
-讓我們深入了解最後一個範本 azuredeploy.json 的*使用方式*，因為從範本開發角度來看，這是最有趣的範本之一。 要強調一個重要概念是單一範本檔案如何能夠部署單一資源類型的多個複本，而且每一個執行個體都能為必要設定指定唯一值。 這個概念稱為**資源迴圈**。
+讓我們深入 *如何* 這個最後一個範本，azuredeploy.json，使用，因為它是從範本開發角度來看最有趣。 要強調一個重要概念是單一範本檔案如何能夠部署單一資源類型的多個複本，而且每一個執行個體都能為必要設定指定唯一值。 這個概念稱為 **資源迴圈**。
 
-使用 **copy** 元素的資源會以 **copy** 元素的 **count** 參數中指定的次數來「複製」它自己。 對於您需要在不同的部署資源執行個體之間指定唯一值的所有設定，可使用 **copyindex()** 函式來取得數值，以指出目前用來建立這個特定資源迴圈的索引。 在下列來自 azuredeploy.json 的片段中，您可以在為 Spark 叢集建立的多個網路介面卡、VM 及 VM 延伸模組上看見這個概念的運用：
+使用資源 **複製** 項目來 「 複製 」 本身中所指定的次數 **計數** 參數 **複製** 項目。  對於需要在部署的資源，不同執行個體之間指定唯一值的所有設定 **copyindex ()** 函式可用來取得數值，指出目前的索引，在這個特定資源迴圈的建立。 在下列來自 azuredeploy.json 的片段中，您可以在為 Spark 叢集建立的多個網路介面卡、VM 及 VM 延伸模組上看見這個概念的運用：
 
 ```json
 {
@@ -765,9 +764,9 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
     }
 ```
 
-建立資源的另一個重要概念是能夠指定資源間的相依性和優先順序，如同您在 **dependsOn** JSON 陣列中所見。 在這個特殊範本中，您可以看見 Spark 叢集節點相依於先建立的共用資源和 **networkInterfaces** 資源。
+建立資源的另一個重要概念是能夠指定相依性和資源之間的優先順序，您可以看到在 **dependsOn** JSON 陣列。 在這個特殊範本中，您可以看到 Spark 叢集節點都相依於共用資源和 **networkInterfaces** 先建立資源。
 
-另一個要探索的有趣片段是與 **CustomScriptForLinux** VM 延伸模組相關的片段。 這些片段都是以獨立資源類型進行安裝，而且每個叢集節點上都具有相依性。 在此情況下，這可用來在每個 VM 節點上安裝並設定 Spark。 讓我們查看來自 azuredeploy.json 範本的程式碼片段，其中會使用下列程式碼：
+另一個探索的有趣片段是與相關 **CustomScriptForLinux** VM 延伸模組。 這些片段都是以獨立資源類型進行安裝，而且每個叢集節點上都具有相依性。  在此情況下，這可用來在每個 VM 節點上安裝並設定 Spark。  讓我們查看來自 azuredeploy.json 範本的程式碼片段，其中會使用下列程式碼：
 
 ```json
 {
@@ -822,9 +821,9 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 }
 ```
 
-請注意，主要和從屬節點資源的擴充功能會在佈建程序期間執行不同的命令，這些命令定義於 **commandToExecute** 屬性 中。
+請注意，主要和從屬節點資源的延伸模組執行不同的命令，在定義 **commandToExecute** 屬性中，佈建程序的一部分。  
 
-如果您查看最新的虛擬機器延伸模組的 JSON 程式碼片段，可以看到此資源相依於虛擬機器資源和其網路介面。 這表示已先部署這些兩個資源必須，然後才能佈建和執行此 VM 延伸模組。 也請注意，使用 **copyindex()** 函數，針對每個從屬虛擬機器重複此步驟。
+如果您查看最新的虛擬機器延伸模組的 JSON 程式碼片段，可以看到此資源相依於虛擬機器資源和其網路介面。 這表示已先部署這些兩個資源必須，然後才能佈建和執行此 VM 延伸模組。 也請注意使用 **copyindex ()** 函式來針對每個從屬虛擬機器重複此步驟。
 
 讓您自己熟悉此部署內所含的其他檔案，就能了解如何利用 Azure 資源管理員範本，根據任何技術來組織和協調適用於多節點解決方案的複雜部署策略所需的所有詳細資料和最佳做法。 在此建議一種範本檔案建構方法，請自行決定是否採用，如下圖重點標示的部分：
 
@@ -847,8 +846,4 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 探索更多 [應用程式架構](virtual-machines-app-frameworks.md)。
 
 [疑難排解範本部署](resource-group-deploy-debug.md)。
-
-
-
-
 

@@ -4,18 +4,14 @@
 
 ![VNet 案例](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
 
-在這個案例中，您將在 **TestVNet** 虛擬網路的每個子網路中建立 NSG ，如下所述：
+在此案例中，您將建立在每個子網路的 NSG **TestVNet** 虛擬網路，如下所述: 
 
-- **NSG-FrontEnd**。 前端 NSG 將套用到 *FrontEnd* 子網路，且包含兩個規則：
-    - **rdp-rule**。 此規則允許至 *FrontEnd* 子網路的 RDP 流量。
-    - **web-rule**。 此規則允許至 *FrontEnd* 子網路的 HTTP 流量。
-- **NSG-BackEnd**。 後端 NSG 將套用到 *BackEnd* 子網路，且包含兩個規則：
-    - **sql-rule**。 此規則僅允許來自 *FrontEnd* 子網路的 SQL 流量。
-    - **web-rule**。 此規則會拒絕來自 *BackEnd* 子網路的所有網際網路繫結流量 。
+- **NSG 前端**。 前端 NSG 會套用至 *前端* 子網路，且包含兩個規則:  
+    - **rdp 規則**。 此規則會允許 RDP 流量 *前端* 子網路。
+    - **網頁規則**。 此規則會允許 HTTP 流量 *前端* 子網路。
+- **NSG 後端**。 NSG 會套用至後端 *後端* 子網路，且包含兩個規則: 
+    - **sql 規則**。 此規則可讓 SQL 流量只會從 *前端* 子網路。
+    - **網頁規則**。 此規則會拒絕所有網際網路繫都結流量從 *後端* 子網路。
 
 這些規則的組合會建立類似 DMZ 的案例，其後端子網路只能接收來自前端子網路 SQL 流量的傳入流量，且無網際網路的存取權；而前端子網路則可與網際網路通訊，並接收傳入的 HTTP 要求。
-
-
-
-
-
+ 

@@ -15,14 +15,13 @@
     ms.date="11/24/2015"
     ms.author="awills"/>
 
-
 # 使用 Application Insights 進行使用量分析
 
 知道人員使用您的應用程式的方式可讓您將開發工作著重在對他們來說最重要的案例，並且對他們認為易於或難以達成的目標獲得見解。
 
 Application Insights 可提供應用程式使用量的清楚檢視，幫助您改善使用者的體驗，並達成您的業務目標。
 
-Application Insights 適用於獨立應用程式 (在 iOS、Android 和 Windows 上) 及 web 應用程式 (裝載於.NET 或 J2EE)。
+Application Insights 適用於獨立應用程式 (在 iOS、Android 和 Windows 上) 及 web 應用程式 (裝載於.NET 或 J2EE)。 
 
 ## 將 Application Insights 加入至專案
 
@@ -30,13 +29,13 @@ Application Insights 適用於獨立應用程式 (在 iOS、Android 和 Windows 
 
 在 [Azure 入口網站](https://portal.azure.com), ，建立 Application Insights 資源。 您會在其中看到應用程式的使用情況和效能資料。
 
-![在 Azure 中，按一下 ](./media/app-insights-overview-usage/01-create.png)
+![在 Azure 中，按一下 [新增]、[開發人員服務]、[Application Insights]](./media/app-insights-overview-usage/01-create.png)
 
-**如果您的應用程式為裝置應用程式，**請將 Application Insights SDK 加入專案。 確切的程序不同，取決於您 [IDE 和平](app-insights-platforms.md)。 在 Windows 應用程式中，以滑鼠右鍵按一下 Visual Studio 中的專案，然後選擇 [加入 Application Insights]。
+**如果您的應用程式的裝置應用程式，** 將 Application Insights SDK 加入至您的專案。 確切的程序不同，取決於您 [IDE 和平](app-insights-platforms.md)。 在 Windows 應用程式中，以滑鼠右鍵按一下 Visual Studio 中的專案，然後選擇 [加入 Application Insights]。
 
-**如果是 web 應用程式，**請開啟快速入門刀鋒視窗並取得要新增至網頁的程式碼片段。 使用此程式碼片段將它們重新發佈。
+**如果是 web 應用程式中，** 開啟 [快速入門] 分頁中，並取得程式碼片段新增至您的網頁。 使用此程式碼片段將它們重新發佈。
 
-![開啟快速入門，並按一下 [取得程式碼來監視我的網頁。 複製指令碼到您主版頁面的開頭。](。 / media/app-insights-overview-usage/02-monitor-web-page.png)
+![開啟 [快速入門]，然後按一下 [取得程式碼來監視我的網頁]。 將指令碼複製到您主版頁面的標頭。](./media/app-insights-overview-usage/02-monitor-web-page.png)
 
 您也可以將 Application Insights 加入您 [ASP.NET](app-insights-asp-net.md) 或 [J2EE](app-insights-java-get-started.md) 伺服端程式碼，以便結合來自用戶端和伺服器遙測。
 
@@ -45,7 +44,7 @@ Application Insights 適用於獨立應用程式 (在 iOS、Android 和 Windows 
 
 幾分鐘，偵錯模式執行您的專案，然後移至 [Azure 入口網站](http://portal.azure.com) 並瀏覽至 Application Insights 中您專案的資源。
 
-![在 Azure 中，按一下 ](./media/app-insights-overview-usage/00-start.png)
+![在 Azure 中，按一下 [瀏覽]、[Application Insights]，然後選取您的專案。](./media/app-insights-overview-usage/00-start.png)
 
 發佈您的應用程式以取得更多遙測，並了解您的使用者如何利用您的應用程式。
 
@@ -54,7 +53,7 @@ Application Insights 適用於獨立應用程式 (在 iOS、Android 和 Windows 
 
 按一下 [頁面檢視] 磚以查看使用情況詳細資料。
 
-![在 Azure 中，](./media/app-insights-overview-usage/01-overview.png)
+![在 Azure 中，[瀏覽] > [Application Insights] > 您的專案，並向下捲動至 [頁面檢視] 磚](./media/app-insights-overview-usage/01-overview.png)
 
 將滑鼠移至圖形上的空白部分，以查看特定點的計數。 否則，數字會顯示一段期間的彙總值，例如一段期間的平均、總計或獨特使用者計數。
 
@@ -64,7 +63,7 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
 
 逐一點選任何圖表以查看更詳細的資料。 例如：
 
-![在 ](./media/app-insights-overview-usage/02-sessions.png)
+![在 [概觀] 分頁上，按一下 [工作階段] 圖表](./media/app-insights-overview-usage/02-sessions.png)
 
 (此範例來自網站，但圖表看起來類似於在裝置上執行的應用程式。)
 
@@ -86,7 +85,7 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
 按一下 [頁面檢視] 磚以取得最常用頁面的明細：
 
 
-![從 ](./media/app-insights-overview-usage/05-games.png)
+![從 [概觀] 刀鋒視窗，按一下 [頁面檢視] 圖表](./media/app-insights-overview-usage/05-games.png)
 
 以上範例來自遊戲網站。 透過它，我們可以立即看到：
 
@@ -120,13 +119,14 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
     Dim tc = New Microsoft.ApplicationInsights.TelemetryClient()
     tc.TrackEvent("GameEnd")
 
+
 最常見的自訂事件會列在 [概觀] 刀鋒視窗上。
 
-![在 ](./media/app-insights-overview-usage/04-events.png)
+![在 [概觀] 刀鋒視窗上，向下捲動並按一下 [自訂事件]。](./media/app-insights-overview-usage/04-events.png)
 
 按一下資料表標題來查看事件數的總計。 您可以依各種屬性 (例如事件名稱) 來分段圖表：
 
-![選取的圖表，僅顯示一個度量。 將分組切換成開啟。 選擇屬性。 並非所有屬性提供都。](。 / media/app-insights-overview-usage/06-eventsSegment.png)
+![選取僅顯示一個度量的圖表。 將分組切換成開啟。 選擇屬性。 並非所有屬性都可供使用。](./media/app-insights-overview-usage/06-eventsSegment.png)
 
 時間軸特別實用的功能是您可以將變更與其他度量和事件相互關聯。 例如，在玩很多遊戲的時候，您會預期看到被放棄的遊戲也有上升。 但是，被放棄的遊戲上升不成比例，您會想要知道高負載是否造成問題，使得使用者覺得無法接受。
 
@@ -139,7 +139,7 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
 從應用程式收到的自訂事件會依名稱列在 [概觀] 刀鋒視窗上：
 
 
-![在 ](./media/app-insights-overview-usage/07-clickEvent.png)
+![在 [概觀] 刀鋒視窗中，按一下其中一個自訂事件類型。](./media/app-insights-overview-usage/07-clickEvent.png)
 
 逐一點選感興趣的事件，並選取最近的特定出現次數：
 
@@ -149,7 +149,7 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
 讓我們查看工作階段的所有遙測，其中發生了特定 NoGame 事件。
 
 
-![按一下 ](./media/app-insights-overview-usage/09-relatedTelemetry.png)
+![按一下 [工作階段的所有遙測]](./media/app-insights-overview-usage/09-relatedTelemetry.png)
 
 沒有例外狀況，因此沒有因為一些錯誤而防止使用者玩遊戲。
 
@@ -161,7 +161,6 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
 而現在我們可以看到，這個使用者登入只是為了要查看最新的分數。 也許我們應該考慮開發可讓這個動作更易於進行的使用者劇本。 (而我們應該實作自訂事件，在這個特定劇本發生時提出報告。)
 
 ## 使用屬性來篩選、搜尋和分割您的資料
-
 您可以附加任意標記和數值到事件。
 
 
@@ -181,7 +180,7 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
         {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
     var measurements = new Dictionary <string, double>
         {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
-    
+
     // Send the event:
     telemetry.TrackEvent("WinGame", properties, measurements);
 
@@ -191,11 +190,11 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
     Dim properties = New Dictionary (Of String, String)
     properties.Add("game", currentGame.Name)
     properties.Add("difficulty", currentGame.Difficulty)
-    
+
     Dim measurements = New Dictionary (Of String, Double)
     measurements.Add("Score", currentGame.Score)
     measurements.Add("Opponents", currentGame.OpponentCount)
-    
+
     ' Send the event:
     telemetry.TrackEvent("WinGame", properties, measurements)
 
@@ -210,12 +209,12 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
 在「診斷搜尋」中，逐一點選個別事件出現次數可檢視屬性。
 
 
-![在事件的清單中，開啟事件，然後按一下 '...' 來查看更多屬性](./media/app-insights-overview-usage/11-details.png)
+![在事件清單中，開啟事件，然後按一下 [...] 若要查看更多屬性](./media/app-insights-overview-usage/11-details.png)
 
 使用 [搜尋] 欄位來查看具有特定屬性值的事件出現次數。
 
 
-![在 ](./media/app-insights-overview-usage/12-searchEvents.png)
+![在 [搜尋] 欄位中輸入值](./media/app-insights-overview-usage/12-searchEvents.png)
 
 
 ## A | B 測試
@@ -229,7 +228,7 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
 伺服器上的 C#
 
     using Microsoft.ApplicationInsights.DataContracts;
-    
+
     var context = new TelemetryContext();
     context.Properties["Game"] = currentGame.Name;
     var telemetry = new TelemetryClient(context);
@@ -266,6 +265,7 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
         .Add(new MyTelemetryInitializer());
     }
 
+
 ## 建置 - 測量 - 了解
 
 使用分析時，它會成為開發週期的整合部分 - 而不只是協助解決問題的用途。 以下是一些秘訣：
@@ -279,17 +279,13 @@ Web 工作階段在 30 分鐘無活動後會被計入。 在電話或其他裝�
 
 ## 詳細資訊
 
-* [偵測、 分級和診斷當機與應用程式的效能問題](app-insights-detect-triage-diagnose.md)
-* [開始使用 Application Insights 上許多平台](app-insights-detect-triage-diagnose.md)
+* [偵測、分及和診斷應用程式中的損毀和效能問題](app-insights-detect-triage-diagnose.md)
+* [開始使用 .NET 的 Application Insights](app-insights-detect-triage-diagnose.md)
 
 
 ## 影片
 
 > [AZURE.VIDEO usage-monitoring-application-insights]
 
-
-
-
-
-
+ 
 

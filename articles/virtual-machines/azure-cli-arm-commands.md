@@ -17,7 +17,6 @@
     ms.date="11/18/2015"
     ms.author="danlep"/>
 
-
 # 搭配使用適用於 Mac、Linux 和 Windows 的 Azure CLI 與 Azure 資源管理員
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [傳統部署模型](virtual-machines-command-line-tools.md)
@@ -28,19 +27,19 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 
 ## 文章的範圍
 
-本文提供資源管理員部署模型的常用 Azure CLI 命令的語法和選項。 它不是完整的參考，您的 CLI 版本可能會顯示一些不同的命令或參數。 目前的命令語法和選項在命令列資源管理員模式中，輸入 `azure 說明` 或者，若要顯示的特定命令， `azure 說明 [命令]`。 您也可以在文件中找到建立和管理特定的 Azure 服務的 CLI 範例。
+本文提供資源管理員部署模型的常用 Azure CLI 命令的語法和選項。 它不是完整的參考，您的 CLI 版本可能會顯示一些不同的命令或參數。 如需在資源管理員模式中命令列目前的命令語法和選項，請輸入 `azure help`，或顯示特定命令的說明 `azure help [command]`。 您也可以在文件中找到建立和管理特定的 Azure 服務的 CLI 範例。
 
 選用參數會以方括號括住 (例如，[parameter])。 其他所有參數皆為必要參數。
 
-除了本文所述的命令特定選用參數，還有三個選用參數可用來顯示詳細輸出，例如要求選項和狀態碼。 -v 參數提供詳細資訊輸出，而 -vv 參數提供更詳細的詳細資訊輸出。 --json 選項將以原始 json 格式輸出結果。 使用 --json 參數的使用方式相當常見，同時對於取得和了解傳回資源資訊、狀態和記錄檔的 Azure CLI 工作結果，以及使用範本也是重要的部分。 您可能想要安裝 JSON 剖析器工具，例如 **jq** 或 **jsawk**，或使用您偏好的語言程式庫。
+除了本文所述的命令特定選用參數，還有三個選用參數可用來顯示詳細輸出，例如要求選項和狀態碼。 -v 參數提供詳細資訊輸出，而 -vv 參數提供更詳細的詳細資訊輸出。 --json 選項將以原始 json 格式輸出結果。 使用 --json 參數的使用方式相當常見，同時對於取得和了解傳回資源資訊、狀態和記錄檔的 Azure CLI 工作結果，以及使用範本也是重要的部分。 您可能想要安裝 JSON 剖析器工具，例如 **jq** 或 **jsawk** 或使用您偏好的語言程式庫。
 
 ## 命令式和宣告式方法
 
-如同 [Azure 服務管理模式](../virtual-machines-command-line-tools.md), ，Azure CLI 資源管理員模式可讓您在命令列以命令方式建立資源的命令。例如，如果您輸入 `azure 群組建立 < 群組名稱 >< 位置 >` 要求 Azure 建立資源群組，與 `azure 群組部署建立 < resourcegroup >< deploymentname >` 表示指示 Azure 建立任意數目的項目部署，並將其放在群組中。因為每一種資源類型皆具有命令式指令，您可以將他們鏈結在一起以建立相當複雜的部署。
+如同 [Azure 服務管理模式](../virtual-machines-command-line-tools.md), ，Azure CLI 資源管理員模式可讓您在命令列以命令方式建立資源的命令。 例如，若您輸入 `azure group create <groupname> <location>` 表示要求 Azure 建立資源群組，若輸入 `azure group deployment create <resourcegroup> <deploymentname>` 表示指示 Azure 建立任意數目的項目部署，並將其放在群組中。 因為每一種資源類型皆具有命令式指令，您可以將他們鏈結在一起以建立相當複雜的部署。
 
-不過，使用說明資源群組是以更強大宣告式方法所建立的資源群組_範本_時，可讓您基於 (幾乎) 任何用途自動進行 (幾乎) 任意資源數目的複雜部署。 使用範本時，唯一的命令式指令是進行部署。 如範本、 資源及資源群組的一般概觀，請參閱 [Azure 資源群組概觀](../resource-group-overview.md)。
+不過，使用的資源群組 _範本_ 說明資源群組是多項功能，以宣告式方法可讓您基於 (幾乎) 任何用途自動進行 (幾乎) 任意資源數目的複雜部署。 使用範本時，唯一的命令式指令是進行部署。 如範本、 資源及資源群組的一般概觀，請參閱 [Azure 資源群組概觀](../resource-group-overview.md)。  
 
-## 使用需求
+##使用需求
 
 透過 Azure CLI 使用資源管理員模式的設定需求為：
 
@@ -50,31 +49,30 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 
 一旦您擁有帳戶並已安裝 Azure CLI，您必須
 
-- [設定 Azure CLI](../xplat-cli-connect.md) 使用工作或學校帳戶或 Microsoft 帳戶身分識別
-- 切換至資源管理員模式，可以輸入 `azure 組態模式 arm`
+- [設定 Azure CLI](../xplat-cli-connect.md) 使用工作或學校帳戶或 Microsoft 帳戶身分識別 
+- 輸入 `azure config mode arm` 切換至資源管理員模式
 
 
 ## azure account：用來管理帳戶資訊
-
 此工具會使用您的 Azure 訂閱資訊來連線至您的帳戶。
 
-**列出匯入的訂用帳戶**
+**列出匯入的訂閱**
 
     account list [options]
 
-**顯示關於訂用帳戶的詳細資料**
+**顯示關於訂用帳戶的詳細資料**  
 
     account show [options] [subscriptionNameOrId]
 
-**設定目前的訂用帳戶**
+**設定目前訂閱**
 
     account set [options] <subscriptionNameOrId>
 
-**移除訂用帳戶或環境，或清除所有儲存的帳戶和環境資訊**
+**移除訂用帳戶或環境，或清除所有儲存的帳戶和環境資訊**  
 
     account clear [options]
 
-**用來管理帳戶環境的命令**
+**管理帳戶環境的命令**  
 
     account env list [options]
     account env show [options] [environment]
@@ -142,9 +140,10 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 
     config set <name> <value>
 
-* * 設定 Azure CLI 工作模式為 `arm` 或 `asm`* *
+**設定 Azure CLI 工作模式為 `arm` 或 `asm`**
 
     config mode [options] <modename>
+
 
 ## azure feature：用來管理帳戶功能的命令
 
@@ -217,7 +216,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來管理虛擬網路的命令**
 
     network vnet create [options] <resource-group> <name> <location>
-
 允許建立新的虛擬網路。 在下列範例中，我們會針對美國西部區域中的 myresourcegroup 資源群組，建立名為 newvnet 的虛擬網路。
 
 
@@ -239,6 +237,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     data:
     info:    network vnet create command OK
 
+
 參數選項：
 
     -h, --help                                 output usage information
@@ -250,14 +249,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -a, --address-prefixes <address-prefixes>  the comma separated list of address prefixes for this virtual network
       For example -a 10.0.0.0/24,10.0.1.0/24.
       Default value is 10.0.0.0/8
-    
+
     -d, --dns-servers <dns-servers>            the comma separated list of DNS servers IP addresses
     -t, --tags <tags>                          the tags set on this virtual network.
       Can be multiple. In the format of "name=value".
       Name is required and value is optional.
       For example, -t tag1=value1;tag2
      -s, --subscription <subscription>          the subscription identifier
-
 <BR>
 
     network vnet set [options] <resource-group> <name>
@@ -265,7 +263,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 更新資源群組內的虛擬網路組態。
 
     azure network vnet set myresourcegroup newvnet
-    
+
     info:    Executing command network vnet set
     + Looking up virtual network "newvnet"
     + Updating virtual network "newvnet"
@@ -295,18 +293,17 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
         This list will be appended to the current list of address prefixes.
         The address prefixes in this list should not overlap between them.
         The address prefixes in this list should not overlap with existing address prefixes in the vnet.
-    
+
        -d, --dns-servers [dns-servers]            the comma separated list of DNS servers IP addresses.
         This list will be appended to the current list of DNS server IP addresses.
-    
+
        -t, --tags <tags>                          the tags set on this virtual network.
         Can be multiple. In the format of "name=value".
         Name is required and value is optional. For example, -t tag1=value1;tag2.
         This list will be appended to the current list of tags
-    
+
        --no-tags                                  remove all existing tags
        -s, --subscription <subscription>          the subscription identifier
-
 <BR>
 
     network vnet list [options] <resource-group>
@@ -315,7 +312,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 
 
     C:\>azure network vnet list myresourcegroup
-    
+
     info:    Executing command network vnet list
     + Listing virtual networks
         data:    ID
@@ -338,11 +335,10 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 <BR>
 
     network vnet show [options] <resource-group> <name>
-
 此命令會顯示資源群組中的虛擬網路屬性。
 
     azure network vnet show -g myresourcegroup -n newvnet
-    
+
     info:    Executing command network vnet show
     + Looking up virtual network "newvnet"
     data:    Id:                   /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/newvnet
@@ -357,15 +353,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     data:    Subnets:
     data:
     info:    network vnet show command OK
-
 <BR>
 
     network vnet delete [options] <resource-group> <name>
-
 此命令會移除虛擬網路。
 
     azure network vnet delete myresourcegroup newvnetX
-    
+
     info:    Executing command network vnet delete
     + Looking up virtual network "newvnetX"
     Delete virtual network newvnetX? [y/n] y
@@ -382,14 +376,14 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
      -q, --quiet                            quiet mode, do not ask for delete confirmation
      -s, --subscription <subscription>      the subscription identifier
 
+
 **用來管理虛擬網路子網路的命令**
 
     network vnet subnet create [options] <resource-group> <vnet-name> <name>
-
 可讓您將其他子網路加入至現有虛擬網路的命令。
 
     azure network vnet subnet create -g myresourcegroup --vnet-name newvnet -n subnet --address-prefix 10.0.1.0/24
-    
+
     info:    Executing command network vnet subnet create
     + Looking up the subnet "subnet"
     + Creating subnet "subnet"
@@ -423,7 +417,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 
 
     C:\>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
-    
+
     info:    Executing command network vnet subnet set
     + Looking up the subnet "subnet1"
     + Setting subnet "subnet1"
@@ -434,7 +428,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     data:    Provisioning state:        Succeeded
     data:    Address prefix:            10.0.1.0/24
     info:    network vnet subnet set command OK
-
 <BR>
 
     network vnet subnet list [options] <resource-group> <vnet-name>
@@ -442,7 +435,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 列出資源群組內適用於特定虛擬網路的所有虛擬網路子網路。
 
     azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
-    
+
     info:    Executing command network vnet subnet set
     + Looking up the subnet "subnet1"
     + Setting subnet "subnet1"
@@ -453,15 +446,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     data:    Provisioning state:        Succeeded
     data:    Address prefix:            10.0.1.0/24
     info:    network vnet subnet set command OK
-
 <BR>
 
     network vnet subnet show [options] <resource-group> <vnet-name> <name>
-
 顯示虛擬網路子網路屬性
 
     azure network vnet subnet show -g myresourcegroup --vnet-name newvnet -n subnet1
-    
+
     info:    Executing command network vnet subnet show
     + Looking up the subnet "subnet1"
     data:    Id:                        /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft
@@ -481,15 +472,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -e, --vnet-name <vnet-name>            the name of the virtual network
     -n, --name <name>                      the name of the subnet
     -s, --subscription <subscription>      the subscription identifier
-
 <BR>
 
     network vnet subnet delete [options] <resource-group> <vnet-name> <subnet-name>
-
 從現有的虛擬網路移除子網路。
 
     azure network vnet subnet delete -g myresourcegroup --vnet-name newvnet -n subnet1
-    
+
     info:    Executing command network vnet subnet delete
     + Looking up the subnet "subnet1"
     Delete subnet "subnet1"? [y/n] y
@@ -510,11 +499,10 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來管理負載平衡器的命令**
 
     network lb create [options] <resource-group> <name> <location>
-
 建立負載平衡器集合。
 
     azure network lb create -g myresourcegroup -n mylb -l westus
-    
+
     info:    Executing command network lb create
     + Looking up the load balancer "mylb"
     + Creating load balancer "mylb"
@@ -538,15 +526,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
      Can be multiple. In the format of "name=value".
      Name is required and value is optional. For example, -t tag1=value1;tag2
     -s, --subscription <subscription>      the subscription identifier
-
 <BR>
 
     network lb list [options] <resource-group>
-
 列出資源群組中負載平衡器資源。
 
     azure network lb list myresourcegroup
-    
+
     info:    Executing command network lb list
     + Getting the load balancers
     data:    Name  Location
@@ -561,7 +547,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
-
 <BR>
 
     network lb show [options] <resource-group> <name>
@@ -569,7 +554,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 顯示資源群組中特定負載平衡器的負載平衡器資訊
 
     azure network lb show myresourcegroup mylb -v
-    
+
     info:    Executing command network lb show
     verbose: Looking up the load balancer "mylb"
     data:    Id:                           /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/loadBalancers/mylb
@@ -595,7 +580,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 刪除負載平衡器資源。
 
     azure network lb delete  myresourcegroup mylb
-    
+
     info:    Executing command network lb delete
     + Looking up the load balancer "mylb"
     Delete load balancer "mylb"? [y/n] y
@@ -619,7 +604,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 建立負載平衡器中健康狀態的探查組態。 請記住，若要執行此命令，您的負載平衡器需要前端 IP 資源 (查看「azure network frontend-ip」命令以將 IP 位址指派至負載平衡器)。
 
     azure network lb probe create -g myresourcegroup --lb-name mylb -n mylbprobe --protocol tcp --port 80 -i 300
-    
+
     info:    Executing command network lb probe create
     + Looking up the load balancer "mylb"
     + Updating load balancer "mylb"
@@ -647,7 +632,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 使用適用的新值來更新現有的負載平衡器探查。
 
     azure network lb probe set -g myresourcegroup -l mylb -n mylbprobe -p mylbprobe1 -p TCP -o 443 -i 300
-    
+
     info:    Executing command network lb probe set
         + Looking up the load balancer "mylb"
     + Updating load balancer "mylb"
@@ -668,7 +653,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -i, --interval <interval>              the new value for probe interval in seconds
     -c, --count <count>                    the new value for number of probes
     -s, --subscription <subscription>      the subscription identifier
-
 <BR>
 
     network lb probe list [options] <resource-group> <lb-name>
@@ -676,7 +660,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 列出負載平衡器集合的探查屬性。
 
     C:\>azure network lb probe list -g myresourcegroup -l mylb
-    
+
     info:    Executing command network lb probe list
     + Looking up the load balancer "mylb"
     data:    Name       Protocol  Port  Path  Interval  Count
@@ -692,14 +676,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -g, --resource-group <resource-group>  the name of the resource group
     -l, --lb-name <lb-name>                the name of the load balancer
     -s, --subscription <subscription>      the subscription identifier
-    
-    
-    network lb probe delete [options] <resource-group> <lb-name> <name>
 
+
+    network lb probe delete [options] <resource-group> <lb-name> <name>
 移除針對負載平衡器所建立的探查。
 
     azure network lb probe delete -g myresourcegroup -l mylb -n mylbprobe
-    
+
     info:    Executing command network lb probe delete
     + Looking up the load balancer "mylb"
     Delete a probe "mylbprobe?" [y/n] y
@@ -709,11 +692,10 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來管理負載平衡器前端 IP 組態的命令**
 
     network lb frontend-ip create [options] <resource-group> <lb-name> <name>
-
 建立前端 IP 組態至現有的負載平衡器集合。
 
     azure network lb frontend-ip create -g myresourcegroup --lb-name mylb -n myfrontendip -o Dynamic -e subnet -m newvnet
-    
+
     info:    Executing command network lb frontend-ip create
     + Looking up the load balancer "mylb"
     + Looking up the subnet "subnet"
@@ -741,7 +723,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 可讓您更新前端 IP 的現有組態。下列命令會將名為 mypubip5 的公用 IP 新增至名為 myfrontendip 的現有負載平衡器前端 IP。
 
     azure network lb frontend-ip set -g myresourcegroup --lb-name mylb -n myfrontendip -i mypubip5
-    
+
     info:    Executing command network lb frontend-ip set
     + Looking up the load balancer "mylb"
     + Looking up the public ip "mypubip5"
@@ -791,7 +773,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 列出針對負載平衡器所設定的前端 IP 資源。
 
     azure network lb frontend-ip list -g myresourcegroup -l mylb
-    
+
     info:    Executing command network lb frontend-ip list
     + Looking up the load balancer "mylb"
     data:    Name         Provisioning state  Private IP allocation method  Subnet
@@ -807,11 +789,9 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -g, --resource-group <resource-group>  the name of the resource group
     -l, --lb-name <lb-name>                the name of the load balancer
     -s, --subscription <subscription>      the subscription identifier
-
 <BR>
 
     network lb frontend-ip delete [options] <resource-group> <lb-name> <name>
-
 刪除與負載平衡器相關聯的前端 IP 物件
 
     network lb frontend-ip delete -g myresourcegroup -l mylb -n myfrontendip
@@ -838,7 +818,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 建立負載平衡器的後端位址集區。
 
     azure network lb address-pool create -g myresourcegroup --lb-name mylb -n myaddresspool
-    
+
     info:    Executing command network lb address-pool create
     + Looking up the load balancer "mylb"
     + Updating load balancer "mylb"
@@ -873,7 +853,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 在下列範例中，其使用先前建立的「nic1」網路介面來建立後端位址集區範圍。
 
     azure network lb address-pool add -g myresourcegroup -l mylb -n mybackendpool -a nic1
-    
+
     info:    Executing command network lb address-pool add
     + Looking up the load balancer "mylb"
     + Getting network interfaces
@@ -912,7 +892,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 移除來自後端 IP 位址集區範圍的網路介面。
 
     azure network lb address-pool remove -g myresourcegroup -l mylb -n mybackendpool -a nic1
-    
+
     info:    Executing command network lb address-pool remove
     + Looking up the load balancer "mylb"
     + Getting network interfaces
@@ -942,7 +922,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     e.g. ""/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/networkInterfaces/<nic-name>"
     -a, --nic-name <nic-name>              the name of the network interface
     -s, --subscription <subscription>      the subscription identifier
-
 <BR>
 
     network lb address-pool list [options] <resource-group> <lb-name>
@@ -950,7 +929,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 列出特定資源群組的後端 IP 位址集區範圍
 
     azure network lb address-pool list -g myresourcegroup -l mylb
-    
+
     info:    Executing command network lb address-pool list
     + Looking up the load balancer "mylb"
     data:    Name           Provisioning state
@@ -968,12 +947,12 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    網路 lb 位址集區刪除 [選項] <resource-group> <lb-name> <name>
+    網路 lb 位址集區刪除 [選項] < 資源群組 >< lb 名稱 > <name>
 
 移除來自負載平衡器的後端 IP 集區範圍資源。
 
     azure network lb address-pool delete -g myresourcegroup -l mylb -n mybackendpool
-    
+
     info:    Executing command network lb address-pool delete
     + Looking up the load balancer "mylb"
     Delete backend address pool "mybackendpool"? [y/n] y
@@ -994,7 +973,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來管理負載平衡器規則的命令**
 
     network lb rule create [options] <resource-group> <lb-name> <name>
-
 建立負載平衡器規則。
 
 您可以建立負載平衡器規則，以便設定負載平衡器的前端端點，以及將會接收傳入網路流量的後端位址集區範圍。 設定也包含前端 IP 端點的連接埠以及後端位址集區範圍的連接埠。
@@ -1002,8 +980,8 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 下列範例示範如何建立負載平衡器規則、 接聽連接埠 80 TCP 和負載平衡網路流量的後端位址集區範圍傳送至連接埠 8080 的前端端點。
 
     azure network lb rule create -g myresourcegroup -l mylb -n mylbrule -p tcp -f 80 -b 8080 -i 10
-    
-    
+
+
     info:    Executing command network lb rule create
     + Looking up the load balancer "mylb"
     + Updating load balancer "mylb"
@@ -1030,7 +1008,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 更新特定資源群組中的現有負載平衡器規則設定。 在下列範例中，我們會將規則名稱從 mylbrule 變更為 mynewlbrule。
 
     azure network lb rule set -g myresourcegroup -l mylb -n mylbrule -r mynewlbrule -p tcp -f 80 -b 8080 -i 10 -t myfrontendip -o mybackendpool
-    
+
     info:    Executing command network lb rule set
     + Looking up the load balancer "mylb"
     + Updating load balancer "mylb"
@@ -1068,18 +1046,18 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -t, --frontend-ip-name <frontend-ip-name>          the name of the frontend ip configuration in the same load balancer
     -o, --backend-address-pool <backend-address-pool>  name of the backend address pool defined in the same load balancer
     -s, --subscription <subscription>                  the subscription identifier
-    
-    
+
+
     network lb rule list [options] <resource-group> <lb-name>
 
 列出特定資源群組中針對負載平衡器所設定的所有負載平衡器規則。
 
     azure network lb rule list -g myresourcegroup -l mylb
-    
+
     info:    Executing command network lb rule list
     + Looking up the load balancer "mylb"
     data:    Name         Provisioning state  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes  Backend address pool  Probe data
-    
+
     data:    mynewlbrule  Succeeded           Tcp       80             8080          false               10                       /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/mybackendpool
     info:    network lb rule list command OK
 
@@ -1091,13 +1069,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -g, --resource-group <resource-group>  the name of the resource group
     -l, --lb-name <lb-name>                the name of the load balancer
     -s, --subscription <subscription>      the subscription identifier
-    
+
     network lb rule delete [options] <resource-group> <lb-name> <name>
 
 刪除負載平衡器規則。
 
     azure network lb rule delete -g myresourcegroup -l mylb -n mynewlbrule
-    
+
     info:    Executing command network lb rule delete
     + Looking up the load balancer "mylb"
     Delete load balancing rule mynewlbrule? [y/n] y
@@ -1118,14 +1096,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來管理負載平衡器輸入 NAT 規則的命令**
 
     network lb inbound-nat-rule create [options] <resource-group> <lb-name> <name>
-
 建立負載平衡器的輸入 NAT 規則。
 
 在以下範例中，我們會從前端 IP (這個部分先前已定義。 請參閱「azure network frontend-ip」命令以取得更多詳細資料) 使用輸入接聽連接埠和輸出連接埠來建立 NAT 規則，其中負載平衡器將會傳送網路流量。
 
 
     azure network lb inbound-nat-rule create -g myresourcegroup -l mylb -n myinboundnat -p tcp -f 80 -b 8080 -i myfrontendip
-    
+
     info:    Executing command network lb inbound-nat-rule create
     + Looking up the load balancer "mylb"
     + Updating load balancer "mylb"
@@ -1161,15 +1138,13 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     Please use vm-id if that is not the case.
     this parameter will be ignored if --vm-id is specified
     -s, --subscription <subscription>              the subscription identifier
-
 <BR>
 
     network lb inbound-nat-rule set [options] <resource-group> <lb-name> <name>
-
 更新現有的輸入 NAT 規則。在下列範例中，我們會將輸入接聽連接埠從 80 變更為 81。
 
     azure network lb inbound-nat-rule set -g group-1 -l mylb -n myinboundnat -p tcp -f 81 -b 8080 -i myfrontendip
-    
+
     info:    Executing command network lb inbound-nat-rule set
     + Looking up the load balancer "mylb"
     + Updating load balancer "mylb"
@@ -1205,7 +1180,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     This virtual machine must exist in the same resource group as the lb.
     Please use vm-id if that is not the case
     -s, --subscription <subscription>              the subscription identifier
-
 <BR>
 
     network lb inbound-nat-rule list [options] <resource-group> <lb-name>
@@ -1213,14 +1187,14 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 列出負載平衡器的所有輸入 NAT 規則。
 
     azure network lb inbound-nat-rule list -g myresourcegroup -l mylb
-    
+
     info:    Executing command network lb inbound-nat-rule list
     + Looking up the load balancer "mylb"
     data:    Name          Provisioning state  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes  Backend IP configuration
     data:    ------------  ------------------  --------  -------------  ------------  ------------------  -----------------------  ---
     ---------------------
     data:    myinboundnat  Succeeded           Tcp       81             8080          false               4
-    
+
     info:    network lb inbound-nat-rule list command OK
 
 參數選項：
@@ -1231,7 +1205,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -g, --resource-group <resource-group>  the name of the resource group
     -l, --lb-name <lb-name>                the name of the load balancer
     -s, --subscription <subscription>      the subscription identifier
-
 <BR>
 
     network lb inbound-nat-rule delete [options] <resource-group> <lb-name> <name>
@@ -1239,7 +1212,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 刪除特定資源群組中負載平衡器的 NAT 規則。
 
     azure network lb inbound-nat-rule delete -g myresourcegroup -l mylb -n myinboundnat
-    
+
     info:    Executing command network lb inbound-nat-rule delete
     + Looking up the load balancer "mylb"
     Delete inbound NAT rule "myinboundnat?" [y/n] y
@@ -1260,7 +1233,6 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來管理公用 IP 位址的命令**
 
     network public-ip create [options] <resource-group> <name> <location>
-
 建立公用 IP 資源。 您將建立公用 IP 資源，並與網域名稱建立關聯。
 
     azure network public-ip create -g myresourcegroup -n mytestpublicip1 -l eastus -d azureclitest -a "Dynamic"
@@ -1278,6 +1250,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     data:    Domain name label:    azureclitest
     data:    FQDN:                 azureclitest.eastus.cloudapp.azure.com
     info:    network public-ip create command OK
+
 
 參數選項：
 
@@ -1297,11 +1270,9 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     Name is required and value is optional.
     For example, -t tag1=value1;tag2
     -s, --subscription <subscription>            the subscription identifier
-
 <br>
 
     network public-ip set [options] <resource-group> <name>
-
 更新現有公用 IP 資源的屬性。 在下列範例中，我們會將公用 IP 位址從動態變更為靜態。
 
     azure network public-ip set -g group-1 -n mytestpublicip1 -d azureclitest -a "Static"
@@ -1341,11 +1312,11 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    網路的公用 ip 清單 [選項] <resource-group>
+    網路 [選項] < 資源群組 > 的公用 ip 清單
 列出資源群組內的所有公用 IP 資源。
 
     azure network public-ip list -g myresourcegroup
-    
+
     info:    Executing command network public-ip list
     + Getting the public ip addresses
     data:    Name             Location  Allocation  IP Address    Idle timeout  DNS Name
@@ -1362,13 +1333,12 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
-
 <BR>
-    網路的公用 ip 會顯示 [選項] <resource-group> <name>
+    網路的公用 ip 會顯示 [選項] < 資源群組 > <name>
 顯示資源群組內的公用 ip 資源的公用 ip 屬性。
 
     azure network public-ip show -g myresourcegroup -n mytestpublicip
-    
+
     info:    Executing command network public-ip show
     + Looking up the public ip "mytestpublicip1"
     data:    Id:                   /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/publicIPAddresses/mytestpublicip
@@ -1391,8 +1361,8 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -g, --resource-group <resource-group>  the name of the resource group
     -n, --name <name>                      the name of the public IP
     -s, --subscription <subscription>      the subscription identifier
-    
-    
+
+
     network public-ip delete [options] <resource-group> <name>
 
 刪除公用 IP 資源。
@@ -1414,14 +1384,14 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
+
 **用來管理網路介面的命令**
 
     network nic create [options] <resource-group> <name> <location>
-
 建立稱為網路介面 (NIC) 的資源，可用於負載平衡器或與虛擬機器建立關聯。
 
     azure network nic create -g myresourcegroup -l eastus -n testnic1 --subnet-name subnet-1 --subnet-vnet-name myvnet
-    
+
     info:    Executing command network nic create
     + Looking up the network interface "testnic1"
     + Looking up the subnet "subnet-1"
@@ -1473,7 +1443,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 <BR>
 
     network nic set [options] <resource-group> <name>
-    
+
     network nic list [options] <resource-group>
     network nic show [options] <resource-group> <name>
     network nic delete [options] <resource-group> <name>
@@ -1571,7 +1541,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 
 ## azure storage：用來管理儲存體物件的命令
 
-**用來管理儲存體帳戶的命令**
+**管理儲存體帳戶的命令**
 
     storage account list [options]
     storage account show [options] <name>
@@ -1579,7 +1549,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     storage account set [options] <name>
     storage account delete [options] <name>
 
-**用來管理儲存體帳戶金鑰的命令**
+**管理儲存體帳戶金鑰的命令**
 
     storage account keys list [options] <name>
     storage account keys renew [options] <name>
@@ -1811,7 +1781,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來在資源群組中建立叢集的命令**
 
     hdinsight cluster create [options] <clusterName>
-
+     
 範例：在 Linux 叢集上建立 Storm
 
     azure hdinsight cluster create -g mahirg001 -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
@@ -1827,7 +1797,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     info:    Executing command hdinsight cluster create
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
-
+    
 參數選項：
 
     -h, --help                                                 output usage information
@@ -1881,6 +1851,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
     Name is required and value is optional.
     For example, --tags tag1=value1;tag2
 
+
 **用來刪除叢集的命令**
 
     hdinsight cluster delete [options] <clusterName>
@@ -1912,6 +1883,4 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來停用叢集 HTTP 存取的命令**
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
-
-
 

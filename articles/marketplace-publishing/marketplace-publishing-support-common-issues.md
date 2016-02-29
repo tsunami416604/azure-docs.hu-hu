@@ -16,9 +16,7 @@
       ms.date="12/06/2015"
       ms.author="v-jeana; hascipio"/>
 
-
 # 如何疑難排解常見的 Azure Marketplace 發行者問題
-
 本文說明如何解決或獲得一些常見 Marketplace 案例的支援。
 
 ## 點數和退款
@@ -26,19 +24,20 @@
 在某些情況下，您可能需要代表客戶要求點數或退款。 Microsoft 支援服務可協助確保您客戶的點數和退款要求都已經過處理，並且在適當的時候提供回應給您。
 
 以下說明您如何代表客戶要求點數或退款。
-> [AZURE.NOTE] 如果客戶或 Azure 轉銷商連絡 Microsoft 要求退款或點數，我們將會套用與我們提供 Azure 服務佈建所使用的相同原則。 如果我們的原則指出退款或點數是應當的，我們會主動核發 (且您授權我們代表您核發) 適當的退款或點數給客戶或 Azure 轉銷商。 如果我們的原則未指出退款或點數是應當的，我們會請客戶或 Azure 轉銷商直接與您連絡。
+
+> [AZURE.NOTE] 如果客戶或 Azure 的轉銷商連絡 Microsoft 以要求退貨或信用卡，我們會套用相同的 Azure 服務我們佈建，我們使用的原則。 如果我們的原則指出退款或點數是應當的，我們會主動核發 (且您授權我們代表您核發) 適當的退款或點數給客戶或 Azure 轉銷商。 如果我們的原則未指出退款或點數是應當的，我們會請客戶或 Azure 轉銷商直接與您連絡。
 
   ![1_RequestRefund][1]
 
   1. 瀏覽至 [支援] 頁面。
-  2. 在 [問題類型]**** 方塊中，選取 [管理客戶]****。
-  3. 在 [類別]**** 方塊中，選取 [核准或要求客戶退款]****。
-  4. 按一下 [提出要求]****。
+  2. 在 **問題類型** 方塊中，選取 **管理客戶**。
+  3. 在 **類別** 方塊中，選取 **核准或要求客戶退款**。
+  4. 按一下 [ **啟動要求**。
 
   ![2_RequestRefund][2]
 
 5. 提供連絡資訊。
-6. 在 [發生什麼問題？]**** 方塊中，輸入以下資訊：
+6. 在 **是什麼問題?** 方塊中，輸入下列資訊:
 
     - 受影響客戶的訂用帳戶 ID
     - 客戶名稱
@@ -66,23 +65,24 @@
 
 如果您想要更新發行者設定檔，可以透過 Microsoft 開發人員中心完成。
 
-**1. 登入到 Microsoft 開發人員中心 * *。
+**1.登入 Microsoft 開發人員中心**。
 
 - 開啟新的 Chrome Incognito 或 Internet Explorer InPrivate 瀏覽工作階段，確定您未登入個人帳戶。
 - 移至 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
 
 ![inprivate][4]
 
-**2. 使用貴公司的工作或學校帳戶 * * (也就是 AzureStore@yourcompany.com) 登入。
+**2.使用貴公司的工作或學校帳戶登入** (也就是 AzureStore@yourcompany.com)。
 
 ![signin][5]
 
-**3. 完成 「 協助我們保護您的帳戶 」 驗證 * *。
-> [AZURE.NOTE] 您可以使用電話號碼或電子郵件地址進行驗證。
+**3.完成「協助我們保護您的帳戶」驗證**。
+
+> [AZURE.NOTE] 若要確認，您可以使用電話號碼或電子郵件地址。
 
 ![protectacct][6]
 
-**4. 瀏覽至帳戶詳細資料和公司詳細資料 * *。
+**4.瀏覽至帳戶詳細資料和公司詳細資料**。
 
 ![acctdetails][7]
 
@@ -91,10 +91,10 @@
 ![manageadmins][8]
 
 1. 瀏覽至發佈入口網站。
-2. 選取 [發行者]****。
-3. 選取 [系統管理員]****。
+2. 選取 **發行者**。
+3. 選取 **管理員**。
 4. 新增您想要新增或移除之共同管理員的電子郵件地址。
-5. 選取 [**儲存**]。
+5. 選取 **儲存**。
 
 ## 後續步驟: 其他支援查詢
 
@@ -111,13 +111,12 @@
 - 如何變更與賣方帳戶相關聯的 Microsoft 帳戶？
 
 
-
-[1]: ./media/marketplace-publishing-support-common-issues/requestrefund1.png 
-[2]: ./media/marketplace-publishing-support-common-issues/requestrefund2.png 
-[3]: ./media/marketplace-publishing-support-common-issues/subscriptionvalidation.png 
-[4]: ./media/marketplace-publishing-support-common-issues/inprivate.png 
-[5]: ./media/marketplace-publishing-support-common-issues/signin.png 
-[6]: ./media/marketplace-publishing-support-common-issues/protectacct.png 
-[7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png 
-[8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png 
+[1]: ./media/marketplace-publishing-support-common-issues/requestrefund1.png
+[2]: ./media/marketplace-publishing-support-common-issues/requestrefund2.png
+[3]: ./media/marketplace-publishing-support-common-issues/subscriptionvalidation.png
+[4]: ./media/marketplace-publishing-support-common-issues/inprivate.png
+[5]: ./media/marketplace-publishing-support-common-issues/signin.png
+[6]: ./media/marketplace-publishing-support-common-issues/protectacct.png
+[7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
+[8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 

@@ -1,6 +1,6 @@
 <properties 
     pageTitle="使用 Application Insights 來監視應用程式的健康情況和流量" 
-    description="開始使用 Application Insights。分析內部部署或 Microsoft Azure 應用程式的使用情況、可用性和效能。" 
+    description="開始使用 Application Insights。 分析內部部署或 Microsoft Azure 應用程式的使用情況、可用性和效能。" 
     services="application-insights" 
     documentationCenter=""
     authors="alancameronwills" 
@@ -14,16 +14,15 @@
     ms.topic="article" 
     ms.date="11/25/2015" 
     ms.author="awills"/>
-
-
+ 
 # 監視 Web 應用程式的效能 (英文)
 
 *Application Insights 目前僅供預覽。*
 
 
-確認應用程式的運作狀況良好，以及迅速找出任何失敗。 [Application Insights 的 ][start] 能指出任何效能問題和例外狀況，以及協助您尋找及診斷根本原因。
+確認應用程式的運作狀況良好，以及迅速找出任何失敗。 [Application Insights][start] 能指出任何效能問題和例外狀況，以及協助您尋找及診斷根本原因。
 
-Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、WCF 服務。 這些服務可以裝載在內部部署、虛擬機器上，或做為 Microsoft Azure 網站。
+Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、WCF 服務。 這些服務可以裝載在內部部署、虛擬機器上，或做為 Microsoft Azure 網站。 
 
 用戶端方面，Application Insights 可從網頁及各種裝置 (包括 iOS、Android 和 Windows 市集應用程式) 上取得遙測。
 
@@ -32,10 +31,10 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 
 如果您尚未將 Application Insights 新增至專案中 (亦即專案沒有 ApplicationInsights.config)，請選擇以下任一種方法來開始使用：
 
-* [ASP.NET web 應用程式](app-insights-asp-net.md)
- * [新增例外狀況監視](app-insights-asp-net-exceptions.md)
+* [ASP.NET Web 應用程式](app-insights-asp-net.md)
+ * [加入例外狀況監視](app-insights-asp-net-exceptions.md)
  * [加入相依性監視](app-insights-monitor-performance-live-website-now.md)
-* [J2EE web 應用程式](app-insights-java-get-started.md)
+* [J2EE Web 應用程式](app-insights-java-get-started.md)
  * [加入相依性監視](app-insights-java-agent.md)
 
 
@@ -53,10 +52,11 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 按一下圖表以選擇它要顯示的度量，或是加入新圖表並選取其度量：
 
 ![按一下圖形以選擇度量](./media/app-insights-web-monitor-performance/appinsights-61perfchoices.png)
-> [AZURE.NOTE] **取消核取所有度量**可查看所有可供選擇的項目。 度量分為多個群組；當您選取群組的任何成員時，只有該群組的其他成員會出現。
+
+> [AZURE.NOTE] **取消勾選所有度量** 若要查看完整的選取項目所提供。 度量分為多個群組；當您選取群組的任何成員時，只有該群組的其他成員會出現。
 
 
-## <a name="metrics"></a>什麼意義?效能磚和報告
+## <a name="metrics"></a>它們有哪些意義？ 效能磚和報告
 
 您可以取用多種效能度量。 我們從預設顯示在應用程式分頁中的度量開始討論。
 
@@ -95,7 +95,7 @@ HTTP 要求包括頁面、資料及影像的所有 GET 或 POST 要求。
 
 丟出無法攔截之例外狀況的要求計數。
 
-按一下磚可查看特定失敗的詳細資料；選取個別要求可查看要求的詳細資料。
+按一下磚可查看特定失敗的詳細資料；選取個別要求可查看要求的詳細資料。 
 
 系統只會針對各項檢查保留一個具代表性的失敗範例。
 
@@ -126,9 +126,9 @@ HTTP 要求包括頁面、資料及影像的所有 GET 或 POST 要求。
       </Counters>
     </Add>
 
-格式為 `\Counter \Category (執行個體) 」` 若是沒有執行個體的類別， `\Category\Counter`。 若要尋找您的系統中的哪些計數器可用，閱讀 [本簡介](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)。
+格式為 `\Category(instance)\Counter"`，若是沒有執行個體的類別，則為 `\Category\Counter`。 若要尋找您的系統中的哪些計數器可用，閱讀 [本簡介](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)。
 
-`ReportAs` 需要計數器名稱含有下列項目以外的字元: 字母、 圓括號、 斜線、 連字號、 底線、 空格和點。
+若計數器名稱含有下列項目以外的字元，則需要 `ReportAs`：字母、圓角括號、斜線、連字號、底線、空格和點。
 
 如果您指定執行個體，系統收集它做為報告度量的 "CounterInstanceName" 屬性。
 
@@ -150,8 +150,8 @@ HTTP 要求包括頁面、資料及影像的所有 GET 或 POST 要求。
 
 *「例外狀況率和例外狀況度量之間的差異為何？」*
 
-* *例外狀況率*是系統效能計數器。 CLR 會計算所有擲回之已處理和未處理的例外狀況，並依據間隔的長度將總數分割為取樣間隔。 Application Insights SDK 會收集此結果並將它傳送至入口網站。
-* *例外狀況*是在圖表的取樣間隔中由入口網站接收之 TrackException 報告的計數。 它包含只處理的例外狀況，您撰寫 TrackException 呼叫您的程式碼中，而且不會包含所有 [未處理例外狀況](app-insights-asp-net-exceptions.md)。
+* *例外狀況率* 是系統效能計數器。 CLR 會計算所有擲回之已處理和未處理的例外狀況，並依據間隔的長度將總數分割為取樣間隔。 Application Insights SDK 會收集此結果並將它傳送至入口網站。
+* *例外狀況* 是 TrackException 報告取樣間隔的圖表中的入口網站所接收的計數。 它包含只處理的例外狀況，您撰寫 TrackException 呼叫您的程式碼中，而且不會包含所有 [未處理例外狀況](app-insights-asp-net-exceptions.md)。 
 
 ## 設定警示
 
@@ -163,38 +163,39 @@ HTTP 要求包括頁面、資料及影像的所有 GET 或 POST 要求。
 
 請小心注意系統要求您輸入臨界值時所使用的單位。
 
-**我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
+*我沒看到 [新增警示] 按鈕。* -這是一組您具有唯讀存取權的帳戶嗎? 請洽詢帳戶管理員。
 
 ## <a name="diagnosis"></a>診斷問題
 
 以下是幾個尋找及診斷效能問題的訣竅：
 
-* 設定 [web 測試的 ][availability] 通知您的網站故障、 回應異常或速度很慢。
+* 設定 [web 測試][availability] 通知您的網站故障、 回應異常或速度很慢。 
 * 比較要求計數與其他度量，了解失敗或回應過慢的情況是否與負載有關。
-* [插入及搜尋追蹤陳述式 ][diagnostic] 在您的程式碼，以協助找出問題所在。
+* [插入及搜尋追蹤陳述式][diagnostic] 在您的程式碼，以協助找出問題所在。
 
 ## <a name="next"></a>後續步驟
 
-[Web 測試的 ][availability] -您的應用程式定期從全世界傳送 web 要求。
+[Web 測試][availability] -您的應用程式定期從全世界傳送 web 要求。
 
-[擷取及搜尋診斷追蹤 ][diagnostic] -插入追蹤呼叫並詳查結果，以找出問題所在。
+[擷取及搜尋診斷追蹤][diagnostic] -插入追蹤呼叫並詳查結果，以找出問題所在。
 
-[使用情況追蹤 ][usage] -了解使用者如何使用應用程式。
+[使用情況追蹤][usage] -了解使用者如何使用應用程式。
 
-[疑難排解 ][qna] -和問答集
+[疑難排解][qna] -和問答集
 
 ## 影片
 
 [AZURE.VIDEO performance-monitoring-application-insights]
 
+<!--Link references-->
 
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
+[greenbrown]: app-insights-asp-net.md
+[qna]: app-insights-troubleshoot-faq.md
+[redfield]: app-insights-monitor-performance-live-website-now.md
+[start]: app-insights-overview.md
+[usage]: app-insights-web-track-usage.md
 
-
-[availability]: app-insights-monitor-web-app-availability.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[greenbrown]: app-insights-asp-net.md 
-[qna]: app-insights-troubleshoot-faq.md 
-[redfield]: app-insights-monitor-performance-live-website-now.md 
-[start]: app-insights-overview.md 
-[usage]: app-insights-web-track-usage.md 
+ 
 

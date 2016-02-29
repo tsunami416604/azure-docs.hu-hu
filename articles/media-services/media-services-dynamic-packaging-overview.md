@@ -17,10 +17,9 @@
     ms.author="juliako"/>
 
 
+#動態封裝
 
-# 動態封裝
-
-## 概觀
+##概觀
 
 Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS、XBOX、Silverlight、Windows 8) 提供許多媒體來源檔案格式、媒體串流格式和內容保護格式。 這些用戶端各自使用不同的通訊協定，例如 iOS 需要 HTTP 即時串流 (HLS) V4 格式，而 Silverlight 與 Xbox 需要 Smooth Streaming。 如果您有一組自動調整位元速率 (多位元速率) MP4 (ISO Base Media 14496-12) 檔案或一組自動調整位元速率 Smooth Streaming 檔案，想要傳遞給了解 MPEG DASH、HLS 或 Smooth Streaming 的用戶端，應該利用媒體服務動態封裝。
 
@@ -34,9 +33,10 @@ Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS�
 
 ![動態編碼](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
->[AZURE.NOTE]若要利用動態封裝，您必須先取得至少一個串流端點的隨選串流單位，您打算從中傳遞您的內容。 如需詳細資訊，請參閱 [如何調整媒體服務](media-services-manage-origins.md#scale_streaming_endpoints)。
 
-## 常見的案例
+>[AZURE.NOTE]若要利用動態封裝，您必須先從您打算傳遞內容的串流端點取得至少一個隨選串流單元。 如需詳細資訊，請參閱 [如何調整媒體服務](media-services-manage-origins.md#scale_streaming_endpoints)。
+
+##常見的案例
 
 1. 上傳輸入檔案 (稱為夾層檔)。 例如，H.264、 MP4 或 WMV (如需支援格式清單，請參閱 [媒體服務編碼器所支援的格式](media-services-azure-media-encoder-formats))。
 
@@ -48,32 +48,32 @@ Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS�
 
 >[AZURE.NOTE]並非所有的 MP4 檔案格式支援動態封裝，如需詳細資訊，請參閱 [不支援的格式，以取得動態封裝](media-services-dynamic-packaging-overview.md#unsupported_formats)。
 
-## 準備動態串流的資產
+##準備動態串流的資產
 
 若要準備動態串流的資產，您有兩個選項：
 
 - 上傳主檔案，並使用 Azure 媒體編碼器產生 H.264 MP4 自動調整位元速率集。
 - 上傳現有的自動調整位元速率集，並使用 Media Packager 加以驗證。
 
-### 上傳主檔案，並使用 Azure 媒體編碼器產生 H.264 MP4 自動調整位元速率集
+###上傳主檔案，並使用 Azure 媒體編碼器產生 H.264 MP4 自動調整位元速率集
 
 如需如何上傳與編碼資產的相關資訊，請參閱下列文章：
 
 
-使用 **Azure 傳統入口網站**、**.NET** 或 **REST API** 上傳檔案。
+上傳檔案使用 **Azure 傳統入口網站**, ，**.NET** 或 **REST API**。
 
 [AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
-使用 **Azure 傳統入口網站**、**.NET** 或 **REST API**，以 **Azure 媒體編碼器**進行編碼。
+使用 **Azure Media Encoder** 使用 **Azure 傳統入口網站**, ，**.NET**, ，或 **REST API**。
 
 [AZURE.INCLUDE [media-services-selector-encode](../../includes/media-services-selector-encode.md)]
 
 
-### 上傳現有的自動調整位元速率集，並使用 Media Packager 加以驗證
+###上傳現有的自動調整位元速率集，並使用 Media Packager 加以驗證
 
 如果您正在上傳一組不以媒體服務編碼器編碼的自動調整位元速率 MP4 檔案，您通常會想要執行這項工作。  [驗證調適性位元速率 mp4 以外部編碼器編碼](https://msdn.microsoft.com/library/azure/dn750842.aspx) 主題說明如何達成這項工作。
 
-## 將內容串流到用戶端
+##將內容串流到用戶端
 
 如果您有自動調整位元速率集，您就可以藉由建立隨選定位器來發行您的資產，並撰寫 Smooth Steaming、MPEG DASH、HLS 和 HDS 的串流 URL (僅適用於 Adobe PrimeTime/存取被授權者)。
 
@@ -81,31 +81,27 @@ Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS�
 
 [將內容傳遞給客戶概觀](media-services-deliver-content-overview.md)。
 
-使用 **.NET** 或 **REST API** 設定資產傳遞原則。
+設定資產傳遞原則使用 **.NET** 或 **REST API**。
 
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-使用 **Azure 傳統入口網站**或 **.NET** (藉由建立定位器) 發行資產。
+(藉由建立定位器) 發行資產使用 **Azure 傳統入口網站** 或 **.NET**。
 
 [AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
 
 
-## <a id="unsupported_formats"></a>動態封裝不支援的格式
+##<a id="unsupported_formats"></a>動態封裝不支援的格式
 
 動態封裝不支援下列來源檔案格式。
 
 - Dolby digital 加上 mp4 檔案。
 - Dolby digital 加上 smooth 檔案。
 
-## 媒體服務學習路徑
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 

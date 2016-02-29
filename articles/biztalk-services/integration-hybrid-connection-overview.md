@@ -1,6 +1,6 @@
 <properties
     pageTitle="混合式連線概觀 | Microsoft Azure"
-    description="了解混合式連線，包括安全性、TCP 連接埠和支援的組態。MABS，WABS。"
+    description="了解混合式連線，包括安全性、TCP 連接埠和支援的組態。 MABS，WABS。"
     services="biztalk-services"
     documentationCenter=""
     authors="MandiOhlinger"
@@ -17,9 +17,7 @@
     ms.author="mandia"/>
 
 
-
 # 混合式連線概觀
-
 本文介紹混合式連線、列出支援的組態，並列出需要的 TCP 連接埠。
 
 
@@ -27,7 +25,7 @@
 
 混合式連線是 Azure BizTalk 服務的功能。 混合式連線可讓您簡單又方便地將 Azure App Service 中的 Web Apps 功能 (前身為網站) 和 Azure App Service 中的 Mobile Apps 功能 (前身為行動服務)，連線到防火牆後的內部部署資源。
 
-![混合式連線][hcimage]
+![混合式連線][HCImage]
 
 混合式連線的優點包括：
 
@@ -36,7 +34,8 @@
 - 只需要最少的 TCP 連接埠就能存取您的網路。
 - 使用混合式連線的應用程式只存取透過混合式連線發佈的特定內部部署資源。
 - 可以連接到任何使用靜態 TCP 連接埠的內部部署資源，例如 SQL Server、MySQL、HTTP Web API 和大部分的自訂 Web 服務。
-    > [AZURE.NOTE] 目前不支援使用動態連接埠的 TCP 服務 (例如 FTP 被動模式或延伸被動模式)。
+
+    > [AZURE.NOTE] 目前不支援使用動態通訊埠 (例如 FTP 被動模式或延伸被動模式) 的 TCP 架構服務。
 
 - 可以與 Web Apps (.NET、PHP、Java、Python、Node.js) 和 Mobile Apps (Node.js、.NET) 支援的所有架構搭配使用。
 - Web Apps 和 Mobile Apps 能夠以完全相同的方式存取內部部署資源，就像是該 Web 或 Mobile Apps 位於本機網路一樣。 例如，內部部署使用的相同連接字串也可以在 Azure 上使用。
@@ -62,8 +61,8 @@
 
 - SQL Express 具名執行個體必須設定為使用靜態連接埠。 依預設，SQL Express 具名執行個體是使用動態連接埠。
 - SQL Express 預設執行個體使用靜態連接埠，但必須啟用 TCP。 預設不會啟用 TCP。
-- 使用群集或可用性群組時 `MultiSubnetFailover = true` 模式目前不支援。
-- `ApplicationIntent = ReadOnly` 目前不支援。
+- 使用叢集或可用性群組時，暫不支援 `MultiSubnetFailover=true` 模式。
+- 目前不支援 `ApplicationIntent=ReadOnly`。
 - 可能需要 SQL 驗證當做 Azure 應用程式和內部部署 SQL Server 所支援的端對端授權方法。
 
 
@@ -75,19 +74,18 @@
 
 請參閱 [建立和管理混合式連線](integration-hybrid-connection-create-manage.md)。
 
-*應用程式授權與混合式連線分開*。 任何適當的授權方法都可使用。 授權方法視 Azure 雲端和內部部署元件之間支援的端對端授權方法而定。 例如，您的 Azure 應用程式存取內部部署 SQL Server。 在此情況下，SQL 授權可能是端對端支援的授權方法。
+*應用程式授權是混合式連線分開*。 任何適當的授權方法都可使用。 授權方法視 Azure 雲端和內部部署元件之間支援的端對端授權方法而定。 例如，您的 Azure 應用程式存取內部部署 SQL Server。 在此情況下，SQL 授權可能是端對端支援的授權方法。
 
 #### TCP 連接埠
-
 混合式連線只需要您私人網路的輸出 TCP 或 HTTP 連線。 您不需要開啟任何防火牆連接埠，或變更您的網路周邊組態，即可允許任何輸入連線進入您的網路。
 
 混合式連線會使用下列 TCP 通訊埠：
 
- 連接埠| 您為何需要它
+連接埠 | 您為何需要它
 --- | ---
- 9350 - 9354| 這些連接埠用於資料傳輸。服務匯流排轉送管理員會探查連接埠 9350，以判斷 TCP 連線是否可用。如果可用的話，則會假設連接埠 9352 也是可用。資料流量會經過連接埠 9352。<br/><br/>允許對這些連接埠的輸出連線。
- 5671| 當連接埠 9352 用於資料流量時，連接埠 5671 就做為控制通道。<br/><br/>允許對此連接埠的輸出連線。
- 80、443| 這些連接埠用於傳送部分資料要求給 Azure。也，如果連接埠 9352 和 5671 無法使用， *然後* 連接埠 80 和 443 是用於資料傳輸和控制通道的後援連接埠。<br/><br/>允許這些連接埠的輸出連線。<br/><br/>**注意** 不建議使用這些後援連接埠代替其他 TCP 連接埠。HTTP/WebSocket 是做為通訊協定使用，而非資料通道的原生 TCP。這可能會導致效能變低。
+9350 - 9354 | 這些連接埠用於資料傳輸。 服務匯流排轉送管理員會探查連接埠 9350，以判斷 TCP 連線是否可用。 如果可用的話，則會假設連接埠 9352 也是可用。 資料流量會經過連接埠 9352。 <br/><br/>允許對這些連接埠的輸出連線。
+5671 | 當連接埠 9352 用於資料流量時，連接埠 5671 就做為控制通道。 <br/><br/>允許對此連接埠的輸出連線。
+80、443 | 這些連接埠用於傳送部分資料要求給 Azure。 也，如果連接埠 9352 和 5671 無法使用， *然後* 連接埠 80 和 443 是用於資料傳輸和控制通道的後援連接埠。<br/><br/>允許對這些連接埠的輸出連線。 <br/><br/>**請注意** 不建議使用這些後援連接埠代替其他 TCP 連接埠。 HTTP/WebSocket 是做為通訊協定使用，而非資料通道的原生 TCP。 這可能會導致效能變低。
 
 
 
@@ -106,9 +104,8 @@
 [建立 BizTalk 服務: 使用 Azure 入口網站](biztalk-provision-services.md)<br/>
 [BizTalk 服務: 儀表板、 監視和調整索引標籤](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
-
-[hcimage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png 
-[hybridconnectiontab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png 
-[hconpremsetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png 
-[hcmanageconnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png 
+[HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
+[HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
+[HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
+[HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 

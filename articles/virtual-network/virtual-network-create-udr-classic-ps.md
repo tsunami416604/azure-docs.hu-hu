@@ -17,8 +17,7 @@
    ms.date="12/11/2015"
    ms.author="telmos" />
 
-
-# 透過 PowerShell 控制路由和使用虛擬應用裝置 (傳統)
+#透過 PowerShell 控制路由和使用虛擬應用裝置 (傳統) 
 
 [AZURE.INCLUDE [virtual-network-create-udr-classic-selectors-include.md](../../includes/virtual-network-create-udr-classic-selectors-include.md)]
 
@@ -33,10 +32,9 @@
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 ## 建立前端子網路的 UDR
-
 若要根據上述案例建立前端子網路所需的路由表和路由，請依照下列步驟執行。
 
-3. 執行 * *`新增 AzureRouteTable`* * cmdlet 來建立路由表的前端子。
+3. 執行 **`New-AzureRouteTable`** 指令程式可建立前端子網路的路由表。
 
         ```powershell
         New-AzureRouteTable -Name UDR-FrontEnd `
@@ -50,8 +48,8 @@
         ----         --------   -----                          
         UDR-FrontEnd West US    Route table for front end subnet
 
-4. 執行 * *`組 AzureRoute`* * cmdlet 來建立路由表中的路由傳送至後端的子網路 (192.168.2.0/24) 的所有流量上面建立 **FW1** VM (192.168.0.4)。
-
+4. 執行 **`Set-AzureRoute`** 指令程式可在路由表中建立路由傳送至後端的子網路 (192.168.2.0/24) 的所有流量上面建立 **FW1** VM (192.168.0.4)。
+    
         ```powershell
         Get-AzureRouteTable UDR-FrontEnd `
             |Set-AzureRoute -RouteName RouteToBackEnd -AddressPrefix 192.168.2.0/24 `
@@ -69,20 +67,18 @@
                    ----                 --------------    -------------        -------------------
                    RouteToBackEnd       192.168.2.0/24    VirtualAppliance     192.168.0.4  
 
-5. 執行 * *`組 AzureSubnetRouteTable`* * 使用上述指令程式可將路由表關聯建立 **前端** 子網路。
+5. 執行 **`Set-AzureSubnetRouteTable`** 指令程式可將路由表關聯上面建立與 **前端** 子網路。
 
         ```powershell
         Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
             -SubnetName FrontEnd `
             -RouteTableName UDR-FrontEnd
         ```
-
-
+ 
 ## 建立後端子網路的 UDR
-
 若要根據上述案例建立後端子網路所需的路由表和路徑，請依照下列步驟執行。
 
-3. 執行 * *`新增 AzureRouteTable`* * cmdlet 來建立後端的子網路的路由表。
+3. 執行 **`New-AzureRouteTable`** 指令程式可建立後端的子網路的路由表。
 
         ```powershell
         New-AzureRouteTable -Name UDR-BackEnd `
@@ -90,7 +86,7 @@
             -Label "Route table for back end subnet"
         ```
 
-4. 執行 * *`組 AzureRoute`* * 指令程式可在路由表中建立路由上面建立端子 (192.168.1.0/24) 的所有流量傳送至 **FW1** VM (192.168.0.4)。
+4. 執行 **`Set-AzureRoute`** 指令程式可在路由表中建立路由上面建立端子 (192.168.1.0/24) 的所有流量傳送至 **FW1** VM (192.168.0.4)。
 
         ```powershell
         Get-AzureRouteTable UDR-BackEnd `
@@ -99,19 +95,17 @@
             -NextHopIpAddress 192.168.0.4
         ```
 
-5. 執行 * *`組 AzureSubnetRouteTable`* * 使用上述指令程式可將路由表關聯建立 **後端** 子網路。
+5. 執行 **`Set-AzureSubnetRouteTable`** 指令程式可將路由表關聯上面建立與 **後端** 子網路。
 
         ```powershell
         Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
             -SubnetName FrontEnd `
             -RouteTableName UDR-FrontEnd
         ```
-
 ## 在 FW1 VM 上啟用 IP 轉送
-
 若要在 FW1 VM 中啟用 IP 轉送，請依照下列步驟執行。
 
-1. 執行 * *`Get AzureIPForwarding`* * cmdlet 來檢查 IP 轉送的狀態
+1. 執行 **`Get-AzureIPForwarding`** 指令程式來檢查 IP 轉送的狀態
 
         Get-AzureVM -Name FW1 -ServiceName TestRGFW `
             | Get-AzureIPForwarding
@@ -120,12 +114,7 @@
 
         Disabled
 
-2. 執行 * *`組 AzureIPForwarding`** 命令，以啟用 IP 轉送的 * FW1* VM。
+2. 執行 **`Set-AzureIPForwarding`** 命令以啟用 IP 轉送的 *FW1* VM。
 
         Get-AzureVM -Name FW1 -ServiceName TestRGFW `
             | Set-AzureIPForwarding -Enable
-
-
-
-
-

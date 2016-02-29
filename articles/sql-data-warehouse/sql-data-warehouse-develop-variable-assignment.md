@@ -16,10 +16,8 @@
    ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
-
 # 在 SQL 資料倉儲中指派變數
-
-SQL 資料倉儲中的變數會設定使用 `DECLARE` 陳述式或 `設定` 陳述式。
+SQL 資料倉儲中的變數是使用 `DECLARE` 陳述式或 `SET` 陳述式進行設定的。 
 
 下列各項是設定變數值的完全有效方式：
 
@@ -32,7 +30,7 @@ DECLARE @v  int = 0
 ;
 ```
 
-您也可以使用 DECLARE，一次設定一個以上的變數。 您不能使用 `選取` 或 `更新` 若要這樣做:
+您也可以使用 DECLARE，一次設定一個以上的變數。 您可以使用 `SELECT` 或 `UPDATE` 來執行此作業：
 
 ```
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -40,7 +38,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-您無法在相同的 DECLARE 陳述式中初始化並使用變數。 為了說明這點，**不**允許以下範例，因為 @p1 已在相同的 DECLARE 陳述式中初始化和使用。 這會導致錯誤。
+您無法在相同的 DECLARE 陳述式中初始化並使用變數。 為了說明這的點，下列範例是 **不** 允許，因為 @p1 已初始化和相同的 DECLARE 陳述式中使用。 這會導致錯誤。
 
 ```
 DECLARE @p1 int = 0
@@ -49,7 +47,6 @@ DECLARE @p1 int = 0
 ```
 
 ## 使用 SET 設定值
-
 SET 是設定單一變數時很常見的方法。
 
 下列所有範例都是使用 SET 設定變數的有效方式：
@@ -64,23 +61,18 @@ SET     @v +=1;
 您一次只能使用 SET 設定一個變數。 不過，如上所示，可允許複合運算子。
 
 ## 限制
-
 您無法使用 SELECT 或 UPDATE 進行變數指派。
 
 
 ## 後續步驟
+如需更多開發秘訣，請參閱 [開發概觀] []。
 
-如需更多開發秘訣，請參閱 [開發概觀 []][]。
+<!--Image references-->
 
+<!--Article references-->
+[development overview]: sql-data-warehouse-overview-develop.md
 
+<!--MSDN references-->
 
-
-
-
-
-
-
-
-
-[development overview]: sql-data-warehouse-overview-develop.md 
+<!--Other Web references-->
 

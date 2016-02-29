@@ -16,7 +16,6 @@
    ms.date="09/03/2015"
    ms.author="masnider"/>
 
-
 # 描述 Service Fabric 叢集
 
 Service Fabric 資源平衡器可提供數種機制來描述叢集。 在執行階段期間，資源平衡器會使用這些資訊，以確保放置服務的方式可保障在叢集中執行之服務的高可用性，以及叢集資源的最大使用率。 資源平衡器用來描述叢集的功能包括容錯網域、升級網域、節點屬性和節點容量。 除此之外，資源平衡器有一些可以調校其效能的組態選項。
@@ -27,11 +26,11 @@ Service Fabric 資源平衡器可提供數種機制來描述叢集。 在執行�
 
 容錯網域可讓叢集管理員定義可能在相同時間因為共用實體的相依性 (例如電源和網路來源) 而發生錯誤的實體節點。 容錯網域通常代表這些共用相依性的相關階層，包括可能從容錯網域樹狀目錄中的較高點一起發生錯誤的更多節點。 下圖顯示依據階層式容錯網域來架構的數個節點 (以資料中心、機架和刀鋒排序)。
 
-![容錯網域][image1]
+![容錯網域][Image1]
 
  在執行階段期間，Service Fabric 資源管理員會考慮叢集中的容錯網域，並嘗試針對指定的服務分散複本，以免將它們全都放在不同的容錯網域中。 在任何一個容錯網域發生錯誤時，此程序有助確保該服務和其狀態的可用性沒有遭到破壞。 下圖顯示即使有足夠的空間將服務複本集中在一個或兩個網域中，仍會將其分散於數個容錯網域中。
 
-![容錯網域][image2]
+![容錯網域][Image2]
 
 容錯網域是在叢集資訊清單內進行設定。 每個節點皆定義為位於特定的容錯網域內。 在執行階段期間，資源管理員會結合全部節點的報告，以開發系統中所有容錯網域的完整概觀。
 
@@ -43,7 +42,7 @@ Service Fabric 資源平衡器可提供數種機制來描述叢集。 在執行�
 
 基於這些理由，資源管理員會收集升級網域的資訊，並將複本分散至叢集中的升級網域，就像容錯網域一樣。 升級網域不一定與容錯網域一對一對應，但通常也不應該用來一對一對應。 下圖顯示位於先前定義之容錯網域上的數個升級網域層。 資源管理員仍會將複本分散到網域中，以免複本集中在某些容錯網域或升級網域中，藉此確保服務的高可用性，不受升級或叢集中的錯誤所影響。
 
-![升級網域][image3]
+![升級網域][Image3]
 
 升級網域和容錯網域都會設為叢集資訊清單內節點定義的一部分，如下所示：
 
@@ -63,12 +62,11 @@ Service Fabric 資源平衡器可提供數種機制來描述叢集。 在執行�
 - 在 Azure 部署中，容錯網域和升級網域是由 Azure 指派；因此，您適用的節點與 Azure 基礎結構選項中的角色定義不包含容錯網域或升級網域資訊。
 
 ### 節點屬性
-
 節點屬性是使用者定義的索引鍵/值組，其可針對指定節點提供額外的中繼資料。 節點屬性的範例包括節點是否有硬碟機或視訊卡，其硬碟機的磁針數、核心和其他實體屬性。
 
 節點屬性也可用來指定較抽象的屬性，以協助放置原則決策。 例如，您可將「顏色」指派給叢集內的數個節點，做為分割成不同叢集區段的依據。 程式碼範例顯示，節點的節點屬性是透過叢集資訊清單設為節點類型定義的一部分，其之後可套用到叢集內的多個節點。
 
-NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值。 Service Fabric 會自動為您提供預設值，以便您在建立服務時使用這些值。 使用者不應使用相同的名稱來指定自己的位置屬性。
+NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值。  Service Fabric 會自動為您提供預設值，以便您在建立服務時使用這些值。 使用者不應使用相同的名稱來指定自己的位置屬性。
 
 ``` xml
 <NodeTypes>
@@ -98,7 +96,6 @@ NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值�
 在執行階段期間，資源平衡器會使用節點屬性資訊，以確保需要特定功能的服務會放在適當的節點上。
 
 ### 節點容量
-
 節點容量是一種索引鍵/值組，用來定義特定節點可以使用的特定資源名稱和數量。 程式碼範例顯示某個節點，它具有名為 "MemoryInMb" 的度量容量，而且預設有 2048 MB 的可用記憶體。 容量是透過叢集資訊清單來定義，就像節點屬性一樣。
 
 ``` xml
@@ -109,7 +106,7 @@ NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值�
   </Capacities>
 </NodeType>
 ```
-![節點容量][image4]
+![節點容量][Image4]
 
 由於在節點上執行的服務，可以透過報告負載來更新其容量需求，因此資源平衡器會定期檢查節點是否達到或超過其度量的任何容量。 如果是，資源平衡器可將服務移至負載較少的節點，以減少資源爭用並提升整體效能和使用率。
 
@@ -126,7 +123,7 @@ NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值�
 
 下圖顯示兩個範例，其中針對指定度量的平衡臨界值是 10。
 
-![平衡臨界值][image5]
+![平衡臨界值][Image5]
 
 請注意，在這個階段中，節點上的「使用率」並不會考慮節點容量所判斷的節點大小，而只會考慮針對特定度量目前報告的節點絕對使用量。
 
@@ -142,7 +139,7 @@ NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值�
 
 - 活動臨界值可限制資源平衡器執行的頻率，方法是限制資源平衡器在出現大量絕對負載時的回應情況。 如此一來，如果以特定的度量來說，叢集不是非常忙碌，資源平衡器就不會執行，即使叢集內有少量度量非常不平衡亦然。 這種方法可防止進行實質效益很低的叢集重新平衡時帶來的資源浪費。 下圖顯示度量的平衡臨界值為 4，且活動臨界值為 1536。
 
-![活動臨界值][image6]
+![活動臨界值][Image6]
 請注意，活動和平衡臨界值必須超過相同的度量，才會執行資源平衡器。 觸發兩個不同的度量之一時，並不會執行資源平衡器。
 
 程式碼範例顯示，如同平衡臨界值，活動臨界值是透過叢集資訊清單內的 FabricSettings 項目，針對每個度量進行設定。
@@ -182,17 +179,17 @@ NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值�
 </Section>
 ```
 
-
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
 如需詳細資訊: [資源平衡器架構](service-fabric-resource-balancer-architecture.md)
 
 
-
-[image1]: media/service-fabric-resource-balancer-cluster-description/FD1.png 
-[image2]: media/service-fabric-resource-balancer-cluster-description/FD2.png 
-[image3]: media/service-fabric-resource-balancer-cluster-description/UD.png 
-[image4]: media/service-fabric-resource-balancer-cluster-description/NC.png 
-[image5]: media/service-fabric-resource-balancer-cluster-description/Config.png 
-[image6]: media/service-fabric-resource-balancer-cluster-description/Thresholds.png 
+[Image1]: media/service-fabric-resource-balancer-cluster-description/FD1.png
+[Image2]: media/service-fabric-resource-balancer-cluster-description/FD2.png
+[Image3]: media/service-fabric-resource-balancer-cluster-description/UD.png
+[Image4]: media/service-fabric-resource-balancer-cluster-description/NC.png
+[Image5]: media/service-fabric-resource-balancer-cluster-description/Config.png
+[Image6]: media/service-fabric-resource-balancer-cluster-description/Thresholds.png
+ 
 

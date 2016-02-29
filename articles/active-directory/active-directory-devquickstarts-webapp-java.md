@@ -17,12 +17,11 @@
     ms.author="brandwe"/>
 
 
-
 # 使用 Azure AD 進行 Java Web 應用程式登入與登出
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直接，只需幾行的程式碼便可提供單一登入和登出。 在 Java Web 應用程式中，您可以使用 Microsoft 的 ADAL4J 社群導向實作來完成這項作業。
+Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直接，只需幾行的程式碼便可提供單一登入和登出。  在 Java Web 應用程式中，您可以使用 Microsoft 的 ADAL4J 社群導向實作來完成這項作業。
 
   這裡我們將使用 ADAL4J 來:
 - 使用者登入應用程式使用 Azure AD 作為身分識別提供者。
@@ -36,30 +35,28 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
 3. 使用 ADAL4J 程式庫向 Azure AD 發出登入和登出要求。
 4. 列印出使用者的相關資料。
 
-若要開始， [下載應用程式基本架構](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) 或 [下載完整的範例](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\/archive/complete.zip)。 您還需要一個可以註冊應用程式的 Azure AD 租用戶。 如果您還沒有的話， [了解如何取得租用](active-directory-howto-tenant.md)。
+若要開始， [下載應用程式基本架構](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) 或 [下載完整的範例](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\/archive/complete.zip)。  您還需要一個可以註冊應用程式的 Azure AD 租用戶。  如果您還沒有的話， [了解如何取得租用](active-directory-howto-tenant.md)。
 
 ## 1.向 Azure AD 註冊應用程式
-
 若要啟用應用程式來驗證使用者，您必須先要在您的租用戶中註冊這個新的應用程式。
 
 - 登入 Azure 管理入口網站。
-- 在左側導覽中按一下 **Active Directory**。
+- 在左側導覽中，按一下 **Active Directory**。
 - 選取您要註冊應用程式的租用戶。
-- 按一下 [**應用程式**] 索引標籤，然後按一下最下面抽屜的 [新增]。
-- 遵照提示進行，並建立新的 **Web 應用程式和/或 WebAPI**。
-    - 應用程式的 [**名稱**] 將對使用者說明您的應用程式
-    - [**登入 URL**] 是指應用程式的基底 URL。 基本架構的預設值是 `http://localhost:8080//adal4jsample/`。
-    - [**應用程式識別碼 URI**] 是指應用程式的唯一識別碼。慣例會使用 `https://<tenant-domain>/<app-name>`, ，例如: `http://localhost:8080//adal4jsample/`
-- 完成註冊後，AAD 會為您的應用程式指派一個唯一用戶端識別碼。 您在後續章節中將會用到這個值，所以請從 [設定] 索引標籤中複製此值。
+- 按一下 [ **應用程式** ] 索引標籤，然後按一下 [新增抽屜。
+- 遵循提示，並建立新 **Web 應用程式和/或 WebAPI**。
+    -  **名稱** 應用程式將說明您的應用程式使用者
+    -  **登入 URL** 是您的應用程式基底 URL。  基本架構的預設值是 `http://localhost:8080/adal4jsample/`。
+    -  **應用程式識別碼 URI** 是您的應用程式的唯一識別碼。  慣例會使用 `https://<tenant-domain>/<app-name>`，例如：`http://localhost:8080/adal4jsample/`
+- 完成註冊後，AAD 會為您的應用程式指派一個唯一用戶端識別碼。  您在後續章節中將會用到這個值，所以請從 [設定] 索引標籤中複製此值。
 
-進入入口網站後，為您的應用程式建立「應用程式密碼」****並複製下來。 稍後您將會用到此資訊。
+一旦您的應用程式的入口網站中建立 **應用程式密碼** 應用程式並將它複製下來。  稍後您將會用到此資訊。
 
 
 ## 2.使用 Maven 設定您的應用程式以使用 ADAL4J 程式庫和必要條件
+在這裡，我們將設定 ADAL4J 以使用 OpenID Connect 驗證通訊協定。  ADAL4J 將用來發出登入和登出要求、管理使用者的工作階段，以及取得使用者相關資訊等其他作業。
 
-在這裡，我們將設定 ADAL4J 以使用 OpenID Connect 驗證通訊協定。 ADAL4J 將用來發出登入和登出要求、管理使用者的工作階段，以及取得使用者相關資訊等其他作業。
-
--   在您的專案根目錄中，開啟/建立 `pom.xml` 並找出 `/ / TODO: 提供適用於 Maven 的相依性` 並取代為下列:
+-   在您的專案根目錄中，開啟/建立 `pom.xml` 並找到 `// TODO: provide dependencies for Maven`，然後以下列取代：
 
 ```Java
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -102,7 +99,7 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.5</version>
         </dependency>
-        
+        <!-- Spring 3 dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -168,14 +165,15 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
     </build>
 
 </project>
+
 ```
 
 
 ## 3.建立 Java Web 應用程式檔案 (WEB-INF)
 
-在這裡，我們將設定 Java Web 應用程式使用 OpenID Connect 驗證通訊協定。 ADAL4J 程式庫將用來發出登入和登出要求、管理使用者的工作階段，以及取得使用者相關資訊等其他作業。
+在這裡，我們將設定 Java Web 應用程式使用 OpenID Connect 驗證通訊協定。  ADAL4J 程式庫將用來發出登入和登出要求、管理使用者的工作階段，以及取得使用者相關資訊等其他作業。
 
--   若要開始，請開啟 `web.xml` 檔案位於 `\webapp\WEB-INF\`, ，並在 xml 中輸入您的應用程式組態值。
+-   若要開始，請開啟 `\webapp\WEB-INF\` 下的 `web.xml` 檔案，並在 XML 中輸入應用程式的組態值。
 
 檔案看起來應該如下所示：
 
@@ -232,6 +230,7 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 </web-app>
+
 ```
 
 
@@ -240,10 +239,11 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
     - The `YOUR_TENANT_NAME` is the **tenant name** of your app, e.g. contoso.onmicrosoft.com
 
 接受其餘的組態參數。
-> [AZURE.NOTE]
-從 XML 檔案，您可以看到我們要撰寫呼叫 JSP/Servlet webapp `mvc 發送器` ，將會使用 `BasicFilter` 每當我們造訪 / 安全 URL。 您會在我們編寫的其餘相同程式碼中看到我們使用 /secure 做為受保護內容的所在的位置，並且將會強制向 Azure Active Directory 進行驗證。
 
--   接下來，建立 `mvc-發送器-servlet.xml` 檔案位於 `\webapp\WEB-INF\`, ，並輸入下列命令:
+> [AZURE.NOTE]
+您可以從 XML 檔案中看到，我們要編寫一個名為 `mvc-dispatcher` 的 JSP/Servlet Web 應用程式，該應用程式會在我們瀏覽 /secure URL 時使用 `BasicFilter`。 您會在我們編寫的其餘相同程式碼中看到我們使用 /secure 做為受保護內容的所在的位置，並且將會強制向 Azure Active Directory 進行驗證。
+
+-   接下來，在 `\webapp\WEB-INF\` 下建立 `mvc-dispatcher-servlet.xml` 檔案，並輸入下列：
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -276,11 +276,11 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
 
 我們在 WEB-INF 中 Web 應用程式的設定目前只完成了一半。 接下來，我們必須建立 Web 應用程式將會執行的實際 Java Server Pages 檔案 (已經在組態中提示)。
 
-如果您記得，我們說過 Java 在我們的 xml 組態檔，裡面已經有 `/` .jsp 檔案載入的資源和 `/ 安全` 我們呼叫資源應該通過濾波器 `BasicFilter`。
+如果您記得，我們已在 XML 組態檔案中告知 Java，我們有個應該載入 .jsp 檔案的 `/` 資源，以及應該通過稱為 `BasicFilter` 之篩選器的 `/secure` 資源。 
 
 我們現在來製作那些項目。
 
--   若要開始，建立 `index.jsp` 檔案位於 `\webapp\`, ，和剪下/貼上下列:
+-   首先，請在 `\webapp\` 下建立 `index.jsp` 檔案，並剪下/貼上下列內容：
 
 ```jsp
 <html>
@@ -291,11 +291,12 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
     </ul>
 </body>
 </html>
+
 ```
 
 這只會重新導向至我們的篩選條件保護的安全的頁面。
 
-- 接下來，在相同的目錄可讓建立 `error.jsp` 攔截可能會發生任何錯誤的檔案:
+- 接下來，在相同的目錄中建立 `error.jsp` 檔案，以攔截可能會發生的任何錯誤：
 
 ```jsp
 <html>
@@ -311,9 +312,9 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
 </html>
 ```
 
-- 最後，現在讓我們建立我們想要建立資料夾之下的該安全網頁 `\webapp` 呼叫 `\secure` 使目錄我們現在 `\webapp\secure`。
+- 最後，在 `\webapp` 下建立稱為 `\secure` 的資料夾，以建立我們需要的安全網頁，如此一來，目錄即為 `\webapp\secure`。 
 
-- 在此目錄中，我們接著建立 `aad.jsp` 檔案，然後剪下/貼上下列:
+- 在此目錄內，接著建立 `aad.jsp` 檔案，並剪下/貼上下列內容：
 
 ```jsp
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -342,7 +343,7 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
 </html>
 ```
 
-您會看到此頁面會重新導向到特定的要求，以讀取，然後執行使用我們 BasicFilter servlet `ADAJ4J` 程式庫。 非常簡單吧？
+您會看到此頁面會重新導向至我們的 BasicFilter Servlet 將會讀取的特定要求，並接著使用 `ADAJ4J` 程式庫執行。 非常簡單吧？
 
 當然，我們現在需要設定我們的 Java 檔案，以便 Servlet 可以執行其工作。
 
@@ -358,11 +359,11 @@ Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直
 
 讓我們編寫一些 Java 檔案，為我們執行這項工作：
 
-1. 在稱為 'adal4jsample' 的根目錄中建立資料夾來儲存我們所有的 Java 檔案。
+1. 在稱為 'adal4jsample' 的根目錄中建立資料夾來儲存我們所有的 Java 檔案。 
 
-我們將使用命名空間 `com.microsoft.aad.adal4jsample` 我們的 java 檔案中。 大部分的 Ide 建立此巢狀的資料夾結構 (例如 `/com/microsoft/aad/adal4jsample`)。 您可以隨意這樣做，但不必要。
+我們將在 Java 檔案中使用命名空間 `com.microsoft.aad.adal4jsample`。 大部分的 IDE 會為此建立巢狀的資料夾結構 (例如 `/com/microsoft/aad/adal4jsample`)。 您可以隨意這樣做，但不必要。
 
-2. 在此資料夾中，建立一個叫做檔案 `JSONHelper.java` ，我們將用來幫助我們從 JSON 資料，從我們的語彙基元剖析。 您可以從下面剪下/貼上：
+2. 在這個資料夾內，建立名為 `JSONHelper.java` 的檔案，我們會用它來幫助剖析來自我們的權杖的 JSON 資料。 您可以從下面剪下/貼上：
 
 ```Java
 
@@ -582,9 +583,10 @@ public class JSONHelper {
     }
 
 }
+
 ```
 
-3. 接下來，建立名為的檔案 `HttpClientHelper.java` ，我們將用來協助我們剖析我們 AAD 端點的 HTTP 資料來源。 您可以從下面剪下/貼上：
+3. 下一步，建立名為 `HttpClientHelper.java` 的檔案，我們會用它來幫助剖析來自我們的 AAD 端點的 HTTP 資料。 您可以從下面剪下/貼上：
 
 ```Java
 
@@ -737,13 +739,14 @@ public class HttpClientHelper {
     }
 
 }
+
 ```
 
 ## 6.建立 Java 圖形 API 模型檔案 (適用於 BasicFilter MVC)
 
-如以上所述，我們將使用圖形 API 來取得有關所登入使用者的資料。 為了讓我們順利進行，我們應該建立一個代表**目錄物件**的檔案以及一個代表**使用者**的個別檔案，如此便可以使用 Java 的 OO 模式。
+如以上所述，我們將使用圖形 API 來取得有關所登入使用者的資料。 為了要能夠讓我們輕鬆我們應該建立這兩個檔案，以代表 **目錄物件** 和個別的檔案，以代表 **使用者** ，以便可以使用 Java 的 OO 模式。
 
-1. 建立檔案，稱為 `DirectoryObject.java` ，我們將用來儲存有關任何 DirectoryObject (您可以隨意使用這稍後您就可以執行任何其他圖形查詢) 的基本資料。 您可以從下面剪下/貼上：
+1. 建立名為 `DirectoryObject.java` 的檔案，我們將用它來儲存有關任何 DirectoryObject 的基本資料 (您稍後可以隨意使用它執行任何其他圖形查詢)。 您可以從下面剪下/貼上：
 
 ```Java
 
@@ -754,17 +757,17 @@ package com.microsoft.aad.adal4jsample;
  *
  */
 public abstract class DirectoryObject {
-
+    
     public DirectoryObject() {
         super();
     }
-
+    
     /**
      * 
      * @return
      */
     public abstract String getObjectId();
-
+    
     /**
      * @param objectId
      */
@@ -781,7 +784,7 @@ public abstract class DirectoryObject {
      * @param objectType
      */
     public abstract void setObjectType(String objectType);
-
+    
     /**
      * 
      * @return
@@ -795,9 +798,10 @@ public abstract class DirectoryObject {
     public abstract void setDisplayName(String displayName);
 
 }
+
 ```
 
-2. 建立檔案，稱為 `User.java` ，我們將用來儲存有關目錄中的任何使用者的基本資料。 重申，這是用於目錄資料的基本 getter/setter，因此您可以從下面剪下/貼上：
+2. 建立名為 `User.java` 的檔案，我們將用它來儲存有關目錄中的任何使用者的基本資料。 重申，這是用於目錄資料的基本 getter/setter，因此您可以從下面剪下/貼上：
 
 ```Java
 
@@ -816,7 +820,7 @@ import org.json.JSONObject;
  */
 @XmlRootElement
 public class User extends DirectoryObject{
-
+    
     // The following are the individual private members of a User object that holds
     // a particular simple attribute of an User object.
     protected String objectId;
@@ -852,17 +856,17 @@ public class User extends DirectoryObject{
      */
     // managerDisplayname of this user
     protected String managerDisplayname;
-
+    
     // The directReports holds a list of directReports
     private ArrayList<User> directReports;
-
+    
     // The groups holds a list of group entity this user belongs to. 
     private ArrayList<Group> groups;
-
+    
     // The roles holds a list of role entity this user belongs to. 
     private ArrayList<Group> roles;
-
-
+    
+    
     /**
      * The constructor for the User class. Initializes the dynamic lists and managerDisplayname variables.
      */
@@ -892,7 +896,7 @@ public class User extends DirectoryObject{
     public String getObjectId() {
         return objectId;
     }
-
+    
     /**
      * @param objectId The objectId to set to this User object.
      */
@@ -929,7 +933,7 @@ public class User extends DirectoryObject{
         this.userPrincipalName = userPrincipalName;
     }
 
-
+    
     /**
      * @return The usageLocation of this User.
      */
@@ -1069,7 +1073,7 @@ public class User extends DirectoryObject{
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
-
+    
     /**
      * @return The Password of this User.
      */
@@ -1097,7 +1101,7 @@ public class User extends DirectoryObject{
     public void setMail(String mail) {
         this.mail = mail;
     }
-
+    
     /**
      * @return The MailNickname of this User.
      */
@@ -1252,7 +1256,7 @@ public class User extends DirectoryObject{
     public void setAccountEnabled(String accountEnabled) {
         this.accountEnabled = accountEnabled;
     }
-
+    
     public boolean isIsDeleted() {
         return this.isDeleted;
     }
@@ -1265,11 +1269,11 @@ public class User extends DirectoryObject{
     public String toString() {
         return new JSONObject(this).toString();
     }
-
+    
     public String getManagerDisplayname(){
         return managerDisplayname;
     }
-
+    
     public void setManagerDisplayname(String managerDisplayname){
         this.managerDisplayname = managerDisplayname;
     }
@@ -1312,17 +1316,18 @@ public class User extends DirectoryObject{
 //  }
 //
 //}
+
 ```
 
 ## 7.建立驗證模型/控制器檔案 (適用於 BasicFilter)
 
-沒錯，Java 有些累贅，但我們就快完成了。 旁邊最後，我們撰寫 BasicFilter servlet，以處理要求之前，我們要撰寫一些更多的協助程式檔案 `ADAL4J` 需要程式庫。
+沒錯，Java 有些累贅，但我們就快完成了。 在進行最後一個步驟之前，先編寫更多 `ADAL4J` 程式庫所需的協助程式檔案，再編寫 BasicFilter Servlet 來處理我們的要求。 
 
-1. 建立檔案，稱為 `AuthHelper.java` 讓我們來判斷使用的登入的狀態，我們將使用的方法。 其中包含：
+1. 建立名為 `AuthHelper.java` 的檔案，這可提供我們用來判斷登入的使用者狀態的方法。 其中包含：
 
-- `isauthenticated ()` 方法會傳回與否，如果要使用者登入
-- `containsAuthenticationData()` 這將會告訴我們語彙基元，是否有資料，或沒有
-- `isAuthenticationSuccessful()` 這會告訴我們，驗證是否成功的使用者。
+- `isAuthenticated()` 方法，可傳回使用者是否登入
+- `containsAuthenticationData()`，可告訴我們是否權杖是否具有資料
+- `isAuthenticationSuccessful()`，可告訴我們是否成功驗證使用者。
 
 剪下/貼上下列程式碼：
 
@@ -1372,7 +1377,7 @@ public final class AuthHelper {
 }
 ```
 
-2. 建立檔案，稱為 `AuthParameterNames.java` 讓我們一些不可變的變數 `ADAL4J` 需要。 剪下/貼上下列內容：
+2. 建立名為 `AuthParameterNames.java` 的檔案，這可提供我們一些 `ADAL4J` 將會需要的不可變變數。 剪下/貼上下列內容：
 
 ```Java
 package com.microsoft.aad.adal4jsample;
@@ -1390,7 +1395,7 @@ public final class AuthParameterNames {
 }
 ```
 
-3. 最後，建立名為的檔案 `AadController.java` 這是我們將提供給我們 JSP 控制器，並公開 (expose) 的 MVC 模式的控制器 `aad 保護` 我們的應用程式的 URL 端點。 此外，我們也會將圖形查詢放在這個檔案中。
+3. 最後，建立名為 `AadController.java` 的檔案，這是我們 MVC 模式的控制器，它將提供我們 JSP 控制器，並公開我們的應用程式 `secure/aad` URL 端點。 此外，我們也會將圖形查詢放在這個檔案中。
 
 剪下/貼上下列項目：
 
@@ -1466,13 +1471,14 @@ public class AadController {
     }
 
 }
+
 ```
 
 ## 8.建立 BasicFilter 檔案 (適用於 BasicFilter MVC)
 
 最後，我們準備要建立 BasicFilter 檔案，以從我們的檢視 (JSP 檔案) 處理我們的要求。
 
-建立檔案，稱為 `BasicFilter.java` 其中包含下列:
+建立名為 `BasicFilter.java` 的檔案，其中包含下列內容：
 
 ```Java
 
@@ -1714,37 +1720,34 @@ public class BasicFilter implements Filter {
 }
 ```
 
-這個 servlet 公開的所有方法的 `ADAL4J` 預期從我們的應用程式執行。 其中包括：
+此 Servlet 會公開 `ADAL4J` 預期來自我們的應用程式用以執行的所有方法。 其中包括：
 
-- `getAccessTokenFromClientCredentials()` -從我們的密碼，取得存取權杖
-- `getAccessTokenFromRefreshToken()` -從重新整理權杖取得存取權杖
-- `getAccessToken()` -從 OpenID Connect 的流程 (其中，我們使用)，取得存取權杖
-- `createSessionPrincipal()` -建立的原則，我們使用 Graph API 存取
-- `getRedirectUrl()` -取得 redirectURL，它與您在入口網站輸入的值做比較。
+- `getAccessTokenFromClientCredentials()` - 從我們的密碼取得存取權杖
+- `getAccessTokenFromRefreshToken()` - 從重新整理權杖中取得存取權杖
+- `getAccessToken()` - 從我們所使用的 OpenID Connect 流程取得存取權杖
+- `createSessionPrincipal()` - 建立我們使用圖形 API 存取的主體
+- `getRedirectUrl()` - 取得重新導向 URL，以將它與您在入口網站輸入的值相比較。
 
-## 在 Tomcat 中編譯和執行範例
+##在 Tomcat 中編譯和執行範例
 
-寫出變更至根目錄，然後執行下列命令來建立此範例只是放在一起使用 `maven`。 這會使用 `pom.xml` 您所撰寫的相依性的檔案。
+變更回根目錄，並執行下列命令來建置您剛剛使用 `maven` 組成的範例。 這將會使用您針對相依性所撰寫的 `pom.xml` 檔案。
 
-`$ mvn 封裝`
+`$ mvn package`
 
-您現在應該會有 `adal4jsample.war` 檔案位於您 `/目標` 目錄。 您可以在 Tomcat 容器中部署該檔案並造訪 URL
+您的 `/targets` 目錄中現在應包含 `adal4jsample.war` 檔案。 您可以在 Tomcat 容器中部署該檔案並造訪 URL 
 
-`http://localhost:8080//adal4jsample /`
+`http://localhost:8080/adal4jsample/`
+
 
 > [AZURE.NOTE] 
-使用最新的 Tomcat 伺服器部署 WAR 非常容易。 只要瀏覽至 `http://localhost:8080//管理員/` ，並遵循指示進行上傳您 `' adal4jsample.war` 檔案。 它會為您自動部署正確的端點。
+使用最新的 Tomcat 伺服器部署 WAR 非常容易。 只要瀏覽至 `http://localhost:8080/manager/` ，並遵循指示進行上傳您 ' adal4jsample.war' 檔案。 它會為您自動部署正確的端點。
 
-## 後續步驟
+##後續步驟
 
-恭喜！ 您現在有一個可運作的 Java 應用程式，能夠驗證使用者、使用 OAuth 2.0 安全地呼叫 Web API，以及取得使用者的基本資訊。 如果您還沒有這麼做，現在是將一些使用者植入租用戶的時候。
+恭喜！ 您現在有一個可運作的 Java 應用程式，能夠驗證使用者、使用 OAuth 2.0 安全地呼叫 Web API，以及取得使用者的基本資訊。  如果您還沒有這麼做，現在是將一些使用者植入租用戶的時候。
 
 (不含您的設定值) 已完成的範例供您參考 [依現狀的.zip](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip), ，或您可以從 GitHub 複製它:
 
-`git 複製-分支完成 https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git`
-
-
-
-
+```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 
 

@@ -18,8 +18,7 @@
     ms.author="rasquill"/>
 
 
-
-# 如何登入執行 Linux 的虛擬機器
+#如何登入執行 Linux 的虛擬機器 #
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [資源管理員部署模型](virtual-machines-linux-tutorial-portal-rm.md)。
 
@@ -33,13 +32,13 @@
 
 此程序說明如何使用 PuTTY 程式來存取虛擬機器。
 
-1. 尋找 **主機名稱** 和 **連接埠資訊** 從 [管理入口網站](http://manage.windowsazure.com)。 您可以從虛擬機器的儀表板中找到您需要的資訊。 請按一下虛擬機器名稱，然後在儀表板的 [Quick Glance]**** 區段中尋找 [SSH Details]****。
+1. 尋找 **主機名稱** 和 **連接埠資訊** 從 [管理入口網站](http://manage.windowsazure.com)。 您可以從虛擬機器的儀表板中找到您需要的資訊。 按一下 [虛擬機器名稱，並尋找 **SSH 詳細資料** 中 **快速概覽** 儀表板] 區段。
 
     ![取得 SSH 詳細資料](./media/virtual-machines-linux-how-to-log-on/sshdetails.png)
 
 2. 開啟 PuTTY 程式。
 
-3. 輸入您從儀表板收集的主機名稱和連接埠資訊，然後按一下 [開啟]****。
+3. 輸入主機名稱和連接埠收集的資訊，您從儀表板]，然後按一下 **開啟**。
 
     ![開啟 PuTTY](./media/virtual-machines-linux-how-to-log-on/putty.png)
 
@@ -47,11 +46,10 @@
 
     ![登入虛擬機器](./media/virtual-machines-linux-how-to-log-on/sshlogin.png)
 
->[AZURE.NOTE] VMAccess 擴充功能可以在您忘記 SSH 金鑰或密碼時幫助您重設。 如果忘記使用者名稱，您可以使用擴充功能，以 sudo 權限建立新的使用者名稱。 如需指示，請參閱 [如何重設密碼或 SSH 為 Linux 虛擬機器]。
+>[AZURE.NOTE] VMAccess 擴充功能可協助您如果您忘記重設 SSH 金鑰或密碼。 如果忘記使用者名稱，您可以使用擴充功能，以 sudo 權限建立新的使用者名稱。 如需指示，請參閱 [如何重設密碼或 SSH 為 Linux 虛擬機器]。
 
 您現在可以開始使用虛擬機器，就如同操作任何其他伺服器一樣。
 
-
-
-[how to reset a password or ssh for linux virtual machines]: http://go.microsoft.com/fwlink/p/?LinkId=512138 
+<!-- LINKS -->
+[How to Reset a Password or SSH for Linux Virtual Machines]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 

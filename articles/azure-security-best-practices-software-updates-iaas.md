@@ -1,6 +1,6 @@
 <properties
    pageTitle="Microsoft Azure IaaS 上軟體更新的最佳作法 | Microsoft Azure"
-   description="本文針對 Microsoft Azure IaaS 環境中的軟體更新提供最佳作法集合。它的適用對象為 IT 專業人員和安全性分析師，他們每天都在處理變更控制、軟體更新和資產管理，包括那些負責其組織安全性和法規工作的人員。"
+   description="本文針對 Microsoft Azure IaaS 環境中的軟體更新提供最佳作法集合。  它的適用對象為 IT 專業人員和安全性分析師，他們每天都在處理變更控制、軟體更新和資產管理，包括那些負責其組織安全性和法規工作的人員。"
    services="virtual-machines, cloud-services, storage"
    documentationCenter="na"
    authors="YuriD"
@@ -17,14 +17,13 @@
    ms.date="12/10/2015"
    ms.author="yurid"/>
 
-
-# Microsoft Azure IaaS 上軟體更新的最佳作法
+#Microsoft Azure IaaS 上軟體更新的最佳作法
 
 在探究 Azure IaaS 環境的任何最佳作法討論之前，請務必了解可讓您管理軟體更新的案例。 下圖應有所幫助：
 
 ![雲端模型和職責](./media/azure-security-best-practices-software-updates-iaas/sec-cloudstack.png)
 
-在 IaaS 案例中，您仍然必須管理作業系統和應用程式的更新。不過，作業系統和應用程式之下的整個基礎結構是由 Microsoft 管理。 在所有這些模型中，客戶仍是其資料的擁有者且仍必須負責在端點層級保護資料。
+在整個基礎結構位於內部部署的傳統資料中心模型中，您需負起全責來管理作業系統、應用程式、網路裝置 (路由器、交換器等) 和硬體 (韌體) 的更新。 在 IaaS 案例中，您仍然必須管理作業系統和應用程式的更新。不過，作業系統和應用程式之下的整個基礎結構是由 Microsoft 管理。 在所有這些模型中，客戶仍是其資料的擁有者且仍必須負責在端點層級保護資料。
 
 在 PaaS 案例中，您對軟體更新所負的責任比較少，因為作業系統的更新是 Microsoft 的責任。 在 SaaS 案例中，整個堆疊的軟體更新責任是由 Microsoft 所承擔。
 
@@ -72,11 +71,11 @@
 
 在您執行企業中所用軟體的初始稽核之後，您應該針對每個軟體產品和版本決定用於接收新軟體更新通知的最佳方法。 視軟體產品而定，最佳的通知方法可能是電子郵件通知、網站或電腦發佈。
 
-例如，Microsoft 安全性回應中心 (MSRC) 會回應 Microsoft 產品的所有安全性相關疑慮，並提供 Microsoft 安全性公告服務、新發現弱點的免費電子郵件通知，以及為了解決這些弱點所發行的軟體更新。
+例如，Microsoft 安全性回應中心 (MSRC) 會回應 Microsoft 產品的所有安全性相關疑慮，並提供 Microsoft 安全性公告服務、新發現弱點的免費電子郵件通知，以及為了解決這些弱點所發行的軟體更新。 您可以訂閱此服務在 http://www.microsoft.com/technet/security/bulletin/notify.mspx。
 
 ## 軟體更新考量
 
-在您執行企業中所用軟體的初始稽核之後，您應該決定設定軟體更新管理系統的需求，這取決於您使用的軟體更新管理系統。
+在您執行企業中所用軟體的初始稽核之後，您應該決定設定軟體更新管理系統的需求，這取決於您使用的軟體更新管理系統。 Wsus 讀取 [最佳作法與 Windows Server Update Services](https://technet.microsoft.com/library/Cc708536), ，如 System Center，請參閱 [規劃 Configuration Manager 中的軟體更新](https://technet.microsoft.com/library/gg712696)。
 
 不過，不論您正在使用的解決方案為何，您可以套用一些一般考量和最佳作法，如後續各節所示。
 
@@ -84,25 +83,25 @@
 
 在打算設定軟體更新管理環境時，請考量下列作法：
 
--   **建立以穩定準則為基礎的生產軟體更新集合**：一般而言，使用穩定準則來建立可供清查和散發軟體更新的集合，有助於簡化軟體更新管理程序的各個階段。 穩定準則可以包含已安裝的用戶端作業系統版本和 Service Pack 層級、系統角色或目標組織。
+-   **建立穩定的準則為基礎的軟體更新集合生產**: 一般情況下，建立您的軟體更新清查和發佈集合使用穩定的準則是為了簡化軟體更新管理程序的所有階段。 穩定準則可以包含已安裝的用戶端作業系統版本和 Service Pack 層級、系統角色或目標組織。
 
--   **建立包含參考電腦的預先生產集合**︰預先生產集合應該包含作業系統版本、企業營運軟體以及您企業中執行的其他軟體的代表性組態。
+-   **建立包含參照電腦進入生產階段前集合**: 進入生產階段前集合應該包含代表性的組態的作業系統版本，一行商業軟體，執行您的企業中的其他軟體。
 
-您也應該考慮軟體更新伺服器將位於何處︰位於雲端的 Azure IaaS 基礎結構中或在內部部署中。 這是一項重要決策，因為您需要評估內部部署資源與 Azure 基礎結構之間的流量。
+您也應該考慮軟體更新伺服器將位於何處︰位於雲端的 Azure IaaS 基礎結構中或在內部部署中。 這是一項重要決策，因為您需要評估內部部署資源與 Azure 基礎結構之間的流量。 讀取 [在內部網路連線到 Microsoft Azure 虛擬網路](https://technet.microsoft.com/library/Dn786406.aspx) 如需有關如何將內部部署基礎結構連接至 Azure。
 
-根據您目前的基礎結構以及您目前使用的軟體更新系統而定，用來決定更新伺服器將位於何處的設計選項也會有所不同。
+根據您目前的基礎結構以及您目前使用的軟體更新系統而定，用來決定更新伺服器將位於何處的設計選項也會有所不同。 Wsus 讀取 [在組織中部署 Windows Server Update Services](https://technet.microsoft.com/library/hh852340.aspx) 和 System Center Configuration Manager 讀取 [規劃站台和階層中 Configuration Manager](https://technet.microsoft.com/library/Gg712681.aspx)。
 
 ### 備份
 
-定期備份很重要，不只是對軟體更新管理平台本身而言，對即將更新的伺服器而言也很重要。  為了確保在更新失敗時能採用回復組態，請務必定期備份系統。
+定期備份很重要，不只是對軟體更新管理平台本身而言，對即將更新的伺服器而言也很重要。 組織 [變更管理流程](https://technet.microsoft.com/library/cc543216.aspx) 就地需要 IT 證明的原因為何需要更新伺服器、 預估的停機時間和可能的影響。 為了確保在更新失敗時能採用回復組態，請務必定期備份系統。
 
 Azure IaaS 的某些備份選項包括：
 
--   
+-   [使用 Data Protection Manager 的 Azure IaaS 工作負載保護](https://azure.microsoft.com/blog/2014/09/08/azure-iaas-workload-protection-using-data-protection-manager/)
 
--   
+-   [備份 Azure 虛擬機器](../backup/backup-azure-vms.md)
 
-### 監控
+### 監視
 
 您應該執行定期報告，以針對每個已獲授權的軟體更新，監視遺漏或已安裝的更新數目，或狀態不完整的更新。 同樣地，報告未獲授權的軟體更新可讓部署決策變得更容易。
 
@@ -119,8 +118,4 @@ Azure IaaS 的某些備份選項包括：
 ## 後續步驟
 
 使用本文所述的指導方針，可協助您判斷適用於 Azure IaaS 中虛擬機器軟體更新的最佳選項。 傳統資料中心與 Azure IaaS 之間的軟體更新最佳作法有許多相似之處，因此建議您評估目前的軟體更新原則，以包含 Azure VM 並將本文中的相關最佳作法章納入整體軟體更新程序中。
-
-
-
-
 

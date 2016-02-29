@@ -1,6 +1,6 @@
 <properties
     pageTitle="Apache Storm 教學課程：開始使用 Storm | Microsoft Azure"
-    description="在 HDInsight 上使用 Apache Storm 和 Storm Starter 範例，開始分析巨量資料。了解如何使用 Storm 即時處理資料。"
+    description="在 HDInsight 上使用 Apache Storm 和 Storm Starter 範例，開始分析巨量資料。 了解如何使用 Storm 即時處理資料。"
     keywords="apache storm,apache storm tutorial,big data analytics,storm starter"
     services="hdinsight"
     documentationCenter=""
@@ -19,13 +19,13 @@
    ms.author="larryfr"/>
 
 
-
 # Apache Storm 教學課程：在 HDInsight 上使用 Storm Starter 範例開始分析巨量資料
 
-Apache Storm 是一個可處理資料串流的分散式、容錯、即時的運算系統。 在 Microsoft Azure HDInsight 的 Storm 中，您可以建立雲端式 Storm 叢集，來執行即時的巨量資料分析。
-> [AZURE.NOTE] 本文中的步驟會建立以 Windows 為基礎的 HDInsight 叢集。 如需建立以 Linux 為基礎的 Storm on HDInsight 叢集的步驟，請參閱 [Apache Storm 教學課程: 開始使用 HDInsight 上使用資料分析的 Storm Starter 範例](hdinsight-apache-storm-tutorial-get-started-linux.md)
+Apache Storm 是一個可處理資料串流的分散式、容錯、即時的運算系統。 在 Microsoft Azure HDInsight 的 Storm 中，您可以建立雲端式 Storm 叢集，來執行即時的巨量資料分析。 
 
-## 必要條件
+> [AZURE.NOTE] 這篇文章中的步驟建立以 Windows 為基礎的 HDInsight 叢集。 如需建立以 Linux 為基礎的 Storm on HDInsight 叢集的步驟，請參閱 [Apache Storm 教學課程: 開始使用 HDInsight 上使用資料分析的 Storm Starter 範例](hdinsight-apache-storm-tutorial-get-started-linux.md)
+
+## 先決條件
 
 您必須具備下列先決條件，才能順利完成本 Apache Storm 教學課程：
 
@@ -35,59 +35,61 @@ Apache Storm 是一個可處理資料串流的分散式、容錯、即時的運�
 
 Storm on HDInsight 使用 Azure Blob 儲存體來儲存提交給叢集的記錄檔和拓撲。 請使用以下步驟，來建立可與您的叢集搭配使用的 Azure 儲存體帳戶：
 
-1. 登入 [Azure 入口網站 ][preview-portal]。
+1. 登入 [Azure 入口網站][preview-portal]。
 
-2. 依序選取 [新增]****、[資料分析]____ 和 [HDInsight]____。
+2. 選取 **新增**, ，請選取 __資料分析__, ，然後選取 __HDInsight__。
 
     ![在 Azure 入口網站中建立新的叢集](./media/hdinsight-apache-storm-tutorial-get-started/new-cluster.png)
 
-3. 輸入 [叢集名稱]____，然後在 [叢集類型]____ 選取 [Storm]____。 如果該 [叢集名稱]____ 可用，它旁邊就會出現綠色核取記號。
+3. 輸入 __叢集名稱__, ，然後選取 __Storm__ 的 __叢集類型__。 旁邊會出現綠色的核取 __叢集名稱__ 是否可用。
 
     ![叢集名稱、叢集類型及 OS 類型](./media/hdinsight-apache-storm-tutorial-get-started/clustername.png)
 
-4. 如果您有多個訂用帳戶，請選取 [訂用帳戶]____ 項目，以選取將用於該叢集的 Azure 訂用帳戶。
+4. 如果您有一個以上的訂閱，請選取 __訂閱__ 選取將用於叢集的 Azure 訂閱的項目。
 
-5. 針對 [資源群組]____，您可以選取此項目以查看現有資源群組的清單，然後選取其中一個用來建立叢集。 或者選取 [建立新群組]____，然後輸入新資源群組的名稱。 出現綠色勾號即表示新群組的名稱可供使用。
-    > [AZURE.NOTE] 如果有任何可用的資源群組，此項目即會預設為現有資源群組的其中一個群組。
+5. 如 __資源群組__, ，您可以選取的項目，查看現有的資源群組的清單，然後選取 [建立叢集的一個。 您可以選取或者 __新建__ ，然後輸入新的資源群組的名稱。 出現綠色勾號即表示新群組的名稱可供使用。
 
-6. 選取 [認證]____，然後輸入 [叢集登入使用者名稱]____ 和 [叢集登入密碼]____。 最後，使用  __選取__ 設定的認證。 本文件中不會使用遠端桌面，所以您可以將其停用。
+    > [AZURE.NOTE] 如果有的話，這個項目會預設為其中一個現有的資源群組。
+
+6. 選取 __認證__, ，然後輸入 __叢集登入使用者名稱__ 和 __叢集登入密碼__。 最後，使用  __選取__ 設定的認證。 本文件中不會使用遠端桌面，所以您可以將其停用。
 
     ![叢集認證刀鋒視窗](./media/hdinsight-apache-storm-tutorial-get-started/clustercredentials.png)
 
-6. 針對 [資料來源]____，您可以選取此項目，藉此選擇現有資料來源，或建立一個新的資料來源。
+6. 如 __資料來源__, ，您可以選取的項目，選擇現有的資料來源，或建立一個新。
 
     ![資料來源刀鋒視窗](./media/hdinsight-apache-storm-tutorial-get-started/datasource.png)
 
-    您目前可以選取 Azure 儲存體帳戶做為 HDInsight 叢集資料來源。 請使用下列步驟來了解 [資料來源]____ 刀鋒視窗上的項目。
+    您目前可以選取 Azure 儲存體帳戶做為 HDInsight 叢集資料來源。 了解這些項目上使用下列 __資料來源__ 刀鋒視窗。
 
-    - __選取方法__：將此設為 [來自所有訂用帳戶]____，即可瀏覽您訂用帳戶的儲存體帳戶。 如果您想要輸入現有儲存體帳戶的 [儲存體名稱]____ 和 [存取金鑰]____，請將此設為 [存取金鑰]____。
+    - __選取方法__: 設為 __從所有的訂閱__ 才能瀏覽儲存體帳戶，您的訂閱。 設定為 __便捷鍵__ 如果您想要輸入 __儲存體名稱__ 和 __便捷鍵__ 的現有儲存體帳戶。
 
-    - __建立新項目__：可用來建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可供使用，就會出現綠色勾號。
+    - __建立新__: 使用此選項可建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可供使用，就會出現綠色勾號。
 
-    - __選擇預設容器__：使用此選項可輸入要用於該叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
+    - __選擇預設容器__: 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
 
-    - __位置__：儲存體帳戶所在或將會建立在的地理區域。
-        > [AZURE.IMPORTANT] 選取預設資料來源位置的同時，也會設定 HDInsight 叢集位置。 叢集和預設資料來源必須位於相同區域中。
+    - __位置__: 儲存體帳戶的地理區域中，或將中建立。
 
-    - __選取__：用來儲存資料來源組態。
+        > [AZURE.IMPORTANT] 選取的預設資料來源的位置也會將設定 HDInsight 叢集的位置。 叢集和預設資料來源必須位於相同區域中。
 
-7. 選取 [節點定價層]____ 會顯示將針對此叢集建立之節點的相關資訊。 根據預設，背景工作角色節點的數目會是 __4__。 請將此值設為 __1__，因為這樣就足以供本教學課程使用，也能減少叢集成本。 該叢集的預估成本將顯示於此刀鋒視窗的底部。
+    - __選取__: 使用此選項可將儲存的資料來源的設定。
+
+7. 選取 __節點定價層__ 顯示將建立此叢集節點的相關資訊。 根據預設，背景工作節點數目設定為 __4__。 請設為 __1__, ，因為這是本教學課程，可減少叢集的成本。 該叢集的預估成本將顯示於此刀鋒視窗的底部。
 
     ![節點定價層刀鋒視窗](./media/hdinsight-apache-storm-tutorial-get-started/nodepricingtiers.png)
 
     使用  __選取__ 儲存 __節點定價層__ 資訊。
 
-8. 選取 [選用設定]____。 此刀鋒視窗可讓您選取叢集的版本，以及設定其他選用的設定，例如聯結__虛擬網路__，或設定__外部中繼存放區__來保存 Hive 和 Oozie 的資料。
+8. 選取 __選擇性組態__。 此刀鋒視窗可讓您選取叢集的版本，以及設定其他選擇性設定，例如聯結 __虛擬網路__ 」 或者設定 __外部中繼存放區__ 要保留 Hive 和 Oozie 的資料。
 
     ![選用設定刀鋒視窗](./media/hdinsight-apache-storm-tutorial-get-started/optionalconfiguration.png)
 
-9. 請確定已選取 [釘選到「開始面板」]____，然後選取 [建立]____。 這會建立叢集，並將該叢集磚加入到您 Azure 入口網站的開始面板。 該圖示表示該叢集正在佈建中，並會在佈建完成之後變更為顯示 HDInsight 圖示。
+9. 請確認 __釘選到開始面板__ 已選取，然後選取 __建立__。 這會建立叢集，並將該叢集磚加入到您 Azure 入口網站的開始面板。 該圖示表示該叢集正在佈建中，並會在佈建完成之後變更為顯示 HDInsight 圖示。
 
-   | 佈建期間| 佈建完成|
-   | ------------------ | --------------------- |
-   | ![在開始面板上佈建指示器](./media/hdinsight-apache-storm-tutorial-get-started/provisioning.png)| ![佈建的叢集磚](./media/hdinsight-apache-storm-tutorial-get-started/provisioned.png)|
+    | 佈建期間 | 佈建完成 |
+    | ------------------ | --------------------- |
+    | ![在開始面板上佈建指示器](./media/hdinsight-apache-storm-tutorial-get-started/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-apache-storm-tutorial-get-started/provisioned.png) |
 
-    > [AZURE.NOTE] 建立叢集需要一些時間，通常約 15 分鐘左右。 請使用「開始面板」上的磚，或頁面左邊的 [通知]____ 項目來檢查佈建進度。
+    > [AZURE.NOTE] 這需要一些時間，叢集才會建立，通常約 15 分鐘的時間。 在開始面板中，使用 [] 磚或 __通知__ 左邊頁面上，若要檢查佈建程序的項目。
 
 ## 在 HDInsight 上執行 Storm Starter 範例
 
@@ -97,89 +99,94 @@ Storm on HDInsight 使用 Azure Blob 儲存體來儲存提交給叢集的記錄�
 
 ### <a id="connect"></a>連接至儀表板
 
-儀表板位於 **https://&lt;clustername&gt;.azurehdinsight.net//**, ，其中 **clustername** 是叢集的名稱。 您也可以尋找儀表板的連結，方法是從「開始面板」選取叢集，然後在刀鋒視窗頂端選取 [儀表板]____ 連結。
+儀表板位於 **https://&lt;clustername>.azurehdinsight.net//**, ，其中 **clustername** 是叢集的名稱。 您也可以找到儀表板的連結，從 [開始面板] 中選取叢集，然後選取 __儀表板__ 分頁頂端的連結。
 
 ![含 Storm 儀表板連結的 Azure 入口網站](./media/hdinsight-apache-storm-tutorial-get-started/dashboard.png)
-> [AZURE.NOTE] 連線至儀表板時，系統會提示您輸入使用者名稱和密碼。 這是您建立叢集時使用的系統管理員名稱 (**admin**) 和密碼。
 
-載入 Storm 儀表板後，您會看到**** [提交拓撲] (Submit Topology) 表單。
+> [AZURE.NOTE] 連接至儀表板時，系統會提示您輸入使用者名稱和密碼。 這是系統管理員名稱 (**admin**) 和建立叢集時所使用的密碼。
+
+載入 Storm 儀表板後，您會看到 **提交拓樸** 表單。
 
 ![利用 Storm 儀表板提交 Storm Starter 拓撲。](./media/hdinsight-apache-storm-tutorial-get-started/submit.png)
 
-[提交拓撲]**** 表單可用於上傳並執行含有 Storm 拓撲的 .jar 檔案。 它也包含數個與叢集一併提供的基本範例。
+ **提交拓樸** 表單可用來上傳並執行包含 Storm 拓撲的.jar 檔案。 它也包含數個與叢集一併提供的基本範例。
 
 ### <a id="run"></a>從 GitHub 的 Storm Starter 專案執行 word-count 範例
 
-與叢集一併提供的範例包含 word-counting 拓撲的數個變體。 這些範例包含會隨機產生句子的 **spout**，以及會將每個句子拆成個別單字，然後計算每個單字的出現次數的 **bolts**。 這些範例均來自 [Storm Starter 範例](https://github.com/apache/storm/tree/master/examples/storm-starter), ，這是 Apache Storm 的一部分。
+與叢集一併提供的範例包含 word-counting 拓撲的數個變體。 這些範例包含 **spout** 隨機產生句子，並 **bolt** 每個句子拆成個別單字，然後計算每個單字的出現的次數。 這些範例均來自 [Storm Starter 範例](https://github.com/apache/storm/tree/master/examples/storm-starter) (Apache Storm 的一部分)。
 
 請使用以下步驟執行 Storm Starter 範例：
 
-1. 選取 [Jar 檔案]**** 下拉式清單中的 [StormStarter - WordCount]****。 此時 [類別名稱]**** 和 [其他參數]**** 欄位會填入此範例的參數。
+1. 選取 **StormStarter-WordCount** 從 **Jar 檔案** 下拉式清單。 這會填入 **類別名稱** 和 **其他參數** 欄位使用這個範例中的參數。
 
     ![在 Storm 儀表板上選取的 Storm Starter WordCount。](./media/hdinsight-apache-storm-tutorial-get-started/submit.png)
 
-    * **類別名稱**：提交拓撲的 .jar 檔案中的類別。
-    * **其他參數**：拓撲需要的所有參數。 在此範例中，此欄位用於讓提交的拓撲有易記名稱。
+    * **類別名稱** -提交拓撲的.jar 檔案中的類別。
+    * **其他參數** -拓撲所需的任何參數。 在此範例中，此欄位用於讓提交的拓撲有易記名稱。
 
-2. 按一下 [  **提交**。 隨後，[結果]**** 欄位會顯示用來提交作業的命令，以及該命令的結果。 [錯誤]**** 欄位會顯示提交拓撲時所發生的任何錯誤。
+2. 按一下 [  **提交**。 隨後， **結果** 欄位會顯示用來提交工作，如命令結果的命令。  **錯誤** 欄位會顯示提交拓撲的任何錯誤發生。
 
     ![Storm Starter WordCount 的提交按鈕和結果。](./media/hdinsight-apache-storm-tutorial-get-started/submit-results.png)
-    > [AZURE.NOTE] 顯示結果並不表示拓撲已完成，**Storm 拓撲一旦啟動，就會持續執行，直到您將拓撲停止為止。**Word-count 拓撲會產生隨機的句子，並持續計算每個單字出現的次數，直到您停止拓撲為止。
+
+    > [AZURE.NOTE] 結果並不表示，已完成的拓樸- **Storm 拓撲一旦啟動，會執行，直到您將它停止。**Word-count 拓撲會產生隨機的句子，並持續計算每個單字出現的次數，直到您停止拓撲為止。
 
 ### <a id="monitor"></a>監視拓撲
 
 您可以使用 Storm UI 監視拓撲。
 
-1. 選取 Storm 儀表板頂端的 [Storm UI]****。 這會顯示叢集和所有執行中拓撲的摘要資訊。
+1. 選取 **Storm UI** 從 Storm 儀表板的頂端。 這會顯示叢集和所有執行中拓撲的摘要資訊。
 
     ![顯示 Storm Starter WordCount 拓樸摘要的 Storm 儀表板。](./media/hdinsight-apache-storm-tutorial-get-started/stormui.png)
 
     在上方的頁面中，您會看到拓撲作用中的時間，以及使用的背景工作數、執行程式數和工作數。
-    > [AZURE.NOTE] [名稱]**** 欄含有稍早透過 [其他參數]**** 欄位提供的易記名稱。
 
-4. 在 [拓撲摘要]**** 下，選取 [名稱]**** 欄中的 [wordcount]**** 項目。 這會顯示拓撲的詳細資訊。
+    > [AZURE.NOTE]  **名稱** 資料行包含透過稍早提供的易記名稱 **其他參數** 欄位。
+
+4. 在 **拓樸摘要**, ，請選取 **wordcount** 中的項目 **名稱** 資料行。 這會顯示拓撲的詳細資訊。
 
     ![包含 Storm Starter WordCount 拓樸資訊的 Storm 儀表板。](./media/hdinsight-apache-storm-tutorial-get-started/topology-summary.png)
 
     此頁面提供以下資訊：
 
-    * **拓撲統計資料 (Topology stats)**：拓撲效能的基本資訊，已整理為時間範圍。
-        > [AZURE.NOTE] 選取特定的時間範圍，可以變更頁面中其他區段所顯示之資訊的時間範圍。
+    * **拓撲統計資料** -拓撲效能的基本資訊整理為時間範圍。
 
-    * **Spouts**：spout 的基本資訊，包括每個 spout 傳回的最後一個錯誤。
+        > [AZURE.NOTE] 選取特定時段變更網頁上的其他區段中顯示之資訊的時間間隔。
 
-    * **Bolts**：bolt 的基本資訊。
+    * **Spout** -spout，包括每個 spout 傳回的最後一個錯誤的基本資訊。
 
-    * **拓撲組態 (Topology configuration)**：拓撲組態的詳細資訊。
+    * **Bolt** -bolt 的基本資訊。
+
+    * **拓撲組態** -拓撲組態有關的詳細資訊。
 
     此頁面也提供可對拓撲採取的動作：
 
-    * **啟用**：繼續處理已停用的拓撲。
+    * **啟動** -繼續處理的已停用的拓撲。
 
-    * **停用**：暫停執行中拓撲。
+    * **停用** -暫停執行中拓撲。
 
-    * **重新平衡**：調整拓撲的平行處理原則。 變更叢集中的節點數目之後，您應該重新平衡執行中拓撲。 這可讓拓撲調整平行處理原則，以彌補叢集中增加/減少的節點數目。 如需詳細資訊，請參閱 [了解 Storm 拓撲的平行處理原則](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+    * **重新平衡** -調整拓撲的平行處理原則。 變更叢集中的節點數目之後，您應該重新平衡執行中拓撲。 這可讓拓撲調整平行處理原則，以彌補叢集中增加/減少的節點數目。 如需詳細資訊，請參閱[了解 Storm 拓撲的平行處理原則](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
-    * **終止 (Kill)**：在指定的逾時之後終止 Storm 拓撲。
+    * **Kill** -指定的逾時之後終止 Storm 拓撲。
 
-5. 在此頁面中，選取 [Spouts]**** 或 [Bolts]**** 區段中的一個項目。 這會顯示所選元件的相關資訊。
+5. 從這個頁面上，選取一個項目 **Spout** 或 **Bolt** 一節。 這會顯示所選元件的相關資訊。
 
     ![包含所選元件相關資訊的 Storm 儀表板。](./media/hdinsight-apache-storm-tutorial-get-started/component-summary.png)
 
     此頁面會顯示以下資訊：
 
-    * **Spout/Bolt 統計資料 (Spout/Bolt stats)**：元件效能的基本資訊，已整理為時間範圍。
-        > [AZURE.NOTE] 選取特定的時間範圍，可以變更頁面中其他區段所顯示之資訊的時間範圍。
+    * **Spout/Bolt 統計資料** -元件效能的基本資訊整理為時間範圍。
 
-    * **輸入統計資料 (Input stats)** (僅 bolt)：提供的資訊是關於產生 bolt 所使用之資料的元件。
+        > [AZURE.NOTE] 選取特定時段變更網頁上的其他區段中顯示之資訊的時間間隔。
 
-    * **輸出統計資料 (Output stats)**：此 bolt 發出之資料的資訊。
+    * **輸入統計資料** (僅限 bolt)-關於產生 bolt 所使用的資料之元件的資訊。
 
-    * **執行程式**：此元件之執行個體的資訊。
+    * **輸出統計資料** -此 bolt 發出之資料的資訊。
 
-    * **錯誤**：此元件產生的錯誤。
+    * **執行程式** -這個元件的執行個體的詳細資訊。
 
-5. 檢視 spout 或 bolt 的詳細資料時，請在 [執行程式]**** 區段的 [連接埠]**** 欄中選取一個項目，以檢視特定元件執行個體的詳細資料。
+    * **錯誤** -此元件產生的錯誤。
+
+5. 當您檢視 spout 或 bolt 的詳細資料，選取一個項目 **連接埠** 中的資料行 **執行程式** 區段，以檢視詳細資料之元件的特定執行個體。
 
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
@@ -190,11 +197,11 @@ Storm on HDInsight 使用 Azure Blob 儲存體來儲存提交給叢集的記錄�
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
 
-    您可以在此資料中看到 **seven** 一字已出現 1,493,957 次。 這就是啟動拓撲後，該字所出現的次數。
+    這項資料，您可以看到 word **七個** 發生 1,493,957 的時間。 這就是啟動拓撲後，該字所出現的次數。
 
 ### 停止拓撲
 
-請返回 word-count 拓撲的 [拓撲摘要]**** 頁面，然後選取 [拓撲動作]**** 區段中的 [終止]**** 按鈕。 出現提示時，請先輸入要等候 10 秒，再停止拓撲。 逾時期限過後，當您瀏覽儀表板的 [Storm UI]**** 區段時，就不會再看到拓撲。
+返回 **拓樸摘要** 字數統計拓撲，頁面上，然後選取 **Kill** 從 **拓撲動作** 一節。 出現提示時，請先輸入要等候 10 秒，再停止拓撲。 逾時期限過後，拓撲就不會顯示當您瀏覽 **Storm UI** 儀表板] 區段。
 
 ## 摘要
 
@@ -202,11 +209,11 @@ Storm on HDInsight 使用 Azure Blob 儲存體來儲存提交給叢集的記錄�
 
 ## <a id="next"></a>後續步驟
 
-* **HDInsight Tools for Visual Studio**：類似稍早提到的 Storm 儀表板，HDInsight Tools 可讓您運用 Visual Studio 提交、監視及管理 Storm 拓撲。 HDInsight Tools 也能讓您建立 C# Storm 拓撲，並提供可讓您在叢集上部署和執行的範例拓撲。
+* **HDInsight Tools for Visual Studio** -HDInsight Tools 可讓您使用 Visual Studio 提交、 監視及管理 Storm 拓撲類似稍早提到的 Storm 儀表板。 HDInsight Tools 也能讓您建立 C# Storm 拓撲，並提供可讓您在叢集上部署和執行的範例拓撲。
 
-    如需詳細資訊，請參閱 [開始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)。
+    如需詳細資訊，請參閱[開始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
-* **範例檔案**：HDInsight Storm 叢集在 **%STORM_HOME%\contrib** 目錄中提供數個範例。 每個範例應該會包含下列項目：
+* **範例檔案** -HDInsight Storm 叢集也提供數個範例中的 **%STORM_HOME%\contrib** 目錄。 每個範例應該會包含下列項目：
 
     * 原始程式碼 - 例如，storm-starter-0.9.1.2.1.5.0-2057-sources.jar
 
@@ -215,20 +222,20 @@ Storm on HDInsight 使用 Azure Blob 儲存體來儲存提交給叢集的記錄�
     * 範例 - 例如，storm-starter-0.9.1.2.1.5.0-2057-jar-with-dependencies.jar
 
     請使用 'jar' 命令來解壓縮原始程式碼或 Java 文件。 例如，'jar -xvf storm-starter-0.9.1.2.1.5.0.2057-javadoc.jar'。
-    > [AZURE.NOTE] Java 文件是由網頁組成。 解壓縮之後，請使用瀏覽器來檢視 **index.html** 檔案。
 
-    若要存取這些範例，必須為 Storm on HDInsight 叢集啟用「遠端桌面」，然後從 **%STORM_HOME%\contrib** 複製檔案。
+    > [AZURE.NOTE] Java 文件由網頁組成。 解壓縮之後，請使用瀏覽器來檢視 **index.html** 檔案。
+
+    若要存取這些範例，您必須為 Storm on HDInsight 叢集啟用遠端桌面，並複製檔案從 **%STORM_HOME%\contrib**。
 
 * 以下文件含有可和 Storm on HDInsight 搭配使用的其他範例清單：
 
     * [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)
 
-
-[apachestorm]: https://storm.incubator.apache.org 
-[stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html 
-[stormstarter]: https://github.com/apache/storm/tree/master/examples/storm-starter 
-[stormjavadocs]: https://storm.incubator.apache.org/apidocs/ 
-[azureportal]: https://manage.windowsazure.com/ 
-[hdinsight-provision]: hdinsight-provision-clusters.md 
-[preview-portal]: https://portal.azure.com/ 
+[apachestorm]: https://storm.incubator.apache.org
+[stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html
+[stormstarter]: https://github.com/apache/storm/tree/master/examples/storm-starter
+[stormjavadocs]: https://storm.incubator.apache.org/apidocs/
+[azureportal]: https://manage.windowsazure.com/
+[hdinsight-provision]: hdinsight-provision-clusters.md
+[preview-portal]: https://portal.azure.com/
 

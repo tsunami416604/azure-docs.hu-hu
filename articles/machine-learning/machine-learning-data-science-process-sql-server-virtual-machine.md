@@ -16,74 +16,75 @@
     ms.date="09/01/2015" 
     ms.author="fashah;garye" /> 
 
-
-# <a name="heading"></a>在 Azure 上的 SQL Server 虛擬機器中處理資料
+#<a name="heading"></a>處理 Azure 上 SQL Server 虛擬機器中的資料
 
 本文件涵蓋探索資料，並針對儲存於 Azure 上 SQL Server VM 中的資料產生功能。 使用 SQL整理資料或使用 Python 這類程式設計語言，即可完成此動作。
 
-> [AZURE.NOTE] 本文件中的 SQL 陳述式範例假設資料位於 SQL Server 中。 如果不是，請參閱雲端資料科學程序圖，以了解如何將資料移至 SQL Server 中。
 
-## <a name="SQL"></a>使用 SQL
+> [AZURE.NOTE] 本文件中的範例 SQL 陳述式會假設資料位於 SQL Server 中。 如果不是，請參閱雲端資料科學程序圖，以了解如何將資料移至 SQL Server 中。
+
+##<a name="SQL"></a>使用 SQL
 
 我們將在本節中使用 SQL，來說明下列資料有爭議的工作：
 
 1. [資料探索](#sql-dataexploration)
 2. [功能產生](#sql-featuregen)
 
-### <a name="sql-dataexploration"></a>資料探索
-
+###<a name="sql-dataexploration"></a>資料探索
 以下是數個 SQL 指令碼範例，可用來探索儲存於 SQL Server 中的資料。
+
 
 > [AZURE.NOTE] 如需實用範例，您可以使用 [NYC 計程車資料集](http://www.andresmh.com/nyctaxitrips/) ，並參考標題為的 ipnb，以 [使用 IPython Notebook 和 SQL Server 有爭議的 NYC 資料](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) 進行端對端逐步解說。
 
 1. 取得每天的觀察計數
 
-    `選取 CONVERT(date, <date_columnname>) 為日期，count(*) 做為 < e > c 群組的轉換 ([< date_columnname > 中的 [日期)`
+    `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
 
 2. 取得類別資料行中的層級
 
-    `選取不同 < column_name > 從 < 資料庫名稱 >`
+    `select  distinct <column_name> from <databasename>`
 
-3. 取得兩個類別資料行組合中的層級數目
+3. 取得兩個類別資料行組合中的層級數目 
 
-    `選取 < column_a >，< column_b >，從由 < column_a >，< e > 群組 count(*) < column_b >`
+    `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
 
 4. 取得數值資料行的分佈
 
-    `選取 < column_name > count(*) 從 < column_name > 的 < e > 群組`
+    `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 
-### <a name="sql-featuregen"></a>功能產生
+###<a name="sql-featuregen"></a>功能產生
 
-在本節中，我們將說明使用 SQL 產生功能的方式：
+在本節中，我們將說明使用 SQL 產生功能的方式：  
 
-1. [以計數為基礎功能產生](#sql-countfeature)
+1. [以計數為基礎的功能產生](#sql-countfeature)
 2. [分類收納功能產生](#sql-binningfeature)
 3. [從單一資料行衍生功能](#sql-featurerollout)
 
 
-> [AZURE.NOTE] 一旦產生額外功能之後，就可以將它們當成資料行新增至現有的資料表，或是建立具有其他功能和主索引鍵的新資料表 (可與原始資料表聯結)。 
+> [AZURE.NOTE] 一旦產生額外功能，您可以將它們當成資料行新增至現有的資料表，或建立新的資料表與其他功能和主索引鍵，可與原始資料表聯結。 
 
-### <a name="sql-countfeature"></a>以計數為基礎功能產生
+###<a name="sql-countfeature"></a>以計數為基礎的功能產生
 
 本文件示範兩種產生計數功能的方法。 第一種方法會使用條件式加總，而第二種方法會使用 'where' 子句。 這些接著可與原始資料表聯結 (使用主索引鍵資料行)，以具備計數功能及原始資料。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
-    
+
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>分類收納功能產生
+###<a name="sql-binningfeature"></a>分類收納功能產生
 
 下列範例將示範如何藉由分類收納 (使用 5 個分類收納組) 可改用來做為功能的數值資料行，來產生分類收納功能：
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
-### <a name="sql-featurerollout"></a>從單一資料行衍生功能
+
+###<a name="sql-featurerollout"></a>從單一資料行衍生功能
 
 本節示範如何在資料表中衍生單一資料行來產生額外功能。 此範例假設您正嘗試從中產生功能的資料表中具有緯度或經度資料行。
 
-以下是有關經緯度位置資料的簡短入門 (源自 stackoverflow 資源 `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`)。 這有助於您在將功能化位置欄位之前先行了解：
+以下是有關經緯度位置資料的簡短入門指南 (源自 stackoverflow `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`)。 這有助於您在將功能化位置欄位之前先行了解：
 
 - 正負號告訴我們是否位於地球的北方或南方、東方或西方。
 - 非零的數百個位數告訴我們使用的是經度，而不是緯度！
@@ -96,7 +97,7 @@
 - 第五個小數位數最多可達 1.1 m：它會分辨彼此的樹狀結構。 您只能使用微分校正來達到此層級利用商業 GPS 單位所達到的精確度。
 - 第六個小數位數最多可達 0.11 m：您可以使用此項目來詳細配置結構，其適用於設計環境和建置道路。 比起足以追蹤冰河和河流的移動，這應該是更好的方式。 您可以採用含有 GPS 的精心度量 (例如，微分校正的 GPS) 來達成此項目。
 
-您可以使用下列方式來將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 請注意，一次也可以呼叫 REST 端點，例如 Bing 地圖 API 可在 `https://msdn.microsoft.com/library/ff701710.aspx` 取得區域或學區資訊。
+您可以使用下列方式來將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 請注意，一次也可以呼叫 REST 端點，例如，可在 `https://msdn.microsoft.com/library/ff701710.aspx` 上取得的 Bing Maps API，以取得區域或學區資訊。
 
     select 
         <location_columnname>
@@ -109,20 +110,21 @@
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-上述以位置為基礎的功能可進一步用來產生其他計數功能，如先前所述。
+上述以位置為基礎的功能可進一步用來產生其他計數功能，如先前所述。 
 
-> [AZURE.TIP] 您可以使用所選擇的語言，利用程式設計方式插入記錄。 您可能需要插入的資料區塊 (chunk)，以改善寫入效率 [看看如何使用 pyodbc 這裡執行此動作的範例](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)。 
 
+> [AZURE.TIP] 您可以以程式設計方式插入的記錄，使用您選擇的語言。 您可能需要插入的資料區塊 (chunk)，以改善寫入效率 [看看如何使用 pyodbc 這裡執行此動作的範例](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)。 
+ 
 
 > [AZURE.TIP] 另一個替代方式是將資料插入資料庫使用 [BCP 公用程式](https://msdn.microsoft.com/library/ms162802.aspx)
 
-### <a name="sql-aml"></a>連接到 Azure Machine Learning
+###<a name="sql-aml"></a>連接到 Azure Machine Learning
 
-新產生的功能可當成資料行新增至現有資料表或儲存於新的資料表中，並與原始資料表加以聯結以進行機器學習服務。 功能可以產生或存取如果已經建立，請使用 [讀取器 ][reader] 模組在 Azure ML，如下所示:
+新產生的功能可當成資料行新增至現有資料表或儲存於新的資料表中，並與原始資料表加以聯結以進行機器學習服務。 功能可以產生或存取如果已經建立，在 Azure ML 中使用 [讀取器] [讀取器] 模組，如下所示:
 
-![azureml 讀取器][1]
+![azureml 讀取器][1] 
 
-## <a name="python"></a>使用類似 Python 的程式設計語言
+##<a name="python"></a>使用類似 Python 的程式設計語言
 
 使用 Python 來探索資料和產生功能，SQL Server 資料時，類似於處理中所述，使用 Python 的 Azure blob 中的資料 [資料科學環境中的處理 Azure Blob 資料](machine-learning-data-science-process-data-blob.md)。 資料必須從資料庫載入 Pandas 資料框架，然後就能進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
 
@@ -132,7 +134,7 @@
     import pyodbc   
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Pandas 程式庫](http://pandas.pydata.org/) 在 Python 中會提供一組豐富的資料結構和資料分析工具對 Python 程式設計進行資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
+ [Pandas 程式庫](http://pandas.pydata.org/) 在 Python 中會提供一組豐富的資料結構和資料分析工具對 Python 程式設計進行資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
@@ -143,8 +145,9 @@
 
 使用公用資料集的 Azure 資料科學程序的端對端逐步解說範例，請參閱 [作用中的 Azure 資料科學程序](machine-learning-data-science-process-sql-walkthrough.md)。
 
+[1]: ./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png
 
 
-[1]: ./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png 
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/ 
-
+<!-- Module References -->
+[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+ 

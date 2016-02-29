@@ -16,9 +16,7 @@
     ms.date="11/17/2015"
     ms.author="trinadhk; aashishr; jimpark; markgal"/>
 
-
 # 準備環境以備份 Azure 虛擬機器
-
 備份 Azure 虛擬機器 (VM) 之前，您需要完成下面準備環境的必要條件。 如果您已這麼做，您可以啟動 [備份您的 Vm](backup-azure-vms.md)。 否則，請繼續進行下列所有步驟，以確保您的環境準備就緒。
 
 
@@ -35,23 +33,23 @@
 
 1. 登入 [Azure 入口網站](http://manage.windowsazure.com/)。
 
-2. 按一下 [**新增**] > [**資料服務**] > [**復原服務**] > [**備份保存庫**] > [**快速建立**]。 如果您有多個與組織帳戶相關聯的訂用帳戶，請選擇與備份保存庫相關聯的正確訂用帳戶。 每個 Azure 訂用帳戶都可以擁有多個備份保存庫，用以組織受保護的虛擬機器。
+2. 按一下 [ **新** > **Data Services** > **復原服務** > **備份保存庫** > **快速建立**。 如果您有多個與組織帳戶相關聯的訂用帳戶，請選擇與備份保存庫相關聯的正確訂用帳戶。 每個 Azure 訂用帳戶都可以擁有多個備份保存庫，用以組織受保護的虛擬機器。
 
-3. 在 [**名稱**] 中，輸入保存庫的易記識別名稱。 每個訂用帳戶皆需為唯一名稱。
+3. 在 **名稱**, ，輸入易記名稱來識別保存庫。 每個訂用帳戶皆需為唯一名稱。
 
-4. 在 [**區域**] 中，選取保存庫的地理區域。 保存庫必須與您想要保護的虛擬機器位於相同區域。 如果您的虛擬機器位於各個不同區域，請在每個區域都建立保存庫。 儲存備份資料時，不需要指定儲存體帳戶，備份保存庫和「Azure 備份」服務會自動處理此作業。
+4. 在 **區域**, ，選取保存庫的地理區域。 保存庫必須與您想要保護的虛擬機器位於相同區域。 如果您的虛擬機器位於各個不同區域，請在每個區域都建立保存庫。 儲存備份資料時，不需要指定儲存體帳戶，備份保存庫和「Azure 備份」服務會自動處理此作業。
 
     ![建立備份保存庫](./media/backup-azure-vms-prepare/backup_vaultcreate.png)
 
-5. 按一下 [建立保存庫]****。 要等備份保存庫建立好，可能需要一些時間。 監視位於入口網站底部的狀態通知。
+5. 按一下 [ **建立保存庫**。 要等備份保存庫建立好，可能需要一些時間。 監視位於入口網站底部的狀態通知。
 
     ![建立保存庫快顯通知](./media/backup-azure-vms-prepare/creating-vault.png)
 
-6. 將會顯示一則確認已順利建立保存庫的訊息。 該保存庫將會在 [復原服務]**** 頁面中以 [使用中]**** 狀態列出。 建立保存庫之後，請務必立即選擇適當的儲存體備援選項。 深入了解 [設定備份保存庫中的儲存體備援選項](backup-configure-vault.md#azure-backup---storage-redundancy-options)。
+6. 將會顯示一則確認已順利建立保存庫的訊息。 它會列於 **復原服務** 頁存成 **Active**。 建立保存庫之後，請務必立即選擇適當的儲存體備援選項。 深入了解 [設定備份保存庫中的儲存體備援選項](backup-configure-vault.md#azure-backup---storage-redundancy-options)。
 
     ![備份保存庫的清單](./media/backup-azure-vms-prepare/backup_vaultslist.png)
 
-7. 按一下備份保存庫以前往 [快速入門]**** 頁面，此頁面會顯示備份 Azure 虛擬機器的相關指示。
+7. 按一下以移至備份保存庫 **快速入門** ] 頁面上，上面會顯示備份 Azure 虛擬機器的指示。
 
     ![「儀表板」頁面上的虛擬機器備份指示](./media/backup-azure-vms-prepare/vmbackup-instructions.png)
 
@@ -74,17 +72,17 @@
 
 管理能力、精確控制和成本之間必須有所取捨。
 
-| 選項| 優點| 缺點|
+|選項|優點|缺點|
 |------|----------|-------------|
-| 選項 1：將 IP 範圍列入允許清單| 沒有額外的成本。<br><br>開啟 NSG 中的存取，使用 <i>組 AzureNetworkSecurityRule</i> 指令程式。| 複雜而難以管理為受影響的 IP 範圍隨著時間改變。<br>提供完整的 Azure，並不只是儲存體的存取。|
-| 選項 2：HTTP Proxy| 更精確地控制在 proxy 中允許的儲存體 Url。<br>單一點的網際網路存取<br>不會因為 Azure IP 位址變更。| 使用 Proxy 軟體執行 VM 時的額外成本。|
+|選項 1：將 IP 範圍列入允許清單| 沒有額外的成本。<br><br>開啟 NSG 中的存取，請使用 <i>設定 AzureNetworkSecurityRule</i> Cmdlet 來啟用診斷功能。 | 複雜而難以管理為受影響的 IP 範圍隨著時間改變。<br>提供完整的 Azure，並不只是儲存體的存取。|
+|選項 2：HTTP Proxy| 更精確地控制在 proxy 中允許的儲存體 Url。<br>單一點的網際網路存取 Vm。<br>不會因為 Azure IP 位址變更。| 使用 Proxy 軟體執行 VM 時的額外成本。|
 
 ### 使用 HTTP Proxy 進行 VM 備份
-
 備份 VM 時，會使用 HTTPS API 將快照管理命令從備份擴充功能傳送到 Azure 儲存體。 此流量必須透過 Proxy 從擴充功能路由傳送，因為只有 Proxy 會被設定為具有公用網際網路存取權。
->[AZURE.NOTE] 對於應該使用什麼 Proxy 軟體，並無任何建議。 請務必挑選與下面設定步驟相容的 Proxy。
 
-在下面的範例中，必須將「應用程式 VM」設定為針對前往公用網際網路的所有 HTTP 流量使用 Proxy VM。 必須將 Proxy VM 設定為允許來自虛擬網路中 VM 的連入流量。 最後，NSG (名為 *NSG-lockdown*) 需要新的安全性規則，以允許來自 Proxy VM 的輸出網際網路流量。
+>[AZURE.NOTE] 沒有推薦應該使用的 proxy 軟體。 請務必挑選與下面設定步驟相容的 Proxy。
+
+在下面的範例中，必須將「應用程式 VM」設定為針對前往公用網際網路的所有 HTTP 流量使用 Proxy VM。 必須將 Proxy VM 設定為允許來自虛擬網路中 VM 的連入流量。 最後，NSG 和 (名為 *NSG 鎖定*) 需要新的安全性規則，允許從 Proxy VM 的傳出網際網路流量。
 
 ![包含 HTTP Proxy 部署圖表的 NSG](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
@@ -98,13 +96,13 @@
 
     這會設定一個整部機器的 Proxy 設定，並用於任何連出 HTTP/HTTPS 流量。
 
-2. 針對 Linux 機器，加入下行 `eg /etc/ 環境` 檔案:
+2. 針對 Linux 電腦，請將下面一行新增至 ```/etc/environment``` 檔案：
 
     ```
     http_proxy=http://<proxy IP>:<proxy port>
     ```
 
-    新增下列幾行， `/etc/waagent.conf` 檔案:
+    將下列幾行新增至 ```/etc/waagent.conf``` 檔案：
 
     ```
 HttpProxy.Host=<proxy IP>
@@ -135,70 +133,66 @@ For the rest of the wizard, click all the way to the end and give this rule a na
 **C) Add an exception rule to the NSG:**
 
 In an Azure PowerShell command prompt, type out the following command:
+
 ```
 Get AzureNetworkSecurityGroup-命名為 「 NSG 鎖定 」 |
 組 AzureNetworkSecurityRule-命名為 「 允許 proxy 」-允許動作-TCP 通訊協定-輸入輸出-優先順序 200 SourceAddressPrefix"10.0.0.5/32"-SourcePortRange"*"-DestinationAddressPrefix 網際網路-DestinationPortRange"80-443"
 ```
 
-此命令會新增 NSG 例外，以允許從 10.0.0.5 上任何連接埠傳輸至 80 (HTTP) 或 443 (HTTPS) 連接埠上任何網際網路位址的 TCP 流量。 如果您需要叫用特定的連接埠，在公用網際網路，請確定將那加入 `-DestinationPortRange` 以及。
+This command adds an exception to the NSG, which allows TCP traffic from any port on 10.0.0.5 to any Internet address on port 80 (HTTP) or 443 (HTTPS). If you need to hit a specific port in the public Internet, make sure that you add that to the ```-DestinationPortRange``` as well.
 
-*務必以適合您的部署的詳細資料取代範例中的名稱。*
+*Ensure that you replace the names in the example with the details appropriate to your deployment.*
 
-## 3.VM 代理程式
+## 3. VM agent
 
-![VM 代理程式](./media/backup-azure-vms-prepare/step3.png)
+![VM agent](./media/backup-azure-vms-prepare/step3.png)
 
-備份 Azure 虛擬機器之前，您應該先確定虛擬機器上已正確安裝 Azure VM 代理程式。 由於 VM 代理程式在虛擬機器建立時為選擇性元件，因此佈建虛擬機器之前，請先確定已選取 VM 代理程式的核取方塊。
+Before you can back up the Azure virtual machine, you should ensure that the Azure VM agent is correctly installed on the virtual machine. Since the VM agent is an optional component at the time that the virtual machine is created, ensure that the check box for the VM agent is selected before the virtual machine is provisioned.
 
-### 手動安裝和更新
+### Manual installation and update
 
-從 Azure 資源庫建立的 VM 中已經有 VM 代理程式。 不過，從內部部署資料中心移轉的虛擬機器不會安裝 VM 代理程式。 對於這類 VM，必須明確安裝 VM 代理程式。 深入了解 [現有 VM 上安裝 VM 代理程式](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)。
+The VM agent is already present in VMs that are created from the Azure gallery. However, virtual machines that are migrated from on-premises datacenters would not have the VM agent installed. For such VMs, the VM agent needs to be installed explicitly. Read more about [installing the VM agent on an existing VM](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx).
 
-| **作業**| **Windows**| **Linux**|
+| **Operation** | **Windows** | **Linux** |
 | --- | --- | --- |
-| 安裝 VM 代理程式| <li>下載並安裝 [代理程式 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。您需要有系統管理員權限，才能完成安裝。<li>[更新 VM 屬性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，表示已安裝代理程式。| <li> 安裝最新 [Linux 代理程式](https://github.com/Azure/WALinuxAgent) github。您需要有系統管理員權限，才能完成安裝。<li> [更新 VM 屬性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，表示已安裝代理程式。|
-| 更新 VM 代理程式| 更新 VM 代理程式很簡單，只要重新安裝 [VM 代理程式二進位檔](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。<br><br>確定在更新 VM 代理程式時，正在執行沒有備份作業。| 按照指示 [更新 Linux VM 代理程式 ](../virtual-machines-linux-update-agent.md)。<br><br>確定在更新 VM 代理程式時，正在執行沒有備份作業。|
-| 驗證 VM 代理程式安裝| <li>瀏覽至 *C:\WindowsAzure\Packages* Azure VM 中的資料夾。<li>您應該會發現 WaAppAgent.exe 檔案已存在。<li>在該檔案上按一下滑鼠右鍵，移至 [屬性]****，然後選取 [詳細資料]**** 索引標籤。產品版本] 欄位應為 2.6.1198.718 或更高版本。| -|
+| Installing the VM agent | <li>Download and install the [agent MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). You will need Administrator privileges to complete the installation. <li>[Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed. | <li> Install the latest [Linux agent](https://github.com/Azure/WALinuxAgent) from GitHub. You will need Administrator privileges to complete the installation. <li> [Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed. |
+| Updating the VM agent | Updating the VM agent is as simple as reinstalling the [VM agent binaries](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br><br>Ensure that no backup operation is running while the VM agent is being updated. | Follow the instructions on [updating the Linux VM agent ](../virtual-machines-linux-update-agent.md). <br><br>Ensure that no backup operation is running while the VM agent is being updated. |
+| Validating the VM agent installation | <li>Navigate to the *C:\WindowsAzure\Packages* folder in the Azure VM. <li>You should find the WaAppAgent.exe file present.<li> Right-click the file, go to **Properties**, and then select the **Details** tab. The Product Version field should be 2.6.1198.718 or higher. | - |
 
 
-深入了解 [VM 代理程式](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) 和 [如何安裝](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)。
+Learn about the [VM agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) and [how to install it](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/).
 
-### 備份擴充功能
+### Backup extension
 
-為了備份虛擬機器，「Azure 備份」服務會安裝 VM 代理程式的擴充功能。 Azure 備份服務無需使用者介入，即可順暢地升級和修補備份擴充功能。
+To back up the virtual machine, the Azure Backup service installs an extension to the VM agent. The Azure Backup service seamlessly upgrades and patches the backup extension without additional user intervention.
 
-如果 VM 正在執行，表示已安裝備份擴充功能。 執行中的 VM 也提供了取得應用程式一致復原點的絕佳機會。 不過，即使 VM 已關閉而無法安裝擴充功能 (亦稱為離線 VM)，「Azure 備份」服務仍會繼續備份 VM。 在此情況下，復原點將如前面所述為「當機時保持一致」**。
-
-
-## 限制
-
-- 不支援備份以「Azure 資源管理員」為基礎 (亦稱為 IaaS V2) 的虛擬機器。
-- 不支援備份具有 16 個以上資料磁碟的虛擬機器。
-- 不支援使用進階儲存體來備份虛擬機器。
-- 不支援備份具有保留的 IP 且沒有已定義之端點的虛擬機器。
-- 不支援在還原期間取代現有的虛擬機器。 先刪除現有的虛擬機器及任何相關聯的磁碟，然後從備份還原資料。
-- 不支援跨區域備份和還原。
-- 使用 Azure 備份服務來備份虛擬機器在 Azure 的所有公用區域支援 (請參閱 [檢查清單](http://azure.microsoft.com/regions/#services) 支援的區域)。 如果您尋找的區域目前不受支援，在建立保存庫期間，該區域就不會顯示在下拉式清單中。
-- 只有特定的作業系統版本才支援使用「Azure 備份」服務來備份虛擬機器：
-  - **Linux**: 請參閱 [由 Azure 背書的散發套件清單](../virtual-machines-linux-endorsed-distributions.md)。 只要虛擬機器上有 VM 代理程式，其他「攜帶您自己的 Linux」散發套件應該也可以運作。
-  - **Windows Server**: 不支援的版本早於 Windows Server 2008 R2。
-- 只有透過 PowerShell 才支援還原屬於多網域控制站 (DC) 組態的 DC VM。 深入了解 [還原多個 DC 的網域控制站](backup-azure-restore-vms.md#restoring-domain-controller-vms)。
-- 僅支援透過 PowerShell 還原具有以下特殊網路組態的虛擬機器。 藉由使用 UI 中的還原工作流程來建立的 VM 在還原作業完成之後，將不會具有這些網路組態。 若要深入了解，請參閱 [還原特殊的網路組態的 Vm](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)。
-    - 負載平衡器組態下的虛擬機器 (內部與外部)
-    - 具有多個保留的 IP 位址的虛擬機器
-    - 具有多個網路介面卡的虛擬機器
-
-## 有疑問嗎？
-
-如果有任何問題，或者您想要查看包含在內，任何功能 [傳送意見反應](http://aka.ms/azurebackup_feedback)。
-
-## 後續步驟
-
-- [規劃您的 VM 備份基礎結構](backup-azure-vms-introduction.md)
-- [備份虛擬機器](backup-azure-vms.md)
-- [管理虛擬機器備份](backup-azure-manage-vms.md)
+The backup extension is installed if the VM is running. A running VM also provides the greatest chance of getting an application-consistent recovery point. However, the Azure Backup service will continue to back up the VM--even if it is turned off, and the extension could not be installed (aka Offline VM). In this case, the recovery point will be *crash consistent* as discussed above.
 
 
+## Limitations
 
+- Backing up Azure Resource Manager-based (aka IaaS V2) virtual machines is not supported.
+- Backing up virtual machines with more than 16 data disks is not supported.
+- Backing up virtual machines using Premium storage is not supported.
+- Backing up virtual machines with a reserved IP address and no defined endpoint is not supported.
+- Replacing an existing virtual machine during restore is not supported. First delete the existing virtual machine and any associated disks, and then restore the data from backup.
+- Cross-region backup and restore is not supported.
+- Backing up virtual machines by using the Azure Backup service is supported in all public regions of Azure (see the [checklist](http://azure.microsoft.com/regions/#services) of supported regions). If the region that you are looking for is unsupported today, it will not appear in the dropdown list during vault creation.
+- Backing up virtual machines by using the Azure Backup service is supported only for select operating system versions:
+  - **Linux**: See [the list of distributions that are endorsed by Azure](../virtual-machines-linux-endorsed-distributions.md). Other Bring-Your-Own-Linux distributions also should work as long as the VM agent is available on the virtual machine.
+  - **Windows Server**:  Versions older than Windows Server 2008 R2 are not supported.
+- Restoring a domain controller (DC) VM that is part of a multi-DC configuration is supported only through PowerShell. Read more about [restoring a multi-DC domain controller](backup-azure-restore-vms.md#restoring-domain-controller-vms).
+- Restoring virtual machines that have the following special network configurations is supported only through PowerShell. VMs that you create by using the restore workflow in the UI will not have these network configurations after the restore operation is complete. To learn more, see [Restoring VMs with special network configurations](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations).
+    - Virtual machines under load balancer configuration (internal and external)
+    - Virtual machines with multiple reserved IP addresses
+    - Virtual machines with multiple network adapters
 
+## Questions?
+If you have questions, or if there is any feature that you would like to see included, [send us feedback](http://aka.ms/azurebackup_feedback).
+
+## Next steps
+
+- [Plan your VM backup infrastructure](backup-azure-vms-introduction.md)
+- [Back up virtual machines](backup-azure-vms.md)
+- [Manage virtual machine backups](backup-azure-manage-vms.md)
 

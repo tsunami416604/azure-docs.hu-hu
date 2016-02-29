@@ -16,15 +16,10 @@
     ms.date="12/11/2015" 
     ms.author="cephalin"/>
 
-
 # 在 Azure App Service 中使用 GIT 連續部署
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 [AZURE.INCLUDE [publishing-with-git](../../includes/publishing-with-git.md)]
-
-
-
-
-
+ 
 

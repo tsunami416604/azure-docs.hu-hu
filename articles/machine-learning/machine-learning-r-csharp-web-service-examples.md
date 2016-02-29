@@ -18,12 +18,11 @@
     ms.author="jaymathe"/> 
 
 
+#使用 R 程式碼在 Azure Machine Learning 上建置並發佈至 Microsoft Azure Marketplace 的 Web 服務範例
 
-# 使用 R 程式碼在 Azure Machine Learning 上建置並發佈至 Microsoft Azure Marketplace 的 Web 服務範例
+本文提供使用 Azure Machine Learning 建立並發佈至 Azure Marketplace 的範例 Web 服務。 每個 Web 服務範例都附加完整的文件、內嵌可用於測試服務的樣本資料集，並說明使用者如何自行建立類似的服務。 
 
-本文提供使用 Azure Machine Learning 建立並發佈至 Azure Marketplace 的範例 Web 服務。 每個 Web 服務範例都附加完整的文件、內嵌可用於測試服務的樣本資料集，並說明使用者如何自行建立類似的服務。
-
-在 Azure Machine Learning Studio 中，使用者可以撰寫 R 程式碼，而且只要按幾下，就可以將其發佈為 Web 服務，以供世界各地的應用程式和裝置取用。
+在 Azure Machine Learning Studio 中，使用者可以撰寫 R 程式碼，而且只要按幾下，就可以將其發佈為 Web 服務，以供世界各地的應用程式和裝置取用。 
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -38,43 +37,40 @@
 
 請考慮下列案例。
 
-## 案例 1：泛型模型
-
+##案例 1：泛型模型 
 使用者會使用可套用至新使用者資料的泛型模型，例如時間序列資料的基本預測或具備進階分析的自建 R 方法。 此使用者會將此模型發行為一項 Web 服務，以便他人取用其資料。
 
 
 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
+* [二元分類器](machine-learning-r-csharp-binary-classifier.md)
+* [叢集模型](machine-learning-r-csharp-cluster-model.md)
+* [多變量線性迴歸](machine-learning-r-csharp-multivariate-linear-regression.md)
+* [預測 - 指數平滑法](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
+* [ETS + STL 預測](machine-learning-r-csharp-retail-demand-forecasting.md)
+* [預測 - 自動迴歸整合移動平均 (ARIMA)](machine-learning-r-csharp-arima.md)
+* [存活分析](machine-learning-r-csharp-survival-analysis.md)
 
 
-## 案例 2：定型模型 - 特定資料
-
+##案例 2：定型模型 - 特定資料 
 使用者具有可透過 R 程式碼提供實用預測的資料，例如可透過 k-means 演算法叢集以預測使用者性格類型的大型性格問卷樣本，或可透過存活分析 R 封裝預測個人罹患肺癌之風險的健康調查資料。 使用者會透過可預測新使用者結果的 Web 服務來發行資料。
 
-## 案例 3：定型模型 - 泛型資料
-
+##案例 3：定型模型 - 泛型資料 
 使用者具有泛型資料 (例如文字主體)，該資料可用於建置 Web 服務，並將其廣泛套用至不同類型的使用個案和案例。
 
-* 
+* [語彙型情感分析](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
 
-## 案例 4：進階計算機
-
+##案例 4：進階計算機 
 使用者提供進階計算或模擬，而不需要任何定型模型或將使用者資料套入模型。
 
-* 
-* 
-* 
+* [比例差異測試](machine-learning-r-csharp-difference-in-two-proportions.md)
+* [常態分配套件](machine-learning-r-csharp-normal-distribution.md)
+* [二項分配套件](machine-learning-r-csharp-binomial-distribution.md)
 
-## 常見問題集
+##常見問題集
+Web 服務或發佈至 Marketplace 的耗用量常見問題集解答，請參閱 [這裡](machine-learning-marketplace-faq.md)。
+
+[1]: ./media/machine-learning-r-csharp-web-service-examples/machine-learning-r-code-options-for-using-and-sharing-cloud.png
 
 
-
-
-[1]: ./media/machine-learning-r-csharp-web-service-examples/machine-learning-r-code-options-for-using-and-sharing-cloud.png 
+ 
 

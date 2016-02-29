@@ -1,6 +1,6 @@
 <properties
-    pageTitle="# 為加入網域的 Windows 7 裝置設定自動註冊裝置 | Microsoft Azure"
-    description="設定加入網域的 Windows 7 裝置自動向 Azure AD 註冊的步驟。使用軟體發佈系統 (例如 System Center Configuration Manager) 將裝置註冊軟體套件部署到加入網域的 Windows 7 裝置的步驟。"
+    pageTitle="# 設定自動裝置註冊的 Windows 7 加入網域 devices|Microsoft Azure"
+    description="設定網域的 Windows 7 的步驟加入自動向 Azure AD 註冊的裝置。 並將裝置註冊軟體套件部署到網域的 Windows 7 步驟已加入使用軟體發佈系統如 System Center Configuration Manager 的裝置。"
     services="active-directory"
     documentationCenter=""
     authors="femila"
@@ -16,12 +16,11 @@
     ms.date="11/24/2015"
     ms.author="femila"/>
 
-
 # 為加入網域的 Windows 7 裝置設定自動註冊裝置
 
 身為 IT 管理員，您可以設定加入網域的 Windows 7 裝置自動向 Azure AD 註冊。 若要這樣做，您必須使用軟體發佈系統，例如 System Center Configuration Manager，將裝置註冊軟體套件部署到加入網域的 Windows 7 裝置。 請務必詳細閱讀並完成「自動向 Azure Active Directory 註冊加入網域的 Windows 裝置」中所列的必要條件。
 
-## 在加入網域的 Windows 7 裝置上安裝裝置註冊軟體套件
+##在加入網域的 Windows 7 裝置上安裝裝置註冊軟體套件
 
 Windows 7 的裝置註冊可做為 [下載 MSI 套件](https://connect.microsoft.com/site1164)。 此套件必須安裝在加入 Active Directory 網域的 Windows 7 電腦上。 您應該使用軟體發佈系統 (例如 System Center Configuration Manager) 來部署此套件。 MSI 套件使用 /quiet 參數，支援標準的無訊息安裝選項。
 軟體套件已開放下載，在 [Microsoft Connect 網站](https://connect.microsoft.com/site1164)。 您可以在這裡選取並下載 Workplace Join for Windows 7。
@@ -29,11 +28,10 @@ Windows 7 的裝置註冊可做為 [下載 MSI 套件](https://connect.microsoft
 ![](./media/active-directory-conditional-access/device-registration-process-windows7.gif)
 
 ## 加入工作場所與 Azure Active Directory
-
 加入網域的 Windows 7 裝置的裝置註冊不需要或包含使用者介面。 一旦安裝在電腦上，任何登入電腦的網域使用者會自動且無訊息地向 Azure AD 中的裝置物件註冊。 在 Azure AD 中，實體裝置的每一個已註冊的使用者都有一個裝置物件。
 
 安裝程式會在系統上建立排定的工作，此工作是在使用者的情境脈絡中執行，並於使用者登入時觸發。 使用者登入完成之後，此工作會以無訊息方式向 Azure AD 註冊使用者和裝置。 
-您可以在 [Microsoft]**** > [加入工作場所]**** 下的工作排程器程式庫中，找到此排定的工作。
+已排程工作，請參閱進行的工作排程器程式庫 **Microsoft** > **地點**。
 此工作會執行並註冊任何和所有登入電腦的 Active Directory 使用者。
 下圖列出自動註冊裝置的逐步程序。
 
@@ -52,7 +50,7 @@ Windows 7 的裝置註冊可做為 [下載 MSI 套件](https://connect.microsoft
 從 Windows 7 加入網域裝置使用軟體發佈系統如 System Center Configuration Manager 中解除安裝工作地點加入軟體套件。
 
 然後在 Windows 7 電腦上開啟命令提示字元，執行下列命令來取消註冊裝置：
-
+    
     %ProgramFiles%\Microsoft Workplace Join\AutoWorkplace.exe /leave
 
 >[AZURE.NOTE]
@@ -64,11 +62,7 @@ Windows 7 電腦上的 Windows 事件記錄檔會顯示與「加入工作場所�
 ## 其他主題
 
 - [Azure Active Directory 裝置註冊概觀](active-directory-conditional-access-device-registration-overview.md)
-- [與 Azure Active Directory for Windows Domain-Joined 裝置的自動裝置註冊](active-directory-conditional-access-automatic-device-registration.md)
-- [設定自動裝置註冊的 Windows 8.1 網域加入的裝置](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+- [自動向 Azure Active Directory 註冊加入網域的 Windows 裝置](active-directory-conditional-access-automatic-device-registration.md)
+- [為加入網域的 Windows 8.1 裝置設定自動註冊裝置](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
 
-
-
-
-
-
+ 

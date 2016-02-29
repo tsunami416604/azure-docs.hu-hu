@@ -1,6 +1,6 @@
 <properties 
     pageTitle="SQL Database 的 XEvent 事件檔案程式碼 | Microsoft Azure" 
-    description="提供 PowerShell 和 Transact-SQL 的兩階段程式碼範例，示範 Azure SQL Database 上擴充事件中的事件檔案目標。此案例必須要有 Azure 儲存體。" 
+    description="提供 PowerShell 和 Transact-SQL 的兩階段程式碼範例，示範 Azure SQL Database 上擴充事件中的事件檔案目標。 此案例必須要有 Azure 儲存體。" 
     services="sql-database" 
     documentationCenter="" 
     authors="MightyPen" 
@@ -19,8 +19,8 @@
     ms.author="genemi"/>
 
 
-
 # SQL Database 中擴充事件的事件檔案目標程式碼
+
 
 您想要完整的程式碼範例以穩健方式擷取和報告擴充事件的資訊。
 
@@ -40,22 +40,27 @@ Microsoft SQL Server 中 [事件檔案目標](http://msdn.microsoft.com/library/
 
 ## 必要條件
 
+
 - Azure 帳戶和訂用帳戶。 您可以註冊 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
 
+
 - 您可以在當中建立資料表的任何資料庫。
- - 您可以選擇性地 [建立 * * AdventureWorksLT * * 示範資料庫](sql-database-get-started.md) 以分鐘為單位。
+ - 您可以選擇性地 [建立 **AdventureWorksLT** 示範資料庫](sql-database-get-started.md) 以分鐘為單位。
+
 
 - SQL Server Management Studio (ssms.exe) 在 2015 年 8 月的預覽版或更新版本。 
 您可以從下列位置下載最新的 ssms.exe：
  - 主題 [下載 SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx)。
- - [直接下載連結。](http://go.microsoft.com/fwlink/?linkid=616025)
+ - [下載的直接連結。](http://go.microsoft.com/fwlink/?linkid=616025)
  - Microsoft 建議您定期更新 ssms.exe。 在某些情況下，ssms.exe 將會每個月更新。
 
+
 - 您必須擁有 [Azure PowerShell 模組](http://go.microsoft.com/?linkid=9811175) 安裝。
- - 模組提供 **New-AzureStorageAccount** 這類的命令。
+ - 模組提供命令，例如- **New-azurestorageaccount**。
 
 
 ## 第 1 階段：Azure 儲存體容器的 PowerShell 程式碼
+
 
 這個 PowerShell 是兩階段程式碼範例的第 1 階段。
 
@@ -63,16 +68,16 @@ Microsoft SQL Server 中 [事件檔案目標](http://msdn.microsoft.com/library/
 
 
 
-1. 將 PowerShell 指令碼貼到如 Notepad.exe 的簡單文字編輯器，並將指令碼儲存為有 **.ps1** 副檔名的檔案。
+1. 將 PowerShell 指令碼貼到簡單的文字編輯器，例如 Notepad.exe，並將指令碼儲存為副檔名的檔案 **.ps1**。
 
 2. 以系統管理員身分啟動 PowerShell ISE。
 
-3. 在提示中輸入<br/>`不受限制的 Set-executionpolicy ExecutionPolicy-範圍 CurrentUser`<br/>，然後按 Enter。
+3. 在提示中輸入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>然後按 Enter 鍵。
 
-4. 在 PowerShell ISE 中開啟您的 **.ps1** 檔案。 執行指令碼。
+4. 在 PowerShell ISE 中，開啟您 **.ps1** 檔案。 執行指令碼。
 
 5. 指令碼會先啟動新的視窗讓您登入 Azure。
- - 如果您重複執行指令碼而不中斷您的工作階段，可以很方便地選擇將 **Add-AzureAccount** 命令標記為註解。
+ - 如果您執行指令碼並不會中斷您的工作階段，您必須標記為註解的方便選項 **Add-azureaccount** 命令。
 
 
 ![準備好 PowerShell ISE 和安裝的 Azure 模組，以便執行指令碼。][30_powershell_ise]
@@ -145,6 +150,8 @@ If ($storageAccountName)
 
 #--------------- 5 -----------------------
 
+[System.DateTime]::Now.ToString()
+
 '
 Create a storage account. 
 This might take several minutes, will beep when ready.
@@ -153,6 +160,11 @@ This might take several minutes, will beep when ready.
 New-AzureStorageAccount `
     -StorageAccountName $storageAccountName `
     -Location           $storageAccountLocation
+
+[System.DateTime]::Now.ToString()
+
+[System.Media.SystemSounds]::Beep.Play()
+
 
 '
 Get the primary access key for your storage account.
@@ -249,6 +261,7 @@ Now shift to the Transact-SQL portion of the two-part code sample!'
 
 ## 第 2 階段：使用 Azure 儲存體容器的 Transact-SQL 程式碼
 
+
 - 在此程式碼範例的第 1 階段中，您執行了 PowerShell 指令碼建立 Azure 儲存體容器。
 - 接下來在第 2 階段中，下列 Transact-SQL 指令碼必須使用該容器。
 
@@ -256,7 +269,7 @@ Now shift to the Transact-SQL portion of the two-part code sample!'
 指令碼開頭的命令清除先前可能執行過的結果，而且設計為可重複執行。
 
 
-PowerShell 指令碼在結束時列印出幾個具名的值。 您必須編輯 Transact-SQL 指令碼以使用這些值。 在 Transact-SQL 指令碼中尋找 **TODO** 找出編輯點。
+PowerShell 指令碼在結束時列印出幾個具名的值。 您必須編輯 Transact-SQL 指令碼以使用這些值。 尋找 **TODO** 在 TRANSACT-SQL 指令碼中，找出編輯點。
 
 
 1. 開啟 SQL Server Management Studio (ssms.exe)。
@@ -267,7 +280,7 @@ PowerShell 指令碼在結束時列印出幾個具名的值。 您必須編輯 T
 
 4. 將下列 Transact-SQL 指令碼貼入查詢窗格。
 
-5. 在指令碼中尋找每個 **TODO** 並進行適當的編輯。
+5. 尋找每個 **TODO** 指令碼中，並進行適當的編輯。
 
 6. 儲存並執行指令碼。
 
@@ -489,9 +502,10 @@ GO
 
 ## 輸出
 
-Transact-SQL 指令碼完成時，按一下 **event_data_XML** 資料欄標題下的儲存格。一個 * *<event>* * 項目隨即會顯示一個 UPDATE 陳述式。
 
-以下是一個 * *<event>* * 在測試期間所產生的項目:
+TRANSACT-SQL 指令碼完成時，按一下下方的儲存格 **event_data_XML** 資料行標頭。 一個 **<event>** 項目隨即會顯示一個 UPDATE 陳述式。
+
+以下是一個 **<event>** 在測試期間所產生的項目:
 
 
 &nbsp;
@@ -545,39 +559,43 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 ## 轉換程式碼範例在 SQL Server 上執行
 
+
 假設您想要在 Microsoft SQL Server 上執行上述的 Transact-SQL 範例。
 
 
-- 為了簡單起見，您想要將 Azure 儲存體容器完全取代為簡單檔案 (例如 **C:\myeventdata.xel**)。 檔案會寫入裝載 SQL Server 之電腦的本機硬碟。
+- 為求簡化您要完全取代使用 Azure 儲存體容器的簡單檔案這類 **C:\myeventdata.xel**。 檔案會寫入裝載 SQL Server 之電腦的本機硬碟。
 
-- 您不需要 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL** 的任何 Transact-SQL 陳述式。
 
-- 在 **CREATE EVENT SESSION** 陳述式的 **ADD TARGET** 子句中，您要將對 **filename=** 指派的 Http 值取代為完整路徑字串 (例如 **C:\myfile.xel**)。
+- 您不需要任何種類的 TRANSACT-SQL 陳述式 **CREATE MASTER KEY** 和 **建立認證**。
+
+
+- 在 **CREATE EVENT SESSION** 陳述式，請在其 **ADD TARGET** 子句中，您必須取代指定的 Http 值對 **filename =** 具有完整的路徑字串 like **C:\myfile.xel**。
  - 不需要牽涉到任何 Azure 儲存體帳戶。
 
 
 ## 詳細資訊
+
 
 Azure SQL Database 上擴充事件的主要主題是：
 
 - [SQL 資料庫中的擴充事件](sql-database-xevent-db-diff-from-svr.md) -是主要的主題針對在 Azure SQL 資料庫的擴充事件。
  - 對比 Azure SQL Database 與 Microsoft SQL Server 之間擴充事件的不同層面。
 
-- [信號緩衝區目標的程式碼 SQL 資料庫中的擴充事件](sql-database-xevent-code-ring-buffer.md) -提供姊姊快速且容易使用，但較為簡單的測試以及較大的活動較不健全的程式碼範例。
+
+- [環緩衝區目標的程式碼 SQL 資料庫中的擴充事件](sql-database-xevent-code-ring-buffer.md) -提供姊姊快速且容易使用，但較為簡單的測試以及較大的活動較不健全的程式碼範例。
 
 
 如需 Azure 儲存體服務中帳戶和容器的詳細資訊，請參閱：
 
-- [如何使用.net 的 Blob 儲存體](storage-dotnet-how-to-use-blobs.md/)
-- [命名和參考容器、 Blob 及中繼資料](http://msdn.microsoft.com/library/azure/dd135715.aspx)
+- [如何使用 .NET 的 Blob 儲存體](storage-dotnet-how-to-use-blobs.md/)
+- [命名和參考容器、Blob 及中繼資料](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 - [使用根容器](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 
 
+<!--
+Image references.
+-->
 
+[30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-
-[system.datetime]: :Now.ToString() 
-[system.datetime]: :Now.ToString() 
-[system.media.systemsounds]: :Beep.Play() 
-[30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png 
 

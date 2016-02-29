@@ -16,7 +16,6 @@
     ms.date="08/08/2015"
     ms.author="lindydonna"/>
 
-
 # 將推播通知新增至行動服務應用程式
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -27,9 +26,5 @@
 [AZURE.INCLUDE [mobile-services-selector-get-started-push-xamarin](../../includes/mobile-services-selector-get-started-push-xamarin.md)]
 
 [AZURE.INCLUDE [mobile-services-content-not-ready](../../includes/mobile-services-content-not-ready.md)]
-
-
-
-
 
 

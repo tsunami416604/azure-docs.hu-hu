@@ -16,15 +16,12 @@
     ms.date="12/05/2015"  
     ms.author="juliako"/>
 
-
 # 設定環境
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-create-account.md)
+- [入口網站](media-services-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
 - [REST](https://msdn.microsoft.com/library/azure/dn167014.aspx)
-
-
 <a id="create_account"></a>
 
 下列步驟說明使用 Azure 媒體服務進行開發時所需的必要條件。
@@ -34,7 +31,7 @@
 使用 Azure 傳統入口網站、.NET SDK 或 REST API 來建立 Azure 媒體服務帳戶。
 
 <a id="setup_dev_env"></a>
-## 設定開發環境
+## 設定開發環境  
 
 針對開發環境選擇 .NET 或 REST API。
 
@@ -48,16 +45,12 @@
 [AZURE.INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
 
 
-## 後續步驟：Azure 媒體服務學習路徑
+##後續步驟：Azure 媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 
 

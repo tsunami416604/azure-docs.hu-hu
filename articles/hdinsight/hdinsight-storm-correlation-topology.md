@@ -17,7 +17,6 @@
  ms.date="12/04/2015"
  ms.author="larryfr"/>
 
-
 # 使用 HDInsight 上的 Storm 和 HBase 讓事件隨著時間而相互關聯
 
 搭配 Apache Store 使用永續性資料存放區，可以讓在不同時間抵達的資料項目相互關聯。 例如，連結使用者工作階段的登入和登出事件，可計算工作階段的持續時間長度。
@@ -26,7 +25,7 @@
 
 [AZURE.INCLUDE [windows-only](../../includes/hdinsight-windows-only.md)]
 
-## 必要條件
+## 先決條件
 
 -   HDInsight tools for Visual Studio: 請參閱 [開始使用 HDInsight tools for Visual Studio](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md) 取得安裝資訊。
 
@@ -58,12 +57,13 @@
 
 ### Storm 拓撲
 
-當工作階段開始時，**START** 事件會由拓撲接收並記錄至 HBase。 收到 **END** 事件時，拓撲會擷取 **START** 事件並計算兩個事件之間的時間。 此 [**持續時間**] 值接著會連同 **END** 事件資訊儲存在 HBase 中。
-> [AZURE.IMPORTANT] 雖然此拓撲示範基本模式，但生產方案必須採用下列案例的設計：
+當工作階段啟動時， **啟動** 事件會由拓撲接收並記錄至 HBase。 當 **結束** 收到事件時，拓撲會擷取 **啟動** 事件並計算兩個事件之間的時間。 這 **持續時間** 值接著會儲存在 HBase 連同 **結束** 事件資訊。
+
+> [AZURE.IMPORTANT] 雖然此拓撲示範基本模式，生產環境方案必須採用下列案例的設計:
 >
-> -未按順序抵達的事件
-> -重複的事件
-> -已卸除的事件
+> - 未按順序抵達的事件
+> - 重複的事件
+> - 卸除的事件
 
 本範例拓撲包含下列元件：
 
@@ -92,7 +92,8 @@
     -   持續時間：START 和 END 事件之間的長度
 
 -   VERSIONS：'Cf' 系列會設定為每個資料列保留 5 個版本
-    > [AZURE.NOTE] 版本是針對特定資料列索引鍵儲存的先前值的記錄檔。 根據預設，HBase 只會針對資料列的最新版本傳回此值。 在此情況下，相同的資料列用於所有事件 (START、 END)。 時間戳記值識別每個資料列版本。 這提供針對特定識別碼記錄之事件的歷程記錄檢視。
+
+    > [AZURE.NOTE] 版本是儲存特定資料列索引鍵的先前值的記錄檔。 根據預設，HBase 只會針對資料列的最新版本傳回此值。 在此情況下，相同的資料列使用於所有事件 (START、END)，而資料列的每個版本都是以時間戳記值識別。 這提供針對特定識別碼記錄之事件的歷程記錄檢視。
 
 ## 下載專案
 
@@ -106,13 +107,13 @@
 
 ## 建立資料表
 
-1. 在 Visual Studio 中開啟 **SessionInfo** 專案。
+1. 開啟 **SessionInfo** Visual Studio 專案中的。
 
-2. 在 [**方案總管**] 中，於 **SessionInfo** 專案上按一下滑鼠右鍵，然後選取 [**屬性**]。
+2. 在 **方案總管] 中**, ，以滑鼠右鍵按一下 **SessionInfo** 專案，然後選取 **屬性**。
 
     ![已選取屬性的功能表螢幕擷取畫面](./media/hdinsight-storm-correlation-topology/selectproperties.png)
 
-3. 選取 [**設定**]，然後設定下列值：
+3. 選取 **設定**, ，然後設定下列值:
 
     -   HBaseClusterURL：HBase 叢集的 URL。 例如，https://myhbasecluster.azurehdinsight.net
 
@@ -130,11 +131,11 @@
 
 ## 建立和部署 Storm 拓撲
 
-1.  在 Visual Studio 中開啟 [**CorrelationTopology**] 方案。
+1.  開啟 **CorrelationTopology** Visual Studio 方案。
 
-2.  在 [**方案總管**] 中，於 **CorrelationTopology** 專案上按一下滑鼠右鍵，然後選取 [屬性]。
+2.  在 **方案總管] 中**, ，以滑鼠右鍵按一下 **CorrelationTopology** 專案，然後選取 [內容]。
 
-3.  在 [屬性] 視窗中，選取 [**設定**] 並提供下列資訊。 前 5 項應該是 **SessionInfo** 專案使用的相同值：
+3.  在 [屬性] 視窗中，選取 **設定** ，並提供下列資訊。 前 5 項應該是使用相同值 **SessionInfo** 專案:
 
     -   HBaseClusterURL：HBase 叢集的 URL。 例如，https://myhbasecluster.azurehdinsight.net
 
@@ -146,33 +147,35 @@
 
     -   HBaseTableColumnFamily：資料行系列名稱。 此項應該包含 SessionInfo 專案中使用的相同資料行系列名稱
 
-    > [AZURE.IMPORTANT] 請勿變更 HBaseTableColumnNames，因為預設值是 **SessionInfo** 用來擷取資料的名稱。
+    > [AZURE.IMPORTANT] 請勿變更 HBaseTableColumnNames，因為預設值是所使用的名稱 **SessionInfo** 來擷取資料。
 
 4.  儲存屬性，然後建置專案。
 
-5.  在 [**方案總管**] 中，於專案上按一下滑鼠右鍵，然後選取 [**提交至 Storm on HDInsight**]。 如果出現提示，請輸入您的 Azure 訂閱的認證。
+5.  在 **方案總管] 中**, ，以滑鼠右鍵按一下專案，然後選取 **提交至 Storm on HDInsight**。 如果出現提示，請輸入您的 Azure 訂閱的認證。
 
     ![提交至 Storm 功能表項目的影像](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
-6.  在 [**提交拓樸**] 對話方塊中，選取將執行此拓樸的 Storm 叢集。
-    > [AZURE.NOTE] 第一次提交拓撲時，可能需要幾秒鐘的時間來擷取您的 HDInsight 叢集名稱。
+6.  在 **提交拓樸** ] 對話方塊中，選取將執行此拓樸的 Storm 叢集。
 
-7.  拓撲上傳並提交至叢集後，[**Storm 拓撲檢視**] 將會開啟並顯示執行中的拓撲。 選取 **CorrelationTopology**，並使用頁面右上方的 [重新整理] 按鈕來重新整理拓撲資訊。
+    > [AZURE.NOTE] 第一次提交拓撲時，可能需要幾秒鐘的時間來擷取您的 HDInsight 叢集的名稱。
+
+7.  拓撲已上傳並提交至叢集， **Storm 拓撲檢視** 將會開啟並顯示執行中拓撲。 選取 **CorrelationTopology** ，並使用 [重新整理] 按鈕上方頁面右上方的重新整理拓撲資訊。
 
     ![拓撲檢視的影像](./media/hdinsight-storm-correlation-topology/topologyview.png)
 
-    拓撲開始產生資料時，[**已發出**] 中的值將會遞增。
-    > [AZURE.NOTE] 如果 [**Storm 拓撲檢視**] 並未自動開啟，請使用下列步驟來開啟：
+    拓撲開始產生資料，在值 **發出** 將會遞增。
+
+    > [AZURE.NOTE] 如果 **Storm 拓撲檢視** 不會自動開啟，使用下列步驟來開啟它:
     >
-    > 1.在 [**方案總管**] 中，展開 **Azure**，然後展開 **HDInsight**。
+    > 1. 在 **方案總管] 中**, ，依序展開 **Azure**, ，然後展開 **HDInsight**。
     >
-    > 2.以滑鼠右鍵按一下正在執行拓撲的 Storm 叢集，然後選取 [**檢視 Storm 拓撲**]
+    > 2. 以滑鼠右鍵按一下正在執行拓撲的 Storm 叢集，然後選取 **檢視 Storm 拓撲**
 
 ## 查詢資料
 
 發出資料後，使用下列步驟來查詢資料。
 
-1. 回到 **SessionInfo** 專案。 如果不在執行中，請啟動它的新執行個體。
+1. 返回 **SessionInfo** 專案。 如果不在執行中，請啟動它的新執行個體。
 
 2. 出現提示時，選取 **s** 以搜尋 START 事件。 系統會提示您輸入開始和結束時間來定義時間範圍 - 只會傳回這兩個時間之間的事件。
 
@@ -182,22 +185,17 @@
 
         Session e6992b3e-79be-4991-afcf-5cb47dd1c81c started at 6/5/2015 6:10:15 PM. Timestamp = 1433527820737
 
-
 搜尋 END 事件和 START 事件的方式相同。 不過，END 事件會在 START 事件之後的 1 到 5 分鐘之間隨機產生。 因此，您可能必須嘗試幾個時間範圍，以便找出 END 事件。 END 事件也會包含工作階段的持續時間 - START 事件時間和 END 事件時間之間的差異。 以下是 END 事件的資料範例：
 
     Session fc9fa8e6-6892-4073-93b3-a587040d892e lasted 2 minutes, and ended at 6/5/2015 6:12:15 PM
 
-> [AZURE.NOTE] 雖然您輸入的時間值都是當地時間，但查詢所傳回的時間會是 UTC。
+> [AZURE.NOTE] 您輸入的時間值在當地時間時，從查詢傳回的時間會是 UTC。
 
-## 停止拓撲
+##停止拓撲
 
-當您準備要停止拓撲時，請回到 Visual Studio 中的 **CorrelationTopology** 專案。 在 [**Storm 拓撲檢視**] 中，選取拓撲，然後使用拓撲檢視頂端的 [**刪除**] 按鈕。
+當您準備好要停止拓撲時，返回 **CorrelationTopology** Visual Studio 專案中的。 在 **Storm 拓撲檢視**, 選取拓撲，然後使用 **Kill** 拓撲檢視頂端的按鈕。
 
-## 後續步驟
+##後續步驟
 
 如需更多 Storm 範例，請參閱 [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)。
-
-
-
-
-
+ 

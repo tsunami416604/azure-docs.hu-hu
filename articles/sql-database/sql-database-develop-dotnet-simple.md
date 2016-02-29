@@ -18,13 +18,13 @@
     ms.author="tobiast"/>
 
 
-
 # 從 .NET (C#) 使用 SQL Database
+
 
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-## 必要條件
+## 先決條件
 
 ### .NET Framework
 
@@ -32,7 +32,7 @@
 
 ### SQL Database
 
-請參閱 [入門頁面](sql-database-get-started.md) 以了解如何建立範例資料庫。 請務必遵循該指南以建立 **AdventureWorks 資料庫範本**。 以下所示的範例僅適用於 **AdventureWorks 結構描述**。
+請參閱 [入門頁面](sql-database-get-started.md) 以了解如何建立範例資料庫。  請務必遵循該指南以建立 **AdventureWorks 資料庫範本**。 只有如下所示的範例適用於 **AdventureWorks 結構描述**。  
 
 ## 步驟 1: 取得連接字串
 
@@ -40,7 +40,7 @@
 
 ## 步驟 2: 連接
 
-[System.Data.SqlClient.SqlConnection 類別](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 用來連接到 SQL 資料庫。
+ [System.Data.SqlClient.SqlConnection 類別](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 用來連接到 SQL 資料庫。
 
 
 ```
@@ -60,7 +60,7 @@ class Sample
 
 ## 步驟 3：執行查詢
 
-[System.Data.SqlClient.SqlCommand](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.aspx) 和 [SqlDataReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqldatareader.aspx) 類別可用來擷取對 SQL Database 設定從查詢的結果。 請注意，System.Data.SqlClient 也支援資料擷取到離線 [System.Data.DataSet](https://msdn.microsoft.com/library/system.data.dataset.aspx)。
+ [System.Data.SqlClient.SqlCommand](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.aspx) 和 [SqlDataReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqldatareader.aspx) 類別可用來擷取對 SQL Database 設定從查詢的結果。 請注意，System.Data.SqlClient 也支援資料擷取到離線 [System.Data.DataSet](https://msdn.microsoft.com/library/system.data.dataset.aspx)。   
 
 ```
 using System;
@@ -95,11 +95,12 @@ class Sample
         }
     }
 }
-```
+
+```  
 
 ## 步驟 4：插入資料列
 
-在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。
+在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。  
 
 ```
 using System;
@@ -131,8 +132,4 @@ class Sample
     }
 }
 ```
-
-
-
-
 

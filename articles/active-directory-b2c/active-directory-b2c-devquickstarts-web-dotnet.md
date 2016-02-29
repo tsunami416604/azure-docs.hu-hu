@@ -16,41 +16,42 @@
     ms.date="09/22/2015"
     ms.author="dastrock"/>
 
-
 # Azure AD B2C 預覽：建置 .NET Web 應用程式
 
-有了 Azure AD B2C，您可以將強大的自助式身分識別管理功能加入至 Web 應用程式，只要幾個簡短步驟即可完成。 這篇文章將示範如何
-若要建立的.NET MVC web 應用程式，包括使用者註冊、 登入與設定檔管理。其中包含支援註冊與登入使用者名稱
+<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+
+有了 Azure AD B2C，您可以將強大的自助式身分識別管理功能加入至 Web 應用程式，只要幾個簡短步驟即可完成。  這篇文章將示範如何
+若要建立的.NET MVC web 應用程式，包括使用者註冊、 登入與設定檔管理。  其中包含支援註冊與登入使用者名稱
 或電子郵件，以及社交帳戶，例如 Facebook 和 Google。
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 ## 1.取得 Azure AD B2C 目錄
 
-您必須先建立目錄或租用戶，才可使用 Azure AD B2C。 目錄為所有使用者、應用程式、群組等項目的容器。 如果您沒有
+您必須先建立目錄或租用戶，才可使用 Azure AD B2C。  目錄為所有使用者、應用程式、群組等項目的容器。  如果您沒有
 其中一個，請移 [建立 B2C 目錄](active-directory-b2c-get-started.md) 之後再繼續。
 
 ## 2.建立應用程式
 
-您現在需要在 B2C 目錄中建立應用程式，以提供一些必要資訊給 Azure AD，讓它與應用程式安全地通訊。 若要建立應用程式
-請依照下列 [這些指示](active-directory-b2c-app-registration.md)。 請務必
+您現在需要在 B2C 目錄中建立應用程式，以提供一些必要資訊給 Azure AD，讓它與應用程式安全地通訊。  若要建立應用程式
+請依照下列 [這些指示](active-directory-b2c-app-registration.md)。  請務必
 
-- 在應用程式中加入 **Web 應用程式/Web API**
-- 輸入 `https://localhost:44316 /` 為 **回覆 URL** -它是此程式碼範例的預設 URL。
-- 複製指派給您應用程式的**應用程式識別碼**。 稍後您將會用到此資訊。
+- 包含 **web 應用程式/web api** 應用程式中
+- 輸入 `https://localhost:44316/` 為 **回覆 URL** -它是此程式碼範例的預設 URL。
+- 複製 **應用程式識別碼** ，其指派給您的應用程式。  稍後您將會用到此資訊。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## 3.建立您的原則
 
-在 Azure AD B2C，每個使用者經驗來定義 [* * 原則 * *](active-directory-b2c-reference-policies.md)。 此程式碼範例包含三種 
-識別發生位註冊、 登入，並編輯設定檔。 您必須建立的每個類型，一個原則中所述 
-[原則參考文件](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)。 建立您的三個原則時，請務必：
+在 Azure AD B2C，每個使用者經驗來定義 [**原則**](active-directory-b2c-reference-policies.md)。  此程式碼範例包含三種 
+識別發生位註冊、 登入，並編輯設定檔。  您必須建立的每個類型，一個原則中所述 
+[原則參考文件](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)。  建立您的三個原則時，請務必：
 
-- 在身分識別提供者刀鋒視窗中選擇 [使用者識別碼註冊]**** 或 [電子郵件註冊]****。
-- 在註冊原則中選擇 [顯示名稱]**** 和其他一些註冊屬性。
-- 在每個原則中選擇 [顯示名稱]**** 宣告做為應用程式宣告。 您也可以選擇其他宣告。
-- 建立每個原則後，複製原則的 [名稱]****。 稍後您將需要這些原則名稱。
+- 選擇 **使用者識別碼註冊** 或 **電子郵件註冊** 身分識別提供者] 刀鋒視窗中。
+- 選擇 **顯示名稱** 和您註冊的原則中的其他幾個註冊屬性。
+- 選擇 **顯示名稱** 宣告為每個原則的應用程式宣告。  您也可以選擇其他宣告。
+- 複製 **名稱** 的每個原則建立之後。  稍後您將需要這些原則名稱。 
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -58,7 +59,7 @@
 
 ## 4.下載程式碼和設定驗證
 
-此範例的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet)。 當您建置範例，您可以 
+此範例的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet)。  當您建置範例，您可以 
 [下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) 或再製基本架構:
 
 ```
@@ -66,9 +67,9 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-Ope
 ```
 
 已完成範例也 [成為.zip](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/complete.zip) 或
-`完整` 相同的儲存機制的分支。
+`complete` 相同的儲存機制分支。
 
-一旦您已下載的範例程式碼，請開啟 Visual Studio `.sln` 檔案，以便開始使用。
+下載範例程式碼後，請開啟 Visual Studio `.sln` 檔案開始進行。
 
 您的應用程式與 Azure AD B2C 通訊時會傳送 HTTP 驗證要求，並指定它想要在要求中執行的原則。
 .NET web 應用程式，您可以使用 Microsoft OWIN 程式庫來傳送 OpenID Connect 驗證要求、 執行原則、 管理使用者
@@ -82,7 +83,7 @@ PM> Install-Package Microsoft.Owin.Security.Cookies
 PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
-接下來，開啟 `web.config` 檔案位於專案的根目錄，並輸入您的應用程式中的組態值 `< g s >` 一節。
+接下來，開啟專案根目錄中的 `web.config` 檔案，在 `<appSettings>` 區段中輸入應用程式的組態值。
 
 ```
 <configuration>
@@ -104,9 +105,9 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 [AZURE.INCLUDE [active-directory-b2c-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-現在，加入 「 OWIN 啟動類別 」 專案呼叫 `Startup.cs`。 以滑鼠右鍵按一下專案 --> [加入]**** -->[新增項目]**** --> 搜尋 "OWIN"。  
-將類別宣告變更為 `公用部分類別啟動` -我們已實作了此類別的部分為您在另一個檔案。  
-OWIN 中介軟體將會叫用 `Configuration(...)` 應用程式啟動-這種方法時的方法呼叫 ConfigureAuth(...)，其中我們
+現在，將「OWIN 啟動類別」加入名為 `Startup.cs` 的專案。  以滑鼠右鍵按一下專案--> **新增** --> **新項目** --> 搜尋"OWIN"。  
+將類別宣告變更為 `public partial class Startup`，我們已為您在另一個檔案中實作了此類別的一部分。  
+OWIN 中介軟體將會叫用 `Configuration(...)` 方法啟動應用程式-這種方法時呼叫 ConfigureAuth(...)，其中我們
 會為您的應用程式的驗證設定。
 
 ```C#
@@ -121,8 +122,8 @@ public partial class Startup
 }
 ```
 
-開啟檔案 `App_Start\Startup.Auth.cs` 和實作 `ConfigureAuth(...)` 方法。 在您所提供的參數 `OpenIdConnectAuthenticationOptions` 
-將做為您的應用程式與 Azure AD 進行通訊的座標。 您也需要設定 Cookie 驗證-OpenID Connect 中介軟體 
+開啟檔案 `App_Start\Startup.Auth.cs` 並實作 `ConfigureAuth(...)` 方法。  在您所提供的參數 `OpenIdConnectAuthenticationOptions` 
+將做為您的應用程式與 Azure AD 進行通訊的座標。  您也需要設定 Cookie 驗證-OpenID Connect 中介軟體 
 您可以使用 cookie 來維護使用者工作階段，等其他作業。
 
 ```C#
@@ -182,16 +183,15 @@ public partial class Startup
         };
 
         app.UseOpenIdConnectAuthentication(options);
-
+            
     }
 ```
 
 ## 5.將驗證要求傳送至 Azure AD
+您的應用程式現在已正確設定，將使用 OpenID Connect 驗證通訊協定與 Azure AD B2C 進行通訊。  OWIN 已經處理所有的瑣碎詳細資料
+製作驗證訊息、 驗證 Azure ad 的權杖和維護使用者工作階段。  剩下的就是啟動每個使用者流程。
 
-您的應用程式現在已正確設定，將使用 OpenID Connect 驗證通訊協定與 Azure AD B2C 進行通訊。 OWIN 已經處理所有的瑣碎詳細資料
-製作驗證訊息、 驗證 Azure ad 的權杖和維護使用者工作階段。 剩下的就是啟動每個使用者流程。
-
-當使用者按一下 「 註冊 」、 「 登入 」 或 「 編輯設定檔 」 按鈕的 web 應用程式時，相關聯的動作會叫用 `controllers\ accountcontroller.cs`。
+當使用者在 Web 應用程式中按一下 [註冊]、[登入] 或 [編輯設定檔] 按鈕時，`Controllers\AccountController.cs` 中會叫用相關聯的動作。
 在每個案例中，您可以使用內建的 OWIN 方法來觸發正確的原則：
 
 ```C#
@@ -203,7 +203,7 @@ public void SignIn()
     {
         // To execute a policy, you simply need to trigger an OWIN challenge.
         // You can indicate which policy to use by adding it to the AuthenticationProperties using the PolicyKey provided.
-
+    
         HttpContext.GetOwinContext().Authentication.Challenge(
             new AuthenticationProperties (
                 new Dictionary<string, string> 
@@ -250,8 +250,8 @@ public void Profile()
 }
 ```
 
-您也可以使用自訂 `PolicyAuthorize` 在需要時執行特定原則，如果使用者未在已簽署的控制器中的標記。
-開啟 `controllers\ homecontroller.cs`, ，並新增 `[PolicyAuthorize]` 宣告控制站的標記。 請務必將包含的原則範例
+您也可以在控制器中使用自訂的 `PolicyAuthorize` 標記，要求如果使用者尚未登入，則執行特定的原則。
+開啟 `Controllers\HomeController.cs`，將 `[PolicyAuthorize]` 標記加入「宣告」控制器。  請務必將包含的原則範例
 使用您自己的登入原則。
 
 ```C#
@@ -264,7 +264,7 @@ public ActionResult Claims()
   ...
 ```
 
-您也可以使用 OWIN 將使用者登出應用程式。 回到 `controllers\ accountcontroller.cs`:
+您也可以使用 OWIN 將使用者登出應用程式。  回到 `Controllers\AccountController.cs`：  
 
 ```C#
 // Controllers\AccountController.cs
@@ -283,8 +283,8 @@ public void SignOut()
 }
 ```
 
-根據預設，OWIN 將不會傳送中所指定的原則 `AuthenticationProperties` 至 Azure AD。 不過，您可以編輯 OWIN 中產生的要求 `RedirectToIdentityProvider` 通知。
-使用此通知中的 `App_Start\Startup.Auth.cs` 從該原則的中繼資料擷取正確的端點，每個原則。 針對您的應用程式想要執行的每一個原則，如此可確保正確的要求會傳送至 Azure AD。
+根據預設，OWIN 不會將您在 `AuthenticationProperties` 中指定的原則傳送至 Azure AD。  不過，您可以在 `RedirectToIdentityProvider` 通知中編輯 OWIN 產生的要求。
+在 `App_Start\Startup.Auth.cs` 中使用這個通知，從原則的中繼資料擷取每項原則的適用端點。  針對您的應用程式想要執行的每一個原則，如此可確保正確的要求會傳送至 Azure AD。   
 
 ```C#
 // App_Start\Startup.Auth.cs
@@ -303,13 +303,12 @@ private async Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotifi
         notification.ProtocolMessage.IssuerAddress = config.AuthorizationEndpoint;
     }
 }
-```
+``` 
 
 ## 6.顯示使用者資訊
+Azure AD 驗證時使用 OpenID Connect 使用者，傳回至應用程式，其中包含 id_token **宣告**, ，或有關使用者判斷提示。  您可以使用這些宣告來個人化應用程式。  
 
-使用 OpenID Connect 驗證使用者時，Azure AD 會將包含**宣告**或有關使用者判斷提示的 id_token 傳回給應用程式。 您可以使用這些宣告來個人化應用程式。
-
-開啟 `Controllers\HomeController.cs` 檔案。 您可以透過在控制器中存取的使用者宣告 `ClaimsPrincipal.Current` 安全性主體物件。
+開啟 `Controllers\HomeController.cs` 檔案。  您可以透過 `ClaimsPrincipal.Current` 安全性主體物件來存取控制器中的使用者宣告。
 
 ```C#
 // Controllers\HomeController.cs
@@ -323,28 +322,28 @@ public ActionResult Claims()
 }
 ```
 
-您可以用相同方式存取您的應用程式所接收的任何宣告。 應用程式收到的所有宣告的清單已印在宣告頁面供您檢閱。
+您可以用相同方式存取您的應用程式所接收的任何宣告。  應用程式收到的所有宣告的清單已印在宣告頁面供您檢閱。
 
 ## 7.執行範例應用程式
 
-最後，建置並執行您的應用程式！ 使用電子郵件地址或使用者名稱來註冊應用程式。 登出，再以相同的使用者身分重新登入。 編輯該使用者的設定檔。 登出，再註冊
-使用不同的使用者。 請注意 [宣告]**** 索引標籤上顯示的資訊如何對應到您在原則上設定的資訊。
+最後，建置並執行您的應用程式！   使用電子郵件地址或使用者名稱來註冊應用程式。  登出，再以相同的使用者身分重新登入。  編輯該使用者的設定檔。  登出，再註冊
+使用不同的使用者。  請注意如何將資訊顯示在 **宣告** ] 索引標籤對應到您在您的原則設定的資訊。
 
 ## 8.新增社交 IDP
 
-目前，應用程式只支援以所謂的**本機帳戶** (連同使用者名稱與密碼一起儲存在 B2C 目錄中的帳戶) 執行使用者註冊和登入。使用 Azure AD B2C，
+目前，應用程式僅支援使用者註冊和使用所謂的登入 **本機帳戶** -使用使用者名稱與密碼 B2C 目錄中儲存的帳戶。  使用 Azure AD B2C，
 您可以新增其他支援 **身分識別提供者**, ，或 Idp，而不變更任何程式碼。
 
-若要將社交 IDP 加入至應用程式，請依照下面一篇或兩篇文章中的詳細指示開始。 您想要支援每個的 IDP，您必須註冊應用程式
+若要將社交 IDP 加入至應用程式，請依照下面一篇或兩篇文章中的詳細指示開始。  您想要支援每個的 IDP，您必須註冊應用程式
 在系統中，並取得用戶端識別碼。
 
 - [將 Facebook 設定為 IDP](active-directory-b2c-setup-fb-app.md)
 - [將 Google 設定為 IDP](active-directory-b2c-setup-goog-app.md)
-- [設為 IDP Amazon](active-directory-b2c-setup-amzn-app.md)
-- [設定為 IDP 的 LinkedIn](active-directory-b2c-setup-li-app.md)
+- [將 Amazon 設定為 IDP](active-directory-b2c-setup-amzn-app.md)
+- [將 LinkedIn 設定為 IDP](active-directory-b2c-setup-li-app.md) 
 
 當您已將身分識別提供者加入 B2C 目錄時，您需要返回並編輯每個要包含新的 Idp，三個原則
-中所述 [原則參考文件](active-directory-b2c-reference-policies.md)。 儲存您的原則之後，重新執行應用程式。 您應該會看到
+中所述 [原則參考文件](active-directory-b2c-reference-policies.md)。  儲存您的原則之後，重新執行應用程式。  您應該會看到
 做為登入與註冊的選項，在每個身分識別經驗中加入新的 Idp。
 
 您可以自由試驗您的原則，並觀察範例應用程式上有何效果 - 新增/移除 IDP、操作應用程式宣告、變更註冊屬性。
@@ -357,9 +356,15 @@ public ActionResult Claims()
 git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git
 ```
 
+<!--
 
+## 後續步驟
 
+您現在可以進入更進階的 B2C 主題。  您可以嘗試：
 
+[從 Web 應用程式呼叫 Web API >>]()
 
+[自訂 B2C 應用程式的 UX >>]()
 
+-->
 

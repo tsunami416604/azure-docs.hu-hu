@@ -16,7 +16,6 @@
    ms.date="10/28/2015"
    ms.author="nitinme"/>
 
-
 # 整合資料湖存放區與其他 Azure 服務
 
 Azure 資料湖存放區可以與其他 Azure 服務一起使用，以啟用更廣泛的案例。 下列文章列出資料湖存放區可以整合的服務。
@@ -27,8 +26,8 @@ Azure 資料湖存放區可以與其他 Azure 服務一起使用，以啟用更�
 
 如需如何使用資料湖存放區佈建 HDInsight 叢集的指示，請參閱：
 
-* [使用資料湖存放區中使用 Azure 入口網站佈建 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [使用資料湖存放區中使用 Azure PowerShell 佈建 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [使用 Azure 入口網站佈建 HDInsight 叢集與資料湖存放區](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [使用 Azure PowerShell 佈建 HDInsight 叢集與資料湖存放區](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
 ## 搭配 Azure 資料湖分析使用資料湖存放區
@@ -47,11 +46,7 @@ Azure 資料湖存放區可以與其他 Azure 服務一起使用，以啟用更�
 
 ## 另請參閱
 
-- [Azure 資料湖存放區的概觀](data-lake-store-overview.md)
-- [開始使用資料湖存放區使用入口網站](data-lake-store-get-started-portal.md)
-- [開始使用資料湖存放區中使用 PowerShell](data-lake-store-get-started-powershell.md)
-
-
-
-
+- [Azure 資料湖存放區概觀](data-lake-store-overview.md)
+- [使用入口網站開始使用資料湖存放區](data-lake-store-get-started-portal.md)
+- [使用 PowerShell 開始使用資料湖存放區](data-lake-store-get-started-powershell.md)  
 

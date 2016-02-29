@@ -16,7 +16,6 @@
     ms.date="10/05/2015"
     ms.author="ricksal"/>
 
-
 # 將驗證加入至行動服務 Android 應用程式 (JavaScript 後端)
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -34,7 +33,7 @@
 本教學課程帶領您執行下列基本步驟，在您的應用程式中啟用驗證：
 
 
-## 必要條件
+##先決條件
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
@@ -46,11 +45,11 @@
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
-1. 在 Android Studio 中，開啟您完成教學課程時所建立的專案 [開始使用行動服務]。
+1. 在 Android Studio 中，開啟您完成教學課程時所建立的專案 [Get started with Mobile Services]。
 
-2. 在 [執行]**** 功能表中，按一下 [執行應用程式]****。確認應用程式啟動之後會引發無法處理的例外狀況，狀態碼為 401 (未授權)。
+2. 從 **執行** ] 功能表上，然後按一下 [ **執行應用程式**; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 (未經授權)。
 
-     這是因為應用程式嘗試以未驗證的使用者身分來存取行動服務，但 _TodoItem_ 資料表現在需要驗證。
+     這是因為應用程式會嘗試驗證的使用者身分存取行動服務，但 _TodoItem_ 資料表現在需要驗證。
 
 接下來，您要將應用程式更新為在要求行動服務的資源之前必須驗證使用者。
 
@@ -58,7 +57,7 @@
 
 [AZURE.INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
-## <a name="cache-tokens"></a>在用戶端上快取驗證權杖
+## <a name="cache-tokens"></a>在用戶端快取驗證權杖
 
 [AZURE.INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
@@ -70,7 +69,23 @@
 
 ## <a name="next-steps"></a>後續步驟
 
-在下一個教學課程中，[以指令碼授權使用者，] 所採取的使用者 ID 值行動服務根據經驗證的使用者所提供，並使用它來篩選行動服務所傳回的資料。
+在下一個教學課程中， [Authorize users with scripts], ，您將行動服務根據經驗證的使用者所提供的使用者識別碼值，並用來篩選行動服務所傳回的資料。
+
+<!-- Anchors. -->
+[Register your app for authentication and configure Mobile Services]: #register
+[Restrict table permissions to authenticated users]: #permissions
+[Add authentication to the app]: #add-authentication
+[Store authentication tokens on the client]: #cache-tokens
+[Refresh expired tokens]: #refresh-tokens
+[Next Steps]:#next-steps
+
+<!-- Images. -->
+
+
+
+
+[4]: ./media/mobile-services-android-get-started-users/mobile-services-selection.png
+[5]: ./media/mobile-services-android-get-started-users/mobile-service-uri.png
 
 
 
@@ -78,23 +93,16 @@
 
 
 
+[13]: ./media/mobile-services-android-get-started-users/mobile-identity-tab.png
+[14]: ./media/mobile-services-android-get-started-users/mobile-portal-data-tables.png
+[15]: ./media/mobile-services-android-get-started-users/mobile-portal-change-table-perms.png
 
 
+<!-- URLs. -->
 
-[register your app for authentication and configure mobile services]: #register 
-[restrict table permissions to authenticated users]: #permissions 
-[add authentication to the app]: #add-authentication 
-[store authentication tokens on the client]: #cache-tokens 
-[refresh expired tokens]: #refresh-tokens 
-[next steps]: #next-steps 
-[4]: ./media/mobile-services-android-get-started-users/mobile-services-selection.png 
-[5]: ./media/mobile-services-android-get-started-users/mobile-service-uri.png 
-[13]: ./media/mobile-services-android-get-started-users/mobile-identity-tab.png 
-[14]: ./media/mobile-services-android-get-started-users/mobile-portal-data-tables.png 
-[15]: ./media/mobile-services-android-get-started-users/mobile-portal-change-table-perms.png 
-[submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582 
-[my applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039 
-[live sdk for windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253 
-[get started with mobile services]: mobile-services-android-get-started.md 
-[authorize users with scripts]: mobile-services-javascript-backend-service-side-authorization.md 
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Get started with Mobile Services]: mobile-services-android-get-started.md
+[Authorize users with scripts]: mobile-services-javascript-backend-service-side-authorization.md
 

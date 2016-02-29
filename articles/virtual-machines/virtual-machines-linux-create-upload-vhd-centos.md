@@ -17,50 +17,50 @@
     ms.date="10/22/2015"
     ms.author="szarkos"/>
 
-
 # 準備執行 Azure 的 CentOS 型虛擬機器
 
-- [準備 Azure 的 CentOS 6.x 虛擬機器](#centos6)
-- [準備 Azure 的 CentOS 7.0 + 虛擬機器](#centos7)
+
+- [準備執行 Azure 的 CentOS 6.x 虛擬機器](#centos6)
+- [準備執行 Azure 的 CentOS 7.0+ 虛擬機器](#centos7)
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## 必要條件
+##必要條件##
 
 本文假設您已將 CentOS (或類似的衍生物件) Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 HYPER-V 角色和設定虛擬機器](http://technet.microsoft.com/library/hh846766.aspx)。
 
 
 **CentOS 安裝注意事項**
 
-- Azure 不支援 VHDX 格式，只支援**固定 VHD**。 您可以使用 Hyper-V 管理員或 convert-vhd Cmdlet，將磁碟轉換為 VHD 格式。
+- VHDX 格式不支援在 Azure 中，只有 **固定 VHD**。  您可以使用 Hyper-V 管理員或 convert-vhd Cmdlet，將磁碟轉換為 VHD 格式。
 
-- 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 LVM 或 [RAID](virtual-machines-linux-configure-raid.md) 可能會在資料磁碟上使用，如果願意的話。
+- 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。  LVM 或 [RAID](virtual-machines-linux-configure-raid.md) 可能會在資料磁碟上使用，如果願意的話。
 
 - 由於 2.6.37 以下的 Linux 核心版本有錯誤，因此較大的 VM 不支援 NUMA。 這個問題主要會影響使用上游 Red Hat 2.6.32 kernel 的散發套件。 手動安裝 Azure Linux 代理程式 (waagent) 將會自動停用 Linux Kernel GRUB 組態中的 NUMA。 您可以在以下步驟中找到與此有關的詳細資訊。
 
-- 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式在暫存資源磁碟上建立交換檔。 您可以在以下步驟中找到與此有關的詳細資訊。
+- 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式在暫存資源磁碟上建立交換檔。  您可以在以下步驟中找到與此有關的詳細資訊。
 
 - 所有 VHD 的大小都必須是 1 MB 的倍數。
 
 
-## <a id="centos6"> </a>CentOS 6.x
+## <a id="centos6"> </a>CentOS 6.x ##
 
 1. 在 Hyper-V 管理員中，選取虛擬機器。
 
-2. 按一下 [連接]****，以開啟虛擬機器的主控台視窗。
+2. 按一下 [ **連接** 開啟虛擬機器的主控台視窗。
 
 3. 執行下列命令以解除安裝 NetworkManager：
 
         # sudo rpm -e --nodeps NetworkManager
 
-    **注意：**如果尚未安裝封裝，此命令將會失敗，並出現錯誤訊息。 這是預期行為。
+    **注意:** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
 
-4.  在 **/etc/sysconfig/** 目錄中，建立名為 `network`、且包含下列文字的檔案：
+4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5.  在 **/etc/sysconfig/network-scripts/** 目錄中，建立名為 `ifcfg-eth0`、且包含下列文字的檔案：
+5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
 
         DEVICE=eth0
         ONBOOT=yes
@@ -76,75 +76,79 @@
         # sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/
         # sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/
 
+
 7. 要確保開機時會啟動網路服務，可執行以下命令：
 
         # sudo chkconfig network on
 
-8. **僅限 CentOS 6.3**：安裝 Linux Integration Services (LIS) 的驅動程式
 
-    **重要事項：此步驟僅適用於 CentOS 6.3 和較舊的版本。**在 CentOS 6.4+ 中，Linux Integration Services *已是標準核心中的可用項目*。
+8. **僅限 centOS 6.3**: 安裝 Linux Integration Services (LIS) 驅動程式
 
-    - 依照安裝指示 [LIS 下載頁面](https://www.microsoft.com/en-us/download/details.aspx?id=46842) 並安裝到您的映像 RPM。
+    **重要事項: 此步驟僅適用於 CentOS 6.3 和更早版本。**Linux 整合服務會在 CentOS 6.4 + *已可在標準的核心*。
+
+    - 依照安裝指示 [LIS 下載頁面](https://www.microsoft.com/en-us/download/details.aspx?id=46842) 並安裝到您的映像 RPM。  
+
 
 9. 執行下列命令以安裝 python-pyasn1 封裝：
 
         # sudo yum install python-pyasn1
 
-10. 如果您想要使用在 Azure 資料中心內託管的 OpenLogic 鏡像，請使用下列儲存機制來取代 /etc/yum.repos.d/CentOS-Base.repo 檔案。 這也會新增包含 Azure Linux 代理程式封裝的 **[openlogic]** 儲存機制：
+10. 如果您想要使用在 Azure 資料中心內託管的 OpenLogic 鏡像，請使用下列儲存機制來取代 /etc/yum.repos.d/CentOS-Base.repo 檔案。  這也會新增 **[openlogic]** 包含 Azure Linux 代理程式封裝的儲存機制:
 
-    [openlogic]
-    name=CentOS-$releasever - openlogic packages for $basearch
-    baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-    enabled=1
-    gpgcheck=0
-    
-    [base]
-    name=CentOS-$releasever - Base
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-    
-    #released updates
-    [updates]
-    name=CentOS-$releasever - Updates
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-    
-    #additional packages that may be useful
-    [extras]
-    name=CentOS-$releasever - Extras
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-    
-    #additional packages that extend functionality of existing packages
-    [centosplus]
-    name=CentOS-$releasever - Plus
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-    gpgcheck=1
-    enabled=0
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-    
-    #contrib - packages by Centos Users
-    [contrib]
-    name=CentOS-$releasever - Contrib
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
-    gpgcheck=1
-    enabled=0
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+        [openlogic]
+        name=CentOS-$releasever - openlogic packages for $basearch
+        baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+        enabled=1
+        gpgcheck=0
 
-**注意：**本指南的其他部分將假設您至少會使用 [openlogic] 儲存機制，該儲存機制稍後將用來安裝 Azure Linux 代理程式。
+        [base]
+        name=CentOS-$releasever - Base
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+        gpgcheck=1
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+        #released updates
+        [updates]
+        name=CentOS-$releasever - Updates
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+        gpgcheck=1
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+        #additional packages that may be useful
+        [extras]
+        name=CentOS-$releasever - Extras
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+        gpgcheck=1
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+        #additional packages that extend functionality of existing packages
+        [centosplus]
+        name=CentOS-$releasever - Plus
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+        gpgcheck=1
+        enabled=0
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+        #contrib - packages by Centos Users
+        [contrib]
+        name=CentOS-$releasever - Contrib
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
+        gpgcheck=1
+        enabled=0
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+    **注意:** 本指南的其餘部分將假設您至少會使用 [openlogic] 儲存機制，將會用來安裝 Azure Linux 代理程式。
+
 
 11. 在 /etc/yum.conf 中加入這一行：
 
         http_caching=packages
 
-    若是 **CentOS 6.3**，則加入這一行：
+    和 **CentOS 6.3** 加入下列這一行:
 
         exclude=kernel*
 
-12. 編輯檔案以停用 yum 模組"fastestmirror""/ etc/yum/pluginconf.d/fastestmirror.conf 」，然後在 `[主要]` 中輸入下列命令
+12. 編輯檔案 "/etc/yum/pluginconf.d/fastestmirror.conf" 以停用 yum 模組 "fastestmirror"，然後在 `[main]` 下方輸入下列內容
 
         set enabled=0
 
@@ -152,7 +156,7 @@
 
         # yum clean all
 
-14. **僅限 CentOS 6.3**，使用下列命令更新核心：
+14. **僅限 centOS 6.3**, ，使用下列命令更新核心:
 
         # sudo yum --disableexcludes=all install kernel
 
@@ -162,15 +166,16 @@
 
     這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 因為 CentOS 6 所使用核心版本的一個錯誤，這將會停用 NUMA。
 
-    除了上述以外，我們還建議您*移除*下列參數：
+    除了上述建議 *移除* 下列參數:
 
         rhgb quiet crashkernel=auto
 
     在雲端環境中，我們會將所有記錄傳送到序列埠，因此不適合使用圖形化和無訊息啟動。
 
-    `Crashkernel` 選項可能會設定如有需要，但請注意，這個參數會減少 VM 中約 128MB 或以上，可用的記憶體數量可能會較小的 VM 大小會造成問題。
+    如有需要，您可以保留 `crashkernel` 選項的設定，但請注意，此參數將會減少 VM 中約 128MB 或以上的可用記憶體數量，這在較小的 VM 中可能會是個問題。
 
-16. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。 這通常是預設值。
+
+16. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。  這通常是預設值。
 
 17. 執行以下命令來安裝 Azure Linux 代理程式：
 
@@ -180,7 +185,7 @@
 
 18. 請不要在 OS 磁碟上建立交換空間
 
-    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是*暫存*磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
+    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是 *暫存* 磁碟，以及可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -194,16 +199,15 @@
         # export HISTSIZE=0
         # logout
 
-20. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]****。 您現在可以將 Linux VHD 上傳至 Azure。
+20. 按一下 [ **動作]-> [關閉下** HYPER-V 管理員中。 您現在可以將 Linux VHD 上傳至 Azure。
 
 
 ----------
 
 
+## <a id="centos7"> </a>CentOS 7.0+ ##
 
-## <a id="centos7"> </a>CentOS 7.0 +
-
-**CentOS 7 (和類似的衍生項目) 中的變更**
+**CentOS 7 (及類似的衍生物件) 中的變更**
 
 準備適用於 Azure 的 CentOS 7 虛擬機器會與 CentOS 6 極為類似，不過，其中有幾個重要差異值得注意：
 
@@ -216,14 +220,14 @@
 
 1. 在 Hyper-V 管理員中，選取虛擬機器。
 
-2. 按一下 [連接]****，以開啟虛擬機器的主控台視窗。
+2. 按一下 [ **連接** 開啟虛擬機器的主控台視窗。
 
-3.  在 **/etc/sysconfig/** 目錄中，建立名為 `network`、且包含下列文字的檔案：
+3.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4.  在 **/etc/sysconfig/network-scripts/** 目錄中，建立名為 `ifcfg-eth0`、且包含下列文字的檔案：
+4.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
 
         DEVICE=eth0
         ONBOOT=yes
@@ -247,74 +251,76 @@
 
         # sudo yum install python-pyasn1
 
-8. 如果您想要使用在 Azure 資料中心內託管的 OpenLogic 鏡像，請使用下列儲存機制來取代 /etc/yum.repos.d/CentOS-Base.repo 檔案。 這也會新增包含 Azure Linux 代理程式封裝的 **[openlogic]** 儲存機制：
+8. 如果您想要使用在 Azure 資料中心內託管的 OpenLogic 鏡像，請使用下列儲存機制來取代 /etc/yum.repos.d/CentOS-Base.repo 檔案。  這也會新增 **[openlogic]** 包含 Azure Linux 代理程式封裝的儲存機制:
 
-     [openlogic]
-     name=CentOS-$releasever - openlogic packages for $basearch
-     baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-     enabled=1
-     gpgcheck=0
-    
-     [base]
-     name=CentOS-$releasever - Base
-     baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-     gpgcheck=1
-     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-    
-     #released updates
-     [updates]
-     name=CentOS-$releasever - Updates
-     baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-     gpgcheck=1
-     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-    
-     #additional packages that may be useful
-     [extras]
-     name=CentOS-$releasever - Extras
-     baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-     gpgcheck=1
-     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-    
-     #additional packages that extend functionality of existing packages
-     [centosplus]
-     name=CentOS-$releasever - Plus
-     baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-     gpgcheck=1
-     enabled=0
-     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-    
-     #contrib - packages by Centos Users
-     [contrib]
-     name=CentOS-$releasever - Contrib
-     baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
-     gpgcheck=1
-     enabled=0
-     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+        [openlogic]
+        name=CentOS-$releasever - openlogic packages for $basearch
+        baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+        enabled=1
+        gpgcheck=0
 
- **注意：**本指南的其他部分將假設您至少會使用 [openlogic] 儲存機制，該儲存機制稍後將用來安裝 Azure Linux 代理程式。
+        [base]
+        name=CentOS-$releasever - Base
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+        gpgcheck=1
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+        #released updates
+        [updates]
+        name=CentOS-$releasever - Updates
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+        gpgcheck=1
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+        #additional packages that may be useful
+        [extras]
+        name=CentOS-$releasever - Extras
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+        gpgcheck=1
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+        #additional packages that extend functionality of existing packages
+        [centosplus]
+        name=CentOS-$releasever - Plus
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+        gpgcheck=1
+        enabled=0
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+        #contrib - packages by Centos Users
+        [contrib]
+        name=CentOS-$releasever - Contrib
+        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
+        gpgcheck=1
+        enabled=0
+        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+
+
+    **注意:** 本指南的其餘部分將假設您至少會使用 [openlogic] 儲存機制，將會用來安裝 Azure Linux 代理程式。
 
 9.  執行下列命令，以清除目前的 yum 中繼資料並安裝任何更新：
 
         # sudo yum clean all
         # sudo yum -y update
 
-10. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做開啟"/ 等/預設/grub"中的文字編輯器，編輯 `GRUB_CMDLINE_LINUX` 參數，例如:
+10. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行這個動作，請在文字編輯器中開啟 "/etc/default/grub" 並編輯 `GRUB_CMDLINE_LINUX` 參數，例如：
 
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述以外，我們還建議您*移除*下列參數：
+    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述建議 *移除* 下列參數:
 
         rhgb quiet crashkernel=auto
 
     在雲端環境中，我們會將所有記錄傳送到序列埠，因此不適合使用圖形化和無訊息啟動。
 
-    `Crashkernel` 選項可能會設定如有需要，但請注意，這個參數會減少 VM 中約 128MB 或以上，可用的記憶體數量可能會較小的 VM 大小會造成問題。
+    如有需要，您可以保留 `crashkernel` 選項的設定，但請注意，此參數將會減少 VM 中約 128MB 或以上的可用記憶體數量，這在較小的 VM 中可能會是個問題。
 
 11. 在您參照上述完成編輯 "/etc/default/grub" 之後，請執行下列命令以重建 grub 組態：
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-12. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。 這通常是預設值。
+12. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。  這通常是預設值。
 
 13. 執行以下命令來安裝 Azure Linux 代理程式：
 
@@ -322,7 +328,7 @@
 
 14. 請不要在 OS 磁碟上建立交換空間
 
-    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是*暫存*磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
+    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是 *暫存* 磁碟，以及可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -336,9 +342,5 @@
         # export HISTSIZE=0
         # logout
 
-16. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]****。 您現在可以將 Linux VHD 上傳至 Azure。
-
-
-
-
+16. 按一下 [ **動作]-> [關閉下** HYPER-V 管理員中。 您現在可以將 Linux VHD 上傳至 Azure。
 

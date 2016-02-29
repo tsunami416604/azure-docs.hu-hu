@@ -17,12 +17,11 @@
    ms.author="thmullan;jackr"/>
 
 
-
 # 保護您的 SQL Database
 
 ## 概觀
 
-本篇文章逐步說明使用 Azure SQL Database 保護應用程式資料層的基本概念。 特別是，這篇文章可協助您開始利用資源限制存取、 保護資料，並監視資料庫上的活動中建立 [開始使用 SQL Database 教學課程](sql-database-get-started.md)。 如需各種 SQL 上可用的安全性功能的完整概觀，請參閱 [SQL Server Database Engine 和 Azure SQL Database 資訊安全中心](https://msdn.microsoft.com/library/bb510589)。 其他資訊也會提供 [Azure SQL 資料庫和安全性技術的白皮書](https://download.microsoft.com/download/A/C/3/AC305059-2B3F-4B08-9952-34CDCA8115A9/Security_and_Azure_SQL_Database_White_paper.pdf) (PDF)。
+本篇文章逐步說明使用 Azure SQL Database 保護應用程式資料層的基本概念。 特別是，這篇文章可協助您開始利用資源限制存取、 保護資料，並監視資料庫上的活動中建立 [開始使用 SQL Database 教學課程](sql-database-get-started.md)。 如需各種 SQL 上可用的安全性功能的完整概觀，請參閱 [SQL Server Database Engine 和 Azure SQL Database 資訊安全中心](https://msdn.microsoft.com/library/bb510589)。 其他資訊也會提供 [Azure SQL 資料庫和安全性技術的白皮書](https://download.microsoft.com/download/A/C/3/AC305059-2B3F-4B08-9952-34CDCA8115A9/Security_and_Azure_SQL_Database_White_paper.pdf) (PDF)。 
 
 ## 連接安全性
 
@@ -30,15 +29,15 @@
 
 伺服器和資料庫兩者都可使用防火牆規則，拒絕來自未明確設為允許清單的 IP 位址的連線嘗試。 若要允許應用程式或用戶端機器的公用 IP 位址，嘗試連線至新的資料庫，您必須先使用 Azure 傳統入口網站、REST API 或 PowerShell 建立伺服器層級的防火牆規則。 最好的作法是，您應該盡可能限制允許穿透您伺服器防火牆的 IP 位址範圍。 如需詳細資訊，請參閱 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/ee621782)。
 
-Azure SQL Database 的所有連線，也就是任何時候只要資料需要「傳輸」進出資料庫時，都需要加密 (SSL/TLS)。 在您應用程式的連接字串中，您必須指定參數來加密連線，並且*不要*信任伺服器憑證 (這是為了如果您從 Azure 傳統入口網站將連接字串複製出去)，否則連線將不會驗證伺服器的身分識別，也可能會遭受到「攔截」攻擊。 例如對於 ADO.NET 驅動程式，這些連接字串參數是 **Encrypt=True** 和 **TrustServerCertificate=False**。 如需詳細資訊，請參閱 [Azure SQL Database 連線加密和憑證驗證](https://msdn.microsoft.com/library/azure/ff394108#encryption)。
+Azure SQL Database 的所有連線，也就是任何時候只要資料需要「傳輸」進出資料庫時，都需要加密 (SSL/TLS)。 在您的應用程式連接字串中，您必須指定參數來加密連接和 *不* 信任伺服器憑證 (這為了如果您將連接字串複製出去 Azure 傳統入口網站)，否則連線將不會驗證伺服器的身分識別，也可能會遭受到 「--攔截 」 攻擊。 例如對於 ADO.NET 驅動程式，這些連接字串參數是 **Encrypt = True** 和 **TrustServerCertificate = False**。 如需詳細資訊，請參閱 [Azure SQL Database 連線加密和憑證驗證](https://msdn.microsoft.com/library/azure/ff394108#encryption)。
 
 
 ## 驗證
 
 「驗證」是指連線到資料庫時如何證明身分識別。 SQL Database 支援兩種驗證類型：
 
- - **SQL 驗證**，其需要使用者名稱和密碼
- - **Azure Active Directory 驗證**，它會使用由 Azure Active Directory 管理的身分識別，並支援受管理和整合的網域
+ - **SQL 驗證**, ，它會使用使用者名稱和密碼
+ - **Azure Active Directory 驗證**, ，可在使用 Azure Active Directory 所管理的身分識別並支援受管理和整合的網域
 
 當您為資料庫建立邏輯伺服器時，採取使用者名稱和密碼指定了「伺服器管理員」登入。 使用這些認證，您就可以使用資料庫擁有者或 "dbo" 的身分驗證該伺服器上的任何資料庫。 如果您想要使用 Azure Active Directory 驗證，就必須建立另一個名為「Azure AD 管理員」的伺服器管理員，其能夠管理 Azure AD 使用者和群組。 此管理員也可以執行一般伺服器管理員可執行的所有作業。 請參閱 [連接到 SQL 資料庫所使用 Azure Active Directory 驗證](sql-database-aad-authentication.md) 的逐步解說如何建立 Azure AD 管理員若要啟用 Azure Active Directory 驗證。
 
@@ -60,7 +59,6 @@ CREATE USER [Azure_AD_principal_name | Azure_AD_group_display_name] FROM EXTERNA
 
 
 ## Authorization
-
 「授權」是指在 Azure SQL 資料庫內可以執行的動作，這是由使用者帳戶的角色成員資格和權限控制。 最好的作法是，您應該授與使用者所需的最低權限。 Azure SQL Database 可以在 T-SQL 中很容易使用角色進行上述管理：
 
 ```
@@ -107,8 +105,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ## 法規遵循
 
 除了上述可協助您的應用程式符合各種安全法規需求的特色和功能之外，Azure SQL Database 也定期參與稽核，並且經過認證符合許多法規標準。 如需詳細資訊，請參閱 [Microsoft Azure 信任中心](http://azure.microsoft.com/support/trust-center/), ，您可以找到最新的清單，其中 [SQL Database 法規認證](http://azure.microsoft.com/support/trust-center/services/)。
-
-
-
-
 

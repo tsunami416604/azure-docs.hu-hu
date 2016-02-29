@@ -1,20 +1,21 @@
+
 <properties
-   pageTitle ="可設定狀態服務的組合模式 |Microsoft Azure 「
-   描述 ="Service Fabric Reliable Actor 設計模式來維護狀態的服務呼叫，以及快取先前服務結果之間使用可設定狀態的動作項目 」。
-   服務 = 「 服務架構 」
+   pageTitle="具狀態服務組合模式 | Microsoft Azure"
+   description="Service Fabric Reliable Actor 設計模式會使用可設定狀態動作項目保持服務呼叫，以及快取先前服務結果之間的狀態。"
+   services="service-fabric"
    documentationCenter=".net"
-   作者 ="vturecek"
-   管理員 ="timlt"
+   authors="vturecek"
+   manager="timlt"
    editor=""/>
 
 <tags
-   ms.service= 「 服務架構 」
+   ms.service="service-fabric"
    ms.devlang="dotnet"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="NA 」
-   ms.date="08/05/2015 」
-   ms.author="vturecek"/ >
+   ms.workload="NA"
+   ms.date="08/05/2015"
+   ms.author="vturecek"/>
 
 # Reliable Actor 設計模式：可設定狀態的服務組合
 
@@ -68,7 +69,6 @@
 ![][3]
 
 ## 動作項目組合和非同步通訊將如何協助
-
 事實上，當我們要一起撰寫非同步作業的要求/回應樣式作業，Azure Service Fabric Actor 即會發揮功效。 例如，雖然「對產品按讚」會立即將按讚的項目放入使用者的願望清單中、張貼到社交網路上，並觸發下一組建議，可以使用緩衝處理和計時器變成非同步作業。
 
 另一個使用使用者動作項目和服務的主要優點是，動作項目會提供已快取的狀態一個自然的地方，而最重要的是，會以非同步方式回應其狀態的變更。 這是無狀態服務非常棘手的狀況。
@@ -84,24 +84,23 @@
 
 ## 後續步驟
 
-[模式: 智慧型快取](service-fabric-reliable-actors-pattern-smart-cache.md)
+[模式：智慧型快取](service-fabric-reliable-actors-pattern-smart-cache.md)
 
-[模式: 分散式的網路和圖形](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
+[模式：分散式網路和圖形](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
 
-[模式: 資源管理](service-fabric-reliable-actors-pattern-resource-governance.md)
+[模式：資源管理](service-fabric-reliable-actors-pattern-resource-governance.md)
 
-[模式: 物聯網](service-fabric-reliable-actors-pattern-internet-of-things.md)
+[模式：物聯網](service-fabric-reliable-actors-pattern-internet-of-things.md)
 
-[模式: 分散式的計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
+[模式：分散式計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
 
 [某些反向模式](service-fabric-reliable-actors-anti-patterns.md)
 
 [Service Fabric Actor 簡介](service-fabric-reliable-actors-introduction.md)
 
 
-
-
-[1]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-1.png 
-[2]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-2.png 
-[3]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-3.png 
+<!--Image references-->
+[1]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-1.png
+[2]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-2.png
+[3]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-3.png
 

@@ -17,18 +17,17 @@
    ms.date="10/27/2015"
    ms.author="neerajkh"/>
 
-
 # 調整 Web 服務
 
 ## 增加並行要求
 
 根據預設，系統將每個發佈的 Web 服務設定為支援 20 個並行要求。 您可以增加此並行模式設為 200 的並行要求透過 [Azure 傳統入口網站](https://manage.windowsazure.com/) 如下圖所示。
 
-移至 [Azure 傳統入口網站](https://manage.windowsazure.com/), 、 按一下左邊的 [機器學習] 圖示，選取用於發佈 web 服務的工作空間、 按一下所需的 web 服務、 選取所需的並行存取，增加的端點，然後按一下 **設定**。 使用滑桿增加並行要求，然後按一下面板下方的 [儲存]****。
+移至 [Azure 傳統入口網站](https://manage.windowsazure.com/), 、 按一下左邊的 [機器學習] 圖示，選取用於發佈 web 服務的工作空間、 按一下所需的 web 服務、 選取所需的並行存取，增加的端點，然後按一下 **設定**。 使用滑桿以提高並行處理，然後按一下 **儲存** 下方面板上。
 
 若要增加並行處理，請參閱 [調整 API 端點](machine-learning-scaling-endpoints.md)。
 
-   ![機器學習服務，調整端點。][1]
+   ![機器學習中，調整端點。][] 1
 
 ## 在相同 Web 服務新增新的端點
 
@@ -36,12 +35,10 @@
 
 移至 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下左邊的 [機器學習] 圖示，選取用於發佈 web 服務的工作空間中，按一下所需的 web 服務，按一下 **新增端點** 底部面板，然後再提供新的端點名稱、 描述和所需的並行存取。
 
-若要加入新端點，請參閱 [建立端點](machine-learning-create-endpoint.md)。
+若要加入新端點，請參閱 [建立端點的](machine-learning-create-endpoint.md)。
 
-   ![機器學習服務，新增端點。][2]
+   ![機器學習，加入新端點]。[] 2
 
-
-
-[1]: ./media/machine-learning-scaling-webservice/machlearn-1.png 
-[2]: ./media/machine-learning-scaling-webservice/machlearn-2.png 
-
+<!--Image references-->
+[1]: ./media/machine-learning-scaling-webservice/machlearn-1.png
+[2]: ./media/machine-learning-scaling-webservice/machlearn-2.png

@@ -1,19 +1,20 @@
+
 <properties
-    pageTitle ="從任何裝置存取您的應用程式 |Microsoft Azure 「
-    描述 = 「 了解 Azure RemoteApp 支援哪些用戶端以及如何存取您的應用程式 」。
-    服務 ="remoteapp"
+    pageTitle="從任何裝置存取您的應用程式 | Microsoft Azure"
+    description="了解 Azure RemoteApp 支援哪些用戶端以及如何存取您的應用程式。"
+    services="remoteapp"
     documentationCenter=""
-    作者 ="lizap"
-    管理員 ="mbaldwin"/ >
+    authors="lizap"
+    manager="mbaldwin" />
 
 <tags
-    ms.service="remoteapp 」
-    ms.workload="compute 」
+    ms.service="remoteapp"
+    ms.workload="compute"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/10/2015 」
-    ms.author="elizapo"/ >
+    ms.date="10/10/2015"
+    ms.author="elizapo" />
 
 
 
@@ -27,7 +28,7 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
 如果您的裝置正在執行下列其中一個作業系統，就能夠使用下列步驟來存取 RemoteApp：
 
- - Windows 10
+ - Windows 10 
  - Windows 8.1
  - Windows 8
  - Windows 7 Service Pack 1
@@ -35,6 +36,7 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
  - iOS
  - Mac OS X
  - Android
+
 
  精簡型用戶端呢？ 支援下列 Windows Embedded 精簡型用戶端：
 
@@ -54,21 +56,21 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
 ## Android
 
-當您從 Google Play 商店安裝  Microsoft 遠端桌面之後，就可以在 [遠端桌面]**** 下找到您的應用程式清單。
+當從 Google Play 商店安裝 Microsoft 遠端桌面應用程式之後時，可以找到您的應用程式清單下 **遠端桌面**。
 
-1. 除非您已經開始使用應用程式，否則啟動應用程式將帶您前往空白的「連線中心」。 若要開始使用 Azure RemoteApp，請點選加號按鈕 ""+""****，然後再點選 [Azure RemoteApp]****。
+1. 除非您已經開始使用應用程式，否則啟動應用程式將帶您前往空白的「連線中心」。 若要開始使用 Azure RemoteApp，請點選 [新增] 按鈕 **""+""** 點選 **Azure RemoteApp**。 
 
      ![空白連線中心](./media/remoteapp-clients/Android1.png)
 
-2. 您必須使用電子郵件地址登入以存取服務。 點選 [開始使用]****。
+2. 您必須使用電子郵件地址登入以存取服務。 點選 **開始**。
 
     ![提示時登入](./media/remoteapp-clients/Android2.png)
 
-3. 在下個頁面上，輸入您的 [電子郵件地址]**** ，然後點選 [繼續]****。 這樣就會使用 Azure Active Directory 開始登入程序。
+3. 在下一頁中，輸入您 **電子郵件地址** 點選 **繼續**。 這樣就會使用 Azure Active Directory 開始登入程序。
 
     ![第一個 Azure Active Directory 頁面](./media/remoteapp-clients/Android3.png)
 
-4. 依照畫面上的指示執行，以使用您的 Microsoft 帳戶 (先前稱為 "LiveID") 或組織識別碼登入。 登入之後，就會以頁面清單呈現您接收到的所有邀請。 若是如此，請選取您信任的邀請，然後點選 [完成]****。
+4. 依照畫面上的指示執行，以使用您的 Microsoft 帳戶 (先前稱為 "LiveID") 或組織識別碼登入。 登入之後，就會以頁面清單呈現您接收到的所有邀請。 如果您是，選取您信任並點選的邀請 **完成**。 
 
     ![邀請頁面](./media/remoteapp-clients/Android4.png)
 
@@ -76,7 +78,7 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
     ![包含摘要的連線中心](./media/remoteapp-clients/Android5.png)
 
-6. 如果您尚未收到邀請，還是能夠試用該服務。 若要這樣做，請在出現提示時，點選 [前往免費試用]****。
+6. 如果您尚未收到邀請，還是能夠試用該服務。 若要這樣做，請點選 **前往免費試用** 出現提示時。
 
     ![示範摘要提示](./media/remoteapp-clients/Android6.png)
 
@@ -86,17 +88,17 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
 ## iOS
 
-當您從 App Store 安裝 Microsoft 遠端桌面應用程式之後，就可以在 [RD 用戶端]**** 下找到您的應用程式清單。
+當從 App store 安裝 Microsoft 遠端桌面應用程式之後時，可以找到您的應用程式清單下 **RD 用戶端**。
 
-1. 除非您已經開始使用應用程式，否則啟動應用程式將帶您前往空白的「連線中心」。 若要開始使用 Azure RemoteApp，請點選加號按鈕 ""+""****，然後再點選 [新增 Azure RemoteApp]****。
+1. 除非您已經開始使用應用程式，否則啟動應用程式將帶您前往空白的「連線中心」。 若要開始使用 Azure RemoteApp，請點選 [新增] 按鈕 **""+""** 點選 **新增 Azure RemoteApp**。
 
     ![空白連線中心](./media/remoteapp-clients/IOS1.png)
 
-2. 您必須使用自己的電子郵件地址登入才能存取服務，輸入您的 [電子郵件地址]****，然後點選 [繼續]**** 以開始該程序。
+2. 您需要使用您的電子郵件地址登入才能存取服務時，若要開始該程序中，輸入您 **電子郵件地址** 點選 **繼續**。
 
     ![提示時登入](./media/remoteapp-clients/picture1.png)
 
-3. 依照畫面上的指示執行，以使用您的 Microsoft 帳戶 (LiveID) 或組織識別碼登入。 登入之後，就會以頁面清單呈現您接收到的所有邀請。 若是如此，請選取您信任的邀請，然後點選 [完成]****。
+3. 依照畫面上的指示執行，以使用您的 Microsoft 帳戶 (LiveID) 或組織識別碼登入。 登入之後，就會以頁面清單呈現您接收到的所有邀請。 如果您是，選取您信任並點選的邀請 **完成**。
 
     ![邀請頁面](./media/remoteapp-clients/IOS3.png)
 
@@ -104,7 +106,7 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
     ![包含摘要的連線中心](./media/remoteapp-clients/IOS4.png)
 
-5. 如果您尚未收到邀請，還是能夠試用該服務。 若要這樣做，請在出現提示時，點選 [前往免費試用]****。
+5. 如果您尚未收到邀請，還是能夠試用該服務。 若要這樣做，請點選 **前往免費試用** 出現提示時。
 
     ![示範摘要提示](./media/remoteapp-clients/IOS5.png)
 
@@ -114,17 +116,17 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
 ## Mac OS X
 
-當您從 App Store 安裝  Microsoft 遠端桌面應用程式之後，就可以在 [Microsoft 遠端桌面]**** 下找到您的應用程式清單。
+當從 App store 安裝 Microsoft 遠端桌面應用程式之後時，可以找到您的應用程式清單下 **Microsoft 遠端桌面**。
 
-1. 除非您已經開始使用應用程式，否則啟動應用程式將帶您前往空白的「連線中心」。 若要開始使用 Azure RemoteApp，請按一下 [Azure RemoteApp]**** 按鈕。
+1. 除非您已經開始使用應用程式，否則啟動應用程式將帶您前往空白的「連線中心」。 若要開始使用 Azure RemoteApp，請按一下 [ **Azure RemoteApp** ] 按鈕。
 
     ![空白連線中心](./media/remoteapp-clients/Mac1.png)
 
-2. 您必須使用自己的電子郵件地址登入才能存取服務，點選 [開始使用]**** 可開始該程序。
+2. 您需要使用您的電子郵件地址登入才能存取服務時，若要開始該程序中，點選 **開始**。
 
     ![提示時登入](./media/remoteapp-clients/Mac2.png)
 
-3. 在下個頁面上，輸入您的 [電子郵件地址]**** ，然後點選 [繼續]****。 這樣就會使用 Azure Active Directory 開始登入程序。
+3. 在下一頁中，輸入您 **電子郵件地址** 點選 **繼續**。 這樣就會使用 Azure Active Directory 開始登入程序。
 
     ![第一個 Azure Active Directory 頁面](./media/remoteapp-clients/picture2.png)
 
@@ -136,7 +138,7 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
     ![包含摘要的連線中心](./media/remoteapp-clients/Mac5.png)
 
-6. 如果您尚未收到邀請，還是能夠試用該服務。 若要這樣做，請在出現提示時，按一下 [前往免費試用]****。
+6. 如果您尚未收到邀請，還是能夠試用該服務。 若要這樣做，請按一下 [ **前往免費試用** 出現提示時。
 
     ![示範摘要提示](./media/remoteapp-clients/Mac6.png)
 
@@ -146,17 +148,17 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
 ## Windows (所有支援的版本，Windows Phone 除外)
 
-用戶端會在完成安裝後自動啟動，不過之後若需要再次存取時，您可以在 [Azure RemoteApp]**** 這個名稱下找到您的應用程式清單。
+完成安裝，但是當您需要存取它稍後再它可以找到名稱下方您應用程式清單中，用戶端會自動啟動 **Azure RemoteApp**。
 
-1. 啟動用戶端之後，您看到的第一個頁面會歡迎您使用 Azure RemoteApp。 若要繼續，請按一下 [開始使用]****。
+1. 啟動用戶端之後，您看到的第一個頁面會歡迎您使用 Azure RemoteApp。 若要繼續，請按一下 **開始**。
 
     ![Azure RemoteApp 用戶端的歡迎使用頁面](./media/remoteapp-clients/Windows1.png)
 
-2. 下一個頁面會使用 Azure Active Directory，開始進行 Azure RemoteApp 登入程序。 這項程序看起來應該類似於您過去使用的 Microsoft 服務。 請從輸入 [電子郵件地址]**** 開始，然後按一下 [繼續]****。
+2. 下一個頁面會使用 Azure Active Directory，開始進行 Azure RemoteApp 登入程序。 這項程序看起來應該類似於您過去使用的 Microsoft 服務。 開始鍵入您 **電子郵件地址** 按一下 **繼續**。
 
     ![第一個 Azure Active Directory 提示](./media/remoteapp-clients/Windows2.png)
 
-3. 依照畫面上的指示執行，以使用您的 Microsoft 帳戶 (LiveID) 或組織識別碼登入。 登入之後，就會以頁面清單呈現您接收到的所有邀請。 若是如此，請選取您信任的邀請，然後按一下 [完成]****。
+3. 依照畫面上的指示執行，以使用您的 Microsoft 帳戶 (LiveID) 或組織識別碼登入。 登入之後，就會以頁面清單呈現您接收到的所有邀請。 如果您是，選取您信任並按一下 [邀請 **完成**。
 
     ![Azure RemoteApp 用戶端的邀請頁面](./media/remoteapp-clients/Windows3.png)
 
@@ -170,25 +172,25 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
 ## Windows Phone 8.1
 
-當您從 Windows Phone 8.1 市集安裝  Microsoft 遠端桌面之後，就可以在 [遠端桌面]**** 下找到您的應用程式清單。
+當從 Windows Phone 8.1 市集安裝 Microsoft 遠端桌面應用程式之後時，可以找到您的應用程式清單下 **遠端桌面**。
 
-1. 除非您已經開始使用應用程式，否則啟動應用程式將直接帶您前往空白的「連線中心」。 若要開始使用 Azure RemoteApp，請點選畫面底部的加號按鈕 ""+""****。
+1. 除非您已經開始使用應用程式，否則啟動應用程式將直接帶您前往空白的「連線中心」。 若要開始使用 Azure RemoteApp，請點選 [新增] 按鈕 **""+""** 螢幕的底部。
 
     ![空白連線中心](./media/remoteapp-clients/WinPhone1.png)
 
-2. 接下來，點選 [Azure RemoteApp]****。
+2. 接下來，點選 **Azure RemoteApp**。
 
     ![新增項目頁面](./media/remoteapp-clients/WinPhone2.png)
 
-3. 您必須使用自己的電子郵件地址登入才能存取服務，點選 [連線]**** 可開始該程序。
+3. 您需要使用您的電子郵件地址登入才能存取服務時，若要開始該程序中，點選 **連接**。
 
     ![提示時登入](./media/remoteapp-clients/WinPhone3.png)
 
-4. 在下個頁面上，輸入您的 [電子郵件地址]**** ，然後點選 [繼續]****。 這樣就會使用 Azure Active Directory 開始登入程序。
+4. 在下一頁中，輸入您 **電子郵件地址** 點選 **繼續**。 這樣就會使用 Azure Active Directory 開始登入程序。
 
     ![第一個 Azure Active Directory 頁面](./media/remoteapp-clients/WinPhone4.png)
 
-5. 依照畫面上的指示執行，以使用您的 Microsoft 帳戶 (LiveID) 或組織識別碼登入。 登入之後，就會以頁面清單呈現您接收到的所有邀請。 若是如此，請選取您信任的邀請，然後點選 [儲存]****。
+5. 依照畫面上的指示執行，以使用您的 Microsoft 帳戶 (LiveID) 或組織識別碼登入。 登入之後，就會以頁面清單呈現您接收到的所有邀請。 如果您是，選取您信任並點選的邀請 **儲存**。
 
     ![邀請頁面](./media/remoteapp-clients/WinPhone5.png)
 
@@ -196,15 +198,11 @@ Azure RemoteApp 的優點之一，就是您可以從任何裝置存取應用程�
 
     ![包含摘要的連線中心](./media/remoteapp-clients/WinPhone6.png)
 
-7. 如果您尚未收到邀請，還是能夠試用該服務。 若要這樣做，請在出現提示時，點選 [是]****。
+7. 如果您尚未收到邀請，還是能夠試用該服務。 若要這樣做，請點選 **是** 出現提示時。
 
     ![示範摘要提示](./media/remoteapp-clients/WinPhone7.png)
 
 8. 這將提供您存取一組基本應用程式的權限，讓您開始使用 RemoteApp。
 
     ![Azure RemoteApp 的示範摘要](./media/remoteapp-clients/WinPhone8.png)
-
-
-
-
-
+ 

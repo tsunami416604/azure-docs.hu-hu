@@ -18,10 +18,10 @@
     ms.author="genemi"/>
 
 
-
 # 程式碼範例：C&#x23 中用於連接到 SQL Database 的 Enterprise Library 6 重試邏輯
 
-本主題呈現完整的程式碼範例，示範 Enterprise Library (EntLib)。 EntLib 簡化用戶端程式與雲端服務 (例如 Azure SQL Database) 互動的許多工作。 我們的範例著重在包括暫時性錯誤的重試邏輯這類重要工作。
+
+本主題呈現完整的程式碼範例，示範 Enterprise Library (EntLib)。  EntLib 簡化用戶端程式與雲端服務 (例如 Azure SQL Database) 互動的許多工作。 我們的範例著重在包括暫時性錯誤的重試邏輯這類重要工作。
 
 
 EntLib 類別是設計用來區分兩種類別的執行階段錯誤：
@@ -34,46 +34,52 @@ Enterprise Library 6 (EntLib60) 是最新版本，已經在 2013 年 4 月發行
 
 ## 必要條件
 
+
 #### .NET Framework 4.0 或更高版本
+
 
 必須安裝 Microsoft .NET Framework 4.0 或更高版本。 本文撰寫時，已經有 4.6 版，我們建議使用最新版本。
 
 
 #### Visual Studio Community 版本 (免費)
 
-您需要一種方式編譯此範例的原始程式碼。 若要安裝的其中一種是 [免費 Microsoft Visual Studio * 社群 * edition](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)。
+
+您需要一種方式編譯此範例的原始程式碼。 若要安裝的其中一種是 [免費 Microsoft Visual Studio *社群* 版本](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)。
 
 
 您可能需要向 MSDN 註冊電子郵件地址。 步驟大致如下：
 
 
-1. [Go to MSDN](http://msdn.microsoft.com/).
-2. 按一下靠近頂端的 [MSDN 訂閱]****。
-3. 按一下 [立即註冊]****。
+1. [移至 MSDN](http://msdn.microsoft.com/)。
+2. 按一下 [ **MSDN 訂閱** 靠近頂端。
+3. 按一下 [ **立即註冊**。
 4. 填寫您的資訊。
-5. 按一下底部的 [建立帳戶]****。
+5. 按一下 [ **建立帳戶** 底部。
 
 
 #### Enterprise Library 6 (EntLib60)
 
+
 您可以安裝 EntLib60 的方式：
 
 
-- 在 Visual Studio 中使用 *NuGet* 封裝管理員功能：
- - 在 NuGet 中搜尋 **enterpriselibrary**。
+- 使用 *NuGet* Visual Studio 中的封裝管理員功能:
+ - 在 NuGet 搜尋 **enterpriselibrary**。
+
 
 - 在 [EntLib60 的主要文件主題](http://msdn.microsoft.com/library/dn169621.aspx), ，找出資料列標示為 **下載**, ，然後按一下 [ [Microsoft 企業程式庫 6](http://go.microsoft.com/fwlink/?linkid=290898) 下載二進位檔。DLL 的組件檔案。
 
 
-EntLib60 有數個 .DLL 組件檔案，名稱是以相同的前置詞 **Microsoft.Practices.EnterpriseLibrary.&#x2a;.dll** 為開頭，但此程式碼範例只需要下列兩個組件：
+EntLib60 具有數個。DLL 組件檔的名稱以相同的前置詞 **Microsoft.Practices.EnterpriseLibrary.& #x2a;。dll**, ，但此程式碼範例只想要在下列兩個組件:
 
-- Microsoft.Practices.EnterpriseLibrary.**TransientFaultHandling**.dll
-- Microsoft.Practices.EnterpriseLibrary.**TransientFaultHandling.Data**.dll
+- Microsoft.Practices.EnterpriseLibrary。**TransientFaultHandling**.dll
+- Microsoft.Practices.EnterpriseLibrary。**TransientFaultHandling.Data**.dll
 
 
 ## EntLib 類別如何彼此搭配運作
 
-EntLib 類別是用來建構其他 EntLib 類別。 在此程式碼範例中，建構和使用順序如下所示：
+
+EntLib 類別是用來建構其他 EntLib 類別。 在此程式碼範例中，建構和使用順序如下所示： 
 
 
 1. 建構 **ExponentialBackoff** 物件。
@@ -82,15 +88,16 @@ EntLib 類別是用來建構其他 EntLib 類別。 在此程式碼範例中，�
  - **ExponentialBackoff** 物件。
  - **SqlDatabaseTransientErrorDetectionStrategy** 物件。
 4. 建構 **ReliableSqlConnection** 物件。 輸入的參數有：
- - 一個 **String** 物件 - 使用伺服器名稱和其他連接資訊。
+ - A **字串** 物件-使用伺服器名稱和連接資訊。
  - **RetryPolicy** 物件。
-5. 透過 **RetryPolicy .ExecuteAction** 方法呼叫進行連接。
-6. 呼叫 **ReliableSqlConnection .CreateCommand** 方法。
- - 傳回 **System.SqlClient.Data.DbCommand** 物件，這是 ADO.NET 的一部分。
-7. 透過 **RetryPolicy .ExecuteAction** 方法呼叫進行查詢。
+5. 若要連接，透過呼叫 **RetryPolicy。ExecuteAction** 方法。
+6. 呼叫 **ReliableSqlConnection。CreateCommand** 方法。
+ - 傳回 **System.SqlClient.Data.DbCommand** 物件、 ADO.NET 的一部分。
+7. 查詢中，透過呼叫 **RetryPolicy。ExecuteAction** 方法。
 
 
 ## 編譯並執行程式碼範例
+
 
 Program.cs 原始程式碼範例會在本主題稍後提供。 您可以使用下列步驟編譯和執行範例：
 
@@ -121,6 +128,7 @@ filetable_updates_2105058535    2105058535
 
 
 ## Program.cs 原始程式碼
+
 
 下列 Program.cs 檔案包含此 EntLib 範例的所有原始程式碼。
 
@@ -293,23 +301,25 @@ SELECT TOP 3
 
 ## 相關連結
 
+
 - 許多連結的詳細資訊，請提供: 
 [企業程式庫 6 – 4 月 2013](http://msdn.microsoft.com/library/dn169621.aspx)
  - 本主題提供給其上方有一個按鈕 [下載 EntLib60 來源程式碼](http://go.microsoft.com/fwlink/p/?LinkID=290898), ，如果您好奇，請參閱原始程式碼。
 
+
 - 免費電子書。從 Microsoft 的 PDF 格式: 
 [Microsoft 企業程式庫，第 2 版的開發人員指南](http://www.microsoft.com/download/details.aspx?id=41145)。
 
+
 - [Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling 命名空間](http://msdn.microsoft.com/library/microsoft.practices.enterpriselibrary.transientfaulthandling.aspx)
 
-- [企業程式庫 6 類別程式庫參考](http://msdn.microsoft.com/library/dn170426.aspx)
 
-- [程式碼範例: 用於連接到使用 ADO.NET 的 SQL Database 重試邏輯以 C#](sql-database-develop-csharp-retry-windows.md)
+- [Enterprise Library 6 類別程式庫參考](http://msdn.microsoft.com/library/dn170426.aspx)
+
+
+- [程式碼範例：使用 ADO.NET 連線到 SQL Database 的 C# 重試邏輯](sql-database-develop-csharp-retry-windows.md)
+
 
 - [SQL Database 的用戶端快速入門程式碼範例](sql-database-develop-quick-start-client-code-samples.md)
-
-
-
-
 
 

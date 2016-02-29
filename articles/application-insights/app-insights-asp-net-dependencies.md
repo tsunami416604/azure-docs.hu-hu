@@ -16,14 +16,14 @@
     ms.author="awills"/>
 
 
-
 # 設定 Application Insights：追蹤相依性
+
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
 
 
-「相依性」**是由應用程式呼叫的外部元件。 這通常是使用 HTTP 呼叫的服務，或資料庫，或檔案系統。 在 Visual Studio Application Insights 中，您很容易看到應用程式等待相依性所用的時間，以及相依性呼叫失敗的頻率。
+A *相依性* 由您的應用程式呼叫的外部元件。 這通常是使用 HTTP 呼叫的服務，或資料庫，或檔案系統。 在 Visual Studio Application Insights 中，您很容易看到應用程式等待相依性所用的時間，以及相依性呼叫失敗的頻率。
 
 ![範例圖表](./media/app-insights-asp-net-dependencies/10-intro.png)
 
@@ -52,19 +52,19 @@
 
     ![使用 Microsoft 帳戶認證登入 Azure](./media/app-insights-asp-net-dependencies/appinsights-035-signin.png)
 
-    * 連接錯誤? 請參閱 [疑難排解](#troubleshooting)。 *
+    *連線錯誤? 請參閱 [疑難排解](#troubleshooting)。*
 
 5. 挑選您想要監視的已安裝 Web 應用程式或網站，然後設定您在 Application Insights 入口網站中查看結果時想要使用的資源。
 
     ![選擇應用程式和資源。](./media/app-insights-asp-net-dependencies/appinsights-036-configAIC.png)
 
-    一般來說，當您選擇設定新的資源和 [資源群組 ][roles]。
+    一般來說，當您選擇設定新的資源和 [資源群組][roles]。
 
-    否則，請使用現有的資源，如果您已經設定 [web 測試的 ][availability] 網站，或 [web 用戶端監視 ][client]。
+    否則，請使用現有的資源，如果您已經設定 [web 測試][availability] 網站，或 [web 用戶端監視][client]。
 
 6. 重新啟動 IIS。
 
-    ![選擇對話方塊頂端的 ](./media/app-insights-asp-net-dependencies/appinsights-036-restart.png)
+    ![選擇對話方塊頂端的 [重新啟動]。](./media/app-insights-asp-net-dependencies/appinsights-036-restart.png)
 
     您的 Web 服務將會中斷一小段時間。
 
@@ -78,14 +78,14 @@
 
 完成精靈之後，您隨時都可以重新設定代理程式。 如果已安裝代理程式，但初始設定有一些問題，則您也可以這樣做。
 
-![按一下工作列上的 ](./media/app-insights-asp-net-dependencies/appinsights-033-aicRunning.png)
+![按一下工作列上的 [Application Insights] 圖示](./media/app-insights-asp-net-dependencies/appinsights-033-aicRunning.png)
 
 
 ### 如果您的應用程式是以 Azure Web 應用程式執行
 
 在您的 Azure Web 應用程式的控制台中，加入 Application Insights 延伸模組。
 
-![在您的 Web 應用程式中，依序按一下 ](./media/app-insights-asp-net-dependencies/05-extend.png)
+![在您的 Web 應用程式中，依序按一下 [設定]、[延伸模組]、[加入]、[Application Insights]](./media/app-insights-asp-net-dependencies/05-extend.png)
 
 
 ### 如果是 Azure 雲端服務專案
@@ -96,7 +96,7 @@
 
 若要評估伺服器上的要求效能：
 
-![在 Application Insights 的應用程式 ](./media/app-insights-asp-net-dependencies/01-performance.png)
+![在 Application Insights 的應用程式 [概觀] 頁面中，按一下 [效能] 磚](./media/app-insights-asp-net-dependencies/01-performance.png)
 
 向下捲動以查看要求方格：
 
@@ -110,13 +110,14 @@
 ![要求發生次數的清單](./media/app-insights-asp-net-dependencies/03-instances.png)
 
 按一下任一個長時間執行的執行個體，來進一步檢查。
-> [AZURE.NOTE] 稍微向下捲動，以選擇執行個體。 管線中的延遲可能表示最上方的執行個體資料不完整。
+
+> [AZURE.NOTE] 若要選擇的執行個體稍微向下捲動。 管線中的延遲可能表示最上方的執行個體資料不完整。
 
 向下捲動至與此要求相關的遠端相依性呼叫：
 
 ![尋找遠端相依性的呼叫，識別不尋常的持續時間](./media/app-insights-asp-net-dependencies/04-dependencies.png)
 
-看起來此要求的大部分時間似乎都花費在呼叫本機服務上。
+看起來此要求的大部分時間似乎都花費在呼叫本機服務上。 
 
 選取該列，以取得詳細資訊：
 
@@ -141,11 +142,11 @@
 
 ## 自訂相依性追蹤
 
-標準的相依性追蹤模組會自動探索外部相依性，例如資料庫和 REST API。 但是您可能想以相同的方式對待一些其他元件。
+標準的相依性追蹤模組會自動探索外部相依性，例如資料庫和 REST API。 但是您可能想以相同的方式對待一些其他元件。 
 
-您可以撰寫傳送相依性資訊的程式碼使用相同 [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) 所使用的標準模組。
+您可以撰寫傳送相依性資訊的程式碼使用相同 [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) 標準模組所使用。
 
-例如，如果您建置程式碼的組件不是您自己撰寫的，您可以計算對組件的所有呼叫，以找出它佔回應時間的比例。 若要在 Application Insights 中的相依性圖表中顯示此資料，請使用傳送 `TrackDependency`。
+例如，如果您建置程式碼的組件不是您自己撰寫的，您可以計算對組件的所有呼叫，以找出它佔回應時間的比例。 若要在 Application Insights 中的相依性圖表中顯示此資料，請使用 `TrackDependency` 傳送。
 
 ```C#
 
@@ -167,29 +168,29 @@
 ## 後續步驟
 
 - [例外狀況](../article/application-insights/app-insights-asp-net-exception-mvc.md#selector1)
-- [使用者與頁面的資料](../article/application-insights/app-insights-asp-net-client.md#selector1)
-- [可用性](../article/application-insights/app-insights-monitor-web-app-availability.md#selector1)
+- [使用者和頁面資料](../article/application-insights/app-insights-asp-net-client.md#selector1)
+- [Availability](../article/application-insights/app-insights-monitor-web-app-availability.md#selector1)
 
 
 
 
+<!--Link references-->
 
+[api]: app-insights-api-custom-events-metrics.md
+[apikey]: app-insights-api-custom-events-metrics.md#ikey
+[availability]: app-insights-monitor-web-app-availability.md
+[azure]: ../insights-perf-analytics.md
+[client]: app-insights-javascript.md
+[detect]: app-insights-detect-triage-diagnose.md
+[diagnostic]: app-insights-diagnostic-search.md
+[knowUsers]: app-insights-overview-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[netlogs]: app-insights-asp-net-trace-logs.md
+[perf]: app-insights-web-monitor-performance.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
+[redfield]: app-insights-asp-net-dependencies.md
+[roles]: app-insights-resources-roles-access-control.md
+[start]: app-insights-overview.md
 
-
-[api]: app-insights-api-custom-events-metrics.md 
-[apikey]: app-insights-api-custom-events-metrics.md#ikey 
-[availability]: app-insights-monitor-web-app-availability.md 
-[azure]: ../insights-perf-analytics.md 
-[client]: app-insights-javascript.md 
-[detect]: app-insights-detect-triage-diagnose.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[knowusers]: app-insights-overview-usage.md 
-[metrics]: app-insights-metrics-explorer.md 
-[netlogs]: app-insights-asp-net-trace-logs.md 
-[perf]: app-insights-web-monitor-performance.md 
-[portal]: http://portal.azure.com/ 
-[qna]: app-insights-troubleshoot-faq.md 
-[redfield]: app-insights-asp-net-dependencies.md 
-[roles]: app-insights-resources-roles-access-control.md 
-[start]: app-insights-overview.md 
-
+ 

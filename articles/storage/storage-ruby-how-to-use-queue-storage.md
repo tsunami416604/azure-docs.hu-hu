@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用拼音的佇列儲存體 | Microsoft Azure" 
-    description="了解如何使用 Azure 佇列服務來建立和刪除佇列，以及插入、取得和刪除訊息。範例以 Ruby 撰寫。" 
+    description="了解如何使用 Azure 佇列服務來建立和刪除佇列，以及插入、取得和刪除訊息。 範例以 Ruby 撰寫。" 
     services="storage" 
     documentationCenter="ruby" 
     authors="tfitzmac" 
@@ -17,7 +17,6 @@
     ms.author="tomfitz"/>
 
 
-
 # 如何使用 Ruby 的佇列儲存體
 
 [AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
@@ -27,8 +26,8 @@
 本指南說明如何使用 Microsoft 執行一般案例
 。 這些範例是以 Ruby Azure API 撰寫的。
 涵蓋的案例包括 **插入**, ，**查看**, ，**取得**,，
-和 **刪除** 佇列訊息，以及 * * 建立和刪除
-佇列 * *。
+和 **刪除** 佇列訊息，以及 **建立和刪除
+佇列**。
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -45,7 +44,7 @@
 
 ### 使用 RubyGems 來取得套件
 
-1. 使用命令列介面，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
+1. 使用命令列介面，例如 **PowerShell** (Windows)、 **終端機** (Mac) 或 **Bash** (Unix)。
 
 2. 在命令視窗中鍵入 "gem install azure" 以安裝 Gem 和相依性。
 
@@ -68,16 +67,16 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 1. 登入 [Azure 入口網站](portal.azure.com)。
 2. 瀏覽到您要使用的儲存體帳戶
-3. 按一下導覽窗格底部的 [管理金鑰]****。
+3. 按一下 [ **管理金鑰** 底部的 [瀏覽] 窗格。
 4. 在快顯對話方塊中，您將會看到儲存體帳戶名稱、主要存取金鑰和次要存取金鑰。 如需存取金鑰，您可以選取主要存取金鑰或次要存取金鑰。
 
 ## 作法：建立佇列
 
-下列程式碼會建立一個 **Azure::QueueService** 物件，讓您能夠使用佇列。
+下列程式碼會建立 **azure:: queueservice** 物件，可讓您能夠使用佇列。
 
     azure_queue_service = Azure::QueueService.new
 
-使用 **create_queue()** 方法，建立具有指定名稱的佇列。
+使用 **create_queue ()** 方法來建立具有指定名稱的佇列。
 
     begin
       azure_queue_service.create_queue("test-queue")
@@ -87,7 +86,7 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 作法：將訊息插入佇列中
 
-若要將訊息插入佇列中，請使用 **create_message()** 方法建立新訊息，並將其新增至佇列。
+若要將訊息插入佇列中，使用 **create_message ()** 方法來建立新的訊息，並將它新增至佇列。
 
     azure_queue_service.create_message("test-queue", "test message")
 
@@ -104,7 +103,7 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 1. 當您呼叫 **list\_messages ()**, ，您取得佇列中的下一個訊息的預設值。 您也可以指定您要取得的訊息數。 從傳回的訊息 **list\_messages ()** 會從此佇列讀取訊息的任何其他程式碼是不可見。 您可以傳入以秒為單位的可見性逾時，作為參數。
 
-2. 若要完成從佇列中移除訊息的作業，您還必須呼叫 **delete_message()**。
+2. 若要完成從佇列移除訊息，您還必須呼叫 **delete_message ()**。
 
 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的程式碼呼叫 **delete\_message()** 處理完訊息之後。
 
@@ -114,7 +113,7 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 作法：變更佇列訊息的內容
 
-您可以在佇列中就地變更訊息內容。 以下程式碼會使用 **update_message()** 方法來更新訊息。 此方法會傳回一個 Tuple (其中包含佇列訊息的 pop receipt) 和一個 UTC 日期時間值 (代表訊息將會顯示在佇列上的時間)。
+您可以在佇列中就地變更訊息內容。 以下程式碼使用 **update_message ()** 方法來更新訊息。 此方法會傳回一個 Tuple (其中包含佇列訊息的 pop receipt) 和一個 UTC 日期時間值 (代表訊息將會顯示在佇列上的時間)。
 
     message = azure_queue_service.list_messages("test-queue", 30)
     pop_receipt, time_next_visible = azure_queue_service.update_message(
@@ -158,9 +157,5 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - 請瀏覽 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) GitHub 上的儲存機制
 
 要比較本文所討論的 Azure 佇列服務和 Azure 服務匯流排佇列中所討論 [如何使用服務匯流排佇列](/develop/ruby/how-to-guides/service-bus-queues/) 文件，請參閱 [Azure 佇列和 Azure 服務匯流排佇列-比較和對照](http://msdn.microsoft.com/library/azure/hh767287.aspx)
-
-
-
-
-
+ 
 

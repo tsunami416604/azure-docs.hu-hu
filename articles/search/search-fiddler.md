@@ -16,32 +16,29 @@
     ms.date="11/10/2015"
     ms.author="heidist"/>
 
-
 # 使用 Fiddler 評估及測試 Azure 搜尋 REST API
-
 > [AZURE.SELECTOR]
-- [Overview](search-query-overview.md)
+- [概觀](search-query-overview.md)
 - [Fiddler](search-fiddler.md)
 - [Postman](search-chrome-postman.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
 
-
 這篇文章說明如何使用 Fiddler，您可以 [透過 Telerik 免費下載](http://www.telerik.com/fiddler), ，來發出 HTTP 要求，並檢視使用 Azure 搜尋服務 REST API，而不需要撰寫任何程式碼的回應。 Azure 搜尋服務是 Microsoft Azure 上完整管理的雲端託管搜尋服務，可輕鬆地透過 .NET 和 REST API 程式化。 Azure 搜尋服務 REST Api 記載 [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx)。
 
 在下列步驟中，您將建立索引、上傳文件、查詢索引，然後查詢系統以取得服務資訊。
 
-若要完成這些步驟，您必須在 Azure 搜尋服務和 `api 金鑰`。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需如何開始著手。
+若要完成這些步驟，您將需要 Azure 搜尋服務和 `api-key`。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需如何開始著手。
 
 ## 建立索引
 
-1. 啟動 Fiddler。 在 [檔案]**** 功能表上，關閉 [擷取流量]**** 以隱藏與目前工作無關的 HTTP 活動。
+1. 啟動 Fiddler。 在 **檔案** ] 功能表上，關閉 **擷取流量** 隱藏與目前工作無關的 HTTP 活動。
 
-3. 在 [編寫器]**** 索引標籤上，您可以制訂如下列螢幕擷取畫面所示的要求：
+3. 在 **編輯器** 索引標籤上，您可以制定要求，如下列螢幕擷取畫面所示。
 
     ![][1]
 
-2. 選取 [PUT]****。
+2. 選取 **放**。
 
 3. 輸入可指定服務 URL、要求屬性和 API 版本的 URL。 請留意以下幾點：
    + 使用 HTTPS 做為首碼。
@@ -51,7 +48,6 @@
     完整 URL 應該會類似下列範例。
 
          https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
-
 
 4.  指定要求標頭，使用服務的有效值取代主機和 API 金鑰。
 
@@ -79,7 +75,7 @@
          ]
         }
 
-6.  按一下 [Execute (執行)]****。
+6.  按一下 [ **執行**。
 
 幾秒鐘後，您應該就會在工作階段清單中看見 HTTP 201 的回應，指出已成功建立索引。
 
@@ -87,13 +83,13 @@
 
 ## 載入文件
 
-在 [編寫器]**** 索引標籤上，張貼文件的要求會類似如下。 要求本文包含 4 間飯店的搜尋資料。
+在 **編輯器** 索引標籤上，張貼文件的要求看起來如下所示。 要求本文包含 4 間飯店的搜尋資料。
 
    ![][2]
 
-1. 選取 [POST]****。
+1. 選取 **POST**。
 
-2.  輸入的 URL 以 HTTPS 服務 URL、 開頭，後面加上"/indexes/<<'indexname'>/docs/index? api 版本 = 2015年-02-28"。完整 URL 應該會類似下列範例。
+2.  輸入以 HTTPS 開頭的 URL，並於後面依序加上服務 URL 和 "/indexes/<'indexname'>/docs/index?api-version=2015-02-28"。 完整 URL 應該會類似下列範例。
 
         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
 
@@ -167,19 +163,19 @@
          ]
         }
 
-8.  按一下 [Execute (執行)]****。
+8.  按一下 [ **執行**。
 
 幾秒鐘後，您應該就會在工作階段清單中看見 HTTP 200 的回應。 這表示已成功建立文件。 如果您收到 207，表示至少有一個文件上傳失敗。 如果您收到 404，則表示要求的標頭或本文有語法錯誤。
 
 ## 查詢索引
 
-現在已載入索引和文件，您可以對其發出查詢。 在 [編寫器]**** 索引標籤上，查詢服務的 **GET** 命令會類似下列螢幕擷取畫面。
+現在已載入索引和文件，您可以對其發出查詢。  在 **編輯器** 索引標籤上， **取得** 查詢服務的命令看起來會類似下列螢幕擷取畫面。
 
    ![][3]
 
-1.  選取 [GET]****。
+1.  選取 **取得**。
 
-2.  輸入的 URL 以 HTTPS 服務 URL、 開頭，後面加上"/indexes/<<'indexname'>/docs?"，後面接著查詢參數。舉例來說，使用下列 URL，並以服務的有效值取代範例主機名稱。
+2.  輸入以 HTTPS 開頭，並於後面依序加上服務 URL、"/indexes/<'indexname'>/docs?" 和查詢參數的完整 URL。 舉例來說，使用下列 URL，並以服務的有效值取代範例主機名稱。
 
         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
 
@@ -191,7 +187,6 @@
         host: my-app.search.windows.net
         content-type: application/json
         api-key: 1111222233334444
-
 
 回應碼應為 200，而回應輸出應該會類似下列螢幕擷取畫面。
 
@@ -209,11 +204,11 @@
 
 ## 查詢系統
 
-您也可以查詢系統以取得文件計數和儲存體用量。 在 [編寫器]**** 索引標籤上，您的要求會類似如下，且回應會傳回文件計數和空間使用量。
+您也可以查詢系統以取得文件計數和儲存體用量。 在 **編輯器** 索引標籤上，您的要求看起來會類似下列內容，和回應會傳回文件和空間的使用量數目的計數。
 
  ![][5]
 
-1.  選取 [GET]****。
+1.  選取 **取得**。
 
 2.  輸入含有服務 URL 的 URL，並於後面加上 "/indexes/hotels/stats?api-version=2015-02-28"：
 
@@ -228,22 +223,21 @@
 
 4.  讓要求本文保持空白。
 
-5.  按一下 [Execute (執行)]****。 您應該會在工作階段清單中看到 HTTP 200 的狀態碼。 選取為命令張貼的項目。
+5.  按一下 [ **執行**。 您應該會在工作階段清單中看到 HTTP 200 的狀態碼。 選取為命令張貼的項目。
 
-6.  依序按一下 [檢測器]**** 索引標籤和 [標頭]**** 索引標籤，然後選取 JSON 格式。 您應該會看到文件計數和儲存體大小 (以 KB計算)。
+6.  按一下 [ **偵測器** 索引標籤上，按一下 [ **標頭** 索引標籤，然後選取 [JSON 格式。 您應該會看到文件計數和儲存體大小 (以 KB計算)。
 
 ## 後續步驟
 
 以下連結提供一些額外資訊，說明如何以無程式碼的方式管理及使用 Azure 搜尋服務。
 
--  [管理 azure 搜尋服務](search-manage.md)
--  [如何使用 Azure 搜尋服務使用 Chrome Postman](search-chrome-postman.md)
+-  [在 Azure 上管理搜尋服務](search-manage.md)
+-  [如何搭配 Azure 搜尋服務使用 Chrome Postman](search-chrome-postman.md)
 
-
-
-[1]: ./media/search-fiddler/AzureSearch_Fiddler1_PutIndex.png 
-[2]: ./media/search-fiddler/AzureSearch_Fiddler2_PostDocs.png 
-[3]: ./media/search-fiddler/AzureSearch_Fiddler3_Query.png 
-[4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png 
-[5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png 
+<!--Image References-->
+[1]: ./media/search-fiddler/AzureSearch_Fiddler1_PutIndex.png
+[2]: ./media/search-fiddler/AzureSearch_Fiddler2_PostDocs.png
+[3]: ./media/search-fiddler/AzureSearch_Fiddler3_Query.png
+[4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
+[5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
 

@@ -17,7 +17,6 @@
     ms.author="juliako"/>
 
 
-
 # 使用 Azure 傳統入口網站建立通道，從內部部署編碼器接收多位元速率即時串流
 
 [AZURE.INCLUDE [media-services-selector-manage-channels](../../includes/media-services-selector-manage-channels.md)]
@@ -36,11 +35,10 @@
 2.  清除。
 
 ## 必要條件
-
 需要有下列項目，才能完成教學課程。
 
 - 若要完成此教學課程，您需要 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。
-如需詳細資訊，請參閱 [Azure 免費試用](azure.microsoft.com)。
+如需詳細資料，請參閱 [Azure 免費試用](azure.microsoft.com)。
 - 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱 [建立帳戶](media-services-create-account.md)。
 - 網路攝影機以及可以傳送多位元速率即時串流的編碼器。
 
@@ -51,29 +49,30 @@
 
 使用即時串流時，內部部署即時編碼器 (在我們的案例中，是 Wirecast) 會將多位元速率即時串流內嵌到您的通道。 使用者要求串流時，媒體服務會使用動態封裝，以將來源串流重新封裝為所要求的調適性位元速率串流 (HLS、DASH 或 Smooth)。
 
-若要利用動態封裝，您需要為想要從該處傳遞內容的*串流端點*取得至少一個串流單元。
+若要利用動態封裝，您需要取得至少一個串流單元 *串流端點* 從中您打算傳遞內容。
 
-若要變更串流保留單元的數目，請執行下列動作：
+若要變更串流保留單元數目，請執行下列動作：
 
 1. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **媒體服務**。 接著，按一下媒體服務的名稱。
 
-2. 選取 [串流端點]**** 頁面。 然後，按一下您要修改的串流端點。
+2. 選取 **串流端點** 頁面。 然後，按一下您要修改的串流端點。
 
-3. 若要指定串流單元數目，請選取 [調整]**** 索引標籤，然後移動保留容量滑動軸。
+3. 若要指定串流單元數目，請選取 **延展** ] 索引標籤上，並將保留的容量] 滑桿。
 
 ![Scale page](./media/media-services-portal-get-started-with-live/media-services-origin-scale.png)
 
-4. 按一下 [儲存]**** 以儲存您的變更。
+4. 按一下 [ **儲存** ] 按鈕以儲存您的變更。
 
 配置任何新的單元需要大約 20 分鐘的時間才能完成。
->[AZURE.NOTE] 目前，如果串流單元從任何正值到無，可能會停用串流長達一小時。
+
+>[AZURE.NOTE] 目前，從任何正值的串流處理單元為 none，可以停用串流長達一小時。
 >
 > 計算成本時會使用 24 小時內指定的最大單元數。 如需定價詳細資料的相關資訊，請參閱 [媒體服務定價詳細資料](http://go.microsoft.com/fwlink/?LinkId=275107)。
 
 
 ## 建立通道
 
-在 Azure 傳統入口網站中，選取 [通道]**** 頁面。 然後，按一下 [**新增**]。 在 [建立新的即時通道]**** 頁面上，輸入您通道的名稱。
+在 Azure 傳統入口網站中，選取 **通道** 頁面。 然後按一下 [ **新增**。 在 **建立新的即時通道** 頁面上，輸入您通道的名稱。
 
 ![createchannel](./media/media-services-portal-get-started-with-live/media-services-create-channel.png)
 
@@ -94,10 +93,11 @@
 
 ## 設定即時編碼器並內嵌即時串流
 
->[AZURE.NOTE] 此步驟需要上一個步驟中所述的通道內嵌 URL。
+>[AZURE.NOTE] 此步驟需要通道內嵌在上一個步驟中所提及的 URL。
 
 如需如何設定 Wirecast 以及開始內嵌資料流的詳細資訊，請參閱 [Wirecast 組態](http://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)。
->[AZURE.NOTE] 如果您因任何原因停止編碼器，而需要重新啟動，則您應該按一下 Azure 傳統入口網站中的 [重設]**** 命令，先重設通道。
+
+>[AZURE.NOTE] 如果基於任何原因停止編碼器，而需要重新啟動，您應該先重設通道即可 **重設** 命令在 Azure 傳統入口網站。
 
 
 ## 建立和管理程式
@@ -106,7 +106,7 @@
 
 通道是與程式相關聯，而程式可讓您控制即時串流中區段的發佈和儲存。 通道會管理程式。 通道與程式的關係與傳統媒體十分類似；其中，通道具有固定的內容串流，而且計畫的範圍是該通道上的某個計時事件。
 
-設定 [**封存時間範圍**] 長度，即可指定您想要保留程式之錄製內容的時數。 此值可以設為最少 5 分鐘到最多 25 個小時。 封存時間範圍長度也會指出用戶端可以從目前即時位置及時往回搜尋的最大時間量。 程式在超過指定的時間量後還是可以執行，但是會持續捨棄落後時間範圍長度的內容。 此屬性的這個值也會決定用戶端資訊清單可以成長多長的時間。
+您可以指定您想要藉由設定保留程式之錄製的內容的時數 **封存時間範圍** 長度。 此值可以設為最少 5 分鐘到最多 25 個小時。 封存時間範圍長度也會指出用戶端可以從目前即時位置及時往回搜尋的最大時間量。 程式在超過指定的時間量後還是可以執行，但是會持續捨棄落後時間範圍長度的內容。 此屬性的這個值也會決定用戶端資訊清單可以成長多長的時間。
 
 每個程式都與資產相關聯。 若要發佈程式，您必須建立相關聯資產的 OnDemand 定位器。 擁有此定位器，可讓您建置可提供給用戶端的串流 URL。
 
@@ -128,41 +128,41 @@
 
 有兩種方式可以啟動事件：
 
-1. 從 [通道]**** 頁面中，按一下 [加入]**** 以加入新程式。
+1. 從 **通道** 頁面上，按一下 **新增** 要新增新的程式。
 
-在 [建立新的程式]**** 頁面上，指定程式名稱、資產名稱、封存時間範圍和加密選項。
+在 **建立新的程式** 頁面上，指定程式名稱、 資產名稱、 封存時間範圍和加密選項。
 
 ![createprogram](./media/media-services-portal-get-started-with-live/media-services-create-program.png)
 
-如果已選取 [立即發行這個程式]****，則會建立發佈 URL。
+如果 **立即發佈此程式** 選取時，建立發佈 Url。
 
-只要準備好串流處理程式，即可按一下 [開始]****。
+您可以按一下 **啟動** 每當您已準備好串流處理程式。
 
-啟動程式之後，即可按一下 [播放]**** 開始播放內容。
+一旦您啟動程式時，您可以按一下 **播放** 開始播放內容。
 
 ![createdprogram](./media/media-services-portal-get-started-with-live/media-services-created-program.png)
 
-2. 或者，您可以使用捷徑，並按一下 [通道]**** 頁面上的 [啟動資料流]**** 按鈕。 這樣會建立「資產」、「程式」和「串流定位器」。
+2. 或者，您可以使用捷徑，然後按一下 **開始串流處理** 按鈕 **通道** 頁面。 這樣會建立「資產」、「程式」和「串流定位器」。
 
 程式的名稱為 DefaultProgram，而封存時間範圍設定為 1 個小時。
 
-您可以從 [通道]**** 頁面播放發佈的程式。
+您可以播放發佈的程式，從 **通道** 頁面。
 
 ![channelpublish](./media/media-services-portal-get-started-with-live/media-services-channel-play.png)
 
 
-如果您按一下 [通道]**** 頁面上的 [停止資料流]****，則會停止並刪除預設程式。 資產仍然會有和您可以發佈或解除發佈它從 **內容**  頁面。
+如果您按一下 **停止串流處理** 上 **通道** ] 頁面上，將會停止並刪除預設程式。 資產仍然會有和您可以發佈或解除發佈它從 **內容**  頁面。
 
-如果您切換到 [**內容**] 頁面，則會看到針對程式所建立的資產。
+如果您切換到 **內容** ] 頁面上，您會看到所建立的資產的程式。
 
 ![contentasset](./media/media-services-portal-get-started-with-live/media-services-content-assets.png)
 
 
 ## 播放內容
 
-若要提供您的使用者具有可用於串流處理內容的 URL，您必須先 *發行* 資產 (如前一節中所述) 藉由建立定位器 (當您發行資產使用 Azure 傳統入口網站時，會為您建立定位器)。 定位器可以存取資產中所含的檔案。
+若要提供您的使用者具有可用於串流處理內容的 URL，您必須先 *發行* 資產 (如前一節中所述) 藉由建立定位器 (當您發行資產使用 Azure 傳統入口網站時，會為您建立定位器)。 定位器提供對於資產中包含之檔案的存取。
 
-根據您要用來播放內容的串流通訊協定，可能需要修改從「通道\程式」的 [**發佈 URL**] 連結取得的 URL。
+根據您要用來播放您的內容資料流通訊協定，您可能需要修改您從取得的 URL **發佈 URL** channel\program 的連結。
 
 動態封裝會負責將即時串流封裝成指定的通訊協定。
 
@@ -191,11 +191,11 @@
 - 除非您想要繼續將即時事件封存為隨選串流，否則您可以停止串流端點。 如果通道處於已停止狀態，就不會產生任何費用。
 
 
-## 後續步驟：媒體服務學習路徑
+##後續步驟：媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
@@ -206,14 +206,10 @@
 
 
 ## 其他資源
+- [透過 Azure 傳統入口網站開始使用即時串流](http://azure.microsoft.com/blog/getting-started-with-live-streaming-using-the-azure-management-portal/)
 
-- [開始使用即時串流處理使用 Azure 傳統入口網站](http://azure.microsoft.com/blog/getting-started-with-live-streaming-using-the-azure-management-portal/)
+<!-- URLs. -->
+[Azure Classic Portal]: http://manage.windowsazure.com/
 
-
-
-
-
-
-
-[azure classic portal]: http://manage.windowsazure.com/ 
+<!-- Images -->
 

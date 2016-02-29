@@ -15,7 +15,6 @@
    ms.date="12/09/2015"
    ms.author="sethm" />
 
-
 # 服務匯流排驗證和授權
 
 應用程式可以使用共用存取簽章 (SAS) 驗證，或透過 Azure Active Directory 存取控制 (也稱為存取控制服務或 ACS) 向 Azure 服務匯流排進行驗證。 共用存取簽章 (SAS) 驗證可讓應用程式使用在命名空間或在與特定權限相關聯的實體上設定的存取金鑰，向服務匯流排進行驗證。 您可以接著使用此金鑰來產生共用存取簽章權杖，以便用戶端用來向服務匯流排進行驗證。
@@ -30,13 +29,13 @@
 
 若要使用 SAS，您可以設定 [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 上命名空間、 佇列或主題，包含下列物件:
 
-- 可識別規則的 *KeyName*。
+- *KeyName* 識別規則。
 
 - *PrimaryKey* 是用來簽署/驗證 SAS 權杖的密碼編譯金鑰。
 
 - *SecondaryKey* 是用來簽署/驗證 SAS 權杖的密碼編譯金鑰。
 
-- *權限*表示接聽、傳送或管理授與權限的集合。
+- *權限* 代表接聽的集合，傳送或管理權限授與。
 
 在命名空間層級設定的授權規則可以授與命名空間中所有實體的存取權給具備使用對應金鑰簽署之權杖的用戶端。 在服務匯流排命名空間、佇列或主題上最多可以設定 12 條這類授權規則。 根據預設， [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 著作權所有，並使用已針對每個命名空間時先佈建。
 
@@ -58,7 +57,7 @@ New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $true
 New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
 ```
 
-例如，如果您建立稱為 **contoso.servicebus.windows.net** 的服務匯流排命名空間，隨即會自動佈建稱為 **contoso sb.accesscontrol.windows.net** 的隨附 ACS 命名空間。 對於 2014 年 8 月之前建立的所有命名空間，也會建立隨附的 ACS 命名空間。
+例如，如果您建立服務匯流排命名空間，稱為 **{1>contoso.servicebus.**, ，隨附 ACS 命名空間稱為 **contoso sb.accesscontrol.windows.net** 會自動佈建。 對於 2014 年 8 月之前建立的所有命名空間，也會建立隨附的 ACS 命名空間。
 
 根據預設，此隨附 ACS 命名空間中會佈建具備所有權限的預設服務身分識別 "owner"。 您可以藉由設定適當的信任關係來透過 ACS 取得任何服務匯流排實體的細微控制。 您可以設定其他服務身分識別以管理服務匯流排實體的存取權。
 
@@ -73,10 +72,6 @@ New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
 在服務匯流排 SAS 的高階概觀，請參閱 [共用存取簽章](service-bus-sas-overview.md)。
 
 您可以找到 ACS 權杖中的詳細資訊 [How to: 從透過 OAuth WRAP 通訊協定的 ACS 要求權杖](https://msdn.microsoft.com/library/hh674475.aspx)。
-
-
-
-
 
 
 

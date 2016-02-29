@@ -1,6 +1,6 @@
 <properties 
     pageTitle="Azure Multi-Factor Authentication 常見問題集" 
-    description="提供關於 Azure Multi-Factor Authentication (MFA) 常見問題與答案清單。MFA 是除了使用使用者名稱與密碼之外，需要再利用其他方法驗證您的身份的驗證方法。它可以為使用者登入和交易提供額外層級的安全性。" 
+    description="提供關於 Azure Multi-Factor Authentication (MFA) 常見問題與答案清單。 MFA 是除了使用使用者名稱與密碼之外，需要再利用其他方法驗證您的身份的驗證方法。 它可以為使用者登入和交易提供額外層級的安全性。" 
     services="multi-factor-authentication" 
     documentationCenter="" 
     authors="billmath" 
@@ -16,8 +16,8 @@
     ms.date="11/20/2015" 
     ms.author="billmath"/>
 
-
 # Azure Multi-Factor Authentication 常見問題集
+
 
 此常見問題集會回答 Azure Multi-Factor Authentication 的相關問題。 此常見問題集涵蓋有關使用服務的問題，包括計費模型和可用性。
 
@@ -37,13 +37,13 @@
 
 - 如果舊版 Phonefactor 客戶有任何關於重設密碼的疑問，或如果需要取得密碼重設方面的協助，請使用下面的連結開啟支援案例。
 
-[Microsoft Azure Multi-factor Authentication Server (Phone Factor) 客戶支援](https://support.microsoft.com/oas/default.aspx?prid=14947)
+[Microsoft Azure Multi-Factor Authentication Server (Phone Factor) 客戶支援](https://support.microsoft.com/oas/default.aspx?prid=14947)
 
-- 使用此連結可連絡 Microsoft 支援專業人員。 我們會詢問您幾個問題，協助我們判斷您有哪些支援選項。 支援選項可能包含電子郵件、線上提交或電話支援。
+- 使用此連結可連絡 Microsoft 支援專業人員。 我們會詢問您幾個問題，協助我們判斷您有哪些支援選項。 支援選項可能包含電子郵件、線上提交或電話支援。 
 
-[Microsoft Azure Multi-factor Authentication Server (Phone Factor) 有關的一般查詢](http://azure.microsoft.com/services/multi-factor-authentication)
+[有關 Microsoft Azure Multi-Factor Authentication Server (Phone Factor) 的一般查詢](http://azure.microsoft.com/services/multi-factor-authentication)
 
-- 若要深入了解 Microsoft Azure Multi-factor Authentication Server (Phone Factor)，或如果您有疑問，關於如何購買產品和其他支援選項，請瀏覽或傳送電子郵件 [pfsales@microsoft.com](mailto:pfsales@microsoft.com)。
+- 若要深入了解 Microsoft Azure Multi-factor Authentication Server (Phone Factor)，或如果您有疑問，關於如何購買產品和其他支援選項，請瀏覽或傳送電子郵件 [pfsales@microsoft.com](mailto:pfsales@microsoft.com)。 
 
 
 
@@ -56,10 +56,10 @@
 - 電子郵件地址 - 選擇性
 - 電話號碼 - 進行語音通話或簡訊驗證時
 - 安全性權杖 - 執行行動應用程式驗證時
-- 驗證模式
-- 驗證結果
-- MFA Server 名稱
-- MFA Server IP
+- 驗證模式 
+- 驗證結果 
+- MFA Server 名稱 
+- MFA Server IP 
 - 用戶端 IP – 如果有的話
 
 
@@ -87,15 +87,15 @@
 
 **問：如果我沒有接到回覆來電，或忘了接電話，該怎麼辦？**
 
-如果您先前已設定備用電話，請在登入頁面出現提示時選取該電話，再試一次。 如果您沒有設定其他方法，請連絡系統管理員並要求他們更新指派給您的主要電話 (行動或辦公室) 的號碼。
+如果您先前已設定備用電話，請在登入頁面出現提示時選取該電話，再試一次。  如果您沒有設定其他方法，請連絡系統管理員並要求他們更新指派給您的主要電話 (行動或辦公室) 的號碼。
 
 **問：我已移除使用者的系統管理員角色，但忘了停用 Multi-Factor Authentication，而現在它未顯示在清單中，該如何移除這項功能？**
 
 - 視您所使用的入口網站而定，在左窗格中按一下 [使用者] 或 [使用者和群組]。
 - 選取您要編輯之使用者旁邊的核取方塊，然後按一下 [編輯] 或 [編輯] 圖示。
 - 按一下 [設定]，在 [指派角色] 之下選取 [是]，並將使用者加回先前的系統管理員角色。
-- 移至 Multi-Factor Authentication 頁面。 此帳戶現在應顯示在頁面上的清單中。
-- 請遵循上述步驟，以停用帳戶的 Multi-Factor Authentication。
+- 移至 Multi-Factor Authentication 頁面。 此帳戶現在應顯示在頁面上的清單中。 
+- 請遵循上述步驟，以停用帳戶的 Multi-Factor Authentication。 
 - 此時，您現在可以從系統管理員角色中移除帳戶。
 
 
@@ -110,23 +110,24 @@
 **問：如果使用者無法登入非瀏覽器應用程式，該怎麼辦？**
 
 - 已啟用 Multi-Factor Authentication 的使用者需要應用程式密碼，才能登入一些非瀏覽器應用程式。
-- 使用者需要清除登入資訊 (刪除登入資訊)，重新啟動應用程式，然後使用其使用者名稱和應用程式密碼登入。
+- 使用者需要清除登入資訊 (刪除登入資訊)，重新啟動應用程式，然後使用其使用者名稱和應用程式密碼登入。 
 
 如需建立應用程式密碼的詳細資訊，請參閱 [協助使用應用程式密碼](multi-factor-authentication-end-user-app-passwords.md)
 
->[AZURE.NOTE] 適用於 Office 2013 用戶端的新式驗證
+
+>[AZURE.NOTE] Office 2013 用戶端的新式驗證
 >
-> Office 2013 用戶端 (包括 Outlook) 現在支援新的驗證通訊協定，而且可以啟用 Multi-Factor Authentication 支援。 這表示一旦啟用後，應用程式密碼就不需要使用於 Office 2013 用戶端。 如需詳細資訊，請參閱 [發表的 Office 2013 新式驗證公開預覽](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
+> Office 2013 用戶端 (包括 Outlook) 現在支援新的驗證通訊協定，而且可以啟用 Multi-Factor Authentication 支援。  這表示一旦啟用後，應用程式密碼就不需要使用於 Office 2013 用戶端。  如需詳細資訊，請參閱 [發表的 Office 2013 新式驗證公開預覽](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
 
 **問：如果我未收到簡訊，或我回覆雙向簡訊但驗證逾時，該怎麼辦？**
 
-Azure Multi-Factor Authentication 服務會透過簡訊彙總工具傳送簡訊。 許多因素可能會影響簡訊傳遞和接收的可靠性，包括使用的彙總工具、目的地國家/地區、行動電話業者及訊號強度。 因此，不保證執行雙向簡訊時簡訊的傳遞與簡訊回覆的接收。 建議可能的話，優先使用單向簡訊 (優先於雙向簡訊)，因為它比較可靠，並可防止使用者因為回覆其他國家/地區傳送之簡訊所造成的全域簡訊費用。
+Azure Multi-Factor Authentication 服務會透過簡訊彙總工具傳送簡訊。 許多因素可能會影響簡訊傳遞和接收的可靠性，包括使用的彙總工具、目的地國家/地區、行動電話業者及訊號強度。 因此，不保證執行雙向簡訊時簡訊的傳遞與簡訊回覆的接收。 建議可能的話，優先使用單向簡訊 (優先於雙向簡訊)，因為它比較可靠，並可防止使用者因為回覆其他國家/地區傳送之簡訊所造成的全域簡訊費用。 
 
-在某些國家/地區 (例如美國和加拿大) 簡訊驗證更為可靠。 我們鼓勵在使用 Azure Multi-Factor Authentication 時遭遇簡訊接收困難的使用者，改為選取行動應用程式或電話通話方法。 行動應用程式很理想，因為行動應用程式通知可透過行動電話和 Wi-Fi 連接接收，而即使裝置完全沒有訊號時，也會顯示行動應用程式密碼。 Azure Authenticator 應用程式可供 [Windows Phone](http://www.windowsphone.com/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50), ，[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator), ，和 [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。
+在某些國家/地區 (例如美國和加拿大) 簡訊驗證更為可靠。 我們鼓勵在使用 Azure Multi-Factor Authentication 時遭遇簡訊接收困難的使用者，改為選取行動應用程式或電話通話方法。 行動應用程式很理想，因為行動應用程式通知可透過行動電話和 Wi-Fi 連接接收，而即使裝置完全沒有訊號時，也會顯示行動應用程式密碼。  Azure Authenticator 應用程式可供 [Windows Phone](http://www.windowsphone.com/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50), ，[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator), ，和 [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。
 
 **問: 是否可以使用硬體權杖與 Azure MFA 伺服器?**
 
-如果您使用 Azure MFA 伺服器，可以匯入協力廠商 OATH TOTP 權杖並用於 MFA。 目前我們支援以較舊的 PSKC 格式匯入協力廠商 OATH TOTP 權杖，Gemalto 可產生它們的權杖，並支援以 CSV 格式匯入權杖。 當以 CSV 格式匯入權杖時，CSV 檔案必須包含序號、Base32 格式的秘密金鑰及時間間隔 (通常是 30 秒)。
+如果您使用 Azure MFA 伺服器，可以匯入協力廠商 OATH TOTP 權杖並用於 MFA。 目前我們支援以較舊的 PSKC 格式匯入協力廠商 OATH TOTP 權杖，Gemalto 可產生它們的權杖，並支援以 CSV 格式匯入權杖。 當以 CSV 格式匯入權杖時，CSV 檔案必須包含序號、Base32 格式的秘密金鑰及時間間隔 (通常是 30 秒)。 
 
 所以，如果 ActiveIdentity 權杖是 OATH TOTP 權杖，而您可以將秘密金鑰檔案放入可匯入至 Azure MFA 伺服器的CSV 檔案，那麼您就可以使用它們。 OATH 可搭配 AD FS 使用、在用戶端系統可以處理 Access Challenge 回應時搭配 RADIUS，和搭配 IIS 表單型驗證。
 
@@ -149,10 +150,6 @@ Azure Multi-Factor Authentication 服務會透過簡訊彙總工具傳送簡訊�
 目前，其他安全性驗證僅可使用於您可透過瀏覽器存取的應用程式/服務。 本機電腦上安裝的非瀏覽器應用程式 (也稱為豐富型用戶端應用程式，例如 Windows Powershell) 不適用於需要其他安全性驗證的帳戶。 在此情況下，您可能會看到應用程式產生錯誤 0x800434D4L。
 
 此種情況的因應措施是使用不同的使用者帳戶進行系統管理相關作業和非系統管理作業。 您稍後可以連結系統管理帳戶與非系統管理帳戶之間的信箱，以便使用非系統管理帳戶登入 Outlook。 如需詳細資訊，請參閱 [讓系統管理員能夠開啟及檢視使用者的信箱內容](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)。
-
-
-
-
 
 
 

@@ -17,14 +17,13 @@
    ms.author="bscholl"/>
 
 
-
 # 部署多個自訂應用程式
 
 這篇文章說明如何封裝及部署多個 Service Fabric 應用程式使用 Service Fabric 封裝工具，可在 http://aka.ms/servicefabricpacktool 的預覽版本。
 
 如手動建立 Service Fabric 封裝，請參閱文章 [部署現有的應用程式在 Azure Service Fabric](service-fabric-deploy-existing-app.md)。
 
-雖然本逐步解說示範的是如何部署使用 MongoDB 做為資料存放區並具有 Node.js 前端的應用程式，但是您可以將這些步驟套用到任何與另一個應用程式具有相依性的應用程式。
+雖然本逐步解說示範的是如何部署使用 MongoDB 做為資料存放區並具有 Node.js 前端的應用程式，但是您可以將這些步驟套用到任何與另一個應用程式具有相依性的應用程式。   
 
 ## 封裝 Node.js 應用程式
 
@@ -61,12 +60,12 @@
 
 以下是所使用之參數的描述：
 
-- **/source**：指向應封裝之應用程式的目錄。
-- **/target**：定義應在其中建立封裝的目錄。 這個目錄必須是與目標目錄不同的目錄。
-- **/appname**：定義現有應用程式的應用程式名稱。 請務必了解這會轉譯成資訊清單中的「服務名稱」，而不是轉譯成 Service Fabric 應用程式名稱。
+- **來源/**: 指向應該一起封裝的應用程式的目錄
+- **/target**: 定義的目錄應該在其中建立封裝。 這個目錄必須是與目標目錄不同的目錄。
+- **/appname**: 定義現有的應用程式的應用程式名稱。 請務必了解這會轉譯成資訊清單中的「服務名稱」，而不是轉譯成 Service Fabric 應用程式名稱。
 - **/exe**: 定義服務網狀架構應該在此情況下啟動的可執行檔 `node.exe`
-- **/ma**：定義要用來啟動可執行檔的引數。 如未安裝 Node.js，需要啟動 Node.js web 伺服器執行 Service Fabric `node.exe bin/www`。 `/ma:' bin/www '` 會告訴封裝工具使用 `bin/ma` 做為 node.exe 引數
-- **/AppType**：定義 Service Fabric 應用程式類型名稱。 如果您
+- **/ma**: 定義用來啟動可執行檔的引數。 如未安裝 Node.js，需要啟動 Node.js web 伺服器執行 Service Fabric `node.exe bin/www`。  `/ma:'bin/www'` 會告訴封裝工具使用 `bin/ma` 做為 node.exe 引數
+- **/ AppType**: 定義 Service Fabric 應用程式的型別名稱。 如果您
 
 如果您瀏覽至 /target 參數中指定的目錄，您可以看到工具已建立可完整運作的 Service Fabric 封裝，如以下所示：
 
@@ -101,7 +100,7 @@
     </EntryPoint>
 </CodePackage>
 ```
-在此範例中，Node.js Web 伺服器會接聽通訊埠 3000，所以您需要更新 ServiceManifest.xml 中的端點資訊，如以下所示。
+在此範例中，Node.js Web 伺服器會接聽通訊埠 3000，所以您需要更新 ServiceManifest.xml 中的端點資訊，如以下所示。   
 
 ```xml
 <Resources>
@@ -110,9 +109,9 @@
       </Endpoints>
 </Resources>
 ```
-既然您已封裝 Node.js 應用程式，您可以繼續封裝 MongoDB。 如先前所提到的，您現在進行的步驟並非 Node.js 和 MongoDB 專用的步驟，事實上它們適用於所有要封裝在一起以做為一個 Service Fabric 應用程式的應用程式。
+既然您已封裝 Node.js 應用程式，您可以繼續封裝 MongoDB。 如先前所提到的，您現在進行的步驟並非 Node.js 和 MongoDB 專用的步驟，事實上它們適用於所有要封裝在一起以做為一個 Service Fabric 應用程式的應用程式。  
 
-為了封裝 MongoDB，您會想要確定您封裝 mongod.exe 和 mongo.exe。 這兩個二進位檔位於 `bin` MongoDB 安裝目錄的目錄。 目錄結構類似於下方的結構。
+為了封裝 MongoDB，您會想要確定您封裝 mongod.exe 和 mongo.exe。 這兩個二進位檔都位於 MongoDB 安裝目錄的 `bin` 目錄中。 目錄結構類似於下方的結構。
 
 ```
 |-- MongoDB
@@ -121,12 +120,12 @@
         |-- mongo.exe
         |-- etc.
 ```
-Service Fabric 需要啟動 MongoDB 類似的命令，因此您必須使用 `/ma` 參數封裝 MongoDB。
+Service Fabric 需要使用類似於下方的命令來啟動 MongoDB，因此封裝 MongoDB 時，您需要使用 `/ma` 參數。
 
 ```
 mongod.exe --dbpath [path to data]
 ```
-> [AZURE.NOTE] 如果您將 MongoDB 資料目錄放在節點的本機目錄中，當節點發生失敗時，將不會保留資料。 您應該使用永久性儲存體或實作 MongoDB ReplicaSet 以防止資料遺失。  
+> [AZURE.NOTE] 不會被資料保留在節點失敗的情況下，萬一 MongoDB 資料目錄放在節點本機目錄。 您應該使用永久性儲存體或實作 MongoDB ReplicaSet 以防止資料遺失。  
 
 在 PowerShell 或「命令殼層」中，我們會使用下列參數來執行封裝工具：
 
@@ -152,7 +151,7 @@ mongod.exe --dbpath [path to data]
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-如您所見，工具已將新資料夾 [MongoDB] 新增至包含 MongoDB 二進位檔的目錄。 如果您開啟 `ApplicationManifest.xml` 檔案，您可以看到封裝現在包含 Node.js 應用程式和 MongoDB。 以下程式碼會顯示應用程式資訊清單的內容。
+如您所見，工具已將新資料夾 [MongoDB] 新增至包含 MongoDB 二進位檔的目錄。 如果您開啟 `ApplicationManifest.xml` 檔案，您將可以看到封裝現在包含 Node.js 應用程式和 MongoDB。 以下程式碼會顯示應用程式資訊清單的內容。
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -198,8 +197,4 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 ## 後續步驟
 
 了解如何 [封裝單一應用程式手動](service-fabric-deploy-existing-app.md)。
-
-
-
-
 

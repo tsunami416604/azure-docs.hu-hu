@@ -16,14 +16,12 @@
    ms.date="11/05/2015"
    ms.author="twounder;JRJ@BigBangData.co.uk;barbkess"/>
 
-
 # 在 SQL 資料倉儲中重新命名
-
-雖然 SQL Server 支援透過預存程序重新命名資料庫 `sp_renamedb`, ，SQL 資料倉儲使用 DDL 語法達成相同目的。 DDL 命令是 `重新命名物件`。
+SQL Server 是透過預存程序 ```sp_renamedb``` 支援資料庫重新命名，而「SQL 資料倉儲」則是使用 DDL 語法來達到相同的目的。  DDL 命令是 ```RENAME OBJECT```。
 
 ## 重新命名資料表
 
-目前只有資料表可以重新命名。 重新命名資料表的語法是：
+目前只有資料表可以重新命名。  重新命名資料表的語法是：
 
 ```
 RENAME OBJECT Customer TO NewCustomer;
@@ -36,7 +34,6 @@ RENAME OBJECT Customer TO NewCustomer;
 重新命名外部資料表會變更 SQL Server PDW 內的資料表名稱。 它不會影響該資料表的外部資料位置。
 
 ## 變更資料表結構描述
-
 如果目的是要變更物件所屬的結構描述，可以透過 ALTER SCHEMA 達成：
 
 ```
@@ -45,16 +42,14 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 
 ## 資料表重新命名需要獨佔的資料表鎖定
 
-請務必記得，您無法在資料表處於使用中時將它重新命名。 重新命名資料表時，需要該資料表的獨佔鎖定。 如果資料表處於使用中，您可能需要終止使用該資料表的工作階段。 若要終止工作階段，您必須使用 [KILL](https://msdn.microsoft.com/library/ms173730.aspx) 命令。 請注意，當使用 `KILL` 做為工作階段已終止和未認可的工作將會回復時。 「SQL 資料倉儲」中的工作階段會以 'SID' 做為首碼。 叫用 KILL 命令時，將需要包含此首碼和工作階段號碼。 例如 `KILL 'SID1234'`
+請務必記得，您無法在資料表處於使用中時將它重新命名。  重新命名資料表時，需要該資料表的獨佔鎖定。  如果資料表處於使用中，您可能需要終止使用該資料表的工作階段。  若要終止工作階段，您必須使用 [KILL](https://msdn.microsoft.com/library/ms173730.aspx) 命令。  請注意，當使用 ```KILL``` 做為工作階段已終止和未認可的工作將會回復時。  「SQL 資料倉儲」中的工作階段會以 'SID' 做為首碼。  叫用 KILL 命令時，將需要包含此首碼和工作階段號碼。  例如 ```KILL 'SID1234'```
 
 
 ## 後續步驟
+如需更多開發秘訣，請參閱 [開發概觀] []。
 
-如需更多開發秘訣，請參閱 [開發概觀 []][]。
+<!--Image references-->
 
-
-
-
-
-[development overview]: sql-data-warehouse-overview-develop.md 
+<!--Article references-->
+[development overview]: sql-data-warehouse-overview-develop.md
 

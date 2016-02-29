@@ -17,13 +17,13 @@
     ms.date="11/17/2015"
     ms.author="dkshir"/>
 
-
 # 疑難排解存取在 Azure 虛擬機器上執行的應用程式
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
 如果您無法存取在 Azure 虛擬機器上執行的應用程式，本文將說明以井然有序的方式，釐清問題的來源並更正。
+
 > [AZURE.NOTE]  連接到 Azure 虛擬機器中的說明，請參閱 [疑難排解遠端桌面連線至 windows Azure 虛擬機器](virtual-machines-troubleshoot-remote-desktop-connections.md) 或 [疑難排解安全殼層 (SSH) 連線以 Linux 為基礎之 Azure 虛擬機器](virtual-machines-troubleshoot-ssh-connections.md)。
 
 有四個主要區域來疑難排解在 Azure 虛擬機器執行上之應用程式的存取。
@@ -53,7 +53,7 @@
 - 應用程式正在目標虛擬機器上執行。
 - 應用程式正在接聽預期的 TCP 和 UDP 連接埠。
 
-在 Windows 和 Linux 虛擬機器兩者上，使用 **netstat -a** 命令顯示作用中的接聽連接埠。 檢查應用程式應該接聽之預期連接埠的輸出。 重新啟動應用程式，或將它設定使用預期的連接埠 (如果有需要)。
+在 Windows 和 Linux 型虛擬機器上使用 **netstat-a** 命令，以顯示作用中的接聽連接埠。 檢查應用程式應該接聽之預期連接埠的輸出。 重新啟動應用程式，或將它設定使用預期的連接埠 (如果有需要)。
 
 ## <a id="step2"></a>步驟 2: 您可以存取應用程式從相同虛擬網路中的另一部虛擬機器嗎?
 
@@ -84,16 +84,16 @@
 
 如果您無法存取應用程式，請檢查下列項目：
 
-- 若為使用服務管理 API 建立的虛擬機器，其虛擬機器的端點組態允許連入流量，特別是通訊協定 (TCP 或 UDP) 和公用與私人連接埠號碼。 如需詳細資訊，請參閱 [如何設定端點的虛擬機器](virtual-machines-set-up-endpoints.md)。
-- 若為使用服務管理 API 建立的虛擬機器，其端點上的存取控制清單 (ACL) 不會阻擋來自網際網路的連入流量。 如需詳細資訊，請參閱 [如何設定端點的虛擬機器](virtual-machines-set-up-endpoints.md)。
+- 若為使用服務管理 API 建立的虛擬機器，其虛擬機器的端點組態允許連入流量，特別是通訊協定 (TCP 或 UDP) 和公用與私人連接埠號碼。 如需詳細資訊，請參閱 [如何設定端點的虛擬機器]( virtual-machines-set-up-endpoints.md)。
+- 若為使用服務管理 API 建立的虛擬機器，其端點上的存取控制清單 (ACL) 不會阻擋來自網際網路的連入流量。 如需詳細資訊，請參閱 [如何設定端點的虛擬機器]( virtual-machines-set-up-endpoints.md)。
 - 針對資源管理員中建立的虛擬機器，其虛擬機器的輸入 NAT 規則組態允許連入流量，特別是通訊協定 (TCP 或 UDP) 和公開與私人連接埠號碼。
-- 網路安全性群組允許輸入要求與輸出回應的流量。 如需詳細資訊，請參閱 [什麼是網路安全性群組 (NSG)?](virtual-networks-nsg.md).
+- 網路安全性群組允許輸入要求與輸出回應的流量。 如需詳細資訊，請參閱 [什麼是網路安全性群組 (NSG)?](virtual-networks-nsg.md)。
 
 如果虛擬機器或端點是負載平衡集的成員：
 
 - 請確認探查通訊協定 (TCP 或 UDP) 和連接埠號碼正確。
 - 如果探查通訊協定和連接埠與負載平衡集通訊協定和連接埠不同：
-    - 請確認應用程式正在接聽探查通訊協定 (TCP 或 UDP) 和連接埠號碼 (在目標虛擬機器使用 **netstat –a**)。
+    - 確認應用程式正在接聽探查通訊協定 (TCP 或 UDP) 和連接埠號碼 (使用 **netstat – a** 目標虛擬機器上)。
     - 目標虛擬機器上的主機防火牆允許輸入探查要求與輸出探查回應的流量。
 
 如果您可以存取應用程式，請確定您的網際網路邊緣裝置允許：
@@ -122,11 +122,7 @@
 
 ## 其他資源
 
-[疑難排解遠端桌面連線至 windows Azure 虛擬機器](virtual-machines-troubleshoot-remote-desktop-connections.md)
+[疑難排解以 Windows 為基礎之 Azure 虛擬機器的遠端桌面連線](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
 [疑難排解以 Linux 為基礎之 Azure 虛擬機器的安全殼層 (SSH) 連線](virtual-machines-troubleshoot-ssh-connections.md)
-
-
-
-
 

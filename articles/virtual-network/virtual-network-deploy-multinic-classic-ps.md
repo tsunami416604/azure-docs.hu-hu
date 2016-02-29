@@ -17,8 +17,7 @@
    ms.date="11/12/2015"
    ms.author="telmos" />
 
-
-# 使用 PowerShell 部署多部 NIC VM (傳統)
+#使用 PowerShell 部署多部 NIC VM (傳統)
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
@@ -28,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-因為在這個時間點，在同一個雲端服務中不能有配備單一 NIC 的 VM 和配備多個 NIC 的 VM，所以在案例中，您要在和所有其他元件都不同的雲端服務中實作後端伺服器。 下列步驟中，主要資源使用名為 *IaaSStory* 的雲端服務，後端伺服器使用 *IaaSStory-BackEnd*。
+因為在這個時間點，在同一個雲端服務中不能有配備單一 NIC 的 VM 和配備多個 NIC 的 VM，所以在案例中，您要在和所有其他元件都不同的雲端服務中實作後端伺服器。 下列步驟使用的雲端服務 *IaaSStory* 的主要資源，以及 *IaaSStory 後端* 後端伺服器。
 
 ## 必要條件
 
@@ -40,13 +39,13 @@
 
 後端 VM 有賴於建立下列資源。
 
-- **後端子網路**。 資料庫伺服器會是另外的子網路的一部分，以隔離流量。 下面的指令碼需要這個子網路位在名為 *WTestVnet* 的 vnet 中。
+- **後端的子網路**。 資料庫伺服器會是另外的子網路的一部分，以隔離流量。 下面的指令碼必須存在於中名為 vnet 子網路 *WTestVnet*。
 - **資料磁碟的儲存體帳戶**。 為取得更佳的效能，資料庫伺服器上的資料磁碟會使用需要進階儲存體帳戶的固態硬碟 (SSD) 技術。 請確定 Azure 的部署位置，以支援進階儲存體。
-- **可用性設定組**。 所有的資料庫伺服器都會加入單一的可用性設定組，確保在維護期間至少有一部 VM 啟動並執行。
+- **可用性設定組**。 所有的資料庫伺服器都會加入單一的可用性設定組，確保在維護期間至少有一部 VM 啟動並執行。 
 
 ### 步驟 1：啟動指令碼
 
-您可以下載完整的 PowerShell 指令碼使用 [這裡](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/multinic.ps1)。 請遵循下列步驟來變更要在環境中工作的指令碼。
+您可以下載完整的 PowerShell 指令碼使用 [這裡](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/multinic.ps1)。 請遵循下列步驟來變更指令碼來讓指令碼在環境中運作。
 
 1. 變更變數的值以下根據您現有的資源群組中部署上述 [必要條件](#Prerequisites)。
 
@@ -54,7 +53,7 @@
         $vnetName              = "WTestVNet"
         $backendSubnetName     = "BackEnd"
 
-2. 根據要用於後端部署的值來變更下列變數的值。
+2. 根據後端部署要使用的值，變更下列變數值。
 
         $backendCSName         = "IaaSStory-Backend"
         $prmStorageAccountName = "iaasstoryprmstorage"
@@ -65,7 +64,6 @@
         $dataDiskSuffix        = "datadisk"
         $ipAddressPrefix       = "192.168.2."
         $numberOfVMs           = 2
-
 
 ### 步驟 2：為 VM 建立必要的資源
 
@@ -99,16 +97,15 @@
 
         $cred = Get-Credential -Message "Enter username and password for local admin account"
 
-
 ### 步驟 3：建立 VM
 
 您需要使用迴圈建立所需數量的 VM，並在迴圈中建立必要的 NIC 和 VM。 若要建立 NIC 和 VM，請執行下列步驟。
 
-1. 啟動 `的` 迴圈重複命令來建立 VM，並視需要多次的兩個 Nic 的值為基礎 `$numberOfVMs` 變數。
+1. 啟動 `for` 迴圈，根據 `$numberOfVMs` 變數值，視需要的次數重複命令來建立一部 VM 和兩個 NIC。
 
         for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
 
-2. 建立 `VMConfig` 物件，指定映像、 大小和可用性設定組的 vm。
+2. 建立指定 VM 影像、大小和可用性設定組的 `VMConfig` 物件。
 
             $vmName = $vmNamePrefix + $suffixNumber
             $vmConfig = New-AzureVMConfig -Name $vmName `
@@ -136,17 +133,17 @@
 
 6. 為每部 VM 建立資料磁碟。
 
-         $dataDisk1Name = $vmName + "-" + $dataDiskSuffix + "-1"    
-         Add-AzureDataDisk -CreateNew -VM $vmConfig `
-             -DiskSizeInGB $diskSize `
-             -DiskLabel $dataDisk1Name `
-             -LUN 0       
-    
-         $dataDisk2Name = $vmName + "-" + $dataDiskSuffix + "-2"   
-         Add-AzureDataDisk -CreateNew -VM $vmConfig `
-             -DiskSizeInGB $diskSize `
-             -DiskLabel $dataDisk2Name `
-             -LUN 1
+            $dataDisk1Name = $vmName + "-" + $dataDiskSuffix + "-1"    
+            Add-AzureDataDisk -CreateNew -VM $vmConfig `
+                -DiskSizeInGB $diskSize `
+                -DiskLabel $dataDisk1Name `
+                -LUN 0       
+        
+            $dataDisk2Name = $vmName + "-" + $dataDiskSuffix + "-2"   
+            Add-AzureDataDisk -CreateNew -VM $vmConfig `
+                -DiskSizeInGB $diskSize `
+                -DiskLabel $dataDisk2Name `
+                -LUN 1
 
 7. 建立每部 VM 並結束迴圈。
 
@@ -156,27 +153,21 @@
                 -VNetName $vnetName
         }
 
-
 ### 步驟 4：執行指令碼
 
 既然您已根據需求下載並變更指令碼，請執行指令碼來建立有多個 NIC 的後端資料庫 VM。
 
-1. 儲存您的指令碼，並從 **PowerShell** 命令提示字元或 **PowerShell ISE** 執行。 您會看到初始的輸出，如下所示。
+1. 儲存您的指令碼並執行從 **PowerShell** 命令提示字元，或 **PowerShell ISE**。 您會看到初始的輸出，如下所示。
 
-     OperationDescription    OperationId                          OperationStatus
-     --------------------    -----------                          ---------------
-     New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
-     New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
-    
-     WARNING: No deployment found in service: 'IaaSStory-Backend'.
+        OperationDescription    OperationId                          OperationStatus
+        --------------------    -----------                          ---------------
+        New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
+        New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
+                                                                                    
+        WARNING: No deployment found in service: 'IaaSStory-Backend'.
 
-2. 填寫認證提示中所需的資訊，並按一下 [確定]****。 即會顯示下列輸出。
+2. 填妥認證提示中按一下所需的資訊 **確定**。 即會顯示下列輸出。
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded 
-
-
-
-
-
 

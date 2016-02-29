@@ -17,7 +17,6 @@
    ms.date="11/20/2015"
    ms.author="joaoma" />
 
-
 # 開始使用 ARM 範本建立網際網路面向的負載平衡器
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
@@ -38,7 +37,7 @@
 若要使用 PowerShell 部署您下載的 ARM 範本，請依照下列步驟執行。
 
 1. 如果您從未使用 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md) 並遵循指示以登入 Azure，並選取您的訂閱結束。
-2. 執行 **Switch-AzureMode** Cmdlet，以切換為資源管理員模式，如下所示。
+2. 執行 **Switch-azuremode** 指令程式可切換至資源管理員模式，如下所示。
 
         Switch-AzureMode AzureResourceManager
 
@@ -46,21 +45,20 @@
 
         WARNING: The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.
 
-    >[AZURE.WARNING] Switch-AzureMode Cmdlet 即將被汰除。 屆時將重新命名所有的資源管理員 Cmdlet。
+    >[AZURE.WARNING] Switch-azuremode cmdlet 很快就會被取代。 屆時將重新命名所有的資源管理員 Cmdlet。
 
-3. 執行 **New-AzureResourceGroup** Cmdlet，以使用範本建立資源群組。
+3. 執行 **New-azureresourcegroup** 指令程式來建立資源群組範本中使用。
 
         New-AzureResourceGroup -Name TestRG -Location uswest `
             -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-natrules/azuredeploy.json' `
             -TemplateParameterFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-natrules/azuredeploy.parameters.json'  
-
 
 ## 使用 Azure CLI 部署 ARM 範本
 
 若要使用 Azure CLI 部署 ARM 範本，請依照下列步驟執行。
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
-2. 執行 **azure config mode** 命令，以切換為資源管理員模式，如下所示。
+2. 執行 **azure 組態模式** 命令以切換至資源管理員模式，如下所示。
 
         azure config mode arm
 
@@ -68,11 +66,10 @@
 
         info:    New mode is arm
 
-3. 從瀏覽器中瀏覽至 **https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-natrules/azuredeploy.parameters.json**, 、 json 檔案的內容複製並貼到新檔案中，您的電腦。 在此案例中，您會將以下的值複製到名為 **c:\lb\azuredeploy.parameters.json** 的檔案。
-4. 執行 **azure group deployment create** Cmdlet，使用先前下載並修改的範本和參數檔案來部署新的負載平衡器。 輸出後顯示的清單可說明所使用的參數。
+3. 從瀏覽器中瀏覽至 **https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-natrules/azuredeploy.parameters.json**, 、 json 檔案的內容複製並貼到新檔案中，您的電腦。 此案例中，您會將複製以下的值為檔案 **c:\lb\azuredeploy.parameters.json**。
+4. 執行 **azure 群組部署建立** 指令程式來部署新的負載平衡器使用的範本和參數檔案下載並修改上面。 輸出後顯示的清單可說明所使用的參數。
 
         azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-natrules/azuredeploy.json' -e 'c:\lb\azuredeploy.parameters.json'
-
 
 ## 後續步驟
 
@@ -81,8 +78,4 @@
 [設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
-
-
-
-
 

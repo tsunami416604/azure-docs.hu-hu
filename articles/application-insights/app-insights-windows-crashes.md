@@ -15,21 +15,20 @@
     ms.date="11/21/2015" 
     ms.author="awills"/>
 
-
 # 使用 Application Insights 偵測並診斷 Windows 市集和 Phone 應用程式中的使用量
 
 *Application Insights 目前僅供預覽。*
 
 如果您的使用者在應用程式中遇到了損毀，您會想要快速得知，並且想知道發生的情況的詳細資料。 利用 Application Insights，您可以監視損毀發生的頻率、在發生時收到警示，並且調查個別事件的報告。
 
-「損毀」表示應用程式因為未捕捉的例外狀況而終止。 如果您的應用程式捕捉到例外狀況可以報告它與 [TrackException API ][apiexceptions] 繼續執行。 在該情況下，將不會記錄為損毀。
+「損毀」表示應用程式因為未捕捉的例外狀況而終止。 如果您的應用程式捕捉到例外狀況可以報告它與 [TrackException API][apiexceptions] 繼續執行。 在該情況下，將不會記錄為損毀。
 
 
 ## 監視損毀頻率
 
-如果您還沒有這麼做，加入 [Application Insights 加入至您的應用程式專案的 ][windows], ，並重新發行。
+如果您還沒有這麼做，加入 [Application Insights 加入至應用程式專案][windows], ，並重新發行。 
 
-損毀會顯示在您的應用程式概觀刀鋒視窗上 [Application Insights 入口網站 ][portal]。
+損毀會顯示在您的應用程式概觀刀鋒視窗上 [Application Insights 入口網站][portal]。
 
 ![](./media/app-insights-windows-crashes/appinsights-d018-oview.png)
 
@@ -38,7 +37,7 @@
 
 ## 設定警示以偵測損毀
 
-![從損毀圖表中按一下 ](./media/app-insights-windows-crashes/appinsights-d023-alert.png)
+![從損毀圖表中按一下 [警示規則]，然後按一下 [加入警示]](./media/app-insights-windows-crashes/appinsights-d023-alert.png)
 
 ## 診斷損毀
 
@@ -51,8 +50,8 @@
 
 ![](./media/app-insights-windows-crashes/appinsights-d26crashExceptions.png)
 
-[深入了解診斷搜尋 ][diagnostic]。
-
+[深入了解診斷搜尋中的篩選][diagnostic]。
+ 
 
 按一下任何例外狀況以查看詳細資料，包括關聯的屬性和堆疊追蹤。
 
@@ -65,7 +64,7 @@
 
 ## 插入追蹤記錄和事件
 
-若要協助您診斷問題，您可以 [插入追蹤呼叫並且在 Application Insights ][diagnostic]。
+若要協助您診斷問題，您可以 [插入追蹤呼叫並且在 Application Insights 中搜尋記錄][diagnostic]。
 
 ## <a name="debug"></a>偵錯與發行模式
 
@@ -79,26 +78,26 @@
 
 ## <a name="next"></a>後續步驟
 
-[偵測、 分級和診斷使用 Application Insights 的問題 ][detect]
+[使用 Application Insights 刪除、分級和診斷][detect]
 
-[Application Insights API ][api]
+[Application Insights API][api]
 
-[擷取診斷記錄 ][trace]
+[擷取診斷記錄][trace]
 
 [疑難排解](app-insights-windows-troubleshoot.md)
 
 
 
 
+<!--Link references-->
 
+[api]: app-insights-api-custom-events-metrics.md
+[apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
+[detect]: app-insights-detect-triage-diagnose.md
+[diagnostic]: app-insights-diagnostic-search.md
+[platforms]: app-insights-platforms.md
+[portal]: http://portal.azure.com/
+[trace]: app-insights-search-diagnostic-logs.md
+[windows]: app-insights-windows-get-started.md
 
-
-[api]: app-insights-api-custom-events-metrics.md 
-[apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception 
-[detect]: app-insights-detect-triage-diagnose.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[platforms]: app-insights-platforms.md 
-[portal]: http://portal.azure.com/ 
-[trace]: app-insights-search-diagnostic-logs.md 
-[windows]: app-insights-windows-get-started.md 
-
+ 

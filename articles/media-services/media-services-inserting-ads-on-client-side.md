@@ -17,21 +17,20 @@
     ms.author="juliako"/>
 
 
-
-# 在用戶端插入廣告
+#在用戶端插入廣告
 
 本主題包含如何在用戶端上插入各種類型廣告的相關資訊。
 
 已關閉隱藏式字幕和廣告支援即時資料流視訊的相關資訊，請參閱 [字幕支援和廣告插入標準](media-services-manage-channels-overview.md#cc_and_ads)。
 
-
-## <a id="insert_ads_into_media"></a>將廣告插入您的媒體
+ 
+##<a id="insert_ads_into_media"></a>將廣告插入您的媒體
 
 Azure 媒體服務允許透過 Windows Media 平台插入廣告：Player Framework。 具備廣告支援的播放器架構都適用於 Windows 8、Silverlight、Windows Phone 8 和 iOS 裝置。 每一個播放器架構都有範例程式碼，教您如何實作播放器應用程式。目前有三種不同的廣告可以插入 media:list 中：
 
-- **線性** – 可暫停主要影片的完整框架廣告。
-- **非線性** – 播放被當做主要影片而顯示的疊加廣告，通常是播放器中的標誌或其他靜態影像。
-- **隨播** – 顯示在播放器之外的廣告。
+- **線性** – 完整框架廣告可暫停主要影片。
+- **非線性** – 主要影片播放，會顯示的重疊廣告，通常的標誌或其他靜態影像用來放置播放程式中。
+- **附屬** – 顯示在播放器之外的廣告。
 
 廣告可以放在主要影片時間軸的任何時間點。 您必須告訴播放器何時播放廣告以及要播放哪些廣告。 使用一組標準的 XML 格式檔案即可搞定：Video Ad Service Template (VAST)、Digital Video Multiple Ad Playlist (VMAP)、Media Abstract Sequencing Template (MAST) 以及 Digital Video Player Ad Interface Definition (VPAID)。 VAST 檔案會指定要顯示的廣告。 VMAP 檔案會指定何時播放各種廣告而且包含 VAST XML。 MAST 檔案是另一種廣告排序的方法，而且也包含 VAST XML。 VPAID 檔案會定義影片播放器廣告和廣告或廣告伺服器之間的介面。
 
@@ -42,11 +41,11 @@ Azure 媒體服務允許透過 Windows Media 平台插入廣告：Player Framewo
 - 傳回 MAST 檔案 (有內嵌 VAST)
 - 傳回 VAST 檔案 (有 VPAID 廣告)
 
-
-### 使用 Video Ad Service Template (VAST) 檔案
+ 
+###使用 Video Ad Service Template (VAST) 檔案
 
 VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔案範例：
-
+    
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
       <Ad id="115571748">
         <InLine>
@@ -88,11 +87,11 @@ VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔
         </InLine>
       </Ad>
     </VAST>
+    
+線性廣告由描述 **<Linear>** 項目。 它會指定廣告的持續時間、 追蹤事件、 點選連結、 點選追蹤和許多 **<MediaFile>** 項目。 追蹤事件中指定 **<TrackingEvents>** 項目，並允許廣告伺服器追蹤在檢視廣告時所發生的各種事件。 在此案例中會追蹤開始、中間點、完成及展開事件。 當顯示廣告時，就會發生開始事件。 當至少已經檢視 50% 的廣告時間軸時，就會發生中間點事件。 當廣告播放到結尾時，就會發生完成事件。 當使用者將視訊播放器展開至全螢幕時，就會發生展開事件。 點選連結所指定的 **<ClickThrough>** 內的項目 **<VideoClicks>** 項目，並指定當使用者按一下廣告時要顯示資源的 URI。 點選追蹤中所指定 **<ClickTracking>** 項目，也在 **<VideoClicks>** 項目，並指定播放程式要求使用者按一下廣告時追蹤資源。 **<MediaFile>** 項目會指定廣告特定編碼方式相關資訊。 當有多個 **<MediaFile>** 項目，視訊播放程式可以選擇最佳編碼平台。 
 
-線性廣告由描述 * *<Linear>** 項目。它會指定廣告的持續時間、 追蹤事件、 點選連結、 點選追蹤和許多 **<MediaFile>** 項目。追蹤事件中指定 **<TrackingEvents>** 項目，並允許廣告伺服器追蹤檢視 ad 時所發生的各種事件在此案例中會追蹤開始、中間點、完成及展開事件。當顯示廣告時，就會發生開始事件。當至少已經檢視 50% 的廣告時間軸時，就會發生中間點事件。當廣告播放到結尾時，就會發生完成事件。當使用者將視訊播放器展開至全螢幕時，就會發生展開事件。點選連結所指定的 **<ClickThrough>** 內的項目 **<VideoClicks>** 項目，並指定要顯示當使用者按一下 ad 資源的 URI點選追蹤中指定 **<ClickTracking>** 項目，也會在 **<VideoClicks>** 項目，並指定播放程式要求使用者按一下廣告時追蹤資源。**<MediaFile>** 項目會指定特定的編碼方式的 ad 相關資訊當有多個 **<MediaFile>* * 項目，視訊播放程式可以選擇最佳編碼平台。
-
-線性廣告可以依照指定的順序顯示。若要這樣做，請新增其他 <Ad> 元素的 vast 檔案，並指定使用順序屬性的順序。下列範例會加以說明：
-
+線性廣告可以依照指定的順序顯示。 若要這樣做，請新增其他 <Ad> 元素的 vast 檔案，並指定使用順序屬性的順序。 下列範例會加以說明：
+    
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
       <Ad id="1" sequence="0">
         <InLine>
@@ -107,7 +106,7 @@ VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔
               <Linear>
                 <Duration>00:00:32</Duration>
                 <MediaFiles>
-                  
+                  <!-- ... -->
                 </MediaFiles>
               </Linear>
             </Creative>
@@ -127,7 +126,7 @@ VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔
               <Linear>
                 <Duration>00:00:30</Duration>
                 <MediaFiles>
-                  
+                  <!-- ... -->
                 </MediaFiles>
               </Linear>
             </Creative>
@@ -135,8 +134,8 @@ VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔
         </InLine>
       </Ad>
     </VAST>
-
-中所指定非線性廣告 <Creative> 項目。下列範例所示 <Creative> 說明非線性廣告的項目。
+    
+非線性廣告詳列於 <Creative> 項目。 下列範例所示 <Creative> 描述非線性廣告的項目。
 
     <Creative id="video" sequence="1" AdID="">
       <NonLinearAds>
@@ -151,22 +150,23 @@ VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔
        </NonLinearAds>
     </Creative>
 
-* *<NonLinearAds>** 項目可以包含一或多個 **<NonLinear>** 項目，其中每個可以描述非線性 ad**<NonLinear>** 項目會指定資源的非線性 adThe resource can be a **<StaticResouce>**, an **<IFrameResource>**, or an **<HTMLResouce>**.**<StaticResource>* * 說明非 HTML 資源，並且定義 creativeType 屬性來指定資源的顯示方式:
+ 
+ **<NonLinearAds>** 元素可以包含一或多個 **<NonLinear>** 項目，其中每個可以描述非線性廣告。  **<NonLinear>** 項目會指定非線性廣告的資源。 資源可以是 **<StaticResouce>**, 、 **<IFrameResource>**, ，或 **<HTMLResouce>**。**<StaticResource>** 說明非 HTML 資源，並且定義 creativeType 屬性來指定資源的顯示方式:
 
-Image/gif、 image/jpeg、 image/png – 資源會顯示在 HTML * *<img>* * 標記。
+Image/gif、 image/jpeg、 image/png – 資源會顯示在 HTML **<img>** 標記。
 
-應用程式/x-javascript – 資源會顯示在 HTML <**script**> 標記。
+應用程式/x-javascript – 資源會顯示在 HTML <**指令碼**> 標記。
 
 Application/x-shockwave-flash – 資源在 Flash Player 中顯示。
 
-* *<IFrameResource>** 說明 HTML 資源，可顯示在 IFrame。 **<HTMLResource>** 說明 HTML 程式碼可以插入到網頁。 **<TrackingEvents>** 指定追蹤事件和事件發生時所要求的 URI。在此範例中，會追蹤 acceptInvitation 和 collapse 事件。如需有關 **<NonLinearAds>** 元素和其子系，請參閱 iab.net /vast。請注意，**<TrackingEvents>** 項目是位於** <NonLinearAds>** 項目而非 **<NonLinear>* * 項目。
+**<IFrameResource>** 說明 HTML 資源，可以在 IFrame 中顯示。 **<HTMLResource>** 說明可以插入 web 網頁的 HTML 程式碼的片段。 **<TrackingEvents>** 指定追蹤事件和事件發生時所要求的 URI。 在此範例中，會追蹤 acceptInvitation 和 collapse 事件。 如需有關 **<NonLinearAds>** 元素和其子系，請參閱 iab.net /vast。 請注意， **<TrackingEvents>** 項目是位於 * * <NonLinearAds>* * 項目而不是 **<NonLinear>** 項目。
 
-隨播廣告會定義在 <CompanionAds> 項目。 <CompanionAds> 元素可以包含一或多個 <Companion> 項目。每個 <Companion> 元素描述隨播廣告，而且可以包含 <StaticResource>, ，<IFrameResource>, ，或 <HTMLResource> 其指定方式與非線性廣告相同。VAST 檔案可以包含多個隨播廣告，而且播放器應用程式可以選擇要顯示的最適當廣告。如需 VAST 的詳細資訊，請參閱 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。
+隨播廣告會在 <CompanionAds> 元素內定義。 <CompanionAds> 元素可以包含一或多個 <Companion> 元素。 每個 <Companion> 元素都會說明隨播廣告，而且可以包含 <StaticResource>、<IFrameResource> 或 <HTMLResource>，其指定方式與非線性廣告相同。 VAST 檔案可以包含多個隨播廣告，而且播放器應用程式可以選擇要顯示的最適當廣告。 如需 VAST 的詳細資訊，請參閱 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。
 
-### 使用 Digital Video Multiple Ad Playlist (VMAP) 檔案
+###使用 Digital Video Multiple Ad Playlist (VMAP) 檔案
 
 VMAP 檔案可讓您指定何時插播廣告、每個插播多久、插播中可以顯示多少廣告，以及插播期間可以顯示哪些類型的廣告。 範例 VMAP 檔案中的下列項目會定義單一廣告插播：
-
+    
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
       <vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
         <vmap:AdSource allowMultipleAds="true" followRedirects="true" id="1">
@@ -213,29 +213,29 @@ VMAP 檔案可讓您指定何時插播廣告、每個插播多久、插播中可
         </vmap:TrackingEvents>
       </vmap:AdBreak>
     </vmap:VMAP>
-
-VMAP 檔案開頭 <VMAP> 包含一或多個項目 <AdBreak> 項目，每個都會定義廣告插播。每個廣告插播都會指定插播類型、插播 ID 和時間位移。breakType 屬性會指定插播期間可以播放的廣告類型：線性、非線性或顯示。顯示廣告會對應到 VAST 隨播廣告。在逗號 (無空格) 分隔的清單中可以指定一個以上的廣告類型。breakID 是廣告的選擇性識別碼。timeOffset 會指定何時應該顯示廣告。可以利用下列方式之一來指定：
+     
+VMAP 檔案開頭 <VMAP> 包含一或多個項目 <AdBreak> 項目，每個都會定義廣告插播。 每個廣告插播都會指定插播類型、插播 ID 和時間位移。 breakType 屬性會指定插播期間可以播放的廣告類型：線性、非線性或顯示。 顯示廣告會對應到 VAST 隨播廣告。 在逗號 (無空格) 分隔的清單中可以指定一個以上的廣告類型。 breakID 是廣告的選擇性識別碼。 timeOffset 會指定何時應該顯示廣告。 可以利用下列方式之一來指定：
 
 1. 時間 – hh: mm: 或 hh:mm:ss.mmm 的格式，其中.mmm 為毫秒。 這個屬性的值會指定從視訊時間軸開始到廣告插播開始的時間。
 1. 百分比 – n% 格式，其中 n 是視訊時間軸在播放廣告之前播放的百分比
 1. 開始/結束 – 指定廣告應該在視訊顯示之前或之後顯示
 1. 位置 – 指定當廣告插播的時機為未知時 (例如即時串流)，廣告插播的順序。 每個廣告插播的順序是以 #n 格式指定，其中 n 是大於或等於 1 的整數。 1 表示廣告應該在第一個機會時播放，2 表示廣告應該在第二個機會時播放，依此類推。
 
-內 <**AdBreak**> 有項目可以是一個 <**AdSource**> 項目。 <**AdSource**> 元素包含下列屬性:
+在 <**AdBreak**> 有項目可以是一個 <**AdSource**> 項目。 <**AdSource**> 項目包含下列屬性:
 
 1. Id – 指定廣告來源的識別碼
 1. allowMultipleAds – 布林值，指定在廣告插播期間是否可以顯示多個廣告
 1. followRedirects – 選用布林值，指定視訊播放器是否應該接受廣告回應內的重新導向
 
-<**AdSource**> 項目會提供播放器內嵌廣告回應或廣告回應的參考。可以包含下列其中一個元素：
+<**AdSource**> 項目會提供播放器內嵌廣告回應或廣告回應的參考。 可以包含下列其中一個元素：
 
 - <VASTAdData> 表示 VAST 廣告回應內嵌在 VMAP 檔案
 - <AdTagURI> 從另一個系統參考廣告回應的 URI
 - <CustomAdData> -的任意字串表示非 VAST 回應
 
-在此範例中，內嵌廣告回應會使用指定 <VASTAdData> 包含 VAST 廣告回應的項目。如需其他元素的詳細資訊，請參閱 [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)。
+在這個範例中，內嵌廣告回應是以 <VASTAdData> 元素指定，該元素包含 VAST 廣告回應。 如需其他元素的詳細資訊，請參閱 [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)。
 
-<**AdBreak**> 項目也可以包含一個 <**TrackingEvents**> 項目。 <**TrackingEvents**> 元素可讓您追蹤的開頭或結尾廣告插播，或廣告插播期間是否發生錯誤。 <**TrackingEvents**> 項目包含一個或多個 <**Tracking**> 項目，其中每個指定的追蹤事件和追蹤 URI。可能的追蹤事件如下：
+<**AdBreak**> 項目也可以包含一個 <**TrackingEvents**> 項目。 <**TrackingEvents**> 項目可讓您追蹤的開始或結束廣告插播，或廣告插播期間是否發生錯誤。 <**TrackingEvents**> 項目包含一個或多個 <**追蹤**> 項目，其中每個指定的追蹤事件和追蹤 URI。 可能的追蹤事件如下：
 
 1. breakStart – 追蹤廣告插播的開始
 1. breakEnd – 追蹤廣告插播的完成
@@ -247,7 +247,7 @@ VMAP 檔案開頭 <VMAP> 包含一或多個項目 <AdBreak> 項目，每個都�
       <vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
         <vmap:AdSource allowMultipleAds="true" followRedirects="true" id="1">
           <vmap:VASTData>
-            
+            <!--Inline VAST -->
           </vmap:VASTData>
         </vmap:AdSource>
         <vmap:TrackingEvents>
@@ -266,7 +266,7 @@ VMAP 檔案開頭 <VMAP> 包含一或多個項目 <AdBreak> 項目，每個都�
 
 如需有關 <**TrackingEvents**> 元素和其子系，請參閱 http://iab.org/VMAP.pdf
 
-### 使用 Media Abstract Sequencing Template (MAST) 檔案
+###使用 Media Abstract Sequencing Template (MAST) 檔案
 
 MAST 檔案可讓您指定觸發程序，定義何時顯示廣告。 以下是範例 MAST 檔案，其中包含片頭廣告、片中廣告和片尾廣告的觸發程序。
 
@@ -289,7 +289,7 @@ MAST 檔案可讓您指定觸發程序，定義何時顯示廣告。 以下是�
           </startConditions>
           <endConditions>
             <condition type="event" name="OnItemEnd"/>
-            
+            <!--This 'resets' the trigger for the next clip-->
           </endConditions>
           <sources>
             <source uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_linear.xml" format="vast">
@@ -311,16 +311,18 @@ MAST 檔案可讓您指定觸發程序，定義何時顯示廣告。 以下是�
       </triggers>
     </MAST>
 
-MAST 檔案開頭 * *<MAST>** 元素，包含一個 **<triggers>* * 項目。 <triggers> 項目包含一個或多個 * *<trigger>* * 項目會定義何時應該播放廣告。
+ 
 
-* *<trigger>** 項目包含 **<startConditions>** 元素，定義何時應該播放廣告。**<startConditions>* * 項目包含一個或多個 <condition> 項目。當每個 <condition> 評估為 true，觸發程序起始或撤銷取決 <condition> 包含在 * *<startConditions**> 或 * *<endConditions>* * 項目分別。當多個 <condition> 項目都存在，則會視為隱含 OR，任何評估為 true 的條件都會導致起始觸發程序。 <condition> 可以巢狀項目。當子 <condition> 預設項目，則會視為隱含 AND，所有條件必須都評估為 true，起始觸發程序。 <condition> 元素包含定義條件的下列屬性:
+MAST 檔案開頭 **<MAST>** 元素，包含一個 **<triggers>** 項目。  <triggers> 項目包含一個或多個 **<trigger>** 項目會定義何時應該播放廣告。 
 
-1. **type** – 指定條件、事件或屬性的類型
-1. **name** – 要在評估期間使用之屬性或事件的名稱
-1. **value** – 屬性將會針對其進行評估的值
-1. **operator** – 要在評估期間使用的運算：EQ (等於)、NEQ (不等於)、GTR (大於)、GEQ (大於或等於)、LT (小於)、LEQ (小於或等於)、MOD (模數)
+ **<trigger>** 項目包含 **<startConditions>** 元素，定義何時應該播放廣告。  **<startConditions>** 項目包含一個或多個 <condition> 項目。 當每個 <condition> 評估為 true，觸發程序起始或撤銷取決 <condition> 內含 **< 於**> 或 **<endConditions>** 項目分別。 當多個 <condition> 項目都存在，則會視為隱含 OR，任何評估為 true 的條件都會導致起始觸發程序。 <condition> 可以是巢狀項目。 當預設子系 <condition> 元素時，它們會被視為隱含 AND，所有條件必須評估為 true，才會起始觸發程序。 <condition> 元素包含會定義條件的下列屬性： 
 
-* *<endConditions>* * 也包含 <condition> 項目。當條件評估為 true，觸發程序會重設。 <trigger> 項目也包含 <sources> 包含一或多個項目 <source> 項目。 <source> 元素定義廣告回應與廣告回應的型別 URI。在此範例中，會對 VAST 回應指定 URI。
+1. **型別** – 指定條件、 事件或屬性的型別
+1. **名稱** – 屬性或事件在評估期間使用的名稱
+1. **值** – 將會評估屬性的值
+1. **運算子** – 要在評估期間所使用的運算: EQ (等於)、 NEQ (不等於)、 GTR (大於)、 GEQ (大於或等於)、 LT (小於)、 LEQ (小於或等於)、 MOD (模數)
+
+**<endConditions>** 也包含 <condition> 項目。 當條件評估為 true 時，會重設觸發程序。<trigger> 元素也包含 <sources> 元素，該元素包含一或多個 <source> 元素。 <source> 元素定義廣告回應的 URI 與廣告回應的類型。 在此範例中，會對 VAST 回應指定 URI。 
 
 
     <trigger id="postroll" description="postroll"  >
@@ -333,24 +335,26 @@ MAST 檔案開頭 * *<MAST>** 元素，包含一個 **<triggers>* * 項目。 <t
         </source>
       </sources>
     </trigger>
+ 
 
-### 使用 Video Player-Ad Interface Definition (VPAID)
+###使用 Video Player-Ad Interface Definition (VPAID)
 
 VPAID 是 API，用於啟用可執行廣告單元，以便與視訊播放器通訊。 如此可提供高度互動性與體驗。 使用者可以與廣告互動，而且廣告可以回應檢視者採取的動作。 例如，廣告可能會顯示按鈕，讓使用者檢視更多詳細資訊或廣告的加長版。 視訊播放器必須支援 VPAID API，可執行廣告必須實作 API。 當播放器向廣告伺服器要求廣告時，該伺服器可能會以包含 VPAID 廣告的 VAST 回應進行回應。
 
-必須在如 Adobe Flash™ 或可以在網頁瀏覽器中執行的 JavaScript 執行階段環境中執行的程式碼中建立可執行廣告。當廣告伺服器傳回包含 VPAID 廣告的 VAST 回應時，屬性 apiFramework 的值屬性中 <MediaFile> 項目必須是"VPAID"。這個屬性會指定包含的廣告是 VPAID 可執行廣告。類型屬性必須設定為可執行的 MIME 類型，例如 “application/x-shockwave-flash” 或 “application/x-javascript”。下列 XML 程式碼片段顯示 <MediaFile> 來自包含 VPAID 可執行廣告之 VAST 回應的項目。
+必須在如 Adobe Flash™ 或可以在網頁瀏覽器中執行的 JavaScript 執行階段環境中執行的程式碼中建立可執行廣告。 當廣告伺服器傳回包含 VPAID 廣告的 VAST 回應時，屬性 apiFramework 的值屬性中 <MediaFile> 項目必須是"VPAID"。 這個屬性會指定包含的廣告是 VPAID 可執行廣告。 類型屬性必須設定為可執行的 MIME 類型，例如 “application/x-shockwave-flash” 或 “application/x-javascript”。 下列 XML 程式碼片段說明 <MediaFile> 包含可執行的 VPAID 廣告的 VAST 回應的項目。 
 
-
+    
     <MediaFiles>
        <MediaFile id="1" delivery="progressive" type=”application/x-shockwaveflash”
                   width=”640” height=”480” apiFramework=”VPAID”>
-           
+           <!-- CDATA wrapped URI to executable ad -->
        </MediaFile>
     </MediaFiles>
+ 
 
-可以使用初始化可執行廣告 <AdParameters> 內的項目 <Linear> 或 <NonLinear> VAST 回應中的項目。如需有關 <AdParameters> 項目，請參閱 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。如需 VPAID API 的詳細資訊，請參閱 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
+可以使用 VAST 回應中 <Linear> 或 <NonLinear> 元素內的 <AdParameters> 元素，初始化可執行廣告。 如需有關 <AdParameters> 項目，請參閱 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。 如需 VPAID API 的詳細資訊，請參閱 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
-## 實作包含廣告支援的 Windows 或 Windows Phone 8 播放器
+##實作包含廣告支援的 Windows 或 Windows Phone 8 播放器
 
 Microsoft 媒體平台：Player Framework for Windows 8 和 Windows Phone 8 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以下載 Player Framework 和範例 [Player Framework for Windows 8 和 Windows Phone 8](https://playerframework.codeplex.com)。
 
@@ -368,9 +372,9 @@ Microsoft 媒體平台：Player Framework for Windows 8 和 Windows Phone 8 包�
 
 每個範例會使用 Player Framework 定義的 MediaPlayer 類別。 大部分的範例會使用加入各種廣告回應格式支援的外掛程式。 ProgrammaticAdPage 範例以程式設計方式與 MediaPlayer 執行個體互動。
 
-### AdPodPage 範例
+###AdPodPage 範例
 
-此範例會使用 AdSchedulerPlugin 來定義何時顯示廣告。在此範例中，片中廣告排定在 5 秒鐘之後播放。廣告組合 (依序顯示的廣告群組) 是在從廣告伺服器傳回的 VAST 檔案中指定。VAST 檔案的 URI 會指定在 <RemoteAdSource> 項目。
+此範例會使用 AdSchedulerPlugin 來定義何時顯示廣告。 在此範例中，片中廣告排定在 5 秒鐘之後播放。 廣告組合 (依序顯示的廣告群組) 是在從廣告伺服器傳回的 VAST 檔案中指定。 VAST 檔案的 URI 中指定 <RemoteAdSource> 項目。
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
     
@@ -390,12 +394,12 @@ Microsoft 媒體平台：Player Framework for Windows 8 和 Windows Phone 8 包�
         </mmppf:MediaPlayer.Plugins>
     </mmppf:MediaPlayer>
 
-如需 AdSchedulerPlugin 的詳細資訊，請參閱 [Player Framework on Windows 8 和 Windows Phone 8 中通告](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+如需 AdSchedulerPlugin 的詳細資訊，請參閱 [Player Framework on Windows 8 和 Windows Phone 8 中廣告](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
-### AdSchedulingPage
+###AdSchedulingPage
 
-此範例也會使用 AdSchedulerPlugin。它會排程三個廣告，片頭廣告、片中廣告和片尾廣告。針對每個廣告的 vast 的 URI 會指定在 <RemoteAdSource> 項目。
-
+此範例也會使用 AdSchedulerPlugin。 它會排程三個廣告，片頭廣告、片中廣告和片尾廣告。 針對每個廣告的 vast 的 URI 中指定 <RemoteAdSource> 項目。
+    
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
                     <ads:AdSchedulerPlugin>
@@ -425,10 +429,11 @@ Microsoft 媒體平台：Player Framework for Windows 8 和 Windows Phone 8 包�
                 </mmppf:MediaPlayer.Plugins>
             </mmppf:MediaPlayer>
 
-### FreeWheelPage
+
+###FreeWheelPage
 
 此範例使用 FreeWheelPlugin，它會指定來源屬性，指定指向 SmartXML 檔案的 URI，該檔案會指定廣告內容以及廣告排程資訊。
-
+    
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
                     <ads:FreeWheelPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/freewheel.xml"/>
@@ -436,10 +441,10 @@ Microsoft 媒體平台：Player Framework for Windows 8 和 Windows Phone 8 包�
                 </mmppf:MediaPlayer.Plugins>
             </mmppf:MediaPlayer>
 
-### MastPage
+###MastPage
 
 這個範例會使用可讓您使用 MAST 檔案的 MastSchedulerPlugin。 來源屬性會指定 MAST 檔案的位置。
-
+    
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
                     <ads:MastSchedulerPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/mast.xml" />
@@ -447,14 +452,14 @@ Microsoft 媒體平台：Player Framework for Windows 8 和 Windows Phone 8 包�
                 </mmppf:MediaPlayer.Plugins>
             </mmppf:MediaPlayer>
 
-### ProgrammaticAdPage
+###ProgrammaticAdPage
 
 此範例以程式設計方式與 MediaPlayer 互動。 ProgrammaticAdPage.xaml 檔案會具現化 MediaPlayer：
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 
 ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，加入 TimelineMarker 以指定廣告何時應該顯示，然後加入 MarkerReached 事件的處理常式，它會載入指定 VAST 檔案之 URI 的 RemoteAdSource，然後播放廣告 。
-
+    
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
         {
             AdHandlerPlugin adHandler;
@@ -483,10 +488,10 @@ ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，加入 TimelineMark
                 }
             }
 
-### ScheduleClipPage
+###ScheduleClipPage
 
 此範例會使用 AdSchedulerPlugin，藉由指定包含廣告的 .wmv 檔案來排程片中廣告。
-
+    
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.cloudapp.net/html5/media/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
                     <ads:AdSchedulerPlugin>
@@ -508,10 +513,10 @@ ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，加入 TimelineMark
                 </mmppf:MediaPlayer.Plugins>
             </mmppf:MediaPlayer>
 
-### VastLinearCompanionPage
+###VastLinearCompanionPage
 
-這個範例說明如何使用 AdSchedulerPlugin 來排程具有隨播廣告的片中線性廣告。 <RemoteAdSource> 項目會指定 VAST 檔案的位置。
-
+這個範例說明如何使用 AdSchedulerPlugin 來排程具有隨播廣告的片中線性廣告。 Auch die Eigenschaften <RemoteAdSource> 項目會指定 VAST 檔案的位置。
+    
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
                     <ads:AdSchedulerPlugin>
@@ -529,10 +534,10 @@ ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，加入 TimelineMark
                 </mmppf:MediaPlayer.Plugins>
             </mmppf:MediaPlayer>
 
-### VastLinearNonLinearPage
+###VastLinearNonLinearPage
 
-此範例會使用 AdSchedulerPlugin 來排程線性和非線性廣告。指定 VAST 檔案位置 <RemoteAdSource> 項目。
-
+此範例會使用 AdSchedulerPlugin 來排程線性和非線性廣告。 指定 VAST 檔案位置 <RemoteAdSource> 項目。
+    
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
                     <ads:AdSchedulerPlugin>
@@ -543,17 +548,17 @@ ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，加入 TimelineMark
                                     <ads:RemoteAdSource Uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_linear_nonlinear.xml" Type="vast"/>
                                 </ads:MidrollAdvertisement.Source>
                             </ads:MidrollAdvertisement>
-    
+                            
                         </ads:AdSchedulerPlugin.Advertisements>
                     </ads:AdSchedulerPlugin>
                     <ads:AdHandlerPlugin/>
                 </mmppf:MediaPlayer.Plugins>
             </mmppf:MediaPlayer>
 
-### VMAPPage
+###VMAPPage
 
-此範例會使用 VmapSchedulerPlugin 排程使用 VMAP 檔案的廣告。VMAP 檔案的 URI 來源屬性中指定 <VmapSchedulerPlugin> 項目。
-
+此範例會使用 VmapSchedulerPlugin 排程使用 VMAP 檔案的廣告。 VMAP 檔案的 URI 指定之來源屬性 <VmapSchedulerPlugin> 項目。
+    
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
                     <ads:VmapSchedulerPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/vmap.xml"/>
@@ -561,12 +566,13 @@ ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，加入 TimelineMark
                 </mmppf:MediaPlayer.Plugins>
             </mmppf:MediaPlayer>
 
-## 實作具有廣告支援的 iOS 視訊播放器
+##實作具有廣告支援的 iOS 視訊播放器
+
 
 Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以下載 Player Framework 和範例 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)。 此 github 頁面有 Wiki，其中包含 player framework 的其他資訊的連結和播放程式範例的簡介: [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 
-### 使用 VMAP 排程廣告
+###使用 VMAP 排程廣告
 
 下列範例示範如何使用 VMAP 檔案排程廣告。
 
@@ -586,10 +592,10 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
                 }          
             }
 
-### 使用 VAST 排程廣告
+###使用 VAST 排程廣告
 
 下列範例示範如何排程晚期繫結 VAST 廣告。
-
+    
     //Example:3 How to schedule a late binding VAST ad.
     // set the start time for the ad
     adLinearTime.startTime = 13;
@@ -614,7 +620,7 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
     {
         [self logFrameworkError];
     }
-
+         
    下列範例示範如何排程早期繫結 VAST 廣告。
     範例 4: 排程早期繫結 VAST 廣告
     下載 VAST 檔案
@@ -626,7 +632,7 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
     {
         adLinearTime.startTime = 7;
         adLinearTime.duration = 0;
-
+        
         // Create AdInfo instance
         AdInfo *vastAdInfo2 = [[[AdInfo alloc] init] autorelease];
         vastAdInfo2.mediaTime = [[[MediaTime alloc] init] autorelease];
@@ -686,7 +692,7 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
     }
 
 下列範例示範如何排程非固定片中廣告。 不論檢視者執行任何搜尋，非固定廣告只會播放一次。
-
+    
     //Example:6 Schedule a single non sticky mid roll Ad
     // specify URL to content
     NSString *oneTimeAd=@"http://wamsblureg001orig-hs.cloudapp.net/5389c0c5-340f-48d7-90bc-0aab664e5f02/Windows%208_%20You%20and%20Me%20Together-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -736,6 +742,7 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
         [self logFrameworkError];
     }
 
+
 下列範例示範如何排程片尾廣告。
 
     //Example:8 Schedule Post Roll Ad
@@ -757,7 +764,7 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
     }
 
 下列範例示範如何排程片頭廣告。
-
+    
     //Example:9 Schedule Pre Roll Ad
     NSString *adURLString = @"http://wamsblureg001orig-hs.cloudapp.net/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
     AdInfo *adInfo = [[[AdInfo alloc] init] autorelease];
@@ -777,7 +784,7 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
     }
 
 下列範例示範如何排程片中重疊廣告。
-
+    
     // Example10: Schedule a Mid Roll overlay Ad
     NSString *adURLString = @"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-e47b43fd-05dc-4587-ac87-5916439ad07f/Windows%208_%20Cliffjumpers.mp4?st=2012-11-28T16%3A31%3A57Z&se=2014-11-28T16%3A31%3A57Z&sr=c&si=2a6dbb1e-f906-4187-a3d3-7e517192cbd0&sig=qrXYZBekqlbbYKqwovxzaVZNLv9cgyINgMazSCbdrfU%3D";
     //Create AdInfo instance
@@ -800,20 +807,18 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
         [self logFrameworkError];
     }
 
-## 媒體服務學習路徑
+
+
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-## 另請參閱
+ 
+##另請參閱
 
 [開發視訊播放器應用程式](media-services-develop-video-players.md)
-
-
-
-
 

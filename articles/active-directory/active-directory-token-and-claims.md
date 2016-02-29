@@ -1,20 +1,20 @@
  <properties
-   pageTitle ="支援的權杖和宣告類型 |Microsoft Azure 「
-   描述 = 「 了解與評估 SAML 2.0 和 JSON Web Token (JWT) 權杖中發出的 Azure Active Directory (AAD) 宣告的指南 》
-   documentationCenter ="開發人員中心-名稱"
-   作者 ="msmbaldwin"
-   服務 = [active directory]
-   管理員 ="mbaldwin"
+   pageTitle="支援的權杖和宣告類型 | Microsoft Azure"
+   description="可供了解及評估 Azure Active Directory (AAD) 所簽發之 SAML 2.0 和 JSON Web Token (JWT) 權杖中的宣告的指南。"
+   documentationCenter="dev-center-name"
+   authors="msmbaldwin"
+   services="active-directory"
+   manager="mbaldwin"
    editor=""/>
 
 <tags
-   ms.service= [active directory]
+   ms.service="active-directory"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="identity 」
-   ms.date="09/17/2015 」
-   ms.author="mbaldwin"/ >
+   ms.workload="identity"
+   ms.date="09/17/2015"
+   ms.author="mbaldwin"/>
 
 # 支援的權杖和宣告類型
 
@@ -40,7 +40,6 @@ Azure AD 不支援 SAML 權杖中的應用程式識別碼宣告。
     "appid":"15CB020F-3984-482A-864D-1D92265E8268"
 
 ### 對象
-
 權杖的對象是權杖的預定接收者。 接收權杖的應用程式必須確認對象值正確無誤，並拒絕任何適用於不同對象的權杖。
 
 對象值是一個字串 -- 通常是所存取資源的基底位址，例如 "https://contoso.com"。 在 Azure AD 權杖中，對象是要求權杖之應用程式的應用程式識別碼 URI。 當應用程式 (也就是對象) 具有一個以上的應用程式識別碼 URI 時，權杖的 Audience 宣告中的應用程式識別碼 URI 會符合權杖要求中的應用程式識別碼 Uri。
@@ -63,7 +62,6 @@ Azure AD 不支援 SAML 權杖中的應用程式識別碼宣告。
     "appidacr": "0"
 
 ### 驗證內容類別參考
-
 驗證內容類別參考宣告指出主體的驗證方式 (相對於應用程式驗證內容類別參考宣告中的用戶端)。 值為 "0" 表示使用者驗證不符合 ISO/IEC 29115 的需求。
 
 - 在 JWT 權杖中，驗證內容類別參考宣告會出現在 acr (使用者專屬的 ACR 值) 宣告中。
@@ -93,7 +91,7 @@ Azure AD 不支援 SAML 權杖中的應用程式識別碼宣告。
 
     “amr”: ["pwd"]
 
-### 名字
+###名字
 
 名字宣告會提供使用者的名字 (如 Azure AD 使用者物件上所設定)。
 
@@ -230,7 +228,6 @@ SubjectConfirmation 不是宣告。 它會描述如何驗證權杖的主體。 "
     "sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"
 
 ### 租用戶識別碼
-
 租用戶識別碼是不可變、無法重複使用的識別碼，用以識別簽發權杖的目錄租用戶。 您可以使用此值來存取多租用戶應用程式中的租用戶特定目錄資源。 例如，您可以使用此值來識別在圖形 API 呼叫中的租用戶。
 
 在 SAML 權杖中，租用戶識別碼會出現在 tenantid SAML Attribute 元素的宣告中。
@@ -243,7 +240,6 @@ SubjectConfirmation 不是宣告。 它會描述如何驗證權杖的主體。 "
     "tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"
 
 ### 權杖存留期
-
 權杖存留期宣告定義權杖有效的時間間隔。 驗證權杖的服務應確認目前的日期在權杖存留期內。 否則，應該拒絕此權杖。 此服務最多允許超過權杖存留期範圍五分鐘，以考量 Azure AD 與服務之間的時鐘時間差異 (「時間偏差」)。
 
 在 SAML 權杖中，權杖存留期宣告會使用 NotBefore 和 NotOnOrAfter 屬性定義於 Conditions 元素中。
@@ -259,7 +255,6 @@ SubjectConfirmation 不是宣告。 它會描述如何驗證權杖的主體。 "
     "exp":1363293234
 
 ### 使用者主體名稱
-
 使用者主體名稱宣告會儲存使用者主體的使用者名稱。
 
 在 JWT 權杖中，使用者主體名稱會出現在 upn 宣告中。
@@ -267,7 +262,6 @@ SubjectConfirmation 不是宣告。 它會描述如何驗證權杖的主體。 "
     "upn": frankm@contoso.com
 
 ### 版本
-
 Version 宣告儲存權杖的版本號碼。
 在 JWT 權杖中，使用者主體名稱會出現在 ver 宣告中。
 
@@ -383,7 +377,7 @@ SAML 權杖
 ### JWT 權杖 - 使用者模擬
 
 這是在使用者模擬 Web 流程中使用的典型 JSON Web 權杖 (JWT) 範例。
-除了宣告以外，權杖包含 **ver** 和 **appidacr** 中的版本號碼、驗證內容類別參考 (這表示用戶端的驗證方式)。 若為公用用戶端，此值為 0。 如果使用用戶端識別碼或用戶端密碼，此值為 1。
+除了宣告以外，權杖包含版本號碼 **ver** 和 **appidacr**, ，驗證內容類別參考，這表示用戶端驗證的方式。 若為公用用戶端，此值為 0。 如果使用用戶端識別碼或用戶端密碼，此值為 1。
 
     {
      typ: "JWT",
@@ -426,11 +420,7 @@ SAML 權杖
      acr: "1"
     }.
 
-## 另請參閱
+##另請參閱
 
 [Azure Active Directory 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-
-
-
-
 

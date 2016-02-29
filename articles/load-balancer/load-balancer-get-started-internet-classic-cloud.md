@@ -17,7 +17,6 @@
    ms.date="11/30/2015"
    ms.author="joaoma" />
 
-
 # 開始為雲端服務建立網際網路面向的負載平衡器
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
@@ -29,7 +28,7 @@
 雲端服務是使用負載平衡器自動設定，並可透過服務模型加以自訂。
 
 ## 使用服務定義檔案建立負載平衡器
-
+ 
 您可以利用 Azure SDK for .NET 2.5 來更新雲端服務。 在進行雲端服務的端點設定 [服務定義](https://msdn.microsoft.com/library/azure/gg557553.aspx).csdef 檔案。
 
 下列範例示範如何設定雲端部署的 servicedefinition.csdef 檔案：
@@ -43,9 +42,9 @@
         <InputEndpoint name=“FE_External_Http” protocol=“http” port=“10000“ />
         <InputEndpoint name=“FE_External_Tcp“  protocol=“tcp“  port=“10001“ />
         <InputEndpoint name=“FE_External_Udp“  protocol=“udp“  port=“10002“ />
-    
+
         <InputEndpointname=“HTTP_Probe” protocol=“http” port=“80” loadBalancerProbe=“MyProbe“ />
-    
+
         <InstanceInputEndpoint name=“InstanceEP” protocol=“tcp” localPort=“80“>
            <AllocatePublicPortFrom>
               <FixedPortRange min=“10110” max=“10120“  />
@@ -56,7 +55,11 @@
     </WorkerRole>
     </ServiceDefinition>
 
+
+
+
 ## 檢查雲端服務的負載平衡器健全狀態
+
 
 以下是健全狀態探查的範例：
 
@@ -80,9 +83,5 @@
 [設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
-
-
-
-
 
 

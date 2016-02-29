@@ -16,42 +16,40 @@
     ms.date="08/14/2015"
     ms.author="inhenk"/>
 
-
-# 使用 Azure 命令列介面 (Azure CLI) 管理角色型存取控制
+# 使用 Azure 命令列介面 (Azure CLI) 管理角色型存取控制 #
 
 > [AZURE.SELECTOR]
 - [Windows PowerShell](role-based-access-control-powershell.md)
 - [Azure CLI](/role-based-access-control-xplat-cli-install.md)
 
-
 Azure 入口網站以及 Azure 資源管理員 API 裡的角色型存取控制 (RBAC) 功能，可讓您深入地管理訂用帳戶與資源的存取。 透過這項功能，您可以為 Active Directory 使用者、群組或是服務主體指派特定範圍的一些角色，藉此賦予其存取權限。
 
 在本教學課程中，您將學習如何使用 Azure CLI 來管理角色型存取控制。 本課程將帶您逐一了解建立與檢查角色指派的程序。
 
-**預估完成時間：**15 分鐘
+**預估完成時間:** 15 分鐘
 
-## 必要條件
+## 先決條件 ##
 
 在使用 Azure CLI 來管理 RBAC 之前，您必須具備以下項目：
 
-- Azure CLI 0.8.8 版或更新版本。
-- 
+- Azure CLI 0.8.8 版或更新版本。 若要安裝最新版本，並將它與 Azure 訂閱建立關聯，請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md)。
+- 另請閱讀下列教學課程以熟悉設定和使用 Azure CLI 中的 Azure 資源管理員: [使用 Azure CLI 與資源管理員](../xplat-cli-azure-resource-manager.md)
 
-## 本教學課程內容
+## 本教學課程內容 ##
 
-* 
-* 
-* 
-* 
-* 
+* [連線到您的訂閱](#connect)
+* [查看現有的角色指派](#check)
+* [建立角色指派](#create)
+* [驗證權限](#verify)
+* [後續步驟](#next)
 
-## 
+## <a id="connect"></a>連線到您的訂閱 ##
 
 由於 RBAC 只能搭配 Azure 資源管理員一起運作，因此您必須先切換至 Azure 資源管理員模式。 輸入：
 
     azure config mode arm
 
-
+如需詳細資訊，請參閱 [使用 Azure CLI 與資源管理員](../xplat-cli-azure-resource-manager.md)
 
 若要連線至您的 Azure 訂閱，請輸入：
 
@@ -66,9 +64,9 @@ Azure 入口網站以及 Azure 資源管理員 API 裡的角色型存取控制 (
     # Use the subscription name to select the one you want to work on.
     azure account set <subscription name>
 
+如需詳細資訊，請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md)。
 
-
-## 
+## <a id="check"></a>查看現有的角色指派 ##
 
 現在，我們來看看訂閱中已有哪些角色指派。 輸入：
 
@@ -90,7 +88,7 @@ Azure 入口網站以及 Azure 資源管理員 API 裡的角色型存取控制 (
 
 此 Cmdlet 的所有參數都是選擇性參數。 您可以組合運用這些參數與不同的篩選器，來檢查角色指派。
 
-## 
+## <a id="create"></a>建立角色指派 ##
 
 若要建立角色指派，您需要思考：
 
@@ -108,29 +106,29 @@ Azure 入口網站以及 Azure 資源管理員 API 裡的角色型存取控制 (
 
 - 您想要指派什麼角色：您可以使用下列 Cmdlet 來查看支援的角色定義。
 
-    
+    `azure role list`
 
 - 您想要指派的範圍：有三個範圍層級：
 
     - 目前的訂用帳戶
-    - 資源群組。
-    - 資源。
+    - 資源群組。 若要取得資源群組清單，請輸入 `azure group list`
+    - 資源。 若要取得資源清單，請輸入 `azure resource list`
 
-例如：
+接下來，使用 `azure role assignment create` 來建立角色指派。 例如：
 
- - 此舉會在目前的訂閱層級中，為使用者建立讀取者的角色指派：
+ - 此舉會在目前的訂閱層級中，為使用者建立讀取器的角色指派：
 
-  
+    `azure role assignment create --upn <user's email> -o Reader`
 
 - 此舉會在資源群組層級中建立角色指派：
 
-
+    `PS C:\> azure role assignment create --upn <user's email> -o Contributor -g group1`
 
 - 此舉會在資源層級中建立角色指派：
 
+    `azure role assignment create --upn <user's email> -o Owner -g group1 -r Microsoft.Web/sites -u site1`
 
-
-## 
+## <a id="verify"></a>驗證權限 ##
 
 確認您的帳戶內含一些角色指派之後，就能執行下列指令來實際看到這些角色指派授予您的權限：
 
@@ -139,21 +137,17 @@ Azure 入口網站以及 Azure 資源管理員 API 裡的角色型存取控制 (
 
 這兩組 Cmdlet 只會傳回您擁有讀取權限的資源群組或資源。 而且會同時顯示您擁有的權限。
 
+接著當您嘗試執行其他 Cmdlet 時 (像是 `azure group create`)，如果您沒有權限就會傳回存取拒絕錯誤。
 
-
-## 
+## <a id="next"></a>後續步驟 ##
 
 若要深入了解使用 Azure CLI 管理角色型存取控制的詳細資訊，請參閱下列相關主題：
 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-
-
-
+- [Azure 中的角色型存取控制](../role-based-access-control-configure.md)
+- [安裝和設定 Azure CLI](../xplat-cli-install.md)
+- [將 Azure CLI 和資源管理員搭配使用](../xplat-cli-azure-resource-manager.md)
+- [使用資源群組來管理您的 Azure 資源](../azure-preview-portal-using-resource-groups.md): 了解如何建立和管理 Azure 管理入口網站中的資源群組。
+- [Azure 部落格](http://blogs.msdn.com/windowsazure): 了解在 Azure 中的新功能。
+- [使用 Windows PowerShell 來設定角色存取控制](role-based-access-control-powershell.md)
+- [為角色存取控制進行疑難排解](role-based-access-control-troubleshooting.md)
 

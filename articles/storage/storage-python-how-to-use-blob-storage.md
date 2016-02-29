@@ -16,14 +16,13 @@
     ms.date="12/11/2015"
     ms.author="emgerner"/>
 
-
 # 如何使用 Python 的 Azure Blob 儲存體
 
 [AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 ## 概觀
 
-本文將示範如何使用 Blob 儲存體執行一般案例。 在 Python 中並使用這些範例 [Python Azure 儲存體封裝 []][]。 所涵蓋的案例包括「上傳」、「列出」、
+本文將示範如何使用 Blob 儲存體執行一般案例。 在 Python 中並使用這些範例 [Python Azure 儲存體封裝][]。 所涵蓋的案例包括「上傳」、「列出」、
 「下載」及「刪除」Blob。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
@@ -32,21 +31,21 @@
 
 ## 建立容器
 
-> [AZURE.NOTE] 如果您需要安裝 Python 或 [Python Azure 封裝 []][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
+> [AZURE.NOTE] 如果您需要安裝 Python 或 [Python Azure 封裝][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
 
-**BlobService** 物件讓您能使用容器及 blob。 Auch die Eigenschaften
+ **BlobService** 物件可讓您能使用容器及 blob。 Auch die Eigenschaften
 下列程式碼會建立 **BlobService** 物件。 將下列內容新增至
 您想在其中以程式設計方式存取 Azure 儲存體的任何 Python 檔案頂端。
 
     from azure.storage.blob import BlobService
 
-下列程式碼會使用儲存體帳戶名稱和帳戶金鑰來建立 **BlobService** 物件： 將 'myaccount' 和 'mykey' 取代為真實的帳戶和金鑰。
+下列程式碼會建立 **BlobService** 物件使用的儲存體帳戶名稱和帳戶金鑰。  將 'myaccount' 和 'mykey' 取代為真實的帳戶和金鑰。
 
     blob_service = BlobService(account_name='myaccount', account_key='mykey')
 
 [AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-在下列的程式碼範例中，如果容器不存在，您可以使用 **BlobService** 物件建立容器。
+在下列程式碼範例中，您可以使用 **BlobService** 物件建立容器，如果不存在。
 
     blob_service.create_container('mycontainer')
 
@@ -67,7 +66,7 @@
 
 **put\_block\_blob\_from\_path** 上傳的檔案之指定的路徑、 內容和 **put\_block\_blob\_from\_file** 上傳已開啟的檔案/資料流中的內容。 **put\_block\_blob\_from\_bytes** 會上傳位元組陣列和 **put\_block\_blob\_from\_text** 會上傳指定的文字值，使用指定的編碼 (預設為 utf-8 格式)。
 
-下列範例會將 **sunset.png** 檔案的內容上傳至 **myblob** Blob 中。
+下列範例會將上傳的內容 **sunset.png** 檔案 **myblob** blob。
 
     blob_service.put_block_blob_from_path(
         'mycontainer',
@@ -109,7 +108,7 @@
 
 ## 刪除 Blob
 
-最後，若要刪除 Blob，請呼叫 **delete_blob**。
+最後，若要刪除 blob，請呼叫 **delete_blob**。
 
     blob_service.delete_blob('mycontainer', 'myblob')
 
@@ -118,13 +117,12 @@
 既然您已了解 Blob 儲存體的基礎概念之後，請參考下列連結
 以深入了解更複雜的儲存體工作。
 
-- 請瀏覽 [Azure 儲存體團隊部落格]][]
+- 請瀏覽 [Azure 儲存體團隊部落格][]
 - [使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy)
 
 如需詳細資訊，請參閱 [Python 開發人員中心](/develop/python/)。
 
-
-[azure storage team blog]: http://blogs.msdn.com/b/windowsazurestorage/ 
-[python azure package]: https://pypi.python.org/pypi/azure 
-[python azure storage package]: https://pypi.python.org/pypi/azure-storage 
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Python Azure package]: https://pypi.python.org/pypi/azure
+[Python Azure Storage package]: https://pypi.python.org/pypi/azure-storage  
 

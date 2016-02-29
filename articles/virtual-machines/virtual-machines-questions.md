@@ -17,7 +17,6 @@
     ms.date="11/16/2015"
     ms.author="cynthn"/>
 
-
 # 關於以傳統部署模型建立之 Azure 虛擬機器的常見問題集
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
@@ -29,33 +28,33 @@
 
 所有的訂閱者都可以在 Azure 虛擬機器上執行伺服器軟體。 您可以執行最新版本的 Windows Server，以及各種 Linux 散發套件。 如需支援的詳細資料，請參閱：
 
-• 針對 Windows Vm-- [Microsoft server software 支援 Azure 虛擬機器的](http://go.microsoft.com/fwlink/p/?LinkId=393550)
+‧ 如 Windows Vm- [Microsoft 伺服器軟體支援的 Azure 虛擬機器](http://go.microsoft.com/fwlink/p/?LinkId=393550)
 
-• 針對 Linux Vm-- [Linux on Azure 背書散發套件](http://go.microsoft.com/fwlink/p/?LinkId=393551)
+‧ 如 Linux Vm- [Azure 背書散發上的 Linux](http://go.microsoft.com/fwlink/p/?LinkId=393551)
 
-針對 Windows 用戶端映像，特定版本的 Windows 7 和 Windows 8.1 可供 MSDN Azure 權益訂閱者和 MSDN 開發與測試隨用隨付訂閱者 (針對開發與測試工作) 使用。 如需詳細資訊，包括指示和限制，請參閱 [MSDN 訂閱者的 Windows 用戶端映像](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。
+針對 Windows 用戶端映像，特定版本的 Windows 7 和 Windows 8.1 可供 MSDN Azure 權益訂閱者和 MSDN 開發與測試隨用隨付訂閱者 (針對開發與測試工作) 使用。 如需詳細資訊，包括指示和限制，請參閱 [MSDN 訂閱者的 Windows 用戶端影像](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。
 
 ## 我可以使用多少的儲存體搭配虛擬機器？
 
 每個資料磁碟最多可達 1 TB。 可使用的資料磁碟數量取決於虛擬機器的大小。 如需詳細資訊，請參閱 [虛擬機器的大小](virtual-machines-size-specs.md)。
 
-Azure 儲存體帳戶提供作業系統磁碟和任何資料磁碟的儲存空間。 每個磁碟是以分頁 Blob 方式儲存的 .vhd 檔案。 如需定價詳細資料，請參閱 [儲存體定價詳細資料](http://go.microsoft.com/fwlink/p/?LinkId=396819)。
+Azure 儲存體帳戶提供作業系統磁碟和任何資料磁碟的儲存空間。 每個磁碟是以分頁 Blob 方式儲存的 .vhd 檔案。 計價的詳細資料，請參閱 [存放定價的詳細資料](http://go.microsoft.com/fwlink/p/?LinkId=396819)。
 
 ## 可以使用哪些虛擬硬碟類型？
 
-Azure 僅支援固定的 VHD 格式虛擬硬碟。 如果您有 VHDXyou 要使用在 Azure 中，您需要先將它轉換使用 HYPER-V 管理員或 [CONVERT-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) 指令程式。 這麼做之後，使用 [Add-azurevhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) 指令程式 (在服務管理模式) 來上傳 VHD 到 Azure 中的儲存體帳戶，所以您可以使用虛擬機器。
+Azure 僅支援固定的 VHD 格式虛擬硬碟。 如果您有使用中 Azure VHDXyou 要您必須先將它轉換使用 Hyper-V 管理員或 [轉換 VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) 指令程式。 這麼做之後，使用 [新增 AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (在服務管理模式) 的指令程式上載到 Azure 中儲存帳戶的 VHD，所以您可以使用虛擬機器。 
 
-- Linux 的指示，請參閱 [建立及上傳包含 Linux 作業系統的虛擬硬碟](virtual-machines-linux-create-upload-vhd.md)。
+- Linux 的指示，請參閱 [建立和上載包含 Linux 作業系統的虛擬硬碟](virtual-machines-linux-create-upload-vhd.md)。
 
-- Windows 的指示，請參閱 [建立並上傳 Windows Server VHD 到 Azure](virtual-machines-create-upload-vhd-windows-server.md)。
+- Windows 的指示，請參閱 [建立和上載的 Windows 伺服器 VHD，以 Azure](virtual-machines-create-upload-vhd-windows-server.md)。
 
 ## 這些虛擬機器與 Hyper-V 虛擬機器是一樣的嗎？
 
 在許多方面來說，它們與「第一代」Hyper-V VM 類似，但並非完全相同。 這兩種類型都提供虛擬的硬體，以及可相容 VHD 格式虛擬硬碟。 這表示您可以在 Hyper-V 和 Azure 之間移動它們。 有時讓 Hyper-V 使用者感到驚訝的三個主要差異為：
 
 - Azure 不會提供虛擬機器的主控台存取權。 VM 要完成開機之後才可供存取。
-- 在大多數的 azure Vm [大小](virtual-machines-size-specs.md) 只 1 個虛擬網路介面卡，這表示它們也可能會有 1 個外部 IP 位址。 (A8 和 A9 大小會使用第二個網路介面卡，讓應用程式在有限案例中的執行個體之間進行通訊。)
-- Azure VM 不支援第 2 代 Hyper-V VM 功能。 如需有關這些功能的詳細資訊，請參閱 [HYPER-V 虛擬機器規格](http://technet.microsoft.com/library/dn592184.aspx) 和 [層代 2 的虛擬機器概觀] (https://technet.microsoft.com/library/dn282285.aspx)。
+- 在大部分的 azure Vm [大小](virtual-machines-size-specs.md) 只有 1 的虛擬網路介面卡，這表示它們也可能會有只有 1 的外部 IP 位址。 (A8 和 A9 大小會使用第二個網路介面卡，讓應用程式在有限案例中的執行個體之間進行通訊。)
+- Azure VM 不支援第 2 代 Hyper-V VM 功能。 如需有關這些功能的詳細資訊，請參閱 [Hyper-V 虛擬機器規格](http://technet.microsoft.com/library/dn592184.aspx) 和 [產生 2 虛擬機器概觀] (https://technet.microsoft.com/library/dn282285.aspx)。
 
 ## 這些虛擬機器可以使用我現有的內部部署網路基礎結構嗎？
 
@@ -67,16 +66,16 @@ Azure 僅支援固定的 VHD 格式虛擬硬碟。 如果您有 VHDXyou 要使�
 
 您需要建立遠端連線以登入虛擬機器，針對 Windows VM，請使用遠端桌面連線，針對 Linux VM，請使用安全殼層 (SSH)。 如需相關指示，請參閱：
 
-- [如何登入執行 Windows Server 的虛擬機器](virtual-machines-log-on-windows-server.md)。 最多支援 2 個並行連線，除非伺服器設定為遠端桌面服務工作階段主機。
-- [如何登入執行 Linux 的虛擬機器](virtual-machines-linux-how-to-log-on.md)。 根據預設，SSH 允許最多 10 個並行連線。 您可以編輯組態檔以增加這個數字。
+- [如何登入虛擬機器執行 Windows Server](virtual-machines-log-on-windows-server.md)。 最多支援 2 個並行連線，除非伺服器設定為遠端桌面服務工作階段主機。  
+- [如何登入虛擬機器執行 Linux](virtual-machines-linux-how-to-log-on.md)。 根據預設，SSH 允許最多 10 個並行連線。 您可以編輯組態檔以增加這個數字。
 
-如果您有遠端桌面或 SSH 的問題，安裝並使用 [VMAccess](virtual-machines-extensions-features.md) 擴充功能來協助修正問題。
+如果您有遠端桌面 」 或 「 SSH 的問題，安裝並使用 [VMAccess](virtual-machines-extensions-features.md) 副檔名以協助修正問題。 
 
 對於 Windows VM，其他選項包括：
 
-- 在 Azure 傳統入口網站中，找出 VM，然後從命令列按一下 [重設遠端存取]****。
-- 檢閱 [疑難排解遠端桌面連線至 windows Azure 虛擬機器](virtual-machines-troubleshoot-remote-desktop-connections.md)。
-- 使用 Windows PowerShell 遠端功能以連線到 VM，或建立其他資源的額外端點來連線至 VM。 如需詳細資訊，請參閱 [如何設定端點的虛擬機器](virtual-machines-set-up-endpoints.md)。
+- 在 Azure 的傳統入口網站，請尋找 VM，然後按一下 [ **重設的遠端存取** 從命令列。
+- 檢閱 [疑難排解遠端桌面] 連線到 windows Azure 虛擬機器](virtual-machines-troubleshoot-remote-desktop-connections.md)。
+- 使用 Windows PowerShell 遠端功能以連線到 VM，或建立其他資源的額外端點來連線至 VM。 如需詳細資訊，請參閱 [如何設定向上端點到虛擬機器](virtual-machines-set-up-endpoints.md)。
 
 如果您熟悉 Hyper-V，您可能正在尋找類似 VMConnect 的工具。 Azure 沒有提供類似的工具，因為並不支援主控台存取虛擬機器。
 
@@ -86,16 +85,16 @@ Azure 僅支援固定的 VHD 格式虛擬硬碟。 如果您有 VHDXyou 要使�
 
 ## 如何變更暫存磁碟的磁碟機代號？
 
-在 Windows 虛擬機器上，您可以透過移動分頁檔並重新指派磁碟機代號來變更磁碟機代號，但您必須確定以特定的順序執行這些步驟。 如需指示，請參閱 [變更 Windows 暫存磁碟的磁碟機代號](virtual-machines-windows-change-drive-letter.md)。
+在 Windows 虛擬機器上，您可以透過移動分頁檔並重新指派磁碟機代號來變更磁碟機代號，但您必須確定以特定的順序執行這些步驟。 如需相關指示，請參閱 [變更 Windows 暫存磁碟的磁碟機代號](virtual-machines-windows-change-drive-letter.md)。
 
 ## 如何升級客體作業系統？
 
 升級這個詞彙通常是指移動至較新版的作業系統，但仍在相同硬體上。 對於 Azure VM，Linux 和 Windows 移動至較新版的處理程序有所不同：
 
 - 針對 Linux VM，使用套件管理工具和適合散發的程序。
-- 針對 Windows 虛擬機器，請使用 Windows Server 移轉工具來移轉伺服器。 請勿嘗試升級位於 Azure 的客體 OS。 不支援此動作是因為有失去虛擬機器存取權的風險。 如果在升級期間發生問題，您可能會無法啟動遠端桌面工作階段，而且將無法疑難排解問題。
+- 針對 Windows 虛擬機器，請使用 Windows Server 移轉工具來移轉伺服器。 請勿嘗試升級位於 Azure 的客體 OS。 不支援此動作是因為有失去虛擬機器存取權的風險。 如果在升級期間發生問題，您可能會無法啟動遠端桌面工作階段，而且將無法疑難排解問題。 
 
-如需工具和程序移轉 Windows Server 的一般詳細資訊，請參閱 [角色和功能到 Windows Server 移轉](http://go.microsoft.com/fwlink/p/?LinkId=396940)。
+一般的工具及移轉 Windows 伺服器的處理程序的詳細資訊，請參閱 [遷移的角色和功能，Windows 伺服器](http://go.microsoft.com/fwlink/p/?LinkId=396940)。 
 
 
 
@@ -103,12 +102,13 @@ Azure 僅支援固定的 VHD 格式虛擬硬碟。 如果您有 VHDXyou 要使�
 
 Azure 提供的映像沒有預先設定的使用者名稱和密碼。 當您使用這些映像的其中一個來建立虛擬機器時，您將需要提供用來登入虛擬機器的使用者名稱和密碼。
 
-如果您忘記使用者名稱或密碼，而且已安裝 VM 代理程式，您可以安裝並使用 [VMAccess](virtual-machines-extensions-features.md) 延伸模組來修正問題。
+如果您忘記使用者名稱或密碼，且已安裝 「 VM 代理程式 」，您可以安裝並使用 [VMAccess](virtual-machines-extensions-features.md) 副檔名來修正問題。
 
 其他詳細資料：
 
 
 - 針對 Linux 映像，如果您使用 Azure 傳統入口網站，則預設使用者名稱會是 ‘azureuser’，但是您可以使用 [從資源庫] 代替使用 [快速建立] 做為建立虛擬機器的方式，來變更預設使用者名稱。 使用 [從資源庫] 也可讓您決定是否要使用密碼、SSH 金鑰，或同時使用兩者來登入。 此使用者帳戶是非特殊權限使用者，但有 'sudo' 存取權限可以執行特殊權限命令。 'root' 帳戶已停用。
+
 
 - 針對 Windows 映像，當您建立 VM 時需要提供使用者名稱和密碼。 帳戶會加入至系統管理員群組。
 
@@ -116,13 +116,13 @@ Azure 提供的映像沒有預先設定的使用者名稱和密碼。 當您使�
 
 Azure 提供數個防毒軟體解決方案的選項，但管理則掌握在您手中。 例如，您可能需要個別訂閱反惡意程式碼軟體，且需要決定何時執行掃描和安裝更新。 當您建立 Windows 虛擬機器或在稍後的時間點，可以使用適用於 Microsoft Antimalware、Symantec Endpoint Protection，或 TrendMicro Deep Security 代理程式的 VM 延伸模組，新增防毒軟體支援。 Symantec 和 TrendMicro 延伸模組提供您使用免費的限時試用訂用帳戶或現有的企業訂用帳戶。 Microsoft Antimalware 則是免費的。 如需詳細資訊，請參閱：
 
-- [如何安裝和設定 Azure VM 上的 Symantec Endpoint Protection](http://go.microsoft.com/fwlink/p/?LinkId=404207)
-- [如何安裝和設定 Trend Micro Deep Security 作為 Azure VM 上的服務](http://go.microsoft.com/fwlink/p/?LinkId=404206)
-- [Azure 虛擬機器上部署反惡意程式碼解決方案](http://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
+- [如何在 Azure VM 上安裝和設定 Symantec Endpoint Protection](http://go.microsoft.com/fwlink/p/?LinkId=404207)
+- [如何在 Azure VM 上安裝和設定 Trend Micro Deep Security as a Service](http://go.microsoft.com/fwlink/p/?LinkId=404206)
+- [在 Azure 虛擬機器上部署反惡意程式碼解決方案](http://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## 備份和復原有哪些選擇？
 
-Azure 備份在特定地區以預覽版提供。 如需詳細資訊，請參閱 [備份 Azure 虛擬機器](backup-azure-vms.md)。 來自認證合作夥伴的其他解決方案也可供使用。 若要了解目前可用的項目，請搜尋 Azure Marketplace。
+Azure 備份在特定地區以預覽版提供。 如需詳細資訊，請參閱 [Azure 的虛擬機器的備份](backup-azure-vms.md)。 來自認證合作夥伴的其他解決方案也可供使用。 若要了解目前可用的項目，請搜尋 Azure Marketplace。
 
 其他選項是使用 Blob 儲存體的快照集功能。 若要這樣做，您需要在任何依賴 Blob 快照集的作業前關閉 VM。 這樣會儲存擱置的資料寫入，並讓檔案系統保持一致的狀態。
 
@@ -136,17 +136,17 @@ Azure 可依據 VM 的大小和作業系統，以每小時價格方式收費。 
 - 使用 Stop-AzureVM Cmdlet (在 Azure PowerShell 模組中可用)。
 - 在服務管理 REST API 中使用關機角色作業，並為 PostShutdownAction 元素指定 StoppedDeallocated。
 
-如需詳細資訊，請參閱 [虛擬機器定價](http://azure.microsoft.com/pricing/details/virtual-machines/)。
+如需詳細資訊，請參閱 [虛擬機器價格](http://azure.microsoft.com/pricing/details/virtual-machines/)。
 
 ## Azure 會因為維護重新啟動我的 VM 嗎？
 
-Azure 有時會重新啟動您的 VM，這是 Azure 資料中心中定期、計劃性維護更新的一部份。
+Azure 有時會重新啟動您的 VM，這是 Azure 資料中心中定期、計劃性維護更新的一部份。 
 
 當 Azure 偵測到嚴重的硬體問題可能會影響您的 VM 時，會發生非計劃性維護事件。 對於非計劃性事件，Azure 會自動地移轉 VM 至狀況良好的主機並重新啟動 VM。
 
 針對任何獨立的 VM (表示 VM 並非可用性集合的一部份)，Azure 在計劃性維護之前，至少每一個星期會使用電子郵件通知訂用帳戶的服務管理員，因為 VM 可能會在更新期間重新啟動。 在 VM上執行的應用程式可能會遭遇停機時間。
 
-當因為計畫性維護而發生重新啟動時，您也可以使用 Azure 傳統入口網站或 Azure PowerShell 來檢視重新啟動記錄。 如需詳細資訊，請參閱 [檢視 VM 重新啟動記錄檔](http://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)。
+當因為計畫性維護而發生重新啟動時，您也可以使用 Azure 傳統入口網站或 Azure PowerShell 來檢視重新啟動記錄。 如需詳細資訊，請參閱 [檢視 VM 重新開機記錄檔](http://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)。
 
 若要提供備援，請在相同的可用性集合中放入兩個以上同樣設定的 VM。 這有助於確保在計劃性或非計劃性的維護期間，至少有一個 VM 仍可使用。 Azure 保證此組態的 VM 可用性特定層級。 如需詳細資訊，請參閱 [管理虛擬機器的可用性](virtual-machines-manage-availability.md)。
 
@@ -154,11 +154,7 @@ Azure 有時會重新啟動您的 VM，這是 Azure 資料中心中定期、計�
 
 [關於 Azure 虛擬機器](virtual-machines-about.md)
 
-[若要建立 Linux 虛擬機器的不同方式](virtual-machines-linux-choices-create-vm.md)
+[建立 Linux 虛擬機器的不同方式](virtual-machines-linux-choices-create-vm.md)
 
-[若要建立 Windows 虛擬機器的不同方式](virtual-machines-windows-choices-create-vm.md)
-
-
-
-
+[建立 Windows 虛擬機器的不同方式](virtual-machines-windows-choices-create-vm.md)
 

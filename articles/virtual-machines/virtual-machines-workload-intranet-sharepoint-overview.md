@@ -17,7 +17,6 @@
     ms.date="12/11/2015"
     ms.author="josephd"/>
 
-
 # 在 Azure 中使用 SQL Server AlwaysOn 可用性群組部署 SharePoint
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
@@ -57,14 +56,11 @@
 若要建置開發/測試環境或概念證明這項設定，請參閱 [設定用於測試的混合式雲端中的 SharePoint 內部網路伺服器陣列](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)。
 
 如需使用 SQL Server AlwaysOn 可用性群組的 SharePoint 的詳細資訊，請參閱 [設定 SQL Server 2012 AlwaysOn 可用性群組適用於 SharePoint 2013](https://technet.microsoft.com/library/jj715261.aspx)。
-> [AZURE.NOTE] Microsoft 已發行 SharePoint Server 2016 IT 預覽版。 若要輕鬆安裝和測試此預覽版，您可以搭配 SharePoint Server 2016 IT 預覽版和其預先安裝的必要元件來使用 Azure 虛擬機器資源庫映像。 如需詳細資訊，請參閱 [測試 Azure 中的 SharePoint Server 2016 IT Preview](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)。
+
+> [AZURE.NOTE] Microsoft 已發行 SharePoint Server 2016 IT Preview。 若要輕鬆安裝和測試此預覽版，您可以搭配 SharePoint Server 2016 IT 預覽版和其預先安裝的必要元件來使用 Azure 虛擬機器資源庫映像。 如需詳細資訊，請參閱 [測試 Azure 中的 SharePoint Server 2016 IT Preview](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)。
 
 ## 後續步驟
 
 - 開始使用此工作負載設定 [第 1 階段](virtual-machines-workload-intranet-sharepoint-phase1.md)。
-
-
-
-
 
 

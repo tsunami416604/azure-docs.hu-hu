@@ -1,14 +1,15 @@
 ## <a name="register-mobile-service-aad"></a>向 Azure Active Directory 註冊您的行動服務
 
+
 在本節中，您將向 Azure Active Directory 註冊您的行動服務，並設定權限以允許單一登入模擬。
 
 1. 向 Azure Active Directory 註冊應用程式，依照 [如何向 Azure Active Directory] 主題。
 
 2. 在 [Azure clasic 入口網站](https://manage.windowsazure.com/), 回到 Azure Active Directory 擴充功能，按一下您的 active directory
 
-3. 按一下 [應用程式]**** 索引標籤，然後按一下您的應用程式。
+3. 按一下 [ **應用程式** 標籤，然後按一下您的應用程式。
 
-4. 按一下 [Manage Manifest]****。 然後按一下 [Download Manifest]****，並將應用程式資訊清單儲存到本機目錄。
+4. 按一下 [ **管理資訊清單**。 然後按一下 [ **下載資訊清單** ，並將應用程式資訊清單儲存到本機目錄。
 
    ![](./media/mobile-services-dotnet-adal-register-service/mobile-services-aad-app-manage-manifest.png)
 
@@ -32,9 +33,8 @@
             }
         ],
 
-6. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **管理資訊清單** 做為應用程式會再次按一下 **上傳資訊清單**。 瀏覽到您剛剛更新的應用程式資訊清單位置，並上傳此資訊清單。
+6. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **管理資訊清單** 做為應用程式會再次按一下 **上傳資訊清單**。  瀏覽到您剛剛更新的應用程式資訊清單位置，並上傳此資訊清單。
 
-
-
-[how to register with the azure active directory]: ../articles/mobile-services/mobile-services-how-to-register-active-directory-authentication.md 
+<!-- URLs. -->
+[How to Register with the Azure Active Directory]: ../articles/mobile-services/mobile-services-how-to-register-active-directory-authentication.md
 

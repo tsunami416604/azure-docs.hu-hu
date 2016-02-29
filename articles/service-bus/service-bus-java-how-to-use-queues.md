@@ -1,6 +1,6 @@
 <properties
     pageTitle="如何搭配使用服務匯流排佇列與 Java | Microsoft Azure"
-    description="了解如何使用 Azure 中的服務匯流排佇列。程式碼範例以 Java 撰寫。"
+    description="了解如何使用 Azure 中的服務匯流排佇列。 程式碼範例以 Java 撰寫。"
     services="service-bus"
     documentationCenter="java"
     authors="sethmanheim"
@@ -16,25 +16,24 @@
     ms.date="10/07/2015"
     ms.author="sethm"/>
 
-
 # 如何使用服務匯流排佇列
 
 [AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 本文說明如何使用服務匯流排佇列。 這些範例
-以 Java 撰寫並使用 [Azure SDK for Java]][]。 Auch die Eigenschaften
-涵蓋的案例包括 **建立佇列**, ，* * 傳送和接收
-訊息**, ，和 * * 刪除佇列**。
+以 Java 撰寫並使用 [Azure SDK for Java][]。 Auch die Eigenschaften
+涵蓋的案例包括 **建立佇列**, ，**傳送和接收
+訊息**, ，和 **刪除佇列**。
 
 [AZURE.INCLUDE [service-bus-java-how-to-create-queue](../../includes/service-bus-java-how-to-create-queue.md)]
 
 ## 設定應用程式以使用服務匯流排
 
-請確定您已安裝 [Azure SDK for Java]][] 再建置此範例。 如果您使用 Eclipse，您可以安裝 [Azure Toolkit for Eclipse]][] 包含 Azure SDK for Java。 然後您可以將 **Microsoft Azure Libraries for Java** 新增至您的專案：
+請確定您已安裝 [Azure SDK for Java][] 再建置此範例。 如果您使用 Eclipse，您可以安裝 [Azure Toolkit for Eclipse][] 包含 Azure SDK for Java。 您可以加入 **Microsoft Azure Libraries for Java** 至您的專案:
 
 ![](media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
-新增下列 `匯入` 陳述式的 Java 檔案頂端:
+在 Java 檔案頂端新增下列 `import` 陳述式：
 
 ```
 // Include the following imports to use Service Bus APIs
@@ -52,7 +51,7 @@ import javax.xml.datatype.*;
 SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 唯一的通訊點。
 
-**ServiceBusService** 類別提供方法來建立、 列舉
+ **ServiceBusService** 類別提供方法來建立、 列舉
 和刪除佇列。 下列範例將說明如何 **ServiceBusService** 物件
 可用來建立名為 「 HowToSample 」 的命名空間名稱為 「 TestQueue 」 的佇列:
 
@@ -63,7 +62,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
                     "SAS_key_value",
                     ".servicebus.windows.net"
                     );
-    
+
     ServiceBusContract service = ServiceBusService.create(config);
     QueueInfo queueInfo = new QueueInfo("TestQueue");
     try
@@ -109,8 +108,8 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
         System.exit(-1);
     }
 
-訊息傳送至，並收到來自服務匯流排佇列都是執行個體的 [BrokeredMessage []][] 類別。 [BrokeredMessage []][] 物件具有一組標準屬性 (例如 [標籤](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) 和 [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), ，字典
-用來保存自訂應用程式特定的屬性，以及一堆任意的應用程式資料。 應用程式可以設定訊息本文，任何可序列化物件傳遞給建構函式的 [BrokeredMessage []][], ，以及適當的序列化程式將會再用來序列化物件。 此外，您也可以提供 **java.IO.InputStream** 物件。
+訊息傳送至，並收到來自服務匯流排佇列都是執行個體的 [BrokeredMessage][] 類別。 [BrokeredMessage][] 物件具有一組標準屬性 (例如 [標籤](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) 和 [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx))，字典
+用來保存自訂應用程式特定的屬性，以及一堆任意的應用程式資料。 應用程式可以設定訊息本文，任何可序列化物件傳遞給建構函式的 [BrokeredMessage][], ，以及適當的序列化程式將會再用來序列化物件。 或者，您可以提供 **java。IO。InputStream** 物件。
 
 下列範例說明如何將五個測試訊息傳送至上述程式碼片段中所取得的
 `TestQueue` **MessageSender** 我們在上述程式碼片段中取得:
@@ -169,7 +168,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
     {
         ReceiveMessageOptions opts = ReceiveMessageOptions.DEFAULT;
         opts.setReceiveMode(ReceiveMode.PEEK_LOCK);
-    
+
         while(true)  {
              ReceiveQueueMessageResult resultQM =
                     service.receiveQueueMessage("TestQueue", opts);
@@ -246,14 +245,13 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 
 ## 後續步驟
 
-現在您已了解服務匯流排佇列的基本概念，請參閱 [佇列、 主題和訂用帳戶的 []][] 如需詳細資訊。
+現在您已了解服務匯流排佇列的基本概念，請參閱 [佇列、 主題和訂閱][] 如需詳細資訊。
 
 如需詳細資訊，請參閱 [Java 開發人員中心](/develop/java/)。
 
 
-
-[azure sdk for java]: http://azure.microsoft.com/develop/java/ 
-[azure toolkit for eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx 
-[queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md 
-[brokeredmessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx 
+  [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
+  [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
+  [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+  [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 

@@ -18,8 +18,7 @@
 
 
 
-
-# 使用 Azure 自動化管理 Azure 儲存體
+#使用 Azure 自動化管理 Azure 儲存體
 
 本指南將為您介紹 Azure 自動化服務，以及如何使用它來簡化 Azure 儲存體 Blob、資料表及佇列的管理。
 
@@ -37,10 +36,10 @@ Azure 自動化提供非常可靠且高度可用的工作流程執行引擎，�
 
 可透過 PowerShell cmdlet，可在 Azure 自動化中管理 azure 儲存體 [Azure PowerShell 工具](https://msdn.microsoft.com/library/azure/jj156055.aspx)。 Azure 自動化的這些 儲存體 PowerShell Cmdlet 都是內建的，以便您在服務內執行所有 Blob、資料表及佇列管理工作。 您也可以將 Azure 自動化中的這些 Cmdlet 與其他 Azure 服務的 Cmdlet 搭配，以透過 Azure 服務和協力廠商系統自動執行複雜的工作。
 
-[Azure 自動化 runbook 資源庫](http://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) 含有多種產品團隊和社群 runbook，以便開始使用自動化管理 Azure 儲存體、 其他 Azure 服務，以及第 3 個廠商系統。 資源庫 Runbook 包括：
+ [Azure 自動化 runbook 資源庫](http://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) 含有多種產品團隊和社群 runbook，以便開始使用自動化管理 Azure 儲存體、 其他 Azure 服務，以及第 3 個廠商系統。 資源庫 Runbook 包括：
 
- * [移除超過 X 天的 Azure 儲存體 blob](https://gallery.technet.microsoft.com/scriptcenter/Remove-Storage-Blobs-that-aae4b761)
- * [從 Azure 儲存體的 blob 下載到 Azure 自動化](https://gallery.technet.microsoft.com/scriptcenter/a-Blob-from-Azure-Storage-6bc13745)
+ * [移除存在時間超過 X 天的 Azure 儲存體 Blob](https://gallery.technet.microsoft.com/scriptcenter/Remove-Storage-Blobs-that-aae4b761)
+ * [從 Azure 儲存體將 Blob 下載到 Azure 自動化](https://gallery.technet.microsoft.com/scriptcenter/a-Blob-from-Azure-Storage-6bc13745)
  * [在 Azure 雲端服務中建立 Azure VM 資料磁碟的複本](https://gallery.technet.microsoft.com/scriptcenter/Make-copies-of-Azure-VM-065a6394)
 
 
@@ -49,9 +48,5 @@ Azure 自動化提供非常可靠且高度可用的工作流程執行引擎，�
 了解 Azure 自動化的基本概念以及如何用它來管理 Azure 儲存體 Blob、資料表及佇列之後，請參考下列連結，以深入了解 Azure 自動化。
 
 請參閱 Azure 自動化 [快速入門教學課程](../automation-create-runbook-from-samples.md)
-
-
-
-
-
+ 
 

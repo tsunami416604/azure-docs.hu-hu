@@ -15,7 +15,6 @@
     ms.date="10/20/2015" 
     ms.author="markusvi"/>
 
-
 # Proxy 服務的 Cloud App Discovery 登錄設定
 
 根據預設，Cloud App Discovery 代理程式設定為僅使用連接埠 80 或 443。 
@@ -30,13 +29,14 @@
 **若要修改執行 Cloud App Discovery 代理程式的電腦所使用的連接埠，請執行下列步驟：**
 
 
-1. 啟動登錄編輯程式。<br> ![Run](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
+1. 啟動登錄編輯程式。 <br> ![執行](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
 
-2. 瀏覽至或建立下列登錄機碼: <br> **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint**
+2. 瀏覽至或建立下列登錄機碼: <br> **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint** 
 
-3. 建立新 **多字串** 值呼叫 **連接埠**。 ![新增](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)
+3. 建立新 **多字串** 值呼叫 **連接埠**。 ![新](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)
 
-4. 若要開啟 [編輯多字串]**** 對話方塊中，按兩下 [連接埠] 值。
+4. 若要開啟 **編輯多字串** ] 對話方塊中，按兩下連接埠值。
+
 
 5. 在數值資料] 文字方塊中，輸入下列值並新增您的組織所使用的所有自訂連接埠: <br><br>
 **80** <br>
@@ -53,18 +53,14 @@
 **1110** <br><br>
 ![編輯多字串](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy03.png)
 
-6. 按一下 [確定]****，關閉 [編輯多字串]**** 對話方塊。
+6. 按一下 [ **確定** 關閉 **編輯多字串** ] 對話方塊。
 
 
 
 **其他資源**
 
 
-* [如何探索組織內使用未經批准的雲端應用程式](active-directory-cloudappdiscovery-whatis.md)
-
-
-
-
+* [如何探索組織內使用未經批准的雲端應用程式](active-directory-cloudappdiscovery-whatis.md) 
 
 
 

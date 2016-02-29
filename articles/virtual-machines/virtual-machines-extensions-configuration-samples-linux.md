@@ -17,15 +17,13 @@
    ms.date="09/01/2015"
    ms.author="kundanap"/>
 
-
 # Linux VM 延伸模組組態範例
 
 > [AZURE.SELECTOR]
-- [Azure PowerShell - Template](virtual-machines-extensions-configuration-samples-windows.md)
-- [Azure CLI - Template](virtual-machines-extensions-configuration-samples-linux.md)
+- [Azure PowerShell-範本](virtual-machines-extensions-configuration-samples-windows.md)
+- [Azure CLI-範本](virtual-machines-extensions-configuration-samples-linux.md)
 
-
-<br>
+<br> 
 
 
 本文提供範例組態，可用來設定 Linux VM 的 Azure VM 延伸模組。
@@ -40,7 +38,6 @@
 本文列出部分 Linux 延伸模組所需的組態值。
 
 ## VM 延伸模組的範例範本程式碼片段。
-
 用於部署延伸模組的範本程式碼片段如下所示：
 
       {
@@ -65,7 +62,6 @@
 本文其餘部分提供 Linux VM 延伸模組的範例組態。
 
 ### CloudLink SecureVM Agent
-
           {
             "publisher": "CloudLinkEMC.SecureVM",
             "type": "CloudLinkSecureVMLinuxAgent",
@@ -76,7 +72,6 @@
           }
 
 ### CustomScript Extension for Linux
-
     {
         "publisher": " Microsoft.OSTCExtensions",
         "type": "CustomScriptForLinux",
@@ -89,8 +84,8 @@
         }
     }
 
-### Datadog Agent
 
+### Datadog Agent
         {
           "publisher": "Datadog.Agent",
           "type": "DatadogLinuxAgent",
@@ -101,7 +96,6 @@
         }
 
 ### Chef Agent
-
         {
           "publisher": "Chef.Bootstrap.WindowsAzure",
           "type": "CentosChefClient|LinuxChefClient",
@@ -114,7 +108,6 @@
         }
 
 ### VM 存取延伸模組 (密碼重設)
-
 更新的結構描述請參閱 [VMAccessForLinux 文件](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
         {
@@ -131,7 +124,6 @@
         }
 
 ### OS 修補
-
 更新的結構描述請參閱 [OSPatching 文件](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)
 
         {
@@ -157,7 +149,6 @@
         }
 
 ### Docker 延伸模組
-
 更新的結構描述請參閱 [Docker 延伸模組文件](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)
 
         {
@@ -181,7 +172,7 @@
             }
             }
         }
-    
+
         ### Linux Diagnostics Extension
         {
         "storageAccountName": "storage account to receive data",
@@ -205,8 +196,4 @@
 以下是使用延伸模組建立 Linux VM 的完整 VM 範本：
 
 [Linux VM 上的自訂指令碼延伸模組](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
-
-
-
-
 

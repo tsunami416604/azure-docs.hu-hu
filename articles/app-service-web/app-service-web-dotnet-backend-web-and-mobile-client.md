@@ -16,12 +16,7 @@
     ms.date="09/15/2015"
     ms.author="donnam"/>
 
-
 # 使用行動和 Web 用戶端在 Azure 應用程式服務中建立應用程式
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-web-and-mobile](../../includes/app-service-mobile-dotnet-backend-web-and-mobile.md)]
-
-
-
-
 

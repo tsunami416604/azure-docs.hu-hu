@@ -16,27 +16,26 @@
    ms.date="06/17/2015"
    ms.author="adhurwit"/>
 
-
 # 在 Microsoft Azure 儲存體中使用 Azure 金鑰保存庫加密和解密 blob
 
 ## 簡介
+ 
+本教學課程涵蓋如何搭配使用用戶端儲存體加密和 Azure 金鑰保存庫。 其中告訴您如何在主控台應用程式中使用這些技術加密和解密 blob。 
 
-本教學課程涵蓋如何搭配使用用戶端儲存體加密和 Azure 金鑰保存庫。 其中告訴您如何在主控台應用程式中使用這些技術加密和解密 blob。
-
-**預估完成時間：**20 分鐘
+**預估完成時間:** 20 分鐘
 
 如需 Azure 金鑰保存庫的概觀資訊，請參閱 [什麼是 Azure 金鑰保存庫?](key-vault/key-vault-whatis.md)
 
 如需 Azure 儲存體的用戶端加密的概觀資訊，請參閱 [開始使用 Microsoft Azure 儲存體用戶端加密](storage-client-side-encryption.md)
 
 
-## 必要條件
+## 先決條件
 
 若要完成本教學課程，您必須具備下列項目：
 
 - Azure 儲存體帳戶
 - Visual Studio 2013 或更新版本
-- Azure PowerShell
+- Azure PowerShell 
 
 
 ## 用戶端加密概觀
@@ -52,7 +51,6 @@
 
 
 ## 設定 Azure 金鑰保存庫
-
 若要繼續進行本教學課程，您需要執行下列步驟，本教學課程中所述  [開始使用 Azure 金鑰保存庫](key-vault/key-vault-get-started.md):
 
 - 建立金鑰保存庫。
@@ -60,7 +58,7 @@
 - 向 Azure Active Directory 註冊應用程式。
 - 授權應用程式使用金鑰或密碼。
 
-請記下向 Azure Active Directory 註冊應用程式時所產生的 ClientID 和 ClientSecret。
+請記下向 Azure Active Directory 註冊應用程式時所產生的 ClientID 和 ClientSecret。 
 
 在金鑰保存庫中建立這兩個金鑰。 我們在教學課程的其餘部分假設您已使用下列名稱：ContosoKeyVault 和 TestRSAKey1。
 
@@ -72,14 +70,15 @@
 在封裝管理員主控台中加入必要的 nuget 封裝。
 
     Install-Package WindowsAzure.Storage 
-    
+
     // This is the latest stable release for ADAL.
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
-    
+
     Install-Package Microsoft.Azure.KeyVault 
     Install-Package Microsoft.Azure.KeyVault.Extensions 
 
-將 AppSettings 加入至 App.Config。
+
+將 AppSettings 加入至 App.Config。 
 
     <appSettings>
         <add key="accountName" value="myaccount"/>
@@ -89,7 +88,7 @@
         <add key="container" value="stuff"/>
     </appSettings>
 
-新增下列 `使用` 陳述式，並確定將 System.Configuration 的參考加入至專案。
+新增下列 `using` 陳述式，並確定將 System.Configuration 的參考加入至專案。
 
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System.Configuration;
@@ -99,6 +98,7 @@
     using Microsoft.Azure.KeyVault;
     using System.Threading;     
     using System.IO;
+
 
 ## 新增方法以取得給主控台應用程式的權杖
 
@@ -130,70 +130,71 @@
     CloudBlobClient client = account.CreateCloudBlobClient();
     CloudBlobContainer contain = client.GetContainerReference(ConfigurationManager.AppSettings["container"]);
     contain.CreateIfNotExists();
-    
+
     // The Resolver object is used to interact with Key Vault for Azure Storage.
     // This is where the GetToken method from above is used.
     KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
+
 
 > [AZURE.NOTE] 金鑰保存庫物件模型
 >
 >務必了解，實際上有兩個金鑰保存庫物件模型需要注意：一個是根據 REST API (KeyVault 命名空間)，另一個是用戶端加密的延伸。
 
 > 金鑰保存庫用戶端會與 REST API 互動，並了解金鑰保存庫中包含的兩種項目的 JSON Web 金鑰和密碼。
->
+
 > 金鑰保存庫延伸模組似乎是特別為 Azure 儲存體中的用戶端加密而建立的類別。 它們根據金鑰解析程式的概念，包含金鑰 (IKey) 和類別的介面。 您需要知道 IKey 的兩個實作：RSAKey 和 SymmetricKey。 現在，它們剛好與金鑰保存庫中所包含的項目重疊，但目前是獨立的類別 (因此，金鑰保存庫用戶端所擷取的金鑰和密碼不實作 IKey)。
 
 
 ## 加密 blob 和上傳
+加入下列程式碼來加密 Blob 並上傳至 Azure 儲存體帳戶。  **ResolveKeyAsync** 用的方法會傳回 IKey。
 
-加入下列程式碼來加密 Blob 並上傳至 Azure 儲存體帳戶。 使用的 **ResolveKeyAsync** 方法會傳回 IKey。
-
-
+    
     // Retrieve the key that you created previously.
     // The IKey that is returned here is an RsaKey.
     // Remember that we used the names contosokeyvault and testrsakey1.
     var rsa = cloudResolver.ResolveKeyAsync("https://contosokeyvault.vault.azure.net/keys/TestRSAKey1", CancellationToken.None).GetAwaiter().GetResult();
-    
-    
+
+
     // Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy. 
     BlobEncryptionPolicy policy = new BlobEncryptionPolicy(rsa, null);
     BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
-    
+
     // Reference a block blob.
     CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
-    
+
     // Upload using the UploadFromStream method.
     using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
         blob.UploadFromStream(stream, stream.Length, null, options, null);
 
-以下是從螢幕擷取畫面 [Azure 傳統入口網站](manage.windowsazure.com) 已透過用戶端加密與金鑰保存庫中儲存的金鑰加密的 blob。 **KeyId** 屬性是金鑰保存庫中做為 KEK 的金鑰的 URI。 **EncryptedKey** 屬性包含 CEK 的加密版本。
 
-![此螢幕擷取畫面顯示包含加密中繼資料的 Blob 中繼資料][1]
-> [AZURE.NOTE] 如果您查看 BlobEncryptionPolicy 建構函式，您會看到它可接受金鑰和 (或) 解析程式。 請注意，現在您無法使用解析程式進行加密，因為它目前不支援預設金鑰。
+以下是從螢幕擷取畫面 [Azure 傳統入口網站](manage.windowsazure.com) 已透過用戶端加密與金鑰保存庫中儲存的金鑰加密的 blob。  **KeyId** 屬性是做為 KEK 的金鑰保存庫中的索引鍵的 URI。  **EncryptedKey** 屬性包含 CEK 加密的版本。
+
+![顯示 Blob 中繼資料包含加密中繼資料的螢幕擷取畫面][] 1
+
+> [AZURE.NOTE] 如果您查看 BlobEncryptionPolicy 建構函式時，您會看到它可接受的索引鍵和 (或) 解析程式。 請注意，現在您無法使用解析程式進行加密，因為它目前不支援預設金鑰。
 
 
 
 ## 解密 blob 和下傳
-
-解密其實就是解析程式類別存在的價值。 加密金鑰的識別碼與它的中繼資料裡的 Blob 相關聯，因此，沒有理由讓您擷取金鑰，並記住金鑰與 blob 之間的關聯。 您只需要確定金鑰仍在金鑰保存庫中。
+解密其實就是解析程式類別存在的價值。 加密金鑰的識別碼與它的中繼資料裡的 Blob 相關聯，因此，沒有理由讓您擷取金鑰，並記住金鑰與 blob 之間的關聯。 您只需要確定金鑰仍在金鑰保存庫中。   
 
 RSA 金鑰的私密金鑰保留在保存庫金鑰中，為了進行解密，從包含 CEK 的 blob 中繼資料，加密的金鑰會傳送至金鑰保存庫進行解密。
 
-加入下列內容以解密您剛才上傳的 blob。
+加入下列內容以解密您剛才上傳的 blob。 
 
     // In this case, we will not pass a key and only pass the resolver because
     // this policy will only be used for downloading / decrypting.
     BlobEncryptionPolicy policy = new BlobEncryptionPolicy(null, cloudResolver);
     BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
-    
+
     using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
         blob.DownloadToStream(np, null, options, null);
 
-> [AZURE.NOTE] 有幾個其他種類的解析程式可簡化金鑰管理，包括：AggregateKeyResolver 和 CachingKeyResolver。
+
+> [AZURE.NOTE] 有幾個其他種類的解析程式來簡化金鑰管理，包括: AggregateKeyResolver 和 CachingKeyResolver。
 
 
 ## 使用金鑰保存庫密碼
-
 搭配用戶端加密來使用密碼的方式是透過 SymmetricKey 類別，因為密碼基本上是一種對稱金鑰。 但是，如上所述，金鑰保存庫中的密碼未完全對應到 SymmetricKey。 有幾件事必須了解：
 
 
@@ -210,7 +211,7 @@ RSA 金鑰的私密金鑰保留在保存庫金鑰中，為了進行解密，從�
     $b = [System.Text.Encoding]::UTF8.GetBytes($key)
     $enc = [System.Convert]::ToBase64String($b)
     $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
-    
+
     // Substitute the VaultName and Name in this command.
     $secret = Set-AzureKeyVaultSecret -VaultName 'ContoseKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 
@@ -231,7 +232,6 @@ RSA 金鑰的私密金鑰保留在保存庫金鑰中，為了進行解密，從�
 Microsoft Azure 儲存體的最新資訊，請移至 [Microsoft Azure 儲存體團隊部落格](http://blogs.msdn.com/b/windowsazurestorage/)。
 
 
-
-
-[1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png 
+<!--Image references-->
+[1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 

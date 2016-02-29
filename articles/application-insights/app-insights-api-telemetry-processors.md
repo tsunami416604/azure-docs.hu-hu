@@ -5,7 +5,7 @@
     documentationCenter="" 
     authors="alancameronwills" 
     manager="douge"/>
-
+ 
 <tags 
     ms.service="application-insights" 
     ms.workload="tbd" 
@@ -15,14 +15,9 @@
     ms.date="10/22/2015" 
     ms.author="awills"/>
 
-
 # 取樣、篩選及前置處理遙測
 
 此內容提供 [移至這裡](app-insights-api-filtering-sampling.md), ，並很快就會刪除此檔案。
 
 
-
-
-
-
-
+ 

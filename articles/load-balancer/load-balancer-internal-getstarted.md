@@ -15,13 +15,11 @@
    ms.date="09/01/2015"
    ms.author="joaoma" />
 
-
 # 開始設定內部負載平衡器
 
 > [AZURE.SELECTOR]
-- [Azure Classic steps](load-balancer-internal-getstarted.md)
-- [Resource Manager PowerShell steps](load-balancer-internal-arm-powershell.md)
-
+- [Azure 的傳統步驟](load-balancer-internal-getstarted.md)
+- [資源管理員 PowerShell 步驟](load-balancer-internal-arm-powershell.md)
 
 Azure 內部負載平衡 (ILB) 可在位於雲端服務或虛擬網路 (具有區域範圍) 中的虛擬機器之間提供負載平衡。 使用和設定具有區域範圍之虛擬網路的相關資訊，請參閱 [區域虛擬網路](virtual-networks-migrate-to-regional-vnet.md)。 已針對同質群組設定的現有虛擬網路無法使用 ILB。
 
@@ -44,16 +42,18 @@ Azure 內部負載平衡 (ILB) 可在位於雲端服務或虛擬網路 (具有�
     $ilb="<Name of your ILB instance>"
     $subnet="<Name of the subnet within your virtual network>"
     $IP="<The IPv4 address to use on the subnet-optional>"
-    
+
     Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb –SubnetName $subnet –StaticVNetIPAddress $IP
 
-若要使用這些命令，填入值並移除 < 和 >。下列是一個範例：
+
+若要使用這些命令，填入值並移除 < 和 >。 下列是一個範例：
 
     $svc="WebCloud-NY"
     $ilb="SQL-BE"
     $subnet="Farm1"
     $IP="192.168.98.10"
     Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb –SubnetName $subnet –StaticVNetIPAddress $IP
+
 
 ### 步驟 2：將端點加入至內部負載平衡執行個體
 
@@ -85,6 +85,7 @@ Azure 內部負載平衡 (ILB) 可在位於雲端服務或虛擬網路 (具有�
     $ilb="SQL ILB"
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 
+
 ### 步驟 3：設定您的伺服器將其流量傳送到新的內部負載平衡端點
 
 您必須設定其流量即將進行負載平衡的伺服器使用內部負載平衡執行個體的新 IP 位址 (VIP)。 這是內部負載平衡執行個體所接聽的位址。 在大部分情況下，您只需要針對內部負載平衡執行個體的 VIP 新增或修改 DNS 記錄。
@@ -94,13 +95,17 @@ Azure 內部負載平衡 (ILB) 可在位於雲端服務或虛擬網路 (具有�
     $svc="<Cloud Service Name>"
     Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
 
-若要使用這些命令，填入值並移除 < 和 >。下列是一個範例：
+
+
+若要使用這些命令，填入值並移除 < 和 >。 下列是一個範例：
 
     $svc="WebCloud-NY"
     Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
 
+
 在 Get-AzureInternalLoadBalancer 命令的顯示中，請記下 IP 位址，並對伺服器或 DNS 記錄進行必要的變更，以確保流量會被傳送到 VIP。
->[AZURE.NOTE] Microsoft Azure 平台會對各種管理案例使用靜態、可公開路由傳送的 IPv4 位址。 IP 位址是 168.63.129.16。 此 IP 位址不應該遭到任何防火牆封鎖，因為可能會造成非預期的行為。
+
+>[AZURE.NOTE] Microsoft Azure 平台的各種管理案例使用靜態、 可公開路由傳送的 IPv4 位址。 IP 位址是 168.63.129.16。 此 IP 位址不應該遭到任何防火牆封鎖，因為可能會造成非預期的行為。
 >採用 Azure 內部負載平衡，來自負載平衡器的監視探查會使用此 IP 位址，藉此判斷虛擬機器在負載平衡集的健全狀態。 如果網路安全性群組已用來限制傳輸至內部負載平衡集中 Azure 虛擬機器的流量，或已套用至虛擬網路子網路，請確定您已新增網路安全性規則，允許來自 168.63.129.16 的流量。
 
 
@@ -130,7 +135,7 @@ Contoso Corporation 想要提供一組網際網路面向 Web 伺服器和一組�
     $svc="Contoso-PartnerSite"
     $ilb="PARTNER-DBTIER"
     Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb
-    
+
     $prot="tcp"
     $locport=1433
     $pubport=1433
@@ -138,11 +143,11 @@ Contoso Corporation 想要提供一組網際網路面向 Web 伺服器和一組�
     $lbsetname="SQL-LB"
     $vmname="PARTNER-SQL-1"
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -LbSetName $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
-    
+
     $epname="DBTIER2"
     $vmname="PARTNER-SQL-2"
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -LbSetName $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
-    
+
     $epname="DBTIER3"
     $vmname="PARTNER-SQL-3"
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -LbSetName $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
@@ -179,7 +184,7 @@ Contoso Corporation 想要在 Azure 的一組 Web 伺服器上裝載特定業務
     $subnet="LOB-LEGAL"
     $IP="198.168.99.145"
     Add-AzureInternalLoadBalancer –ServiceName $svc -InternalLoadBalancerName $ilb –SubnetName $subnet –StaticVNetIPAddress $IP
-    
+
     $prot="tcp"
     $locport=80
     $pubport=80
@@ -187,14 +192,15 @@ Contoso Corporation 想要在 Azure 的一組 Web 伺服器上裝載特定業務
     $lbsetname="LOB-LB"
     $vmname="LEGAL-1"
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname-LbSetName $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
-    
+
     $epname="LOB2"
     $vmname="LEGAL2"
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -LbSetName $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
-    
+
     $epname="LOB3"
     $vmname="LEGAL3"
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -LbSetName $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
+
 
 接下來，Contoso 會設定 legalnet.corp.contoso.com 名稱的 DNS A 記錄使用 198.168.99.145。
 
@@ -212,21 +218,23 @@ Contoso Corporation 想要在 Azure 的一組 Web 伺服器上裝載特定業務
     $adminuser="Lando"
     $adminpw="Platform327"
     $regionname="North Central US"
-    
+
     $myilbconfig=New-AzureInternalLoadBalancerConfig -InternalLoadBalancerName $ilb -SubnetName $subnet
     $images = Get-AzureVMImage
     New-AzureVMConfig -Name $vmname -InstanceSize Small -ImageName $images[50].ImageName | Add-AzureProvisioningConfig -Windows -AdminUsername $adminuser -Password $adminpw | New-AzureVM -ServiceName $svc -InternalLoadBalancerConfig $myilbconfig -Location $regionname –VNetName $vnet
 
 ## 若要設定雲端服務的內部負載平衡
 
+
 虛擬機器和雲端服務都支援內部負載平衡。 在區域虛擬網路外的雲端服務中所建立的內部負載平衡端點將只能在雲端服務內進行存取。
 
 內部負載平衡組態必須在雲端服務建立第一個部署的過程中進行設定，如以下範例所示。
->[AZURE.IMPORTANT] 執行下列步驟的必要條件是已經為雲端部署建立虛擬網路。 您需要虛擬網路名稱和子網路名才能建立內部負載平衡。
+
+>[AZURE.IMPORTANT] 執行下列步驟的必要條件是已經建立雲端部署的虛擬網路。 您需要虛擬網路名稱和子網路名才能建立內部負載平衡。
 
 ### 步驟 1
 
-在 Visual Studio 中開啟您的雲端部署的服務組態檔 (.cscfg) 並新增下列區段來建立內部負載平衡在最後一個 「`< / 角色 >`「 網路組態項目。
+在 Visual Studio 中開啟雲端部署的服務組態檔 (.cscfg) 並新增下列區段，以在網路組態的最後一個「`</Role>`」項目下方建立內部負載平衡。
 
 
 
@@ -238,6 +246,7 @@ Contoso Corporation 想要在 Azure 的一組 Web 伺服器上裝載特定業務
         </LoadBalancer>
       </LoadBalancers>
     </NetworkConfiguration>
+
 
 讓我們新增網路組態檔的值，以顯示看起來如何。 在此範例中，假設您利用稱為 test_subnet 的子網路 10.0.0.0/24 和靜態 IP 10.0.0.4 建立稱為 "test_vnet" 的子網路。 負載平衡器將會命名為 testLB。
 
@@ -252,6 +261,7 @@ Contoso Corporation 想要在 Azure 的一組 Web 伺服器上裝載特定業務
 如需負載平衡器結構描述的詳細資訊，請參閱 [新增負載平衡器](https://msdn.microsoft.com/library/azure/dn722411.aspx)。
 
 ### 步驟 2
+
 
 變更服務定義 (.csdef) 檔案，以將端點新增至內部負載平衡。 建立角色執行個體時，服務定義檔會將角色執行個體新增至內部負載平衡。
 
@@ -303,7 +313,10 @@ Contoso Corporation 想要在 Azure 的一組 Web 伺服器上裝載特定業務
     $svc="AZ-LOB1"
     Remove-AzureInternalLoadBalancer -ServiceName $svc
 
+
+
 ## 內部負載平衡 Cmdlet 的其他資訊
+
 
 若要取得內部負載平衡 Cmdlet 的詳細資訊，請在 Windows PowerShell 提示字元中執行下列命令：
 
@@ -320,8 +333,4 @@ Contoso Corporation 想要在 Azure 的一組 Web 伺服器上裝載特定業務
 [設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
-
-
-
-
 

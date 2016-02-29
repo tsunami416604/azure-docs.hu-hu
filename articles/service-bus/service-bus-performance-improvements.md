@@ -15,7 +15,6 @@
    ms.date="09/18/2015"
    ms.author="sethm" />
 
-
 # 使用服務匯流排代理傳訊的效能改進最佳作法
 
 本主題描述如何使用 Azure 服務匯流排來在交換代理的訊息時將效能最佳化。 本主題的第一個部分說明提供協助提高效能的不同機制。 第二個部分針對如何在特定案例中利用可提供最佳效能的方式來使用服務匯流排提供指引。
@@ -32,18 +31,18 @@
 
 ## 重複使用處理站和用戶端
 
-服務匯流排用戶端物件，例如 [QueueClient []][] 或 [MessageSender []][], ，透過建立 [MessagingFactory []][] 物件，它也會提供連線的內部管理。 當您傳送一個訊息，並在傳送下一個訊息時重新建立傳訊處理站或佇列、主題及訂用帳戶用戶端之後，您不能將其關閉。 關閉傳訊處理站會刪除服務匯流排服務的連接，並在重新建立處理站時建立新的連接。 建立連接是成本高昂的作業，您可以藉由重新使用多項作業的相同處理站和用戶端物件來避免此作業。
+服務匯流排用戶端物件，例如 [QueueClient][] 或 [MessageSender][], ，透過建立 [MessagingFactory][] 物件，它也會提供連線的內部管理。 當您傳送一個訊息，並在傳送下一個訊息時重新建立傳訊處理站或佇列、主題及訂用帳戶用戶端之後，您不能將其關閉。 關閉傳訊處理站會刪除服務匯流排服務的連接，並在重新建立處理站時建立新的連接。 建立連接是成本高昂的作業，您可以藉由重新使用多項作業的相同處理站和用戶端物件來避免此作業。
 
 ## 並行作業
 
-執行的作業 (傳送、 接收、 刪除、 等等) 需要一些時間。 這個時間包括服務匯流排服務處理作業的時間加上要求和回覆的延遲時間。 若要增加每次的作業數目，就必須並行執行作業。 您可以利用數個不同方式執行這項操作：
+執行作業 (傳送、接收、刪除等等) 需要一點時間。 這個時間包括服務匯流排服務處理作業的時間加上要求和回覆的延遲時間。 若要增加每次的作業數目，就必須並行執行作業。 您可以利用數個不同方式執行這項操作：
 
--   **非同步作業**：用戶端會透過執行非同步作業來排程作業。 下一個要求會在前一個要求完成之前啟動。 非同步傳送作業的範例如下：
+-   **非同步作業**: 用戶端藉由執行非同步作業排程的作業。 下一個要求會在前一個要求完成之前啟動。 非同步傳送作業的範例如下：
 
     ```
     BrokeredMessage m1 = new BrokeredMessage(body);
     BrokeredMessage m2 = new BrokeredMessage(body);
-
+    
     Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
       {
         Console.WriteLine("Sent message #1");
@@ -57,14 +56,14 @@
     ```
 
     非同步接收作業的範例如下：
-
+    
     ```
     Task receive1 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
     Task receive2 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-
+    
     Task.WaitAll(receive1, receive2);
     Console.WriteLine("All messages received");
-
+    
     async void ProcessReceivedMessage(Task<BrokeredMessage> t)
     {
       BrokeredMessage m = t.Result;
@@ -74,23 +73,23 @@
     }
     ```
 
--   **多個處理站**：由相同處理站建立的所有用戶端 (除了接收者之外還有傳送者) 共用一個 TCP 連線。 最大訊息輸送量受限於可通過此 TCP 連線的作業數目。 透過單一處理站取得的輸送量與 TCP 來回時間和訊息大小有顯著的差異。 若要取得更高的輸送量速率，您應該使用多個傳訊處理站。
+-   **多個中心**: 所有的用戶端 (傳送者及接收者) 相同的處理站所建立的共用一個 TCP 連線。 最大訊息輸送量受限於可通過此 TCP 連線的作業數目。 透過單一處理站取得的輸送量與 TCP 來回時間和訊息大小有顯著的差異。 若要取得更高的輸送量速率，您應該使用多個傳訊處理站。
 
 ## 接收模式
 
-建立佇列或訂用帳戶用戶端時，您可以指定接收模式：*peek-lock* 或*接收與刪除*。 預設接收模式是 [PeekLock []][]。 以此模式操作時，用戶端會傳送要求，以接收來自服務匯流排的訊息。 用戶端收到訊息後，它會傳送要求以完成訊息。
+在建立佇列或訂閱用戶端時，您可以指定接收模式: *查看並鎖定* 或 *接收並刪除*。 預設接收模式是 [PeekLock][]。 以此模式操作時，用戶端會傳送要求，以接收來自服務匯流排的訊息。 用戶端收到訊息後，它會傳送要求以完成訊息。
 
-若要設定接收模式時 [ReceiveAndDelete []][], ，這兩個步驟會結合在單一要求中。 這可減少整體的作業數目並可改善整體訊息輸送量。 此效能改善的風險為遺失訊息。
+若要設定接收模式時 [ReceiveAndDelete][], ，這兩個步驟會結合在單一要求中。 這可減少整體的作業數目並可改善整體訊息輸送量。 此效能改善的風險為遺失訊息。
 
 服務匯流排不支援接收和刪除作業的交易。 此外，在用戶端想要延遲或讓訊息寄不出去的任何案例中都需要鎖定語意。
 
 ## 用戶端批次處理
 
-用戶端批次處理可讓佇列或主題用戶端將訊息的傳送延遲一段時間。 如果用戶端在此期間傳送其他訊息，它將以單一批次傳輸訊息。 用戶端批次處理也會導致佇列/訂用帳戶用戶端將多個**完成**要求批次處理為單一要求。 批次處理僅適用於非同步**傳送**及**完成**作業。 同步作業會立即傳送至服務匯流排服務。 查看或接收作業不會進行批次處理，也不會跨用戶端進行。
+用戶端批次處理可讓佇列或主題用戶端將訊息的傳送延遲一段時間。 如果用戶端在此期間傳送其他訊息，它將以單一批次傳輸訊息。 用戶端批次處理也會導致佇列/訂閱用戶端將多個 **完成** 成單一要求的要求。 批次處理只適用於非同步 **傳送** 和 **完成** 作業。 同步作業會立即傳送至服務匯流排服務。 查看或接收作業不會進行批次處理，也不會跨用戶端進行。
 
-如果批次超過訊息大小上限，最後一則訊息會從批次移除，而且用戶端會立即傳送批次。 最後一則訊息會成為下一個批次的第一則訊息。 根據預設，用戶端使用的批次間隔為 20 毫秒。 您可以設定來變更批次間隔 [BatchFlushInterval []][] 屬性，才能建立傳訊處理站。 這個設定會影響此處理站所建立的所有用戶端。
+如果批次超過訊息大小上限，最後一則訊息會從批次移除，而且用戶端會立即傳送批次。 最後一則訊息會成為下一個批次的第一則訊息。 根據預設，用戶端使用的批次間隔為 20 毫秒。 您可以設定來變更批次間隔 [BatchFlushInterval][] 屬性，才能建立傳訊處理站。 這個設定會影響此處理站所建立的所有用戶端。
 
-若要停用批次處理，請設定 [BatchFlushInterval []][] 屬性 **TimeSpan.Zero**。 例如：
+若要停用批次處理，請設定 [BatchFlushInterval][] 屬性 **TimeSpan.Zero**。 例如：
 
 ```
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -103,9 +102,9 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 
 ## 批次處理存放區存取
 
-為了提高佇列/主題/訂用帳戶的輸送量，服務匯流排會在寫入至其內部存放區時批次處理多個訊息。 如果在佇列或主題上啟用，將會批次處理寫入訊息至存放區。 如果在佇列或訂用帳戶上啟用，將會批次處理從存放區刪除訊息。 如果某個實體啟用批次處理的存放區存取，服務匯流排會延遲與該實體有關的存放區寫入作業，最多 20 毫秒。 在此間隔期間進行的其他存放區作業都會加入至批次。 批次處理的存放區存取只會影響**傳送**和**完成**作業；接收作業不會受到影響。 批次處理的存放區存取是實體上的屬性。 批次處理會在啟用批次處理存放區存取的所有實體進行。
+為了提高佇列/主題/訂用帳戶的輸送量，服務匯流排會在寫入至其內部存放區時批次處理多個訊息。 如果在佇列或主題上啟用，將會批次處理寫入訊息至存放區。 如果在佇列或訂用帳戶上啟用，將會批次處理從存放區刪除訊息。 如果某個實體啟用批次處理的存放區存取，服務匯流排會延遲與該實體有關的存放區寫入作業，最多 20 毫秒。 在此間隔期間進行的其他存放區作業都會加入至批次。 批次存放區存取只會影響 **傳送** 和 **完成** 作業; 接收作業不會受到影響。 批次處理的存放區存取是實體上的屬性。 批次處理會在啟用批次處理存放區存取的所有實體進行。
 
-建立新佇列、主題或訂用帳戶時，預設會啟用批次處理的存放區存取。 若要停用批次存放區存取，請設定 [EnableBatchedOperations []][] 屬性 **false** 之前建立的實體。 例如：
+建立新佇列、主題或訂用帳戶時，預設會啟用批次處理的存放區存取。 若要停用批次存放區存取，請設定 [EnableBatchedOperations][] 屬性 **false** 之前建立的實體。 例如：
 
 ```
 QueueDescription qd = new QueueDescription();
@@ -117,11 +116,11 @@ Queue q = namespaceManager.CreateQueue(qd);
 
 ## 預先擷取
 
-預先擷取可讓佇列或訂用帳戶用戶端在執行接收作業時從服務載入額外的訊息。 用戶端會將這些訊息儲存在本機快取中。 快取的大小取決於 [QueueClient.PrefetchCount []][] 和 [SubscriptionClient.PrefetchCount []][] 屬性。 啟用預先擷取的每個用戶端會維護自己的快取。 快取不會跨用戶端共用。 如果用戶端起始接收作業且其快取是空的，則服務會傳輸一批次的訊息。 批次的大小等於快取的大小或 256 KB，以較小者為準。 如果用戶端起始接收作業且快取包含一則訊息，訊息會從快取中擷取。
+預先擷取可讓佇列或訂用帳戶用戶端在執行接收作業時從服務載入額外的訊息。 用戶端會將這些訊息儲存在本機快取中。 快取的大小取決於 [QueueClient.PrefetchCount][] 和 [SubscriptionClient.PrefetchCount][] 屬性。 啟用預先擷取的每個用戶端會維護自己的快取。 快取不會跨用戶端共用。 如果用戶端起始接收作業且其快取是空的，則服務會傳輸一批次的訊息。 批次的大小等於快取的大小或 256 KB，以較小者為準。 如果用戶端起始接收作業且快取包含一則訊息，訊息會從快取中擷取。
 
 預先擷取訊息時，服務會鎖定預先擷取的訊息。 藉由這麼做，其他接收者就無法接收預先擷取的訊息。 如果接收者無法在鎖定到期之前完成訊息，訊息就會變成可供其他接收者接收。 訊息的預先擷取副本會保留在快取中。 當取用過其快取複本的接收者嘗試完成該訊息時，他會收到例外狀況。 根據預設，訊息鎖定會在 60 秒之後到期。 此值可延長為 5 分鐘。 若要避免過期訊息遭到取用，快取大小應該一律小於用戶端在鎖定逾時間隔內可取用的訊息數目。
 
-使用 60 秒的預設鎖定到期時，理想值 [SubscriptionClient.PrefetchCount []][] 20 次的最大的處理速度所有接收者處理站。 例如，處理站建立 3 個接收者，而每個接收者每秒可以處理最多 10 則訊息。 預先擷取計數不應該超過 20*3*10 = 600。 根據預設， [QueueClient.PrefetchCount []][] 設為 0，表示從服務擷取任何額外的訊息。
+使用 60 秒的預設鎖定到期時，理想值 [SubscriptionClient.PrefetchCount][] 20 次的最大的處理速度所有接收者處理站。 例如，處理站建立 3 個接收者，而每個接收者每秒可以處理最多 10 則訊息。 預先擷取計數不應該超過 20*3*10 = 600。 根據預設， [QueueClient.PrefetchCount][] 設為 0，表示從服務擷取任何額外的訊息。
 
 預先擷取訊息會增加佇列或訂用帳戶的整體輸送量，因為此舉可減少訊息作業或來回時間的整體數目。 然而，擷取第一個訊息需要較長的時間 (因為訊息大小增加)。 接收預先擷取的訊息比較快速，因為用戶端已經下載這些訊息。
 
@@ -139,11 +138,11 @@ td.EnableExpress = true;
 namespaceManager.CreateTopic(td);
 ```
 
-如果包含不可遺失的重要資訊的訊息傳送至快速實體，寄件者可以強制立即將訊息保存於靜態儲存體設定的服務匯流排 [ForcePersistence []][] 屬性 **true**。
+如果包含不可遺失的重要資訊的訊息傳送至快速實體，寄件者可以強制立即將訊息保存於靜態儲存體設定的服務匯流排 [ForcePersistence][] 屬性 **true**。
 
 ## 使用分割的佇列或主題
 
-服務匯流排會在內部使用相同的節點和訊息存放區來處理和儲存訊息實體 (佇列或主題) 的所有訊息。 另一方面，分割的佇列或主題會在多個節點和訊息存放區中散佈。 分割的佇列和主題不僅會產生比一般佇列和主題更高的輸送量，也會顯示較優異的可用性。 若要建立磁碟分割的實體，設定 [EnablePartitioning []][] 屬性 **true**, ，如下列範例所示。 如需分割實體的詳細資訊，請參閱 [分割訊息實體 []][]。
+服務匯流排會在內部使用相同的節點和訊息存放區來處理和儲存訊息實體 (佇列或主題) 的所有訊息。 另一方面，分割的佇列或主題會在多個節點和訊息存放區中散佈。 分割的佇列和主題不僅會產生比一般佇列和主題更高的輸送量，也會顯示較優異的可用性。 若要建立磁碟分割的實體，設定 [EnablePartitioning][] 屬性 **true**, ，如下列範例所示。 如需分割實體的詳細資訊，請參閱 [分割訊息實體][]。
 
 ```
 // Create partitioned queue.
@@ -276,19 +275,18 @@ namespaceManager.CreateQueue(qd);
 
 ## 後續步驟
 
-若要深入了解服務匯流排效能最佳化，請參閱 [分割訊息實體 []][]。
+若要深入了解服務匯流排效能最佳化，請參閱 [分割訊息實體][]。
 
-
-[queueclient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx 
-[messagesender]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx 
-[messagingfactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx 
-[peeklock]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx 
-[receiveanddelete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx 
-[batchflushinterval]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.netmessagingtransportsettings.batchflushinterval.aspx 
-[enablebatchedoperations]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations.aspx 
-[queueclient.prefetchcount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.prefetchcount.aspx 
-[subscriptionclient.prefetchcount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.prefetchcount.aspx 
-[forcepersistence]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.forcepersistence.aspx 
-[enablepartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx 
-[partitioning messaging entities]: service-bus-partitioning.md 
-
+  [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
+  [MessageSender]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx
+  [MessagingFactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx
+  [PeekLock]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx
+  [ReceiveAndDelete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx
+  [BatchFlushInterval]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.netmessagingtransportsettings.batchflushinterval.aspx
+  [EnableBatchedOperations]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations.aspx
+  [QueueClient.PrefetchCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.prefetchcount.aspx
+  [SubscriptionClient.PrefetchCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.prefetchcount.aspx
+  [ForcePersistence]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.forcepersistence.aspx
+  [EnablePartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx
+  [Partitioning Messaging Entities]: service-bus-partitioning.md
+  

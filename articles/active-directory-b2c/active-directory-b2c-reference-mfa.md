@@ -16,12 +16,12 @@
     ms.date="09/22/2015"
     ms.author="swkrish"/>
 
-
 # Azure Active Directory B2C 預覽：在取用者導向應用程式中啟用 Multi-Factor Authentication
 
-直接與整合 azure Active Directory (AD) B2C [Azure 多重要素驗證](../multi-factor-authentication/multi-factor-authentication.md) 以方便您將第二個安全性層級加入至消費者應用程式中註冊和登入體驗。 您連一行程式碼都不用寫，即可達成此目標。 目前我們支援使用撥打電話與簡訊做為驗證選項。 如果您已建立註冊和登入的原則 (中所述 [這篇文章]()), ，您可以開啟多因素驗證，在後續章節中所示。
+直接與整合 azure Active Directory (AD) B2C [Azure 多重要素驗證](../multi-factor-authentication/multi-factor-authentication.md) 以方便您將第二個安全性層級加入至消費者應用程式中註冊和登入體驗。 您連一行程式碼都不用寫，即可達成此目標。 目前我們支援使用撥打電話與簡訊做為驗證選項。 如果您已建立註冊和登入的原則 (中所述 [這篇文章]())，您可以開啟多因素驗證，在後續章節中所示。
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+
 > [AZURE.NOTE]
 Multi-Factor Authentication 亦可在建立註冊和登入原則時開啟，而非單靠編輯現有原則將其開啟。
 
@@ -33,10 +33,10 @@ Multi-Factor Authentication 亦可在建立註冊和登入原則時開啟，而�
 ## 修改註冊原則以啟用 Multi-Factor Authentication
 
 1. [瀏覽至 Azure 預覽入口網站的分頁 B2C 功能](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)...
-2. 按一下 [註冊原則]****。
+2. 按一下 [ **註冊原則**。
 3. 按一下以開啟註冊原則 (例如「B2C_1_SiUp」)。
-4. 按一下 [Multi-Factor Authentication]****，並將 [狀態]**** 設為 [開啟]****。 按一下 [確定]****。
-5. 按一下刀鋒視窗頂端的 [儲存]****。 大功告成！
+4. 按一下 [ **多因素驗證** 開啟 **狀態** 至 **ON**。 按一下 [ **確定**。
+5. 按一下 [ **儲存** 刀鋒視窗的頂端。 大功告成！
 
 您可以使用原則上的「立即執行」功能來驗證取用者體驗。 您應會看到以下的正常運作流程：
 
@@ -45,16 +45,12 @@ Multi-Factor Authentication 亦可在建立註冊和登入原則時開啟，而�
 ## 修改登入原則以啟用 Multi-Factor Authentication
 
 1. 瀏覽至 [B2C 功能] 分頁上 [Azure 預覽入口網站](htts://portal.azure.com/)。 讀取 [這裡](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) 如何執行這項操作。
-2. 按一下 [登入原則]****。
-3. 按一下以開啟登入原則 (例如「B2C_1_SiIn」)。 按一下刀鋒視窗頂端的 [編輯]****。
-4. 按一下 [Multi-Factor Authentication]****，並將 [狀態]**** 設為 [開啟]****。 按一下 [確定]****。
-5. 按一下刀鋒視窗頂端的 [儲存]****。 大功告成！
+2. 按一下 [ **登入原則**。
+3. 按一下以開啟登入原則 (例如「B2C_1_SiIn」)。 按一下 [ **編輯** 刀鋒視窗的頂端。
+4. 按一下 [ **多因素驗證** 開啟 **狀態** 至 **ON**。 按一下 [ **確定**。
+5. 按一下 [ **儲存** 刀鋒視窗的頂端。 大功告成！
 
 您可以使用原則上的「立即執行」功能來驗證取用者體驗。 您應會看到以下的正常運作流程：
 
 取用者登入 (使用社交或本機帳戶) 時，若已將通過驗證的電話號碼附加至取用者帳戶，系統會要求其進行驗證。 若未附加電話號碼，系統會要求取用者提供一個電話號碼並加以驗證；驗證成功後，即會將此電話號碼附加至取用者帳戶以供之後使用。
-
-
-
-
 

@@ -15,7 +15,6 @@
    ms.date="11/19/2015"
    ms.author="joaoma" />
 
-
 # 如何變更負載平衡器的 TCP 閒置逾時設定
 
 在預設組態中，Azure 負載平衡器的 [閒置逾時] 設定為 4 分鐘。
@@ -43,24 +42,25 @@
 - 透過 PowerShell 或服務管理 API，設定負載平衡端點集的 TCP 逾時。
 - 設定執行個體層級公用 IP 的 TCP 逾時
 - 透過服務模型設定您的 Web/背景工作角色的 TCP 逾時。
+ 
 
+>[AZURE.NOTE] 請的注意，有些命令只會存在於最新的 Azure PowerShell 封裝。 如果 powershell 命令不存在，請下載最新的 PowerShell 套件。
 
->[AZURE.NOTE] 請記住，有些命令只會存在於最新的 Azure PowerShell 封裝。 如果 powershell 命令不存在，請下載最新的 PowerShell 套件。
-
-
+ 
 ### 將執行個體層級公用 IP 的 TCP 逾時值設定為 15 分鐘。
 
     Set-AzurePublicIP –PublicIPName webip –VM MyVM -IdleTimeoutInMinutes 15
 
-IdleTimeoutInMinutes 是選擇性的。 若未設定，則預設的逾時為 4 分鐘。
->[AZURE.NOTE] 可接受的逾時範圍介於 4 與 30 分鐘之間。
+IdleTimeoutInMinutes 是選擇性的。 若未設定，則預設的逾時為 4 分鐘。 
 
+>[AZURE.NOTE] 可接受的逾時範圍是介於 4 到 30 分鐘之間。
+ 
 ### 在虛擬機器上建立 Azure 端點時設定閒置逾時
 
 若要變更端點的逾時設定
 
     Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
-
+ 
 擷取閒置逾時設定
 
     PS C:\> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
@@ -80,13 +80,13 @@ IdleTimeoutInMinutes 是選擇性的。 若未設定，則預設的逾時為 4 �
     Acl : {}
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
-
+ 
 ### 在負載平衡端點集上設定 TCP 逾時
 
 如果端點是負載平衡端點集的一部分，就必須在負載平衡端點集上設定 TCP 逾時：
 
     Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
-
+ 
 ### 變更雲端服務的逾時設定
 
 您可以利用 Azure SDK for .NET 2.4 來更新雲端服務。
@@ -118,17 +118,16 @@ IdleTimeoutInMinutes 是選擇性的。 若未設定，則預設的逾時為 4 �
 
 您可以設定使用服務管理 API 的 TCP 閒置逾時
 請務必將 x ms 版本標頭設定為 2014年-06-01 版或更高版本。
-
+ 
 在部署中的所有虛擬機器上，更新指定負載平衡輸入端點的設定
-
-    Request
     
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
+    Request
 
+    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
 <BR>
 
     Response
-    
+
     <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
     <InputEndpoint>
     <LoadBalancedEndpointSetName>endpoint-set-name</LoadBalancedEndpointSetName>
@@ -166,8 +165,4 @@ IdleTimeoutInMinutes 是選擇性的。 若未設定，則預設的逾時為 4 �
 
 [設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
-
-
-
-
-
+ 

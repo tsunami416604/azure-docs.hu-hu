@@ -17,17 +17,14 @@
     ms.date="12/04/2015" 
     ms.author="jeffstok"/>
 
+#替換登入認證
 
-# 替換登入認證
-
-## 摘要
-
+##摘要
 Azure Stream Analytics 目前不允許在工作執行的時候，取代輸入/輸出中的認證。
 
 雖然 Azure 串流分析不支援從上次的輸出繼續工作，但我們還是要和您分享如何盡量縮短工作停止和開始之間的延遲時間，以及替換登入認證的整個程序。
 
-## 第 1 部分 - 準備一組新的認證：
-
+##第 1 部分 - 準備一組新的認證：
 此部分適用於下列的輸入/輸出：
 
 * Blob 儲存體
@@ -37,28 +34,26 @@ Azure Stream Analytics 目前不允許在工作執行的時候，取代輸入/�
 
 針對其他的輸入/輸出，請參考第 2 部分。
 
-### 部落格儲存體/資料表儲存體
-
+###部落格儲存體/資料表儲存體
 1.  在 Azure 管理入口網站移至儲存體] 擴充:  
 ![graphic1][graphic1]
 2.  找出工作使用的儲存體，然後進到裡面:  
 ![graphic2][graphic2]
 3.  按一下 [管理存取金鑰的命令:  
 ![graphic3][graphic3]
-4.  在主要存取金鑰和次要存取金鑰之間， **挑選工作使用的金鑰**。
+4.  主要存取金鑰和次要存取金鑰之間， **挑選工作未使用**。
 5.  按重新產生:  
 ![graphic4][graphic4]
 6.  複製剛剛產生的金鑰:  
 ![graphic5][graphic5]
 7.  繼續第 2 部分。
 
-### 事件中樞
-
+###事件中樞
 1.  在 Azure 管理入口網站移至服務匯流排] 擴充:  
 ![graphic6][graphic6]
 2.  找出工作使用的服務匯流排命名空間，然後進到裡面:  
 ![graphic7][graphic7]
-3.  如果工作會在「服務匯流排命名空間」上使用共用存取原則，請跳到步驟 6
+3.  如果工作會在「服務匯流排命名空間」上使用共用存取原則，請跳到步驟 6  
 4.  請移至 [事件中樞] 索引標籤:  
 ![graphic8][graphic8]
 5.  找出工作使用的事件中樞，然後進到裡面:  
@@ -67,16 +62,16 @@ Azure Stream Analytics 目前不允許在工作執行的時候，取代輸入/�
 ![graphic10][graphic10]
 7.  在原則名稱] 下拉式清單，找出工作使用的共用的存取原則:  
 ![graphic11][graphic11]
-8.  在主要金鑰和次要金鑰之間， **挑選工作未使用的金鑰**。
+8.  主索引鍵和次要金鑰之間， **挑選工作未使用**。  
 9.  按重新產生:  
 ![graphic12][graphic12]
 10. 複製剛剛產生的金鑰:  
 ![graphic13][graphic13]
-11. 繼續第 2 部分。
+11. 繼續第 2 部分。  
 
-### SQL Database
+###SQL Database
 
->[AZURE.NOTE] 注意：您必須連接到 SQL 資料庫服務。 為了示範整個過程，我們會借鑑 Azure 管理入口網站的管理經驗，不過您也可以選擇使用其他類似 SQL Server Management Studio 的用戶端工具。
+>[AZURE.NOTE] 注意: 您必須連接到 SQL 資料庫服務。 為了示範整個過程，我們會借鑑 Azure 管理入口網站的管理經驗，不過您也可以選擇使用其他類似 SQL Server Management Studio 的用戶端工具。
 
 1.  在 Azure 管理入口網站移至 SQL 資料庫] 擴充:  
 ![graphic14][graphic14]
@@ -90,8 +85,8 @@ Azure Stream Analytics 目前不允許在工作執行的時候，取代輸入/�
 ![graphic18][graphic18]
 6.  按一下 [新增查詢:  
 ![graphic19][graphic19]
-7.  輸入下列查詢取代 <login_name> 與您的使用者名稱和取代 <enterStrongPasswordHere> 與您的新密碼:  
-`建立登入 < i n _ > WITH PASSWORD = < enterStrongPasswordHere >`
+7.  在下列查詢中使用您的使用者名稱取代 < i n _ >，並取代的型別 <enterStrongPasswordHere> 以新的密碼:  
+`CREATE LOGIN <login_name> WITH PASSWORD = '<enterStrongPasswordHere>'`
 8.  按一下 [執行]:  
 ![graphic20][graphic20]
 9.  回到步驟 2，這次按一下資料庫:  
@@ -102,15 +97,14 @@ Azure Stream Analytics 目前不允許在工作執行的時候，取代輸入/�
 ![graphic23][graphic23]
 12. 按一下 [新增查詢:  
 ![graphic24][graphic24]
-13. 型別中的下列查詢取代 <user_name> 與您想要識別此登入此資料庫的內容中所用的名稱 (您可以提供相同的值為您提供給 <login_name>, ，例如)，並取代 <login_name> 新的使用者名稱:  
-`建立使用者 < s e _ > 從登入 < i n _ n >`
+13. 輸入下列查詢以您想要識別此登入此資料庫 (您可以提供相同的值，您提供的 < i n _ >，例如) 的內容中所用的名稱取代 < s e _ > 和 < i n _ > 取代為新的使用者名稱:  
+`CREATE USER <user_name> FROM LOGIN <login_name>`
 14. 按一下 [執行]:  
 ![graphic25][graphic25]
 15. 現在您應該為新使用者提供與原始使用者相同的角色和權限。
 16. 繼續第 2 部分。
 
-## 第 2 部分：停止 Azure Stream Analytics 工作
-
+##第 2 部分：停止 Azure Stream Analytics 工作
 1.  在 Azure 管理入口網站移至資料流分析延伸模組:  
 ![graphic26][graphic26]
 2.  找出您的工作，然後進到裡面:  
@@ -124,10 +118,9 @@ Azure Stream Analytics 目前不允許在工作執行的時候，取代輸入/�
 ![graphic30][graphic30]
 6.  繼續第 3 部分。
 
-## 第 3 部分：編輯 Stream Analytics 工作的認證
+##第 3 部分：編輯 Stream Analytics 工作的認證
 
-### Blob 儲存體/資料表儲存體
-
+###Blob 儲存體/資料表儲存體 
 1.  尋找儲存體帳戶金鑰] 欄位，然後貼上剛剛產生的金鑰:  
 ![graphic31][graphic31]
 2.  按一下 [儲存] 命令，然後確認儲存所做的變更:  
@@ -135,127 +128,118 @@ Azure Stream Analytics 目前不允許在工作執行的時候，取代輸入/�
 3.  當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。
 4.  繼續第 4 部分。
 
-### 事件中樞
-
+###事件中樞
 1.  尋找事件中樞原則索引鍵欄位，然後貼上剛剛產生的金鑰:  
 ![graphic33][graphic33]
 2.  按一下 [儲存] 命令，然後確認儲存所做的變更:  
 ![graphic34][graphic34]
-3.  當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。
+3.  當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。 
 4.  繼續第 4 部分。
 
-### Power BI
-
-1.  按一下 [更新授權]：
+###Power BI
+1.  按一下 [更新授權]：  
 * ![graphic35][graphic35]
-* 系統會要求您進行以下確認：
+* 系統會要求您進行以下確認：  
 * ![graphic36][graphic36]
 2.  按一下 [儲存] 命令，然後確認儲存所做的變更:  
 ![graphic37][graphic37]
-3.  當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。
+3.  當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。   
 4.  繼續第 4 部分。
 
-### SQL Database
-
+###SQL Database
 1.  尋找 [使用者名稱和密碼] 欄位，然後貼上您新建立的一組認證:  
 ![graphic38][graphic38]
 2.  按一下 [儲存] 命令，然後確認儲存所做的變更:  
 ![graphic39][graphic39]
-3.  當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。
+3.  當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。   
 4.  繼續第 4 部分。
 
-## 第 4 部分：從上次停止的時間開始您的工作
-
+##第 4 部分：從上次停止的時間開始您的工作
 1.  離開輸入/輸出:  
 ![graphic40][graphic40]
 2.  按一下 [開始] 命令:  
 ![graphic41][graphic41]
 3.  挑選 [上次停止時間，然後按一下 [確定]:  
  ![graphic42][graphic42]
-4.  繼續第 5 部分。
+4.  繼續第 5 部分。  
 
-## 第 5 部分：移除舊的認證集
-
+##第 5 部分：移除舊的認證集
 此部分適用於下列的輸入/輸出：
 * Blob 儲存體
 * 事件中樞
 * SQL Database
 * 資料表儲存體
 
-### Blob 儲存體/資料表儲存體
-
+###Blob 儲存體/資料表儲存體 
 為工作以前使用的存取金鑰，重複第 1 部分，以更新現在未使用的存取金鑰。
 
-### 事件中樞
-
+###事件中樞
 為工作以前使用的金鑰，重複第 1 部分，以更新現在未使用的金鑰。
 
-### SQL Database
-
-1.  返回到 [查詢] 視窗中從第 1 步驟 7，然後輸入下列查詢取代 <previous_login_name> 工作以前使用的使用者名稱:  
-`卸除登入 < previous_login_name >`
+###SQL Database
+1.  回到 [查詢] 視窗中從第 1 步驟 7 和型別在下列查詢中，您的工作以前使用的使用者名稱取代 < previous_login_name >:  
+`DROP LOGIN <previous_login_name>`  
 2.  按一下 [執行]:  
-    ![graphic43][graphic43]
+    ![graphic43][graphic43]  
 
-系統應該會要求您進行以下確認：
+系統應該會要求您進行以下確認： 
 
     Command(s) completed successfully.
 
 ## 取得說明
-
 如需進一步的協助，請嘗試我們 [Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## 後續步驟
 
-- [Azure 串流分析簡介](stream-analytics-introduction.md)
-- [開始使用 Azure 串流分析](stream-analytics-get-started.md)
-- [調整 Azure 串流分析工作](stream-analytics-scale-jobs.md)
-- [Azure 串流分析查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+- [Azure 資料流分析簡介](stream-analytics-introduction.md)
+- [開始使用 Azure 資料流分析](stream-analytics-get-started.md)
+- [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
+- [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 
-
-[graphic1]: ./media/stream-analytics-login-credentials-inputs-outputs/1-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic2]: ./media/stream-analytics-login-credentials-inputs-outputs/2-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic3]: ./media/stream-analytics-login-credentials-inputs-outputs/3-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic4]: ./media/stream-analytics-login-credentials-inputs-outputs/4-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic5]: ./media/stream-analytics-login-credentials-inputs-outputs/5-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic6]: ./media/stream-analytics-login-credentials-inputs-outputs/6-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic7]: ./media/stream-analytics-login-credentials-inputs-outputs/7-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic8]: ./media/stream-analytics-login-credentials-inputs-outputs/8-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic9]: ./media/stream-analytics-login-credentials-inputs-outputs/9-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic10]: ./media/stream-analytics-login-credentials-inputs-outputs/10-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic11]: ./media/stream-analytics-login-credentials-inputs-outputs/11-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic12]: ./media/stream-analytics-login-credentials-inputs-outputs/12-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic13]: ./media/stream-analytics-login-credentials-inputs-outputs/13-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic14]: ./media/stream-analytics-login-credentials-inputs-outputs/14-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic15]: ./media/stream-analytics-login-credentials-inputs-outputs/15-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic16]: ./media/stream-analytics-login-credentials-inputs-outputs/16-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic17]: ./media/stream-analytics-login-credentials-inputs-outputs/17-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic18]: ./media/stream-analytics-login-credentials-inputs-outputs/18-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic19]: ./media/stream-analytics-login-credentials-inputs-outputs/19-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic20]: ./media/stream-analytics-login-credentials-inputs-outputs/20-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic21]: ./media/stream-analytics-login-credentials-inputs-outputs/21-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic22]: ./media/stream-analytics-login-credentials-inputs-outputs/22-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic23]: ./media/stream-analytics-login-credentials-inputs-outputs/23-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic24]: ./media/stream-analytics-login-credentials-inputs-outputs/24-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic25]: ./media/stream-analytics-login-credentials-inputs-outputs/25-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic26]: ./media/stream-analytics-login-credentials-inputs-outputs/26-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic27]: ./media/stream-analytics-login-credentials-inputs-outputs/27-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic28]: ./media/stream-analytics-login-credentials-inputs-outputs/28-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic29]: ./media/stream-analytics-login-credentials-inputs-outputs/29-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic30]: ./media/stream-analytics-login-credentials-inputs-outputs/30-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic31]: ./media/stream-analytics-login-credentials-inputs-outputs/31-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic32]: ./media/stream-analytics-login-credentials-inputs-outputs/32-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic33]: ./media/stream-analytics-login-credentials-inputs-outputs/33-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic34]: ./media/stream-analytics-login-credentials-inputs-outputs/34-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic35]: ./media/stream-analytics-login-credentials-inputs-outputs/35-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic36]: ./media/stream-analytics-login-credentials-inputs-outputs/36-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic37]: ./media/stream-analytics-login-credentials-inputs-outputs/37-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic38]: ./media/stream-analytics-login-credentials-inputs-outputs/38-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic39]: ./media/stream-analytics-login-credentials-inputs-outputs/39-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic40]: ./media/stream-analytics-login-credentials-inputs-outputs/40-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic41]: ./media/stream-analytics-login-credentials-inputs-outputs/41-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic42]: ./media/stream-analytics-login-credentials-inputs-outputs/42-stream-analytics-login-credentials-inputs-outputs.png 
-[graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png 
+[graphic1]: ./media/stream-analytics-login-credentials-inputs-outputs/1-stream-analytics-login-credentials-inputs-outputs.png
+[graphic2]: ./media/stream-analytics-login-credentials-inputs-outputs/2-stream-analytics-login-credentials-inputs-outputs.png
+[graphic3]: ./media/stream-analytics-login-credentials-inputs-outputs/3-stream-analytics-login-credentials-inputs-outputs.png
+[graphic4]: ./media/stream-analytics-login-credentials-inputs-outputs/4-stream-analytics-login-credentials-inputs-outputs.png
+[graphic5]: ./media/stream-analytics-login-credentials-inputs-outputs/5-stream-analytics-login-credentials-inputs-outputs.png
+[graphic6]: ./media/stream-analytics-login-credentials-inputs-outputs/6-stream-analytics-login-credentials-inputs-outputs.png
+[graphic7]: ./media/stream-analytics-login-credentials-inputs-outputs/7-stream-analytics-login-credentials-inputs-outputs.png
+[graphic8]: ./media/stream-analytics-login-credentials-inputs-outputs/8-stream-analytics-login-credentials-inputs-outputs.png
+[graphic9]: ./media/stream-analytics-login-credentials-inputs-outputs/9-stream-analytics-login-credentials-inputs-outputs.png
+[graphic10]: ./media/stream-analytics-login-credentials-inputs-outputs/10-stream-analytics-login-credentials-inputs-outputs.png
+[graphic11]: ./media/stream-analytics-login-credentials-inputs-outputs/11-stream-analytics-login-credentials-inputs-outputs.png
+[graphic12]: ./media/stream-analytics-login-credentials-inputs-outputs/12-stream-analytics-login-credentials-inputs-outputs.png
+[graphic13]: ./media/stream-analytics-login-credentials-inputs-outputs/13-stream-analytics-login-credentials-inputs-outputs.png
+[graphic14]: ./media/stream-analytics-login-credentials-inputs-outputs/14-stream-analytics-login-credentials-inputs-outputs.png
+[graphic15]: ./media/stream-analytics-login-credentials-inputs-outputs/15-stream-analytics-login-credentials-inputs-outputs.png
+[graphic16]: ./media/stream-analytics-login-credentials-inputs-outputs/16-stream-analytics-login-credentials-inputs-outputs.png
+[graphic17]: ./media/stream-analytics-login-credentials-inputs-outputs/17-stream-analytics-login-credentials-inputs-outputs.png
+[graphic18]: ./media/stream-analytics-login-credentials-inputs-outputs/18-stream-analytics-login-credentials-inputs-outputs.png
+[graphic19]: ./media/stream-analytics-login-credentials-inputs-outputs/19-stream-analytics-login-credentials-inputs-outputs.png
+[graphic20]: ./media/stream-analytics-login-credentials-inputs-outputs/20-stream-analytics-login-credentials-inputs-outputs.png
+[graphic21]: ./media/stream-analytics-login-credentials-inputs-outputs/21-stream-analytics-login-credentials-inputs-outputs.png
+[graphic22]: ./media/stream-analytics-login-credentials-inputs-outputs/22-stream-analytics-login-credentials-inputs-outputs.png
+[graphic23]: ./media/stream-analytics-login-credentials-inputs-outputs/23-stream-analytics-login-credentials-inputs-outputs.png
+[graphic24]: ./media/stream-analytics-login-credentials-inputs-outputs/24-stream-analytics-login-credentials-inputs-outputs.png
+[graphic25]: ./media/stream-analytics-login-credentials-inputs-outputs/25-stream-analytics-login-credentials-inputs-outputs.png
+[graphic26]: ./media/stream-analytics-login-credentials-inputs-outputs/26-stream-analytics-login-credentials-inputs-outputs.png
+[graphic27]: ./media/stream-analytics-login-credentials-inputs-outputs/27-stream-analytics-login-credentials-inputs-outputs.png
+[graphic28]: ./media/stream-analytics-login-credentials-inputs-outputs/28-stream-analytics-login-credentials-inputs-outputs.png
+[graphic29]: ./media/stream-analytics-login-credentials-inputs-outputs/29-stream-analytics-login-credentials-inputs-outputs.png
+[graphic30]: ./media/stream-analytics-login-credentials-inputs-outputs/30-stream-analytics-login-credentials-inputs-outputs.png
+[graphic31]: ./media/stream-analytics-login-credentials-inputs-outputs/31-stream-analytics-login-credentials-inputs-outputs.png
+[graphic32]: ./media/stream-analytics-login-credentials-inputs-outputs/32-stream-analytics-login-credentials-inputs-outputs.png
+[graphic33]: ./media/stream-analytics-login-credentials-inputs-outputs/33-stream-analytics-login-credentials-inputs-outputs.png
+[graphic34]: ./media/stream-analytics-login-credentials-inputs-outputs/34-stream-analytics-login-credentials-inputs-outputs.png
+[graphic35]: ./media/stream-analytics-login-credentials-inputs-outputs/35-stream-analytics-login-credentials-inputs-outputs.png
+[graphic36]: ./media/stream-analytics-login-credentials-inputs-outputs/36-stream-analytics-login-credentials-inputs-outputs.png
+[graphic37]: ./media/stream-analytics-login-credentials-inputs-outputs/37-stream-analytics-login-credentials-inputs-outputs.png
+[graphic38]: ./media/stream-analytics-login-credentials-inputs-outputs/38-stream-analytics-login-credentials-inputs-outputs.png
+[graphic39]: ./media/stream-analytics-login-credentials-inputs-outputs/39-stream-analytics-login-credentials-inputs-outputs.png
+[graphic40]: ./media/stream-analytics-login-credentials-inputs-outputs/40-stream-analytics-login-credentials-inputs-outputs.png
+[graphic41]: ./media/stream-analytics-login-credentials-inputs-outputs/41-stream-analytics-login-credentials-inputs-outputs.png
+[graphic42]: ./media/stream-analytics-login-credentials-inputs-outputs/42-stream-analytics-login-credentials-inputs-outputs.png
+[graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
+ 
 

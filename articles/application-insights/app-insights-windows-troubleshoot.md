@@ -14,15 +14,14 @@
     ms.topic="article" 
     ms.date="11/24/2015" 
     ms.author="awills"/>
-
-
+ 
 # Windows 裝置適用的 Application Insights 的疑難排解和問答集
 
-疑問或問題 [視窗 ][windows]嗎? 以下是一些秘訣。
+疑問或問題 [Windows 中的 Visual Studio Application Insights][windows]嗎? 以下是一些秘訣。
 
 
 
-## 沒有資料
+## 沒有資料 
 
 *我已成功加入 Application Insights 並執行我的應用程式，但在入口網站中從未看到資料。*
 
@@ -41,9 +40,9 @@
 
 ## 我要如何將 Application Insights 加入至通用應用程式？
 
-如果您要在 Visual Studio 2015 建立新解決方案，只需在新的專案對話方塊中選取 [加入 Application Insights] 即可。 如此一來，會從所有目標類型將遙測傳送到相同的 Application Insights 資源。
+如果您要在 Visual Studio 2015 建立新解決方案，只需在新的專案對話方塊中選取 [加入 Application Insights] 即可。  如此一來，會從所有目標類型將遙測傳送到相同的 Application Insights 資源。
 
-如果您已建立通用的應用程式解決方案，請在每個主要專案上按一下右鍵，再選取 [加入 Application Insights]****。
+如果您已經建立通用應用程式方案時，每個主要的專案上按一下滑鼠右鍵，然後選取 **加入 Application Insights**。 
 
 
 
@@ -62,13 +61,13 @@
 
 在新的 Application Insights 概觀刀鋒視窗中，開啟 Essentials 並複製檢測金鑰。
 
-將金鑰貼入 ApplicationInsights.config 檔案中 `< InstrumentationKey >` 節點。
+將金鑰貼上到 `<InstrumentationKey>` 節點中的 ApplicationInsights.config 檔案。
 
 或者，如果您想要在執行階段變更目標，請使用：
 
      var telemetry = new TelemetryClient();
      telemetry.Context.InstrumentationKey = newKey;
-
+    
 ## 如何監視用戶端-伺服器應用程式？
 
 作法有二：
@@ -80,46 +79,47 @@
 
     telemetry.Context.OperationId = opid;
 
+
 ## Azure 開始畫面
 
-* 我正在查看 [Azure 入口網站](http://portal.azure.com)。 沒有地圖是否告知資訊我的應用程式? *
+*我正在查看 [Azure 入口網站](http://portal.azure.com)。 地圖是否告知有關我的應用程式的相關資訊？*
 
 否，它會顯示世界各地 Azure 伺服器的健全狀況。
 
 *從 Azure 開始面板 (主畫面) 中，如何找到我應用程式的相關資料？*
 
-假設您 [已設定您的應用程式的 Application Insights 的 ][windows], ，按一下 [瀏覽、 選取 Application Insights]，然後選取您建立應用程式的資源。 日後若要更快速地從該處開始，您可以將資源釘選至開始面板。
+假設您 [已設定您的應用程式的 Application Insights][windows], ，按一下 [瀏覽、 選取 Application Insights]，然後選取您建立應用程式的資源。 日後若要更快速地從該處開始，您可以將資源釘選至開始面板。
 
-## 資料保留
+## 資料保留 
 
-* 資料保留在入口網站的時間長度是? 是否安全? *
+*資料保留在入口網站多久的時間？ 是否安全？*
 
-請參閱 [資料保留和隱私權 ][data]。
+請參閱 [資料保留和隱私權][data]。
 
 ## 後續步驟
 
-* 設定 Application Insights Java 伺服器應用程式。 我可以做什麼? *
+*設定 Java 伺服器應用程式的 Application Insights。 我還可以做什麼？*
 
-* [監視 ][availability]
-* [監視網頁使用狀況 ][usage]
-* [追蹤使用狀況並診斷裝置應用程式 ][platforms]
-* [撰寫程式碼來追蹤您的應用程式 ][track]
-* [擷取診斷記錄 ][javalogs]
+* [監視網頁可用性][availability]
+* [監視網頁使用狀況][usage]
+* [追蹤使用狀況並診斷裝置應用程式中的問題][platforms]
+* [撰寫程式碼以追蹤應用程式使用狀況][track]
+* [擷取診斷記錄][javalogs]
 
 
 ## 取得說明
 
 * [堆疊溢位](http://stackoverflow.com/questions/tagged/ms-application-insights)
 
+<!--Link references-->
 
+[availability]: app-insights-monitor-web-app-availability.md
+[data]: app-insights-data-retention-privacy.md
+[javalogs]: app-insights-java-trace-logs.md
+[platforms]: app-insights-platforms.md
+[track]: app-insights-api-custom-events-metrics.md
+[universal]: app-insights-windows-get-started.md#universal
+[usage]: app-insights-web-track-usage.md
+[windows]: app-insights-windows-get-started.md
 
-
-[availability]: app-insights-monitor-web-app-availability.md 
-[data]: app-insights-data-retention-privacy.md 
-[javalogs]: app-insights-java-trace-logs.md 
-[platforms]: app-insights-platforms.md 
-[track]: app-insights-api-custom-events-metrics.md 
-[universal]: app-insights-windows-get-started.md#universal 
-[usage]: app-insights-web-track-usage.md 
-[windows]: app-insights-windows-get-started.md 
-
+ 

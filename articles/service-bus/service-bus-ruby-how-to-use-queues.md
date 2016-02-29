@@ -1,6 +1,6 @@
 <properties
     pageTitle="如何將服務匯流排佇列搭配 Ruby 使用 | Microsoft Azure"
-    description="了解如何使用 Azure 中的服務匯流排佇列。程式碼範例以 Ruby 撰寫。"
+    description="了解如何使用 Azure 中的服務匯流排佇列。 程式碼範例以 Ruby 撰寫。"
     services="service-bus"
     documentationCenter="ruby"
     authors="sethmanheim"
@@ -15,7 +15,6 @@
     ms.topic="article"
     ms.date="12/09/2015"
     ms.author="sethm"/>
-
 
 # 如何使用服務匯流排佇列
 
@@ -47,8 +46,8 @@
 服務匯流排佇列是一項通用技術，適用於
 各種不同的案例:
 
--   在 [多層式 web 和背景工作角色之間通訊
-    Azure application](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)。
+-   在 web 和背景工作角色之間通訊 [多層式
+    Azure 應用程式](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)。
 -   代管應用程式的內部部署應用程式和 Azure 之間的通訊
     在 [混合式解決方案](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)。
 -   分散式應用程式元件之間的通訊
@@ -85,6 +84,7 @@
 將您的程式碼中使用此值稍後在本教學課程。
 
 ![複製金鑰](./media/service-bus-ruby-how-to-use-queues/defaultkey.png)
+
 > [AZURE.NOTE] 您也可以找到此機碼，如果您登入 [Azure 傳統入口網站](http://manage.windowsazure.com/) 並瀏覽至您的服務匯流排命名空間的連接資訊。
 
 ## 建立 Ruby 應用程式
@@ -97,7 +97,7 @@
 
 ### 使用 RubyGems 來取得套件
 
-1. 使用命令列介面，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
+1. 使用命令列介面，例如 **PowerShell** (Windows)、 **終端機** (Mac) 或 **Bash** (Unix)。
 
 2. 在命令視窗中鍵入 "gem install azure" 以安裝 Gem 和相依性。
 
@@ -112,18 +112,18 @@ require "azure"
 ## 設定 Azure 服務匯流排連接
 
 Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_SERVICEBUS\_ACCESS_KEY**
-連接到您的服務匯流排命名空間所需的資訊。 若未設定這些環境變數，您必須使用下列程式碼，在使用 **Azure::ServiceBusService** 之前指定命名空間資訊：
+連接到您的服務匯流排命名空間所需的資訊。 如果未設定這些環境變數，您必須指定命名空間資訊之前使用 **azure:: servicebusservice** 為下列程式碼:
 
 ```
 Azure.config.sb_namespace = "<your azure service bus namespace>"
 Azure.config.sb_access_key = "<your azure service bus access key>"
 ```
 
-將命名空間值設為您建立的值，而非整個 URL。 例如，使用 **"yourexamplenamespace"** 而非 "yourexamplenamespace.servicebus.windows.net"。
+將命名空間值設為您建立的值，而非整個 URL。 例如，使用 **"yourexamplenamespace"**, ，非"yourexamplenamespace.servicebus.windows.net"。
 
 ## 如何建立佇列
 
-**Azure::ServiceBusService** 物件可讓您使用佇列。 若要建立佇列，請使用 **create_queue()** 方法。 下列範例會建立佇列，或列印出任何錯誤。
+ **Azure:: servicebusservice** 物件可讓您能夠使用佇列。 若要建立佇列時，使用 **create_queue ()** 方法。 下列範例會建立佇列，或列印出任何錯誤。
 
 ```
 azure_service_bus_service = Azure::ServiceBusService.new
@@ -134,7 +134,7 @@ rescue
 end
 ```
 
-您也可以使用其他選項傳遞 **Azure::ServiceBus::Queue** 物件，這可讓您覆寫訊息存留時間或佇列大小上限等預設佇列設定。 下列範例說明如何將佇列大小上限設為 5GB，將存留時間設為 1 分鐘：
+您也可以傳遞 **Azure::ServiceBus::Queue** 物件與其他選項，可讓您覆寫訊息時間即時或佇列大小上限等預設佇列設定。 下列範例說明如何將佇列大小上限設為 5GB，將存留時間設為 1 分鐘：
 
 ```
 queue = Azure::ServiceBus::Queue.new("test-queue")
@@ -160,7 +160,7 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 
 ## 如何從佇列接收訊息
 
-接收來自佇列使用的訊息 **receive\_queue\_message ()** 方法 **azure:: servicebusservice** 物件。 根據預設，在讀取及鎖定訊息後並不會將其從佇列中刪除。 但您可以將 **:peek_lock** 選項設為 **false**，而在讀取訊息後將其從佇列中刪除。
+接收來自佇列使用的訊息 **receive\_queue\_message ()** 方法 **azure:: servicebusservice** 物件。 根據預設，在讀取及鎖定訊息後並不會將其從佇列中刪除。 不過，您可以刪除訊息從佇列讀取時藉由設定 **: peek_lock** 選項 **false**。
 
 預設行為會使讀取和刪除變成兩階段作業，因此也可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 **delete\_queue\_message ()** 方法，並提供要刪除做為參數的訊息。  **Delete\_queue\_message ()** 方法會標示為已取用的訊息，並將它從佇列移除。
 
@@ -181,7 +181,7 @@ azure_service_bus_service.delete_queue_message(message)
 
 與在佇列內鎖定訊息相關的還有逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會自動解除鎖定訊息，並讓訊息可以被重新接收。
 
-該應用程式當機之前處理訊息之後 **delete\_queue\_message ()** 呼叫方法，然後將訊息傳遞給應用程式重新啟動時。 這通常稱為**至少處理一次**；也就是說，每個訊息至少會被處理一次，但在特定狀況下，可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 這通常您可使用 **message\_id** 訊息，各個傳遞嘗試保持不變的屬性。
+該應用程式當機之前處理訊息之後 **delete\_queue\_message ()** 呼叫方法，然後將訊息傳遞給應用程式重新啟動時。 這通常稱為 **至少處理一次**; 也就是說，每個訊息會至少處理一次，但在某些情況下可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 這通常您可使用 **message\_id** 訊息，各個傳遞嘗試保持不變的屬性。
 
 ## 後續步驟
 
@@ -191,9 +191,5 @@ azure_service_bus_service.delete_queue_message(message)
 -   請瀏覽 [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) GitHub 上的儲存機制。
 
 要比較本文所討論的 Azure 服務匯流排佇列和 Azure 佇列 [如何使用 Azure 佇列服務](/develop/ruby/how-to-guides/queue-service/) 文件，請參閱 [Azure 佇列和 Azure 服務匯流排佇列-比較和對照](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-
-
-
-
-
+ 
 

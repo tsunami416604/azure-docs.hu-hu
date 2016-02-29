@@ -17,7 +17,6 @@
    ms.author="guscatal;elizapo"/>
 
 
-
 # 在任何具有 Azure RemoteApp 的裝置上取得相同的 Office 365 體驗
 
 本文涵蓋如何在公司的任何裝置上部署 Office 365。 您的使用者可以在 Android、Apple 和 Windows 上取得相同的功能和 UI 體驗。
@@ -27,17 +26,17 @@
 ## 建立雲端收藏
 
 先建立 Azure 帳戶之後，瀏覽至 **RemoteApp** 依序按一下左側的連結。
-![在 Azure 入口網站上顯示 Azure RemoteApp](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
+![Azure 入口網站上顯示 Azure RemoteApp](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
 
-然後，按一下底部的 [**新增**] 並「快速建立」收藏，以繼續進行。 提供的名稱、 區域、 訂用帳戶、 計畫和映像"Office Proffesional 2013" 我們提供。
+然後即可繼續 **新** 和 「 快速建立 」 集合。 提供的名稱、 區域、 訂用帳戶、 計畫和映像"Office Proffesional 2013" 我們提供。
 ![建立對話方塊](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
 
 完成表單之後，應該會啟動集合建立程序。 這可能需要一個小時左右。
 
 ![等候](./media/remoteapp-tutorial-o365anywhere/3-waiting.png)
 
-完成程序之後，結果會與以下範例類似。 如果我們按一下 **發行** 我們可以看到，大部分的 Office 應用程式有已發佈。
-![已建立集合](./media/remoteapp-tutorial-o365anywhere/4-done.png)
+完成程序之後，結果會與以下範例類似。 如果我們按一下 **發佈** 我們可以看到，大部分的 Office 應用程式有已發佈。
+![建立集合](./media/remoteapp-tutorial-o365anywhere/4-done.png)
 
 ![已發佈的應用程式](./media/remoteapp-tutorial-o365anywhere/5-publish.png)
 
@@ -67,8 +66,4 @@
 ![啟動](./media/remoteapp-tutorial-o365anywhere/10-arastart.png)
 
 ![powerpoint](./media/remoteapp-tutorial-o365anywhere/11-pp.png)
-
-
-
-
 

@@ -17,7 +17,6 @@
    ms.date="12/07/2015"
    ms.author="telmos"/>
 
-
 # 使用 Azure 入口網站建立虛擬網路 (傳統)
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
@@ -33,8 +32,4 @@
 [AZURE.INCLUDE [virtual-networks-create-vnet-classic-portal-include](../../includes/virtual-networks-create-vnet-classic-portal-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-classic-netcfg-portal-include](../../includes/virtual-networks-create-vnet-classic-netcfg-portal-include.md)]
-
-
-
-
 

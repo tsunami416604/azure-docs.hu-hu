@@ -17,12 +17,11 @@
     ms.author="curtand"/>
 
 
-
 # Azure 身分識別管理的基本概念
 
+
+
+
+
 [AZURE.INCLUDE [identity](../../includes/identity.md)]
-
-
-
-
 

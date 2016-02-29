@@ -1,6 +1,6 @@
 <properties
     pageTitle="DocumentDB 自動化 - 資源管理員 - CLI |Microsoft Azure"
-    description="使用 Azure 資源管理員範本或 CLI 來部署 DocumentDB 資料庫帳戶。DocumentDB 是適用於 JSON 資料的雲端式 NoSQL 資料庫。"
+    description="使用 Azure 資源管理員範本或 CLI 來部署 DocumentDB 資料庫帳戶。 DocumentDB 是適用於 JSON 資料的雲端式 NoSQL 資料庫。"
     services="documentdb"
     authors="mimig1"
     manager="jhubbard"
@@ -18,18 +18,16 @@
     ms.date="12/03/2015" 
     ms.author="mimig"/>
 
-
 # 使用 Azure 資源管理員範本和 Azure CLI 自動建立 DocumentDB 帳戶
 
 > [AZURE.SELECTOR]
-- [Azure Portal](documentdb-create-account.md)
-- [Azure CLI and ARM](documentdb-automation-resource-manager-cli.md)
-
+- [Azure 入口網站](documentdb-create-account.md)
+- [Azure CLI 和 ARM](documentdb-automation-resource-manager-cli.md)
 
 本文將說明如何使用 Azure 資源管理員範本或 Azure 命令列介面 (CLI) 來建立 DocumentDB 帳戶。 若要建立 DocumentDB 帳戶，使用 Azure 入口網站，請參閱 [建立 DocumentDB 資料庫帳戶，使用 Azure 入口網站](documentdb-create-account.md)。
 
-- [建立使用 CLI 的 DocumentDB 帳戶](#quick-create-documentdb-account)
-- [建立 DocumentDB 帳戶，使用 ARM 範本](#deploy-documentdb-from-a-template)
+- [使用 CLI 建立 DocumentDB 帳戶](#quick-create-documentdb-account)
+- [使用 ARM 範本建立 DocumentDB 帳戶](#deploy-documentdb-from-a-template)
 
 DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI 建立的 DocumentDB 資源。
 
@@ -39,12 +37,12 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
 ### 更新 Azure CLI 版本
 
-在命令提示字元中，輸入 `azure 版本` 以查看是否已安裝版本 0.9.11 或更新版本。
+在命令提示字元中輸入 `azure --version`，即可以查看您是否已經安裝 0.9.11 版或更新版本。
 
     azure --version
     0.9.11 (node: 0.12.7)
 
-如果您的版本不是 0.9.11 或更新版本，您需要為 [安裝 Azure CLI](../xplat-cli-install.md) 或使用其中一個原生安裝程式，或是透過更新 **npm** 輸入 `npm 更新-g azure cli` 更新或 `npm 安裝 azure cli-g` 安裝。
+如果您的版本不是 0.9.11 或更新版本，您需要為 [安裝 Azure CLI](../xplat-cli-install.md) 或使用其中一個原生安裝程式，或是透過更新 **npm** 輸入 `npm update -g azure-cli` 更新或 `npm install -g azure-cli` 安裝。
 
 ### 設定 Azure 帳戶和訂用帳戶
 
@@ -54,14 +52,14 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
     azure login
 
-這會產生下列輸出：
+這會產生下列輸出： 
 
     info:    Executing command login
     |info:    To sign in, use a web browser to open the page https://aka.ms/devicelogin. 
     Enter the code E1A2B3C4D to authenticate. If you're signing in as an Azure
     AD application, use the --username and --password parameters.
 
-> [AZURE.NOTE] 如果您沒有 Azure 帳戶，就會看到錯誤訊息，指出您需要不同類型的帳戶。 若要建立一個從目前的 Azure 帳戶，請參閱 [Azure Active Directory 中建立工作或學校身分識別](../resource-group-create-work-id-from-personal.md)。
+> [AZURE.NOTE] 如果您沒有 Azure 帳戶，您會看到錯誤訊息，指出您需要不同類型的帳戶。 若要建立一個從目前的 Azure 帳戶，請參閱 [Azure Active Directory 中建立工作或學校身分識別](../resource-group-create-work-id-from-personal.md)。
 
 開啟 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 瀏覽器中輸入命令輸出中提供的程式碼。
 
@@ -85,7 +83,7 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
 ### 切換至 Azure CLI 資源群組模式
 
-根據預設，Azure CLI 會在服務管理模式 (**asm** 模式) 下啟動。 輸入下列內容以切換至資源群組模式。
+根據預設，Azure CLI 會啟動服務管理模式 (**asm** 模式)。 輸入下列內容以切換至資源群組模式。
 
     azure config mode arm
 
@@ -93,26 +91,26 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
     info:    New mode is arm
 
-您可以切換回預設命令集，可以輸入 `azure 組態模式 asm`。
+要切換回預設的命令，可以輸入 `azure config mode asm`。
 
 ## <a id="quick-create-documentdb-account"></a>工作: 建立 DocumentDB 帳戶，使用 Azure CLI
 
-利用本節中的指示，使用 Azure CLI 來建立 DocumentDB 帳戶。
+利用本節中的指示，使用 Azure CLI 來建立 DocumentDB 帳戶。 
 
 ### 步驟 1：建立或擷取您的資源群組
 
-若要建立 DocumentDB 帳戶，您首先需要資源群組。 如果您已經知道您想要使用的資源群組名稱，然後跳至 [步驟 2](#create-documentdb-account-cli)。
+若要建立 DocumentDB 帳戶，您首先需要資源群組。 如果您已經知道您想要使用的資源群組名稱，然後跳至 [步驟 2](#create-documentdb-account-cli)。 
 
-若要檢閱您目前所有的資源群組清單，請執行下列命令，並記下您想要使用的資源群組名稱：
+若要檢閱您目前所有的資源群組清單，請執行下列命令，並記下您想要使用的資源群組名稱： 
 
     azure group list
 
-若要建立新的資源群組，請執行下列命令、指定要建立的新資源群組名稱，以及要在其中建立資源群組的區域：
+若要建立新的資源群組，請執行下列命令、指定要建立的新資源群組名稱，以及要在其中建立資源群組的區域： 
 
     azure group create <resourcegroupname> <resourcegrouplocation>
 
- - `< 資源群組名稱 >` 只能使用英數字元、 句點、 底線，'-' 字元和括號和不能以句號結束。
- - `< resourcegrouplocation >` 必須是其中一個 DocumentDB 已正式推出的區域。提供目前的地區清單 [Azure 地區頁面](https://azure.microsoft.com/regions/#services)。
+ - `<resourcegroupname>` 只能使用英數字元、句號、底線、'-' 字元和括號，且不能以句號結尾。 
+ - `<resourcegrouplocation>` 必須是已正式推出 DocumentDB 的其中一個區域。 提供目前的地區清單 [Azure 地區頁面](https://azure.microsoft.com/regions/#services)。
 
 範例輸入：
 
@@ -132,20 +130,21 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
     data:
     info:    group create command OK
 
-如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。
+如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。 
 
 ### <a id="create-documentdb-account-cli"></a> 步驟 2: 建立 DocumentDB 帳戶，使用 CLI
 
 在命令提示字元中輸入下列命令，於新的或現有的資源群組中建立 DocumentDB 帳戶：
-> [AZURE.TIP] 如果您在 Azure PowerShell 或 Windows PowerShell 中執行此命令，將會收到關於未預期之權杖的錯誤。 請改為在 Windows 命令提示字元中執行此命令。 
+
+> [AZURE.TIP] 如果您在 Azure PowerShell 或 Windows PowerShell 中執行此命令會收到未預期的語彙基元的相關錯誤。 請改為在 Windows 命令提示字元中執行此命令。 
 
     azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o "2015-04-08" -l <databaseaccountlocation> -p "{\"databaseAccountOfferType\":\"Standard\"}" 
 
- - `< 資源群組名稱 >` 只能使用英數字元、 句點、 底線，'-' 字元和括號和不能以句號結束。
- - `< databaseaccountname >` 只能使用小寫字母、 數字，'-' 字元，且必須介於 3 到 50 個字元之間。
- - `< databaseaccountlocation >` 必須是其中一個 DocumentDB 已正式推出的區域。提供目前的地區清單 [Azure 地區頁面](https://azure.microsoft.com/regions/#services)。
+ - `<resourcegroupname>` 只能使用英數字元、句號、底線、'-' 字元和括號，且不能以句號結尾。 
+ - `<databaseaccountname>` 只能使用小寫字母、數字及 '-' 字元，且長度必須為 3 到 50 個字元。
+ - `<databaseaccountlocation>` 必須是已正式推出 DocumentDB 的其中一個區域。 提供目前的地區清單 [Azure 地區頁面](https://azure.microsoft.com/regions/#services)。
 
-範例輸入：
+範例輸入： 
 
     azure resource create -g new_res_group -n samplecliacct -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08  -l westus -p "{\"databaseAccountOfferType\":\"Standard\"}"
 
@@ -165,19 +164,19 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
     data:
     info:    resource create command OK
 
-如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。
+如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。 
 
-在此命令傳回之後，在帳戶變更為**線上**狀態以準備好可供使用之前，該帳戶將會進入**正在建立**狀態數分鐘的時間。 您可以檢查中的帳戶狀態 [Azure 入口網站](https://portal.azure.com), 上 **DocumentDB 帳戶** 刀鋒視窗。
+此命令會傳回之後，帳戶將會在 **建立** 狀態幾分鐘，變更為之前 **線上** 狀態中可供使用。 您可以檢查中的帳戶狀態 [Azure 入口網站](https://portal.azure.com), 上 **DocumentDB 帳戶** 刀鋒視窗。
 
 ## <a id="deploy-documentdb-from-a-template"></a>工作: 建立 DocumentDB 帳戶，使用 ARM 範本
 
-使用本節中的指示，利用 Azure 資源管理員 (ARM) 範本和選擇性參數檔案 (這兩者都是 JSON 檔案) 來建立 DocumentDB 帳戶。 使用範本可讓您確實說明所需的資訊，並可重複使用而不會出現任何錯誤。
+使用本節中的指示，利用 Azure 資源管理員 (ARM) 範本和選擇性參數檔案 (這兩者都是 JSON 檔案) 來建立 DocumentDB 帳戶。 使用範本可讓您確實說明所需的資訊，並可重複使用而不會出現任何錯誤。 
 
 ### 了解 ARM 範本和資源群組
 
 大部分的應用程式在建置時會使用不同資源類型的組合 (例如，一或多個 DocumentDB 帳戶、儲存體帳戶、虛擬網路或內容傳遞網路)。 預設 Azure 服務管理 API 和 Azure 入口網站可使用 service-by-service 方法代表這些項目。 這個方法會要求您部署和個別管理個別服務 (或尋找執行這項作業的其他工具)，而不是做為部署的單一邏輯單元。
 
-您可以利用「Azure 資源管理員範本」**，將這些不同的資源宣告為一個邏輯部署單元，然後就能進行部署和管理。 請不要以命令方式告訴 Azure 逐一部署命令，您應該在 JSON 檔案描述整個部署過程 -- 所有資源和相關設定以及部署參數 -- 然後告訴 Azure 將這些資源視為一個群組加以部署。
+*Azure 資源管理員範本* 可讓您部署和管理這些不同的資源當做一個邏輯部署單元，以宣告方式。 請不要以命令方式告訴 Azure 逐一部署命令，您應該在 JSON 檔案描述整個部署過程 -- 所有資源和相關設定以及部署參數 -- 然後告訴 Azure 將這些資源視為一個群組加以部署。
 
 深入了解 Azure 資源群組，以及如何為您在多個 [Azure 資源管理員概觀](../resource-group-overview.md)。 如果您是了解如何設計範本，請參閱 [撰寫 Azure 資源管理員範本](../resource-group-authoring-templates.md)。
 
@@ -210,7 +209,7 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
 這個範本只需要一個參數：要建立的資料庫帳戶名稱。 新資料庫帳戶的位置會設定為與資源群組相同的位置。
 
-由於範本只採用一個參數，因此，您可以在命令列中輸入值，或建立參數檔案來指定值。
+由於範本只採用一個參數，因此，您可以在命令列中輸入值，或建立參數檔案來指定值。 
 
 若要建立參數檔案，請將下列內容複製到新檔案，然後將檔案命名為 azuredeploy.parameters.json。 如果您計劃在命令提示字元中指定資料庫帳戶名稱，就可以繼續執行而不需建立此檔案。
 
@@ -224,22 +223,22 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
         }
     }
 
-在 azuredeploy.parameters.json 檔案中，更新您想要使用，然後儲存檔案的資料庫名稱"samplearmacct"的值。 `< databaseAccountName >` 只能使用小寫字母、 數字，'-' 字元，且必須介於 3 到 50 個字元之間。
+在 azuredeploy.parameters.json 檔案中，將值 "samplearmacct" 更新為您想要使用的資料庫名稱，然後儲存檔案。 `<databaseAccountName>` 只能使用小寫字母、數字及 '-' 字元，且長度必須為 3 到 50 個字元。
 
 ### 步驟 2：建立或擷取您的資源群組
 
 若要建立 DocumentDB 帳戶，您首先需要資源群組。 如果您已經知道您想要使用的資源群組名稱，請確認位置 [DocumentDB 可供使用的地區](https://azure.microsoft.com/regions/#services), ，然後跳至 [步驟 3](#create-account-from-template)。 在範本中，帳戶的位置會建立在與資源群組相同的區域中，因此嘗試在無法使用 DocumentDB 的區域中建立帳戶將會導致部署錯誤。
 
-若要檢閱您目前所有的資源群組清單，請執行下列命令，並記下您想要使用的資源群組名稱：
+若要檢閱您目前所有的資源群組清單，請執行下列命令，並記下您想要使用的資源群組名稱： 
 
     azure group list
 
-若要建立新的資源群組，請執行下列命令、指定要建立的新資源群組名稱，以及要在其中建立資源群組的區域：
+若要建立新的資源群組，請執行下列命令、指定要建立的新資源群組名稱，以及要在其中建立資源群組的區域： 
 
     azure group create <resourcegroupname> <databaseaccountlocation>
 
- - `< 資源群組名稱 >` 只能使用英數字元、 句點、 底線，'-' 字元和括號和不能以句號結束。
- - `< databaseaccountlocation >` 必須是其中一個 DocumentDB 已正式推出的區域。提供目前的地區清單 [Azure 地區頁面](https://azure.microsoft.com/regions/#services)。
+ - `<resourcegroupname>` 只能使用英數字元、句號、底線、'-' 字元和括號，且不能以句號結尾。 
+ - `<databaseaccountlocation>` 必須是已正式推出 DocumentDB 的其中一個區域。 提供目前的地區清單 [Azure 地區頁面](https://azure.microsoft.com/regions/#services)。
 
 範例輸入：
 
@@ -259,22 +258,22 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
     data:
     info:    group create command OK
 
-如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。
+如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。 
 
 ### <a id="create-account-from-template"></a>步驟 3: 使用 ARM 範本所建立的 DocumentDB 帳戶
 
-若要在資源群組中建立 DocumentDB 帳戶，請執行下列命令，並提供範本檔案的路徑、參數檔案的路徑或參數值、要部署於其中的資源群組名稱，以及部署名稱 (-n 是選擇性的)。
+若要在資源群組中建立 DocumentDB 帳戶，請執行下列命令，並提供範本檔案的路徑、參數檔案的路徑或參數值、要部署於其中的資源群組名稱，以及部署名稱 (-n 是選擇性的)。 
 
 使用參數檔案：
 
     azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g <resourcegroupname> -n <deploymentname>
 
- - `< PathToTemplate >` 是建立在步驟 1 中的 azuredeploy.json 檔案的路徑。
- - `< PathToParameterFile >` 是步驟 1 中建立的 azuredeploy.parameters.json 檔案的路徑。
- - `< 資源群組名稱 >` 是要在其中新增 DocumentDB 資料庫帳戶的現有資源群組名稱。
- - `< deploymentname >` 是選用的部署名稱。
+ - `<PathToTemplate>` 是步驟 1 中建立的 azuredeploy.json 檔案的路徑。
+ - `<PathToParameterFile>` 是步驟 1 中建立的 azuredeploy.parameters.json 檔案的路徑。
+ - `<resourcegroupname>` 是要在其中加入 DocumentDB 資料庫帳戶的現有資源群組名稱。 
+ - `<deploymentname>` 是部署的選擇性名稱。
 
-範例輸入：
+範例輸入： 
 
     azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json -g new_res_group -n azuredeploy
 
@@ -289,7 +288,7 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
     info:    Supply values for the following parameters
     databaseAccountName: samplearmacct
 
-佈建帳戶時，您將會收到下列資訊：
+佈建帳戶時，您將會收到下列資訊： 
 
     info:    Executing command group deployment create
     + Initializing template configurations and parameters
@@ -307,16 +306,17 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
     data:    location             String  West US
     info:    group deployment create command OK
 
-如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。
+如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。  
 
-在此命令傳回之後，在帳戶變更為**線上**狀態以準備好可供使用之前，該帳戶將會進入**正在建立**狀態數分鐘的時間。 您可以檢查中的帳戶狀態 [Azure 入口網站](https://portal.azure.com), 上 **DocumentDB 帳戶** 刀鋒視窗。
+此命令會傳回之後，帳戶將會在 **建立** 狀態幾分鐘，變更為之前 **線上** 狀態中可供使用。 您可以檢查中的帳戶狀態 [Azure 入口網站](https://portal.azure.com), 上 **DocumentDB 帳戶** 刀鋒視窗。
 
 ## 疑難排解
 
-如果您收到錯誤，像是 `未成功部署佈建狀態` 在建立資源群組或資料庫帳戶時，您有幾個疑難排解選項。
-> [AZURE.NOTE] 在資料庫帳戶名稱中提供不正確的字元，或提供無法使用 DocumentDB 的位置將會導致部署錯誤。 資料庫帳戶名稱只能使用小寫字母、數字及 '-' 字元，且長度必須為 3 到 50 個字元。 所有有效的資料庫帳戶的位置會列在 [Azure 地區頁面](https://azure.microsoft.com/regions/#services)。
+如果您在建立資源群組或資料庫帳戶時收到錯誤 (例如 `Deployment provisioning state was not successful`)，您有一些疑難排解選項可用。 
 
-- 如果您的輸出包含下列 `已將錯誤資訊記錄到 C:\Users\wendy\.azure\azure.err`, ，然後檢閱 azure.err 檔案中的錯誤資訊。
+> [AZURE.NOTE] 提供資料庫帳戶名稱內不正確的字元，或提供可用的位置中的 DocumentDB 不會導致部署錯誤。 資料庫帳戶名稱只能使用小寫字母、數字及 '-' 字元，且長度必須為 3 到 50 個字元。 所有有效的資料庫帳戶的位置會列在 [Azure 地區頁面](https://azure.microsoft.com/regions/#services)。
+
+- 如果您的輸出包含下列 `Error information has been recorded to C:\Users\wendy\.azure\azure.err`，則檢閱 azure.err 檔案中的錯誤資訊。
 
 - 您可在資源群組的記錄檔中找到有用的資訊。 若要檢視記錄檔，請執行下列命令：
 
@@ -328,9 +328,9 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
     然後請參閱 [Azure 中的資源群組部署疑難排解](../resource-group-deploy-debug.md) 如需詳細資訊。
 
-- Azure 入口網站中也會提供錯誤資訊，如下列螢幕擷取畫面所示。 若要瀏覽至錯誤資訊：按一下動態工具列中的 [資源群組]、選取發生錯誤的資源群組，接著在 [資源群組] 刀鋒視窗的 [基本功能] 區域中按一下 [上次部署] 的日期，然後在 [部署記錄] 刀鋒視窗中選取失敗的部署，之後在 [部署] 刀鋒視窗中按一下有紅色驚嘆號的 [作業詳細資料]。 失敗部署的狀態訊息會顯示在 [作業詳細資料] 刀鋒視窗中。
+- Azure 入口網站中也會提供錯誤資訊，如下列螢幕擷取畫面所示。 若要瀏覽至錯誤資訊：按一下動態工具列中的 [資源群組]、選取發生錯誤的資源群組，接著在 [資源群組] 刀鋒視窗的 [基本功能] 區域中按一下 [上次部署] 的日期，然後在 [部署記錄] 刀鋒視窗中選取失敗的部署，之後在 [部署] 刀鋒視窗中按一下有紅色驚嘆號的 [作業詳細資料]。 失敗部署的狀態訊息會顯示在 [作業詳細資料] 刀鋒視窗中。 
 
-    ![顯示如何瀏覽至部署錯誤訊息的 Azure 入口網站螢幕擷取畫面](media/documentdb-automation-resource-manager-cli/portal-troubleshooting-deploy.png)
+    ![顯示如何瀏覽至部署錯誤訊息的 Azure 入口網站螢幕擷取畫面](media/documentdb-automation-resource-manager-cli/portal-troubleshooting-deploy.png) 
 
 ## 後續步驟
 
@@ -338,11 +338,11 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
 - Azure 入口網站中所述 [建立 DocumentDB 資料庫，使用 Azure 入口網站](documentdb-create-database.md)。
 - 中的 C#.NET 範例 [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) 專案 [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) GitHub 上的儲存機制。
-- [DocumentDB Sdk](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 DocumentDB 有.NET、Java、Python、Node.js 和 JavaScript API SDK。
+-  [DocumentDB Sdk](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 DocumentDB 有.NET、Java、Python、Node.js 和 JavaScript API SDK。 
 
-建立您的資料庫之後，您需要 [新增一或多個集合](documentdb-create-collection.md) 到資料庫，然後 [新增文件](documentdb-view-json-document-explorer.md) 集合。
+建立您的資料庫之後，您需要 [新增一或多個集合](documentdb-create-collection.md) 到資料庫，然後 [新增文件](documentdb-view-json-document-explorer.md) 集合。 
 
-集合中有文件之後，您可以使用 [DocumentDB SQL](documentdb-sql-query.md) 至 [執行查詢](documentdb-sql-query.md#executing-queries) 針對文件使用 [查詢總管](documentdb-query-collections-query-explorer.md) 預覽入口網站中 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx), ，或其中一個 [Sdk](https://msdn.microsoft.com/library/azure/dn781482.aspx)。
+集合中有文件之後，您可以使用 [DocumentDB SQL](documentdb-sql-query.md) 到 [執行查詢](documentdb-sql-query.md#executing-queries) 針對文件使用 [查詢總管](documentdb-query-collections-query-explorer.md) 預覽入口網站中 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx), ，或其中一個 [Sdk](https://msdn.microsoft.com/library/azure/dn781482.aspx)。
 
 若要深入了解 DocumentDB，請探索以下資源：
 
@@ -350,7 +350,3 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 -   [DocumentDB 資源模型和概念](documentdb-resources.md)
 
 您可以使用更多的範本，請參閱 [Azure 快速入門範本](http://azure.microsoft.com/documentation/templates/)。
-
-
-
-

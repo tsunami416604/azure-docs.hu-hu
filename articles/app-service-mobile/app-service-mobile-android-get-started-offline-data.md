@@ -15,7 +15,6 @@
     ms.date="12/01/2015"
     ms.author="donnam"/>
 
-
 # 啟用 Android 行動應用程式的離線同步處理
 
 [AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -26,32 +25,32 @@
 
 本教學課程說明 Android 之 Azure Mobile Apps 的離線同步處理功能。 離線同步處理可讓使用者與行動應用程式進行互動 - 檢視、新增或修改資料 - 即使沒有網路連線也可行。 變更會儲存在本機資料庫中︰裝置上線後，這些變更就會與遠端後端進行同步處理。
 
-如果這是您第一次使用 Azure 行動應用程式，您應該先完成教學課程 [建立 Android 應用程式]。 如果您不要使用下載的快速入門伺服器專案，必須將資料存取擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+如果這是您第一次使用 Azure 行動應用程式，您應該先完成本教學課程 [Create an Android App]。 如果您不要使用下載的快速入門伺服器專案，必須將資料存取擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
 
-若要深入了解離線同步功能，請參閱主題 [離線資料同步處理在 Azure 行動應用程式]。
+若要深入了解離線同步功能，請參閱本主題 [Offline Data Sync in Azure Mobile Apps]。
 
 ## 更新應用程式以支援離線同步
 
-利用離線同步讀取和寫入*同步資料表* (使用 *IMobileServiceSyncTable* 介面)，這是您裝置上 **SQLite** 資料庫的一部分。
+離線同步處理讀取和寫入 *同步處理資料表* (使用 *IMobileServiceSyncTable* 介面)，其屬於 **SQLite** 裝置上的資料庫。
 
-若要推送和提取裝置與 Azure 行動服務之間的變更，您可使用「同步處理內容」**(*MobileServiceClient.SyncContext*)，這是您用來在本機儲存資料的本機資料庫所初始化。
+若要推送和提取裝置與 Azure 行動服務之間的變更，您使用 *同步處理內容* (*MobileServiceClient.SyncContext*)，這是您初始化您用來在本機儲存資料的本機資料庫。
 
-1. 在 `TodoActivity.java`, ，標記為註解的現有定義 `mToDoTable` 並取消註解同步處理資料表版本:
-
+1. 在 `TodoActivity.java` 中，將 `mToDoTable` 的現有定義註解化，並取消註解同步資料表版本：
+    
         private MobileServiceSyncTable<ToDoItem> mToDoTable;
 
-2. 在 `onCreate` 方法中，註解化現有的初始化 `mToDoTable` 並取消註解此定義:
+2. 在 `onCreate` 方法中，將 `mToDoTable` 的現有初始化註解化，並取消註解此定義：
 
         mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 
-3. 在 `refreshItemsFromTable` 標記為註解的定義 `結果` 並取消註解此定義:
+3. 在 `refreshItemsFromTable` 中，將 `results` 的定義註解化，並取消註解此定義：
 
         // Offline Sync
         final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
 
-4. 標記為註解的定義 `refreshItemsFromMobileServiceTable`。
+4. 註解化 `refreshItemsFromMobileServiceTable` 的定義。
 
-5. 取消註解的定義 `refreshItemsFromMobileServiceTableSyncTable`:
+5. 取消註解 `refreshItemsFromMobileServiceTableSyncTable` 的定義：
 
         private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
             //sync the data
@@ -61,7 +60,7 @@
             return mToDoTable.read(query).get();
         }
 
-6. 取消註解的定義 `同步`:
+6. 取消註解 `sync` 的定義：
 
         private AsyncTask<Void, Void, Void> sync() {
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
@@ -80,42 +79,43 @@
             return runAsyncTask(task);
         }
 
-
 ## 測試應用程式
 
 在本節中，您會在開啟 WiFi 的情況下測試行為，然後關閉 WiFi 以建立離線案例。
 
-當您新增資料項目時，這些項目會存放在本機 SQLite 存放區中，但直到您按 [重新整理]**** 按鈕時才會同步處理至行動服務。 對於何時需要同步處理資料，其他應用程式可能會有不同的需求，但是為了示範目的，本教學課程讓使用者明確要求。
+當您新增資料項目時，它們會存放在本機的 SQLite 存放區，但不是會同步到行動服務直到您按 **重新整理** ] 按鈕。 對於何時需要同步處理資料，其他應用程式可能會有不同的需求，但是為了示範目的，本教學課程讓使用者明確要求。
 
 當您按下該按鈕時，新的背景工作會啟動，並使用同步處理內容先推送對本機存放區做的所有變更，然後將所有變更的資料從 Azure 提取至本機資料表。
 
 ### 離線測試
 
-1. 讓裝置或模擬器處於「飛航模式」**。 這會建立離線案例。
+1. 讓裝置或模擬器處於 *飛航模式*。 這會建立離線案例。
 
-2. 新增一些 *ToDo* 項目，或將某些項目標示為完成。 結束裝置或模擬器 (或強制關閉應用程式)，然後重新啟動。 請確認您的變更已保存在裝置上，因為它們會保留在本機 SQLite 存放區中。
+2. 新增一些 *ToDo* 項目或某些項目標記為完成的標記。 結束裝置或模擬器 (或強制關閉應用程式)，然後重新啟動。 請確認您的變更已保存在裝置上，因為它們會保留在本機 SQLite 存放區中。
 
-3. 使用 SQL 工具 (如 *SQL Server Management Studio*) 或 REST 用戶端 (如 *Fiddler* 或 *Postman*) 檢視 Azure *TodoItem* 資料表的內容。 請確認新項目「尚未」__同步處理到伺服器
+3. 檢視 Azure 的內容 *TodoItem* 資料表是使用 SQL 工具例如 *SQL Server Management Studio*, ，或 REST 用戶端，例如 *Fiddler* 或 *Postman*。 請確認新的項目有 _不_ 已同步處理至伺服器
 
     + Node.js 後端，移至 [Azure 入口網站](https://portal.azure.com/), ，在您的行動應用程式後端按一下 **簡單資料表** > **TodoItem** 若要檢視的內容 `TodoItem` 資料表。
-    + 若為 .NET 後端，請使用 SQL 工具 (例如 *SQL Server Management Studio*) 或 REST 用戶端 (如 *Fiddler* 或 *Postman*) 檢視資料表內容。
+    + .NET 後端中，檢視資料表內容，使用 SQL 工具例如 *SQL Server Management Studio*, ，或 REST 用戶端，例如 *Fiddler* 或 *Postman*。
 
-4. 在裝置或模擬器中開啟 WiFi。 接著，按 [重新整理]**** 按鈕。
+4. 在裝置或模擬器中開啟 WiFi。 接著，請按 **重新整理** ] 按鈕。
 
 5. 在 Azure 入口網站中，再次檢視 TodoItem 資料。 新的和變更的 TodoItems 現在應該會出現。
 
 ## 其他資源
 
-* [Azure 行動應用程式中的離線資料同步]
+* [Azure 行動應用程式中的離線資料同步處理]
 
-* [雲端報導: Azure 行動服務中的離線同步處理] \ (附註: 的視訊會在行動服務，但是離線同步處理的運作方式類似的方式，在 Azure 行動應用程式)
-
-
+* [Cloud Cover: Offline Sync in Azure Mobile Services] \ (附註: 的視訊會在行動服務，但是離線同步處理的運作方式類似的方式，在 Azure 行動應用程式)
 
 
+<!-- URLs. -->
 
-[offline data sync in azure mobile apps]: ../app-service-mobile-offline-data-sync.md 
-[create an android app]: ../app-service-mobile-android-get-started.md 
-[cloud cover: offline sync in azure mobile services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri 
-[azure friday: offline-enabled apps in azure mobile services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/ 
+[Offline Data Sync in Azure Mobile Apps]: ../app-service-mobile-offline-data-sync.md
+
+[Create an Android App]: ../app-service-mobile-android-get-started.md
+
+[Cloud Cover: Offline Sync in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+
 

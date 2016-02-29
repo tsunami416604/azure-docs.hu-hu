@@ -16,7 +16,6 @@
     ms.date="10/26/2015" 
     ms.author="tamram"/>
 
-
 # 管理對容器與 Blob 的匿名讀取權限。
 
 ## 概觀
@@ -31,11 +30,11 @@
 
 容器會提供下列選項來管理容器存取：
 
-- **完整的公開讀取權限：**可以透過匿名要求讀取容器和 Blob 資料。 用戶端可以透過匿名要求列舉容器內的 Blob，但無法列舉儲存體帳戶內的容器。
+- **完整公用讀取權限:** 可以透過匿名要求讀取容器和 blob 資料。 用戶端可以透過匿名要求列舉容器內的 Blob，但無法列舉儲存體帳戶內的容器。
 
-- **僅對 Blob 有公開讀取權限：**您可以透過匿名要求讀取此容器內的 Blob 資料，但您無法使用容器資料。 用戶端無法透過匿名要求列舉容器內的 Blob。
+- **僅對 blob 有公開讀取:** 可以透過匿名要求讀取此容器內的 Blob 資料，但仍無法使用容器資料。 用戶端無法透過匿名要求列舉容器內的 Blob。
 
-- **沒有公開讀取權限：**只有帳戶擁有者可以讀取容器和 Blob 資料。
+- **沒有公開讀取權限:** 只有帳戶擁有者可以讀取容器和 blob 資料。
 
 您可以利用下列方式設定容器權限：
 
@@ -49,16 +48,16 @@
 
 1. 瀏覽至儲存體帳戶的儀表板。
 2. 從清單中選取容器名稱。 請注意，您必須按一下 [名稱] 欄右側，才能選取容器名稱。 按一下名稱向下切入到容器，以顯示其Blob。
-3. 從工具列中選取 [**編輯**]。
-4. 在 [**編輯容器中繼資料**] 對話方塊中，從 [**存取**] 欄位選取您所需的權限層級，如以下螢幕擷取畫面所示。
+3. 選取 **編輯** 從工具列。
+4. 在 **編輯容器中繼資料** ] 對話方塊中，選取您想要的層級的權限 **存取** 欄位，如以下螢幕擷取畫面所示。
 
     ![編輯容器中繼資料對話方塊](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-1.png)
 
 ### 使用 .NET 以程式設計方式設定容器權限
 
-若要使用 .NET 用戶端程式庫來設定容器的權限，請先呼叫 **GetPermissions** 方法來擷取容器的現有權限。 接著為由 **GetPermissions** 方法傳回的 **BlobContainerPermissions** 物件設定 **PublicAccess** 屬性。 最後，使用更新的權限呼叫 **SetPermissions** 方法。
+若要設定.NET 用戶端程式庫容器的權限，請先擷取容器的現有權限 」 藉由呼叫 **GetPermissions** 方法。 然後設定 **PublicAccess** 屬性 **BlobContainerPermissions** 所傳回的物件 **GetPermissions** 方法。 最後，呼叫 **SetPermissions** 與更新權限的方法。
 
-下列範例將容器的權限設為完整公用讀取權限。 若只要將 Blob 的權限設為公用讀取權限，請將 **PublicAccess** 屬性設為 **BlobContainerPublicAccessType.Blob**。 若要移除匿名使用者的所有權限，請將屬性設為 **BlobContainerPublicAccessType.Off**。
+下列範例將容器的權限設為完整公用讀取權限。 若要設定權限僅對 blob 的公用讀取權限，設定 **PublicAccess** 屬性 **BlobContainerPublicAccessType.Blob**。 若要移除所有匿名使用者的權限，請將屬性設定為 **BlobContainerPublicAccessType.Off**。
 
     public static void SetPublicContainerPermissions(CloudBlobContainer container)
     {
@@ -69,7 +68,7 @@
 
 ## 匿名存取容器與 Blob
 
-匿名存取容器與 Blob 的用戶端可使用不需要認證的建構函式。 以下範例顯示可匿名參考 Blob 服務資源的不同方法。
+匿名存取容器與 Blob 的用戶端可使用不需要認證的建構函式。 以下範例顯示可匿名參考 Blob 服務資源的不同方法。 
 
 ### 建立匿名用戶端物件
 
@@ -79,10 +78,10 @@
     {
         // Create the client object using the Blob service endpoint.
         CloudBlobClient blobClient = new CloudBlobClient(new Uri(@"https://storagesample.blob.core.windows.net"));
-    
+
         // Get a reference to a container that's available for anonymous access.
         CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
-    
+
         // Read the container's properties. Note this is only possible when the container supports full public read access.
         container.FetchAttributes();
         Console.WriteLine(container.Properties.LastModified);
@@ -97,13 +96,14 @@
     {
         // Get a reference to a container that's available for anonymous access.
         CloudBlobContainer container = new CloudBlobContainer(new Uri(@"https://storagesample.blob.core.windows.net/sample-container"));
-    
+
         // List blobs in the container.
         foreach (IListBlobItem blobItem in container.ListBlobs())
         {
             Console.WriteLine(blobItem.Uri);
         }
     }
+
 
 ### 匿名參考 Blob
 
@@ -119,42 +119,38 @@
 
 下表顯示當容器的 ACL 設為允許公用存取時，匿名使用者可能會呼叫哪些作業。
 
-| REST 作業| 具有完整公開讀取權限| 僅對 Blob 有公開讀取權限|
+| REST 作業                                         | 具有完整公開讀取權限 | 僅對 Blob 有公開讀取權限 |
 |--------------------------------------------------------|-----------------------------------------|---------------------------------------------------|
-| 列出容器| 只有擁有者| 只有擁有者|
-| 建立容器| 只有擁有者| 只有擁有者|
-| 取得容器屬性| 全部| 只有擁有者|
-| 取得容器中繼資料| 全部| 只有擁有者|
-| 設定容器中繼資料| 只有擁有者| 只有擁有者|
-| 取得容器 ACL| 只有擁有者| 只有擁有者|
-| 設定容器 ACL| 只有擁有者| 只有擁有者|
-| 刪除容器| 只有擁有者| 只有擁有者|
-| 列出 Blob| 全部| 只有擁有者|
-| 放置 Blob| 只有擁有者| 只有擁有者|
-| 取得 Blob| 全部| 全部|
-| 取得 Blob 屬性| 全部| 全部|
-| 設定 Blob 屬性| 只有擁有者| 只有擁有者|
-| 取得 Blob 中繼資料| 全部| 全部|
-| 設定 Blob 中繼資料| 只有擁有者| 只有擁有者|
-| 放置區塊| 只有擁有者| 只有擁有者|
-| 取得區塊清單 (僅限認可區塊)| 全部| 全部|
-| 取得區塊清單 (僅限未認可的區塊或所有區塊)| 只有擁有者| 只有擁有者|
-| 放置區塊清單| 只有擁有者| 只有擁有者|
-| 刪除 Blob| 只有擁有者| 只有擁有者|
-| 複製 Blob| 只有擁有者| 只有擁有者|
-| 快照 Blob| 只有擁有者| 只有擁有者|
-| 租用 Blob| 只有擁有者| 只有擁有者|
-| 放置頁面| 只有擁有者| 只有擁有者|
-| 取得頁面範圍| 全部| 全部|
-| 附加 Blob| 只有擁有者| 只有擁有者|
+| 列出容器                                        | 只有擁有者                              | 只有擁有者                                        |
+| 建立容器                                       | 只有擁有者                              | 只有擁有者                                        |
+| 取得容器屬性                               | 全部                                     | 只有擁有者                                        |
+| 取得容器中繼資料                                 | 全部                                     | 只有擁有者                                        |
+| 設定容器中繼資料                                 | 只有擁有者                              | 只有擁有者                                        |
+| 取得容器 ACL                                      | 只有擁有者                              | 只有擁有者                                        |
+| 設定容器 ACL                                      | 只有擁有者                              | 只有擁有者                                        |
+| 刪除容器                                       | 只有擁有者                              | 只有擁有者                                        |
+| 列出 Blob                                             | 全部                                     | 只有擁有者                                        |
+| 放置 Blob                                               | 只有擁有者                              | 只有擁有者                                        |
+| 取得 Blob                                               | 全部                                     | 全部                                               |
+| 取得 Blob 屬性                                    | 全部                                     | 全部                                               |
+| 設定 Blob 屬性                                    | 只有擁有者                              | 只有擁有者                                        |
+| 取得 Blob 中繼資料                                      | 全部                                     | 全部                                               |
+| 設定 Blob 中繼資料                                      | 只有擁有者                              | 只有擁有者                                        |
+| 放置區塊                                              | 只有擁有者                              | 只有擁有者                                        |
+| 取得區塊清單 (僅限認可區塊)                 | 全部                                     | 全部                                               |
+| 取得區塊清單 (僅限未認可的區塊或所有區塊) | 只有擁有者                              | 只有擁有者                                        |
+| 放置區塊清單                                         | 只有擁有者                              | 只有擁有者                                        |
+| 刪除 Blob                                            | 只有擁有者                              | 只有擁有者                                        |
+| 複製 Blob                                              | 只有擁有者                              | 只有擁有者                                        |
+| 快照 Blob                                          | 只有擁有者                              | 只有擁有者                                        |
+| 租用 Blob                                             | 只有擁有者                              | 只有擁有者                                        |
+| 放置頁面                                               | 只有擁有者                              | 只有擁有者                                        |
+| 取得頁面範圍                                        | 全部                                     | 全部                                                  |
+| 附加 Blob                                            | 只有擁有者                              | 只有擁有者                                                  |
 
 
 ## 另請參閱
 
 - [Azure 儲存體服務的驗證](https://msdn.microsoft.com/library/azure/dd179428.aspx)
-- [共用存取簽章: 了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md)
-- [以共用的存取簽章委派存取](https://msdn.microsoft.com/library/azure/ee395415.aspx)
-
-
-
-
+- [共用存取簽章：了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md)
+- [使用共用存取簽章來委派存取權](https://msdn.microsoft.com/library/azure/ee395415.aspx) 

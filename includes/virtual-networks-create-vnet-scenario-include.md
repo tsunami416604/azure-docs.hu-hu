@@ -4,13 +4,9 @@
 
 ![VNet 案例](./media/virtual-networks-create-vnet-scenario-include/vnet-scenario.png)
 
-在這個案例中，您將建立名為 **TestVNet** 的 VNet，並包含保留的 CIDR 區塊 **192.168.0.0./16**。 VNet 會包含下列子網路：
+在此案例中，您將建立名為 VNet **TestVNet** 與保留的 CIDR 區塊的 **192.168.0.0./16**。 VNet 會包含下列子網路： 
 
-- **FrontEnd**，使用 **192.168.1.0/24** 作為其 CIDR 區塊。
-- **BackEnd**，使用 **192.168.2.0/24** 作為其 CIDR 區塊。
+- **前端**, ，並使用 **192.168.1.0/24** 做為其 CIDR 區塊。
+- **後端**, ，並使用 **192.168.2.0/24** 做為其 CIDR 區塊。
 
-
-
-
-
-
+ 

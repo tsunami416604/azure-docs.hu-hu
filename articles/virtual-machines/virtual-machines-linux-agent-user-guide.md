@@ -19,16 +19,15 @@
 
 
 
-
-# Azure Linux 代理程式使用者指南
+#Azure Linux 代理程式使用者指南
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## 簡介
+##簡介
 
 Azure Linux 代理程式 (/usr/sbin/waagent) 可管理虛擬機器與 Azure 網狀架構控制器之間的互動。 它具有下列功能：
 
-* **映像佈建**
+* **映像檔佈建**
   - 建立使用者帳戶
   - 設定 SSH 驗證類型
   - 部署 SSH 公開金鑰和金鑰組
@@ -38,7 +37,7 @@ Azure Linux 代理程式 (/usr/sbin/waagent) 可管理虛擬機器與 Azure 網�
   - 管理資源磁碟
   - 格式化和掛接資源磁碟
   - 設定交換空間
-* **網路功能**
+* **網路**
   - 管理路由以提高平台 DHCP 伺服器的相容性
   - 確保網路介面名稱的穩定性
 * **核心**
@@ -50,11 +49,11 @@ Azure Linux 代理程式 (/usr/sbin/waagent) 可管理虛擬機器與 Azure 網�
 * **SCVMM 部署**
     - 在 System Center Virtual Machine Manager 2012 R2 環境中執行時偵測和啟動 Linux 的 VMM 代理程式
 * **VM 延伸模組**
-    - 將 Microsoft 和合作夥伴所撰寫的元件插入 Linux VM (IaaS)，以啟用軟體和設定自動化
+    - 將 Microsoft 和合作夥伴所撰寫的元件插入 Linux VM (IaaS)，以啟用軟體和設定自動化 
     - VM 延伸模組參考實作 [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 
-## 通訊
+##通訊
 
 資訊經由兩個管道從平台流向代理程式：
 
@@ -62,20 +61,18 @@ Azure Linux 代理程式 (/usr/sbin/waagent) 可管理虛擬機器與 Azure 網�
 
 * TCP 端點，公開可用來取得部署和拓撲組態的 REST API。
 
-### 取得 Linux 代理程式
-
+###取得 Linux 代理程式
 您可以直接從下列位置取得最新版的 Linux 代理程式：
 
-- [Azure 上支援 Linux 不同散發提供者](http://support.microsoft.com/kb/2805216)
+- [在 Azure 上支援 Linux 的不同散發提供者](http://support.microsoft.com/kb/2805216)
 - 或從 [Azure Linux 代理程式的 GitHub 開放原始碼儲存機制](https://github.com/Azure/WALinuxAgent)
 
 
 ## 需求
-
 下列系統已經過測試，且已知可與 Azure Linux 代理程式一同運作。 **請注意，這份清單可能與官方的 Microsoft Azure 平台上支援系統清單不同**, ，如下所示:
 [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
 
-### 支援的 Linux 散發套件
+###支援的 Linux 散發套件
 
 * CoreOS
 * CentOS 6.2+
@@ -101,11 +98,11 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 * 網路工具：ip-route
 
 
-## 安裝
+##安裝
 
 安裝和升級 Azure Linux 代理程式時，建議使用散發套件的封裝儲存機制所提供的 RPM 或 DEB 封裝來安裝。
 
-如果是手動安裝，應該將 'waagent' 指令碼複製到 /usr/sbin/waagent，然後執行下列命令來安裝：
+如果是手動安裝，應該將 'waagent' 指令碼複製到 /usr/sbin/waagent，然後執行下列命令來安裝： 
 
     # sudo chmod 755 /usr/sbin/waagent
     # sudo /usr/sbin/waagent -install -verbose
@@ -113,14 +110,14 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 代理程式的記錄檔保存在 /var/log/waagent.log。
 
 
-## 命令列選項
+##命令列選項
 
-### 旗標
+###旗標
 
 - verbose：提高指定命令的詳細程度
 - force：略過某些命令的互動式確認
 
-### 命令
+###命令
 
 - help：列出支援的命令和旗標。
 
@@ -135,7 +132,7 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 
  * 偵測核心版本，必要的話套用 VNUMA 解決方案
 
- * 將可能干擾網路的 udev 規則 (/lib/udev/rules.d/75-persistent-net-generator.rules、/etc/udev/rules.d/70-persistent-net.rules) 移至 /var/lib/waagent/
+ * 將可能干擾網路的 udev 規則 (/lib/udev/rules.d/75-persistent-net-generator.rules、/etc/udev/rules.d/70-persistent-net.rules) 移至 /var/lib/waagent/  
 
 - uninstall：移除 waagent 和相關聯的檔案
  * 從系統中取消註冊 init 指令碼並刪除它
@@ -170,11 +167,11 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 - daemon：以精靈方式執行 waagent 來管理與平台之間的互動。
    此引數是在 waagent init 指令碼中指定給 waagent。
 
-## 組態
+##組態
 
 組態檔 (/etc/waagent.conf) 控制 waagent 的動作。 
 範例組態檔如下所示：
-
+    
     #
     # Azure Linux Agent Configuration   
     #
@@ -226,7 +223,7 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 
 這可讓使用者啟用或停用代理程式的佈建功能。 有效值為 "y" 或 "n"。 如果停用佈建，則會保留映像檔中的 SSH 主機金鑰和使用者金鑰，並忽略 Azure 佈建 API 中指定的任何組態。
 
-**注意：**針對使用 cloud-init 執行佈建工作的 Ubuntu 雲端映像，此參數的預設值為 "n"。
+**注意:** 這個參數的預設值為"n"使用 cloud-init 佈建的 Ubuntu 雲端映像。
 
 **Provisioning.DeleteRootPassword：**
 
@@ -275,14 +272,14 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 **ResourceDisk.MountPoint：**
 
 類型：字串  
-預設值: /mnt/資源
+預設值: /mnt/資源 
 
-這指定資源磁碟的掛接路徑。 請注意，資源磁碟是*暫存*磁碟，可能會在 VM 取消佈建時清空。
+這指定資源磁碟的掛接路徑。 請注意，資源磁碟是 *暫存* 磁碟，以及可能會在 VM 取消佈建時清空。
 
 **ResourceDisk.EnableSwap：**
 
 型別: 布林值  
-預設：n
+預設：n 
 
 如果設定，則會在資源磁碟上建立交換檔 (/swapfile) 並加入至系統交換空間。
 
@@ -323,12 +320,12 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 
 
 
-## Ubuntu 雲端映像
+##Ubuntu 雲端映像
 
-請注意，Ubuntu 雲端映像會利用 [定域機組 init](https://launchpad.net/ubuntu/+source/cloud-init) 來執行許多組態工作，否則會由 Azure Linux 代理程式管理。 請注意下列差異：
+請注意，Ubuntu 雲端映像會利用 [定域機組 init](https://launchpad.net/ubuntu/+source/cloud-init) 來執行許多組態工作，否則會由 Azure Linux 代理程式管理。  請注意下列差異：
 
 
-- **Provisioning.Enabled** 會在 Ubuntu 雲端映像上預設為 "n"，其會使用 cloud-init 來執行佈建工作。
+- **Provisioning.Enabled** 預設值為"n"使用 cloud-init 執行佈建工作的 Ubuntu 雲端映像。
 
 - 下列組態參數不會在使用 cloud-init 來管理資源磁碟和交換空間的 Ubuntu 雲端映像上產生任何作用：
 
@@ -340,11 +337,7 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 
 - 請參閱下列資源，以便在佈建期間，於 Ubuntu 雲端映像上設定資源磁碟掛接和交換空間：
 
- - [Ubuntu Wiki: 設定交換資料分割](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+ - [Ubuntu Wiki：設定交換資料分割](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
  - [將自訂資料插入 Azure 虛擬機器](virtual-machines-how-to-inject-custom-data.md)
 
-
-
-
-
-
+ 

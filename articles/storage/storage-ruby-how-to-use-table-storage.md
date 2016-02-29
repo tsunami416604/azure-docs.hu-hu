@@ -1,6 +1,6 @@
 <properties
     pageTitle="如何使用 Ruby 的 Azure 資料表儲存體 | Microsoft Azure"
-    description="了解如何在 Azure 中使用 Azure 資料表儲存體。程式碼範例以 Ruby API 撰寫。"
+    description="了解如何在 Azure 中使用 Azure 資料表儲存體。 程式碼範例以 Ruby API 撰寫。"
     services="storage"
     documentationCenter="ruby"
     authors="tfitzmac"
@@ -17,14 +17,13 @@
     ms.author="tomfitz"/>
 
 
-
 # 如何使用 Ruby 的 Azure 資料表儲存體
 
 [AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
 ## 概觀
 
-本指南說明如何使用 Azure 資料表服務執行一般案例。 這些範例使用 Ruby API 撰寫。 所涵蓋的案例包括「建立和刪除資料表」、「在資料表中插入及查詢實體」****。
+本指南說明如何使用 Azure 資料表服務執行一般案例。 這些範例使用 Ruby API 撰寫。 涵蓋的案例包括 **建立和刪除資料表、 插入和查詢資料表中的實體**。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -41,9 +40,9 @@
 
 ### 使用 RubyGems 來取得套件
 
-1. 使用命令列介面，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
+1. 使用命令列介面，例如 **PowerShell** (Windows)、 **終端機** (Mac) 或 **Bash** (Unix)。
 
-2. 在命令視窗中鍵入 **gem install azure** 以安裝 Gem 和相依性。
+2. 型別 **gem 安裝 azure** 在命令視窗中，以安裝 gem 和相依性。
 
 ### 匯入封裝
 
@@ -53,7 +52,7 @@
 
 ## 設定 Azure 儲存體連接
 
-Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS\_KEY** 連線到您的 Azure 儲存體帳戶所需的資訊。 如果尚未設定這些環境變數，您必須使用下列程式碼，在使用 **Azure::TableService** 之前指定帳戶資訊：
+Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS\_KEY** 連線到您的 Azure 儲存體帳戶所需的資訊。 如果未設定這些環境變數，您必須指定帳戶資訊，才能使用 **azure:: tableservice** 為下列程式碼:
 
     Azure.config.storage_account_name = "<your azure storage account>"
     Azure.config.storage_access_key = "<your azure storage access key>"
@@ -64,13 +63,13 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 2. 瀏覽至儲存體帳戶。
 
-3. 在 [設定]**** 刀鋒視窗中，選取 [金鑰]****。
+3. 在 **設定** 分頁中，選取 **金鑰**。
 
 4. 複製所需的存取金鑰值。
 
 ## 建立資料表
 
-**Azure::TableService** 物件可讓您操作資料表及實體。 若要建立資料表時，使用 **create\_table ()** 方法。 下列範例將建立資料表或列印錯誤訊息 (若有的話)。
+ **Azure:: tableservice** 物件可讓您使用資料表和實體。 若要建立資料表時，使用 **create\_table ()** 方法。 下列範例將建立資料表或列印錯誤訊息 (若有的話)。
 
     azure_table_service = Azure::TableService.new
     begin
@@ -81,7 +80,7 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 將實體加入至資料表
 
-若要新增實體，請先建立定義實體屬性的雜湊物件。 請注意，對每個實體都必須指定 **PartitionKey** 及 **RowKey**。 這些是實體的唯一識別碼，且其值的查詢速度比其他屬性快上許多。 Azure 儲存體會使用 **PartitionKey**，自動將資料表的實體分散在許多儲存體節點上。 具有相同 **PartitionKey** 的實體會儲存在相同節點上。 **RowKey** 是實體在其所屬資料分割內的唯一識別碼。
+若要新增實體，請先建立定義實體屬性的雜湊物件。 請注意，每個實體您必須指定 **PartitionKey** 和 **RowKey**。 這些是實體的唯一識別碼，且其值的查詢速度比其他屬性快上許多。 Azure 儲存體使用 **PartitionKey** 自動資料表的實體分散在許多儲存體節點。 具有相同的實體 **PartitionKey** 會儲存在相同節點上。  **RowKey** 是實體在其所屬資料分割內的唯一識別碼。
 
     entity = { "content" => "test entity",
       :PartitionKey => "test-partition-key", :RowKey => "1" }
@@ -125,12 +124,12 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 查詢實體集合
 
-若要查詢資料表中的實體集合，建立查詢雜湊物件並使用 **query\_entities ()** 方法。 下列範例示範取得具備相同 **PartitionKey** 的所有實體：
+若要查詢資料表中的實體集合，建立查詢雜湊物件並使用 **query\_entities ()** 方法。 下列範例示範取得具有相同的所有實體 **PartitionKey**:
 
     query = { :filter => "PartitionKey eq 'test-partition-key'" }
     result, token = azure_table_service.query_entities("testtable", query)
 
-> [AZURE.NOTE] 如果單一查詢的結果集太大，以致於無法傳回，則會傳回接續權杖，供您用以擷取後續頁面。
+> [AZURE.NOTE] 如果結果集是單一查詢傳回，將會傳回接續權杖可用來擷取後續頁面太大。
 
 ## 查詢實體屬性的子集
 
@@ -158,8 +157,4 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 - [Azure 儲存體團隊部落格](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) GitHub 上的儲存機制
-
-
-
-
 

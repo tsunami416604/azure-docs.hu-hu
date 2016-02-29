@@ -17,7 +17,6 @@
     ms.date="10/29/2015"
     ms.author="josephd"/>
 
-
 # Azure 基礎結構服務工作負載：內部網路 SharePoint 伺服器陣列
 
 [AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員部署模型。
@@ -35,7 +34,8 @@
 在 Azure 基礎結構服務中裝載內部網路 SharePoint 伺服陣列是企業營運應用程式的範例。 如需概觀，請參閱 [列的應用程式架構藍圖](http://msdn.microsoft.com/dn630664)。
 
 下一步是設定裝載在 Azure 中的開發/測試內部網路 SharePoint 伺服器陣列。
-> [AZURE.NOTE] Microsoft 已發行 SharePoint Server 2016 IT 預覽版。 若要輕鬆安裝和測試此預覽版，您可以搭配 SharePoint Server 2016 IT 預覽版和其預先安裝的必要元件來使用 Azure 虛擬機器資源庫映像。 如需詳細資訊，請參閱 [測試 Azure 中的 SharePoint Server 2016 IT Preview](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)。
+
+> [AZURE.NOTE] Microsoft 已發行 SharePoint Server 2016 IT Preview。 若要輕鬆安裝和測試此預覽版，您可以搭配 SharePoint Server 2016 IT 預覽版和其預先安裝的必要元件來使用 Azure 虛擬機器資源庫映像。 如需詳細資訊，請參閱 [測試 Azure 中的 SharePoint Server 2016 IT Preview](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)。
 
 ## 建立裝載在 Azure 中的開發/測試內部網路 SharePoint 伺服器陣列。
 
@@ -88,29 +88,28 @@
 
 以下是適用於此組態的虛擬機器及其預設大小。
 
- 項目| 虛擬機器描述| 資源庫映像| 預設大小
+項目 | 虛擬機器描述 | 資源庫映像 | 預設大小
 --- | --- | --- | ---
+1. | 第一網域控制站 | Windows Server 2012 R2 Datacenter | A2 (中型)
+2. | 第二網域控制站 | Windows Server 2012 R2 Datacenter | A2 (中型)
+3. | 第一資料庫伺服器 | Microsoft SQL Server 2014 Enterprise – Windows Server 2012 R2 | A5
+4. | 第二資料庫伺服器 | Microsoft SQL Server 2014 Enterprise – Windows Server 2012 R2 | A5
+5. | 叢集的多數節點 | Windows Server 2012 R2 Datacenter | A1 (小型)
+6. | 第一 SharePoint 應用程式伺服器 | Microsoft SharePoint Server 2013 試用版 – Windows Server 2012 R2 | A4 (特大型)
+7. | 第二 SharePoint 應用程式伺服器 | Microsoft SharePoint Server 2013 試用版 – Windows Server 2012 R2 | A4 (特大型)
+8. | 第一 SharePoint Web 伺服器 | Microsoft SharePoint Server 2013 試用版 – Windows Server 2012 R2 | A4 (特大型)
+9. | 第二 SharePoint Web 伺服器 | Microsoft SharePoint Server 2013 試用版 – Windows Server 2012 R2 | A4 (特大型)
 
-1. |第一個網域控制站 |Windows Server 2012 R2 Datacenter |A2 (中型)
-2. |第二個網域控制站 |Windows Server 2012 R2 Datacenter |A2 (中型)
-3. |第一部資料庫伺服器 |Microsoft SQL Server 2014 Enterprise – Windows Server 2012 R2 |A5
-4. |第二個資料庫伺服器 |Microsoft SQL Server 2014 Enterprise – Windows Server 2012 R2 |A5
-5. |叢集多數節點 |Windows Server 2012 R2 Datacenter |A1 (小型)
-6. |第一部 SharePoint 應用程式伺服器 |Microsoft SharePoint Server 2013 試用版 – Windows Server 2012 R2 |A4 (特大型)
-7. |第二個 SharePoint 應用程式伺服器 |Microsoft SharePoint Server 2013 試用版 – Windows Server 2012 R2 |A4 (特大型)
-8. |第一部 SharePoint web 伺服器 |Microsoft SharePoint Server 2013 試用版 – Windows Server 2012 R2 |A4 (特大型)
-9. |第二個 SharePoint web 伺服器 |Microsoft SharePoint Server 2013 試用版 – Windows Server 2012 R2 |A4 (特大型)
+若要計算估計的成本，這項設定，請參閱 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/)。 
 
-若要計算估計的成本，這項設定，請參閱 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/)。
-
-1. 在 [模組]**** 中，按一下 [計算]****，然後按一下 [虛擬機器]**** 數次，直到足夠建立含有九個虛擬機器的清單為止。
+1. 在 **模組**, ，按一下 [ **計算**, ，然後按一下 [ **虛擬機器** 足夠時間，以建立九個虛擬機器的清單。
 2. 針對每一個虛擬機器，選取：
     - 您想要的區域
-    - [Windows]**** 類型
-    - [標準]**** 定價層
-    - 上表中的預設大小或您想要的大小來做為 [執行個體大小]****
+    - **Windows** 類型
+    - **標準** 定價層
+    - 在上表或您想要的大小的預設大小 **執行個體大小**
 
-> [AZURE.NOTE] 「Azure 價格計算機」並未納入兩個執行 SQL Server 2014 Enterprise 之虛擬機器的額外 SQL Server 授權費用。 請參閱 [虛擬機器定價 SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql) 如需詳細資訊。
+> [AZURE.NOTE] Azure 定價計算機不包含執行 SQL Server 2014 Enterprise 的兩個虛擬機器的 SQL Server 授權的其他成本。 請參閱 [虛擬機器定價 SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql) 如需詳細資訊。
 
 ### 部署階段
 
@@ -124,7 +123,7 @@
 
     為虛擬網路設定兩個 Azure Active Directory 複本網域控制站和 DNS 設定。 如需詳細的設定步驟，請參閱 [第 2 階段](virtual-machines-workload-intranet-sharepoint-phase2.md)。
 
-- 第 3 階段：設定 SQL Server 基礎結構。
+- 第 3 階段：設定 SQL Server 基礎結構。  
 
     準備 SQL Server 虛擬機器，以便與 SharePoint 搭配使用及建立 SQL Server 叢集。 如需詳細的設定步驟，請參閱 [第 3 階段](virtual-machines-workload-intranet-sharepoint-phase3.md)。
 
@@ -140,21 +139,17 @@
 
 ## 其他資源
 
-[使用 SQL Server AlwaysOn 可用性群組在 Azure 中部署 SharePoint](virtual-machines-workload-deploy-spsqlao-overview.md)
+[在 Azure 中使用 SQL Server AlwaysOn 可用性群組部署 SharePoint](virtual-machines-workload-deploy-spsqlao-overview.md)
 
-[設定用於測試的混合式雲端中的 SharePoint 內部網路伺服器陣列](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
+[在混合式雲端中設定用於測試的 SharePoint 內部網路伺服器陣列](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
 [適用於 SharePoint 2013 的 Microsoft Azure 架構](https://technet.microsoft.com/library/dn635309.aspx)
 
-[SharePoint 與 SQL Server AlwaysOn sharepoint 資訊圖](http://go.microsoft.com/fwlink/?LinkId=394788)
+[包含 SQL Server AlwaysOn 的 SharePoint 資訊圖](http://go.microsoft.com/fwlink/?LinkId=394788)
 
-[裝載於 Azure 基礎結構服務中的 SharePoint 伺服器陣列](virtual-machines-sharepoint-infrastructure-services.md)
+[在 Azure 基礎結構服務中架設的 SharePoint 伺服器陣列](virtual-machines-sharepoint-infrastructure-services.md)
 
 [Azure 基礎結構服務實作指導方針](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-[Azure 基礎結構服務工作負載: 高可用性系列商務應用程式](virtual-machines-workload-high-availability-lob-application.md)
-
-
-
-
+[Azure 基礎結構服務工作負載：高可用性企業營運應用程式](virtual-machines-workload-high-availability-lob-application.md)
 

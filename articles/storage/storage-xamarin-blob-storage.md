@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用 Xamarin 的 Blob 儲存體 (預覽) | Microsoft Azure" 
-    description="適用於 Xamarin 的 Azure 儲存體用戶端程式庫預覽可讓開發人員使用其原生的使用者介面以建立 iOS、Android 和 Windows 市集應用程式。本教學課程會示範如何使用 Xamarin 以建立 Android 應用程式，該應用程式使用 Azure Blob 儲存體。" 
+    description="適用於 Xamarin 的 Azure 儲存體用戶端程式庫預覽可讓開發人員使用其原生的使用者介面以建立 iOS、Android 和 Windows 市集應用程式。 本教學課程會示範如何使用 Xamarin 以建立 Android 應用程式，該應用程式使用 Azure Blob 儲存體。" 
     services="storage" 
     documentationCenter="xamarin" 
     authors="micurd" 
@@ -15,7 +15,6 @@
     ms.topic="article" 
     ms.date="12/01/2015" 
     ms.author="tamram"/>
-
 
 # 如何使用 Xamarin 的 Blob 儲存體 (預覽)
 
@@ -37,7 +36,7 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
 
 首先，您必須安裝 Azure PowerShell。 簽出 [如何安裝和設定 Azure PowerShell](../powershell-install-configure.md#Install) 如需相關指示。
 
-接著，開啟 Azure PowerShell 並執行下列命令。 請務必取代 `ACCOUNT_NAME` 和 `ACCOUNT_KEY = = ` 與儲存體帳戶認證。 以您選擇的名稱取代 `CONTAINER_NAME`。
+接著，開啟 Azure PowerShell 並執行下列命令。 請記得將 `ACCOUNT_NAME` 和 `ACCOUNT_KEY== ` 取代為您的儲存體帳戶認證。 將 `CONTAINER_NAME` 取代為您選擇的名稱。
 
     PS C:\> $context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
     PS C:\> New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
@@ -48,7 +47,7 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
 
     https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 
-您在容器上建立的共用存取簽章將在隔天內有效。 簽章會將完整存取權限 (*例如*，讀取、寫入、刪除和列出) 授與容器中 Blob。
+您在容器上建立的共用存取簽章將在隔天內有效。 簽章會授與的權限 (*例如*, 、 讀取、 寫入、 刪除和列出) 以在容器內的 blob。
 
 如需有關共用的存取簽章的詳細資訊，請參閱 [適用於.NET 的 SAS 教學課程](storage-dotnet-shared-access-signature-part-2.md)。
 
@@ -58,8 +57,8 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
 
 1. 下載並安裝 [Visual Studio](https://www.visualstudio.com/)。
 2. 下載並安裝 [Xamarin](http://xamarin.com/platform)。
-3. 開啟 Visual Studio，然後選取 [**檔案 > 新增 > 專案 > Android > 空白應用程式 (Android)**]。
-4. 以滑鼠右鍵按一下 [方案總管] 窗格中的專案，然後選取 [**管理 NuGet 封裝**]。 然後搜尋 [**Azure 儲存體**] 並安裝 [**Azure 儲存體 4.4.0-preview**]。
+3. 開啟 Visual Studio 中，然後選取 **檔案 > 新增 > 專案 > Android > 空白 App(Android)**。
+4. 以滑鼠右鍵按一下 [方案總管] 窗格中的專案，然後選取 **管理 NuGet 封裝**。 然後搜尋 **Azure 儲存體** 並安裝 **Azure 儲存體 4.4.0-preview**。
 
 您現在應該有應用程式，可讓您按一下按鈕，並遞增計數器。
 
@@ -67,14 +66,15 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
 
 接下來，加入程式碼以使用您所產生的 SAS URI 來執行一系列的容器作業。
 
-首先加入下列 **using** 陳述式：
+首先加入下列 **使用** 陳述式:
 
     using System.IO;
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Storage.Blob;
 
-接著，對 SAS 權杖新增程式碼行。 取代 `"SAS_URI"` 字串取代您在 Azure PowerShell 中產生的 SAS URI。 然後加入一行呼叫 `UseContainerSAS` 我們會在以下建立的方法。 請注意，已在委派之前加入**非同步**關鍵字。
+
+接著，對 SAS 權杖新增程式碼行。 將 `"SAS_URI"` 字串取代為您在 Azure PowerShell 中產生的 SAS URI。 然後對我們會在以下建立的 `UseContainerSAS` 方法的呼叫加入程式碼行。 請注意， **非同步** 關鍵字已在委派之前加入。
 
 
     public class MainActivity : Activity
@@ -84,25 +84,25 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-    
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-    
+
             // Get our button from the layout resource, and attach an event to it
             Button button = FindViewById<Button>(Resource.Id.MyButton);
-    
+
             button.Click += async delegate  {
                 button.Text = string.Format("{0} clicks!", count++);
                 await UseContainerSAS(sas);
             };
      }
 
-加入新的方法， `UseContainerSAS`, 下 `OnCreate` 方法。
+在 `OnCreate` 方法底下加入新的方法 `UseContainerSAS`。
 
     static async Task UseContainerSAS(string sas)
     {
         //Try performing container operations with the SAS provided.
-    
+
         //Return a reference to the container using the SAS URI.
         CloudBlobContainer container = new CloudBlobContainer(new Uri(sas));
         string date = DateTime.Now.ToString();
@@ -110,7 +110,7 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
         {
             //Write operation: write a new blob to the container.
             CloudBlockBlob blob = container.GetBlockBlobReference("sasblob_" + date + ".txt");
-    
+
             string blobContent = "This blob was created with a shared access signature granting write permissions to the container. ";
             MemoryStream msWrite = new
             MemoryStream(Encoding.UTF8.GetBytes(blobContent));
@@ -133,7 +133,7 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
             //Read operation: Get a reference to one of the blobs in the container and read it.
             CloudBlockBlob blob = container.GetBlockBlobReference("sasblob_” + date + “.txt");
             string data = await blob.DownloadTextAsync();
-    
+
             Console.WriteLine("Read operation succeeded for SAS " + sas);
             Console.WriteLine("Blob contents: " + data);
         }
@@ -149,7 +149,7 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
             //Delete operation: Delete a blob in the container.
             CloudBlockBlob blob = container.GetBlockBlobReference("sasblob_” + date + “.txt");
             await blob.DeleteAsync();
-    
+
             Console.WriteLine("Delete operation succeeded for SAS " + sas);
             Console.WriteLine();
         }
@@ -165,7 +165,7 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
 
 您現在可以在模擬器或 Android 裝置中執行這個應用程式。
 
-雖然此快速入門著重於 Android，您可以使用 `UseContainerSAS` iOS 或 Windows 市集應用程式中的方法。 Xamarin 也可讓開發人員建立 Windows Phone 應用程式；不過，我們的程式庫尚未支援。
+雖然此快速入門著重於 Android，您也可以在 iOS 或 Windows 市集應用程式中使用 `UseContainerSAS` 方法。 Xamarin 也可讓開發人員建立 Windows Phone 應用程式；不過，我們的程式庫尚未支援。
 
 ## 後續步驟
 
@@ -177,8 +177,4 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
 [如何使用.net 的 Blob 儲存體](storage-dotnet-how-to-use-blobs.md)  
 [如何使用.net 的資料表儲存體](storage-dotnet-how-to-use-tables.md)  
 [如何使用.net 的佇列儲存體](storage-dotnet-how-to-use-queues.md)
-[使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy)
-
-
-
-
+[使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy) 

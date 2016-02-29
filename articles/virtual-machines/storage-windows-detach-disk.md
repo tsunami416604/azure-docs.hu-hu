@@ -19,7 +19,6 @@
 
 
 
-
 # 如何從 Windows 虛擬機器卸離磁碟
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
@@ -29,11 +28,7 @@
 
 ## 其他資源
 
-[關於磁碟和 Vhd 的虛擬機器](virtual-machines-disks-vhds.md)
+[有關虛擬機器的磁碟和 VHD](virtual-machines-disks-vhds.md)
 
-[如何將資料磁碟連接至 Windows 虛擬機器](storage-windows-attach-disk.md)
-
-
-
-
+[如何將資料磁碟附加至 Windows 虛擬機器](storage-windows-attach-disk.md)
 

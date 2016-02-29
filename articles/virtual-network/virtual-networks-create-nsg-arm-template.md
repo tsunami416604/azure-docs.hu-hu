@@ -17,7 +17,6 @@
    ms.date="11/20/2015"
    ms.author="telmos" />
 
-
 # 如何使用範本建立 NSG
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
@@ -101,55 +100,54 @@
 
 1. 如果您從未使用 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md) 並遵循指示以登入 Azure，並選取您的訂閱結束。
 
-3. 執行 **New-AzureRmResourceGroup** Cmdlet 以使用範本建立資源群組。
+3. 執行 **新增 AzureRmResourceGroup** 指令程式來建立資源群組範本中使用。
 
-     New-AzureRmResourceGroup -Name TestRG -Location uswest `
-         -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' `
-         -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'  
+        New-AzureRmResourceGroup -Name TestRG -Location uswest `
+            -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' `
+            -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'  
 
- 預期的輸出：
+    預期的輸出：
 
-     ResourceGroupName : TestRG
-     Location          : westus
-     ProvisioningState : Succeeded
-     Tags              : 
-     Permissions       : 
-                         Actions  NotActions
-                         =======  ==========
-                         *                  
-    
-     Resources         : 
-                         Name                Type                                     Location
-                         ==================  =======================================  ========
-                         sqlAvSet            Microsoft.Compute/availabilitySets       westus  
-                         webAvSet            Microsoft.Compute/availabilitySets       westus  
-                         SQL1                Microsoft.Compute/virtualMachines        westus  
-                         SQL2                Microsoft.Compute/virtualMachines        westus  
-                         Web1                Microsoft.Compute/virtualMachines        westus  
-                         Web2                Microsoft.Compute/virtualMachines        westus  
-                         TestNICSQL1         Microsoft.Network/networkInterfaces      westus  
-                         TestNICSQL2         Microsoft.Network/networkInterfaces      westus  
-                         TestNICWeb1         Microsoft.Network/networkInterfaces      westus  
-                         TestNICWeb2         Microsoft.Network/networkInterfaces      westus  
-                         NSG-BackEnd         Microsoft.Network/networkSecurityGroups  westus  
-                         NSG-FrontEnd        Microsoft.Network/networkSecurityGroups  westus  
-                         TestPIPSQL1         Microsoft.Network/publicIPAddresses      westus  
-                         TestPIPSQL2         Microsoft.Network/publicIPAddresses      westus  
-                         TestPIPWeb1         Microsoft.Network/publicIPAddresses      westus  
-                         TestPIPWeb2         Microsoft.Network/publicIPAddresses      westus  
-                         TestVNet            Microsoft.Network/virtualNetworks        westus  
-                         testvnetstorageprm  Microsoft.Storage/storageAccounts        westus  
-                         testvnetstoragestd  Microsoft.Storage/storageAccounts        westus  
-    
-     ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
-
+        ResourceGroupName : TestRG
+        Location          : westus
+        ProvisioningState : Succeeded
+        Tags              : 
+        Permissions       : 
+                            Actions  NotActions
+                            =======  ==========
+                            *                  
+                            
+        Resources         : 
+                            Name                Type                                     Location
+                            ==================  =======================================  ========
+                            sqlAvSet            Microsoft.Compute/availabilitySets       westus  
+                            webAvSet            Microsoft.Compute/availabilitySets       westus  
+                            SQL1                Microsoft.Compute/virtualMachines        westus  
+                            SQL2                Microsoft.Compute/virtualMachines        westus  
+                            Web1                Microsoft.Compute/virtualMachines        westus  
+                            Web2                Microsoft.Compute/virtualMachines        westus  
+                            TestNICSQL1         Microsoft.Network/networkInterfaces      westus  
+                            TestNICSQL2         Microsoft.Network/networkInterfaces      westus  
+                            TestNICWeb1         Microsoft.Network/networkInterfaces      westus  
+                            TestNICWeb2         Microsoft.Network/networkInterfaces      westus  
+                            NSG-BackEnd         Microsoft.Network/networkSecurityGroups  westus  
+                            NSG-FrontEnd        Microsoft.Network/networkSecurityGroups  westus  
+                            TestPIPSQL1         Microsoft.Network/publicIPAddresses      westus  
+                            TestPIPSQL2         Microsoft.Network/publicIPAddresses      westus  
+                            TestPIPWeb1         Microsoft.Network/publicIPAddresses      westus  
+                            TestPIPWeb2         Microsoft.Network/publicIPAddresses      westus  
+                            TestVNet            Microsoft.Network/virtualNetworks        westus  
+                            testvnetstorageprm  Microsoft.Storage/storageAccounts        westus  
+                            testvnetstoragestd  Microsoft.Storage/storageAccounts        westus  
+                            
+        ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 
 ## 使用 Azure CLI 部署 ARM 範本
 
 若要使用 Azure CLI 部署 ARM 範本，請依照下列步驟執行。
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli-install.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
-2. 執行 **azure config mode** 命令，以切換為資源管理員模式，如下所示。
+2. 執行 **azure 組態模式** 命令以切換至資源管理員模式，如下所示。
 
         azure config mode arm
 
@@ -157,7 +155,7 @@
 
         info:    New mode is arm
 
-4. 執行 **azure group deployment create** Cmdlet，以使用先前下載並修改的範本和參數檔案部署新的 VNet。 輸出後顯示的清單可說明所使用的參數。
+4. 執行 **azure 群組部署建立** 指令程式來部署新的 VNet 使用的範本和參數檔案下載並修改上面。 輸出後顯示的清單可說明所使用的參數。
 
         azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' -e 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'
 
@@ -178,13 +176,9 @@
         data:    
         info:    group create command OK
 
-    - **-n (或 --name)**。 要建立之資源群組的名稱。
-    - **-l (或 --location)**。 將會建立將在其中建立資源群組的 Azure 區域。
-    - **-f (或 --template-file)**。 ARM 範本檔案的路徑。
-    - **-e (或 --parameters-file)**。 ARM 參數檔案的路徑。
-
-
-
-
+    - **-n (或--名稱)**。 要建立之資源群組的名稱。
+    - **-l (或--location)**。 將會建立將在其中建立資源群組的 Azure 區域。
+    - **-f (或--範本檔案)**。 ARM 範本檔案的路徑。
+    - **-e (或--參數檔案)**。 ARM 參數檔案的路徑。
 
 

@@ -1,6 +1,6 @@
 ### App Service 方案
 
-建立主控 Web 應用程式的服務方案。 您可以透過 **hostingPlanName** 參數提供方案名稱。 計劃的位置是 
+建立主控 Web 應用程式的服務方案。 提供透過計劃名稱 **hostingPlanName** 參數。 計劃的位置是 
 web 應用程式所使用的相同位置。 定價層和背景工作大小指定於 **sku** 和 **workerSize** 參數
 
     {
@@ -15,6 +15,4 @@ web 應用程式所使用的相同位置。 定價層和背景工作大小指定
         "numberOfWorkers": 1
       }
     },
-
-
 

@@ -17,22 +17,19 @@
     ms.date="11/17/2015"
     ms.author="heidist"/>
 
-
 # 使用 REST API 將資料匯入至 Azure 搜尋服務
-
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-data-import.md)
-- [Portal](search-import-data-portal.md)
+- [概觀](search-what-is-data-import.md)
+- [入口網站](search-import-data-portal.md)
 - [.NET](search-import-data-dotnet.md)
 - [REST](search-import-data-rest-api.md)
-- [Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
-
+- [索引子](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
 本文將說明如何以填入索引使用 [Azure 搜尋服務 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)。 下列內容的一些取自 [新增、 更新或刪除文件 (Azure 搜尋 REST API)](https://msdn.microsoft.com/library/azure/dn798930.aspx)。 請參閱上層文章以取得更多內容。
 
 若要使用 REST API 將文件推送至索引，您會發出 POST HTTP 要求至您的服務 URL 端點。
 
-**要求和要求標頭**：
+**要求和要求標頭**: 
 
 在 URL 中，您將必須提供您的服務名稱和適當的 API 版本 (發行這份文件時最新的 API 版本是 "2015-02-28")。
 
@@ -42,7 +39,8 @@
     Content-Type: application/JSON
     api-key:[primary admin key]
 
-**要求本文**：
+
+**要求本文**:
 
 
     {
@@ -85,8 +83,4 @@
 更新您的索引時若成功，將會收到狀態碼「200 確定」。 如果在要求中至少有一個項目未成功建立索引，就會收到「207」狀態碼。
 
 如需有關文件動作和成功/錯誤回應的詳細資訊，請參閱 [本頁](https://msdn.microsoft.com/library/azure/dn798930.aspx)。
-
-
-
-
 

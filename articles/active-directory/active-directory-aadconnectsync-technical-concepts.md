@@ -17,7 +17,6 @@
     ms.author="markusvi;andkjell"/>
 
 
-
 # Azure AD Connect 同步處理：技術概念
 
 Azure AD Connect 同步建置在一個穩固的中繼目錄同步處理平台上。
@@ -89,10 +88,9 @@ Metaverse 是鄰近連接器空間中所有聯結的身份識別的合併檢視�
 
 ## 其他資源
 
-* [Azure AD Connect 同步處理: 自訂同步處理選項](active-directory-aadconnectsync-whatis.md)
+* [Azure AD Connect 同步處理：自訂同步處理選項](active-directory-aadconnectsync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)
 
-
-
-[1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png 
+<!--Image references-->
+[1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
 

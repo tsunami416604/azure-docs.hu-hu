@@ -1,20 +1,21 @@
+
 <properties
-    pageTitle ="Azure Active Directory 混合式身分識別設計考量-決定事件 rResponse 需求 |Microsoft Azure 需求 >
-    描述 = 「 決定監視和報告功能，可利用混合式身分識別解決方案的 IT 採取動作來識別和減輕潛在威脅 」
+    pageTitle="Azure Active Directory 混合式身分識別設計考量 - 判斷事件回應需求|Microsoft Azure 需求 "
+    description="判斷混合式身分識別解決方案的監視和報告功能，讓 IT 可用來採取動作以識別和減緩潛在威脅。"
     documentationCenter=""
-    服務 = [active directory]
-    作者 ="yuridio"
-    管理員 ="stevenpo"
+    services="active-directory"
+    authors="yuridio"
+    manager="stevenpo"
     editor=""/>
 
 <tags
-    ms.service= [active directory]
+    ms.service="active-directory"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.workload="identity 」 
-    ms.date="11/06/2015 」
-    ms.author="yuridio"/ >
+    ms.workload="identity" 
+    ms.date="11/06/2015"
+    ms.author="yuridio"/>
 
 # 判斷混合式身分識別解決方案的事件回應需求
 
@@ -31,11 +32,10 @@
 9.  損毀和成本評估。
 10. 修訂程序和計畫。
 
-在識別遭到入侵及嚴重性階段期間，必須識別已遭入侵的系統、已遭存取的檔案，並判斷這些檔案的敏感度。 您的混合式身分識別系統應該能夠滿足這些需求，來協助您識別進行這些變更的使用者。
+在識別遭到入侵及嚴重性階段期間，必須識別已遭入侵的系統、已遭存取的檔案，並判斷這些檔案的敏感度。 您的混合式身分識別系統應該能夠滿足這些需求，來協助您識別進行這些變更的使用者。 
 
 ## 監視和報告
-
-主要是如果系統已內建稽核和報告功能，身分識別系統也可以在初步評估階段多次提供協助。 在初步評估期間，IT 系統管理員必須能夠識別可疑的活動，或者系統應該能夠根據預先設定的工作自動觸發它。 有許多活動可代表潛在的攻擊，但在其他情況下，設定不良的系統可能會在入侵偵測系統中導致誤報數目。
+主要是如果系統已內建稽核和報告功能，身分識別系統也可以在初步評估階段多次提供協助。 在初步評估期間，IT 系統管理員必須能夠識別可疑的活動，或者系統應該能夠根據預先設定的工作自動觸發它。 有許多活動可代表潛在的攻擊，但在其他情況下，設定不良的系統可能會在入侵偵測系統中導致誤報數目。 
 
 身分識別管理系統應該能協助 IT 系統管理員來識別及報告這些可疑的活動。 通常可藉由監視所有系統並具備可強調顯示潛在威脅的報告功能，來滿足這些技術需求。 在考量事件回應需求時，請使用下列問題來協助您設計混合式身分識別解決方案：
 
@@ -52,19 +52,13 @@
 
 - 貴公司具備適當的原則，可視需要封鎖使用者存取網路嗎？
  - 如果是，目前的解決方案能夠與您即將採用的混合式身分識別管理系統整合嗎？
-- 貴公司是否需要針對隔離的使用者強制執行條件式存取？
-
+- 貴公司是否需要針對隔離的使用者強制執行條件式存取？ 
+ 
 >[AZURE.NOTE]
-請確定會記下每個答案，並了解答案背後的原理。 [定義的資料保護策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) 將會透過可用的選項以及每個選項的優點/缺點。 回答這些問題之後，您就能選取最適合業務需求的選項。
+請確定會記下每個答案，並了解答案背後的原理。 [定義的資料保護策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) 將會透過可用的選項以及每個選項的優點/缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
 
 ## 後續步驟
-
-[定義的資料保護策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
+[定義資料保護策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## 另請參閱
-
 [設計考量概觀](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-

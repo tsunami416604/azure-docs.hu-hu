@@ -18,10 +18,9 @@
     ms.author="rasquill"/>
 
 
+#將自訂資料插入 Azure 虛擬機器
 
-# 將自訂資料插入 Azure 虛擬機器
-
-不論作業系統是 Windows 或 Linux 散發套件，將指令碼或其他資料插入正在佈建的 Azure 虛擬機器是很常見的案例。
+不論作業系統是 Windows 或 Linux 散發套件，將指令碼或其他資料插入正在佈建的 Azure 虛擬機器是很常見的案例。 
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
 
@@ -34,11 +33,11 @@
 
 - 使用某些系統提供的特殊工具來自動偵測與處理自訂資料。
 
-> [AZURE.NOTE] 本文將說明如何使用建立的 VM 插入自訂資料以搭配 Azure 服務管理 API。 若要了解如何使用 Azure 資源管理 API，請參閱 [範例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)。
+> [AZURE.NOTE] 本文將說明如何自訂資料可以藉由使用 Azure 服務管理 API 建立的 VM 插入。 若要了解如何使用 Azure 資源管理 API，請參閱 [範例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)。
 
 ## 將自訂資料插入 Azure 虛擬機器
 
-這項功能目前僅支援 [Azure 命令列介面](https://github.com/Azure/azure-xplat-cli)。 雖然您可以使用任何選項 `azure vm 建立` 命令時，下列示範一個非常基本的方法。
+這項功能目前僅支援 [Azure 命令列介面](https://github.com/Azure/azure-xplat-cli)。 雖然您可能會在 `azure vm create` 命令中使用任何選項，但是下列將示範一個非常基本的方法。
 
 ```
     PASSWORD='AcceptablePassword -- more than 8 chars, a cap, a num, a special'
@@ -51,13 +50,14 @@
 
 ## 在虛擬機器中使用自訂資料
 
-+ 如果您的 Azure 虛擬機器是 windows 虛擬機器，則自訂資料檔案儲存到 `%SYSTEMDRIVE%\AzureData\CustomData.bin`。 雖然從本機電腦傳送到新虛擬機器的資料是 base64 編碼，但是系統會自動將它解碼並立即開啟或使用。
-   > [AZURE.NOTE] 如果檔案已存在，則會被覆寫。 目錄上的安全性會設為 [System:Full Control]**** 和 [Administrators:Full Control]****。
++ 如果 Azure 的虛擬機器是以 Windows 為基礎的虛擬機器，自訂資料檔案則會儲存至 `%SYSTEMDRIVE%\AzureData\CustomData.bin`。 雖然從本機電腦傳送到新虛擬機器的資料是 base64 編碼，但是系統會自動將它解碼並立即開啟或使用。
+
+   > [AZURE.NOTE] 如果檔案存在，則會覆寫。 目錄上的安全性設定為 **System: Full Control** 和 **Administrators: Full Control**。
 
 + 如果您的 Azure 虛擬機器是以 Linux 為基礎的虛擬機器，自訂資料檔案則會位於下列兩個位置中。 資料將會以 base64 編碼，因此您必須先解碼資料。
 
-    + 在 `/var/lib/waagent/ovf-env.xml`
-    + 在 `/var/lib/waagent/CustomData`
+    + 於 `/var/lib/waagent/ovf-env.xml`
+    + 於 `/var/lib/waagent/CustomData`
 
 
 
@@ -73,17 +73,13 @@
 
 
 
-
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟：使用 cloud-init
 
 如需詳細資訊，請參閱 [Ubuntu 的 cloud-init 文件](https://help.ubuntu.com/community/CloudInit)。
 
-
-[新增角色服務管理 REST API 參考](http://msdn.microsoft.com/library/azure/jj157186.aspx)
+<!--Link references-->
+[Add Role Service Management REST API Reference](http://msdn.microsoft.com/library/azure/jj157186.aspx)
 
 [Azure 命令列介面](https://github.com/Azure/azure-xplat-cli)
-
-
-
-
 

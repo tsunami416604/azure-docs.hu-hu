@@ -1,6 +1,6 @@
 <properties
     pageTitle="移轉到 Azure 進階儲存體 | Microsoft Azure"
-    description="將您現有的虛擬機器移轉到 Azure 進階儲存體。「進階儲存體」可針對在「Azure 虛擬機器」上執行且需要大量 I/O 的工作負載，提供高效能、低延遲的磁碟支援。"
+    description="將您現有的虛擬機器移轉到 Azure 進階儲存體。 「進階儲存體」可針對在「Azure 虛擬機器」上執行且需要大量 I/O 的工作負載，提供高效能、低延遲的磁碟支援。"
     services="storage"
     documentationCenter="na"
     authors="ms-prkhad"
@@ -17,15 +17,15 @@
     ms.author="robinsh"/>
 
 
-
 # 移轉到 Azure 進階儲存體
 
 ## 概觀
 
-針對執行時需要大量 I/O 之工作負載的虛擬機器，「Azure 進階儲存體」可提供高效能、低延遲的磁碟支援。 使用「進階儲存體」的虛擬機器 (VM) 會將資料儲存在固態硬碟 (SSD) 上。 您可以將應用程式的 VM 磁碟移轉到「Azure 進階儲存體」，以利用這些磁碟的速度和效能。
+針對執行時需要大量 I/O 之工作負載的虛擬機器，「Azure 進階儲存體」可提供高效能、低延遲的磁碟支援。 使用「進階儲存體」的虛擬機器 (VM) 會將資料儲存在固態硬碟 (SSD) 上。 您可以將應用程式的 VM 磁碟移轉到「Azure 進階儲存體」，以利用這些磁碟的速度和效能。 
 
 Azure VM 支援連接數個「進階儲存體」磁碟，讓您應用程式的每一 VM 最多可擁有 64 TB 的儲存體。 使用「進階儲存體」時，您應用程式的每一 VM 可達到 80,000 IOPS (每秒輸入/輸出作業)，而每一 VM 的每秒磁碟輸送量為 2000 MB，且讀取作業的延遲極低。
->[AZURE.NOTE] 建議您將任何需要高 IOPS 的虛擬機器磁碟移轉到「Azure 進階儲存體」，以發揮應用程式最佳效能。 如果您的磁碟不需要高 IOPS，您可以在「標準儲存體」中維護它來限制成本，這會將虛擬機器磁碟資料儲存在「硬碟機 (HDD)」上而非 SSD 上。
+
+>[AZURE.NOTE] 我們建議您移轉高 IOPS Azure 高階儲存體需要您的應用程式的最佳效能的任何虛擬機器磁碟。 如果您的磁碟不需要高 IOPS，您可以在「標準儲存體」中維護它來限制成本，這會將虛擬機器磁碟資料儲存在「硬碟機 (HDD)」上而非 SSD 上。
 
 本指南的目的，在於協助「Azure 進階儲存體」的新使用者做好準備，以便從他們目前的系統順利轉換到「進階儲存體」。 本指南將說明此程序中的三個要素：規劃進階儲存體的移轉、將現有的虛擬硬碟 (VHD) 移轉至進階儲存體，以及在進階儲存體中建立 Azure 虛擬機器執行個體。
 
@@ -35,56 +35,50 @@ Azure VM 支援連接數個「進階儲存體」磁碟，讓您應用程式的�
 
 本指南分為兩個部分，涵蓋下列兩種移轉案例：
 
-- [移轉 Vm，從外部 Azure 至 Azure 高階儲存體](#migrating-vms-from-outside-azure-to-azure-premium-storage)。
-- [現有的 Azure Vm 移轉到 Azure Premium 儲存體](#migrating-existing-azure-vms-to-azure-premium-storage)。
+- [從外部 Azure 至 Azure 高階儲存體移轉 Vm](#migrating-vms-from-outside-azure-to-azure-premium-storage)。
+- [將現有的 Azure Vm 移轉到 Azure 高階儲存體](#migrating-existing-azure-vms-to-azure-premium-storage)。
 
 請根據您的案例，依照相關小節中所指定的步驟操作。
 
 ## 將其他平台上的 VM 移轉到 Azure 進階儲存體
 
 ### 先決條件
-
 - 您將需要 Azure 訂用帳戶。 如果您沒有帳戶，您可以建立一個月 [免費試用版](http://azure.microsoft.com/pricing/free-trial/) 訂用帳戶或造訪 [Azure 定價](http://azure.microsoft.com/pricing/) 取得更多選項。
 - 若要執行 PowerShell Cmdlet，您將需要 Microsoft Azure PowerShell 模組。 請參閱 [Microsoft Azure 下載](http://azure.microsoft.com/downloads/) 若要下載此模組。
 - 當您計劃使用在進階儲存體上執行的 Azure VM 時，您需要使用 DS 系列或 GS 系列的 VM。 DS 系列的 VM 可同時搭配標準和進階儲存體磁碟使用。 未來進階儲存體磁碟將可搭配更多 VM 類型使用。 如需可用 Azure VM 磁碟類型和大小的詳細資訊，請參閱 [虛擬機器和雲端服務大小](http://msdn.microsoft.com/library/azure/dn197896.aspx)。
 
-### 考量
+### 注意事項
 
 #### VM 大小
-
 Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtual-machines-size-specs.md)。 請檢閱使用於進階儲存體的虛擬機器效能特性，然後選擇最適合您的工作負載的 VM 大小。 確定 VM 上有足夠的磁碟流量頻寬。
 
 
 #### 磁碟大小
-
 有三種類型的磁碟可以搭配您的 VM 使用，而且每種都有特定的 IOP 以及完整的限制。 為您的 VM 選擇磁碟類型時，請根據應用程式在容量、效能、延展性以及尖峰負載方面的需求，將這些限制考量進去。
 
-| 進階儲存體磁碟類型| P10| P20| P30|
+|進階儲存體磁碟類型|P10|P20|P30|
 |:---:|:---:|:---:|:---:|
-| 磁碟大小| 128 GB| 512 GB| 1024 GB (1 TB)|
-| 每一磁碟的 IOPS| 500| 2300| 5000|
-| 每一磁碟的輸送量| 每秒 100 MB| 每秒 150 MB| 每秒 200 MB|
+|磁碟大小|128 GB|512 GB|1024 GB (1 TB)|
+|每一磁碟的 IOPS|500|2300|5000|
+|每一磁碟的輸送量|每秒 100 MB|每秒 150 MB|每秒 200 MB|
 
 #### 儲存體帳戶延展性目標
 
 高階儲存體帳戶之外，還有以下延展性目標，除了 [Azure 儲存體延展性和效能目標](http://msdn.microsoft.com/library/azure/dn249410.aspx)。 如果您的應用程式需求超出單一儲存體帳戶的延展性目標，請建置使用多個儲存體帳戶的應用程式，並將資料分散到那些儲存體帳戶中。
 
-| 總帳戶容量| 本機備援儲存體帳戶總頻寬|
+|總帳戶容量|本機備援儲存體帳戶總頻寬|
 |:--|:---|
-| 磁碟容量: 35 TB<br />快照容量: 10 TB| 每秒最多 50 Gbps (輸入 + 輸出)|
+|磁碟容量: 35 TB<br />快照容量：10 TB|每秒最多 50 Gbps (輸入 + 輸出)|
 
 如需進階儲存體規格的詳細資訊，請參閱 [延展性和效能目標時使用高階儲存體](storage-premium-storage-preview-portal.md#scalability-and-performance-targets-when-using-premium-storage)。
 
 #### 額外的資料磁碟
-
-根據您的工作負載，決定您的 VM 是否需要額外的資料磁碟。 您可以將數個持續性資料磁碟連接至您的 VM。 如有需要，您可以跨磁碟等量磁碟區以增加磁碟區的容量和效能。 如果您使用的高階儲存體資料磁碟等量磁碟區 [儲存空間](http://technet.microsoft.com/library/hh831739.aspx), ，您應該以每個磁碟所使用的一個資料行設定。 否則，等量磁碟區的整體效能可能會因為磁碟流量分配不平均而比預期的效能還低。 而對於 Linux VM，您可以使用 *mdadm* 公用程式來達到相同的效果。 請參閱文件 [Linux 上設定軟體 RAID](../virtual-machines-linux-configure-raid.md) 如需詳細資訊。
+根據您的工作負載，決定您的 VM 是否需要額外的資料磁碟。 您可以將數個持續性資料磁碟連接至您的 VM。 如有需要，您可以跨磁碟等量磁碟區以增加磁碟區的容量和效能。 如果您使用的高階儲存體資料磁碟等量磁碟區 [儲存空間](http://technet.microsoft.com/library/hh831739.aspx), ，您應該以每個磁碟所使用的一個資料行設定。 否則，等量磁碟區的整體效能可能會因為磁碟流量分配不平均而比預期的效能還低。 您可以使用 Linux Vm *mdadm* 公用程式來達到相同。 請參閱文件 [Linux 上設定軟體 RAID](../virtual-machines-linux-configure-raid.md) 如需詳細資訊。
 
 #### 磁碟快取原則
-
-根據預設，所有進階資料磁碟的磁碟快取原則都是「唯讀」**，而連接至 VM 的進階作業系統磁碟的則是「讀寫」**。 為使應用程式的 IO 達到最佳效能，建議使用此組態設定。 對於頻繁寫入或唯寫的資料磁碟 (例如 SQL Server 記錄檔)，停用磁碟快取可獲得更佳的應用程式效能。 可以使用更新現有的資料磁碟的快取設定 [Azure 入口網站](portal.azure.com) 或 *-Set-azuredatadisk* 參數 *-Hostcaching* 指令程式。
+根據預設，快取原則的磁碟是 *唯讀* 所有 Premium 資料磁碟，和 *讀寫* 的 Premium 作業系統磁碟連接至 VM。 為使應用程式的 IO 達到最佳效能，建議使用此組態設定。 對於頻繁寫入或唯寫的資料磁碟 (例如 SQL Server 記錄檔)，停用磁碟快取可獲得更佳的應用程式效能。 可以使用更新現有的資料磁碟的快取設定 [Azure 入口網站](portal.azure.com) 或 *-Set-azuredatadisk* 參數 *-Hostcaching* 指令程式。
 
 #### 位置
-
 挑選 Azure 進階儲存體可用的位置。 請參閱 [依地區的 Azure 服務](http://azure.microsoft.com/regions/#services) 有關最新可用的位置。 相較於與儲存 VM 磁碟的儲存體帳戶位於不同區域的 VM，位於相同區域將提供更優越的效能。
 
 #### 其他 Azure VM 組態設定
@@ -107,7 +101,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 - 將 VHD 一般化的工具 (如果您打算透過 VHD 建立多個 VM 執行個體)。 例如，適用於 Windows 的 sysprep 或適用於 Ubuntu 的 virt-sysprep。
 - 將 VHD 檔案上傳至儲存體帳戶的工具。 例如， [AzCopy](storage-use-azcopy.md) 或 [Azure 儲存體總管](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)。 本指南說明使用 AzCopy 工具複製 VHD 的方法。
 
-> [AZURE.NOTE] 為了達到最佳效能，請使用 Azure VM 中的上述其中一項工具複製 VHD，此 Azure VM 必須和目的地儲存體帳戶位於同一區域。 如果從不同區域的 Azure VM 複製 VHD，您的效能可能會變慢。
+> [AZURE.NOTE] 為了達到最佳效能，請從 Azure VM 的目的地儲存體帳戶位於相同區域中執行下列一項工具複製 VHD。 如果從不同區域的 Azure VM 複製 VHD，您的效能可能會變慢。
 >
 > 在有限的頻寬複製大量資料，請考慮使用 [Microsoft Azure 匯入/匯出服務](storage-import-export-service.md) 將資料傳輸的硬碟運送到 Azure 資料中心。 使用 Azure 匯入/匯出服務時，您僅能將資料複製到標準儲存體帳戶。 一旦資料位於 standard 儲存體帳戶，您可以使用 [複製 Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx) 或 AzCopy，將資料傳送到您的高階儲存體帳戶。
 >
@@ -120,18 +114,19 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 #### 一般化的作業系統 VHD，以建立多個 VM 執行個體
 
 如果您要上傳將用於建立多個一般 Azure VM 執行個體的 VHD，您必須先使用 sysprep 公用程式將 VHD 一般化。 這適用於內部部署或雲端的 VHD。 Sysprep 會移除 VHD 中所有電腦特定的資訊。
->[AZURE.IMPORTANT] 將 VM 一般化之前，請先擷取快照或備份。 執行 sysprep 會刪除 VM 執行個體。 按照下方的步驟操作，以在 Windows OS VHD 中執行 sysprep。 請注意，執行 Sysprep 命令會要求您關閉虛擬機器。 如需有關 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](http://technet.microsoft.com/library/hh825209.aspx) 或 [Sysprep 技術參考](http://technet.microsoft.com/library/cc766049(v=ws.10).aspx)。
+
+>[AZURE.IMPORTANT] 擷取快照，或將它一般化之前備份您的 VM。 執行 sysprep 會刪除 VM 執行個體。 按照下方的步驟操作，以在 Windows OS VHD 中執行 sysprep。 請注意，執行 Sysprep 命令會要求您關閉虛擬機器。 如需有關 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](http://technet.microsoft.com/library/hh825209.aspx) 或 [Sysprep 技術參考](http://technet.microsoft.com/library/cc766049(v=ws.10).aspx)。
 
 1. 以系統管理員身分開啟 [命令提示字元] 視窗。
 2. 輸入下列命令以開啟 Sysprep：
 
         %windir%\system32\sysprep\sysprep.exe
 
-4. 在 [系統準備工具] 中依序選取 [進入系統全新體驗 (OOBE)]、[一般化] 核取方塊、[關機]****，然後按一下 [確定]**** (如下方圖片所示)。 這會將作業系統一般化，並關閉系統。
+4. 在 [系統準備工具中，選取 [進入系統的全新體驗 (OOBE)，選取 [一般化] 核取方塊，選取 **關機**, ，然後按一下 [ **確定**, ，如下圖所示。 這會將作業系統一般化，並關閉系統。
 
     ![][1]
 
-若是 Ubuntu VM，使用 virt-sysprep 可達到相同效果。 請參閱 [virt sysprep](http://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) 如需詳細資訊。 請參閱開放原始碼的一些 [Linux 伺服器佈建軟體](http://www.cyberciti.biz/tips/server-provisioning-software.html) ，其他 Linux 作業系統。
+若是 Ubuntu VM，使用 virt-sysprep 可達到相同效果。 請參閱 [virt sysprep](http://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) 如需詳細資訊。 請參閱開放原始碼的一些 [Linux 伺服器佈建軟體](http://www.cyberciti.biz/tips/server-provisioning-software.html) 其他 Linux 作業系統。
 
 #### 建立單一 VM 執行個體的唯一作業系統 VHD
 
@@ -162,8 +157,8 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
 如果您正在將 VHD 從標準 Azure 儲存體帳戶移轉至進階 Azure 儲存體帳戶，您必須複製 VHD 容器的來源路徑、VHD 檔案名稱和來源儲存體帳戶的儲存體帳戶金鑰。
 
-1. 依序前往 [Azure 入口網站] > [虛擬機器] > [磁碟]****。
-2. 從 [位置] 欄複製 VDH 容器的 URL並儲存。 容器的 URL 會類似於 `https://myaccount.blob.core.windows.net/mycontainer/`。
+1. 移至 **Azure 入口網站 > 虛擬機器 > 磁碟**。
+2. 從 [位置] 欄複製 VDH 容器的 URL並儲存。 容器 URL 會類似 `https://myaccount.blob.core.windows.net/mycontainer/`。
 
 #### 從非 Azure 雲端複製 VHD
 
@@ -171,11 +166,11 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
 1. 如果您使用的是 AWS，請將 EC2 執行個體匯出至 Amazon S3 貯體中的 VHD。 請依照 Amazon 文件中所述的步驟 [匯出 Amazon EC2 執行個體](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExportingEC2Instances.html) 安裝 Amazon EC2 命令列介面 (CLI) 工具並執行命令，將 EC2 執行個體匯出到 VHD 檔案。
 
-    執行命令時，請務必讓 DISK&#95;IMAGE&#95;FORMAT 變數使用 **VHD**。 已匯出的 VHD 檔案會儲存在您在該程序期間所指定的 Amazon S3 貯體中。
+    請務必使用 **VHD** 磁碟 & #95; 映像 & #95;格式的變數時執行命令。 已匯出的 VHD 檔案會儲存在您在該程序期間所指定的 Amazon S3 貯體中。
 
     ![][2]
 
-2. 從 S3 貯體下載 VHD 檔案。 然後選取 VHD 檔案，再依序按一下 [Actions] (動作)**** > [Download] (下載)****。
+2. 從 S3 貯體下載 VHD 檔案。 選取 VHD 檔案，然後 **動作** > **下載**。
 
     ![][3]|
 
@@ -195,18 +190,17 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
     以下是有關用於 AzCopy 命令中之參數的描述：
 
- - **來源 /: * < 來源 >:*** 資料夾的位置或包含 VHD 的儲存體容器 URL。
- - **/SourceKey: * < c e-帳戶-k >:*** 來源儲存體帳戶的儲存體帳戶金鑰。
- - **/Dest: * < 目標 >:*** 複製 VHD 的儲存體容器 URL。
- - **/DestKey: * < 目的地--account-key >:*** 的目的地儲存體帳戶的儲存體帳戶金鑰。
- - **/BlobType: page:** 將目的地指定為分頁 Blob。
- - **模式 /: * < 檔案名稱 >:*** 指定要複製的 vhd 檔案名稱。
+ - **/ 來源: *& l t; 來源 & gt;:*** 資料夾的位置或包含 VHD 的儲存體容器 URL。
+ - **/Sourcekey: *& l t; 來源帳戶金鑰 & gt;:*** 來源儲存體帳戶的儲存體帳戶金鑰。
+ - **/Dest: *(& s) lt; 目的地 & gt;:*** 複製 VHD 的儲存體容器 URL。
+ - **/Destkey: *& l t; 目的地帳戶金鑰 & gt;:*** 的目的地儲存體帳戶的儲存體帳戶金鑰。
+ - **/Blobtype: 頁面:** 指定目的地是分頁 blob。
+ - **/ 模式: *& l t; 檔案名稱 & gt;:*** 指定要複製的 vhd 檔案名稱。
 
 如需有關使用 AzCopy 工具，請參閱 [開始使用 AzCopy 命令列公用程式](storage-use-azcopy.md)。
 
 ### 使用 PowerShell 複製 VHD
-
-您也可以使用 PowerShell Cmdlet Start-AzureStorageBlobCopy 來複製 VHD 檔案。在 Azure PowerShell 上使用下列命令來複製 VHD。將 <> 中的值取代為您的來源和目的地儲存體帳戶中的對應值。若要使用此命令，您的目的地儲存體帳戶中必須具有名為 vhds 的容器。如果此容器不存在，請先加以建立，再執行命令。
+您也可以使用 PowerShell Cmdlet Start-AzureStorageBlobCopy 來複製 VHD 檔案。 在 Azure PowerShell 上使用下列命令來複製 VHD。 將 <> 中的值取代為您的來源和目的地儲存體帳戶中的對應值。 若要使用此命令，您的目的地儲存體帳戶中必須具有名為 vhds 的容器。 如果此容器不存在，請先加以建立，再執行命令。
 
     $sourceBlobUri = "https://sourceaccount.blob.core.windows.net/vhds/myvhd.vhd"
     $sourceContext = New-AzureStorageContext  –StorageAccountName <source-account> -StorageAccountKey <source-account-key>
@@ -220,7 +214,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 - [Azure 儲存體複製 Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 - [Azure 匯入/匯出服務](https://msdn.microsoft.com/library/dn529096.aspx)
 
->[AZURE.NOTE] 匯入/匯出僅可用來複製到 Standard 儲存體帳戶。 您必須使用 AzCopy 之類的工具，從 Standard 儲存體帳戶複製到進階儲存體帳戶。
+>[AZURE.NOTE] 匯入/匯出可用於複製為只有標準儲存體帳戶。 您必須使用 AzCopy 之類的工具，從 Standard 儲存體帳戶複製到進階儲存體帳戶。
 
 ## 使用進階儲存體建立 Azure VM
 
@@ -232,19 +226,19 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
 #### 建立多個 Azure VM 執行個體的一般化的作業系統 VHD
 
-將一般化的作業系統映像 VHD 上傳至儲存體帳戶之後，將其註冊為 **Azure VM 映像**，讓您可以從該映像建立一個或多個 VM 執行個體。 使用下列 PowerShell Cmdlet 將您的 VHD 註冊為 Azure VM 作業系統映像。 提供存放複製的 VHD 的完整容器 URL。
+一般化的作業系統映像 VHD 上傳至儲存體帳戶之後，將其註冊為 **Azure VM 映像** ，讓您可以建立一或多個 VM 執行個體。 使用下列 PowerShell Cmdlet 將您的 VHD 註冊為 Azure VM 作業系統映像。 提供存放複製的 VHD 的完整容器 URL。
 
     Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows
 
-複製並儲存這個新 Azure VM 映像的名稱。 在上述範例中，該名稱是 *OSImageName*。
+複製並儲存這個新 Azure VM 映像的名稱。 在上述範例中，它是 *OSImageName*。
 
 #### 建立單一 Azure VM 執行個體的唯一作業系統 VHD
 
-將唯一的作業系統 VHD 上傳至儲存體帳戶之後，將其註冊為 **Azure 作業系統磁碟**，讓您可以從該磁碟建立 VM 執行個體。 使用下列 PowerShell Cmdlet 將您的 VHD 註冊為 Azure 作業系統磁碟。 提供存放複製的 VHD 的完整容器 URL。
+唯一的作業系統 VHD 上傳至儲存體帳戶之後，將其註冊為 **Azure 作業系統磁碟** ，因此您可以從其建立的 VM 執行個體。 使用下列 PowerShell Cmdlet 將您的 VHD 註冊為 Azure 作業系統磁碟。 提供存放複製的 VHD 的完整容器 URL。
 
     Add-AzureDisk -DiskName "OSDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd" -Label "My OS Disk" -OS "Windows"
 
-複製並儲存這個新 Azure 作業系統磁碟的名稱。 在上述範例中，該名稱是「OSDisk」**。
+複製並儲存這個新 Azure 作業系統磁碟的名稱。 在上述範例中，它是 *OSDisk*。
 
 #### 連接至新 Azure VM 執行個體的資料磁碟 VHD
 
@@ -254,12 +248,13 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
     Add-AzureDisk -DiskName "DataDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk.vhd" -Label "My Data Disk"
 
-複製並儲存這個新 Azure 資料磁碟的名稱。 在上述範例中，該名稱是「DataDisk」**。
+複製並儲存這個新 Azure 資料磁碟的名稱。 在上述範例中，它是 *DataDisk*。
 
 ### 建立 Azure DS 系列或 GS 系列的 VM。
 
-註冊 OS 映像或 OS 磁碟之後，請建立新的 DS 系列或 GS 系列 VM。 您將使用您註冊的作業系統映像或作業系統磁碟名稱。 從進階儲存體層選取 VM 類型。 在下列範例中，我們使用的 VM 大小為「Standard_DS2」**。
->[AZURE.NOTE] 更新磁碟大小以確定它符合您的容量、效能需求，和可用的 Azure 磁碟大小。
+註冊 OS 映像或 OS 磁碟之後，請建立新的 DS 系列或 GS 系列 VM。 您將使用您註冊的作業系統映像或作業系統磁碟名稱。 從進階儲存體層選取 VM 類型。 在下列範例中，我們會使用 *Standard_DS2* VM 大小。
+
+>[AZURE.NOTE] 更新磁碟大小以確定它符合您的容量和效能需求，以及可用的 Azure 磁碟大小。
 
 依照下方的 PowerShell Cmdlet 逐步建立新的 VM。 首先，設定一般參數：
 
@@ -279,24 +274,24 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
 #### 建立多個 Azure VM 執行個體的一般化的作業系統 VHD
 
-使用您註冊的 **Azure 作業系統映像**，建立一個或多個新的 DS 系列 Azure VM 執行個體。 如下方所示，在建立新的 VM 時，於 VM 組態中指定此 OS 映像名稱。
+建立一或多個新 DS 系列 Azure VM 執行個體使用 **Azure 作業系統映像** 您註冊。 如下方所示，在建立新的 VM 時，於 VM 組態中指定此 OS 映像名稱。
 
     $OSImage = Get-AzureVMImage –ImageName "OSImageName"
-    
+
     $vm = New-AzureVMConfig -Name $vmName –InstanceSize $vmSize -ImageName $OSImage.ImageName
-    
+
     Add-AzureProvisioningConfig -Windows –AdminUserName $adminUser -Password $adminPassword –VM $vm
-    
+
     New-AzureVM -ServiceName $serviceName -VM $vm
 
 #### 建立單一 Azure VM 執行個體的唯一作業系統 VHD
 
-使用您註冊的 **Azure 作業系統磁碟**，建立新的 DS 系列 Azure VM 執行個體。 如下方所示，在建立新的 VM 時，於 VM 組態中指定此 OS 的磁碟名稱。
+建立新 DS 系列 Azure VM 執行個體使用 **Azure 作業系統磁碟** 您註冊。 如下方所示，在建立新的 VM 時，於 VM 組態中指定此 OS 的磁碟名稱。
 
     $OSDisk = Get-AzureDisk –DiskName "OSDisk"
-    
+
     $vm = New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -DiskName $OSDisk.DiskName
-    
+
     New-AzureVM -ServiceName $serviceName –VM $vm
 
 指定其他 Azure VM 資訊，例如雲端服務、區域、儲存體帳戶、可用性設定組以及快取原則。 請注意，VM 執行個體必須與相關的作業系統或資料磁碟共置，因此選取的雲端服務、區域和儲存體帳戶全都必須與這些磁碟的基礎 VHD 位於相同的位置。
@@ -305,15 +300,15 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
 最後，如果您已經註冊資料磁碟 VHD，請將它們連接至新的 DS 系列或 GS 系列 Azure VM。
 
-使用下列 PowerShell Cmdlet，將資料磁碟連接至新的 VM，並指定快取原則。 在下列範例中，快取原則設定為「ReadOnly」**。
+使用下列 PowerShell Cmdlet，將資料磁碟連接至新的 VM，並指定快取原則。 在下列範例中的快取原則設為 *ReadOnly*。
 
     $vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
-    
+
     Add-AzureDataDisk -ImportFrom -DiskName "DataDisk" -LUN 0 –HostCaching ReadOnly –VM $vm
-    
+
     Update-AzureVM  -VM $vm
 
->[AZURE.NOTE] 可能有一些支援應用程式所需的其他步驟不包含在本指南中。
+>[AZURE.NOTE] 可能有額外的步驟需要支援的應用程式，都不包含在本指南。
 
 ## 將現有的 Azure VM 移轉至 Azure 進階儲存體
 
@@ -324,21 +319,18 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 此外，請參閱上一節中有關於「注意事項」的內容，以了解您可以為進階儲存體執行的各種最佳化。 根據您的應用程式所適用的最佳化，移轉程序可能屬於下列其中一個移轉案例。
 
 ### 簡單移轉
-
 在此簡單案例中，您從標準儲存體移轉至進階儲存體時，想要保留組態的原狀。 在此，您會依原狀移動每個磁碟，然後轉換 VM。
 這樣做的優點是容易移轉；缺點則是，所產生的組態可能不會進行最低成本的最佳化。
 
 #### 準備工作
-
 1. 請確定進階儲存體可在您要移轉到的區域中使用。
 2. 決定您將要使用的新 VM 系列。 這應該是 DS 系列或 GS 系列，這取決於區域中的可用性和您的需求。
-3. 決定您將要使用的確切 VM 大小。 VM 大小必須足以支援您所擁有的資料磁碟數目。 例如，如果您有 4 個資料磁碟，VM 必須有 2 個或多個核心。 也請考慮處理能力、記憶體和網路頻寬需求。
+3. 決定您將要使用的確切 VM 大小。 VM 大小必須足以支援您所擁有的資料磁碟數目。 例如 如果您有 4 個資料磁碟時，VM 必須有 2 個以上的核心。 也請考慮處理能力、記憶體和網路頻寬需求。
 4. 在目標區域中建立進階儲存體帳戶。 這是您將用於新 VM 的帳戶。
 5. 請備妥目前 VM 的詳細資料，包括磁碟和對應 VHD Blob 的清單。
 6. 為您的應用程式做好停機準備。 為了進行全新移轉，您必須停止目前系統中的所有處理。 只有這樣，您才可以使其維持在可移轉至新平台的一致狀態。 停機持續時間將取決於磁碟中要移轉的資料量。
 
 #### 執行步驟
-
 1.  停止 VM。 如前所述，VM 必須完全關閉，才能以全新狀態移轉。 在移轉完成之前會有停機時間。
 
 2.  VM 停止之後，請將該 VM 的每個 VHD 複製到新的進階儲存體帳戶。 您必須複製 OS 磁碟 VHD Blob 和所有的資料磁碟 VHD Blob。 建議您使用 AzCopy 或 CopyBlob 進行移轉。 如果您需要，也可以使用其他協力廠商工具。
@@ -362,90 +354,89 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 7.  最後一個步驟是依據應用程式的需求為新的 VM 規劃備份和維護排程。
 
 ### 自動化
-
 如果您有多個要移轉的 VM，透過 PowerShell 指令碼將其自動化會很有幫助。 以下是將 VM 的移轉自動化的範例指令碼。 請注意，以下指令碼只是範例，且對於目前的 VM 磁碟做了幾個相關假設。 您可能需要更新指令碼以符合您的特定案例。
 
     <#
     .Synopsis
     This script is provided as an EXAMPLE to show how to migrate a vm from a standard storage account to a premium storage account. You can customize it according to your specific requirements.
-    
+
     .Description
     The script will copy the vhds (page blobs) of the source vm to the new storage account.
     And then it will create a new vm from these copied vhds based on the inputs that you specified for the new VM.
     You can modify the script to satisfy your specific requirement but please be aware of the items specified
     in the Terms of Use section.
-    
+
     .Terms of Use
     Copyright © 2015 Microsoft Corporation.  All rights reserved.
-    
+
     THIS CODE AND ANY ASSOCIATED INFORMATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND,
     EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY
     AND/OR FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK OF USE, INABILITY TO USE, OR
     RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
-    
+
     .Example (Save this script as Migrate-AzureVM.ps1)
-    
+
     .\Migrate-AzureVM.ps1 -SourceServiceName CurrentServiceName -SourceVMName CurrentVMName –DestStorageAccount newpremiumstorageaccount -DestServiceName NewServiceName -DestVMName NewDSVMName -DestVMSize "Standard_DS2" –Location “Southeast Asia”
-    
+
     .Link
     To find more information about how to set up Azure PowerShell, refer to the following links.
     http://azure.microsoft.com/documentation/articles/powershell-install-configure/
     http://azure.microsoft.com/documentation/articles/storage-powershell-guide-full/
     http://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/
-    
+
     #>
-    
+
     Param(
     # the cloud service name of the VM.
     [Parameter(Mandatory = $true)]
     [string] $SourceServiceName,
-    
+
     # The VM name to copy.
     [Parameter(Mandatory = $true)]
     [String] $SourceVMName,
-    
+
     # The destination storage account name.
     [Parameter(Mandatory = $true)]
     [String] $DestStorageAccount,
-    
+
     # The destination cloud service name
     [Parameter(Mandatory = $true)]
     [String] $DestServiceName,
-    
+
     # the destination vm name
     [Parameter(Mandatory = $true)]
     [String] $DestVMName,
-    
+
     # the destination vm size
     [Parameter(Mandatory = $true)]
     [String] $DestVMSize,
-    
+
     # the location of destination VM.
     [Parameter(Mandatory = $true)]
     [string] $Location,
-    
+
     # whether or not to copy the os disk, the default is only copy data disks
     [Parameter(Mandatory = $false)]
     [String] $DataDiskOnly = $true,
-    
+
     # how frequently to report the copy status in sceconds
     [Parameter(Mandatory = $false)]
     [Int32] $CopyStatusReportInterval = 15,
-    
+
     # the name suffix to add to new created disks to avoid conflict with source disk names
     [Parameter(Mandatory = $false)]
     [String]$DiskNameSuffix = "-prem"
-    
+
     ) #end param
-    
+
     #######################################################################
     #  Verify Azure PowerShell module and version
     #######################################################################
-    
+
     #import the Azure PowerShell module
     Write-Host "`n[WORKITEM] - Importing Azure PowerShell module" -ForegroundColor Yellow
     $azureModule = Import-Module Azure -PassThru
-    
+
     if ($azureModule -ne $null)
     {
         Write-Host "`tSuccess" -ForegroundColor Green
@@ -456,8 +447,8 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         Write-Host "[ERROR] - PowerShell module not found. Exiting." -ForegroundColor Red
         Exit
     }
-    
-    
+
+
     #Check the Azure PowerShell module version
     Write-Host "`n[WORKITEM] - Checking Azure PowerShell module verion" -ForegroundColor Yellow
     If ($azureModule.Version -ge (New-Object System.Version -ArgumentList "0.8.14"))
@@ -469,7 +460,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         Write-Host "[ERROR] - Azure PowerShell module must be version 0.8.14 or higher. Exiting." -ForegroundColor Red
         Exit
     }
-    
+
     #Check if there is an azure subscription set up in PowerShell
     Write-Host "`n[WORKITEM] - Checking Azure Subscription" -ForegroundColor Yellow
     $currentSubs = Get-AzureSubscription -Current
@@ -483,20 +474,20 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         Write-Host "[ERROR] - There is no valid azure subscription found in PowerShell. Please refer to this article http://azure.microsoft.com/documentation/articles/powershell-install-configure/ to connect an azure subscription. Exiting." -ForegroundColor Red
         Exit
     }
-    
-    
+
+
     #######################################################################
     #  Check if the VM is shut down
     #  Stopping the VM is a required step so that the file system is consistent when you do the copy operation.
     #  Azure does not support live migration at this time..
     #######################################################################
-    
+
     if (($sourceVM = Get-AzureVM –ServiceName $SourceServiceName –Name $SourceVMName) -eq $null)
     {
         Write-Host "[ERROR] - The source VM doesn't exist in the current subscription. Exiting." -ForegroundColor Red
         Exit
     }
-    
+
     # check if VM is shut down
     if ( $sourceVM.Status -notmatch "Stopped" )
     {
@@ -504,7 +495,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         $ContinueAnswer = Read-Host "`n`tDo you wish to stop $SourceVMName now? Input 'N' if you want to shut down the vm mannually and come back later.(Y/N)"
         If ($ContinueAnswer -ne "Y") { Write-Host "`n Exiting." -ForegroundColor Red;Exit }
         $sourceVM | Stop-AzureVM
-    
+
         # wait until the VM is shut down
         $VMStatus = (Get-AzureVM –ServiceName $SourceServiceName –Name $vmName).Status
         while ($VMStatus -notmatch "Stopped")
@@ -514,42 +505,42 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
             $VMStatus = (Get-AzureVM –ServiceName $SourceServiceName –Name $vmName).Status
         }
     }
-    
+
     # exporting the sourve vm to a configuration file, you can restore the original VM by importing this config file
     # see more information for Import-AzureVM
     $workingDir = (Get-Location).Path
     $vmConfigurationPath = $env:HOMEPATH + "\VM-" + $SourceVMName + ".xml"
     Write-Host "`n[WORKITEM] - Exporting VM configuration to $vmConfigurationPath" -ForegroundColor Yellow
     $exportRe = $sourceVM | Export-AzureVM -Path $vmConfigurationPath
-    
-    
+
+
     #######################################################################
     #  Copy the vhds of the source vm
     #  You can choose to copy all disks including os and data disks by specifying the
     #  parameter -DataDiskOnly to be $false. The default is to copy only data disk vhds
     #  and the new VM will boot from the original os disk.
     #######################################################################
-    
+
     $sourceOSDisk = $sourceVM.VM.OSVirtualHardDisk
     $sourceDataDisks = $sourceVM.VM.DataVirtualHardDisks
-    
+
     # Get source storage account information, not considering the data disks and os disks are in different accounts
     $sourceStorageAccountName = $sourceOSDisk.MediaLink.Host -split "\." | select -First 1
     $sourceStorageKey = (Get-AzureStorageKey -StorageAccountName $sourceStorageAccountName).Primary
     $sourceContext = New-AzureStorageContext –StorageAccountName $sourceStorageAccountName -StorageAccountKey $sourceStorageKey
-    
+
     # Create destination context
     $destStorageKey = (Get-AzureStorageKey -StorageAccountName $DestStorageAccount).Primary
     $destContext = New-AzureStorageContext –StorageAccountName $DestStorageAccount -StorageAccountKey $destStorageKey
-    
+
     # Create a container of vhds if it doesn't exist
     if ((Get-AzureStorageContainer -Context $destContext -Name vhds -ErrorAction SilentlyContinue) -eq $null)
     {
         Write-Host "`n[WORKITEM] - Creating a container vhds in the destination storage account." -ForegroundColor Yellow
         New-AzureStorageContainer -Context $destContext -Name vhds
     }
-    
-    
+
+
     $allDisksToCopy = $sourceDataDisks
     # check if need to copy os disk
     $sourceOSVHD = $sourceOSDisk.MediaLink.Segments[2]
@@ -562,7 +553,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         $destOSVHD = Get-AzureStorageBlob -Blob $sourceOSVHD -Container vhds -Context $sourceContext
         Write-Host "`n[WORKITEM] - Removing the original VM (the vhd files are NOT deleted)." -ForegroundColor Yellow
         Remove-AzureVM -Name $SourceVMName -ServiceName $SourceServiceName
-    
+
         Write-Host "`n[WORKITEM] - Waiting utill the OS disk is released by source VM. This may take up to several minutes."
         $diskAttachedTo = (Get-AzureDisk -DiskName $sourceOSDisk.DiskName).AttachedTo
         while ($diskAttachedTo -ne $null)
@@ -570,7 +561,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
             Start-Sleep -Seconds 10
             $diskAttachedTo = (Get-AzureDisk -DiskName $sourceOSDisk.DiskName).AttachedTo
         }
-    
+
     }
     else
     {
@@ -580,8 +571,8 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         $targetBlob = Start-AzureStorageBlobCopy -SrcContainer vhds -SrcBlob $sourceOSVHD -DestContainer vhds -DestBlob $sourceOSVHD -Context $sourceContext -DestContext $destContext -Force
         $destOSVHD = $targetBlob
     }
-    
-    
+
+
     # Copy all data disk vhds
     # Start all async copy requests in parallel.
     foreach($disk in $sourceDataDisks)
@@ -593,7 +584,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         # update the media link to point to the target blob link
         $disk.MediaLink = $targetBlob.ICloudBlob.Uri.AbsoluteUri
     }
-    
+
     # Wait until all vhd files are copied.
     $diskComplete = @()
     do
@@ -625,13 +616,13 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         }
     }
     while($diskComplete.Count -lt $allDisksToCopy.Count)
-    
+
     #######################################################################
     #  Create a new vm
     #  the new VM can be created from the copied disks or the original os disk.
     #  You can ddd your own logic here to satisfy your specific requirements of the vm.
     #######################################################################
-    
+
     # Create a vm from the existing os disk
     if ($DataDiskOnly)
     {
@@ -649,51 +640,46 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
         $diskLabel = "drive" + $dataDisk.Lun
         $vm | Add-AzureDataDisk -ImportFrom -DiskLabel $diskLabel -LUN $dataDisk.Lun -MediaLocation $dataDisk.MediaLink
     }
-    
+
     # Edit this if you want to add more custimization to the new VM
     # $vm | Add-AzureEndpoint -Protocol tcp -LocalPort 443 -PublicPort 443 -Name 'HTTPs'
     # $vm | Set-AzureSubnet "PubSubnet","PrivSubnet"
-    
+
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 
 ### 最佳化
-
 您目前的 VM 組態可以自訂，以適用於標準磁碟。 例如，在等量磁碟區中使用多個磁碟，以提高效能。 由於進階儲存體可提供較佳的效能，您將可藉由減少磁碟數目將您的成本最佳化。 例如，您的應用程式可能需要具有 2000 個 IOPS 的磁碟區，而您可以使用 4 個標準儲存體的等量集，取得 4 x 500 = 2000 個 IOPS。 透過進階儲存體磁碟，512 GB 的單一磁碟將能夠提供 2300 個 IOPS。 因此，您無須在進階儲存體上個別使用 4 個磁碟，而可以藉由單一磁碟發揮成本效益。
 這樣最佳化必須就個別案例來處理，且在移轉之後需執行自訂步驟。 另請注意，此程序可能不適用於依賴設定中所定義之磁碟配置的資料庫和應用程式。
 
 #### 準備工作
-
 1.  依照前一節中的說明完成簡單移轉。 在移轉之後，將會在新 VM 上執行最佳化。
 2.  定義最佳化組態所需的新磁碟大小。
 3.  判斷目前磁碟/磁碟區與新磁碟規格之間的對應。
 
 #### 執行步驟：
-
 1.  在進階儲存體 VM 上以正確的大小建立新的磁碟。
 2.  登入 VM，並將資料從目前的磁碟區複製到對應至該磁碟區的新磁碟。 請為所有需要對應至新磁碟的目前磁碟區執行這項操作。
 3.  接下來，請變更應用程式設定以切換至新的磁碟，並卸離舊磁碟區。
 
-### 應用程式移轉
-
-資料庫和其他複雜的應用程式在移轉時，可能需要應用程式提供者所定義的特殊步驟。 請參閱個別的應用程式文件。 例如，資料庫通常可透過備份和還原來移轉。
+###  應用程式移轉
+資料庫和其他複雜的應用程式在移轉時，可能需要應用程式提供者所定義的特殊步驟。 請參閱個別的應用程式文件。 例如 通常移轉資料庫透過備份和還原。
 
 ## 後續步驟
 
 如需移轉虛擬機器的特定案例，請參閱下列資源：
 
-- [將 Azure 儲存體帳戶之間的虛擬機器移轉](http://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+- [在儲存體帳戶之間移轉 Azure 虛擬機器](http://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
 - [建立並上傳 Windows Server VHD 到 Azure。](../virtual-machines-create-upload-vhd-windows-server.md)
 - [建立及上傳包含 Linux 作業系統的虛擬硬碟](../virtual-machines-linux-create-upload-vhd.md)
-- [從 Amazon AWS 移轉的虛擬機器，Microsoft azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+- [將虛擬機器從 Amazon AWS 移轉至 Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 若要深入了解 Azure 儲存體和 Azure 虛擬機器，也請參閱下列資源：
 
 - [Azure 儲存體](http://azure.microsoft.com/documentation/services/storage/)
 - [Azure 虛擬機器](http://azure.microsoft.com/documentation/services/virtual-machines/)
-- [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)
+- [Premium 儲存體：Azure 虛擬機器工作負載適用的高效能儲存體](storage-premium-storage-preview-portal.md)
 
-
-[1]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png 
-[2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png 
-[3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png 
+[1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
+[2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
+[3]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 

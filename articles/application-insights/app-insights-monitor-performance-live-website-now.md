@@ -1,6 +1,6 @@
 <properties
     pageTitle="在執行中的 IIS 網站上診斷效能問題 | Microsoft Azure"
-    description="監視網站的效能而不重新部署網站。使用獨立或帶有 Application Insights 的 SDK，取得相依性遙測資料。"
+    description="監視網站的效能而不重新部署網站。 使用獨立或帶有 Application Insights 的 SDK，取得相依性遙測資料。"
     services="application-insights"
     documentationCenter=".net"
     authors="alancameronwills"
@@ -16,28 +16,28 @@
     ms.author="awills"/>
 
 
-
 # 安裝 Application Insights 狀態監視器以監視網站效能
 
 *Application Insights 目前僅供預覽。*
 
-Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應用程式中的例外狀況與效能問題。
+Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應用程式中的例外狀況與效能問題。 
 
 ![範例圖表](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
+
 > [AZURE.TIP] 有個別的文章有關檢測 [live J2EE web 應用程式](app-insights-java-live.md) 和 [Azure 雲端服務](app-insights-cloudservices.md)。
 
 
 下列三種方法均可讓您將 Application Insights 套用至 IIS Web 應用程式：
 
-* **建置階段:** [加入 Application Insights SDK ][greenbrown] 您的 web 應用程式程式碼。 這會提供您：
+* **建置階段:** [加入 Application Insights SDK][greenbrown] 您的 web 應用程式程式碼。 這會提供您：
  * 標準診斷和使用狀況遙測的範圍。
- * [Application Insights API ][api] 可讓您自行撰寫遙測來追蹤使用量詳細或診斷問題。
-* **執行階段：**使用狀態監視器檢測伺服器上的 Web 應用程式。
+ *  [Application Insights API][api] 可讓您自行撰寫遙測來追蹤使用量詳細或診斷問題。
+* **執行階段:** 使用狀態監視器檢測伺服器上的 web 應用程式。
  * 監視執行中的 Web 應用程式：不需要重建或重新發佈。
  * 標準診斷和使用狀況遙測的範圍。
  * 相依性診斷：找出 App 使用其他元件 (例如資料庫、REST API 或其他服務) 時的錯誤或效能不佳原因。
  * 對任何遙測問題進行疑難排解。
-* **兩者：**將 SDK 編譯至 Web 應用程式程式碼，並在您的 Web 伺服器上執行狀態監視器。 集合兩者之優點：
+* **兩者:** 將 SDK 編譯至 web 應用程式程式碼，並在您的 web 伺服器上執行狀態監視。  集合兩者之優點：
  * 標準診斷和使用狀況遙測。
  * 相依性診斷。
  * 此 API 可讓您撰寫自訂遙測。
@@ -56,19 +56,19 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
     ![使用 Microsoft 帳戶認證登入 Azure](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
 
-    * 連接錯誤? 請參閱 [疑難排解](#troubleshooting)。 *
+    *連線錯誤? 請參閱 [疑難排解](#troubleshooting)。*
 
 5. 挑選您想要監視的已安裝 Web 應用程式或網站，然後設定您在 Application Insights 入口網站中查看結果時想要使用的資源。
 
     ![選擇應用程式和資源。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
-    一般來說，當您選擇設定新的資源和 [資源群組 ][roles]。
+    一般來說，當您選擇設定新的資源和 [資源群組][roles]。
 
-    否則，請使用現有的資源，如果您已經設定 [web 測試的 ][availability] 網站，或 [web 用戶端監視 ][client]。
+    否則，請使用現有的資源，如果您已經設定 [web 測試][availability] 網站，或 [web 用戶端監視][client]。
 
 6. 重新啟動 IIS。
 
-    ![選擇對話方塊頂端的 ](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
+    ![選擇對話方塊頂端的 [重新啟動]。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
 
     您的 Web 服務將會中斷一小段時間。
 
@@ -82,14 +82,14 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
 完成精靈之後，您隨時都可以重新設定代理程式。 如果已安裝代理程式，但初始設定有一些問題，則您也可以這樣做。
 
-![按一下工作列上的 ](./media/app-insights-monitor-performance-live-website-now/appinsights-033-aicRunning.png)
+![按一下工作列上的 [Application Insights] 圖示](./media/app-insights-monitor-performance-live-website-now/appinsights-033-aicRunning.png)
 
 
 ### 如果您的應用程式是以 Azure Web 應用程式執行
 
 在您的 Azure Web 應用程式的控制台中，加入 Application Insights 延伸模組。
 
-![在您的 Web 應用程式中，依序按一下 ](./media/app-insights-monitor-performance-live-website-now/05-extend.png)
+![在您的 Web 應用程式中，依序按一下 [設定]、[延伸模組]、[加入]、[Application Insights]](./media/app-insights-monitor-performance-live-website-now/05-extend.png)
 
 
 ### 如果是 Azure 雲端服務專案
@@ -101,7 +101,7 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
 登入 [Azure 入口網站](http://portal.azure.com), ，瀏覽 Application Insights 並開啟您所建立的資源。
 
-![依序選擇 ](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
+![依序選擇 [瀏覽]、[Application Insights]，然後選取您的應用程式](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
 
 開啟 [效能] 刀鋒視窗，即可查看要求、回應時間、相依性和其他資料。
 
@@ -122,11 +122,11 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
 ## 效能計數器
 
-(不適用於 Azure Web 應用程式。) 在 [概觀] 刀鋒視窗中按一下 [伺服器]，以查看伺服器效能計數器的圖表，例如 CPU 佔用和記憶體使用量。
+(不適用於 Azure Web 應用程式。)在 [概觀] 刀鋒視窗中按一下 [伺服器]，以查看伺服器效能計數器的圖表，例如 CPU 佔用和記憶體使用量。
 
-加入新的圖表，或按一下任意圖表以變更它的顯示內容。
+加入新的圖表，或按一下任意圖表以變更它的顯示內容。 
 
-您也可以 [變更 SDK 所報告的效能計數器的集合](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)。
+您也可以 [變更 SDK 所報告的效能計數器的集合](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)。 
 
 ## 例外狀況
 
@@ -156,7 +156,7 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
  -  `management.azure.com:443`
  -  `login.windows.net:443`
  -  `login.microsoftonline.com:443`
- -  `secure.aadcdn.microsoftonline p.com:443`
+ -  `secure.aadcdn.microsoftonline-p.com:443`
  -  `auth.gfx.ms:443`
  -  `login.live.com:443`
 + 安裝：
@@ -168,7 +168,7 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 ### 沒有遙測資料？
 
   * 使用您的網站來產生一些資料。
-  * 等候幾分鐘讓資料抵達，然後按一下 [重新整理]****。
+  * 等待幾分鐘讓資料抵達，然後按一下 [ **重新整理**。
   * 開啟 [診斷搜尋] ([搜尋] 磚) 以查看個別事件。 彙總資料在圖表中出現之前，事件通常會顯示在 [診斷搜尋] 中。
   * 開啟狀態監視器，然後選取左窗格中的應用程式。 檢查 [設定通知] 區段中是否有任何關於此應用程式的診斷訊息：
 
@@ -176,10 +176,10 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
   * 請確定伺服器防火牆允許上列連接埠的連出流量。
   * 如果您在伺服器上看到有關「權限不足」的訊息，請嘗試下列操作：
-    * 在 IIS 管理員中，選取應用程式集區，開啟 [進階設定]****，並記下 [處理序模型]**** 下的身分識別。
+    * 在 IIS 管理員中，選取您的應用程式集區中，開啟 **進階設定**, ，然後在 **處理序模型** 請注意身分識別。
     * 在電腦的管理控制台中，將此身分識別加入至效能監試器使用者群組。
   * 如果您的伺服器上已安裝 MMA/SCOM，某些版本可能會發生衝突。 解除安裝 SCOM 和狀態監視器，重新安裝最新版本。
-  * 請參閱 [疑難排解 ][qna]。
+  * 請參閱 [疑難排解][qna]。
 
 ## 系統需求
 
@@ -199,10 +199,10 @@ IIS 支援: IIS 7、 7.5、 8、 8.5
 
 ## <a name="next"></a>後續步驟
 
-* [建立 web 測試 ][availability] 藉此確定您的網站保持即時狀態。
-* [搜尋事件和記錄 ][diagnostic] 以協助診斷問題。
-* [加入 web 用戶端遙測 ][usage] 以查看網頁程式碼中的例外狀況，並讓您插入追蹤呼叫。
-* [加入 Application Insights SDK 加入 web 服務程式碼 ][greenbrown] 以便您可以追蹤和記錄呼叫插入伺服器程式碼中。
+* [建立 web 測試][availability] 藉此確定您的網站保持即時狀態。
+* [搜尋事件和記錄][diagnostic] 以協助診斷問題。
+* [加入 web 用戶端遙測][usage] 以查看網頁程式碼中的例外狀況，並讓您插入追蹤呼叫。
+* [將 Application Insights SDK 加入至您的 web 服務程式碼][greenbrown] 以便您可以追蹤和記錄呼叫插入伺服器程式碼中。
 
 ## 影片
 
@@ -210,15 +210,14 @@ IIS 支援: IIS 7、 7.5、 8、 8.5
 
 [AZURE.VIDEO app-insights-performance-monitoring]
 
+<!--Link references-->
 
-
-
-[api]: app-insights-api-custom-events-metrics.md 
-[availability]: app-insights-monitor-web-app-availability.md 
-[client]: app-insights-javascript.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[greenbrown]: app-insights-asp-net.md 
-[qna]: app-insights-troubleshoot-faq.md 
-[roles]: app-insights-resources-roles-access-control.md 
-[usage]: app-insights-web-track-usage.md 
+[api]: app-insights-api-custom-events-metrics.md
+[availability]: app-insights-monitor-web-app-availability.md
+[client]: app-insights-javascript.md
+[diagnostic]: app-insights-diagnostic-search.md
+[greenbrown]: app-insights-asp-net.md
+[qna]: app-insights-troubleshoot-faq.md
+[roles]: app-insights-resources-roles-access-control.md
+[usage]: app-insights-web-track-usage.md
 

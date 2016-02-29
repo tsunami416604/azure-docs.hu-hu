@@ -17,14 +17,13 @@
     ms.author="juliako"/>
 
 
-
-# 如何搭配 .NET 使用 Media Encoder Standard 產生縮圖
+#如何搭配 .NET 使用 Media Encoder Standard 產生縮圖
 
 本主題示範如何使用 Media Services .NET SDK 編碼資產，並使用 Media Encoder Standard 產生縮圖。 本主題定義 XML 和 JSON 縮圖預設，可讓您用來建立工作，以同時執行編碼及產生縮圖。 [這](https://msdn.microsoft.com/library/mt269962.aspx) 文件包含的項目使用這些預先設定的描述。
 
 請確定先檢閱 [考量](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) 一節。
 
-## 範例
+##範例
 
 下列程式碼範例使用媒體服務 .NET SDK 執行下列工作：
 
@@ -34,148 +33,146 @@
 
             // Load the XML (or JSON) from the local file.
             string configuration = File.ReadAllText(fileName);  
-
-- 將單一編碼工作加入工作。
+- 將單一編碼工作加入工作。 
 - 指定要編碼的輸入資產。
 - 建立將包含已編碼資產的輸出資產。
 - 加入事件處理常式來檢查工作進度。
 - 提交作業。
+    
+        using System;
+        using System.Collections.Generic;
+        using System.Configuration;
+        using System.IO;
+        using System.Linq;
+        using System.Net;
+        using System.Security.Cryptography;
+        using System.Text;
+        using System.Threading.Tasks;
+        using Microsoft.WindowsAzure.MediaServices.Client;
+        using Newtonsoft.Json.Linq;
+        using System.Threading;
+        using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
+        using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
+        using System.Web;
+        using System.Globalization;
+        
+        namespace EncodeAndGenerateThumbnails
+        {
+            class Program
+            {
+                // Read values from the App.config file.
+                private static readonly string _mediaServicesAccountName =
+                    ConfigurationManager.AppSettings["MediaServicesAccountName"];
+                private static readonly string _mediaServicesAccountKey =
+                    ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+        
+                // Field for service context.
+                private static CloudMediaContext _context = null;
+                private static MediaServicesCredentials _cachedCredentials = null;
+        
+                private static readonly string _mediaFiles =
+                    Path.GetFullPath(@"../..\Media");
+        
+                private static readonly string _singleMP4File =
+                    Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
+        
+                static void Main(string[] args)
+                {
+                    // Create and cache the Media Services credentials in a static class variable.
+                    _cachedCredentials = new MediaServicesCredentials(
+                                    _mediaServicesAccountName,
+                                    _mediaServicesAccountKey);
+                    // Used the chached credentials to create CloudMediaContext.
+                    _context = new CloudMediaContext(_cachedCredentials);
+        
+                    // Get an uploaded asset.
+                    var asset = _context.Assets.FirstOrDefault();
+        
+                    // Encode and generate the thumbnails.
+                    EncodeToAdaptiveBitrateMP4Set(asset);
+        
+                    Console.ReadLine();
+                }
+        
+                static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+                {
+                    // Declare a new job.
+                    IJob job = _context.Jobs.Create("Media Encoder Standard Job");
+                    // Get a media processor reference, and pass to it the name of the 
+                    // processor to use for the specific task.
+                    IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+                
+        
+                    // Load the XML (or JSON) from the local file.
+                    string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
+                
+                    // Create a task
+                    ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
+                        processor,
+                        configuration,
+                        TaskOptions.None);
+                
+                    // Specify the input asset to be encoded.
+                    task.InputAssets.Add(asset);
+                    // Add an output asset to contain the results of the job. 
+                    // This output is specified as AssetCreationOptions.None, which 
+                    // means the output asset is not encrypted. 
+                    task.OutputAssets.AddNew("Output asset",
+                        AssetCreationOptions.None);
+                
+                    job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+                    job.Submit();
+                    job.GetExecutionProgressTask(CancellationToken.None).Wait();
+                
+                    return job.OutputMediaAssets[0];
+                }
+        
+                private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
+                {
+                    Console.WriteLine("Job state changed event:");
+                    Console.WriteLine("  Previous state: " + e.PreviousState);
+                    Console.WriteLine("  Current state: " + e.CurrentState);
+                    switch (e.CurrentState)
+                    {
+                        case JobState.Finished:
+                            Console.WriteLine();
+                            Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                            break;
+                        case JobState.Canceling:
+                        case JobState.Queued:
+                        case JobState.Scheduled:
+                        case JobState.Processing:
+                            Console.WriteLine("Please wait...\n");
+                            break;
+                        case JobState.Canceled:
+                        case JobState.Error:
+        
+                            // Cast sender as a job.
+                            IJob job = (IJob)sender;
+        
+                            // Display or log error details as needed.
+                            break;
+                        default:
+                            break;
+                    }
+                }
+        
+        
+                private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+                {
+                    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+                    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+        
+                    if (processor == null)
+                        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+        
+                    return processor;
+                }
+        
+            }
+        }
 
-      using System;
-      using System.Collections.Generic;
-      using System.Configuration;
-      using System.IO;
-      using System.Linq;
-      using System.Net;
-      using System.Security.Cryptography;
-      using System.Text;
-      using System.Threading.Tasks;
-      using Microsoft.WindowsAzure.MediaServices.Client;
-      using Newtonsoft.Json.Linq;
-      using System.Threading;
-      using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
-      using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
-      using System.Web;
-      using System.Globalization;
-    
-      namespace EncodeAndGenerateThumbnails
-      {
-          class Program
-          {
-              // Read values from the App.config file.
-              private static readonly string _mediaServicesAccountName =
-                  ConfigurationManager.AppSettings["MediaServicesAccountName"];
-              private static readonly string _mediaServicesAccountKey =
-                  ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-    
-              // Field for service context.
-              private static CloudMediaContext _context = null;
-              private static MediaServicesCredentials _cachedCredentials = null;
-    
-              private static readonly string _mediaFiles =
-                  Path.GetFullPath(@"../..\Media");
-    
-              private static readonly string _singleMP4File =
-                  Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
-    
-              static void Main(string[] args)
-              {
-                  // Create and cache the Media Services credentials in a static class variable.
-                  _cachedCredentials = new MediaServicesCredentials(
-                                  _mediaServicesAccountName,
-                                  _mediaServicesAccountKey);
-                  // Used the chached credentials to create CloudMediaContext.
-                  _context = new CloudMediaContext(_cachedCredentials);
-    
-                  // Get an uploaded asset.
-                  var asset = _context.Assets.FirstOrDefault();
-    
-                  // Encode and generate the thumbnails.
-                  EncodeToAdaptiveBitrateMP4Set(asset);
-    
-                  Console.ReadLine();
-              }
-    
-              static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-              {
-                  // Declare a new job.
-                  IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-                  // Get a media processor reference, and pass to it the name of the 
-                  // processor to use for the specific task.
-                  IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-    
-    
-                  // Load the XML (or JSON) from the local file.
-                  string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
-    
-                  // Create a task
-                  ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
-                      processor,
-                      configuration,
-                      TaskOptions.None);
-    
-                  // Specify the input asset to be encoded.
-                  task.InputAssets.Add(asset);
-                  // Add an output asset to contain the results of the job. 
-                  // This output is specified as AssetCreationOptions.None, which 
-                  // means the output asset is not encrypted. 
-                  task.OutputAssets.AddNew("Output asset",
-                      AssetCreationOptions.None);
-    
-                  job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-                  job.Submit();
-                  job.GetExecutionProgressTask(CancellationToken.None).Wait();
-    
-                  return job.OutputMediaAssets[0];
-              }
-    
-              private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-              {
-                  Console.WriteLine("Job state changed event:");
-                  Console.WriteLine("  Previous state: " + e.PreviousState);
-                  Console.WriteLine("  Current state: " + e.CurrentState);
-                  switch (e.CurrentState)
-                  {
-                      case JobState.Finished:
-                          Console.WriteLine();
-                          Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                          break;
-                      case JobState.Canceling:
-                      case JobState.Queued:
-                      case JobState.Scheduled:
-                      case JobState.Processing:
-                          Console.WriteLine("Please wait...\n");
-                          break;
-                      case JobState.Canceled:
-                      case JobState.Error:
-    
-                          // Cast sender as a job.
-                          IJob job = (IJob)sender;
-    
-                          // Display or log error details as needed.
-                          break;
-                      default:
-                          break;
-                  }
-              }
-    
-    
-              private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-              {
-                  var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-                  ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-    
-                  if (processor == null)
-                      throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-    
-                  return processor;
-              }
-    
-          }
-      }
-
-
-## <a id="json"></a>縮圖的 JSON 預設
+##<a id="json"></a>縮圖的 JSON 預設
 
 如需結構描述資訊，請參閱 [這](https://msdn.microsoft.com/library/mt269962.aspx) 主題。
 
@@ -199,7 +196,7 @@
               "AdaptiveBFrame": true,
               "Type": "H264Layer",
               "FrameRate": "0/1"
-    
+       
             }
           ],
           "Type": "H264Video"
@@ -277,10 +274,11 @@
       ]
     }
 
-## <a id="xml"></a>縮圖的 XML 預設
+
+##<a id="xml"></a>縮圖的 XML 預設
 
 如需結構描述資訊，請參閱 [這](https://msdn.microsoft.com/library/mt269962.aspx) 主題。
-
+    
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -354,7 +352,7 @@
       </Outputs>
     </Preset>
 
-## 考量
+##注意事項
 
 您必須考量下列事項：
 
@@ -366,26 +364,22 @@
     - 如果以 hh: mm: 時間戳記... 格式。 例如 "Start"："00:01:00"
 
     您可以隨意混合使用標記法。
-
+    
     此外，啟動也支援特殊的巨集: {最佳}，它會嘗試判斷第一個 「 有趣 」 框架的內容 
     注意: (步驟和範圍時，會忽略 {最佳} 設定開始)
-
+    
     - 預設值：Start:{Best}
 - 必須明確地提供每個影像格式的輸出格式：Jpg/Png/BmpFormat。 顯示時，AMS 會讓 JpgVideo 與 JpgFormat 相符，依此類推。 OutputFormat 引進了新的影像轉碼器特定巨集 (即 {Index})，必須針對影像輸出格式提供一次 (只需一次)。
 
 
-## 媒體服務學習路徑
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## 另請參閱
+##另請參閱 
 
-[媒體服務編碼的概觀](media-services-encode-asset.md)
-
-
-
-
+[媒體服務編碼概觀](media-services-encode-asset.md)

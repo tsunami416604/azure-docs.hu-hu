@@ -17,14 +17,13 @@
    ms.date="10/21/2015"
    ms.author="cherylmc" />
 
-
 # 將多個內部部署網站連線到虛擬網路
 
->[AZURE.NOTE] 請務必了解 Azure 目前使用兩種部署模型：資源管理員模型和傳統模型。 開始您的組態之前，請確定您瞭解部署模型和工具。 部署模型的相關資訊，請參閱 [Azure 部署模型](../azure-classic-rm.md)。
+>[AZURE.NOTE] 請務必了解 Azure 目前使用兩種部署模型: 資源管理員，以及傳統。 開始您的組態之前，請確定您瞭解部署模型和工具。 部署模型的相關資訊，請參閱 [Azure 部署模型](../azure-classic-rm.md)。
 
 本文適用於使用傳統部署模型 (服務管理) 所建立的 VNet 和 VPN 閘道。
 
-您可以將多個內部部署網站連線到單一虛擬網路。 這對建立混合式雲端解決方案特別具有吸引力。 建立多網站連線至 Azure 虛擬網路閘道，與建立其他站對站連線非常類似。 事實上，您可以使用現有的 Azure VPN 閘道，只要為虛擬網路設定以路由為基礎 (或動態路由) 的 VPN 閘道即可。
+您可以將多個內部部署網站連線到單一虛擬網路。 這對建立混合式雲端解決方案特別具有吸引力。 建立多網站連線至 Azure 虛擬網路閘道，與建立其他站對站連線非常類似。 事實上，您可以使用現有的 Azure VPN 閘道，只要為虛擬網路設定以路由為基礎 (或動態路由) 的 VPN 閘道即可。 
 
 如果您的閘道是以原則為基礎 (或靜態路由)，您隨時可以變更閘道類型，而不需要重建虛擬網路來容納多網站，但是您也必須確保內部部署 VPN 閘道支援以路由為基礎 VPN 組態。 您只要將組態設定新增至網路組態檔中，然後從虛擬網路建立多個 VPN 連線至其他網站。
 
@@ -32,7 +31,7 @@
 
 ## 考慮事項
 
-**您無法使用 Azure 傳統入口網站來變更此虛擬網路。**針對此版本，您必須變更網路組態檔案，而非使用 Azure 傳統入口網站。 如果您在 Azure 傳統入口網站中進行變更，這些變更將會覆寫此虛擬網路的多網站參考設定。 在完成多網站程序時，您應該會覺得使用網路組態檔很輕鬆。 不過，如果有多人在處理您的網路組態，您必須確定每個人都知道這項限制。 這並不表示您完全無法使用 Azure 傳統入口網站。 除了無法對這個特定虛擬網路進行組態變更，您可以用它來執行所有其他事情。
+**您將無法使用 Azure 傳統入口網站來變更此虛擬網路。**針對此版本，您必須變更網路組態檔案，而非使用 Azure 傳統入口網站。 如果您在 Azure 傳統入口網站中進行變更，這些變更將會覆寫此虛擬網路的多網站參考設定。 在完成多網站程序時，您應該會覺得使用網路組態檔很輕鬆。 不過，如果有多人在處理您的網路組態，您必須確定每個人都知道這項限制。 這並不表示您完全無法使用 Azure 傳統入口網站。 除了無法對這個特定虛擬網路進行組態變更，您可以用它來執行所有其他事情。
 
 ## 開始之前
 
@@ -48,19 +47,21 @@
 
 - 熟悉如何設定 VPN 硬體的人員。 您無法使用從 Azure 傳統入口網站自動產生的 VPN 指令碼來設定 VPN 裝置。 這表示您必須非常了解如何設定 VPN 裝置，或是與了解的人員一起進行。
 
-- 您想要用於虛擬網路的 IP 位址範圍 (如果尚未建立的話)。
+- 您想要用於虛擬網路的 IP 位址範圍 (如果尚未建立的話)。 
 
 - 您要連線之每個區域網路網站的 IP 位址範圍。 您必須確定您要連線之每個區域網路網站的 IP 位址範圍沒有重疊。 否則，Azure 傳統入口網站或 REST API 將會拒絕所上傳的組態。 例如，如果您有兩個區域網路網站都包含 IP 位址範圍 10.2.3.0/24，而您有一個目的地位址為 10.2.3.3 的封裝，Azure 就會不知道您想要將封裝傳送到哪個網站，因為位址範圍重疊了。 為了防止路由問題，Azure 不允許您上傳具有重疊範圍的組態檔。
 
 ## 建立您的虛擬網路和閘道
 
-1. **使用動態路由閘道來建立站對站 VPN。**如果您已經有了，那很好！ 您可以繼續到 [匯出虛擬網路組態設定](#export)。 如果沒有，請執行下列動作：
+1. **建立具有動態路由閘道的站台對站 VPN。**如果您已經有了，那很好！ 您可以繼續到 [匯出虛擬網路組態設定](#export)。 如果沒有，請執行下列動作：
 
-    **如果您已經有站對站虛擬網路，但它有靜態路由閘道：****1.**將您的閘道類型變更為動態路由。 多網站 VPN 需要動態路由閘道。 若要變更閘道類型，您必須先刪除現有的閘道，然後建立新的閘道。 如需指示，請參閱 [變更 VPN 閘道路由類型](vpn-gateway-configure-vpn-gateway-mp.md/#how-to-change-your-vpn-gateway-type)。 **2.**設定新的閘道，並建立 VPN 通道。 如需指示，請參閱 [Azure 傳統入口網站中設定 VPN 閘道](vpn-gateway-configure-vpn-gateway-mp.md)。
+    **如果您已經有站台對站虛擬網路，但它有靜態路由閘道:** **1。**將您的閘道類型變更為動態路由。 多網站 VPN 需要動態路由閘道。 若要變更閘道類型，您必須先刪除現有的閘道，然後建立新的閘道。 如需指示，請參閱 [變更 VPN 閘道路由類型](vpn-gateway-configure-vpn-gateway-mp.md/#how-to-change-your-vpn-gateway-type)。 **2.**設定新的閘道，並建立 VPN 通道。 如需指示，請參閱 [Azure 傳統入口網站中設定 VPN 閘道](vpn-gateway-configure-vpn-gateway-mp.md)。 
+    
+    **如果您沒有站台對站台的虛擬網路:** **1。**建立站台對站虛擬網路使用下列指示: [與站台對站 VPN 連線，在 Azure 傳統入口網站建立虛擬網路](vpn-gateway-site-to-site-create.md)。 **2.**設定動態路由閘道使用下列指示: [設定 VPN 閘道](vpn-gateway-configure-vpn-gateway-mp.md)。 請務必選取 **動態路由** 閘道類型。
 
-    **如果您沒有站對站虛擬網路：****1.**建立站台對站虛擬網路使用下列指示: [與站台對站 VPN 連線，在 Azure 傳統入口網站建立虛擬網路](vpn-gateway-site-to-site-create.md)。 **2.**設定動態路由閘道使用下列指示: [設定 VPN 閘道](vpn-gateway-configure-vpn-gateway-mp.md)。 閘道類型務必選取 [動態路由]****。
 
-1. * *<a name="export"></a>匯出虛擬網路組態 settings.* * 若要匯出網路組態檔，請參閱 [匯出網路設定](../virtual-network/virtual-networks-using-network-configuration-file.md)。 您匯出的檔案將會用來設定新的多網站設定。
+
+1. **<a name="export"></a>匯出虛擬網路組態設定。**若要匯出網路組態檔，請參閱 [匯出網路設定](../virtual-network/virtual-networks-using-network-configuration-file.md)。 您匯出的檔案將會用來設定新的多網站設定。
 
 1. **開啟您的網路組態檔。**開啟您在最後一個步驟下載的網路組態檔。 使用您喜歡的任何 xml 編輯器。 檔案看起來應該像下面這樣：
 
@@ -119,7 +120,7 @@
           </ConnectionsToLocalNetwork>
         </Gateway>
 
-    若要加入其他網站參考資訊 (建立多網站組態)，只要另外加入 "LocalNetworkSiteRef" 字行，如下列範例所示：
+    若要加入其他網站參考資訊 (建立多網站組態)，只要另外加入 "LocalNetworkSiteRef" 字行，如下列範例所示： 
 
         <Gateway>
           <ConnectionsToLocalNetwork>
@@ -128,24 +129,26 @@
           </ConnectionsToLocalNetwork>
         </Gateway>
 
-1. **儲存網路組態檔並將它匯入。**若要匯入網路組態檔，請參閱 [匯入您的網路設定](../virtual-network/../virtual-network/virtual-networks-using-network-configuration-file.md#export-and-import-virtual-network-settings-using-the-management-portal)。 當您匯入含有變更的這個檔案時，就會加入新的通道。 這些通道會使用您稍早建立的動態閘道。
+1. **儲存網路組態檔，並將它匯入。**若要匯入網路組態檔，請參閱 [匯入您的網路設定](../virtual-network/../virtual-network/virtual-networks-using-network-configuration-file.md#export-and-import-virtual-network-settings-using-the-management-portal)。 當您匯入含有變更的這個檔案時，就會加入新的通道。 這些通道會使用您稍早建立的動態閘道。
 
-1. **下載 VPN 通道的預先共用金鑰。**您的新通道加入之後，使用 PowerShell Cmdlet Get-AzureVNetGatewayKey，以取得每個通道的 IPsec/IKE 預先共用金鑰。
 
- 例如：
 
-     PS C:\> Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
-    
-     PS C:\> Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
+1. **下載 VPN 通道的預先共用的金鑰。**您的新通道加入之後，使用 PowerShell Cmdlet Get-AzureVNetGatewayKey，以取得每個通道的 IPsec/IKE 預先共用金鑰。
 
- 如果您想要，也可以使用*取得虛擬網路閘道共用金鑰* REST API 來取得預先共用金鑰。
+    例如：
+
+        PS C:\> Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
+
+        PS C:\> Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
+
+    如果想要的話，您也可以使用 *取得虛擬網路閘道共用金鑰* REST API，以取得預先共用的金鑰。
 
 ## 確認您的連線
 
-**檢查多網站通道狀態。**下載每個通道的金鑰之後，您會想要確認連線。 使用 *Get-AzureVNetConnection* 來取得虛擬網路通道清單，如下列範例所示。 VNet1 是 VNet 的名稱。
+**檢查多網站通道狀態。**下載每個通道的金鑰之後，您會想要確認連線。 使用 *Get-azurevnetconnection* 來取得虛擬網路通道的清單，如下列範例所示。 VNet1 是 VNet 的名稱。
 
         PS C:\Users\yushwang\Azure> Get-AzureVnetConnection -VNetName VNET1
-    
+        
         ConnectivityState         : Connected
         EgressBytesTransferred    : 661530
         IngressBytesTransferred   : 519207
@@ -157,7 +160,7 @@
         OperationDescription      : Get-AzureVNetConnection
         OperationId               : 7f68a8e6-51e9-9db4-88c2-16b8067fed7f
         OperationStatus           : Succeeded
-    
+        
         ConnectivityState         : Connected
         EgressBytesTransferred    : 789398
         IngressBytesTransferred   : 143908
@@ -173,9 +176,5 @@
 ## 後續步驟
 
 若要深入了解 VPN 閘道，請參閱 [關於 VPN 閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
-
-
-
-
 
 

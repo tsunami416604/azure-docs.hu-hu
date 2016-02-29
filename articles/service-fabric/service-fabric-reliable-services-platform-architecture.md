@@ -16,7 +16,6 @@
    ms.date="09/03/2015"
    ms.author="alanwar"/>
 
-
 # 具狀態與無狀態之可靠的服務架構
 
 Service Fabric 可靠的服務可能是可設定狀態或無狀態。 每一種服務都在這篇文章中所述的特定架構內執行。
@@ -25,7 +24,6 @@ Service Fabric 可靠的服務可能是可設定狀態或無狀態。 每一種�
 ## 具狀態之可靠的服務
 
 ### 具狀態服務的架構
-
 ![架構圖表](./media/service-fabric-reliable-services-platform-architecture/reliable-stateful-service-architecture.png)
 
 ### 具狀態之可靠的服務
@@ -81,7 +79,7 @@ IReliableDictionary 用來與可靠的字典而 IReliableQueue 用來與可靠�
 不過當記錄元件使用 OptimizeForLocalSSD 設定固態磁碟最佳化設定，則狀態資訊會寫入直接與專用
 記錄檔，會略過共用的記錄檔。 由於固態磁碟不會發生磁頭移動爭用而導致延遲，因此直接寫入專用記錄檔沒有負面影響。
 
-當記錄元件已最佳化，使用 OptimizeLogForLowerDiskUsage 將磁碟空間用量減到最低時，專用記錄檔會建立為 NTFS 疏鬆檔案。 因為記錄檔通常
+當記錄元件已最佳化，使用 OptimizeLogForLowerDiskUsage 將磁碟空間用量減到最低時，專用記錄檔會建立為 NTFS 疏鬆檔案。  因為記錄檔通常
 並不一定裝滿狀態資訊的疏鬆檔案使用能過度佈建的磁碟空間供更多複本。 如果未以這種方式設定記錄檔空間
 會預先配置，而且記錄元件可以直接寫入至檔案最高的效能。
 
@@ -93,7 +91,6 @@ IReliableDictionary 用來與可靠的字典而 IReliableQueue 用來與可靠�
 ## 無狀態之可靠的服務
 
 ### 無狀態服務的架構
-
 ![架構圖表](./media/service-fabric-reliable-services-platform-architecture/reliable-stateless-service-architecture.png)
 
 ### 無狀態之可靠的服務
@@ -107,23 +104,19 @@ Service Fabric 所實作的通訊接聽程式。
 請參閱 [可靠的服務概觀](service-fabric-reliable-services-introduction.md) 和 [可靠的服務進階用法](service-fabric-reliable-services-advanced-usage.md) 如需詳細資訊
 撰寫使用 StatelessService 和 StatelessServiceBase 類別的服務。
 
-
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
 如需 Service Fabric 的詳細資訊，請參閱：
 
 [可靠的服務概觀](service-fabric-reliable-services-introduction.md)
 
-[快速入門](service-fabric-reliable-services-quick-start.md)
+[快速啟動](service-fabric-reliable-services-quick-start.md)
 
 [可靠的集合概觀](service-fabric-reliable-services-reliable-collections.md)
 
-[可靠的服務進階用法](service-fabric-reliable-services-advanced-usage.md)
+[可靠的服務的進階用法](service-fabric-reliable-services-advanced-usage.md)
 
-[可靠的服務組態](service-fabric-reliable-services-configuration.md)
-
-
-
-
-
+[可靠的服務組態](service-fabric-reliable-services-configuration.md)  
+ 
 

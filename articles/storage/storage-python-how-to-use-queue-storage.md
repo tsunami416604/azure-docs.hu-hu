@@ -16,34 +16,35 @@
     ms.date="12/11/2015" 
     ms.author="emgerner"/>
 
-
 # 如何使用 Python 的佇列儲存體
 
 [AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
 
 ## 概觀
 
-本指南說明如何使用 Azure 佇列儲存體服務執行一般案例。 在 Python 中並使用這些範例 [Python Azure 儲存體封裝 []][]。 涵蓋的案例包括 **插入**, ，**查看**,，
-**取得**, ，和 **刪除** 佇列訊息，以及 * * 建立和
-刪除佇列 * *。 如需佇列的詳細資訊，請參閱 [後續步驟 []][] 一節。
+本指南說明如何使用 Azure 佇列儲存體服務執行一般案例。 在 Python 中並使用這些範例 [Python Azure 儲存體封裝][]。 涵蓋的案例包括 **插入**, ，**查看**,，
+**取得**, ，和 **刪除** 佇列訊息，以及 **建立和
+刪除佇列**。 如需佇列的詳細資訊，請參閱 [後續步驟][] 一節。
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-> [AZURE.NOTE] 如果您需要安裝 Python 或 [Python Azure 封裝 []][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
+
+> [AZURE.NOTE] 如果您需要安裝 Python 或 [Python Azure 封裝][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
 
 ## 作法：建立佇列
 
-**QueueService** 物件可讓您操作佇列。 下列程式碼將建立 **QueueService** 物件。 將下列內容新增至您想要在其中以程式設計方式存取 Azure 儲存體之任何 Python 檔案內的頂端附近：
+ **QueueService** 物件可讓您處理佇列。 下列程式碼會建立 **QueueService** 物件。 將下列內容新增至您想要在其中以程式設計方式存取 Azure 儲存體之任何 Python 檔案內的頂端附近：
 
     from azure.storage.queue import QueueService
 
-下列程式碼會使用儲存體帳戶名稱和帳戶金鑰來建立 **QueueService** 物件： 將 'myaccount' 和 'mykey' 取代為真實的帳戶和金鑰。
+下列程式碼會建立 **QueueService** 物件使用的儲存體帳戶名稱和帳戶金鑰。 將 'myaccount' 和 'mykey' 取代為真實的帳戶和金鑰。
 
     queue_service = QueueService(account_name='myaccount', account_key='mykey')
-    
+
     queue_service.create_queue('taskqueue')
+
 
 ## 作法：將訊息插入佇列中
 
@@ -51,6 +52,7 @@
 建立新訊息，並將它新增至佇列。
 
     queue_service.put_message('taskqueue', 'Hello World')
+
 
 ## 作法：預覽下一個訊息
 
@@ -61,6 +63,7 @@
     messages = queue_service.peek_messages('taskqueue')
     for message in messages:
         print(message.message_text)
+
 
 ## 作法：清除下一個佇列訊息
 
@@ -79,6 +82,7 @@
     for message in messages:
         print(message.message_text)
         queue_service.delete_message('taskqueue', message.message_id, message.pop_receipt)
+
 
 ## 作法：變更佇列訊息的內容
 
@@ -129,12 +133,12 @@
 了解佇列儲存體的基礎概念之後，請參考下列連結
 以深入了解更複雜的儲存體工作。
 
--   請瀏覽 [Azure 儲存體團隊部落格]][]
+-   請瀏覽 [Azure 儲存體團隊部落格][]
 
 如需詳細資訊，請參閱 [Python 開發人員中心](/develop/python/)。
 
-
-[azure storage team blog]: http://blogs.msdn.com/b/windowsazurestorage/ 
-[python azure package]: https://pypi.python.org/pypi/azure 
-[python azure storage package]: https://pypi.python.org/pypi/azure-storage 
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Python Azure package]: https://pypi.python.org/pypi/azure
+[Python Azure Storage package]: https://pypi.python.org/pypi/azure-storage 
+ 
 

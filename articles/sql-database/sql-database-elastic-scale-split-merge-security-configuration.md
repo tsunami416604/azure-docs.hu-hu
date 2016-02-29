@@ -15,24 +15,23 @@
     ms.date="11/04/2015" 
     ms.author="torsteng;sidneyh" />
 
-
-# Split-Merge 安全性設定
+# Split-Merge 安全性設定  
 
 若要使用 Split/Merge 服務，您必須正確地設定安全性。 此服務是 Microsoft Azure SQL Database 的 Elastic Scale 功能的一部分。 如需詳細資訊，請參閱 [Elastic Scale 分割及合併服務教學課程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
 
 ## 設定憑證
 
-憑證有兩種設定方式。
+憑證有兩種設定方式。 
 
-1. [若要設定 SSL 憑證](To#Configure#the#SSL#Certificate)
-2. [若要設定用戶端憑證](To#Configure#Client#Certificates)
+1. [設定 SSL 憑證](To#Configure#the#SSL#Certificate)
+2. [設定用戶端憑證](To#Configure#Client#Certificates) 
 
 ## 取得憑證
 
 您可以取得憑證，從公用憑證授權單位 (Ca) 或 [Windows 憑證服務](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)。 這些是取得憑證的慣用方法。
 
-如果這些選項都無法使用，您可以產生**自我簽署憑證**。
-
+如果這些選項都無法使用，您可以產生 **自我簽署的憑證**。
+ 
 ## 產生憑證的工具
 
 * [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
@@ -40,7 +39,7 @@
 
 ### 執行工具
 
-* 從開發人員命令提示字元 Visual studio，請參閱 [Visual Studio 命令提示字元](http://msdn.microsoft.com/library/ms229859.aspx)
+* 從開發人員命令提示字元 Visual studio，請參閱 [Visual Studio 命令提示字元](http://msdn.microsoft.com/library/ms229859.aspx) 
 
     如果已安裝，請移至：
 
@@ -49,75 +48,49 @@
 * 從 [Windows 8.1: 下載套件與工具](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## 設定 SSL 憑證
-
 需要 SSL 憑證，才能將通訊加密和驗證伺服器。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
 
 ### 建立新的自我簽署憑證
 
-1.    [Create a Self-Signed Certificate](Create#a#Self-Signed#Certificate)
-
-2.    [Create PFX file for Self-Signed SSL Certificate](Create#PFX#file#for#Self-Signed#SSL#Certificate)
-
-3.    [Upload SSL Certificate to Cloud Service](Upload#SSL#Certificate#to#Cloud#Service)
-
-4.    [Update SSL Certificate in Service Configuration File](Update#SSL#Certificate#in#Service#Configuration#File)
-
-5.    [Import SSL Certification Authority](Import#SSL#Certification#Authority)
-
+1.    [建立自我簽署憑證](Create#a#Self-Signed#Certificate)
+2.    [建立自我簽署 SSL 憑證的 PFX 檔案](Create#PFX#file#for#Self-Signed#SSL#Certificate)
+3.    [將 SSL 憑證上傳至雲端服務](Upload#SSL#Certificate#to#Cloud#Service)
+4.    [在服務組態檔中更新 SSL 憑證](Update#SSL#Certificate#in#Service#Configuration#File)
+5.    [匯入 SSL 憑證授權單位](Import#SSL#Certification#Authority)
 
 ### 從憑證存放區使用現有的憑證
-
 1. [從憑證存放區匯出 SSL 憑證](Export#SSL#Certificate#From#Certificate#Store)
-2. [上傳至雲端服務的 SSL 憑證](Upload#SSL#Certificate#to#Cloud#Service)
-3. [服務組態檔中更新 SSL 憑證](Update#SSL#Certificate#in#Service#Configuration#File)
+2. [將 SSL 憑證上傳至雲端服務](Upload#SSL#Certificate#to#Cloud#Service)
+3. [在服務組態檔中更新 SSL 憑證](Update#SSL#Certificate#in#Service#Configuration#File)
 
 ### 使用 PFX 檔案中現有的憑證
 
-1. [上傳至雲端服務的 SSL 憑證](Upload#SSL#Certificate#to#Cloud#Service)
-2. [服務組態檔中更新 SSL 憑證](Update#SSL#Certificate#in#Service#Configuration#File)
+1. [將 SSL 憑證上傳至雲端服務](Upload#SSL#Certificate#to#Cloud#Service)
+2. [在服務組態檔中更新 SSL 憑證](Update#SSL#Certificate#in#Service#Configuration#File)
 
 ## 設定用戶端憑證
-
 需要用戶端憑證，才能驗證服務的要求。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
 
 ### 關閉用戶端憑證
-
-1.    [Turn Off Client Certificate-Based Authentication](Turn#Off#Client#Certificate-Based#Authentication)
-
+1.    [關閉用戶端憑證式驗證](Turn#Off#Client#Certificate-Based#Authentication)
 
 ### 發行新的自我簽署用戶端憑證
-
-1.    [Create a Self-Signed Certification Authority](Create#a#Self-Signed#Certification#Authority)
-
-2.    [Upload CA Certificate to Cloud Service](Upload#CA#Certificate#to#Cloud#Service)
-
-3.    [Update CA Certificate in Service Configuration File](Update#CA#Certificate#in#Service#Configuration#File)
-
-4.    [Issue Client Certificates](Issue#Client#Certificates)
-
-5.    [Create PFX files for Client Certificates](Create#PFX#files#for#Client#Certificates)
-
-6.    [Import Client Certificate](Import#Client#Certificate)
-
-7.    [Copy Client Certificate Thumbprints](Copy#Client#Certificate#Thumbprints)
-
-8.    [Configure Allowed Clients in the Service Configuration File](Configure#Allowed#Clients#in#the#Service#Configuration#File)
-
+1.    [建立自我簽署憑證授權單位](Create#a#Self-Signed#Certification#Authority)
+2.    [將 CA 憑證上傳至雲端服務](Upload#CA#Certificate#to#Cloud#Service)
+3.    [在服務組態檔中更新 CA 憑證](Update#CA#Certificate#in#Service#Configuration#File)
+4.    [發行用戶端憑證](Issue#Client#Certificates)
+5.    [建立用戶端憑證的 PFX 檔案](Create#PFX#files#for#Client#Certificates)
+6.    [匯入用戶端憑證](Import#Client#Certificate)
+7.    [複製用戶端憑證指紋](Copy#Client#Certificate#Thumbprints)
+8.    [在服務組態檔中設定允許的用戶端](Configure#Allowed#Clients#in#the#Service#Configuration#File)
 
 ### 使用現有的用戶端憑證
-
-1.    [Find CA Public Key](Find#CA#Public Key)
-
-2.    [Upload CA Certificate to Cloud Service](Upload#CA#certificate#to#cloud#service)
-
-3.    [Update CA Certificate in Service Configuration File](Update#CA#Certificate#in#Service#Configuration#File)
-
-4.    [Copy Client Certificate Thumbprints](Copy#Client#Certificate#Thumbprints)
-
-5.    [Configure Allowed Clients in the Service Configuration File](Configure#Allowed#Clients#in#the#Service#Configuration File)
-
-6.    [Configure Client Certificate Revocation Check](Configure#Client#Certificate#Revocation#Check)
-
+1.    [尋找 CA 公開金鑰](Find#CA#Public Key)
+2.    [將 CA 憑證上傳至雲端服務](Upload#CA#certificate#to#cloud#service)
+3.    [在服務組態檔中更新 CA 憑證](Update#CA#Certificate#in#Service#Configuration#File)
+4.    [複製用戶端憑證指紋](Copy#Client#Certificate#Thumbprints)
+5.    [在服務組態檔中設定允許的用戶端](Configure#Allowed#Clients#in#the#Service#Configuration File)
+6.    [設定用戶端憑證撤銷檢查](Configure#Client#Certificate#Revocation#Check)
 
 ## 允許的 IP 位址
 
@@ -130,29 +103,20 @@
 ### 使用新的自我簽署憑證
 
 1.     [Create a Self-Signed Certificate](Create#a#Self-Signed#Certificate)
-
 2.     [Create PFX file for Self-Signed Encryption Certificate](Create#PFX#file#for#Self-Signed#Encryption#Certificate)
-
 3.     [Upload Encryption Certificate to Cloud Service](Upload#Encryption#Certificate#to#Cloud#Service)
-
 4.     [Update Encryption Certificate in Service Configuration File](Update#Encryption#Certificate#in#Service#Configuration#File)
-
 
 ### 從憑證存放區使用現有的憑證
 
 1.     [Export Encryption Certificate From Certificate Store](Export#Encryption#Certificate#From#Certificate#Store)
-
 2.     [Upload Encryption Certificate to Cloud Service](Upload#Encryption#Certificate#to#Cloud#Service)
-
 3.     [Update Encryption Certificate in Service Configuration File](Update#Encryption#Certificate#in#Service#Configuration#File)
-
 
 ### 使用 PFX 檔案中現有的憑證
 
 1.     [Upload Encryption Certificate to Cloud Service](Upload#Encryption#Certificate#to#Cloud#Service)
-
 2.     [Update Encryption Certificate in Service Configuration File](Update#Encryption#Certificate#in#Service#Configuration#File)
-
 
 ## 預設組態
 
@@ -161,14 +125,14 @@
 
 ### 變更組態
 
-在設定的存取控制規則套用至與端點群組 * *<EndpointAcls>* * 區段中 **服務組態檔**。
+在設定的存取控制規則套用至與端點群組 **<EndpointAcls>** 一節中 **服務組態檔**。
 
     <EndpointAcls>
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
     </EndpointAcls>
 
-存取控制群組中的規則設定於 <AccessControl name=""> 服務組態檔區段。
+存取控制群組中的規則設定於 <AccessControl name=""> 服務組態檔區段。 
 
 網路存取控制清單文件會說明其格式。
 例如，若只要允許範圍 100.100.0.0 至 100.100.255.255 中的 IP 存取 HTTPS 端點，則規則看起來如下：
@@ -184,10 +148,8 @@
 
 支援兩個不同的機制來偵測並防止阻斷服務攻擊：
 
-*    Restrict number of concurrent requests per remote host (off by default)
-
-*    Restrict rate of access per remote host (on by default)
-
+*    限制每個遠端主機的並行要求數目 (預設為關閉)
+*    限制每個遠端主機的存取速率 (預設為開關)
 
 這些是根據「IIS 中的動態 IP 安全性」所進一步記載的功能。 變更此設定時，請注意下列因素：
 
@@ -216,18 +178,15 @@
 下列設定會設定拒絕要求的回應：
 
     <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
-
 關於其他支援的值，請參閱「IIS 中的動態 IP 安全性」文件。
 
 ## 設定服務憑證的作業
-
 本主題僅供參考。 請遵循以下所述的設定步驟：
 
 * 設定 SSL 憑證
 * 設定用戶端憑證
 
 ## 建立自我簽署憑證
-
 執行：
 
     makecert ^
@@ -239,10 +198,8 @@
 
 自訂：
 
-*    -n with the service URL. Wildcards ("CN=*.cloudapp.net") and alternative names ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") are supported.
-
-*    -e with the certificate expiration date
-
+*    -n 與服務 URL。 支援萬用字元 ("CN=*.cloudapp.net") 和替代名稱 ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net")。
+*    -e 與憑證到期日
 建立強式密碼，並於提示時指定它。
 
 ## 建立自我簽署 SSL 憑證的 PFX 檔案
@@ -298,7 +255,6 @@
     <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
 
 ## 建立自我簽署憑證授權單位
-
 執行下列步驟來建立自我簽署憑證，以做為憑證授權單位：
 
     makecert ^
@@ -311,8 +267,7 @@
 
 自訂
 
-*    -e with the certification expiration date
-
+*    -e 與憑證到期日
 
 
 ## 尋找 CA 公開金鑰
@@ -327,7 +282,7 @@
 * 在 [憑證] 對話方塊中選取 [憑證路徑] 索引標籤。
 * 按兩下路徑中的 CA 項目。
 * 記下憑證屬性。
-* 關閉 [**憑證**] 對話方塊。
+* 關閉 **憑證** ] 對話方塊。
 * 尋找憑證
     * 搜尋剛才記下的 CA。
 * 按一下 [動作] -> [所有工作] -> [匯出...]
@@ -352,7 +307,7 @@
 
 ## 發行用戶端憑證
 
-每個獲授權存取服務的人應該有發行給他專用的用戶端憑證，而且應該選擇他自己的強式密碼來保護私密金鑰。
+每個獲授權存取服務的人應該有發行給他專用的用戶端憑證，而且應該選擇他自己的強式密碼來保護私密金鑰。 
 
 在產生及儲存自我簽署 CA 憑證的同一部電腦上，必須執行下列步驟：
 
@@ -397,7 +352,6 @@
     * 核取 [包含所有延伸內容]
 
 ## 複製用戶端憑證指紋
-
 用戶端憑證已發給的每個人必須依照下列步驟，以取得將加入至服務組態檔的憑證指紋：
 * 執行 certmgr.exe
 * 選取 [個人] 索引標籤
@@ -406,8 +360,8 @@
 * 請確定 [顯示] 是顯示 [全部]
 * 在清單中選取名為 [憑證指紋] 的欄位
 * 複製憑證指紋的值
-** 刪除第一個數字前面不可見的 Unicode 字元
-** 刪除所有的空格
+* * 刪除第一個數字前面不可見的 Unicode 字元
+刪除所有的空格
 
 ## 在服務組態檔中設定允許的用戶端
 
@@ -432,27 +386,18 @@
     MyID.pvk and MyID.cer with the filename for the encryption certificate
 
 輸入密碼，然後使用這些選項來匯出憑證：
-*    Yes, export the private key
-
-*    Export all extended properties
-
-*    You will need the password when uploading the certificate to the cloud service.
-
+*    是，匯出私密金鑰
+*    匯出所有延伸內容
+*    將憑證上傳至雲端服務時，您將需要密碼。
 
 ## 從憑證存放區匯出加密憑證
 
-*    Find certificate
-
-*    Click Actions -> All tasks -> Export…
-
-*    Export certificate into a .PFX file with these options: 
-
-  *    Yes, export the private key
-
-  *    Include all certificates in the certification path if possible 
-
-*    Export all extended properties
-
+*    尋找憑證
+*    按一下 [動作] -> [所有工作] -> [匯出...]
+*    使用這些選項將憑證匯出至 .PFX 檔案： 
+  *    是，匯出私密金鑰
+  *    如果可能的話，包含憑證路徑中的所有憑證 
+*    匯出所有延伸內容
 
 ## 將加密憑證上傳至雲端服務
 
@@ -477,32 +422,31 @@
 
 1. 執行 mmc.exe。
 2. [檔案] -> [新增/移除嵌入式管理單元]
-3. 選取 [**憑證**]。
-4. 按一下 [新增]****。
+3. 選取 **憑證**。
+4. 按一下 [ **新增**。
 5. 選擇憑證存放區位置。
-6. 按一下 [完成]****。
-7. 按一下 [確定]****。
-8. 展開 [**憑證**]。
+6. 按一下 [ **完成**。
+7. 按一下 [ **確定**。
+8. 展開 **憑證**。
 9. 展開憑證存放區節點。
 10. 展開 [憑證] 子節點。
 11. 在清單中選取憑證。
 
 ## 匯出憑證
+在 **憑證匯出精靈]**:
 
-在 [**憑證匯出精靈**] 中：
-
-1. 按 [下一步]****。
-2. 選取 [**是**]，再選取 [**匯出私密金鑰**]。
-3. 按 [下一步]****。
+1. 按一下 [ **下一步**。
+2. 選取 **是**, ，然後 **匯出私密金鑰**。
+3. 按一下 [ **下一步**。
 4. 選取想要的輸出檔案格式。
 5. 核取所需的選項。
-6. 核取 [**密碼**]。
+6. 檢查 **密碼**。
 7. 輸入強式密碼並加以確認。
-8. 按 [下一步]****。
+8. 按一下 [ **下一步**。
 9. 輸入或瀏覽至用來儲存憑證的檔案名稱 (使用 .PFX 副檔名)。
-10. 按 [下一步]****。
-11. 按一下 [完成]****。
-12. 按一下 [確定]****。
+10. 按一下 [ **下一步**。
+11. 按一下 [ **完成**。
+12. 按一下 [ **確定**。
 
 ## 匯入憑證
 
@@ -510,50 +454,39 @@
 
 1. 選取存放區位置。
 
-    * 如果只有在目前使用者下執行的處理程序會存取服務，請選取 [**目前使用者**]
-    * 如果這台電腦中的其他處理程序會存取服務，請選取 [**本機電腦**]
-2. 按 [下一步]****。
+    * 選取 **目前使用者** 如果只有在目前使用者下執行的處理序會存取服務
+    * 選取 **本機** 如果這台電腦中的其他處理程序會存取服務
+2. 按一下 [ **下一步**。
 3. 如果從檔案匯入，請確認檔案路徑。
 4. 如果匯入 .PFX 檔案：
     1.     Enter the password protecting the private key
-
     2.     Select import options
-
 5.     Select "Place" certificates in the following store
-
 6.     Click **Browse**.
-
 7.     Select the desired store.
-
 8.     Click **Finish**.
-    
-    * If the Trusted Root Certification Authority store was chosen, click **Yes**.
-
+       
+    * 如果已選擇受信任的根憑證授權單位存放區，請按一下 [ **是**。
 9.     Click **OK** on all dialog windows.
-
 
 ## Upload certificate
 
 在 [Azure 傳統入口網站](http://portal.azure.com/)
 
-1. 選取 [雲端服務]****。
+1. 選取 **雲端服務**。
 2. 選取雲端服務。
-3. 按一下頂端功能表的 [**憑證**]。
-4. 按一下底列的 [**上傳**]。
+3. 在頂端功能表中，按一下 [ **憑證**。
+4. 按一下底列的 **上載**。
 5. 選取憑證檔。
 6. 如果是 .PFX 檔案，請輸入私密金鑰的密碼。
 7. 完成後，從清單中的新項目複製憑證指紋。
 
 ## 其他安全性考量
-
-使用 HTTPS 端點時，這份文件中所述的 SSL 設定會加密服務和用戶端之間的通訊。 這很重要，因為通訊中包含用來存取資料庫和其他可能機密資訊的認證。 但是請注意，服務會將內部狀態 (包括認證) 保存在 Microsoft Azure SQL 資料庫的內部資料表中 (您在 Microsoft Azure 訂用帳戶中已提供作為中繼資料儲存體)。 在服務組態檔中 (.CSCFG 檔案)，下列設定中已定義該資料庫：
+ 
+使用 HTTPS 端點時，這份文件中所述的 SSL 設定會加密服務和用戶端之間的通訊。 這很重要，因為通訊中包含用來存取資料庫和其他可能機密資訊的認證。 但是請注意，服務會將內部狀態 (包括認證) 保存在 Microsoft Azure SQL 資料庫的內部資料表中 (您在 Microsoft Azure 訂用帳戶中已提供作為中繼資料儲存體)。 在服務組態檔中 (.CSCFG 檔案)，下列設定中已定義該資料庫： 
 
     <Setting name="ElasticScaleMetadata" value="Server=…" />
 
-這個資料庫中儲存的認證會被加密。 此外，最佳作法是確定服務部署的 Web 和背景工作角色保持在最新狀態且安全，因為它們都能存取中繼資料資料庫和用來加密和解密已儲存的認證。
+這個資料庫中儲存的認證會被加密。 此外，最佳作法是確定服務部署的 Web 和背景工作角色保持在最新狀態且安全，因為它們都能存取中繼資料資料庫和用來加密和解密已儲存的認證。 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-
-
-

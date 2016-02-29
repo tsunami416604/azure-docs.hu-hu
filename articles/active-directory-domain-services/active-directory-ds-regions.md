@@ -16,12 +16,7 @@
     ms.date="10/12/2015"
     ms.author="maheshu"/>
 
-
 # Azure AD 網域服務 *(預覽)*
 
 若要了解 Azure 服務的位置，請參閱 [服務依地區](https://azure.microsoft.com/regions/#services)。
-
-
-
-
 

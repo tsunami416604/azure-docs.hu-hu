@@ -16,7 +16,6 @@
     ms.date="10/08/2015" 
     ms.author="sethm"/>
 
-
 # 如何透過服務匯流排 .NET API 使用 AMQP 1.0
 
 進階訊息佇列通訊協定 (AMQP) 1.0 是一個有效率且可靠的有線等級傳訊通訊協定，可以用來建置強大的跨平台傳訊應用程式。
@@ -58,15 +57,15 @@
 
 ### 設定服務匯流排連接字串
 
-**Microsoft.ServiceBus.ConnectionString** 設定的值是用來設定服務匯流排連線的服務匯流排連接字串。 其格式如下所示：
+值 **Microsoft.ServiceBus.ConnectionString** 設定是用來設定服務匯流排連線的服務匯流排連接字串。 其格式如下所示：
 
 ```
 Endpoint=sb://[namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
 ```
 
-其中 `[namespace]` 和 `[SAS 金鑰]` 取自 [Azure 傳統入口網站 []][]。 如需詳細資訊，請參閱 [如何使用服務匯流排佇列]][]。
+其中 `[namespace]` 和 `[SAS key]` 取自 [Azure 傳統入口網站][]。 如需詳細資訊，請參閱 [如何使用服務匯流排佇列][]。
 
-使用 AMQP 時，連接字串會加 `;TransportType = Amqp`, ，它能告知用戶端程式庫來建立連線至服務匯流排使用 AMQP 1.0。
+在使用 AMQP 時，連接字串會加上 `;TransportType=Amqp`，它能告知用戶端程式庫使用 AMQP 1.0 來建立服務匯流排連線。
 
 ### 設定實體名稱
 
@@ -78,12 +77,12 @@ Endpoint=sb://[namespace].servicebus.windows.net;SharedAccessKeyName=RootManageS
 
 ```
 // SimpleSenderReceiver.cs
-
+    
 using System;
 using System.Configuration;
 using System.Threading;
 using Microsoft.ServiceBus.Messaging;
-
+    
 namespace SimpleSenderReceiver
 {
     class SimpleSenderReceiver
@@ -96,23 +95,23 @@ namespace SimpleSenderReceiver
         private MessageReceiver receiver;
         private MessageListener messageListener;
         private Thread listenerThread;
-
+    
         static void Main(string[] args)
         {
             try
             {
                 if ((args.Length > 0) && args[0].ToLower().Equals("sendonly"))
                     runReceiver = false;
-
+                    
                 string ConnectionStringKey = "Microsoft.ServiceBus.ConnectionString";
                 string entityNameKey = "EntityName";
                 entityName = ConfigurationManager.AppSettings[entityNameKey];
                 connectionString = ConfigurationManager.AppSettings[ConnectionStringKey];
                 SimpleSenderReceiver simpleSenderReceiver = new SimpleSenderReceiver();
-
+    
                 Console.WriteLine("Press [enter] to send a message. " +
                     "Type 'exit' + [enter] to quit.");
-
+    
                 while (true)
                 {
                     string s = Console.ReadLine();
@@ -130,12 +129,12 @@ namespace SimpleSenderReceiver
                 Console.WriteLine("Caught exception: " + e.Message);
             }
         }
-
+    
         public SimpleSenderReceiver()
         {
             factory = MessagingFactory.CreateFromConnectionString(connectionString);
             sender = factory.CreateMessageSender(entityName);
-
+    
             if (runReceiver)
             {
                 receiver = factory.CreateMessageReceiver(entityName);
@@ -144,14 +143,14 @@ namespace SimpleSenderReceiver
                 listenerThread.Start();
             }
         }
-
+    
         public void Close()
         {
             messageListener.RequestStop();
             listenerThread.Join();
             factory.Close();
         }
-
+    
         private void SendMessage()
         {
             BrokeredMessage message = new BrokeredMessage("Test AMQP message from .NET");
@@ -161,7 +160,7 @@ namespace SimpleSenderReceiver
         }
 
     }
-
+    
     public class MessageListener
     {
         private MessageReceiver messageReceiver;
@@ -169,7 +168,7 @@ namespace SimpleSenderReceiver
         {
             messageReceiver = receiver;
         }
-
+    
         public void Listen()
         {
             while (!_shouldStop)
@@ -192,12 +191,12 @@ namespace SimpleSenderReceiver
                 }
             }
         }
-
+    
         public void RequestStop()
         {
             _shouldStop = true;
         }
-
+    
         private volatile bool _shouldStop;
     }
 }
@@ -210,13 +209,13 @@ namespace SimpleSenderReceiver
 ```
 > SimpleSenderReceiver.exe
 Press [enter] to send a message. Type 'exit' + [enter] to quit.
-
+    
 Sent message with MessageID = fb7f5d3733704e4ba4bd55f759d9d7cf
 Received message with MessageID = fb7f5d3733704e4ba4bd55f759d9d7cf
-
+    
 Sent message with MessageID = d00e2e088f06416da7956b58310f7a06
 Received message with MessageID = d00e2e088f06416da7956b58310f7a06
-
+    
 Received message with MessageID = f27f79ec124548c196fd0db8544bca49
 Sent message with MessageID = f27f79ec124548c196fd0db8544bca49
 exit
@@ -226,7 +225,7 @@ exit
 
 本文示範如何使用 .NET 將訊息傳送到服務匯流排，以及如何使用 .NET 接收這些訊息。 不過，AMQP 1.0 的其中一個主要優點是能夠從不同語言撰寫的元件建立應用程式，並確實完整交換訊息。
 
-使用上述的範例.NET 應用程式和取自隨附指南的類似 Java 應用程式 [如何使用 Java 訊息服務 (JMS) API 與服務匯流排和 AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md), ，就可以交換.NET 與 Java 之間的訊息。
+使用上述的範例.NET 應用程式和取自隨附指南的類似 Java 應用程式 [如何使用 Java 訊息服務 (JMS) API 與服務匯流排和 AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md), ，就可以交換.NET 與 Java 之間的訊息。 
 
 如需有關跨平台訊息的詳細資料使用服務匯流排和 AMQP 1.0，請參閱 [服務匯流排 AMQP 1.0 概觀](service-bus-amqp-overview.md)。
 
@@ -235,8 +234,8 @@ exit
 示範 JMS 到 .NET 的訊息：
 
 * 不使用任何命令列引數啟動 .NET 範例應用程式。
-* 使用「sendonly」命令列引數啟動 Java 範例應用程式。 在此模式中，應用程式不會收到來自佇列的訊息，而只會傳送。
-* 在 Java 應用程式主控台多次按下 **Enter** 鍵，這將傳送訊息。
+* 使用「sendonly」命令列引數啟動 Java 範例應用程式。 在此模式中，應用程式將不會接收來自佇列的訊息，它只會傳送訊息。
+* 按下 **Enter** 幾次在 Java 應用程式主控台中，這會導致要傳送的訊息。
 * 這些訊息將由 .NET 應用程式所接收。
 
 ### JMS 應用程式的輸出
@@ -267,7 +266,7 @@ exit
 
 * 啟動 .NET 範例應用程式並搭配 "sendonly" 命令列引數。 在此模式中，應用程式將不會接收來自佇列的訊息，它只會傳送訊息。
 * 在不搭配任何命令列引數的情況下啟動 Java 範例應用程式。
-* 在 .NET 應用程式主控台內按幾次 [確定]****，如此能導致訊息傳送。
+* 按下 **Enter** 幾次在.NET 應用程式主控台中，這會導致要傳送的訊息。
 * 這些訊息將由 Java 應用程式所接收。
 
 #### .NET 應用程式的輸出
@@ -319,10 +318,9 @@ exit
 
 既然您已閱讀服務匯流排和 AMQP 與 .NET 的概觀，請參閱下列連結取得詳細資訊。
 
-* [Azure 服務匯流排的 AMQP 1.0 支援](service-bus-amqp-overview.md)
-* [如何使用 Java 訊息服務 (JMS) API 與服務匯流排和 AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md)
+* [Azure 服務匯流排中的 AMQP 1.0 支援](service-bus-amqp-overview.md)
+* [如何搭配使用 Java 訊息服務 (JMS) API 與服務匯流排和 AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md)
 * [如何使用服務匯流排佇列](service-bus-dotnet-how-to-use-queues.md)
-
-
-[azure classic portal]: http://manage.windowsazure.com 
+ 
+[Azure classic portal]: http://manage.windowsazure.com
 

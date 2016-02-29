@@ -16,24 +16,21 @@
     ms.date="11/19/2015" 
     ms.author="billmath"/>
 
-
 # Azure Multi-Factor Authentication 的登入體驗
-
-> [AZURE.NOTE]  以下文件顯示一般登入體驗。 如需說明登入，請參閱 [Azure 多重要素驗證發生問題](multi-factor-authentication-end-user-manage-settings.md)
+> [AZURE.NOTE]  在此頁面上提供的下列文件顯示典型的登入體驗。  如需登入，請參閱說明 [Azure 多重要素驗證發生問題](multi-factor-authentication-end-user-manage-settings.md)
 
 
 
 ## 您的登入體驗將會如何？
+視您登入及使用 Multi-Factor Authentication 的方式而定，您的體驗將會有所不同。  本節將提供登入時預期情況的資訊。  選擇最符合您的情況的一項：
 
-視您登入及使用 Multi-Factor Authentication 的方式而定，您的體驗將會有所不同。 本節將提供登入時預期情況的資訊。 選擇最符合您的情況的一項：
 
-
- 您在做什麼？| 說明
-:------------- | :------------- |
- [登入行動或辦公室電話](#signing-in-with-mobile-or-office-phone)| 這是使用行動或辦公室電話登入時所能預期的情況。
- [登入行動應用程式使用通知](#signing-in-with-the-mobile-app-using-notification)| 這是使用通知登入行動應用程式時所能預期的情況。
- [登入行動應用程式使用的驗證碼](#signing-in-with-the-mobile-app-using-verification-code)| 這是使用驗證碼登入行動應用程式時所能預期的情況。
- [登入的替代方法](#signing-in-with-an-alternate-method)| 這會顯示想要使用替代方法時所能預期的情況。
+您在做什麼？|說明
+:------------- | :------------- | 
+[使用行動或辦公室電話登入](#signing-in-with-mobile-or-office-phone) | 這是使用行動或辦公室電話登入時所能預期的情況。
+[使用通知登入行動應用程式](#signing-in-with-the-mobile-app-using-notification) | 這是使用通知登入行動應用程式時所能預期的情況。
+[使用驗證碼登入行動應用程式](#signing-in-with-the-mobile-app-using-verification-code)|這是使用驗證碼登入行動應用程式時所能預期的情況。
+[使用替代方法登入](#signing-in-with-an-alternate-method)|這會顯示想要使用替代方法時所能預期的情況。
 
 ## 使用行動或辦公室電話登入
 
@@ -50,7 +47,7 @@
 
 ![Answer](./media/multi-factor-authentication-end-user-signin-phone/phone.png)
 
-- 您現在應該登入。</li>
+- 您現在應已登入。</li>
 
 ## 使用通知登入行動應用程式
 
@@ -92,19 +89,16 @@
 
 ## 使用替代方法登入
 
+
 下一節將說明當主要方法無法使用時，如何使用替代方法進行登入。
 
 ### 使用替代方法進行登入
 
 - 使用您的使用者名稱和密碼登入應用程式或服務，例如 Office 365。
-- 選取使用不同的驗證選項。 您將會看見各種不同的選項。 您所看到的個數將以您設定的個數為基礎。
+- 選取使用不同的驗證選項。  您將會看見各種不同的選項。 您所看到的個數將以您設定的個數為基礎。
 
 ![使用替代方法](./media/multi-factor-authentication-end-user-signin-alt/alt.png)
 
 - 選擇替代方法並且登入。
 
-
-
-
-
-
+ 

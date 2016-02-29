@@ -14,9 +14,8 @@
  ms.topic="article" 
  ms.date="12/04/2015" 
  ms.author="krisragh"/>
-
-
-
+ 
+ 
 # 排程器高可用性和可靠性
 
 ## Azure 排程器高可用性
@@ -63,27 +62,29 @@ Azure 排程器可讓您設定重試原則。 根據預設，如果工作失敗�
 
 ## 另請參閱
 
- [排程器是什麼?](scheduler-intro.md)
+ [排程器是什麼？](scheduler-intro.md)
+ 
+ [Azure 排程器概念、術語及實體階層](scheduler-concepts-terms.md)
 
- [Azure 排程器概念、 術語及實體階層](scheduler-concepts-terms.md)
+ [在 Azure 入口網站中開始使用排程器](scheduler-get-started-portal.md)
 
- [開始使用 Azure 入口網站中的排程器](scheduler-get-started-portal.md)
+ [Azure 排程器的計劃和計費](scheduler-plans-billing.md)
 
- [計劃和計費，Azure 排程器中](scheduler-plans-billing.md)
-
- [如何建立複雜的排程和進階的週期使用 Azure 排程器](scheduler-advanced-complexity.md)
+ [如何使用 Azure 排程器建立複雜的排程和進階週期](scheduler-advanced-complexity.md)
 
  [Azure 排程器 REST API 參考](https://msdn.microsoft.com/library/dn528946)
 
- [Azure 排程器 PowerShell cmdlet 參考](scheduler-powershell-reference.md)
+ [Azure 排程器 PowerShell Cmdlet 參考](scheduler-powershell-reference.md)
 
 
- [Azure 排程器限制、 預設值和錯誤碼](scheduler-limits-defaults-errors.md)
+ [Azure 排程器限制、預設值和錯誤碼](scheduler-limits-defaults-errors.md)
 
  [Azure 排程器輸出驗證](scheduler-outbound-authentication.md)
+ 
+ 
+[1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png
 
+[2]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png
 
-
-[1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png 
-[2]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png 
+ 
 

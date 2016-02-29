@@ -16,8 +16,7 @@
     ms.date="12/05/2015"
     ms.author="juliako"/>
 
-
-# 媒體服務 PlayReady 授權範本概觀
+#媒體服務 PlayReady 授權範本概觀
 
 Azure 媒體服務現在提供一種服務，來傳遞 Microsoft PlayReady 授權。 使用者播放程式 (例如 Silverlight) 嘗試播放 PlayReady 保護內容時，會將要求傳送到授權傳遞服務來取得授權。 如果授權服務核准要求，就會發出傳送給用戶端並可用來解密和播放所指定內容的授權。
 
@@ -25,18 +24,18 @@ Azure 媒體服務現在提供一種服務，來傳遞 Microsoft PlayReady 授�
 以下是您可以指定之 PlayReady 授權限制的一些範例：
 
 - 授權從此時間期間起有效的 DateTime。
-- 授權過期的 DateTime 值。
+- 授權過期的 DateTime 值。 
 - 針對要儲存在用戶端上永續性儲存體的授權。 永續性授權通常會用來允許離線播放內容。
-- 播放器播放您的內容必須具有的最低安全性層級。
-- audio\video 內容的輸出控制輸出保護層級。
+- 播放器播放您的內容必須具有的最低安全性層級。 
+- audio\video 內容的輸出控制輸出保護層級。 
 - 如需詳細資訊，請參閱輸出控制 (3.5) 中部分 [PlayReady 法規規則](https://www.microsoft.com/playready/licensing/compliance/) 文件。
 
->[AZURE.NOTE]目前，您只能設定 PlayReady 授權的 PlayRight (這是必要權限)。 PlayRight 可讓用戶端播放內容。 PlayRight 也可讓設定限制專屬於播放。 如需詳細資訊，請參閱 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)。
+>[AZURE.NOTE]目前，您只能設定 PlayReady 授權 (此權限是必要的) 的 PlayRight。 PlayRight 可讓用戶端播放內容。 PlayRight 也可讓設定限制專屬於播放。 如需詳細資訊，請參閱 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)。
 
 若要使用媒體服務設定 PlayReady 授權，您必須設定媒體服務 PlayReady 授權範本。 範本會在 XML 中定義。
 
 下列範例顯示設定基本串流授權的最簡單 (也是最常見) 範本。 使用此授權，您的用戶端就可以播放您的 PlayReady 受保護內容。
-
+    
     <?xml version="1.0" encoding="utf-8"?>
     <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
                                       xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
@@ -54,33 +53,34 @@ XML 符合 PlayReady 授權範本 XML 結構描述，該結構描述是在 PlayR
 
 如需使用.NET 類別來設定 PlayReady 授權範本的端對端範例，請參閱 [使用 PlayReady 動態加密和授權傳遞服務](https://msdn.microsoft.com/library/azure/dn783467.aspx)。
 
-## <a id="classes"></a>用來設定授權範本的媒體服務.NET 類別
+##<a id="classes"></a>用來設定授權範本的媒體服務.NET 類別
 
 以下是主要的 .NET 類別，可用於設定媒體服務 PlayReady 授權範本。 這些類別中定義的型別來對應 [PlayReady 授權範本 XML 結構描述](media-services-playready-license-template-overview.md#schema)。
 
-[MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) 類別用來序列化和還原序列化 Media Services 授權範本 XML。
+ [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) 類別用來序列化和還原序列化 Media Services 授權範本 XML。
 
-### PlayReadyLicenseResponseTemplate
+###PlayReadyLicenseResponseTemplate
 
 [PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) -此類別代表回應傳回給使用者的範本。 它包含授權伺服器與應用程式之間的自訂資料字串的欄位 (對於自訂應用程式邏輯很有用)，以及一或多個授權範本的清單。
 
 這是範本階層中的「最上層」類別。 表示回應範本包含授權範本的清單，而授權範本包含 (直接或間接) 所有其他類別，這些類別組成要序列化的範本資料。
 
 
-### PlayReadyLicenseTemplate
+###PlayReadyLicenseTemplate
 
 [PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) -類別代表用於建立 PlayReady 授權傳回給使用者的授權範本。 它包含授權中內容金鑰的資料，和使用內容金鑰時，由 PlayReady DRM 執行階段強制執行的任何權限和限制。
 
 
-### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
+###<a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
 
 [PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) -此類別代表 PlayReady 授權的 PlayRight。 它授與使用者能力可以播放內容，該內容受限於授權中設定及 PlayRight 本身 (適用於播放特定原則) 的零或多個限制。 大部分的 PlayRight 原則與輸出限制相關，控制內容可以播放的輸出類型，和使用指定輸出時必須套用的任何限制。 例如，如果 DigitalVideoOnlyContentRestriction 已啟用，則 DRM 執行階段只會允許透過數位輸出 (不允許類比視訊輸出傳遞內容) 顯示視訊。
->[AZURE.IMPORTANT]這些類型的限制非常強大，但也可能會影響客戶體驗。 如果輸出保護設定限制太多，內容可能無法在某些用戶端上播放。 如需詳細資訊，請參閱 [PlayReady 法規規則](https://www.microsoft.com/playready/licensing/compliance/) 文件。
+
+>[AZURE.IMPORTANT]這些類型的限制可能非常強大，但也可能影響客戶體驗。 如果輸出保護設定限制太多，內容可能無法在某些用戶端上播放。 如需詳細資訊，請參閱 [PlayReady 法規規則](https://www.microsoft.com/playready/licensing/compliance/) 文件。
 
 如需保護層級 Silverlight 支援的範例，請參閱: [Silverlight 支援輸出保護](http://go.microsoft.com/fwlink/?LinkId=617318)。
 
-## <a id="schema"></a>PlayReady 授權範本 XML 結構描述
-
+##<a id="schema"></a>PlayReady 授權範本 XML 結構描述
+    
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
@@ -302,15 +302,13 @@ XML 符合 PlayReady 授權範本 XML 結構描述，該結構描述是在 PlayR
       <xs:element name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction" />
     </xs:schema>
 
-## 媒體服務學習路徑
+
+
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 

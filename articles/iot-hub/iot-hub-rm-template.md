@@ -16,7 +16,6 @@
      ms.date="11/23/2015"
      ms.author="dobett"/>
 
-
 # 教學課程：使用 C# 程式建立 IoT 中樞
 
 [AZURE.INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
@@ -28,24 +27,24 @@
 若要完成本教學課程，您需要下列項目：
 
 - Microsoft Visual Studio 2015。
-- 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，您可以建立免費試用帳戶，只需要幾分鐘的時間。 如需詳細資訊，請參閱 [Azure 免費試用版 ][lnk-free-trial]。
-- [Microsoft Azure PowerShell 1.0 ][lnk-powershell-install] 或更新版本。
+- 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 [Azure 免費試用] [任務任務連結-免費試用]。
+- [Microsoft Azure PowerShell 1.0][任務任務連結-powershell 安裝的] 或更新版本。
 
 [AZURE.INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## 準備 Visual Studio 專案
 
-1. 在 Visual Studio 中，使用 [主控台應用程式]**** 專案範本，建立新的 Visual C# Windows 專案。 將專案命名為**CreateIoTHubREST**。
+1. 在 Visual Studio 中建立新的 Visual C# Windows 專案使用 **主控台應用程式** 專案範本。 將專案命名為 **CreateIoTHub**。
 
-2. 在方案總管中，於專案上按一下滑鼠右鍵，然後按一下 [管理 NuGet 封裝]****。
+2. 在 [方案總管] 中，您的專案上按一下滑鼠右鍵，然後按一下 [ **管理 NuGet 封裝**。
 
-3. 在 NuGet 套件管理員中，核取 [包含發行前版本]****，然後搜尋 **Microsoft.Azure.Management.Resources**。 選取 [2.18.11-preview]**** 版本。 按一下 [安裝]****，接著在 [檢閱變更]**** 中按一下 [確定]****，然後按一下 [我接受]****，以接受授權。
+3. 在 [NuGet 封裝管理員] 中，檢查 **包括發行前版本** ，並搜尋 **Microsoft.Azure.Management.Resources**。 選取版本 **2.18.11-preview**。 按一下 [ **安裝**, 中 **檢閱變更** 按一下 **確定**, ，然後按一下 [ **我接受** 以接受授權。
 
-4. 在 NuGet 套件管理員中，搜尋 **Microsoft.IdentityModel.Clients.ActiveDirectory**。 選取版本 [2.19.208020213]****。 按一下 [安裝]****，接著在 [檢閱變更]**** 中按一下 [確定]****，然後按一下 [我接受]****，以接受授權。
+4. 在 [NuGet 封裝管理員] 中，搜尋 **Microsoft.IdentityModel.Clients.ActiveDirectory**。 選取版本 **2.19.208020213**。 按一下 [ **安裝**, 中 **檢閱變更** 按一下 **確定**, ，然後按一下 [ **我接受** 接受授權。
 
-5. 在 NuGet 套件管理員中，搜尋 **Microsoft.Azure.Common**。 選取版本 [2.1.0]****。 按一下 [安裝]****，接著在 [檢閱變更]**** 中按一下 [確定]****，然後按一下 [我接受]****，以接受授權。
+5. 在 [NuGet 封裝管理員] 中，搜尋 **Microsoft.Azure.Common**。 選取版本 **2.1.0**。 按一下 [ **安裝**, 中 **檢閱變更** 按一下 **確定**, ，然後按一下 [ **我接受** 以接受授權。
 
-6. 在 Program.cs 中，以下列項目取代現有的 **using** 陳述式：
+6. 在 Program.cs 中，取代現有 **使用** 取代為下列陳述式:
 
     ```
     using System;
@@ -57,15 +56,15 @@
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
-
-7. 在 Program.cs 中，以下列靜態變數取代預留位置值。 您稍早本教學課程中記下了 **ApplicationId**、**SubscriptionId**、**TenantId** 及 **Password**。 **資源群組名稱**是您建立 IoT 中樞時所要使用的資源群組名稱。此名稱可以是既存的資源群組，也可以是新的資源群組。 **IoT 中樞名稱**是您要建立之 IoT 中樞的名稱，例如 **MyIoTHub**。 **部署名稱**是部署的名稱，例如 **Deployment_01**。
+    
+7. 在 Program.cs 中，以下列靜態變數取代預留位置值。 您記下的 **ApplicationId**, ，**SubscriptionId**, ，**TenantId**, ，和 **密碼** 早在本教學課程。 **資源群組名稱** 名稱建立 IoT 中心時，您將使用的資源群組，它可以是預先存在的資源群組或新的。 **IoT 中心名稱** IoT 中心，您將建立，例如名稱 **MyIoTHub**。 **部署名稱** 是部署的名稱，例如 **Deployment_01**。
 
     ```
     static string applicationId = "{Your ApplicationId}";
     static string subscriptionId = "{Your SubscriptionId";
     static string tenantId = "{Your TenantId}";
     static string password = "{Your application Password}";
-
+    
     static string rgName = "{Resource group name}";
     static string iotHubName = "{IoT Hub name}";
     static string deploymentName = "{Deployment name}";
@@ -77,11 +76,11 @@
 
 使用 JSON 範本，在資源群組中建立新的 IoT 中樞。 您也可以使用範本變更現有的 IoT 中樞。
 
-1. 在方案總管中，於您的專案上按一下滑鼠右鍵，然後依序按一下 [新增]**** 及 [新增項目]****。 新增名為 **template.json** 的 JSON 檔案，並將其加入您的專案中。
+1. 在 [方案總管] 中，您的專案上按一下滑鼠右鍵，然後按一下 **新增** 然後 **新項目**。 加入新的 JSON 檔案，稱為 **template.json** 至您的專案。
 
-2. 在方案總管中，選取 [template.json]****，然後在 [屬性]**** 中，將 [複製到輸出目錄]**** 設為 [一律複製]****。
+2. 在 [方案總管] 中，選取 [ **template.json**, ，然後在 **屬性** 設定 **複製到輸出目錄** 至 **永遠複製**。
 
-3. 以下列資源定義取代 **template.json**，為**美國東部**區域加入新的標準 IoT 中樞：
+3. 內容取代 **template.json** 使用下列資源定義加入至新的標準 IoT 中心 **美國東部** 區域:
 
     ```
     {
@@ -108,15 +107,15 @@
     ```
 
 4. 將下列方法新增至 Program.cs：
-
+    
     ```
     static bool CreateIoTHub(ResourceManagementClient client)
     {
-
+        
     }
     ```
 
-5. 在 **CreateIoTHub** 方法中加入下列程式碼，以載入範本檔案新增 IoT 中樞名稱，然後再將該範本提交給 Azure 資源管理員範本：
+5. 加入下列程式碼以 **CreateIoTHub** 方法來載入範本檔案，新增的 IoT 中心名稱，然後送出至 Azure 資源管理員範本:
 
     ```
     string template = File.ReadAllText("template.json");
@@ -134,7 +133,7 @@
       }).Result;
     ```
 
-6. 將下列程式碼加入會等候部署全部順利完成的 **CreateIoTHub** 中：
+6. 加入下列程式碼以 **CreateIoTHub** 會等到部署順利完成的方法:
 
     ```
     string state = createResponse.Deployment.Properties.ProvisioningState;
@@ -160,34 +159,33 @@
 
 ## 完成並執行應用程式
 
-您現在已可呼叫 **CreateIoTHub** 及 **ShowIoTHubKeys** 來完成應用程式，以開始建置和執行該應用程式。
+您現在可以完成應用程式藉由呼叫 **CreateIoTHub** 和 **ShowIoTHubKeys** 方法才能建置及執行它。
 
-1. 在 **Main** 方法的結尾加入下列程式碼：
+1. 下列程式碼新增至結尾 **Main** 方法:
 
     ```
     if (CreateIoTHub(client))
         ShowIoTHubKeys(client, token.AccessToken);
     Console.ReadLine();
     ```
+    
+2. 按一下 [ **建置** 然後 **建置方案**。 更正所有錯誤。
 
-2. 按一下 [**建置**]，然後再按一下 [**建置解決方案**]。 更正所有錯誤。
+3. 按一下 [ **偵錯** 然後 **開始偵錯** 執行應用程式。 可能需要數分鐘的時間，部署才會開始執行。
 
-3. 按一下 [偵錯]****，然後再按一下 [開始偵錯]****，以執行應用程式。 可能需要數分鐘的時間，部署才會開始執行。
+4. 您可以驗證您的應用程式會新增新的 IoT 中心，瀏覽 [網站] [任務任務連結 azure-入口網站]，並檢視清單中的資源，或使用 **Get AzureRmResource** PowerShell cmdlet。
 
-4. 您可以確認您的應用程式加入新的 IoT 中心，請造訪 [入口網站 ][lnk-azure-portal] 及檢視您的資源，或使用的清單 **Get AzureRmResource** PowerShell cmdlet。
-
-> [AZURE.NOTE] 此範例應用程式會加入您的付費標的「S1 標準 IoT 中樞」。 您可以刪除透過 IoT 中心 [入口網站 ][lnk-azure-portal] 或使用 **移除 AzureRmResource** PowerShell 指令程式完成時。
+> [AZURE.NOTE] 此範例應用程式加入的計費 S1 標準的 IoT 中心。 您可以刪除 IoT 中心透過 [網站] [任務任務連結 azure-入口網站] 或使用 **移除 AzureRmResource** PowerShell 指令程式完成時。
 
 ## 後續步驟
 
-- 瀏覽的功能 [IoT 中心資源提供者 REST API ][lnk-rest-api]。
-- 讀取 [Azure 資源管理員概觀 ][lnk-azure-rm-overview] 若要進一步了解 Azure 資源管理員的功能。
+- 瀏覽 [IoT 中心資源提供者 REST API] [任務任務連結-rest api 的] 的功能。
+- 閱讀 [Azure 資源管理員概觀] [任務任務連結-azure-rm-概觀] 若要進一步了解 Azure 資源管理員的功能。
 
-
-
-[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/ 
-[lnk-azure-portal]: https://portal.azure.com/ 
-[lnk-powershell-install]: https://azure.microsoft.com/en-us/blog/azps-1-0-pre/ 
-[lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx 
-[lnk-azure-rm-overview]: https://azure.microsoft.com/documentation/articles/resource-group-overview/ 
+<!-- Links -->
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
+[lnk-azure-portal]: https://portal.azure.com/
+[lnk-powershell-install]: https://azure.microsoft.com/en-us/blog/azps-1-0-pre/
+[lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
+[lnk-azure-rm-overview]: https://azure.microsoft.com/documentation/articles/resource-group-overview/
 

@@ -17,11 +17,11 @@
     ms.date="04/15/2015"
     ms.author="v-ahsab"/>
 
-
 # MariaDB (MySQL) 叢集 - Azure 教學課程
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
-> [AZURE.NOTE]  MariaDB Enterprise 叢集現在會出現在 Azure Marketplace 中。 此新方案會自動在 ARM 上部署 MariaDB Galera 叢集。 您應該使用新的服務從 https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/ 
+
+> [AZURE.NOTE]  MariaDB Enterprise 叢集現在會出現在 Azure Marketplace 中。  此新方案會自動在 ARM 上部署 MariaDB Galera 叢集。 您應該使用新的服務從 https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/ 
 
 我們要建立多個主要 [Galera](http://galeracluster.com/products/) 叢集 [Mariadb](https://mariadb.org/en/about/), ，強固、 可擴充且可靠的掉落取代 MySQL，在 Azure 虛擬機器的高可用性環境中運作。
 
@@ -36,6 +36,7 @@
 5. 為了減少重複性的工作，請建立一個包含 MariaDB+Galera 的 VM 映像，並使用它來建立另一個叢集 VM。
 
 ![架構](./media/virtual-machines-mariadb-cluster/Setup.png)
+
 > [AZURE.NOTE]  本主題會使用 [Azure CLI] 工具，因此請務必下載，並將它們連接至您的 Azure 訂閱，根據指示。 如果您需要 Azure CLI 中可用命令的參考，請造訪此連結以取得 [Azure CLI 命令參考]。 您也必須在 [建立 SSH 金鑰進行驗證]，接著記 **.pem 檔案位置**。
 
 
@@ -58,10 +59,9 @@
 3. 尋找 CentOS 7 虛擬機器映像的名稱
 
         azure vm image list | findstr CentOS
+這會輸出類似 `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926` 的結果。 請在下列步驟中使用該名稱。
 
-這會輸出類似 `5112500ae3b842c8b9c604889f8753c3__OpenLogic CentOS 70-20140926`。 請在下列步驟中使用該名稱。
-
-4. 建立 VM 範本，並使用您儲存產生的 .pem SSH 金鑰的路徑取代 **/path/to/key.pem**
+4. 建立 VM 範本取代 **/path/to/key.pem** 產生的.pem SSH 金鑰的儲存位置的路徑
 
         azure vm create --virtual-network-name mariadbvnet --subnet-names mariadb --blob-url "http://mariadbstorage.blob.core.windows.net/vhds/mariadbhatemplate-os.vhd"  --vm-size Medium --ssh 22 --ssh-cert "/path/to/key.pem" --no-ssh-password mariadbtemplate 5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926 azureuser
 
@@ -69,7 +69,7 @@
 
         FOR /L %d IN (1,1,4) DO azure vm disk attach-new mariadbhatemplate 512 http://mariadbstorage.blob.core.windows.net/vhds/mariadbhatemplate-data-%d.vhd
 
-6. SSH 連線到您在 **mariadbhatemplate.cloudapp.net:22** 建立的範本 VM，然後使用您的私密金鑰連線。
+6. Ssh 連線到您在建立範本 VM **mariadbhatemplate.cloudapp.net: 22** 和使用您的私密金鑰進行連接。
 
 ### 軟體
 
@@ -101,14 +101,13 @@
 
                 vi /etc/fstab
 
-     - 在其中加入裝置以便重新啟動時自動掛接，將 UUID 取代為先前從 **blkid** 命令取得的值
+     - 在自動重新開機時，將 UUID 取代求值的其中加入裝置 **blkid** 命令之前，先
 
                 UUID=<UUID FROM PREVIOUS>   /mnt/data ext4   defaults,noatime   1 2
 
      - 掛接新的磁碟分割
 
                 mount /mnt/data
-
 
 3. 安裝 MariaDB：
 
@@ -132,7 +131,6 @@
 
             yum install MariaDB-Galera-server MariaDB-client galera
 
-
 4. 將 MySQL 資料目錄移至 RAID 區塊裝置
 
      - 將目前的 MySQL 目錄複製到新位置，並移除舊的目錄
@@ -148,12 +146,11 @@
 
             ln -s /mnt/data/mysql /var/lib/mysql
 
+5. 因為 [SELinux 會干擾叢集操作](http://galeracluster.com/documentation-webpages/configuration.html#selinux), ，就必須停用它 (直到相容的版本出現)，目前工作階段。 編輯 `/etc/selinux/config`，以便後續重新啟動時停用它：
 
-5. 因為 [SELinux 會干擾叢集操作](http://galeracluster.com/documentation-webpages/configuration.html#selinux), ，就必須停用它 (直到相容的版本出現)，目前工作階段。 編輯 `/etc/selinux/config` 後續重新啟動時停用它:
+            setenforce 0
 
-         setenforce 0
-    
-    then editing `/etc/selinux/config` to set `SELINUX=permissive`
+       then editing `/etc/selinux/config` to set `SELINUX=permissive`
 
 6. 驗證 MySQL 執行
 
@@ -175,38 +172,36 @@
 
             service mysql stop
 
-
 7. 建立設定預留位置
 
- - 編輯 MySQL 設定，建立叢集設定的預留位置。並取代 * *`< Vairables >`* * 或取消註解現在。我們從此範本建立 VM 之後才會需要這個動作。
+    - 編輯 MySQL 設定，建立叢集設定的預留位置。 不會取代 **`<Vairables>`** 或取消註解現在。 我們從此範本建立 VM 之後才會需要這個動作。
 
-         vi /etc/my.cnf.d/server.cnf
+            vi /etc/my.cnf.d/server.cnf
 
- - 編輯 **[galera]** 區段，並清除其中的內容
+    - 編輯 **[galera]** 區段，並清除其中的內容
 
- - 編輯 **[mariadb]** 區段
+    - 編輯 **[mariadb]** 區段
 
-       wsrep_provider=/usr/lib64/galera/libgalera_smm.so
-       binlog_format=ROW
-       wsrep_sst_method=rsync
-       bind-address=0.0.0.0 # When set to 0.0.0.0, the server listens to remote connections
-       default_storage_engine=InnoDB
-       innodb_autoinc_lock_mode=2
-    
-       wsrep_sst_auth=cluster:p@ssw0rd # CHANGE: Username and password you created for the SST cluster MySQL user
-       #wsrep_cluster_name='mariadbcluster' # CHANGE: Uncomment and set your desired cluster name
-       #wsrep_cluster_address="gcomm://mariadb1,mariadb2,mariadb3" # CHANGE: Uncomment and Add all your servers
-       #wsrep_node_address='<ServerIP>' # CHANGE: Uncomment and set IP address of this server
-       #wsrep_node_name='<NodeName>' # CHANGE: Uncomment and set the node name of this server
+            wsrep_provider=/usr/lib64/galera/libgalera_smm.so
+            binlog_format=ROW
+            wsrep_sst_method=rsync
+            bind-address=0.0.0.0 # When set to 0.0.0.0, the server listens to remote connections
+            default_storage_engine=InnoDB
+            innodb_autoinc_lock_mode=2
 
+            wsrep_sst_auth=cluster:p@ssw0rd # CHANGE: Username and password you created for the SST cluster MySQL user
+            #wsrep_cluster_name='mariadbcluster' # CHANGE: Uncomment and set your desired cluster name
+            #wsrep_cluster_address="gcomm://mariadb1,mariadb2,mariadb3" # CHANGE: Uncomment and Add all your servers
+            #wsrep_node_address='<ServerIP>' # CHANGE: Uncomment and set IP address of this server
+            #wsrep_node_name='<NodeName>' # CHANGE: Uncomment and set the node name of this server
 
 8. 在防火牆上開啟必要的連接埠 (使用 CentOS 7 上的 FirewallD)
 
-    - MySQL: `防火牆 cmd-區域 = 公用--新增連接埠 = 3306/tcp-永久`
-    - GALERA: `防火牆 cmd-區域 = 公用--新增連接埠 = 4567/tcp-永久`
-    - GALERA IST: `防火牆 cmd-區域 = 公用--新增連接埠 = 4568/tcp-永久`
-    - RSYNC: `防火牆 cmd-區域 = 公用--新增連接埠 = 4444/tcp-永久`
-    - 重新載入防火牆: `防火牆 cmd-重新載入`
+    - MySQL: `firewall-cmd --zone=public --add-port=3306/tcp --permanent`
+    - GALERA: `firewall-cmd --zone=public --add-port=4567/tcp --permanent`
+    - GALERA IST: `firewall-cmd --zone=public --add-port=4568/tcp --permanent`
+    - RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
+    - 重新載入防火牆：`firewall-cmd --reload`
 
 9.  將系統效能最佳化。 如需詳細資訊，請參閱這份文件的 [效能微調策略]
 
@@ -214,7 +209,7 @@
 
             vi /etc/my.cnf.d/server.cnf
 
-    - 編輯 **[mariadb]** 區段，並且附加下列內容
+    - 編輯 **[mariadb]** 區段，並且附加下列
 
     > [AZURE.NOTE] 我們建議 **innodb\_buffer\_pool_size** 是您的 VM 記憶體的 70%。 這裡為 3.5 GB RAM 的中型 Azure VM 設定為 2.45 GB。
 
@@ -244,7 +239,8 @@
 從您剛才建立的範本建立 3 個 VM，然後設定並啟動叢集。
 
 1. 建立第一個 CentOS 7 VM，從 **mariadb galera 映像** 映像中的建立，提供虛擬網路名稱 **mariadbvnet** 和子網路 **mariadb**, ，機器大小 **媒體**, ，並傳入要的雲端服務名稱 **mariadbha** (或您想要透過 mariadbha.cloudapp.net 存取任何名稱)，設定為這部電腦的名稱 **mariadb1**  和為使用者名稱 **azureuser**,  ，及啟用的 SSH 存取和傳遞 SSH 憑證.pem 檔案，並取代 **/path/to/key.pem** 的路徑，您儲存產生的.pem SSH 金鑰。
-    > [AZURE.NOTE] 下列命令為清楚起見會分成多行，但是您應該以一行輸入每個命令。
+
+    > [AZURE.NOTE] 下列命令會分成多行程式碼，為了清楚起見，但您應該輸入每個以一行。
 
         azure vm create
         --virtual-network-name mariadbvnet
@@ -257,7 +253,7 @@
         --vm-name mariadb1
         mariadbha mariadb-galera-image azureuser
 
-2. _連線_到目前建立的 **mariadbha** 雲端服務，再建立 2 個虛擬機器，變更 **VM 名稱**及 **SSH 連接埠**，變成與相同雲端服務中其他 VM 不衝突的唯一連接埠。
+2. 建立 2 個虛擬機器 _連接_ 到目前建立 **mariadbha** 雲端服務，變更 **VM 名稱** 以及 **SSH 連接埠** 與相同雲端服務中的其他 Vm 不衝突的唯一連接埠。
 
         azure vm create
         --virtual-network-name mariadbvnet
@@ -269,7 +265,6 @@
         --ssh 23
         --vm-name mariadb2
         --connect mariadbha mariadb-galera-image azureuser
-
 至於 MariaDB3
 
         azure vm create
@@ -291,8 +286,8 @@
 
         sudo vi /etc/my.cnf.d/server.cnf
 
-    取消註解 * *`wsrep_cluster_name`** 和 **`wsrep_cluster_address`* * 藉由移除 **#** 開頭，並且驗證它們是您想要。
-    此外，取代 * *`< ServerIP >`** 中 **`wsrep_node_address`** 和 **`< NodeName >`** 中 **`並一併取消這`* * 使用 VM 的 IP 位址並分別將這幾行取消註解。
+    取消註解 **`wsrep_cluster_name`** 和 **`wsrep_cluster_address`** 藉由移除 **#** 開頭，並且驗證它們是您想要。
+    此外，取代 **`<ServerIP>`** 中 **`wsrep_node_address`** 和 **`<NodeName>`** 中 **`wsrep_node_name`** 使用 VM 的 IP 位址並分別將這幾行取消註解。
 
 5. 啟動 MariaDB1 上的叢集，並讓它在啟動時執行
 
@@ -304,21 +299,19 @@
         sudo service mysql start
         chkconfig mysql on
 
-
 ## 負載平衡叢集
-
-當您建立叢集的 VM 時，您將它們加入稱為 **clusteravset** 的可用性設定組，確保它們都放在不同容錯網域和更新網域，以及 Azure 永遠不會同時在所有電腦上進行維護。 此設定符合由該 Azure 服務等級協定 (SLA) 所支援的需求。
+當您建立叢集的 Vm 時，您將它們加入可用性設定呼叫 **clusteravset** 以確保它們都放在不同容錯網域和更新網域以及 Azure 永遠不會維護所有機器上的一次。 此設定符合由該 Azure 服務等級協定 (SLA) 所支援的需求。
 
 現在您可以使用 Azure 負載平衡器來平衡我們 3 個節點之間的要求。
 
 在使用 Azure CLI 的電腦上執行下列命令。
-命令參數結構: `azure vm 端點建立多個 < MachineName >< PublicPort >: < VMPort >: < 通訊協定 >: < EnableDirectServerReturn >: < 負載平衡的集名稱 >: < ProbeProtocol >: < ProbePort >`
+命令參數結構如下：`azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
 
     azure vm endpoint create-multiple mariadb1 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb3 3306:3306:tcp:false:MySQL:tcp:3306
 
-最後，由於 CLI 設定負載平衡器探查間隔為 15 秒 (這可能有點太長)，請在入口網站的 [**端點**] 下變更任一個 VM 的此值
+最後，由於 CLI 設定負載平衡器探查間隔為 15 秒 (這可能有點太長)，在變更入口網站的 [ **端點** 任一個 Vm 的
 
 ![編輯端點](./media/virtual-machines-mariadb-cluster/Endpoint.PNG)
 
@@ -332,7 +325,7 @@
 
 ## 驗證叢集
 
-困難的工作已經完成。 叢集現在應該可以存取在 `mariadbha.cloudapp.net:3306` 這將會叫用負載平衡器，並且順暢而有效率地路由 3 個 Vm 之間的要求。
+困難的工作已經完成。 現在應該可以在 `mariadbha.cloudapp.net:3306` 存取叢集，這將會叫用負載平衡器，並且順暢而有效率地路由 3 個 VM 之間的要求。
 
 使用您最愛的 MySQL 用戶端連線，或只從一個 VM 連線，確認此叢集正常運作。
 
@@ -357,30 +350,31 @@
     +----+--------+
     2 rows in set (0.00 sec)
 
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
 在本文中，您在執行 CentOS 7 的 Azure 虛擬機器上建立了 3 個節點的 MariaDB + Galera 高可用性叢集。 VM 透過 Azure 負載平衡器進行負載平衡處理。
 
 若要查看 [Linux 上叢集 MySQL 的另一種方式] 和 [最佳化和測試 Azure Linux Vm 上的 MySQL 效能]。
 
+<!--Anchors-->
+[Architecture overview]: #architecture-overview
+[Creating the template]: #creating-the-template
+[Creating the cluster]: #creating-the-cluster
+[Load balancing the cluster]: #load-balancing-the-cluster
+[Validating the cluster]: #validating-the-cluster
+[Next steps]: #next-steps
 
+<!--Image references-->
 
-
-
-
-[architecture overview]: #architecture-overview 
-[creating the template]: #creating-the-template 
-[creating the cluster]: #creating-the-cluster 
-[load balancing the cluster]: #load-balancing-the-cluster 
-[validating the cluster]: #validating-the-cluster 
-[next steps]: #next-steps 
-[galera]: http://galeracluster.com/products/ 
-[mariadbs]: https://mariadb.org/en/about/ 
-[azure cli]: http://azure.microsoft.com/documentation/articles/xplat-cli/ 
-[azure cli command reference]: http://azure.microsoft.com/documentation/articles/virtual-machines-command-line-tools/ 
-[create an ssh key for authentication]: http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/ 
-[performance tuning strategy]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/ 
-[optimize and test mysql performance on azure linux vms]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/ 
-[issue #1268 in the azure cli]: https://github.com/Azure/azure-xplat-cli/issues/1268 
-[another way to cluster mysql on linux]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/ 
+<!--Link references-->
+[Galera]: http://galeracluster.com/products/
+[MariaDBs]: https://mariadb.org/en/about/
+[Azure CLI]: http://azure.microsoft.com/documentation/articles/xplat-cli/
+[Azure CLI command reference]: http://azure.microsoft.com/documentation/articles/virtual-machines-command-line-tools/
+[create an SSH key for authentication]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
+[performance tuning strategy]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
+[optimize and test MySQL performance on Azure Linux VMs]:http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
+[issue #1268 in the Azure CLI]:https://github.com/Azure/azure-xplat-cli/issues/1268
+[another way to cluster MySQL on Linux]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
 

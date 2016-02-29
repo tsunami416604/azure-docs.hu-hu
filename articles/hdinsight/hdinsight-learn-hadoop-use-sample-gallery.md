@@ -1,6 +1,6 @@
 <properties
    pageTitle="使用範例資源庫了解 HDInsight 中的 Hadoop | Microsoft Azure"
-   description="從 HDInsight Getting Started Gallery 執行範例應用程式，快速了解 Hadoop。使用範例資料或提供自己的資料。"
+   description="從 HDInsight Getting Started Gallery 執行範例應用程式，快速了解 Hadoop。 使用範例資料或提供自己的資料。"
    services="hdinsight"
    documentationCenter=""
    tags="azure-portal"
@@ -16,7 +16,6 @@
    ms.topic="get-started-article"
    ms.date="10/29/2015"
    ms.author="jgao"/>
-
 
 # 使用 Azure HDInsight Getting Started Gallery 了解 Hadoop
 
@@ -35,7 +34,7 @@ HDInsight Getting Started Gallery 在 HDInsight 中執行範例應用程式，�
 
 * [使用 HDInsight Getting Started Gallery 了解 Hadoop](hdinsight-learn-hadoop-use-sample-gallery-v1.md)
 
-![HDInsight Hadoop、Storm 和 HBase Getting Started Gallery 方案都含有範例資料。][hdinsight.sample.gallery]
+![在 HDInsight Hadoop、 Storm 和 HBase Getting Started Gallery 方案都含有範例資料。][] hdinsight.sample.gallery
 
 下列視訊顯示如何執行 Twitter 趨勢分析範例：
 
@@ -46,27 +45,26 @@ HDInsight Getting Started Gallery 在 HDInsight 中執行範例應用程式，�
 **從 Getting Started Gallery 執行範例**
 
 1. 登入 [Azure Portal][azure.portal]。
-2. 在左側功能表中按一下 [瀏覽]****，然後依序按一下 [HDInsight 叢集]**** 和您的叢集名稱。
-3. 從頂端功能表按一下 [儀表板]****。
+2. 按一下 [ **瀏覽** 從左窗格中，按一下 [ **HDInsight 叢集**, ，然後按一下您的叢集名稱。
+3. 按一下 [ **儀表板** 從上方的功能表。
 4. 輸入 HTTP 使用者 (又稱為叢集使用者) 的使用者名稱和密碼。
-6. 按一下頁面頂端的 [Getting Started Gallery]****。
+6. 按一下 [ **Getting Started Gallery** 頁面的頂端。
 7. 按一下其中一個範例。 每個範例都提供詳細的執行步驟。 下列影像顯示 Twitter 趨勢分析範例：
 
-    ![HDInsight Twitter 趨勢分析範例][hdinsight.twitter.sample]
+    ![HDInsight Twitter 趨勢分析範例][] hdinsight.twitter.sample
 
 ## 後續步驟
-
 其他了解 HDInsight 的方式包括：
 
-- [HDInsight 學習 map][hdinsight.learn.map]
-- [HDInsight] infographic[hdinsight.infographic][hdinsight.infographic]
+- [HDInsight 學習地圖][] hdinsight.learn.map
+- [HDInsight 資訊圖][] hdinsight.infographic
 
+<!--Image references-->
+[hdinsight.sample.gallery]: ./media/hdinsight-learn-hadoop-use-sample-gallery/HDInsight-Getting-Started-Gallery.png
+[hdinsight.twitter.sample]: ./media/hdinsight-learn-hadoop-use-sample-gallery/HDInsight-Twitter-Trend-Analysis-sample.png
 
-
-
-[hdinsight.sample.gallery]: ./media/hdinsight-learn-hadoop-use-sample-gallery/HDInsight-Getting-Started-Gallery.png 
-[hdinsight.twitter.sample]: ./media/hdinsight-learn-hadoop-use-sample-gallery/HDInsight-Twitter-Trend-Analysis-sample.png 
-[hdinsight.learn.map]: hdinsight-learn-map.md 
-[hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960 
-[azure.portal]: https://portal.azure.com 
+<!--Link references-->
+[hdinsight.learn.map]: hdinsight-learn-map.md
+[hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
+[azure.portal]:https://portal.azure.com
 

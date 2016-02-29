@@ -18,8 +18,7 @@
 
 
 
-
-# 使用 Azure 自動化管理 Azure 虛擬機器
+#使用 Azure 自動化管理 Azure 虛擬機器
 
 本指南將為您介紹 Azure 自動化服務，以及如何使用它來簡化您的 Azure 虛擬機器管理。
 
@@ -43,8 +42,4 @@ Azure 自動化提供非常可靠且高度可用的工作流程執行引擎，�
 了解 Azure 自動化的基本概念以及如何用它來管理 Azure 虛擬機器之後，深入了解：
 
 [開始使用 Azure 自動化](../automation-create-runbook-from-samples.md)
-
-
-
-
 

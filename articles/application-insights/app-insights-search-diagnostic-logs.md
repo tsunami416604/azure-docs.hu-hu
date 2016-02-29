@@ -14,17 +14,16 @@
     ms.topic="article" 
     ms.date="11/25/2015" 
     ms.author="awills"/>
-
-
+ 
 # Application Insights 中 ASP.NET 的記錄檔、例外狀況和自訂診斷
 
-[Application Insights 的 ][start] 包含一個功能強大 [診斷搜尋 ][diagnostic] 工具，可讓您探索和向內切入從您的應用程式的 Application Insights SDK 傳送的遙測。 SDK 會自動傳送許多事件，例如使用者頁面檢視。
+[Application Insights][start] 包含一個功能強大 [診斷搜尋][diagnostic] 工具，可讓您探索和向內切入從您的應用程式的 Application Insights SDK 傳送的遙測。 SDK 會自動傳送許多事件，例如使用者頁面檢視。
 
 您也可以撰寫程式碼來傳送自訂事件、例外狀況報告和追蹤。 如果您已經使用記錄架構 (例如 log4J、log4net、NLog 或 System.Diagnostics.Trace)，可以擷取這些記錄檔，並將它們包含在搜尋中。 這樣會較容易將使用者動作、例外狀況和其他事件與記錄追蹤相互關聯。
 
 ## <a name="send"></a>在您撰寫自訂遙測之前
 
-如果您尚未 [專案 ][start], ，請立即進行安裝。
+如果您尚未 [為您的專案設定 Application Insights][start], ，請立即進行安裝。
 
 執行應用程式時，會傳送一些遙測資料，而這些資料會出現在診斷搜尋中，其中包括由伺服器接收的要求、記錄在用戶端的頁面檢視，以及無法攔截的例外狀況。
 
@@ -36,14 +35,14 @@
 
 詳細資料會因應用程式類型而異。 您可以逐一點選所有個別事件，以取得更多詳細資料。
 
-## 取樣
+## 取樣 
 
 如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [進一步了解取樣。](app-insights-sampling.md)
 
 
-## <a name="events"></a>自訂事件
+##<a name="events"></a>自訂事件
 
-自訂事件會顯示在 [診斷搜尋 ][diagnostic] 和 [計量瀏覽器 ][metrics]。 您可以從裝置、網頁和伺服器應用程式傳送這些事件。 它們可同時用於診斷用途及 [了解使用模式 ][track]。
+自訂事件會顯示在 [診斷搜尋][diagnostic] 和 [計量瀏覽器][metrics]。 您可以從裝置、網頁和伺服器應用程式傳送這些事件。 它們可同時用於診斷用途及 [了解使用模式][track]。
 
 每個自訂事件都有自己的名稱，並帶有可透過數值測量單位篩選的屬性。
 
@@ -63,9 +62,10 @@
        {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
     var measurements = new Dictionary <string, double>
        {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
-    
+
     // Send the event:
     telemetry.TrackEvent("WinGame", properties, measurements);
+
 
 伺服器上的 VB
 
@@ -73,11 +73,11 @@
     Dim properties = New Dictionary (Of String, String)
     properties.Add("game", currentGame.Name)
     properties.Add("difficulty", currentGame.Difficulty)
-    
+
     Dim measurements = New Dictionary (Of String, Double)
     measurements.Add("Score", currentGame.Score)
     measurements.Add("Opponents", currentGame.OpponentCount)
-    
+
     ' Send the event:
     telemetry.TrackEvent("WinGame", properties, measurements)
 
@@ -90,7 +90,7 @@
 ![](./media/app-insights-search-diagnostic-logs/appinsights-332filterCustom.png)
 
 
-在屬性值中輸入搜尋詞彙，以多次篩選該資料。
+在屬性值中輸入搜尋詞彙，以多次篩選該資料。  
 
 ![](./media/app-insights-search-diagnostic-logs/appinsights-23-customevents-5.png)
 
@@ -98,9 +98,9 @@
 
 ![](./media/app-insights-search-diagnostic-logs/appinsights-23-customevents-4.png)
 
-## <a name="pages"></a> 頁面檢視
+##<a name="pages"></a> 頁面檢視
 
-Trackpageview () 呼叫所傳送頁面檢視遙測 [JavaScript 程式碼片段插入網頁 ][usage]。 此資料主要用途是提供您在概觀頁面看到的頁面檢視計數。
+Trackpageview () 呼叫所傳送頁面檢視遙測 [JavaScript 程式碼片段插入 web 網頁中][usage]。 此資料主要用途是提供您在概觀頁面看到的頁面檢視計數。
 
 通常它在每個 HTML 頁面中只會被呼叫一次，但是您可以插入多個呼叫 (例如，您有單頁應用程式，且想在使用者取得更多資料時記錄新頁面)。
 
@@ -111,22 +111,24 @@ Trackpageview () 呼叫所傳送頁面檢視遙測 [JavaScript 程式碼片段�
     appInsights.trackPageView(pageSegmentName, "http://fabrikam.com/page.htm",
      {Game: currentGame.name, Difficulty: currentGame.difficulty});
 
-## <a name="trace"></a> 追蹤遙測
 
-追蹤遙測是專門用以建立診斷記錄檔而插入的程式碼。
+##<a name="trace"></a> 追蹤遙測
+
+追蹤遙測是專門用以建立診斷記錄檔而插入的程式碼。 
 
 例如，您可以插入這類呼叫：
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
-#### 為記錄架構安裝配接器
 
-您也可以搜尋由記錄架構 (log4Net、NLog 或 System.Diagnostics.Trace) 產生的記錄檔。
+####  為記錄架構安裝配接器
 
-1. 如果您打算使用 log4Net 或 NLog，請將它安裝在您的專案。
-2. 在 [方案總管] 中，以滑鼠右鍵按一下您的專案並選擇 [**管理 NuGet 封裝**]。
-3. 選取 [線上] > [全部]，選取 [Include Prerelease]****，然後搜尋 "Microsoft.ApplicationInsights"
+您也可以搜尋由記錄架構 (log4Net、NLog 或 System.Diagnostics.Trace) 產生的記錄檔。 
+
+1. 如果您打算使用 log4Net 或 NLog，請將它安裝在您的專案。 
+2. 在 [方案總管] 中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 封裝**。
+3. 選取 [線上 > 全部]，選取 **包含發行前版本** ，並搜尋"Microsoft.ApplicationInsights"
 
     ![Get the prerelease version of the appropriate adapter](./media/app-insights-search-diagnostic-logs/appinsights-36nuget.png)
 
@@ -155,7 +157,7 @@ NuGet 封裝會安裝必要的組件，並修改 web.config 或 app.config。
 
 Application Insights 中的「取得例外狀況報告」功能非常強大，尤其是您可以切換瀏覽失敗要求和例外狀況，以及讀取例外狀況堆疊。
 
-在某些情況下，您需要 [插入幾行程式碼 ][exceptions] 藉此確定您的例外狀況會自動被截取。
+在某些情況下，您需要 [插入幾行程式碼][exceptions] 藉此確定您的例外狀況會自動被截取。
 
 您也可以撰寫明確的程式碼，以傳送例外狀況遙測資料：
 
@@ -183,10 +185,10 @@ C#
        // Set up some properties:
        var properties = new Dictionary <string, string> 
          {{"Game", currentGame.Name}};
-    
+
        var measurements = new Dictionary <string, double>
          {{"Users", currentGame.Users.Count}};
-    
+
        // Send the exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
@@ -201,10 +203,10 @@ VB
       ' Set up some properties:
       Dim properties = New Dictionary (Of String, String)
       properties.Add("Game", currentGame.Name)
-    
+
       Dim measurements = New Dictionary (Of String, Double)
       measurements.Add("Users", currentGame.Users.Count)
-    
+  
       ' Send the exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
@@ -226,17 +228,17 @@ VB
 
 ### 報告未處理的例外狀況
 
-Application Insights 報告未處理例外狀況，它可以從裝置， [網頁瀏覽器 ][usage], ，或 web 伺服器是否已檢測這些 [狀態監視器 ][redfield] 或 [Application Insights SDK ][greenbrown]。
+Application Insights 報告未處理例外狀況，它可以從裝置， [網頁瀏覽器][usage], ，或 web 伺服器是否已檢測這些 [狀態監視器][redfield] 或 [Application Insights SDK][greenbrown]。 
 
-但是，Application Insights 在某些情況下無法執行此動作，因為 .NET Framework 會攔截這些例外狀況。 若要確定能看到所有例外狀況，您就必須撰寫一個小型的例外狀況處理常式。 最佳程序會因技術而異。 請參閱 [ASP.NET][exceptions] 如需詳細資訊。
+但是，Application Insights 在某些情況下無法執行此動作，因為 .NET Framework 會攔截這些例外狀況。  若要確定能看到所有例外狀況，您就必須撰寫一個小型的例外狀況處理常式。 最佳程序會因技術而異。 請參閱 [ASP.NET 的例外狀況遙測][exceptions] 如需詳細資訊。 
 
 ### 與組建相互關聯
 
 讀取診斷記錄檔時，因為即時程式碼已部署，所以原始程式碼可能會變更。
 
-因此，將組建資訊 (例如目前版本的 URL) 連同每個例外狀況或追蹤置入屬性中，便是十分有用的做法。
+因此，將組建資訊 (例如目前版本的 URL) 連同每個例外狀況或追蹤置入屬性中，便是十分有用的做法。 
 
-您可以在預設內容中設定資訊，而不必將屬性個別加入至每個例外狀況呼叫。
+您可以在預設內容中設定資訊，而不必將屬性個別加入至每個例外狀況呼叫。 
 
     // Telemetry initializer class
     public class MyTelemetryInitializer : IContextInitializer
@@ -256,21 +258,21 @@ Application Insights 報告未處理例外狀況，它可以從裝置， [網頁
         .Add(new MyTelemetryInitializer());
     }
 
-### <a name="requests"></a> 伺服器 Web 要求
+###<a name="requests"></a> 伺服器 Web 要求
 
-會自動傳送要求遙測時您 [[redfield] 在 web 伺服器上安裝狀態監視器][redfield], ，或當您 [將 Application Insights 加入至 web 專案 ][greenbrown]。 要求遙測也會在 [計量瀏覽器] 和 [概觀] 頁面中，將摘要填入要求和回應時間圖表。
+會自動傳送要求遙測時您 [web 伺服器上安裝狀態監視器][redfield], ，或當您 [將 Application Insights 加入至 web 專案][greenbrown]。 要求遙測也會在 [計量瀏覽器] 和 [概觀] 頁面中，將摘要填入要求和回應時間圖表。
 
 如果您想要傳送其他事件，可以使用 TrackRequest() API。
 
-## <a name="questions"></a>問與答
+## <a name="questions"></a>問答集
 
-### <a name="emptykey"></a>我收到 「 檢測金鑰不能是空白 」 錯誤
+### <a name="emptykey"></a>我收到「檢測機碼不能是空白」的錯誤
 
 您可能只安裝記錄配接器 Nuget 封裝，但未安裝 Application Insights。
 
 在 [方案總管] 中，以滑鼠右鍵按一下 `ApplicationInsights.config` 選擇 **Update Application Insights**。 將會出現對話方塊邀請您登入 Azure，並建立 Application Insights 資源或重複使用現有的資源。 這樣應該可以解決。
 
-### <a name="limits"></a>保留多少資料?
+### <a name="limits"></a>保留多少資料？
 
 每個應用程式每秒最多 500 個事件。 事件會保留七天。
 
@@ -281,24 +283,24 @@ Application Insights 報告未處理例外狀況，它可以從裝置， [網頁
 
 ## <a name="add"></a>後續步驟
 
-* [設定可用性和回應性測試 ][availability]
-* [疑難排解 ][qna]
+* [設定可用性和回應性測試][availability]
+* [疑難排解][qna]
 
 
 
 
 
+<!--Link references-->
 
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-web-failures-exceptions.md
+[greenbrown]: app-insights-asp-net.md
+[metrics]: app-insights-metrics-explorer.md
+[qna]: app-insights-troubleshoot-faq.md
+[redfield]: app-insights-monitor-performance-live-website-now.md
+[start]: app-insights-overview.md
+[track]: app-insights-api-custom-events-metrics.md
+[usage]: app-insights-web-track-usage.md
 
-
-[availability]: app-insights-monitor-web-app-availability.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[exceptions]: app-insights-web-failures-exceptions.md 
-[greenbrown]: app-insights-asp-net.md 
-[metrics]: app-insights-metrics-explorer.md 
-[qna]: app-insights-troubleshoot-faq.md 
-[redfield]: app-insights-monitor-performance-live-website-now.md 
-[start]: app-insights-overview.md 
-[track]: app-insights-api-custom-events-metrics.md 
-[usage]: app-insights-web-track-usage.md 
-
+ 

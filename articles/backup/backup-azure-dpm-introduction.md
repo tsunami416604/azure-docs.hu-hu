@@ -16,13 +16,11 @@
     ms.date="12/10/2015"
     ms.author="giridham;jimpark"/>
 
-
 # 準備使用 DPM 將工作負載備份到 Azure
 
 > [AZURE.SELECTOR]
-- [Azure Backup](backup-azure-microsoft-azure-backup.md)
+- [Azure 備份](backup-azure-microsoft-azure-backup.md)
 - [SCDPM](backup-azure-dpm-introduction.md)
-
 
 本文簡介如何使用 Microsoft Azure 備份來保護 System Center Data Protection Manager (DPM) 伺服器和工作負載。 閱讀本文您將可了解：
 
@@ -33,8 +31,8 @@
 
 System Center DPM 會備份檔案和應用程式資料。 備份到 DPM 的資料可以儲存在磁帶、磁碟上，或使用 Microsoft Azure 備份來備份到 Azure。 DPM 與 Azure 備份的互動方式如下：
 
-- **DPM 部署為實體伺服器或內部部署虛擬機器** — 如果 DPM 部署為實體伺服器或內部部署 HYPER-V 虛擬機器，除了備份到磁碟和磁帶上，您還可以將資料備份到 Azure 備份保存庫。
-- **DPM 部署為 Azure 虛擬機器** — 從 System Center 2012 R2 Update 3 開始，DPM 可以部署為 Azure 虛擬機器。 如果 DPM 部署為 Azure 虛擬機器，您可以將資料備份到連接至 DPM Azure 虛擬機器的 Azure 磁碟，或者您也可以將資料備份到 Azure 備份保存庫以卸載資料儲存體。
+- **DPM 部署為實體伺服器或內部部署虛擬機器** — 如果 DPM 部署為實體伺服器或內部部署 HYPER-V 虛擬機器，您可以將資料備份至 Azure 備份保存庫，除了磁碟與磁帶備份。
+- **DPM 部署為 Azure 虛擬機器** — 從 System Center 2012 R2 Update 3，DPM 可以部署為 Azure 虛擬機器。 如果 DPM 部署為 Azure 虛擬機器，您可以將資料備份到連接至 DPM Azure 虛擬機器的 Azure 磁碟，或者您也可以將資料備份到 Azure 備份保存庫以卸載資料儲存體。
 
 ## 為何要備份 DPM 伺服器？
 
@@ -44,19 +42,18 @@ System Center DPM 會備份檔案和應用程式資料。 備份到 DPM 的資�
 - 在 Azure 的 DPM 部署中，Azure 備份可讓您卸載 Azure 磁碟中的儲存體，進而透過將較舊的資料儲存在 Azure 備份上而將較新的資料儲存在磁碟上來進行擴充。
 
 ## DPM 伺服器備份的運作方式
-
 若要備份虛擬機器，首先需要資料的時間點快照集。 Azure 備份服務在排定的時間初始備份作業，並觸發備份延伸模組以建立快照集。 備份延伸模組與客體的 VSS 服務進行協調以達到一致性，達到一致性後將叫用 Azure 儲存體服務的 blob 快照集 API。 這可以讓虛擬機器不需關機即可獲取一致性的磁碟快照集。
 
 在擷取快照集之後，Azure 備份服務會將資料傳送到備份保存庫。 服務會負責識別上次備份後有所變更的區塊並只傳送這些區塊，讓備份儲存體和網路更有效率。 資料傳送完畢時將移除快照集，並建立復原點。 Azure 管理入口網站中可以查看此復原點。
->[AZURE.NOTE] Linux 虛擬機器只能進行檔案一致性的備份。
 
-## 必要條件
+>[AZURE.NOTE] Linux 虛擬機器只能進行檔案一致性的備份可供使用。
 
+## 先決條件
 如下所示讓 Azure 備份做好備份 DPM 資料的準備：
 
 1. **建立備份保存庫** — 在 Azure 備份主控台中建立保存庫。
-2. **下載保存庫認證** — 在 Azure 備份中，將您建立的管理憑證上傳到保存庫。
-3. **安裝 Azure 備份代理程式並註冊伺服器** — 從 Azure 備份，在每一部 DPM 伺服器上安裝代理程式，並在備份保存庫中註冊 DPM 伺服器。
+2. **下載保存庫認證** — 在 Azure Backup 中上傳您所建立的管理憑證到保存庫。
+3. **安裝 Azure 備份代理程式，並註冊伺服器** — 從 Azure 備份，每一部 DPM 伺服器上安裝代理程式並在備份保存庫中註冊 DPM 伺服器。
 
 [AZURE.INCLUDE [backup-create-vault](../../includes/backup-create-vault.md)]
 
@@ -93,9 +90,5 @@ System Center DPM 會備份檔案和應用程式資料。 備份到 DPM 的資�
 - 壓縮資料流
 - 疏鬆資料流
 
->[AZURE.NOTE] 從 System Center 2012 DPM SP1 開始，您可以使用 Microsoft Azure 備份將受到 DPM 保護的工作負載備份至 Azure。
-
-
-
-
+>[AZURE.NOTE] 從 System Center 2012 dpm sp1 開始您可以備份至 Azure，使用 Microsoft Azure 備份的 DPM 所保護的工作負載。
 

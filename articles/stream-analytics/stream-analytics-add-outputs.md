@@ -17,7 +17,6 @@
     ms.date="12/04/2015" 
     ms.author="jeffstok"/> 
 
-
 # 如何設定串流分析工作的資料輸出
 
 Azure 串流分析工作可以連線至一或多個輸出，且每個輸出都定義了一個與現有資料接收器之間的連線。 當您的資料流分析工作處理並轉換傳入的資料時，系統會將資料輸出事件串流寫入工作的輸出中。
@@ -26,48 +25,43 @@ Azure 串流分析工作可以連線至一或多個輸出，且每個輸出都�
 
 若要將輸入加入至串流分析工作：
 
-1. 在 Azure 入口網站中，按一下 [**輸出**]，然後按一下串流分析工作的 [**加入輸出**]。
+1. 在 Azure 入口網站中，按一下 [ **輸出** 然後按一下 [ **加入輸出** 在資料流分析工作。
 
-    ![加入輸出](./media/stream-analytics-add-outputs/1-stream-analytics-add-outputs.png)
+    ![加入輸出](./media/stream-analytics-add-outputs/1-stream-analytics-add-outputs.png)  
 
-    在 Azure Preview 入口網站中，按一下串流分析工作的 [**輸出**] 圖格。
+    在 Azure 預覽入口網站，按一下 [ **輸出** 並排顯示在資料流分析工作。
 
     ![Azure 入口網站加入輸出](./media/stream-analytics-add-outputs/5-stream-analytics-add-outputs.png)
 
 2. 指定輸出的類型：
 
-    ![選擇資料移動類型](./media/stream-analytics-add-outputs/2-stream-analytics-add-outputs.png)
+    ![選擇資料移動類型](./media/stream-analytics-add-outputs/2-stream-analytics-add-outputs.png)  
 
     ![在 Azure Preview 入口網站中選擇資料移動類型](./media/stream-analytics-add-outputs/6-stream-analytics-add-outputs.png)
 
-3. 在 [**輸出別名**] 方塊中，替此輸出取一個好記的名稱。 此名稱稍後可在作業查詢中用作指稱輸出。
+3. 提供此輸出中的易記名稱 **輸出別名** 方塊。 此名稱稍後可在作業查詢中用作指稱輸出。  
+    
+    填寫其餘必要的連接屬性，以連接到輸出。  這些欄位會因輸出類型而有所不同，其詳細定義在這裡。  
 
-    填寫其餘必要的連接屬性，以連接到輸出。 這些欄位會因輸出類型而有所不同，其詳細定義在這裡。
-
-    ![新增資料輸出屬性](./media/stream-analytics-add-outputs/3-stream-analytics-add-outputs.png)
+    ![新增資料輸出屬性](./media/stream-analytics-add-outputs/3-stream-analytics-add-outputs.png)  
 
 4. 取決於輸出類型，您可能需要指定資料序列化或格式化的方式。 每個輸出類型的特定序列化設定值記載於此。
 
-    填寫其餘必要的連接屬性，以連接到資料來源。 這些欄位變更類型的輸入和來源的類型和詳細資料中定義 [這裡](stream-analytics-create-a-job.md)。
+    填寫其餘必要的連接屬性，以連接到資料來源。 這些欄位變更類型的輸入和來源的類型和詳細資料中定義 [這裡](stream-analytics-create-a-job.md)。  
 
-    ![將資料輸出新增至事件中樞](./media/stream-analytics-add-outputs/4-stream-analytics-add-outputs.png)
+    ![將資料輸出新增至事件中樞](./media/stream-analytics-add-outputs/4-stream-analytics-add-outputs.png)  
 
-    ![在 Azure 預覽入口網站中將資料輸出至事件中樞](./media/stream-analytics-add-outputs/7-stream-analytics-add-outputs.png)
+    ![在 Azure 預覽入口網站中將資料輸出至事件中樞](./media/stream-analytics-add-outputs/7-stream-analytics-add-outputs.png)  
 
 > [Azure.Note] 任何輸出項目加入至工作，必須先存在，則會啟動作業以及事件開始送。 例如，如果您把 Blob 儲存體當做輸出來使用，工作就不會自動建立儲存體帳戶。 使用者必須在 Azure 串流分析工作開始之前建立儲存體帳戶。
 
 ## 取得說明
-
 如需進一步的協助，請嘗試我們 [Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## 後續步驟
 
-- [Azure 串流分析簡介](stream-analytics-introduction.md)
-- [開始使用 Azure 串流分析](stream-analytics-get-started.md)
-- [調整 Azure 串流分析工作](stream-analytics-scale-jobs.md)
-- [Azure 串流分析查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+- [Azure 資料流分析簡介](stream-analytics-introduction.md)
+- [開始使用 Azure 資料流分析](stream-analytics-get-started.md)
+- [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
+- [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-

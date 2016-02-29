@@ -72,8 +72,3 @@
 
          azure group log show -l -v ExampleResourceGroup
 
-
-
-
-
-

@@ -17,16 +17,15 @@
     ms.date="12/11/2015" 
     ms.author="josephd"/>
 
-
 # 在混合式雲端中設定 Office 365 Directory 同步處理 (DirSync) 進行測試
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
-
+ 
 
 本主題將逐步引導您使用 Microsoft Azure 代管的密碼同步處理建立混合式雲端環境來測試 Office 365 Directory 同步處理 (DirSync)。 以下是產生的組態。
 
 ![](./media/virtual-networks-setup-dirsync-hybrid-cloud-testing/CreateDirSyncHybridCloud_3.png)
-
+ 
 這個組態會從您在網際網路上的位置模擬 Azure 生產環境中的 DirSync 伺服器。 其中包括：
 
 - 簡化的內部部署網路 (公司網路子網路)。
@@ -55,7 +54,8 @@
 這是您目前的組態。
 
 ![](./media/virtual-networks-setup-dirsync-hybrid-cloud-testing/CreateDirSyncHybridCloud_1.png)
-> [AZURE.NOTE] 針對第 1 階段，您也可以設定模擬混合式雲端測試環境。 請參閱 [設定用於測試的模擬混合式雲端環境](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md) 如需相關指示。
+
+> [AZURE.NOTE] 階段 1 中，您也可以設定模擬混合式雲端測試環境。 請參閱 [設定用於測試的模擬混合式雲端環境](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md) 如需相關指示。
 
 ## 第 2 階段：設定 Office 365 FastTrack 試用
 
@@ -69,11 +69,11 @@
 2.  開啟 Internet Explorer 並移至 **https://go.microsoft.com/fwlink/p/?LinkID=403802**。
 3.  進行註冊 Office 365 企業 E3 試用版的程序。
 
-當系統提示輸入**公司電子郵件地址**時，請指定您新的 Microsoft 帳戶。
+當系統提示您 **公司電子郵件地址**, ，指定新的 Microsoft 帳戶。
 
 當系統提示建立識別碼時，請輸入初始 Office 365 帳戶的名稱、您的虛構公司名稱，然後輸入密碼。 記錄產生的電子郵件地址 (例如 user123@contoso123.onmicrosoft.com) 和密碼並儲存於安全之處。 您將需要此資訊以完成階段 3 的 Azure AD Connect 設定。
 
-完成時，您應該會看到主要的 Office 365 入口網站頁面。 在最上方的功能區中，按一下 [系統管理]****，然後按一下 [Office 365]****。 Office 365 系統管理中心頁面隨即出現。 讓 CLIENT1 保持這個頁面開啟。
+完成時，您應該會看到主要的 Office 365 入口網站頁面。 在上方功能區中，按一下 [ **管理員**, ，然後按一下 [ **Office 365**。 Office 365 系統管理中心頁面隨即出現。 讓 CLIENT1 保持這個頁面開啟。
 
 這是您目前的組態。
 
@@ -81,7 +81,7 @@
 
 ## 第 3 階段：設定 DirSync 伺服器 (DS1)
 
-首先，在本機電腦的 Azure PowerShell 命令提示字元下，使用下列命令建立 DS1 的 Azure 虛擬機器。在之前執行這些命令，先填入變數值並移除 < 和 > 字元。
+首先，在本機電腦的 Azure PowerShell 命令提示字元下，使用下列命令建立 DS1 的 Azure 虛擬機器。 在之前執行這些命令，先填入變數值並移除 < 和 > 字元。
 
     $ServiceName="<The cloud service name for your TestVNET virtual network>"
     $cred1=Get-Credential -Message "Type the name and password of the local administrator account for DS1."
@@ -94,14 +94,14 @@
 
 接著，連接到 DS1 虛擬機器。
 
-1.  在 Azure 管理入口網站的 [虛擬機器] 頁面上，按一下 DS1 虛擬機器 [狀態] 欄中的 [執行中]****。
-2.  在工作列上，按一下 [連接]****。
-3.  系統提示開啟 DS1.rdp 時，請按一下 [開啟]****。
-4.  顯示 [遠端桌面連線] 訊息方塊後，按一下 [連接]****。
+1.  在 Azure 管理入口網站的虛擬機器] 頁面上，按一下 [ **執行** DS1 虛擬機器 [狀態] 欄中。
+2.  在工作列上，按一下 [ **連接**。 
+3.  當系統提示開啟 DS1.rdp 時，按一下 [ **開啟**。
+4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用這些：
-    - 名稱：**CORP\User1**
+    - 名稱: **CORP\User1**
     - 密碼：[User1 帳戶密碼]
-6.  顯示憑證相關的 [遠端桌面連線] 訊息方塊提示時，按一下 [是]****。
+6.  顯示憑證相關的遠端桌面連線] 訊息方塊提示，請按一下 **是**。
 
 接著，設定 Windows 防火牆規則，允許基本連線測試的流量。 從 DS1 的系統管理員層級 Windows PowerShell 命令提示字元下，執行這些命令。
 
@@ -116,11 +116,11 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 
 接著，對於 Office 365 FastTrack 試用啟用 Directory 同步處理。
 
-1.  在 CLIENT1 上，於 [Office 365 系統管理中心]**** 頁面的左窗格中，按一下 [使用者]****，然後按一下 [作用中使用者]****。
-2.  對於 **Active Directory 同步處理**，請按一下 [設定]****。
-3.  在 [設定及管理 Active Directory 同步處理] 頁面的步驟 3 中，按一下 [啟用]****。
-4.  出現 [您要啟用 Active Directory 同步處理嗎?]**** 的提示時，按一下 [啟用]****。 執行此動作後，步驟 3 將顯示 [Active Directory 同步處理已啟動]****。
-5.  在 CLIENT1 上保持開啟 [設定及管理 Active Directory 同步處理]**** 頁面。
+1.  在 CLIENT1 上 **Office 365 系統管理中心** ] 頁面上，在左窗格中，按一下 [ **使用者**, ，然後按一下 [ **作用中使用者**。
+2.  如 **Active Directory 同步處理**, ，按一下 [ **設定**。
+3.  在集合上註冊和管理 Active Directory 同步處理] 頁面，在步驟 3 中，按一下 **啟動**。
+4.  出現提示時 **您想要啟動 Active Directory 同步處理?**, ，按一下 [ **啟動**。 這樣做之後, **Active Directory 同步處理已啟動** 在步驟 3 中會出現。
+5.  保留 **設定及管理 Active Directory 同步處理** 在 CLIENT1 上開啟網頁。
 
 接著，以 CORP\User1 帳戶登入 DC1，並開啟系統管理員層級 Windows PowerShell 命令提示字元。 逐一執行這些命令，以建立名為 contoso_users 的新組織單位以及 Marci Kaufman 和 Lynda Meyer 兩個新的使用者帳戶。
 
@@ -134,57 +134,53 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 
 1.  執行的 Internet Explorer，型別 **https://www.microsoft.com/download/details.aspx?id=47594** 中 **位址** 列，並按 ENTER。
 2.  執行 Microsoft Azure AD Connect 安裝程式。
-3.  從桌面上，按兩下 [Azure AD Connect]****。
-4.  在 [歡迎]**** 頁面上，選取 [我同意授權合約及隱私權注意事項]****，然後按一下 [繼續]****。
-5.  在 [快速設定]**** 頁面上，按一下 [使用快速設定]****。
-6.  在 [連線到 Azure AD]**** 頁面中，輸入您在階段 2 中設定 Office 365 FastTrack 試用時建立的初始帳戶電子郵件地址和密碼。 按 [下一步]****。
-7.  在 [連線到 AD DS]**** 頁面上，於 [使用者名稱]**** 中輸入 **CORP\User1**，並在 [密碼]**** 中輸入 User1 的帳戶密碼。 按 [下一步]。
-8.  在 [準備好設定]**** 頁面上，檢閱設定，然後按一下 [安裝]****。
-9.  在 [設定完成]**** 頁面上，按一下 [結束]****。
+3.  從桌面上，按兩下 **Azure AD Connect**。
+4.  在 **歡迎** 頁面上，選取 **我同意授權條款和隱私權注意事項**, ，然後按一下 [ **繼續**。
+5.  在 **快速設定** 頁面上，按一下 **使用快速設定**。
+6.  在 **連線到 Azure AD** 頁面上，輸入的電子郵件地址和您設定在階段 2 中的 Office 365 FastTrack 試用時所建立之初始帳戶的密碼。 按一下 [ **下一步**。
+7.  在 **連線到 AD DS** 頁面上，輸入 **CORP\User1** 中 **Username** 和 User1 帳戶的密碼在 **密碼**。 按 [下一步]。
+8.  在 **準備好設定** 頁面上，檢閱設定，然後按 **安裝**。
+9.  在 **組態完成** 頁面上，按一下 **結束**。
 
 接著，確認 CORP 網域中的使用者帳戶已同步處理至 Office 365。 請注意，可能需要經過數小時才會進行同步處理。
 
-在 CLIENT1 上，於 [設定及管理 Active Directory 同步處理]**** 頁面中，按一下此頁面步驟 6 中的**使用者**連結。 如果 Directory 同步處理順利進行，您應該會看見如下所示的內容。
+在 CLIENT1 上 **設定及管理 Active Directory 同步處理** 頁面上，按一下 **使用者** 步驟 6 中的此頁面的連結。 如果 Directory 同步處理順利進行，您應該會看見如下所示的內容。
 
 ![](./media/virtual-networks-setup-dirsync-hybrid-cloud-testing/CreateDirSyncHybridCloud_4.png)
 
-[狀態]**** 欄將指出已透過 Active Directory 網域的同步處理功能取得帳戶。
+ **狀態** 欄會指出已透過 Active Directory 網域的同步處理取得帳戶。
 
-接著，示範 Lynda Myer Active Directory 帳戶的 Office 365 密碼同步。
+接著，示範 Lynda Myer Active Directory 帳戶的 Office 365 密碼同步。  
 
-1.  在 CLIENT1 上，於 [作用中使用者]**** 頁面中，選取 [Lynda Meyer]**** 帳戶。
-2.  在 Lynda Meyer 帳戶內容中的 [已指派的授權]**** 下，按一下 [編輯]****。
-3.  在 [指派授權]**** 索引標籤上，選取 [設定使用者位置]**** 中的位置 (例如美國)。
-4.  選取 [Microsoft Office 365 方案 E3]****，然後按一下 [儲存]****。
+1.  在 CLIENT1 上 **作用中使用者** 頁面上，選取 **Lynda Meyer** 帳戶。
+2.  在 Lynda Meyer 帳戶內容下 **指派的授權**, ，按一下 [ **編輯**。
+3.  在 **指派授權** 索引標籤上，選取的位置 **設定使用者位置** (例如美國)。
+4.  選取 **Microsoft Office 365 計劃 E3**, ，然後按一下 [ **儲存**。
 5.  關閉 Internet Explorer。
-6.  執行 Internet Explorer 並移至 **http://portal.microsoftonline.com**。
-7.  使用 Lynda Meyer 的 Office 365 認證登入。她的使用者名稱將是 lyndam @<*Your Fictional Name*>。 onmicrosoft.com。密碼是 Lynda Meyer Active Directory 使用者帳戶密碼。
-8.  成功登入後，您將看見 Office 365 入口網站的主要首頁顯示「讓今天有所不同」****。
+6.  執行 Internet Explorer 並移至 **http://portal.microsoftonline.com**。 
+7.  使用 Lynda Meyer 的 Office 365 認證登入。 她的使用者名稱將是 lyndam @<*虛構名稱*>。 onmicrosoft.com。 密碼是 Lynda Meyer Active Directory 使用者帳戶密碼。
+8.  成功登入後，請參閱 Office 365 入口網站首頁與 **我們今天差別**。
 
 這是您目前的組態。
 
 ![](./media/virtual-networks-setup-dirsync-hybrid-cloud-testing/CreateDirSyncHybridCloud_3.png)
-
+ 
 這個環境到此準備就緒，可供您測試運用 Office 365 DirSync 功能的 Office 365 應用程式，或測試 DS1 的 DirSync 功能和效能。
 
 ## 其他資源
 
-[部署 Office 365 目錄同步作業 (DirSync) 在 Microsoft Azure](http://technet.microsoft.com/library/dn635310.aspx)
+[在 Microsoft Azure 中部署 Office 365 Directory 同步處理 (DirSync)](http://technet.microsoft.com/library/dn635310.aspx)
 
-[使用 Office 伺服器和雲端解決方案](http://technet.microsoft.com/library/dn262744.aspx)
+[使用 Office 伺服器和雲端的解決方案](http://technet.microsoft.com/library/dn262744.aspx)
 
 [設定用於測試的混合式雲端環境](virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
-[設定用於測試的混合式雲端中的 SharePoint 內部網路伺服器陣列](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
+[在混合式雲端中設定用於測試的 SharePoint 內部網路伺服器陣列](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-[設定用於測試的混合式雲端中的 web 型 LOB 應用程式](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
+[在混合式雲端中設定 Web 型 LOB 應用程式進行測試](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
 
 [設定用於測試的模擬混合式雲端環境](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
 
 [Azure 混合式雲端測試環境](../virtual-machines/virtual-machines-hybrid-cloud-test-environments.md)
 
 [Azure 基礎結構服務實作指導方針](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-
-
-

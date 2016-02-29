@@ -1,6 +1,6 @@
 <properties
     pageTitle="搭配 Blob 儲存體 (Java) 的內部部署應用程式 | Microsoft Azure"
-    description="了解如何建立可將影像上傳至 Azure，然後在瀏覽器中顯示此影像的主控台應用程式。程式碼範例以 Java 撰寫。"
+    description="了解如何建立可將影像上傳至 Azure，然後在瀏覽器中顯示此影像的主控台應用程式。 程式碼範例以 Java 撰寫。"
     services="storage"
     documentationCenter="java"
     authors="rmcmurray"
@@ -16,7 +16,6 @@
     ms.date="12/01/2015" 
     ms.author="robmcm"/>
 
-
 # 搭配 Blob 儲存體的內部部署應用程式
 
 ## 概觀
@@ -26,18 +25,18 @@
 應用程式將影像上傳到 Azure 然後建立
 HTML 檔案在瀏覽器中顯示影像。
 
-## 必要條件
+## 先決條件
 
 - 已安裝 Java Developer Kit (JDK) 1.6 版或更新版本。
 - 已安裝 Azure SDK。
 - Azure libraries for Java 和任何適用 JAR
     相依性 Jar，已安裝，且所使用的組建路徑中位於
     Java 編輯器。 如需安裝 Azure Libraries for Java 的詳細資訊，請參閱 [下載
-    Azure SDK for Java] []。
+   Azure SDK for Java][]。
 - 已設定 Azure 儲存體帳戶。 帳戶名稱
     程式碼將使用儲存體帳戶的帳戶金鑰
-    在這篇文章。 如需建立儲存體帳戶，請參閱 [如何建立儲存體帳戶]
-    和 [如何管理儲存體帳戶 []][] 如需擷取資訊
+    在這篇文章。 請參閱 [How to Create a Storage Account] 如需建立儲存體帳戶，
+    和 [如何管理儲存體帳戶][] 如需擷取資訊
     帳戶金鑰。
 - 您已建立名為的本機影像檔案儲存於路徑
     c:\\myimages\\image1.jpg。 或者，修改
@@ -53,7 +52,7 @@ HTML 檔案在瀏覽器中顯示影像。
 
 程式碼一開始先匯入 Azure 核心儲存體
 類別、Azure Blob 用戶端類別、Java IO 類別和
-**URISyntaxException** 類別。
+ **URISyntaxException** 類別。
 
     import com.microsoft.azure.storage.*;
     import com.microsoft.azure.storage.blob.*;
@@ -91,27 +90,28 @@ HTML 檔案在瀏覽器中顯示影像。
 -   **CloudStorageAccount**: 用來初始化帳戶物件，
     您的 Azure 儲存體帳戶名稱和金鑰，並建立
     blob 用戶端物件。
--   **CloudBlobClient**：可用來存取 Blob 服務。
+-   **CloudBlobClient**: 用來存取 blob 服務。
 -   **CloudBlobContainer**: 用來建立 blob 容器，清單
     容器和刪除容器中的 blob。
 -   **CloudBlockBlob**: 用來上傳至本機影像檔案
     。
 
+<!-- -->
 
     CloudStorageAccount account;
     CloudBlobClient serviceClient;
     CloudBlobContainer container;
     CloudBlockBlob blob;
 
-對 **account** 變數指定值。
+指派值給 **帳戶** 變數。
 
     account = CloudStorageAccount.parse(storageConnectionString);
 
-對 **serviceClient** 變數指定值。
+指派值給 **serviceClient** 變數。
 
     serviceClient = account.createCloudBlobClient();
 
-對 **container** 變數指定值。 我們將取得
+指派值給 **容器** 變數。 我們將取得
 容器名稱 **gettingstarted**。
 
     // Container name must be lower case.
@@ -119,7 +119,7 @@ HTML 檔案在瀏覽器中顯示影像。
 
 // 建立容器。 如果不是，這個方法會建立容器
 存在 (並傳回 **true**)。 如果容器存在，則會傳回
-**false**. 除了 **createIfNotExists** 是 **建立**
+**false**。 除了 **createIfNotExists** 是 **建立**
 方法 (如果容器已存在，則會傳回錯誤)。
 
     container.createIfNotExists();
@@ -152,7 +152,7 @@ Azure 儲存體中的 Blob。
     blob.upload(new FileInputStream(fileReference), fileReference.length());
 
 呼叫 helper 函式，名為 **MakeHTMLPage**, 來製作基本的 HTML 頁面
-其中包含 **< 映像 >** 元素，且來源設定的 blob，
+其中包含 **& lt; 映像 & gt;** 元素，且來源設定的 blob，
 現在為 Azure 儲存體帳戶。 程式碼
 **MakeHTMLPage** 將在本文稍後討論。
 
@@ -163,7 +163,7 @@ Azure 儲存體中的 Blob。
     System.out.println("Processing complete.");
     System.out.println("Open index.html to see the images stored in your storage account.");
 
-透過插入右括號 **}** 來結束 **try** 區塊
+關閉 **嘗試** 區塊透過插入右括號: **}**
 
 處理下列例外狀況：
 
@@ -173,37 +173,38 @@ Azure 儲存體中的 Blob。
     儲存體程式庫。
 -   **URISyntaxException**: 可能擲回 **ListBlobItem.getUri**
     方法將程式碼部署至服務。
--   **Exception**：一般例外狀況處理。
+-   **例外狀況**: 一般例外狀況處理。
 
+<!-- -->
 
     catch (FileNotFoundException fileNotFoundException)
     {
-        System.out.print (「 FileNotFoundException 遇到:");
+        System.out.print("FileNotFoundException encountered: ");
         System.out.println(fileNotFoundException.getMessage());
         System.exit(-1);
     }
     catch (StorageException storageException)
     {
-        System.out.print (「 StorageException 遇到:");
+        System.out.print("StorageException encountered: ");
         System.out.println(storageException.getMessage());
         System.exit(-1);
     }
     catch (URISyntaxException uriSyntaxException)
     {
-        System.out.print (「 URISyntaxException 遇到:");
+        System.out.print("URISyntaxException encountered: ");
         System.out.println(uriSyntaxException.getMessage());
         System.exit(-1);
     }
     catch (Exception e)
     {
-        System.out.print (「 發生例外狀況:");
+        System.out.print("Exception encountered: ");
         System.out.println(e.getMessage());
         System.exit(-1);
     }
 
-透過插入右括號 **}** 來結束 **main**
+關閉 **主要** 透過插入右括號: **}**
 
-建立名為 **MakeHTMLPage** 的方法，藉此建立基本的 HTML 頁面。 此
+建立一個名為方法 **MakeHTMLPage** 建立基本的 HTML 頁面。 此
 方法包含參數的型別 **CloudBlobContainer**, ，而這將是
 用來逐一查看上傳的 blob 清單。 這個方法會
 擲回例外狀況型別的 **FileNotFoundException**, ，這可能會擲回
@@ -214,20 +215,20 @@ Azure 儲存體中的 Blob。
     public static void MakeHTMLPage(CloudBlobContainer container) throws FileNotFoundException, URISyntaxException
     {
 
-建立名為 **index.html** 的本機檔案。
+建立名為的本機檔案 **index.html**。
 
     PrintStream stream;
     stream = new PrintStream(new FileOutputStream("index.html"));
 
-寫入本機檔案，加入 **< html >**, ，**< 標頭 >**, ，並
-**< 主體 >** 項目。
+寫入本機檔案，加入 **& lt; html 和 gt;**, ，**& lt; 標頭及 gt;**, ，和
+**& l t; 本文 & gt;** 項目。
 
     stream.println("<html>");
     stream.println("<header/>");
     stream.println("<body>");
 
 逐一取得已上傳的 Blob 清單。 為每個 blob，在 HTML
-頁面上建立 **< i m g >** 具有項目，其 **src** 屬性傳送至
+頁面上建立 **& lt; i m g (& s) gt;** 具有項目，其 **src** 屬性傳送至
 Azure 儲存體帳戶存在於與 blob 的 URI。
 雖然您加入只有一個映像在此範例中，如果您加入的詳細資訊，
 此程式碼會重複列舉全部影像。
@@ -242,7 +243,7 @@ blob，視需要調整程式碼。
     stream.println("<img src='" + blobItem.getUri() + "'/><br/>");
     }
 
-結束 **&lt;body&gt;** 元素和 **&lt;html&gt;** 元素。
+關閉 **& lt; 本文 & gt;** 項目和 **(& s) lt; html 和 gt;** 項目。
 
     stream.println("</body>");
     stream.println("</html>");
@@ -251,9 +252,9 @@ blob，視需要調整程式碼。
 
     stream.close();
 
-透過插入右括號 **}** 來結束 **MakeHTMLPage**
+關閉 **MakeHTMLPage** 透過插入右括號: **}**
 
-透過插入右括號 **}** 來結束 **StorageSample**
+關閉 **StorageSample** 透過插入右括號: **}**
 
 下列是此範例的完整程式碼。 請記得修改
 預留位置值 **your\_account\_name** 和
@@ -264,49 +265,49 @@ blob，視需要調整程式碼。
     import com.microsoft.azure.storage.blob.*;
     import java.io.*;
     import java.net.URISyntaxException;
-    
+
     // Create an image, c:\myimages\image1.jpg, prior to running this sample.
     // Alternatively, change the value used by the FileInputStream constructor
     // to use a different image path and file that you have already created.
     public class StorageSample {
-    
+
         public static final String storageConnectionString =
                 "DefaultEndpointsProtocol=http;" +
                        "AccountName=your_account_name;" +
                        "AccountKey=your_account_name";
-    
+
         public static void main(String[] args) {
             try {
                 CloudStorageAccount account;
                 CloudBlobClient serviceClient;
                 CloudBlobContainer container;
                 CloudBlockBlob blob;
-    
+
                 account = CloudStorageAccount.parse(storageConnectionString);
                 serviceClient = account.createCloudBlobClient();
                 // Container name must be lower case.
                 container = serviceClient.getContainerReference("gettingstarted");
                 container.createIfNotExists();
-    
+
                 // Set anonymous access on the container.
                 BlobContainerPermissions containerPermissions;
                 containerPermissions = new BlobContainerPermissions();
                 containerPermissions.setPublicAccess(BlobContainerPublicAccessType.CONTAINER);
                 container.uploadPermissions(containerPermissions);
-    
+
                 // Upload an image file.
                 blob = container.getBlockBlobReference("image1.jpg");
-    
+
                 File fileReference = new File("c:\\myimages\\image1.jpg");
                 blob.upload(new FileInputStream(fileReference), fileReference.length());
-    
+
                 // At this point the image is uploaded.
                 // Next, create an HTML page that lists all of the uploaded images.
                 MakeHTMLPage(container);
-    
+
                 System.out.println("Processing complete.");
                 System.out.println("Open index.html to see the images stored in your storage account.");
-    
+
             } catch (FileNotFoundException fileNotFoundException) {
                 System.out.print("FileNotFoundException encountered: ");
                 System.out.println(fileNotFoundException.getMessage());
@@ -325,27 +326,27 @@ blob，視需要調整程式碼。
                 System.exit(-1);
             }
         }
-    
+
         // Create an HTML page that can be used to display the uploaded images.
         // This example assumes all of the blobs are for images.
         public static void MakeHTMLPage(CloudBlobContainer container) throws FileNotFoundException, URISyntaxException
         {
             PrintStream stream;
             stream = new PrintStream(new FileOutputStream("index.html"));
-    
+
             // Create the opening <html>, <header>, and <body> elements.
             stream.println("<html>");
             stream.println("<header/>");
             stream.println("<body>");
-    
+
             // Enumerate the uploaded blobs.
             for (ListBlobItem blobItem : container.listBlobs()) {
                 // List each blob as an <img> element in the HTML body.
                 stream.println("<img src='" + blobItem.getUri() + "'/><br/>");
             }
-    
+
             stream.println("</body>");
-    
+
             // Complete the <html> element and close the file.
             stream.println("</html>");
             stream.close();
@@ -376,14 +377,14 @@ blob，視需要調整程式碼。
 
     import com.microsoft.azure.storage.*;
     import com.microsoft.azure.storage.blob.*;
-    
+
     public class DeleteContainer {
-    
+
         public static final String storageConnectionString =
                 "DefaultEndpointsProtocol=http;" +
                    "AccountName=your_account_name;" +
                    "AccountKey=your_account_key";
-    
+
         public static void main(String[] args)
         {
             try
@@ -391,15 +392,15 @@ blob，視需要調整程式碼。
                 CloudStorageAccount account;
                 CloudBlobClient serviceClient;
                 CloudBlobContainer container;
-    
+
                 account = CloudStorageAccount.parse(storageConnectionString);
                 serviceClient = account.createCloudBlobClient();
                 // Container name must be lower case.
                 container = serviceClient.getContainerReference("gettingstarted");
                 container.delete();
-    
+
                 System.out.println("Container deleted.");
-    
+
             }
             catch (StorageException storageException)
             {
@@ -416,24 +417,23 @@ blob，視需要調整程式碼。
         }
     }
 
-如需其他 blob 儲存體類別和方法的概觀，請參閱 < 如何
+如需其他 blob 儲存體類別和方法的概觀，請參閱 [How to
 使用 Java 的 blob 儲存體服務]。
 
 ## 後續步驟
 
 請遵循下列連結以深入了解更複雜的儲存體工作。
 
-- [Azure Storage SDK for Java]][]
-- [Azure 儲存體用戶端 SDK 參考]][]
-- [[Azure 儲存體 REST API]][]
-- [Azure 儲存體團隊部落格]][]
+- [Azure Storage SDK for Java][]
+- [Azure 儲存體用戶端 SDK 參考][]
+- [Azure 儲存體 REST API][]
+- [Azure 儲存體團隊部落格][]
 
-
-[download the azure sdk for java]: http://go.microsoft.com/fwlink/?LinkID=525671 
-[how to create a storage account]: storage-create-storage-account.md#create-a-storage-account 
-[how to manage storage accounts]: storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys 
-[how to use the blob storage service from java]: storage-java-how-to-use-blob-storage.md 
-[azure storage sdk for java]: https://github.com/azure/azure-storage-java 
-[azure storage client sdk reference]: http://dl.windowsazure.com/storage/javadoc/ 
-[azure storage team blog]: http://blogs.msdn.com/b/windowsazurestorage/ 
+  [Download the Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
+  [How to Create a Storage Account]: storage-create-storage-account.md#create-a-storage-account
+  [How to Manage Storage Accounts]: storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys
+  [How to Use the Blob Storage Service from Java]: storage-java-how-to-use-blob-storage.md
+  [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+  [Azure Storage Client SDK Reference]: http://dl.windowsazure.com/storage/javadoc/
+  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 

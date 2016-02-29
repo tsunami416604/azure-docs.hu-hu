@@ -16,7 +16,6 @@
     ms.date="09/22/2015"
     ms.author="rasquill"/>
 
-
 # 透過 Azure 命令列介面 (Azure CL) 使用 Docker VM 延伸模組
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
@@ -25,13 +24,12 @@
 
 本主題說明如何透過 Azure CLI 中的服務管理 (asm) 模式，在任何平台上建立包含 Docker VM 延伸模組的 VM。 [Docker](https://www.docker.com/) 是其中一個最常用的虛擬化方式使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC) 而不是一種獨立資料和執行計算共用資源上部署虛擬機器。 您可以使用 Docker VM 擴充 [Azure Linux 代理程式](virtual-machines-linux-agent-user-guide.md) 來建立 Docker VM 來託管任何數量的應用程式在 Azure 上的容器。 若要查看容器及其優點的高層級討論，請參閱 [Docker 高層級白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
 
-+ [如何搭配使用 Docker VM 延伸模組與 Azure]
-+ [適用於 Linux 和 Windows 的虛擬機器延伸模組]
-+ [容器及容器管理資源的 [Azure]
++ [如何搭配使用 Docker VM 擴充程式與 Azure]
++ [Linux 及 Windows 的虛擬機器擴充程式]
++ [Azure 容器及容器管理資源]
 + [下一步]
 
-## 如何搭配使用 Docker VM 擴充程式與 Azure
-
+##如何搭配使用 Docker VM 擴充程式與 Azure
 若要使用 Azure 的 Docker VM 延伸模組，您必須安裝的版本 [Azure 命令列介面](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) 以上 0.8.6 (撰寫本文的目前版本為 0.8.10)。 您可以在 Mac、Linux 及 Windows 上安裝 Azure CLI。
 
 
@@ -45,16 +43,16 @@
 
 ### 安裝 Azure 命令列介面 (Azure CLI)
 
-若要安裝和設定 Azure CLI，請參閱 [如何安裝 Azure 命令列介面](../xplat-cli-install.md)。 若要確認安裝，請輸入 `azure` 在命令提示字元之後很快就能看到 Azure CLI ASCII 作品，其中會列出可供您使用的基本命令。 如果安裝正確執行，您應該可以輸入 `azure 說明 vm` 和看到列出的命令中有一個 「 docker 」。
+若要安裝和設定 Azure CLI，請參閱 [如何安裝 Azure 命令列介面](../xplat-cli-install.md)。 若要確認安裝狀況，請在命令提示字元中輸入 `azure`，您應該很快就能看到 Azure CLI ASCII 作品，其中會列出您可以使用的基本命令。 如果安裝正確執行，您應該可以輸入 `azure help vm` 並且可以看到列出的其中一個命令是 "docker"。
+
 > [AZURE.NOTE] Docker 具備適用於 Windows，安裝程式 [Boot2Docker](https://docs.docker.com/installation/windows/), ，您也可以使用自動建立的 docker 用戶端可讓您搭配 Azure Vm 做為 docker 主機。
 
 ### 將 Azure CLI 連接至您的 Azure 帳戶
-
 在使用 Azure CLI 前，必須讓您的 Azure 帳戶認證與您平台上的 Azure CLI 產生關聯。 區段 [如何連接到您的 Azure 訂閱](../xplat-cli-connect.md) 說明如何下載及匯入您 **.publishsettings** 檔案或 Azure CLI 與組織識別碼建立關聯。
-> [AZURE.NOTE] 因為使用一個或其他多個驗證方法的行為會有些許差異，因此請確實閱讀上述文件以了解不同的功能。
+
+> [AZURE.NOTE] 使用一或驗證，因此請確實閱讀上述文件以了解不同的功能的其他方法時，有一些行為差異。
 
 ### 安裝 Docker 及使用適合 Azure 的 Docker VM 擴充程式
-
 請依照下列 [Docker 安裝指示](https://docs.docker.com/installation/#installation) 本機電腦上安裝 Docker。
 
 若要搭配使用 Docker 與 Azure 虛擬機器，VM 所使用的 Linux 映像必須 [Azure Linux VM 代理程式](virtual-machines-linux-agent-user-guide.md) 安裝。 目前來說，只有兩種映像類型提供此安裝：
@@ -67,9 +65,9 @@
 
 若要從 Bash 或終端機工作階段中，使用下列 Azure CLI 命令尋找 VM 映像庫中最新的 Ubuntu 映像，請輸入
 
-`azure vm 映像清單 | grep Ubuntu-14_04`
+`azure vm image list | grep Ubuntu-14_04`
 
-選取其中一個映像名稱，例如 `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-en-us-30GB`, ，並使用下列命令來建立新的 VM 使用該映像。
+並選取其中一個映像名稱 (例如 `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-en-us-30GB`)，然後使用下列命令建立使用該映像的新 VM。
 
 ```
 azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-en-us-30GB" <username> <password>
@@ -77,26 +75,27 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 其中：
 
-+ *<vm-cloudservice name>* 是將成為 Azure 中 Docker 容器主機電腦的 VM 名稱。
++ *& l t; vm cloudservice 名稱 & gt;* 是 VM 將成為 Azure 中的 Docker 容器主機電腦的名稱
 
-+  *&lt;username&gt;* 是VM 預設根目錄使用者的使用者名稱。
++  *& l t; 使用者名稱 (& s) gt;* 是 VM 預設根目錄使用者的使用者名稱
 
-+ *&lt;password&gt;* 是 *username* 帳戶的密碼，需符合 Azure 的複雜性標準。
++ *& l t; password & gt;* 是的密碼 *username* 帳戶符合 Azure 的複雜性標準。
 
-> [AZURE.NOTE] 目前，密碼必須至少 8 個字元，包含一個小寫字母和一個大寫字母、 數字和特殊字元，例如下列字元: `! @# $%^ & + =`。不，上一個句子中的句號並不是一個特殊字元。
+> [AZURE.NOTE] 目前，密碼必須至少 8 個字元，包含一個小寫字母和一個大寫字母、 數字和特殊字元，例如下列字元: `!@#$%^&+=`。 不，上一個句子中的句號並不是一個特殊字元。
 
 如果命令執行成功，根據您使用的精準引數和選項，您應該可以看到如下所示的畫面：
 
 ![](./media/virtual-machines-docker-with-xplat-cli/dockercreateresults.png)
+
 > [AZURE.NOTE] 建立虛擬機器可能需要幾分鐘的時間，但已佈建它之後 (狀態值是 `ReadyRole`)，Docker 精靈 (Docker 服務) 啟動，而您可以 Docker 容器主機連線。
 
 若要測試您已在 Azure 中建立的 Docker VM，請輸入
 
-`docker--tls-H tcp: / / < vm--您的使用名稱 >。 cloudapp.net:2376 資訊`
+`docker --tls -H tcp://<vm-name-you-used>.cloudapp.net:2376 info`
 
-其中 *< vm--您的使用名稱 >* 是您在呼叫中使用的虛擬機器名稱 `建立 azure vm 的 docker`。 您應該可看到如下所示的內容，這代表您的 Docker 主機 VM 已在 Azure 中啟用和執行，並且正等待您的命令。
+其中 *& lt; vm-名稱-您的使用 (& s) gt;* 是您在呼叫中使用的虛擬機器名稱 `azure vm docker create`。 您應該可看到如下所示的內容，這代表您的 Docker 主機 VM 已在 Azure 中啟用和執行，並且正等待您的命令。 
 
-現在您可以嘗試連接您的 docker 用戶端使用來取得資訊 (在某些 Docker 用戶端設定，例如，在 Mac 上，您可能需要使用 `sudo`):
+現在您可以嘗試用您的 Docker 用戶端取得資訊以連線 (在某些 Docker 用戶端設定中，例如 Mac 的設定，您可能需要使用 `sudo`)：
 
     sudo docker --tls -H tcp://testsshasm.cloudapp.net:2376 info
     Password:
@@ -140,39 +139,44 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 ### Docker 主機 VM 驗證
 
-除了建立 Docker VM， `建立 azure vm 的 docker` 命令也會自動建立必要的憑證，才能允許您的 Docker 用戶端電腦使用 HTTPS 與 Azure 容器主機連線，憑證會儲存在用戶端和主機機器，視需要。 在後續的嘗試上，現有憑證會重複使用並與新的主機共用。
+除了建立 Docker VM 之外，`azure vm docker create` 命令也會自動建立所需的憑證，以允許您的 Docker 用戶端電腦使用 HTTPS 與 Azure 容器主機連線，而且憑證會適當地儲存在用戶端和主機機器中。 在後續的嘗試上，現有憑證會重複使用並與新的主機共用。
 
-根據預設，憑證會放在 `~/.docker`, ，而 Docker 將設定為連接埠上執行 **2376年**。 如果您想要使用不同的連接埠或目錄，則可以使用下列其中一種 `建立 azure vm 的 docker` 命令列選項來設定您的 Docker 容器主機 VM，使用不同的連接埠或不同的憑證來連接用戶端:
+根據預設，憑證會放在 `~/.docker`, ，而 Docker 將設定為連接埠上執行 **2376年**。 如果您要使用不同的連接埠或目錄，則可以使用下列其中一個 `azure vm docker create` 命令列選項來設定您的 Docker 容器主機 VM，藉此使用不同連接埠或不同憑證來連接用戶端：
 
 ```
 -dp, --docker-port [port]              Port to use for docker [2376]
 -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
 ```
 
-在主機上的 Docker 精靈設定為接聽，並驗證指定的連接埠使用產生的憑證上的用戶端連線 `建立 azure vm 的 docker` 命令。 用戶端機器必須使用這些認證來取得 Docker 主機的存取權。
-> [AZURE.NOTE] 在沒有這些憑證下運作的網路主機，將很容易受到任何可連線到此機器的使用者攻擊。 在您修改預設設定之前，請確保您已了解存在您電腦和應用程式中的風險。
+主機上的 Docker 精靈會設定為使用由 `azure vm docker create` 命令產生的憑證接聽，並驗證指定之連接埠上的用戶端連線。 用戶端機器必須使用這些認證來取得 Docker 主機的存取權。
+
+> [AZURE.NOTE] 沒有這些憑證下運作的網路的主機會容易受到任何可連線到電腦。 在您修改預設設定之前，請確保您已了解存在您電腦和應用程式中的風險。
 
 ## 後續步驟
 
-您已準備好移至 [Docker 使用者指南]，並使用 Docker VM。 若要建立新的入口網站啟用 Docker 的 VM，請參閱 [如何使用 Docker VM 擴充程式與入口網站]。
+您已準備好前往 [Docker User Guide] 並使用 Docker VM。 若要建立新的入口網站啟用 Docker 的 VM，請參閱 [如何使用 Docker VM 擴充程式與入口網站]。
+
+<!--Anchors-->
+[Subheading 1]: #subheading-1
+[Subheading 2]: #subheading-2
+[Subheading 3]: #subheading-3
+[Next steps]: #next-steps
+
+[How to use the Docker VM Extension with Azure]: #How-to-use-the-Docker-VM-Extension-with-Azure
+[Virtual Machine Extensions for Linux and Windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows
+[Container and Container Management Resources for Azure]: #Container-and-Container-Management-Resources-for-Azure
+
+<!--Image references-->
+[5]: ./media/markdown-template-for-new-articles/octocats.png
+[6]: ./media/markdown-template-for-new-articles/pretty49.png
+[7]: ./media/markdown-template-for-new-articles/channel-9.png
 
 
+<!--Link references-->
+[Link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-tutorial.md
+[Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
+[Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
+[How to use the Docker VM Extension with the Portal]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 
-
-
-[subheading 1]: #subheading-1 
-[subheading 2]: #subheading-2 
-[subheading 3]: #subheading-3 
-[next steps]: #next-steps 
-[how to use the docker vm extension with azure]: #How-to-use-the-Docker-VM-Extension-with-Azure 
-[virtual machine extensions for linux and windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows 
-[container and container management resources for azure]: #Container-and-Container-Management-Resources-for-Azure 
-[5]: ./media/markdown-template-for-new-articles/octocats.png 
-[6]: ./media/markdown-template-for-new-articles/pretty49.png 
-[7]: ./media/markdown-template-for-new-articles/channel-9.png 
-[link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-tutorial.md 
-[link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md 
-[link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md 
-[how to use the docker vm extension with the portal]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/ 
-[docker user guide]: https://docs.docker.com/userguide/ 
-
+[Docker User Guide]: https://docs.docker.com/userguide/
+ 

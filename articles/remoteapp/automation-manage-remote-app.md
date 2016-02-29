@@ -18,8 +18,7 @@
 
 
 
-
-# 使用 Azure 自動化管理 Azure RemoteApp
+#使用 Azure 自動化管理 Azure RemoteApp
 
 本指南將為您介紹 Azure 自動化服務，以及如何使用它來簡化 Azure RemoteApp 的管理。
 
@@ -42,8 +41,4 @@ Azure 自動化提供高度可靠、高度可用的工作流程執行引擎，�
 了解 Azure 自動化的基本概念以及如何用它來管理 Azure RemoteApp 之後，請參考下列連結，以深入了解 Azure 自動化。
 
 * 請參閱 Azure 自動化 [快速入門教學課程](../automation-create-runbook-from-samples.md)
-
-
-
-
 

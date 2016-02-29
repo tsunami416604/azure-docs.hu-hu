@@ -17,7 +17,6 @@
    ms.date="08/06/2015"
    ms.author="kundanap"/>
 
-
 # Windows 虛擬機器的自訂指令碼擴充功能
 
 本文概要說明如何使用 Azure PowerShell Cmdlet，在 Windows VM 上使用自訂指令碼擴充功能。
@@ -35,8 +34,8 @@ Windows 的自訂指令碼擴充功能可讓您在遠端 VM 上執行 PowerShell
 
 ### 執行自訂指令碼延伸模組的先決條件
 
-1. 安裝 Azure PowerShell cmdlet 0.8.0 版或更新版本，從 <a href="http://azure.microsoft.com/downloads" target="_blank">這裡</a>。
-2. 如果指令碼會將現有 VM 上執行，請確定啟用 VM 代理程式的 VM 上，如果沒有遵循這 <a href="https://msdn.microsoft.com/library/azure/dn832621.aspx" target="_blank">文章</a> 進行安裝。
+1. 安裝 Azure PowerShell cmdlet 0.8.0 版或更新版本中 <a href="http://azure.microsoft.com/downloads" target="_blank">開始</a>.
+2. 如果指令碼會將現有 VM 上執行，請確定啟用 VM 代理程式的 VM 上，如果沒有遵循這 <a href="https://msdn.microsoft.com/library/azure/dn832621.aspx" target="_blank">發行項</a> 若要安裝其中一個。
 3. 將您想要在 VM 上執行的指令碼上傳到 Azure 儲存體。 指令碼可以來自單一容器或多個儲存體容器。
 4. 指令碼應該以由延伸模組依序要啟動的項目指令碼啟動其他指令碼的方式來撰寫。
 
@@ -44,7 +43,7 @@ Windows 的自訂指令碼擴充功能可讓您在遠端 VM 上執行 PowerShell
 
 ### 將檔案上傳到預設容器
 
-如果訂用帳戶之預設帳戶的儲存體容器中含有您的指令碼，則下列範例會示範如何在 VM 上執行它們。 ContainerName 是您上傳指令碼的目標。 您可以使用 **Get-AzureSubscription –Default** 命令來驗證預設的儲存體帳戶。
+如果訂用帳戶之預設帳戶的儲存體容器中含有您的指令碼，則下列範例會示範如何在 VM 上執行它們。 ContainerName 是您上傳指令碼的目標。 您可以確認預設儲存體帳戶使用 **Get-azuresubscription – 預設** 命令。
 
 下列範例會建立新的 VM，但也可以在現有的 VM 上執行相同的案例。
 
@@ -55,7 +54,7 @@ Windows 的自訂指令碼擴充功能可讓您在遠端 VM 上執行 PowerShell
     $vm = Set-AzureVMCustomScriptExtension -VM $vm -ContainerName $container -FileName 'start.ps1'
     New-AzureVM -ServiceName $servicename -Location $location -VMs $vm
     #  After the VM is created, the extension downloads the script from the storage location and executes it on the VM.
-    
+
     # Viewing the  script execution output.
     $vm = Get-AzureVM -ServiceName $servicename -Name $name
     # Use the position of the extension in the output as index.
@@ -73,9 +72,10 @@ Windows 的自訂指令碼擴充功能可讓您在遠端 VM 上執行 PowerShell
 
       Get-AzureVM -Name $name -ServiceName $servicename | Set-AzureVMCustomScriptExtension -StorageAccountName $storageaccount -StorageAccountKey $storagekey -ContainerName $container -FileUri $fileUrl1, $fileUrl2 -Run 'file.ps1' | Update-AzureVM
 
+
 ### 從 Azure 入口網站加入自訂指令碼擴充功能
 
-瀏覽至 VM 中 <a href="https://portal.azure.com/ " target="_blank">Azure 入口網站 </a> 然後藉由指定要執行的指令碼檔案中加入延伸模組。
+瀏覽至 VM 中 <a href="https://portal.azure.com/ " target="_blank">Azure 入口網站 </a> 然後藉由指定要執行的指令碼檔案加入擴充功能。
 
   ![][5]
 
@@ -90,7 +90,6 @@ Windows 的自訂指令碼擴充功能可讓您在遠端 VM 上執行 PowerShell
 
 若要了解如何搭配範本使用自訂指令碼擴充功能，請參閱文件 [此處](virtual-machines-extensions-customscript-with template.md)。
 
-
-
-[5]: ./media/virtual-machines-extensions-customscript/addcse.png 
+<!--Image references-->
+[5]: ./media/virtual-machines-extensions-customscript/addcse.png
 

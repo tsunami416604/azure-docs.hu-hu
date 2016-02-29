@@ -16,7 +16,6 @@
     ms.date="10/20/2015"
     ms.author="glenga"/>
 
-
 # 行動服務概念
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -27,21 +26,19 @@
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
-[概觀主題](https://msdn.microsoft.com/library/azure/jj193167.aspx) 說明優點使用行動服務和工作可以是在 Azure 傳統入口網站中執行。 一般行動服務以及如何在您的應用程式中使用行動服務的範例的詳細資訊，請參閱 [行動服務教學課程和資源](https://azure.microsoft.com/documentation/services/mobile-services/)。
+ [概觀主題](https://msdn.microsoft.com/library/azure/jj193167.aspx) 說明優點使用行動服務和工作可以是在 Azure 傳統入口網站中執行。 一般行動服務以及如何在您的應用程式中使用行動服務的範例的詳細資訊，請參閱 [行動服務教學課程和資源](https://azure.microsoft.com/documentation/services/mobile-services/)。
 
-## 組態
-
+##組態
 下列主題提供建立、刪除及設定行動服務的相關資訊：
 
 - [建立行動服務](https://msdn.microsoft.com/library/azure/jj193169.aspx)
 - [刪除行動服務](https://msdn.microsoft.com/library/azure/jj193173.aspx)
-- [管理金鑰](https://msdn.microsoft.com/library/azure/jj193164.aspx)
+- [Manage keys](https://msdn.microsoft.com/library/azure/jj193164.aspx)
 - [變更資料庫](https://msdn.microsoft.com/library/azure/jj193170.aspx)
 - [調整行動服務](https://msdn.microsoft.com/library/azure/jj193178.aspx)
 - [設定身分識別](https://msdn.microsoft.com/library/azure/jj591527.aspx)
 
-## 資料存取
-
+##資料存取
 下列主題提供存取和變更儲存在行動服務中的應用程式資料的相關資訊：
 
 - [使用資料](https://msdn.microsoft.com/library/azure/jj631634.aspx)
@@ -53,31 +50,27 @@
 - [管理資料行](https://msdn.microsoft.com/library/azure/jj193177.aspx)
 - [系統資料行](https://msdn.microsoft.com/library/azure/dn518225.aspx)
 
-## 推播通知
-
+##推播通知
 下列主題提供在行動服務中設定推播通知的相關資訊：
 
 - [設定推播通知](https://msdn.microsoft.com/library/azure/jj591526.aspx)
 - [註冊端點](https://msdn.microsoft.com/library/azure/dn771685.aspx)
 - [傳送推播通知](https://msdn.microsoft.com/library/azure/jj631630.aspx)
 
-## Scheduled jobs
-
+##Scheduled jobs
 下列主題提供使用排程工作的相關資訊：
 
-- [排程工作](https://msdn.microsoft.com/library/azure/jj860528.aspx)
+- [排程作業](https://msdn.microsoft.com/library/azure/jj860528.aspx)
 - [設定工作](https://msdn.microsoft.com/library/azure/jj899833.aspx)
-- [註冊作業指令碼](https://msdn.microsoft.com/library/azure/jj899832.aspx)
+- [註冊工作指令碼](https://msdn.microsoft.com/library/azure/jj899832.aspx)
 
-## 自訂 API
-
+##自訂 API
 下列主題提供在行動服務中定義自訂 HTTP 端點的相關資訊：
 
 - [自訂 API](https://msdn.microsoft.com/library/azure/dn280974.aspx)
 - [內容類型和標頭](https://msdn.microsoft.com/library/azure/dn303369.aspx)
 
-## JavaScript 後端伺服器指令碼
-
+##JavaScript 後端伺服器指令碼
 下列主題提供如何在 JavaScript 後端行動服務中使用伺服器指令碼來執行工作的範例：
 
 - [使用指令碼](https://msdn.microsoft.com/library/azure/jj193174.aspx)
@@ -92,10 +85,6 @@
 - [限制對管理員的存取](https://msdn.microsoft.com/library/azure/jj712649.aspx)
 - [錯誤處理](https://msdn.microsoft.com/library/azure/jj631632.aspx)
 - [快速鍵](https://msdn.microsoft.com/library/azure/jj552469.aspx)
-
-
-
-
 
 
 

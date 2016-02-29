@@ -15,8 +15,8 @@
    ms.date="12/02/2015"
    ms.author="joaoma" />
 
-
 # 停用、啟用或刪除設定檔
+
 
 您可以停用現有的流量管理員設定檔，它就不會將使用者要求轉介到其設定的端點。 當您停用流量管理員設定檔時，設定檔本身和設定檔內含的資訊將保持不變，而且可在流量管理員介面中進行編輯。 當您想要重新啟用該設定檔時，可以在 Azure 入口網站中輕鬆執行，轉介就會恢復。 當您在 Azure 入口網站中建立流量管理員設定檔時，它會自動啟用。
 
@@ -36,14 +36,15 @@
 
 ## 刪除設定檔
 
+
 1. 請確定網際網路 DNS 伺服器上的 DNS 資源記錄所使用的 CNAME 資源記錄，不再指向流量管理員設定檔的網域名稱。
-1. 選取您想要刪除的設定檔。 若要選取設定檔，請在 [流量管理員] 頁面上反白顯示設定檔，方法是
+1. 選取您想要刪除的設定檔。 若要選取設定檔，請在 [流量管理員] 頁面上反白顯示設定檔，方法是 
 1. 按一下設定檔旁邊的資料行。 請不要按設定檔的名稱或名稱旁的箭號，這樣會帶您到設定檔的設定頁面。
 1. 選取設定檔之後，按一下頁面底部的 [刪除]。
 
 ## 後續步驟
 
-[流量管理員-停用或啟用端點](disable-or-enable-an-endpoint.md)
+[流量管理員 - 停用或啟用端點](disable-or-enable-an-endpoint.md)
 
 [設定容錯移轉路由方法](traffic-manager-configure-failover-routing-method.md)
 
@@ -51,10 +52,6 @@
 
 [設定效能路由方法](traffic-manager-configure-performance-routing-method.md)
 
-[疑難排解流量管理員已降級狀態](traffic-manager-troubleshooting-degraded.md)
-
-
-
-
+[疑難排解流量管理員的已降級狀態](traffic-manager-troubleshooting-degraded.md)
 
 

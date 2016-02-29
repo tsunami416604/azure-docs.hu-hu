@@ -17,7 +17,6 @@
     ms.author="glenga"/>
 
 
-
 # 使用混合式連接從 Azure 行動服務連接至內部部署 SQL Server
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -29,11 +28,11 @@
 
 在本教學課程中，您將了解如何修改 .NET 後端行動服務，以使用本機內部部署 SQL Server 資料庫，而不要使用隨著您的服務佈建的預設 Azure SQL Database。 中所述，針對 JavaScript 後端行動服務，也支援混合式連線 [這篇文章](http://blogs.msdn.com/b/azuremobile/archive/2014/05/12/connecting-to-an-external-database-with-node-js-backend-in-azure-mobile-services.aspx)。
 
-## 必要條件
+##必要條件##
 
 本教學課程要求您具備下列項目：
 
-- **現有.NET 後端行動服務** <br/>遵循本教學課程 [開始使用行動服務] 來建立和下載新的.NET 後端行動服務，從 [Azure 傳統入口網站]。
+- **現有的.NET 後端行動服務** <br/>遵循本教學課程 [開始使用行動服務] 來建立和下載新的.NET 後端行動服務，從 [Azure 傳統入口網站]。
 
 [AZURE.INCLUDE [hybrid-connections-prerequisites](../../includes/hybrid-connections-prerequisites.md)]
 
@@ -57,7 +56,7 @@
 
     若要了解如何下載.NET 後端專案，請參閱 [開始使用行動服務](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md) 。
 
-2. 在 [方案總管] 中開啟 Web.config 檔案，找出 **connectionStrings** 區段，加入類似下面內容的新 SqlClient 項目，此項目指向內部部署 SQL Server 資料庫：
+2. 在 [方案總管] 中，開啟 Web.config 檔案中，找出 **connectionStrings** 區段中，如下所示，它會指向內部部署 SQL Server 資料庫的新 SqlClient 項目:
 
         <add name="OnPremisesDBConnection"
          connectionString="Data Source=OnPremisesServer,1433;
@@ -67,12 +66,13 @@
          MultipleActiveResultSets=True"
          providerName="System.Data.SqlClient" />
 
-    請務必取代 `< * * secure_password * * >` 為您建立的密碼與這個字串中 *HbyridConnectionLogin*。
+    請務必取代 `<**secure_password**>` 為您建立的密碼與這個字串中 *HbyridConnectionLogin*。
 
-3. 在 Visual Studio 中按一下 [儲存]****，以儲存 Web.config 檔案。
-    > [AZURE.NOTE]在本機電腦上執行時，會使用此連線設定。 在 Azure 中執行時，則會以入口網站中所定義的連線設定覆寫這個設定。
+3. 按一下 [ **儲存** Visual Studio 儲存 Web.config 檔案中。
 
-4. 展開 **Models** 資料夾，然後開啟以 *Context.cs* 結尾的資料模型檔案。
+    > [AZURE.NOTE]本機電腦上執行時，會使用此連線設定。 在 Azure 中執行時，則會以入口網站中所定義的連線設定覆寫這個設定。
+
+4. 展開 **模型** 資料夾，然後開啟資料模型檔案，以 *Context.cs*。
 
 6. 修改 **DbContext** 執行個體建構函式將值傳遞 `OnPremisesDBConnection` 基底 **DbContext** 建構函式，類似下列的程式碼片段:
 
@@ -86,7 +86,7 @@
 
     現在，服務將會使用新的 SQL Server 資料庫連線。
 
-## 在本機測試資料庫連線
+##在本機測試資料庫連線
 
 在發佈至 Azure 並使用混合式連線之前，最好先確定資料庫連線能夠在本機執行時正常運作。 如此一來，您就能更輕鬆地診斷並更正任何連線問題，然後再重新發佈並開始使用混合式連線。
 
@@ -98,7 +98,7 @@
 
 1. 在 [Azure 傳統入口網站]，瀏覽至您的行動服務。
 
-1. 按一下 [設定]**** 索引標籤，然後找出 [連接字串]**** 區段。
+1. 按一下 [ **設定** 索引標籤，然後找出 **連接字串** 一節。
 
     ![Connection string for on-premises database](./media/mobile-services-dotnet-backend-hybrid-connections-get-started/11.png)
 
@@ -106,35 +106,35 @@
 
         Server=OnPremisesServer,1433;Database=OnPremisesDB;User ID=HybridConnectionsLogin;Password=<**secure_password**>
 
-    取代 `< * * secure_password * * >` 使用安全密碼 *HybridConnectionLogin*。
 
-2. 按下 [**儲存**]，以儲存您剛剛建立的混合式連線和連接字串。
+    取代 `<**secure_password**>` 使用安全密碼 *HybridConnectionLogin*。
+
+2. 按下 **儲存** 以儲存混合式連線和連接字串您剛才所建立。
 
 3. 使用 Visual Studio，將更新過的行動服務專案發佈至 Azure。
 
     服務啟動頁面隨即顯示。
 
-4. 和之前一樣使用啟動頁面上的 [立即試用]**** 按鈕，或使用連線到行動服務的用戶端應用程式，叫用可產生資料庫變更的某些作業。
-    >[AZURE.NOTE]當您使用 [**立即試用**] 按鈕來啟動說明 API 頁面時，請記得提供您的應用程式金鑰來做為密碼 (使用者名稱則為空白)。
+4. 使用 **立即試用** 和之前一樣的起始頁] 按鈕，或使用連接到您的行動服務用戶端應用程式，叫用可產生資料庫變更的某些作業。
 
-4. 在 SQL Server Management Studio 中，連線到 SQL Server 執行個體，開啟物件總管，然後依序展開 [**OnPremisesDB**] 資料庫和 [**表格**]。
+    >[AZURE.NOTE]當您使用 **立即試用** 按鈕來啟動說明 API 頁面時，請記得提供您的應用程式金鑰為密碼 (使用者名稱空白)。
 
-5. 以滑鼠右鍵按一下 **hybridService1.TodoItems** 資料表，然後選擇 [Select Top 1000 Rows]**** 以檢視結果。
+4. 在 SQL Server Management Studio，連接到您的 SQL Server 執行個體，開啟 [物件總管] 中，展開 **OnPremisesDB** 資料庫中，展開 **資料表**。
+
+5. 以滑鼠右鍵按一下 **hybridService1.TodoItems** 資料表，然後選擇 **Select Top 1000 Rows** 以檢視結果。
 
     請注意，您的行動服務已使用混合式連接，將應用程式所產生的變更儲存到內部部署資料庫。
 
-## 另請參閱
+##另請參閱##
 
 + [混合式連線網站](../../services/biztalk-services/)
 + [混合式連線概觀](../integration-hybrid-connection-overview.md)
-+ [BizTalk 服務: 儀表板、 監視器、 調整、 設定和混合式連線索引標籤](../biztalk-dashboard-monitor-scale-tabs.md)
-+ [如何對.NET 後端行動服務進行資料模型變更](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)
++ [BizTalk 服務：儀表板、監視、調整、設定和混合式連線索引標籤](../biztalk-dashboard-monitor-scale-tabs.md)
++ [如何對 .NET 後端行動服務進行資料模型變更](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)
+
+<!-- IMAGES -->
 
 
-
-
-
-
-[azure classic portal]: http://manage.windowsazure.com 
-[get started with mobile services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md 
-
+<!-- Links -->
+[Azure classic portal]: http://manage.windowsazure.com
+[Get started with Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md

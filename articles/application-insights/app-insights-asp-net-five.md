@@ -15,14 +15,13 @@
     ms.date="11/11/2015" 
     ms.author="awills"/>
 
-
 # ASP.NET 5 的 Application Insights
 
 Visual Studio Application Insights 可讓您監視 Web 應用程式的可用性、效能和使用情形。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
 
 ![範例](./media/app-insights-asp-net-five/sample.png)
 
-您必須使用訂閱 [Microsoft Azure](http://azure.com)。 使用 Microsoft 帳戶登入，可能是針對 Windows、XBox Live 或其他 Microsoft 雲端服務具備的帳戶。
+您必須使用訂閱 [Microsoft Azure](http://azure.com)。 使用 Microsoft 帳戶登入，可能是針對 Windows、XBox Live 或其他 Microsoft 雲端服務具備的帳戶。 
 
 
 ## 開始使用
@@ -33,7 +32,7 @@ Visual Studio Application Insights 可讓您監視 Web 應用程式的可用性�
 
 登入 [Microsoft Azure 入口網站](https://portal.azure.com) ，並瀏覽您建立監視應用程式的資源。
 
-在另一個瀏覽器視窗中，使用您的應用程式一段時間。 您會看到資料出現在 Application Insights 圖表。 (您可能需要按一下 [重新整理])。 在您的開發過程只會有少量的資料，但是當您發行應用程式並有許多使用者時，這些圖表就會真正活躍起來。
+在另一個瀏覽器視窗中，使用您的應用程式一段時間。 您會看到資料出現在 Application Insights 圖表。 (您可能需要按一下 [重新整理])。在您的開發過程只會有少量的資料，但是當您發行應用程式並有許多使用者時，這些圖表就會真正活躍起來。 
 
 [概觀] 頁面會顯示效能圖表您最可能會有興趣: 伺服器回應時間、 頁面載入時間和失敗要求的計數。 按一下任一圖表以查看更多的圖表和資料。
 
@@ -52,7 +51,7 @@ Visual Studio Application Insights 可讓您監視 Web 應用程式的可用性�
 
 * [監視相依性](app-insights-dependencies.md) 查看如果 REST、 SQL 或其他外部資源會減緩您。
 * [使用 API](app-insights-api-custom-events-metrics.md) 傳送您自己的事件和度量的應用程式的效能和使用方式的更詳細檢視。
-* [可用性測試](app-insights-monitor-web-app-availability.md) 檢查您不斷從世界各地的應用程式。
+* [可用性測試](app-insights-monitor-web-app-availability.md) 檢查您不斷從世界各地的應用程式。 
 
 
 ## 開放原始碼
@@ -60,23 +59,22 @@ Visual Studio Application Insights 可讓您監視 Web 應用程式的可用性�
 [讀取和貢獻程式碼](https://github.com/Microsoft/ApplicationInsights-aspnet5)
 
 
+<!--Link references-->
 
-
-
-[api]: app-insights-api-custom-events-metrics.md 
-[apikey]: app-insights-api-custom-events-metrics.md#ikey 
-[availability]: app-insights-monitor-web-app-availability.md 
-[azure]: ../insights-perf-analytics.md 
-[client]: app-insights-javascript.md 
-[detect]: app-insights-detect-triage-diagnose.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[knowusers]: app-insights-overview-usage.md 
-[metrics]: app-insights-metrics-explorer.md 
-[netlogs]: app-insights-asp-net-trace-logs.md 
-[perf]: app-insights-web-monitor-performance.md 
-[portal]: http://portal.azure.com/ 
-[qna]: app-insights-troubleshoot-faq.md 
-[roles]: app-insights-resources-roles-access-control.md 
-[start]: app-insights-overview.md 
+[api]: app-insights-api-custom-events-metrics.md
+[apikey]: app-insights-api-custom-events-metrics.md#ikey
+[availability]: app-insights-monitor-web-app-availability.md
+[azure]: ../insights-perf-analytics.md
+[client]: app-insights-javascript.md
+[detect]: app-insights-detect-triage-diagnose.md
+[diagnostic]: app-insights-diagnostic-search.md
+[knowUsers]: app-insights-overview-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[netlogs]: app-insights-asp-net-trace-logs.md
+[perf]: app-insights-web-monitor-performance.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
+[roles]: app-insights-resources-roles-access-control.md
+[start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md 
 

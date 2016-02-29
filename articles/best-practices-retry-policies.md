@@ -17,16 +17,16 @@
    ms.date="04/09/2015"
    ms.author="masashin"/>
 
-
 # NuGet 封裝
 
-<p class="lead">
-</p>
+<p class="lead">當多個元件開始通訊時，會變成暫時性失敗
+對於智慧型處理更重要。 由處理暫時性錯誤處理的工作
+重試原則 NuGet 套件可協助處理單一執行個體內的重試。</p>
 
-> 這份文件的基礎在於作為概念證明的草稿。
->  
+> 這份文件的基礎在於作為概念證明的草稿。 不是實際
+  檢閱過的指引。
 
-
+模式與作法 `TransientFaultHandling` 程式碼建議用於一般重試原則工作。
 
 ```
 Install-Package EnterpriseLibrary.WindowsAzure.TransientFaultHandling
@@ -36,11 +36,11 @@ Install-Package EnterpriseLibrary.WindowsAzure.TransientFaultHandling
 
 區段包含重試功能的組態資訊：
 
- 參數| 說明
+參數            | 說明
 -------------------- | ----------------------
- MaximumExecutionTime| 要求的最大執行時間，包含所有可能的重試嘗試。
- ServerTimeOut| 要求的伺服器逾時間隔
- RetryPolicy| 重試原則。請參閱下方 [原則] 區段
+MaximumExecutionTime | 要求的最大執行時間，包含所有可能的重試嘗試。
+ServerTimeOut        | 要求的伺服器逾時間隔
+RetryPolicy          | 重試原則。 請參閱下方 [原則] 區段
 
 ```csharp
 /// <summary>
@@ -83,15 +83,15 @@ __方法：__
 
 以指數方式增加後續嘗試之間的輪詢間隔。 將隨機載入 (+/-20%) 新增至輪詢間隔以避免所有用戶端同步重試
 
-__組態：__
+__組態:__
 
- 參數| 說明
+參數            | 說明
 -------------------- | -------------------------------------------------------
- maxAttempt| 重試嘗試的次數。
- deltaBackoff| 重試之間的輪詢間隔。此時間範圍的倍數將用於後續的重試次數。
- MinBackoff| 新增從 deltaBackoff 計算的所有重試間隔。
- FastFirst| 立即進行第一次重試
- MaxBackoff| 如果計算的重試間隔大於 MaxBackoff，則會使用 MaxBackoff。無法變更此值。
+maxAttempt           | 重試嘗試的次數。
+deltaBackoff         | 重試之間的輪詢間隔。 此時間範圍的倍數將用於後續的重試次數。
+MinBackoff           | 新增從 deltaBackoff 計算的所有重試間隔。
+FastFirst            | 立即進行第一次重試
+MaxBackoff           | 如果計算的重試間隔大於 MaxBackoff，則會使用 MaxBackoff。 無法變更此值。
 
 __實作邏輯：__
 
@@ -114,13 +114,13 @@ __方法：__
 
 執行指定的重試次數，使用重試之間的指定固定時間間隔。 將隨機載入 (+/-20%) 新增至輪詢間隔以避免所有用戶端同步重試。
 
-__組態：__
+__組態:__
 
- 參數| 說明
+參數            | 說明
 -------------------- | -------------------------------------------------------
- maxAttempt| 重試嘗試的次數。
- deltaBackoff| 重試之間的輪詢間隔。
- FastFirst| 立即進行第一次重試
+maxAttempt | 重試嘗試的次數。
+deltaBackoff | 重試之間的輪詢間隔。
+FastFirst | 立即進行第一次重試
 
 __實作邏輯：__
 
@@ -143,7 +143,7 @@ __方法：__
 執行指定的重試次數，並使用根據回應標頭中服務所傳遞的錯誤程式碼/中繼資料所計算的輪詢間隔
 
 
-__組態：__
+__組態:__
 
 無法設定
 
@@ -153,7 +153,7 @@ __實作邏輯：__
 
 __斷路：__
 
-
+根據 [斷路器](http://msdn.microsoft.com/library/dn589784.aspx)
 
 ## 擴充性
 
@@ -182,19 +182,15 @@ public interface IRetryPolicy
 
 使用 EventSource 作為 ETW 事件的記錄重試。 以下是應該針對每次重試嘗試記錄的欄位
 
- 參數| 說明
+參數            | 說明
 -------------------- | -------------------------------------------------------
- requestId| ""
- policyType| "RetryExponential"
- operation| 
- operationStartTime| "9/5/2014 10:00:13 PM"
- operationEndTime| "9/5/2014 10:00:14 PM"
- iteration| "0"
- iterationSleep| "00:00:00.1000000"
- lastExceptionType| "Microsoft.ServiceBus.Messaging.MessagingCommunicationException"
- exceptionMessage| "無法解析遠端名稱：'retry-guidance-tests.servicebus.windows.net'.TrackingId:6a26f99c-dc6d-422e-8565-f89fdd0d4fe3,TimeStamp:9/5/2014 10:00:13 PM"
-
-
-
-
+requestId | ""
+policyType | "RetryExponential"
+operation | 「 Get: https://retry-guidance-tests.servicebus.windows.net/TestQueue/?api-version=2014-05 」
+operationStartTime | "9/5/2014 10:00:13 PM"
+operationEndTime | "9/5/2014 10:00:14 PM"
+iteration | "0"
+iterationSleep | "00:00:00.1000000"
+lastExceptionType | "Microsoft.ServiceBus.Messaging.MessagingCommunicationException"
+exceptionMessage | "無法解析遠端名稱：'retry-guidance-tests.servicebus.windows.net'.TrackingId:6a26f99c-dc6d-422e-8565-f89fdd0d4fe3,TimeStamp:9/5/2014 10:00:13 PM"
 

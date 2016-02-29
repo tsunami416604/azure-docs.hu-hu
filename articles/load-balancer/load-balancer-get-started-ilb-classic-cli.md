@@ -17,7 +17,6 @@
    ms.date="11/09/2015"
    ms.author="joaoma" />
 
-
 # 開始使用 Azure CLI 建立內部負載平衡器 (傳統)
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
@@ -45,7 +44,7 @@
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
 
-2. 執行 **azure config mode** 命令，以切換為傳統模式，如下所示。
+2. 執行 **azure 組態模式** 命令以切換到傳統模式，如下所示。
 
         azure config mode asm
 
@@ -54,19 +53,18 @@
         info:    New mode is asm
 
 
-
-## 建立端點與負載平衡器集
+## 建立端點與負載平衡器集 
 
 此案例假設在稱為「mytestcloud」的雲端服務中，具有虛擬機器「DB1」和「DB2」。 這些虛擬機器使用稱為我的「testvnet」，且具子網路「subnet-1」的虛擬網路。
 
 本指南將使用連接埠 1433 做為私用連接埠與本機連接埠，以建立內部負載平衡器集。
 
-此為常見案例：若您在後端具有 SQL 虛擬機器，則可使用內部負載平衡器確保不會透過公用 IP 位址直接公開資料庫伺服器。
+此為常見案例：若您在後端具有 SQL 虛擬機器，則可使用內部負載平衡器確保不會透過公用 IP 位址直接公開資料庫伺服器。 
 
 
-### 步驟 1
+### 步驟 1 
 
-建立內部負載平衡器設定使用 `azure 網路服務內部的負載平衡器新增`。
+使用 `azure network service internal-load-balancer add` 建立內部負載平衡器集。 
 
      azure service internal-load-balancer add -r mytestcloud -n ilbset -t subnet-1 -a 192.168.2.7
 
@@ -75,11 +73,11 @@
 **-r** -雲端服務名稱<BR>
 **-n** -內部負載平衡器名稱<BR>
 **-t** -子網路名稱 (您將新增至內部負載平衡器的虛擬機器的相同子網路)<BR>
-**-** -(選擇性) 加入私用的靜態 IP 位址<BR>
+**-a** -(選擇性) 加入私用的靜態 IP 位址<BR>
 
-簽出 `azure 服務內部的負載平衡器-說明` 如需詳細資訊。
-
-您可以檢查內部負載平衡器屬性，使用命令 `azure 服務的內部負載平衡清單` *雲端服務名稱*。
+如需詳細資訊，請參閱 `azure service internal-load-balancer --help`。 
+ 
+您可以檢查內部負載平衡器屬性，使用命令 `azure service internal-load-balancer list` *雲端服務名稱*。 
 
 以下遵循輸出範例：
 
@@ -91,7 +89,8 @@
     data:    ilbset  Private  subnet-1    192.168.2.7
     info:    service internal-load-balancer list command OK
 
-## 步驟 2
+
+## 步驟 2 
 
 您可在新增第一個端點時，設定內部負載平衡器集。 您會在此步驟中，將端點、虛擬機器和探查連接埠與內部負載平衡器集建立關聯。
 
@@ -107,7 +106,7 @@
 **-i** -內部負載平衡器名稱 <BR>
 
 
-## 步驟 3
+## 步驟 3 
 
 請確認負載平衡器組態使用 `azure vm show` *虛擬機器名稱*
 
@@ -162,29 +161,28 @@
     data:    Network Endpoints 2 loadBalancerName "ilbset"
     info:    vm show command OK
 
+
 ## 為虛擬機器建立遠端桌面端點
 
-您可以從特定虛擬機器使用的本機連接埠的公用連接埠轉送網路流量建立遠端桌面端點 `azure vm 端點，請建立`。
+您可以使用 `azure vm endpoint create` 建立遠端桌面端點，針對特定的虛擬機器將網路流量從公用連接埠轉送至本機連接埠。
 
     azure vm endpoint create web1 54580 -k 3389 
 
+
 ## 從負載平衡器移除虛擬機器
 
-您可刪除關聯的端點，以將虛擬機器自內部負載平衡器集移除。 一旦移除端點，虛擬機器就不再屬於負載平衡器集。
+您可刪除關聯的端點，以將虛擬機器自內部負載平衡器集移除。 一旦移除端點，虛擬機器就不再屬於負載平衡器集。 
 
- 使用上述範例中，您可以移除使用命令來建立內部負載平衡器 「 ilbset 」 的虛擬機器 」 DB1 」 的端點 `azure vm 端點刪除`。
+ 透過上述範例，您可以使用命令 `azure vm endpoint delete` 從內部負載平衡器「ilbset」移除針對虛擬機器「DB1」所建立的端點。
 
     azure vm endpoint delete DB1 tcp-1433-1433
 
-簽出 `azure vm 端點-說明` 如需詳細資訊。
+
+如需詳細資訊，請參閱 `azure vm endpoint --help`。 
 
 
 ## 後續步驟
 
-[設定負載平衡器分配模式使用來源 IP 同質性](load-balancer-distribution-mode.md)
+[使用來源 IP 同質性設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
-
-
-
-

@@ -17,18 +17,21 @@
                 ms.author="markusvi"/>
 
 
-
 # 什麼是 Azure Active Directory？
+
+
+
+
 
 Azure Active Directory (Azure AD) 是 Microsoft 的多租用戶雲端型目錄和身分識別管理服務。
 
-
+對 IT 系統管理員，Azure AD 提供經濟實惠、 易於使用的解決方案，讓員工和商務夥伴的單一登入 (SSO) 存取權 [數千個雲端 SaaS 應用程式](http://blogs.technet.com/b/ad/archive/2014/09/03/50-saas-apps-now-support-federation-with-azure-ad.aspx) 如 Office365、 Salesforce.com、 DropBox 和 Concur。
 
 對於應用程式開發人員而言，Azure AD 可讓您專注於建置應用程式，快速而簡單地整合數百萬個全球各地組織所使用的世界級身分識別管理解決方案。
 
 Azure AD 也包含一組完整的身分識別管理功能，包括多重要素驗證、裝置註冊、自助式密碼管理、自助式群組管理、特殊權限的帳戶管理、角色型存取控制、應用程式使用量監視、豐富的稽核，以及安全性監視和警示。 這些功能可以協助保護雲端型應用程式的安全、簡化 IT 程序、降低成本，以及協助確保達到公司的規範目標。
 
-
+此外，只要 [四次按鍵](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx), ，Azure AD 可以與現有的 Windows Server Active Directory 整合，讓組織能夠利用其現有內部部署身分識別投資，來管理存取雲端型 SaaS 應用程式。
 
 如果您是 Office365、Azure 或 Dynamics CRM Online 的客戶，您可能不知道您已經在使用 Azure AD。 每個 Office365、Azure 和 Dynamics CRM 租用戶實際上都已經是 Azure AD 租用戶。 只要您願意，您就可以開始使用該租用戶來為上千種整合了 Azure AD 的其他雲端應用程式管理存取權！
 
@@ -36,7 +39,7 @@ Azure AD 也包含一組完整的身分識別管理功能，包括多重要素�
 
 
 
-
+<center>![Azure AD Connect 堆疊](./media/active-directory-whatis/Azure_Active_Directory.png)
 </center>
 
 
@@ -44,7 +47,7 @@ Azure AD 也包含一組完整的身分識別管理功能，包括多重要素�
 
 Azure AD 經悉心設計，不但支援多租用戶、地理分布周全，更具有高可用性，表示您可以依賴 Azure AD 來應付最重要的商務需求。 使用世界各地具自動容錯移轉的 28 個資料中心，您能夠輕易感受到 Azure AD 非常可靠，即使資料中心中斷，您的目錄資料至少在兩個以上地域分散的資料中心都有留存複本，而且可讓您立即存取。
 
-
+如需詳細資訊，請參閱 [服務等級協定](https://azure.microsoft.com/support/legal/sla/)。
 
 
 
@@ -66,13 +69,12 @@ Azure AD 經悉心設計，不但支援多租用戶、地理分布周全，更�
 
 
 ## 如何開始使用？
-
 -   如果您是 IT 管理員：
- - 
+ - [試試看!](https://azure.microsoft.com/trial/get-started-active-directory/) -您可以免費 30 天的試用立即註冊，並在使用此連結的 5 分鐘內部署您的第一個雲端解決方案
  - 閱讀我們的〈開始使用 Azure AD〉了解秘訣和訣竅，獲得 Azure AD 租用戶並快速執行
 -   如果您是開發人員：
- - 
- - 
+ - 請查看我們 [開發人員指南](active-directory-developers-guide.md) 到 Azure Active Directory 
+ - [開始使用試用版](https://azure.microsoft.com/trial/get-started-active-directory/) – 立即註冊免費 30 天試用版，並開始使用 Azure AD 整合應用程式
 
 
 
@@ -81,29 +83,25 @@ Azure AD 經悉心設計，不但支援多租用戶、地理分布周全，更�
 我們有無數的絕佳線上資源，協助您詳細了解 Azure AD。 以下是一些很棒的文章，讓您快速入門：
 
 
-- 
+- [使用 Azure AD Connect 啟用目錄的混合式管理](active-directory-aadconnect.md)
 
-- 
+- [為連線過的項目提供額外的安全性](multi-factor-authentication.md)
 
-- 
+- [自動化使用 Azure Active Directory 對於 SaaS 應用程式的使用者佈建和解除佈建](active-directory-saas-app-provisioning.md)
 
-- 
+- [開始使用 Azure AD 報告](active-directory-reporting-getting-started.md)
 
-- 
+- [從任何地方管理您的密碼](articles/active-directory-passwords.md)
 
-- 
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](active-directory-appssoaccess-whatis.md)
 
-- 
+- [自動化使用 Azure Active Directory 對於 SaaS 應用程式的使用者佈建和解除佈建](active-directory-saas-app-provisioning.md)
 
-- 
+- [如何為內部部署應用程式提供安全的遠端存取](active-directory-application-proxy-get-started.md)
 
-- 
+- [使用 Azure Active Directory 群組來管理資源的存取權](active-directory-manage-groups.md)
 
-- 
+- [什麼是 Microsoft Azure Active Directory 授權？](active-directory-licensing-what-is.md)
 
-- 
-
-
-
-
+- [如何探索組織內使用未經批准的雲端應用程式](active-directory-cloudappdiscovery-whatis.md)
 

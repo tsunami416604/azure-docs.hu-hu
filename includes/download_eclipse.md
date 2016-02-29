@@ -1,4 +1,4 @@
-## 適用於 Eclipse 的 Azure 工具組
+##適用於 Eclipse 的 Azure 工具組
 
 必要條件：
 
@@ -8,14 +8,10 @@
 
 安裝步驟：
 
-1. 在 Eclipse 中，從 [說明]**** 功能表選取 [安裝新軟體]****。
+1. 在 Eclipse 中，從 **協助** 功能表上，選取 **安裝新軟體**。
 2. 輸入網站位置 <http://dl.msopentech.com/eclipse> 按 **Enter**。
-3. 選取要安裝的項目，然後按一下 [完成]****。
+3. 選取的項目，就按一下 **完成**。
 
-此外掛程式使用最新版本的 Azure SDK。這可以下載使用 Web Platform Installer (WebPI) 從 <http://go.microsoft.com/fwlink/?LinkID=252838>。不過，如果您沒有安裝此 SDK，則建立第一個 Azure 部署專案時，Azure Toolkit for Eclipse 會自動安裝適當版本的 Azure SDK。
-
-
-
-
+此外掛程式使用最新版本的 Azure SDK。 這可以下載使用 Web Platform Installer (WebPI) 從 <http://go.microsoft.com/fwlink/?LinkID=252838>。 不過，如果您沒有安裝此 SDK，則建立第一個 Azure 部署專案時，Azure Toolkit for Eclipse 會自動安裝適當版本的 Azure SDK。
 
 

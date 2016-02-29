@@ -15,7 +15,6 @@
    ms.date="10/22/2015"
    ms.author="bwren" />
 
-
 # Runbook 設定
 
 Azure 自動化中的每個 Runbook 具備多個有助於識別其本身及變更其記錄行為的設定。 以下會說明這些設定，後面則是如何加以修改的程序。
@@ -38,12 +37,12 @@ Azure 自動化中的每個 Runbook 具備多個有助於識別其本身及變�
 
 ### 使用 Azure 管理入口網站變更 Runbook 設定
 
-您可以在 Azure 管理入口網站中 Runbook 的 [**設定**] 頁面變更 Runbook 的設定。
+您可以變更設定，在 Azure 管理入口網站，從 runbook **設定** runbook 的頁面。
 
-1. 在 Azure 管理入口網站中，選取 [**自動化**]，然後按一下自動化帳戶的名稱。
-1. 選取 [**Runbook**] 索引標籤。
+1. 在 Azure 管理入口網站中，選取 **自動化** ，然後按一下自動化帳戶的名稱。
+1. 選取 **Runbook** ] 索引標籤。
 1. 按一下 Runbook 的名稱。
-1. 選取 [設定]**** 索引標籤。
+1. 選取 **設定** ] 索引標籤。
 
 ### 使用 Windows PowerShell 變更 Runbook 設定
 
@@ -58,10 +57,5 @@ Azure 自動化中的每個 Runbook 具備多個有助於識別其本身及變�
     Set-AzureAutomationRunbook –AutomationAccountName $automationAccountName –Name $runbookName –LogVerbose $true –Tags $tags
 
 ## 相關文章
-
-- [Runbook 輸出和訊息](../automation-runbook-output-and-messages)
-- [建立或匯入 Runbook](https://msdn.microsoft.com/library/dn643637.aspx)
-
-
-
-
+- [Runbook 輸出和訊息](../automation-runbook-output-and-messages) 
+- [建立或匯入 Runbook](https://msdn.microsoft.com/library/dn643637.aspx) 

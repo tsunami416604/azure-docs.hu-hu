@@ -16,14 +16,12 @@
    ms.date="09/03/2015"
    ms.author="abhic"/>
 
-
 # 位置限制概觀
 
 Service Fabric 可讓開發人員將服務複本的位置限制在滿足特定條件的節點。 這些條件以經過適當的服務內容特定值評估後的布林運算式表示。
 
 
 ## 功能
-
 使用位置限制可讓您：
 
 - 透過定義節點上的 NodeProperties 將不同類型的服務侷限在不同類型的節點上。
@@ -32,17 +30,12 @@ Service Fabric 可讓開發人員將服務複本的位置限制在滿足特定�
 
 
 ## 重要概念
-
-NodeProperty - 使用者或系統所定義從字串對值的對應，會隨著每個節點 (亦即 NodeName) 改變。
-
+NodeProperty-使用者或系統定義對應從字串的值會隨著每個節點，也就是 NodeName。
 
 
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
 如需詳細資訊: [應用程式案例](../service-fabric-application-scenarios)。
-
-
-
-
-
+ 
 

@@ -15,10 +15,9 @@
     ms.date="11/17/2015"
     ms.author="awills"/>
 
-
 # 設定 Azure 診斷以記錄至 Application Insights
 
-當您設定雲端服務專案或 Microsoft Azure 中的虛擬機器 [Azure 可以產生診斷記錄](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)。 您可以將此記錄傳送至 Application Insights，以便分析它與 Application Insights SDK 從應用程式內傳送的診斷和使用狀況遙測。 Azure 記錄檔會包含應用程式管理的事件，例如啟動、停止、當機，以及效能計數器。 記錄檔也會包含應用程式中對 System.Diagnostics.Trace 的呼叫。
+當您設定雲端服務專案或 Microsoft Azure 中的虛擬機器 [Azure 可以產生的診斷記錄檔](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)。 您可以將此記錄傳送至 Application Insights，以便分析它與 Application Insights SDK 從應用程式內傳送的診斷和使用狀況遙測。 Azure 記錄檔會包含應用程式管理的事件，例如啟動、停止、當機，以及效能計數器。 記錄檔也會包含應用程式中對 System.Diagnostics.Trace 的呼叫。
 
 本文詳細說明診斷擷取的組態。
 
@@ -26,18 +25,18 @@
 
 ## 取得 Application Insights 資源
 
-最佳的體驗， [將 Application Insights SDK 加入至雲端服務應用程式的每個角色](app-insights-cloudservices.md), ，或 [至任何應用程式中，您將執行您的 VM 中](app-insights-get-started.md)。 您就可以傳送要分析的診斷資料，並顯示相同的 Application Insights 資源。
+最佳的體驗， [將 Application Insights SDK 加入至雲端服務應用程式的每個角色](app-insights-cloudservices.md), ，或 [至任何應用程式中，您將執行您的 VM 中](app-insights-get-started.md)。 您就可以傳送要分析的診斷資料，並顯示相同的 Application Insights 資源。 
 
-或者，若不想使用 SDK-例如，如果應用程式已經是即時-您可以只 [建立新的 Application Insights 資源](app-insights-create-new-resource.md) Azure 入口網站中。 選擇 **Azure 診斷**做為應用程式類型。
+或者，若不想使用 SDK-例如，如果應用程式已經是即時-您可以只 [建立新的 Application Insights 資源](app-insights-create-new-resource.md) Azure 入口網站中。 選擇 **Azure 診斷** 做為應用程式類型。
 
 
 ## 將 Azure 診斷傳送至 Application Insights
 
-如果您可以更新應用程式專案，則在 Visual Studio 中選取每個角色、選擇其屬性，並且在 [設定] 索引標籤中，選取 [將診斷傳送至 Application Insights]****。
+如果您是在更新應用程式專案，然後在 Visual Studio 中，選取每個角色、 選擇其屬性，並在 [設定] 索引標籤中，選取 **將診斷傳送至 Application Insights**。 
 
-如果您的應用程式已經處於線上狀態，則使用 Visual Studio 的伺服器總管或雲端服務總管以開啟應用程式的內容。 選取 [傳送診斷至 Application Insights]****。
+如果您的應用程式已經處於線上狀態，則使用 Visual Studio 的伺服器總管或雲端服務總管以開啟應用程式的內容。 選取 **將診斷傳送至 Application Insights**。
 
-在每個案例中，您都會被詢問您建立的 Application Insights 資源的詳細資料。
+在每個案例中，您都會被詢問您建立的 Application Insights 資源的詳細資料。 
 
 [深入了解雲端服務應用程式設定 Application Insights](app-insights-cloudservices.md)。
 
@@ -45,13 +44,13 @@
 
 只在您想要選取傳送至 Application Insights 的部分記錄檔時參閱。 根據預設，會傳送所有項目，包括：Microsoft Azure 事件、效能計數器、追蹤從應用程式對 System.Diagnostics.Trace 的呼叫。
 
-Azure 診斷會將資料儲存至 Azure 儲存體資料表。 不過，您也可以在使用 Azure 診斷擴充 1.5 或更新版本時，藉由在組態中設定「接收器」和「通道」，將全部資料或資料的子集管線處理到 Application Insights。
+Azure 診斷會將資料儲存至 Azure 儲存體資料表。 不過，您也可以在使用 Azure 診斷擴充 1.5 或更新版本時，藉由在組態中設定「接收器」和「通道」，將全部資料或資料的子集管線處理到 Application Insights。 
 
 ### 將 Application Insights 設定為接收器
 
-當您使用的角色屬性來設定 [傳送資料至 Application Insights] 時，將 Azure SDK (2.8 或更新版本) 加入 `< SinksConfig >` 公開的項目 [Azure 診斷組態檔](https://msdn.microsoft.com/library/azure/dn782207.aspx) 的角色。
+當您使用的角色屬性來設定 [傳送資料至 Application Insights] 時，將 Azure SDK (2.8 或更新版本) 加入 `<SinksConfig>` 公開的項目 [Azure 診斷組態檔](https://msdn.microsoft.com/library/azure/dn782207.aspx) 的角色。
 
-`< SinksConfig >` 定義其他的接收傳送 Azure 診斷資料的位置。範例 `SinksConfig` 看起來像這樣:
+`<SinksConfig>` 會定義可以傳送 Azure 診斷資料的其他接收器位置。  範例 `SinksConfig` 如下所示：
 
 ```xml
 
@@ -64,15 +63,16 @@ Azure 診斷會將資料儲存至 Azure 儲存體資料表。 不過，您也可
       </Channels>
      </Sink>
     </SinksConfig> 
+
 ```
 
-`ApplicationInsights` 項目會指定用來識別 Azure 診斷資料傳送到其中的 Application Insights 資源的檢測金鑰。 當您選取的資源時，自動填入根據 `APPINSIGHTS_INSTRUMENTATIONKEY` 服務組態。 (如果您想要手動設定它，從資源的 [Essentials] 下拉式清單取得金鑰。)
+`ApplicationInsights` 元素指定檢測金鑰，它會識別在其中傳送 Azure 診斷資料的 Application Insights。 當您選取資源時，會根據 `APPINSIGHTS_INSTRUMENTATIONKEY` 服務組態自動填入。 (如果您想要手動設定它，從資源的 [Essentials] 下拉式清單取得金鑰。)
 
-`通道` 定義將傳送至接收的資料。 通道的行為類似篩選器。  `Loglevel` 屬性可讓您指定的通道會將傳送的記錄層級。 可用的值為: `{詳細資訊、 資訊、 警告、 錯誤、 重大}`。
+`Channels` 定義將會傳送至接收器的資料。 通道的行為類似篩選器。 `loglevel` 屬性可讓您指定通道將會傳送的記錄層級。 可用值為：`{Verbose, Information, Warning, Error, Critical}`。
 
 ### 將資料傳送到接收器
 
-將資料傳送到 Application Insights 接收器，方法是在 DiagnosticMonitorConfiguration 節點底下新增接收器屬性。 將接收器元素新增至每個節點會指定您想要從該節點及其下的任何節點收集資料，並傳送到指定的接收器。
+將資料傳送到 Application Insights 接收器，方法是在 DiagnosticMonitorConfiguration 節點底下新增接收器屬性。 將接收器元素新增至每個節點會指定您想要從該節點及其下的任何節點收集資料，並傳送到指定的接收器。 
 
 例如，由 Azure SDK 所建立的預設值是傳送所有的 Azure 診斷資料：
 
@@ -90,22 +90,22 @@ Azure 診斷會將資料儲存至 Azure 儲存體資料表。 不過，您也可
 
 請注意，我們使用我們所定義的接收器名稱，以及上面定義的通道名稱。
 
-如果您只想要傳送至 Application Insights 的詳細資訊的應用程式記錄檔，則接收屬性，以將 `記錄` 節點。
+如果只想要傳送「詳細資訊」應用程式記錄檔至 Application Insights，則會將接收器屬性新增至 `Logs` 節點。 
 
 ```xml
 
     <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
 ```
 
-您也可以在階層的不同層級的組態中包含多個接收器。 在此情況下，在階層最上層指定的接收器會做為全域設定，而在個別元素指定的接收器則做為該全域設定的覆寫。
+您也可以在階層的不同層級的組態中包含多個接收器。 在此情況下，在階層最上層指定的接收器會做為全域設定，而在個別元素指定的接收器則做為該全域設定的覆寫。 
 
-以下的公用組態檔完整範例會將所有錯誤傳送至 Application Insights (在 `DiagnosticMonitorConfiguration` 節點指定)，此外還有應用程式記錄檔的「詳細資訊」層級記錄 (在`記錄`節點指定)。
+以下的公用組態檔完整範例會將所有錯誤傳送至 Application Insights (在 `DiagnosticMonitorConfiguration` 節點指定)，此外還有應用程式記錄檔的「詳細資訊」層級記錄 (在 `Logs` 節點指定)。 
 
 ```xml
 
     <WadCfg>
      <DiagnosticMonitorConfiguration overallQuotaInMB="4096"
-       sinks="ApplicationInsights.MyTopDiagData"> 
+       sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent to this channel -->
       <DiagnosticInfrastructureLogs />
       <PerformanceCounters>
         <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" sinks="ApplicationInsights.MyLogData/>
@@ -117,7 +117,7 @@ Azure 診斷會將資料儲存至 Azure 儲存體資料表。 不過，您也可
       </WindowsEventLog>
       <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose"
             sinks="ApplicationInsights.MyLogData"/> 
-       
+       <!-- This specific info sent to this channel -->
      </DiagnosticMonitorConfiguration>
 
      <SinksConfig>
@@ -136,19 +136,15 @@ Azure 診斷會將資料儲存至 Azure 儲存體資料表。 不過，您也可
 
 對於這項功能有一些要注意的限制：
 
-* 通道只是為了配合記錄類型 (而不是效能計數器) 使用。 如果您對效能計數器元素指定通道，將會忽略它。
-* 通道的記錄層級不能超過 Azure 診斷所要收集的記錄層級。 例如：您不能在「記錄」元素中收集「應用程式記錄」錯誤，並且嘗試傳送「詳細資訊」記錄至 Application Insight 同步處理。 scheduledTransferLogLevelFilter 屬性一律必須收集與您正嘗試傳送到接收器的記錄相等或更多個記錄。
-* 您無法將 Azure 診斷擴充收集的任何 blob 資料傳送至 Application Insights。 例如，目錄節點下指定的任何項目。 針對損毀傾印，實際損毀傾印將仍可傳送至 blob 儲存體，並只會將損毀傾印所產生的通知傳送至 Application Insights。
+* 通道只是為了配合記錄類型 (而不是效能計數器) 使用。 如果您對效能計數器元素指定通道，將會忽略它。 
+* 通道的記錄層級不能超過 Azure 診斷所要收集的記錄層級。 例如：您不能在「記錄」元素中收集「應用程式記錄」錯誤，並且嘗試傳送「詳細資訊」記錄至 Application Insight 同步處理。 scheduledTransferLogLevelFilter 屬性一律必須收集與您正嘗試傳送到接收器的記錄相等或更多個記錄。 
+* 您無法將 Azure 診斷擴充收集的任何 blob 資料傳送至 Application Insights。 例如，目錄節點下指定的任何項目。 針對損毀傾印，實際損毀傾印將仍可傳送至 blob 儲存體，並只會將損毀傾印所產生的通知傳送至 Application Insights。 
 
 ## 相關主題
 
 * [使用 Application Insights 監視 Azure 雲端服務](app-insights-cloudservices.md)
-* [使用 PowerShell 來傳送至 Application Insights 的 Azure 診斷](app-insights-powershell-azure-diagnostics.md)
+* [使用 PowerShell 將 Azure 診斷傳送至 Application Insights](app-insights-powershell-azure-diagnostics.md)
 * [Azure 診斷組態檔](https://msdn.microsoft.com/library/azure/dn782207.aspx)
-
-
-
-
 
 
 

@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用 SendGrid 電子郵件服務 (Node.js) | Microsoft Azure" 
-    description="了解如何在 Azure 使用 SendGrid 電子郵件服務傳送電子郵件。程式碼範例以 Node.js API 撰寫。" 
+    description="了解如何在 Azure 使用 SendGrid 電子郵件服務傳送電子郵件。 程式碼範例以 Node.js API 撰寫。" 
     services="" 
     documentationCenter="nodejs" 
     authors="erikre" 
@@ -15,14 +15,13 @@
     ms.topic="article" 
     ms.date="08/31/2015" 
     ms.author="erikre"/>
-
 # 如何使用 SendGrid 透過 Node.js 傳送電子郵件
 
 本指南示範如何使用 SendGrid 電子郵件服務在 Azure 上
 執行常見的程式設計工作。 相關範例是以
 Node.js API 撰寫。 涵蓋的案例包括 **建構電子郵件**,，
 **傳送電子郵件**, ，**新增附件**, ，**使用篩選器**, ，並
-**更新屬性**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，
+**正在更新內容**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，
 電子郵件，請參閱 [下一步](#next-steps) 一節。
 
 ## 什麼是 SendGrid 電子郵件服務？
@@ -59,7 +58,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
 
     var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 
-SendGrid 模組會匯出 **SendGrid** 和 **Email** 函數。
+SendGrid 模組會匯出 **SendGrid** 和 **電子郵件** 函式。
 **SendGrid** 負責透過 Web API 傳送電子郵件 
 雖然 **電子郵件** 封裝電子郵件訊息。
 
@@ -86,12 +85,12 @@ SendGrid 模組會匯出 **SendGrid** 和 **Email** 函數。
 無法支援 HTML 訊息的用戶端提供文字內容的非失誤性後援。
 
 如需有關 Email 函數所支援之所有屬性的詳細資訊，
-請參閱 [sendgrid-nodejs []][]。
+請參閱 [sendgrid-nodejs] []。
 
 ## 如何：傳送電子郵件
 
 使用電子郵件函數建立電子郵件訊息後，您可以
-使用 SendGrid 所提供的 Web API 加以傳送。
+使用 SendGrid 所提供的 Web API 加以傳送。 
 
 ### Web API
 
@@ -113,11 +112,11 @@ sendgrid.send({
 });
 `````
 
-## 如何：新增附件
+## How to: Add an Attachment
 
-您可以透過在
-在路徑 **檔案** 屬性。 下列範例示範如何
-傳送附件：
+Attachments can be added to a message by specifying the file name(s) and
+path(s) in the **files** property. The following example demonstrates
+sending an attachment:
 
     sendgrid.send({
         to: 'john@contoso.com',
@@ -136,22 +135,22 @@ sendgrid.send({
         ],
     });
 
-> [AZURE.NOTE] 使用 **files** 屬性時，必須要能夠透過
-透過 [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile)。 如果您想要附加的檔案裝載於 Azure 儲存體中 (例如 Blob 容器中)，您就必須先將該檔案複製到本機儲存體或 Azure 磁碟機，才能使用 **files** 屬性以附件形式傳送它。
+> [AZURE.NOTE] When using the **files** property, the file must be accessible
+through [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). If the file you wish to attach is hosted in Azure Storage, such as in a Blob container, you must first copy the file to local storage or to an Azure drive before it can be sent as an attachment using the **files** property.
 
-## 如何：使用篩選器來啟用頁尾和追蹤
+## How to: Use Filters to Enable Footers and Tracking
 
-SendGrid 提供了運用「篩選器」的其他電子郵件
-篩選。 這些設定可以新增至電子郵件訊息，
-以啟用特定功能，例如啟用追蹤、Google
-分析、訂閱追蹤等。 如需完整的篩選器清單，
-請參閱 [[篩選器設定]][]。
+SendGrid provides additional email functionality through the use of
+filters. These are settings that can be added to an email message to
+enable specific functionality such as enabling click tracking, Google
+analytics, subscription tracking, and so on. For a full list of filters,
+see [Filter Settings][].
 
-您可以使用 **filters** 屬性在訊息套用篩選器。
-每個篩選器都是由包含篩選器特定設定的雜湊來指定。
-下列範例示範頁尾和點選追蹤篩選器：
+Filters can be applied to a message by using the **filters** property.
+Each filter is specified by a hash containing filter-specific settings.
+The following examples demonstrate the footer and click tracking filters:
 
-### 頁尾
+### Footer
 
     var email = new sendgrid.Email({
         to: 'john@contoso.com',
@@ -168,10 +167,10 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
             }
         }
     });
-    
+
     sendgrid.send(email);
 
-### 點選追蹤
+### Click Tracking
 
     var email = new sendgrid.Email({
         to: 'john@contoso.com',
@@ -190,42 +189,41 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
     
     sendgrid.send(email);
 
-## 如何：更新電子郵件屬性
+## How to: Update Email Properties
 
-某些電子郵件屬性將會覆寫使用 **設定 * 屬性 *** 或
-附加使用 **加入 * 屬性 ***。 例如，您可以新增其他
-收件者 (使用下列方式)
+Some email properties can be overwritten using **set*Property*** or
+appended using **add*Property***. For example, you can add additional
+recipients by using
 
     email.addTo('jeff@contoso.com');
 
-或使用下列方式設定篩選器：
+or set a filter by using
 
     email.addFilter('footer', 'enable', 1);
     email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 
-如需詳細資訊，請參閱 [sendgrid-nodejs []][]。
+For more information, see [sendgrid-nodejs][].
 
-## 如何：使用其他 SendGrid 服務
+## How to: Use Additional SendGrid Services
 
-SendGrid 提供網頁式 API，可讓您透過 Azure 應用程式使用其他
-SendGrid 功能。 如需完整的
-詳細資訊，請參閱 [SendGrid API 文件 []][]。
+SendGrid offers web-based APIs that you can use to leverage additional
+SendGrid functionality from your Azure application. For full
+details, see the [SendGrid API documentation][].
 
-## 後續步驟
+## Next Steps
 
-了解 SendGrid 電子郵件服務的基本概念後，請參考
-下列連結以取得更多資訊。
+Now that you've learned the basics of the SendGrid Email service, follow
+these links to learn more.
 
--   SendGrid Node.js 模組儲存機制: [sendgrid-nodejs []][]
--   SendGrid API 文件：
+-   SendGrid Node.js module repository: [sendgrid-nodejs][]
+-   SendGrid API documentation:
     <https://sendgrid.com/docs>
--   Azure 客戶的 SendGrid 特別優惠：
+-   SendGrid special offer for Azure customers:
     [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
-
-[special offer]: https://sendgrid.com/windowsazure.html 
-[sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs 
-[filter settings]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html 
-[sendgrid api documentation]: https://sendgrid.com/docs 
-[cloud-based email service]: https://sendgrid.com/email-solutions 
-[transactional email delivery]: https://sendgrid.com/transactional-email 
+  [special offer]: https://sendgrid.com/windowsazure.html
+  [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
+  [Filter Settings]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
+  [SendGrid API documentation]: https://sendgrid.com/docs
+  [cloud-based email service]: https://sendgrid.com/email-solutions
+  [transactional email delivery]: https://sendgrid.com/transactional-email
 

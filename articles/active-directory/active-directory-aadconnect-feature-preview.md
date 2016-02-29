@@ -16,20 +16,17 @@
    ms.date="12/02/2015"
    ms.author="andkjell;billmath"/>
 
-
 # 有關預覽中之功能的其他詳細資料
-
 本主題描述如何使用預覽中目前的功能。
 
 ## 使用者回寫
-
-> [AZURE.IMPORTANT] 在 AAD Connect 的 8 月更新中，已暫時移除使用者的回寫預覽功能。 如果已啟用它，則您應該停用這個功能。
+> [AZURE.IMPORTANT] 暫時移除使用者回寫預覽功能已在 AAD Connect 年 8 月更新。 如果已啟用它，則您應該停用這個功能。
 
 使用者回寫是在早期預覽中。 只在下列情況時才能使用它：Azure AD 是所有使用者物件的來源，而內部部署 Active Directory 在您啟用此功能之前是空的。
-> [AZURE.IMPORTANT] 此功能只應該在測試環境中進行測試，因此不應該用於針對生產用途使用的 Azure AD 目錄。
+
+> [AZURE.IMPORTANT] 此功能只應在測試環境中測試，且不應用於生產用途的 Azure AD 目錄中。
 
 ## 群組回寫
-
 選用功能中群組回寫的選項可讓您將「Office 365 群組」回寫至已安裝 Exchange 的樹系。 這是永遠在雲端中受控制的新群組類型。 您可以在 outlook.office365.com 或 myapps.microsoft.com 中找到此群組類型，如下所示：
 
 
@@ -48,7 +45,6 @@
 可以找到有關 Office 365 群組的詳細資訊 [這裡](http://aka.ms/O365g)。
 
 ## 目錄擴充
-
 目錄擴充可讓您從內部部署 Active Directory 利用自己的屬性擴充 Azure AD 中的架構。
 
 只支援單一值的屬性，而且屬性中的值不能超過 250 個字元。 Metaverse 和 Azure AD 結構描述會使用選取的屬性來擴充。 在 Azure AD 中，新的應用程式會和屬性一起新增。
@@ -60,12 +56,7 @@
 ![同步處理篩選](./media/active-directory-aadconnect-feature-preview/extension4.png)
 
 ## 後續步驟
-
 繼續您 [的 Azure AD Connect 的自訂安裝](active-directory-aadconnect-get-started-custom.md)。
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
-
-
-
-
 

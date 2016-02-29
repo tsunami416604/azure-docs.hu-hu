@@ -15,7 +15,6 @@
    ms.date="12/07/2015"
    ms.author="joaoma" />
 
-
 # 指定服務組態檔中的 DNS 設定
 
 ## DNS 項目
@@ -30,7 +29,7 @@
         <DnsServer name="ID3" IPAddress="IPAddress3" />
       </DnsServers>
 
->[AZURE.WARNING] **DnsServer** 項目中的 **name** 屬性只做為參考名稱。 它不代表 DNS 伺服器的主機名稱。 每個 **DnsServer** 屬性值在整個 Microsoft Azure 訂用帳戶中必須是唯一的。
+>[AZURE.WARNING]  **名稱** 屬性中 **DnsServer** 項目只會當做參考名稱。 它不代表 DNS 伺服器的主機名稱。 每個 **DnsServer** 屬性值必須是唯一的整個 Microsoft Azure 訂用帳戶。
 
 ## 另請參閱
 
@@ -38,12 +37,8 @@
 
 [Azure 虛擬網路組態結構描述](http://go.microsoft.com/fwlink/?LinkId=248093)
 
-[設定虛擬網路使用網路組態檔](http://go.microsoft.com/fwlink/?LinkId=248094)
+[使用網路組態檔設定虛擬網路](http://go.microsoft.com/fwlink/?LinkId=248094)
 
-[關於在管理入口網站中的虛擬網路設定](http://go.microsoft.com/fwlink/?LinkId=248092)
-
-
-
-
+[關於管理入口網站中的虛擬網路設定](http://go.microsoft.com/fwlink/?LinkId=248092)
 
 

@@ -17,7 +17,6 @@
     ms.date="10/08/2015"
     ms.author="davidmu"/>
 
-
 # 使用 Azure 資源管理員範本在 Ubuntu 上部署 WordPress 伺服器
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。 您無法以傳統部署模型建立此資源。
@@ -34,13 +33,13 @@
 
 ![](./media/virtual-machines-workload-template-wordpress/azure-portal-template.png)
 
-1.  在 [範本]**** 窗格中，按一下 [儲存]****。
-2.  按一下 [參數]****。 在 [參數]**** 窗格中輸入新值、從允許的值選取，或接受預設值，然後按一下 [確定]****。
-3.  如有需要，按一下 [訂用帳戶]****，然後選取正確的 Azure 訂用帳戶。
-4.  按一下 [資源群組]****，然後選取現有的資源群組。 或者按一下 [或建立新的]****，為此工作負載建立新的資源群組。
-5.  如有需要，按一下 [資源群組位置]****，然後選取正確的 Azure 位置。
-6.  如有需要，按一下 [法律條款]****，檢閱使用範本的條款和合約。
-7.  按一下 [建立]****。
+1.  如 **範本** ] 窗格中，按一下 [ **儲存**。
+2.  按一下 [ **參數**。 在 **參數** ] 窗格中，輸入新值，從允許值選取，或接受預設值，然後按一下 **確定**。
+3.  如有需要按一下 [ **訂閱** ，然後選取正確的 Azure 訂用帳戶。
+4.  按一下 [ **資源群組** ，然後選取現有的資源群組。 或者，按一下 **或建立新** 來建立新的為此工作負載。
+5.  如有需要按一下 [ **資源群組位置** ，然後選取正確的 Azure 位置。
+6.  如有需要按一下 [ **法律條款** 檢閱條款和合約，以使用範本。
+7.  按一下 [ **建立**。
 
 視不同範本而定，可能需要一些時間讓 Azure 建置工作負載。 完成時，您在現有或新的資源群組中的 Ubuntu 上就會有新的 WordPress 伺服器。
 
@@ -48,7 +47,7 @@
 
 [AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
-在下列命令中填寫 Azure 部署名稱、新的資源群組名稱，以及 Azure 資料中心位置。移除所有項目括在引號中，包括 < 和 > 字元。
+在下列命令中填寫 Azure 部署名稱、新的資源群組名稱，以及 Azure 資料中心位置。 移除所有項目括在引號中，包括 < 和 > 字元。
 
     $deployName="<deployment name>"
     $RGName="<resource group name>"
@@ -68,7 +67,7 @@
 
 接下來，在 Azure PowerShell 提示字元中執行命令區塊。
 
-執行 **New-AzureRmResourceGroupDeployment** 命令時，系統會提示您提供一系列參數的值。 在您指定所有參數值之後，**New-AzureRmResourceGroupDeployment** 便會建立和設定虛擬機器。
+當您執行 **新增 AzureRmResourceGroupDeployment** 命令時，會提示您提供一系列參數的值。 當您指定了所有參數值， **新增 AzureRmResourceGroupDeployment** 建立及設定虛擬機器。
 
 範本執行完成時，您在新的資源群組中的 Ubuntu 上就會有 WordPress 伺服器。
 
@@ -89,25 +88,21 @@
     azure group create wordpress eastus2
     azure group deployment create --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/wordpress-single-vm-ubuntu/azuredeploy.json wordpress wpdevtest
 
-執行 **azure group deployment create** 命令時，系統會提示您提供一系列參數的值。 當您指定了所有參數值之後，Azure 會建立和設定虛擬機器。
+當您執行 **azure 群組部署建立** 命令時，會提示您提供一系列參數的值。 當您指定了所有參數值之後，Azure 會建立和設定虛擬機器。
 
 範本執行完成時，您在新的資源群組中的 Ubuntu 上就會有 WordPress 伺服器。
 
 ## 其他資源
 
-[部署和管理虛擬機器上利用 Azure 資源管理員範本和 Azure PowerShell](virtual-machines-deploy-rmtemplates-powershell.md)
+[使用 Azure 資源管理員範本和 Azure PowerShell 部署和管理虛擬機器](virtual-machines-deploy-rmtemplates-powershell.md)
 
-[Azure 運算、 網路和存放裝置提供者在 Azure 資源管理員](virtual-machines-azurerm-versus-azuresm.md)
+[Azure Resource Manager 提供的 Azure 運算、網路和儲存提供者](virtual-machines-azurerm-versus-azuresm.md)
 
-[Azure 資源管理員概觀](../resource-group-overview.md)
+[Azure Resource Manager 概觀](../resource-group-overview.md)
 
-[部署和管理虛擬機器上利用 Azure 資源管理員範本和 Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
+[使用 Azure 資源管理員範本和 Azure CLI 部署和管理虛擬機器](virtual-machines-deploy-rmtemplates-azure-cli.md)
 
 [虛擬機器文件](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)
-
-
-
-
 

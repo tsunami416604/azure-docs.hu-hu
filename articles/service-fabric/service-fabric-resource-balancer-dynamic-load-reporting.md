@@ -16,7 +16,6 @@
    ms.date="09/03/2015"
    ms.author="masnider"/>
 
-
 # 動態負載報告概觀
 
 在執行階段期間，具狀態與無狀態的服務物件可以透過 ReportLoad 方法 (IStatefulServicePartition 和 IStatelessServicePartition 介面的成員) 來報告負載。 執行階段負載值的報告非常重要，因為它可以確保服務精確封裝成節點，並協助中央 Service Fabric 資源平衡器精確追蹤資源使用率，讓節點上的服務資源體驗更加順暢。
@@ -31,13 +30,9 @@
 
 
 
-
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
 如需詳細資訊: [資源平衡器架構](service-fabric-resource-balancer-architecture.md)
-
-
-
-
-
+ 
 

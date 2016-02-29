@@ -16,7 +16,6 @@
     ms.date="09/23/2015" 
     ms.author="bradsev" />
 
-
 # 使用 Python 從 Azure Blob 儲存體來回移動資料
 
 以下是有關從 Azure Blob 儲存體來回移動資料所使用之技術的指引連結：
@@ -33,14 +32,15 @@
 - 列出容器中的 Blob
 - 刪除 Blob
 
-本節說明如何列出、上傳和下載 Blob。 如需有關如何使用 Python API 的詳細資訊，請參閱 [如何使用 Python 的 Blob 儲存體服務](../storage-python-how-to-use-blob-storage.md)。
+本節說明如何列出、上傳和下載 Blob。 如需有關如何使用 Python API 的詳細資訊，請參閱 [如何使用 Python 的 Blob 儲存體服務](../storage-python-how-to-use-blob-storage.md)。 
+
 > [AZURE.NOTE] 如果您要使用所提供的指令碼與設定的 VM [在 Azure 中的資料科學虛擬機器](machine-learning-data-science-virtual-machines.md), ，則在 VM 上已安裝 AzCopy。
 
 > [AZURE.NOTE] 如需 Azure blob 儲存體的完整介紹，請參閱 [Azure Blob 基本概念](../storage-dotnet-how-to-use-blobs.md) 和  [Azure Blob 服務](https://msdn.microsoft.com/library/azure/dd179376.aspx)。 
 
-## 必要條件
+## 先決條件
 
-本文件假設您擁有 Azure 訂用帳戶、儲存體帳戶和該帳戶的對應儲存體金鑰。 上傳/下載資料之前，您必須知道 Azure 儲存體帳戶名稱和帳戶金鑰。
+本文件假設您擁有 Azure 訂用帳戶、儲存體帳戶和該帳戶的對應儲存體金鑰。 上傳/下載資料之前，您必須知道 Azure 儲存體帳戶名稱和帳戶金鑰。 
 
 - 若要設定 Azure 訂用帳戶，請參閱 [免費試用一個月](https://azure.microsoft.com/pricing/free-trial/)。
 - 如需建立儲存體帳戶的指示，以及用來取得帳戶和金鑰資訊，請參閱 [關於 Azure 儲存體帳戶](../storage-create-storage-account.md)。
@@ -51,19 +51,19 @@
 
     from azure.storage import BlobService
 
-**BlobService** 物件讓您能使用容器及 blob。 下列程式碼會使用儲存體帳戶名稱和帳戶金鑰來建立 BlobService 物件。 使用您真正的帳戶和金鑰來取代帳戶名稱和帳戶金鑰。
-
+ **BlobService** 物件可讓您能使用容器及 blob。 下列程式碼會使用儲存體帳戶名稱和帳戶金鑰來建立 BlobService 物件。 使用您真正的帳戶和金鑰來取代帳戶名稱和帳戶金鑰。
+    
     blob_service = BlobService(account_name="<your_account_name>", account_key="<your_account_key>")
 
 使用下列方法，將資料上傳至 Blob：
-
+ 
 1. put\_block\_blob\_from\_path (從特定路徑上傳檔案的內容)
 2. put\_block_blob\_from\_file (從任何已經開啟的檔案/資料流上傳內容)
 3. put\_block\_blob\_from\_bytes (上傳位元組陣列)
 4. put\_block\_blob\_from\_text (使用指定的編碼方式上傳指定的文字值)
-
+ 
 下列程式碼範例會將本機檔案上傳至容器：
-
+    
     blob_service.put_block_blob_from_path("<your_container_name>", "<your_blob_name>", "<your_local_file_name>")
 
 下列程式碼範例會將本機目錄中的所有檔案 (不含目錄) 上傳至 Blob 儲存體：
@@ -97,15 +97,15 @@
 1. get\_blob\_to\_path
 2. get\_blob\_to\_file
 3. get\_blob\_to\_bytes
-4. get\_blob\_to\_text
+4. get\_blob\_to\_text 
 
-這些方法可以在資料大小超過 64 MB 時執行必要的區塊化動作。
+這些方法可以在資料大小超過 64 MB 時執行必要的區塊化動作。 
 
-下列程式碼範例會將容器中 Blob 的內容下載至本機檔案：
+下列程式碼範例會將容器中 Blob 的內容下載至本機檔案： 
 
     blob_service.get_blob_to_path("<your_container_name>", "<your_blob_name>", "<your_local_file_name>")
 
-下列程式碼範例會從容器下載所有 Blob。 它會使用 list\_blobs 來取得容器中可用 Blob 的清單，並將它們下載至本機目錄。
+下列程式碼範例會從容器下載所有 Blob。 它會使用 list\_blobs 來取得容器中可用 Blob 的清單，並將它們下載至本機目錄。 
 
     from azure.storage import BlobService
     from os.path import join
@@ -126,6 +126,5 @@
             blob_service.get_blob_to_path(CONTAINER_NAME, blob.name, local_file)
         except:
             print "something wrong happened when downloading the data %s"%blob.name
-
 
 

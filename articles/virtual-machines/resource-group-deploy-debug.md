@@ -16,11 +16,10 @@
    ms.date="10/14/2015"
    ms.author="tomfitz;rasquill"/>
 
-
 # 在 Azure 中疑難排解資源群組部署
 
 當您在部署期間遇到問題時，您需要了解發生什麼問題。 [資源管理員] 提供兩種方法讓您了解發生什麼情形以及其發生原因。 您可以使用部署命令來擷取資訊
-特定資源群組部署。 或者，您可以使用稽核記錄來擷取在資源群組上執行的所有作業的相關資訊。 您可以利用這份資訊來修正
+特定資源群組部署。 或者，您可以使用稽核記錄來擷取在資源群組上執行的所有作業的相關資訊。  您可以利用這份資訊來修正
 發出，並繼續執行您的方案中的操作。
 
 本主題主要著重於使用部署命令來排解部署疑難問題。 使用稽核記錄檔來追蹤您的資源上的所有作業的相關資訊，請參閱 [稽核作業與資源管理員](../resource-group-audit.md)。
@@ -36,10 +35,10 @@
 
 [AZURE.INCLUDE [powershell-preview-inline-include](../../includes/powershell-preview-inline-include.md)]
 
-您可以利用 **Get-AzureRmResourceGroupDeployment** 命令取得部署的整體狀態。 下列範例中的部署失敗。
+您可以取得部署的整體狀態 **Get AzureRmResourceGroupDeployment** 命令。 下列範例中的部署失敗。
 
     PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
-    
+
     DeploymentName    : ExampleDeployment
     ResourceGroupName : ExampleGroup
     ProvisioningState : Failed
@@ -54,10 +53,10 @@
                     siteLocation     String                     West US
                     sku              String                     Free
                     workerSize       String                     0
-    
+
     Outputs           :
 
-每個部署通常由多個作業所組成，而每個作業代表部署程序中的一個步驟。 若要探索部署有何問題，您通常需要查看有關部署作業的詳細資訊。 您可以利用 **Get-AzureRmResourceGroupDeploymentOperation** 查看作業的狀態。
+每個部署通常由多個作業所組成，而每個作業代表部署程序中的一個步驟。 若要探索部署有何問題，您通常需要查看有關部署作業的詳細資訊。 與作業的狀態，請參閱 < **Get AzureRmResourceGroupDeploymentOperation**。
 
     PS C:\> Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup
     Id                        OperationId          Properties         
@@ -70,7 +69,7 @@
 您可以使用下列命令擷取狀態訊息：
 
     PS C:\> (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties.StatusMessage
-    
+
     Code       : Conflict
     Message    : Website with given name mysite already exists.
     Target     :
@@ -79,10 +78,10 @@
 
 ## Azure CLI 疑難排解
 
-您可以利用 **azure group deployment show** 命令取得部署的整體狀態。 下列範例中的部署失敗。
+您可以取得部署的整體狀態 **azure 群組部署顯示** 命令。 下列範例中的部署失敗。
 
     azure group deployment show ExampleGroup ExampleDeployment
-    
+
     info:    Executing command group deployment show
     + Getting deployments
     data:    DeploymentName     : ExampleDeployment
@@ -99,14 +98,15 @@
     data:    workerSize       String  0
     info:    group deployment show command OK
 
-您可以在稽核記錄檔中找出部署失敗原因的詳細資訊。 若要查看稽核記錄檔，請執行 **azure group log show** 命令。 您可以加入 **--last-deployment** 選項，就能只擷取最新部署的記錄檔。
+
+您可以在稽核記錄檔中找出部署失敗原因的詳細資訊。 若要查看的稽核記錄檔，請執行 **azure 群組記錄檔顯示** 命令。 您可以包含 **--last-deployment** 選項，以擷取的最新的部署記錄檔。
 
     azure group log show ExampleGroup --last-deployment
 
-**azure group log show** 命令可傳回大量資訊。 在疑難排解時，您通常想要將焦點放在失敗的作業。 下列指令碼會使用 **--json** 選項和 **jq** 來搜尋部署失敗的記錄檔。 若要了解之類的工具 **jq**, ，請參閱 [有用的工具與 Azure 互動](#useful-tools-to-interact-with-azure)
+ **Azure 群組記錄檔顯示** 命令可能會傳回大量資訊。 在疑難排解時，您通常想要將焦點放在失敗的作業。 下列指令碼使用 **--json** 選項和 **jq** 搜尋部署失敗的記錄檔。 若要了解之類的工具 **jq**, ，請參閱 [有用的工具與 Azure 互動](#useful-tools-to-interact-with-azure)
 
     azure group log show ExampleGroup --json | jq '.[] | select(.status.value == "Failed")'
-    
+
     {
       "claims": {
         "aud": "https://management.core.windows.net/",
@@ -120,7 +120,7 @@
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress": "someone@example.com",
         "puid": "XXXXXXXXXXXXXXXX",
         "http://schemas.microsoft.com/identity/claims/identityprovider": "example.com",
-    
+
         "altsecid": "1:example.com:XXXXXXXXXXX",
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "<hash string>",
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "Tom",
@@ -144,9 +144,9 @@
       },
     ...
 
-您可以看到，**properties** 包含 json 中有關失敗作業的資訊。
+您可以看到 **屬性** 納入 json 失敗作業的相關資訊。
 
-您可以使用 **-verbose** 和 **-vv** 選項來查看記錄檔中的詳細資訊。 使用 **-verbose** 選項，以顯示作業經歷的步驟 `stdout`。 如需完整的要求歷程記錄，請使用 **-vv** 選項。 這些訊息通常會提供任何失敗原因的重要線索。
+您可以使用 **-verbose** 和 **-vv** 選項，以查看記錄檔的詳細資訊。  使用 **-verbose** 選項，以顯示作業經歷的步驟 `stdout`。 完整的要求歷程記錄中，使用 **-vv** 選項。 這些訊息通常會提供任何失敗原因的重要線索。
 
 ## REST API 疑難排解
 
@@ -161,8 +161,8 @@
 
 如果您的 Azure 認證已過期或您尚未登入您的 Azure 帳戶，您的部署將會失敗。 如果您的工作階段的開啟時間太長，您的認證可能會過期。 您可以使用下列選項重新整理您的認證︰
 
-- 針對 PowerShell，若是比 PowerShell 1.0 Preview 更早的版本，請使用 **Login-AzureRmAccount** Cmdlet (或 **Add-AzureAccount**)。 發行設定檔中的認證無法滿足 AzureResourceManager 模組中 Cmdlet 的需求。
-- 針對 Azure CLI，請使用 **azure login**。　 驗證錯誤的說明，請確定您有 [正確設定 Azure CLI](../xplat-cli-connect.md)。
+- 針對 PowerShell，使用 **登入 AzureRmAccount** 指令程式 (或 **Add-azureaccount** PowerShell 1.0 預覽之前的版本)。 發行設定檔中的認證無法滿足 AzureResourceManager 模組中 Cmdlet 的需求。
+- 針對 Azure CLI 使用 **azure 登入**。 驗證錯誤的說明，請確定您有 [正確設定 Azure CLI](../xplat-cli-connect.md)。
 
 ## 檢查範本和參數的格式
 
@@ -170,14 +170,14 @@
 
 ### PowerShell
 
-針對 PowerShell，若是比 PowerShell 1.0 Preview 更早的版本，請使用 **Test-AzureRmResourceGroupDeployment** (或 **Test-AzureResourceGroupTemplate**)。
+針對 PowerShell，使用 **測試 AzureRmResourceGroupDeployment** (或 **Test-azureresourcegrouptemplate** PowerShell 1.0 預覽之前的版本)。
 
     PS C:\> Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile c:\Azure\Templates\azuredeploy.json -TemplateParameterFile c:\Azure\Templates\azuredeploy.parameters.json
     VERBOSE: 12:55:32 PM - Template is valid.
 
 ### Azure CLI
 
-針對 Azure CLI，使用 * * azure 群組範本驗證 <resource group>* *
+針對 Azure CLI 使用 **驗證 azure 群組範本 <resource group>**
 
 下列範例顯示如何驗證範本和任何必要的參數。 Azure CLI 會提示您輸入所需的參數值。
 
@@ -202,10 +202,10 @@ REST API，請參閱 [驗證範本部署](https://msdn.microsoft.com/library/azu
 
 ### PowerShell
 
-針對比 PowerShell 1.0 Preview 更早的版本，您可以利用 **Get-AzureLocation** 命令來查看完整的資源和位置清單。
+PowerShell 1.0 預覽之前的版本，請參閱資源位置的完整清單 **Get-azurelocation** 命令。
 
     PS C:\> Get-AzureLocation
-    
+
     Name                                    Locations                               LocationsString
     ----                                    ---------                               ---------------
     ResourceGroup                           {East Asia, South East Asia, East US... East Asia, South East Asia, East US,...
@@ -216,17 +216,17 @@ REST API，請參閱 [驗證範本部署](https://msdn.microsoft.com/library/azu
 您可以利用下列命令來指定特定類型的資源︰
 
     PS C:\> Get-AzureLocation | Where-Object Name -eq "Microsoft.Compute/virtualMachines" | Format-Table Name, LocationsString -Wrap
-    
+
     Name                                                        LocationsString
     ----                                                        ---------------
     Microsoft.Compute/virtualMachines                           East US, East US 2, West US, Central US, South Central US,
                                                                 North Europe, West Europe, East Asia, Southeast Asia,
                                                                 Japan East, Japan West
 
-針對 PowerShell 1.0 Preview，使用 **Get AzureRmResourceProvider** 取得支援的位置。
+PowerShell 1.0 預覽版本中，使用 **Get AzureRmResourceProvider** 以取得支援的位置。
 
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
-    
+
     ProviderNamespace RegistrationState ResourceTypes               Locations
     ----------------- ----------------- -------------               ---------
     Microsoft.Web     Registered        {sites/extensions}          {Brazil South, ...
@@ -237,7 +237,7 @@ REST API，請參閱 [驗證範本部署](https://msdn.microsoft.com/library/azu
 您可以利用下列命令來指定特定類型的資源︰
 
     PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
-    
+
     Brazil South
     East Asia
     East US
@@ -252,7 +252,7 @@ REST API，請參閱 [驗證範本部署](https://msdn.microsoft.com/library/azu
 
 ### Azure CLI
 
-針對 Azure CLI，您可以使用 **azure location list**。 因為位置清單可能很長，而且有多個提供者，所以您可以先使用工具來檢查提供者和位置，再使用尚未使用的位置。 下列指令碼使用 **jq** 探索可以取得 Azure 虛擬機器之資源提供者的位置。
+您可以使用 Azure CLI **azure 位置清單**。 因為位置清單可能很長，而且有多個提供者，所以您可以先使用工具來檢查提供者和位置，再使用尚未使用的位置。 下列指令碼使用 **jq** 來探索 Azure 虛擬機器的資源提供者可用的位置。
 
     azure location list --json | jq '.[] | select(.name == "Microsoft.Compute/virtualMachines")'
     {
@@ -272,11 +272,11 @@ REST API，請參閱 [取得資源提供者的相關資訊](https://msdn.microso
 
 可能有一個或多個問題防止部署成功，包含驗證和授權以及 Azure Active Directory。 不論您如何管理 Azure 資源群組，您用來登入帳戶的身分識別都必須是 Azure Active Directory 物件。 此身分識別可以是您建立或指派給您的工作或學校帳戶，或者您可以建立服務主體用於應用程式。
 
-但是 Azure Active Directory 可讓您或您的系統管理員最精確地控制哪些身分識別可以存取哪些資源。 如果您的部署失敗，請檢查要求本身是否顯示驗證或授權問題，並檢查資源群組的部署記錄。 您可能會發現，當您擁有某些資源的權限時，就不會擁有其他資源的權限。 使用 Azure CLI，您可以檢查 Azure Active Directory 租用戶和使用者使用 `azure ad` 命令。 (Azure CLI 命令的完整清單，請參閱 [使用適用於 Mac、 Linux 和 Windows 搭配 Azure 資源管理員的 Azure CLI](azure-cli-arm-commands.md).)
+但是 Azure Active Directory 可讓您或您的系統管理員最精確地控制哪些身分識別可以存取哪些資源。 如果您的部署失敗，請檢查要求本身是否顯示驗證或授權問題，並檢查資源群組的部署記錄。 您可能會發現，當您擁有某些資源的權限時，就不會擁有其他資源的權限。 使用 Azure CLI，您可以利用 `azure ad` 命令檢查 Azure Active Directory 租用戶和使用者  (Azure CLI 命令的完整清單，請參閱 [適用於 Mac、 Linux 和 Windows 搭配 Azure 資源管理員搭配使用 Azure CLI](azure-cli-arm-commands.md)。)
 
 當部署達到預設配額 (可能是每個資源群組、訂用帳戶、帳戶及其他範圍的配額) 時，也可能會發生問題。 請確保您有可正確部署的足夠資源。 如需完整配額資訊，請參閱 [Azure 訂用帳戶和服務限制、 配額和條件約束](../azure-subscription-service-limits.md)。
 
-若要檢查您的訂用帳戶的核心配額，您應該使用 `azure vm 清單使用量` Azure CLI 命令和 **Get AzureVMUsage** PowerShell 中的 cmdlet。 以下顯示 Azure CLI 中的命令，並說明免費試用帳戶的核心配額為 4：
+若要檢查您的訂用帳戶的核心配額，您應該使用 `azure vm list-usage` 命令在 Azure CLI 和 **Get AzureVMUsage** PowerShell 中的 cmdlet。 以下顯示 Azure CLI 中的命令，並說明免費試用帳戶的核心配額為 4：
 
     azure vm list-usage
     info:    Executing command vm list-usage
@@ -293,10 +293,11 @@ REST API，請參閱 [取得資源提供者的相關資訊](https://msdn.microso
     statusMessage:{"error":{"code":"OperationNotAllowed","message":"Operation results in exceeding quota limits of Core. Maximum allowed: 4, Current in use: 4, Additional requested: 2."}}
 
 在這些情況下，您應該移至入口網站，並提出支援問題，以針對您想要部署的區域提高配額。
-> [AZURE.NOTE] 請記住，對於資源群組，配額適用於每個個別區域，而不是整個訂用帳戶。 如果您需要在美國西部部署 30 個核心，就必須要求在美國西部擁有 30 個資源管理員核心。 如果您需要在任何具有存取權限的區域中部署 30 個核心，就應該要求在所有區域中擁有 30 個資源管理員核心。
 
+> [AZURE.NOTE] 請記住，資源群組，配額適用於每個個別的區域，不適用於整個訂閱。 如果您需要在美國西部部署 30 個核心，就必須要求在美國西部擁有 30 個資源管理員核心。 如果您需要在任何具有存取權限的區域中部署 30 個核心，就應該要求在所有區域中擁有 30 個資源管理員核心。
+<!-- -->
 若要明確的核心，比方說，您可以檢查區域]，您應該使用下列命令，透過管線傳送出給要求的適當的配額量 **jq** json 剖析。
-
+<!-- -->
         azure provider show Microsoft.Compute --json | jq '.resourceTypes[] | select(.name == "virtualMachines") | { name,apiVersions, locations}'
         {
           "name": "virtualMachines",
@@ -313,16 +314,17 @@ REST API，請參閱 [取得資源提供者的相關資訊](https://msdn.microso
           ]
         }
 
+
 ## 檢查資源提供者註冊
 
 資源是由資源提供者所管理，並且可能啟用帳戶或訂用帳戶以便使用特定提供者。 如果您可以使用某個提供者，則也必須註冊該提供者才能使用。 Azure 入口網站或正在使用的命令列介面會自動註冊大部分的提供者；但並非全部。
 
 ### PowerShell
 
-如果使用比 PowerShell 1.0 Preview 更早的版本，若要取得資源提供者的清單及您的註冊狀態，請使用 **Get-AzureProvider**。
+若要取得資源提供者和登錄狀態的清單，請使用 **Get AzureProvider** PowerShell 1.0 預覽之前的版本。
 
     PS C:\> Get-AzureProvider
-    
+
     ProviderNamespace                       RegistrationState                       ResourceTypes
     -----------------                       -----------------                       -------------
     Microsoft.AppService                    Registered                              {apiapps, appIdentities, gateways, d...
@@ -330,23 +332,23 @@ REST API，請參閱 [取得資源提供者的相關資訊](https://msdn.microso
     microsoft.cache                         Registered                              {Redis, checkNameAvailability, opera...
     ...
 
-若要註冊提供者，請使用 **Register-AzureProvider**。
+若要註冊提供者，使用 **註冊 AzureProvider**。
 
-針對 PowerShell 1.0 Preview，使用 **Get-AzureRmResourceProvider**。
+Powershell 1.0 預覽版本中，使用 **Get AzureRmResourceProvider**。
 
     PS C:\> Get-AzureRmResourceProvider -ListAvailable
-    
+
     ProviderNamespace               RegistrationState ResourceTypes
     -----------------               ----------------- -------------
     Microsoft.ApiManagement         Unregistered      {service, validateServiceName, checkServiceNameAvailability}
     Microsoft.AppService            Registered        {apiapps, appIdentities, gateways, deploymenttemplates...}
     Microsoft.Batch                 Registered        {batchAccounts}
 
-若要註冊提供者，請使用 **Register-AzureRmResourceProvider**。
+若要註冊提供者，使用 **註冊 AzureRmResourceProvider**。
 
 ### Azure CLI
 
-若要查看是否註冊使用 Azure CLI 使用的提供者，請使用 `azure 提供者清單` 命令 (下列是截斷的輸出範例)。
+若要使用 Azure CLI 查看是否註冊提供者以供使用，請使用 `azure provider list` 命令 (下列是截斷的輸出範例)。
 
         azure provider list
         info:    Executing command provider list
@@ -367,7 +369,7 @@ REST API，請參閱 [取得資源提供者的相關資訊](https://msdn.microso
         data:    Microsoft.Sql                    Registered
         info:    provider list command OK
 
-同樣地，如果您想提供者，包括它們的區域可用性的詳細資訊輸入 `azure 提供者清單--json`。 下列程式碼只會選取清單中的第一個項目來檢視：
+同樣地，如需提供者的詳細資訊，包括其區域可用性，請輸入 `azure provider list --json`。 下列程式碼只會選取清單中的第一個項目來檢視：
 
         azure provider list --json | jq '.[0]'
         {
@@ -393,7 +395,7 @@ REST API，請參閱 [取得資源提供者的相關資訊](https://msdn.microso
           "registrationState": "Registered"
         }
 
-如果提供者需要註冊，請使用 `azure 提供者登錄 < 命名空間 >` 命令，其中 *命名空間* 值來自先前的清單。
+如果提供者需要註冊，請使用 `azure provider register <namespace>` 命令，其中 *命名空間* 值來自先前的清單。
 
 ### REST API
 
@@ -408,35 +410,29 @@ REST API，請參閱 [取得資源提供者的相關資訊](https://msdn.microso
 
 不過，請注意，這不一定表示您的資源群組「作用中且準備好供使用者使用」。 例如，大多數的部署都會要求部署下載升級、等候其他升級、非範本資源，或是安裝複雜的指令碼或 Azure 不知道的某個其他可執行活動，因為它不是提供者正在追蹤的活動。 在這些情況下，可能需要一些時間，您的資源才能用於實際使用。 因此，您應該預期部署狀態成功一段時間後，才能使用部署。
 
-您可以防止 Azure 報告部署成功，不過，建立自訂範本的自訂指令碼使用 [CustomScriptExtension](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) ，例如知道如何監視整個部署以全系統整備和使用者可以與整個部署互動時，才會成功傳回。 如果您想要確保最後才執行您的延伸模組，請在範本中使用 **dependsOn** 屬性。 範例會顯示當 [建立範本部署](https://msdn.microsoft.com/library/azure/dn790564.aspx)。
+您可以防止 Azure 報告部署成功，不過，建立自訂範本的自訂指令碼使用 [CustomScriptExtension](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) ，例如知道如何監視整個部署以全系統整備和使用者可以與整個部署互動時，才會成功傳回。 如果您想要確保您的延伸模組，最後才執行，請使用 **dependsOn** 在範本中的屬性。 範例會顯示當 [建立範本部署](https://msdn.microsoft.com/library/azure/dn790564.aspx)。
 
 ## 與 Azure 互動的有用工具
-
 當您從命令列使用 Azure 資源時，將收集可協助您進行工作的工具。 Azure 資源群組範本為 JSON 文件，而且 Azure 資源管理員 API 會接受並傳回 JSON，因此 JSON 剖析工具是您用來協助瀏覽資源相關資訊，以及設計範本和範本參數檔案或與之互動的首要選擇。
 
 ### Mac、Linux 和 Windows 工具
+如果您使用適用於 Mac、 Linux 和 Windows 的 Azure 命令列介面，也可能熟悉標準下載工具例如 **[curl](http://curl.haxx.se/)** 和 **[wget](https://www.gnu.org/software/wget/)**, ，或 **[Resty](https://github.com/beders/Resty)**, ，和 JSON 公用程式，例如 **[jq](http://stedolan.github.io/jq/download/)**, ，**[jsawk](https://github.com/micha/jsawk)**, ，並也處理 JSON 的語言程式庫。 (許多這些工具也具有連接埠的 Windows，例如 [wget](http://gnuwin32.sourceforge.net/packages/wget.htm); 事實上，有數種方式可以取得 Linux 以及其他開放原始碼軟體工具，以及在 Windows 上執行。)
 
-如果您使用適用於 Mac、 Linux 和 Windows 的 Azure 命令列介面，也可能熟悉標準下載工具例如 * *[curl](http://curl.haxx.se/)** 和 **[wget](https://www.gnu.org/software/wget/)**，或 **[Resty](https://github.com/beders/Resty)**，和 JSON 公用程式，例如 **[jq](http://stedolan.github.io/jq/download/)**，**[jsawk](https://github.com/micha/jsawk)* *，並也處理 JSON 的語言程式庫。 (許多這些工具也具有連接埠的 Windows，例如 [wget](http://gnuwin32.sourceforge.net/packages/wget.htm); 事實上，有數種方式可以取得 Linux 以及其他開放原始碼軟體工具，以及在 Windows 上執行。)
-
-本主題包括一些您可以與 **jq** 搭配使用的 Azure CLI 命令，以精確地取得您想要更有效率的資訊。 您應該選擇熟悉的工具組來協助您了解 Azure 資源使用狀況。
+本主題包含一些您可以搭配使用的 Azure CLI 命令 **jq** 取得精確的資訊，您想要更有效率。 您應該選擇熟悉的工具組來協助您了解 Azure 資源使用狀況。
 
 ### PowerShell
 
 PowerShell 有幾個基本命令來執行相同的程序。
 
-- 使用 * *[Invoke-webrequest](https://technet.microsoft.com/library/hh849901%28v=wps.640%29)* * cmdlet 來下載檔案，例如資源群組範本或參數 JSON 檔案。
-- 使用 * *[Convertfrom-json](https://technet.microsoft.com/library/hh849898%28v=wps.640%29.aspx)* * cmdlet 將 JSON 字串轉換成自訂物件 ([PSCustomObject](https://msdn.microsoft.com/library/windows/desktop/system.management.automation.pscustomobject%28v=vs.85%29.aspx)) 具有 JSON 字串中的每個欄位的屬性。
+- 使用 **[Invoke-webrequest](https://technet.microsoft.com/library/hh849901%28v=wps.640%29)** 指令程式來下載檔案，例如資源群組範本或參數 JSON 檔案。
+- 使用 **[Convertfrom-json](https://technet.microsoft.com/library/hh849898%28v=wps.640%29.aspx)** cmdlet 將 JSON 字串轉換成自訂物件 ([PSCustomObject](https://msdn.microsoft.com/library/windows/desktop/system.management.automation.pscustomobject%28v=vs.85%29.aspx)) 的 JSON 字串中每個欄位的屬性。
 
 
 ## 後續步驟
 
 若要精通範本的建立，請閱讀 [撰寫 Azure 資源管理員範本](../resource-group-authoring-templates.md), ，並逐一瀏覽 [Azure 快速入門範本儲存機制](https://github.com/Azure/azure-quickstart-templates) 的可部署的範例。 範例 **dependsOn** 屬性是 [建立具有多個 Nic 和 RDP 的 VM 存取](https://github.com/Azure/azure-quickstart-templates/tree/master/201-1-vm-loadbalancer-2-nics)。
 
+<!--Image references-->
 
-
-
-
-
-
-
+<!--Reference style links - using these makes the source content way more readable than using inline links-->
 

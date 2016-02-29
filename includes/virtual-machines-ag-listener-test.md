@@ -10,10 +10,6 @@
 
     sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
 
-> [AZURE.NOTE] 如果 EndpointPort 值為 1433，則不需要在呼叫中指定。 前一個呼叫也假設用戶端電腦已加入相同的網域，且呼叫者已使用 Windows 驗證被授與對資料庫的權限。
+> [AZURE.NOTE] 如果 EndpointPort 值為 1433年，它不是需要在呼叫中指定它。 前一個呼叫也假設用戶端電腦已加入相同的網域，且呼叫者已使用 Windows 驗證被授與對資料庫的權限。
 
 測試接聽程式時，請務必容錯移轉可用性群組，以確定用戶端可以跨容錯移轉連線至接聽程式。
-
-
-
-

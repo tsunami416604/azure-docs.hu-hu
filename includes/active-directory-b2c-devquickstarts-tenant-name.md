@@ -1,5 +1,1 @@
-> [AZURE.NOTE] B2C 租用戶的名稱是您在租用戶建立期間輸入的網域，它會顯示在 Azure Preview 入口網站的 [目錄] 刀鋒視窗上。 它通常是以字尾結束 `。 onmicrosoft.com`, ，比方說， `contosob2c.onmicrosoft.com`。
-
-
-
-
+> [AZURE.NOTE] B2C 租用戶的名稱是您輸入租用戶在建立期間，並會顯示在 Azure 預覽入口網站的目錄] 分頁上的網域。  通常以尾碼 `.onmicrosoft.com` 結束，例如 `contosob2c.onmicrosoft.com`。

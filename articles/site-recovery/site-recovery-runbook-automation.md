@@ -17,22 +17,22 @@
    ms.author="ruturajd@microsoft.com"/>
 
 
-
 # 將 Azure 自動化 Runbook 加入至復原計劃
+
 
 本教學課程說明如何與 Azure 整合 Azure 站台復原
 提供擴充性至復原計劃的自動化。 復原計劃
-可調整的虛擬機器複寫至次要雲端和 Azure 案例中使用 Azure Site Recovery 保護的復原。 復原計畫也有助於讓復原**一致精確**、**可重複**而且**自動化**。 如果您要容錯移轉至 Azure 虛擬機器，與 Azure 自動化整合延伸
+可調整的虛擬機器複寫至次要雲端和 Azure 案例中使用 Azure Site Recovery 保護的復原。 它們也有助於讓復原 **一致精確**, ，**可重複**, ，和 **自動化**。 如果您要容錯移轉至 Azure 虛擬機器，與 Azure 自動化整合延伸
 復原計劃，並讓您能夠執行 runbook，進而允許功能強大的自動化工作。
 
 如果您有不聽過 Azure 自動化，註冊
-[here](http://azure.microsoft.com/services/automation/) and
+[這裡](http://azure.microsoft.com/services/automation/) 和
 下載其範例指令碼
-[here](http://azure.microsoft.com/documentation/scripts/). 讀取
-[Azure 網站的相關資訊
-復原] (http://azure.microsoft.com/services/site-recovery/) 和
+[這裡](http://azure.microsoft.com/documentation/scripts/)。 讀取
+進一步了解 [Azure 站台
+復原](http://azure.microsoft.com/services/site-recovery/) 和
 如何復原協調到 Azure 中使用 [復原計劃
-[here](http://azure.microsoft.com/blog/?p=166264).
+[這裡](http://azure.microsoft.com/blog/?p=166264)。
 
 在本教學課程中，我們將探討如何整合 Azure 自動化
 將復原計劃的 runbook。 我們將會自動執行簡單的工作之前
@@ -42,17 +42,17 @@
 
 ## 將應用程式保護到 Azure
 
-讓我們從兩部虛擬機器所組成的簡單應用程式開始。 在這裡，我們有 Fabrikam 的 HRweb 應用程式。 Fabrikam-HRweb-frontend 和 Fabrikam-Hrweb-backend 是使用 Azure Site Recovery 保護到 Azure 的兩部虛擬機器。 若要使用 Azure Site Recovery 保護虛擬機器，請遵循下列步驟進行。
+讓我們從兩部虛擬機器所組成的簡單應用程式開始。 在這裡，我們有 Fabrikam 的 HRweb 應用程式。 Fabrikam-HRweb-frontend 和 Fabrikam-Hrweb-backend 是使用 Azure Site Recovery 保護到 Azure 的兩部虛擬機器。 若要使用 Azure Site Recovery 保護虛擬機器，請遵循下列步驟進行。 
 
 1.  對虛擬機器啟用保護。
 
 2.  請確定虛擬機器已完成初始複寫
-    而且進行複寫。
+    而且進行複寫。 
 
 3.  請等到初始複寫完成，且複寫狀態變成 [受保護]。
 
 ![](media/site-recovery-runbook-automation/01.png)
---------------------------------------------------
+---------------------
 
 在本教學課程中，我們將建立 Fabrikam HRweb 應用程式的復原計畫，以便將應用程式容錯移轉至 Azure。 接著，我們會將它與將在容錯移轉的 Azure 虛擬機器上建立端點的 Runbook 整合，以便在連接埠 80 為網頁服務。
 
@@ -69,7 +69,7 @@
 
 ![](media/site-recovery-runbook-automation/12.png)
 
-若要深入了解復原計畫，請參閱文件 [這裡](https://msdn.microsoft.com/library/azure/dn788799.aspx "這裡")。
+若要深入了解復原計畫，請參閱文件 [這裡](https://msdn.microsoft.com/library/azure/dn788799.aspx "這裡")。 
 
 接下來，讓我們在 Azure 自動化中建立所需的構件。
 
@@ -91,11 +91,11 @@
 
 ### 將訂用帳戶名稱新增為資產
 
-1.  加入新的設定 ![](media/site-recovery-runbook-automation/04.png) 中選取要與 Azure 自動化資產 ![](media/site-recovery-runbook-automation/05.png)
+1.  在 Azure 自動化資產中加入新的設定 ![](media/site-recovery-runbook-automation/04.png)，然後選擇 ![](media/site-recovery-runbook-automation/05.png)
 
-2.  將變數類型選取為 [字串]****
+2.  變數類型選取為 **字串**
 
-3.  將變數名稱指定為 **AzureSubscriptionName**
+3.  變數名稱指定為 **AzureSubscriptionName**
 
     ![](media/site-recovery-runbook-automation/06.png)
 
@@ -104,7 +104,7 @@
     ![](media/site-recovery-runbook-automation/07_1.png)
 
 您可以識別您的訂閱名稱從 [設定] 頁面
-您在 Azure 入口網站上的帳戶。
+您在 Azure 入口網站上的帳戶。 
 
 ### 將 Azure 登入認證新增為資產
 
@@ -114,9 +114,9 @@ Azure 自動化使用 Azure PowerShell 來連線至
 您可以安全地使用的資產中儲存的帳戶認證
 runbook。
 
-1.  加入新的設定 ![](media/site-recovery-runbook-automation/04.png) 在 Azure 自動化資產中，選取 ![](media/site-recovery-runbook-automation/09.png)
+1.  在 Azure 自動化資產中加入新的設定 ![](media/site-recovery-runbook-automation/04.png)，然後選取 ![](media/site-recovery-runbook-automation/09.png)
 
-2.  將 [認證類型] 選取為 [Windows PowerShell 認證]****
+2.  選取認證類型，做為 **Windows PowerShell 認證**
 
 3.  將名稱指定為 **AzureCredential**
 
@@ -130,7 +130,7 @@ runbook。
 
 有關如何連接到透過訂閱的詳細資訊
 指定 powershell
-[here](../install-configure-powershell.md).
+[這裡](../install-configure-powershell.md)。
 
 接下來，您將建立可加入 Azure 自動化的 runbook
 前端虛擬機器在容錯移轉後的端點。
@@ -138,40 +138,41 @@ runbook。
 ## Azure 自動化內容
 
 ASR 將內容變數傳遞至 runbook，以協助您撰寫
-具決定性的指令碼。 其中一個雲端主張雲端服務和虛擬機器的名稱是可預測的，但有時候不一定可以預測，例如，當虛擬機器名稱可能因為在 Azure 中不支援某些字元而變更時。 因此，這項資訊會傳遞到 ASR 復原計畫，做為*內容*的一部分。
+具決定性的指令碼。 其中一個雲端主張雲端服務和虛擬機器的名稱是可預測的，但有時候不一定可以預測，例如，當虛擬機器名稱可能因為在 Azure 中不支援某些字元而變更時。 因此這項資訊會傳遞到 ASR 復原計畫的一部分 *內容*。
 
-以下是內容變數外觀的範例。
+以下是內容變數外觀的範例。 
 
         {"RecoveryPlanName":"hrweb-recovery",
-    
+
         "FailoverType":"Test",
-    
+
         "FailoverDirection":"PrimaryToSecondary",
-    
+
         "GroupId":"1",
-    
+
         "VmMap":{"7a1069c6-c1d6-49c5-8c5d-33bfce8dd183":
-    
+
                 {"CloudServiceName":"pod02hrweb-Chicago-test",
-    
+
                 "RoleName":"Fabrikam-Hrweb-frontend-test"}
-    
+
                 }
-    
+
         }
+
 
 下表包含內容中每個變數的名稱和描述。
 
- **變數名稱**| **說明**
+**變數名稱** | **說明**
 ---|---
- RecoveryPlanName| 正在執行的計劃名稱。協助您根據名稱使用相同的指令碼採取動作
- FailoverType| 指定容錯移轉是測試、已計劃，還是未計劃。
- FailoverDirection| 指定復原是主要還是次要
- GroupID| 識別計劃執行時復原計劃內的群組編號
- VmMap| 群組中所有虛擬機器的陣列
- VMMap 索引鍵| 每個 VM 的唯一索引鍵 (GUID)。與虛擬機器的適用 VMM ID 相同。
- RoleName| 正在復原的 Azure VM 的名稱
- CloudServiceName| 在其下建立虛擬機器的 Azure 雲端服務名稱。
+RecoveryPlanName | 正在執行的計劃名稱。 協助您根據名稱使用相同的指令碼採取動作
+FailoverType | 指定容錯移轉是測試、已計劃，還是未計劃。 
+FailoverDirection | 指定復原是主要還是次要
+GroupID | 識別計劃執行時復原計劃內的群組編號
+VmMap | 群組中所有虛擬機器的陣列
+VMMap 索引鍵 | 每個 VM 的唯一索引鍵 (GUID)。 與虛擬機器的適用 VMM ID 相同。 
+RoleName | 正在復原的 Azure VM 的名稱
+CloudServiceName | 在其下建立虛擬機器的 Azure 雲端服務名稱。
 
 
 若要識別內容中的 VmMap 索引鍵，您也可以移至 ASR 中的 [VM 屬性] 頁面，查看 VM GUID 屬性。
@@ -190,11 +191,12 @@ ASR 將內容變數傳遞至 runbook，以協助您撰寫
 2.  瀏覽至 Runbook 的 [撰寫] 檢視，然後進入草稿模式。
 
 3.  首先，指定要當做復原計畫內容使用的變數
-
+  
     ```
         param (
             [Object]$RecoveryPlanContext
         )
+
     ```
 
 4.  接著連接到使用認證的訂閱和
@@ -202,14 +204,14 @@ ASR 將內容變數傳遞至 runbook，以協助您撰寫
 
     ```
         $Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-
+    
         # Connect to Azure
         $AzureAccount = Add-AzureAccount -Credential $Cred
         $AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
         Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
     ```
 
-    請注意，您在這裡使用的是 Azure 的資產 – **AzureCredential** 和 **AzureSubscriptionName**。
+    請注意，您會使用 Azure 的資產 – **AzureCredential** 和 **AzureSubscriptionName** 這裡。
 
 5.  現在，指定端點詳細資料以及您要公開端點所在虛擬機器的 GUID。 在這個案例中為前端虛擬機器。
 
@@ -222,7 +224,7 @@ ASR 將內容變數傳遞至 runbook，以協助您撰寫
         $VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
     ```
 
-    這會指定 Azure 端點通訊協定、VM 上的本機連接埠及其對應的公用連接埠。 這些變數是將端點加入至 Vm 的 Azure 命令所需的參數。 VMGUID 保留您操作所需的虛擬機器的 GUID。
+    這會指定 Azure 端點通訊協定、VM 上的本機連接埠及其對應的公用連接埠。 這些變數是將端點加入至 Vm 的 Azure 命令所需的參數。 VMGUID 保留您操作所需的虛擬機器的 GUID。 
 
 6.  指令碼現在會針對給定的 VM GUID 擷取內容，
     它所參考的虛擬機器上建立端點。
@@ -247,7 +249,7 @@ ASR 將內容變數傳遞至 runbook，以協助您撰寫
         }
     ```
 
-7. 這項作業完成後之後, 按 [發佈 ![](media/site-recovery-runbook-automation/20.png) 可讓您的指令碼可供執行。
+7. 這項操作完成之後，按 [發佈 ![](media/site-recovery-runbook-automation/20.png)] 可讓您的指令碼可供執行。 
 
 以下提供完整的指令碼供您參考
 
@@ -259,7 +261,7 @@ ASR 將內容變數傳遞至 runbook，以協助您撰寫
     )
 
     $Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-
+    
     # Connect to Azure
     $AzureAccount = Add-AzureAccount -Credential $Cred
     $AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
@@ -271,7 +273,7 @@ ASR 將內容變數傳遞至 runbook，以協助您撰寫
     $AEPublicPort = 80
     $AEName = "Port 80 for HTTP"
     $VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
-
+    
     #Read the VM GUID from the context
     $VM = $RecoveryPlanContext.VmMap.$VMGUID
 
@@ -335,7 +337,7 @@ ASR 將內容變數傳遞至 runbook，以協助您撰寫
 
     ![](media/site-recovery-runbook-automation/18.png)
 
-4.  完成容錯移轉之後，除了 Runbook 執行結果之後，您還可以瀏覽 Azure 虛擬機器頁面並查看端點，以了解查看執行是否成功。
+4.  完成容錯移轉之後，除了 Runbook 執行結果之後，您還可以瀏覽 Azure 虛擬機器頁面並查看端點，以了解查看執行是否成功。 
 
 ![](media/site-recovery-runbook-automation/19.png)
 
@@ -349,9 +351,5 @@ ASR 將內容變數傳遞至 runbook，以協助您撰寫
 
 [Azure 自動化指令碼範例](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=User&f[0].Value=SC%20Automation%20Product%20Team&f[0].Text=SC%20Automation%20Product%20Team "Azure 自動化指令碼範例")
 
-
-
-
-
-
+ 
 

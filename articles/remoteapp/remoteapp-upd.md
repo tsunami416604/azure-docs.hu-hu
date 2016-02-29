@@ -1,31 +1,33 @@
+
 <properties 
-    pageTitle ="如何使用 Azure RemoteApp 與 Office 365 使用者帳戶 |Microsoft Azure 「
-    描述 = 「 了解如何使用 Azure RemoteApp 與我的 Office 365 使用者帳戶 」
-    服務 ="remoteapp"
+    pageTitle="如何搭配 Office 365 使用者帳戶使用 Azure RemoteApp | Microsoft Azure"
+    description="了解如何搭配 Office 365 使用者帳戶使用 Azure RemoteApp"
+    services="remoteapp"
     documentationCenter="" 
-    作者 ="lizap" 
-    管理員 ="mbaldwin"/ >
+    authors="lizap" 
+    manager="mbaldwin" />
 
 <tags 
-    ms.service="remoteapp 」 
-    ms.workload="compute 」 
+    ms.service="remoteapp" 
+    ms.workload="compute" 
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="12/04/2015 」 
-    ms.author="elizapo"/ >
+    ms.date="12/04/2015" 
+    ms.author="elizapo" />
 
 # Azure RemoteApp 如何儲存使用者資料和設定？
 
 Azure RemoteApp 跨越裝置和工作階段儲存使用者身分識別和自訂。 此使用者資料會依每個使用者和每個集合磁碟 (也稱為使用者設定檔磁碟 (UPD)) 儲存。 磁碟都會追蹤使用者並確保使用者擁有一致的經驗，不論他們登入的位置。 
-儲存
+儲存 
 
 對使用者而言，使用者設定檔磁碟是完全透明的 — 使用者會將文件儲存至其 Documents 資料夾 (似乎是本機磁碟機) 並如往常般變更其應用程式設定。 同時，從任何裝置連線到 Azure RemoteApp 時會保存所有的個人設定。 使用者會在相同的位置看到其資料。
 
-每個 UPD 有 50GB 的永續性儲存體，並包含使用者資料和應用程式設定。
+每個 UPD 有 50GB 的永續性儲存體，並包含使用者資料和應用程式設定。 
 
 請閱讀更多有關使用者設定檔資料的特殊資訊。
->[AZURE.NOTE] 必須停用 UPD 嗎？ 您可以執行 Pavithra 的部落格文章，而現在-取出 [停用使用者設定檔磁碟 (Upd) 在 Azure RemoteApp 中](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx), ，如需詳細資訊。
+
+>[AZURE.NOTE] 必須停用 UPD 嗎? 您可以執行 Pavithra 的部落格文章，而現在-取出 [停用使用者設定檔磁碟 (Upd) 在 Azure RemoteApp 中](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx), ，如需詳細資訊。
 
 
 ## 系統管理員如何取得資料？
@@ -43,27 +45,24 @@ Azure RemoteApp 跨越裝置和工作階段儲存使用者身分識別和自訂�
 
 ## 使用 Outlook 和 UPD 的最佳方式為何？
 
-Azure RemoteApp 會儲存工作階段間的 Outlook 狀態 (信箱、PST)。若要啟用此功能，我們需要將 PST 儲存在使用者設定檔資料 (c:\users\<username>)。這是資料的預設位置，只要您不變更位置，資料將會在工作階段之間保存。
+Azure RemoteApp 會儲存工作階段間的 Outlook 狀態 (信箱、PST)。 若要啟用此功能，我們需要將 PST 儲存在使用者設定檔資料 (c:\users\ < 使用者名稱 >)。 這是資料的預設位置，只要您不變更位置，資料將會在工作階段之間保存。
 
 我們也建議您在 Outlook 中使用「快取」模式，並使用「伺服器/線上」模式進行搜尋。
 
 簽出 [這篇文章](remoteapp-outlook.md) 如需有關使用 Outlook 和 Azure RemoteApp。
 
 ## 我們可以使用共用的資料解決方案嗎？
-
 是，Azure RemoteApp 支援使用共用的資料解決方案 - 尤其是商務用 OneDrive 和 Dropbox。 不過請注意，不支援 OneDrive Consumer (個人版) 和 Box。
 
 ## 重新導向呢？
-
 您可以設定 Azure RemoteApp，讓使用者存取本機裝置設定 [重新導向](remoteapp-redirection.md)。 然後本機裝置即可存取 UPD 上的資料。
 
 ## 我可以使用 UPD 做為網路共用嗎？
-
-號 無法使用 Upd 做為網路共用。 UPD 僅適用於使用者主動連線到 Azure RemoteApp 時。
+編號 無法使用 Upd 做為網路共用。 UPD 僅適用於使用者主動連線到 Azure RemoteApp 時。
 
 ## 如果我從集合中刪除使用者，其 UPD 是否也會刪除?
 
-否，當您刪除使用者時，我們不會自動刪除 UPD - 相反地，我們會儲存資料，直到您刪除集合為止。 刪除集合後 90 天，我們才會刪除所有 UPD。
+否，當您刪除使用者時，我們不會自動刪除 UPD - 相反地，我們會儲存資料，直到您刪除集合為止。 刪除集合後 90 天，我們才會刪除所有 UPD。 
 
 如果您需要從集合中刪除 UPD，請連絡 Azure RemoteApp - 我們可以從我們這端刪除 UPD。
 
@@ -76,17 +75,16 @@ Azure RemoteApp 會儲存工作階段間的 Outlook 狀態 (信箱、PST)。若�
 除了上述 10 小時的存取時段以外，我們現在並不提供 UPD 的離線存取。 這表示我們目前沒辦法讓您長時間存取以完成更複雜的工作，像是在 UPD 上執行防毒軟體或存取資料進行稽核。
 
 ## 登錄機碼設定可以保存嗎？
-
 可以，寫入 HKEY_Current_User 的任何項目都是 UPD 的一部分。
 
 ## 我可以停用 集合的 UPD 嗎？
 
 可以，您可以要求 Azure RemoteApp 停用訂用帳戶的 UPD，但無法自己執行該作業。 這表示將會針對訂用帳戶中的所有集合停用 UPD。
 
-在下列情況您可能會希望停用 UPD：
+遇到下列情況時，建議您停用 UPD： 
 
 - 您需要使用者資料的完整存取權限和控制 (針對稽核和檢閱之目的，例如金融機構)。
-- 您有內部部署的第三方使用者設定檔管理解決方案，並想要加入網域的 Azure RemoteApp 部署繼續使用它們。 這會需要將設定檔代理程式載入主要映像。
+- 您有內部部署的第三方使用者設定檔管理解決方案，並想要加入網域的 Azure RemoteApp 部署繼續使用它們。 這會需要將設定檔代理程式載入主要映像。 
 - 您不需要任何本機資料儲存空間，或者您的所有資料都在雲端 (例如商務用 OneDrive) 或檔案共用，並且想要使用 Azure RemoteApp 控制在本機的檔案儲存。
 
 請參閱  [停用使用者設定檔磁碟 (Upd) 在 Azure RemoteApp 中](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx) 如需詳細資訊。
@@ -95,13 +93,13 @@ Azure RemoteApp 會儲存工作階段間的 Outlook 狀態 (信箱、PST)。若�
 
 可以，但您必須在建立集合之前，在範本映像中加以設定。 使用下列步驟來封鎖系統磁碟機的存取：
 
-1. 在範本映像上執行 **gpedit.msc**。
-2. 瀏覽至 [使用者設定] > [系統管理範本] > [Windows 元件] > [Explorer]****。
+1. 執行 **gpedit.msc** 範本映像。
+2. 瀏覽至 **使用者設定 > 系統管理範本] > Windows 元件 > Explorer**。
 3. 選取下列選項：
     - **隱藏 [我的電腦] 中這些指定的磁碟機**
     - **防止從 [我的電腦] 存取磁碟機**
 
-## 我可以植入 UPD 嗎？我想要在使用者第一次登入時可用的 UPD 中放入一些資料。
+## 我可以植入 UPD 嗎？ 我想要在使用者第一次登入時可用的 UPD 中放入一些資料。
 
 是，當您建立範本映像時，您可以將資訊加入至預設設定檔。 這項資訊會接著加入至 UPD。
 
@@ -118,7 +116,7 @@ Azure RemoteApp 會儲存工作階段間的 Outlook 狀態 (信箱、PST)。若�
 
 ## 如何在 Azure RemoteApp 中執行啟動指令碼？
 
-如果您想要執行啟動指令碼，請從在您即將用於收集的範本映像中建立排定的工作著手。 (請在執行 sysprep 「前」** 這麼做。)
+如果您想要執行啟動指令碼，請從在您即將用於收集的範本映像中建立排定的工作著手。 (這樣 *之前* 執行 sysprep。) 
 
 ![建立系統工作](./media/remoteapp-upd/upd1.png)
 
@@ -128,9 +126,9 @@ Azure RemoteApp 會儲存工作階段間的 Outlook 狀態 (信箱、PST)。若�
 
 ![將工作的觸發程序設定為「登入時」](./media/remoteapp-upd/upd3.png)
 
-您也可以使用 [群組原則為基礎的啟動指令碼](https://technet.microsoft.com/library/cc779329%28v=ws.10%29.aspx)。
+您也可以使用 [群組原則為基礎的啟動指令碼](https://technet.microsoft.com/library/cc779329%28v=ws.10%29.aspx)。 
 
-## 將啟動指令碼置於 [開始] 功能表？可行嗎？
+## 將啟動指令碼置於 [開始] 功能表？ 可行嗎？
 
 換句話說，我可以建立一個可執行 config 視窗指令碼的 .bat 檔並將它儲存至 c:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp 資料夾，然後讓該指令碼在使用者每次啟動 RemoteApp 工作階段時執行嗎？
 
@@ -139,8 +137,4 @@ Azure RemoteApp 會儲存工作階段間的 Outlook 狀態 (信箱、PST)。若�
 ## 我可以使用 mstsc.exe (遠端桌面程式) 來設定登入指令碼嗎？
 
 不行，Azure RemoteApp 不支援。
-
-
-
-
 

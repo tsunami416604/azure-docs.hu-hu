@@ -17,9 +17,7 @@
    ms.author="prkumar"/>
 
 
-
 # 開始使用 HTTP 接聽程式和 HTTP 動作，並將它加入您的邏輯應用程式
-
 直接連線到 HTTP 資源以接聽 HTTP 要求和設定 HTTP Web 要求。 在某些情況下，您可能需要使用直接 HTTP 連線，包括：
 
 1.  若要開發支援 Web 或行動使用者互動前端的邏輯應用程式。
@@ -28,28 +26,27 @@
 
 對於這些案例，有兩個選項：
 
-1. **HTTP 接聽程式**：這個連接器可做為觸發程序，並接聽設定的端點上的 HTTP 要求。 設定的端點上收到呼叫時，它會觸發流程的新執行個體，並將要求中所收到的資料傳遞到處理的流程中。 它也可以設定為在啟動流程時自動回應內送要求，或可讓您根據流程執行建構回應並傳送回應給呼叫者。
-2. **HTTP 動作**：這可讓您將 Web 要求設定到網際網路上任何可用的端點、取得回應，並提供給流程中的其他動作取用。
+1. **HTTP 接聽程式**: 這個連接器可做為觸發程序，並接聽設定的端點上的 HTTP 要求。 設定的端點上收到呼叫時，它會觸發流程的新執行個體，並將要求中所收到的資料傳遞到處理的流程中。 它也可以設定為在啟動流程時自動回應內送要求，或可讓您根據流程執行建構回應並傳送回應給呼叫者。
+2. **HTTP 動作**: 這可讓您設定網際網路上任何可用的端點的 web 要求、 取得回應，並可供其他動作中使用的流程。
 
-邏輯應用程式可以根據各種資料來源觸發，並提供連接器以取得及處理屬於流程一部分的資料。 您可以將 HTTP 連接器加入您的商務工作流程，就能在邏輯應用程式的該工作流程中處理資料。
+邏輯應用程式可以根據各種資料來源觸發，並提供連接器以取得及處理屬於流程一部分的資料。 您可以將 HTTP 連接器加入您的商務工作流程，就能在邏輯應用程式的該工作流程中處理資料。 
 
 ## 建立邏輯應用程式的 HTTP 接聽程式
+連接器可以在邏輯應用程式內建立，或直接從 Azure Marketplace 建立。 從 Marketplace 建立連接器：  
 
-連接器可以在邏輯應用程式內建立，或直接從 Azure Marketplace 建立。 從 Marketplace 建立連接器：
-
-1. 在 Azure 開始面板中，選取 [Marketplace]****。
-2. 搜尋 "HTTP"，選取 HTTP 接聽程式，然後選取 [建立]****。
+1. 在 Azure 開始面板中，選取 **Marketplace**。
+2. 搜尋 「 HTTP 」，選取 [HTTP 接聽程式，並選取 **建立**。
 3.  設定 HTTP 接聽程式，如下所示：  
 ![][1]
 
 4.  進行封裝設定時，您會看到下列有關接聽程式是否應該自動回應或要求您傳送明確回應的選項。 請設為 **False** 傳送您自己的回應:  
 ![][2]
 
-5.  按一下 [確定]**** 以建立。
+5.  按一下 [ **確定** 來建立。
 6.  建立 API 應用程式執行個體後，請開啟設定以設定安全性。 HTTP 接聽程式目前支援基本驗證。 您可以設定此使用 [安全性] 選項，當您開啟 HTTP 接聽程式:  
 ![][3]
-
-    **已知問題**  * 安全性設定會顯示 [無] 作為預設值，但是它還未定義。 您必須將設定變更為基本，然後回到無儲存，以確保 HTTP 接聽程式是設定的 correctly.* 之前
+  
+    **已知問題**  *安全性設定會顯示 [無] 作為預設值，但是它還未定義。  您必須將設定變更為 [基本]，然後在儲存它之前變回 [無]，以確定正確地設定 HTTP 接聽程式。*
 
 7. 最後，將 API 應用程式的安全性設定設為 [公用 (匿名)]，以允許外部用戶端存取端點。 此設定可供下 」 的所有設定 > 應用程式設定 」 的 HTTP 接聽程式 API 應用程式:
 ![][10]
@@ -57,7 +54,6 @@
 一旦完成，您立即可建立邏輯應用程式來使用 HTTP 接聽程式。
 
 ## 在邏輯應用程式中使用 HTTP 接聽程式
-
 建立 API 應用程式之後，您現在可以使用 HTTP 接聽程式做為邏輯應用程式的觸發程序。 若要這樣做，您需要：
 
 4.  建立新的邏輯應用程式。
@@ -75,31 +71,29 @@
 ![][9]
 
 ## 使用 HTTP 動作
-
 Logic Apps 原生支援 HTTP 動作，而且無需建立 API 應用程式即可使用。 您可以在應用程式邏輯的任何位置插入 HTTP 動作，並選擇呼叫的 URI、標頭和主體。
 HTTP 動作支援多個用戶端安全性選項。 若要使用這些選項，請閱讀本文 [這裡](http://aka.ms/logicapphttpauth)。
 
 HTTP 動作的輸出會是標頭和主體，可進一步在流程的下游中使用，且與取用其他動作和連接器的輸出方式類似。
 
 ## 進一步運用您的連接器
-
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md).
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
 您也可以檢閱連接器的效能統計資料及控制安全性。 請參閱 [管理和監視內建 API 應用程式和連接器](app-service-logic-monitor-your-connectors.md)。
+
 > [AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
 
-
-
-[1]: ./media/app-service-logic-connector-http/1.png 
-[2]: ./media/app-service-logic-connector-http/2.png 
-[3]: ./media/app-service-logic-connector-http/3.png 
-[4]: ./media/app-service-logic-connector-http/4.png 
-[5]: ./media/app-service-logic-connector-http/5.png 
-[6]: ./media/app-service-logic-connector-http/6.png 
-[7]: ./media/app-service-logic-connector-http/7.png 
-[8]: ./media/app-service-logic-connector-http/8.png 
-[9]: ./media/app-service-logic-connector-http/9.png 
-[10]: ./media/app-service-logic-connector-http/10.png 
+<!--Image references-->
+[1]: ./media/app-service-logic-connector-http/1.png
+[2]: ./media/app-service-logic-connector-http/2.png
+[3]: ./media/app-service-logic-connector-http/3.png
+[4]: ./media/app-service-logic-connector-http/4.png
+[5]: ./media/app-service-logic-connector-http/5.png
+[6]: ./media/app-service-logic-connector-http/6.png
+[7]: ./media/app-service-logic-connector-http/7.png
+[8]: ./media/app-service-logic-connector-http/8.png
+[9]: ./media/app-service-logic-connector-http/9.png
+[10]: ./media/app-service-logic-connector-http/10.png
 

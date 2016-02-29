@@ -15,12 +15,11 @@
    ms.date="08/24/2015"
    ms.author="tarcher" />
 
-
 # 建構資料表設計工具的篩選字串
 
 ## 概觀
 
-若要在 Visual Studio [資料表設計工具]**** 中顯示的 Azure 資料表中篩選資料，您可以建構篩選字串並在篩選欄位中輸入它。 篩選條件字串語法由 WCF Data Services 定義，類似於 SQL WHERE 子句，但會透過 HTTP 要求傳送至表格服務。 [資料表設計工具]**** 會為您處理適當的編碼，因此，若要篩選所需的屬性值，您只需要在篩選欄位中輸入屬性名稱、比較運算子、準則值和 (選擇性) 布林運算子。 您不需要包含 $filter 查詢選項，就可以像在建構查詢資料表透過 URL 依照 [儲存體服務 REST API 參考](http://go.microsoft.com/fwlink/p/?LinkId=400447)。
+在 Visual Studio 中會顯示 Azure 資料表中篩選資料 **資料表設計工具**, ，建構篩選字串，並輸入篩選的欄位。 篩選條件字串語法由 WCF Data Services 定義，類似於 SQL WHERE 子句，但會透過 HTTP 要求傳送至表格服務。  **資料表設計工具** 處理適當編碼，因此若要篩選所要的屬性值，您必須只輸入屬性名稱、 比較運算子、 準則值和 (選擇性) 的布林值篩選] 欄位中的運算子。 您不需要包含 $filter 查詢選項，就可以像在建構查詢資料表透過 URL 依照 [儲存體服務 REST API 參考](http://go.microsoft.com/fwlink/p/?LinkId=400447)。
 
 WCF 資料服務會根據 [開放式資料通訊協定](http://go.microsoft.com/fwlink/p/?LinkId=214805) (OData)。 如需有關 filter 系統查詢選項 (**$filter**)，請參閱 [OData URI 慣例規格](http://go.microsoft.com/fwlink/p/?LinkId=214806)。
 
@@ -28,17 +27,17 @@ WCF 資料服務會根據 [開放式資料通訊協定](http://go.microsoft.com/
 
 所有屬性類型都支援下列邏輯運算子：
 
-| 邏輯運算子| 說明| 篩選字串範例|
+|邏輯運算子|說明|篩選字串範例|
 |---|---|---|
-| eq| 等於| City eq 'Redmond'|
-| gt| 大於| Price gt 20|
-| ge| 大於或等於| Price ge 10|
-| lt| 小於| Price lt 20|
-| le| 小於或等於| Price le 100|
-| ne| 不等於| City ne 'London'|
-| 和| 和| Price le 200 and Price gt 3.5|
-| 或| 或| Price le 3.5 or Price gt 200|
-| 否| 否| not isAvailable|
+|eq|等於|City eq 'Redmond'|
+|gt|大於|Price gt 20|
+|ge|大於或等於|Price ge 10|
+|lt|小於|Price lt 20|
+|le|小於或等於|Price le 100|
+|ne|不等於|City ne 'London'|
+|和|和|Price le 200 and Price gt 3.5|
+|或|或|Price le 3.5 or Price gt 200|
+|否|否|not isAvailable|
 
 建構篩選字串時，下列規則很重要：
 
@@ -52,7 +51,7 @@ WCF 資料服務會根據 [開放式資料通訊協定](http://go.microsoft.com/
 
 當您篩選字串屬性時，請用單引號括住字串常數。
 
-下列範例會篩選 **PartitionKey** 和 **RowKey** 屬性。額外的非索引鍵屬性也可以加入至篩選字串：
+下列範例會篩選 **PartitionKey** 和 **RowKey** 屬性; 其他的非索引鍵屬性也可以加入篩選條件字串:
 
     PartitionKey eq 'Partition1' and RowKey eq '00001'
 
@@ -78,13 +77,13 @@ WCF 資料服務會根據 [開放式資料通訊協定](http://go.microsoft.com/
 
 ## 篩選布林值屬性
 
-若要篩選布林值，請指定 **true** 或 **false** 且不加引號。
+若要篩選的布林值，指定 **true** 或 **false** 不加引號。
 
-下列範例會傳回 IsActive 屬性設定為 **true** 的所有實體：
+下列範例會傳回所有實體 IsActive 屬性設定為其中 **true**:
 
     IsActive eq true
 
-您也可以不加邏輯運算子來撰寫這個篩選運算式。 在下列範例中，表格服務也會傳回 IsActive 為 **true** 的所有實體：
+您也可以不加邏輯運算子來撰寫這個篩選運算式。 在下列範例中，資料表服務也會傳回所有實體所在 IsActive **true**:
 
     IsActive
 
@@ -94,11 +93,9 @@ WCF 資料服務會根據 [開放式資料通訊協定](http://go.microsoft.com/
 
 ## 篩選 DateTime 屬性
 
-若要 DateTime 值，請指定 **datetime** 關鍵字，後面加上以單引號括住的日期/時間常數。 中所述，日期/時間常數必須是 UTC 組合格式， [格式的日期時間屬性值](http://go.microsoft.com/fwlink/p/?LinkId=400449)。
+若要篩選的日期時間值，指定 **datetime** 關鍵字，後面接著在單引號中的日期/時間常數。 中所述，日期/時間常數必須是 UTC 組合格式， [格式的日期時間屬性值](http://go.microsoft.com/fwlink/p/?LinkId=400449)。
 
 下列範例會傳回 CustomerSince 屬性等於 2008 年 7 月 10 日的實體：
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
-
-
 

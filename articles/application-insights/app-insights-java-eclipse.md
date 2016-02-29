@@ -14,22 +14,21 @@
     ms.topic="article" 
     ms.date="11/25/2015" 
     ms.author="awills"/>
-
-
+ 
 # 在 Eclipse 中利用 Java 開始使用 Application Insights
 
-Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您可以分析使用量和效能。 Application Insights 適用的 Eclipse 外掛程式會自動在您的專案中安裝 SDK，使得您可以取得內建的遙測，加上可以用來編寫自訂遙測的 API。
+Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您可以分析使用量和效能。 Application Insights 適用的 Eclipse 外掛程式會自動在您的專案中安裝 SDK，使得您可以取得內建的遙測，加上可以用來編寫自訂遙測的 API。   
 
 
 ## 必要條件
 
 目前外掛程式可用於 Eclipse 中的 Maven 專案和動態網站專案。 
-([將 Application Insights 加入其他類型的 Java 專案的 ][java]。)
+([將 Application Insights 加入至其他類型的 Java 專案][java]。)
 
 您需要：
 
 * Oracle JRE 1.6 或更新版本
-* 若要訂閱 [Microsoft Azure](http://azure.microsoft.com/)。 (您可以開始 [免費試用版](http://azure.microsoft.com/pricing/free-trial/).)
+* 若要訂閱 [Microsoft Azure](http://azure.microsoft.com/)。 (您可以開始 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。)
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/), 、 Indigo 或更新版本。
 * Windows 7 或更新版本，或 Windows Server 2008 或更新版本
 
@@ -39,29 +38,29 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 
 1. 在 Eclipse 中，按一下 [說明]，然後按一下 [安裝新軟體]。
 
-    ![[說明] -> ](./media/app-insights-java-eclipse/0-plugin.png)
+    ![[說明] -> [安裝新軟體]](./media/app-insights-java-eclipse/0-plugin.png)
 
-2. SDK 位在 http://dl.windowsazure.com/eclipse，Azure 工具組。
-3. 取消勾選 **[連絡所有更新網站...]**
+2. SDK 位在 http://dl.windowsazure.com/eclipse，Azure 工具組。 
+3. 取消核取 **連絡所有更新網站...**
 
-    ![針對 Application Insights SDK，請清除 ](./media/app-insights-java-eclipse/1-plugin.png)
+    ![針對 Application Insights SDK，請清除 [連絡所有更新網站]](./media/app-insights-java-eclipse/1-plugin.png)
 
 對每個 Java 專案遵循其餘的步驟。
 
 ## 在 Azure 中建立 Application Insights 資源
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2.
+2. 
 
 ## 將 Application Insights 加入至專案
 
 1. 從 Java Web 專案的內容功能表將 Application Insights 加入。
 
-    ![在新資源概觀中，按一下 ](./media/app-insights-java-eclipse/02-context-menu.png)
+    ![在新資源概觀中，按一下 [屬性] 並複製檢測金鑰](./media/app-insights-java-eclipse/02-context-menu.png)
 
 2. 將您從 Azure 入口網站取得的檢測金鑰貼上。
 
-    ![在新資源概觀中，按一下 ](./media/app-insights-java-eclipse/03-ikey.png)
+    ![在新資源概觀中，按一下 [屬性] 並複製檢測金鑰](./media/app-insights-java-eclipse/03-ikey.png)
 
 
 金鑰會隨著遙測的每個項目傳送，並告知 Application Insights 在您的資源中顯示它。
@@ -74,28 +73,28 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 
 [概觀] 分頁上會顯示 HTTP 要求資料。 (如果沒有出現，請稍等片刻，然後按一下 [重新整理]。)
 
-![伺服器回應、要求計數和失敗](./media/app-insights-java-eclipse/5-results.png)
+![伺服器回應、要求計數和失敗 ](./media/app-insights-java-eclipse/5-results.png)
+ 
 
-
-逐一點選任何圖表以查看更詳細的度量。
+按一下任何圖表以查看詳細度量。 
 
 ![依名稱的要求計數](./media/app-insights-java-eclipse/6-barchart.png)
 
 
-[進一步了解度量。][metrics]
+[深入了解度量。][metrics]
 
-
+ 
 
 而檢視要求的屬性時，您可以查看與它關聯的遙測事件，例如要求和例外狀況。
-
+ 
 ![此要求的所有追蹤](./media/app-insights-java-eclipse/7-instance.png)
 
 
 ## 用戶端遙測
 
-在 [快速啟動] 刀鋒視窗中，按一下 [取得程式碼] 來監視我的網頁：
+在 [快速啟動] 刀鋒視窗中，按一下 [取得程式碼] 來監視我的網頁： 
 
-![在您的應用程式概觀刀鋒視窗中，選擇 [快速入門]，取得程式碼來監視我的網頁。 複製指令碼]。(。 / media/app-insights-java-eclipse/02-monitor-web-page.png)
+![在您的應用程式概觀刀鋒視窗中，選擇 [快速入門]，取得程式碼以監視我的網頁。 複製指令碼。](./media/app-insights-java-eclipse/02-monitor-web-page.png)
 
 在 HTML 檔案的標頭插入程式碼片段。
 
@@ -107,7 +106,7 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 
 ![工作階段、使用者和頁面檢視](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
 
-[進一步了解設定用戶端遙測。][usage]
+[深入了解設定用戶端遙測。][usage]
 
 ## 發行您的應用程式
 
@@ -120,9 +119,10 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
  * f5.services.visualstudio.com:443
  * f5.services.visualstudio.com:80
 
+
 * 在 Windows 伺服器上，安裝：
 
- * [Microsoft Visual c + + 可轉散發套件](http://www.microsoft.com/download/details.aspx?id=40784)
+ * [Microsoft Visual C++ 可轉散發套件](http://www.microsoft.com/download/details.aspx?id=40784)
 
     (這會啟用效能計數器。)
 
@@ -134,7 +134,7 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 
 若要收集其他例外狀況的資料，您有兩個選項：
 
-* [程式碼中插入 TrackException 的呼叫](app-insights-api-custom-events-metrics.md#track-exception)。
+* [在您的程式碼中插入 TrackException 的呼叫](app-insights-api-custom-events-metrics.md#track-exception)。 
 * [在伺服器上安裝 Java 代理程式](app-insights-java-agent.md)。 指定您想要觀看的方法。
 
 
@@ -148,7 +148,7 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 在您的 [概觀] 刀鋒視窗中，向下捲動並按一下 [  **伺服器** 並排顯示。 您會看到一些效能計數器。
 
 
-![向下捲動，按一下 ](./media/app-insights-java-eclipse/11-perf-counters.png)
+![向下捲動，按一下 [伺服器] 磚](./media/app-insights-java-eclipse/11-perf-counters.png)
 
 ### 自訂效能計數器集合
 
@@ -173,11 +173,11 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 
 *   `displayName` – Application Insights 入口網站中顯示的名稱。
 *   `objectName` – JMX 物件名稱。
-*   `屬性` – 要提取的 JMX 物件名稱的屬性
-*   `類型` (選用)-JMX 物件屬性的型別:
+*   `attribute` – 要提取的 JMX 物件名稱的屬性
+*   `type` (選用) - JMX 物件屬性的類型：
  *  預設值：簡易類型，例如 int 或 long。
- *  `複合`: 效能計數器資料的格式為 'Attribute.Data'
- *  `表格式`: 效能計數器資料的資料表資料列的格式
+ *  `composite`：效能計數器資料的格式為 'Attribute.Data'
+ *  `tabular`：效能計數器資料的格式為資料表列
 
 
 
@@ -195,9 +195,9 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 *   displayName – Application Insights 入口網站中顯示的名稱。
 *   categoryName – 與此效能計數器有關聯的效能計數器類別 (效能物件)。
 *   counterName – 效能計數器的名稱。
-*   instanceName – 效能計數器類別執行個體的名稱，或如果類別包含單一執行個體，則為空白字串 ("")。 如果 categoryName 為 Process，而您想要收集的效能計數器是從目前 JVM 處理程序上執行您的應用程式，請指定 `"__SELF__"`。
+*   instanceName – 效能計數器類別執行個體的名稱，或如果類別包含單一執行個體，則為空白字串 ("")。 如果 categoryName 為 Process，而您要收集的效能計數器來自應用程式執行所在的目前 JVM 處理程序，請指定 `"__SELF__"`。
 
-效能計數器會顯示為自訂度量在 [計量瀏覽器 ][metrics]。
+效能計數器會顯示在自訂的度量為 [計量瀏覽器][metrics]。
 
 ![](./media/app-insights-java-eclipse/12-custom-perfs.png)
 
@@ -208,29 +208,29 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 
 ## 可用性 Web 測試
 
-Application Insights 可讓您定期測試網站，以檢查網站運作中且正常回應。 [設定 ][availability], ，向下捲動來按一下 [可用性]。
+Application Insights 可讓您定期測試網站，以檢查網站運作中且正常回應。 [若要設定][availability], ，向下捲動來按一下 [可用性]。
 
-![向下捲動，並依序按一下 ](./media/app-insights-java-eclipse/31-config-web-test.png)
+![向下捲動，並依序按一下 [可用性]、[加入 Web 測試]](./media/app-insights-java-eclipse/31-config-web-test.png)
 
 您將取得回應時間的圖表，以及若網站關閉還會取得電子郵件通知。
 
 ![Web 測試範例](./media/app-insights-java-eclipse/appinsights-10webtestresult.png)
 
-[進一步了解 web 測試的可用性。][availability]
+[深入了解 Web 測試的可用性。][availability] 
 
 ## 診斷記錄
 
 如果您使用 Logback 或 Log4J (v1.2 或 v2.0) 進行追蹤，您可以將追蹤記錄自動傳送到 Application Insights，您可以在其中探索及搜尋記錄。
 
-[深入了解診斷記錄 ][javalogs]
+[深入了解診斷記錄][javalogs]
 
-## 自訂遙測
+## 自訂遙測 
 
-在 Java Web 應用程式中插入幾行程式碼，以了解使用者對它進行的動作或協助診斷問題。
+在 Java Web 應用程式中插入幾行程式碼，以了解使用者對它進行的動作或協助診斷問題。 
 
 您可以在網頁 JavaScript 和伺服器端 Java 中插入程式碼。
 
-[了解自訂遙測 ][track]
+[貼上了解自訂遙測][track]
 
 
 
@@ -238,25 +238,25 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 
 #### 偵測並診斷問題
 
-* [加入 web 用戶端遙測 ][usage] 從 web 用戶端取得效能遙測。
-* [設定 web 測試的 ][availability] 以確定您的應用程式處於線上且能夠回應。
-* [搜尋事件和記錄 ][diagnostic] 以協助診斷問題。
-* [擷取 java、 Log4J 或 Logback 追蹤 ][javalogs]
+* [加入 web 用戶端遙測][usage] 從 web 用戶端取得效能遙測。
+* [設定 web 測試][availability] 以確定您的應用程式處於線上且能夠回應。
+* [搜尋事件和記錄][diagnostic] 以協助診斷問題。
+* [擷取 Java、Log4J 或 Logback 追蹤][javalogs]
 
 #### 追蹤流量
 
-* [加入 web 用戶端遙測 ][usage] 即可監視頁面檢視和基本使用者度量。
-* [追蹤自訂事件和度量 ][track] 來了解如何使用應用程式，同時在用戶端和伺服器。
+* [加入 web 用戶端遙測][usage] 即可監視頁面檢視和基本使用者度量。
+* [追蹤自訂事件和度量][track] 來了解如何使用應用程式，同時在用戶端和伺服器。
 
 
+<!--Link references-->
 
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
+[java]: app-insights-java-get-started.md
+[javalogs]: app-insights-java-trace-logs.md
+[metrics]: app-insights-metrics-explorer.md
+[track]: app-insights-api-custom-events-metrics.md
+[usage]: app-insights-web-track-usage.md
 
-
-[availability]: app-insights-monitor-web-app-availability.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[java]: app-insights-java-get-started.md 
-[javalogs]: app-insights-java-trace-logs.md 
-[metrics]: app-insights-metrics-explorer.md 
-[track]: app-insights-api-custom-events-metrics.md 
-[usage]: app-insights-web-track-usage.md 
-
+ 

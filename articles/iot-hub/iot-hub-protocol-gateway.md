@@ -16,7 +16,6 @@
    ms.date="09/29/2015"
    ms.author="kdotchko"/>
 
-
 # 支援 IoT 中心的其他通訊協定
 
 IoT 中心會透過 HTTPS 和 AMQP 通訊協定，以原生方式支援通訊。 在某些情況下，裝置或現場閘道可能無法使用這些標準通訊協定的其中一個，且需要通訊協定調適。 在這種情況下，自訂閘道可以橋接在 IoT 中心進出的流量，藉此為 IoT 中心端點啟用通訊協定調適。 Azure IoT 通訊協定閘道可啟用 IoT 中心的通訊協定調適，並實作 MQTT 通訊協定配接器，以啟用 IoT 裝置與 IoT 中心之間透過 MQTT 通訊協定的通訊。
@@ -35,10 +34,6 @@ MQTT 配接器也會示範程式設計模型，此模型可為其他通訊協定
 
 若要深入了解 Azure IoT 通訊協定閘道，以及如何使用並將其部署為 IoT 方案的一部分，請參閱：
 
-* [Azure IoT 通訊協定閘道儲存機制 GitHub 上](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
-* [Azure IoT 通訊協定閘道開發人員指南](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
-
-
-
-
+* [GitHub 上的 Azure IoT 通訊協定閘道儲存機制 (英文)](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
+* [Azure IoT 通訊協定閘道開發人員指南 (英文)](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 

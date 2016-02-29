@@ -16,7 +16,6 @@
     ms.date="11/20/2015"
     ms.author="kempb" />
 
-
 # 更新 Azure 資源群組專案 PowerShell 指令碼
 
 Visual Studio 中的 Azure 資源群組部署專案使用 Azure PowerShell 指令碼，協助準備您的資產並從 Visual Studio 部署至 Azure。 專案中的指令碼使用 Azure PowerShell 0.9.8 版。 不過，新版的 Azure PowerShell 1.0 版已經發行。
@@ -31,16 +30,15 @@ Visual Studio 中的 Azure 資源群組部署專案使用 Azure PowerShell 指�
 
 - 如果您在 Visual Studio 之外透過 PowerShell 命令視窗執行指令碼，可能會發生錯誤：
 
-    * 'Switch-azuremode' 詞彙無法辨識為 cmdlet、 函式、 指令碼檔案，或可執行的程式名稱。 請檢查名稱正確，或如果包含路徑的話，請確認路徑正確，然後再次嘗試 again.*
+    *'Switch-azuremode' 詞彙無法辨識為 cmdlet、 函式、 指令碼檔案，或可執行的程式名稱。 請檢查名稱，或如果包含路徑的話，確認路徑正確，然後再試一次。*
 
 如果新的 Azure PowerShell 造成您無法部署 Azure 資源群組專案，以下提供修正選項。
 
 - 您可以解除安裝最新版的 Azure PowerShell 並使用重新安裝舊版 (0.9.8) [Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx)。
 
-- 您可以對部署專案的 PowerShell 指令碼進行進行特定、針對性變更來解決問題，然後在 PowerShell 命令視窗中手動執行該指令碼。 您無法從 Visual Studio 的 [部署]**** 功能表項目中執行指令碼。 本文稍後會列出用於更新 PowerShell 指令碼的步驟，以及一份完整更新的指令碼。
+- 您可以對部署專案的 PowerShell 指令碼進行進行特定、針對性變更來解決問題，然後在 PowerShell 命令視窗中手動執行該指令碼。 您將無法執行指令碼從 **部署** Visual Studio 中的功能表項目。 本文稍後會列出用於更新 PowerShell 指令碼的步驟，以及一份完整更新的指令碼。
 
 ## 更新 Azure PowerShell 指令碼
-
 這些指示參考行號。 若要啟用 Visual Studio 中的行號，請參閱 [How to: 在編輯器中顯示行號](https://msdn.microsoft.com/library/ms165340.aspx)。
 
 1. 在第 61 行，將下列程式碼：
@@ -113,7 +111,6 @@ Visual Studio 中的 Azure 資源群組部署專案使用 Azure PowerShell 指�
     ```
 
 ## 更新的指令碼
-
 以下是使用先前提及的所有更新而修改的指令碼。
 
 ```
@@ -136,6 +133,7 @@ Param(
 Import-Module Azure -ErrorAction SilentlyContinue
 
 try {
+  [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("VSAzureTools-$UI$($host.name)".replace(" ","_"), "2.7.2")
 } catch { }
 
 Set-StrictMode -Version 3
@@ -228,9 +226,5 @@ New-AzureRMResourceGroupDeployment `
     -TemplateParameterFile $TemplateParametersFile `
     @OptionalParameters `
     -Verbose -Force
+
 ```
-
-
-
-[microsoft.azure.common.authentication.azuresession]: :ClientFactory.AddUserAgent("VSAzureTools-$UI$($host.name)".replace(" ","_"), "2.7.2""
-

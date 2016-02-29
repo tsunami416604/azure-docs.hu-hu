@@ -16,7 +16,6 @@
     ms.date="11/04/2015"
     ms.author="heidist"/>
 
-
 # Azure 搜尋開發的一般工作流程
 
 本文是用於將 Azure 搜尋 (雲端託管搜尋服務) 納入為元件的藍圖，而元件提供自訂應用程式中的搜尋經驗。 根據剛開始進行還是已準備就緒，您會想要有如何將 Azure 搜尋整合到您自訂開發專案的一些初步指引。
@@ -44,13 +43,14 @@ Azure 搜尋是可透過 Azure 訂用帳戶取得的完全管理線上服務。 
 建立服務之後，就可以從其結構描述定義開始來建立索引。
 
 建立索引的最快速且最簡單方式是透過 Azure 傳統入口網站。 每份文件最少必須具有唯一索引鍵，以及至少一個包含可搜尋資料的欄位。 若要開始，請參閱 [入口網站中建立索引](search-create-index-portal.md)。
+
 > [AZURE.NOTE] 在 Azure 搜尋索引內
 >
-> *「索引」*是組織化的持續性資料，做為所有後續搜尋作業的*「搜尋主體」*。 搜尋主體儲存在雲端做為搜尋服務訂用帳戶的一部分，以快速且一致地執行搜尋作業。 在搜尋術語中，搜尋主體中的項目稱為*「文件」*，而所有文件的總和是*「文件集」*。
+>  *索引* 組織、 持續性資料，做為 *搜尋主體* 為所有後續搜尋作業。 搜尋主體儲存在雲端做為搜尋服務訂用帳戶的一部分，以快速且一致地執行搜尋作業。 在搜尋術語中，搜尋主體中的項目稱為 *文件*, ，而所有文件的總和是 *文件集合*。
 >
->*「索引結構描述」*會依名稱、資料類型以及指定欄位是可搜尋、可篩選、可多面向等的屬性，來定義文件內的所有欄位。
+> *索引結構描述* 依名稱、 資料型別，以及指定欄位是否可搜尋、 篩選、 可多面向等的屬性會定義所有文件中的欄位。
 >
-> 除了文件結構之外，索引結構描述也會指定評分設定檔，以提供提升搜尋分數的準則，以及啟用自動完成查詢 (建議工具) 和跨網域查詢要求之 CORS 的組態設定。 *對於原型，建議您只在文件中指定欄位*，然後以累加方式新增其他功能 (如需要在稍後新增的其他功能清單，請參閱步驟 5)。  
+> 除了文件結構之外，索引結構描述也會指定評分設定檔，以提供提升搜尋分數的準則，以及啟用自動完成查詢 (建議工具) 和跨網域查詢要求之 CORS 的組態設定。 *對於原型，我們建議您只指定欄位的文件中只要開始*, ，然後以累加方式加入其他功能 (如稍後新增其他功能的清單，請參閱步驟 5)。  
 >
 > 套用至真實世界範例之後，請考慮使用電子商務應用程式。 搜尋索引將包含可在應用程式中搜尋的所有產品或服務 (搜尋結果中出現的任何項目)。 一個 SKU 會有一份文件。 每份文件都會包括產品名稱、品牌、大小、價格、色彩，甚至是影像或其他您想要在搜尋結果內傳回之資源檔的參考。
 
@@ -61,7 +61,8 @@ Azure 搜尋是可透過 Azure 訂用帳戶取得的完全管理線上服務。 
 您上傳至索引的資料必須符合在上一個步驟中所定義的結構描述。 文件資料代表每個欄位的一組索引鍵值組 (JSON 格式)。 如果您的結構描述指定識別碼 (索引鍵) 欄位、名稱欄位、數字欄位和 URL 欄位 (如果外部影像是搜尋結果的一部分，則可能會這麼做)，則送入索引的所有文件都必須有每個欄位的值 (或 null)。
 
 有幾種方式可以載入文件，但現在全部都需要 API。 對於大部分的原型，這個步驟因需要撰寫程式碼而可能最為耗時。 本文稍後將說明這些選項。
-> [AZURE.NOTE] 請記住，共用服務的限制是一個索引有 10,000 份文件。 請務必減少您的資料集，讓它低於限制。 請參閱 [限制和條件約束](search-limits-quotas-capacity.md) 如需詳細資訊。
+
+> [AZURE.NOTE] 請記住，共用的服務限制為每個索引的 10000 份文件。 請務必減少您的資料集，讓它低於限制。 請參閱 [限制和條件約束](search-limits-quotas-capacity.md) 如需詳細資訊。
 
 #### 如何將資料載入索引
 
@@ -69,12 +70,13 @@ Azure 搜尋是可透過 Azure 訂用帳戶取得的完全管理線上服務。 
 
 第二個選項是使用 REST API 或載入文件的 .NET 程式庫來撰寫一個簡單的程式：
 
-- [新增、 更新或刪除文件 (REST API)](https://msdn.microsoft.com/library/dn798930.aspx)
+- [新增、更新或刪除文件 (REST API)](https://msdn.microsoft.com/library/dn798930.aspx)
 - [DocumentOperationsExtensions 類別](https://msdn.microsoft.com/library/microsoft.azure.search.documentoperationsextensions.aspx)
 
 適用於極小型資料集是使用第三個選項 [Fiddler](search-fiddler.md) 或 [Chrome Postman](search-chrome-postman.md) 上傳文件。
 
 第四個選項，可能是因為最容易了，是借用下列程式碼從 [Adventure Works C# REST API 範例](https://azuresearchadventureworksdemo.codeplex.com/) 從方案中的內嵌資料庫 (.mdf) 載入文件或 [評分設定檔 C# REST API 範例](https://azuresearchscoringprofiles.codeplex.com/) ，從解決方案所包括的 JSON 資料檔載入資料。
+
 > [AZURE.TIP] 您可以修改並執行 [評分設定檔範例](https://azuresearchscoringprofiles.codeplex.com/), ，資料 JSON 檔案和 schema.json 檔案取代為您的應用程式的資料。
 
 ### 步驟 4：查詢文件
@@ -88,28 +90,29 @@ Azure 搜尋是可透過 Azure 訂用帳戶取得的完全管理線上服務。 
 - [搜尋文件作業](https://msdn.microsoft.com/library/dn798927.aspx)
 - [SearchIndexClient 類別](https://msdn.microsoft.com/library/microsoft.azure.search.searchindexclient.aspx)
 
-Azure 搜尋中的查詢可以十分簡單。包括 `搜尋 = *` uri 會搜尋主體中傳回前 50 個項目; 指定 `搜尋 = < 一些字詞 >` 會執行全文檢索搜尋片語，傳回最多可到 50 個文件，假設有至少 50 份文件包含術語輸入的相符項。
+Azure 搜尋中的查詢可以十分簡單。 在 URI 上包括 `search=*` 將會傳回搜尋主體中的前 50 個項目；指定 `search=<some phrase>` 將執行片語的全文檢索搜尋 (最多傳回 50 份文件)，這假設至少有 50 份文件包含術語輸入的相符項。
 
-50 份文件是預設值。 您可以變更使用傳回的項目數目 `$Count` 查詢參數。 此參數記載在 [搜尋文件](https://msdn.microsoft.com/library/dn798927.aspx)。
+50 份文件是預設值。 您可以變更使用 `$Count` 查詢參數所傳回的項目數。 此參數記載在 [搜尋文件](https://msdn.microsoft.com/library/dn798927.aspx)。
+
 > [AZURE.TIP] 最完整的查詢範例清單位於 [搜尋文件](https://msdn.microsoft.com/library/dn798927.aspx), ，但您可能想要檢閱 [語法參考](https://msdn.microsoft.com/library/dn798920.aspx) 檢閱支援的運算子清單。
 
 ### 步驟 5：探索更多功能
 
 現在您已有服務和索引，可以試驗功能進一步發展搜尋體驗。 接下來會列出要調查的簡短功能清單。
 
-**搜尋頁面**通常會在結果集中包括文件計數，或使用分頁將結果細分成更容易管理的數字。 請參閱 [分頁](search-pagination-page-layout.md) 如需詳細資訊。
+**搜尋頁面** 通常結果集中包括文件計數，或使用分頁將結果細分成更容易管理的數字。 請參閱 [分頁](search-pagination-page-layout.md) 如需詳細資訊。
 
-**searchMode=all** 是變更 Azure 搜尋評估 NOT 運算子方式的查詢參數。 預設會展開包括 NOT (-) 的查詢，而非縮小結果範圍。 您可以設定此參數，以變更運算子評估方式。 它記載於 [搜尋文件](https://msdn.microsoft.com/library/dn798927.aspx) 或 [SearchMode 列舉](https://msdn.microsoft.com/library/microsoft.azure.search.models.searchmode.aspx)。
+**searchMode = all** 是變更 Azure 搜尋評估 NOT 運算子方式的查詢參數。 預設會展開包括 NOT (-) 的查詢，而非縮小結果範圍。 您可以設定此參數，以變更運算子評估方式。 它記載於 [搜尋文件](https://msdn.microsoft.com/library/dn798927.aspx) 或 [SearchMode 列舉](https://msdn.microsoft.com/library/microsoft.azure.search.models.searchmode.aspx)。
 
-**評分設定檔**用來提升搜尋分數，讓符合預先定義準則的項目出現在搜尋結果中的較高位置。 請參閱 [開始使用評分設定檔](search-get-started-scoring-profiles.md) 來逐步執行這項功能。
+**評分設定檔** 用來提升搜尋分數，讓符合預先定義的準則，才會出現在搜尋結果中較高的項目。 請參閱 [開始使用評分設定檔](search-get-started-scoring-profiles.md) 來逐步執行這項功能。
 
-**篩選**用來透過提供選取項目的額外條件來縮小搜尋結果範圍。 篩選運算式放在查詢內。 請參閱 [搜尋文件](https://msdn.microsoft.com/library/dn798927.aspx) 如需詳細資訊。
+**篩選器** 用來縮小搜尋結果，藉由選取項目提供額外的準則。 篩選運算式放在查詢內。 請參閱 [搜尋文件](https://msdn.microsoft.com/library/dn798927.aspx) 如需詳細資訊。
 
-**多面向導覽**用於自我引導篩選。 Azure 搜尋會建置並傳回結構，而您的程式碼會將多面向導覽結構呈現在搜尋結果頁面中。 請參閱 [多面向導覽](search-faceted-navigation.md) 如需詳細資訊。
+**多面向導覽** 用於自我引導篩選。 Azure 搜尋會建置並傳回結構，而您的程式碼會將多面向導覽結構呈現在搜尋結果頁面中。 請參閱 [多面向導覽](search-faceted-navigation.md) 如需詳細資訊。
 
-**建議工具**指的是自動提示或自動完成查詢，以在使用者輸入搜尋片語的第一個字元時傳回建議的搜尋術語。 請參閱 [建議作業](https://msdn.microsoft.com/library/dn798936.aspx) 或 [Suggesters 類別](https://msdn.microsoft.com/library/microsoft.azure.search.models.suggester.aspx) 如需詳細資訊。
+**建議工具** 指的是搜尋片語的第一個字元傳回建議的搜尋詞彙，以在使用者的預先輸入或自動完成查詢。 請參閱 [建議作業](https://msdn.microsoft.com/library/dn798936.aspx) 或 [Suggesters 類別](https://msdn.microsoft.com/library/microsoft.azure.search.models.suggester.aspx) 如需詳細資訊。
 
-**語言分析器**提供文字分析期間所使用的語言規則。 Azure 搜尋的預設語言分析器是 Lucene 英文，但是您可以使用不同甚至多個分析器，方法是在索引中指定它們。 Lucene 分析器可用於所有 API 中。 Microsoft 自然語言處理器才會提供 [2015年-02-28-preview REST API](search-api-2015-02-28-preview.md)。 請參閱 [語言支援](https://msdn.microsoft.com/library/dn879793.aspx) 如需詳細資訊。
+**語言分析器** 提供文字分析期間所使用的語言規則。 Azure 搜尋的預設語言分析器是 Lucene 英文，但是您可以使用不同甚至多個分析器，方法是在索引中指定它們。 Lucene 分析器可用於所有 API 中。 Microsoft 自然語言處理器才會提供 [2015年-02-28-preview REST API](search-api-2015-02-28-preview.md)。 請參閱 [語言支援](https://msdn.microsoft.com/library/dn879793.aspx) 如需詳細資訊。
 
 ### 步驟 6：更新索引和文件
 
@@ -119,9 +122,9 @@ Azure 搜尋中的查詢可以十分簡單。包括 `搜尋 = *` uri 會搜尋�
 
 - [更新索引作業 (REST API)](https://msdn.microsoft.com/library/dn800964.aspx)
 - [更新索引子作業 (REST API)](https://msdn.microsoft.com/library/dn946892.aspx)
-- [新增、 更新或刪除文件作業 (REST API)](https://msdn.microsoft.com/library/dn798930.aspx)
+- [新增、更新或刪除文件作業 (REST API)](https://msdn.microsoft.com/library/dn798930.aspx)
 - [Index 類別 (.NET 程式庫)](https://msdn.microsoft.com/library/microsoft.azure.search.models.index.aspx)
-- [文件類別 (.NET 程式庫)](https://msdn.microsoft.com/library/microsoft.azure.search.models.document.aspx)
+- [Documents 類別 (.NET 程式庫)](https://msdn.microsoft.com/library/microsoft.azure.search.models.document.aspx)
 
 建置可建立概念證明的原型之後，即可將所學的知識用到下一個層級，方法是設計可支援生產工作負載的開發專案。
 
@@ -137,8 +140,8 @@ Azure 搜尋提供兩種程式設計模型：Managed 程式碼的 .NET 程式庫
 
 目前，.NET 程式庫中還未提供一小部分的功能，因此，即使您偏好撰寫 Managed 程式碼，還是可能需要使用 REST API 來取得您要的功能。 REST API 中才有的功能包括：
 
-- [Microsoft 自然語言處理器-僅限預覽](../search-api-2015-02-28-preview/)
-- [moreLikeThis 功能-僅限預覽](../search-api-2015-02-28-preview/)
+- [Microsoft 自然語言處理器 - 僅限預覽](../search-api-2015-02-28-preview/)
+- [moreLikeThis 功能 - 僅限預覽](../search-api-2015-02-28-preview/)
 - [管理 API](https://msdn.microsoft.com/library/dn832684.aspx)
 
 您可以定期檢查 [新](search-latest-updates.md) 文章，以監視功能狀態變更。
@@ -160,7 +163,8 @@ Azure 搜尋提供兩種程式設計模型：Managed 程式碼的 .NET 程式庫
 針對 POST 要求，會有一個整體狀態碼。 如果有組合成功和失敗的文件，則狀態碼為 HTTP 200 (成功) 或 HTTP 207 (多狀態)。 除了針對 POST 要求的的狀態碼，Azure 搜尋會維護每個文件的狀態欄位。 針對批次上傳，您需要一個方法來取得指出每個文件插入成功或失敗的文件專屬狀態。 狀態欄會提供這些資訊。 如果文件載入失敗，將設定為「false」。
 
 負載量大時，出現一些上傳錯誤是正常的。 如果出現此現象，整體狀態碼為 207，代表部分成功，而建立索引失敗之文件的「狀態」屬性會設定為「false」。
-> [AZURE.NOTE]  當服務接收文件時，文件會排入佇列以等待建立索引，而且可能不會立即納入搜尋結果中。 如果不是在負載量大的情況下，一般來說，文件會在幾秒鐘內完成索引建立。
+
+> [AZURE.NOTE]  當服務接收文件時，它們會排入佇列建立索引，可能不會立即納入搜尋結果中。 如果不是在負載量大的情況下，一般來說，文件會在幾秒鐘內完成索引建立。
 
 更新索引時，您可以將多個動作 (插入、合併、刪除) 結合在同個批次中，以排除反覆存取的時間。 Azure 搜尋目前不支援部份更新 (HTTP PATCH)，因此如果要更新索引，您必須重新傳送索引定義。
 
@@ -179,10 +183,10 @@ Azure 搜尋中其中一個較吸引人的功能是可以輕鬆地放大或縮�
 最後一個步驟是檢閱複本和資料分割的現有資源層級，並判斷是否需要進行調整。 調整容量的最簡單方式是在 [Azure 傳統入口網站](https://ms.portal.azure.com/)。
 
 請記住，只能放大或縮小標準定價層。 此外，根據調整程度，可能需要數分鐘到數小時的時間才能部署服務的其他叢集。
-> [AZURE.NOTE] 使用管理 REST API，以程式設計方式調整容量。 如需詳細資訊，請參閱 [管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx)。
+
+> [AZURE.NOTE] 可以透過管理 REST API 來以程式設計方式調整容量。 如需詳細資訊，請參閱 [管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx)。
 
 
-
-
-[1]: ./media/search-workflow/AzSearch-Workflow.png 
+<!--Image references-->
+[1]: ./media/search-workflow/AzSearch-Workflow.png
 

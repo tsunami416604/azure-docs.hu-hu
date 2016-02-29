@@ -16,7 +16,6 @@
    ms.author="joaoma" />
 
 
-
 # 負載平衡器分配模式 (來源 IP 同質性)
 
 我們推出了名為「來源 IP 同質性」(也稱為工作階段同質性或用戶端 IP 同質性) 的新分配模式。 您可以設定 Azure 負載平衡器使用 2 個 Tuple (來源 IP、目的地 IP) 或 3 個 Tuple (來源 IP、目的地 IP 通訊協定)，來將流量對應至可用伺服器。 使用來源 IP 同質性之後，從相同用戶端電腦啟動的連線會進入相同的 DIP 端點。
@@ -28,7 +27,7 @@
 
 - 用戶端首先會對負載平衡的公用位址啟動 TCP 工作階段，接著被導向至特定 DIP，此通道便會保持作用中狀態以監視連接健康狀態
 - 來自相同用戶端電腦的新 UDP 工作階段會在相同的負載平衡公用端點中啟動，我們希望此連接會像先前的 TCP 連接一樣被導向至相同的 DIP 端點，以便在高輸送量時執行媒體上傳，並同時透過 TCP 維持控制通道。
-
+ 
 請注意，如果負載平衡集變更 (移除或新增虛擬機器)，則會重新計算用戶端要求的分配。 您無法確定現有用戶端工作階段的新連接最後都會抵達相同的伺服器。 此外，使用來源 IP 同質性分配模式可能會導致流量的不相等分配。 在 Proxy 後方執行的用戶端可能會被視為唯一用戶端應用程式。
 
 所用的分配演算法是 5 個 Tuple (來源 IP、來源連接埠、目的地 IP、目的地連接埠、通訊協定類型) 的雜湊，將流量對應至可用的伺服器。 它只在傳輸工作階段內提供綁定。 相同 TCP 或 UDP 工作階段中的封包會被導向至負載平衡端點後面的相同資料中心 IP (DIP) 執行個體。 當用戶端關閉並重新開啟連線或從相同的來源 IP 啟動新的工作階段時，來源連接埠便會變更，進而導致流量進入不同的 DIP 端點。
@@ -37,20 +36,20 @@
 
 
 ## 進行負載平衡器的來源 IP 同質性設定
-
+ 
 若是虛擬機器，您可以使用 powershell 來變更逾時設定：
-
+ 
 將 Azure 端點新增到虛擬機器，並設定負載平衡器分配模式
 
     Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 
->[AZURE.NOTE] LoadBalancerDistribution 可設定為 sourceIP 以使用 2-tuple (來源 IP、目的地 IP) 負載平衡、sourceIPProtocol 以使用 3-tuple (來源 IP、目的地 IP、通訊協定) 負載平衡，或者，如果您想要預設行為 (5-tuple 負載平衡)，則可設定為 [無]。
+>[AZURE.NOTE] LoadBalancerDistribution 可設定為 sourceIP 以用於 2-tuple (來源 IP、 目的地 IP) 負載平衡、 sourceipprotocol 以用於 3-tuple (來源 IP、 以 IP、 通訊協定) 負載平衡，或者如果您想 5-tuple 負載平衡的預設行為，則無
 
 
 擷取端點負載平衡器分配模式組態
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
-    
+
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
     LocalPort : 80
@@ -68,10 +67,10 @@
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
-
+ 
 如果 LoadBalancerDistribution 項目不存在，則 Azure 負載平衡器會使用預設的 5-tuple 演算法。
 
-
+ 
 ### 在負載平衡端點集上設定分配模式
 
 如果端點是負載平衡端點集的一部分，就必須在負載平衡端點集上設定分配模式：
@@ -100,21 +99,22 @@
     </AddressAssignments>
     </NetworkConfiguration>
 
+
 ## API 範例
 
 您可以設定負載平衡器分配，使用服務管理 API
-請務必加入 `x ms 版本` 標頭設定為版本 `2014年-09-01` 或更高版本。
-
+請務必將 `x-ms-version` 標頭設定為版本 `2014-09-01` 或更高版本。
+ 
 在部署中更新指定負載平衡集的設定
 
 要求範例
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet 
-    
+
     x-ms-version: 2014-09-01 
-    
+
     Content-Type: application/xml 
-    
+
     <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"> 
     <InputEndpoint> 
     <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName> 
@@ -136,7 +136,7 @@
 LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、 sourceipprotocol 以用於 3-tuple 同質性或 none (適用於沒有任何關聯性。 也就是 5-tuple)
 
     Response
-    
+
     HTTP/1.1 202 Accepted 
     Cache-Control: no-cache 
     Content-Length: 0 
@@ -151,9 +151,5 @@ LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、
 
 [開始設定網際網路面向的負載平衡器](load-balancer-internet-getstarted.md)
 
-[設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
-
-
-
-
+[設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md) 
 

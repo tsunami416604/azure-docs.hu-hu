@@ -16,20 +16,19 @@
    ms.date="10/29/2015"
    ms.author="chackdan"/>
 
-
-# Service Fabric 叢集健康狀態的參數。
+# Service Fabric 叢集健康狀態的參數。 
 
 預留位置文字 - 本文件正在進行中
 
 ## 後續步驟
-
-[service fabric 叢集的升級](service-fabric-cluster-upgrade.md)
+[service-fabric-cluster-upgrade](service-fabric-cluster-upgrade.md)
 
 [service-fabric-cluster-scale-up-down](service-fabric-cluster-scale-up-down.md)
 
 [應用程式升級](service-fabric-application-upgrade.md)
 
+<!--Image references-->
+[BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
 
 
-[browseservicefabricclusterresource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png 
 

@@ -15,7 +15,6 @@
    ms.date="12/15/2015"
    ms.author="alkohli" />
 
-
 # StorSimple 系統限制
 
 ## 概觀
@@ -26,8 +25,4 @@ StorSimple 提供您的資料中心的擴充性和彈性儲存體。 不過，�
 
 ## 後續步驟
 
-檢閱 [StorSimple 系統需求](storsimple-system-requirements.md)。
-
-
-
-
+檢閱 [StorSimple 系統需求](storsimple-system-requirements.md)。 

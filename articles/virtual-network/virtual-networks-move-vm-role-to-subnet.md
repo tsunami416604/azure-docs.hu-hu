@@ -15,7 +15,6 @@
    ms.date="12/11/2015"
    ms.author="telmos" />
 
-
 # 如何將 VM 或角色執行個體移至不同的子網路
 
 您可以使用 PowerShell 將 VM 從一個子網路移至相同虛擬網路 (VNet) 中的另一個子網路。 您可以藉由編輯 CSCFG，而非使用 PowerShell 來移動角色執行個體。
@@ -41,7 +40,7 @@
 
 ## 若要將角色執行個體移至另一個子網路
 
-若要移動角色執行個體，請編輯 CSCFG 檔案。 在下方範例中，我們會將虛擬網路 *VNETName* 中的「Role0」從其目前的子網路移至 *Subnet-2*. 因為已部署角色執行個體，您僅需變更 Subnet name = Subnet-2 的部份。 請務必編輯該範例來反映您的環境。
+若要移動角色執行個體，請編輯 CSCFG 檔案。 在下列範例中，我們要在虛擬網路中移動 「 Role0 」 *VNETName* 從其目前的子網路到 *subnet-2*。 因為已部署角色執行個體，您僅需變更 Subnet name = Subnet-2 的部份。 請務必編輯該範例來反映您的環境。
 
     <NetworkConfiguration>
         <VirtualNetworkSite name="VNETName" />
@@ -51,6 +50,3 @@
            </InstanceAddress>
         </AddressAssignments>
     </NetworkConfiguration> 
-
-
-

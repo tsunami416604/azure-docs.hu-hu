@@ -16,7 +16,6 @@
    ms.date="10/12/2015"
    ms.author="v-jeana; hascipio"/>
 
-
 # 了解賣方 Insights 報告
 
 **什麼是賣方 Insights？**
@@ -25,7 +24,7 @@
 
 **我會收到什麼？**
 
-- **歡迎電子郵件：**如果是新的發行者，您會收到一封歡迎電子郵件，通知您將會開始收到賣方 Insights 每月報告。
+- **歡迎使用電子郵件:** 為新的發行者，您會收到歡迎電子郵件通知您，您將會開始接收賣方 insights 每月報表。
 
 - **每月銷售報表:**  如果您有使用，您會收到第二個的電子郵件，其中包含您的報表和指示如何存取您的密碼:
 
@@ -34,6 +33,7 @@
     - 如果您的供應項目在當月份沒有產生使用量，Microsoft 就不會傳送報告。
 
 ## 了解賣方 Insights 報告
+
 
 **SKU 和授權類型的訂單: 服務商場訂單] 索引標籤**
 
@@ -97,32 +97,30 @@
 在 URL 中找到的發行者識別碼:
 - 使用此 ID 做為密碼，若要開啟 [賣方 insights Excel 檔案。
 這是您的密碼，否則在進一步通知。
-- 我們建議使用 Windows 使用 Microsoft Office 2013，為您的活頁簿讀取器所選擇。 有些使用者回報使用 Microsoft Office for Mac 有問題。
+- 我們建議使用 Windows 使用 Microsoft Office 2013，為您的活頁簿讀取器所選擇。  有些使用者回報使用 Microsoft Office for Mac 有問題。
 
 ![publisherid][9]
 
 
-## 後續步驟
-
+## 後續步驟  
 如果您對報告和 Insights 有任何問題，請連絡我們的支援團隊：
 
 1. 瀏覽至 https://publish.windowsazure.com/ 支援的網頁。
-2. 在 [問題類型]**** 方塊中，選取 [報告和 Insights]****。
-3. 在 [類別]**** 方塊中，選取 [與報告相關的問題]****。
-4. 按一下 [提出要求]****。
+2. 在 **問題類型** 方塊中，選取 **報告和深入觀點**。
+3. 在 **類別** 方塊中，選取 **報表的相關問題**。
+4. 按一下 [ **啟動要求**。
   ![sellerinsightsquestions][10]
 
 
 
-
-[1]: ./media/marketplace-publishing-report-seller-insights/legal.png 
-[2]: ./media/marketplace-publishing-report-seller-insights/readingreportbyorders.png 
-[3]: ./media/marketplace-publishing-report-seller-insights/readingreportbyusage.png 
-[4]: ./media/marketplace-publishing-report-seller-insights/orderdata.png 
-[5]: ./media/marketplace-publishing-report-seller-insights/usagedata.png 
-[6]: ./media/marketplace-publishing-report-seller-insights/customerstab.png 
-[7]: ./media/marketplace-publishing-report-seller-insights/passwordreminder.png 
-[8]: ./media/marketplace-publishing-report-seller-insights/selectpublisherstab.png 
-[9]: ./media/marketplace-publishing-report-seller-insights/publisherid.png 
-[10]: ./media/marketplace-publishing-report-seller-insights/sellerinsightsquestions.png 
+[1]: ./media/marketplace-publishing-report-seller-insights/legal.png
+[2]: ./media/marketplace-publishing-report-seller-insights/readingreportbyorders.png
+[3]: ./media/marketplace-publishing-report-seller-insights/readingreportbyusage.png
+[4]: ./media/marketplace-publishing-report-seller-insights/orderdata.png
+[5]: ./media/marketplace-publishing-report-seller-insights/usagedata.png
+[6]: ./media/marketplace-publishing-report-seller-insights/customerstab.png
+[7]: ./media/marketplace-publishing-report-seller-insights/passwordreminder.png
+[8]: ./media/marketplace-publishing-report-seller-insights/selectpublisherstab.png
+[9]: ./media/marketplace-publishing-report-seller-insights/publisherid.png
+[10]: ./media/marketplace-publishing-report-seller-insights/sellerinsightsquestions.png
 

@@ -15,8 +15,7 @@
     ms.author="bbenz" />
 
 
-
-# 設定適用於 Azure 的 Oracle GoldenGate
+#設定適用於 Azure 的 Oracle GoldenGate
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
 
@@ -41,11 +40,11 @@ Oracle GoldenGate 包含下列主要元件：擷取、資料幫浦、複寫、�
 
 - 您已經在站台 A 上建立測試資料庫 “TestGG1”，並在站台 B 上建立 “TestGG2”。
 
-- 您使用 Administrators 群組的成員身分或 **ORA_DBA** 群組的成員身分來登入 Windows Server。
+- 您用來登入為系統管理員群組的成員或成員的 Windows server **ORA_DBA** 群組。
 
 在本教學課程中，您將：
 
-1. 在站台 A 和站台 B 上設定資料庫
+1. 在站台 A 和站台 B 上設定資料庫  
 
     1. 執行初始資料載入
 
@@ -81,20 +80,19 @@ Oracle GoldenGate 包含下列主要元件：擷取、資料幫浦、複寫、�
 
 6. 確認雙向複寫程序
 
->[AZURE.IMPORTANT] 本教學課程已根據下列軟體設定進行設定和測試：
+>[AZURE.IMPORTANT] 已安裝並針對下列軟體組態測試本教學課程:
 >
->|                       | **站台 A 資料庫**              | **站台 B 資料庫**              |
+>|                        | **站台 A 資料庫**              | **站台 B 資料庫**              |
 >|------------------------|----------------------------------|----------------------------------|
->| **Oracle 版本**     |Oracle11g 版本 2-(11.2.0.1) |Oracle11g 版本 2-(11.2.0.1) |
->| **電腦名稱**       |MachineGG1 |MachineGG2 |
->| **作業系統**   |Windows 2008 R2 |Windows 2008 R2 |
->| **Oracle SID**         |TESTGG1 |TESTGG2 |
->| **複寫結構描述** |SCOTT                            |SCOTT                            |
+>| **Oracle 版本**     | Oracle11g 版本 2 - (11.2.0.1) | Oracle11g 版本 2 - (11.2.0.1) |
+>| **機器名稱**       | MachineGG1                       | MachineGG2                       |
+>| **作業系統**   | Windows 2008 R2                  | Windows 2008 R2                  |
+>| **Oracle SID**         | TESTGG1                          | TESTGG2                          |
+>| **複寫結構描述** | SCOTT                            | SCOTT                            |
 
 針對 Oracle 資料庫和 Oracle GoldenGate 的後續版本，可能會有一些您需要實作的其他變更。 如需最新的版本特定的資訊，請參閱 [Oracle GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) 和 [Oracle 資料庫](http://www.oracle.com/us/corporate/features/database-12c/index.html) Oracle 網站上的文件。 例如，針對版本 11.2.0.4 來源資料庫及更新版本，擷取 DDL 是透過記錄採礦伺服器以非同步方式來執行，並且不需要安裝任何特定的觸發程序、資料表或其他資料庫物件。 您可以執行 Oracle GoldenGate 升級，而不需停止使用者應用程式。 若擷取是處於與 Oracle 11g 來源資料庫 (版本早於 11.2.0.4) 整合的模式中，就需要使用 DDL 觸發程序和支援物件。 如需詳細指引，請參閱 [安裝和設定的 Oracle 資料庫的 Oracle GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/GIORA.pdf)。
 
-## 1.在站台 A 和站台 B 上設定資料庫
-
+##1. 在站台 A 和站台 B 上設定資料庫
 本節說明如何在站台 A 和站台 B 上執行資料庫的必要條件。您必須在下列兩個站台上執行本節的所有步驟：站台 A 和站台 B。
 
 首先，透過 Azure 傳統入口網站，使用遠端桌面功能連至站台 A 和站台 B。 開啟 Windows 命令提示字元，並建立適用於 Oracle GoldenGate 安裝檔案的主目錄：
@@ -137,7 +135,7 @@ Oracle GoldenGate 包含下列主要元件：擷取、資料幫浦、複寫、�
           grant delete any table to ggate;
           grant drop any table to ggate;
 
-接下來，找出 INIT\<DatabaseSID\>。這個檔案位於站台 A 和站台 B 上的 [%ORACLE\_HOME%\\database] 資料夾，並將下列資料庫參數附加至 INITTEST.ora:
+接下來，找出 INIT\ < DatabaseSID\ >。這個檔案位於站台 A 和站台 B 上的 [%ORACLE\_HOME%\\database] 資料夾，並將下列資料庫參數附加至 INITTEST.ora:
 
     UNDO\_MANAGEMENT=AUTO
     UNDO\_RETENTION=86400
@@ -181,8 +179,8 @@ Oracle GoldenGate 包含下列主要元件：擷取、資料幫浦、複寫、�
     END;
     /
 
-## 2.準備站台 A 和站台 B 以進行資料庫複寫
 
+##2. 準備站台 A 和站台 B 以進行資料庫複寫
 本節說明如何準備站台 A 和站台 B 以進行資料庫複寫。 您必須在下列兩個站台上執行本節的所有步驟：站台 A 和站台 B。
 
 首先，透過 Azure 傳統入口網站，使用遠端桌面功能連至站台 A 和站台 B。 使用 SQL*Plus 命令視窗，將資料庫切換到 archivelog 模式：
@@ -191,6 +189,7 @@ Oracle GoldenGate 包含下列主要元件：擷取、資料幫浦、複寫、�
     sql>startup mount
     sql>alter database archivelog;
     sql>alter database open;
+
 
 然後，啟用 [最小 [補充記錄](http://docs.oracle.com/cd/E11882_01/server.112/e22490/logminer.htm) ，如下所示:
 
@@ -205,8 +204,8 @@ Oracle GoldenGate 包含下列主要元件：擷取、資料幫浦、複寫、�
     sql>shutdown immediate
     sql>startup
 
-## 3.建立所有必要的物件來支援 DDL 複寫
 
+##3. 建立所有必要的物件來支援 DDL 複寫
 本節列出您用來建立所有必要物件以支援 DDL 複寫所需的指令碼。 您需要在站台 A 和站台 B 上執行本節中指定的指令碼。
 
 開啟 Windows 命令提示字元並巡覽至 Oracle GoldenGate 資料夾，例如 C:\\OracleGG。 啟動 SQL\ * Plus 資料庫系統管理員權限的命令提示字元，例如使用 **SYSDBA** 上站台 A 和站台 b。
@@ -225,14 +224,14 @@ Oracle GoldenGate 包含下列主要元件：擷取、資料幫浦、複寫、�
      Trigger altered.
      SQL> @ddl_pin ggate
 
+
 Oracle GoldenGate 工具需要資料表層級的登入，以支援 DDL (資料定義語言)。 這就是為什麼要使用 ADD TRANDATA 命令來啟用資料表層級的補充記錄。 開啟 Oracle GoldenGate 命令直譯器視窗、登入資料庫，然後執行 ADD TRANDATA 命令：
 
     GGSCI 5> DBLOGIN USERID ggate, PASSWORD ggate
-    
+
     GGSCI(Hostname) 6> add trandata scott.inventory
 
-## 4.在站台 A 和站台 B 上設定 GoldenGate 管理員
-
+##4. 在站台 A 和站台 B 上設定 GoldenGate 管理員
 Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序、追蹤記錄檔案管理和報告等功能。
 
 您必須在站台 A 和站台 B 上設定 Oracle GoldenGate 管理員程序。若要這樣做，請在站台 A 和站台 B 上執行下列步驟。
@@ -245,6 +244,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     Version 11.2.1.0.3 14400833 OGGCORE_11.2.1.0.3_PLATFORMS_120823.1258
     Windows x64 (optimized), Oracle 11g on Aug 23 2012 16:50:36
     Copyright (C) 1995, 2012, Oracle and/or its affiliates. All rights reserved.
+
 
 將 GGSCI 工作階段記錄到資料庫，如此您就能執行會影響資料庫的命令：
 
@@ -273,7 +273,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
 將 GGSCI 工作階段記錄到資料庫，如此您就能執行會影響資料庫的命令：
 
     GGSCI (HostName) 47> dblogin USERID ggate, PASSWORD ggate
-    
+
     Successfully logged into database.
 
 啟動管理員程序：
@@ -281,9 +281,9 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     GGSCI (HostName) 48> start manager
     Manager started.
 
-## 5.在站台 A 和站台 B 上建立擷取群組及資料幫浦程序
+##5. 在站台 A 和站台 B 上建立擷取群組及資料幫浦程序
 
-### 在站台 A 上建立擷取及資料幫浦程序
+###在站台 A 上建立擷取及資料幫浦程序
 
 您必須在站台 A 和站台 b 上建立擷取及資料幫浦 」 程序
 遠端桌面登入站台 A 和站台 B 透過 Azure 傳統入口網站。 開啟 GGSCI 命令直譯器視窗。 在站台 A 上執行下列命令：
@@ -318,7 +318,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
      PASSTHRU
      TABLE scott.inventory;
 
-### 在站台 B 上建立 GoldenGate 檢查點資料表
+###在站台 B 上建立 GoldenGate 檢查點資料表
 
 接下來，您必須在站台 B 上加入檢查點資料表。若要這樣做，您必須開啟 GoldenGate 命令直譯器視窗，然後執行：
 
@@ -343,8 +343,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
 最後一個步驟是儲存並關閉 GLOBALS 參數檔案。
 
 
-### 在站台 B 上加入 REPLICAT
-
+###在站台 B 上加入 REPLICAT
 本節說明如何在站台 B 上加入 REPLICAT 程序 "REP2"。
 
 使用 ADD REPLICAT 命令，在站台 B 上建立複寫群組：
@@ -360,7 +359,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     DISCARDFILE C:\OracleGG\dirdat\discard.txt, append,megabytes 10
     MAP scott.inventory, TARGET scott.inventory;
 
-### 在站台 B 上建立擷取及資料幫浦程序
+###在站台 B 上建立擷取及資料幫浦程序
 
 本節說明如何在站台 B上建立新的擷取程序 “EXT2” 和新的資料幫浦程序 “DPUMP2”：
 
@@ -395,15 +394,15 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     PASSTHRU
     TABLE scott.inventory;
 
-### 在站台 A 上建立 GoldenGate 檢查點資料表
+###在站台 A 上建立 GoldenGate 檢查點資料表
 
 開啟 Oracle GoldenGate 命令直譯器視窗，並建立檢查點資料表：
 
     GGSCI (MachineGG1) 1> DBLOGIN USERID ggate, PASSWORD ggate
     Successfully logged into database.
-    
+
     GGSCI (MachineGG1) 2> ADD CHECKPOINTTABLE ggate.checkpointtable
-    
+
     Successfully created checkpoint table ggate.checkpointtable.
 
 您也需要將檢查點資料表的名稱加入站台 A 上的 GLOBALS 檔案。
@@ -417,7 +416,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
 
 儲存並關閉 GLOBALS 參數檔案。
 
-### 在站台 A 上加入 REPLICAT
+###在站台 A 上加入 REPLICAT
 
 本節說明如何在站台 A 上加入 REPLICAT 程序 "REP1"。
 
@@ -461,7 +460,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     Logging of supplemental redo log data is enabled for table SCOTT.INVENTORY.
     Columns supplementally logged for table SCOTT.INVENTORY: PROD_ID, PROD_CATEGORY, QTY_IN_STOCK, LAST_DML.
 
-### 在站台 A 和站台 B 上加入 trandata
+###在站台 A 和站台 B 上加入 trandata
 
 使用 ADD TRANDATA 命令來啟用資料表層級的補充記錄。 開啟 Oracle GoldenGate 命令直譯器視窗、登入資料庫，然後執行 ADD TRANDATA 命令。
 
@@ -485,7 +484,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     Logging of supplemental redo log data is enabled for table SCOTT.INVENTORY.
     Columns supplementally logged for table SCOTT.INVENTORY: PROD_ID, PROD_CATEGORY, QTY_IN_STOCK, LAST_DML.
 
-### 在站台 A 上啟動擷取及資料幫浦程序
+###在站台 A 上啟動擷取及資料幫浦程序
 
 在站台 A 上啟動擷取程序 ext1：
 
@@ -498,7 +497,6 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     GGSCI (MachineGG1) 23> start extract dpump1
     Sending START request to MANAGER …
     EXTRACT DPUMP1 starting
-
 顯示擷取群組 ext1 的相關資訊:
     GGSCI (MachineGG1) 32 > 資訊擷取 ext1
     EXTRACT EXT1 上次啟動 2013年-11-25 08:03 Status 正在執行
@@ -511,12 +509,12 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
 
     GGSCI (MachineGG1) 16> info all
     Program     Status      Group       Lag at Chkpt  Time Since Chkpt
-    
+
     MANAGER     RUNNING
     EXTRACT     RUNNING     DPUMP1      00:00:00      00:46:33
     EXTRACT     RUNNING     EXT1        00:00:00      00:00:04
 
-### 在站台 B 上啟動擷取及資料幫浦程序
+###在站台 B 上啟動擷取及資料幫浦程序
 
 在站台 B上啟動擷取程序 ext2：
 
@@ -534,7 +532,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
 
     GGSCI (ActiveGG2orcldb) 6> info all
     Program     Status      Group       Lag at Chkpt  Time Since Chkpt
-    
+
     MANAGER     RUNNING
     EXTRACT     RUNNING     DPUMP2      00:00:00      136:13:33
     EXTRACT     RUNNING     EXT2        00:00:00      00:00:04
@@ -554,7 +552,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     GGSCI (MachineGG1) 39> status replicat rep1
      REPLICAT REP1: RUNNING
 
-### 在站台 B 上啟動 REPLICAT 程序
+###在站台 B 上啟動 REPLICAT 程序
 
 本節說明如何在站台 B 上啟動 REPLICAT 程序 "REP2"。
 
@@ -569,7 +567,7 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     GGSCI (MachineGG2) 27> status replicat rep2
     REPLICAT REP2: RUNNING
 
-## 6.確認雙向複寫程序
+##6. 確認雙向複寫程序
 
 若要確認 Oracle GoldenGate 組態，將資料列插入在站台 a 資料庫
 遠端桌面功能連至站台 a。 開啟 SQL * Plus 命令視窗並執行:
@@ -578,25 +576,25 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
     NAME
     ———
     TESTGG
-    
+
     SQL> insert into inventory values  (100,’TV’,100,sysdate);
-    
+
     1 row created.
-    
+
     SQL> commit;
-    
+
     Commit complete.
 
 接著，檢查是否已在站台 B上複寫該資料列。若要這樣做，請使用遠端桌面功能連至站台 B。開啟 SQL Plus 視窗，然後執行：
 
     SQL> select name from v$database;
-    
+
     NAME
     ———
     TESTGG
-    
+
     SQL> select * from inventory;
-    
+
     PROD_ID PROD_CATEGORY QTY_IN_STOCK LAST_DML
     ———- ——————– ———— ———
     100 TV 100 22-MAR-13
@@ -605,25 +603,20 @@ Oracle GoldenGate 管理員會執行一些像是啟動其他 GoldenGate 程序�
 
     SQL> insert into inventory  values  (101,’DVD’,10,sysdate);
     1 row created.
-    
+
     SQL> commit;
-    
+
     Commit complete.
 
 使用遠端桌面功能連至站台 A，並檢查複寫是否已經執行：
 
     SQL> select * from inventory;
-    
+
     PROD_ID PROD_CATEGORY QTY_IN_STOCK LAST_DML
     ———- ——————– ———— ———
     100 TV 100 22-MAR-13
     101 DVD 10 22-MAR-13
 
-## 其他資源
-
+##其他資源
 [Azure 的 oracle 虛擬機器映像](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
-
-
-
-
 

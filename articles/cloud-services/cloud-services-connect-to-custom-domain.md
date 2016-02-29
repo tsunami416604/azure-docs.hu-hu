@@ -16,7 +16,6 @@
     ms.date="03/05/2015"
     ms.author="vmaker"/>
 
-
 # 將 Azure 雲端服務角色連接到裝載於 Azure 中的自訂 AD 網域控制站
 
 ## 將 Azure Web/背景工作角色連接到裝載於 Azure 之自訂網域控制站的逐步指南
@@ -34,7 +33,7 @@
 您可以使用 Azure 傳統入口網站或 Powershell 在 Azure 中建立虛擬網路。 在本教學課程中，我們將使用 Powershell。 若要建立使用 Azure 傳統入口網站的虛擬網路，請參閱 [建立虛擬網路](../create-virtual-network.md)。
 
     #Create Virtual Network
-    
+
     $vnetStr =
     @"<?xml version="1.0" encoding="utf-8"?>
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
@@ -54,7 +53,7 @@
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
     "@;
-    
+
     $vnetConfigPath = "<path-to-vnet-config>"
     Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
 
@@ -65,7 +64,7 @@
 若要這樣做，請使用以下命令透過 Powershell 建立虛擬機器。
 
     #Initialize variables
-    
+
     $vnetname = '<your-vnet-name>'
     $subnetname = '<your-subnet-name>'
     $vmsvc1 = ‘<your-hosted-service>’
@@ -73,19 +72,19 @@
     $username = ‘<your-username>’
     $password = ‘<your-password>’
     $ affgrp = ‘<your- affgrp>’
-    
+
     #Create a VM and add it to the Virtual Network
-    
+
     New-AzureQuickVM -Windows -ServiceName $vmsvc1 -name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
 
-## 將虛擬機器提升為網域控制站
 
+## 將虛擬機器提升為網域控制站
 若要將虛擬機器設定為 AD 網域控制站，您需要登入 VM 並進行設定。
 
 若要登入 VM，您可以透過 Powershell 取得 RDP 檔案；請使用下列命令。
 
     #Get RDP file
-    
+
     Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 
 一旦您登入 VM，設定您的虛擬機器的 AD 網域控制站的逐步指南 [如何設定客戶 AD 網域控制站](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)。
@@ -99,14 +98,14 @@
         <Instances count="[number-of-instances]" />
       </Role>
       <NetworkConfiguration>
-    
-        
+
+        <!--optional-->
         <Dns>
           <DnsServers><DnsServer name="[dns-server-name]" IPAddress="[ip-address]" /></DnsServers>
         </Dns>
-        
-    
-        
+        <!--optional-->
+
+        <!--VNET settings-->
         <VirtualNetworkSite name="[virtual-network-name]" />
         <AddressAssignments>
           <InstanceAddress roleName="[role-name]">
@@ -115,8 +114,8 @@
             </Subnets>
           </InstanceAddress>
         </AddressAssignments>
-        
-    
+        <!--VNET settings-->
+
       </NetworkConfiguration>
     </ServiceConfiguration>
 
@@ -127,15 +126,15 @@
 在 Azure 上部署雲端服務專案後，請使用 AD 網域延伸將角色執行個體連接到自訂 AD　網域。 若要將 AD 網域延伸加入現有雲端服務部署及加入自訂網域，請在 Powershell 中執行下列命令：
 
     #Initialize domain variables
-    
+
     $domain = ‘<your-domain-name>’;
     $dmuser = ‘$domain\<your-username>’;
     $dmpswd = '<your-domain-password>';
     $dmspwd = ConvertTo-SecureString $dmpswd -AsPlainText -Force;
     $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd);
-    
+
     #Add AD Domain Extension to the cloud service roles
-    
+
     Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35;
 
 這樣就大功告成了。
@@ -148,8 +147,4 @@
 關於取得將虛擬機器提升為網域控制站的延伸，我們也想知道您對這個做法實用與否的意見反應。 如果您認為這個做法很實用，請在意見區段中留言，讓我們知道。
 
 希望您覺得這個做法很實用！
-
-
-
-
-
+ 

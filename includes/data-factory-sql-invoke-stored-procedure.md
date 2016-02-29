@@ -1,14 +1,14 @@
 ## 叫用 SQL 接收器的預存程序
 
-將資料複製到 SQL Server 或 Azure SQL/SQL Server 資料庫時，可以設定指定的預存程序並搭配其他參數來叫用。
+將資料複製到 SQL Server 或 Azure SQL/SQL Server 資料庫時，可以設定指定的預存程序並搭配其他參數來叫用。 
 
-內建的複製機制無法使用時，可利用預存程序。 通常會利用此額外處理時 (合併資料行，查閱其他值、 多個資料表的插入...) 最終的目的地資料表中的來源資料插入前完成的需求。
+內建的複製機制無法使用時，可利用預存程序。 必須在最後一次將來源資料插入目的地資料表前完成額外處理 (合併資料行、查閱其他值、插入至多個資料表等) 時，通常會利用此程序。 
 
-您可以叫用所選的預存程序。 下列範例示範如何使用預存程序來執行簡單插入至資料庫中的資料表。
+您可以叫用所選的預存程序。 下列範例示範如何使用預存程序來執行簡單插入至資料庫中的資料表。 
 
 **輸出資料集**
 
-在此範例中，type 設為：SqlServerTable。 將它設定為 AzureSqlTable，以配合 Azure SQL 資料庫使用。
+在此範例中，type 設為：SqlServerTable。 將它設定為 AzureSqlTable，以配合 Azure SQL 資料庫使用。 
 
     {
       "name": "SqlOutput",
@@ -24,7 +24,7 @@
         }
       }
     }
-
+    
 在複製活動 JSON 中定義 SqlSink 區段如下。 若要在插入資料時呼叫預存程序，則需要 SqlWriterStoredProcedureName 和 SqlWriterTableType 屬性。
 
     "sink":
@@ -59,7 +59,3 @@
     )
 
 預存程序功能使用 [資料表值參數](https://msdn.microsoft.com/library/bb675163.aspx)。
-
-
-
-

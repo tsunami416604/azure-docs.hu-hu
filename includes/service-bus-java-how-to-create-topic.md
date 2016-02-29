@@ -34,15 +34,15 @@
 
 建立服務命名空間：
 
-1.  登入 [Azure 傳統入口網站 []][]。
+1.  登入 [Azure 傳統入口網站][]。
 
 2.  在入口網站的左方瀏覽窗格中，按一下
     **服務匯流排**。
 
-3.  在入口網站的下方窗格中，按一下 [建立]****。
+3.  在入口網站的下方窗格中，按一下 [ **建立**。
     ![][0]
 
-4.  在 [Add a new namespace]**** 對話方塊中，輸入命名空間名稱。
+4.  在 **加入新的命名空間** ] 對話方塊中，輸入命名空間名稱。
     系統會立即檢查此名稱是否可用。
     ![][2]
 
@@ -54,7 +54,7 @@
     重要事項: 請挑選 **同一個地區** 您想要的選擇
     來部署應用程式。 這樣可以獲得最佳效能。
 
-6.  讓對話方塊中的其他欄位保留其預設值 ([**傳訊**] 和 [**標準層**])，然後按一下核取記號。 系統此時會建立您的服務
+6.  讓對話方塊中的其他欄位保留其預設值 (**Messaging** 和 **標準層**)，然後按一下核取記號。 系統此時會建立您的服務
     命名空間，並加以啟用。 您可能要稍候幾分鐘的時間，
     讓系統為您的帳戶佈建資源。
 
@@ -82,12 +82,12 @@
 4.  記下主要金鑰，或將它複製到剪貼簿。
 
 
+  [Azure portal]: http://manage.windowsazure.com
+  [0]: ./media/service-bus-java-how-to-create-topic/sb-queues-13.png
+  [2]: ./media/service-bus-java-how-to-create-topic/sb-queues-04.png
+  [3]: ./media/service-bus-java-how-to-create-topic/sb-queues-09.png
+  [4]: ./media/service-bus-java-how-to-create-topic/sb-queues-06.png
 
-[azure portal]: http://manage.windowsazure.com 
-[0]: ./media/service-bus-java-how-to-create-topic/sb-queues-13.png 
-[2]: ./media/service-bus-java-how-to-create-topic/sb-queues-04.png 
-[3]: ./media/service-bus-java-how-to-create-topic/sb-queues-09.png 
-[4]: ./media/service-bus-java-how-to-create-topic/sb-queues-06.png 
-[6]: ./media/service-bus-java-how-to-create-topic/getting-started-multi-tier-27.png 
-[34]: ./media/service-bus-java-how-to-create-topic/VSProperties.png 
+  [6]: ./media/service-bus-java-how-to-create-topic/getting-started-multi-tier-27.png
+  [34]: ./media/service-bus-java-how-to-create-topic/VSProperties.png
 

@@ -1,6 +1,6 @@
 <properties
    pageTitle="智慧快取設計模式 | Microsoft Azure"
-   description="如何使用 Service Fabric 的 Reliable Actor 程式設計模型建置 Web 型應用程式快取介面的設計模式。"
+   description="如何使用 Service Fabric 的 Reliable Actors 程式設計模型建置 Web 型應用程式快取介面的設計模式。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -16,7 +16,6 @@
    ms.date="11/13/2015"
    ms.author="vturecek"/>
 
-
 # Reliable Actor 設計模式：智慧型快取
 
 Web 層、快取層、儲存層和 (偶爾) 背景工作層的組合差不多是現今應用程式的標準部分。 快取層效能通常很重要，而且事實上本身可能就包含多個階層。
@@ -27,7 +26,7 @@ Web 層、快取層、儲存層和 (偶爾) 背景工作層的組合差不多是
 
 ## 排行榜範例
 
-以排行榜為範例，排行榜物件需要維護玩家及其分數的排序清單，好讓我們可以進行查詢。例如，「前 100 名玩家」或在排行榜中找出相對於 +-N 該玩家上方和下方的玩家位置。使用傳統工具的典型解決方案需要 'GET'ing 排行榜物件 (可支援插入新的 tuple 集合<Player, Points> 稱為分數)，排序後，最後再' put ' 回快取。為了一致性，我們可能會 LOCK (GETLOCK, PUTLOCK) 排行榜物件。
+以排行榜為範例，排行榜物件需要維護玩家及其分數的排序清單，好讓我們可以進行查詢。 例如，「前 100 名玩家」或在排行榜中找出相對於 +-N 該玩家上方和下方的玩家位置。 使用傳統工具的典型解決方案需要 'GET'ing 排行榜物件 (集合可支援插入稱為分數之新 tuple < 玩家，點 >)，排序後，最後再' put ' 回快取。 為了一致性，我們可能會 LOCK (GETLOCK, PUTLOCK) 排行榜物件。
 讓我們使用以動作項目為基礎的解決方案，其狀態和行為綁在一起。 有兩個選項：
 
 * 將排行榜集合實作為動作項目的部分，
@@ -48,6 +47,7 @@ public interface ILeaderboard : IActor
     // Returns the specific position of the player relative to other players
     Task<List<Score>> GetPosition(long player, int range);
 }
+
 ```
 
 接下來，我們實作這個介面和第二個選項，並封裝這個集合的行為至動作項目中：
@@ -76,6 +76,7 @@ public class Leaderboard : StatefulActor<LeaderboardCollection>, ILeaderboard
         return Task.FromResult(State.FindPosition(player, range));
     }
 }
+
 ```
 
 類別的狀態成員會提供動作項目的狀態，而在上面的範例程式碼中，也提供方法來讀取/寫入資料。
@@ -105,6 +106,7 @@ public class LeaderboardCollection
         …
     }
 }
+
 ```
 
 不需傳送資料，不需鎖定，只要處理分散式執行階段中的遠端物件及服務多個用戶端，就像是單一應用程式只服務單一用戶端的單一物件。  
@@ -135,7 +137,6 @@ Player = 2 Points = 100
 ```
 
 ## 調整架構
-
 您可能感到上述範例會在排行榜執行個體遇到瓶頸。 如果舉例來說，我們計劃支援數以萬計位玩家呢？ 一個可以處理的方法，可能是導入無狀態彙總作為緩衝處理，保存部分的分數 (比方說小計)，並再定期傳送給可以維護最終排行榜的排行榜動作項目。 我們稍後將詳細討論此「彙總」技巧。
 此外，我們就不必考慮 Mutex、旗號或傳統上正確行為並行程式必要的其他並行建構。
 以下是另一個快取範例，將示範可實作進動作項目的豐富語意。 這次我們實作優先順序佇列的邏輯 (號碼越低，優先順序就越高)，作為動作項目實作的一部分。
@@ -222,6 +223,7 @@ public class JobQueue : StatefulActor<List<Jobs>>, IJobQueue
         return Task.FromResult(data.Count);
     }
 }
+
 ```
 
 輸出如下所示：
@@ -240,7 +242,6 @@ Job = 1 Priority = 0.97444181375878
 ```
 
 ## 動作項目提供彈性
-
 在上述排行榜和 JobQueue 範例中，我們使用了兩種不同技術：
 
 * 排行榜範例中我們將排行榜物件封裝為動作項目中的私人成員變數，並只為這個物件的狀態和功能提供一個介面。
@@ -278,6 +279,7 @@ public Task RefreshRates()
 {
     // this is where we will make an external call and populate rates
 }
+
 ```
 
 基本智慧快取提供：
@@ -292,22 +294,21 @@ public Task RefreshRates()
 
 ## 後續步驟
 
-[模式: 分散式的網路和圖形](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
+[模式：分散式網路和圖形](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
 
-[模式: 資源管理](service-fabric-reliable-actors-pattern-resource-governance.md)
+[模式：資源管理](service-fabric-reliable-actors-pattern-resource-governance.md)
 
-[模式: 可設定狀態的服務組合](service-fabric-reliable-actors-pattern-stateful-service-composition.md)
+[模式：可設定狀態的服務組合](service-fabric-reliable-actors-pattern-stateful-service-composition.md)
 
-[模式: 物聯網](service-fabric-reliable-actors-pattern-internet-of-things.md)
+[模式：物聯網](service-fabric-reliable-actors-pattern-internet-of-things.md)
 
-[模式: 分散式的計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
+[模式：分散式計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
 
 [某些反向模式](service-fabric-reliable-actors-anti-patterns.md)
 
 [Service Fabric Actor 簡介](service-fabric-reliable-actors-introduction.md)
 
 
-
-
-[1]: ./media/service-fabric-reliable-actors-pattern-smart-cache/smartcache-arch.png 
+<!--Image references-->
+[1]: ./media/service-fabric-reliable-actors-pattern-smart-cache/smartcache-arch.png
 

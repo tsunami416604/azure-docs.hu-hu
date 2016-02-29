@@ -1,4 +1,5 @@
-## <a id="add-push"></a>將推播通知新增至應用程式
+
+## <a id="add-push"></a>新增推播通知至應用程式
 
 * 在 QSAppDelegate.m 中，匯入 iOS SDK 和 QSTodoService.h：
 
@@ -7,7 +8,7 @@
         #import "QSTodoService.h"
 ```
 
-* 在 `didFinishLaunchingWithOptions` 在 QSAppDelegate.m 中，插入下列幾行之前 `傳回 YES;`:
+* 在 qsappdelegate.m 的 `didFinishLaunchingWithOptions` 中，於 `return YES;` 之前插入下列幾行：
 
 ```
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -55,8 +56,4 @@
             [alert show];
         }
 ```
-
-
-
-
 

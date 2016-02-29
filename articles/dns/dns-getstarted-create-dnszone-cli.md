@@ -16,13 +16,13 @@
    ms.date="11/10/2015"
    ms.author="joaoma"/>
 
-
 # 開始藉由 CLI 使用 Azure DNS
+
+
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-getstarted-create-dnszone-cli.md)
 - [PowerShell](dns-getstarted-create-dnszone.md)
-
 
 
 網域 'contoso.com' 可以包含許多的 DNS 記錄，例如 'mail.contoso.com' (用於郵件伺服器) 和 'www.contoso.com' (用於網站)。 DNS 區域用來裝載特定網域的 DNS 記錄。
@@ -39,8 +39,9 @@
 
     Azure network
 
->[AZURE.IMPORTANT] 此 DNS 命令需要 Azure CLI 0.9.8 版本或更新版本。 型別 `azure v`來檢查您的電腦中目前安裝 Azure CLI 版本。
 
+>[AZURE.IMPORTANT] DNS 命令仍需要 Azure CLI 版本 0.9.8 或更高版本。 請輸入 `azure -v`，以檢查哪一個 Azure CLI 版本目前安裝在您的電腦。
+ 
 ### 步驟 2
 
 Azure DNS 使用 Azure 資源管理員。 務必切換 CLI 以使用 ARM 命令和 DNS。
@@ -56,7 +57,6 @@ Azure DNS 使用 Azure 資源管理員。 務必切換 CLI 以使用 ARM 命令�
 系統會提示使用您的認證進行驗證。 請注意，您只能使用 ORGID 的帳戶。
 
 ### 步驟 4
-
 選擇要使用哪一個 Azure 訂用帳戶。
 
     Azure account set "subscription name"
@@ -85,11 +85,12 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
 
 ## 建立 DNS 區域
 
-使用建立 DNS 區域 `azure 網路的 dns 區域建立` 命令。 在下列範例中，您將在稱為 'MyResourceGroup' 的資源群組中建立稱為 'contoso.com' 的 DNS 區域：
+使用 `azure network dns zone create` 命令建立 DNS 區域。 在下列範例中，您將在稱為 'MyResourceGroup' 的資源群組中建立稱為 'contoso.com' 的 DNS 區域：
 
     Azure network dns zone create -n contoso.com -g myresourcegroup
 
->[AZURE.NOTE] 在 Azure DNS 中，指定區域名稱時不要以 ‘.’ 終止，例如指定為 ‘contoso.com’ 而非 ‘contoso.com.’。
+
+>[AZURE.NOTE] 在 Azure DNS 中，應該指定區域名稱結尾不 '。 '，比方說，做為 'contoso.com'，而非 'contoso.com'。
 
 
 現在已在 Azure DNS 中建立 DNS 區域。 建立 DNS 區域也會建立下列 DNS 記錄：
@@ -101,8 +102,9 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
 
     Usage: network dns record-set show <resource-group> <dns-zone-name> <name> <type>
 
-在下列範例中，使用資源群組 "myresourcegroup"、記錄集名稱 "@" (適用於根記錄) 和類型 "SOA" 執行命令會產生下列輸出：
 
+在下列範例中，使用資源群組 "myresourcegroup"、記錄集名稱 "@" (適用於根記錄) 和類型 "SOA" 執行命令會產生下列輸出：
+ 
 
     azure network dns record-set show myresourcegroup "contoso.com" "@" SOA
     info:    Executing command network dns-record-set show
@@ -120,7 +122,6 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
     data:      Refresh time                  : 900
     data:      Retry time                    : 300
     data:                                    :
-
 <BR>
 若要檢視建立的 NS 記錄，請使用下列命令:
 
@@ -140,12 +141,12 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
     data:
     info:    network dns-record-set show command OK
 
->[AZURE.NOTE] 位於 DNS 區域的根 (或「頂點」) 的記錄集使用 "@" 做為記錄集名稱。
+>[AZURE.NOTE] 在根 (或 「 頂點 」) 的 DNS 記錄集區域使用"@"做為記錄集名稱。
 
-建立第一個 DNS 區域之後，您可以使用 nslookup、DIG 之類的 DNS 工具或 **Resolve-DnsName** PowerShell Cmdlet 進行測試。
+建立第一個 DNS 區域之後，您可以測試它使用 nslookup、 DIG 之類的 DNS 工具或 **Resolve-dnsname** PowerShell cmdlet。
 如果您還沒有將網域委派給 Azure DNS 中的新區域，您必須將 DNS 查詢直接導向您的區域的其中一個名稱伺服器。 如上面的 "azure network dns-record-set show" 所列，NS 記錄提供您區域的名稱伺服器。 請務必在下列命令中用正確的值取代您的區域。
 
-下列範例使用 DIG，使用為 DNS 區域指派的名稱伺服器來查詢網域 contoso.com。查詢必須指向我們使用了哪些名稱伺服器 `@< 區域名稱伺服器 >` 與使用 DIG 的區域名稱。
+下列範例使用 DIG，使用為 DNS 區域指派的名稱伺服器來查詢網域 contoso.com。 使用 DIG 的查詢必須指向我們所使用的 `@<name server for the zone>` 名稱伺服器與區域名稱。
 
      <<>> DiG 9.10.2-P2 <<>> @ns1-05.azure-dns.com contoso.com
     (1 server found)
@@ -154,16 +155,16 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
     ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60963
     flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
     WARNING: recursion requested but not available
-    
+
     OPT PSEUDOSECTION:
     EDNS: version: 0, flags:; udp: 4000
     QUESTION SECTION:
     contoso.com.                        IN      A
-    
+
     AUTHORITY SECTION:
     contoso.com.         300     IN      SOA     edge1.azuredns-cloud.net.
     msnhst.microsoft.com. 6 900 300 604800 300
-    
+
     Query time: 93 msec
     SERVER: 208.76.47.5#53(208.76.47.5)
     WHEN: Tue Jul 21 16:04:51 Pacific Daylight Time 2015
@@ -171,12 +172,9 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
 
 ## 後續步驟
 
+
 [開始建立記錄集和記錄](dns-getstarted-create-recordset-cli.md)<BR>
 [如何管理 DNS 區域](dns-operations-dnszones-cli.md)<BR>
 [如何管理 DNS 記錄](dns-operations-recordsets-cli.md)<BR>
 [使用.NET SDK 自動化 Azure 作業](dns-sdk.md)<BR>
 [Azure DNS REST API 參考](https://msdn.microsoft.com/library/azure/mt163862.aspx)
-
-
-
-

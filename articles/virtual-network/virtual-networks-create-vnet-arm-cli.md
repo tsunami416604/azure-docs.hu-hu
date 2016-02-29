@@ -17,7 +17,6 @@
    ms.date="12/07/2015"
    ms.author="telmos"/>
 
-
 # 使用 Azure CLI 建立虛擬網路
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
@@ -29,7 +28,3 @@
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-cli-include](../../includes/virtual-networks-create-vnet-arm-cli-include.md)]
-
-
-
-

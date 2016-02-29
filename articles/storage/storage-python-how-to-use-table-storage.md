@@ -17,35 +17,34 @@
     ms.author="emgerner"/>
 
 
-
 # 如何使用 Python 的資料表儲存體
 
 [AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
 ## 概觀
 
-本指南說明如何使用 Azure 資料表儲存體服務執行一般案例。 在 Python 中並使用這些範例 [Python Azure 儲存體封裝 []][]。 所涵蓋的案例包括 「 建立和刪除
+本指南說明如何使用 Azure 資料表儲存體服務執行一般案例。 在 Python 中並使用這些範例 [Python Azure 儲存體封裝][]。 所涵蓋的案例包括 「 建立和刪除
 除了插入及查詢實體資料表中的資料表。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-[AZURE。請注意] 是否您需要安裝 Python 或 [Python Azure 封裝 []][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
+[AZURE.NOTE] 如果您需要安裝 Python 或 [Python Azure 封裝][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
 
 
 ## 建立資料表
 
-**TableService** 物件可讓您操作資料表服務。 Auch die Eigenschaften
+ **TableService** 物件可讓您操作資料表服務。 Auch die Eigenschaften
 下列程式碼會建立 **TableService** 物件。 新增附近的程式碼
 您想要在其中以程式設計方式存取 Azure 儲存體之任何 Python 檔案內的頂端附近：
 
     from azure.storage.table import TableService, Entity
 
-下列程式碼會使用儲存體帳戶名稱和帳戶金鑰來建立 **TableService** 物件。 將 'myaccount' 和 'mykey' 取代為真實的帳戶和金鑰。
+下列程式碼會建立 **TableService** 物件使用的儲存體帳戶名稱和帳戶金鑰。  將 'myaccount' 和 'mykey' 取代為真實的帳戶和金鑰。
 
     table_service = TableService(account_name='myaccount', account_key='mykey')
-    
+
     table_service.create_table('tasktable')
 
 ## 將實體加入至資料表
@@ -56,7 +55,7 @@
 實體的識別碼。 您可以更查詢這些值
 您可以查詢其他屬性快。 系統會使用 **PartitionKey** 至
 自動將資料表實體分散在許多儲存體節點上。
-具有相同 **PartitionKey** 的實體會儲存在相同節點上。 **RowKey** 是實體在資料分割內的唯一識別碼它
+具有相同的實體 **PartitionKey** 會儲存在相同節點上。 **RowKey** 是實體在資料分割內的唯一識別碼它
 。
 
 若要將實體新增至資料表，請將字典物件傳至
@@ -85,11 +84,11 @@
 如果正在更新的實體不存在，則更新
 操作便會失敗。 如果您想要儲存實體
 不論它是否存在之前，使用 **insert\_or\_replace_entity**。
-在下列範例中，第一個呼叫將取代現有實體。 第二個呼叫將插入新實體，因為資料表中沒有具有指定 **PartitionKey** 和 **RowKey** 的實體存在。
+在下列範例中，第一個呼叫將取代現有實體。 第二個呼叫會插入新實體，因為沒有具有指定之實體 **PartitionKey** 和 **RowKey** 存在於資料表中。
 
     task = {'description' : 'Take out the garbage again', 'priority' : 250}
     table_service.insert_or_replace_entity('tasktable', 'tasksSeattle', '1', task)
-    
+
     task = {'description' : 'Buy detergent', 'priority' : 300}
     table_service.insert_or_replace_entity('tasktable', 'tasksSeattle', '3', task)
 
@@ -119,7 +118,7 @@
 
 ## 查詢實體集合
 
-此範例會根據 **PartitionKey** 找到在西雅圖的所有工作。
+這個範例會尋找在西雅圖的所有工作將會都根據 **PartitionKey**。
 
     tasks = table_service.query_entities('tasktable', "PartitionKey eq 'tasksSeattle'")
     for task in tasks:
@@ -137,7 +136,7 @@
 下列程式碼中的查詢傳回的說明
 。
 
-[AZURE。附註] 下列程式碼片段僅適用於雲端的運作方式
+[AZURE.NOTE] 下列程式碼片段僅適用於雲端的運作方式
 儲存體服務。 這不是支援的儲存體
 模擬器。
 
@@ -162,13 +161,12 @@
 既然您已了解資料表儲存體的基礎概念之後，請參考下列連結
 若要了解有關更複雜的儲存體工作:
 
--   請參閱 MSDN 參考 [Azure 儲存體 []][]。
--   請瀏覽 [Azure 儲存體團隊部落格]][]。
+-   請參閱 MSDN 參考資料 [Azure 儲存體][]。
+-   請瀏覽 [Azure 儲存體團隊部落格][]。
 
 如需詳細資訊，請參閱 [Python 開發人員中心](/develop/python/)。
 
-
-[azure storage team blog]: http://blogs.msdn.com/b/windowsazurestorage/ 
-[python azure package]: https://pypi.python.org/pypi/azure 
-[python azure storage package]: https://pypi.python.org/pypi/azure-storage 
+[Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Python Azure package]: https://pypi.python.org/pypi/azure
+[Python Azure Storage package]: https://pypi.python.org/pypi/azure-storage
 

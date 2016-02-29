@@ -18,7 +18,6 @@
     ms.tgt_pltfrm="NA"/>
 
 
-
 # 在 SQL 資料庫使用彈性資料庫集區駕馭爆炸性的成長，以共用資源
 
 如果您是擁有數十、數百或甚至數千個 SQL 資料庫的 SaaS 開發人員，彈性資料庫集區可以在您控制的預算內，簡化跨資料庫建立、維護及管理效能的流程。 您可以 [建立彈性資料庫集區](sql-database-elastic-pool-portal.md) SQL 中的資料庫使用 Microsoft Azure 入口網站、 PowerShell 或 C# 的分鐘。
@@ -32,15 +31,16 @@ Microsoft 建立彈性資料庫集區的目的，便是為了協助您解決這�
 
 彈性資料庫集區提供解決方案，讓客戶確保他們的資料庫在必要時取得所需的效能資源，同時也提供簡單的資源配置機制和可預測的預算。 彈性資料庫集區中的個別資料庫可隨需要而調整效能，因為集區中的每個資料庫都使用該集區相關聯的共用集的 eDTU。 這可讓負載較重的資料庫耗用較多 eDTU 以符合需求，負載較輕的資料庫耗用較少 eDTU，而完全無負載的資料庫不使用任何 eDTU。 為集區佈建資源，而不是為單一資料庫佈建資源，不僅可以簡化管理多個資料庫，對於無法預期的工作負載，也能有可預測的預算。
 
-如需更多 eDTU 以滿足集區的需求 (有更多資料庫加入至集區，或現有的資料庫開始使用更多 eDTU)，可將其他 eDTU 加入至現有的集區，而不會使資料庫停機或對資料庫造成負面影響。 同樣地，如果不再需要額外 eDTU，則隨時可以從現有集區中移除。
+如需更多 eDTU 以滿足集區的需求 (有更多資料庫加入至集區，或現有的資料庫開始使用更多 eDTU)，可將其他 eDTU 加入至現有的集區，而不會使資料庫停機或對資料庫造成負面影響。 同樣地，如果不再需要額外 eDTU，則隨時可以從現有集區中移除。  
 
-![在彈性資料庫集區中共用 eDTU 的 SQL 資料庫。][1]
+![SQL 資料庫共用在彈性資料庫集區 Edtu]。[] 1
 
 最適合加入至彈性資料庫集區的資料庫通常是有時活躍，有時閒置。 在上述例子中，您可以看到單一資料庫的活動、4 個資料庫的活動，最後是具有 20 個資料庫的彈性資料庫集區的活動。 活動隨時間而不同的這些資料庫很適合加入至彈性資料庫，因為它們不是永遠都在使用中，而且可以共用 eDTU。 並非所有資料庫都符合這個模式。 有些資料庫的資源需求比較固定，這類資料庫較適合基本、標準和高階服務層，在這些服務層中會個別指派資源。 如需協助判斷您的資料庫而受益的彈性資料庫集區，請參閱 [彈性資料庫集區的價格和效能考量](sql-database-elastic-pool-guidance.md)。
 
 如需彈性資料庫集區，包括 API 和錯誤詳細資料的詳細資訊，請參閱 [彈性資料庫集區參考](sql-database-elastic-pool-reference.md)。
 
-> [AZURE.NOTE] 彈性資料庫集區目前為預覽版，且僅能搭配 SQL Database V12 伺服器使用。
+
+> [AZURE.NOTE] 彈性資料庫集區目前的預覽版，且僅能搭配 SQL Database V12 伺服器。
 
 ## 使用彈性資料庫工具輕鬆管理大量 SQL 資料庫
 
@@ -63,14 +63,13 @@ Microsoft 建立彈性資料庫集區的目的，便是為了協助您解決這�
 
 ### 異地複寫
 
-「標準」或「高階」彈性資料庫集區中的所有資料庫都可以使用異地複寫。 只要服務層相同，異地複寫合作關係中的一個或所有資料庫就可以在彈性資料庫集區中。 您可以設定使用彈性資料庫集區的地理區域複寫 [Azure 入口網站](sql-database-geo-replication-portal.md), ，[PowerShell](sql-database-geo-replication-powershell.md), ，或 [TRANSACT-SQL](sql-database-geo-replication-transact-sql.md)。
+「標準」或「高階」彈性資料庫集區中的所有資料庫都可以使用異地複寫。  只要服務層相同，異地複寫合作關係中的一個或所有資料庫就可以在彈性資料庫集區中。 您可以設定使用彈性資料庫集區的地理區域複寫 [Azure 入口網站](sql-database-geo-replication-portal.md), ，[PowerShell](sql-database-geo-replication-powershell.md), ，或 [TRANSACT-SQL](sql-database-geo-replication-transact-sql.md)。
 
 ### 匯入和匯出
 
 支援從集區將資料庫匯出。 目前不支援直接將資料庫匯入至集區，但可以先匯入至單一資料庫，再將資料庫移到集區。
 
 
-
-
-[1]: ./media/sql-database-elastic-pool/databases.png 
+<!--Image references-->
+[1]: ./media/sql-database-elastic-pool/databases.png
 

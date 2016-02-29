@@ -17,36 +17,33 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    /> 
-
-
+   
 # 管理虛擬網路：負載平衡器的 TCP 閒置逾時
 
-「TCP 閒置逾時」****讓開發人員可以在與 Azure 負載平衡器相關的用戶端-伺服器工作階段期間，指定保證無活動的閾值。 4 分鐘的 TCP 閒置逾時值 (Azure 負載平衡器的預設值) 表示，如果在牽涉到 Azure 負載平衡器的用戶端-伺服器工作階段期間，有一段閒置時間長達超過 4 分鐘的期間，則將關閉連線。
+**TCP 閒置逾時** 允許開發人員與 Azure 負載平衡器相關的用戶端-伺服器工作階段期間，指定保證無活動閾值。  4 分鐘的 TCP 閒置逾時值 (Azure 負載平衡器的預設值) 表示，如果在牽涉到 Azure 負載平衡器的用戶端-伺服器工作階段期間，有一段閒置時間長達超過 4 分鐘的期間，則將關閉連線。
 
 當用戶端-伺服器連線關閉時，用戶端應用程式將收到如下的錯誤訊息：「基礎連接已關閉：應該保持運作的連接卻被伺服器關閉」。
 
-[TCP Keep-alive](http://tools.ietf.org/html/rfc1122#page-101) 是長時間則為非作用中期間保持連線的常見作法 [(MSDN 範例)](http://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 使用 TCP 持續連線時，用戶端會定期傳送簡單的封包 (通常頻率期間會比伺服器的閒置逾時閾值還短)。 伺服器認為即使沒有其他活動發生，這些傳輸還是可做為連線活動的證明 -- 因此，永遠都不會符合閒置逾時值，而且連線可維持一段很長的時間。
+[TCP Keep-alive](http://tools.ietf.org/html/rfc1122#page-101) 是長時間則為非作用中期間保持連線的常見作法 [(MSDN 範例)](http://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 使用 TCP 持續連線時，用戶端會定期傳送簡單的封包 (通常頻率期間會比伺服器的閒置逾時閾值還短)。  伺服器認為即使沒有其他活動發生，這些傳輸還是可做為連線活動的證明 -- 因此，永遠都不會符合閒置逾時值，而且連線可維持一段很長的時間。
 
 儘管 TCP 持續連線可良好運作，但它通常不是行動應用程式的選項，因為它會耗用行動裝置上的有限電源。 使用 TCP 持續連線的行動應用程式將會更快耗盡裝置電池，因為它會為網路使用量而持續消耗電力。
 
-為了支援行動裝置案例，Azure 負載平衡器支援可設定的 TCP 閒置逾時。 開發人員可以針對輸入連線將 TCP 閒置逾時設定為介於 4 分鐘到 30 分鐘之間的任何期間 (可設定的 TCP 閒置逾時不會套用到輸出連線)。 這讓用戶端可以與伺服器維持一段較長的非使用狀態工作階段。 行動裝置上的應用程式還是可以選擇運用 TCP 持續連線技術，來保留預期超過 30 分鐘處於非使用狀態期間的連線，但是，這個較長的 TCP 閒置逾時讓應用程式發出 TCP 持續連線要求的頻率遠比之前還少，可大幅降低對行動裝置電源的負擔。
+為了支援行動裝置案例，Azure 負載平衡器支援可設定的 TCP 閒置逾時。 開發人員可以針對輸入連線將 TCP 閒置逾時設定為介於 4 分鐘到 30 分鐘之間的任何期間 (可設定的 TCP 閒置逾時不會套用到輸出連線)。 這讓用戶端可以與伺服器維持一段較長的非使用狀態工作階段。  行動裝置上的應用程式還是可以選擇運用 TCP 持續連線技術，來保留預期超過 30 分鐘處於非使用狀態期間的連線，但是，這個較長的 TCP 閒置逾時讓應用程式發出 TCP 持續連線要求的頻率遠比之前還少，可大幅降低對行動裝置電源的負擔。
 
 ## 實作
 
-您可以針對下列各項設定 TCP 閒置逾時：
+您可以針對下列各項設定 TCP 閒置逾時： 
 
-* [執行個體層級公用 Ip](virtual-networks-instance-level-public-ip.md)
-* [負載平衡端點集](../load-balancer/load-balancer-overview.md)
+* [執行個體層級的公用 IP](virtual-networks-instance-level-public-ip.md)
+* [負載平衡的端點集](../load-balancer/load-balancer-overview.md)
 * [虛擬機器端點](../virtual-machines/virtual-machines-set-up-endpoints.md)
 * [Web 角色](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
 * [背景工作角色](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
 
 ## 後續步驟
-
 * TBD
 
 ## PowerShell 範例
-
 請下載 [最新的 Azure PowerShell 版本](https://github.com/Azure/azure-sdk-tools/releases) 為了獲得最佳結果。
 
 ### 將執行個體層級公用 IP 的 TCP 逾時值設定為 15 分鐘
@@ -79,7 +76,7 @@ IdleTimeoutInMinutes 是選擇性的。 若未設定，則預設的逾時為 4 �
     Acl : {}
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
-
+    
 ### 在負載平衡端點集上設定 TCP 逾時
 
 如果端點是負載平衡端點集的一部分，就必須在負載平衡端點集上設定 TCP 逾時：
@@ -110,10 +107,10 @@ IdleTimeoutInMinutes 是選擇性的。 若未設定，則預設的逾時為 4 �
         </InstanceAddress>
       </AddressAssignments>
     </NetworkConfiguration>
-
+    
 ## API 範例
 
-開發人員可以使用服務管理 API 來設定負載平衡器分配。 請務必新增已設定為 2014-06-01 版或更高版本的 x-ms-version 標頭。
+開發人員可以使用服務管理 API 來設定負載平衡器分配。  請務必新增已設定為 2014-06-01 版或更高版本的 x-ms-version 標頭。
 
 ### 在部署中的所有虛擬機器上，更新指定負載平衡輸入端點的設定
 
@@ -153,6 +150,5 @@ LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、
         </EndpointACL>
       </InputEndpoint>
     </LoadBalancedEndpointList>
-
-
+ 
 

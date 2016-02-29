@@ -16,7 +16,6 @@
    ms.date="12/01/2015"
    ms.author="curtand;kenhoff"/>
 
-
 # 開始使用 Azure Active Directory 報告
 
 ## 內容
@@ -55,6 +54,7 @@ Azure Active Directory (Azure AD) 包括您的目錄的安全性、活動和稽�
 
 ## 運作方式
 
+
 ### 報告管線
 
 報告管線包含三個主要步驟。 每次使用者登入或進行驗證時，就會發生以下狀況：
@@ -70,11 +70,13 @@ Azure Active Directory (Azure AD) 包括您的目錄的安全性、活動和稽�
 您可以查看每個報表頂端的說明文字，找到最近處理的登入。
 
 ![每個報告頂端的說明文字](./media/active-directory-reporting-getting-started/reportingWatermark.PNG)
+
 > [AZURE.TIP] 如需有關 Azure AD 報告的詳細文件，請參閱 [檢視存取和使用方式報告](active-directory-view-access-usage-reports.md)。
 
 
 
 ## 開始使用
+
 
 ### 登入 Azure 傳統入口網站
 
@@ -101,6 +103,7 @@ Azure Active Directory (Azure AD) 包括您的目錄的安全性、活動和稽�
 若要下載任何報告為 CSV，請瀏覽至報告並按一下底部的 [下載]。
 
 ![[下載] 按鈕](./media/active-directory-reporting-getting-started/downloadButton.png)
+
 > [AZURE.TIP] 如需有關 Azure AD 報告的詳細文件，請參閱 [檢視存取和使用方式報告](active-directory-view-access-usage-reports.md)。
 
 
@@ -129,13 +132,15 @@ Azure Active Directory (Azure AD) 包括您的目錄的安全性、活動和稽�
 
 按一下畫面底部的 [啟用 MFA] 按鈕。
 
-![畫面底部的 ](./media/active-directory-reporting-getting-started/mfaButton.png)
+![畫面底部的 [Multi-Factor Authentication] 按鈕](./media/active-directory-reporting-getting-started/mfaButton.png)
+
 > [AZURE.TIP] 如需有關 Azure AD 報告的詳細文件，請參閱 [檢視存取和使用方式報告](active-directory-view-access-usage-reports.md)。
 
 
 
 
 ## 詳細資訊
+
 
 ### 稽核事件
 
@@ -148,9 +153,6 @@ Azure Active Directory (Azure AD) 包括您的目錄的安全性、活動和稽�
 ### 取得聯繫
 
 電子郵件 [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) 意見反應、 說明，或您可能會有任何問題!
+
 > [AZURE.TIP] 如需有關 Azure AD 報告的詳細文件，請參閱 [檢視存取和使用方式報告](active-directory-view-access-usage-reports.md)。
-
-
-
-
 

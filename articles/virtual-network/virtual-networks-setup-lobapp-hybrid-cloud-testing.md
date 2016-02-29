@@ -17,7 +17,6 @@
     ms.date="09/10/2015" 
     ms.author="josephd"/>
 
-
 # 在混合式雲端中設定 Web 型 LOB 應用程式進行測試
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
@@ -56,13 +55,14 @@
 這是您目前的組態。
 
 ![](./media/virtual-networks-setup-lobapp-hybrid-cloud-testing/CreateLOBAppHybridCloud_1.png)
-> [AZURE.NOTE] 針對第 1 階段，您也可以設定模擬混合式雲端測試環境。 請參閱 [設定用於測試的模擬混合式雲端環境](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md) 如需相關指示。
 
+> [AZURE.NOTE] 階段 1 中，您也可以設定模擬混合式雲端測試環境。 請參閱 [設定用於測試的模擬混合式雲端環境](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md) 如需相關指示。
+ 
 ## 第 2 階段：設定 SQL 伺服器電腦 (SQL1)
 
 從 Azure 管理入口網站，視需要啟動 DC2 電腦。
 
-然後，在本機電腦的 Azure PowerShell 命令提示字元下，使用下列命令建立 SQL1 的 Azure 虛擬機器。在之前執行這些命令，先填入變數值並移除 < 和 > 字元。
+然後，在本機電腦的 Azure PowerShell 命令提示字元下，使用下列命令建立 SQL1 的 Azure 虛擬機器。 在之前執行這些命令，先填入變數值並移除 < 和 > 字元。
 
     $storageacct="<Name of the storage account for your TestVNET virtual network>"
     $ServiceName="<The cloud service name for your TestVNET virtual network>"
@@ -76,16 +76,16 @@
     $vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 100 -DiskLabel SQLFiles -LUN 0 -HostCaching None
     New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
-接下來，*使用本機系統管理員帳戶*連線到新的 SQL1 虛擬機器。
+接著，連接到新的 SQL1 虛擬機器 *使用本機系統管理員帳戶*。
 
-1.  在 Azure 管理入口網站的左窗格中，按一下 [虛擬機器]****，然後按一下 SQL1 [狀態] 欄中的 [執行]****。
-2.  在工作列上，按一下 [連接]****。
-3.  提示開啟 SQL1.rdp 時，按一下 [開啟]****。
-4.  顯示 [遠端桌面連線] 訊息方塊後，按一下 [連接]****。
+1.  在 Azure 管理入口網站的左窗格中，按一下 [ **虛擬機器**, ，然後按一下 [ **執行** sql1 [狀態] 欄中。
+2.  在工作列上，按一下 [ **連接**。 
+3.  當系統提示開啟 SQL1.rdp 時，按一下 [ **開啟**。
+4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用這些：
     - 名稱: **SQL1\\**[本機系統管理員帳戶名稱]
     - 密碼：[本機系統管理員帳戶密碼]
-6.  顯示憑證相關的 [遠端桌面連線] 訊息方塊提示時，按一下 [是]****。
+6.  顯示憑證相關的遠端桌面連線] 訊息方塊提示，請按一下 **是**。
 
 接著，設定 Windows 防火牆規則，允許基本連線測試和 SQL Server 的流量。 從 SQL1 的系統管理員層級 Windows PowerShell 命令提示字元下，執行這些命令。
 
@@ -97,16 +97,16 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 
 接著，將額外的資料磁碟新增為磁碟機代號 F: 的新磁碟區。
 
-1.  在 [伺服器管理員] 的左窗格中，按一下 [檔案和存放服務]****，然後按一下 [磁碟]****。
-2.  在 [內容] 窗格的 [磁碟]**** 群組中，按一下 [磁碟 2]**** ([磁碟分割]**** 設為 [不明]****)。
-3.  按一下 [工作]****，然後按一下 [新增磁碟區]****。
-4.  在 [新增磁碟區精靈] 的 [在您開始前] 頁面上，按 [下一步]****。
-5.  在 [選取伺服器和磁碟] 頁面上，按一下 [磁碟 2]****，然後按 [下一步]****。 出現提示時，按一下 **[確定]**。
-6.  在 [指定磁碟區大小] 頁面上，按 [下一步]****。
-7.  在 [指派成磁碟機代號或資料夾] 頁面上，按 [下一步]****。
-8.  在 [選取檔案系統設定] 頁面上，按 [下一步]****。
-9.  在 [確認選取項目] 頁面上，按一下 [建立]****。
-10. 完成時，按一下 [關閉]****。
+1.  在左窗格的 [伺服器管理員中，按一下 [ **檔案和存放服務**, ，然後按一下 [ **磁碟**。
+2.  在 [內容] 窗格中，在 **磁碟** 群組中，按一下 **磁碟 2** (與 **分割** 設為 **未知**)。
+3.  按一下 [ **工作**, ，然後按一下 [ **新的磁碟區**。
+4.  前上開始新的磁碟區精靈] 頁面，按一下 **下一步**。
+5.  在 [選取伺服器和磁碟] 頁面上，按一下 [ **磁碟 2**, ，然後按一下 [ **下一步**。 出現提示時，按一下 [ **確定**。
+6.  在 [指定大小的磁碟區] 頁面中，按一下 [ **下一步**。
+7.  在 [指派成磁碟機代號或資料夾] 頁面中，按一下 [ **下一步**。
+8.  在 [選取檔案系統設定] 頁面中，按一下 [ **下一步**。
+9.  在 [確認選取項目] 頁面中，按一下 [ **建立**。
+10. 完成時，按一下 **關閉**。
 
 在 SQL1 的 Windows PowerShell 命令提示字元下執行下列命令：
 
@@ -116,26 +116,26 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 
 接著，對於新資料庫和使用者帳戶權限設定 SQL Server 2014 使用 F: 磁碟機。
 
-1.  從 [開始] 畫面中，輸入 **SQL Server 管理**，然後按一下 [SQL Server 2014 Management Studio]****。
-2.  在 [**連線到伺服器**] 中按一下 [**連線**]。
-3.  在 [物件總管] 樹狀結構窗格中，以滑鼠右鍵按一下 [SQL1]****，然後按一下 [內容]****。
-4.  在 [伺服器內容]**** 視窗中，按一下 [資料庫設定]****。
-5.  找出 [資料庫預設位置]**** 並設定下列值：
-    - 對於 [資料]****，輸入路徑 **f:\Data**。
-    - 對於 [記錄]****，輸入路徑 **f:\Log**。
-    - 對於 [備份]****，輸入路徑 **f:\Backup**。
+1.  從 [開始] 畫面中，輸入 **SQL Server 管理**, ，然後按一下 [ **SQL Server 2014 Management Studio**。
+2.  在 **連接到伺服器**, ，按一下 [ **連接**。
+3.  在物件總管] 樹狀目錄窗格中，以滑鼠右鍵按一下 **SQL1**, ，然後按一下 [ **屬性**。
+4.  在 **伺服器屬性** ] 視窗中，按一下 [ **資料庫設定**。
+5.  找出 **資料庫預設位置** 並設定下列值: 
+    - 如 **資料**, ，輸入路徑 **f:\Data**。
+    - 如 **記錄**, ，輸入路徑 **f:\Log**。
+    - 如 **備份**, ，輸入路徑 **f:\Backup**。
     - 注意：只有新的資料庫才會使用這些位置。
-6.  按一下 [確定]**** 關閉視窗。
-7.  在 [物件總管]**** 樹狀結構窗格中，開啟 [安全性]****。
-8.  以滑鼠右鍵按一下 [登入]****，然後按一下 [新增登入]****。
-9.  在 [登入名稱]**** 中，輸入 **CORP\User1**。
-10. 在 [伺服器角色]**** 頁面上，按一下 [sysadmin]****，然後按一下 [確定]****。
+6.  按一下 [ **確定** 關閉視窗。
+7.  在 **物件總管] 中** 樹狀目錄窗格中，開啟 **安全性**。
+8.  以滑鼠右鍵按一下 **登入** 然後按一下 [ **新登入**。
+9.  在 **登入名稱**, ，型別 **CORP\User1**。
+10. 在 **伺服器角色** 頁面上，按一下 **sysadmin**, ，然後按一下 [ **確定**。
 11. 關閉 Microsoft SQL Server Management Studio。
 
 這是您目前的組態。
 
 ![](./media/virtual-networks-setup-lobapp-hybrid-cloud-testing/CreateLOBAppHybridCloud_2.png)
-
+ 
 ## 第 3 階段：設定 LOB 伺服器 (LOB1)。
 
 首先，在本機電腦的 Azure PowerShell 命令提示字元下，使用下列命令建立 LOB1 的 Azure 虛擬機器。
@@ -160,24 +160,24 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 
 接著，為 IIS 設定 LOB1，並且測試從 CLIENT1 進行的存取。
 
-1.  執行伺服器管理員，然後按一下 [新增角色及功能]****。
-2.  在 [開始之前] 頁面中按 [下一步]****。
-3.  在 [選取安裝類型] 頁面上，按 [下一步]****。
-4.  在 [選取目的地伺服器] 頁面上，按 [下一步]****。
-5.  在 [伺服器角色] 頁面上，按一下 [角色]**** 清單中的 [網頁伺服器 (IIS)]****。
-6.  出現提示時，按一下 [新增功能]****，然後按 [下一步]****。
-7.  在 [選取功能] 頁面上，按 [下一步]****。
-8.  在 [網頁伺服器 (IIS)] 頁面上，按一下 [下一步]****。
-9.  在 [選取角色服務] 頁面上，選取或清除測試 LOB 應用程式所需服務的核取方塊，然後按一下 [下一步]****。
-10. 在 [確認安裝選項] 頁面上，按一下 [安裝]****。
-11. 等候元件安裝完成，然後按一下 [關閉]****。
+1.  執行 [伺服器管理員]，然後按一下 [ **新增角色及功能**。
+2.  前上開始頁面上，按一下 **下一步**。
+3.  在 [選取安裝類型] 頁面中，按一下 [ **下一步**。
+4.  在 [選取目的地伺服器] 頁面中，按一下 [ **下一步**。
+5.  在 [伺服器角色] 頁面中，按一下 [ **網頁伺服器 (IIS)** 清單中的 **角色**。
+6.  出現提示時，按一下 [ **新增功能**, ，然後按一下 [ **下一步**。
+7.  在 [選取功能] 頁面中，按一下 [ **下一步**。
+8.  在網頁伺服器 (IIS)] 頁面上，按一下 [ **下一步**。
+9.  在 [選取角色服務] 頁面中，選取或清除測試 LOB 應用程式，您需要的服務的核取方塊，然後按一下 **下一步**。
+10. 在 [確認安裝選項] 頁面中，按一下 [ **安裝**。
+11. 等候元件的安裝已完成，然後按一下 [ **關閉**。
 12. 以 CORP\User1 帳戶認證登入 CLIENT1 電腦，然後啟動 Internet Explorer。
 13. 在 [網址] 列中，輸入 **http://lob1/** ，然後按 ENTER。 您應該會看見預設的 IIS 8 網頁。
 
 這是您目前的組態。
 
 ![](./media/virtual-networks-setup-lobapp-hybrid-cloud-testing/CreateLOBAppHybridCloud_3.png)
-
+ 
 這個環境此時即可供您在 LOB1 部署 Web 型應用程式，並且測試公司網路子網路的功能和效能。
 
 ## 其他資源
@@ -188,18 +188,14 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 
 [設定用於測試的混合式雲端環境](virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
-[設定用於測試的混合式雲端中的 SharePoint 內部網路伺服器陣列](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
+[在混合式雲端中設定用於測試的 SharePoint 內部網路伺服器陣列](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-[設定用於測試的混合式雲端中的 Office 365 目錄同步處理 (DirSync)](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
+[在混合式雲端中設定 Office 365 Directory 同步處理 (DirSync) 進行測試](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
 
 [設定用於測試的模擬混合式雲端環境](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
 
 [Azure 混合式雲端測試環境](../virtual-machines/virtual-machines-hybrid-cloud-test-environments.md)
 
 [Azure 基礎結構服務實作指導方針](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-
-
-
-
+ 
 

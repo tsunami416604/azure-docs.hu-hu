@@ -17,7 +17,6 @@
    ms.author="v-jeana; hascipio"/>
 
 
-
 # 存取 Azure Marketplace 的發佈者支援
 
 Microsoft 提供各式各樣的產品和服務支援。 務必讓您的查詢能找到正確的支援團隊，對確保適當且及時的回應很重要。 請考慮下列案例，這些案例應有助於將您的查詢傳送給適當的團隊。
@@ -45,7 +44,7 @@ Microsoft 提供各式各樣的產品和服務支援。 務必讓您的查詢能
 
 ## 2.瀏覽至發佈者支援頁面
 
-從右上方的功能表中選取 [取得支援]****。
+從右上方功能表中，選取 **取得支援**。
 
   ![取得支援][2]
 
@@ -66,13 +65,13 @@ Microsoft 提供各式各樣的產品和服務支援。 務必讓您的查詢能
 
 ## 4.要求支援
 
-選取問題類型和類別之後，按一下 [提出要求]**** 按鈕。
+您選取的問題類型和類別之後，請按一下 **啟動要求** ] 按鈕。
 
 ![啟動支援][4]
 
 ## 5.提供連絡資訊並描述問題
 
-描述問題，因為完全與您可以，並提供任何檔案 (螢幕擷取畫面、 網路追蹤) 可能有助於解決您的問題。
+儘可能完整地描述問題，並提供任何可能有助於解決問題的檔案 (螢幕擷取畫面、網路追蹤等)。
 
 ![描述問題][5]
 
@@ -88,11 +87,10 @@ Microsoft 提供各式各樣的產品和服務支援。 務必讓您的查詢能
 
 若要了解如何解決特定的支援問題，請參閱 [疑難排解常見的問題，在 Azure Marketplace](marketplace-publishing-support-common-issues.md)。
 
-
-[1]: ./media/marketplace-publishing-get-publisher-support/step1.png 
-[2]: ./media/marketplace-publishing-get-publisher-support/step2.png 
-[3]: ./media/marketplace-publishing-get-publisher-support/step3.png 
-[4]: ./media/marketplace-publishing-get-publisher-support/step4.png 
-[5]: ./media/marketplace-publishing-get-publisher-support/step5.png 
-[6]: ./media/marketplace-publishing-get-publisher-support/step6.png 
+[1]: ./media/marketplace-publishing-get-publisher-support/step1.png
+[2]: ./media/marketplace-publishing-get-publisher-support/step2.png
+[3]: ./media/marketplace-publishing-get-publisher-support/step3.png
+[4]: ./media/marketplace-publishing-get-publisher-support/step4.png
+[5]: ./media/marketplace-publishing-get-publisher-support/step5.png
+[6]: ./media/marketplace-publishing-get-publisher-support/step6.png
 

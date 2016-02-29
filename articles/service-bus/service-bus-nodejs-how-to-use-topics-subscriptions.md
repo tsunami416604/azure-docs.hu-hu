@@ -17,15 +17,14 @@
     ms.author="sethm"/>
 
 
-
 # 如何使用服務匯流排主題和訂用帳戶
 
 [AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 本指南說明如何使用服務匯流排主題和訂閱
-從 Node.js 應用程式。 涵蓋的案例包括 * * 建立
-主題和訂閱**, ，* * 建立訂閱篩選器**, ，* * 傳送
-訊息 * * 至主題、 **從訂閱接收訊息**, ，並
+從 Node.js 應用程式。 涵蓋的案例包括 **建立
+主題和訂閱**, ，**建立訂閱篩選器**, ，**傳送
+訊息** 至主題、 **從訂閱接收訊息**, ，並
 **刪除主題和訂閱**。 如需主題的詳細資訊
 和訂閱，請參閱 [後續步驟](#next-steps) 一節。
 
@@ -33,7 +32,7 @@
 
 ## 建立 Node.js 應用程式
 
-建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [建立並部署 Node.js 應用程式至 Azure 網站]， [Node.js 定域機組 Service][node.js cloud service] (使用 Windows PowerShell)，或使用 WebMatrix 的網站。
+建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [Create and deploy a Node.js application to an Azure Web Site], ，[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell)，或使用 WebMatrix 的網站。
 
 ## 設定應用程式以使用服務匯流排
 
@@ -42,7 +41,7 @@
 
 ### 使用 Node Package Manager (NPM) 取得封裝
 
-1.  使用命令列介面，例如 **PowerShell** (Windows)、[終端機]**** (Mac) 或 **Bash** (Unix)，瀏覽到您建立範例應用程式的資料夾。
+1.  使用命令列介面，例如 **PowerShell** (Windows)、 **終端機** (Mac) 或 **Bash** (Unix)，瀏覽至您用來建立範例應用程式的資料夾。
 
 2.  型別 **npm 安裝 azure** 應在命令視窗中，
     下例輸出：
@@ -69,7 +68,7 @@
 ### 匯入模組
 
 使用 [記事本] 或其他文字編輯器，將下列內容新增至
-**server.js** 應用程式檔案:
+ **server.js** 應用程式檔案:
 
 ```
 var azure = require('azure');
@@ -77,15 +76,15 @@ var azure = require('azure');
 
 ### 設定服務匯流排連接
 
-Azure 模組會讀取環境變數 AZURE\_SERVICEBUS\_NAMESPACE 和 AZURE\_SERVICEBUS\_ACCESS\_KEY 可連接至服務匯流排所需的資訊。 如果您未設定這些環境變數，必須在呼叫 **createServiceBusService** 時指定帳戶資訊。
+Azure 模組會讀取環境變數 AZURE\_SERVICEBUS\_NAMESPACE 和 AZURE\_SERVICEBUS\_ACCESS\_KEY 可連接至服務匯流排所需的資訊。 如果未設定這些環境變數，呼叫時，您必須指定帳戶資訊 **createServiceBusService**。
 
-如需針對 Azure 雲端服務組態檔中設定環境變數的範例，請參閱 [Node.js 雲端服務與儲存體 []][]。
+如需針對 Azure 雲端服務組態檔中設定環境變數的範例，請參閱 [使用儲存體的 Node.js 雲端服務][]。
 
-如需範例中設定環境變數的 [Azure 傳統入口網站 []][] Azure 網站，請參閱 [Node.js Web 應用程式與儲存體 []][]。
+如需範例中設定環境變數的 [Azure 傳統入口網站][] Azure 網站，請參閱 [與儲存體的 Node.js Web 應用程式][]。
 
 ## 建立主題
 
-**ServiceBusService** 物件可讓您使用主題。 Auch die Eigenschaften
+ **ServiceBusService** 物件可讓您處理主題。 Auch die Eigenschaften
 下列程式碼會建立 **ServiceBusService** 物件。 請將程式碼
 頂端 **server.js** 檔案之後的陳述式匯入 azure,
 後方：
@@ -128,13 +127,13 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 
 ### 篩選器
 
-您可以將選用的篩選作業套用至使用 **ServiceBusService** 執行的作業。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
+選用的篩選作業可以套用至使用執行的作業 **ServiceBusService**。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
 
 ```
 function handle (requestOptions, next)
 ```
 
-在執行之後對要求選項前置處理，此方法會呼叫 `下一步` 傳遞具有下列簽章的回呼:
+對要求選項執行前置處理之後，方法會呼叫 `next`，並傳遞具有下列簽章的回呼：
 
 ```
 function (returnObject, finalCallback, next)
@@ -142,7 +141,7 @@ function (returnObject, finalCallback, next)
 
 在此回呼中，以及處理 returnObject (來自對伺服器之要求的回應) 之後，回呼需要叫用 next (如果存在) 以繼續處理其他篩選，或是就改為叫用 finalCallback 結束服務叫用。
 
-系統會將實作重試邏輯的兩個篩選器 (**ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**) 納入 Azure SDK for Node.js 中。 下列程式碼將建立使用 **ExponentialRetryPolicyFilter** 的 **ServiceBusService** 物件：
+實作重試邏輯的兩個篩選器隨附於 Azure SDK for Node.js **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 下列範例會建立 **ServiceBusService** 物件，使用 **ExponentialRetryPolicyFilter**:
 
     var retryOperations = new azure.ExponentialRetryPolicyFilter();
     var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
@@ -153,15 +152,16 @@ function (returnObject, finalCallback, next)
 。 訂閱是具名的，它們能擁有選用的篩選器，
 限制的訊息傳遞至訂閱的虛擬
 集合。
-> [AZURE.NOTE] 訂閱是持續性的，它們會持續存在，
+
+> [AZURE.NOTE] 訂閱是持續性，將會持續存在，
 直到本身或相關主題遭到刪除為止。 如果
 應用程式含有建立訂閱的邏輯，它應該會先
 使用
-**getSubscription** 方法檢查訂閱是否已經存在。
+**getSubscription** 方法。
 
-### 使用預設 (MatchAll) 篩選器建立訂閱
+### 使用預設 (MatchAll) 篩選器建立訂用帳戶
 
-**MatchAll** 篩選器是預設篩選器，如果任何篩選條件
+ **MatchAll** 篩選器是預設篩選器，如果任何篩選條件
 沒有指定篩選器，便會使用此篩選器。 當 **MatchAll**
 篩選器時，所有發佈至主題的訊息都會被置於訂閱的
 虛擬佇列中。 下列範例會建立
@@ -185,11 +185,12 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 **SqlFilter**, ，可用來實作 SQL92 的子集。 SQL 篩選器適用於
 發佈至主題之訊息的屬性。 如需
 可與 SQL 篩選器搭配使用的運算式詳細資料，
-檢閱 [SqlFilter.SqlExpression][sqlfilter.sqlexpression] 語法。
+檢閱 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 語法。
 
 篩選器可以使用新增至訂閱 **createRule**
 方法的 **ServiceBusService** 物件。 此方法可讓您
 篩選器新增至現有的訂閱。
+
 > [AZURE.NOTE] 由於預設篩選器會自動套用至所有新
 訂閱，您必須先移除預設篩選器或
 **MatchAll** 會覆寫您指定的其他任何篩選器。 您可以
@@ -233,8 +234,8 @@ var rule={
 ```
 
 同樣地，以下範例將建立名為
-`LowMessages` 與 **SqlFilter** 只選取的訊息
-**messagenumber** 屬性小於或等於 3:
+`LowMessages` 使用 **SqlFilter** 只選取的訊息
+ **messagenumber** 屬性小於或等於 3:
 
 ```
 serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
@@ -280,10 +281,10 @@ var rule={
 **sendTopicMessage** 方法 **ServiceBusService** 物件。
 傳送至服務匯流排主題的訊息是 **BrokeredMessage** 物件。
 **BrokeredMessage** 物件具有一組標準屬性 (例如
-**標籤** 和 **TimeToLive**)，用來保存自訂字典
+**加上標籤** 和 **TimeToLive**)，用來保存自訂字典
 應用程式特定屬性，以及一堆字串資料。 「
 應用程式可以藉由傳遞字串值，即可設定訊息內文
-**sendTopicMessage** 和任何必要的標準屬性
+ **sendTopicMessage** 和任何必要的標準屬性
 預設值填入。
 
 下列範例說明如何將五個測試訊息傳送至
@@ -403,8 +404,8 @@ for (i = 0;i < 5;i++) {
 ## 刪除主題和訂用帳戶
 
 主題和訂閱是持續性的，您必須透過 Azure 管理入口網站
-透過 [Azure 傳統入口網站 []][] 或以程式設計的方式。
-下列範例示範如何刪除名為的主題 `MyTopic`:
+透過 [Azure 傳統入口網站][] 或以程式設計的方式。
+下列範例示範如何刪除名為 `MyTopic` 的主題：
 
     serviceBusService.deleteTopic('MyTopic', function (error) {
         if (error) {
@@ -427,18 +428,18 @@ for (i = 0;i < 5;i++) {
 
 了解基本的服務匯流排主題之後，請參考下列連結以取得更多資訊。
 
--   請參閱 [佇列、 主題和訂用帳戶的 []][]。
--   API 參考 [SqlFilter []][]。
--   請瀏覽 [節點 [] 的 Azure SDK][] GitHub 上的儲存機制。
+-   請參閱 [佇列、 主題和訂閱][]。
+-   API 參考 [SqlFilter][]。
+-   請瀏覽 [Azure SDK for Node][] GitHub 上的儲存機制。
 
-
-[azure sdk for node]: https://github.com/WindowsAzure/azure-sdk-for-node 
-[azure classic portal]: http://manage.windowsazure.com 
-[sqlfilter.sqlexpression]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx 
-[queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md 
-[sqlfilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx 
-[node.js cloud service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md 
-[create and deploy a node.js application to an azure web site]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md 
-[node.js cloud service with storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md 
-[node.js web application with storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md 
+  [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
+  [Azure classic portal]: http://manage.windowsazure.com
+  [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+  [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+  [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
+  [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+  [Create and deploy a Node.js application to an Azure Web Site]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+  [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+  [Node.js Web Application with Storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+ 
 

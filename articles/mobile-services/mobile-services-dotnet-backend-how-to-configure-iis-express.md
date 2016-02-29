@@ -16,7 +16,6 @@
     ms.date="12/07/2015"
     ms.author="glenga"/>
 
-
 # 設定本機 Web 伺服器以允許連接到本機行動服務
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -29,8 +28,4 @@ Azure 行動服務可讓您在 Visual Studio 中使用其中一個支援的 .NET
 若要能夠使用執行於模擬器、虛擬機器或個別工作站上的用戶端，以本機方式測試行動服務，您必須設定本機 Web 伺服器和主機電腦，使其允許連接到工作站的 IP 位址和連接埠。 本主題將說明如何設定 IIS Express，以允許連接到您本機代管的行動服務。
 
 [AZURE.INCLUDE [mobile-services-how-to-configure-iis-express](../../includes/mobile-services-how-to-configure-iis-express.md)]
-
-
-
-
 

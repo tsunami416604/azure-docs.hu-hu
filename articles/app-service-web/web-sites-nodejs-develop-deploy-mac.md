@@ -16,17 +16,15 @@
     ms.date="11/20/2015"
     ms.author="robmcm"/>
 
-
 # 在 Azure App Service 中建立 Node.js Web 應用程式
 
 > [AZURE.SELECTOR]
 - [.Net](web-sites-dotnet-get-started.md)
 - [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
-- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [PHP-Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP-FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
-
 
 本教學課程示範如何建立簡單的 [Node.js](http://nodejs.org) 應用程式並部署至 [web 應用程式](app-service-web-overview.md) 中 [Azure App Service](../app-service/app-service-value-prop-what-is.md) 使用 [Git](http://git-scm.com)。 本教學課程中的指示可運用在任何足以執行 Node.js 應用程式的作業系統上。
 
@@ -40,84 +38,85 @@
 ![顯示「Hello World」訊息的瀏覽器。][helloworld-completed]
 
 教學課程和範例程式碼更複雜的 Node.js 應用程式，或有關如何在 Azure 中使用 Node.js 的其他主題，請參閱 [Node.js 開發人員中心](/develop/nodejs/)。
+
 > [AZURE.NOTE]
-> 若要完成此教學課程，您需要 Microsoft Azure 帳戶。 如果您沒有帳戶，您可以 [啟用您的 Visual Studio 訂閱者權益](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) 或 [申請免費試用版](/en-us/pricing/free-trial/?WT.mc_id=A261C142F)。
+> 若要完成此教學課程，您需要 Microsoft Azure 帳戶。 如果您沒有這類帳戶，可以[啟用自己的 Visual Studio 訂閱者權益](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)，或是[申請免費試用](/en-us/pricing/free-trial/?WT.mc_id=A261C142F)。
 >
 > 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)。 您可以於該處，在 App Service 中立即建立短期的入門 Web app - 不需信用卡，不需任何承諾。
 
 ## 建立 Web 應用程式並啟用 Git 發佈
 
-請遵循下列步驟，在 Azure App Service 中建立 Web 應用程式，並啟用 Git 發佈。
+請遵循下列步驟，在 Azure App Service 中建立 Web 應用程式，並啟用 Git 發佈。 
 
-[Git](http://git-scm.com/) 是可用來部署您的 Azure 網站的分散式的版本控制系統。 您將會在本機 Git 儲存機制中儲存您為 Web 應用程式撰寫的程式碼，並藉由發送至遠端儲存機制，將您的程式碼部署至 Azure。 此部署方法是 App Service Web Apps 的功能。
+[Git](http://git-scm.com/) 是可用來部署您的 Azure 網站的分散式的版本控制系統。 您將會在本機 Git 儲存機制中儲存您為 Web 應用程式撰寫的程式碼，並藉由發送至遠端儲存機制，將您的程式碼部署至 Azure。 此部署方法是 App Service Web Apps 的功能。  
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 按一下 Azure 入口網站左上方的 **+新增**圖示。
+2. 按一下 [ **+ 新增** 圖示上面方的 [Azure 入口網站。
 
-3. 按一下 [Web + 行動]****，然後按一下 [Web 應用程式]****。
+3. 按一下 [ **Web + 行動**, ，然後按一下 [ **Web 應用程式**。
 
     ![][portal-quick-create]
 
-4. 在 [Web 應用程式]**** 方塊中，輸入 Web 應用程式的名稱。
+4. 輸入中的 web 應用程式的名稱 **Web 應用程式** 方塊。
 
     此名稱在 azurewebsites.net 網域中必須是唯一的，因為 Web 應用程式的 URL 將是 {name}.azurewebsites.net。 如果您輸入的名稱不是唯一的，紅色驚嘆號會出現在文字方塊中。
 
-5. 選取 [訂用帳戶]****。
+5. 選取 **訂閱**。
 
-6. 選取 [資源群組]**** 或建立新的資源群組。
+6. 選取 **資源群組** 或建立新的帳戶。
 
     如需資源群組的詳細資訊，請參閱 [使用 Azure 入口網站來管理您的 Azure 資源](../resource-group-portal.md)。
 
-7. 選取 [App Service 方案/位置]****，或建立新的 App Service 方案/位置。
+7. 選取 **App Service 方案/位置** 或建立新的帳戶。
 
     如需 App Service 方案的詳細資訊，請參閱 [Azure App Service 方案概觀](../azure-web-sites-web-hosting-plans-in-depth-overview.md)
 
-8. 按一下 [建立]****。
-
+8. 按一下 [ **建立**。
+   
     ![][portal-quick-create2]
 
     Azure 很快 (通常不到一分鐘) 就會完成建立新的 Web 應用程式。
 
-9. 按一下 [Web 應用程式] > [{您的新 Web 應用程式}]****。
+9. 按一下 [ **Web 應用程式 > {新 web 應用程式}**。
 
     ![](./media/web-sites-nodejs-develop-deploy-mac/gotowebapp.png)
 
-10. 在 [Web 應用程式]**** 刀鋒視窗中，按一下 [部署]**** 組件。
+10. 在 **Web 應用程式** 刀鋒視窗中，按一下 [ **部署** 組件。
 
     ![][deployment-part]
 
-11. 在 [持續部署]**** 刀鋒視窗中，按一下 [選擇來源]****
+11. 在 **連續部署** 刀鋒視窗中，按一下 [ **選擇來源**
 
-12. 按一下 [本機 Git 儲存機制]****，然後按一下 [確定]****。
+12. 按一下 [ **本機 Git 儲存機制**, ，然後按一下 [ **確定**。
 
     ![][setup-git-publishing]
 
 13. 如果您還沒有設定部署認證，請設定之。
 
-    a. 在 [Web 應用程式] 刀鋒視窗中，按一下 [設定] > [部署認證]****。
+    a. 在 Web 應用程式刀鋒視窗中，按一下 [ **設定 > 部署認證**。
 
     ![][deployment-credentials]
-
-    b. 建立使用者名稱和密碼。
-
+ 
+    b. 建立使用者名稱和密碼。 
+    
     ![](./media/web-sites-nodejs-develop-deploy-mac/setdeploycreds.png)
 
-14. 在 [Web 應用程式] 刀鋒視窗中，按一下 [設定]****，然後按一下 [屬性]****。
-
-    若要發佈，您將推送至遠端 Git 儲存機制。 儲存機制的 URL 列示在 **GIT URL** 下方。 您稍後將在教學課程中使用此 URL。
+14. 在 Web 應用程式刀鋒視窗中，按一下 [ **設定**, ，然後按一下 [ **屬性**。
+ 
+    若要發佈，您將推送至遠端 Git 儲存機制。 儲存機制 URL 會列示在 **GIT URL**。 您稍後將在教學課程中使用此 URL。
 
     ![][git-url]
 
 ## 在本機建置與測試您的應用程式
 
-在本節中，您將建立 **server.js** 檔案，其中包含略為修改的「Hello World」範例版本 (來自 [nodejs.org])。 程式碼會新增 process.env.PORT，做為在 Azure Web 應用程式中執行時要接聽的連接埠。
+在本節中，您將建立 **server.js** 檔案，其中包含來自 [nodejs.org] 的 「 Hello World 」 範例稍微修改後的版本。 程式碼會新增 process.env.PORT，做為在 Azure Web 應用程式中執行時要接聽的連接埠。
 
-1. 建立名為 *helloworld* 的目錄。
+1. 建立名為 *helloworld*。
 
-2. 使用文字編輯器，在「helloworld」**目錄中建立名為 **server.js** 的新檔案。
+2. 使用文字編輯器來建立新的檔名為 **server.js** 中 *helloworld* 目錄。
 
-2. 將下列程式碼複製至 **server.js** 檔案，然後儲存該檔案：
+2. 下列程式碼複製到 **server.js** 檔案，並儲存檔案:
 
         var http = require('http')
         var port = process.env.PORT || 1337;
@@ -130,7 +129,7 @@
 
         node server.js
 
-4. 開啟網頁瀏覽器，導覽至 http://localhost:1337。
+4. 開啟網頁瀏覽器，導覽至 http://localhost:1337。 
 
     顯示「Hello World」的網頁隨即出現，如下列螢幕擷取畫面所示：
 
@@ -142,9 +141,10 @@
 
     您的平台的安裝指示，請參閱 [Git 下載頁面](http://git-scm.com/download)。
 
-1. 從命令列將目錄位置變更至 **helloworld** 目錄，然後輸入以下命令來初始化本機 Git 儲存機制。
+1. 從命令列中，將目錄變更至 **helloworld** 目錄，並輸入下列命令以初始化本機 Git 儲存機制。
 
         git init
+
 
 2. 使用下列命令將檔案新增至儲存機制：
 
@@ -175,7 +175,7 @@
         To https://user@testsite.scm.azurewebsites.net/testsite.git
          * [new branch]      master -> master
 
-5. 若要檢視您的應用程式，請按一下 Azure 入口網站中的 [Web 應用程式]**** 組件上的 [瀏覽]**** 按鈕。
+5. 若要檢視您的應用程式，請按一下 [ **瀏覽** 按鈕 **Web 應用程式** Azure 入口網站的一部分。
 
     ![瀏覽按鈕](./media/web-sites-nodejs-develop-deploy-mac/browsebutton.png)
 
@@ -183,11 +183,11 @@
 
 ## 將變更發行至您的應用程式
 
-1. 在文字編輯器中開啟 **server.js** 檔案，然後將「Hello World\n」變更為「Hello Azure\n」。
+1. 開啟 **server.js** 檔案在文字編輯器中，並將 ' Hello World\n' 變更為 「 Hello Azure\n 」。 
 
 2. 儲存檔案。
 
-2. 從命令列將目錄位置變更至 **helloworld** 目錄，然後執行下列命令：
+2. 從命令列中，將目錄變更至 **helloworld** 目錄，然後執行下列命令:
 
         git add .
         git commit -m "changing to hello azure"
@@ -201,7 +201,7 @@
 
 ## 回復部署
 
-從 [Web 應用程式]**** 刀鋒視窗中，您可以按一下 [設定] > [持續部署]****，以查看 [部署]**** 刀鋒視窗中的部署歷程記錄。 如果您需要回復到先前的部署，您可以選取它，然後按一下 [部署詳細資料]**** 刀鋒視窗中的 [重新部署]****。
+從 **Web 應用程式** ] 刀鋒視窗中，您可以按一下 **設定 > 連續部署** 查看中的部署歷程記錄 **部署** 刀鋒視窗。 如果您需要回復成先前的部署，您可以選取它，然後按一下 **重新部署** 中 **部署詳細資料** 刀鋒視窗。
 
 ## 後續步驟
 
@@ -215,14 +215,13 @@ Node.js 提供您豐富的模組生態系統，可供您的應用程式使用。
 
 如需如何開發 Azure 上的 Node.js 應用程式的詳細資訊，請參閱 [Node.js 開發人員中心](/develop/nodejs/)。
 
-
-[helloworld-completed]: ./media/web-sites-nodejs-develop-deploy-mac/helloazure.png 
-[helloworld-localhost]: ./media/web-sites-nodejs-develop-deploy-mac/helloworldlocal.png 
-[portal-quick-create]: ./media/web-sites-nodejs-develop-deploy-mac/create-quick-website.png 
-[portal-quick-create2]: ./media/web-sites-nodejs-develop-deploy-mac/create-quick-website2.png 
-[setup-git-publishing]: ./media/web-sites-nodejs-develop-deploy-mac/setup_git_publishing.png 
-[go-to-dashboard]: ./media/web-sites-nodejs-develop-deploy-mac/go_to_dashboard.png 
-[deployment-part]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-part.png 
-[deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png 
-[git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png 
+[helloworld-completed]: ./media/web-sites-nodejs-develop-deploy-mac/helloazure.png
+[helloworld-localhost]: ./media/web-sites-nodejs-develop-deploy-mac/helloworldlocal.png
+[portal-quick-create]: ./media/web-sites-nodejs-develop-deploy-mac/create-quick-website.png
+[portal-quick-create2]: ./media/web-sites-nodejs-develop-deploy-mac/create-quick-website2.png
+[setup-git-publishing]: ./media/web-sites-nodejs-develop-deploy-mac/setup_git_publishing.png
+[go-to-dashboard]: ./media/web-sites-nodejs-develop-deploy-mac/go_to_dashboard.png
+[deployment-part]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-part.png
+[deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
+[git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 

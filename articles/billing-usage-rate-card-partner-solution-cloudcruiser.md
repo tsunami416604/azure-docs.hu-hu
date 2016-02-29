@@ -1,6 +1,6 @@
 <properties
    pageTitle="Cloud Cruiser 和 Microsoft Azure 計費 API 整合 |Microsoft Azure"
-   description="提供 Microsoft Azure 計費合作夥伴 Cloud Cruiser 將 Azure 計費 API 整合至其產品的經驗所得來的獨特觀點。這特別適用於有興趣使用/嘗試將 Cloud Cruiser 用於 Microsoft Azure Pack 的客戶。"
+   description="提供 Microsoft Azure 計費合作夥伴 Cloud Cruiser 將 Azure 計費 API 整合至其產品的經驗所得來的獨特觀點。  這特別適用於有興趣使用/嘗試將 Cloud Cruiser 用於 Microsoft Azure Pack 的客戶。"
    services="billing"
    documentationCenter=""
    authors="BryanLa"
@@ -16,13 +16,11 @@
    ms.date="11/02/2015"
    ms.author="mobandyo;sirishap;bryanla"/>
 
-
 # Cloud Cruiser 和 Microsoft Azure 計費 API 整合
 
 本文描述從新的 Microsoft Azure 計費 API 所收集來的資訊如何用來在 Cloud Cruiser 中進行工作流程成本模擬與分析。
 
 ## Azure RateCard API
-
 RateCard API 提供來自 Azure 的費率資訊。 以適當的認證進行驗證之後，您可以查詢 API 以收集 Azure 上可用服務的中繼資料，以及與優惠識別碼相關聯的費率。
 
 以下是來自 API 的範例回應，顯示 A0 (Windows) 執行個體的價格：
@@ -42,20 +40,19 @@ RateCard API 提供來自 Azure 的費率資訊。 以適當的認證進行驗�
     },
 
 ### Azure RateCard API 的 Cloud Cruiser 介面
-
 Cloud Cruiser 可以用不同的方式運用 RateCard API 資訊。 在這篇文章中，我們將說明如何使用它進行 IaaS 工作負載成本模擬及分析。
 
 為了示範這個使用案例，請想像執行於 Microsoft Azure Pack (WAP) 之數個執行個體的工作負載。 目標是要在 Azure 上模擬相同的工作負載，並評估這類移轉的成本。 若要建立這個模擬，有兩個主要的工作要執行：
 
-1. **匯入和處理從 RateCard API 收集的服務資訊** - 這項工作也會在活頁簿上執行，其中從 RateCard API 擷取的內容會轉換並發佈為新的費率方案。 新的費率方案將在模擬中用來評估 Azure 價格。
+1. **匯入和處理從 RateCard API 收集的服務資訊** -在活頁簿，其中從 RateCard API 擷取轉換和發行到新的費率方案也執行這項工作。 新的費率方案將在模擬中用來評估 Azure 價格。
 
-2. **標準化 WAP 服務和 IaaS 的 Azure 服務** -根據預設，WAP 服務會根據個別資源 (CPU、 記憶體大小、 磁碟大小等) 而 Azure 服務根據執行個體大小 (A0、 A1、 A2 等等)。 第一個工作可以由 Cloud Cruiser 的 ETL 引擎執行，稱為活頁簿，其中資源整合為執行個體大小，類似 Azure 執行個體服務。
+2. **標準化 WAP 服務和 IaaS 的 Azure 服務** -根據預設，WAP 服務以個別資源 (CPU、 記憶體大小、 磁碟大小等)，而 Azure 服務會根據執行個體大小 (A0、 A1、 A2 等等)。 第一個工作可以由 Cloud Cruiser 的 ETL 引擎執行，稱為活頁簿，其中資源整合為執行個體大小，類似 Azure 執行個體服務。
 
 ### 從 RateCard API 匯入資料
 
-Cloud Cruiser 活頁簿提供自動化的方式收集和處理來自 RateCard API 的資訊。 ETL (擷取-轉換-載入) 活頁簿可讓您設定資料的集合、轉換和發佈至 Cloud Cruiser 資料庫。
+Cloud Cruiser 活頁簿提供自動化的方式收集和處理來自 RateCard API 的資訊。  ETL (擷取-轉換-載入) 活頁簿可讓您設定資料的集合、轉換和發佈至 Cloud Cruiser 資料庫。
 
-每個活頁簿可以有一個或多個集合。 這可讓您將來自不同資源的資訊相互關聯，以補充或強化使用狀況資料。 在下方的兩個螢幕擷取畫面中，顯示在現有活頁簿中建立新的*集合*，並將資訊從 RateCard API 匯入到*集合*：
+每個活頁簿可以有一個或多個集合。 這可讓您將來自不同資源的資訊相互關聯，以補充或強化使用狀況資料。 在兩個螢幕擷取畫面，顯示 [建立新 *集合* 中現有的活頁簿，並匯入資訊到 *集合* 來自 RateCard API:
 
 ![圖 1 - 建立新的集合][1]
 
@@ -81,11 +78,11 @@ Cloud Cruiser 活頁簿提供自動化的方式收集和處理來自 RateCard AP
 
 ### 確認 Azure 服務和費率
 
-發佈服務及費率之後，您可以在 Cloud Cruiser 的 [*服務*] 索引標籤中確認匯入服務的清單：
+發佈服務及費率之後，您可以確認匯入的服務，在 Cloud Cruiser 清單 *服務* ] 索引標籤:
 
 ![圖 5- 驗證新的服務][5]
 
-在 [*費率方案*] 索引標籤上，您可以利用匯入自 RateCard API 的費率檢查名為 "AzureSimulation" 的費率方案。
+在 *費率方案* 索引標籤上，您可以檢查名為"AzureSimulation"的費率匯入自 RateCard API 的費率方案。
 
 ![圖 6- 驗證新的費率方案及相關聯的費率][6]
 
@@ -117,6 +114,7 @@ Cloud Cruiser 活頁簿提供自動化的方式收集和處理來自 RateCard AP
 
 ## Azure 使用情況 API
 
+
 ### 簡介
 
 Microsoft 最近
@@ -128,8 +126,7 @@ Cruiser 客戶可以利用更豐富的資料集
 Cloud Cruiser 可以數種方式運用和 Usage API 的整合。 資料粒度
 (每小時的使用量資訊) 及透過可用的資源中繼資料資訊
 API 提供必要的資料集支援彈性回報或
-計費模型。
-
+計費模型。 
 
 在本教學課程中，我們將
 目前的一個範例中的 Cloud Cruiser 如何受益使用量 API
@@ -160,11 +157,9 @@ Cloud Cruiser 自動化回報/計費程序，而且會將
 將繫結至適當的消費者 (部門使用的標記資訊
 部門、 專案等)。 這項自動化提供非常重大的改進，並可以
 確保一致且可稽核的充電程序。
-
-
+ 
 
 ### 使用 Microsoft Azure 上的標記建立資源群組
-
 本教學課程的第一個步驟是在 Azure 入口網站上建立新的資源群組，然後建立新的標記以產生和資源之間的關聯。 此範例中，我們將建立
 下列標記: 部門，環境中，擁有者、 專案。
 
@@ -193,37 +188,38 @@ Cloud Cruiser 自動化回報/計費程序，而且會將
         "meterId": "e60caf26-9ba0-413d-a422-6141f58081d6",
         "infoFields": {},
         "quantity": 8
-    
+
       },
     },
+
 
 ### 將資料從 Usage API 匯入到 Cloud Cruiser
 
 Cloud Cruiser 活頁簿提供自動化的方式收集和處理來自 Usage API 的資訊。 ETL (擷取-轉換-載入) 活頁簿可讓您設定
 集合、 轉換和資料發佈至 Cloud Cruiser 資料庫。
 
-每個活頁簿可以有一個或多個集合。 這可讓您將來自不同資源的資訊相互關聯，以補充或強化使用狀況資料。 在此範例中，我們將在 Azure 範本活頁簿中建立新的工作表 (_UsageAPI)_ 並設定新的_集合_以從 Usage API 匯入資訊。
+每個活頁簿可以有一個或多個集合。 這可讓您將來自不同資源的資訊相互關聯，以補充或強化使用狀況資料。 針對此範例中，我們將 Azure 範本活頁簿中建立新的工作表 (_UsageAPI)_ ，並設定新 _集合_ 使用量 API 從匯入資訊。
 
 ![圖 3 - 匯入至 UsageAPI 工作表的 Usage API 資料][12]
 
-請注意，此活頁簿已有從 Azure 匯入服務的其他工作表 (_ImportServices_)，以及從 Billing API 處理耗用量資訊的工作表 (_PublishData_)。
+請注意此活頁簿已有其他工作表，從 Azure 匯入服務 (_ImportServices_)，並處理從計費 API 耗用量資訊 (_PublishData_)。
 
-我們要在 _UsageAPI_ 工作表上擷取及處理來自 Usage API 的資訊，然後在 _PublishData_ 工作表上建立此資訊與來自 Billing API 的耗用量資料之間的相互關聯。
+我們要擷取及處理使用量 API 中的資訊上 _UsageAPI_ 表，然後建立相互關聯性的資訊與從計費 API 的耗用量資料 _PublishData_ 工作表。
 
 ### 處理來自 Usage API 的標記資訊
 
-將資料匯入活頁簿之後，我們將在 _UsageAPI_ 工作表中建立轉換步驟以處理來自 API 的資訊。 第一個步驟是使用 「 JSON 分割 」 的處理器標記擷取的單一欄位 (如在匯入從 API)，並針對其中每一個建立新的欄位 (部門、 專案中，擁有者和
+資料匯入活頁簿之後，我們將建立中的轉換步驟 _UsageAPI_ 工作表，以便處理從 API 的資訊。 第一個步驟是使用 「 JSON 分割 」 的處理器標記擷取的單一欄位 (如在匯入從 API)，並針對其中每一個建立新的欄位 (部門、 專案中，擁有者和
 環境)。
 
 ![圖 4 - 建立新的標記資訊欄位][13]
 
-請注意，「網路」服務遺漏了標記資訊 (黃色方塊)，但我們可以藉由查看 _ResourceGroupName_ 欄位，分辨這個服務屬於相同的資源群組。 由於我們已經擁有相同資源群組中其他資源的標記，所以稍後我們可以在程序中使用這項資訊，將遺漏的標記套用至此資源。
+請注意，「 網路功能 」 服務遺失標記資訊 (黃色方塊)，但我們可以告訴這項服務是相同的資源群組的一部分，藉由查看 _ResourceGroupName_ 欄位。 由於我們已經擁有相同資源群組中其他資源的標記，所以稍後我們可以在程序中使用這項資訊，將遺漏的標記套用至此資源。
 
-下一步是建立查閱資料表，將來自標記的資訊關聯至 _ResourceGroupName_。 下一個步驟將使用此查閱資料表，以利用標記資訊充實消耗量資料。
+下一個步驟是建立查閱資料表關聯至標記中的資訊 _ResourceGroupName_。 下一個步驟將使用此查閱資料表，以利用標記資訊充實消耗量資料。
 
 ### 將標記資訊加入至消耗量資料
 
-現在我們可以跳至處理來自 Billing API 之耗用量資訊的 _PublishData_ 工作表，並新增從標記擷取的欄位。 藉由查看上一個步驟中，建立查閱資料表執行此程序使用 _ResourceGroupName_
+現在我們可以跳到 _PublishData_ 工作表，其處理耗用量資訊從計費的 API，並加入從標記擷取的欄位。 藉由查看上一個步驟中，建立查閱資料表執行此程序使用 _資源群組名稱_
 做為查閱索引鍵。
 
 ![圖 5 - 利用來自查閱的資訊填入帳戶結構中][14]
@@ -241,17 +237,16 @@ Cloud Cruiser 活頁簿提供自動化的方式收集和處理來自 Usage API �
 
 ### 後續步驟
 
-+ 如需建立 Cloud Cruiser 活頁簿和報告的詳細指示，請參閱 Cloud cruiser 的線上 [文件](http://docs.cloudcruiser.com/) (所需的有效登入)。 如需有關 Cloud Cruiser 的詳細資訊，請連絡 [info@cloudcruiser.com](mailto:info@cloudcruiser.com)。
++ 如需建立 Cloud Cruiser 活頁簿和報告的詳細指示，請參閱 Cloud cruiser 的線上 [文件](http://docs.cloudcruiser.com/) (所需的有效登入)。  如需有關 Cloud Cruiser 的詳細資訊，請連絡 [info@cloudcruiser.com](mailto:info@cloudcruiser.com)。
 + 請參閱 [深入了解您的 Microsoft Azure 資源耗用量](billing-usage-rate-card-overview.md) Azure 資源使用情況和 RateCard Api 的概觀。
 + 簽出 [Azure 計費 REST API 參考](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) 如需有關這兩個 Api 的詳細資訊，這是 Azure 資源管理員所提供的 Api 集的一部分。
 + 如果您想要探究範例程式碼，請參閱我們的 Microsoft Azure 計費 API 程式碼範例在 [Azure 程式碼範例](https://azure.microsoft.com/documentation/samples/?term=billing)。
 
 ### 詳細資訊
-
 + 請參閱 [Azure 資源管理員概觀](resource-group-overview.md) 文件，以深入了解 Azure 資源管理員。
 
-
-
+<!--Image references-->
+ 
 [1]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Create-New-Workbook-Collection.png "Figure 1 - Creating a new collection"
 [2]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Import-Data-From-RateCard.png "Figure 2 - Import data from the new collection"
 [3]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transformation-Steps-Process-RateCard-Data.png "Figure 3 - Transformation steps to process collected data from RateCard API"

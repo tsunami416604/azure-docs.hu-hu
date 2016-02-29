@@ -1,6 +1,6 @@
 <properties 
     pageTitle="逐步解說：使用 Application Insights 監視 Microsoft Dynamics CRM" 
-    description="使用 Application Insights 取得 Microsoft Dynamics CRM Online 遙測。設定、取得資料、視覺化與匯出的逐步解說。" 
+    description="使用 Application Insights 取得 Microsoft Dynamics CRM Online 遙測。 設定、取得資料、視覺化與匯出的逐步解說。" 
     services="application-insights" 
     documentationCenter=""
     authors="mazharmicrosoft" 
@@ -14,23 +14,23 @@
     ms.topic="article" 
     ms.date="11/17/2015" 
     ms.author="awills"/>
-
-
+ 
 # 逐步解說：使用 Application Insights 啟用Microsoft Dynamics CRM Online 遙測
 
 本文將說明如何將遙測資料從 [Microsoft Dynamics CRM Online](https://www.dynamics.com/) 使用 [Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/)。 我們會逐步解說將 Application Insights 指令碼加入至您的應用程式、擷取資料和資料視覺化的完整程序。
+
 >[AZURE.NOTE] [瀏覽範例方案](https://dynamicsandappinsights.codeplex.com/)。
 
-## 將 Application Insights 加入至新的或現有的 CRM Online 執行個體
+## 將 Application Insights 加入至新的或現有的 CRM Online 執行個體 
 
 若要監視您的應用程式，請將 Application Insights SDK 加入應用程式。 SDK 會將傳送的遙測， [Application Insights 入口網站](https://portal.azure.com), ，您可以使用我們功能強大的分析與診斷工具，或將資料匯出至儲存體。
 
 ### 在 Azure 中建立 Application Insights 資源
 
-1. 取得 [Microsoft Azure 帳戶](http://azure.com/pricing)。
+1. 取得 [Microsoft Azure 帳戶](http://azure.com/pricing)。 
 2. 登入 [Azure 入口網站](https://portal.azure.com) 並加入新的 Application Insights 資源。 這是處理與顯示您資料的位置。
 
-    ![按一下 ](./media/app-insights-sample-mscrm/01.png)
+    ![按一下 [+]、[開發人員服務]、[Application Insights]。](./media/app-insights-sample-mscrm/01.png)
 
     選擇 ASP.NET 做為應用程式類型。
 
@@ -38,7 +38,7 @@
 
     ![](./media/app-insights-sample-mscrm/03.png)
 
-當您於另一個瀏覽器視窗中執行下一個步驟時，**保持程式碼頁面開啟**。 您很快就會需要程式碼。
+**讓程式碼頁面保持開啟** 時執行另一個瀏覽器視窗的下一個步驟。 您很快就會需要程式碼。 
 
 ### 在 Microsoft Dynamics CRM 中建立 JavaScript Web 資源
 
@@ -46,8 +46,9 @@
 2. 開啟 [Microsoft Dynamics CRM 設定]、[自訂]、[自訂系統]
 
     ![](./media/app-insights-sample-mscrm/04.png)
-
+    
     ![](./media/app-insights-sample-mscrm/05.png)
+
 
     ![](./media/app-insights-sample-mscrm/06.png)
 
@@ -55,10 +56,10 @@
 
     ![](./media/app-insights-sample-mscrm/07.png)
 
-    命名資源、選取**指令碼 (JScript)** 並開啟文字編輯器。
+    指定它的名稱，選取 **指令碼 (JScript)** 和文字編輯器開啟。
 
     ![](./media/app-insights-sample-mscrm/08.png)
-
+    
 4. 從 Application Insights 複製程式碼。 在複製時請務必略過 script 標記。 請參閱以下螢幕擷取畫面：
 
     ![](./media/app-insights-sample-mscrm/09.png)
@@ -154,13 +155,9 @@
 
 ## 詳細資訊
 
-* [什麼是 Application Insights?](app-insights-overview.md)
-* [適用於網頁的 application Insights](app-insights-javascript.md)
+* [什麼是 Application Insights？](app-insights-overview.md)
+* [適用於網頁的 Application Insights](app-insights-javascript.md)
 * [更多範例和逐步解說](app-insights-code-samples.md)
 
-
-
-
-
-
+ 
 

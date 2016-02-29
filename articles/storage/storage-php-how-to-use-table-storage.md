@@ -17,14 +17,13 @@
     ms.author="tomfitz"/>
 
 
-
 # 如何使用 PHP 的資料表儲存體
 
 [AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
 ## 概觀
 
-本指南說明如何使用 Azure 資料表服務執行一般案例。 在 PHP 中並使用這些範例 [Azure SDK for PHP ][download]。 所涵蓋的案例包括「建立和刪除資料表」以及「在資料表中插入、刪除及查詢實體」****。 如需有關 Azure 資料表服務的詳細資訊，請參閱 [後續步驟](#NextSteps) 一節。
+本指南說明如何使用 Azure 資料表服務執行一般案例。 在 PHP 中並使用這些範例 [Azure SDK for PHP][download]。 涵蓋的案例包括 **建立和刪除資料表，以及插入、 刪除和查詢資料表中的實體**。 如需有關 Azure 資料表服務的詳細資訊，請參閱 [後續步驟](#NextSteps) 一節。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -44,16 +43,18 @@
 
 若要使用 Azure 資料表服務 API，您必須：
 
-1. 參考自動換片器檔案使用 [require_once ][require_once] 陳述式，並
+1. 參考自動換片器檔案使用 [require_once][require_once] 陳述式，並
 2. 參考任何您可能使用的類別。
 
-下列範例顯示如何納入自動載入器檔案及參考 **ServicesBuilder** 類別。
-> [AZURE.NOTE] 此範例 (和本文中的其他範例) 假設您已透過 Composer 安裝 PHP Client Libraries for Azure。 如果您在手動或以 PEAR 封裝安裝程式庫，您需要參考 <code>WindowsAzure.php</code> 自動換片器檔案。
+下列範例顯示如何納入自動換片器檔案及參考 **ServicesBuilder** 類別。
+
+> [AZURE.NOTE] 此範例 (和本文中的其他範例) 假設您已安裝 PHP Client Libraries for Azure 透過編輯器。 如果您手動或透過 PEAR 封裝安裝程式庫，則必須參考 <code>WindowsAzure.php</code> 自動載入器檔案。
 
     require_once 'vendor\autoload.php';
     use WindowsAzure\Common\ServicesBuilder;
 
-在下面 `require_once` 一定會顯示陳述式，但只讓範例執行所需的類別所參考。
+
+在下列各範例中，一律會顯示 `require_once` 陳述式，但只會參考要執行之範例所需的類別。
 
 ## 設定 Azure 儲存體連接
 
@@ -67,33 +68,35 @@
 
     UseDevelopmentStorage=true
 
+
 若要建立任何 Azure 服務用戶端，您必須使用 **ServicesBuilder** 類別。 您可以：
 
 * 直接將連接字串傳遞給它，或
-* 使用 **CloudConfigurationManager (CCM)** 到多種外部來源檢查連接字串：
+* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串:
     * 預設已支援一種外部來源，即環境變數
-    * 您可以擴充 **ConnectionStringSource** 類別以加入新來源
+    * 您可以擴充，以加入新來源 **ConnectionStringSource** 類別
 
 在本文的各範例中，將會直接傳遞連接字串。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
-    
+
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+
 
 ## 建立資料表
 
-**TableRestProxy** 物件可讓您以 **createTable** 方法建立資料表。 建立資料表時，您可以設定資料表服務逾時值。 (如需有關資料表服務逾時值的詳細資訊，請參閱 [設定表格服務作業 ][table-service-timeouts]。)
+A **TableRestProxy** 物件可讓您建立的資料表 **createTable** 方法。 建立資料表時，您可以設定資料表服務逾時值。 (如需有關資料表服務逾時值的詳細資訊，請參閱 [設定表格服務作業的逾時值][table-service-timeouts]。)
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     try {
         // Create table.
         $tableRestProxy->createTable("mytable");
@@ -106,22 +109,22 @@
         // http://msdn.microsoft.com/library/azure/dd179438.aspx
     }
 
-資料表名稱限制的相關資訊，請參閱 [了解表格服務資料模型 ][table-data-model]。
+資料表名稱限制的相關資訊，請參閱 [了解表格服務資料模型][table-data-model]。
 
 ## 將實體加入至資料表
 
-若要將實體新增至資料表，請建立一個新的 **Entity** 物件，然後將它傳遞給 **TableRestProxy->insertEntity**。 請注意，當您建立實體時，您必須指定 `PartitionKey` 和 `RowKey`。 這些是實體的唯一識別碼，且其值的查詢速度比其他屬性快上許多。 系統會使用 `PartitionKey` 自動資料表的實體分散在許多儲存體節點。 具有相同 `PartitionKey` 的實體會儲存在相同節點上。 (對儲存在同一節點上的多個實體執行作業，會比對儲存在不同節點上的實體執行作業有更佳的執行效果。) `RowKey` 是實體在資料分割內的唯一識別碼。
+若要將實體加入至資料表，建立新 **實體** 物件，並將它傳遞給 **tablerestproxy->insertentity**。 請注意，建立實體時，您必須指定 `PartitionKey` 和 `RowKey`。 這些是實體的唯一識別碼，且其值的查詢速度比其他屬性快上許多。 系統使用 `PartitionKey` 自動將資料表的實體散發在許多儲存體節點上。 具有相同 `PartitionKey` 的實體會儲存在相同節點上。 (對儲存在同一節點上的多個實體執行作業，會比對儲存在不同節點上的實體執行作業有更佳的執行效果。)`RowKey` 是實體在分割內的唯一識別碼。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
     use WindowsAzure\Table\Models\Entity;
     use WindowsAzure\Table\Models\EdmType;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     $entity = new Entity();
     $entity->setPartitionKey("tasksSeattle");
     $entity->setRowKey("1");
@@ -130,7 +133,7 @@
                          EdmType::DATETIME,
                          new DateTime("2012-11-05T08:15:00-08:00"));
     $entity->addProperty("Location", EdmType::STRING, "Home");
-    
+
     try{
         $tableRestProxy->insertEntity("mytable", $entity);
     }
@@ -142,34 +145,34 @@
         $error_message = $e->getMessage();
     }
 
-資料表屬性和類型的相關資訊，請參閱 [了解表格服務資料模型 ][table-data-model]。
+資料表屬性和類型的相關資訊，請參閱 [了解表格服務資料模型][table-data-model]。
 
-**TableRestProxy** 類別提供兩種插入實體的替代方法：**insertOrMergeEntity** 和 **insertOrReplaceEntity**。 若要使用這些方法，請建立一個新的 **Entity**，然後將它當做參數傳遞給其中一個方法。 只要實體不存在，每個方法都會插入實體。 如果實體已經存在，**insertOrMergeEntity** 會在屬性已經存在時更新屬性值，並在屬性不存在時新增屬性，而 **insertOrReplaceEntity** 則是會完全取代現有的實體。 下列範例示範如何使用 **insertOrMergeEntity**。 如果 `PartitionKey` 為 "tasksSeattle" 且 `RowKey` 為 "1" 的實體還不存在，便會將之插入。 不過，如果先前已經插入它 (如上述範例所示)， `DueDate` 屬性將會更新，而 `狀態` 新增屬性。 方法也會一併更新 `Description` 和 `Location` 屬性，但是所使用的值實際上會讓它們保持不變。 如果如範例中所示並未新增後面兩個屬性，但這兩個屬性存在於目標實體上，它們現有的值就會保持不變。
+ **TableRestProxy** 類別提供兩種插入實體的替代方法: **insertOrMergeEntity** 和 **insertOrReplaceEntity**。 若要使用這些方法，建立新 **實體** 並將它做為參數傳遞給其中一個方法。 只要實體不存在，每個方法都會插入實體。 如果實體已經存在， **insertOrMergeEntity** 更新屬性值，如果屬性存在而且會加入新的屬性不存在，而 **insertOrReplaceEntity** 完全取代現有的實體。 下列範例示範如何使用 **insertOrMergeEntity**。 如果 `PartitionKey` 為「tasksSeattle」且 `RowKey` 為「1」的實體尚未存在，便會將之插入。 不過，如果先前已經插入 insertOrMergeEntity (如上述範例所示)，方法便會更新 `DueDate` 屬性並新增 `Status` 屬性。 `Description` 和 `Location` 屬性也會更新，但是所使用的值實際上會讓它們保持不變。 如果如範例中所示並未新增後面兩個屬性，但這兩個屬性存在於目標實體上，它們現有的值就會保持不變。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
     use WindowsAzure\Table\Models\Entity;
     use WindowsAzure\Table\Models\EdmType;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     //Create new entity.
     $entity = new Entity();
-    
+
     // PartitionKey and RowKey are required.
     $entity->setPartitionKey("tasksSeattle");
     $entity->setRowKey("1");
-    
+
     // If entity exists, existing properties are updated with new values and
     // new properties are added. Missing properties are unchanged.
     $entity->addProperty("Description", null, "Take out the trash.");
     $entity->addProperty("DueDate", EdmType::DATETIME, new DateTime()); // Modified the DueDate field.
     $entity->addProperty("Location", EdmType::STRING, "Home");
     $entity->addProperty("Status", EdmType::STRING, "Complete"); // Added Status field.
-    
+
     try {
         // Calling insertOrReplaceEntity, instead of insertOrMergeEntity as shown,
         // would simply replace the entity with PartitionKey "tasksSeattle" and RowKey "1".
@@ -184,18 +187,19 @@
         echo $code.": ".$error_message."<br />";
     }
 
+
 ## 擷取單一實體
 
-**TableRestProxy->getEntity** 方法可讓您透過查詢單一個體的 `PartitionKey` 和 `RowKey` 來擷取該單一個體。 在以下範例中，會將資料分割索引鍵 `tasksSeattle` 和資料列索引鍵 `1` 傳遞給 **getEntity** 方法。
+ **Tablerestproxy->getentity** 方法可讓您透過查詢中擷取單一實體及其 `PartitionKey` 和 `RowKey`。 在以下範例中，資料分割索引鍵 `tasksSeattle` 和資料列索引鍵 `1` 傳遞至 **getEntity** 方法。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     try {
         $result = $tableRestProxy->getEntity("mytable", "tasksSeattle", 1);
     }
@@ -207,25 +211,25 @@
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
-    
+
     $entity = $result->getEntity();
-    
+
     echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## 擷取資料分割中的所有實體
 
-使用篩選條件建構實體查詢 (如需詳細資訊，請參閱 [查詢資料表和實體 ][filters])。 若要擷取資料分割中的所有實體，請使用 "PartitionKey eq *partition_name*" 篩選條件。 下列範例示範如何將篩選條件傳遞給 `queryEntities` 方法來擷取 **tasksSeattle** 資料分割中的所有實體。
+使用篩選條件建構實體查詢 (如需詳細資訊，請參閱 [查詢資料表和實體][filters])。 若要擷取資料分割中的所有實體，請使用 [篩選器"PartitionKey eq *partition_name*」。 下列範例示範如何擷取中的所有實體 `tasksSeattle` 藉由傳遞的篩選條件的資料分割 **queryEntities** 方法。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     $filter = "PartitionKey eq 'tasksSeattle'";
-    
+
     try {
         $result = $tableRestProxy->queryEntities("mytable", $filter);
     }
@@ -237,27 +241,27 @@
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
-    
+
     $entities = $result->getEntities();
-    
+
     foreach($entities as $entity){
         echo $entity->getPartitionKey().":".$entity->getRowKey()."<br />";
     }
 
 ## 擷取資料分割中實體的子集
 
-前面範例中所使用的相同模式可用來擷取資料分割中的任何實體子集。 您所擷取的實體子集取決於您所使用的篩選條件 (如需詳細資訊，請參閱 [查詢資料表和實體 ][filters])。下列範例示範如何使用篩選器來擷取具有特定的所有實體 `位置` 和 `DueDate` 小於指定的日期。
+前面範例中所使用的相同模式可用來擷取資料分割中的任何實體子集。 您所擷取的實體子集取決於您所使用的篩選條件 (如需詳細資訊，請參閱 [查詢資料表和實體][filters])。下列範例示範如何使用篩選器來擷取具有特定的所有實體 `Location` 和 `DueDate` 小於指定的日期。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     $filter = "Location eq 'Office' and DueDate lt '2012-11-5'";
-    
+
     try {
         $result = $tableRestProxy->queryEntities("mytable", $filter);
     }
@@ -269,29 +273,29 @@
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
-    
+
     $entities = $result->getEntities();
-    
+
     foreach($entities as $entity){
         echo $entity->getPartitionKey().":".$entity->getRowKey()."<br />";
     }
 
 ## 擷取實體屬性的子集
 
-查詢可以擷取實體屬性的子集。 這項稱為「投射」**的技術可減少頻寬並提高查詢效能 (尤其是對大型實體而言)。 若要指定要擷取的屬性，請將屬性的名稱傳遞給 **Query->addSelectField** 方法。 您可以呼叫此方法許多次以新增其他屬性。 執行 **TableRestProxy->queryEntities** 之後，傳回的實體將只具有選取的屬性。 (如果您想要傳回資料表實體的子集，請使用篩選條件，如上面的查詢所示。)
+查詢可以擷取實體屬性的子集。 這項技術稱為 *投影*, 可減少頻寬並提高查詢效能，尤其是對大型實體。 若要指定要擷取的屬性，將傳遞至屬性的名稱 **query->addselectfield** 方法。 您可以呼叫此方法許多次以新增其他屬性。 在執行後 **tablerestproxy->queryentities**, ，傳回的實體將只具有選取的屬性。 (如果您想要傳回資料表實體的子集，請使用篩選條件，如上面的查詢所示。)
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
     use WindowsAzure\Table\Models\QueryEntitiesOptions;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     $options = new QueryEntitiesOptions();
     $options->addSelectField("Description");
-    
+
     try {
         $result = $tableRestProxy->queryEntities("mytable", $options);
     }
@@ -303,12 +307,12 @@
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
-    
+
     // All entities in the table are returned, regardless of whether
     // they have the Description field.
     // To limit the results returned, use a filter.
     $entities = $result->getEntities();
-    
+
     foreach($entities as $entity){
         $description = $entity->getProperty("Description")->getValue();
         echo $description."<br />";
@@ -316,28 +320,28 @@
 
 ## 更新實體
 
-若要更新現有的實體，可以對實體使用 **Entity->setProperty** 和 **Entity->addProperty** 方法，然後呼叫 **TableRestProxy->updateEntity**。 下列範例會擷取一個實體、修改一個屬性、移除另一個屬性，以及新增一個屬性。 請注意，移除屬性的方式是將它的值設定成 **null**。
+要更新現有實體，請使用 **entity->setproperty** 和 **entity->addproperty** 方法對實體，然後呼叫 **tablerestproxy->updateentity**。 下列範例會擷取一個實體、修改一個屬性、移除另一個屬性，以及新增一個屬性。 請注意，您可以移除屬性，其值設定為 **null**。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
     use WindowsAzure\Table\Models\Entity;
     use WindowsAzure\Table\Models\EdmType;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     $result = $tableRestProxy->getEntity("mytable", "tasksSeattle", 1);
-    
+
     $entity = $result->getEntity();
-    
+
     $entity->setPropertyValue("DueDate", new DateTime()); //Modified DueDate.
-    
+
     $entity->setPropertyValue("Location", null); //Removed Location.
-    
+
     $entity->addProperty("Status", EdmType::STRING, "In progress"); //Added Status.
-    
+
     try {
         $tableRestProxy->updateEntity("mytable", $entity);
     }
@@ -352,16 +356,16 @@
 
 ## 刪除實體
 
-若要刪除實體，請將資料表名稱以及實體的 `PartitionKey` 和 `RowKey` 傳遞給 **TableRestProxy->deleteEntity** 方法。
+若要刪除實體，將資料表名稱，以及實體的 `PartitionKey` 和 `RowKey` 至 **TableRestProxy tablerestproxy->deleteentity** 方法。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     try {
         // Delete entity.
         $tableRestProxy->deleteEntity("mytable", "tasksSeattle", "2");
@@ -375,11 +379,11 @@
         echo $code.": ".$error_message."<br />";
     }
 
-請注意，針對並行檢查，您可以使用 **DeleteEntityOptions->setEtag** 方法為要刪除的實體設定 Etag，並將 **DeleteEntityOptions** 物件傳遞給 **deleteEntity** 做為第四個參數。
+請注意，針對並行檢查，您可以設定為要刪除使用實體的 Etag **deleteentityoptions->setetag** 方法並傳遞 **DeleteEntityOptions** 物件傳遞給 **deleteEntity** 做為第四個參數。
 
 ## 批次資料表作業
 
-**TableRestProxy->batch** 方法可讓您以單一要求執行多項作業。 這裡的模式涉及將作業新增至 **BatchRequest** 物件，然後將 **BatchRequest** 物件傳遞給 **TableRestProxy->batch** 方法。 若要將作業新增至 **BatchRequest** 物件，您可以呼叫下列任一方法許多次：
+ **Tablerestproxy->batch** 方法可讓您在單一要求中執行多項作業。 這裡的模式涉及將作業新增至 **BatchRequest** 物件，然後將 **BatchRequest** 物件傳遞給 **tablerestproxy->batch** 方法。 若要加入至作業 **BatchRequest** 物件，您可以多次呼叫下列方法:
 
 * **addInsertEntity** (新增 insertEntity 作業)
 * **addUpdateEntity** (新增 updateEntity 作業)
@@ -388,22 +392,22 @@
 * **addInsertOrMergeEntity** (新增 insertOrMergeEntity 作業)
 * **addDeleteEntity** (新增 deleteEntity 作業)
 
-下列範例示範如何以單一要求執行 **insertEntity** 和 **deleteEntity** 作業：
+下列範例示範如何執行 **insertEntity** 和 **deleteEntity** 單一要求中的作業:
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
     use WindowsAzure\Table\Models\Entity;
     use WindowsAzure\Table\Models\EdmType;
     use WindowsAzure\Table\Models\BatchOperations;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     // Create list of batch operation.
     $operations = new BatchOperations();
-    
+
     $entity1 = new Entity();
     $entity1->setPartitionKey("tasksSeattle");
     $entity1->setRowKey("2");
@@ -412,13 +416,13 @@
                           EdmType::DATETIME,
                           new DateTime("2012-11-05T08:15:00-08:00"));
     $entity1->addProperty("Location", EdmType::STRING, "Home");
-    
+
     // Add operation to list of batch operations.
     $operations->addInsertEntity("mytable", $entity1);
-    
+
     // Add operation to list of batch operations.
     $operations->addDeleteEntity("mytable", "tasksSeattle", "1");
-    
+
     try {
         $tableRestProxy->batch($operations);
     }
@@ -431,20 +435,20 @@
         echo $code.": ".$error_message."<br />";
     }
 
-如需有關批次處理資料表作業的詳細資訊，請參閱 [執行實體群組交易 ][entity-group-transactions]。
+如需有關批次處理資料表作業的詳細資訊，請參閱 [執行實體群組交易][entity-group-transactions]。
 
 ## 刪除資料表
 
-最後，若要刪除資料表，請將資料表名稱傳遞給 **TableRestProxy->deleteTable** 方法。
+最後，若要刪除資料表，傳遞資料表名稱，以 **TableRestProxy tablerestproxy->deletetable** 方法。
 
     require_once 'vendor\autoload.php';
-    
+
     use WindowsAzure\Common\ServicesBuilder;
     use WindowsAzure\Common\ServiceException;
-    
+
     // Create table REST proxy.
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-    
+
     try {
         // Delete table.
         $tableRestProxy->deleteTable("mytable");
@@ -466,11 +470,11 @@
 
 如需詳細資訊，請參閱 [PHP 開發人員中心](/develop/php/)。
 
+[download]: http://go.microsoft.com/fwlink/?LinkID=252473
+[require_once]: http://php.net/require_once
+[table-service-timeouts]: http://msdn.microsoft.com/library/azure/dd894042.aspx
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473 
-[require_once]: http://php.net/require_once 
-[table-service-timeouts]: http://msdn.microsoft.com/library/azure/dd894042.aspx 
-[table-data-model]: http://msdn.microsoft.com/library/azure/dd179338.aspx 
-[filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx 
-[entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx 
+[table-data-model]: http://msdn.microsoft.com/library/azure/dd179338.aspx
+[filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
+[entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
 

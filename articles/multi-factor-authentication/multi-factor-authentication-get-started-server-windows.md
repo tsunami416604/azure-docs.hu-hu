@@ -16,14 +16,13 @@
     ms.date="11/19/2015" 
     ms.author="billmath"/>
 
-
 # Windows 驗證與 Azure Multi-Factor Authentication Server
 
-[Windows 驗證] 區段可讓系統管理員啟用和設定一或多個應用程式的 Windows 驗證。 以下是設定 Windows 驗證之前的注意事項清單。
+[Windows 驗證] 區段可讓系統管理員啟用和設定一或多個應用程式的 Windows 驗證。  以下是設定 Windows 驗證之前的注意事項清單。
 
 -  需要重新開機，Azure Multi-Factor Authentication for Terminal Services 才會生效。
 -  如果已核取 [需要進行 Azure Multi-Factor Authentication 使用者比對]，但您不在使用者清單中，則重新開機之後，您將無法登入機器。
--  信任的 IP 取決於應用程式是否可以提供用於驗證的用戶端 IP。 目前僅支援終端機服務。
+-  信任的 IP 取決於應用程式是否可以提供用於驗證的用戶端 IP。 目前僅支援終端機服務。  
 
 
 
@@ -31,8 +30,8 @@
 
 
 
->[AZURE.NOTE]在 Windows Server 2012 R2 上，不支援這項功能來保護終端機服務。
-
+>[AZURE.NOTE]這項功能不支援保護 Windows Server 2012 R2 上的終端機服務。
+ 
 
 
 
@@ -48,9 +47,5 @@
 7. 按一下 [新增... 按鈕。
 8. 如果您想要跳過單一 IP 位址，請選取 [單一 IP]。
 9. 如果您想要跳過整個 IP 範圍，請選取 [IP 範圍]。 範例：10.63.193.1-10.63.193.100。
-10. 如果您想要使用子網路標記法指定 IP 範圍，請選取 [子網路]。 輸入子網路的起始 IP，並從下拉式清單中挑選適當的網路遮罩。
+10. 如果您想要使用子網路標記法指定 IP 範圍，請選取 [子網路]。 輸入子網路的起始 IP，並從下拉式清單中挑選適當的網路遮罩。 
 11. 按一下 [確定] 按鈕。
-
-
-
-

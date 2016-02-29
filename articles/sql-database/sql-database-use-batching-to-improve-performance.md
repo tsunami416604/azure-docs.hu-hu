@@ -1,52 +1,49 @@
  <properties
-    pageTitle ="如何使用批次處理來改善 Azure SQL Database 應用程式效能 」
-    描述 = 「 本主題提供的辨識項的批次資料庫作業大幅 imroves 速度和 Azure SQL Database 應用程式的延展性。 雖然這些批次技術適用於任何 SQL Server 資料庫，文章的焦點是在 Azure 上。 」
-    服務 = 「 sql 資料庫 」
-    documentationCenter ="na"
-    作者 ="rothja"
-    管理員 ="jeffreyg"
-    編輯器 ="monicar"/ >
+    pageTitle="如何使用批次處理來改善 Azure SQL Database 應用程式效能"
+    description="本主題提供證據，表明批次處理資料庫作業可大幅改善 Azure SQL Database 應用程式的速度和延展性。 雖然這些批次處理技術適用於任何 SQL Server 資料庫，但本文的重點在於 Azure。"
+    services="sql-database"
+    documentationCenter="na"
+    authors="rothja"
+    manager="jeffreyg"
+    editor="monicar" />
 
 
 <tags
-    ms.service= [sql 資料庫]
+    ms.service="sql-database"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.workload= 「 資料管理 」
-    ms.date="10/30/2015 」
-    ms.author="jroth"/ >
+    ms.workload="data-management"
+    ms.date="10/30/2015"
+    ms.author="jroth" />
 
 # 如何使用批次處理來改善 SQL Database 應用程式效能
 
 批次處理 Azure SQL Database 的作業可大幅改善應用程式的效能和延展性。 為了瞭解優點，本文的第一個部分涵蓋一些範例測試結果，其中比較 SQL Database 的循序和批次要求。 本文其餘部分說明技術、案例和考量因素，協助您在 Azure 應用程式中順利使用批次處理。
 
-**作者**：Jason Roth、Silvano Coriani、Trent Swanson (Full Scale 180 Inc)
+**作者**: Jason Roth、 Silvano Coriani、 Trent Swanson (Full Scale 180 Inc)
 
-**校閱者**：Conor Cunningham、Michael Thomassy
+**檢閱者**: Conor Cunningham、 Michael Thomassy
 
 ## 為什麼批次處理對 SQL Database 很重要？
-
 眾所周知，批次處理遠端服務的呼叫是一項可提升效能和延展性的策略。 與遠端服務進行任何互動都有固定的成本，例如序列化、網路傳輸和還原序列化。 將許多個別交易包裝成單一批次可將這些成本降到最低。
 
 本文中，我們將探討 SQL Database 的各種批次處理策略和案例。 雖然這些策略對於使用 SQL Server 的內部部署應用程式也很重要，但基於一些理由，必須特別討論在 SQL Database 中使用批次處理：
 
 - 存取 SQL Database 時網路延遲可能很嚴重，特別是從相同的 Microsoft Azure 資料中心外部存取 SQL Database。
-- SQL Database 的多租用戶特性表示資料存取層的效率與資料庫的整體延展性有密切關係。 SQL Database 必須防止任何單一租用戶/使用者獨佔資料庫資源，而損害其他租用戶的權益。 為了避免使用量超出預先定義的配額，SQL Database 可以減少輸送量，或以節流例外狀況做出回應。 效率 (例如批次處理) 可讓您在達到這些限制之前，在 SQL Database 上完成更多工作。
-- 在使用多個資料庫 (分區化) 的架構下，批次處理也很有效益。 就整體延展性而言，與每個資料庫單位的互動效率仍然是關鍵因素。
+- SQL Database 的多租用戶特性表示資料存取層的效率與資料庫的整體延展性有密切關係。 SQL Database 必須防止任何單一租用戶/使用者獨佔資料庫資源，而損害其他租用戶的權益。 為了避免使用量超出預先定義的配額，SQL Database 可以減少輸送量，或以節流例外狀況做出回應。 效率 (例如批次處理) 可讓您在達到這些限制之前，在 SQL Database 上完成更多工作。 
+- 在使用多個資料庫 (分區化) 的架構下，批次處理也很有效益。 就整體延展性而言，與每個資料庫單位的互動效率仍然是關鍵因素。 
 
-使用 SQL Database 的優點之一是您不必管理裝載著資料庫的伺服器。 不過，這種受管理的基礎結構也表示您必須以不同角度來思考資料庫最佳化。 您不必再設法改善資料庫硬體或網路基礎結構。 Microsoft Azure 會控制那些環境。 您可以控制的主要方面是應用程式與 SQL Database 之間的互動方式。 批次處理屬於這些最佳化作法之一。
+使用 SQL Database 的優點之一是您不必管理裝載著資料庫的伺服器。 不過，這種受管理的基礎結構也表示您必須以不同角度來思考資料庫最佳化。 您不必再設法改善資料庫硬體或網路基礎結構。 Microsoft Azure 會控制那些環境。 您可以控制的主要方面是應用程式與 SQL Database 之間的互動方式。 批次處理屬於這些最佳化作法之一。 
 
 本文的第一個部分針對使用 SQL Database 的 .NET 應用程式，探討各種批次處理技術。 最後兩節涵蓋批次處理方針和案例。
 
 ## 批次處理策略
 
 ### 有關本主題中計時結果的注意事項
-
->[AZURE.NOTE] 結果並不是基準，主要是示範**相對效能**。 計時至少根據 10 個測試回合的平均值。 作業插入至空的資料表。 這些測試測量的 V12 之前，而且它們並不一定對應中使用新的 V12 資料庫，您可能會遇到的輸送量 [服務層](sql-database-service-tiers.md)。 批次處理技術的相對優點應該類似。
+>[AZURE.NOTE] 結果並不是基準目的只是要顯示 **相對效能**。 計時至少根據 10 個測試回合的平均值。 作業插入至空的資料表。 這些測試測量的 V12 之前，而且它們並不一定對應中使用新的 V12 資料庫，您可能會遇到的輸送量 [服務層](sql-database-service-tiers.md)。 批次處理技術的相對優點應該類似。
 
 ### 交易
-
 從討論交易來開始評論批次處理可能有點奇怪。 但使用用戶端交易也隱約有可改善效能的伺服器端批次處理效果。 只需要幾行程式碼就能新增交易，因此可快速改善循序作業的效能。
 
 請考慮下列 C# 程式碼，其中對一個簡易資料表執行一連串插入和更新作業。
@@ -94,22 +91,22 @@
 
 **內部部署至 Azure**:
 
-| 作業| 無交易 (毫秒)| 交易 (毫秒)|
+| 作業 | 無交易 (毫秒) | 交易 (毫秒) |
 |---|---|---|
-| 1| 130| 402|
-| 10| 1208| 1226|
-| 100| 12662| 10395|
-| 1000| 128852| 102917|
+| 1 | 130 | 402 |
+| 10 | 1208 | 1226 |
+| 100 | 12662 | 10395 |
+| 1000 | 128852 | 102917 |
 
 
-**Azure 至 Azure (相同資料中心)**：
+**Azure 至 Azure (相同資料中心)**:
 
-| 作業| 無交易 (毫秒)| 交易 (毫秒)|
+| 作業 | 無交易 (毫秒) | 交易 (毫秒) |
 |---|---|---|
-| 1| 21| 26|
-| 10| 220| 56|
-| 100| 2145| 341|
-| 1000| 21479| 2756|
+| 1 | 21 | 26 |
+| 10 | 220 | 56 |
+| 100 | 2145 | 341 |
+| 1000 | 21479 | 2756 |
 
 >[AZURE.NOTE] 結果並不是基準。 請參閱 [注意有關本主題中的計時結果](#note-about-timing-results-in-this-topic)。
 
@@ -122,14 +119,14 @@
 如需在 ADO.NET 中的交易的詳細資訊，請參閱 [在 ADO.NET 中的本機交易](https://msdn.microsoft.com/library/vstudio/2k2hy99x.aspx)。
 
 ### 資料表值參數
-
-資料表值參數支援使用者定義資料表類型做為 Transact-SQL 陳述式、預存程序和函數中的參數。 此用戶端批次處理技術可讓您在資料表值參數內傳送很多列的資料。 若要使用資料表值參數，請先定義資料表類型。 下列 Transact-SQL 陳述式會建立名為 **MyTableType** 的資料表類型。
+資料表值參數支援使用者定義資料表類型做為 Transact-SQL 陳述式、預存程序和函數中的參數。 此用戶端批次處理技術可讓您在資料表值參數內傳送很多列的資料。 若要使用資料表值參數，請先定義資料表類型。 下列 TRANSACT-SQL 陳述式會建立名為的資料表類型 **MyTableType**。
 
     CREATE TYPE MyTableType AS TABLE 
     ( mytext TEXT,
       num INT );
+ 
 
-在程式碼中，您使用與此資料表類型完全相同的名稱和類型建立 **DataTable**。 將這個 **DataTable** 傳入文字查詢或預存程序呼叫中的參數。 下列範例示範這項技巧：
+在程式碼中，您會建立 **DataTable** 完全相同的名稱和類型的資料表類型。 將此變數傳遞 **DataTable** 參數中的文字查詢或預存程序呼叫。 下列範例示範這項技巧：
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -147,7 +144,7 @@
         SqlCommand cmd = new SqlCommand(
             "INSERT INTO MyTable(mytext, num) SELECT mytext, num FROM @TestTvp",
             connection);
-    
+                    
         cmd.Parameters.Add(
             new SqlParameter()
             {
@@ -160,9 +157,9 @@
         cmd.ExecuteNonQuery();
     }
 
-在上述範例中，**SqlCommand** 物件從資料表值參數 **@TestTvp** 插入資料列。 先前建立的 **DataTable** 物件透過 **SqlCommand.Parameters.Add** 方法指派給此參數。 在一個呼叫中批次處理插入的效能明顯高於循序插入。
+在上述範例中， **SqlCommand** 是資料表值參數，將資料列物件插入 **@TestTvp**。 先前建立 **DataTable** 物件指派給此參數與 **SqlCommand.Parameters.Add** 方法。 在一個呼叫中批次處理插入的效能明顯高於循序插入。
 
-若要進一步改善上述範例，請使用預存程序代替文字式命令。 下列 Transact-SQL 命令會建立一個接受 **SimpleTestTableType** 資料表值參數的預存程序。
+若要進一步改善上述範例，請使用預存程序代替文字式命令。 下列 TRANSACT-SQL 命令建立的預存程序 **SimpleTestTableType** 資料表值參數。
 
     CREATE PROCEDURE [dbo].[sp_InsertRows] 
     @TestTvp as MyTableType READONLY
@@ -173,7 +170,7 @@
     END
     GO
 
-然後將上述程式碼範例中的 **SqlCommand** 物件宣告變更如下。
+然後變更 **SqlCommand** 物件宣告在上述程式碼範例所示。
 
     SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
     cmd.CommandType = CommandType.StoredProcedure;
@@ -182,23 +179,22 @@
 
 下表顯示使用資料表值參數的臨機操作測試結果 (以毫秒為單位)。
 
-| 作業| 內部部署至 Azure (亳秒)| Azure 相同資料中心 (毫秒)|
+| 作業 | 內部部署至 Azure (亳秒)  | Azure 相同資料中心 (毫秒) |
 |---|---|---|
-| 1| 124| 32|
-| 10| 131| 25|
-| 100| 338| 51|
-| 1000| 2615| 382|
-| 10000| 23830| 3586|
+| 1 | 124 | 32 |
+| 10 | 131 | 25 |
+| 100 | 338 | 51 |
+| 1000 | 2615 | 382 |
+| 10000 | 23830 | 3586 |
 
 >[AZURE.NOTE] 結果並不是基準。 請參閱 [注意有關本主題中的計時結果](#note-about-timing-results-in-this-topic)。
 
-批次處理所提升的效能立即而明顯。 在先前的循序測試中，1000 個作業在資料中心外花費 129 秒，而從資料中心內花費 21 秒。 但是，使用資料表值參數，1000 次作業只需 2.6 秒在資料中心以外，在資料中心內 0.4 秒。
+批次處理所提升的效能立即而明顯。 在先前的循序測試中，1000 個作業在資料中心外花費 129 秒，而從資料中心內花費 21 秒。 但使用資料表值參數時，1000 個作業在資料中心外只花費 2.6 秒，而在資料中心內只花費 0.4 秒。
 
 如需有關資料表值參數的詳細資訊，請參閱 [資料表值參數](https://msdn.microsoft.com/library/bb510489.aspx)。
 
 ### SQL 大量複製
-
-SQL 大量複製是另一種方式將大量的資料插入至目標資料庫。 .NET 應用程式可以使用 **SqlBulkCopy** 類別執行大量插入作業。 **SqlBulkCopy** 在功能上類似於命令列工具 **Bcp.exe**，或 Transact-SQL 陳述式 **BULK INSERT**。 下列程式碼範例顯示如何將來源 **DataTable** 資料表中的資料列，大量複製到 SQL Server 中的目的地資料表 MyTable。
+SQL 大量複製是另一種方式將大量的資料插入至目標資料庫。 .NET 應用程式可以使用 **SqlBulkCopy** 類別執行大量插入作業。 **SqlBulkCopy** 函式類似於命令列工具， **Bcp.exe**, ，或 TRANSACT-SQL 陳述式 **BULK INSERT**。 下列程式碼範例顯示如何大量複製的資料列來源中 **DataTable**, ，SQL Server 中的目的地資料表，資料表 MyTable。
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -215,25 +211,24 @@ SQL 大量複製是另一種方式將大量的資料插入至目標資料庫。 
 
 在某些情況下，大量複製比資料表值參數更適合。 請參閱資料表值參數與 BULK INSERT 作業 > 主題中的比較表 [資料表值參數](https://msdn.microsoft.com/library/bb510489.aspx)。
 
-下列臨機操作測試結果顯示 **SqlBulkCopy** 的批次處理效能 (以毫秒為單位)。
+下列臨機操作測試結果顯示的效能與批次處理 **SqlBulkCopy** 以毫秒為單位。
 
-| 作業| 內部部署至 Azure (亳秒)| Azure 相同資料中心 (毫秒)|
+| 作業 | 內部部署至 Azure (亳秒)  | Azure 相同資料中心 (毫秒) |
 |---|---|---|
-| 1| 433| 57|
-| 10| 441| 32|
-| 100| 636| 53|
-| 1000| 2535| 341|
-| 10000| 21605| 2737|
+| 1 | 433 | 57 |
+| 10 | 441 | 32 |
+| 100 | 636 | 53 |
+| 1000 | 2535 | 341 |
+| 10000 | 21605 | 2737 |
 
 >[AZURE.NOTE] 結果並不是基準。 請參閱 [注意有關本主題中的計時結果](#note-about-timing-results-in-this-topic)。
 
-批次較小時，使用資料表值參數的效能勝過 **SqlBulkCopy** 類別。 不過，在測試 1,000 和 10,000 個資料列時，**SqlBulkCopy** 的執行速度比資料表值參數快 12-31%。 就像資料表值參數一樣，**SqlBulkCopy** 是批次插入的理想選擇，尤其與非批次作業的效能相比較。
+在較小的批次大小，使用資料表值參數的效能勝過 **SqlBulkCopy** 類別。 不過， **SqlBulkCopy** 1000 和 10000 個資料列的測試執行速度比資料表值參數 12-31%。 例如資料表值參數， **SqlBulkCopy** 相較於非批次作業的效能，尤其是批次插入一個不錯的選項。
 
 如需有關 ADO.NET 中大量複製的詳細資訊，請參閱 [中 SQL Server 大量複製作業](https://msdn.microsoft.com/library/7ek5da1a.aspx)。
 
 ### 多資料列參數化 INSERT 陳述式
-
-對於小型批次，另一種作法是建構大型參數化 INSERT 陳述式來插入多個資料列。 下列程式碼範例示範這項技術。
+對於小型批次，另一種作法是建構大型參數化 INSERT 陳述式來插入多個資料列。 下列程式碼範例示範這項技巧。
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -252,34 +247,32 @@ SQL 大量複製是另一種方式將大量的資料插入至目標資料庫。 
     
         cmd.ExecuteNonQuery();
     }
+ 
 
 此範例主要是示範基本概念。 在更實際的案例中會循環查看需要的實體，以同時建構查詢字串和命令參數。 總計以 2100 個查詢參數為限，此方法可處理的資料列總數受限於此。
 
-下列臨機操作測試結果會顯示這種類型的 insert 陳述式的效能，以毫秒為單位。
+下列臨機操作測試結果顯示這種插入陳述式的效能 (以毫秒為單位)。
 
-| 作業| 資料表值參數 (毫秒)| 單一陳述式 INSERT (毫秒)|
+| 作業 | 資料表值參數 (毫秒) | 單一陳述式 INSERT (毫秒) |
 |---|---|---|
-| 1| 32| 20|
-| 10| 30| 25|
-| 100| 33| 51|
+| 1 | 32 | 20 |
+| 10 | 30 | 25 |
+| 100 | 33 | 51 |
 
 >[AZURE.NOTE] 結果並不是基準。 請參閱 [注意有關本主題中的計時結果](#note-about-timing-results-in-this-topic)。
 
-如果批次少於 100 的資料列，這種方法會稍微快一些。 雖然改善幅度很小，但在您的特殊應用案例中，這種技術可能是另一種適合的選項。
+如果批次少於 100 的資料列，這種方法會稍微快一些。 雖然改善幅度很小，但在您的特殊應用案例中，這種技術可能是另一種適合的選項。　
 
 ### DataAdapter
+ **DataAdapter** 類別可讓您修改 **資料集** 物件，然後將變更為 INSERT、 UPDATE 和 DELETE 作業提交。 如果您使用 **DataAdapter** 這種方式，是要特別注意不同的呼叫會針對每個不同作業。 若要改善效能，請使用 **UpdateBatchSize** 應該同時批次處理的作業數目的屬性。 如需詳細資訊，請參閱 [使用 Dataadapter 執行批次作業](https://msdn.microsoft.com/library/aadf8fk2.aspx)。
 
-**DataAdapter** 類別可讓您修改 **DataSet** 物件，然後以 INSERT、UPDATE 和 DELETE 作業的形式提交變更。 如果以此方式使用 **DataAdapter**，必須注意每個不同的作業會執行個別的呼叫。 若要改善效能，請使用 **UpdateBatchSize** 屬性指定應該同時批次處理的作業數目。 如需詳細資訊，請參閱 [使用 Dataadapter 執行批次作業](https://msdn.microsoft.com/library/aadf8fk2.aspx)。
-
-### Entity framework
-
-Entity Framework 目前不支援批次處理。 社群中不同的開發人員已嘗試示範因應措施，例如覆寫 **SaveChanges** 方法。 但解決方案通常太複雜，而且都針對應用程式和資料模型來自訂。 Entity Framework codeplex 專案目前有這項功能要求的討論頁。 若要檢視這些討論，請參閱 [設計會議記錄-2012 年 8 月 2 日](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012)。
+### Entity Framework
+Entity Framework 目前不支援批次處理。 不同的開發人員社群中嘗試各種因應措施，例如覆寫 **SaveChanges** 方法。 但解決方案通常太複雜，而且都針對應用程式和資料模型來自訂。 Entity Framework codeplex 專案目前有這項功能要求的討論頁。 若要檢視這些討論，請參閱 [設計會議記錄-2012 年 8 月 2 日](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012)。
 
 ### XML
-
 為了完整說明，我們覺得有必要討論將 XML 當做批次處理策略。 但是，使用 XML 沒有比其他方法更好，而且還有幾個缺點。 此方法類似於資料表值參數，但傳給預存程序的是 XML 檔案或字串，而不是使用者定義的資料表。 預存程序會剖析預存程序中的命令。
 
-有幾個缺點，這種方法:
+這種方法有幾個缺點：
 
 - 處理 XML 很麻煩又容易出錯。
 - 在資料庫上剖析 XML 會耗用大量 CPU 資源。
@@ -287,26 +280,23 @@ Entity Framework 目前不支援批次處理。 社群中不同的開發人員�
 
 基於這些理由，不建議使用 XML 進行批次查詢。
 
-## 批次處理的考量
-
+## 批次處理考量
 下列各節提供在 SQL Database 應用程式中使用批次處理的其他指引。
 
-### 取捨
-
+### 權衡取捨
 根據您的架構而定，批次處理可能需要在效能和恢復功能之間有所取捨。 例如，假設您的角色非預期地停止運作。 如果您失去一個資料列，影響程度會小於遺失一大批尚未提交的資料列。 將資料列傳送至資料庫之前，如果您將資料列緩衝一段指定的時間，則風險會很高。
 
 由於有這種權衡取捨，請評估您要批次處理的作業類型。 對於較不重要的資料，應該更積極地批次處理 (較大的批次和較長的時間範圍)。
 
 ### 批次大小
-
 在我們的測試中，將大型批次分成小塊通常沒有好處。 事實上，這樣分割通常會導致效能比提交單一大型批次更慢。 例如，假設您想要插入 1000 個資料列。 下表顯示分割成較小的批次時，使用資料表值參數插入 1000 個資料列所需的時間。
 
-| 批次大小| 反覆運算次數| 資料表值參數 (毫秒)|
+| 批次大小 | 反覆運算次數 | 資料表值參數 (毫秒) |
 | -------- | --- | --- |
-| 1000| 1| 347|
-| 500| 2| 355|
-| 100| 10| 465|
-| 50| 20| 630|
+| 1000 | 1 | 347 |
+| 500 | 2 | 355 |
+| 100 | 10 | 465 |
+| 50 | 20 | 630 |
 
 >[AZURE.NOTE] 結果並不是基準。 請參閱 [注意有關本主題中的計時結果](#note-about-timing-results-in-this-topic)。
 
@@ -317,15 +307,14 @@ Entity Framework 目前不支援批次處理。 社群中不同的開發人員�
 最後，在批次大小與批次處理相關的風險之間找出平衡點。 如果發生暫時性錯誤或角色失敗，請考量重試作業或遺失批次中的資料的後果。
 
 ### 平行處理
-
 如果您已設法縮小批次，但使用多個執行緒來執行工作，情況又是如何？ 同樣地，我們的測試指出數個較小的多執行緒批次通常表現得比單一大型批次更差。 下列測試嘗試透過一或多個平行批次來插入 1000 個資料列。 此測試指出同時有多個批次實際上會降低效能。
 
-| 批次大小 [反覆運算次數]| 兩個執行緒 (毫秒)| 四個執行緒 (毫秒)| 6 個執行緒 (毫秒)|
+| 批次大小 [反覆運算次數] | 兩個執行緒 (毫秒) | 四個執行緒 (毫秒) | 六個執行緒 (毫秒) |
 | -------- | --- | --- | --- |
-| 1000 [1]| 277| 315| 266|
-| 500 [2]| 548| 278| 256|
-| 250 [4]| 405| 329| 265|
-| 100 [10]| 488| 439| 391|
+| 1000 [1] | 277 | 315 | 266 |
+| 500 [2] | 548 | 278 | 256 |
+| 250 [4] | 405 | 329 | 265 |
+| 100 [10] | 488 | 439 | 391 |
 
 >[AZURE.NOTE] 結果並不是基準。 請參閱 [注意有關本主題中的計時結果](#note-about-timing-results-in-this-topic)。
 
@@ -343,17 +332,14 @@ Entity Framework 目前不支援批次處理。 社群中不同的開發人員�
 如果您使用平行執行，請考慮控制背景工作角色執行緒的數目上限。 數量較少可以減少爭用，並加快執行時間。 另外，也要考慮這在連接和交易中對目標資料庫所造成的額外負載。
 
 ### 相關的效能因素
-
 資料庫效能的一般指引也會影響批次處理。 例如，如果資料表具有大型的主索引鍵或許多非叢集索引，插入效能會降低。
 
-如果資料表值參數使用預存程序，您可以在程序的開頭使用命令 **SET NOCOUNT ON**。 這個陳述式會防止傳回程序中受影響的資料列計數。 不過，在我們的測試中，使用 **SET NOCOUNT ON** 不是沒有效果，就是降低效能。 測試預存程序很簡單，只有來自資料表值參數的單一 **INSERT** 命令。 此陳述式可能有益於更複雜的預存程序。 但別以為將 **SET NOCOUNT ON** 新增至預存程序就會自動改善效能。 若要了解效果，請分別使用和不使用 **SET NOCOUNT ON** 陳述式來測試預存程序。
+如果資料表值參數使用預存程序，您可以使用命令 **SET NOCOUNT ON** 程序的開頭。 這個陳述式會防止傳回程序中受影響的資料列計數。 不過，在我們的測試使用 **SET NOCOUNT ON** 沒有任何作用或是效能降低。 測試預存程序很簡單，單一只有 **插入** 命令從資料表值參數。 此陳述式可能有益於更複雜的預存程序。 但是，不要以為，將新增 **SET NOCOUNT ON** 預存程序自動提升效能。 若要了解效果，測試預存程序與不 **SET NOCOUNT ON** 陳述式。
 
 ## 批次處理案例
-
 下列各節說明如何在三個應用程式案例中使用資料表值參數。 第一個案例示範緩衝和批次處理如何一起運作。 第二個案例在單一預存程序呼叫中執行主要/詳細架構作業以提高效能。 最後一個案例示範如何在 "UPSERT" 作業中使用資料表值參數。
 
 ### 緩衝處理
-
 雖然有些案例很明顯適合使用批次處理，但也有許多案例可以藉由延遲處理來利用批次處理。 不過，延遲處理也會帶來更大的風險，發生非預期的失敗時會遺失資料。 請務必了解這項風險並考慮後果。
 
 例如，假設有一個 Web 應用程式會追蹤每一位使用者的瀏覽歷程記錄。 在每個頁面要求上，應用程式會執行資料庫呼叫來記錄使用者的頁面檢視。 但只要緩衝使用者的瀏覽活動，再分批將此資料傳送至資料庫，就能達到更高的效能和延展性。 您可以指定經歷時間和 (或) 緩衝區大小來觸發資料庫更新。 例如，規則可以指定應該在 20 秒之後或緩衝區達到 1000 個項目時處理批次。
@@ -371,7 +357,7 @@ Entity Framework 目前不支援批次處理。 社群中不同的開發人員�
         public DateTime AccessTime { get; set; }
     }
 
-NavHistoryDataMonitor 類別負責將使用者瀏覽資料緩衝處理到資料庫。 它包含 RecordUserNavigationEntry 方法，以引發 **OnAdded** 事件做為回應。 下列程式碼顯示建構函式邏輯，其中使用 Rx 根據事件建立可觀察的集合。 它接著使用 Buffer 方法訂閱這個可觀察的集合。 此多載函式指定每隔 20 秒或 1000 個項目就應該傳送緩衝區。
+NavHistoryDataMonitor 類別負責將使用者瀏覽資料緩衝處理到資料庫。 它包含一種方法，會回應所引發的 RecordUserNavigationEntry **OnAdded** 事件。 下列程式碼顯示建構函式邏輯，其中使用 Rx 根據事件建立可觀察的集合。 它接著使用 Buffer 方法訂閱這個可觀察的集合。 此多載函式指定每隔 20 秒或 1000 個項目就應該傳送緩衝區。
 
     public NavHistoryDataMonitor()
     {
@@ -443,7 +429,6 @@ NavHistoryDataMonitor 類別負責將使用者瀏覽資料緩衝處理到資料�
 若要使用這個緩衝類別，應用程式需要建立靜態 NavHistoryDataMonitor 物件。 每次使用者存取頁面時，應用程式就呼叫 NavHistoryDataMonitor.RecordUserNavigationEntry 方法。 緩衝邏輯接著負責將這些項目分批傳送至資料庫。
 
 ### 主要/詳細架構
-
 資料表值參數適用於簡單的 INSERT 案例。 但是，如果插入作業涉及多個資料表，則批次處理會較具挑戰性。 「主要/詳細架構」案例是一個很好的例子。 主要資料表識別主要實體。 一或多個詳細資料表儲存實體的其他相關資料。 在此案例中，外部索引鍵關聯性會強制執行詳細資料與唯一主要實體的關聯性。 假設有一個簡化版的 PurchaseOrder 資料表及其相關聯的 OrderDetail 資料表。 下列 Transact-SQL 會建立具有四個資料行的 PurchaseOrder 資料表：OrderID、OrderDate、CustomerID 和 Status。
 
     CREATE TABLE [dbo].[PurchaseOrder](
@@ -454,7 +439,7 @@ NavHistoryDataMonitor 類別負責將使用者瀏覽資料緩衝處理到資料�
      CONSTRAINT [PrimaryKey_PurchaseOrder] 
     PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 
-每筆訂單包含一或多個產品採購。 PurchaseOrderDetail 資料表中擷取這項資訊。 下列 TRANSACT-SQL 會建立具有五個資料行的 PurchaseOrderDetail 資料表: OrderID、 OrderDetailID、 ProductID，UnitPrice 和 OrderQty。
+每筆訂單包含一或多個產品採購。 PurchaseOrderDetail 資料表中擷取這項資訊。 下列 Transact-SQL 會建立具有五個資料行的 PurchaseOrderDetail 資料表：OrderID、OrderDetailID、ProductID、UnitPrice 和 OrderQty。
 
     CREATE TABLE [dbo].[PurchaseOrderDetail](
     [OrderID] [int] NOT NULL,
@@ -502,7 +487,7 @@ PurchaseOrderDetail 資料表中的 OrderID 資料行必須參考 PurchaseOrder 
     ActualKey int, 
     RowNumber int identity(1,1)
     );
-    
+     
           -- Add new orders to the PurchaseOrder table, storing the actual
     -- order identifiers in the @IdentityLink table   
     INSERT INTO PurchaseOrder ([OrderDate], [CustomerID], [Status])
@@ -557,7 +542,6 @@ PurchaseOrderDetail 資料表中的 OrderID 資料行必須參考 PurchaseOrder 
 此範例示範即使是更複雜的資料庫作業，例如主要/詳細架構作業，也都可以透過資料表值參數進行批次處理。
 
 ### UPSERT
-
 另一個批次處理案例涉及同時更新現有的資料列和插入新資料列。 這項作業有時稱為 "UPSERT" (更新 + 插入) 作業。 MERGE 陳述式最適合這項作業，而不是分開呼叫 INSERT 和 UPDATE。 MERGE 陳述式可以在單一呼叫中同時執行插入和更新作業。
 
 資料表值參數可以搭配 MERGE 陳述式來執行更新和插入。 例如，假設有一個簡化的 Employee 資料表，包含下列資料行：EmployeeID、FirstName、LastName、SocialSecurityNumber：
@@ -569,7 +553,7 @@ PurchaseOrderDetail 資料表中的 OrderID 資料行必須參考 PurchaseOrder 
     [SocialSecurityNumber] [nvarchar](50) NOT NULL,
      CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
     ([EmployeeID] ASC ))
-
+ 
 在此範例中，根據 SocialSecurityNumber 是唯一性的這項事實，您可以將多個員工 MERGE。 首先，建立使用者定義的資料表類型：
 
     CREATE TYPE EmployeeTableType AS TABLE 
@@ -605,22 +589,18 @@ PurchaseOrderDetail 資料表中的 OrderID 資料行必須參考 PurchaseOrder 
 - 如果選擇單一批次處理技術，資料表值參數可以發揮最佳的效能與彈性。
 - 為了獲得最快速的插入效能，請遵循下列一般指導方針，但要針對您的案例進行測試：
     - 如果 < 100 個資料列，使用單一參數化 INSERT 命令。
-    - 對於 < 1000 個資料列，使用資料表值參數。
+    - 如果 < 1000 個資料列，使用資料表值參數。
     - 如果 >= 1000 個資料列，使用 SqlBulkCopy。
 - 針對更新和刪除作業，使用資料表值參數搭配預存程序邏輯，決定要在資料表參數中每個資料列上執行的正確作業。
 - 批次大小的指導方針：
     - 使用符合您的應用程式和商務需求的最大批次大小。
-    - 在大型批次的效能提升和暫時性或災難性失敗的風險之間取得平衡。 重試或在批次中遺失資料的後果是什麼？
+    - 在大型批次的效能提升和暫時性或災難性失敗的風險之間取得平衡。 重試或在批次中遺失資料的後果是什麼？ 
     - 測試最大批次大小，確認 SQL Database 不會拒絕它。
-    - 建立組態設定來控制批次處理，例如批次大小或緩衝時間範圍。 這些設定提供的彈性。 您可以在生產環境中變更批次處理行為，不需重新部署雲端服務。
+    - 建立組態設定來控制批次處理，例如批次大小或緩衝時間範圍。 這些設定提供彈性。 您可以在生產環境中變更批次處理行為，不需重新部署雲端服務。
 - 避免在一個資料庫的單一資料表上平行執行批次。 如果您選擇將單一批次分成多個背景工作角色執行緒，請執行測試來決定理想的執行緒數目。 超過未確定的臨界值之後，更多的執行緒只會降低效能，不會提高效能。
 - 在更多案例下，考慮依大小和時間緩衝來實作批次處理。
 
 ## 後續步驟
 
 這篇文章著重於與批次處理相關的資料庫設計和程式碼撰寫技術，如何改善應用程式的效能和延展性。 但這只是整體策略中的一個因素。 如需更多以改善效能和延展性的方式，請參閱 [單一資料庫的 Azure SQL Database 效能指引](sql-database-performance-guidance.md) 和 [彈性資料庫集區的價格和效能考量](sql-database-elastic-pool-guidance.md)。
-
-
-
-
 

@@ -17,8 +17,8 @@
    ms.date="12/14/2015"
    ms.author="rick.byham@microsoft.com"/>
 
-
 # Azure SQL Database Transact-SQL 差異
+
 
 Microsoft SQL Server 和 Azure SQL Database 都支援應用程式相依的大部分 Transact-SQL 功能。 應用程式之支援功能的部分清單如下：
 
@@ -26,28 +26,28 @@ Microsoft SQL Server 和 Azure SQL Database 都支援應用程式相依的大部
 - 運算子。
 - 字串、算術，邏輯和指標函式。
 
-不過，Azure SQL Database 的設計目的是將功能與任何在 **master** 資料庫上的相依性隔離。 因此，SQL Database 並不適合，也不支援許多伺服器層級的活動。 本主題將詳細說明 SQL Database 未完整支援的功能。
+不過，Azure SQL Database 的設計目的在隔離的任何相依性的功能 **主要** 資料庫。 因此，SQL Database 並不適合，也不支援許多伺服器層級的活動。 本主題將詳細說明 SQL Database 未完整支援的功能。
 
 同時，SQL Database 通常也不支援 SQL Server 中已過時的功能。
 
 ## 升級至 SQL Database V12
 
-本主題討論當升級至免費的 SQL Database V12 時，SQL Database 可用的功能。 如需有關 V12 的詳細資訊，請參閱 [SQL 資料庫 V12 功能新增](sql-database-v12-whats-new.md)。 SQL Database V12 新增效能和管理性增強功能，以及支援其他功能。 新增的功能如下所示，分成完全支援的功能和部分支援的功能。
+本主題討論當升級至免費的 SQL Database V12 時，SQL Database 可用的功能。 如需有關 V12 的詳細資訊，請參閱 [SQL 資料庫 V12 功能新增](sql-database-v12-whats-new.md)。 SQL Database V12 新增效能和管理性增強功能，以及支援其他功能。 新增的功能如下所示，分成完全支援的功能和部分支援的功能。 
 
 ## 在 SQL Database V12 中部分支援的功能
 
 SQL Database V12 支援部分而非全部的引數，這些引數存在於對應的 SQL Server 2016 Transact-SQL 陳述式中。 例如，CREATE PROCEDURE 陳述式可以使用，但是 CREATE PROCEDURE 的 WITH ENCRYPTION 選項無法使用。 請參閱連結的語法主題，以了解每個陳述式支援區域的詳細資訊。
 
-- Databases: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER](https://msdn.microsoft.com/library/ms174269.aspx)
+- 資料庫: [建立](https://msdn.microsoft.com/library/dn268335.aspx )/[改變](https://msdn.microsoft.com/library/ms174269.aspx)
 - DMV 通常可用於已公開推出的功能
-- Functions: [CREATE](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER FUNCTION](https://msdn.microsoft.com/library/ms186967.aspx)
-- [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
-- Logins: [CREATE](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)
+- 函式: [建立](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER 函式](https://msdn.microsoft.com/library/ms186967.aspx)
+- [KILL](https://msdn.microsoft.com/library/ms173730.aspx) 
+- 登入: [建立](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)
 - 預存程序: [建立](https://msdn.microsoft.com/library/ms187926.aspx)/[ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
-- Tables: [CREATE](https://msdn.microsoft.com/library/dn305849.aspx)/[ALTER](https://msdn.microsoft.com/library/ms190273.aspx)
-- 型別 (自訂): [CREATE TYPE](https://msdn.microsoft.com/library/ms175007.aspx)
-- Users: [CREATE](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
-- Views: [CREATE](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
+- 資料表: [建立](https://msdn.microsoft.com/library/dn305849.aspx)/[改變](https://msdn.microsoft.com/library/ms190273.aspx)
+- 型別 (自訂): [建立型別](https://msdn.microsoft.com/library/ms175007.aspx)
+- 使用者: [建立](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
+- 檢視: [建立](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
 
 ## 在 SQL Database 中不支援的功能
 
@@ -97,18 +97,14 @@ SQL Database V12 支援部分而非全部的引數，這些引數存在於對應
 
 ## 完整 Transact-SQL 參考
 
-如需 TRANSACT-SQL 文法、 使用方式，與範例的詳細資訊，請參閱 [TRANSACT-SQL 參考 (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx) SQL Server 線上叢書 》 中。
+如需 TRANSACT-SQL 文法、 使用方式，與範例的詳細資訊，請參閱 [TRANSACT-SQL 參考 (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx) SQL Server 線上叢書 》 中。 
 
 ### 關於「適用於」標記
 
 Transact-SQL 參考包括從 SQL Server 版本 2008 到目前版本的相關主題。 在主題標題之下通常會有一行的「適用於」列出 SQL Server 版本，也可能有其他產品的名稱。 通常相同的「適用於」標記也會列出 Azure SQL Database。 如果「適用於」未列出 Azure SQL Database，則該主題內容就不適用於 Azure SQL Database。 有時候您可能會看到一行的「適用於」列出多項產品並且皆隨附一個小圖示，指出該主題是否適用於每項產品。
 
- 例如，可用性群組是在 SQL Server 2012 中導入。 ＜**建立可用性群組**＞主題指出它適用於 **SQL Server (SQL Server 2012 到最新版本)**，因為它不適用於 SQL Server 2008、SQL Server 2008 R2 或 Azure SQL Database。
+ 例如，可用性群組是在 SQL Server 2012 中導入。  **建立可用性群組** 主題指出它會套用至 **SQL Server (SQL Server 2012 到目前的版本)** 因為不會套用至 SQL Server 2008，SQL Server 2008 R2，或 Azure SQL Database。
 
 在某些情況下，一般主題的主旨可用於產品中，但產品之間會有些微的差異。 依適當情況會在主題的中間點指出差異。
-
-
-
-
 
 

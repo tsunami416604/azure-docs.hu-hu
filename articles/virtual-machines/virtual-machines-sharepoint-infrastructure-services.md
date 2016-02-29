@@ -17,13 +17,13 @@
     ms.date="10/20/2015"
     ms.author="josephd"/>
 
-
 # 在 Azure 基礎結構服務中架設的 SharePoint 伺服器陣列
 
 [AZURE.INCLUDE [learn-about-deployment-models-both-include](../../includes/learn-about-deployment-models-both-include.md)]
 
 在 Microsoft Azure 基礎結構服務中，設定第一個或下一個開發/測試或實際執行 SharePoint 伺服器陣列，這樣您就可以利用簡化設定的優點，還能夠快速擴大伺服器陣列，使其增加新的容量或最佳化關鍵功能。
-> [AZURE.NOTE] Microsoft 已發行 SharePoint Server 2016 IT 預覽版。 若要輕鬆安裝和測試此預覽版，您可以搭配 SharePoint Server 2016 IT 預覽版和其預先安裝的必要元件來使用 Azure 虛擬機器資源庫映像。 如需詳細資訊，請參閱 [測試 Azure 中的 SharePoint Server 2016 IT Preview](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)。
+
+> [AZURE.NOTE] Microsoft 已發行 SharePoint Server 2016 IT Preview。 若要輕鬆安裝和測試此預覽版，您可以搭配 SharePoint Server 2016 IT 預覽版和其預先安裝的必要元件來使用 Azure 虛擬機器資源庫映像。 如需詳細資訊，請參閱 [測試 Azure 中的 SharePoint Server 2016 IT Preview](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)。
 
 ## 基本的 SharePoint 開發/測試伺服器陣列
 
@@ -32,7 +32,8 @@
 請參閱 [SharePoint 2013 非高可用性伺服器陣列](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/) Azure 入口網站的 Azure Marketplace 中的項目。 這會為連結網際網路的 SharePoint 網站建立基本開發/測試伺服器陣列。 請參閱 [建立 SharePoint 伺服器陣列](virtual-machines-sharepoint-farm-azure-preview.md) 如需詳細資訊。
 
 您也可以使用 Azure 資源管理員範本。 請參閱 [部署三部伺服器的 SharePoint 伺服器陣列](virtual-machines-workload-template-sharepoint.md#deploy-a-three-server-sharepoint-farm)。
-> [AZURE.NOTE] Azure 入口網站的 Azure Marketplace 中的 **SharePoint 伺服器陣列**項目已移除。
+
+> [AZURE.NOTE]  **SharePoint 伺服器陣列** Azure 入口網站的 Azure Marketplace 中的項目已移除。
 
 ## 高可用性 SharePoint 開發/測試伺服器陣列
 
@@ -41,7 +42,8 @@
 請參閱 [Sharepoint 2013 HA](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/) Azure 入口網站的 Azure Marketplace 中的項目。 這會為網際網路對向的 SharePoint 網站建立高可用性的開發/測試伺服器陣列。 請參閱 [建立 SharePoint 伺服器陣列](virtual-machines-sharepoint-farm-azure-preview.md) 如需詳細資訊。
 
 您也可以使用 Azure 資源管理員範本。 請參閱 [部署九部伺服器的 SharePoint 伺服器陣列](virtual-machines-workload-template-sharepoint.md#deploy-a-nine-server-sharepoint-farm)。
-> [AZURE.NOTE] Azure 入口網站的 Azure Marketplace 中的 **SharePoint 伺服器陣列**項目已移除。
+
+> [AZURE.NOTE]  **SharePoint 伺服器陣列** Azure 入口網站的 Azure Marketplace 中的項目已移除。
 
 ## 混合式雲端開發/測試伺服器陣列
 
@@ -59,15 +61,11 @@
 
 [適用於 SharePoint 2013 的 Microsoft Azure 架構](https://technet.microsoft.com/library/dn635309.aspx)
 
-[使用 SharePoint Server 2013 的 Microsoft Azure 中的網際網路網站](https://technet.microsoft.com/library/dn635307.aspx)
+[使用 SharePoint Server 2013 之 Microsoft Azure 中的網際網路網站](https://technet.microsoft.com/library/dn635307.aspx)
 
-[SharePoint Server 2013 在 Microsoft Azure 中的嚴重損壞修復](https://technet.microsoft.com/library/dn635313.aspx)
+[Microsoft Azure 中的 SharePoint Server 2013 災害復原](https://technet.microsoft.com/library/dn635313.aspx)
 
 [使用 Microsoft Azure Active Directory 進行 SharePoint 2013 驗證](https://technet.microsoft.com/library/dn635311.aspx)
 
-[部署 Office 365 目錄同步作業 (DirSync) 在 Microsoft Azure](https://technet.microsoft.com/library/dn635310.aspx)
-
-
-
-
+[在 Microsoft Azure 中部署 Office 365 Directory 同步處理 (DirSync)](https://technet.microsoft.com/library/dn635310.aspx)
 

@@ -17,14 +17,14 @@
     ms.author="markusvi"/>
 
 
-
 # 存取面板簡介
 
-「存取面板」是一種 Web 入口網站，可讓 Azure Active Directory 中擁有組織帳戶的使用者檢視和啟動 Azure AD 系統管理員已授與他們存取權的雲端應用程式。如果您是 Azure Active Directory 版本的使用者，您也可以使用透過存取面板的自助式群組管理功能。 <br>
-存取面板獨立於 Azure 管理入口網站，並不需要有 Azure 訂用帳戶的使用者。
+
+「存取面板」是一種 Web 入口網站，可讓 Azure Active Directory 中擁有組織帳戶的使用者檢視和啟動 Azure AD 系統管理員已授與他們存取權的雲端應用程式。 如果您是使用 Azure Active Directory 版本的使用者，您也可以透過存取面板使用自助式群組管理功能。 <br>
+存取面板獨立於 Azure 管理入口網站，並不需要有 Azure 訂用帳戶的使用者。 
 
 
-![存取面板][1]
+![存取面板][] 1 
 
 
 存取面板可讓使用者編輯某些設定檔設定，包括以下功能：
@@ -39,12 +39,13 @@
 
 - 檢視和啟動 Azure AD 系統管理員已授與您存取權的雲端應用程式。 如需從使用者的觀點來看存取面板的詳細資訊，請參閱 [使用存取面板](https://msdn.microsoft.com/library/azure/dn756411.aspx)。
 
-- 自我管理群組。 更具體地說，您可以在 Azure AD 中建立及管理安全性群組，並要求安全性群組成員資格。 如需詳細資訊，請參閱 [Azure AD 中使用者的自助式群組管理](active-directory-accessmanagement-self-service-group-management.md) 和 [管理群組](active-directory-manage-groups.md)。
+- 自我管理群組。 更具體地說，您可以在 Azure AD 中建立及管理安全性群組，並要求安全性群組成員資格。 如需詳細資訊，請參閱 [Azure AD 中使用者的自助式群組管理](active-directory-accessmanagement-self-service-group-management.md) 和 [管理群組](active-directory-manage-groups.md)。 
 
 
 
 
 ## 存取存取面板
+
 
 使用者瀏覽以下 URL 以網頁瀏覽器存取存取面板: <br> 
 **http://myapps.microsoft.com**
@@ -55,18 +56,18 @@
 在此情況下，可能會使用已經在 Azure 管理入口網站中您目錄的 [網域] 索引標籤底下設定的任何作用中網域名稱或已驗證的網域名稱，如以下螢幕擷取畫面所示。
 
 
-![Wingtip Toys][2]
+![Wingtip] toys[] 2  
 
 
 此 URL 必須散佈給要登入與 Azure AD 整合的應用程式的所有使用者。
-
+ 
 
 
 
 
 ## 驗證
 
-若要前往存取面板，使用者必須在 Azure AD 中使用組織帳戶驗證。 <br>
+若要前往存取面板，必須使用 Azure AD 中的組織帳戶驗證使用者。 <br>
 使用者可以直接向 Azure AD 進行驗證。 <br>
 或者，如果組織已設定使用 ADFS 或其他技術的同盟，使用者可以由 Windows Server Active Directory 驗證。
 
@@ -74,8 +75,8 @@
 如果組織已設定同盟，則輸入使用者名稱已經足夠。
 
 驗證之後，使用者將能夠與系統管理員已經整合到目錄中的應用程式互動。 
- 若要了解如何使用 Azure AD 整合的應用程式，請參閱 [應用程式存取和單一登入與 Azure Active Directory 是什麼?](active-directory-appssoaccess-whatis.md).
-
+ 若要了解如何使用 Azure AD 整合的應用程式，請參閱 [應用程式存取和單一登入與 Azure Active Directory 是什麼?](active-directory-appssoaccess-whatis.md)。
+ 
 
 
 
@@ -100,10 +101,11 @@
 
 ### My Apps for Android
 
+
 My Apps for Android 的任何 Android 裝置執行 Android 4.1 版和更新，都支援，而且是可供使用 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.myapps)。
 
 
-![My Apps][3]
+![我的應用程式][] 3   
 
 
 
@@ -112,18 +114,20 @@ My Apps for Android 的任何 Android 裝置執行 Android 4.1 版和更新，�
 
 ### My Apps for iPhone 和 My Apps for iPad
 
+
 執行 iOS 7 版和更新版本的任何 iPhone 或 iPad 都支援 My Apps for iOS，而且現在在 Apple App Store 中有提供。
 
 
-![應用程式設定檔][4]
-
-
-
-> [AZURE.NOTE] 支援與 Azure AD 同盟的應用程式 (包括 Salesforce、Google Apps、Dropbox、Box、Concur、Workday、Office 365 和其他 70 種以上的應用程式) 可以在任何裝置的幾乎任何網頁瀏覽器上登入，而不需要外掛程式或行動應用程式。 其餘的存取面板經驗 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 也不需要 My Apps 行動應用程式在行動裝置上使用。
+![應用程式設定檔][] 4    
 
 
 
 
+> [AZURE.NOTE] 支援同盟與 Azure AD (包括 Salesforce、 Google Apps、 Dropbox、 Box、 Concur、 Workday、 Office 365 及其他 70) 的應用程式可以登入，在任何裝置上的任何 web 瀏覽器而不需要外掛程式或行動裝置應用程式。 其餘的存取面板經驗 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 也不需要 My Apps 行動應用程式在行動裝置上使用。
+ 
+
+
+ 
 
 ## 測試使用者體驗的秘訣
 
@@ -136,11 +140,11 @@ My Apps for Android 的任何 Android 裝置執行 Android 4.1 版和更新，�
 2. 移至 [存取面板] **http://myapps.microsoft.com**。
 
 3. 在登入頁面中，輸入您目錄中想要測試的帳戶的使用者名稱和密碼。
-
+ 
 ## 啟動應用程式
 
 可能出現在存取面板上的應用程式有數種。
-
+ 
 ### Office 365 應用程式
 
 如果組織打算使用 Office 365 應用程式，且使用者有授權，則 Office 365 應用程式將會出現在使用者的存取面板上。
@@ -180,10 +184,9 @@ My Apps for Android 的任何 Android 裝置執行 Android 4.1 版和更新，�
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-
-
-[1]: ./media/active-directory-saas-access-panel-introduction/ic767166.png 
-[2]: ./media/active-directory-saas-access-panel-introduction/ic767167.png 
-[3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png 
-[4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png 
+<!--Image references-->
+[1]: ./media/active-directory-saas-access-panel-introduction/ic767166.png
+[2]: ./media/active-directory-saas-access-panel-introduction/ic767167.png
+[3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
+[4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
 

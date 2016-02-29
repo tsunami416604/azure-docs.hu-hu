@@ -1,32 +1,31 @@
 ## NIC
+ 
+網路介面卡 (NIC) 資源提供 VNet 資源中現有子網路的網路連線能力。 雖然您可以將 NIC 建立為獨立物件，但您必須將其關聯到另一個物件，才能實際提供連線。 NIC 可用來將 VM 連接到子網路、公用 IP 位址或負載平衡器。  
 
-網路介面卡 (NIC) 資源提供 VNet 資源中現有子網路的網路連線能力。 雖然您可以將 NIC 建立為獨立物件，但您必須將其關聯到另一個物件，才能實際提供連線。 NIC 可用來將 VM 連接到子網路、公用 IP 位址或負載平衡器。
-
-| 屬性| 說明| 範例值|
+|屬性|說明|範例值|
 |---|---|---|
-| **virtualMachine**| 與 NIC 相關聯的 VM。| /subscriptions/{guid}/../Microsoft.Compute/virtualMachines/vm1|
-| **macAddress**| 適用於 NIC 的 MAC 位址| 介於 4 到 30 之間的任意值|
-| **networkSecurityGroup**| 關聯到 NIC 的 NSG| /subscriptions/{guid}/../Microsoft.Network/networkSecurityGroups/myNSG1|
-| **dnsSettings**| 適用於 NIC 的 DNS 設定| see [PIP](#Public-IP-address)|
+|**virtualMachine**|與 NIC 相關聯的 VM。|/subscriptions/{guid}/../Microsoft.Compute/virtualMachines/vm1|
+|**macAddress**|適用於 NIC 的 MAC 位址|介於 4 到 30 之間的任意值|
+|**networkSecurityGroup**|關聯到 NIC 的 NSG|/subscriptions/{guid}/../Microsoft.Network/networkSecurityGroups/myNSG1|
+|**dnsSettings**|適用於 NIC 的 DNS 設定|請參閱 [PIP](#Public-IP-address)|
 
 網路介面卡或 NIC 代表可以關聯到虛擬機器 (VM) 的網路介面。 一個 VM 可以有一或多個 NIC。
 
 ![單一 VM 上的 NIC](./media/resource-groups-networking/Figure3.png)
 
 ### IP 組態
+Nic 已命名的子物件 **ipConfigurations** 包含下列屬性:
 
-NIC 具有名為 **ipConfigurations** 的子物件，其包含下列屬性：
-
-| 屬性| 說明| 範例值|
+|屬性|說明|範例值|
 |---|---|---|
-| **subnet**| NIC 連接到的子網路。| /subscriptions/{guid}/../Microsoft.Network/virtualNetworks/myvnet1/subnets/mysub1|
-| **privateIPAddress**| 子網路中適用於 NIC 的 IP 位址| 10.0.0.8|
-| **privateIPAllocationMethod**| IP 配置方法| 動態或靜態|
-| **enableIPForwarding**| 是否可以使用 NIC 來進行路由| True 或 False|
-| **primary**| NIC 是否為 VM 的主要 NIC| True 或 False|
-| **publicIPAddress**| 與 NIC 相關聯的 PIP| 請參閱 [DNS 設定](#DNS-settings)|
-| **loadBalancerBackendAddressPools**| 與 NIC 相關聯的後端位址集區| |
-| **loadBalancerInboundNatRules**| 與 NIC 相關聯的輸入負載平衡器 NAT 規則| |
+|**subnet**|NIC 連接到的子網路。|/subscriptions/{guid}/../Microsoft.Network/virtualNetworks/myvnet1/subnets/mysub1|
+|**privateIPAddress**|子網路中適用於 NIC 的 IP 位址|10.0.0.8|
+|**privateIPAllocationMethod**|IP 配置方法|動態或靜態|
+|**enableIPForwarding**|是否可以使用 NIC 來進行路由|True 或 False|
+|**primary**|NIC 是否為 VM 的主要 NIC|True 或 False|
+|**publicIPAddress**|與 NIC 相關聯的 PIP|請參閱 [DNS 設定](#DNS-settings)|
+|**loadBalancerBackendAddressPools**|與 NIC 相關聯的後端位址集區||
+|**loadBalancerInboundNatRules**|與 NIC 相關聯的輸入負載平衡器 NAT 規則||
 
 JSON 格式的範例公用 IP 位址：
 
@@ -77,8 +76,4 @@ JSON 格式的範例公用 IP 位址：
 ### 其他資源
 
 - 讀取 [REST API 參考文件](https://msdn.microsoft.com/library/azure/mt163579.aspx) nic。
-
-
-
-
 

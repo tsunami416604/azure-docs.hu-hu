@@ -1,6 +1,6 @@
 <properties 
     pageTitle="使用 Azure 媒體服務 .NET SDK 建立篩選器" 
-    description="本主題說明如何建立篩選器，讓您的用戶端可以使用篩選器來串流特定的資料流區段。媒體服務會建立動態資訊清單來完成此選擇性資料流。" 
+    description="本主題說明如何建立篩選器，讓您的用戶端可以使用篩選器來串流特定的資料流區段。 媒體服務會建立動態資訊清單來完成此選擇性資料流。" 
     services="media-services" 
     documentationCenter="" 
     authors="Juliako" 
@@ -17,39 +17,37 @@
     ms.author="juliako"/>
 
 
-
-# 使用 Azure 媒體服務 .NET SDK 建立篩選器
+#使用 Azure 媒體服務 .NET SDK 建立篩選器
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-dynamic-manifest.md)
 - [REST](media-services-rest-dynamic-manifest.md)
 
-
-從 2.11 版開始，媒體服務可讓您為資產定義篩選器。 這些篩選器是伺服器端規則，可讓您的客戶選擇執行如下的動作：只播放一段視訊 (而非播放完整視訊)，或只指定您客戶裝置可以處理的一部分音訊和視訊轉譯 (而非與該資產相關的所有轉譯)。 透過在您客戶要求下建立的**動態資訊清單**可達成對資訊進行這樣的篩選，藉此根據指定的篩選器來串流視訊。
+從 2.11 版開始，媒體服務可讓您為資產定義篩選器。 這些篩選器是伺服器端規則，可讓您的客戶選擇執行如下的動作：只播放一段視訊 (而非播放完整視訊)，或只指定您客戶裝置可以處理的一部分音訊和視訊轉譯 (而非與該資產相關的所有轉譯)。 此篩選您的資產可透過 **動態資訊清單**客戶的要求來串流視訊時建立的根據指定的篩選器。
 
 如需詳細資訊，篩選器與動態資訊清單，請參閱 [動態資訊清單概觀](media-services-dynamic-manifest-overview.md)。
 
-本主題說明如何使用媒體服務 .NET SDK 建立、更新與刪除篩選器。
+本主題說明如何使用媒體服務 .NET SDK 建立、更新與刪除篩選器。 
 
 
-請注意，如果您更新篩選器，則資料流端點最多需要 2 分鐘的時間來重新整理規則。 如果內容是使用此篩選器提供的 (並快取在 Proxy 與 CDN 快取中)，則更新此篩選器會造成播放程式失敗。 建議在更新篩選器之後清除快取。 如果這個選項無法執行，請考慮使用不同的篩選器。
+請注意，如果您更新篩選器，則資料流端點最多需要 2 分鐘的時間來重新整理規則。 如果內容是使用此篩選器提供的 (並快取在 Proxy 與 CDN 快取中)，則更新此篩選器會造成播放程式失敗。 建議在更新篩選器之後清除快取。 如果這個選項無法執行，請考慮使用不同的篩選器。 
 
-## 用於建立篩選器的類型
+##用於建立篩選器的類型
 
-建立篩選器時會使用下列類型：
+建立篩選器時會使用下列類型： 
 
-- **IStreamingFilter**。 此類型根據下列 REST API [篩選](http://msdn.microsoft.com/library/azure/mt149056.aspx)
+- **IStreamingFilter**。  此類型根據下列 REST API [篩選](http://msdn.microsoft.com/library/azure/mt149056.aspx)
 - **IStreamingAssetFilter**。 此類型根據下列 REST API [AssetFilter](http://msdn.microsoft.com/library/azure/mt149053.aspx)
 - **PresentationTimeRange**。 此類型根據下列 REST API [PresentationTimeRange](http://msdn.microsoft.com/library/azure/mt149052.aspx)
 - **FilterTrackSelectStatement** 和 **IFilterTrackPropertyCondition**。 這些類型根據下列 REST Api [FilterTrackSelect 和 FilterTrackPropertyCondition](http://msdn.microsoft.com/library/azure/mt149055.aspx)
 
 
-## 建立/更新/讀取/刪除全域篩選器
+##建立/更新/讀取/刪除全域篩選器
 
 下列程式碼示範如何使用.NET 來建立、更新、讀取和刪除資產篩選器。
-
-    string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
     
+    string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
+                
     List<FilterTrackSelectStatement> filterTrackSelectStatements = new List<FilterTrackSelectStatement>();
     
     FilterTrackSelectStatement filterTrackSelectStatement = new FilterTrackSelectStatement();
@@ -69,21 +67,22 @@
     // Read
     var filterUpdated = _context.Filters.FirstOrDefault();
     Console.WriteLine(filterUpdated.Name);
-    
+
     // Delete
     filter.Delete();
 
-## 建立/更新/讀取/刪除資產篩選器
+
+##建立/更新/讀取/刪除資產篩選器
 
 下列程式碼示範如何使用.NET 來建立、更新、讀取和刪除資產篩選器。
 
-
+    
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
     var asset = _context.Assets.Create(assetName, AssetCreationOptions.None);
     
     string filterName = "AssetFilter_" + Guid.NewGuid().ToString();
     
-    
+        
     // Create
     IStreamingAssetFilter filter = asset.AssetFilters.Create(filterName,
                                         new PresentationTimeRange(), 
@@ -102,23 +101,26 @@
     
     // Delete
     filterUpdated.Delete();
+    
 
-## 建置使用篩選器的資料流 URL
+
+
+##建置使用篩選器的資料流 URL
 
 如需如何發佈與傳遞資產資訊，請參閱 [內容傳遞給客戶概觀](media-services-deliver-content-overview.md)。
 
 
 下列範例顯示如何將篩選器新增至資料流 URL。
 
-**MPEG DASH**
+**MPEG DASH** 
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V4**
+**Apple HTTP 即時資料流 (HLS) V4**
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V3**
+**Apple HTTP 即時資料流 (HLS) V3**
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
@@ -126,26 +128,24 @@
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 
+
 **HDS**
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f, filter=MyFilter)
 
-## 媒體服務學習路徑
+
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-## 另請參閱
+##另請參閱 
 
 [動態資訊清單概觀](media-services-dynamic-manifest-overview.md)
-
-
-
-
-
+ 
 
 

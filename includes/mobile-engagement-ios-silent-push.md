@@ -1,16 +1,16 @@
-> [AZURE.IMPORTANT] 若要從 Mobile Engagement 接收推播通知，您必須啟用 `遠端的無訊息通知` 應用程式中。 您需要將遠端通知值新增到 Info.plist 檔案中的 UIBackgroundModes 陣列。
+> [AZURE.IMPORTANT] 若要從 Mobile Engagement 接收推播通知，您必須啟用 `Silent Remote Notifications` 應用程式中。 您需要將遠端通知值新增到 Info.plist 檔案中的 UIBackgroundModes 陣列。
 
-1. 開啟 `info.plist` 專案中的檔案
-2. 以滑鼠右鍵按一下清單中第一個項目 (`資訊屬性清單`)，並新增新的資料列
+1. 開啟專案中的 `info.plist` 檔案
+2. 以滑鼠右鍵按一下清單中最上方的項目 (`Information Property List`)，然後新增新的資料列
 
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push1.png)
 
-3. 新的資料列中輸入 `需要背景模式`
+3. 在新的資料列中輸入 `Required background modes`
 
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push2.png)
 
 4. 按一下向左鍵以展開資料列
-5. 將下列的值加入至項目 0 `應用程式下載內容推播通知以`
+5. 將下列的值加入至項目 0 `App downloads content in response to push notifications`
 
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push3.png)
 
@@ -21,10 +21,6 @@
         <string>remote-notification</string>
         </array>
 
-7. 如果您使用 **Xcode 7 +** 和 **iOS 9 +**：
-    - 在 [目標] > [目標名稱] > [功能]，啟用 [推播通知]****。
-
-
-
-
+7. 如果您使用 **Xcode 7 +** 和 **iOS 9 +**:
+    - 啟用 **推播通知** 目標 > 目標名稱 > 功能。
 

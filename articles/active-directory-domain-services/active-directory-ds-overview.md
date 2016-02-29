@@ -16,11 +16,9 @@
     ms.date="12/16/2015"
     ms.author="maheshu"/>
 
-
 # Azure AD 網域服務 *(預覽)*
 
 ## 概觀
-
 Azure 基礎結構服務可讓您以敏捷的方式部署各種不同的運算解決方案。 利用 Azure 虛擬機器，您幾乎可以進行即時部署，而且只需要以分鐘計價。 利用對 Windows、Linux、SQL Server、Oracle、IBM、SAP 和 BizTalk 的支援性，您幾乎可以在所有作業系統上使用任何語言部署所有工作負載。 這些優點可讓您將內部部署的舊版應用程式移轉至 Azure，以便節約營運費用。
 
 將內部部署應用程式移轉至 Azure 的一個重要層面是處理這些應用程式的身分識別需求。 目錄感知應用程式可能會依賴 LDAP 對公司目錄讀取或寫入存取，或仰賴 Windows 整合式驗證 (Kerberos 或 NTLM 驗證) 來驗證使用者。 在 Windows Server 執行的企業營運應用程式通常都會部署在已加入網域的電腦，因此只要使用群組原則就能安全地加以管理。 要將內部部署應用程式「隨即轉移」(lift-and-shift) 至雲端，就必須先為這些企業身分識別基礎結構解決相依性問題。
@@ -37,13 +35,11 @@ Azure AD 網域服務的設計可提供更簡單的替代方法。
 
 
 ## Azure AD 網域服務簡介
-
 Azure AD 網域服務提供受管理的網域服務，例如：加入網域、群組原則、LDAP、Kerberos/NTLM 驗證等，與 Windows Server Active Directory 完全相容。 Azure AD 網域服務可讓您取用這些網域服務，而不需要您在雲端中部署、管理和修補網域控制站。 Azure AD 網域服務與您現有的 Azure AD 租用戶整合，因此能讓使用者使用其公司認證登入。 此外，您可以使用現有的群組和使用者帳戶，安全地存取資源，以確保更順暢地將內部部署資源「隨即轉移」(lift-and-shift) 至 Azure 基礎結構服務。
 
 Azure AD 網域服務合作無間，而不論您的 Azure AD 租用戶是僅限雲端或與您的內部部署 Active Directory 同步。
 
 ### 僅限雲端的組織的 Azure AD 網域服務
-
 僅限雲端的 Azure AD 租用戶 (通常稱為「受管理的租用戶」) 沒有任何內部部署身分識別使用量。 換句話說，使用者、其密碼和群組成員資格為雲端原生 - 也就是在 Azure AD 中建立和管理。 考慮一下 Contoso 是僅限雲端的 Azure AD 租用戶。 如下圖中所示，Contoso 的系統管理員已在 Azure 基礎結構服務中設定虛擬網路。 應用程式和伺服器工作負載會部署在 Azure 虛擬機器的此虛擬網路中。 由於 Contoso 是僅限雲端的租用戶，所有的使用者身分識別、其認證和群組成員資格都是在 Azure AD 中建立和管理。
 
 ![Azure AD 網域服務概觀](./media/active-directory-domain-services-overview/aadds-overview.png)
@@ -58,10 +54,9 @@ Azure AD 網域服務所佈建的受管理網域的幾個顯著層面如下所�
 
 
 ### 混合式組織的 Azure AD 網域服務
-
 具有混合式 IT 基礎結構的組織會混合取用雲端資源和內部部署資源。 這類組織會從其內部部署目錄同步身分識別資訊到其 Azure AD 租用戶。 隨著混合式組織尋求將他們的更多內部部署應用程式移轉至雲端，尤其是舊版目錄感知應用程式，Azure AD 網域服務對組織而言可說是非常有用。
 
-已部署 Litware Corporation [Azure AD Connect](../active-directory/active-directory-aadconnect.md), ，以便其 Azure AD 租用戶的身分識別資訊從他們的內部部署目錄同步。 這包括使用者帳戶、用於驗證的認證雜湊 (密碼同步) 與群組成員資格。 請注意，**混合式組織必須使用密碼同步處理，才能使用 Azure AD 網域服務**。 這是因為在 Azure AD 網域服務提供的受管理網域中需要使用者的認證，才能透過 NTLM 或 Kerberos 驗證方法驗證這些使用者。
+已部署 Litware Corporation [Azure AD Connect](../active-directory/active-directory-aadconnect.md), ，以便其 Azure AD 租用戶的身分識別資訊從他們的內部部署目錄同步。 這包括使用者帳戶、用於驗證的認證雜湊 (密碼同步) 與群組成員資格。 請注意， **密碼同步化是混合式組織使用 Azure AD 網域服務的必要步驟**。 這是因為在 Azure AD 網域服務提供的受管理網域中需要使用者的認證，才能透過 NTLM 或 Kerberos 驗證方法驗證這些使用者。
 
 ![Litware Corporation 的 Azure AD 網域服務](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
 
@@ -76,18 +71,13 @@ Azure AD 網域服務所佈建的受管理網域的幾個顯著層面如下所�
 
 
 ## 優點
-
 使用 Azure AD 網域服務，您可以享用下列優點：
 
--   **簡單** - 您可以滿足部署到 Azure 基礎結構服務的虛擬機器的身分識別需求 - 只需簡單按幾下滑鼠，而不需在 Azure 中部署和管理身分識別基礎結構，或將連線設定回您的內部部署身分識別基礎結構。
+-   **簡單** – 就能滿足虛擬機器部署到幾個簡單按下滑鼠，而不需要部署和管理身分識別基礎結構，在 Azure 或安裝程式連線至您的內部部署身分識別基礎結構中的 Azure 基礎結構服務的身分識別需求。
 
--   **整合** - Azure AD 網域服務與 Azure AD 租用戶密切整合。 您現在可以依賴 Azure AD，讓它成為能夠同時迎合現代化應用程式及傳統目錄感知應用程式需求的整合雲端式企業目錄。
+-   **整合式** – Azure AD 網域服務與 Azure AD 租用戶密切整合。 您現在可以依賴 Azure AD，讓它成為能夠同時迎合現代化應用程式及傳統目錄感知應用程式需求的整合雲端式企業目錄。
 
--   **相容** - Azure AD 網域服務是以 Windows Server Active Directory 經實證的企業級基礎結構為基礎，因此，您的應用程式可仰賴相容性更高的 Windows Server Active Directory 功能。 請注意，並非 Windows Server AD 中的所有功能目前都可在 Azure AD 網域服務中使用。 不過，可用的功能與您在內部部署基礎結構中依賴的相對應 Windows Server AD 功能相容。 LDAP、Kerberos、NTLM、群組原則和 Azure AD 網域服務所提供的網域加入功能構成了成熟的產品服務，已對各種 Windows Server 版本經過測試並進一步修改。
+-   **相容** – Azure AD 網域服務建置在 Windows Server Active Directory 的已經實證的企業級基礎結構，因為您的應用程式可以依賴較大的 Windows Server Active Directory 功能的相容性。 請注意，並非 Windows Server AD 中的所有功能目前都可在 Azure AD 網域服務中使用。 不過，可用的功能與您在內部部署基礎結構中依賴的相對應 Windows Server AD 功能相容。 LDAP、Kerberos、NTLM、群組原則和 Azure AD 網域服務所提供的網域加入功能構成了成熟的產品服務，已對各種 Windows Server 版本經過測試並進一步修改。
 
--   **符合成本效益** - 有了 Azure AD 網域服務，您可以免除為支援傳統目錄感知應用程式所需承受與管理身分識別基礎結構相關聯的基礎結構和管理負擔。 您可以將這些應用程式移至 Azure 基礎結構服務，並受益於營運費用的大幅節約。
-
-
-
-
+-   **符合成本效益** – Azure AD 網域服務時，就可以避免與管理身分識別基礎結構來支援傳統目錄感知應用程式相關聯的基礎結構和管理負擔。 您可以將這些應用程式移至 Azure 基礎結構服務，並受益於營運費用的大幅節約。
 

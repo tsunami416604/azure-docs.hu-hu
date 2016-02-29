@@ -1,6 +1,6 @@
 <properties
     pageTitle="疑難排解遠端桌面連線到 Azure VM | Microsoft Azure"
-    description="在 Windows VM 上疑難排解遠端桌面連線錯誤。取得快速因應步驟、錯誤訊息的說明和詳細的網路疑難排解。"
+    description="在 Windows VM 上疑難排解遠端桌面連線錯誤。 取得快速因應步驟、錯誤訊息的說明和詳細的網路疑難排解。"
     keywords="Remote desktop error,remote desktop connection error,cannot connect to VM,remote desktop troubleshooting"
     services="virtual-machines"
     documentationCenter=""
@@ -18,10 +18,9 @@
     ms.date="10/27/2015"
     ms.author="dkshir"/>
 
-
 # 疑難排解執行 Windows 之 Azure 虛擬機器的遠端桌面連線
 
-有許多原因可能導致嘗試連線到 Windows 的 Azure 虛擬機器時發生遠端桌面 (RDP) 錯誤。 問題與 VM 上的 RDP 軟體、基礎主機電腦、網路連線或連接的用戶端上相關。 本文將協助您找出原因並加以更正。
+有許多原因可能導致嘗試連線到 Windows 的 Azure 虛擬機器時發生遠端桌面 (RDP) 錯誤。 問題與 VM 上的 RDP 軟體、基礎主機電腦、網路連線或連接的用戶端上相關。 本文將協助您找出原因並加以更正。  
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -36,21 +35,21 @@
 這些基本步驟可協助解決使用傳統部署模型所建立之虛擬機器中最常見的遠端桌面連線失敗。 在執行每個步驟之後，請嘗試重新連接至 VM。
 
 - 重設遠端桌面服務從 [Azure 入口網站](https://portal.azure.com) 與 RDP 伺服器修復啟動問題。<br>
-    依序按一下 [全部瀏覽] > [虛擬機器 (傳統)] > 您的 Windows 虛擬機器 > [重設遠端存取]****。
+    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > **重設遠端存取**。
 
     ![顯示重設 RDP 設定的螢幕擷取畫面](./media/virtual-machines-troubleshoot-remote-desktop-connections/Portal-RDP-Reset-Windows.png)
 
-- 重新啟動虛擬機器其他的啟動問題。<br>
-    依序按一下 [全部瀏覽] > [虛擬機器 (傳統)] > 您的 Windows 虛擬機器 > [重新啟動]****。
+- 重新啟動虛擬機器以處理其他啟動問題。<br>
+    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > **重新啟動**。
 
-- 調整大小的 VM，以修正任何主機的問題。<br>
-    依序按一下 [全部瀏覽] > [虛擬機器 (傳統)] > 您的 Windows 虛擬機器 > [設定] > [大小]****。 如需詳細步驟，請參閱 [調整虛擬機器的大小](https://msdn.microsoft.com/library/dn168976.aspx)。
+- 調整 VM 大小以修正任何主機問題。<br>
+    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > 設定 > **大小**。 如需詳細步驟，請參閱 [調整虛擬機器的大小](https://msdn.microsoft.com/library/dn168976.aspx)。
 
 - 檢閱您的 VM 主控台記錄檔或螢幕擷取畫面以修正開機問題。
-    依序按一下 [全部瀏覽] > [虛擬機器 (傳統)] > 您的 Windows 虛擬機器 > [開機診斷]****。
+    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > **開機診斷**
 
 - 檢查 VM 的資源健康情況是否有任何平台問題。 
-    依序按一下 [全部瀏覽] > [虛擬機器 (傳統)] > 您的 Windows 虛擬機器 > [檢查健康情況]****
+    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > **檢查健全狀況**
 
 ## 修正 [資源管理員] 部署模型中常見遠端桌面錯誤的步驟
 
@@ -70,14 +69,14 @@
     Set-AzureVMExtension -ResourceGroupName "myRG" -VMName "myVM" -Name "myVMAccessExtension" -ExtensionType "VMAccessAgent" -Publisher "Microsoft.Compute" -typeHandlerVersion "2.0" -Location Westus
     ```
 
-- 重新啟動虛擬機器其他的啟動問題。<br>
-    依序按一下 [全部瀏覽] > [虛擬機器] > 您的 Windows 虛擬機器 > [重新啟動]****。
+- 重新啟動虛擬機器以處理其他啟動問題。<br>
+    按一下 [瀏覽所有 > 虛擬機器 > 您的 Windows 虛擬機器 > **重新啟動**。
 
-- 調整大小的 VM，以修正任何主機的問題。<br>
-    依序按一下 [全部瀏覽] > [虛擬機器] > 您的 Windows 虛擬機器 > [設定] > [大小]****。
+- 調整 VM 大小以修正任何主機問題。<br>
+    按一下 [瀏覽所有 > 虛擬機器 > 您的 Windows 虛擬機器 > 設定 > **大小**。
 
 - 檢閱 VM 的主控台記錄檔或螢幕擷取畫面，以修正開機問題。
-    依序按一下 [全部瀏覽] > [虛擬機器] > 您的 Windows 虛擬機器 > [開機診斷]****。
+    按一下 [瀏覽所有 > 虛擬機器 > 您的 Windows 虛擬機器 > **開機診斷**
 
 
 ## 疑難排解特定的遠端桌面連線錯誤
@@ -88,7 +87,7 @@
 
 2. [遠端桌面連線錯誤: 遠端桌面無法找到電腦 「 名稱 」](#rdpname)。
 
-3. [遠端桌面連線錯誤: 發生驗證錯誤。 本機安全性授權單位不能 contacted](#rdpauth)。
+3. [遠端桌面連線錯誤：發生驗證錯誤。無法連絡本機安全性授權](#rdpauth)。
 
 4. [Windows 安全性錯誤: 您的認證無法運作](#wincred)。
 
@@ -122,11 +121,10 @@
         full address:s:tailspin-azdatatier.cloudapp.net:55919
         prompt for credentials:i:1
 
-
 RDP 檔案中的位址部分有雲端服務的完整網域名稱，包含 VM (在本範例中為 tailspin-azdatatier.cloudapp.net) 以及遠端桌面流量端點的外部 TCP 連接埠 (55919)。
 
 <a id="rdpauth"></a>
-### 遠端桌面連線錯誤：發生驗證錯誤。無法連絡本機安全性授權。
+### 遠端桌面連線錯誤：發生驗證錯誤。 無法連絡本機安全性授權。
 
 原因：目標 VM 在認證的使用者名稱部分找不到安全性授權。
 
@@ -161,7 +159,7 @@ RDP 檔案中的位址部分有雲端服務的完整網域名稱，包含 VM (�
 
 每部 Windows 電腦都有遠端桌面使用者本機群組，其中包含能夠遠端登入的帳戶和群組。 本機系統管理員群組成員也有權限，即使這些帳戶未列在遠端桌面使用者本機群組中。 對於加入網域的機器，本機系統管理員群組也包含此網域的網域系統管理員。
 
-請確保您正用於連接的帳戶具有遠端桌面登入權限。 請使用網域或本機系統管理員帳戶做為因應措施，以透過遠端桌面連線，並使用電腦管理嵌入式管理單元 (**系統工具 > 本機使用者和群組 > 群組 > 遠端桌面使用者**)，將想要的帳戶新增到遠端桌面使用者本機群組。
+請確保您正用於連接的帳戶具有遠端桌面登入權限。 解決方法是，使用網域或本機系統管理員帳戶來透過遠端桌面連接，然後使用 [電腦管理] 嵌入式管理單元 (**系統工具 > 本機使用者和群組 > 群組 > 遠端桌面使用者**) 將所需的帳戶新增到 Remote Desktop Users 本機群組。
 
 ## 詳細的遠端桌面錯誤疑難排解
 
@@ -172,15 +170,11 @@ RDP 檔案中的位址部分有雲端服務的完整網域名稱，包含 VM (�
 
 [Azure IaaS (Windows) 診斷封裝](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
 
-[如何重設密碼或遠端桌面服務的 Windows 虛擬機器](virtual-machines-windows-reset-password.md)
+[如何重設 Windows 虛擬機器的密碼或遠端桌面服務](virtual-machines-windows-reset-password.md)
 
 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)
 
 [疑難排解以 Linux 為基礎之 Azure 虛擬機器的安全殼層 (SSH) 連線](virtual-machines-troubleshoot-ssh-connections.md)
 
-[疑難排解 Azure 的虛擬機器上執行的應用程式的存取](virtual-machines-troubleshoot-access-application.md)
-
-
-
-
+[疑難排解存取在 Azure 虛擬機器上執行的應用程式](virtual-machines-troubleshoot-access-application.md)
 

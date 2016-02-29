@@ -16,7 +16,6 @@
    ms.date="09/03/2015"
    ms.author="masnider"/>
 
-
 # 主動度量封裝
 
 Service Fabric 資源平衡器的常見組態是為了讓每個節點上的每個度量達到相等的使用率。 資源平衡器也負責在新的服務要求出現時，為該服務尋找位置。 如果沒有足夠的可用空間放置新的服務複本 (所有服務分割的所有複本)，資源平衡器會嘗試移動現有的工作負載，以為其建立空間。 雖然這非常正常，但視叢集的飽和度和工作負載分散程度而定，這項作業可能會很耗時。
@@ -28,7 +27,6 @@ Service Fabric 資源平衡器的常見組態是為了讓每個節點上的每�
 使用最大偏差時，資源平衡器會嘗試盡可能在某些節點上放置最多的服務，並盡可能讓最多節點保留空白。 除此之外，其中一個放置新服務的基本條件約束是：複本不能位於同一個升級網域或容錯網域中。 由於目標是要能夠快速地加入新服務，因此資源平衡器應將目標設在保持升級網域和容錯網域間負載分佈的最小標準差 (每個升級網域/容錯網域的服務負載總和)。 這樣一來，每個升級網域/容錯網域的可用空間量都會相同。 重組也會遵守同質性、放置約束限制和節點度量容量等系統中的所有其他條件約束。
 
 ## 資源平衡器叢集組態
-
 在叢集資訊清單中，資源平衡器下方的下列數個不同組態值可定義度量封裝功能的整體行為：
 
 ### DefragmentationMetrics – 資源平衡器應該考慮進行主動封裝/重組的度量。
@@ -50,7 +48,7 @@ Service Fabric 資源平衡器的常見組態是為了讓每個節點上的每�
 
 下圖顯示兩個範例，其中針對指定度量的平衡臨界值是 10。
 
-![平衡臨界值][image1]
+![平衡臨界值][Image1]
 
 請注意，在這個階段中，節點上的「使用率」並不會考慮節點容量所判斷的節點大小，而只會考慮針對特定度量目前報告的節點絕對使用量。
 
@@ -68,11 +66,10 @@ Service Fabric 資源平衡器的常見組態是為了讓每個節點上的每�
 </FabricSettings>
 ```
 
-
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
 如需詳細資訊: [資源平衡器架構](service-fabric-resource-balancer-architecture.md)
 
-
-[image1]: media/service-fabric-resource-balancer-proactive-metric-packing/PMP.png 
-
+[Image1]: media/service-fabric-resource-balancer-proactive-metric-packing/PMP.png
+ 

@@ -15,7 +15,6 @@
    ms.date="10/07/2015"
    ms.author="sethm" />
 
-
 # 搭配使用 Python 的服務匯流排與 AMQP 1.0
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
@@ -69,7 +68,7 @@ messenger.stop()
 
 #### Proton-Python 至服務匯流排 .NET API
 
-Proton-Python 訊息支援下列類型的應用程式屬性︰**int**、**long**、**float**、**uuid**、**bool**、**string**。 下列 Python 程式碼示範如何使用每一個屬性類型來設定訊息的屬性。
+Proton-python 訊息支援下列類型的應用程式屬性: **int**, ，**長**, ，**float**, ，**uuid**, ，**bool**, ，**字串**。 下列 Python 程式碼示範如何使用每一個屬性類型來設定訊息的屬性。
 
 ```
 message.properties[u"TestString"] = u"This is a string"    
@@ -79,7 +78,7 @@ message.properties[u"TestFloat"] = 1.5
 message.properties[u"TestGuid"] = uuid.uuid1()    
 ```
 
-在服務匯流排.NET API 中，訊息應用程式屬性位於在 **屬性** 集合 [BrokeredMessage []][]。 下列程式碼示範如何讀取從 Python 用戶端接收之訊息的應用程式屬性。
+在服務匯流排.NET API 中，訊息應用程式屬性位於在 **屬性** 集合 [BrokeredMessage][]。 下列程式碼示範如何讀取從 Python 用戶端接收之訊息的應用程式屬性。
 
 ```
 if (message.Properties.Keys.Count > 0)
@@ -95,18 +94,18 @@ if (message.Properties.Keys.Count > 0)
 
 下表將 Python 屬性類型對應至 .NET 屬性類型。
 
-| Python 屬性類型| .NET 屬性類型|
+| Python 屬性類型 | .NET 屬性類型 |
 |----------------------|--------------------|
-| int| int|
-| float| double|
-| long| int64|
-| uuid| guid|
-| 布林| 布林|
-| 字串| 字串|
+| int                  | int                |
+| float                | double             |
+| long                 | int64              |
+| uuid                 | guid               |
+| 布林                 | 布林               |
+| 字串               | 字串             |
 
 #### 服務匯流排 .NET API 至 Proton-Python
 
-[BrokeredMessage []][] 型別支援下列類型的應用程式屬性: **位元組**, ，**sbyte**, ，**char**, ，**簡短**, ，**ushort**, ，**int**, ，**uint**, ，**長**, ，**ulong**, ，**float**, ，**雙**, ，**十進位**, ，**bool**, ，**Guid**, ，**字串**, ，**Uri**, ，**DateTime**, ，**DateTimeOffset**, ，和 **TimeSpan**。 下列.NET 程式碼示範如何設定屬性 [BrokeredMessage []][] 物件使用這些屬性的型別。
+ [BrokeredMessage][] 型別支援下列類型的應用程式屬性: **位元組**, ，**sbyte**, ，**char**, ，**簡短**, ，**ushort**, ，**int**, ，**uint**, ，**長**, ，**ulong**, ，**float**, ，**double**, ，**十進位**, ，**bool**, ，**Guid**, ，**字串**, ，**Uri**, ，**DateTime**, ，**DateTimeOffset**, ，和 **TimeSpan**。 下列.NET 程式碼示範如何設定屬性 [BrokeredMessage][] 物件使用這些屬性的型別。
 
 ```
 message.Properties["TestByte"] = (byte)128;
@@ -141,79 +140,79 @@ if message.properties != None:
 
 下表將 .NET 屬性類型對應至 Python 屬性類型。
 
-| .NET 屬性類型| Python 屬性類型| 注意事項|
+| .NET 屬性類型 | Python 屬性類型 | 注意事項                                                                                                                                                               |
 |--------------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte| int| -|
-| sbyte| int| -|
-| char| char| Proton-python 類別|
-| short| int| -|
-| ushort| int| -|
-| int| int| -|
-| uint| int| -|
-| long| int| -|
-| ulong| long| Proton-python 類別|
-| float| float| -|
-| double| float| -|
-| decimal| String| Proton 目前不支援 decimal。|
-| 布林| 布林| -|
-| Guid| uuid| Proton-python 類別|
-| 字串| 字串| -|
-| DateTime| timestamp| Proton-python 類別|
-| DateTimeOffset| DescribedType| Datetimeoffset.utcticks 會對應至 AMQP 類型:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>|
-| TimeSpan| DescribedType| Timespan.ticks 會對應至 AMQP 類型:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>|
-| Uri| DescribedType| Uri.absoluteuri 會對應至 AMQP 類型:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>|
+| byte               | int                  | -                                                                                                                                                                     |
+| sbyte              | int                  | -                                                                                                                                                                     |
+| char               | char                 | Proton-python 類別                                                                                                                                                 |
+| short              | int                  | -                                                                                                                                                                     |
+| ushort             | int                  | -                                                                                                                                                                     |
+| int                | int                  | -                                                                                                                                                                     |
+| uint               | int                  | -                                                                                                                                                                     |
+| long               | int                  | -                                                                                                                                                                     |
+| ulong              | long                 | Proton-python 類別                                                                                                                                                 |
+| float              | float                | -                                                                                                                                                                     |
+| double             | float                | -                                                                                                                                                                     |
+| decimal            | String               | Proton 目前不支援 decimal。                                                                                                                     |
+| 布林               | 布林                 | -                                                                                                                                                                     |
+| Guid               | uuid                 | Proton-python 類別                                                                                                                                                 |
+| 字串             | 字串               | -                                                                                                                                                                     |
+| DateTime           | timestamp            | Proton-python 類別                                                                                                                                                 |
+| DateTimeOffset     | DescribedType        | Datetimeoffset.utcticks 會對應至 AMQP 類型:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan           | DescribedType        | Timespan.ticks 會對應至 AMQP 類型:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>                        |
+| Uri                | DescribedType        | Uri.absoluteuri 會對應至 AMQP 類型:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>                               |
 
 ### 標準屬性
 
-下表顯示 Proton-python 標準訊息屬性之間的對應和 [BrokeredMessage []][] 標準訊息屬性。
+下表顯示 Proton-python 標準訊息屬性之間的對應和 [BrokeredMessage][] 標準訊息屬性。
 
 #### Proton-Python 至服務匯流排 .NET API
 
-| Proton-Python| 服務匯流排 .NET| 注意事項|
+| Proton-Python        | 服務匯流排 .NET         | 注意事項                                                     |
 |----------------------|--------------------------|-----------------------------------------------------------|
-| 持久| n/a| 服務匯流排僅支援持久的訊息。|
-| 優先順序| n/a| 服務匯流排僅支援單一訊息優先順序。|
-| Ttl| Message.TimeToLive| 轉換，Proton-Python TTL 是以毫秒定義。|
-| first\_acquirer| n/a| -|
-| delivery\_count| n/a| -|
-| 識別碼| Message.MessageID| -|
-| user\_id| n/a| -|
-| 地址| Message.To| -|
-| 主體| Message.Label| -|
-| reply\_to| Message.ReplyTo| -|
-| correlation\_id| Message.CorrelationID| -|
-| content\_type| Message.ContentType| -|
-| content\_encoding| n/a| -|
-| expiry\_time| n/a| -|
-| creation\_time| n/a| -|
-| group\_id| Message.SessionId| -|
-| group\_sequence| n/a| -|
-| reply\_to\_group\_id| Message.ReplyToSessionId| -|
-| format| n/a| -|
+| 持久              | n/a                      | 服務匯流排僅支援持久的訊息。               |
+| 優先順序             | n/a                      | 服務匯流排僅支援單一訊息優先順序。      |
+| Ttl                  | Message.TimeToLive       | 轉換，Proton-Python TTL 是以毫秒定義。 |
+| first\_acquirer      | n/a                      | -                                                           |
+| delivery\_count      | n/a                      | -                                                           |
+| 識別碼                   | Message.MessageID        | -                                                           |
+| user\_id             | n/a                      | -                                                           |
+| 地址              | Message.To               | -                                                           |
+| 主體              | Message.Label            | -                                                           |
+| reply\_to            | Message.ReplyTo          | -                                                           |
+| correlation\_id      | Message.CorrelationID    | -                                                           |
+| content\_type        | Message.ContentType      | -                                                           |
+| content\_encoding    | n/a                      | -                                                           |
+| expiry\_time         | n/a                      | -                                                           |
+| creation\_time       | n/a                      | -                                                           |
+| group\_id            | Message.SessionId        | -                                                           |
+| group\_sequence      | n/a                      | -                                                           |
+| reply\_to\_group\_id | Message.ReplyToSessionId | -                                                           |
+| format               | n/a                      | -                                                           |
 
-| 服務匯流排 .NET| Proton| 注意事項|
+| 服務匯流排 .NET        | Proton                       | 注意事項                                                     |
 |-------------------------|------------------------------|-----------------------------------------------------------|
-| ContentType| Message.content\_type| -|
-| CorrelationId| Message.correlation\_id| -|
-| EnqueuedTimeUtc| n/a| -|
-| 標籤| Message.subject| -|
-| MessageId| Message.id| -|
-| ReplyTo| Message.reply\_to| -|
-| {1>replytosessionid| Message.reply\_to\_group\_id| -|
-| ScheduledEnqueueTimeUtc| n/a| -|
-| SessionId| Message.group\_id| -|
-| TimeToLive| Message.ttl| 轉換，Proton-Python TTL 是以毫秒定義。|
-| 收件人| Message.address| -|
+| ContentType             | Message.content\_type        | -                                                           |
+| CorrelationId           | Message.correlation\_id      | -                                                           |
+| EnqueuedTimeUtc         | n/a                          | -                                                           |
+| 標籤                   | Message.subject              | -                                                           |
+| MessageId               | Message.id                   | -                                                           |
+| ReplyTo                 | Message.reply\_to            | -                                                           |
+| {1>replytosessionid        | Message.reply\_to\_group\_id | -                                                           |
+| ScheduledEnqueueTimeUtc | n/a                          | -                                                           |
+| SessionId               | Message.group\_id            | -                                                           |
+| TimeToLive              | Message.ttl                  | 轉換，Proton-Python TTL 是以毫秒定義。 |
+| 收件人                      | Message.address              | -                                                           |
 
 ## 後續步驟
 
 準備好進行深入了解嗎？ 請造訪下列連結：
 
 - [服務匯流排 AMQP 概觀]
-- [Windows Server 適用的服務匯流排中的 AMQP]
+- [Windows Server 服務匯流排中的 AMQP]
 
+[BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
+[AMQP in Service Bus for Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 
-[brokeredmessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx 
-[amqp in service bus for windows server]: https://msdn.microsoft.com/library/dn574799.aspx 
-[service bus amqp overview]: service-bus-amqp-overview.md 
+[Service Bus AMQP overview]: service-bus-amqp-overview.md
 

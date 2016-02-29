@@ -6,7 +6,7 @@
    authors="nitinme" 
    manager="paulettm" 
    editor="cgronlun"/>
-
+ 
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
@@ -16,20 +16,18 @@
    ms.date="12/04/2015"
    ms.author="nitinme"/>
 
-
 # 使用 Azure PowerShell 佈建 HDInsight 叢集與資料湖存放區
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
-
+- [使用入口網站](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [使用 PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
 了解如何使用 Azure PowerShell 設定 HDInsight 叢集 (Hadoop、HBase 或 Storm) 以使用 Azure 資料湖存放區。 此版本的一些重要考量：
 
-* * **對於 Hadoop 和 Storm 叢集 (Windows 和 Linux)**，資料湖存放區只能做為額外的儲存體帳戶。 這類叢集的預設儲存體帳戶仍是 Azure 儲存體 Blob (WASB)。
+* **(Windows 和 Linux) 的 Hadoop 和 Storm 叢集**, ，資料湖存放區只可以當做其他儲存體帳戶。 這類叢集的預設儲存體帳戶仍是 Azure 儲存體 Blob (WASB)。
 
-* **對於 HBase 叢集 (Windows 和 Linux)**，您可以使用資料湖存放區做為預設儲存體或額外的儲存體。
+* **至於 HBase 叢集 (Windows 和 Linux)**, ，資料湖存放區可用來當做預設儲存體或其他儲存體。
 
 
 在本文中，我們佈建 Hadoop 叢集與資料湖存放區做為額外的儲存體。
@@ -46,41 +44,41 @@
 開始進行本教學課程之前，您必須具備下列條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-- **啟用您的 Azure 訂用帳戶**以使用資料湖存放區公開預覽版。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。
+- **啟用您的 Azure 訂閱** 資料湖存放區公開預覽。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。
 - **Windows SDK**。 您可以將它從安裝 [這裡](https://dev.windows.com/en-us/downloads)。 您使用它來建立安全性憑證。
 
 
-## 請安裝 Azure PowerShell 1.0 以上版本。
+##請安裝 Azure PowerShell 1.0 以上版本。
 
 一開始，您必須解除安裝 Azure PowerShell 的 0.9x 版本。 若要檢查已安裝 PowerShell 的版本，請從 PowerShell 視窗執行下列命令：
 
     Get-Module *azure*
+    
+若要解除安裝較舊的版本，請執行 **程式和功能** 在控制台和移除早於 PowerShell 1.0 是否已安裝的版本。 
 
-若要解除安裝較舊的版本，請執行控制台中的 [程式和功能]****，並移除早於 PowerShell 1.0 的已安裝版本。
-
-共有兩個安裝 Azure PowerShell 的主要選項。
+共有兩個安裝 Azure PowerShell 的主要選項。 
 
 - [PowerShell 組件庫](https://www.powershellgallery.com/)。 從提高權限的 PowerShell ISE 或提高權限的 Windows PowerShell 主控台執行下列命令：
 
-      # Install the Azure Resource Manager modules from PowerShell Gallery
-      Install-Module AzureRM
-      Install-AzureRM
-    
-      # Install the Azure Service Management module from PowerShell Gallery
-      Install-Module Azure
-    
-      # Import AzureRM modules for the given version manifest in the AzureRM module
-      Import-AzureRM
-    
-      # Import Azure Service Management module
-      Import-Module Azure
+        # Install the Azure Resource Manager modules from PowerShell Gallery
+        Install-Module AzureRM
+        Install-AzureRM
+        
+        # Install the Azure Service Management module from PowerShell Gallery
+        Install-Module Azure
+        
+        # Import AzureRM modules for the given version manifest in the AzureRM module
+        Import-AzureRM
+        
+        # Import Azure Service Management module
+        Import-Module Azure
 
-  如需詳細資訊，請參閱 [PowerShell 組件庫](https://www.powershellgallery.com/)。
+    如需詳細資訊，請參閱 [PowerShell 組件庫](https://www.powershellgallery.com/)。
 
 - [Microsoft Web Platform Installer (WebPI)](http://aka.ms/webpi-azps)。 如果您已安裝 Azure PowerShell 0.9.x，系統將提示您解除安裝 0.9.x。 如果您是從 PowerShell 資源庫安裝 Azure PowerShell 模組，必須在安裝安裝程式之前先移除模組，以確保 Azure PowerShell 環境保持一致。 如需指示，請參閱 [透過 WebPI 安裝 Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
 
 WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您想要從 PowerShell 資源庫進行安裝，這會是取得最新和最優異的 Azure PowerShell 功能之首要管道。
-
+ 
 
 ## 建立 Azure 資料湖存放區
 
@@ -88,17 +86,17 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 
 1. 從您的桌面開啟新的 Azure PowerShell 視窗，並輸入下列程式碼片段。 系統提示您登入時，請使用其中一個訂用帳戶管理員/擁有者身分登入：
 
-     # Log in to your Azure account
-     Login-AzureRmAccount
-    
-     # List all the subscriptions associated to your account
-     Get-AzureRmSubscription
-    
-     # Select a subscription 
-     Set-AzureRmContext -SubscriptionId <subscription ID>
-    
-     # Register for Data Lake Store
-     Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        # Log in to your Azure account
+        Login-AzureRmAccount
+        
+        # List all the subscriptions associated to your account
+        Get-AzureRmSubscription
+        
+        # Select a subscription 
+        Set-AzureRmContext -SubscriptionId <subscription ID>
+
+        # Register for Data Lake Store
+        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 3. Azure 資料湖存放區帳戶與 Azure 資源群組相關聯。 從建立 Azure 資源群組開始。
 
@@ -118,18 +116,18 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 
         Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
-    此輸出應為 **True**。
+    這個輸出應該 **True**。
 
 4. 將一些範例資料上傳至 Azure 資料湖。 我們將在本文稍後使用這個項目來確認資料可以從 HDInsight 叢集存取。 如果您要尋找要上傳的一些範例資料，您可以取得 **政策救護車資料** 資料夾從 [Azure 資料湖 Git 儲存機制](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)。
 
+        
         $myrootdir = "/"
         Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
 
 
-
 ## 設定資料湖存放區以角色為基礎的存取的驗證
 
-每一個 Azure 訂閱都與 Azure Active Directory 相關聯。 透過 Azure 傳統入口網站或是 Azure 資源管理員 API 來存取訂用帳戶資源的使用者與服務，都必須先向 Azure Active Directory 進行驗證。 您可以在 Azure 資源上為 Azure 訂用帳戶和服務指派適當的角色，以授與其存取權限。 對於服務，服務主體會識別 Azure Active Directory (AAD) 中的服務。 本章節將說明如何將 Azure 資源 (您稍早建立的 Azure 資料湖存放區帳戶) 的存取權授與像是 HDInsight 的應用程式服務，方法是建立應用程式的服務主體，並透過 Azure PowerShell 將角色指派給它。
+每一個 Azure 訂閱都與 Azure Active Directory 相關聯。 透過 Azure 傳統入口網站或是 Azure 資源管理員 API 來存取訂用帳戶資源的使用者與服務，都必須先向 Azure Active Directory 進行驗證。 您可以在 Azure 資源上為 Azure 訂用帳戶和服務指派適當的角色，以授與其存取權限。  對於服務，服務主體會識別 Azure Active Directory (AAD) 中的服務。 本章節將說明如何將 Azure 資源 (您稍早建立的 Azure 資料湖存放區帳戶) 的存取權授與像是 HDInsight 的應用程式服務，方法是建立應用程式的服務主體，並透過 Azure PowerShell 將角色指派給它。
 
 若要設定 Azure 資料湖的 Active Directory 驗證，您必須執行下列工作。
 
@@ -138,64 +136,64 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 
 ### 建立自我簽署憑證
 
-請確定您有 [Windows SDK](https://dev.windows.com/en-us/downloads) 這一節中的步驟進行之前，先安裝。 您也必須建立一個目錄，例如 **C:\mycertdir**，憑證會在其中建立。
+請確定您有 [Windows SDK](https://dev.windows.com/en-us/downloads) 這一節中的步驟進行之前，先安裝。 您必須也建立目錄，例如 **C:\mycertdir**, 、 建立憑證的位置。
 
-1. 從 PowerShell 視窗中，瀏覽至安裝 Windows SDK 的位置 (通常， `C:\Program Files (x86) \Windows Kits\10\bin\x86` 並用 [MakeCert ][makecert] 公用程式來建立自我簽署的憑證及私密金鑰組。 使用下列命令。
+1. 從 PowerShell 視窗中，瀏覽至安裝 Windows SDK 的位置 (通常， `C:\Program Files (x86)\Windows Kits\10\bin\x86` ，並使用 [MakeCert][makecert] 公用程式來建立自我簽署的憑證及私密金鑰組。 使用下列命令。
 
-     $certificateFileDir = "<my certificate directory>"
-     cd $certificateFileDir
-     $startDate = (Get-Date).ToString('MM/dd/yyyy')
-     $endDate = (Get-Date).AddDays(365).ToString('MM/dd/yyyy')
-    
-     makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -b $startDate -e $endDate -r -len 2048
+        $certificateFileDir = "<my certificate directory>"
+        cd $certificateFileDir
+        $startDate = (Get-Date).ToString('MM/dd/yyyy')
+        $endDate = (Get-Date).AddDays(365).ToString('MM/dd/yyyy')
 
- 系統會提示您輸入私密金鑰密碼。 命令成功執行之後，您應該會在您指定的憑證目錄中看到 **CertFile.cer** 和 **mykey.pvk**。
+        makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -b $startDate -e $endDate -r -len 2048
 
-4. 使用 [Pvk2Pfx ][pvk2pfx] MakeCert 建立.pvk 和.cer 檔案轉換成.pfx 檔案的公用程式。 執行下列命令。
+    系統會提示您輸入私密金鑰密碼。 命令執行成功，您應該會看到之後 **CertFile.cer** 和 **mykey.pvk** 您指定的憑證目錄中。
+
+4. 使用 [Pvk2Pfx][pvk2pfx] MakeCert 建立.pvk 和.cer 檔案轉換成.pfx 檔案的公用程式。 執行下列命令。
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    系統提示時，輸入您稍早指定的私密金鑰密碼。 您針對 **-po** 參數指定的值是與 .pfx 檔案相關聯的密碼。 命令成功完成之後，您應該也會在您指定的憑證目錄中看到 CertFile.pfx。
+    系統提示時，輸入您稍早指定的私密金鑰密碼。 指定的值 **po** 參數是.pfx 檔案相關聯的密碼。 命令成功完成之後，您應該也會在您指定的憑證目錄中看到 CertFile.pfx。
 
-### 建立 Azure Active Directory 和服務主體
+###  建立 Azure Active Directory 和服務主體
 
-在這一節中，您將執行相關步驟來建立 Azure Active Directory 應用程式的服務主體、指派角色給服務主體，並藉由提供憑證驗證為服務主體。 執行下列命令以在 Azure Active Directory 中建立應用程式。
+在這一節中，您將執行相關步驟來建立 Azure Active Directory 應用程式的服務主體、指派角色給服務主體，並藉由提供憑證驗證為服務主體。 執行下列命令以在 Azure Active Directory 中建立應用程式。 
 
-1. 在 PowerShell 主控台視窗中貼上下列 Cmdlet。 請確定您針對 **-DisplayName** 屬性指定的值是唯一的。 此外，**-HomePage** 和 **-IdentiferUris** 的值是預留位置值且不會驗證。
+1. 在 PowerShell 主控台視窗中貼上下列 Cmdlet。 請確定您指定的值 **-DisplayName** 屬性是唯一的。 此外，針對值 **-首頁** 和 **-IdentiferUris** 是預留位置值，並不會驗證。 
 
-     $certificateFilePath = "$certificateFileDir\CertFile.pfx"
-    
-     $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
-    
-     $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
-    
-     $rawCertificateData = $certificatePFX.GetRawCertData()
-    
-     $credential = [System.Convert]::ToBase64String($rawCertificateData)
-    
-     $application = New-AzureRmADApplication `
-                 -DisplayName "HDIADL" ` 
-                 -HomePage "https://contoso.com" `
-                 -IdentifierUris "https://mycontoso.com" `
-                 -KeyValue $credential  `
-                 -KeyType "AsymmetricX509Cert"  `
-                 -KeyUsage "Verify"  `
-                 -StartDate $startDate  `
-                 -EndDate $endDate
-    
-     $applicationId = $application.ApplicationId
+        $certificateFilePath = "$certificateFileDir\CertFile.pfx"
+        
+        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        
+        $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
+        
+        $rawCertificateData = $certificatePFX.GetRawCertData()
+        
+        $credential = [System.Convert]::ToBase64String($rawCertificateData)
+
+        $application = New-AzureRmADApplication `
+                    -DisplayName "HDIADL" ` 
+                    -HomePage "https://contoso.com" `
+                    -IdentifierUris "https://mycontoso.com" `
+                    -KeyValue $credential  `
+                    -KeyType "AsymmetricX509Cert"  `
+                    -KeyUsage "Verify"  `
+                    -StartDate $startDate  `
+                    -EndDate $endDate
+
+        $applicationId = $application.ApplicationId
 
 2. 使用應用程式識別碼建立服務主體。
 
-     $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
-    
-     $objectId = $servicePrincipal.Id
+        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        
+        $objectId = $servicePrincipal.Id
 
 3. 將服務主體的存取權授與您稍早建立的資料湖存放區。
-
+        
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
 
-    系統提示時，輸入 **Y** 以確認。
+    在提示中，輸入 **Y** 確認。
 
 ## 建立具有資料湖存放區驗證的 HDInsight 叢集
 
@@ -207,46 +205,45 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 
 2. 在此版本中，對於 Hadoop 叢集，資料湖存放區只能做為叢集的額外儲存體。 預設儲存體仍是 Azure 儲存體 Blob (WASB)。 所以，我們要先建立叢集所需的儲存體帳戶和儲存體容器。
 
-     # Create an Azure storage account
-     $location = "East US 2"
-     $storageAccountName = "<StorageAcccountName>"   # Provide a Storage account name
-    
-     New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
-    
-     # Create an Azure Blob Storage container
-     $containerName = "<ContainerName>"              # Provide a container name
-     $storageAccountKey = Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName | %{ $_.Key1 }
-     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-     New-AzureStorageContainer -Name $containerName -Context $destContext
+        # Create an Azure storage account
+        $location = "East US 2"
+        $storageAccountName = "<StorageAcccountName>"   # Provide a Storage account name
+        
+        New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
+ 
+        # Create an Azure Blob Storage container
+        $containerName = "<ContainerName>"              # Provide a container name
+        $storageAccountKey = Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName | %{ $_.Key1 }
+        $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+        New-AzureStorageContainer -Name $containerName -Context $destContext
 
 3. 建立 HDInsight 叢集。 使用下列 Cmdlet。
 
-     # Set these variables
-     $clusterName = $containerName                   # As a best practice, have the same name for the cluster and container
-     $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
-     $httpCredentials = Get-Credential
-     $rdpCredentials = Get-Credential
-    
-     New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.2" -RdpCredential $rdpCredentials -RdpAccessExpiry (Get-Date).AddDays(14) -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
+        # Set these variables
+        $clusterName = $containerName                   # As a best practice, have the same name for the cluster and container
+        $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
+        $httpCredentials = Get-Credential
+        $rdpCredentials = Get-Credential
+        
+        New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.2" -RdpCredential $rdpCredentials -RdpAccessExpiry (Get-Date).AddDays(14) -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
 
- Cmdlet 成功完成後，您應該會看到如下的輸出：
+    Cmdlet 成功完成後，您應該會看到如下的輸出：
 
-     Name                      : hdiadlcluster
-     Id                        : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/hdiadlgroup/providers/Mi
-                                 crosoft.HDInsight/clusters/hdiadlcluster
-     Location                  : East US 2
-     ClusterVersion            : 3.2.7.707
-     OperatingSystemType       : Windows
-     ClusterState              : Running
-     ClusterType               : Hadoop
-     CoresUsed                 : 16
-     HttpEndpoint              : hdiadlcluster.azurehdinsight.net
-     Error                     :
-     DefaultStorageAccount     :
-     DefaultStorageContainer   :
-     ResourceGroup             : hdiadlgroup
-     AdditionalStorageAccounts : 
-
+        Name                      : hdiadlcluster
+        Id                        : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/hdiadlgroup/providers/Mi
+                                    crosoft.HDInsight/clusters/hdiadlcluster
+        Location                  : East US 2
+        ClusterVersion            : 3.2.7.707
+        OperatingSystemType       : Windows
+        ClusterState              : Running
+        ClusterType               : Hadoop
+        CoresUsed                 : 16
+        HttpEndpoint              : hdiadlcluster.azurehdinsight.net
+        Error                     :
+        DefaultStorageAccount     :
+        DefaultStorageContainer   :
+        ResourceGroup             : hdiadlgroup
+        AdditionalStorageAccounts : 
 
 ## 在 HDInsight 叢集上執行測試工作以使用資料湖存放區
 
@@ -257,12 +254,12 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
     $queryString = "DROP TABLE vehicles;" + "CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://$dataLakeStoreName.azuredatalakestore.net:443/';" + "SELECT * FROM vehicles LIMIT 10;"
     
     $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString
-    
+
     $hiveJob = Start-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $httpCredentials
-    
+
     Wait-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $httpCredentials
 
-輸出如下。 輸出中 **ExitValue** 為 0 表示工作成功完成。
+輸出如下。 **ExitValue** 0 在輸出中的建議工作順利完成。
 
     Cluster         : hdiadlcluster.
     HttpEndpoint    : hdiadlcluster.azurehdinsight.net
@@ -275,7 +272,7 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
     Callback        :
     Completed       : done
 
-使用下列 Cmdlet 從工作擷取輸出：
+使用下列 Cmdlet 從工作擷取輸出： 
 
     Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $hiveJob.JobId -DefaultContainer $containerName -DefaultStorageAccountName $storageAccountName -DefaultStorageAccountKey $storageAccountKey -ClusterCredential $httpCredentials
 
@@ -292,19 +289,22 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
     1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
     1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
 
+
+    
+
 ## 使用 HDFS 命令存取資料湖存放區
 
 一旦您已設定 HDInsight 叢集使用資料湖存放區，您可以使用 HDFS 殼層命令來存取存放區。
 
 1. 登入新 [Azure 入口網站](https://portal.azure.com)。
 
-2. 按一下 [瀏覽]****，然後依序按一下 [HDInsight 叢集]**** 和您建立的 HDInsight 叢集。
+2. 按一下 [ **瀏覽**, ，按一下 [ **HDInsight 叢集**, ，然後按一下您所建立的 HDInsight 叢集。
 
-3. 在 [叢集] 刀鋒視窗中，按一下 [遠端桌面]****，然後在 [遠端桌面]**** 刀鋒視窗中，按一下 [連接]****。
+3. 在 [叢集] 分頁中，按一下 [ **遠端桌面**, ，然後在 **遠端桌面** 刀鋒視窗中，按一下 [ **連接**。
 
     ![遠端至 HDI 叢集](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Create an Azure Resource Group")
 
-    出現提示時，請輸入為遠端桌面使用者提供的認證。
+    出現提示時，請輸入為遠端桌面使用者提供的認證。 
 
 4. 在遠端工作階段中，啟動 Windows PowerShell，並使用 HDFS 檔案系統命令來列出 Azure 資料湖中的檔案。
 
@@ -316,13 +316,12 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
         Found 1 items
         -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/vehicle1_09142014.csv
 
-    您也可以使用 `hdfs dfs-放` 命令來將某些檔案上傳至 Azure 資料湖，然後使用 `hdfs dfs ls` 以確認是否已成功上傳的檔案。
+    您也可以使用 `hdfs dfs -put` 命令將一些檔案上傳至 Azure 資料湖，然後使用 `hdfs dfs -ls` 以確認是否成功上傳檔案。
 
 ## 另請參閱
 
-* [入口網站: 建立 HDInsight 叢集，才能使用資料湖存放區](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [入口網站：建立 HDInsight 叢集以使用資料湖存放區](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-
-[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx 
-[pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx 
+[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
+[pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 

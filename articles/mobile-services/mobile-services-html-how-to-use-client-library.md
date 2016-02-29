@@ -16,18 +16,17 @@
     ms.date="10/23/2015"
     ms.author="glenga"/>
 
-
 # 如何使用 Azure 行動服務的 HTML/JavaScript 用戶端
 
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
-## 概觀
+##概觀
 
 本指南顯示使用 Azure 行動服務的 HTML/JavaScript 用戶端 (包括 Windows 市集 JavaScript 和 PhoneGap/Cordova 應用程式) 來執行常見的案例。 所涵蓋的案例包括查詢資料、插入、更新及刪除資料、驗證使用者以及處理錯誤。 如果您不熟悉行動服務，您應考慮首先完成 [行動服務快速入門](mobile-services-html-get-started.md)。 快速入門教學課程可協助您設定帳戶，並建立您的第一個行動服務。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
-## <a name="create-client"></a>如何: 建立行動服務用戶端
+##<a name="create-client"></a>如何: 建立行動服務用戶端
 
 您新增行動服務用戶端參考的方式取決於您的應用程式平台，包括下列項目：
 
@@ -35,27 +34,29 @@
 
         <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js"></script>
 
-- 如果是以 JavaScript/HTML 撰寫的 Windows 市集應用程式，請將 **WindowsAzure.MobileServices.WinJS** NuGet 封裝新增至您的專案。
+- 對於以 JavaScript/HTML 撰寫的 Windows 市集應用程式，加入 **WindowsAzure.MobileServices.WinJS** NuGet 封裝加入您的專案。
 
 - PhoneGap 或 Cordova 應用程式中，加入 [行動服務外掛程式](https://github.com/Azure/azure-mobile-services-cordova) 至您的專案。 此外掛程式支援 [推播通知](#push-notifications)。
 
-在編輯器中，開啟或建立 JavaScript 檔案，新增下列程式碼來定義 `MobileServiceClient` 變數，並在 `MobileServiceClient` 建構函式中依序提供行動服務的應用程式 URL 和應用程式金鑰。
+在編輯器中，開啟或建立 JavaScript 檔案，新增下列用來定義 `MobileServiceClient` 變數的程式碼，並在 `MobileServiceClient` 建構函式中，依序提供行動服務的應用程式 URL 和應用程式金鑰。
 
     var MobileServiceClient = WindowsAzure.MobileServiceClient;
     var client = new MobileServiceClient('AppUrl', 'AppKey');
 
 您必須將預留位置 `AppUrl` 與您的行動服務的應用程式 URL 和 `AppKey` 與應用程式索引鍵，您從取得 [Azure 傳統入口網站](http://manage.windowsazure.com/)。
->[AZURE.IMPORTANT]應用程式金鑰是用來針對行動服務篩選出隨機要求，它會隨應用程式一起發送。 因為此金鑰並未加密，所以並不安全。 若要真正保護行動服務資料的安全，您必須改在允許存取之前驗證使用者。 如需詳細資訊，請參閱 [How to: 驗證使用者](#authentication)。
 
-## <a name="querying"></a>如何: 查詢行動服務中的資料
+>[AZURE.IMPORTANT]應用程式金鑰用來針對行動服務中，篩選出隨機要求，它會隨應用程式。 因為此金鑰並未加密，所以並不安全。 若要真正保護行動服務資料的安全，您必須改在允許存取之前驗證使用者。 如需詳細資訊，請參閱 [How to: 驗證使用者](#authentication)。
 
-所有存取或修改 SQL Database 資料表中的資料的程式碼都會在 `MobileServiceTable` 物件上呼叫函數。 您需要在 `MobileServiceClient` 執行個體上呼叫 `getTable()` 函數來取得資料表的參考。
+##<a name="querying"></a>如何: 查詢行動服務中的資料
+
+存取或修改 SQL Database 資料表中資料的所有程式碼，都會在 `MobileServiceTable` 物件上呼叫函數。 您可以在 `MobileServiceClient` 執行個體上呼叫 `getTable()` 函數，以取得資料表的參考。
 
     var todoItemTable = client.getTable('todoitem');
 
+
 ### <a name="filtering"></a>如何: 篩選傳回的資料
 
-下列程式碼將說明如何在查詢中包含 `where` 子句來篩選資料。 它會傳回所有項目從 `todoItemTable` complete 欄位等於 `false`。 `todoItemTable` 是我們先前建立的行動服務資料表的參考。 where 函數會套用資料列篩選述語來查詢資料表。 它接受一個定義資料列篩選器的 JSON 物件或函數做為引數，然後傳回可進一步編寫的查詢。
+下列程式碼說明如何在查詢中包含 `where` 子句，以篩選資料。 它會傳回所有項目從 `todoItemTable` complete 欄位等於 `false`。 `todoItemTable` 是我們先前建立的行動服務資料表的參考。 where 函數會套用資料列篩選述語來查詢資料表。 它接受一個定義資料列篩選器的 JSON 物件或函數做為引數，然後傳回可進一步編寫的查詢。
 
     var query = todoItemTable.where({
         complete: false
@@ -65,7 +66,7 @@
         alert("Error: " + err);
     });
 
-藉由呼叫 `其中` 上在 Query 物件並傳遞物件做為參數，我們指示行動服務傳回的資料列的 `完整` 資料行包含 `false` 值。 此外，看看下面的，要求 URI，並注意我們打算修改查詢字串本身:
+藉由呼叫 `where` 上在 Query 物件並傳遞物件做為參數，我們指示行動服務傳回的資料列的 `complete` 資料行包含 `false` 值。 此外，看看下面的，要求 URI，並注意我們打算修改查詢字串本身:
 
     GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 
@@ -77,7 +78,7 @@
     FROM TodoItem
     WHERE ISNULL(complete, 0) = 0
 
-傳遞至 `where` 方法的物件可以有任意數量的參數，而參數會解譯成查詢的 AND 子句。 以下面的程式碼行為例：
+傳遞至 `where` 方法的物件可以有任意數量的參數，這些參數全部都會解譯成查詢的 AND 子句。 以下面的程式碼行為例：
 
     query.where({
        complete: false,
@@ -97,9 +98,9 @@
           AND assignee = 'david'
           AND difficulty = 'medium'
 
-上述 `where` 陳述式和上述 SQL 查詢會尋找指派給 "david" 且難度為 "medium" 的未完成項目。
+上述的 `where` 陳述式和 SQL 查詢會尋找指派給 "david" 且難度為 "medium" 的未完成項目。
 
-不過，還有另一種方式可撰寫同樣的查詢。 Query 物件上的 `.where` 呼叫會將 `AND` 運算式加入至 `WHERE` 子句，因此我們可以改為分成三行來撰寫：
+不過，還有另一種方式可撰寫同樣的查詢。 Query 物件上的 `.where` 呼叫會將 `AND` 運算式加入 `WHERE` 子句，因此我們可以改為分成三行來撰寫：
 
     query.where({
        complete: false
@@ -123,7 +124,7 @@
        difficulty: "medium"
     });
 
-這兩種方法是相同的，而且可以交換使用。 目前為止的所有 `where` 呼叫都接受物件及一些參數，且都在比較資料庫中的資料是否等於某個值。 然而，query 方法還有另一種多載，可接受函數而非物件。 然後，在此函數中，我們可以利用運算子，例如不等式和其他關聯式運算，以撰寫更複雜的運算式。 在這些函數中，關鍵字 `this` 繫結至伺服器物件。
+這兩種方法是相同的，而且可以交換使用。 目前為止，所有 `where` 呼叫都接受含有一些參數的物件，並比較是否與資料庫中的資料相等。 然而，query 方法還有另一種多載，可接受函數而非物件。 然後，在此函數中，我們可以利用運算子，例如不等式和其他關聯式運算，以撰寫更複雜的運算式。 在這些函數中，關鍵字 `this` 繫結至伺服器物件。
 
 函數主體會轉譯成開放式資料通訊協定 (OData) 布林運算式，再傳遞至查詢字串參數。 可傳入沒有參數的函數，如下所示：
 
@@ -135,7 +136,8 @@
        alert("Error: " + err);
     });
 
-如果傳入有參數的函數，則 `where` 子句後面的任何引數會依序繫結至函數參數。 來自函數範圍外的任何物件「必須」以參數形式傳遞，函數無法擷取任何外部變數。 在接下來兩個範例中，引數 "david" 繫結至參數 `name`，而在第一個範例中，引數 "medium" 也繫結至參數 `level`。 另外，函數必須由單一 `return` 陳述式組成，陳述式中有支援的運算式，如下所示：
+
+如果傳入含有參數的函數，則 `where` 子句後面的任何引數都會依序繫結至函數參數。 來自函數範圍外的任何物件「必須」以參數形式傳遞，函數無法擷取任何外部變數。 在接下來的兩個範例中，引數 "david" 繫結至參數 `name`，而在第一個範例中，引數 "medium" 也繫結至參數 `level`。 另外，函數必須由單一 `return` 陳述式組成，而陳述式中具有可支援的運算式，如下所示：
 
      query.where(function (name, level) {
         return this.assignee == name && this.difficulty == level;
@@ -156,26 +158,27 @@
        alert("Error: " + err);
     });
 
-`where` 可以結合 `orderBy`、`take` 和 `skip`。 如需詳細資料，請參閱下一節。
+您可以將 `where` 與 `orderBy`、`take` 和 `skip` 合併。 如需詳細資料，請參閱下一節。
 
 ### <a name="sorting"></a>如何: 排序傳回的資料
 
-下列程式碼將說明如何透過在查詢中加上 `orderBy` 或 `orderByDescending` 函數來排序資料。 它會從 `todoItemTable` 傳回項目並依據 `text` 欄位以遞增順序排列。 依預設，伺服器只傳回前 50 個元素。
-> [AZURE.NOTE] 預設會使用伺服器控制的頁面大小，以防止傳回所有元素。 這可避免預設的大型資料集要求對服務造成負面影響。
-您可能會增加要傳回之呼叫的項目數 `採取` 下一節中所述。 `todoItemTable` 是我們先前建立的行動服務資料表的參考。
+下列程式碼說明如何在查詢中加入 `orderBy` 或 `orderByDescending` 函數，以將資料排序。 它會從 `todoItemTable` 傳回項目，並依據 `text` 欄位以遞增順序排列。 依預設，伺服器只傳回前 50 個元素。
+
+> [AZURE.NOTE] 伺服器導向的頁面大小預設用來防止傳回所有項目。 這可避免預設的大型資料集要求對服務造成負面影響。
+您可以按照下節所述呼叫 `take`，增加要傳回的項目數。 `todoItemTable` 是我們先前建立的行動服務資料表的參考。
 
     var ascendingSortedTable = todoItemTable.orderBy("text").read().done(function (results) {
        alert(JSON.stringify(results));
     }, function (err) {
        alert("Error: " + err);
     });
-    
+
     var descendingSortedTable = todoItemTable.orderByDescending("text").read().done(function (results) {
        alert(JSON.stringify(results));
     }, function (err) {
        alert("Error: " + err);
     });
-    
+
     var descendingSortedTable = todoItemTable.orderBy("text").orderByDescending("text").read().done(function (results) {
        alert(JSON.stringify(results));
     }, function (err) {
@@ -184,7 +187,7 @@
 
 ### <a name="paging"></a>如何: 以分頁方式傳回資料
 
-根據預設，行動服務在指定的要求中只會傳回 50 個資料列，除非用戶端在回應中明確要求更多資料。 下列程式碼顯示如何在查詢中使用 `take` 和 `skip` 子句，以便在傳回的資料中實作分頁。 執行下列查詢時，會傳回資料表中的前三個項目。
+根據預設，行動服務在指定的要求中只會傳回 50 個資料列，除非用戶端在回應中明確要求更多資料。 下列程式碼顯示如何在查詢中使用 `take` 和 `skip` 子句，以便在傳回的資料中實作分頁。  執行下列查詢時，會傳回資料表中的前三個項目。
 
     var query = todoItemTable.take(3).read().done(function (results) {
        alert(JSON.stringify(results));
@@ -194,7 +197,7 @@
 
 請注意，`take(3)` 方法在查詢 URI 中會轉譯成查詢選項 `$top=3`。
 
-下列修訂過的查詢會略過前三個結果，傳回之後的三個結果。 實際上這就是第二「頁」資料，頁面大小為三個項目。
+下列已修訂查詢會略過前三個結果，並傳回接下來的後三個結果。 實際上這就是第二「頁」資料，頁面大小為三個項目。
 
     var query = todoItemTable.skip(3).take(3).read().done(function (results) {
        alert(JSON.stringify(results));
@@ -204,11 +207,11 @@
 
 同樣地，您可以檢視傳送至行動服務的要求的 URI。 請注意，`skip(3)` 方法在查詢 URI 中會轉譯成查詢選項 `$skip=3`。
 
-這是一個將硬式編碼的分頁值傳遞至 `take` 和 `skip` 函數的簡化案例。 在實際的應用程式中，您可以搭配頁面巡覽區控制項或類似的 UI 來使用類似上述的查詢，讓使用者導覽至上一頁和下一頁。
+這是一個簡化的案例，可將硬式編碼的分頁值傳遞至 `take` 和 `skip` 函數。 在實際的應用程式中，您可以搭配頁面巡覽區控制項或類似的 UI 來使用類似上述的查詢，讓使用者導覽至上一頁和下一頁。
 
 ### <a name="selecting"></a>如何: 選取特定資料行
 
-您可以指定結果中要包含的屬性集，方法是在查詢中加上 `select` 子句。 例如，下列程式碼會從 `todoItemTable` 的每個資料列傳回 `id`、`complete` 和 `text` 屬性：
+若要指定將哪些屬性集包含在結果中，您可以在查詢中加入 `select` 子句。 例如，下列程式碼會從 `todoItemTable` 的每個資料列傳回 `id`、`complete` 和 `text` 屬性：
 
     var query = todoItemTable.select("id", "complete", "text").read().done(function (results) {
        alert(JSON.stringify(results));
@@ -234,7 +237,7 @@
 
 ### <a name="lookingup"></a>如何: 按識別碼查詢資料
 
-`查閱` 函數只接受 `識別碼` 值，並傳回具有該識別碼的資料庫物件 資料庫資料表使用整數或字串建立 `識別碼` 資料行。 字串 `id` 資料行是預設值。
+`lookup` 函數只取得 `id` 值，並從包含該識別碼的資料庫中傳回物件。 資料庫的資料表是使用整數或字串 `id` 資料欄所建立。 字串 `id` 資料欄是預設值。
 
     todoItemTable.lookup("37BBF396-11F0-4B39-85C8-B319C729AF6D").done(function (result) {
        alert(JSON.stringify(result));
@@ -242,9 +245,9 @@
        alert("Error: " + err);
     })
 
-## <a name="odata-query"></a>執行 OData 查詢作業
+##<a name="odata-query"></a>執行 OData 查詢作業
 
-行動服務會使用 OData 查詢 URI 慣例來撰寫及執行 REST 查詢。 並非所有 OData 查詢都可以用內建的查詢函數來撰寫，尤其是複雜的篩選作業，例如在屬性中搜尋子字串。 針對這些複雜查詢的類型，您可以傳遞任何有效的 OData 查詢選項字串至 `讀取` 函數，如下:
+行動服務會使用 OData 查詢 URI 慣例來撰寫及執行 REST 查詢。  並非所有 OData 查詢都可以用內建的查詢函數來撰寫，尤其是複雜的篩選作業，例如在屬性中搜尋子字串。 針對這些複雜的查詢類型，您可以傳遞任何有效的 OData 查詢選項字串至 `read` 函數，如下所示：
 
     function refreshTodoItems() {
         todoItemTable.read("$filter=substringof('search_text',text)").then(function(items) {
@@ -254,9 +257,9 @@
         }, handleError);
     }
 
->[AZURE.NOTE]當您提供原始的 OData 查詢選項字串至 `讀取` 函式，您不能也在相同查詢中使用查詢產生器方法。 在此情況下，您必須將整個查詢撰寫成 OData 查詢字串。 如需 OData 系統查詢選項的詳細資訊，請參閱 [OData 系統查詢選項參考]。
+>[AZURE.NOTE]當您提供原始的 OData 查詢選項字串至 `read` 函式，您不能也在相同查詢中使用查詢產生器方法。 在此情況下，您必須將整個查詢撰寫成 OData 查詢字串。 如需 OData 系統查詢選項的詳細資訊，請參閱 [OData system query options reference]。
 
-## <a name="inserting"></a>如何: 將資料插入行動服務
+##<a name="inserting"></a>如何: 將資料插入行動服務
 
 下列程式碼將說明如何將新的資料列插入資料表中。 用戶端可以將 POST 要求傳送至行動服務來要求插入一列資料。 要求內文中以 JSON 物件形式包含要插入的資料。
 
@@ -276,9 +279,9 @@
        alert("Error: " + err);
     });
 
-### 使用識別碼值
+###使用識別碼值
 
-行動服務支援資料表 **id** 資料欄使用唯一自訂字串值。 這可讓應用程式使用自訂的值，例如電子郵件地址或使用者名稱作為識別碼。 例如，下列程式碼將新的項目插入為 JSON 物件，其中唯一識別碼是電子郵件地址：
+行動服務支援資料表的唯一自訂字串值 **識別碼** 資料行。 這可讓應用程式使用自訂的值，例如電子郵件地址或使用者名稱作為識別碼。 例如，下列程式碼將新的項目插入為 JSON 物件，其中唯一識別碼是電子郵件地址：
 
     todoItemTable.insert({
        id: "myemail@domain.com",
@@ -294,11 +297,11 @@
 
 當插入的記錄上尚未設定字串識別碼值時，行動服務會產生唯一值做為識別碼。 如需有關如何產生您自己的識別碼值，用戶端上或在.NET 後端，請參閱 [How to: 產生唯一的識別碼值](mobile-services-how-to-use-server-scripts.md#generate-guids)。
 
-您也可以在資料表中使用整數識別碼。 若要使用整數識別碼，您必須建立您的資料表與 `mobile create` 命令使用 `--integerId` 選項。 此命令需要在 Azure 的命令列介面 (CLI) 中執行。 如需有關如何使用 CLI 的詳細資訊，請參閱 [CLI 管理行動服務資料表](../virtual-machines-command-line-tools.md#Mobile_Tables)。
+您也可以在資料表中使用整數識別碼。 若要使用整數識別碼，您必須使用 `--integerId` 選項，以 `mobile table create` 命令建立資料表。 此命令需要在 Azure 的命令列介面 (CLI) 中執行。 如需有關如何使用 CLI 的詳細資訊，請參閱 [CLI 管理行動服務資料表](../virtual-machines-command-line-tools.md#Mobile_Tables)。
 
-## <a name="modifying"></a>如何: 修改行動服務中的資料
+##<a name="modifying"></a>如何: 修改行動服務中的資料
 
-下列程式碼顯示如何更新資料表中的資料。 用戶端可以將 PATCH 要求傳送至行動服務來要求更新一列資料。 要求內文中以 JSON 物件形式包含要更新的特定欄位。 它會更新資料表 `todoItemTable` 中的現有項目。
+下列程式碼顯示如何更新資料表中的資料。 用戶端可以將 PATCH 要求傳送至行動服務來要求更新一列資料。 要求內文中以 JSON 物件形式包含要更新的特定欄位。 它會更新 `todoItemTable` 資料表中的現有項目。
 
     todoItemTable.update({
        id: idToUpdate,
@@ -318,7 +321,7 @@
        alert("Error: " + err);
     });
 
-## <a name="deleting"></a>如何: 刪除行動服務中的資料
+##<a name="deleting"></a>如何: 刪除行動服務中的資料
 
 下列程式碼顯示如何從資料表中刪除資料。 用戶端可以將 DELETE 要求傳送至行動服務來要求刪除一列資料。 它會刪除資料表 todoItemTable 中的現有項目。
 
@@ -338,12 +341,12 @@
        alert("Error: " + err);
     });
 
-## <a name="binding"></a>如何: 在使用者介面中顯示資料
+##<a name="binding"></a>如何: 在使用者介面中顯示資料
 
-本節說明如何使用 UI 元素來顯示傳回的資料物件。 若要查詢 `todoItemTable` 中的項目並顯示在非常簡單的清單中，您可以執行下列範例程式碼。 不做任何選擇、篩選或排序。
+本節說明如何使用 UI 元素來顯示傳回的資料物件。 若要查詢 `todoItemTable` 中的項目，並顯示在非常簡單的清單中，您可以執行下列範例程式碼。 不做任何選擇、篩選或排序。
 
     var query = todoItemTable;
-    
+
     query.read().then(function (todoItems) {
        // The space specified by 'placeToInsert' is an unordered list element <ul> ... </ul>
        var listOfItems = document.getElementById('placeToInsert');
@@ -360,13 +363,13 @@
        alert("Error: " + err);
     });
 
-在 Windows 市集應用程式中，查詢結果可用來建立 [WinJS.Binding.List] 物件，可做為 [ListView] 物件的資料來源繫結。 如需詳細資訊，請參閱 [資料繫結 (Windows 市集應用程式使用 JavaScript 和 HTML)]。
+在 Windows 市集應用程式中，查詢的結果可以用來建立 [WinJS.Binding.List] 物件，可做為資料來源繫結 [ListView] 物件。 如需詳細資訊，請參閱 [Data binding (Windows Store apps using JavaScript and HTML)]。
 
-## <a name="custom-api"></a>如何: 呼叫自訂 API
+##<a name="custom-api"></a>如何: 呼叫自訂 API
 
 自訂 API 可讓您定義自訂端點，並用來公開無法對應插入、更新、刪除或讀取等操作的伺服器功能。 透過使用自訂 API，您可以進一步控制訊息，包括讀取與設定 HTTP 訊息標頭，並定義除了 JSON 以外的訊息內文格式。 如需如何在您的行動服務中建立自訂 API 的範例，請參閱 [How to: 定義自訂 API 端點](mobile-services-dotnet-backend-define-custom-api.md)。
 
-從用戶端呼叫自訂 API 呼叫 [invokeApi](https://github.com/Azure/azure-mobile-services/blob/master/sdk/Javascript/src/MobileServiceClient.js#L337) 方法 **MobileServiceClient**。 例如，下列程式碼字行會傳送 POST 要求至行動服務上的 **completeAll** API：
+從用戶端呼叫自訂 API 呼叫 [invokeApi](https://github.com/Azure/azure-mobile-services/blob/master/sdk/Javascript/src/MobileServiceClient.js#L337) 方法 **MobileServiceClient**。 例如，下列程式碼會傳送 POST 要求至 **completeAll** 行動服務上的 API:
 
     client.invokeApi("completeall", {
         body: null,
@@ -379,21 +382,22 @@
         alert(error.message);
     });
 
+
 如需更實際的範例和更完整的討論 **invokeApi**, ，請參閱 [Azure 行動服務用戶端 Sdk 中的自訂 API](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)。
 
-## <a name="authentication"></a>如何: 驗證使用者
+##<a name="authentication"></a>如何: 驗證使用者
 
 行動服務支援使用各種外部識別提供者 (Facebook、Google、Microsoft 帳戶以及 Twitter) 來驗證與授權應用程式使用者。 您可以在資料表上設定權限，以限制僅有通過驗證使用者可以存取特定操作。 您也可以使用通過驗證使用者的身分識別來實作伺服器指令碼中的授權規則。 如需詳細資訊，請參閱 [開始使用驗證] 教學課程。
->[AZURE.NOTE] 在 PhoneGap 或 Cordova 應用程式中使用驗證時，您必須也將下列外掛程式新增至專案：
+
+>[AZURE.NOTE] 使用驗證時在 PhoneGap 或 Cordova 應用程式中，您也必須將下列外掛程式加入專案:
 >
->https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git +
->https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git +
+>+ https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git
+>+ https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
 
 
-支援兩個驗證流程：a _server flow_ 和 a _client flow_。 由於伺服器流程採用提供者的 Web 驗證介面，因此所提供的驗證體驗也最為簡單。 用戶端流程依賴提供者專屬的裝置專用 SDK，可以與裝置特有的功能深入整合，例如單一登入。
+支援兩種驗證流程: _伺服器流程_ 和 _用戶端流程_。 由於伺服器流程採用提供者的 Web 驗證介面，因此所提供的驗證體驗也最為簡單。 用戶端流程依賴提供者專屬的裝置專用 SDK，可以與裝置特有的功能深入整合，例如單一登入。
 
-### 伺服器流程
-
+###伺服器流程
 若要讓行動服務管理 Windows 市集或 HTML5 應用程式中的驗證程序，
 您必須向身分識別提供者註冊您的應用程式。 接著在您的行動服務中，您必須設定提供者所提供的應用程式 ID 和密碼。 如需詳細資訊，請參閱本教學課程 [將驗證新增至您的應用程式](mobile-services-html-get-started-users.md)。
 
@@ -405,15 +409,14 @@
          alert("Error: " + err);
     });
 
-如果您使用的身分識別提供者不是 Facebook，變更值傳遞至 `登入` 上述方法有下列幾種: `microsoftaccount`, ，`facebook`, ，`twitter`, ，`google`, ，或 `windowsazureactivedirectory`。
+如果您使用的身分識別提供者不是 Facebook，請將傳遞至上述 `login` 方法的值，變更為下列其中一個值：`microsoftaccount`、`facebook`、`twitter`、`google` 或 `windowsazureactivedirectory`。
 
-在此案例中，行動服務透過顯示所選提供者的登入頁面，並在使用識別提供者成功登入後產生行動服務驗證權杖的方式，來管理 OAuth 2.0 驗證流程。 [Login] 函式完成時，傳回的 JSON 物件 (**使用者**)，以公開這兩個使用者識別碼和行動服務驗證權杖 **userId** 和 **authenticationToken** 欄位中分別。 您可以快取並重複使用此權杖，直到它到期為止。 如需詳細資訊，請參閱「快取驗證權杖」。
+在此案例中，行動服務透過顯示所選提供者的登入頁面，並在使用識別提供者成功登入後產生行動服務驗證權杖的方式，來管理 OAuth 2.0 驗證流程。  [login] 函式，完成時會傳回 JSON 物件 (**使用者**)，以公開這兩個使用者識別碼和行動服務驗證權杖 **userId** 和 **authenticationToken** 欄位中分別。 您可以快取並重複使用此權杖，直到它到期為止。 如需詳細資訊，請參閱「快取驗證權杖」。
 
-### 用戶端流程
-
+###用戶端流程
 您的應用程式也可以個別連絡識別提供者，然後將傳回的權杖提供給行動服務進行驗證。 此用戶端流程可讓您為使用者提供單一登入體驗，或從識別提供者擷取其他使用者資料。
 
-#### Facebook/Google SDK 基本範例
+####Facebook/Google SDK 基本範例
 
 這個範例會使用 Facebook 用戶端 SDK 進行驗證：
 
@@ -429,8 +432,7 @@
 此範例假設個別提供者 SDK 所提供的權杖儲存在 `token` 變數中。
 目前還無法使用 Twitter 進行用戶端驗證。
 
-#### Microsoft 帳戶基本範例
-
+####Microsoft 帳戶基本範例
 下列範例使用 Live SDK，支援讓 Windows 市集應用程式使用 Microsoft 帳戶來執行單一登入：
 
     WL.login({ scope: "wl.basic"}).then(function (result) {
@@ -445,22 +447,22 @@
           });
     });
 
-這個簡化的範例從 Live Connect，藉由呼叫 [login] 函式會提供給行動服務取得的權杖。
+這個簡化的範例從 Live Connect，以藉由呼叫提供給行動服務取得權杖 [login] 函式。
 
 
-#### Microsoft 帳戶完整範例
+####Microsoft 帳戶完整範例
 
 下列範例示範如何搭配 WinJS API 使用 Live SDK，以提供增強的單一登入體驗：
 
     // Set the mobileClient variable to client variable generated by the tooling.
     var mobileClient = <yourClient>;
-    
+
     var session = null;
     var login = function () {
         return new WinJS.Promise(function (complete) {
             WL.login({ scope: "wl.basic" }).then(function (result) {
                 session = result.session;
-    
+
                 WinJS.Promise.join([
                     WL.api({ path: "me", method: "GET" }),
                     mobileClient.login(result.session.authentication_token)
@@ -475,9 +477,9 @@
                         // Reload items from the mobile service.
                         refreshTodoItems();
                     }).done(complete);
-    
+
                 }, function (error) {
-    
+
                 });
             }, function (error) {
                 session = null;
@@ -486,7 +488,7 @@
             });
         });
     }
-    
+
     var authenticate = function () {
         // Block until sign-in is successful.
         login().then(function () {
@@ -496,24 +498,42 @@
             }
         });
     }
-    
+
     // Initialize the Live client.
     WL.init({
         redirect_uri: mobileClient.applicationUrl
     });
-    
+
     // Start the sign-in process.
     authenticate();
 
 這會初始化 Live Connect 用戶端、將新的登入要求傳送至 Microsoft 帳戶、將傳回的驗證權杖傳送至行動服務，然後顯示登入使用者的相關資訊。 此 App 會等到驗證成功後才啟動。
+<!--- //this guidance may be bad from an XSS vulnerability standpoint. We need to find better guidance for this
+###Caching the authentication token
+In some cases, the call to the login method can be avoided after the first time the user authenticates. We can use [sessionStorage] or [localStorage] to cache the current user identity the first time they log in and every subsequent time we check whether we already have the user identity in our cache. If the cache is empty or calls fail (meaning the current login session has expired), we still need to go through the login process.
 
+    // After logging in
+    sessionStorage.loggedInUser = JSON.stringify(client.currentUser);
 
-## <a name="push-notifications"></a>如何: 註冊推播通知
+    // Log in
+    if (sessionStorage.loggedInUser) {
+       client.currentUser = JSON.parse(sessionStorage.loggedInUser);
+    } else {
+       // Regular login flow
+   }
+
+     // Log out
+    client.logout();
+    sessionStorage.loggedInUser = null;
+-->
+
+##<a name="push-notifications"></a>作法：註冊推播通知
 
 當您的應用程式是 PhoneGap 或 Apache Cordova HTML/JavaScript 應用程式時，原生的行動平台可讓您在裝置上接收推播通知。  [Azure 行動服務的 Apache Cordova 外掛程式](https://github.com/Azure/azure-mobile-services-cordova) 可讓您向 Azure 通知中樞推播通知註冊。 使用的特定通知取決於程式碼執行的原生裝置平台。 如需如何執行這項操作的範例，請參閱此範例中， [推播通知給 Cordova 應用程式使用 Microsoft Azure](https://github.com/Azure/mobile-services-samples/tree/master/CordovaNotificationsArticle)。
+
 >[AZURE.NOTE]此外掛程式目前只支援 iOS 和 Android 裝置。 如需也包含 Windows 裝置的解決方案，請參閱文章 [推播通知到 PhoneGap 應用程式使用通知中樞整合](http://blogs.msdn.com/b/azuremobile/archive/2014/06/17/push-notifications-to-phonegap-apps-using-notification-hubs-integration.aspx)。
 
-## <a name="errors"></a>如何: 處理錯誤
+##<a name="errors"></a>如何: 處理錯誤
 
 在行動服務中遇到、驗證及解決錯誤的方式有數種。
 
@@ -541,6 +561,7 @@
        alert(JSON.parse(error.request.responseText).error);
     });
 
+
 為了進一步了解，您可以在每次執行資料存取時，傳入錯誤處理常式做為第二個引數：
 
     function handleError(message) {
@@ -548,15 +569,15 @@
           window.console.error(message);
        }
     }
-    
+
     client.getTable("tablename").read()
         .then(function (data) { /* do something */ }, handleError);
 
-## <a name="promises"></a>如何: 使用 promise
+##<a name="promises"></a>如何: 使用 promise
 
 Promise 提供一種機制，可排定工作來處理尚未計算的值。 這是一種管理非同步 API 互動的抽象觀念。
 
-當提供的函數完全成功或發生錯誤時，`done` promise 就會立即執行。 與 `then` promise 不同，此函數一定會擲回函數內未處理的任何錯誤，且在處理常式執行完成之後，將會擲回原本由 then 以錯誤狀態的 promise 傳回的任何錯誤。 如需詳細資訊，請參閱 [完成]。
+當所提供的函數順利完成或發生錯誤時，`done` Promise 就會立即執行。 與 `then` Promise 不同，此函數一定會擲回函數內未處理的任何錯誤，而且在處理常式執行完成之後，會擲回原本由 then 在錯誤狀態下以 Promise 傳回的任何錯誤。 如需詳細資訊，請參閱 [完成]。
 
     promise.done(onComplete, onError);
 
@@ -569,7 +590,7 @@ Promise 提供一種機制，可排定工作來處理尚未計算的值。 這�
        alert("Error: " + err);
     });
 
-`then` promise 與 `done` promise 相同，但又不同於 `then` promise，`done` 一定會擲回函數內未處理的任何錯誤。 如果您未提供錯誤處理常式給 `then`，且作業發生錯誤，則不會擲回例外狀兄，而是傳回錯誤狀態的 promise。 如需詳細資訊，請參閱 [然後]。
+`then` Promise 與 `done` Promise 相同，但不同於 `then` Promise 的是，`done` 一定會擲回函數內未處理的任何錯誤。 如果您沒有提供錯誤處理常式給 `then`，而作業發生錯誤，它不會擲回例外狀兄，但會傳回錯誤狀態的 Promise。 如需詳細資訊，請參閱 [然後]。
 
     promise.then(onComplete, onError).done( /* Your success and error handlers */ );
 
@@ -582,7 +603,7 @@ Promise 提供一種機制，可排定工作來處理尚未計算的值。 這�
        alert("Error: " + err);
     });
 
-Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳回的 promise 上呼叫 `then` 或 `done`，以鏈結 promise 作業。 使用 `then` 做為作業的過渡階段 (例如 `.then().then()`)，使用 `done` 做為作業的最終階段 (例如 `.then().then().done()`)。 您可以鏈結多個 `then` 函數，因為 `then` 會傳回 promise。 您無法鏈結多個 `done` 方法，因為它會傳回 undefined。 [深入了解 then 與 done 之間的差異]。
+Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳回的 Promise 上呼叫 `then` 或 `done`，以鏈結 Promise 作業。 將 `then` 用於作業的過渡階段 (例如 `.then().then()`)，將 `done` 用於作業的最終階段 (例如 `.then().then().done()`)。  您可以鏈結多個 `then` 函數，因為 `then` 會傳回 Pomise。 您無法鏈結多個 `done` 方法，因為它會傳回 undefined。 [深入了解 then 與 done 之間的差異]。
 
     todoItemTable.insert({
        text: "foo"
@@ -593,7 +614,7 @@ Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳
        alert(JSON.stringify(insertedAndUpdated));
     })
 
-## <a name="customizing"></a>如何: 自訂要求標頭
+##<a name="customizing"></a>如何: 自訂要求標頭
 
 您可以使用 `withFilter` 函數來傳送自訂要求標頭，在篩選器內讀取和寫入即將傳送的要求的任何屬性。 如果伺服器端指令碼需要自訂 HTTP 標頭或可透過它而增強，您可以新增自訂 HTTP 標頭。
 
@@ -605,42 +626,46 @@ Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳
 
 篩選器的用途比自訂要求標頭更多。 它們可用來檢查或變更要求、 檢查或變更回應、 略過網路呼叫、 傳送多個呼叫等等。
 
-## <a name="hostnames"></a>如何: 使用跨原始資源共用
+##<a name="hostnames"></a>如何: 使用跨原始資源共用
 
-若要控制允許哪些網站與您的行動服務互動，以及傳送要求至您的行動服務，請務必將您用來代管行動服務的網站主機名稱，加入跨原始資源共用 (Cross-Origin Resource Sharing，CORS) 白名單。 對於 JavaScript 後端行動服務，您可以設定允許清單中的 [設定] 索引標籤上 [Azure 傳統入口網站](https://manage.windowsazure.com)。 需要的話可使用萬用字元。 依預設，新的行動服務會指示瀏覽器只允許來自 `localhost` 的存取，而跨原始來源資源分享 (CORS) 可讓在外部主機名稱上的瀏覽器中執行的 JavaScript 程式碼與您的行動服務互動。 WinJS 應用程式不需要此組態。
+若要控制允許哪些網站與您的行動服務互動，以及傳送要求至您的行動服務，請務必將您用來代管行動服務的網站主機名稱，加入跨原始資源共用 (Cross-Origin Resource Sharing，CORS) 白名單。 對於 JavaScript 後端行動服務，您可以設定允許清單中的 [設定] 索引標籤上 [Azure 傳統入口網站](https://manage.windowsazure.com)。 需要的話可使用萬用字元。 依預設，新的行動服務會指示瀏覽器只允許來自 `localhost` 的存取，而跨原始資源共用 (CORS) 可讓在外部主機名稱的瀏覽器中執行的 JavaScript 程式碼與您的行動服務互動。  WinJS 應用程式不需要此組態。
+
+<!-- Anchors. -->
+[What is Mobile Services]: #what-is
+[Concepts]: #concepts
+[How to: Create the Mobile Services client]: #create-client
+[How to: Query data from a mobile service]: #querying
+[Filter returned data]: #filtering
+[Sort returned data]: #sorting
+[Return data in pages]: #paging
+[Select specific columns]: #selecting
+[Look up data by ID]: #lookingup
+[How to: Display data in the user interface]: #binding
+[How to: Insert data into a mobile service]: #inserting
+[How to: Modify data in a mobile service]: #modifying
+[How to: Delete data in a mobile service]: #deleting
+[How to: Authenticate users]: #authentication
+[How to: Handle errors]: #errors
+[How to: Use promises]: #promises
+[How to: Customize request headers]: #customizing
+[How to: Use cross-origin resource sharing]: #hostnames
+[Next steps]: #nextsteps
+[Execute an OData query operation]: #odata-query
 
 
 
+<!-- URLs. -->
+[then]: http://msdn.microsoft.com/library/windows/apps/br229728.aspx
+[done]: http://msdn.microsoft.com/library/windows/apps/hh701079.aspx
+[Learn more about the  differences between then and done]: http://msdn.microsoft.com/library/windows/apps/hh700334.aspx
+[how to handle errors in promises]: http://msdn.microsoft.com/library/windows/apps/hh700337.aspx
 
-[what is mobile services]: #what-is 
-[concepts]: #concepts 
-[how to: create the mobile services client]: #create-client 
-[how to: query data from a mobile service]: #querying 
-[filter returned data]: #filtering 
-[sort returned data]: #sorting 
-[return data in pages]: #paging 
-[select specific columns]: #selecting 
-[look up data by id]: #lookingup 
-[how to: display data in the user interface]: #binding 
-[how to: insert data into a mobile service]: #inserting 
-[how to: modify data in a mobile service]: #modifying 
-[how to: delete data in a mobile service]: #deleting 
-[how to: authenticate users]: #authentication 
-[how to: handle errors]: #errors 
-[how to: use promises]: #promises 
-[how to: customize request headers]: #customizing 
-[how to: use cross-origin resource sharing]: #hostnames 
-[next steps]: #nextsteps 
-[execute an odata query operation]: #odata-query 
-[then]: http://msdn.microsoft.com/library/windows/apps/br229728.aspx 
-[done]: http://msdn.microsoft.com/library/windows/apps/hh701079.aspx 
-[learn more about the  differences between then and done]: http://msdn.microsoft.com/library/windows/apps/hh700334.aspx 
-[how to handle errors in promises]: http://msdn.microsoft.com/library/windows/apps/hh700337.aspx 
-[sessionstorage]: http://msdn.microsoft.com/library/cc197062(v=vs.85).aspx 
-[localstorage]: http://msdn.microsoft.com/library/cc197062(v=vs.85).aspx 
-[listview]: http://msdn.microsoft.com/library/windows/apps/br211837.aspx 
-[data binding (windows store apps using javascript and html)]: http://msdn.microsoft.com/library/windows/apps/hh758311.aspx 
-[login]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/Javascript/src/MobileServiceClient.js#L301 
-[ascii control codes c0 and c1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set 
-[odata system query options reference]: http://go.microsoft.com/fwlink/p/?LinkId=444502 
+[sessionStorage]: http://msdn.microsoft.com/library/cc197062(v=vs.85).aspx
+[localStorage]: http://msdn.microsoft.com/library/cc197062(v=vs.85).aspx
+
+[ListView]: http://msdn.microsoft.com/library/windows/apps/br211837.aspx
+[Data binding (Windows Store apps using JavaScript and HTML)]: http://msdn.microsoft.com/library/windows/apps/hh758311.aspx
+[login]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/Javascript/src/MobileServiceClient.js#L301
+[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[OData system query options reference]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 

@@ -17,12 +17,10 @@
    ms.author="amanbha"/>
 
 
-
 # 動作項目計時器
-
 動作項目計時器提供 .NET 計時器的簡單包裝函式，例如採用動作項目執行階段所提供回合式並行保證的回呼方法。
 
-動作項目可以使用 `RegisterTimer` 和 `UnregisterTimer` 上註冊和取消其計時器其基底類別的方法。 下列範例示範如何使用計時器 API。 API 和 .NET 計時器非常類似。 在下列範例當計時器到期 `MoveObject` Actor 執行階段會呼叫方法，而其保證接受回合式並行存取，也就是說，沒有其他動作項目方法或計時器/提醒回撥會進行直到此回呼完成執行。
+動作項目可以在其基底類別使用 `RegisterTimer` 和 `UnregisterTimer` 方法註冊和取消其計時器。 下列範例示範如何使用計時器 API。 API 和 .NET 計時器非常類似。 在下列範例中，當計時器到期時動作項目執行階段將呼叫 `MoveObject` 方法，而其保證接受回合式的並行存取，也就是說直到此回呼完成執行，沒有其他動作項目方法或計時器/提醒會進行回呼。
 
 ```csharp
 class VisualObjectActor : StatefulActor<VisualObject>, IVisualObject
@@ -67,12 +65,11 @@ class VisualObjectActor : StatefulActor<VisualObject>, IVisualObject
 作為記憶體回收的一部分，停用動作項目後也會停用所有的計時器，而在此之後不會叫用任何計時器回呼。 此外，動作項目執行階段並不保留任何停用前執行中的計時器資訊。 由動作項目來決定任何未來重新啟動時所需計時器的註冊。 如需詳細資訊，請參閱 [動作項目回收](service-fabric-reliable-actors-lifecycle.md)。
 
 ## 動作項目提醒
-
 提醒是一個會在指定時間於動作項目上觸發持續性回呼的機制。 其功能類似計時器，但不同於計時器提醒會在所有情況下觸發直到動作項目明確取消註冊該「提醒」。 具體而言，動作項目的停用和容錯移轉會觸發提醒，因為動作項目執行階段所保存的動作項目提醒相關資訊。
 
-提醒僅支援可設定狀態的動作項目。 無狀態動作項目不能使用提醒。 動作項目狀態提供者負責儲存已由動作項目註冊的提醒相關資訊。
+提醒僅支援可設定狀態的動作項目。 無狀態動作項目不能使用提醒。 動作項目狀態提供者負責儲存已由動作項目註冊的提醒相關資訊。  
 
-若要註冊的提醒，動作項目會呼叫 `RegisterReminder` 提供基底類別，如下列範例所示的方法。
+若要註冊提醒，動作項目會呼叫基底類別提供的 `RegisterReminder` 方法，如下列範例所示。
 
 ```csharp
 string task = "Pay cell phone bill";
@@ -85,7 +82,7 @@ Task<IActorReminder> reminderRegistration = RegisterReminder(
                                                 ActorReminderAttributes.None);
 ```
 
-在上述範例 `"付款手機 bill"` 為該提醒名稱，也就是動作項目用來唯一識別提醒的字串。 `BitConverter.GetBytes(amountInDollars)` 為與提醒相關聯的內容。 它會傳回給動作項目做為引數來提醒回撥，也就是 `IRemindable.ReceiveReminderAsync`。
+在上述範例 `"Pay cell phone bill"` 為該提醒名稱，也就是動作項目用來唯一識別提醒的字串。 `BitConverter.GetBytes(amountInDollars)` 為與提醒相關聯的內容。 它會傳回給動作項目做為引數來提醒回撥，也就是 `IRemindable.ReceiveReminderAsync`。
 
 使用提醒的動作項目必須實作 `IRemindable` 介面，如下列範例所示。
 
@@ -104,20 +101,16 @@ public class ToDoListActor : StatefulActor<ToDoList>, IToDoListActor, IRemindabl
 }
 ```
 
-當觸發提醒時，Fabric Actor 執行階段會叫用 `ReceiveReminderAsync` 方法的動作項目。 動作項目可以註冊多個提醒， `ReceiveReminderAsync` 的每當觸發任一個這些提醒時叫用方法。 動作項目可以使用傳遞至該提醒名稱 `ReceiveReminderAsync` 方法，以找出已觸發的提醒。
+當觸發提醒時，網狀架構動作項目執行階段會叫用動作項目上的 `ReceiveReminderAsync` 方法。 動作項目可以註冊多個提醒，而每當觸發任一個這些提醒時，便會叫用 `ReceiveReminderAsync` 方法。 動作項目可以使用傳遞至 `ReceiveReminderAsync` 方法的提醒名稱，以找出已觸發的提醒。
 
-動作項目執行階段會儲存動作項目狀態時 `ReceiveReminderAsync` 呼叫完成。 如果儲存狀態時發生錯誤，將會停用該動作項目物件並啟動新的執行個體。 若要指定不需在提醒回呼，完成時儲存的狀態 `ActorReminderAttributes.ReadOnly` 旗標可以設定 `屬性` 參數時 `RegisterReminder` 方法稱為 「 建立提醒。
+當 `ReceiveReminderAsync` 呼叫完成，動作項目執行階段會儲存動作項目狀態。 如果儲存狀態時發生錯誤，將會停用該動作項目物件並啟動新的執行個體。 若要指定不需在提醒回呼完成時儲存的狀態，呼叫 `RegisterReminder` 方法建立提醒時，`ActorReminderAttributes.ReadOnly` 旗標可以在 `attributes` 參數中設定。
 
-若要取消註冊提醒， `UnregisterReminder` 方法呼叫，如下列範例所示。
+若要取消註冊提醒，應該呼叫 `UnregisterReminder` 方法，如下列範例所示。
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
 Task reminderUnregistration = UnregisterReminder(reminder);
 ```
 
-如上所示， `UnregisterReminder` 方法可接受 `IActorReminder` 介面。 動作項目基底類別支援 `GetReminder` 方法，可以用來擷取 `IActorReminder` 傳遞進提醒名稱的介面。 這很方便，因為動作項目不需要保存 `IActorReminder` 從傳回的介面 `RegisterReminder` 方法呼叫。
-
-
-
-
+如上所示，`UnregisterReminder` 方法會接受 `IActorReminder` 介面。 動作項目基底類別支援 `GetReminder` 方法，在傳遞進提醒名稱時可以用來擷取 `IActorReminder` 介面。 這很方便，因為動作項目不需保存從 `RegisterReminder` 方法呼叫傳回的 `IActorReminder` 介面。
 

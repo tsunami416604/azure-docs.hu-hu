@@ -15,8 +15,7 @@
     ms.date="10/05/2015" 
     ms.author="awills"/>
 
-
-# Application Insights：程式碼範例和逐步解說
+#  Application Insights：程式碼範例和逐步解說
 
 *Application Insights 目前僅供預覽。*
 
@@ -35,15 +34,15 @@
 
 若要分析遙測資料，使用您自己的工具， [匯出](app-insights-export-telemetry.md) 至儲存體，您可以在其中剖析和處理。
 
-* [匯出至 Power BI](app-insights-export-power-bi.md)
-* [剖析使用背景工作角色匯出的資料](app-insights-code-sample-export-telemetry-sql-database.md)
+* [匯出至 Power BI](app-insights-export-power-bi.md) 
+* [使用背景工作角色剖析匯出的資料](app-insights-code-sample-export-telemetry-sql-database.md)
 * [使用串流分析匯出至 SQL](app-insights-code-sample-export-sql-stream-analytics.md)
-* [Microsoft Dynamics crm 啟用遙測](app-insights-sample-mscrm.md)
+* [針對 Microsoft Dynamics CRM 啟用遙測](app-insights-sample-mscrm.md)
 
 
 ## 自動化工作
 
-* [指令碼來建立新的 Application Insights 資源](app-insights-powershell-script-create-resource.md)
+* [建立新 Application Insights 資源的指令碼](app-insights-powershell-script-create-resource.md)
 
 
 
@@ -52,9 +51,5 @@
 
 
 
-
-
-
-
-
+ 
 

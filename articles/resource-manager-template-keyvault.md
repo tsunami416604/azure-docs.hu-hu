@@ -16,7 +16,6 @@
    ms.date="12/15/2015"
    ms.author="tomfitz"/>
 
-
 # 金鑰保存庫範本結構描述
 
 建立金鑰保存庫。
@@ -59,53 +58,53 @@
 
 下表描述您在結構描述中必須設定的值。
 
-| 名稱| 類型| 必要| 允許的值| 說明|
+| 名稱 | 類型 | 必要 | 允許的值 | 說明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| 類型| 列舉| 是| **Microsoft.KeyVault/vaults**| 要建立的資源類型。|
-| apiVersion| 列舉| 是| | 要用來建立資源的應用程式開發介面 (API) 版本。|
-| 名稱| 字串| 是| | 要建立的金鑰保存庫名稱。此名稱在整個 Azure 中必須是唯一的。|
-| location| 字串| 是| | 要裝載金鑰保存庫的區域。|
-| properties| 物件| 是| | 指定要建立之金鑰保存庫類型的物件。|
-| 資源| array| 否| | 金鑰保存庫的子資源。|
+| 類型 | 列舉 | 是 | **Microsoft.KeyVault/vaults** | 要建立的資源類型。 |
+| apiVersion | 列舉 | 是 | **2015-06-01** <br /> **2014年-12-19-預覽** | 要用來建立資源的應用程式開發介面 (API) 版本。 | 
+| 名稱 | 字串 | 是 |   | 要建立的金鑰保存庫名稱。 此名稱在整個 Azure 中必須是唯一的。 請考慮使用 [uniqueString](resource-group-template-functions.md#uniquestring) 函式與您的命名慣例，如下列範例所示。 |
+| location | 字串 | 是 | 若要判斷有效的區域，請參閱 [支援區域](resource-manager-supported-services.md#supported-regions)。  | 要裝載金鑰保存庫的區域。 |
+| properties | 物件 | 是 | ([如下所示](#properties)) | 指定要建立之金鑰保存庫類型的物件。 |
+| 資源 | array | 否 | [金鑰保存庫密碼](resource-manager-template-keyvault-secret.md)  | 金鑰保存庫的子資源。 |
 
 <a id="properties" />
 ### 屬性物件
 
-| 名稱| 類型| 必要| 允許的值| 說明|
+| 名稱 | 類型 | 必要 | 允許的值 | 說明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| enabledForDeployment| 布林值| 否| **true** 或 **false**| 指定是否要針對虛擬機器或 Service Fabric 部署啟用保存庫。|
-| enabledForTemplateDeployment| 布林值| 否| **true** 或 **false**| 指定是否要啟用保存庫，以便在資源管理員範本部署中使用。|
-| enabledForVolumeEncryption| 布林值| 否| **true** 或 **false**| 指定是否要啟用保存庫來進行磁碟區加密。|
-| tenantId| 字串| 是| 全域唯一識別碼| 訂用帳戶的租用戶識別碼。您可以使用 **Get-AzureRMSubscription** PowerShell Cmdlet 來擷取此識別碼。|
-| accessPolicies| array| 是| | 最多 16 個物件的陣列，可指定使用者或服務主體的權限。|
-| sku| 物件| 是| | 金鑰保存庫的 SKU。|
+| enabledForDeployment | 布林值 | 否 | **true** 或 **false** | 指定是否要針對虛擬機器或 Service Fabric 部署啟用保存庫。 |
+| enabledForTemplateDeployment | 布林值 | 否 | **true** 或 **false** | 指定是否要啟用保存庫，以便在資源管理員範本部署中使用。 如需詳細資訊，請參閱 [在部署期間將安全的值](resource-manager-keyvault-parameter.md) |
+| enabledForVolumeEncryption | 布林值 | 否 | **true** 或 **false** | 指定是否要啟用保存庫來進行磁碟區加密。 |
+| tenantId | 字串 | 是 | 全域唯一識別碼 | 訂用帳戶的租用戶識別碼。 您可以擷取與 **Get AzureRMSubscription** PowerShell cmdlet。 |
+| accessPolicies | array | 是 | ([如下所示](#accesspolicies)) | 最多 16 個物件的陣列，可指定使用者或服務主體的權限。 |
+| sku | 物件 | 是 | ([如下所示](#sku)) | 金鑰保存庫的 SKU。 |
 
 <a id="accesspolicies" />
 ### properties.accessPolicies 物件
 
-| 名稱| 類型| 必要| 允許的值| 說明|
+| 名稱 | 類型 | 必要 | 允許的值 | 說明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| tenantId| 字串| 是| 全域唯一識別碼| 此存取原則中包含 **objectId** 之 Azure Active Directory 租用戶的租用戶識別碼|
-| objectId| 字串| 是| 全域唯一識別碼| AAD 使用者或服務主體的物件識別碼，其將具備保存庫的存取權。您可以從 **Get-AzureRMADUser** 或 **Get-AzureRMADServicePrincipal** Cmdlet 擷取此值。|
-| 權限| 物件| 是| | 為 Active Directory 物件授與此保存庫相關的權限。|
+| tenantId | 字串 | 是 | 全域唯一識別碼 | 包含 Azure Active Directory 租用戶的租用戶識別碼 **objectId** 在此存取原則 |
+| objectId | 字串 | 是 | 全域唯一識別碼 | AAD 使用者或服務主體的物件識別碼，其將具備保存庫的存取權。 您可以從擷取的值 **Get AzureRMADUser** 或 **Get AzureRMADServicePrincipal** 指令程式。 |
+| 權限 | 物件 | 是 | ([如下所示](#permissions)) | 為 Active Directory 物件授與此保存庫相關的權限。 |
 
 <a id="permissions" />
 ### properties.accessPolicies.permissions 物件
 
-| 名稱| 類型| 必要| 允許的值| 說明|
+| 名稱 | 類型 | 必要 | 允許的值 | 說明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| 金鑰| array| 是| | 為此 Active Directory 物件授與此保存庫中金鑰相關的權限。此值必須指定為允許值的陣列。|
-| 密碼| array| 是| | 為此 Active Directory 物件授與此保存庫中密碼相關的權限。此值必須指定為允許值的陣列。|
+| 金鑰 | array | 是 | 下列值的逗號分隔的清單:<br />**所有**<br />**備份**<br />**建立**<br />**解密**<br />**刪除**<br />**加密**<br />**取得**<br />**匯入**<br />**清單**<br />**還原**<br />**登**<br />**unwrapkey**<br/>**更新**<br />**確認**<br />**包裝金鑰** | 為此 Active Directory 物件授與此保存庫中金鑰相關的權限。 此值必須指定為允許值的陣列。 |
+| 密碼 | array | 是 | 下列值的逗號分隔的清單:<br />**所有**<br />**刪除**<br />**取得**<br />**清單**<br />**設定** | 為此 Active Directory 物件授與此保存庫中密碼相關的權限。 此值必須指定為允許值的陣列。 |
 
 <a id="sku" />
 ### properties.sku 物件
 
-| 名稱| 類型| 必要| 允許的值| 說明|
+| 名稱 | 類型 | 必要 | 允許的值 | 說明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| 名稱| 列舉| 是| | 要使用的 KeyVault 服務層。Standard 支援密碼和軟體保護的金鑰Premium 會新增對於 HSM 保護之金鑰的支援。|
-| family| 列舉| 是| **A**| 要使用的 sku 系列。
-
-
+| 名稱 | 列舉 | 是 | **標準**<br />**premium** | 要使用的 KeyVault 服務層。  Standard 支援密碼和軟體保護的金鑰  Premium 會新增對於 HSM 保護之金鑰的支援。 |
+| family | 列舉 | 是 | **A** | 要使用的 sku 系列。 
+ 
+    
 ## 範例
 
 下列範例會部署金鑰保存庫和密碼。
@@ -235,13 +234,10 @@
         }]
     }
 
+
 ## 後續步驟
 
-- 
-- 
-
-
-
-
+- 如需金鑰保存庫的一般資訊，請參閱 [開始使用 Azure 金鑰保存庫](./key-vault/key-vault-get-started.md)。
+- 部署範本時，參考的金鑰保存庫密碼的範例，請參閱 [傳遞安全的值，在部署期間](resource-manager-keyvault-parameter.md)。
 
 

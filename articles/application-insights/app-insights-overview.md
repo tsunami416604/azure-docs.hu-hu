@@ -1,6 +1,6 @@
 <properties 
     pageTitle="什麼是 Application Insights？" 
-    description="追蹤即時 Web 或裝置應用程式的使用情况和效能。偵測、分級和診斷問題。持續監視並改善您的使用者的成功。" 
+    description="追蹤即時 Web 或裝置應用程式的使用情况和效能。  偵測、分級和診斷問題。 持續監視並改善您的使用者的成功。" 
     services="application-insights" 
     documentationCenter=""
     authors="alancameronwills" 
@@ -14,22 +14,21 @@
     ms.topic="article" 
     ms.date="11/23/2015" 
     ms.author="awills"/>
-
-
+ 
 # 什麼是 Application Insights？
 
-Application Insights 是一項可延伸分析服務，會監視您的即時應用程式。 該服務可以協助您偵測並診斷效能問題，並了解實際上使用者如何運用您的應用程式。 它是針對開發人員設計，以協助您持續改善應用程式的效能和可用性。
+Application Insights 是一項可延伸分析服務，會監視您的即時應用程式。 該服務可以協助您偵測並診斷效能問題，並了解實際上使用者如何運用您的應用程式。 它是針對開發人員設計，以協助您持續改善應用程式的效能和可用性。 
 
 ![製作使用者活動統計資料的圖表，或深入特定事件。](./media/app-insights-overview/00-sample.png)
 
-它可在各種不同的平台上搭配 Web 和獨立式應用程式使用：裝載在內部部署或雲端的 .NET 或 J2EE。
+它可在各種不同的平台上搭配 Web 和獨立式應用程式使用：裝載在內部部署或雲端的 .NET 或 J2EE。 
 
 Application Insights 是以開發團隊為目標。 使用它，您可以：
 
-* [分析使用量模式 ][knowusers] 來了解您的使用者更好的並不斷改善您的應用程式。
+* [分析使用量模式][knowUsers] 來了解您的使用者更好的並不斷改善您的應用程式。 
  * 頁面檢視計數、新的和返回的使用者、地理位置、平台以及其他核心使用量分析
  * 追蹤使用量路徑來評估每個功能的成功。
-* [偵測、 分級和診斷 ][detect] 效能問題，並且大多數使用者感知之前加以修正。
+* [偵測、 分級和診斷][detect] 效能問題，並且大多數使用者感知之前加以修正。
  *  效能變更或當機的警示。
  *  度量，用以協助診斷效能問題，例如回應時間、CPU 使用量、相依性追蹤。
  *  Web 應用程式的可用性測試。
@@ -42,7 +41,7 @@ Application Insights 是以開發團隊為目標。 使用它，您可以：
 
 
 
-想要進一步分析嗎？ [Export](app-insights-export-telemetry.md) your data [to SQL](app-insights-code-sample-export-telemetry-sql-database.md), [to Power BI](app-insights-export-power-bi.md), or your own tools.
+想要進一步分析嗎？ [匯出](app-insights-export-telemetry.md) 資料 [sql](app-insights-code-sample-export-telemetry-sql-database.md), ，[Power bi](app-insights-export-power-bi.md), ，或您自己的工具。
 
 ![在 Power BI 中檢視資料](./media/app-insights-overview/210.png)
 
@@ -50,12 +49,12 @@ Application Insights 是以開發團隊為目標。 使用它，您可以：
 
 針對範圍日益成長的平台提供了 SDK。 目前此清單包括：
 
- * [ASP.NET 伺服器 ][greenbrown] Azure 或 IIS 伺服器上
+ * [ASP.NET 伺服器][greenbrown] Azure 或 IIS 伺服器上
  * [Azure 雲端服務](app-insights-cloudservices.md)
- * [J2EE 伺服器 ][java]
- * [Web 網頁 ][client]: HTML + JavaScript
- * [Windows 桌面和伺服器應用程式 ][desktop]
- * [其他平台 ][platforms] -Node.js、 PHP、 Python、 Ruby、 Joomla、 SharePoint、 WordPress
+ * [J2EE 伺服器][java]
+ * [網頁][client]: HTML + JavaScript
+ * [Windows 桌面版和伺服器的應用程式][desktop]
+ * [其他平台][platforms] -Node.js、 PHP、 Python、 Ruby、 Joomla、 SharePoint、 WordPress
 
 Application Insights 也可以從現有 ASP.NET Web 應用程式取得遙測，而不需重建它們。
 
@@ -70,7 +69,7 @@ Application Insights 也可以從現有 ASP.NET Web 應用程式取得遙測，�
 
 SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效能。 您也可以撰寫自己的自訂程式碼，將遙測資料傳送至入口網站。 自訂遙測在追蹤使用者劇本時特別有用：您可以計算事件，例如按鈕點擊、達成特定目標或使用者錯誤。
 
-對於 ASP.NET 伺服器與 Azure web 應用程式，您也可以安裝 [狀態監視器 ][redfield], ，有兩種用法。 它可讓您：
+對於 ASP.NET 伺服器與 Azure web 應用程式，您也可以安裝 [狀態監視器][redfield], ，有兩種用法。 它可讓您：
 
 * 監視 Web 應用程式，而不需要重新建立或重新安裝它。
 * 追蹤對相依模組的呼叫。
@@ -79,7 +78,7 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 
 ### 負荷為何？
 
-對您的效能的影響很小。 追蹤會呼叫非封鎖性，並且批次處理要求並在另一個執行緒中傳送。
+對您的效能的影響很小。 追蹤會呼叫非封鎖性，並且批次處理要求並在另一個執行緒中傳送。 
 
 
 
@@ -90,13 +89,13 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 2. 登入 [Azure 入口網站](http://portal.azure.com)
 3. 建立 Application Insights 資源。 這是您會看到來自您的應用程式資料的位置。
 
-    ![[加入]、](./media/app-insights-overview/11-new.png)
+    ![[加入]、[開發人員服務]、[Application Insights]。](./media/app-insights-overview/11-new.png)
 
     選擇您的應用程式類型。
 
 4. 開啟新資源，然後開啟快速啟動指南。
-
-    ![瀏覽，](./media/app-insights-overview/quickstart.png)
+    
+    ![瀏覽， ](./media/app-insights-overview/quickstart.png)
 
     本節說明如何在您的應用程式中安裝 SDK。 如果是 Web 應用程式，您也將了解如何將 SDK 加入至 Web 網頁，以及設定可用性測試。
 
@@ -104,6 +103,7 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 如需詳細資訊，請在此頁面左側導覽列中的 [開始使用] 下選擇您的應用程式類型。
 
 ## 代碼
+
 
 [範例和逐步解說](app-insights-code-samples.md)
 
@@ -113,39 +113,40 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 ## 支援與意見反應
 
 * 疑難排解與問題：
- * [疑難排解 ][qna]
+ * [疑難排解][qna]
  * [MSDN 論壇](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * 錯誤：
- * [連接](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
+ * [連線](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * 建議：
- * [User Voice](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
+ * [使用者心聲 (英文)](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
 
 
 ## 影片
 
+
 > [AZURE.VIDEO 218]
->
+
 > [AZURE.VIDEO usage-monitoring-application-insights]
->
+
 > [AZURE.VIDEO performance-monitoring-application-insights]
 
 
+<!--Link references-->
 
+[android]: https://github.com/Microsoft/ApplicationInsights-Android
+[azure]: ../insights-perf-analytics.md
+[client]: app-insights-javascript.md
+[desktop]: app-insights-windows-desktop.md
+[detect]: app-insights-detect-triage-diagnose.md
+[greenbrown]: app-insights-asp-net.md
+[ios]: https://github.com/Microsoft/ApplicationInsights-iOS
+[java]: app-insights-java-get-started.md
+[knowUsers]: app-insights-overview-usage.md
+[platforms]: app-insights-platforms.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
+[redfield]: app-insights-monitor-performance-live-website-now.md
+[windows]: app-insights-windows-get-started.md
 
-
-[android]: https://github.com/Microsoft/ApplicationInsights-Android 
-[azure]: ../insights-perf-analytics.md 
-[client]: app-insights-javascript.md 
-[desktop]: app-insights-windows-desktop.md 
-[detect]: app-insights-detect-triage-diagnose.md 
-[greenbrown]: app-insights-asp-net.md 
-[ios]: https://github.com/Microsoft/ApplicationInsights-iOS 
-[java]: app-insights-java-get-started.md 
-[knowusers]: app-insights-overview-usage.md 
-[platforms]: app-insights-platforms.md 
-[portal]: http://portal.azure.com/ 
-[qna]: app-insights-troubleshoot-faq.md 
-[redfield]: app-insights-monitor-performance-live-website-now.md 
-[windows]: app-insights-windows-get-started.md 
-
+ 

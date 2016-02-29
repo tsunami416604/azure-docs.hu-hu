@@ -17,19 +17,19 @@
    ms.date="11/26/2015"
    ms.author="hermannd"/>
 
-
 # 在 Microsoft Azure SUSE Linux VM 上測試 SAP NetWeaver
+
 
 以下是在 Microsoft Azure SUSE Linux VM 上測試 SAP NetWeaver 時要考量的項目清單。
 目前尚無關於 SAP-Linux-Azure 的官方 SAP 支援的說明。 
 不過客戶可以執行一些測試、 示範或原型，只要它們並非相依
-官方 SAP 支援。
+官方 SAP 支援。 
 
 下列清單應該只用來協助避免一些潛在的問題，並讓生活更輕鬆：
 
 
 
-## 在 Microsoft Azure 上測試 SAP 的 SUSE 映像
+## 在 Microsoft Azure 上測試 SAP 的 SUSE 映像 
 
 若要在 Azure 上進行 SAP 測試，只應使用 SLES 11SP4 和 SLES 12。 特殊的 SUSE 映像
 Azure 映像庫中找到:"SLES 11 SP3 for SAP CAL 」
@@ -49,28 +49,28 @@ Azure 映像庫中找到:"SLES 11 SP3 for SAP CAL 」
    ```
 
 * 從 SUSE 尋找現有的供應項目：
-
+      
    ```
    PS  : Get-AzureVMImageOffer -Location "West Europe" -Publisher "SUSE"
    CLI : azure vm image list-offers westeurope SUSE
    ```
-
+      
 * 尋找 SUSE SLES 供應項目：
-
+      
    ```
    PS  : Get-AzureVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES"
    CLI : azure vm image list-skus westeurope SUSE SLES
    ```
-
+      
 * 尋找 SLES SKU 的特定版本：
-
+      
    ```
    PS  : Get-AzureVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12"
    CLI : azure vm image list westeurope SUSE SLES 12
    ```
-
-## 在 SUSE VM 中安裝 WALinuxAgent
-
+     
+## 在 SUSE VM 中安裝 WALinuxAgent 
+ 
 此代理程式是 Azure 資源庫中的 SLES 映像的一部分。 以下是一個可以在哪裡找到的地方
 手動安裝它的相關資訊 (例如當上傳 SLES OS vhd 從內部部署):
 
@@ -102,7 +102,7 @@ Azure 映像庫中找到:"SLES 11 SP3 for SAP CAL 」
 若要在 Azure 上稍後應該變更回 eth0 像開機時避免問題描述
 這裡: <https://dartron.wordpress.com/2013/09/27/fixing-eth1-in-cloned-sles-11-vmware/>
 
-除了文章中說明的以外，建議您一併移除
+除了文章中說明的以外，建議您一併移除 
 
    # sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/
 
@@ -156,24 +156,20 @@ LVM 在 Azure 上並未經過徹底的驗證。 如果需要大量的邏輯磁�
    ```
    zypper in -t pattern gnome
    ```
-
+      
    SLES 12
-
+   
    ```
    zypper in -t pattern gnome-basic
    ```
 
 ## 雲端中的 Linux 上的 SAP-Oracle 支援
-
+ 
 這實際上並非 Azure 的特定主題，而是一般主題。 不過很重要
 了解。 在虛擬環境中，Oracle 對 Linux 的支援有所限制。
 這表示結尾，SAP 不支援 Oracle SUSE 或 RedHat 公用定域機組中
 例如 Azure。 
 客戶應直接連絡 Oracle 來討論這個主題。
-
-
-
-
 
 
 

@@ -17,7 +17,6 @@
     ms.date="10/21/2015"
     ms.author="rasquill"/>
 
-
 # Azure 基礎結構服務實作指導方針
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
@@ -27,7 +26,8 @@ Azure 是用來實作 dev/test 或概念證明設定的絕佳平台，因為它�
 這個指導方針識別出許多領域，而規劃這些領域是 Azure 中 IT 工作負載成功的關鍵。 此外，規劃還提供建立必要資源的順序。 儘管有一些彈性，但是我們建議您在規劃與進行決策時遵循這篇文章裡的順序。
 
 這篇文章摘錄中的內容從 [Azure 實作方針](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx) 部落格文章。 感謝 Santiago Cánepa (Microsoft 應用程式開發經理) 和 Hugo Salcedo (Microsoft 應用程式開發經理) 提供的原始資料。
-> [AZURE.NOTE] 同質群組已取代。 此處未描述其用法。 如需詳細資訊，請參閱 [關於區域 Vnet 和同質群組](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
+
+> [AZURE.NOTE] 同質群組已被取代。 此處未描述其用法。 如需詳細資訊，請參閱 [關於區域 Vnet 和同質群組](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
 
 ## 1.命名慣例
 
@@ -53,13 +53,13 @@ Azure 是用來實作 dev/test 或概念證明設定的絕佳平台，因為它�
 
 詞綴指的是可說明特定資源的各個層面。 下列表格顯示一些常用範例。
 
- 層面| 範例| 注意事項
+層面 | 範例 | 注意事項
 --- | --- | ---
- Environment| dev、stg、prod| 取決於每個環境的用途與名稱。
- 位置| usw (West US)、use (East US 2)| 取決於資料中心的區域或組織的區域。
- Azure 元件、服務或產品| Rg (適用於資源群組)、Svc (適用於雲端服務)、VNet (適用於虛擬網路)| 取決於資源提供支援的產品。
- 角色| sql、ora、sp、iis| 取決於虛擬機器的角色。
- 執行個體| 01、02 和 03 等| 適用於有一個以上執行個體的資源。例如，雲端服務中負載平衡的 Web 伺服器。
+Environment | dev、stg、prod | 取決於每個環境的用途與名稱。
+位置 | usw (West US)、use (East US 2) | 取決於資料中心的區域或組織的區域。
+Azure 元件、服務或產品 | Rg (適用於資源群組)、Svc (適用於雲端服務)、VNet (適用於虛擬網路) | 取決於資源提供支援的產品。
+角色 | sql、ora、sp、iis | 取決於虛擬機器的角色。
+執行個體 | 01、02 和 03 等 | 適用於有一個以上執行個體的資源。 例如，雲端服務中負載平衡的 Web 伺服器。
 
 建立命名慣例時，請確定它們會清楚描述要針對每個資源類型使用哪些詞綴，以及使用的位置 (前置或後置)。
 
@@ -165,10 +165,9 @@ Azure 中有兩種可用的儲存體帳戶。 標準儲存體帳戶可供您存�
 
 Azure 會建立含有一個作業系統磁碟、一個暫存磁碟，以及零或多個選用資料磁碟的虛擬機器。 作業系統磁碟和資料磁碟都是 Azure 頁面 Blob，而暫存磁碟會儲存在本機機器所在的節點上。 這會使得暫存磁碟不適合用於系統回收期間必須持續存在的資料，因為該虛擬機器可能會以無訊息模式從某個節點移轉到其他節點，因而遺失該磁碟上的所有資料。 請勿在暫存磁碟機上儲存任何資料。
 
-作業系統磁碟和資料磁碟有大小上限為 1023 gb 因為 blob 的大小上限為 1024 GB 且必須包含 VHD 檔案的中繼資料 (頁尾) (一個 GB 是 1024年<sup>3</sup> 位元組為單位)。 您可以在 Windows 中實作磁碟等量來超越這個限制。
+作業系統磁碟和資料磁碟有大小上限為 1023 gb 因為 blob 的大小上限為 1024 GB 且必須包含 VHD 檔案 (一個 GB 是 1024年的中繼資料 (頁尾)<sup>3</sup> 位元組為單位)。 您可以在 Windows 中實作磁碟等量來超越這個限制。
 
 ### 等量磁碟
-
 除了能夠建立大於 1023 GB 的磁碟，在許多情況下，針對資料磁碟使用等量，可藉由允許多個 blob 備份單一磁碟區的儲存體來增強效能。 從單一邏輯磁碟寫入和讀取資料所需的 I/O 會透過等量速度以平行方式繼續進行。
 
 根據虛擬機器的大小而定，Azure 會強制限制資料磁碟數量和可用頻寬。 如需詳細資訊，請參閱 [虛擬機器的大小](virtual-machines-size-specs.md)。
@@ -205,14 +204,15 @@ Azure 會建立含有一個作業系統磁碟、一個暫存磁碟，以及零�
 
 工作：
 
-- 使用您的命名慣例來建立儲存體帳戶組合。 您可以使用 Azure入口網站、Azure 傳統入口網站或 **New-AzureStorageAccount** PowerShell Cmdlet。
+- 使用您的命名慣例來建立儲存體帳戶組合。 您可以使用 Azure 入口網站，Azure 傳統入口網站，或 **New-azurestorageaccount** PowerShell cmdlet。
 
 ## 4.雲端服務
 
 雲端服務是 Azure 服務管理中的基本建置組塊，適用於 PaaS 和 IaaS 服務。 對於 PaaS，雲端服務代表其執行個體可以彼此通訊之角色的關聯。 雲端服務會關聯至公開虛擬 IP (VIP) 位址和負載平衡器，其會取得來自網際網路的連入流量，並將它負載平衡至設定來接收該流量的角色。
 
 在 IaaS 的案例中，雲端服務可提供類似功能，儘管在大多數案例中，負載平衡器的功能是用來將流量轉接到特定的 TCP 或 UDP 連接埠 (從網際網路到該雲端服務內的多部虛擬機器)。
-> [AZURE.NOTE] 雲端服務不存在於 Azure 資源管理員中。 如需簡介優點的資源管理員，請參閱 [Azure 運算、 網路和存放裝置提供者 Azure 資源管理員底下](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)。
+
+> [AZURE.NOTE] 雲端服務不存在的 Azure 資源管理員中。 如需簡介優點的資源管理員，請參閱 [Azure 運算、 網路和存放裝置提供者 Azure 資源管理員底下](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)。
 
 雲端服務名稱在 IaaS 中特別重要，因為 Azure 會使用它們做為磁碟預設命名慣例的一部分。 雲端服務名稱只能包含字母、數字和連字號。 欄位中的第一個和最後一個字元，必須是字母或數字。
 
@@ -232,7 +232,7 @@ Azure 訂用帳戶最多可支援 200 個雲端服務。
 
 工作：
 
-- 使用您的命名慣例來建立雲端服務組合。 您可以使用 Azure 傳統入口網站或 **New-AzureService** PowerShell Cmdlet。
+- 使用您的命名慣例來建立雲端服務組合。 您可以使用 Azure 傳統入口網站或 **New-azureservice** PowerShell cmdlet。
 
 ## 5.虛擬網路
 
@@ -241,7 +241,6 @@ Azure 訂用帳戶最多可支援 200 個雲端服務。
 虛擬網路是適用於虛擬機器的容器，您也可以為其指定子網路、自訂位址，以及 DNS 設定選項。 位於相同虛擬網路的虛擬機器可以直接與同一個虛擬網路內的其他電腦通訊，而不論它們是屬於哪一個雲端服務的成員。 在虛擬網路中，這個通訊會維持私人狀態，因而不需透過公用端點進行通訊。 如果虛擬機器會連線到公司網路，則此通訊可使用安裝於虛擬網路中或內部部署的 DNS 伺服器，透過 IP 位址或依名稱來進行。
 
 ### 站台連線能力
-
 如果內部部署的使用者和電腦不需持續連線到 Azure 虛擬網路中的虛擬機器，則可建立僅限雲端的虛擬網路。
 
 ![](./media/virtual-machines-infrastructure-services-implementation-guidelines/vnet01.png)
@@ -263,20 +262,19 @@ Azure 訂用帳戶最多可支援 200 個雲端服務。
 您可以將僅限雲端的虛擬網路轉換為跨單位的虛擬網路，但是，它很可能會要求您為虛擬網路位址空間、子網路，以及使用 Azure 指派的靜態 IP 位址 (稱為動態 IP，DIP) 重新編號。 因此，在建立虛擬網路之前，請謹慎考量您所需的虛擬網路類型 (僅限雲端與跨單位)。
 
 ### 子網路
-
 子網路允許您組織相關的資源，可能是邏輯上相關 (例如，一個適用於與同一個應用程式相關聯之虛擬機器的子網路)，也可能是實際上相關 (例如，每個雲端服務一個子網路)，或者採用子網路隔離技術來提高安全性。
 
-對於跨單位的虛擬網路，應該使用您針對內部部署資源所使用的相同慣例來設計子網路，請記住，**Azure 一律會針對每個子網路使用位址空間的前三個 IP 位址**。 若要決定子網路所需的位址數目，請計算您現在所需的虛擬機器數目、估計未來成長量，然後使用下列表格來決定子網路的大小。
+對於跨單位虛擬網路，您應該設計子網路與您用於內部部署資源的相同慣例，記住， **Azure 一律針對每個子網路使用位址空間的前三個 IP 位址**。 若要決定子網路所需的位址數目，請計算您現在所需的虛擬機器數目、估計未來成長量，然後使用下列表格來決定子網路的大小。
 
- 所需的虛擬機器數目| 所需的主機位元數| 子網路的大小
+所需的虛擬機器數目 | 所需的主機位元數 | 子網路的大小
 --- | --- | ---
- 1–3| 3| /29
- 4–11| 4| /28
- 12–27| 5| /27
- 28–59| 6| /26
- 60–123| 7| /25
+1–3 | 3 | /29
+4–11     | 4 | /28
+12–27 | 5 | /27
+28–59 | 6 | /26
+60–123 | 7 | /25
 
-> [AZURE.NOTE] 針對一般的內部子網路，用於含有 n 個主機位元之子網路的主機位址數目上限是 2<sup>n</sup> – 2。 針對 Azure 子網路，用於含有 n 個主機位元之子網路的主機位址數目上限是 2<sup>n</sup> – 5 (2 加 3 適用於 Azure 在每個子網路使用的位址)。
+> [AZURE.NOTE] 針對一般的內部子網路，用於含有 n 個主機位元之子網路的主機位址數目上限是 2<sup>n</sup> – 2。 針對 Azure 子網路，適用於含有 n 個主機位元之子網路的主機位址數目上限是 2<sup>n</sup> – 5 (2 加 3 適用於 Azure 在每個子網路上使用的位址)。
 
 如果您選擇的子網路大小太小，就必須在子網路中為虛擬機器重新編號並重新部署。
 
@@ -331,11 +329,11 @@ Azure 訂用帳戶最多可支援 200 個雲端服務。
 工作：
 
 - 使用您的命名慣例來定義每個虛擬機器名稱。
-- 使用 Azure 入口網站、Azure 傳統入口網站、**New-AzureVM** PowerShell Cmdlet、Azure CLI 或資源管理員範本來建立虛擬機器。
+- 使用 Azure 入口網站、 Azure 傳統入口網站建立虛擬機器 **New-azurevm** PowerShell cmdlet、 Azure CLI 或資源管理員範本。
 
 ## IT 工作負載的範例：Contoso 財務分析引擎
 
-Contoso Corporation 開發了新一代財務分析引擎，並具備尖端的專屬演算法，以瞄準未來的市場貿易。 他們想要使其客戶能夠在 Azure 中使用這個引擎來做為一組伺服器，其中包括：
+Contoso Corporation 開發了新一代財務分析引擎，並具備尖端的專屬演算法，以瞄準未來的市場貿易。 他們想要使其客戶能夠在 Azure 中使用這個引擎來做為一組伺服器，其中包括： 
 
 - 兩部 (最終會更多部) 以 IIS 為基礎的 Web 伺服器，其會在 Web 層中執行自訂的 Web 服務
 - 兩部 (最終會更多部) 以 IIS 為基礎的應用程式伺服器，其會在應用程式層中執行計算
@@ -372,8 +370,8 @@ Contoso 正在使用名稱為 Contoso Enterprise Subscription 的企業訂用帳
 
 Contoso 判斷他們需要兩個儲存體帳戶：
 
-- **contosoazfaeusesawebapp**，適用於 Web 伺服器、應用程式伺服器，以及網域控制站及其額外資料磁碟的標準儲存體
-- **contosoazfaeusesasqlclust**，適用於 SQL Server 叢集伺服器及其額外資料磁碟的高階儲存體
+- **contosoazfaeusesawebapp** 標準 web 伺服器、 應用程式伺服器和網域控制站及其額外資料磁碟的儲存體
+- **contosoazfaeusesasqlclust** 高階儲存體的 SQL Server 叢集伺服器及其額外資料磁碟
 
 ### 具有子網路的虛擬網路
 
@@ -395,10 +393,10 @@ Contoso 判斷他們需要兩個儲存體帳戶：
 
 為了維持這四個財務分析引擎層級的高可用性，Contoso 決定使用四個可用性集合：
 
-- **azfae-use-as-dc**，適用於網域控制站
-- **azfae-use-as-web**，適用於 Web 伺服器
-- **azfae-use-as-app**，適用於應用程式伺服器
-- **azfae-use-as-sql**，適用於 SQL Server 叢集中的伺服器
+- **用於使用-為-dc** 的網域控制站
+- **用於使用-為-web** 適用於 web 伺服器
+- **用於使用-做為應用程式** 應用程式伺服器
+- **用於使用-做為 sql** 的 SQL Server 叢集中的伺服器
 
 這些可用性集合將與虛擬機器一同建立。
 
@@ -406,15 +404,15 @@ Contoso 判斷他們需要兩個儲存體帳戶：
 
 Contoso 決定為其 Azure 虛擬機器使用下列名稱：
 
-- **azfae-use-vm-dc01**，適用於第一個網域控制站
-- **azfae-use-vm-dc02**，適用於第二個網域控制站
-- **azfae-use-vm-web01**，適用於第一部 Web 伺服器
-- **azfae-use-vm-web02**，適用於第二部 Web 伺服器
-- **azfae-use-vm-app01**，適用於第一部應用程式伺服器
-- **azfae-use-vm-app02**，適用於第二部應用程式伺服器
-- **azfae-use-vm-sql01**，適用於 SQL Server 叢集中的第一部 SQL Server
-- **azfae-use-vm-sql02**，適用於 SQL Server 叢集中的第二部 SQL Server
-- **azfae-use-vm-sqlmn01**，適用於 SQL Server 叢集中的多數節點見證
+- **用於使用 vm-dc01** 第一個網域控制站
+- **用於使用 vm-dc02** 第二個網域控制站
+- **用於使用 vm-web01** 的第一部 web 伺服器
+- **用於使用 vm-web02** 第二部 web 伺服器
+- **用於使用 vm-app01** 第一個應用程式伺服器
+- **用於使用 vm-app02** 第二個應用程式伺服器
+- **用於使用 vm-sql01** 第一個 SQL server 中的 SQL Server 叢集
+- **用於使用 vm-sql02** 第二個 SQL server 中的 SQL Server 叢集
+- **用於使用 vm-sqlmn01** 的 SQL Server 叢集中的多數節點見證
 
 以下是產生的組態。
 
@@ -432,19 +430,15 @@ Contoso 決定為其 Azure 虛擬機器使用下列名稱：
 
 ## 其他資源
 
-[Microsoft Azure 訂用帳戶和服務限制、 配額和條件約束](../azure-subscription-service-limits.md#storage-limits)
+[Microsoft Azure 訂用帳戶及服務限制、配額與限制](../azure-subscription-service-limits.md#storage-limits)
 
 [虛擬機器的大小](virtual-machines-size-specs.md)
 
-[Azure 儲存體延展性和效能目標](../storage-scalability-targets.md)
+[Azure 儲存體的延展性與效能目標](../storage-scalability-targets.md)
 
 [雲端平台整合架構 (Azure 架構模式)](../azure-architectures-cpif-overview.md)
 
 [資料中心延伸模組參考架構圖表](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
-[Azure 運算、 網路和存放裝置提供者 Azure 資源管理員](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
-
-
-
-
+[Azure 資源管理員提供的 Azure 運算、網路和儲存提供者](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
 

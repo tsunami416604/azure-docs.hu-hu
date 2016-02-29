@@ -15,22 +15,21 @@
    ms.date="12/02/2015"
    ms.author="joaoma" />
 
-
 # 測試流量管理員設定
 
 測試流量管理員設定的最好方法是設定數個用戶端，然後分次關閉您設定檔中的各端點 (包含雲端服務和網站)。 下列提示可協助您測試流量管理員設定檔：
 
 ## 基本測試步驟
 
-- **設定非常低的 DNS TTL**，方便快速傳播變更 - 例如 30 秒。
-- **知道正在測試的設定檔中您 Azure 雲端服務和網站的 IP 位址**。
-- **使用可讓您將 DNS 名稱解析成 IP 位址的工具**，並顯示該位址。 您正查看公司網域名稱是否解析成設定檔中端點的 IP 位址。 他們的解析方法應與流量管理員設定檔的流量路由方法一致。 如果您是使用執行 Windows 的電腦，您可以從命令或 Windows PowerShell 命令提示字元使用 Nslookup.exe 工具。 可讓您「挖掘」IP 位址的其他公開可用工具在網際網路上隨手可得。
+- **設定非常低的 DNS TTL** 方便快速傳播變更 30 秒，例如。
+- **知道您的 Azure 雲端服務和網站的 IP 位址** 所測試的設定檔中。
+- **使用的工具，可讓您將 DNS 名稱解析為 IP 位址** 並顯示該位址。 您正查看公司網域名稱是否解析成設定檔中端點的 IP 位址。 他們的解析方法應與流量管理員設定檔的流量路由方法一致。 如果您是使用執行 Windows 的電腦，您可以從命令或 Windows PowerShell 命令提示字元使用 Nslookup.exe 工具。 可讓您「挖掘」IP 位址的其他公開可用工具在網際網路上隨手可得。
 
 ### 使用 nslookup 檢查流量管理員設定檔
 
 1. 以系統管理員的身分開啟命令或 Windows PowerShell 命令提示字元。
-2. 型別 `ipconfig /flushdns` 排清 DNS 解析程式快取。
-3. 型別 `nslookup < 流量管理員網域名稱 >`。例如，下列命令會檢查前置詞的網域名稱 *myapp.contoso*:
+2. 輸入 `ipconfig /flushdns` 以排清 DNS 解析程式快取。
+3. 輸入 `nslookup <your Traffic Manager domain name>`。 例如，下列命令會檢查前置詞的網域名稱 *myapp.contoso*:
     nslookup myapp.contoso.trafficmanager.net
    典型的結果顯示如下：
    - 正在存取 DNS 伺服器的 DNS 名稱和 IP 位址，藉此解析此流量管理員網域名稱。
@@ -66,15 +65,11 @@
 
 ## 後續步驟
 
-[流量管理員效能考量](traffic-manager-performance-considerations.md)
+[流量管理員的效能考量](traffic-manager-performance-considerations.md)
 
-[疑難排解流量管理員已降級狀態](traffic-manager-troubleshooting-degraded.md)
-
-
+[疑難排解流量管理員的已降級狀態](traffic-manager-troubleshooting-degraded.md)
 
 
 
 
-
-
-
+ 

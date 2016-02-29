@@ -16,7 +16,6 @@
     ms.date="10/05/2015"
     ms.author="ricksal"/>
 
-
 # 將驗證加入至行動服務 Android 應用程式
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -37,29 +36,29 @@
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
-## <a name="register"></a>註冊應用程式進行驗證，並設定行動服務
+##<a name="register"></a>註冊您的應用程式以驗證與設定行動服務
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-aad-server-extension](../../includes/mobile-services-dotnet-backend-aad-server-extension.md)]
 
-## <a name="permissions"></a>限制已驗證的使用者權限
+##<a name="permissions"></a>限制只有通過驗證的使用者具有權限
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../../includes/mobile-services-restrict-permissions-dotnet-backend.md)]
 
 3. 開啟您完成教學課程時所建立的專案 [開始使用行動服務]。
 
-4. 在 [執行] ****功能表中，按一下 [執行應用程式] ****來啟動應用程式。確認應用程式啟動後是否會引發無法處理的例外狀況，狀態碼為 401 (未授權)。
+4. 從 **執行** ] 功能表上，然後按一下 [ **執行應用程式** 來啟動應用程式; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 (未經授權)。
 
-     這是因為應用程式嘗試以未驗證的使用者身分來存取行動服務，但 _TodoItem_ 資料表現在需要驗證。
+     這是因為應用程式會嘗試驗證的使用者身分存取行動服務，但 _TodoItem_ 資料表現在需要驗證。
 
 接下來，您要將應用程式更新為在要求行動服務的資源之前必須驗證使用者。
 
-## <a name="add-authentication"></a>將驗證新增至應用程式
+##<a name="add-authentication"></a>將驗證新增至應用程式
 
 [AZURE.INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
-## <a name="cache-tokens"></a>在用戶端上快取驗證權杖
+## <a name="cache-tokens"></a>在用戶端快取驗證權杖
 
 [AZURE.INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
@@ -67,24 +66,25 @@
 
 [AZURE.INCLUDE [mobile-android-authenticate-app-refresh-token](../../includes/mobile-android-authenticate-app-refresh-token.md)]
 
-## <a name="next-steps"></a>後續步驟
+##<a name="next-steps"></a>後續步驟
 
-在下一個教學課程中， [[授權使用者使用指令碼] 的行動服務使用者的服務端授權][authorize users with scripts], ，您將行動服務根據經驗證的使用者所提供的使用者識別碼值，並用來篩選行動服務所傳回的資料。
-
-
+在下一個 [行動服務使用者的伺服器端授權] [以指令碼授權使用者] 教學課程中，您將使用由行動服務根據經驗證的使用者而提供的使用者識別碼值，來篩選行動服務傳回的資料。
 
 
+<!-- Anchors. -->
+[Register your app for authentication and configure Mobile Services]: #register
+[Restrict table permissions to authenticated users]: #permissions
+[Add authentication to the app]: #add-authentication
+[Store authentication tokens on the client]: #cache-tokens
+[Refresh expired tokens]: #refresh-tokens
+[Next Steps]:#next-steps
 
-[register your app for authentication and configure mobile services]: #register 
-[restrict table permissions to authenticated users]: #permissions 
-[add authentication to the app]: #add-authentication 
-[store authentication tokens on the client]: #cache-tokens 
-[refresh expired tokens]: #refresh-tokens 
-[next steps]: #next-steps 
-[get started with mobile services]: mobile-services-dotnet-backend-android-get-started.md 
-[get started with authentication]: mobile-services-dotnet-backend-android-get-started-users.md 
-[get started with push notifications]: mobile-services-dotnet-backend-android-get-started-push.md 
-[authorize users with scripts]: ../mobile-services-dotnet-backend-android-authorize-users-in-scripts.md 
-[mobile services .net how-to conceptual reference]: /develop/mobile/how-to-guides/work-with-net-client-library 
-[register your windows store app package for microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md 
+<!-- URLs. -->
+[Get started with Mobile Services]: mobile-services-dotnet-backend-android-get-started.md
+[Get started with authentication]: mobile-services-dotnet-backend-android-get-started-users.md
+[Get started with push notifications]: mobile-services-dotnet-backend-android-get-started-push.md
+[Authorize users with scripts]: ../mobile-services-dotnet-backend-android-authorize-users-in-scripts.md
+
+[Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
+[Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
 

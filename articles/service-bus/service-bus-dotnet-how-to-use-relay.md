@@ -17,7 +17,6 @@
     ms.author="sethm"/>
 
 
-
 # 如何使用 Azure 服務匯流排轉送服務
 
 本文說明如何使用服務匯流排轉送服務。 這些範例均以 C# 撰寫，並使用 Windows Communication Foundation (WCF) API 以及包含在服務匯流排組件 (Microsoft Azure .NET SDK 的一部分) 中的擴充功能。 如需服務匯流排轉送的詳細資訊，請參閱 [服務匯流排轉送傳訊](service-bus-relay-overview.md) 概觀。
@@ -26,7 +25,7 @@
 
 ## 什麼是服務匯流排轉送
 
-[服務匯流排 * 轉送 * 服務](service-bus-relay-overview.md) 可讓您建置在 Azure 資料中心和您自己的內部部署企業環境中執行的混合式應用程式。 服務匯流排轉送，以協助這讓您以安全地公開位於企業網路到公用雲端，而不需開啟防火牆連線或要求對企業的進行侵入式變更的 Windows Communication Foundation (WCF) 服務
+ [服務匯流排 *轉送* 服務](service-bus-relay-overview.md) 可讓您建置在 Azure 資料中心和您自己的內部部署企業環境中執行的混合式應用程式。 服務匯流排轉送，以協助這讓您以安全地公開位於企業網路到公用雲端，而不需開啟防火牆連線或要求對企業的進行侵入式變更的 Windows Communication Foundation (WCF) 服務
 網路基礎結構。
 
 ![轉送概念](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
@@ -45,16 +44,16 @@ Azure 內部執行的服務。 這可讓您將這些服務公開給在 Azure 中
 
 建立服務命名空間：
 
-1.  登入 [Azure 傳統入口網站 []][]。
+1.  登入 [Azure 傳統入口網站][]。
 
 2.  在入口網站的左方瀏覽窗格中，按一下
     **服務匯流排**。
 
-3.  在入口網站的下方窗格中，按一下 [建立]****。
+3.  在入口網站的下方窗格中，按一下 [ **建立**。
 
     ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
 
-4.  在 [加入新的命名空間]**** 對話方塊中，輸入命名空間名稱。
+4.  在 **加入新的命名空間** ] 對話方塊中，輸入命名空間名稱。
     系統會立即檢查此名稱是否可用。
 
     ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-04.png)
@@ -63,17 +62,18 @@ Azure 內部執行的服務。 這可讓您將這些服務公開給在 Azure 中
     您的命名空間應裝載在哪個國家或地區 (請
     確實使用您部署運算資源所在的相同
     國家/地區)。
-    > [AZURE.IMPORTANT] 請挑選您想要選擇來部署應用程式的*相同區域*。 這樣可以獲得最佳效能。
 
-6.  讓對話方塊中的其他欄位保留其預設值 ([傳訊]**** 和 [標準層]****)，然後按一下核取記號。 此時系統會建立並啟用命名空間。 系統為帳戶提供資源時，您可能需要等幾分鐘。
+    > [AZURE.IMPORTANT] 挑選 *同一個地區* 您想要選擇來部署應用程式。 這樣可以獲得最佳效能。
+
+6.  讓對話方塊中的其他欄位保留其預設值 (**Messaging** 和 **標準** 層)，然後按一下核取記號。 此時系統會建立並啟用命名空間。 系統為帳戶提供資源時，您可能需要等幾分鐘。
 
     ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png)
 
-    您建立的命名空間就會出現在入口網站中，稍待片刻就會生效。 等到狀態變成 [作用中]**** 之後再繼續。
+    您建立的命名空間就會出現在入口網站中，稍待片刻就會生效。 等到狀態變成 **Active** 才能繼續。
 
 ## 取得命名空間的預設管理認證
 
-若要在新的命名空間上執行管理作業 (例如建立轉送連線)，您必須為命名空間設定共用存取簽章 (SAS) 授權規則。 如需有關 SAS 的詳細資訊，請參閱 [服務匯流排 [] 使用共用存取簽章驗證][]。
+若要在新的命名空間上執行管理作業 (例如建立轉送連線)，您必須為命名空間設定共用存取簽章 (SAS) 授權規則。 如需有關 SAS 的詳細資訊，請參閱 [使用服務匯流排的共用存取簽章驗證][]。
 
 1.  在左的導覽窗格中，按一下 [ **服務匯流排** 節點至
     顯示可用的命名空間清單。
@@ -82,9 +82,9 @@ Azure 內部執行的服務。 這可讓您將這些服務公開給在 Azure 中
 2.  連按兩下您剛從顯示的清單建立的命名空間的名稱。
     ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-09.png)
 
-3.  按一下頁面頂端的 [設定]**** 索引標籤。
+3.  按一下 [ **設定** 在頁面頂端的索引標籤。
 
-4.  佈建完服務匯流排命名空間後，預設會建立一個 **KeyName** 設為 **RootManageSharedAccessKey** 的 **SharedAccessAuthorizationRule**。 此頁面會顯示該金鑰以及預設規則的主要和次要金鑰。
+4.  佈建服務匯流排命名空間時， **SharedAccessAuthorizationRule**, ，與 **KeyName** 設 **RootManageSharedAccessKey**, ，預設會建立。 此頁面會顯示該金鑰以及預設規則的主要和次要金鑰。
 
 ## 取得服務匯流排 NuGet 封裝
 
@@ -93,9 +93,9 @@ Azure 內部執行的服務。 這可讓您將這些服務公開給在 Azure 中
 
 若要在應用程式中安裝 NuGet 封裝，請執行下列動作：
 
-1.  在 [方案總管] 中，以滑鼠右鍵按一下 [喜好設定]****，然後按一下 [Manage NuGet Packages]****。
-2.  搜尋 「 服務匯流排 」 並選取 * * Microsoft Azure
-    服務匯流排 * * 項目。 按一下 [安裝]**** 完成安裝作業，然後關閉下列對話方塊。
+1.  在 [方案總管] 中，以滑鼠右鍵按一下 **參考**, ，然後按一下 [ **管理 NuGet 封裝**。
+2.  搜尋 「 服務匯流排 」 並選取 **Microsoft Azure
+    服務匯流排** 項目。 按一下 [ **安裝** 完成安裝，然後關閉下列對話方塊。
 
     ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
 
@@ -151,7 +151,7 @@ class ProblemSolver : IProblemSolver
 ### 以程式設計方式設定服務主機
 
 在準備好合約和實作之後，您便可以開始代管服務。 代管會發生在
-[System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/azure/system.servicemodel.servicehost.aspx) 物件負責管理的服務執行個體並代管接聽訊息的端點。 下列程式碼將設定包含一般本機端點和服務匯流排端點的服務，以緊密地說明內部和外部端點的外觀。 使用您的命名空間名稱來取代字串 *namespace*，並使用上述設定步驟中所取得的 SAS 金鑰來取代 *yourKey*。
+[System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/azure/system.servicemodel.servicehost.aspx) 物件負責管理的服務執行個體並代管接聽訊息的端點。 下列程式碼將設定包含一般本機端點和服務匯流排端點的服務，以緊密地說明內部和外部端點的外觀。 取代字串 *命名空間* 以命名空間名稱和 *yourKey* 將換成您在上述設定步驟中取得。
 
 ```
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
@@ -174,7 +174,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-在此範例中，您將建立相同合約實作的兩個端點。 一個是本機，一個透過服務匯流排投射。 它們之間的主要差異是繫結; [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) 本機和 [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) 服務匯流排端點和位址。 本機端點會包含具有獨特連接埠的本機網路位址。 服務匯流排端點會包含字串所組成的端點位址 `sb`, ，您的命名空間名稱及路徑"solver"。 這會產生 URI `sb://[serviceNamespace].servicebus.windows.net/solver`, ，指出服務端點為服務匯流排 TCP 端點，具有完整外部 DNS 名稱。 如果您的程式碼取代預留位置，如前文所述到 `Main` 函式的 **服務** 應用程式，您將會有一個功能性服務。 如果您想要服務專門接聽服務匯流排，請移除本機端點宣告。
+在此範例中，您將建立相同合約實作的兩個端點。 一個是本機，一個透過服務匯流排投射。 它們之間的主要差異是繫結; [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) 本機和 [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) 服務匯流排端點和位址。 本機端點會包含具有獨特連接埠的本機網路位址。 服務匯流排端點會包含一個由字串 `sb`、您的命名空間名稱及路徑 "solver" 組合而成的端點位址。 這會產生 URI `sb://[serviceNamespace].servicebus.windows.net/solver`，指出服務端點為具有完整外部 DNS 名稱的服務匯流排 TCP 端點。 如果您的程式碼取代預留位置，如前文所述到 `Main` 函式的 **服務** 應用程式，您將會有一個功能性服務。 如果您想要服務專門接聽服務匯流排，請移除本機端點宣告。
 
 ### 在 App.config 檔案中設定服務主機
 
@@ -188,7 +188,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-端點定義移入 App.config 檔案。 請注意，NuGet 封裝已在 App.config 檔案中新增許多定義，這些都是服務匯流排的必要組態擴充功能。 下列範例 (與上述程式碼完全相同) 應會出現在 **system.serviceModel** 元素的正下方。 這個程式碼範例假設您的專案 C# 命名空間名稱為 **Service**。
+端點定義移入 App.config 檔案。 請注意，NuGet 封裝已在 App.config 檔案中新增許多定義，這些都是服務匯流排的必要組態擴充功能。 下列範例中，這是先前的程式碼完全相同，應該會出現下方 **system.serviceModel** 項目。 這個程式碼範例假設您的專案 C# 命名空間名為 **服務**。
 使用您的服務匯流排服務命名空間和金鑰來取代預留位置。
 
 ```
@@ -227,7 +227,7 @@ sh.Close();
 
 首先，將 `IProblemSolver` 合約程式碼從服務中參照或複製到您的用戶端專案。
 
-然後，取代中的程式碼 `Main` 的用戶端上，再次使用您的服務匯流排命名空間和 SAS 金鑰來取代預留位置文字的方法。
+然後，取代用戶端 `Main` 方法中的程式碼，並再次使用您的服務匯流排服務命名空間和 SAS 金鑰來取代預留位置文字。
 
 ```
 var cf = new ChannelFactory<IProblemSolverChannel>(
@@ -243,7 +243,7 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-您現在可以建置用戶端和服務、執行它們 (先執行服務)，然後用戶端將呼叫此服務並列印 **9**。 您可以在不同機器上 (即使是在不同網路上) 執行用戶端和伺服器，通訊仍然可以運作。 您也可以在雲端或在本機上執行用戶端程式碼。
+您現在可以建置用戶端和服務、 執行它們 (先執行服務)，然後用戶端將呼叫服務並列印 **9**。 您可以在不同機器上 (即使是在不同網路上) 執行用戶端和伺服器，通訊仍然可以運作。 您也可以在雲端或在本機上執行用戶端程式碼。
 
 #### 在 App.config 檔案中設定用戶端
 
@@ -257,7 +257,7 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-端點定義移入 App.config 檔案。 下列範例 (與上述程式碼相同) 應會出現在 **system.serviceModel** 元素的正下方。 這裡，
+端點定義移入 App.config 檔案。 下列範例中，這是先前所列的程式碼相同，應該會出現下方 **system.serviceModel** 項目。 這裡，
 您必須使用您的服務匯流排命名空間和 SAS 金鑰來取代預留位置。
 
 ```
@@ -286,15 +286,13 @@ using (var ch = cf.CreateChannel())
 
 - [Azure 服務匯流排架構概觀](fundamentals-service-bus-hybrid-solutions.md)
 - [如何使用服務匯流排轉送服務](service-bus-dotnet-how-to-use-relay.md)
-- 下載服務匯流排範例從 [Azure 範例 []][] 或參閱 [服務匯流排的概觀範例 []][]。
+- 下載服務匯流排範例從 [Azure 範例][] 或參閱 [的服務匯流排範例概觀][]。
 
-
-[create a service namespace]: #create_namespace 
-[obtain the default management credentials for the namespace]: #obtain_credentials 
-[get the service bus nuget package]: #get_nuget_package 
-[how to: use service bus to expose and consume a soap web service  with tcp]: #how_soap 
-[azure classic portal]: http://manage.windowsazure.com 
-[shared access signature authentication with service bus]: service-bus-shared-access-signature-authentication.md 
-[azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2 
-[overview of service bus samples]: service-bus-samples.md 
-
+  [Create a Service Namespace]: #create_namespace
+  [Obtain the Default Management Credentials for the Namespace]: #obtain_credentials
+  [Get the Service Bus NuGet Package]: #get_nuget_package
+  [How to: Use Service Bus to Expose and Consume a SOAP Web Service  with TCP]: #how_soap
+  [Azure classic portal]: http://manage.windowsazure.com
+  [Shared Access Signature Authentication with Service Bus]: service-bus-shared-access-signature-authentication.md
+  [Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
+  [overview of Service Bus samples]: service-bus-samples.md

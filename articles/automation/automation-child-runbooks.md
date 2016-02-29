@@ -15,14 +15,14 @@
    ms.date="09/17/2015"
    ms.author="bwren" />
 
-
 # Azure 自動化中的子 Runbook
+
 
 Azure 自動化中的最佳作法是撰寫可重複使用、模組化的 Runbook，並包含可供其他 Runbook 使用的不同功能。 父 Runbook 通常會呼叫一或多個子 Runbook 來執行必要的功能。 有兩種方式可以呼叫子 Runbook，而且各有您應該了解的明顯差異，如此您才能判斷在不同的情況下哪一種最適用。
 
-## 使用內嵌執行叫用子 Runbook
+##  使用內嵌執行叫用子 Runbook
 
-若要從其他 Runbook 叫用 Runbook 內嵌，請使用 Runbook 的名稱並為其提供參數值，如同您使用活動或 Cmdlet 時一樣。 在相同自動化帳戶中的所有 Runbook 均可以此方式提供所有其他 Runbook 使用。 父 Runbook 會等候子 Runbook 完成，才會移動到下一行，而且任何輸出都會直接回傳到父代。
+若要從其他 Runbook 叫用 Runbook 內嵌，請使用 Runbook 的名稱並為其提供參數值，如同您使用活動或 Cmdlet 時一樣。  在相同自動化帳戶中的所有 Runbook 均可以此方式提供所有其他 Runbook 使用。 父 Runbook 會等候子 Runbook 完成，才會移動到下一行，而且任何輸出都會直接回傳到父代。
 
 當您叫用 Runbook 內嵌時，它會在父 Runbook 所在的相同工作中執行。 其執行之子 Runbook 的工作歷程記錄中不會指示。 來自子 Runbook 的任何例外狀況及任何資料流輸出都會與父代相關聯。 這會導致較少的工作，並使工作更容易追蹤和疑難排解，因為子 Runbook 擲回的任何例外狀況及其任何資料流輸出，都與父 Runbook 的工作相關聯。
 
@@ -32,13 +32,13 @@ Azure 自動化中的最佳作法是撰寫可重複使用、模組化的 Runbook
 
 ### Runbook 類型
 
-您不能使用 [PowerShell 工作流程 runbook](automation-runbook-types.md#powershell-workflow-runbooks) 或 [圖形化 runbook](automation-runbook-types.md#graphical-runbooks) 中的子系為 [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) 使用內嵌執行。 同樣地，在使用內嵌執行的 PowerShell 工作流程 Runbook 或圖形 icalrunbook 中，您也無法使用 PowerShell Runbook 做為子 Runbook。 PowerShell Runbook 只能使用另一個 PowerShell 做為子 Runbook。 圖形化和 PowerShell 工作流程 Runbook 可互為彼此的子 Runbook。
+您不能使用 [PowerShell 工作流程 runbook](automation-runbook-types.md#powershell-workflow-runbooks) 或 [圖形化 runbook](automation-runbook-types.md#graphical-runbooks) 中的子系為 [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) 使用內嵌執行。  同樣地，在使用內嵌執行的 PowerShell 工作流程 Runbook 或圖形 icalrunbook 中，您也無法使用 PowerShell Runbook 做為子 Runbook。  PowerShell Runbook 只能使用另一個 PowerShell 做為子 Runbook。  圖形化和 PowerShell 工作流程 Runbook 可互為彼此的子 Runbook。
 
-叫用使用內嵌執行的圖形化或 PowerShell 工作流程子 Runbook 時，只要使用 Runbook 名稱即可。 當您呼叫 PowerShell 子系 runbook 時，您之前必須由其名稱並 *。 \\* 來指定指令碼位於本機目錄。
+叫用使用內嵌執行的圖形化或 PowerShell 工作流程子 Runbook 時，只要使用 Runbook 名稱即可。  當您呼叫 PowerShell 子系 runbook 時，您之前必須由其名稱並 *。 \\* 來指定指令碼位於本機目錄。 
 
 ### 範例
 
-下列範例會叫用一個測試子 Runbook，它會接受三個參數、一個複雜物件、一個整數和一個布林值。 子 Runbook 的輸出會指派給一個變數。 此案例的子 Runbook 是 PowerShell 工作流程 Runbook
+下列範例會叫用一個測試子 Runbook，它會接受三個參數、一個複雜物件、一個整數和一個布林值。 子 Runbook 的輸出會指派給一個變數。  此案例的子 Runbook 是 PowerShell 工作流程 Runbook
 
     $vm = Get-AzureVM –ServiceName "MyVM" –Name "MyVM"
     $output = Test-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
@@ -48,7 +48,8 @@ Azure 自動化中的最佳作法是撰寫可重複使用、模組化的 Runbook
     $vm = Get-AzureVM –ServiceName "MyVM" –Name "MyVM"
     $output = .\Test-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
-## 使用 Cmdlet 啟動子 Runbook
+
+##  使用 Cmdlet 啟動子 Runbook
 
 您可以使用 [Start-azureautomationrunbook](http://msdn.microsoft.com/library/dn690259.aspx) cmdlet 來啟動 runbook 中所述 [使用 Windows PowerShell 啟動 runbook](../automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell)。 當您從 Cmdlet 啟動子 Runbook 時，在子 Runbook 的工作建立後，父 Runbook 會隨即移動到下一行。 如果您需要從 runbook 擷取任何輸出，則您需要存取工作使用 [Get-azureautomationjoboutput](http://msdn.microsoft.com/library/dn690268.aspx)。
 
@@ -81,18 +82,14 @@ Cmdlet 啟動子 runbook 的參數會作為雜湊表中所述 [Runbook 參數](a
 
 | | 內嵌| Cmdlet|
 |:---|:---|:---|
-| Job| 與父代在相同的工作中執行的子 Runbook。| 會為子 Runbook 建立個別的工作。|
-| 執行| 父 Runbook 會等待子 Runbook 完成後再繼續執行。| 父 Runbook 會在子 Runbook 啟動後立即繼續執行。|
-| 輸出| 父 Runbook 可以直接從子 Runbook 取得輸出。| 父 Runbook 必須從子 Runbook 工作擷取輸出。|
-| 參數| 子 Runbook 參數的值是個別指定，而且可以使用任何資料類型。| 子 Runbook 參數的值必須結合成單一雜湊表，且只能包含簡單、陣列，以及運用 JSON 序列化的物件資料類型。|
-| 自動化帳戶| 父 Runbook 只能使用相同自動化帳戶中的子 Runbook。| 父 Runbook 可以使用來自相同 Azure 訂閱帳戶，甚至是不同訂閱帳戶 (如果您已連接) 之任何自動化帳戶的子 Runbook。|
-| 發佈| 發佈父 Runbook 之前必須先發佈子 Runbook。| 啟動父 Runbook 之前必須先發佈子 Runbook。|
+|Job|與父代在相同的工作中執行的子 Runbook。|會為子 Runbook 建立個別的工作。|
+|執行|父 Runbook 會等待子 Runbook 完成後再繼續執行。|父 Runbook 會在子 Runbook 啟動後立即繼續執行。|
+|輸出|父 Runbook 可以直接從子 Runbook 取得輸出。|父 Runbook 必須從子 Runbook 工作擷取輸出。|
+|參數|子 Runbook 參數的值是個別指定，而且可以使用任何資料類型。|子 Runbook 參數的值必須結合成單一雜湊表，且只能包含簡單、陣列，以及運用 JSON 序列化的物件資料類型。|
+|自動化帳戶|父 Runbook 只能使用相同自動化帳戶中的子 Runbook。|父 Runbook 可以使用來自相同 Azure 訂閱帳戶，甚至是不同訂閱帳戶 (如果您已連接) 之任何自動化帳戶的子 Runbook。|
+|發佈|發佈父 Runbook 之前必須先發佈子 Runbook。|啟動父 Runbook 之前必須先發佈子 Runbook。|
 
 ## 相關文章
 
-- [在 Azure 自動化中啟動 runbook](automation-starting-a-runbook.md)
-- [Runbook 輸出和 Azure 自動化中的訊息](automation-runbook-output-and-messages.md)
-
-
-
-
+- [在 Azure 自動化中啟動 Runbook](automation-starting-a-runbook.md)
+- [Azure 自動化中的 Runbook 輸出與訊息](automation-runbook-output-and-messages.md)

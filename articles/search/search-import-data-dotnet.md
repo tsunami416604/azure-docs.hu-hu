@@ -1,5 +1,5 @@
 <properties
-    pageTitle="將資料匯入使用.NET 的 Azure 搜尋服務 |Microsoft Azure |託管的雲端搜尋服務"
+    pageTitle="使用 .NET 將資料匯入至 Azure 搜尋服務 | Microsoft Azure | 雲端託管搜尋服務"
     description="如何使用 .NET SDK 或 .NET 程式庫將資料上傳至 Azure 搜尋服務中的索引"
     services="search"
     documentationCenter=""
@@ -17,24 +17,21 @@
     ms.date="11/09/2015"
     ms.author="heidist"/>
 
-
 # 使用 .NET 將資料匯入至 Azure 搜尋服務
-
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-data-import.md)
-- [Portal](search-import-data-portal.md)
+- [概觀](search-what-is-data-import.md)
+- [入口網站](search-import-data-portal.md)
 - [.NET](search-import-data-dotnet.md)
 - [REST](search-import-data-rest-api.md)
-- [Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
-
+- [索引子](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
 本文將說明如何以填入索引使用 [Azure 搜尋服務.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)。 下列內容是子集 [如何使用.NET 應用程式的 Azure 搜尋服務](search-howto-dotnet-sdk.md)。 請參閱上層文章中的端對端步驟。
 
-將資料匯入到索引的先決元件包括具有先前建立的索引。
+將資料匯入到索引的先決元件包括具有先前建立的索引。 
 
-假設名為 'hotels' 的索引，您可以建構匯入資料，如下所示的方法。
+假設有名為 'hotels' 的索引，您可以建構一個方法以便匯入資料，如下所示：
 
-下一步 `Main` 是填入新建立的索引。 執行方法如下：
+`Main` 的下一步是填入新建立的索引。 執行方法如下：
 
     private static void UploadDocuments(SearchIndexClient indexClient)
     {
@@ -98,7 +95,7 @@
                     ParkingIncluded = false
                 }
             };
-    
+
         try
         {
             indexClient.Documents.Index(IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc))));
@@ -112,21 +109,18 @@
                 "Failed to index some of the documents: {0}",
                 String.Join(", ", e.IndexResponse.Results.Where(r => !r.Succeeded).Select(r => r.Key)));
         }
-    
+
         // Wait a while for indexing to complete.
         Thread.Sleep(2000);
     }
 
-此方法分四個部分。 第一個建立的陣列 `旅館` 將做為我們上傳至索引的輸入資料的物件。 為簡單起見，此資料採硬式編碼。 在您的應用程式中，資料可能會來自像是 SQL 資料庫的外部資料來源。
+此方法分四個部分。 第一個部分會建立 `Hotel` 物件的陣列，做為我們上傳到索引的輸入資料。 為簡單起見，此資料採硬式編碼。 在您的應用程式中，資料可能會來自像是 SQL 資料庫的外部資料來源。
 
-第二個部分會建立 `IndexAction` 每個 `旅館`, ，然後在新一起群組那些 `IndexBatch`。 批次然後上傳至 Azure 搜尋服務索引 `Documents.Index` 方法。
-> [AZURE.NOTE] 在此範例中，我們只上傳文件。 如果您想要變更合併至現有的文件或刪除文件，您可以建立 `IndexAction` 對應 `IndexActionType`。 我們不需要指定 `IndexActionType` 在此範例中因為預設值是 `上載`。
+第二部分會為每個 `Hotel` 建立 `IndexAction`，然後將建立的項目群組在一起為新的 `IndexBatch`。 接著以 `Documents.Index` 方法將該 Batch 上傳至 Azure 搜尋服務索引。
 
-此方法的第三部分是擷取區塊，該區塊會為編制索引處理重要錯誤情況。 如果您的 Azure 搜尋服務失敗的批次中的文件的一些索引 `IndexBatchException` 所擲回 `Documents.Index`。 如果您在服務負載過重時編制文件的索引，就會發生此情況。 **我們強烈建議您在程式碼中明確處理此情況。**您可以延遲，然後重新嘗試將失敗的文件編制索引，或像範例一樣加以記錄並繼續，或是根據您應用程式的資料一致性需求執行其他操作。
+> [AZURE.NOTE] 在此範例中，我們只上傳文件。 如果您想將執行的變更合併至現有文件，或刪除文件，可以用對應的 `IndexActionType` 建立 `IndexAction`。 在此範例中不需指定 `IndexActionType`，因為預設為 `Upload`。
+
+此方法的第三部分是擷取區塊，該區塊會為編制索引處理重要錯誤情況。 如果您的 Azure Search 服務無法將 Batch 中的一些文件編制索引，則 `Documents.Index` 會擲回 `IndexBatchException`。 如果您在服務負載過重時編制文件的索引，就會發生此情況。 **我們強烈建議明確處理此情況，您的程式碼中。**您可以延遲，然後重新嘗試將失敗的文件編制索引，或像範例一樣加以記錄並繼續，或是根據您應用程式的資料一致性需求執行其他操作。
 
 最後，方法會延遲兩秒。 您的 Azure 搜尋服務中會發生非同步索引編製，因此範例應用程式必須稍待一會，才能確定文件已準備好可供搜尋。 通常只有在示範、測試和範例應用程式中，才需要這類延遲。
-
-
-
-
 

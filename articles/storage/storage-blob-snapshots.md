@@ -16,14 +16,13 @@
     ms.date="09/01/2015" 
     ms.author="tamram"/>
 
-
 # 建立 Blob 快照集
 
 ## 概觀
 
 快照集是在某個點時間取得的唯讀 Blob 版本。 快照集對於備份 Blob 非常有用。 建立快照集之後，您便可加以讀取、複製或刪除，但無法修改。
 
-Blob 的快照集名稱與從中擷取該快照集的基底 Blob 名稱相同，其中並附加了 [日期時間]**** 值，以表示擷取快照當時的時間。 例如，如果分頁 blob URI 是 `http://storagesample.core.blob.windows.net/mydrives/myvhd`, ，快照集 URI 將類似於 `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`。 Blob 的所有快照集會共用其 URI，而且只能透過附加的 [日期時間]**** 值進行區分。
+Blob 的快照集具有相同的名稱與從中取得快照時，基底 blob 與 **DateTime** 值附加至表示擷取快照當時的時間。 例如，如果分頁 Blob URI 為 `http://storagesample.core.blob.windows.net/mydrives/myvhd`，則快照集 URI 將會類似 `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`。 所有 blob 的快照集會共用其 URI，而且是辨別只能透過附加 **DateTime** 值。
 
 Blob 可包含任意數目的快照集。 系統會保存快照集，直到您將它們明確刪除為止。 請注意，快照集必須要有其來源 Blob 才能存在。 您可以列舉與 Blob 相關聯的快照集，以追蹤目前的快照集。
 
@@ -52,16 +51,15 @@ Blob 可包含任意數目的快照集。 系統會保存快照集，直到您�
 除非快照集也會一併刪除，否則無法刪除具有這些快照集的 Blob。 您可以個別刪除快照集，或告知儲存體服務在刪除來源 Blob 時刪除所有快照集。 如果您嘗試刪除仍具有快照集的 Blob，您將會收到錯誤訊息。
 
 ## 快照集與 Azure 進階儲存體
-
 搭配使用快照集與高階儲存體需遵循下列規則：
 
-- 進階儲存體帳戶中每個分頁 Blob 的快照集數目限制為 100 個。 如果超出該限制，快照集 Blob 作業就會傳回錯誤碼 409 (**SnapshotCountExceeded**)。
+- 進階儲存體帳戶中每個分頁 Blob 的快照集數目限制為 100 個。 如果超出該限制，快照集 Blob 作業會傳回錯誤碼 409 (**SnapshotCountExceeded**)。
 
-- 進階儲存體帳戶中分頁 Blob 的快照集可以每十分鐘擷取一次。 如果超出該頻率，快照集 Blob 作業就會傳回錯誤碼 409 (**SnaphotOperationRateExceeded**)。
+- 進階儲存體帳戶中分頁 Blob 的快照集可以每十分鐘擷取一次。 如果超出該頻率，快照集 Blob 作業會傳回錯誤碼 409 (**SnaphotOperationRateExceeded**)。
 
-- 不支援透過 Get Blob 來讀取進階儲存體帳戶中分頁 Blob 的快照集。 在進階儲存體帳戶的快照集上呼叫 Get Blob，會傳回錯誤碼 400 (**InvalidOperation**)。 不過，支援針對快照集呼叫取得 Blob 屬性和取得 Blob 中繼資料。
+- 不支援透過 Get Blob 來讀取進階儲存體帳戶中分頁 Blob 的快照集。 高階儲存體帳戶中的快照集呼叫取得 Blob 會傳回錯誤碼 400 (**InvalidOperation**)。 不過，支援針對快照集呼叫取得 Blob 屬性和取得 Blob 中繼資料。
 
-- 若要讀取快照集，您可以使用複製 Blob 作業，將快照集複製到帳戶中的其他分頁 Blob。 複製作業的目的地 Blob 不可以包含任何現有的快照集。 如果目的地 Blob 具有快照集，則 Copy Blob 作業會傳回錯誤碼 409 (**SnapshotsPresent**)。
+- 若要讀取快照集，您可以使用複製 Blob 作業，將快照集複製到帳戶中的其他分頁 Blob。 複製作業的目的地 Blob 不可以包含任何現有的快照集。 如果目的地 blob 具有快照集，則複製 Blob 作業會傳回錯誤碼 409 (**SnapshotsPresent**)。
 
 ## 傳回快照集的絕對 URI
 
@@ -70,15 +68,15 @@ Blob 可包含任意數目的快照集。 系統會保存快照集，直到您�
     //Create the blob service client object.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-    
+
     //Get a reference to a container.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
     container.CreateIfNotExists();
-    
+
     //Get a reference to a blob.
     CloudBlockBlob blob = container.GetBlockBlobReference("sampleblob.txt");
     blob.UploadText("This is a blob.");
-    
+
     //Create a snapshot of the blob and write out its primary URI.
     CloudBlockBlob blobSnapshot = blob.CreateSnapshot();
     Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
@@ -95,18 +93,19 @@ Blob 可包含任意數目的快照集。 系統會保存快照集，直到您�
 
 - 當您取代區塊 Blob 內的某個區塊時，後續即會將該區塊視為唯一區塊進行收費。 即使該區塊的區塊識別碼和資料與其在快照集中擁有的相同，也是如此。 再次認可該區塊之後，它就會與其在任何快照集中的對應項目分離，而您將需支付其資料的費用。 這同樣適用分頁 Blob 中以相同資料更新的頁面。
 
-- 藉由呼叫 **UploadFile**、**UploadText**、**UploadStream** 或 **UploadByteArray** 方法來取代區塊 Blob，會取代該 Blob 中的所有區塊。 如果您的快照集與該 Blob 相關聯，基底 Blob 和快照集中的所有區塊現在都會分離出來，而您將針對這兩個 Blob 的所有區塊支付費用。 即使基底 Blob 和快照集中的資料保持一致，也是如此。
+- 藉由呼叫取代區塊 blob **UploadFile**, ，**UploadText**, ，**UploadStream**, ，或 **UploadByteArray** 方法會取代所有該 blob 的區塊。 如果您的快照集與該 Blob 相關聯，基底 Blob 和快照集中的所有區塊現在都會分離出來，而您將針對這兩個 Blob 的所有區塊支付費用。 即使基底 Blob 和快照集中的資料保持一致，也是如此。
 
 - Azure Blob 服務未提供方法來判斷兩個區塊是否包含相同資料。 已上傳且認可的每個區塊都會被視為唯一，即使它具有相同資料和相同的區塊識別碼也一樣。 由於費用是針對唯一區塊而產生，因此請務必注意，更新含有快照集的 Blob 會產生額外的唯一區塊及額外費用。
 
-> [AZURE.NOTE] 最佳做法是要求您謹慎管理快照集，以避免產生額外費用。 建議您以下列方式管理快照集：
+> [AZURE.NOTE] 最佳做法是要求您管理快照集，請仔細以避免產生額外費用。 建議您以下列方式管理快照集：
 
 > - 每當您更新 Blob 時，刪除並重新建立與該 Blob 相關聯的快照集，除非您的應用程式設計為需要維護快照集，否則即使您正以相同資料進行更新也一樣。 藉由刪除並重新建立 Blob 的快照集，讓您可以確保該 Blob 和快照集不會分離開來。
->
-> - 如果您正在維護 Blob 的快照集，請避免呼叫 **UploadFile**、**UploadText**、**UploadStream** 或 **UploadByteArray** 來更新 Blob，因為這些方法會取代 Blob 中的所有區塊。 請改用 **PutBlock** 和 **PutBlockList** 方法，更新區塊的最少可能數目。
+
+> - 如果您正在維護 blob 的快照集，請避免呼叫 **UploadFile**, ，**UploadText**, ，**UploadStream**, ，或 **UploadByteArray** 來更新 blob，因為這些方法會取代所有的區塊 blob 中。 相反地，使用更新最少的可能區塊數目 **PutBlock** 和 **PutBlockList** 方法。
 
 
 ### 快照集計費案例
+
 
 下列案例示範如何針對區塊 Blob 及其快照集產生費用。
 
@@ -122,11 +121,7 @@ Blob 可包含任意數目的快照集。 系統會保存快照集，直到您�
 
 ![Azure 儲存體資源](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-3.png)
 
-在案例 4 中，基底 Blob 已完全更新，且未包含它的任何原始區塊。 因此，此帳戶必須支付所有八個唯一區塊的費用。 如果您使用 **UploadFile**、**UploadText**、**UploadFromStream** 或 **UploadByteArray** 等更新方法，就會發生這個案例，因為這些方法會取代 Blob 的所有內容。
+在案例 4 中，基底 Blob 已完全更新，且未包含它的任何原始區塊。 因此，此帳戶必須支付所有八個唯一區塊的費用。 如果您使用 update 方法，例如，可能會發生這種情況下 **UploadFile**, ，**UploadText**, ，**UploadFromStream**, ，或 **UploadByteArray**, ，因為這些方法會取代所有 blob 的內容。
 
 ![Azure 儲存體資源](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
-
-
-
-
 

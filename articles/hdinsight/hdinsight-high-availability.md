@@ -18,8 +18,8 @@
     ms.author="jgao"/>
 
 
+#HDInsight 上 Hadoop 叢集的可用性和可靠性
 
-# HDInsight 上 Hadoop 叢集的可用性和可靠性
 
 HDInsight 可讓客戶部署各種不同的叢集類型，用於不同的資料分析工作負載。 目前提供的叢集型別是查詢和分析工作負載的 Hadoop 叢集、NoSQL 工作負載的 HBase 叢集和即時事件處理工作負載的 Storm 叢集。 在指定的叢集類型內，有各種節點的不同角色。 例如：
 
@@ -42,7 +42,7 @@ HDInsight 可讓客戶部署各種不同的叢集類型，用於不同的資料�
 Hadoop 叢集的標準實作通常包含單一前端節點。 HDInsight 會透過新增次要前端節點 /前端伺服器/Nimbus 節點來移除這個單一失敗點，以增加管理工作負載所需之服務的可用性和可靠性。 這些前端節點/前端伺服器 /nimbus 節點專為順利管理背景工作節點的失敗，但任何在前端節點上執行的主要服務中斷可能導致叢集停止運作。
 
 
-[ZooKeeper](http://zookeeper.apache.org/) 節點 (Zk) 已加入，而且會用於前端節點的以確保背景工作節點和閘道 (Gw) 知道當作用中前端節點 (Head Node0) 變成非作用中時，容錯移轉至次要前端節點 (Head Node1)。
+[ZooKeeper](http://zookeeper.apache.org/ ) 節點 (Zk) 已加入，而且會用於前端節點的以確保背景工作節點和閘道 (Gw) 知道當作用中前端節點 (Head Node0) 變成非作用中時，容錯移轉至次要前端節點 (Head Node1)。
 
 ![HDInsight Hadoop 實作中的高可靠性前端節點圖表。](./media/hdinsight-high-availability/hadoop.high.availability.architecture.diagram.png)
 
@@ -50,27 +50,25 @@ Hadoop 叢集的標準實作通常包含單一前端節點。 HDInsight 會透�
 
 
 ## 檢查使用中的前端節點服務狀態
-
-若要判斷出作用中的前端節點及其執行的服務狀態，您必須使用遠端桌面通訊協定 (RDP) 連接到 Hadoop 叢集。 如需 RDP 指示，請參閱 [透過 Azure 入口網站在 HDInsight 中管理 Hadoop 叢集](hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp)。 遠端進入叢集後，按兩下 ** Hadoop 服務可用 ** 圖示位於桌面上以取得執行 Namenode、 Jobtracker、 Templeton、 Oozieservice、 Metastore 和 Hiveserver2 服務，前端節點或 HDI 3.0、 Namenode、 資源管理員、 History Server、 Templeton、 Oozieservice、 Metastore 和 Hiveserver2 服務的狀態。
+若要判斷出作用中的前端節點及其執行的服務狀態，您必須使用遠端桌面通訊協定 (RDP) 連接到 Hadoop 叢集。 如需 RDP 指示，請參閱 [透過 Azure 入口網站在 HDInsight 中管理 Hadoop 叢集](hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp)。 一旦遠端進入叢集後，按兩下位於桌面上的 **Hadoop 服務可用 ** 圖示，以取得執行 Namenode、Jobtracker、Templeton、Oozieservice、Metastore 和 Hiveserver2 服務的前端節點狀態，或在 HDI 3.0 中，取得執行 Namenode、Resource Manager、History Server、Templeton、Oozieservice、Metastore 和 Hiveserver2 服務的前端節點狀態。
 
 ![](./media/hdinsight-high-availability/Hadoop.Service.Availability.Status.png)
 
-在螢幕擷取畫面上，使用中的前端節點為 *headnode0*。
+螢幕擷取畫面中，在作用中前端節點是 *headnode0*。
 
 ## 存取次要前端節點上的記錄檔
 
-如果要存取事件中次要前端節點 (已成為作用中前端節點) 上的工作記錄，仍然可以使用瀏覽 JobTracker UI (如其為主要作用中節點般)。 若要存取 JobTracker，您必須使用 RDP 連接到 Hadoop 叢集 (如上一節所述)。 一旦遠端進入叢集後，按兩下位於桌面上的 **Hadoop 名稱節點狀態**圖示，然後按一下 [**名稱節點記錄**] 以前往次要前端節點上的記錄目錄。
+如果要存取事件中次要前端節點 (已成為作用中前端節點) 上的工作記錄，仍然可以使用瀏覽 JobTracker UI (如其為主要作用中節點般)。 若要存取 JobTracker，您必須使用 RDP 連接到 Hadoop 叢集 (如上一節所述)。 遠端進入叢集後，按兩下 **Hadoop 名稱節點狀態** 圖示位於桌面上，然後按一下 [ **記錄** 以前往次要前端節點上的記錄檔的目錄。
 
 ![](./media/hdinsight-high-availability/Hadoop.Head.Node.Log.Files.png)
 
 
 ## 設定前端節點的大小
-
 根據預設，前端節點會配置為大型虛擬機器 (VM)。 這個大小適合管理大部分在叢集上執行的 Hadoop 工作。 但有些情況可能會因前端節點而要求超大型 VM。 例如，叢集必須管理大量的小型 Oozie 工作。
 
 可以使用 Azure PowerShell Cmdlet 或 HDInsight SDK 設定超大型 VM。
 
-建立和使用 Azure PowerShell 佈建叢集記載於 [使用 PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)。 超大型前端節點的組態要求的 `-HeadNodeVMSize ExtraLarge` 參數 `新增 AzureRmHDInsightcluster` 指令程式在這段程式碼中使用。
+建立和使用 Azure PowerShell 佈建叢集記載於 [使用 PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)。 超大型前端節點的組態要求將 `-HeadNodeVMSize ExtraLarge` 參數加入此程式碼中所使用的 `New-AzureRmHDInsightcluster` Cmdlet。
 
     # Create a new HDInsight cluster in Azure PowerShell
     # Configured with an ExtraLarge head-node VM
@@ -84,7 +82,7 @@ Hadoop 叢集的標準實作通常包含單一前端節點。 HDInsight 會透�
                 -DefaultStorageContainerName $containerName  `
                 -ClusterSizeInNodes $clusterNodes
 
-SDK 的情況十分類似。 建立和使用 SDK 佈建叢集記載於 [使用 HDInsight.NET SDK](hdinsight-provision-clusters.md#sdk)。 超大型前端節點的組態要求的 `HeadNodeSize = NodeVMSize.ExtraLarge` 參數 `clustercreateparameters ()` 這段程式碼中使用的方法。
+SDK 的情況十分類似。 建立和使用 SDK 佈建叢集記載於 [使用 HDInsight.NET SDK](hdinsight-provision-clusters.md#sdk)。 超大型前端節點的組態要求將 `HeadNodeSize = NodeVMSize.ExtraLarge` 參數加入此程式碼中所使用的 `ClusterCreateParameters()` 方法。
 
     # Create a new HDInsight cluster with the HDInsight SDK
     # Configured with an ExtraLarge head-node VM
@@ -101,13 +99,10 @@ SDK 的情況十分類似。 建立和使用 SDK 佈建叢集記載於 [使用 H
         ClusterSizeInNodes = clustersize
     };
 
+
 **參考**
 
-- [ZooKeeper](http://zookeeper.apache.org/)
-- [連線到使用 RDP 的 HDInsight 叢集](hdinsight-administer-use-management-portal.md#rdp)
-- [使用 HDInsight.NET SDK](hdinsight-provision-clusters.md#sdk)
-
-
-
-
+- [ZooKeeper](http://zookeeper.apache.org/ )
+- [使用 RDP 連線到 HDInsight 叢集](hdinsight-administer-use-management-portal.md#rdp)
+- [使用 HDInsight .NET SDK](hdinsight-provision-clusters.md#sdk)
 

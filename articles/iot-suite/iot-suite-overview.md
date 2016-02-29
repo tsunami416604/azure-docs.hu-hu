@@ -16,7 +16,6 @@
      ms.date="11/27/2015"
      ms.author="dobett"/>
 
-
 # Azure IoT 套件的概觀
 
 Azure IoT 服務提供廣泛的功能。 這些企業等級的服務可讓您：
@@ -27,7 +26,7 @@ Azure IoT 服務提供廣泛的功能。 這些企業等級的服務可讓您：
 - 視覺化即時和歷程記錄資料
 - 與後端辦公室系統整合
 
-Azure IoT 套件封裝通常會一起運用 Azure 服務與自訂延伸模組做為預先設定的解決方案。 這些預先設定的解決方案是常見的 IoT 解決方案模式的基本實作，可幫助您減少傳遞 IoT 解決方案所花費的時間。 使用 [IoT 軟體開發套件 ][lnk-sdks], ，您可以輕鬆地自訂這些預先設定的解決方案，以符合您自己的需求，或利用這些資源做為範例，當您正在開發新的解決方案。
+Azure IoT 套件封裝通常會一起運用 Azure 服務與自訂延伸模組做為預先設定的解決方案。 這些預先設定的解決方案是常見的 IoT 解決方案模式的基本實作，可幫助您減少傳遞 IoT 解決方案所花費的時間。 使用 [IoT 軟體開發套件][lnk-sdks], ，您可以輕鬆地自訂這些預先設定的解決方案，以符合您自己的需求，或利用這些資源做為範例，當您正在開發新的解決方案。
 
 下列影片提供 Azure IoT 套件的簡介：
 
@@ -35,13 +34,13 @@ Azure IoT 套件封裝通常會一起運用 Azure 服務與自訂延伸模組做
 
 ## Azure IoT 套件中的 Azure IoT 服務
 
-Azure IoT 套件的核心是 [Azure IoT 中心 ][lnk-iot-hub] 服務。 這項服務提供裝置到雲端和雲端到裝置的傳訊功能，並做為雲端到其他重要的 IoT 套件服務的閘道器。
+Azure IoT 套件的核心是 [Azure IoT 中心][lnk-iot-hub] 服務。 這項服務提供裝置到雲端和雲端到裝置的傳訊功能，並做為雲端到其他重要的 IoT 套件服務的閘道器。
 
-[Azure 串流分析 ][lnk-asa] 提供影片中的資料分析。 IoT 套件會運用這項服務來處理內送遙測、執行彙總以及偵測事件。 預先設定的解決方案也會使用串流分析來處理資訊訊息，它包含像是中繼資料或是從裝置回應的命令的資料。
+[Azure 資料流分析][lnk-asa] 提供影片中的資料分析。 IoT 套件會運用這項服務來處理內送遙測、執行彙總以及偵測事件。 預先設定的解決方案也會使用串流分析來處理資訊訊息，它包含像是中繼資料或是從裝置回應的命令的資料。
 
-[Azure 儲存體 ][lnk-azure-storage] 和 [Azure DocumentDB ][lnk-document-db] 所提供的資料儲存體功能。 預先設定的解決方案使用 Blob 儲存體來儲存遙測，並且讓它可用於分析。 預先設定的解決方案使用 DocumentDB 的半結構化的資料的功能以管理裝置的中繼資料索引的儲存體。 這可讓解決方案管理具有不同內容儲存體需求的異質裝置。
+[Azure 儲存體][lnk-azure-storage] 和 [Azure DocumentDB][lnk-document-db] 所提供的資料儲存體功能。 預先設定的解決方案使用 Blob 儲存體來儲存遙測，並且讓它可用於分析。 預先設定的解決方案使用 DocumentDB 的半結構化的資料的功能以管理裝置的中繼資料索引的儲存體。 這可讓解決方案管理具有不同內容儲存體需求的異質裝置。
 
-[Azure Web 應用程式 ][lnk-web-apps] 和 [Microsoft Power BI ][lnk-power-bi] 所提供的資料視覺化功能。 Power BI 的彈性可讓您快速建置自己的互動式儀表板 (使用 IoT 套件資料)。
+[Azure Web 應用程式][lnk-web-apps] 和 [Microsoft Power BI][lnk-power-bi] 所提供的資料視覺化功能。 Power BI 的彈性可讓您快速建置自己的互動式儀表板 (使用 IoT 套件資料)。
 
 典型的 IoT 解決方案架構的概觀，請參閱 [Microsoft Azure 和物聯網 (IoT)][iot-suite-what-is-azure-iot]。
 
@@ -51,23 +50,21 @@ IoT 套件包括預先設定的解決方案，可讓您快速地開始使用，�
 
 ## 後續步驟
 
-若要深入了解 IoT 組件中預先設定的解決方案，請參閱 [什麼是 Azure IoT 預先設定的解決方案? ][lnk-what-are-preconfig]
+若要深入了解 IoT 組件中預先設定的解決方案，請參閱 [什麼是 Azure IoT 預先設定的解決方案?][lnk-what-are-preconfig]
 
-若要開始使用其中一個預先設定的解決方案，請參閱 [入門 IoT 預先設定的解決方案 ][lnk-preconfig-start]。
+若要開始使用其中一個預先設定的解決方案，請參閱 [入門 IoT 預先設定的解決方案][lnk-preconfig-start]。
 
-若要了解 Azure IoT 中心服務的相關資訊，請參閱 [IoT 中心文件 ][lnk-iot-hub]。
+若要了解 Azure IoT 中心服務的相關資訊，請參閱 [IoT 中心文件][lnk-iot-hub]。
 
 
-
-[lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/ 
-[lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/ 
-[lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/ 
-[lnk-azure-storage]: https://azure.microsoft.com/documentation/services/storage/ 
-[lnk-document-db]: https://azure.microsoft.com/documentation/services/documentdb/ 
-[lnk-power-bi]: https://powerbi.microsoft.com/ 
-[lnk-web-apps]: https://azure.microsoft.com/documentation/services/app-service/web/ 
-[iot-suite-what-is-azure-iot]: iot-suite-what-is-azure-iot.md 
-[lnk-what-are-preconfig]: iot-suite-what-are-preconfigured-solutions.md 
-[lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions/ 
-[lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/ 
-
+[lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
+[lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
+[lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
+[lnk-azure-storage]: https://azure.microsoft.com/documentation/services/storage/
+[lnk-document-db]: https://azure.microsoft.com/documentation/services/documentdb/
+[lnk-power-bi]: https://powerbi.microsoft.com/
+[lnk-web-apps]: https://azure.microsoft.com/documentation/services/app-service/web/
+[iot-suite-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
+[lnk-what-are-preconfig]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions/
+[lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/

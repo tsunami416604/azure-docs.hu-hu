@@ -9,7 +9,6 @@
    ms.date="05/12/2015"
    ms.author="josephd" />
 
-
 ## 設定 PowerShell
 
 請先遵循下列步驟，您才可以使用 Azure PowerShell。
@@ -32,7 +31,7 @@
     PSCompatibleVersions           {1.0, 2.0, 3.0}
     PSRemotingProtocolVersion      2.2
 
-確認 **PSVersion** 的值是 3.0 或 4.0。 若要安裝相容版本，請參閱 [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)。
+確認值 **PSVersion** 是 3.0 或 4.0。 若要安裝相容版本，請參閱 [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)。
 
 您應該也有 Azure PowerShell 0.8.0 版或更新版本。 您可以在 Azure PowerShell 命令提示字元下使用這個命令來檢查已安裝的 Azure PowerShell 版本。
 
@@ -72,14 +71,10 @@
     CurrentStorageAccountName : 
     TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-您可以在 Azure PowerShell 命令提示字元下執行這些命令，設定目前 Azure 訂用帳戶。取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
+您可以在 Azure PowerShell 命令提示字元下執行這些命令，設定目前 Azure 訂用帳戶。 取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
 
     $subscr="<SubscriptionName from the display of Get-AzureSubscription>"
     Select-AzureSubscription -SubscriptionName $subscr -Current 
 
 如需 Azure 訂用帳戶和帳戶的詳細資訊，請參閱 [How to: 連線到您的訂閱](powershell-install-configure.md#Connect)。
-
-
-
-
 

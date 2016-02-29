@@ -17,25 +17,20 @@
     ms.author="juliako"/>
 
 
-
-# 配額和限制
+#配額和限制
 
 本主題描述與 Microsoft Azure 媒體服務相關聯的配額和限制。
 
 [AZURE.INCLUDE [azure-mediaservices-limits](../../includes/azure-mediaservices-limits.md)]
 
 
-## 媒體服務學習路徑
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 
 
 

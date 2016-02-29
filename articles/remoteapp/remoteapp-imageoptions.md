@@ -17,7 +17,6 @@
 
 
 
-
 # 建立 Azure RemoteApp 映像
 
 Azure RemoteApp 使用映像保留與使用者共用的應用程式。 若要建立使用您選擇的應用程式，Azure remoteapp，無論是雲端或混合式，首先建立映像與安裝這些應用程式。 接著，建立使用該映像的集合，並將使用者指派給集合，然後將應用程式發佈給那些使用者。
@@ -31,8 +30,4 @@ Azure RemoteApp 使用映像保留與使用者共用的應用程式。 若要建
 - 您可以使用其中一個 [範本映像](remoteapp-images.md) RemoteApp 訂閱所包含。 這些映像是由 RemoteApp 小組所建立和維護，並且包含一些可提供給您使用者的標準應用程式 (如 Office 套件)。 請注意，只有 Office 365 Pro Plus 映像才能用於生產設定中。
 
 不論在何處取得映像或建立它，請確定您了解 [應用程式需求](remoteapp-appreqs.md) ，確保您的應用程式在 RemoteApp 中順暢運作。 然後下, 一個步驟是建立 [定域機組](remoteapp-create-cloud-deployment.md) 或 [混合式](remoteapp-create-hybrid-deployment.md) 集合。
-
-
-
-
 

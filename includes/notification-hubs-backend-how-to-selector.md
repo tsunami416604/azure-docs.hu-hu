@@ -4,8 +4,3 @@
 - [PHP](notification-hubs-php-backend-how-to.md)
 - [Python](notification-hubs-python-backend-how-to.md)
 
-
-
-
-
-

@@ -16,10 +16,9 @@
     ms.date="10/20/2015" 
     ms.author="fashah;garye;bradsev" /> 
 
+#<a name="heading"></a>在 Cortana 分析程序中進行資料取樣
 
-# <a name="heading"></a>Cortana 分析程序中的範例資料
-
-此**功能表**連結說明如何從各種不同儲存體環境進行資料取樣的連結。 此工作是 Cortana 分析程序 (CAP) 中的一個步驟。
+這 **功能表** 主題連結，說明如何從不同的儲存體環境中取樣資料。 此工作是 Cortana 分析程序 (CAP) 中的一個步驟。
 
 [AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
@@ -29,12 +28,8 @@
 
 本文件涵蓋如何對在 Cortana 分析程序中通常使用三個位置所儲存的資料進行取樣：
 
-- 透過程式設計方式下載 **Azure blob 儲存體資料**，然後使用 Python 程式碼範例來進行取樣，這是對 Azure blob 儲存體資料進行取樣的方式。
-- 使用 SQL 和 Python 程式設計語言來對 **SQL Server 資料** 進行取樣。
-- 使用 Hive 查詢來對 **Hive 資料表**進行取樣。
-
-
-
-
+- **Azure blob 容器資料** 取樣方式以程式設計方式下載它，然後對它的 Python 程式碼範例進行取樣。
+- **SQL Server 資料** 使用 SQL 和 Python 程式設計語言進行取樣。 
+- **Hive 資料表資料** 取樣使用 Hive 查詢。
 
 

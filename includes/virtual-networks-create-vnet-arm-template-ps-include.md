@@ -4,10 +4,10 @@
 
 1. 如果您從未使用 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md) 並遵循指示以登入 Azure，並選取您的訂閱結束。
 
-3. 如有必要，請執行 **New-AzureRmResourceGroup** Cmdlet，以建立新的資源群組。 下列命令會在「美國中部」**Azure 區域中，建立名為 *TestRG* 的資源群組。 如需資源群組的詳細資訊，請瀏覽 [Azure 資源管理員概觀](resource-group-overview.md)。
+3. 如果有必要，請執行 **新增 AzureRmResourceGroup** 指令程式來建立新的資源群組。 下列命令會建立名為資源群組 *TestRG* 中 *中部* azure 區域。 如需資源群組的詳細資訊，請瀏覽 [Azure 資源管理員概觀](resource-group-overview.md)。
 
         New-AzureRmResourceGroup -Name TestRG -Location centralus
-
+        
     此為上述命令的預期輸出內容：
 
         ResourceGroupName : TestRG
@@ -20,38 +20,39 @@
                             *
         ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 
-4. 執行 **New-AzureRmResourceGroupDeployment** Cmdlet，使用先前下載並修改的範本和參數檔案來部署新的 VNet。
+4. 執行 **新增 AzureRmResourceGroupDeployment** 指令程式來部署新的 VNet 使用的範本和參數檔案下載並修改上面。
 
-     New-AzureRmResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
-         -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
+        New-AzureRmResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
+            -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
+            
+    此為上述命令的預期輸出內容：
+        
+        DeploymentName    : TestVNetDeployment
+        ResourceGroupName : TestRG
+        ProvisioningState : Succeeded
+        Timestamp         : 8/14/2015 9:40:00 PM
+        Mode              : Incremental
+        TemplateLink      :
+        Parameters        :
+                            Name             Type                       Value
+                            ===============  =========================  ==========
+                            location         String                     Central US
+                            vnetName         String                     TestVNet
+                            addressPrefix    String                     192.168.0.0/16
+                            subnet1Prefix    String                     192.168.1.0/24
+                            subnet1Name      String                     FrontEnd
+                            subnet2Prefix    String                     192.168.2.0/24
+                            subnet2Name      String                     BackEnd
+        
+        Outputs           :
 
- 此為上述命令的預期輸出內容：
+5. 執行 **Get AzureRmVirtualNetwork** 指令程式來檢視新的 VNet 的內容，如下所示。
 
-     DeploymentName    : TestVNetDeployment
-     ResourceGroupName : TestRG
-     ProvisioningState : Succeeded
-     Timestamp         : 8/14/2015 9:40:00 PM
-     Mode              : Incremental
-     TemplateLink      :
-     Parameters        :
-                         Name             Type                       Value
-                         ===============  =========================  ==========
-                         location         String                     Central US
-                         vnetName         String                     TestVNet
-                         addressPrefix    String                     192.168.0.0/16
-                         subnet1Prefix    String                     192.168.1.0/24
-                         subnet1Name      String                     FrontEnd
-                         subnet2Prefix    String                     192.168.2.0/24
-                         subnet2Name      String                     BackEnd
-    
-     Outputs           :
-
-5. 執行 **Get-AzureRmVirtualNetwork** Cmdlet 來檢視新 VNet 的屬性，如下所示。
 
         Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
-
-    此為上述命令的預期輸出內容：
-
+        
+    Here is the expected output for the command above:
+        
         Name              : TestVNet
         ResourceGroupName : TestRG
         Location          : centralus
@@ -90,8 +91,3 @@
                                 "ProvisioningState": "Succeeded"
                               }
                             ]
-
-
-
-
-

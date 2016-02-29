@@ -16,7 +16,6 @@
    ms.author="alkohli" />
 
 
-
 # 建立及管理 StorSimple 支援封裝
 
 ## 概觀
@@ -25,7 +24,7 @@
 
 本教學課程包含使用下列方法建立和管理支援封裝的逐步指示：
 
-- StorSimple Manager 服務 [**維護**] 頁面的 [**支援封裝**] 區段
+- **支援封裝** 區段 **維護** StorSimple Manager 服務頁面
 - Windows PowerShell for StorSimple
 
 閱讀本教學課程之後，您將能夠：
@@ -42,24 +41,24 @@
 
 #### 在 Azure 傳統入口網站中建立支援封裝
 
-1. 瀏覽至 **[裝置] > [維護]**。
+1. 瀏覽至 **裝置 > 維護**。
 
-2. 在 [**支援封裝**] 區段中，按一下 [**建立及上傳支援封裝**]。
+2. 在 **支援封裝** 區段中，按一下 **建立及上傳支援封裝**。
 
-3. 在 [**建立及上傳支援封裝**] 對話方塊中，執行下列動作：
+3. 在 **建立及上傳支援封裝** 對話方塊方塊中，執行下列動作:
 
     ![建立支援封裝](./media/storsimple-create-manage-support-package/IC740923.png)
-
-    - 提供 [**支援密碼**]。 Microsoft 支援工程師會透過電子郵件將這個密碼傳送給您。
-
-    - 核取組合方塊以同意 [**自動上傳支援封裝至 Microsoft 支援網站**]。
-
-    - 按一下核取圖示 ![核取圖示](./media/storsimple-create-manage-support-package/IC740895.png)。
+                                            
+    - 提供 **支援密碼金鑰**。 Microsoft 支援工程師會透過電子郵件將這個密碼傳送給您。
+    
+    - 核取同意的下拉式方塊 **自動將支援封裝上傳至 Microsoft 支援網站**。
+    
+    - 按一下核取圖示 ![核取圖示](./media/storsimple-create-manage-support-package/IC740895.png).
 
 
 ## 在 Windows PowerShell for StorSimple 中建立支援封裝
 
-如果您在建立封裝之前需要編輯記錄檔，則必須透過 Windows PowerShell for StorSimple 建立您的封裝。
+如果您在建立封裝之前需要編輯記錄檔，則必須透過 Windows PowerShell for StorSimple 建立您的封裝。 
 
 執行下列步驟在 Windows PowerShell for StorSimple 中建立支援封裝：
 
@@ -68,58 +67,63 @@
 
 1. 在用來連接至 StorSimple 裝置的遠端電腦上，以系統管理員身分輸入下列命令，以啟動 Windows PowerShell 工作階段：
 
-    `啟動 PowerShell`
+    `Start PowerShell`
 
-2. 在 Windows PowerShell 工作階段中，連接到裝置的 SSAdmin 主控台 Runspace：
+2. 在 Windows PowerShell 工作階段中，連接到裝置的 SSAdmin 主控台 Runspace： 
 
-    - 在命令提示字元中，輸入：
 
-        `$MS = New-pssession ComputerName < DATA 0 的 IP 位址 >-認證 SSAdmin ConfigurationName"SSAdminConsole"`
+    - At the command prompt, type: 
+            
+        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
+        
+        
+    1. In the dialog box that opens, type your device administrator password. The default password is:
+     
+        `Password1`
 
-    1. 在開啟的對話方塊中，輸入您的裝置系統管理員密碼。 預設密碼為：
+        ![PowerShell Session To SSAdminConsole Runspace](./media/storsimple-create-manage-support-package/IC740962.png)
 
-        `密碼 1`
+    2. Click **OK**.
+    1. At the command prompt, type: 
+        
+        `Enter-PSSession $MS`
 
-        ![PowerShell 工作階段至 SSAdminConsole Runspace](./media/storsimple-create-manage-support-package/IC740962.png)
 
-    2. 按一下 [確定]****。
-    1. 在命令提示字元中，輸入：
+3. 在開啟的工作階段中，輸入適當的命令。 
 
-        `Enter-pssession $MS`
 
-3. 在開啟的工作階段中，輸入適當的命令。
+    - For network shares that are password protected, type:
 
-    - 對於受密碼保護的網路共用，請輸入：
+        `Export-HcsSupportPackage –PackageTag "MySupportPackage" –Credential "Username" -Force`
 
-        `Export-hcssupportpackage – PackageTag"MySupportPackage"– 認證"Username"-Force`
+        You will be prompted for a password, a path to the network shared folder, and an encryption passphrase (because the support package is encrypted). When these are provided, a support package will be created in the specified folder.
+                                            
 
-        將提示您輸入密碼、網路共用的資料夾路徑及加密複雜密碼 (因為支援封裝已加密)。 提供這些資訊後，就會在指定的資料夾中建立支援封裝。
+    - For open network shared folders (those that are not password protected), you do not need the `-Credential` parameter. Type the following: 
 
-    - 若為開放的網路共用資料夾 (即沒有密碼保護)，您不需要 `-認證` 參數。 輸入下列命令：
+        `Export-HcsSupportPackage –PackageTag "MySupportPackage" -Force`
 
-        `Export-hcssupportpackage – PackageTag"MySupportPackage"-Force`
-
-        將會在指定的網路共用資料夾中，同時為兩個控制器建立支援封裝。 這是加密的壓縮檔案，可傳送給 Microsoft 支援服務進行疑難排解。 如需詳細資訊，請參閱 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md)。
+        The support package will be created for both controllers in the specified network shared folder. It is an encrypted, compressed file that can be sent to Microsoft Support for troubleshooting. For more information, see [Contact Microsoft Support](storsimple-contact-microsoft-support.md).
 
 
 ### Export-HcsSupportPackage Cmdlet 的詳細資訊
-
 下表顯示 Export-HcsSupportPackage Cmdlet 可用的各種參數。
 
-| 序號| 參數| 必要/選用| 說明|
+| 序 號 | 參數            | 必要/選用 | 說明                                                                                                                                                             |
 |--------|----------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1| Path| 必要| 用來提供將存放支援封裝的網路共用資料夾位置。|
-| 2| EncryptionPassphrase| 必要| 用來提供複雜密碼，以協助加密支援封裝。|
-| 3| 認證| 選用| 使用這個參數來提供網路共用資料夾的存取認證。|
-| 4| Force| 選用| 用來略過加密複雜密碼確認步驟。|
-| 5| PackageTag| 選用| 用來指定 Path 下存放支援封裝的目錄。預設值是 [裝置名稱]-[目前日期和時間：yyyy-MM-dd-HH-mm-ss]。|
-| 6| Scope| 選用| 指定為 **Cluster** (預設值) 可以為兩個控制器建立支援封裝。如果您只想針對目前的控制器建立封裝，請指定 **Controller**。|
+| 1      | Path                 | 必要          | 用來提供將存放支援封裝的網路共用資料夾位置。                                                                 |
+| 2      | EncryptionPassphrase | 必要          | 用來提供複雜密碼，以協助加密支援封裝。                                                                                                        |
+| 3      | 認證           | 選用          | 使用這個參數來提供網路共用資料夾的存取認證。                                                                                        |
+| 4      | Force                | 選用          | 用來略過加密複雜密碼確認步驟。                                                                                                                |
+| 5      | PackageTag           | 選用          | 用來指定 Path 下存放支援封裝的目錄。 預設值是 [裝置名稱]-[目前日期和時間：yyyy-MM-dd-HH-mm-ss]。       |
+| 6      | Scope                | 選用          | 指定為 **叢集** (預設值) 來建立兩個控制器的支援封裝。 如果您想要只針對目前的控制器建立套件時，指定 **控制器**。 |
 
 
 ## 編輯支援封裝
 
-在產生支援封裝之後，您可能需要編輯封裝來移除記錄檔中的客戶特定資訊，例如磁碟區名稱、裝置 IP 位址和備份名稱。
-> [AZURE.IMPORTANT] 您只能編輯透過 Windows PowerShell for StorSimple 產生的支援封裝。 您無法編輯在 Azure 傳統入口網站中以 StorSimple Manager 服務建立的封裝。 
+在產生支援封裝之後，您可能需要編輯封裝來移除記錄檔中的客戶特定資訊，例如磁碟區名稱、裝置 IP 位址和備份名稱。 
+
+> [AZURE.IMPORTANT] 您只能編輯透過 Windows PowerShell for StorSimple 產生支援封裝。 您無法編輯在 Azure 傳統入口網站中以 StorSimple Manager 服務建立的封裝。 
 
 將支援封裝上傳至 Microsoft 支援網站之前，若要編輯支援封裝，您必須解密支援封裝、編輯檔案，然後再次加密。 執行下列步驟來編輯支援封裝：
 
@@ -127,31 +131,32 @@
 
 1. 產生支援封裝中所述 [for StorSimple，在 Windows PowerShell 中建立支援封裝](#create-a-support-package-in-windows-powershell-for-storsimple)。
 
-2. [下載指令碼](http://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) 在您的用戶端的本機上。
+2. [下載指令碼](http://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) 用戶端在本機上。
 
 3. 匯入 Windows PowerShell 模組。 您必須指定下載指令碼時的本機資料夾的路徑。 若要匯入模組，請輸入：
+ 
+    `Import-module <Path to the folder that contains the Windows PowerShell script>`
 
-    `匯入模組 < 包含 Windows PowerShell 指令碼的資料夾路徑 >`
+4. 開啟支援封裝資料夾。 請注意，所有檔案都都 *.aes* 壓縮和加密的檔案。 開啟檔案。 若要開啟檔案，請輸入：
 
-4. 開啟支援封裝資料夾。 請注意，所有檔案都是已壓縮和加密的 *.aes* 檔案。 開啟檔案。 若要開啟檔案，請輸入：
-
-    `開啟 HcsSupportPackage < 支援封裝檔案的資料夾路徑 >`
+    `Open-HcsSupportPackage <Path to the folder that contains support package files>`
 
     這樣會將檔案解壓縮並解密。 您會看到所有檔案現在顯示實際的副檔名。
-
+    
     ![編輯支援封裝 3](./media/storsimple-create-manage-support-package/IC750706.png)
+
 
 5. 當提示您輸入加密複雜密碼時，請輸入建立支援封裝時使用的複雜密碼。
 
-     cmdlet Open-HcsSupportPackage at command pipeline position 1
+        cmdlet Open-HcsSupportPackage at command pipeline position 1
     
-     Supply values for the following parameters:EncryptionPassphrase: ****
-
+        Supply values for the following parameters:EncryptionPassphrase: ****
+    
 6. 瀏覽至包含記錄檔的資料夾。 因為記錄檔現在已解壓縮並解密，所以會顯示原始的副檔名。 修改這些檔案來移除客戶特定資訊，例如磁碟區名稱和裝置 IP 位址，然後儲存檔案。
 
 7. 關閉檔案。 關閉檔案將會使用 Gzip 壓縮檔案，然後使用 AES-256 加密。 這是為了透過網路傳輸支援封裝時提高安全性和速度。 若要關閉檔案，請輸入：
 
-    `關閉 HcsSupportPackage < 支援封裝檔案的資料夾路徑 >`
+    `Close-HcsSupportPackage <Path to the folder that contains support package files>`
 
     ![編輯支援封裝 2](./media/storsimple-create-manage-support-package/IC750707.png)
 
@@ -191,12 +196,8 @@
 
 ## 後續步驟
 
-- 了解如何 [用於支援封裝和裝置記錄檔疑難排解裝置部署](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)。
+- 了解如何 [用於支援封裝和裝置記錄檔疑難排解裝置部署](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)。 
 - 了解如何 [使用 StorSimple Manager 服務來管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
-
-
-
-
 
 
 

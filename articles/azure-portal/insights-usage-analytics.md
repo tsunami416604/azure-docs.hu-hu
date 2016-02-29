@@ -16,13 +16,8 @@
     ms.author="awills" />
 
 
-
 # JavaScript 應用程式和網頁適用的 Application Insights
 
-> [AZURE.NOTE] 這篇文章已移到別處。 請參閱: [JavaScript 應用程式和網頁適用的 Application Insights](../app-insights-web-track-usage.md)
+> [AZURE.NOTE] 這篇文章已移動。 請參閱: [JavaScript 應用程式和網頁適用的 Application Insights](../app-insights-web-track-usage.md)
 
-
-
-
-
-
+ 

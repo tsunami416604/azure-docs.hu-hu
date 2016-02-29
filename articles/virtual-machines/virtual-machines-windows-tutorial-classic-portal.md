@@ -17,15 +17,13 @@
     ms.date="08/11/2015"
     ms.author="cynthn"/>
 
-
 # 在 Azure 傳統入口網站中建立執行 Windows 的虛擬機器
 
 > [AZURE.SELECTOR]
-- [Azure portal](virtual-machines-windows-tutorial.md)
-- [Azure classic portal](virtual-machines-windows-tutorial-classic-portal.md)
-- [PowerShell: Resource Manager deployment](virtual-machines-deploy-rmtemplates-powershell.md)
-- [PowerShell: Classic deployment](virtual-machines-ps-create-preconfigure-windows-vms.md)
-
+- [Azure 入口網站](virtual-machines-windows-tutorial.md)
+- [Azure 傳統入口網站](virtual-machines-windows-tutorial-classic-portal.md)
+- [PowerShell: 資源管理員部署](virtual-machines-deploy-rmtemplates-powershell.md)
+- [PowerShell: 傳統部署](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [資源管理員部署模型](virtual-machines-windows-tutorial.md)。
 
@@ -43,8 +41,9 @@
 
 ## <a id="createvirtualmachine"> </a>如何建立虛擬機器
 
-本節說明如何使用 Azure 傳統入口網站中的 [從組件庫]**** 選項建立虛擬機器。 此選項提供的組態選擇比 [快速建立]**** 選項還多。 例如，如果您要將虛擬機器加入虛擬網路中，您必須使用 [從組件庫]**** 選項。
-> [AZURE.NOTE] 您也可以嘗試透過更豐富且可自訂的 Azure 入口網站來建立虛擬機器、使用增強的監控和診斷功能、使用進階儲存體，以及其他更多功能。 兩個入口網站中用來設定虛擬機器的可用選項有許多重疊之處，但並不完全相同。 例如，使用入口網站設定包含進階儲存體的虛擬機器。
+本節說明如何使用 **從組件庫** Azure 傳統入口網站中的建立虛擬機器] 選項。 此選項提供更多的組態選擇比 **快速建立** 選項。 例如，如果您想要將虛擬機器加入虛擬網路，您需要使用 **從組件庫** 選項。
+
+> [AZURE.NOTE] 您也可以嘗試建立虛擬機器、 使用增強的監視和診斷，請使用 Premium 儲存體，以及其他更豐富、 可自訂 Azure 入口網站。 兩個入口網站中用來設定虛擬機器的可用選項有許多重疊之處，但並不完全相同。 例如，使用入口網站設定包含進階儲存體的虛擬機器。
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
@@ -53,8 +52,4 @@
 - 登入虛擬機器。 如需指示，請參閱 [如何登入執行 Windows Server 的虛擬機器](virtual-machines-log-on-windows-server.md)。
 
 - 附加磁碟來儲存資料。 您可以附加空的磁碟和含有資料的磁碟。 如需指示，請參閱 [附加資料磁碟教學課程](storage-windows-attach-disk.md)。
-
-
-
-
 

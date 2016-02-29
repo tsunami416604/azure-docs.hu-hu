@@ -17,7 +17,6 @@
    ms.date="09/23/2015"
    ms.author="joaoma" />
 
-
 # 開始在 PowerShell 中建立網際網路面向的負載平衡器 (傳統)
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
@@ -36,18 +35,18 @@
 
 1. 如果您從未使用 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md) 並遵循指示以登入 Azure，並選取您的訂閱結束。
 
+
 2. 建立虛擬機器之後，您可以使用 PowerShell cmdlet，將負載平衡器新增至相同雲端服務內的虛擬機器。
 
 在下列範例中，您會將稱為 "webfarm" 的負載平衡器集新增至雲端服務 "mytestcloud" (或 myctestcloud.cloudapp.net)，並將負載平衡器的端點新增至名為 "web1" 和 "web2" 的虛擬機器。 負載平衡器會接收連接埠 80 的流量，並使用 TCP 負載平衡本機端點 (在此案例中為連接埠 80) 所定義之虛擬機器之間的流量。
 
 
 ### 步驟 1
-
 為第一部 VM "web1" 建立負載平衡端點
 
     Get-AzureVM -ServiceName "mytestcloud" -Name "web1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 80 -LBSetName "WebFarm" -ProbePort 80 -ProbeProtocol "http" -ProbePath '/' | Update-AzureVM
 
-### 步驟 2
+### 步驟 2 
 
 建立另一個端點使用相同的負載平衡器集名稱的第二個 vm 「 web2 」
 
@@ -55,7 +54,7 @@
 
 ## 從負載平衡器移除虛擬機器
 
-您可以使用 Remove-AzureEndpoint 從負載平衡器移除虛擬機器端點
+您可以使用 Remove-AzureEndpoint 從負載平衡器移除虛擬機器端點 
 
     Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name httpin| Update-AzureVM
 
@@ -66,9 +65,5 @@
 [設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
-
-
-
-
 
 

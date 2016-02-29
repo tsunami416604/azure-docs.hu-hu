@@ -17,13 +17,11 @@
     ms.date="08/26/2015"
     ms.author="jroth" />
 
-
 # 在 Azure 中建立 SQL Server 虛擬機器 (PowerShell)
 
 > [AZURE.SELECTOR]
-- [Azure classic portal](virtual-machines-provision-sql-server.md)
+- [Azure 傳統入口網站](virtual-machines-provision-sql-server.md)
 - [PowerShell](virtual-machines-sql-server-create-vm-with-powershell.md)
-
 
 ## 概觀
 
@@ -34,11 +32,11 @@
 
 ## 安裝並設定 PowerShell
 
-1. 如果您沒有 Azure 帳戶，請造訪 [Azure 免費試用版](https://azure.microsoft.com/pricing/free-trial/)。
-
+1. 如果您沒有 Azure 帳戶，請造訪 [Azure 免費試用版](https://azure.microsoft.com/pricing/free-trial/)。 
+ 
 2. [安裝最新的 Azure PowerShell cmdlet](../powershell-install-configure.md/#how-to-install-azure-powershell)。
 
-3. [Connect PowerShell 與 Azure 訂閱](../powershell-install-configure.md/#how-to-connect-to-your-subscription)。
+3. [使用您的 Azure 訂閱連線 PowerShell](../powershell-install-configure.md/#how-to-connect-to-your-subscription)。
 
 ## 決定您的目標 Azure 區域
 
@@ -49,10 +47,9 @@
         Get-AzureLocation
         (Get-AzureLocation).Name
 
-2.  找到您偏好的位置後，請設定一個名為 **$dcLocation** 的變數至該區域。
+2.  一旦您已經識別您想要的位置，設定變數，名為 **$dcLocation** 對該區域。
 
         $dcLocation = "<region name>"
-
 
 ## 設定您的訂閱和儲存體帳戶
 
@@ -60,7 +57,7 @@
 
         (Get-AzureSubscription).SubscriptionName
 
-1. 將您的目標 Azure 訂用帳戶指派至 **$subscr** 變數。 然後將此設為目前的 Azure 訂用帳戶。
+1. 將您的目標 Azure 訂用帳戶指派至 **$subscr** 變數。 然後將此設為目前的 Azure 訂用帳戶。 
 
         $subscr="<subscription name>"
         Select-AzureSubscription -SubscriptionName $subscr –Current
@@ -69,34 +66,32 @@
 
         (Get-AzureStorageAccount | where { $_.GeoPrimaryLocation -eq $dcLocation }).StorageAccountName
 
-    >[AZURE.NOTE] 如果您需要新的儲存體帳戶時，第一次全部小寫的儲存體帳戶名稱以建立 New-azurestorageaccount 命令，如下列範例所示: * * New-azurestorageaccount StorageAccountName"<storage account name>"-位置 $dcLocation * *
+    >[AZURE.NOTE] 如果您需要新的儲存體帳戶時，第一次全部小寫的儲存體帳戶名稱以建立 New-azurestorageaccount 命令，如下列範例所示: **New-azurestorageaccount StorageAccountName"<storage account name>"-位置 $dcLocation**
 
-1. 將目標儲存體帳戶名稱指派至 **$staccount**。 接著，使用 **Set-AzureSubscription** 設定訂用帳戶和目前的儲存體帳戶。
+1. 指定目標儲存體帳戶名稱即可 **$staccount**。 然後使用 **Set-azuresubscription** 設定訂用帳戶和目前的儲存體帳戶。
 
         $staccount="<storage account name>"
         Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
 
-
 ## 選取 SQL Server 虛擬機器映像
 
-1. 了解 SQL Server 虛擬機器映像庫的可用清單。 這些映像都有以「SQL」開頭的 **ImageFamily** 屬性。 下列查詢會顯示可供使用且已預先安裝 SQL Server 的映像系列。
+1. 了解 SQL Server 虛擬機器映像庫的可用清單。 這些映像都有 **ImageFamily** "SQL"為開頭的屬性。 下列查詢會顯示可供使用且已預先安裝 SQL Server 的映像系列。
 
         Get-AzureVMImage | where { $_.ImageFamily -like "SQL*" } | select ImageFamily -Unique | Sort-Object -Property ImageFamily
 
-1. 當您發現虛擬機器映像系列時，此系列中可能有多個已發行的映像。 使用下列指令碼尋找您所選映像系列中最新發佈的虛擬機器映像名稱 (例如 **SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2**)：
+1. 當您發現虛擬機器映像系列時，此系列中可能有多個已發行的映像。 使用下列指令碼來尋找您所選取的映像系列的最新已發佈的虛擬機器映像名稱 (例如 **SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2**):
 
-     $family="<ImageFamily value>"
-     $image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
-    
-     echo "Selected SQL Server image name:"
-     echo "   $image"
+        $family="<ImageFamily value>"
+        $image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
+        echo "Selected SQL Server image name:"
+        echo "   $image"
 
 ## 建立虛擬機器
 
 最後，使用 PowerShell 建立虛擬機器：
 
-1. 建立雲端服務來裝載新的 VM。 請注意，您也可以使用現有的雲端服務。 建立新的變數 **$svcname**，並以雲端服務的簡短名稱命名。
+1. 建立雲端服務來裝載新的 VM。 請注意，您也可以使用現有的雲端服務。 建立新的變數 **$svcname** 與雲端服務的簡短名稱。
 
         $svcname = "<cloud service name>"
         New-AzureService -ServiceName $svcname -Label $svcname -Location $dcLocation
@@ -116,12 +111,11 @@
 
         New-AzureVM –ServiceName $svcname -VMs $vm1
 
-
 >[AZURE.NOTE] 其他說明及組態選項，請參閱 **建置命令集** 一節中 [使用 Azure PowerShell 建立和預先設定以 Windows 為基礎的虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)。
 
 ## PowerShell 指令碼範例
 
-下列指令碼提供可建立 **SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2** 虛擬機器的完整指令碼範例。 如果您使用這個指令碼，您必須根據本主題中先前步驟來自訂初始變數。
+下列指令碼提供與完整的指令碼範例會建立 **SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2** 虛擬機器。 如果您使用這個指令碼，您必須根據本主題中先前步驟來自訂初始變數。
 
     # Customize these variables based on your settings and requirements:
     $dcLocation = "East US"
@@ -153,6 +147,7 @@
     
     # Create the SQL Server VM:
     New-AzureVM –ServiceName $svcname -VMs $vm1
+     
 
 ## 使用遠端桌面連線
 
@@ -164,7 +159,6 @@
 1. 在文件目錄中，啟動 RDP 檔案。 連接先前提供的管理員使用者名稱與密碼 (例如，如果您的使用者名稱是 VMAdmin，請指定「\VMAdmin」為使用者並提供密碼)。
 
         .\vm1.rdp
-
 
 ## 完成 SQL Server Machine 的遠端存取組態設定
 
@@ -179,8 +173,4 @@
 如果您還想看看如何在 Azure 傳統入口網站執行這些步驟，請參閱 [佈建 Azure 上的 SQL Server 虛擬機器](virtual-machines-provision-sql-server.md)。
 
 除了這些資源，我們建議您檢閱 [與 Azure 虛擬機器中執行 SQL Server 相關的其他主題](virtual-machines-sql-server-infrastructure-services.md)。
-
-
-
-
 

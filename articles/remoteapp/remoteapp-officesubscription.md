@@ -1,19 +1,20 @@
+
 <properties 
-    pageTitle ="如何搭配 Azure RemoteApp 使用 Office 365 訂閱 |Microsoft Azure 「
-    描述 = 「 了解如何使用 Office 365 訂閱 Azure RemoteApp 中共用 Office 應用程式 」。
-    服務 ="remoteapp"
+    pageTitle="如何搭配 Azure RemoteApp 使用 Office 365 訂用帳戶 | Microsoft Azure"
+    description="了解如何使用 Azure RemoteApp 中的 Office 365 訂閱共用 Office 應用程式。"
+    services="remoteapp"
     documentationCenter="" 
-    作者 ="piotrci" 
-    管理員 ="mbaldwin"/ >
+    authors="piotrci" 
+    manager="mbaldwin" />
 
 <tags 
-    ms.service="remoteapp 」 
-    ms.workload="compute 」 
+    ms.service="remoteapp" 
+    ms.workload="compute" 
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="12/14/2015 」 
-    ms.author="elizapo"/ >
+    ms.date="12/14/2015" 
+    ms.author="elizapo" />
 
 
 
@@ -22,14 +23,13 @@
 您知道可以使用 Azure RemoteApp 中的現有 Office 365 訂閱來共用雲端中的 Office 應用程式嗎？ 請繼續閱讀以了解 Office 365 + Azure RemoteApp 選項的相關資訊，其中包含可協助您充分運用 Office 365 訂閱的相關文章連結。
 
 ## 如何使用適用於 Azure RemoteApp 的 Office 365 帳戶？
-
 請參閱 Peter 的新文章的所有資訊: [如何使用 Azure RemoteApp 與 Office 365 使用者帳戶](remoteapp-o365user.md)
 
 ## 可以在 Azure RemoteApp 中使用 Office 365 訂閱執行 Office 應用程式嗎？
 
 可以！ 事實上，使用 Office 365 訂閱是將您的 Office 應用程式帶入 Azure RemoteApp 的唯一方式。
 
-(請注意: 如果主控夥伴傳送您的 Azure RemoteApp 部署，它們可以為您提供 Office 授權根據 [服務提供者授權合約](http://www.microsoft.com/en-us/Licensing/licensing-programs/spla-program.aspx))
+(請注意: 如果主控夥伴傳送您的 Azure RemoteApp 部署，他們可以為您提供 Office 為基礎的授權 [服務提供者授權合約](http://www.microsoft.com/en-us/Licensing/licensing-programs/spla-program.aspx))
 
 
 Office 365 訂閱最棒的一點是，它可讓您在許多不同平台和環境 (包括 Azure 雲端) 中使用相同的使用者授權。 當您在 Azure RemoteApp 中使用 Office 應用程式時，無須以任何特別方式購買其他授權或設定現有的授權。 您只需要 Office 365 訂閱，其中包含 [Office 365 ProPlus](https://technet.microsoft.com/library/Gg702619.aspx)。
@@ -40,7 +40,7 @@ Office 365 ProPlus 提供 [共用電腦啟用](https://technet.microsoft.com/lib
 
 ## 那麼，如何搭配 Azure RemoteApp 使用我的 Office 365 ProPlus 授權呢？
 
-每個 Office 365 ProPlus 使用者授權僅可讓單一使用者在最多 5 台電腦 (含平板電腦和手機) 上啟用 Office 應用程式。 每次啟用都會註冊使用者，直到其在裝置上停用 Office 為止。 (使用者可以管理其裝置 [Office 365 入口網站](https://portal.office365.com/).)
+每個 Office 365 ProPlus 使用者授權僅可讓單一使用者在最多 5 台電腦 (含平板電腦和手機) 上啟用 Office 應用程式。 每次啟用都會註冊使用者，直到其在裝置上停用 Office 為止。 (使用者可以管理其裝置 [Office 365 入口網站](https://portal.office365.com/)。)
 
 單一使用者透過 Azure RemoteApp 可能會在同一天登入多部電腦而不自知。 這是因為服務會自動管理及調整在雲端中的資源，而使用者只會看到應用程式和您所共用的程式。 針對這種情況，Office 365 ProPlus 提供共用電腦啟用模式。意思是該使用者不需要進行任何授權管理來存取這些資源，且個別電腦不列入 5 部電腦的啟用限制。
 
@@ -52,15 +52,15 @@ Office 365 ProPlus 提供 [共用電腦啟用](https://technet.microsoft.com/lib
 
 ## 那是否支援 Visio Pro 或 Project Pro ？
 
-RemoteApp 訂用帳戶中的 Office 365 ProPlus 映像包含 Visio Pro 和 Project Pro。 但您無法使用 Office 365 ProPlus 訂閱啟用這些程式，因為這些程式各自擁有專用授權。 您可以啟動它們在 [Office 365 入口網站](https://portal.office365.com/)。
+RemoteApp 訂用帳戶中的 Office 365 ProPlus 映像包含 Visio Pro 和 Project Pro。 但您無法使用 Office 365 ProPlus 訂閱啟用這些程式，因為這些程式各自擁有專用授權。 您可以啟動它們在 [Office 365 入口網站](https://portal.office365.com/)。 
 
-如果您不想要使用這些程式，則無須進行授權。 您只要啟用想要使用的程式，然後略過其他程式即可。 您還是會在映像中看見這些程式，但無法使用。
+如果您不想要使用這些程式，則無須進行授權。 您只要啟用想要使用的程式，然後略過其他程式即可。 您還是會在映像中看見這些程式，但無法使用。 
 
 ## 如何開始使用 Office 365 和 Azure RemoteApp？
 
 現在您已了解 Office 365 授權的詳細資料，讓我們協助您開始在 Azure RemoteApp 中使用該授權—使用方式相當容易：
 
-當您建立 Azure RemoteApp 集合時，請使用 **Office 365 ProPlus (需要訂用帳戶)** 映像。
+當您建立 Azure RemoteApp 收藏時，使用 **Office 365 ProPlus (需要訂閱)** 映像。
 
 ![含 Office 365 ProPlus 的 Azure RemoteApp 映像](./media/remoteapp-officesubscription/remoteapp-officeimage.png)
 
@@ -73,11 +73,11 @@ RemoteApp 訂用帳戶中的 Office 365 ProPlus 映像包含 Visio Pro 和 Proje
 
 ### 使用 Azure 資源庫映像
 
-最簡單的方式將部署至集合的 [Office 365 ProPlus 是 [Azure 組件庫映像的其中一種](remoteapp-image-on-azurevm.md) Azure RemoteApp 訂閱所包含。 請務必選擇 **Windows Server 遠端桌面工作階段主機與預先安裝的 Office 365 ProPlus** 映像。 接著，在該映像中安裝想要的任何其他應用程式，便可開始使用。
+最簡單的方式將部署至集合的 [Office 365 ProPlus 是 [Azure 組件庫映像的其中一種](remoteapp-image-on-azurevm.md) Azure RemoteApp 訂閱所包含。 請確定您選擇 **Windows Server 遠端桌面工作階段主機與 Office 365 ProPlus 預先安裝** 映像。 接著，在該映像中安裝想要的任何其他應用程式，便可開始使用。
 
 ### 使用自訂映像
 
-您還可以建立自訂映像-您可以建立 [Azure VM](remoteapp-image-on-azurevm.md) 或 [建立映像在本機](remoteapp-create-custom-image.md) 和上傳至 Azure。 不論何種情況，都務必使用共用電腦啟用節點安裝 Office 365 ProPlus。 使用 [Office 部署工具](http://blogs.technet.com/b/odsupport/archive/2014/07/11/using-the-office-deployment-tool.aspx) ，並遵循 [指示](https://technet.microsoft.com/library/Dn782858.aspx) 進行安裝。
+您還可以建立自訂映像-您可以建立 [Azure VM](remoteapp-image-on-azurevm.md) 或 [建立映像在本機](remoteapp-create-custom-image.md) 和上傳至 Azure。 不論何種情況，都務必使用共用電腦啟用節點安裝 Office 365 ProPlus。 使用 [Office 部署工具](http://blogs.technet.com/b/odsupport/archive/2014/07/11/using-the-office-deployment-tool.aspx) ，並遵循 [指示](https://technet.microsoft.com/library/Dn782858.aspx) 進行安裝。  
 
 ### 重要：請在自訂映像中停用 Office 365 ProPlus 的自動更新。
 
@@ -88,7 +88,7 @@ RemoteApp 訂用帳戶中的 Office 365 ProPlus 映像包含 Visio Pro 和 Proje
         <Updates Enabled="FALSE" />
 
 現在您的組態檔應該會包含這幾行：
-
+    
         <Display Level="NONE" AcceptEULA="TRUE" />
         <Property Name="SharedComputerLicensing" Value="1" />
         <Updates Enabled="FALSE" />
@@ -97,7 +97,7 @@ RemoteApp 訂用帳戶中的 Office 365 ProPlus 映像包含 Visio Pro 和 Proje
 
 須更新集合中的映像有許多原因。 以下列出幾個原因：
 
-- 取得最新的 Windows 更新
+- 取得最新的 Windows 更新 
 - 取得最新的 Office 365 ProPlus 應用程式更新
 - 更新您的自訂應用程式
 - 變更映像本身的其他組態設定
@@ -107,7 +107,6 @@ RemoteApp 訂用帳戶中的 Office 365 ProPlus 映像包含 Visio Pro 和 Proje
 您可以選擇下列其中一種方式更新映像：將映像替換為全新的映像，或者手動更新現有的映像。
 
 ### 將映像替換為最新的 Azure 資源庫映像，並新增自訂項目
-
 若選擇此方式，您可以讓 Microsoft 負責處理 Windows Server 和 Office 365 ProPlus 的更新。 您將依據最新的資源庫映像建立全新的映像，而不是更新現有的映像。 然後，重複之前所做的所有步驟以自訂映像—安裝自訂應用程式、修改映像組態等。
 
 由於資源庫映像會定期進行更新，因此您無須花費心力，即可知道 Windows Server 和 Office 365 ProPlus 應用程式永遠是最新版本。 當然，缺點是當您每次取得新的映像時，就必須套用自訂項目。 您可以建立指令碼來自動設定自訂項目。
@@ -115,15 +114,12 @@ RemoteApp 訂用帳戶中的 Office 365 ProPlus 映像包含 Visio Pro 和 Proje
 ### 手動更新您現有的映像
 
 若選擇此方式，您可以使用標準 Windows 工具將更新套用至映像。 若為 Office 365 ProPlus，請使用 Office 部署工具下載並安裝 Office 365 ProPlus 的最新更新或最新版本。
-> [AZURE.IMPORTANT] 請記得停用 Office 365 ProPlus 的自動更新。
+
+> [AZURE.IMPORTANT] 請記住-停用 Office 365 ProPlus 的自動更新。
 
 需要關於使用 Office 部署工具進行更新的詳細資訊嗎？
 
-- [使用 Office 部署工具-隨部署 Office 365 產品](https://technet.microsoft.com/library/JJ219423.aspx)
+- [使用 Office 部署工具部署 Office 365 產品的隨選即用功能](https://technet.microsoft.com/library/JJ219423.aspx)
 - [部署和使用 Office 部署工具的更新 Office 365 ProPlus](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (影片)
-- [針對 Office 365 ProPlus 設定更新設定](https://technet.microsoft.com/library/dn761708.aspx)
-
-
-
-
+- [設定 Office 365 ProPlus 的更新設定](https://technet.microsoft.com/library/dn761708.aspx)
 

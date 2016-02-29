@@ -19,8 +19,7 @@
 
 
 
-
-# 在 Azure 上選取適用於 Linux 的使用者名稱
+#在 Azure 上選取適用於 Linux 的使用者名稱#
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -28,15 +27,14 @@
 
 在多數情況中，這位新使用者不會存在於基本映像中，而會在佈建程序中建立。 若此使用者存在於基本 VM 映像，則 Azure Linux 代理程式只會在建立 VM 時，根據您在建立 VM 時所提供的資訊，為該使用者設定密碼 (及/或 SSH 金鑰)。
 
-**不過**，Linux 會定義一組不應該使用的使用者名稱。 如果您嘗試使用現有的系統使用者 (定義為具有 UID 0-99 的使用者) 佈建 Linux VM，佈建程序將**失敗**。 典型的範例是 `根` 使用者，其 uid 為 0。
+**不過**, ，Linux 會定義一組不應該使用的使用者名稱。 佈建程序將 **失敗** 如果您嘗試佈建 Linux VM，使用現有的系統使用者，其定義為具有 UID 0-99 的使用者。 常見的範例是 `root` 使用者，其 UID 為 0。
 
  - 另請參閱: [Linux 標準基礎-使用者 ID 範圍](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
 
-以下是在佈建 Linux 虛擬機器時應避免使用的使用者名稱。 建議您**不要使用這些使用者名稱**，因為這些名稱可能會導致 VM 佈建失敗。
+以下是在佈建 Linux 虛擬機器時應避免使用的使用者名稱。 我們建議您 **不使用這些使用者名稱**, ，否則 VM 佈建程序可能會失敗。
 
 
 ## openSUSE
-
 - abrt
 - adm
 - audio
@@ -94,7 +92,6 @@
 
 
 ## SLES
-
 - audio
 - bin
 - cdrom
@@ -139,9 +136,8 @@
 - wwwrun
 - xok
 
-
+ 
 ## CentOS
-
 - abrt
 - adm
 - audio
@@ -199,7 +195,6 @@
 
 
 ## Ubuntu
-
 - adm
 - admin
 - audio
@@ -254,8 +249,4 @@
 - whoopsie
 - www-data
 
-
-
-
-
-
+ 

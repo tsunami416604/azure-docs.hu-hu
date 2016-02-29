@@ -16,13 +16,11 @@
    ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
-
-# 將您的結構描述移轉至 SQL 資料倉儲
+# 將您的結構描述移轉至 SQL 資料倉儲#
 
 下列摘要可協助您了解 SQL Server 和 SQL 資料倉儲之間的差異，幫助您移轉資料庫。
 
 ### 資料表功能
-
 SQL 資料倉儲不使用或支援下列功能：
 
 - 主索引鍵
@@ -40,7 +38,6 @@ SQL 資料倉儲不使用或支援下列功能：
 - 同義字
 
 ### 資料類型的差異
-
 SQL 資料倉儲支援常見的商務資料類型：
 
 - bigint
@@ -98,6 +95,7 @@ OR  (   y.[name] IN (  'nvarchar','varchar','varbinary')
     )
 OR  y.[is_user_defined] = 1
 ;
+
 ```
 
 此查詢也包含任何不支援的使用者定義資料類型。
@@ -106,48 +104,44 @@ OR  y.[is_user_defined] = 1
 
 不要使用：
 
-- **geometry**，使用 varbinary 類型
-- **geography**，使用 varbinary 類型
-- **hierarchyid**，不支援這個 CLR 類型
-- **image**、**text**、**ntext**，使用 varchar/nvarchar (越小越好)
-- **nvarchar(max)**，使用 nvarchar(4000) 或更小，效能更好
-- **numeric**，使用 decimal
-- **sql_variant**，將資料行分割成數個強型別資料行
-- **sysname**，使用 nvarchar(128)
-- **table**，轉換成暫時資料表
+- **幾何**, ，使用 varbinary 類型
+- **地理位置**, ，使用 varbinary 類型
+- **hierarchyid**, ，不支援這個 CLR 類型
+- **映像**, ，**文字**, ，**ntext**, ，使用 varchar/nvarchar (越小越好)
+- **nvarchar (max)**, ，使用 nvarchar (4000) 或更小，效能更好
+- **數值**, ，使用 decimal
+- **sql_variant**, 、 分割成數行強型別資料行
+- **sysname**, ，使用 nvarchar (128)
+- **資料表**, ，轉換成暫時資料表
 - **時間戳記**, ，程式碼來使用 datetime2 和 `CURRENT_TIMESTAMP` 函式。 請注意，您不能以 current_timestamp 做為預設條件約束，因為值不會自動更新。 如果您需要從 timestamp 類型資料行移轉 rowversion 值，請對 NOT NULL 或 NULL 資料列版本值使用 binary(8) 或 varbinary(8)。
-- **varchar(max)**，使用 varchar(8000) 或更小，效能更好
-- **uniqueidentifier**，使用 varbinary(8)
-- **使用者定義型別**，可能的話，轉換回原生型別
-- **xml**，使用 varchar(8000) 或更小，效能更好 必要的話，分割資料行
+- **varchar (max)**, ，使用 varchar (8000) 或更小，效能更好
+- **uniqueidentifier**, ，使用 varbinary (8)
+- **使用者定義型別**, ，盡可能轉換回原生型別
+- **xml**, ，使用 varchar (8000) 或更小，效能更好。 必要的話，分割資料行
 
 部分支援：
 
-- 預設條件約束僅支援常值和常數。 不具決定性的運算式或函式，例如 `getdate ()` 或 `CURRENT_TIMESTAMP`, ，不支援。
+- 預設條件約束僅支援常值和常數。 不支援不具決定性的運算式或函式，例如 `GETDATE()` 或 `CURRENT_TIMESTAMP`。
 
-> [AZURE.NOTE] 定義您的資料表，使最大可能的資料列大小 (包括可變長度資料行的完整長度) 不超過 32,767 個位元組。 雖然您定義的資料列可以有超過此數據的可變長度資料，但資料將無法插入資料表。 此外，也請限制可變長度資料行的大小，以便執行查詢時有更大的輸送量。
+> [AZURE.NOTE] 定義您的資料表，使最大可能的資料列大小，包括完整的可變長度資料行，長度不超過 32767 個位元組。 雖然您定義的資料列可以有超過此數據的可變長度資料，但資料將無法插入資料表。 此外，也請限制可變長度資料行的大小，以便執行查詢時有更大的輸送量。
 
 ## 後續步驟
-
 一旦成功將資料庫結構描述移轉到 SQLDW，您就可以繼續閱讀下列其中一篇文章：
 
-- [移轉資料]][]
-- [移轉程式碼]][]
+- [移轉您的資料][]
+- [移轉您的程式碼][]
 
-如需更多開發秘訣，請參閱 [開發概觀 []][]。
+如需更多開發秘訣，請參閱 [開發概觀] []。
+
+<!--Image references-->
+
+<!--Article references-->
+[Migrate your code]: sql-data-warehouse-migrate-code.md
+[Migrate your data]: sql-data-warehouse-migrate-data.md
+[development overview]: sql-data-warehouse-overview-develop.md
+
+<!--MSDN references-->
 
 
-
-
-
-
-
-
-
-
-
-
-[migrate your code]: sql-data-warehouse-migrate-code.md 
-[migrate your data]: sql-data-warehouse-migrate-data.md 
-[development overview]: sql-data-warehouse-overview-develop.md 
+<!--Other Web references-->
 

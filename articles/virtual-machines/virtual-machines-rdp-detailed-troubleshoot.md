@@ -17,12 +17,12 @@
     ms.date="09/16/2015"
     ms.author="dkshir"/>
 
-
 # 以 Windows 為基礎的 Azure 虛擬機器之遠端桌面連線的詳細疑難排解
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 本文章提供複雜之遠端桌面錯誤的詳細疑難排解步驟。
+
 > [AZURE.IMPORTANT] 若要排除的更常見的遠端桌面錯誤，請務必閱讀 [遠端桌面的基本疑難排解](virtual-machines-troubleshoot-remote-desktop-connections.md) 再繼續進行。
 
 ## 連絡 Azure 客戶支援
@@ -34,7 +34,7 @@
 
 ## 一般遠端桌面錯誤訊息
 
-有時您可能會看到此錯誤訊息，在遠端桌面連線訊息視窗: _Remote 基於下列理由..._，將無法連線到遠端電腦的桌面
+有時您可能會看到此錯誤訊息，在遠端桌面連線訊息視窗: _遠端桌面因下列原因之一，無法連線到遠端電腦..._
 
 當遠端桌面用戶端無法在虛擬機器上與遠端桌面連線時，會發生此錯誤。 有多種原因會造成此錯誤。
 
@@ -44,7 +44,7 @@
 
 在深入了解逐步的疑難排解程序之前，先在心中檢閱您在可以成功建立遠端桌面連線之後曾進行過的變更，再使用這些變更當成修正問題的基礎會相當有幫助。 例如：
 
-- 如果您可以建立遠端桌面連線，且變更了虛擬機器或包含虛擬機器之雲端服務的公用 IP 位址 (又稱為虛擬 IP 位址 [VIP])，則您的 DNS 用戶端快取可能會有 DNS 名稱和「舊 IP 位址」**的項目。 請清除 DNS 用戶端快取並重試一次。 或者，請嘗試使用新的 VIP 建立連線。
+- 如果您可以建立遠端桌面連線，且變更虛擬機器的公用 IP 位址或包含虛擬機器 (也稱為虛擬 IP 位址 [VIP]) 的雲端服務，DNS 用戶端快取可能有 DNS 名稱的項目和 *舊的 IP 位址*。 請清除 DNS 用戶端快取並重試一次。 或者，請嘗試使用新的 VIP 建立連線。
 - 如果您從使用 Azure 傳統入口網站或 Azure 入口網站變更為使用應用程式來管理遠端桌面連線，則請確保應用程式組態包含用於遠端桌面流量之隨機決定的 TCP 連接埠。
 
 下節將逐步地隔離和判定此問題的各種根本原因，並提供解決方案和因應措施。
@@ -107,6 +107,7 @@
 若要為使用服務管理 API 建立的虛擬機器排除雲端服務端點和 ACL 為問題或錯誤設定來源之可能性，請確認另一部位於相同雲端服務或虛擬網路的 Azure 虛擬機器能使用遠端桌面連線到您的 Azure 虛擬機器。
 
 ![](./media/virtual-machines-rdp-detailed-troubleshoot/tshootrdp_3.png)
+
 > [AZURE.NOTE] 資源管理員中建立的虛擬機器，請跳到 [來源 4: 網路安全性群組](#nsgs)。
 
 如果在同一個雲端服務或虛擬網路中沒有另一部虛擬機器，可以建立一部新的。 如需詳細資訊，請參閱 [建立在 Azure 中執行 Windows 的虛擬機器](virtual-machines-windows-tutorial.md)。 當您完成測試後，請刪除額外的虛擬機器。
@@ -114,15 +115,15 @@
 如果您可以建立遠端桌面連線到相同雲端服務或虛擬網路中的虛擬機器，則請檢查下列項目：
 
 - 目標虛擬機器上的遠端桌面流量端點組態。 此端點的私用 TCP 連接埠必須符合虛擬機器上遠端桌面服務正在接聽的 TCP 連接埠，根據預設為 3389。
-- 目標虛擬機器上的遠端桌面流量端點 ACL。 ACL 讓您可指定要根據來源 IP 位址允許或拒絕來自網際網路的連入流量。 設定錯誤的 ACL 會阻止送至端點的連入遠端桌面流量。 檢查您的 ACL，以確保允許來自您的 Proxy 或其他邊緣伺服器的公用 IP 位址之連入流量。 如需詳細資訊，請參閱 [什麼是網路存取控制清單 (ACL)?](../virtual-network/virtual-networks-acl.md).
+- 目標虛擬機器上的遠端桌面流量端點 ACL。 ACL 讓您可指定要根據來源 IP 位址允許或拒絕來自網際網路的連入流量。 設定錯誤的 ACL 會阻止送至端點的連入遠端桌面流量。 檢查您的 ACL，以確保允許來自您的 Proxy 或其他邊緣伺服器的公用 IP 位址之連入流量。 如需詳細資訊，請參閱 [什麼是網路存取控制清單 (ACL)?](../virtual-network/virtual-networks-acl.md)。
 
 若要排除端點為問題或錯誤設定來源之可能性，請移除目前的端點，再選擇外部連接埠號碼介於 49152 到 65535 的隨機連接埠來建立新的端點。 如需詳細資訊，請參閱 [如何設定虛擬機器的端點](virtual-machines-set-up-endpoints.md)。
 
-### <a id="nsgs"></a>來源 4: 網路安全性群組
+### <a id="nsgs"></a>來源 4：網路安全性群組
 
 網路安全性群組能夠更精確地控制受允許的輸入和輸出流量。 您可以在 Azure 虛擬網路中建立跨越子網路和雲端服務的規則。 請檢查您的網路安全性群組規則，以確保允許來自網際網路的遠端桌面流量。
 
-如需詳細資訊，請參閱 [什麼是網路安全性群組 (NSG)?](../virtual-network/virtual-networks-nsg.md).
+如需詳細資訊，請參閱 [什麼是網路安全性群組 (NSG)?](../virtual-network/virtual-networks-nsg.md)。
 
 ### 來源 5：以 Windows 為基礎的 Azure 虛擬機器
 
@@ -130,7 +131,7 @@
 
 ![](./media/virtual-machines-rdp-detailed-troubleshoot/tshootrdp_5.png)
 
-[基本的遠端桌面疑難排解文章](virtual-machines-troubleshoot-remote-desktop-connections.md) 說明如何使用 [Azure IaaS (Windows) 診斷封裝](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)。 如果此診斷封裝程式無法解決 **RDP 連線至 Azure VM (需要重新開機)** 發行，請遵循指示 [這篇文章](virtual-machines-windows-reset-password.md) 來重設虛擬機器上的遠端桌面服務。 這將會：
+ [基本的遠端桌面疑難排解文章](virtual-machines-troubleshoot-remote-desktop-connections.md) 說明如何使用 [Azure IaaS (Windows) 診斷封裝](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)。 如果此診斷封裝程式無法解決 **RDP 連線至 Azure VM (需要重新開機)** 問題，請遵循指示 [這篇文章](virtual-machines-windows-reset-password.md) 來重設虛擬機器上的遠端桌面服務。 這將會：
 
 - 啟用「遠端桌面」 Windows 防火牆預設規則 (TCP 連接埠 3389)。
 - 藉由將 HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections 登錄值設為 0 ，啟用遠端桌面連線。
@@ -146,7 +147,7 @@
 
 接下來，如果尚未安裝 Azure PowerShell，則請先安裝。 請參閱 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)。
 
-接下來，開啟 Azure PowerShell 命令提示字元，並將目前資料夾變更為 **InstallWinRMCertAzureVM.ps1** 指令碼檔案的位置。 若要執行 Azure PowerShell 指令碼，您必須設定正確的執行原則。 請執行 **Get-ExecutionPolicy** 命令來判斷您目前的原則層級。 如需設定適當的層級的資訊，請參閱 [Set-executionpolicy](https://technet.microsoft.com/library/hh849812.aspx)。
+接下來，開啟 Azure PowerShell 命令提示字元，並將目前資料夾變更的位置 **InstallWinRMCertAzureVM.ps1** 指令碼檔案。 若要執行 Azure PowerShell 指令碼，您必須設定正確的執行原則。 執行 **Get-executionpolicy** 命令來判斷您目前的原則層級。 如需設定適當的層級的資訊，請參閱 [Set-executionpolicy](https://technet.microsoft.com/library/hh849812.aspx)。
 
 接下來，填寫您的 Azure 訂用帳戶名稱、 雲端服務名稱和虛擬機器名稱 (移除 < 和 > 字元)，然後執行這些命令。
 
@@ -155,9 +156,9 @@
     $vmName="<Name of the target virtual machine>"
     .\InstallWinRMCertAzureVM.ps1 -SubscriptionName $subscr -ServiceName $serviceName -Name $vmName
 
-您可以從 **Get-AzureSubscription** 命令顯示畫面中的 _SubscriptionName_ 屬性，取得正確的訂用帳戶名稱。 您可以從 **Get-AzureVM** 命令顯示畫面中的 _ServiceName_ 欄位，取得虛擬機器的雲端服務名稱。
+您可以取得正確的訂閱名稱，從 _SubscriptionName_ 屬性的顯示 **Get-azuresubscription** 命令。 你可以從虛擬機器的雲端服務名稱 _ServiceName_ 資料行的顯示 **Get-azurevm** 命令。
 
-如欲證明您有新的憑證，請開啟目前使用者的憑證嵌入式管理單元，然後查看 **Trusted Root Certification Authorities\Certificates** 資料夾。 您應該在 Issued To 資料行中查看具有您的雲端服務之 DNS 名稱的憑證 (範例：cloudservice4testing.cloudapp.net)。
+若要證明您有新的憑證，請開啟目前使用者憑證] 嵌入式管理單元，然後查看 **Trusted Root Certification Authorities\Certificates** 資料夾。 您應該在 Issued To 資料行中查看具有您的雲端服務之 DNS 名稱的憑證 (範例：cloudservice4testing.cloudapp.net)。
 
 接下來，使用這些命令起始遠端 Azure PowerShell 工作階段。
 
@@ -198,15 +199,11 @@ PortNumber 屬性會顯示目前的連接埠號碼。 如有需要，請使用�
 
 [Azure IaaS (Windows) 診斷封裝](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
 
-[如何重設密碼或遠端桌面服務的 Windows 虛擬機器](virtual-machines-windows-reset-password.md)
+[如何重設 Windows 虛擬機器的密碼或遠端桌面服務](virtual-machines-windows-reset-password.md)
 
 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)
 
 [疑難排解以 Linux 為基礎之 Azure 虛擬機器的安全殼層 (SSH) 連線](virtual-machines-troubleshoot-ssh-connections.md)
 
-[疑難排解 Azure 的虛擬機器上執行的應用程式的存取](virtual-machines-troubleshoot-access-application.md)
-
-
-
-
+[疑難排解存取在 Azure 虛擬機器上執行的應用程式](virtual-machines-troubleshoot-access-application.md)
 

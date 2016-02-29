@@ -1,6 +1,6 @@
 <properties
     pageTitle="在 Ubuntu 上搭配 pymssql 使用 Python 連接到 SQL Database"
-    description="提供可用來連接到 Azure SQL Database 的 Python 程式碼範例。這個範例會在 Ubuntu Linux 用戶端電腦上執行。"
+    description="提供可用來連接到 Azure SQL Database 的 Python 程式碼範例。 這個範例會在 Ubuntu Linux 用戶端電腦上執行。"
     services="sql-database"
     documentationCenter=""
     authors="meet-bhagdev"
@@ -18,8 +18,8 @@
     ms.author="meetb"/>
 
 
-
 # 在 Ubuntu Linux 上使用 Python 連接到 SQL Database
+
 
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
@@ -27,12 +27,14 @@
 本主題提供可在 Ubuntu Linux 用戶端電腦上執行，以連接到 Azure SQL Database 資料庫的 Python 程式碼範例。
 
 
-## 必要條件
+## 先決條件
 
-- [Python 2.7.6](https://www.python.org/download/releases/2.7.6/).
+
+- [Python 2.7.6](https://www.python.org/download/releases/2.7.6/)。
 
 
 ### 安裝必要的模組
+
 
 開啟您的終端機，並巡覽至您打算用來建立 Python 指令碼的目錄。 輸入下列命令以安裝 **FreeTDS** 和 **pymssql**。 pymssql 使用 FreeTDS 連接到 SQL 資料庫。
 
@@ -41,9 +43,10 @@
     sudo apt-get --assume-yes install python-dev python-pip
     sudo pip install pymssql
 
+
 ### SQL Database
 
-請參閱 [入門頁面](sql-database-get-started.md) 以了解如何建立範例資料庫。 請務必遵循該指南以建立 **AdventureWorks 資料庫範本**。 以下所示的範例僅適用於 **AdventureWorks 結構描述**。
+請參閱 [入門頁面](sql-database-get-started.md) 以了解如何建立範例資料庫。  請務必遵循該指南以建立 **AdventureWorks 資料庫範本**。 只有如下所示的範例適用於 **AdventureWorks 結構描述**。
 
 ## 步驟 1：取得連線詳細資料
 
@@ -54,14 +57,15 @@
 
 !!!!!sql-database-include-connection-string-details-20-portalshots.md
 
-[Pymssql.connect](http://pymssql.org/en/latest/ref/pymssql.html) 函式用來連接到 SQL 資料庫。
+ [Pymssql.connect](http://pymssql.org/en/latest/ref/pymssql.html) 函式用來連接到 SQL 資料庫。
 
     import pymssql
     conn = pymssql.connect(server='yourserver.database.windows.net', user='yourusername@yourserver', password='yourpassword', database='AdventureWorks')
 
+
 ## 步驟 3：執行查詢
 
-[Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 函式可用來擷取對 SQL Database 設定從查詢的結果。 此函式基本上會接受任何查詢，並傳回結果集，這可以藉由使用反覆 [cursor.fetchone ()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone)。
+ [Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 函式可用來擷取對 SQL Database 設定從查詢的結果。 此函式基本上會接受任何查詢，並傳回結果集，這可以藉由使用反覆 [cursor.fetchone ()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone)。
 
 
     import pymssql
@@ -73,9 +77,10 @@
         print str(row[0]) + " " + str(row[1]) + " " + str(row[2])   
         row = cursor.fetchone()
 
+
 ## 步驟 4: 插入資料列
 
-在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。
+在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。  
 
 
     import pymssql
@@ -87,7 +92,9 @@
         print "Inserted Product ID : " +str(row[0])
         row = cursor.fetchone()
 
+
 ## 步驟 5: 回復交易
+
 
 這個程式碼範例示範如何使用交易，您將：
 
@@ -109,8 +116,4 @@
 ## 後續步驟
 
 如需詳細資訊，請參閱 [Python 開發人員中心](/develop/python/)。
-
-
-
-
 

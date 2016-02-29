@@ -17,7 +17,6 @@
    ms.date="12/11/2015"
    ms.author="telmos" />
 
-
 # 如何在 PowerShell 設定靜態私人 IP 位址 (傳統)
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
@@ -31,8 +30,7 @@
 以下的範例 PowerShell 命令會預期已經建立簡單的環境。 如果您想要執行命令，因為它們會顯示在這份文件，先建立測試環境中所述 [建立 vnet](virtual-networks-create-vnet-classic-netcfg-ps.md)。
 
 ## 如何驗證特定 IP 位址是否可用
-
-若要驗證 IP 位址 *192.168.1.101* 在稱為 *TestVnet* 的 VNet 中是否可用，請執行下列 PowerShell 命令，並驗證 *IsAvailable* 的值：
+若要驗證 IP 位址 *192.168.1.101* 位於名為 vnet *TestVnet*, ，執行下列 PowerShell 命令，並確認的值 *IsAvailable*:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -45,8 +43,7 @@
     OperationStatus      : Succeeded
 
 ## 建立 VM 時如何指定靜態私人 IP 位址
-
-下方 PowerShell 指令碼會建立稱為 *TestService* 的新雲端服務，接著從 Azure 中擷取映像，然後在新的雲端服務中使用擷取的映像建立稱為 *DNS01* 的 VM，接下來設定要位於稱為*前端*之子網路的 VM，並設定 *192.168.1.7* 作為 VM 的靜態私人 IP：
+下列 PowerShell 指令碼會建立新的雲端服務，名為 *TestService*, ，然後從 Azure 擷取映像，建立名為 VM *DNS01* 新的雲端服務中使用擷取的映像設定名為子網路中的 VM *前端*, ，並設定 *從 192.168.1.7* VM 的靜態私人 IP 位址為:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -65,8 +62,7 @@
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
 ## 如何擷取 VM 的靜態私人 IP 位址資訊
-
-若要檢視使用上述指令碼建立之 VM 的私人 IP 位址資訊，請執行下列 PowerShell 命令，並觀察 *IpAddress* 的值：
+若要檢視使用上述指令碼建立之 VM 的靜態私人 IP 位址資訊，請執行下列 PowerShell 命令，並觀察值 *IpAddress*:
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
@@ -100,9 +96,8 @@
     OperationStatus             : OK
 
 ## 如何移除 VM 的靜態私人 IP 位址
-
 若要移除上述指令碼中新增至 VM 的靜態私人 IP 位址，請執行下列 PowerShell 命令：
-
+    
     Get-AzureVM -ServiceName TestService -Name DNS01 `
     | Remove-AzureStaticVNetIP `
     | Update-AzureVM
@@ -114,7 +109,6 @@
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
 ## 如何將靜態私人 IP 位址新增至現有的 VM
-
 若要將靜態私人 IP 位址新增至使用上述指令碼建立之 VM，請執行下列命令：
 
     Get-AzureVM -ServiceName TestService -Name DNS01 `
@@ -132,7 +126,3 @@
 - 深入了解 [保留公用 IP](../virtual-networks-reserved-public-ip) 位址。
 - 深入了解 [執行個體層級公用 IP (ILPIP)](../virtual-networks-instance-level-public-ip) 位址。
 - 請參閱 [保留的 IP REST Api](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
-
-
-
-

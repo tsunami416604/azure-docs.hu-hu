@@ -18,8 +18,7 @@
 
 
 
-
-# 使用 Azure 自動化管理 Azure SQL 資料庫
+#使用 Azure 自動化管理 Azure SQL 資料庫
 
 本指南將為您介紹 Azure 自動化服務，以及如何使用它來簡化您的 Azure SQL 資料庫管理。
 
@@ -39,12 +38,12 @@ Azure 自動化提供非常可靠且高度可用的工作流程執行引擎，�
 
 Azure 自動化也可直接與 SQL 伺服器通訊，只要使用 PowerShell 發出 SQL 命令即可。
 
-[Azure 自動化 runbook 資源庫](http://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) 含有多種產品團隊和社群 runbook，以便開始使用自動化管理 Azure SQL 資料庫、 其他 Azure 服務，以及第 3 個廠商系統。 資源庫 Runbook 包括：
+ [Azure 自動化 runbook 資源庫](http://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) 含有多種產品團隊和社群 runbook，以便開始使用自動化管理 Azure SQL 資料庫、 其他 Azure 服務，以及第 3 個廠商系統。 資源庫 Runbook 包括：
 
- * [針對 SQL Server 資料庫執行 SQL 查詢](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
- * [垂直調整 (向上或向下) Azure SQL Database 的排程](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
- * [如果資料庫到達其大小上限，截斷的 SQL 資料表](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
- * [如果高度片段化 Azure SQL 資料庫中的資料表建立索引](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
+ * [針對 SQL Server 資料庫執行 SQL 查詢 (英文)](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
+ * [依排程垂直調整 (向上或向下) Azure SQL Database (英文)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
+ * [如果 SQL 資料表的資料庫到達其大小上則截斷該資料表 (英文)](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
+ * [如果 Azure SQL Database 高度片段化則索引其中的資料表 (英文)](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
 
 ## 後續步驟
 
@@ -52,9 +51,5 @@ Azure 自動化也可直接與 SQL 伺服器通訊，只要使用 PowerShell 發
 
  * 請參閱 Azure 自動化 [快速入門教學課程](../automation-create-runbook-from-samples.md)
  * 讀取 [Azure 自動化: 您的 SQL 代理程式定域機組中](http://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 部落格文章
-
-
-
-
-
+ 
 

@@ -1,3 +1,4 @@
+<!--v-sharos 10/13/2105 virtual device security-->
 
 使用 StorSimple 虛擬裝置時，請留意下列安全性考量：
 
@@ -6,9 +7,5 @@
 - 用來對儲存在 Azure StorSimple 中的資料加密的憑證公開金鑰，會安全地在 Microsoft Azure 入口網站中供人使用，而私密金鑰則會保留在 StorSimple 裝置中。 在 StorSimple 虛擬裝置上，公開和私密金鑰都會儲存於 Azure 中。
 
 - 虛擬裝置會裝載於 Microsoft Azure 資料中心。
-
-
-
-
 
 

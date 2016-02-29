@@ -14,14 +14,13 @@
     ms.date="09/21/2015"
     ms.author="awills"/>
 
-
 # Java 適用的 Application Insights SDK 的版本資訊
 
-[Application Insights SDK for Java](app-insights-java-get-started.md) 傳送有關您即時的應用程式遙測 [Application Insights](http://azure.microsoft.com/services/application-insights/), ，您可以在此分析它的使用狀況與效能。
+ [JAVA 應用程式洞悉 SDK](app-insights-java-get-started.md) 傳送關於您即時的應用程式的 telemetry [應用程式了解](http://azure.microsoft.com/services/application-insights/), ，您可以在此分析其使用情況和效能。
 
 #### 若要在應用程式中安裝 SDK
 
-請參閱 [開始使用 SDK for Java](app-insights-java-get-started.md)。
+請參閱 [好跚始 JAVA SDK](app-insights-java-get-started.md)。
 
 #### 升級至最新的 SDK
 
@@ -34,20 +33,18 @@
 
 *否則*
 
-* 下載最新版 [Azure Libraries for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) 取代舊的版本。
+* 下載最新版的 [Azure 程式庫的 JAVA](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) ，並取代舊的。
 
 比較舊的和新的 ApplicationInsights.xml。 您看到的變更許多是因為我們新增與移除了模組。 恢復您所做的任何自訂。
 
 ## 版本 1.0.2
-
 - 使用組態中指定的項目，當它在程式碼中明確提供時，可防止覆寫檢測金鑰。
 - 處理所有成功的 HTTP 狀態碼，將相關的 HTTP 要求報告為成功。
 - 處理 ConfigurationFileLocator 擲回的所有例外狀況。
 
 
 ## 版本 1.0.1
-
-- [Java 代理程式](app-insights-java-agent.md) 會收集下列相關的相依性資訊:
+-  [JAVA 代理程式](app-insights-java-agent.md) 會收集有關下列的相依性資訊:
     - 透過 HttpClient、OkHttp 和 RestTemplate (Spring) 進行的 HTTP 呼叫。
     - 透過 Jedis 用戶端對 Redis 進行的呼叫。 傳遞可設定的閾值時，SDK 也將提取呼叫引數。
     - 使用 Oracle DB 和 Apache Derby DB 用戶端對 JDBC 的呼叫。
@@ -55,30 +52,24 @@
     - 為支援 JDBC 的用戶端 (MySql、PostgreSql) 提供的查詢計劃 – 僅當跨越了可設定的閾值時，才擷取查詢計畫
 
 ## 1.0.0 版
-
 - 加入 CollectD 適用的 Application Insights 寫入器外掛程式的支援。
 - 加入 Application Insights Java 代理程式的支援。
 - 支援 HttpClient 版本 4.2 版或更新版本的相容性問題的修正程式。
 
 ## 0.9.6 版
-
 - 讓 Java SDK 與 Servlet 2.5 版與 HttpClient 4.3 之前的版本相容。
 - 加入 Java EE 攔截器的支援。
 - 從 Logback 附加器移除多餘的相依性。
 
-## 0.9.5 版
+## 0.9.5 版  
 
-- 修正自訂事件因 Cookie 剖析錯誤而沒有與使用者/工作階段相互關聯的問題。
+- 修正自訂事件因 Cookie 剖析錯誤而沒有與使用者/工作階段相互關聯的問題。  
 - 改善解析 ApplicationInsights.xml 組態檔位置的邏輯。
 - 將不會在伺服器端產生匿名使用者和工作階段 Cookie。 若要實作 Web 應用程式的使用者和工作階段追蹤，JavaScript SDK 的檢測現在為必要 – 仍採用來自 JavaScript SDK 的 Cookie。 請注意，這項變更可能會造成使用者和工作階段計數的明顯重新結算，因為現在只需計算使用者產生的工作階段。
 
 ## 0.9.4 版
 
 - 支援從 32 位元 Windows 電腦收集效能計數器。
-- 支援使用新的相依性的手動追蹤 `trackDependency` 方法 API。
-- 能夠藉由新增標記項目為綜合，遙測 `SyntheticSource` 屬性來報告項目。
-
-
-
-
+- 支援使用新的 ```trackDependency``` 方法 API 手動追蹤相依性。
+- 能夠藉由將 ```SyntheticSource``` 屬性加入至報告項目，將遙測項目標記為綜合。
 

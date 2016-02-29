@@ -17,8 +17,7 @@
     ms.date="11/19/2015"
     ms.author="robmcm"/>
 
-
-# 如何在 Azure 中建立 MySQL 資料庫
+#如何在 Azure 中建立 MySQL 資料庫
 
 [AZURE.INCLUDE [create-mysql-db](../includes/create-mysql-db.md)]
 
@@ -27,8 +26,4 @@
 ## 後續步驟
 
 如需詳細資訊，請參閱 [PHP 開發人員中心](/develop/php/)。
-
-
-
-
 

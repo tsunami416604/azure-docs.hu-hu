@@ -2,7 +2,3 @@
 [使用 ReadIntent 路由與 Azure AlwaysOn 可用性群組接聽程式](http://go.microsoft.com/fwlink/?LinkId=522515)。
 
 如需在 Azure 中使用 SQL Server 的其他資訊，請參閱 [Azure 虛擬機器上的 SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)。
-
-
-
-

@@ -16,11 +16,11 @@
    ms.date="11/03/2015"
    ms.author="chackdan"/>
 
-
 # 在叢集中加入或移除虛擬機器 (VM) 來增加或縮減 Service Fabric 叢集規模
 
 您可以依需求加入或移除虛擬機器來增加或縮減 Service Fabric 叢集規模。
->[AZURE.NOTE] 這會假設您的訂用帳戶有足夠的核心來加入將構成此叢集的新 VM。
+
+>[AZURE.NOTE] 假設您的訂閱有足夠的核心可加入新的 Vm 將組成此叢集。
 
 
 ## 手動調整 Service Fabric 叢集規模
@@ -32,7 +32,7 @@
 1. 登入 Azure 入口網站 [http://aka.ms/servicefabricportal](http://aka.ms/servicefabricportal)。
 
 2. 瀏覽至服務網狀架構叢集
- ![BrowseServiceFabricClusterResource][browseservicefabricclusterresource]
+ ![] BrowseServiceFabricClusterResource[] BrowseServiceFabricClusterResource
 
 3. 選取您想要調整規模的叢集
 
@@ -51,9 +51,10 @@
 移除節點是一個包含兩個步驟的程序：
 
 1. 將 VM 數目調整到您想要的數目，然後儲存。滑桿的下端會指出該 NodeType 的最低 VM 需求。
-  >[AZURE.NOTE] 主要「節點類型」必須至少有 5 個 VM。
 
-    該部署完成之後，取得通知您現在可以刪除的 VM 名稱。 您現在需要瀏覽至 VM 資源，並將它刪除。
+  >[AZURE.NOTE] 您必須維護最少 5 個 Vm 的主要節點型別。
+
+    Once that deployment is complete, you will get notified of the VM names that can now be deleted. You now need to navigate to the VM resource and delete it.
 
 2. 回到叢集儀表板並按一下 [資源群組]。 這會開啟 [資源群組] 刀鋒視窗。
 
@@ -73,11 +74,10 @@ Service Fabric 叢集目前還不支援自動調整規模。 不久之後，叢�
 
 ## 後續步驟
 
-- [深入了解叢集升級](service-fabric-cluster-upgrade.md)
-- [深入了解資料分割的最大小數位數的可設定狀態服務](service-fabric-concepts-partitioning.md)
+- [了解叢集升級](service-fabric-cluster-upgrade.md)
+- [了解如何分割具狀態服務來達到最大規模](service-fabric-concepts-partitioning.md)
 
 
-
-
-[browseservicefabricclusterresource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png 
+<!--Image references-->
+[BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
 

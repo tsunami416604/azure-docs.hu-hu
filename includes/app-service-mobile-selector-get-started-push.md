@@ -7,8 +7,3 @@
 - [Xamarin.Forms](../articles/app-service-mobile-xamarin-forms-get-started-push.md)
 
 
-
-
-
-
-

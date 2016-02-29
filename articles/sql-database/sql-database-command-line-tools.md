@@ -16,14 +16,13 @@
     ms.date="12/01/2015" 
     ms.author="sstein"/>
 
-
 # 使用 PowerShell 管理 Azure SQL Database
 
-> [AZURE.SELECTOR]
-- [Azure Portal](sql-database-manage-portal.md)
-- [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
-- [PowerShell](sql-database-command-line-tools.md)
 
+> [AZURE.SELECTOR]
+- [Azure 入口網站](sql-database-manage-portal.md)
+- [TRANSACT-SQL (SSMS)](sql-database-manage-azure-ssms.md)
+- [PowerShell](sql-database-command-line-tools.md)
 
 本主題提供 PowerShell 命令來執行許多 Azure SQL Database 工作。
 
@@ -43,7 +42,7 @@
 
 ## 選取您的 Azure 訂用帳戶
 
-若要選取使用的訂用帳戶，您必須提供訂用帳戶識別碼 (**-SubscriptionId**) 或訂用帳戶名稱 (**-SubscriptionName**)。 您可以複製上一個步驟中的資訊，或者，如果您有多個訂用帳戶，則可以執行 **Get-AzureSubscription** Cmdlet，然後複製結果集中所需的訂用帳戶資訊。
+若要選取您想要使用的訂閱需要您的訂閱識別碼 (**-SubscriptionId**) 或訂用帳戶名稱 (**-SubscriptionName**)。 您可以複製上一個步驟中，或如果您有多個訂閱執行 **Get-azuresubscription** 指令程式並複製結果集中所需的訂閱資訊。
 
 使用您的訂用帳戶資訊執行下列 Cmdlet，以設定您目前的訂用帳戶：
 
@@ -53,7 +52,7 @@
 
 ## 建立資源群組
 
-建立會包含伺服器的資源群組。 您可以編輯下一個命令，以使用任何有效位置。
+建立會包含伺服器的資源群組。 您可以編輯下一個命令，以使用任何有效位置。 
 
 如需有效的 Azure SQL Database 伺服器位置清單，請執行下列 Cmdlet：
 
@@ -63,19 +62,19 @@
 
     New-AzureRmResourceGroup -Name "resourcegroupJapanWest" -Location "Japan West"
 
-## 建立伺服器
+## 建立伺服器 
 
 若要建立新的 V12 伺服器使用 [新增 AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) 指令程式。 將 server12 取代為您伺服器的名稱。 這必須是所有 Azure SQL Server 的唯一名稱，因此伺服器名稱若被佔用，您就會收到錯誤訊息。 另外值得注意的是，此命令可能需要數分鐘才能完成。 成功建立伺服器後，會出現伺服器詳細資料和 PowerShell 提示字元。 您可以編輯命令，以使用任何有效位置。
 
     New-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -Location "Japan West" -ServerVersion "12.0"
 
-當您執行此命令時，會隨即開啟向您詢問 [使用者名稱] ****和 [密碼] ****的視窗。 這不是您的 Azure 認證、 輸入使用者名稱和您想要建立新的伺服器系統管理員認證的密碼。
+當您執行此命令] 視窗隨即開啟向您詢問 **使用者名稱** 和 **密碼**。 這不是您的 Azure 認證、 輸入使用者名稱和您想要建立新的伺服器系統管理員認證的密碼。
 
 ## 建立伺服器防火牆規則
 
 若要建立防火牆規則，以存取伺服器，請使用 [新增 AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx) 命令。 執行以下命令，用對您用戶端有效的值，取代開頭和結尾 IP 位址。
 
-如果您的伺服器需要允許存取其他 Azure 服務，請加入 **-AllowAllAzureIPs** 參數，藉此加入特殊的防火牆規則，並允許所有 Azure 流量存取伺服器。
+如果您的伺服器需要允許存取其他 Azure 服務，請加入 **-AllowAllAzureIPs** 加入特殊的防火牆規則，並允許所有 azure 流量存取伺服器的參數。
 
     New-AzureRmSqlServerFirewallRule -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -FirewallRuleName "clientFirewallRule1" -StartIpAddress "192.168.0.198" -EndIpAddress "192.168.0.199"
 
@@ -87,11 +86,13 @@
 
     New-AzureRmSqlDatabase -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -DatabaseName "TestDB12" -Edition Standard -RequestedServiceObjectiveName "S1"
 
+
 ## 變更 SQL 資料庫的效能層級
 
 您可以調整您的資料庫向上或向下 [組 AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) 命令。 下列範例會將名為 TestDB12 的 SQL 資料庫，從其目前的效能層級擴充至標準 S3 層級。
 
     Set-AzureRmSqlDatabase -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -DatabaseName "TestDB12" -Edition Standard -RequestedServiceObjectiveName "S3"
+
 
 ## 刪除 SQL 資料庫
 
@@ -105,14 +106,16 @@
 
     Remove-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12"
 
-如果您將再次建立這些 Azure SQL 資源或類似的資源，您可以：
+
+
+如果您將再次建立這些 Azure SQL 資源或類似的資源，您可以： 
 
 - 將這個命令集儲存為 PowerShell 指令碼檔案 (*.ps1)
-- 在 Azure 傳統入口網站的 [自動化] 區段中，將這個命令集儲存為 Azure 自動化 Runbook
+- 在 Azure 傳統入口網站的 [自動化] 區段中，將這個命令集儲存為 Azure 自動化 Runbook 
 
 ## 後續步驟
 
-結合命令和自動化。例如，取代引號，包括裡面 < 和 > 字元，使用您建立伺服器、 防火牆規則和資料庫的值:
+結合命令和自動化。 例如，取代引號，包括裡面 < 和 > 字元，使用您建立伺服器、 防火牆規則和資料庫的值:
 
 
     New-AzureRmResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
@@ -123,7 +126,3 @@
 ## 相關資訊
 
 - [Azure SQL Database Cmdlet](https://msdn.microsoft.com/library/azure/mt574084.aspx)
-
-
-
-

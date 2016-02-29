@@ -1,43 +1,43 @@
+
 <properties 
-    pageTitle = 「 管理媒體服務實體使用 REST API 」 
-    描述 = 「 了解如何管理媒體服務 REST api 的實體 」。 
-    作者 ="juliako" 
+    pageTitle="使用 REST API 管理媒體服務實體" 
+    description="深入了解如何使用 REST API 管理媒體服務實體。" 
+    authors="juliako" 
     manager="dwrede" 
-    編輯器 ="" 
-    服務 = [媒體服務] 
-    documentationCenter =""/ >
+    editor="" 
+    services="media-services" 
+    documentationCenter=""/>
 
 <tags 
-    ms.service= [媒體服務] 
-    ms.workload="media 」 
+    ms.service="media-services" 
+    ms.workload="media" 
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="12/05/2015 」
-    ms.author="juliako"/ >
+    ms.date="12/05/2015"
+    ms.author="juliako"/>
 
-# 使用 REST API 管理媒體服務實體
+#使用 REST API 管理媒體服務實體
 
 > [AZURE.SELECTOR]
 - [REST](media-services-rest-manage-entities.md)
 - [.NET](media-services-dotnet-manage-entities.md)
 
-
 Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 上。 因此，您可以使用與任何其他 OData 服務上的相同方式，新增、查詢、更新和刪除實體。 在適用時會呼叫例外狀況。 如需 OData 的詳細資訊，請參閱 [開放式資料通訊協定文件](http://www.odata.org/documentation/)。
 
-- 加入實體
-- 查詢實體
-- 更新實體
-- 刪除實體
+- 加入實體 
+- 查詢實體 
+- 更新實體 
+- 刪除實體 
 
->[AZURE.NOTE] 使用媒體服務 REST API 時，適用下列考量事項：
+>[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量:
 >
 >在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
->順利連接到 https://media.windows.net 之後，您會收到 301 重新導向，指定另一個媒體服務 URI。 中所述，您必須將新的 uri 的後續呼叫 [連線到媒體服務使用 REST API](media-services-rest-connect_programmatically.md)。
+>順利連接到 https://media.windows.net 之後，您會收到 301 重新導向，指定另一個媒體服務 URI。 中所述，您必須將新的 uri 的後續呼叫 [連線到媒體服務使用 REST API](media-services-rest-connect_programmatically.md)。 
 
 
-## 加入實體
+##加入實體
 
 媒體服務中的每個實體會透過 POST HTTP 要求加入至實體集 (例如資產)。
 
@@ -56,7 +56,8 @@ Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 
     
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-## 查詢實體
+ 
+##查詢實體
 
 查詢及列出實體很簡單，只牽涉到 GET HTTP 要求與選用 OData 作業。
 下列範例會擷取所有 MediaProcessor 實體的清單。
@@ -80,7 +81,7 @@ Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 
     x-ms-version: 2.11
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1336907474&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=OpuY0CeTylqFFcFaP4pKUVGesT4PGx4CP55zDf2zXnc%3d
     Host: media.windows.net
-    
+
     GET https://media.windows.net/API/JobTemplates('nb:jtid:UUID:e81192f5-576f-b247-b781-70a790c20e7c')/TaskTemplates HTTP/1.1
     Content-Type: application/json;odata=verbose
     Accept: application/json;odata=verbose
@@ -110,10 +111,10 @@ Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
->[AZURE.NOTE]媒體服務中不支援 $Expand 作業，以及 LINQ 考量 (WCF 資料服務) 中所述之不支援的 LINQ 方法。
+>[AZURE.NOTE]$Expand 作業不支援媒體服務，以及不支援的 LINQ 考量 (WCF 資料服務) 中所述的 LINQ 方法。
 
 
-## 更新實體
+##更新實體
 
 根據實體類型及其所處狀態，您可以透過 PATCH、PUT 或 MERGE HTTP 要求，更新該實體的屬性。 如需有關這些作業的詳細資訊，請參閱 [PATCH/PUT/MERGE](https://msdn.microsoft.com/library/dd541276.aspx)。
 
@@ -132,7 +133,7 @@ Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 
     
     {"Name" : "NewName" }
 
-## 刪除實體
+##刪除實體
 
 可以使用 DELETE HTTP 要求，在媒體服務中刪除實體。 根據實體，您刪除實體的順序可能很重要。 例如，資產等實體需要您撤銷 (或刪除) 參考該特定資產的所有定位器，然後再刪除資產。
 
@@ -148,15 +149,13 @@ Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 
     Host: media.windows.net
     Content-Length: 0
 
-## 媒體服務學習路徑
+
+
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 

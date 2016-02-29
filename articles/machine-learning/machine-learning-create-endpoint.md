@@ -17,7 +17,6 @@
     ms.author="himad"/>
 
 
-
 # 建立端點
 
 Azure Machine Learning 可讓您為已發行的 Web 服務建立多個端點。 每個端點都會獨立於該 Web 服務的其他端點，受到個別定址、節流以及管理。 每個端點都有唯一的 URL 和授權金鑰。
@@ -27,25 +26,23 @@ Azure Machine Learning 可讓您為已發行的 Web 服務建立多個端點。 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## 端點建立步驟
-
 - 開啟 [http://manage.windowsazure.com](http://manage.windowsazure.com), ，按一下 [ **Machine Learning** 左邊的資料行中。 按一下具有您感興趣的 web 服務的工作區。
-![瀏覽到工作區](./media/machine-learning-create-endpoint/figure-1.png)
+![瀏覽至工作區](./media/machine-learning-create-endpoint/figure-1.png)
+
 
 - 按一下 [ **Web 服務** ] 索引標籤。
-![瀏覽到 Web 服務](./media/machine-learning-create-endpoint/figure-2.png)
+![瀏覽至 web 服務](./media/machine-learning-create-endpoint/figure-2.png)
+
 
 - 按一下您想要查看可用的端點清單的 web 服務。
 ![瀏覽到端點](./media/machine-learning-create-endpoint/figure-3.png)
 
-- 按一下底部的 [新增端點]**** 按鈕。 填寫名稱和描述，確定此 Web 服務中沒有名稱相同的其他端點。 除非您有特殊需求，否則請保留節流層級的預設值。
+
+- 按一下 [ **新增端點** 底部的按鈕。 填寫名稱和描述，確定此 Web 服務中沒有名稱相同的其他端點。 除非您有特殊需求，否則請保留節流層級的預設值。
 若要深入了解節流，請參閱 [調整 API 端點](machine-learning-scaling-endpoints.md)。
 ![建立端點](./media/machine-learning-create-endpoint/figure-4.png)
 
 
 建立端點之後，您就可以透過同步 API、批次 API 以及 Excel 工作表來取用該端點。 除了透過此 UI 新增端點之外，您也可以使用端點管理 API，以程式設計方式加入端點。 如需有關如何使用 Machine Learning web 服務的詳細資訊，請參閱 [如何取用已發佈的 Azure Machine Learning web 服務](machine-learning-consume-web-services.md)。
-
-
-
-
-
+ 
 

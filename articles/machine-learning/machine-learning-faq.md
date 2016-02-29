@@ -17,16 +17,15 @@
     ms.date="09/09/2015"
     ms.author="paulettm"/>
 
-
 # Azure Machine Learning 常見問題集 (FAQ)：計費、功能、限制及支援
 
 此常見問題集針對 Azure Machine Learning 問題提供解答，Azure Machine Learning 是適合透過 Web 服務執行預測性模型化和運作方案的雲端服務。 這個常見問題集涵蓋使用服務的相關問題，包括計費模型、功能、限制及支援。
 
 ## 一般問題
 
-**什麼是 Azure Machine Learning 服務？**
+**什麼是 Azure 機器學習服務？**
 
-Azure Machine Learning 是受到完整管理的服務，可用來建立、測試、操作及管理雲端中的預測分析方案。 僅使用瀏覽器，您即可以登入、上傳資料，以及立即開始機器學習實驗。 拖放式預測性模型化、大型模組和用以啟動範本的程式庫，讓您得以簡便而快速地執行一般機器學習工作。 如需詳細資訊，請參閱 [Azure Machine Learning 服務概觀](/services/machine-learning/)。 如需涵蓋重要術語和概念的機器學習簡介，請參閱 [Azure 機器學習服務簡介](machine-learning-what-is-machine-learning.md)。
+Azure Machine Learning 是受到完整管理的服務，可用來建立、測試、操作及管理雲端中的預測分析方案。 僅使用瀏覽器，您即可以登入、上傳資料，以及立即開始機器學習實驗。 拖放式預測性模型化、大型模組和用以啟動範本的程式庫，讓您得以簡便而快速地執行一般機器學習工作。  如需詳細資訊，請參閱 [Azure Machine Learning 服務概觀](/services/machine-learning/)。 如需涵蓋重要術語和概念的機器學習簡介，請參閱 [Azure 機器學習服務簡介](machine-learning-what-is-machine-learning.md)。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -57,13 +56,11 @@ Machine Learning API 服務可讓您將 Machine Learning Studio 中內建的預�
 ## Machine Learning Studio 問題
 
 ### 建立實驗
-
 **實驗圖形有版本控制或 Git 整合嗎？**
 
 沒有，不過每次執行實驗便會保留該版本的圖形，無法由其他使用者修改。
 
 ### 匯入和匯出機器學習服務的資料
-
 **機器學習服務支援何種資料來源？**
 
 資料可透過兩種方式載入 Machine Learning Studio 中：以資料集的形式上傳本機檔案，或使用讀取器模組匯入資料。 可以上傳本機檔案，方法是在 Machine Learning Studio 中新增資料集。 請參閱 [訓練資料匯入 Machine Learning Studio](machine-learning-import-data.md) 若要深入了解支援的檔案格式。
@@ -71,7 +68,7 @@ Machine Learning API 服務可讓您將 Machine Learning Studio 中內建的預�
 
 #### <a id="ModuleLimit"></a>如何大型資料集可以我的模組適用?
 
-Machine Learning Studio 中的模組對常見使用案例支援最多 10 GB 的密集數值資料的資料集。 如果模組接受一個以上的輸入，10 GB 是所有輸入的大小總計。 您也可以取樣較大型資料集，方法是透過 Hive 或 Azure SQL Database 查詢，或在擷取前透過依計數學習前置處理。
+Machine Learning Studio 中的模組對常見使用案例支援最多 10 GB 的密集數值資料的資料集。 如果模組接受一個以上的輸入，10 GB 是所有輸入的大小總計。 您也可以取樣較大型資料集，方法是透過 Hive 或 Azure SQL Database 查詢，或在擷取前透過依計數學習前置處理。  
 
 下列資料類型可以在功能正規化期間擴充為較大型資料集，並限制在小於 10 GB：
 
@@ -91,18 +88,19 @@ Machine Learning Studio 中的模組對常見使用案例支援最多 10 GB 的�
 針對大於幾 GB 的資料集，您應該將資料上傳至 Azure 儲存體或 Azure SQL Database，或是使用 HDInsight，而不要直接從本機檔案上傳。
 
 
-#### <a id="UploadLimit"></a>資料上傳的限制有哪些?
-
+####<a id="UploadLimit"></a>資料上傳的限制有哪些?
 針對大於 2 GB 的資料集，請將資料上傳至 Azure 儲存體或 Azure SQL Database，或是使用 HDInsight，而不要直接從本機檔案上傳。
 
 **可以從 Amazon S3 讀取資料嗎？**
 
-如果您有少量的資料，而且想要公開 (expose) 透過 http URL，則您可以使用 [讀取器 ][reader] 模組。 任何較大量的資料傳輸至 Azure 儲存體第一次，然後使用 [讀取器 ][reader] 模組將它帶入實驗。
-
+如果您有少量的資料，而且想要透過 http URL 公開，您可以使用 [讀取器] [讀取器] 模組。 任何較大量的資料，先移轉至 Azure 儲存體，然後將它帶入實驗使用 [讀取器] [讀取器] 模組。
+<!--
+<SEE CLOUD DS PROCESS>
+-->
 
 **有內建的影像輸入功能嗎？**
 
-您可以了解影像輸入功能，在 [映像讀取器 ][image-reader] 參考。
+您可以了解影像輸入功能，在 [映像讀取器] [映像讀取器] 的參考。
 
 ### 模組
 
@@ -115,7 +113,7 @@ Machine Learning Studio 中的模組對常見使用案例支援最多 10 GB 的�
 
 是的，您可以在 ML Studio 中放入現有的 R 程式碼，並使用 Azure 機器學習提供的學習器在相同的實驗中加以執行，然後透過 Azure 機器學習部署為 Web 服務。 請參閱 [擴展您的經驗，透過 R ](machine-learning-extend-your-experiment-with-r.md)。
 
-* * 可能是使用類似 [PMML](http://en.wikipedia.org/wiki/Predictive_Model_Markup_Language)  定義模型嗎? * *
+**是否可以使用類似 [PMML](http://en.wikipedia.org/wiki/Predictive_Model_Markup_Language)  定義模型嗎?**
 
 不，不支援，但是自訂 R 和 Python 程式碼可以用來定義模組。
 
@@ -134,13 +132,13 @@ Machine Learning Studio 中的模組對常見使用案例支援最多 10 GB 的�
 
 **Machine Learning Studio 中支援哪些現有的演算法？**
 
-Machine Learning Studio 提供頂級演算法，例如 Scalable Boosted Decision 樹、Bayesian Recommendation 系統、Deep Neural Networks 和 Decision Jungles (由 Microsoft Research 開發)。 此外也包含可調整的開放原始碼機器學習封裝，例如 Vowpal Wabbit。 Machine Learning Studio 支援多類別與二進位分類、迴歸和叢集的機器學習演算法。 查看完整清單 [機器學習模組 ][machine-learning-modules]。
+Machine Learning Studio 提供頂級演算法，例如 Scalable Boosted Decision 樹、Bayesian Recommendation 系統、Deep Neural Networks 和 Decision Jungles (由 Microsoft Research 開發)。 此外也包含可調整的開放原始碼機器學習封裝，例如 Vowpal Wabbit。 Machine Learning Studio 支援多類別與二進位分類、迴歸和叢集的機器學習演算法。 請參閱 [機器學習模組] [機器-學習-模組] 的完整清單。
 
 **您會自動建議我的資料適用的機器學習演算法嗎？**
 
 不會，但在 Machine Learning Studio 中有數種方法可以比較每一個演算法的結果，以決定適合您的問題的演算法。
 
-**針對從提供的演算法中挑選，是否有任何準則？**
+**您有任何透過另一個用於提供的演算法中挑選一種演算法的指導方針嗎?**
 請參閱 [如何選擇演算法 ](machine-learning-algorithm-choice.md)。
 
 **提供的演算法是以 R 或 Python 撰寫？**
@@ -149,7 +147,7 @@ Machine Learning Studio 提供頂級演算法，例如 Scalable Boosted Decision
 
 **有提供演算法之任何詳細資料嗎？**
 
-文件提供一些演算法的相關資訊，並說明提供的微調參數，以針對您的使用最佳化演算法。
+文件提供一些演算法的相關資訊，並說明提供的微調參數，以針對您的使用最佳化演算法。  
 
 **線上學習是否有任何支援？**
 
@@ -189,14 +187,14 @@ Machine Learning Studio 目前支援 400 個以上的 R 封裝，且數量仍在
 
 ## Web 服務
 
-### 以程式設計方式重新訓練模型
+###以程式設計方式重新訓練模型
 
-**如何以程式設計方式重新訓練 AzureML 模型？**
+**如何重新訓練 AzureML 模型以程式設計方式?**
 使用重新訓練 API。 範例程式碼， [這裡](https://azuremlretrain.codeplex.com/)。
 
 ### 建立
 
-**可以在本機或在沒有網際網路連線的應用程式中部署模型嗎？**
+**在本機或在沒有網際網路連線的應用程式可以部署模型嗎?**
 編號
 
 
@@ -225,7 +223,7 @@ Machine Learning Studio 目前支援 400 個以上的 R 封裝，且數量仍在
 針對 RRS，通常您可在 Web 服務回應查看此結果。 您可以也將資料寫入 Blob。 BES 的輸出預設會寫入至 Blob。 您也可以使用寫入器模組將輸出寫入資料庫或資料表。
 
  ** 只能從這個 Studio 中建立的模型來建立 Web 服務嗎?
- 號 您也可以直接從 Jupyter Notebook 和 RStudio 中建立 web 服務。
+ 編號 您也可以直接從 Jupyter Notebook 和 RStudio 中建立 web 服務。
 
 ## 延展性
 
@@ -236,12 +234,12 @@ Machine Learning Studio 目前支援 400 個以上的 R 封裝，且數量仍在
 
 **R 作業會分散於節點嗎？**
 
-編號
+編號  
 
 
 **我可以訓練多少資料？**
 
-Machine Learning Studio 中的模組對常見使用案例支援最多 10 GB 的密集數值資料的資料集。 如果模組接受一個以上的輸入，10 GB 是所有輸入的大小總計。 您也可以取樣較大型資料集，方法是透過 Hive 或 Azure SQL Database 查詢，或在擷取前透過依計數學習前置處理。
+Machine Learning Studio 中的模組對常見使用案例支援最多 10 GB 的密集數值資料的資料集。 如果模組接受一個以上的輸入，10 GB 是所有輸入的大小總計。 您也可以取樣較大型資料集，方法是透過 Hive 或 Azure SQL Database 查詢，或在擷取前透過依計數學習前置處理。  
 
 下列資料類型可以在功能正規化期間擴充為較大型資料集，並限制在小於 10 GB：
 
@@ -267,11 +265,11 @@ Machine Learning Studio 中的模組對常見使用案例支援最多 10 GB 的�
 
 **可調整正在執行它的 VM 大小嗎？**
 
-編號
+編號  
 
 ## 安全性和可用性
 
-* * 誰可以存取 http 結束點依預設，在生產環境中部署的 web 服務? 如何結束點來限制存取? * *
+**誰可以存取 http 結束點依預設，在生產環境中部署的 web 服務? 如何限制對此端點的存取？**
 
 部署 Web 服務之後，我們會建立該服務的預設端點。 會將該預設端點部署到生產環境，並且可使用其 API 金鑰呼叫。 其他端點可以從 Azure 傳統入口網站，或以程式設計方式使用 Web 服務管理 API 加入自己的索引鍵。 必須要有存取金鑰，才能呼叫實際執行和預備環境中的 Web 服務。 如需詳細資訊，請參閱 [連線到 Machine Learning web 服務](machine-learning-connect-to-azure-machine-learning-web-service.md)。
 
@@ -283,10 +281,10 @@ Machine Learning Studio 依賴使用者提供的 Azure 儲存體帳戶，才能�
 如果您不小心刪除儲存體帳戶，從中復原的唯一辦法是使用與刪除的那個完全相同的區域中的相同名稱重新建立儲存體帳戶。 在那之後，請重新同步處理存取金鑰。
 
 
-**如果我的儲存體帳戶存取金鑰未同步，會發生什麼情況？**
+**我的儲存體帳戶存取金鑰未同步有何影響?**
 Machine Learning Studio 依賴使用者提供的 Azure 儲存體帳戶，才能在執行工作流程時儲存中繼資料。 此儲存體帳戶是在建立工作區時提供給 Machine Learning Studio，並且存取金鑰會與該工作區相關聯。 建立工作區之後，如果變更存取金鑰，該工作區不再能存取儲存體帳戶，工作區會停止運作，並且該工作區中的所有實驗將會失敗。
 
-如果您變更了儲存體帳戶存取金鑰，請確保在 Azure 傳統入口網站中的工作區設定中重新同步處理存取金鑰
+如果您變更了儲存體帳戶存取金鑰，請確保在 Azure 傳統入口網站中的工作區設定中重新同步處理存取金鑰  
 
 
 ## Azure Marketplace
@@ -301,21 +299,20 @@ Machine Learning Studio 依賴使用者提供的 Azure 儲存體帳戶，才能�
 
 我們將持續更新機器學習中心的內容。 您可以提交要求的其他學習內容，在機器學習中心 [使用者意見反應論壇](https://windowsazure.uservoice.com/forums/257792-machine-learning)。
 
-您也可以尋找訓練在 [Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/training-courses/getting-started-with-microsoft-azure-machine-learning)
+您也可以尋找訓練課程 [Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/training-courses/getting-started-with-microsoft-azure-machine-learning)
 
 **如何取得 Azure Machine Learning 的支援？**
 
 若要取得 Azure Machine Learning 的技術支援，請移至 [Azure 支援](/support/options/) 選取 **Machine Learning**。
 
-Azure Machine Learning 在 MSDN 上也設有社群論壇，可供您詢問 Azure ML 的相關問題。 此論壇由 Azure ML 團隊控管。 Visit [Azure Forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
+Azure Machine Learning 在 MSDN 上也設有社群論壇，可供您詢問 Azure ML 的相關問題。 此論壇由 Azure ML 團隊控管。 請瀏覽 [Azure 論壇](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)。
 
 
-
-
-[image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/ 
-[join]: https://msdn.microsoft.com/library/azure/124865f7-e901-4656-adac-f4cb08248099/ 
-[machine-learning-modules]: https://msdn.microsoft.com/library/azure/6d9e2516-1343-4859-a3dc-9673ccec9edc/ 
-[partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/ 
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/ 
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/ 
+<!-- Module References -->
+[image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/
+[join]: https://msdn.microsoft.com/library/azure/124865f7-e901-4656-adac-f4cb08248099/
+[machine-learning-modules]: https://msdn.microsoft.com/library/azure/6d9e2516-1343-4859-a3dc-9673ccec9edc/
+[partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
+[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 

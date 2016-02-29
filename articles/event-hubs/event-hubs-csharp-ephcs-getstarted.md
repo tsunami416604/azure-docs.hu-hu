@@ -16,7 +16,6 @@
     ms.date="11/05/2015"
     ms.author="sethm"/>
 
-
 # 開始使用事件中心
 
 [AZURE.INCLUDE [service-bus-selector-get-started](../../includes/service-bus-selector-get-started.md)]
@@ -31,33 +30,33 @@
 
 + Microsoft Visual Studio 2013，或 Microsoft Visual Studio Express 2013 for Windows。
 
-+ 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，您可以建立免費試用帳戶，只需要幾分鐘的時間。 如需詳細資訊，請參閱 [Azure 免費試用] (http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02 和 returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F 目標 ="_blank")。
++ 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 [Azure 免費試用] (http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02 和 amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F 目標 ="_blank")。
 
 ## 建立事件中心
 
-1. 登入 [Azure 傳統入口網站 []][], ，然後按一下 **新增** 螢幕的底部。
+1. 登入 [Azure 傳統入口網站] []，然後按一下 [ **新增** 螢幕的底部。
 
-2. 按一下 [**應用程式服務**]、[**服務匯流排**]、[**事件中樞**]、[**快速建立**]。
+2. 按一下 [ **應用程式服務**, ，然後 **服務匯流排**, ，然後 **事件中心**, ，然後 **快速建立**。
 
     ![][1]
 
-3. 為您的事件中樞輸入名稱、選取所需的區域，然後按一下 [**建立新的事件中樞**]。
+3. 輸入事件中樞的名稱，選取您所需的區域，然後按一下 **建立新的事件中樞**。
 
     ![][2]
 
-4. 按一下您剛才建立的命名空間 (通常是 *** 事件中樞名稱 *-ns**)。
+4. 按一下您剛才建立的命名空間 (通常是 ***事件中樞名稱*ns**)。
 
     ![][3]
 
-5. 按一下頁面頂端的 [事件中心]**** 索引標籤，然後按一下您剛建立的事件中心。
+5. 按一下 [ **事件中樞** 標籤頁面的頂端，然後按一下您剛才建立的事件中心。
 
     ![][4]
 
-6. 按一下頂端的 [設定]**** 索引標籤，新增名為 **SendRule** 且具有「傳送」**權限的規則，以及另一個名為 **ReceiveRule** 且具有「管理、傳送、接聽」**權限的規則，然後按一下 [儲存]****。
+6. 按一下 [ **設定** 頂端索引標籤中，新增名為 **SendRule** 與 *傳送* 權限，並新增另一個規則呼叫 **ReceiveRule** 與 *管理、 傳送、 接聽* 權限，然後再按一下 **儲存**。
 
     ![][5]
 
-7. 按一下頁面頂端的 [**儀表板**] 索引標籤，然後按一下 [**連接資訊**]。 記下兩個連接字串，或複製到別處，以供本教學課程後續使用。
+7. 按一下 [ **儀表板** 在頁面頂端的標籤，然後按一下 **連接資訊**。 記下兩個連接字串，或複製到別處，以供本教學課程後續使用。
 
     ![][6]
 
@@ -72,11 +71,11 @@
 
 現在您已經準備好執行應用程式。
 
-1.  從 Visual Studio 內部執行 **Receiver** 專案，然後等它啟動所有資料分割的接收器。
+1.  從 Visual Studio 中，執行 **接收者** 專案，然後等它啟動所有資料分割的接收器。
 
     ![][21]
 
-2.  執行 **Sender** 專案，按主控台視窗中的 **Enter** 鍵，並查看出現在接收器視窗中的事件。
+2.  執行 **寄件者** 專案，請按 **Enter** 在主控台視窗，並查看接收器視窗中出現的事件。
 
     ![][22]
 
@@ -84,26 +83,28 @@
 
 您已經建置工作應用程式，可建立「事件中樞」和傳送及接收資料，接下來可進行下列案例：
 
-- 完整 [範例會使用 ][]。
-- [相應放大事件處理 ][] 範例。
-- A [佇列訊息解決方案 []][] 使用服務匯流排佇列。
-- [事件中樞概觀]][]
+- A 完成 [範例應用程式，使用事件中樞] []。
+- [相應放大事件處理與事件中樞] [] 範例。
+- [佇列訊息解決方案] [] 使用服務匯流排佇列。
+- [事件中心概觀][]
 
+<!-- Images. -->
+[1]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub1.png
+[2]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub2.png
+[3]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub3.png
+[4]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub4.png
+[5]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub5.png
+[6]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub6.png
 
+[21]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs1.png
+[22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
-
-[1]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub1.png 
-[2]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub2.png 
-[3]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub3.png 
-[4]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub4.png 
-[5]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub5.png 
-[6]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub6.png 
-[21]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs1.png 
-[22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png 
-[azure classic portal]: https://manage.windowsazure.com/ 
-[event processor host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost 
-[event hubs overview]: event-hubs-overview.md 
-[sample application that uses event hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097 
-[scale out event processing with event hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3 
-[queued messaging solution]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md 
+<!-- Links -->
+[Azure classic portal]: https://manage.windowsazure.com/
+[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[queued messaging solution]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+ 
 

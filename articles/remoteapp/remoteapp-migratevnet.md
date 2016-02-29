@@ -17,20 +17,19 @@
 
 
 
-
 # 如何將混合式集合從 RemoteApp VNET 移轉至 Azure VNET
 
-好消息！ 我們已讓您將混合式 RemoteApp 集合直接部署到現有 Azure 虛擬網路 (VNET)，而未建立 RemoteApp 特定 VNET。 這可讓您利用最新的 VNET 功能 (如 ExpressRoute)，並將部署至該 VNET 之其他 Azure 服務和虛擬機器的直接網路存取權提供給混合式集合  (這與 VNET 對 VNET 組態相較之下，可讓您擁有更佳的效能和更簡單的設定)。
+好消息！ 我們已讓您將混合式 RemoteApp 集合直接部署到現有 Azure 虛擬網路 (VNET)，而未建立 RemoteApp 特定 VNET。 這可讓您利用最新的 VNET 功能 (如 ExpressRoute)，並將部署至該 VNET 之其他 Azure 服務和虛擬機器的直接網路存取權提供給混合式集合   (這與 VNET 對 VNET 組態相較之下，可讓您擁有更佳的效能和更簡單的設定)。
 
 
-假設，您已經建立稱為 *OriginalCollection* 的混合式 RemoteApp 集合與稱為 *RemoteAppVNET* 的 RemoteApp VNET。 以下是將它移轉至稱為 *AzureVNET* 之新 Azure VNET 的步驟。
+比方說，您已經建立稱為 「 混合式 RemoteApp 收藏 *OriginalCollection* RemoteApp VNET，稱為 *RemoteAppVNET*。 以下是將它移轉至新的 Azure VNET 稱為步驟 *AzureVNET*。
 
 1.  在 **網路** 索引標籤中 [管理入口網站](http://manage.windowsazure.com/), ，建立一個稱為 *AzureVNET*, 、 使用相同的位置、 DNS 組態和位址空間 (至少其中一個 *AzureVNET* 子網路) 與您用於 *RemoteAppVNET*。
-2.  設定 *AzureVNET* 裝載或透過網路連接到 *OriginalCollection* 加入網域的 Active Directory 部署。
-3.  在 [**RemoteApp**] 索引標籤上，建立稱為「*新集合*」的新 RemoteApp 集合  (使用 [**使用 VNET 建立**] 選項，而不是 [**快速建立**])。
-3.  設定要部署到 *AzureVNET* 中子網路的 *NewCollection*。
-4.  設定 *NewCollection* 使用與您用於 *OriginalCollection* 相同的映像和網域加入資訊。
-5.  在幾個小時後，*NewCollection* 會顯示在集合清單中，且狀態為 [作用中]。
+2.  設定 *AzureVNET* 裝載或透過網路連接到 Active Directory 部署， *OriginalCollection* 加入網域。
+3.  在 **Remoteapp** 索引標籤上，建立名為的新 RemoteApp 集合 *新集合*。 (使用 **使用 VNET 建立** 選項，而不 **快速建立**。)
+3.  設定 *NewCollection* 部署中的子網路到 *AzureVNET*。
+4.  設定 *NewCollection* 使用相同的映像和網域加入資訊與您用於 *OriginalCollection*。
+5.  幾個小時後， *NewCollection* 會顯示在作用中狀態集合清單。
 
 現在，如果您不需要將任何使用者資訊從原始集合移轉到新的集合，請接著執行下列步驟：
 
@@ -49,8 +48,4 @@
 現在，大功告成！
 
 如果您有任何疑問或需要特殊協助，請將電子郵件 [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help)。
-
-
-
-
 

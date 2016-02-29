@@ -16,9 +16,7 @@
    ms.date="11/03/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
-
 # 在 SQL 資料倉儲中的 Create Table As Select (CTAS)
-
 Create table as select 或 CTAS 是最重要的可用 T-SQL 功能之一。 該作業與根據 SELECT 陳述式的輸出來建立新資料表的作業完全平行。 CTAS 是建立資料表複本最簡單快速的方法。 您可以根據意願將它視為 SELECT..INTO 的增強版本。 本文件提供 CTAS 的範例和最佳做法。
 
 ## 使用 CTAS 複製資料表
@@ -86,23 +84,22 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-> [AZURE.NOTE] Azure 資料倉儲尚未支援自動建立或自動更新統計資料。 為了獲得查詢的最佳效能，在首次載入資料，或是資料中發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。 如需統計資料的詳細說明，請參閱 [統計資料 []][] 開發一組主題中的主題。
+> [AZURE.NOTE] Azure SQL 資料倉儲會尚未支援自動建立，或自動更新統計資料。  為了獲得查詢的最佳效能，在首次載入資料，或是資料中發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  統計資料的詳細說明，請參閱主題開發群組中的 [統計資料] [] 主題。
 
 ## 使用 CTAS 解決不支援的功能
 
 CTAS 也可以用來暫時解決以下幾個不支援的功能。 這通常可以證明是雙贏的情況，因為您的程式碼不但能夠相容，而且通常可以在 SQL 資料倉儲上更快速執行。 這是完全平行化設計的結果。 可以使用 CTAS 解決的案例包括：
 
 - SELECT..INTO
-- ANSI JOINS on UPDATEs
+- ANSI JOINS on UPDATEs 
 - ANSI JOINs on DELETEs
 - MERGE 陳述式
 
-> [AZURE.NOTE] 嘗試考慮「CTAS 優先」。 如果您認為您可以使用 CTAS 解決問題，即使您正在撰寫更多資料做為結果，這通常是最佳的解決方法。
+> [AZURE.NOTE] 嘗試考慮 「 CTAS 第一次 」。 如果您認為您可以使用 CTAS 解決問題，即使您正在撰寫更多資料做為結果，這通常是最佳的解決方法。
 > 
 
 ## SELECT..INTO
-
-您可能會發現 SELECT...INTO 會出現在解決方案中的幾個地方。
+您可能會發現 SELECT...INTO 會出現在解決方案中的幾個地方。 
 
 以下是 SELECT..INTO 陳述式的範例：
 
@@ -126,7 +123,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-> [AZURE.NOTE] CTAS 目前需要指定散發資料行。 如果您並不想要嘗試變更散發資料行，若您選取與基礎資料表相同的散發資料行作為避免資料移動的策略，則 CTAS 將會執行的最快。 如果您正在建立小資料表，其效能並非重要因素，那麼您可以指定 ROUND_ROBIN，來避免必須決定散發資料行。
+> [AZURE.NOTE] CTAS 目前需要指定散發資料行。  如果您並不想要嘗試變更散發資料行，若您選取與基礎資料表相同的散發資料行作為避免資料移動的策略，則 CTAS 將會執行的最快。  如果您正在建立小資料表，其效能並非重要因素，那麼您可以指定 ROUND_ROBIN，來避免必須決定散發資料行。
 
 ## update 陳述式的 ANSI 聯結取代
 
@@ -209,7 +206,6 @@ DROP TABLE CTAS_acs
 ```
 
 ## delete 陳述式的 ANSI 聯結取代
-
 有時候刪除資料的最佳方法是使用 CTAS。 除了刪除資料以外，可以只選取您想要保留的資料。 這對於使用 ANSI 聯結語法的 DELETE 陳述式尤其適用，因為 SQL 資料倉儲不支援在 DELETE 陳述式的 FROM 子句中使用 ANSI 聯結。
 
 已轉換之 DELETE 陳述式的範例如下所示：
@@ -234,10 +230,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## 取代 merge 陳述式
+Merge 陳述式可以取代，至少有部分可使用 CTAS 取代。 您可以將 `INSERT` 和 `UPDATE` 合併成單一陳述式。 任何已刪除的記錄都必須在第二個陳述式中關閉。
 
-Merge 陳述式可以取代，至少有部分可使用 CTAS 取代。 您可以將合併 `插入` 和 `更新` 成單一陳述式。 任何已刪除的記錄都必須在第二個陳述式中關閉。
-
-舉例來說， `UPSERT` 如下所示:
+`UPSERT` 的範例如下所示：
 
 ```
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -266,6 +261,7 @@ WHERE NOT EXISTS
 
 RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
 RENAME OBJECT dbo.[DimpProduct_upsert]  TO [DimProduct];
+
 ```
 
 ## CTAS 建議：明確陳述資料類型和輸出可為 null
@@ -286,7 +282,7 @@ SELECT @d*@f
 ;
 ```
 
-您可能會自動認為您應該將此程式碼移轉到 CTAS，就會是正確的。 不過，還是會有隱藏的問題。
+您可能會自動認為您應該將此程式碼移轉到 CTAS，就會是正確的。 不過，還是會有隱藏的問題。 
 
 下列程式碼不會產生相同的結果：
 
@@ -322,7 +318,7 @@ from ctas_r
 
 這對資料移轉特別重要。 即使第二個查詢已經更精確，仍然有一個問題。 相較於來源系統，此資料有所不同，這會在移轉中產生完整性的問題。 這是「錯誤」答案其實是正確答案的少數原因之一！
 
-我們會看到這兩個結果之間有差異，追根究柢的原因是隱含的類型轉型。 在第一個範例中，資料表會定義資料行。 插入資料列時，就會發生隱含類型轉換。 在第二個範例中，沒有隱含類型轉換，因為此運算式會定義資料行的資料類型。 請注意，第二個範例中的資料行已定義為可為 Null 的資料行，而在第一個範例中還沒有定義。 在第一個範例中建立資料表時，尚未明確定義資料行可為 null。 在第二個範例中，它只留給了運算式，根據預設，這會導致 NULL 定義。
+我們會看到這兩個結果之間有差異，追根究柢的原因是隱含的類型轉型。 在第一個範例中，資料表會定義資料行。 插入資料列時，就會發生隱含類型轉換。 在第二個範例中，沒有隱含類型轉換，因為此運算式會定義資料行的資料類型。 請注意，第二個範例中的資料行已定義為可為 Null 的資料行，而在第一個範例中還沒有定義。 在第一個範例中建立資料表時，尚未明確定義資料行可為 null。 在第二個範例中，它只留給了運算式，根據預設，這會導致 NULL 定義。  
 
 若要解決這些問題，您必須在 CTAS 陳述式的 SELECT 部分中明確設定類型轉換和可為 null 屬性。 您無法在建立資料表的部分中設定這些屬性。
 
@@ -344,7 +340,7 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 - ISNULL 是最外層的函式
 - ISNULL 的第二個部分是常數，也就是 0
 
-> [AZURE.NOTE] 若要正確地設定可為 null 屬性，必須使用 ISNULL 而不是 COALESCE。 COALESCE 不是具決定性的函數，因此運算式的結果一律可為 Null。 ISNULL 則不同。 它是具決定性的。 因此當 ISNULL 函數的第二個部分是常數或常值，則結果值將會是 NOT NULL。 
+> [AZURE.NOTE] 要正確地設定可為 null 屬性是使用 ISNULL 和非 COALESCE。 COALESCE 不是具決定性的函數，因此運算式的結果一律可為 Null。 ISNULL 則不同。 它是具決定性的。 因此當 ISNULL 函數的第二個部分是常數或常值，則結果值將會是 NOT NULL。 
 
 本秘訣不只適用於確保計算的完整性。 它對資料表分割切換也很重要。 假設您根據事實定義此資料表：
 
@@ -420,22 +416,20 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 因此，您可以查看類型一致性，且維護 CTAS 上的可為 null 屬性是很好的工程最佳作法。 它有助於維護計算的完整性，並且也可確保資料分割切換的可能性。
 
-如需使用的詳細資訊請參閱 MSDN [CTAS []][]。 它是 Azure SQL 資料倉儲中最重要的陳述式之一。 請確定您已徹底了解。
+請參閱 msdn 上使用 [CTAS] [] 的詳細資訊。 它是 Azure SQL 資料倉儲中最重要的陳述式之一。 請確定您已徹底了解。
 
 ## 後續步驟
+如需更多開發秘訣，請參閱 [開發概觀] []。
 
-如需更多開發秘訣，請參閱 [開發概觀 []][]。
+<!--Image references-->
+[1]: media/sql-data-warehouse-develop-ctas/ctas-results.png
 
+<!--Article references-->
+[development overview]: sql-data-warehouse-overview-develop.md
+[Statistics]: ./sql-data-warehouse-develop-statistics.md
 
+<!--MSDN references-->
+[CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
 
-
-
-
-
-
-
-[1]: media/sql-data-warehouse-develop-ctas/ctas-results.png 
-[development overview]: sql-data-warehouse-overview-develop.md 
-[statistics]: ./sql-data-warehouse-develop-statistics.md 
-[ctas]: https://msdn.microsoft.com/library/mt204041.aspx 
+<!--Other Web references-->
 

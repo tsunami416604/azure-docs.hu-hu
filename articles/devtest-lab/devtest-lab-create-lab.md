@@ -8,13 +8,13 @@
     editor=""/>
 
 <tags
-    ms.service="devtest 實驗室 」
-    ms.workload="na 」
+    ms.service="devtest-lab"
+    ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="get-啟動-發行項 」
-    ms.date="11/01/2015 」
-    ms.author="tarcher"/ >
+    ms.topic="get-started-article"
+    ms.date="11/01/2015"
+    ms.author="tarcher"/>
 
 # 建立 Azure DevTest 實驗室
 
@@ -30,20 +30,20 @@
 
 1. 登入 [Azure 預覽入口網站](http://portal.azure.com)。
 
-1. 點選 [瀏覽]****。
+1. 點選 **瀏覽**。
 
-1. 從清單點選 [DevTest 實驗室]****。
+1. 點選 **DevTest 實驗室** 從清單中。
 
-1. 在 [DevTest 實驗室]**** 刀鋒視窗上，點選 [加入]****。
+1. 在 **DevTest 實驗室** 刀鋒視窗中，點選 **新增**。
 
     ![加入 DevTest 實驗室](./media/devtest-lab-create-lab/add-lab-button.png)
 
-1. 在 [建立 DevTest 實驗室]**** 刀鋒視窗上：
+1. 在 **建立 DevTest 實驗室** 刀鋒視窗中:
 
-    1. 輸入新實驗室的**實驗室名稱**。
-    1. 選取要與實驗室關聯的**訂用帳戶**。
-    1. 選取用來儲存實驗室的 [位置]****。
-    1. 點選 [建立]****。
+    1. 輸入 **實驗室名稱** 新實驗室。
+    1. 選取 **訂閱** 實驗室與相關聯。
+    1. 選取 **位置** 用來儲存實驗室。
+    1. 點選 **建立**。
 
     ![建立 DevTest 實驗室刀鋒視窗](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
@@ -51,17 +51,13 @@
 
 建立您的實驗室之後，以下是要考慮的一些後續步驟：
 
-- [DevTest 實驗室的存取安全](devtest-lab-add-devtest-user.md)。
+- [安全地存取 DevTest 實驗室](devtest-lab-add-devtest-user.md)。
 
-- [Set lab policies](devtest-lab-set-lab-policy.md).
+- [設定實驗室原則](devtest-lab-set-lab-policy.md)。
 
 - [建立實驗室範本](devtest-lab-create-template.md)。
 
 - [建立自訂的成品，您的 Vm](devtest-lab-artifact-author.md)。
 
-- [成品的 VM 加入 Azure DevTest 實驗室](devtest-lab-add-vm-with-artifacts.md)。
-
-
-
-
+- [將成品 VM 加入 Azure DevTest 實驗室](devtest-lab-add-vm-with-artifacts.md)。
 

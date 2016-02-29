@@ -16,12 +16,11 @@
     ms.date="11/23/2015"
     ms.author="piyushjo"/>
 
-
-# 對媒體應用程式實作 Mobile Engagement
+#對媒體應用程式實作 Mobile Engagement
 
 ## 概觀
 
-John 是一家大型媒體公司的行動裝置專案經理。 他最近推出了一款新的應用程式，並獲得很高的下載次數。 他已達成預定的下載次數目標，但從每位使用者身上所獲得的投資回報 (ROI) 卻未達要求。
+John 是一家大型媒體公司的行動裝置專案經理。 他最近推出了一款新的應用程式，並獲得很高的下載次數。 他已達成預定的下載次數目標，但從每位使用者身上所獲得的投資回報 (ROI) 卻未達要求。 
 
 John 已找到 ROI 太低的原因。 使用者經常在短短 2 週後就停止使用他的應用程式，而且大多不會再回頭使用。 他想要提升應用程式的保留期。
 
@@ -29,7 +28,7 @@ John 已找到 ROI 太低的原因。 使用者經常在短短 2 週後就停止
 
 John 具有最近讀取 [Azure Mobile Engagement-快速入門指南與最佳作法](mobile-engagement-getting-started-best-practices.md) ，決定實作在指南中的建議。
 
-## 目標和 KPI
+##目標和 KPI
 
 John 所推出的應用程式的重要關係人聚在一起。 當使用者使用他的媒體時，其中的廣告便會為他們帶來生意。 所以只要增加每位使用者使用的內容，John 就能增加營收。 所有人都同意一個主要目標，那就是將廣告所帶來的銷售量增加 25%。 他們建立起業務關鍵效能指標 (KPI)，以便測量和推動這個目標。
 
@@ -37,7 +36,7 @@ John 所推出的應用程式的重要關係人聚在一起。 當使用者使�
 * (每位使用者/每個工作階段/每週/每月...) 瀏覽過多少文章頁面
 * 最愛的類別有哪些
 
-John 根據他與重要關係人的會面結果，定義了他的業務 KPI。 他會遵循第 1 部分 [Azure Mobile Engagement-快速入門指南與最佳作法](mobile-engagement-getting-started-best-practices.md)。
+John 根據他與重要關係人的會面結果，定義了他的業務 KPI。 他會遵循第 1 部分 [Azure Mobile Engagement-快速入門指南與最佳作法](mobile-engagement-getting-started-best-practices.md)。 
 
 接下來，他建立下列 Engagement KPI 來確定有達成目標：
 
@@ -74,33 +73,33 @@ John 根據他與重要關係人的會面結果，定義了他的業務 KPI。 �
 
 根據白皮書的第二部分，John 會使用目標區段來定義他必須收集的資料，並與 IT 小組共同撰寫標記計劃來實作解決方案。 經過一星期的實作和使用者接受度測試後，John 終於可以啟動他的計劃。
 
-## 計劃結果
+##計劃結果
 
 四個月之後，John 檢閱計劃的成效。 歡迎計劃和每週計劃有達成他的目標。 只有一個工作階段的使用者數目減少、受到使用的應用程式功能變多，而且每週的連線數目翻倍。
 
-**無活動計劃**協助 John 了解了使用者的喜好傾向。 看來有 15% 的無活動使用者回來使用應用程式。 不過，這些人大多不會持續使用超過 1 個月。 John 預計在透過其他通知並擴大其內容的選擇性後，應該可以讓這個順序變成最好的情況。
+ **非作用中的程式** 協助了解使用者喜好傾向有關 John。 看來有 15% 的無活動使用者回來使用應用程式。 不過，這些人大多不會持續使用超過 1 個月。 John 預計在透過其他通知並擴大其內容的選擇性後，應該可以讓這個順序變成最好的情況。
 
-**探索計劃**的效果不好。 交叉銷售量是增加了，但不足以達到其目標。 John 發現他沒有足夠資料能夠鎖定相關目標並提出適當內容。 於是他停止這個計劃，並將重心放在使用 Azure Mobile Engagement 傳送「評論推播通知」。 他手下的記者已經有 CMS 解決方案可用來傳送推播通知，所以不想做改變。
+ **探索程式** 也無法運作。 交叉銷售量是增加了，但不足以達到其目標。 John 發現他沒有足夠資料能夠鎖定相關目標並提出適當內容。 於是他停止這個計劃，並將重心放在使用 Azure Mobile Engagement 傳送「評論推播通知」。 他手下的記者已經有 CMS 解決方案可用來傳送推播通知，所以不想做改變。
 
 John 決定使用觸達 API，這種 HTTP REST API 可讓他們管理觸達活動，但又不需要使用 AZME Web 介面。 透過這種方式，John 就可以收集所需資料，並讓他的撰稿人能夠繼續使用 CMS 解決方案。
 
 為了確保該功能正常運作，John 要求 IT 小組注意下列事項：
 
-1. **作業系統**：他們各有自己的推播通知管理規則，因此 John 決定列出所有情形，並看看 API 是否能夠處理得來。
+1. **作業系統** : 它們都有自己的規則，以管理推播通知，因此 John 決定要列出所有的案例，並檢查 Api 處理它。
 例如：Android 推播系統允許大型圖片，但 iOS 則不行。
 
-2. **時間範圍**：John 所想要的 API 要能夠設定時間範圍，並設定活動的結束時間。 他不希望使用者因為收到接二連三的通知而感覺受到打擾。
+2. **時間範圍**: John 希望 API，以設定時間範圍，並設定活動的結束。 他不希望使用者因為收到接二連三的通知而感覺受到打擾。
 
-3. **類別**：行銷小組準備了每種警示類型的範本。 John 要求 IT 小組在 API 內設定類別。
+3. **類別**: 行銷小組準備每種警示類型的範本。 John 要求 IT 小組在 API 內設定類別。
 
 在做過一些測試之後，John 感到非常滿意。 多虧有這個 API，記者們仍然可以使用他們的 CMS 傳送推播通知，而 Azure Mobile Engagement 會幫他們收集所有使用行為資料。
 
 在經過最初四個月後，所得到的結果顯示整體成效良好，這讓 John 和他的董事會成員深具信心，每個使用者的 ROI 增加 15%，行動銷售佔總銷售量 17.5%，僅僅四個月就增加了 7.5%。
 
+<!--Image references-->
+[1]: ./media/mobile-engagement-media-scenario/engagement-strategy.png
+[2]: ./media/mobile-engagement-media-scenario/push-scenarios.png
 
-
-
-[1]: ./media/mobile-engagement-media-scenario/engagement-strategy.png 
-[2]: ./media/mobile-engagement-media-scenario/push-scenarios.png 
-[media playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks 
+<!--Link references-->
+[Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 

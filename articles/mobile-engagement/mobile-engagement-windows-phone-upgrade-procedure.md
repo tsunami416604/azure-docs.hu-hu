@@ -16,16 +16,15 @@
     ms.date="08/10/2015" 
     ms.author="piyushjo" />
 
-
-# Windows Phone Silverlight SDK 升級程序
+#Windows Phone Silverlight SDK 升級程序
 
 如果您已經整合我們的舊版 SDK 到您的應用程式，在升級 SDK 時您必須考慮以下幾點。
 
 如果您有錯過幾個版本的 SDK，您必須遵循幾個步驟。 例如，如果您要從 0.10.1 移轉到 0.11.0 您必須先遵循「從 0.9.0 到 0.10.1」的程序，然後「從 0.10.1 到 0.11.0」的程序。
 
-## 從 1.1.1 到 2.0.0
+##從 1.1.1 到 2.0.0
 
-以下說明如何將 SDK 整合從 Capptain SAS 提供的 Capptain 服務，移轉到由 Azure Mobile Engagement 提供的應用程式內。
+以下說明如何將 SDK 整合從 Capptain SAS 提供的 Capptain 服務，移轉到由 Azure Mobile Engagement 提供的應用程式內。 
 
 > [Azure.IMPORTANT] Capptain 和 Mobile Engagement 是不同的服務，而以下程序只用於移轉用戶端應用程式。 移轉應用程式中的 SDK「不會」將您的資料從 Capptain 伺服器移轉到 Mobile Engagement 伺服器
 
@@ -33,11 +32,11 @@
 
 ### Nuget 封裝
 
-以 **MicrosoftAzure.MobileEngagement** Nuget 封裝取代 **Capptain.WindowsPhone**。
+取代 **Microsoftazure.mobileengagement** 由 **MicrosoftAzure.MobileEngagement** Nuget 封裝。
 
 ### 套用 Mobile Engagement
 
-SDK 會使用這個詞彙 `Engagement`。 您需要更新您的專案，以符合此變更。
+SDK 使用 `Engagement` 一詞。 您需要更新您的專案，以符合此變更。
 
 您需要解除安裝目前的 Capptain nuget 封裝。 請考慮您在 [Capptain Resources] 資料夾中所有的變更將會移除。 如果您想要保留這些檔案，請將它們複製一份。
 
@@ -52,18 +51,18 @@ SDK 會使用這個詞彙 `Engagement`。 您需要更新您的專案，以符�
 1. 所有的 Capptain 命名空間都必須更新。
 
     移轉前：
-
+    
         using Capptain.Agent;
         using Capptain.Reach;
-
+    
     移轉後：
-
+    
         using Microsoft.Azure.Engagement;
 
 2. 所有包含 "Capptain" 的 Capptain 類別應該要包含 "Engagement"。
 
     移轉前：
-
+    
         public sealed partial class MainPage : CapptainPage
         {
           protected override string GetCapptainPageName()
@@ -72,9 +71,9 @@ SDK 會使用這個詞彙 `Engagement`。 您需要更新您的專案，以符�
           }
           ...
         }
-
+    
     移轉後：
-
+    
         public sealed partial class MainPage : EngagementPage
         {
           protected override string GetEngagementPageName()
@@ -87,15 +86,15 @@ SDK 會使用這個詞彙 `Engagement`。 您需要更新您的專案，以符�
 3. 對於 xaml 檔案，Capptain 命名空間和屬性也會變更。
 
     移轉前：
-
+    
         <capptain:CapptainPage
         ...
         xmlns:capptain="clr-namespace:Capptain.Agent;assembly=Capptain.Agent.WP"
         ...
         </capptain:CapptainPage>
-
+    
     移轉後：
-
+    
         <engagement:EngagementPage
         ...
         xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
@@ -108,18 +107,18 @@ SDK 會使用這個詞彙 `Engagement`。 您需要更新您的專案，以符�
 
 Engagement 使用連接字串。 您不需要為 Mobile Engagement 指定應用程式 ID 和 SDK 金鑰，您只需要指定連接字串。 您可以在您的 EngagementConfiguration 檔案中設定它。
 
-Engagement 組態可以設定您 `Resources\EngagementConfiguration.xml` 在專案檔案。
+您可以在專案的 `Resources\EngagementConfiguration.xml` 檔案中設定 Engagement 組態。
 
 編輯此檔案來指定：
 
--   您的應用程式之間的連接字串標記 `< connectionString >` 和 `< \connectionString >`。
+-   應用程式在 `<connectionString>` 和 `<\connectionString>` 標記之間的連接字串。
 
 若想要改為在執行階段指定它，您可以在 Engagement 代理程式初始化之前呼叫下列方法：
 
         /* Engagement configuration. */
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
         engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
-    
+        
         /* Initialize Engagement angent with above configuration. */
         EngagementAgent.Instance.Init(engagementConfiguration);
 
@@ -127,7 +126,7 @@ Engagement 組態可以設定您 `Resources\EngagementConfiguration.xml` 在專�
 
 ### 項目名稱變更
 
-所有名為 *capptain* 的項目已命名為 *engagement*。 同樣地，*Capptain* 也已命名為 *Engagement*。
+所有項目，名為 *capptain* 已命名為 *engagement*。 同樣地， *Capptain* 至 *Engagement*。
 
 常用 Capptain 項目的範例：
 
@@ -141,9 +140,5 @@ Engagement 組態可以設定您 `Resources\EngagementConfiguration.xml` 在專�
 
 
 
-
-
-
-
-
+ 
 

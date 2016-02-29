@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="使用 C# 建立和管理 Azure SQL Database" 
+   pageTitle="建立和管理 Azure SQL Database 與 C#" 
    description="本文將說明如何使用 Azure SQL Database Library for .NET 以 C# 建立和管理 Azure SQL Database。" 
    services="sql-database" 
    documentationCenter="" 
@@ -16,30 +16,29 @@
    ms.date="12/01/2015"
    ms.author="sstein"/>
 
-
 # 使用 C&#x23; 建立和管理 SQL Database
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-elastic-pool-portal.md)
+- [Azure 入口網站](sql-database-elastic-pool-portal.md)
 - [C#](sql-database-client-library.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
 
-
 ## 概觀
 
-這篇文章提供使用 C# 執行許多 Azure SQL Database 管理工作的命令使用 [Azure SQL Database Library for.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)
+本文提供命令來執行許多 Azure SQL Database 管理工作，使用 C# [Azure SQL Database Library for.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)
 
 為了清楚起見，將個別程式碼片段分別列出，範例主控台應用程式會將所有命令整合在本文底端的區段中。
 
 Azure SQL Database Library for.NET 提供 [Azure 資源管理員](resource-group-overview.md)-api，它會包裝 [資源管理員為基礎 SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx)。 此用戶端程式庫遵循資源管理員式用戶端程式庫的常見模式。 資源管理員需要資源群組，並且向 [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (AAD)。
 
 <br>
-> [AZURE.NOTE] SQL Database Library for .NET 目前為預覽狀態。
+
+> [AZURE.NOTE] SQL Database Library for.NET 目前為預覽狀態。
 
 <br>
 
-如果您沒有 Azure 訂用帳戶，可以先按一下此頁面頂端的 [免費試用]****，然後再回來這篇文章。 以及一份免費的 Visual Studio，請參閱 [Visual Studio 下載](https://www.visualstudio.com/downloads/download-visual-studio-vs) 頁面。
+如果您沒有 Azure 訂用帳戶，只需按一下 **免費試用版** 頂端的這個頁面，然後再回來這篇文章。 以及一份免費的 Visual Studio，請參閱 [Visual Studio 下載](https://www.visualstudio.com/downloads/download-visual-studio-vs) 頁面。
 
 ## 安裝必要的程式庫
 
@@ -49,54 +48,56 @@ Azure SQL Database Library for.NET 提供 [Azure 資源管理員](resource-group
     PM> Install-Package Microsoft.Azure.Management.Resources –Pre
     PM> Install-Package Microsoft.Azure.Common.Authentication –Pre
 
+
 ## 使用 Azure Active Directory 設定驗證
 
 您必須先啟用您的應用程式以存取 REST API，方法是設定必要的驗證。
 
-[Azure 資源管理員 REST Api](https://msdn.microsoft.com/library/azure/dn948464.aspx) 使用 Azure Active Directory 進行驗證，而不是舊版的 Azure 服務管理 REST Api 所使用的憑證。
+ [Azure 資源管理員 REST Api](https://msdn.microsoft.com/library/azure/dn948464.aspx) 使用 Azure Active Directory 進行驗證，而不是舊版的 Azure 服務管理 REST Api 所使用的憑證。 
 
-若要根據目前的使用者驗證您的用戶端應用程式，您必須先在與訂用帳戶 (已在其下建立 Azure 資源) 相關聯的 AAD 網域中註冊您的應用程式。 如果您的 Azure 訂用帳戶是以 Microsoft 帳戶而不是工作或學校帳戶建立的，您便已經有預設 AAD 網域。 註冊應用程式可以透過程式 [傳統入口網站](https://manage.windowsazure.com/)。
+若要根據目前的使用者驗證您的用戶端應用程式，您必須先在與訂用帳戶 (已在其下建立 Azure 資源) 相關聯的 AAD 網域中註冊您的應用程式。 如果您的 Azure 訂用帳戶是以 Microsoft 帳戶而不是工作或學校帳戶建立的，您便已經有預設 AAD 網域。 註冊應用程式可以透過程式 [傳統入口網站](https://manage.windowsazure.com/)。 
 
 若要建立新的應用程式並且在正確的 Active Directory 中註冊，請執行下列動作：
 
-1. 捲動左側的功能表以找出 **Active Directory** 服務並且開啟。
+1. 捲動尋找左側功能表 **Active Directory** 服務，並將它開啟。
 
-    ![AAD][1]
+    ![AAD][] 1
 
-2. 選取要驗證您的應用程式的目錄並按一下該目錄的**名稱**。
+2. 選取要驗證您的應用程式，然後按一下它的目錄的 **名稱**。
 
-    ![目錄][4]
+    ![目錄][] 4
 
-3. 在目錄頁面上，按一下 [應用程式]****。
+3. 在 [目錄] 頁面中，按一下 [ **應用程式**。
 
-    ![應用程式][5]
+    ![應用程式][] 5
 
-4. 按一下 [新增]**** 以新增新的應用程式。
+4. 按一下 [ **新增** 建立新的應用程式。
 
-    ![新增應用程式][6]
+    ![新增應用程式][] 6
 
-5. 選取 [新增組織正在開發的應用程式]****。
+5. 選取 **加入我的組織正在開發的應用程式**。
 
-5. 提供應用程式的 [名稱]****，然後選取 [原生用戶端應用程式]****。
+5. 提供 **名稱** 應用程式，並選取 **原生用戶端應用程式**。
 
-    ![新增應用程式][7]
+    ![新增應用程式][] 7
 
-6. 提供**重新導向 URI**。 它不需要是實際的端點，只要是有效的 URI 即可。
+6. 提供 **重新導向 URI**。 它不需要是實際的端點，只要是有效的 URI 即可。
 
-    ![新增應用程式][8]
+    ![新增應用程式][] 8
 
-7. 完成建立應用程式，按一下 [設定]****，然後複製 [用戶端識別碼]**** (您在程式碼中需要用戶端識別碼)。
+7. 完成建立應用程式中，按一下 **設定**, ，並複製 **用戶端識別碼** (您將程式碼中需要用戶端識別碼)。
 
-    ![取得用戶端識別碼][9]
+    ![取得用戶端識別碼][] 9
 
-1. 在頁面底部按一下 [新增應用程式]****。
-1. 選取 [Microsoft 應用程式]****。
-1. 選取 [Azure 服務管理 API]****，然後完成精靈。
-2. 選取 API 之後，您現在必須授與必要的存取權以存取此 API，方法是選取 [**存取 Azure 服務管理 (預覽)**]。
 
-    ![權限][2]
+1. 在頁面底部按一下 **新增應用程式**。
+1. 選取 **Microsoft 應用程式**。
+1. 選取 **Azure 服務管理 API**, ，然後完成精靈。
+2. 選取 API 之後，您現在必須授與存取這個 API，藉由選取所需的特定權限 **存取 Azure 服務管理 (預覽)**。
 
-2. 按一下 [儲存]****。
+    ![權限][] 2
+
+2. 按一下 [ **儲存**。
 
 
 
@@ -107,18 +108,18 @@ Azure SQL Database Library for.NET 提供 [Azure 資源管理員](resource-group
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 將滑鼠停留在右上角的名稱，並記下出現在快顯視窗的網域。
 
-    ![識別網域名稱][3]
+    ![識別網域名稱][] 3
 
 
 
 
 
-**其他 AAD 資源**
+**其他 AAD 資源**  
 
 使用 Azure Active Directory 驗證可以找到中的其他資訊 [此有用的部落格文章](http://www.cloudidentity.com/blog/2013/09/12/active-directory-authentication-library-adal-v1-for-net-general-availability/)。
 
 
-### 擷取目前使用者的存取權杖
+### 擷取目前使用者的存取權杖 
 
 用戶端應用程式必須擷取目前使用者的應用程式存取權杖。 使用者第一次執行程式碼時，系統會提示使用者輸入其使用者認證，產生的權杖會在本機快取。 後續執行會從快取擷取權杖，並且在權杖過期時僅提示使用者登入。
 
@@ -132,21 +133,22 @@ Azure SQL Database Library for.NET 提供 [Azure 資源管理員](resource-group
         AuthenticationContext authContext = new AuthenticationContext
             ("https://login.windows.net/" /* AAD URI */ 
                 + "domain.onmicrosoft.com" /* Tenant ID or AAD domain */);
-    
+
         AuthenticationResult token = authContext.AcquireToken
             ("https://management.azure.com/"/* the Azure Resource Management endpoint */, 
                 "aa00a0a0-a0a0-0000-0a00-a0a00000a0aa" /* application client ID from AAD*/, 
         new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */, 
         PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
-    
+
         return token;
     }
 
-若要建立不需要使用者互動的自動化指令碼，您可以根據服務主體而非使用者來進行驗證。 這種方法需要已建立及提交認證物件。
+若要建立不需要使用者互動的自動化指令碼，您可以根據服務主體而非使用者來進行驗證。 這種方法需要已建立及提交認證物件。 
 
 
 
-> [AZURE.NOTE] 這篇文章中的範例使用每個 API 要求的同步表單，並且封鎖直到基礎服務上的 REST 呼叫完成。 有可用的非同步方法。
+
+> [AZURE.NOTE] 這篇文章中的範例使用每個 API 要求的同步表單，並封鎖，直到呼叫基礎服務上的其餘部分完成。 有可用的非同步方法。
 
 
 
@@ -167,14 +169,16 @@ Azure SQL Database Library for.NET 提供 [Azure 資源管理員](resource-group
     //Create a resource group
     var resourceGroupResult = resourceClient.ResourceGroups.CreateOrUpdate("resourcegroup-name", resourceGroupParameters);
 
-## 建立伺服器
+
+
+## 建立伺服器 
 
 SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQL Server 中必須是唯一的，因此如果伺服器名稱已被採用，您會收到錯誤。 另外值得注意的是，此命令可能需要數分鐘才能完成。
 
 
     // Create a SQL Database management client
     SqlManagementClient sqlClient = new SqlManagementClient(new TokenCloudCredentials("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* Subscription id*/, token.AccessToken));
-    
+
     // Create a server
     ServerCreateOrUpdateParameters serverParameters = new ServerCreateOrUpdateParameters()
     {
@@ -186,14 +190,17 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             Version = "12.0"
         }
     };
-    
+
     var serverResult = sqlClient.Servers.CreateOrUpdate("resourcegroup-name", "server-name", serverParameters);
+
+
+
 
 ## 設定伺服器防火牆規則以允許存取伺服器
 
-根據預設，無法從任何位置連接到伺服器。 為了使用 TDS 伺服器連接，並將 T-SQL 提交至伺服器，或任何資料庫的伺服器上， [防火牆規則](https://msdn.microsoft.com/library/azure/ee621782.aspx) 必須定義，可讓您存取用戶端 IP 位址。
+根據預設，無法從任何位置連接到伺服器。 為了連接到使用 TDS 伺服器，並將 T-SQL 提交至伺服器，或在伺服器上，任何資料庫 [防火牆規則](https://msdn.microsoft.com/library/azure/ee621782.aspx) 必須定義，可讓您存取用戶端 IP 位址。
 
-下列範例會建立規則，從任何 IP 位址開啟伺服器的存取權。 建議您建立適當的 SQL 登入和密碼以保護您的資料庫，不要依賴防火牆規則做為防禦入侵的主要防衛措施。
+下列範例會建立規則，從任何 IP 位址開啟伺服器的存取權。 建議您建立適當的 SQL 登入和密碼以保護您的資料庫，不要依賴防火牆規則做為防禦入侵的主要防衛措施。 
 
 
     // Create a firewall rule on the server to allow TDS connection 
@@ -205,21 +212,24 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             EndIpAddress = "255.255.255.255"
         }
     };
-    
+
     var firewallResult = sqlClient.FirewallRules.CreateOrUpdate("resourcegroup-name", "server-name", "FirewallRule1", firewallParameters);
 
-若要允許其他 Azure 服務存取伺服器，則新增防火牆規則並且將 tartIpAddress 和 EndIpAddress 都設為 0.0.0.0。 請注意，這可讓來自*任何* Azure 訂用帳戶的 Azure 流量存取伺服器。
+
+
+
+若要允許其他 Azure 服務存取伺服器，則新增防火牆規則並且將 tartIpAddress 和 EndIpAddress 都設為 0.0.0.0。 請注意，這可讓 Azure 流量從 *任何* Azure 訂閱，才能存取伺服器。
 
 
 ## 建立資料庫
 
-如果伺服器上沒有相同名稱的資料庫存在，則下列命令會建立新的基本資料庫；如果具有相同名稱的資料庫已存在，則會更新。
+如果伺服器上沒有相同名稱的資料庫存在，則下列命令會建立新的基本資料庫；如果具有相同名稱的資料庫已存在，則會更新。 
 
         // Create a database
-    
+
         // Retrieve the server on which the database will be created
         Server currentServer = sqlClient.Servers.Get("resourcegroup-name", "server-name").Server;
-    
+ 
         // Create a database: configure create or update parameters and properties explicitly
         DatabaseCreateOrUpdateParameters newDatabaseParameters = new DatabaseCreateOrUpdateParameters()
         {
@@ -232,19 +242,21 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                 Collation = "SQL_Latin1_General_CP1_CI_AS"
             }
         };
-    
+
         var dbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database1", newDatabaseParameters);
 
-## 更新資料庫
 
-若要更新資料庫 (例如變更服務層和效能層級)，像上述的建立或更新資料庫一樣，呼叫**Databases.CreateOrUpdate** 方法。 將 **Edition** 和 **RequestedServiceObjectiveName** 屬性設為所需的服務層和效能層級。
- 請注意，將版本變更為 **Premium** 或從該版本變更時，更新可能需要一些時間，視您的資料庫大小而定。
+
+## 更新資料庫 
+
+若要更新資料庫，在您呼叫 (例如，變更服務層和效能層級) **Databases.CreateOrUpdate** 一樣建立或更新資料庫上述的方法。 設定 **Edition** 和 **RequestedServiceObjectiveName** 所需的服務層和效能層級的屬性。
+ 請注意，當變更版本，或從 **高階**, ，更新可能需要一些時間，視您的資料庫大小而定。
 
 以下會將 SQL Database 更新至標準 (S0) 層級：
 
     // Retrieve current database properties 
     var currentDatabase = sqlClient.Databases.Get("resourecegroup-name", "server-name", "Database1").Database;
-    
+
     // Configure create or update parameters with existing property values, override those to be changed.
     DatabaseCreateOrUpdateParameters updateDatabaseParameters = new DatabaseCreateOrUpdateParameters()
     {
@@ -257,9 +269,10 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             Collation = currentDatabase.Properties.Collation
         }
      };
-    
+
     // Update the database
     dbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database1", updateDatabaseParameters);
+
 
 ## 列出伺服器上的所有資料庫
 
@@ -272,6 +285,8 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
     {
         Console.WriteLine("  Database {0}, Service Objective {1}", db.Name, db.Properties.ServiceObjective);
     }
+
+
 
 ## 建立彈性資料庫集區
 
@@ -291,15 +306,16 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             DatabaseDtuMax = 100
          }
     };
-    
+
     // Create the pool
     var newPoolResponse = sqlClient.ElasticPools.CreateOrUpdate("resourcegroup-name", "server-name", "ElasticPool1", newPoolParameters);
+
 
 ## 更新彈性資料庫集區
 
     // Retrieve existing pool properties
     var currentPool = sqlClient.ElasticPools.Get("resourcegroup-name", "server-name", "ElasticPool1").ElasticPool;
-    
+
     // Configure create or update parameters with existing property values, override those to be changed.
     ElasticPoolCreateOrUpdateParameters updatePoolParameters = new ElasticPoolCreateOrUpdateParameters()
     {
@@ -313,16 +329,18 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             StorageMB = currentPool.Properties.StorageMB,  /* For a Standard pool there is 1 GB of storage per eDTU. */
         }
     };
-    
+
     newPoolResponse = sqlClient.ElasticPools.CreateOrUpdate("resourcegroup-name", "server-name", "ElasticPool1", newPoolParameters);
+
+
 
 ## 將現有資料庫移入彈性資料庫集區
 
-* 之後建立集區中，您也可以將現有的資料庫移入和移出集區，以使用 TRANSACT-SQL。 如需詳細資訊，請參閱 [彈性資料庫集區參考 TRANSACT-SQL](sql-database-elastic-pool-reference.md#Transact-SQL)。 *
+*建立集區後您也可以使用 TRANSACT-SQL 將現有的資料庫移入和移出集區。 如需詳細資訊，請參閱 [彈性資料庫集區參考 TRANSACT-SQL](sql-database-elastic-pool-reference.md#Transact-SQL)。*
 
 若要將現有資料庫移入集區：
 
-
+    
     // Update database service objective to add the database to a pool
     
     // Retrieve current database properties 
@@ -344,14 +362,17 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
     
     // Update the database
     var dbUpdateResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database1", updatePooledDbParameters);
+    
+    
+
 
 ## 在彈性資料庫集區中建立新的資料庫
 
-* 建立集區後您也可以使用 TRANSACT-SQL 建立新的彈性資料庫集區中。 如需詳細資訊，請參閱 [彈性資料庫集區參考 TRANSACT-SQL](sql-database-elastic-pool-reference.md#Transact-SQL)。 *
+*建立集區後您也可以使用 TRANSACT-SQL 建立新的彈性資料庫集區中。 如需詳細資訊，請參閱 [彈性資料庫集區參考 TRANSACT-SQL](sql-database-elastic-pool-reference.md#Transact-SQL)。*
 
 若要直接在集區中建立新的資料庫：
 
-
+    
     // Create a new database in the pool
     
     // Create a database: configure create or update parameters and properties explicitly
@@ -369,6 +390,8 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
     };
     
     var poolDbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database2", newPooledDatabaseParameters);
+
+
 
 ## 列出彈性資料庫集區中的所有資料庫
 
@@ -388,6 +411,7 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
 
     var serverOperationResponse = sqlClient.Servers.Delete("resourcegroup-name", "server-name");
 
+
 ## 刪除資源群組
 
 若要刪除資源群組：
@@ -395,7 +419,10 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
     // Delete the resource group
     var resourceOperationResponse = resourceClient.ResourceGroups.Delete("resourcegroup-name");
 
+
+
 ## 範例主控台應用程式
+
 
     using Microsoft.Azure;
     using Microsoft.Azure.Insights;
@@ -407,7 +434,7 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System;
     using System.Security;
-    
+
     namespace AzureSqlDatabaseRestApiExamples
     {
     class Program
@@ -421,27 +448,27 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             AuthenticationContext authContext = new AuthenticationContext
                 ("https://login.windows.net/" /* AAD URI */ 
                 + "domain.onmicrosoft.com" /* Tenant ID or AAD domain */);
-    
+
             AuthenticationResult token = authContext.AcquireToken
                 ("https://management.azure.com/"/* the Azure Resource Management endpoint */, 
                 "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* application client ID from AAD*/, 
                 new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */, 
                 PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
-    
+
             return token;
         }
-    
+
         private static AuthenticationResult GetAccessTokenUsingUserCredentials(UserCredential userCredential)
         {
             AuthenticationContext authContext = new AuthenticationContext
                 ("https://login.windows.net/" /* AAD URI */
                 + "YOU.onmicrosoft.com" /* Tenant ID or AAD domain */);
-    
+
             AuthenticationResult token = authContext.AcquireToken(
                 "https://management.azure.com/"/* the Azure Resource Management endpoint */,
                 "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* application client ID from AAD*/,
                 userCredential);
-    
+
             return token;
         }
         private static SecureString convertToSecureString(string secret)
@@ -453,35 +480,35 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             }
             return secureStr;
         }
-    
+
         static void Main(string[] args)
         {
             var token = GetAccessToken();
-    
+            
             // Who am I?
             Console.WriteLine("Identity is {0} {1}", token.UserInfo.GivenName, token.UserInfo.FamilyName);
             Console.WriteLine("Token expires on {0}", token.ExpiresOn);
             Console.WriteLine("");
-    
+
             // Create a resource management client 
             ResourceManagementClient resourceClient = new ResourceManagementClient(new TokenCloudCredentials("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /*subscription id*/, token.AccessToken));
-    
+
             // Resource group parameters
             ResourceGroup resourceGroupParameters = new ResourceGroup()
             {
                 Location = "South Central US"
             };
-    
+
             //Create a resource group
             var resourceGroupResult = resourceClient.ResourceGroups.CreateOrUpdate("resourcegroup-name", resourceGroupParameters);
-    
+
             Console.WriteLine("Resource group {0} create or update completed with status code {1} ", resourceGroupResult.ResourceGroup.Name, resourceGroupResult.StatusCode);
-    
+
             //create a SQL Database management client
             TokenCloudCredentials tokenCredentials = new TokenCloudCredentials("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* Subscription id*/, token.AccessToken);
-    
+
             SqlManagementClient sqlClient = new SqlManagementClient(tokenCredentials);
-    
+
             // Create a server
             ServerCreateOrUpdateParameters serverParameters = new ServerCreateOrUpdateParameters()
             {
@@ -493,16 +520,16 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     Version = "12.0"
                 }
             };
-    
+
             var serverResult = sqlClient.Servers.CreateOrUpdate("resourcegroup-name", "server-name", serverParameters);
-    
+
             var serverGetResult = sqlClient.Servers.Get("resourcegroup-name", "server-name");
-    
-    
+
+
             Console.WriteLine("Server {0} create or update completed with status code {1}", serverResult.Server.Name, serverResult.StatusCode);
-    
+
             // Create a firewall rule on the server to allow TDS connection 
-    
+
             FirewallRuleCreateOrUpdateParameters firewallParameters = new FirewallRuleCreateOrUpdateParameters()
             {
                 Properties = new FirewallRuleCreateOrUpdateProperties()
@@ -511,16 +538,16 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     EndIpAddress = "255.255.255.255"
                 }
             };
-    
+
             var firewallResult = sqlClient.FirewallRules.CreateOrUpdate("resourcegroup-name", "server-name", "FirewallRule1", firewallParameters);
-    
+
             Console.WriteLine("Firewall rule {0} create or update completed with status code {1}", firewallResult.FirewallRule.Name, firewallResult.StatusCode);
-    
+
             // Create a database
-    
+
             // Retrieve the server on which the database will be created
             Server currentServer = sqlClient.Servers.Get("resourcegroup-name", "server-name").Server;
-    
+
             // Create a database: configure create or update parameters and properties explicitly
             DatabaseCreateOrUpdateParameters newDatabaseParameters = new DatabaseCreateOrUpdateParameters()
             {
@@ -533,15 +560,15 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     Collation = "SQL_Latin1_General_CP1_CI_AS"
                 }
             };
-    
+
             var dbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database1", newDatabaseParameters);
-    
+
             Console.WriteLine("Database {0} create or update completed with status code {1}. Service Objective {2} ", dbResponse.Database.Name, dbResponse.StatusCode, dbResponse.Database.Properties.ServiceObjective);
-    
+
             // ...
             // Update database: retrieve current database properties 
             var currentDatabase = sqlClient.Databases.Get("resourcegroup-name", "server-name", "Database1").Database;
-    
+
             // Update database: configure create or update parameters with existing property values, override those to be changed.
             DatabaseCreateOrUpdateParameters updateDatabaseParameters = new DatabaseCreateOrUpdateParameters()
             {
@@ -554,12 +581,12 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     Collation = currentDatabase.Properties.Collation
                 }
             };
-    
+
             // Update the database
             dbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database1", updateDatabaseParameters);
-    
+
             Console.WriteLine("Database {0} create or update completed with status code {1}. Service Objective: {2} ", dbResponse.Database.Name, dbResponse.StatusCode, dbResponse.Database.Properties.ServiceObjective);
-    
+
             // Create elastic pool: configure create or update parameters and properties explicitly
             ElasticPoolCreateOrUpdateParameters newPoolParameters = new ElasticPoolCreateOrUpdateParameters()
             {
@@ -572,15 +599,15 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     DatabaseDtuMax = 100
                 }
             };
-    
+
            // Create the pool
             var newPoolResponse = sqlClient.ElasticPools.CreateOrUpdate("resourcegroup-name", "server-name", "ElasticPool1", newPoolParameters);
-    
+
             Console.WriteLine("Elastic pool {0} create or update completed with status code {1}.", newPoolResponse.ElasticPool.Name, newPoolResponse.StatusCode);
-    
+
             // Update pool: retrieve existing pool properties
             var currentPool = sqlClient.ElasticPools.Get("resourcegroup-name", "server-name", "ElasticPool1").ElasticPool;
-    
+
             // Update pool: configure create or update parameters with existing property values, override those to be changed.
             ElasticPoolCreateOrUpdateParameters updatePoolParameters = new ElasticPoolCreateOrUpdateParameters()
             {
@@ -595,14 +622,14 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                 }
             };
             newPoolResponse = sqlClient.ElasticPools.CreateOrUpdate("resourcegroup-name", "server-name", "ElasticPool1", newPoolParameters);
-    
+
             Console.WriteLine("Elastic pool {0} create or update completed with status code {1}.", newPoolResponse.ElasticPool.Name, newPoolResponse.StatusCode);
-    
+
             // Update database service objective to add the database to a pool
-    
+
             // Update database: retrieve current database properties 
             currentDatabase = sqlClient.Databases.Get("resourcegroup-name", "server-name", "Database1").Database;
-    
+
             // Update database: configure create or update parameters with existing property values, override those to be changed.
             DatabaseCreateOrUpdateParameters updatePooledDbParameters = new DatabaseCreateOrUpdateParameters()
             {
@@ -616,14 +643,14 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     Collation = currentDatabase.Properties.Collation,
                 }
             };
-    
+
             // Update the database
             var dbUpdateResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database1", updatePooledDbParameters);
-    
+
             Console.WriteLine("Database {0} create or update completed with status code {1}. Service Objective: {2}({3}) ", dbUpdateResponse.Database.Name, dbUpdateResponse.StatusCode, dbUpdateResponse.Database.Properties.ServiceObjective, dbUpdateResponse.Database.Properties.ElasticPoolName);
-    
+
             // Create a new database in the pool
-    
+
             // Create a database: configure create or update parameters and properties explicitly
             DatabaseCreateOrUpdateParameters newPooledDatabaseParameters = new DatabaseCreateOrUpdateParameters()
             {
@@ -637,11 +664,11 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     Collation = "SQL_Latin1_General_CP1_CI_AS"
                 }
             };
-    
+
             var poolDbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database2", newPooledDatabaseParameters);
-    
+
             Console.WriteLine("Database {0} create or update completed with status code {1}. Service Objective: {2}({3}) ", poolDbResponse.Database.Name, poolDbResponse.StatusCode, poolDbResponse.Database.Properties.ServiceObjective, poolDbResponse.Database.Properties.ElasticPoolName);
-    
+
             // List databases on the server
             DatabaseListResponse dbListOnServer = sqlClient.Databases.List("resourcegroup-name", "server-name");
             Console.WriteLine("Databases on Server {0}", "server-name");
@@ -649,12 +676,12 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             {
                 Console.WriteLine("  Database {0}, Service Objective {1}", db.Name, db.Properties.ServiceObjective);
             }
-    
+
             // List all servers, pools and databases in the resource group
             ServerListResponse serverList = new ServerListResponse();
             ElasticPoolListResponse poolList = new ElasticPoolListResponse();
             DatabaseListResponse dbListInPool = new DatabaseListResponse();
-    
+
             Console.WriteLine("Servers in resource group {0}", "resourcegroup-name");
             serverList = sqlClient.Servers.List("resourcegroup-name");
             foreach (Server server in serverList)
@@ -671,19 +698,19 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     }
                 }
             }
-    
+
             // Metrics
-    
+
             var endTime = String.Format(DateTime.Now.ToUniversalTime().ToString("s")) + "Z"; // as UTC in sortable time format yyyy-mm-ddThh:mm:ssZ
             var duration = TimeSpan.FromHours(2);
             var startTime = String.Format(DateTime.Now.Subtract(duration).ToUniversalTime().ToString("s")) + "Z";  // as UTC in sortable time format yyyy-mm-ddThh:mm:ssZ
-    
+
             Console.WriteLine("");
             Console.WriteLine("Elastic pool metrics for 'ElasticPool1'");
-    
+
             ElasticPoolMetricDefinitions poolMetricDefinition = new ElasticPoolMetricDefinitions();
             poolMetricDefinition = sqlClient.ElasticPools.ListMetricDefinitions("resourcegroup-name", "server-name", "ElasticPool1");
-    
+
             Console.WriteLine("  Metric definitions: ");
             foreach (Microsoft.Azure.Management.Sql.Models.MetricDefinition metricDefinition in poolMetricDefinition.MetricDefinitions)
             {
@@ -700,14 +727,14 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     Console.WriteLine("      Timestamp: {0} average: {1} minimum: {2} maximum {3} total {4}", metricValue.Timestamp, metricValue.Average, metricValue.Maximum, metricValue.Minimum, metricValue.Total);
                 }
             }
-    
+
             // List database metrics
             Console.WriteLine("");
             Console.WriteLine("Database metrics for 'Database1'");
             Console.WriteLine("  Metric definitions"); 
-    
+
             Microsoft.Azure.Insights.InsightsClient insightsClient = new InsightsClient(tokenCredentials);
-    
+
             Microsoft.Azure.Insights.Models.MetricDefinitionListResponse metricDefinitionListResponse = insightsClient.MetricDefinitionOperations.GetMetricDefinitions("subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/resourcegroup-name/providers/microsoft.sql/servers/server-name/databases/Database1/", "");
             foreach (Microsoft.Azure.Insights.Models.MetricDefinition metricDefinition in metricDefinitionListResponse.MetricDefinitionCollection.Value)
             {
@@ -715,7 +742,7 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
             }
             var resourceURI = "subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcegroups/resourcegroup-name/providers/microsoft.sql/servers/server-name/databases/Database1/";
             var filter = "(name.value eq 'dtu_consumption_percent') and startTime eq " + startTime + " and endTime eq " + endTime + " and timeGrain eq duration'PT5M'";
-    
+
             Console.WriteLine("  Metric values");
             MetricListResponse mlr = insightsClient.MetricOperations.GetMetrics(resourceURI,filter);
             foreach (Microsoft.Azure.Insights.Models.Metric metric in mlr.MetricCollection.Value)
@@ -726,21 +753,21 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
                     Console.WriteLine("      Timestamp: {0} minimum: {1} maximum: {2} average: {3}", metricValue.Timestamp, metricValue.Minimum, metricValue.Maximum, metricValue.Average);
                 }
             }
-    
+
             Console.WriteLine("");
             Console.WriteLine("Press any key to delete the server and resource group, which will also delete the databases and the elastic pool.");
             Console.ReadKey();
-    
+
             // Delete the server which deletes the databases and then the elastic pool
             var serverOperationResponse = sqlClient.Servers.Delete("resourcegroup-name", "server-name");
             Console.WriteLine("");
             Console.WriteLine("Server {0} delete completed with status code {1}.", "server-name", serverOperationResponse.StatusCode);
-    
+
             // Delete the resource group
             var resourceOperationResponse = resourceClient.ResourceGroups.Delete("resourcegroup-name");
             Console.WriteLine("");
             Console.WriteLine("Resource {0} delete completed with status code {1}.", "resourcegroup-name", resourceOperationResponse.StatusCode);
-    
+
             Console.WriteLine("");
             Console.WriteLine("Execution complete.  Press any key to continue.");
             Console.ReadKey();
@@ -748,24 +775,27 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
     }
     }
 
+
+
+
+
 ## 其他資源
 
-[SQL 資料庫](https://azure.microsoft.com/documentation/services/sql-database/)
+[SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-[Azure 資源管理 Api](https://msdn.microsoft.com/library/azure/dn948464.aspx)
+[Azure 資源管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
 [彈性資料庫集區參考](sql-database-elastic-pool-reference.md)。
 
 
-
-
-[1]: ./media/sql-database-client-library/aad.png 
-[2]: ./media/sql-database-client-library/permissions.png 
-[3]: ./media/sql-database-client-library/getdomain.png 
-[4]: ./media/sql-database-client-library/aad2.png 
-[5]: ./media/sql-database-client-library/aad-applications.png 
-[6]: ./media/sql-database-client-library/add.png 
-[7]: ./media/sql-database-client-library/add-application.png 
-[8]: ./media/sql-database-client-library/add-application2.png 
-[9]: ./media/sql-database-client-library/clientid.png 
+<!--Image references-->
+[1]: ./media/sql-database-client-library/aad.png
+[2]: ./media/sql-database-client-library/permissions.png
+[3]: ./media/sql-database-client-library/getdomain.png
+[4]: ./media/sql-database-client-library/aad2.png
+[5]: ./media/sql-database-client-library/aad-applications.png
+[6]: ./media/sql-database-client-library/add.png
+[7]: ./media/sql-database-client-library/add-application.png
+[8]: ./media/sql-database-client-library/add-application2.png
+[9]: ./media/sql-database-client-library/clientid.png
 

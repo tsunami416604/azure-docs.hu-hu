@@ -17,7 +17,6 @@
     ms.date="12/11/2015"
     ms.author="josephd"/>
 
-
 # SharePoint 內部網路伺服器陣列工作負載第 4 階段：設定 SharePoint Server。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
@@ -30,10 +29,11 @@
 
 SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛擬機器用於前端 Web 伺服器，另外兩個用於管理和主控 SharePoint 應用程式。 每一層中有兩部 SharePoint Server，可提供高可用性。
 
-首先，您將設定內部負載平衡，讓 Azure 平均分散兩部前端 Web 伺服器的用戶端流量。 這需要您指定內部負載平衡執行個體，其中包含名稱和從子網路位址空間 (指派至 Azure 虛擬網路) 取得的專屬 IP 位址。
-> [AZURE.NOTE] 下列命令集使用 Azure PowerShell 1.0 版及更新版本。 如需詳細資訊，請參閱 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
+首先，您將設定內部負載平衡，讓 Azure 平均分散兩部前端 Web 伺服器的用戶端流量。 這需要您指定內部負載平衡執行個體，其中包含名稱和從子網路位址空間 (指派至 Azure 虛擬網路) 取得的專屬 IP 位址。 
 
-指定變數值，移除 < 和 > 字元。請注意，下列 Azure PowerShell 命令集使用下表中的值：
+> [AZURE.NOTE] 下列命令會將使用 Azure PowerShell 1.0 和更新版本。 如需詳細資訊，請參閱 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
+
+指定變數值，移除 < 和 > 字元。 請注意，下列 Azure PowerShell 命令集使用下表中的值：
 
 - 資料表 M，適用於虛擬機器
 - 資料表 V，適用於虛擬網路設定
@@ -51,10 +51,10 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
     $vnetName="<Table V – Item 1 – Value column>"
     $privIP="<available IP address on the subnet>"
     $vnet=Get-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
-    
+
     $frontendIP=New-AzureRMLoadBalancerFrontendIpConfig -Name SharePointWebServers-LBFE -PrivateIPAddress $privIP -SubnetId $vnet.Subnets[1].Id
     $beAddressPool=New-AzureRMLoadBalancerBackendAddressPoolConfig -Name SharePointWebServers-LBBE
-    
+
     # This example assumes unsecured (HTTP-based) web traffic to the web servers.
     $healthProbe=New-AzureRMLoadBalancerProbeConfig -Name WebServersProbe -Protocol "TCP" -Port 80 -IntervalInSeconds 15 -ProbeCount 2
     $lbrule=New-AzureRMLoadBalancerRuleConfig -Name "WebTraffic" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "TCP" -FrontendPort 80 -BackendPort 80
@@ -86,7 +86,7 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
     $osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + "-OSDisk.vhd"
     $vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
     New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
-    
+
     # Create the second application server
     $vmName="<Table M – Item 7 - Virtual machine name column>"
     $vmSize="<Table M – Item 7 - Minimum size column>"
@@ -102,10 +102,10 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
     $osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + "-OSDisk.vhd"
     $vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
     New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
-    
+
     # Change the availability set
     $avName="<Table A – Item 4 – Availability set name column>"
-    
+
     # Set up key variables
     $beSubnetName="<Table S - Item 2 - Name column>"
     $webLB=Get-AzureRMLoadBalancer -ResourceGroupName $rgName -Name "SharePointWebServersInAzure"   
@@ -141,7 +141,7 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
     $vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
     New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-> [AZURE.NOTE] 因為這些虛擬機器用於內部網路應用程式，所以未獲指派公用 IP 位址或 DNS 網域名稱標籤，也不會公開到網際網路。 不過，這也表示您無法從 Azure 入口網站連線到它們。 當您檢視虛擬機器的屬性時，[連接]**** 按鈕將無法使用。
+> [AZURE.NOTE] 因為這些虛擬機器的內部網路應用程式，他們不指派公用 IP 位址或 DNS 網域名稱標籤，會公開至網際網路。 不過，這也表示您無法從 Azure 入口網站連線到它們。  **連接** ] 按鈕將無法在檢視虛擬機器的內容時。
 
 使用您選擇的遠端桌面用戶端，並建立每個虛擬機器的遠端桌面連接。 使用其內部網路 DNS 或電腦名稱，以及本機系統管理員帳戶的認證。
 
@@ -151,44 +151,45 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
     Add-Computer -DomainName $domName
     Restart-Computer
 
-請注意，您必須在輸入 **Add-Computer** 命令後提供網域帳戶認證。
+請注意，您必須提供網域帳戶認證輸入之後 **Add-computer** 命令。
 
 重新啟動之後，請使用 [登入虛擬機器使用遠端桌面連線程序](virtual-machines-workload-intranet-sharepoint-phase2.md#logon) 四次，一次針對每個 SharePoint 伺服器，以使用 [網域] \sp_farm_db 帳戶登入認證。 建立中的這些認證 [第 2 階段: 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md)。
 
 使用 [來測試連線能力程序](virtual-machines-workload-intranet-sharepoint-phase2.md#testconn) 四次，每個 SharePoint server 測試組織網路位置的連線。
-> [AZURE.NOTE] 從 SharePoint Server 2013 試用版映像建立 SharePoint Server。 您需要將安裝轉換為使用適用於 SharePoint Server 2013 Standard 或 Enterprise 版本的零售或大量授權金鑰。 
+
+> [AZURE.NOTE] 從 SharePoint Server 2013 試用版映像建立 SharePoint 伺服器。 您需要將安裝轉換為使用適用於 SharePoint Server 2013 Standard 或 Enterprise 版本的零售或大量授權金鑰。 
 
 ## 設定 SharePoint 伺服器陣列
 
 使用下列步驟來設定伺服器陣列中的第一部 SharePoint Server：
 
-1.  在第一部 SharePoint 應用程式伺服器桌面上，按兩下 **SharePoint 2013 產品設定精靈**。 當系統詢問您是否允許程式變更電腦時，按一下 [是]****。
-2.  在 [歡迎使用 SharePoint 產品]**** 頁面中，按 [下一步]****。
-3.  **SharePoint 2013 產品設定精靈**對話方塊隨即出現，警告將重新啟動或重設服務 (例如 IIS)。 按一下 [是]****。
-4.  在 [連線至伺服器陣列]**** 頁面中，選取 [建立新的伺服器陣列]****，然後按 [下一步]****。
-5.  在 [指定設定資料庫設定]**** 頁面中：
- - 在 [資料庫伺服器]**** 中，輸入主要資料庫伺服器的名稱。
+1.  在第一部 SharePoint 應用程式伺服器桌面上，按兩下 **SharePoint 2013 產品組態精靈**。 當您詢問是否允許程式變更電腦中，按一下 **是**。
+2.  在 **歡迎使用 SharePoint 產品** 頁面上，按一下 **下一步**。
+3.  A **SharePoint 產品組態精靈** ] 對話方塊隨即出現，警告將重新啟動或重設服務 (例如 IIS)。 按一下 [ **是**。
+4.  在 **連線至伺服器陣列** 頁面上，選取 **建立新的伺服器陣列**, ，然後按一下 [ **下一步**。
+5.  在 **指定組態資料庫設定** 頁面:
+ - 在 **資料庫伺服器**, ，輸入主要資料庫伺服器的名稱。
  - 在 **Username**, ，輸入 [網域]**\sp_farm_db** (在建立 [第 2 階段: 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md))。 還記得 sp_farm_db 帳戶具有資料庫伺服器的系統管理員權限。
- - 在 [**密碼**] 中輸入 sp_farm_db 帳戶密碼。
-6.  按 [下一步]****。
-7.  在 [指定伺服器陣列安全性設定]**** 頁面中，輸入複雜密碼兩次。 記下複雜密碼並儲存在安全的位置，以供日後參考。 按 [下一步]****。
-8.  在 [設定 SharePoint 管理中心 Web 應用程式]**** 頁面中，按 [下一步]****。
-9.  [完成 SharePoint 產品設定精靈]**** 頁面隨即出現。 按 [下一步]****。
-10. [設定 SharePoint 產品]**** 頁面隨即出現。 等候組態程序完成，約 8 分鐘。
-11. 成功設定伺服器陣列後，按一下 [**完成**] 按鈕。  新的管理網站隨即啟動。
-12. 若要開始設定 SharePoint 伺服器陣列，請按一下 [**啟動精靈**]。
+ - 在 **密碼**, ，輸入 sp_farm_db 帳戶密碼。
+6.  按一下 [ **下一步**。
+7.  在 **指定伺服器陣列安全性設定** 頁面上，輸入複雜密碼兩次。 記下複雜密碼並儲存在安全的位置，以供日後參考。 按一下 [ **下一步**。
+8.  在 **設定 SharePoint 管理中心 Web 應用程式** 頁面上，按一下 **下一步**。
+9.   **完成 SharePoint 產品設定精靈** ] 頁面隨即出現。 按一下 [ **下一步**。
+10.  **設定 SharePoint 產品** ] 頁面隨即出現。 等候組態程序完成，約 8 分鐘。
+11. 已成功設定伺服器陣列之後，請按一下 **完成**。 新的管理網站隨即啟動。
+12. 若要開始設定 SharePoint 伺服器陣列，請按一下 [ **啟動精靈**。
 
 在第二部 SharePoint 應用程式伺服器和兩部前端 Web 伺服器上執行下列程序：
 
-1.  從桌面按兩下 [**SharePoint 2013 產品組態精靈**]。 當系統詢問您是否允許程式變更電腦時，按一下 [是]****。
-2.  在 [歡迎使用 SharePoint 產品]**** 頁面中，按 [下一步]****。
-3.  **SharePoint 2013 產品設定精靈**對話方塊隨即出現，警告將重新啟動或重設服務 (例如 IIS)。 按一下 [是]****。
-4.  在 [連線至伺服器陣列]**** 頁面中，按一下 [連線至現有的伺服器陣列]****，然後按 [下一步]****。
-5.  在 [指定設定資料庫設定]**** 頁面的 [資料庫伺服器]**** 中，輸入主要資料庫伺服器的名稱，然後按一下 [擷取資料庫名稱]****。
-6.  在資料庫名稱清單中按一下 [SharePoint_Config]****，然後按 [下一步]****。
-7.  在 [指定伺服器陣列安全性設定]**** 頁面中，輸入先前程序所設定的複雜密碼。 按 [下一步]****。
-8.  [完成 SharePoint 產品設定精靈]**** 頁面隨即出現。 按 [下一步]****。
-9.  在 [設定成功]**** 頁面中，按一下 [完成]****。
+1.  從桌面上，按兩下 **SharePoint 2013 產品組態精靈**。 當您詢問是否允許程式變更電腦中，按一下 **是**。
+2.  在 **歡迎使用 SharePoint 產品** 頁面上，按一下 **下一步**。
+3.  A **SharePoint 產品組態精靈** ] 對話方塊隨即出現，警告將重新啟動或重設服務 (例如 IIS)。 按一下 [ **是**。
+4.  在 **連線至伺服器陣列** 頁面上，按一下 **連線至現有的伺服器陣列**, ，然後按一下 [ **下一步**。
+5.  在 **指定組態資料庫設定** 頁面上，輸入中的主要資料庫伺服器名稱 **資料庫伺服器**, ，然後按一下 [ **擷取資料庫名稱**。
+6.  按一下 [ **SharePoint_Config** 中資料庫名稱清單中，然後按一下 **下一步**。
+7.  在 **指定伺服器陣列安全性設定** 頁面上，輸入先前程序的複雜密碼。 按一下 [ **下一步**。
+8.   **完成 SharePoint 產品設定精靈** ] 頁面隨即出現。 按一下 [ **下一步**。
+9.  在 **組態成功** 頁面上，按一下 **完成**。
 
 SharePoint 建立伺服器陣列後，會在主要 SQL Server 虛擬機器中設定一組伺服器登入。 SQL Server 2012 引入了自主資料庫使用者密碼的概念。 自主資料庫本身會儲存所有資料庫中繼資料和使用者資訊，因此此資料庫中定義的使用者不需具有對應的登入。 可用性群組會複製此資料庫的資訊，容錯移轉之後仍可使用。 如需詳細資訊，請參閱 [自主資料庫](http://go.microsoft.com/fwlink/p/?LinkId=262794)。
 
@@ -196,15 +197,11 @@ SharePoint 建立伺服器陣列後，會在主要 SQL Server 虛擬機器中設
 
 完成此初始設定後，便可使用更多 SharePoint 伺服器陣列功能的組態選項。 如需詳細資訊，請參閱 [Azure 基礎結構服務上規劃 SharePoint 2013](http://msdn.microsoft.com/library/dn275958.aspx)。
 
-這是成功完成此階段所產生的組態。
+這是成功完成此階段所產生的組態。 
 
 ![](./media/virtual-machines-workload-intranet-sharepoint-phase4/workload-spsqlao_04.png)
 
 ## 後續步驟
 
 - 使用 [第 5 階段](virtual-machines-workload-intranet-sharepoint-phase5.md) 繼續設定此工作負載。
-
-
-
-
 

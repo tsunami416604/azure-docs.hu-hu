@@ -16,7 +16,6 @@
     ms.date="12/16/2015"
     ms.author="tarcher"/>
 
-
 # 我的 ASP.NET 5 專案 (Visual Studio Azure 儲存體連接的服務) 發生什麼狀況？
 
 ## 加入參考
@@ -33,15 +32,10 @@ Azure 儲存體 NuGet 封裝已加入至 Visual Studio 專案。
 - **System.Data**
 - **System.Spatial**
 
-另外也加入了 NuGet 封裝 **Microsoft.Framework.Configuration.Json**。
+此外，nuget **Microsoft.Framework.Configuration.Json** 相加。
 
 ## 加入 Azure 儲存體的連接字串
-
 在專案的 config.json 檔案中，已使用所選儲存體帳戶的連接字串和金鑰建立一個元素。
 
 如需詳細資訊，請參閱 [ASP.NET 5](http://www.asp.net/vnext)。
-
-
-
-
 

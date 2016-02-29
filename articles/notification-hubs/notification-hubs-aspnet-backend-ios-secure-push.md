@@ -1,6 +1,6 @@
 <properties
     pageTitle="Azure 通知中心安全推播"
-    description="了解如何從 Azure 將安全的推播通知傳送至 iOS 應用程式。程式碼範例是以 Objective-C 及 C# 撰寫。"
+    description="了解如何從 Azure 將安全的推播通知傳送至 iOS 應用程式。 程式碼範例是以 Objective-C 及 C# 撰寫。"
     documentationCenter="ios"
     authors="wesmc7777"
     manager="dwrede"
@@ -16,8 +16,7 @@
     ms.date="10/05/2015"
     ms.author="wesmc"/>
 
-
-# Azure 通知中心安全推播
+#Azure 通知中心安全推播
 
 > [AZURE.SELECTOR]
 - [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-secure-push.md)
@@ -25,8 +24,7 @@
 - [Android](notification-hubs-aspnet-backend-android-secure-push.md)
 
 
-
-## 概觀
+##概觀
 
 Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平台的大規模推播基礎結構，因而可大幅簡化消費者和企業應用程式在行動平台上的推播通知實作。
 
@@ -44,27 +42,28 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 請務必注意在上述流程 (與本教學課程) 中，我們假設使用者登入後，裝置會將驗證權杖儲存在本機儲存體中。 由於裝置可使用此權杖擷取通知的安全裝載，因此可保證完全順暢的體驗。 如果您的應用程式沒有將驗證權杖儲存在裝置上，或如果這些權杖可能會過期，裝置應用程式應在收到通知時顯示一般通知，以提示使用者啟動應用程式。 應用程式會接著驗證使用者，並顯示通知裝載。
 
 本安全推播教學課程說明如何以安全的方式傳送推播通知。 本教學課程是根據 [通知使用者](notification-hubs-aspnet-backend-ios-notify-users.md) 教學課程中，因此您應先完成該教學課程中的步驟第一次。
+
 > [AZURE.NOTE] 本教學課程假設您已建立並設定通知中心中所述 [開始使用通知中樞 (iOS)](notification-hubs-ios-get-started.md)。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## 修改 iOS 專案
 
-現在，您已修改應用程式後端將只傳送通知的 *id*，您必須變更 iOS 應用程式來處理該通知，並回呼後端以擷取要顯示的安全訊息。
+既然您已修改應用程式後端將只 *識別碼* 的通知，您必須變更 iOS 應用程式來處理該通知，並回呼後端以擷取要顯示的安全訊息。
 
 若要達到此目標，我們必須撰寫可從應用程式後端擷取安全內容的邏輯。
 
-1. 在 **AppDelegate.m** 中，請確定應用程式已註冊無訊息通知，以便處理從後端傳送出來的通知識別碼。 在 didFinishLaunchingWithOptions 中新增 **UIRemoteNotificationTypeNewsstandContentAvailability** 選項：
+1. 在 **AppDelegate.m**, ，請確定應用程式已註冊無訊息通知以便處理從後端傳送的通知識別碼。 新增 **UIRemoteNotificationTypeNewsstandContentAvailability** didFinishLaunchingWithOptions 中的選項:
 
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 
-2. 在 **AppDelegate.m** 的開頭處，新增包含下列宣告的實作區段：
+2. 在您 **AppDelegate.m** 處包含下列宣告新增實作區段:
 
         @interface AppDelegate ()
         - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
         @end
 
-3. 然後在實作區段中新增下列程式碼取代預留位置 `{後端端點}` 為先前取得後端端點:
+3. 然後在實作區段中新增下列程式碼，並以先前為後端取得的端點取代預留位置 `{back-end endpoint}`：
 
 ```
         NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -115,36 +114,37 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
     This method calls your app back-end to retrieve the notification content using the credentials stored in the shared preferences.
 
-4. 現在，我們必須處理內送通知，並使用上述方法擷取要顯示的內容。 首先，我們必須啟用您的 iOS 應用程式，可在接收推播通知時於背景中執行。 在 **XCode** 中，在左側面板中選取您的應用程式專案，然後在中央窗格的 [目標]**** 區段中，按一下您的主要應用程式目標。
+4. 現在，我們必須處理內送通知，並使用上述方法擷取要顯示的內容。 首先，我們必須啟用您的 iOS 應用程式，可在接收推播通知時於背景中執行。 在 **XCode**, ，選取左窗格中，您的應用程式專案，然後按一下 [主要應用程式目標中的 **目標** 在中央窗格中的一節。
 
-5. 接著按一下中央窗格頂端的 [功能]**** 索引標籤，並勾選 [遠端通知]**** 核取方塊。
+5. 然後按一下您 **功能** 索引標籤頂端的中央窗格中，並勾選 **遠端通知** 核取方塊。
 
-    ![][ios1]
+    ![][IOS1]
 
-6. 在 **AppDelegate.m** 中，新增下列可處理推播通知的方法：
 
-     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-     {
-         NSLog(@"%@", userInfo);
-    
-         [self retrieveSecurePayloadWithId:[[userInfo objectForKey:@"secureId"] intValue] completion:^(NSString * payload, NSError *error) {
-             if (!error) {
-                 // show local notification
-                 UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-                 localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
-                 localNotification.alertBody = payload;
-                 localNotification.timeZone = [NSTimeZone defaultTimeZone];
-                 [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    
-                 completionHandler(UIBackgroundFetchResultNewData);
-             } else {
-                 completionHandler(UIBackgroundFetchResultFailed);
-             }
-         }];
-    
-     }
+6. 在 **AppDelegate.m** 加入下列可處理推播通知的方法:
 
- 請注意，比較理想的案例是處理遺失驗證標頭屬性或遭到後端拒絕的情況。 這些案例的特定處理絕大部分會依您的目標使用者經驗而定。 其中一個選項就是透過一般提示顯示通知，方便使用者進行驗證並擷取實際通知。
+        -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+        {
+            NSLog(@"%@", userInfo);
+
+            [self retrieveSecurePayloadWithId:[[userInfo objectForKey:@"secureId"] intValue] completion:^(NSString * payload, NSError *error) {
+                if (!error) {
+                    // show local notification
+                    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+                    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:0];
+                    localNotification.alertBody = payload;
+                    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+
+                    completionHandler(UIBackgroundFetchResultNewData);
+                } else {
+                    completionHandler(UIBackgroundFetchResultFailed);
+                }
+            }];
+
+        }
+
+    請注意，比較理想的案例是處理遺失驗證標頭屬性或遭到後端拒絕的情況。 這些案例的特定處理絕大部分會依您的目標使用者經驗而定。 其中一個選項就是透過一般提示顯示通知，方便使用者進行驗證並擷取實際通知。
 
 ## 執行應用程式
 
@@ -154,8 +154,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
 2. 在 iOS 應用程式 UI 中，輸入使用者名稱和密碼。 這些可以是任何字串，但必須是相同值。
 
-3. 在 iOS 應用程式 UI 中，按一下 [登入]****。 然後按一下 [傳送推播]****。 您應該會在您的通知中心內看見安全通知。
+3. 在 iOS 應用程式 UI 中，按一下 [ **登入**。 然後按一下 [ **傳送推播**。 您應該會在您的通知中心內看見安全通知。
 
-
-[ios1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png 
+[IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
 

@@ -16,7 +16,6 @@
    ms.date="12/16/2015"
    ms.author="andkjell"/>
 
-
 # 一般 LDAP 連接器技術參考
 
 本文說明一般 LDAP 連接器。 本文適用於下列產品：
@@ -38,12 +37,12 @@ IETF RFC 中未指定某些作業和結構描述項目，例如需要執行差�
 
 目前的連接器版本大致支援下列功能：
 
-| 功能| 支援|
+| 功能 | 支援 |
 | --- | --- |
-| 連接的資料來源| 此連接器支援所有 LDAP v3 伺服器 (RFC 4510 相容)。經過取代為下列: <li>Microsoft Active Directory 輕量型目錄服務 (AD LDS)</li><li>Microsoft Active Directory 通用類別目錄 (AD GC)</li><li>389 目錄伺服器</li><li>Apache 目錄伺服器</li><li>IBM Tivoli DS</li><li>Isode 目錄</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>開啟 DJ</li><li>開啟 DS</li><li>開啟 LDAP (openldap.org)</li><li>Oracle (先前太陽)目錄 Server Enterprise Edition</li><li>RadiantOne 虛擬目錄伺服器 (VDS)</li><li>Sun 一個目錄伺服器</li>值得注意的目錄不支援: <li>Microsoft Active Directory 網域服務 (AD DS) [改為使用內建的 Active Directory 連接器]</li><li>Oracle 網際網路目錄 (OID)</li>|
-| 案例| <li>物件生命週期管理</li><li>群組管理</li><li>密碼管理</li>|
-| 作業| 所有的 LDAP 目錄支援下列作業: <li>完整匯入</li><li>匯出</li>上指定的目錄只支援下列作業:<li>差異匯入</li><li>設定密碼、 變更密碼</li>|
-| 結構描述| <li>結構描述中的 LDAP 結構描述 (RFC3673 和 RFC4512/4.2) 偵測到</li><li>支援結構化的類別、 aux 類別和 extensibleObject 物件類別 (RFC4512/4.3)</li>
+| 連接的資料來源 | 此連接器支援所有 LDAP v3 伺服器 (RFC 4510 相容)。 測試過它取代為下列: <li>Microsoft Active Directory Lightweight Directory Services (AD LDS)</li><li>Microsoft Active Directory Global Catalog (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (之前為 Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>不支援值得注意的目錄: <li>Microsoft Active Directory 網域服務 (AD DS) [改為使用內建的 Active Directory 連接器]</li><li>Oracle 網際網路目錄 (OID)</li> |
+| 案例 | <li>物件生命週期管理</li><li>群組管理</li><li>密碼管理</li> |
+| 作業 |在 LDAP 目錄中的所有支援下列作業: <li>完整匯入</li><li>匯出</li>在指定的目錄上只支援下列作業:<li>差異匯入</li><li>設定密碼、 變更密碼</li> |
+| 結構描述 | <li>(RFC3673 和 RFC4512/4.2) 的 LDAP 結構描述中偵測到結構描述</li><li>支援結構化的類別、 aux 類別和 extensibleObject 物件類別 (RFC4512/4.3)</li>
 
 ### 差異匯入和密碼管理支援
 
@@ -116,9 +115,9 @@ IETF RFC 中未指定某些作業和結構描述項目，例如需要執行差�
 
 LDAP 伺服器必須提供下列 LDAP 控制項/功能，連接器才能正常運作：
 
-- 1.3.6.1.4.1.4203.1.5.3 個 true/False 篩選器
+- 1.3.6.1.4.1.4203.1.5.3 True/False 篩選器
 
-True/False 篩選器通常因為由 LDAP 目錄所支援而不回報，而且可能會出現在 [找不到強制功能]**** 之下的 [全域頁面]**** 上。 它用於在 LDAP 查詢中建立 **OR** 篩選器，例如，當匯入多個物件類型時。 如果您可以匯入一種以上的物件類型，則 LDAP 伺服器會支援此篩選器。
+True/False 篩選通常不會報告所支援 LDAP 目錄，並可能出現在 **全域頁面** 下 **強制功能找不到**。 它用來建立 **或者** LDAP 查詢中的篩選條件，例如，當匯入多個物件類型。 如果您可以匯入一種以上的物件類型，則 LDAP 伺服器會支援此篩選器。
 
 如果您使用其中的唯一識別碼是錨點目錄下也必須提供使用 (請參閱 [設定錨點](#configure-anchors) 本文一節稍後如需詳細資訊):
 
@@ -160,7 +159,7 @@ True/False 篩選器通常因為由 LDAP 目錄所支援而不回報，而且可
 
 ## 建立新的連接器
 
-若要建立一般 LDAP 連接器，請在 [同步處理服務]**** 中選取 [管理代理程式]**** 和 [建立]****。 選取 **一般 LDAP (Microsoft)** 連接器。
+若要建立泛型 LDAP 連接器，在 **同步處理服務** 選取 **管理代理程式** 和 **建立**。 選取 **泛型 LDAP (Microsoft)** 連接器。
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericldap/createconnector.png)
 
@@ -175,17 +174,17 @@ True/False 篩選器通常因為由 LDAP 目錄所支援而不回報，而且可
 - 對於其他繫結，請在使用者名稱 / 密碼中輸入資訊或選取憑證。
 - 如果您使用 Kerberos 進行驗證，也要提供使用者的 [領域/網域]。
 
-[屬性別名]**** 文字方塊使用於以 RFC4522 語法在結構描述中定義的屬性。 在結構描述偵測期間無法偵測這些別名，而連接器需要協助才能加以識別。 例如，需要在 [屬性別名] 方塊中輸入下列項目，才能正確地將 userCertificate 屬性識別為二進位屬性：
+ **屬性別名** 文字方塊用於 RFC4522 語法的結構描述中定義的屬性。 在結構描述偵測期間無法偵測這些別名，而連接器需要協助才能加以識別。 例如，需要在 [屬性別名] 方塊中輸入下列項目，才能正確地將 userCertificate 屬性識別為二進位屬性：
 
-`userCertificate; 二進位檔`
+`userCertificate;binary`
 
 以下是此方塊的顯示範例：
 
 ![連線能力](./media/active-directory-aadconnectsync-connector-genericldap/connectivityattributes.png)
 
-選取 [在結構描述中包含操作屬性]**** 核取方塊，也會包含伺服器所建立的屬性。 其中包含物件的建立時間和上次更新時間等屬性。
+選取 **包含操作的屬性結構描述中** 核取方塊，也包含伺服器所建立的屬性。 其中包含物件的建立時間和上次更新時間等屬性。
 
-若已使用可延伸物件 (RFC4512/4.3)，則選取 [在結構描述中包含可延伸屬性]****，而且啟用此選項可讓每個屬性使用於所有物件上。 選取此選項會讓結構描述變得非常大，所以除非連接的目錄使用這項功能，否則建議不要選取這個選項。
+選取 **包含 「 可延伸的屬性結構描述中** 如果使用可延伸的物件 (RFC4512/4.3)，並啟用此選項可讓所有的物件上使用的每個屬性。 選取此選項會讓結構描述變得非常大，所以除非連接的目錄使用這項功能，否則建議不要選取這個選項。
 
 ### 全域參數
 
@@ -195,7 +194,7 @@ True/False 篩選器通常因為由 LDAP 目錄所支援而不回報，而且可
 
 最上方區段顯示伺服器本身所提供的資訊，例如伺服器名稱。 連接器也會確認強制控制項是否位於根 DSE 中。 如果未列出這些項目，則會顯示一則警告。 某些 LDAP 目錄不會列出根 DSE 中的所有功能，而即使出現警告，連接器也可能正常運作。
 
-[支援的控制項]**** 核取方塊可控制特定作業的行為：
+ **支援的控制項** 核取方塊控制項之特定作業的行為:
 
 - 選取樹狀目錄刪除後，將透過一個 LDAP 呼叫來刪除階層。 若未選取樹狀目錄刪除，則連接器會視需要進行遞迴刪除。
 - 選取分頁結果後，連接器會以執行步驟上指定的大小進行分頁匯入。
@@ -203,26 +202,26 @@ True/False 篩選器通常因為由 LDAP 目錄所支援而不回報，而且可
 - 如果三個選項 (pagedResultsControl、VLVControl 和 SortControl) 均未選取，則連接器會在一個作業中匯入所有物件，而如果是大型目錄，有可能會失敗。
 - 只有在差異匯入方法是 USNChanged 時，才會使用 ShowDeletedControl。
 
-變更記錄檔 DN 是差異變更記錄檔所使用的命名內容，例如 **cn=discovery**。 您必須指定此值，才能夠進行差異匯入。
+變更記錄 DN 是例如差異變更記錄檔所使用的命名內容 **cn = discovery**。 您必須指定此值，才能夠進行差異匯入。
 
 以下是預設變更記錄檔 DN 清單：
 
-| 目錄| 差異變更記錄檔|
+| 目錄 | 差異變更記錄檔 |
 | --- | --- |
-| Microsoft AD LDS 和 AD GC| 自動偵測。USNChanged。|
-| Apache Directory Server| 無法使用。|
-| Directory 389| 變更記錄檔。要使用的預設值：**cn=changelog**|
-| IBM Tivoli DS| 變更記錄檔。要使用的預設值：**cn=changelog**|
-| Isode Directory| 變更記錄檔。要使用的預設值：**cn=ChangeLog**
-| Novell/NetIQ eDirectory| 無法使用。TimeStamp。連接器會使用上次更新日期/時間來取得已新增和更新的記錄。|
-| Open DJ/DS| 變更記錄檔。要使用的預設值：**cn=Changelog**|
-| Open LDAP| 存取記錄檔。要使用的預設值：**cn=accesslog**|
-| Oracle DSEE| 變更記錄檔。要使用的預設值：**cn=changelog**|
-| RadiantOne VDS| 虛擬目錄。取決於 VDS 連接的目錄。|
-| Sun One Directory Server| 變更記錄檔。要使用的預設值：**cn=Changelog**|
+| Microsoft AD LDS 和 AD GC | 自動偵測。 USNChanged。 |
+| Apache Directory Server | 無法使用。 |
+| Directory 389 | 變更記錄檔。 預設使用的值: **cn = discovery** |
+| IBM Tivoli DS | 變更記錄檔。 預設使用的值: **cn = discovery** |
+| Isode Directory | 變更記錄檔。 預設使用的值: **cn = Discovery**
+| Novell/NetIQ eDirectory | 無法使用。 TimeStamp。 連接器會使用上次更新日期/時間來取得已新增和更新的記錄。 |
+| Open DJ/DS | 變更記錄檔。  預設使用的值: **cn = Discovery** |
+| Open LDAP | 存取記錄檔。 預設使用的值: **cn = accesslog** |
+| Oracle DSEE | 變更記錄檔。 預設使用的值: **cn = discovery** |
+| RadiantOne VDS | 虛擬目錄。 取決於 VDS 連接的目錄。 |
+| Sun One Directory Server | 變更記錄檔。 預設使用的值: **cn = Discovery** |
 
 密碼屬性是連接器在密碼變更和密碼設定作業中應用來設定密碼的屬性名稱。
-這會預設為 **userPassword**，但特定 LDAP 系統可以視需要進行變更。
+這是預設值為 **userPassword** 但如果需要特定的 LDAP 系統來進行變更。
 
 在其他資料分割清單中，可以新增其他未自動偵測到的命名空間。 比方說，如果有幾部應同時全部匯入的伺服器組成一個邏輯叢集，則可使用此清單。 就如同 Active Directory 可以在一個樹系中有多個網域，而所有網域都共用一個結構描述，在此方塊中輸入其他命名空間就可以模擬此狀況。 每個命名空間都可以從不同的伺服器匯入，並可在 [設定資料分割和階層] 頁面上進一步設定。 使用 Ctrl+Enter 來換行。
 
@@ -252,19 +251,19 @@ True/False 篩選器通常因為由 LDAP 目錄所支援而不回報，而且可
 
 以下是 LDAP 伺服器清單和所使用的錨點：
 
-| 目錄| 錨點屬性|
+| 目錄 | 錨點屬性 |
 | --- | --- |
-| Microsoft AD LDS 和 AD GC| objectGUID|
-| 389 Directory Server| dn|
-| Apache Directory| dn|
-| IBM Tivoli DS| dn|
-| Isode Directory| dn|
-| Novell/NetIQ eDirectory| GUID|
-| Open DJ/DS| dn|
-| Open LDAP| dn|
-| Oracle ODSEE| dn|
-| RadiantOne VDS| dn|
-| Sun One Directory Server| dn|
+| Microsoft AD LDS 和 AD GC | objectGUID |
+| 389 Directory Server | dn |
+| Apache Directory | dn |
+| IBM Tivoli DS | dn |
+| Isode Directory | dn |
+| Novell/NetIQ eDirectory | GUID |
+| Open DJ/DS | dn |
+| Open LDAP | dn |
+| Oracle ODSEE | dn |
+| RadiantOne VDS | dn |
+| Sun One Directory Server | dn |
 
 ## 其他注意事項
 
@@ -281,8 +280,4 @@ Open LDAP 中的差異浮水印是 UTC 日期/時間。 基於這個理由，FIM
 ## 疑難排解
 
 -   如需如何啟用記錄來疑難排解連接器資訊，請參閱 [如何啟用 ETW 追蹤連接器](http://go.microsoft.com/fwlink/?LinkId=335731)。
-
-
-
-
 

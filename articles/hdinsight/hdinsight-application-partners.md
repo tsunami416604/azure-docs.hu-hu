@@ -1,11 +1,11 @@
 <properties
-    pageTitle="HDInsight 應用程式合作夥伴 |Microsoft Azure" 
-    description="客戶可以立即輕鬆地探索和部署旁直接從其 HDInsight 叢集佈建入口網站中的巨量資料應用程式。"
-    services="hdinsight" 
-    documentationCenter="na" 
-    authors="pablissima" 
-    manager="paulettm="" 
-    tags=""/>
+    pageTitle ="HDInsight 應用程式合作夥伴 |Microsoft Azure 「 
+    描述 = 「 客戶輕鬆地現在可以探索和部署旁直接從其 HDInsight 叢集佈建入口網站中的巨量資料應用程式。 」
+    服務 ="hdinsight" 
+    documentationCenter ="na" 
+    作者 ="pablissima" 
+    管理員 ="paulettm ="" 
+    標記 =""/ >
 <tags
     ms.service="hdinsight"
     ms.devlang="na"
@@ -14,7 +14,6 @@
     ms.workload="na"
     ms.date="09/25/2015"
     ms.author="paulettm"/>
-
 # HDInsight 應用程式合作夥伴
 
 ![](media/hdinsight-application-partners/dataguise1.png)  
@@ -89,20 +88,20 @@ RedPoint 難以找出具有 MapReduce 技術人員，具有
 沒有 Pig – 由於 RedPoint 的圖形化使用者介面和純粹 hive
 YARN 架構 (Hadoop 2.0 由 Hortonworks 認證)。
 
-使用 RedPoint:
+使用 RedPoint:  
 -  可在執行所有的資料品質和資料整合函式
 Hadoop 叢集 – ELT、 清理、 比對、 取消 dupe、 合併/清除作業
 householding、 剖析、 分割、 附加、 地址標準化
-金鑰的建立和維護，自動化、 監視、 通知
--  不涉及任何 MapReduce，以及需要沒有 MapReduce 技能
+金鑰的建立和維護，自動化、 監視、 通知  
+-  不涉及任何 MapReduce，以及需要沒有 MapReduce 技能  
 -  資料品質和整合程序執行以有效率地 – 和
 許多情況下，更有效率地 – 與 RedPoint 以 MapReduce 為基礎
-解決方案
+解決方案  
 -  資料不需要離開處理、 分析、 Hadoop
-報表或其他動作
+報表或其他動作  
 -  沒有軟體必須安裝在叢集本身和 RedPoint
 尊重 YARN 的工作優先順序而不是競爭運算
-叢集中的資源
+叢集中的資源  
 -  使用者可以管理在傳統的資料和 Hadoop 儲存機制，與單一產品，甚至將結合在一起的資料從不同的環境
 或將資料移轉到另一個
 
@@ -112,7 +111,7 @@ householding、 剖析、 分割、 附加、 地址標準化
 RedPoint 評等中使用者的速度，比對品質的問卷調查 \#1 和
 輕鬆使用，而通常對於客戶和協力廠商資料
 管理。 [連絡人
-我們] (http://www.redpoint.net/Products/BigData.aspx) 若要查看如何 RedPoint
+我們](http://www.redpoint.net/Products/BigData.aspx) 若要查看如何 RedPoint
 可以在您的 Hadoop 中進行管理的資料品質和資料整合
 環境更容易、 更快速、 低成本和更有效率。
 
@@ -137,8 +136,4 @@ Kyvos 致力於解除鎖定使用巨量資料分析的強大功能及其
 多維度分析巨量資料。 使用者可以視覺化，
 探索和分析其資料以互動方式上沒有的 Hadoop
 所需的程式設計。
-
-
-
-
 

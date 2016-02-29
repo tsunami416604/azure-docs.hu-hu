@@ -14,8 +14,7 @@
     ms.topic="article" 
     ms.date="11/23/2015" 
     ms.author="awills"/>
-
-
+ 
 # 使用 PowerShell 建立 Application Insights 資源
 
 本文將說明如何建立 [Application Insights](app-insights-overview.md) 在 Azure 中的資源自動。 例如，您可能建置程序中這麼做。 您可以建立基本的 Application Insights 資源，以及 [可用性 web 測試](app-insights-monitor-web-app-availability.md), ，[設定警示](app-insights-alerts.md), ，並建立其他 Azure 資源。
@@ -34,9 +33,11 @@
 ## 複製現有資源的 JSON
 
 1. 設定 [Application Insights](app-insights-overview.md) 類似於您想要自動產生的專案。 如果需要，可以新增 Web 測試和警示。
-2. 建立新的 json 檔案-讓我們稱之為 `template1.json` 在此範例中。 將此內容複製到其中：
+2. 建立新的 .json 檔案 - 在此範例中稱為 `template1.json`。 將此內容複製到其中：
+
 
     ```JSON
+
         {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
@@ -63,21 +64,23 @@
             {
               //alert rule JSON file contents
             }
-
+ 
             // Any other resources go here
           ]
         }
+    
     ```
 
-    除了主要資源外，此範本還會設定一個可用性測試。
+    This template will set up one availability test in addition to the main resource.
 
-2. 開啟 [Azure 資源管理員](https://resources.azure.com/)。 向下導覽訂用帳戶、resourceGroups、元件，直到您的應用程式資源。
+
+2. 開啟 [Azure 資源管理員](https://resources.azure.com/)。 向下導覽訂用帳戶、resourceGroups、元件，直到您的應用程式資源。 
 
     ![](./media/app-insights-powershell/01.png)
 
-    *元件*是用來顯示應用程式的基本 Application Insights 資源。 相關聯的警示規則和可用性 Web 測試有個別的資源。
+    *元件* 會顯示應用程式的基本 Application Insights 資源。 相關聯的警示規則和可用性 Web 測試有個別的資源。
 
-3. 將複製到適當的位置中的元件的 JSON `template1.json`。
+3. 將元件的 JSON 複製到 `template1.json` 的適當位置。
 6. 刪除這些屬性：
   * `id`
   * `InstrumentationKey`
@@ -90,29 +93,29 @@
 
 5. 為滿足此結構描述，請在每個資源中插入下面這行：
 
-    `"apiVersion":"2014年-04-01"，`
+    `"apiVersion": "2014-04-01",`
 
     (結構描述也會產生負面反應的相關資源類型名稱的大小寫 `Microsoft.Insights/*` -但 *不* 變更這些設定。)
 
 
 ## 參數化範本
 
-現在您必須以參數取代特定的名稱。 若要 [參數化範本](resource-group-authoring-templates.md), ，撰寫使用運算式 [組 helper 函式](resource-group-template-functions.md)。
+現在您必須以參數取代特定的名稱。 若要 [參數化範本](resource-group-authoring-templates.md), ，撰寫使用運算式 [組 helper 函式](resource-group-template-functions.md)。 
 
-您無法將參數化只是字串的一部分，因此，使用 `concat ()` 來的字串。
+您無法將參數化字串的一部分，因此請使用 `concat()` 建置字串。
 
 以下是您會想要進行的替換的範例。 每個替換各出現數次。 您的範本中可能需要其他替換。 這些範例使用我們在範本頂端定義的參數和變數。
 
- find| 取代為
+find | 取代為
 ---|---
- `「 hidden-link:/subscriptions/.../components/MyAppName 」`| `"[concat (' 隱藏連結:'，`<br/>` resourceId (' microsoft.insights/元件` <br/> ` parameters('appName')))]"`
- `"/ subscriptions/.../alertrules/myAlertName-myAppName-subsId 」，`| `"[resourceId (' Microsoft.Insights/alertrules'，variables('alertRuleName'))] 」，`
- `"/ subscriptions/.../webtests/myTestName-myAppName 」，`| `"[resourceId (' Microsoft.Insights/webtests'，parameters('webTestName'))] 」，`
- `「 myWebTest myAppName 」`| `'[variables(testName)]"'`
- `「 myTestName-myAppName-subsId 」`| `"[variables('alertRuleName')] 」`
- `「 myAppName 」`| `"[parameters('appName')] 」`
- `"myappname"` (小寫)| `"[toLower(parameters('appName'))] 」`
- `"< WebTest 名稱 = \"myWebTest\"...`<br/>`Url = \"http://fabrikam.com/home \"… > 」`| `[concat ('< WebTest 名稱 = \"'，` <br/> `parameters('webTestName')，` <br/> `' \\"...Url=\"', parameters('Url'),` <br/> `'\"...>')]" `
+`"hidden-link:/subscriptions/.../components/MyAppName"`| `"[concat('hidden-link:',`<br/>` resourceId('microsoft.insights/components',` <br/> ` parameters('appName')))]"`
+`"/subscriptions/.../alertrules/myAlertName-myAppName-subsId",` | `"[resourceId('Microsoft.Insights/alertrules', variables('alertRuleName'))]",`
+`"/subscriptions/.../webtests/myTestName-myAppName",` | `"[resourceId('Microsoft.Insights/webtests', parameters('webTestName'))]",`
+`"myWebTest-myAppName"` | `"[variables(testName)]"'`
+`"myTestName-myAppName-subsId"` | `"[variables('alertRuleName')]"`
+`"myAppName"` | `"[parameters('appName')]"`
+`"myappname"` (小寫) | `"[toLower(parameters('appName'))]"`
+`"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"`|`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]" `
 
 ## 設定資源間的相依性
 
@@ -120,28 +123,30 @@ Azure 應以嚴格的順序設定資源。 為確保一項設定完成後再開�
 
 * 在 Web 測試資源中：
 
-    `"dependsOn": ["[resourceId (' Microsoft.Insights/元件、 parameters('appName'))]"]，`
+    `"dependsOn": ["[resourceId('Microsoft.Insights/components', parameters('appName'))]"],`
 
 * 在警示資源中：
 
-    `"dependsOn": ["[resourceId (' Microsoft.Insights/webtests'，variables('testName'))]"]，`
+    `"dependsOn": ["[resourceId('Microsoft.Insights/webtests', variables('testName'))]"],`
 
 ## 建立 Application Insights 資源
 
 1. 在 PowerShell 中，登入 Azure：
 
-    `登入 AzureRmAccount`
+    `Login-AzureRmAccount`
 
 2. 執行如下命令：
 
     ```PS
+
         New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
                -templateFile .\template1.json `
                -appName myNewApp `
                -webTestName aWebTest `
                -Url http://myapp.com `
                -text "Welcome!"
-    ```
+
+    ``` 
 
     * -ResourceGroupName 是您要在其中建立新資源的群組。
     * -templateFile 必須出現在自訂參數之前。
@@ -280,8 +285,5 @@ Azure 應以嚴格的順序設定資源。 為確保一項設定完成後再開�
     }
   ]
 }
+
 ```
-
-
-
-

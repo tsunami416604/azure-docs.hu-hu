@@ -1,6 +1,6 @@
 <properties
  pageTitle="排程器概念、條款和實體 |Microsoft Azure"
- description="Azure 排程器概念、詞彙及實體階層，包括工作和工作集合。顯示排程工作的完整範例。"
+ description="Azure 排程器概念、詞彙及實體階層，包括工作和工作集合。  顯示排程工作的完整範例。"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -15,30 +15,29 @@
  ms.date="12/04/2015"
  ms.author="krisragh"/>
 
-
 # 排程器概念、術語及實體階層
 
 ## 排程器實體階層
 
 下表描述排程器 API 所公開或使用的主要資源：
 
-| 資源| 說明|
+|資源 | 說明 |
 |---|---|
-| **雲端服務**| 概念上，雲端服務代表一個應用程式。訂用帳戶可能具有數個雲端服務。|
-| **工作集合**| 工作集合包含工作群組，並維護集合內工作所共用的設定、配額及節流。工作集合是由訂用帳戶擁有者和群組工作一起根據使用方式或應用程式界限所建立的。它受限於一個區域。它也允許強制執行配額，以限制該集合中所有工作的使用方式。配額包含 MaxJobs 和 MaxRecurrence。|
-| **作業**| 工作定義單一週期動作，以及簡單或複雜的執行策略。動作可能包含 HTTP 要求或儲存體佇列要求。|
-| **工作歷程記錄**| 工作歷程記錄代表工作的執行詳細資料。它包含成功與失敗，以及任何回應詳細資料。|
+|**雲端服務**|概念上，雲端服務代表一個應用程式。 訂用帳戶可能具有數個雲端服務。|
+|**工作集合**|工作集合包含工作群組，並維護集合內工作所共用的設定、配額及節流。 工作集合是由訂用帳戶擁有者和群組工作一起根據使用方式或應用程式界限所建立的。 它受限於一個區域。 它也允許強制執行配額，以限制該集合中所有工作的使用方式。 配額包含 MaxJobs 和 MaxRecurrence。|
+|**Job**|工作定義單一週期動作，以及簡單或複雜的執行策略。 動作可能包含 HTTP 要求或儲存體佇列要求。|
+|**工作歷程記錄**|工作歷程記錄代表工作的執行詳細資料。 它包含成功與失敗，以及任何回應詳細資料。|
 
 ## 排程器實體管理
 
 在高階中，排程器和服務管理 API 會在資源上公開下列作業：
 
-| 功能| 描述和 URI 位址|
+|功能|描述和 URI 位址|
 |---|---|
-| **雲端服務管理**| GET、 PUT 和 DELETE 支援建立和修改雲端服務 <p>`https://management.core.windows.net/ {subscriptionId} /cloudservices/ {cloudServiceName}`</p>|
-| **工作集合管理**| GET、PUT 和 DELETE 支援建立和修改工作集合及其內含的工作。工作集合是工作的容器，並對應至配額和共用設定。稍後所述的配額範例為最大工作數目和最小週期間隔。<p>PUT 和 DELETE: `https://management.core.windows.net/ {subscriptionId} /cloudservices/ {cloudServiceName} / 資源/排程器/不得 / {jobCollectionName}`</p><p>取得: `https://management.core.windows.net/ {subscriptionId} /cloudservices/ {cloudServiceName} / 資源/排程器 / {jobCollectionName}`</p>
-| **工作管理**| GET、PUT、POST、PATCH 和 DELETE 支援建立和修改雲端服務。所有工作必須都屬於的工作集合已經存在，因此沒有隱含的建立。<p>`https://management.core.windows.net/ {subscriptionId} /cloudservices/ {cloudServiceName} / 資源/排程器 / {jobCollectionName} /workspaces/{workspace}/services/{service}/jobs/{jobid}`</p>|
-| **工作歷程記錄管理**| GET 支援擷取 60 天的工作執行歷程記錄，例如工作經歷時間和工作執行結果。加入查詢字串參數支援的狀態和狀態為基礎的篩選。 <P>`https://management.core.windows.net/ {subscriptionId} /cloudservices/ {cloudServiceName} / 資源/排程器 / {jobCollectionName} /workspaces/{workspace}/services/{service}/jobs/{jobid} / 記錄`</p>|
+|**雲端服務管理**|GET、PUT 和 DELETE 支援建立和修改雲端服務<p>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}`</p>|
+|**工作集合管理**|GET、PUT 和 DELETE 支援建立和修改工作集合及其內含的工作。 工作集合是工作的容器，並對應至配額和共用設定。 稍後所述的配額範例為最大工作數目和最小週期間隔。 <p>PUT 和 DELETE：`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/jobcollections/{jobCollectionName}`</p><p>GET：`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}`</p>
+|**工作管理**|GET、PUT、POST、PATCH 和 DELETE 支援建立和修改雲端服務。 所有工作必須都屬於的工作集合已經存在，因此沒有隱含的建立。 <p>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}/jobs/{jobId}`</p>|
+|**工作歷程記錄管理**|GET 支援擷取 60 天的工作執行歷程記錄，例如工作經歷時間和工作執行結果。 加入查詢字串參數支援的狀態和狀態為基礎的篩選。 <P>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}/jobs/{jobId}/history`</p>|
 
 ## 工作類型
 
@@ -48,13 +47,13 @@
 
 在基本層級中，排程工作有幾個部分：
 
-- 要在工作計時器啟動時執行的動作
+- 要在工作計時器啟動時執行的動作  
 
-- (選用) 執行工作的時間
+- (選用) 執行工作的時間  
 
-- (選用) 重複工作的時機和頻率
+- (選用) 重複工作的時機和頻率  
 
-- (選用) 主要動作失敗時要啟動的動作
+- (選用) 主要動作失敗時要啟動的動作  
 
 在內部，排定的工作也會包含系統提供的資料，例如下次排定的執行時間。
 
@@ -72,7 +71,7 @@
                 "method": "PUT",                        // required
                 "body": "Posting from a timer",         // optional
                 "headers":                              // optional
-    
+
                 {
                     "Content-Type": "application/json"
                 },
@@ -112,17 +111,17 @@
 
 如同上述範例排程器工作中所見，工作定義具有數個部分：
 
-- 開始時間 ("startTime")
+- 開始時間 ("startTime")  
 
 - 動作 ("action")，其中包含錯誤動作 ("errorAction")
 
-- 週期 ("recurrence")
+- 週期 ("recurrence")  
 
-- 狀況 (“state”)
+- 狀況 (“state”)  
 
-- 狀態 (“status”)
+- 狀態 (“status”)  
 
-- 重試原則 ("retryPolicy")
+- 重試原則 ("retryPolicy")  
 
 讓我們詳細檢查每一種方式：
 
@@ -154,15 +153,15 @@
 
 週期具有數個部分：
 
-- 頻率：分鐘、小時、天、週、月、年的其中一個
+- 頻率：分鐘、小時、天、週、月、年的其中一個  
 
-- 間隔：週期特定頻率的間隔
+- 間隔：週期特定頻率的間隔  
 
-- 指定的排程：指定週期的分鐘、小時、工作日、月和月日
+- 指定的排程：指定週期的分鐘、小時、工作日、月和月日  
 
-- 計數：週期的計數
+- 計數：週期的計數  
 
-- 結束時間：沒有工作將在指定的結束時間之後執行
+- 結束時間：沒有工作將在指定的結束時間之後執行  
 
 如果工作已在其 JSON 定義中指定週期物件，則工作會重複執行。 如果同時指定 count 和 endTime，則會遵守最先發生的完成規則。
 
@@ -172,7 +171,6 @@
 
 
         "state": "disabled", // enabled, disabled, completed, or faulted
-
 已完成和發生錯誤的工作會在 60 天後刪除。
 
 ## status
@@ -183,33 +181,29 @@
 
 ## RetryPolicy
 
-如果排程器工作失敗，則可以指定重試原則，以判斷是否及如何重試動作。 這取決於 **retryType** 物件 – 如果沒有重試原則，則它會設定為 **none**，如上所示。 如果有重試原則，請將它設定為 **fixed**。
+如果排程器工作失敗，則可以指定重試原則，以判斷是否及如何重試動作。 這取決於 **retryType** 物件 — 設為 **無** 如果沒有重試原則，如上所示。 將它設定為 **固定** 如果重試原則。
 
-若要設定重試原則，可以指定另外兩項設定：重試間隔 (**retryInterval**) 和重試次數 (**retryCount**)。
+若要設定重試原則，可指定兩個額外的設定: 重試間隔 (**retryInterval**) 和重試次數 (**retryCount**)。
 
-搭配 **retryInterval** 物件指定的重試間隔是重試的間隔。 其預設值為 1 分鐘、最小值為 1 分鐘，而最大值為 18 個月。 它是以 ISO 8601 格式定義。 同樣地，搭配 **retryCount** 物件指定的重試次數值，它是重試的次數。 其預設值為 5，和最大值是 20\。 **retryInterval** 和 **retryCount** 都是選用的。 如果 **retryType** 設定為 **fixed**，而且未明確地指定任何值，則會給與它們預設值。
+重試間隔，以指定 **retryInterval** 物件，會重試的間隔。 其預設值為 1 分鐘、最小值為 1 分鐘，而最大值為 18 個月。 它是以 ISO 8601 格式定義。 同樣地，使用指定的重試次數值 **retryCount** 物件; 它是在嘗試重試的次數。 其預設值為 5，和最大值是 20\。 同時 **retryInterval** 和 **retryCount** 是選擇性的。 如果會指定成為其預設值 **retryType** 設為 **固定** 和明確指定任何值。
 
 ## 另請參閱
 
- [排程器是什麼?](scheduler-intro.md)
+ [排程器是什麼？](scheduler-intro.md)
+ 
+ [在 Azure 入口網站中開始使用排程器](scheduler-get-started-portal.md)
 
- [開始使用 Azure 入口網站中的排程器](scheduler-get-started-portal.md)
+ [Azure 排程器的計劃和計費](scheduler-plans-billing.md)
 
- [計劃和計費，Azure 排程器中](scheduler-plans-billing.md)
-
- [如何建立複雜的排程和進階的週期使用 Azure 排程器](scheduler-advanced-complexity.md)
+ [如何使用 Azure 排程器建立複雜的排程和進階週期](scheduler-advanced-complexity.md)
 
  [Azure 排程器 REST API 參考](https://msdn.microsoft.com/library/dn528946)
 
- [Azure 排程器 PowerShell cmdlet 參考](scheduler-powershell-reference.md)
+ [Azure 排程器 PowerShell Cmdlet 參考](scheduler-powershell-reference.md)
 
  [Azure 排程器高可用性和可靠性](scheduler-high-availability-reliability.md)
 
- [Azure 排程器限制、 預設值和錯誤碼](scheduler-limits-defaults-errors.md)
+ [Azure 排程器限制、預設值和錯誤碼](scheduler-limits-defaults-errors.md)
 
  [Azure 排程器輸出驗證](scheduler-outbound-authentication.md)
-
-
-
-
 

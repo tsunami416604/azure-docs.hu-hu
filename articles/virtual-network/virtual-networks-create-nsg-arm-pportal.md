@@ -17,8 +17,7 @@
    ms.date="12/11/2015"
    ms.author="telmos" />
 
-
-# 如何使用 Preview 入口網站管理 NSG
+# 如何使用 Preview 入口網站管理 NSG 
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
@@ -37,26 +36,22 @@
 若要從 Preview 入口網站建立現有 NSG 中的規則，依照下列步驟執行。
 
 1. 從瀏覽器，瀏覽至 http://portal.azure.com，並有必要，請登入您的 Azure 帳戶。
-2. 按一下 [瀏覽]**** > [網路安全性群組]****。
+2. 按一下 [ **瀏覽 >** > **網路安全性群組**。
 
 ![Preview 入口網站 - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure1.png)
 
-3. 在 NSG 清單中按一下 [NSG-FrontEnd]**** > [輸入安全性規則]****
+3. 在 Nsg 清單中，按一下 [ **NSG 前端** > **輸入安全性規則**
 
 ![Preview 入口網站 - NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
 
-4. 在 [輸入安全性規則]**** 清單中，按一下 [新增]****。
+4. 在清單中 **輸入安全性規則**, ，按一下 [ **新增**。
 
 ![Preview 入口網站 - 加入規則](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
 
-5. 在 [新增輸入安全性規則]**** 刀鋒視窗中，建立一個名為 [web-rule]** 的規則，優先順序設為 [200]**，以允許從任何來源經由 [TCP]** 與連接埠 [80]** 存取任何 VM，然後按一下 [確定]****。 請注意，這些設定大部分已是預設值。
+5. 在 **加入輸入的安全性規則** 刀鋒視窗中，建立了名為 *網頁規則* 優先順序為 *200* 允許存取透過 *TCP* 連接埠 *80* 至任何 VM 從任何來源，然後按一下 **確定**。 請注意，這些設定大部分已是預設值。
 
 ![Preview 入口網站 - 規則設定](./media/virtual-networks-create-nsg-arm-pportal/figure4.png)
 
 6. 數秒後，您會看到 NSG 中的新規則。
 
 ![Preview 入口網站 - 新增規則](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
-
-
-
-

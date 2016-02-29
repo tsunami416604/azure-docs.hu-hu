@@ -16,7 +16,6 @@
    ms.date="12/02/2015"
    ms.author="andkjell"/>
 
-
 # Azure AD Connect︰版本發行歷程記錄
 
 Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -29,7 +28,6 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - [下載 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)
 
 ## 1.0.9131.0
-
 發行時間︰2015 年 12 月
 
 **已修正的問題：**
@@ -40,7 +38,6 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - 從有遠端 SQL 伺服器的舊版 Azure AD Connect 更新時，將顯示錯誤訊息「無法存取 ADSync SQL Database」。
 
 ## 1.0.9125.0
-
 發行時間：2015 年 11 月
 
 **新功能︰**
@@ -66,7 +63,7 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
     - 選取要包含在同步處理的新 OU 不需要完整密碼同步處理。
     - 啟用已停用的使用者時，不會同步處理密碼。
     - 密碼重試佇列為無限，而且已移除 5000 個物件要淘汰的先前限制。
-    - [提升疑難排解](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)。
+    - [改善疑難排解](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)。
 - 無法連接到具 Windows Server 2016 樹系功能等級的 Active Directory。
 - 初始安裝後，無法變更群組篩選所使用的群組。
 - 對於在啟用密碼回寫的情況下執行密碼變更的每個使用者，將無法再於 Azure AD Connect 伺服器上建立新的使用者設定檔。
@@ -74,7 +71,6 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - 如果有無法連線的網域控制站，[裝置回寫] 核取方塊會維持停用狀態。
 
 ## 1.0.8667.0
-
 發行日期：2015 年 8 月
 
 **新功能︰**
@@ -100,7 +96,6 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - 預覽功能 [使用者回寫](active-directory-aadconnect-feature-preview.md#user-writeback) 已暫時移除根據預覽客戶的意見反應。 當我們處理所提供的意見反應之後，未來將會重新加入它。
 
 ## 1.0.8641.0
-
 發行日期：2015 年 6 月
 
 **Azure AD Connect 的最初發行版本。**
@@ -120,11 +115,10 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - [使用者回寫](active-directory-aadconnect-feature-preview.md#user-writeback)
 - [群組回寫](active-directory-aadconnect-feature-preview.md#group-writeback)
 - [裝置回寫](active-directory-aadconnect-get-started-custom-device-writeback.md)
-- [目錄延伸模組](active-directory-aadconnect-feature-preview.md#directory-extensions)
+- [目錄擴充](active-directory-aadconnect-feature-preview.md#directory-extensions)
 
 
 ## 1.0.494.0501
-
 發行日期：2015 年 5 月
 
 **新需求︰**
@@ -136,7 +130,6 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - Azure AD 密碼回寫出現服務匯流排連接錯誤。
 
 ## 1.0.491.0413
-
 發行日期：2015年 4 月
 
 **已修正的問題和改進︰**
@@ -154,7 +147,6 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - 聯結現在可以連接到 MV 中的「任何」物件類型。
 
 ## 1.0.485.0222
-
 發行日期：2015 年 2 月
 
 **改進：**
@@ -169,7 +161,6 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - 從相同樹系中的多個網域加入外部安全性主體 (FSP) 會造成模稜兩可的加入錯誤。
 
 ## 1.0.475.1202
-
 發行日期︰2014 年 12 月
 
 **新功能︰**
@@ -191,7 +182,6 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 - 已修正密碼同步處理的 ETW 追蹤
 
 ## 1.0.470.1023
-
 發行日期：2014 年 10 月
 
 **新功能︰**
@@ -212,16 +202,10 @@ Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Co
 AD 帳戶必須獲得其他權限，才能讀取來自 AD 的密碼雜湊。 要授與的權限名為「複寫目錄變更」和「複寫所有目錄變更」。 需要有這兩個權限才能讀取密碼雜湊
 
 ## 1.0.419.0911
-
 發行日期：2014 年 9 月
 
 **Azure AD Sync 的最初發行版本。**
 
 ## 後續步驟
-
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
-
-
-
-
 

@@ -15,12 +15,11 @@
     ms.date="10/21/2015" 
     ms.author="awills"/>
 
-
-# 建立 Application Insights 資源的 PowerShell 指令碼
+#  建立 Application Insights 資源的 PowerShell 指令碼
 
 *Application Insights 目前僅供預覽。*
 
-當您想要監視新的應用程式或新版的應用程式-使用 [Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/), ，您可以設定 Microsoft Azure 中新的資源。 此資源是分析和顯示應用程式之遙測資料的位置。
+當您想要監視新的應用程式-或新版的應用程式-使用 [Visual Studio 應用程式了解](https://azure.microsoft.com/services/application-insights/), ，您可以設定 Microsoft Azure 將新資源。 此資源是分析和顯示應用程式之遙測資料的位置。 
 
 您可以使用 PowerShell 將建立新資源的過程自動化。
 
@@ -30,10 +29,10 @@
 
 *輸出*
 
-* Application Insights 名稱 = mytestapp
+* 應用程式的見解名稱 = mytestapp
 * IKey = 00000000-0000-0000-0000-000000000000
 
-*PowerShell 指令碼*
+*PowerShell 指令碼*  
 
 ```PowerShell
 
@@ -75,6 +74,7 @@ New-AzureRoleAssignment -Mail "myTeam@fabrikam.com" -RoleDefinitionName Owner -S
 #Display iKey
 Write-Host "App Insights Name = " $resource.Name
 Write-Host "IKey = " $resource.Properties.InstrumentationKey
+
 ```
 
 ## 如何使用 iKey
@@ -82,23 +82,19 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 每項資源均是由其檢測金鑰 (iKey) 識別。 iKey 是資源建立指令碼的輸出。 您的建置指令碼應該將 iKey 提供給內嵌在您應用程式中的 Application Insights SDK。
 
 有兩種方式可讓 SDK 取得 iKey：
-
-* 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
- * `< instrumentationkey >`*ikey*`< / instrumentationkey >`
-* 或是在 [初始化程式碼](app-insights-api-custom-events-metrics.md):
- * ' Microsoft.ApplicationInsights.Extensibility。
-    TelemetryConfiguration.Active.InstrumentationKey ="`* iKey *`」;'
+  
+* 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md): 
+ * `<instrumentationkey>`*ikey*`</instrumentationkey>`
+* 或在 [初始化程式碼](app-insights-api-custom-events-metrics.md): 
+ * `Microsoft.ApplicationInsights.Extensibility.
+    TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
 
 
 ## 另請參閱
 
-* [從範本建立 Application Insights 和 web 測試資源](app-insights-powershell.md)
-* [設定 Azure 診斷使用 PowerShell 監視](app-insights-powershell-azure-diagnostics.md)
+* [從範本建立 Application Insights 和 Web 測試資源](app-insights-powershell.md)
+* [Set 使用 PowerShell 設定 Azure 診斷的監視](app-insights-powershell-azure-diagnostics.md) 
 * [使用 PowerShell 設定警示](app-insights-alerts.md#set-alerts-by-using-powershell)
 
-
-
-
-
-
+ 

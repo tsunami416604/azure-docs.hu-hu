@@ -18,13 +18,13 @@
     ms.author="genemi"/>
 
 
-
 # 程式碼範例：C# 中用於連接到 SQL Database 的重試邏輯
+
 
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-本主題提供可示範自訂重試邏輯的 C# 程式碼範例。 重試邏輯的設計目的在於順暢處理暫時錯誤，或如果程式等候幾秒並重試後通常會消失的暫時性錯誤**。
+本主題提供可示範自訂重試邏輯的 C# 程式碼範例。 重試邏輯能正常處理暫時錯誤或 *暫時性錯誤* 傾向於會消失，如果程式等候幾秒並重試。
 
 
 您用來連接到您的本機 Microsoft SQL Server 的 ADO.NET 類別也可以連接到 Azure SQL Database。 不過，ADO.NET 類別本身無法提供在生產環境使用所需的所有穩定性和可靠性。 用戶端程式可能會遇到暫時性錯誤，用戶端程式應該會從失敗中無訊息且正常自行復原。
@@ -40,17 +40,19 @@
 
 ## 識別暫時性錯誤
 
+
 您的程式必須區分暫時性錯誤與持續性錯誤。 如果您的程式對於目標資料庫名稱拼字錯誤，「找不到這類資料庫」錯誤將會持續並且每次重新執行該程式將會再次出現。
 
 
 分類為暫時性錯誤的錯誤號碼清單可自此取得：
 
 
-- [SQL 資料庫用戶端程式的錯誤訊息](sql-database-develop-error-messages.md#bkmk_connection_errors)
- - 請參閱＜暫時性錯誤、連線中斷錯誤＞**一節。
+- [SQL Database 用戶端程式的錯誤訊息](sql-database-develop-error-messages.md#bkmk_connection_errors)
+ - 請參閱關於的上方區段 *暫時性錯誤、 連接遺失錯誤*。
 
 
 ## 程式碼範例
+
 
 目前主題中的 C# 程式碼範例包含可處理暫時性錯誤的自訂偵測和重試邏輯。 範例假設已安裝 .NET Framework 4.5.1 或更新版本。
 
@@ -58,13 +60,14 @@
 程式碼範例會遵循幾個基本指導方針或適用的建議，而不論用來與 Azure SQL Database 互動的技術為何。 您可以在此處看到一般建議：
 
 
-- [連接到 SQL Database: 連結、 最佳作法和設計方針](sql-database-connect-central-recommendations.md)
+- [連接到 SQL Database：連結、最佳作法和設計方針](sql-database-connect-central-recommendations.md)
 
 
-C# 程式碼範例包含一個名為 Program.cs 的檔案。 範例的程式碼會貼在下一個區段。
+C# 程式碼範例包含一個名為 Program.cs 的檔案。  範例的程式碼會貼在下一個區段。
 
 
 ### 擷取與編譯程式碼範例
+
 
 您可以使用下列步驟編譯此範例：
 
@@ -86,10 +89,11 @@ C# 程式碼範例包含一個名為 Program.cs 的檔案。 範例的程式碼�
 
 #### 要貼上的 C# 原始程式碼
 
-將此程式碼到貼到您的 **Program.cs** 檔案中。
+
+將此程式碼到您 **Program.cs** 檔案。
 
 
-接著，您必須編輯伺服器名稱、密碼等項目的字串。 您可以在名為 **GetSqlConnectionStringBuilder** 的方法中找到這些字串。
+接著，您必須編輯伺服器名稱、密碼等項目的字串。 您可以找到這些字串在方法中名為 **GetSqlConnectionStringBuilder**。
 
 
 ```
@@ -215,14 +219,15 @@ SELECT TOP 3
 
 ### 執行程式
 
-**RetryAdo2.exe** 可執行檔不會輸入任何參數。 在 Visual Studio 中執行.exe：
+
+ **RetryAdo2.exe** 可執行檔不輸入任何參數。 在 Visual Studio 中執行.exe：
 
 
-1. 在 **Main** 方法的 **return;** 陳述式上設定中斷點。
+1. 上設定中斷點 **傳回;** 陳述式中的 **Main** 方法。
 
 2. 按一下綠色的開始箭號按鈕。 主控台視窗隨即顯示。
 
-3. 當偵錯工具停止在 **Main** 的結尾時，切換至主控台視窗。
+3. 當偵錯工具會停止在結尾 **Main**, ，切換至主控台視窗。
 
 4. 查看三個資料列，其內容可能與下列相同：
 
@@ -236,10 +241,11 @@ filetable_updates_2105058535    2105058535
 
 ## 測試您的重試邏輯
 
+
 測試重試邏輯的一種現成方法如下：
 
 
-1. 暫時將 **11001** 加入 **SqlConnection.Number** 值的集合中，這些值應會被視為暫時性錯誤。
+1. 暫時新增 **11001** 至您的收藏的 **SqlConnection.Number** 應該視為暫時性錯誤的值。
 
 2. 重新編譯您的程式。
 
@@ -255,12 +261,13 @@ filetable_updates_2105058535    2105058535
 
 ### 另一種測試選項
 
+
 另一種方式，是將邏輯加入您的程式，以辨識 "test" 的命令列參數值。 為了回應參數，程式會執行以下動作：
 
 
 1. 暫時附加多餘的字母，刻意拼錯 SQL Database 伺服器名稱。
 
-2. 暫時將 **40615** 加入暫時性錯誤清單中。
+2. 暫時新增 **40615** 的暫時性錯誤清單。
 
 3. 開始第二次迴圈 (也就是第一次重試迴圈) 時，程式會執行以下動作：
  - 復原伺服器的拼字錯誤。
@@ -272,10 +279,7 @@ filetable_updates_2105058535    2105058535
 
 ## 相關連結
 
+
 - [SQL Database 的用戶端快速入門程式碼範例](sql-database-develop-quick-start-client-code-samples.md)
-
-
-
-
 
 

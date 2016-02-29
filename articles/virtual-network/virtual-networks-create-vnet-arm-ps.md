@@ -17,7 +17,6 @@
    ms.date="12/07/2015"
    ms.author="telmos"/>
 
-
 # 使用 PowerShell 建立虛擬網路
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
@@ -33,7 +32,3 @@
 [AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-ps-include](../../includes/virtual-networks-create-vnet-arm-ps-include.md)]
-
-
-
-

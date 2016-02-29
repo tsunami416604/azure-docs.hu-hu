@@ -2,74 +2,74 @@
 
 在本節中，您會撰寫 Windows 主控台應用程式，模擬裝置傳送裝置對雲端訊息至 IoT 中樞。
 
-1. 在 Visual Studio 中，將新的 Visual C# Windows 傳統桌面專案加入至目前的方案使用 **主控台應用程式** 專案範本。 將專案命名為 **SimulatedDevice**。
+1. 在 Visual Studio 中，將新的 Visual C# Windows 傳統桌面專案加入至目前的方案使用 **主控台應用程式** 專案範本。  將專案命名為 **SimulatedDevice**。
 
     ![][30]
 
-2. 在 [方案總管] 中，以滑鼠右鍵按一下 **SimulatedDevice** 專案，然後按一下 [管理 NuGet 封裝]****。
+2. 在 [方案總管] 中，以滑鼠右鍵按一下 **SimulatedDevice** 專案，然後再按一下 **管理 NuGet 封裝**。
 
-3. 在 [NuGet 封裝管理員]**** 視窗中，請確認已選取 [包含發行前版本]**** 選項。 搜尋 **Microsoft Azure 裝置用戶端**，按一下 [安裝]**** 然後接受使用規定。
+3. 在 **NuGet 封裝管理員** ] 視窗中，請確定 **包括發行前版本** 核取選項。 搜尋 **Microsoft Azure 用戶端裝置上**, ，按一下 [ **安裝**, ，並接受使用規定。
 
-    這會下載、 安裝，並將參考加入 [Azure IoT-裝置 SDK NuGet 封裝 ][lnk-device-nuget]。
+    這會下載、 安裝，並將參考加入 [Azure IoT-裝置 SDK NuGet 封裝][lnk-device-nuget]。
 
-4. 新增下列 `使用` 上方的陳述式 **Program.cs** 檔案:
+4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案:
 
         using Microsoft.Azure.Devices.Client;
         using Newtonsoft.Json;
         using System.Threading;
 
-5. 在 [程式]**** 類別加入下列欄位，以*建立 IoT 中樞*小節中擷取的 IoT 中樞主機名稱和*建立裝置身分識別*小節中擷取的裝置金鑰取代預留位置值：
+5. 加入下列欄位來 **程式** 類別，以取代預留位置值，以擷取的 IoT 中心主機名稱 *建立 IoT 中心* 中，擷取區段及裝置金鑰 *建立裝置的身分識別* 區段:
 
         static DeviceClient deviceClient;
         static string iotHubUri = "{iot hub hostname}";
         static string deviceKey = "{device key}";
 
-6. 將下列方法加入至 **Program** 類別：
+6. 將下列方法加入 **程式** 類別:
 
-     private static async void SendDeviceToCloudMessagesAsync()
-     {
-         double avgWindSpeed = 10; // m/s
-         Random rand = new Random();
-    
-         while (true)
-         {
-             double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
-    
-             var telemetryDataPoint = new
-             {
-                 deviceId = "myFirstDevice",
-                 windSpeed = currentWindSpeed
-             };
-             var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
-             var message = new Message(Encoding.ASCII.GetBytes(messageString));
-    
-             await deviceClient.SendEventAsync(message);
-             Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
-    
-             Thread.Sleep(1000);
-         }
-     }
+        private static async void SendDeviceToCloudMessagesAsync()
+        {
+            double avgWindSpeed = 10; // m/s
+            Random rand = new Random();
 
- 這個方法會每秒傳送新的裝置對雲端訊息。 此訊息會包含 JSON 序列化物件及 deviceId 與隨機產生的數字，以模擬風向速度感應器。
+            while (true)
+            {
+                double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
 
-7. 最後，將下列幾行加入至 **Main** 方法：
+                var telemetryDataPoint = new
+                {
+                    deviceId = "myFirstDevice",
+                    windSpeed = currentWindSpeed
+                };
+                var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+                var message = new Message(Encoding.ASCII.GetBytes(messageString));
 
-     Console.WriteLine("Simulated device\n");
-     deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey));
-    
-     SendDeviceToCloudMessagesAsync();
-     Console.ReadLine();
+                await deviceClient.SendEventAsync(message);
+                Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
 
-  根據預設，**Create** 方法會建立一個使用 AMQP 通訊協定的 **DeviceClient** 來和 IoT 中樞通訊。 若要使用 HTTPS 通訊協定，請使用可讓您指定通訊協定的 **Create** 方法的覆寫。 若您選擇使用 HTTPS 通訊協定，您也應該將 **Microsoft.AspNet.WebApi.Client** NuGet 封裝新增至您的專案，以包含 **System.Net.Http.Formatting** 命名空間。
+                Thread.Sleep(1000);
+            }
+        }
 
+    這個方法會每秒傳送新的裝置對雲端訊息。 此訊息會包含 JSON 序列化物件及 deviceId 與隨機產生的數字，以模擬風向速度感應器。
 
-> [AZURE.NOTE] 為了簡單起見，本教學課程不會實作任何重試原則。 在實際執行程式碼，您應該實作重試原則 (例如指數輪詢)，做為建議在 MSDN 文章 [暫時性錯誤處理 ][lnk-transient-faults]。
+7. 最後，加入下列幾行以 **Main** 方法:
+
+        Console.WriteLine("Simulated device\n");
+        deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey));
+
+        SendDeviceToCloudMessagesAsync();
+        Console.ReadLine();
+
+  根據預設， **建立** 方法會建立 **DeviceClient** IoT 中心與通訊使用 AMQP 通訊協定。 若要使用 HTTPS 通訊協定，使用覆寫 **建立** 方法，可讓您指定的通訊協定。 如果您選擇使用 HTTPS 通訊協定，您還應該新增 **Microsoft.AspNet.WebApi.Client** NuGet 封裝加入專案，以包含 **System.Net.Http.Formatting** 命名空間。
 
 
+> [AZURE.NOTE] 為了簡單起見，本教學課程不會實作任何重試原則。 在實際執行程式碼，您應該實作重試原則 (例如指數輪詢)，做為建議在 MSDN 文章 [暫時性錯誤處理][lnk-transient-faults]。
 
+<!-- Links -->
 
+[lnk-device-nuget]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
+[lnk-transient-faults]: https://msdn.microsoft.com/en-us/library/hh680901(v=pandp.50).aspx
 
-[lnk-device-nuget]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/ 
-[lnk-transient-faults]: https://msdn.microsoft.com/en-us/library/hh680901(v=pandp.50).aspx 
-[30]: ./media/iot-hub-getstarted-device-csharp/create-identity-csharp1.png 
+<!-- Images -->
+[30]: ./media/iot-hub-getstarted-device-csharp/create-identity-csharp1.png
 

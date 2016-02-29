@@ -1,6 +1,6 @@
 <properties
     pageTitle="搭配 .NET 使用服務匯流排主題 | Microsoft Azure"
-    description="了解如何在 Azure 搭配 .NET 使用服務匯流排主題及訂用帳戶。程式碼範例專為 .NET 應用程式撰寫。"
+    description="了解如何在 Azure 搭配 .NET 使用服務匯流排主題及訂用帳戶。 程式碼範例專為 .NET 應用程式撰寫。"
     services="service-bus"
     documentationCenter=".net"
     authors="sethmanheim"
@@ -15,7 +15,6 @@
     ms.topic="get-started-article"
     ms.date="10/15/2015"
     ms.author="sethm"/>
-
 
 # 如何使用服務匯流排主題和訂用帳戶
 
@@ -40,8 +39,8 @@
 
 1.  在 [方案總管] 中，以滑鼠右鍵按一下 **參考**, ，然後按一下
     **管理 NuGet 封裝**。
-2.  搜尋 「 服務匯流排 」 並選取 * * Microsoft Azure
-    服務匯流排 * * 項目。 按一下 [ **安裝** 以完成安裝，
+2.  搜尋 「 服務匯流排 」 並選取 **Microsoft Azure
+    服務匯流排** 項目。 按一下 [ **安裝** 以完成安裝，
     然後關閉下列對話方塊。
 
     ![][7]
@@ -59,7 +58,7 @@
 
 ### 在使用雲端服務時設定連接字串
 
-服務設定機制為 Azure 雲端服務專案所獨有，可讓您動態變更組態設定從 [Azure 傳統入口網站 []][] 不需重新部署您的應用程式。 例如，加入 `設定` 服務定義的標籤 (***.csdef**) 檔案中下一個範例所示。
+服務設定機制為 Azure 雲端服務專案所獨有，可讓您動態變更組態設定從 [Azure 傳統入口網站][] 不需重新部署您的應用程式。 例如，加入 `Setting` 標籤到您的服務定義 (***.csdef**) 檔案中下一個範例所示。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -92,7 +91,7 @@
 
 ### 在使用 Azure 網站或 Azure 虛擬機器時設定連接字串
 
-使用網站或虛擬機器時，建議您使用 .NET 組態系統 (例如，Web.config)。您可以儲存連接字串使用 `< g s >` 項目。
+使用網站或虛擬機器時，建議您使用 .NET 組態系統 (例如，Web.config)。 您可以使用 `<appSettings>` 元素儲存連接字串。
 
 ```
 <configuration>
@@ -117,9 +116,10 @@
 Endpoint=sb://<yourServiceNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey
 ```
 
-Use the following example, given the configuration settings in the previous section.
+請使用下例，假設組態設定如上一節。
+
 ```
-如果它尚未存在，請建立主題。
+// Create the topic if it does not exist already.
 string connectionString =
     CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
 
@@ -132,14 +132,15 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-There are overloads of the [CreateTopic](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createtopic.aspx) method that enable you to tune properties of the topic, for example, to set the default time-to-live (TTL) value to be applied to messages sent to the topic. These settings are applied by using the [TopicDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.aspx) class. The following example shows how to create a topic named **TestTopic** with a maximum size of 5 GB and a default message TTL of 1 minute.
+有的多載 [Createqueue](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createtopic.aspx) 方法可讓您調整主題的屬性，例如，若要設定預設存留時間 (TTL) 值套用至傳送至主題的訊息。 這些設定會套用使用 [TopicDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.aspx) 類別。 下列範例示範如何建立名為 **TestTopic** 最大值為 5 GB 和預設訊息 TTL 為 1 分鐘。
+
 ```
-設定主題設定。
+// Configure Topic Settings.
 TopicDescription td = new TopicDescription("TestTopic");
 td.MaxSizeInMegabytes = 5120;
 td.DefaultMessageTimeToLive = new TimeSpan(0, 1, 0);
 
-使用自訂設定建立新的主題。
+// Create a new Topic with custom settings.
 string connectionString =
     CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
 
@@ -152,16 +153,17 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-> [AZURE.NOTE] You can use the [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) method on [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) objects to check whether a topic with a specified name already exists within a namespace.
+> [AZURE.NOTE] 您可以使用 [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) 方法 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 物件來檢查命名空間內是否已存在具有指定名稱的主題。
 
-## Create a subscription
+## 建立訂用帳戶
 
-You can also create topic subscriptions using the [`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) class. Subscriptions are named and can have an optional filter that
-restricts the set of messages passed to the subscription's virtual queue.
+您也可以建立主題訂用帳戶使用 [`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別。 訂閱是具名的，它們能擁有選用的篩選器，
+限制傳遞至訂閱虛擬佇列的訊息集合。
 
-### Create a subscription with the default (MatchAll) filter
+### 使用預設 (MatchAll) 篩選器建立訂用帳戶
 
-The **MatchAll** filter is the default filter that is used if no filter is specified when a new subscription is created. When you use the **MatchAll** filter, all messages published to the topic are placed in the subscription's virtual queue. The following example creates a subscription named "AllMessages" and uses the default **MatchAll** filter.
+ **MatchAll** 篩選器是預設篩選器，如果沒有指定篩選時建立新的訂閱。 當您使用 **MatchAll** 篩選條件，所有發佈至主題的訊息都會被置於訂閱的虛擬佇列。 下列範例會建立名為"AllMessages"的訂閱，並使用預設 **MatchAll** 篩選器。
+
 ```
 string connectionString =
     CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
@@ -175,15 +177,16 @@ if (!namespaceManager.SubscriptionExists("TestTopic", "AllMessages"))
 }
 ```
 
-### Create subscriptions with filters
+### 使用篩選器建立訂用帳戶
 
-You can also set up filters that enable you to specify which messages sent to a topic should appear within a specific topic subscription.
+您也可以設定篩選器，讓您指定傳送至主題的哪些訊息應出現在特定主題訂用帳戶中。
 
-The most flexible type of filter supported by subscriptions is the [SqlFilter][] class, which implements a subset of SQL92. SQL filters operate on the properties of the messages that are published to the topic. For more information about the expressions that can be used with a SQL filter, see the [SqlFilter.SqlExpression][] syntax.
+訂閱所支援的篩選器的最具彈性的型別是 [SqlFilter][] 類別，實作 SQL92 的子集。 SQL 篩選器會對發佈至主題之訊息的屬性運作。 如需可與 SQL 篩選運算式的詳細資訊，請參閱 [SqlFilter.SqlExpression][] 語法。
 
-The following example creates a subscription named **HighMessages** with a [SqlFilter][] object that only selects messages that have a custom **MessageNumber** property greater than 3.
+下列範例會建立名為 **HighMessages** 與 [SqlFilter][] 物件，只選取自訂的訊息 **MessageNumber** 屬性大於 3。
+
 ```
-建立"HighMessages"經篩選的訂閱。
+// Create a "HighMessages" filtered subscription.
 SqlFilter highMessagesFilter =
    new SqlFilter("MessageNumber > 3");
 
@@ -192,9 +195,10 @@ namespaceManager.CreateSubscription("TestTopic",
    highMessagesFilter);
 ```
 
-Similarly, the following example creates a subscription named **LowMessages** with a [SqlFilter][] that only selects messages that have a **MessageNumber** property less than or equal to 3.
+同樣地，下列範例會建立名為 **LowMessages** 與 [SqlFilter][] sqlfilter 只選取 **MessageNumber** 屬性小於或等於 3。
+
 ```
-建立"LowMessages"經篩選的訂閱。
+// Create a "LowMessages" filtered subscription.
 SqlFilter lowMessagesFilter =
    new SqlFilter("MessageNumber <= 3");
 
@@ -203,13 +207,14 @@ namespaceManager.CreateSubscription("TestTopic",
    lowMessagesFilter);
 ```
 
-Now when a message is sent to `TestTopic`, it is always delivered to receivers subscribed to the **AllMessages** topic subscription, and selectively delivered to receivers subscribed to the **HighMessages** and **LowMessages** topic subscriptions (depending on the message content).
+現在當訊息傳送至 `TestTopic`, ，它一定會傳遞到已訂閱 **AllMessages** 主題訂用帳戶，並選擇性地傳遞至已訂閱 **HighMessages** 和 **LowMessages** 主題訂閱的接收者 (視訊息內容而定)。
 
-## Send messages to a topic
+## 傳送訊息至主題
 
-To send a message to a Service Bus topic, your application creates a [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) object using the connection string.
+若要傳送訊息至服務匯流排主題，應用程式建立 [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 物件使用的連接字串。
 
-The following code demonstrates how to create a [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) object for the **TestTopic** topic created earlier using the [`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.createfromconnectionstring.aspx) API call.
+下列程式碼示範如何建立 [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 物件 **TestTopic** 主題稍早使用建立 [`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.createfromconnectionstring.aspx) API 呼叫。
+
 ```
 string connectionString =
     CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
@@ -220,37 +225,39 @@ TopicClient Client =
 Client.Send(new BrokeredMessage());
 ```
 
-Messages sent to Service Bus topics are instances of the [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) class. [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) objects have a set of
-standard properties (such as [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) and [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), a dictionary that is used to hold custom application-specific properties, and a body of arbitrary application data. An application can set the body of the message by passing any serializable object to the constructor of the [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) object, and the appropriate **DataContractSerializer** is then used to serialize the object. Alternatively, a **System.IO.Stream** can be provided.
+傳送至服務匯流排主題的訊息是 [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 類別。 [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 物件具有一組
+標準屬性 (例如 [標籤](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) 和 [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx))、 用來保存自訂應用程式特定屬性的字典和一堆任意的應用程式資料。 應用程式可以設定訊息本文，任何可序列化物件傳遞至建構函式 [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 物件，並適當 **DataContractSerializer** 再用來序列化物件。 或者， **System.IO.Stream** 可以提供。
 
-The following example demonstrates how to send five test messages to the **TestTopic** [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) object obtained in the previous code example. Note that the [MessageNumber](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.properties.aspx) property value of each message varies depending on the iteration of the loop (this determines which subscriptions receive it).
+下列範例示範如何傳送五則測試訊息至 **TestTopic** [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 上述程式碼範例中所取得的物件。 請注意， [MessageNumber](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.properties.aspx) 每個訊息的屬性值而異迴圈的反覆項目 (這可判斷哪些訂閱會接收)。
+
 ```
-for (int 我 = 0; 我 < 5; i + +)
+for (int i=0; i<5; i++)
 {
   // Create message, passing a string message for the body.
   BrokeredMessage message = new BrokeredMessage("Test message " + i);
 
-  設定額外的自訂應用程式特定屬性。
+  // Set additional custom app-specific property.
   message.Properties["MessageNumber"] = i;
 
-  傳送訊息至主題。
+  // Send message to the topic.
   Client.Send(message);
 }
 ```
 
-Service Bus topics support a [maximum message size of 256 KB](service-bus-quotas.md) (the header, which includes the standard and custom application properties, can have a maximum size of 64 KB). There is no limit on the number of messages held in a topic but there is a cap on the total size of the messages held by a topic. This topic size is defined at creation time, with an upper limit of 5 GB. If partitioning is enabled, the upper limit is higher. For more information, see [Partitioning Messaging Entities](https://msdn.microsoft.com/library/azure/dn520246.aspx).
+服務匯流排主題支援 [256 KB 的訊息大小上限](service-bus-quotas.md) (包含標準和自訂應用程式屬性標頭可以容納 64 KB 的大小上限)。 主題中所保存的訊息數目沒有限制，但主題所保存的訊息大小總計會有最高限制。 此主題大小會在建立時定義，上限是 5 GB。 如果啟用分割，上限會更高。 如需詳細資訊，請參閱 [分割訊息實體](https://msdn.microsoft.com/library/azure/dn520246.aspx)。
 
-## How to receive messages from a subscription
+## 如何自訂用帳戶接收訊息
 
-The recommended way to receive messages from a subscription is to use a [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) object. [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) objects can work in two different modes: [ReceiveAndDelete and PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx).
+自訂閱接收訊息的建議的方式是使用 [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 物件。 [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 物件可以在兩個不同的模式下運作: [ReceiveAndDelete 和 PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx)。
 
-When using the **ReceiveAndDelete** mode, receive is a single-shot operation; that is, when Service Bus receives a read request for a message in a subscription, it marks the message as being consumed and returns it to the application. **ReceiveAndDelete** mode is the simplest model and works best for scenarios in which an application can tolerate not processing a message in the event of a failure. To understand this, consider a scenario in which the consumer issues the receive request and then crashes before processing it. Because Service Bus will have marked the message as consumed, when the application restarts and begins consuming messages again, it will have missed the message that was consumed prior to the crash.
+當使用 **ReceiveAndDelete** 模式中，接收是一次性作業; 也就是當服務匯流排在訂閱中收到訊息的讀取的要求，它會標示為已取用的訊息並傳回應用程式。 **ReceiveAndDelete** 模式是最簡單的模型，且最適用於應用程式容許在不處理訊息發生失敗時的案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-In **PeekLock** mode (which is the default mode), the receive process becomes a two-stage operation which makes it possible to support applications that cannot tolerate missing messages. When Service Bus receives a request,
-it finds the next message to be consumed, locks it to prevent other consumers receiving it, and then returns it to the application. After the application finishes processing the message (or stores it reliably for future processing), it completes the second stage of the receive process by calling [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) on the received message. When Service Bus sees the **Complete** call, it marks the message as being consumed and removes it from the subscription.
+在 **PeekLock** 模式 (此為預設模式)，接收程序會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，
+它會尋找要取用的下一個訊息、 其鎖定以防止其他取用者接收該訊息，並將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 所接收訊息。 當服務匯流排看到 **完成** 呼叫時，它將訊息標示為已取用，並將它從訂閱移除。
 
-The following example demonstrates how messages can be received and processed using the default **PeekLock** mode. To specify a different [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) value, you can use another overload for [CreateFromConnectionString](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.createfromconnectionstring.aspx). This example uses the [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) callback to process messages as they arrive
-into the **HighMessages** subscription.
+下列範例示範如何可以接收與處理訊息使用預設 **PeekLock** 模式。 若要指定不同 [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 值，您可以使用另一個多載 [CreateFromConnectionString](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.createfromconnectionstring.aspx)。 這個範例會使用 [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) 回呼來處理送達的訊息
+到 **HighMessages** 訂用帳戶。
+
 ```
 string connectionString =
     CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
@@ -259,20 +266,20 @@ SubscriptionClient Client =
     SubscriptionClient.CreateFromConnectionString
             (connectionString, "TestTopic", "HighMessages");
 
-設定回撥選項。
-OnMessageOptions 選項 = 新 OnMessageOptions();
-選項。AutoComplete = false;
-選項。AutoRenewTimeout = TimeSpan.FromMinutes(1);
+// Configure the callback options.
+OnMessageOptions options = new OnMessageOptions();
+options.AutoComplete = false;
+options.AutoRenewTimeout = TimeSpan.FromMinutes(1);
 
-Client.OnMessage((message) = >
+Client.OnMessage((message) =>
 {
     try
     {
-        從訂用帳戶處理訊息。
-        Console.WriteLine ("\n**高訊息**」)。
-        Console.WriteLine (「 內文:"+ 訊息。GetBody<string>())。
-        Console.WriteLine (「 訊息識別碼:"+ 訊息。訊息識別碼)。
-        Console.WriteLine (」 訊息數目:"+
+        // Process message from subscription.
+        Console.WriteLine("\n**High Messages**");
+        Console.WriteLine("Body: " + message.GetBody<string>());
+        Console.WriteLine("MessageID: " + message.MessageId);
+        Console.WriteLine("Message Number: " +
             message.Properties["MessageNumber"]);
 
         // Remove message from subscription.
@@ -283,32 +290,33 @@ Client.OnMessage((message) = >
         // Indicates a problem, unlock message in subscription.
         message.Abandon();
     }
-
-}，選項)。
+}, options);
 ```
 
-This example configures the [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) callback using an [OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) object. [AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) is set to **false** to enable manual control of when to call [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) on the received message. [AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) is set to 1 minute, which causes the client to wait for up to one minute for a message before the call times out and the client makes a new call to check for messages. This property value reduces the number of times the client makes chargeable calls that do not retrieve messages.
+這個範例會設定 [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) 回呼使用 [OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) 物件。 [自動完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) 設為 **false** 以手動控制何時要呼叫 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 所接收訊息。 [AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) 設為 1 分鐘，讓用戶端呼叫逾時和用戶端建立新的呼叫，以檢查訊息之前，等候一分鐘的訊息。 這個屬性值會減少用戶端無法擷取訊息所出現的收費呼叫次數。
 
-## How to handle application crashes and unreadable messages
+## 如何處理應用程式當機與無法讀取的訊息
 
-Service Bus provides functionality to help you gracefully recover from errors in your application or difficulties processing a message. If a receiving application is unable to process the message for some reason, then it can call the [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.abandon.aspx) method on the received message (instead
-of the [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) method). This causes Service Bus to unlock the message within the subscription and make it available to be received again, either by the same consuming application or by another consuming application.
+服務匯流排提供一種功能，可協助您從應用程式的錯誤或處理訊息的問題中順利復原。 如果接收應用程式無法處理訊息，因為某種原因，則它可以呼叫 [放棄](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.abandon.aspx) 方法上接收的訊息 (改為
+ [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 方法)。 這導致服務匯流排將訂用帳戶中的訊息解除鎖定，讓此訊息可以被相同取用應用程式或其他取用應用程式重新接收。
 
-There is also a time-out associated with a message locked within the subscription, and if the application fails to process the message before the lock time-out expires (for example, if the application crashes), then Service Bus unlocks the message automatically and makes it available to be received again.
+與訂用帳戶內鎖定訊息相關的還有逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會自動解除鎖定訊息，並讓訊息可以被重新接收。
 
-In the event that the application crashes after processing the message but before the [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) request is issued, the message will be redelivered to the application when it restarts. This is often called *At Least Once processing*; that is, each message is processed at least once but in certain situations the same message may be
-redelivered. If the scenario cannot tolerate duplicate processing, then application developers should add additional logic to their application to handle duplicate message delivery. This is often achieved using the
-[MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) property of the message, which will remain constant across delivery attempts.
+該應用程式當機之前處理訊息之後 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 發出要求，將訊息傳遞給應用程式重新啟動時。 這通常稱為 *至少之後處理*; 也就是說，每個訊息會至少處理一次，但在某些情況下可能會有相同的訊息
+訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 通常您可使用訊息的
+[MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) 會保持不變各個傳遞嘗試的訊息屬性。
 
-## Delete topics and subscriptions
+## 刪除主題和訂用帳戶
 
-The following example demonstrates how to delete the topic **TestTopic** from the **HowToSample** service namespace.
+下列範例示範如何刪除的主題 **TestTopic** 從 **HowToSample** 服務命名空間。
+
 ```
-刪除的主題。
+// Delete Topic.
 namespaceManager.DeleteTopic("TestTopic");
 ```
 
-Deleting a topic also deletes any subscriptions that are registered with the topic. Subscriptions can also be deleted independently. The following code demonstrates how to delete a subscription named **HighMessages** from the **TestTopic** topic.
+刪除主題也將會刪除對主題註冊的任何訂用帳戶。 您也可以個別刪除訂閱。 下列程式碼示範如何刪除名為 **HighMessages** 從 **TestTopic** 主題。
+
 ```
 namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 ```
@@ -317,17 +325,18 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 
 了解基本的服務匯流排主題和訂用帳戶之後，請參考下列連結以取得更多資訊。
 
--   請參閱 [佇列、 主題和訂用帳戶的 []][]。
--   API 參考 [SqlFilter []][]。
--   建置工作應用程式傳送和接收服務匯流排佇列的訊息: [服務匯流排代理傳訊.NET 教學課程 []][]。
--   服務匯流排範例: 從下載 [Azure 範例 []][] 或參閱 [概觀](service-bus-samples.md)。
+-   請參閱 [佇列、 主題和訂閱][]。
+-   API 參考 [SqlFilter][]。
+-   建置工作應用程式傳送和接收服務匯流排佇列的訊息: [服務匯流排代理傳訊.NET 教學課程][]。
+-   服務匯流排範例: 從下載 [Azure 範例][] 或參閱 [概觀](service-bus-samples.md)。
 
+  [Azure classic portal]: http://manage.windowsazure.com
 
-[azure classic portal]: http://manage.windowsazure.com 
-[7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png 
-[queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md 
-[sqlfilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx 
-[sqlfilter.sqlexpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx 
-[service bus brokered messaging .net tutorial]: service-bus-brokered-tutorial-dotnet.md 
-[azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2 
+  [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
+
+  [Queues, Topics, and Subscriptions]: service-bus-queues-topics-subscriptions.md
+  [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
+  [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+  [Service Bus Brokered Messaging .NET Tutorial]: service-bus-brokered-tutorial-dotnet.md
+  [Azure Samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 

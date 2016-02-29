@@ -16,7 +16,6 @@
     ms.date="12/09/2015"
     ms.author="krisragh"/>
 
-
 # 在行動服務中的使用者服務端授權
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -24,18 +23,17 @@
 &nbsp;
 
 
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Any | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
-- [(Any | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
+> [AZURE.SELECTOR-LIST (Platform | Backend )]
+- [(任何 | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
+- [(任何 | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
 
-
-本主題說明如何使用伺服器端邏輯來授權使用者。 在此教學課程中，您會修改資料表控制器、根據使用者識別碼篩選查詢，以及只提供使用者對自己資料的存取權。 根據使用者識別碼篩選使用者查詢結果是最基本的授權形式。 根據特定案例，您也可能也會想要建立使用者或角色資料表，以便追蹤更詳細的使用者授權資訊，例如使用者可以存取哪些端點。
+本主題說明如何使用伺服器端邏輯來授權使用者。  在此教學課程中，您會修改資料表控制器、根據使用者識別碼篩選查詢，以及只提供使用者對自己資料的存取權。 根據使用者識別碼篩選使用者查詢結果是最基本的授權形式。 根據特定案例，您也可能也會想要建立使用者或角色資料表，以便追蹤更詳細的使用者授權資訊，例如使用者可以存取哪些端點。
 
 本教學課程根據行動服務快速入門，且 [將驗證新增至現有的行動服務應用程式] 教學課程為基礎。 請先完成 [將驗證新增至現有的行動服務應用程式]。
 
 ## <a name="register-scripts"></a>修改資料存取方法
 
-1. 在 Visual Studio 中開啟行動專案，展開 DataObjects 資料夾，然後開啟 **TodoItem.cs**。 **TodoItem** 類別可定義資料物件，而且您需要新增 **UserId** 屬性才能用於篩選。 將下列新 UserId 屬性新增至 **TodoItem** 類別：
+1. 在 Visual Studio 中開啟行動專案，展開 DataObjects 資料夾，然後開啟 **TodoItem.cs**。  **TodoItem** 類別會定義資料物件，而且您需要新增 **UserId** 要用於篩選的屬性。 新增下列新 UserId 屬性至 **TodoItem** 類別:
 
         public string UserId { get; set; }
 
@@ -45,24 +43,24 @@
 
         using Microsoft.WindowsAzure.Mobile.Service.Security;
 
-3. 尋找 **PostTodoItem** 方法，並將下列程式碼新增至方法開頭。
+3. 找出 **PostTodoItem** 方法，並在方法開頭新增下列程式碼。
 
-     // Get the logged in user
-     var currentUser = User as ServiceUser;
-    
-     // Set the user ID on the item
-     item.UserId = currentUser.Id;
+        // Get the logged in user
+        var currentUser = User as ServiceUser;
 
- 這個程式碼會將已驗證使用者的使用者識別碼新增至項目 (在它插入到 TodoItem 資料表之前)。
+        // Set the user ID on the item
+        item.UserId = currentUser.Id;
 
-3. 尋找 **GetAllTodoItems** 方法，並使用下行程式碼取代現有的 **return** 陳述式：
+    這個程式碼會將已驗證使用者的使用者識別碼新增至項目 (在它插入到 TodoItem 資料表之前)。
 
-     // Get the logged in user
-     var currentUser = User as ServiceUser;
-    
-     return Query().Where(todo => todo.UserId == currentUser.Id);
+3. 找出 **GetAllTodoItems** 方法，並取代現有 **傳回** 陳述式加上下列程式碼行:
 
- This query filters the returned TodoItem objects so that each user only receives the items that they inserted.
+        // Get the logged in user
+        var currentUser = User as ServiceUser;
+
+        return Query().Where(todo => todo.UserId == currentUser.Id);
+
+    This query filters the returned TodoItem objects so that each user only receives the items that they inserted.
 
 4. 將行動服務專案重新發佈至 Azure。
 
@@ -75,13 +73,14 @@
 
 
 
+<!-- Anchors. -->
+[Register server scripts]: #register-scripts
+[Next Steps]:#next-steps
 
+<!-- Images. -->
 
+[3]: ./media/mobile-services-dotnet-backend-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png
 
-
-
-[register server scripts]: #register-scripts 
-[next steps]: #next-steps 
-[3]: ./media/mobile-services-dotnet-backend-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png 
-[add authentication to existing mobile services app]: mobile-services-dotnet-backend-ios-get-started-users.md 
+<!-- URLs. -->
+[Add Authentication to Existing Mobile Services App]: mobile-services-dotnet-backend-ios-get-started-users.md
 

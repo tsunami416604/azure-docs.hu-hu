@@ -6,7 +6,7 @@
    authors="mumian" 
    manager="paulettm" 
    editor="cgronlun"/>
-
+ 
 <tags
    ms.service="data-lake-analytics"
    ms.devlang="na"
@@ -16,8 +16,8 @@
    ms.date="12/11/2015"
    ms.author="jgao"/>
 
-
 # 使用 Node.js 的 Azure SDK 管理 Azure 資料湖分析
+
 
 [AZURE.INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
@@ -29,21 +29,20 @@ Node.js 的 Azure ADK 可用於管理 Azure 資料湖分析帳戶、工作與目
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - **Azure 資料湖分析帳戶**。 請參閱 [開始使用 Azure 入口網站的 Azure 資料湖分析](data-lake-analytics-get-started-portal.md) 建立帳戶。
-- **具備存取資料湖分析帳戶權限的服務主體**。 請參閱 [驗證服務主體與 Azure 資源管理員](resource-group-authenticate-service-principal.md)。
+- **若要存取資料湖分析帳戶的權限的服務主體**。 請參閱 [驗證服務主體與 Azure 資源管理員](resource-group-authenticate-service-principal.md)。
 
 ## 安裝 SDK
 
 若要安裝 SDK，請使用下列步驟：
 
-1. Install [Node.js](https://nodejs.org/).
+1. 安裝 [Node.js](https://nodejs.org/)。
 2. 從命令提示字元、終端機視窗或 Bash 視窗，執行下列命令：
 
         npm install async
         npm install adal-node
         npm install azure-common
         npm install azure-arm-datalake-analytics
-
-
+    
 ## Node.js 範例
 
 下列範例會取得指定的 Azure 資料湖分析帳戶之作業清單。
@@ -84,7 +83,7 @@ Node.js 的 Azure ADK 可用於管理 Azure 資料湖分析帳戶、工作與目
                 authorizationScheme : response.tokenType,
                 token : response.accessToken
             });
-    
+        
             client = azureDataLakeAnalytics.createDataLakeAnalyticsJobManagementClient(credentials, 'azuredatalakeanalytics.net');
     
             next();
@@ -97,16 +96,13 @@ Node.js 的 Azure ADK 可用於管理 Azure 資料湖分析帳戶、工作與目
         }
     ]);
 
-## 另請參閱
+
+##另請參閱 
 
 - [Azure SDK for Node.js](http://azure.github.io/azure-sdk-for-node/)
-- [Microsoft Azure 資料湖分析的概觀](data-lake-analytics-overview.md)
-- [開始使用資料湖分析使用 Azure 入口網站](data-lake-analytics-get-started-portal.md)
-- [管理 Azure 資料湖分析使用 Azure 入口網站](data-lake-analytics-use-portal.md)
-- [監視和疑難排解使用 Azure 入口網站的 Azure 資料湖分析工作](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-
-
-
-
+- [Microsoft Azure 資料湖分析概觀](data-lake-analytics-overview.md)
+- [使用 Azure 入口網站開始使用資料湖分析](data-lake-analytics-get-started-portal.md)
+- [使用 Azure 入口網站管理 Azure 資料湖分析](data-lake-analytics-use-portal.md)
+- [使用 Azure 入口網站監視和疑難排解 Azure 資料湖分析作業](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 

@@ -16,10 +16,10 @@
     ms.date="09/22/2015"
     ms.author="swkrish"/>
 
-
 # Azure Active Directory B2C 預覽： 如何自訂 Azure AD B2C 使用者介面 (UI)
 
-使用者經驗是取用者面向應用程式中最重要的。 這是良好應用程式和絕佳應用程式之間，以及只是作用中的取用者與真正投入的取用者之間的差別。 Azure Active Directory (AD) B2C 可讓您以精準的控制，自訂取用者註冊、登入 (*請參閱下面的注意事項*) 及設定檔編輯頁面。
+使用者經驗是取用者面向應用程式中最重要的。 這是良好應用程式和絕佳應用程式之間，以及只是作用中的取用者與真正投入的取用者之間的差別。 Azure Active Directory (AD) B2C 可讓您自訂取用者註冊，登入 (*請參閱下列注意事項*) 及設定檔編輯與像素完美控制項的頁面。
+
 > [AZURE.NOTE]
 是目前的登入頁面、 驗證電子郵件和自助式密碼重設頁面的本機帳戶只可自訂使用 [公司品牌功能](./active-directory/active-directory-add-company-branding.md) 而不是由本文中所述的機制。
 
@@ -36,7 +36,7 @@
 
 頁面 UI 自訂功能可讓您自訂外觀和操作的取用者註冊，請登入和編輯網頁的設定檔 (藉由設定 [原則](active-directory-b2c-reference-policies.md))。 取用者在您的應用程式與 Azure AD B2C 所提供的頁面間瀏覽時，將會有一致的體驗。
 
-不同於其他只能透過 API 取得選項的服務，Azure AD B2C 使用新式 (且簡化的) 方法進行頁面 UI 自訂。它的運作方式如下: Azure AD B2C 取用者的瀏覽器中執行程式碼，並使用最新的方法，稱為 [跨原始資源共用 (CORS)](http://www.w3.org/TR/cors/) 才能載入內容，從您在原則中指定的 URL。您可以對不同的頁面指定不同的 URL。程式碼會合併 Azure AD B2C 的內容 (稱為 UI 元素) 與從您的 URL 載入的內容，並對取用者顯示此頁面。您只需要建立格式正確的 HTML5 內容 `< d i v id = api] >< / d i v >` 項目位於某處 `< 主體 >` -這是 Azure AD B2C 內容取得合併到。而且將此內容裝載於 HTTPS 端點 (允許 CORS)。您還可以完全設定 Azure AD B2C 的 UI 的元素樣式。
+不同於其他只能透過 API 取得選項的服務，Azure AD B2C 使用新式 (且簡化的) 方法進行頁面 UI 自訂。 它的運作方式如下: Azure AD B2C 取用者的瀏覽器中執行程式碼，並使用最新的方法，稱為 [跨原始資源共用 (CORS)](http://www.w3.org/TR/cors/) 才能載入內容，從您在原則中指定的 URL。 您可以對不同的頁面指定不同的 URL。 程式碼會合併 Azure AD B2C 的內容 (稱為 UI 元素) 與從您的 URL 載入的內容，並對取用者顯示此頁面。 您只需要建立格式正確的 HTML5 內容，其中的 `<div id="api"></div>` 元素位於 `<body>` 中的某處 - 這就是 Azure AD B2C 的內容併入的位置。 而且將此內容裝載於 HTTPS 端點 (允許 CORS)。 您還可以完全設定 Azure AD B2C 的 UI 的元素樣式。
 
 ## 試試 UI 自訂功能
 
@@ -44,7 +44,8 @@
 
 ## 每種頁面中的核心 UI 元素
 
-在以下各節中，您會發現將合併為 Azure AD B2C 的 HTML5 片段 (適用於每一種頁面) 的範例 <div id="api"></div> 項目位於您的內容。您可以使用自己的樣式表來自訂這些 UI 元素。這些樣式表必須覆寫預設的樣式表，我們將這些頁面中加入 <head> 片段。
+在以下各節中，您會發現將合併為 Azure AD B2C 的 HTML5 片段 (適用於每一種頁面) 的範例 <div id="api"></div> 在您的內容中的項目。 您可以使用自己的樣式表來自訂這些 UI 元素。 這些樣式表必須覆寫預設的樣式表，我們將新增到在這些頁面 <head> 片段。
+
 > [AZURE.IMPORTANT]
     在預覽期間，確切的 UI 元素應會隨著我們了解您的意見反應並據以調整而改變。 請務必檢查預設頁面的原始程式碼有無最新更新。 事實上，第一項考慮的變更就是移除我們的預設樣式表；這表示您務必要針對內容中的這些 UI 項目，提供自己的樣式表。
 
@@ -58,7 +59,7 @@
     <div class="intro">
          <p>Sign up</p>
     </div>
-
+    
     <div>
         <ul>
             <li>
@@ -73,6 +74,7 @@
         </ul>
     </div>
 </div>
+
 ```
 
 ## 本機帳戶註冊頁面
@@ -85,7 +87,7 @@
     <div class="intro"> 
         <p>Create your account by providing the following details</p>
     </div>
-
+    
     <div id="attributeVerification"> 
         <div class="errorText" id="passwordEntryMismatch" style="display: none;">The password entry fields do not match. Please enter the same password in both fields and try again.</div>
         <div class="errorText" id="requiredFieldMissing" style="display: none;">A required field is missing. Please fill out all required fields and try again.</div>
@@ -189,6 +191,7 @@
         <div id="verifying_blurb"></div>
     </div>
 </div>
+
 ```
 
 ## 社交帳戶註冊頁面
@@ -211,10 +214,10 @@
             <div class="phoneNumber">
                 <select id="countryCode" style="display:inline-block">
                     <option value="+93">Afghanistan (+93)</option>
-                    
+                    <!-- Not all country codes listed -->
                     <option value="+44">United Kingdom (+44)</option>
                     <option value="+1" selected="">United States (+1)</option>
-                    
+                    <!-- Not all country codes listed -->
                 </select>
             </div>
             <div class="phoneNumber">
@@ -238,9 +241,11 @@
         <div id="dialing_blurb"></div><div id="dialing_number"></div>
     </div>
 </div>
+
 ```
 
 ## 錯誤頁面
+
 
 ```HTML
 
@@ -254,6 +259,7 @@
         <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting the remote resource.</div>
     </div>
 </div>
+
 ```
 
 ## 建置自己的內容時的注意事項
@@ -271,8 +277,4 @@
     - Google Chrome 42.0
     - Mozilla Firefox 38.0
     - Mozilla Firefox 37.0
-
-
-
-
 

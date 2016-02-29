@@ -4,12 +4,12 @@
 
 - 當新員工報到或舊員工離職時，他們的所有帳戶都必須個別佈建或取消佈建。
 
-- 此外，員工可能在未經 IT 同意的情況下開始使用 SaaS App 來工作，這表示表示他們在 IT 系統管理員尚未核准且無法監視的系統上建立自己的帳戶。
+- 此外，員工可能在未經 IT 同意的情況下開始使用 SaaS App 來工作，這表示表示他們在 IT 系統管理員尚未核准且無法監視的系統上建立自己的帳戶。  
 
 所有這些挑戰的解決方案就是單一登入 (SSO)。 這是管理多個 App 以及為使用者提供一致性單一登入體驗的最簡單方式。 Azure Active Directory (Azure AD) 提供穩固的 SSO 解決方案，且具有許多可用且預先整合的應用程式，以及系統管理員能夠快速設定新的 App 並開始佈建使用者的教學課程。
 
 
-## Azure Active Directory 如何整合 App？
+## Azure Active Directory 如何整合 App？  
 
 Azure AD 可讓您整合 App 和佈建的帳戶。 這可透過下列兩種方法之一來完成。
 
@@ -17,11 +17,7 @@ Azure AD 可讓您整合 App 和佈建的帳戶。 這可透過下列兩種方�
 
 - 如果 App 不在持程式庫中，您仍然可以將 Azure AD 中大部分的 App 設定為自訂 App。 這需要設定更技術性的專業知識。 您可以加入支援 SAML 2.0 的任何應用程式做為同盟應用程式，或者加入具有 HTML 登入頁面的任何應用程式做為密碼 SSO 應用程式。
 
-使用者必須建立自己的帳戶未受管理的 SaaS 應用程式的案例中 IT、 [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md) 工具提供的解決方案。 此工具會監視網路流量，來識別整個組織中正在使用哪些 App，以及使用每個 App 的人數。 IT 可以使用此資訊來了解使用者偏好使用哪些 App，並決定要整合到 Azure AD 以使用 SSO 的 App。
+使用者必須建立自己的帳戶未受管理的 SaaS 應用程式的案例中 IT、 [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md) 工具提供的解決方案。 此工具會監視網路流量，來識別整個組織中正在使用哪些 App，以及使用每個 App 的人數。 IT 可以使用此資訊來了解使用者偏好使用哪些 App，並決定要整合到 Azure AD 以使用 SSO 的 App。  
 
-當您將 App 整合到 Azure AD 時，可以將使用者已建立的應用程式身分識別對應至其各自的 Azure AD 身分識別。
-
-
-
-
+當您將 App 整合到 Azure AD 時，可以將使用者已建立的應用程式身分識別對應至其各自的 Azure AD 身分識別。  
 

@@ -6,7 +6,7 @@
    authors="mumian" 
    manager="paulettm" 
    editor="cgronlun"/>
-
+ 
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
@@ -16,16 +16,14 @@
    ms.date="12/11/2015"
    ms.author="jgao"/>
 
-
 # 使用 Node.js 的 Azure SDK 管理 Azure 資料湖存放區
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-get-started-portal.md)
-- [Using PowerShell](data-lake-store-get-started-powershell.md)
-- [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
-- [Using Azure CLI](data-lake-store-get-started-cli.md)
-- [Using Node.js](data-lake-store-manage-use-nodejs.md)
-
+- [使用入口網站](data-lake-store-get-started-portal.md)
+- [使用 PowerShell](data-lake-store-get-started-powershell.md)
+- [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
+- [使用 Azure CLI](data-lake-store-get-started-cli.md)
+- [使用 Node.js](data-lake-store-manage-use-nodejs.md)
 
 
 Node.js 的 Azure ADK 可用於管理 Azure 資料湖存放區帳戶，以及檔案系統：
@@ -33,27 +31,26 @@ Node.js 的 Azure ADK 可用於管理 Azure 資料湖存放區帳戶，以及檔
 - 帳戶管理：建立、取得、列出、更新及刪除。
 - 檔案系統管理：建立、取得、上傳、附加、下載、讀取、刪除、列出。
 
-**必要條件**
+**先決條件**
 
 開始進行本教學課程之前，您必須具備下列條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-- **Azure 資料湖儲存區帳戶**。 請參閱 [開始使用 Azure 入口網站的 Azure 資料湖存放區使用](data-lake-store-get-started-portal.md) 建立帳戶。
-- **具備存取資料湖分析帳戶權限的服務主體**。 請參閱 [驗證服務主體與 Azure 資源管理員](resource-group-authenticate-service-principal.md)。
+- **Azure 資料湖存放區帳戶**。 請參閱 [開始使用 Azure 入口網站的 Azure 資料湖存放區使用](data-lake-store-get-started-portal.md) 建立帳戶。
+- **若要存取資料湖分析帳戶的權限的服務主體**。 請參閱 [驗證服務主體與 Azure 資源管理員](resource-group-authenticate-service-principal.md)。
 
 ## 安裝 SDK
 
 若要安裝 SDK，請使用下列步驟：
 
-1. Install [Node.js](https://nodejs.org/).
+1. 安裝 [Node.js](https://nodejs.org/)。
 2. 從命令提示字元、終端機視窗或 Bash 視窗，執行下列命令：
 
         npm install async
         npm install adal-node
         npm install azure-common
         npm install azure-arm-datalake-store
-
-
+    
 ## Node.js 範例
 
 下列範例會在資料湖存放區帳戶中建立檔案，並將資料附加到該檔案。
@@ -97,7 +94,7 @@ Node.js 的 Azure ADK 可用於管理 Azure 資料湖存放區帳戶，以及檔
                 authorizationScheme : response.tokenType,
                 token : response.accessToken
             });
-    
+        
             client = azureDataLakeStore.createDataLakeStoreFileSystemManagementClient(credentials, 'azuredatalakestore.net');
     
             next();
@@ -109,13 +106,10 @@ Node.js 的 Azure ADK 可用於管理 Azure 資料湖存放區帳戶，以及檔
         }
     ]);
 
-## 另請參閱
+
+##另請參閱 
 
 - [Azure SDK for Node.js](http://azure.github.io/azure-sdk-for-node/)
-- [管理使用 Node.js 的 Azure 資料湖分析](data-lake-analytics-use-nodejs.md)
-
-
-
-
+- [使用 Node.js 管理 Azure 資料湖分析](data-lake-analytics-use-nodejs.md)
 
 

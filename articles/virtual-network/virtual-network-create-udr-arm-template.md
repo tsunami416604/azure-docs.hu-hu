@@ -17,8 +17,7 @@
    ms.date="11/20/2015"
    ms.author="telmos" />
 
-
-# 使用範本建立使用者定義的路由 (UDR)
+#使用範本建立使用者定義的路由 (UDR)
 
 [AZURE.INCLUDE [virtual-network-create-udr-arm-selectors-include.md](../../includes/virtual-network-create-udr-arm-selectors-include.md)]
 
@@ -53,6 +52,7 @@
         }
       ]
 
+
 若要建立 UDR 與前端子網路的關聯，您必須變更範本中的子網路定義，並使用 UDR 的參考識別碼。
 
     "subnets": [
@@ -70,7 +70,7 @@
 
 請注意，在範本中已對後端 NSG 和後端子網路完成相同作業。
 
-您也需要確定 **FW1** VM 已在將用來接收和轉送封包的 NIC 上的 IP 轉送屬性啟用。 下一節根據上述案例，顯示 azuredeploy-nsg-udr.json 檔案中 FW1 的 NIC 的定義。
+您也需要確定 **FW1** VM 有 IP 轉送，將用來接收和轉送封包在 NIC 上啟用的屬性。 下一節根據上述案例，顯示 azuredeploy-nsg-udr.json 檔案中 FW1 的 NIC 的定義。
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/networkInterfaces",
@@ -118,61 +118,60 @@
 
 1. 如果您從未使用 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md) 並遵循指示以登入 Azure，並選取您的訂閱結束。
 
-3. 執行 **New-AzureRmResourceGroup** Cmdlet 以使用範本建立資源群組。
+3. 執行 **新增 AzureRmResourceGroup** 指令程式來建立資源群組範本中使用。
 
-     New-AzureRmResourceGroup -Name TestRG -Location westus `
-         -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' `
-         -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json' 
+        New-AzureRmResourceGroup -Name TestRG -Location westus `
+            -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' `
+            -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json' 
 
- 預期的輸出：
+    預期的輸出：
 
-     ResourceGroupName : TestRG
-     Location          : westus
-     ProvisioningState : Succeeded
-     Tags              : 
-     Permissions       : 
-                         Actions  NotActions
-                         =======  ==========
-                         *                  
-    
-     Resources         : 
-                         Name                Type                                     Location
-                         ==================  =======================================  ========
-                         ASFW                Microsoft.Compute/availabilitySets       westus  
-                         ASSQL               Microsoft.Compute/availabilitySets       westus  
-                         ASWEB               Microsoft.Compute/availabilitySets       westus  
-                         FW1                 Microsoft.Compute/virtualMachines        westus  
-                         SQL1                Microsoft.Compute/virtualMachines        westus  
-                         SQL2                Microsoft.Compute/virtualMachines        westus  
-                         WEB1                Microsoft.Compute/virtualMachines        westus  
-                         WEB2                Microsoft.Compute/virtualMachines        westus  
-                         NICFW1              Microsoft.Network/networkInterfaces      westus  
-                         NICSQL1             Microsoft.Network/networkInterfaces      westus  
-                         NICSQL2             Microsoft.Network/networkInterfaces      westus  
-                         NICWEB1             Microsoft.Network/networkInterfaces      westus  
-                         NICWEB2             Microsoft.Network/networkInterfaces      westus  
-                         NSG-BackEnd         Microsoft.Network/networkSecurityGroups  westus  
-                         NSG-FrontEnd        Microsoft.Network/networkSecurityGroups  westus  
-                         PIPFW1              Microsoft.Network/publicIPAddresses      westus  
-                         PIPSQL1             Microsoft.Network/publicIPAddresses      westus  
-                         PIPSQL2             Microsoft.Network/publicIPAddresses      westus  
-                         PIPWEB1             Microsoft.Network/publicIPAddresses      westus  
-                         PIPWEB2             Microsoft.Network/publicIPAddresses      westus  
-                         UDR-BackEnd         Microsoft.Network/routeTables            westus  
-                         UDR-FrontEnd        Microsoft.Network/routeTables            westus  
-                         TestVNet            Microsoft.Network/virtualNetworks        westus  
-                         testvnetstorageprm  Microsoft.Storage/storageAccounts        westus  
-                         testvnetstoragestd  Microsoft.Storage/storageAccounts        westus  
-    
-     ResourceId        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG
-
+        ResourceGroupName : TestRG
+        Location          : westus
+        ProvisioningState : Succeeded
+        Tags              : 
+        Permissions       : 
+                            Actions  NotActions
+                            =======  ==========
+                            *                  
+                            
+        Resources         : 
+                            Name                Type                                     Location
+                            ==================  =======================================  ========
+                            ASFW                Microsoft.Compute/availabilitySets       westus  
+                            ASSQL               Microsoft.Compute/availabilitySets       westus  
+                            ASWEB               Microsoft.Compute/availabilitySets       westus  
+                            FW1                 Microsoft.Compute/virtualMachines        westus  
+                            SQL1                Microsoft.Compute/virtualMachines        westus  
+                            SQL2                Microsoft.Compute/virtualMachines        westus  
+                            WEB1                Microsoft.Compute/virtualMachines        westus  
+                            WEB2                Microsoft.Compute/virtualMachines        westus  
+                            NICFW1              Microsoft.Network/networkInterfaces      westus  
+                            NICSQL1             Microsoft.Network/networkInterfaces      westus  
+                            NICSQL2             Microsoft.Network/networkInterfaces      westus  
+                            NICWEB1             Microsoft.Network/networkInterfaces      westus  
+                            NICWEB2             Microsoft.Network/networkInterfaces      westus  
+                            NSG-BackEnd         Microsoft.Network/networkSecurityGroups  westus  
+                            NSG-FrontEnd        Microsoft.Network/networkSecurityGroups  westus  
+                            PIPFW1              Microsoft.Network/publicIPAddresses      westus  
+                            PIPSQL1             Microsoft.Network/publicIPAddresses      westus  
+                            PIPSQL2             Microsoft.Network/publicIPAddresses      westus  
+                            PIPWEB1             Microsoft.Network/publicIPAddresses      westus  
+                            PIPWEB2             Microsoft.Network/publicIPAddresses      westus  
+                            UDR-BackEnd         Microsoft.Network/routeTables            westus  
+                            UDR-FrontEnd        Microsoft.Network/routeTables            westus  
+                            TestVNet            Microsoft.Network/virtualNetworks        westus  
+                            testvnetstorageprm  Microsoft.Storage/storageAccounts        westus  
+                            testvnetstoragestd  Microsoft.Storage/storageAccounts        westus  
+                            
+        ResourceId        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG
 
 ## 使用 Azure CLI 部署 ARM 範本
 
 若要使用 Azure CLI 部署 ARM 範本，請依照下列步驟執行。
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
-2. 執行 **azure config mode** 命令，以切換為資源管理員模式，如下所示。
+2. 執行 **azure 組態模式** 命令以切換至資源管理員模式，如下所示。
 
         azure config mode arm
 
@@ -180,7 +179,7 @@
 
         info:    New mode is arm
 
-3. 從瀏覽器中瀏覽至 **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, 、 json 檔案的內容複製並貼到新檔案中，您的電腦。 在此案例中，您會將以下的值複製到名為 **c:\udr\azuredeploy.parameters.json** 的檔案。
+3. 從瀏覽器中瀏覽至 **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, 、 json 檔案的內容複製並貼到新檔案中，您的電腦。 此案例中，您會將複製以下的值為檔案 **c:\udr\azuredeploy.parameters.json**。
 
         {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -198,7 +197,7 @@
           }
         }
 
-4. 執行 **azure group create** Cmdlet，以使用先前下載並修改的範本和參數檔案，部署新的 VNet。 輸出後顯示的清單可說明所使用的參數。
+4. 執行 **azure 群組建立** 指令程式來部署新的 VNet 使用的範本和參數檔案下載並修改上面。 輸出後顯示的清單可說明所使用的參數。
 
         azure group create -n TestRG -l westus --template-uri 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' -e 'c:\udr\azuredeploy.parameters.json'
 
@@ -219,12 +218,12 @@
         data:    
         info:    group create command OK
 
-5. 執行 **azure group show** 命令來檢視於新資源群組中建立的資源。
+5. 執行 **azure 群組顯示** 命令來檢視建立新的資源群組中的資源。 
 
         azure group show TestRG
 
     預期的結果
-
+        
         info:    Executing command group show
         info:    Listing resource groups
         info:    Listing resources for the group
@@ -391,9 +390,4 @@
         data:    
         info:    group show command OK
 
-
->[AZURE.TIP] 如果看不到所有資源，請執行 **azure group deployment show** 命令，以確保部署的佈建狀態為*成功*。
-
-
-
-
+>[AZURE.TIP] 如果看不到的所有資源，執行 **azure 群組部署顯示** 命令，以確保部署的佈建狀態為 *成功*。

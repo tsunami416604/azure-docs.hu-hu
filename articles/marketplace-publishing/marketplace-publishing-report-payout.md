@@ -16,7 +16,6 @@
    ms.date="10/12/2015"
    ms.author="v-jeana; hascipio"/>
 
-
 # 了解您的 Azure Marketplace 支出報告
 
 ## 存取您的支出報告
@@ -26,7 +25,7 @@
   ![accessingpayoutreport][1]
 
   1. 瀏覽至在 https://publish.windowsazure.com 發佈入口網站。
-  2. 從 [發行者]**** 區段，按一下 [支出報告]****。
+  2. 從 **發行者** 區段中，按一下 **支付額報表**。
   3. 按一下下拉式清單，以顯示所有可用的每季支出報告。
 
 ## 讀取您的支出報告
@@ -58,18 +57,17 @@
 ![payoutquestions][5]
 
 1. 瀏覽至 [支援] 頁面。
-2. 選取 [支出]****。
-3. 選取 [支出相關查詢]****。
-4. 按一下 [提出要求]****。
+2. 選取 **支出**。
+3. 選取 **支付相關查詢**。
+4. 按一下 [ **啟動要求**。
 
 ## 後續步驟
 
 對於其他支援的查詢，請記錄在 https://portal.azure.com 的問題。
 
-
-[1]: ./media/marketplace-publishing-report-payout/accessingpayoutreport.png 
-[2]: ./media/marketplace-publishing-report-payout/readingpayoutreport.png 
-[3]: ./media/marketplace-publishing-report-payout/financialdefinitions.png 
-[4]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png 
-[5]: ./media/marketplace-publishing-report-payout/payoutquestions.png 
+[1]: ./media/marketplace-publishing-report-payout/accessingpayoutreport.png
+[2]: ./media/marketplace-publishing-report-payout/readingpayoutreport.png
+[3]: ./media/marketplace-publishing-report-payout/financialdefinitions.png
+[4]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
+[5]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 

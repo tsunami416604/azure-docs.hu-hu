@@ -1,6 +1,6 @@
 <properties
-    pageTitle="什麼是 HDInsight 中的 HBase？ | Microsoft Azure"
-    description="HDInsight 中的 Apache HBase (建置在 Hadoop 的 NoSQL 資料庫) 簡介。了解使用案例，並將 HBase 與其他 Hadoop 叢集進行比較。"
+    pageTitle="什麼是 HDInsight 中的 HBase? | Microsoft Azure"
+    description="HDInsight 中的 Apache HBase (建置在 Hadoop 的 NoSQL 資料庫) 簡介。 了解使用案例，並將 HBase 與其他 Hadoop 叢集進行比較。"
     keywords="bigtable,nosql,what is hbase"
     services="hdinsight"
     documentationCenter=""
@@ -20,7 +20,6 @@
 
 
 
-
 # 什麼是 HDInsight 中的 HBase：為 Hadoop 提供類似 BigTable 功能的 NoSQL 資料庫
 
 Apache HBase 是開放原始碼的 NoSQL 資料庫，其建置於 Hadoop 上並模仿 Google BigTable。 HBase 可針對依資料行系列組織的無結構描述資料庫中的大量非結構化及半結構化資料，提供隨機存取功能和強大一致性。
@@ -31,16 +30,15 @@ Apache HBase 是開放原始碼的 NoSQL 資料庫，其建置於 Hadoop 上並�
 
 HDInsight HBase 會以受管理叢集的形式提供，並整合到 Azure 環境中。 叢集依設定會將資料直接儲存至 Azure Blob 儲存體中，使其在效能與成本的選擇中提供低延遲性與高度彈性。 這可讓客戶建置使用大型資料集的互動式網站、建置可儲存數百萬端點上之感應器和遙測資料的服務，以及使用 Hadoop 工作分析此資料。 HBase 和 Hadoop 是在 Azure 中處理巨量資料專案的好起點，尤其是它們讓即時應用程式能夠使用大型資料集。
 
-HDInsight 實作運用 HBase 的向外延展架構，提供資料表自動分區功能、讀取和寫入的強大一致性，以及自動容錯移轉功能。 透過在記憶體內部快取讀取和高輸送量的串流寫入，來提高效能。 HDInsight HBase 也提供虛擬網路佈建功能。 如需詳細資訊，請參閱  [佈建 HDInsight 叢集在 Azure 虛擬網路 ][hbase-provision-vnet]。
+HDInsight 實作運用 HBase 的向外延展架構，提供資料表自動分區功能、讀取和寫入的強大一致性，以及自動容錯移轉功能。 透過在記憶體內部快取讀取和高輸送量的串流寫入，來提高效能。 HDInsight HBase 也提供虛擬網路佈建功能。 如需詳細資訊，請參閱  [佈建 HDInsight 叢集在 Azure 虛擬網路上] [hbase-provision-vnet]。
 
 
 ## 如何在 HDInsight HBase 中管理資料？
 
-資料可透過管理 HBase 中 `建立`, ，`取得`, ，`放`, ，和 `掃描` 從 HBase shell 命令。 資料寫入資料庫使用 `放` 和使用讀取 `取得`。  `掃描` 命令可用來從資料表中的多個資料列取得資料。 您也可以使用 HBase C# API 管理資料，其在 HBase REST API 之上提供用戶端程式庫。 HBase 資料庫也可使用 Hive 進行查詢。 這些程式設計模型的簡介，請參閱 [開始搭配使用 HBase 與 HDInsight ][hbase-get-started]。 同時也提供共同處理器，其允許在主控資料庫的節點中進行資料處理。
+要管理 HBase 中的資料，可使用 HBase Shell 的 `create``get`, `put` 和 `scan` 命令。 將資料寫入資料庫，需使用 `put`，讀取則使用 `get` `scan` 命令可用來取得資料表中多個資料列裡的資料。 您也可以使用 HBase C# API 管理資料，其在 HBase REST API 之上提供用戶端程式庫。 HBase 資料庫也可使用 Hive 進行查詢。 這些程式設計模型的簡介，請參閱 [開始搭配使用 HBase 與 HDInsight 中 Hadoop][hbase-get-started]。 同時也提供共同處理器，其允許在主控資料庫的節點中進行資料處理。
 
 
 ## 情節：HBase 的使用案例
-
 建立 BigTable (以及由此延伸出的 HBase) 的正式使用案例是 Web 搜尋。 搜尋引擎會建置索引，以將字詞對應到包含這些字詞的網頁。 除此之外，HBase 還有其他許多適用的使用案例，本節會列舉其中幾個。
 
 - 索引鍵-值存放區
@@ -60,33 +58,39 @@ HDInsight 實作運用 HBase 的向外延展架構，提供資料表自動分區
     應用程式可以將 HBase 做為資料存放區，並在此基礎上執行。 範例包括 Phoenix、OpenTSDB、Kiji 及 Titan。 應用程式也可與 HBase 整合。 範例包括 Hive、Pig、Solr、Storm、Flume、Impala、Spark、Ganglia 及 Drill。
 
 
-## <a name="next-steps"></a>後續步驟
+##<a name="next-steps"></a>後續步驟
 
-- [開始使用 HBase 與 HDInsight ][hbase-get-started]
-- [Azure 虛擬網路 ][hbase-provision-vnet]
+- [開始在 HDInsight 中搭配使用 HBase 與 Hadoop (英文)][hbase-get-started]
+- [在 Azure 虛擬網路上佈建 HDInsight 叢集 (英文)] [hbase-provision-vnet]
 - [在 HDInsight 中設定 HBase 複寫](hdinsight-hbase-geo-replication.md)
-- [利用 HDInsight ][hbase-twitter-sentiment]
-- [使用 Maven 建置搭配使用 HBase 和 HDInsight (Hadoop) ][hbase-build-java-maven]
+- [使用 HDInsight 中的 HBase 分析 Twitter 情緒 (英文)][hbase-twitter-sentiment]
+- [使用 Maven 建置搭配使用 HBase 和 HDInsight (Hadoop) 的 Java 應用程式 (英文)][hbase-build-java-maven]
 
-## <a name="see-also"></a>另請參閱
+##<a name="see-also"></a>另請參閱
 
-- [Apache HBase](https://hbase.apache.org/)
-- [Bigtable: 分散式儲存體系統結構化資料](http://research.google.com/archive/bigtable.html)
-
-
+- [Apache HBase (英文)](https://hbase.apache.org/)
+- [Bigtable：結構化資料的分散式儲存體系統](http://research.google.com/archive/bigtable.html)
 
 
 
-[hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md 
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md 
-[hbase-build-java-maven]: hdinsight-hbase-build-java-maven.md 
-[hdinsight-use-hive]: hdinsight-use-hive.md 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md 
-[hbase-get-started]: http://azure.microsoft.com/documentation/articles/hdinsight-hbase-get-started/ 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/ 
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/ 
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/ 
-[azure-management-portal]: https://portal.azure.com/ 
-[azure-create-storageaccount]: ../storage-create-storage-account.md 
-[apache-hadoop]: http://hadoop.apache.org/ 
+
+[hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
+
+[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
+
+[hbase-build-java-maven]: hdinsight-hbase-build-java-maven.md
+
+[hdinsight-use-hive]: hdinsight-use-hive.md
+
+[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+
+[hbase-get-started]: http://azure.microsoft.com/documentation/articles/hdinsight-hbase-get-started/
+
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-management-portal]: https://portal.azure.com/
+[azure-create-storageaccount]: ../storage-create-storage-account.md
+
+[apache-hadoop]: http://hadoop.apache.org/
 

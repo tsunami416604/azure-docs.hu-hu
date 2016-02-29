@@ -16,7 +16,6 @@
     ms.date="10/27/2015" 
     ms.author="tdykstra"/>
 
-
 # 保護 API 應用程式：新增 Azure Active Directory 或社交提供者驗證
 
 [AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
@@ -36,27 +35,27 @@
 
 如需 Azure App Service 中驗證的詳細資訊，請參閱 [API 應用程式和行動應用程式驗證](../app-service/app-service-authentication-overview.md)。
 
-## 必要條件
+## 先決條件
 
-本教學課程會與您在建立 API 應用程式 [建立 API 應用程式](app-service-dotnet-create-api-app.md) ，並部署在 [部署 API 應用程式](app-service-dotnet-deploy-api-app.md)。
+本教學課程會與您在建立 API 應用程式 [建立 API 應用程式](app-service-dotnet-create-api-app.md) 並部署在 [部署 API 應用程式](app-service-dotnet-deploy-api-app.md)。
 
-## 使用瀏覽器來呼叫 API 應用程式
+## 使用瀏覽器來呼叫 API 應用程式 
 
 驗證您的 API 應用程式是否可公開存取的最簡單方法就是從瀏覽器呼叫它。
 
-1. 在瀏覽器中，移至 [Azure 預覽入口網站]。
+1. 在瀏覽器中，移至 [Azure preview portal]。
 
-3. 從首頁按一下 [**瀏覽 > API 應用程式**]，然後按一下您要保護的 API 應用程式名稱。
+3. 從首頁按一下 **瀏覽 > API 應用程式** ，然後按一下您想要保護的 API 應用程式的名稱。
 
     ![瀏覽](./media/app-service-api-dotnet-add-authentication/browse.png)
 
     ![選取 API 應用程式](./media/app-service-api-dotnet-add-authentication/select.png)
 
-3. 在 [**API 應用程式**] 分頁中，按一下 [**URL**] 以開啟可呼叫 API 應用程式的瀏覽器視窗。
+3. 在 **API 應用程式** 刀鋒視窗中，按一下 [ **URL** 開啟可呼叫 API 應用程式的瀏覽器視窗。
 
     ![API 應用程式刀鋒視窗](./media/app-service-api-dotnet-add-authentication/chooseapiappurl.png)
 
-2. 新增 `/api/連絡/get/` 瀏覽器網址列中的 url。
+2. 將 `/api/contacts/get/` 新增至瀏覽器網址列中的 URL。
 
     例如，如果您的 API 應用程式的 URL 如下：
 
@@ -75,21 +74,21 @@
 ## 保護 API 應用程式
 
 當您部署 API 應用程式時，您會將它部署到資源群組。 您可以將 Web 應用程式和其他 API 應用程式加入至相同的資源群組，而資源群組內的每個 API 應用程式可以有下列其中一個可存取性設定：
+<!--todo: diagram showing different accessibility settings-->
 
+- **公用 (匿名)** -未登入的情況下，任何人都可以呼叫 API 應用程式從資源群組外部。
+- **公用 (驗證)** -已驗證的使用者才可以呼叫 API 應用程式從資源群組外部。
+- **內部** -只有在相同的資源群組中其他 API 應用程式可以呼叫 API 應用程式。 (從 Web 應用程式呼叫會被視為外部呼叫，即使 Web 應用程式位於相同的資源群組也一樣。)
 
-- **公用 (匿名)** - 任何人都可以從資源群組外部呼叫 API 應用程式，而不需登入。
-- **公用 (已驗證)** - 只允許已驗證的使用者從資源群組外部呼叫 API 應用程式。
-- **內部** - 只允許相同資源群組中的其他 API 應用程式呼叫 API 應用程式。 (從 Web 應用程式呼叫會被視為外部呼叫，即使 Web 應用程式位於相同的資源群組也一樣。)
+當 Visual Studio 為您建立資源群組時，它也會建立 *閘道*。  閘道是一個特別的 Web 應用程式，可處理以資源群組中的 API 應用程式為目標的所有要求。
 
-當 Visual Studio 為您建立資源群組時，它也會建立一個*閘道*。 閘道是一個特別的 Web 應用程式，可處理以資源群組中的 API 應用程式為目標的所有要求。
-
-當您移到 [Azure 預覽入口網站] 中的資源群組的分頁時，您可以看到您的 API 應用程式和圖表中的閘道。
+當您移至資源群組刀鋒視窗中 [Azure preview portal], ，您可以看到您的 API 應用程式和圖表中的閘道。
 
 ![資源群組圖](./media/app-service-api-dotnet-add-authentication/rgdiagram.png)
 
-### <a id="apiapp"></a>設定為需要驗證的 API 應用程式
+### <a id="apiapp"></a>將 API 應用程式設定為需要驗證
 
-若要將 API 應用程式設定為只接受已驗證的要求，您會將其可存取性設定為 [**公用 (已驗證)**]，而且您會將閘道設定為需要提供者 (例如 Azure Active Directory、Google 或 Facebook) 的驗證。
+若要設定您的 API 應用程式只接受已驗證的要求，會將其存取範圍設定為 **公用 (驗證)** 而且您會設定為需要從提供者，例如 Azure Active Directory、 Google 或 Facebook 驗證閘道。
 
 [AZURE.INCLUDE [app-service-api-config-auth](../../includes/app-service-api-config-auth.md)]
 
@@ -101,24 +100,24 @@
 
 ## 確認驗證可以運作
 
-**注意：**如果您在執行下列步驟時發生登入問題，請嘗試開啟私人或匿名視窗。
-
-1. 開啟瀏覽器視窗，並在網址列輸入呼叫您的 API 應用程式的 URL `取得` 方法，為您稍早。
+**注意:** 如果您有問題，執行下列步驟時發生登入，請嘗試開啟私人或匿名視窗。
+ 
+1. 開啟瀏覽器視窗，並在網址列中輸入可呼叫 API 應用程式之 `Get` 方法的 URL (如同您先前所為)。
 
     這次嘗試存取 API 應用程式會導致錯誤訊息。
 
     ![Chrome Get 回應失敗](./media/app-service-api-dotnet-add-authentication/chromegetfail.png)
 
-2. 在瀏覽器中，移至登入 URL。 URL 遵循以下模式：
+2. 在瀏覽器中，移至登入 URL。 URL 遵循以下模式： 
 
         http://[gatewayurl]/login/[providername]
 
-    您可以取得閘道 URL，從 **閘道** 刀鋒視窗中 [Azure 預覽入口網站]。 (若要前往 [**閘道**] 分頁，請按一下 [**資源群組**] 分頁上顯示之圖表中的閘道。)
+    您可以取得閘道 URL，從 **閘道** 刀鋒視窗中的 [Azure preview portal]。 (若要取得 **閘道** 刀鋒視窗中，按一下顯示在圖表中的閘道 **資源群組** 刀鋒視窗。)
 
     ![閘道 URL](./media/app-service-api-dotnet-add-authentication/gatewayurl.png)
 
     [providername] 的值必須是以下其中一項：
-
+    
     * "microsoftaccount"
     * "facebook"
     * "twitter"
@@ -129,11 +128,11 @@
 
         https://dropboxrgaeb4ae60b7cb4f3d966dfa43.azurewebsites.net/login/aad/
 
-    請注意，不同於先前的 URL，此 url 不包含您的 API 應用程式名稱: 閘道正在驗證您無法將 API 應用程式。 閘道會處理資源群組中所有 API 應用程式的驗證。
+    請注意，不同於先前的 URL，此 url 不包含您的 API 應用程式名稱: 閘道正在驗證您無法將 API 應用程式。  閘道會處理資源群組中所有 API 應用程式的驗證。
 
-3. 在瀏覽器顯示登入頁面時輸入您的認證。
-
-    如果您設定 Azure Active Directory 登入，使用其中一個列出的使用者 **使用者** Azure Active Directory] 索引標籤的 [Azure 入口網站]，在您建立之應用程式索引標籤，例如 admin@contoso.onmicrosoft.com。
+3. 在瀏覽器顯示登入頁面時輸入您的認證。 
+ 
+    如果您設定 Azure Active Directory 登入，使用其中一個列出的使用者 **使用者** 您建立的 Azure Active Directory 索引標籤中的應用程式] 索引標籤 [Azure portal], ，例如 admin@contoso.onmicrosoft.com。
 
     ![AAD 使用者](./media/app-service-api-dotnet-add-authentication/aadusers.png)
 
@@ -147,11 +146,11 @@
 
     ![Chrome Get 回應](./media/app-service-api-dotnet-add-authentication/chromeget.png)
 
-    如果您已經啟用 Swagger UI，您現在也可以移至 Swagger UI 頁面。 不過，您會在頁面右下角看到紅色的「錯誤」****圖示，而如果按一下該圖示，您將會看到訊息指出無法存取 Swagger JSON 檔案。 這是因為 Swagger 進行 AJAX 呼叫嘗試擷取 JSON 檔案，但未包含 Zumo 權杖。 這不會造成 Swagger UI 頁面無法運作。
+    如果您已經啟用 Swagger UI，您現在也可以移至 Swagger UI 頁面。 不過，您會看到紅色 **錯誤** 圖示右下角] 頁面上，，如果您按一下圖示即可看到訊息，說明 Swagger JSON 檔案無法存取。 這是因為 Swagger 進行 AJAX 呼叫嘗試擷取 JSON 檔案，但未包含 Zumo 權杖。 這不會造成 Swagger UI 頁面無法運作。
 
 ## 使用 Postman 傳送 Post 要求
 
-當您登入閘道時，閘道會傳回驗證權杖。 此權杖必須隨附於來自通過閘道之外部來源的所有要求。 當您使用瀏覽器存取 API 時，瀏覽器通常會在 cookie 中儲存權杖，並將它連同所有後續的呼叫一起傳送至 API。
+當您登入閘道時，閘道會傳回驗證權杖。  此權杖必須隨附於來自通過閘道之外部來源的所有要求。 當您使用瀏覽器存取 API 時，瀏覽器通常會在 cookie 中儲存權杖，並將它連同所有後續的呼叫一起傳送至 API。
 
 您可以看到背景中發生的事情，教學課程的本節中您會使用瀏覽器工具來建立和提交 Post 要求，然後從 Cookie 取得授權權杖並將它包含在 HTTP 標頭中。 本節是選擇性：在前一節中，您已確認 API 應用程式只接受已驗證的存取。
 
@@ -159,13 +158,13 @@
 
 1. 在 Chrome 瀏覽器視窗中，執行上一節中所示的步驟來進行驗證，然後開啟開發人員工具 (F12)。
 
-    ![移至 ](./media/app-service-api-dotnet-add-authentication/resources.png)
+    ![移至 [資源] 索引標籤](./media/app-service-api-dotnet-add-authentication/resources.png)
 
-3. 在 Chrome 開發人員工具的 [**資源**] 索引標籤中，尋找您的閘道的 Cookie，然後按三下 **x-zumo-auth** 的值即可全選。
+3. 在 **資源** 索引標籤上的 Chrome 開發人員工具，尋找 cookie 閘道器，然後按三下的值 **x zumo 驗證** cookie 來選取它的全部。
 
-    **附註:**  請確定您取得的所有 cookie 的值。 如果按兩下，只會取得它的第一個部分。
+    **注意:**  請確定您取得的所有 cookie 的值。 如果按兩下，只會取得它的第一個部分。
 
-5. 以滑鼠右鍵按一下 **x-zumo-auth** Cookie 的 [**值**]，然後按一下 [**複製**]。
+5. 以滑鼠右鍵按一下 **值** 的 **x zumo 驗證** cookie，然後再按一下 **複製**。
 
     ![複製驗證權杖](./media/app-service-api-dotnet-add-authentication/copyzumotoken.png)
 
@@ -173,33 +172,33 @@
 
 6. 開啟 Postman 延伸模組。
 
-7. 在要求 URL] 欄位中，輸入您先前使用的 API 應用程式的 Get 方法 URL，但省略 `取得 /` 從結尾。
-
+7. 在 [要求 URL] 欄位中，輸入您先前使用的 API 應用程式的 Get 方法 URL，但省略結尾的 `get/`。
+ 
         http://[apiappurl]/api/contacts
+    
+8. 按一下 [ **標頭**, ，然後新增 *x zumo 驗證* 標頭。 貼上剪貼簿中的權杖值 **值** 欄位。
 
-8. 按一下 [**標頭**]，然後新增 *x-zumo-auth* 標頭。 將剪貼簿中的權杖值貼到 [**值**] 欄位中。
+9. 新增 *Content-type* 標頭值 *application/json*。
 
-9. 新增值為 *application/json* 的 *Content-Type* 標頭。
-
-10. 按一下 **form-data**，然後新增具有下列值的 *contact* 索引鍵：
+10. 按一下 [ **表單資料**, ，然後新增 *連絡* 金鑰具有下列值:
 
         {   "Id": 0,   "Name": "Li Yan",   "EmailAddress": "yan@contoso.com" }
 
 11. 按一下 [傳送]。
 
-    API 應用程式會傳回 [*201 已建立*] 回應。
+    API 應用程式會傳回 *201 已建立* 回應。
 
     ![新增標頭和內文](./media/app-service-api-dotnet-add-authentication/addcontact.png)
 
 12. 若要驗證此要求是否沒有驗證權杖就無法運作，請刪除驗證標頭，再按一下 [傳送]。
 
-    您會得到 [*403 禁止*] 回應。
+    您取得 *403 禁止* 回應。
 
     ![[403 禁止] 回應](./media/app-service-api-dotnet-add-authentication/403forbidden.png)
 
 ## 取得已登入使用者的相關資訊
 
-本節將說明如何變更 ContactsList API 應用程式中的程式碼，以擷取並傳回已登入使用者的名稱和電子郵件地址。
+本節將說明如何變更 ContactsList API 應用程式中的程式碼，以擷取並傳回已登入使用者的名稱和電子郵件地址。  
 
 1. 在 Visual Studio 中，開啟您在部署 API 應用程式專案 [部署 API 應用程式](app-service-dotnet-deploy-api-app.md) 和已即本教學課程。
 
@@ -231,13 +230,13 @@
     * "microsoftaccount"
     * "google"
     * "twitter"
-    * "facebook"
+    * "facebook" 
 
-3. 在 *ContactsController.cs* 檔案中，新增 `使用` 陳述式，在檔案頂端。
+3. 在 *ContactsController.cs* 檔案中，新增 `using` 陳述式，在檔案頂端。
 
         using Microsoft.Azure.AppService.ApiApps.Service;
 
-2. 中的程式碼來取代 `取得` 為下列程式碼的方法。
+2. 中的程式碼來取代 `Get` 為下列程式碼的方法。
 
         var runtime = Runtime.FromAppSettings(Request);
         var user = runtime.CurrentUser;
@@ -249,21 +248,21 @@
             new Contact { Id = 1, EmailAddress = email, Name = name }
         };
 
-    程式碼會傳回已登入使用者的連絡資訊，而不是三個範例連絡人。
+    程式碼會傳回已登入使用者的連絡資訊，而不是三個範例連絡人。 
 
     範例程式碼會使用 Azure Active Directory。 若是其他提供者，則應依照上一個步驟所述，使用適當的權杖名稱與宣告識別碼。
 
     可用的 Azure Active Directory 宣告的相關資訊，請參閱 [支援的權杖和宣告類型](https://msdn.microsoft.com/library/dn195587.aspx)。
 
-3. 加入 using 陳述式 `Microsoft.Azure.AppService.ApiApps.Service`。
+3. 為 `Microsoft.Azure.AppService.ApiApps.Service` 新增 using 陳述式：
 
         using Microsoft.Azure.AppService.ApiApps.Service;
 
-3. 重新部署專案。
+3. 重新部署專案。  
 
-    Visual Studio 會記住您部署專案時設定 [部署](app-service-dotnet-deploy-api-app.md) 教學課程。 以滑鼠右鍵按一下專案，按一下 [發行]****，然後按一下 [發行 Web]****對話方塊中的 [發行]****。
+    Visual Studio 會記住您部署專案時設定 [部署](app-service-dotnet-deploy-api-app.md) 教學課程。  以滑鼠右鍵按一下專案，請按一下 **發行**, ，然後按一下 [ **發行** 中 **發行 Web** ] 對話方塊。
 
-6. 依照稍早執行過的程序，將 Get 要求傳送至受保護的 API 應用程式。
+6. 依照稍早執行過的程序，將 Get 要求傳送至受保護的 API 應用程式。 
 
     回應訊息會顯示您用來登入的身分識別名稱與識別碼。
 
@@ -271,9 +270,8 @@
 
 ## 後續步驟
 
-您已了解如何透過 Azure Active Directory 或社交提供者驗證來保護 Azure API 應用程式。 如需詳細資訊，請參閱 [API 應用程式和行動應用程式驗證](../app-service/app-service-authentication-overview.md)。
+您已了解如何透過 Azure Active Directory 或社交提供者驗證來保護 Azure API 應用程式。 如需詳細資訊，請參閱 [API 應用程式和行動應用程式驗證](../app-service/app-service-authentication-overview.md)。 
 
-
-[azure portal]: https://manage.windowsazure.com/ 
-[azure preview portal]: https://portal.azure.com/ 
+[Azure portal]: https://manage.windowsazure.com/
+[Azure preview portal]: https://portal.azure.com/
 

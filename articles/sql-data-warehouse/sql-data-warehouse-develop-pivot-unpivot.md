@@ -16,10 +16,9 @@
    ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
-
 # 樞紐和取消樞紐 SQL 資料倉儲中的資料
 
-您可以使用 CASE 陳述式樞紐 SQL 資料倉儲中的資料。
+您可以使用 CASE 陳述式樞紐 SQL 資料倉儲中的資料。 
 
 本文包含兩個簡單範例，關於如何同時樞紐和取消樞紐資料表，而不需使用在 SQL Server 中找到的樞紐和取消樞紐語法。
 
@@ -59,7 +58,7 @@ GROUP BY
 
 ## 取消樞紐
 
-取消樞紐有點複雜。 不過，它仍然是達成使用 `案例`。 為此，您也必須先判斷要取消樞紐多少資料行。 在上一個範例中，我們樞紐了四個資料行。 讓我們維持原意。 若要執行 Unpivot，我們必須暫時增強 4 倍的資料集。 這會導致兩個步驟的程序：
+取消樞紐有點複雜。 不過，它仍然可以使用 `CASE` 達成。 為此，您也必須先判斷要取消樞紐多少資料行。 在上一個範例中，我們樞紐了四個資料行。 讓我們維持原意。 若要執行 Unpivot，我們必須暫時增強 4 倍的資料集。 這會導致兩個步驟的程序：
 
 首先，建立暫存資料表，其中包含四個資料列。 我們將使用此資料表增強資料：
 
@@ -81,7 +80,7 @@ OPTION (LABEL = 'CTAS : #Nmbr : CREATE')
 ;
 ```
 
-第二步是使用 CASE 有條件地取消樞紐資料，將資料集轉換回資料列。 若要達成此目的，我們必須藉由聯結第一個步驟中建立的暫存資料表 #Nmbr，以建立笛卡兒乘積：
+第二步是使用 CASE 有條件地取消樞紐資料，將資料集轉換回資料列。 若要達成此目的，我們必須藉由聯結第一個步驟中建立的暫存資料表 #Nmbr，以建立笛卡兒乘積： 
 
 ```
 SELECT  [EnglishProductCategoryName]
@@ -111,18 +110,14 @@ DROP TABLE #Nmbr
 ```
 
 ## 後續步驟
+如需更多開發秘訣，請參閱 [開發概觀] []。
 
-如需更多開發秘訣，請參閱 [開發概觀 []][]。
+<!--Image references-->
 
+<!--Article references-->
+[development overview]: sql-data-warehouse-overview-develop.md
 
+<!--MSDN references-->
 
-
-
-
-
-
-
-
-
-[development overview]: sql-data-warehouse-overview-develop.md 
+<!--Other Web references-->
 

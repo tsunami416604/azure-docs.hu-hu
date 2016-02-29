@@ -16,26 +16,25 @@
     ms.date="10/08/2015" 
     ms.author="sethm"/>
 
-
 # 如何使用服務匯流排主題和訂用帳戶
 
 [AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本文說明如何使用服務匯流排主題和訂用帳戶。 在 Python 中並使用這些範例 [Python Azure 封裝 []][]。 所涵蓋的案例包括**建立主題和訂用帳戶**、**建立訂用帳戶篩選器**、**傳送訊息至主題**、**接收訂用帳戶的訊息**，及**刪除主題和訂用帳戶**。 如需主題和訂閱的詳細資訊，請參閱 [下一步](#next-steps) 一節。
+本文說明如何使用服務匯流排主題和訂用帳戶。 在 Python 中並使用這些範例 [Python Azure 封裝][]。 涵蓋的案例包括 **建立主題和訂閱**, ，**建立訂閱篩選器**, ，**傳送訊息至主題**, ，**從訂閱接收訊息**, ，和 **刪除主題和訂閱**。 如需主題和訂閱的詳細資訊，請參閱 [下一步](#next-steps) 一節。
 
 [AZURE.INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
-**附註:** 如果您需要安裝 Python 或 [Python Azure 封裝 []][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
+**注意:** 如果您需要安裝 Python 或 [Python Azure 封裝][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
 
 ## 建立主題
 
-**ServiceBusService** 物件可讓您使用主題。 將下列內容新增至您想要在其中以程式設計方式存取服務匯流排之任何 Python 檔案內的頂端附近：
+ **ServiceBusService** 物件可讓您處理主題。 將下列內容新增至您想要在其中以程式設計方式存取服務匯流排之任何 Python 檔案內的頂端附近：
 
 ```
 from azure.servicebus import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-下列程式碼將建立 **ServiceBusService** 物件。 取代 `mynamespace`, ，`sharedaccesskeyname`, ，和 `sharedaccesskey` 使用實際的命名空間、 共用存取簽章 (SAS) 金鑰名稱和索引鍵的值。
+下列程式碼會建立 **ServiceBusService** 物件。 請使用真實的命名空間、共用存取簽章 (SAS) 金鑰名稱和金鑰值來取代 `mynamespace`、`sharedaccesskeyname` 和 `sharedaccesskey`。
 
 ```
 bus_service = ServiceBusService(
@@ -44,13 +43,14 @@ bus_service = ServiceBusService(
     shared_access_key_value='sharedaccesskey')
 ```
 
-您可以取得 SAS 金鑰名稱的值，並從 [Azure 傳統入口網站 []][] **連接資訊** 視窗。
+您可以取得 SAS 金鑰名稱的值，並從 [Azure 傳統入口網站][] **連接資訊** 視窗。
 
 ```
 bus_service.create_topic('mytopic')
 ```
 
-**create\_topic** also supports additional options, which enable you to override default topic settings such as message time to live or maximum topic size. The following example sets the maximum topic size to 5 GB, and a time to live (TTL) value of 1 minute:
+**create\_topic** 也支援其他選項，讓您覆寫訊息存留時間或主題大小上限等預設主題設定。 下列範例會將主題大小上限設為 5 GB，並將存留時間 (TTL) 的值設為 1 分鐘：
+
 ```
 topic_options = Topic()
 topic_options.max_size_in_megabytes = '5120'
@@ -59,31 +59,33 @@ topic_options.default_message_time_to_live = 'PT1M'
 bus_service.create_topic('mytopic', topic_options)
 ```
 
-## Create subscriptions
+## 建立訂用帳戶
 
-Subscriptions to topics are also created with the **ServiceBusService** object. Subscriptions are named and can have an optional filter that restricts the set of messages delivered to the subscription's virtual queue.
+也會建立主題訂閱 **ServiceBusService** 物件。 訂用帳戶是具名的，它們能擁有選用的篩選器，以限制傳遞至訂用帳戶之虛擬佇列的訊息集合。
 
-> [AZURE.NOTE] Subscriptions are persistent and will continue to exist until either they, or the topic to which they are subscribed, are deleted.
+> [AZURE.NOTE] 訂閱是持續性，將會持續存在，直到本身或它們的訂閱，會被刪除的主題。
 
-### Create a subscription with the default (MatchAll) filter
+### 使用預設 (MatchAll) 篩選器建立訂用帳戶
 
-The **MatchAll** filter is the default filter that is used if no filter is specified when a new subscription is created. When the **MatchAll** filter is used, all messages published to the topic are placed in the subscription's virtual queue. The following example creates a subscription named 'AllMessages' and uses the default **MatchAll**
-filter.
+ **MatchAll** 篩選器是預設篩選器，如果沒有指定篩選時建立新的訂閱。 當 **MatchAll** 篩選器時，發佈至主題的所有訊息都會被都置於訂閱的虛擬佇列。 下列範例會建立名為 'AllMessages' 的訂閱，並使用預設 **MatchAll**
+篩選器。
+
 ```
 bus_service.create_subscription('mytopic', 'AllMessages')
 ```
 
-### Create subscriptions with filters
+### 使用篩選器建立訂用帳戶
 
-You can also define filters that enable you to specify which messages sent to a topic should show up within a specific topic subscription.
+您也可以定義篩選器，讓您指定傳送至主題的哪些訊息應顯示在特定主題訂用帳戶中。
 
-The most flexible type of filter supported by subscriptions is a **SqlFilter**, which implements a subset of SQL92. SQL filters operate on the properties of the messages that are published to the topic. For more information about the expressions that can be used with a SQL filter, see the [SqlFilter.SqlExpression][] syntax.
+訂閱所支援的篩選器的最具彈性的型別是 **SqlFilter**, ，可用來實作 SQL92 的子集。 SQL 篩選器會對發佈至主題之訊息的屬性運作。 如需可與 SQL 篩選運算式的詳細資訊，請參閱 [SqlFilter.SqlExpression][] 語法。
 
-You can add filters to a subscription by using the **create\_rule** method of the **ServiceBusService** object. This method allows you to add new filters to an existing subscription.
+可以透過將篩選器新增至訂閱 **create\_rule** 方法 **ServiceBusService** 物件。 此方法可讓您將篩選器新增至現有的訂閱中。
 
-> [AZURE.NOTE] Because the default filter is applied automatically to all new subscriptions, you must first remove the default filter or the **MatchAll** will override any other filters you may specify. You can remove the default rule by using the **delete\_rule** method of the **ServiceBusService** object.
+> [AZURE.NOTE] 由於預設篩選器會自動套用至所有新訂閱，您必須先移除預設篩選器或 **MatchAll** 會覆寫您指定的其他任何篩選器。 您可以使用，以移除預設規則 **delete\_rule** 方法 **ServiceBusService** 物件。
 
-The following example creates a subscription named `HighMessages` with a **SqlFilter** that only selects messages that have a custom **messagenumber** property greater than 3:
+下列範例會建立名為 `HighMessages` 與 **SqlFilter** 只選取自訂的訊息 **messagenumber** 屬性大於 3:
+
 ```
 bus_service.create_subscription('mytopic', 'HighMessages')
 
@@ -95,7 +97,8 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-Similarly, the following example creates a subscription named `LowMessages` with a **SqlFilter** that only selects messages that have a **messagenumber** property less than or equal to 3:
+同樣地，下列範例會建立名為 `LowMessages` 與 **SqlFilter** sqlfilter 只選取 **messagenumber** 屬性小於或等於 3:
+
 ```
 bus_service.create_subscription('mytopic', 'LowMessages')
 
@@ -107,34 +110,37 @@ bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-Now, when a message is sent to `mytopic` it is always delivered to receivers subscribed to the **AllMessages** topic subscription, and selectively delivered to receivers subscribed to the **HighMessages** and **LowMessages** topic subscriptions (depending on the message content).
+現在，當訊息傳送到 `mytopic` 它一定會傳遞到已訂閱 **AllMessages** 主題訂用帳戶，並選擇性地傳遞至已訂閱 **HighMessages** 和 **LowMessages** 主題訂閱的接收者 (視訊息內容而定)。
 
-## Send messages to a topic
+## 傳送訊息至主題
 
-To send a message to a Service Bus topic, your application must use the **send\_topic\_message** method of the **ServiceBusService** object.
+若要將訊息傳送至服務匯流排主題，您的應用程式必須使用 **send\_topic\_message** 方法 **ServiceBusService** 物件。
 
-The following example demonstrates how to send five test messages to `mytopic`. Note that the **messagenumber** property value of each message varies on the iteration of the loop (this determines which subscriptions receive it):
+下列範例說明如何將五個測試訊息傳送至 `mytopic`。 請注意， **messagenumber** 的每個訊息的屬性值的變化迴圈反覆運算上 (這可判斷哪些訂閱會接收):
+
 ```
 for i in range(5):
-    msg = 訊息 ('Msg {0}'.format(i).encode('utf-8')、 custom_properties = {'messagenumber': 我})
+    msg = Message('Msg {0}'.format(i).encode('utf-8'), custom_properties={'messagenumber':i})
     bus_service.send_topic_message('mytopic', msg)
 ```
 
-Service Bus topics support a maximum message size of 256 MB (the header, which includes the standard and custom application properties, can have a maximum size of 64 MB). There is no limit on the number of messages held in a topic but there is a cap on the total size of the messages held by a topic. This topic size is defined at creation time, with an upper limit of 5 GB. For more information about quotas, see [Azure Queues and Service Bus queues][].
+服務匯流排主題支援 256 Kb 的訊息大小上限 (包含標準和自訂應用程式屬性的標頭可以容納 64 Kb 的大小上限)。 主題中所保存的訊息數目沒有限制，但主題所保存的訊息大小總計會有最高限制。 此主題大小會在建立時定義，上限是 5 GB。 如需配額的詳細資訊，請參閱 [Azure 佇列和服務匯流排佇列][]。
 
-## Receive messages from a subscription
+## 自訂閱接收訊息
 
-Messages are received from a subscription using the **receive\_subscription\_message** method on the **ServiceBusService** object:
+從訂閱接收訊息 **receive\_subscription\_message** 方法 **ServiceBusService** 物件:
+
 ```
-msg = bus_service.receive_subscription_message ('mytopic'，'LowMessages'，peek_lock = False)
+msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
-Messages are deleted from the subscription as they are read when the parameter **peek\_lock** is set to **False**. You can read (peek) and lock the message without deleting it from the queue by setting the parameter **peek\_lock** to **True**.
+從訂閱刪除訊息時讀取時參數 **peek\_lock** 設為 **False**。 您可以讀取 (查看) 並鎖定訊息，方法將從佇列刪除 **peek\_lock** 至 **True**。
 
-The behavior of reading and deleting the message as part of the receive operation is the simplest model, and works best for scenarios in which an application can tolerate not processing a message in the event of a failure. To understand this, consider a scenario in which the consumer issues the receive request and then crashes before processing it. Because Service Bus will have marked the message as being consumed, then when the application restarts and begins consuming messages again, it will have missed the message that was consumed prior to the crash.
+隨著接收作業讀取及刪除訊息之行為是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-If the **peek\_lock** parameter is set to **True**, the receive becomes a two stage operation, which makes it possible to support applications that cannot tolerate missing messages. When Service Bus receives a request, it finds the next message to be consumed, locks it to prevent other consumers receiving it, and then returns it to the application. After the application finishes processing the message (or stores it reliably for future processing), it completes the second stage of the receive process by calling **delete** method on the **Message** object. The **delete** method marks the message as being consumed and removes it from the subscription.
+如果 **peek\_lock** 參數設為 **True**, ，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 **刪除** 方法 **訊息** 物件。  **刪除** 方法將訊息標示為已取用，並將它從訂閱移除。
+
 ```
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
 print(msg.body)
@@ -142,22 +148,24 @@ print(msg.body)
 msg.delete()
 ```
 
-## How to handle application crashes and unreadable messages
+## 如何處理應用程式當機與無法讀取的訊息
 
-Service Bus provides functionality to help you gracefully recover from errors in your application or difficulties processing a message. If a receiver application is unable to process the message for some reason, then it can call the **unlock** method on the **Message** object. This will cause Service Bus to unlock the message within the subscription and make it available to be received again, either by the same consuming application or by another consuming application.
+服務匯流排提供一種功能，可協助您從應用程式的錯誤或處理訊息的問題中順利復原。 如果接收者應用程式無法處理訊息，因為某種原因，則它可以呼叫 **解除鎖定** 方法 **訊息** 物件。 這將導致服務匯流排將訂用帳戶中的訊息解除鎖定，讓此訊息可以被相同取用應用程式或其他取用應用程式重新接收。
 
-There is also a timeout associated with a message locked within the subscription, and if the application fails to process the message before the lock timeout expires (for example, if the application crashes), then Service Bus unlocks the message automatically and makes it available to be received again.
+與在訂閱內鎖定訊息相關的還有逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會自動解除鎖定訊息，並讓訊息可以被重新接收。
 
-In the event that the application crashes after processing the message but before the **delete** method is called, then the message will be redelivered to the application when it restarts. This is often called **At Least Once Processing**, that is, each message will be processed at least once but in certain situations the same message may be redelivered. If the scenario cannot tolerate duplicate processing, then application developers should add additional logic to their application to handle duplicate message delivery. This is often achieved using the **MessageId** property of the message, which will remain constant across delivery attempts.
+該應用程式當機之前處理訊息之後 **刪除** 呼叫方法，然後將訊息傳遞給應用程式重新啟動時。 這通常稱為 **至少處理一次**, ，也就是將至少一次處理每個訊息，但在某些情況下可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 這通常您可使用 **MessageId** 會保持不變各個傳遞嘗試的訊息屬性。
 
-## Delete topics and subscriptions
+## 刪除主題和訂用帳戶
 
-Topics and subscriptions are persistent, and must be explicitly deleted either through the [Azure classic portal][] or programmatically. The following example shows how to delete the topic named `mytopic`:
+主題和訂閱是持續性的必須明確地刪除透過 [Azure 傳統入口網站][] 或以程式設計的方式。 下列範例示範如何刪除名為 `mytopic` 的主題：
+
 ```
 bus_service.delete_topic('mytopic')
 ```
 
-Deleting a topic also deletes any subscriptions that are registered with the topic. Subscriptions can also be deleted independently. The following code shows how to delete a subscription named `HighMessages` from the `mytopic` topic:
+刪除主題也將會刪除對主題註冊的任何訂用帳戶。 您也可以個別刪除訂閱。 下列程式碼示範如何從 `mytopic` 主題刪除名為 `HighMessages` 的訂用帳戶：
+
 ```
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
@@ -166,13 +174,12 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 
 了解基本的服務匯流排主題之後，請參考下列連結以取得更多資訊。
 
--   請參閱 [佇列、 主題和訂用帳戶的 []][]。
--   請參考 [[SqlFilter.SqlExpression]][]。
+-   請參閱 [佇列、 主題和訂閱][]。
+-   請參考 [SqlFilter.SqlExpression][]。
 
-
-[azure classic portal]: http://manage.windowsazure.com 
-[python azure package]: https://pypi.python.org/pypi/azure 
-[queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md 
-[sqlfilter.sqlexpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx 
-[azure queues and service bus queues]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas 
+[Azure classic portal]: http://manage.windowsazure.com
+[Python Azure package]: https://pypi.python.org/pypi/azure  
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+[Azure Queues and Service Bus queues]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas 
 

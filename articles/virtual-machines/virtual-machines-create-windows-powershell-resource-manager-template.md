@@ -17,16 +17,14 @@
     ms.date="10/08/2015"
     ms.author="davidmu"/>
 
-
 # 利用 Resource Manager 範本建立 Windows 虛擬機器
 
 > [AZURE.SELECTOR]
-- [Azure Portal - Windows](virtual-machines-windows-tutorial.md)
+- [Azure 入口網站-Windows](virtual-machines-windows-tutorial.md)
 - [Azure PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
-- [Azure PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
-- [Azure Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
+- [Azure PowerShell-範本](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Azure 入口網站的 Linux](virtual-machines-linux-tutorial-portal-rm.md)
 - [Azure CLI](virtual-machines-linux-tutorial.md)
-
 
 <br>
 
@@ -224,6 +222,7 @@
     ]
     }
 
+
 ### 步驟 2：使用範本建立虛擬機器
 
 填寫 Azure 部署名稱、資源群組名稱、Azure 資料中心位置，然後執行以下命令。
@@ -235,7 +234,7 @@
     New-AzureRmResourceGroup –Name $RGName –Location $locName
     New-AzureRmResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
-執行 **New-AzureRmResourceGroupDeployment** 命令時，系統會提示您提供 JSON 檔案 "parameters" 區段中的參數值。 指定所有的參數值後，這個命令會建立資源群組和虛擬機器。
+當您執行 **新增 AzureRmResourceGroupDeployment** 命令，將會提示您提供 JSON 檔案"parameters"區段中的參數值。 指定所有的參數值後，這個命令會建立資源群組和虛擬機器。
 
 範例如下。
 
@@ -265,8 +264,8 @@
     VERBOSE: 10:57:45 AM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is running
     VERBOSE: 10:57:45 AM - Resource Microsoft.Network/networkInterfaces 'myVMNic' provisioning status is succeeded
     VERBOSE: 11:01:59 AM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is succeeded
-    
-    
+
+
     DeploymentName    : TestDeployment
     ResourceGroupName : TestRG
     ProvisioningState : Succeeded
@@ -281,26 +280,22 @@
                         adminPassword    SecureString
                         dnsNameForPublicIP  String                     contoso9875
                         windowsOSVersion  String                     2012-R2-Datacenter
-    
+
     Outputs           :
 
 在新的資源群組中，您現在擁有新的 Windows 虛擬機器，名稱是 MyWindowsVM。
 
 ## 其他資源
 
-[Azure 運算、 網路和存放裝置提供者 Azure 資源管理員](virtual-machines-azurerm-versus-azuresm.md)
+[Azure 資源管理員提供的 Azure 運算、網路和儲存提供者](virtual-machines-azurerm-versus-azuresm.md)
 
 [Azure 資源管理員概觀](resource-group-overview.md)
 
-[使用 Azure 資源管理員和 PowerShell 建立 Windows 虛擬機器](virtual-machines-create-windows-powershell-resource-manager.md)
+[利用 Azure Resource Manager 和 PowerShell 建立 Windows 虛擬機器](virtual-machines-create-windows-powershell-resource-manager.md)
 
-[利用 Powershell 和傳統部署模型中建立 Windows 虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)
+[以 Powershell 和傳統部署模型建立 Windows 虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 [虛擬機器文件](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [如何安裝和設定 Azure PowerShell](install-configure-powershell.md)
-
-
-
-
 

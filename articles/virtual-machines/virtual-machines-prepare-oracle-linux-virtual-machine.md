@@ -16,18 +16,16 @@ ms.workload="infrastructure-services"
 ms.date="06/22/2015" 
 ms.author="bbenz" />
 
-
-# 準備用於 Azure 的 Oracle Linux 虛擬機器
+#準備用於 Azure 的 Oracle Linux 虛擬機器
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
--   [準備 Azure 的 Oracle Linux 6.4 + 虛擬機器](virtual-machines-linux-create-upload-vhd-oracle.md)
+-   [準備用於 Azure 的 Oracle Linux 6.4+ 虛擬機器](virtual-machines-linux-create-upload-vhd-oracle.md)
 
--   [準備 Azure 的 Oracle Linux 7.0 + 虛擬機器](virtual-machines-linux-create-upload-vhd-oracle.md)
+-   [準備用於 Azure 的 Oracle Linux 7.0+ 虛擬機器](virtual-machines-linux-create-upload-vhd-oracle.md)
 
-## 必要條件
-
+##必要條件
 本文假設您已將 Oracle Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 HYPER-V，並建立虛擬機器](http://technet.microsoft.com/library/hh846766.aspx)。
 
 **Oracle Linux 安裝注意事項**
@@ -46,26 +44,25 @@ ms.author="bbenz" />
 
 - 所有 VHD 的大小都必須是 1 MB 的倍數。
 
-## Oracle Linux 6.4+
-
+##Oracle Linux 6.4+
 您必須在作業系統中完成特定組態步驟，虛擬機器才能在 Azure 中執行。
 
 1. 在 Hyper-V 管理員的中央窗格中，選取虛擬機器。
 
-2. 按一下 **[連接]**，以開啟虛擬機器的視窗。
+2. 按一下 [ **連接** 開啟虛擬機器的視窗。
 
 3. 執行下列命令以解除安裝 NetworkManager：
 
         # sudo rpm -e --nodeps NetworkManager
 
-    >[AZURE.NOTE] 如果尚未安裝封裝，此命令將會失敗，並出現錯誤訊息。 這是預期行為。
+    >[AZURE.NOTE]如果尚未安裝封裝，此命令將會失敗，並出現錯誤訊息。 這是預期行為。
 
-4. 在 /etc/sysconfig/ 目錄中，建立名為 **network** 且包含下列文字的檔案：
+4. 建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字:
 
     `NETWORKING=yes`  
     `HOSTNAME=localhost.localdomain`
 
-5.  在 /etc/sysconfig/network-scripts/ 目錄中，建立名為 **ifcfg-eth0** 且包含下列文字的檔案：
+5.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字:
 
         DEVICE=eth0
         ONBOOT=yes
@@ -95,13 +92,13 @@ ms.author="bbenz" />
 
     這也將確保所有主控台訊息都會傳送給第一個序列埠，以協助 Azure 支援團隊進行問題偵錯程序。 因為 Oracle Red Hat 相容核心的一個錯誤，這將會停用 NUMA。
 
-    除了上述以外，我們還建議您「移除」**下列參數：
+    除了上述說明，我們建議您 *移除* 下列參數:
 
         rhgb quiet crashkernel=auto
 
     在雲端環境中，我們會將所有記錄傳送到序列埠，因此不適合使用圖形化和無訊息啟動。
 
-    `Crashkernel` 選項可能會設定如有需要，但請注意，這個參數會減少 VM 中約 128MB 或以上的可用記憶體數量。 這在較小的 VM 中可能會造成問題。
+    如有需要，您可以保留 `crashkernel` 選項的設定。但請注意，此參數將會減少 VM 中約 128 MB 或以上的可用記憶體數量。 這在較小的 VM 中可能會造成問題。
 
 10.  確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。 這通常是預設值。
 
@@ -123,18 +120,17 @@ ms.author="bbenz" />
 
         ResourceDisk.EnableSwap=y
 
-        ResourceDisk.SwapSizeMB=2048 # # 注意: 設為您需要它。
+        ResourceDisk.SwapSizeMB=2048 ## NOTE: set this to whatever you need it to be.
 
 13.  執行下列命令，以取消佈建虛擬機器，並準備將其佈建於 Azure 上：
 
         # sudo waagent-force-取消佈建
-        # 匯出 HISTSIZE = 0
-        # 登出
+        # export HISTSIZE=0
+        # logout
 
 14.  按一下 [ **動作-\ > 關閉** HYPER-V 管理員中。 您現在可以將 Linux VHD 上傳至 Azure。
 
-## Oracle Linux 7.0+
-
+##Oracle Linux 7.0+
 **Oracle Linux 7 中的變更**
 
 準備用於 Azure 的 Oracle Linux 7 虛擬機器的程序相當類似於 Oracle Linux 6 的程序。 不過，有幾個重要的差異值得一提：
@@ -151,14 +147,14 @@ ms.author="bbenz" />
 
 1.  在 Hyper-V 管理員中，選取虛擬機器。
 
-2.  按一下 [連接]****，以開啟虛擬機器的主控台視窗。
+2.  按一下 [ **連接** 開啟虛擬機器的主控台視窗。
 
-3.  在 /etc/sysconfig/ 目錄中，建立名為 **network**、且包含下列文字的檔案：
+3.  建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字:
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4.  在 /etc/sysconfig/network-scripts/ 目錄中，建立名為 **ifcfg-eth0** 且包含下列文字的檔案：
+4.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字:
 
         DEVICE=eth0
         ONBOOT=yes
@@ -191,13 +187,13 @@ ms.author="bbenz" />
 
         GRUB\_CMDLINE\_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述以外，我們還建議您「移除」**下列參數：
+    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述說明，我們建議您 *移除* 下列參數:
 
         rhgb quiet crashkernel=auto
 
     在雲端環境中，我們會將所有記錄傳送到序列埠，因此不適合使用圖形化和無訊息啟動。
 
-    `Crashkernel` 選項可能會設定如有需要，但請注意，這個參數會減少 VM 中約 128MB 或以上的可用記憶體數量。 這在較小的 VM 中可能會造成問題。
+    如有需要，您可以保留 `crashkernel` 選項的設定。但請注意，此參數將會減少 VM 中約 128 MB 或以上的可用記憶體數量。 這在較小的 VM 中可能會造成問題。
 
 10.  在您完成編輯 "/etc/default/grub" 之後，請執行下列命令以重建 grub 組態：
 
@@ -217,17 +213,13 @@ ms.author="bbenz" />
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048 # # 注意: 設為您需要它。
+        ResourceDisk.SwapSizeMB=2048 ## NOTE: Set this to whatever you need it to be.
 
 14.  執行下列命令，以取消佈建虛擬機器，並準備將其佈建於 Azure 上：
 
         # sudo waagent-force-取消佈建
-        # 匯出 HISTSIZE = 0
-        # 登出
+        # export HISTSIZE=0
+        # logout
 
 15.  按一下 [ **動作-\ > 關閉** HYPER-V 管理員中。 您現在可以將 Linux VHD 上傳至 Azure。
-
-
-
-
 

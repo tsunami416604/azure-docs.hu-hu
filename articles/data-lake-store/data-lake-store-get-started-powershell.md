@@ -6,7 +6,7 @@
    authors="nitinme" 
    manager="paulettm" 
    editor="cgronlun"/>
-
+ 
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
@@ -16,53 +16,51 @@
    ms.date="12/04/2015"
    ms.author="nitinme"/>
 
-
 # 使用 Azure PowerShell 開始使用 Azure 資料湖分析存放區
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-get-started-portal.md)
-- [Using PowerShell](data-lake-store-get-started-powershell.md)
-- [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
-- [Using Azure CLI](data-lake-store-get-started-cli.md)
-- [Using Node.js](data-lake-store-manage-use-nodejs.md)
-
+- [使用入口網站](data-lake-store-get-started-portal.md)
+- [使用 PowerShell](data-lake-store-get-started-powershell.md)
+- [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
+- [使用 Azure CLI](data-lake-store-get-started-cli.md)
+- [使用 Node.js](data-lake-store-manage-use-nodejs.md)
 
 了解如何使用 Azure PowerShell 建立 Azure 資料湖存放區帳戶並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需詳細資料湖存放區的詳細資訊，請參閱 [資料湖市集概觀](data-lake-store-overview.md)。
 
-## 必要條件
+## 先決條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-- **啟用您的 Azure 訂用帳戶**以使用資料湖存放區公開預覽版。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。
+- **啟用您的 Azure 訂閱** 資料湖存放區公開預覽。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。
 
 
-## 請安裝 Azure PowerShell 1.0 以上版本。
+##安裝 Azure PowerShell 1.0 或更新版本
 
 一開始，您必須解除安裝 Azure PowerShell 的 0.9x 版本。 若要檢查已安裝 PowerShell 的版本，請從 PowerShell 視窗執行下列命令：
 
     Get-Module *azure*
+    
+若要解除安裝較舊的版本，請執行 **程式和功能** 在控制台和移除早於 PowerShell 1.0 是否已安裝的版本。 
 
-若要解除安裝較舊的版本，請執行控制台中的 [程式和功能]****，並移除早於 PowerShell 1.0 的已安裝版本。
-
-共有兩個安裝 Azure PowerShell 的主要選項。
+共有兩個安裝 Azure PowerShell 的主要選項。 
 
 - [PowerShell 組件庫](https://www.powershellgallery.com/)。 從提高權限的 PowerShell ISE 或提高權限的 Windows PowerShell 主控台執行下列命令：
 
-      # Install the Azure Resource Manager modules from PowerShell Gallery
-      Install-Module AzureRM
-      Install-AzureRM
-    
-      # Install the Azure Service Management module from PowerShell Gallery
-      Install-Module Azure
-    
-      # Import AzureRM modules for the given version manifest in the AzureRM module
-      Import-AzureRM
-    
-      # Import Azure Service Management module
-      Import-Module Azure
+        # Install the Azure Resource Manager modules from PowerShell Gallery
+        Install-Module AzureRM
+        Install-AzureRM
+        
+        # Install the Azure Service Management module from PowerShell Gallery
+        Install-Module Azure
+        
+        # Import AzureRM modules for the given version manifest in the AzureRM module
+        Import-AzureRM
+        
+        # Import Azure Service Management module
+        Import-Module Azure
 
-  如需詳細資訊，請參閱 [PowerShell 組件庫](https://www.powershellgallery.com/)。
+    如需詳細資訊，請參閱 [PowerShell 組件庫](https://www.powershellgallery.com/)。
 
 - [Microsoft Web Platform Installer (WebPI)](http://aka.ms/webpi-azps)。 如果您已安裝 Azure PowerShell 0.9.x，系統將提示您解除安裝 0.9.x。 如果您是從 PowerShell 資源庫安裝 Azure PowerShell 模組，必須在安裝安裝程式之前先移除模組，以確保 Azure PowerShell 環境保持一致。 如需指示，請參閱 [透過 WebPI 安裝 Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
 
@@ -72,17 +70,18 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 
 1. 從您的桌面上開啟新的 Azure PowerShell 視窗，輸入下列程式碼片段登入 Azure 帳戶、設定訂用帳戶，然後註冊資料湖存放區提供者。 系統提示您登入時，請使用其中一個訂用帳戶管理員/擁有者身分登入：
 
-     # Log in to your Azure account
-     Login-AzureRmAccount
-    
-     # List all the subscriptions associated to your account
-     Get-AzureRmSubscription
-    
-     # Select a subscription 
-     Set-AzureRmContext -SubscriptionId <subscription ID>
-    
-     # Register for Azure Data Lake Store
-     Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore" 
+        # Log in to your Azure account
+        Login-AzureRmAccount
+        
+        # List all the subscriptions associated to your account
+        Get-AzureRmSubscription
+        
+        # Select a subscription 
+        Set-AzureRmContext -SubscriptionId <subscription ID>
+        
+        # Register for Azure Data Lake Store
+        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore" 
+
 
 2. Azure 資料湖存放區帳戶與 Azure 資源群組相關聯。 從建立 Azure 資源群組開始。
 
@@ -102,17 +101,17 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 
         Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
-    輸出應為 **True**。
+    這個輸出應該 **True**。
 
 ## 在您的 Azure 資料湖存放區中建立目錄結構
 
-您可以在您的 Azure 資料湖存放區帳戶下建立用於管理與儲存資料的目錄。
+您可以在您的 Azure 資料湖存放區帳戶下建立用於管理與儲存資料的目錄。 
 
 1. 指定根目錄。
 
         $myrootdir = "/"
 
-2. 在指定的根目錄下建立名為 **mynewdirectory** 的新目錄。
+2. 建立新的目錄稱為 **mynewdirectory** 指定根目錄下。
 
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/mynewdirectory
 
@@ -127,11 +126,12 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 
 ## 將資料上傳至 Azure 資料湖存放區
 
-您可以在根層級直接將資料上傳至資料湖存放區，或上傳至您在帳戶內建立的目錄。 下列程式碼範例說明如何將一些範例資料上傳至您在上一節中建立的目錄 (**mynewdirectory**)。
+您可以在根層級直接將資料上傳至資料湖存放區，或上傳至您在帳戶內建立的目錄。 下列程式碼片段示範如何將某些範例資料上傳至目錄 (**mynewdirectory**) 您在上一節中建立。
 
 如果您要尋找要上傳的一些範例資料，您可以取得 **政策救護車資料** 資料夾從 [Azure 資料湖 Git 儲存機制](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)。 下載檔案，並將它儲存在您的電腦，例如 C:\sampledata\ 上的本機目錄。
 
     Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
+
 
 ## 重新命名、下載與刪除資料湖存放區中的資料
 
@@ -146,8 +146,8 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 若要刪除檔案，請使用下列命令：
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv 
-
-出現提示時，請輸入 **Y** 刪除項目。 如果您要刪除多個檔案，可以提供所有的路徑並以逗號分隔。
+    
+出現提示時，輸入 **Y** 刪除的項目。 如果您要刪除多個檔案，可以提供所有的路徑並以逗號分隔。
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 
@@ -157,24 +157,20 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 
     Remove-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
-出現提示時，請輸入 **Y** 刪除帳戶。
+出現提示時，輸入 **Y** 刪除帳戶。
 
 
-## 其他建立資料湖存放區帳戶的方法
+## 建立資料湖存放區帳戶的其他方式
 
-- [開始使用資料湖存放區使用入口網站](data-lake-store-get-started-portal.md)
-- [開始使用資料湖存放區中使用.NET SDK](data-lake-store-get-started-net-sdk.md)
-- [開始使用資料湖存放區中使用 Azure CLI](data-lake-store-get-started-cli.md)
+- [使用入口網站開始使用資料湖存放區](data-lake-store-get-started-portal.md)
+- [使用 .NET SDK 開始使用資料湖存放區](data-lake-store-get-started-net-sdk.md)
+- [使用 Azure CLI 開始使用資料湖存放區](data-lake-store-get-started-cli.md)
 
 
 ## 後續步驟
 
 - [保護資料湖存放區中的資料](data-lake-store-secure-data.md)
-- [使用 Azure 資料湖分析與資料湖存放區](data-lake-analytics-get-started-portal.md)
-- [使用 Azure HDInsight 與資料湖存放區](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-
+- [搭配資料湖存放區使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)
+- [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 

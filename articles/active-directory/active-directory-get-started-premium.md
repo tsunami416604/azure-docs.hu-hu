@@ -16,14 +16,14 @@
     ms.date="10/30/2015"
     ms.author="markvi"/>
 
-
 # 開始使用 Azure Active Directory Premium
 
 Azure Active Directory 有三種版本：免費、基本和進階。 免費版本隨附於 Azure 或 Office 365 訂用帳戶。 基本和進階版本都是透過 [Microsoft Enterprise 合約](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) 或 [開啟大量授權](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) 程式。 Azure 和 Office 365 訂閱者也可以線上購買 Active Directory Premium。 [在這裡登入](https://portal.office.com/Commerce/Catalog.aspx) 購買。
-> [AZURE.NOTE]
-Azure Active Directory Premium 和 Basic 版本適用於使用 Azure Active Directory 全球執行個體的中國客戶。 由 21Vianet 在中國提供的 Microsoft Azure 服務目前不支援 Azure Active Directory Premium 和 Basic 版本。 如需詳細資訊，與我們連絡 [Azure Active Directory 論壇](http://feedback.azure.com/forums/169401-azure-active-directory)。
 
-Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite** 中。 Enterprise Mobility Suite 是一個符合成本效益的方式，可供組織根據單一授權方案來搭配使用 Microsoft Intune、Azure 版權管理和 Active Directory Premium 服務。 如需詳細資訊，請參閱 [Enterprise Mobility Suite](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) 網站。
+> [AZURE.NOTE]
+Azure Active Directory Premium 和 Basic 版本適用於使用全球 Azure Active Directory 執行個體的中國客戶。 由 21Vianet 在中國提供的 Microsoft Azure 服務目前不支援 Azure Active Directory Premium 和 Basic 版本。 如需詳細資訊，與我們連絡 [Azure Active Directory 論壇](http://feedback.azure.com/forums/169401-azure-active-directory)。
+
+Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite**。 Enterprise Mobility Suite 是一個符合成本效益的方式，可供組織根據單一授權方案來搭配使用 Microsoft Intune、Azure 版權管理和 Active Directory Premium 服務。 如需詳細資訊，請參閱 [Enterprise Mobility Suite](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) 網站。
 
 若要立即開始使用 Azure Active Directory Premium 功能，請遵照下列步驟進行。 相同的步驟適用於 Azure Active Directory Basic 版本。
 
@@ -37,9 +37,9 @@ Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite** 中。
 
 ![][1]
 
-如果您有現有的租用戶，請選取 [**登入**] 連結並使用現有的系統管理員帳戶登入。 請務必使用目錄的全域管理員認證進行登入，且目錄必須已啟用授權。
+如果您現有的租用戶，請選取 **登入** 連結至現有的系統管理員帳戶登入。 請務必使用目錄的全域管理員認證進行登入，且目錄必須已啟用授權。
 
-如果您想要建立新的 Azure Active Directory 租用戶來與授權方案搭配使用，則您應該選取將會帶您到下列畫面的 [**註冊**] 連結。
+如果您想要建立新的 Azure Active Directory 租用戶以搭配授權方案，則您應該選取 **註冊** 連結會帶您到下列畫面。
 
 ![][2]
 
@@ -53,7 +53,7 @@ Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite** 中。
 
 ![][4]
 
-登入成功之後，您必須提供行動電話號碼並加以驗證，才能完成第二個因素驗證畫面 (如下)。 在此之後，您便能夠選取 [**註冊**] 來啟用您的 Azure Active directory 存取。
+登入成功之後，您必須提供行動電話號碼並加以驗證，才能完成第二個因素驗證畫面 (如下)。 在此之後您將能夠選取 [啟用 Azure Active directory 存取 **註冊**。
 
 ![][5]
 
@@ -82,8 +82,8 @@ Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite** 中。
 將授權指派給使用者：
 
 1. 以想要自訂之目錄的全域系統管理員身分登入管理入口網站。
-2. 按一下 [**Active Directory**]，然後選取您要指派授權的目錄。
-3. 選取 [**授權**] 索引標籤，選取 [**Active Directory Premium**] 或 [**Enterprise Mobility Suite**]，然後按一下 [**指派**]。
+2. 按一下 [ **Active Directory**, ，然後選取您要指派授權的目錄。
+3. 選取 **授權** 索引標籤上，選取 **Active Directory Premium** 或 **Enterprise Mobility Suite**, ，然後按一下 [ **指派**。
 
     ![][10]
 
@@ -103,23 +103,22 @@ Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite** 中。
 
 Microsoft 雲端服務的服務和功能可用性會依國家或地區而有所不同。 服務 (例如網路電話，VoIP) 有可能在一個國家或地區可以使用，但在另一個國家或地區卻無法使用。 基於某些國家或地區的法律問題，服務中的功能可能會受到限制。 若要查看服務或功能在使用上有無限制，請到服務授權限制網站並尋找您的國家或地區。
 
-## 後續步驟
+## 接下來
 
-- [加上公司商標在登入和存取面板頁面](active-directory-add-company-branding.md)
+- [將公司商標新增至登入和存取面板頁面](active-directory-add-company-branding.md)
 - [檢視存取和使用情況報告](active-directory-view-access-usage-reports.md)
 
-
-
-[1]: ./media/active-directory-get-started-premium/MOLSEmail.png 
-[2]: ./media/active-directory-get-started-premium/MOLSAccountProfile.png 
-[3]: ./media/active-directory-get-started-premium/MOLSThankYou.png 
-[4]: ./media/active-directory-get-started-premium/AADEmail.png 
-[5]: ./media/active-directory-get-started-premium/SignUppage.png 
-[6]: ./media/active-directory-get-started-premium/Subscriptionspage.png 
-[7]: ./media/active-directory-get-started-premium/Premiuminportal.png 
-[8]: ./media/active-directory-get-started-premium/Premiuminportal_large.png 
-[9]: ./media/active-directory-get-started-premium/Signuppage_oops.png 
-[10]: ./media/active-directory-get-started-premium/contosolicenseplan.png 
-[11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png 
-[12]: ./media/active-directory-get-started-premium/Usagelocation.png 
+<!--Image references-->
+[1]: ./media/active-directory-get-started-premium/MOLSEmail.png
+[2]: ./media/active-directory-get-started-premium/MOLSAccountProfile.png
+[3]: ./media/active-directory-get-started-premium/MOLSThankYou.png
+[4]: ./media/active-directory-get-started-premium/AADEmail.png
+[5]: ./media/active-directory-get-started-premium/SignUppage.png
+[6]: ./media/active-directory-get-started-premium/Subscriptionspage.png
+[7]: ./media/active-directory-get-started-premium/Premiuminportal.png
+[8]: ./media/active-directory-get-started-premium/Premiuminportal_large.png
+[9]: ./media/active-directory-get-started-premium/Signuppage_oops.png
+[10]: ./media/active-directory-get-started-premium/contosolicenseplan.png
+[11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
+[12]: ./media/active-directory-get-started-premium/Usagelocation.png
 

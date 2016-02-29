@@ -1,6 +1,6 @@
 <properties 
     pageTitle="使用 PowerShell 新增 SQL Database 設定| Microsoft Azure" 
-    description="了解如何使用 PowerShell 建立新的 SQL Database。透過 PowerShell cmdlet 可以管理一般資料庫設定工作。" 
+    description="了解如何使用 PowerShell 建立新的 SQL Database。 透過 PowerShell cmdlet 可以管理一般資料庫設定工作。" 
     keywords="create new sql database,database setup"
     services="sql-database" 
     documentationCenter="" 
@@ -17,16 +17,14 @@
     ms.date="12/01/2015"
     ms.author="sstein"/>
 
-
-# 建立新的 SQL Database 並使用 PowerShell Cmdlet 執行一般資料庫設定工作
+# 建立新的 SQL Database 並使用 PowerShell Cmdlet 執行一般資料庫設定工作 
 
 **單一資料庫**
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-get-started.md)
+- [Azure 入口網站](sql-database-get-started.md)
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
-
 
 
 了解如何建立新的 SQL Database 並使用 PowerShell Cmdlet 執行一般資料庫設定工作。
@@ -34,12 +32,12 @@
 
 若要執行 PowerShell Cmdlet，Azure PowerShell 必須已安裝且正在執行中。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](../powershell-install-configure.md)。
 
-- 如果需要 Azure 訂用帳戶，可以先按一下此頁面頂端的 [免費試用]****，然後再回來完成這篇文章。
+- 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
 
 
 ## 設定您的認證並選取您的訂用帳戶
 
-既然您已在執行 Azure 資源管理員模組，便可以存取建立 SQL Database 所需的所有必要 Cmdlet。
+既然您已在執行 Azure 資源管理員模組，便可以存取建立 SQL Database 所需的所有必要 Cmdlet。 
 
 您必須先建立 Azure 帳戶的存取權，以便執行以下 Cmdlet，然後您會看到要輸入認證的登入畫面。 請使用與登入 Azure 入口網站相同的電子郵件和密碼。
 
@@ -50,30 +48,30 @@
 
 ### 選取您的 Azure 訂用帳戶
 
-若要選取所需的訂用帳戶，您必須提供訂用帳戶 ID。 您可以複製上一個步驟中的資訊，或者，如果您有多個訂用帳戶，則可以執行 **Get-AzureRmSubscription** Cmdlet，然後從結果集中複製所需的訂用帳戶資訊。 當您的訂用帳戶執行了以下 Cmdlet 之後：
+若要選取所需的訂用帳戶，您必須提供訂用帳戶 ID。 您可以複製上一個步驟中，或如果您有多個訂閱執行 **Get AzureRmSubscription** 指令程式並複製結果集中所需的訂閱資訊。 當您的訂用帳戶執行了以下 Cmdlet 之後：
 
     Select-AzureRmSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
-成功執行 **Select-AzureRmSubscription** 之後，您會返回 PowerShell 提示字元。 如果您有一個以上的訂用帳戶，您可以執行 **Get-AzureRmSubscription** 並確認您要使用的訂用帳戶顯示 **IsCurrent: True**。
+成功執行之後， **選取 AzureRmSubscription** 您會回到 PowerShell 提示。 如果您有一個以上的訂閱可以執行 **Get AzureRmSubscription** ，並確認您想要使用顯示的訂閱 **IsCurrent: True**。
 
 ## 資料庫設定：建立資源群組、伺服器和防火牆規則
 
-現在您有權在您選取的 Azure 訂用帳戶下執行 Cmdlet，因此下一步是建立含有伺服器的資源群組，以在伺服器中建立資料庫。 為了使用您選擇的任何有效位置，您可以編輯下一個命令。 執行 **(Get-AzureRmLocation | where-object {$_.Name -eq "Microsoft.Sql/servers" }).Locations** 以取得有效位置的清單。
+現在您有權在您選取的 Azure 訂用帳戶下執行 Cmdlet，因此下一步是建立含有伺服器的資源群組，以在伺服器中建立資料庫。 為了使用您選擇的任何有效位置，您可以編輯下一個命令。 執行 **(Get AzureRmLocation | where-object {$_。名稱-eq"Microsoft.Sql/servers"})。位置** 以取得有效位置清單。
 
 執行下列命令以建立新的資源群組：
 
     New-AzureRmResourceGroup -Name "resourcegroupsqlgsps" -Location "West US"
 
-成功建立新的資源群組之後，您會在畫面上看到包含 **ProvisioningState : Succeeded** 的資訊。
+已成功建立新的資源群組之後您看到螢幕上包含的資訊 **ProvisioningState: 成功**。
 
 
-### 建立伺服器
+### 建立伺服器 
 
-SQL Database 會建立在 Azure SQL Database 伺服器內。 執行 **New-AzureRmSqlServer** 以建立新的伺服器。 用您的伺服器名稱取代 ServerName。 這必須是所有 Azure SQL Server 的唯一名稱，因此伺服器名稱若被佔用，您就會收到錯誤訊息。 另外值得注意的是，此命令可能需要數分鐘才能完成。 您可以編輯此命令以使用您選擇的任何有效位置，但您應該使用您在上一個步驟中建立資源群組時使用的相同位置。
+SQL Database 會建立在 Azure SQL Database 伺服器內。 執行 **新增 AzureRmSqlServer** 來建立新的伺服器。 用您的伺服器名稱取代 ServerName。 這必須是所有 Azure SQL Server 的唯一名稱，因此伺服器名稱若被佔用，您就會收到錯誤訊息。 另外值得注意的是，此命令可能需要數分鐘才能完成。 您可以編輯此命令以使用您選擇的任何有效位置，但您應該使用您在上一個步驟中建立資源群組時使用的相同位置。
 
     New-AzureRmSqlServer -ResourceGroupName "resourcegroupsqlgsps" -ServerName "server1" -Location "West US" -ServerVersion "12.0"
 
-當您執行此命令時，會隨即開啟向您詢問 [使用者名稱] ****和 [密碼] ****的視窗。 這不是您的 Azure 認證、 輸入使用者名稱和您想要建立新的伺服器系統管理員認證的密碼。
+當您執行此命令] 視窗隨即開啟向您詢問 **使用者名稱** 和 **密碼**。 這不是您的 Azure 認證、 輸入使用者名稱和您想要建立新的伺服器系統管理員認證的密碼。
 
 成功建立伺服器後，會出現伺服器詳細資料。
 
@@ -98,6 +96,7 @@ SQL Database 會建立在 Azure SQL Database 伺服器內。 執行 **New-AzureR
 
 
     New-AzureRmSqlDatabase -ResourceGroupName "resourcegroupsqlgsps" -ServerName "server1" -DatabaseName "database1" -Edition "Standard" -RequestedServiceObjectiveName "S1"
+
 
 成功建立資料庫後，會出現資料庫詳細資料。
 
@@ -130,18 +129,15 @@ SQL Database 會建立在 Azure SQL Database 伺服器內。 執行 **New-AzureR
     $SqlDatabase = New-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -Edition $DatabaseEdition -RequestedServiceObjectiveName $DatabasePerfomanceLevel
     
     $SqlDatabase
+    
+
 
 ## 後續步驟
-
 建立新的 SQL Database 並執行基本的資料庫設定工作之後，您就可以執行下列作業：
 
-- [使用 SQL Server Management Studio (SSMS) 連接](sql-database-connect-to-database.md)
+- [連接 SQL Server Management Studio (SSMS)](sql-database-connect-to-database.md)
 
 
 ## 其他資源
 
 - [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
-
-
-
-

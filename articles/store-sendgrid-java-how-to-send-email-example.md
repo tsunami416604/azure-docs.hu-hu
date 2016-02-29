@@ -16,7 +16,6 @@
     ms.date="10/30/2014" 
     ms.author="vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com"/>
 
-
 # 如何在 Azure 部署中使用 SendGrid 透過 Java 傳送電子郵件
 
 下列範例將說明如何從 Azure 代管的網頁上使用 SendGrid 傳送電子郵件。 產生的應用程式會提示使用者提供電子郵件值，如下列螢幕擷取畫面所示。
@@ -40,7 +39,7 @@
 
 ## 建立用以傳送電子郵件的 Web 表單
 
-下列程式碼將說明如何建立 Web 表單，以擷取傳送電子郵件所需的使用者資料。 根據本文的用途，我們將此 JSP 檔案命名為 **emailform.jsp**。
+下列程式碼將說明如何建立 Web 表單，以擷取傳送電子郵件所需的使用者資料。 本文的用途，將此 JSP 檔案命名為 **emailform.jsp**。
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
@@ -97,7 +96,7 @@
 
 ## 建立用以傳送電子郵件的程式碼
 
-下列程式碼會在您完成 emailform.jsp 中的表單時受到呼叫，可用來建立電子郵件訊息並加以傳送。 根據本文的用途，我們將此 JSP 檔案命名為 **sendemail.jsp**。
+下列程式碼會在您完成 emailform.jsp 中的表單時受到呼叫，可用來建立電子郵件訊息並加以傳送。 本文的用途，將此 JSP 檔案命名為 **sendemail.jsp**。
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" import="javax.activation.*, javax.mail.*, javax.mail.internet.*, java.util.Date, java.util.Properties" %>
@@ -110,36 +109,36 @@
     <body>
         <b>This is my send mail page.</b><p/>
      <%
-    
+     
      final String sendGridUser = request.getParameter("sendGridUser");
      final String sendGridPassword = request.getParameter("sendGridPassword");
-    
+     
      class SMTPAuthenticator extends Authenticator
      {
        public PasswordAuthentication getPasswordAuthentication()
        {
             String username = sendGridUser;
             String password = sendGridPassword;
-    
+          
             return new PasswordAuthentication(username, password);   
        }
      }
      try
      {
-    
+         
          // The SendGrid SMTP server.
          String SMTP_HOST_NAME = "smtp.sendgrid.net";
     
          Properties properties;
-    
+        
          properties = new Properties();
-    
+         
          // Specify SMTP values.
          properties.put("mail.transport.protocol", "smtp");
          properties.put("mail.smtp.host", SMTP_HOST_NAME);
          properties.put("mail.smtp.port", 587);
          properties.put("mail.smtp.auth", "true");
-    
+         
          // Display the email fields entered by the user. 
          out.println("Value entered for email Subject: " + request.getParameter("emailSubject") + "<br/>");        
          out.println("Value entered for email      To: " + request.getParameter("emailTo") + "<br/>");
@@ -148,11 +147,11 @@
     
          // Create the authenticator object.
          Authenticator authenticator = new SMTPAuthenticator();
-    
+         
          // Create the mail session object.
          Session mailSession;
          mailSession = Session.getDefaultInstance(properties, authenticator);
-    
+         
          // Display debug information to stdout, useful when using the
          // compute emulator during development.
          mailSession.setDebug(true);
@@ -161,9 +160,9 @@
          MimeMessage message;
          Multipart multipart;
          MimeBodyPart messagePart; 
-    
+         
          message = new MimeMessage(mailSession);
-    
+         
          multipart = new MimeMultipart("alternative");
          messagePart = new MimeBodyPart();
          messagePart.setContent(request.getParameter("emailText"), "text/html");
@@ -174,13 +173,13 @@
          message.addRecipient(Message.RecipientType.TO, new InternetAddress(request.getParameter("emailTo")));
          message.setSubject(request.getParameter("emailSubject")); 
          message.setContent(multipart);
-    
+         
          // Uncomment the following if you want to add a footer.
          // message.addHeader("X-SMTPAPI", "{\"filters\": {\"footer\": {\"settings\": {\"enable\":1,\"text/html\": \"<html>This is my <b>email footer</b>.</html>\"}}}}");
     
          // Uncomment the following if you want to enable click tracking.
          // message.addHeader("X-SMTPAPI", "{\"filters\": {\"clicktrack\": {\"settings\": {\"enable\":1}}}}");
-    
+         
          Transport transport;
          transport = mailSession.getTransport();
          // Connect the transport object.
@@ -189,9 +188,9 @@
          transport.sendMessage(message,  message.getRecipients(Message.RecipientType.TO));
          // Close the connection.
          transport.close();
-    
+     
         out.println("<p>Email processing completed.</p>");
-    
+         
      }
      catch (Exception e)
      {
@@ -210,16 +209,15 @@
 
 ## 後續步驟
 
-將您的應用程式部署至計算模擬器，並在瀏覽器中執行 emailform.jsp，輸入表單中的值，按一下 [Send this email]****，然後在 sendemail.jsp 中檢視結果。
+應用程式部署至計算模擬器並在瀏覽器中執行 emailform.jsp，輸入表單中的值，請按一下 **傳送這封電子郵件**, ，然後查看在 sendemail.jsp 中檢視結果。
 
-此程式碼可說明如何在 Azure 上的 Java 中使用 SendGrid。 在部署至生產環境中的 Azure 之前，您可以新增更多錯誤處理或其他功能。 例如：
+此程式碼可說明如何在 Azure 上的 Java 中使用 SendGrid。 在部署至生產環境中的 Azure 之前，您可以新增更多錯誤處理或其他功能。 例如： 
 
 * 您可以使用 Azure 儲存體 Blob 或 SQL Database 來儲存電子郵件地址和電子郵件訊息，而不使用 Web 表單。 使用 java 的 Azure 儲存體 blob 的相關資訊，請參閱 [如何使用 Java 的 Blob 儲存體服務](http://www.windowsazure.com/develop/java/how-to-guides/blob-storage/)。 使用 java 的 SQL Database 的相關資訊，請參閱 [在 Java 中使用 SQL Database](http://www.windowsazure.com/develop/java/how-to-guides/using-sql-azure-in-java/)。
-* 您可以使用 `RoleEnvironment.getConfigurationSettings`，從部署的組態設定中擷取 SendGrid 使用者名稱和密碼，而不 Web 表單擷取這些值。如需有關資訊 `RoleEnvironment` 類別，請參閱 [使用 Azure 服務執行階段程式庫在 JSP 中](http://msdn.microsoft.com/library/windowsazure/hh690948) 和 Azure Service Runtime 封裝文件 <http://dl.windowsazure.com/javadoc>。
+* 您可以使用 `RoleEnvironment.getConfigurationSettings`，從部署的組態設定中擷取 SendGrid 使用者名稱和密碼，而不使用 Web 表單擷取這些值。 如需有關資訊 `RoleEnvironment` 類別，請參閱 [使用 Azure 服務執行階段程式庫在 JSP 中](http://msdn.microsoft.com/library/windowsazure/hh690948) 和 Azure Service Runtime 封裝文件 <http://dl.windowsazure.com/javadoc>。
 * 如需有關如何在 Java 中使用 SendGrid 的詳細資訊，請參閱 [如何使用 SendGrid 透過 Java 傳送電子郵件](store-sendgrid-java-how-to-send-email.md)。
 
-
-[emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg 
-[emailsent]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailSent.jpg 
-[emailresult]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaResult.jpg 
+[emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg
+[emailsent]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailSent.jpg
+[emailresult]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaResult.jpg
 

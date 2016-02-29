@@ -16,7 +16,6 @@
    ms.date="11/13/2015"
    ms.author="vturecek"/>
 
-
 # Reliable Actor 設計模式：資源管理
 
 企業或其他開發人員能輕鬆地辨識此模式和相關案例，他們在內部部署或雲端擁有無法立即調整的有限資源，或需要將大規模的應用程式與資料移至雲端。
@@ -412,23 +411,22 @@ public class EventWriter : StatefulActor<EventWriterState>, IEventWriter
 
 ## 後續步驟
 
-[模式: 智慧型快取](service-fabric-reliable-actors-pattern-smart-cache.md)
+[模式：智慧型快取](service-fabric-reliable-actors-pattern-smart-cache.md)
 
-[模式: 分散式的網路和圖形](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
+[模式：分散式網路和圖形](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
 
-[模式: 可設定狀態的服務組合](service-fabric-reliable-actors-pattern-stateful-service-composition.md)
+[模式：可設定狀態的服務組合](service-fabric-reliable-actors-pattern-stateful-service-composition.md)
 
-[模式: 物聯網](service-fabric-reliable-actors-pattern-internet-of-things.md)
+[模式：物聯網](service-fabric-reliable-actors-pattern-internet-of-things.md)
 
-[模式: 分散式的計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
+[模式：分散式計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
 
 [某些反向模式](service-fabric-reliable-actors-anti-patterns.md)
 
 [Service Fabric Actor 簡介](service-fabric-reliable-actors-introduction.md)
 
-
-
-[1]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch1.png 
-[2]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch2.png 
-[3]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch3.png 
+<!--Image references-->
+[1]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch1.png
+[2]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch2.png
+[3]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch3.png
 

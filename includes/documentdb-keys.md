@@ -1,7 +1,3 @@
-       接下來瀏覽到您 DocumentDB 帳戶的 [金鑰] 刀鋒視窗，因為我們將於建立的 Web 應用程式中使用這些值。
+       Now navigate to the Keys blade of your DocumentDB account as we will use these values in the web application we create next.
 
-       ![Azure 預覽入口網站中，顯示 DocumentDB 帳戶，DocumentDB 帳戶] 刀鋒視窗上反白顯示 ](./media/documentdb-keys/keys.png)
-
-
-
-
+       ![Screen shot of the Azure Preview portal, showing a DocumentDB account, with the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade](./media/documentdb-keys/keys.png)

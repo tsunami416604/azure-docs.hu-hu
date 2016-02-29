@@ -16,8 +16,7 @@
     ms.date="11/23/2015"
     ms.author="piyushjo"/>
 
-
-# 對遊戲應用程式實作 Mobile Engagement
+#對遊戲應用程式實作 Mobile Engagement
 
 ## 概觀
 
@@ -25,7 +24,7 @@
 
 根據 [Azure Mobile Engagement-快速入門指南與最佳作法](mobile-engagement-getting-started-best-practices.md) 他們建置 engagement 策略。
 
-## 目標和 KPI
+##目標和 KPI
 
 該遊戲的重要關係人齊聚一堂。 所有人都同意一個主要目標，那就是將高階套件的銷售量增加 15%。 他們建立起業務關鍵效能指標 (KPI)，以便測量和推動這個目標。
 
@@ -33,7 +32,7 @@
 * 每位使用者、每個工作階段、每週和每月的營收為何？
 * 最愛的購買類型為何？
 
-第 1 部 [入門指南](mobile-engagement-getting-started-best-practices.md) 說明如何定義目標和 Kpi。
+第 1 部 [入門指南](mobile-engagement-getting-started-best-practices.md) 說明如何定義目標和 Kpi。 
 
 現在已定義好業務 KPI，行動裝置產品經理接著會建立業務開發 KPI，以確定新的使用者趨勢和保留期。
 
@@ -65,12 +64,9 @@
 多虧了這項分析，行動裝置專案主任決定建立特定的推播通知順序，以增加應用程式內銷售額。 他建立了三個他稱為「歡迎計劃」、「銷售計劃」和「無活動計劃」的推播順序。 如需詳細資訊請參閱 [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)
     ![][1]
 
+<!--Image references-->
 
+[1]: ./media/mobile-engagement-game-scenario/notification-scenario.png
 
-
-
-
-
-
-[1]: ./media/mobile-engagement-game-scenario/notification-scenario.png 
+<!--Link references-->
 

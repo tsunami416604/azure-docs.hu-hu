@@ -16,7 +16,6 @@
     ms.date="11/19/2015" 
     ms.author="tomfitz"/>
 
-
 # 將資源移動到新的資源群組或訂用帳戶
 
 此主題說明如何將資源從某個資源群組移動到另一個資源群組。 您也可以將資源移動到新的訂用帳戶。 在下列情況中，您可能需要移動資源：
@@ -27,11 +26,11 @@
 
 移動資源時有一些重要的考量：
 
-1. 您無法變更資源的位置。 移動資源只會將它移動到新的資源群組。 
-
+1. 您無法變更資源的位置。 移動資源只會將它移動到新的資源群組。 新的資源群組可能會有不同的位置，但完成的 
+變更資源的位置。
 2. 您要將資源移動到其中的目的地資源群組，只應包含與該資源共用相同應用程式生命週期的資源。
-3. 若使用 Azure PowerShell，請確定您使用最新版本。 **Move-AzureRmResource** 命令經常更新。 
-
+3. 若使用 Azure PowerShell，請確定您使用最新版本。  **移動 AzureRmResource** 命令經常更新。 若要更新您的版本，執行 Microsoft Web Platform Installer 並檢查 
+使用新版本。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
 4. 移動作業可能需要一段時間來完成，且作業期間您的 PowerShell 提示字元會等候直到作業完成。
 5. 當移動資源時，會在作業期間鎖定來源群組和目標群組。 群組上的寫入和刪除作業將會封鎖，直到移動完成。
 
@@ -55,7 +54,7 @@
 - Redis 快取
 - 搜尋
 - SQL Database
-- 
+- Web 應用程式 (某些 [限制](app-service-web/app-service-move-resources.md) 套用)
 
 支援移動到新資源群組，但不支援移動到新訂用帳戶的服務有：
 
@@ -77,7 +76,7 @@
 
 [AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
 
-若要將現有的資源移動到另一個資源群組或訂用帳戶，請使用 **Move-AzureRmResource** 命令。
+若要將現有的資源移動到另一個資源群組或訂用帳戶，使用 **移動 AzureRmResource** 命令。
 
 第一個範例顯示如何將某個資源移動到新的資源群組。
 
@@ -90,7 +89,7 @@
     PS C:\> $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
     PS C:\> Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId ($webapp.ResourceId, $plan.ResourceId)
 
-若要移動到新的訂用帳戶，請包含 **DestinationSubscriptionId** 參數的值。
+若要移動到新的訂用帳戶，包含的值 **DestinationSubscriptionId** 參數。
 
 ## 使用 REST API 移動資源
 
@@ -98,16 +97,11 @@
 
     POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version} 
 
-在要求主體中，您可以指定目標資源群組以及要移動的資源。
+在要求主體中，您可以指定目標資源群組以及要移動的資源。 如需移動 REST 作業的詳細資訊，請參閱 [移動資源](https://msdn.microsoft.com/library/azure/mt218710.aspx)。
 
 ## 後續步驟
-
-- 
-- 
-- 
-- 
-
-
-
-
+- [將 Azure PowerShell 與資源管理員搭配使用](./powershell-azure-resource-manager.md)
+- [Azure CLI 搭配資源管理員使用](./virtual-machines/xplat-cli-azure-resource-manager.md)
+- [使用 Azure 入口網站管理資源](azure-portal/resource-group-portal.md)
+- [使用標記組織您的資源](./resource-group-using-tags.md)
 

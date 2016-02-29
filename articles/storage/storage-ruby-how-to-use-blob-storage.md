@@ -1,6 +1,6 @@
 <properties
     pageTitle="如何使用拼音的 Blob 儲存體 | Microsoft Azure"
-    description="了解如何使用 Azure Blob 服務來上傳、下載、列出及刪除 Blob 內容。範例以 Ruby 撰寫。"
+    description="了解如何使用 Azure Blob 服務來上傳、下載、列出及刪除 Blob 內容。 範例以 Ruby 撰寫。"
     services="storage"
     documentationCenter="ruby"
     authors="tfitzmac"
@@ -17,14 +17,13 @@
     ms.author="tomfitz"/>
 
 
-
 # 如何使用 Ruby 的 Blob 儲存體
 
 [AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 ## 概觀
 
-本指南將示範如何使用 Azure Blob 服務執行一般案例。 這些範例使用 Ruby API 撰寫。 所涵蓋的案例包括**上傳、列出、下載**及**刪除** Blob。
+本指南將示範如何使用 Azure Blob 服務執行一般案例。 這些範例使用 Ruby API 撰寫。 涵蓋的案例包括 **上傳、 列出、 下載** 和 **刪除** blob。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -41,7 +40,7 @@
 
 ### 使用 RubyGems 來取得套件
 
-1. 使用命令列介面，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
+1. 使用命令列介面，例如 **PowerShell** (Windows)、 **終端機** (Mac) 或 **Bash** (Unix)。
 
 2. 在命令視窗中鍵入 "gem install azure" 以安裝 Gem 和相依性。
 
@@ -54,23 +53,24 @@
 ## 設定 Azure 儲存體連接
 
 Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS_KEY**
-以取得連接到 Azure 儲存體帳戶所需的資訊。 如果尚未設定這些環境變數，您必須下列程式碼中使用 **Azure::Blob::BlobService** 前指定帳戶資訊：
+以取得連接到 Azure 儲存體帳戶所需的資訊。 如果未設定這些環境變數，您必須指定帳戶資訊，才能使用 **Azure::Blob::BlobService** 為下列程式碼:
 
     Azure.config.storage_account_name = "<your azure storage account>"
     Azure.config.storage_access_key = "<your azure storage access key>"
+
 
 若要取得這些值，請執行下列動作：
 
 1. 登入 [Azure 入口網站](portal.azure.com)。
 2. 瀏覽到您要使用的儲存體帳戶。
-3. 按一下導覽窗格底部的 [管理金鑰]****。
+3. 按一下 [ **管理金鑰** 底部的 [瀏覽] 窗格。
 4. 在快顯對話方塊中，您將會看到儲存體帳戶名稱、主要存取金鑰和次要存取金鑰。 如需存取金鑰，您可以使用主要存取金鑰或次要存取金鑰。
 
 ## 建立容器
 
 [AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-**Azure::Blob::BlobService** 物件可讓您運用容器及 Blob。 若要建立容器，請使用 **create\_container ()** 方法。
+ **Azure::Blob::BlobService** 物件可讓您能使用容器及 blob。 若要建立容器，請使用 **create\_container ()** 方法。
 
 下列程式碼範例會建立容器或列印錯誤訊息 (若有的話)。
 
@@ -88,15 +88,16 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     container = azure_blob_service.create_container("test-container",
       :public_access_level => "<public access level>")
 
+
 有效值為 **: public\_access\_level** 選項:
 
-* **blob：**可指定容器和 blob 資料的完整公用讀取權限。 用戶端可以透過匿名要求列舉容器內的 Blob，但無法列舉儲存體帳戶內的容器。
+* **blob:** 指定容器和 blob 資料的完整公開讀取權限。 用戶端可以透過匿名要求列舉容器內的 Blob，但無法列舉儲存體帳戶內的容器。
 
-* **容器：**可指定 Blob 的公用讀取權限。 您可以透過匿名要求讀取此容器內的 Blob 資料，但您無法使用容器資料。 用戶端無法透過匿名要求列舉容器內的 Blob。
+* **容器:** 指定 blob 的公用讀取權限。 您可以透過匿名要求讀取此容器內的 Blob 資料，但您無法使用容器資料。 用戶端無法透過匿名要求列舉容器內的 Blob。
 
 或者，您可以修改容器的公用存取層級使用 **set\_container\_acl** 方法，以指定的公用存取等級。
 
-下列程式碼範例會將公用存取等級變更為**容器**：
+下列程式碼範例將公用存取等級變更為 **容器**:
 
     azure_blob_service.set_container_acl('test-container', "container")
 
@@ -104,7 +105,7 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 若要將內容上傳至 blob，使用 **create\_block\_blob ()** 方法建立 blob，使用檔案或字串作為 blob 的內容。
 
-下列程式碼將上傳檔案 **test.png** 做為容器中的新 Blob (名為 "image-blob")。
+下列程式碼上傳檔案 **test.png** 作為名為"image-blob"的容器中的新 blob。
 
     content = File.open("test.png", "rb") { |file| file.read }
     blob = azure_blob_service.create_block_blob(container.name,
@@ -113,7 +114,7 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 列出容器中的 Blob
 
-若要列出容器，請使用 **list_containers()** 方法。
+若要列出容器，請使用 **list_containers ()** 方法。
 若要列出容器內的 blob，使用 **list\_blobs ()** 方法。
 
 這會輸出該帳戶所有容器中所有 Blob 的 URL。
@@ -136,7 +137,6 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     File.open("download.png","wb") {|f| f.write(content)}
 
 ## 刪除 Blob
-
 最後，若要刪除 blob，請使用 **delete\_blob ()** 方法。 下列程式碼範例示範如何刪除 Blob。
 
     azure_blob_service.delete_blob(container.name, "image-blob")
@@ -148,7 +148,3 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - [Azure 儲存體團隊部落格](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) GitHub 上的儲存機制
 - [使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy)
-
-
-
-

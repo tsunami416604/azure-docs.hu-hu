@@ -16,49 +16,49 @@
     ms.date="12/03/2015" 
     ms.author="sdanie"/>
 
-
 # 如何在 Azure API 管理中使用 API 偵測器來追蹤呼叫
 
-API 管理提供 API 偵測器工具協助您進行 API 的偵錯和疑難排解。 API 偵測器可以程式設計的方式使用，也可以直接從開發人員入口網站使用。
+API 管理提供 API 偵測器工具協助您進行 API 的偵錯和疑難排解。 API 偵測器可以程式設計的方式使用，也可以直接從開發人員入口網站使用。 
 
 除了追蹤作業，API 偵測器也會追蹤 [原則運算式](https://msdn.microsoft.com/library/azure/dn910913.aspx) 評估。 如需示範，請參閱 [Cloud Cover Episode 177: More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 並向前快轉到 21:00。
 
 本指南提供使用 API 偵測器的逐步解說。
+
 >[AZURE.NOTE] 只產生並提供給要求包含屬於訂閱索引鍵使用 API 偵測器追蹤 [管理員](api-management-howto-create-groups.md) 帳戶。
 
 ## <a name="trace-call"> </a> 使用 API 偵測器來追蹤呼叫
 
-若要使用 API 偵測器，請將 **ocp-apim-trace: true** 要求標頭新增至作業呼叫，然後使用 **ocp-apim-trace-location** 回應標頭所指出的 URL 來下載並檢查追蹤。 這可以透過程式設計來進行，也可以直接從開發人員入口網站來執行。
+若要使用 API 偵測器，將 **ocp apim 追蹤: true** 要求標頭至作業呼叫，然後下載並檢查追蹤使用所指出的 URL **ocp apim-追蹤位置** 回應標頭。 這可以透過程式設計來進行，也可以直接從開發人員入口網站來執行。
 
-本教學課程示範如何使用 API 偵測器來追蹤作業，使用中設定的基本計算機 API [管理您的第一個 API](api-management-get-started.md) 快速入門教學課程。 如果您尚未完成該教學課程，匯入基本計算機 API 只需要幾分鐘的時間，或可以使用您選擇的另一個 API (例如 Echo API)。 每個 API 管理服務執行個體隨附預先設定的範例 Echo API，可供您試驗與了解 API 管理。 Echo API 會將任何傳送給它的輸入傳回。 若要使用該 API，您可以叫用任何 HTTP 指令動詞，而傳回值就是您傳送的值。
+本教學課程示範如何使用 API 偵測器來追蹤作業，使用中設定的基本計算機 API [管理您的第一個 API](api-management-get-started.md) 快速入門教學課程。 如果您尚未完成該教學課程，匯入基本計算機 API 只需要幾分鐘的時間，或可以使用您選擇的另一個 API (例如 Echo API)。 每個 API 管理服務執行個體隨附預先設定的範例 Echo API，可供您試驗與了解 API 管理。 Echo API 會將任何傳送給它的輸入傳回。 若要使用該 API，您可以叫用任何 HTTP 指令動詞，而傳回值就是您傳送的值。 
 
 
 
-請在 Azure 傳統入口網站中的 API 管理服務按一下 [開發人員入口網站]**** 您可以從開發人員入口網站直接呼叫作業，以便檢視和測試 API 的操作。
+若要開始使用，請按一下 [ **開發人員入口網站** API 管理服務的 Azure 傳統入口網站中。 您可以從開發人員入口網站直接呼叫作業，以便檢視和測試 API 的操作。
 
->如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體 []][] 中 [開始使用 Azure API 管理]][] 教學課程。
+>如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
 ![API Management developer portal][api-management-developer-portal-menu]
 
-從上方功能表中按一下 [**API**]，然後按一下 [**基本計算機**]。
+按一下 [ **Api** 從頂端功能表中，然後按一下 [ **基本計算機**。
 
 ![Echo API][api-management-api]
 
-按一下 [**試試看**] 來嘗試 [**加入兩個整數**] 作業。
+按一下 [ **試試** 嘗試 **新增兩個整數** 作業。
 
 ![試試看][api-management-open-console]
 
-保留預設的參數值，然後從 **subscription-key** 下拉式清單選取您想要使用的產品的訂閱金鑰。
+保留預設的參數值，並選取您想要從使用產品的訂閱金鑰 **訂閱金鑰** 下拉式清單。
 
-根據預設，開發人員入口網站中已將 **Ocp-Apim-Trace** 標頭設為 **true**。 此標頭會設定是否產生追蹤。
+根據預設，在開發人員入口網站 **Ocp Apim 追蹤** 標頭已設為 **true**。 此標頭會設定是否產生追蹤。
 
 ![傳送][api-management-http-get]
 
-按一下 [**傳送**] 來叫用作業。
+按一下 [ **傳送** 叫用作業。
 
 ![傳送][api-management-send-results]
 
-在回應標頭中，將會有一個 **ocp-apim-trace-location**，且值類似下列範例。
+在回應標頭會 **ocp apim-追蹤位置** 且值類似下列的範例。
 
     ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
 
@@ -66,7 +66,7 @@ API 管理提供 API 偵測器工具協助您進行 API 的偵錯和疑難排解
 
 ## <a name="inspect-trace"> </a>檢查追蹤
 
-若要檢閱追蹤裡的值，請從 **ocp-apim-trace-location** URL 下載追蹤檔案。 它是一個 JSON 格式的文字檔，且包含類似下列範例的項目。
+若要檢閱追蹤裡的值，下載追蹤檔案從 **ocp apim-追蹤位置** URL。 它是一個 JSON 格式的文字檔，且包含類似下列範例的項目。
 
     {
         "traceId": "abcd8ea63d134c1fabe6371566c7cbea",
@@ -229,27 +229,34 @@ API 管理提供 API 偵測器工具協助您進行 API 的偵錯和疑難排解
 
 ## <a name="next-steps"> </a>後續步驟
 
--   查看其他主題中 [開始使用進階 API 組態 []][] 教學課程。
+-   查看其他主題中 [開始使用進階 API 組態][] 教學課程。
 -   觀看追蹤原則運算式中的示範 [Cloud Cover Episode 177: More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)。 向前快轉到 21:00 來查看示範。
 
 >[AZURE.VIDEO episode-177-more-api-management-features-with-vlad-vinogradsky]
 
+[Use API Inspector to trace a call]: #trace-call
+[Inspect the trace]: #inspect-trace
+[Next steps]: #next-steps
 
-[use api inspector to trace a call]: #trace-call 
-[inspect the trace]: #inspect-trace 
-[next steps]: #next-steps 
-[configure api settings]: api-management-howto-create-apis.md#configure-api-settings 
-[responses]: api-management-howto-add-operations.md#responses 
-[how create and publish a product]: api-management-howto-add-products.md 
-[get started with azure api management]: api-management-get-started.md 
-[create an api management service instance]: api-management-get-started.md#create-service-instance 
-[get started with advanced api configuration]: api-management-get-started-advanced.md 
-[azure classic portal]: https://manage.windowsazure.com/ 
-[api-management-developer-portal-menu]: ./media/api-management-howto-api-inspector/api-management-developer-portal-menu.png 
-[api-management-api]: ./media/api-management-howto-api-inspector/api-management-api.png 
-[api-management-echo-api-get]: ./media/api-management-howto-api-inspector/api-management-echo-api-get.png 
-[api-management-developer-key]: ./media/api-management-howto-api-inspector/api-management-developer-key.png 
-[api-management-open-console]: ./media/api-management-howto-api-inspector/api-management-open-console.png 
-[api-management-http-get]: ./media/api-management-howto-api-inspector/api-management-http-get.png 
-[api-management-send-results]: ./media/api-management-howto-api-inspector/api-management-send-results.png 
+[Configure API settings]: api-management-howto-create-apis.md#configure-api-settings
+[Responses]: api-management-howto-add-operations.md#responses
+[How create and publish a product]: api-management-howto-add-products.md
 
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Get started with advanced API configuration]: api-management-get-started-advanced.md
+[Azure Classic Portal]: https://manage.windowsazure.com/
+
+
+[api-management-developer-portal-menu]: ./media/api-management-howto-api-inspector/api-management-developer-portal-menu.png
+[api-management-api]: ./media/api-management-howto-api-inspector/api-management-api.png
+[api-management-echo-api-get]: ./media/api-management-howto-api-inspector/api-management-echo-api-get.png
+[api-management-developer-key]: ./media/api-management-howto-api-inspector/api-management-developer-key.png
+[api-management-open-console]: ./media/api-management-howto-api-inspector/api-management-open-console.png
+[api-management-http-get]: ./media/api-management-howto-api-inspector/api-management-http-get.png
+[api-management-send-results]: ./media/api-management-howto-api-inspector/api-management-send-results.png
+
+
+
+
+ 

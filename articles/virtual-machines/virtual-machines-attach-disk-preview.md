@@ -17,7 +17,6 @@
     ms.date="09/14/2015"
     ms.author="cynthn"/>
 
-
 # 如何在 Azure 入口網站連接資料磁碟
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [傳統部署模型](storage-windows-attach-disk.md)。
@@ -34,15 +33,15 @@
 
 1. 登入 Azure 入口網站。
 
-2. 在 [中樞] 功能表上，按一下 [瀏覽]****。
+2. 在 [中樞] 功能表中，按一下 [ **瀏覽**。
 
-3. 在搜尋刀鋒視窗中，向下捲動然後按一下 [**虛擬機器**]。
+3. 在 [搜尋] 分頁中，向下捲動並按一下 [ **虛擬機器**。
 
     ![搜尋虛擬機器](./media/virtual-machines-attach-disk-preview/search-blade-preview-portal.png)
 
 4.  然後從清單中選取虛擬機器。
 
-5. 在右側的 [Essentials]**** 底下，按一下 [所有設定]****，然後按一下 [磁碟]****。
+5. 向右下 **Essentials**, ，按一下 [ **所有設定**, ，然後按一下 [ **磁碟**。
 
     ![開啟磁碟設定](./media/virtual-machines-attach-disk-preview/find-disk-settings.png)
 
@@ -50,31 +49,31 @@
 
 ## 選項 1：連接新的磁碟
 
-1.  在 [磁碟]**** 刀鋒視窗上，按一下 [連接新項目]****。
+1.  在 **磁碟** 刀鋒視窗中，按一下 [ **附加新**。
 
-2.  檢閱預設設定，視需要進行更新，然後按一下 [確定]****。
+2.  檢閱預設設定，必要時，更新，然後按一下 **確定**。
 
     ![檢閱磁碟設定](./media/virtual-machines-attach-disk-preview/attach-new.png)
 
-3.  在 Azure 建立磁碟並將其連接至虛擬機器之後，該新磁碟就會列在虛擬機器之磁碟設定中的 [資料磁碟]**** 底下。
+3.  Azure 會建立磁碟，並將它連接至虛擬機器之後，新的磁碟會列在下方的虛擬機器的磁碟設定 **資料磁碟**。
 
 ## 選項 2：連接現有磁碟
 
-1.  在 [磁碟]**** 刀鋒視窗上，按一下 [連接現有項目]****。
+1.  在 **磁碟** 刀鋒視窗中，按一下 [ **附加現有**。
 
-2.  在 [連接現有磁碟]**** 底下，按一下 [VHD 檔案]****。
+2.  在 **連接現有磁碟**, ，按一下 [ **VHD 檔案**。
 
     ![連接現有磁碟](./media/virtual-machines-attach-disk-preview/attach-existing.png)
 
-3.  在 [儲存體帳戶]**** 底下，選取持有該 .vhd 檔案的帳戶和容器。
+3.  在 **儲存體帳戶**, ，選取的帳戶和儲存.vhd 檔案的容器。
 
     ![尋找 VHD 位置](./media/virtual-machines-attach-disk-preview/find-storage-container.png)
 
 4.  選取 .vhd 檔案。
 
-5.  在 [連接現有磁碟]**** 底下，您剛才選取的檔案會列在 [VHD 檔案]**** 底下。 按一下 [確定]****。
+5.  在 **連接現有磁碟**, ，底下列出您剛才所選的檔案 **VHD 檔案**。 按一下 [ **確定**。
 
-6.  Azure 將磁碟連接至虛擬機器之後，該磁碟會列在虛擬機器磁碟設定中的 [資料磁碟]**** 下面。
+6.  Azure 會將磁碟連接至虛擬機器之後，它會列在虛擬機器的磁碟設定 **資料磁碟**。
 
 ## 後續步驟
 
@@ -87,8 +86,7 @@
 
 [關於 Azure 儲存體帳戶]
 
+<!--Link references-->
 
-
-
-[about azure storage accounts]: ../storage-whatis-account/ 
+[About Azure Storage Accounts]: ../storage-whatis-account/
 

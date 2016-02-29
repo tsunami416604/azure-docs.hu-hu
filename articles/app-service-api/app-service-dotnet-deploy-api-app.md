@@ -16,34 +16,33 @@
     ms.date="10/08/2015" 
     ms.author="tdykstra"/>
 
-
-# 在 Azure App Service 中部署 API 應用程式
+# 在 Azure App Service 中部署 API 應用程式 
 
 [AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ## 概觀
 
-在本教學課程中，您部署中建立的 Web API 專案 [先前的教學課程](app-service-dotnet-create-api-app.md) 新 [API 應用程式](app-service-api-apps-why-best-platform.md)。 使用 Visual Studio 中建立 API 應用程式資源中的 [Azure App Service](../app-service/app-service-value-prop-what-is.md) 並將您的 Web API 程式碼部署到 Azure API 應用程式。
+在本教學課程中，您部署中建立的 Web API 專案 [先前的教學課程](app-service-dotnet-create-api-app.md) 新 [API 應用程式](app-service-api-apps-why-best-platform.md)。 使用 Visual Studio 中建立 API 應用程式資源中的 [Azure App Service](../app-service/app-service-value-prop-what-is.md) 並將您的 Web API 程式碼部署到 Azure API 應用程式。 
 
 ### 其他部署選項
 
 有許多部署 API 應用程式的其他方法。 API 應用程式是 [web 應用程式](../app-service-web/app-service-web-overview.md) 具有額外功能來裝載 web 服務和所有 [部署方法可用於 web 應用程式](../app-service-web/web-sites-deploy.md) 也可與 API 應用程式。 裝載 API 應用程式的 Web 應用程式稱為 Azure Preview 入口網站中的 API 應用程式主機，而且您可以使用 API 應用程式主機入口網站刀鋒視窗來設定部署。 API 應用程式主機刀鋒視窗的相關資訊，請參閱 [管理 API 應用程式](app-service-api-manage-in-portal.md)。
 
 API 應用程式是以 Web 應用程式為基礎的事實，也表示您可以將針對 ASP.NET 以外平台撰寫的程式碼部署到 API 應用程式。 如需使用 Git 將 Node.js 程式碼部署到 API 應用程式的範例，請參閱 [Azure App Service 中建立 Node.js API 應用程式](app-service-api-nodejs-api-app.md)。
+ 
+## <a id="provision"></a>在 Azure 中建立 API 應用程式 
 
-## <a id="provision"></a>在 Azure 中建立 API 應用程式
-
-在此區段中，您將使用 Visual Studio **發佈 Web** 精靈在 Azure 中建立 API 應用程式。 指示您輸入 API 應用程式名稱時，請輸入 *ContactsList*。
+本節中，您可以使用 Visual Studio **發行 Web** 精靈，以在 Azure 中建立 API 應用程式。 指示您輸入 API 應用程式的名稱，請輸入 *ContactsList*。
 
 [AZURE.INCLUDE [app-service-api-pub-web-create](../../includes/app-service-api-pub-web-create.md)]
 
 ## <a id="deploy"></a>程式碼部署至新的 Azure API 應用程式
 
-您可使用同一個**發佈 Web** 精靈將程式碼部署到新的 API 應用程式。
+您可以使用相同 **發行 Web** 精靈，將您的程式碼部署到新的 API 應用程式。
 
 [AZURE.INCLUDE [app-service-api-pub-web-deploy](../../includes/app-service-api-pub-web-deploy.md)]
 
-## 呼叫 Azure API 應用程式
+## 呼叫 Azure API 應用程式 
 
 您在上一個教學課程中啟用 Swagger UI 後，即可使用該 UI 來確認 API 應用程式正在 Azure 中執行。
 
@@ -57,68 +56,68 @@ API 應用程式是以 Web 應用程式為基礎的事實，也表示您可以�
 
 3. 將 "/swagger" 新增至瀏覽器位址列中的 URL 結尾。
 
-4. 在顯示的 Swagger 頁面中，按一下 [連絡人] > [取得] > [立即試用]****。
+4. 在出現的 Swagger 頁面，按一下 [ **連絡人 > 取得 > 試試看**。
 
-    ![試做](./media/app-service-dotnet-deploy-api-app/swaggerui.png)
+    ![立即試用](./media/app-service-dotnet-deploy-api-app/swaggerui.png)
 
 ## 在入口網站中檢視 API 定義
 
 1. 在 [Azure 預覽入口網站](https://portal.azure.com), ，請回到 **API 應用程式** 您部署的 API 應用程式的刀鋒視窗。
 
-4. 按一下 [**API 定義**]。
-
-    應用程式的 [**API 定義**] 分頁會顯示您建立應用程式時定義的 API 作業清單。
+4. 按一下 [ **API 定義**。 
+ 
+    應用程式的 **API 定義** 刀鋒視窗中顯示的 API 作業清單定義您在建立應用程式時。 
 
     ![API 定義](./media/app-service-dotnet-deploy-api-app/29-api-definition-v3.png)
 
 接下來，您將變更 API 定義並查看入口網站中反映的變更。
 
-5. 請回到 Visual Studio 中的專案，並將下列程式碼新增至 **ContactsController.cs** 檔案。
+5. 回到 Visual Studio 中的專案並加入下列程式碼以 **ContactsController.cs** 檔案。   
 
-     [HttpPost]
-     public HttpResponseMessage Post([FromBody] Contact contact)
-     {
-         // todo: save the contact somewhere
-         return Request.CreateResponse(HttpStatusCode.Created);
-     }
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody] Contact contact)
+        {
+            // todo: save the contact somewhere
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
 
- 這個程式碼加入 **張貼** 方法，可用來張貼新 `連絡人` api 的執行個體。
+    這個程式碼加入 **張貼** 方法，可用來張貼新 `Contact` api 的執行個體。
 
- [連絡人] 類別的程式碼現在看起來如下列範例所示。
+    [連絡人] 類別的程式碼現在看起來如下列範例所示。
 
-     public class ContactsController : ApiController
-     {
-         [HttpGet]
-         public IEnumerable<Contact> Get()
-         {
-             return new Contact[]{
-                         new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
-                         new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
-                         new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
-                     };
-         }
-    
-         [HttpPost]
-         public HttpResponseMessage Post([FromBody] Contact contact)
-         {
-             // todo: save the contact somewhere
-             return Request.CreateResponse(HttpStatusCode.Created);
-         }
-     }
+        public class ContactsController : ApiController
+        {
+            [HttpGet]
+            public IEnumerable<Contact> Get()
+            {
+                return new Contact[]{
+                            new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
+                            new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
+                            new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
+                        };
+            }
+        
+            [HttpPost]
+            public HttpResponseMessage Post([FromBody] Contact contact)
+            {
+                // todo: save the contact somewhere
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+        }
 
-7. 在 [**方案總管**] 中，以滑鼠右鍵按一下專案，然後選取 [**發佈**]。
+7. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案，然後選取 **發行**。 
 
-9. 按一下 [**預覽**] 索引標籤
+9. 按一下 [ **預覽** ] 索引標籤
 
-10. 按一下 [開始預覽]**** 以查看哪些檔案要複製到 Azure。
+10. 按一下 [ **開始預覽** 若要查看哪些檔案會被複製到 Azure。  
 
     ![發佈 Web 對話方塊](./media/app-service-dotnet-deploy-api-app/39-re-publish-preview-step-v2.png)
 
-11. 按一下 [發行]****。
+11. 按一下 [ **發行**。
 
 6. 如同您第一次發佈時重新啟動閘道器。
 
-12. 在發佈程序完成後，回到入口網站，然後關閉並重新開啟 [**API 定義**] 刀鋒視窗。 您會看到您剛建立並直接部署到 Azure 訂閱中的新 API 端點。
+12. 在發行程序完成之後，請回到入口網站，然後關閉並重新開啟 **API 定義** 刀鋒視窗。 您會看到您剛建立並直接部署到 Azure 訂閱中的新 API 端點。
 
     ![API 定義](./media/app-service-dotnet-deploy-api-app/38-portal-with-post-method-v4.png)
 
@@ -126,11 +125,7 @@ API 應用程式是以 Web 應用程式為基礎的事實，也表示您可以�
 
 您已了解 Visual Studio 中的直接部署功能如何讓您輕鬆測試您的 API 是否運作正常。 在 [下一個教學課程](../app-service-dotnet-remotely-debug-api-app.md), ，您將了解如何在 Azure 中執行時，偵錯 API 應用程式。
 
-API 應用程式為 Web 應用程式，具有裝載 API 之額外功能，這表示您可以使用任何適用於 Web 應用程式的部署方法。 如需 web 應用程式的部署選項的詳細資訊，請參閱 [Azure App Service 中的 web 應用程式部署](../app-service-web/web-sites-deploy.md)。
+API 應用程式為 Web 應用程式，具有裝載 API 之額外功能，這表示您可以使用任何適用於 Web 應用程式的部署方法。 如需 web 應用程式的部署選項的詳細資訊，請參閱 [部署 web 應用程式在 Azure App Service 中的](../app-service-web/web-sites-deploy.md)。
 
-如需 API 應用程式功能的資訊，請參閱 [什麼是 API 應用程式?](app-service-api-apps-why-best-platform.md).
-
-
-
-
+API 應用程式功能的相關資訊，請參閱 [什麼是 API 應用程式?](app-service-api-apps-why-best-platform.md)。
 

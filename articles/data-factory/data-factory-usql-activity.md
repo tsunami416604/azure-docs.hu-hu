@@ -16,20 +16,18 @@
     ms.date="10/27/2015" 
     ms.author="spelluru"/>
 
+# 從 Azure Data Factory 在 Azure 資料湖分析上執行 U-SQL 指令碼 
+Azure Data Factory 中的「管線」會使用連結的計算服務，來處理連結的儲存體服務中的資料。 它包含一系列活動，其中每個活動都會執行特定的處理作業。 本文說明 **資料湖分析 U SQL 活動** 執行  **U SQL** 指令碼上 **Azure 資料湖分析** 計算連結的服務。 
 
-# 從 Azure Data Factory 在 Azure 資料湖分析上執行 U-SQL 指令碼
-
-Azure Data Factory 中的「管線」會使用連結的計算服務，來處理連結的儲存體服務中的資料。 它包含一系列活動，其中每個活動都會執行特定的處理作業。 本文說明 **資料湖分析 U SQL 活動** 執行  **U SQL** 指令碼上 **Azure 資料湖分析** 計算連結的服務。
 > [AZURE.NOTE] 
 > 您必須先建立 Azure 資料湖分析帳戶，才能使用資料湖分析 U-SQL 活動建立管線。 若要深入了解 Azure 資料湖分析，請參閱 [開始使用 Azure 資料湖分析](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 >  
 > 請檢閱 [建置您的第一個管線教學課程](data-factory-build-your-first-pipeline.md) 的詳細步驟可建立資料處理站，如需連結服務、 資料集和管線。 搭配使用 JSON 片段和 Data Factory 編輯器或 Visual Studio 或 Azure PowerShell 來建立 Data Factory 實體。
 
 ## Azure 資料湖分析連結服務
+您建立 **Azure 資料湖分析** 連結的服務，將連結的 Azure 資料湖分析計算服務的 Azure data factory 管線中使用資料湖分析 U SQL 活動之前。 
 
-您建立 **Azure 資料湖分析**連結服務，將 Azure 資料湖分析計算服務連結至 Azure Data Factory，再使用管線中的資料湖分析 U-SQL 活動。
-
-下列範例提供 Azure 資料湖分析連結服務的 JSON 定義。
+下列範例提供 Azure 資料湖分析連結服務的 JSON 定義。 
 
     {
         "name": "AzureDataLakeAnalyticsLinkedService",
@@ -46,24 +44,25 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
         }
     }
 
-下表提供 JSON 定義中所使用之屬性的描述：
 
- 屬性| 說明| 必要
+下表提供 JSON 定義中所使用之屬性的描述： 
+
+屬性 | 說明 | 必要
 -------- | ----------- | --------
- 類型| type 屬性應設為：**AzureDataLakeAnalytics**。| 是
- accountName| Azure 資料湖分析帳戶名稱。| 是
- dataLakeAnalyticsUri| Azure 資料湖分析 URI。| 否
- authorization| 按一下 Data Factory 編輯器中的 [授權]**** 按鈕並完成 OAuth 登入後，即會自動擷取授權碼。| 是
- subscriptionId| Azure 訂用帳戶識別碼| 否 (如果未指定，便會使用 Data Factory 的訂用帳戶)。
- resourceGroupName| Azure 資源群組名稱| 否 (若未指定，便會使用 Data Factory 的資源群組)。
- sessionId| OAuth 授權工作階段的工作階段識別碼。每個工作階段識別碼都是唯一的，只能使用一次。這是在 Data Factory 編輯器中自動產生。| 是
+類型 | Type 屬性應該設定為: **AzureDataLakeAnalytics**。 | 是
+accountName | Azure 資料湖分析帳戶名稱。 | 是
+dataLakeAnalyticsUri | Azure 資料湖分析 URI。 |  否 
+authorization | 按一下之後，就會自動擷取授權碼 **授權** 按鈕在 Data Factory 編輯器中，並完成 OAuth 登入。 | 是 
+subscriptionId | Azure 訂用帳戶識別碼 | 否 (如果未指定，便會使用 Data Factory 的訂用帳戶)。 
+resourceGroupName | Azure 資源群組名稱 |  否 (若未指定，便會使用 Data Factory 的資源群組)。
+sessionId | OAuth 授權工作階段的工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 這是在 Data Factory 編輯器中自動產生。 | 是
 
+   
+ 
+## 資料湖分析 U-SQL 活動 
 
-
-## 資料湖分析 U-SQL 活動
-
-下列 JSON 片段會定義具有資料湖分析 U-SQL 活動的管線。 活動定義具有您稍早建立的 Azure 資料湖分析連結服務的參考。
-
+下列 JSON 片段會定義具有資料湖分析 U-SQL 活動的管線。 活動定義具有您稍早建立的 Azure 資料湖分析連結服務的參考。   
+  
 
     {
         "name": "ComputeEventsByRegionPipeline",
@@ -114,24 +113,24 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
         }
     }
 
-下表描述此活動特有的屬性之名稱和描述。
 
- 屬性| 說明| 必要
+下表描述此活動特有的屬性之名稱和描述。 
+
+屬性 | 說明 | 必要
 :-------- | :----------- | :--------
- 類型| Type 屬性必須設定為 **DataLakeAnalyticsU SQL**。| 是
- scriptPath| 包含 U-SQL 指令碼的資料夾的路徑。| 否 (如果您使用指令碼)
- scriptLinkedService| 連結服務會連結包含 Data Factory 的指令碼的儲存體| 否 (如果您使用指令碼)
- script| 指定內嵌指令碼而不是指定 scriptPath 和 scriptLinkedService。例如："script" : "CREATE DATABASE test"。| 否 (如果您使用 scriptPath 和 scriptLinkedService)
- degreeOfParallelism| 同時用來執行工作的節點數目上限。| 否
- 優先順序| 判斷應該選取排入佇列的哪些工作首先執行。編號愈低，優先順序愈高。| 否
- 參數| U-SQL 指令碼的參數| 否
+類型 | Type 屬性必須設定為 **DataLakeAnalyticsU SQL**。 | 是
+scriptPath | 包含 U-SQL 指令碼的資料夾的路徑。 | 否 (如果您使用指令碼)
+scriptLinkedService | 連結服務會連結包含 Data Factory 的指令碼的儲存體 | 否 (如果您使用指令碼)
+script | 指定內嵌指令碼而不是指定 scriptPath 和 scriptLinkedService。 例如："script" : "CREATE DATABASE test"。 | 否 (如果您使用 scriptPath 和 scriptLinkedService)
+degreeOfParallelism | 同時用來執行工作的節點數目上限。 | 否
+優先順序 | 判斷應該選取排入佇列的哪些工作首先執行。 編號愈低，優先順序愈高。 | 否 
+參數 | U-SQL 指令碼的參數 | 否 
 
 
 ### 建立輸入和輸出資料集
 
 #### 輸入資料集
-
-在此範例中，輸入的資料是位於 Azure 資料湖存放區 (datalake/input 資料夾中的 SearchLog.tsv 檔案)。
+在此範例中，輸入的資料是位於 Azure 資料湖存放區 (datalake/input 資料夾中的 SearchLog.tsv 檔案)。 
 
     {
         "name": "DataLakeTable",
@@ -155,8 +154,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
     }   
 
 #### 輸出資料集
-
-在此範例中，U-SQL 指令碼所產生的輸出資料會儲存在 Azure 資料湖存放區 (datalake/output 資料夾)。
+在此範例中，U-SQL 指令碼所產生的輸出資料會儲存在 Azure 資料湖存放區 (datalake/output 資料夾)。 
 
     {
         "name": "EventsByRegionTable",
@@ -174,8 +172,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
     }
 
 #### 範例 Azure 資料湖存放區連結服務
-
-以下是上述輸入/輸出資料集所使用的範例 Azure 資料湖存放區連結服務的定義。
+以下是上述輸入/輸出資料集所使用的範例 Azure 資料湖存放區連結服務的定義。 
 
     {
         "name": "AzureDataLakeStoreLinkedService",
@@ -189,9 +186,5 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
         }
     }
 
-請參閱 [Azure 資料湖存放區來回移動資料](data-factory-azure-datalake-connector.md) 如上述的 Azure 資料湖存放區中的 JSON 屬性的說明連結服務和資料集 JSON 程式碼片段。
-
-
-
-
+請參閱 [從 Azure 資料湖存放區來回移動資料](data-factory-azure-datalake-connector.md) 如上述的 Azure 資料湖存放區中的 JSON 屬性的說明連結服務和資料集 JSON 程式碼片段。 
 

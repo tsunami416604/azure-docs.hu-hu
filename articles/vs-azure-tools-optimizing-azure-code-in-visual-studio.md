@@ -15,7 +15,6 @@
    ms.date="09/08/2015"
    ms.author="tarcher" />
 
-
 # 最佳化您的 Azure 程式碼
 
 當您在撰寫使用 Microsoft Azure 的應用程式時，請遵循某些程式碼撰寫實務，以避免應用程式在雲端環境中發生延展性、行為和效能方面的問題。 Microsoft 有提供 Azure Code Analysis 工具，可辨識並找出許多常見問題，並幫助您解決這些問題。 您可以在 Visual Studio 中透過 NuGet 下載此工具。
@@ -54,17 +53,17 @@ AP1000
 
 ### 說明
 
-建立非同步方法 (例如 [await](https://msdn.microsoft.com/library/hh156528.aspx)) 之外 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，然後呼叫非同步方法，從 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)。 宣告 [[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)] 做為非同步的 (https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會進入重新啟動迴圈的背景工作角色。
+建立非同步方法 (例如 [await](https://msdn.microsoft.com/library/hh156528.aspx)) 之外的 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，然後呼叫非同步方法，從 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)。 宣告 [[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 為非同步方法會進入重新啟動迴圈的背景工作角色。
 
 請共用您的想法和意見， [Azure 程式碼分析意見反應](http://go.microsoft.com/fwlink/?LinkId=403771)。
 
 ### 原因
 
-呼叫非同步方法內 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會導致雲端服務執行階段回收背景工作角色。 所有程式執行背景工作角色啟動時，都會在 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法。 結束 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會導致重新啟動背景工作角色。 當背景工作角色執行階段叫用非同步方法時，它會在非同步方法之後分派所有作業，然後返回。 這會使背景工作角色，以結束 [[[[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)] (https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)] (https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)] (https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，並重新啟動。 在下一輪執行時，背景工作角色會再次叫用非同步方法並重新啟動，導致背景工作角色又再次回收。
+呼叫非同步方法內 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會導致雲端服務執行階段回收背景工作角色。 所有程式執行背景工作角色啟動時，都會在 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法。 結束 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會導致重新啟動背景工作角色。 當背景工作角色執行階段叫用非同步方法時，它會在非同步方法之後分派所有作業，然後返回。 這會使背景工作角色來結束 [[[[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，並重新啟動。 在下一輪執行時，背景工作角色會再次叫用非同步方法並重新啟動，導致背景工作角色又再次回收。
 
 ### 方案
 
-將所有的非同步作業的外部 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法。 然後，呼叫內的重構的 async 方法 [[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)] (https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，例如 RunAsync ().wait。 Azure Code Analysis 工具可協助您修正此問題。
+將所有的非同步作業的外部 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法。 然後，呼叫內的重構的非同步方法 [[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，例如 RunAsync ().wait。 Azure Code Analysis 工具可協助您修正此問題。
 
 下列程式碼片段示範此問題的程式碼修正程式：
 
@@ -126,9 +125,9 @@ BrokeredMessage receivedMessage = sc.Receive();
 
 - 如需概觀，請參閱 [使用服務匯流排的共用存取簽章驗證](https://msdn.microsoft.com/library/dn170477.aspx)
 
-- [如何使用服務匯流排的共用存取簽章驗證](https://msdn.microsoft.com/library/dn205161.aspx)
+- [如何搭配使用共用存取簽章驗證與服務匯流排](https://msdn.microsoft.com/library/dn205161.aspx)
 
-- 如需範例專案，請參閱 [使用共用存取簽章 (SAS) 驗證服務匯流排訂閱](http://code.msdn.microsoft.com/windowsazure/Using-Shared-Access-e605b37c)
+- 如需範例專案，請參閱 [使用共用存取簽章 (SAS) 驗證服務匯流排訂用帳戶](http://code.msdn.microsoft.com/windowsazure/Using-Shared-Access-e605b37c)
 
 ## 考慮使用 OnMessage 方法來避免「接收迴圈」
 
@@ -138,17 +137,17 @@ AP2002
 
 ### 說明
 
-若要避免陷入「接收迴圈」，呼叫 **OnMessage** 方法會比呼叫 **Receive** 方法更適合用來接收訊息。 不過，如果您必須使用 **Receive** 方法，而且您指定了非預設的伺服器等待時間，請確定伺服器等待時間超過一分鐘。
+若要避免進入 「 接收迴圈 」 呼叫 **OnMessage** 方法是更好的解決方案來接收郵件，而不呼叫 **接收** 方法。 不過，如果您必須使用 **接收** 方法之外，指定非預設伺服器等待時間，請確定伺服器等待時間會超過一分鐘。
 
 請共用您的想法和意見， [Azure 程式碼分析意見反應](http://go.microsoft.com/fwlink/?LinkId=403771)。
 
 ### 原因
 
-在呼叫 **OnMessage** 時，用戶端會啟動持續輪詢佇列或訂用帳戶的內部訊息幫浦。 此訊息幫浦包含會發出訊息接收呼叫的無限迴圈。 如果呼叫逾時，它就會發出新的呼叫。 逾時間隔由值 [OperationTimeout](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx) 屬性 [MessagingFactory](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactory.aspx)正在使用。
+當呼叫 **OnMessage**, ，用戶端啟動內部訊息幫浦，持續地輪詢佇列或訂閱。 此訊息幫浦包含會發出訊息接收呼叫的無限迴圈。 如果呼叫逾時，它就會發出新的呼叫。 逾時間隔由值 [OperationTimeout](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx) 屬性 [MessagingFactory](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactory.aspx)正在使用。
 
-相較於 **Receive**，使用 **OnMessage** 的優點是使用者不必手動輪詢訊息、處理例外狀況、平行處理多個訊息，以及完成訊息。
+使用的優點 **OnMessage** 相較於 **接收** 使用者不需要手動輪詢訊息、 處理例外狀況、 處理多個訊息，以平行方式，並完成訊息。
 
-如果您呼叫的 **Receive** 不是使用其預設值，請確定 *ServerWaitTime* 值有超過一分鐘。 將 *ServerWaitTime* 設定為超過一分鐘可防止伺服器沒接收完訊息就逾時。
+如果您呼叫 **接收** 而不使用其預設值，請務必 *ServerWaitTime* 值是一分鐘以上。 設定 *ServerWaitTime* 超過一分鐘，以防止伺服器完整接收訊息之前逾時。
 
 ### 方案
 
@@ -156,7 +155,7 @@ AP2002
 
 若要改善效能的 Azure 訊息基礎結構，請參閱設計模式 [非同步傳訊入門](https://msdn.microsoft.com/library/dn589781.aspx)。
 
-以下是使用 **OnMessage** 來接收訊息的範例。
+以下是使用的範例 **OnMessage** 來接收訊息。
 
 ```
 void ReceiveMessages()
@@ -177,7 +176,7 @@ void ReceiveMessages()
     Console.ReadKey();
 ```
 
-以下是使用 **Receive** 與預設伺服器等待時間的範例。
+以下是使用的範例 **接收** 預設伺服器等待時間。
 
 ```
 string connectionString =  
@@ -210,7 +209,7 @@ while (true)
    }
 ```
 
-以下是使用 **Receive** 與非預設伺服器等待時間的範例。
+以下是使用的範例 **接收** 非預設伺服器等待時間。
 
 ```
 while (true)  
@@ -252,7 +251,7 @@ AP2003
 
 ### 原因
 
-使用非同步方法可實現應用程式並行效果，因為在執行每個呼叫時並不會封鎖主要執行緒。 使用服務匯流排傳訊方法時，執行作業時 (傳送、 接收、 刪除、 等等) 花費的時間。 這個時間包括服務匯流排服務處理作業的時間加上要求和回覆的延遲時間。 若要增加每次的作業數目，就必須並行執行作業。 如需詳細資訊請參閱 [效能改進使用服務匯流排代理傳訊的最佳作法](https://msdn.microsoft.com/library/azure/hh528527.aspx)。
+使用非同步方法可實現應用程式並行效果，因為在執行每個呼叫時並不會封鎖主要執行緒。 使用服務匯流排傳訊方法時，需要花時間執行各項作業 (傳送、接收、刪除等)。 這個時間包括服務匯流排服務處理作業的時間加上要求和回覆的延遲時間。 若要增加每次的作業數目，就必須並行執行作業。 如需詳細資訊請參閱 [效能改進使用服務匯流排代理傳訊的最佳作法](https://msdn.microsoft.com/library/azure/hh528527.aspx)。
 
 ### 方案
 
@@ -406,11 +405,11 @@ CloudConfigurationManager 會讀取適合應用程式環境使用的組態檔。
 
 下列程式碼片段示範此問題的程式碼修正程式。 將
 
-`var 設定 = ConfigurationManager.AppSettings["mySettings"];`
+`var settings = ConfigurationManager.AppSettings["mySettings"];`
 
 取代為
 
-`var 設定 = CloudConfigurationManager.GetSetting("mySettings");`
+`var settings = CloudConfigurationManager.GetSetting("mySettings");`
 
 以下是如何在 App.config 或 Web.config 檔案中儲存組態設定的範例。 請將設定加入至組態檔的 appSettings 區段。 以下是上一個程式碼範例的 Web.config 檔案。
 
@@ -472,17 +471,17 @@ AP5000
 
 ### 方案
 
-使用診斷組態設計工具將診斷設定移至診斷組態檔 (若是 SDK 2.5 和更新版本，則是 diagnositcs.wadcfg 或 diagnositcs.wadcfgx)。 也建議您安裝 [Azure SDK 2.5](http://go.microsoft.com/fwlink/?LinkId=513188) ，並使用最新的診斷功能。
+使用診斷組態設計工具將診斷設定移至診斷組態檔 (若是 SDK 2.5 和更新版本，則是 diagnositcs.wadcfg 或 diagnositcs.wadcfgx)。 也建議您安裝 [Azure SDK 2.5](http://go.microsoft.com/fwlink/?LinkId=513188) 使用最新的診斷功能。
 
 1. 在您要設定之角色的捷徑功能表上，選擇 [屬性]，然後選擇 [組態] 索引標籤。
 
-1. 在 [診斷]**** 區段中，確定已選取 [啟用診斷]**** 核取方塊。
+1. 在 **診斷** 區段中，請確定 **啟用診斷** 核取方塊。
 
-1. 選擇 [設定]**** 按鈕。
+1. 選擇 **設定** ] 按鈕。
 
   ![存取啟用診斷選項](./media/vs-azure-tools-optimizing-azure-code-in-visual-studio/IC796660.png)
 
-  請參閱 [Azure 雲端服務和虛擬機器的設定診斷](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) 如需詳細資訊。
+  請參閱 [設定 Azure 雲端服務和虛擬機器診斷](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) 如需詳細資訊。
 
 
 ## 避免將 DbContext 物件宣告為靜態
@@ -532,8 +531,4 @@ public class BlogsController : Controller
 ## 後續步驟
 
 若要深入了解 optimzing 和疑難排解 Azure 應用程式，請參閱 [疑難排解 Azure App Service 使用 Visual Studio 中的 web 應用程式](web-sites-dotnet-troubleshoot-visual-studio.md)。
-
-
-
-
 

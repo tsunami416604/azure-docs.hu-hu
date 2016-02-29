@@ -17,11 +17,10 @@
    ms.date="02/20/2015"
    ms.author="alanst"/>
 
-
 # 使用 Azure CLI 建立多個 VM 的部署
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
-
+ 
 
 下列指令碼將示範如何在 VNET 中，使用 Azure 命令列介面 (Azure CLI) 設定多個 VM 的多雲端服務部署。
 
@@ -29,12 +28,12 @@
 
 ![](./media/virtual-machines-create-multi-vm-deployment-xplat-cli/multi-vm-xplat-cli.png)
 
-指令碼會在雲端服務 **servercs** 中建立一個 VM (**servervm**) 並連接兩個資料磁碟，以及在雲端服務 **workercs** 中建立兩個 VM (**clientvm1、clientvm2**)。 這兩個雲端服務都放置於 VNET **samplevnet** 中。 **servercs** 雲端服務也已針對外部連線設定端點。
+指令碼會建立一個 VM (**servervm**) 中雲端服務 **servercs** 與兩個資料磁碟連接兩個 Vm (**clientvm1、 clientvm2**) 中雲端服務 **workercs**。 這兩個雲端服務都放置於 VNET **samplevnet**。  **Servercs** 雲端服務也已針對外部連線設定端點。
 
 ## 讓它成真的 CLI 指令碼
-
 設定此功能的程式碼相當簡單：
->[AZURE.NOTE] 您可能需要將雲端服務名稱 servercs 和 workercs 變更為唯一的雲端服務名稱
+
+>[AZURE.NOTE] 您可能需要將變更雲端服務名稱 servercs 和 workercs 是唯一的雲端服務名稱
 
     azure network vnet create samplevnet -l "West US"
     azure vm create -l "West US" -w samplevnet -e 10000 -z Small -n servervm servercs b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-en-us-30GB azureuser Password@1
@@ -59,7 +58,7 @@
 
     azure network vnet create -l <Region> <VNet_name>
     azure network vnet delete -q <VNet_name>
-    
+
     azure vm create -l <Region> -w <Vnet_name> -e <SSH_port> -z <VM_size> -n <VM_name> <Cloud_service_name> <VM_image> <Username> <Password>
     azure vm delete -b -q <VM_name>
     azure vm disk attach-new <VM_name>
@@ -67,11 +66,8 @@
 
 ## 後續步驟
 
-* [Linux 和開放原始碼運算在 Azure 上](virtual-machines-linux-opensource.md)
+
+* [Azure 上的 Linux 和開放原始碼運算](virtual-machines-linux-opensource.md)
 * [如何登入執行 Linux 的虛擬機器](virtual-machines-linux-how-to-log-on.md)
-
-
-
-
-
+ 
 

@@ -16,7 +16,6 @@
     ms.date="12/01/2015" 
     ms.author="tamram"/>
 
-
 # 啟用 Azure 儲存體計量和檢視計量資料
 
 [AZURE.INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -31,9 +30,9 @@
 
 請遵循下列步驟以啟用度量中的 [Azure 入口網站](portal.azure.com):
 
-1. 瀏覽至儲存體帳戶。
-1. 開啟 [**設定**] 刀鋒視窗，然後選取 [**診斷**]。
-1. 確定 [**狀態**] 設為 [**開啟**]。
+1. 瀏覽至儲存體帳戶。 
+1. 開啟 **設定** 分頁，然後選取 **診斷**。
+1. 請確認 **狀態** 設為 **上**。
 1. 選取您要監視之服務的計量。
 2. 指定保留原則，以表示要保留計量與記錄資料的時間。
 
@@ -53,11 +52,11 @@
 
 例如，下列命令會在您的預設儲存體帳戶中，為 Blob 服務開啟每分鐘計量功能，並將保留期間設為五天：
 
-`Set-azurestorageservicemetricsproperty-MetricsType 分鐘 ServiceType Blob-MetricsLevel ServiceAndApi-RetentionDays 5`
+`Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
 
 下列命令會擷取您預設儲存體帳戶中 Blob 服務的目前每小時度量層級和保留天數：
 
-`Get-azurestorageservicemetricsproperty MetricsType 小時 ServiceType Blob`
+`Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob`
 
 如需如何設定 Azure PowerShell 指令程式來使用您的 Azure 訂閱，以及如何選取預設的儲存體帳戶使用，請參閱: [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)。
 
@@ -67,66 +66,64 @@
 
     // Parse connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create service client for credentialed access to the Blob service.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-    
+
     // Enable Storage Analytics logging and set retention policy to 10 days. 
     ServiceProperties properties = new ServiceProperties();
     properties.Logging.LoggingOperations = LoggingOperations.All;
     properties.Logging.RetentionDays = 10;
     properties.Logging.Version = "1.0";
-    
+
     // Configure service properties for metrics. Both metrics and logging must be set at the same time.
     properties.HourMetrics.MetricsLevel = MetricsLevel.ServiceAndApi;
     properties.HourMetrics.RetentionDays = 10;
     properties.HourMetrics.Version = "1.0";
-    
+
     properties.MinuteMetrics.MetricsLevel = MetricsLevel.ServiceAndApi;
     properties.MinuteMetrics.RetentionDays = 10;
     properties.MinuteMetrics.Version = "1.0";
-    
+
     // Set the default service version to be used for anonymous requests.
     properties.DefaultServiceVersion = "2015-04-05";
-    
+
     // Set the service properties.
     blobClient.SetServiceProperties(properties);
 
+    
 ## 檢視儲存體度量
 
 在您設定儲存體分析計量監視您的儲存體帳戶後，儲存體分析會將計量記錄在您儲存體帳戶中一組已知資料表中。 您可以設定圖表檢視中的每小時度量 [Azure 入口網站](portal.azure.com):
 
 1. 瀏覽至您的儲存體帳戶中 [Azure 入口網站](portal.azure.com)。
-2. 在 [**監視**] 區段中，按一下 [**新增磚**] 以新增圖表。 在 [**磚庫**] 中選取您要檢視的計量，並將它拖曳至 [**監視**] 區段。
-3. 若要編輯要在圖表中顯示的計量，請按一下 [**編輯**] 連結。 您可以透過選取或取消選取計量，來新增或移除個別的計量。
-4. 編輯完計量後，按一下 [**儲存**]。
+2. 在 **監視** 區段中，按一下 **新增磚** 來加入新的圖表。 在 **磚庫**, 、 選取您想要檢視的度量，並將它拖曳至 **監視** 一節。
+3. 若要編輯要在圖表中顯示哪些度量，請按一下 [ **編輯** 連結。 您可以透過選取或取消選取計量，來新增或移除個別的計量。
+4. 按一下 [ **儲存** 當您完成編輯度量。
 
 如果要下載長期儲存體的度量，或在本機加以分析，您必須使用工具或撰寫程式碼來讀取資料表。 您必須下載每分鐘度量以進行分析。 如果您在儲存體帳戶中列出所有資料表，則資料表就不會出現，但您可以直接依名稱存取它們。 許多協力廠商儲存體瀏覽工具可以感知這些資料表，讓您能夠直接檢視它們 (請參閱部落格文章 [Microsoft Azure 儲存體總管](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) 可用工具清單)。
 
 ### 每小時度量
-
 - $MetricsHourPrimaryTransactionsBlob
 - $MetricsHourPrimaryTransactionsTable
 - $MetricsHourPrimaryTransactionsQueue
 
 ### 每分鐘度量
-
 - $MetricsMinutePrimaryTransactionsBlob
 - $MetricsMinutePrimaryTransactionsTable
 - $MetricsMinutePrimaryTransactionsQueue
 
 ### 容量
-
 - $MetricsCapacityBlob
 
 您可以找到這些資料表的結構描述的完整詳細資料 [儲存體分析度量資料表結構描述](https://msdn.microsoft.com/library/azure/hh343264.aspx)。 下列資料列範例只會顯示可用的資料行子集，但可說明儲存體度量儲存這些度量資訊之方式的一些重要功能：
 
-| PartitionKey| RowKey| Timestamp| TotalRequests| TotalBillableRequests| TotalIngress| TotalEgress| Availability| AverageE2ELatency| AverageServerLatency| PercentSuccess|
+| PartitionKey  |       RowKey       |                    Timestamp | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Availability | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 |---------------|:------------------:|-----------------------------:|---------------|-----------------------|--------------|-------------|--------------|-------------------|----------------------|----------------|
-| 20140522T1100| user;All| 2014-05-22T11:01:16.7650250Z| 7| 7| 4003| 46801| 100| 104.4286| 6.857143| 100|
-| 20140522T1100| user;QueryEntities| 2014-05-22T11:01:16.7640250Z| 5| 5| 2694| 45951| 100| 143.8| 7.8| 100|
-| 20140522T1100| user;QueryEntity| 2014-05-22T11:01:16.7650250Z| 1| 1| 538| 633| 100| 3| 3| 100|
-| 20140522T1100| user;UpdateEntity| 2014-05-22T11:01:16.7650250Z| 1| 1| 771| 217| 100| 9| 6| 100|
+| 20140522T1100 |      user;All      | 2014-05-22T11:01:16.7650250Z | 7             | 7                     | 4003         | 46801       | 100          | 104.4286          | 6.857143             | 100            |
+| 20140522T1100 | user;QueryEntities | 2014-05-22T11:01:16.7640250Z | 5             | 5                     | 2694         | 45951       | 100          | 143.8             | 7.8                  | 100            |
+| 20140522T1100 |  user;QueryEntity  | 2014-05-22T11:01:16.7650250Z | 1             | 1                     | 538          | 633         | 100          | 3                 | 3                    | 100            |
+| 20140522T1100 | user;UpdateEntity  | 2014-05-22T11:01:16.7650250Z | 1             | 1                     | 771          | 217         | 100          | 9                 | 6                    | 100               |
 
 在這個每分鐘度量資料範例中，資料分割索引鍵會在每分鐘解析中使用時間。 資料列索引鍵會識別資料列中儲存的資訊類型，而這是由兩部分的資訊 (存取類型及要求類型) 所組成：
 
@@ -186,6 +183,9 @@
     
     }
 
+
+
+
 ## 當您啟用儲存體度量時，會產生哪些費用？
 
 寫入要求以建立度量的資料表實體，會以適用於所有 Azure 儲存體作業的標準費率來收費。
@@ -201,10 +201,5 @@
 - 適用於 Blob 的容量資料表每天都會新增兩個資料列 (前提是使用者已選擇記錄檔)：也就是說，這個資料表的大小每天最多大約會增加 300 個位元組。
 
 ## 後續步驟：
-
 [啟用儲存體記錄和存取記錄檔資料](https://msdn.microsoft.com/library/dn782840.aspx)
-
-
-
-
-
+ 

@@ -16,32 +16,31 @@
     ms.date="09/23/2015"
     ms.author="yidingz"/>
 
-
-# 開始使用適用於 .NET 的 Azure Batch 程式庫
+# 開始使用適用於 .NET 的 Azure Batch 程式庫  
 
 透過建立設定支援檔案的主控台應用程式，以及在 Azure Batch 集區中數個運算節點上執行的程式，來著手使用 Azure Batch .NET 程式庫。 本教學課程中建立的工作會評估上傳到 Azure 儲存體的檔案，並傳回這些檔案中最常出現的單字。 範例均以 C# 和使用 [Azure 批次.NET 程式庫](https://msdn.microsoft.com/library/azure/mt348682.aspx)。
 
-## 必要條件
+## 先決條件
 
 - 帳戶：
 
-    - **Azure 帳戶**：只需要幾分鐘的時間，您就可以建立免費試用帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/)。
+    - **Azure 帳戶** -您可以建立免費試用帳戶，只需要幾分鐘的時間。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/)。
 
     - **批次帳戶** -請參閱 [建立和管理 Azure 批次帳戶](batch-account-create-portal.md)。
 
-    - **儲存體帳戶** -請參閱 **建立儲存體帳戶** 區段 [關於 Azure 儲存體帳戶](../storage-create-storage-account.md)。 在本教學課程中，您會在此帳戶中建立名為 **testcon1** 的容器。
+    - **儲存體帳戶** -請參閱 **建立儲存體帳戶** 區段 [關於 Azure 儲存體帳戶](../storage-create-storage-account.md)。 在本教學課程中，您會建立名為此帳戶中的容器 **testcon1**。
 
 - Visual Studio 主控台應用程式專案：
 
-    1.  開啟 Visual Studio，在 [檔案]**** 功能表上，按一下 [新增]****，然後按一下 [專案]****。
+    1.  Visual Studio 中，開啟 **檔案** ] 功能表上，按一下 [ **新增**, ，然後按一下 [ **專案**。
 
-    2.  從 [**Windows**] 中，在 [**Visual C#**] 下按一下 [**主控台應用程式**]，並將專案命名為 **GettingStarted**，同時將方案命名為 **AzureBatch**，然後按一下 [**確定**]。
+    2.  從 **Windows**, 下 **Visual C#**, ，按一下 **主控台應用程式**, ，將專案命名為 **GettingStarted**, ，將方案命名為 **AzureBatch**, ，然後按一下 [ **確定**。
 
 - NuGet 組件：
 
-    1. 在 Visual Studio 中建立專案之後，以滑鼠右鍵按一下 [**方案總管**] 中的專案，然後選擇 [**管理 NuGet 封裝**]。 在線上搜尋 **Azure.Batch**，然後按一下 [安裝]**** 以安裝 Microsoft Azure Batch 封裝與相依性。
+    1. Visual Studio 中建立專案之後，請以滑鼠右鍵按一下專案中的 **方案總管] 中** 選擇 **管理 NuGet 封裝**。 線上搜尋 **Azure.Batch** 然後按一下 [ **安裝** 安裝 Microsoft Azure 批次 」 封裝與相依性。
 
-    2. 在線上搜尋 **WindowsAzure.Storage**，然後按一下 [安裝]**** 以安裝 Azure 儲存體封裝與相依性。
+    2. 線上搜尋 **WindowsAzure.Storage** 然後按一下 [ **安裝** 來安裝 Azure 儲存體封裝與相依性。
 
 > [AZURE.TIP] 此教學課程會討論如何使用一些核心批次概念 [Azure 批次功能概觀](batch-api-basics.md), ，強烈建議使用讀取那些熟悉 「 批次。
 
@@ -51,7 +50,7 @@
 
 ### 設定儲存體連接字串
 
-1. 開啟 GettingStarted 專案的 App.config 檔案，然後新增 *< g s >* 項目 *< 設定 >*。
+1. 開啟 GettingStarted 專案的 App.config 檔案，然後新增 *(& s) lt; appSettings & gt;* 項目 *(& s) lt; 組態 & gt;*。
 
         <?xml version="1.0" encoding="utf-8" ?>
         <configuration>
@@ -62,9 +61,9 @@
 
     取代下列值：
 
-    - **[account-name]**：您先前建立的儲存體帳戶的名稱。
+    - **[帳戶名稱]** 的您先前建立的儲存體帳戶名稱。
 
-    - **[account-key]**：儲存體帳戶的主索引鍵。 您可以從 Azure 入口網站的 [儲存體] 頁面中找到主索引鍵。
+    - **[帳戶金鑰]** 的儲存體帳戶主索引鍵。 您可以從 Azure 入口網站的 [儲存體] 頁面中找到主索引鍵。
 
 2. 儲存 App.config 檔案。
 
@@ -79,43 +78,44 @@
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
 
-2. 在 [方案總管]**** 中，針對 GettingStarted 專案將 *System.Configuration* 加入至 **References**。
+2. 新增 *System.Configuration* 至 **參考** 中 **方案總管] 中** GettingStarted 專案
 
 3. 將此方法加入至 Program 類別，此類別會取得儲存體連接字串、建立容器，以及設定權限：
 
-     static void CreateStorage()
-     {
-         // Get the storage connection string
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-             ConfigurationManager.AppSettings["StorageConnectionString"]);
-    
-         // Create the container
-         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-         CloudBlobContainer container = blobClient.GetContainerReference("testcon1");
-         container.CreateIfNotExists();
-    
-         // Set permissions on the container
-         BlobContainerPermissions containerPermissions = new BlobContainerPermissions();
-         containerPermissions.PublicAccess = BlobContainerPublicAccessType.Blob;
-         container.SetPermissions(containerPermissions);
-         Console.WriteLine("Created the container. Press Enter to continue.");
-         Console.ReadLine();
-     }
+        static void CreateStorage()
+        {
+            // Get the storage connection string
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                ConfigurationManager.AppSettings["StorageConnectionString"]);
+
+            // Create the container
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference("testcon1");
+            container.CreateIfNotExists();
+
+            // Set permissions on the container
+            BlobContainerPermissions containerPermissions = new BlobContainerPermissions();
+            containerPermissions.PublicAccess = BlobContainerPublicAccessType.Blob;
+            container.SetPermissions(containerPermissions);
+            Console.WriteLine("Created the container. Press Enter to continue.");
+            Console.ReadLine();
+        }
 
 4. 將此程式碼加入至可呼叫您剛才加入的方法的 Main 中：
 
         CreateStorage();
 
 5. 儲存 Program.cs 檔案。
+
     > [AZURE.NOTE] 在實際執行環境中，建議您改用 [共用的存取簽章](https://msdn.microsoft.com/library/azure/ee395415.aspx)。
 
-若要深入了解 Blob 儲存體，請參閱 [如何使用 Blob 儲存體.NET](../storage/storage-dotnet-how-to-use-blobs.md)
+若要深入了解 Blob 儲存體，請參閱 [如何使用.net 的 Blob 儲存體](../storage/storage-dotnet-how-to-use-blobs.md)
 
 ### 建立處理程式
 
-1. 在 [方案總管]**** 中，建立一個名為 **ProcessTaskData** 的新主控台應用程式專案。
+1. 在 **方案總管] 中**, ，建立新的主控台應用程式專案，名為 **ProcessTaskData**。
 
-2. 在 Visual Studio 中建立專案之後，以滑鼠右鍵按一下 [方案總管]**** 中的專案，然後選擇 [管理 NuGet 封裝]****。 在線上搜尋 **WindowsAzure.Storage**，然後按一下 [安裝]**** 以安裝 Azure 儲存體封裝與相依性。
+2. Visual Studio 中建立專案之後，請以滑鼠右鍵按一下專案中的 **方案總管] 中** 選擇 **管理 NuGet 封裝**。 線上搜尋 **WindowsAzure.Storage** 然後按一下 [ **安裝** 來安裝 Azure 儲存體封裝與相依性。
 
 3. 將下列 using 指示詞新增至 Program.cs 檔案的頂端。
 
@@ -123,69 +123,69 @@
 
 4. 將此程式碼加入至處理檔案中文字的 Main 中：
 
-     string blobName = args[0];
-     Uri blobUri = new Uri(blobName);
-     int numTopN = int.Parse(args[1]);
-    
-     CloudBlockBlob blob = new CloudBlockBlob(blobUri);
-     string content = blob.DownloadText();
-     string[] words = content.Split(' ');
-     var topNWords =
-       words.
-         Where(word => word.Length > 0).
-         GroupBy(word => word, (key, group) => new KeyValuePair<String, long>(key, group.LongCount())).
-         OrderByDescending(x => x.Value).
-         Take(numTopN).
-         ToList();
-    
-     foreach (var pair in topNWords)
-     {
-         Console.WriteLine("{0} {1}", pair.Key, pair.Value);
-     }
+        string blobName = args[0];
+        Uri blobUri = new Uri(blobName);
+        int numTopN = int.Parse(args[1]);
+
+        CloudBlockBlob blob = new CloudBlockBlob(blobUri);
+        string content = blob.DownloadText();
+        string[] words = content.Split(' ');
+        var topNWords =
+          words.
+            Where(word => word.Length > 0).
+            GroupBy(word => word, (key, group) => new KeyValuePair<String, long>(key, group.LongCount())).
+            OrderByDescending(x => x.Value).
+            Take(numTopN).
+            ToList();
+
+        foreach (var pair in topNWords)
+        {
+            Console.WriteLine("{0} {1}", pair.Key, pair.Value);
+        }
 
 5. 儲存並建置 ProcessTaskData 專案。
 
 ### 建立資料檔案
 
-1. 在 GettingStarted 專案中，建立一個名為 **taskdata1.txt** 的新文字檔案並將下列文字複製到其中，然後儲存該檔案。
+1. 在 GettingStarted 專案中，建立名為的新文字檔 **taskdata1.txt**, ，將下列文字複製到其中，並儲存檔案。
 
     當您需要彈性的資源來滿足您的商務需求時，可以使用「Azure 虛擬機器」來佈建依需求提供、可調整的計算基礎結構。 您可以從組件庫建立執行 Windows、Linux 及企業應用程式 (例如 SharePoint 和 SQL Server) 的虛擬機器。 或者，您可以擷取並使用自己的映像來建立自訂的虛擬機器。
 
-2. 建立一個名為 **taskdata2.txt** 的新文字檔案並將下列文字複製到其中，然後儲存該檔案。
+2. 建立名為的新文字檔 **taskdata2.txt**, ，將下列文字複製到其中，並儲存檔案。
 
     使用「Azure 雲端服務」可以快速部署及管理功能強大的應用程式和服務。 只要上傳您的應用程式，Azure 便會包辦部署細節 (從佈建和負載平衡，到為確保持續可用性所進行的健康狀況監視)。 您的應用程式有居業界領導地位的每月 99.95% SLA 做為後盾。 您只需要把焦點放在應用程式上，不需要顧慮基礎結構。
 
-3. 建立一個名為 **taskdata3.txt** 的新文字檔案並將下列文字複製到其中，然後儲存該檔案。
+3. 建立名為的新文字檔 **taskdata3.txt**, ，將下列文字複製到其中，並儲存檔案。
 
     Azure 網站提供可調整、可靠且容易使用的環境來裝載 Web 應用程式。 從一個範圍的架構與範本中選取，即可快速建立網站。 可使用任何工具或作業系統，以 .NET、PHP、Node.js 或 Python 開發您的網站。 從各式各樣的原始檔控制選項 (包括 TFS、GitHub 及 BitBucket) 中選擇，來設定連續整合及以小組方式進行開發。 您可以利用其他 Azure 受管理服務 (例如儲存體、CDN 及 SQL Database)，讓您的網站功能與時俱進。
 
 ### 將檔案上傳至儲存體容器
 
-1. 開啟 **GettingStarted** 專案的 Program.cs 檔案，然後加入這個可上傳檔案的方法：
+1. 開啟 Program.cs 檔案的 **GettingStarted** 專案，然後再將檔案上傳這個方法:
 
-     static void CreateFiles()
-     {
-       CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-         ConfigurationManager.AppSettings["StorageConnectionString"]);
-       CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-       CloudBlobContainer container = blobClient.GetContainerReference("testcon1");
-    
-       CloudBlockBlob taskData1 = container.GetBlockBlobReference("taskdata1");
-       CloudBlockBlob taskData2 = container.GetBlockBlobReference("taskdata2");
-       CloudBlockBlob taskData3 = container.GetBlockBlobReference("taskdata3");
-       taskData1.UploadFromFile("..\\..\\taskdata1.txt", FileMode.Open);
-       taskData2.UploadFromFile("..\\..\\taskdata2.txt", FileMode.Open);
-     taskData3.UploadFromFile("..\\..\\taskdata3.txt", FileMode.Open);
-    
-         CloudBlockBlob storageassembly = container.GetBlockBlobReference("Microsoft.WindowsAzure.Storage.dll");
-         storageassembly.UploadFromFile("Microsoft.WindowsAzure.Storage.dll", FileMode.Open);
-    
-         CloudBlockBlob dataprocessor = container.GetBlockBlobReference("ProcessTaskData.exe");
-       dataprocessor.UploadFromFile("..\\..\\..\\ProcessTaskData\\bin\\debug\\ProcessTaskData.exe", FileMode.Open);
-    
-       Console.WriteLine("Uploaded the files. Press Enter to continue.");
-       Console.ReadLine();
-     }
+        static void CreateFiles()
+        {
+          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            ConfigurationManager.AppSettings["StorageConnectionString"]);
+          CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+          CloudBlobContainer container = blobClient.GetContainerReference("testcon1");
+
+          CloudBlockBlob taskData1 = container.GetBlockBlobReference("taskdata1");
+          CloudBlockBlob taskData2 = container.GetBlockBlobReference("taskdata2");
+          CloudBlockBlob taskData3 = container.GetBlockBlobReference("taskdata3");
+          taskData1.UploadFromFile("..\\..\\taskdata1.txt", FileMode.Open);
+          taskData2.UploadFromFile("..\\..\\taskdata2.txt", FileMode.Open);
+        taskData3.UploadFromFile("..\\..\\taskdata3.txt", FileMode.Open);
+
+            CloudBlockBlob storageassembly = container.GetBlockBlobReference("Microsoft.WindowsAzure.Storage.dll");
+            storageassembly.UploadFromFile("Microsoft.WindowsAzure.Storage.dll", FileMode.Open);
+
+            CloudBlockBlob dataprocessor = container.GetBlockBlobReference("ProcessTaskData.exe");
+          dataprocessor.UploadFromFile("..\\..\\..\\ProcessTaskData\\bin\\debug\\ProcessTaskData.exe", FileMode.Open);
+
+          Console.WriteLine("Uploaded the files. Press Enter to continue.");
+          Console.ReadLine();
+        }
 
 2. 將此程式碼加入至可呼叫您剛才加入的方法的 Main 中：
 
@@ -193,9 +193,9 @@
 
 3. 儲存 Program.cs 檔案。
 
-## 步驟 2.將集區新增至您的 Batch 帳戶
+## 步驟 2. 將集區新增至您的 Batch 帳戶
 
-運算節點集區是您要執行工作時必須建立的第一組資源。
+運算節點集區是您要執行工作時必須建立的第一組資源。  
 
 1.  將這些 using 指示詞加入至 GettingStarted 專案中的 Program.cs 頂端：
 
@@ -210,9 +210,9 @@
 
     括號括住的值取代為您的批次帳戶，其中每個可在與相關聯 [Azure 入口網站](https://portal.azure.com)。 若要尋找這些值，請登入 [Azure 入口網站](https://portal.azure.com) 和:
 
-    - **[account-name]** - 按一下 [Batch 帳戶]****，選取您稍早建立的 Batch 帳戶
-    - **[account-url]** - 在 Batch 帳戶刀鋒視窗中，按一下 [屬性]**** > [URL]****
-    - **[account-key]** - 在 Batch 帳戶刀鋒視窗中，按一下 [屬性]**** > [金鑰]**** > [主要存取金鑰]****
+    - **[帳戶名稱]** -按一下 **批次帳戶**, ，選取您稍早建立的批次帳戶
+    - **[帳戶 url]** -在批次帳戶] 分頁中，按一下 [ **屬性** > **URL**
+    - **[帳戶金鑰]** -在批次帳戶] 分頁中，按一下 [ **屬性** > **金鑰** > **主要存取金鑰**
 
 3.  將此方法加入至可建立集區的 Program 類別：
 
@@ -258,17 +258,17 @@
 
 1. 將此方法加入至可建立作業的 Program 類別：
 
-     static CloudJob CreateJob (BatchClient client)
-     {
-         CloudJob newJob = client.JobOperations.CreateJob();
-         newJob.Id = "testjob1";
-         newJob.PoolInformation = new PoolInformation() { PoolId = "testpool1" };
-         newJob.Commit();
-         Console.WriteLine("Created the job. Press Enter to continue.");
-         Console.ReadLine();
-    
-         return newJob;
-     }
+        static CloudJob CreateJob (BatchClient client)
+        {
+            CloudJob newJob = client.JobOperations.CreateJob();
+            newJob.Id = "testjob1";
+            newJob.PoolInformation = new PoolInformation() { PoolId = "testpool1" };
+            newJob.Commit();
+            Console.WriteLine("Created the job. Press Enter to continue.");
+            Console.ReadLine();
+
+            return newJob;
+        }
 
 2. 將此程式碼加入至可呼叫您剛才加入的方法的 Main 中：
 
@@ -300,45 +300,47 @@
 
 1. 將此方法加入至 Program 類別，此類別會將三個工作加入至作業中：
 
-     static void AddTasks(BatchClient client)
-     {
-         CloudJob job = client.JobOperations.GetJob("testjob1");
-         ResourceFile programFile = new ResourceFile(
-             "https://[account-name].blob.core.windows.net/testcon1/ProcessTaskData.exe",
-             "ProcessTaskData.exe");
-       ResourceFile assemblyFile = new ResourceFile(
-             "https://[account-name].blob.core.windows.net/testcon1/Microsoft.WindowsAzure.Storage.dll",
-             "Microsoft.WindowsAzure.Storage.dll");
-         for (int i = 1; i < 4; ++i)
-         {
-             string blobName = "taskdata" + i;
-             string taskName = "mytask" + i;
-             ResourceFile taskData = new ResourceFile("https://[account-name].blob.core.windows.net/testcon1/" +
-               blobName, blobName);
-             CloudTask task = new CloudTask(taskName, "ProcessTaskData.exe https://[account-name].blob.core.windows.net/testcon1/" +
-               blobName + " 3");
-             List<ResourceFile> taskFiles = new List<ResourceFile>();
-             taskFiles.Add(taskData);
-             taskFiles.Add(programFile);
-             taskFiles.Add(assemblyFile);
-             task.ResourceFiles = taskFiles;
-             job.AddTask(task);
-             job.Commit();
-             job.Refresh();
-         }
-    
-         client.Utilities.CreateTaskStateMonitor().WaitAll(job.ListTasks(),
-     TaskState.Completed, new TimeSpan(0, 30, 0));
-         Console.WriteLine("The tasks completed successfully.");
-         foreach (CloudTask task in job.ListTasks())
-         {
-             Console.WriteLine("Task " + task.Id + " says:\n" + task.GetNodeFile(Constants.StandardOutFileName).ReadAsString());
-         }
-         Console.WriteLine("Press Enter to continue.");
-         Console.ReadLine();
-     }
+        static void AddTasks(BatchClient client)
+        {
+            CloudJob job = client.JobOperations.GetJob("testjob1");
+            ResourceFile programFile = new ResourceFile(
+                "https://[account-name].blob.core.windows.net/testcon1/ProcessTaskData.exe",
+                "ProcessTaskData.exe");
+          ResourceFile assemblyFile = new ResourceFile(
+                "https://[account-name].blob.core.windows.net/testcon1/Microsoft.WindowsAzure.Storage.dll",
+                "Microsoft.WindowsAzure.Storage.dll");
+            for (int i = 1; i < 4; ++i)
+            {
+                string blobName = "taskdata" + i;
+                string taskName = "mytask" + i;
+                ResourceFile taskData = new ResourceFile("https://[account-name].blob.core.windows.net/testcon1/" +
+                  blobName, blobName);
+                CloudTask task = new CloudTask(taskName, "ProcessTaskData.exe https://[account-name].blob.core.windows.net/testcon1/" +
+                  blobName + " 3");
+                List<ResourceFile> taskFiles = new List<ResourceFile>();
+                taskFiles.Add(taskData);
+                taskFiles.Add(programFile);
+                taskFiles.Add(assemblyFile);
+                task.ResourceFiles = taskFiles;
+                job.AddTask(task);
+                job.Commit();
+                job.Refresh();
+            }
 
- **[account-name]** 必須替換成您先前建立的儲存體帳戶的名稱。 將上述範例中的四個 **[account-name]** 執行個體全部更新。
+            client.Utilities.CreateTaskStateMonitor().WaitAll(job.ListTasks(),
+        TaskState.Completed, new TimeSpan(0, 30, 0));
+            Console.WriteLine("The tasks completed successfully.");
+            foreach (CloudTask task in job.ListTasks())
+            {
+                Console.WriteLine("Task " + task.Id + " says:\n" + task.GetNodeFile(Constants.StandardOutFileName).ReadAsString());
+            }
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
+
+
+    **[帳戶名稱]** 需要換成您先前建立的儲存體帳戶名稱。 在上述範例中，更新所有四個執行個體 **[帳戶名稱]**。
+
 
 2. 將此程式碼加入至可呼叫您剛才加入的方法的 Main 中：
 
@@ -455,23 +457,23 @@
 
 7. 按下 Enter，工作便會加入至作業中。 工作加入之後，便會自動執行：
 
-     The tasks completed successfully.
-     Task mytask1 says:
-     can 3
-     you 3
-     and 3
-    
-     Task mytask2 says:
-     and 5
-     application 3
-     the 3
-    
-     Task mytask3 says:
-     a 5
-     and 5
-     to 3
-    
-     Press Enter to continue.
+        The tasks completed successfully.
+        Task mytask1 says:
+        can 3
+        you 3
+        and 3
+
+        Task mytask2 says:
+        and 5
+        application 3
+        the 3
+
+        Task mytask3 says:
+        a 5
+        and 5
+        to 3
+
+        Press Enter to continue.
 
 7. 按下 Enter，您應該會看到工作及其狀態的清單：
 
@@ -492,8 +494,4 @@
 1. 既然您已經了解執行中工作的基本概念，您可以了解如何在應用程式的需求變更時，自動調整運算節點。 若要這樣做，請參閱 [自動調整 Azure 批次集區中的運算節點](batch-automatic-scaling.md)
 
 2. 有些應用程式會產生可能難以處理的大量資料。 其中一種解決這是透過 [有效率的清單查詢](batch-efficient-list-queries.md)。
-
-
-
-
 

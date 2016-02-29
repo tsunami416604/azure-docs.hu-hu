@@ -18,9 +18,7 @@
 
 
 
-
 # BizTalk 服務：服務狀態圖
-
 視 BizTalk 服務的目前狀態而定，有些作業是可以或無法在 BizTalk 服務上執行。
 
 例如，您在 Azure 傳統入口網站中佈建新的 BizTalk 服務。 順利完成時，BizTalk 服務會處於「作用中」狀態。 在「作用中」狀態下，您可以停止 BizTalk 服務。 如果順利停止，則 BizTalk 服務會進入「已停止」狀態。 如果無法停止，則 BizTalk 服務會進入「停止失敗」狀態。 在「停止失敗」狀態下，您可以重新啟動 BizTalk 服務。 如果您嘗試不允許的作業，例如繼續 BizTalk 服務，則會發生下列錯誤：
@@ -32,11 +30,11 @@
 下表列出當 BizTalk 服務處於特定狀態時可執行的作業或動作。 ✔ 表示可在該狀態下執行作業。 空白項目表示無法在此狀態下執行作業。
 
 ## 啟動、停止、重新啟動、暫止、繼續和刪除作業
-
 <table border="1">
 <tr>
         <th colspan="15">作業或動作</th>
 </tr>
+
 <tr>
         <th rowspan="18">BizTalk 服務狀態</th>
 </tr>
@@ -113,8 +111,8 @@
 <td><center>✔</center></td>
 </tr>
 <tr>
-<td bgcolor="FAF9F9"><b>啟動失敗<br />
-停止失敗<br />
+<td bgcolor="FAF9F9"><b>啟動失敗<br/>
+停止失敗<br/>
 重新啟動失敗</b></td>
 <td><center>✔</center></td>
 <td><center>✔</center></td>
@@ -124,7 +122,7 @@
 <td><center>✔</center></td>
 </tr>
 <tr>
-<td bgcolor="FAF9F9"><b>暫止失敗<br />
+<td bgcolor="FAF9F9"><b>暫止失敗<br/>
 繼續失敗</b></td>
 <td> </td>
 <td> </td>
@@ -134,8 +132,8 @@
 <td><center>✔</center></td>
 </tr>
 <tr>
-<td bgcolor="FAF9F9"><b>建立失敗<br />
-還原失敗<br /></b></td>
+<td bgcolor="FAF9F9"><b>建立失敗<br/>
+還原失敗<br/></b></td>
 <td> </td>
 <td> </td>
 <td> </td>
@@ -165,11 +163,11 @@
 <br/>
 
 ## 調整、更新組態和備份作業
-
 <table border="1">
 <tr>
         <th colspan="15">作業或動作</th>
 </tr>
+
 <tr>
         <th rowspan="18">BizTalk 服務狀態</th>
 </tr>
@@ -222,23 +220,23 @@
 <td> </td>
 </tr>
 <tr>
-<td bgcolor="FAF9F9"><b>啟動失敗<br />
-停止失敗<br />
+<td bgcolor="FAF9F9"><b>啟動失敗<br/>
+停止失敗<br/>
 重新啟動失敗</b></td>
 <td> </td>
 <td><center>✔</center></td>
 <td> </td>
 </tr>
 <tr>
-<td bgcolor="FAF9F9"><b>暫止失敗<br />
+<td bgcolor="FAF9F9"><b>暫止失敗<br/>
 繼續失敗</b></td>
 <td> </td>
 <td> </td>
 <td> </td>
 </tr>
 <tr>
-<td bgcolor="FAF9F9"><b>建立失敗<br />
-還原失敗<br /></b></td>
+<td bgcolor="FAF9F9"><b>建立失敗<br/>
+還原失敗<br/></b></td>
 <td> </td>
 <td> </td>
 <td> </td>
@@ -258,7 +256,6 @@
 </table>
 
 ## 另請參閱
-
 - [BizTalk 服務: 佈建使用 Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 - [BizTalk 服務: 儀表板、 監視和調整索引標籤](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 - [BizTalk 服務: 開發人員、 基本、 標準和高級版本圖表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
@@ -268,9 +265,5 @@
 - [如何開始使用 Azure BizTalk 服務 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 
-
-
-
-
-
+ 
 

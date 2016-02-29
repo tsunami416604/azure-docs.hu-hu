@@ -16,7 +16,6 @@
     ms.date="04/29/2015"
     ms.author="scoriani"/>
 
-
 # 在 Ubuntu 上使用 Resource Manager 範本的 DataStax
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
@@ -32,8 +31,9 @@ DataStax 是知名的業界領導者，他們根據 Apache Cassandra 來開發�
 
 使用參數，您可以定義將在新 Apache Cassandra 叢集上部署的節點數目。 系統也會在同一個虛擬網路中獨立的 VM 上部署 Datastax 作業中心服務的執行個體，讓您能夠監視叢集和所有個別節點的狀態、新增/移除節點，以及執行所有與該叢集相關的管理工作。
 
-部署完成之後，您可以使用設定的 DNS 位址，來存取 Datastax 作業中心 VM 執行個體。 OpsCenter VM 會啟用 SSH 連接埠 22 以及針對HTTPS 啟用連接埠 8443。 用於將包含作業中心的 DNS 位址 *dnsName* 和 *區域* 所輸入的參數，產生的格式 `{dnsName}。 {區域}.cloudapp.azure.com`。 如果您在建立部署 *dnsName* 參數設定為"datastax"，"West US"區域中，您無法存取在部署 DataStax 作業中心 VM `https://datastax.westus.cloudapp.azure.com:8443`。
-> [AZURE.NOTE] 部署時使用的憑證是一種自我簽署的憑證，會造成瀏覽器發出警告。 您可以按照此程序 [DataStax](http://www.datastax.com/) 憑證換成您自己的 SSL 憑證的網站。
+部署完成之後，您可以使用設定的 DNS 位址，來存取 Datastax 作業中心 VM 執行個體。 OpsCenter VM 會啟用 SSH 連接埠 22 以及針對HTTPS 啟用連接埠 8443。 用於將包含作業中心的 DNS 位址 *dnsName* 和 *區域* 做為參數，產生的格式輸入 `{dnsName}.{region}.cloudapp.azure.com`。 如果您在建立部署 *dnsName* 參數設定為"datastax"，"West US"區域中，您無法存取在部署 DataStax 作業中心 VM `https://datastax.westus.cloudapp.azure.com:8443`。
+
+> [AZURE.NOTE] 部署中使用的憑證是自我簽署的憑證，以建立瀏覽器發出警告。 您可以按照此程序 [DataStax](http://www.datastax.com/) 憑證換成您自己的 SSL 憑證的網站。
 
 在深入了解與 Azure 資源管理員和將針對此次部署使用之範本的詳細資訊之前，請確定您已正確設定 Azure PowerShell 或 Azure CLI。
 
@@ -87,7 +87,7 @@ DataStax 是知名的業界領導者，他們根據 Apache Cassandra 來開發�
 
     git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完成複製時，請尋找 C:\Azure\Templates 目錄中的 **datastax-on-ubuntu** 資料夾。
+複製完成後，尋找 **datastax 上 ubuntu** C:\Azure\Templates 目錄中的資料夾。
 
 ### 步驟 2：(選用) 了解範本參數
 
@@ -221,22 +221,22 @@ DataStax 是知名的業界領導者，他們根據 Apache Cassandra 來開發�
     $folderName="<folder name, such as C:\Azure\Templates\DataStax>"
     $templateFile= $folderName + "\azuredeploy.json"
     $templateParameterFile= $folderName + "\azuredeploy-parameters.json"
-    
+
     New-AzureResourceGroup –Name $RGName –Location $locName
-    
+
     New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateParameterFile $templateParameterFile -TemplateFile $templateFile
 
-執行 **New-AzureResourceGroupDeployment** 命令時，這將會從 JSON 參數檔案中擷取參數值，然後據以開始執行範本。 定義以及使用不同環境 (測試、 生產環境) 中的多個參數檔案 有利範本的重複使用以及簡化複雜的多重環境解決方案。
+當您執行 **New-azureresourcegroupdeployment** 命令時，這將會從 JSON 參數檔案中，擷取參數值，然後開始執行範本。 定義以及使用不同環境 (測試、實際執行等) 所需的參數檔案，有利範本的重複使用以及簡化複雜的多重環境解決方案。
 
 部署時，請記得需要建立新的 Azure 儲存體帳戶，所以您提供來做為儲存體帳戶參數的名稱必須是唯一且符合 Azure 儲存體帳戶的所有需求 (僅限小寫字母和數字)。
 
-部署期間以及部署結束之後，您可以檢查所有佈建期間所進行的要求，包括任何發生的錯誤。
+部署期間以及部署結束之後，您可以檢查所有佈建期間所進行的要求，包括任何發生的錯誤。  
 
 若要這樣做，請移至 [Azure 入口網站](https://portal.azure.com) 並執行下列動作:
 
-- 按一下左側導覽列上的 [瀏覽]****，然後向下捲動並按一下 [資源群組]****。
-- 按一下剛建立的資源群組，以顯示 [資源群組] 刀鋒視窗。
-- 在 [資源群組] 刀鋒視窗的 [監視]**** 部分中，按一下 [事件] 長條圖，您就能看見部署的事件。
+- 按一下 [ **瀏覽** 在左側導覽列，然後向下的捲動並按一下 **資源群組**。  
+- 按一下剛建立的資源群組，以顯示 [資源群組] 刀鋒視窗。  
+- 按一下 [事件] 橫條圖中 **監視** 組件的 [資源群組] 刀鋒視窗中，您可以查看事件，為您的部署。
 - 按一下個別事件，您可以進一步查看代表範本所做的每個作業之詳細資料。
 
 測試之後，如果需要移除這個資源群組及其所有資源 (儲存體帳戶、虛擬機器和虛擬網路)，請使用這個單一命令：
@@ -313,7 +313,7 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
     "nodeList": "[concat(variables('networkSettings').statics.clusterRange.base, variables('networkSettings').statics.clusterRange.start, '-', parameters('clusterNodeCount'))]"
     },
 
-深入研究這個範例之後，就會看到兩種不同的方法。 在第一個片段中，**osSettings** 變數是巢狀 JSON 元素，其中包含 4 個索引鍵值組：
+深入研究這個範例之後，就會看到兩種不同的方法。 在第一個片段中， **osSettings** 變數是巢狀的 JSON 元素，其中包含四個索引鍵-值組:
 
     "osSettings": {
           "imageReference": {
@@ -323,7 +323,8 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
             "version": "latest"
           },
 
-在第二個片段中，**scripts** 變數是 JSON 陣列，將會在執行階段使用範本語言函式 (concat) 和另一個變數的值再加上字串常數，來計算其中的每一個元素：
+     
+在第二個片段中， **指令碼** 變數是 JSON 陣列，會在執行階段透過範本語言函式 (concat) 和另一個變數，再加上字串常數的值計算每個元素:
 
           "scripts": [
             "[concat(variables('templateBaseUrl'), 'dsenode.sh')]",
@@ -333,7 +334,7 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 
 ### "resources" 區段
 
-絕大多數的動作就是在 "resources" 區段進行的。 請仔細查看這個區段，您會立即找出兩個不同的案例。 第一個是型別定義的項目 `Microsoft.Resources/deployments` ，基本上表示叫用主要檔案內的巢狀部署。 透過 **templateLink** 元素 (和相關的版本屬性)，就能指定連結的範本檔案，並在叫用此檔案時傳遞一組參數當做輸入，如同您在此片段中所見：
+絕大多數的動作就是在 "resources" 區段進行的。 請仔細查看這個區段，您會立即找出兩個不同的案例。 第一個是定義為 `Microsoft.Resources/deployments` 類型的元素，基本上它會叫用主要檔案內的巢狀部署。 透過 **templateLink** 元素 (和相關的版本屬性)，就可以指定連結的範本檔案，就會叫用做為輸入，傳遞一組參數，如本片段所示:
 
     {
           "name": "shared",
@@ -363,14 +364,14 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 
 特別是，下列連結的範本將用於此部署：
 
--   **shared-resource.json**：包含要在整個部署中共用的所有資源定義。 例如，用來儲存 VM 的作業系統磁碟和虛擬網路的儲存體帳戶。
--   **opscenter-resources.json**：部署 OpsCenter VM 和所有相關資源，包括網路介面和公用 IP 位址。
--   **opscenter-install-resources.json**：部署 OpsCenter VM 延伸模組 (適用於 Linux 的自訂指令碼)，可叫用特定的 bash 指令碼檔案 (opscenter.sh)，當您在該 VM 內設定 OpsCenter 服務時需要使用此檔案。
--   **ephemeral-nodes-resources.json**：部署所有叢集節點 VM 和連接的資源 (網路卡、私人 IP 等)。 此範本也會部署 VM 擴充功能 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼 (dsenode.sh)，在每一個節點上安裝 Apache Cassandra 程式碼。
+-   **shared-resource.json**: 包含定義的整個部署中共用的所有資源。 例如，用來儲存 VM 的作業系統磁碟和虛擬網路的儲存體帳戶。
+-   **opscenter-resources.json**: 部署 OpsCenter VM 和所有相關的資源，包括網路介面和公用 IP 位址。
+-   **安裝-opscenter-resources.json**: 部署 OpsCenter VM 延伸模組 (適用於 Linux 的自訂指令碼)，將會叫用特定的 bash 指令碼檔案 (opscenter.sh)，才能設定該 VM 內設定 OpsCenter 服務。
+-   **暫時 azuredeploy.json**: 部署所有叢集節點 Vm 和連接的資源 (網路卡、 私人 Ip 等。)。 此範本也會部署 VM 擴充功能 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼 (dsenode.sh)，在每一個節點上安裝 Apache Cassandra 程式碼。
 
-讓我們深入了解最後一個範本的使用方式，因為從範本開發角度來看，這是最有趣的範本之一。 在此要強調一個重要的概念，那就是一個範本檔案可以重複部署某一種資源類型，而且每一個執行個體都可以為必要的設定指定唯一的值。 這個概念稱為**資源迴圈**。
+讓我們深入了解最後一個範本的使用方式，因為從範本開發角度來看，這是最有趣的範本之一。 在此要強調一個重要的概念，那就是一個範本檔案可以重複部署某一種資源類型，而且每一個執行個體都可以為必要的設定指定唯一的值。 這個概念稱為 **資源迴圈**。
 
-從主要的 azuredeploy.json 檔案中叫用 ephemeral-nodes-resources.json 時，會提供名為 *nodeCount* 的參數來做為參數清單的一部分。 在子範本中，將會在每一個需要部署於多個複本中的資源的 **copy** 元素內使用 *nodeCount* (要在叢集中部署的節點數目)，如下列片段中所強調。 對於您需要為不同的部署資源執行個體提供唯一值的所有設定，可使用 **copyindex()** 函式來取得數值，以指出目前用來建立這個特定資源迴圈的索引。 在下列片段中，您可以在為 DataStax 叢集節點建立的多個 VM 上看見這個概念的運用：
+暫時 azuredeploy.json 會叫用時從主要 azuredeploy.json 檔案中，參數稱為 *nodeCount* 提供參數清單的一部分。 在子範本中， *nodeCount* (部署在叢集中的節點數目) 將會用於內部 **複製** 的每個資源都必須部署於多個複本，下列片段中反白顯示的項目。 針對不同的執行個體的部署資源，需要唯一值的所有設定 **copyindex ()** 函式可用來取得數值，指出目前的索引，在這個特定資源迴圈的建立。 在下列片段中，您可以在為 DataStax 叢集節點建立的多個 VM 上看見這個概念的運用：
 
                {
                   "apiVersion": "2015-05-01-preview",
@@ -431,13 +432,13 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
                   }
                 },
 
-建立資源的另一個重要概念是能夠指定資源間的相依性和優先順序，如同您在 **dependsOn** JSON 陣列中所見。 在這個特殊範本中，每一個節點也會連接 1 TB 磁碟 (請參閱＜dataDisks＞)，其可用來裝載 Apache Cassandra 執行個體的備份和快照。
+建立資源的另一個重要概念是能夠指定相依性和資源之間的優先順序，您可以看到在 **dependsOn** JSON 陣列。 在這個特殊範本中，每一個節點也會連接 1 TB 磁碟 (請參閱＜dataDisks＞)，其可用來裝載 Apache Cassandra 執行個體的備份和快照。
 
 當 dsenode.sh 指令碼檔執行時，會進行各種節點準備活動，其中之一就是格式化連結的磁碟。 這個指令碼的第一列會叫用另一個指令碼：
 
     bash vm-disk-utils-0.1.sh
 
-vm-disk-utils-0.1.sh 檔案是 azure-quickstart-tempates GitHub 儲存機制中 **shared_scripts\ubuntu** 資料夾的一部分，其中包含適用於磁碟掛接、格式設定及等量的非常實用的函式。 這些函式可以用於儲存機制中的所有範本。
+Vm 磁碟-utils 0.1.sh 檔案屬於 **shared_scripts\ubuntu** azure 快速入門範本 GitHub 儲存機制中的資料夾和包含磁碟掛接、 格式設定及等量的非常實用的功能。 這些函式可以用於儲存機制中的所有範本。
 
 另一個要探索的有趣片段是與 CustomScriptForLinux VM 延伸模組相關的片段。 這些片段都是以獨立資源類型進行安裝，而且每個叢集節點 (以及 OpsCenter 執行個體) 上都具有相依性。 它們運用的是針對虛擬機器所描述的相同資源迴圈機制：
 
@@ -478,8 +479,4 @@ vm-disk-utils-0.1.sh 檔案是 azure-quickstart-tempates GitHub 儲存機制中 
 -   所有的後續部署工作 (產品安裝、設定等) 都會利用指令碼部署擴充功能以及建立每一種技術獨有的指令碼。
 
 如需詳細資訊，請參閱 [Azure 資源管理員範本語言](../resource-group-authoring-templates.md)。
-
-
-
-
 

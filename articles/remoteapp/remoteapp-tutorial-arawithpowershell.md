@@ -18,30 +18,22 @@
 
 
 
-
 # 使用 Powershell 在 Azure RemoteApp 中開始使用
-
 =====================================
 
 
 ## 取得 Cmdlet
-
 -------------
-
 首先我們要下載 Azure Powershell cmdlet [這裡](http://go.microsoft.com/?linkid=9811175), ，RemoteApp 包含在其中。
 
 請參閱 Azure RemoteApp 的 cmdlet 說明 [這裡](https://msdn.microsoft.com/library/mt428031.aspx)。
 
 ## 設定 Azure Cmdlet 以使用訂用帳戶
-
 ------------------
-
 請依照下列 [本指南](../powershell-install-configure.md) 讓您可以使用 cmdlet，針對您的 Azure 訂閱。
 
 ## 建立雲端收藏
-
 --------------------
-
 十分簡單，只要執行下列命令：
 
     New-AzureRemoteAppCollection -Collectionname RAppO365Col1 -ImageName "Office 365 ProPlus (Subscription required)" -Plan Basic -Location "West US" - Description "Office 365 Collection."
@@ -60,7 +52,6 @@
 大功告成！ 該使用者應該能夠連線到應用程式使用 Azure RemoteApp 用戶端找到 [這裡](https://www.remoteapp.windowsazure.com/)。
 
 ## 可用的 Cmdlet
-
 我們還有一些其他命令，將會簡短予以說明：
 
 基本 RemoteApp 集合 cmdlet:
@@ -108,8 +99,4 @@ Other RemoteApp cmdlets:
 - Get-AzureRemoteAppWorkspace
 - Set-AzureRemoteAppWorkspace
 - Get-AzureRemoteAppOperationResult
-
-
-
-
 

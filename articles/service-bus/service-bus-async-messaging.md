@@ -15,7 +15,6 @@
    ms.date="09/18/2015"
    ms.author="sethm" />
 
-
 # 非同步傳訊模式和高可用性
 
 有各種不同的方式可以實作非同步傳訊。 利用佇列、主題和訂用帳戶 (統稱為傳訊實體)，Azure 服務匯流排可支援透過存放區和轉送機制的非同步處理。 在正常 (同步) 作業中，您可將訊息傳送至佇列和主題，並接收來自佇列和訂用帳戶的訊息。 您撰寫的應用程式依存於這些實體永遠可用。 當實體健康狀態變更時，因為有許多不同的情況，您必須有辦法提供能滿足大多數需求的容量減少實體。
@@ -46,13 +45,13 @@
 
 -   Azure 資料中心內的服務匯流排失敗。 這就是傳統的「災難性失敗」，系統有數分鐘或數小時的時間無法連線。
 
-> [AZURE.NOTE] 「儲存體」****一詞可表示 Azure 儲存體和 SQL Azure。
+> [AZURE.NOTE] 這個詞彙 **儲存體** 可以代表 Azure 儲存體和 SQL Azure。
 
 對於上述問題，服務匯流排有數種緩和措施。 下列各節會討論每個問題及其各自的緩和措施。
 
 ### 節流
 
-使用服務匯流排，節流可達到協同合作的訊息速率管理。 每個個別的服務匯流排節點都容納許多實體。 每個實體都是從 CPU、記憶體、儲存體和其他面向提出系統需求。 當上述任何面向偵測到超出所定義臨界值的使用量時，服務匯流排可以拒絕指定的要求。 呼叫端接收 [ServerBusyException []][] 和 10 秒後的重試。
+使用服務匯流排，節流可達到協同合作的訊息速率管理。 每個個別的服務匯流排節點都容納許多實體。 每個實體都是從 CPU、記憶體、儲存體和其他面向提出系統需求。 當上述任何面向偵測到超出所定義臨界值的使用量時，服務匯流排可以拒絕指定的要求。 呼叫端接收 [ServerBusyException][] 和 10 秒後的重試。
 
 在緩和措施中，程式碼必須讀取錯誤並停止任何訊息重試至少 10 秒。 因為此錯誤可能發生於客戶應用程式的各個部份，因此預計每個部份都能獨立執行重試邏輯。 此程式碼可藉由在佇列或主題上啟用資料分割，以降低進行節流的機率。
 
@@ -64,7 +63,7 @@ Azure 中的其他元件可能會不時出現服務問題。 例如，當服務�
 
 在任何應用程式中，有些情況可能會導致服務匯流排的內部元件變得不一致。 當服務匯流排偵測到這種情況時，它會從應用程式收集資料以協助診斷發生什麼狀況。 收集資料後，應用程式會在嘗試回到一致狀態時重新啟動。 這個程序非常迅速地發生，而且會導致實體呈現無法使用長達數分鐘，然而一般的停機時間短很多。
 
-在這些情況下，用戶端應用程式會產生 [System.TimeoutException []][] 或 [Istransient []][] 例外狀況。 服務匯流排 .NET SDK 包含此問題的緩和措施 (採用自動用戶端重試邏輯形式)。 一旦重試期間用完且未傳遞訊息，您可以使用配對的命名空間等其他功能進行探索。 配對的命名空間有本文件稍後會討論的其他警告。
+在這些情況下，用戶端應用程式會產生 [System.TimeoutException][] 或 [Istransient][] 例外狀況。 服務匯流排 .NET SDK 包含此問題的緩和措施 (採用自動用戶端重試邏輯形式)。 一旦重試期間用完且未傳遞訊息，您可以使用配對的命名空間等其他功能進行探索。 配對的命名空間有本文件稍後會討論的其他警告。
 
 ### Azure 資料中心內的服務匯流排失敗
 
@@ -73,7 +72,7 @@ Azure 資料中心失敗的最可能原因是服務匯流排或相依系統的�
 -   電力中斷 (電源和供電失效)。
 -   連線 (用戶端與 Azure 之間的網路中斷)。
 
-在這兩種情況下，自然或人為災難都會造成此問題。 若要解決這個問題並確保您仍可傳送訊息，您可使用配對的命名空間，允許訊息傳送至次要地點並同時讓主要地點再次恢復良好狀況。 如需詳細資訊，請參閱 [] 將服務匯流排應用程式對服務匯流排中斷和災難隔絕的最佳作法][]。
+在這兩種情況下，自然或人為災難都會造成此問題。 若要解決這個問題並確保您仍可傳送訊息，您可使用配對的命名空間，允許訊息傳送至次要地點並同時讓主要地點再次恢復良好狀況。 如需詳細資訊，請參閱 [將服務匯流排應用程式對服務匯流排中斷和災難隔絕的最佳作法][]。
 
 ## 配對的命名空間
 
@@ -103,13 +102,13 @@ Azure 資料中心失敗的最可能原因是服務匯流排或相依系統的�
 
 ### MessagingFactory.PairNamespaceAsync API
 
-配對的命名空間功能引進下列新方法，在 [Microsoft.ServiceBus.Messaging.MessagingFactory []][] 類別:
+配對的命名空間功能引進下列新方法，在 [Microsoft.ServiceBus.Messaging.MessagingFactory][] 類別:
 
 ```
 public Task PairNamespaceAsync(PairedNamespaceOptions options);
 ```
 
-在工作完成後，命名空間配對也是完整且準備好針對任何 [MessageReceiver []][], ，[QueueClient []][], ，或 [TopicClient []][] 建立 [MessagingFactory []][]。 [Microsoft.ServiceBus.Messaging.PairedNamespaceOptions []][] 是基底類別的不同類型的配對，隨附 [MessagingFactory []][]。 目前，只有在衍生的類別是一個稱為 [SendAvailabilityPairedNamespaceOptions []][], ，可用來實作傳送可用性需求。 [SendAvailabilityPairedNamespaceOptions []][] 都有一組彼此的建構函式。 查看具有大部份參數的建構函式，以便了解其他建構函式的行為。
+在工作完成後，命名空間配對也是完整且準備好針對任何 [MessageReceiver][], ，[QueueClient][], ，或 [TopicClient][] 建立 [MessagingFactory][]。 [Microsoft.ServiceBus.Messaging.PairedNamespaceOptions][] 是基底類別的不同類型的配對，隨附 [MessagingFactory][]。 目前，只有在衍生的類別是一個稱為 [SendAvailabilityPairedNamespaceOptions][], ，可用來實作傳送可用性需求。 [SendAvailabilityPairedNamespaceOptions][] 都有一組彼此的建構函式。 查看具有大部份參數的建構函式，以便了解其他建構函式的行為。
 
 ```
 public SendAvailabilityPairedNamespaceOptions(
@@ -122,17 +121,17 @@ public SendAvailabilityPairedNamespaceOptions(
 
 這些參數具有下列意義：
 
--   *secondaryNamespaceManager*: 初始化 [NamespaceManager []][] 次要命名空間的執行個體， [PairNamespaceAsync []][] 方法可用來設定次要命名空間。 管理員會用來取得命名空間中的佇列清單，並確定必要的待處理項目佇列存在。 如果這些佇列不存在，則會加以建立。 [NamespaceManager []][] 必須能夠建立的語彙基元 **管理** 宣告。
+-   *secondaryNamespaceManager*: 初始化 [NamespaceManager][] 次要命名空間的執行個體， [PairNamespaceAsync][] 方法可用來設定次要命名空間。 管理員會用來取得命名空間中的佇列清單，並確定必要的待處理項目佇列存在。 如果這些佇列不存在，則會加以建立。 [NamespaceManager][] 必須能夠建立的語彙基元 **管理** 宣告。
 
--   *messagingFactory*: [MessagingFactory []][] 次要命名空間的執行個體。  [MessagingFactory []][] 用來傳送並在 [EnableSyphon []][] 屬性設定為 **true**, ，從待處理項目佇列接收訊息。
+-   *messagingFactory*: [MessagingFactory][] 次要命名空間的執行個體。  [MessagingFactory][] 用來傳送並在 [EnableSyphon][] 屬性設定為 **true**, ，從待處理項目佇列接收訊息。
 
--   *backlogQueueCount*︰要建立的待處理項目佇列數目。 此值必須至少為 1。 將訊息傳送至待處理項目時，會隨機選擇其中一個佇列。 如果您將此值設定為 1，則只能使用一個佇列。 發生此情況且這一個待處理項目佇列產生錯誤時，用戶端便無法嘗試不同的待處理項目佇列且無法傳送您的訊息。 我們建議將此值設定為較大的值並將此值預設為 10。 視您的應用程式每天傳送的資料量而定，您可以將此值變更為較大或較小的值。 每個待處理項目佇列最多可以保留 5 GB 的訊息。
+-   *backlogQueueCount*: 若要建立的待處理項目佇列數目。 此值必須至少為 1。 將訊息傳送至待處理項目時，會隨機選擇其中一個佇列。 如果您將此值設定為 1，則只能使用一個佇列。 發生此情況且這一個待處理項目佇列產生錯誤時，用戶端便無法嘗試不同的待處理項目佇列且無法傳送您的訊息。 我們建議將此值設定為較大的值並將此值預設為 10。 視您的應用程式每天傳送的資料量而定，您可以將此值變更為較大或較小的值。 每個待處理項目佇列最多可以保留 5 GB 的訊息。
 
--   *failoverInterval*︰將任何單一實體切換至次要命名空間之前，您接受主要命名空間失敗的時間量。 容錯移轉會以逐一實體的方式進行。 單一命名空間中的實體經常留存在服務匯流排中的不同節點。 某一個實體失敗不表示另一個實體也失敗。 您可以將此值設定為 [System.TimeSpan.Zero []][] 容錯移轉至您的第一次、 非暫時性失敗後立即次要資料庫。 觸發容錯移轉計時器的失敗是否有任何 [Istransient []][] 所在 [IsTransient []][] 屬性為 false，或 [System.TimeoutException []][]。 其他例外狀況，例如 [UnauthorizedAccessException []][] 不會導致容錯移轉，因為它們指示用戶端設定不正確。 A [ServerBusyException []][] 並不造成容錯移轉因為正確的模式是等待 10 秒鐘，然後重新傳送訊息。
+-   *failoverInterval*: 您接受主要命名空間上的失敗之前切換任何單一實體次要命名空間的時間量。 容錯移轉會以逐一實體的方式進行。 單一命名空間中的實體經常留存在服務匯流排中的不同節點。 某一個實體失敗不表示另一個實體也失敗。 您可以將此值設定為 [System.TimeSpan.Zero][] 容錯移轉至您的第一次、 非暫時性失敗後立即次要資料庫。 觸發容錯移轉計時器的失敗是否有任何 [Istransient][] 所在 [IsTransient][] 屬性為 false，或 [System.TimeoutException][]。 其他例外狀況，例如 [UnauthorizedAccessException][] 不會導致容錯移轉，因為它們指示用戶端設定不正確。 A [ServerBusyException][] 並不造成容錯移轉因為正確的模式是等待 10 秒鐘，然後重新傳送訊息。
 
--   *enableSyphon*︰表示此特殊的配對應該也會將訊息從次要命名空間 Syphon 處離回到主要命名空間。 一般而言，傳送訊息的應用程式應將此值設定為 **false**；接收訊息的應用程式應將此值設定為 **true**。 原因是訊息接收端通常比訊息傳送端少。 視接收端的數目而定，您可以選擇讓單一應用程式執行個體處理 Syphon 職責。 使用許多接收端會牽涉到每個待處理項目佇列的計費。
+-   *enableSyphon*: 表示此特殊的配對應該也會虹吸次要命名空間回到主要命名空間的訊息。 一般情況下，傳送訊息的應用程式應將此值設 **false**; 接收訊息的應用程式應將此值設定為 **true**。 原因是訊息接收端通常比訊息傳送端少。 視接收端的數目而定，您可以選擇讓單一應用程式執行個體處理 Syphon 職責。 使用許多接收端會牽涉到每個待處理項目佇列的計費。
 
-若要使用的程式碼，建立主要 [MessagingFactory []][] 執行個體，次要 [MessagingFactory []][] 執行個體，次要 [NamespaceManager []][] 執行個體，和 [SendAvailabilityPairedNamespaceOptions []][] 執行個體。 呼叫很簡單，如下所示：
+若要使用的程式碼，建立主要 [MessagingFactory][] 執行個體，次要 [MessagingFactory][] 執行個體，次要 [NamespaceManager][] 執行個體，和 [SendAvailabilityPairedNamespaceOptions][] 執行個體。 呼叫很簡單，如下所示：
 
 ```
 SendAvailabilityPairedNamespaceOptions sendAvailabilityOptions =
@@ -140,7 +139,7 @@ SendAvailabilityPairedNamespaceOptions sendAvailabilityOptions =
 primary.PairNamespaceAsync(sendAvailabilityOptions).Wait();
 ```
 
-工作時所傳回 [PairNamespaceAsync []][] 方法完成時，所有項目會設定且可供使用。 傳回工作之前，您可能尚未完成配對正常運作所需的所有背景工作。 因此，直到工作傳回時，您才能開始傳送訊息。 如果發生任何失敗，例如認證錯誤或無法建立待處理項目佇列，則會在工作完成時立即擲回這些例外狀況。 一旦傳回工作，確認已找到佇列，或藉由檢查建立 [BacklogQueueCount []][] 屬性您 [SendAvailabilityPairedNamespaceOptions []][] 執行個體。 對於前面的程式碼，該作業會顯示如下:
+工作時所傳回 [PairNamespaceAsync][] 方法完成時，所有項目會設定且可供使用。 傳回工作之前，您可能尚未完成配對正常運作所需的所有背景工作。 因此，直到工作傳回時，您才能開始傳送訊息。 如果發生任何失敗，例如認證錯誤或無法建立待處理項目佇列，則會在工作完成時立即擲回這些例外狀況。 一旦傳回工作，確認已找到佇列，或藉由檢查建立 [BacklogQueueCount][] 屬性您 [SendAvailabilityPairedNamespaceOptions][] 執行個體。 對於前面的程式碼，該作業會顯示如下:
 
 ```
 if (sendAvailabilityOptions.BacklogQueueCount < 1)
@@ -151,26 +150,24 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 
 ## 後續步驟
 
-既然您已了解基本的服務匯流排中的非同步傳訊，閱讀更多詳細 [配對的命名空間和成本影響因素]。
+既然您已了解基本的服務匯流排中的非同步傳訊，閱讀更多詳細資料 [paired namespaces and cost implications]。
 
-
-[serverbusyexception]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx 
-[system.timeoutexception]: https://msdn.microsoft.com/library/system.timeoutexception.aspx 
-[messagingexception]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingexception.aspx 
-[best practices for insulating service bus applications against service bus outages and disasters]: service-bus-outages-disasters.md 
-[microsoft.servicebus.messaging.messagingfactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx 
-[messagereceiver]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx 
-[queueclient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx 
-[topicclient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx 
-[microsoft.servicebus.messaging.pairednamespaceoptions]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.pairednamespaceoptions.aspx 
-[messagingfactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx 
-[sendavailabilitypairednamespaceoptions]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.aspx 
-[namespacemanager]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx 
-[pairnamespaceasync]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.pairnamespaceasync.aspx 
-[enablesyphon]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.enablesyphon.aspx 
-[system.timespan.zero]: https://msdn.microsoft.com/library/azure/system.timespan.zero.aspx 
-[istransient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingexception.istransient.aspx 
-[unauthorizedaccessexception]: https://msdn.microsoft.com/library/azure/system.unauthorizedaccessexception.aspx 
-[backlogqueuecount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.backlogqueuecount.aspx 
-[paired namespaces and cost implications]: service-bus-paired-namespaces.md 
-
+  [ServerBusyException]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx
+  [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
+  [MessagingException]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingexception.aspx
+  [Best Practices for Insulating Service Bus Applications Against Service Bus Outages and Disasters]: service-bus-outages-disasters.md
+  [Microsoft.ServiceBus.Messaging.MessagingFactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx
+  [MessageReceiver]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx
+  [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
+  [TopicClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx
+  [Microsoft.ServiceBus.Messaging.PairedNamespaceOptions]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.pairednamespaceoptions.aspx
+  [MessagingFactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx
+  [SendAvailabilityPairedNamespaceOptions]:https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.aspx
+  [NamespaceManager]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
+  [PairNamespaceAsync]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.pairnamespaceasync.aspx
+  [EnableSyphon]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.enablesyphon.aspx
+  [System.TimeSpan.Zero]: https://msdn.microsoft.com/library/azure/system.timespan.zero.aspx
+  [IsTransient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingexception.istransient.aspx
+  [UnauthorizedAccessException]: https://msdn.microsoft.com/library/azure/system.unauthorizedaccessexception.aspx
+  [BacklogQueueCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.backlogqueuecount.aspx
+  [paired namespaces and cost implications]: service-bus-paired-namespaces.md

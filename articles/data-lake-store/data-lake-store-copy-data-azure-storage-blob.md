@@ -6,7 +6,7 @@
    authors="nitinme" 
    manager="paulettm" 
    editor="cgronlun"/>
-
+ 
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
@@ -16,21 +16,20 @@
    ms.date="12/11/2015"
    ms.author="nitinme"/>
 
-
 # 將資料從 Azure 儲存體 Blob 複製到資料湖存放區
 
 Azure 資料湖存放區提供命令列工具 [AdlCopy](http://aka.ms/downloadadlcopy), 、 將資料從 Azure 儲存體 Blob 複製至資料湖存放區。 使用此工具的方式有兩種：
 
-* **單獨使用**，此工具會使用資料湖存放區資源來執行工作。
-* **使用資料湖分析帳戶**，指派給資料湖分析帳戶的單位可用來執行複製作業。 當您想要以可預測的方式執行複製工作時，可能會想使用此選項。
+* **獨立**, ，其中此工具會使用資料湖存放區資源來執行工作。
+* **使用資料湖分析帳戶**, 、 指派給資料湖分析帳戶單元可用於執行複製作業。 當您想要以可預測的方式執行複製工作時，可能會想使用此選項。
 
-## 必要條件
+##必要條件
 
 開始閱讀本文之前，您必須符合下列必要條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-- **啟用您的 Azure 訂用帳戶**以使用資料湖存放區公開預覽版。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。
-- **Azure 儲存體 Blob** 容器 (其中含有一些資料)。
+- **啟用您的 Azure 訂閱** 資料湖存放區公開預覽。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。 
+- **Azure 儲存體 Blob** 某些資料的容器。
 - **Azure 資料湖分析帳戶 (選擇性)** -請參閱 [開始使用 Azure 資料湖分析](data-lake-analytics/data-lake-analytics-get-started-portal.md) 如需如何建立資料湖存放區帳戶的指示。
 - **AdlCopy 工具**。 安裝從 AdlCopy 工具 [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy)。
 
@@ -42,19 +41,19 @@ Azure 資料湖存放區提供命令列工具 [AdlCopy](http://aka.ms/downloadad
 
 以下將說明語法中的參數：
 
-| 選項| 說明|
+| 選項    | 說明                                                                                                                                                                                                                                                                                                                                                                                                          |
 |-----------|------------|
-| 來源| 指定來源資料在 Azure 儲存體 Blob 中的位置。來源可以是 Blob 容器或 Blob|
-| Dest| 指定要複製的資料湖存放區目的地。|
-| SourceKey| 指定 Azure 儲存體 Blob 來源的儲存體存取金鑰。|
-| 帳戶| **選用**。如果您想要使用 Azure 資料湖分析帳戶來執行複製工作，請使用此選項。如果您在語法中使用 /Account 選項，但未指定資料湖分析帳戶，AdlCopy 就會使用預設帳戶來執行工作。此外，如果您使用此選項，就必須加入來源 (Azure 儲存體 Blob) 和目的地 (Azure 資料湖存放區) 做為資料湖分析帳戶的資料來源。|
-| Units| 指定將針對複製工作使用的資料湖分析單位數目。如果您使用 **/Account** 選項來指定資料湖分析帳戶，則此為必要選項。
+| 來源    | 指定來源資料在 Azure 儲存體 Blob 中的位置。 來源可以是 Blob 容器或 Blob                                                                                                                                                                                                                                                                                                    |
+| Dest      | 指定要複製的資料湖存放區目的地。                                                                                                                                                                                                                                                                                                                                                                |
+| SourceKey | 指定 Azure 儲存體 Blob 來源的儲存體存取金鑰。                                                                                                                                                                                                                                                                                                                                                  |
+| 帳戶   | **選擇性**。 如果您想要使用 Azure 資料湖分析帳戶來執行複製工作，請使用此選項。 如果您在語法中使用 /Account 選項，但未指定資料湖分析帳戶，AdlCopy 就會使用預設帳戶來執行工作。 此外，如果您使用此選項，就必須加入來源 (Azure 儲存體 Blob) 和目的地 (Azure 資料湖存放區) 做為資料湖分析帳戶的資料來源。  |
+| Units     |  指定將針對複製工作使用的資料湖分析單位數目。 這個選項會強制使用 **/帳戶** 選項來指定資料湖分析帳戶。                                                                                                                                                                                                                                                                                                                                               
 
 
 
 ## 單獨使用 AdlCopy 工具
 
-1. 開啟命令提示字元並巡覽至 AdlCopy 安裝的目錄，通常 `%HOMEPATH%\Documents\adlcopy`。
+1. 開啟命令提示字元，並瀏覽至安裝 AdlCopy 的目錄，通常是 `%HOMEPATH%\Documents\adlcopy`。
 
 2. 執行下列命令，將特定的 Blob 從來源容器複製到資料湖存放區：
 
@@ -82,8 +81,7 @@ Azure 資料湖存放區提供命令列工具 [AdlCopy](http://aka.ms/downloadad
 
         AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== 
 
-
-
+    
 
 ## 將 AdlCopy 與資料湖分析帳戶搭配使用
 
@@ -103,15 +101,11 @@ Azure 資料湖存放區提供命令列工具 [AdlCopy](http://aka.ms/downloadad
 
 * 如果您獨立使用 AdlCopy 工具，而且如果來源 Azure 儲存體帳戶與資料湖存放區位於不同區域，則您將需支付移動資料的輸出成本。
 
-* 如果您使用 AdlCopy 工具與資料湖分析帳戶時，標準 [資料湖分析計費費率](https://azure.microsoft.com/pricing/details/data-lake-analytics/) 會套用。
+* 如果您使用 AdlCopy 工具與資料湖分析帳戶時，標準 [資料湖分析計費費率](https://azure.microsoft.com/pricing/details/data-lake-analytics/) 會套用。 
 
 ## 後續步驟
 
 - [保護資料湖存放區中的資料](data-lake-store-secure-data.md)
-- [使用 Azure 資料湖分析與資料湖存放區](data-lake-analytics-get-started-portal.md)
-- [使用 Azure HDInsight 與資料湖存放區](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-
+- [搭配資料湖存放區使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)
+- [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
 

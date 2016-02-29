@@ -16,7 +16,6 @@
     ms.date="10/01/2015"
     ms.author="krisragh"/>
 
-
 # 傳送推播通知給已驗證的使用者
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -30,26 +29,27 @@
 
 在本教學課程中，您會要求使用者先進行驗證、向通知中心註冊進行推播通知，以及更新伺服器指令碼以傳送這些通知給已驗證的使用者。
 
-## <a name="register"></a>更新服務以要求註冊的驗證
+##<a name="register"></a>更新服務以要求註冊的驗證
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-push-notifications-app-users](../../includes/mobile-services-dotnet-backend-push-notifications-app-users.md)]
 
-## <a name="update-app"></a>更新應用程式以在註冊前先登入
+##<a name="update-app"></a>更新應用程式以在註冊前先登入
 
 [AZURE.INCLUDE [mobile-services-ios-push-notifications-app-users-login](../../includes/mobile-services-ios-push-notifications-app-users-login.md)]
 
-## <a name="test"></a>測試應用程式
+##<a name="test"></a>測試應用程式
 
 [AZURE.INCLUDE [mobile-services-ios-push-notifications-app-users-test-app](../../includes/mobile-services-ios-push-notifications-app-users-test-app.md)]
 
+<!-- Anchors. -->
+[Updating the service to require authentication for registration]: #register
+[Updating the app to log in before registration]: #update-app
+[Testing the app]: #test
+[Next Steps]:#next-steps
 
 
-
-[updating the service to require authentication for registration]: #register 
-[updating the app to log in before registration]: #update-app 
-[testing the app]: #test 
-[next steps]: #next-steps 
-[get started with authentication]: mobile-services-dotnet-backend-ios-get-started-users.md 
-[get started with push notifications]: mobile-services-dotnet-backend-ios-get-started-push.md 
-[mobile services .net how-to conceptual reference]: /develop/mobile/how-to-guides/work-with-net-client-library 
+<!-- URLs. -->
+[Get started with authentication]: mobile-services-dotnet-backend-ios-get-started-users.md
+[Get started with push notifications]: mobile-services-dotnet-backend-ios-get-started-push.md
+[Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 

@@ -17,15 +17,15 @@
     ms.date="10/13/2015"
     ms.author="brohrer;garye" />
 
-
 # 如何選擇 Microsoft Azure Machine Learning 的演算法
 
 「 機器學習演算法應該使用嗎? 」 問題的答案 永遠是 「 這取決於。 」 這可視資料的大小、品質和本質而定。 也可取決於您想用這個答案來做些什麼。 或是取決於演算法的數學運算如何針對您正在使用的電腦轉譯成指令。 而這又需視您有多少時間。 即使經驗最豐富的資料科學家，在沒有嘗試之前，也無法確認哪一個演算法效果會最好。
 
 ## 機器學習演算法小祕技
 
-**Microsoft Azure Machine Learning 演算法小祕技**可協助您從 Microsoft Azure Machine Learning 演算法資源庫中選擇適合您預測性分析解決方案的機器學習演算法。
+ **Microsoft Azure 機器學習演算法小祕技** 可協助您選擇適合機器學習演算法的預測分析解決方案從 Microsoft Azure 機器學習程式庫的演算法。
 本文將引導您如何使用它。
+
 > [AZURE.NOTE] 若要下載小祕技，並依照這篇文章，請移至 [機器學習演算法小祕技的 Microsoft Azure Machine Learning Studio](machine-learning-algorithm-cheat-sheet.md)。
 
 請記住，這份小祕技有非常特定的預設對象：一位剛起步的資料科學家，其機器學習的經驗為大學生程度，正試著在 Azure Machine Learning Studio 中選擇要開始使用的演算法。 這表示小祕技可能會比較概括且過於簡化，但它可指引您一個可靠的方向。 同時這也意味著還有許多演算法並未列入其中。 當 Azure 機器學習成長到擁有一組更完整的可用方法時，我們就會新增這些演算法。
@@ -34,9 +34,9 @@
 
 ### 如何使用小祕技
 
-讀取做為圖表上的路徑和演算法標籤 」 的 * < 路徑
-標籤 > * 使用 *< 演算法 >*。 」 例如，「 如 *速度* 使用 * 兩個
-類別羅吉斯迴歸 *。 」 有時候會適用多個分支。
+讀取做為圖表上的路徑和演算法標籤 」 的 *& lt; 路徑
+標籤 & gt;* 使用 *& l t; 演算法 & gt;*。 」 例如，「 如 *速度* 使用 *兩個
+類別羅吉斯迴歸*。 」 有時候會適用多個分支。
 有時候則全部都不適用。 在要成為
 法則的建議，所以不必擔心它正確。
 談到的許多資料科學家說過，只確定方法
@@ -45,7 +45,8 @@
 以下是從範例 [Cortana 分析圖庫](http://gallery.azureml.net/) 嘗試的實驗
 針對相同的資料和比較結果的數種演算法:
 [比較多類別分類器: 字母
-辨識] (http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92)。
+辨識](http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92)。
+
 >[AZURE.TIP] 若要下載及列印圖表，以提供 Machine Learning Studio 功能的概觀，請參閱 [Azure Machine Learning Studio 功能的概觀圖](machine-learning-studio-overview-diagram.md)。
 
 ## 機器學習的類型
@@ -73,7 +74,7 @@ Azure Machine Learning 中的呈現: 分類、 迴歸和異常
 * **分類**。 當資料來預測
 類別中，經過指導的學習也稱為分類。 這是
 將影像指派為圖片中的其中一個 「 貓 」 的情況下或
-「 狗 」。 當您有兩種選擇時，這就叫做 **二級**
+「 狗 」。 當您有兩種選擇時，這就叫做 **雙類別**
 或 **二項式分類**。 當有多個類別，做為
 當預測的 ncaa 大學三月瘋聯賽中，這
 問題就所謂 **多類別分類**。
@@ -142,13 +143,13 @@ VM。 相反地，非監督式的學習演算法的目標是要
 
 ![非線性類別界限][1]
 
-*** 非線性類別界限 *** *-依賴線性分類
-演算法也會導致低精確度 *
+***非線性類別界限*** *-依賴線性分類
+演算法會導致低的精確度*
 
 ![具有非線性趨勢的資料][2]
 
-*** 資料與非線性趨勢 *** *-使用線性迴歸方法會
-產生更大的錯誤比必要 *
+***資料與非線性趨勢*** *-會使用線性迴歸方法
+產生不必要多大的錯誤*
 
 儘管有其危險性，是非常普遍，因為第一個線性演算法
 攻擊的行。 它們通常優良簡單且快速
@@ -165,7 +166,7 @@ VM。 相反地，非監督式的學習演算法的目標是要
 最多嘗試錯誤來尋找正確的組合。
 
 另外，還有 [參數
-sweeping](machine-learning-algorithm-parameters-optimize.md)
+全面](machine-learning-algorithm-parameters-optimize.md)
 所有的參數會自動嘗試使用的 Azure Machine Learning 中的模組區塊
 無論您選擇的資料粒度的組合。 雖然這是很大的
 如何確定您已合併參數空間中，所需的時間
@@ -191,58 +192,58 @@ sweeping](machine-learning-algorithm-parameters-optimize.md)
 需求，可讓您更有用的結果，更精確的預測，
 或更快的定型時間。
 
-| **演算法**| **精確度**| **定型時間**| **線性**| **參數**| **注意事項**|
+|**演算法**|**精確度**|**定型時間**|**線性**|**參數**|**注意事項**|
 |---|:---:|:---:|:---:|:---:|---|
-| **雙類別分類**| | | | | |
-| [羅吉斯迴歸](https://msdn.microsoft.com/library/azure/dn905994.aspx)| | ●| ●| 5| |
-| [決策樹系](https://msdn.microsoft.com/library/azure/dn906008.aspx)| ●| ○| | 6| |
-| [決策叢林](https://msdn.microsoft.com/library/azure/dn905976.aspx)| ●| ○| | 6| 低記憶體使用量|
-| [推進式的決策樹](https://msdn.microsoft.com/library/azure/dn906025.aspx)| ●| ○| | 6| 高記憶體使用量|
-| [類神經網路](https://msdn.microsoft.com/library/azure/dn905947.aspx)| ●| | | 9| [可供其他自訂](http://go.microsoft.com/fwlink/?LinkId=402867)|
-| [平均感知器](https://msdn.microsoft.com/library/azure/dn906036.aspx)| ○| ○| ●| 4| |
-| [支援向量機器](https://msdn.microsoft.com/library/azure/dn905835.aspx)| | ○| ●| 5| 適用於大型特徵集|
-| [局部深度支援向量機器](https://msdn.microsoft.com/library/azure/dn913070.aspx)| ○| | | 8| 適用於大型特徵集|
-| [貝氏點機器](https://msdn.microsoft.com/library/azure/dn905930.aspx)| | ○| ●| 3| |
-| **多類別分類**| | | | | |
-| [羅吉斯迴歸](https://msdn.microsoft.com/library/azure/dn905853.aspx)| | ●| ●| 5| |
-| [決策樹系](https://msdn.microsoft.com/library/azure/dn906015.aspx)| ●| ○| | 6| |
-| [決策叢林 ](https://msdn.microsoft.com/library/azure/dn905963.aspx)| ●| ○| | 6| 低記憶體使用量|
-| [類神經網路](https://msdn.microsoft.com/library/azure/dn906030.aspx)| ●| | | 9| [可供其他自訂](http://go.microsoft.com/fwlink/?LinkId=402867)|
-| [一個 v 全部](https://msdn.microsoft.com/library/azure/dn905887.aspx)| -| -| -| -| 請參閱選取的兩個類別方法的內容|
-| **迴歸**| | | | | |
-| [線性 ](https://msdn.microsoft.com/library/azure/dn905978.aspx)| | ●| ●| 4| |
-| [貝氏線性](https://msdn.microsoft.com/library/azure/dn906022.aspx)| | ○| ●| 2| |
-| [決策樹系](https://msdn.microsoft.com/library/azure/dn905862.aspx)| ●| ○| | 6| |
-| [推進式的決策樹](https://msdn.microsoft.com/library/azure/dn905801.aspx)| ●| ○| | 5| 高記憶體使用量|
-| [快速樹系的分位數](https://msdn.microsoft.com/library/azure/dn913093.aspx)| ●| ○| | 9| 散發套件，而不是點預測|
-| [類神經網路](https://msdn.microsoft.com/library/azure/dn905924.aspx)| ●| | | 9| [可供其他自訂](http://go.microsoft.com/fwlink/?LinkId=402867)|
-| [波氏 ](https://msdn.microsoft.com/library/azure/dn905988.aspx)| | | ●| 5| 技術上來說對數線性。預測計算|
-| [序數](https://msdn.microsoft.com/library/azure/dn906029.aspx)| | | | 0| 為了預測順位排序|
-| **異常偵測**| | | | | |
-| [支援向量機器](https://msdn.microsoft.com/library/azure/dn913103.aspx)| ○| ○| | 2| 尤其是適用於大型的功能集|
-| [PCA 型異常偵測 ](https://msdn.microsoft.com/library/azure/dn913102.aspx)| | ○| ●| 3| |
-| [方法](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)| | ○| ●| 4| 群集演算法|
+|**雙類別分類**| | | | | |
+|[羅吉斯迴歸](https://msdn.microsoft.com/library/azure/dn905994.aspx)                    | |●|●|5| |
+|[決策樹系](https://msdn.microsoft.com/library/azure/dn906008.aspx)|●|○| |6| |
+|[決策叢林](https://msdn.microsoft.com/library/azure/dn905976.aspx)|●|○| |6|低記憶體使用量|
+|[促進式決策樹](https://msdn.microsoft.com/library/azure/dn906025.aspx)|●|○| |6|高記憶體使用量|
+|[類神經網路](https://msdn.microsoft.com/library/azure/dn905947.aspx)|●| | |9|[支援其他自訂項目](http://go.microsoft.com/fwlink/?LinkId=402867)|
+|[平均感知器](https://msdn.microsoft.com/library/azure/dn906036.aspx)|○|○|●|4| |
+|[支援向量機器](https://msdn.microsoft.com/library/azure/dn905835.aspx)| |○|●|5|適用於大型特徵集|
+|[本機深度支援向量機器](https://msdn.microsoft.com/library/azure/dn913070.aspx)|○| | |8|適用於大型特徵集|
+|[貝氏點機器](https://msdn.microsoft.com/library/azure/dn905930.aspx)| |○|●|3| |
+|**多類別分類**| | | | | |
+|[羅吉斯迴歸](https://msdn.microsoft.com/library/azure/dn905853.aspx)| |●|●|5| |
+|[決策樹系](https://msdn.microsoft.com/library/azure/dn906015.aspx)|●|○| |6| |
+|[決策叢林 ](https://msdn.microsoft.com/library/azure/dn905963.aspx)|●|○| |6|低記憶體使用量|
+|[類神經網路](https://msdn.microsoft.com/library/azure/dn906030.aspx)|●| | |9|[支援其他自訂項目](http://go.microsoft.com/fwlink/?LinkId=402867)|
+|[一個 v 全部](https://msdn.microsoft.com/library/azure/dn905887.aspx)|-|-|-|-|請參閱選取的兩個類別方法的內容|
+|**迴歸**| | | | | |
+|[linear ](https://msdn.microsoft.com/library/azure/dn905978.aspx)| |●|●|4| |
+|[貝氏線性](https://msdn.microsoft.com/library/azure/dn906022.aspx)| |○|●|2| |
+|[決策樹系](https://msdn.microsoft.com/library/azure/dn905862.aspx)|●|○| |6| |
+|[促進式決策樹](https://msdn.microsoft.com/library/azure/dn905801.aspx)|●|○| |5|高記憶體使用量|
+|[快速樹系的分位數](https://msdn.microsoft.com/library/azure/dn913093.aspx)|●|○| |9|散發套件，而不是點預測|
+|[類神經網路](https://msdn.microsoft.com/library/azure/dn905924.aspx)|●| | |9|[支援其他自訂項目](http://go.microsoft.com/fwlink/?LinkId=402867)|
+|[波氏 ](https://msdn.microsoft.com/library/azure/dn905988.aspx)| | |●|5|技術上來說對數線性。 預測計算|
+|[序數](https://msdn.microsoft.com/library/azure/dn906029.aspx)| | | |0|為了預測順位排序|
+|**異常偵測**| | | | | |
+|[支援向量機器](https://msdn.microsoft.com/library/azure/dn913103.aspx)|○|○| |2|尤其是適用於大型的功能集|
+|[以 PCA 為基礎的異常偵測 ](https://msdn.microsoft.com/library/azure/dn913102.aspx)| |○|●|3| |
+|[方法](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)| |○|●|4|群集演算法|
 
 
 **演算法屬性：**
 
-**●**：顯示優異的精確度、快速定型時間及使用線性
+**●** -顯示極佳的精確度、 快速的定型時間，以及使用線性
 
-**○**：顯示不錯的精確度和適度的定型時間
+**○** -顯示良好正確性和中度的定型時間
 
 ## 演算法備註
 
 ### 線性迴歸
 
-前面提過， [線性迴歸](https://msdn.microsoft.com/library/azure/dn905978.aspx)
+如前所述， [線性迴歸](https://msdn.microsoft.com/library/azure/dn905978.aspx)
 資料集符合列 (或平面上或超平面)。 它是主要位置，
 簡單且快速，但可能過於簡單部分問題。
-這裡有 [線性迴歸
-tutorial](machine-learning-linear-regression-in-azure.md)。
+請按這裡查看 [線性迴歸
+教學課程](machine-learning-linear-regression-in-azure.md)。
 
 ![具有線性趨勢的資料][3]
 
-*** 使用線性趨勢 * 資料**
+***undefined***
 
 ### 羅吉斯迴歸
 
@@ -259,24 +260,24 @@ tutorial](machine-learning-linear-regression-in-azure.md)。
 
 ![羅吉斯迴歸與只有一項特徵的雙類別資料][4]
 
-*** 雙類別資料只是一個功能 * 羅吉斯迴歸** *-
-類別界限是只接近這兩個類別 * 羅吉斯曲線點
+***雙類別資料，只是其中一項功能與羅吉斯迴歸*** *-
+類別界限是只接近這兩個類別羅吉斯曲線點*
 
 ### 樹、樹系和叢林
 
 決策樹系
-([regression](https://msdn.microsoft.com/library/azure/dn905862.aspx),
-[two-class](https://msdn.microsoft.com/library/azure/dn906008.aspx),
+([迴歸](https://msdn.microsoft.com/library/azure/dn905862.aspx),，
+[二級](https://msdn.microsoft.com/library/azure/dn906008.aspx),，
 和
-[multiclass](https://msdn.microsoft.com/library/azure/dn906015.aspx)),
+[多級](https://msdn.microsoft.com/library/azure/dn906015.aspx))，
 決策叢林
-([二級](https://msdn.microsoft.com/library/azure/dn905976.aspx)
+([雙類別](https://msdn.microsoft.com/library/azure/dn905976.aspx)
 和
-[multiclass](https://msdn.microsoft.com/library/azure/dn905963.aspx)),
+[多級](https://msdn.microsoft.com/library/azure/dn905963.aspx))，
 和促進式的決策樹
 ([迴歸](https://msdn.microsoft.com/library/azure/dn905801.aspx)
 和
-[兩個類別](https://msdn.microsoft.com/library/azure/dn906025.aspx))
+[二級](https://msdn.microsoft.com/library/azure/dn906025.aspx))
 都是根據決策樹，基本的機器學習
 概念。 有許多的決策樹，但是用途都
 相同的作業 — 特徵空間細分大部分相同的區域
@@ -285,8 +286,9 @@ tutorial](machine-learning-linear-regression-in-azure.md)。
 
 ![細分特徵空間的決策樹][5]
 
-***決策樹細分特徵空間為區域的大約
-統一值***
+***undefined
+是
+統一 val***
 
 因為特徵空間可以再細分為任意小
 很容易想像不夠精確有一個資料分割區，
@@ -302,11 +304,11 @@ tutorial](machine-learning-linear-regression-in-azure.md)。
 演算法建構一連串的樹狀結構，其中每個學習
 補償留下的樹狀目錄中之前的錯誤。 結果是非常
 傾向於使用大量記憶體的精確度學習模組。 如需完整
-技術說明，請查看 [Friedman 的原始
-紙張] (http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf)。
+技術說明，請參閱 [Friedman 的原始
+紙張](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf)。
 
 [快速樹系的分位數
-迴歸] (https://msdn.microsoft.com/library/azure/dn913093.aspx)
+迴歸](https://msdn.microsoft.com/library/azure/dn913093.aspx)
 是一種特殊案例中您要的決策樹
 知道不僅典型 (中間) 的值區內的資料
 但也分位數的形式散發。
@@ -314,8 +316,8 @@ tutorial](machine-learning-linear-regression-in-azure.md)。
 ### 類神經網路和感知器
 
 類神經網路的大腦-啟發學習涵蓋的演算法
-[multiclass](https://msdn.microsoft.com/library/azure/dn906030.aspx),
-[two-class](https://msdn.microsoft.com/library/azure/dn905947.aspx),
+[多級](https://msdn.microsoft.com/library/azure/dn906030.aspx),，
+[二級](https://msdn.microsoft.com/library/azure/dn905947.aspx),，
 和
 [迴歸](https://msdn.microsoft.com/library/azure/dn905924.aspx)
 發生問題。 有無限的各種不同，但是類神經網路
@@ -332,18 +334,19 @@ Azure Machine Learning 中都有向非循環圖的表單。 ,
 需要較長的時間來定型，特別是對於具有許多大型資料集
 功能。 他們也擁有更多的參數，比大多數的演算法，其中
 表示參數掃掠許多展開定型時間。
-並對這些 overachievers 誰想要 [指定自己的網路
-結構] (http://go.microsoft.com/fwlink/?LinkId=402867)，
+以及對於希望這些 overachievers [指定自己的網路
+結構](http://go.microsoft.com/fwlink/?LinkId=402867), ，
 inexhaustible 豐富的可能性。
 
 ![類神經網路所學習的界限][6]
------------------
+---------------------------
 
-***類神經網路所學習的界限可能會很複雜，
-不規則***
+***undefined
+nd
+irregu***
 
-[二級平均
-認知] (https://msdn.microsoft.com/library/azure/dn906036.aspx)
+ [二級平均
+認知](https://msdn.microsoft.com/library/azure/dn906036.aspx)
 為類神經網路答案急速定型時間。 它會使用
 提供線性類別界限的網路架構。 幾乎
 基本型別，今日的標準，但是有很長的工作歷程記錄
@@ -354,8 +357,8 @@ inexhaustible 豐富的可能性。
 支援向量機器 (Svm) 尋找用來分隔類別界限
 透過為以最寬的邊界。 當兩個類別不可以是清楚
 分隔，演算法會尋找最佳的界限，他們可以。 寫入中，
-Azure 機器學習中，[雙類別
-沒有 SVM] (https://msdn.microsoft.com/library/azure/dn905835.aspx)
+Azure Machine Learning， [雙類別
+SVM](https://msdn.microsoft.com/library/azure/dn905835.aspx) 沒有
 這與只直線。 (但以 SVM 的說法，應該是使用線性核心)。
 因為它會使這個線性近似值，是能夠執行相當
 快速。 其中搭配是功能密集的資料，例如文字
@@ -365,21 +368,22 @@ Azure 機器學習中，[雙類別
 
 ![支援向量機器類別界限][7]
 
-***典型的支援向量機器類別界限發揮最大的邊界
-分隔兩個類別***
+***undefined
+了嗎
+分隔兩個 clas***
 
 另一個產品的 Microsoft Research [二級局部深度
-SVM] (https://msdn.microsoft.com/library/azure/dn913070.aspx) 是
+SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) 是
 非線性變體能夠保留大部分的速度和記憶體的 SVM
 線性版本的效率。 它是理想的情況下，線性
 方法不會讓不夠精確回應。 開發人員可以保留它
 快速的問題細分成一大堆小型線性 SVM
-發生問題。 閱讀 [完整
-描述] (http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf)
+發生問題。 讀取 [完整
+描述](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf)
 如需有關如何它們拉這個技巧。
 
-使用聰明非線性 Svm，[一級的延伸模組
-SVM] (https://msdn.microsoft.com/library/azure/dn913103.aspx) 繪製
+使用聰明的延伸模組的非線性 Svm [一級
+SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) 繪製
 界限緊密概述整個資料集。 它可用於
 異常偵測。 到目前為止外，任何新資料點
 界限是不尋常夠是那麼明顯。
@@ -390,59 +394,60 @@ SVM] (https://msdn.microsoft.com/library/azure/dn913103.aspx) 繪製
 過度配適。 方法是做出一些假設事先
 答案可能散發。 另一個的副產品這個
 方法是，他們擁有極少的參數。 Azure Machine Learning 同時具有
-這兩個分類 ([二級貝氏點的貝氏演算法
-電腦] (https://msdn.microsoft.com/library/azure/dn905930.aspx))
-和 ([貝氏線性迴歸
-迴歸] (https://msdn.microsoft.com/library/azure/dn906022.aspx))。
+這兩個分類的貝氏演算法 ([二級貝氏點
+機器](https://msdn.microsoft.com/library/azure/dn905930.aspx))
+和迴歸 ([貝氏線性
+迴歸](https://msdn.microsoft.com/library/azure/dn906022.aspx))。
 請注意，這些假設資料可以分割或配合直線
 上方。
 
 在歷程記錄的附註，在 Microsoft 開發貝氏點機器
 參考資料。 它們有背後一些格外美麗理論工作
-VM。 有興趣的學生導向至 [原始發行項中
-JMLR] (http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) 和
-[具洞察力的部落格 Chris
-銘] (http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx)。
+VM。 有興趣的學生導向至 [中的原始文章
+JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) 和
+[具洞察力的 Chris 的部落格
+銘](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx)。
 
 ### 專門的演算法
 
 如果您有非常特定的目標，那麼您的可能運氣特別好。 在 Azure Machine Learning
 集合是專門排名的預測演算法
 ([序數
-迴歸] (https://msdn.microsoft.com/library/azure/dn906029.aspx))，
-計數預測 ([波氏
-迴歸] (https://msdn.microsoft.com/library/azure/dn905988.aspx))，
-異常偵測 (一個 [主要元件為基礎，
-分析] (https://msdn.microsoft.com/library/azure/dn913102.aspx)
-另一個 [支援向量為基礎
-電腦] (https://msdn.microsoft.com/library/azure/dn913103.aspx) s)。
+迴歸](https://msdn.microsoft.com/library/azure/dn906029.aspx))，
+計算預測 ([波氏
+迴歸](https://msdn.microsoft.com/library/azure/dn905988.aspx))，
+異常偵測和 (其中根據 [主要的元件
+分析](https://msdn.microsoft.com/library/azure/dn913102.aspx)
+根據一個 [支援向量
+機器](https://msdn.microsoft.com/library/azure/dn913103.aspx)s)。
 而且沒有單獨群集演算法也
-([K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)).
+([K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/))。
 
 ![以 PCA 為基礎的異常偵測][8]
 
-*** PCA 型異常偵測 *** *-落大部分的資料
+***PCA 型異常偵測*** *-落大部分的資料
 到 stereotypical 的散發。在違背大幅的點
-發佈的可疑 *
+通訊群組都有疑問*
 
 ![使用 K-means 分組的資料集][9]
 
-*** 資料集分成多 5 個叢集使用 K-表示 ***
+***undefined***
 
-另外還有一整團 [一 v 全部多級
-分類器] (https://msdn.microsoft.com/library/azure/dn905887.aspx)，
+另外還有一整團 [一個 v 全部多級
+分類器](https://msdn.microsoft.com/library/azure/dn905887.aspx),，
 其中分成 N 類別分類問題 N-1 雙類別
 分類的問題。 精確度、 定型時間和線性
 屬性是由使用雙類別分類器決定。
 
 ![雙類別分類器結合成三個類別分類器][10]
 
-***一組雙類別分類器合併成三個類別
-分類器***
+***undefined
+ss
+classif***
 
 Azure Machine Learning 也包含功能強大的機器學習架構的存取
 標題下的 [Vowpal
-Wabbit] (https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf)。
+Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf)。
 VW 頑強，分類，因為它可以了解這兩個分類
 和迴歸問題，並甚至可以了解從部分加上標籤
 資料。 您可以將它設定為使用任何一個數字的學習
@@ -452,22 +457,21 @@ VW 頑強，分類，因為它可以了解這兩個分類
 啟動由 Microsoft Research 的自己 John Langford，VW 時，
 公式股票汽車演算法的欄位中的一個項目。 並非所有問題
 符合 VW，但如果有的話，它可能是值得爬
-其介面上的學習曲線。 它也是 [獨立
-開啟原始碼] (https://github.com/JohnLangford/vowpal_wabbit) 中
+其介面上的學習曲線。 它也是以提供 [獨立
+開啟原始碼](https://github.com/JohnLangford/vowpal_wabbit) 中
 有幾種語言。
 
 
+<!-- Media -->
 
-
-
-[1]: ./media/machine-learning-algorithm-choice/image1.png 
-[2]: ./media/machine-learning-algorithm-choice/image2.png 
-[3]: ./media/machine-learning-algorithm-choice/image3.png 
-[4]: ./media/machine-learning-algorithm-choice/image4.png 
-[5]: ./media/machine-learning-algorithm-choice/image5.png 
-[6]: ./media/machine-learning-algorithm-choice/image6.png 
-[7]: ./media/machine-learning-algorithm-choice/image7.png 
-[8]: ./media/machine-learning-algorithm-choice/image8.png 
-[9]: ./media/machine-learning-algorithm-choice/image9.png 
-[10]: ./media/machine-learning-algorithm-choice/image10.png 
+[1]: ./media/machine-learning-algorithm-choice/image1.png
+[2]: ./media/machine-learning-algorithm-choice/image2.png
+[3]: ./media/machine-learning-algorithm-choice/image3.png
+[4]: ./media/machine-learning-algorithm-choice/image4.png
+[5]: ./media/machine-learning-algorithm-choice/image5.png
+[6]: ./media/machine-learning-algorithm-choice/image6.png
+[7]: ./media/machine-learning-algorithm-choice/image7.png
+[8]: ./media/machine-learning-algorithm-choice/image8.png
+[9]: ./media/machine-learning-algorithm-choice/image9.png
+[10]: ./media/machine-learning-algorithm-choice/image10.png
 

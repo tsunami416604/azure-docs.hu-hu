@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用 SQL Database (.NET) | Microsoft Azure" 
-    description="開始使用 SQL Database。了解如何建立 SQL Database 執行個體並使用 ADO.NET、ODBC 和 EntityClient Provider 進行連線。" 
+    description="開始使用 SQL Database。 了解如何建立 SQL Database 執行個體並使用 ADO.NET、ODBC 和 EntityClient Provider 進行連線。" 
     services="sql-database" 
     documentationCenter=".net" 
     authors="jeffgoll" 
@@ -15,7 +15,6 @@
     ms.topic="article" 
     ms.date="07/07/2015" 
     ms.author="jeffreyg"/>
-
 
 
 # 如何在 .NET 應用程式中使用 Azure SQL Database
@@ -42,23 +41,23 @@ SQL Database 可在 Azure 上提供關聯式資料儲存體、存取和管理服
 
 ## 建立及設定 SQL Database
 
-接著建立及設定資料庫和伺服器。 在 Azure 傳統入口網站中，經過修訂的工作流程可讓您先建立資料庫，然後再進行伺服器佈建。
+接著建立及設定資料庫和伺服器。 在 Azure 傳統入口網站中，經過修訂的工作流程可讓您先建立資料庫，然後再進行伺服器佈建。 
 
 **建立資料庫執行個體和邏輯伺服器：**
 
 1. 登入 [Azure 傳統入口網站](http://manage.windowsazure.com)。
 
-2. 按一下頁面底部的 [**新增**]。
+2. 按一下 [ **新增** 頁面的底部。
 
-3. 按一下 [資料服務]****。
+3. 按一下 [ **Data Services**。
 
-4. 按一下 [SQL Database]****。
+4. 按一下 [ **SQL 資料庫**。
 
-5. 按一下 [自訂建立]****。
+5. 按一下 [ **自訂建立**。 
 
 6. 在 [名稱] 中，輸入資料庫名稱。
 
-7. 選擇版本、大小上限和定序。 根據本指南的用途，您可以使用預設值。
+7. 選擇版本、大小上限和定序。 根據本指南的用途，您可以使用預設值。 
 
     SQL Database 提供三種資料庫版本，即基本、標準和進階。
 
@@ -70,13 +69,13 @@ ALTER DATABASE 變更。 MAXSIZE 可
 複本。 這是為了要確保高可用性。
 容錯移轉是透明的機制，且屬於服務的一部分。
 
-8. 在 [伺服器] 中，選取 [New SQL Database server]****。
+8. 在伺服器上，選取 **新的 SQL 資料庫伺服器**。 
 
 9. 按一下箭號以移至下一頁。
 
 10. 在 [伺服器設定] 中，輸入 SQL Server 驗證登入名稱。
 
-    SQL Database 會針對加密連線使用 SQL 驗證。 系統將使用您提供的名稱，建立指派給系統管理員 (sysadmin) 固定伺服器角色的新 SQL Server 驗證登入。
+    SQL Database 會針對加密連線使用 SQL 驗證。 系統將使用您提供的名稱，建立指派給系統管理員 (sysadmin) 固定伺服器角色的新 SQL Server 驗證登入。 
 
     登入不能是電子郵件地址、Windows 使用者帳戶或 Windows Live ID。 SQL Database 上不支援宣告或 Windows 驗證。
 
@@ -84,7 +83,7 @@ ALTER DATABASE 變更。 MAXSIZE 可
 
 12. 選擇區域。 區域可決定伺服器的地理位置。 您無法輕易地切換區域，所以請選擇一個適合此伺服器的區域。 選擇一個最靠近您的位置。 將 Azure 應用程式和資料庫放在相同區域，可節省對外頻寬的成本並縮短資料延遲。
 
-13. 請務必將 [允許 Azure 服務存取伺服器]**** 選項保持為選取狀態，以便使用 SQL Database 適用的傳統入口網站、儲存體服務和 Azure 上的其他服務連接此資料庫。
+13. 請務必保留 **允許 Azure 服務存取伺服器** 選取狀態，以便您可以連接到此資料庫的 SQL 資料庫、 儲存體服務和其他服務在 Azure 上的使用傳統的入口網站的選項。 
 
 14. 完成時，請按一下頁面底部的核取記號。
 
@@ -100,13 +99,13 @@ ALTER DATABASE 變更。 MAXSIZE 可
 
 **設定邏輯伺服器的防火牆**
 
-1. 依序按一下 [SQL Database]****、位於頁面頂端的 [伺服器]****，以及您剛剛建立的伺服器。
+1. 按一下 [ **SQL 資料庫**, ，按一下 [ **伺服器** 在上方的頁面上，然後按一下您剛剛建立的伺服器。
 
     ![設定防火牆](./media/sql-database-dotnet-how-to-use/SQLDBFirewall.PNG)
 
-2. 按一下 [設定]****。
+2. 按一下 [ **設定**。 
 
-3. 複製目前的用戶端 IP 位址。 如果您要從網路連線，這是您的路由器或 proxy 伺服器正在接聽的 IP 位址。 SQL Database 會偵測目前連線所使用的 IP 位址，因此您可以建立防火牆規則以接受來自此裝置的連線要求。
+3. 複製目前的用戶端 IP 位址。 如果您要從網路連線，這是您的路由器或 proxy 伺服器正在接聽的 IP 位址。 SQL Database 會偵測目前連線所使用的 IP 位址，因此您可以建立防火牆規則以接受來自此裝置的連線要求。 
 
 4. 將 IP 位址貼至 START IP ADDRESS 和 END IP ADDRESS 中，以建立可存取伺服器的位址範圍。 稍後，如果您遇到連線錯誤，指出範圍太過狹窄，您可以編輯此規則將範圍擴大。
 
@@ -118,7 +117,7 @@ ALTER DATABASE 變更。 MAXSIZE 可
 
     ![防火牆設定的 IP 範圍](./media/sql-database-dotnet-how-to-use/SQLDBIPRange.PNG)
 
-7. 按一下頁面底部的 [儲存]**** 以完成此步驟。 如果您沒有看到 [儲存]****，請重新整理瀏覽器頁面。
+7. 按一下 [ **儲存** 底部的 [] 頁面上，以完成此步驟。 如果看不到 **儲存**, ，重新整理瀏覽器頁面。
 
 您現在已有資料庫執行個體、邏輯伺服器、允許來自您的 IP 位址之輸入連線的防火牆規則，以及系統管理員登入資訊。 您現在已可透過程式設計連接到資料庫。
 
@@ -145,7 +144,7 @@ SQL Database，如同處理 SQL Server 一般。 [伺服器總管] 可讓您
 
 ## 使用適用於 SQL Server 的 .NET Framework 資料提供者
 
-**System.Data.SqlClient** 命名空間是.net Framework 資料
+ **System.Data.SqlClient** 命名空間是.net Framework 資料
 SQL Server 提供者。
 
 標準連接字串如下所示：
@@ -190,7 +189,7 @@ SQL Server 提供者。
 
 ## 使用適用於 ODBC 的 .NET Framework 資料提供者
 
-**System.Data.Odbc** 命名空間是.net Framework 資料提供者
+ **System.Data.Odbc** 命名空間是.net Framework 資料提供者
 適用於 ODBC。 以下提供範例 ODBC 連接字串：
 
     Driver={SQL Server Native Client 10.0};
@@ -200,7 +199,7 @@ SQL Server 提供者。
     Pwd=;
     Encrypt=yes;
 
-**OdbcConnection** 類別代表開啟連線到資料
+ **OdbcConnection** 類別代表開啟連線到資料
 來源。 下列程式碼範例說明如何開啟連線：
 
     string cs = "Driver={SQL Server Native Client 10.0};" +
@@ -209,16 +208,16 @@ SQL Server 提供者。
                 "Uid=MyAdmin@xxxxxxxxxx;" +
                 "Pwd=pass@word1;"+
                 "Encrypt=yes;";
-    
+
     OdbcConnection conn = new OdbcConnection(cs);
     conn.Open();
 
 如果您想要在執行階段建置連接字串，您可以使用
-**OdbcConnectionStringBuilder** 類別。
+ **OdbcConnectionStringBuilder** 類別。
 
 ## 使用 EntityClient 提供者
 
-**System.Data.EntityClient** 命名空間是.NET Framework 資料
+ **System.Data.EntityClient** 命名空間是.NET Framework 資料
 提供者。
 
 Entity Framework 可讓開發人員建立資料存取
@@ -243,9 +242,5 @@ Entity Framework 是建置基礎儲存體專用的 ADO.NET 資料
 ## 後續步驟
 
 現在您已了解連接到 SQL Database 的基本概念，請參閱 [開發: 作法主題 (SQL Database)](http://msdn.microsoft.com/library/windowsazure/ee621787.aspx)
-
-
-
-
-
+ 
 

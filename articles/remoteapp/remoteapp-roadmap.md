@@ -15,22 +15,21 @@
     ms.date="12/16/2015"
     ms.author="elizapo" />
 
-
 # Azure RemoteApp 中的新內容
 
 我們一律會根據您的意見來努力改善 Azure RemoteApp。 以下是日後提供功能的大約時段。
 
-| 功能| 2016 年 1-3 月| 2016 年 4-6 月|
+|功能|2016 年 1-3 月|2016 年 4-6 月|
 |-----------|-------|-------|
-| Azure 遠端應用程式在 [Azure 傳統入口網站](http://manage.windowsazure.com) 和 [Azure 入口網站](http://portal.azure.com)| X| |
-| Windows 10 Universal Application for Azure RemoteApp 預覽| X| |
-| 發佈給特定使用者的個別應用程式的能力 **公用預覽** ([意見](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec))| X| |
-| Windows 用戶端可轉散發 MSI 套件 ([意見](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo))| X| |
-| Azure RemoteApp 適用且以 HTML5 為基礎的用戶端| X| |
-| Azure 資源管理員 (ARM) 支援| | X|
-| 雲端解決方案提供者 (CSP)| | X|
-| 印度地區的可用性| X| |
-| 英國地區的可用性| | X|
+|Azure 遠端應用程式在 [Azure 傳統入口網站](http://manage.windowsazure.com) 和 [Azure 入口網站](http://portal.azure.com) |X | |
+|Windows 10 Universal Application for Azure RemoteApp 預覽|X| |
+|發佈給特定使用者的個別應用程式的能力 **公用預覽** ([意見](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec))|X | |
+|Windows 用戶端可轉散發 MSI 套件 ([意見](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo))| X| |
+|Azure RemoteApp 適用且以 HTML5 為基礎的用戶端|X ||
+|Azure 資源管理員 (ARM) 支援||X|
+|雲端解決方案提供者 (CSP)||X|
+|印度地區的可用性|X||
+|英國地區的可用性||X|
 
 
 其他已在今年初加入的改進功能：
@@ -45,8 +44,4 @@
 - 使用度量儀表板
 - 使用 CSV 檔案佈建大量使用者
 - 澳大利亞資料中心的可用性
-
-
-
-
-
+ 

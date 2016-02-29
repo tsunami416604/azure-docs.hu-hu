@@ -16,7 +16,6 @@ ms.service="virtual-machines"
  ms.date="09/28/2015"
  ms.author="danlep"/>
 
-
 # 將做為運算資源的隨選「高載」節點 (背景工作角色執行個體) 新增至 Azure 中的 HPC Pack 叢集
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
@@ -26,7 +25,8 @@ ms.service="virtual-machines"
 在雲端服務中執行) 視做為計算資源
 現有 HPC Pack 前端節點在 Azure 中。 這可讓您相應增加 Azure 中的 HPC 叢集的運算能力，且無需維護一組預先設定的運算節點 VM。
 
-![高載節點][burst]
+![高載節點][高載]
+
 >[AZURE.TIP] 如果您使用 [HPC Pack IaaS 部署指令碼](virtual-machines-hpcpack-cluster-powershell-script.md) 在 Azure 中，建立叢集
 您可以在您的自動化包含 Azure 高載節點
 安全性旋鈕。
@@ -36,23 +36,23 @@ ms.service="virtual-machines"
 相同 「 高載至 Azure 」 以將雲端運算的容量
 內部部署 HPC Pack 叢集。 如需教學課程，請參閱 [設定混合式運算叢集使用 Microsoft HPC Pack](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)。 如需
 請參閱詳細的指引和實際執行部署的考量
-[高載至使用 Microsoft HPC Azure
-組件] (https://technet.microsoft.com/library/gg481749.aspx)。
+[使用 Microsoft HPC 擴充至 Azure
+組件](https://technet.microsoft.com/library/gg481749.aspx)。
 
 如果您想要使用 A8 或 A9 計算密集型執行個體大小，請參閱
-[關於 A8、 A9、 A10 和 A11 大量計算執行個體](virtual-machines-a8-a9-a10-a11-specs.md)。
+[關於 A8、 A9、 A10 和 A11 大量運算執行個體](virtual-machines-a8-a9-a10-a11-specs.md)。
 
-## 必要條件
+## 先決條件
 
-* **Azure VM 中部署 HPC Pack 前端節點** -請參閱 [將部署 HPC
-組件中的 Azure VM](virtual-machines-hpcpack-cluster-headnode.md) 的前端節點
+* **在 Azure VM 中部署 HPC Pack 前端節點** -請參閱 [部署 HPC
+在 Azure 的 VM 組件的前端節點](virtual-machines-hpcpack-cluster-headnode.md) 的
 在傳統 (服務管理) 部署模型中建立叢集前端節點的步驟。
 
 * **Azure 訂用帳戶** -若要加入 Azure 節點，您可以選擇相同
 用來部署前端節點 VM，或不同的訂閱
 訂用帳戶 (或訂閱)。
 
-* **核心配額** - 您可能需要增加核心的配額，特別是當您選擇部署數個具有多核心大小的 Azure 節點時。 若要增加配額， [開啟線上客戶支援要求](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) 不另外加收費用。
+* **核心配額** -您可能需要增加核心配額，特別是如果您選擇部署多核心大小的數個 Azure 節點。 若要增加配額， [開啟線上客戶支援要求](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) 不另外加收費用。
 
 ## 步驟 1：建立雲端服務和儲存體帳戶以新增 Azure 節點。
 
@@ -62,12 +62,12 @@ ms.service="virtual-machines"
 * 新的 Azure 雲端服務
 * 新的 Azure 儲存體帳戶
 
->[AZURE.NOTE] 請勿重複使用您的訂用帳戶中現有的雲端服務。 也不要
+>[AZURE.NOTE] 不要重複使用現有的雲端服務訂閱中。 也不要
 將不同的自訂雲端服務封裝部署到此雲端服務。
 HPC Pack 會自動部署雲端服務封裝時您
 啟動 (佈建) Azure 節點。
 
-**考量**
+**注意事項**
 
 * 您打算建立的每個 Azure 節點範本設定個別的雲端服務。 不過，您可以將同一個儲存體帳戶用於多個節點範本。
 
@@ -82,18 +82,20 @@ HPC Pack 會自動部署雲端服務封裝時您
 在前端節點和對應的憑證上傳的憑證
  要用於部署的 Azure 訂閱。
 
-對於此案例中，您可以選擇 * * Default HPC Azure Management
-憑證 * * HPC Pack 安裝及自動設定
+對於此案例中，您可以選擇 **Default HPC Azure Management
+憑證** 該 HPC Pack 安裝和自動設定
 前端節點。 此憑證可用於測試用途，
 概念證明的部署。 若要使用此憑證，只需上傳
 檔案 C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer 從前端節點 VM 以
 。
 
 若要設定管理憑證的其他選項，請參閱
-[案例，以設定 Azure 管理憑證的 Azure 高載
-部署] (http://technet.microsoft.com/library/gg481759.aspx)。
+[若要設定 Azure 管理憑證的 Azure 高載案例
+部署](http://technet.microsoft.com/library/gg481759.aspx)。
 
 ## 步驟 3：將 Azure 節點部署至叢集
+
+
 
 加入及啟動步驟
 在此案例中的 azure 節點通常是指那些用於相同
@@ -108,9 +110,9 @@ HPC Pack 會自動部署雲端服務封裝時您
 
 節點新增並啟動之後，即可供您用來執行叢集工作。
 
-如果您在部署 Azure 節點時遇到問題，請參閱 [疑難排解]
+如果您在部署 Azure 節點時遇到問題，請參閱 [疑難排解
 使用 Microsoft HPC Azure 節點的部署
-組件] (http://technet.microsoft.com/library/jj159097 (v=ws.10).aspx)。
+組件](http://technet.microsoft.com/library/jj159097(v=ws.10).aspx)。
 
 ## 後續步驟
 
@@ -118,7 +120,6 @@ HPC Pack 會自動部署雲端服務封裝時您
 自動成長或壓縮根據 Azure 運算資源
 目前的工作負載的作業和工作，在叢集上，請參閱 [漲大及縮小 Azure 計算資源中的 HPC Pack 叢集](virtual-machines-hpcpack-cluster-node-autogrowshrink.md)。
 
-
-
-[burst]: ./media/virtual-machines-hpcpack-cluster-node-burst/burst.png 
+<!--Image references-->
+[burst]: ./media/virtual-machines-hpcpack-cluster-node-burst/burst.png
 

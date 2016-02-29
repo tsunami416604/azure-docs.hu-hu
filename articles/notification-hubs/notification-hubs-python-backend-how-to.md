@@ -16,27 +16,26 @@
     ms.date="11/01/2015" 
     ms.author="yuaxu"/>
 
-
 # 如何透過 Python 使用通知中樞
-
 [AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
-
+        
 您可以從 Java/PHP/Python/Ruby 後端使用通知中樞 REST 介面，如 MSDN 主題中所述來存取所有通知中樞功能 [通知中心 REST Api](http://msdn.microsoft.com/library/dn223264.aspx)。
-> [AZURE.NOTE] 這是在 Python 實作通知傳送的範例參考實作，並非正式支援的通知中樞 Python SDK。
+
+> [AZURE.NOTE] 它是在 Python 實作通知傳送的範例參考實作，而且不是正式支援的通知中樞 Python SDK。
 
 > [AZURE.NOTE] 這個範例是使用 Python 3.4 撰寫的。
 
 在本主題中，我們將說明如何：
 
 * 在 Python 中建置通知中樞功能的 REST 用戶端。
-* 使用 Python 介面傳送通知到通知中樞 REST API。
-* 取得 HTTP REST 要求/回應的傾印以用於偵錯/教學用途。
+* 使用 Python 介面傳送通知到通知中樞 REST API。 
+* 取得 HTTP REST 要求/回應的傾印以用於偵錯/教學用途。 
 
 您可以依照 [開始使用教學課程](notification-hubs-windows-store-dotnet-get-started.md) 選擇行動平台，來實作 Python 的後端部分。
+
 > [AZURE.NOTE] 此範例的範圍僅限於傳送通知，不會執行任何註冊管理。
 
 ## 用戶端介面
-
 主要用戶端介面可提供的相同方法，可用於 [.NET 通知中心 SDK](http://msdn.microsoft.com/library/jj933431.aspx)。 這可讓您直接轉換目前此網站上和網際網路社群所貢獻的所有教學課程和範例。
 
 您可以找到所有可用的 [Python REST 包裝函式範例] 中的程式碼。
@@ -45,14 +44,13 @@
 
     isDebug = True
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
-
+    
 傳送 Windows 快顯通知：
-
+    
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
-
+    
 ## 實作
-
 如果您還沒有這麼做，請遵循我們 [開始使用教學課程] 最多，您必須實作後端的最後一節。
 
 所有實作完整 REST 包裝函式的詳細資料位於 [MSDN](http://msdn.microsoft.com/library/dn530746.aspx)。 在本節中，我們將針對存取通知中樞 REST 端點和傳送通知所需之主要步驟的 Python 實作進行說明：
@@ -86,20 +84,20 @@
                 if part.startswith('SharedAccessKey'):
                     self.SasKeyValue = part[16:]
 
-### 建立安全性權杖
 
+### 建立安全性權杖
 建立安全性權杖的詳細資料可用 [這裡](http://msdn.microsoft.com/library/dn495627.aspx)。
-必須將下列方法新增至 **NotificationHub** 類別，才能依據目前要求的 URI 和從連接字串擷取的認證建立權杖。
+下列方法加入至將 **NotificationHub** 類別來建立權杖，根據目前的要求及擷取連接字串中的認證的 URI。
 
     @staticmethod
     def get_expiry():
         # By default returns an expiration of 5 minutes (=300 seconds) from now
         return int(round(time.time() + 300))
-    
+
     @staticmethod
     def encode_base64(data):
         return base64.b64encode(data)
-    
+
     def sign_string(self, to_sign):
         key = self.SasKeyValue.encode('utf-8')
         to_sign = to_sign.encode('utf-8')
@@ -107,7 +105,7 @@
         digest = signed_hmac_sha256.digest()
         encoded_digest = self.encode_base64(digest)
         return encoded_digest
-    
+
     def generate_sas_token(self):
         target_uri = self.Endpoint + self.HubName
         my_uri = urllib.parse.quote(target_uri, '').lower()
@@ -119,7 +117,6 @@
         return sas_token
 
 ### 使用 HTTP REST API 傳送通知
-
 首先，讓我們先定義呈現通知的類別。
 
     class Notification:
@@ -143,12 +140,12 @@
 
 請參閱 [通知中心 REST Api 文件](http://msdn.microsoft.com/library/dn495827.aspx) 及特定通知平台的格式，以取得所有可用的選項。
 
-有了此類別之後，我們現在可以在 **NotificationHub** 類別內寫入傳送通知方法。
+現在有了此類別中，我們可以寫入傳送通知方法內的 **NotificationHub** 類別。
 
     def make_http_request(self, url, payload, headers):
         parsed_url = urllib.parse.urlparse(url)
         connection = http.client.HTTPSConnection(parsed_url.hostname, parsed_url.port)
-    
+
         if self.Debug > 0:
             connection.set_debuglevel(self.Debug)
             # adding this querystring parameter gets detailed information about the PNS send notification outcome
@@ -157,10 +154,10 @@
             print("URI: " + url)
             print("Headers: " + json.dumps(headers, sort_keys=True, indent=4, separators=(' ', ': ')))
             print("--- END REQUEST ---\n")
-    
+
         connection.request('POST', url, payload, headers)
         response = connection.getresponse()
-    
+
         if self.Debug > 0:
             # print out detailed response information for debugging purpose
             print("\n\n--- RESPONSE ---")
@@ -168,85 +165,85 @@
             print(response.msg)
             print(response.read())
             print("--- END RESPONSE ---")
-    
+
         elif response.status != 201:
             # Successful outcome of send message is HTTP 201 - Created
             raise Exception(
                 "Error sending notification. Received HTTP code " + str(response.status) + " " + response.reason)
-    
+
         connection.close()
-    
+
     def send_notification(self, notification, tag_or_tag_expression=None):
         url = self.Endpoint + self.HubName + '/messages' + self.API_VERSION
-    
+
         json_platforms = ['template', 'apple', 'gcm', 'adm', 'baidu']
-    
+
         if any(x in notification.format for x in json_platforms):
             content_type = "application/json"
             payload_to_send = json.dumps(notification.payload)
         else:
             content_type = "application/xml"
             payload_to_send = notification.payload
-    
+
         headers = {
             'Content-type': content_type,
             'Authorization': self.generate_sas_token(),
             'ServiceBusNotification-Format': notification.format
         }
-    
+
         if isinstance(tag_or_tag_expression, set):
             tag_list = ' || '.join(tag_or_tag_expression)
         else:
             tag_list = tag_or_tag_expression
-    
+
         # add the tags/tag expressions to the headers collection
         if tag_list != "":
             headers.update({'ServiceBusNotification-Tags': tag_list})
-    
+
         # add any custom headers to the headers collection that the user may have added
         if notification.headers is not None:
             headers.update(notification.headers)
-    
+
         self.make_http_request(url, payload_to_send, headers)
-    
+
     def send_apple_notification(self, payload, tags=""):
         nh = Notification("apple", payload)
         self.send_notification(nh, tags)
-    
+
     def send_gcm_notification(self, payload, tags=""):
         nh = Notification("gcm", payload)
         self.send_notification(nh, tags)
-    
+
     def send_adm_notification(self, payload, tags=""):
         nh = Notification("adm", payload)
         self.send_notification(nh, tags)
-    
+
     def send_baidu_notification(self, payload, tags=""):
         nh = Notification("baidu", payload)
         self.send_notification(nh, tags)
-    
+
     def send_mpns_notification(self, payload, tags=""):
         nh = Notification("windowsphone", payload)
-    
+
         if "<wp:Toast>" in payload:
             nh.headers = {'X-WindowsPhone-Target': 'toast', 'X-NotificationClass': '2'}
         elif "<wp:Tile>" in payload:
             nh.headers = {'X-WindowsPhone-Target': 'tile', 'X-NotificationClass': '1'}
-    
+
         self.send_notification(nh, tags)
-    
+
     def send_windows_notification(self, payload, tags=""):
         nh = Notification("windows", payload)
-    
+
         if "<toast>" in payload:
             nh.headers = {'X-WNS-Type': 'wns/toast'}
         elif "<tile>" in payload:
             nh.headers = {'X-WNS-Type': 'wns/tile'}
         elif "<badge>" in payload:
             nh.headers = {'X-WNS-Type': 'wns/badge'}
-    
+
         self.send_notification(nh, tags)
-    
+
     def send_template_notification(self, properties, tags=""):
         nh = Notification("template", properties)
         self.send_notification(nh, tags)
@@ -254,7 +251,6 @@
 上述方法會傳送 HTTP POST 要求至通知中心的 /messages 端點，並使用正確的主體和標頭傳送通知。
 
 ### 使用偵錯屬性啟用詳細的記錄
-
 在初始化通知中樞時啟用偵錯屬性會寫出關於 HTTP 要求和回應傾印的詳細記錄資訊，以及詳細的通知訊息傳送結果。 
 我們近期新增了稱為 [通知中樞 TestSend 屬性](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)
 它會傳回關於通知傳送結果的詳細資訊。 
@@ -262,17 +258,16 @@
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-通知中樞傳送要求 HTTP URL 會附加 "test" 查詢字串做為結果。
+通知中樞傳送要求 HTTP URL 會附加 "test" 查詢字串做為結果。 
 
-## <a name="complete-tutorial"></a>完成本教學課程
-
+##<a name="complete-tutorial"></a>完成教學課程
 現在您可以透過從 Python 後端傳送通知，來完成開始使用教學課程。
 
 初始化您的通知中心用戶端 (替代為 instructed [開始使用教學課程] 中連接字串和中心名稱):
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
-然後根據您的目標行動平台新增傳送程式碼。 此範例也會新增更高層級的方法以依據平台傳送通知，例如，Windows 為 send_windows_notification；Apple 為 send_apple_notification 等等。
+然後根據您的目標行動平台新增傳送程式碼。 此範例也會新增更高層級的方法以依據平台傳送通知，例如，Windows 為 send_windows_notification；Apple 為 send_apple_notification 等等。 
 
 ### Windows 市集和 Windows Phone 8.1 (非 Silverlight)
 
@@ -294,7 +289,6 @@
     hub.send_apple_notification(alert_payload)
 
 ### Android
-
     gcm_payload = {
         'data':
             {
@@ -304,7 +298,6 @@
     hub.send_gcm_notification(gcm_payload)
 
 ### Kindle Fire
-
     adm_payload = {
         'data':
             {
@@ -314,7 +307,6 @@
     hub.send_adm_notification(adm_payload)
 
 ### Baidu
-
     baidu_payload = {
         'data':
             {
@@ -328,24 +320,22 @@
 ## 範例：
 
 ### 啟用偵錯屬性
-
 若在初始化 NotificationHub 時啟用偵錯旗標，您會看到詳細的 HTTP 要求和回應傾印，還有類似以下的 NotificationOutcome，您可從中了解在要求中傳送的 HTTP 標頭，以及從通知中樞收到的 HTTP 回應：
     ![][1]
 
-您會看到詳細的通知中樞結果，例如
+您會看到詳細的通知中樞結果，例如 
 
-- 訊息成功傳送至推播通知服務的時間。
-
+- 訊息成功傳送至推播通知服務的時間。 
+    
         <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
 
 - 如果找不到任何推播通知的目標，您可能會在回應中看到下列內容 (表示找不到可傳遞通知的註冊，可能是因為註冊有一些不相符的標記)
 
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
+### 廣播快顯通知給 Windows 
 
-### 廣播快顯通知給 Windows
-
-請注意當您傳送廣播快顯通知給 Windows 用戶端時所送出的標頭。
+請注意當您傳送廣播快顯通知給 Windows 用戶端時所送出的標頭。 
 
     hub.send_windows_notification(wns_payload)
 
@@ -361,8 +351,8 @@
 
 ### 傳送指定多個標記的通知
 
-請注意傳送多個標記時的 Tags HTTP 標頭如何變更
-
+請注意傳送多個標記時的 Tags HTTP 標頭如何變更 
+    
     tags = {'sports', 'politics'}
     hub.send_windows_notification(wns_payload, tags)
 
@@ -376,9 +366,9 @@
 
         var template =
                         @"<toast><visual><binding template=""ToastText01""><text id=""1"">$(greeting_en)</text></binding></visual></toast>";
-
+            
 **伺服器端 - 傳送承載**
-
+        
         template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
         hub.send_template_notification(template_payload)
 
@@ -386,23 +376,23 @@
 
 
 ## 後續步驟
-
 在本主題中，我們會說明如何為通知中樞建立簡單的 Python REST 用戶端。 您可以在這裡執行下列動作：
 
 * 下載完整 [Python REST 包裝函式範例]，其中包含上述所有程式碼。
 * 繼續了解 [即時新聞教學課程] 中的通知中心標記功能
 * 繼續了解通知中樞範本功能，在 [當地語系化新聞教學課程]
 
+<!-- URLs -->
+[Python REST wrapper sample]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
+[Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Breaking News tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[Localizing News tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
-
-
-[python rest wrapper sample]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python 
-[get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ 
-[breaking news tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/ 
-[localizing news tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/ 
-[1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png 
-[2]: ./media/notification-hubs-python-backend-how-to/BroadcastScenario.png 
-[3]: ./media/notification-hubs-python-backend-how-to/SendWithOneTag.png 
-[4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png 
-[5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png 
+<!-- Images. -->
+[1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png
+[2]: ./media/notification-hubs-python-backend-how-to/BroadcastScenario.png
+[3]: ./media/notification-hubs-python-backend-how-to/SendWithOneTag.png
+[4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png
+[5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
+ 
 

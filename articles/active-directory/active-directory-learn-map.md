@@ -16,11 +16,9 @@
     ms.date="09/21/2015"
     ms.author="curtand"/>
 
-
 # 深入了解 Azure AD
 
 ### 本主題的其他文章
-
 [什麼是 Azure AD?](active-directory-whatis.md)<br>
 [如何運作?](active-directory-works.md)<br>
 [開始使用](active-directory-get-started.md)<br>
@@ -40,10 +38,6 @@
 
 ## 其他資源
 
-* [以組織身分登入 azure](sign-up-organization.md)
+* [以組織方式註冊 Azure](sign-up-organization.md)
 * [Azure 身分識別](fundamentals-identity.md)
-
-
-
-
 

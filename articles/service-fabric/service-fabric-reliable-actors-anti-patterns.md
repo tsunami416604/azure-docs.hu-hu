@@ -16,7 +16,6 @@
    ms.date="08/11/2015"
    ms.author="vturecek"/>
 
-
 # Reliable Actor 設計模式：某些相反模式
 
 我們為正在學習 Service Fabric Reliable Actor 的客戶找出下列潛在問題：
@@ -30,8 +29,4 @@
 * 讓單一動作項目成為瓶頸。 當有數百萬個動作項目注入另一個動作項目的單一執行個體時，很容易被困住。 使用我們所示範的彙總方法 [分散式的運算設計模式](service-fabric-reliable-actors-pattern-distributed-computation.md)。
 
 * 盲目地對應實體模型。 這適用於來自相關體系的開發人員，在該體系會使用實體及其關係建立問題的模型。 雖然此方法對於了解主體網域仍然很有幫助，但應搭配以服務為導向的思考模式與行為。
-
-
-
-
 

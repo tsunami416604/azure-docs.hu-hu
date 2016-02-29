@@ -17,22 +17,21 @@
     ms.tgt_pltfrm="NA"/>
 
 
-
 # 使用 Transact-SQL 建立 Azure SQL Database 的複本
 
 **單一資料庫**
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-copy.md)
+- [Azure 入口網站](sql-database-copy.md)
 - [PowerShell](sql-database-copy-powershell.md)
 - [SQL](sql-database-copy-transact-sql.md)
 
 
 
-
 下列步驟說明如何利用 Transact-SQL 複製 SQL Database。 資料庫複製作業會將 SQL 資料庫複製到新的資料庫使用 [CREATE DATABASE]() 陳述式。 副本是您在同一部伺服器或不同伺服器上建立的資料庫快照備份。
 
-> [AZURE.NOTE] Azure SQL Database 會自動為每個使用者資料庫建立並維護可供還原的備份。 如需詳細資訊，請參閱 [業務持續性概觀](sql-database-business-continuity.md)。
+
+> [AZURE.NOTE] Azure SQL Database 會自動建立，並維護每個使用者資料庫，您可以還原的備份。 如需詳細資訊，請參閱 [業務持續性概觀](sql-database-business-continuity.md)。
 
 
 複製程序完成時，新的資料庫是功能完整的資料庫，獨立於來源資料庫。 複製完成時，新資料庫與來源資料庫在交易上一致。 資料庫副本與來源資料庫的服務層和效能層級 (定價層) 相同。 複製完成之後，副本會變成功能完整的獨立資料庫。 可以個別管理登入、使用者和權限。
@@ -43,9 +42,9 @@
 
 若要完成這篇文章中的步驟，您需要下列項目︰
 
-- Azure 訂用帳戶。 如果需要 Azure 訂用帳戶，可以先按一下此頁面頂端的 [免費試用]****，然後再回來完成這篇文章。
+- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
 - Azure SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟: [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms174173.aspx)。 如果您沒有 SSMS，或如果無法使用，這篇文章中所述的功能 [下載最新版](https://msdn.microsoft.com/library/mt238290.aspx)。
+- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms174173.aspx)。 如果您沒有 SSMS，或如果無法使用，這篇文章中所述的功能 [下載最新版本](https://msdn.microsoft.com/library/mt238290.aspx)。
 
 
 
@@ -77,6 +76,7 @@
     -- Execute on the master database of the target server (server2)
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database1_copy AS COPY OF server1.Database1;
+    
 
 ## 監視複製作業的進度
 
@@ -90,6 +90,7 @@
 
 ## 後續步驟
 
+
 - 如果您決定取消複製正在進行時，執行 [卸除資料庫](https://msdn.microsoft.com/library/ms178613.aspx) 新的資料庫上的陳述式。 或者，在來源資料庫上執行 DROP DATABASE 陳述式也會取消複製程序。
 - 線上目的地伺服器上新的資料庫之後，請使用 [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) 陳述式，以從新的資料庫登入目的地伺服器上的使用者重新對應。 新資料庫中的所有使用者都保有其在來源資料庫中原有的權限。 起始資料庫複製的使用者會變成新資料庫的資料庫擁有者，並且被指派新的安全性識別碼 (SID)。 在複製成功之後，重新對應其他使用者之前，只有起始複製的登入 (也就是資料庫擁有者 (DBO)) 可以登入新的資料庫。
 
@@ -98,11 +99,7 @@
 
 ## 其他資源
 
-- [業務持續性概觀](sql-database-business-continuity.md)
-- [嚴重損壞修復演練](sql-database-disaster-recovery-drills.md)
-- [SQL 資料庫的文件](https://azure.microsoft.com/documentation/services/sql-database/)
-
-
-
-
+- [業務續航力概觀](sql-database-business-continuity.md)
+- [災害復原詳細資訊](sql-database-disaster-recovery-drills.md)
+- [SQL Database 文件](https://azure.microsoft.com/documentation/services/sql-database/)
 

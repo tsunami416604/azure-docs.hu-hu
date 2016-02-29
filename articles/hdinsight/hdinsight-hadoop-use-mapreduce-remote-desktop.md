@@ -17,14 +17,13 @@
    ms.date="12/04/2015"
    ms.author="larryfr"/>
 
-
 # 利用遠端桌面在 HDInsight 上的 Hadoop 中使用 MapReduce
 
 [AZURE.INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
 在本文中，您將學習如何使用遠端桌面連線至 HDInsight 叢集上的 Hadoop，然後使用 Hadoop 命令執行 MapReduce 工作。
 
-## <a id="prereq"></a>必要條件
+##<a id="prereq"></a>必要條件
 
 若要完成本文中的步驟，您需要下列項目：
 
@@ -32,22 +31,24 @@
 
 * 執行 Windows 10、Windows 8 或 Windows 7 的用戶端電腦
 
-## <a id="connect"></a>使用遠端桌面連線
+##<a id="connect"></a>使用遠端桌面連線
 
-啟用遠端桌面的 HDInsight 叢集，然後進行連線的指示，在 [連線到 HDInsight 叢集使用 RDP](hdinsight-administer-use-management-portal.md#rdp)。
+依照[使用 RDP 連線到 HDInsight 叢集](hdinsight-administer-use-management-portal.md#rdp)中的指示，為 HDInsight 叢集啟用遠端桌面，然後進行連線。
 
-## <a id="hadoop"></a>使用 Hadoop 命令
+##<a id="hadoop"></a>使用 Hadoop 命令
 
 當您連線到 HDInsight 叢集的桌面時，請使用下列步驟，利用 Hadoop 命令來執行 MapReduce 工作：
 
-1. 從 HDInsight 桌面，啟動 **Hadoop 命令列**。 這會開啟新的命令提示字元中 **c:\apps\dist\hadoop-<version < 版本號碼 >** 目錄。
-    > [AZURE.NOTE] 版本號碼會隨著 Hadoop 更新而變更。 **HADOOP_HOME** 環境變數可用來尋找路徑。 例如， `cd %hadoop_home%` 會為 Hadoop 目錄，將目錄變更而不需要知道版本號碼。
+1. 從 HDInsight 桌面，啟動 **Hadoop 命令列**。 這會開啟新的命令提示字元中 **c:\apps\dist\hadoop-<version & l t; 版本號碼 >** 目錄。
 
-2. 若要使用 **Hadoop** 命令執行範例 MapReduce 工作，請使用下列命令：
+    > [AZURE.NOTE] 版本號碼會隨著 Hadoop 更新而變更。  **HADOOP_HOME** 環境變數可以用來尋找路徑。 例如，`cd %HADOOP_HOME%` 會將目錄變更為 Hadoop 目錄，而您並不需要知道版本號碼。
+
+2. 若要使用 **Hadoop** 命令執行範例 MapReduce 工作，請使用下列命令:
 
         hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    這樣會啟動 **wordcount** 類別 (內含於目前目錄的 **hadoop-mapreduce-examples.jar** 檔案中)。 做為輸入，它會使用 **wasb://example/data/gutenberg/davinci.txt** 文件，輸出則儲存在: **wasb: / 範例/data/WordCountOutput**。
+    這會啟動 **wordcount** 類別，包含在 **mapreduce-hadoop-examples.jar** 目前目錄中的檔案。 做為輸入，它會使用 **wasb://example/data/gutenberg/davinci.txt** 文件，輸出則儲存在: **wasb: / 範例/data/WordCountOutput**。
+
     > [AZURE.NOTE] 如需有關此 MapReduce 工作和範例資料的詳細資訊，請參閱 <a href="hdinsight-use-mapreduce.md">HDInsight Hadoop 中使用 MapReduce</a>。
 
 2. 工作會在處理時發出詳細資料，並於工作完成時傳回與下列類似的資訊：
@@ -61,8 +62,9 @@
 
         hadoop fs -ls wasb:///example/data/WordCountOutput
 
-    這應該會顯示兩個檔案， **SUCCESS** 和 **一部分-r-00000**。 **part-r-00000** 檔案包含這項工作的輸出。
-    > [AZURE.NOTE] 某些 MapReduce 工作可能會將結果分成多個 **part-r-#####** 檔案。 若是如此，請使用 ##### 尾碼指出檔案的順序。
+    這應該會顯示兩個檔案， **SUCCESS** 和 **一部分-r-00000**。  **一部分-r-00000** 檔案包含這項工作的輸出。
+
+    > [AZURE.NOTE] 某些 MapReduce 工作可能會分成多個結果 **一部分-r-# # #** 檔案。 若是如此，請使用 ##### 尾碼指出檔案的順序。
 
 4. 若要檢視輸出，請使用下列命令：
 
@@ -78,12 +80,11 @@
         wretched        6
         wriggling       1
 
-
-## <a id="summary"></a>摘要
+##<a id="summary"></a>摘要
 
 如您所見，Hadoop 命令提供簡單的方法，在 HDInsight 叢集上執行 MapReduce 工作，然後檢視工作輸出。
 
-## <a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>後續步驟
 
 如需 HDInsight 中 MapReduce 工作的一般資訊：
 
@@ -91,11 +92,7 @@
 
 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 
-* [使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
+* [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 Pig 與 HDInsight 上的 Hadoop](hdinsight-use-pig.md)
-
-
-
-
 

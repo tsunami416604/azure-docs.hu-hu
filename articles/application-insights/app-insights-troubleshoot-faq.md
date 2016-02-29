@@ -1,6 +1,6 @@
 <properties 
     pageTitle="Application Insights 的疑難排解與問題" 
-    description="Visual Studio 的 Application Insights 哪個部分不清楚或無法運作嗎？試試這裡。" 
+    description="Visual Studio 的 Application Insights 哪個部分不清楚或無法運作嗎？ 試試這裡。" 
     services="application-insights" 
     documentationCenter=".net"
     authors="alancameronwills" 
@@ -14,17 +14,16 @@
     ms.topic="article" 
     ms.date="11/25/2015" 
     ms.author="awills"/>
-
-
+ 
 # 疑難排解與問題：ASP.NET 的 Application Insights
 
 ## 我是否可以使用 Application Insights 搭配...？
 
-[請參閱平台 ][platforms]
+[請參閱「平台」][platforms]
 
 ## 它是免費的嗎？
 
-* 是，如果您選擇免費 [定價層](app-insights-pricing.md)。 您會獲得大部分的功能和大量資料配額。
+* 是，如果您選擇免費 [定價層](app-insights-pricing.md)。 您會獲得大部分的功能和大量資料配額。 
 * 您必須提供信用卡資料以向 Microsoft Azure 註冊，但我們不會收取任何費用，除非您使用其他付費 Azure 服務，或明確地升級至付費層。
 * 如果您的應用程式傳送的資料超過免費層的每月配額，它會停止記錄。 如果發生這種情況，您可以選擇開始付費，或等到月底重設配額。
 * 基本的使用情況和工作階段資料不受配額限制。
@@ -39,13 +38,13 @@
 
 ## 新增 SDK
 
-#### <a name="q01"></a>我沒有看到任何選項可將 Application Insights 加入至我的專案在 Visual Studio 中
+#### <a name="q01"></a>我在 Visual Studio 中沒有看到任何選項可將 Application Insights 加入至我的專案
 
 + 請確定您有 [Visual Studio 2013 Update 3 或更新版本](http://go.microsoft.com/fwlink/?LinkId=397827)。 這會隨 Application Insights 工具預先安裝。
-+ 雖然這些工具不支援所有類型的應用程式，您仍然可將 Application Insights SDK 手動加入至您的專案。 使用 [此程序 ][windows]。
++ 雖然這些工具不支援所有類型的應用程式，您仍然可將 Application Insights SDK 手動加入至您的專案。 使用 [此程序][windows]。 
 
 
-#### <a name="q02"></a>建立新的 web 專案，但加入 Application Insights 失敗。
+#### <a name="q02"></a>已建立新的 Web 專案，但加入 Application Insights 失敗。
 
 這可能發生在：
 
@@ -57,33 +56,34 @@
 
 + 請檢查您為正確的 Azure 帳戶提供登入認證。 在部分舊版工具中，Microsoft Azure 認證 (在 [新增專案] 對話方塊中) 與 Visual Studio 右上方的認證可能不同。
 + 在瀏覽器中檢查您是否可以存取 [Azure 入口網站](https://portal.azure.com)。 開啟 [設定] 並查看是否有任何限制。
-+ [將 Application Insights 加入至現有的專案 ][start]: 在 [方案總管] 中以滑鼠右鍵按一下您的專案，並選擇 [加入 Application Insights 」。
-+ 如果仍然無法運作，請遵循 [手動程序](app-insights-start-monitoring-app-health-usage.md) 入口網站中加入資源，然後將 SDK 新增至您的專案。
++ [將 Application Insights 加入至現有的專案][start]: 在 [方案總管] 中以滑鼠右鍵按一下您的專案，並選擇 [加入 Application Insights 」。
++ 如果仍然無法運作，請遵循 [手動程序](app-insights-start-monitoring-app-health-usage.md) 入口網站中加入資源，然後將 SDK 新增至您的專案。 
 
-#### <a name="emptykey"></a>我收到 「 檢測金鑰不能是空白 」 錯誤
+#### <a name="emptykey"></a>我收到「檢測機碼不能是空白」的錯誤
 
 可能是您在安裝 Application Insights 或記錄配接器時發生問題。
 
 在 [方案總管] 中，以滑鼠右鍵按一下 `ApplicationInsights.config` 選擇 **Update Application Insights**。 將會出現對話方塊邀請您登入 Azure，並建立 Application Insights 資源或重複使用現有的資源。
 
 
-#### <a name="q14"></a>Application Insights 修改什麼我的專案中?
+#### <a name="q14"></a>Application Insights 在我的專案中修改什麼？
 
 詳細資料視專案類型而定。 若是 Web 應用程式：
 
 
 + 在您的專案中加入這些檔案：
 
- + ApplicationInsights.config。
+ + ApplicationInsights.config。 
  + ai.js
+
 
 + 安裝這些 NuGet 套件：
 
- -  *Application Insights API* - 核心 API
+ -  *Application Insights API* -核心 API
 
- -  *Application Insights API for Web Applications* - 用來從伺服器傳送遙測
+ -  *Web 應用程式的 application Insights API* -用來從伺服器傳送遙測
 
- -  *Application Insights API for JavaScript Applications* - 用來從用戶端傳送遙測
+ -  *Application Insights API for JavaScript Applications* -用來從用戶端傳送遙測
 
     套件包含這些組件：
 
@@ -97,44 +97,44 @@
 
  - packages.config
 
-+ (新專案: 如果您 [將 Application Insights 加入至現有的專案 ][start], ，您必須手動執行這項操作。) 將程式碼片段插入至用戶端和伺服器程式碼中，以使用 Application Insights 資源識別碼將這些片段初始化。 例如，在 MVC 應用程式中，程式碼會插入至主版頁面 Views/Shared/_Layout.cshtml
++ (新專案: 如果您 [將 Application Insights 加入至現有的專案][start], ，您必須手動執行這項操作。)將程式碼片段插入至用戶端和伺服器程式碼中，以使用 Application Insights 資源識別碼將這些片段初始化。 例如，在 MVC 應用程式中，程式碼會插入至主版頁面 Views/Shared/_Layout.cshtml
 
-#### <a name="NuGetBuild"></a> 我收到 「 NuGet 封裝遺漏 」 組建伺服器，但均一切組建在我的開發電腦上的 [確定]
+####<a name="NuGetBuild"></a> 我收到 「 NuGet 封裝遺漏 」 組建伺服器，但均一切組建在我的開發電腦上的 [確定]
 
 請參閱 [NuGet 封裝還原](http://docs.nuget.org/Consume/Package-Restore)
 和 [自動套件還原](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)。
 
-#### <a name="FailUpdate"></a> 時，我收到 「 專案參考我的電腦所缺少的 NuGet 封裝 」 嘗試建置之後更新至 0.17 或以上版本的 NuGet 封裝。
+####<a name="FailUpdate"></a> 時，我收到 「 專案參考我的電腦所缺少的 NuGet 封裝 」 嘗試建置之後更新至 0.17 或以上版本的 NuGet 封裝。
 
 更新至 0.17 或以上版本的 NuGet 封裝後，如果顯示上述錯誤，您需要編輯 proj 檔案並移除剩餘的 BCL 目標。
 
 作法：
 
 1. 在 [方案總管] 中以滑鼠右鍵按一下專案，然後選擇 [上傳專案]。
-2. 再次以滑鼠右鍵按一下專案，並選擇 [*編輯 yourProject.csproj*]
-3. 請移至專案檔案最下方，並移除類似的 BCL 目標:
+2. 以滑鼠右鍵按一下專案上一次，並選擇 [編輯 *yourProject.csproj* 
+3. 請移至專案檔案最下方，並移除類似的 BCL 目標: 
     ```
     <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-
+      
       <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-
+      
         <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-
+        
         <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-
+        
       </Target>
-    ```
+      ```
 4. 儲存檔案。
-5. 以滑鼠右鍵按一下專案，然後選擇 [*重新載入 yourProject.csproj*]
+5. 以滑鼠右鍵按一下專案，然後選擇 [重新載入 *yourProject.csproj*
 
 ## 如何從舊版 SDK 升級？
 
-請參閱 [版本資訊](app-insights-release-notes.md) 您的應用程式類型所適用的 sdk。
+請參閱 [版本資訊](app-insights-release-notes.md) 您的應用程式類型所適用的 sdk。 
 
 
 ## 沒有資料
 
-#### <a name="q03"></a>我已成功加入 Application Insights 並執行我的應用程式，但永遠不會看到入口網站中的資料。
+#### <a name="q03"></a>我已成功加入 Application Insights 並執行我的應用程式，但在入口網站中從未看到資料。
 
 + 在 [概觀] 頁面中，按一下 [搜尋] 磚以開啟 [診斷搜尋]。 這裡會先顯示資料。
 + 按一下 [重新整理] 按鈕。 刀鋒視窗會定期自行重新整理，但您也可以手動重新整理。 時間範圍越大，重新整理的間隔就越長。
@@ -152,7 +152,7 @@
 
 #### <a name="q04"></a>看我的網站流量分析下的沒有資料
 
-+ 資料來自網頁中的指令碼。 如果您將 Application Insights 加入至現有的 web 專案， [您必須以手動方式 ][start]。
++ 資料來自網頁中的指令碼。 如果您將 Application Insights 加入至現有的 web 專案， [您必須以手動方式加入指令碼][start]。
 + 確定 Internet Explorer 並非以相容性模式顯示您的網站。
 + 若要確認資料確實傳送至 dc.services.visualstudio.com，請使用瀏覽器的偵錯功能 (部分瀏覽器是使用 F12 鍵，然後選擇 [網路])。
 
@@ -164,10 +164,10 @@
 
 #### 我並沒有看到預期的所有資料
 
-* **取樣**如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 您可以加以停用。 [進一步了解取樣。](app-insights-sampling.md)
+* **取樣。**如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 您可以加以停用。 [進一步了解取樣。](app-insights-sampling.md)
 
 
-#### <a name="q08"></a>可以使用 Application Insights 來監視內部網路 web 伺服器嗎?
+#### <a name="q08"></a>我可以使用 Application Insights 來監視內部網路 Web 伺服器嗎？
 
 是，如果您的伺服器可以傳送資料至公用網際網路，您可以監視健全狀況和使用量。 請開啟防火牆的 TCP 連接埠 80 和 443，以允許連出流量送往 dc.services.visualstudio.com 和 f5.services.visualstudio.com。
 
@@ -175,7 +175,7 @@
 
 #### 我可以監視無法存取公用網際網路的內部網路 Web 伺服器嗎？
 
-您必須安排可以將 https POST 呼叫轉送至 dc.services.visualstudio.com 的 Proxy
+您必須安排可以將 https POST 呼叫轉送至 dc.services.visualstudio.com 的 Proxy 
 
 ## 狀態監視器無法運作
 
@@ -183,50 +183,50 @@
 
 ## 入口網站
 
-#### <a name="q05"></a>我正在查看 Microsoft Azure 預覽開始面板。我如何在 Application Insights 中尋找我的資料？
+#### <a name="q05"></a>我查看 Microsoft Azure 預覽開始面板。 我如何在 Application Insights 中尋找我的資料？
 
 下列其中一種方法：
 
-* 選擇 [瀏覽]、[Application Insights]、您的專案名稱。 如果您沒有任何專案，您需要 [將 Application Insights 加入至 web 專案在 Visual Studio ][start]。
+* 選擇 [瀏覽]、[Application Insights]、您的專案名稱。 如果您沒有任何專案，您需要 [將 Application Insights 加入至 Visual Studio 中的 web 專案][start]。
 
 * 在 Visual Studio [方案總管] 中，以滑鼠右鍵按一下 Web 專案，然後選擇 [Open Application Insights Portal]。
 
 
-#### <a name="update"></a>如何變更我的專案將資料傳送到哪一個 Azure 資源?
+#### <a name="update"></a>如何變更我的專案將資料傳送到哪一個 Azure 資源？
 
 在 [方案總管] 中，以滑鼠右鍵按一下 `ApplicationInsights.config` 選擇 **Update Application Insights**。 您可以將資料傳送至 Azure 中的現有資源或新資源。 更新精靈會變更 ApplicationInsights.config 中的檢測機碼，這決定伺服器 SDK 將您的資料送往何處。 除非您取消選取 [全部更新]，否則它也會變更機碼出現在您網頁中的位置。
 
 
-#### <a name="q06"></a>在 Microsoft Azure 預覽主畫面上，該對應會顯示我的應用程式狀態嗎?
+#### <a name="q06"></a>在 Microsoft Azure 預覽主畫面上，該對應會顯示我的應用程式狀態嗎？
 
-不會！ 它是顯示 Azure 服務的狀態。 若要查看 Web 測試結果，請選擇 [瀏覽] > [Application Insights] > (您的應用程式)，然後查看 Web 測試結果。
+不會！ 它是顯示 Azure 服務的狀態。 若要查看 Web 測試結果，請選擇 [瀏覽] > [Application Insights] > (您的應用程式)，然後查看 Web 測試結果。 
 
 
 
-#### <a name="data"></a>資料保留在入口網站的時間長度是?是否安全？
+#### <a name="data"></a>資料保留在入口網站多久的時間？ 是否安全？
 
-看看 [資料保留和隱私權 ][data]。
+看看 [資料保留和隱私權][data]。
 
 ## 記錄
 
 #### <a name="post"></a>如何查看在診斷搜尋中的 POST 資料?
 
-我們不會自動記錄 POST 資料，但您可以使用 TrackTrace 呼叫：將資料放置到訊息參數中。 相較於字串屬性的限制，此呼叫可容許較長的大小，不過您無法篩選。
+我們不會自動記錄 POST 資料，但您可以使用 TrackTrace 呼叫：將資料放置到訊息參數中。 相較於字串屬性的限制，此呼叫可容許較長的大小，不過您無法篩選。 
 
 ## Security
 
-#### 保留在入口網站上的資料安全嗎？會保留多久？
+#### 保留在入口網站上的資料安全嗎？ 會保留多久？
 
-請參閱 [資料保留和隱私權 ][data]。
+請參閱 [資料保留和隱私權][data]。
 
 
-## <a name="q17"></a> 我已啟用 Application Insights 中的所有項目嗎?
+## <a name="q17"></a> 我已啟用在 Application Insights 中的所有項目嗎？
 
 <table border="1">
 <tr><th>您應該會看到</th><th>如何取得</th><th>取得原因</th></tr>
 <tr><td>可用性圖表</td><td><a href="../app-insights-monitor-web-app-availability/">Web 測試</a></td><td>知道您的 Web 應用程式已啟動</td></tr>
 <tr><td>伺服器應用程式效能：回應時間...
-</td><td><a href="../app-insights-asp-net/">將 Application Insights 加入至專案</a><br />或 <br /><a href="../app-insights-monitor-performance-live-website-now/">在伺服器上安裝 AI 狀態監視器</a> (或撰寫您自己的程式碼 <a href="../app-insights-api-custom-events-metrics/#track-dependency">追蹤相依性</a>)</td><td>偵測效能問題</td></tr>
+</td><td><a href="../app-insights-asp-net/">將 Application Insights 加入至專案</a><br/>或 <br/><a href="../app-insights-monitor-performance-live-website-now/">在伺服器上安裝 AI 狀態監視器</a> (或撰寫您自己的程式碼 <a href="../app-insights-api-custom-events-metrics/#track-dependency">追蹤相依性</a>)</td><td>偵測效能問題</td></tr>
 <tr><td>相依性遙測</td><td><a href="../app-insights-monitor-performance-live-website-now/">在伺服器上安裝 AI 狀態監視器</a></td><td>診斷資料庫或其他外部元件的問題</td></tr>
 <tr><td>取得例外狀況的堆疊追蹤</td><td><a href="../app-insights-search-diagnostic-logs/#exceptions">您的程式碼中插入 TrackException 呼叫</a> (但部分會自動報告)</td><td>偵測並診斷例外狀況</td></tr>
 <tr><td>搜尋記錄追蹤</td><td><a href="../app-insights-search-diagnostic-logs/">加入記錄配接器</a></td><td>診斷例外狀況、效能問題</td></tr>
@@ -235,7 +235,7 @@
 <tr><td>伺服器自訂度量</td><td><a href="../app-insights-api-custom-events-metrics/">追蹤伺服器程式碼中的呼叫</a></td><td>商業智慧</td></tr>
 </table>
 
-如果您的 web 服務 Azure VM 中執行，您也可以 [取得診斷 ][azurediagnostic] 那里。
+如果您的 web 服務 Azure VM 中執行，您也可以 [取得診斷][azurediagnostic] 那里。
 
 ## 自動化
 
@@ -246,12 +246,12 @@
 * [Application Insights 論壇](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
 
 
+<!--Link references-->
 
+[azurediagnostic]: ../insights-how-to-use-diagnostics.md
+[data]: app-insights-data-retention-privacy.md
+[platforms]: app-insights-platforms.md
+[start]: app-insights-overview.md
+[windows]: app-insights-windows-get-started.md
 
-
-[azurediagnostic]: ../insights-how-to-use-diagnostics.md 
-[data]: app-insights-data-retention-privacy.md 
-[platforms]: app-insights-platforms.md 
-[start]: app-insights-overview.md 
-[windows]: app-insights-windows-get-started.md 
-
+ 

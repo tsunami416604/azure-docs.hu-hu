@@ -16,7 +16,6 @@
     ms.date="10/23/2015"
     ms.author="erikre"/>
 
-
 # 在 Azure App Service 中設定自訂網域名稱 (直接向 GoDaddy 購買)
 
 [AZURE.INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -30,7 +29,7 @@
 [AZURE.INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
 
 <a name="understanding-records"></a>
-## 了解 DNS 記錄
+##了解 DNS 記錄
 
 [AZURE.INCLUDE [understandingdns](../../includes/custom-dns-web-site-understanding-dns-raw.md)]
 
@@ -39,48 +38,46 @@
 
 若要將您的自訂網域與 App Service 中的 Web 應用程式產生關聯，您必須使用由 GoDaddy 所提供的工具，在 DNS 資料表中為您的自訂網域新增項目。 在 GoDaddy.com 中，使用下列步驟來尋找 DNS 工具
 
-1. 在 GoDaddy.com 中登入您的帳戶，並依序選取 [我的帳戶]****、[管理我的網域]****。 最後，在下拉式功能表中選取您要與 Azure Web 應用程式搭配使用的網域名稱，然後選取 [管理 DNS]****。
+1. 在 godaddy.com，您的帳戶登入，然後選取 **我的帳戶** 然後 **管理我的網域**。 最後，選取您想要使用與 Azure web 應用程式，並選取的網域名稱的下拉式選單 **管理 DNS**。
 
     ![custom domain page for GoDaddy](./media/web-sites-godaddy-custom-domain-name/godaddy-customdomain.png)
 
-2. 在 [網域詳細資料]**** 頁面中，捲動至 [DNS 區域檔案]**** 索引標籤。 此區段可用來新增與修改網域名稱的 DNS 記錄。
+2. 從 **網域詳細資料** 頁面上，捲動到 **DNS 區域檔案** ] 索引標籤。 此區段可用來新增與修改網域名稱的 DNS 記錄。
 
     ![DNS Zone File tab](./media/web-sites-godaddy-custom-domain-name/godaddy-zonetab.png)
 
-    選取 [新增記錄]**** 以新增現有記錄。
+    選取 **新增記錄** 以新增現有記錄。
 
-    若要 [編輯]**** 現有記錄，請選取該記錄旁的 [紙筆] 圖示。
-    > [AZURE.NOTE] 新增記錄之前，請注意，GoDaddy 已為熱門子網域 (在編輯器中稱為「**主機**」) 建立 DNS 記錄，例如**電子郵件**、**檔案**、**郵件**及其他。 如果您要使用的名稱已存在，請修改現有記錄，而非建立新記錄。
+    若要 **編輯** 現有的記錄，請選取紙筆該記錄旁的圖示。
+
+    > [AZURE.NOTE] 之前加入新的記錄，請注意，GoDaddy 已建立為熱門子網域的 DNS 記錄 (稱為 **主機** 在編輯器中，) 例如 **電子郵件**, ，**檔案**, ，**郵件**, ，等等。 如果您要使用的名稱已存在，請修改現有記錄，而非建立新記錄。
 
 4. 新增記錄時，您必須先選取記錄類型。
 
     ![選取記錄類型](./media/web-sites-godaddy-custom-domain-name/godaddy-selectrecordtype.png)
 
-    接下來，您必須提供 [主機]**** (自訂網域或子網域) 及其 [指向]**** 位置。
+    接下來，您必須提供 **主機** (自訂網域或子網域) 及其 **指向**。
 
     ![新增區域記錄](./media/web-sites-godaddy-custom-domain-name/godaddy-addzonerecord.png)
 
-    * 新增 [A (主機) 記錄]**** 時，您必須將 [主機]**** 欄位設定為 **@** (這代表根網域名稱，例如 **contoso.com**)、* (符合多個子網域的萬用字元)，或您要使用的子網域 (例如 **www**)。 您必須將 [指向]**** 欄位設為 Azure Web 應用程式的 IP 位址。
+    * 加入時 **(主機) 記錄** -您必須設定 **主機** 欄位 **@** (這代表根網域名稱，例如 **contoso.com**,，) * (符合多個子網域的萬用字元) 或您想要使用的子網域 (例如， **www**。)您必須設定 **指向** Azure web 應用程式的 IP 位址的欄位。
 
-    * 新增 [CNAME (別名) 記錄]**** 時，您必須將 [主機]**** 欄位設定為您要使用的子網域。 例如 **www**。 您必須將 [指向]**** 欄位設為 Azure Web 應用程式的 **.azurewebsites.net** 網域名稱。 例如 **contoso.azurwebsites.net**。
+    * 當加入 **CNAME (別名) 記錄** -您必須設定 **主機** 欄位設為您想要使用的子網域。 例如， **www**。 您必須設定 **指向** 欄位 **。 azurewebsites.net** Azure web 應用程式的網域名稱。 例如， **contoso.azurwebsites.net**。
 
-5. 按一下 [加入另一個]****。
-6. 選取 **CNAME** 做為記錄類型，然後指定 **主機** 值 **awverify** 和 **指向** 值 **awverify.< yourwebappname >。 azurewebsites.net**。
-    > [AZURE.NOTE] Azure 會使用 CNAME 記錄來驗證您擁有 A 記錄或第一筆 CNAME 記錄所述的網域。 一旦網域對應至 Azure 入口網站中的 Web 應用程式，即可移除 [awverify]**** 項目。
+5. 按一下 [ **加入另一個**。
+6. 選取 **CNAME** 做為記錄類型，然後指定 **主機** 值 **awverify** 和 **指向** 值 **awverify.lt; yourwebappname & gt;。azurewebsites.net**。
 
-5. 當您完成新增或修改記錄時，請按一下 [完成]**** 以儲存變更。
+    > [AZURE.NOTE] 此 CNAME 記錄使用 Azure 來驗證您擁有 A 記錄或第一次的 CNAME 記錄所述的網域。 網域已對應到 web 應用程式在 Azure 入口網站中，一旦 **awverify** 會移除項目。
+
+5. 當您完成新增或修改記錄時，請按一下 [ **完成** 以儲存變更。
 
 <a name="enabledomain"></a>
 ## 在 Web 應用程式上啟用網域名稱
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
+
 >[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
 
 ## 變更的項目
-
 * 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
-
-
-
-
 

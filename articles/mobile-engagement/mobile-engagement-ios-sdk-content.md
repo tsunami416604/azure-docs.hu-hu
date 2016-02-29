@@ -16,34 +16,29 @@
     ms.date="08/10/2015"
     ms.author="piyushjo" />
 
-
-# SDK 內容
+#SDK 內容
 
 本文件列出並描述 SDK 封存的內容。
 
-## Engagement SDK
+##Engagement SDK
 
 `EngagementSDK`
 
 > 核心 Engagement SDK 包含了標頭、程式庫，以及一個提供來做為啟用/停用 IDFA 集合之原始程式碼的額外類別。
 
-## Engagement Reach SDK
+##Engagement Reach SDK
 
 `EngagementReach`
 
 > Engagement Reach SDK 包含標頭、程式庫，以及相關聯資源。
 
-## 其他檔案
+##其他檔案
 
-`doc/index.html` (在 `文件` 資料夾)
+`doc/index.html` (在 `doc` 資料夾)
 
 > Engagement SDK 與 Reach SDK Objective-C 文件。
 
 `src` 資料夾
 
 > Engagement 檢視控制器與 Reach SDK 原始程式碼 (適用於想要依照其需求調整 Engagement 類別的進階使用者)。
-
-
-
-
 

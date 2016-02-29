@@ -16,12 +16,11 @@
     ms.date="08/10/2015" 
     ms.author="piyushjo" />
 
-
-# SDK 內容
+#SDK 內容
 
 本文件列出並描述 SDK 封存的內容。
 
-`行動-engagement-VERSION.jar`
+`mobile-engagement-VERSION.jar`
 
 > Engagement SDK 類別檔案。
 
@@ -33,15 +32,11 @@
 
 > Engagement SDK 原始程式碼。
 >
-> 請注意，服務的來源不包含 (`com.microsoft.azure.engagement.service.EngagementService` 和其相關的原始程式檔)。
+> 請注意，不包含服務的來源 (`com.microsoft.azure.engagement.service.EngagementService` 及其相關原始程式檔)。
 
 `documentation.html`
 
 > 對應到已下載版本 SDK 的文件網站捷徑。
 
 其他檔案是軟體授權的複本。
-
-
-
-
-
+ 

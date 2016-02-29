@@ -16,7 +16,6 @@
  ms.date="12/15/2015"
  ms.author="dobett"/>
 
-
 # 設定和管理 IoT 中心的存取權
 
 本文章提供的資訊可協助 IT 專業人員設定環境，讓 IoT 裝置可透過網路基礎結構與 IoT 中心通訊。
@@ -25,29 +24,28 @@
 
 裝置使用 AMQP 或 HTTPS 通訊協定與 Azure 中的 IoT 中心通訊。 一般而言，選擇的通訊協定是根據方案的特定需求而定。 下表列出必須要為裝置開啟的輸出連接埠，以使用特定的通訊協定：
 
-| 通訊協定| 連接埠|
+| 通訊協定 | 連接埠 |
 | -------- | ------- |
-| HTTPS| 443|
-| AMQP| 5671|
+| HTTPS    | 443     |
+| AMQP     | 5671    |
 
 當您在 Azure 區域中建立 IoT 中心後，中心將在該中心的存留期間，保留相同的 IP 位址。 不過，在嚴重損壞修復案例中，如果 Microsoft 將 IoT 中心移至不同的縮放單位，則它會獲派新的 IP 位址。
 
 ## IoT 中心和安全性
 
-只有向 IoT 中心註冊的裝置可與該 IoT 中心進行通訊。 已註冊的裝置必須獲得 *DeviceConnect* 權限。 裝置會藉由包含權杖 (其會封裝其建立之每個要求中的裝置唯一識別碼) 來識別其本身，且中心會檢查權杖的有效性，以及裝置是否未列入黑名單 (*DeviceConnect* 權限已撤銷)。
+只有向 IoT 中心註冊的裝置可與該 IoT 中心進行通訊。 已註冊的裝置必須被授與 *DeviceConnect* 權限。 裝置識別本身包括封裝在它建立時，每個要求的裝置唯一識別碼的權杖和集線器檢查權杖的有效性，並，裝置不在黑名單 (*DeviceConnect* 撤銷權限)。
 
-IoT 中心內對其他管理端點的存取權，也是透過一組權限來控制：*iothubowner*、*service*、*registryRead* 和 *registryReadWrite*。 連接到 IoT 中心的所有用戶端管理應用程式，都必須包含具有適當權限的權杖。
+IoT 中心中的其他管理端點的存取也透過一組權限: *iothubowner*, ，*服務*, ，*registryRead*, ，和 *registryReadWrite*。 連接到 IoT 中心的所有用戶端管理應用程式，都必須包含具有適當權限的權杖。
 
 ## 後續步驟
 
 這篇文章包含特定資訊，供設定開發和測試環境的 IT 專業人員和開發人員閱讀。 請遵循下列連結以深入了解 Azure IoT 中心服務：
 
-- [什麼是 Azure IoT 中心?][lnk-iothub]
-- [Azure IoT 中心開發人員指南 ][lnk-devguide] 提供的語彙基元和使用權限系統，在 IoT 中心中的其他資訊。
-- [管理透過 Azure 入口網站 ][lnk-manage-portal] 說明如何使用 Azure 入口網站來管理您的 IoT 中心。
+- [何謂 Azure IoT 中心？][lnk-iothub]
+-  [Azure IoT 中心開發人員指南中的 [安全性] 區段][lnk-devguide] 提供的語彙基元和使用權限系統，在 IoT 中心中的其他資訊。
+- [透過 Azure 入口網站管理 IoT 中心][lnk-manage-portal] 說明如何使用 Azure 入口網站來管理您的 IoT 中心。
 
-
-[lnk-iothub]: iot-hub-what-is-iot-hub.md 
-[lnk-devguide]: iot-hub-devguide.md#security 
-[lnk-manage-portal]: iot-hub-manage-through-portal.md 
+[lnk-iothub]: iot-hub-what-is-iot-hub.md
+[lnk-devguide]: iot-hub-devguide.md#security
+[lnk-manage-portal]: iot-hub-manage-through-portal.md
 

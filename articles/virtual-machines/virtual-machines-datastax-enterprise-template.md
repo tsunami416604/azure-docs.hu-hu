@@ -17,14 +17,14 @@
     ms.date="04/29/2015"
     ms.author="scoriani"/>
 
-
 # 在 Ubuntu 上使用資源管理員範本的 DataStax Enterprise
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
 
 
 DataStax 是知名的業界領導者，他們根據 Apache Cassandra™ 來開發和提供各種解決方案，這是一種可提供商業支援且符合企業需求的 NoSQL 分散式資料庫技術，此技術廣受市場認可、敏捷、永不停擺，並可依照未來的各種公司規模需求進行調整。 DataStax 提供 Enterprise (DSE) 和 Community (DSC) 等版本。 除了 Community 版本所提供的功能之外，Datastax Enterprise 是經過生產認證的 Cassandra，具備在記憶體中計算、企業級安全性、快速且功能強大的整合分析，以及企業管理等功能。
->[AZURE.NOTE] 與 Community 版本不同，若要部署 DataStax Enterprise，您必須具備有效的 DataStax 帳戶 (使用者名稱和密碼)，以便在範本部署期間當成參數來傳入。 請瀏覽 [Datastax](http://www.datastax.com) 網站來設定您的帳戶，如果您還沒有的話。
+
+>[AZURE.NOTE] 與不同 Community edition，以便部署 DataStax Enterprise，您必須具備有效的 DataStax 帳戶 (使用者名稱和密碼) 中傳遞做為參數在範本部署期間。 請瀏覽 [Datastax](http://www.datastax.com) 網站來設定您的帳戶，如果您還沒有的話。
 
 除了已經提供 Azure Marketplace 中，現在您可以輕鬆部署新的 Datastax Enterprise 叢集，在 Ubuntu Vm 上使用資源管理員範本部署到 [PowerShell](../powershell-install-configure.md) 或 [Azure CLI](../xplat-cli-install.md)。
 
@@ -34,8 +34,9 @@ DataStax 是知名的業界領導者，他們根據 Apache Cassandra™ 來開�
 
 使用參數，您可以定義將在新 Apache Cassandra 叢集上部署的節點數目。 系統也會在同一個 VNET 中獨立的 VM 上部署 Datastax 作業中心服務的執行個體，讓您能夠監視叢集和所有個別節點的狀態、新增/移除節點，以及執行所有與該叢集相關的管理工作。
 
-部署完成之後，您可以使用設定的 DNS 位址，來存取 Datastax 作業中心 VM 執行個體。 OpsCenter VM 會啟用 SSH 連接埠 22 以及針對HTTPS 啟用連接埠 8443。 用於將包含作業中心的 DNS 位址 *dnsName* 和 *區域* 所輸入的參數，產生的格式 `{dnsName}。 {區域}.cloudapp.azure.com`。 如果您在建立部署 *dnsName* 參數設定為"datastax"，就可以存取在部署 Datastax 作業中心 VM 的 「 美國西部 」 區域中 `https://datastax.westus.cloudapp.azure.com:8443`。
-> [AZURE.NOTE] 部署時使用的憑證是一種自我簽署的憑證，會造成瀏覽器發出警告。 您可以按照此程序 [Datastax](http://www.datastax.com/) 憑證換成您自己的 SSL 憑證的網站。
+部署完成之後，您可以使用設定的 DNS 位址，來存取 Datastax 作業中心 VM 執行個體。 OpsCenter VM 會啟用 SSH 連接埠 22 以及針對HTTPS 啟用連接埠 8443。 用於將包含作業中心的 DNS 位址 *dnsName* 和 *區域* 做為參數，產生的格式輸入 `{dnsName}.{region}.cloudapp.azure.com`。 如果您在建立部署 *dnsName* 參數設定為"datastax"，就可以存取在部署 Datastax 作業中心 VM 的 「 美國西部 」 區域中 `https://datastax.westus.cloudapp.azure.com:8443`。
+
+> [AZURE.NOTE] 部署中使用的憑證是自我簽署的憑證，以建立瀏覽器發出警告。 您可以按照此程序 [Datastax](http://www.datastax.com/) 憑證換成您自己的 SSL 憑證的網站。
 
 在深入了解與 Azure 資源管理員和將針對此次部署使用之範本的詳細資訊之前，請確定您已正確設定 Azure PowerShell 或 Azure CLI。
 
@@ -90,7 +91,7 @@ DataStax 是知名的業界領導者，他們根據 Apache Cassandra™ 來開�
     git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
 當完成時，尋找 C:\Azure\Templates 目錄中的 datastax-enterprise 資料夾。
-
+<!--Wrapping name of folder in bold typeface is not corp style  -->
 ### 步驟 2：(選用) 了解範本參數
 
 部署非簡單式解決方案時 (例如 DataStax 類型的 DataStax Apache Cassandra 叢集)，您必須指定一組設定參數來處理一些必要的設定。 您可以在範本定義中宣告這些參數，這樣一來，就能在部署期間透過外部檔案或在命令列中指定值。
@@ -240,12 +241,12 @@ DataStax 是知名的業界領導者，他們根據 Apache Cassandra™ 來開�
     $folderName="<folder name, such as C:\Azure\Templates\DataStax>"
     $templateFile= $folderName + "\azuredeploy.json"
     $templateParameterFile= $folderName + "\azuredeploy-parameters.json"
-    
+
     New-AzureResourceGroup –Name $RGName –Location $locName
-    
+
     New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateParameterFile $templateParameterFile -TemplateFile $templateFile
 
-執行 **New-AzureResourceGroupDeployment** 命令時，這將會從 JSON 參數檔案中擷取參數值，然後據以開始執行範本。 定義以及使用不同環境 (例如，測試或生產) 所需的參數檔案，有利範本的重複使用以及簡化複雜的多重環境解決方案。
+當您執行 **New-azureresourcegroupdeployment** 命令時，這將會從 JSON 參數檔案中，擷取參數值，然後開始執行範本。 定義以及使用不同環境 (例如，測試或生產) 所需的參數檔案，有利範本的重複使用以及簡化複雜的多重環境解決方案。
 
 部署時，請記得需要建立新的 Azure 儲存體帳戶，因此，您提供來做為儲存體帳戶參數的名稱就必須是唯一且符合 Azure 儲存體帳戶的所有需求 (僅限小寫字母和數字)。
 
@@ -278,8 +279,8 @@ DataStax 是知名的業界領導者，他們根據 Apache Cassandra™ 來開�
 
 ## Datastax Enterprise 範本結構和檔案組織的導覽
 
-為了讓資源管理員範本的設計更加完善且可重複使用，您必須在部署 DataStax Enterprise 之類的複雜解決方案期間，考慮清楚如何安排一連串複雜但又彼此相關的工作。 除了透過相關延伸模組執行指令碼之外，還可以利用 ARM **範本連結**和**資源迴圈**，這樣就能實作模組化方法，而實際上所有以複雜範本為基礎的部署都能重複使用此方法。
-
+為了讓資源管理員範本的設計更加完善且可重複使用，您必須在部署 DataStax Enterprise 之類的複雜解決方案期間，考慮清楚如何安排一連串複雜但又彼此相關的工作。 利用 ARM **範本連結** 和 **資源迴圈** 除了透過相關延伸模組執行指令碼，就能實作模組化的方法，便可重複使用幾乎任何複雜範本為基礎的部署。
+<!-- In previous paragraph, we can't use bold typeface to show emphasis. You can use italic to denote emphasis. -->
 下圖說明從 GitHub 下載此部署的所有檔案之間的關聯性。
 
 ![datastax-enterprise-files](media/virtual-machines-datastax-enterprise-template/datastax-enterprise-files.png)
@@ -346,6 +347,7 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
             "version": "latest"
           },
 
+     
 在第二個片段中，"scripts" 變數是 JSON 陣列，將會在執行階段使用範本語言函式 (concat) 和另一個變數的值再加上字串常數，來計算其中的每一個元素。
 
           "scripts": [
@@ -356,7 +358,7 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 
 ### "resources" 區段
 
-絕大多數的動作就是在 "resources" 區段進行的。 看這個區段，您可以立即找出兩個不同的案例: 第一個是型別定義的項目 `Microsoft.Resources/deployments` ，基本上表示叫用主要檔案內的巢狀部署。 透過 "templateLink" 元素 (和相關的版本屬性)，就能指定連結的範本檔案，並在叫用此檔案時傳遞一組參數當做輸入，如同下一個範例中所示。
+絕大多數的動作就是在 "resources" 區段進行的。 仔細觀察這個區段，您會立即找出兩個不同的案例：第一個是定義為 `Microsoft.Resources/deployments` 類型的元素，基本上它會叫用主要檔案內部的巢狀部署。 透過 "templateLink" 元素 (和相關的版本屬性)，就能指定連結的範本檔案，並在叫用此檔案時傳遞一組參數當做輸入，如同下一個範例中所示。
 
     {
           "name": "shared",
@@ -385,15 +387,15 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 在第一個範例中，我們很清楚地知道此案例中的 azuredeploy.json 是用來做為一種協調流程機制，負責叫用一些其他範本檔案，而這其中每一個檔案都會負責部分的必要部署活動。
 
 特別是，下列連結的範本將用於此部署：
-
--   **shared-resource.json**：包含要在整個部署中共用的所有資源定義。 例如，用來儲存 VM 的作業系統磁碟和虛擬網路的儲存體帳戶。
--   **opscenter-resources.json**：部署 OpsCenter VM 和所有相關資源，包括網路介面和公用 IP 位址。
--   **opscenter-install-resources.json**：部署 OpsCenter VM 延伸模組 (適用於 Linux 的自訂指令碼)，可叫用特定的 bash 指令碼檔案 (opscenter.sh)，當您在該 VM 內設定 OpsCenter 服務時需要使用此檔案。
+<!-- In list format, using bold typeface in the following manner is ok -->
+-   **shared-resource.json**: 包含定義的整個部署中共用的所有資源。 例如，用來儲存 VM 的作業系統磁碟和虛擬網路的儲存體帳戶。
+-   **opscenter-resources.json**: 部署 OpsCenter VM 和所有相關的資源，包括網路介面和公用 IP 位址。
+-   **安裝-opscenter-resources.json**: 部署 OpsCenter VM 延伸模組 (適用於 Linux 的自訂指令碼)，將會叫用特定的 bash 指令碼檔案 (opscenter.sh)，才能設定該 VM 內設定 OpsCenter 服務。
 -   **暫時 azuredeploy.json**: 部署所有叢集節點 Vm 和連接的資源 (例如，網路卡和私人 Ip。)。 此範本也會部署 VM 擴充功能 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼 (dsenode.sh)，在每一個節點上安裝 Apache Cassandra 程式碼。
 
 讓我們深入了解最後一個範本的使用方式，因為從範本開發角度來看，這是最有趣的範本之一。 在此要強調一個重要的概念，那就是一個範本檔案可以重複部署某一種資源類型，而且每一個執行個體都可以為必要的設定指定唯一的值。 這個概念稱為資源迴圈。
 
-從主要的 azuredeploy.json 檔案中叫用 ephemeral-nodes-resources.json 時，會提供名為 nodeCount 的參數來做為參數清單的一部分。 在子範本中，將會在每一個需要部署於多個複本中的資源的 **"copy”** 元素內使用 nodeCount (要在叢集中部署的節點數目)，如下列範例中所強調。 對於您需要為不同的部署資源執行個體提供唯一值的所有設定，可使用 **copyindex()** 函式來取得數值，以指出目前用來建立這個特定資源迴圈的索引。 在下一個範例中，您可以在為 Datastax Enterprise 叢集節點建立的多個 VM 上看見這個概念的運用。
+從主要的 azuredeploy.json 檔案中叫用 ephemeral-nodes-resources.json 時，會提供名為 nodeCount 的參數來做為參數清單的一部分。 將內使用 nodeCount (要部署在叢集中的節點數目) 在子範本中， **「 複製 」** 的每個資源都必須部署於多個複本下, 一個範例中反白顯示的項目。 針對不同的執行個體的部署資源，需要唯一值的所有設定 **copyindex ()** 函式可用來取得數值，指出目前的索引，在這個特定資源迴圈的建立。 在下一個範例中，您可以在為 Datastax Enterprise 叢集節點建立的多個 VM 上看見這個概念的運用。
 
                {
                   "apiVersion": "2015-05-01-preview",
@@ -454,7 +456,7 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
                   }
                 },
 
-建立資源的另一個重要概念是能夠指定資源間的相依性和優先順序，如同您在 **dependsOn** JSON 陣列中所見。 在這個特定範本中，每一個節點也會連結 1 TB 磁碟 (請參閱＜dataDisks＞)，可用來裝載 Apache Cassandra 執行個體的備份和快照。
+建立資源的另一個重要概念是能夠指定相依性和資源之間的優先順序，您可以看到在 **dependsOn** JSON 陣列。 在這個特定範本中，每一個節點也會連結 1 TB 磁碟 (請參閱＜dataDisks＞)，可用來裝載 Apache Cassandra 執行個體的備份和快照。
 
 當 dsenode.sh 指令碼檔執行時，會進行各種節點準備活動，其中之一就是格式化連結的磁碟。 在下一個範例中，這個指令碼的第一列會叫用另一個指令碼。
 
@@ -501,8 +503,4 @@ vm-disk-utils-0.1.sh 是 azure-quickstart-tempates github 儲存機制中 shared
 -   所有的張貼部署工作 (例如產品安裝和設定) 都會利用指令碼部署擴充功能以及建立每一種技術獨有的指令碼。
 
 如需詳細資訊，請參閱 [Azure 資源管理員範本語言](../resource-group-authoring-templates.md)。
-
-
-
-
 

@@ -17,14 +17,12 @@
     ms.date="10/13/2015"
     ms.author="cynthn"/>
 
-
-# 以 Powershell 和傳統部署模型建立 Windows 虛擬機器
+# 以 Powershell 和傳統部署模型建立 Windows 虛擬機器 
 
 > [AZURE.SELECTOR]
-- [Azure classic portal - Windows](virtual-machines-windows-tutorial-classic-portal.md)
-- [Powershell - Windows](virtual-machines-ps-create-preconfigure-windows-vms.md)
-- [PowerShell - Linux](virtual-machines-ps-create-preconfigure-linux-vms.md)
-
+- [Azure 傳統入口網站-Windows](virtual-machines-windows-tutorial-classic-portal.md)
+- [-Windows Powershell](virtual-machines-ps-create-preconfigure-windows-vms.md)
+- [-Linux PowerShell](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
 <br>
 
@@ -45,14 +43,14 @@
 
 ## 步驟 2：設定您的訂用帳戶和儲存體帳戶
 
-在 Azure PowerShell 命令提示字元上執行這些命令，來設定您的 Azure 訂用帳戶和儲存體帳戶。取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
+在 Azure PowerShell 命令提示字元上執行這些命令，來設定您的 Azure 訂用帳戶和儲存體帳戶。 取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
 
     $subscr="<subscription name>"
     $staccount="<storage account name>"
     Select-AzureSubscription -SubscriptionName $subscr –Current
     Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
 
-您可以從 **Get-AzureSubscription** 命令輸出的 SubscriptionName 屬性，取得正確的訂用帳戶名稱。 執行 **Select-AzureSubscription** 命令後，您就能從 **Get-AzureStorageAccount** 命令輸出的標籤屬性取得正確的儲存體帳戶名稱。
+您可以從輸出的 SubscriptionName 屬性取得正確的訂閱名稱 **Get-azuresubscription** 命令。 您可以從輸出的 Label 屬性取得正確的儲存體帳戶名稱 **Get-azurestorageaccount** 命令執行後 **Select-azuresubscription** 命令。
 
 ## 步驟 3：決定 ImageFamily
 
@@ -83,7 +81,7 @@
 
 ## 步驟 4：建置命令集
 
-建置命令集的區塊下方適當的集合複製到新的文字檔或 ISE 然後填入變數值並移除 < 和 > 字元。請參閱這兩個 [範例](#examples) 以了解最終產生的結果這篇文章的結尾。
+建置命令集的區塊下方適當的集合複製到新的文字檔或 ISE 然後填入變數值並移除 < 和 > 字元。 請參閱這兩個 [範例](#examples) 以了解最終產生的結果這篇文章的結尾。
 
 選擇兩個命令區塊的其中一個，啟動命令集 (必要)。
 
@@ -169,14 +167,14 @@ Windows 型虛擬機器的其他預先組態選項，請參閱的語法 **Window
 
 ## 步驟 5：執行命令集
 
-檢閱在步驟 4 中使用文字編輯器或 PowerShell ISE 以多個命令區塊建立的 Azure PowerShell 命令集。確定您已指定所需的所有變數，並且這些變數具有正確的值。另外請確定您已移除所有 < 和 > 字元。
+檢閱在步驟 4 中使用文字編輯器或 PowerShell ISE 以多個命令區塊建立的 Azure PowerShell 命令集。 確定您已指定所需的所有變數，並且這些變數具有正確的值。 另外請確定您已移除所有 < 和 > 字元。
 
 如果您使用文字編輯器，請將命令集複製到剪貼簿，然後以滑鼠右鍵按一下 [開啟 Azure PowerShell 命令提示字元]。 這將發出命令集作為一系列的 PowerShell 命令，並建立 Azure 虛擬機器。 或者，在 PowerShell ISE 中執行命令集。
 
 如果您將再次建立這個虛擬機器或類似的虛擬機器，您可以：
 
 - 將此命令集儲存為 PowerShell 指令碼檔案 (*.ps1)。
-- 在 Azure 傳統入口網站的 [自動化]**** 區段中，將這個命令集儲存為 Azure 自動化 Runbook。
+- 將此設為 Azure 自動化 runbook 中的命令儲存 **自動化** Azure 傳統入口網站一節。
 
 ## <a id="examples"></a>範例
 
@@ -201,20 +199,20 @@ Windows 型虛擬機器的其他預先組態選項，請參閱的語法 **Window
     $vmname="AZDC1"
     $vmsize="Medium"
     $vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
-    
+
     $cred=Get-Credential -Message "Type the name and password of the local administrator account."
     $vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
-    
+
     $vm1 | Set-AzureSubnet -SubnetNames "BackEnd"
-    
+
     $vm1 | Set-AzureStaticVNetIP -IPAddress 192.168.244.4
-    
+
     $disksize=20
     $disklabel="DCData"
     $lun=0
     $hcaching="None"
     $vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB $disksize -DiskLabel $disklabel -LUN $lun -HostCaching $hcaching
-    
+
     $svcname="Azure-TailspinToys"
     $vnetname="AZDatacenter"
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname
@@ -237,24 +235,25 @@ Windows 型虛擬機器的其他預先組態選項，請參閱的語法 **Window
     $vmname="LOB1"
     $vmsize="Large"
     $vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
-    
+
     $cred1=Get-Credential –Message "Type the name and password of the local administrator account."
     $cred2=Get-Credential –Message "Now type the name (not including the domain) and password of an account that has permission to add the machine to the domain."
     $domaindns="corp.contoso.com"
     $domacctdomain="CORP"
     $vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domaindns
-    
+
     $vm1 | Set-AzureSubnet -SubnetNames "FrontEnd"
-    
+
     $disksize=200
     $disklabel="LOBData"
     $lun=0
     $hcaching="ReadWrite"
     $vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB $disksize -DiskLabel $disklabel -LUN $lun -HostCaching $hcaching
-    
+
     $svcname="Azure-TailspinToys"
     $vnetname="AZDatacenter"
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname
+
 
 ## 其他資源
 
@@ -265,10 +264,6 @@ Windows 型虛擬機器的其他預先組態選項，請參閱的語法 **Window
 [Azure 虛擬機器的概觀](http://msdn.microsoft.com/library/azure/jj156143.aspx)
 
 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)
-
-
-
-
 
 
 

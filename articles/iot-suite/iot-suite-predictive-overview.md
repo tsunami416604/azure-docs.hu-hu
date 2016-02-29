@@ -16,10 +16,9 @@
  ms.date="12/01/2015"
  ms.author="stevehob"/>
 
-
 # 預先設定的預防性維護解決方案概觀
 
-*預測維護* 預先設定的解決方案是其中一個 [預先設定解決方案 ][lnk_preconfigured_solutions] 隨附 [Microsoft Azure IoT 套件 ][lnk_iot_suite]。 此解決方案整合一個建立的預測模型即時裝置遙測收集 [Azure Machine Learning ][lnk_machine_learning]。
+ *預測維護* 預先設定的解決方案是其中一個 [預先設定的解決方案][lnk_preconfigured_solutions] 隨附 [Microsoft Azure IoT Suite][lnk_iot_suite]。 此解決方案整合一個建立的預測模型即時裝置遙測收集 [Azure Machine Learning][lnk_machine_learning]。
 
 
 有了 Azure IoT 套件，企業可以又快又方便地連接和監視資產，並即時分析資料。 預先設定的預防性維護解決方案會利用該資料及豐富的儀表板與視覺效果，為企業提供新的資訊，以提升其效率及增加收益來源。
@@ -34,26 +33,24 @@ Fabrikam 飛機的引擎由各種感應器進行檢測，而這些感應器會�
 
 ## 預防性維護解決方案的建置方式
 
-若要了解如何 [Azure IoT 套件 ][lnk_iot_suite] 提供功能的客戶需要瞭解到預測維護，請檢閱這 [資訊圖 ][lnk_infographic]。
+若要了解如何 [Azure IoT 套件][lnk_iot_suite] 提供功能的客戶需要瞭解到預測維護，請檢閱這 [資訊圖][lnk_infographic]。
 
-為示範這些功能如何運用透過 IoT 套件服務收集而來的裝置遙測資料，以及如何透過 Web 應用程式將這些資料呈現給使用者，此解決方案會利用現有的 Azure 機器學習範本。 Microsoft 已建置 [迴歸模型 ][lnk_regression_model] 並發佈完整的範本資料<sup>\[1\]</sup>, ，和逐步指引。
+為示範這些功能如何運用透過 IoT 套件服務收集而來的裝置遙測資料，以及如何透過 Web 應用程式將這些資料呈現給使用者，此解決方案會利用現有的 Azure 機器學習範本。 Microsoft 已建置 [迴歸模型][lnk_regression_model] 並發佈完整的範本資料<sup>\[1\]</sup>, ，和逐步指引。
 
 Azure IoT 預先設定的預防性維護解決方案會利用此範本所建立的迴歸模型 (此模型會部署到您的 Azure 訂用帳戶，並透過發行的 API 加以公開)。 此解決方案包含了代表 4 具 (全部共 100 具) 引擎之測試資料與 4 個 (全部共 21 個) 感應器之資料流的交集，並由定型的模型提供精確的結果。
 
-*\[1\] A.Saxena< 和 K Goebel (2008)。 「 Turbofan 引擎降低模擬資料集 」、 NASA 名稱 Prognostics 資料儲存機制 (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、 NASA 名稱參考資料中心、 Moffett 欄位，CA*
+*\[1\] A.Saxena< 和 K Goebel (2008)。 「 Turbofan 引擎降低模擬資料集 」、 NASA 名稱 Prognostics 資料儲存機制 (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、 NASA 名稱參考資料中心、 Moffett 欄位 CA*
 
 ## 後續步驟
 
-若要深入了解 Azure IoT 可預測性維護案例的方式，閱讀 [物聯網 ][lnk_capture_value]。
+若要深入了解 Azure IoT 可預測性維護案例的方式，閱讀 [物聯網從擷取值][lnk_capture_value]。
 
-採取 [逐步解說 ][lnk-predictive-walkthrough] 預測維護的預先設定的解決方案。
+採取 [逐步解說][lnk-predictive-walkthrough] 預測維護的預先設定的解決方案。
 
-
-[lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md 
-[lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md 
-[lnk_iot_suite]: iot-suite-overview.md 
-[lnk_machine_learning]: https://azure.microsoft.com/services/machine-learning/ 
-[lnk_infographic]: https://www.microsoft.com/en-us/server-cloud/predictivemaintenance/Index.html 
-[lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3 
-[lnk_capture_value]: http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF 
-
+[lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
+[lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk_iot_suite]: iot-suite-overview.md
+[lnk_machine_learning]: https://azure.microsoft.com/services/machine-learning/
+[lnk_infographic]: https://www.microsoft.com/en-us/server-cloud/predictivemaintenance/Index.html
+[lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
+[lnk_capture_value]: http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF

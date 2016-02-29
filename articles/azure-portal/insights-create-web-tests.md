@@ -16,12 +16,8 @@
     ms.author="awills"/>
 
 
-
 # 監視任何網站的可用性和回應性
 
-> [AZURE.NOTE] 這篇文章已移到別處。 請參閱: [監視可用性和回應性的任何網站](../app-insights-monitor-web-app-availability.md)
 
-
-
-
-
+> [AZURE.NOTE] 這篇文章已移動。 請參閱: [監視可用性和任何網站的回應性](../app-insights-monitor-web-app-availability.md)
+ 

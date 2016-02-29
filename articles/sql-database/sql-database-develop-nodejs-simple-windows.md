@@ -1,6 +1,6 @@
 <properties
     pageTitle="在 Windows 上使用 Node.js 連接到 SQL Database"
-    description="提供可用來連接到 Azure SQL Database 的 Node.js 程式碼範例。這個範例會在 Windows 用戶端電腦上執行。"
+    description="提供可用來連接到 Azure SQL Database 的 Node.js 程式碼範例。 這個範例會在 Windows 用戶端電腦上執行。"
     services="sql-database"
     documentationCenter=""
     authors="meet-bhagdev"
@@ -18,8 +18,8 @@
     ms.author="meetb"/>
 
 
-
 # 在 Windows 上使用 Node.js 連接到 SQL Database
+
 
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
@@ -29,29 +29,30 @@
 
 ## 必要條件
 
+
 用戶端開發電腦上必須有下列軟體項目。
 
 
--  捲動並按一下適用於 32 位元 x86 的 Window Installer 下載連結，而不是 Windows x64 Installer 64 位元。
-- 
-- 
-- 
+-  Node.js- [0.8.9 版 (32 位元版本)](http://blog.nodejs.org/2012/09/11/node-v0-8-9-stable/)。 捲動並按一下適用於 32 位元 x86 的 Window Installer 下載連結，而不是 Windows x64 Installer 64 位元。
+- [Python 2.7.6](https://www.python.org/download/releases/2.7.6/), ，x86 或 x64 的安裝程式。
+- [Visual c + + 2010年](https://app.vssps.visualstudio.com/profile/review?download=true&family=VisualStudioCExpress&release=VisualStudio2010&type=web&slcid=0x409&context=eyJwZSI6MSwicGMiOjEsImljIjoxLCJhbyI6MCwiYW0iOjEsIm9wIjpudWxsLCJhZCI6bnVsbCwiZmEiOjAsImF1IjpudWxsLCJjdiI6OTY4OTg2MzU1LCJmcyI6MCwic3UiOjAsImVyIjoxfQ2) -Express edition 是 Microsoft 免費提供。
+- SQL Server Native Client 11.0-使用 Microsoft SQL Server 2012 Native Client 中所找到 [SQL Server 2012 Feature Pack](http://www.microsoft.com/download/details.aspx?id=29065)。
 
 
 ### 安裝必要的模組
 
 在您達成需求後，請確定您是在 Node.js 版本 0.8.9 上。 您可以從您的命令列終端機，使用下列命令：node -v.。
-請依照顯示的順序輸入下列命令。
+<br>在 **cmd.exe** 命令列視窗中，瀏覽至您的專案目錄，例如 C:\NodeJSSQLProject。 請依照顯示的順序輸入下列命令。
 
     npm init
     npm install msnodesql
 
-接著瀏覽至 node_modules\msnodesql 資料夾，並執行 **msnodesql 0.2.1-v0.8 ia32** 可執行檔。 請遵循安裝精靈的步驟，並在完成時叫按一下 [完成]。 此時您應已安裝 Node.js SQL Server 驅動程式。 請依照後續步驟以取得連接字串，然後您應能從 Node.js 應用程式連接到 Azure SQL DB。
+接著瀏覽至 node_modules\msnodesql 資料夾，然後執行 **msnodesql 0.2.1--v 0.8 ia32** 可執行檔。 請遵循安裝精靈的步驟，並在完成時叫按一下 [完成]。 此時您應已安裝 Node.js SQL Server 驅動程式。 請依照後續步驟以取得連接字串，然後您應能從 Node.js 應用程式連接到 Azure SQL DB。
 
 
 ### SQL Database
 
-請務必遵循該指南以建立 **AdventureWorks 資料庫範本**。 以下所示的範例僅適用於 **AdventureWorks 結構描述**。
+請參閱 [入門頁面](sql-database-get-started.md) 以了解如何建立範例資料庫。  請務必遵循該指南以建立 **AdventureWorks 資料庫範本**。 只有如下所示的範例適用於 **AdventureWorks 結構描述**。
 
 
 ## 步驟 1：取得連線詳細資料
@@ -60,7 +61,9 @@
 
 ## 步驟 2：連接
 
+
 - 將下列程式碼複製到您的專案目錄中的 .js 檔案。
+
 
         var http = require('http');
         var sql = require('msnodesql');
@@ -79,13 +82,15 @@
                 console.log("Successfuly connected");
         });
 
+
 - 現在發出下列命令來執行您的 .js 檔案。
+
 
         node index.js
 
 
+## 步驟 3: 執行查詢
 
-## 
 
     var http = require('http');
     var sql = require('msnodesql');
@@ -102,8 +107,8 @@
         }
         else
             console.log("Successfuly connected");
-    
-    
+
+
         conn.queryRaw("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;", function (err, results) {
             if (err) {
                 console.log("Error running query1!");
@@ -115,7 +120,9 @@
         });
     });
 
-## 
+
+## 步驟 4: 插入資料列
+
 
     var http = require('http');
     var sql = require('msnodesql');
@@ -132,8 +139,8 @@
         }
         else
             console.log("Successfuly connected");
-    
-    
+
+
         conn.queryRaw("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express', 'SQLEXPRESS', 0, 0, CURRENT_TIMESTAMP)", function (err, results) {
             if (err) {
                 console.log("Error running query!");
@@ -145,9 +152,11 @@
         });
     });
 
-## 
 
-**conn.beginTransactions** 方法無法在 Azure SQL Database 中運作。 相反地，請遵循下列程式碼範例，以在 SQL Database 中執行交易。
+## 步驟 5: 回復交易
+
+
+此方法 **conn.beginTransactions** 在 Azure SQL Database 中無法運作。 相反地，請遵循下列程式碼範例，以在 SQL Database 中執行交易。
 
 
     var http = require('http');
@@ -165,8 +174,8 @@
         }
         else
             console.log("Successfuly connected");
-    
-    
+
+
         conn.queryRaw("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express New ', 'SQLEXPRESS New', 1, 1, CURRENT_TIMESTAMP)", function (err, results) {
             if (err) {
                 console.log("Error running query!");
@@ -176,7 +185,7 @@
                 console.log("Product ID Inserted : "+results.rows[i]);
             }
         });
-    
+
         conn.queryRaw("ROLLBACK TRANSACTION; ", function (err, results) {
                 if (err) {
                 console.log("Rollback failed");
@@ -184,6 +193,7 @@
             }
             });
     });
+
 
 ## 步驟 6：預存程序
 
@@ -205,7 +215,7 @@
         }
         else
             console.log("Successfuly connected");
-    
+
         conn.query("exec NameOfStoredProcedure", function (err, results) {
             if (err) {
             console.log("Error running query8!");
@@ -214,11 +224,8 @@
         });
     });
 
+
 ## 後續步驟
 
-
-
-
-
-
+如需詳細資訊，請參閱 [Node.js 開發人員中心](/develop/nodejs/)。
 

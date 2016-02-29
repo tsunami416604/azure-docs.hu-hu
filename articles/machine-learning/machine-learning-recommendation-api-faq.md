@@ -16,12 +16,12 @@
     ms.date="12/08/2015" 
     ms.author="luisca"/> 
 
+#設定和使用 Machine Learning Recommendations API 的常見問題集
 
-# 設定和使用 Machine Learning Recommendations API 的常見問題集
 
 **什麼是 RECOMMENDATIONS？**
 
-對於依賴建議對客戶進行交叉銷售和向上銷售產品和服務的組織和企業，Azure Machine Learning 的 RECOMMENDATIONS 可提供自助建議引擎。 它是協同篩選的實作，其使用矩陣分解作為核心演算法。 應用程式開發人員可以使用 REST API 來存取 RECOMMENDATIONS。
+對於依賴建議對客戶進行交叉銷售和向上銷售產品和服務的組織和企業，Azure Machine Learning 的 RECOMMENDATIONS 可提供自助建議引擎。 它是協同篩選的實作，其使用矩陣分解作為核心演算法。 應用程式開發人員可以使用 REST API 來存取 RECOMMENDATIONS。 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -38,7 +38,8 @@ RECOMMENDATIONS 將一個項目或一組項目作為輸入，並傳回相關建�
 * 可以傳送電子郵件 (例如，匯入目錄資料、 匯入使用資料) 中的資料大小上限為 200 MB
 * 每秒交易數 (TPS) 不在使用中的建議模型組建的數目是 ~ 2 TPS。 作用中 Recommendations 模型組建可以保留高達 20 TPS。
 
-## 購買和計費
+##購買和計費 
+
 
 **在推出期間，Recommendations 的價格為何？**
 
@@ -54,7 +55,7 @@ Recommendations 是一項以訂用帳戶為基礎的服務。 收費是根據每
 
 **Recommendations 何時會計費？**
 
-付費的訂閱就是任何按月計價的訂閱。 當您購買付費的訂用帳戶時，我們會立即向您收取第一個月的使用費用。 您需支付訂用帳戶頁面上提供項目旁邊顯示的相關金額 (加上適用稅額)。 這筆每月費用會每個月在與您原先購買相同的行事曆日期收取，直到您取消訂閱為止。
+付費的訂閱就是任何按月計價的訂閱。 當您購買付費的訂用帳戶時，我們會立即向您收取第一個月的使用費用。 您需支付訂用帳戶頁面上提供項目旁邊顯示的相關金額 (加上適用稅額)。 這筆每月費用會每個月在與您原先購買相同的行事曆日期收取，直到您取消訂閱為止。 
 
 **如何升級至較高層的服務？**
 
@@ -62,7 +63,7 @@ Recommendations 是一項以訂用帳戶為基礎的服務。 收費是根據每
 
 當您升級訂閱時：
 
-* 舊訂用帳戶剩餘的交易不會加至新的訂用帳戶。
+* 舊訂用帳戶剩餘的交易不會加至新的訂用帳戶。 
 * 即使您的舊訂閱有未使用的交易，仍需支付新訂閱的完整價格。
 
 升級訂用帳戶的程序：
@@ -70,9 +71,9 @@ Recommendations 是一項以訂用帳戶為基礎的服務。 收費是根據每
 * 導覽至 [優惠 page] (https://datamarket.azure.com/dataset/amla/recommendations)。
 * 如果您還沒有登入，請登入 Marketplace。
 * 在右窗格中，會列出所有可用的計畫。 按一下您要升級至的計劃的選項按鈕。
-* 如果您想要升級，請按一下 [**確定**]。 如果您不想要升級，請按一下 [**取消**]。
+* 如果您想要升級，請按一下 **確定**。 如果您不想要升級，請按一下 **取消**。
 
-**重要事項**：升級前，請先仔細閱讀對話方塊，因為其中有計費和使用暗示。
+**重要** 仔細閱讀對話方塊，然後再升級因為有計費和使用暗示。
 
 **我的 Recommendations 訂用帳戶何時會結束？**
 
@@ -80,27 +81,27 @@ Recommendations 是一項以訂用帳戶為基礎的服務。 收費是根據每
 
 **如何取消我的 Recommendations 訂用帳戶？**
 
-若要取消您的訂用帳戶，請使用下列步驟。如果您目前的訂閱是付費的訂閱，則您的訂閱會持續有效，直到目前的計費期間結束為止。如果您需要取消立即生效，請連絡我們 [Microsoft 支援服務](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn)。
+若要取消您的訂用帳戶，請使用下列步驟。 如果您目前的訂閱是付費的訂閱，則您的訂閱會持續有效，直到目前的計費期間結束為止。 如果您需要取消立即生效，請連絡我們 [Microsoft 支援服務](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn)。
 
-**附註**：如果您在計費期間結束前取消，或對於計費期間內未使用的交易，均不會提供退款。
+**請注意** 不提供任何退款如果計費期間內或未使用的交易的計費期間結束前取消。
 
 * 導覽至 [優惠 page] (https://datamarket.azure.com/dataset/amla/recommendations)。
 * 如果您還沒有登入，請登入 Marketplace。
-* 按一下資料集名稱和狀態右邊的 [**取消**]。 您可以使用此訂用帳戶，直到目前的計費期間結束或達到您的交易限制為止 (以較早發生者為準)。
+* 按一下 [ **取消** 右邊的資料集名稱和狀態。 您可以使用此訂用帳戶，直到目前的計費期間結束或達到您的交易限制為止 (以較早發生者為準)。
 
 如果您想要取消訂閱，以便購買新的訂閱，請立即，提出票證 [Microsoft 支援服務](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn)。
 
-## 開始使用 Recommendations
+##開始使用 Recommendations
 
-**Recommendations 是給我的嗎？**
+**Recommendations 是給我的嗎？** 
 
-機器學習服務中的 Recommendations 適用於依賴建議向客戶進行交叉銷售和向上銷售產品或服務的組織和企業。 如果您有面向客戶的網站、銷售團隊、內部銷售團隊或客服中心，而且如果您提供的目錄有好幾十項產品或服務 – 您的盈餘即可受惠於使用 Recommendations。
+機器學習服務中的 Recommendations 適用於依賴建議向客戶進行交叉銷售和向上銷售產品或服務的組織和企業。 如果您有面向客戶的網站、銷售團隊、內部銷售團隊或客服中心，而且如果您提供的目錄有好幾十項產品或服務 – 您的盈餘即可受惠於使用 Recommendations。 
 
-實驗 Recommendations 的設計相當簡單。 目前的 API 版本可執行必要的基本程式設計技能。 如需協助，請連絡您網站的開發廠商。 如果您有內部 IT 部門或內部的開發人員，他們應可為您取得 Recommendations。
+實驗 Recommendations 的設計相當簡單。 目前的 API 版本可執行必要的基本程式設計技能。 如需協助，請連絡您網站的開發廠商。 如果您有內部 IT 部門或內部的開發人員，他們應可為您取得 Recommendations。 
 
 **設定 Recommendations 的必要條件為何？**
 
-Recommendations 要求您有與您的目錄相關的使用者選擇記錄檔。 如果您沒有這類記錄檔，而且有面向客戶的網站，則 Recommendations 可為您收集使用者活動。
+Recommendations 要求您有與您的目錄相關的使用者選擇記錄檔。 如果您沒有這類記錄檔，而且有面向客戶的網站，則 Recommendations 可為您收集使用者活動。 
 
 Recommendations 也需要您的產品或服務目錄。 如果您沒有目錄，Recommendations 可以使用實際的客戶使用資料並摘錄成目錄。 「隱含」目錄不包含未「回報」成為使用者交易一部分的項目。
 
@@ -108,7 +109,7 @@ Recommendations 也需要您的產品或服務目錄。 如果您沒有目錄，
 
 在 [訂閱] (https://datamarket.azure.com/dataset/amla/recommendations) 的建議，您應該使用中的 API 文件 [Azure Machine Learning 建議 – 快速入門指南](machine-learning-recommendation-api-quick-start-guide.md) 來設定服務。
 
-**哪裡可以找到 API 文件？**
+**哪裡可以找到 API 文件？** 
 
 API 文件是 [Azure Machine Learning 建議 – 快速入門指南](machine-learning-recommendation-api-quick-start-guide.md)。
 
@@ -116,7 +117,7 @@ API 文件是 [Azure Machine Learning 建議 – 快速入門指南](machine-lea
 
 您有兩個選項可以上傳您的目錄和使用量資料：您可以從 CRM 系統或其他記錄檔匯出資料，並將它上傳至 Recommendations，或您可以將會追蹤使用者活動的標記加入至您的網站。 如果您使用第二個方法，資料會儲存在 Azure 中。
 
-## 維護與支援
+##維護與支援
 
 **我可以有多大的資料集？**
 
@@ -133,9 +134,5 @@ API 文件是 [Azure Machine Learning 建議 – 快速入門指南](machine-lea
 
 
 
-
-
-
-
-
+ 
 

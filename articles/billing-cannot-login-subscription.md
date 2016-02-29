@@ -18,20 +18,19 @@
     ms.date="11/30/2015"
     ms.author="genli"/>
 
-
 # 我無法登入來管理我的 Azure 訂用帳戶
 
 本文將協助您疑難排解登入問題的常見原因。
 
 ## 您想進入哪個入口網站？
 
-帳戶擁有者只能存取 [帳戶中心](https://account.windowsazure.com/) 而服務系統管理員 (SA) 和共同管理員 (CA) 可以存取 [Azure 入口網站](https://manage.windowsazure.com/)。
+帳戶擁有者只能存取 [帳戶中心](https://account.windowsazure.com/) 服務系統管理員 (SA) 和共同管理員 (CA) 可以存取而 [Azure 入口網站](https://manage.windowsazure.com/)。
 
 有關更新管理員角色的說明，請按一下下方連結：
 
-- [若要更新您的帳戶 SA](./billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription)
+- [更新帳戶的 SA](./billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription)
 
-- [在管理入口網站中加入新的 CA](./billing-add-change-azure-subscription-administrator.md#add-a-co-administrator-for-a-subscription)
+- [在管理入口網站中新增 CA](./billing-add-change-azure-subscription-administrator.md#add-a-co-administrator-for-a-subscription)
 
 ## 您的訂用帳戶是否與 Microsoft 帳戶或是組織帳戶相關聯？
 
@@ -48,16 +47,12 @@
 
 現在可以使用組織帳戶登入 Azure，以下是變更服務管理員 (SA) 和共同管理員 (CA) 帳戶的需求：
 
-| 登入方法| 是否能將 Microsoft 帳戶新增為共同管理員或服務管理員？| 是否能在同一組織中將組織帳戶新增為共同管理員或服務管理員？| 是否能在不同組織中將組織帳戶新增為共同管理員或服務管理員？
+| 登入方法| 是否能將 Microsoft 帳戶新增為共同管理員或服務管理員？  |是否能在同一組織中將組織帳戶新增為共同管理員或服務管理員？ |是否能在不同組織中將組織帳戶新增為共同管理員或服務管理員？
 | ------------- | ------------- |---------------|---------------|
-| Microsoft 帳戶| 是| 否| 否|
-| 組織帳戶| 是| 是| 否|
+|Microsoft 帳戶 |是|否|否|
+|組織帳戶|是|是|否|
 
 ## 使用 IE InPrivate 瀏覽模式，並也使用其他瀏覽器嘗試刪除快取/Cookies
 
 如果您需要更多協助，在本文中的任何時間點，您可以與 Azure 專家 [MSDN Azure 和堆疊溢位論壇](http://azure.microsoft.com/support/forums/)。 或者，您也可以提出 Azure 支援事件。 移至 [Azure 支援網站](http://azure.microsoft.com/support/options/) ，然後按一下 [取得支援。 使用 Azure 支援的相關資訊，請參閱 [Microsoft Azure 支援常見問題集](http://azure.microsoft.com/support/faq/)。
-
-
-
-
 

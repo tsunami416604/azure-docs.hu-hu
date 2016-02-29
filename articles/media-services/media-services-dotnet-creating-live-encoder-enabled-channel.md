@@ -17,25 +17,25 @@
     ms.author="juliako"/>
 
 
-
-# 使用 .NET SDK 建立通道，以執行從單一位元速率到多位元速率串流的即時編碼
+#使用 .NET SDK 建立通道，以執行從單一位元速率到多位元速率串流的即時編碼
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
+- [入口網站](media-services-portal-creating-live-encoder-enabled-channel.md)
 - [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
+##概觀
 
-## 概觀
+本教學課程將逐步引導您逐步完成建立 **通道** 可接收單一位元速率即時資料流，並將其編碼為多位元速率串流。
 
-本教學課程將逐步引導您建立**通道**，可接收單一位元速率的即時串流，並將其編碼為多位元速率串流。
 >[AZURE.NOTE]啟用即時編碼的通道相關的詳細概念資訊，請參閱 [使用的通道之執行即時編碼從單一位元速率到多位元速率串流](media-services-manage-live-encoder-enabled-channels.md)。
 
 
-## 常見即時串流案例
+##常見即時串流案例
 
 下列步驟說明建立常見即時串流應用程式所包含的工作。
->[AZURE.NOTE] 目前，即時事件的最大建議持續時間是 8 小時。 如果您需要較長的時間來執行通道，請連絡 amslived@Microsoft.com。
+
+>[AZURE.NOTE] 目前，即時事件的最大建議執行時間是 8 小時。 如果您需要較長的時間來執行通道，請連絡 amslived@Microsoft.com。
 
 1. 將攝影機連接到電腦。 啟動和設定可使用下列其中一種通訊協定輸出單一位元速率串流的內部部署即時編碼器：RTMP、Smooth Streaming 或 RTP (MPEG-TS)。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](http://go.microsoft.com/fwlink/?LinkId=532824)。
 
@@ -66,7 +66,7 @@
 1. 每當您想要停止串流處理和封存事件時，請停止程式。
 1. 刪除程式 (並選擇性地刪除資產)。
 
-## 本主題內容
+##本主題內容
 
 本主題示範如何使用 Media Services.NET SDK 在通道上執行不同的作業和程式。 因為許多作業會長時間執行，所以會使用管理長時間執行作業的 .NET API。
 
@@ -82,35 +82,34 @@
 1. 清除您的通道和所有相關聯的資源。
 
 
-## 考量
+##考量
 
 - 目前，即時事件的最大建議持續時間是 8 小時。 如果您需要較長的時間來執行通道，請連絡 amslived@Microsoft.com。
 - 請確定在您想串流內容的串流端點上至少有一個串流保留單元。
 
-## 下載範例
+##下載範例
 
 取得並執行範例的 [這裡](http://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)。
 
-## 必要條件
-
+##必要條件
 需要有下列項目，才能完成教學課程。
 
 - 若要完成此教學課程，您需要 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。
-如需詳細資訊，請參閱 [Azure 免費試用](azure.microsoft.com)。
+如需詳細資料，請參閱 [Azure 免費試用](azure.microsoft.com)。
 - 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱 [建立帳戶](media-services-create-account.md)。
 - Visual Studio 2010 SP1 或更新版本。
 - 您必須使用媒體服務 .NET SDK 3.2.0.0 版或更新版本。
 - 網路攝影機和可以傳送單一位元速率即時串流的編碼器。
 
-## 設定使用媒體服務 SDK for.NET 的開發
+##設定使用媒體服務 SDK for.NET 的開發
 
 1. 使用 Visual Studio 建立主控台應用程式。
 1. 使用媒體服務 NuGet 封裝，將媒體服務 SDK for.NET 新增至您的主控台應用程式。
 
-## 連線到媒體服務
-
+##連線到媒體服務
 您的最佳做法是使用 app.config 檔案來儲存媒體服務名稱和帳戶金鑰。
->[AZURE.NOTE]若要尋找名稱和金鑰值，請移至 Azure 傳統入口網站，並選取您的媒體服務帳戶，然後按一下入口網站視窗底部的「管理金鑰」圖示。 按一下每個文字方塊旁邊的圖示，會將值複製到系統剪貼簿。
+
+>[AZURE.NOTE]若要尋找的名稱和金鑰值，請移至 Azure 傳統入口網站、 選取您媒體服務帳戶，然後按一下入口網站視窗底部的 [管理金鑰] 圖示。 按一下每個文字方塊旁邊的圖示，會將值複製到系統剪貼簿。
 
 將 [appSettings] 區段新增至 app.config 檔案，並設定媒體服務帳戶名稱和帳戶金鑰的值。
 
@@ -122,9 +121,9 @@
           <add key="MediaServicesAccountKey" value="YouMediaServicesAccountKey" />
       </appSettings>
     </configuration>
-
-
-## 程式碼範例
+     
+    
+##程式碼範例
 
     using System;
     using System.Collections.Generic;
@@ -511,19 +510,16 @@
         }
     }   
 
-## 後續步驟：媒體服務學習路徑
+
+##後續步驟：媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ### 尋找其他內容嗎？
 
 如果本主題未包含您預期的內容、缺少部分內容，或者提供了一些其他不符合您需求的方式，請在下方提供您使用 Disqus 執行緒的意見反應給我們。
-
-
-
-
 

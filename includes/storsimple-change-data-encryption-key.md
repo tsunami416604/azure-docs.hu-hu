@@ -1,3 +1,4 @@
+<!--author=SharS last changed: 12/01/15-->
 
 ### 步驟 1：在管理入口網站中授權裝置以變更服務資料加密金鑰
 
@@ -26,18 +27,19 @@
 
 #### 授權裝置以變更索引鍵
 
-1. 在服務儀表板頁面上，按一下 [**變更服務資料加密金鑰**]。
+1. 在服務儀表板頁面上，按一下 [ **變更服務資料加密金鑰**。
 
     ![變更服務加密金鑰](./media/storsimple-change-data-encryption-key/HCS_ChangeServiceDataEncryptionKey-include.png)
 
-2. 在 [**變更服務資枓加密金鑰**] 對話方塊中，選取並授權裝置以起始服務資料加密金鑰變更。 下拉式清單包含有資格獲得授權的所有裝置。
+2. 在 **變更服務資料加密金鑰** ] 對話方塊，選取並授權裝置以起始服務資料加密金鑰變更。 下拉式清單包含有資格獲得授權的所有裝置。
 
-3. 按一下核取圖示 ![核取圖示](./media/storsimple-change-data-encryption-key/HCS_CheckIcon-include.png)。
+3. 按一下核取圖示 ![核取圖示](./media/storsimple-change-data-encryption-key/HCS_CheckIcon-include.png).
 
 ### 步驟 2：使用 Windows PowerShell for StorSimple 起始服務資料加密金鑰變更
 
 這個步驟是在 Windows PowerShell for StorSimple 介面中，對已獲授權的 StorSimple 裝置執行。
-> [AZURE.NOTE] 除非金鑰變換完成，否則無法在 Azure  傳統入口網站對 StorSimple Manager 服務執行任何作業。
+
+> [AZURE.NOTE] StorSimple Manager 服務在 Azure 傳統入口網站可以不執行任何作業，直到金鑰變換完成為止。
 
 如果您使用裝置序列主控台連接到 Windows PowerShell 介面，請執行下列步驟。
 
@@ -47,10 +49,11 @@
 
 2. 在命令提示字元中，輸入：
 
-     `叫用 HcsmServiceDataEncryptionKeyChange`
+     `Invoke-HcsmServiceDataEncryptionKeyChange`
 
 3. Cmdlet 順利完成之後，您就會得到新的服務資料加密金鑰。 複製並儲存此金鑰，以供此程序的步驟 3 使用。 此金鑰將用來更新已向 StorSimple Manager 服務註冊的其餘所有裝置。
-    > [AZURE.NOTE] 此程序必須在授權 StorSimple 裝置後的四個小時內起始。
+
+    > [AZURE.NOTE] 這個程序必須授權 StorSimple 裝置的四個小時內啟動。
 
    然後，新金鑰就會傳送至服務並推播至所有已向服務註冊的裝置。 之後，服務儀表板上將出現警示。 此服務會停用已註冊的裝置上的所有作業，然後裝置管理員就必須在其他裝置上更新服務資料加密金鑰。 不過，不會中斷 I/O (將資料傳送至雲端的主機)。
 
@@ -68,13 +71,9 @@
 
 2. 在命令提示字元中，輸入：
 
-    `叫用-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+    `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 
 3. 提供您在中取得的服務資料加密金鑰 [步驟 2: 使用 Windows PowerShell for StorSimple 起始服務資料加密金鑰變更](#to-initiate-the-service-data-encryption-key-change)。
-
-
-
-
 
 
 

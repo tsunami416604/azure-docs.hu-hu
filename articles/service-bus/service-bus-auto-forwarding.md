@@ -15,14 +15,13 @@
    ms.date="09/18/2015"
    ms.author="sethm" />
 
-
 # 使用自動轉寄鏈結服務匯流排實體
 
-「自動轉寄」**功能可讓您將佇列或訂用帳戶鏈結至另一個屬於相同服務命名空間的佇列或主題。 啟用自動轉寄後，服務匯流排會自動移除放在第一個佇列或訂用帳戶 (來源) 中的訊息，然後將它們放入第二個佇列或主題 (目的地) 中。 請注意，仍有可能將訊息直接傳送至目的地實體。 也請注意，不可能將子佇列 (例如寄不出的信件) 鏈結至另一個佇列或主題。
+ *自動轉送* 功能可讓您鏈結佇列或訂閱另一個佇列或主題，是相同的服務命名空間的一部分。 啟用自動轉寄後，服務匯流排會自動移除放在第一個佇列或訂用帳戶 (來源) 中的訊息，然後將它們放入第二個佇列或主題 (目的地) 中。 請注意，仍有可能將訊息直接傳送至目的地實體。 也請注意，不可能將子佇列 (例如寄不出的信件) 鏈結至另一個佇列或主題。
 
 ## 訊息自動轉寄
 
-您可以藉由設定啟用自動轉送 [QueueDescription.ForwardTo []][] 或 [SubscriptionDescription.ForwardTo []][] 屬性 [QueueDescription []][] 或 [SubscriptionDescription []][] 物件做為來源，如下列範例所示。
+您可以藉由設定啟用自動轉送 [QueueDescription.ForwardTo][] 或 [SubscriptionDescription.ForwardTo][] 屬性 [QueueDescription][] 或 [SubscriptionDescription][] 物件做為來源，如下列範例所示。
 
 ```
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -50,24 +49,22 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 服務匯流排會針對每一則轉寄的訊息向一個作業計費。 例如，如果所有第一層訂用帳戶都收到訊息的複本，將訊息傳送至有 20 個訂用帳戶的主題 (其中的每個訂用帳戶都會設定成將訊息自動轉寄至另一個佇列或主題) 會被以 21 個作業計費。
 
-若要建立鏈結至另一個佇列或主題的訂用帳戶，訂用帳戶的建立者必須同時擁有來源和目的地實體的**管理**權限。 將訊息傳送至來源主題只需要來源主題的**傳送**權限。
+若要建立鏈結至另一個佇列或主題的訂閱，訂閱的建立者必須具有 **管理** 來源和目的地實體的權限。 將訊息傳送至來源主題只需要 **傳送** 來源主題的權限。
 
 ## 後續步驟
 
 如需自動轉送的詳細資訊，請參閱下列參考主題：
 
-- [SubscriptionDescription.ForwardTo]][]
-- [QueueDescription]][]
-- [SubscriptionDescription]][]
+- [SubscriptionDescription.ForwardTo][]
+- [QueueDescription][]
+- [SubscriptionDescription][]
 
-若要深入了解服務匯流排效能增強功能，請參閱 [分割訊息實體 []][]。
+若要深入了解服務匯流排效能增強功能，請參閱 [分割訊息實體][]。
 
-
-[queuedescription.forwardto]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx 
-[subscriptiondescription.forwardto]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.forwardto.aspx 
-[queuedescription]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.aspx 
-[subscriptiondescription]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.aspx 
-[0]: ./media/service-bus-auto-forwarding/IC628631.gif 
-[1]: ./media/service-bus-auto-forwarding/IC628632.gif 
-[partitioning messaging entities]: service-bus-partitioning.md 
-
+  [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
+  [SubscriptionDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.forwardto.aspx
+  [QueueDescription]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.aspx
+  [SubscriptionDescription]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.aspx
+  [0]: ./media/service-bus-auto-forwarding/IC628631.gif
+  [1]: ./media/service-bus-auto-forwarding/IC628632.gif
+  [Partitioning Messaging Entities]: service-bus-partitioning.md

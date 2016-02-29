@@ -16,7 +16,6 @@
     ms.date="11/09/2015" 
     ms.author="spelluru"/>
 
-
 # Pig 活動
 
 Data Factory 中的 HDInsight Pig 活動 [管線](data-factory-create-pipelines.md) 上執行 Pig 查詢 [自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) 或 [隨](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux 為基礎的 HDInsight 叢集。 這篇文章是根據 [資料轉換活動](data-factory-data-transformation-activities.md) 文章，它呈現資料轉換和支援的轉換活動的一般概觀。
@@ -60,22 +59,22 @@ Data Factory 中的 HDInsight Pig 活動 [管線](data-factory-create-pipelines.
 
 ## 語法詳細資料
 
- 屬性| 說明| 必要
+屬性 | 說明 | 必要
 -------- | ----------- | --------
- 名稱| 活動的名稱| 是
- 說明| 說明活動用途的文字| 否
- 類型| HDInsightPig| 是
- 輸入| Pig 活動所耗用的輸入| 否
- 輸出| Pig 活動所產生的輸出| 是
- linkedServiceName| 參考 HDInsight 叢集註冊為 Data Factory 中的連結服務| 是
- script| 指定 Pig 指令碼內嵌| 否
- 指令碼路徑| 在 Azure blob 儲存體中儲存 Pig 指令碼，並提供檔案的路徑。使用 'script' 或 'scriptPath' 屬性。兩者無法同時使用| 否
- 定義| 在使用 Pig 指令碼內指定參數做為參考的機碼/值組| 否
+名稱 | 活動的名稱 | 是
+說明 | 說明活動用途的文字 | 否
+類型 | HDInsightPig | 是
+輸入 | Pig 活動所耗用的輸入 | 否
+輸出 | Pig 活動所產生的輸出 | 是
+linkedServiceName | 參考 HDInsight 叢集註冊為 Data Factory 中的連結服務 | 是
+script | 指定 Pig 指令碼內嵌 | 否
+指令碼路徑 | 在 Azure blob 儲存體中儲存 Pig 指令碼，並提供檔案的路徑。 使用 'script' 或 'scriptPath' 屬性。 兩者無法同時使用 | 否
+定義 | 在使用 Pig 指令碼內指定參數做為參考的機碼/值組 | 否
 
 ## 範例
 
 我們來看看遊戲記錄檔分析的範例，您想要識別使用者花多少時間在玩貴公司開發的遊戲。
-
+ 
 以下是範例遊戲記錄檔，以逗號 (,) 分隔，並包含下列欄位 – ProfileID、SessionStart、Duration、SrcIPAddress 和 GameType。
 
     1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -84,7 +83,7 @@ Data Factory 中的 HDInsight Pig 活動 [管線](data-factory-create-pipelines.
     1809,2014-05-04 05:24:22.2100000,23,192.84.66.141,KingHill
     .....
 
-要處理此資料的 **Pig 指令碼**看起來像這樣：
+ **Pig 的指令碼** 這項資料看起來像這樣的程序:
 
     PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
     
@@ -99,8 +98,9 @@ Data Factory 中的 HDInsight Pig 活動 [管線](data-factory-create-pipelines.
 1. 建立連結的服務，以註冊 [您自己的 HDInsight 運算叢集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) 或設定 [隨選 HDInsight 運算叢集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。 讓我們將此連結服務命名為 "HDInsightLinkedService"。
 2.  建立 [連結服務](data-factory-azure-storage-connector.md) 設定裝載資料的 Azure Blob 儲存體的連接。 讓我們將此連結服務命名為 "StorageLinkedService"。
 3.  建立 [資料集](data-factory-create-datasets.md) 指向的輸入和輸出資料。 讓我們分別命名輸入資料集為 "PigSampleIn" 和輸出資料集為 "PigSampleOut"。
-4.  上述步驟 #2 中，設定複製檔案的 Azure Blob 儲存體中的 Pig 查詢。 如果裝載資料的連結的服務是裝載此查詢檔案的不同，建立個別的 Azure 儲存體連結服務，並在活動組態中參考它。 使用 **scriptPath * * 指定 pig 指令碼檔案的路徑和 * * scriptLinkedService** 指定包含指令碼檔案的 Azure 儲存體。
-    > [AZURE.NOTE] 您也可以使用**指令碼**屬性提供活動定義中內嵌的 Pig 指令碼，但是不建議這麼做，因為 JSON 文件內指令碼中的所有特殊字元需要逸出，而且可能會造成偵錯問題。 最佳做法是遵循步驟 #4。
+4.  上述步驟 #2 中，設定複製檔案的 Azure Blob 儲存體中的 Pig 查詢。 如果裝載資料的連結的服務是裝載此查詢檔案的不同，建立個別的 Azure 儲存體連結服務，並在活動組態中參考它。 使用 * * scriptPath * * 指定 pig 指令碼檔案的路徑和 **scriptLinkedService** 指定包含指令碼檔案的 Azure 儲存體。 
+    
+    > [AZURE.NOTE] 您也可以提供活動定義中內嵌的 Pig 指令碼使用 **指令碼** 屬性，但這不建議您使用，因為 JSON 文件中的指令碼中的所有特殊字元需要逸出，而且可能會造成偵錯問題。 最佳做法是遵循步驟 #4。
 5. 利用 HDInsightPig 活動建立下列管線來處理資料。
 
         {
@@ -133,17 +133,16 @@ Data Factory 中的 HDInsight Pig 活動 [管線](data-factory-create-pipelines.
             ]
           }
         } 
-
-6. 部署管線。 請參閱 [建立管線](data-factory-create-pipelines.md) 文章以取得詳細資料。
+6. 部署管線。 請參閱 [建立管線](data-factory-create-pipelines.md) 文章以取得詳細資料。 
 7. 使用資料處理站監視和管理檢視來監視管線。 請參閱 [監視和管理 Data Factory 管線](data-factory-monitor-manage-pipelines.md) 文章以取得詳細資料。
 
 ## 使用定義項目指定 Pig 指令碼的參數
 
 請考慮此範例，每天都會將遊戲記錄檔擷取到 Azure Blob 儲存體，並儲存在使用日期和時間分割的資料夾。 您想要參數化 Pig 指令碼，在執行階段期間以動態方式傳遞輸入資料夾位置，並且產生使用日期和時間分割的輸出。
-
+ 
 若要使用參數化 Pig 指令碼，請執行下列動作：
 
-- 定義 **defines** 中的參數。
+- 定義中的參數 **定義**。
 
         {
             "name": "PigActivitySamplePipeline",
@@ -179,18 +178,13 @@ Data Factory 中的 HDInsight Pig 活動 [管線](data-factory-create-pipelines.
             ]
           }
         }  
-
-- 在 Pig 指令碼中，使用 '**$parameterName**' 參考參數，如下列範例所示：
+      
+- 在 Pig 指令碼中參考使用的參數 '**$parameterName**' 如下列範例所示:
 
         PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);   
         GroupProfile = Group PigSampleIn all;       
         PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);      
         Store PigSampleOut into '$Output' USING PigStorage (','); 
-
-
-
-
-
 
 
 

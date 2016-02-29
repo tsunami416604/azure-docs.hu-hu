@@ -16,7 +16,6 @@
    ms.date="10/13/2015"
    ms.author="seanmck"/>
 
-
 # 疑難排解本機開發叢集設定
 
 如果您在與本機開發叢集互動時遇到問題，請檢閱下列建議，以尋求可能的解決方法。
@@ -34,6 +33,7 @@
     + ~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo : NotSpecified: (:) [Write-Error], WriteErrorException
     + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,DevClusterSetup.ps1
+
 
 #### 解決方法
 
@@ -83,10 +83,6 @@
 
 ## 後續步驟
 
-- [了解及疑難排解您的叢集與系統健康情況報告](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+- [透過系統健康情況報告了解及疑難排解您的叢集](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [使用 Service Fabric 總管視覺化叢集](service-fabric-visualizing-your-cluster.md)
-
-
-
-
 

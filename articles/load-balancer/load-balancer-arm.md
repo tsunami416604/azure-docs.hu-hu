@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure 資源管理員的負載平衡器支援預覽版 | Microsoft Azure "
-   description="在預覽中，搭配使用適用於負載平衡器的 PowerShell 與 Azure 資源管理員 (ARM)在負載平衡器中使用範本"
+   description="在預覽中，搭配使用適用於負載平衡器的 PowerShell 與 Azure 資源管理員 (ARM) 在負載平衡器中使用範本"
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
@@ -16,10 +16,9 @@
    ms.author="joaoma" />
 
 
+# Azure 資源管理員的 Azure 負載平衡器支援 
 
-# Azure 資源管理員的 Azure 負載平衡器支援
-
-Azure 資源管理員 (ARM) 是 Azure 中新的服務管理架構。 Azure 負載平衡器現在可使用以 Azure 資源管理員為基礎的 API 和工具來管理。 若要深入了解 Azure 資源管理員，請參閱 [使用資源群組管理您的 Azure 資源](../azure-preview-portal-using-resource-groups.md)。
+Azure 資源管理員 (ARM) 是 Azure 中新的服務管理架構。 Azure 負載平衡器現在可使用以 Azure 資源管理員為基礎的 API 和工具來進行管理。 若要深入了解 Azure 資源管理員，請參閱 [使用資源群組管理您的 Azure 資源](../azure-preview-portal-using-resource-groups.md)。
 
 ## 概念
 
@@ -41,7 +40,6 @@ Azure 資源管理員 (ARM) 是 Azure 中新的服務管理架構。 Azure 負�
 
 
 ## 快速入門範本
-
 Azure 資源管理員可讓您使用宣告式範本佈建應用程式。 在單一的範本中，您可以部署多個服務及其相依性。 您可以使用相同的範本，在應用程式生命週期的每個階段重複部署應用程式
 
 範本包含虛擬機器、虛擬網路、可用性設定組、網路介面 (NIC)、儲存體帳戶、負載平衡器、網路安全性群組和公開 IP。 有了範本之後，您可以使用一個可以簽入及共同作業的簡單檔案，來建立複雜應用程式所需的所有項目。
@@ -54,22 +52,22 @@ Azure 資源管理員可讓您使用宣告式範本佈建應用程式。 在單�
 
 範本的範例：
 
-- [2 部 Vm 在負載平衡器和負載平衡規則](http://go.microsoft.com/fwlink/?LinkId=544799)
+- [負載平衡器中的 2 部 VM 和負載平衡規則](http://go.microsoft.com/fwlink/?LinkId=544799)
 
-- [2 部 Vm 在 VNET 內部負載平衡器和負載平衡器規則](http://go.microsoft.com/fwlink/?LinkId=544800)
+- [搭配內部負載平衡器的 VNET 中的 2 部 VM 和負載平衡器規則](http://go.microsoft.com/fwlink/?LinkId=544800)
 
-- [負載平衡器的 2 部 Vm，並在 LB 上設定 NAT 規則](http://go.microsoft.com/fwlink/?LinkId=544801)
+- [負載平衡器中的 2 部 VM，並在 LB 上設定 NAT 規則](http://go.microsoft.com/fwlink/?LinkId=544801)
 
 
 ## 使用 PowerShell 或 CLI 設定 Azure 負載平衡器
 
 [Azure 網路 Cmdlet](https://msdn.microsoft.com/library/azure/mt163510.aspx) 可用來建立負載平衡器。 開始使用 ARM Cmdlet 和 REST API
 
-- [如何建立使用 Azure 資源管理員的負載平衡器](../load-balancer-arm-powershell)
+- [如何使用 Azure 資源管理員建立負載平衡器](../load-balancer-arm-powershell)
 
-- [使用 Azure CLI 搭配 Azure 資源管理](../xplat-cli-azure-resource-manager)
+- [搭配使用 Azure 資源管理與 Azure CLI](../xplat-cli-azure-resource-manager)
 
-- [負載平衡器 REST Api](https://msdn.microsoft.com/library/azure/mt163651.aspx)
+- [負載平衡器 REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 
 ## 另請參閱
@@ -77,9 +75,5 @@ Azure 資源管理員可讓您使用宣告式範本佈建應用程式。 在單�
 [設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-
+ 
 

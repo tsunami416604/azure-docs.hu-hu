@@ -4,10 +4,5 @@
 - [Windows](../articles/app-insights-windows-get-started.md)
 - [iOS](../articles/app-insights-ios.md)
 - [Android](../articles/app-insights-android.md)
-- [Other](../articles/app-insights-platforms.md)
-
-
-
-
-
+- [其他](../articles/app-insights-platforms.md)
 

@@ -16,8 +16,7 @@
    ms.author="cherylmc"/>
 
 
-
-# ExpressRoute 必要條件
+# ExpressRoute 必要條件   
 
 若要使用 ExpressRoute 連線到 Microsoft 雲端服務，您必須確認是否符合以下各節中所列的下列需求。
 
@@ -36,7 +35,7 @@
 
 ## 位於您的網路與連線服務提供者之間的實體連線
 
-如需連線模型的詳細資訊，請參閱＜連線模型＞一節。 客戶必須確保其內部部署基礎結構會透過其中一個所述的模型，實際連線到服務提供者基礎結構。
+如需連線模型的詳細資訊，請參閱＜連線模型＞一節。 客戶必須確保其內部部署基礎結構會透過其中一個所述的模型，實際連線到服務提供者基礎結構。 
 
 ## 連線的備援性需求
 
@@ -45,7 +44,7 @@ Microsoft 不會在第 3 層上要求備援。 Microsoft 不會要求在 Microso
 
 ## IP 位址和路由考量
 
-客戶/連線提供者會負責使用 Microsoft Edge 基礎結構來設定備援 BGP 工作階段。 選擇透過 IP VPN 提供者連線的客戶，通常會依賴連線提供者來管理路由組態。 利用交換或透過點對點乙太網路提供者連線到 Microsoft 的客戶，必須針對每個對等備援 BGP 工作階段，以符合可用性 SLA 需求。 連線提供者可能會提供此項目來做為增值服務。 
+客戶/連線提供者會負責使用 Microsoft Edge 基礎結構來設定備援 BGP 工作階段。  選擇透過 IP VPN 提供者連線的客戶，通常會依賴連線提供者來管理路由組態。 利用交換或透過點對點乙太網路提供者連線到 Microsoft 的客戶，必須針對每個對等備援 BGP 工作階段，以符合可用性 SLA 需求。 連線提供者可能會提供此項目來做為增值服務。 
 參考中的路由網域表 [ExpressRoute 電路與路由網域](expressroute-circuit-peerings.md) 如需有關限制的發行項。
 
 ## 安全性和防火牆
@@ -60,22 +59,18 @@ Microsoft 不會在第 3 層上要求備援。 Microsoft 不會要求在 Microso
 
 請檢閱下列資源，以取得 Office 365 需求的詳細資訊。
 
-- [網路規劃和效能調整 for Office 365](http://aka.ms/tune)
-- [Office 365 的網路流量管理](https://msft.spoppe.com/teams/cpub/teams/IW_Admin/modsquad/_layouts/15/WopiFrame.aspx?sourcedoc=%7b23f09224-0668-4476-8627-aaff30931439%7d&action=edit&source=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fteams%2Fcpub%2Fteams%2FIW%5FAdmin%2Fmodsquad%2FSitePages%2FHome%2Easpx)
-- 請參閱 [ExpressRoute 服務需求品質的 (QoS)](expressroute-qos.md) 服務需求品質和組態的詳細指引的文章。 請洽詢您的連線服務提供者，以查看他們是否為您的 VPN 提供了多個類別的服務。
+- [適用於 Office 365 的網路規劃和效能調整](http://aka.ms/tune)
+- [Office 365 網路流量管理](https://msft.spoppe.com/teams/cpub/teams/IW_Admin/modsquad/_layouts/15/WopiFrame.aspx?sourcedoc=%7b23f09224-0668-4476-8627-aaff30931439%7d&action=edit&source=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fteams%2Fcpub%2Fteams%2FIW%5FAdmin%2Fmodsquad%2FSitePages%2FHome%2Easpx)
+- 請參閱 [ExpressRoute 服務需求品質的 (QoS)](expressroute-qos.md) 服務需求品質和組態的詳細指引的文章。 請洽詢您的連線服務提供者，以查看他們是否為您的 VPN 提供了多個類別的服務。 
 
 ## 後續步驟
 
 - 如需有關 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
 - 尋找服務提供者。 請參閱 [ExpressRoute 合作夥伴和對等互連位置](expressroute-locations.md)。
-- Refer to requirements for [Routing](expressroute-routing.md), [NAT](expressroute-nat.md) and [QoS](expressroute-qos.md).
+- 請參閱需求 [路由](expressroute-routing.md), ，[NAT](expressroute-nat.md) 和 [QoS](expressroute-qos.md)。
 - 設定 ExpressRoute 連線。
-    - [建立的 ExpressRoute 電路](expressroute-howto-circuit-classic.md)
+    - [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)
     - [設定路由](expressroute-howto-routing-classic.md)
-    - [連結至 ExpressRoute 電路的 VNet](expressroute-howto-linkvnet-classic.md)
-
-
-
-
+    - [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)
 
 

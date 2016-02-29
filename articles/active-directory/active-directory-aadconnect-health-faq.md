@@ -1,6 +1,6 @@
 <properties
     pageTitle="Azure AD Connect Health 常見問題集"
-    description="此常見問題集會回答 Azure AD Connect Health 的相關問題。這個常見問題集涵蓋使用服務的相關問題，包括計費模型、功能、限制及支援。"
+    description="此常見問題集會回答 Azure AD Connect Health 的相關問題。 這個常見問題集涵蓋使用服務的相關問題，包括計費模型、功能、限制及支援。"
     services="active-directory"
     documentationCenter=""
     authors="billmath"
@@ -17,18 +17,21 @@
     ms.author="billmath"/>
 
 
-
 # Azure AD Connect Health 常見問題集 (FAQ)
 
 此常見問題集會回答 Azure AD Connect Health 的相關問題。 這個常見問題集涵蓋使用服務的相關問題，包括計費模型、功能、限制及支援。
 
 ## 一般問題
 
-* * 問: 我管理多個 Azure AD 目錄。 我切換到使用 Azure Active Directory Premium? * *
+
+
+**問: 我管理多個 Azure AD 目錄。 如何切換到包含 Azure Active Directory Premium?**
 
 您可以切換不同的 Azure AD 目錄，方法為在右上角選取目前登入的使用者名稱，然後選擇適當的帳戶。 如果此處未列出帳戶，請選取 [登出]，然後使用已啟用 Azure Active Directory Premium 之目錄的全域系統管理員認證登入。
 
 ## 安裝問題
+
+
 
 **問：在個別的伺服器上安裝 Azure AD Connect Health 代理程式有什麼影響？**
 
@@ -40,7 +43,7 @@ ADFS 伺服器上安裝 Microsoft Identity Health 代理程式對於 CPU、記�
 - 記憶體耗用量：最多 10% 的系統總記憶體
 - 網路頻寬使用量：每 1000 個 ADFS 要求約 1 MB
 
->[AZURE.NOTE]如果代理程式無法與 Azure 通訊，則代理程式將在本機儲存資料，最多可達定義的上限。 一旦代理程式達到限制，如果代理程式無法將資料上傳至服務，則新的 ADFS 交易將會根據「最近最少服務」覆寫任何「已快取」的交易。
+>[AZURE.NOTE]當代理程式無法與 Azure 通訊，代理程式會在本機儲存資料，最多定義的最大限制。 一旦代理程式達到限制，如果代理程式無法將資料上傳至服務，則新的 ADFS 交易將會根據「最近最少服務」覆寫任何「已快取」的交易。
 
 - AD Health 代理程式的本機緩衝區儲存體：約 20 MB
 - 稽核通道所需的資料存放區
@@ -50,28 +53,30 @@ ADFS 伺服器上安裝 Microsoft Identity Health 代理程式對於 CPU、記�
 
 **問：在安裝 Azure AD Connect Health 代理程式期間，我是否需要重新啟動我的伺服器？**
 
-號 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
+編號 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
 
 例如，在 Windows Server 2008 R2 上安裝 .Net 4.5 Framework 需要重新啟動伺服器。
 
 
 **問：Azure AD Connect Health 服務是否透過通過 http proxy 運作？**
 
-是。 若是進行中的作業，您可以設定 Health 代理程式，以使用 HTTP Proxy 來轉送輸出 http 要求。 請參閱 [設定 Azure AD Connect Health 代理程式以使用 HTTP Proxy](active-directory-aadconnect-health-agent-install-adfs.md#configure-azure-ad-connect-health-agent-to-use-http-proxy) 如需詳細資訊。
+是。  若是進行中的作業，您可以設定 Health 代理程式，以使用 HTTP Proxy 來轉送輸出 http 要求。 請參閱 [設定 Azure AD Connect Health 代理程式以使用 HTTP Proxy](active-directory-aadconnect-health-agent-install-adfs.md#configure-azure-ad-connect-health-agent-to-use-http-proxy) 如需詳細資訊。
 
-如果您需要設定 proxy 代理程式註冊期間，您需要修改您的 Internet Explorer Proxy 設定。 <br>
-開啟 Internet Explorer-> [設定]-> [網際網路選項]-> [連線]-> [LAN 設定。<br>
+如果需要在代理程式註冊期間設定 Proxy，則您需要修改 Internet Explorer Proxy 設定。 <br>
+開啟 Internet Explorer -> [設定] -> [網際網路選項] -> [連線]-> [LAN 設定]。<br>
 選取您的區域網路使用 Proxy 伺服器。<br>
 如果您有不同的 proxy 連接埠的 HTTP 和 HTTPS/安全，請選取 [進階]。<br>
 
 
 **問：連線到 Http Proxy 時，Azure AD Connect Health 服務是否支援基本驗證？**
 
-號 目前不支援指定任意使用者名稱/密碼進行基本驗證機制。
+編號 目前不支援指定任意使用者名稱/密碼進行基本驗證機制。
 
 
 
 ## 操作問題
+
+
 
 **問：我是否需要在 AD FS 應用程式 Proxy 伺服器或 Web 應用程式 Proxy 伺服器上啟用稽核？**
 
@@ -93,12 +98,8 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 ## 相關連結
 
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
-* [Azure AD Connect 健康情況代理程式安裝](active-directory-aadconnect-health-agent-install.md)
+* [Azure AD Connect Health 代理程式安裝](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)
-* [使用 Azure AD Connect Health AD fs](active-directory-aadconnect-health-adfs.md)
-* [同步處理使用 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
-
-
-
-
+* [使用 Azure AD Connect Health 搭配 AD FS](active-directory-aadconnect-health-adfs.md)
+* [使用適用於同步處理的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
 

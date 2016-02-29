@@ -16,7 +16,6 @@
     ms.date="11/30/2015"
     ms.author="christopheranderson"/>
 
-
 # 發生災害時回復行動服務
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -42,10 +41,10 @@
 
 + 連線至行動服務的應用程式已經很久沒有與服務進行通訊。
 + 行動服務狀態會顯示為 **狀況不良** [Azure 傳統入口網站]。
-+ 在 Azure 傳統入口網站中，行動服務的每個索引標籤頂端會顯示 [**狀況不良**] 橫幅，且會出現管理作業程序錯誤訊息。
++  **狀況不良** 橫幅隨即出現在您的行動服務在 Azure 傳統入口網站，每個索引標籤頂端，並管理作業會產生錯誤訊息。
 + 在 [Azure 服務儀表板] 會指出發生可用性問題。
 
-## <a name="recover"></a>從嚴重損壞修復
+## <a name="recover"></a>從災害中回復
 
 發生問題時，請利用 [服務儀表板] 來取得指引和最新消息。
 
@@ -53,7 +52,7 @@
 
 在中斷之後回復行動服務：
 
-1. 請在 Azure 傳統入口網站中，確定您的服務狀態回報為 [**狀況不良**]。
+1. 在 Azure 傳統入口網站，請確定您的服務狀態會報告為 **狀況不良**。
 
 2. 如果您已保留次要行動服務，則可以略過此步驟。
 
@@ -62,9 +61,10 @@
 3. [使用 Azure cli 自動化行動服務] 中所述，設定 Azure 命令列介面 (Azure CLI) 來處理您的訂閱。
 
 4. 現在您可以使用次要服務來回復主要服務。
-    > [AZURE.IMPORTANT] 除了移轉檔案，移轉命令也會更新主要服務的主機名稱以指向次要服務，用戶端應用程式便不需要進行更新。 不過，主機名稱需要 30 分鐘的時間才能解析成新的服務。 基於這個理由，建議只有在嚴重損壞修復案例中使用移轉命令。
 
-    > [AZURE.IMPORTANT] 執行此步驟中的命令時，將會刪除次要服務，所以其容量可用來回復主要服務。 執行命令之前，建議您先備份指令碼和設定 (若想要保留的話)。
+    > [AZURE.IMPORTANT] 除了移轉檔案，[移轉] 命令也會更新為指向次要服務，讓用戶端應用程式不需要更新主要服務的主機名稱。 不過，主機名稱需要 30 分鐘的時間才能解析成新的服務。 基於這個理由，建議只有在嚴重損壞修復案例中使用移轉命令。
+
+    > [AZURE.IMPORTANT] 當您在此步驟中執行命令時，次要服務會刪除，所以其容量可用來回復主要服務。 執行命令之前，建議您先備份指令碼和設定 (若想要保留的話)。
 
     準備好時，請執行此命令：
 
@@ -77,20 +77,20 @@
         info:    Migration complete. It may take 30 minutes for DNS to resolve to the migrated site.
         info:    mobile migrate command OK
 
-    > [AZURE.NOTE] 命令執行完後可能需要一些時間，才能在 Azure 傳統入口網站中看到變更。
+    > [AZURE.NOTE] 可能需要幾分鐘的時間之後在命令完成之前，您可以看到在 Azure 傳統入口網站中的變更。
 
 5. 與原始檔控制中的原始版本比較，以確認所有指令碼都已正確回復。 在大部分情況下，指令碼會自動回復而不會遺失資料，但如果您發現有不一致之處，則可以手動回復該指令碼。
 
 6. 請確定回復後的服務開始與 Azure SQL Database 進行通訊。 回復命令會回復行動服務，但會保留原始資料庫的連線。 如果主要 Azure 區域中的問題也影響到資料庫，則已回復的服務可能仍然無法正確執行。 您可以利用 Azure 服務儀表板來檢查特定區域的資料庫狀態。 如果原始資料庫未執行時，您可以回復它：
     + 將 Azure SQL Database 回復到您剛回復您的行動服務的 Azure 區域 [SQL Database 業務持續性] 中所述。
-    + 在 Azure 傳統入口網站中，行動服務的 [**設定**] 索引標籤上選擇 [變更資料庫]，然後選取剛復原的資料庫。
+    + 在 Azure 傳統入口網站上 **「 設定 」** ] 索引標籤的 [行動服務中，選擇 [變更資料庫]，然後選取剛回復的資料庫。
 
 7. 您的行動服務現已裝載於不同的實體位置。 您將需要更新您的發佈和/或 git 認證，以允許更新您執行中的網站。
 
     + 如果您使用 **.NET 後端**, ，您發行設定檔，重新設定中所述 [發行您的行動服務](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md#publish-your-mobile-service)。 這會更新您的發行詳細資訊，以指向新的服務位置。
-    + 如果您使用 **Javascript 後端**並透過入口網站來管理您的服務，則不需要採取任何額外的動作。
+    + 如果您使用 **Javascript 後端** 和管理您的服務與入口網站，您不需要採取任何額外的動作。
 
-    + 如果您使用 **Javascript 後端**並透過節點來管理您的服務，請更新 git 遠端以指向新的儲存機制。 若要這麼做，請從您的 git 遠端移除 .git 檔案路徑：
+    + 如果您使用 **Javascript 後端** 並管理您的服務節點之後，更新 git 遠端以指向新的儲存機制。 若要這麼做，請從您的 git 遠端移除 .git 檔案路徑：
 
         1. 尋找您目前的原始遠端：
 
@@ -104,18 +104,17 @@
 
 現在的狀態應該是行動服務已回復到新的 Azure 區域，且現在正使用其原始 URL 接收來自您的市集應用程式的流量。
 
+<!-- Anchors. -->
 
+<!-- Images. -->
 
-
-
-
-
-[sql database business continuity guidance]: http://msdn.microsoft.com/library/windowsazure/hh852669.aspx 
-[team foundation service]: http://tfs.visualstudio.com/ 
-[github]: https://github.com/ 
-[source control feature]: http://www.windowsazure.com/develop/mobile/tutorials/store-scripts-in-source-control/ 
-[using the azure cli]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/ 
-[azure classic portal]: http://manage.windowsazure.com/ 
-[azure service dashboard]: http://www.windowsazure.com/support/service-dashboard/ 
-[automate mobile services with the azure cli]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/ 
+<!-- URLs. -->
+[SQL Database business continuity guidance]: http://msdn.microsoft.com/library/windowsazure/hh852669.aspx
+[Team Foundation Service]: http://tfs.visualstudio.com/
+[Github]: https://github.com/
+[source control feature]: http://www.windowsazure.com/develop/mobile/tutorials/store-scripts-in-source-control/
+[using the Azure CLI]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
+[Azure classic portal]: http://manage.windowsazure.com/
+[Azure Service Dashboard]: http://www.windowsazure.com/support/service-dashboard/
+[Automate mobile services with the Azure CLI]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
 

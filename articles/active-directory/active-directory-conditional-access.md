@@ -17,7 +17,6 @@
     ms.author="femila"/>
 
 
-
 # 使用條件式存取管理風險
 
 當前員工的工作，他們的生產力，方式與方法來執行其工作的正快速變化。 員工開始將個人裝置帶入工作中。 這些個人裝置上，有他們在個人的數位生活中使用的應用程式。 他們對這種自由和所帶來的功能習以為常。 他們想要在工作上使用這些相同的應用程式，也想要在工作上享有他們在個人數位生活中同樣的彈性。 現今的企業員工可能從任何地點，使用他們選擇的裝置來工作，並順暢地連接和存取商務應用程式。
@@ -32,17 +31,16 @@
 
 ![][1]
 
-## 後續步驟
+## 接下來
 
 下列主題討論在組織中設定條件式存取原則的各種不同機制。
 
 - [Azure Active Directory 裝置註冊概觀](active-directory-conditional-access-device-registration-overview.md)
-- [設定內部部署條件式存取使用 Azure Active Directory 裝置註冊](active-directory-conditional-access-on-premises-setup.md)
+- [使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](active-directory-conditional-access-on-premises-setup.md)
 - [Office 365 服務的條件式存取裝置原則](active-directory-conditional-access-device-policies.md)
-- [SaaS 應用程式的 azure Conditional Access 預覽](active-directory-conditional-access-azuread-connected-apps.md)
+- [SaaS 應用程式的 Azure 條件式存取預覽](active-directory-conditional-access-azuread-connected-apps.md)
 
 
-
-
-[1]: ./media/active-directory-conditional-access/condaccoverviewvsdx1.png 
+<!--Image references-->
+[1]: ./media/active-directory-conditional-access/condaccoverviewvsdx1.png
 

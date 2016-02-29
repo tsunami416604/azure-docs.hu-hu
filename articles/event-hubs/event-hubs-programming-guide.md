@@ -15,7 +15,6 @@
    ms.date="09/30/2015"
    ms.author="sethm" />
 
-
 # 事件中樞程式設計指南
 
 本主題說明使用 Azure.NET SDK 設計 Azure 事件中樞的相關資訊。 它假設使用者對事件中樞已有初步了解。 概念概觀事件中樞，請參閱 [事件中樞概觀](event-hubs-overview.md)。
@@ -28,7 +27,7 @@
 
 ## 開始使用
 
-支援事件中樞的.NET 類別屬於 Microsoft.ServiceBus.dll 組件。 要參考服務匯流排 API，並設定應用程式以使用所有服務匯流排相依性，最簡單方法是下載服務匯流排 NuGet 封裝。 如需詳細資訊，請參閱 [使用 NuGet 服務匯流排封裝](https://msdn.microsoft.com/library/azure/dn741354.aspx)。 或者，您可以使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) Visual Studio 中。 若要這樣做，請發出下列命令在 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 視窗:
+支援事件中樞的.NET 類別屬於 Microsoft.ServiceBus.dll 組件。 要參考服務匯流排 API，並設定應用程式以使用所有服務匯流排相依性，最簡單方法是下載服務匯流排 NuGet 封裝。 如需詳細資訊，請參閱 [使用 NuGet 服務匯流排封裝](https://msdn.microsoft.com/library/azure/dn741354.aspx)。 或者，您可以使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) Visual Studio 中。 若要這樣做，請發出下列命令在 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 視窗:
 
 ```powershell
 Install-Package WindowsAzure.ServiceBus
@@ -51,7 +50,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 
 所有事件中樞建立作業，包括 [CreateEventHubIfNotExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx), ，需要 **管理** 之命名空間的權限。 如果您想要限制發佈者或取用者應用程式的權限，可以在使用有限權限認證時，於實際執行程式碼中避免這些建立作業呼叫。
 
-[EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx) 類別包含有關事件中樞，包括授權規則、 訊息保留間隔、 資料分割識別碼、 狀態和路徑的詳細資料。 您可以使用這個類別來更新事件中樞上的中繼資料。
+ [EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx) 類別包含有關事件中樞，包括授權規則、 訊息保留間隔、 資料分割識別碼、 狀態和路徑的詳細資料。 您可以使用這個類別來更新事件中樞上的中繼資料。
 
 ## 建立事件中樞用戶端
 
@@ -61,7 +60,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 var client = EventHubClient.Create(description.Path);
 ```
 
-這個方法會使用服務匯流排連線資訊，在 App.config 檔案中，在 `appSettings` 一節。 如需 `appSettings` XML 用來儲存服務匯流排連接資訊，請參閱文件 [microsoft.servicebus.messaging.eventhubclient.create (system.string)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) 方法。
+這個方法會使用 App.config 檔案之 `appSettings` 區段中的服務匯流排連線資訊。 如需 `appSettings` XML 用來儲存服務匯流排連接資訊，請參閱文件 [microsoft.servicebus.messaging.eventhubclient.create (system.string)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) 方法。
 
 另一個選項是從連接字串建立用戶端。 這個選項適合用來搭配 Azure 背景工作角色，因為您可以將字串儲存在背景工作的組態屬性中。 例如：
 
@@ -69,75 +68,81 @@ var client = EventHubClient.Create(description.Path);
 EventHubClient.CreateFromConnectionString("your_connection_string");
 ```
 
-The connection string will be in the same format as it appears in the App.config file for the previous methods:
+連接字串的格式與在前述方法之 App.config 檔案中的格式相同：
+
 ```
-Endpoint=sb://[namespace].servicebus.windows.net/SharedAccessKeyName = 管理;SharedAccessKey = [金鑰]
+Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=Manage;SharedAccessKey=[key]
 ```
 
-Finally, it is also possible to create an [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) object from a [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) instance, as shown in the following example.
+最後，您也可建立 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 物件從 [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 執行個體，如下列範例所示。
+
 ```
 var factory = MessagingFactory.CreateFromConnectionString("your_connection_string");
-var client = factory。CreateEventHubClient("MyEventHub")
+var client = factory.CreateEventHubClient("MyEventHub");
 ```
 
-It is important to note that additional [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) objects created from a messaging factory instance will reuse the same underlying TCP connection. Therefore, these objects have a client-side limit on throughput. The [Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) method reuses a single messaging factory. If you need very high throughput from a single sender, then you can create multiple message factories and one [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) object from each messaging factory.
+請務必注意額外 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 從傳訊 factory 執行個體建立的物件將會重複使用相同的基礎 TCP 連線。 因此，這些物件對用戶端的輸送量將受到限制。  [建立](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) 方法會重複使用單一的傳訊處理站。 如果您需要極高輸送量的單一寄件者，則您可以建立多個訊息中心和一個 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 從每個傳訊處理站物件。
 
-## Send events to an Event Hub
+## 將事件傳送到事件中樞
 
-You send events to an Event Hub by creating an [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) instance and sending it via the [Send](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx) method. This method takes a single [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) instance parameter and synchronously sends it to an Event Hub.
+將事件傳送至事件中心的建立 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 執行個體，並將它透過 [傳送](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx) 方法。 這個方法會採用單一 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 例項的參數，並以同步方式傳送至事件中心。
 
-## Event serialization
+## 事件序列化
 
-The [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) class has [four overloaded constructors](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) that take a variety of parameters, such as an object and serializer, a byte array, or a stream. It is also possible to instantiate the [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) class and set the body stream afterwards. When using JSON with [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx), you can use **Encoding.UTF8.GetBytes()** to retrieve the byte array for a JSON-encoded string.
+ [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別具有 [四個多載建構函式](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) ，有許多不同的參數，例如物件和序列化程式、 位元組陣列或資料流。 您也可具現化 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別，並在之後設定內文資料流。 使用 JSON 和 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx), ，您可以使用 **encoding.utf8.getbytes ()** 擷取 JSON 編碼字串的位元組陣列。
 
-## Partition key
+## 資料分割索引鍵
 
-The [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) class has a [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) property that enables the sender to specify a value that is hashed to produce a partition assignment. Using a partition key ensures that all the events with the same key are sent to the same partition in the Event Hub. Common partition keys include user session IDs and unique sender IDs. The [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) property is optional and can be provided when using the [Microsoft.ServiceBus.Messaging.EventHubClient.Send(Microsoft.ServiceBus.Messaging.EventData)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) or [Microsoft.ServiceBus.Messaging.EventHubClient.SendAsync(Microsoft.ServiceBus.Messaging.EventData)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) methods. If you do not provide a value for [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx), sent events are distributed to partitions using a round-robin model.
+ [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別具有 [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) 屬性，可讓傳送者指定雜湊來產生資料分割指派的值。 使用資料分割索引鍵，可確保所有具有相同索引鍵的事件均傳送到事件中樞內的同一個資料分割。 常見的資料分割索引鍵包含使用者工作階段識別碼和唯一的傳送者識別碼。  [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) 是選擇性屬性，可供使用時 [microsoft.servicebus.messaging.eventhubclient.send (microsoft.servicebus.messaging.eventdata)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 或 [Microsoft.servicebus.messaging.eventhubclient.sendasync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 方法。 如果您未提供值給 [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx), ，傳送的事件散佈至資料分割使用循環配置資源模型。
 
-## Batch event send operations
+## 批次事件傳送作業
 
-Sending events in batches can dramatically increase throughput. The [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) method takes an **IEnumerable** parameter of type [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) and sends the entire batch as an atomic operation to the Event Hub.
+分批傳送事件能大幅增加輸送量。  [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) 方法會採用 **IEnumerable** 型別的參數 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) ，並將整個批次成為不可部分完成的作業傳送至事件中心。
+
 ```
-public void SendBatch (IEnumerable<EventData> eventDataList);
-```
-
-It is important to note that a single batch must not exceed the 256 KB limit of an event. Additionally, each message in the batch uses the same publisher identity. It is the responsibility of the sender to ensure that the batch does not exceed the maximum event size. If it does, a client **Send** error is generated.
-
-## Send asynchronously and send at scale
-
-You can also send events to an Event Hub asynchronously. Sending asynchronously can increase the rate at which a client is able to send events. Both the [Send](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx) and [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) methods are available in asynchronous versions that return a [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) object. While this technique can increase throughput, it can also cause the client to continue to send events even while it is being throttled by the Event Hubs service and can result in the client experiencing failures or lost messages if not properly implemented. In addition, you can use the [RetryPolicy](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.cliententity.retrypolicy.aspx) property on the client to control client retry options.
-
-## Create a partition sender
-
-Although it is most common to send events to an Event Hub with a partition key, in some cases you might want to send events directly to a given partition. For example:
-```
-var partitionedSender = 用戶端。CreatePartitionedSender (的描述。PartitionIds[0])
+public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
-[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) returns an [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx) object that you can use to publish events to a specific Event Hub partition.
+請務必注意，單一批次不能超過每個事件 256 KB 的限制。 此外，批次中的每個訊息都會使用相同的身分識別。 確保批次未超過最大事件大小是傳送者的責任。 如果是的話，用戶端 **傳送** 會產生錯誤。
 
-## Event consumers
+## 以非同步方式傳送和大規模傳送
 
-Event Hubs has two primary models for event consumption: direct receivers and higher-level abstractions, such as [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx). Direct receivers are responsible for their own coordination of access to partitions within a consumer group.
+您也可以利用非同步方式將事件傳送到事件中樞。 以非同步方式傳送可以增加用戶端傳送事件的速率。 同時 [傳送](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx) 和 [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) 中傳回的非同步版本的方法有 [工作](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) 物件。 雖然這項技術可以增加輸送量，不過如果實作不當，可能會造成用戶端在受到事件中樞服務節流的情況下繼續傳送事件，導致用戶端發生失敗或遺失訊息。 此外，您可以使用 [RetryPolicy](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.cliententity.retrypolicy.aspx) 控制用戶端重試選項在用戶端上的屬性。
 
-### Direct consumer
+## 建立資料分割的傳送者
 
-The most direct way to read from a partition within a consumer group is to use the [EventHubReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubreceiver.aspx) class. To create an instance of this class, you must use an instance of the [EventHubConsumerGroup](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubconsumergroup.aspx) class. In the following example, the partition ID must be specified when creating the receiver for the consumer group.
+雖然資料分割索引鍵是最常用來將事件傳送到事件中樞的方法，不過在某些情況下，您可能會想要將事件直接傳送到指定資料分割。 例如：
+
 ```
-EventHubConsumerGroup 群組 = 用戶端。GetDefaultConsumerGroup()
-var 接收者 = 群組。CreateReceiver (用戶端。GetRuntimeInformation()。PartitionIds[0])
+var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
 ```
 
-The [CreateReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubconsumergroup.createreceiver.aspx) method has several overloads that facilitate control over the reader being created. These methods include specifying an offset as either a string or timestamp, and the ability to specify whether to include this specified offset in the returned stream, or start after it. After you create the receiver, you can start receiving events on the returned object. The [Receive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubreceiver.receive.aspx) method has four overloads that control the receive operation parameters, such as batch size and wait time. You can use the asynchronous versions of these methods to increase the throughput of a consumer. For example:
+[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) 傳回 [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx) 物件，您可以用來將事件發行至指定的事件中心分割。
+
+## 事件取用者
+
+事件中樞有兩個主要的事件取用模型: 直接接收者和較高層級的抽象，例如 [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)。 直接接收者負責自行協調消費者群組內之資料分割的存取。
+
+### 直接消費者
+
+讀取取用者群組內的資料分割最直接的方式是使用 [EventHubReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubreceiver.aspx) 類別。 若要建立這個類別的執行個體，您必須使用的執行個體 [EventHubConsumerGroup](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubconsumergroup.aspx) 類別。 在以下範例中，您必須在建立消費者群組的接收者時指定資料分割識別碼。
+
 ```
-bool 接收 = true;
-字串 myOffset;
+EventHubConsumerGroup group = client.GetDefaultConsumerGroup();
+var receiver = group.CreateReceiver(client.GetRuntimeInformation().PartitionIds[0]);
+```
+
+ [CreateReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubconsumergroup.createreceiver.aspx) 方法有數個多載，可加強控制所建立的讀取器。 這些方法包括將位移指定為字串或時間戳記，以及讓您指定要在傳回的資料流中包括指定位移，或是在位移之後開始。 建立接收者後，您可以開始接收有關傳回之物件的事件。  [接收](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubreceiver.receive.aspx) 方法有四個多載來控制接收操作參數，例如批次大小和等待時間。 若要增加消費者的輸送量，您可以使用這些方法的非同步版本。 例如：
+
+```
+bool receive = true;
+string myOffset;
 while(receive)
 {
-    var 訊息 = 收件者。Receive ();
-    myOffset = 訊息。位移。
-    字串主體 = Encoding.UTF8.GetString (訊息。GetBytes())
-    Console.WriteLine (String.Format (「 已接收訊息位移: {0} \nbody: \{1\}"，myOffset，本文));
+    var message = receiver.Receive();
+    myOffset = message.Offset;
+    string body = Encoding.UTF8.GetString(message.GetBytes());
+    Console.WriteLine(String.Format("Received message offset: {0} \nbody: {1}", myOffset, body));
 }
 ```
 
@@ -147,7 +152,7 @@ while(receive)
 
 ### 事件處理器主機
 
-[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) 類別處理來自事件中心資料。 在 .NET 平台上建置事件讀取器時，您應該使用這項實作。 [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) 提供事件處理器實作安全執行緒、 多處理序、 安全的執行階段環境，也提供檢查點和資料分割租用管理。
+ [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) 類別處理來自事件中心資料。 在 .NET 平台上建置事件讀取器時，您應該使用這項實作。 [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) 提供事件處理器實作安全執行緒、 多處理序、 安全的執行階段環境，也提供檢查點和資料分割租用管理。
 
 若要使用 [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) 類別時，您可以實作 [IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx)。 這個介面包含三個方法：
 
@@ -163,7 +168,7 @@ while(receive)
 
 經過一段時間後，均衡的局面將會出現。 此動態功能可讓您將 CPU 架構自動調整套用至消費者，以便進行向上和向下調整。 由於事件中樞沒有直接的訊息計數概念，因此平均 CPU 使用率通常是測量後端或消費者規模最合適的機制。 如果發佈者發佈的事件數量開始超出消費者的處理能力，消費者上增加的 CPU 可用來引發背景工作執行個體計數自動調整。
 
-[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) 類別也實作以 Azure 儲存體為基礎的檢查點機制。 這項機制能儲存每個磁碟分割的位移，方便各個消費者判斷前一個消費者的最後一個檢查點。 由於資料分割會透過租用在節點之間轉換，因此這是能促進負載移位的同步處理機制。
+ [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) 類別也實作以 Azure 儲存體為基礎的檢查點機制。 這項機制能儲存每個磁碟分割的位移，方便各個消費者判斷前一個消費者的最後一個檢查點。 由於資料分割會透過租用在節點之間轉換，因此這是能促進負載移位的同步處理機制。
 
 ## 發佈者撤銷
 
@@ -179,8 +184,4 @@ while(receive)
 - [事件中心概觀](event-hubs-overview.md)
 - [事件中樞程式碼範例](http://code.msdn.microsoft.com/site/search?query=event 中樞 & f [0]。值 = 事件中樞與 f [0]。輸入 = SearchText ac = 5)
 - [事件處理器主機 API 參考](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
-
-
-
-
 

@@ -1,5 +1,5 @@
 <properties
-    pageTitle="建立和管理彈性資料庫工作 |Microsoft Azure"
+    pageTitle="建立和管理彈性資料庫工作 | Micosoft Azure"
     description="逐步解說如何建立和管理彈性資料庫工作。"
     services="sql-database"
     documentationCenter=""
@@ -16,16 +16,14 @@
     ms.date="11/04/2015"
     ms.author="ddove; sidneyh"/>
 
-
 # 使用入口網站建立和管理 SQL Database 彈性工作 (預覽)
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-elastic-jobs-create-and-manage.md)
+- [Azure 入口網站](sql-database-elastic-jobs-create-and-manage.md)
 - [PowerShell](sql-database-elastic-jobs-powershell.md)
 
 
-
-**彈性資料庫工作**可讓您進行輕鬆且可靠的資料庫群組管理，方法是簡化系統管理作業，例如結構描述變更、認證管理、參考資料更新、效能資料收集，或租用戶 (客戶) 遙測收集。 彈性資料庫工作目前可透過 Azure 入口網站和 PowerShell Cmdlet 使用。 不過，Azure 入口網站介面降低功能僅限於執行中的所有資料庫 [彈性資料庫集區 (預覽)](sql-database-elastic-pool.md)。 若要存取其他功能和指令碼執行的一整組資料庫包括自訂的集合或分區設定 (使用建立 [彈性資料庫用戶端程式庫](sql-database-elastic-scale-introduction.md)), ，請參閱 [建立和管理工作使用 PowerShell](sql-database-elastic-jobs-powershell.md)。 如需工作的詳細資訊，請參閱 [彈性資料庫工作概觀](sql-database-elastic-jobs-overview.md)。
+**彈性資料庫工作** 可輕鬆地和可靠的管理群組的資料庫，透過簡化的管理作業，例如結構描述變更、 認證管理、 參考資料更新、 效能資料集合或租用戶 (客戶) 遙測集合執行。 彈性資料庫工作目前可透過 Azure 入口網站和 PowerShell Cmdlet 使用。 不過，Azure 入口網站介面降低功能僅限於執行中的所有資料庫 [彈性資料庫集區 (預覽)](sql-database-elastic-pool.md)。 若要存取其他功能和指令碼執行的一整組資料庫包括自訂的集合或分區設定 (使用建立 [彈性資料庫用戶端程式庫](sql-database-elastic-scale-introduction.md))，請參閱 [建立和管理工作使用 PowerShell](sql-database-elastic-jobs-powershell.md)。 如需工作的詳細資訊，請參閱 [彈性資料庫工作概觀](sql-database-elastic-jobs-overview.md)。 
 
 ## 必要條件
 
@@ -38,13 +36,13 @@
 1. 使用 [Azure 入口網站](https://portal.azure.com), ，從現有的彈性資料庫工作集區，按一下 [ **建立工作**。
 2. 輸入工作控制資料庫 (工作的中繼資料儲存體) 之資料庫系統管理員 (在安裝工作時建立) 的使用者名稱與密碼。
 
-    ![為工作命名，輸入或貼上程式碼，然後按一下 ][1]
-2. 在 [建立工作]**** 刀鋒視窗中，輸入工作的名稱。
+    ![此工作，輸入或貼上程式碼，然後按一下 [執行][] 1
+2. 在 **建立工作** 刀鋒視窗中，輸入工作名稱。
 3. 輸入使用者名稱與密碼來連線至目標資料庫，以取得足夠權限來成功執行指令碼。
 4. 貼上或輸入 T-SQL 指令碼。
-5. 按一下 [儲存]****，然後按一下 [執行]****。
+5. 按一下 [ **儲存** 然後按一下 [ **執行**。
 
-    ![建立工作並執行][5]
+    ![建立工作和執行][] 5
 
 ## 執行等冪工作
 
@@ -67,7 +65,7 @@
      );
     END
     GO
-    
+
     INSERT INTO TestTable(InsertionTime) VALUES (sysutcdatetime());
     GO
 
@@ -75,43 +73,44 @@
 
     IF NOT EXISTS (SELECT columns.name FROM sys.columns INNER JOIN sys.tables on columns.object_id = tables.object_id WHERE tables.name = 'TestTable' AND columns.name = 'AdditionalInformation')
     BEGIN
-    
+
     ALTER TABLE TestTable
-    
+
     ADD AdditionalInformation NVARCHAR(400);
     END
     GO
-    
+
     INSERT INTO TestTable(InsertionTime, AdditionalInformation) VALUES (sysutcdatetime(), 'test');
     GO
+
 
 ## 檢查工作狀態
 
 工作開始之後，您可以檢查它的進度。
 
-1. 從 [彈性資料庫集區] 頁面，按一下 [管理工作]****。
+1. 從彈性資料庫集區] 頁面上，按一下 [ **管理工作**。
 
-    ![按一下 ][2]
+    ![按一下 [管理工作]][] 2
 
-2. 按一下工作的名稱 (a)。 [狀態]**** 可以是 [已完成] 或 [失敗]。 工作的詳細資料隨即出現 (b)，並提供建立和執行的日期和時間。 其下方的清單 (c) 顯示對集區中每個資料庫執行指令碼的進度，並提供其日期和時間詳細資料。
+2. 按一下工作的名稱 (a)。  **狀態** 可以是 「 已完成 」 或 「 失敗 」。 工作的詳細資料隨即出現 (b)，並提供建立和執行的日期和時間。 其下方的清單 (c) 顯示對集區中每個資料庫執行指令碼的進度，並提供其日期和時間詳細資料。
 
-    ![檢查完成的工作][3]
+    ![檢查完成的工作][] 3
 
 
 ## 檢查失敗的工作
 
 如果工作失敗，您可以找到其執行記錄檔。 按一下失敗工作的名稱，以查看其詳細資料。
 
-![查看失敗的工作][4]
+![檢查失敗的工作][] 4
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
+<!--Image references-->
+[1]: ./media/sql-database-elastic-jobs-create-and-manage/screen-1.png
+[2]: ./media/sql-database-elastic-jobs-create-and-manage/click-manage-jobs.png
+[3]: ./media/sql-database-elastic-jobs-create-and-manage/running-jobs.png
+[4]: ./media/sql-database-elastic-jobs-create-and-manage/failed.png
+[5]: ./media/sql-database-elastic-jobs-create-and-manage/screen-2.png
 
-
-[1]: ./media/sql-database-elastic-jobs-create-and-manage/screen-1.png 
-[2]: ./media/sql-database-elastic-jobs-create-and-manage/click-manage-jobs.png 
-[3]: ./media/sql-database-elastic-jobs-create-and-manage/running-jobs.png 
-[4]: ./media/sql-database-elastic-jobs-create-and-manage/failed.png 
-[5]: ./media/sql-database-elastic-jobs-create-and-manage/screen-2.png 
-
+ 

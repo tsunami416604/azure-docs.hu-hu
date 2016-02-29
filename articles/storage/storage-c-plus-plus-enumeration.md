@@ -15,10 +15,10 @@
     ms.date="09/23/2015" 
     ms.author="zhimingyuan;tamram"/>
 
-
 # 使用 C++ 列出 Azure 儲存體資源
 
 列表作業是許多使用 Azure 儲存體的開發案例的關鍵。 本文說明如何使用 Microsoft Azure Storage Client Library for C++ 中提供的列表 API，以最有效率的方式列舉 Azure 儲存體中的物件。
+
 >[AZURE.NOTE] 本指南以 Azure Storage Client Library for c + + 版本 1.x 中，可透過 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp)。
 
 Storage Client Library 提供各種方法來列出或查詢 Azure 儲存體中的物件。 本文說明下列案例：
@@ -50,12 +50,12 @@ Storage Client Library 提供各種方法來列出或查詢 Azure 儲存體中�
 
 雲端儲存體的級別需要分段列表。 例如，在 Azure blob 容器中可有超過 100 萬個 Blob，或在 Azure 資料表中可有超過 10 億個實體。 這些不是理論上的數字，而是實際的客戶使用量案例。
 
-因此，列出單一回應中的所有物件並不切實際。 反而，您可以使用分頁列出物件。 每個列表 API 都有*分段*多載。
+因此，列出單一回應中的所有物件並不切實際。 反而，您可以使用分頁列出物件。 每個列表 Api 都有 *分段* 多載。
 
 分段列表作業的回應包含：
 
--   <i>_segment</i>, ，其中包含針對列表 API 的單一呼叫所傳回的結果集。
--   *continuation_token*，其會傳遞給下一個呼叫，以便取得下一頁的結果。 沒有可傳回的結果時，接續 Token 為 null。
+-   <i>_segment</i>其中包含針對列表 API 的單一呼叫所傳回的結果集。 
+-   *continuation_token*, ，其會傳遞至下一步的呼叫，以便取得下一頁結果。 沒有可傳回的結果時，接續 Token 為 null。
 
 例如，列出容器中所有 Blob 的典型呼叫可能如下列程式碼片段所示。 程式碼，在我們 [範例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
 
@@ -80,15 +80,15 @@ Storage Client Library 提供各種方法來列出或查詢 Azure 儲存體中�
     }
     while (!token.empty());
 
-請注意，一個頁面傳回的結果數目可由每個 API 的多載中的參數 *max_results* 所控制，例如：
-
+請注意，參數可以控制在網頁中傳回的結果數目 *max_results* 在多載中的每個 API，例如:
+    
     list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing, 
         blob_listing_details::values includes, int max_results, const continuation_token& token, 
         const blob_request_options& options, operation_context context)
 
-如果您未指定 *max_results* 參數，則會在單一頁面中傳回多達 5000 筆結果的預設最大值。
+如果您未指定 *max_results* 參數，多達 5000 筆結果的最大值會傳回在單一頁面的預設值。
 
-也請注意，對 Azure 資料表儲存體的查詢可能不會傳回任何記錄，或傳回少於您指定之 *max_results* 參數值的記錄 (即使接續 Token 不是空的)。 其中一個原因可能是查詢無法在五秒內完成。 只要接續 Token 不是空的，查詢就應該繼續進行，而您的程式碼不得假設區段結果的大小。
+也請注意針對 Azure 資料表儲存體的查詢可能會傳回任何記錄或更少記錄的值比 *max_results* 您指定，即使接續 token 不是空的參數。 其中一個原因可能是查詢無法在五秒內完成。 只要接續 Token 不是空的，查詢就應該繼續進行，而您的程式碼不得假設區段結果的大小。
 
 大多數案例的建議編碼模式為分段列表，可以提供明確的列表或查詢進度，以及服務回應每個要求的方式。 尤其是 C++ 應用程式或服務，列表進度的較低層級控制項有助於控制記憶體和效能。
 
@@ -102,7 +102,7 @@ Storage Client Library 提供各種方法來列出或查詢 Azure 儲存體中�
 
 這些方法已做為分段 API 的包裝函式實作。 對於分段列表的每個回應，程式碼會將結果附加至向量，並傳回掃描完整容器後的所有結果。
 
-當儲存體帳戶或資料表包含少量物件時，這個方法可能有用。 不過，隨著物件數目的增加，所需的記憶體可能會無所限制的增加，因為所有結果都會保留在記憶體中。 一項列表作業可能需要很長的時間，在這段期間內呼叫端沒有其進度的相關資訊。
+當儲存體帳戶或資料表包含少量物件時，這個方法可能有用。 不過，隨著物件數目的增加，所需的記憶體可能會無所限制的增加，因為所有結果都會保留在記憶體中。 一項列表作業可能需要很長的時間，在這段期間內呼叫端沒有其進度的相關資訊。 
 
 SDK 中的這些窮盡列表 API 不存在於 C#、Java 或 JavaScript Node.js 環境中。 為了避免使用這些窮盡 API 的潛在問題，我們已在 0.6.0 預覽版中予以移除。
 
@@ -128,7 +128,7 @@ SDK 中的這些窮盡列表 API 不存在於 C#、Java 或 JavaScript Node.js �
         token = segment.continuation_token();
     } while (!token.empty());
 
-指定區段的 *max_results* 參數，即可平衡要求數目與記憶體使用量，以符合您的應用程式的效能考量。
+藉由指定 *max_results* 區段的參數，您就可以平衡要求數目和記憶體使用量，以符合您的應用程式的效能考量之間。
 
 此外，如果您使用分段列表 API，但以「窮盡」樣式將資料儲存在本機集合中，也強烈建議您重整您的程式碼，以便仔細地將資料大規模儲存在本機集合中。
 
@@ -138,7 +138,7 @@ SDK 中的這些窮盡列表 API 不存在於 C#、Java 或 JavaScript Node.js �
 
 如果您也使用 C# 或 Oracle Java SDK，您應該熟悉可提供延遲樣式列表的「可列舉」程式設計模型，其中特定位移的資料只會在必要時提取。 在 C++ 中，以迭代器為基礎的範本也會提供類似的方法。
 
-典型的延遲列表 API (以 **list_blobs** 為例) 如下所示：
+典型的延遲列表 API，使用 **list_blobs** 做為範例，看起來像這樣:
 
     list_blob_item_iterator list_blobs() const;
 
@@ -162,7 +162,7 @@ SDK 中的這些窮盡列表 API 不存在於 C#、Java 或 JavaScript Node.js �
 
 相較於窮盡列表，延遲列表只會在必要時提取資料。 實際上，只有在下一個迭代器移至下一個區段時，它才會從 Azure 儲存體提取資料。 因此，記憶體使用量會控制在有限的大小內，且作業速度很快。
 
-延遲列表 API 已包含在 Storage Client Library for C++ 1.0.0 版中。
+延遲列表 API 已包含在 Storage Client Library for C++ 1.0.0 版中。 
 
 ## 結論
 
@@ -173,18 +173,14 @@ SDK 中的這些窮盡列表 API 不存在於 C#、Java 或 JavaScript Node.js �
 -   程式庫中提供的延遲列表是同步案例中的方便包裝函式。
 -   不建議使用窮盡列表，並已從程式庫中移除。
 
-## 後續步驟
+##後續步驟
 
 如需 Azure Storage Client Library for C++ 的詳細資訊，請參閱下列資源。
 
--   [如何使用 c + + 的 Blob 儲存體](storage-c-plus-plus-how-to-use-blobs.md)
--   [如何使用 c + + 的資料表儲存體](storage-c-plus-plus-how-to-use-tables.md)
--   [如何使用 c + + 的佇列儲存體](storage-c-plus-plus-how-to-use-queues.md)
--   [Azure 儲存體用戶端程式庫的 c + + API 文件。](http://azure.github.io/azure-storage-cpp/)
+-   [如何使用 C++ 的 Blob 儲存體](storage-c-plus-plus-how-to-use-blobs.md)
+-   [如何使用 C++ 的資料表儲存體](storage-c-plus-plus-how-to-use-tables.md)
+-   [如何使用 C++ 的佇列儲存體](storage-c-plus-plus-how-to-use-queues.md)
+-   [Azure Storage Client Library for C++ API 文件。](http://azure.github.io/azure-storage-cpp/)
 -   [Azure 儲存體團隊部落格](http://blogs.msdn.com/b/windowsazurestorage/)
 -   [Azure 儲存體文件](http://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
 

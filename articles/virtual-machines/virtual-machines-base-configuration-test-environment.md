@@ -17,7 +17,6 @@
     ms.date="10/05/2015"
     ms.author="josephd"/>
 
-
 # 基本設定測試環境
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [資源管理員模型](virtual-machines-base-configuration-test-environment-resource-manager.md)。
@@ -40,7 +39,7 @@
 - 一部執行 Windows Server 2012 R2 的 Azure 虛擬機器，其名稱是 APP1 而且被設定成一般應用程式和網頁伺服器。
 - 一部執行 Windows Server 2012 R2 的 Azure 虛擬機器，其名稱是 CLIENT1 而且充當內部網路用戶端。
 
-這種設定可以讓 DC1、APP1、CLIENT1 和其他公司網路子網路電腦變成：
+這種設定可以讓 DC1、APP1、CLIENT1 和其他公司網路子網路電腦變成：  
 
 - 連線到網際網路來安裝更新、即時存取網際網路資源，以及參與公用雲端技術，例如 Microsoft Office 365 和其他 Azure 服務。
 - 利用遠端桌面連線，從連接網際網路或公司網路的電腦進行遠端管理。
@@ -53,35 +52,36 @@
 4.  設定 CLIENT1。
 
 如果您還沒有 Azure 帳戶，您可以註冊免費試用版在 [免費試用一個月](http://azure.microsoft.com/pricing/free-trial/)。 如果您有 MSDN 訂閱，請參閱 [MSDN 訂戶的 Azure 權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
-> [AZURE.NOTE] Azure 中的虛擬機器執行時，需要支付相關費用。 這項成本是按照您的免費試用版、MSDN 訂用帳戶或付費訂用帳戶進行計算。 Azure 虛擬機器的執行成本的相關資訊，請參閱 [虛擬機器定價詳細資料](http://azure.microsoft.com/pricing/details/virtual-machines/) 和 [Azure 定價計算機](http://azure.microsoft.com/pricing/calculator/)。 若要降低成本，請參閱 [在 Azure 中的測試環境虛擬機器的成本降至最低](#costs)。
+
+> [AZURE.NOTE] 在執行時，在 Azure 虛擬機器就會產生持續成本。 這項成本是按照您的免費試用版、MSDN 訂用帳戶或付費訂用帳戶進行計算。 Azure 虛擬機器的執行成本的相關資訊，請參閱 [虛擬機器定價詳細資料](http://azure.microsoft.com/pricing/details/virtual-machines/) 和 [Azure 定價計算機](http://azure.microsoft.com/pricing/calculator/)。 若要降低成本，請參閱 [在 Azure 中的測試環境虛擬機器的成本降至最低](#costs)。
 
 ## 階段 1：建立虛擬網路
 
 首先，您會建立 TestLab Azure 虛擬網路，以架設基本設定的公司網路子網路。
 
 1.  在工作列上的 [Azure 傳統入口網站](https://manage.windowsazure.com), ，按一下 [ **新增 > 網路服務 > 虛擬網路 > 自訂建立**。
-2.  在 [虛擬網路詳細資料] 頁面中的 [名稱]**** 中，輸入 **TestLab**。
-3.  在 [位置]**** 中，選取適當的區域。
+2.  在 [虛擬網路詳細資料] 頁面上輸入 **TestLab** 中 **名稱**。
+3.  在 **位置**, ，選取適當的區域。
 4.  按 [下一步] 箭頭。
-5.  在 [DNS 伺服器和 VPN 連線] 頁面的 [DNS 伺服器]**** 的 [選取或輸入名稱]**** 中，輸入 **DC1**，然後在 [IP 位址]**** 中輸入 **10.0.0.4**，最後按 [下一步] 箭頭。
-6.  在 [虛擬網路位址空間] 頁面的 [子網路]**** ，按一下 **subnet-1**，然後將名稱改成 **Corpnet**。
-7.  在公司子網路的 [CIDR (位址計數)]**** 欄中，按一下 [/24 (256)]****。
+5.  在 [DNS 伺服器和 VPN 連線能力] 頁面中 **DNS 伺服器**, ，型別 **DC1** 中 **選取或輸入名稱**, ，型別 **10.0.0.4** 中 **IP 位址**, ，然後按一下 [下一步箭頭。
+6.  在 [虛擬網路位址空間] 頁面中，在 **子網路**, ，按一下 **子網路 1** 並將名稱取代 **公司**。
+7.  在 **CIDR (位址計數)** 公司網路子網路上的資料行按一下 **/24 (256)**。
 8.  按一下 [完成] 圖示。 等候虛擬網路建立後再繼續。
 
 接下來，使用中的指示 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md) 本機電腦上安裝 Azure PowerShell。 開啟 Azure PowerShell 命令提示字元。
 
-首先，利用以下命令選取正確的 Azure 訂用帳戶。取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
+首先，利用以下命令選取正確的 Azure 訂用帳戶。 取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
 
     $subscr="<Subscription name>"
     Select-AzureSubscription -SubscriptionName $subscr –Current
 
-您可以從 **Get-AzureSubscription** 命令顯示的 **SubscriptionName** 屬性，取得正確的訂閱帳戶名稱。
+您可以取得訂用帳戶名稱，從 **SubscriptionName** 屬性的顯示 **Get-azuresubscription** 命令。
 
 接下來，建立 Azure 雲端服務。 雲端服務可以充當虛擬網路中，各個虛擬機器的安全屏障以及邏輯容器。 雲端服務也可以讓您從遠端連接和管理公司網路子網路上的虛擬機器。
 
-您必須為雲端服務選擇唯一的名稱。 * 雲端服務名稱可以包含字母、 數字和連字號。 在欄位中的第一個和最後一個字元必須是字母或 number.*
+您必須為雲端服務選擇唯一的名稱。 *雲端服務名稱可以包含字母、數字和連字號。欄位中的第一個和最後一個字元，必須是字母或數字。*
 
-例如，雲端服務可命名為 TestLab-*UniqueSequence*，其中 *UniqueSequence* 是貴公司的縮寫。 例如，如果貴公司名稱是 Tailspin Toys，則可以將雲端服務命名為 TestVNET-Tailspin。
+例如，您服務的名稱定域機組 TestLab-*UniqueSequence*, ，在其中 *UniqueSequence* 是貴公司的縮寫。 例如，如果貴公司名稱是 Tailspin Toys，則可以將雲端服務命名為 TestVNET-Tailspin。
 
 您可以使用這個 Azure PowerShell 命令，測試名稱是否重複。
 
@@ -94,7 +94,7 @@
 
 記錄雲端服務的實際名稱。。
 
-接下來，您可以設定儲存體帳戶，它將包含虛擬機器的磁碟和以及其他資料磁碟。 *您選取的名稱不可以和其他名稱重複而且只能使用小寫字母和數字。*您可以使用這個 Azure PowerShell 命令，測試儲存體帳戶名稱是否重複。
+接下來，您可以設定儲存體帳戶，它將包含虛擬機器的磁碟和以及其他資料磁碟。 *您必須選擇唯一的名稱只包含小寫字母和數字。*您可以使用這個 Azure PowerShell 命令，測試儲存體帳戶名稱是否重複。
 
     Test-AzureName -Storage <Proposed storage account name>
 
@@ -126,27 +126,27 @@ DC1 是 corp.contoso.com Active Directory 網域服務 (AD DS) 網域的網域�
 
 接著，連接到 DC1 虛擬機器。
 
-1.  在 Azure 傳統入口網站的左窗格中，按一下左側窗格的 [虛擬機器]****，然後在 DC1 虛擬機器的 [狀態]**** 欄中，按一下 [已啟動]****。
-2.  在工作列上，按一下 [連接]****。
-3.  提示開啟 DC1.rdp 時，按一下 [開啟]****。
-4.  顯示 [遠端桌面連線] 訊息方塊後，按一下 [連接]****。
+1.  在 Azure 傳統入口網站中，按一下 [ **虛擬機器** 中左的窗格中，然後按一下 **已啟動** 中 **狀態** DC1 虛擬機器的資料行。  
+2.  在工作列上，按一下 [ **連接**。
+3.  當系統提示開啟 DC1.rdp 時，按一下 [ **開啟**。
+4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用下列：
 - 名稱: **DC1\\**[本機系統管理員帳戶名稱]
 - 密碼：[本機系統管理員帳戶密碼]
-6.  顯示憑證相關的 [遠端桌面連線] 訊息方塊提示時，按一下 [是]****。
+6.  顯示憑證相關的遠端桌面連線] 訊息方塊提示，請按一下 **是**。
 
 接著，將額外的資料磁碟新增為磁碟機代號 F: 的新磁碟區。
 
-1.  在 [伺服器管理員] 的左窗格中，按一下 [檔案和存放服務]****，然後按一下 [磁碟]****。
-2.  在 [內容] 窗格的 [磁碟]**** 群組中，按一下 [磁碟 2]**** ([磁碟分割]**** 設為 [不明]****)。
-3.  按一下 [工作]****，然後按一下 [新增磁碟區]****。
-4.  在 [新增磁碟區精靈] 的 [在您開始前] 頁面上，按 [下一步]****。
-5.  在 [選取伺服器和磁碟] 頁面上，按一下 [磁碟 2]****，然後按 [下一步]****。 出現提示時，按一下 **[確定]**。
-6.  在 [指定磁碟區大小] 頁面上，按 [下一步]****。
-7.  在 [指派成磁碟機代號或資料夾] 頁面上，按 [下一步]****。
-8.  在 [選取檔案系統設定] 頁面上，按 [下一步]****。
-9.  在 [確認選取項目] 頁面上，按一下 [建立]****。
-10. 完成時，按一下 [關閉]****。
+1.  在左窗格的 [伺服器管理員中，按一下 [ **檔案和存放服務**, ，然後按一下 [ **磁碟**。
+2.  在 [內容] 窗格中，在 **磁碟** 群組中，按一下 **磁碟 2** (與 **分割** 設為 **未知**)。
+3.  按一下 [ **工作**, ，然後按一下 [ **新的磁碟區**。
+4.  前上開始新的磁碟區精靈] 頁面，按一下 **下一步**。
+5.  在 [選取伺服器和磁碟] 頁面上，按一下 [ **磁碟 2**, ，然後按一下 [ **下一步**。 出現提示時，按一下 [ **確定**。
+6.  在 [指定大小的磁碟區] 頁面中，按一下 [ **下一步**。
+7.  在 [指派成磁碟機代號或資料夾] 頁面中，按一下 [ **下一步**。
+8.  在 [選取檔案系統設定] 頁面中，按一下 [ **下一步**。
+9.  在 [確認選取項目] 頁面中，按一下 [ **建立**。
+10. 完成時，按一下 **關閉**。
 
 接著，將 DC1 設定為 corp.contoso.com 網域的網域控制站和 DNS 伺服器。 在系統管理員層級 Windows PowerShell 命令提示字元，執行下列命令。
 
@@ -155,14 +155,14 @@ DC1 是 corp.contoso.com Active Directory 網域服務 (AD DS) 網域的網域�
 
 DC1 重新啟動之後，重新連接到 DC1 的虛擬機器。
 
-1.  在 Azure 傳統入口網站的 [虛擬機器] 頁面上，按一下 DC1 虛擬機器 [狀態]**** 欄中的 [執行]****。
-2.  在工作列上，按一下 [連接]****。
-3.  提示開啟 DC1.rdp 時，按一下 [開啟]****。
-4.  顯示 [遠端桌面連線] 訊息方塊後，按一下 [連接]****。
+1.  在 Azure 傳統入口網站的虛擬機器] 頁面上，按一下 [ **執行** 中 **狀態** DC1 虛擬機器的資料行。
+2.  在工作列上，按一下 [ **連接**。
+3.  當系統提示開啟 DC1.rdp 時，按一下 [ **開啟**。
+4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用下列：
 - 名稱: **CORP\\**[本機系統管理員帳戶名稱]
 - 密碼：[本機系統管理員帳戶密碼]
-6.  顯示憑證相關的 [遠端桌面連線] 訊息方塊提示時，按一下 [是]****。
+6.  顯示憑證相關的遠端桌面連線訊息方塊提示時按一下 **是**。
 
 接下來，在 Active Directory 中建立一個當使用者登入 CORP 網域成員電腦時，就會用到的使用者帳戶。 在系統管理員層級 Windows PowerShell 命令提示字元執行下列命令，一次執行一個。
 
@@ -198,7 +198,7 @@ APP1 提供網頁和檔案共用服務。
 
 接下來，使用 CORP\User1 認證連接到 APP1 虛擬機器，然後開啟系統管理員層級 Windows PowerShell 命令提示字元。
 
-要檢查 APP1 和 DC1 之間的名稱解析和網路通訊，請執行 **ping dc1.corp.contoso.com** 命令，然後確定顯示 4 個回覆。
+若要檢查 APP1 和 DC1 之間的名稱解析和網路通訊，請執行 **ping dc1.corp.contoso.com** 命令，並確認有四個回覆。
 
 接下來，在 Windows PowerShell 命令提示字元，使用這個命令，將 APP1 變成網頁伺服器。
 
@@ -231,20 +231,20 @@ CLIENT1 充當 Contoso 內部網路上的一般膝上型電腦、平板電腦或
 
 然後，以 CORP\User1 認證連接到 CLIENT1 虛擬機器。
 
-要檢查 CLIENT1 和 DC1 之間的名稱解析和網路通訊，請在 Windows PowerShell 命令提示字元執行 **ping dc1.corp.contoso.com** 命令，然後確定顯示 4 個回覆。
+若要檢查 CLIENT1 和 DC1 之間的名稱解析和網路通訊，請執行 **ping dc1.corp.contoso.com** 命令在 Windows PowerShell 命令提示字元，並確認有四個回覆。
 
 接下來，確定您可以從 CLIENT1 存取在 APP1 上的網頁及檔案共用資源。
 
-1.  在 [伺服器管理員] 的樹狀目錄窗格中，按一下 [本機伺服器]****。
-2.  在 [CLIENT1 的屬性]**** 中，按一下 [IE 增強式安全性設定]**** 旁的 [開啟]****。
-3.  在 [Internet Explorer 增強式安全性設定]**** 中，按一下 [系統管理員]**** 和 [使用者]**** 的 [關閉]****，然後按一下 [確定]****。
-4.  從 [開始] 畫面中，按一下 [Internet Explorer]****，然後按一下 [確定]****。
-5.  在 [網址] 列中，輸入 **http://app1.corp.contoso.com/**, ，然後按 ENTER 鍵。 您應該會看到 APP1 的預設網際網路資訊服務網頁。
+1.  在 [伺服器管理員] 中，在樹狀目錄窗格中，按一下 **本機伺服器**。
+2.  在 **CLIENT1 的屬性**, ，按一下 [ **上** 旁 **IE 增強式安全性設定**。
+3.  在 **Internet Explorer 增強式安全性設定**, ，按一下 [ **關閉** 的 **系統管理員** 和 **使用者**, ，然後按一下 [ **確定**。
+4.  從 [開始] 畫面中，按一下 [ **Internet Explorer**, ，然後按一下 [ **確定**。
+5.  在 [網址] 列中，輸入 **http://app1.corp.contoso.com/**, ，然後按 ENTER 鍵。  您應該會看到 APP1 的預設網際網路資訊服務網頁。
 6.  按一下桌面工作列中的 [檔案總管] 圖示。
 7.  在 [網址] 列中，輸入 **\\\app1\Files**, ，然後按 ENTER 鍵。
 8.  您應該會看到一個資料夾視窗，裡面有檔案共用資料夾的內容。
-9.  在 [檔案]**** 共用資料夾視窗中，按兩下 **Example.txt** 檔案。 您應該會看到 Example.txt 檔案的內容。
-10. 關閉 [example.txt - 記事本]**** 和 [檔案]**** 共用資料夾視窗。
+9.  在 **檔案** 共用的資料夾視窗中，按兩下 **Example.txt** 檔案。 您應該會看到 Example.txt 檔案的內容。
+10. 關閉 **example.txt-記事本]** 和 **檔案** 共用資料夾視窗。
 
 這是最終的設定。
 
@@ -254,7 +254,7 @@ CLIENT1 充當 Contoso 內部網路上的一般膝上型電腦、平板電腦或
 
 ## 其他資源
 
-[Azure 的測試實驗室](http://social.technet.microsoft.com/wiki/contents/articles/24092.azure-test-lab.aspx)
+[Azure 測試實驗室](http://social.technet.microsoft.com/wiki/contents/articles/24092.azure-test-lab.aspx)
 
 [混合式雲端測試環境](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
@@ -274,6 +274,7 @@ CLIENT1 充當 Contoso 內部網路上的一般膝上型電腦、平板電腦或
     Stop-AzureVM -ServiceName $serviceName -Name "APP1"
     Stop-AzureVM -ServiceName $serviceName -Name "DC1" -Force -StayProvisioned
 
+
 如果想保證虛擬機器從已停止 (取消配置) 狀態啟動後，它們都可以正常運作，請按照下列順序啟動：
 
 1.  DC1
@@ -286,6 +287,4 @@ CLIENT1 充當 Contoso 內部網路上的一般膝上型電腦、平板電腦或
     Start-AzureVM -ServiceName $serviceName -Name "DC1"
     Start-AzureVM -ServiceName $serviceName -Name "APP1"
     Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
-
-
 

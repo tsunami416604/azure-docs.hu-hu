@@ -17,7 +17,6 @@
     ms.date="08/11/2015"
     ms.author="dkshir"/>
 
-
 # 如何從 Linux 虛擬機器卸離磁碟
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
@@ -29,9 +28,5 @@
 
 [如何將資料磁碟連接至 Linux 虛擬機器](virtual-machines-linux-how-to-attach-disk.md)
 
-[使用 Azure CLI 搭配服務管理 API](virtual-machines-command-line-tools.md)
-
-
-
-
+[搭配服務管理 API 使用 Azure CLI](virtual-machines-command-line-tools.md)
 

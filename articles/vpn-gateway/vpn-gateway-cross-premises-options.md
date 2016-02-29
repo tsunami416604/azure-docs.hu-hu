@@ -15,10 +15,9 @@
    ms.date="12/01/2015"
    ms.author="cherylmc" />
 
-
 # 關於虛擬網路的安全跨單位連線
 
-如果您想要安全地將內部部署網站連接到虛擬網路，有三個選項可供使用：站對站、點對站和 ExpressRoute。
+如果您想要安全地將內部部署網站連接到虛擬網路，有三個選項可供使用：站對站、點對站和 ExpressRoute。 
 
 您選擇的選項可能取決於各種不同的考量，例如：
 
@@ -33,18 +32,18 @@
 下表可以協助您為方案決定最佳的連線選項。
 
 
-| -| **點對站台**| **站台對站台**| **ExpressRoute**|
+|  -                            | **點對站台**                                                                            | **站台對站台**                                                                                        | **ExpressRoute**                                                                                                                     |
 |------------------------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| **Azure 支援的服務**| 雲端服務和虛擬機器| 雲端服務和虛擬機器| [服務清單](../expressroute/expressroute-faqs.md#supported-services)|
-| **典型的頻寬**| 通常是 < 100 Mbps 彙總| 通常是 < 100 Mbps 彙總| 50 Mbps、 100 Mbps、 200 Mbps、 500 Mbps、 1 Gbps、 2 Gbps、 5 Gbps、 10 Gbps|
-| **支援的通訊協定**| 安全通訊端通道通訊協定 (SSTP)| IPsec| 透過 NSP 的 VPN 技術 (MPLS、 VPLS...) 的 Vlan，直接連線|
-| **路由**| 路由式的 (動態)| 我們支援以原則為基礎 (靜態路由)，並以路由為基礎 (動態路由 VPN)| BGP|
-| **連線恢復**| 主動-被動| 主動-被動| 主動-主動|
-| **典型的使用案例**| 原型設計、 開發人員 / 測試 / 雲端服務和虛擬機器的實驗室案例| 開發 / 測試實驗室案例和小小數位數的雲端服務和虛擬機器的生產工作負載| 所有 Azure 服務 (已驗證的清單) 的企業層級與關鍵任務工作負載，備份、 巨量資料、 Azure 做為 DR 站台存取權|
-| **SLA**| [SLA](https://azure.microsoft.com/support/legal/sla/)| [SLA](https://azure.microsoft.com/support/legal/sla/)| [SLA](https://azure.microsoft.com/support/legal/sla/)|
-| **定價**| [定價](http://azure.microsoft.com/pricing/details/vpn-gateway/)| [定價](http://azure.microsoft.com/pricing/details/vpn-gateway/)| [定價](http://azure.microsoft.com/pricing/details/expressroute/)|
-| **技術文件**| [VPN 閘道文件](https://azure.microsoft.com/documentation/services/vpn-gateway/)| [VPN 閘道文件](https://azure.microsoft.com/documentation/services/vpn-gateway/)| [ExpressRoute 文件](https://azure.microsoft.com/documentation/services/expressroute/)|
-| ** 常見問題集 **| [VPN 閘道常見問題集](vpn-gateway-vpn-faq.md)| [VPN 閘道常見問題集](vpn-gateway-vpn-faq.md)| [ExpressRoute 常見問題集](../expressroute/expressroute-faqs.md)|
+| **Azure 支援的服務** | 雲端服務和虛擬機器                                                          | 雲端服務和虛擬機器                                                                     | [服務清單](../expressroute/expressroute-faqs.md#supported-services)                                                       |
+| **典型的頻寬**       | 通常是 < 100 Mbps 彙總                                                               | 通常是 < 100 Mbps 彙總                                                                          | 50 Mbps、 100 Mbps、 200 Mbps、 500 Mbps、 1 Gbps、 2 Gbps、 5 Gbps、 10 Gbps                                                               |
+| **支援的通訊協定**      | 安全通訊端通道通訊協定 (SSTP)                                                     | IPsec                                                | 透過 NSP 的 VPN 技術 (MPLS、 VPLS...) 的 Vlan，直接連線                                                                                                    |
+| **路由**                  | 路由式的 (動態)                                                                        | 我們支援以原則為基礎 (靜態路由)，並以路由為基礎 (動態路由 VPN)                 | BGP                                                                                                                                  |
+| **連線恢復**    | 主動-被動                                                                               | 主動-被動                                                                                          | 主動-主動                                                                                                                        |
+| **典型的使用案例**         | 原型設計、 開發人員 / 測試 / 雲端服務和虛擬機器的實驗室案例              | 開發 / 測試實驗室案例和小小數位數的雲端服務和虛擬機器的生產工作負載 | 所有 Azure 服務 (已驗證的清單) 的企業層級與關鍵任務工作負載，備份、 巨量資料、 Azure 做為 DR 站台存取權 |
+| **SLA**                      | [SLA](https://azure.microsoft.com/support/legal/sla/)                                        | [SLA](https://azure.microsoft.com/support/legal/sla/)                                                   | [SLA](https://azure.microsoft.com/support/legal/sla/)                                                                                |
+| **定價**                  | [定價](http://azure.microsoft.com/pricing/details/vpn-gateway/)                           | [定價](http://azure.microsoft.com/pricing/details/vpn-gateway/)                                      | [定價](http://azure.microsoft.com/pricing/details/expressroute/)                                                                   |
+| **技術文件**  | [VPN 閘道文件](https://azure.microsoft.com/documentation/services/vpn-gateway/) | [VPN 閘道文件](https://azure.microsoft.com/documentation/services/vpn-gateway/)            | [ExpressRoute 文件](https://azure.microsoft.com/documentation/services/expressroute/)                                        |
+| * * 常見問題集 * *                     | [VPN 閘道常見問題集](vpn-gateway-vpn-faq.md)                                                    | [VPN 閘道常見問題集](vpn-gateway-vpn-faq.md)                                                               | [ExpressRoute 常見問題集](../expressroute/expressroute-faqs.md)                                                                             |
 
 
 ## 站對站連接
@@ -55,16 +54,16 @@
 
 - 您想建立混合式解決方案。
 - 您想要在內部部署位置與虛擬網路之間建立不需要用戶端設定的連線。
-- 您想要持續不中斷的連線。
+- 您想要持續不中斷的連線。 
 
 **需求**
 
 - 內部部署 VPN 裝置必須有連結網際網路的 IPv4 IP 位址。 這不能在 NAT 後方。
-- 您必須擁有相容的 VPN 裝置。 請參閱 [關於 VPN 裝置](http://go.microsoft.com/fwlink/p/?LinkID=615099)。
+- 您必須擁有相容的 VPN 裝置。 請參閱 [關於 VPN 裝置](http://go.microsoft.com/fwlink/p/?LinkID=615099)。 
 - 您使用的 VPN 裝置必須與您的方案需要的閘道類型相容。 請參閱 [關於 VPN 閘道](vpn-gateway-about-vpngateways.md)。
-- 閘道 SKU 也會影響彙總輸送量。 請參閱 [閘道 Sku](vpn-gateway-about-vpngateways.md#gateway-skus) 如需詳細資訊。
+- 閘道 SKU 也會影響彙總輸送量。 請參閱 [閘道 Sku](vpn-gateway-about-vpngateways.md#gateway-skus) 如需詳細資訊。 
 
-設定站台對站 VPN 閘道連線使用 Azure 傳統入口網站和傳統部署模型的相關資訊，請參閱 [設定虛擬網路與站台對站 VPN 連線](vpn-gateway-site-to-site-create.md)。 設定站台對站 VPN 使用資源管理員部署模型的相關資訊，請參閱 [建立虛擬網路與站台對站 VPN 連線](vpn-gateway-create-site-to-site-rm-powershell.md)。
+設定站台對站 VPN 閘道連線使用 Azure 傳統入口網站和傳統部署模型的相關資訊，請參閱 [與站台對站 VPN 連線設定虛擬網路](vpn-gateway-site-to-site-create.md)。 設定站台對站 VPN 使用資源管理員部署模型的相關資訊，請參閱 [建立虛擬網路與站台對站 VPN 連線](vpn-gateway-create-site-to-site-rm-powershell.md)。
 
 
 ## 點對站連接
@@ -99,10 +98,6 @@ Azure ExpressRoute 可讓您在 Azure 資料中心和內部部署或共置環境
 ## 後續步驟
 
 請參閱 [ExpressRoute 常見問題集](../expressroute/expressroute-faqs.md) 和 [VPN 閘道常見問題集](vpn-gateway-vpn-faq.md) 如需詳細資訊。
-
-
-
-
 
 
 

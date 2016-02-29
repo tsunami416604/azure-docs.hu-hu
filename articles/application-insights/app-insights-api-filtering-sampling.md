@@ -5,7 +5,7 @@
     documentationCenter="" 
     authors="alancameronwills" 
     manager="douge"/>
-
+ 
 <tags 
     ms.service="application-insights" 
     ms.workload="tbd" 
@@ -15,12 +15,11 @@
     ms.date="11/04/2015" 
     ms.author="awills"/>
 
-
 # 在 Application Insights SDK 中取樣、篩選及前置處理遙測
 
 *Application Insights 目前僅供預覽。*
 
-您可以針對 Application Insights SDK 撰寫與設定外掛程式，以自訂在遙測傳送至 Application Insights 服務之前，擷取與處理它的方式。
+您可以針對 Application Insights SDK 撰寫與設定外掛程式，以自訂在遙測傳送至 Application Insights 服務之前，擷取與處理它的方式。 
 
 目前這些功能適用於 ASP.NET SDK。
 
@@ -33,8 +32,8 @@
 
 開始之前：
 
-* 安裝 [Application Insights SDK](app-insights-asp-net.md) 應用程式中。 手動安裝 NuGet 封裝並選取最新的*發行前版本*。
-* 請嘗試 [Application Insights API](app-insights-api-custom-events-metrics.md)。
+* 安裝 [Application Insights SDK](app-insights-asp-net.md) 應用程式中。 手動安裝的 NuGet 封裝，並選取最近 *搶鮮版* 版本。
+* 請嘗試 [Application Insights API](app-insights-api-custom-events-metrics.md)。 
 
 
 ## 取樣
@@ -43,12 +42,12 @@
 
 [取樣](app-insights-sampling.md) 是建議的方式來減少流量，同時保留準確的統計資料。 篩選器會選取相關的項目，使得您可以瀏覽診斷中的項目。 事件計數會在計量瀏覽器中調整，以補償所篩選的項目。
 
-* 建議使用調適性取樣。 它會自動調整取樣百分比，以達到特定的要求量。 目前僅供 ASP.NET 伺服器端遙測使用。
+* 建議使用調適性取樣。 它會自動調整取樣百分比，以達到特定的要求量。 目前僅供 ASP.NET 伺服器端遙測使用。  
 * [固定速率取樣](app-insights-sampling.md) 也會提供。 由您指定取樣百分比。 可供 ASP.NET Web 應用程式程式碼和 JavaScript Web 頁面使用。 用戶端和伺服器會同步處理它們的取樣，讓您可以在 [搜尋] 終於相關的頁面檢視和要求之間瀏覽。
 
 ### 啟用取樣
 
-**更新專案的 NuGet** 套件至最新的 Application Insights *預先發行*版本：以滑鼠右鍵按一下方案總管中的專案，選擇 [管理 NuGet 封裝]，然後核取 [包含發行前版本]**** 並搜尋 Microsoft.ApplicationInsights.Web。
+**更新專案的 NuGet** 至最新的封裝 *發行前版本* 版本的 Application Insights: 以滑鼠右鍵按一下 [方案總管] 中的專案中，選擇 [管理 NuGet 封裝，檢查 **包括發行前版本** 和 Microsoft.ApplicationInsights.Web 的搜尋。 
 
 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), ，您可以調整適應性演算法的目標是針對遙測資料的最大速率:
 
@@ -70,7 +69,7 @@
     }); 
 ```
 
-* 設定等於 100/N 的百分比 (在這個範例中為 10)，其中 N 是整數，例如 50 (=100/2)、33.33 (=100/3)、25 (=100/4) 或 10 (=100/10)。
+* 設定等於 100/N 的百分比 (在這個範例中為 10)，其中 N 是整數，例如 50 (=100/2)、33.33 (=100/3)、25 (=100/4) 或 10 (=100/10)。 
 * 如果也啟用 [固定速率取樣](app-insights-sampling.md) 在伺服器端，用戶端與伺服器同步處理其取樣讓該，在搜尋時，您可以瀏覽相關的頁面檢視與要求之間。
 
 [深入了解取樣](app-insights-sampling.md)。
@@ -79,20 +78,22 @@
 
 這項技術可讓您更直接地控制包含在遙測串流中或排除於遙測串流外的內容。 您可以將它與取樣搭配使用或分開使用。
 
-若要篩選遙測，請撰寫遙測處理器，並將它向 SDK 註冊。 所有遙測都會通過處理器，您可以選擇從串流中卸除或加入屬性。 這包括來自標準模組 (例如 HTTP 要求收集器和相依性收集器) 的遙測，以及您自己撰寫的遙測。 比方說，您可以篩選出有關來自傀儡程式要求或成功的相依性呼叫的遙測。
-> [AZURE.WARNING] 篩選傳送自使用處理器的 SDK 的遙測可能會曲解您在入口網站中看到的統計資料，並且難以追蹤相關的項目。
+若要篩選遙測，請撰寫遙測處理器，並將它向 SDK 註冊。 所有遙測都會通過處理器，您可以選擇從串流中卸除或加入屬性。 這包括來自標準模組 (例如 HTTP 要求收集器和相依性收集器) 的遙測，以及您自己撰寫的遙測。 比方說，您可以篩選出有關來自傀儡程式要求或成功的相依性呼叫的遙測。 
+
+> [AZURE.WARNING] 篩選從 SDK 所傳送的遙測使用處理器可以扭曲您在入口網站中看到的統計資料和容易遵循相關項目。
 > 
 > 相反地，請考慮使用 [取樣](#sampling)。
 
 ### 建立遙測處理器
 
-1. 將 Application Insights SDK 更新為最新版本 (2.0.0-beta2 或更新版本)。 在 Visual Studio 方案總管中以滑鼠右鍵按一下專案，然後選擇 [管理 NuGet 封裝]。 在 [NuGet 套件管理員] 中，選取 [包含發行前版本]**** 核取方塊，然後搜尋 Microsoft.ApplicationInsights.Web。
+1. 將 Application Insights SDK 更新為最新版本 (2.0.0-beta2 或更新版本)。 在 Visual Studio 方案總管中以滑鼠右鍵按一下專案，然後選擇 [管理 NuGet 封裝]。 在 NuGet 套件管理員，檢查 **包括發行前版本** 和 Microsoft.ApplicationInsights.Web 的搜尋。
 
-1. 若要建立篩選器，請實作 ITelemetryProcessor。 這是遙測模組、遙測初始設定式和遙測通道之類的另一個擴充點。
+1. 若要建立篩選器，請實作 ITelemetryProcessor。 這是遙測模組、遙測初始設定式和遙測通道之類的另一個擴充點。 
 
     請注意，遙測處理器建構一連串的處理。 當您具現化遙測處理器時，您會傳遞連結至鏈結中的下一個處理器。 遙測資料點傳遞至處理序方法時，它會完成其工作並接著呼叫鏈結中的下一個遙測處理器。
 
     ``` C#
+
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
 
@@ -133,26 +134,30 @@
             item.Context.Properties.Add("app-version", "1." + MyParamFromConfigFile);
         }
     }
+    
+
     ```
-2. 在 ApplicationInsights.config 中插入：
+2. 在 ApplicationInsights.config 中插入： 
 
 ```XML
 
     <TelemetryProcessors>
       <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
-         
+         <!-- Set public property -->
          <MyParamFromConfigFile>2-beta</MyParamFromConfigFile>
       </Add>
     </TelemetryProcessors>
+
 ```
 
 (請注意，這是您用來初始化取樣篩選器的相同區段)。
 
-您可以在類別中提供公開具名屬性，以從 .config 檔案傳遞字串值。
-> [AZURE.WARNING] 仔細地將 .config 檔案中的類型名稱和任何屬性名稱與程式碼中的類別和屬性名稱做比對。 如果 .config 檔案參考不存在的類型或屬性，SDK 可能無法傳送任何遙測，而且不會產生任何訊息。
+您可以在類別中提供公開具名屬性，以從 .config 檔案傳遞字串值。 
 
+> [AZURE.WARNING] 謹慎地符合的型別名稱和程式碼中的類別和屬性名稱的.config 檔案中的任何屬性名稱。 如果 .config 檔案參考不存在的類型或屬性，SDK 可能無法傳送任何遙測，而且不會產生任何訊息。
 
-或者****，您也可以在程式碼中初始化篩選。 在適當的初始化類別中 - 例如在 Global.asax.cs 中的 AppStart - 插入您的處理器至鏈結：
+ 
+**或者，** 可以初始化程式碼中的篩選器。 在適當的初始化類別中 - 例如在 Global.asax.cs 中的 AppStart - 插入您的處理器至鏈結：
 
 ```C#
 
@@ -163,6 +168,7 @@
     builder.Use((next) => new AnotherProcessor(next));
 
     builder.Build();
+
 ```
 
 在這個點之後建立的 TelemetryClients 會使用您的處理器。
@@ -182,11 +188,12 @@
       // Send everything else: 
       this.Next.Process(item);
     }
+
 ```
 
 #### 驗證失敗
 
-篩選出具有 "401" 回應的要求。
+篩選出具有 "401" 回應的要求。 
 
 ```C#
 
@@ -203,35 +210,38 @@ public void Process(ITelemetry item)
     // Send everything else: 
     this.Next.Process(item);
 }
+
 ```
 
 #### 篩選出快速遠端相依性呼叫
 
-如果您只想要診斷速度很慢的呼叫，請篩選出快的項目。
-> [AZURE.NOTE] 這樣會曲解您在入口網站上看到的統計資料。 相依性圖表將看起來好像相依性呼叫均失敗。
+如果您只想要診斷速度很慢的呼叫，請篩選出快的項目。 
+
+> [AZURE.NOTE] 這將會扭曲您會看到入口網站的統計資料。 相依性圖表將看起來好像相依性呼叫均失敗。
 
 ``` C#
 
 public void Process(ITelemetry item)
 {
     var request = item as DependencyTelemetry;
-
+            
     if (request != null && request.Duration.Milliseconds < 100)
     {
         return;
     }
     this.Next.Process(item);
 }
+
 ```
 
 
 ## 加入屬性
 
-使用遙測初始設定式來定義與所有遙測一起傳送的全域屬性；並覆寫選取的標準遙測模組行為。
+使用遙測初始設定式來定義與所有遙測一起傳送的全域屬性；並覆寫選取的標準遙測模組行為。 
 
 例如，Web 封裝的 Application Insights 會收集有關 HTTP 要求的遙測。 根據預設，它會將所有含 >= 400 回應碼的要求標記為失敗。 但如果您想將 400 視為成功，您可以提供設定 Success 屬性的遙測初始設定式。
 
-如果您提供遙測初始設定式，會在呼叫任何的 Track*() 方法時呼叫它。 這包括由標準遙測模組呼叫的方法。 依照慣例，這些模組不會設定任何已由初始設定式設定的屬性。
+如果您提供遙測初始設定式，會在呼叫任何的 Track*() 方法時呼叫它。 這包括由標準遙測模組呼叫的方法。 依照慣例，這些模組不會設定任何已由初始設定式設定的屬性。 
 
 **定義您的初始設定式**
 
@@ -280,13 +290,13 @@ public void Process(ITelemetry item)
 
     <ApplicationInsights>
       <TelemetryInitializers>
-        
+        <!-- Fully qualified type name, assembly name: -->
         <Add Type="MvcWebRole.Telemetry.MyTelemetryInitializer, MvcWebRole"/> 
         ...
       </TelemetryInitializers>
     </ApplicationInsights>
 
-*或者*，您也可以在程式碼 (如 Global.aspx.cs) 中具現化初始設定式：
+*或者，* 可以具現化初始設定式在程式碼，例如在 Global.aspx.cs:
 
 
 ```C#
@@ -306,7 +316,7 @@ public void Process(ITelemetry item)
 
 *JavaScript*
 
-在您從入口網站取得的初始化程式碼之後立即插入遙測初始設定式：
+在您從入口網站取得的初始化程式碼之後立即插入遙測初始設定式： 
 
 ```JS
 
@@ -350,7 +360,7 @@ public void Process(ITelemetry item)
 
 如需 telemetryItem 上可用的非自訂屬性的摘要，請參閱 [資料模型](app-insights-export-data-model.md/#lttelemetrytypegt)。
 
-您可以依需要加入多個初始設定式。
+您可以依需要加入多個初始設定式。 
 
 
 ## 參考文件
@@ -369,26 +379,27 @@ public void Process(ITelemetry item)
 
 ## <a name="next"></a>後續步驟
 
-[搜尋事件和記錄檔 ][diagnostic]
+
+[搜尋事件和記錄檔][diagnostic]
 
 [範例和逐步解說](app-insights-code-samples.md)
 
-[疑難排解 ][qna]
+[疑難排解][qna]
 
 
+<!--Link references-->
 
+[client]: app-insights-javascript.md
+[config]: app-insights-configuration-with-applicationinsights-config.md
+[create]: app-insights-create-new-resource.md
+[data]: app-insights-data-retention-privacy.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-asp-net-exceptions.md
+[greenbrown]: app-insights-asp-net.md
+[java]: app-insights-java-get-started.md
+[metrics]: app-insights-metrics-explorer.md
+[qna]: app-insights-troubleshoot-faq.md
+[trace]: app-insights-search-diagnostic-logs.md
+[windows]: app-insights-windows-get-started.md
 
-
-[client]: app-insights-javascript.md 
-[config]: app-insights-configuration-with-applicationinsights-config.md 
-[create]: app-insights-create-new-resource.md 
-[data]: app-insights-data-retention-privacy.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[exceptions]: app-insights-asp-net-exceptions.md 
-[greenbrown]: app-insights-asp-net.md 
-[java]: app-insights-java-get-started.md 
-[metrics]: app-insights-metrics-explorer.md 
-[qna]: app-insights-troubleshoot-faq.md 
-[trace]: app-insights-search-diagnostic-logs.md 
-[windows]: app-insights-windows-get-started.md 
-
+ 

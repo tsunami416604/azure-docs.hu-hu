@@ -16,10 +16,9 @@
    ms.date="12/07/2015"
    ms.author="kenhoff"/>
 
-
 # Azure Active Directory 報告「未知的執行者」事件
 
-* 這份文件屬於 [Azure Active Directory 報告指南](active-directory-reporting-guide.md)。 *
+*這份文件屬於 [Azure Active Directory 報告指南](active-directory-reporting-guide.md)。*
 
 在極少數情況下，您可能會在 Azure AD 報告的 [執行者] 或 [使用者] 欄位中看見不尋常的值。 這是預期的行為，而且由下列兩個事件的其中一個所造成：
 
@@ -39,9 +38,5 @@
 
 這是一個已知的 Bug，而我們正努力尋求解決。
 
-
-
-
-
-
+<!-- ![](./media/active-directory-reporting-unknown-actor/uid-actor.png) -->
 

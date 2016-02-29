@@ -16,17 +16,16 @@
    ms.date="11/13/2015"
    ms.author="vturecek"/>
 
-
 # 開始使用 Microsoft Azure Service Fabric Web API 服務與 OWIN 自我裝載
 
-Service Fabric 讓您能決定您的服務與使用者以及服務彼此之間如何進行通訊。 本教學課程著重於使用 ASP.NET Web API 與 OWIN 自我裝載在 Service Fabric 的*可靠服務* API 中實作服務通訊。 我們會深入了解到*可靠服務*隨插即用的通訊 API，並逐步示範如何為您的服務設定自訂通訊接聽程式，且使用 Web API 做為範例。 若要查看 Web API 通訊接聽程式的完整範例，請參閱 [GitHub 上的 Service Fabric WebApplication 範例](https://github.com/Azure/servicefabric-samples/tree/master/samples/Services/VS2015/WebApplication)。
+Service Fabric 讓您能決定您的服務與使用者以及服務彼此之間如何進行通訊。 本教學課程著重於實作服務通訊，使用 ASP.NET Web API 與 OWIN 自我裝載在 Service Fabric *可靠的服務* API。 我們會深入了解到 *可靠的服務* 隨插即用的通訊 API，並顯示您如何設定您的自訂通訊接聽程式服務與 Web API 如何用做為範例。 若要查看 Web API 通訊接聽程式的完整範例，請參閱 [GitHub 上的 Service Fabric WebApplication 範例](https://github.com/Azure/servicefabric-samples/tree/master/samples/Services/VS2015/WebApplication)。
 
 
 ## Service Fabric 中的 Web API 簡介
 
 ASP.NET Web API 是在 .NET Framework 建置 HTTP API 的常用且功能強大的架構。 前往 [www.asp.net/webapi](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) 若要深入了解 Web API 如果您不熟悉它。
 
-Service Fabric 中的 Web API 是您熟知而且喜愛的相同 ASP.NET Web API。 不同之處在於您如何*裝載* Web API 應用程式 (提示：您不會使用 IIS)。 若要進一步了解差異，讓我們將它分成兩個部分：
+Service Fabric 中的 Web API 是您熟知而且喜愛的相同 ASP.NET Web API。 不同之處在於如何您 *主機* Web API 應用程式 (提示: 您不使用 IIS)。 若要進一步了解差異，讓我們將它分成兩個部分：
 
  1. Web API 應用程式 (您的控制器、模型等)
  2. 主機 (Web 伺服器，通常是 IIS)
@@ -44,7 +43,7 @@ Web API 應用程式本身不會在此處變更，它與您過去撰寫的 Web A
 
 這讓我們有空的無狀態服務，它會裝載 Web API 應用程式。 我們將從頭設定應用程式，看看它如何全部放在一起。
 
-第一個步驟是提取一些 Web API 的 NuGet 封裝。 我們想要使用的封裝是 **Microsoft.AspNet.WebApi.OwinSelfHost**。 此封裝包含所有必要的 Web API 封裝和*主機*封裝，這在稍後會很重要。
+第一個步驟是提取一些 Web API 的 NuGet 封裝。 我們想要使用的封裝是 **Microsoft.AspNet.WebApi.OwinSelfHost**。 此套件包含所有必要的 Web API 封裝和 *主機* 封裝，這稍後會很重要。
 
 ![](media/service-fabric-reliable-services-communication-webapi/webapi-nuget.png)
 
@@ -71,6 +70,7 @@ namespace WebApiService
         }
     }
 }
+
 ```
 
 在 Controllers 目錄中加入預設控制器：
@@ -120,9 +120,10 @@ namespace WebApiService.Controllers
         }
     }
 }
+
 ```
 
-最後，在專案根目錄加入 Startup 類別以註冊路由、格式器及任何其他組態設定。 這也是 Web API 插入至*主機*的位置，稍後我們將再重返此處。 在設定 Startup 類別時，為 Startup 類別建立稱為 *IOwinAppBuilder* 的介面，定義 Configuration 方法。 雖然技術上不需要 Web API 即可運作，它能讓稍後使用 Startup 類別時更有彈性。
+最後，在專案根目錄加入 Startup 類別以註冊路由、格式器及任何其他組態設定。 這也是在 Web API 插入至 *主機*, ，這將會稍後再重返。 在設定時啟動類別，建立名為介面 *IOwinAppBuilder* 啟動類別，定義 Configuration 方法。 雖然技術上不需要 Web API 即可運作，它能讓稍後使用 Startup 類別時更有彈性。
 
  + Startup.cs
 
@@ -146,6 +147,7 @@ namespace WebApiService
         }
     }
 }
+
 ```
 
  + IOwinAppBuilder.cs
@@ -161,6 +163,7 @@ namespace WebApiService
         void Configuration(IAppBuilder appBuilder);
     }
 }
+
 ```
 
 應用程式部分就這樣。 現在我們剛設定好基本的 Web API 專案配置。 與您過去可能已撰寫的 Web API 專案或基本的 Web API 範本相比，到目前為止它不應該看起來有太多不同。 您的商務邏輯如往常般在控制器和模型中運作。
@@ -170,7 +173,7 @@ namespace WebApiService
 
 ## 服務裝載
 
-在 Service Fabric 中，您的服務會在服務主機處理序**中執行，這是執行您的服務程式碼的可執行檔。 使用可靠服務 API 撰寫服務時，以及其實您在 .NET 中的 Service Fabric 上撰寫服務的大多數情況下，您的服務專案會編譯為 .EXE，其註冊您的服務類型並執行程式碼。 事實上，如果您在無狀態服務專案中開啟 **Program.cs**，您應該會看到：
+Service Fabric 中，您的服務執行 *服務主機處理程序* 的可執行您的服務程式碼。 使用可靠服務 API 撰寫服務時，以及其實您在 .NET 中的 Service Fabric 上撰寫服務的大多數情況下，您的服務專案會編譯為 .EXE，其註冊您的服務類型並執行程式碼。 事實上，如果您開啟 **Program.cs** 在無狀態服務專案，您應該會看到:
 
 ```csharp
 
@@ -194,17 +197,19 @@ public class Program
         }
     }
 }
+
 ```
 
 如果看起來疑似主控台應用程式的進入點，這是因為它是。
 
-關於服務主機處理序和服務註冊的詳細資料超出本文的範圍，但現在知道**您的服務程式碼是在自己的處理序中執行**是很重要的。
+關於服務主機處理序和服務註冊的詳細資料超出範圍的本文中，但是一定要知道的現在 **在自己的處理序中執行您的服務程式碼**。
 
 ## 自我裝載 Web API 與 OWIN 主機
 
-假設您的 Web API 應用程式程式碼裝載在自己的處理序中，我們如何將它連結到 Web 伺服器？ Enter [OWIN](http://owin.org/). OWIN 只是 .NET Web 應用程式和 Web 伺服器之間的合約。 傳統上使用 ASP.NET (直到 MVC 5)，Web 應用程式已透過 System.Web 緊密結合至 IIS。 不過，Web API 會實作 OWIN，可讓您撰寫獨立於裝載它的 Web 伺服器的 Web 應用程式。 這可讓您使用自我裝載** OWIN Web 伺服器，您可以在自己的處理序中啟動，完全符合我們先前所提到的 Service Fabric 裝載模型。
+假設您的 Web API 應用程式程式碼裝載在自己的處理序中，我們如何將它連結到 Web 伺服器？ 輸入 [OWIN](http://owin.org/)。 OWIN 只是 .NET Web 應用程式和 Web 伺服器之間的合約。 傳統上使用 ASP.NET (直到 MVC 5)，Web 應用程式已透過 System.Web 緊密結合至 IIS。 不過，Web API 會實作 OWIN，可讓您撰寫獨立於裝載它的 Web 伺服器的 Web 應用程式。 這可讓您使用 *自我裝載* OWIN web 伺服器，您可以在自己的處理，完全符合我們先前所提到的 Service Fabric 裝載模型中啟動。
 
 在本文中，我們將使用 Katana 做為 Web API 應用程式的 OWIN 主機。 Katana 是開放原始碼的 OWIN 主機實作。
+
 > [AZURE.NOTE] 若要深入了解 Katana，前往 [Katana 網站](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana), ，以及有關如何使用 Katana 自我裝載 Web API 的快速概觀，請參閱這篇文章如何 [使用 OWIN 自我裝載 ASP.NET Web API 2](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api)。
 
 
@@ -218,6 +223,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 {
     ...
 }
+
 ```
 
 Web 伺服器和您未來可能使用的任何其他通訊堆疊，例如 WebSockets，應該使用 ICommunicationListener 介面來正確地與系統整合。 這樣做的原因會在接下來的步驟中變得明顯。
@@ -254,15 +260,16 @@ namespace WebApi
         }
     }
 }
+
 ```
 
 ICommunicationListener 介面提供三個方法來管理服務的通訊接聽程式：
 
- + **OpenAsync**：開始接聽要求。
- + **CloseAsync**：停止接聽要求，完成任何進行中的要求，並正常關機。
- + **Abort**：取消所有項目，並立即停止。
+ + **OpenAsync**: 開始接聽要求。
+ + **CloseAsync**: 停止接聽要求，完成任何進行中的要求，並正常關機。
+ + **中止**: 取消所有項目，並立即停止。
 
-若要開始，請加入 URL 路徑前置詞的私用類別成員和稍早建立的 **Startup** 類別。 這些會透過建構函式初始化，並在稍後設定接聽 URL 時使用。 另外也加入私用類別成員，以儲存分別在初始化期間和稍後啟動伺服器時建立的接聽位址和伺服器控制代碼。
+若要開始，加入 URL 路徑前置詞的私用類別成員和 **啟動** 稍早建立的類別。 這些會透過建構函式初始化，並在稍後設定接聽 URL 時使用。 另外也加入私用類別成員，以儲存分別在初始化期間和稍後啟動伺服器時建立的接聽位址和伺服器控制代碼。
 
 ```csharp
 
@@ -282,6 +289,7 @@ public class OwinCommunicationListener : ICommunicationListener
     }        
 
     ...
+
 ```
 
 ### 實作
@@ -291,7 +299,7 @@ public class OwinCommunicationListener : ICommunicationListener
  + **URL 路徑前置詞**。 雖然是選擇性的，但最好現在就設定，以便您能安全地在應用程式中裝載多個 Web 服務。
  + **連接埠**。
 
-我們抓取 Web 伺服器的連接埠之前，必須了解 Service Fabric 提供一個應用程式層，做為您的應用程式與其執行所在之基礎作業系統之間的緩衝區。 因此，Service Fabric 讓您能夠設定服務的端點**。 Service Fabric 會負責確定端點可供服務使用，因此您不需要在基礎作業系統環境自行設定。 這可讓您輕鬆地在不同的環境裝載 Service Fabric 應用程式，而不必對應用程式進行任何變更 (例如，您可以在 Azure 或您自己的資料中心裝載相同的應用程式)。
+我們抓取 Web 伺服器的連接埠之前，必須了解 Service Fabric 提供一個應用程式層，做為您的應用程式與其執行所在之基礎作業系統之間的緩衝區。 因此，Service Fabric 會提供能夠設定 *端點* 您的服務。 Service Fabric 會負責確定端點可供服務使用，因此您不需要在基礎作業系統環境自行設定。 這可讓您輕鬆地在不同的環境裝載 Service Fabric 應用程式，而不必對應用程式進行任何變更 (例如，您可以在 Azure 或您自己的資料中心裝載相同的應用程式)。
 
 在 PackageRoot\ServiceManifest.xml 中設定 HTTP 端點：
 
@@ -302,6 +310,7 @@ public class OwinCommunicationListener : ICommunicationListener
         <Endpoint Name="ServiceEndpoint" Type="Input" Protocol="http" Port="80" />
     </Endpoints>
 </Resources>
+
 ```
 
 這個步驟很重要，因為服務主機處理序在限制認證下執行 (Windows 上為網路服務)，這表示您的服務沒有自行設定 HTTP 端點的存取權。 藉由使用端點組態，Service Fabric 會知道要為服務將接聽的 URL 設定適當的 ACL，同時提供標準位置來設定端點。
@@ -324,6 +333,7 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
             ? String.Empty
             : this.appRoot.TrimEnd('/') + '/');
     ...
+
 ```
 
 請注意這裡用 "http://+"。 這是為了確定 Web 伺服器正在接聽所有可用的位址，包括 localhost、FQDN，以及電腦的 IP。
@@ -343,9 +353,10 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
 
     return Task.FromResult(publishAddress);
 }
+
 ```
 
-請注意，這會參考傳遞給建構函式中之 OwinCommunicationListener 的 **Startup** 類別。 這個 Startup 執行個體由 Web 伺服器用來啟動 Web API 應用程式。
+請注意，這會參考 **啟動** 傳遞給建構函式中之 OwinCommunicationListener 的類別。 這個 Startup 執行個體由 Web 伺服器用來啟動 Web API 應用程式。
 
 稍後當您執行應用程式時，ServiceEventSource.Current.Message() 列會出現在 [診斷事件] 視窗，讓您知道已成功啟動 Web 伺服器。
 
@@ -381,13 +392,14 @@ private void StopWebServer()
         }
     }
 }
+
 ```
 
 在此範例實作中，CloseAsync 和 Abort 只會停止 Web 伺服器。 您可以選擇在 CloseAsync 中執行適當協調的 Web 伺服器關機；例如，等候進行中的要求完成然後才傳回。
 
 ## 啟動 Web 伺服器
 
-您現在可以開始建立並傳回 OwinCommunicationListener 的執行個體以啟動 Web 伺服器。 返回 Service 類別 (Service.cs)，覆寫 **CreateServiceInstanceListeners()** 方法：
+您現在可以開始建立並傳回 OwinCommunicationListener 的執行個體以啟動 Web 伺服器。 回到 Service 類別 (Service.cs)，覆寫 **CreateServiceInstanceListeners()** 方法:
 
 ```csharp
 
@@ -398,9 +410,10 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
         new ServiceInstanceListener(initParams => new OwinCommunicationListener("webapp", new Startup(), initParams))
     };
 }
+
 ```
 
-這是 Web API *應用程式*和 OWIN *主機*最後相會的地方：會給予*主機* (**OwinCommunicationListener**) *應用程式*的執行個體 (透過 **Startup** 的 Web API)，且 Service Fabric 會管理其生命週期。 通常可以針對任何通訊堆疊運用相同的模式。
+這正是 Web API *應用程式* 和 OWIN *主機* 最後相會: *主機* (**OwinCommunicationListener**) 指定的執行個體 *應用程式* (透過 Web API **啟動**)，且 Service Fabric 會管理其生命週期。 通常可以針對任何通訊堆疊運用相同的模式。
 
 ## 總整理
 
@@ -427,9 +440,10 @@ namespace WebApiService
         }
     }
 }
+
 ```
 
-完整 `OwinCommunicationListener` 類別:
+以及完整 `OwinCommunicationListener` 類別：
 
 ```csharp
 
@@ -451,7 +465,7 @@ namespace WebApiService
         private readonly ServiceInitializationParameters serviceInitializationParameters;
         private IDisposable serverHandle;
         private string listeningAddress;
-
+        
         public OwinCommunicationListener(string appRoot, IOwinAppBuilder startup, ServiceInitializationParameters serviceInitializationParameters)
         {
             this.startup = startup;
@@ -512,6 +526,7 @@ namespace WebApiService
         }
     }
 }
+
 ```
 
 所有細節就緒之後，您的專案現在看起來應該像一般 Web API 應用程式，並且具有可靠服務 API 進入點與 OWIN 主機：
@@ -524,11 +539,12 @@ namespace WebApiService
 如果您還沒有這麼做， [設定開發環境](service-fabric-get-started.md)。
 
 
-您現在可以建置並部署您的服務。 在 Visual Studio 中按 **F5** 以建置及部署應用程式。 在 [診斷事件] 視窗中，您應該會看到一則訊息指出 web 伺服器上開啟 **http://localhost:80/webapp/api**
+您現在可以建置並部署您的服務。 按下 **F5** 在 Visual Studio 中建置和部署應用程式。 在 [診斷事件] 視窗中，您應該會看到一則訊息指出 web 伺服器上開啟 **http://localhost:80/webapp/api**
 
 
 ![](media/service-fabric-reliable-services-communication-webapi/webapi-diagnostics.png)
-> [AZURE.NOTE] 如果連接埠由您電腦上的另一個處理序開啟，您可能會看到錯誤，指出無法開啟接聽程式。 如果是這種情況，請嘗試在 ServiceManifest.xml 中的端點組態中使用不同的通訊埠。
+
+> [AZURE.NOTE] 如果連接埠已開啟您的電腦上的另一個處理序，您可能會看到錯誤，指出無法開啟接聽程式。 如果是這種情況，請嘗試在 ServiceManifest.xml 中的端點組態中使用不同的通訊埠。
 
 
 一旦服務正常執行，請開啟瀏覽器並瀏覽至 [http://localhost/webapp/api/values](http://localhost/webapp/api/values) 進行測試。
@@ -540,6 +556,7 @@ namespace WebApiService
 ```powershell
 
 New-ServiceFabricService -ApplicationName "fabric:/WebServiceApplication" -ServiceName "fabric:/WebServiceApplication/WebService" -ServiceTypeName "WebServiceType" -Stateless -PartitionSchemeSingleton -InstanceCount -1
+
 ```
 
 或是在 Visual Studio 無狀態服務專案中定義預設服務時設定：
@@ -553,19 +570,16 @@ New-ServiceFabricService -ApplicationName "fabric:/WebServiceApplication" -Servi
     </StatelessService>
   </Service>
 </DefaultServices>
+
 ```
 
 如需有關建立應用程式和服務執行個體的詳細資訊，請參閱 [如何部署和移除應用程式](service-fabric-deploy-remove-applications.md)。
 
 ## ASP.NET 5
 
-在 ASP.NET 5 中，分隔應用程式**與 Web 應用程式中的主機**的概念和程式設計模型維持不變。 它也可以套用至其他形式的通訊。 此外，雖然主機**在 ASP.NET 5 中可能不同，但 Web API 應用程式**層維持不變，這是大量應用程式邏輯實際存在的位置。
+在 ASP.NET 5 中，概念和程式設計模型分開的 *應用程式* 從 *主機* web 應用程式中維持不變。 它也可以套用至其他形式的通訊。 此外，雖然 *主機* 在 ASP.NET 5、 Web API 中可能不同 *應用程式* 層維持不變，這是大量應用程式邏輯實際存在。
 
 ## 後續步驟
 
-[偵錯在 Visual Studio 中的 Service Fabric 應用程式](service-fabric-debugging-your-application.md)
-
-
-
-
+[在 Visual Studio 中偵錯 Service Fabric 應用程式](service-fabric-debugging-your-application.md)
 

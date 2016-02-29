@@ -17,19 +17,19 @@
     ms.author="juliako"/>
 
 
-
 # 使用 Azure Media Packager 完成靜態封裝工作
 
->[AZURE.NOTE]Windows Azure Media Packager 和 Windows Azure 媒體編碼程式會到達上 2016 年 3 月 1 日的生命週期已經結束。 屆時，這些元件將不再可用。 格式轉換和加密功能將可透過動態封裝與動態加密進行。 
+>[AZURE.NOTE]Windows Azure Media Packager 和 Windows Azure 媒體編碼程式會到達上 2016 年 3 月 1 日的生命週期已經結束。 屆時，這些元件將不再可用。  格式轉換和加密功能將可透過動態封裝與動態加密進行。 
 
 ## 概觀
 
 若要透過網際網路傳遞數位視訊，您必須壓縮媒體。 數位視訊檔案十分龐大，而且可能太大而無法透過網際網路傳遞，或是太大而使您客戶的裝置無法正確顯示。 編碼是壓縮視訊和音訊，好讓客戶能檢視您的媒體的程序。 完成視訊編碼後，即可將其放到其他檔案容器中。 將編碼後的媒體放入容器的程序稱為封裝。 例如，您可以使用 Azure Media Packager 將 MP4 檔案轉換成 Smooth Streaming 或 HLS 內容。 如需詳細資訊，請參閱 [編碼和封裝](http://blog-ndrouin.azurewebsites.net/streaming-media-terminology-explained/)。
 
 媒體服務支援靜態和動態封裝。 使用靜態封裝時，您必須依據客戶的需求建立不同格式各一份的內容。 但如果使用動態封裝，您只需要建立包含一組調適型位元速率 MP4 或 Smooth Streaming 檔案的資產。 然後，隨選資料流伺服器會根據資訊清單或片段要求中的指定格式，確保您的使用者以自己選擇的通訊協定接收資料流。 因此，您只需要儲存及支付一種儲存格式之檔案的費用，媒體服務會根據用戶端的要求建置及提供適當的回應。
+
 >[AZURE.NOTE]建議使用 [動態封裝](media-services-dynamic-packaging-overview.md)。
 
-不過，在某些情況下，您需要使用靜態封裝：
+不過，在某些情況下，您需要使用靜態封裝： 
 
 - 驗證使用外部編碼器 (例如使用第三方編碼器) 編碼的調適型位元速率 MP4。
 
@@ -43,17 +43,18 @@
 ## 驗證使用外部編碼器編碼的調適型位元速率 MP4
 
 如果您要使用一組調適型位元速率 (多位元速率) MP4 檔案，而這些檔案不是使用 媒體服務編碼器來編碼，則應先驗證檔案後再進一步處理。 媒體服務封裝器可驗證包含一組 MP4 檔案的資產，並檢查該資產是否可封裝為 Smooth Streaming 或 HLS。 如果驗證工作失敗，處理工作的作業完成時將會顯示錯誤。 定義驗證工作的預設值的 XML 位於 [Azure Media Packager 的預設工作](http://msdn.microsoft.com/library/azure/hh973635.aspx) 主題。
->[AZURE.NOTE]請使用媒體服務編碼器產生您的內容，或者使用媒體服務封裝器進行驗證，以避免執行階段的問題。 如果隨選資料流伺服器無法在執行階段剖析來源檔案，則您會收到 HTTP 1.1 錯誤「415 不支援的媒體類型」。 如果重複使伺服器無法剖析來源檔案，將會影響隨選資料流伺服器的效能，且可能會減少提供其他要求的可用頻寬。 Azure 媒體服務會在其隨選資料流服務上，提供服務等級協定 (SLA)；然而，若伺服器在上述方法中被誤用，此 SLA 便無法履行。
+
+>[AZURE.NOTE]使用 Media Services 編碼器來產生或 Media Services 封裝程式，以驗證您的內容，以避免執行階段的問題。 如果隨選資料流伺服器無法在執行階段剖析來源檔案，則您會收到 HTTP 1.1 錯誤「415 不支援的媒體類型」。 如果重複使伺服器無法剖析來源檔案，將會影響隨選資料流伺服器的效能，且可能會減少提供其他要求的可用頻寬。 Azure 媒體服務會在其隨選資料流服務上，提供服務等級協定 (SLA)；然而，若伺服器在上述方法中被誤用，此 SLA 便無法履行。
 
 本節將說明如何處理驗證工作。 此外，本節也將說明如何查看使用 JobStatus.Error 完成之作業的狀態與錯誤訊息。
 
 若要使用媒體服務封裝器驗證您的 MP4 檔案，您必須自行建立資訊清單 (.ism) 檔案，並將其與來源檔案一併上傳至媒體服務帳戶中。 以下是由 Azure Media Encoder 所產生的 .ism 檔案範例。 檔案名稱區分大小寫。 此外，請務必使用 UTF-8 編碼 .ism 檔案中的文字。
 
-
+    
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
     <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
       <head>
-    
+    <!-- Tells the server that these input files are MP4s – specific to Dynamic Packaging -->
         <meta name="formats" content="mp4" /> 
       </head>
       <body>
@@ -71,8 +72,8 @@
 
 取得調適型位元速率 MP4 集後，您便可以利用動態封裝。 動態封裝可讓您在指定通訊協定中傳遞資料流，無須進一步封裝。 如需詳細資訊，請參閱 [動態封裝](media-services-dynamic-packaging-overview.md)。
 
-下列程式碼範例會使用 Azure Media Services.NET SDK 延伸模組。 請務必更新指向資料夾 (您可在其中找到輸入的 MP4 檔案與 .ism 檔案) 的程式碼。 此外，也請更新指向 MediaPackager_ValidateTask.xml 檔案位置的程式碼。 此 XML 檔案中定義 [Azure Media Packager 的工作預設](http://msdn.microsoft.com/library/azure/hh973635.aspx) 主題。
-
+下列程式碼範例會使用 Azure Media Services.NET SDK 延伸模組。  請務必更新指向資料夾 (您可在其中找到輸入的 MP4 檔案與 .ism 檔案) 的程式碼。 此外，也請更新指向 MediaPackager_ValidateTask.xml 檔案位置的程式碼。 此 XML 檔案中定義 [Azure Media Packager 的工作預設](http://msdn.microsoft.com/library/azure/hh973635.aspx) 主題。
+    
     using Microsoft.WindowsAzure.MediaServices.Client;
     using System;
     using System.Collections.Generic;
@@ -191,7 +192,7 @@
                         Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
                     },
                     CancellationToken.None).Result;
-    
+              
                 // If the validation task fails and job completes with JobState.Error,
                 // display the error message and throw an exception.
                 if (job.State == JobState.Error)
@@ -244,12 +245,13 @@
 本節中的範例會將夾層檔案 (本例中為 MP4) 編碼為調適型位元速率 MP4 檔案。 接著，該範例會將 MP4 封裝為 Smooth Streaming，然後使用 PlayReady 將其加密。 如此一來，您就可以串流 Smooth Streaming 或 MPEG DASH。
 
 媒體服務現在提供一種服務，來傳遞 Microsoft PlayReady 授權。 本文中的範例將會示範如何設定媒體服務 PlayReady 授權傳遞服務 (請參閱以下程式碼中定義的 ConfigureLicenseDeliveryService 方法)。 如需媒體服務 PlayReady 授權傳遞服務的詳細資訊，請參閱 [使用 PlayReady 動態加密和授權傳遞服務](media-services-protect-with-drm.md)。
+
 >[AZURE.NOTE]若要傳遞使用 PlayReady 所加密的 MPEG DASH，請確定使用 CENC 選項設定的方法是將 useSencBox 和 adjustSubSamples 屬性 (述 [的 Azure Media Encryptor 工作預設](http://msdn.microsoft.com/library/azure/hh973610.aspx) 主題) 設為 true。  
 
 
 請務必更新下列指向資料夾 (您可在其中找到輸入的 MP4 檔案) 的程式碼。
 
-此外，也請更新指向 MediaPackager_MP4ToSmooth.xml 和 MediaEncryptor_PlayReadyProtection.xml 檔案位置的程式碼。 中所定義的 MediaPackager_MP4ToSmooth.xml [Azure Media Packager 的工作預設](http://msdn.microsoft.com/library/azure/hh973635.aspx) MediaEncryptor_PlayReadyProtection.xml 定義於 [的 Azure Media Encryptor 工作預設](http://msdn.microsoft.com/library/azure/hh973610.aspx) 主題。
+此外，也請更新指向 MediaPackager_MP4ToSmooth.xml 和 MediaEncryptor_PlayReadyProtection.xml 檔案位置的程式碼。 中所定義的 MediaPackager_MP4ToSmooth.xml [Azure Media Packager 的工作預設](http://msdn.microsoft.com/library/azure/hh973635.aspx) MediaEncryptor_PlayReadyProtection.xml 定義於 [的 Azure Media Encryptor 工作預設](http://msdn.microsoft.com/library/azure/hh973610.aspx) 主題。 
 
 此範例會定義可用來動態更新 MediaEncryptor_PlayReadyProtection.xml 檔案的 UpdatePlayReadyConfigurationXMLFile 方法。 如果您有可用的金鑰種子，可以使用 CommonEncryption.GeneratePlayReadyContentKey 方法產生以 keySeedValue 和 KeyId 值為基礎的內容金鑰。
 
@@ -270,7 +272,7 @@
     {
         class Program
         {
-    
+           
             private static readonly string _mediaFiles =
                 Path.GetFullPath(@"../..\Media");
     
@@ -688,12 +690,13 @@
 ## 搭配 AES-128 使用靜態加密保護 HLSv3
 
 如果您要使用 AES 128 將 HLS 加密，可選擇使用動態加密 (建議選項) 或靜態加密 (如本節所示)。 如果您決定使用動態加密，請參閱 [使用 aes-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128)。
->[AZURE.NOTE]若要將您的內容轉換為 HLS，必須先將其轉換/編碼為 Smooth Streaming。
+
+>[AZURE.NOTE]若要將您的內容轉換為 HLS，您必須先轉換/編碼您的內容為 Smooth Streaming。
 >此外，針對使用 AES 加密的 HLS，請務必設定 MediaPackager_SmoothToHLS.xml 檔案中的下列屬性：將加密屬性設為 true、設定金鑰值和指向驗證/授權伺服器的 KeyURI 值。
 媒體服務將會建立金鑰檔案，並將其放到資產容器中。 您應該將 /asset-containerguid/*.key 檔案複製到伺服器中 (或自行建立金鑰檔案)，然後再從資產容器中刪除 *.key 檔案。
 
 本節中的範例會將夾層檔案 (本例中為 MP4) 編碼為多位元速率 MP4 檔案，然後將 MP4 封裝為 Smooth Streaming。 接著，該範例會將 Smooth Streaming 封裝為 HTTP Live Streaming (HLS)，該格式使用進階加密標準 (AES) 128 位元串流加密進行加密。 請務必更新下列指向資料夾 (您可在其中找到輸入的 MP4 檔案) 的程式碼。 此外，也請更新指向 MediaPackager_MP4ToSmooth.xml 和 MediaPackager_SmoothToHLS.xml 檔案位置的程式碼。 您可以找到這些檔案中定義 [Azure Media Packager 的工作預設](http://msdn.microsoft.com/library/azure/hh973635.aspx) 主題。
-
+    
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -715,7 +718,7 @@
     
             private static readonly string _mediaFiles =
                 Path.GetFullPath(@"../..\Media");
-    
+            
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"SingleMP4\BigBuckBunny.mp4");
     
@@ -850,7 +853,7 @@
                     {
                         Console.WriteLine("Uploading '{0}' - Progress: {1:0.##}%", af.Name, p.Progress);
                     });
-    
+     
                 return asset;
             }
     
@@ -966,14 +969,15 @@
 ## 搭配 PlayReady 使用靜態加密保護 HLSv3
 
 如果您想要使用 PlayReady 保護內容時，您可以選擇使用 [動態加密](media-services-protect-with-drm.md) (建議的選項) 或靜態加密 (如本節所述)。
->[AZURE.NOTE] 若要使用 PlayReady 保護您的內容，您必須先將其轉換/編碼為 Smooth Streaming 格式。
+
+>[AZURE.NOTE] 為了保護使用 PlayReady 內容您必須先轉換/編碼您的內容轉換為 Smooth Streaming 格式。
 
 本節中的範例會將夾層檔案 (本例中為 MP4) 編碼為多位元速率 MP4 檔案。 接著，該範例會將 MP4 封裝為 Smooth Streaming，然後使用 PlayReady 將其加密。 若要產生使用 PlayReady 加密的 HTTP Live Streaming (HLS)，必須將 PlayReady Smooth Streaming 資產封裝為 HLS。 本主題將示範如何執行這些步驟。
 
-媒體服務現在提供一種服務，來傳遞 Microsoft PlayReady 授權。 本文中的範例將會示範如何設定媒體服務 PlayReady 授權傳遞服務 (請參閱以下程式碼中定義的 **ConfigureLicenseDeliveryService** 方法)。
+媒體服務現在提供一種服務，來傳遞 Microsoft PlayReady 授權。 這篇文章中的範例示範如何設定媒體服務 PlayReady 授權傳遞服務 (請參閱 **ConfigureLicenseDeliveryService** 以下的程式碼中定義的方法)。 
 
 請務必更新下列指向資料夾 (您可在其中找到輸入的 MP4 檔案) 的程式碼。 此外，也請更新指向 MediaPackager_MP4ToSmooth.xml、MediaPackager_SmoothToHLS.xml 和 MediaEncryptor_PlayReadyProtection.xml 檔案位置的程式碼。 MediaPackager_MP4ToSmooth.xml 和 MediaPackager_SmoothToHLS.xml 會定義在 [Azure Media Packager 的工作預設](http://msdn.microsoft.com/library/azure/hh973635.aspx) MediaEncryptor_PlayReadyProtection.xml 定義於 [的 Azure Media Encryptor 工作預設](http://msdn.microsoft.com/library/azure/hh973610.aspx) 主題。
-
+    
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -1437,15 +1441,11 @@
         }
     }
 
-## 媒體服務學習路徑
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 

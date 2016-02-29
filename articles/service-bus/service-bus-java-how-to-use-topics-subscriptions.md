@@ -1,6 +1,6 @@
 <properties
     pageTitle="如何搭配使用服務匯流排主題與 Java | Microsoft Azure"
-    description="了解如何在 Azure 使用服務匯流排主題及訂用帳戶。程式碼範例專為 Java 應用程式撰寫。"
+    description="了解如何在 Azure 使用服務匯流排主題及訂用帳戶。 程式碼範例專為 Java 應用程式撰寫。"
     services="service-bus"
     documentationCenter="java"
     authors="sethmanheim"
@@ -16,19 +16,18 @@
     ms.date="10/07/2015"
     ms.author="sethm"/>
 
-
 # 如何使用服務匯流排主題和訂用帳戶
 
 [AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本指南說明如何使用服務匯流排主題和訂用帳戶。 這些範例以 Java 撰寫並使用 [Azure SDK for Java]][]。 涵蓋的案例包括 **建立主題和訂閱**, ，**建立訂閱篩選器**, ，**傳送訊息至主題**, ，**從訂閱接收訊息**, ，並
+本指南說明如何使用服務匯流排主題和訂用帳戶。 這些範例以 Java 撰寫並使用 [Azure SDK for Java][]。 涵蓋的案例包括 **建立主題和訂閱**, ，**建立訂閱篩選器**, ，**傳送訊息至主題**, ，**從訂閱接收訊息**, ，並
 **刪除主題和訂閱**。
 
 [AZURE.INCLUDE [service-bus-java-how-to-create-topic](../../includes/service-bus-java-how-to-create-topic.md)]
 
 ## 設定應用程式以使用服務匯流排
 
-請確定您已安裝 [Azure SDK for Java]][] 再建置此範例。 如果您使用 Eclipse，您可以安裝 [Azure Toolkit for Eclipse]][] 包含 Azure SDK for Java。 然後您可以將 **Microsoft Azure Libraries for Java** 新增至您的專案：
+請確定您已安裝 [Azure SDK for Java][] 再建置此範例。 如果您使用 Eclipse，您可以安裝 [Azure Toolkit for Eclipse][] 包含 Azure SDK for Java。 您可以加入 **Microsoft Azure Libraries for Java** 至您的專案:
 
 ![](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 
@@ -50,7 +49,7 @@
 SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 唯一的通訊點。
 
-**ServiceBusService** 類別提供方法來建立、 列舉
+ **ServiceBusService** 類別提供方法來建立、 列舉
 的方法。 下列範例將示範如何 **ServiceBusService** 物件
 可用來建立名為 `TestTopic`, ，使用命名空間，稱為 `HowToSample`:
 
@@ -61,7 +60,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
           "SAS_key_value",
           ".servicebus.windows.net"
           );
-    
+
     ServiceBusContract service = ServiceBusService.create(config);
     TopicInfo topicInfo = new TopicInfo("TestTopic");
     try  
@@ -95,9 +94,9 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 以用來限制傳遞至訂閱的虛擬佇列的訊息
 集合。
 
-### 使用預設 (MatchAll) 篩選器建立訂閱
+### 使用預設 (MatchAll) 篩選器建立訂用帳戶
 
-**MatchAll** 篩選器是預設篩選器，如果任何篩選條件
+ **MatchAll** 篩選器是預設篩選器，如果任何篩選條件
 沒有指定篩選器，便會使用此篩選器。 當 **MatchAll**
 篩選器時，所有發佈至主題的訊息都會被置於訂閱的
 虛擬佇列中。 下列範例會建立
@@ -114,13 +113,13 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 應出現在特定主題訂閱中。
 
 訂閱所支援的最具彈性篩選器類型是實作 SQL92 子集的
-[SqlFilter []][], ，可用來實作 SQL92 的子集。 SQL 篩選器適用於
+[SqlFilter][], ，可用來實作 SQL92 的子集。 SQL 篩選器適用於
 發佈至主題之訊息的屬性。 如需
 可與 SQL 篩選器搭配使用的運算式詳細資料，
-檢閱 [[SqlFilter.SqlExpression]][] 語法。
+檢閱 [SqlFilter.SqlExpression][] 語法。
 
 下列範例會建立名為 `HighMessages` 與
-[SqlFilter []][] 物件，只選取自訂的訊息
+[SqlFilter][] 物件，只選取自訂的訊息
 **MessageNumber** 屬性大於 3:
 
     // Create a "HighMessages" filtered subscription  
@@ -134,7 +133,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
     // Delete the default rule, otherwise the new rule won't be invoked.
     service.deleteRule("TestTopic", "HighMessages", "$Default");
 
-同樣地，下列範例會建立名為 `LowMessages` 與 [SqlFilter []][] sqlfilter 只選取的物件 **MessageNumber** 屬性小於或等於 3:
+同樣地，下列範例會建立名為 `LowMessages` 與 [SqlFilter][] sqlfilter 只選取的物件 **MessageNumber** 屬性小於或等於 3:
 
     // Create a "LowMessages" filtered subscription
     SubscriptionInfo subInfo = new SubscriptionInfo("LowMessages");
@@ -146,6 +145,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
         service.createRule("TestTopic", "LowMessages", ruleInfo);
     // Delete the default rule, otherwise the new rule won't be invoked.
     service.deleteRule("TestTopic", "LowMessages", "$Default");
+
 
 現在，當訊息傳送至 `TestTopic`, ，一律會
 傳遞至已訂閱 `AllMessages` 訂用帳戶，並選擇性地傳遞至已訂閱 `HighMessages` 和 `LowMessages` 訂閱 (視
@@ -161,12 +161,12 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
     service.sendTopicMessage("TestTopic", message);
 
 傳送至服務匯流排主題的訊息是
-[BrokeredMessage []][] 類別。 [BrokeredMessage []][]* 物件具有一組
+[BrokeredMessage][] 類別。 [BrokeredMessage][]* 物件具有一組
 標準方法 (例如 **setLabel** 和 **TimeToLive**)，字典
 保存自訂應用程式特定屬性的字典，以及一些任意的
 應用程式資料。 應用程式可以設定訊息內文，
 方法是將任何可序列化的物件傳遞至
-[BrokeredMessage []][], ，適當 **DataContractSerializer** 將
+[BrokeredMessage][], ，適當 **DataContractSerializer** 將
 用來序列化物件。 或者，
 **java.io.InputStream** 可以提供。
 
@@ -228,7 +228,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
     {
         ReceiveMessageOptions opts = ReceiveMessageOptions.DEFAULT;
         opts.setReceiveMode(ReceiveMode.PEEK_LOCK);
-    
+
         while(true)  {
             ReceiveSubscriptionMessageResult  resultSubMsg =
                 service.receiveSubscriptionMessage("TestTopic", "HighMessages", opts);
@@ -313,20 +313,18 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
     service.deleteSubscription("TestTopic", "AllMessages");
     service.deleteSubscription("TestTopic", "HighMessages");
     service.deleteSubscription("TestTopic", "LowMessages");
-    
+
     // Delete a topic
     service.deleteTopic("TestTopic");
 
 ## 後續步驟
 
-現在您已了解服務匯流排佇列的基本概念，請參閱 [服務匯流排佇列、 主題和訂閱 []][] 如需詳細資訊。
+現在您已了解服務匯流排佇列的基本概念，請參閱 [服務匯流排佇列、 主題和訂閱][] 如需詳細資訊。
 
-
-[azure sdk for java]: http://azure.microsoft.com/develop/java/ 
-[azure toolkit for eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx 
-[azure classic portal]: http://manage.windowsazure.com/ 
-[service bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md 
-[sqlfilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx 
-[sqlfilter.sqlexpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx 
-[brokeredmessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx 
-
+  [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
+  [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
+  [Azure classic portal]: http://manage.windowsazure.com/
+  [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+  [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx 
+  [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+  [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx

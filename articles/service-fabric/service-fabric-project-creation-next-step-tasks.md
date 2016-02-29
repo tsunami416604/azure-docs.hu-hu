@@ -16,17 +16,13 @@
    ms.date="12/06/2015"
    ms.author="seanmck"/>
 
-
 # 您的 Service Fabric 應用程式和後續步驟
-
 您的 Service Fabric 應用程式已經建立。 本文說明您專案的建立方式和一些潛在後續步驟。
 
 ## 您的應用程式
-
 每個新應用程式都包含一個應用程式專案。 視所選擇的服務而定，可能會有一個或兩個額外的專案。
 
 ### 應用程式專案
-
 應用程式專案包含：
 
 - 一組對構成應用程式之服務的參考。
@@ -40,11 +36,9 @@
 - 應用程式資訊清單，描述應用程式。
 
 ### Reliable Services
-
-當您加入一個新的 Reliable Service 時，Visual Studio 會將一個服務專案加入至您的解決方案。 服務專案包含該類別可擴充從 `StatelessService` 或 `StatefulService` 視您選擇的類型而定。
+當您加入一個新的 Reliable Service 時，Visual Studio 會將一個服務專案加入至您的解決方案。 服務專案中包含從 `StatelessService` 或 `StatefulService` (視您選擇的類型而定) 延伸的類別 。
 
 ### Reliable Actors
-
 當您將加入一個新的 Reliable Actor 時，Visual Studio 會將兩個專案加入至您的解決方案：動作項目專案和介面專案。
 
 動作項目專案定義了動作項目類型及 (針對可設定狀態的動作項目) 其狀態。 介面專案提供了其他服務可用來叫用動作項目的介面。
@@ -52,51 +46,42 @@
 請注意，動作項目專案並不包含任何預設啟動行為，因為動作項目必須由其他服務啟用。 請考慮加入一個可靠服務或 ASP.NET 專案，以建立動作項目並與其互動。
 
 ### ASP.NET 5
-
 提供來用於 Service Fabric 應用程式的 ASP.NET 5 範本與針對獨立建立的 ASP.NET 5 專案提供的範本幾乎完全相同。 只有下列差異：
 
-- 專案包含 **PackageRoot** 資料夾，用於儲存 ServiceManifest 及資料和組態封裝。
+- 專案包含 **PackageRoot** 資料夾來儲存資料和設定封裝以及 ServiceManifest。
 
 - 專案參考額外的 NuGet 封裝 (Microsoft.ServiceFabric.AspNet.Hosting)，做為 DNX 和 Service Fabric 之間的橋接器。
 
 ## 後續步驟
-
 ### 將 Web 前端新增至應用程式
-
-Service Fabric 提供與 ASP.NET 5 的整合，可建置您應用程式的 Web 型進入點。 請參閱 [將 web 前端加入至您的應用程式 ][add-web-frontend] 以了解如何建立 ASP.NET WebAPI 為基礎的 REST 介面。
+Service Fabric 提供與 ASP.NET 5 的整合，可建置您應用程式的 Web 型進入點。 請參閱 [將 web 前端加入您的應用程式] [新增-web-前端] 以了解如何建立 REST 介面根據 ASP.NET WebAPI。
 
 ### 建立 Azure 叢集
-
-Service Fabric SDK 提供一個用於開發和測試的本機叢集。 若要在 Azure 中建立叢集，請參閱 [從 Azure 入口網站 ][create-cluster-in-portal]
+Service Fabric SDK 提供一個用於開發和測試的本機叢集。 若要在 Azure 中建立叢集，請參閱 [Service Fabric 叢集，從 Azure 入口網站設定] [建立叢集-中-入口網站]
 
 ### 嘗試使用派對叢集部署到免費的 Azure
 
 如果您想要嘗試使用 Azure 中的部署和管理應用程式沒有自己的叢集設定，您可以使用免費 [合作對象叢集服務](http://aka.ms/tryservicefabric)。
 
 ### 將應用程式發行至 Azure
-
-您可以直接從 Visual Studio 將應用程式發行至 Azure 叢集。 若要了解做法，請參閱 [應用程式發行至 Azure ][publish-app-to-azure]。
+您可以直接從 Visual Studio 將應用程式發行至 Azure 叢集。 若要了解作法，請參閱 [應用程式發行至 Azure] [發行應用程式-至 azure]。
 
 ### 使用 Service Fabric 總管將叢集視覺化
-
-「Service Fabric 總管」提供一個將叢集 (包括已部署的應用程式和實體配置) 視覺化的簡單方法。 若要深入了解，請參閱 [使用 ][visualize-with-sfx]。
+「Service Fabric 總管」提供一個將叢集 (包括已部署的應用程式和實體配置) 視覺化的簡單方法。 若要深入了解，請參閱 [視覺化使用 Service Fabric 總管叢集] [視覺化-與-sfx]。
 
 ### 進行服務版本設定和升級
-
-Service Fabric 可讓您為應用程式中的獨立服務進行獨立的版本設定和升級。 若要深入了解，請參閱 [版本控制和升級您的服務 ][app-upgrade-tutorial]。
+Service Fabric 可讓您為應用程式中的獨立服務進行獨立的版本設定和升級。 若要深入了解，請參閱 [版本控制和升級您的服務] [應用程式升級-教學課程]。
 
 ### 使用 Visual Studio Team Services 設定持續整合
-
-若要了解如何設定連續整合程序設定 Service Fabric 應用程式，請參閱 [使用 Visual Studio Team Services ][ci-with-vso]。
-
+若要了解如何設定連續整合程序設定 Service Fabric 應用程式，請參閱 [使用與 Visual Studio Team Services 設定連續整合] [ci 使用 vso]。
 
 
-
-[add-web-frontend]: ./service-fabric-add-a-web-frontend.md 
-[create-cluster-in-portal]: ./service-fabric-cluster-creation-via-portal.md 
-[publish-app-to-azure]: ./service-fabric-publish-app-remote-cluster.md 
-[visualize-with-sfx]: ./service-fabric-visualizing-your-cluster.md 
-[ci-with-vso]: ./service-fabric-configure-continuous-integration-with-vso.md 
-[reliable-services-webapi]: ./service-fabric-reliable-services-communication-webapi.md 
-[app-upgrade-tutorial]: ./service-fabric-application-upgrade-tutorial.md 
+<!-- Links -->
+[add-web-frontend]: ./service-fabric-add-a-web-frontend.md
+[create-cluster-in-portal]: ./service-fabric-cluster-creation-via-portal.md
+[publish-app-to-azure]: ./service-fabric-publish-app-remote-cluster.md
+[visualize-with-sfx]: ./service-fabric-visualizing-your-cluster.md
+[ci-with-vso]: ./service-fabric-configure-continuous-integration-with-vso.md
+[reliable-services-webapi]: ./service-fabric-reliable-services-communication-webapi.md
+[app-upgrade-tutorial]: ./service-fabric-application-upgrade-tutorial.md
 

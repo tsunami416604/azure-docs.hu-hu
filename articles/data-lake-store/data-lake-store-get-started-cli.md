@@ -6,7 +6,7 @@
    authors="nitinme" 
    manager="paulettm" 
    editor="cgronlun"/>
-
+ 
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
@@ -16,31 +16,29 @@
    ms.date="11/13/2015"
    ms.author="nitinme"/>
 
-
 # 使用 Azure 命令列開始使用 Azure 資料湖存放區
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-get-started-portal.md)
-- [Using PowerShell](data-lake-store-get-started-powershell.md)
-- [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
-- [Using Azure CLI](data-lake-store-get-started-cli.md)
-- [Using Node.js](data-lake-store-manage-use-nodejs.md)
-
+- [使用入口網站](data-lake-store-get-started-portal.md)
+- [使用 PowerShell](data-lake-store-get-started-powershell.md)
+- [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
+- [使用 Azure CLI](data-lake-store-get-started-cli.md)
+- [使用 Node.js](data-lake-store-manage-use-nodejs.md)
 
 了解如何使用 Azure 命令列介面建立 Azure 資料湖存放區帳戶並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需詳細資料湖存放區的詳細資訊，請參閱 [資料湖市集概觀](data-lake-store-overview.md)。
 
-Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平台上使用，包括 Windows、Mac 和 Linux。 Azure CLI 為開放原始碼。 原始程式碼會在 GitHub 中受到管理 <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a>。 本文只涵蓋使用 Azure CLI 搭配資料湖存放區。 如需如何使用 Azure CLI 的一般指引，請參閱 [如何使用 Azure CLI ][azure-command-line-tools]。
+Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平台上使用，包括 Windows、Mac 和 Linux。 Azure CLI 為開放原始碼。 原始程式碼會在 GitHub 中進行管理 (<a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a>)。 本文只涵蓋使用 Azure CLI 搭配資料湖存放區。 如需如何使用 Azure CLI 的一般指引，請參閱 [如何使用 Azure CLI] [azure-command-line-tools]。
 
 
-## 必要條件
+##先決條件
 
 開始閱讀本文之前，您必須符合下列必要條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-- **啟用您的 Azure 訂用帳戶**以使用資料湖存放區公開預覽版。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。
+- **啟用您的 Azure 訂閱** 資料湖存放區公開預覽。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。 
 - **Azure CLI** -請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md) 取得安裝和組態資訊。 在安裝 CLI 之後，請務必重新啟動您的電腦。
 
-## 登入您的 Azure 訂用帳戶
+##登入您的 Azure 訂用帳戶
 
 請依照下列所述的步驟 [連接到 Azure 訂用帳戶從 Azure 命令列介面 (Azure CLI)](xplat-cli-connect.md) 並連接到您的訂閱使用 __登入__ 方法。
 
@@ -53,15 +51,17 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 
         azure login
 
-    系統會提示您開啟網頁並輸入驗證碼。 遵循頁面上的指示登入您的 Azure 訂用帳戶。
+    系統會提示您開啟網頁並輸入驗證碼。 遵循頁面上的指示登入您的 Azure 訂用帳戶。 
 
 2. 使用下列命令來切換至 Azure 資源管理員模式︰
 
         azure config mode arm
 
+
 3. 列出您帳戶的 Azure 訂用帳戶。
 
         azure account list
+
 
 4. 如果您有多個 Azure 訂用帳戶，請使用下列命令設定 Azure CLI 命令將使用的訂用帳戶：
 
@@ -77,7 +77,6 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 
         azure datalake store account create <dataLakeStoreAccountName> <location> <resourceGroup>
 
-
 ## 在您的資料湖存放區中建立資料夾
 
 您可以在您的 Azure 資料湖存放區帳戶下建立資料夾，用於管理與存放資料。 使用下列命令在資料湖存放區的根目錄建立名為 "mynewfolder" 的資料夾。
@@ -90,7 +89,7 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 
 ## 將資料上傳至您的資料湖存放區
 
-您可以在根層級直接將資料上傳至資料湖存放區，或上傳至您在帳戶內建立的資料夾。 下列程式碼片段示範如何將一些範例資料上傳至您在上一節中建立的資料夾 (**mynewfolder**)。
+您可以在根層級直接將資料上傳至資料湖存放區，或上傳至您在帳戶內建立的資料夾。 下列程式碼片段示範如何將某些範例資料上傳至資料夾 (**mynewfolder**) 您在上一節中建立。
 
 如果您要尋找要上傳的一些範例資料，您可以取得 **政策救護車資料** 資料夾從 [Azure 資料湖 Git 儲存機制](https://github.com/MicrosoftBigData/AzureDataLake/tree/master/SQLIPSamples/SampleData/AmbulanceData)。 下載檔案，並將它儲存在您的電腦，例如 C:\sampledata\ 上的本機目錄。
 
@@ -99,6 +98,7 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 例如：
 
     azure datalake store filesystem import mynewdatalakestore "C:\SampleData\AmbulanceData\vehicle1_09142014.csv" "/mynewfolder/vehicle1_09142014.csv"
+
 
 ## 列出資料湖存放區中的檔案
 
@@ -128,7 +128,7 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 
 ## 重新命名、下載與刪除資料湖存放區中的資料
 
-* **若要重新命名檔案**，請使用下列命令：
+* **將檔案重新命名**, ，使用下列命令:
 
         azure datalake store filesystem move <dataLakeStoreAccountName> <path/old_file_name> <path/new_file_name>
 
@@ -136,7 +136,7 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 
         azure datalake store filesystem move mynewdatalakestore /mynewfolder/vehicle1_09142014.csv /mynewfolder/vehicle1_09142014_copy.csv
 
-* **若要下載檔案**，請使用下列命令。 請確定您指定的目的地路徑已存在。
+* **若要下載檔案**, ，使用下列命令。 請確定您指定的目的地路徑已存在。
 
         azure datalake store filesystem export <dataLakeStoreAccountName> <source_path> <destination_path>
 
@@ -144,15 +144,15 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 
         azure datalake store filesystem export mynewdatalakestore /mynewfolder/vehicle1_09142014_copy.csv "C:\mysampledata\vehicle1_09142014_copy.csv"
 
-* **若要刪除檔案**，請使用下列命令：
+* **若要刪除檔案**, ，使用下列命令:
 
         azure datalake store filesystem delete <dataLakeStoreAccountName> <path> 
 
     例如：
 
         azure datalake store filesystem delete mynewdatalakestore /mynewfolder/vehicle1_09142014_copy.csv
-
-    出現提示時，請輸入 **Y** 刪除項目。
+    
+    出現提示時，輸入 **Y** 刪除的項目。
 
 ## 檢視資料湖存放區中資料夾的存取控制清單
 
@@ -164,6 +164,7 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 
     azure datalake store permissions show mynewdatalakestore /
 
+
 ## 刪除資料湖存放區帳戶
 
 使用下列命令刪除資料湖存放區帳戶。
@@ -174,22 +175,21 @@ Azure CLI 會在 Node.js 中實作。 此工具可在任何支援 Node.js 的平
 
     azure datalake store account delete mynewdatalakestore
 
-出現提示時，請輸入 **Y** 刪除帳戶。
+出現提示時，輸入 **Y** 刪除帳戶。
 
-## 其他建立資料湖存放區帳戶的方法
+## 建立資料湖存放區帳戶的其他方式
 
-- [開始使用資料湖存放區使用入口網站](data-lake-store-get-started-portal.md)
-- [開始使用資料湖存放區中使用.NET SDK](data-lake-store-get-started-net-sdk.md)
-- [開始使用資料湖存放區中使用 PowerShell](data-lake-store-get-started-powershell.md)
+- [使用入口網站開始使用資料湖存放區](data-lake-store-get-started-portal.md)
+- [使用 .NET SDK 開始使用資料湖存放區](data-lake-store-get-started-net-sdk.md)
+- [使用 PowerShell 開始使用資料湖存放區](data-lake-store-get-started-powershell.md)
 
 
 ## 後續步驟
 
 - [保護資料湖存放區中的資料](data-lake-store-secure-data.md)
-- [使用 Azure 資料湖分析與資料湖存放區](data-lake-analytics-get-started-portal.md)
-- [使用 Azure HDInsight 與資料湖存放區](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [搭配資料湖存放區使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)
+- [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 
-
-[azure-command-line-tools]: ../xplat-cli-install.md 
+[azure-command-line-tools]: ../xplat-cli-install.md
 

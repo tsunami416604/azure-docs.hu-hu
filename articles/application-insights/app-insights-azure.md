@@ -15,8 +15,7 @@
     ms.date="11/04/2015" 
     ms.author="awills"/>
 
-
-# Microsoft Azure 應用程式的 Application Insights
+#  Microsoft Azure 應用程式的 Application Insights
 
 *Application Insights 目前僅供預覽。*
 
@@ -27,9 +26,9 @@
 
 您有何種應用程式？
 
-* [Azure web 應用程式](app-insights-asp-net.md)
-* [Azure 雲端服務應用程式-web 和背景工作角色](app-insights-cloudservices.md)
-* [在 Azure VM 中的 IIS web 應用程式](../app-insights-asp-net.md)
+* [Azure Web 應用程式](app-insights-asp-net.md)
+* [Azure 雲端服務 App - Web 和背景工作角色](app-insights-cloudservices.md)
+* [Azure VM 中的 IIS 上的 Web 應用程式](../app-insights-asp-net.md)
 * [Azure 外部的應用程式](app-insights-overview.md)
 
 
@@ -39,8 +38,4 @@
 
 
 
-
-
-
-
-
+ 

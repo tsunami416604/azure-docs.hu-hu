@@ -19,8 +19,8 @@
     ms.author="genemi"/>
 
 
-
 # SQL Database 中擴充事件的環形緩衝區目標程式碼
+
 
 您想要完整的程式碼範例以最簡單快速的方式在測試期間擷取和報告擴充事件的資訊。 擴充的事件資料的最簡單的目標是 [信號緩衝區目標](http://msdn.microsoft.com/library/ff878182.aspx)。
 
@@ -30,8 +30,8 @@
 
 1. 使用資料建立要示範的資料表。
 
-2. 建立現有擴充事件的工作階段，名稱為 **sqlserver.sql_statement_starting**。
- - 此事件僅限於包含特定 Update 字串的 SQL 陳述式：**statement LIKE '%UPDATE tabEmployee%'**。
+2. 建立現有擴充事件工作階段，也就是 **sqlserver.sql_statement_starting**。
+ - 事件僅限於包含特定的更新字串的 SQL 陳述式: **陳述式 '%更新 %tabemployee**。
  - 選擇要傳送事件的輸出型別信號緩衝區目標，也就是  **package0.ring_buffer**。
 
 3. 啟動事件工作階段。
@@ -39,7 +39,7 @@
 4. 發出幾個簡單的 SQL UPDATE 陳述式。
 
 5. 發出 SQL SELECT 擷取環形緩衝區的事件輸出。
- - **sys.dm_xe_database_session_targets** 和其他動態管理檢視 (DMV) 會聯結在一起。
+ - **sys.dm_xe_database_session_targets** ，而且會加入其他動態管理檢視 (Dmv)。
 
 6. 停止事件工作階段。
 
@@ -50,19 +50,23 @@
 
 ## 必要條件
 
+
 - Azure 帳戶和訂用帳戶。 您可以註冊 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
 
+
 - 您可以在當中建立資料表的任何資料庫。
- - 您可以選擇性地 [建立 * * AdventureWorksLT * * 示範資料庫](sql-database-get-started.md) 以分鐘為單位。
+ - 您可以選擇性地 [建立 **AdventureWorksLT** 示範資料庫](sql-database-get-started.md) 以分鐘為單位。
+
 
 - SQL Server Management Studio (ssms.exe) 在 2015 年 8 月的預覽版或更新版本。 
 您可以從下列位置下載最新的 ssms.exe：
  - [主題中的連結。](http://msdn.microsoft.com/library/mt238290.aspx)
- - [直接下載連結。](http://go.microsoft.com/fwlink/?linkid=616025)
+ - [下載的直接連結。](http://go.microsoft.com/fwlink/?linkid=616025)
  - Microsoft 建議您定期更新 ssms.exe。
 
 
 ## 程式碼範例
+
 
 只要稍加修改，就可以在 Azure SQL Database 或 Microsoft SQL Server 上執行下列環形緩衝區的程式碼範例。 不同之處在於步驟 5 的 FROM 子句中，有些動態管理檢視 (DMV) 的名稱會出現 '_database'。 例如：
 
@@ -221,15 +225,16 @@ GO
 
 ## 環形緩衝區內容
 
+
 我們使用 ssms.exe 執行程式碼範例。
 
 
-若要檢視結果，請按一下 **target_data_XML** 資料欄標題下的儲存格。
+若要檢視結果，我們在下按下儲存格資料行標頭 **target_data_XML**。
 
-然後在結果窗格中，按一下 **target_data_XML** 資料欄標題下的儲存格。 這會在 ssms.exe 中以結果儲存格內容顯示的順序，以 XML 格式建立另一個檔案索引標籤。
+然後在 [結果] 窗格中按一下資料格資料行標頭底下 **target_data_XML**。 這會在 ssms.exe 中以結果儲存格內容顯示的順序，以 XML 格式建立另一個檔案索引標籤。
 
 
-輸出如下列區塊所示。它看起來很長，但其實只是兩個 * *<event>* * 項目。
+輸出如下列區塊所示。 它看起來很長，但其實只是兩個 **<event>** 項目。
 
 
 &nbsp;
@@ -325,7 +330,8 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 #### 釋放環形緩衝區佔用的資源
 
-當您處理完環形緩衝區時，可以發出 **ALTER** 將它移除並釋放其資源，如下所示：
+
+當您完成信號緩衝區之後時，可以將它移除，並釋放其資源發出 **ALTER** 如下所示:
 
 
 ```
@@ -352,10 +358,11 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 ## 詳細資訊
 
+
 Azure SQL Database 上擴充事件的主要主題是：
 
 
-- [擴充 SQL 資料庫中的事件考量](sql-database-xevent-db-diff-from-svr.md), ，這有別於它們與 Microsoft SQL Server 的 Azure SQL Database 之間不同的擴充事件的某些層面。
+- [延伸 SQL 資料庫中的事件考量](sql-database-xevent-db-diff-from-svr.md), ，這有別於它們與 Microsoft SQL Server 的 Azure SQL Database 之間不同的擴充事件的某些層面。
 
 
 下列連結提供擴充事件的其他程式碼範例主題。 不過，您必須定期檢查所有範例以查看範例是否適用於 Microsoft SQL Server 與 Azure SQL Database。 然後您可以決定是否需要稍加變更來執行範例。
@@ -364,9 +371,10 @@ Azure SQL Database 上擴充事件的主要主題是：
 - Azure SQL Database 的程式碼範例: [SQL 資料庫中的擴充事件的事件檔案目標程式碼](sql-database-xevent-code-event-file.md)
 
 
+<!--
+('lock_acquired' event.)
 
-
-
-
-
+- SQL Server 的程式碼範例: [判斷的查詢會持有鎖定](http://msdn.microsoft.com/library/bb677357.aspx)
+- SQL Server 的程式碼範例: [發現物件具有最鎖定採取上面](http://msdn.microsoft.com/library/bb630355.aspx)
+-->
 

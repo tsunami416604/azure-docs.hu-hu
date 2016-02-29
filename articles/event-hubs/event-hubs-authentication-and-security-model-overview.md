@@ -15,7 +15,6 @@
    ms.date="10/07/2015"
    ms.author="sethm" />
 
-
 # 事件中樞驗證和安全性模型概觀
 
 事件中樞安全性模型符合下列需求：
@@ -38,7 +37,7 @@
 
 ### 建立 SAS 金鑰
 
-在建立命名空間時，服務匯流排會產生名為 **RootManageSharedAccessKey** 的 256 位元 SAS 金鑰。 這個金鑰能授與命名空間的傳送、聆聽及管理權限。 您可以建立額外的金鑰。 建議您產生授與特定事件中樞之傳送權限的金鑰。 本主題的其餘部分，它會假設名為此金鑰 `EventHubSendKey`。
+建立命名空間，當服務匯流排會產生名為 256 位元 SAS 金鑰 **RootManageSharedAccessKey**。 這個金鑰能授與命名空間的傳送、聆聽及管理權限。 您可以建立額外的金鑰。 建議您產生授與特定事件中樞之傳送權限的金鑰。 針對本主題的其他內容，我們假設您將此金鑰命名為 `EventHubSendKey`。
 
 以下範例會在建立事件中樞時建立僅限傳送的金鑰：
 
@@ -62,13 +61,13 @@ nm.CreateEventHub(ed);
 
 ### 產生權杖
 
-您可以使用 SAS 金鑰來產生權杖。 您只能為每個裝置產生一個權杖。 您可以使用下列方法來產生權杖。 所有權杖都是以 **EventHubSendKey** 金鑰產生。 每個權杖均有一個指派的唯一 URI。
+您可以使用 SAS 金鑰來產生權杖。 您只能為每個裝置產生一個權杖。 您可以使用下列方法來產生權杖。 使用所產生的所有權杖 **EventHubSendKey** 索引鍵。 每個權杖均有一個指派的唯一 URI。
 
 ```
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-呼叫此方法時，應該指定 URI 為 `/ / < 命名空間 >.servicebus.windows.net/ < EVENT_HUB_NAME > /publishers/ < PUBLISHER_NAME >`。對所有權杖來說是完全相同，除了 URI `PUBLISHER_NAME`, ，這應該是不同的每個語彙基元。在理想情況下， `PUBLISHER_NAME` 代表接收該權杖的裝置識別碼。
+在呼叫這個方法時，您應該將 URI 指定為 `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`。 此 URI 對所有權杖來說是完全相同的，但 `PUBLISHER_NAME` 除外，每個權杖的該項目應該是不同的。 在理想的情況下，`PUBLISHER_NAME` 代表收到該權杖之裝置的識別碼。
 
 這個方法會產生具有下列結構的權杖：
 
@@ -106,13 +105,13 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 
 ACS 支援以多種方法來建立服務身分識別、 信賴憑證者的合作對象和規則，不過這麼做最簡單的作法是使用 [SBAZTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93)。 例如：
 
-1. 建立 **EventHubSender** 的服務身分識別。 這會傳回所建立之服務身分識別的名稱和它的金鑰：
+1. 建立服務識別 **EventHubSender**。 這會傳回所建立之服務身分識別的名稱和它的金鑰：
 
     ```
     sbaztool.exe exe -n <namespace> -k <key>  makeid eventhubsender
     ```
 
-2. 將事件中樞的「傳送宣告」授與 **EventHubSender**：
+2. 授與 **EventHubSender** 到事件中樞的 「 傳送宣告 」:
 
     ```
     sbaztool.exe -n <namespace> -k <key> grant Send /AuthTestEventHub eventhubsender
@@ -130,7 +129,7 @@ ACS 支援以多種方法來建立服務身分識別、 信賴憑證者的合作
     sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup1 consumergroup1receiver
     ```
 
-5. 為 **Consumer Group 2** 的接收者建立服務身分識別：
+5. 建立服務身分識別的接收者 **Consumer Group 2**:
 
     ```
     sbaztool.exe exe -n <namespace> -k <key>  makeid consumergroup2receiver
@@ -146,12 +145,12 @@ ACS 支援以多種方法來建立服務身分識別、 信賴憑證者的合作
 
 若要深入了解事件中樞，請造訪下列主題：
 
-- [事件中心概觀]。
-- A 完成 [範例應用程式，會使用事件中心]。
-- [佇列訊息解決方案] 使用服務匯流排佇列。
+- [Event Hubs overview].
+- 完整 [sample application that uses Event Hubs]。
+- A [queued messaging solution] 使用服務匯流排佇列。
 
-
-[event hubs overview]: event-hubs-overview.md 
-[sample application that uses event hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097 
-[queued messaging solution]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md 
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[queued messaging solution]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+ 
 

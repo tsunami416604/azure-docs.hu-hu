@@ -17,20 +17,17 @@
     ms.date="11/10/2015"
     ms.author="heidist"/>
 
-
-# 使用 .NET 在 Azure 搜尋服務中建立查詢
-
+#使用 .NET 在 Azure 搜尋服務中建立查詢
 > [AZURE.SELECTOR]
-- [Overview](search-query-overview.md)
+- [概觀](search-query-overview.md)
 - [Fiddler](search-fiddler.md)
 - [Postman](search-chrome-postman.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
 
-
 本文將說明如何建立查詢，使用 [Azure 搜尋服務.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)。 下列內容是子集 [如何使用.NET 應用程式的 Azure 搜尋服務](search-howto-dotnet-sdk.md)。 請參閱上層文章中的端對端步驟。
 
-若要建立查詢的先決條件包括具有先前建立的搜尋服務，通常透過連接 `SearchServiceClient`。
+建立查詢的必要條件包括先前已建立您的搜尋服務連線，通常是透過 `SearchServiceClient` 完成。
 
 下列程式碼片段會建立一個方法，以將搜尋字串輸入傳遞至 SearchDocuments 方法。
 
@@ -50,7 +47,7 @@
             Console.WriteLine(result.Document);
         }
     }
-
+    
 首先，此方法會建立新的 SearchParameters 物件。 該物件用於指定查詢的其他選項，例如排序、篩選、分頁及 Facet。 在此範例中，我們只設定 Filter 屬性。
 
 下一步是實際執行搜尋查詢， 我們透過 Documents.Search 方法完成此步驟。 在此方法中，我們傳遞搜尋文字做為字串，並再加上先前建立的搜尋參數。 我們也指定了 Hotel 做為 Documents.Search 的類型參數，藉此告訴 SDK 將搜尋結果中的文件還原序列化為 Hotel 類型的物件。
@@ -65,8 +62,4 @@
 在第一個呼叫中，我們要尋找含有 "fancy" 或 "wifi" 查詢字詞的所有文件。 在第二個呼叫中，搜尋字詞設為 "*"，這表示「全部尋找」。 您可以找到在搜尋查詢運算式語法的詳細資訊 [Azure 搜尋服務中的簡單查詢語法](https://msdn.microsoft.com/library/azure/dn798920.aspx)。
 
 第二個呼叫使用 OData $filter 運算式，類別為 eq 'Luxury'。 這會將搜尋限制為只傳回類別欄位完全符合 "Luxury" 字串的文件。 您可以深入了解有關在 OData 語法 [Azure 搜尋服務的 OData 運算式語法](https://msdn.microsoft.com/library/azure/dn798921.aspx)。
-
-
-
-
 

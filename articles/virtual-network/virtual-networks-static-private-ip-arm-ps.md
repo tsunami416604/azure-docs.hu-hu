@@ -17,7 +17,6 @@
    ms.date="11/20/2015"
    ms.author="telmos" />
 
-
 # 如何在 PowerShell 中設定靜態私人 IP 位址
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
@@ -31,8 +30,7 @@
 以下的範例 PowerShell 命令會預期已根據上述案例建立簡單的環境。 如果您想要執行命令，因為它們會顯示在這份文件，先建立測試環境中所述 [建立 vnet](virtual-networks-create-vnet-arm-ps.md)。
 
 ## 建立 VM 時如何指定靜態私人 IP 位址
-
-若要在名為 *TestVNet* 之 VNet 的*前端*子網路中建立名為 *DNS01* 的 VM，且靜態私人 IP 為 *192.168.1.101*，請遵循下列步驟：
+若要建立名為的 VM *DNS01* 中 *前端* 名為 VNet 的子網路 *TestVNet* 固定的私人 ip *192.168.1.101*, ，依照下列步驟:
 
 [AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
@@ -78,10 +76,8 @@
         StatusCode          : OK 
 
 
-
 ## 如何擷取 VM 的靜態私人 IP 位址資訊
-
-如果要檢視使用上述指令碼所建立之 VM 的靜態私人 IP 位址資訊，請執行下列 PowerShell 命令並查看 *PrivateIpAddress* 和 *PrivateIpAllocationMethod* 的值：
+若要檢視使用上述指令碼建立之 VM 的靜態私人 IP 位址資訊，請執行下列 PowerShell 命令，並觀察值 *PrivateIpAddress* 和 *PrivateIpAllocationMethod*:
 
     Get-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName TestRG
 
@@ -131,9 +127,8 @@
     Primary              : True
 
 ## 如何移除 VM 的靜態私人 IP 位址
-
 若要移除上述指令碼中新增至 VM 的靜態私人 IP 位址，請執行下列 PowerShell 命令：
-
+    
     $nic=Get-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName TestRG
     $nic.IpConfigurations[0].PrivateIpAllocationMethod = "Dynamic"
     Set-AzureRmNetworkInterface -NetworkInterface $nic
@@ -184,7 +179,6 @@
     Primary              : True
 
 ## 如何將靜態私人 IP 位址新增至現有的 VM
-
 若要將靜態私人 IP 位址新增至使用上述指令碼建立之 VM，請執行下列命令：
 
     $nic=Get-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName TestRG
@@ -197,7 +191,3 @@
 - 深入了解 [保留公用 IP](../virtual-networks-reserved-public-ip) 位址。
 - 深入了解 [執行個體層級公用 IP (ILPIP)](../virtual-networks-instance-level-public-ip) 位址。
 - 請參閱 [保留的 IP REST Api](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
-
-
-
-

@@ -16,7 +16,6 @@
     ms.date="07/28/2015"
     ms.author="josephd"/>
 
-
 # 三部伺服器的 SharePoint 伺服器陣列資源管理員範本
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。 您無法以傳統部署模型建立此資源。
@@ -35,7 +34,7 @@
 
 ## "parameters" 區段
 
-**「參數」**區段指定要用來將資料輸入範本的參數。 您必須在執行範本時提供該資料。 您最多可以定義 50 個參數。 以下是 Azure 位置的參數範例：
+ **「 參數 」** 區段指定用於資料輸入範本的參數。 您必須在執行範本時提供該資料。 您最多可以定義 50 個參數。 以下是 Azure 位置的參數範例：
 
     "deploymentLocation": {
         "type": "string",
@@ -54,7 +53,7 @@
 
 ## "variables" 區段
 
-**「變數」**區段指定變數和範本所使用的該變數的值。 變數值可以明確地設定或從參數值衍生。 和參數相反，您在執行範本時不需要提供變數值。 您最多可以定義 100 個變數。 這裡有一些範例：
+ **"Variables"** 區段會指定變數和，範本會使用其值。 變數值可以明確地設定或從參數值衍生。 和參數相反，您在執行範本時不需要提供變數值。 您最多可以定義 100 個變數。 這裡有一些範例：
 
     "LBFE": "LBFE",
     "LBBE": "LBBE",
@@ -69,11 +68,11 @@
 
 ## "resources" 區段
 
-**"resources"** 區段會指定一些當您為資源群組中的 SharePoint 伺服器陣列部署資源時就會用到的資訊。 您最多可定義 250 個資源，但僅能為資源相依性定義 5 個層級深度。
+ **「 資源 」** 區段會指定部署的資源群組中的 SharePoint 伺服器陣列資源所需的資訊。 您最多可定義 250 個資源，但僅能為資源相依性定義 5 個層級深度。
 
 本節包含下列小節：
 
-### Microsoft.Storage/storageAccounts
+### Microsoft.Storage/storageAccounts  
 
 本章節會建立伺服器陣列中的所有 VHD 和磁碟資源的新儲存體帳戶。 以下是儲存體帳戶的 JSON 程式碼：
 
@@ -139,6 +138,7 @@
             "subnets": "[variables('subnets')]"
         }
     },
+
 
 ### Microsoft.Network/loadBalancers
 
@@ -236,6 +236,7 @@
             ]
         }
     },
+
 
 ### Microsoft.Compute/virtualMachines
 
@@ -342,18 +343,18 @@
             ]
         },
 
-適用於每個網域控制站且開頭是 **"name": "UpdateVNetDNS"** 的其他區段，會將虛擬網路的 DNS 伺服器設為使用網域控制站的靜態 IP 位址。
+從網域控制站的其他區段 **"name":"UpdateVNetDNS"** 使用靜態 IP 位址的網域控制站的虛擬網路的 DNS 伺服器。
 
-接下來的  **"type": "Microsoft.Compute/virtualMachines"** 區段會在部署中建立 SQL Server 虛擬機器，以及：
+下一個 **"type":"Microsoft.compute/virtualmachines"** 區段會建立在部署中的 SQL Server 虛擬機器和:
 
 - 指定儲存體帳戶、可用性集合、負載平衡器、虛擬網路及網路介面。
 - 新增額外的磁碟。
 
-其他的 **"Microsoft.Compute/virtualMachines/extensions"** 區段會呼叫 PowerShell 指令碼來設定 SQL Server。
+其他 **"Microsoft.Compute/virtualMachines/extensions"** 區段會呼叫 PowerShell 指令碼來設定 SQL Server。
 
-接下來的 **"type": "Microsoft.Compute/virtualMachines"** 區段會在部署中建立 SharePoint 虛擬機器，指定儲存體帳戶、可用性設定組、負載平衡器、虛擬網路及網路介面。 其他的 **"Microsoft.Compute/virtualMachines/extensions"** 區段會呼叫 PowerShell 指令碼來設定 SharePoint 伺服器陣列。
+下一個 **"type":"Microsoft.compute/virtualmachines"** 區段會在部署中，指定儲存體帳戶、 可用性設定組、 負載平衡器、 虛擬網路和網路介面來建立 SharePoint 虛擬機器。 額外 **"Microsoft.Compute/virtualMachines/extensions"** 區段會呼叫 PowerShell 指令碼來設定 SharePoint 伺服器陣列。
 
-請注意 JSON **"resources"** 區段的子區段整體組織：
+請注意子區段整體組織 **「 資源 」** JSON 檔案的區段:
 
 1.  建立 Azure 基礎結構的元素，我們需要此元素來支援多個虛擬機器 (儲存體帳戶、公用 IP 位址、可用性集合、虛擬網路、網路介面、負載平衡器執行個體)。
 2.  建立網域控制站虛擬機器，此虛擬機器會使用先前建立的 Azure 基礎結構的一般和特定元素、新增資料磁碟，並執行 PowerShell 指令碼。 此外，更新虛擬網路來使用網域控制站的靜態 IP 位址。
@@ -375,8 +376,4 @@
 [編寫 Azure 資源管理員範本](../resource-group-authoring-templates.md)
 
 [虛擬機器文件](http://azure.microsoft.com/documentation/services/virtual-machines/)
-
-
-
-
 

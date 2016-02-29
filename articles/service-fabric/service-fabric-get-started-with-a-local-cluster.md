@@ -16,20 +16,19 @@
    ms.date="11/20/2015"
    ms.author="seanmck"/>
 
-
 # 在您的本機叢集上開始部署和升級應用程式
-
 Service Fabric SDK 包含完整的本機開發環境，可讓您快速地在本機叢集上開始部署和管理應用程式。 在本文中，您將從 Windows PowerShell 建立本機叢集、將現有的應用程式部署至該叢集，然後將該應用程式升級為新版本。
+
 > [AZURE.NOTE] 本文假設您已經 [設定開發環境](service-fabric-get-started.md)。
 
 ## 建立本機叢集
-
 Service Fabric 叢集代表一組您可以部署應用程式的硬體資源。 通常，叢集是由任意數量的電腦 (從 5 部到數千部) 所組成，但 Service Fabric SDK 包含可在一部電腦上執行的叢集組態。
 
 請務必了解 Service Fabric 本機叢集不是模擬器。 它會執行在多部電腦的叢集上找到的相同平台程式碼。 唯一的差別在於它會在一部電腦上執行通常分散於五部電腦的平台程序。
 
 SDK 提供兩種方式來設定本機叢集：Windows PowerShell 指令碼和 [本機叢集管理員] 系統匣應用程式。 在本教學課程中，我們將使用 PowerShell 指令碼。
-> [AZURE.NOTE] 如果您已藉由從 Visual Studio 部署應用程式來建立本機叢集，您可以略過本節。
+
+> [AZURE.NOTE] 如果您已經部署的應用程式從 Visual Studio 建立的本機叢集，您可以略過本節。
 
 
 1. 以系統管理員身分啟動新的 PowerShell 視窗。
@@ -47,7 +46,6 @@ SDK 提供兩種方式來設定本機叢集：Windows PowerShell 指令碼和 [�
     您現在已準備好將應用程式部署至您的叢集。
 
 ## 部署應用程式
-
 Service Fabric SDK 包含一組豐富的架構以及用來建立應用程式的開發人員工具。 如果您有興趣了解如何在 Visual Studio 中建立應用程式，請參閱 [Visual Studio 中建立第一個應用程式](service-fabric-create-your-first-application-in-visual-studio.md)。 在本教學課程中，我們將使用現有的範例應用程式 (稱為 WordCount)，如此我們即可專注於平台的管理層面，包括部署、監視及升級。
 
 
@@ -77,12 +75,12 @@ Service Fabric SDK 包含一組豐富的架構以及用來建立應用程式的�
 6. 叫用 SDK 的部署命令來建立新的應用程式，並提供應用程式封裝的名稱和路徑。
 
     ```powershell  
-  Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
+  發行 NewServiceFabricApplication-ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg-ApplicationName"fabric: / WordCount 」
     ```
 
-    如果順利執行，您應該會看到如下的輸出：
+    If all goes well, you should see output like the following:
 
-    ![將應用程式部署至本機叢集][deploy-app-to-local-cluster]
+    ![Deploy an application to the local cluster][deploy-app-to-local-cluster]
 
 7. 若要查看應用程式執行動作，啟動瀏覽器並瀏覽至 [http://localhost:8081/wordcount/索引](http://localhost:8081/wordcount/index)。 您應該會看到如下的結果：
 
@@ -91,7 +89,6 @@ Service Fabric SDK 包含一組豐富的架構以及用來建立應用程式的�
     WordCount 應用程式非常簡單。 它包含的用戶端 JavaScript 程式碼可產生隨機五個字元的「單字」，這些字接著會透過 ASP.NET WebAPI 轉送至應用程式。 具狀態服務會根據文字的第一個字元，追蹤已計算、分割的字數。 我們所部署的應用程式包含四個資料分割，所以開頭為 A 到 G 的單字會儲存在第一個磁碟分割中，而開頭為 N 到 H 的單字會儲存在第二個資料分割中，依此類推。
 
 ## 檢視應用程式詳細資料和狀態
-
 部署應用程式後，讓我們在 PowerShell 中看看一些應用程式詳細資料。
 
 1. 查詢叢集上所有已部署的應用程式：
@@ -123,10 +120,10 @@ Service Fabric SDK 包含一組豐富的架構以及用來建立應用程式的�
     針對更視覺化的方式來與叢集互動，您可以使用 web Service Fabric 總管工具瀏覽至 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) 瀏覽器中。
 
     ![在 Service Fabric 總管中檢視應用程式詳細資料][sfx-service-overview]
+
     > [AZURE.NOTE] 若要深入了解 Service Fabric 總管，請參閱 [使用 Service Fabric 總管視覺化叢集](service-fabric-visualizing-your-cluster.md)
 
 ## 升級應用程式
-
 Service Fabric 會在應用程式推展於叢集時監視其健康狀態，進而提供不需停機的升級。 讓我們執行 WordCount 應用程式的簡單升級。
 
 新版的應用程式現在只會計算以母音開頭的單字。 進行升級時，我們會看到應用程式的行為出現兩項變更。 第一，計數成長的速率應該變慢，因為計算的單字比較少。 第二，由於第一個資料分割有兩個母音 (A 和 E) 而其他每個資料分割只包含一個母音，其計數最後應該會開始超越其他資料分割。
@@ -143,7 +140,7 @@ Service Fabric 會在應用程式推展於叢集時監視其健康狀態，進�
 
     ![在 PowerShell 中的升級進度][ps-appupgradeprogress]
 
-3. 當升級正在進行時，您可能會發現從 Service Fabric 總管監視其狀態更加輕鬆。 啟動瀏覽器視窗並瀏覽至 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 按一下左側樹狀目錄中的 [應用程式]****，然後選擇 [進行中的升級]****。
+3. 當升級正在進行時，您可能會發現從 Service Fabric 總管監視其狀態更加輕鬆。 啟動瀏覽器視窗並瀏覽至 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 按一下 [ **應用程式** 左邊樹狀目錄中，然後選擇 [ **升級的進度**。
 
     ![在 Service Fabric 總管中的升級進度][sfx-upgradeprogress]
 
@@ -164,26 +161,24 @@ Service Fabric 會在應用程式推展於叢集時監視其健康狀態，進�
     ![在瀏覽器中檢視新版的應用程式][deployed-app-ui-v2]
 
 ## 後續步驟
-
 - 既然您已部署並升級某些預先建置的應用程式，您可以 [嘗試建立您自己在 Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)。
 - 在這篇文章的本機叢集上執行之動作的所有可對 [Azure 叢集](service-fabric-cluster-creation-via-portal.md) 以及。
 - 本文中執行的升級非常基本。 請參閱 [升級文件](service-fabric-application-upgrade.md) 若要深入了解的威力與彈性的 Service Fabric 升級。
 
+<!-- Images -->
 
-
-
-[cluster-setup-success]: ./media/service-fabric-get-started-with-a-local-cluster/LocalClusterSetup.png 
-[extracted-app-package]: ./media/service-fabric-get-started-with-a-local-cluster/ExtractedAppPackage.png 
-[deploy-app-to-local-cluster]: ./media/service-fabric-get-started-with-a-local-cluster/DeployAppToLocalCluster.png 
-[deployed-app-ui]: ./media/service-fabric-get-started-with-a-local-cluster/DeployedAppUI-v1.png 
-[deployed-app-ui-v2]: ./media/service-fabric-get-started-with-a-local-cluster/DeployedAppUI-PostUpgrade.png 
-[sfx-app-instance]: ./media/service-fabric-get-started-with-a-local-cluster/SfxAppInstance.png 
-[sfx-two-app-instances-different-partitions]: ./media/service-fabric-get-started-with-a-local-cluster/SfxTwoAppInstances-DifferentPartitionCount.png 
-[ps-getsfapp]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFApp.png 
-[ps-getsfsvc]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc.png 
-[ps-getsfpartitions]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFPartitions.png 
-[ps-appupgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/PS-AppUpgradeProgress.png 
-[ps-getsfsvc-postupgrade]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc-PostUpgrade.png 
-[sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png 
-[sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png 
+[cluster-setup-success]: ./media/service-fabric-get-started-with-a-local-cluster/LocalClusterSetup.png
+[extracted-app-package]: ./media/service-fabric-get-started-with-a-local-cluster/ExtractedAppPackage.png
+[deploy-app-to-local-cluster]: ./media/service-fabric-get-started-with-a-local-cluster/DeployAppToLocalCluster.png
+[deployed-app-ui]: ./media/service-fabric-get-started-with-a-local-cluster/DeployedAppUI-v1.png
+[deployed-app-ui-v2]: ./media/service-fabric-get-started-with-a-local-cluster/DeployedAppUI-PostUpgrade.png
+[sfx-app-instance]: ./media/service-fabric-get-started-with-a-local-cluster/SfxAppInstance.png
+[sfx-two-app-instances-different-partitions]: ./media/service-fabric-get-started-with-a-local-cluster/SfxTwoAppInstances-DifferentPartitionCount.png
+[ps-getsfapp]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFApp.png
+[ps-getsfsvc]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc.png
+[ps-getsfpartitions]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFPartitions.png
+[ps-appupgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/PS-AppUpgradeProgress.png
+[ps-getsfsvc-postupgrade]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc-PostUpgrade.png
+[sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
+[sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 

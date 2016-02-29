@@ -8,8 +8,3 @@
 - [Python](../articles/storage/storage-python-how-to-use-blob-storage.md)
 - [iOS](../articles/storage/storage-ios-how-to-use-blob-storage.md)
 - [Xamarin](../articles/storage/storage-xamarin-blob-storage.md)
-
-
-
-
-

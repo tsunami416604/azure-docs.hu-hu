@@ -1,8 +1,8 @@
 ## 取得資源管理員權杖
 
-Azure Active Directory 必須驗證您在使用 Azure 資源管理員的資源上執行的所有工作。 此處顯示的範例會使用密碼驗證，如其他方法，請參閱 [驗證 Azure 資源管理員要求 ][lnk-authenticate-arm]。
+Azure Active Directory 必須驗證您在使用 Azure 資源管理員的資源上執行的所有工作。 此處顯示的範例會使用密碼驗證，如其他方法，請參閱 [驗證 Azure 資源管理員要求][lnk-authenticate-arm]。
 
-1. 將下列程式碼加入 Program.cs 中的 **Main** 方法，以使用應用程式識別碼和密碼從 Azure AD 擷取權杖。
+1. 加入下列程式碼以 **Main** 方法來擷取權杖，從應用程式 id 和密碼，使用 Azure AD 的 Program.cs 中。
 
     ```
     var authContext = new AuthenticationContext(string.Format  
@@ -10,7 +10,7 @@ Azure Active Directory 必須驗證您在使用 Azure 資源管理員的資源�
     var credential = new ClientCredential(applicationId, password);
     AuthenticationResult token = authContext.AcquireTokenAsync
       ("https://management.core.windows.net/", credential).Result;
-
+    
     if (token == null)
     {
       Console.WriteLine("Failed to obtain the token");
@@ -18,7 +18,7 @@ Azure Active Directory 必須驗證您在使用 Azure 資源管理員的資源�
     }
     ```
 
-2. 將下列程式碼加入 **Main** 方法的結尾，建立使用該權杖的 **ResourceManagementClient** 物件：
+2. 建立 **ResourceManagementClient** 結尾加入下列程式碼使用權杖的物件 **Main** 方法:
 
     ```
     var creds = new TokenCloudCredentials(subscriptionId, token.AccessToken);
@@ -38,6 +38,4 @@ Azure Active Directory 必須驗證您在使用 Azure 資源管理員的資源�
     }
     ```
 
-
-[lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx 
-
+[lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx

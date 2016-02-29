@@ -16,9 +16,7 @@
    ms.date="10/21/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
-
-# 連線到 SQL 資料倉儲
-
+# 連線到 SQL 資料倉儲 
 若要連線到 SQL 資料倉儲，您必須傳入安全性認證進行驗證用途。 建立連線時，您也會看到特定連線設定都設定為建立查詢工作階段的一部分。
 
 本文詳細說明連線到 SQL 資料倉儲的下列層面：
@@ -29,12 +27,11 @@
 
 
 ## 驗證
-
 若要連線到 SQL 資料倉儲，您必須提供下列資訊：
 
-- 完整伺服器名稱
+- 完整伺服器名稱 
 - 指定 SQL 驗證
-- 使用者名稱
+- 使用者名稱 
 - 密碼
 - 預設資料庫 (選擇性)
 
@@ -45,12 +42,11 @@
 1. 使用伺服器註冊 SSDT 或應用程式連接字串中的 SQL Server 物件總管時，請指定預設資料庫。 例如，藉由包含 ODBC 連線的 InitialCatalog 參數。
 2. 在 SSDT 中建立工作階段之前先反白顯示使用者資料庫。
 
-> [AZURE.NOTE] 如需連線到 SQL 資料倉儲與 SSDT 的指引，請參閱上一步 [連接並查詢 []][] 入門文章。 
+> [AZURE.NOTE] 如需連線到 SQL 資料倉儲與 SSDT 的指引，請參閱上一步 [連接和查詢] [] 入門文章。 
 
-一次是很重要的 TRANSACT-SQL 陳述式 * * 使用 <your DB>* * 不支援變更的資料庫連接
+一次是很重要的 TRANSACT-SQL 陳述式 **使用 <your DB>** 不支援變更的資料庫連接 
 
 ## 應用程式連線通訊協定
-
 您可以使用下列任合通訊協定連線到 SQL 資料倉儲：
 
 - ADO.NET
@@ -82,85 +78,83 @@ Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
-## Connection settings
-SQL Data Warehouse standardizes a few settings during connection and object creation. These cannot be overridden.
+## 連線設定
+SQL 資料倉儲會在連線和建立物件期間標準化一些設定。 這些不會被覆寫。
 
-| Database Setting   | Value                        |
+| 資料庫設定   | 值                        |
 | :----------------- | :--------------------------- |
-| ANSI_NULLS         | ON                           |
-| QUOTED_IDENTIFIERS | ON                           |
-| NO_COUNT           | OFF                          |
+| ANSI_NULLS         | 開啟                           |
+| QUOTED_IDENTIFIERS | 開啟                           |
+| NO_COUNT           | 關閉                          |
 | DATEFORMAT         | mdy                          |
 | DATEFIRST          | 7                            |
-| Database Collation | SQL_Latin1_General_CP1_CI_AS |
+| 資料庫定序 | SQL_Latin1_General_CP1_CI_AS |
 
-## Sessions and requests
-Once a connection has been made and a session has been established you are ready to write and submit queries to SQL Data Warehouse.
+## 工作階段和要求
+建立連線和工作階段之後，您就可以撰寫查詢並將其提交至 SQL 資料倉儲。
 
-Each query will be represented by one or more request identifiers. All queries submitted on that connection are part of a single session and will therefore be represented by a single session id.
+每個查詢都會由一或多個要求識別碼表示。 在該連線上提交的所有查詢都是單一工作階段的一部分，因此無法由單一工作階段識別碼表示。
 
-However, as SQL Data Warehouse is a distributed MPP system both session and request identifiers are exposed a little differently when compared to SQL Server. 
+不過，SQL 資料倉儲是散發式的 MPP 系統，相較於 SQL Server，工作階段和要求識別碼的公開方式都有點不同。 
 
-Sessions and requests are logically represented by their respective identifiers.
-
-| Identifier | Example value |
+工作階段和要求皆由其各自的識別碼以邏輯方式表示。
+    
+| 識別碼 | 範例值 |
 | :--------- | :------------ |
-| Session ID | SID123456     |
-| Request ID | QID123456     |
+| 工作階段識別碼 | SID123456     |
+| 要求 ID | QID123456     |
 
-Notice that the Session ID is prefixed by SID - shorthand for Session ID - and the requests are prefixed by QID which is shorthand for Query ID.
+請注意，工作階段識別碼的前置詞為 SID - 工作階段識別碼的速記格式 - 而要求的前置詞為 QID，此為查詢識別碼的速記格式。
 
-You will need this information to help you identify your query when monitoring your query performance. You can monitor your query performance by using either the [Azure Portal] and the dynamic management views.
+您將需要此資訊，幫助您在監視查詢效能時識別您的查詢。 您可以使用 [Azure 入口網站] 和動態管理檢視來監視查詢效能。
 
-To identify which session you are currently using the following function:
+若要識別您目前正在使用哪一個工作階段，請使用下列函數：
+
 ```
-選取 SESSION_ID()
+SELECT SESSION_ID()
 ;
 ```
 
-To view all the queries that are either running or have recently run against your data warehouse you can use a query like the one below:
+若要檢視目前正在執行或近期曾針對資料倉儲執行的所有查詢，您可以使用類似下列的查詢：
+
 ```
 CREATE VIEW dbo.vSessionRequests
 AS
-選取 [session_id] AS Session_ID s。
-        [狀態] AS Session_Status s。
-        [login_name] AS Session_LoginName s。
-        [login_time] AS Session_LoginTime s。
-        [request_id] AS Request_ID。
-        [狀態] AS Request_Status。
-        [submit_time] AS Request_SubmitTime。
-        [start_time] AS Request_StartTime。
-        [end_compile_time] AS Request_EndCompileTime。
-        [end_time] AS Request_EndTime。
-        [total_elapsed_time] AS Request_TotalElapsedDuration_ms。
-        DATEDIFF(ms,[submit_time],[start_time]) AS Request_InitiateDuration_ms
-        DATEDIFF(ms,[start_time],[end_compile_time]) AS Request_CompileDuration_ms
-        DATEDIFF(ms,[end_compile_time],[end_time]) AS Request_ExecDuration_ms
-        [標籤] AS Request_QueryLabel
-        [命令] AS Request_Command
-        [database_id] AS Request_Database_ID
-從 sys.dm_pdw_exec_requests r
-聯結 sys.dm_pdw_exec_sessions s ON [session_id] = s [session_id]
-在 s [session_id] <> SESSION_ID()。
+SELECT   s.[session_id]                                 AS Session_ID
+        ,s.[status]                                     AS Session_Status
+        ,s.[login_name]                                 AS Session_LoginName
+        ,s.[login_time]                                 AS Session_LoginTime
+        ,r.[request_id]                                 AS Request_ID
+        ,r.[status]                                     AS Request_Status
+        ,r.[submit_time]                                AS Request_SubmitTime
+        ,r.[start_time]                                 AS Request_StartTime
+        ,r.[end_compile_time]                           AS Request_EndCompileTime
+        ,r.[end_time]                                   AS Request_EndTime
+        ,r.[total_elapsed_time]                         AS Request_TotalElapsedDuration_ms
+        ,DATEDIFF(ms,[submit_time],[start_time])        AS Request_InitiateDuration_ms
+        ,DATEDIFF(ms,[start_time],[end_compile_time])   AS Request_CompileDuration_ms
+        ,DATEDIFF(ms,[end_compile_time],[end_time])     AS Request_ExecDuration_ms
+        ,[label]                                        AS Request_QueryLabel
+        ,[command]                                      AS Request_Command
+        ,[database_id]                                  AS Request_Database_ID
+FROM    sys.dm_pdw_exec_requests r
+JOIN    sys.dm_pdw_exec_sessions s  ON  r.[session_id] = s.[session_id]
+WHERE   s.[session_id] <> SESSION_ID()
 ;
 ```
 
 請注意，這項查詢已封裝在檢視中，所以您可以將其併入您的解決方案。 不過，若要查看結果，您必須建立檢視並加以執行。
 
 ## 後續步驟
-
 一但連線之後，您就可以開始設計您的資料表。 請參閱 [資料表設計] 文件以取得詳細資料。
 
+<!--Image references-->
 
+<!--Azure.com references-->
+[connect and query]: ./sql-data-warehouse-get-started-connect.md
+[table design]: ./sql-data-warehouse-develop-table-design.md
 
+<!--MSDN references-->
 
-
-
-
-
-
-
-
-[connect and query]: ./sql-data-warehouse-get-started-connect.md 
-[table design]: ./sql-data-warehouse-develop-table-design.md 
+<!--Other references-->
 

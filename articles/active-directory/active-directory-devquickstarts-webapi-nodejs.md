@@ -16,7 +16,6 @@
     ms.date="10/13/2015"
     ms.author="brandwe"/>
 
-
 # 開始使用節點的 WEB API
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
@@ -29,7 +28,7 @@
 * 運用 OAuth2 API 保護，並搭配使用 Azure Active Directory 的承載者權杖的 REST API
 
 
-我們已釋放所有在 GitHub 中 Apache 2.0 授權下這個執行範例的原始程式碼，可以隨意複製 (或更棒的是，「 分叉 」!) 並提供意見反應及提取要求。
+我們已在 Apache 2.0 授權底下的 GitHub 中發行這個執行範例的原始程式碼，因此您可以隨意複製 (或更棒的是您可以分散出去！) 和提供意見反應及提取要求。
 
 ## 關於 Node.js 模組
 
@@ -49,17 +48,16 @@
 若要啟用應用程式來驗證使用者，您必須先要在您的租用戶中註冊這個新的應用程式。
 
 - 登入 Azure 管理入口網站。
-- 在左側導覽中按一下 **Active Directory**。
+- 在左側導覽中，按一下 **Active Directory**。
 - 選取您要註冊應用程式的租用戶。
-- 按一下 [**應用程式**] 索引標籤，然後按一下最下面抽屜的 [新增]。
-- 遵照提示進行，並建立新的 **Web 應用程式和/或 WebAPI**。
-    - 應用程式的 [**名稱**] 將對使用者說明您的應用程式
-    -   [**登入 URL**] 是指應用程式的基底 URL。 基本架構的預設值是 `https://localhost:8888`。
-    - [**應用程式識別碼 URI**] 是指應用程式的唯一識別碼。慣例會使用 `https://<tenant-domain>/<app-name>`, ，例如: `https://contoso.onmicrosoft.com/my-first-aad-app`
-- 完成註冊後，AAD 會為您的應用程式指派一個唯一用戶端識別碼。 您在後續章節中將會用到這個值，所以請從 [設定] 索引標籤中複製此值。
+- 按一下 [ **應用程式** ] 索引標籤，然後按一下 [新增抽屜。
+- 遵循提示，並建立新 **Web 應用程式和/或 WebAPI**。
+    -  **名稱** 應用程式將說明您的應用程式使用者
+    -    **登入 URL** 是您的應用程式基底 URL。  基本架構的預設值是 `https://localhost:8888`。
+    -  **應用程式識別碼 URI** 是您的應用程式的唯一識別碼。  慣例會使用 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`
+- 完成註冊後，AAD 會為您的應用程式指派一個唯一用戶端識別碼。  您在後續章節中將會用到這個值，所以請從 [設定] 索引標籤中複製此值。
 
 ## 步驟 3：下載適用於您平台的 node.js
-
 若要成功使用此範例，您必須具備已成功安裝的 Node.js。
 
 請從 [http://nodejs.org](http://nodejs.org)。
@@ -70,7 +68,7 @@
 
 安裝從 MongoDB [http://mongodb.org](http://www.mongodb.org)。
 
-**附註:** 本逐步解說假設您使用 MongoDB，這在撰寫本文時是預設安裝和伺服器端點: mongodb://localhost
+**注意:** 本逐步解說假設您使用 MongoDB，這在撰寫本文時是預設安裝和伺服器端點: mongodb://localhost
 
 
 ## 步驟 5：在您的 Web API 上安裝 Restify 模組
@@ -79,13 +77,13 @@
 
 ### 安裝 Restify
 
-從命令列將目錄變更至 azuread 目錄。 如果 **azuread** 目錄不存在，請予以建立。
+從命令列將目錄變更至 azuread 目錄。 如果 **azuread** 目錄不存在，請建立它。
 
-`cd azuread-或-mkdir azuread;cd azuread`
+`cd azuread - or- mkdir azuread; cd azuread`
 
 輸入以下命令：
 
-`npm 安裝 restify`
+`npm install restify`
 
 此命令會安裝 Restify。
 
@@ -142,6 +140,7 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
     ├── http-signature@0.10.0 (assert-plus@0.1.2, asn1@0.1.11, ctype@0.5.2)
     └── bunyan@0.22.0 (mv@0.0.5)
 
+
 ## 步驟 6：在您的 Web API 上安裝 Passport.js
 
 [Passport](http://passportjs.org/) 是 Node.js 的驗證中介軟體。 您可以暗中將極具彈性且模組化的 Passport 放入任何 Express 或 Resitify Web 應用程式。 一組完整的策略可支援使用使用者名稱和密碼、Facebook、Twitter 及其他等驗證。 我們已為 Azure Active Directory 開發一個策略。 我們將會安裝此模組，然後加入 Azure Active Directory 的策略外掛程式。
@@ -150,7 +149,7 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
 
 輸入以下命令以安裝 passport.js
 
-`npm 安裝 passport`
+`npm install passport`
 
 此命令的輸出應類似這樣：
 
@@ -162,15 +161,15 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
 
 接下來，我們將加入持有者策略使用 passport-持有者-http、 的 Bearner 處理常式 [Passport](http://passportjs.org/)。 我們也會加入透過使用 node-jwt 支援的 JWT 權杖處理常式。
 
-**附註：**雖然 OAuth2 提供可發行任何已知權杖類型的架構，但只有特定的權杖類型獲得普遍的使用。 在保護端點中，這會是持有者權杖。 持有者權杖是在 OAuth2 中最普遍發行的權杖類型，而且許多實作假設持有者權杖會是唯一發行的權杖類型。
+**注意:** 雖然 OAuth2 提供的架構，在其中可以發出任何已知權杖類型，只有特定的權杖類型獲得普遍的使用。 在保護端點中，這會是持有者權杖。 持有者權杖是在 OAuth2 中最普遍發行的權杖類型，而且許多實作假設持有者權杖會是唯一發行的權杖類型。
 
-從命令列將目錄變更至 **azuread** 目錄。
+從命令列中，將目錄變更至 **azuread** 目錄。
 
 輸入下列命令以安裝 Passport.js 模組：
 
-- `npm 安裝 passport oauth`
-- `npm 安裝 passport http 承載`
-- `npm 安裝節點 jwt`
+- `npm install passport-oauth`
+- `npm install passport-http-bearer`
+- `npm install node-jwt`
 
 此命令的輸出應類似這樣：
 
@@ -180,56 +179,57 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
     ├── xmldom@0.1.13
     └── xml2js@0.1.14 (sax@0.5.2)
 
+
 ## 步驟 8：將 MongoDB 模組加入 Web API
 
 我們將使用 MongoDB 作為資料存放區。基於這個理由，我們必須安裝兩個廣泛使用的外掛程式才能管理名為 Mongoose 的模型與結構描述，以及同樣稱為 MongoDB 的 MongoDB 的資料庫驅動程式。
 
 
-* `npm 安裝 1`
-* `npm 安裝 mongodb`
+* `npm install mongoose`
+* `npm install mongodb`
 
 ## 步驟 9: 安裝其他模組
 
 接下來，我們將會安裝其餘所需的模組。
 
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
 
 請輸入下列命令，在您的 node_modules 目錄中安裝下列模組：
 
-* `npm 安裝密碼編譯`
-* `npm 安裝 plus 判斷提示`
-* `npm 安裝 posix getopt`
-* `npm 安裝 util`
-* `npm 安裝路徑`
-* `npm 安裝連線`
-* `npm 安裝 xml 加密`
-* `npm 安裝 xml2js`
-* `npm 安裝 xmldom`
-* `npm 安裝 async`
-* `npm 安裝要求`
-* `npm 安裝底線`
-* `npm 安裝 grunt-contrib-jshint@0.1.1`
-* `npm 安裝 grunt-contrib-nodeunit@0.1.2`
-* `npm 安裝 grunt-contrib-watch@0.2.0`
-* `npm 安裝 grunt@0.4.1`
-* `npm 安裝 xtend@2.0.3`
-* `npm 安裝 bunyan`
-* `npm 更新`
+* `npm install crypto`
+* `npm install assert-plus`
+* `npm install posix-getopt`
+* `npm install util`
+* `npm install path`
+* `npm install connect`
+* `npm install xml-crypto`
+* `npm install xml2js`
+* `npm install xmldom`
+* `npm install async`
+* `npm install request`
+* `npm install underscore`
+* `npm install grunt-contrib-jshint@0.1.1`
+* `npm install grunt-contrib-nodeunit@0.1.2`
+* `npm install grunt-contrib-watch@0.2.0`
+* `npm install grunt@0.4.1`
+* `npm install xtend@2.0.3`
+* `npm install bunyan`
+* `npm update`
 
 
 ## 步驟 10：使用您的相依性建立 server.js
 
 server.js 檔案可提供我們 Web API 伺服器的大部分功能。 我們將在此檔案中加入大部分的程式碼。 基於生產目的，您會將功能重整成較小的檔案，例如單獨分開的路徑和控制器。 基於此示範的目的，我們將在這項功能中使用 server.js。
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
-建立 `server.js` 偏好的編輯器中的檔案，並加入下列資訊:
+在偏好的編輯器中建立 `server.js` 檔案，並加入下列資訊：
 
 ```Javascript
     'use strict';
@@ -255,11 +255,11 @@ server.js 檔案可提供我們 Web API 伺服器的大部分功能。 我們將
 這個程式碼檔會將設定參數從您的 Azure Active Directory 入口網站傳遞到 Passport.js。 您會在將 Web API 加入入口網站 (本逐步解說的第一個部分) 時建立這些設定值。 在您完成複製程式碼之後，我們將說明要放入這些參數值的內容。
 
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
-建立 `config.js` 偏好的編輯器中的檔案，並加入下列資訊:
+在偏好的編輯器中建立 `config.js` 檔案，並加入下列資訊：
 
 ```Javascript
 // Don't commit this file to your public repos
@@ -268,29 +268,30 @@ server.js 檔案可提供我們 Web API 伺服器的大部分功能。 我們將
     openid_configuration: 'https://login.microsoftonline.com/common/.well-known/openid-configuration', // For using Microsoft you should never need to change this.
     openid_keys: 'https://login.microsoftonline.com/common/discovery/keys', // For using Microsoft you should never need to change this. If absent will attempt to get from openid_configuration
 }
+
 ```
 
 
 
-**附註：**您可能永遠不需要變更這些值。
+**注意:** 很可能永遠不需要變更這些值。
 
-**附註：**我們會經常性地變更金鑰。 請確定您總是從 "openid_keys" URL 中進行提取，而且應用程式可以存取網際網路。
+**注意:** 我們經常復原金鑰。 請確定您總是從 "openid_keys" URL 中進行提取，而且應用程式可以存取網際網路。
 
 
 ## 步驟 12：將設定加入 server.js 檔案
 
 我們必須從您剛才跨應用程式建立的組態檔中讀取這些值。 若要這樣做，我們只需在應用程式中將 .config 檔案作為必要資源加入，然後將全域變數設定為 config.js 文件中的那些值即可
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
-開啟您 `server.js` 偏好的編輯器中的檔案，並加入下列資訊:
+在偏好的編輯器中開啟 `server.js` 檔案，並加入下列資訊：
 
 ```Javascript
 var config = require('./config');
 ```
-然後，新增新的章節， `server.js` 為下列程式碼:
+然後，使用下列程式碼在 `server.js` 中加入新的區段：
 
 ```Javascript
 /**
@@ -299,18 +300,19 @@ var config = require('./config');
 var mongoose = require('mongoose/');
 var serverPort = process.env.PORT || 8888;
 var serverURI = ( process.env.PORT ) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
+
 ```
 ## 步驟 13：建立可協助剖析中繼資料/權杖的 metadata.js 協助程式檔案
 
 由於目標是為了在 server.js 檔案中僅保留應用程式邏輯，因此將一些協助程式方法放在不同檔案中會是合理的作法。 這些方法只會協助我們剖析 OpenID Connect 中繼資料，而且與核心案例無關。 最好是將它們放到別處。 隨著逐步進行本逐步解說，我們將會在此檔案中新增更多內容。
 
-*** 注意: *** 您會注意到，這個 metadata.js 檔案會剖析 XML 的 SAML 和 Ws-fed 以及 JSON OpenID connect。 這是預設的行為，您也將會在其他範例中使用這個檔案。 您可以放心地將其忽略。
+***注意:*** 您會注意到，這個 metadata.js 檔案會剖析 XML 的 SAML 和 Ws-fed 以及 JSON OpenID connect。 這是預設的行為，您也將會在其他範例中使用這個檔案。 您可以放心地將其忽略。
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
-建立 `metadata.js` 偏好的編輯器中的檔案，並加入下列資訊:
+在偏好的編輯器中建立 `metadata.js` 檔案，並加入下列資訊：
 
 ```Javascript
 
@@ -512,22 +514,22 @@ Metadata.prototype.fetch = function(callback) {
 
 exports.Metadata = Metadata;
 ```
-您可以看到的程式碼，它只接受傳入的 openid URL `config.js` 然後將它剖析資訊，我們將用在 `server.js` 檔案。 我們非常歡迎您調查這段程式碼，並視需要加以開發。
+從程式碼中可以看到，它只接受您在 `config.js` 中傳遞的 openid URL，然後將它進行剖析，以取得我們要在 `server.js` 檔案中使用的資訊。 我們非常歡迎您調查這段程式碼，並視需要加以開發。
 
 ### 在您的 server.js 中載入 metadata.js 檔案
 
 我們必須告訴伺服器哪裡可以找到您剛才撰寫的方法。
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
-開啟您 `server.js` 偏好的編輯器中的檔案，並加入下列資訊:
+在偏好的編輯器中開啟 `server.js` 檔案，並加入下列資訊：
 
 ```Javascript
 var metadata = require('./metadata);
 ```
-接下來，新增至結尾 `組態` 一節中的中繼資料文件傳送至這個呼叫我們 `config.js` 我們剛剛撰寫的剖析器:
+接下來，將這個呼叫加入 `Configuration` 區段的結尾處，以便將 `config.js` 中的中繼資料文件傳送到我們剛剛撰寫的剖析器：
 
 ```Javascript
 this.aadutils = new var Metadata = require('./metadata').Metadata;
@@ -537,9 +539,9 @@ this.aadutils = new var Metadata = require('./metadata').Metadata;
 
 現在，當我們將這三個檔案整合一起提供給 REST API 服務時，您便會開始看到所有準備工作的成效。
 
-此逐步解說中我們將使用 MongoDB 來儲存工作中所述 *** 步驟 4 ***。
+此逐步解說中我們將使用 MongoDB 來儲存工作中所述 ***步驟 4***。
 
-如果您還記得 `config.js` 檔案中建立 *** 步驟 11 *** 我們會呼叫資料庫 `tasklist` 因為那是我們放在 mogoose_auth_local 連線 URL 結尾。 您不需要在 MongoDB 中事先建立此資料庫，它會在您第一次執行伺服器應用程式時為您建立 (假設此資料庫不存在)。
+如果您還記得 `config.js` 檔案中建立 ***步驟 11*** 我們會呼叫資料庫 `tasklist` 因為那是我們放在 mogoose_auth_local 連線 URL 結尾。 您不需要在 MongoDB 中事先建立此資料庫，它會在您第一次執行伺服器應用程式時為您建立 (假設此資料庫不存在)。
 
 既然我們已經告訴伺服器想要使用哪個 MongoDB 資料庫，我們必須撰寫一些額外程式碼，以建立伺服器工作的模型和結構描述。
 
@@ -547,21 +549,22 @@ this.aadutils = new var Metadata = require('./metadata').Metadata;
 
 我們的結構描述模型十分簡單，而且您可以視需要加以開發。
 
-名稱 - 指派給工作的人員名稱。 A *** 字串 ***
+名稱 - 指派給工作的人員名稱。 A ***字串***
 
-工作 - 工作本身。 A *** 字串 ***
+工作 - 工作本身。 A ***字串***
 
-日期 - 工作到期的日期。 A *** DATETIME ***
+日期 - 工作到期的日期。 A ***日期時間***
 
-已完成 - 工作是否已完成。 A *** 布林值 ***
+已完成 - 工作是否已完成。 A ***布林值***
 
 #### 在程式碼中建立結構描述
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
-開啟您 `server.js` 偏好的編輯器中的檔案，並加入組態項目下方的下列資訊:
+在偏好的編輯器中開啟 `server.js` 檔案，並在組態項目下方加入下列資訊：
 
 ```Javascript
 /**
@@ -595,7 +598,7 @@ var TaskSchema = new Schema({
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-您可以從程式碼中得知，我們建立我們的結構描述，然後建立將用來儲存整個程式碼資料時，我們定義模型物件我們 *** 路由 ***。
+您可以從程式碼中得知，我們建立我們的結構描述，然後建立將用來儲存整個程式碼資料時，我們定義模型物件我們 ***路由***。
 
 ## 步驟 15：在工作 REST API 伺服器中新增路由
 
@@ -622,6 +625,7 @@ return next(); // keep the server going
 ....
 
 server.post('/service/:add/:object', createObject); // calls createObject on routes that match this.
+
 ```
 
 
@@ -631,11 +635,11 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
 
 我們現在可以新增建立、擷取、更新和刪除的基本 CRUD 路由。
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
-開啟您 `server.js` 偏好的編輯器中的檔案，並加入您先前製作的資料庫項目底下的下列資訊:
+在偏好的編輯器中開啟 `server.js` 檔案，並在您先前製作的資料庫項目底下加入下列資訊：
 
 ```Javascript
 
@@ -950,7 +954,7 @@ var server = restify.createServer({
 
 在繼續執行 OAuth 部分的逐步解說之前，最好先確定沒有任何問題。
 
-若要這樣做最簡單的方法是使用 `curl` 命令列中。 在執行此動作之前，我們需要一個可讓我們將輸出剖析為 JSON 的簡單公用程式。 若要這樣做，請安裝 [json](https://github.com/trentm/json) 工具以供以下所有範例中都使用。
+若要這樣做的最簡單方法是使用命令列中的 `curl`。 在執行此動作之前，我們需要一個可讓我們將輸出剖析為 JSON 的簡單公用程式。 若要這樣做，請安裝 [json](https://github.com/trentm/json) 工具以供以下所有範例中都使用。
 
     $npm install -g jsontool
 
@@ -964,14 +968,14 @@ var server = restify.createServer({
 
     $ cd azuread
     $ node server.js
-    
+
     $ curl -isS http://127.0.0.1:8888 | json
     HTTP/1.1 200 OK
     Connection: close
     Content-Type: application/x-www-form-urlencoded
     Content-Length: 145
     Date: Wed, 29 Jan 2014 03:41:24 GMT
-    
+
     [
     "GET     /",
     "POST    /tasks/:owner/:task",
@@ -995,7 +999,7 @@ var server = restify.createServer({
     Content-Type: application/x-www-form-urlencoded
     Content-Length: 5
     Date: Tue, 04 Feb 2014 01:02:26 GMT
-    
+
     Hello
 
 而且我們可以透過以下方式列出 Brandon 的工作：
@@ -1006,15 +1010,15 @@ var server = restify.createServer({
 
 ## 步驟 18：將 Passport.js 程式碼加入 REST API 伺服器
 
-現在，我們已經執行的 REST API (順道恭喜!) 讓我們開始進行 Azure ad。
+既然我們已經擁有執行中的 REST API (順道恭喜您！)，我們可以開始讓它在 Azure AD 中發揮其價值。
 
-從命令列將目錄變更至 **azuread** 資料夾 (如果您尚未在此目錄下)：
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
 
 `cd azuread`
 
 ### 步驟 1：新增 Passport 模組
 
-開啟您 `server.js` 偏好的編輯器中的檔案，並加入下列資訊下方先前陳述要載入模組。 這是檔案的頂端，應該是緊接 `var aadutils = require('./aadutils');` 匯入。
+在偏好的編輯器中開啟 `server.js` 檔案，並在您先前陳述要載入模組的位置下面加入下列資訊： 這個位置很接近檔案頂端，應該是緊接在 `var aadutils = require('./aadutils');` 匯入後面的位置。
 
 ```Javascript
 /*
@@ -1031,16 +1035,18 @@ var passport = require('passport')
 開啟您 `server.js` 偏好的編輯器中的檔案，並加入下列資訊 **server.get** 您用來定義但路由 **server.listen** 方法。
 
 
-我們必須告知 Restify 開始使用其 `authorizationParser()` 並查看授權標頭的內容。
+我們必須告知 Restify 開始使用其 `authorizationParser()`並查看授權標頭的內容。
 
 ```Javascript
         server.use(restify.authorizationParser());
+
+
 ```
 
 
 ### 3.將 Passport OAuth2 模組加入程式碼
 
-在此我們使用加入 config.js 檔案的特定 OAuth2 參數。 如果我們 `aadutils.js` 檔案執行其工作剖析同盟中繼資料文件，所有這些值應該會擴展為我們即使是空白 config.js 檔案中。
+在此我們使用加入 config.js 檔案的特定 OAuth2 參數。 如果 `aadutils.js` 檔案執行其剖析同盟中繼資料文件的工作，則即使這些值在 config.js 檔案中是空白值，系統仍會替我們填入這些值。
 
 ```Javascript
 // Now our own handlers for authentication/authorization
@@ -1063,6 +1069,7 @@ passport.use('provider', new OAuth2Strategy({
 // Let's start using Passport.js
 
 server.use(passport.initialize());
+
 ```
 ### 步驟 4：在 OAuth 驗證中新增路由
 
@@ -1098,6 +1105,7 @@ var ensureAuthenticated = function(req, res, next) {
   }
   res.redirect('/login');
 };
+
 ```
 
 ### 步驟 6：新增 Cookie 的快取機制
@@ -1131,7 +1139,7 @@ server.get('/tasks', passport.authenticate('provider', { session: false }), list
 
 ## 步驟 19：再次執行應用程式伺服器，並確保它會拒絕您的要求
 
-讓我們使用 `curl` 即可查看我們現在是否有 OAuth2 保護對我們的端點。 我們會在針對這個端點執行任何用戶端 SDK 之前，執行此動作。 傳回的標頭應該足以說明我們執行的作業步驟正確無誤。
+讓我們再次使用 `curl`，以查看我們現在是否有針對端點的 OAuth2 保護。 我們會在針對這個端點執行任何用戶端 SDK 之前，執行此動作。 傳回的標頭應該足以說明我們執行的作業步驟正確無誤。
 
 首先，請確定 monogoDB 執行個體正在執行中...
 
@@ -1151,9 +1159,10 @@ server.get('/tasks', passport.authenticate('provider', { session: false }), list
     Content-Length: 0
     Date: Tue, 04 Feb 2014 02:15:14 GMT
 
+
 此時 302 會是您期待的回應，指出 Passport 層嘗試重新導向至授權的端點，這也正是您想要的結果。
 
-## 恭喜！您現在擁有一項使用 OAuth2 的 REST API 服務！
+## 恭喜！ 您現在擁有一項使用 OAuth2 的 REST API 服務！
 
 在未使用 OAuth2 相容用戶端的情況下，您已經儘可能地使用此伺服器的所有功能。 您還必須完成其他逐步解說。
 
@@ -1163,15 +1172,11 @@ server.get('/tasks', passport.authenticate('provider', { session: false }), list
 
 您只需複製到您的開發人員機器，並如本逐步解說所述進行設定即可。
 
-[IOS 適用的 ADAL](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios)
+[ADAL for iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios)
 
-[Android 適用的 ADAL](https://github.com/MSOpenTech/azure-activedirectory-library-for-android)
+[ADAL for Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android)
 
-[.Net 適用的 ADAL](http://msdn.microsoft.com/library/windowsazure/jj573266.aspx)
+[ADAL for .Net](http://msdn.microsoft.com/library/windowsazure/jj573266.aspx)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-
-
+ 

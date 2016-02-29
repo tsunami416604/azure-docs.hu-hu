@@ -19,12 +19,11 @@
 
 
 
-
 # 使用 Azure 表格服務的 Node.js Web 應用程式
 
 ## 概觀
 
-本教學課程會示範如何使用 Azure 資料管理所提供的資料表服務來儲存和存取資料，從 [node] 應用程式裝載於 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web 應用程式。 本教學課程假設您有一些使用節點和 [Git] 的經驗。
+本教學課程會示範如何使用 Azure 資料管理所提供的資料表服務來儲存和存取資料，從 [node] 應用程式裝載於 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web 應用程式。 本教學課程假設您有些許使用節點的經驗和 [Git]。
 
 您將了解：
 
@@ -39,6 +38,7 @@
 以下是完成的應用程式：
 
 ![顯示空白工作清單的網頁][node-table-finished]
+
 >[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
 
 
@@ -46,9 +46,9 @@
 
 在依照本文中的指示進行之前，請確定已安裝下列項目：
 
-* [節點] 版本 0.10.24 或更高版本
+* [node] 版本 0.10.24 或更高版本
 
-* [] Git
+* [Git]
 
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
@@ -59,24 +59,24 @@
 
 1.  登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 按一下入口網站左下方的 [新增]**** 圖示，然後按一下 [資料 + 儲存體]**** >[ 儲存體]****。 為儲存體帳戶指定唯一名稱，並建立新 [資源群組](../resource-group-overview.md) 它。
+2. 按一下 [ **新增** 左下方的入口網站，請按一下 [ **資料 + 儲存體** > **儲存體**。 為儲存體帳戶指定唯一名稱，並建立新 [資源群組](../resource-group-overview.md) 它。
 
     ![新增按鈕](./media/storage-nodejs-use-table-storage-web-site/configure-storage.png)
 
-    建立儲存體帳戶後，[通知]**** 按鈕便會閃爍綠色 [成功]****，儲存體帳戶的刀鋒視窗會開啟，顯示它屬於您所建立的新資源群組。
+    建立儲存體帳戶後， **通知** 按鈕便會閃爍綠色 **成功** 儲存體帳戶的刀鋒視窗會開啟，顯示它屬於您所建立的新資源群組。
 
-5. 在儲存體帳戶的刀鋒視窗中，按一下 [設定]**** > [金鑰]****。 將主要存取金鑰複製到剪貼簿。
+5. 在儲存體帳戶的刀鋒視窗中，按一下 [ **設定** > **金鑰**。 將主要存取金鑰複製到剪貼簿。
 
     ![存取金鑰][portal-storage-access-keys]
 
 
-## 安裝模組及產生樣板
+##安裝模組及產生樣板
 
-在本節中，您將建立新的 Node 應用程式，並使用 npm 來新增模組封裝。 此應用程式中，您將使用 [快速] 和 [Azure] 模組。 Express 模組提供節點的模型檢視控制器架構，Azure 模組則提供資料表服務的連線。
+在本節中，您將建立新的 Node 應用程式，並使用 npm 來新增模組封裝。 您將使用此應用程式 [Express] 和 [Azure] 模組。 Express 模組提供節點的模型檢視控制器架構，Azure 模組則提供資料表服務的連線。
 
 ### 安裝 Express 及產生樣板
 
-1. 從命令列中，建立名為 **tasklist** 的新目錄，並切換至該目錄。
+1. 從命令列中，建立名為的新目錄 **tasklist** 並切換至該目錄。  
 
 2. 輸入下列命令以安裝 Express 模組。
 
@@ -92,76 +92,78 @@
         ├── mkdirp@0.3.5
         └── commander@1.3.2 (keypress@0.1.0)
 
-    > [AZURE.NOTE] '-g' 參數會全域安裝模組。 這樣我們就可以使用 **express** 來產生 Web 應用程式樣板，而不需額外輸入路徑資訊。
+    > [AZURE.NOTE] '-G' 參數會全域安裝模組。 這樣一來，我們可以使用 **express** 來產生 web 應用程式樣板，而不需要輸入其他路徑資訊。
 
-4. 若要建立應用程式的樣板，請輸入 **express** 命令：
+4. 若要建立應用程式的樣板，請輸入 **express** 命令:
 
-     express
+        express
 
- 這個命令的輸出看起來類似下列範例：
+    這個命令的輸出看起來類似下列範例：
 
-        create : .
-        create : ./package.json
-        create : ./app.js
-        create : ./public
-        create : ./public/images
-        create : ./routes
-        create : ./routes/index.js
-        create : ./routes/users.js
-        create : ./public/stylesheets
-        create : ./public/stylesheets/style.css
-        create : ./views
-        create : ./views/index.jade
-        create : ./views/layout.jade
-        create : ./views/error.jade
-        create : ./public/javascripts
-        create : ./bin
-        create : ./bin/www
-    
-        install dependencies:
-          $ cd . && npm install
-    
-        run the app:
-          $ DEBUG=my-application ./bin/www
+           create : .
+           create : ./package.json
+           create : ./app.js
+           create : ./public
+           create : ./public/images
+           create : ./routes
+           create : ./routes/index.js
+           create : ./routes/users.js
+           create : ./public/stylesheets
+           create : ./public/stylesheets/style.css
+           create : ./views
+           create : ./views/index.jade
+           create : ./views/layout.jade
+           create : ./views/error.jade
+           create : ./public/javascripts
+           create : ./bin
+           create : ./bin/www
 
- 您現在於 **tasklist** 目錄中有幾個新的目錄和檔案。
+           install dependencies:
+             $ cd . && npm install
+
+           run the app:
+             $ DEBUG=my-application ./bin/www
+
+    您現在有數個新的目錄和檔案中的 **tasklist** 目錄。
 
 ### 安裝其他模組
 
-**express** 建立的其中一個檔案是 **package.json**。 此檔案包含模組相依性清單。 之後，當您將應用程式部署至 App Service Web Apps 時，此檔案將決定 Azure 上需要安裝哪些模組。
+其中一個檔案， **express** 建立是 **package.json**。 此檔案包含模組相依性清單。 之後，當您將應用程式部署至 App Service Web Apps 時，此檔案將決定 Azure 上需要安裝哪些模組。
 
-從命令列中，輸入下列命令安裝 **package.json** 檔案中所指出的模組。 您可能需要使用 'sudo'。
+從命令列中，輸入下列命令來安裝中所述的模組 **package.json** 檔案。 您可能需要使用 'sudo'。
 
     npm install
 
 這個命令的輸出看起來類似下列範例：
 
     debug@0.7.4 node_modules\debug
-    
+
     cookie-parser@1.0.1 node_modules\cookie-parser
     ├── cookie-signature@1.0.3
     └── cookie@0.1.0
-    
+
     [...]
 
-接下來，輸入下列命令以安裝 [azure]、 [node-uuid]、 [nconf] 及 [async] 模組:
+
+接下來，輸入下列命令以安裝 [azure], ，[node-uuid], ，[nconf] 和 [async] 模組:
 
     npm install azure-storage node-uuid async nconf --save
 
-**--save** 旗標會將這些模組的項目新增至 **package.json** 檔案。
+ **-儲存** 旗標會新增至這些模組的項目 **package.json** 檔案。
 
 這個命令的輸出看起來類似下列範例：
 
     async@0.9.0 node_modules\async
-    
+
     node-uuid@1.4.1 node_modules\node-uuid
-    
+
     nconf@0.6.9 node_modules\nconf
     ├── ini@1.2.1
     ├── async@0.2.9
     └── optimist@0.6.0 (wordwrap@0.0.2, minimist@0.0.10)
-    
+
     [...]
+
 
 ## 建立應用程式
 
@@ -169,7 +171,7 @@
 
 ### 建立模型
 
-「模型」**是代表您應用程式中資料的物件。 對於應用程式，唯一的模型是工作物件，代表待辦事項清單中的項目。 工作將會有下列欄位：
+A *模型* 是物件，表示您的應用程式中的資料。 對於應用程式，唯一的模型是工作物件，代表待辦事項清單中的項目。 工作將會有下列欄位：
 
 - PartitionKey
 - RowKey
@@ -177,14 +179,14 @@
 - category (字串)
 - completed (布林值)
 
-**PartitionKey** 和 **RowKey** 由表格服務用來做為資料表索引鍵。 如需詳細資訊，請參閱 [了解表格服務資料模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。
+**PartitionKey** 和 **RowKey** 供做為資料表索引鍵資料表服務。 如需詳細資訊，請參閱 [了解表格服務資料模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。
 
 
-1. 在 **tasklist** 目錄中，建立新目錄 **models**。
+1. 在 **tasklist** 目錄中，建立名為的新目錄 **模型**。
 
-2. 在 **models** 目錄中，建立新檔案 **task.js**。 此檔案將包含您的應用程式建立之工作的模型。
+2. 在 **模型** 目錄中，建立新的檔名為 **task.js**。 此檔案將包含您的應用程式建立之工作的模型。
 
-3. 在 **task.js** 檔案的開頭加入以下程式碼以參考所需的程式庫：
+3. 在開始 **task.js** 檔案中，新增下列程式碼以參考所需的程式庫:
 
         var azure = require('azure-storage');
         var uuid = require('node-uuid');
@@ -192,84 +194,84 @@
 
 4. 新增下列程式碼以定義和匯出 Task 物件。 此物件負責連接至資料表。
 
-     module.exports = Task;
-    
-     function Task(storageClient, tableName, partitionKey) {
-       this.storageClient = storageClient;
-       this.tableName = tableName;
-       this.partitionKey = partitionKey;
-       this.storageClient.createTableIfNotExists(tableName, function tableCreated(error) {
-         if(error) {
-           throw error;
-         }
-       });
-     };
+        module.exports = Task;
+
+        function Task(storageClient, tableName, partitionKey) {
+          this.storageClient = storageClient;
+          this.tableName = tableName;
+          this.partitionKey = partitionKey;
+          this.storageClient.createTableIfNotExists(tableName, function tableCreated(error) {
+            if(error) {
+              throw error;
+            }
+          });
+        };
 
 5. 新增下列程式碼以定義 Task 物件上的其他方法，允許與資料表中存放的資料互動：
 
-     Task.prototype = {
-       find: function(query, callback) {
-         self = this;
-         self.storageClient.queryEntities(this.tableName, query, null, function entitiesQueried(error, result) {
-           if(error) {
-             callback(error);
-           } else {
-             callback(null, result.entries);
-           }
-         });
-       },
-    
-       addItem: function(item, callback) {
-         self = this;
-         // use entityGenerator to set types
-         // NOTE: RowKey must be a string type, even though
-         // it contains a GUID in this example.
-         var itemDescriptor = {
-           PartitionKey: entityGen.String(self.partitionKey),
-           RowKey: entityGen.String(uuid()),
-           name: entityGen.String(item.name),
-           category: entityGen.String(item.category),
-           completed: entityGen.Boolean(false)
-         };
-         self.storageClient.insertEntity(self.tableName, itemDescriptor, function entityInserted(error) {
-           if(error){  
-             callback(error);
-           }
-           callback(null);
-         });
-       },
-    
-       updateItem: function(rKey, callback) {
-         self = this;
-         self.storageClient.retrieveEntity(self.tableName, self.partitionKey, rKey, function entityQueried(error, entity) {
-           if(error) {
-             callback(error);
-           }
-           entity.completed._ = true;
-           self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
-             if(error) {
-               callback(error);
-             }
-             callback(null);
-           });
-         });
-       }
-     }
+        Task.prototype = {
+          find: function(query, callback) {
+            self = this;
+            self.storageClient.queryEntities(this.tableName, query, null, function entitiesQueried(error, result) {
+              if(error) {
+                callback(error);
+              } else {
+                callback(null, result.entries);
+              }
+            });
+          },
+
+          addItem: function(item, callback) {
+            self = this;
+            // use entityGenerator to set types
+            // NOTE: RowKey must be a string type, even though
+            // it contains a GUID in this example.
+            var itemDescriptor = {
+              PartitionKey: entityGen.String(self.partitionKey),
+              RowKey: entityGen.String(uuid()),
+              name: entityGen.String(item.name),
+              category: entityGen.String(item.category),
+              completed: entityGen.Boolean(false)
+            };
+            self.storageClient.insertEntity(self.tableName, itemDescriptor, function entityInserted(error) {
+              if(error){  
+                callback(error);
+              }
+              callback(null);
+            });
+          },
+
+          updateItem: function(rKey, callback) {
+            self = this;
+            self.storageClient.retrieveEntity(self.tableName, self.partitionKey, rKey, function entityQueried(error, entity) {
+              if(error) {
+                callback(error);
+              }
+              entity.completed._ = true;
+              self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
+                if(error) {
+                  callback(error);
+                }
+                callback(null);
+              });
+            });
+          }
+        }
 
 6. 儲存並關閉 **task.js** 檔案。
 
 ### 建立控制器
 
-「控制器」**處理 HTTP 要求並呈現 HTML 回應。
+A *控制器* 處理 HTTP 要求並呈現 HTML 回應。
 
-1. 在 **tasklist/routes** 目錄中建立新檔案 **tasklist.js**，然後在文字編輯器中開啟檔案。
+1. 在 **tasklist/routes** 目錄中，建立新的檔名為 **tasklist.js** 和文字編輯器中開啟。
 
-2. 在 **tasklist.js** 中加入以下程式碼。 這會載入 azure 和 async 模組，它們是由 **tasklist.js** 所使用。 這也會定義 **TaskList** 函數，系統會傳遞我們稍早定義的 **Task** 物件執行個體給它：
+2. 加入下列程式碼以 **tasklist.js**。 這會載入 azure 和 async 模組，可供 **tasklist.js**。 這也會定義 **TaskList** 函式，傳遞的執行個體 **工作** 我們稍早定義的物件:
 
-     var azure = require('azure-storage');
-     var async = require('async');
-    
-     module.exports = TaskList;
+        var azure = require('azure-storage');
+        var async = require('async');
+
+        module.exports = TaskList;
 
 3. 定義 **TaskList** 物件。
 
@@ -277,55 +279,55 @@
           this.task = task;
         }
 
-4. 將下列方法新增至 **TaskList**：
 
-     TaskList.prototype = {
-       showTasks: function(req, res) {
-         self = this;
-         var query = new azure.TableQuery()
-           .where('completed eq ?', false);
-         self.task.find(query, function itemsFound(error, items) {
-           res.render('index',{title: 'My ToDo List ', tasks: items});
-         });
-       },
-    
-       addTask: function(req,res) {
-         var self = this
-         var item = req.body.item;
-         self.task.addItem(item, function itemAdded(error) {
-           if(error) {
-             throw error;
-           }
-           res.redirect('/');
-         });
-       },
-    
-       completeTask: function(req,res) {
-         var self = this;
-         var completedTasks = Object.keys(req.body);
-         async.forEach(completedTasks, function taskIterator(completedTask, callback) {
-           self.task.updateItem(completedTask, function itemsUpdated(error) {
-             if(error){
-               callback(error);
-             } else {
-               callback(null);
-             }
-           });
-         }, function goHome(error){
-           if(error) {
-             throw error;
-           } else {
-            res.redirect('/');
-           }
-         });
-       }
-     }
+4. 新增下列方法來 **TaskList**:
 
+        TaskList.prototype = {
+          showTasks: function(req, res) {
+            self = this;
+            var query = new azure.TableQuery()
+              .where('completed eq ?', false);
+            self.task.find(query, function itemsFound(error, items) {
+              res.render('index',{title: 'My ToDo List ', tasks: items});
+            });
+          },
+
+          addTask: function(req,res) {
+            var self = this
+            var item = req.body.item;
+            self.task.addItem(item, function itemAdded(error) {
+              if(error) {
+                throw error;
+              }
+              res.redirect('/');
+            });
+          },
+
+          completeTask: function(req,res) {
+            var self = this;
+            var completedTasks = Object.keys(req.body);
+            async.forEach(completedTasks, function taskIterator(completedTask, callback) {
+              self.task.updateItem(completedTask, function itemsUpdated(error) {
+                if(error){
+                  callback(error);
+                } else {
+                  callback(null);
+                }
+              });
+            }, function goHome(error){
+              if(error) {
+                throw error;
+              } else {
+               res.redirect('/');
+              }
+            });
+          }
+        }
 
 
 ### 修改 app.js
 
-1. 在 **tasklist** 目錄中，開啟 **app.js** 檔案。 此檔案是稍早執行 **express** 命令所建立。
+1. 從 **tasklist** 目錄中，開啟 **app.js** 檔案。 此檔案稍早建立的執行 **express** 命令。
 
 2. 在檔案開頭，加入下列內容以載入 azure 模組、設定資料表名稱、資料分割索引鍵，以及設定此範例所使用的儲存體認證：
 
@@ -338,78 +340,78 @@
         var accountName = nconf.get("STORAGE_NAME");
         var accountKey = nconf.get("STORAGE_KEY");
 
-    > [AZURE.NOTE] nconf 會從環境變數或 **config.json** 檔案 (我們稍後會建立) 載入組態值。
+    > [AZURE.NOTE] nconf 會從環境變數載入組態值或 **config.json** 我們稍後會建立的檔案。
 
 3. 在 app.js 檔中，向下捲動到看見此行處：
 
-     app.use('/', routes);
-     app.use('/users', users);
+        app.use('/', routes);
+        app.use('/users', users);
 
- 將以上幾行取代為以下顯示的程式碼。 這會初始化的執行個體 <strong>工作</strong> 並連接到儲存體帳戶。 這會傳遞給 <strong>TaskList</strong>, ，它會用來與資料表服務通訊:
+    將以上幾行取代為以下顯示的程式碼。 這會使用儲存體帳戶的連線初始化 <strong>工作</strong> 的執行個體。 此項目會傳至 <strong>TaskList</strong>，供其用來與資料表服務通訊：
 
-     var TaskList = require('./routes/tasklist');
-     var Task = require('./models/task');
-     var task = new Task(azure.createTableService(accountName, accountKey), tableName, partitionKey);
-     var taskList = new TaskList(task);
-    
-     app.get('/', taskList.showTasks.bind(taskList));
-     app.post('/addtask', taskList.addTask.bind(taskList));
-     app.post('/completetask', taskList.completeTask.bind(taskList));
+        var TaskList = require('./routes/tasklist');
+        var Task = require('./models/task');
+        var task = new Task(azure.createTableService(accountName, accountKey), tableName, partitionKey);
+        var taskList = new TaskList(task);
+
+        app.get('/', taskList.showTasks.bind(taskList));
+        app.post('/addtask', taskList.addTask.bind(taskList));
+        app.post('/completetask', taskList.completeTask.bind(taskList));
 
 4. 儲存 **app.js** 檔案。
 
 ### 修改索引檢視
 
-1. 以文字編輯器開啟 **tasklist/views/index.jade** 檔案。
+1. 開啟 **tasklist/views/index.jade** 在文字編輯器中的檔案。
 
 2. 將檔案的整個內容取代為下列程式碼。 這會定義顯示現有工作的檢視，並且包括加入新工作及將現有工作標示為完成的表單。
 
-     extends layout
-    
-     block content
-       h1= title
-       br
-    
-       form(action="/completetask", method="post")
-         table.table.table-striped.table-bordered
-           tr
-             td Name
-             td Category
-             td Date
-             td Complete
-           if (typeof tasks === "undefined")
-             tr
-               td
-           else
-             each task in tasks
-               tr
-                 td #{task.name._}
-                 td #{task.category._}
-                 - var day   = task.Timestamp._.getDate();
-                 - var month = task.Timestamp._.getMonth() + 1;
-                 - var year  = task.Timestamp._.getFullYear();
-                 td #{month + "/" + day + "/" + year}
-                 td
-                   input(type="checkbox", name="#{task.RowKey._}", value="#{!task.completed._}", checked=task.completed._)
-         button.btn(type="submit") Update tasks
-       hr
-       form.well(action="/addtask", method="post")
-         label Item Name:
-         input(name="item[name]", type="textbox")
-         label Item Category:
-         input(name="item[category]", type="textbox")
-         br
-         button.btn(type="submit") Add item
+        extends layout
+
+        block content
+          h1= title
+          br
+
+          form(action="/completetask", method="post")
+            table.table.table-striped.table-bordered
+              tr
+                td Name
+                td Category
+                td Date
+                td Complete
+              if (typeof tasks === "undefined")
+                tr
+                  td
+              else
+                each task in tasks
+                  tr
+                    td #{task.name._}
+                    td #{task.category._}
+                    - var day   = task.Timestamp._.getDate();
+                    - var month = task.Timestamp._.getMonth() + 1;
+                    - var year  = task.Timestamp._.getFullYear();
+                    td #{month + "/" + day + "/" + year}
+                    td
+                      input(type="checkbox", name="#{task.RowKey._}", value="#{!task.completed._}", checked=task.completed._)
+            button.btn(type="submit") Update tasks
+          hr
+          form.well(action="/addtask", method="post")
+            label Item Name:
+            input(name="item[name]", type="textbox")
+            label Item Category:
+            input(name="item[category]", type="textbox")
+            br
+            button.btn(type="submit") Add item
 
 3. 儲存並關閉 **index.jade** 檔案。
 
 ### 修改全域版面配置
 
-**views** 目錄中的 **layout.jade** 檔案是其他 **.jade** 檔案的全域範本。 在此步驟中您將修改它以使用 [Twitter Bootstrap](https://github.com/twbs/bootstrap), ，工具組能夠方便設計美觀的尋找 web 應用程式的。
+ **Layout.jade** 檔案中 **檢視** 目錄是針對其他的全域範本 **.jade** 檔案。 在此步驟中您將修改它以使用 [Twitter Bootstrap](https://github.com/twbs/bootstrap), ，工具組能夠方便設計美觀的尋找 web 應用程式的。
 
-下載並解壓縮的檔案 [Twitter Bootstrap](http://getbootstrap.com/)。 將 **bootstrap.min.css** 檔案從 Bootstrap **css** 資料夾複製到您應用程式的 **public/stylesheets** 目錄。
+下載並解壓縮的檔案 [Twitter Bootstrap](http://getbootstrap.com/)。 複製 **bootstrap.min.css** 檔案從 Bootstrap **css** 資料夾匯入到 **public/stylesheets** 應用程式的目錄。
 
-從 **views** 資料夾，開啟 **layout.jade**，並將全部內容取代為：
+從 **檢視** 資料夾中，開啟 **layout.jade** 和整個內容取代為下列:
 
     doctype html
     html
@@ -434,7 +436,7 @@
         "TABLE_NAME": "tasks"
     }
 
-將 **storage account name** 取代為您先前建立的儲存體帳戶名稱，並將 **storage access key** 取代為您儲存體帳戶的主要存取金鑰。 例如：
+取代 **儲存體帳戶名稱** 存放區的名稱取代為您稍早建立帳戶，並取代 **儲存體存取金鑰** 與儲存體帳戶的主要存取金鑰。 例如：
 
     {
         "STORAGE_NAME": "nodejsappstorage",
@@ -443,7 +445,7 @@
         "TABLE_NAME": "tasks"
     }
 
-將此檔案儲存在比 **tasklist** 目錄*高一個目錄層級*的位置，像這樣：
+將此檔案儲存 *高一個目錄層級* 比 **tasklist** 目錄中，像這樣:
 
     parent/
       |-- config.json
@@ -456,7 +458,7 @@
 
 若要在本機電腦測試應用程式，請執行下列步驟：
 
-1. 使用命令列變更目錄至 **tasklist** 目錄。
+1. 從命令列中，將目錄變更至 **tasklist** 目錄。
 
 2. 使用下列命令在本機啟動應用程式：
 
@@ -468,9 +470,9 @@
 
     ![顯示空白工作清單的網頁][node-table-finished]
 
-4. 若要建立新的待辦事項，請輸入名稱和類別目錄，然後按一下 [新增項目]****。
+4. 若要建立新的待辦事項項目，請在輸入名稱和類別目錄，然後按一下 [ **加入項目**。 
 
-6. 若要將工作標示為完成，請核取 [完成]**** 並且按一下 [更新工作]****。
+6. 將工作標示為完成，請核取 **完成** 按一下 **更新工作**。
 
     ![An image of the new item in the list of tasks][node-table-list-items]
 
@@ -479,11 +481,12 @@
 ## 將應用程式部署至 Azure
 
 本節的步驟使用 Azure 命令列工具在 App Service 中建立新的 Web 應用程式，然後使用 Git 部署應用程式。 若要執行這些步驟，必須有 Azure 訂閱。
-> [AZURE.NOTE] 也可以使用執行這些步驟 [Azure 入口網站](https://portal.azure.com)。 請參閱 [建置和部署 Azure App Service 中的 Node.js web 應用程式]。
+
+> [AZURE.NOTE] 也可以使用執行這些步驟 [Azure 入口網站](https://portal.azure.com)。 See [Build and deploy a Node.js web app in Azure App Service].
 >
 > 如果這是您建立的第一個 Web 應用程式，您必須使用 Azure 入口網站部署此應用程式。
 
-若要開始，請從命令列輸入下列命令以安裝 [Azure CLI]:
+若要開始使用，請安裝 [Azure CLI] 從命令列輸入下列命令:
 
     npm install azure-cli -g
 
@@ -493,12 +496,13 @@
 
 1. 輸入下列命令：
 
-     azure account download
+        azure account download
 
- 此命令會啟動瀏覽器並瀏覽至下載頁面。 若出現提示，請使用與您的 Azure 訂用帳戶相關聯的帳戶登入。
+    此命令會啟動瀏覽器並瀏覽至下載頁面。 若出現提示，請使用與您的 Azure 訂用帳戶相關聯的帳戶登入。
 
+    <!-- ![The download page][download-publishing-settings] -->
 
- 檔案下載會自動開始；如果沒有，您可以按一下頁面頂端的連結，以手動下載檔案。 儲存檔案，並記下檔案路徑。
+    檔案下載會自動開始；如果沒有，您可以按一下頁面頂端的連結，以手動下載檔案。 儲存檔案，並記下檔案路徑。
 
 2. 輸入下列命令以匯入設定：
 
@@ -510,7 +514,7 @@
 
 ### 建立 App Service Web 應用程式
 
-1. 從命令列將目錄變更至 **tasklist** 目錄。
+1. 從命令列中，將目錄變更至 **tasklist** 目錄。
 
 2. 使用下列命令建立新的 Web 應用程式。
 
@@ -518,9 +522,9 @@
 
     系統會提示您輸入 Web 應用程式名稱和位置。 請提供唯一的名稱，並且選取與您的 Azure 儲存體帳戶相同的地理位置。
 
-    `--Git` 參數在 Azure 上建立 Git 儲存機制，此 web 應用程式。 如果不存在，並且將 [遠端] 具名 'azure' 的 Git，用來發行至 Azure 應用程式，它也會初始化 Git 儲存機制，在目前的目錄。 最後，它會建立 **web.config** 檔案，其中包含 Azure 代管 node 應用程式所使用的設定。 如果您省略 `--git` 參數，但目錄有 Git 儲存機制，此命令仍會建立 'azure' 遠端。
+    `--git` 參數會在 Azure 上建立此 Web 應用程式的 Git 儲存機制。 它也初始化 Git 儲存機制，在目前的目錄中，如果不存在，並且新增 [Git remote] 名為 'azure'，用來發行至 Azure 應用程式。 最後，它會建立 **web.config** 檔案，其中包含 Azure 代管節點應用程式使用的設定。 如果您省略 `--git` 參數，但該目錄仍包含 Git 儲存機制，則此命令仍會建立 'azure' 遠端。
 
-    一旦此命令完成，您將會看到類似以下的輸出。 請注意，**Website created at** 開頭的這一行包含 Web 應用程式的 URL。
+    一旦此命令完成，您將會看到類似以下的輸出。 請注意，行開頭 **在建立網站** 包含 web 應用程式的 URL。
 
         info:   Executing command site create
         help:   Need a site name
@@ -535,7 +539,7 @@
         info:   Executing `git remote add azure https://username@tabletasklist.azurewebsites.net/TableTasklist.git`
         info:   site create command OK
 
-    > [AZURE.NOTE] 如果這是您的訂用帳戶的第一個 App Service Web 應用程式，系統將指示您使用 Azure 入口網站來建立 Web 應用程式。 如需詳細資訊，請參閱 [建置和部署 Azure App Service 中的 Node.js web 應用程式]。
+    > [AZURE.NOTE] 如果這是您的訂閱的第一個應用程式服務 web 應用程式時，系統將指示您使用 Azure 入口網站建立 web 應用程式。 如需詳細資訊，請參閱 [Build and deploy a Node.js web app in Azure App Service]。
 
 ### 設定環境變數
 
@@ -545,20 +549,22 @@
     azure site appsetting add
         STORAGE_NAME=<storage account name>;STORAGE_KEY=<storage access key>;PARTITION_KEY=mytasks;TABLE_NAME=tasks
 
-取代 * *<storage account name>** 存放區的名稱取代為您稍早建立帳戶，並取代 **<storage access key>* * 使用儲存體帳戶的主要存取金鑰。(使用與您稍早建立的 config.json 檔案相同的值)。
+
+取代 **<storage account name>** 存放區的名稱取代為您稍早建立帳戶，並取代 **<storage access key>** 與儲存體帳戶的主要存取金鑰。 (使用與您稍早建立的 config.json 檔案相同的值)。
 
 或者，您可以設定環境變數 [Azure 入口網站](https://portal.azure.com):
 
-1.  依序按一下 [瀏覽]**** > [Web 應用程式]**** > Web 應用程式名稱，開啟 Web 應用程式的刀鋒視窗。
+1.  開啟 web 應用程式的刀鋒視窗中，依序按一下 **瀏覽** > **Web 應用程式** > 您的 web 應用程式名稱。
 
-1.  在您的 Web 應用程式刀鋒視窗中，按一下 [所有設定]**** > [應用程式設定]****。
+1.  在 web 應用程式的刀鋒視窗中，按一下 [ **所有設定** > **應用程式設定**。
 
+    <!-- ![Top Menu](./media/storage-nodejs-use-table-storage-web-site/PollsCommonWebSiteTopMenu.png) -->
 
-1.  向下捲動至 [應用程式設定]**** 區段，並新增金鑰/值組。
+1.  向下捲動至 **應用程式設定** 區段，並新增金鑰/值組。
 
     ![應用程式設定](./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png)
 
-1. 按一下 [儲存]****。
+1. 按一下 [ **儲存**。
 
 
 ### 發佈應用程式
@@ -578,53 +584,61 @@
 
         git push azure master
 
-    使用 **master** 做為目標分支。 在部署結束時，您會看到類似下列範例中的陳述式：
+    使用 **主要** 做為目標分支。 在部署結束時，您會看到類似下列範例中的陳述式：
 
         To https://username@tabletasklist.azurewebsites.net/TableTasklist.git
          * [new branch]      master -> master
 
-4. 完成推播作業後，瀏覽至先前所傳回的 web 應用程式 URL `azure 建立網站` 命令來檢視您的應用程式。
+4. 完成推送作業後，瀏覽至先前由 `azure create site` 命令傳回的 Web 應用程式 URL 以檢視您的應用程式。
 
 
 ## 後續步驟
 
-雖然本文的步驟說明如何使用資料表服務來存放資訊，您也可以使用 MongoDB。 如需詳細資訊，請參閱 [MongoDB 的 Node.js web 應用程式]。
+雖然本文的步驟說明如何使用資料表服務來存放資訊，您也可以使用 MongoDB。 請參閱 [Node.js web app with MongoDB] 如需詳細資訊。
 
 ## 其他資源
 
 [Azure CLI]
 
 ## 變更的項目
-
 * 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
+[Build and deploy a Node.js web app in Azure App Service]: web-sites-nodejs-develop-deploy-mac.md
+[Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
+[Azure Developer Center]: /develop/nodejs/
 
-[build and deploy a node.js web app in azure app service]: web-sites-nodejs-develop-deploy-mac.md 
-[continuous deployment using git in azure app service]: web-sites-publish-source-control.md 
-[azure developer center]: /develop/nodejs/ 
-[node]: http://nodejs.org 
-[git]: http://git-scm.com 
-[express]: http://expressjs.com 
-[for free]: http://windowsazure.com 
-[git remote]: http://git-scm.com/docs/git-remote 
-[node.js web app with mongodb]: web-sites-nodejs-store-data-mongodb.md 
-[azure cli]: ../xplat-cli-install.md 
-[continuous deployment using git in azure app service]: web-sites-publish-source-control.md 
-[azure]: https://github.com/Azure/azure-sdk-for-node 
-[node-uuid]: https://www.npmjs.com/package/node-uuid 
-[nconf]: https://www.npmjs.com/package/nconf 
-[async]: https://www.npmjs.com/package/async 
-[azure portal]: https://portal.azure.com 
-[node-table-finished]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_empty.png 
-[node-table-list-items]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_list.png 
-[download-publishing-settings]: ./media/storage-nodejs-use-table-storage-web-site/azure-account-download-cli.png 
-[portal-new]: ./media/storage-nodejs-use-table-storage-web-site/plus-new.png 
-[portal-storage-account]: ./media/storage-nodejs-use-table-storage-web-site/new-storage.png 
-[portal-quick-create-storage]: ./media/storage-nodejs-use-table-storage-web-site/quick-storage.png 
-[portal-storage-access-keys]: ./media/storage-nodejs-use-table-storage-web-site/manage-access-keys.png 
-[go-to-dashboard]: ./media/storage-nodejs-use-table-storage-web-site/go_to_dashboard.png 
-[web-configure]: ./media/storage-nodejs-use-table-storage-web-site/sql-task-configure.png 
-[app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png 
-[app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png 
-[create and deploy a node.js application to an azure web site]: web-sites-nodejs-develop-deploy-mac.md 
+
+[node]: http://nodejs.org
+[Git]: http://git-scm.com
+[Express]: http://expressjs.com
+[for free]: http://windowsazure.com
+[Git remote]: http://git-scm.com/docs/git-remote
+
+[Node.js web app with MongoDB]: web-sites-nodejs-store-data-mongodb.md
+[Azure CLI]: ../xplat-cli-install.md
+
+[Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
+[azure]: https://github.com/Azure/azure-sdk-for-node
+[node-uuid]: https://www.npmjs.com/package/node-uuid
+[nconf]: https://www.npmjs.com/package/nconf
+[async]: https://www.npmjs.com/package/async
+
+[Azure Portal]: https://portal.azure.com
+
+
+[node-table-finished]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_empty.png
+[node-table-list-items]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_list.png
+[download-publishing-settings]: ./media/storage-nodejs-use-table-storage-web-site/azure-account-download-cli.png
+[portal-new]: ./media/storage-nodejs-use-table-storage-web-site/plus-new.png
+[portal-storage-account]: ./media/storage-nodejs-use-table-storage-web-site/new-storage.png
+[portal-quick-create-storage]: ./media/storage-nodejs-use-table-storage-web-site/quick-storage.png
+[portal-storage-access-keys]: ./media/storage-nodejs-use-table-storage-web-site/manage-access-keys.png
+
+[go-to-dashboard]: ./media/storage-nodejs-use-table-storage-web-site/go_to_dashboard.png
+[web-configure]: ./media/storage-nodejs-use-table-storage-web-site/sql-task-configure.png
+[app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
+[app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
+
+[Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
+ 
 

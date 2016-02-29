@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ExpressRoute 客戶路由器組態範例 |Microsoft Azure"
+   pageTitle="ExpressRoute 客戶路由器組態範例 | Microsoft Azure"
    description="此頁面提供適用於 Cisco 和 Juniper 路由器的路由器組態範例。"
    documentationCenter="na"
    services="expressroute"
@@ -15,15 +15,15 @@
    ms.date="10/12/2015"
    ms.author="cherylmc"/>
 
-
 # 設定和管理 NAT 的路由器組態範例
 
-此頁面提供適用於 Cisco ASA 和 Juniper MX 系列路由器的 NAT 組態範例。 這些範例僅可用作指引，不能依原樣使用。 您可以和廠商合作來擬定適合您網路的組態。
->[AZURE.IMPORTANT] 此頁面中的範例純粹只用作指引。 您必須和廠商的業務人員 / 技術小組及您的網路團隊合作，來擬定適當的組態以符合您的需求。 Microsoft 將不支援此頁面中所列組態的相關問題。 您必須連絡您的裝置廠商來支援問題。
+此頁面提供適用於 Cisco ASA 和 Juniper MX 系列路由器的 NAT 組態範例。 這些範例僅可用作指引，不能依原樣使用。 您可以和廠商合作來擬定適合您網路的組態。 
+
+>[AZURE.IMPORTANT] 在此頁面中的範例是純粹的指引。 您必須和廠商的業務人員 / 技術小組及您的網路團隊合作，來擬定適當的組態以符合您的需求。 Microsoft 將不支援此頁面中所列組態的相關問題。 您必須連絡您的裝置廠商來支援問題。
 
 下列路由器組態範例適用於 Azure Public 與 Microsoft 對等互連。 您必須設定 Azure 私人對等互連的 NAT。 檢閱 [ExpressRoute 對等互連](expressroute-circuit-peerings.md) 和 [ExpressRoute NAT 需求](expressroute-nat.md) 如需詳細資訊。
 
-**注意：**您必須使用個別的 NAT IP 集區來連線至網際網路和 ExpressRoute。 在網際網路與 ExpressRoute 中使用相同的 NAT IP 集區，將會導致非對稱路由和連線中斷。
+**注意:** 對於連線至網際網路和 ExpressRoute，您必須使用的個別 NAT IP 集區。 在網際網路與 ExpressRoute 中使用相同的 NAT IP 集區，將會導致非對稱路由和連線中斷。
 
 ## Cisco ASA 防火牆
 
@@ -48,21 +48,19 @@
     
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
-### Microsoft 從客戶網路流量的 PAT 組態
+### 適用於從 Microsoft 至客戶網路之流量的 PAT 組態
 
-#### 介面和方向:
-
+#### 介面和方向：
     Source Interface (where the traffic enters the ASA): inside
     Destination Interface (where the traffic exits the ASA): outside
 
 #### 組態:
-
-NAT 集區:
+NAT 集區：
 
     object network outbound-PAT
         host <NAT-IP>
 
-目標伺服器:
+目標伺服器：
 
     object network Customer-Network
         network-object <IP> <Subnet-Mask>
@@ -79,7 +77,8 @@ NAT 命令：
 
     nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
 
-## Juniper MX 系列路由器
+
+## Juniper MX 系列路由器 
 
 ### 1.建立叢集的備援乙太網路介面
 
@@ -113,38 +112,40 @@ NAT 命令：
         }
     }
 
+
 ### 2.建立兩個安全性區域
 
  - 內部網路的信任區域和外部網路面向邊緣路由器的未受信任區域
  - 將適當的介面指派給區域
  - 在介面上允許一些服務
 
-    安全性 {   
-     區域 {
-            安全性區域信任 {
-                主機連入流量 {
-                    系統服務 {
-                        ping。
+
+    security {   
+     zones {
+            security-zone Trust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
                     }
-                    通訊協定 {
-                        bgp。
+                    protocols {
+                        bgp;
                     }
                 }
-                介面 {
-                    reth0.100
+                interfaces {
+                    reth0.100;
                 }
             }
-            安全性區域信任 {
-                主機連入流量 {
-                    系統服務 {
-                        ping。
+            security-zone Untrust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
                     }
-                    通訊協定 {
-                        bgp。
+                    protocols {
+                        bgp;
                     }
                 }
-                介面 {
-                    reth1.100
+                interfaces {
+                    reth1.100;
                 }
             }
         }
@@ -152,7 +153,7 @@ NAT 命令：
 
 
 ### 3.建立區域之間的安全性原則
-
+ 
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -182,8 +183,8 @@ NAT 命令：
         }
     }
 
-### 4.設定 NAT 原則
 
+### 4.設定 NAT 原則
  - 建立兩個 NAT 集區。 一個集區將用於輸出到 Microsoft 的 NAT 流量，另一個集區則用於從 Microsoft 至客戶的 NAT 流量。
  - 建立各自流量的 NAT 規則
 
@@ -241,7 +242,6 @@ NAT 命令：
                 }
             }
         }
-
 
 
 ### 5.設定 BGP 以通告每個方向的選擇性前置詞
@@ -347,8 +347,4 @@ NAT 命令：
 ## 後續步驟
 
 請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md) 如需詳細資訊。
-
-
-
-
 

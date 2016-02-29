@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用 .NET 檢查工作進度" 
-    description="了解如何使用事件處理常式程式碼來追蹤工作進度及傳送狀態更新。程式碼範例以 C# 撰寫，並使用 Media Services SDK for .NET。" 
+    description="了解如何使用事件處理常式程式碼來追蹤工作進度及傳送狀態更新。 程式碼範例以 C# 撰寫，並使用 Media Services SDK for .NET。" 
     services="media-services" 
     documentationCenter="" 
     authors="juliako" 
@@ -16,18 +16,16 @@
     ms.date="12/04/2015"   
     ms.author="juliako"/>
 
-
-# 作法：檢查工作進度
+#作法：檢查工作進度
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-check-job-progress.md)
+- [入口網站](media-services-portal-check-job-progress.md)
 - [.NET](media-services-check-job-progress.md)
 - [REST](media-services-rest-check-job-progress.md)
 
+執行作業時，您通常需要設法追蹤作業進度。 您可以檢查進度 [定義 StateChanged 事件處理常式](#statechange_event_handler) 或 [使用 Azure 佇列儲存體監視媒體服務工作通知](#check_progress_with_queues)。 本主題描述這兩種方法。 
 
-執行作業時，您通常需要設法追蹤作業進度。 您可以檢查進度 [定義 StateChanged 事件處理常式](#statechange_event_handler) 或 [使用 Azure 佇列儲存體監視媒體服務工作通知](#check_progress_with_queues)。 本主題描述這兩種方法。
-
-## <a id="statechange_event_handler"></a>定義 StateChanged 事件處理常式來監視工作進度
+##<a id="statechange_event_handler"></a>定義 StateChanged 事件處理常式來監視工作進度
 
 下列程式碼定義 StateChanged 事件處理常式。 此事件處理常式可追蹤作業進度，並根據狀態來提供更新的狀態。 程式碼也定義 LogJobStop 方法。 此協助程式方法會記錄錯誤詳細資料。
 
@@ -106,45 +104,46 @@
         return jobID.Replace(":", "_");
     }
 
-## <a id="check_progress_with_queues"></a>使用 Azure 佇列儲存體監視媒體服務工作通知
+
+
+##<a id="check_progress_with_queues"></a>使用 Azure 佇列儲存體監視媒體服務工作通知
 
 Microsoft Azure 媒體服務能夠傳送通知訊息給 [Azure 佇列儲存體](../storage-dotnet-how-to-use-queues.md#what-is) 處理媒體工作時。 本主題示範如何從佇列儲存體取得這些通知訊息。
 
-使用者可以從世界各個角落存取之前已傳送至佇列儲存體的訊息。 Azure 佇列訊息架構十分可靠，而且具有高擴充性。 建議利用其他方法輪詢佇列儲存體。
+使用者可以從世界各個角落存取之前已傳送至佇列儲存體的訊息。 Azure 佇列訊息架構十分可靠，而且具有高擴充性。 建議利用其他方法輪詢佇列儲存體。 
 
-舉一個常見的接聽媒體服務通知案例：您正在設計一套內容管理系，而且當程式碼設計好之後，這套系統需要執行其他一些工作 (例如, 觸發工作流程的下一個步驟或者發佈內容)。
+舉一個常見的接聽媒體服務通知案例：您正在設計一套內容管理系，而且當程式碼設計好之後，這套系統需要執行其他一些工作 (例如, 觸發工作流程的下一個步驟或者發佈內容)。 
 
-### 注意事項
+###注意事項
 
 當您設計的媒體服務應用程式會使用 Azure 儲存體佇列時，請考慮下列幾點。
 
 - 佇列服務不保證會按照先進先出 (FIFO) 的順序傳遞訊息。 如需詳細資訊，請參閱 [Azure 佇列和 Azure 服務匯流排佇列-比較和對照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
-- Azure 儲存體佇列不是推播服務；您必須輪詢佇列。
+- Azure 儲存體佇列不是推播服務；您必須輪詢佇列。 
 - 您可以有任意數目的佇列。 如需詳細資訊，請參閱 [佇列服務 REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)。
 - Azure 儲存體佇列具有某些限制，下列文件中所述的細節: [Azure 佇列和 Azure 服務匯流排佇列-比較和對照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
 
-### 程式碼範例
+###程式碼範例
 
 本節的程式碼會執行下列動作：
 
-1. 定義一個會對應至通知訊息格式的 **EncodingJobMessage** 類別。 程式碼會將那些從佇列接收到的訊息還原序列化，然後變成 **EncodingJobMessage** 類型的物件。
+1. 定義 **EncodingJobMessage** 類別對應至通知訊息格式。 程式碼將訊息從佇列接收到的物件還原序列化 **EncodingJobMessage** 型別。
 1. 從 app.config 檔案載入媒體服務和儲存體帳戶資訊。 使用此資訊來建立 **CloudMediaContext** 和 **CloudQueue** 物件。
 1. 建立一個會接收編碼工作相關通知訊息的佇列。
 1. 建立一個會對應到佇列的通知端點。
 1. 將通知端點附加至工作，然後提交編碼工作。 您可以將多個通知端點附加至工作。
-1. 在這個範例中，我們只想知道工作的最終狀態，所以我們將 **NotificationJobState.FinalStatesOnly** 傳遞給 **AddNew** 方法。
-
+1. 在此範例中我們才有興趣的工作，最終狀態，我們傳給 **NotificationJobState.FinalStatesOnly** 至 **AddNew** 方法。 
+        
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-
-1. 如果您傳遞 NotificationJobState.All，表示您想取得所有的狀態變更通知：[已排入佇列] -> [已排程] -> [處理中] -> [已完成]。 不過，如先前所述，Azure 儲存體佇列服務不保證會按照順序傳遞。 您可以使用 Timestamp 屬性 (定義在以下範例中的 EncodingJobMessage 類型) 來排序訊息。 您可能會收到重複的通知訊息。 請使用 ETag 屬性 (定義在 EncodingJobMessage 類型上) 來檢查重複的通知訊息。 請注意，某些狀態變更通知也有可能被略過。
+1. 如果您傳遞 NotificationJobState.All，表示您想取得所有的狀態變更通知：[已排入佇列] -> [已排程] -> [處理中] -> [已完成]。 不過，如先前所述，Azure 儲存體佇列服務不保證會按照順序傳遞。 您可以使用 Timestamp 屬性 (定義在以下範例中的 EncodingJobMessage 類型) 來排序訊息。 您可能會收到重複的通知訊息。 請使用 ETag 屬性 (定義在 EncodingJobMessage 類型上) 來檢查重複的通知訊息。 請注意，某些狀態變更通知也有可能被略過。 
 1. 每隔 10 秒檢查佇列一次，等候工作進入「已完成」狀態。 處理好訊息之後，請予以刪除。
 1. 刪除佇列和通知端點。
 
->[AZURE.NOTE]要想監視工作的狀態，建議您接聽通知訊息，如下列範例所示。
+>[AZURE.NOTE]監視工作狀態的建議的方式是透過接聽通知訊息，如下列範例所示。
 >
->或者，使用 **IJob.State** 屬性檢查工作狀態。 請注意，**IJob** 的狀態尚未設定成 [**已完成**] 之前，您可能會先收到一則有關工作已完成的通知訊息。  **IJob.State**  屬性會反映正確的狀態會稍有延遲。
+>或者，您可以檢查工作狀態使用 **IJob.State** 屬性。  請注意，作業完成的通知訊息可能會到達之前的狀態 **IJob** 設為 **已經完成**。  **IJob.State**  屬性會反映正確的狀態會稍有延遲。
 
-
+    
     using System;
     using System.Linq;
     using System.Configuration;
@@ -166,15 +165,15 @@ Microsoft Azure 媒體服務能夠傳送通知訊息給 [Azure 佇列儲存體](
         {
             // MessageVersion is used for version control. 
             public String MessageVersion { get; set; }
-    
+        
             // Type of the event. Valid values are 
             // JobStateChange and NotificationEndpointRegistration.
             public String EventType { get; set; }
-    
+        
             // ETag is used to help the customer detect if 
             // the message is a duplicate of another message previously sent.
             public String ETag { get; set; }
-    
+        
             // Time of occurrence of the event.
             public String TimeStamp { get; set; }
     
@@ -254,7 +253,7 @@ Microsoft Azure 媒體服務能夠傳送通知訊息給 [Azure 佇列儲存體](
     
                 return queue;
             }
-    
+     
     
             // Upload a video file, and encode to Smooth Streaming format
             public static IJob SubmitEncodingJobWithNotificationEndPoint(string inputMediaFilePath)
@@ -370,7 +369,7 @@ Microsoft Azure 媒體服務能夠傳送通知訊息給 [Azure 佇列儲存體](
                     }
                 }
             }
-    
+       
             static private IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
             {
                 var asset = _context.Assets.Create("UploadSingleFile_" + DateTime.UtcNow.ToString(), 
@@ -403,7 +402,7 @@ Microsoft Azure 媒體服務能夠傳送通知訊息給 [Azure 佇列儲存體](
     }
 
 上述範例會產生下列輸出。 您的值會不一樣。
-
+    
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4
     Done uploading of BigBuckBunny.mp4
@@ -428,16 +427,13 @@ Microsoft Azure 媒體服務能夠傳送通知訊息給 [Azure 佇列儲存體](
         AccountName: westeuropewamsaccount
     job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected 
     State: Finished
+    
 
-## 媒體服務學習路徑
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 

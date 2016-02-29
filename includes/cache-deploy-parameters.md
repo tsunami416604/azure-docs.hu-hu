@@ -1,3 +1,4 @@
+
 ### redisCacheName
 
 要建立的 Azure Redis 快取的名稱。
@@ -30,7 +31,7 @@ Sku 系列。
 
 ### redisCacheCapacity
 
-新的 Azure Redis 快取執行個體的大小。
+新的 Azure Redis 快取執行個體的大小。 
 
     "redisCacheCapacity": {
       "type": "int",
@@ -49,6 +50,4 @@ Sku 系列。
       "type": "string",
       "defaultValue": "2.8"
     }
-
-
 

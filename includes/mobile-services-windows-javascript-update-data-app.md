@@ -1,11 +1,12 @@
 
-1. 接下來，取消註解或新增下列程式碼行並取代 `< 資料 >` 取代時將專案連線至行動服務新增至 service.js 檔案中的變數:
+
+1. 接著，取消註解或加入以下程式碼行，然後將 `<yourClient>` 取代為連接專案與行動服務時新增至 service.js 檔案中的變數：
 
         var todoTable = <yourClient>.getTable('TodoItem');
 
-    此程式碼會使用快取篩選為新的資料庫資料表建立 Proxy 物件 (**todoTable**)。
+    此程式碼會建立 proxy 物件 (**todoTable**) 為新的資料庫資料表中，您可以使用快取篩選。 
 
-2. 使用下列程式碼來取代 **InsertTodoItem** 函數：
+2. 取代 **InsertTodoItem** 函式，以下列程式碼:
 
         var insertTodoItem = function (todoItem) {
             // Inserts a new row into the database. When the operation completes
@@ -17,7 +18,7 @@
 
     此程式碼會將新的項目插入資料表中。
 
-3. 使用下列程式碼來取代 **RefreshTodoItems** 函數：
+3. 取代 **RefreshTodoItems** 函式，以下列程式碼:
 
         var refreshTodoItems = function () {
             // This code refreshes the entries in the list by querying the table.
@@ -29,10 +30,10 @@
             });
         };
 
-    這會設定 todoTable 中項目集合的繫結，其中包含從行動服務中傳回的所有 **TodoItem** 物件。
+    此設定，其中包含的所有 todoTable 中的項目集合的繫結 **TodoItem** 從行動服務傳回的物件。 
 
-4. 使用下列程式碼來取代 **UpdateCheckedTodoItem** 函數：
-
+4. 取代 **UpdateCheckedTodoItem** 函式，以下列程式碼:
+        
         var updateCheckedTodoItem = function (todoItem) {
             // This code takes a freshly completed TodoItem and updates the database. 
             todoTable.update(todoItem);
@@ -40,11 +41,7 @@
             todoItems.splice(todoItems.indexOf(todoItem), 1);
         };
 
-    This sends an item update to the mobile service.
+    這會將項目更新傳送到行動服務。
 
 應用程式現已更新為使用行動服務進行後端儲存，我們可以開始在行動服務中測試應用程式。
-
-
-
-
 

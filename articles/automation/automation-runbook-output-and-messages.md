@@ -15,21 +15,20 @@
    ms.date="11/24/2015"
    ms.author="bwren" />
 
-
 # Azure 自動化中的 Runbook 輸出與訊息
 
 大部分的 Azure 自動化 Runbook 會有某種形式的輸出，例如向使用者提供錯誤訊息，或供其他工作流程使用的複雜物件。 Windows PowerShell 提供 [多個資料流](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) 從指令碼或工作流程傳送輸出。 Azure 自動化會以不同的方式使用這些資料流，而在您建立 Runbook 時，應遵循使用每個資料流的最佳作法。
 
 下表提供每個資料流及它們的行為，在 Azure 管理入口網站的簡短描述，在執行已發行的 runbook 和 [測試 runbook](http://msdn.microsoft.com/library/azure/dn879147.aspx)。 後續各節將提供每個資料流的進一步詳細資料。
 
-| Stream| 說明| 已發佈| 測試|
+| Stream | 說明 | 已發佈 | 測試|
 |:---|:---|:---|:---|
-| 輸出| 要供其他 Runbook 使用的物件。| 寫入工作歷程記錄。| 在 [測試輸出] 窗格中顯示。|
-| 警告| 適用於使用者的警告訊息。| 寫入工作歷程記錄。| 在 [測試輸出] 窗格中顯示。|
-| 錯誤| 適用於使用者的錯誤訊息。與例外狀況不同，Runbook 預設會在出現錯誤訊息後繼續執行。| 寫入工作歷程記錄。| 在 [測試輸出] 窗格中顯示。|
-| 詳細資訊| 提供一般或偵錯資訊的訊息。| 只有為 Runbook 開啟詳細記錄時才會寫入工作歷程記錄。| 只有在 Runbook 中將 $VerbosePreference 設為 Continue 時，才會在 [測試輸出] 窗格中顯示。|
-| 進度| 在 Runbook 中的每個活動之前與之後自動產生記錄。Runbook 不應嘗試建立它自己的進度記錄，因為它們是供互動式使用者使用。| 只有為 Runbook 開啟進度記錄時才寫入工作歷程記錄。| 不會在 [測試輸出] 窗格中顯示。|
-| 偵錯| 適用於互動式使用者的訊息。不應在 Runbook 中使用。| 不會寫入工作歷程記錄。| 不會寫入 [測試輸出] 窗格。|
+|輸出|要供其他 Runbook 使用的物件。|寫入工作歷程記錄。|在 [測試輸出] 窗格中顯示。|
+|警告|適用於使用者的警告訊息。|寫入工作歷程記錄。|在 [測試輸出] 窗格中顯示。|
+|錯誤|適用於使用者的錯誤訊息。 與例外狀況不同，Runbook 預設會在出現錯誤訊息後繼續執行。|寫入工作歷程記錄。|在 [測試輸出] 窗格中顯示。|
+|詳細資訊|提供一般或偵錯資訊的訊息。|只有為 Runbook 開啟詳細記錄時才會寫入工作歷程記錄。|只有在 Runbook 中將 $VerbosePreference 設為 Continue 時，才會在 [測試輸出] 窗格中顯示。|
+|進度|在 Runbook 中的每個活動之前與之後自動產生記錄。 Runbook 不應嘗試建立它自己的進度記錄，因為它們是供互動式使用者使用。|只有為 Runbook 開啟進度記錄時才寫入工作歷程記錄。|不會在 [測試輸出] 窗格中顯示。|
+|偵錯|適用於互動式使用者的訊息。 不應在 Runbook 中使用。|不會寫入工作歷程記錄。|不會寫入 [測試輸出] 窗格。|
 
 ## 輸出資料流
 
@@ -89,7 +88,7 @@ Runbook 工作的詳細資訊資料流會是：
 
 ### 警告和錯誤資料流
 
-警告和錯誤資料流適用於記錄在 Runbook 中發生的問題。 當 Runbook 執行時，會將它們寫入工作歷程記錄，並且會在 Runbook 測試時包含在 Azure 管理入口網站中的 [測試輸出] 窗格中。 根據預設，Runbook 將在出現警告或錯誤後繼續執行。 您可以指定 runbook 應該暫停在警告或錯誤，藉由設定 [喜好設定變數](#PreferenceVariables) 建立訊息前 runbook 中。 例如，若要讓 Runbook 在發生錯誤時暫停 (就像發生例外狀況時一樣)，請將 **$ErrorActionPreference** 設定為 Stop。
+警告和錯誤資料流適用於記錄在 Runbook 中發生的問題。 當 Runbook 執行時，會將它們寫入工作歷程記錄，並且會在 Runbook 測試時包含在 Azure 管理入口網站中的 [測試輸出] 窗格中。 根據預設，Runbook 將在出現警告或錯誤後繼續執行。 您可以指定 runbook 應該暫停在警告或錯誤，藉由設定 [喜好設定變數](#PreferenceVariables) 建立訊息前 runbook 中。 例如，若要引發例外狀況會發生錯誤時暫停 runbook，請設定 **$ErrorActionPreference** 到停駐點。
 
 建立警告或錯誤訊息使用 [Write-warning](https://technet.microsoft.com/library/hh849931.aspx) 或 [寫入錯誤](http://technet.microsoft.com/library/hh849962.aspx) 指令程式。 活動也可能會被寫入這些資料流。
 
@@ -119,7 +118,7 @@ Runbook 工作的詳細資訊資料流會是：
 
 如果您設定 Runbook 來記錄進度記錄 (在 Azure 管理入口網站中 Runbook 的 [設定] 索引標籤)，則會在執行每一個活動之前和之後，將記錄寫入到工作歷程記錄。 在大部分情況下，您應該保留預設設定，亦即不記錄 Runbook 的進度記錄以獲得最高效能。 只有在疑難排解或偵錯 Runbook 時才開啟此選項。 測試 Runbook 時，即使 Runbook 設為記錄進度記錄，也不會顯示進度訊息。
 
-[Write-progress](http://technet.microsoft.com/library/hh849902.aspx) 指令程式不是有效的 runbook，因為這供互動式使用者。
+ [Write-progress](http://technet.microsoft.com/library/hh849902.aspx) 指令程式不是有效的 runbook，因為這供互動式使用者。
 
 ## 喜好設定變數
 
@@ -129,17 +128,17 @@ Windows PowerShell 使用 [喜好設定變數](http://technet.microsoft.com/libr
 
 | 變數| 預設值| 有效值|
 |:---|:---|:---|
-| WarningPreference| Continue| 停止<br>繼續<br>SilentlyContinue|
-| ErrorActionPreference| Continue| 停止<br>繼續<br>SilentlyContinue|
-| VerbosePreference| SilentlyContinue| 停止<br>繼續<br>SilentlyContinue|
+|WarningPreference|Continue|停止<br>Continue<br>SilentlyContinue|
+|ErrorActionPreference|Continue|停止<br>Continue<br>SilentlyContinue|
+|VerbosePreference|SilentlyContinue|停止<br>Continue<br>SilentlyContinue|
 
 下表列出 Runbook 中有效之喜好設定變數值的行為。
 
 | 值| 行為|
 |:---|:---|
-| Continue| 記錄訊息並繼續執行 Runbook。|
-| SilentlyContinue| 繼續執行 Runbook 但不記錄訊息。這有忽略訊息的作用。|
-| 停止| 記錄訊息並暫停 Runbook。|
+|Continue|記錄訊息並繼續執行 Runbook。|
+|SilentlyContinue|繼續執行 Runbook 但不記錄訊息。 這有忽略訊息的作用。|
+|停止|記錄訊息並暫停 Runbook。|
 
 ## 擷取 Runbook 輸出和訊息
 
@@ -166,9 +165,5 @@ Windows PowerShell 使用 [喜好設定變數](http://technet.microsoft.com/libr
 
 ## 相關文章
 
-- [追蹤 runbook 工作](automation-runbook-execution.md)
+- [追蹤 Runbook 工作](automation-runbook-execution.md)
 - [子 Runbook](http://msdn.microsoft.com/library/azure/dn857355.aspx)
-
-
-
-

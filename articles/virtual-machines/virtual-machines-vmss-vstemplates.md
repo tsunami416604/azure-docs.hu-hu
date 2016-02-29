@@ -17,9 +17,7 @@
     ms.date="12/11/2015"
     ms.author="guybo"/>
 
-
 # 在 Visual Studio 中部署虛擬機器調整集範本
-
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [傳統部署模型](virtual-machines-create-windows-powershell-service-manager.md)。
 
 本文說明如何使用 Visual Studio 資源群組部署，部署 Azure 虛擬機器調整集。
@@ -40,21 +38,21 @@ Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組�
 
 ## 建立專案
 
-1. 選擇 [檔案 | 新增 | 專案]****，在 Visual Studio 2015 中建立新專案。
+1. 選擇建立新的專案在 Visual Studio 2015 **檔案 |新 |專案**。
 
     ![新增檔案][file_new]
 
-2. 在 [Visual C# | 雲端]**** 底下，選擇 [Azure 資源管理員]****，建立專案以部署 ARM 範本。
+2. 在 **Visual C# |定域機組**, ，選擇 [ **Azure 資源管理員** 來為部署 ARM 範本建立專案。
 
     ![建立專案][create_project]
 
 3.  從範本清單中，選取 Linux 或 Windows 虛擬機器調整集範本。
 
-    ![選取範本][select_template]
+    ![選取範本][select_Template]
 
 4. 您的專案建立之後，您會看到 PowerShell 部署指令碼、Azure 資源管理員範本和虛擬機器調整集的參數檔案。
 
-    ![方案總管][solution_explorer]
+    ![Solution Explorer][solution_explorer]
 
 ## 自訂您的專案
 
@@ -66,29 +64,29 @@ Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組�
 
 ## 部署專案
 
-6. 將 ARM 範本部署至 Azure 以建立 VM 調整集資源。 以滑鼠右鍵按一下專案節點，然後選擇 [部署 | 新增部署]****。
+6. 將 ARM 範本部署至 Azure 以建立 VM 調整集資源。 以滑鼠右鍵按一下專案節點上，選擇 [ **部署 |新的部署**。
 
-    ![部署範本][5deploy_template]
+    ![部署範本][5deploy_Template]
 
 7. 在 [部署到資源群組] 對話方塊中選取您的訂用帳戶。
 
-    ![部署範本][6deploy_template]
+    ![部署範本][6deploy_Template]
 
 8. 您也可以從這裡建立新的 Azure 資源群組以部署您的範本。
 
     ![新增資源群組][new_resource]
 
-9. 接下來，選取 [編輯參數]**** 按鈕以輸入參數，這些參數會傳遞至您的範本。需要特定值 (例如，OS 的使用者名稱和密碼) 才能建立部署。
+9. 接下來選取 **編輯參數** ] 按鈕以輸入參數，例如使用者名稱和密碼的作業系統建立所需的部署將會傳遞至範本中，某些值。
 
     ![編輯參數][edit_parameters]
 
-10. 現在，按一下 [部署]****。 [輸出]**** 視窗會顯示部署進度。 請注意，動作會執行 **Deploy-AzureResourceGroup.ps1** 指令碼。
+10. 現在按一下 [ **部署**。  **輸出** 視窗會顯示部署進度。 請注意，執行此動作 **Deploy-azureresourcegroup.ps1** 指令碼。
 
     ![輸出視窗][output_window]
 
 ## 探索 VM 調整集
 
-部署完成之後，您可以在 Visual Studio **雲端總管** 中檢視 VM 調整集 (重新整理清單)。 雲端總管可讓您在開發應用程式的同時，於 Visual Studio 中管理 Azure 資源。 您也可以在 Azure 入口網站和 Azure 資源總管中檢視 VM 調整集。
+部署完成之後，您可以檢視新的 VM 小數位數設定 Visual Studio 中 **雲端總管** (重新整理清單)。 雲端總管可讓您在開發應用程式的同時，於 Visual Studio 中管理 Azure 資源。 您也可以在 Azure 入口網站和 Azure 資源總管中檢視 VM 調整集。
 
 ![雲端總管][cloud_explorer]
 
@@ -98,16 +96,15 @@ Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組�
 
 一旦您透過 Visual Studio 成功部署 VM 調整集，您可以進一步自訂您的專案，以符合應用程式的需求。 例如，設定自動調整，方法是新增 Insights 資源、將基礎結構新增至您的範本 (例如獨立 VM)，或是使用自訂指令碼延伸模組部署應用程式。 很好的範例範本來源位於 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates) GitHub 儲存機制 (搜尋 「 vmss 」)。
 
-
-[file_new]: ./media/virtual-machines-vmss-vstemplates/1-FileNew.png 
-[create_project]: ./media/virtual-machines-vmss-vstemplates/2-CreateProject.png 
-[select_template]: ./media/virtual-machines-vmss-vstemplates/3b-SelectTemplateLin.png 
-[solution_explorer]: ./media/virtual-machines-vmss-vstemplates/4-SolutionExplorer.png 
-[json_explorer]: ./media/virtual-machines-vmss-vstemplates/10-JsonExplorer.png 
-[5deploy_template]: ./media/virtual-machines-vmss-vstemplates/5-DeployTemplate.png 
-[6deploy_template]: ./media/virtual-machines-vmss-vstemplates/6-DeployTemplate.png 
-[new_resource]: ./media/virtual-machines-vmss-vstemplates/7-NewResourceGroup.png 
-[edit_parameters]: ./media/virtual-machines-vmss-vstemplates/8-EditParameter.png 
-[output_window]: ./media/virtual-machines-vmss-vstemplates/9-Output.png 
-[cloud_explorer]: ./media/virtual-machines-vmss-vstemplates/12-CloudExplorer.png 
+[file_new]: ./media/virtual-machines-vmss-vstemplates/1-FileNew.png
+[create_project]: ./media/virtual-machines-vmss-vstemplates/2-CreateProject.png
+[select_Template]: ./media/virtual-machines-vmss-vstemplates/3b-SelectTemplateLin.png
+[solution_explorer]: ./media/virtual-machines-vmss-vstemplates/4-SolutionExplorer.png
+[json_explorer]: ./media/virtual-machines-vmss-vstemplates/10-JsonExplorer.png
+[5deploy_Template]: ./media/virtual-machines-vmss-vstemplates/5-DeployTemplate.png
+[6deploy_Template]: ./media/virtual-machines-vmss-vstemplates/6-DeployTemplate.png
+[new_resource]: ./media/virtual-machines-vmss-vstemplates/7-NewResourceGroup.png
+[edit_parameters]: ./media/virtual-machines-vmss-vstemplates/8-EditParameter.png
+[output_window]: ./media/virtual-machines-vmss-vstemplates/9-Output.png
+[cloud_explorer]: ./media/virtual-machines-vmss-vstemplates/12-CloudExplorer.png
 

@@ -15,7 +15,6 @@
    ms.date="12/01/2015"
    ms.author="v-sharos" />
 
-
 # 部署 StorSimple Manager 服務
 
 ## 概觀
@@ -24,13 +23,13 @@ StorSimple Manager 服務可在 Microsoft Azure 中執行，並且連接至多�
 
 StorSimple Manager 登陸頁面會列出所有 StorSimple Manager 服務，您可用來管理您的 StorSimple 儲存體裝置。 針對每個 StorSimple Manager 服務，下列資訊會顯示在 StorSimple Manager 頁面上：
 
-- **名稱** – 在建立時指派給您的 StorSimple Manager 服務的名稱。 建立服務之後，無法變更服務名稱。
+- **名稱** – 建立時指派給您的 StorSimple Manager 服務的名稱。 建立服務之後，無法變更服務名稱。
 
-- **狀態** – 服務的狀態，可以是 [**作用中**]、[**建立**] 或是 [**線上**]。
+- **狀態** – 服務的狀態，它可以是 **Active**, ，**建立**, ，或 **線上**。
 
-- **位置** – 部署 StorSimple 裝置所在的地理位置。
+- **位置** – 部署 StorSimple 裝置的地理位置。
 
-- **訂用帳戶** – 與您的服務相關聯的計費訂用帳戶。
+- **訂閱** – 與您服務相關聯的計費訂用帳戶。
 
 可以透過 StorSimple Manager 頁面執行的一般工作包括：
 
@@ -43,7 +42,7 @@ StorSimple Manager 登陸頁面會列出所有 StorSimple Manager 服務，您�
 
 ## 建立服務
 
-如果您想要部署您的 StorSimple 裝置，使用 [**快速建立**] 選項來建立 StorSimple Manager 服務。 若要建立服務，您需要：
+使用 **快速建立** 選項來建立 StorSimple Manager 服務，如果您想要部署您的 StorSimple 裝置。 若要建立服務，您需要：
 
 - 具有企業合約的訂用帳戶
 - 使用中的 Microsoft Azure 儲存體帳戶
@@ -59,23 +58,23 @@ StorSimple Manager 登陸頁面會列出所有 StorSimple Manager 服務，您�
 
 ## 刪除服務
 
-刪除服務之前，請確定沒有任何連接的裝置正在使用它。 如果服務正在使用中，請停用連接的裝置。 停用作業將會斷絕裝置與服務之間的連接，但是會保留雲端中的裝置資料。
+刪除服務之前，請確定沒有任何連接的裝置正在使用它。 如果服務正在使用中，請停用連接的裝置。 停用作業將會斷絕裝置與服務之間的連接，但是會保留雲端中的裝置資料。 
 
-[AZURE。重要] 刪除服務之後，無法還原作業。 使用服務的任何裝置在可以搭配另一個服務使用之前，都必須恢復出廠預設值。 在此案例中，裝置上的本機資料以及組態將會遺失。
+[AZURE.IMPORTANT] 刪除服務之後，就無法還原作業。 使用服務的任何裝置在可以搭配另一個服務使用之前，都必須恢復出廠預設值。 在此案例中，裝置上的本機資料以及組態將會遺失。
 
 執行下列步驟來刪除服務。
 
 ### 刪除服務
 
-1. 在 [**StorSimple Manager 服務**] 頁面上，選取您要刪除的服務。
+1. 在 **StorSimple Manager 服務** 頁面上，選取您想要刪除的服務。
 
-1. 按一下頁面底部的 [**刪除**]。
+1. 按一下 [ **刪除** 頁面的底部。
 
-1. 在確認通知處按一下 [**是**]。 刪除服務可能需要數分鐘的時間。
+1. 按一下 [ **是** 在確認通知。 刪除服務可能需要數分鐘的時間。
 
 ## 取得服務註冊金鑰。
 
-在您成功建立服務之後，您必須在 StorSimple 裝置註冊服務。 若要註冊您的第一個 StorSimple 裝置，您必須使用服務註冊金鑰。 若要使用現有的 StorSimple 服務註冊其他裝置，您需要註冊金鑰和服務資料加密金鑰 (在註冊期間於第一個裝置上產生)。 如需服務資料加密金鑰的詳細資訊，請參閱 [StorSimple 安全性](storsimple-security.md)。 您可以藉由存取 [**服務**] 頁面上的 [**註冊金鑰**]，以取得註冊金鑰。
+在您成功建立服務之後，您必須在 StorSimple 裝置註冊服務。 若要註冊您的第一個 StorSimple 裝置，您必須使用服務註冊金鑰。 若要使用現有的 StorSimple 服務註冊其他裝置，您需要註冊金鑰和服務資料加密金鑰 (在註冊期間於第一個裝置上產生)。 如需服務資料加密金鑰的詳細資訊，請參閱 [StorSimple 安全性](storsimple-security.md)。 您可以藉由存取取得註冊金鑰 **註冊金鑰** 上 **服務** 頁面。
 
 執行下列步驟以取得服務註冊金鑰。
 
@@ -93,17 +92,17 @@ StorSimple Manager 登陸頁面會列出所有 StorSimple Manager 服務，您�
 
 ### 重新產生服務註冊金鑰
 
-1. 在 [**StorSimple Manager 服務**] 頁面上，按一下 [**註冊金鑰**]。
+1. 在 **StorSimple Manager 服務** 頁面上，按一下 **註冊金鑰**。
 
-1. 在 [**服務註冊金鑰**] 對話方塊中，按一下 [**重新產生**]。
+1. 在 **服務註冊金鑰** 對話方塊中，按一下 [ **重新產生**。
 
-1. 您將會看見確認訊息。 按一下 [**確定**] 繼續重新產生。
+1. 您將會看見確認訊息。 按一下 [ **確定** 繼續重新產生。
 
 1. 新的服務註冊金鑰隨即顯示。
 
 1. 複製這個金鑰並儲存，以對任何新的裝置註冊此服務。
 
-1. 按一下核取圖示 ![核取圖示](./media/storsimple-manage-service/HCS_CheckIcon.png) 關閉此對話方塊。
+1. 按一下核取圖示 ![核取圖示](./media/storsimple-manage-service/HCS_CheckIcon.png) 若要關閉此對話方塊。
 
 
 ## 後續步驟
@@ -114,8 +113,4 @@ StorSimple Manager 登陸頁面會列出所有 StorSimple Manager 服務，您�
 
 - 深入了解如何 [使用 StorSimple Manager 服務來管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
 
-
-
-
-
-
+ 

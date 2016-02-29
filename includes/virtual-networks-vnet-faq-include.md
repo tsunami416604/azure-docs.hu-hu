@@ -2,20 +2,20 @@
 
 ### 什麼是 Azure 虛擬網路 (VNet)？
 
-您可以使用 VNet 在 Azure 中佈建和管理虛擬私人網路 (VPN)，也可以選擇性地連結 VNet 與其他 Azure 中的 VNet，或連結您的內部部署 IT 基礎結構，以便建立混合式或跨單位的解決方案。 您建立的每個 VNet 皆具有自己的 CIDR 區塊，且只要 CIDR 區塊沒有衝突，就可以連結至其他 VNet 和內部部署網路。 針對 VNet 和分割的 VNet 子網路，您也擁有 DNS 伺服器設定的控制項。
+您可以使用 VNet 在 Azure 中佈建和管理虛擬私人網路 (VPN)，也可以選擇性地連結 VNet 與其他 Azure 中的 VNet，或連結您的內部部署 IT 基礎結構，以便建立混合式或跨單位的解決方案。 您建立的每個 VNet 皆具有自己的 CIDR 區塊，且只要 CIDR 區塊沒有衝突，就可以連結至其他 VNet 和內部部署網路。 針對 VNet 和分割的 VNet 子網路，您也擁有 DNS 伺服器設定的控制項。 
 
 您可以使用 VNet：
 
 - 建立專用的純私人雲端虛擬網路
-
+                                    
     針對您的解決方案，有時候您不需要跨單位組態。 當您建立 VNet 時，您的服務和 VNet 中的 VM 可以直接且安全地在雲端中彼此通訊。 這可確保 VNet 中流量的安全性，但仍可讓您設定 VM 的端點連接，以及需要網際網路通訊作為解決方案一部分的服務。
 
 - 安全地擴充資料中心
-
+                                    
     您可以使用 VNet 建置傳統的站台對站台 (S2S) VPN，安全地擴充資料中心容量。 S2S VPN 使用 IPSEC 在您的公司 VPN 閘道與 Azure 之間提供安全連接。
 
 - 啟用混合式雲端案例
-
+                                    
     VNet 可讓您彈性地支援許多混合式雲端案例。 您可以將雲端型應用程式安全地連接到任何類型的內部部署系統，例如大型主機和 Unix 系統。
 
 ### 如何得知是否需要虛擬網路？
@@ -62,11 +62,11 @@ Azure 會在每個子網路中保留一些 IP 位址。 子網路的第一個和
 
 ### VNet 和子網路的大小限制為何？
 
-我們支援的最小子網路是 /29，最大則是 /8 (使用 CIDR 子網路定義)。
+我們支援的最小子網路是 /29，最大則是 /8 (使用 CIDR 子網路定義)。 
 
 ### 我可以使用 VNet 將 VLAN 帶到 Azure 嗎？
 
-號 Vnet 是 layer-3 重疊。 Azure 不支援任何 Layer-2 語意。
+編號 Vnet 是 layer-3 重疊。 Azure 不支援任何 Layer-2 語意。
 
 ### 可以在我的 Vnet 和子網路上指定自訂路由原則嗎？
 
@@ -74,7 +74,7 @@ Azure 會在每個子網路中保留一些 IP 位址。 子網路的第一個和
 
 ### VNet 是否支援多點傳送或廣播？
 
-號 我們不支援多點傳送或廣播。
+編號 我們不支援多點傳送或廣播。
 
 ### 我可以在 VNet 中使用哪些通訊協定？
 
@@ -110,11 +110,11 @@ Azure 會在每個子網路中保留一些 IP 位址。 子網路的第一個和
 
 ### VNet 是否支援 IPv6？
 
-號 此時，您無法使用 Vnet 使用 IPv6。
+編號 此時，您無法使用 Vnet 使用 IPv6。
 
 ### VNet 可以跨區域嗎？
 
-號 VNet 僅限於單一區域。
+編號 VNet 僅限於單一區域。
 
 ### 我可以將 VNet 連線到 Azure 中的另一個 VNet 嗎？
 
@@ -141,8 +141,9 @@ Azure 會在每個子網路中保留一些 IP 位址。 子網路的第一個和
 
 ### 什麼是 Azure 提供的 DNS，以及它是否可搭配 VNet 使用？
 
-Azure 提供的 DNS 是由 Microsoft 所提供的多租用戶 DNS 服務。 Azure 會註冊您在此服務中的所有 VM 和角色執行個體。 這個服務可根據相同雲端服務內所包含 VM 和角色的主機名稱，以及根據 VM 的 FQDN 和相同 VNet 中的角色執行個體提供名稱解析功能。
-> [AZURE.NOTE] 目前虛擬網路中的前 100 個雲端服務具有使用 Azure 所提供 DNS 進行跨租用戶名稱解析的限制。 如果您使用自己的 DNS 伺服器，則不適用這項限制。
+Azure 提供的 DNS 是由 Microsoft 所提供的多租用戶 DNS 服務。 Azure 會註冊您在此服務中的所有 VM 和角色執行個體。 這個服務可根據相同雲端服務內所包含 VM 和角色的主機名稱，以及根據 VM 的 FQDN 和相同 VNet 中的角色執行個體提供名稱解析功能。 
+
+> [AZURE.NOTE] 沒有在這個階段中的虛擬網路的前 100 個雲端服務使用 Azure 提供的 DNS 進行跨租用戶名稱解析的限制。 如果您使用自己的 DNS 伺服器，則不適用這項限制。
 
 ### 我是否可以根據每個 VM/服務來覆寫 DNS 設定？
 
@@ -150,7 +151,7 @@ Azure 提供的 DNS 是由 Microsoft 所提供的多租用戶 DNS 服務。 Azur
 
 ### 我可以加上自己的 DNS 尾碼嗎？
 
-號 您無法針對 Vnet 指定自訂的 DNS 尾碼。
+編號 您無法針對 Vnet 指定自訂的 DNS 尾碼。
 
 ## VNet 和 VM
 
@@ -170,28 +171,29 @@ Azure 提供的 DNS 是由 Microsoft 所提供的多租用戶 DNS 服務。 Azur
 
 ### 我的 VM 將接收到的 IP 位址為何？
 
-- **內部 IP 位址 -** 如果您將 VM 部署到 VNet，VM 會從您指定的內部 IP 位址的集區接收內部 IP 位址。 VM 會使用內部 IP 位址在 VNet 中進行通訊。 儘管 Azure 會指派一個動態內部 IP 位址，您可以為您的 VM 要求一個靜態位址。 若要深入了解靜態內部 IP 位址，請造訪 [如何設定靜態內部 IP](virtual-networks-reserved-private-ip.md)。
+- **內部 IP 位址-** 如果您部署 VM 至 VNet，VM 會從您指定的內部 IP 位址集區接收內部 IP 位址。 VM 會使用內部 IP 位址在 VNet 中進行通訊。 儘管 Azure 會指派一個動態內部 IP 位址，您可以為您的 VM 要求一個靜態位址。 若要深入了解靜態內部 IP 位址，請造訪 [如何設定靜態內部 IP](virtual-networks-reserved-private-ip.md)。
 
-- **VIP -** 您的 VM 也會與 VIP 相關聯，不過 VIP 永遠不會直接指派至 VM。 VIP 是可以指派至雲端服務的公用 IP 位址。 您可以選擇性地為雲端服務保留 VIP。 請參閱 [保留公用 IP](virtual-networks-reserved-public-ip.md)。
+- **VIP-** 您的 VM 也是相關聯的 VIP，但 VIP 絕不會直接指派至 VM。 VIP 是可以指派至雲端服務的公用 IP 位址。 您可以選擇性地為雲端服務保留 VIP。 請參閱 [保留公用 IP](virtual-networks-reserved-public-ip.md)。
 
-- **ILPIP -** 您也可以設定執行個體層級公用 IP 位址 (ILPIP)。 ILPIP 直接與 VM，而非與雲端服務相關聯。 若要深入了解 Ilpip，請瀏覽 [執行個體層級公用 IP 概觀](virtual-networks-instance-level-public-ip.md)。
+- **ILPIP-** 您也可以設定執行個體層級公用 IP 位址 (ILPIP)。 ILPIP 直接與 VM，而非與雲端服務相關聯。 若要深入了解 Ilpip，請瀏覽 [執行個體層級公用 IP 概觀](virtual-networks-instance-level-public-ip.md)。
 
 ### 我可以為稍後建立的 VM 保留內部 IP 位址嗎？
 
-號 您不能保留內部 IP 位址。 如果有可用的內部 IP 位址，則會由 DHCP 伺服器指派至 VM 或角色執行個體。 該 VM 可能不是您想要指派內部 IP 位址的目的地。 不過，您可以將已建立 VM 的內部 IP 位址變更為任何可用的內部 IP 位址。
+編號 您不能保留內部 IP 位址。 如果有可用的內部 IP 位址，則會由 DHCP 伺服器指派至 VM 或角色執行個體。 該 VM 可能不是您想要指派內部 IP 位址的目的地。 不過，您可以將已建立 VM 的內部 IP 位址變更為任何可用的內部 IP 位址。 
 
 ### VNet 中的內部 IP 位址會根據 VM 進行變更嗎？
 
-是。 內部 IP 位址的存留期取決於 VM，除非 VM 解除配置。 當 VM 解除配置時，系統會釋放內部 IP 位址，除非您已為 VM 定義靜態內部 IP 位址。 如果只是停止 VM (而非放置於**已停止 (已解除配置) 狀態**)，則 IP 位址仍會指派至 VM。
+是。 內部 IP 位址的存留期取決於 VM，除非 VM 解除配置。 當 VM 解除配置時，系統會釋放內部 IP 位址，除非您已為 VM 定義靜態內部 IP 位址。 如果只停止 VM (而非放置於狀態 **已停止 (取消配置)**) IP 位址仍會指派至 VM。
 
 ### 我可以在 VM 中將 IP 位址手動指派至 NIC 嗎？
 
-號 您必須變更 Vm 的任何介面屬性。 任何變更皆可能導致失去與 VM 的連線。
+編號 您必須變更 Vm 的任何介面屬性。 任何變更皆可能導致失去與 VM 的連線。
 
 ### 如果我將 VM 關機，則我的 IP 位址會受到什麼影響？
 
-不會受到影響。 IP 位址 (包含公開 VIP 和內部 IP 位址) 的變更取決於您的雲端服務或 VM。
-> [AZURE.NOTE] 如果您想要只將 VM 關機，請勿使用管理入口網站執行此操作。 目前，[關機] 按鈕會將虛擬機器解除配置。
+不會受到影響。 IP 位址 (包含公開 VIP 和內部 IP 位址) 的變更取決於您的雲端服務或 VM。 
+
+> [AZURE.NOTE] 如果您想要只關閉 VM，請勿使用管理入口網站來執行這項操作。 目前，[關機] 按鈕會將虛擬機器解除配置。
 
 ### 我可以將 VM 從子網路移動至 VNet 中的其他子網路而不需重新部署嗎？
 
@@ -199,7 +201,7 @@ Azure 提供的 DNS 是由 Microsoft 所提供的多租用戶 DNS 服務。 Azur
 
 ### 我可以針對 VM 設定靜態 MAC 位址嗎？
 
-號 無法以靜態方式設定 MAC 位址。
+編號 無法以靜態方式設定 MAC 位址。
 
 ### 當我建立 VM 之後 MAC 位址會保持相同的狀態嗎？
 
@@ -220,13 +222,13 @@ Azure 提供的 DNS 是由 Microsoft 所提供的多租用戶 DNS 服務。 Azur
 是。 您可以使用 ASE (App Service 環境) 在 VNet 中部署 Web Apps。 除此之外，如果您已針對 VNet 設定點對站台，則 Web Apps 可以安全地連線並存取 Azure VNet 中的資源。 如需詳細資訊，請參閱下列主題：
 
 
-- [在 App Service 環境中建立 Web 應用程式](app-service-web-how-to-create-a-web-app-in-an-ase.md)
+- [在 App Service 環境中建立 Web Apps](app-service-web-how-to-create-a-web-app-in-an-ase.md)
 
-- [Web 應用程式虛擬網路整合](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
+- [Web Apps 虛擬網路整合](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
 
-- [使用 VNet 整合和混合式連線與 Web 應用程式](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
+- [使用 VNet 整合和混合式連接搭配 Web Apps](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
 
-- [整合 web 應用程式與 Azure 虛擬網路](web-sites-integrate-with-vnet.md)
+- [將 Web 應用程式與 Azure 虛擬網路整合](web-sites-integrate-with-vnet.md)
 
 ### 我可以在 VNet 中使用 Web 和背景工作角色 (PaaS) 部署雲端服務嗎？
 
@@ -238,7 +240,7 @@ Azure 提供的 DNS 是由 Microsoft 所提供的多租用戶 DNS 服務。 Azur
 
 ### 我可以將服務移入和移出 VNet 嗎？
 
-號 您無法將移入和移出 Vnet 的服務。 您必須刪除並重新部署服務，才能將它移動到另一個 VNet。
+編號 您無法將移入和移出 Vnet 的服務。 您必須刪除並重新部署服務，才能將它移動到另一個 VNet。
 
 ## VNet 與安全性
 
@@ -248,7 +250,7 @@ VNet 會與另一個 VNet，以及其他裝載於 Azure 基礎結構中的服務
 
 ### 我可以在 VNet 上定義 ACL 或 NSG 嗎？
 
-號 您無法將 Acl 或 Nsg 與 Vnet 產生關聯。 不過，ACL 可以定義於已部署至 VNet 的 VM 輸入端點，而 NSG 可以關聯至子網路或 NIC。
+編號 您無法將 Acl 或 Nsg 與 Vnet 產生關聯。 不過，ACL 可以定義於已部署至 VNet 的 VM 輸入端點，而 NSG 可以關聯至子網路或 NIC。 
 
 ### 是否有 VNet 安全性白皮書？
 
@@ -263,8 +265,4 @@ VNet 會與另一個 VNet，以及其他裝載於 Azure 基礎結構中的服務
 ### 是否有工具支援 VNet？
 
 是。 您可以針對各種平台使用 PowerShell 和命令列工具。 詳細資訊，請參閱 [這裡](http://go.microsoft.com/fwlink/?LinkId=317721)。
-
-
-
-
 

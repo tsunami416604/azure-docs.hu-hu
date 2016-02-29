@@ -16,7 +16,6 @@
     ms.date="11/19/2015" 
     ms.author="billmath"/>
 
-
 # 在自訂應用程式中建置 Multi-Factor Authentication (SDK)
 
 Azure Multi-Factor Authentication 軟體開發套件 (SDK) 可讓您將通話和簡訊驗證直接內建到 Azure AD 租用戶中的應用程式登入或交易程序。
@@ -32,18 +31,19 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
 
 
 
-## 下載 Azure Multi-Factor Authentication SDK
+## 下載 Azure Multi-Factor Authentication SDK 
 
-下載 Azure Multi-Factor Authentication SDK 的方法有兩種。 兩者都是透過 Azure 入口網站來完成。 第一個是藉由直接管理 Multi-Factor Auth Provider。 第二個是透過服務設定。 第二個選項需要 Multi-Factor Auth Provider或 Azure AD Premium 授權。
+下載 Azure Multi-Factor Authentication SDK 的方法有兩種。 兩者都是透過 Azure 入口網站來完成。  第一個是藉由直接管理 Multi-Factor Auth Provider。  第二個是透過服務設定。  第二個選項需要 Multi-Factor Auth Provider或 Azure AD Premium 授權。
 
 
 ### 從 Azure 入口網站下載 Azure Multi-Factor Authentication SDK
 
+
 1. 以系統管理員身分登入 Azure 入口網站。
 2. 在左側選取 [Active Directory]。
-3. 在 [Active Directory] 頁面頂端，按一下 [**多因素驗證提供者**]
-4. 在底部按一下 [**管理**]
-5. 這會開啟新的頁面。 在左下方按一下 [SDK]。
+3. 在頂端按一下 [Active Directory] 頁面， **多因素驗證提供者**
+4. 按一下底部 **管理**
+5. 這會開啟新的頁面。  在左下方按一下 [SDK]。
 <center>![下載](./media/multi-factor-authentication-sdk/download.png)</center>
 6. 選取您想要的語言，然後按一下其中一個相關聯的下載連結。
 7. 儲存下載內容。
@@ -52,26 +52,26 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
 
 ### 透過服務設定下載 Azure Multi-Factor Authentication SDK
 
+
 1. 以系統管理員身分登入 Azure 入口網站。
 2. 在左側選取 [Active Directory]。
 3. 按兩下您的 Azure AD 的執行個體。
-4. 在頂端按一下 [**設定**]
-5. 在多因素驗證底下選取 [**管理服務設定**]
+4. 在頂端按一下 [ **設定**
+5. 在 [多因素驗證] 下選取 **管理服務設定**
 ![下載](./media/multi-factor-authentication-sdk/download2.png)
 6. 在服務設定] 頁面上，於畫面底部按一下 [ **移至入口網站**。
 ![下載](./media/multi-factor-authentication-sdk/download3.png)
-7. 這會開啟新的頁面。 在左下方按一下 [SDK]。
+7. 這會開啟新的頁面。  在左下方按一下 [SDK]。
 8. 選取您想要的語言，然後按一下其中一個相關聯的下載連結。
 9. 儲存下載內容。
 
 ## Azure Multi-Factor Authentication Server SDK 的內容
-
 在 SDK 內，您會找到下列項目：
 
 - **讀我檔案**。 說明如何在新的或現有的應用程式中使用 Multi-Factor Authentication API。
-- Multi-Factor Authentication 的**原始程式檔**
-- 您用來與 Multi-Factor Authentication 服務進行通訊的**用戶端憑證**
-- 憑證的**私密金鑰**
+- **原始程式檔** 多因素驗證
+- **用戶端憑證** 您用來與 Multi-factor Authentication 服務通訊
+- **私密金鑰** 憑證
 - **呼叫結果。**呼叫結果碼的清單。 若要開啟此檔案，請使用可設定文字格式的應用程式，例如 WordPad。 使用呼叫結果碼來測試及疑難排解您在應用程式中的 Multi-Factor Authentication 實作。 它們不是驗證狀態碼。
 - **範例。**Multi-Factor Authentication 基本工作實作的範例程式碼。
 
@@ -83,10 +83,10 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
 此程式碼範例示範如何使用 Azure Multi-Factor Authentication SDK 中的 API，將標準模式語音通話驗證加入至您的應用程式。 標準模式是指使用者按下 # 鍵來回應通話。
 
 此範例在含有 C# 伺服器端邏輯的基本 ASP.NET 應用程式中使用 C# .NET 2.0 Multi-Factor Authentication SDK，但程序非常類似其他語言的簡單實作。 因為 SDK 包含原始程式檔，而不是可執行檔，您可以建置檔案並參考它們，或直接將它們包含在您的應用程式中。
->[AZURE.NOTE]實作 Multi-Factor Authentication 時，請使用其他因素做為第二或第三驗證，以補充您的主要驗證方法。 這些方法並非設計來做為主要驗證方法。
+
+>[AZURE.NOTE]在實作多因素驗證，使用其他因素作為次要或第三驗證以補充您的主要驗證方法。 這些方法並非設計來做為主要驗證方法。
 
 ### 程式碼範例概觀
-
 這是非常簡單的 Web 示範應用程式的範例程式碼，使用 # 鍵回應通話來完成使用者驗證。 此通話因素在 Multi-Factor Authentication 中稱為標準模式。
 
 用戶端程式碼不包含任何 Multi-Factor Authentication 特定項目。 因為其他驗證因素與主要驗證無關，您可以新增它們而不必變更現有登入介面。 Multi-Factor SDK 中的 API 可讓您自訂使用者經驗，但您可能完全不需要變更任何項目。
@@ -101,7 +101,7 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
 
 以下是示範頁面的 Web 用戶端程式碼。
 
-
+    
     <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
     
     <!DOCTYPE html>
@@ -132,9 +132,10 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
     </body>
     </html>
 
+
 ### 伺服器端程式碼
 
-在下列伺服器端程式碼中，步驟 2 中設定並執行 Multi-Factor Authentication。 標準模式 (MODE_STANDARD) 是指使用者按下 # 鍵來回應通話。
+在下列伺服器端程式碼中，步驟 2 中設定並執行 Multi-Factor Authentication。 標準模式 (MODE_STANDARD) 是指使用者按下 # 鍵來回應通話。 
 
     using System;
     using System.Collections.Generic;
@@ -166,7 +167,7 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
                 pfAuthParams.Username = username.Text;
                 pfAuthParams.Phone = "9134884271";
                 pfAuthParams.Mode = pf_auth.MODE_STANDARD;
-    
+                
                 // Specify a client certificate 
                 // NOTE: This file contains the private key for the client
                 // certificate. It must be stored with appropriate file 
@@ -191,6 +192,5 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
     
         }
     }
-
 
 

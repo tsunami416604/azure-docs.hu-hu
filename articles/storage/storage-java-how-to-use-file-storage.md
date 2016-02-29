@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用 Java 的檔案儲存體 | Microsoft Azure" 
-    description="了解如何使用 Azure 檔案服務來上傳、下載、列出及刪除檔案。範例以 Java 撰寫。" 
+    description="了解如何使用 Azure 檔案服務來上傳、下載、列出及刪除檔案。 範例以 Java 撰寫。" 
     services="storage" 
     documentationCenter="java" 
     authors="rmcmurray" 
@@ -16,7 +16,6 @@
     ms.date="10/26/2015" 
     ms.author="v-dedomi"/>
 
-
 # 如何使用 Java 的檔案儲存體
 
 [AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
@@ -31,7 +30,7 @@
 
 ## 建立 Java 應用程式
 
-若要建置範例，您將需要 Java Development Kit (JDK) 和 [Azure Storage SDK for Java]][]。 您也應該建立 Azure 儲存體帳戶。
+若要建置範例，您將需要 Java Development Kit (JDK) 和 [Azure Storage SDK for Java][]。 您也應該建立 Azure 儲存體帳戶。
 
 ## 設定您的應用程式以使用檔案儲存體
 
@@ -51,11 +50,11 @@
         "AccountName=your_storage_account_name;" + 
         "AccountKey=your_storage_account_key";
 
-> [AZURE.NOTE] 將 your_storage_account_name 和 your_storage_account_key 取代為您的儲存體帳戶的實際值。
+> [AZURE.NOTE] Your_storage_account_name 和 your_storage_account_key 取代為您的儲存體帳戶的實際值。
 
 ## 連接到 Azure 儲存體帳戶
 
-若要連接到您的儲存體帳戶，您必須使用 **CloudStorageAccount** 物件，將連接字串傳遞至其**剖析**方法。
+若要連接到儲存體帳戶，您必須使用 **CloudStorageAccount** 物件，傳遞的連接字串及其 **剖析** 方法。
 
     // Use the CloudStorageAccount object to connect to your storage account
     try {
@@ -64,11 +63,11 @@
         // Handle the exception
     }
 
-**CloudStorageAccount.parse** 會擲回 InvalidKeyException，因此您必須將其放在 try/catch 區塊內。
+**CloudStorageAccount.parse** 擲回 InvalidKeyException，因此您必須將它放在 try/catch 區塊內。
 
 ## 如何：建立共用
 
-檔案儲存體的所有檔案和目錄都位於名為 [**共用**] 的容器中。 您的儲存體帳戶可以有帳戶容量允許數量的共用。 若要取得共用及其內容的存取權，您必須使用檔案儲存體用戶端。
+所有檔案和檔案儲存體中的目錄都位於一個容器呼叫 **共用**。 您的儲存體帳戶可以有帳戶容量允許數量的共用。 若要取得共用及其內容的存取權，您必須使用檔案儲存體用戶端。
 
     // Create the file storage client.
     CloudFileClient fileClient = storageAccount.createCloudFileClient();
@@ -78,19 +77,19 @@
     // Get a reference to the file share
     CloudFileShare share = fileClient.getShareReference("sampleshare"); 
 
-若要實際建立共用，請使用 CloudFileShare 物件的 **createIfNotExists** 方法。
+若要實際建立共用，請使用 **createIfNotExists** CloudFileShare 物件的方法。
 
     if (share.createIfNotExists()) {
         System.out.println("New share created");
     }
 
-目前，**共用**會將參考保留至名為 **sampleshare** 的共用。
+此時， **共用** 包含名為共用的參考 **sampleshare**。 
 
 ## 如何：上傳檔案
 
 Azure 檔案儲存體共用至少包含根目錄，檔案可以放置其中。 在本節中，您將學習如何從本機儲存體將檔案上傳至共用的根目錄。
 
-上傳檔案的第一個步驟是取得檔案所在之目錄的參考。 您可以藉由呼叫共用物件的 **getRootDirectoryReference** 方法來完成。
+上傳檔案的第一個步驟是取得檔案所在之目錄的參考。 您可以呼叫 **getRootDirectoryReference** 共用物件的方法。
 
     //Get a reference to the root directory for the share.
     CloudFileDirectory rootDir = share.getRootDirectoryReference();
@@ -99,20 +98,20 @@ Azure 檔案儲存體共用至少包含根目錄，檔案可以放置其中。 �
 
     // Define the path to a local file.
     final String filePath = "C:\\temp\\Readme.txt";
-    
+
     CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
     cloudFile.uploadFromFile(filePath);
 
 ## 如何：建立目錄
 
-您也可以組織儲存體，方法是將檔案放在子目錄中，而不是將所有檔案都放在根目錄中。 Azure 檔案儲存體服務可讓您建立您的帳戶允許數量的目錄。 下列程式碼會在根目錄底下建立名為 **sampledir** 的子目錄。
+您也可以組織儲存體，方法是將檔案放在子目錄中，而不是將所有檔案都放在根目錄中。 Azure 檔案儲存體服務可讓您建立您的帳戶允許數量的目錄。 下列程式碼會建立名為 **sampledir** 根目錄底下。
 
     //Get a reference to the root directory for the share.
     CloudFileDirectory rootDir = share.getRootDirectoryReference();
-    
+
     //Get a reference to the sampledir directory 
     CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
-    
+                
     if (sampleDir.createIfNotExists()) {
         System.out.println("sampledir created");
     } else {
@@ -121,14 +120,15 @@ Azure 檔案儲存體共用至少包含根目錄，檔案可以放置其中。 �
 
 ## 如何：列出共用中的檔案和目錄
 
-取得共用內檔案和目錄的清單很容易，只要在 CloudFileDirectory 參考上呼叫 **listFilesAndDirectories** 即可。 方法會傳回您可以逐一查看的 ListFileItem 物件清單。 例如，下列程式碼會列出根目錄內的檔案和目錄。
+取得共用內檔案和目錄的清單很容易，藉由呼叫 **listFilesAndDirectories** CloudFileDirectory 參考上。 方法會傳回您可以逐一查看的 ListFileItem 物件清單。 例如，下列程式碼會列出根目錄內的檔案和目錄。
 
     //Get a reference to the root directory for the share.
     CloudFileDirectory rootDir = share.getRootDirectoryReference();
-    
+           
     for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
         System.out.println(fileItem.getUri());
     }
+
 
 ## 如何：下載檔案
 
@@ -139,31 +139,32 @@ Azure 檔案儲存體共用至少包含根目錄，檔案可以放置其中。 �
     
     //Get a reference to the directory that contains the file
     CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
-    
+                
     //Get a reference to the file you want to download
     CloudFile file = sampleDir.getFileReference("SampleFile.txt");
-    
+
     //Write the contents of the file to the console.
     System.out.println(file.downloadText());
 
 ## 如何：刪除檔案
 
-另一個常見的檔案儲存體作業是刪除檔案。 下列程式碼會刪除儲存在名為 **sampledir** 之目錄內名為 SampleFile.txt 的檔案。
+另一個常見的檔案儲存體作業是刪除檔案。 下列程式碼會刪除名為儲存在名為 SampleFile.txt 的檔案 **sampledir**。
 
 
     // Get a reference to the root directory for the share.
     CloudFileDirectory rootDir = share.getRootDirectoryReference();
-    
+
     // Get a reference to the directory where the file to be deleted is in
     CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
     
     String filename = "SampleFile.txt"
     CloudFile file;
-    
+
     file = containerDir.getFileReference(filename)
     if ( file.deleteIfExists() ) {
         System.out.println(filename + " was deleted");
     }
+
 
 ## 如何：刪除目錄
 
@@ -171,30 +172,31 @@ Azure 檔案儲存體共用至少包含根目錄，檔案可以放置其中。 �
 
     // Get a reference to the root directory for the share.
     CloudFileDirectory rootDir = share.getRootDirectoryReference();
-    
+
     // Get a reference to the directory you want to delete
     CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");   
-    
+
     // Delete the directory
     if ( containerDir.deleteIfExists() ) {
         System.out.println("Directory deleted");
     }
 
+
 ## 如何：刪除共用
 
-刪除共用可以藉由在 CloudFileShare 物件呼叫 **deleteIfExists** 方法來完成。 以下是執行該作業的範例程式碼。
+刪除共用是藉由呼叫 **deleteIfExists** CloudFileShare 物件的方法。 以下是執行該作業的範例程式碼。 
 
     try
     {
         // Retrieve storage account from connection-string.
         CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
-    
+
         // Create the file client.
        CloudFileClient fileClient = storageAccount.createCloudFileClient();
-    
+
        // Get a reference to the file share
        CloudFileShare share = fileClient.getShareReference("sampleshare");
-    
+       
        if (share.deleteIfExists()) {
            System.out.println("sampleshare deleted");
        } 
@@ -212,11 +214,10 @@ Azure 檔案儲存體共用至少包含根目錄，檔案可以放置其中。 �
 - [Azure 儲存體團隊部落格]
 - [使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy)
 
-
-[azure sdk for java]: http://azure.microsoft.com/develop/java/ 
-[azure storage sdk for java]: https://github.com/azure/azure-storage-java 
-[azure storage sdk for android]: https://github.com/azure/azure-storage-android 
-[azure storage client sdk reference]: http://dl.windowsazure.com/storage/javadoc/ 
-[azure storage rest api]: https://msdn.microsoft.com/library/azure/dd179355.aspx 
-[azure storage team blog]: http://blogs.msdn.com/b/windowsazurestorage/ 
-
+[Azure SDK for Java]: http://azure.microsoft.com/develop/java/
+[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+[Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
+[Azure Storage Client SDK Reference]: http://dl.windowsazure.com/storage/javadoc/
+[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+ 

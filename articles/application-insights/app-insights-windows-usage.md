@@ -15,36 +15,35 @@
     ms.date="11/25/2015" 
     ms.author="awills"/>
 
-
-# 使用 Application Insights 監視 Windows 市集和 Windows Phone 應用程式中的使用量
+#  使用 Application Insights 監視 Windows 市集和 Windows Phone 應用程式中的使用量
 
 *Application Insights 目前僅供預覽。*
 
 了解您有多少使用者，以及他們他們在查看您應用程式中的哪些頁面。 Application Insights 提供現成的這些資料給您。 只要在您的應用程式中插入幾行程式碼，就能深入了解使用者在您應用程式中行進的路徑，以及他們因此而達成什麼目的。
 
-如果您還沒有這麼做，加入 [Application Insights 加入至您的應用程式專案的 ][windows], ，並重新發行。
+如果您還沒有這麼做，加入 [Application Insights 加入至應用程式專案][windows], ，並重新發行。 
 
 
-## <a name="usage"></a>追蹤使用量
+## <a name="usage"></a>追蹤流量
 
 從 [概觀] 時間表，按一下 [使用者] 和 [工作階段] 圖表，查看更詳細的分析。
 
 
 ![](./media/app-insights-windows-usage/appinsights-d018-oview.png)
 
-* **使用者**依匿名方式追蹤，所以同一使用者在不同裝置上以兩次計算。
-* **工作階段**於應用程式暫停時計算 (排除短暫間隔，以免將意外的擱置計算在內)。
+* **使用者** 依匿名方式追蹤，以便在不同裝置上相同的使用者會計算兩次。
+* A **工作階段** 當應用程式暫停計算 (排除短暫間隔，以免意外的擱置計算)。
 
 #### 分割
 
-分割圖表，依各種準則取得分解圖。 例如，若要查看多少使用者在使用您應用程式的每個版本，請開啟 [使用者] 圖表，再依 [應用程式版本] 分割：
+分割圖表，依各種準則取得分解圖。 例如，若要查看多少使用者在使用您應用程式的每個版本，請開啟 [使用者] 圖表，再依 [應用程式版本] 分割： 
 
-![在使用者圖表上，開啟 ](./media/app-insights-windows-usage/appinsights-d25-usage.png)
+![在使用者圖表上，開啟 [分割]，選擇 [應用程式版本]](./media/app-insights-windows-usage/appinsights-d25-usage.png)
 
 
 #### 頁面檢視
 
-若要探索的路徑，使用者透過您的應用程式，插入 [頁面檢視遙測 ][api] 到您的程式碼:
+若要探索的路徑，使用者透過您的應用程式，插入 [頁面檢視遙測][api] 到您的程式碼:
 
     var telemetry = new TelemetryClient();
     telemetry.TrackPageView("GameReviewPage");
@@ -57,7 +56,7 @@
 
 #### 自訂事件
 
-只要插入程式碼從您的應用程式傳送自訂事件，就能追蹤使用者的行為，以及特定功能和情節的使用量。
+只要插入程式碼從您的應用程式傳送自訂事件，就能追蹤使用者的行為，以及特定功能和情節的使用量。 
 
 例如：
 
@@ -76,46 +75,47 @@
        {{"Game", currentGame.Name}, {"Difficulty", currentGame.Difficulty}};
     var measurements = new Dictionary <string, double>
        {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
-    
+
     // Send the event:
     telemetry.TrackEvent("GameOver", properties, measurements);
+
 
 按一下任何發生次數，查看詳細屬性，包括您已定義的屬性。
 
 
 ![](./media/app-insights-windows-usage/appinsights-d29-eventProps.png)
 
-請參閱 [API 參考 ][api] 如需詳細資訊的自訂事件。
+請參閱 [API 參考][api] 如需詳細資訊的自訂事件。
 
 ## 工作階段
 
-工作階段是 Application Insights 中的基本概念，Application Insights 會致力於使用特定使用者工作階段關聯每個遙測事件，例如當機或您自行編碼的自訂事件。
+工作階段是 Application Insights 中的基本概念，Application Insights 會致力於使用特定使用者工作階段關聯每個遙測事件，例如當機或您自行編碼的自訂事件。 
 
 它會收集關於每個工作階段的豐富內容資訊，例如裝置特性、地理位置、作業系統等等。
 
-當 [診斷問題 ][diagnostic], ，您可以找到有關工作階段中發生問題，包括所有要求、 任何事件、 例外狀況或追蹤所記錄的所有遙測資料。
+當 [診斷問題][diagnostic], ，您可以找到有關工作階段中發生問題，包括所有要求、 任何事件、 例外狀況或追蹤所記錄的所有遙測資料。
 
 工作階段可正確測量出裝置、作業系統或位置等內容的熱門程度。 比方說，相較於透過計算頁面檢視計數，透過顯示依裝置所分組的工作階段計數，您可以取得該裝置與您的應用程式搭配使用之頻率的更精確數字。 此輸入很適合用來分類任何裝置特定的問題。
 
 
 #### 什麼是工作階段？
 
-一個工作階段代表使用者和應用程式之間的一次交流。 簡單來說，工作階段開始於使用者啟動應用程式，結束於使用者離開應用程式。 對於行動應用程式來說，當應用程式暫停 (移至背景) 超過 20 秒，工作階段時就會終止。 如果應用程式恢復作業，就會啟動新的工作階段。 理所當然地，使用者在一天或甚至一個小時內可能會有多個工作階段。
+一個工作階段代表使用者和應用程式之間的一次交流。 簡單來說，工作階段開始於使用者啟動應用程式，結束於使用者離開應用程式。 對於行動應用程式來說，當應用程式暫停 (移至背景) 超過 20 秒，工作階段時就會終止。 如果應用程式恢復作業，就會啟動新的工作階段。 理所當然地，使用者在一天或甚至一個小時內可能會有多個工作階段。 
 
-**工作階段持續時間**是一個度量值，代表工作階段的第一個和最後一個遙測項目間隔的時間範圍  (不包含逾時期間)。
+**工作階段持續時間** 是一種度量，代表工作階段的第一個和最後一個遙測項目之間的時間範圍。 (不包含逾時期間)。
 
 
-特定間隔期間的**工作階段計數**的定義是，在此間隔期間具有某些活動的唯一工作階段數目。 當您查看長時間範圍時，例如過去一週的每日工作階段計數，這通常相當於工作階段的總數。
+**工作階段計數** 在特定間隔會定義為在此間隔期間具有某些活動唯一工作階段數目。 當您查看長時間範圍時，例如過去一週的每日工作階段計數，這通常相當於工作階段的總數。 
 
-不過，當您瀏覽較短的時間範圍時，例如每小時的資料粒度，跨越多個小時的長工作階段將會針對工作階段有活動的每個小時來進行計算。
+不過，當您瀏覽較短的時間範圍時，例如每小時的資料粒度，跨越多個小時的長工作階段將會針對工作階段有活動的每個小時來進行計算。 
 
 ## 使用者和使用者計數
 
 每個使用者工作階段都會與唯一的使用者識別碼相關聯，此識別碼會在應用程式使用時產生並保留在裝置的本機儲存體中。 使用多個裝置的使用者將會計算一次以上。
 
-特定間隔期間的**使用者計數**度量的定義是，在此間隔期間具有記錄活動的唯一使用者數目。 因此，當您設定的時間範圍資料粒度小於一小時左右，具有長工作階段的使用者可能會計算多次。
+ **使用者計數** 中特定間隔的度量定義為唯一使用者數目具有記錄活動在此間隔期間。 因此，當您設定的時間範圍資料粒度小於一小時左右，具有長工作階段的使用者可能會計算多次。
 
-**新使用者**會計算應用程式的第一個工作階段發生在此間隔期間的使用者。
+**新使用者** 計算應用程式的第一個工作階段發生在此間隔期間的使用者。 
 
 
 ## <a name="debug"></a>偵錯與發行模式
@@ -130,24 +130,25 @@
 
 ## <a name="next"></a>後續步驟
 
-[了解您的使用者 ][knowusers]
+[了解您的使用者][knowUsers]
 
-[深入了解計量瀏覽器 ][metrics]
-
-
-[疑難排解 ][qna]
+[深入了解計量瀏覽器][metrics]
 
 
+[疑難排解][qna]
 
 
 
 
+<!--Link references-->
 
-[api]: app-insights-api-custom-events-metrics.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[knowusers]: app-insights-overview-usage.md 
-[metrics]: app-insights-metrics-explorer.md 
-[portal]: http://portal.azure.com/ 
-[qna]: app-insights-troubleshoot-faq.md 
-[windows]: app-insights-windows-get-started.md 
+[api]: app-insights-api-custom-events-metrics.md
+[diagnostic]: app-insights-diagnostic-search.md
+[knowUsers]: app-insights-overview-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
+[windows]: app-insights-windows-get-started.md
 
+
+ 

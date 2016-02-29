@@ -1,25 +1,26 @@
+
 <properties 
-   pageTitle ="內部負載平衡器概觀 |Microsoft Azure 「
-   描述 ="內部負載平衡器和其功能的概觀。負載平衡器的運作方式為 Azure 和可能的案例，以設定內部端點 」
-   服務 = 「 負載平衡器 」
-   documentationCenter ="na"
-   作者 ="joaoma"
+   pageTitle="內部負載平衡器概觀 |Microsoft Azure"
+   description="內部負載平衡器與其功能的概觀。負載平衡器如何作用於 Azure 和可能案例，以設定內部端點"
+   services="load-balancer"
+   documentationCenter="na"
+   authors="joaoma"
    manager="adinah"
-   編輯器 ="tysonn"/ >
+   editor="tysonn" />
 <tags 
-   ms.service= 」 負載平衡器 」
+   ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload= 「 基礎結構服務 」
-   ms.date="12/09/2015 」
-   ms.author="joaoma"/ >
+   ms.workload="infrastructure-services"
+   ms.date="12/09/2015"
+   ms.author="joaoma" />
 
 
 # 內部負載平衡器概觀
 
 內部負載平衡器 (ILB) 是 Azure 中目前提供的網際網路面向負載平衡器的安全性增強功能。 只有雲端服務內部的資源能存取 ILB，或使用 VPN 存取 Azure 基礎結構才能到達 ILB。
-
+            
 基礎結構會限制可存取性和建立負載平衡虛擬 IP 位址到雲端服務或虛擬網路之間的信任界限，並將永遠不會公開至網際網路端點直接。 這可讓內部企業營運應用程式在 Azure 中執行，而且可在雲端或從內部部署環境存取。
 
 ## 內部負載平衡器案例
@@ -40,16 +41,17 @@ ILB 能夠達到下列幾種新的負載平衡類型：
 
 - 網際網路對向、多層式應用程式，其中後端層並非網際網路面向，但要求來自網際網路面向層的流量達到負載平衡。
 - 在需要額外負載平衡器硬體或軟體之 Azure 代管的企業營運系統 (LOB) 應用程式中進行負載平衡。
-包括流量已負載平衡之電腦集合中的內部部署伺服器。
+包括流量已負載平衡之電腦集合中的內部部署伺服器。 
 - 下列各節更詳細說明這些組態。
 
 ## 網際網路面向的多層式應用程式
+
 
 Web 層具有網際網路用戶端的網際網路面向端點，而且是負載平衡集合的一部分。 負載平衡器會發佈到 web 伺服器的連入流量從 web 用戶端的 TCP 連接埠 443 (HTTPS)。
 
 資料庫伺服器位於 Web 伺服器用於儲存的 ILB 端點之後。 這是資料庫服務負載平衡的端點，其流量會在 ILB 集合中的各資料庫伺服器上達到負載平衡。
 
-下圖說明相同雲端服務中網際網路面向的多層式應用程式。
+下圖說明相同雲端服務中網際網路面向的多層式應用程式。 
 
 圖 1
 
@@ -89,8 +91,4 @@ LOB 的另一個案例是有站台對站台 VPN 至 ILB 端點設定所在的虛
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
 
-
-
-
-
-
+ 

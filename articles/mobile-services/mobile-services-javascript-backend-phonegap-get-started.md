@@ -16,7 +16,6 @@
     ms.date="11/06/2015"
     ms.author="ggailey777"/>
 
-
 # 開始使用行動服務
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
@@ -24,7 +23,7 @@
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
-本教學課程說明如何使用 Azure 行動服務，將雲端型後端服務新增至應用程式。 在本教學課程中，您將建立新的行動服務，並建立可在新的行動服務中儲存應用程式資料的簡單「_待辦事項清單_」應用程式。
+本教學課程說明如何使用 Azure 行動服務，將雲端型後端服務新增至應用程式。 在本教學課程中，您將建立新的行動服務，並建立可在新的行動服務中儲存應用程式資料的簡單_待辦事項清單_應用程式。
 
 以下是完成應用程式的螢幕擷取畫面：
 
@@ -42,8 +41,8 @@
 
     - Windows Phone: 安裝 [Visual Studio 2012 Express for Windows Phone](https://go.microsoft.com/fwLink/p/?LinkID=268374)
     - iOS: 安裝 [Xcode] (必須是 4.4 以上)
-    - Android: 安裝 [Android 開發人員工具的 ][android sdk]
-        <br/>(Mobile Services SDK for Android 支援 Android 2.2 或更新版本的應用程式。 若要執行快速入門應用程式，則必須使用 Android 4.2 或更新版本。)
+    - Android: 安裝 [Android Developer Tools] [Android SDK]
+        <br/>(Mobile Services SDK for Android 支援適用於 Android 2.2 或更新版本的應用程式。 若要執行快速入門應用程式，則必須使用 Android 4.2 或更新版本。)
 
 ## 建立新的行動服務
 
@@ -55,7 +54,7 @@
 
 1.  在 [Azure 傳統入口網站]，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
 
-2. 在 [快速入門] 索引標籤中，按一下 [選擇平台]**** 下的 [PhoneGap]****，然後展開 [Create a new PhoneGap app]****。
+2. 在 [快速入門] 索引標籤中，按一下 [ **PhoneGap** 下 **選擇平台** 展開 **建立新的 PhoneGap 應用程式**。
 
     ![][0]
 
@@ -65,11 +64,11 @@
 
 3. 如果您尚未下載並安裝 PhoneGap 和至少其中一項平台開發工具 (Windows Phone、iOS 或 Android)，請於此時執行。
 
-4. 按一下 [Create TodoItem table]**** 以建立儲存應用程式資料的資料表。
+4. 按一下 [ **Create TodoItem table** 來建立儲存應用程式資料的資料表。
 
-5. 在 [Download and run your app]**** 下，按 [下載]****。
+5. 在 **下載並執行您的應用程式**, ，按一下 [ **下載**。
 
-    這會下載與您的行動服務連接的範例 _To do list_ 應用程式的專案，以及行動服務 JavaScript SDK。 請將壓縮的專案檔案儲存至本機電腦，並記下儲存位置。
+    這會下載範例專案 _待辦事項清單_ 連線到您的行動服務，以及行動服務 JavaScript SDK 的應用程式。 請將壓縮的專案檔案儲存至本機電腦，並記下儲存位置。
 
 ## 執行新的 PhoneGap 應用程式
 
@@ -81,35 +80,38 @@
 
     + **Windows Phone 8**
 
-        1. Windows Phone 8：在 Visual Studio 2012 Express for Windows Phone 中，開啟 **platforms\wp8** 資料夾中的 .sln 檔案。
+        1. Windows Phone 8: 開啟中的.sln 檔案 **platforms\wp8** 在 Visual Studio 2012 Express for Windows Phone 的資料夾。
 
-        2. 按 **F5** 鍵，以重建專案並啟動應用程式。
+        2. 按下 **F5** 鍵，以重建專案並啟動應用程式。
 
         ![][2]
 
     + **iOS**
 
-        1. 在 Xcode 中，開啟 **platforms/ios** 資料夾中的專案。
+        1. 在中開啟專案 **平台/ios** 在 Xcode 中的資料夾。
 
-        2. 按 [執行]**** 按鈕以建立專案，並在 iPhone 模擬器中啟動應用程式 (此專案的預設選項)。
+        2. 按下 **執行** ] 按鈕以建置專案並啟動應用程式在 iPhone 模擬器中，這是此專案的預設值。
 
         ![][3]
 
     + **Android**
 
-        1. 在 Eclipse 中，依序按一下 [檔案]****、[匯入]****、展開 [Android]****，按一下 [匯入現有的 Android 程式碼至工作區]****，然後按 [下一步]****。
+        1. 在 Eclipse 中，按一下 [ **檔案** 然後 **匯入**, ，依序展開 **Android**, ，按一下 [ **現有的 Android 程式碼至工作區**, ，然後按一下 [ **下一步。**
 
-        2. 按一下 [瀏覽]**** 瀏覽到展開的專案檔案位置，並且按一下 [確定]**** 確定已勾選 TodoActivity 專案，然後按一下 [完成]****。 <p>這樣會將專案檔案匯入目前的工作區。</p>
+        2. 按一下 [ **瀏覽**, ，瀏覽到展開的專案檔案的位置，按一下 **確定**, ，確定已勾選 TodoActivity 專案，然後按一下 [ **完成**。 <p>這會將專案檔案匯入目前的工作區中。</p>
 
-        3. 從 [執行]**** 功能表中，按一下 [執行]**** 在 Android 模擬器中啟動專案。
+        3. 從 **執行** ] 功能表上，按一下 [ **執行** Android 模擬器中啟動專案。
 
             ![][4]
-        >[AZURE.NOTE]若要能夠在 Android 模擬器中執行此專案，您必須至少定義一個 Android 虛擬裝置 (AVD)。 請使用 AVD 管理員來建立和管理這些裝置。
 
-3. 在前述其中一個行動模擬器中啟動應用程式後，在文字方塊中輸入文字，然後按一下 [新增]****。
+        >[AZURE.NOTE]若要能夠在 Android 模擬器中執行專案，您必須定義至少一個 Android 虛擬裝置 (AVD)。 請使用 AVD 管理員來建立和管理這些裝置。
 
-    This sends a POST request to the new mobile service hosted in Azure. 要求中的資料會插入 **TodoItem** 資料表中。 行動服務會傳回資料表中儲存的項目，而該資料會顯示在清單中。
-    > [AZURE.IMPORTANT] 如果使用 PhoneGap 工具重新建置主要專案，將會覆寫此平台專案的變更。 因此，請依照下一節中的說明，在專案的根 www 目錄中進行變更。
+
+3. 之後啟動前述其中一個行動模擬器中的應用程式，請在文字方塊中鍵入一些文字，然後按一下 [ **新增**。
+
+    如此會傳送 POST 要求到 Azure 中代管的新行動服務。 要求中的資料插入至 **TodoItem** 資料表。 行動服務會傳回資料表中儲存的項目，而該資料會顯示在清單中。
+
+    > [AZURE.IMPORTANT] 如果使用 PhoneGap 工具重新建置主要專案，就會覆寫此平台專案的變更。 因此，請依照下一節中的說明，在專案的根 www 目錄中進行變更。
 
 4. 回到 [Azure 傳統入口網站]，按一下 [ **資料** 標籤，然後按一下 **TodoItem** 資料表。
 
@@ -146,37 +148,35 @@
 
             phonegap local build android
 
-
 4. 根據下一節中的說明，在適當的開發環境中開啟每個專案。
 
->[AZURE.NOTE]您可以檢閱存取行動服務來查詢和插入資料的程式碼，這可以在 js/index.js 檔案中找到。
+>[AZURE.NOTE]您可以檢閱存取行動服務來查詢和插入資料，在 js/index.js 檔案中找到的程式碼。
 
 ## 後續步驟
-
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
 * **[將驗證新增至您的應用程式]**  
-  了解如何透過身分識別提供者來驗證您的應用程式使用者。
+  了解如何透過身分識別提供者來驗證您的應用程式使用者。  
 
-* * *[將推播通知新增至您的應用程式](https://msdn.microsoft.com/magazine/dn879353.aspx)* *  
+* **[將推播通知新增至您的應用程式](https://msdn.microsoft.com/magazine/dn879353.aspx)**  
   了解如何註冊及傳送推播通知至應用程式。
 
-* * *[行動服務 HTML/JavaScript 作法概念參考](mobile-services-html-how-to-use-client-library.md)* *  
+* **[行動服務 HTML/JavaScript 作法概念性參考](mobile-services-html-how-to-use-client-library.md)**  
   進一步了解如何使用 JavaScript 用戶端程式庫來存取資料、 呼叫自訂 Api，以及執行驗證。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
+<!-- Images. -->
+[0]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot1.png
+[1]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot2.png
+[2]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-wp8.png
+[3]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-ios.png
+[4]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-android.png
 
-
-
-[0]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot1.png 
-[1]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot2.png 
-[2]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-wp8.png 
-[3]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-ios.png 
-[4]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-android.png 
-[add authentication to your app]: mobile-services-html-get-started-users.md 
-[android sdk]: https://go.microsoft.com/fwLink/p/?LinkID=280125 
-[azure classic portal]: https://manage.windowsazure.com/ 
-[xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532 
-[visual studio 2012 express for windows phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374 
-
+<!-- URLs. -->
+[Add authentication to your app]: mobile-services-html-get-started-users.md
+[Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
+[Azure classic portal]: https://manage.windowsazure.com/
+[Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+[Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
+ 

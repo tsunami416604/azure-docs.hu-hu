@@ -1,11 +1,12 @@
-* 在 **QSAppDelegate.m** 中，匯入 iOS SDK 和 **QSTodoService.h**：
+
+* 在 **QSAppDelegate.m**, ，匯入 iOS SDK 和 **QSTodoService.h**:
 
 ```
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
 ```
 
-* 在 `didFinishLaunchingWithOptions` 中 **QSAppDelegate.m**, ，插入下列各行前面 `傳回 YES;`:
+* 在 `didFinishLaunchingWithOptions` 中 **QSAppDelegate.m**, ，插入下列各行前面 `return YES;`:
 
 ```
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -13,7 +14,7 @@
         [[UIApplication sharedApplication] registerForRemoteNotifications];
 ```
 
-* 在 **QSAppDelegate.m** 中，新增下列處理常式方法。 您的應用程式現在已更新為支援推播通知。 請注意，UIAlertView 在 iOS9 中已被取代，下列項目適用於 iOS9。
+* 在 **QSAppDelegate.m**, ，新增下列處理常式方法。 您的應用程式現在已更新為支援推播通知。 請注意，UIAlertView 在 iOS9 中已被取代，下列項目適用於 iOS9。
 
 ```
         // Registration with APNs is successful
@@ -49,7 +50,7 @@
                                           alertControllerWithTitle:@"Notification"
                                           message:alertString
                                           preferredStyle:UIAlertControllerStyleAlert];
-
+    
             UIAlertAction *cancelAction = [UIAlertAction
                                            actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel")
                                            style:UIAlertActionStyleCancel
@@ -57,7 +58,7 @@
                                            {
                                                NSLog(@"Cancel");
                                            }];
-
+            
             UIAlertAction *okAction = [UIAlertAction
                                        actionWithTitle:NSLocalizedString(@"OK", @"OK")
                                        style:UIAlertActionStyleDefault
@@ -65,24 +66,20 @@
                                        {
                                            NSLog(@"OK");
                                        }];
-
+            
             [alertController addAction:cancelAction];
             [alertController addAction:okAction];
-
+            
             // Get current view controller.
             UIViewController *currentViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
             while (currentViewController.presentedViewController)
             {
                 currentViewController = currentViewController.presentedViewController;
             }
-
+            
             // Display alert.
             [currentViewController presentViewController:alertController animated:YES completion:nil];
 
         }
 ```
-
-
-
-
 

@@ -17,7 +17,6 @@
    ms.date="09/01/2015"
    ms.author="kundanap"/>
 
-
 # 針對 Azure VM 延伸模組的失敗進行疑難排解。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
@@ -33,7 +32,6 @@ Azure 資源管理員範本可讓您藉由定義資源之間的相依性，以�
 在本文中我們將了解如何疑難排解某些常見的 VM 延伸模組失敗。
 
 ## 檢視延伸模組狀態：
-
 Azure 資源管理員範本可以從 Azure Powershell 或 Azure CLI 執行。 一旦執行範本之後，即可以從 Azure 資源總管或命令列工具檢視延伸模組狀態。
 這裡有一些範例：
 
@@ -68,7 +66,6 @@ Azure Powershell：
           "Time": null
         }
     }
-
   ]
 
 ## 針對延伸模組失敗進行疑難排解：
@@ -90,8 +87,4 @@ Azure Powershell：
     Remove-AzureVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
 一旦移除了延伸模組，範本就可以重新執行並在 VM 上執行指令碼。
-
-
-
-
 

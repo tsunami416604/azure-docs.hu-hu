@@ -8,7 +8,7 @@
    editor=""
    tags="acs, azure-container-service"
    keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
-
+   
 <tags
    ms.service="virtual-machines"
    ms.devlang="na"
@@ -17,7 +17,6 @@
    ms.workload="na"
    ms.date="12/02/2015"
    ms.author="rogardle"/>
-
 
 # Azure 容器服務簡介
 
@@ -44,11 +43,11 @@ Azure 的同時仍維持應用程式的企業級功能
 
 在此服務在預覽時，我們會要求，想測試
 服務 [自我提名](http://aka.ms/acspreview)。 提供預覽存取之後，我們會傳送一封電子郵件，內含進一步詳細資料，包括部署範本以及快速入門指示。 若要使用服務時，您需要 Azure 訂閱，如果您有一個尚未，為什麼不註冊的
-[可用
-試用版] (http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AA4C1C935)?
+[免費
+試用](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AA4C1C935)嗎?
 
 使用 Azure 容器服務
--------------
+-----------------------------
 
 我們與 Azure 容器服務的目標是要提供容器
 裝載環境中，使用開放原始碼工具和技術，亦即
@@ -60,7 +59,7 @@ Docker 和您所選擇的 orchestrator 的 API 端點。 使用這些
 選擇使用 DCOS CLI。
 
 使用 Azure 容器服務建立 Docker 叢集
--------------------------
+-------------------------------------------------------
 
 一旦 [要求](http://aka.ms/acspreview) 而且已授與存取權
 預覽中，您可以使用其中一個數字的 Azure 資源管理員
@@ -80,17 +79,17 @@ Docker 和您所選擇的 orchestrator 的 API 端點。 使用這些
 一旦服務開啟公開這裡發行。
 
 部署應用程式
-------
+------------------------
 
 在預覽期間，我們提供 Docker Swarm 或 Apache 的選擇
 Mesos (與 DCOS 馬拉松和 DCOS Chronos 架構)
-協調流程。
+協調流程。 
 
 ### 使用 Apache Mesos
 
 Apache Mesos 是開放原始碼專案放在 Apache Software
-Foundation。 它會列出一些 [最大中的名稱
-IT] (http://mesos.apache.org/documentation/latest/powered-by-mesos/) 做為
+Foundation。 它會列出一些 [中的最大名稱
+IT](http://mesos.apache.org/documentation/latest/powered-by-mesos/) 做為
 使用者和參與者。
 
 ![針對顯示代理程式與主機的 Swarm 設定的 ACS。](media/acs-intro/acs-mesos.png)
@@ -125,7 +124,7 @@ cgroups 或在 ACS，Docker 容器。 它是理想
 
 馬拉松和 Chronos 提供 Web UI，您可以用來部署程式
 應用程式。 您將存取此 url 看起來像下
-`http://DNS \_PREFIX。REGION.cloudapp.azure.com`
+`http://DNS\_PREFIX.REGION.cloudapp.azure.com`
 其中 DNS\_PREFIX 及區域兩者都被定義在部署階段。 的
 課程中，您也可以提供您自己的 DNS 名稱。
 
@@ -144,7 +143,7 @@ Chronos。 有好幾個用戶端程式庫適用於每個工具，
 Docker Swarm 為 Docker 提供原生叢集。 因為 Docker Swarm
 提供標準的 Docker API 已經與其通訊的任何工具
 Docker 精靈可以使用 Swarm 無障礙地延伸到多部主機
-Azure 容器服務。
+Azure 容器服務。 
 
 ![設定來使用顯示 jumpbox、代理程式與主機之 Apache Mesos 設定的 ACS。](media/acs-intro/acs-swarm.png)
 
@@ -163,25 +162,20 @@ Azure 容器服務。
 一旦服務開啟公開這裡發行。
 
 獲得存取權限
-------
+--------------
 
 在此服務在預覽時，我們要求那些想要測試
 服務 [自我提名](http://aka.ms/acspreview)。 您首先需要 Azure
-訂用帳戶，如果您有一個尚未為何不註冊的 [可用的動作
-試用版] (http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AA4C1C935)?
+訂用帳戶，如果您有一個尚未為何不註冊的 [免費
+試用](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AA4C1C935)嗎?
 
 影片
---
-
+------
 AzureCon 通知：
 
-> [AZURE.VIDEO azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
+> [AZURE.VIDEO azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]  
 
-開始使用 ACS：
+開始使用 ACS：  
 
 > [AZURE.VIDEO connect-2015-getting-started-developing-with-docker-and-azure-container-service]
-
-
-
-
 

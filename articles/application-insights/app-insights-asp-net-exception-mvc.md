@@ -16,12 +16,7 @@
     ms.author="awills"/>
 
 
-
 # 設定 Application Insights：診斷例外狀況
 
 很抱歉。 [此頁面已移動](app-insights-asp-net-exception.md)。
-
-
-
-
-
+ 

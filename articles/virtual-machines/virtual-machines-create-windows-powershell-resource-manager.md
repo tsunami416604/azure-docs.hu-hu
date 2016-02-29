@@ -17,7 +17,6 @@
     ms.date="10/08/2015"
     ms.author="davidmu"/>
 
-
 # 以資源管理員和 PowerShell 建立 Windows VM
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [傳統部署模型](virtual-machines-ps-create-preconfigure-windows-vms.md)。
@@ -57,7 +56,7 @@
 
     Get-AzureLocation | sort Name | Select Name
 
-現在，將以下的 PowerShell 命令區塊複製到文字編輯器中。填寫您選擇的儲存體帳戶和位置，取代引號中，包括裡面 < 和 > 字元。
+現在，將以下的 PowerShell 命令區塊複製到文字編輯器中。 填寫您選擇的儲存體帳戶和位置，取代引號中，包括裡面 < 和 > 字元。
 
     $stName = "<chosen storage account name>"
     $locName = "<chosen Azure location name>"
@@ -86,8 +85,8 @@
     PS C:\> $rgName="TestRG"
     PS C:\> New-AzureRmResourceGroup -Name $rgName -Location $locName
     VERBOSE: 12:45:15 PM - Created resource group 'TestRG' in location 'westus'
-    
-    
+
+
     ResourceGroupName : TestRG
     Location          : westus
     ProvisioningState : Succeeded
@@ -96,10 +95,10 @@
                         Actions  NotActions
                         =======  ==========
                         *
-    
+
     ResourceId        : /subscriptions/fd92919d-eeca-4f5b-840a-e45c6770d92e/resourceGroups/TestRG
-    
-    
+
+
     PS C:\> $storageAcc=New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_GRS" -Location $locName
     PS C:\> $singleSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name singleSubnet -AddressPrefix 10.0.0.0/24
     PS C:\> $vnet=New-AzureRmVirtualNetwork -Name TestNet3 -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
@@ -113,8 +112,8 @@
     PS C:\> $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/MyWindowsVMosDisk.vhd"
     PS C:\> $vm = Set-AzureRmVMOSDisk -VM $vm -Name "windowsvmosdisk" -VhdUri $osDiskUri -CreateOption fromImage
     PS C:\> New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
-    
-    
+
+
     EndTime             : 4/28/2015 1:00:05 PM -07:00
     Error               :
     Output              :
@@ -126,19 +125,15 @@
 
 ## 其他資源
 
-[Azure 運算、 網路和存放裝置提供者在 Azure 資源管理員](virtual-machines-azurerm-versus-azuresm.md)
+[Azure Resource Manager 提供的 Azure 運算、網路和儲存提供者](virtual-machines-azurerm-versus-azuresm.md)
 
-[Azure 資源管理員概觀](resource-group-overview.md)
+[Azure Resource Manager 概觀](resource-group-overview.md)
 
-[利用資源管理員範本和 PowerShell 建立 Windows 虛擬機器](virtual-machines-create-windows-powershell-resource-manager-template-simple.md)
+[利用 Resource Manager 範本和 PowerShell 建立 Windows 虛擬機器](virtual-machines-create-windows-powershell-resource-manager-template-simple.md)
 
-[利用 Powershell 和傳統部署模型中建立 Windows 虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)
+[以 Powershell 和傳統部署模型建立 Windows 虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 [虛擬機器文件](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [如何安裝和設定 Azure PowerShell](install-configure-powershell.md)
-
-
-
-
 

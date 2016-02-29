@@ -16,17 +16,15 @@
    ms.date="09/16/2015"
    ms.author="jonor;sivae"/>
 
-
 # 範例 1 – 使用 NSG 建置簡單的 DMZ
 
-[返回 ][home]
+[回到安全性界限最佳作法頁面][首頁]
 
-此範例會建立簡單 DMZ，其內含四個 Windows 伺服器和網路安全性群組。 此範例也會逐步解說每個相關命令，以讓您更加深入地了解每個步驟。 另外您還會看到＜流量案例＞一節，本節提供深入的逐步說明，讓您知道流量是如何流經 DMZ 內的各個防禦層。 最後則有＜參考＞一節，本節提供完整的程式碼和指示，以供您建置此環境來測試和試驗各種案例。
+此範例會建立簡單 DMZ，其內含四個 Windows 伺服器和網路安全性群組。 此範例也會逐步解說每個相關命令，以讓您更加深入地了解每個步驟。 另外您還會看到＜流量案例＞一節，本節提供深入的逐步說明，讓您知道流量是如何流經 DMZ 內的各個防禦層。 最後則有＜參考＞一節，本節提供完整的程式碼和指示，以供您建置此環境來測試和試驗各種案例。 
 
-![具有 NSG 的輸入 DMZ][1]
+![輸入 nsg DMZ][] 1
 
 ## 環境描述
-
 此範例中，有一個訂用帳戶包含下列項目：
 
 - 兩個雲端服務：“FrontEnd001” 和 “BackEnd001”
@@ -36,27 +34,24 @@
 - 兩個代表應用程式後端伺服器的 Windows Server (“AppVM01”、“AppVM02”)
 - 一個代表 DNS 伺服器的 Windows Server ("DNS01")
 
-在下面的＜參考＞一節中有提供 PowerShell 指令碼，其可建置上述的大部分環境。 至於 VM 和虛擬網路的建置，雖然也是由此範例指令碼來完成，但本文不會詳加敘述。
+在下面的＜參考＞一節中有提供 PowerShell 指令碼，其可建置上述的大部分環境。 至於 VM 和虛擬網路的建置，雖然也是由此範例指令碼來完成，但本文不會詳加敘述。 
 
 建置環境：
 
-  1.    Save the network config xml file included in the references section (updated with names, location, and IP addresses to match the given scenario)
+  1.    儲存＜參考＞一節中所包含的網路組態 xml 檔 (更新名稱、位置和 IP 位址以符合給定的案例)
+  2.    更新指令碼中的使用者變數，以符合要用來執行指令碼的環境 (訂用帳戶、服務名稱等)
+  3.    在 PowerShell 中執行指令碼
 
-  2.    Update the user variables in the script to match the environment the script is to be run against (subscriptions, service names, etc)
-
-  3.    Execute the script in PowerShell
-
-
-**注意**：PowerShell 指令碼中所指的區域必須符合網路組態 xml 檔中所指的區域。
+**請注意**: 如此 PowerShell 指令碼中的區域必須符合的網路組態 xml 檔中表示的區域。
 
 指令碼順利執行後，即可採取其他選擇性步驟，＜參考＞一節中有兩個指令碼，其會設定 Web 伺服器和具有簡單 Web 應用程式的應用程式伺服器，以便能使用此 DMZ 組態進行測試。
 
 下列各節藉由逐步解說 PowerShell 指令碼的重要程式行，詳細說明此範例的網路安全性群組和其運作方式。
 
 ## 網路安全性群組 (NSG)
+此範例會建置 NSG 群組，然後在其中載入六個規則。 
 
-此範例會建置 NSG 群組，然後在其中載入六個規則。
->[AZURE.TIP] 一般而言，您應該先建立特定的「允許」規則，最後再建立較一般的「拒絕」規則。 所指定的優先順序會決定要先評估哪些規則。 一旦發現流量適用特定規則，就不會再評估後續規則。 NSG 規則可以套用在輸入或輸出方向 (從子網路的觀點出發)。
+>[AZURE.TIP] 一般而言，您應該先建立特定的 「 允許 」 規則，然後更一般的 「 拒絕 」 規則的最後一個。 所指定的優先順序會決定要先評估哪些規則。 一旦發現流量適用特定規則，就不會再評估後續規則。 NSG 規則可以套用在輸入或輸出方向 (從子網路的觀點出發)。
 
 指令碼會以宣告方式為輸入流量建置下列規則：
 
@@ -78,7 +73,7 @@
         New-AzureNetworkSecurityGroup -Name $NSGName `
             -Location $DeploymentLocation `
             -Label "Security group for $VNetName subnets in $DeploymentLocation"
-
+ 
 2.  此範例中的第一個規則會允許所有內部網路之間的 DNS 流量流往 Backend 子網路上的 DNS 伺服器。 此規則有一些重要參數：
   - “Type” 代表此規則的流量作用方向；此方向是從子網路或虛擬機器的觀點出發 (取決於此 NSG 的繫結對象為何者)。 因此，如果 Type 是 “Inbound” 且流量進入子網路，此規則將會適用，而離開子網路的流量則不受此規則所影響。
   - "Priority" 會設定流量的評估順序。 編號愈低，優先順序就愈高。 一有規則適用於特定流量，就不會再處理其他規則。 因此，如果優先順序為 1 的規則允許流量，優先順序為 2 的規則拒絕流量，而這兩個規則皆適用於流量，則會允許流量流動 (規則 1 有更高的優先順序，所以會生效，並且不會再套用其他規則)。
@@ -91,7 +86,6 @@
                 -DestinationAddressPrefix $VMIP[4] `
                 -DestinationPortRange '53' `
                 -Protocol *
-
 
 3.  此規則會允許 RDP 流量從網際網路流往 VNET 中任一子網路上任何伺服器的 RDP 連接埠。 此規則使用兩種特殊位址前置詞：“VIRTUAL_NETWORK” 和 “INTERNET”。 其可輕易處理較大類別的位址前置詞。
 
@@ -122,8 +116,8 @@
         -DestinationAddressPrefix $VMIP[2] `
         -DestinationPortRange '*' `
         -Protocol *
-
-6.  此規則會拒絕從網際網路到網路上任何伺服器的流量。 結合優先順序為 110 和 120 的規則，將可只允許輸入網際網路流量流往防火牆以及 RDP 連接埠流往其他伺服器，除此之外的其他流量則予以封鎖。
+ 
+6.  此規則會拒絕從網際網路到網路上任何伺服器的流量。 結合優先順序為 110 和 120 的規則，將可只允許輸入網際網路流量流往防火牆以及 RDP 連接埠流往其他伺服器，除此之外的其他流量則予以封鎖。 
 
         Get-AzureNetworkSecurityGroup -Name $NSGName | `
             Set-AzureNetworkSecurityRule `
@@ -133,7 +127,7 @@
             -DestinationAddressPrefix VIRTUAL_NETWORK `
             -DestinationPortRange '*' `
             -Protocol *
-
+ 
 7.  最後一個規則會拒絕從 Frontend 子網路到 Backend 子網路的流量。 這是僅限輸入的規則，所以允許反向流量 (從 Backend 到 Frontend)。
 
         Get-AzureNetworkSecurityGroup -Name $NSGName | `
@@ -145,63 +139,46 @@
             -DestinationPortRange '*' `
             -Protocol * 
 
-
 ## 流量案例
-
-#### (*允許*) Web 到 Web 伺服器
-
+#### (*允許*) 網頁至網頁伺服器
 1.  網際網路使用者從 FrontEnd001.CloudApp.Net (網際網路面向雲端服務) 要求 HTTP 頁面
 2.  雲端服務透過連接埠 80 上的開放端點將流量傳遞至 IIS01 (Web 伺服器)
 3.  Frontend 子網路開始處理輸入規則：
-  1.    NSG Rule 1 (DNS) doesn’t apply, move to next rule
-
-  2.    NSG Rule 2 (RDP) doesn’t apply, move to next rule
-
-  3.    NSG Rule 3 (Internet to IIS01) does apply, traffic is allowed, stop rule processing
-
+  1.    NSG 規則 1 (DNS) 不適用，移至下一個規則
+  2.    NSG 規則 2 (RDP) 不適用，移至下一個規則
+  3.    NSG 規則 3 (網際網路到 IIS01) 適用，允許流量，停止處理規則
 4.  流量抵達 Web 伺服器 IIS01 的內部 IP 位址 (10.0.1.5)
 5.  IIS01 正在接聽 Web 流量，接收此要求並開始處理要求
 6.  IIS01 向 AppVM01 上的 SQL Server 要求資訊
 7.  Frontend 子網路上沒有輸出規則，允許流量
 8.  Backend 子網路開始處理輸入規則：
-  1.    NSG Rule 1 (DNS) doesn’t apply, move to next rule
-
-  2.    NSG Rule 2 (RDP) doesn’t apply, move to next rule
-
-  3.    NSG Rule 3 (Internet to Firewall) doesn’t apply, move to next rule
-
-  4.    NSG Rule 4 (IIS01 to AppVM01) does apply, traffic is allowed, stop rule processing
-
+  1.    NSG 規則 1 (DNS) 不適用，移至下一個規則
+  2.    NSG 規則 2 (RDP) 不適用，移至下一個規則
+  3.    NSG 規則 3 (網際網路到防火牆) 不適用，移至下一個規則
+  4.    NSG 規則 4 (IIS01 到 AppVM01) 適用，允許流量，停止處理規則
 9.  AppVM01 接收 SQL 查詢並回應
 10. Backend 子網路上沒有輸出規則，所以允許回應
 11. Frontend 子網路開始處理輸入規則：
-  1.    There is no NSG rule that applies to Inbound traffic from the Backend subnet to the Frontend subnet, so none of the NSG rules apply
-
-  2.    The default system rule allowing traffic between subnets would allow this traffic so the traffic is allowed.
-
+  1.    Backend 子網路到 Frontend 子網路的輸入流量沒有適用的 NSG 規則，因此不會套用任何 NSG 規則
+  2.    允許子網路間流量的預設系統規則會允許此流量，因此允許流量。
 12. IIS 伺服器接收 SQL 回應、完成 HTTP 回應並傳送給要求者
 13. Frontend 子網路上沒有輸出規則，所以允許回應，網際網路使用者會收到要求的網頁。
 
-#### (*允許*) RDP 到 Backend
-
+#### (*允許*) RDP 到後端
 1.  網際網路上的伺服器管理員在 BackEnd001.CloudApp.Net:xxxxx 上要求 AppVM01 的 RDP 工作階段，其中 xxxxx 是 RDP 到 AppVM01 的隨機指派連接埠號碼 (在 Azure 入口網站上或透過 PowerShell，即可找到指派的連接埠)
 2.  Backend 子網路開始處理輸入規則：
-  1.    NSG Rule 1 (DNS) doesn’t apply, move to next rule
-
-  2.    NSG Rule 2 (RDP) does apply, traffic is allowed, stop rule processing
-
+  1.    NSG 規則 1 (DNS) 不適用，移至下一個規則
+  2.    NSG 規則 2 (RDP) 適用，允許流量，停止處理規則
 3.  由於沒有輸出規則，會套用預設規則並允許傳回的流量
 4.  已啟用 RDP 工作階段
 5.  AppVM01 會提示輸入使用者名稱和密碼
 
-#### (*允許*) DNS 伺服器上的 Web 伺服器 DNS 查閱
-
+#### (*允許*) DNS 伺服器上的 Web 伺服器的 DNS 查閱
 1.  Web 伺服器 IIS01 需要 www.data.gov 的資料摘要，但需要解析位址。
 2.  VNet 的網路組態將 DNS01 (Backend 子網路上的 10.0.2.4) 列為主要 DNS 伺服器，IIS01 將 DNS 要求傳送至 DNS01
 3.  Frontend 子網路上沒有輸出規則，允許流量
 4.  Backend 子網路開始處理輸入規則：
   1.     NSG Rule 1 (DNS) does apply, traffic is allowed, stop rule processing
-
 5.  DNS 伺服器收到要求
 6.  DNS 伺服器沒有快取的位址，並要求網際網路上的根 DNS 伺服器
 7.  Backend 子網路上沒有輸出規則，允許流量
@@ -209,75 +186,56 @@
 9.  DNS 伺服器快取回應，然後將初始要求回應到 IIS01
 10. Backend 子網路上沒有輸出規則，允許流量
 11. Frontend 子網路開始處理輸入規則：
-  1.    There is no NSG rule that applies to Inbound traffic from the Backend subnet to the Frontend subnet, so none of the NSG rules apply
-
-  2.    The default system rule allowing traffic between subnets would allow this traffic so the traffic is allowed
-
+  1.    Backend 子網路到 Frontend 子網路的輸入流量沒有適用的 NSG 規則，因此不會套用任何 NSG 規則
+  2.    允許子網路間流量的預設系統規則會允許此流量，因此允許流量
 12. IIS01 從 DNS01 接收回應
 
-#### (*允許*) Web 伺服器存取 AppVM01 上的檔案
-
+#### (*允許*) AppVM01 上的 Web 伺服器存取檔案
 1.  IIS01 要求 AppVM01 上的檔案
 2.  Frontend 子網路上沒有輸出規則，允許流量
 3.  Backend 子網路開始處理輸入規則：
-  1.    NSG Rule 1 (DNS) doesn’t apply, move to next rule
-
-  2.    NSG Rule 2 (RDP) doesn’t apply, move to next rule
-
-  3.    NSG Rule 3 (Internet to IIS01) doesn’t apply, move to next rule
-
-  4.    NSG Rule 4 (IIS01 to AppVM01) does apply, traffic is allowed, stop rule processing
-
+  1.    NSG 規則 1 (DNS) 不適用，移至下一個規則
+  2.    NSG 規則 2 (RDP) 不適用，移至下一個規則
+  3.    NSG 規則 3 (網際網路到 IIS01) 不適用，移至下一個規則
+  4.    NSG 規則 4 (IIS01 到 AppVM01) 適用，允許流量，停止處理規則
 4.  AppVM01 接收要求並以檔案回應 (假設已獲得存取授權)
 5.  Backend 子網路上沒有輸出規則，所以允許回應
 6.  Frontend 子網路開始處理輸入規則：
-  1.    There is no NSG rule that applies to Inbound traffic from the Backend subnet to the Frontend subnet, so none of the NSG rules apply
-
-  2.    The default system rule allowing traffic between subnets would allow this traffic so the traffic is allowed.
-
+  1.    Backend 子網路到 Frontend 子網路的輸入流量沒有適用的 NSG 規則，因此不會套用任何 NSG 規則
+  2.    允許子網路間流量的預設系統規則會允許此流量，因此允許流量。
 7.  IIS 伺服器接收檔案
 
-#### (*拒絕*) Web 到 Backend 伺服器
-
+#### (*拒絕*) 到後端伺服器的 Web
 1.  網際網路使用者嘗試透過 BackEnd001.CloudApp.Net 服務存取 AppVM01 上的檔案
 2.  因為沒有用於檔案共用的開放端點，此流量不會通過雲端服務到達伺服器
 3.  如果基於某些原因而開放端點，NSG 規則 5 (網際網路到 VNet) 會封鎖此流量
 
 #### (*拒絕*) DNS 伺服器上的 Web DNS 查閱
-
 1.  網際網路使用者嘗試透過 BackEnd001.CloudApp.Net 服務查閱 DNS01 上的內部 DNS 記錄
 2.  因為沒有用於 DNS 的開放端點，此流量不會通過雲端服務到達伺服器
 3.  如果基於某些原因而開放端點，NSG 規則 5 (網際網路到 VNet) 會封鎖此流量 (注意：有兩個原因導致規則 1 (DNS) 不適用，首先，來源位址是網際網路，此規則只適用於以本機 VNet 做為來源，再者，這是允許規則，所以它永遠不會拒絕流量)
 
-#### (*拒絕*) Web 透過防火牆對 SQL 進行存取
-
+#### (*拒絕*) 以透過防火牆的 SQL 存取 Web
 1.  網際網路使用者從 FrontEnd001.CloudApp.Net (網際網路面向雲端服務) 要求 SQL 資料
 2.  因為沒有用於 SQL 的開放端點，此流量不會通過雲端服務到達防火牆
 3.  如果基於某些原因而開放端點，Frontend 子網路會開始處理輸入規則：
-  1.    NSG Rule 1 (DNS) doesn’t apply, move to next rule
-
-  2.    NSG Rule 2 (RDP) doesn’t apply, move to next rule
-
-  3.    NSG Rule 3 (Internet to IIS01) does apply, traffic is allowed, stop rule processing
-
+  1.    NSG 規則 1 (DNS) 不適用，移至下一個規則
+  2.    NSG 規則 2 (RDP) 不適用，移至下一個規則
+  3.    NSG 規則 3 (網際網路到 IIS01) 適用，允許流量，停止處理規則
 4.  流量抵達 IIS01 的內部 IP 位址 (10.0.1.5)
 5.  IIS01 未接聽連接埠 1433，所以要求沒有回應
 
 ## 結論
-
 這種隔離後端子網路與輸入流量的方式相當直接簡單。
 
-您可以找到更多範例，以及網路安全性界限概觀 [這裡的 ][home]。
+更多範例，以及網路安全性界限概觀可以找到 [這裡] [首頁]。
 
 ## 參考
-
 ### 主要的指令碼和網路組態
-
 將完整指令碼儲存在 PowerShell 指令碼檔案中。 將網路組態儲存到名為 “NetworkConf1.xml” 的檔案。
 視需要修改使用者定義的變數。 執行指令碼，然後依照上面的＜範例 1＞一節中所含的防火牆規則設定指示進行。
 
 #### 完整指令碼
-
 根據使用者定義的變數，此指令碼會執行下列動作：
 
 1.  連線到 Azure 訂用帳戶
@@ -290,7 +248,8 @@
   - 將 NSG 繫結至適當的子網路
 
 此 PowerShell 指令碼應該在連線到網際網路的電腦或伺服器上本機執行。
->[AZURE.IMPORTANT] 此指令碼在執行時，PowerShell 中可能會跳出警告或其他參考訊息。 只有紅色字體的錯誤訊息才需要擔心。
+
+>[AZURE.IMPORTANT] 當執行這個指令碼時，可能會有警告或其他在 PowerShell 中顯示的資訊訊息。 只有紅色字體的錯誤訊息才需要擔心。
 
 
     <# 
@@ -305,7 +264,7 @@
        - One server on the FrontEnd Subnet
        - Three Servers on the BackEnd Subnet
        - Network Security Groups to allow/deny traffic patterns as declared
-    
+      
       Before running script, ensure the network configuration file is created in
       the directory referenced by $NetworkConfigFile variable (or update the
       variable to reflect the path and file name of the config file being used).
@@ -320,7 +279,7 @@
     
       FrontEnd Service (FrontEnd subnet 10.0.1.0/24)
        IIS01      - 10.0.1.5
-    
+     
       BackEnd Service (BackEnd subnet 10.0.2.0/24)
        DNS01      - 10.0.2.4
        AppVM01    - 10.0.2.5
@@ -364,7 +323,7 @@
     
       # VM Base Disk Image Details
         $SrvImg = Get-AzureVMImage | Where {$_.ImageFamily -match 'Windows Server 2012 R2 Datacenter'} | sort PublishedDate -Descending | Select ImageName -First 1 | ForEach {$_.ImageName}
-    
+      
       # NSG Details
         $NSGName = "MyVNetSG"
     
@@ -414,12 +373,12 @@
           $size += "Standard_D3"
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.4"
-    
+
     # ----------------------------- #
     # No User Defined Varibles or   #
     # Configuration past this point #
     # ----------------------------- #   
-    
+
       # Get your Azure accounts
         Add-AzureAccount
         Set-AzureSubscription –SubscriptionId $subID -ErrorAction Stop
@@ -495,7 +454,7 @@
     
     # Configure NSG
         Write-Host "Configuring the Network Security Group (NSG)" -ForegroundColor Cyan
-    
+        
       # Build the NSG
         Write-Host "Building the NSG" -ForegroundColor Cyan
         New-AzureNetworkSecurityGroup -Name $NSGName -Location $DeploymentLocation -Label "Security group for $VNetName subnets in $DeploymentLocation"
@@ -521,7 +480,7 @@
             -SourceAddressPrefix $VMIP[0] -SourcePortRange '*' `
             -DestinationAddressPrefix $VMIP[1] -DestinationPortRange '*' `
             -Protocol *
-    
+        
         Get-AzureNetworkSecurityGroup -Name $NSGName | Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet from the Internet" -Type Inbound -Priority 140 -Action Deny `
             -SourceAddressPrefix INTERNET -SourcePortRange '*' `
             -DestinationAddressPrefix VIRTUAL_NETWORK -DestinationPortRange '*' `
@@ -547,11 +506,11 @@
       Write-Host " - Install Test Web App (Run Post-Build Script on the IIS Server)" -ForegroundColor Gray
       Write-Host " - Install Backend resource (Run Post-Build Script on the AppVM01)" -ForegroundColor Gray
       Write-Host
+      
 
 #### 網路組態檔
-
 以更新的位置儲存此 xml 檔案，並將此檔案的連結加入到上述指令碼中的 $NetworkConfigFile 變數。
-
+    
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
@@ -583,13 +542,13 @@
     </NetworkConfiguration>
 
 #### 範例應用程式指令碼
+如果您想要安裝範例應用程式及周邊網路中的其他範例，其中一個已提供下列連結: [範例應用程式指令碼] [SampleApp]
 
-如果您想要安裝範例應用程式及周邊網路中的其他範例，其中一個已提供下列連結: [範例應用程式指令碼 ][sampleapp]
-
-
-
-
+<!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-asm/example1design.png "Inbound DMZ with NSG"
-[home]: ../best-practices-network-security.md 
-[sampleapp]: ./virtual-networks-sample-app.md 
+
+<!--Link References-->
+[HOME]: ../best-practices-network-security.md
+[SampleApp]: ./virtual-networks-sample-app.md
+
 

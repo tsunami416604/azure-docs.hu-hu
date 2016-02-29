@@ -17,8 +17,7 @@
     ms.date="10/23/2015"
     ms.author="cynthn"/>
 
-
-# 關於 Azure 虛擬機器
+#關於 Azure 虛擬機器 
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -37,20 +36,19 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 [建立執行 Linux 的虛擬機器](virtual-machines-linux-tutorial.md)
 
-[建立執行 Windows Azure 入口網站中的虛擬機器](virtual-machines-windows-tutorial.md)
+[在 Azure 入口網站中建立執行 Windows 的虛擬機器](virtual-machines-windows-tutorial.md)
 
 由於這些教學課程可協助您快速建立虛擬機器，因此它們顯示您只有一種方式可以使用，而不會說明您可用來建立虛擬機器的各種工具。 如需這些工具與指示連結的摘要，請參閱：
 
-[若要建立 Linux 虛擬機器的不同方式](virtual-machines-linux-choices-create-vm.md)
+[建立 Linux 虛擬機器的不同方式](virtual-machines-linux-choices-create-vm.md)
 
-[若要建立 Windows 虛擬機器的不同方式](virtual-machines-windows-choices-create-vm.md)
+[建立 Windows 虛擬機器的不同方式](virtual-machines-windows-choices-create-vm.md)
 
 如果您剛開始了解 Azure 虛擬機器，請確定也瞧瞧 [常見問題集](virtual-machines-questions.md)。
 
 
-
-
-[app service]: app-service-choose-me.md 
-[virtual machines]: #tellmevm 
-[cloud services]: cloud-services-choose-me.md 
+<!--links-->
+[App Service]: app-service-choose-me.md
+[Virtual Machines]: #tellmevm
+[Cloud Services]: cloud-services-choose-me.md
 

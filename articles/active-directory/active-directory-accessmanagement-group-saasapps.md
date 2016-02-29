@@ -1,20 +1,21 @@
+
 <properties
-    pageTitle ="使用群組來管理存取 SaaS 應用Microsoft Azure 「
-    描述 ="如何使用 Azure Active Directory Premium 或 Basic 中的群組來指派存取權與 Azure Active Directory 整合的 SaaS 應用程式 」。
-    服務 = [active directory]
+    pageTitle="使用群組管理 SaaS 應用程式的存取權 | Microsoft Azure"
+    description="如何使用 Azure Active Directory Premium 或 Basic 中的群組指派與 Azure Active Directory 整合的 SaaS 應用程式存取權。"
+    services="active-directory"
     documentationCenter=""
-    作者 ="curtand"
-    管理員 ="stevenpo"
+    authors="curtand"
+    manager="stevenpo"
     editor=""/>
 
 <tags
-    ms.service= [active directory]
-    ms.workload="identity 」
+    ms.service="active-directory"
+    ms.workload="identity"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="11/17/2015 」
-    ms.author="curtand"/ >
+    ms.date="11/17/2015"
+    ms.author="curtand"/>
 
 
 # 使用群組管理 SaaS 應用程式的存取權
@@ -25,13 +26,15 @@
 
 **將群組存取權指派給 SaaS 應用程式**
 
-1. 開啟您選擇的瀏覽器並瀏覽至 Azure 入口網站。 在 Azure 入口網站中，於左側導覽列上找到 [Active Directory 延伸模組]。 在 [目錄]**** 索引標籤上，按一下您要將群組存取權指派給 Saas 應用程式所在的目錄。
+1. 開啟您選擇的瀏覽器並瀏覽至 Azure 入口網站。 在 Azure 入口網站中，於左側導覽列上找到 [Active Directory 延伸模組]。 在 **目錄** 索引標籤上，按一下您要將群組存取權指派給 Saas 應用程式的目錄。
 
-2. 為您的目錄按一下 [**應用程式**] 索引標籤。 選取您從應用程式組件庫新增應用程式，然後按一下 [ **使用者和群組** ] 索引標籤。
 
-3. 在 [**使用者和群組**] 索引標籤的 [**開頭是**] 欄位中，輸入您要為其指派存取權的群組的名稱，按一下右上角的核取記號。 您只需要輸入群組名稱的第一個部分。 接著，按一下該群組以醒目提示，再按一下 [**指派存取權**]按鈕，然後在您看到確認訊息時，按一下 [**是**]。
+2. 按一下 [ **應用程式** 目錄] 索引標籤。 選取您從應用程式組件庫新增應用程式，然後按一下 [ **使用者和群組** ] 索引標籤。
 
-4. 您也可以直接或透過群組中的成員資格，查看哪些使用者指派給應用程式。 若要這樣做，請將 **[顯示下拉式清單] 從 [群組]** 變更為 [**所有使用者**]。 此清單會顯示目錄中的使用者，以及每個使用者是否指派給應用程式。 此清單也會顯示獲指派的使用者是直接 (指派類型顯示為 [直接])，還是透過群組成員資格 (指派類型顯示為 [繼承]) 指派給應用程式。
+3. 在 **使用者和群組** 索引標籤的 **開頭** 欄位中輸入您要指派存取權，群組的名稱，然後按一下右上角的核取記號。 您只需要輸入群組名稱的第一個部分。 然後，按一下以反白顯示，在群組上，然後按一下 **指派存取權** 按鈕，然後按一下 **是** 當您看到確認訊息。
+
+
+4. 您也可以直接或透過群組中的成員資格，查看哪些使用者指派給應用程式。 若要這樣做，請變更 **顯示下拉式清單中，從 [群組]** 至 **[所有使用者]**。 此清單會顯示目錄中的使用者，以及每個使用者是否指派給應用程式。 此清單也會顯示獲指派的使用者是直接 (指派類型顯示為 [直接])，還是透過群組成員資格 (指派類型顯示為 [繼承]) 指派給應用程式。
 
 
 > [AZURE.NOTE]
@@ -39,13 +42,9 @@
 
 這些文章提供有關 Azure Active Directory 的其他資訊。
 
-* [使用 Azure Active Directory 群組管理資源的存取權](active-directory-manage-groups.md)
+* [使用 Azure Active Directory 群組來管理資源的存取權](active-directory-manage-groups.md)
 
-* [什麼是 Azure Active Directory?](active-directory-whatis.md)
+* [什麼是 Azure Active Directory？](active-directory-whatis.md)
 
 * [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)
-
-
-
-
 

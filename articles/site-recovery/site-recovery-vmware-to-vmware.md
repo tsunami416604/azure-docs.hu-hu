@@ -17,15 +17,15 @@
     ms.author="raynew"/>
 
 
-
 # 設定內部部署 VMware 網站之間的保護
+
 
 ## 概觀
 
 Azure Site Recovery 中的 InMage Scout 可提供內部部署 VMware 網站之間的即時複寫。 InMage Scout 包含在 Azure Site Recovery 服務訂用帳戶中。
 
 
-## 必要條件
+## 先決條件
 
 - **Azure 帳戶**— 您將需要 [Microsoft Azure](http://azure.microsoft.com/) 帳戶。 您可以開始 [免費試用版](pricing/free-trial/)。
 
@@ -33,18 +33,18 @@ Azure Site Recovery 中的 InMage Scout 可提供內部部署 VMware 網站之�
 ## 步驟 1：建立保存庫
 
 1. 登入 [管理入口網站](https://portal.azure.com)。
-2. 按一下 [資料服務]**** > [復原服務]****，然後按一下 [Site Recovery 保存庫]****。
-3. 按一下 [新建]**** > [快速建立]****。
-4. 在 [名稱]**** 中，輸入一個可識別保存庫的易記名稱。
-5. 在 [區域]**** 中，選取保存庫的地理區域。 若要檢查支援的地區，請參閱在上市 [Azure Site Recovery 定價詳細資料](pricing/details/site-recovery/)。
+2. 按一下 [ **Data Services** > **復原服務** > **Site Recovery 保存庫**。
+3. 按一下 [ **新建** > **快速建立**。
+4. 在 **名稱** 輸入易記名稱來識別保存庫。
+5. 在 **區域** 選取保存庫的地理區域。 若要檢查支援的地區，請參閱在上市 [Azure Site Recovery 定價詳細資料](pricing/details/site-recovery/)。
 
-檢查狀態列，以確認是否順利建立保存庫。 保存庫在主要復原服務頁面上會列為 [使用中]****。
+檢查狀態列，以確認是否順利建立保存庫。 保存庫會被列為 **Active** 在主要復原服務頁面上。
 
 ## 步驟 2：設定保存庫並下載 InMage Scout 元件
 
-1. 按一下 [建立保存庫]****。
+1. 按一下 [ **建立保存庫**。
 2. 在 [復原服務]**** 頁面中，按一下保存庫以開啟 [快速啟動] 頁面。
-3. 在下拉式清單中，選取 [**兩個內部部署 VMWare 網站之間**]。
+3. 在下拉式清單中，選取 **兩個內部部署 VMware 站台之間**。
 4. 下載 InMage Scout。 所有必要元件的安裝程式檔案都在下載的 zip 檔中。
 
 
@@ -68,14 +68,13 @@ Azure Site Recovery 中的 InMage Scout 可提供內部部署 VMware 網站之�
     -  UA_RHEL6-64_8.0.1.0_GA_Update_1_3259401_23Jun15.tar.gz
     -  vCon_Windows_8.0.1.0_GA_Update_1_3259523_23Jun15.exe
 2. 解壓縮 zip 檔案。
-2. **RX 伺服器**：將 **RX_8.0.1.0_GA_Update_1_3279231_23Jun15.tar.gz** 複製到 RX 伺服器並將其解壓縮。 在解壓縮的資料夾中執行 **/Install**。
-2. **設定伺服器/處理序伺服器**：將 **CX_Windows_8.0.2.0_GA_Update_2_4306954_21Aug15.exe** 複製設定伺服器和處理序伺服器。 連按兩下加以執行。
+2. **RX 伺服器**: 複製 **RX_8.0.1.0_GA_Update_1_3279231_23Jun15.tar.gz** 到 RX 伺服器並將它解壓縮。 在解壓縮的資料夾執行 **/安裝**。
+2. **設定伺服器/處理序伺服器**: 複製 **CX_Windows_8.0.2.0_GA_Update_2_4306954_21Aug15.exe** 來設定伺服器和處理序伺服器。 連按兩下加以執行。
 3. **Windows 主要目標伺服器**: 若要更新整合代理程式複製 **UA_Windows_8.0.1.0_GA_Update_1_3259401_23Jun15.exe** 主要目標伺服器。 連按兩下加以執行。 請注意，適用於 Windows 的整合代理程式不適用於來源伺服器。 它應該只安裝在 Windows 主要目標伺服器上。
-4. **Linux 主要目標伺服器**: 若要更新整合代理程式複製 **UA_RHEL6 64_8.0.1.0_GA_Update_1_3259401_23Jun15.tar.gz** 至主要目標伺服器，並將它解壓縮。 在解壓縮的資料夾中執行 **/Install**。
-5. **vContinuum 伺服器**：將 **vCon_Windows_8.0.1.0_GA_Update_1_3259523_23Jun15.exe** 複製到 vContinuum 伺服器。 確定您已經關閉 vContinuum 精靈。 連按兩下檔案加以執行。
+4. **Linux 主要目標伺服器**: 若要更新整合代理程式複製 **UA_RHEL6 64_8.0.1.0_GA_Update_1_3259401_23Jun15.tar.gz** 至主要目標伺服器，並將它解壓縮。 在解壓縮的資料夾執行 **/安裝**。
+5. **vContinuum 伺服器**: 複製 **vCon_Windows_8.0.1.0_GA_Update_1_3259523_23Jun15.exe** 到 vContinuum 伺服器。 確定您已經關閉 vContinuum 精靈。 連按兩下檔案加以執行。
 
 ## 步驟 4：設定複寫
-
 5. 設定來源與目標 VMware 網站之間的複寫。
 6. 如需指引，請使用隨產品下載的 InMage Scout 文件。 或者，您可以存取下列文件：
 
@@ -92,13 +91,13 @@ Azure Site Recovery 中的 InMage Scout 可提供內部部署 VMware 網站之�
 
 更新 03-Dec-15 中的修正包括：
 
-- **組態伺服器** — 修正當組態伺服器登錄在 Site Recovery 時，會阻止 31 天免費計量功能正常運作的問題。
-- **整合代理程式** — 修正更新 1 中導致 8.0 版升級至 8.0.1 版之後，主要目標未安裝在主要目標伺服器上升的問題。
+- **設定伺服器** — 可以修正這個問題，如預期般在 Site Recovery 註冊設定伺服器時，所以 31 天的免費計量功能無法運作。
+- **整合代理程式** — 更新 1 中修正的問題的主要目標，導致未安裝在主要目標伺服器上升級至 8.0.1 8.0 版的更新。
 
 >[AZURE.NOTE]
 >
->-所有 ASR 更新都是累計的。
->回一旦套用系統上，無法回復-CS 和接收更新。
+>-  所有的 ASR 更新都是累計的。
+>-  一旦在系統上套用 CS 和 RX 更新便無法回復。
 
 
 ### ASR Scout 8.0.1 Update 1
@@ -123,15 +122,11 @@ Azure Site Recovery 中的 InMage Scout 可提供內部部署 VMware 網站之�
     - 不會如預期般強制執行重新同步臨界值，因而導致不一致的複寫行為。
     - RPO 並未正確地顯示在設定伺服器介面中。 未壓縮的資料值未正確地顯示壓縮的值。
     -  未如預期在 vContinuum 精靈中刪除移除作業，而且未從設定伺服器介面中刪除複寫作業。
-    -  在 VContinuum 精靈中，在 MSCS 虛擬機器的保護期間，按一下磁碟檢視中的 [詳細資料]****，磁碟就會自動取消選取。
+    -  在 vContinuum 精靈中的磁碟已自動取消選取時按一下 **詳細資料** MSCS 虛擬機器的保護期間磁碟檢視中。
     - 在 P2V 案例期間，必要的 HP 服務 (例如 CIMnotify、CqMgHost) 不會移至復原虛擬機器中的 [手動]，結果是產生額外的開機時間。
     - 主要目標伺服器上有超過 26 個磁碟時，受保護的 Linux 虛擬機器就會失敗。
 
 ## 後續步驟
 
 張貼至任何 [Azure 復原服務論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
-
-
-
-
 

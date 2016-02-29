@@ -3,7 +3,7 @@
 若要使用 Azure CLI 部署您下載的 ARM 範本，請依照下列步驟執行。
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli-install.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
-2. 執行 **azure config mode** 命令，以切換為資源管理員模式，如下所示。
+2. 執行 **azure 組態模式** 命令以切換至資源管理員模式，如下所示。
 
         azure config mode arm
 
@@ -11,7 +11,7 @@
 
         info:    New mode is arm
 
-3. 如有必要，請執行 **azure group create** 來建立新的資源群組，如下所示。 請查看命令的輸出內容。 輸出後顯示的清單可說明所使用的參數。 如需資源群組的詳細資訊，請瀏覽 [Azure 資源管理員概觀](resource-group-overview.md)。
+3. 如果有必要，請執行 **azure 群組建立** 來建立新的資源群組，如下所示。 請查看命令的輸出內容。 輸出後顯示的清單可說明所使用的參數。 如需資源群組的詳細資訊，請瀏覽 [Azure 資源管理員概觀](resource-group-overview.md)。
 
         azure group create -n TestRG -l centralus
 
@@ -29,10 +29,10 @@
         data:
         info:    group create command OK
 
-    - **-n (或 --name)**。 新資源群組的名稱。 在本文案例中為 *TestRG*。
-    - **-l (或 --location)**。 將會在當中建立新資源群組的 Azure 區域。 在本文案例中為 *centralus*。
+    - **-n (或--名稱)**。 新資源群組的名稱。 我們的案例， *TestRG*。
+    - **-l (或--location)**。 將會在當中建立新資源群組的 Azure 區域。 我們的案例， *centralus*。
 
-4. 執行 **azure group deployment create** Cmdlet，以使用先前所下載及修改的範本和參數檔案部署新的 VNet。 輸出後顯示的清單可說明所使用的參數。
+4. 執行 **azure 群組部署建立** 指令程式來部署新的 VNet 使用的範本和參數檔案下載並修改上面。 輸出後顯示的清單可說明所使用的參數。
 
         azure group deployment create -g TestRG -n TestVNetDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
 
@@ -61,11 +61,11 @@
         data:    subnet2Name    String  BackEnd
         info:    group deployment create command OK
 
-    - **-g (或 --resource-group)**。 要建立新 VNet 的資源群組名稱。
-    - **-f (或 --template-file)**。 ARM 範本檔案的路徑。
-    - **-e (或 --parameters-file)**。 ARM 參數檔案的路徑。
+    - **-g (或--資源群組)**。 要建立新 VNet 的資源群組名稱。
+    - **-f (或--範本檔案)**。 ARM 範本檔案的路徑。
+    - **-e (或--參數檔案)**。 ARM 參數檔案的路徑。
 
-5. 執行 **azure network vnet show** 命令以檢視新 Vnet 的屬性，如下所示。
+5. 執行 **azure 網路 vnet 顯示** 命令來檢視新的 vnet 的屬性，如下所示。
 
         azure network vnet show -g TestRG -n TestVNet
 
@@ -88,9 +88,4 @@
         data:      Address prefix                : 192.168.2.0/24
         data:
         info:    network vnet show command OK
-
-
-
-
-
 

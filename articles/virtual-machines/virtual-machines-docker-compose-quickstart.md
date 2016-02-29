@@ -17,10 +17,9 @@
    ms.date="11/16/2015"
    ms.author="danlep"/>
 
-
 # 在 Azure 虛擬機器上開始使用 Docker 和 Compose 定義並執行多容器應用程式
 
-本文將說明如何開始使用 Docker 和 [撰寫](http://github.com/docker/compose) 來定義並在 Azure 中的 Linux 虛擬機器上執行複雜的應用程式。 藉由 Compose (*Fig* 的後續版本)，您可使用簡單的文字檔，定義多個 Docker 容器所組成的應用程式。 然後您可以透過可進行所有操作以便在 VM 上執行的單一命令，啟動您的應用程式。 例如，本文將說明如何藉由後端 MariaDB SQL 資料庫快速設定 WordPress 部落格，但您也可以使用 Compose 來設定更複雜的應用程式。
+本文將說明如何開始使用 Docker 和 [撰寫](http://github.com/docker/compose) 來定義並在 Azure 中的 Linux 虛擬機器上執行複雜的應用程式。 使用 Compose (後續 *Fig*)，您將多個 Docker 容器所組成的應用程式定義使用簡單的文字檔。 然後您可以透過可進行所有操作以便在 VM 上執行的單一命令，啟動您的應用程式。 例如，本文將說明如何藉由後端 MariaDB SQL 資料庫快速設定 WordPress 部落格，但您也可以使用 Compose 來設定更複雜的應用程式。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [資源管理員模型](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/)。
 
@@ -34,14 +33,15 @@
 ## 步驟 2：安裝 Compose
 
 Linux VM 和 Docker 執行之後，請使用 SSH 從用戶端電腦連線到此 VM。 如果您要安裝 [撰寫](https://github.com/docker/compose/blob/882dc673ce84b0b29cd59b6815cb93f74a6c4134/docs/install.md) 執行下列兩個命令。
->[AZURE.TIP] 如果您使用了 Docker VM 延伸模組建立 VM，則 Compose 早已為您安裝好了。 請略過這些命令，並移至步驟 3。 只有在 VM 上自行安裝 Docker 時才需要安裝 Compose。
+
+>[AZURE.TIP] 如果您使用 Docker VM 延伸模組來建立 VM 時，為您已安裝 Compose。 請略過這些命令，並移至步驟 3。 只有在 VM 上自行安裝 Docker 時才需要安裝 Compose。
 
 ```
 $ curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
 $ chmod +x /usr/local/bin/docker-compose
 ```
->[AZURE.NOTE]如果出現「使用權限被拒」錯誤，表示此 VM 的 /usr/local/bin 目錄可能無法寫入，因此您必須以超級使用者的身分安裝 Compose。 執行 `sudo-i`, ，然後這兩個以上命令，然後再 `結束`。
+>[AZURE.NOTE]如果您收到 「 拒絕存取 」 錯誤，VM 的 /usr/local/bin 目錄可能無法寫入，因此您必須以超級使用者的身分安裝 Compose。 依序執行 `sudo -i`、以上兩個命令，然後再執行 `exit`。
 
 若要測試 Compose 的安裝，請執行下列命令。
 
@@ -49,14 +49,14 @@ $ chmod +x /usr/local/bin/docker-compose
 $ docker-compose --version
 ```
 
-您會看到類似的輸出 `docker compose 1.4.1`。
+您將看到類似 `docker-compose 1.4.1` 的輸出內容。
 
 
 ## 步驟 3：建立 docker-compose.yml 組態檔
 
-接下來您要建立 `docker-compose.yml` 檔案，只是一個文字組態檔案，定義要在 VM 上執行的 Docker 容器。 此檔案會指定要在每個容器上執行的映像 (或可能是來自 Dockerfile 的組建)、所需的環境變數和相依性、連接埠，容器之間的連結等等。 如需有關 yml 檔案語法的詳細資訊，請參閱 [docker compose.yml 參考](http://docs.docker.com/compose/yml/)。
+接下來，請建立 `docker-compose.yml` 檔案，這只是一個文字組態檔，用來定義要在此 VM 上執行的 Docker 容器。  此檔案會指定要在每個容器上執行的映像 (或可能是來自 Dockerfile 的組建)、所需的環境變數和相依性、連接埠，容器之間的連結等等。 如需有關 yml 檔案語法的詳細資訊，請參閱 [docker compose.yml 參考](http://docs.docker.com/compose/yml/)。
 
-在您的 VM 上建立工作目錄，並使用您偏好的文字編輯器來建立 `docker-compose.yml`。 若要嘗試簡單的範例，請將下列文字複製到檔案。 這項設定使用的映像 [DockerHub 登錄](https://registry.hub.docker.com/_/wordpress/) 安裝 WordPress (開放原始碼部落格和內容管理系統) 和連結的後端 MariaDB 資料庫。
+在 VM 上建立工作目錄，並使用您慣用的文字編輯器建立 `docker-compose.yml`。 若要嘗試簡單的範例，請將下列文字複製到檔案。 這項設定使用的映像 [DockerHub 登錄](https://registry.hub.docker.com/_/wordpress/) 安裝 WordPress (開放原始碼部落格和內容管理系統) 和連結的後端 MariaDB 資料庫。
 
  ```
  wordpress:
@@ -70,7 +70,8 @@ db:
   image: mariadb
   environment:
     MYSQL_ROOT_PASSWORD: <your password>
- ```
+
+```
 
 ## 步驟 4: 開始撰寫容器
 
@@ -78,18 +79,19 @@ db:
 
 ```
 $ docker-compose up -d
+
 ```
 
-這會啟動中指定的 Docker 容器 `docker-compose.yml`。 您會看到類似以下的輸出：
+如此會啟動 `docker-compose.yml` 中指定的 Docker 容器。 您會看到類似以下的輸出：
 
 ```
 Creating wordpress_db_1...
 Creating wordpress_wordpress_1...
 ```
 
->[AZURE.NOTE] 請務必在啟動時使用 **-d** 選項，讓容器在背景持續執行。
+>[AZURE.NOTE] 請務必使用 **-d** 選項在啟動時，讓容器在背景持續執行。
 
-若要確認容器已啟動，請輸入 `docker 撰寫 ps`。 您應該會看到如下的內容：
+若要確認容器是否已啟動，請輸入 `docker-compose ps`。 您應該會看到如下的內容：
 
 ```
 Name             Command             State              Ports
@@ -101,10 +103,11 @@ wordpress_wordpr   /entrypoint.sh     Up                 0.0.0.0:8080->80
 ess_1              apache2-for ...                       /tcp
 ```
 
-您現在可以連線到 WordPress 直接在 VM 上瀏覽至 `http://localhost:8080/`。 如果您想要透過網際網路連線至 VM，請先在將公用連接埠 80 對應至私用連接埠 8080 的 VM 上設定 HTTP 端點。 例如，在 Azure 服務管理部署中，執行下列 Azure CLI 命令：
+您現在可以在 VM 上瀏覽至 `http://localhost:8080`，以直接連線到 WordPress。 如果您想要透過網際網路連線至 VM，請先在將公用連接埠 80 對應至私用連接埠 8080 的 VM 上設定 HTTP 端點。 例如，在 Azure 服務管理部署中，執行下列 Azure CLI 命令：
 
 ```
 $ azure vm endpoint create <machine-name> 80 8080
+
 ```
 
 您現在應該會看到 WordPress 起始畫面，您可以在其中完成安裝，然後開始使用此應用程式。
@@ -119,8 +122,7 @@ $ azure vm endpoint create <machine-name> 80 8080
 * 嘗試整合 Docker Compose 與 [Docker Swarm](virtual-machines-docker-swarm.md) 叢集。 請參閱 []
 [Docker Compose/Swarm 整合](https://github.com/docker/compose/blob/master/SWARM.md) 案例。
 
+<!--Image references-->
 
-
-
-[wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png 
+[wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 

@@ -16,7 +16,6 @@
     ms.date="10/13/2015"
     ms.author="vittorib"/>
 
-
 # 整合 Azure AD 與 Apache Cordova 應用程式
 
 [AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher.md)]
@@ -29,7 +28,7 @@ Azure AD 可讓您將企業級的驗證功能加入 Cordova 應用程式中。 �
 在本教學課程中，我們將使用 Active Directory 驗證程式庫 (ADAL) 的 Apache Cordova 外掛程式，提供下列功能來改善一個簡單的應用程式：
 
 -   短短幾行程式碼，就可驗證 AD 使用者並取得權杖來呼叫 Azure AD Graph API。
--   使用該權杖叫用 Graph API 來查詢目錄，並顯示結果
+-   使用該權杖叫用 Graph API 來查詢目錄，並顯示結果  
 -   運用 ADAL 權杖快取，將使用者的驗證提示減到最少。
 
 若要執行此作業，您需要執行下列動作：
@@ -39,12 +38,12 @@ Azure AD 可讓您將企業級的驗證功能加入 Cordova 應用程式中。 �
 3. 加入程式碼以使用權杖來查詢 Graph API，並顯示結果。
 4. 使用您想要做為目標的所有平台和 Cordova ADAL 外掛程式，建立 Cordova 部署專案，並在模擬器中測試解決方案。
 
-## *0.必要條件*
+## *0.先決條件*
 
 若要完成本教學課程，您需要：
 
 - Azure AD 租用戶，您在其中有一個帳戶具備應用程式開發權限
-- 為了使用 Apache Cordova 而設定的開發環境
+- 為了使用 Apache Cordova 而設定的開發環境  
 
 如果兩者都已設定，請直接跳到步驟 1。
 
@@ -55,25 +54,25 @@ Azure AD 可讓您將企業級的驗證功能加入 Cordova 應用程式中。 �
 - [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [NodeJS](https://nodejs.org/download/)
 - [Cordova CLI](https://cordova.apache.org/)
-  (可以輕鬆地透過 NPM 封裝管理員來安裝: `npm 安裝-g cordova`)
+  (可以輕鬆地透過 NPM 封裝管理員來安裝: `npm install -g cordova`)
 
 請注意，這些都應該可以在 PC 和 Mac 上執行。
 
 每個目標平台各有不同的先決條件。
 
 - 建置和執行 Windows Tablet/PC 或 Phone 應用程式版本
-    - [Visual Studio 2013 for Windows with Update 2 或更新版本](http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-windows-8) (Express 或另一個版本)。
+    - [Visual Studio 2013 Update 2 或更新版本的 windows](http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-windows-8) (Express 或另一個版本)。
 - 針對 iOS 建置和執行
-    -   Xcode 5.x 或更新版本。 下載 http://developer.apple.com/downloads 或 [Mac App Store](http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-    -   [ios sim](https://www.npmjs.org/package/ios-sim) – 可讓您到 iOS 模擬器從命令列啟動 iOS 應用程式 (可以輕鬆地透過終端機來安裝: `npm 安裝-g ios-sim`)
+    -   Xcode 5.x 或更新版本。 下載在 http://developer.apple.com/downloads 或 [Mac App Store](http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+    -   [ios sim](https://www.npmjs.org/package/ios-sim) – 可讓您到 iOS 模擬器從命令列啟動 iOS 應用程式 (可以輕鬆地透過終端機來安裝: `npm install -g ios-sim`)
 
 - 針對 Android 建置和執行應用程式
-    - 安裝 [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 或更新版本。 請確定 `JAVA_HOME` (環境變數) 已正確設定根據 JDK 安裝路徑 (例如 C:\Program Files\Java\jdk1.7.0_75)。
-    - 安裝 [Android SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) ，並新增 `< android sdk 的位置 > \tools` 位置 (例如，C:\tools\Android\android-sdk\tools) 加入您 `路徑` 環境變數。
-    - 開啟 Android SDK Manager (例如，透過終端機: `android`) 並安裝
+    - 安裝 [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 或更新版本。 請確定 `JAVA_HOME` (環境變數) 已根據 JDK 安裝路徑 (例如 C:\Program Files\Java\jdk1.7.0_75) 正確設定。
+    - 安裝 [Android SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) ，並新增 `<android-sdk-location>\tools` 位置 (例如，C:\tools\Android\android-sdk\tools) 加入您 `PATH` 環境變數。
+    - 開啟 Android SDK Manager (例如，透過終端機：`android`) 並安裝
     - *Android 5.0.1 (API 21)* 平台 SDK
-    - *Android SDK Build-tools* 19.1.0 版或更新版本
-    - *Android Support Repository* (Extras)
+    - *Android SDK 建置工具* 19.1.0 版或更高版本
+    - *Android 支援儲存機制* (額外項目)
 
   Android sdk 並不提供任何預設模擬器執行個體。 建立一個新的執行 `android avd` 從終端機，然後選取 [ *Create...* 如果您想要在模擬器上執行 Android 應用程式。 建議 *Api 層級* 19 或更高版本，請參閱 [AVD Manager] (http://developer.android.com/tools/help/avd-manager.html) 的 Android 模擬器和建立選項的相關資訊。
 
@@ -82,7 +81,7 @@ Azure AD 可讓您將企業級的驗證功能加入 Cordova 應用程式中。 �
 
 注意：此為選用步驟。 本教學課程提供預先佈建的值，您完全不需要在自己的租用戶中佈建，就能看到可運作的範例。 不過，建議您執行這個步驟，並熟悉此程序，因為當您建立自己的應用程式時，就需要這樣做。
 
-Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶中建立應用程式的項目，才能從應用程式使用 Azure AD。 若要在您的租用戶中註冊新的應用程式，請執行下列動作：
+Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶中建立應用程式的項目，才能從應用程式使用 Azure AD。  若要在您的租用戶中註冊新的應用程式，請執行下列動作：
 
 - 登入 Azure 管理入口網站
 - 在左側導覽中按一下 Active Directory
@@ -92,7 +91,7 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
     - 應用程式的名稱將對使用者說明您的應用程式
     -   [重新導向 URI] 是用來將權杖傳回至您的應用程式的 URI。 輸入 `http://MyDirectorySearcherApp`。
 
-完成註冊後，AAD 會為您的應用程式指派一個唯一用戶端識別碼。 您在後續章節中將會用到這個值：您可以在新建立的應用程式的 [設定] 索引標籤中找到此值。
+完成註冊後，AAD 會為您的應用程式指派一個唯一用戶端識別碼。  您在後續章節中將會用到這個值：您可以在新建立的應用程式的 [設定] 索引標籤中找到此值。
 
 ## *2.複製本教學課程所需的儲存機制*
 
@@ -116,6 +115,7 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
 
 加入叫用 Graph API 所需的允許清單外掛程式。
 
+
      cordova plugin add https://github.com/apache/cordova-plugin-whitelist.git
 
 接著，加入所有您想要支援的平台。 您至少必須執行下列其中一個命令，才能發揮範例的實用性。 請注意，您無法在 Windows 模擬 iOS，或在 Mac 上模擬 Windows/Windows Phone。
@@ -130,7 +130,7 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
 
 ## *3.加入程式碼來驗證使用者，並從 AAD 取得權杖*
 
-您在本教學課程中開發應用程式會提供簡易的目錄搜尋功能，使用者可以輸入目錄中任何使用者的別名，就會呈現一些基本的屬性。 入門專案包含應用程式基本使用者介面的定義 (在 www/index.html 中)，也包含串連基本應用程式事件系列的架構、使用者介面繫結及結果顯示邏輯 (在 www/js/index.js 中)。 您剩下的工作只是加入實作識別工作的邏輯。
+您在本教學課程中開發應用程式會提供簡易的目錄搜尋功能，使用者可以輸入目錄中任何使用者的別名，就會呈現一些基本的屬性。  入門專案包含應用程式基本使用者介面的定義 (在 www/index.html 中)，也包含串連基本應用程式事件系列的架構、使用者介面繫結及結果顯示邏輯 (在 www/js/index.js 中)。 您剩下的工作只是加入實作識別工作的邏輯。
 
 您所要做的第一件事是在程式碼中引入通訊協定值，供 AAD 用於識別您的應用程式和您的目標資源。 稍後會使用這些值來建構權杖要求。 在 Index.js 檔案最上方插入下面程式碼片段。
 
@@ -142,10 +142,10 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
     graphApiVersion = "2013-11-08";
 ```
 
-`RedirectUri` 和 `clientId` 值應該符合您的應用程式在 AAD 中的值。 您可以從 Azure 入口網站的 [設定] 索引標籤中找到這些值，如稍早在本教學課程的步驟 1 所述。
+ `redirectUri` 和 `clientId` 值應該符合 AAD 中用於描述您的應用程式的值。 您可以從 Azure 入口網站的 [設定] 索引標籤中找到這些值，如稍早在本教學課程的步驟 1 所述。
 注意：如果您選擇不在您自己的租用戶中註冊新的應用程式，您可以直接貼上上述預先設定的值，這可讓看到範例在執行，但對於打算實際執行的應用程式，您總應該建立自己的項目。
 
-接下來，我們必須加入實際的權杖要求程式碼。 插入下列程式碼片段之間 `搜尋 `和 `renderdata `定義。
+接下來，我們必須加入實際的權杖要求程式碼。 在 `search ` 和 `renderdata ` 定義之間，插入下列程式碼片段。
 
 ```javascript
     // Shows user authentication dialog if required.
@@ -182,8 +182,8 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
             }
 ```
 此方法的第二個部分會執行適當的權杖要求。
-`AcquireTokenSilentAsync` 方法會要求 adal 傳回指定資源的權杖，而不會顯示任何 ux。 如果快取中已儲存適當的存取權杖，或者如果有重新整理權杖可用來取得新的存取權杖，而不會顯示任何提示，就會發生此情況。
-如果該嘗試失敗，我們會切換回 `{1>acquiretokenasync` -這將會明顯提示使用者進行驗證。
+`acquireTokenSilentAsync` 方法會要求 ADAL 傳回指定資源的權杖，而不會顯示任何 UX。 如果快取中已儲存適當的存取權杖，或者如果有重新整理權杖可用來取得新的存取權杖，而不會顯示任何提示，就會發生此情況。
+如果該嘗試失敗，我們就退回到 `acquireTokenAsync`，將會明顯提示使用者進行驗證。
 ```javascript
             // Attempt to authorize user silently
             app.context.acquireTokenSilentAsync(resourceUri, clientId)
@@ -195,7 +195,7 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
                 });
             });
 ```
-既然我們已取得權杖，但我們最後會叫用 Graph API，並執行我們想要的搜尋查詢。 插入下列程式碼片段下方 `驗證` 定義。
+既然我們已取得權杖，但我們最後會叫用 Graph API，並執行我們想要的搜尋查詢。 在 `authenticate` 定義下方，插入下列程式碼片段。
 
 ```javascript
 // Makes Api call to receive user list.
@@ -220,58 +220,54 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
 
         req.send();
     },
+
 ```
 起始點檔案提供簡易型 UX，可在文字方塊中輸入使用者的別名。 這個方法會使用該值來建構查詢、將它與存取權杖結合、將它傳送到 Graph，然後剖析結果。 起始點檔案中已存在的 renderData 方法會負責呈現結果。
 
 ## *4.執行*
-
 終於可以開始執行您的應用程式了！ 操作很簡單：應用程式啟動後，在文字方塊中輸入您要查閱的使用者的別名，然後按一下按鈕。 系統會提示您進行驗證。 在成功驗證和成功搜尋之後，將會顯示搜尋到的使用者的屬性。 後續執行時只會執行搜尋，而不會顯示任何提示，因為先前取得的權杖已存在於快取中。
 執行應用程式的具體步驟隨著平台而不同。
 
 
 ##### 建置和執行 Windows Tablet/PC 應用程式版本
 
-   `執行 windows 的 cordova`
+   `cordova run windows`
 
-   __注意__：第一次執行期間可能會要求您登入，以取得開發人員授權。 請參閱 [開發人員授權](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx) 如需詳細資訊。
+   __請注意__: 在第一次執行可能會要求您登入開發人員授權。 請參閱 [開發人員授權](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx) 如需詳細資訊。
 
 
 ##### 在 Windows Phone 8.1 建置和執行應用程式
 
-   若要連線的裝置上執行: `cordova 執行 windows-裝置---電話`
+   在已連接的裝置上執行：`cordova run windows --device -- --phone`
 
-   在預設模擬器上執行: `cordova 模擬 windows-電話`
+   在預設模擬器上執行：`cordova emulate windows -- --phone`
 
-   使用 `cordova 執行 windows-清單---電話` 若要查看所有可用的目標和 `cordova 執行 windows-目標 = < target_name >--電話` 特定裝置或模擬器上執行應用程式 (例如，  `cordova 執行 windows-目標 ="Emulator 8.1 720p 4.7 英吋-「-電話`)。
+   使用 `cordova run windows --list -- --phone` 若要查看所有可用的目標和 `cordova run windows --target=<target_name> -- --phone` 特定裝置或模擬器上執行應用程式 (例如，  `cordova run windows --target="Emulator 8.1 720P 4.7 inch" -- --phone`)。
 ##### 在 Android 裝置上建置和執行
 
-   若要連線的裝置上執行: `cordova 執行 android-裝置`
+   在已連接的裝置上執行：`cordova run android --device`
 
-   在預設模擬器上執行: `cordova 模擬 android`
+   在預設模擬器上執行：`cordova emulate android`
 
-   __注意__：請確定您已使用 *AVD Manager* 建立模擬器執行個體，如*必要條件*一節所示。
+   __請注意__: 請確定您已建立模擬器執行個體使用 *AVD Manager* 如在 *必要條件* 一節。
 
-   使用 `cordova 執行 android-清單` 若要查看所有可用的目標和 `cordova 執行 android-目標 = < target_name >` 特定裝置或模擬器上執行應用程式 (例如，  `cordova 執行 android-目標 ="Nexus4_emulator"`)。
+   使用 `cordova run android --list` 若要查看所有可用的目標和 `cordova run android --target=<target_name>` 特定裝置或模擬器上執行應用程式 (例如，  `cordova run android --target="Nexus4_emulator"`)。
 
 ##### 在 iOS 裝置上建置和執行
 
-   若要連線的裝置上執行: `cordova 執行 ios-裝置`
+   在已連接的裝置上執行：`cordova run ios --device`
 
-   在預設模擬器上執行: `cordova 模擬 ios`
+   在預設模擬器上執行：`cordova emulate ios`
 
-   __注意__: 請確定您有 `ios sim` 模擬器上執行安裝套件。 請參閱*必要條件*一節，以取得詳細資訊。
+   __請注意__: 請確定您有 `ios-sim` 模擬器上執行安裝套件。 請參閱 *必要條件* 一節以取得詳細資料。
 
     Use `cordova run ios --list` to see all available targets and `cordova run ios --target=<target_name>` to run application on specific device or emulator (for example,  `cordova run android --target="iPhone-6"`).
 
-使用 `cordova 執行說明` 查看其他建置和執行選項。
+使用 `cordova run --help` 查看其他建置和執行選項。
 
-這裡提供完成的範例供您參考 (不含您的設定值)。 您現在可以進入更進階 (應該說更有趣) 的案例。 您可以嘗試：
+這裡提供完成的範例供您參考 (不含您的設定值)。  您現在可以進入更進階 (應該說更有趣) 的案例。  您可以嘗試：
 
 [使用 Azure AD 保護 Node.js Web API >>](active-directory-devquickstarts-webapi-nodejs.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-
 

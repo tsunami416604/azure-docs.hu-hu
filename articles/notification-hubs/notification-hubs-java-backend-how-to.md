@@ -16,26 +16,24 @@
     ms.date="11/01/2015" 
     ms.author="yuaxu"/>
 
-
 # 如何從 Java 使用通知中樞
-
 [AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
-
+        
 本主題說明最新完整支援的官方 Azure 通知中樞 Java SDK 有哪些主要功能。 
-這是開放原始碼專案，而且您可以在 [Java SDK] 來檢視完整的 SDK 程式碼。
+這是開放原始碼專案，您可以檢視完整的 SDK 程式碼在 [Java SDK]。 
 
-一般情況下，您可以存取所有通知中樞功能，從 Java/PHP/Python/Ruby 後端使用通知中樞 REST 介面，如 MSDN 主題中所述 [通知中心 REST Api](http://msdn.microsoft.com/library/dn223264.aspx)。 此 Java SDK 透過 Java 中的這些 REST 介面提供了精簡型包裝函式。
+一般情況下，您可以存取所有通知中樞功能，從 Java/PHP/Python/Ruby 後端使用通知中樞 REST 介面，如 MSDN 主題中所述 [通知中心 REST Api](http://msdn.microsoft.com/library/dn223264.aspx)。 此 Java SDK 透過 Java 中的這些 REST 介面提供了精簡型包裝函式。 
 
 SDK 目前支援：
 
-- 通知中樞的 CRUD
+- 通知中樞的 CRUD 
 - 註冊的 CRUD
 - 安裝管理
 - 匯入/匯出註冊
 - 定期傳送
 - 排程的傳送
 - 透過 Java NIO 的非同步作業
-- 受支援的平台：APNS (iOS)、GCM (Android)、WNS (Windows 市集應用程式)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (沒有 Google 服務的 Android)
+- 受支援的平台：APNS (iOS)、GCM (Android)、WNS (Windows 市集應用程式)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (沒有 Google 服務的 Android) 
 
 ## SDK 的使用方式
 
@@ -52,34 +50,33 @@ SDK 目前支援：
 ### 通知中樞 CRUD
 
 **建立 NamespaceManager：**
-
+    
     NamespaceManager namespaceManager = new NamespaceManager("connection string")
 
 **建立通知中樞：**
-
+    
     NotificationHubDescription hub = new NotificationHubDescription("hubname");
     hub.setWindowsCredential(new WindowsCredential("sid","key"));
     hub = namespaceManager.createNotificationHub(hub);
-
+    
  或
 
     hub = new NotificationHub("connection string", "hubname");
 
 **取得通知中樞：**
-
+    
     hub = namespaceManager.getNotificationHub("hubname");
 
 **更新通知中樞：**
-
+    
     hub.setMpnsCredential(new MpnsCredential("mpnscert", "mpnskey"));
     hub = namespaceManager.updateNotificationHub(hub);
 
 **刪除通知中樞：**
-
+    
     namespaceManager.deleteNotificationHub("hubname");
 
 ### 註冊 CRUD
-
 **建立通知中樞用戶端：**
 
     hub = new NotificationHub("connection string", "hubname");
@@ -115,36 +112,34 @@ SDK 目前支援：
     hub.upsertRegistration(reg);
 
 **更新註冊：**
-
+    
     hub.updateRegistration(reg);
 
 **刪除註冊：**
-
+    
     hub.deleteRegistration(regid);
 
 **查詢註冊：**
 
 *   **取得單一註冊：**
-
+    
         hub.getRegistration(regid);
-
-*   **取得中樞的所有註冊：**
-
+    
+*   **取得中心的所有註冊：**
+    
         hub.getRegistrations();
-
+    
 *   **取得具有標籤的註冊：**
-
+    
         hub.getRegistrationsByTag("myTag");
-
+    
 *   **依通道取得註冊：**
-
+    
         hub.getRegistrationsByChannel("devicetoken");
-
 
 所有集合查詢都支援 $top 和接續權杖。
 
 ### 安裝 API 的使用方式
-
 安裝 API 是註冊管理的替代機制。 要維護多個註冊並非易事，並且可能容易出錯或效率低落，但現在您已可以使用單一安裝物件。 
 安裝包含所需的一切：推播通道 (裝置權杖)、標籤、範本、次要磚 (適用於 WNS 和 APNS)。 現在您無須呼叫服務即可取得識別碼 - 只要產生 GUID 或任何其他識別碼、將它保存在裝置上，並透過推播通道傳送至您的後端 (裝置權杖) 即可。 
 您只能在後端執行單一呼叫：CreateOrUpdateInstallation，它是完全等冪的，因此您可以儘管在必要時重試。
@@ -154,7 +149,7 @@ SDK 目前支援：
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
 
-如果您想要加以更新：
+如果您想要加以更新： 
 
     installation.addTag("foo");
     installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
@@ -198,7 +193,6 @@ CreateOrUpdate、Patch 和 Delete 最終都會與 Get 一致。 您要求的作�
     hub.scheduleNotification(n, c.getTime());
 
 ### 匯入/匯出 (適用於 STANDARD 層)
-
 有時候您需要對註冊執行大量作業。 通常這是為了與另一個系統整合，或是要進行大規模修正，例如更新標籤。 如果註冊數高達數千個，強烈建議您不要使用 Get/Update 流程。 匯入/匯出功能可因應此案例。 基本上，您會在儲存體帳戶提供對某個 Blob 容器的的存取權，做為內送資料的來源和輸出的位置。
 
 **提交匯出工作：**
@@ -207,6 +201,7 @@ CreateOrUpdate、Patch 和 Delete 最終都會與 Get 一致。 您要求的作�
     job.setJobType(NotificationHubJobType.ExportRegistrations);
     job.setOutputContainerUri("container uri with SAS signature");
     job = hub.submitNotificationHubJob(job);
+
 
 **提交匯入工作：**
 
@@ -229,11 +224,10 @@ CreateOrUpdate、Patch 和 Delete 最終都會與 Get 一致。 您要求的作�
 
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**具有 SAS 簽章的 URI：**
+**具備 SAS 簽章 URI:**
 這是某個 Blob 檔案或 Blob 容器的 URL，加上參數集 (如權限和到期時間)，再加上所有使用帳戶 SAS 金鑰之項目的簽章。 Azure Storage Java SDK 具有豐富的功能，包括建立此類的 URI。 此外您可以參考 ImportExportE2E 測試類別 (從 github 位置) 的簡單替代方法，它可實作非常基本而精簡的簽署演算法。
 
-### 傳送通知
-
+###傳送通知
 通知物件是附有標頭的本文，某些公用程式方法有助於建立原生和範本通知物件。
 
 * **Windows 市集和 Windows Phone 8.1 (非 Silverlight)**
@@ -278,7 +272,7 @@ CreateOrUpdate、Patch 和 Delete 最終都會與 Get 一致。 您要求的作�
         tags.add("foo");
         hub.sendNotification(n, tags);
 
-* **傳送至標籤運算式**
+* **傳送至標籤運算式**       
 
         hub.sendNotification(n, "foo && ! bar");
 
@@ -290,28 +284,26 @@ CreateOrUpdate、Patch 和 Delete 最終都會與 Get 一致。 您要求的作�
         Notification n = Notification.createTemplateNotification(prop);
         hub.sendNotification(n);
 
-
 執行 Java 程式碼現在應會產生一則顯示於目標裝置的通知。
 
-## <a name="next-steps"></a>後續步驟
-
+##<a name="next-steps"></a>後續步驟
 在本主題中，我們會說明如何為通知中心建立簡單的 Java REST 用戶端。 您可以在這裡執行下列動作：
 
-* 下載完整 [Java SDK]，其中包含完整的 SDK 程式碼。
+* 下載完整 [Java SDK], ，其中包含完整的 SDK 程式碼。 
 * 試用範例：
     - [開始使用通知中心]
     - [傳送即時新聞]
-    - [傳送已當地語系化的即時新聞]
+    - [傳送當地語系化的即時新聞]
     - [傳送通知給已驗證的使用者]
     - [傳送跨平台通知給已驗證的使用者]
 
-
-[java sdk]: https://github.com/Azure/azure-notificationhubs-java-backend 
-[get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/ 
-[get started with notification hubs]: http://www.windowsazure.com/manage/services/notification-hubs/getting-started-windows-dotnet/ 
-[send breaking news]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-dotnet/ 
-[send localized breaking news]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-localized-dotnet/ 
-[send notifications to authenticated users]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/ 
-[send cross-platform notifications to authenticated users]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/ 
-[maven]: http://maven.apache.org/ 
+[Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
+[Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Get Started with Notification Hubs]: http://www.windowsazure.com/manage/services/notification-hubs/getting-started-windows-dotnet/
+[Send breaking news]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-dotnet/
+[Send localized breaking news]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-localized-dotnet/
+[Send notifications to authenticated users]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/
+[Send cross-platform notifications to authenticated users]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+[Maven]: http://maven.apache.org/
+ 
 

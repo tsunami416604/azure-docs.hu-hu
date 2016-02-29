@@ -15,7 +15,6 @@ ms.topic="article"
 ms.date="05/19/2015"
 ms.author="diviso"/>
 
-
 # 使用 Chef 自動化 Azure 虛擬機器部署
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
@@ -30,7 +29,7 @@ Chef 是個很棒的工具，可提供自動化和所需狀態組態。
 
 ## Chef 基本概念
 
-開始之前，建議您檢閱 Chef 的基本概念。 沒有有用資訊 <a href="http://www.chef.io/chef" target="_blank">這裡</a> ，建議您有快速閱讀，才能嘗試進行本逐步解說。 不過，在開始之前，我會先複習一下基本概念。
+開始之前，建議您檢閱 Chef 的基本概念。 您可以在以下位置找到有用資訊： <a href="http://www.chef.io/chef" target="_blank">開始</a> 建議您先快速閱讀才能嘗試進行本逐步解說。 不過，在開始之前，我會先複習一下基本概念。
 
 下圖說明高層級的 Chef 架構。
 
@@ -42,7 +41,7 @@ Chef 伺服器是我們的管理重點，Chef 伺服器包含兩個選項：代�
 
 Chef 用戶端 (節點)是位於您所管理之伺服器上的代理程式。
 
-Chef 工作站是我們的系統管理工作站，我們可以在這裡建立原則並執行管理命令。 我們可以從 Chef 工作站執行管理基礎結構的 **knife** 命令。
+Chef 工作站是我們的系統管理工作站，我們可以在這裡建立原則並執行管理命令。 我們執行 **knife** 命令從 Chef 工作站管理基礎結構。
 
 此外還有 “Cookbooks” 和 “Recipes” 的概念。 這些是我們有效定義並套用至服務的原則。
 
@@ -60,7 +59,7 @@ Chef 工作站是我們的系統管理工作站，我們可以在這裡建立原
 
 將發行設定檔儲存在 C:\chef 中。
 
-## 建立受管理的 Chef 帳戶
+##建立受管理的 Chef 帳戶
 
 註冊代管的 Chef 帳戶 [這裡](https://manage.chef.io/signup)。
 
@@ -71,11 +70,12 @@ Chef 工作站是我們的系統管理工作站，我們可以在這裡建立原
 建立組織後，請下載「入門套件」。
 
 ![][4]
-> [AZURE.NOTE] 如果您收到提示，警告您將重新設定金鑰，您可以繼續作業，因為我們尚未設定任何基礎結構。
+
+> [AZURE.NOTE] 如果您收到提示，警告您將重設您的金鑰時，就可以繼續作業，因為我們尚未設定任何現有的基礎結構。
 
 此入門套件 zip 檔案包含您的組織組態檔和金鑰。
 
-## 設定 Chef 工作站
+##設定 Chef 工作站
 
 將 chef-starter.zip 的內容解壓縮到 C:\chef。
 
@@ -115,7 +115,7 @@ PEM 檔案包含可進行通訊的組織和管理員私密金鑰，而 knife.rb�
 
 如果沒有，請確定您已加入這些路徑 ！
 
-*請注意，路徑的順序很重要！*如果您的 opscode 路徑順序不正確，則會出現問題。
+*請注意，路徑的順序很重要!*如果您的 opscode 路徑順序不正確，則會出現問題。
 
 在繼續之前，請重新啟動您的工作站。
 
@@ -125,7 +125,7 @@ PEM 檔案包含可進行通訊的組織和管理員私密金鑰，而 knife.rb�
 
     chef gem install knife-azure ––pre
 
-> [AZURE.NOTE] -pre 引數可確保您會收到最新的 RC 版本 Knife Azure 外掛程式，該版本可讓您存取最新的 API 組合。
+> [AZURE.NOTE] – Pre 引數可確保您會收到最新的 Knife Azure 外掛程式可讓您存取最新的 Api 組合 RC 版本。
 
 同時也可能安裝多個相依性。
 
@@ -140,9 +140,9 @@ PEM 檔案包含可進行通訊的組織和管理員私密金鑰，而 knife.rb�
 
 恭喜！ 工作站已設定！
 
-## 建立 Cookbook
+##建立 Cookbook
 
-Chef 會使用 Cookbook 來定義一組您想在受管理的用戶端上執行的命令。 建立 Cookbook 非常簡單，我們可以使用 **chef generate cookbook** 命令來產生 Cookbook 範本。 我將呼叫我的 Cookbook Web 伺服器，因為我需要可自動部署 IIS 的原則。
+Chef 會使用 Cookbook 來定義一組您想在受管理的用戶端上執行的命令。 建立 Cookbook 非常簡單，而且我們將使用 **chef 產生操作手冊** 命令來產生 Cookbook 範本。 我將呼叫我的 Cookbook Web 伺服器，因為我需要可自動部署 IIS 的原則。
 
 在 C:\Chef 目錄下，執行下列命令。
 
@@ -158,11 +158,11 @@ Chef 會使用 Cookbook 來定義一組您想在受管理的用戶端上執行�
         action :run
         code 'add-windowsfeature Web-Server'
     end
-    
+
     service 'w3svc' do
         action [ :enable, :start ]
     end
-    
+
     template 'c:\inetpub\wwwroot\Default.htm' do
         source 'Default.htm.erb'
         rights :read, 'Everyone'
@@ -184,7 +184,7 @@ Chef 會使用 Cookbook 來定義一組您想在受管理的用戶端上執行�
 
 ## 將 Cookbook 上傳到 Chef 伺服器
 
-在此步驟中，我們會將在本機電腦上建立的 Cookbook 複本，上傳到 Chef 代管伺服器。 上傳後，Cookbook 便會出現在 [原則]**** 索引標籤底下。
+在此步驟中，我們會將在本機電腦上建立的 Cookbook 複本，上傳到 Chef 代管伺服器。 上傳後，Cookbook 便會出現在 **原則** ] 索引標籤。
 
     knife cookbook upload webserver
 
@@ -194,14 +194,15 @@ Chef 會使用 Cookbook 來定義一組您想在受管理的用戶端上執行�
 
 我們現在要部署 Azure 虛擬機器，並套用 “Webserver” Cookbook，如此便會安裝 IIS Web 服務和預設網頁。
 
-若要這樣做，請使用 **knife azure server create** 命令。
+若要這樣做，請使用 **knife azure server 建立** 命令。
 
 接下來會顯示此命令的範例。
 
     knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
 
 這些參數一看就懂。 替換特定變數並執行。
-> [AZURE.NOTE] 透過命令列，我還打算使用 -tcp-endpoints 參數將端點網路篩選器規則自動化。 我已經開放連接埠 80 和 3389 以供網頁和 RDP 工作階段存取。
+
+> [AZURE.NOTE] 透過命令列中，我現在也自動化端點網路篩選器規則使用 – tcp-endpoints 參數。 我已經開放連接埠 80 和 3389 以供網頁和 RDP 工作階段存取。
 
 執行命令後，前往 Azure 入口網站，您會看到已經開始佈建您的機器。
 
@@ -222,21 +223,19 @@ Chef 會使用 Cookbook 來定義一組您想在受管理的用戶端上執行�
 我希望這對您有所幫助！ 現在就開始您的基礎結構做為程式碼使用 Azure 來體驗!
 
 
+<!--Image references-->
+[2]: ./media/virtual-machines-automation-with-chef/2.png
+[3]: ./media/virtual-machines-automation-with-chef/3.png
+[4]: ./media/virtual-machines-automation-with-chef/4.png
+[5]: ./media/virtual-machines-automation-with-chef/5.png
+[6]: ./media/virtual-machines-automation-with-chef/6.png
+[7]: ./media/virtual-machines-automation-with-chef/7.png
+[8]: ./media/virtual-machines-automation-with-chef/8.png
+[9]: ./media/virtual-machines-automation-with-chef/9.png
+[10]: ./media/virtual-machines-automation-with-chef/10.png
+[11]: ./media/virtual-machines-automation-with-chef/11.png
+[13]: ./media/virtual-machines-automation-with-chef/13.png
 
 
-
-
-
-
-[2]: ./media/virtual-machines-automation-with-chef/2.png 
-[3]: ./media/virtual-machines-automation-with-chef/3.png 
-[4]: ./media/virtual-machines-automation-with-chef/4.png 
-[5]: ./media/virtual-machines-automation-with-chef/5.png 
-[6]: ./media/virtual-machines-automation-with-chef/6.png 
-[7]: ./media/virtual-machines-automation-with-chef/7.png 
-[8]: ./media/virtual-machines-automation-with-chef/8.png 
-[9]: ./media/virtual-machines-automation-with-chef/9.png 
-[10]: ./media/virtual-machines-automation-with-chef/10.png 
-[11]: ./media/virtual-machines-automation-with-chef/11.png 
-[13]: ./media/virtual-machines-automation-with-chef/13.png 
+<!--Link references-->
 

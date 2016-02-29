@@ -2,22 +2,18 @@
 
 1. 在 Azure 入口網站中，巡覽至每個主控複本的 VM 並檢視詳細資料。
 
-1. 按一下每個 VM 的 [**端點**] 索引標籤。
+1. 按一下 [ **端點** 的每個 Vm] 索引標籤。
 
-1. 針對您想要使用的接聽程式端點，確認**名稱**和**公用連接埠**並未處於使用中狀態。 在下列範例中，名稱是「MyEndpoint」，而通訊埠為「1433」。
+1. 確認 **名稱** 和 **公用連接埠** 接聽程式的端點，您想要使用已不在使用。 在下列範例中，名稱是「MyEndpoint」，而通訊埠為「1433」。
 
 1. 在您的本機用戶端上下載並安裝 [最新的 PowerShell 模組](http://azure.microsoft.com/downloads/)。
 
 1. 啟動 **Azure PowerShell**。 新的 PowerShell 工作階段會使用載入的 Azure 系統管理模組來開啟。
 
-1. 執行 **Get-AzurePublishSettingsFile**。 這個 Cmdlet 會將您導向瀏覽器，以便將發佈設定檔案下載至本機目錄。 系統可能會提示您輸入 Azure 訂用帳戶的登入認證。
+1. 執行 **Get-azurepublishsettingsfile**。 這個 Cmdlet 會將您導向瀏覽器，以便將發佈設定檔案下載至本機目錄。 系統可能會提示您輸入 Azure 訂用帳戶的登入認證。
 
-1. 使用您所下載發佈設定檔案的路徑來執行 **Import-AzurePublishSettingsFile** 命令：
+1. 執行 **Import-azurepublishsettingsfile** 命令與您所下載的發行設定檔的路徑:
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
     一旦匯入發佈設定檔案，您便可以在 PowerShell 工作階段中管理 Azure 訂用帳戶。
-
-
-
-

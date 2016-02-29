@@ -1,23 +1,23 @@
+
 <properties
-   pageTitle ="物聯網 Reliable Actor |Microsoft Azure 「
-   描述 ="Service Fabric 可靠動作項目會是主要的建置組塊結合的傳訊系統前端，支援多個傳輸，例如 HTTPS、 MQTT 或 AMQP 系統中 」。
-   服務 = 「 服務架構 」
+   pageTitle="適用於物聯網的 Reliable Actors | Microsoft Azure"
+   description="Service Fabric Reliable Actors 是系統中的主要建置組塊，結合了支援多個傳輸 (例如 HTTPS、MQTT 或 AMQP)。"
+   services="service-fabric"
    documentationCenter=".net"
-   作者 ="vturecek"
-   管理員 ="timlt"
+   authors="vturecek"
+   manager="timlt"
    editor=""/>
 
 <tags
-   ms.service= 「 服務架構 」
+   ms.service="service-fabric"
    ms.devlang="dotnet"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="NA 」
-   ms.date="11/14/2015 」
-   ms.author="vturecek"/ >
+   ms.workload="NA"
+   ms.date="11/14/2015"
+   ms.author="vturecek"/>
 
-# Reliable Actor 設計模式：物聯網
-
+# Reliable Actors 設計模式：物聯網
 隨著科技進步 IoT 已成為裝置與雲端服務的新趨勢，因此開發人員開始尋找夠用來開發系統的主要建置組塊。
 下圖說明使用 Service Fabric Reliable Actor 可達成的重要案例：
 
@@ -27,7 +27,7 @@ Service Fabric Reliable Actor 是系統中的主要建置組塊 (作為中介層
 請注意在我們的範例中，我們刻意省略讓動作項目能與裝置通訊的事件/傳訊層詳細資料，以專注在動作項目模型上。
 基本上通常會將兩個案例組合在一起：
 
-* *收集一個或一組裝置的遙測與狀態資料，並維護其狀態*。 想一想成千上萬個會傳送資訊的補鼠器 (是的，這是真實的客戶案例)，這和裝置是否已補獲到老鼠一樣的基本。 資料會依照區域彙總，當一個區域補獲到足夠的老鼠，便會派遣工程師清除裝置。 將補鼠器比做動作項目？ 當然。 將各區域的群組動作項目作為彙總者？ 沒錯。
+* *收集來自單一或一組裝置遙測與狀態資料，並維護其狀態*。 想一想成千上萬個會傳送資訊的補鼠器 (是的，這是真實的客戶案例)，這和裝置是否已補獲到老鼠一樣的基本。 資料會依照區域彙總，當一個區域補獲到足夠的老鼠，便會派遣工程師清除裝置。 將補鼠器比做動作項目？ 當然。 將各區域的群組動作項目作為彙總者？ 沒錯。
 
 * *將裝置行為與組態推送到一個或一組裝置*。 請想一想家庭太陽能裝置，廠商會根據耗用模式和季節推出不同的組態。
 
@@ -192,7 +192,6 @@ Sending an engineer to repair/replace devices in Richmond
 * 維護針對報告設計的明確存放區。 彙總器可以緩衝處理，並定期將資料推送到報告存放區進一步查詢和分析。
 
 ## 裝置作業
-
 目前為止很好，但是這些裝置的作業該怎麼辦？ 如同裝置，動作項目可以公開操作介面，讓管理員能夠在裝置上執行作業。 例如，管理員想要根據季節/區域的改變，將新的組態推送給一組家庭太陽能裝置 (沒錯，另一個真實的案例)。
 
 這裡的關鍵思維是，我們更精確地使用 “Thing” 動作項目控制每個裝置，並使用 “ThingGroup” 動作項目控制作業群組，無論是彙總來自裝置的資料 (例如遙測)，或是傳送資料 (例如組態) 給大量的裝置。 平台會負責散發裝置動作項目，並在動作項目之間傳遞訊息，這對開發人員完全公開透明。
@@ -206,23 +205,21 @@ Azure Service Fabric Actor 也負責動作項目的生命週期。 不妨如此�
 我們結論是，愈來愈多的客戶將 Azure Service Fabric Actor 視為其 IoT 實作的主要建置組塊。
 
 ## 後續步驟
+[模式：智慧型快取](service-fabric-reliable-actors-pattern-smart-cache.md)
 
-[模式: 智慧型快取](service-fabric-reliable-actors-pattern-smart-cache.md)
+[模式：分散式網路和圖形](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
 
-[模式: 分散式的網路和圖形](service-fabric-reliable-actors-pattern-distributed-networks-and-graphs.md)
+[模式：資源管理](service-fabric-reliable-actors-pattern-resource-governance.md)
 
-[模式: 資源管理](service-fabric-reliable-actors-pattern-resource-governance.md)
+[模式：可設定狀態的服務組合](service-fabric-reliable-actors-pattern-stateful-service-composition.md)
 
-[模式: 可設定狀態的服務組合](service-fabric-reliable-actors-pattern-stateful-service-composition.md)
-
-[模式: 分散式的計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
+[模式：分散式計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
 
 [某些反向模式](service-fabric-reliable-actors-anti-patterns.md)
 
 [Service Fabric Actor 簡介](service-fabric-reliable-actors-introduction.md)
 
-
-
-[1]: ./media/service-fabric-reliable-actors-pattern-internet-of-things/internet-of-things-1.png 
-[2]: ./media/service-fabric-reliable-actors-pattern-internet-of-things/internet-of-things-2.png 
+<!--Image references-->
+[1]: ./media/service-fabric-reliable-actors-pattern-internet-of-things/internet-of-things-1.png
+[2]: ./media/service-fabric-reliable-actors-pattern-internet-of-things/internet-of-things-2.png
 

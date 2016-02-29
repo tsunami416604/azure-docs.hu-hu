@@ -17,7 +17,6 @@
    ms.date="12/11/2015"
    ms.author="telmos" />
 
-
 # 如何在 Azure CLI 中設定靜態私人 IP 位址
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
@@ -31,12 +30,11 @@
 下列範例 Azure CLI 命令會預期已經建立簡單的環境。 如果您想要執行命令，因為它們會顯示在這份文件，先建立測試環境中所述 [建立 vnet](virtual-networks-create-vnet-arm-cli.md)。
 
 ## 建立 VM 時如何指定靜態私人 IP 位址
-
-若要在名為 *TestVNet* 之 VNet 的*前端*子網路中建立名為 *DNS01* 的 VM，且靜態私人 IP 為 *192.168.1.101*，請遵循下列步驟：
+若要建立名為的 VM *DNS01* 中 *前端* 名為 VNet 的子網路 *TestVNet* 固定的私人 ip *192.168.1.101*, ，依照下列步驟:
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli-install.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
 
-2. 執行 **azure config mode** 命令，以切換為資源管理員模式，如下所示。
+2. 執行 **azure 組態模式** 命令以切換至資源管理員模式，如下所示。
 
         azure config mode arm
 
@@ -44,10 +42,10 @@
 
         info:    New mode is arm
 
-3. 執行 **azure network public-ip create** 來建立 VM 的公用 IP。 輸出後顯示的清單可說明所使用的參數。
+3. 執行 **azure 網路的公用 ip 建立** vm 建立公用 IP。 輸出後顯示的清單可說明所使用的參數。
 
         azure network public-ip create -g TestRG -n TestPIP -l centralus
-
+    
     預期的輸出：
 
         info:    Executing command network public-ip create
@@ -63,11 +61,11 @@
         data:    Idle timeout                    : 4
         info:    network public-ip create command OK
 
-    - **-g (or --resource-group)**。 要在其中建立公用 IP 的資源群組名稱。
-    - **-n (or --name)**。 公用 IP 的名稱。
-    - **-l (or --location)**。 將要建立公用 IP 的 Azure 區域。 在本文案例中為 *centralus*。
+    - **-g (或--資源群組)**。 要在其中建立公用 IP 的資源群組名稱。
+    - **-n (或--名稱)**。 公用 IP 的名稱。
+    - **-l (或--location)**。 將要建立公用 IP 的 Azure 區域。 我們的案例， *centralus*。
 
-3. 執行 **azure network nic create** 命令以建立具有靜態私人 IP 的 NIC。 輸出後顯示的清單可說明所使用的參數。
+3. 執行 **azure 網路的 nic 建立** 命令來建立靜態私人 ip 位址的 NIC。 輸出後顯示的清單可說明所使用的參數。
 
         azure network nic create -g TestRG -n TestNIC -l centralus -a 192.168.1.101 -m TestVNet -k FrontEnd
 
@@ -92,11 +90,11 @@
         data:
         info:    network nic create command OK
 
-    - **-a (or --private-ip-address)**。 NIC 的靜態私人 IP 位址
-    - **-m (or --subnet-vnet-name)**。 將建立 NIC 之 VNet 的名稱。
-    - **-k (or --subnet-name)**。 將建立 NIC 之子網路的名稱。
+    - **-a (或-私用 ip 位址)**。 NIC 的靜態私人 IP 位址
+    - **-m (或--子網路的 vnet 名稱)**。 將建立 NIC 之 VNet 的名稱。
+    - **-k (或-子網路名稱)**。 將建立 NIC 之子網路的名稱。
 
-4. 執行 **azure vm create** 命令來使用上面建立的公用 IP 和 NIC 來建立 VM。 輸出後顯示的清單可說明所使用的參數。
+4. 執行 **azure vm 建立** 命令來建立使用公用 IP 與上面所建立的 NIC 的 VM。 輸出後顯示的清單可說明所使用的參數。
 
         azure vm create -g TestRG -n DNS01 -l centralus -y Windows -f TestNIC -i TestPIP -F TestVNet -j FrontEnd -o vnetstorage -q bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2 -u adminuser -p AdminP@ssw0rd
 
@@ -120,15 +118,15 @@
         + Creating VM "DNS01"
         info:    vm create command OK
 
-    - **-y (or --os-type)**。 VM 的作業系統類型，*Windows* 或 *Linux*。
-    - **-f (or --nic-name)**。 VM 將使用的 NIC 名稱。
-    - **-i (or --public-ip-name)**。 VM 將使用的公用 IP 名稱。
-    - **-F (or --vnet-name)**。 將建立 VM 之 VNet 的名稱。
-    - **-j (or --vnet-subnet-name)**。 將建立 VM 之子網路的名稱。
+    - **-y (或-os 類型)**。 類型的作業系統的 VM，或是 *Windows* 或 *Linux*。
+    - **-f (或-nic 名稱)**。 VM 將使用的 NIC 名稱。
+    - **-i (或--公用 ip 名稱)**。 VM 將使用的公用 IP 名稱。
+    - **-F (或-vnet 名稱)**。 將建立 VM 之 VNet 的名稱。
+    - **-j (或-vnet 子網路名稱)**。 將建立 VM 之子網路的名稱。
 
 ## 如何擷取 VM 的靜態私人 IP 位址資訊
 
-若要檢視使用上述指令碼建立之 VM 的靜態私人 IP 位址資訊，請執行下列 Azure CLI 命令並觀察 *Private IP alloc-method* 和 *Private IP address* 的值：
+若要檢視使用上述指令碼建立之 VM 的靜態私人 IP 位址資訊，請執行下列 Azure CLI 命令，並觀察值 *私用 IP 配置方法* 和 *私人 IP 位址*:
 
     azure vm show -g TestRG -n DNS01
 
@@ -181,10 +179,9 @@
     info:    vm show command OK
 
 ## 如何移除 VM 的靜態私人 IP 位址
-
 您無法從 Azure CLI 的 NIC 移除資源管理員的靜態私人 IP 位址。 您必須建立使用動態 IP 的新 NIC、從 VM 移除先前的 NIC，然後將新的 NIC 加入至 VM。 若要變更上述命令中使用之 VM 的 NIC，請遵循下列步驟。
-
-1. 執行 **azure network nic create** 命令來建立使用動態 IP 配置的新 NIC。 請注意這次如何不需要指定 IP 位址。
+    
+1. 執行 **azure 網路的 nic 建立** 命令來建立新的 NIC 使用動態 IP 配置。 請注意這次如何不需要指定 IP 位址。
 
         azure network nic create -g TestRG -n TestNIC2 -l centralus -m TestVNet -k FrontEnd
 
@@ -210,7 +207,7 @@
         data:
         info:    network nic create command OK
 
-2. 執行 **azure vm set** 命令來變更 VM 所使用的 NIC。
+2. 執行 **azure vm 集** 命令來變更 VM 所使用的 NIC。
 
         azure vm set -g TestRG -n DNS01 -N TestNIC2
 
@@ -222,7 +219,7 @@
         + Updating VM "DNS01"
         info:    vm set command OK
 
-3. 如果您想要，請執行 **azure network nic delete** 命令以刪除舊的 NIC。
+3. 如果想要執行 **azure 網路的 nic 刪除** 命令，刪除舊的 nic。
 
         azure network nic delete -g TestRG -n TestNIC --quiet
 
@@ -233,9 +230,7 @@
         + Deleting network interface "TestNIC"
         info:    network nic delete command OK
 
-
 ## 如何將靜態私人 IP 位址新增至現有的 VM
-
 若要將靜態私人 IP 位址新增至使用上述指令碼建立之 VM 所使用的 NIC，請執行下列命令：
 
     azure netwrok nic set -g TestRG -n TestNIC2 -a 192.168.1.101
@@ -268,8 +263,4 @@
 - 深入了解 [保留公用 IP](../virtual-networks-reserved-public-ip) 位址。
 - 深入了解 [執行個體層級公用 IP (ILPIP)](../virtual-networks-instance-level-public-ip) 位址。
 - 請參閱 [保留的 IP REST Api](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
-
-
-
-
 

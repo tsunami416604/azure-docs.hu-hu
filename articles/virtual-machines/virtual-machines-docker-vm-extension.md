@@ -16,10 +16,9 @@
     ms.date="10/21/2015"
     ms.author="rasquill"/>
 
-
 # Azure 上 Linux 的 Docker 虛擬機器擴充程式
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)] 
 
 [Docker](https://www.docker.com/) 是其中一個最常用的虛擬化方式使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC) 而不是虛擬機器做為隔離應用程式資料和執行計算的共用資源的方式。 您可以使用 [Azure Docker VM 延伸模組](https://github.com/Azure/azure-docker-extension/blob/master/README.md) 至 [Azure Linux 代理程式](virtual-machines-linux-agent-user-guide.md) 來建立 Docker VM 來託管任何數量的應用程式在 Azure 上的容器。
 
@@ -38,21 +37,20 @@
 若要深入了解延伸模組及其運作方式，請參閱 [Docker 延伸模組使用者指南](https://github.com/Azure/azure-docker-extension/blob/master/README.md)。
 
 ## Docker 及 Linux 容器
-
 [Docker](https://www.docker.com/) 是其中一個最常用的虛擬化方式使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC) 而不是虛擬機器上的獨立資料和運算的方式共用資源，並提供其他服務，可讓您建置或組合應用程式快速並分散到其他 Docker 容器之間。
 
-Docker 及 Linux 容器並不是 [Hypervisor](http://en.wikipedia.org/wiki/Hypervisor) 等 Windows HYPER-V 和 [KVM](http://www.linux-kvm.org/page/Main_Page) Linux (還有許多其他例子) 上。 Hypervisor 將基礎作業系統虛擬化，讓整個作業系統 (稱為*虛擬機器*) 像應用程式一樣在 Hypervisor 內運作。
+Docker 及 Linux 容器並不是 [Hypervisor](http://en.wikipedia.org/wiki/Hypervisor) 等 Windows HYPER-V 和 [KVM](http://www.linux-kvm.org/page/Main_Page) Linux (還有許多其他例子) 上。 Hypervisor 虛擬化讓整個作業系統基礎作業系統 (稱為 *虛擬機器*) 來執行在 hypervisor 內運作，如同它們是應用程式。
 
-Docker 及其他*容器*方法使用 Linux 核心的處理作業和檔案系統獨立功能，只將核心功能暴露在其他獨立的容器中，藉此可確實減少啟動時間的消耗以及處理作業和儲存體所需的額外負荷。
+Docker 及其他 *容器* 方法大幅降低的啟動時間的消耗以及處理和儲存額外負荷時所使用的程序和檔案系統獨立功能的核心功能，其他獨立的容器只將 Linux kernel。
 
 下表說明在最高層次中，Hypervisor 和 Linux 容器之間存在的功能種類差異。 請注意，某些功能可能會增加或減少吸引力，視您本身的應用程式需求而定。
 
-| 功能| Hypervisor| 容器|
+|   功能      | Hypervisor | 容器  |
 | :------------- |-------------| ----------- |
-| 處理序隔離| 大致完成| 如果已取得根目錄，則容器主機可能已遭洩漏|
-| 磁碟上需有記憶體| 整套作業系統及應用程式| 僅限應用程式需求|
-| 啟動花費時間| 相當長的時間：作業系統啟動和應用程式載入| 相當短的時間：因為核心已在執行中，只需要啟動應用程式|
-| 容器自動化| 根據 OS 和應用程式有很大的差異| [Docker 映像庫](https://registry.hub.docker.com/); 其他
+| 處理序隔離 | 大致完成 | 如果已取得根目錄，則容器主機可能已遭洩漏 |
+| 磁碟上需有記憶體 | 整套作業系統及應用程式 | 僅限應用程式需求 |
+| 啟動花費時間 | 相當長的時間：作業系統啟動和應用程式載入 | 相當短的時間：因為核心已在執行中，只需要啟動應用程式  |
+| 容器自動化 | 根據 OS 和應用程式有很大的差異 | [Docker 映像庫](https://registry.hub.docker.com/); 其他
 
 若要查看容器及其優點的高層級討論，請參閱 [Docker 高層級白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
 
@@ -74,17 +72,15 @@ Docker VM 擴充程式是個元件，它會安裝在您所建立的 VM 執行個
 + [如何使用 Azure 傳統入口網站使用 Docker VM 擴充程式]
 
 ## Linux 及 Windows 的虛擬機器擴充程式
-
-[Azure Docker VM 擴充程式](https://github.com/Azure/azure-docker-extension/blob/master/README.md) 只是眾多提供特殊行為，數個 VM 延伸模組還有許多正在開發中。 例如，許多 [Linux VM 代理程式延伸模組](virtual-machines-linux-agent-user-guide.md) 功能可讓您修改和管理虛擬機器，包括安全性功能、 核心和網路功能等。 例如，VMAccess 延伸模組可讓您重設管理員密碼或 SSH 金鑰。
+ [Azure Docker VM 擴充程式](https://github.com/Azure/azure-docker-extension/blob/master/README.md) 只是眾多提供特殊行為，數個 VM 延伸模組還有許多正在開發中。 例如，許多 [Linux VM 代理程式延伸模組](virtual-machines-linux-agent-user-guide.md) 功能可讓您修改和管理虛擬機器，包括安全性功能、 核心和網路功能等。 例如，VMAccess 延伸模組可讓您重設管理員密碼或 SSH 金鑰。
 
 如需完整清單，請參閱 [Azure VM 擴充程式](virtual-machines-extensions-features.md)。
 
-
-
-[how to use the docker vm extension from the azure command-line interface (azure cli)]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/ 
-[how to use the docker vm extension with the azure classic portal]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/ 
-[how to get started quickly with docker in the azure marketplace]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-ubuntu-quickstart/ 
-[docker and linux containers]: #Docker-and-Linux-Containers 
-[how to use the docker vm extension with azure]: #How-to-use-the-Docker-VM-Extension-with-Azure 
-[virtual machine extensions for linux and windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows 
+<!--Anchors-->
+[How to use the Docker VM Extension from the Azure Command-line Interface (Azure CLI)]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
+[How to use the Docker VM Extension with the Azure classic portal]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
+[How to Get Started Quickly with Docker in the Azure Marketplace]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-ubuntu-quickstart/
+[Docker and Linux Containers]: #Docker-and-Linux-Containers
+[How to use the Docker VM Extension with Azure]: #How-to-use-the-Docker-VM-Extension-with-Azure
+[Virtual Machine Extensions for Linux and Windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows
 

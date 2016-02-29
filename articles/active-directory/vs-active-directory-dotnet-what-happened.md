@@ -16,12 +16,11 @@
     ms.date="09/03/2015"
     ms.author="tarcher"/>
 
-
 # 我的 MVC 專案 (Visual Studio Azure Active Directory 已連線服務) 發生什麼事？
 
 > [AZURE.SELECTOR]
-> - 
-> - 
+> - [開始使用](vs-active-directory-dotnet-getting-started.md)
+> - [發生什麼情形](vs-active-directory-dotnet-what-happened.md)
 
 
 
@@ -55,11 +54,11 @@
 
 ### 程式碼檔案加入至專案
 
-驗證啟動類別 **App_Start/Startup.Auth.cs** 加入至專案，內含 Azure AD 驗證的啟動邏輯。 另外也已加入控制器類別 Controllers/AccountController.cs，內含 **SignIn()** 和 **SignOut()** 方法。 最後，已加入部分檢視 **Views/Shared/_LoginPartial.cshtml**，內含 SignIn/SignOut 的動作連結。
+驗證啟動類別， **App_Start/Startup.Auth.cs** 已加入至專案，內含 Azure AD 驗證的啟動邏輯。 此外，其中包含加入控制器類別 controllers/Accountcontroller.cs **signin ()** 和 **signout ()** 方法。 最後，部分檢視 **Views/Shared/_LoginPartial.cshtml** 起，內含 SignIn/signout 的動作連結。
 
 ### 啟動程式碼已加入至專案
 
-如果專案中已有啟動類別，則已更新 **Configuration** 方法來包含 **ConfigureAuth(app)** 的呼叫。 否則已將啟動類別加入至專案。
+如果您的專案中已有啟動類別 **組態** 方法已更新為包含呼叫 **Configureauth**。 否則已將啟動類別加入至專案。
 
 ### app.config 或 web.config 有新的組態值
 
@@ -75,11 +74,9 @@
     </appSettings>
 
 ### 建立 Azure Active Directory (AD) 應用程式
-
 已在您於精靈中選取的目錄中建立 Azure AD 應用程式。
 
-## 如果我核取了 [停用個別使用者帳戶驗證]**，我的專案會有什麼其他變更？
-
+##如果我核取 *停用個別使用者帳戶驗證*, ，我的專案已進行哪些其他的變更?
 NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您的專案狀態，您可能必須手動移除其他參考或檔案，或修改為適當的程式碼。
 
 ### 移除的 NuGet 封裝參考 (如果存在)
@@ -104,13 +101,13 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 - **Startup.cs**
 - **App_Start\Startup.Auth.cs**
 - **Controllers\AccountController.cs**
-- 
+- **Views\Shared\_LoginPartial.cshtml**
 
-## 如果我核取了 [*讀取目錄資料*]，我的專案會有什麼其他變更？
+## 如果我核取 *讀取目錄資料*, ，我的專案已進行哪些其他的變更?
 
 已加入其他參考。
 
-### 其他 NuGet 封裝參考
+###其他 NuGet 封裝參考
 
 - **EntityFramework**
 - **Microsoft.Azure.ActiveDirectory.GraphClient**
@@ -120,7 +117,7 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 - **Microsoft.IdentityModel.Clients.ActiveDirectory**
 - **System.Spatial**
 
-### 其他 .NET 參考
+###其他 .NET 參考
 
 - **EntityFramework**
 - **EntityFramework.SqlServer**
@@ -132,15 +129,15 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 - **Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms**
 - **System.Spatial**
 
-### 其他程式碼檔案已加入至專案
+###其他程式碼檔案已加入至專案
 
-兩個檔案已加入以支援 Token 快取：**Models\ADALTokenCache.cs** 和 **Models\ApplicationDbContext.cs**。 已加入其他控制器和檢視，以說明使用 Azure 圖形 API 存取使用者設定檔資訊。 這些檔案是 **Controllers\UserProfileController.cs** 和 **Views\UserProfile\Index.cshtml**。
+兩個檔案已加入以支援權杖快取: **Models\ADALTokenCache.cs** 和 **Models\ApplicationDbContext.cs**。  已加入其他控制器和檢視，以說明使用 Azure 圖形 API 存取使用者設定檔資訊。  這些檔案是 **Controllers\UserProfileController.cs** 和 **Views\UserProfile\Index.cshtml**。
 
-### 其他啟動程式碼已加入至專案
+###其他啟動程式碼已加入至專案
 
-在 **startup.auth.cs** 檔案中，新的 **OpenIdConnectAuthenticationNotifications** 物件已加入 **OpenIdConnectAuthenticationOptions** 的 **Notifications** 成員。 這是為了啟用接收 OAuth 程式碼，並用它交換存取權杖。
+在 **startup.auth.cs** 檔案中，新 **OpenIdConnectAuthenticationNotifications** 物件已新增至 **通知** 成員 **OpenIdConnectAuthenticationOptions**。  這是為了啟用接收 OAuth 程式碼，並用它交換存取權杖。
 
-### app.config 或 web.config 已進行其他變更
+###app.config 或 web.config 已進行其他變更
 
 已加入下列其他組態項目。
 
@@ -151,7 +148,7 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 已加入下列組態區段和連接字串。
 
     <configSections>
-        
+        <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
         <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
     </configSections>
     <connectionStrings>
@@ -168,13 +165,9 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
         </providers>
     </entityFramework>
 
-### Azure Active Directory 應用程式已更新
 
-Azure Active Directory 應用程式已更新為包含*讀取目錄資料*權限，並已建立其他的金鑰做為 **web.config** 檔案中的 *ida:ClientSecret*。
+###Azure Active Directory 應用程式已更新
+Azure Active Directory 應用程式已更新為包含 *讀取目錄資料* 使用權限和其他的登錄機碼已建立其再做使用 *ida: ClientSecret* 中 **web.config** 檔案。
 
-
-
-
-
-
+[深入了解 Azure Active Directory](http://azure.microsoft.com/services/active-directory/)
 

@@ -16,7 +16,6 @@
     ms.date="12/16/2015" 
     ms.author="tomfitz"/>
 
-
 # 使用範本建立 Redis 快取
 
 在本主題中，您將學習如何建立 Azure 資源管理員範本，以部署 Azure Redis 快取。 快取可以搭配現有的儲存體帳戶以保留診斷資料。 您將學習如何定義要部署哪些資源， 
@@ -27,13 +26,14 @@
 如需建立範本的詳細資訊，請參閱 [編寫 Azure 資源管理員範本](../resource-group-authoring-templates.md)。
 
 如需完整的範本，請參閱 [Redis 快取範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)。
+
 >[AZURE.NOTE] 新的 ARM 範本 [「 高階 」 層](cache-premium-tier-intro.md) 可用。 
 >
->-    [建立高階 Redis 快取叢集](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
->-    [建立高階 Redis 快取資料持續性](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
->-    [建立高階 Redis 快取與 VNet 和選擇性叢集](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
+>-    [建立具有叢集的 Premium Redis 快取](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
+>-    [建立具有資料永續性的 Premium Redis 快取](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
+>-    [建立具有 VNet 和選擇性叢集的 Premium Redis 快取](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
 >
->若要檢查最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/) ，並搜尋 `Redis 快取`。
+>若要檢查最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/) ，並搜尋 `Redis Cache`。
 
 ## 部署內容
 
@@ -41,13 +41,13 @@
 
 若要自動執行部署，請按一下下列按鈕：
 
-[![部署至 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)] (https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+[![Deploy 到 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## 參數
 
 透過 Azure 資源管理員，您可以定義在部署範本時想要指定之值的參數。 此範本有一個 Parameters 區段，內含所有參數值。
 您應該將參數定義而異的那些值會根據您要部署，或根據的專案 
-您要部署的環境。 請不要為永遠保持不變的值定義參數。 每個參數值都可在範本中用來定義所部署的資源。
+您要部署的環境。 請不要為永遠保持不變的值定義參數。 每個參數值都可在範本中用來定義所部署的資源。 
 
 我們將說明範本中的每個參數。
 
@@ -63,7 +63,7 @@ Redics 快取的位置。 針對最佳效能，使用要與快取搭配使用之
 
 ### diagnosticsStorageAccountName
 
-要用於診斷的現有儲存體帳戶名稱。
+要用於診斷的現有儲存體帳戶名稱。 
 
     "diagnosticsStorageAccountName": {
       "type": "string"
@@ -89,7 +89,7 @@ Redics 快取的位置。 針對最佳效能，使用要與快取搭配使用之
             "OFF"
         ]
     }
-
+    
 ## 要部署的資源
 
 ### Redis 快取
@@ -130,7 +130,7 @@ Redics 快取的位置。 針對最佳效能，使用要與快取搭配使用之
 
 ## 執行部署的命令
 
-[AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+[AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)] 
 
 ### PowerShell
 

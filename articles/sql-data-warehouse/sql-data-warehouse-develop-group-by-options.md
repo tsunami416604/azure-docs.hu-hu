@@ -16,7 +16,6 @@
    ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
-
 # 根據 SQL 資料倉儲中的選項分組
 
 [群組依據] 子句用來彙總資料以摘要一組資料列。 它也具有一些擴充其功能的選項，這些選項都需要克服，因為 Azure SQL 資料倉儲並不直接支援這些選項。
@@ -27,10 +26,9 @@
 - GROUP BY with CUBE
 
 ## Rollup 和 grouping sets 選項
+此處最簡單的選項是改為使用 `UNION ALL` 來執行彙總，而不是依賴明確的語法。 應該會出現幾乎相同的結果
 
-最簡單的選項是使用 `UNION ALL` 改為執行彙總而不是依賴明確的語法。 應該會出現幾乎相同的結果
-
-以下是範例的 group by 陳述式使用 `彙總套件` 選項:
+以下是使用 `ROLLUP` 選項的 group by 陳述式範例：
 
 ```
 SELECT [SalesTerritoryCountry]
@@ -50,7 +48,7 @@ GROUP BY ROLLUP (
 - 國家 (地區)
 - 總計
 
-若要取代您必須使用 `UNION ALL`; 指定彙總明確需要傳回相同的結果:
+若要將其取代，您必須使用 `UNION ALL`；指定彙總明確需要傳回相同的結果：
 
 ```
 SELECT [SalesTerritoryCountry]
@@ -80,7 +78,6 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 對於 GROUPING SETS，我們必須做的是採用相同的主體，並且只建立我們想要查看之彙總層級的 UNION ALL 區段
 
 ## Cube 選項
-
 可以使用 UNION ALL 方法建立 GROUP BY WITH CUBE。 問題是程式碼可能很快就會很麻煩且不易處理。 若要避免此情形，您可以使用這項更進階的方法。
 
 使用上述範例。
@@ -176,23 +173,22 @@ ORDER BY 1,2,3
 ;
 ```
 
-將程式碼分成區段，並產生迴圈建構，程式碼就會變得更容易管理及維護。
+將程式碼分成區段，並產生迴圈建構，程式碼就會變得更容易管理及維護。 
 
 
 ## 後續步驟
+如需更多開發秘訣，請參閱 [開發概觀] []。
 
-如需更多開發秘訣，請參閱 [開發概觀 []][]。
+<!--Image references-->
+[1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png
+
+<!--Article references-->
+[development overview]: sql-data-warehouse-overview-develop.md
+
+<!--MSDN references-->
+[GROUP BY]: https://msdn.microsoft.com/library/ms177673.aspx
 
 
+<!--Other Web references-->
 
-
-
-
-
-
-
-
-[1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png 
-[development overview]: sql-data-warehouse-overview-develop.md 
-[group by]: https://msdn.microsoft.com/library/ms177673.aspx 
 

@@ -1,20 +1,21 @@
+
 <properties 
-    pageTitle ="登入搭配 Azure Multi-factor Authentication 使用辦公室或行動電話進行 」 
-    描述 = 「 此頁面說明使用者如何使用行動電話進行登入 」。 
-    服務 = 「 多-factor-驗證 」 
+    pageTitle="搭配 Azure Multi-factor Authentication 使用辦公室或行動電話進行登入" 
+    description="此頁面說明使用者如何使用行動電話進行登入。" 
+    services="multi-factor-authentication" 
     documentationCenter="" 
-    作者 ="billmath" 
-    管理員 ="stevenpo" 
-    編輯器 ="curtland"/ >
+    authors="billmath" 
+    manager="stevenpo" 
+    editor="curtland"/>
 
 <tags 
-    ms.service= 「 多-factor-驗證 」 
-    ms.workload="identity 」 
+    ms.service="multi-factor-authentication" 
+    ms.workload="identity" 
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="11/19/2015 」 
-    ms.author="billmath"/ >
+    ms.date="11/19/2015" 
+    ms.author="billmath"/>
 
 # 搭配 Azure Multi-factor Authentication 使用辦公室或行動電話進行登入
 
@@ -24,20 +25,18 @@
 
 <ol>
 
-<li>應用程式或服務，例如 Office 365 使用您的使用者名稱和密碼登入。</li>
+<li>使用您的使用者名稱和密碼登入應用程式或服務，例如 Office 365。</li>
 <li>Microsoft 將會打電話給您。</li>
 
 
-<center>![安裝程式](./media/multi-factor-authentication-end-user-signin-phone/call.png)</center>
+<center>![設定](./media/multi-factor-authentication-end-user-signin-phone/call.png)</center>
 
-<li>請接聽電話並按下 # 鍵。</li>
+<li>請接聽電話並按 # 鍵。</li>
 
-<center>![安裝程式](./media/multi-factor-authentication-end-user-signin-phone/phone.png)</center>
-
-
-<li>您現在應該登入。</li>
+<center>![設定](./media/multi-factor-authentication-end-user-signin-phone/phone.png)</center>
 
 
+<li>您現在應已登入。</li>
 
 
 
@@ -46,6 +45,4 @@
 
 
 
-
-
-
+ 

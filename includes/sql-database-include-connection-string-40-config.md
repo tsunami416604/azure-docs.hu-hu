@@ -1,15 +1,23 @@
 
+<!--
+includes/sql-database-include-connection-string-40-config.md
+
+最新的有效性檢查: 2015年-09-04，GeneMi。
+
+## Connection string
+-->
 
 
 ### 連接字串安全性的範例組態檔
 
+
 將連接字串做為常值放在 C# 程式碼中並不妥當。 將連接字串放在組態檔中會比較好。 您可以隨時在那裡編輯字串而不需要重新編譯。
 
-讓我們假設已編譯的 C# 程式的名稱為 **ConsoleApplication1.exe**, ，和該.exe 位於 **bin\debug\** 目錄。
+讓我們假設已編譯的 C# 程式的名稱為 **ConsoleApplication1.exe**, ，和該.exe 位於 **bin\debug\ ** 目錄。
 
-在此範例中，連接字串中大部分的組件會儲存在名稱恰好為 **ConsoleApplication1.exe.config** 的組態檔中。 此組態檔也必須位於 **bin\debug\**。
+在此範例中，大部分的組件的連接字串會儲存在組態檔名為完全 **ConsoleApplication1.exe.config**。 此組態檔也必須位於 **bin\debug\ **。
 
-在下列組態檔的 XML 中您會看到名為 **ConnectionString4NoUserIDNoPassword** 的連接字串。 C# 程式碼會尋找此字串。
+在下列組態檔的 XML，您會看到名為連接字串 **ConnectionString4NoUserIDNoPassword**。 C# 程式碼會尋找此字串。
 
 您必須編輯預留位置中的實際名稱：
 
@@ -17,26 +25,26 @@
 - {your_databaseName_here}
 
 
-      <?xml version="1.0" encoding="utf-8" ?>
-      <configuration>
-          <startup> 
-              <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
-          </startup>
-    
-          <connectionStrings>
-              <clear />
-              <add name="ConnectionString4NoUserIDNoPassword"
-              providerName="System.Data.ProviderName"
-    
-              connectionString=
-              "Server=tcp:{your_serverName_here}.database.windows.net,1433;
-              Database={your_databaseName_here};
-              Connection Timeout=30;
-              Encrypt=True;
-              TrustServerCertificate=False;" />
-          </connectionStrings>
-      </configuration>
 
+        <?xml version="1.0" encoding="utf-8" ?>
+        <configuration>
+            <startup> 
+                <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+            </startup>
+        
+            <connectionStrings>
+                <clear />
+                <add name="ConnectionString4NoUserIDNoPassword"
+                providerName="System.Data.ProviderName"
+        
+                connectionString=
+                "Server=tcp:{your_serverName_here}.database.windows.net,1433;
+                Database={your_databaseName_here};
+                Connection Timeout=30;
+                Encrypt=True;
+                TrustServerCertificate=False;" />
+            </connectionStrings>
+        </configuration>
 
 
 
@@ -50,9 +58,11 @@
 
 
 
+<!--
+These three includes/ files are a sequenced set, but you can pick and choose:
 
-
-
-
-
+includes/sql-database-include-connection-string-20-portalshots.md
+includes/sql-database-include-connection-string-30-compare.md
+includes/sql-database-include-connection-string-40-config.md
+-->
 

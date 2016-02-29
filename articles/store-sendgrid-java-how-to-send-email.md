@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用 SendGrid 電子郵件服務 (Java) | Microsoft Azure" 
-    description="了解如何在 Azure 使用 SendGrid 電子郵件服務傳送電子郵件。程式碼範例以 Java 撰寫。" 
+    description="了解如何在 Azure 使用 SendGrid 電子郵件服務傳送電子郵件。 程式碼範例以 Java 撰寫。" 
     services="" 
     documentationCenter="java" 
     authors="thinkingserious" 
@@ -15,20 +15,19 @@
     ms.topic="article" 
     ms.date="10/30/2014" 
     ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"/>
-
 # 如何使用 SendGrid 透過 Java 傳送電子郵件
 
 本指南示範如何使用 SendGrid 電子郵件服務在 Azure 上
 執行常見的程式設計工作。 相關範例是以
-Java 撰寫的。 涵蓋的案例包括 **建構電子郵件**, ，* * 傳送
-電子郵件**, ，* * 新增附件**, ，**使用篩選器**, ，和 * * 更新
-屬性 * *。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱
-[後續步驟](#next-steps) 一節。
+Java 撰寫的。 涵蓋的案例包括 **建構電子郵件**, ，**傳送
+電子郵件**, ，**新增附件**, ，**使用篩選器**, ，和 **更新
+屬性**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱
+ [後續步驟](#next-steps) 一節。
 
 ## 什麼是 SendGrid 電子郵件服務？
 
-SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
-[交易式電子郵件傳遞] 擴充性和即時分析，以及有彈性的 Api
+SendGrid 是 [cloud-based email service] ，能提供可靠
+[transactional email delivery], 擴充性和即時分析，以及有彈性的 Api
 讓使用者輕鬆進行自訂整合。 常見的 SendGrid 使用案例
 包括：
 
@@ -56,7 +55,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
 
 1.  指定 SMTP 值 (包括 SMTP 伺服器)，
     對 SendGrid 而言是 smtp.sendgrid.net。
-
+    
 ```
         import java.util.Properties;
         import javax.activation.*;
@@ -67,11 +66,11 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
            private static final String SMTP_HOST_NAME = "smtp.sendgrid.net";
            private static final String SMTP_AUTH_USER = "your_sendgrid_username";
            private static final String SMTP_AUTH_PWD = "your_sendgrid_password";
-
+        
            public static void main(String[] args) throws Exception{
               new MyEmailer().SendMail();
            }
-
+        
            public void SendMail() throws Exception
            {
               Properties properties = new Properties();
@@ -85,7 +84,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
 2.  擴充 *javax.mail.Authenticator*
     類別，並在您
     *getPasswordAuthentication* 方法，
-    傳回您的 SendGrid 使用者名稱和密碼。
+    傳回您的 SendGrid 使用者名稱和密碼。  
 
         private class SMTPAuthenticator extends javax.mail.Authenticator {
         public PasswordAuthentication getPasswordAuthentication() {
@@ -95,7 +94,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
         }
 
 3.  透過
-    *javax.mail.Session* 物件。
+    *javax.mail.Session* 物件。  
 
         Authenticator auth = new SMTPAuthenticator();
         Session mailSession = Session.getDefaultInstance(properties, auth);
@@ -104,7 +103,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
     內容值。 這會顯示 [How To: 建立電子郵件](#bkmk_HowToCreateEmail) 一節。
 5.  透過
     *javax.mail.Transport* 物件。 此
-    顯示在 [How To: 傳送電子郵件 ][how to: send an email]
+    顯示在 [How To: 傳送電子郵件] [如何: 傳送電子郵件]
     一節中。
 
 ## 如何：建立電子郵件
@@ -160,10 +159,10 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
 ## 如何：使用篩選器來啟用頁尾、追蹤和分析
 
 SendGrid 提供了運用「篩選器」的其他電子郵件
-*篩選*。 這些設定可以新增至電子郵件訊息，
+*篩選器*。 這些設定可以新增至電子郵件訊息，
 以啟用特定功能，例如啟用追蹤、Google
 分析、訂閱追蹤等。 如需完整的篩選器清單，
-請參閱 [[篩選器設定]][]。
+請參閱 [篩選器設定][]。
 
 -   以下說明如何插入會導致
     HTML 文字出現在所傳送的電子郵件底部的頁尾篩選器。
@@ -194,13 +193,12 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
             {\"settings\": 
             {\"enable\":1}}}}");
 
-
 ## 如何：更新電子郵件屬性
 
-某些電子郵件屬性將會覆寫使用 **設定 * 屬性 *** 或
-附加使用 **加入 * 屬性 ***。
+某些電子郵件屬性將會覆寫使用 **設定*屬性** * 或
+附加使用 **新增*屬性** *。
 
-例如，若要指定 **ReplyTo** 地址，請使用下列程式碼：
+例如，若要指定 **ReplyTo** 地址，使用下列命令:
 
     InternetAddress addresses[] = 
         { new InternetAddress("john@contoso.com"),
@@ -208,7 +206,7 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
     
     message.setReplyTo(addresses);
 
-若要增加副本**** 收件者，請使用下列程式碼：
+若要新增 **副本** 收件者，使用下列命令:
 
     message.addRecipient(Message.RecipientType.CC, new 
     InternetAddress("john@contoso.com"));
@@ -217,7 +215,7 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
 
 SendGrid 提供網頁式 API，可讓您透過 Azure 應用程式使用其他
 SendGrid 功能。 如需完整的
-詳細資訊，請參閱 [SendGrid API 文件 []][]。
+詳細資訊，請參閱 [SendGrid API 文件][]。
 
 ## 後續步驟
 
@@ -229,15 +227,14 @@ SendGrid 功能。 如需完整的
 * SendGrid API 文件: <https://sendgrid.com/docs/API_Reference/index.html>
 * Azure 客戶的 SendGrid 特別優惠: <https://sendgrid.com/windowsazure.html>
 
-
-[http://sendgrid.com]: https://sendgrid.com 
-[http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html 
-[http://www.sendgrid.com/azure.html]: https://www.sendgrid.com/windowsazure.html 
-[http://sendgrid.com/features]: https://sendgrid.com/features 
-[http://www.oracle.com/technetwork/java/javamail]: http://www.oracle.com/technetwork/java/javamail/index.html 
-[filter settings]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html 
-[sendgrid api documentation]: https://sendgrid.com/docs/API_Reference/index.html 
-[http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html 
-[cloud-based email service]: https://sendgrid.com/email-solutions 
-[transactional email delivery]: https://sendgrid.com/transactional-email 
+  [http://sendgrid.com]: https://sendgrid.com
+  [http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html
+  [http://www.sendgrid.com/azure.html]: https://www.sendgrid.com/windowsazure.html
+  [http://sendgrid.com/features]: https://sendgrid.com/features
+  [http://www.oracle.com/technetwork/java/javamail]: http://www.oracle.com/technetwork/java/javamail/index.html
+  [Filter Settings]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
+  [SendGrid API documentation]: https://sendgrid.com/docs/API_Reference/index.html
+  [http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
+  [cloud-based email service]: https://sendgrid.com/email-solutions
+  [transactional email delivery]: https://sendgrid.com/transactional-email
 

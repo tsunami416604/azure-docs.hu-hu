@@ -18,10 +18,10 @@
     ms.author="curtand"/>
 
 
-
 # 使用 Azure Active Directory 群組來管理資源的存取權
 
 Azure Active Directory (Azure AD) 是一個身分識別與存取管理的綜合性解決方案，提供許多強大的功能來管理內部部署和雲端應用程式和資源的存取權，包括如 Office 365 的 Microsoft 線上服務，以及非 Microsoft 的 SaaS 應用程式。
+
 
 > [AZURE.NOTE] 若要使用 Azure Active Directory，您需要 Azure 帳戶。 如果您沒有帳戶，您可以 [申請免費的 Azure 帳戶](http://azure.microsoft.com/pricing/free-trial/)。
 
@@ -55,7 +55,6 @@ Azure Active Directory 的其中一項主要功能是管理資源的存取權。
 > [AZURE.VIDEO azure-ad--introduction-to-dynamic-memberships-for-groups]
 
 ## 存取管理在 Azure Active Directory 中如何運作？
-
 Azure Active Directory 的存取管理解決方案的重點是安全性群組。 使用安全性群組來管理資源的存取權是著名的範例，方法彈性而且容易理解，可以針對想要的使用者群組提供資源的存取權。 資源擁有者 (或目錄的系統管理員) 可以指派群組，對所擁有的資源提供特定的存取權限。 群組的成員會取得存取權，而資源擁有者可以委派管理群組成員清單的權限給其他人 – 例如部門經理或技術服務管理員。
 
 ![Azure Active Directory 存取管理圖表](./media/active-directory-access-management-groups/active-directory-access-management-works.png)
@@ -63,15 +62,14 @@ Azure Active Directory 的存取管理解決方案的重點是安全性群組。
 
 
 ## 開始使用存取管理
-
 準備好開始了嗎？ 您可以嘗試一些可以使用 Azure AD 群組進行的基本工作。 使用這些功能，針對組織中的不同資源，提供特殊存取權給不同群組的人員。 以下是基本的首要步驟清單。
 
 
-* [建立簡單的規則，以設定群組動態成員資格](active-directory-accessmanagement-simplerulegroup.md)
+* [建立簡單的規則，設定群組的動態成員資格](active-directory-accessmanagement-simplerulegroup.md)
 
 * [使用群組管理 SaaS 應用程式的存取權](active-directory-accessmanagement-group-saasapps.md)
 
-* [提供一組可供一般使用者自助服務](active-directory-accessmanagement-self-service-group-management.md)
+* [提供可供一般使用者自助服務的群組](active-directory-accessmanagement-self-service-group-management.md)
 
 * [同步處理至 Azure，使用 Azure AD Connect 的內部群組](active-directory-aadconnect.md)
 
@@ -79,29 +77,23 @@ Azure Active Directory 的存取管理解決方案的重點是安全性群組。
 
 
 ## 存取管理的後續步驟
-
 如果您已經了解存取管理的基本概念，以下是一些 Azure Active Directory 中可用的其他進階功能，可以管理您的應用程式和資源的存取權。
 
 * [使用簡單的規則來建立群組](active-directory-accessmanagement-simplerulegroup.md)
 
-* [使用屬性來建立進階的規則](active-directory-accessmanagement-groups-with-advanced-rules.md)
+* [使用屬性來建立進階規則](active-directory-accessmanagement-groups-with-advanced-rules.md)
 
 * [在 Azure Active Directory 中管理安全性群組](active-directory-accessmanagement-manage-groups.md)
 
-* [設定 Azure Active Directory 中的專用群組](active-directory-accessmanagement-dedicated-groups.md)
+* [在 Azure Active Directory 中設定專用的群組](active-directory-accessmanagement-dedicated-groups.md)
 
 
 ## 詳細資訊
-
 這些文章提供有關 Azure Active Directory 的其他資訊。
 
-* [什麼是 Azure Active Directory?](active-directory-whatis.md)
+* [什麼是 Azure Active Directory？](active-directory-whatis.md)
 
 * [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)
 
 * [群組的圖形 API 參考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
-
-
-
-
 

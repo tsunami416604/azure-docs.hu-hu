@@ -17,7 +17,6 @@
    ms.date="11/20/2015"
    ms.author="telmos" />
 
-
 # 使用範本部署多個 NIC VM
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
@@ -28,14 +27,14 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-因為在這個時間點，您不能讓配備單一 NIC 的 VM 與配備多個 NIC 的 VM 位在同一個資源群組中，您要在某個資源群組中實作後端伺服器，並且將所有其他的元件放置在另一個安全性群組中。 下列步驟中是使用名為 *IaaSStory* 的資源群組做為主要資員群組，以及使用 *IaaSStory-BackEnd* 做為後端伺服器。
+因為在這個時間點，您不能讓配備單一 NIC 的 VM 與配備多個 NIC 的 VM 位在同一個資源群組中，您要在某個資源群組中實作後端伺服器，並且將所有其他的元件放置在另一個安全性群組中。 下列步驟使用的資源群組名稱 *IaaSStory* 主要資源群組，以及 *IaaSStory 後端* 的後端伺服器。
 
-## 必要條件
+## 先決條件
 
 您必須為此案例部署含有所有必要資源的主要資源群組，然後才可以部署後端伺服器。 若要部署這些資源，請遵循下列步驟。
 
 1. 瀏覽至 [範本頁面](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)。
-2. 在範本頁面中，按一下 [父資源群組]**** 右邊的 [部署至 Azure]****。
+2. 在右邊的 [範本] 頁面中 **父資源群組**, ，按一下 [ **部署至 Azure**。
 3. 視需要變更參數值，然後依照 Azure Preview 入口網站中的步驟部署資源群組。
 
 > [AZURE.IMPORTANT] 請確定您的儲存體帳戶名稱是唯一的。 在 Auzre 中不能有重複的儲存體帳戶名稱。 
@@ -45,8 +44,8 @@
 在部署此文件所提供的範本之前，請確定您了解它的功用。 下列步驟為所探討的範本提供了很好的概觀。
 
 1. 瀏覽至 [範本頁面](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC)。
-2. 按一下 **azuredeploy.json** 以開啟範本檔案。
-3. 請注意下面列出的 *osType* 參數。 此參數用於選取要用於資料庫伺服器的 VM 映像，以及多個作業系統相關設定。
+2. 按一下 [ **azuredeploy.json** 開啟範本檔案。
+3. 請注意 *osType* 下面所列的參數。 此參數用於選取要用於資料庫伺服器的 VM 映像，以及多個作業系統相關設定。
 
         "osType": {
           "type": "string",
@@ -60,11 +59,11 @@
           }
         },
 
-4. 向下捲動到變數清單，然後檢查 *dbVMSetting* 變數的定義，如下所示。 它會接收包含在 *dbVMSettings* 變數中的其中一個陣列元素。 如果您熟悉軟體開發術語，您可以將 *dbVMSettings* 變數視為雜湊表或字典。
+4. 捲動到清單中的變數，並檢查的定義 *dbVMSetting* 下面所列的變數。 它會接收一個陣列元素中所包含的 *dbVMSettings* 變數。 如果您熟悉軟體開發的術語，您可以檢視 *dbVMSettings* 變數做為雜湊表或 dictionay。
 
         "dbVMSetting": "[variables('dbVMSettings')[parameters('osType')]]"
 
-5. 假設您決定要在後端部署執行 SQL 的 Windows VM。 那麼，*osType* 的值將會是 *Windows*，且 *dbVMSetting* 變數會包含下面列出的元素，其代表 *dbVMSettings* 變數中的第一個值。
+5. 假設您決定要在後端部署執行 SQL 的 Windows VM。 值 *osType* 是 *Windows*, ，而 *dbVMSetting* 變數將包含的項目下方列出的第一個值表示 *dbVMSettings* 變數。
 
           "Windows": {
             "vmSize": "Standard_DS3",
@@ -84,7 +83,7 @@
           },
 
 6. 請注意 *vmSize* 包含值 *Standard_DS3*。 只有特定的 VM 大小允許使用多個 NIC。 您可以確認哪種 VM 大小是多個 NIC 功能，請造訪 [多重 NIC 概觀](virtual-networks-multiple-nics.md)。
-7. 向下捲動至 **resources** 並注意第一個元素。 它描述儲存體帳戶。 此儲存體帳戶將用來維護每個資料庫 VM 所使用的資料磁碟。 在此案例中，每部資料庫 VM 都有儲存在一般儲存體的作業系統磁碟，以及儲存在 SSD (進階) 儲存體的兩個資料磁碟。
+7. 向下捲動至 **資源** ，並注意第一個項目。 它描述儲存體帳戶。 此儲存體帳戶將用來維護每個資料庫 VM 所使用的資料磁碟。 在此案例中，每部資料庫 VM 都有儲存在一般儲存體的作業系統磁碟，以及儲存在 SSD (進階) 儲存體的兩個資料磁碟。
 
         {
           "apiVersion": "2015-05-01-preview",
@@ -99,7 +98,7 @@
           }
         },
 
-8. 向下捲動到下一個資源，如下所示。 這項資源代表每個資料庫 VM 中用於資料庫存取的 NIC。 請注意此資源中 **copy** 函式的使用方式。 根據 *dbCount* 參數，此範本可讓您部署任意數量的 VM。 因此，您需要建立相同數量的 NIC 以用於資料庫存取 (每部 VM 一個)。
+8. 向下捲動到下一個資源，如下所示。 這項資源代表每個資料庫 VM 中用於資料庫存取的 NIC。 請注意，使用 **複製** 中此資源的函式。 範本可讓您部署許多 Vm 所要根據 *dbCount* 參數。 因此，您需要建立相同數量的 NIC 以用於資料庫存取 (每部 VM 一個)。
 
         {
           "apiVersion": "2015-06-15",
@@ -129,7 +128,7 @@
           }
         },
 
-9. 向下捲動到下一個資源，如下所示。 這項資源代表每個資料庫 VM 中用於管理的 NIC。 同樣地，每個資料庫 VM 都需要一個這種 NIC。 請注意，*networkSecurityGroup* 元素只會連結允許存取 RDP/SSH 的 NSG 到此 NIC。
+9. 向下捲動到下一個資源，如下所示。 這項資源代表每個資料庫 VM 中用於管理的 NIC。 同樣地，每個資料庫 VM 都需要一個這種 NIC。 請注意 *networkSecurityGroup* 項目，連結允許存取 RDP/ssh 連線到僅此 NIC 的 NSG。
 
         {
           "apiVersion": "2015-06-15",
@@ -174,7 +173,7 @@
           }
         },
 
-11. 向下捲動到下一個資源。 這項資源代表資料庫 VM，如下面列出的前幾行所示。 請再次注意 **copy** 函式的使用方式，確定是根據 *dbCount* 參數建立多部 VM。 另外也請注意 *dependsOn* 集合。 在 VM 部署前，它會列出兩個必須建立的 NIC，以及可用性設定組和儲存體帳戶。
+11. 向下捲動到下一個資源。 這項資源代表資料庫 VM，如下面列出的前幾行所示。 請注意，使用 **複製** 函式，確保根據建立的多個 Vm *dbCount* 參數。 另外也請注意 *dependsOn* 集合。 在 VM 部署前，它會列出兩個必須建立的 NIC，以及可用性設定組和儲存體帳戶。
 
           "apiVersion": "2015-06-15",
           "type": "Microsoft.Compute/virtualMachines",
@@ -194,7 +193,7 @@
             "count": "[parameters('dbCount')]"
           },
 
-12. 在 VM 資源中向下捲動至 **networkProfile** 元素，如下所示。 請注意，每部 VM 都有兩個參照的 NIC。 當您為一部 VM 建立多個 NIC 時，您必須將其中一個 NIC 的 *primary* 屬性設為 *true*，其餘的設為 *false*。
+12. 向下捲動至 VM 資源中 **networkProfile** 項目，如下所示。 請注意，每部 VM 都有兩個參照的 NIC。 當您建立多個 Nic 的 vm 時，您必須設定 *主要* 屬性的其中一個 Nic *true*, ，和以 rest *false*。
 
         "networkProfile": {
           "networkInterfaces": [
@@ -208,7 +207,6 @@
             }
           ]
         }
-
       }
 
 ## 使用按一下即部署來部署 ARM 範本
@@ -227,44 +225,43 @@
 
 [AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
-3. 執行 **New-AzureRmResourceGroup** Cmdlet 以使用範本建立資源群組。
+3. 執行 **新增 AzureRmResourceGroup** 指令程式來建立資源群組範本中使用。
 
-     New-AzureRmResourceGroup -Name IaaSStory-Backend -Location uswest `
-         -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json' `
-         -TemplateParameterFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json'   
+        New-AzureRmResourceGroup -Name IaaSStory-Backend -Location uswest `
+            -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json' `
+            -TemplateParameterFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json'   
 
- 預期的輸出：
+    預期的輸出：
 
-     ResourceGroupName : IaaSStory-Backend
-     Location          : westus
-     ProvisioningState : Succeeded
-     Tags              : 
-     Permissions       : 
-                         Actions  NotActions
-                         =======  ==========
-                         *                  
-    
-     Resources         : 
-                         Name                 Type                                 Location
-                         ===================  ===================================  ========
-                         ASDB                 Microsoft.Compute/availabilitySets   westus  
-                         DB1                  Microsoft.Compute/virtualMachines    westus  
-                         DB2                  Microsoft.Compute/virtualMachines    westus  
-                         NICDB-DA-1           Microsoft.Network/networkInterfaces  westus  
-                         NICDB-DA-2           Microsoft.Network/networkInterfaces  westus  
-                         NICDB-RA-1           Microsoft.Network/networkInterfaces  westus  
-                         NICDB-RA-2           Microsoft.Network/networkInterfaces  westus  
-                         wtestvnetstorageprm  Microsoft.Storage/storageAccounts    westus  
-    
-     ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend
-
+        ResourceGroupName : IaaSStory-Backend
+        Location          : westus
+        ProvisioningState : Succeeded
+        Tags              : 
+        Permissions       : 
+                            Actions  NotActions
+                            =======  ==========
+                            *                  
+                            
+        Resources         : 
+                            Name                 Type                                 Location
+                            ===================  ===================================  ========
+                            ASDB                 Microsoft.Compute/availabilitySets   westus  
+                            DB1                  Microsoft.Compute/virtualMachines    westus  
+                            DB2                  Microsoft.Compute/virtualMachines    westus  
+                            NICDB-DA-1           Microsoft.Network/networkInterfaces  westus  
+                            NICDB-DA-2           Microsoft.Network/networkInterfaces  westus  
+                            NICDB-RA-1           Microsoft.Network/networkInterfaces  westus  
+                            NICDB-RA-2           Microsoft.Network/networkInterfaces  westus  
+                            wtestvnetstorageprm  Microsoft.Storage/storageAccounts    westus  
+                            
+        ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend
 
 ## 使用 Azure CLI 部署範本
 
 若要使用 Azure CLI 部署範本，請依照下列步驟執行。
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
-2. 執行 **azure config mode** 命令，以切換為資源管理員模式，如下所示。
+2. 執行 **azure 組態模式** 命令以切換至資源管理員模式，如下所示。
 
         azure config mode arm
 
@@ -272,9 +269,9 @@
 
         info:    New mode is arm
 
-3. 開啟 [參數檔案](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json), 、 選取它的內容，並將它儲存到您的電腦中的檔案。 在此範例中，我們將參數檔案儲存為 *parameters.json*。
+3. 開啟 [參數檔案](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json), 、 選取它的內容，並將它儲存到您的電腦中的檔案。 針對此範例中，我們將儲存至參數檔案 *parameters.json*。
 
-4. 執行 **azure group deployment create** Cmdlet，以使用先前所下載及修改的範本和參數檔案部署新的 VNet。 輸出後顯示的清單可說明所使用的參數。
+4. 執行 **azure 群組部署建立** 指令程式來部署新的 VNet 使用的範本和參數檔案下載並修改上面。 輸出後顯示的清單可說明所使用的參數。
 
         azure group create -n IaaSStory-Backend -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json -e parameters.json
 
@@ -294,8 +291,3 @@
         data:    Tags: null
         data:
         info:    group create command OK
-
-
-
-
-

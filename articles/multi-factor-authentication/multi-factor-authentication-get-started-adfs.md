@@ -16,24 +16,25 @@
     ms.date="11/19/2015" 
     ms.author="billmath"/>
 
-
 # 開始使用 Azure Multi-Factor Authentication Server 和 Active Directory Federation Services
 
-<center>![定域機組](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+
+
+<center>![雲端](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 如果貴組織已使用 AD FS 讓內部部署 Active Directory 與 Azure Active Directory 同盟，便可以使用以下 2 個 Azure Multi-Factor Authentication 使用選項。
 
-- 使用 Azure Multi-Factor Authentication 或 Active Directory Federation Services 保護雲端資源
-- 使用 Azure Multi-Factor Authentication Server 保護雲端和內部部署資源
+- 使用 Azure Multi-Factor Authentication 或 Active Directory Federation Services 保護雲端資源 
+- 使用 Azure Multi-Factor Authentication Server 保護雲端和內部部署資源 
 
 下表摘要說明保護使用 Azure Multi-Factor Authentication 和 AD FS 兩者保護資源的驗證體驗
 
-| 驗證體驗 - 瀏覽器型應用程式| 驗證體驗 - 非瀏覽器型應用程式
+|驗證體驗-瀏覽器型 Apps|驗證體驗-非瀏覽器型應用程式
 :------------- | :------------- | :------------- |
- 使用 Azure Multi-Factor Authentication 保護 Azure AD 資源| <li>執行驗證的第 1 個因素是使用 AD FS 在內部。</li><li>第 2 個因素是使用雲端驗證執行的電話式方法。</li>| 使用者可以使用應用程式密碼來登入。
- 使用 Active Directory Federation Services 保護 Azure AD 資源| <li>執行驗證的第 1 個因素是使用 AD FS 在內部。</li><li>第 2 個因素是遵守宣告在內部。</li>| 使用者可以使用應用程式密碼來登入。
+使用 Azure Multi-factor Authentication 保護 Azure AD 資源 |<li>執行驗證的第 1 個因素是使用 AD FS 在內部。</li> <li>第 2 個因素是使用雲端驗證執行的電話式方法。</li>|使用者可以使用應用程式密碼來登入。
+使用 Active Directory Federation Services 保護 Azure AD 資源 |<li>執行驗證的第 1 個因素是使用 AD FS 在內部。</li><li>第 2 個因素是遵守宣告的內部執行。</li>|使用者可以使用應用程式密碼來登入。
 
-有關同盟使用者之應用程式密碼的警告：
+有關同盟使用者之應用程式密碼的警告： 
 
 - 應用程式密碼乃使用雲端驗證進行驗證，因此會略過同盟。 唯有在設定應用程式密碼時才能主動使用同盟。
 - 應用程式密碼不會遵守內部部署用戶端存取控制設定。
@@ -42,9 +43,9 @@
 
 如需使用 AD FS 設定 Azure Multi-Factor Authentication 和 Azure Multi-Factor Authentication Server 的詳細資訊，請參閱下列各項：
 
-- [使用 Azure Multi-factor Authentication 和 AD FS 保護雲端資源](multi-factor-authentication-get-started-adfs-cloud.md)
-- [Windows Server 2012 R2 AD FS 搭配使用 Azure Multi-factor Authentication Server 的安全雲端和內部部署資源](multi-factor-authentication-get-started-adfs-w2k12.md)
-- [保護雲端和內部部署資源搭配 AD FS 2.0 使用 Azure Multi-factor Authentication Server](multi-factor-authentication-get-started-adfs-adfs2.md)
+- [使用 Azure Multi-Factor Authentication 和 AD FS 保護雲端資源](multi-factor-authentication-get-started-adfs-cloud.md)
+- [搭配 Windows Server 2012 R2 AD FS 使用 Azure Multi-Factor Authentication Server 保護雲端和內部部署資源](multi-factor-authentication-get-started-adfs-w2k12.md)
+- [搭配 AD FS 2.0 使用 Azure Multi-Factor Authentication Server 保護雲端和內部部署資源](multi-factor-authentication-get-started-adfs-adfs2.md)
 
 
 
@@ -52,8 +53,4 @@
 
 
 
-
-
-
-
-
+ 

@@ -1,6 +1,6 @@
 <properties
     pageTitle="Azure 通知中心安全推播"
-    description="了解如何從 Azure 將安全的推播通知傳送至 Android 應用程式。程式碼範例是以 Java 及 C# 撰寫。"
+    description="了解如何從 Azure 將安全的推播通知傳送至 Android 應用程式。 程式碼範例是以 Java 及 C# 撰寫。"
     documentationCenter="android"
     authors="wesmc7777"
     manager="dwrede"
@@ -16,16 +16,14 @@
     ms.date="10/05/2015" 
     ms.author="wesmc"/>
 
-
-# Azure 通知中心安全推播
+#Azure 通知中心安全推播
 
 > [AZURE.SELECTOR]
 - [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-secure-push.md)
 - [iOS](notification-hubs-aspnet-backend-ios-secure-push.md)
 - [Android](notification-hubs-aspnet-backend-android-secure-push.md)
 
-
-## 概觀
+##概觀
 
 Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平台的大規模推播基礎結構，因而可大幅簡化消費者和企業應用程式在行動平台上的推播通知實作。
 
@@ -43,44 +41,44 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 請務必注意在上述流程 (與本教學課程) 中，我們假設使用者登入後，裝置會將驗證權杖儲存在本機儲存體中。 由於裝置可使用此權杖擷取通知的安全裝載，因此可保證完全順暢的體驗。 如果您的應用程式沒有將驗證權杖儲存在裝置上，或如果這些權杖可能會過期，裝置應用程式應在收到通知時顯示一般通知，以提示使用者啟動應用程式。 應用程式會接著驗證使用者，並顯示通知裝載。
 
 本安全推播教學課程說明如何以安全的方式傳送推播通知。 本教學課程是根據 [通知使用者](notification-hubs-aspnet-backend-android-notify-users.md) 教學課程中，因此您應先完成該教學課程中的步驟第一次。
+
 > [AZURE.NOTE] 本教學課程假設您已建立並設定通知中心中所述 [開始使用通知中樞 (Android)](notification-hubs-android-get-started.md)。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## 修改 Android 專案
 
-既然您已將應用程式後端修改為傳送通知的識別碼**，就必須變更 Android 應用程式以處理該通知，並回呼後端以擷取要顯示的安全訊息。
+既然您已修改應用程式後端將只 *識別碼* 的通知，您必須變更 Android 應用程式來處理該通知，並回呼後端以擷取要顯示的安全訊息。
 為了達成此目標，您必須確定您的 Android 應用程式知道在收到推播通知時，如何使用後端自我驗證。
 
-為了將驗證標頭值儲存在您的應用程式共用喜好設定中，我們將修改 *login* 流程。 類別機制可用來儲存任何驗證權杖 (例如 OAuth tokens)，應用程式在不需要使用者認證的情況下必須使用這些驗證權杖。
+我們將修改 *登入* 為了將驗證標頭值儲存在您的應用程式共用喜好設定中的流程。 類別機制可用來儲存任何驗證權杖 (例如 OAuth tokens)，應用程式在不需要使用者認證的情況下必須使用這些驗證權杖。
 
-1. 在您的 Android 應用程式專案中，在 **MainActivity** 類別開頭處新增下列常數：
+1. 在 Android 應用程式專案中，新增下列常數頂端 **MainActivity** 類別:
 
         public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
         public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
 
-2. 仍在 **MainActivity** 類別中，更新 `getauthorizationheader ()` 方法以包含下列程式碼:
+2. 仍在 **MainActivity** 類別中，更新 `getAuthorizationHeader()` 方法以包含下列程式碼:
 
-     private String getAuthorizationHeader() throws UnsupportedEncodingException {
-         EditText username = (EditText) findViewById(R.id.usernameText);
-         EditText password = (EditText) findViewById(R.id.passwordText);
-         String basicAuthHeader = username.getText().toString()+":"+password.getText().toString();
-         basicAuthHeader = Base64.encodeToString(basicAuthHeader.getBytes("UTF-8"), Base64.NO_WRAP);
-    
-         SharedPreferences sp = getSharedPreferences(NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
-         sp.edit().putString(AUTHORIZATION_HEADER_PROPERTY, basicAuthHeader).commit();
-    
-         return basicAuthHeader;
-     }
+        private String getAuthorizationHeader() throws UnsupportedEncodingException {
+            EditText username = (EditText) findViewById(R.id.usernameText);
+            EditText password = (EditText) findViewById(R.id.passwordText);
+            String basicAuthHeader = username.getText().toString()+":"+password.getText().toString();
+            basicAuthHeader = Base64.encodeToString(basicAuthHeader.getBytes("UTF-8"), Base64.NO_WRAP);
 
-3. 新增下列 `匯入` 上方的陳述式 **MainActivity** 檔案:
+            SharedPreferences sp = getSharedPreferences(NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
+            sp.edit().putString(AUTHORIZATION_HEADER_PROPERTY, basicAuthHeader).commit();
+
+            return basicAuthHeader;
+        }
+
+3. 新增下列 `import` 上方的陳述式 **MainActivity** 檔案:
 
         import android.content.SharedPreferences;
 
-
 現在我們將變更收到通知時所呼叫的處理常式。
 
-4. 在 **MyHandler** 類別中，變更 `Onreceive` 方法以包含:
+4. 在 **MyHandler** 類別中，變更 `OnReceive()` 方法以包含:
 
         public void onReceive(Context context, Bundle bundle) {
             ctx = context;
@@ -88,35 +86,34 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
             retrieveNotification(secureMessageId);
         }
 
-5. 然後新增 `retrievenotification ()` 方法，取代預留位置 `{後端端點}` 與部署後端時所取得的後端端點:
+5. 然後新增 `retrieveNotification()` 方法，以部署後端時所取得的後端端點取代預留位置 `{back-end endpoint}`：
 
-     private void retrieveNotification(final String secureMessageId) {
-         SharedPreferences sp = ctx.getSharedPreferences(MainActivity.NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
-         final String authorizationHeader = sp.getString(MainActivity.AUTHORIZATION_HEADER_PROPERTY, null);
-    
-         new AsyncTask<Object, Object, Object>() {
-             @Override
-             protected Object doInBackground(Object... params) {
-                 try {
-                     HttpUriRequest request = new HttpGet("{back-end endpoint}/api/notifications/"+secureMessageId);
-                     request.addHeader("Authorization", "Basic "+authorizationHeader);
-                     HttpResponse response = new DefaultHttpClient().execute(request);
-                     if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-                         Log.e("MainActivity", "Error retrieving secure notification" + response.getStatusLine().getStatusCode());
-                         throw new RuntimeException("Error retrieving secure notification");
-                     }
-                     String secureNotificationJSON = EntityUtils.toString(response.getEntity());
-                     JSONObject secureNotification = new JSONObject(secureNotificationJSON);
-                     sendNotification(secureNotification.getString("Payload"));
-                 } catch (Exception e) {
-                     Log.e("MainActivity", "Failed to retrieve secure notification - " + e.getMessage());
-                     return e;
-                 }
-                 return null;
-             }
-         }.execute(null, null, null);
-     }
+        private void retrieveNotification(final String secureMessageId) {
+            SharedPreferences sp = ctx.getSharedPreferences(MainActivity.NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
+            final String authorizationHeader = sp.getString(MainActivity.AUTHORIZATION_HEADER_PROPERTY, null);
 
+            new AsyncTask<Object, Object, Object>() {
+                @Override
+                protected Object doInBackground(Object... params) {
+                    try {
+                        HttpUriRequest request = new HttpGet("{back-end endpoint}/api/notifications/"+secureMessageId);
+                        request.addHeader("Authorization", "Basic "+authorizationHeader);
+                        HttpResponse response = new DefaultHttpClient().execute(request);
+                        if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+                            Log.e("MainActivity", "Error retrieving secure notification" + response.getStatusLine().getStatusCode());
+                            throw new RuntimeException("Error retrieving secure notification");
+                        }
+                        String secureNotificationJSON = EntityUtils.toString(response.getEntity());
+                        JSONObject secureNotification = new JSONObject(secureNotificationJSON);
+                        sendNotification(secureNotification.getString("Payload"));
+                    } catch (Exception e) {
+                        Log.e("MainActivity", "Failed to retrieve secure notification - " + e.getMessage());
+                        return e;
+                    }
+                    return null;
+                }
+            }.execute(null, null, null);
+        }
 
 
 本方法會呼叫應用程式後端，使用儲存在共用喜好設定中的認證來擷取通知內容，並以正常通知的方式顯示該通知。 應用程式使用者所看到的通知會與任何其他推播通知沒有兩樣。
@@ -127,15 +124,11 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
 若要執行應用程式，請執行下列動作：
 
-1. 確定 Azure 中已部署 **AppBackend**。 如果使用 Visual Studio，則執行 **AppBackend** Web API 應用程式。 [ASP.NET Web] 頁面便會隨即顯示。
+1. 請確定 **AppBackend** 部署在 Azure 中。 如果使用 Visual Studio，請執行 **AppBackend** Web API 應用程式。 [ASP.NET Web] 頁面便會隨即顯示。
 
 2. 在 Eclipse 中，在實體 Android 裝置或模擬器上執行此應用程式。
 
 3. 在 Android 應用程式 UI 中，輸入使用者名稱和密碼。 這些可以是任何字串，但必須是相同值。
 
-4. 在 Android 應用程式 UI 中，按一下 [登入]****。 然後按一下 [傳送推播]****。
-
-
-
-
+4. 在 Android 應用程式 UI 中，按一下 [ **登入**。 然後按一下 [ **傳送推播**。
 

@@ -17,10 +17,9 @@
     ms.author="kgremban"/>
 
 
-
 # 使用連接器群組在不同的網路和位置發行應用程式
 
-> [AZURE.NOTE] 應用程式 Proxy 是您升級至 Premium 或 Basic 版本的 Azure Active Directory 時才能使用的功能。 如需詳細資訊，請參閱 [Azure Active Directory 版本](active-directory-editions.md)。
+> [AZURE.NOTE] 應用程式 Proxy 是您升級至 Premium 或 Basic 版本的 Azure Active Directory 時，才可以使用的功能。 如需詳細資訊，請參閱 [Azure Active Directory 版本](active-directory-editions.md)。
 
 「連接器」群組可用於一些不同狀況，包括：
 
@@ -34,44 +33,34 @@
 
 
 ## 使用連接器群組
-
 若要群組的連接器，您必須確定您 [安裝多個連接器](active-directory-application-proxy-enable.md), ，和它們的名稱，然後將它們分組。 最後，您必須將它們指派給特定的應用程式。
 
 ## 步驟 1：建立連接器群組
-
-您可以建立任意數量的連接器群組。 連接器群組的建立是在 Azure 入口網站中完成。 選取您的目錄，然後按一下 [設定]****。 然後按一下 [應用程式 Proxy 下 **管理連接器群組** 並為該群組指定的名稱來建立新的連接器群組:
+您可以建立任意數量的連接器群組。 連接器群組的建立是在 Azure 入口網站中完成。 選取您的目錄，然後按一下 **設定**。 然後按一下 [應用程式 Proxy 下 **管理連接器群組** 並為該群組指定的名稱來建立新的連接器群組:
     ![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png)
     ![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_namegroup.png)
 ## 步驟 2：將連接器指派給您的群組
-
-一旦建立「連接器」群組，請將「連接器」移動到適當的群組。 在 [應用程式 Proxy]**** 底下，按一下 [管理連接器]****，並在 [群組]**** 底下針對各個「連接器」選取您想要的群組。 請注意，新群組中的連接器最多可能需要 10 分鐘才會變成作用中。
+一旦建立「連接器」群組，請將「連接器」移動到適當的群組。 在 **應用程式 Proxy**, ，按一下 [ **管理連接器** 歲以下 **群組**, ，選取您要針對每個連接器的群組。 請注意，新群組中的連接器最多可能需要 10 分鐘才會變成作用中。
     ![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_connectorlist.png)
 ## 步驟 3：將應用程式指派給您的連接器群組
-
-最後一個步驟是設定將為每個應用程式提供服務的連接器群組。 在 Azure 入口網站中，從您的目錄中選取想要指派給群組的應用程式，按一下 [設定]****。 在 [連接器群組]**** 底下，選取應用程式要使用的群組。 這項變更會立即套用。
+最後一個步驟是設定將為每個應用程式提供服務的連接器群組。 在 Azure 入口網站中，在目錄中，選取您想要指派給群組，按一下 [應用的程式 **設定**。 在 **連接器群組**, ，選取您想要使用的應用程式的群組。 這項變更會立即套用。
     ![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_newgroup.png)
 如需有關發行應用程式的詳細資訊，請參閱 [發行應用程式使用您自己的網域名稱](active-directory-application-proxy-custom-domains.md)
 ## 另請參閱
-
 應用程式 Proxy 還有其他更多用途：
 
 - [啟用應用程式 Proxy](active-directory-application-proxy-enable.md)
 - [啟用單一登入](active-directory-application-proxy-sso-using-kcd.md)
 - [啟用條件式存取](active-directory-application-proxy-conditional-access.md)
 - [使用宣告感知應用程式](active-directory-application-proxy-claims-aware-apps.md)
-- [您無法使用應用程式 Proxy 的問題進行疑難排解](active-directory-application-proxy-troubleshoot.md)
+- [使用應用程式 Proxy 疑難排解您遇到的問題](active-directory-application-proxy-troubleshoot.md)
 
 ## 深入了解應用程式 Proxy
-
-- [看看這裡我們的線上說明](active-directory-application-proxy-enable.md)
-- [應用程式 Proxy 部落格](http://blogs.technet.com/b/applicationproxyblog/)
-- [觀看我們在 Channel 9 上的影片!](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
+- [看看我們在這裡的線上說明](active-directory-application-proxy-enable.md)
+- [查閱應用程式 Proxy 部落格](http://blogs.technet.com/b/applicationproxyblog/)
+- [觀看我們在 Channel 9 上的影片！](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## 其他資源
 
 * [關於 Kerberos 限制委派](http://technet.microsoft.com/library/cc995228.aspx)
-
-
-
-
 

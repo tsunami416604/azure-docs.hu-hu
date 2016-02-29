@@ -17,7 +17,6 @@
     ms.date="12/01/2015"
     ms.author="davidmu"/>
 
-
 # Azure 資源管理員架構
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
@@ -74,17 +73,13 @@
 
 ## 後續步驟
 
-[部署和管理虛擬機器使用 Azure 資源管理員範本和 Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
+[使用 Azure 資源管理員範本和 Azure CLI 部署和管理虛擬機器](virtual-machines-deploy-rmtemplates-azure-cli.md)
 
-[部署和管理虛擬機器使用資源管理員範本和 PowerShell](virtual-machines-deploy-rmtemplates-powershell.md)
+[使用 Resource Manager 範本和 PowerShell 部署以及管理 Azure 虛擬機器](virtual-machines-deploy-rmtemplates-powershell.md)
 
 ## 其他資源
 
-[Azure 運算、 網路和存放裝置提供者在 Azure 資源管理員](virtual-machines-azurerm-versus-azuresm.md)
+[Azure Resource Manager 提供的 Azure 運算、網路和儲存提供者](virtual-machines-azurerm-versus-azuresm.md)
 
-[Azure 資源管理員概觀](resource-group-overview.md)
-
-
-
-
+[Azure Resource Manager 概觀](resource-group-overview.md)
 

@@ -18,7 +18,6 @@
     ms.author="mingzhan"/>
 
 
-
 # 如何在 VM 上從 Github 更新至最新版的 Azure Linux 代理程式
 
 若要更新您 [Azure Linux 代理程式](https://github.com/Azure/WALinuxAgent) 在 Azure 中的 Linux VM，您必須準備好:
@@ -28,9 +27,10 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-> [AZURE.NOTE] 如果您會從 Windows 電腦執行這項工作，可以使用 Putty 來 SSH 到 Linux 機器。 如需詳細資訊，請參閱 [如何登入執行 Linux 的虛擬機器](virtual-machines-linux-how-to-log-on.md)。
 
-支援 Azure 的 Linux 散發版本有將 Azure Linux 代理程式套件放在其儲存機制，因此請先從這個 Distro 儲存機制檢查並安裝最新版本。
+> [AZURE.NOTE] 如果您將會從 Windows 電腦執行這項工作，您可以使用 Putty 來 SSH 到 Linux 機器。 如需詳細資訊，請參閱 [如何登入執行 Linux 的虛擬機器](virtual-machines-linux-how-to-log-on.md)。
+
+支援 Azure 的 Linux 散發版本有將 Azure Linux 代理程式套件放在其儲存機制，因此請先從這個 Distro 儲存機制檢查並安裝最新版本。  
 
 對於 Ubuntu，只要輸入：
 
@@ -40,7 +40,7 @@
 
     #sudo yum install waagent
 
-對於 Oracle Linux，請確定在檔案中啟用的附加元件儲存機制 `/etc/yum.repo.d/public-yum-ol6.repo` 或 `/etc/yum.repo.d/public-yum-ol7.repo`, ，然後輸入:
+對於 Oracle Linux，請確定已在檔案 `/etc/yum.repo.d/public-yum-ol6.repo` 或 `/etc/yum.repo.d/public-yum-ol7.repo` 中啟用附加元件儲存機制，然後輸入：
 
     #sudo yum install WALinuxAgent
 
@@ -51,14 +51,14 @@
 
 使用 SSH 登入 VM。
 
-輸入安裝的 wget (有一些散發版本基本上是不會安裝的預設值，例如 Redhat、 CentOS、 Oracle Linux 6.4 和 6.5 版) `#sudo yum 安裝 wget` 命令列上。
+在命令列輸入 `#sudo yum install wget` 來安裝 wget (有一些散發版本基本上是不會安裝的，例如 Redhat、CentOS、Oracle Linux 6.4 和 6.5 版)。
 
 
 ## 下載最新版本
 
-開啟 [GitHub 中的 Azure Linux 代理程式版本](https://github.com/Azure/WALinuxAgent/releases) 在網頁上，並了解最新的版本號碼。 (您可以找到目前的版本，只要 `#waagent-版本`。)
+開啟 [GitHub 中的 Azure Linux 代理程式版本](https://github.com/Azure/WALinuxAgent/releases) 在網頁上，並了解最新的版本號碼。 (您可以輸入 `#waagent --version`，即可找到目前的版本 )。
 
-### 如需 2.0.x 版本，請鍵入：
+###如需 2.0.x 版本，請鍵入：
 
     #wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-[version]/waagent  
 
@@ -66,7 +66,7 @@
 
     #wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.14/waagent  
 
-### 如需 2.1.x 版本或更高版本，請鍵入：
+###如需 2.1.x 版本或更高版本，請鍵入：
 
     #wget https://github.com/Azure/WALinuxAgent/archive/WALinuxAgent-[version].zip
     #unzip WALinuxAgent-[version].zip
@@ -78,9 +78,9 @@
     #unzip WALinuxAgent-2.1.0.zip  
     #cd WALinuxAgent-2.1.0
 
-## 安裝 Linux 代理程式
+##安裝 Linux 代理程式
 
-### 如需 2.0.x 版本，請使用：
+###如需 2.0.x 版本，請使用：
 
  讓 waagent 變成可執行檔
 
@@ -97,10 +97,10 @@
     #sudo cp waagent /usr/share/oem/bin/
 
   如果是新安裝 Azure Linux 代理程式，請執行下列動作：
-
+ 
     #sudo /usr/sbin/waagent -install -verbose
 
-### 如需 2.1.x 版本，使用：
+###如需 2.1.x 版本，使用：
 
 您可能需要安裝封裝 `setuptools` 首先，請參閱 [這裡](https://pypi.python.org/pypi/setuptools)。 接著執行如下：
 
@@ -129,8 +129,4 @@
 您會看到 Linux 代理程式版本已更新為新的版本。
 
 如需有關 Azure Linux 代理程式的詳細資訊，請參閱 [Azure Linux 代理程式讀我檔案](https://github.com/Azure/WALinuxAgent)。
-
-
-
-
 

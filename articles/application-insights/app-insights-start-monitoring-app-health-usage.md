@@ -16,7 +16,6 @@
     ms.author="awills"/>
 
 
-
 # 加入 Application Insights SDK 監視 ASP.NET 應用程式
 
 *Application Insights 目前僅供預覽。*
@@ -24,7 +23,7 @@
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
 
-Visual Studio Application Insights 監視即時應用程式可協助您 [偵測及診斷效能問題和例外狀況 ][detect], ，和 [探索您的應用程式的方式使用 ][knowusers]。 它可以搭配各種不同的應用程式類型。 這適用於裝載在專屬內部部署 IIS 伺服器或 Azure VM 上的應用程式，以及 Azure Web 應用程式。
+Visual Studio Application Insights 監視即時應用程式可協助您 [偵測及診斷效能問題和例外狀況][detect], ，和 [探索您的應用程式的使用情況][knowUsers]。 它可以搭配各種不同的應用程式類型。 這適用於裝載在專屬內部部署 IIS 伺服器或 Azure VM 上的應用程式，以及 Azure Web 應用程式。
 
 
 
@@ -33,11 +32,11 @@ Visual Studio Application Insights 監視即時應用程式可協助您 [偵測�
 *另請參閱：*
 
 * [ASP.NET 5](app-insights-asp-net-five.md)
-* [裝置應用程式和 Java 伺服器 ][platforms]
+* [裝置應用程式和 Java 伺服器][platforms]
 
 #### 開始之前
 
-對於許多應用程式類型， [Visual Studio 可以加入您的應用程式的 Application Insights](#ide) 幾乎您不會察覺。 為了讓您清楚了解整個運作情形，本文將帶您手動完成這些步驟。
+對於許多應用程式類型， [Visual Studio 可以將 Application Insights 加入您的應用程式](#ide) 幾乎您不會察覺。 為了讓您清楚了解整個運作情形，本文將帶您手動完成這些步驟。
 
 
 您需要：
@@ -47,19 +46,19 @@ Visual Studio Application Insights 監視即時應用程式可協助您 [偵測�
 
 ## <a name="add"></a> 1.建立 Application Insights 資源
 
-登入 [Azure 入口網站 ][portal], ，並建立新的 Application Insights 資源。 選擇 ASP.NET 做為應用程式類型。
+登入 [Azure 入口網站][portal], ，並建立新的 Application Insights 資源。 選擇 ASP.NET 做為應用程式類型。
 
-![按一下 ](./media/app-insights-start-monitoring-app-health-usage/01-new-asp.png)
+![按一下 [新增]，然後按一下 [Application Insights]](./media/app-insights-start-monitoring-app-health-usage/01-new-asp.png)
 
-A [資源 ][roles] 在 Azure 中是服務的執行個體。 此資源是來自您應用程式的遙測將經過分析並呈現的地方。
+A [資源][roles] 在 Azure 中是服務的執行個體。 此資源是來自您應用程式的遙測將經過分析並呈現的地方。
 
-應用程式類型的選擇會設定的資源刀鋒視窗和屬性的預設內容顯示在 [計量瀏覽器 ][metrics]。
+應用程式類型的選擇會設定的資源刀鋒視窗和屬性的預設內容顯示在 [計量瀏覽器][metrics]。
 
 #### 複製檢測金鑰
 
 該金鑰識別資源，您很快就會將它安裝在 SDK 中，以將資源導向資料。
 
-![按一下 ](./media/app-insights-start-monitoring-app-health-usage/02-props-asp.png)
+![按一下 [屬性]，選取金鑰，然後按下 CTRL+C](./media/app-insights-start-monitoring-app-health-usage/02-props-asp.png)
 
 您剛才所完成用來建立新資源的步驟是開始監視任何應用程式的好方法。 現在您可以將資料傳送給它。
 
@@ -69,7 +68,7 @@ A [資源 ][roles] 在 Azure 中是服務的執行個體。 此資源是來自�
 
 1. 在 Visual Studio 中，編輯 Web 應用程式專案的 NuGet 封裝。
 
-    ![以滑鼠右鍵按一下專案，然後選取 ](./media/app-insights-start-monitoring-app-health-usage/03-nuget.png)
+    ![以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 封裝]](./media/app-insights-start-monitoring-app-health-usage/03-nuget.png)
 
 2. 安裝 Web Apps 適用的 Application Insights SDK。
 
@@ -77,22 +76,22 @@ A [資源 ][roles] 在 Azure 中是服務的執行個體。 此資源是來自�
 
 3. 編輯 ApplicationInsights.config (已由 NuGet 安裝加入)。 在結尾標記前面插入此內容：
 
-    `< InstrumentationKey >` *您複製的檢測金鑰* `< / InstrumentationKey >`
+    `<InstrumentationKey>` *您複製的檢測金鑰* `</InstrumentationKey>`
 
-    (或者，您可以 [撰寫一些程式碼 ][apikey] 應用程式中。)
+    (或者，您可以 [撰寫一些程式碼中設定的索引鍵][apikey] 應用程式中。)
 
 #### 若要升級至未來的 SDK 版本
 
 我們隨時會發行新版的 SDK。
 
-若要升級至 [新版的 SDK](app-insights-release-notes-dotnet.md), ，再次開啟 NuGet 封裝管理員，並篩選出已安裝的封裝。 選取 **Microsoft.ApplicationInsights.Web** 然後選擇 [升級]****。
+若要升級至 [新版的 SDK](app-insights-release-notes-dotnet.md), ，再次開啟 NuGet 封裝管理員，並篩選出已安裝的封裝。 選取 **Microsoft.ApplicationInsights.Web** 選擇 **升級**。
 
 如果您已對 ApplicationInsights.config 進行任何的自訂，請在升級前儲存複本，並在升級後合併您的變更到新版本中。
 
 
 ## <a name="run"></a> 3.執行專案
 
-使用 **F5** 執行應用程式並立即試用：開啟不同的頁面來產生一些遙測。
+使用 **F5** 來執行應用程式並立即試用: 開啟不同的頁面來產生一些遙測。
 
 在 Visual Studio 中，您可以看見已傳送到的事件計數。
 
@@ -100,21 +99,21 @@ A [資源 ][roles] 在 Azure 中是服務的執行個體。 此資源是來自�
 
 ## <a name="monitor"></a> 4.檢視遙測
 
-返回 [Azure 入口網站 ][portal] 並瀏覽至 Application Insights 資源。
+返回 [Azure 入口網站][portal] 並瀏覽至 Application Insights 資源。
 
 
 在 [概觀] 圖表中尋找資料。 剛開始的時候，您只會看見一或兩個資料點。 例如：
 
 ![Click through to more data](./media/app-insights-start-monitoring-app-health-usage/12-first-perf.png)
 
-逐一點選任何圖表以查看更詳細的度量。 [進一步了解度量。][perf]
+按一下任何圖表以查看詳細度量。 [進一步了解度量。][perf]
 
 #### 沒有資料？
 
 * 使用應用程式、開啟不同頁面，以產生一些遙測。
-* 開啟 [搜尋 ][diagnostic] ] 磚來查看個別事件。 有時候，事件通過計量管線所需的時間較長。
-* 請稍等片刻，然後按一下 [重新整理****]。 圖表會定期自行重新整理，但是如果您在等待一些要顯示的資料，您可以手動重新整理。
-* 請參閱 [疑難排解 ][qna]。
+* 開啟 [搜尋][diagnostic] ] 磚來查看個別事件。 有時候，事件通過計量管線所需的時間較長。
+* 等候幾秒鐘的時間，然後按 **重新整理**。 圖表會定期自行重新整理，但是如果您在等待一些要顯示的資料，您可以手動重新整理。
+* 請參閱 [疑難排解][qna]。
 
 ## 發佈您的應用程式
 
@@ -135,7 +134,8 @@ A [資源 ][roles] 在 Azure 中是服務的執行個體。 此資源是來自�
 #### 組建伺服器發生問題？
 
 請參閱 [此疑難排解項目](app-insights-troubleshoot-faq.md#NuGetBuild)。
-> [AZURE.NOTE] 如果您的應用程式會產生大量遙測 (且您使用的是 ASP.NET SDK 版本 2.0.0-beta3 或較新)，調適性取樣模型會自動藉由僅傳送事件代表性片段，以減少傳送到入口網站的量。 不過，與同一個要求相關的事件會選取或取消選取為群組，讓您可以在相關事件之間瀏覽。 
+
+> [AZURE.NOTE] 如果您的應用程式會產生大量遙測 (而且您正在使用 ASP.NET SDK 版本 2.0.0-beta3 或更新版本)，調適性取樣模組會自動縮減傳送代表分數的事件傳送至入口網站的磁碟區。 不過，與同一個要求相關的事件會選取或取消選取為群組，讓您可以在相關事件之間瀏覽。 
 > [深入了解取樣](app-insights-sampling.md)。
 
 
@@ -157,7 +157,7 @@ SDK 需要一些協助，才能取得某些資料的存取權。 特別是，您
 
 在您的 Azure Web 應用程式的控制台中，加入 Application Insights 延伸模組。
 
-![在您的 Web 應用程式中，依序按一下 ](./media/app-insights-start-monitoring-app-health-usage/05-extend.png)
+![在您的 Web 應用程式中，依序按一下 [設定]、[延伸模組]、[加入]、[Application Insights]](./media/app-insights-start-monitoring-app-health-usage/05-extend.png)
 
 
 #### 如果是 Azure 雲端服務專案
@@ -173,7 +173,7 @@ SDK 需要一些協助，才能取得某些資料的存取權。 特別是，您
 
 將 JavaScript 程式碼片段加入每一頁。 從您的 Application Insights 資源取得程式碼：
 
-![在您的 Web 應用程式中，開啟 ](./media/app-insights-start-monitoring-app-health-usage/02-monitor-web-page.png)
+![在您的 Web 應用程式中，開啟 [快速啟動]，然後按一下 [取得程式碼來監視我的網頁]](./media/app-insights-start-monitoring-app-health-usage/02-monitor-web-page.png)
 
 請注意，此程式碼包含可識別您的應用程式資源的檢測金鑰。
 
@@ -182,7 +182,7 @@ SDK 需要一些協助，才能取得某些資料的存取權。 特別是，您
 
 ## 追蹤應用程式版本
 
-請確定 `buildinfo.config` 產生您的 MSBuild 處理程序。 在您的 .csproj 檔案中加入：
+請確定 `buildinfo.config` 是藉由您的 MSBuild 處理序所產生。 在您的 .csproj 檔案中加入：  
 
 ```XML
 
@@ -191,7 +191,7 @@ SDK 需要一些協助，才能取得某些資料的存取權。 特別是，您
     </PropertyGroup> 
 ```
 
-當它有組建資訊時，Application Insights Web 模組會自動新增**應用程式版本**，做為每個遙測項目的屬性。 可讓您在執行時，依版本篩選 [診斷搜尋 ][diagnostic] 或 [探索度量 ][metrics]。
+當它有組建資訊時，Application Insights web 模組會自動加入 **應用程式版本** 為遙測的每個項目的屬性。 可讓您在執行時，依版本篩選 [診斷搜尋][diagnostic] 或 [探索度量][metrics]。 
 
 但請注意，組建版本號碼只能由 MS 組建產生，不是 Visual Studio 中的開發人員組建產生。
 
@@ -199,9 +199,9 @@ SDK 需要一些協助，才能取得某些資料的存取權。 特別是，您
 
 若要取得您的應用程式的全方位檢視，您還可以執行一些動作：
 
-* [設定 web 測試的 ][availability] 以確定您的應用程式處於線上且能夠回應。
-* [擷取記錄追蹤 ][netlogs] 從您最喜愛的記錄架構
-* [追蹤自訂事件和度量 ][api] 用戶端或伺服器或兩者，若要深入了解如何使用您的應用程式。
+* [設定 web 測試][availability] 以確定您的應用程式處於線上且能夠回應。
+* [擷取記錄追蹤][netlogs] 從您最喜愛的記錄架構
+* [追蹤自訂事件和度量][api] 用戶端或伺服器或兩者，若要深入了解如何使用您的應用程式。
 
 ## <a name="ide"></a> 自動化的方式
 
@@ -211,32 +211,32 @@ SDK 需要一些協助，才能取得某些資料的存取權。 特別是，您
 
 #### 對於新專案
 
-當您在 Visual Studio 中建立新專案時，請務必選取 [加入 Application Insights]****。
+當您在 Visual Studio 中建立新的專案時，請確定 **加入 Application Insights** 已選取。
 
 
 ![Create an ASP.NET project](./media/app-insights-start-monitoring-app-health-usage/appinsights-01-vsnewp1.png)
 
-Visual Studio Application Insights 中建立資源將 SDK 加入至專案，並將中的索引鍵 `.config` 檔案。
+Visual Studio 會在 Application Insights 中建立資源，將 SDK 加入至專案，並將金鑰放在 `.config` 檔案中。
 
-如果您的專案有網頁，同時也增加了 [JavaScript SDK ][client] 至主版網頁。
+如果您的專案有網頁，同時也增加了 [JavaScript SDK][client] 至主版網頁。
 
 #### ... 對於現有專案
 
-以滑鼠右鍵按一下 [方案總管] 中的專案，然後選擇 [加入 Application Insights]****。
+在 [方案總管專案上按一下滑鼠右鍵，然後選擇 [ **加入 Application Insights**。
 
 ![Choose Add Application Insights](./media/app-insights-start-monitoring-app-health-usage/appinsights-03-addExisting.png)
 
-Visual Studio Application Insights 中建立資源將 SDK 加入至專案，並將中的索引鍵 `.config` 檔案。
+Visual Studio 會在 Application Insights 中建立資源，將 SDK 加入至專案，並將金鑰放在 `.config` 檔案中。
 
-在此情況下，它並不會加入 [JavaScript SDK ][client] 加入至網頁-建議您這樣的下一個步驟。
+在此情況下，它並不會加入 [JavaScript SDK][client] 加入至網頁-建議您這樣的下一個步驟。
 
 #### 設定選項
 
-如果這是您第一次使用，系統會要求您登入或註冊 Microsoft Azure Preview。
+如果這是您第一次使用，系統會要求您登入或註冊 Microsoft Azure Preview。 
 
-如果此應用程式是更大應用程式的一部分，您可以使用 [**組態設定**]，將它放在與其他元件相同的資源群組中。
+如果此應用程式是更大的應用程式的一部分，您可能想要使用 **設定** 將它放在與其他元件相同的資源群組。
 
-*沒有 Application Insights 選項嗎？ 請檢查您正在使用 Visual Studio 2013 Update 3 或更新版本，以及擴充功能和 Updates.* 中啟用 Application Insights Tools
+*沒有 Application Insights 選項？ 確定您使用 Visual Studio 2013 Update 3 或更新版本與 Application Insights Tools 會啟用擴充功能和更新。*
 
 #### 從專案開啟 Application Insights
 
@@ -245,29 +245,28 @@ Visual Studio Application Insights 中建立資源將 SDK 加入至專案，並�
 
 
 
-## <a name="video"></a>視訊
+## <a name="video"></a>影片
 
 > [AZURE.VIDEO getting-started-with-application-insights]
 
 
+<!--Link references-->
 
-
-
-[api]: app-insights-api-custom-events-metrics.md 
-[apikey]: app-insights-api-custom-events-metrics.md#ikey 
-[availability]: app-insights-monitor-web-app-availability.md 
-[azure]: ../insights-perf-analytics.md 
-[client]: app-insights-javascript.md 
-[detect]: app-insights-detect-triage-diagnose.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[knowusers]: app-insights-overview-usage.md 
-[metrics]: app-insights-metrics-explorer.md 
-[netlogs]: app-insights-asp-net-trace-logs.md 
-[perf]: app-insights-web-monitor-performance.md 
-[platforms]: app-insights-platforms.md 
-[portal]: http://portal.azure.com/ 
-[qna]: app-insights-troubleshoot-faq.md 
-[redfield]: app-insights-monitor-performance-live-website-now.md 
-[roles]: app-insights-resources-roles-access-control.md 
-[start]: app-insights-overview.md 
+[api]: app-insights-api-custom-events-metrics.md
+[apikey]: app-insights-api-custom-events-metrics.md#ikey
+[availability]: app-insights-monitor-web-app-availability.md
+[azure]: ../insights-perf-analytics.md
+[client]: app-insights-javascript.md
+[detect]: app-insights-detect-triage-diagnose.md
+[diagnostic]: app-insights-diagnostic-search.md
+[knowUsers]: app-insights-overview-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[netlogs]: app-insights-asp-net-trace-logs.md
+[perf]: app-insights-web-monitor-performance.md
+[platforms]: app-insights-platforms.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
+[redfield]: app-insights-monitor-performance-live-website-now.md
+[roles]: app-insights-resources-roles-access-control.md
+[start]: app-insights-overview.md
 

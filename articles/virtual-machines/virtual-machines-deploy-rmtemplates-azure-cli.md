@@ -17,15 +17,13 @@
     ms.date="11/01/2015"
     ms.author="rasquill"/>
 
-
 # 使用 Azure 資源管理員範本和 Azure CLI 部署和管理虛擬機器
 
 > [AZURE.SELECTOR]
 - [Azure PowerShell](virtual-machines-deploy-rmtemplates-powershell.md)
 - [Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
 
-
-<br>
+<br> 
 
 
 
@@ -33,14 +31,14 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。 您無法在傳統的部署模型中使用範本。
 
-- [快速建立 Azure 中的虛擬機器](#quick-create-a-vm-in-azure)
-- [部署虛擬機器在 Azure 中從範本](#deploy-a-vm-in-azure-from-a-template)
+- [在 Azure 中快速建立虛擬機器](#quick-create-a-vm-in-azure)
+- [在 Azure 中利用範本部署虛擬機器](#deploy-a-vm-in-azure-from-a-template)
 - [從自訂映像建立虛擬機器](#create-a-custom-vm-image)
-- [部署虛擬機器使用虛擬網路和負載平衡器](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
+- [部署使用虛擬網路和負載平衡器的虛擬機器](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
 - [移除資源群組](#remove-a-resource-group)
 - [顯示資源群組部署記錄檔](#show-the-log-for-a-resource-group-deployment)
 - [顯示虛擬機器的相關資訊](#display-information-about-a-virtual-machine)
-- [連線至以 Linux 為基礎的虛擬機器](#log-on-to-a-linux-based-virtual-machine)
+- [連線至 Linux 型虛擬機器](#log-on-to-a-linux-based-virtual-machine)
 - [停止虛擬機器](#stop-a-virtual-machine)
 - [啟動虛擬機器](#start-a-virtual-machine)
 - [連接資料磁碟](#attach-a-data-disk)
@@ -51,12 +49,12 @@
 
 ### 將 Azure CLI 版本更新為 0.9.0 或更新版本
 
-型別 `azure 版本` 以查看是否已經安裝 0.9.0 版或更新版本。
+輸入 `azure --version`，即可查看您是否已經安裝 0.9.0 版或更新版本。 
 
     azure --version
     0.9.0 (node: 0.10.25)
 
-如果您的版本不是 0.9.0 或更新版本，您需要藉由使用其中一個原生安裝程式，或是透過更新它 **npm** 輸入 `npm 更新-g azure cli`。
+如果您的版本不是 0.9.0 或更新版本，您需要藉由使用其中一個原生安裝程式，或是透過更新它 **npm** 輸入 `npm update -g azure-cli`。
 
 您也可以執行以 Docker 容器 Azure CLI，使用下列 [Docker 映像](https://registry.hub.docker.com/u/microsoft/azure-cli/)。 從 Docker 主機中，執行下列命令：
 
@@ -66,10 +64,11 @@
 
 如果您還沒有 Azure 訂用帳戶，但您沒有 MSDN 訂閱，您可以啟用您 [MSDN 訂閱者權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 您可以註冊或 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
 
-現在 [以互動方式登入您的 Azure 帳戶](../xplat-cli-connect.md#use-the-log-in-method) 輸入 `azure 登入` 並遵循您的 Azure 帳戶互動式登入體驗的提示。
-> [AZURE.NOTE] 如果您有工作或學校識別碼，而且您知道您不需要啟用雙重要素驗證，您可以 **也** 使用 `azure 登入-u` 以及工作或學校識別碼登入 *沒有* 互動式工作階段。 如果您沒有工作或學校識別碼，您可以 [從您個人的 Microsoft 帳戶建立工作或學校識別碼](resource-group-create-work-id-from-personal.md) 登入相同的方式。
+現在 [以互動方式登入您的 Azure 帳戶](../xplat-cli-connect.md#use-the-log-in-method) 輸入 `azure login` 並遵循您的 Azure 帳戶互動式登入體驗的提示。 
 
-您的帳戶可能會有一個以上的訂閱帳戶。 您可以列出您的訂閱輸入 `azure 帳戶清單`, ，這看起來可能像這樣:
+> [AZURE.NOTE] 如果您有工作或學校識別碼，而且您知道您不需要啟用雙重要素驗證，您可以 **也** 使用 `azure login -u` 以及工作或學校識別碼登入 *沒有* 互動式工作階段。 如果您沒有工作或學校識別碼，您可以 [從您個人的 Microsoft 帳戶建立工作或學校識別碼](resource-group-create-work-id-from-personal.md) 登入相同的方式。
+
+您的帳戶可能會有一個以上的訂閱帳戶。 您可以輸入 `azure account list`，即可列出訂閱帳戶，如以下所示：
 
     azure account list
     info:    Executing command account list
@@ -84,9 +83,11 @@
 
     azure account set <subscription name or ID> true
 
+
+
 ### 切換至 Azure CLI 資源群組模式
 
-根據預設，Azure CLI 會在服務管理模式 (**asm** 模式) 下啟動。 輸入下列內容以切換至資源群組模式。
+根據預設，Azure CLI 會啟動服務管理模式 (**asm** 模式)。 輸入下列內容以切換至資源群組模式。
 
     azure config mode arm
 
@@ -94,7 +95,7 @@
 
 大部分的應用程式在建立時會使用不同資源類型的組合 (例如一或多個 VM 和儲存體帳戶、SQL 資料庫、虛擬網路或內容傳遞網路)。 預設 Azure 服務管理 API 和 Azure 傳統入口網站可使用 service-by-service 方法代表這些項目。 這個方法會要求您部署和個別管理個別服務 (或尋找執行這項作業的其他工具)，而不是做為部署的單一邏輯單元。
 
-不過，您可以利用「Azure 資源管理員範本」**，將這些不同的資源宣告為一個邏輯部署單元，然後就能進行部署和管理。 請不要以命令方式告訴 Azure 逐一部署命令，您應該在 JSON 檔案描述整個部署過程 -- 所有資源和相關設定以及部署參數 -- 然後告訴 Azure 將這些資源視為一個群組加以部署。
+*Azure 資源管理員範本*, ，不過，可讓您部署和管理這些不同的資源當做一個邏輯部署單元，以宣告方式。 請不要以命令方式告訴 Azure 逐一部署命令，您應該在 JSON 檔案描述整個部署過程 -- 所有資源和相關設定以及部署參數 -- 然後告訴 Azure 將這些資源視為一個群組加以部署。
 
 然後您可以使用 Azure CLI 資源管理命令執行以下動作，即可管理群組的資源整體生命週期：
 
@@ -107,7 +108,7 @@
 
 ## <a id="quick-create-a-vm-in-azure"></a>工作: 快速建立在 Azure VM
 
-有時候您知道需要何種映像，而且您現在需要該映像的 VM，並且不太在意基礎結構 -- 或許您必須在全新的 VM 上進行某些測試。 當您想要使用 `azure vm 快速建立` 命令，並傳遞引數需要建立 VM 和基礎結構的時候。
+有時候您知道需要何種映像，而且您現在需要該映像的 VM，並且不太在意基礎結構 -- 或許您必須在全新的 VM 上進行某些測試。 當您想要使用 `azure vm quick-create` 命令，然後傳遞必要引數來建立 VM 和基礎結構的時候。
 
 首先，建立資源群組。
 
@@ -124,30 +125,32 @@
     data:
     info:    group create command OK
 
+
 第二，您將需要映像。 若要尋找 Azure CLI 的影像，請參閱 [瀏覽和選取 Azure 虛擬機器映像，利用 PowerShell 和 Azure CLI](resource-groups-vm-searching.md)。 不過在本文中，以下是常用映像的簡要清單。 我們會使用 CoreOS 的 Stable 映像，縮短整個建立流程。
-> [AZURE.NOTE] 對於 ComputeImageVersion，您也可以只提供 'latest' 做為範本語言和 Azure CLI 中的參數。 這可讓您永遠使用最新且經過修補的映像版本，而不必修改您的指令碼或範本。 如下所示。
 
-| PublisherName| 提供項目| SKU| 版本|
+> [AZURE.NOTE] 如 ComputeImageVersion，您也可以只提供 'latest' 做為參數和 Azure CLI 中範本語言。 這可讓您永遠使用最新且經過修補的映像版本，而不必修改您的指令碼或範本。 如下所示。
+
+| PublisherName                        | 提供項目                                 | SKU                         | 版本 |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
-| OpenLogic| CentOS| 7| 7.0.201503|
-| OpenLogic| CentOS| 7.1| 7.1.201504|
-| CoreOS| CoreOS| Beta| 647.0.0|
-| CoreOS| CoreOS| Stable| 633.1.0|
-| MicrosoftDynamicsNAV| DynamicsNAV| 2015| 8.0.40459|
-| MicrosoftSharePoint| MicrosoftSharePointServer| 2013| 1.0.0|
-| msopentech| Oracle-Database-12c-Weblogic-Server-12c| 標準| 1.0.0|
-| msopentech| Oracle-Database-12c-Weblogic-Server-12c| Enterprise| 1.0.0|
-| MicrosoftSQLServer| SQL2014-WS2012R2| Enterprise-Optimized-for-DW| 12.0.2430|
-| MicrosoftSQLServer| SQL2014-WS2012R2| Enterprise-Optimized-for-OLTP| 12.0.2430|
-| Canonical| UbuntuServer| 12.04.5-LTS| 12.04.201504230|
-| Canonical| UbuntuServer| 14.04.2-LTS| 14.04.201503090|
-| MicrosoftWindowsServer| WindowsServer| 2012-Datacenter| 3.0.201503|
-| MicrosoftWindowsServer| WindowsServer| 2012-R2-Datacenter| 4.0.201503|
-| MicrosoftWindowsServer| WindowsServer| Windows-Server-Technical-Preview| 5.0.201504|
-| MicrosoftWindowsServerEssentials| WindowsServerEssentials| WindowsServerEssentials| 1.0.141204|
-| MicrosoftWindowsServerHPCPack| WindowsServerHPCPack| 2012R2| 4.3.4665|
+| OpenLogic                        | CentOS                                     | 7                                | 7.0.201503          |
+| OpenLogic                        | CentOS                                     | 7.1                              | 7.1.201504          |
+| CoreOS                           | CoreOS                                     | Beta                             | 647.0.0             |
+| CoreOS                           | CoreOS                                     | Stable                           | 633.1.0             |
+| MicrosoftDynamicsNAV             | DynamicsNAV                                | 2015                             | 8.0.40459           |
+| MicrosoftSharePoint              | MicrosoftSharePointServer                  | 2013                             | 1.0.0               |
+| msopentech                       | Oracle-Database-12c-Weblogic-Server-12c    | 標準                         | 1.0.0               |
+| msopentech                       | Oracle-Database-12c-Weblogic-Server-12c    | Enterprise                       | 1.0.0               |
+| MicrosoftSQLServer               | SQL2014-WS2012R2                           | Enterprise-Optimized-for-DW      | 12.0.2430           |
+| MicrosoftSQLServer               | SQL2014-WS2012R2                           | Enterprise-Optimized-for-OLTP    | 12.0.2430           |
+| Canonical                        | UbuntuServer                               | 12.04.5-LTS                      | 12.04.201504230     |
+| Canonical                        | UbuntuServer                               | 14.04.2-LTS                      | 14.04.201503090     |
+| MicrosoftWindowsServer           | WindowsServer                              | 2012-Datacenter                  | 3.0.201503          |
+| MicrosoftWindowsServer           | WindowsServer                              | 2012-R2-Datacenter               | 4.0.201503          |
+| MicrosoftWindowsServer           | WindowsServer                              | Windows-Server-Technical-Preview | 5.0.201504          |
+| MicrosoftWindowsServerEssentials | WindowsServerEssentials                    | WindowsServerEssentials          | 1.0.141204          |
+| MicrosoftWindowsServerHPCPack    | WindowsServerHPCPack                       | 2012R2                           | 4.3.4665            |
 
-只輸入來建立您的 VM `azure vm 快速建立` 命令，並提示，就。 您應該會看到類似下面的畫面：
+只要輸入 `azure vm quick-create` 命令，然後根據系統提示執行，就可以建立 VM。 您應該會看到類似下面的畫面：
 
     azure vm quick-create
     info:    Executing command vm quick-create
@@ -234,15 +237,15 @@
 
 ## <a id="deploy-a-vm-in-azure-from-a-template"></a>工作: 部署在 Azure 的 VM 範本
 
-請按照以下各節描述的操作方法，使用 Azure CLI 搭配範本來部署新的 Azure VM。 此範本建立新的虛擬網路的單一子網路，而不同於單一虛擬機器 `azure vm 快速建立`, ，可讓您描述想要精確地重複無誤。 以下是這個範本建立的內容：
+請按照以下各節描述的操作方法，使用 Azure CLI 搭配範本來部署新的 Azure VM。 這個範本會在只有單一子網路的新虛擬網路中建立單一虛擬機器，而不同於 `azure vm quick-create`，它可以讓您精確描述想要的內容，而且重複使用時也不會發生任何錯誤。 以下是這個範本建立的內容：
 
 ![](./media/virtual-machines-deploy-rmtemplates-azure-cli/new-vm.png)
 
 ### 步驟 1：檢查 JSON 檔案的範本參數。
 
-以下是範本的 JSON 檔案內容。 (這個範本也位於 [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json).)
+以下是範本的 JSON 檔案內容。 (這個範本也位於 [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json)。)
 
-範本可彈性運用，所以這位設計人員可能已經決定提供很多的參數給您，或者決定建立一個更固定的範本，而只提供幾個參數給您。 為了收集資訊，請您將這個範本以參數的形式傳遞，然後開啟範本檔案 (這個主題內嵌一個範本)，接下來檢查 [參數]**** 值。
+範本可彈性運用，所以這位設計人員可能已經決定提供很多的參數給您，或者決定建立一個更固定的範本，而只提供幾個參數給您。 為了收集的資訊，您需要做為參數傳遞的範本，開啟範本檔案 (這個主題內嵌一個範本如下)，並檢查 **參數** 值。
 
 在這個案例中，系統會要求您提供下列範本：
 
@@ -429,11 +432,12 @@
     ]
     }
 
+
 ### 步驟 2：使用範本建立虛擬機器
 
 準備好參數值之後，您必須建立一個部署範本時會用到的資源群組，然後再部署範本。
 
-若要建立資源群組，請輸入 `azure 群組建立 < 群組名稱 >< 位置 >` 您想要的群組與您要部署的資料中心位置的名稱。進行速度十分快：
+若要建立資源群組，請輸入 `azure group create <group name> <location>` 和您所需群組的名稱，以及要部署到哪一個資料中心位置。 進行速度十分快：
 
     azure group create myResourceGroup westus
     info:    Executing command group create
@@ -448,7 +452,8 @@
     data:
     info:    group create command OK
 
-現在要建立部署，請呼叫 `azure 群組部署建立` 並傳遞:
+
+現在要建立部署，請呼叫 `azure group deployment create` 並傳遞：
 
 - 範本檔案 (如果您會將上述 JSON 範本儲存到本機檔案)。
 - 範本 URI (如果您想指向 GitHub 中的檔案或其他網址)。
@@ -493,6 +498,8 @@
     data:    ubuntuOSVersion        String        14.10
     info:    group deployment create command OK
 
+
+
 ## <a id="create-a-custom-vm-image"></a>工作: 建立自訂的 VM 映像
 
 您已基本了解上述範本的用法，那麼現在我們可以使用類似的操作方法，透過 Azure CLI 使用範本從 Azure 中的特定 .vhd 檔案建立自訂 VM。 其中的差別就是這個範本會從指定的虛擬硬碟 (VHD) 建立單一虛擬機器。
@@ -501,7 +508,7 @@
 
 以下是本章節舉例說明時，範本的 JSON 檔案內容。
 
-再說一次，參數如果沒有預設值，就必須找出您想輸入的值。 當您執行 `azure 群組部署建立` 命令時，Azure CLI 會提示您輸入這些值。
+再說一次，參數如果沒有預設值，就必須找出您想輸入的值。 當您執行 `azure group deployment create` 命令時，Azure CLI 會提示您輸入這些值。
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
@@ -694,7 +701,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 
 ### 步驟 3：使用範本建立虛擬機器
 
-現在您已準備利用 .vhd 建立新的虛擬機器。建立群組，以使用部署至 `azure 群組建立 < 位置 >`:
+現在您已準備利用 .vhd 建立新的虛擬機器。 使用 `azure group create <location>` 建立一個要在其中部署的群組：
 
     azure group create myResourceGroupUser eastus
     info:    Executing command group create
@@ -709,7 +716,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
     data:
     info:    group create command OK
 
-然後使用建立部署 `-範本 uri` 選項直接呼叫範本 (或者您可以使用 `-範本檔案` 選項，在本機使用您儲存檔案)。 請注意，因為範本已指定預設值，所以只會提示您只輸入幾項資料。 如果將範本部署到幾個不同的地方，可能會發現某些名稱與預設值衝突 (特別是您建立的 DNS 名稱)。
+然後使用 `--template-uri` 選項直接呼叫範本 (或者利用 `--template-file` 選項來使用您本機儲存的檔案)，開始建立部署。 請注意，因為範本已指定預設值，所以只會提示您只輸入幾項資料。 如果將範本部署到幾個不同的地方，可能會發現某些名稱與預設值衝突 (特別是您建立的 DNS 名稱)。
 
     azure group deployment create \
     > --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json \
@@ -757,6 +764,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
     data:    nicName                        String        myNIC
     info:    group deployment create command OK
 
+
 ## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>工作: 部署虛擬網路和外部負載平衡器會使用一個多重 VM 應用程式
 
 您可以利用這個範本，在一個負載平衡器上建立兩個虛擬機器，然後在連接埠 80 設定負載平衡規則。 這個範本也會部署儲存體帳戶、虛擬網路、公用 IP 位址、可用性集合以及網路介面。
@@ -767,7 +775,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 
 ### 步驟 1：檢查範本的 JSON 檔案
 
-以下是範本的 JSON 檔案內容。 如果您需要最新的版本，它是位於 [範本的 Github 儲存機制在](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)。 本主題使用 `-範本 uri` 參數來呼叫範本，不過您也可以使用 `-範本檔案` 參數來傳遞本機版本。
+以下是範本的 JSON 檔案內容。 如果您需要最新的版本，它是位於 [在範本的 Github 儲存機制](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)。 這個主題使用 `--template-uri` 參數來呼叫範本，不過您也可以使用 `--template-file` 參數來傳遞本機版本。
 
 
     {
@@ -962,11 +970,11 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
                                     "id": "[concat('Microsoft.Network/loadBalancers/',parameters('lbName'),'/inboundNatRule/RDP-VM', copyindex())]"
                                 }
                             ]
-    
-    
+
+
                         }
                     ]
-    
+
                 }
             },
             {
@@ -992,7 +1000,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
                     "backendAddressPools": [
                         {
                             "name": "LBBE"
-    
+
                         }
                     ],
                     "inboundNatRules": [
@@ -1103,7 +1111,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 
 ### 步驟 2：使用範本建立部署
 
-使用建立資源群組範本 `azure 群組建立 < 位置 >`。然後，使用建立部署到該資源群組 `azure 群組部署建立` 和傳遞資源群組、 傳遞部署名稱，然後輸入中沒有預設值的範本參數。
+使用 `azure group create <location>` 來建立範本的資源群組。 然後，使用 `azure group deployment create` 並傳遞資源群組、傳遞部署名稱，並為範本中沒有預設值的參數回應提示，就可以在資源群組中建立部署。
 
 
     azure group create lbgroup westus
@@ -1119,7 +1127,8 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
     data:
     info:    group create command OK
 
-現在使用 `azure 群組部署建立` 命令和 `-範本 uri` 選項來部署範本。 請在系統提示時備妥您的參數值，如下所示。
+
+現在使用 `azure group deployment create` 命令和 `--template-uri` 選項來部署範本。 請在系統提示時備妥您的參數值，如下所示。
 
     azure group deployment create \
     > --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json \
@@ -1166,11 +1175,11 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
     data:    vmSize                 String        Standard_A1
     info:    group deployment create command OK
 
-請注意，這個範本會部署 Windows Server 映像。不過，任何 Linux 映像都可以輕易取代它。 想要建立一個具備多個 swarm 管理員的 Docker 叢集嗎？ [You can do it](http://azure.microsoft.com/documentation/templates/docker-swarm-cluster/).
+請注意，這個範本會部署 Windows Server 映像。不過，任何 Linux 映像都可以輕易取代它。 想要建立一個具備多個 swarm 管理員的 Docker 叢集嗎？ [您可以進行](http://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
 
 ## <a id="remove-a-resource-group"></a>工作: 移除資源群組
 
-請注意，您可以重新部署至資源群組，但如果您完成其中一個，可以刪除使用 `azure 群組刪除 < 群組名稱 >`。
+請記住，您可以重新部署至資源群組，但若其中有一個不再使用，則可使用 `azure group delete <group name>` 加以刪除。
 
     azure group delete myResourceGroup
     info:    Executing command group delete
@@ -1180,9 +1189,9 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 
 ## <a id="show-the-log-for-a-resource-group-deployment"></a>工作: 顯示資源群組部署記錄檔
 
-建立或使用範本時，此種情況很常見。呼叫來顯示的部署日誌群組 `azure 群組記錄檔顯示 < 群組名稱 >`, ，它會顯示相當多的了解為什麼有發生或者為何未有用的資訊。(如需有關如何疑難排解您的部署，以及其他問題的相關資訊的詳細資訊，請參閱 [Azure 中的資源群組部署疑難排解](resource-group-deploy-debug.md).)
+建立或使用範本時，此種情況很常見。 您可以使用 `azure group log show <groupname>` 呼叫來顯示群組的部署記錄檔，它會顯示相當多的實用資訊，協助您了解發生某些狀況的原因，或是未發生某些狀況的原因 (如需有關如何疑難排解您的部署，以及其他問題的相關資訊的詳細資訊，請參閱 [在 Azure 中的資源群組部署疑難排解](resource-group-deploy-debug.md)。)
 
-例如，為了查明某些異常狀況，您可以使用 **jq** 此類的工具，就可以更清楚掌握前因後果，例如您需要更正的異常狀況。 下列範例會使用 **jq** 剖析 **lbgroup** 的部署記錄檔，找出各種異常狀況。
+目標特定失敗，例如，您可以使用等工具 **jq** 更精確地說，例如前因後果您需要更正的查詢項目。 下列範例會使用 **jq** 剖析部署記錄檔的 **lbgroup**, 狀況。
 
     azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties'
 
@@ -1193,9 +1202,10 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
       "statusMessage": "{\"status\":\"Failed\",\"error\":{\"code\":\"ResourceDeploymentFailure\",\"message\":\"The resource operation completed with terminal provisioning state 'Failed'.\",\"details\":[{\"code\":\"AcquireDiskLeaseFailed\",\"message\":\"Failed to acquire lease while creating disk 'osdisk' using blob with URI http://storage.blob.core.windows.net/vhds/osdisk.vhd.\"}]}}"
     }
 
+
 ## <a id="display-information-about-a-virtual-machine"></a>工作: 顯示虛擬機器的相關資訊
 
-您也可以使用資源群組中查看特定 Vm 的相關資訊 `azure vm 顯示 [< 群組名稱 >< vmname > 命令`。如果您有一個以上的 VM 群組中，您需要列出群組中的 Vm 使用 `vm list < 群組名稱 >`。
+您可以使用 `azure vm show <groupname> <vmname> command` 來了解資源群組中特定 VM 的相關資訊。 如果您的群組中有多個 VM，可能需要先使用 `azure vm list <groupname>` 來列出群組中的 VM。
 
     azure vm list zoo
     info:    Executing command vm list
@@ -1257,7 +1267,8 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
     data:      Id                            :/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/zoo/providers/Microsoft.Compute/availabilitySets/MYAVSET
     info:    vm show command OK
 
-> [AZURE.NOTE] 如果您想要以程式設計方式儲存和操作主控台命令的輸出，您可能想要使用 JSON 剖析工具，例如 * *[jq](https://github.com/stedolan/jq)** 或 **[jsawk](https://github.com/micha/jsawk)* *，或工作適合的語言程式庫。
+
+> [AZURE.NOTE] 如果您想要以程式設計方式儲存和操作主控台命令的輸出，您可能想要使用 JSON 剖析工具，例如 **[jq](https://github.com/stedolan/jq)** 或 **[jsawk](https://github.com/micha/jsawk)**, ，或工作適合的語言程式庫。
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>工作: 登入 Linux 型虛擬機器
 
@@ -1269,7 +1280,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 
     azure vm stop <group name> <virtual machine name>
 
->[AZURE.IMPORTANT] 萬一它是 Vnet 的最後一個 VM，您可以使用這個參數來保留 Vnet 的虛擬 IP (VIP)。<br><br> 如果您使用 `StayProvisioned` 參數，您還是要支付 VM。
+>[AZURE.IMPORTANT] 使用此參數来保留虛擬 IP (VIP) 的 vnet，以便在該 vnet 中的最後一個 VM。 <br><br>如果您使用 `StayProvisioned` 參數，仍需支付 VM 的費用。
 
 ## <a id="start-a-virtual-machine"></a>工作: 啟動 VM
 
@@ -1297,8 +1308,4 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 更多有關使用 Azure CLI 使用 **arm** 模式中，請參閱 [使用適用於 Mac、 Linux 和 Windows 搭配 Azure 資源管理員的 Azure CLI](xplat-cli-azure-resource-manager.md)。 若要深入了解 Azure 資源和概念，請參閱 [Azure 資源管理員概觀](../resource-group-overview.md)。
 
 您可以使用更多的範本，請參閱 [Azure 快速入門範本](http://azure.microsoft.com/documentation/templates/) 和 [使用範本的應用程式架構](virtual-machines-app-frameworks.md)。
-
-
-
-
 

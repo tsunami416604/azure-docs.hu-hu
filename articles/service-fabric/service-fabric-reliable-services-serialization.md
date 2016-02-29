@@ -16,9 +16,7 @@
    ms.date="11/18/2015"
    ms.author="mcoskun"/>
 
-
 # Reliable Services 的序列化
-
 Reliable 狀態管理員可容納多個 Reliable 物件。
 這些 Reliable 物件中，有些可以是泛型資料結構，例如立即可用的 Reliable 字典和 Reliable 佇列。
 由於這些都是可靠的泛型資料結構，它們保存的泛型物件必須序列化，以便可以複寫及保存到磁碟。
@@ -37,7 +35,6 @@ Reliable 狀態管理員有適合下列類型的內建序列化程式：guid、b
 本文著重於使用自訂序列化的時機和方式。
 
 ## 使用自訂序列化的時機
-
 有兩個常見的原因，若要使用自訂序列化
 * 效能
 * 加密
@@ -50,13 +47,11 @@ Service Fabric 保證特定類型的狀態序列化程式，僅用於該類型�
 至於機密資料，最好能確定網路和磁碟上的資料位元都加密。
 
 ## 使用自訂序列化的方式
-
 若要指定型別的使用自訂序列化程式，我們必須
 * 建置自訂狀態序列化程式
 * 在可靠的服務中註冊的自訂狀態序列化程式
 
 ### 如何實作自訂序列化程式
-
 自訂序列化程式需要實作 IStateSerializer<T> 介面。
 這個介面中的兩個核心方法
 * T; Read(BinaryReader binaryReader)
@@ -109,14 +104,13 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
     }
 }
 ```
->[AZURE.NOTE] 在上例中，讀取和寫入的多載實作只會呼叫其對應的多載。
+>[AZURE.NOTE] 在上述範例中，讀取和寫入的多載的實作只要呼叫其對應的多載。
 這是因為下列兩種方法會用於尚未提供的功能。
 
 ### 如何註冊自訂序列化程式
-
 若要註冊自訂序列化程式，我們首先需要可以註冊所有自訂序列化程式的方法。
 這個方法不需要任何引數，並且能夠傳回工作。
-在這種方法，IReliableStateManager.TryAddStateSerializer<T> 必須用於註冊可靠服務的所有自訂序列化程式。
+這種方法 IReliableStateManager.TryAddStateSerializer<T> 必須用於註冊可靠服務的所有自訂序列化程式。
 
 ```C#
 protected Task InitializeStateSerializers()
@@ -139,7 +133,6 @@ protected override IReliableStateManager CreateReliableStateManager()
 }
 ```
 ### 版本控制
-
 Service Fabric 期望序列化程式能與新版和舊版完全相容。
 至於使用內建序列化程式的類型，Service Fabric 確保其與新版和舊版相容。
 至於使用 DataContractSerializer 或自訂序列化程式的類型，使用者一律不可執行中斷變更。
@@ -147,7 +140,6 @@ Service Fabric 期望序列化程式能與新版和舊版完全相容。
 如果需要中斷變更，狀態就必須從具有舊資料版本的服務執行個體，移至位於應用程式層級有新資料版本的服務執行個體。
 
 ### 使用序列化程式的時機
-
  * 在 Reliable 物件上撰寫作業會導致物件序列化、複寫並儲存在記錄檔。
  * 記錄足夠的作業之後，記憶體的最新資料就會被序列化以及在磁碟被檢查點檢查。
  * 為重新建立複本，在磁碟上執行過檢查點檢查的檔案以及記錄檔中的新資料，會直接從主要複本逐一傳送每個位元組 (也就是資料不會重新序列化)。 這些位元組在次要複本上會還原序列化到 C# 物件。
@@ -156,10 +148,5 @@ Service Fabric 期望序列化程式能與新版和舊版完全相容。
  * 在復原期間，之前備份的檢查點檔案和記錄檔資料會複製回原位並還原序列化。
 
 ## 後續步驟
-
  * [可靠服務程式設計模型的進階用法](service-fabric-reliable-services-advanced-usage.md)
-
-
-
-
 

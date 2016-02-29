@@ -16,7 +16,6 @@
     ms.date="12/04/2015"
     ms.author="robinsh"/>
 
-
 # 如何使用 .NET 的佇列儲存體
 
 [AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
@@ -42,7 +41,6 @@
 [AZURE.INCLUDE [storage-dotnet-obtain-assembly](../../includes/storage-dotnet-obtain-assembly.md)]
 
 ### 命名空間宣告
-
 將下列程式碼命名空間宣告加入至任何 C\# 檔案的頂端
 (您想要在該檔案中以程式設計方式存取 Azure 儲存體)：
 
@@ -56,17 +54,17 @@
 
 ## 建立佇列
 
-**CloudQueueClient** 物件可讓您取得佇列的參照物件。
-下列程式碼將建立 **CloudQueueClient** 物件。 本指南的
+A **CloudQueueClient** 物件可讓您取得佇列的參照物件。
+下列程式碼會建立 **CloudQueueClient** 物件。 本指南的
 所有程式碼使用 Azure 應用程式的服務設定中所儲存的
 應用程式服務設定中所儲存的儲存體連接字串。 也有其他方式可建立
-**CloudStorageAccount** 物件。 請參閱 [CloudStorageAccount []][]
+ **CloudStorageAccount** 物件。 請參閱 [CloudStorageAccount][]
 文件。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the queue client
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
@@ -75,14 +73,14 @@
 
     // Retrieve a reference to a queue
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
-    
+
     // Create the queue if it doesn't already exist
     queue.CreateIfNotExists();
 
 ## 將訊息插入佇列
 
 若要將訊息插入現有佇列，請先建立新的
-**CloudQueueMessage**。 接著，呼叫 **AddMessage** 方法。 A
+**CloudQueueMessage**。 接下來，呼叫 **AddMessage** 方法。 A
 **CloudQueueMessage** 可以從其中建立字串 (採用 utf-8 格式
 格式) 或 **位元組** 陣列。 以下是建立佇列 (如果
 佇列不存在) 並插入訊息 'Hello, World' 的程式碼：
@@ -90,16 +88,16 @@
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the queue client.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-    
+
     // Retrieve a reference to a queue.
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
-    
+
     // Create the queue if it doesn't already exist.
     queue.CreateIfNotExists();
-    
+
     // Create a message and add it to the queue.
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     queue.AddMessage(message);
@@ -112,16 +110,16 @@
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the queue client
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-    
+
     // Retrieve a reference to a queue
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
-    
+
     // Peek at the next message
     CloudQueueMessage peekedMessage = queue.PeekMessage();
-    
+
     // Display message.
     Console.WriteLine(peekedMessage.AsString);
 
@@ -143,13 +141,13 @@
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the queue client.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-    
+
     // Retrieve a reference to a queue.
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
-    
+
     // Get the message from the queue and update the message contents.
     CloudQueueMessage message = queue.GetMessage();
     message.SetMessageContent("Updated contents.");
@@ -173,22 +171,22 @@
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the queue client
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-    
+
     // Retrieve a reference to a queue
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
-    
+
     // Get the next message
     CloudQueueMessage retrievedMessage = queue.GetMessage();
-    
+
     //Process the message in less than 30 seconds, and then delete the message
     queue.DeleteMessage(retrievedMessage);
 
 ## 搭配通用佇列儲存體 API 使用 Async-Await 模式
 
-這個範例示範如何搭配通用佇列儲存體 API 使用 Async-Await 模式。 此範例會呼叫每個指定方法的非同步版本，就像每個方法的非同步 *Async* 尾碼所指示的一樣。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [Async 和 Await (C# 和 Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
+這個範例示範如何搭配通用佇列儲存體 API 使用 Async-Await 模式。 此範例會呼叫每個指定方法的非同步版本由 *非同步* 後置字元的每個方法。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [Async 和 Await (C# 和 Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
 
     // Create the queue if it doesn't already exist
     if(await queue.CreateIfNotExistsAsync())
@@ -199,18 +197,18 @@
     {
         Console.WriteLine("Queue '{0}' Exists", queue.Name);
     }
-    
+
     // Create a message to put in the queue
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
-    
+
     // Async enqueue the message
     await queue.AddMessageAsync(cloudQueueMessage);
     Console.WriteLine("Message added");
-    
+
     // Async dequeue the message
     CloudQueueMessage retrievedMessage = await queue.GetMessageAsync();
     Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
-    
+
     // Async delete the message
     await queue.DeleteMessageAsync(retrievedMessage);
     Console.WriteLine("Deleted message");
@@ -231,13 +229,13 @@
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the queue client.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-    
+
     // Retrieve a reference to a queue.
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
-    
+
     foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes(5)))
     {
         // Process all messages in less than 5 minutes, deleting each message after processing.
@@ -255,19 +253,19 @@
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the queue client.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-    
+
     // Retrieve a reference to a queue.
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
-    
+
     // Fetch the queue attributes.
     queue.FetchAttributes();
-    
+
     // Retrieve the cached approximate message count.
     int? cachedMessageCount = queue.ApproximateMessageCount;
-    
+
     // Display number of messages.
     Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
@@ -279,13 +277,13 @@
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+
     // Create the queue client.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-    
+
     // Retrieve a reference to a queue.
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
-    
+
     // Delete the queue.
     queue.Delete();
 
@@ -295,22 +293,22 @@
 以深入了解更複雜的儲存體工作。
 
 - 如需可用 API 的完整詳細資訊，請檢視佇列服務參考文件：
-    - [For.NET 參考資料的儲存體用戶端程式庫](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-    - [REST API 參考](http://msdn.microsoft.com/library/azure/dd179355)
+    - [Storage Client Library for .NET 參考資料](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    - [REST API 參考資料](http://msdn.microsoft.com/library/azure/dd179355)
 - 了解如何簡化您撰寫以使用 Azure 儲存體使用的程式碼 [Azure WebJobs SDK](../websites-dotnet-webjobs-sdk/)。
 - 如需了解 Azure 中的其他資料儲存選項，請檢視更多功能指南。
-    - 使用 [資料表儲存體](storage-dotnet-how-to-use-tables.md) 儲存結構化的資料。
+    - 使用 [資料表儲存體](storage-dotnet-how-to-use-tables.md) 儲存結構化的資料。 
     - 使用 [Blob 儲存體](storage-dotnet-how-to-use-blobs.md) 來儲存非結構化的資料。
     - 使用 [SQL Database](sql-database-dotnet-how-to-use.md) 儲存關聯式資料。
 
-
-[download and install the azure sdk for .net]: /develop/net/ 
-[.net client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409 
-[creating a azure project in visual studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx 
-[cloudstorageaccount]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx 
-[azure storage team blog]: http://blogs.msdn.com/b/windowsazurestorage/ 
-[configuring connection strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx 
-[odata]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2 
-[edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2 
-[spatial]: http://nuget.org/packages/System.Spatial/5.0.2 
+  [Download and install the Azure SDK for .NET]: /develop/net/
+  [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
+  [Creating a Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
+  [CloudStorageAccount]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx
+  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
+  [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
+  [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
+  [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
+ 
 

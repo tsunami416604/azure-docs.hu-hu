@@ -16,14 +16,13 @@
     ms.date="11/19/2015" 
     ms.author="billmath"/>
 
-
 # 管理雲端中 Azure Multi-Factor Authentication 的使用者設定
 
-身為管理員，您可以管理下列使用者和裝置設定。
+身為管理員，您可以管理下列使用者和裝置設定。  
 
-- [要求選定的使用者再次提供連絡方法](#require-selected-users-to-provide-contact-methods-again)
+- [要求選定使用者再次提供連絡方法](#require-selected-users-to-provide-contact-methods-again)
 - [刪除使用者現有的應用程式密碼](#delete-users-existing-app-passwords)
-- [還原所有暫停之裝置的使用者 (公用預覽) 中的 MFA](#restore-mfa-on-all-suspended-devices-for-a-user)
+- [還原使用者所有暫停之裝置的 MFA (公開預覽)](#restore-mfa-on-all-suspended-devices-for-a-user)
 
 
 
@@ -35,18 +34,18 @@
 
 ## 要求選定使用者再次提供連絡方法
 
-此設定會強制使用者在登入時再次完成註冊程序。 請注意，如果使用者擁有非瀏覽器應用程式的應用程式密碼，這些應用程式仍然可以繼續運作。 您也可以選取 [**刪除選定使用者產生的所有現有應用程式密碼**] 來刪除使用者的應用程式密碼。
+此設定會強制使用者在登入時再次完成註冊程序。 請注意，如果使用者擁有非瀏覽器應用程式的應用程式密碼，這些應用程式仍然可以繼續運作。  您可以刪除使用者應用程式密碼也選取 **刪除所選使用者產生的所有現有的應用程式密碼**。
 
 ### 如何要求使用者再次提供連絡方法
 
 <ol>
 <li>登入 Azure 管理入口網站。</li>
 <li>在左側，按一下 [Active Directory。</li>
-<li>下，按一下您想要再次提供連絡方法所需的使用者的目錄上。</li>
+<li>目錄底下，按一下您想要再次提供連絡方法需要使用者的目錄。</li>
 <li>在頂端，按一下 [使用者]。</li>
-<li>在頁面底部，按一下 [管理 Multi-factor auth]。這會開啟 Multi-Factor Authentication 頁面。
-<li>尋找您想要管理，並在名稱旁的方塊打勾的使用者。您可能需要在頂端變更檢視。</li>
-<li>這會顯示 **管理使用者設定** 右邊的連結。按一下此按鈕。</li> 
+<li>在頁面底部，按一下 [管理 Multi-factor auth]。 這會開啟 Multi-Factor Authentication 頁面。
+<li>尋找要管理的使用者，並在名稱旁的方塊中打勾。 您可能需要在頂端變更檢視。</li>
+<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下該</li> 
 <li>勾選 **要求選定的使用者再次提供連絡方法**。</li>
 
 ![提供連絡方法](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
@@ -63,13 +62,13 @@
 <ol>
 <li>登入 Azure 管理入口網站。</li>
 <li>在左側，按一下 [Active Directory。</li>
-<li>下，按一下您想要刪除應用程式密碼的使用者的目錄上。</li>
+<li>目錄底下，按一下您想要刪除應用程式密碼 for...in 使用者的目錄</li>
 <li>在頂端，按一下 [使用者]。</li>
-<li>在頁面底部，按一下 [管理 Multi-factor auth]。這會開啟 Multi-Factor Authentication 頁面。
-<li>尋找您想要管理，並在名稱旁的方塊打勾的使用者。您可能需要在頂端變更檢視。</li>
-<li>這會顯示 **管理使用者設定** 右邊的連結。按一下此按鈕。</li> 
+<li>在頁面底部，按一下 [管理 Multi-factor auth]。 這會開啟 Multi-Factor Authentication 頁面。
+<li>尋找要管理的使用者，並在名稱旁的方塊中打勾。 您可能需要在頂端變更檢視。</li>
+<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下該</li> 
 <li>勾選 **刪除所選使用者產生的所有現有的應用程式密碼**。</li>
-![刪除應用程式密碼](./media/multi-factor-authentication-manage-users-and-devices/deleteapppasswords.png)
+![Delete app passwords](./media/multi-factor-authentication-manage-users-and-devices/deleteapppasswords.png)
 <li>按一下 [儲存]。</li>
 <li>按一下 [關閉]。</li>
 
@@ -79,26 +78,22 @@
 
 ## 還原使用者所有暫停之裝置的 MFA
 
-系統管理員可以重設使用者裝置和瀏覽器上的 Multi-Factor Authentication。 這可藉由還原使用者裝置和瀏覽器的 Multi-Factor Authentication 來達成。 這樣做會移除使用者所有裝置和瀏覽器的暫停效果。
+系統管理員可以重設使用者裝置和瀏覽器上的 Multi-Factor Authentication。 這可藉由還原使用者裝置和瀏覽器的 Multi-Factor Authentication 來達成。 這樣做會移除使用者所有裝置和瀏覽器的暫停效果。 
 
 ### 如何還原使用者所有暫停之裝置上的 MFA
 
 <ol>
 <li>登入 Azure 管理入口網站。</li>
 <li>在左側，按一下 [Active Directory。</li>
-<li>下，按一下您想要還原 mfa 使用者的目錄上。</li>
+<li>目錄底下，按一下您想要還原 mfa 使用者的目錄。</li>
 <li>在頂端，按一下 [使用者]。</li>
-<li>在頁面底部，按一下 [管理 Multi-factor auth]。這會開啟 Multi-Factor Authentication 頁面。
-<li>尋找您想要管理，並在名稱旁的方塊打勾的使用者。您可能需要在頂端變更檢視。</li>
-<li>這會顯示 **管理使用者設定** 右邊的連結。按一下此按鈕。</li> 
-<li>勾選所有暫停之裝置上還原多重要素驗證。</li>
-![刪除應用程式密碼](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
+<li>在頁面底部，按一下 [管理 Multi-factor auth]。 這會開啟 Multi-Factor Authentication 頁面。
+<li>尋找要管理的使用者，並在名稱旁的方塊中打勾。 您可能需要在頂端變更檢視。</li>
+<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下該</li> 
+<li>在所有已暫停的裝置上還原多重要素驗證打勾。</li>
+![Delete app passwords](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
 <li>按一下 [儲存]。</li>
 <li>按一下 [關閉]。</li>
-
-
-
-
 
 
 

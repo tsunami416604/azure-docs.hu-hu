@@ -15,7 +15,6 @@
    ms.date="08/24/2015"
    ms.author="tarcher" />
 
-
 # Azure 的命令列建置
 
 ## 概觀
@@ -49,21 +48,17 @@
 
 ## MSBuild 參數
 
-建立封裝最簡單的方法是執行 MSBuild 與 `/t: 發行` 選項。 根據預設，此命令會建立相對於專案中，例如 ProjectDir\bin\Configuration\app.publish\ 根資料夾的目錄。 當您建置 Azure 專案時，會產生兩個檔案，即套件檔本身及伴隨的組態檔：
+若要建立封裝，最簡單的方法是使用 `/t:Publish` 選項來執行 MSBuild。 根據預設，此命令會建立相對於專案中，例如 ProjectDir\bin\Configuration\app.publish\ 根資料夾的目錄。 當您建置 Azure 專案時，會產生兩個檔案，即套件檔本身及伴隨的組態檔：
 
 - Project.cspkg
 
 - ServiceConfiguration.TargetProfile.cscfg
 
-依預設，每個 Azure 專案都會包含一個供本機 (偵錯) 組建使用的服務組態檔，和另一個供雲端 (預備或生產) 組建使用的服務組態檔，但是您可以視需要新增或移除服務組態檔。 在 Visual Studio 內建置封裝時，系統將會詢問您要在封裝中加入哪個服務組態檔。 使用 MSBuild 來建置封裝時，依預設會加入本機服務組態檔。 若要包含不同的服務組態檔，請設定 `TargetProfile` MSBuild 命令的屬性 (`MSBuild /t: 發行 /p: targetprofile = ProfileName`)。
+依預設，每個 Azure 專案都會包含一個供本機 (偵錯) 組建使用的服務組態檔，和另一個供雲端 (預備或生產) 組建使用的服務組態檔，但是您可以視需要新增或移除服務組態檔。 在 Visual Studio 內建置封裝時，系統將會詢問您要在封裝中加入哪個服務組態檔。 使用 MSBuild 來建置封裝時，依預設會加入本機服務組態檔。 若要加入不同的服務組態檔，請設定 `TargetProfile`MSBuild 命令的屬性 (`MSBuild /t:Publish /p:TargetProfile=ProfileName`)。
 
-如果您想要使用替代目錄儲存的套件和組態檔，請使用設定路徑 `/p: publishdir = 目錄` 選項，包括尾端反斜線分隔符號。
+如果您想要為儲存的封裝和組態檔使用替代目錄，請使用 `/p:PublishDir=Directory\` 選項來設定路徑 (包括結尾的反斜線分隔符號)。
 
 ## Deployment
 
 建立封裝之後，您可以將它部署至 Azure。 如需示範該程序的教學課程，請參閱 Azure 網站。 如需有關如何自動化這個程序的資訊，請參閱 [Azure 中雲端服務的連續傳遞](../cloud-services/cloud-services-dotnet-continuous-delivery)。
-
-
-
-
 

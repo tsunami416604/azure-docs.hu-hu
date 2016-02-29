@@ -16,23 +16,19 @@
     ms.date="11/18/2015"
     ms.author="nicking"/>
 
-
 # 使用 REST 備份及還原 Azure Web Apps
-
-[Azure Web Apps](https://azure.microsoft.com/services/app-service/web/) 可以備份為 Azure 儲存體中的 blob。 此備份中也可以包含應用程式的資料庫。 如果不小心刪除應用程式，或需要將應用程式還原成先前的版本，則可以從任何先前的備份加以還原。 您可以視需要隨時進行備份，或排定在間隔適當時間後進行備份。
+[Azure Web 應用程式](https://azure.microsoft.com/services/app-service/web/) 可以備份為 Azure 儲存體中的 blob。 此備份中也可以包含應用程式的資料庫。 如果不小心刪除應用程式，或需要將應用程式還原成先前的版本，則可以從任何先前的備份加以還原。 您可以視需要隨時進行備份，或排定在間隔適當時間後進行備份。
 
 本文將說明如何透過 RESTful API 要求來備份和還原 Azure Web 應用程式。 如果您想要建立和管理 web 應用程式備份，以圖形方式透過 Azure 入口網站，請參閱 [備份 Azure App Service 中的 web 應用程式](web-sites-backup.md)
 
 <a name="gettingstarted"></a>
 ## 開始使用
+若要傳送 REST 要求，您必須知道您的 web 應用程式 **名稱**, ，**資源群組**, ，和 **訂用帳戶 id**。 按一下 web 應用程式中可以找到這項資訊 **Web 應用程式** 分頁 [Azure 預覽入口網站](https://portal.azure.com)。 在本文的範例中，我們將會設定 `backuprestoreapiexamples.azurewebsites.net` 網站。 它儲存在 Default-Web-WestUS 資源群組中，並在識別碼為 00001111-2222-3333-4444-555566667777 的訂用帳戶上執行。
 
-若要傳送 REST 要求，您必須知道 Web 應用程式的**名稱**、**資源群組**和**訂用帳戶識別碼**。 按一下 web 應用程式中可以找到這項資訊 **Web 應用程式** 分頁 [Azure 預覽入口網站](https://portal.azure.com)。 在這篇文章範例中，我們要在設定網站 `backuprestoreapiexamples.azurewebsites.net`。 它儲存在 Default-Web-WestUS 資源群組中，並在識別碼為 00001111-2222-3333-4444-555566667777 的訂用帳戶上執行。
-
-![範例網站資訊][samplewebsiteinformation]
+![範例網站資訊][] SampleWebsiteInformation
 
 <a name="backup-restore-rest-api"></a>
 ## 備份和還原 REST API
-
 現在我們要討論幾個範例，說明如何使用 REST API 來備份和還原 Azure Web 應用程式。 每個範例都包含 URL 和 HTTP 要求本文。 範例 URL 中包含以大括號括住的預留位置，例如 {subscriptionId}。 請以對應的 Web 應用程式資訊取代這些預留位置。 以下有範例 URL 中會出現之預留位置的說明可供您參考。
 
 * subscriptionId – 包含 Web 應用程式之 Azure 訂用帳戶的識別碼
@@ -44,8 +40,7 @@
 
 <a name="backup-on-demand"></a>
 ## 視需要備份 Web 應用程式
-
-若要立即備份 web 應用程式，請傳送 **POST** 要求 `https://management.azure.com/subscriptions/ {subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{sitename}/backup/`。
+若要立即備份 web 應用程式，請傳送 **POST** 要求 `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{sitename}/backup/`。
 
 以下是此 URL 看起來就像使用我們的範例網站。 `https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backup/`
 
@@ -97,16 +92,14 @@
 }
 ```
 
->[AZURE.NOTE] 在 HTTP 回應的記錄檔屬性中可以找到錯誤訊息。
+>[AZURE.NOTE] 錯誤訊息可以找到在 HTTP 回應的記錄檔的內容。
 
 <a name="schedule-automatic-backups"></a>
 ## 排程自動備份
-
 除了視需要備份 Web 應用程式，您也可以排程自動備份。
 
 ### 設定新的自動備份排程
-
-若要設定備份排程，傳送 **放** 要求 `https://management.azure.com/subscriptions/ {subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup`。
+若要設定備份排程，傳送 **放** 要求 `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup`。
 
 以下是 URL 的範例網站的外觀。 `https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup`
 
@@ -130,22 +123,20 @@
 }
 ```
 
-這個範例會將應用程式設定為每 7 天自動備份一次。 **frequencyInterval** 和 **frequencyUnit** 參數會一起決定備份的執行頻率。 **frequencyUnit** 的有效值為**小時**和**天**。 例如，若要每 12 小時備份一次應用程式，請將 frequencyInterval 設為 12，並將 frequencyUnit 設為小時。
+這個範例會將應用程式設定為每 7 天自動備份一次。 參數 **frequencyInterval** 和 **frequencyUnit** 一起判斷備份發生的頻率。 有效值為 **frequencyUnit** 是 **小時** 和 **天**。 例如，若要每 12 小時備份一次應用程式，請將 frequencyInterval 設為 12，並將 frequencyUnit 設為小時。
 
-系統會自動移除儲存體帳戶中的舊有備份。 您可以藉由設定 **retentionPeriodInDays** 參數來控制舊有備份的保留期。 如果您想要永遠儲存至少一個備份，不論它已存在多久，請將 **keepAtLeastOneBackup** 設為 true。
+系統會自動移除儲存體帳戶中的舊有備份。 您可以控制如何舊備份可以藉由設定 **retentionPeriodInDays** 參數。 如果您想要永遠有至少一個備份儲存，不論它，設定舊 **keepAtLeastOneBackup** 設為 true。
 
 ### 取得自動備份排程
+若要取得 web 應用程式的備份設定，請傳送 **POST** URL 要求 ` https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup/list`。
 
-若要取得 web 應用程式的備份設定，請傳送 **POST** URL 要求 ` https://management.azure.com/subscriptions/ {subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup/list`。
-
-我們的範例站台的 URL 是 `https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup/list`。
+範例網站的 URL 是 `https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup/list`。
 
 <a name="get-backup-status"></a>
 ## 取得備份狀態
+視 Web 應用程式的大小而定，備份程序可能需要一些時間才能完成。 備份程序也可能失敗、逾時或是部分成功。 若要查看所有的 web 應用程式的備份的狀態，請傳送 **取得** URL 要求 `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups`。
 
-視 Web 應用程式的大小而定，備份程序可能需要一些時間才能完成。 備份程序也可能失敗、逾時或是部分成功。 若要查看所有的 web 應用程式的備份的狀態，請傳送 **取得** URL 要求 `https://management.azure.com/subscriptions/ {subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups`。
-
-若要查看特定備份的狀態，將 GET 要求傳送至 URL `https://management.azure.com/subscriptions/ {subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}`。
+若要查看特定備份的狀態，請傳送 GET 要求到以下 URL：`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}`。
 
 以下是 URL 的範例網站的外觀。 `https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1`
 
@@ -185,8 +176,7 @@
 
 <a name="restore-web-app"></a>
 ## 從備份還原 Web 應用程式
-
-如果 Web 應用程式已遭到刪除，或如果您想要將 Web 應用程式還原為舊版，您可以從備份還原應用程式。 若要叫用還原，請傳送 **POST** URL 要求 `https://management.azure.com/subscriptions/ {subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{id}/restore`。
+如果 Web 應用程式已遭到刪除，或如果您想要將 Web 應用程式還原為舊版，您可以從備份還原應用程式。 若要叫用還原，請傳送 **POST** URL 要求 `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{id}/restore`。
 
 以下是 URL 的範例網站的外觀。 `https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1/restore`
 
@@ -210,20 +200,17 @@
 ```
 
 ### 還原成新的 Web 應用程式
-
-在還原備份時，有時您可能會想要建立新的 Web 應用程式，而非覆寫現有的 Web 應用程式。 若要這麼做，請將要求 URL 變更為指向所要建立的新 Web 應用程式，並將 JSON 中的 **overwrite** 屬性變更為 **false**。
+在還原備份時，有時您可能會想要建立新的 Web 應用程式，而非覆寫現有的 Web 應用程式。 若要這樣做，請將變更要求 URL 以指向新的 web 應用程式，選擇您想要建立和變更 **覆寫** 屬性中的 JSON 的 **false**。
 
 <a name="delete-app-backup"></a>
 ## 刪除 Web 應用程式備份
-
-如果您想要刪除備份，傳送 **刪除** URL 要求 `https://management.azure.com/subscriptions/ {subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}`。
+如果您想要刪除備份，傳送 **刪除** URL 要求 `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}`。
 
 以下是 URL 的範例網站的外觀。 `https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1`
 
 <a name="manage-sas-url"></a>
 ## 管理備份的 SAS URL
-
-Azure Web Apps 會嘗試使用建立備份時所提供的 SAS URL 來刪除 Azure 儲存體中的備份。 如果此 SAS URL 不再有效，就無法透過 REST API 刪除備份。 不過，您可以更新所傳送與備份相關聯的 SAS URL **POST** URL 要求 `https://management.azure.com/subscriptions/ {subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{id}/list`。
+Azure Web Apps 會嘗試使用建立備份時所提供的 SAS URL 來刪除 Azure 儲存體中的備份。 如果此 SAS URL 不再有效，就無法透過 REST API 刪除備份。 不過，您可以更新所傳送與備份相關聯的 SAS URL **POST** URL 要求 `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{id}/list`。
 
 以下是 URL 的範例網站的外觀。 `https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1/list`
 
@@ -238,9 +225,8 @@ Azure Web Apps 會嘗試使用建立備份時所提供的 SAS URL 來刪除 Azur
 }
 ```
 
->[AZURE.NOTE] 為了確保安全，在傳送特定備份的 GET 要求時，並不會傳回與該備份相關聯的 SAS URL。 如果您想要檢視與該備份相關聯的 SAS URL，請傳送 POST 要求給上述的同一個 URL，並只在要求本文中包含空的 JSON 物件。 伺服器所傳回的回應中便會包含該備份的所有資訊，包括其 SAS URL。
+>[AZURE.NOTE] 基於安全性理由，傳送 GET 要求特定的備份時，不會傳回與備份相關聯的 SAS URL。 如果您想要檢視與該備份相關聯的 SAS URL，請傳送 POST 要求給上述的同一個 URL，並只在要求本文中包含空的 JSON 物件。 伺服器所傳回的回應中便會包含該備份的所有資訊，包括其 SAS URL。
 
-
-
-[samplewebsiteinformation]: ./media/websites-csm-backup/01siteconfig.png 
+<!-- IMAGES -->
+[SampleWebsiteInformation]: ./media/websites-csm-backup/01siteconfig.png
 

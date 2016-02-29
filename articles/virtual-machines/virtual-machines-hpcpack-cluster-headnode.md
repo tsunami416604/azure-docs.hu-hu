@@ -16,7 +16,6 @@ ms.service="virtual-machines"
  ms.date="09/28/2015"
  ms.author="danlep"/>
 
-
 # 使用 Marketplace 映像在 Azure VM 中建立 HPC Pack 叢集的前端節點
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
@@ -26,7 +25,8 @@ ms.service="virtual-machines"
 在傳統 (服務管理) 部署模型中，在 Azure 中建立 Windows HPC 叢集的前端節點。 前端節點必須加入 Azure 虛擬網路中的 Active Directory 網域。 您可以對 Azure 中的 HPC Pack 的概念證明部署使用此前端節點，並將運算資源加入至叢集以執行 HPC 工作負載。
 
 
-![HPC Pack 前端節點][headnode]
+![HPC Pack 前端節點][前端節點]
+
 >[AZURE.NOTE] 目前 HPC Pack
 VM 映像為基礎 HPC 與 Windows Server 2012 R2 Datacenter
 預先安裝套件 2012 R2 Update 2。 Microsoft SQL Server 2014 Express
@@ -34,13 +34,13 @@ VM 映像為基礎 HPC 與 Windows Server 2012 R2 Datacenter
 
 
 在 Azure 中的 HPC Pack 叢集的實際執行部署，我們建議您採用自動化的部署方法，例如 [HPC Pack IaaS 部署
-script](virtual-machines-hpcpack-cluster-powershell-script.md) 或 Azure 資源管理員 [快速入門範本](https://azure.microsoft.com/documentation/templates/)。
+指令碼](virtual-machines-hpcpack-cluster-powershell-script.md) 或 Azure 資源管理員 [快速入門範本](https://azure.microsoft.com/documentation/templates/)。
 
 ## 規劃考量
 
-* **Active Directory 網域** - HPC Pack 前端節點必須在您啟動 HPC 服務之前加入 Azure 中的 Active Directory 網域。 其中一個選項是部署個別的網域控制站和樹系在 Azure 中，您可以在此加入 VM。 如需概念證明部署，您可以在啟動 HPC 服務之前，將您為前端節點建立的 VM 升級為網域控制站。
+* **Active Directory 網域** -HPC Pack 前端節點必須加入 Active Directory 網域在 Azure 中啟動 HPC 服務之前。 其中一個選項是部署個別的網域控制站和樹系在 Azure 中，您可以在此加入 VM。 如需概念證明部署，您可以在啟動 HPC 服務之前，將您為前端節點建立的 VM 升級為網域控制站。
 
-* **Azure 虛擬網路** - 如果您計劃加入叢集運算節點 VM 到 HPC 叢集，或為叢集建立個別的網域控制站，您必須將前端節點部署在 Azure 虛擬網路 (VNet)。 若沒有 VNet，您仍然可以新增 Azure「高載」節點到叢集。
+* **Azure 虛擬網路** -如果您想要將叢集運算節點 Vm 加入至 HPC 叢集，或建立叢集的不同網域控制站，您必須部署在 Azure 虛擬網路 (VNet) 的前端節點。 若沒有 VNet，您仍然可以新增 Azure「高載」節點到叢集。
 
 ## 建立前端節點的步驟
 
@@ -50,7 +50,7 @@ script](virtual-machines-hpcpack-cluster-powershell-script.md) 或 Azure 資源�
 
 1. 如果您計劃要建立一個前端節點 VM，請參閱 [藉由使用 Azure 入口網站建立虛擬網路 (傳統)](../virtual-networks/virtual-networks-create-vnet-classic-pportal.md)。
 
-    **考量**
+    **注意事項**
 
     * 您可以接受虛擬網路位址空間和子網路的預設組態。
 
@@ -58,15 +58,15 @@ script](virtual-machines-hpcpack-cluster-powershell-script.md) 或 Azure 資源�
 
 2. 如果您需要個別 VM 上建立新的 Active Directory 樹系，請參閱 [Azure 虛擬網路上安裝新的 Active Directory 樹系](../active-directory/active-directory-new-forest-virtual-machine.md)。
 
-    **考量**
+    **注意事項**
 
     * 針對許多測試部署，您可以在 Azure 中建立單一網域控制站。 若要確保 Active Directory 網域的高可用性，您可以部署額外的備份onal, backup domain controller 網域控制站。
 
     * 如需簡單的概念證明部署，您可以省略此步驟，並稍後將前端節點 VM 升級為網域控制站。
 
-3. 在 Azure 傳統入口網站或 Azure 入口網站中，從 [Azure Marketplace] 中選取 HPC Pack 2012 R2 映像來建立傳統 VM。 (請參閱步驟 Azure 傳統入口網站 [這裡](virtual-machines-windows-tutorial-classic-portal.md).)
+3. 在 Azure 傳統入口網站或 Azure 入口網站中，從 [Azure Marketplace] 中選取 HPC Pack 2012 R2 映像來建立傳統 VM。 (請參閱 Azure 傳統入口網站的步驟 [這裡](virtual-machines-windows-tutorial-classic-portal.md)。)
 
-    **考量**
+    **注意事項**
 
     * 選取至少為 A4 的 VM 大小。
 
@@ -76,7 +76,7 @@ script](virtual-machines-hpcpack-cluster-powershell-script.md) 或 Azure 資源�
 
 4. 在建立 VM 且 VM 執行之後，請將 VM 加入現有的網域樹系，或是在 VM 上建立新網域樹系。
 
-    **考量**
+    **注意事項**
 
     * 如果您在具有現有網域樹系的 Azure VNet 中建立 VM，請連接到 VM。 然後使用標準的伺服器管理員或 Windows PowerShell 工具將它加入網域樹系。 然後重新啟動。
 
@@ -94,7 +94,7 @@ script](virtual-machines-hpcpack-cluster-powershell-script.md) 或 Azure 資源�
 
     可能需要幾分鐘的時間，HPC Pack 服務才能啟動。
 
-    如需額外的前端節點組態選項，輸入 `取得說明 HPCHNPrepare.ps1`。
+    如需其他前端節點組態選項，請輸入 `get-help HPCHNPrepare.ps1`。
 
 
 ## 後續步驟
@@ -103,11 +103,10 @@ script](virtual-machines-hpcpack-cluster-powershell-script.md) 或 Azure 資源�
 範例中，您可以啟動 HPC 叢集管理員，或開始使用
 HPC PowerShell 指令程式。
 
-* [新增運算節點 Vm](virtual-machines-hpcpack-cluster-node-manage.md) 至叢集，或加入 [Azure 高載節點](virtual-machines-hpcpack-cluster-node-burst.md) 雲端服務中。
+* [加入計算節點 Vm](virtual-machines-hpcpack-cluster-node-manage.md) 至叢集，或加入 [Azure 高載節點](virtual-machines-hpcpack-cluster-node-burst.md) 雲端服務中。
 
 * 嘗試在叢集上執行測試工作負載。 如需範例，請參閱 HPC Pack [入門指南](https://technet.microsoft.com/library/jj884144)。
 
-
-
-[headnode]: ./media/virtual-machines-hpcpack-cluster-headnode/headnode.png 
+<!--Image references-->
+[headnode]: ./media/virtual-machines-hpcpack-cluster-headnode/headnode.png
 

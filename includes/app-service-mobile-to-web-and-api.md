@@ -1,6 +1,2 @@
-> [AZURE.NOTE] 雖然這篇文章主要針對 Mobile Apps，但也適用於 Web Apps 和 API Apps。
-
-
-
-
+> [AZURE.NOTE] 雖然這篇文章指的是行動應用程式，它也會套用至 web 應用程式和 API 應用程式。
 

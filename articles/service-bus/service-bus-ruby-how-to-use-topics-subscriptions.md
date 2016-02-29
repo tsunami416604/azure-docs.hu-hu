@@ -1,6 +1,6 @@
 <properties
     pageTitle="如何使用服務匯流排主題 (Ruby) | Microsoft Azure"
-    description="了解如何在 Azure 使用服務匯流排主題及訂用帳戶。程式碼範例專為 Ruby 應用程式撰寫。"
+    description="了解如何在 Azure 使用服務匯流排主題及訂用帳戶。 程式碼範例專為 Ruby 應用程式撰寫。"
     services="service-bus"
     documentationCenter="ruby"
     authors="sethmanheim"
@@ -16,17 +16,16 @@
     ms.date="12/09/2015"
     ms.author="sethm"/>
 
-
 # 如何使用服務匯流排主題/訂閱
 
 [AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本指南說明如何從 Ruby 應用程式使用服務匯流排主題和訂用帳戶。 所涵蓋的案例包括**建立主題和訂閱、建立訂閱篩選器、傳送訊息**至主題、**接收訂閱的訊息**，及**刪除主題和訂閱**。 如需主題和訂閱的詳細資訊，請參閱 [下一步](#next-steps) 一節。
+本指南說明如何從 Ruby 應用程式使用服務匯流排主題和訂用帳戶。 涵蓋的案例包括 **建立主題和訂閱、 建立訂閱篩選器、 傳送訊息** 至主題、 **從訂閱接收訊息**, ，和 **刪除主題和訂閱**。 如需主題和訂閱的詳細資訊，請參閱 [下一步](#next-steps) 一節。
 
 ## 服務匯流排主題和訂用帳戶
 
-服務匯流排主題和訂閱支援 * * 發佈/訂閱
-訊息通訊 * * 模型。 當使用主題和訂閱，
+服務匯流排主題和訂閱支援 **發佈/訂閱
+訊息通訊** 模型。 當使用主題和訂閱，
 分散式應用程式的元件不會直接的通訊
 彼此，而是透過做為主題的訊息
 媒介。
@@ -53,7 +52,7 @@
 ## 建立服務命名空間
 
 若要開始在 Azure 中使用服務匯流排佇列，首先必須建立服務命名空間。 命名空間提供範圍容器內定址服務匯流排資源
-匯流排資源。 您必須建立的命名空間，透過命令列介面，因為 [Azure 傳統入口網站 []][] 不會使用 ACS 連線建立命名空間。
+匯流排資源。 您必須建立的命名空間，透過命令列介面，因為 [Azure 傳統入口網站][] 不會使用 ACS 連線建立命名空間。
 
 若要建立命名空間：
 
@@ -78,7 +77,7 @@
 
 > [AZURE.NOTE]
 > 您也可以找到此機碼，如果您登入
-> [Azure 傳統入口網站 []][] 並瀏覽至
+> [Azure 傳統入口網站][] 並瀏覽至
 > 您的命名空間的連接資訊。
 
 ## 建立 Ruby 應用程式
@@ -91,7 +90,7 @@
 
 ### 使用 RubyGems 來取得套件
 
-1. 使用命令列介面，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
+1. 使用命令列介面，例如 **PowerShell** (Windows)、 **終端機** (Mac) 或 **Bash** (Unix)。
 
 2. 在命令視窗中鍵入 "gem install azure" 以安裝 Gem 和相依性。
 
@@ -104,16 +103,16 @@
 ## 設定服務匯流排連接
 
 Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_SERVICEBUS\_ACCESS\_KEY**
-連接到您的命名空間所需的資訊。 若未設定這些環境變數，您必須使用下列程式碼，在使用 **Azure::ServiceBusService** 之前指定命名空間資訊：
+連接到您的命名空間所需的資訊。 如果未設定這些環境變數，您必須指定命名空間資訊之前使用 **azure:: servicebusservice** 為下列程式碼:
 
     Azure.config.sb_namespace = "<your azure service bus namespace>"
     Azure.config.sb_access_key = "<your azure service bus access key>"
 
-將命名空間值設為您建立的值而非整個 URL。 例如，使用 **"yourexamplenamespace"** 而非 "yourexamplenamespace.servicebus.windows.net"。
+將命名空間值設為您建立的值而非整個 URL。 例如，使用 **"yourexamplenamespace"**, ，非"yourexamplenamespace.servicebus.windows.net"。
 
 ## 建立主題
 
-**Azure::ServiceBusService** 物件可讓您使用主題。 下列程式碼將建立 **Azure::ServiceBusService** 物件。 若要建立主題，請使用 **create\_topic ()** 方法。 下列範例將建立主題或列印出錯誤 (若有的話)。
+ **Azure:: servicebusservice** 物件可讓您處理主題。 下列程式碼會建立 **azure:: servicebusservice** 物件。 若要建立主題，請使用 **create\_topic ()** 方法。 下列範例將建立主題或列印出錯誤 (若有的話)。
 
     azure_service_bus_service = Azure::ServiceBusService.new
     begin
@@ -122,23 +121,23 @@ Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
       puts $!
     end
 
-您也可以使用其他選項傳遞 **Azure::ServiceBus::Topic** 物件，這可讓您覆寫訊息存留時間或佇列大小上限等預設主題設定。 下列範例說明將佇列大小上限設為 5GB，將存留時間設為 1 分鐘的設定：
+您也可以傳遞 **Azure::ServiceBus::Topic** 物件與其他選項，可讓您覆寫訊息時間即時或佇列大小上限等預設主題設定。 下列範例說明將佇列大小上限設為 5GB，將存留時間設為 1 分鐘的設定：
 
     topic = Azure::ServiceBus::Topic.new("test-topic")
     topic.max_size_in_megabytes = 5120
     topic.default_message_time_to_live = "PT1M"
-    
+
     topic = azure_service_bus_service.create_topic(topic)
 
 ## 建立訂用帳戶
 
-**Azure::ServiceBusService** 物件也能用來建立主題訂閱。 訂閱是具名的，它們能擁有選用的篩選器，以限制傳遞至訂閱之虛擬佇列的訊息集合。
+也會建立主題訂閱 **azure:: servicebusservice** 物件。 訂用帳戶是具名的，它們能擁有選用的篩選器，以限制傳遞至訂用帳戶之虛擬佇列的訊息集合。
 
 訂閱是持續性的，它們會持續存在，直到本身或相關的主題遭到刪除為止。 如果應用程式含有建立訂閱的邏輯，它應該會先使用 getSubscription 方法檢查訂閱是否存在。
 
-### 使用預設 (MatchAll) 篩選器建立訂閱
+### 使用預設 (MatchAll) 篩選器建立訂用帳戶
 
-**MatchAll** 篩選器是預設篩選器，如果在建立新的訂閱時沒有指定篩選器，便會使用此篩選器。 使用 **MatchAll** 篩選器時，所有發佈至主題的訊息都會被置於訂閱的虛擬佇列中。 下列範例將建立名為 "all-messages" 的訂閱，並使用預設的 **MatchAll** 篩選器。
+ **MatchAll** 篩選器是預設篩選器，如果沒有指定篩選時建立新的訂閱。 當 **MatchAll** 篩選器時，發佈至主題的所有訊息都會被都置於訂閱的虛擬佇列。 下列範例會建立名為"all-messages"的訂閱，並使用預設 **MatchAll** 篩選器。
 
     subscription = azure_service_bus_service.create_subscription("test-topic",
       "all-messages")
@@ -147,11 +146,11 @@ Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
 
 您也可以定義篩選器，讓您指定傳送至主題的哪些訊息應顯示在特定訂用帳戶中。
 
-在訂閱支援的篩選器中，**Azure::ServiceBus::SqlFilter** 是最具彈性的類型，可用來實作 SQL92 的子集。 SQL 篩選器會對發佈至主題之訊息的屬性運作。 如需可與 SQL 篩選運算式的詳細資訊，請檢閱 [SqlFilter.SqlExpression](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx) 語法。
+訂閱所支援的篩選器的最具彈性的型別是 **Azure::ServiceBus::SqlFilter**, ，可用來實作 SQL92 的子集。 SQL 篩選器會對發佈至主題之訊息的屬性運作。 如需可與 SQL 篩選運算式的詳細資訊，請檢閱 [SqlFilter.SqlExpression](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx) 語法。
 
 可以透過將篩選器新增至訂閱 **create\_rule ()** 方法 **azure:: servicebusservice** 物件。 此方法可讓您將篩選器新增至現有的訂用帳戶中。
 
-由於預設篩選器會自動套用至所有新訂用帳戶，因此您必須先移除預設篩選器，否則 **MatchAll** 會覆寫您指定的其他任何篩選器。 您可以使用，以移除預設規則 **delete\_rule ()** 方法 **azure:: servicebusservice** 物件。
+由於預設篩選器會自動套用至所有新訂閱，您必須先移除預設篩選器，或 **MatchAll** 會覆寫您指定的其他任何篩選器。 您可以使用，以移除預設規則 **delete\_rule ()** 方法 **azure:: servicebusservice** 物件。
 
 下列範例會建立名為 「 high-messages 」 的訂閱 **Azure::ServiceBus::SqlFilter** 只選取自訂的訊息 **message\_number** 屬性大於 3:
 
@@ -159,7 +158,7 @@ Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
       "high-messages")
     azure_service_bus_service.delete_rule("test-topic", "high-messages",
       "$Default")
-    
+
     rule = Azure::ServiceBus::Rule.new("high-messages-rule")
     rule.topic = "test-topic"
     rule.subscription = "high-messages"
@@ -167,13 +166,13 @@ Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
       :sql_expression => "message_number > 3" })
     rule = azure_service_bus_service.create_rule(rule)
 
-同樣地，下列範例將建立名為 "low-messages"、且其 **Azure::ServiceBus::SqlFilter** 只選取 **message_number** 屬性小於或等於 3 之訊息的訂閱：
+同樣地，下列範例會建立名為 「 low-messages 」 訂閱 **Azure::ServiceBus::SqlFilter** sqlfilter 只選取 **message_number** 屬性小於或等於 3:
 
     subscription = azure_service_bus_service.create_subscription("test-topic",
       "low-messages")
     azure_service_bus_service.delete_rule("test-topic", "low-messages",
       "$Default")
-    
+
     rule = Azure::ServiceBus::Rule.new("low-messages-rule")
     rule.topic = "test-topic"
     rule.subscription = "low-messages"
@@ -185,9 +184,9 @@ Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
 
 ## 傳送訊息至主題
 
-若要將訊息傳送至服務匯流排主題，您的應用程式必須使用 **send\_topic\_message ()** 方法 **azure:: servicebusservice** 物件。 傳送至服務匯流排主題的訊息是 **Azure::ServiceBus::BrokeredMessage** 物件的執行個體。 **Brokeredmessage** 物件具有一組標準屬性 (例如 **標籤** 和 **time\_to\_live**)、 用來保存自訂應用程式特定屬性的字典和一堆字串資料。 應用程式可以藉由傳遞字串值，即可設定訊息的本文 **send\_topic\_message ()** 方法和任何所需的標準屬性會填入預設值。
+若要將訊息傳送至服務匯流排主題，您的應用程式必須使用 **send\_topic\_message ()** 方法 **azure:: servicebusservice** 物件。 傳送至服務匯流排主題的訊息是 **brokeredmessage** 物件。 **Brokeredmessage** 物件具有一組標準屬性 (例如 **標籤** 和 **time\_to\_live**)、 用來保存自訂應用程式特定屬性的字典和一堆字串資料。 應用程式可以藉由傳遞字串值，即可設定訊息的本文 **send\_topic\_message ()** 方法和任何所需的標準屬性會填入預設值。
 
-下列範例說明如何將五個測試訊息傳送至 "test-topic"。 請注意迴圈反覆運算上每個訊息的 **message_number** 自訂屬性值的變化 (這會決定接收訊息的訂用帳戶為何)：
+下列範例說明如何將五個測試訊息傳送至 "test-topic"。 請注意， **message_number** 迴圈的反覆項目上的每個訊息的自訂屬性值變化 (這可判斷哪些訂閱會接收它):
 
     5.times do |i|
       message = Azure::ServiceBus::BrokeredMessage.new("test message " + i,
@@ -219,7 +218,7 @@ Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
 
 與訂用帳戶內鎖定訊息相關的還有逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會自動解除鎖定訊息，並讓訊息可以被重新接收。
 
-該應用程式當機之前處理訊息之後 **delete\_subscription\_message ()** 呼叫方法，然後重新啟動時，訊息會傳遞給應用程式。 這通常稱為**至少處理一次**，也就是說，每個訊息至少會被處理一次，但在特定狀況下，可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 此邏輯通常您可使用 **message\_id** 會保持不變各個傳遞嘗試的訊息屬性。
+該應用程式當機之前處理訊息之後 **delete\_subscription\_message ()** 呼叫方法，然後重新啟動時，訊息會傳遞給應用程式。 這通常稱為 **至少處理一次**; 也就是說，每個訊息會至少一次處理，但在某些情況下可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 此邏輯通常您可使用 **message\_id** 會保持不變各個傳遞嘗試的訊息屬性。
 
 ## 刪除主題和訂用帳戶
 
@@ -238,7 +237,6 @@ Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
 -   請參閱 [佇列、 主題和訂閱](service-bus-queues-topics-subscriptions.md)。
 -   API 參考 [SqlFilter](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx)。
 -   請瀏覽 [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) GitHub 上的儲存機制。
-
-
-[azure classic portal]: http://manage.windowsazure.com 
+ 
+[Azure classic portal]: http://manage.windowsazure.com
 

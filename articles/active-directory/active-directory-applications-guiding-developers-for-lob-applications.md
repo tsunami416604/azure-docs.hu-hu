@@ -16,7 +16,6 @@
     ms.date="10/09/2015"
     ms.author="inhenk"/>
 
-
 # Azure AD 和應用程式：引導開發人員
 
 ## 概觀
@@ -27,7 +26,7 @@
 
 您的應用程式必須註冊，才能使用 Azure Active Directory。 註冊應用程式可讓組織的開發人員使用 Azure AD 驗證組織的成員，以及要求存取他們的使用者資源，例如其電子郵件、行事曆及文件等...
 
-您目錄的任何成員 (不是來賓) 都可以註冊應用程式，亦稱為*建立應用程式物件*。
+您的目錄 (而不是訪客) 的任何成員可以註冊應用程式，又稱為 *建立應用程式物件*。
 
 註冊應用程式可讓任一使用者執行下列動作：
 
@@ -64,7 +63,7 @@
 
 根據預設，要讓使用者存取應用程式，並不需要指派使用者。 不過，如果應用程式公開角色或您希望應用程式出現在使用者的存取面板，您應該需要指派使用者，以及指派使用者和/或群組。
 
-[需要使用者指派](active-directory-applications-guiding-developers-requiring-user-assignment.md)
+[需要指派使用者](active-directory-applications-guiding-developers-requiring-user-assignment.md)
 
 如果您是 Azure AD Premium 或 Enterprise Mobility Suite (EMS) 的訂閱者，我們強烈建議使用群組。 將群組指派給應用程式，可讓您將持續進行的存取管理委派給群組擁有者。 您可以建立群組，或如果您想的話，可以使用群組管理功能要求您組織中負責的對象建立群組。
 
@@ -78,8 +77,4 @@
 對於您信任的應用程式，您可以代表您組織中的所有使用者同意應用程式。
 
 如需使用者同意的詳細資訊和同意體驗在 Azure 中，請參閱 [與 Azure Active Directory 整合的應用程式](active-directory-integrating-applications.md)
-
-
-
-
 

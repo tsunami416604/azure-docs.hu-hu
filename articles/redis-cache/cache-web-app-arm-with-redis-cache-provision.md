@@ -16,7 +16,6 @@
     ms.date="12/16/2015" 
     ms.author="tomfitz"/>
 
-
 # 使用範本建立 Web 應用程式和 Redis 快取
 
 在本主題中，您將學習如何建立 Azure 資源管理員範本，以部署 Azure Web 應用程式和 Redis 快取。 您將學習如何定義要部署哪些資源， 
@@ -35,7 +34,7 @@
 
 若要自動執行部署，請按一下下列按鈕：
 
-[![部署至 Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)] (https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![Deploy 到 Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
 ## 要指定的參數
 
@@ -51,9 +50,9 @@
 
 ### Redis 快取
 
-建立與 Web 應用程式搭配使用的 Azure Redis 快取。 快取的名稱指定於 **redisCacheName** 參數中。
+建立與 Web 應用程式搭配使用的 Azure Redis 快取。 快取的名稱已在指定 **redisCacheName** 參數。
 
-此範本會在與 Web 應用程式相同的位置中建立快取，而這項建議可達到最佳效能。
+此範本會在與 Web 應用程式相同的位置中建立快取，而這項建議可達到最佳效能。 
 
     {
       "apiVersion": "2014-04-01-preview",
@@ -73,10 +72,10 @@
 
 ### Web 應用程式
 
-使用 **siteName** 參數中所指定的名稱來建立 Web 應用程式。
+建立 web 應用程式中指定的名稱與 **siteName** 參數。
 
 請注意，Web 應用程式是使用應用程式設定屬性所設定，可讓它使用 Redis 快取。 此應用程式設定是根據部署期間所提供的值動態建立。
-
+        
     {
       "apiVersion": "2015-04-01",
       "name": "[parameters('siteName')]",
@@ -112,6 +111,8 @@
           }
       ]
     }
+
+
 
 ## 執行部署的命令
 

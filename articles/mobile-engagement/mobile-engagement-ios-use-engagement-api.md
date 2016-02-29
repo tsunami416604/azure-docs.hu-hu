@@ -17,36 +17,35 @@
     ms.author="piyushjo" />
 
 
-
-# 如何在 iOS 上使用 Engagement API
+#如何在 iOS 上使用 Engagement API
 
 本文件是＜如何在 iOS 上整合 Engagement＞文件的附加說明：有關如何使用 Engagement API 來報告您應用程式的統計資料，本文件提供了深入的詳細說明。
 
-請記住，如果您只想 Engagement 報告您的應用程式工作階段、 活動、 當機和技術資訊，那麼最簡單的方法是讓所有自訂 `UIViewController` 物件繼承自對應 `EngagementViewController` 類別。
+請記住，如果您只想要 Engagement 向您報告應用程式的工作階段、活動、當機和技術資訊，那麼最簡單的方法是讓所有自訂 `UIViewController` 物件繼承自對應的 `EngagementViewController` 類別。
 
-如果您想要執行的詳細資訊，例如，如果您需要報告應用程式特定事件、 錯誤和作業，或如果您需要報告應用程式的活動以不同方式中的一個實作 `EngagementViewController` 類別，則您需要使用 Engagement API。
+如果您想要執行更多工作 (例如，若您需要報告應用程式的特定事件、錯誤和作業，或者您需要以不同於 `EngagementViewController` 類別中的方式來報告應用程式的活動)，則您需要使用 Engagement API。
 
-Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個體呼叫 `[共用的 EngagementAgent]` 靜態方法 (請注意， `EngagementAgent` 傳回物件為單一值)。
+Engagement API 是由 `EngagementAgent` 類別提供。 此類別的執行個體，可以藉由呼叫 `[EngagementAgent shared]` 靜態方法 (請注意，傳回的 `EngagementAgent` 物件為單一值) 來擷取。
 
-在任何 API 呼叫之前, `EngagementAgent` 物件必須先初始化呼叫方法 `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION。網域}。SdkKey = {YOUR_SDK_KEY};AppId = {YOUR_APPID}"];`
+在執行任何 API 呼叫之前，必須先初始化 `EngagementAgent` 物件 (藉由呼叫 `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];` 方法)
 
-## Engagement 概念
+##Engagement 概念
 
 以下部分簡要 [Mobile Engagement 概念](mobile-engagement-concepts.md) iOS 平台。
 
-### `工作階段` 和 `活動`
+### `Session`和`Activity`
 
-*活動* 是通常與應用程式的某個畫面相關聯也就是說 *活動* 時開始，畫面會顯示，並在畫面關閉時停止: 使用整合 Engagement SDK 時，就以此 `EngagementViewController` 類別。
+ *活動* 是通常與應用程式的某個畫面相關聯也就是說 *活動* 時開始，畫面會顯示，並在畫面關閉時停止: 使用整合 Engagement SDK 時，就以此 `EngagementViewController` 類別。
 
-但您也可以透過 Engagement API 手動控制「活動」**。 這樣可以將指定的畫面分隔為數個子部分，以取得關於此畫面使用方式的詳細資料 (例如，可了解此畫面內對話方塊的使用頻率與使用時間長度)。
+但是 *活動* 也可以控制以手動方式使用 Engagement API。 這樣可以將指定的畫面分隔為數個子部分，以取得關於此畫面使用方式的詳細資料 (例如，可了解此畫面內對話方塊的使用頻率與使用時間長度)。
 
-## 報告活動
+##報告活動
 
 ### 使用者啟動新的活動
 
             [[EngagementAgent shared] startActivity:@"MyUserActivity" extras:nil];
 
-您需要呼叫 `startActivity()` 每當使用者活動變更。 第一次呼叫此函式會啟動新的使用者工作階段。
+每當使用者活動變更，您就需要呼叫 `startActivity()`。 第一次呼叫此函數會啟動新的使用者工作階段。
 
 ### 使用者結束其目前的活動
 
@@ -54,7 +53,7 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
 
 > [AZURE.WARNING] 您應該 **永不** 呼叫此函式，除了如果您想要將應用程式分成數個工作階段的一次使用分割: 呼叫此函式會結束目前的工作階段，因此，後續呼叫 `startActivity()` 會啟動新的工作階段。 當您的應用程式關閉時，SDK 會自動呼叫此函數。
 
-## 報告事件
+##報告事件
 
 ### 工作階段事件
 
@@ -99,7 +98,7 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
 
     [[EngagementAgent shared] sendEvent:@"received_notification" extras:nil];
 
-## 報告錯誤
+##報告錯誤
 
 ### 工作階段錯誤
 
@@ -127,7 +126,7 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
 
     [[EngagementAgent shared] sendError:@"something_failed" extras:nil];
 
-## 報告工作
+##報告作業
 
 **範例：**
 
@@ -138,9 +137,9 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
     {
       /* Start job */
       [[EngagementAgent shared] startJob:@"sign_in" extras:nil];
-    
+
       [... sign in ...]
-    
+
       /* End job */
       [[EngagementAgent shared] endJob:@"sign_in"];
     }
@@ -159,26 +158,26 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
     {
       /* Start job */
       [[EngagementAgent shared] startJob:@"sign_in" extras:nil];
-    
+
       BOOL success = NO;
       while (!success) {
         /* Try to sign in */
         NSError* error = nil;
         [self trySigin:&error];
         success = error == nil;
-    
+
         /* If an error occured report it */
         if(!success)
         {
           [[EngagementAgent shared] sendJobError:@"sign_in_error"
                          jobName:@"sign_in"
                           extras:[NSDictionary dictionaryWithObject:[error localizedDescription] forKey:@"error"]];
-    
+
           /* Retry after a moment */
           [NSThread sleepForTimeInterval:20];
         }
       }
-    
+
       /* End job */
       [[EngagementAgent shared] endJob:@"sign_in"];
     };
@@ -212,16 +211,17 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
     }
     [...]
 
-## 額外的參數
+##額外的參數
 
 可以將任意資料附加到事件、錯誤、活動及工作。
 
 此資料可以結構化，它會使用 iOS 的 NSDictionary 類別。
 
-請注意，額外項目可以包含 `陣列 (NSArray、 NSMutableArray)`, ，`數字 (NSNumber 類別)`, ，`字串 (NSString、 NSMutableString)`, ，`urls(NSURL)`, ，`資料 (NSData、 NSMutableData)` 或其他 `NSDictionary` 執行個體。
+請注意，額外項目可以包含 `arrays(NSArray, NSMutableArray)`、`numbers(NSNumber class)`、`strings(NSString, NSMutableString)`、`urls(NSURL)`、`data(NSData, NSMutableData)` 或其他 `NSDictionary` 執行個體。
+
 > [AZURE.NOTE] 額外的參數會以 JSON 序列化。 如果您想要傳遞與上述不同的物件，必須在類別中實作以下方法：
 >
-             -(NSString*); JSONRepresentation
+             -(NSString*)JSONRepresentation;
 >
 > 方法應傳回您物件的 JSON 表示法。
 
@@ -234,9 +234,9 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
 
 ### 限制
 
-#### 金鑰
+#### 之間的信任
 
-在每個索引鍵 `NSDictionary` 必須符合下列規則運算式:
+`NSDictionary` 中的每個索引鍵都必須符合下列規則運算式：
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
@@ -244,19 +244,19 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
 
 #### 大小
 
-額外項目限制為一次呼叫 **1024** 個字元 (由 Engagement 代理程式以 JSON 編碼之後)。
+額外項目限制為 **1024年** 每次呼叫 (以 JSON 編碼之後由 Engagement 代理程式) 的字元。
 
 在上述範例中，傳送到伺服器的 JSON 會是 58 個字元：
 
     {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
-## 報告應用程式資訊
+##報告應用程式資訊
 
-您可以手動報告追蹤資訊 (或是任何其他應用程式特定資訊) 使用 `sendAppInfo:` 函式。
+您可以使用 `sendAppInfo:` 函式手動報告追蹤資訊 (或是任何其他應用程式特定資訊)。
 
-請注意，這些資訊可以累加地傳送：只有指定的索引鍵的最新值會保留給指定的裝置。
+請注意，這些資訊可以累加地傳送：只有指定索引鍵的最新值會保留給指定的裝置。
 
-像是事件額外項目， `NSDictionary` 類別用來摘錄應用程式資訊，請注意，陣列或子字典將被視為一般字串 (使用 JSON 序列化)。
+如同事件額外項目一樣，`NSDictionary` 類別是用來摘錄應用程式資訊，並請注意，陣列或子字典將被視為一般字串 (使用 JSON 序列化)。
 
 **範例：**
 
@@ -267,9 +267,9 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
 
 ### 限制
 
-#### 金鑰
+#### 之間的信任
 
-在每個索引鍵 `NSDictionary` 必須符合下列規則運算式:
+`NSDictionary` 中的每個索引鍵都必須符合下列規則運算式：
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
@@ -277,11 +277,9 @@ Engagement API 由 `EngagementAgent` 類別。 可以擷取此類別的執行個
 
 #### 大小
 
-應用程式資訊限制為一次呼叫 **1024** 個字元 (由 Engagement 代理程式以 JSON 編碼之後)。
+應用程式資訊限於 **1024年** 每次呼叫 (以 JSON 編碼之後由 Engagement 代理程式) 的字元。
 
 在上述範例中，傳送到伺服器的 JSON 會是 44 個字元：
 
     {"birthdate":"1983-12-07","gender":"female"}
-
-
 

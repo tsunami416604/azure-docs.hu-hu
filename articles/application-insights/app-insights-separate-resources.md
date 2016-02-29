@@ -15,26 +15,27 @@
     ms.date="11/25/2015" 
     ms.author="awills"/>
 
-
 # 開發、測試和生產環境適用的不同 Application Insights 資源
 
-若要避免混合來自偵錯、 測試和生產版本的應用程式的遙測，建立個別 [Application Insights 的 ][start] 資源，以接收來自每個版本的資料。
 
-從您的應用程式收到的資料會由 Microsoft Azure 儲存及處理在 Application Insights*資源*中。 每項資源均由*檢測金鑰*識別。在應用程式中，該金鑰會提供給 Application Insights SDK，使它可以將所收集的資料傳送到正確的資源。 可以在程式碼或在 ApplicationInsights.config 中提供金鑰。 藉由變更 SDK 中的金鑰，您可以將資料導向不同資源。
+若要避免混合來自偵錯、 測試和生產版本的應用程式的遙測，建立個別 [Application Insights][start] 資源，以接收來自每個版本的資料。
+
+從您的應用程式收到的資料儲存及處理由 Microsoft Azure 中的 Application Insights *資源*。 每個資源由 *檢測金鑰。*在應用程式中，該金鑰會提供給 Application Insights SDK，使它可以將所收集的資料傳送到正確的資源。 可以在程式碼或在 ApplicationInsights.config 中提供金鑰。 藉由變更 SDK 中的金鑰，您可以將資料導向不同資源。 
 
 
 ## 建立 Application Insights 資源
+  
 
 在 [portal.azure.com](https://portal.azure.com), ，加入 Application Insights 資源:
 
-![按一下 ](./media/app-insights-separate-resources/01-new.png)
+![按一下 [新增]，然後按一下 [Application Insights]](./media/app-insights-separate-resources/01-new.png)
 
 
-* **應用程式類型** 會影響您看到 [概觀] 分頁中可用的屬性等 [計量瀏覽器 ][metrics]。 如果沒有看到您的應用程式類型，請針對網頁選擇其中一個 Web 類型，針對其他裝置則選擇其中一個手機類型。
+* **應用程式類型** 會影響您看到 [概觀] 分頁中可用的屬性等 [計量瀏覽器][metrics]。 如果沒有看到您的應用程式類型，請針對網頁選擇其中一個 Web 類型，針對其他裝置則選擇其中一個手機類型。
 * **資源群組** 是讓您輕鬆管理屬性，例如 [存取控制](app-insights-resources-roles-access-control.md)。 您可以對開發、測試和生產環境使用不同的資源群組。
-* **訂用帳戶**是您在 Azure 中的付款帳戶。
-* **位置**是我們保留您資料的地方。 目前無法變更位置。
-* **新增至開始面板**可將 Azure 首頁上的資源放到快速存取磚。
+* **訂閱** 是您在 Azure 中的付款帳戶。
+* **位置** 是我們保留您資料的地方。 目前無法變更位置。
+* **新增至開始面板** 將 Azure 首頁上的快速存取磚以取得您的資源。 
 
 建立資源需要幾秒鐘。 完成時，您會看到警示。
 
@@ -43,9 +44,9 @@
 
 ## 複製檢測金鑰
 
-檢測金鑰會識別您所建立的資源。
+檢測金鑰會識別您所建立的資源。 
 
-![按一下 ](./media/app-insights-separate-resources/02-props.png)
+![按一下 [基本功能]，按一下 [檢測金鑰]，CTRL+C](./media/app-insights-separate-resources/02-props.png)
 
 您將需要您的應用程式會將資料傳送至其中的所有資源的檢測金鑰。
 
@@ -70,7 +71,7 @@
 
 #### 網頁
 
-IKey 也會在您的應用程式網頁中，在 [指令碼，從 ](app-insights-javascript.md)。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
+IKey 也會在您的應用程式網頁中，在 [指令碼，從 [快速入門] 分頁中取得](app-insights-javascript.md)。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
 
 *Razor 中的 JavaScript*
 
@@ -85,8 +86,14 @@ IKey 也會在您的應用程式網頁中，在 [指令碼，從 ](app-insights-
     }) // ...
 
 
-[api]: app-insights-api-custom-events-metrics.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[metrics]: app-insights-metrics-explorer.md 
-[start]: app-insights-overview.md 
 
+
+
+<!--Link references-->
+
+[api]: app-insights-api-custom-events-metrics.md
+[diagnostic]: app-insights-diagnostic-search.md
+[metrics]: app-insights-metrics-explorer.md
+[start]: app-insights-overview.md
+
+ 

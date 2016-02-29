@@ -16,10 +16,8 @@
    ms.date="09/29/2015"
    ms.author="claudioc"/>
 
-
 # Reliable Actor 設計模式：分散式網路和圖形
-
-Service Fabric Reliable Actor 適用於為涉及關係的複雜解決方案製作模型，以及將這些關係的模型製作成物件。
+Service Fabric Reliable Actor 適用於為涉及關係的複雜解決方案製作模型，以及將這些關係的模型製作成物件。  
 
 ![][1]
 
@@ -211,24 +209,22 @@ public Task PublishMessageAsync(long participantId, string message)
 其實際的作用就是運用可靠動作項目的功能讓任何的動作項目能夠依識別碼定址叢集中任何其他的動作項目，並與其通訊，無須擔心位置、定址、快取、傳訊、序列化或路由。
 
 ## 後續步驟
+[模式：智慧型快取](service-fabric-reliable-actors-pattern-smart-cache.md)
 
-[模式: 智慧型快取](service-fabric-reliable-actors-pattern-smart-cache.md)
+[模式：資源管理](service-fabric-reliable-actors-pattern-resource-governance.md)
 
-[模式: 資源管理](service-fabric-reliable-actors-pattern-resource-governance.md)
+[模式：可設定狀態的服務組合](service-fabric-reliable-actors-pattern-stateful-service-composition.md)
 
-[模式: 可設定狀態的服務組合](service-fabric-reliable-actors-pattern-stateful-service-composition.md)
+[模式：物聯網](service-fabric-reliable-actors-pattern-internet-of-things.md)
 
-[模式: 物聯網](service-fabric-reliable-actors-pattern-internet-of-things.md)
-
-[模式: 分散式的計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
+[模式：分散式計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
 
 [某些反向模式](service-fabric-reliable-actors-anti-patterns.md)
 
 [Service Fabric Actor 簡介](service-fabric-reliable-actors-introduction.md)
 
 
-
-
-[1]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch1.png 
-[2]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch2.png 
+<!--Image references-->
+[1]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch1.png
+[2]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch2.png
 

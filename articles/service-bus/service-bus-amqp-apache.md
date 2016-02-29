@@ -15,14 +15,13 @@
    ms.date="10/07/2015"
    ms.author="sethm" />
 
-
 # 在 Azure Linux VM 上安裝 Apache Qpid Proton-C
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 本節說明如何使用 Azure 虛擬機器建立 CentOS Linux VM，以及如何下載、建置和安裝 Apache Qpid Proton-C 程式庫以及 Python 和 PHP 語言繫結。 完成這些步驟之後，您可以執行本指南隨附的 Python 和 PHP 範例。
 
-第一個步驟使用執行 [Azure 傳統入口網站 []][]。 下列螢幕擷取畫面顯示如何建立名為 "scott-centos" 的 CentOS VM：
+第一個步驟使用執行 [Azure 傳統入口網站][]。 下列螢幕擷取畫面顯示如何建立名為 "scott-centos" 的 CentOS VM：
 
 ![Azure Linux VM 上的 Proton][0]
 
@@ -30,7 +29,7 @@
 
 ![Azure Linux VM 上的 Proton][1]
 
-為了登入電腦，您必須知道 SSH 的端點連接埠。 您可以取得此值從 [Azure 傳統入口網站 []][] 選取新建立的 VM，然後按一下 **端點** ] 索引標籤。 下列螢幕擷取畫面顯示這部電腦的公開 SSH 連接埠為 57146。
+為了登入電腦，您必須知道 SSH 的端點連接埠。 您可以取得此值從 [Azure 傳統入口網站][] 選取新建立的 VM，然後按一下 **端點** ] 索引標籤。 下列螢幕擷取畫面顯示這部電腦的公開 SSH 連接埠為 57146。
 
 ![Azure Linux VM 上的 Proton][2]
 
@@ -47,13 +46,13 @@
     ```
     # required dependencies 
     yum install gcc cmake libuuid-devel
-
+    
     # dependencies needed for ssl support
     yum install openssl-devel
-
+    
     # dependencies needed for bindings
     yum install swig python-devel ruby-devel php-devel java-1.6.0-openjdk
-
+    
     # dependencies needed for python docs
     yum install epydoc
     ```
@@ -84,17 +83,17 @@
 
     ```
     From the directory where you found this README file:    
-
+    
     mkdir build cd build
-
+            
     # Set the install prefix. You may need to adjust depending on your      
     # system.       
     cmake -DCMAKE\_INSTALL\_PREFIX=/usr ..
-
+            
     # Omit the docs target if you do not wish to build or install       
     # documentation.        
     make all docs
-
+            
     # Note that this step will require root privileges.     
     make install
     ```
@@ -107,11 +106,13 @@
 
 - [服務匯流排 AMQP 概觀]
 
+[Service Bus AMQP overview]: service-bus-amqp-overview.md
+[0]: ./media/service-bus-amqp-apache/amqp-apache-1.png
+[1]: ./media/service-bus-amqp-apache/amqp-apache-2.png
+[2]: ./media/service-bus-amqp-apache/amqp-apache-3.png
+[3]: ./media/service-bus-amqp-apache/amqp-apache-4.png
 
-[service bus amqp overview]: service-bus-amqp-overview.md 
-[0]: ./media/service-bus-amqp-apache/amqp-apache-1.png 
-[1]: ./media/service-bus-amqp-apache/amqp-apache-2.png 
-[2]: ./media/service-bus-amqp-apache/amqp-apache-3.png 
-[3]: ./media/service-bus-amqp-apache/amqp-apache-4.png 
-[azure classic portal]: http://manage.windowsazure.com 
+[Azure classic portal]: http://manage.windowsazure.com
+
+
 

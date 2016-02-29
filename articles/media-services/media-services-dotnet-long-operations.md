@@ -17,30 +17,29 @@
     ms.author="juliako"/>
 
 
+#利用 Azure 媒體服務提供即時資料流
 
-# 利用 Azure 媒體服務提供即時資料流
-
-## 概觀
+##概觀
 
 Microsoft Azure 媒體服務提供將要求傳送至媒體服務以啟動作業 (如建立、啟動、停止或刪除頻道) 的 API。 這些作業屬於長時間執行的作業。
 
 Media Services .NET SDK 提供能傳送要求並等候作業完成的 API (API 會在內部依照某些間隔輪詢作業進度). 例如，當您呼叫 channel.Start() 時，方法會在通道啟動後返回。 您也可以使用非同步的 version: await 通道。StartAsync() (工作架構非同步模式的相關資訊，請參閱 [點選](https://msdn.microsoft.com/library/hh873175(v=vs.110).aspx))。 傳送作業要求並輪詢狀態，直到作業完成為止的 API 稱為「輪詢方法」。 我們建議豐富型用戶端應用程式和/或可設定狀態的服務使用這些方法 (尤其是非同步版本)。
 
 我們有一些無法等候長時間執行之 http 要求，並想要的手動輪詢作業進度之應用程式的案例。 與無狀態 Web 服務互動之瀏覽器是典型的範例：當瀏覽器要求建立通道時，Web 服務會起始長時間執行的作業，並將作業識別碼傳回瀏覽器。 接著，瀏覽器會要求 Web 服務來根據識別碼取得作業狀態。 Media Services .NET SDK 提供適用於此案例的 API。 這些 API 稱為「非輪詢方法」。
-「 非輪詢方法 」 具有下列命名模式: 傳送*OperationName*作業 (例如，SendCreateOperation)。傳送*OperationName*Operation 方法會傳回 **IOperation** 物件; 傳回物件包含可用來追蹤作業的資訊。傳送*OperationName*OperationAsync 方法會傳回 * * 工作<IOperation>* *。
+「 非輪詢方法 」 具有下列命名模式: 傳送*OperationName*作業 (例如，SendCreateOperation)。 傳送*OperationName*Operation 方法會傳回 **IOperation** 物件; 傳回物件包含可用來追蹤作業的資訊。 傳送*OperationName*OperationAsync 方法會傳回 **工作<IOperation>**。
 
 下列類別是目前支援非輪詢方法:  **通道**, ，**StreamingEndpoint**, ，和 **程式**。
 
-若要輪詢作業狀態，請針對 **OperationBaseCollection** 類別使用 **GetOperation** 方法。 請使用下列間隔來檢查作業狀態：對於**通道**和 **StreamingEndpoint** 作業，使用 30 秒；對於**程式**作業，使用 10 秒。
+若要輪詢作業狀態，請使用 **GetOperation** 方法 **請針對 OperationBaseCollection** 類別。 使用下列間隔來檢查作業狀態: 針對 **通道** 和 **StreamingEndpoint** 作業，則會使用 30 秒; 對於 **程式** 作業，使用 10 秒。
 
 
-## 範例
+##範例
 
-以下範例定義名為 **ChannelOperations** 的類別。 此類別定義可能是 Web 服務類別定義的起始點。 為了簡單起見，以下範例使用非同步版本的方法。
+下列範例會定義名為的類別 **ChannelOperations**。 此類別定義可能是 Web 服務類別定義的起始點。 為了簡單起見，以下範例使用非同步版本的方法。
 
 此範例也示範用戶端如何使用這個類別。
 
-### ChannelOperations class definition
+###ChannelOperations class definition
 
     /// <summary> 
     /// The ChannelOperations class only implements 
@@ -170,7 +169,7 @@ Media Services .NET SDK 提供能傳送要求並等候作業完成的 API (API �
         }
     }
 
-### The client code
+###The client code
 
     ChannelOperations channelOperations = new ChannelOperations();
     string opId = channelOperations.StartChannelCreation("MyChannel001");
@@ -186,16 +185,14 @@ Media Services .NET SDK 提供能傳送要求並等候作業完成的 API (API �
     
     // If we got here, we should have the newly created channel id.
     Console.WriteLine(channelId);
+ 
 
-## 媒體服務學習路徑
+
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 

@@ -15,14 +15,13 @@
     ms.date="11/17/2015"
     ms.author="awills"/>
 
-
 # 使用 PowerShell 將 Azure 診斷傳送至 Application Insights
 
-[Microsoft Azure](https://azure.com) 可以是 [設定為傳送 Azure 診斷](app-insights-azure-diagnostics.md) 至 [Visual Studio Application Insights](app-insights-overview.md)。 診斷與 Azure 雲端服務和 Azure VM 相關。 可輔助您從應用程式使用 Application Insights SDK 傳送的遙測資料。 在 Azure 中自動建立新資源的程序中，您可以使用 PowerShell 設定診斷。
+[Microsoft Azure](https://azure.com) 可以 [設定為傳送 Azure 診斷](app-insights-azure-diagnostics.md) 至 [Visual Studio Application Insights](app-insights-overview.md)。 診斷與 Azure 雲端服務和 Azure VM 相關。 可輔助您從應用程式使用 Application Insights SDK 傳送的遙測資料。 在 Azure 中自動建立新資源的程序中，您可以使用 PowerShell 設定診斷。
 
 ## 啟用診斷延伸模組做為部署雲端服務的一部分
 
-`新增 AzureDeployment` cmdlet 具有一個參數 `ExtensionConfiguration`, ，這會將診斷組態的陣列。 可以建立使用 `新增 AzureServiceDiagnosticsExtensionConfig` 指令程式。 例如：
+`New-AzureDeployment` Cmdlet 具有 `ExtensionConfiguration` 參數，其採用診斷組態的陣列。 使用 `New-AzureServiceDiagnosticsExtensionConfig` Cmdlet 建立可以診斷組態。 例如：
 
 ```ps
 
@@ -54,14 +53,15 @@
       -Package $service_package `
       -Configuration $service_config `
       -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
-```
+
+``` 
 
 ## 在現有的雲端服務上啟用診斷延伸模組
 
-在現有的服務，使用 `Set-azureservicediagnosticsextension`。
+在現有的服務上，使用 `Set-AzureServiceDiagnosticsExtension`。
 
 ```ps
-
+ 
     $service_name = "MyService"
     $diagnostics_storagename = "myservicediagnostics"
     $webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
@@ -101,7 +101,7 @@
     Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-如果您啟用診斷延伸模組使用 `Set-azureservicediagnosticsextension` 或 `新增 AzureServiceDiagnosticsExtensionConfig` 沒有角色參數中，您就可以移除延伸模組使用 `Remove-azureservicediagnosticsextension` 沒有角色參數。 如果啟用延伸模組時使用了 Role 參數，則移除延伸模組時也必須使用該參數。
+如果您在未使用 Role 參數的情況下使用 `Set-AzureServiceDiagnosticsExtension` 或 `New-AzureServiceDiagnosticsExtensionConfig` 啟用診斷延伸模組，則您可以在未使用 Role 參數的情況下使用 `Remove-AzureServiceDiagnosticsExtension` 移除延伸模組。 如果啟用延伸模組時使用了 Role 參數，則移除延伸模組時也必須使用該參數。
 
 若要從每個個別的角色移除診斷延伸模組：
 
@@ -113,11 +113,7 @@
 
 ## 相關主題
 
-* [監視 Azure 雲端服務使用 Application Insights 的應用程式](app-insights-cloudservices.md)
-* [Azure 診斷傳送至 Application Insights](app-insights-azure-diagnostics.md)
-
-
-
-
+* [使用 Application Insights 監視 Azure 雲端服務應用程式](app-insights-cloudservices.md)
+* [將 Azure 診斷傳送至 Application Insights](app-insights-azure-diagnostics.md)
 
 

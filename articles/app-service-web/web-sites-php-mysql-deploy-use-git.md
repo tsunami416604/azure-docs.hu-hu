@@ -17,19 +17,17 @@
     ms.date="11/19/2015"
     ms.author="tomfitz"/>
 
-
-# 在 Azure 應用程式服務中建立 PHP-MySQL Web 應用程式並使用 Git 部署
+#在 Azure 應用程式服務中建立 PHP-MySQL Web 應用程式並使用 Git 部署
 
 > [AZURE.SELECTOR]
 - [.Net](web-sites-dotnet-get-started.md)
 - [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
-- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [PHP-Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP-FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
-
-本教學課程說明如何建立 Php-mysql web 應用程式以及如何將它部署到 [應用程式服務](http://go.microsoft.com/fwlink/?LinkId=529714) 使用 Git。 您將使用 [PHP ][install-php], ，MySQL 命令列工具 (屬於 [MySQL ][install-mysql])，和 [Git ][install-git] 安裝在電腦上。 在本教學課程的指示可運用在任何作業系統，包括 Windows、 Mac 和 Linux 上。 看完本指南後，您將擁有可在 Azure 上執行的 PHP/MySQL Web 應用程式。
+本教學課程說明如何建立 Php-mysql web 應用程式以及如何將它部署到 [應用程式服務](http://go.microsoft.com/fwlink/?LinkId=529714) 使用 Git。 您將使用 [PHP][install-php], 、 MySQL 命令列工具 (屬於 [MySQL][install-mysql])，和 [Git][install-git] 安裝在電腦上。 在本教學課程的指示可運用在任何作業系統，包括 Windows、 Mac 和 Linux 上。 看完本指南後，您將擁有可在 Azure 上執行的 PHP/MySQL Web 應用程式。
 
 您將了解：
 
@@ -40,21 +38,21 @@
 
 ![Azure PHP web site][running-app]
 
-## 設定開發環境
+##設定開發環境
 
-本教學課程假設您有 [PHP ][install-php], ，MySQL 命令列工具 (屬於 [MySQL ][install-mysql])，和 [Git ][install-git] 安裝在電腦上。
+本教學課程假設您有 [PHP][install-php], 、 MySQL 命令列工具 (屬於 [MySQL][install-mysql])，和 [Git][install-git] 安裝在電腦上。
 
 
-## <a id="create-web-site-and-set-up-git"></a>建立 web 應用程式，並設定 Git 發行
+##<a id="create-web-site-and-set-up-git"></a>建立 Web 應用程式並設定 Git 發行
 
 請遵循以下步驟來建立 Web 應用程式與 MySQL 資料庫：
 
-1. 登入 [Azure 入口網站 ][management-portal]。
-2. 按一下 [新增]**** 圖示。
+1. 登入 [Azure 入口網站][management-portal]。
+2. 按一下 [ **新增** 圖示。
 
-3. 按一下 [Marketplace]**** 旁的 [查看全部]****。
+3. 按一下 [ **See All** 旁 **Marketplace**。 
 
-4. 依序按一下 [Web + 行動]**** 和 [Web 應用程式 + MySQL]****。 然後按一下 [建立]****。
+4. 按一下 [ **Web + 行動**, ，然後 **Web 應用程式 + MySQL**。 然後按一下 [ **建立**。
 
 4. 輸入資源群組的有效名稱。
 
@@ -70,20 +68,21 @@
 
 7. 建立 Web 應用程式之後，您將會看到新的 Web 應用程式刀鋒視窗。
 
-7. 在 **設定** 按一下 **連續部署**, ，然後按一下所需的設定 (_c) settings_。
+7. 在 **設定** 按一下 **連續部署**, ，然後按一下 [ _設定所需設定_。
 
     ![設定 Git 發佈][setup-publishing]
 
-8. 針對來源選取 [本機 Git 儲存機制]****。
+8. 選取 **本機 Git 儲存機制** 來源。
 
     ![設定 Git 儲存機制][setup-repository]
+
 
 9. 若要啟用 Git 發佈，您必須提供使用者名稱和密碼。 請寫下您建立的使用者名稱與密碼 (如果您之前設定過 Git 儲存機制，系統將會略過此步驟。)
 
     ![Create publishing credentials][credentials]
 
 
-## 取得遠端 MySQL 連線資訊
+##取得遠端 MySQL 連線資訊
 
 若要連接至在 Web Apps 中執行的 MySQL 資料庫，您需要連線資訊。 若要取得 MySQL 連線資訊，請依照以下步驟執行：
 
@@ -91,25 +90,25 @@
 
     ![選取資料庫][select-database]
 
-2. 從資料庫的 [設定]**** 中選取 [屬性]****。
+2. 從資料庫 **設定**, ，請選取 **屬性**。
 
     ![選取屬性][select-properties]
 
-2. 請記下的值 `資料庫`, ，`主機`, ，`使用者識別碼`, ，和 `密碼`。
+2. 記下 `Database`、`Host`、`User Id` 及 `Password` 的值。
 
     ![注意屬性][note-properties]
 
-## 在本機建置及測試您的應用程式
+##在本機建置及測試您的應用程式
 
 現在您已經建立了 Web 應用程式，您可以在本機開發自己的應用程式，並在測試後進行部署。
 
 註冊應用程式是一項簡單的 PHP 應用程式，您只需提供名稱與電子郵件地址就能註冊活動。 先前的註冊者相關資訊會顯示在資料表中。 註冊資訊會存放在 MySQL 資料庫。 該應用程式包含一個檔案 (複製/貼上以下提供的程式碼)：
 
-* **index.php**：顯示註冊表單，以及內含註冊者資訊的資料表。
+* **index.php**: 顯示註冊和註冊資訊的資料表的表單。
 
-若要在本機建置與執行應用程式，請遵循下列步驟。 請注意，這些步驟假設您具有 PHP 和 MySQL 命令列工具 (MySQL 的一部分) 在您的本機電腦上設定，且您已啟用 [[pdo mysql] MySQL 的 PDO 延伸功能][pdo-mysql]。
+若要在本機建置與執行應用程式，請遵循下列步驟。 請注意，這些步驟假設您具有 PHP 和 MySQL 命令列工具 (MySQL 的一部分) 在您的本機電腦上設定，且您已啟用 [MySQL 的 PDO 延伸功能][pdo-mysql]。
 
-1. 使用您先前擷取的 `Data Source`、`User Id`、`Password` 與 `Database` 值連線到遠端 MySQL 伺服器：
+1. 使用您先前擷取的 `Data Source`、`User Id`、`Password` 和 `Database` 值，連線到遠端 MySQL 伺服器：
 
         mysql -h{Data Source] -u[User Id] -p[Password] -D[Database]
 
@@ -123,7 +122,8 @@
 
 4. 在本機應用程式資料夾的根目錄中建立 **index.php** 檔案。
 
-5. 在文字編輯器或 IDE 中開啟 **index.php** 檔案並新增下列程式碼，然後完成加上 `//待辦事項：`之註解中的必要變更。
+5. 開啟 **index.php** 檔案在文字編輯器或 IDE 中並加入下列程式碼，然後完成必要的變更，以標示 `//TODO:` 註解。
+
 
         <html>
         <head>
@@ -213,13 +213,13 @@
 
         php -S localhost:8000
 
-
 您可以現在瀏覽至 **http://localhost:8000/ /** 測試應用程式。
 
 
-## 發佈您的應用程式
+##發佈您的應用程式
 
 當您在本機完成應用程式測試之後，可以使用 Git 將其發佈至 Web Apps。 您將初始化本機 Git 儲存機制並發行該應用程式。
+
 > [AZURE.NOTE]
 > 這些步驟與上述「建立 Web 應用程式並設定 Git 發行」小節結尾處的 Azure 入口網站中所示的步驟相同。
 
@@ -237,18 +237,18 @@
 
     ![透過 Git 初始發送至 Azure][git-initial-push]
 
-2. 瀏覽至 **http://[site name].azurewebsites.net/index.php** 以開始使用該應用程式 (此項資訊將儲存在您的帳戶儀表板上)：
+2. 瀏覽至 **http://[site name].azurewebsites.net/index.php** 若要開始使用應用程式 (這項資訊會存放在您的帳戶儀表板):
 
     ![Azure PHP web site][running-app]
 
 發佈應用程式之後，您可以開始對其進行變更，並使用 Git 來發佈它們。
 
-## 將變更發佈至應用程式
+##將變更發佈至應用程式
 
 若要將變更發佈至應用程式，請依照以下步驟進行：
 
 1. 在本機對應用程式進行變更。
-2. 開啟 GitBash (或終端機，it Git 位於您 `路徑`)，將目錄變更為您的應用程式的根目錄，並執行下列命令:
+2. 開啟 GitBash (如果 Git 位於您的 `PATH`，則為終端機)，將目錄變更為應用程式的根目錄，並執行下列命令：
 
         git add .
         git commit -m "comment describing changes"
@@ -269,36 +269,37 @@
 如需詳細資訊，請參閱 [PHP 開發人員中心](/develop/php/)。
 
 ## 變更的項目
-
 * 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
+[install-php]: http://www.php.net/manual/en/install.php
+[install-SQLExpress]: http://www.microsoft.com/download/details.aspx?id=29062
+[install-Drivers]: http://www.microsoft.com/download/details.aspx?id=20098
+[install-git]: http://git-scm.com/
+[install-mysql]: http://dev.mysql.com/downloads/mysql/
 
-[install-php]: http://www.php.net/manual/en/install.php 
-[install-sqlexpress]: http://www.microsoft.com/download/details.aspx?id=29062 
-[install-drivers]: http://www.microsoft.com/download/details.aspx?id=20098 
-[install-git]: http://git-scm.com/ 
-[install-mysql]: http://dev.mysql.com/downloads/mysql/ 
-[pdo-mysql]: http://www.php.net/manual/en/ref.pdo-mysql.php 
-[running-app]: ./media/web-sites-php-mysql-deploy-use-git/running_app_2.png 
-[new-website]: ./media/web-sites-php-mysql-deploy-use-git/new_website2.png 
-[custom-create]: ./media/web-sites-php-mysql-deploy-use-git/create_web_mysql.png 
-[website-details]: ./media/web-sites-php-mysql-deploy-use-git/website_details.jpg 
-[new-mysql-db]: ./media/web-sites-php-mysql-deploy-use-git/create_db.png 
-[go-to-webapp]: ./media/web-sites-php-mysql-deploy-use-git/select_webapp.png 
-[setup-git-publishing]: ./media/web-sites-php-mysql-deploy-use-git/setup_git_publishing.png 
-[credentials]: ./media/web-sites-php-mysql-deploy-use-git/save_credentials.png 
-[resource-group]: ./media/web-sites-php-mysql-deploy-use-git/set_group.png 
-[new-web-app]: ./media/web-sites-php-mysql-deploy-use-git/create_wa.png 
-[setup-publishing]: ./media/web-sites-php-mysql-deploy-use-git/setup_deploy.png 
-[setup-repository]: ./media/web-sites-php-mysql-deploy-use-git/select_local_git.png 
-[select-database]: ./media/web-sites-php-mysql-deploy-use-git/select_database.png 
-[select-properties]: ./media/web-sites-php-mysql-deploy-use-git/select_properties.png 
-[note-properties]: ./media/web-sites-php-mysql-deploy-use-git/note-properties.png 
-[git-instructions]: ./media/web-sites-php-mysql-deploy-use-git/git-instructions.png 
-[git-change-push]: ./media/web-sites-php-mysql-deploy-use-git/php-git-change-push.png 
-[git-initial-push]: ./media/web-sites-php-mysql-deploy-use-git/php-git-initial-push.png 
-[deployments-list]: ./media/web-sites-php-mysql-deploy-use-git/php-deployments-list.png 
-[connection-string-info]: ./media/web-sites-php-mysql-deploy-use-git/connection_string_info.png 
-[management-portal]: https://portal.azure.com 
-[sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx 
+[pdo-mysql]: http://www.php.net/manual/en/ref.pdo-mysql.php
+[running-app]: ./media/web-sites-php-mysql-deploy-use-git/running_app_2.png
+[new-website]: ./media/web-sites-php-mysql-deploy-use-git/new_website2.png
+[custom-create]: ./media/web-sites-php-mysql-deploy-use-git/create_web_mysql.png
+[website-details]: ./media/web-sites-php-mysql-deploy-use-git/website_details.jpg
+[new-mysql-db]: ./media/web-sites-php-mysql-deploy-use-git/create_db.png
+[go-to-webapp]: ./media/web-sites-php-mysql-deploy-use-git/select_webapp.png
+[setup-git-publishing]: ./media/web-sites-php-mysql-deploy-use-git/setup_git_publishing.png
+[credentials]: ./media/web-sites-php-mysql-deploy-use-git/save_credentials.png
+[resource-group]: ./media/web-sites-php-mysql-deploy-use-git/set_group.png
+[new-web-app]: ./media/web-sites-php-mysql-deploy-use-git/create_wa.png
+[setup-publishing]: ./media/web-sites-php-mysql-deploy-use-git/setup_deploy.png
+[setup-repository]: ./media/web-sites-php-mysql-deploy-use-git/select_local_git.png
+[select-database]: ./media/web-sites-php-mysql-deploy-use-git/select_database.png
+[select-properties]: ./media/web-sites-php-mysql-deploy-use-git/select_properties.png
+[note-properties]: ./media/web-sites-php-mysql-deploy-use-git/note-properties.png
+
+[git-instructions]: ./media/web-sites-php-mysql-deploy-use-git/git-instructions.png
+[git-change-push]: ./media/web-sites-php-mysql-deploy-use-git/php-git-change-push.png
+[git-initial-push]: ./media/web-sites-php-mysql-deploy-use-git/php-git-initial-push.png
+[deployments-list]: ./media/web-sites-php-mysql-deploy-use-git/php-deployments-list.png
+[connection-string-info]: ./media/web-sites-php-mysql-deploy-use-git/connection_string_info.png
+[management-portal]: https://portal.azure.com
+[sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
+ 
 

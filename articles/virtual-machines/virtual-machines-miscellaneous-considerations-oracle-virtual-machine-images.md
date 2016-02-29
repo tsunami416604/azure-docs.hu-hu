@@ -16,20 +16,19 @@ ms.workload="infrastructure-services"
 ms.date="06/22/2015"
 ms.author="bbenz" />
 
+#針對 Oracle 虛擬機器映像的其他考量
 
-# 針對 Oracle 虛擬機器映像的其他考量
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
 
 
-本文章涵蓋針對 Azure 上 Oracle 虛擬機器的考量，此虛擬機器以 Microsoft 提供的 Oracle 軟體映像為基礎，且作業系統為 Windows Server。
+本文章涵蓋針對 Azure 上 Oracle 虛擬機器的考量，此虛擬機器以 Microsoft 提供的 Oracle 軟體映像為基礎，且作業系統為 Windows Server。  
 
 -  Oracle 資料庫虛擬機器映像
 -  Oracle WebLogic Server 虛擬機器映像
 -  Oracle JDK 虛擬機器映像
 
-## Oracle 資料庫虛擬機器映像
-
+##Oracle 資料庫虛擬機器映像
 ### 不支援叢集 (RAC)
 
 Azure 目前不支援 Oracle 資料庫的 Oracle Real Application Clusters (RAC)。 僅支援獨立 Oracle 資料庫執行個體。 因為 Azure 目前不支援多個虛擬機器之間讀取/寫入方式的虛擬磁碟機共用。 也不支援多點傳送 UDP。
@@ -48,49 +47,48 @@ Azure 會指派每部虛擬機器各一個內部 IP 位址。 除非虛擬機器
 
 請根據您希望最佳化資料庫讀取作業或寫入作業的效能，考慮兩種連接多個磁碟的方法：
 
-- 相較於使用 Windows Server 2012 儲存體集區的方法，**獨立的 Oracle ASM** 可能會有較佳的寫入作業效能，但讀取作業的 IOPS 較差。 下圖以邏輯方式說明這種排列方式。  
+- **在它自己的 oracle ASM** 可能會導致更好的寫入作業效能，但相較於使用 Windows Server 2012 儲存集區的方法的讀取作業 IOPS 較差。 下圖以邏輯方式說明這種排列方式。  
     ![](media/virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images/image2.png)
 
-- 如果您的資料庫主要執行讀取作業，或者您對讀取作業效能的重視勝於寫入作業，那麼**搭配 Windows Server 2012 儲存體集區使用 Oracle ASM** 可能會有較佳的讀取作業 IOPS 效能。 需要以 Windows Server 2012 作業系統為基礎的映像。 請參閱 [部署在獨立伺服器上的儲存空間](http://technet.microsoft.com/library/jj822938.aspx) 如需有關存放集區。 在這種排列方式下，兩個相等之連接的磁碟子集，會先在兩個儲存體集區磁碟區中一併視為實體磁碟進行等量，然後磁碟區會加入到 ASM 磁碟群組。 下圖以邏輯方式說明這種排列方式。
+- **使用 Windows Server 2012 儲存集區的 oracle ASM** 可能會導致更好的讀取作業 IOPS 效能，如果您的資料庫主要執行讀取的作業，或讀取作業效能勝於寫入作業。 需要以 Windows Server 2012 作業系統為基礎的映像。 請參閱 [部署在獨立伺服器上的儲存空間](http://technet.microsoft.com/library/jj822938.aspx) 如需有關存放集區。 在這種排列方式下，兩個相等之連接的磁碟子集，會先在兩個儲存體集區磁碟區中一併視為實體磁碟進行等量，然後磁碟區會加入到 ASM 磁碟群組。 下圖以邏輯方式說明這種排列方式。  
 
-    ![](media/virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images/image3.png)
+    ![](media/virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images/image3.png)  
 
->[AZURE.IMPORTANT] 依個別情況評估寫入效能與讀取效能之間的取捨。 您的實際結果可能因您使用這些方法而有所不同。
+>[AZURE.IMPORTANT] 評估寫入效能，並依案例為基礎的讀取的效能之間的取捨。 您的實際結果可能因您使用這些方法而有所不同。
 
 ### 高可用性和災害復原考量
 
 在 Azure 虛擬機器中使用 Oracle 資料庫時，您必須負責實作高可用性和災害復原解決方案，以避免任何停機。 您也需負責備份自己的資料和應用程式。
 
-Oracle Database Enterprise Edition (不含 RAC) 在 Azure 上的高可用性和災害復原，可使用 [Data Guard、 Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html), ，或 [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate), ，與兩個資料庫中兩個不同的虛擬機器。 這兩個虛擬機器應該位在相同 [雲端服務](cloud-services-connect-virtual-machine.md) 和相同 [虛擬網路](http://azure.microsoft.com/documentation/services/virtual-network/) 以確保它們可以透過永續私人 IP 位址互相存取。 此外，我們建議將虛擬機器放在同一個 [可用性設定組](manage-availability-virtual-machines.md) ，讓 Azure 將其放置於不同的容錯網域和升級網域。 請注意，只有相同雲端服務內的虛擬機器可以參與相同的可用性集合。 每部虛擬機器必須至少有 2 GB 的記憶體和 5 GB 的磁碟空間。
+Oracle Database Enterprise Edition (不含 RAC) 在 Azure 上的高可用性和災害復原，可使用 [Data Guard、 Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html), ，或 [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate), ，與兩個資料庫中兩個不同的虛擬機器。 這兩個虛擬機器應該位在相同 [雲端服務](cloud-services-connect-virtual-machine.md) 和相同 [虛擬網路](http://azure.microsoft.com/documentation/services/virtual-network/) 以確保它們可以透過永續私人 IP 位址互相存取。  此外，我們建議將虛擬機器放在同一個 [可用性設定組](manage-availability-virtual-machines.md) ，讓 Azure 將其放置於不同的容錯網域和升級網域。 請注意，只有相同雲端服務內的虛擬機器可以參與相同的可用性集合。 每部虛擬機器必須至少有 2 GB 的記憶體和 5 GB 的磁碟空間。
 
 使用 Oracle Data Guard，可以藉由某個虛擬機器中的主要資料庫、另一個虛擬機器中的次要 (待命) 資料庫以及它們之間的單向複寫設定，達到高可用性。 這樣讀取作業存取的會是資料庫的複本。 使用 Oracle GoldenGate，您則可以設定兩個資料庫之間的雙向複寫。 若要了解如何設定高可用性解決方案，為您使用這些工具的資料庫，請參閱 [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) 和 [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) Oracle 網站上的文件。 如果您需要讀取-寫入存取權的資料庫複本，您可以使用 [Oracleactive Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)。
 
-## Oracle WebLogic Server 虛擬機器映像
+##Oracle WebLogic Server 虛擬機器映像
 
--  **只有 Enterprise Edition 支援叢集。**如果您使用 Microsoft 授權的 WebLogic Server 映像 (尤其作業系統是 Windows Server)，則只在使用 Enterprise Edition 的 WebLogic Server 時，您才有權使用 WebLogic 叢集。 請勿在使用 WebLogic Server Standard Edition 時使用叢集。
+-  **叢集上 Enterprise Edition 才支援。**如果您使用 Microsoft 授權的 WebLogic Server 映像 (尤其作業系統是 Windows Server)，則只在使用 Enterprise Edition 的 WebLogic Server 時，您才有權使用 WebLogic 叢集。 請勿在使用 WebLogic Server Standard Edition 時使用叢集。
 
--  **連線逾時：**如果您的應用程式需要仰賴其他 Azure 雲端服務 (例如資料庫層服務) 的公用端點連線，請注意 Azure 會在閒置 4 分鐘後關閉這些開放連線。 這可能會影響依賴連接集區的功能和應用程式，因為無活動時間超過該限制的連接將不再有效。 如果這樣會影響您的應用程式，請考慮在您的連接集區上啟用「Keep-Alive」邏輯。
+-  **連線逾時:** Azure 如果您的應用程式依賴另一個 Azure 雲端服務 (例如，資料庫層服務) 的公用端點連線，可能在無活動達 4 分鐘之後關閉這些開放連線。 這可能會影響依賴連接集區的功能和應用程式，因為無活動時間超過該限制的連接將不再有效。 如果這樣會影響您的應用程式，請考慮在您的連接集區上啟用「Keep-Alive」邏輯。
 
-    請注意，如果端點是 Azure 雲端服務部署的「內部」**端點 (例如位於與 WebLogic 虛擬機器「相同」**雲端服務中的獨立資料庫虛擬機器)，則可直接連接而不需仰賴 Azure 負載平衡器，因此並不受限於連線逾時。
+    請注意，如果端點是 *內部* Azure 雲端服務部署 (例如獨立資料庫虛擬機器內 *相同* 做為您的 WebLogic 虛擬機器雲端服務)，則連接是直接並不依賴 Azure 負載平衡器，因此不受限於連接逾時。
 
 -  **不支援 UDP 多點傳送。**Azure 支援 UDP 單點傳播，但不支援多點傳送或廣播。 WebLogic Server 可以依賴 Azure 的 UDP 單點傳播功能。 若要依賴 UDP 單點傳播獲得最佳結果，建議 WebLogic 叢集大小保持靜態，或叢集中保持不超過 10 個受管理伺服器。
 
--  **WebLogic Server 預期針對 T3 存取的公用和私人連接埠是相同的 (例如，使用 Enterprise JavaBeans 時)。**考慮使用多層式案例，其中服務層 (EJB) 應用程式是在 WebLogic Server 叢集上執行，而該叢集包含了兩個或多個受管理伺服器，且都位於名為 **SLWLS** 的雲端服務中。 用戶端層是在不同的雲端服務中，執行簡單的 Java 程式，嘗試呼叫服務層中的 EJB。 由於負載平衡服務層是必要動作，所以必須先為 WebLogic Server 叢集中的虛擬機器建立公用負載平衡端點。 如果您為該端點指定的私人連接埠與公用連接埠不同 (例如，7006:7008)，則會發生下列錯誤：
+-  **WebLogic Server 預期針對 T3 存取 (例如，使用 Enterprise JavaBeans 時) 相同的公用和私人連接埠。**請考慮包含兩個或多個受管理伺服器，在雲端服務中名為 WebLogic Server 叢集執行的服務層 (EJB) 應用程式所在的多層式案例 **SLWLS**。 用戶端層是在不同的雲端服務中，執行簡單的 Java 程式，嘗試呼叫服務層中的 EJB。 由於負載平衡服務層是必要動作，所以必須先為 WebLogic Server 叢集中的虛擬機器建立公用負載平衡端點。 如果您為該端點指定的私人連接埠與公用連接埠不同 (例如，7006:7008)，則會發生下列錯誤：
 
-     [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
-    
-     Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
+        [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
 
- 這是因為對於任何遠端 T3 存取，WebLogic Server 預期負載平衡器連接埠和 WebLogic 受管理伺服器連接埠是相同的。 在上述案例中，用戶端正在存取連接埠 7006 (負載平衡器連接埠)，而受管理伺服器正在接聽 7008 (私人連接埠)。 請注意，這項限制只適用於 T3 存取，不適用於 HTTP。
+        Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
 
- 若要避免此問題，請使用下列其中一種因應措施：
+    這是因為對於任何遠端 T3 存取，WebLogic Server 預期負載平衡器連接埠和 WebLogic 受管理伺服器連接埠是相同的。 在上述案例中，用戶端正在存取連接埠 7006 (負載平衡器連接埠)，而受管理伺服器正在接聽 7008 (私人連接埠)。 請注意，這項限制只適用於 T3 存取，不適用於 HTTP。
 
- -  針對 T3 存取專用的負載平衡端點使用相同的私人和公用連接埠號碼。
+    若要避免此問題，請使用下列其中一種因應措施：
 
- -  啟動 WebLogic Server 時包含下列 JVM 參數：
+    -  針對 T3 存取專用的負載平衡端點使用相同的私人和公用連接埠號碼。
 
-         -Dweblogic.rjvm.enableprotocolswitch=true
+    -  啟動 WebLogic Server 時包含下列 JVM 參數：
 
+            -Dweblogic.rjvm.enableprotocolswitch=true
 
 如需相關資訊，請參閱知識庫文章 **860340.1** 在 <http://support.oracle.com>。
 
@@ -98,9 +96,9 @@ Oracle Database Enterprise Edition (不含 RAC) 在 Azure 上的高可用性和�
 
     另一方面，如果您設定管理伺服器自動將唯一的連接埠號碼指派給受管理伺服器，則無法進行負載平衡，因為 Azure 不支援從單一公用連接埠對應至多個私人連接埠，而這是此組態的必要設定。
 
--  **虛擬機器上的多個 Weblogic Server 執行個體。**根據您的部署需求，如果虛擬機器夠大，您可以考慮選擇在相同虛擬機器上執行多個 WebLogic Server 的執行個體。 例如，在中型大小虛擬機器上 (包含 2 個核心)，您可以選擇執行兩個 WebLogic Server 的執行個體。 不過請注意，仍然建議您避免將單一失敗點引入您的架構，如果您僅使用一個執行多個 WebLogic Server 執行個體的虛擬機器也是如此。 使用至少兩個虛擬機器可能是較好的方法，每個虛擬機器可以執行多個 WebLogic Server 執行個體。 每個 WebLogic Server 的執行個體仍可以是相同叢集的一部分。 但是請注意，目前無法使用 Azure 對相同虛擬機器內此類 WebLogic Server 部署所公開的端點進行負載平衡，因為 Azure 負載平衡器需要負載平衡伺服器在唯一的虛擬機器內散佈。
+-  **多個虛擬機器上的 Weblogic Server 的執行個體。**根據您的部署需求，如果虛擬機器夠大，您可以考慮選擇在相同虛擬機器上執行多個 WebLogic Server 的執行個體。 例如，在中型大小虛擬機器上 (包含 2 個核心)，您可以選擇執行兩個 WebLogic Server 的執行個體。 不過請注意，仍然建議您避免將單一失敗點引入您的架構，如果您僅使用一個執行多個 WebLogic Server 執行個體的虛擬機器也是如此。 使用至少兩個虛擬機器可能是較好的方法，每個虛擬機器可以執行多個 WebLogic Server 執行個體。 每個 WebLogic Server 的執行個體仍可以是相同叢集的一部分。 但是請注意，目前無法使用 Azure 對相同虛擬機器內此類 WebLogic Server 部署所公開的端點進行負載平衡，因為 Azure 負載平衡器需要負載平衡伺服器在唯一的虛擬機器內散佈。
 
-## Oracle JDK 虛擬機器映像
+##Oracle JDK 虛擬機器映像
 
 -  **JDK 6 和 7 最新更新。**雖然建議使用 Java 的最新公開支援版本 (目前為 Java 8)，Azure 也提供 JDK 6 和 7 映像。 這是針對尚未準備升級至 JDK 8 的舊版應用程式。 雖然舊版 JDK 映像的更新可能不再提供一般大眾使用，憑藉 Microsoft 與 Oracle 的合作夥伴關係，Azure 提供的 JDK 6 和 7 映像會包含最新的非公用更新，該更新通常是由 Oracle 僅提供給 Oracle 支援客戶的選取群組。 新版本的 JDK 映像與 JDK 6 和 7 的更新版本會在一段時間內供取用。
 
@@ -108,11 +106,6 @@ Oracle Database Enterprise Edition (不含 RAC) 在 Azure 上的高可用性和�
 
 -  **64 位元 JDK。**Oracle WebLogic Server 虛擬機器映像和 Azure 所提供的 Oracle JDK 虛擬機器映像包含 Windows Server 和 JDK 的 64 位元版本。
 
-## 其他資源
-
+##其他資源
 [Azure 的 oracle 虛擬機器映像](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
-
-
-
-
 

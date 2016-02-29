@@ -1,6 +1,6 @@
 <properties
     pageTitle="監視任何網站的可用性和回應性 | Microsoft Azure"
-    description="在 Application Insights 中設定 Web 測試。如果網站無法使用或回應緩慢，將收到警示。"
+    description="在 Application Insights 中設定 Web 測試。 如果網站無法使用或回應緩慢，將收到警示。"
     services="application-insights"
     documentationCenter=""
     authors="alancameronwills"
@@ -15,8 +15,8 @@
     ms.date="11/04/2015"
     ms.author="awills"/>
 
-
 # 監視任何網站的可用性和回應性
+
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
@@ -37,7 +37,7 @@ Web 測試可分為兩種：
 
 ### <a name="create"></a>1.建立新的資源？
 
-如果您略過此步驟已經 [設定 Application Insights 資源 ][start] 針對此應用程式，而且您想要查看可用性資料，在相同的位置。
+如果您略過這個步驟已經 [設定 Application Insights 資源][start] 針對此應用程式，而且您想要查看可用性資料，在相同的位置。
 
 註冊 [Microsoft Azure](http://azure.com), ，請移至 [Azure 入口網站](https://portal.azure.com), ，並建立新的 Application Insights 資源。
 
@@ -51,21 +51,22 @@ Web 測試可分為兩種：
 
 ![Fill at least the URL of your website](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-- **URL** 必須可在公用網際網路上顯示。 它可以包含查詢字串 - 例如，您可以訓練一下您的資料庫。 如果 URL 解析為重新導向，我們將會跟隨它，最多 10 個重新導向。
-- **剖析相依要求**：測試時會要求映像、指令碼、樣式檔和頁面的其他資源。 如果無法在逾時內為整個測試成功下載所有這些資源，則測試將會失敗。
+- **URL** 必須是公用網際網路上看見。 它可以包含查詢字串 - 例如，您可以訓練一下您的資料庫。 如果 URL 解析為重新導向，我們將會跟隨它，最多 10 個重新導向。
+- **剖析相依要求**: 映像、 指令碼、 樣式檔案和頁面的其他資源要求做為測試的一部分。 如果無法在逾時內為整個測試成功下載所有這些資源，則測試將會失敗。
 - **啟用重試**: 測試失敗時，就會重試較短的間隔。 只有在連續三次重試失敗後，才會回報失敗。 後續測試則會以一般測試頻率執行。 重試會暫時停止，直到下次成功為止。 此規則可個別套用在每個測試位置。 (我們建議使用這個設定。 平均來說，大約 80%的失敗會在重試後消失。)
-- **測試頻率**：設定從每個測試位置執行測試的頻率。 若頻率為 5 分鐘並有五個測試位置，將平均每一分鐘測試您的網站。
-- **測試位置**是我們的伺服器將 Web 要求傳送至您的 URL 的位置。 請選擇多個位置，以便區分網站問題與網路問題。 您最多可以選取 16 個位置。
+- **測試頻率**: 設定從每個測試位置執行測試的頻率。 若頻率為 5 分鐘並有五個測試位置，將平均每一分鐘測試您的網站。
+- **測試位置** 從我們的伺服器位置將 web 要求傳送至您的 URL 位置。 請選擇多個位置，以便區分網站問題與網路問題。 您最多可以選取 16 個位置。
 
-- **成功準則**：
+- **成功準則**:
 
-    **測試逾時**：減少此值以警示回應變慢。 如果未在這段時間內收到您網站的回應，則測試會視為失敗。 如果已選取 [剖析相依要求]****，則必須在這段時間內收到所有映像、樣式檔、指令碼和其他相依資源。
+    **測試逾時**: 減少這提醒回應變慢。 如果未在這段時間內收到您網站的回應，則測試會視為失敗。 如果您選取 **剖析相依要求**, ，則所有映像、 樣式檔案、 指令碼和其他相依的資源必須收到這段期間內。
 
-    **HTTP 回應**：視為成功的回覆狀態碼。 200 是表示已傳回標準 Web 網頁的代碼。
+    **HTTP 回應**: 計算為成功的傳回的狀態碼。 200 是表示已傳回標準 Web 網頁的代碼。
 
-    **內容比對**：字串，例如「歡迎！」 我們將測試它出現在每個回應中。 必須是單純字串，不含萬用字元。 別忘了，如果頁面內容變更，則可能需要更新。
+    **內容比對**: 字串，例如 「 歡迎! 」 我們將測試它出現在每個回應中。 必須是單純字串，不含萬用字元。 別忘了，如果頁面內容變更，則可能需要更新。
 
-- 如果五分鐘內有三個位置發生失敗，則依預設會將 [警示]****傳送給您。 某個位置的失敗很可能是網路問題，而不是您的網站發生問題。 但您可以將臨界值變更為更敏感或更不敏感，也可以變更應該將電子郵件傳送給哪一個人。
+
+- **警示** 依預設，如果失敗中有三個位置過去五分鐘內傳送給您。 某個位置的失敗很可能是網路問題，而不是您的網站發生問題。 但您可以將臨界值變更為更敏感或更不敏感，也可以變更應該將電子郵件傳送給哪一個人。
 
 #### 測試更多 URL
 
@@ -74,7 +75,7 @@ Web 測試可分為兩種：
 
 ### <a name="monitor"></a>3.檢視可用性報告
 
-1-2 分鐘後，在 [可用性/Web 測試] 刀鋒視窗上按一下 [重新整理]****。 (它不會自動重新整理)。
+1-2 分鐘後，按一下 [ **重新整理** 可用性 /web 測試] 分頁上。 (它不會自動重新整理)。
 
 ![Summary results on the home blade](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
@@ -84,7 +85,7 @@ Web 測試可分為兩種：
 
 #### 網頁的元件
 
-在測試中會要求您要測試的網頁的影像、樣式表、指令碼及其他靜態元件。
+在測試中會要求您要測試的網頁的影像、樣式表、指令碼及其他靜態元件。  
 
 記錄的回應時間是所有元件完成載入所花費的時間。
 
@@ -109,7 +110,7 @@ Web 測試可分為兩種：
 ![Click a specific webtest](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
 
 
-向下捲動至 [失敗的測試] **** 並挑選結果。
+向下捲動至 **失敗的測試** 並挑選結果。
 
 按一下結果以在入口網站中評估，並查看失敗的原因。
 
@@ -119,7 +120,7 @@ Web 測試可分為兩種：
 或者，您可以下載結果檔案，然後在 Visual Studio 中檢查。
 
 
-*看起來正常，但回報為失敗？*請檢查所有映像、指令碼、樣式表和頁面載入的任何其他檔案。 If any of them fails, the test will be reported as failed, even if the main html page loads OK.
+*看起來正常，但回報為失敗?*請檢查所有映像、指令碼、樣式表和頁面載入的任何其他檔案。 If any of them fails, the test will be reported as failed, even if the main html page loads OK.
 
 
 
@@ -133,7 +134,7 @@ Web 測試可分為兩種：
 
 #### 1.記錄案例
 
-使用 Visual Studio Enterprise 或 Ultimate 來記錄 Web 工作階段。
+使用 Visual Studio Enterprise 或 Ultimate 來記錄 Web 工作階段。 
 
 1. 建立 Web 效能測試專案。
 
@@ -141,7 +142,7 @@ Web 測試可分為兩種：
 
 2. 開啟 .webtest 檔案，並開始記錄。
 
-    ![開啟 .webtest 檔案，然後按一下 ](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
+    ![開啟 .webtest 檔案，然後按一下 [記錄]。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
 
 3. 執行您想要在測試中模擬的使用者動作：開啟網站、將產品加入購物車等等。 然後停止測試。
 
@@ -159,18 +160,18 @@ Web 測試可分為兩種：
 
     Web 測試執行器會開啟網頁瀏覽器，並重複您已記錄的動作。 請確定運作如您所預期。
 
-    ![在 Visual Studio 中，開啟 .webtest 檔案，並按一下 ](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
+    ![在 Visual Studio 中，開啟 .webtest 檔案，並按一下 [執行]。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
 
 
 #### 2.將 Web 測試上傳至 Application Insights
 
 1. 在 Application Insights 入口網站中，建立新的 Web 測試。
 
-    ![在 ](./media/app-insights-monitor-web-app-availability/16-another-test.png)
+    ![在 [Web 測試] 刀鋒視窗中，選擇 [加入]。](./media/app-insights-monitor-web-app-availability/16-another-test.png)
 
 2. 選取多重步驟測試，並上傳 .webtest 檔案。
 
-    ![選取 ](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
+    ![選取 [多步驟 Web 測試]。](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
 
     以進行 ping 測試的相同方式設定測試位置、頻率及警示參數。
 
@@ -193,15 +194,15 @@ Web 測試可分為兩種：
 
 Web 測試外掛程式提供這種作法。
 
-1. 針對您想要的每個變數參數值，各加入一個 Web 測試外掛程式。 在 Web 測試工具列中，選擇 [加入 Web 測試外掛程式]****。
+1. 針對您想要的每個變數參數值，各加入一個 Web 測試外掛程式。 在 [web 測試] 工具列中，選擇 [ **加入 Web 測試外掛程式**。
 
-    ![選擇 ](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugins.png)
+    ![選擇 [加入 Web 測試外掛程式]，然後選取類型。](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugins.png)
 
     在此範例中，我們將使用兩個日期時間外掛程式執行個體。 一個執行個體設定為 "15 minutes ago"，另一個則設定為 "now"。
 
 2. 開啟每個外掛程式的屬性。 為屬性命名，然後將它設為使用目前時間。 對其中一個，設定 [加入分鐘] = -15。
 
-    ![設定 ](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-parameters.png)
+    ![設定 [名稱]、[使用目前時間] 和 [加入分鐘]。](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-parameters.png)
 
 3. 在 Web 測試參數中，使用 {{plug-in name}} 來參考外掛程式名稱。
 
@@ -217,11 +218,11 @@ Web 測試外掛程式提供這種作法。
 
 當您在服務上進行維護時，您可能會想要停用 Web 測試。
 
-## 有疑問嗎？有問題嗎？
+## 有疑問嗎？ 有問題嗎？
 
 * *可以從我的 Web 測試呼叫程式碼嗎？*
 
-    號 如果測試步驟必須在.webtest 檔案。 而且您不能呼叫其他 Web 測試或使用迴圈。 但是這裡有一些您會覺得有用的外掛程式。
+    編號 如果測試步驟必須在.webtest 檔案。 而且您不能呼叫其他 Web 測試或使用迴圈。 但是這裡有一些您會覺得有用的外掛程式。
 
 * *是否支援 HTTPS？*
 
@@ -231,24 +232,23 @@ Web 測試外掛程式提供這種作法。
 
     我們會交替使用這兩個詞彙。
 
-## <a name="video"></a>視訊
+## <a name="video"></a>影片
 
 > [AZURE.VIDEO monitoring-availability-with-application-insights]
 
 ## <a name="next"></a>後續步驟
 
-[搜尋診斷記錄 ][diagnostic]
+[搜尋診斷記錄 (英文)][diagnostic]
 
-[疑難排解 ][qna]
-
-
+[疑難排解][qna]
 
 
 
 
+<!--Link references-->
 
-[azure-availability]: ../insights-create-web-tests.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[qna]: app-insights-troubleshoot-faq.md 
-[start]: app-insights-overview.md 
+[azure-availability]: ../insights-create-web-tests.md
+[diagnostic]: app-insights-diagnostic-search.md
+[qna]: app-insights-troubleshoot-faq.md
+[start]: app-insights-overview.md
 

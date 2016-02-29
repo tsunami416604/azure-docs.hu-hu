@@ -14,11 +14,10 @@
     ms.topic="article" 
     ms.date="10/07/2015" 
     ms.author="awills"/>
-
-
+ 
 # 逐步解說：使用串流分析從 Application Insights 匯出至 SQL
 
-本文將說明如何移動您的遙測資料從 [Visual Studio Application Insights ][start] 到 Azure SQL database 使用 [連續匯出 ][export] 和 [Azure 串流分析](http://azure.microsoft.com/services/stream-analytics/)。
+本文將說明如何移動您的遙測資料從 [Visual Studio Application Insights][start] 到 Azure SQL database 使用 [連續匯出][export] 和 [Azure 串流分析](http://azure.microsoft.com/services/stream-analytics/)。 
 
 連續匯出會以 JSON 格式將遙測資料移入 Azure 儲存體。 我們將使用 Azure 串流分析來剖析 JSON 物件，並在資料庫資料表中建立資料列。
 
@@ -27,30 +26,31 @@
 我們先假設您已經有想要監視的應用程式。
 
 
-在此範例中，我們使用頁面檢視資料，但相同的模式可以很輕易地延伸到其他資料類型，例如自訂事件和例外狀況。
+在此範例中，我們使用頁面檢視資料，但相同的模式可以很輕易地延伸到其他資料類型，例如自訂事件和例外狀況。 
 
 
 ## 加入 Application Insights SDK
 
-若要監視您的應用程式，您 [Application Insights SDK ][start] 您的應用程式。 不同的平台、IDE 和語言有不同的 SDK 和協助程式工具。 您可以監視數種類型的網頁、Java 或 ASP.NET Web 伺服器和行動裝置。 所有 sdk 均傳送遙測資料至 [Application Insights 入口網站 ][portal], ，其中您可以使用我們功能強大的分析與診斷工具，並將資料匯出至儲存體。
+若要監視您的應用程式，您 [Application Insights SDK 加入][start] 您的應用程式。 不同的平台、IDE 和語言有不同的 SDK 和協助程式工具。 您可以監視數種類型的網頁、Java 或 ASP.NET Web 伺服器和行動裝置。 所有 sdk 均傳送遙測資料至 [Application Insights 入口網站][portal], ，其中您可以使用我們功能強大的分析與診斷工具，並將資料匯出至儲存體。
 
 開始進行之前：
 
 1. 取得 [Microsoft Azure 帳戶](http://azure.microsoft.com/pricing/)。
-2. 在 [Azure 入口網站 ][portal], ，加入新的 Application Insights 資源，您的應用程式:
+2. 在 [Azure 入口網站][portal], ，加入新的 Application Insights 資源，您的應用程式:
 
-    ![依序選擇 ](./media/app-insights-code-sample-export-sql-stream-analytics/010-new-asp.png)
+    ![依序選擇 [新增]、[開發人員服務]、[Application Insights]，然後選擇應用程式類型](./media/app-insights-code-sample-export-sql-stream-analytics/010-new-asp.png)
 
-    (您的應用程式類型和訂用帳戶可能會和這裡的不同)。
+
+    (Your app type and subscription might be different.)
 3. 開啟 [快速入門] 來了解如何針對應用程式的類型設定 SDK。
 
-    ![選擇 ](./media/app-insights-code-sample-export-sql-stream-analytics/020-quick.png)
+    ![選擇 [快速入門]，然後依照指示進行](./media/app-insights-code-sample-export-sql-stream-analytics/020-quick.png)
 
-    如果沒有列出您的應用程式類型，看看 [開始使用 ][start] 頁面。
+    如果沒有列出您的應用程式類型，看看 [開始][start] 頁面。
 
 4. 在此範例中，我們正在監視 Web 應用程式，因此可以使用 Visual Studio 中的 Azure Tools 安裝 SDK。 告訴 SDK 您的 Application Insights 資源名稱：
 
-    ![Visual Studio 方案總管] 中以滑鼠右鍵按一下您的專案並選擇 [加入 Application Insights。 若要傳送遙測資料，在選擇建立新的資源，或使用現有。](。 / media/app-insights-code-sample-export-sql-stream-analytics/appinsights-d012-addbrown.png)
+    ![在 Visual Studio [方案總管] 中，以滑鼠右鍵按一下專案，然後選擇 [加入 Application Insights]。 在 [傳送遙測至] 選擇建立新資源，或使用現有資源。](./media/app-insights-code-sample-export-sql-stream-analytics/appinsights-d012-addbrown.png)
 
 5. 發行應用程式，並觀察出現在 Application Insights 資源中的遙測資料。
 
@@ -59,61 +59,63 @@
 
 連續匯出一律會將資料輸出至 Azure 儲存體帳戶，因此您必須先建立儲存體。
 
-1. 建立 「 傳統 」 的儲存體帳戶中的訂閱 [Azure 入口網站 ][portal]。
+1. 建立 「 傳統 」 的儲存體帳戶中的訂閱 [Azure 入口網站][portal]。
 
-    ![在 Azure 網站中，選擇 [新增]、 [資料]，儲存體。 選取 [傳統]，然後選擇 [建立]。 提供儲存體名稱。(。 / media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
+    ![在 Azure 入口網站中，依序選擇 [新增]、[資料]、[儲存體]。 選取 [傳統]，然後選擇 [建立]。 提供儲存體的名稱。](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 
 2. 建立容器
 
-    ![在新的儲存體中，選取 ](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
+    ![在新的儲存體中，選取 [容器]，按一下容器磚，然後按一下 [新增]](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
 
 3. 複製儲存體存取金鑰
 
     稍後您會需要使用它來設定串流分析服務的輸入。
 
-    ![在儲存體中，依序開啟 ](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
+    ![在儲存體中，依序開啟 [設定]、[金鑰]，然後複製主要存取金鑰](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
 
 ## 啟動對 Azure 儲存體的連續匯出
 
 1. 在 Azure 入口網站中，瀏覽至您為應用程式建立的 Application Insights 資源。
 
-    ![依序選擇 ](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
+    ![依序選擇 [瀏覽]、[Application Insights]、您的應用程式](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
 
 2. 建立連續匯出。
 
-    ![依序選擇 ](./media/app-insights-code-sample-export-sql-stream-analytics/070-export.png)
+    ![依序選擇 [設定]、[連續匯出]、[新增]](./media/app-insights-code-sample-export-sql-stream-analytics/070-export.png)
 
-    選取您稍早建立的儲存體帳戶：
 
-    ![設定匯出目的地](./media/app-insights-code-sample-export-sql-stream-analytics/080-add.png)
+    Select the storage account you created earlier:
 
-    設定您想要查看的事件類型：
+    ![Set the export destination](./media/app-insights-code-sample-export-sql-stream-analytics/080-add.png)
+    
+    Set the event types you want to see:
 
-    ![選擇事件類型](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
+    ![Choose event types](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
 
-3. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測會送過來，而您會看到統計圖表中的 [計量瀏覽器](app-insights-metrics-explorer.md) 和個別事件 [診斷搜尋](app-insights-diagnostic-search.md)。
 
-    此外，資料會匯出至您的儲存體。
+3. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測會送過來，而您會看到統計圖表中的 [計量瀏覽器](app-insights-metrics-explorer.md) 和個別事件 [診斷搜尋](app-insights-diagnostic-search.md)。 
 
-4. 請在入口網站 (選擇 [瀏覽]****，接著選取您的儲存體帳戶，然後選擇 [容器]****) 或 Visual Studio 中，檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視]、[Cloud Explorer]****，然後依序開啟 [Azure]、[儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
+    此外，資料會匯出至您的儲存體。 
 
-    ![在 Visual Studio 中，依序開啟 ](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
+4. 檢查匯出的資料，請在入口網站-選擇 **瀏覽**, ，選取您的儲存體帳戶，然後 **容器** -或 Visual Studio 中。 在 Visual Studio 中，選擇 [ **檢視 / 雲端總管**, ，並開啟 Azure / 儲存體。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
 
-    記下衍生自應用程式名稱和檢測金鑰之路徑名稱的共同部分。
+    ![在 Visual Studio 中，依序開啟 [Server Browser]、[Azure]、[儲存體]](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
+
+    記下衍生自應用程式名稱和檢測金鑰之路徑名稱的共同部分。 
 
 事件會以 JSON 格式寫入至 Blob 檔案。 每個檔案可能會包含一或多個事件。 因此我們想要讀取事件資料，並篩選出需要的欄位。 我們可以利用資料執行各種作業，但我們現在打算使用串流分析，將資料移至 SQL Database。 這麼做可讓您輕鬆執行許多有趣的查詢工作。
 
 ## 建立 Azure SQL Database
 
-再一次從您的訂用 [Azure 入口網站 ][portal], ，建立資料庫 (和新的伺服器，除非您已經有一個) 至您要寫入資料。
+再一次從您的訂用 [Azure 入口網站][portal], ，建立資料庫 (和新的伺服器，除非您已經有一個) 至您要寫入資料。
 
-![[新增]、](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
+![[新增]、[資料]、[SQL]](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
 
 
 確定資料庫伺服器允許存取 Azure 服務：
 
 
-![[瀏覽]、](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
+![[瀏覽]、[伺服器]、您的伺服器、[設定]、[防火牆]、[允許存取 Azure]](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## 在 Azure SQL Database 中建立資料表
 
@@ -158,6 +160,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 (
     [eventTime] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+
 ```
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/34-create-table.png)
@@ -189,11 +192,11 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/46-sa-wizard2.png)
 
-#### 設定路徑前置詞模式
+#### 設定路徑前置詞模式 
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/47-sa-wizard3.png)
 
-請務必將 [日期格式] 設為 [YYYY-MM-DD]**** (含**連接號**)。
+請務必設定日期格式為 **YYYY-MM-DD 的-** (與 **連字號**)。
 
 [路徑前置詞模式] 會指定串流分析在儲存體中尋找輸入檔案的方式。 您需要將它設定為與連續匯出儲存資料的方式相對應。 請設定如下：
 
@@ -201,10 +204,10 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 在此範例中：
 
-* `webapplication27` 是 Application Insights 資源中，名稱 **全都放在小寫**。
-* `1234...` 是 Application Insights 資源的檢測金鑰 **移除連字號與**。
+* `webapplication27` 是 Application Insights 資源中，名稱 **全都放在小寫**。 
+* `1234...` 是 Application Insights 資源的檢測金鑰 **移除連字號與**。 
 * `PageViews` 是我們想要分析的資料類型。 可用的類型取決於您在「連續匯出」中設定的篩選。 檢查匯出的資料，請參閱其他可用的類型，並查看 [匯出資料模型](app-insights-export-data-model.md)。
-* `/ {date} / {time}` 是依字面意思寫入模式。
+* `/{date}/{time}` 是要依字面意思寫入資訊的格式。
 
 若要取得 Application Insights 資源的名稱和 iKey，請在資源的概觀頁面中開啟 Essentials，或開啟 [設定]。
 
@@ -215,13 +218,14 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 ![確認並關閉精靈](./media/app-insights-code-sample-export-sql-stream-analytics/48-sa-wizard4.png)
 
 關閉精靈，並等候設定完成。
->[AZURE.TIP] 使用範例函數來檢查您是否已正確設定輸入路徑。 如果此方法失敗：請檢查儲存體中您所選擇的範例時間範圍的資料。 編輯輸入定義，並檢查您是否已正確設定儲存體帳戶、路徑前置詞和日期格式。
+
+>[AZURE.TIP] 您可以使用範例函式來檢查輸入的路徑的設定正確。 如果此方法失敗：請檢查儲存體中您所選擇的範例時間範圍的資料。 編輯輸入定義，並檢查您是否已正確設定儲存體帳戶、路徑前置詞和日期格式。
 
 ## 設定查詢
 
 開啟 [查詢] 區段：
 
-![在串流分析中選取 ](./media/app-insights-code-sample-export-sql-stream-analytics/51-query.png)
+![在串流分析中選取 [查詢]](./media/app-insights-code-sample-export-sql-stream-analytics/51-query.png)
 
 將預設查詢替換為以下內容：
 
@@ -257,6 +261,8 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
       AIOutput
     FROM AIinput A
     CROSS APPLY GetElements(A.[view]) as flat
+
+
 ```
 
 請注意，前幾個屬性是頁面檢視資料的特定屬性。 其他遙測資料類型的匯出會有不同的屬性。 請參閱 [詳細的資料模型參考的屬性型別和值。](app-insights-export-data-model.md)
@@ -265,7 +271,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 選取 SQL 做為輸出。
 
-![在串流分析中選取 ](./media/app-insights-code-sample-export-sql-stream-analytics/53-store.png)
+![在串流分析中選取 [輸出]](./media/app-insights-code-sample-export-sql-stream-analytics/53-store.png)
 
 指定 SQL Database。
 
@@ -290,20 +296,21 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
     SELECT TOP 100 *
     FROM [dbo].[PageViewsTable]
 
+
 ## 相關文章
 
 * [使用背景工作角色匯出至 SQL](app-insights-code-sample-export-telemetry-sql-database.md)
-* [匯出至 PowerBI 使用串流分析](app-insights-export-power-bi.md)
-* [詳細的資料模型的屬性型別和值的參考。](app-insights-export-data-model.md)
+* [使用串流分析匯出至 PowerBI](app-insights-export-power-bi.md)
+* [屬性類型和值的詳細資料模型參考。](app-insights-export-data-model.md)
 * [Application Insights 中的連續匯出](app-insights-export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
+<!--Link references-->
 
+[diagnostic]: app-insights-diagnostic-search.md
+[export]: app-insights-export-telemetry.md
+[metrics]: app-insights-metrics-explorer.md
+[portal]: http://portal.azure.com/
+[start]: app-insights-overview.md
 
-
-[diagnostic]: app-insights-diagnostic-search.md 
-[export]: app-insights-export-telemetry.md 
-[metrics]: app-insights-metrics-explorer.md 
-[portal]: http://portal.azure.com/ 
-[start]: app-insights-overview.md 
-
+ 

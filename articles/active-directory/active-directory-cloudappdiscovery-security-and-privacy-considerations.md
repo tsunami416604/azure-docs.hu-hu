@@ -16,12 +16,11 @@
     ms.date="12/01/2015"
     ms.author="markusvi"/>
 
-
 # Cloud App Discovery 的安全性和隱私權考量
 
-Microsoft 致力於保護您的隱私權和保護資料安全，同時提供軟體和服務，幫助您管理組織的安全性。 <br>
+Microsoft 致力於保護您的隱私權和保護資料安全，同時提供軟體和服務，協助您管理組織的安全性。 <br>
 我們了解當您的資料給其他人，而成就公司大業信任需要嚴格的安全性工程投資和專業知識，以備份它。
-Microsoft 遵守嚴格的規範與安全性指導方針從安全的軟體開發週期實務到服務的運作。 <br>
+Microsoft 從實行安全的軟體開發週期到運作服務，均遵守嚴格的規範與安全性指導方針。 <br>
 保全和保護資料是在 Microsoft 的第一要務。
 
 本主題說明在 Azure Active Directory Cloud App Discovery 內如何收集、處理以及保護資料
@@ -29,9 +28,9 @@ Microsoft 遵守嚴格的規範與安全性指導方針從安全的軟體開發�
 
 
 
-## 概觀
+##概觀
 
-Cloud App Discovery 是 Azure AD 的功能，而裝載在 Microsoft Azure 中。 <br>
+Cloud App Discovery 是 Azure AD 的功能，裝載在 Microsoft Azure 中。 <br>
 Cloud App Discovery 端點代理程式用來從 IT 管理的電腦收集應用程式探索資料。 <br>
 收集的資料會安全地傳送透過加密通道到 Azure AD Cloud App Discovery 服務。 <br>
 組織的 Cloud App Discovery 資料就顯示在 Azure 入口網站。 <br>
@@ -55,7 +54,7 @@ Azure Active Directory 租用戶 (或其委派) 的系統管理員可以從 Azur
 
 ### 代理程式收集的資料
 
-下列清單中描述的資訊是在連線到 Web 應用程式時由代理程式所收集的資訊。系統管理員已設定進行探索的應用程式，只會收集資訊。 <br>
+下列清單中描述的資訊是在連線到 Web 應用程式時由代理程式所收集的資訊。 只會針對系統管理員已設定進行探索的應用程式收集此資訊。 <br>
 您可以編輯透過 Microsoft 的 Cloud App Discovery] 分頁的代理程式監視的雲端應用程式的清單 [Azure 入口網站](https://portal.azure.com), 下 **設定**]-> [**資料收集**]-> [**App 集合清單**。 如需詳細資訊，請參閱 [開始使用 Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 <br>
 **資訊類別**: 使用者資訊 <br>
@@ -106,9 +105,9 @@ Azure Active Directory 租用戶 (或其委派) 的系統管理員可以從 Azur
 
 
 
-> [AZURE.NOTE] 所有非加密的連線都會收集上述 HTTP 資訊。
+> [AZURE.NOTE] 所有非加密連線收集上述 HTTP 資訊。
  如果是 TLS 連線，只有在入口網站中開啟 [深度檢查] 設定時，才會擷取這項資訊。 設定預設為 [開啟]。
-如需詳細資訊，請參閱下面和 [開始使用 Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
+如需詳細資訊，請參閱下方和 [開始使用 Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 
 
 <br><br>
@@ -122,32 +121,31 @@ Azure Active Directory 租用戶 (或其委派) 的系統管理員可以從 Azur
 
 
 
-第一次安裝代理程式時它會再用來建立與 Cloud App Discovery 服務的安全連線的電腦上儲存特定電腦受信任的憑證。 <br>
+第一次安裝代理程式時，會在電腦上儲存特定電腦的受信任憑證，然後再使用這個憑證與 Cloud App Discovery 服務建立安全連線。 <br>
 代理程式會定期擷取原則組態從 Cloud App Discovery 服務透過這個安全連線。 <br>
 原則包括要監視，是否自動更新應啟用，而在其他方面的雲端應用程式的相關資訊。
 
 傳送和接收電腦上，從 Internet Explorer 和 Chrome Web 流量，Cloud App Discovery 代理程式會分析該流量並擷取相關的中繼資料 (請參閱 **代理程式收集資料** 如上一節)。 <br>
 每分鐘，代理程式上傳收集的中繼資料到 Cloud App Discovery 服務透過加密通道。
 
-驅動程式元件會攔截加密的流量，將其本身插入加密的資料流。 如需詳細資訊，請參閱下列**攔截來自加密連線的資料 (深度檢查)** 一節。
+驅動程式元件會攔截加密的流量，將其本身插入加密的資料流。 詳細資料請參閱 **攔截來自加密連線 (深度視察) 資料** 下一節。
 
 
 ### 尊重使用者隱私權
 
 我們的目標是提供系統管理員工具，在詳細檢視應用程式使用方式和使用者隱私權之間，為組織設定一個適當的平衡。 因此，我們在入口網站設定頁面提供下列旋鈕：
 
-- **資料收集**：系統管理員可以選擇指定要在哪些應用程式或應用程式類別取得探索資料。
+- **資料收集**: 系統管理員可以選擇指定哪些應用程式或他們想要取得探索資料的應用程式類別目錄。
 
-- **深度檢查**：系統管理員可以選擇指定代理程式是否要收集 SSL/TLS 連線的 HTTP 流量 (也稱為**「深度檢查」**)。 下一節將提供更多關於此項目的詳細資訊。
+- **深度檢查**: 系統管理員可以選擇指定代理程式是否要收集 SSL/TLS 連線的 HTTP 流量 (也稱為 **「 深度檢查 」**)。 下一節將提供更多關於此項目的詳細資訊。
 
-- **同意選項**：系統管理員可以使用 Cloud App Discovery 入口網站，選擇是否要通知使用者代理程式所進行的資料收集，以及在代理程式開始收集使用者資料之前是否需要取得使用者同意。
+- **同意選項**: 系統管理員可以選擇是否要通知使用者代理程式時，所收集的資料使用 Cloud App Discovery 入口網站和代理程式開始收集使用者資料之前是否需要使用者同意。
 
-Cloud App Discovery Endpoint Agent 只會收集上列**代理程式收集的資料**一節所述資訊。
+Cloud App Discovery 端點代理程式只會收集的資訊中所述 **代理程式收集資料** 如上一節。
 
 
 ### 攔截來自加密連線的資料 (深度檢查)
-
-如先前所述，系統管理員可以設定代理程式，監視來自加密連線的資料 (「深度檢查」)。 TLS ([傳輸層安全性](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) 今天是其中一個最常見的通訊協定在網際網路上使用。 藉由使用 TLS 加密通訊，用戶端可以建立與 Web 伺服器之間安全且私人的通訊通道；TLS 為傳遞驗證認證提供基本保護，防止機密資訊遭到洩漏。
+如先前所述，系統管理員可以設定代理程式，監視來自加密連線的資料 (「深度檢查」)。 TLS ([傳輸層安全性](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) 現在是其中一個最常見的通訊協定在網際網路上使用。 藉由使用 TLS 加密通訊，用戶端可以建立與 Web 伺服器之間安全且私人的通訊通道；TLS 為傳遞驗證認證提供基本保護，防止機密資訊遭到洩漏。
 
 雖然透過 TLS 提供的端對端安全加密通道能夠啟用重要的安全性和隱私權保護，但是通訊協定通常會基於惡意或邪惡目的而遭到濫用。 事實上，這導致人們常將 TLS 稱作「略過防火牆的通用通訊協定」。 問題根源是因為應用程式層級的資料是使用 SSL 來加密，所以大部分的防火牆都無法檢查 TLS 通訊。 知道這一點之後，攻擊者通常會利用 TLS 來傳遞惡意承載給確信即使是最高程度的智慧型應用程式層防火牆，對於 TLS 也會完全視而不見，而且必須只在主機之間轉送 TLS 通訊的使用者。 使用者經常會利用 TLS 來略過其公司防火牆和 Proxy 伺服器強制執行的存取控制，使用它連線到公用 Proxy，以及透過可能遭到原則封鎖的防火牆來打開非 TLS通訊協定的通道。
 
@@ -156,14 +154,12 @@ Cloud App Discovery Endpoint Agent 只會收集上列**代理程式收集的資�
 藉由啟用深度檢查，Cloud App Discovery Endpoint Agent 可以解密並檢查 TLS 加密的通訊，讓服務能夠減少雜訊，並提供有關加密雲端應用程式使用方式的深入見解。
 
 #### 特別注意事項
-
 開啟深度檢查之前，強烈建議您與法務和 HR 部門溝通您的想法，並取得他們的同意。 原因很明顯，要檢查使用者的私人加密通訊是非常敏感的話題。 在首度實際執行深度檢查之前，請確定您公司的安全性及可接受的使用原則已更新，表示將檢查加密的通訊。 如果您設定 Cloud App Discovery 來監視使用者，則可能也需要進行使用者通知，並免除為被視為機密的網站 (例如，銀行和醫療網站)。 如上所述，系統管理員可以使用 Cloud App Discovery 入口網站，選擇是否要通知使用者代理程式所進行的資料收集，以及在代理程式開始收集使用者資料之前是否需要取得使用者同意。
 
 ### 已知的問題與缺點
-
 以下是一些 TLS 攔截可能會對使用者經驗產生影響的案例：
 
-- 延伸驗證 (EV) 憑證會將 Web 瀏覽器的網址列呈現為綠色，以做為您正在瀏覽信任網站的視覺提示。 TLS 檢查無法複製發行給用戶端之憑證中的 EV，因此使用 EV 憑證的網站雖然會正常運作，但網址列不會顯示綠色。
+- 延伸驗證 (EV) 憑證會將 Web 瀏覽器的網址列呈現為綠色，以做為您正在瀏覽信任網站的視覺提示。 TLS 檢查無法複製發行給用戶端之憑證中的 EV，因此使用 EV 憑證的網站雖然會正常運作，但網址列不會顯示綠色。　  
 
 - 公開金鑰關聯 (又稱為憑證關聯) 的設計是為了協助保護使用者，以免受到攔截式攻擊和惡意憑證授權單位的攻擊。 當適用於已釘選網站的根憑證不符合已知良好 CA 的其中一個根憑證時，瀏覽器就會拒絕連線並產生錯誤。 事實上，由於 TLS 攔截是一種攔截，因此這些連線將會失敗。
 
@@ -176,14 +172,14 @@ Cloud App Discovery Endpoint Agent 只會收集上列**代理程式收集的資�
 
 代理程式收集中繼資料之後，最多會在電腦上快取一分鐘，或快取的資料達到 5 MB 的大小為止。 然後中繼資料會經過壓縮並透過安全連線傳送到 Cloud App Discovery 服務。
 
-如果代理程式無法與 Cloud App Discovery 服務，因為任何原因，只能存取有權限的使用者 (例如 Administrators 群組) 上的本機檔案快取中儲存收集的中繼資料。 <br>
+如果代理程式因為任何原因無法與 Cloud App Discovery 服務通訊，收集的中繼資料會儲存在只能由電腦上授權的使用者 (例如 Administrators 群組) 存取的本機檔案快取。 <br>
 代理程式會自動嘗試重新傳送快取的中繼資料，直到它已順利收到為止 Cloud App Discovery 服務。
 
 
 
 ## 在服務端接收資料
 
-代理程式向 Cloud App Discovery 上述服務使用電腦特定的用戶端驗證憑證，並透過加密通道轉送資料。 <br>
+代理程式會使用上述電腦特定的用戶端驗證憑證向 Cloud App Discovery 服務進行驗證，並且透過加密通道轉送資料。 <br>
 Cloud App Discovery 服務的分析管線分別處理中繼資料為每個客戶以邏輯方式分割分析管線的所有階段管線。
 分析過的中繼資料會在入口網站中產生各種報告。
 
@@ -192,8 +188,9 @@ Cloud App Discovery 服務的分析管線分別處理中繼資料為每個客戶
 
 ## 使用 Azure 入口網站存取資料
 
-在努力讓收集的中繼資料的安全，預設只有租用戶的全域系統管理員可以存取的 Cloud App Discovery 功能在 Azure 入口網站。 <br>
+為了保護所收集的中繼資料的安全，預設只有租用戶的全域系統管理員才能存取 Azure 入口網站的 Cloud App Discovery 功能。 <br>
 不過，系統管理員可以選擇委派此存取權給其他使用者或群組。
+
 
 
 > [AZURE.NOTE] 如需詳細資訊，請參閱 [開始使用 Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
@@ -207,8 +204,4 @@ Cloud App Discovery 服務的分析管線分別處理中繼資料為每個客戶
 
 
 * [如何探索組織內使用未經批准的雲端應用程式](active-directory-cloudappdiscovery-whatis.md)
-
-
-
-
 

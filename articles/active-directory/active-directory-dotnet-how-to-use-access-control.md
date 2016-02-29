@@ -19,8 +19,8 @@
 
 
 
-
 # 如何利用 Azure Active Directory 存取控制來驗證 Web 使用者
+
 
 本指南說明如何使用 Azure Active Directory 存取控制 (也稱為存取控制服務或 ACS)，在使用者嘗試取得 Web 應用程式的存取權時，從身分識別提供者 (例如 Microsoft、Google、Yahoo 和 Facebook) 驗證使用者。
 
@@ -39,7 +39,7 @@
 -   允許系統管理員存取 ACS 管理入口網站
     設定檔。
 
-如需 ACS 的詳細資訊，請參閱 [[存取控制服務 2.0]][]。
+如需 ACS 的詳細資訊，請參閱 [存取控制服務 2.0][]。
 
 ## 概念
 
@@ -48,19 +48,19 @@ ACS 是以宣告式身分識別為原則來打造，後者是為內部部署上�
 若要完成本指南中的工作，您應該了解本指南中使用的下列術語及概念：
 
 
-**用戶端** - 嘗試存取您 Web 應用程式的瀏覽器。
+**用戶端** -嘗試存取您 web 應用程式的瀏覽器。
 
-**信賴憑證者 (RP) 應用程式** - 您的 Web 應用程式。 RP 應用程式是一個將驗證工作交給外部授權單位負責的網站或服務。 以身分識別的行話來說，就是 RP 信任該授權單位。 本指南將說明如何設定您的應用程式來信任 ACS。
+**信賴憑證者 (rp) 應用程式** -web 應用程式。 RP 應用程式是一個將驗證工作交給外部授權單位負責的網站或服務。 以身分識別的行話來說，就是 RP 信任該授權單位。 本指南將說明如何將您的應用程式設定為信任 ACS。
 
-**權杖** - 使用者需要取得 RP 應用程式的存取權時，需出示由 RP 應用程式信任的授權單位所簽發的有效權杖。 這是一組當用戶端經過驗證時所簽發的安全性資料。 其包含一組宣告，也就是經驗證之使用者的屬性，例如使用者的名稱或年紀，或使用者角色的識別碼。 權杖是以數位方式受到簽署，因此要識別其簽發者可以，但要變更其內容則不行。
+**語彙基元** -使用者需要取得 RP 應用程式的存取由 RP 應用程式信任的授權單位所發出的有效權杖。 這是一組當用戶端經過驗證時所簽發的安全性資料。 其包含一組宣告，也就是經驗證之使用者的屬性，例如使用者的名稱或年紀，或使用者角色的識別碼。 權杖是以數位方式受到簽署，因此要識別其簽發者可以，但要變更其內容則不行。
 
 **身分識別提供者 (IP)** -一個負責驗證使用者身分識別並簽發安全性權杖，例如 Microsoft 帳戶 (Windows Live ID)、 Facebook、 Google、 Twitter 和 Active Directory 授權單位的。 當 ACS 是設定成信任某個 IP 時，它會接受並驗證該 IP 所簽發的權杖。 因為 ACS 可以信任多個 Ip，在此同時，當您的應用程式信任 ACS 時，您可以您的應用程式可以提供使用者的任何 Ip 代表您信任的 ACS 驗證選項。
 
-**同盟提供者 (FP)** - 身分識別提供者 (IP) 直接有使用者的資料，並會使用使用者的認證來驗證使用者，以及簽發關於使用者身分的宣告。 同盟提供者 (FP) 則是不同種類的授權單位。 FP 不會直接驗證使用者，而是當驗證的代理人。 它會擔任信賴憑證者應用程式與一個或多個 IP 之間的媒介。 ACS 就是一種同盟提供者 (FP)。
+**同盟提供者 (FP)** -身分識別提供者 (Ip) 直接有使用者、 驗證使用者使用其認證，和發行有關使用者的宣告。 同盟提供者 (FP) 則是不同種類的授權單位。 FP 不會直接驗證使用者，而是當驗證的代理人。 它會擔任信賴憑證者應用程式與一個或多個 IP 之間的媒介。 ACS 就是一種同盟提供者 (FP)。
 
-**ACS 規則引擎** - 宣告轉換規則會將信任的 IP 所簽發之權杖中的宣告，轉換成可供 RP 使用。 ACS 包含一個規則引擎會套用您為 RP 指定的宣告轉換規則。
+**ACS 規則引擎** -宣告轉換規則將轉換權杖中的宣告從信任的 Ip 成可供 RP。 ACS 包含一個規則引擎會套用您為 RP 指定的宣告轉換規則。
 
-**存取控制命名空間** - 提供在您的應用程式內定址 ACS 資源的唯一範圍。 命名空間包含您的設定 (例如您信任的 IP、您要供應的 RP 應用程式、您要對傳入之權杖套用的規則)，而且它會顯示應用程式和開發人員用來與 ACS 通訊的端點。
+**存取控制命名空間** -提供您的應用程式內定址 ACS 資源的唯一範圍。 命名空間包含您的設定 (例如您信任的 IP、您要供應的 RP 應用程式、您要對傳入之權杖套用的規則)，而且它會顯示應用程式和開發人員用來與 ACS 通訊的端點。
 
 下圖顯示 ACS 驗證與 Web 應用程式如何搭配運作：
 
@@ -84,11 +84,12 @@ ACS 是以宣告式身分識別為原則來打造，後者是為內部部署上�
 
 ## 必要條件
 
+
 若要完成本指南中的工作，您需要有下列項目：
 
 -   Azure 訂閱
 -   Microsoft Visual Studio 2012
--   識別和存取工具的 Visual Studio 2012 (若要下載，請參閱 [身分識別和存取工具][])
+-   識別和存取工具的 Visual Studio 2012 (若要下載，請參閱 [身分識別與存取工具][])
 
 
 ## 建立存取控制命名空間
@@ -96,19 +97,19 @@ ACS 是以宣告式身分識別為原則來打造，後者是為內部部署上�
 若要使用 Azure 中的 Active Directory 存取控制，請建立存取控制命名空間。 命名空間可提供在您的應用程式內
 在應用程式內定址 ACS 資源。
 
-1.  登入 [Azure 管理入口網站的 []][] (https://manage.WindowsAzure.com)。
+1.  登入 [Azure 管理入口網站][] (https://manage.WindowsAzure.com)。
 
-2.  按一下 [Active Directory]****。
+2.  按一下 [ **Active Directory**。  
 
     ![][1]
 
-3.  若要建立新的存取控制命名空間，請按一下 [新增]****。 如此會選取 [App Services]**** 及 [存取控制]****。 按一下 [快速建立]****。
+3.  若要建立新的存取控制命名空間，請按一下 [ **新增**。 **應用程式服務** 和 **存取控制** 會選取。 按一下 [ **快速建立**。
 
     ![][2]
 
 4.  輸入命名空間的名稱。 Azure 會確認名稱是否具唯一性。
 
-5.  選取使用命名空間的地區。 為了獲得最佳效能，請使用您要在其中部署應用程式的地區，然後按一下 [建立]****。
+5.  選取使用命名空間的地區。 為了達到最佳效能，使用的地區，您要部署應用程式，然後按一下 **建立**。
 
 Azure 即會建立並啟動命名空間。
 
@@ -117,15 +118,15 @@ Azure 即會建立並啟動命名空間。
 在此步驟中，您將建立 ASP.NET MVC 應用程式。 在後面的步驟中，我們會將這個簡易 Web 表單應用程式與 ACS 整合。
 
 1.  啟動 Visual Studio 2012 或 Visual Studio Express for Web 2012 (舊版 Visual Studio 將不適用於這個教學課程)。
-1.  按一下 [檔案]****，然後按一下 [新增專案]****。
-1.  選取 Visual C#/Web 範本，然後選取 [ASP.NET MVC 4 Web 應用程式]****。
+1.  按一下 [ **檔案**, ，然後按一下 [ **新的專案**。
+1.  選取 Visual C# /web 範本，然後選取 **ASP.NET MVC 4 Web 應用程式**。
 
     在本指南中，我們將使用 MVC 應用程式，但是您可以使用任何類型的 Web 應用程式進行此工作。
 
     ![][3]
 
-1. 在 [名稱]**** 中，輸入 **MvcACS**，然後按一下 [確定]****。
-1. 在下一個對話方塊中，選取 [網際網路應用程式]****，然後按一下 [確定]****。
+1. 在 **名稱**, ，型別 **MvcACS**, ，然後按一下 [ **確定**。
+1. 在下一步] 對話方塊中，選取 **網際網路應用程式**, ，然後按一下 [ **確定**。
 1. 編輯 *Views\Shared\_LoginPartial.cshtml* 檔案，並以下列程式碼取代內容:
 
         @if (Request.IsAuthenticated)
@@ -152,7 +153,6 @@ Azure 即會建立並啟動命名空間。
             </ul>
         }
 
-
 目前，ACS 並未設定 User.Identity.Name，所以我們需要進行上述變更。
 
 1. 按 F5 執行應用程式。 預設的 ASP.NET MVC 應用程式隨即出現在您的網頁瀏覽器中。
@@ -161,17 +161,17 @@ Azure 即會建立並啟動命名空間。
 
 在此工作中，您將整合 ASP.NET Web 應用程式與 ACS。
 
-1.  在 [方案總管] 中以滑鼠右鍵按一下 MvcACS 專案，然後選取 [Identity and Access]****。
+1.  在 [方案總管] 中，以滑鼠右鍵按一下 MvcACS 專案，然後 **身分識別與存取**。
 
-    如果 [Identity and Access]**** 選項未出現在內容功能表上，請安裝 Identity and Access Tool。 如需資訊，請參閱 [身分識別和存取工具]。
+    如果 **身分識別與存取** 選項未出現在內容功能表上，安裝識別和存取工具。 如需資訊，請參閱 [Identity and Access Tool]。
 
     ![][4]
 
-2.  在 [提供者]**** 索引標籤上，選取 [使用 Azure Access Control Service]****。
+2.  在 **提供者** 索引標籤上，選取 **使用 Azure 存取控制服務**。
 
     ![][44]
 
-3.  按一下 [設定]**** 連結。
+3.  按一下 [ **設定** 連結。
 
     ![][444]
 
@@ -179,25 +179,25 @@ Azure 即會建立並啟動命名空間。
 
     ![][17]
 
-4.  在 Azure 管理入口網站中，按一下存取控制命名空間，然後按一下 [管理]****。
+4.  在 Azure 管理入口網站中，按一下存取控制命名空間，然後按一下 [ **管理**。
 
     ![][8]
 
-5.  按一下 [Management Service]****，然後按一下 [Management Client]****。
+5.  按一下 [ **管理服務** 然後按一下 [ **管理用戶端**。
 
     ![][18]
 
-6.  按一下 [對稱金鑰]****、再按一下 [Show Key]****，然後複製金鑰值。 然後，按一下 [取消]**** 以結束 [Edit Management Client] 頁面，而不進行變更。
+6.  按一下 [ **對稱金鑰**, ，按一下 [ **Show Key**, ，然後複製金鑰值。 然後按一下 [ **取消** 結束 [Edit Management Client] 頁面，而不進行變更。
 
     ![][19]
 
-7.  在 Visual Studio 中，將金鑰貼入 [Enter the Management Key for the namespace]**** 欄位、按一下 [Save management key]****，然後按一下 [確定]****。
+7.  在 Visual Studio 中，貼上的索引鍵 **輸入命名空間的管理金鑰** 欄位，然後按一下 **儲存管理金鑰**, ，然後按一下 [ **確定**。
 
     ![][20]
 
     Visual Studio 會使用命名空間的相關資訊，來連線至 ACS 管理入口網站，並取得命名空間的設定，包括身分識別提供者、領域及傳回 URL。
 
-8.  選取 [Windows Live ID]**** (Microsoft 帳戶)，並按一下 [確定]。
+8.  選取 **Windows Live ID** (Microsoft 帳戶)，按一下 [確定]。
 
     ![][5]
 
@@ -215,31 +215,30 @@ Azure 即會建立並啟動命名空間。
 
 ## 檢視 ACS 所傳送的宣告
 
-在本節中，我們將修改應用程式來檢視 ACS 所傳送的宣告。 Identity and Access 工具已建立一個規則群組，此規則群組會掃過所有從該 IP 傳遞至您應用程式的宣告。 請注意，不同的身分識別提供者會傳送不同的宣告。
+在本節中，我們將修改應用程式來檢視 ACS 所傳送的宣告。  Identity and Access 工具已建立一個規則群組，此規則群組會掃過所有從該 IP 傳遞至您應用程式的宣告。  請注意，不同的身分識別提供者會傳送不同的宣告。
 
-1. 開啟 *Controllers\HomeController.cs* 檔案。 對 **System.Threading** 新增 **using** 陳述式：
+1. 開啟 *controllers\ homecontroller.cs* 檔案。 新增 **使用** 陳述式 **System.Threading**:
 
     using System.Threading;
 
-1. 在 HomeController 類別中，新增 *Claims* 方法：
+1. 在 HomeController 類別中，新增 *宣告* 方法:
 
- public ActionResult Claims()
- {
-     ViewBag.Message ="您宣告網頁。 」。
+    public ActionResult Claims()
+    {
+        ViewBag.Message ="您宣告網頁。 」。
 
-     ViewBag.ClaimsIdentity = Thread.CurrentPrincipal.Identity;
-    
-     return View();
+        ViewBag.ClaimsIdentity = Thread.CurrentPrincipal.Identity;
 
- }
+        return View();
+    }
 
-1. 在 *Claims* 方法上按一下滑鼠右鍵並選取 [加入檢視]****。
+1. 以滑鼠右鍵按一下 *宣告* 方法，然後選取 **加入檢視**。
 
 ![][66]
 
-1. 按一下 [新增]****。
+1. 按一下 [ **新增**。
 
-1. 以下列程式碼取代 *Views\Home\Claims.cshtml* 檔案的內容：
+1. 內容取代 *Views\Home\Claims.cshtml* 以下列程式碼檔案:
 
         @{
             ViewBag.Title = "Claims";
@@ -289,7 +288,7 @@ Azure 即會建立並啟動命名空間。
         }
         </table>
 
-1. 執行應用程式並瀏覽到 *Claims* 方法：
+1. 執行應用程式，並瀏覽至 *宣告* 方法:
 
 ![][666]
 
@@ -305,21 +304,23 @@ Visual Studio 中的 Identity and Access Tool 會自動將您的應用程式與 
 
 1.  登入 Windows [Azure 管理入口網站](http://manage.WindowsAzure.com)。
 
-2.  按一下 [Active Directory]****。
+2.  按一下 [ **Active Directory**。
 
     ![][8]
 
-3.  選取存取控制命名空間，然後按一下 [管理]****。 此動作會開啟 ACS 管理入口網站。
+3.  選取存取控制命名空間，然後按一下 **管理**。 此動作會開啟 ACS 管理入口網站。
 
     ![][9]
 
-4.  按一下 [Relying party applications]****。
+
+4.  按一下 [ **信賴憑證者合作對象應用程式**。
 
     新的 MvcACS 應用程式隨即出現在信賴憑證者應用程式清單中。 領域會自動設為應用程式主頁面。
 
     ![][10]
 
-5.  按一下 [MvcACS]****。
+
+5.  按一下 [ **MvcACS**。
 
     [Edit Relying Party Application] 頁面包含 MvcACS Web 應用程式的組態設定。 當您變更並儲存此頁面上的設定時，變更會立即套用到應用程式。
 
@@ -335,11 +336,11 @@ Visual Studio 中的 Identity and Access Tool 會自動將您的應用程式與 
 
 讓我們使用 ACS 管理入口網站來變更 MvcACS 應用程式的驗證。 在此範例中，我們將新增 Google 作為 MvcACS 的身分識別提供者。
 
-1.  按一下 [識別提供者]**** (在導覽功能表中)，然後按一下 [新增]****。
+1.  按一下 [ **身分識別提供者** (在導覽功能表中)，然後按一下 **新增**。
 
     ![][13]
 
-2.  按一下 [Google]****，然後按 [下一步]****。 預設已選取 MvcACS 應用程式核取方塊。
+2.  按一下 [ **Google** 然後按一下 [ **下一步**。 預設已選取 MvcACS 應用程式核取方塊。
 
     ![][14]
 
@@ -348,7 +349,7 @@ Visual Studio 中的 Identity and Access Tool 會自動將您的應用程式與 
     ![][15]
 
 
-完成！ 如果您回到 Visual Studio、開啟 MvcACS 應用程式的專案，然後按一下 [Identity and Access]****，則工具會同時列出 Windows Live ID 與 Google 身分識別提供者。
+完成！ 如果您回到 Visual Studio、 開啟 MvcACS 應用程式的專案，然後按一下 **身分識別與存取**, ，則工具會列出 Windows Live ID 與 Google 身分識別提供者。  
 
 ![][16]
 
@@ -366,49 +367,50 @@ Visual Studio 中的 Identity and Access Tool 會自動將您的應用程式與 
 
 您也可以新增規則至命名空間，來決定哪些宣告會傳送至應用程式以依應用程式商務邏輯進行處理。
 
-若要進一步探索 ACS 功能及試試其他案例，請參閱 [存取控制服務 2.0]。
+若要進一步探索 ACS 功能及試試其他案例，請參閱 [Access Control Service 2.0]。
 
 
 
+  [What is ACS?]: #what-is
+  [Concepts]: #concepts
+  [Prerequisites]: #pre
+  [Create an ASP.NET MVC Application]: #create-web-app
+  [Create an Access Control Namespace]: #create-namespace
+  [Integrate your Web Application with ACS]: #Identity-Access
+  [Test the Integration with ACS]: #Test-ACS
+  [View the Application in the ACS Management Portal]: acs-portal
+  [Add an Identity Provider]: #add-IP
+  [What's Next]: #whats-next
+  [vcsb]: #bkmk_viewClaims
+  [vpp]: #bkmk_VP
 
-[what is acs?]: #what-is 
-[concepts]: #concepts 
-[prerequisites]: #pre 
-[create an asp.net mvc application]: #create-web-app 
-[create an access control namespace]: #create-namespace 
-[integrate your web application with acs]: #Identity-Access 
-[test the integration with acs]: #Test-ACS 
-[view the application in the acs management portal]: acs-portal 
-[add an identity provider]: #add-IP 
-[what's next]: #whats-next 
-[vcsb]: #bkmk_viewClaims 
-[vpp]: #bkmk_VP 
-[access control service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360 
-[identity and access tool]: http://go.microsoft.com/fwlink/?LinkID=245849 
-[azure management portal]: http://manage.WindowsAzure.com 
-[0]: ./media/active-directory-dotnet-how-to-use-access-control/acs-01.png 
-[1]: ./media/active-directory-dotnet-how-to-use-access-control/acsCreateNamespace.png 
-[2]: ./media/active-directory-dotnet-how-to-use-access-control/acsQuickCreate.png 
-[3]: ./media/active-directory-dotnet-how-to-use-access-control/rzMvc.png 
-[4]: ./media/active-directory-dotnet-how-to-use-access-control/rzIA.png 
-[44]: ./media/active-directory-dotnet-how-to-use-access-control/rzPT.png 
-[444]: ./media/active-directory-dotnet-how-to-use-access-control/rzC.png 
-[5]: ./media/active-directory-dotnet-how-to-use-access-control/acsIdAndAccess1.png 
-[6]: ./media/active-directory-dotnet-how-to-use-access-control/acsMSFTAcct.png 
-[66]: ./media/active-directory-dotnet-how-to-use-access-control/rzAv.png 
-[666]: ./media/active-directory-dotnet-how-to-use-access-control/rzCl.png 
-[7]: ./media/active-directory-dotnet-how-to-use-access-control/acsSignIn.png 
-[8]: ./media/active-directory-dotnet-how-to-use-access-control/acsClickManage.png 
-[9]: ./media/active-directory-dotnet-how-to-use-access-control/acsACSPortal.png 
-[10]: ./media/active-directory-dotnet-how-to-use-access-control/acsRPPage.png 
-[11]: ./media/active-directory-dotnet-how-to-use-access-control/acsEdit-RP.png 
-[12]: ./media/active-directory-dotnet-how-to-use-access-control/acsEdit-RP2.png 
-[13]: ./media/active-directory-dotnet-how-to-use-access-control/acsAdd-Idp.png 
-[14]: ./media/active-directory-dotnet-how-to-use-access-control/acsAdd-Google.png 
-[15]: ./media/active-directory-dotnet-how-to-use-access-control/acsSave-Google.png 
-[16]: ./media/active-directory-dotnet-how-to-use-access-control/acsIdAndA-after.png 
-[17]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace.png 
-[18]: ./media/active-directory-dotnet-how-to-use-access-control/acsManagementService.png 
-[19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png 
-[20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png 
+  [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
+  [Identity and Access Tool]: http://go.microsoft.com/fwlink/?LinkID=245849
+  [Azure Management Portal]: http://manage.WindowsAzure.com
+
+  [0]: ./media/active-directory-dotnet-how-to-use-access-control/acs-01.png
+  [1]: ./media/active-directory-dotnet-how-to-use-access-control/acsCreateNamespace.png
+  [2]: ./media/active-directory-dotnet-how-to-use-access-control/acsQuickCreate.png
+  [3]: ./media/active-directory-dotnet-how-to-use-access-control/rzMvc.png
+  [4]: ./media/active-directory-dotnet-how-to-use-access-control/rzIA.png
+[44]: ./media/active-directory-dotnet-how-to-use-access-control/rzPT.png
+ [444]: ./media/active-directory-dotnet-how-to-use-access-control/rzC.png
+  [5]: ./media/active-directory-dotnet-how-to-use-access-control/acsIdAndAccess1.png
+  [6]: ./media/active-directory-dotnet-how-to-use-access-control/acsMSFTAcct.png
+  [66]: ./media/active-directory-dotnet-how-to-use-access-control/rzAv.png
+  [666]: ./media/active-directory-dotnet-how-to-use-access-control/rzCl.png
+  [7]: ./media/active-directory-dotnet-how-to-use-access-control/acsSignIn.png
+  [8]: ./media/active-directory-dotnet-how-to-use-access-control/acsClickManage.png
+  [9]: ./media/active-directory-dotnet-how-to-use-access-control/acsACSPortal.png
+  [10]: ./media/active-directory-dotnet-how-to-use-access-control/acsRPPage.png
+  [11]: ./media/active-directory-dotnet-how-to-use-access-control/acsEdit-RP.png
+  [12]: ./media/active-directory-dotnet-how-to-use-access-control/acsEdit-RP2.png
+  [13]: ./media/active-directory-dotnet-how-to-use-access-control/acsAdd-Idp.png
+  [14]: ./media/active-directory-dotnet-how-to-use-access-control/acsAdd-Google.png
+  [15]: ./media/active-directory-dotnet-how-to-use-access-control/acsSave-Google.png
+  [16]: ./media/active-directory-dotnet-how-to-use-access-control/acsIdAndA-after.png
+  [17]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace.png
+  [18]: ./media/active-directory-dotnet-how-to-use-access-control/acsManagementService.png
+  [19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png
+  [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
 

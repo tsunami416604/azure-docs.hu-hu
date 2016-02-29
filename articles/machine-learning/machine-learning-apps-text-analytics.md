@@ -1,6 +1,6 @@
 <properties
     pageTitle="機器學習 API：文字分析 | Microsoft Azure"
-    description="Azure Machine Learning 提供的文字分析 API。此 API 可用來分析情緒分析、關鍵片語擷取及語言偵測的非結構化文字。"
+    description="Azure Machine Learning 提供的文字分析 API。 此 API 可用來分析情緒分析、關鍵片語擷取及語言偵測的非結構化文字。"
     services="machine-learning"
     documentationCenter=""
     authors="onewth"
@@ -17,34 +17,31 @@
     ms.author="onewth"/>
 
 
-
 # 機器學習 API：情感文字分析、關鍵片語擷取及語言偵測
 
 ## 概觀
 
-文字分析 API 是一套的文字分析 [web 服務](https://datamarket.azure.com/dataset/amla/text-analytics) 搭配 Azure Machine Learning 建置。 此 API 可用來分析工作的非結構化文字，例如情感分析、關鍵片語擷取及語言偵測。 使用此 API 不需要任何訓練資料，只要將文字資料帶入即可。 此 API 使用進階的自然語言處理技術來提供最佳預測。
+文字分析 API 是一套的文字分析 [web 服務]( https://datamarket.azure.com/dataset/amla/text-analytics) 搭配 Azure Machine Learning 建置。 此 API 可用來分析工作的非結構化文字，例如情感分析、關鍵片語擷取及語言偵測。 使用此 API 不需要任何訓練資料，只要將文字資料帶入即可。 此 API 使用進階的自然語言處理技術來提供最佳預測。
 
 您可以看到作用中的文字分析我們 [示範網站](https://text-analytics-demo.azurewebsites.net/), ，其中您也可以找到 [範例](https://text-analytics-demo.azurewebsites.net/Home/SampleCode) 如何實作在 C# 和 Python 中的文字分析。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)] 
 
 ---
 
-
 ## 情感分析
 
-API 會傳回一個 0 到 1 之間的分數。接近 1 的分數表示正面的情感，而接近 0 的分數則表示負面的情感。情感分數使用分類技術產生。輸入分類器的特徵包括 n-grams、從 part-of-speech 標記產生的特徵以及字詞內嵌。目前，英文是唯一支援的語言。
-
+API 會傳回一個 0 到 1 之間的分數。 接近 1 的分數表示正面的情感，而接近 0 的分數則表示負面的情感。 情感分數使用分類技術產生。 輸入分類器的特徵包括 n-grams、從 part-of-speech 標記產生的特徵以及字詞內嵌。 目前，英文是唯一支援的語言。
+ 
 ## 關鍵片語擷取
 
 API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的技術來自 Microsoft Office 複雜的自然語言處理工具組。 目前，英文是唯一支援的語言。
 
 ## 語言偵測
 
-此 API 會傳回偵測到的語言和 0 到 1 之間的分數。接近 1 的分數表示 100% 確定已識別的語言為真實。總共支援 120 種語言。
+此 API 會傳回偵測到的語言和 0 到 1 之間的分數。 接近 1 的分數表示 100% 確定已識別的語言為真實。 總共支援 120 種語言。
 
 ---
-
 
 ## API 定義
 
@@ -54,19 +51,18 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
 
     Authorization: Basic <creds>
     Accept: application/json
-    
+               
     Where <creds> = ConvertToBase64(“AccountKey:” + yourActualAccountKey);  
 
-您可以從您的帳戶中找到您的帳戶金鑰 [Azure 資料市場](https://datamarket.azure.com/account/keys)。
+您可以從您的帳戶中找到您的帳戶金鑰 [Azure 資料市場](https://datamarket.azure.com/account/keys)。 
 
 ---
-
 
 ## 單一回應 API
 
 ### GetSentiment
 
-**URL**
+**URL** 
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentiment
 
@@ -84,7 +80,6 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
     }
 
 ---
-
 
 ### GetKeyPhrases
 
@@ -109,9 +104,8 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
         "friendly staff"
       ]
     }
-
+ 
 ---
-
 
 ### GetLanguage
 
@@ -121,7 +115,7 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
 
 **範例要求**
 
-在下面的 GET 呼叫中，我們要求 *Hello World* 這段文字中關鍵片語的情緒
+在下面的 GET 呼叫中，我們要求文字中關鍵片語的情感 *Hello World*
 
     GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguages?
     Text=Hello+World
@@ -139,21 +133,20 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
 
 **選擇性參數**
 
-`NumberOfLanguagesToDetect` 是選擇性的參數。 預設值為 1。
+`NumberOfLanguagesToDetect` 是選擇性參數。 預設值為 1。
 
 ---
-
 
 ## Batch API
 
 文字分析服務可讓您以 Batch 模式執行情感和關鍵片語的擷取。 請注意，每一筆評分記錄都是一個交易。 例如，如果您在單一呼叫中要求 1000 筆記錄的情緒，則會扣除 1000 個交易。
 
-請注意，在系統中輸入的識別碼是由系統傳回的識別碼。 Web 服務不會檢查這些是否為唯一的識別碼。 呼叫端必須負責驗證唯一性。
+請注意，在系統中輸入的識別碼是由系統傳回的識別碼。 Web 服務不會檢查這些是否為唯一的識別碼。 呼叫端必須負責驗證唯一性。 
 
 
 ### GetSentimentBatch
 
-**URL**
+**URL** 
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentimentBatch
 
@@ -185,8 +178,8 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
       "Errors":[]
     }
 
----
 
+---
 
 ### GetKeyPhrasesBatch
 
@@ -196,7 +189,7 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
 
 **範例要求**
 
-在此範例，我們要求下列文字中關鍵片語的情緒清單：
+在此範例，我們要求下列文字中關鍵片語的情緒清單： 
 
 * "It was a wonderful hotel to stay at, with unique decor and friendly staff"
 * "It was an amazing build conference, with very interesting talks"
@@ -228,7 +221,6 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
     }
 
 ---
-
 
 ### GetLanguageBatch
 
@@ -268,6 +260,4 @@ API 會傳回輸入文字中代表說話重點的字串清單。 我們採用的
        }],
        "Errors": []
     }
-
-
 

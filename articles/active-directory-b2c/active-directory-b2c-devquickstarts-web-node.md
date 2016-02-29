@@ -16,15 +16,16 @@
     ms.date="09/22/2015"
     ms.author="brandwe"/>
 
-
 # B2C 預覽：將登入功能加入至 nodeJS Web 應用程式
 
+
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+
 > [AZURE.NOTE]
-    本文不涵蓋如何使用 Azure AD B2C 實作登入、註冊和管理設定檔。 而會著重在如何在使用者已通過驗證後呼叫 Web API。
+    本文不涵蓋如何使用 Azure AD B2C 實作登入、註冊和管理設定檔。  而會著重在如何在使用者已通過驗證後呼叫 Web API。
 如果您還沒有這麼做，您應該開始 [.NET Web 應用程式快速入門教學課程](active-directory-b2c-devquickstarts-web-dotnet.md) 來了解 Azure AD B2C 的基本概念。
 
-**Passport** 是 Node.js 的驗證中介軟體。 您可以暗中將極具彈性且模組化的 Passport 放入任何 Express 或 Resitify Web 應用程式。 一組完整的策略可支援使用使用者名稱和密碼、Facebook、Twitter 及其他等驗證。 我們已為 Microsoft Azure Active Directory 開發一項策略。 我們會安裝此模組，然後新增 Microsoft Azure Active Directory `passport azure ad` 外掛程式。
+**Passport** 是 Node.js 的驗證中介軟體。 您可以暗中將極具彈性且模組化的 Passport 放入任何 Express 或 Resitify Web 應用程式。 一組完整的策略可支援使用使用者名稱和密碼、Facebook、Twitter 及其他等驗證。 我們已為 Microsoft Azure Active Directory 開發一項策略。 我們將安裝此模組，然後加入 Microsoft Azure Active Directory `passport-azure-ad` 外掛程式。
 
 若要執行此作業，您需要執行下列動作：
 
@@ -33,45 +34,46 @@
 3. 使用 Passport，向 Azure AD 發出登入和登出要求。
 4. 列印出使用者的相關資料。
 
-本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS)。 若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) 或再製基本架構:
+本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS)。  若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) 或再製基本架構:
 
-`git 複製-分支基本架構 https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git`
+```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git```
 
 本教學課程最後也會提供完整的應用程式。
-> [AZURE.WARNING]   在我們的 B2C 預覽中，您必須對 Web-API 工作伺服器和與其連接之用戶端，使用相同的用戶端識別碼/應用程式識別碼和原則。 這適用於 iOS 及 Android 教學課程。 如果您先前已在任何一個快速入門中建立過應用程式，請直接使用那些值，無需再如下列所示建立新值。
+
+> [AZURE.WARNING]   我們 B2C 預覽您必須使用相同的用戶端識別碼/應用程式識別碼和原則，Web API 工作伺服器和用戶端連線到它。 這適用於 iOS 及 Android 教學課程。 如果您先前已在任何一個快速入門中建立過應用程式，請直接使用那些值，無需再如下列所示建立新值。
 
 ## 1.取得 Azure AD B2C 目錄
 
-您必須先建立目錄或租用戶，才可使用 Azure AD B2C。 目錄為所有使用者、應用程式、群組等項目的容器。 如果您沒有
+您必須先建立目錄或租用戶，才可使用 Azure AD B2C。  目錄為所有使用者、應用程式、群組等項目的容器。  如果您沒有
 其中一個，請移 [建立 B2C 目錄](active-directory-b2c-get-started.md) 之後再繼續。
 
 ## 2.建立應用程式
 
-您現在需要在 B2C 目錄中建立應用程式，以提供一些必要資訊給 Azure AD，讓它與應用程式安全地通訊。 在此案例中，因為用戶端應用程式和 Web API 會組成一個邏輯應用程式，所以將由單一**應用程式識別碼**表示。 若要建立應用程式
-請依照下列 [這些指示](active-directory-b2c-app-registration.md)。 請務必
+您現在需要在 B2C 目錄中建立應用程式，以提供一些必要資訊給 Azure AD，讓它與應用程式安全地通訊。  用戶端應用程式和 web API 會由單一 **應用程式識別碼** 在此情況下，因為它們組成一個邏輯應用程式。  若要建立應用程式
+請依照下列 [這些指示](active-directory-b2c-app-registration.md)。  請務必
 
-- 在應用程式中加入 **Web 應用程式/Web API**
+- 包含 **web 應用程式/web api** 應用程式中
 - 輸入 `http://localhost/TodoListService` 為 **回覆 URL** -它是此程式碼範例的預設 URL。
-- 為您的應用程式建立**應用程式密碼**，並複製起來。 稍後您將會用到此資訊。
-- 複製指派給您應用程式的**應用程式識別碼**。 稍後您也會用到此資訊。
+- 建立 **應用程式密碼** 應用程式並將它複製下來。  稍後您將會用到此資訊。
+- 複製 **應用程式識別碼** ，其指派給您的應用程式。  稍後您也會用到此資訊。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## 3.建立您的原則
 
-在 Azure AD B2C，每個使用者經驗來定義 [* * 原則 * *](active-directory-b2c-reference-policies.md)。 此應用程式包含三種 
-身分識別遇到位註冊、 登入，以及使用 Facebook 登入。 您必須建立的每個類型，一個原則中所述 
-[原則參考文件](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)。 建立您的三個原則時，請務必：
+在 Azure AD B2C，每個使用者經驗來定義 [**原則**](active-directory-b2c-reference-policies.md)。  此應用程式包含三種 
+身分識別遇到位註冊、 登入，以及使用 Facebook 登入。  您必須建立的每個類型，一個原則中所述 
+[原則參考文件](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)。  建立您的三個原則時，請務必：
 
-- 在註冊原則中，選擇 [**顯示名稱**] 和其他一些註冊屬性。
-- 在每個原則中選擇 [**顯示名稱**] 和 [**物件識別碼**] 應用程式宣告。 您也可以選擇其他宣告。
-- 建立每個原則後，請複製原則的**名稱**。 它應該會有前置詞 `b2c_1_`。 稍後您將需要這些原則名稱。
+- 選擇 **顯示名稱** 和您註冊的原則中的其他幾個註冊屬性。
+- 選擇 **顯示名稱** 和 **物件識別碼** 應用程式宣告每個原則。  您也可以選擇其他宣告。
+- 複製 **名稱** 的每個原則建立之後。  其前置詞應該為 `b2c_1_`。  稍後您將需要這些原則名稱。 
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 當您成功建立三個原則後，就可以開始建置您的應用程式。
 
-請注意，本文不會說明如何使用您剛才建立的原則。 如果您想要深入了解在 Azure AD B2C，原則的運作方式
+請注意，本文不會說明如何使用您剛才建立的原則。  如果您想要深入了解在 Azure AD B2C，原則的運作方式
 您應該開始 [.NET Web 應用程式快速入門教學課程](active-directory-b2c-devquickstarts-web-dotnet.md)。
 
 
@@ -80,38 +82,37 @@
 
 從命令列中，將目錄位置變更至根資料夾 (若目錄位置原本不在該處)，然後執行下列命令：
 
-- `npm 安裝 express`
-- `npm 安裝 ejs`
-- `npm 安裝 ejs 區域變數`
-- `npm 安裝 restify`
-- `npm 安裝 1`
-- `npm 安裝 bunyan`
-- `npm 安裝 plus 判斷提示`
-- `npm 安裝 passport`
-- `npm 安裝 webfinger`
-- `npm 安裝本文剖析器`
-- `npm 安裝 express 工作階段`
-- `npm 安裝 cookie 剖析器`
+- `npm install express`
+- `npm install ejs`
+- `npm install ejs-locals`
+- `npm install restify`
+- `npm install mongoose`
+- `npm install bunyan`
+- `npm install assert-plus`
+- `npm install passport`
+- `npm install webfinger`
+- `npm install body-parser`
+- `npm install express-session`
+- `npm install cookie-parser`
 
-- 此外，我們使用 `passport azure ad` 針對我們的快速入門的基本架構中的預覽。
+- 此外，我們在快速入門的架構中為「預覽」使用 `passport-azure-ad`。 
 
-- `npm 安裝 passport azure ad`
+- `npm install passport-azure-ad`
 
 
 如此會安裝 passport-azure-ad 做為依據的程式庫。
 
 ## 5.設定您的 App 以使用 passport-node-js 策略。
+我們將在此設定 Express 中介軟體，以使用 OpenID Connect 驗證通訊協定。  Express 將用來發出登入和登出要求、管理使用者的工作階段，以及取得使用者相關資訊等其他作業。
 
-我們將在此設定 Express 中介軟體，以使用 OpenID Connect 驗證通訊協定。 Express 將用來發出登入和登出要求、管理使用者的工作階段，以及取得使用者相關資訊等其他作業。
-
--   若要開始，請開啟 `config.js` 檔案位於專案的根目錄，並輸入您的應用程式中的組態值 `exports.creds` 一節。
-    -   `ClientID:` 是 **應用程式識別碼** 指派給您的應用程式中註冊入口網站。
-    -   `ReturnURL` 是 **重新導向 URI** 您輸入在入口網站。
-    - `TenantName:` 是 **租用戶名稱** 應用程式，例如 contoso.onmicrosoft.com
+-   若要開始，請開啟專案根目錄中的 `config.js` 檔案，並在 `exports.creds` 區段中輸入應用程式的組態值。
+    -    `clientID:` 是 **應用程式識別碼** 指派給您的應用程式中註冊入口網站。
+    -    `returnURL` 是 **重新導向 URI** 您輸入在入口網站。
+    -  `tenantName:` 是 **租用戶名稱** 應用程式，例如 contoso.onmicrosoft.com
 
 [AZURE.INCLUDE [active-directory-b2c-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-- 接著開啟 `app.js` 檔案位於專案的根目錄，並新增下列呼叫叫用 `OIDCStrategy` 隨附的策略 `passport azure ad`
+- 接下來開啟專案根中的 `app.js` 檔案，並新增下列呼叫以叫用與 `passport-azure-ad` 一併使用的 `OIDCStrategy` 策略
 
 
 ```JavaScript
@@ -161,7 +162,8 @@ passport.use(new OIDCStrategy({
   }
 ));
 ```
-Passport 所有使用類似的模式是 (Twitter、 Facebook 等) 的策略 所有的策略編寫器遵守。 查看此策略，您會看見我們將它當成 function() 來傳遞，其中含有一個 token 和一個 done 做為參數。 一旦策略完成所有工作之後，便會盡責地返回。 當它完成之後，我們會想要儲存使用者並隱藏權杖，因此我們不需再次要求它。
+Passport 會使用適用於它的所有策略 (Twitter、Facebook 等) 且所有策略寫入器都依循的類似模式。 查看此策略，您會看見我們將它當成 function() 來傳遞，其中含有一個 token 和一個 done 做為參數。 一旦策略完成所有工作之後，便會盡責地返回。 當它完成之後，我們會想要儲存使用者並隱藏權杖，因此我們不需再次要求它。
+
 > [AZURE.IMPORTANT]
 上述程式碼會讓所有使用者經歷伺服器的驗證。 這就是所謂的自動註冊。 在生產伺服器中，您想要讓所有人都必須先經歷您所決定的註冊過程。 這通常是您在取用者 App 中看到的模式，可讓您向 Facebook 註冊，但接著會要求您填寫其他資訊。 如果這不是範例應用程式，我們就只能從傳回的權杖物件中擷取電子郵件，然後要求他們填寫其他資訊。 由於這是測試伺服器，因此，我們直接將它們加入至記憶體中的資料庫。
 
@@ -198,6 +200,7 @@ var findByEmail = function(email, fn) {
   }
   return fn(null, null);
 };
+
 ```
 
 - 接下來，加入可載入 express 引擎的程式碼。 您會在此處看到我們使用 Express 所提供的預設 /views 和 /routes 模式。
@@ -224,9 +227,10 @@ app.configure(function() {
   app.use(app.router);
   app.use(express.static(__dirname + '/../../public'));
 });
+
 ```
 
-- 最後，讓我們加入實際的登入要求會遞交的張貼路由 `passport azure ad` 引擎:
+- 最後會加入 POST 路由，這會將實際的登入要求遞交至 `passport-azure-ad` 引擎：
 
 ```JavaScript
 
@@ -254,7 +258,7 @@ app.get('/auth/openid',
 app.get('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-
+    
     res.redirect('/');
   });
 
@@ -267,16 +271,16 @@ app.get('/auth/openid/return',
 app.post('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-
+    
     res.redirect('/');
   });
 ```
 
 ## 4.使用 Passport，向 Azure AD 發出登入和登出要求
 
-您的應用程式現在已正確設定，將使用 OpenID Connect 驗證通訊協定與 v2.0 端點通訊。 `passport azure ad` 已經處理所有製作驗證訊息、 驗證 Azure ad 的權杖和維護使用者工作階段的瑣碎詳細資料。 所有剩餘的部分就是為使用者提供一種方式來登入、登出，以及收集關於已登入使用者的其他資訊。
+您的應用程式現在已正確設定，將使用 OpenID Connect 驗證通訊協定與 v2.0 端點通訊。  `passport-azure-ad` 已經處理所有製作驗證訊息、 驗證 Azure ad 的權杖和維護使用者工作階段的瑣碎詳細資料。  所有剩餘的部分就是為使用者提供一種方式來登入、登出，以及收集關於已登入使用者的其他資訊。
 
-- 首先，可讓預設、 登入、 帳戶和登出將方法加入至我們 `app.js` 檔案:
+- 首先，將預設、登入、帳戶及登出方法加入 `app.js` 檔案：
 
 ```JavaScript
 
@@ -301,15 +305,17 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
 ```
 
 -   讓我們詳細檢閱這些方法：
-    -   `/` 路由將會重新導向至 index.ejs 檢視 (如果有的話)，在要求中傳送使用者
-    - `/帳戶` 路由會先 *** 確保我們驗證 *** (我們的實作如下)，然後將使用者傳遞要求中，好讓我們可以取得使用者的其他資訊。
-    - `/Login` 路由會呼叫我們的 azuread openidconnect 驗證器，從 `passport azuread` ，如果不成功會將使用者重新導向回到 /login
-    - `/Logout` 將只呼叫 logout.ejs (和路由) 的清除 cookie，然後返回使用者回 index.ejs
+    -   `/` 路由將重新導向至 index.ejs 檢視，其會在要求中傳遞使用者 (若有的話)
+    -  `/account` 路由會先 ***確保我們驗證*** (我們的實作如下)，然後將使用者傳遞要求中，好讓我們可以取得使用者的其他資訊。
+    - `/login` 路由將從 `passport-azuread` 呼叫 azuread-openidconnect 驗證器，如果失敗，則會再次將使用者重新導向至 /login
+    - `/logout` 會直接呼叫 logout.ejs (以及路由)，其會清除 Cookie，然後讓使用者返回至 index.ejs
 
-- 最後一個部分 `app.js`, ，讓我們加入 EnsureAuthenticated 方法中使用 `/帳戶` 上方。
+
+- 針對 `app.js` 的最後一個部分，加入可在上述 `/account` 中使用的 EnsureAuthenticated 方法。
 
 ```JavaScript
 
@@ -323,21 +329,23 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
 }
+
 ```
 
-- 最後，讓我們實際建立伺服器本身在 `app.js`:
+- 最後，在 `app.js` 中實際建立伺服器本身：
 
 ```JavaScript
 
 app.listen(3000);
+
 ```
 
 
 ## 5.建立快速檢視和路由以呼叫原則
 
-我們有我們 `app.js` 完成。 現在我們只需要將新增的路由和檢視，讓我們一樣也以處理呼叫登入和註冊原則 `/logout` 和 `/login` 我們建立的路由。
+我們已完成 `app.js`。 現在僅須新增路由和檢視即可，這兩者可讓我們呼叫登入與註冊原則，並處理已建立的 `/logout` 和 `/login` 路由。
 
-- 建立 `/routes/index.js` 根目錄底下的路由。
+- 在根目錄下方建立 `/routes/index.js` 路由。
 
 ```JavaScript
 
@@ -350,7 +358,7 @@ exports.index = function(req, res){
 };
 ```
 
-- 建立 `/routes/user.js` 根目錄底下的路由
+- 在根目錄下方建立 `/routes/user.js` 路由
 
 ```JavaScript
 
@@ -365,7 +373,7 @@ exports.list = function(req, res){
 
 這些簡單路由只會將要求傳遞到我們的檢視，包括使用者 (如果有的話)。
 
-- 建立 `/views/index.ejs` 的根目錄下的檢視。 這是登入和登出呼叫我們的原則，並讓我們抓取帳戶資訊的簡單網頁。 請注意，我們可以使用條件式 `如果 (! 使用者)` 為使用者要求中傳遞出去可證明我們已登入的使用者。
+- 建立 `/views/index.ejs` 的根目錄下的檢視。 這是登入和登出呼叫我們的原則，並讓我們抓取帳戶資訊的簡單網頁。 請注意，我們可以使用條件式 `if (!user)`，因為在要求中傳遞使用者就證實我們擁有已登入的使用者。
 
 ```JavaScript
 <% if (!user) { %>
@@ -380,7 +388,7 @@ exports.list = function(req, res){
 <% } %>
 ```
 
-- 建立 `/views/account.ejs` 檢視根目錄底下，讓我們可以檢視其他資訊的 `passport azuread` 已將使用者要求中。
+- 在根目錄下方建立 `/views/account.ejs` 檢視，如此即可檢視 `passport-azuread` 放置於使用者要求的其他資訊。
 
 ```Javascript
 <% if (!user) { %>
@@ -401,27 +409,32 @@ exports.list = function(req, res){
 
 最後，建置並執行您的應用程式！
 
-執行 `節點 app.js` 並瀏覽至 `http://localhost:3000/`
+執行 `node app.js` 並瀏覽至 `http://localhost:3000`
 
 
 使用電子郵件或 Facebook 註冊或登入應用程式。 登出，再以另一個使用者身分重新登入。
 
 
 
-## 後續步驟
+##後續步驟
 
 (不含您的設定值) 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip), ，或您可以從 GitHub 複製它:
 
-`git 複製-分支完成 https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git`
+```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git```
 
-您現在可以進入更進階的主題。 您可以嘗試：
+您現在可以進入更進階的主題。  您可以嘗試：
 
-[保護 Web API 與 node.js B2C 模型 >>](active-directory-b2c-devquickstarts-webapi-nodejs.md)
+[在 node.js 中使用 B2C 模型保護 Web API >>](active-directory-b2c-devquickstarts-webapi-nodejs.md)
 
+<!--
 
+如需其他資源，請參閱：
+您現在可以進入更進階的 B2C 主題。  您可以嘗試：
 
+[從 node.js Web 應用程式呼叫 node.js Web API >>]()
 
+[自訂 B2C 應用程式的 UX >>]()
 
-
+-->
 
 

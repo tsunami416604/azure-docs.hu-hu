@@ -18,28 +18,27 @@
     ms.author="szark"/>
 
 
-
 # 在 Azure 中的 Linux 虛擬機器上使用根權限
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-根據預設， `根` 在 Azure 中的 Linux 虛擬機器上停用使用者。 使用者可以使用執行命令以提高權限 `sudo` 命令。 不過，根據系統如何佈建而定，操作過程可能不同。
+在 Azure 中的 Linux 虛擬機器上，依預設會停用 `root` 使用者。 使用者可以使用 `sudo` 命令，以提高的權限來執行命令。 不過，根據系統如何佈建而定，操作過程可能不同。
 
-1. **SSH 金鑰和密碼，或僅密碼** -佈建虛擬機器以憑證 (`。CER` 檔案) 或 SSH 金鑰和密碼，或只是使用者名稱和密碼。 在此情況下，執行命令之前，`sudo` 會提示輸入使用者的密碼。
+1. **SSH 金鑰和密碼，或僅密碼** -佈建虛擬機器以憑證 (`.CER` 檔案) 或 SSH 金鑰和密碼，或只是使用者名稱和密碼。 在此情況下，執行命令之前，`sudo` 會提示輸入使用者的密碼。
 
-2. **僅 SSH 金鑰** -使用憑證佈建虛擬機器 (`.cer`, ，`.pem`, ，或 `.pub` 檔案) 或 SSH 金鑰，但沒有密碼。 在此情況下，執行命令之前，`sudo` **不會**提示輸入使用者的密碼。
+2. **僅 SSH 金鑰** -使用憑證佈建虛擬機器 (`.cer`, ，`.pem`, ，或 `.pub` 檔案) 或 SSH 金鑰，但沒有密碼。  在此情況下 `sudo` **不會** 提示輸入使用者的密碼，執行命令之前。
 
 
 ## SSH 金鑰和密碼，或僅密碼
 
-使用 SSH 金鑰或密碼驗證登入 Linux 虛擬機器，然後使用 `sudo` 來執行命令，例如：
+使用 SSH 金鑰或密碼驗證來登入 Linux 虛擬機器，然後使用 `sudo` 執行命令，例如：
 
     # sudo <command>
     [sudo] password for azureuser:
 
-在此例子中，將會提示使用者輸入密碼。 輸入密碼之後，`sudo` 會以 `root` 權限來執行命令。
+在此例子中，將會提示使用者輸入密碼。 輸入密碼之後，`sudo` 將會以 `root` 權限執行命令。
 
-您也可以藉由編輯來啟用 passwordless sudo `/etc/sudoers.d/waagent` 檔案，例如:
+您也可以編輯 `/etc/sudoers.d/waagent` 檔案來啟用 passwordless sudo，例如：
 
     #/etc/sudoers.d/waagent
     azureuser ALL = (ALL) NOPASSWD: ALL
@@ -48,15 +47,11 @@
 
 ## 僅 SSH 金鑰
 
-使用 SSH 金鑰驗證登入 Linux 虛擬機器，然後使用 `sudo` 來執行命令，例如：
+使用 SSH 金鑰驗證來登入 Linux 虛擬機器，然後使用 `sudo` 執行命令，例如：
 
     # sudo <command>
 
-在此例子中，將**不會**提示使用者輸入密碼。按鍵之後 `< 輸入 >`, ，`sudo` 會執行與命令 `根` 權限。
+使用者將會在此情況下 **不** 提示輸入密碼。 按 `<enter>` 鍵之後，`sudo` 將會以 `root` 權限執行命令。
 
-
-
-
-
-
+ 
 

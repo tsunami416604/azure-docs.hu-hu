@@ -6,8 +6,3 @@
 - [Python](../articles/service-bus/service-bus-python-how-to-use-queues.md)
 - [Ruby](../articles/service-bus/service-bus-ruby-how-to-use-queues.md)
 
-
-
-
-
-

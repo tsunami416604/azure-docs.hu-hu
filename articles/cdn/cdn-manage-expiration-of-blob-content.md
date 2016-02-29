@@ -16,27 +16,26 @@
  ms.author="casoper"/>
 
 
+#如何管理 Azure 內容傳遞網路 (CDN) 中 Blob 內容的到期  
 
-# 如何管理 Azure 內容傳遞網路 (CDN) 中 Blob 內容的到期
+充分利用 Azure CDN 快取中獲益的 Blob 是在其存留時間 (TTL) 期限期間經常存取。 Blob 在 TTL 期限內存留於快取中，然後 Blob 服務會在經過該時間之後進行重新整理。 然後重複執行此程序。  
 
-充分利用 Azure CDN 快取中獲益的 Blob 是在其存留時間 (TTL) 期限期間經常存取。 Blob 在 TTL 期限內存留於快取中，然後 Blob 服務會在經過該時間之後進行重新整理。 然後重複執行此程序。
+您有兩個選項可控制 TTL。  
 
-您有兩個選項可控制 TTL。
+1.  請不要設定快取值，因此會使用預設 TTL：7 天。 
+2.  明確地設定 *x-ms-blob-快取控制* 屬性 **Put Blob**, ，**放置區塊清單**, ，或 **設定 Blob 屬性** 要求，或使用 Azure Managed 程式庫來設定 [BlobProperties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) 屬性。 設定此屬性的值 *快取控制* blob 的標頭。 標頭或屬性的值應該指定適當的值 (秒)。 例如，若要將快取期間上限設為一年，您可以將要求標頭指定為 `x-ms-blob-cache-control: public, max-age=31556926`。 如需有關設定快取標頭的詳細資訊，請參閱 [HTTP/1.1 規格](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)。  
 
-1.  請不要設定快取值，因此會使用預設 TTL：7 天。
-2.  明確地設定 *x-ms-blob-快取控制* 屬性 **Put Blob**, ，**放置區塊清單**, ，或 **設定 Blob 屬性** 要求，或使用 Azure Managed 程式庫來設定 [BlobProperties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) 屬性。 設定此屬性會設定 Blob 之 *Cache-Control* 標頭的值。 標頭或屬性的值應該指定適當的值 (秒)。 例如，若要設定快取期間為一年的最大值，您可以指定要求標頭做為 `x-ms-blob-快取控制: 公用、 存留期上限 = 31556926`。 如需有關設定快取標頭的詳細資訊，請參閱 [HTTP/1.1 規格](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)。
+您想要透過 CDN 快取的任何內容都必須以公開存取的 Blob 形式儲存在 Azure 儲存體帳戶中。 如需 Azure Blob 服務的詳細資訊，請參閱 **Blob 服務概念**。  
 
-您想要透過 CDN 快取的任何內容都必須以公開存取的 Blob 形式儲存在 Azure 儲存體帳戶中。 如需 Azure Blob 服務的詳細資料，請參閱 **Blob 服務概念**。
+有數種不同的方式可使用 Blob 服務中的內容：  
 
-有數種不同的方式可使用 Blob 服務中的內容：
-
--   使用 **Azure 受管理程式庫參考**所提供的受管理 API。
+-   使用所提供的 managed 的 API **Azure 受管理程式庫參考**。
 -   使用協力廠商儲存體管理工具。
--   使用 Azure 儲存體服務 REST API。
+-   使用 Azure 儲存體服務 REST API。  
 
-下列程式碼範例是一個主控台應用程式，可使用 Azure 受管理程式庫建立容器、設定其公開存取的權限，以及在容器內建立 Blob。 它也會在 Blob 上設定 Cache-Control 標頭，以明確地指定想要的重新整理間隔。
+下列程式碼範例是一個主控台應用程式，可使用 Azure 受管理程式庫建立容器、設定其公開存取的權限，以及在容器內建立 Blob。 它也會在 Blob 上設定 Cache-Control 標頭，以明確地指定想要的重新整理間隔。   
 
-假設您已啟用 CDN (如上所示)，則 CDN 將會快取所建立的 Blob。 請務必使用您自己的儲存體帳戶和存取金鑰來指定帳戶認證：
+假設您已啟用 CDN (如上所示)，則 CDN 將會快取所建立的 Blob。 請務必使用您自己的儲存體帳戶和存取金鑰來指定帳戶認證：  
 
     using System;
     using Microsoft.WindowsAzure;
@@ -51,10 +50,10 @@
                 //Specify storage credentials.
                 StorageCredentialsAccountAndKey credentials = new StorageCredentialsAccountAndKey("storagesample",
                     "m4AHAkXjfhlt2rE2BN/hcUR4U2lkGdCmj2/1ISutZKl+OqlrZN98Mhzq/U2AHYJT992tLmrkFW+mQgw9loIVCg==");
-    
+                
                 //Create a reference to your storage account, passing in your credentials.
                 CloudStorageAccount storageAccount = new CloudStorageAccount(credentials, true);
-    
+                
                 //Create a new client object, which will provide access to Blob service resources.
                 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
     
@@ -87,18 +86,14 @@
         }
     }
 
-測試可透過 CDN 特有的 URL 來提供 Blob。 針對上面顯示的 Blob，URL 會與下面類似：
+測試可透過 CDN 特有的 URL 來提供 Blob。 針對上面顯示的 Blob，URL 會與下面類似：  
 
     http://az1234.vo.msecnd.net/cdncontent/testblob.txt  
 
-如有需要，您可以使用 **wget** 或 Fiddler 這類工具，檢查要求和回應的詳細資料。
+如有需要，您可以使用這類的工具 **wget** 或 Fiddler 檢查要求和回應的詳細資料。
 
-## 另請參閱
+##另請參閱
 
-[如何管理 Azure 內容傳遞網路 (CDN) 中雲端服務內容的到期日](./cdn-manage-expiration-of-cloud-service-content.md
-)
-
-
-
-
+[如何管理 Azure 內容傳遞網路 (CDN) 中雲端服務內容的到期](./cdn-manage-expiration-of-cloud-service-content.md
+) 
 

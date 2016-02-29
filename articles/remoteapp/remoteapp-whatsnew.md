@@ -1,19 +1,20 @@
+
 <properties
-    pageTitle ="什麼是 Azure RemoteApp 的新功能? |Microsoft Azure 「
-    描述 ="了解變更和改進對 Azure RemoteApp 」
-    服務 ="remoteapp"
+    pageTitle="Azure RemoteApp 有哪些新功能？ | Microsoft Azure"
+    description="深入了解對 Azure RemoteApp 所做的變更和改進"
+    services="remoteapp"
     documentationCenter=""
-    作者 ="lizap"
-    管理員 ="mbaldwin"/ >
+    authors="lizap"
+    manager="mbaldwin" />
 
 <tags
-    ms.service="remoteapp 」
-    ms.workload="compute 」
+    ms.service="remoteapp"
+    ms.workload="compute"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/23/2015 」
-    ms.author="elizapo"/ >
+    ms.date="10/23/2015"
+    ms.author="elizapo" />
 
 
 
@@ -22,7 +23,6 @@
 Azure RemoteApp 的優點之一是我們不斷地努力改進 RemoteApp。 每當 RemoteApp 有新功能時 ，我們便會在這裡發表變更。
 
 ## 2015 年 9 月
-
 - 已將 Infopath 新增至 Microsoft Office 365 範本和資源庫映像。 如果您想要共用 Infopath，請務必使用最新的映像來更新您的集合。
 - 用戶端更新：
     - 更新 Windows 用戶端讓使用者分享意見，特別是關於連線問題。
@@ -32,11 +32,10 @@ Azure RemoteApp 的優點之一是我們不斷地努力改進 RemoteApp。 每�
 - 想要分享使用 Azure RemoteApp 的 QuickBooks 卻不知道步驟嗎？ 簽出 [Eric 的新發行項](remoteapp-quickbooks.md) 告知您要做。
 
 ## 2015 年 8 月
-
 8 月的重大變更 - 以下是重點：
 
 - 您現在可以使用 Azure VNET 搭配雲端集合！ 簽出 [定域機組建立指示](remoteapp-create-cloud-deployment.md) 新步驟。
-- 可以將應用程式來新增 ** 開始 **Windows RemoteApp 用戶端的功能表。 應用程式將會顯示在應用程式清單中，以及您可以將它們釘選 ** 開始 **Windows 中的功能表。
+- 讓新增應用程式至 Windows RemoteApp 用戶端的 [開始] 功能表成為可能。 應用程式會顯示在應用程式清單中，您可以將它們釘選至 Windows 中的 [開始] 功能表。
 - 將新的映像新增至 Azure VM 資源庫 - Windows Server 遠端桌面工作階段主機與 Microsoft Office 365 ProPlus。
 - 修正 Mac 用戶端，讓具有強制回應視窗的應用程式停止凍結。
 - 說明如何使用您 [訂閱 Office 365 ProPlus](remoteapp-officesubscription.md) Azure remoteapp。
@@ -46,7 +45,7 @@ Azure RemoteApp 的優點之一是我們不斷地努力改進 RemoteApp。 每�
 
 7 月設定即將在 8 月推出之變更的階段，因此現在沒有很多可談，而且大部分都是文件更新。 以下是最新的變更：
 
-- 已將 [支援]**** 索引標籤新增至入口網站，可讓您更輕鬆地存取支援資源，像是論壇。
+- 加入 **支援** 入口網站，就能更輕鬆地存取支援資源，像是論壇] 索引標籤。
 - 已修改建立混合式集合的疑難排解資訊。 簽出 [最新和最大](remoteapp-hybridtrouble.md) 如需疑難排解秘訣，像是如何識別正確的連接埠設定的 VNET。
 - 記載如何 [使用者資料](remoteapp-upd.md) 建立並儲存在 Azure RemoteApp 中。
 - 說明如何以 [應用程式鎖定](remoteapp-secure.md)。
@@ -70,7 +69,7 @@ Azure RemoteApp 的優點之一是我們不斷地努力改進 RemoteApp。 每�
 從第一次建立本主題之後，已新增許多資訊，因此清單很大而且是從 3 月開始累積到 5 月。 請了解這些新功能：
 
 - 自動化各個項目-Azure RemoteApp 現在具有 [Azure PowerShell 模組中的 cmdlet](remoteapp-tutorial-arawithpowershell.md)。
-- [Azure RemoteApp 映像建立 Azure 虛擬機器從](remoteapp-image-on-azurevm.md)。 將自訂映像上傳至 Azure 的速度更為快速。
+- [從 Azure 的虛擬機器建立 Azure RemoteApp 映像](remoteapp-image-on-azurevm.md)。 將自訂映像上傳至 Azure 的速度更為快速。
 - 使用 Azure VNET (非 RemoteApp VNET)，以將公司網路資源連線到 Azure。 我們已更新 [混合式集合指示](remoteapp-create-hybrid-deployment.md) 來逐步引導您建立 Azure VNET (它是步驟 1)。
 - 對於 Vnet，請參閱 [新指引](remoteapp-vnetsizing.md) 有關 VNET 大小限制和限制。
 - 而且對於限制，就是什麼是 [服務限制和預設值](remoteapp-servicelimits.md)嗎?
@@ -83,10 +82,5 @@ Azure RemoteApp 的優點之一是我們不斷地努力改進 RemoteApp。 每�
 
 
 ### 幫我們來協助您
-
-您知道除了評比這篇文章以及在下面留言以外，您可以變更文件本身嗎？ 有所遺漏？ 有所錯誤？ 我是否撰寫了令人混淆的內容？ 向上捲動並按一下 [在 GitHub 上編輯]**** 以進行變更 - 系統會顯示這些變更以供我們檢閱，而我們簽核後，您就會在這裡看到您所進行的變更和改良。
-
-
-
-
+您知道除了評比這篇文章以及在下面留言以外，您可以變更文件本身嗎？ 有所遺漏？ 有所錯誤？ 我是否撰寫了令人混淆的內容？ 向上捲動，然後按一下 [ **GitHub 上的編輯** 若要變更-供檢閱，這些會變成給我們，接著，我們登入它們，就會看到您的變更和改進這裡。
 

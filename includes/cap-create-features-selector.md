@@ -1,11 +1,6 @@
 > [AZURE.SELECTOR]
-- [Create features for data](../articles/machine-learning-data-science-create-features.md)
-- [Create features for data in Azure blob storage](../articles/machine-learning-data-science-create-features-blob.md)
-- [Create features for data in SQL Server](../articles/machine-learning/machine-learning-data-science-create-features-sql-server.md)
-- [Create features for data in an Hadoop cluster using Hive queries](../articles/machine-learning/machine-learning-data-science-create-features-hive.md)
-
-
-
-
-
+- [建立資料的功能](../articles/machine-learning-data-science-create-features.md)
+- [在 Azure blob 儲存體中建立資料的功能](../articles/machine-learning-data-science-create-features-blob.md)
+- [SQL Server 中建立資料的功能](../articles/machine-learning/machine-learning-data-science-create-features-sql-server.md)
+- [針對使用 Hive 查詢之 Hadoop 叢集中的資料建立特性](../articles/machine-learning/machine-learning-data-science-create-features-hive.md)
 

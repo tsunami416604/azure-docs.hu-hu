@@ -19,35 +19,35 @@
 
 
 
-
 # Python Web 和背景工作角色與 Python Tools 2.2 for Visual Studio
 
-這篇文章提供使用 Python web 和背景工作角色的概觀 [Python Tools for Visual Studio []][]。
+這篇文章提供使用 Python web 和背景工作角色的概觀 [Python Tools for Visual Studio][]。
 
-## 必要條件
+## 先決條件
 
  - Visual Studio 2013 或 2015
- - [Python 工具 2.2 的 Visual Studio []][] (PTVS)
- - [Azure SDK Tools for VS 2013 []][] 或 [Azure SDK Tools for VS 2015 []][]
- - [Python 2.7 32-bit[]][] or [Python 3.4 32-bit[]][]
+ - [Python Tools for Visual Studio 2.2][] (PTVS)
+ - [Azure SDK Tools for VS 2013][] 或 [Azure SDK Tools for VS 2015][]
+ - [Python 2.7 32 位元][] 或 [Python 3.4 32 位元][]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 什麼是 Python Web 和背景工作角色？
 
-Azure 提供三種計算模型來執行應用程式: [Azure App Service ][execution model-web sites], ，[Azure 虛擬機器 ][execution model-vms], ，和 [Azure 雲端服務 ][execution model-cloud services]。 這三種模型都支援 Python。 雲端服務 (包含 Web 和背景工作角色) 可提供*平台即服務 (PaaS)*。 在雲端服務中，Web 角色應用程式會提供專用的 Internet Information Services (IIS) Web 伺服器，用以代管前端 Web 應用程式，而背景工作角色則可執行獨立於使用者互動或輸入以外的非同步、長時間執行或持續性工作。
+Azure 提供三種計算模型來執行應用程式: [Azure App Service 中的 Web 應用程式功能][execution model-web sites], ，[Azure 虛擬機器][execution model-vms], ，和 [Azure 雲端服務][execution model-cloud services]。 這三種模型都支援 Python。 雲端服務包含 web 和背景工作角色，提供 *平台即服務 (PaaS)*。 在雲端服務中，Web 角色應用程式會提供專用的 Internet Information Services (IIS) Web 伺服器，用以代管前端 Web 應用程式，而背景工作角色則可執行獨立於使用者互動或輸入以外的非同步、長時間執行或持續性工作。
 
-如需詳細資訊，請參閱 [何謂雲端服務]。
-> [AZURE.NOTE] *尋求建置簡單的網站？*
+如需詳細資訊，請參閱 [What is a Cloud Service?]。
+
+> [AZURE.NOTE] *正在尋求建置簡單的網站嗎?*
 如果您的案例只需要簡單的網站前端，請考慮使用 Azure App Service 中的輕量型 Web Apps 功能。 隨著網站擴大，以及需求改變，您可以很輕易地升級到雲端服務。 請參閱 <a href="/develop/python/">Python 開發人員中心</a> 開發 Azure 應用程式服務的 Web 應用程式功能的文章。
 <br />
 
 
 ## 建立專案
 
-在 Visual Studio 中，您可以在 [Python]**** 下選取 [新增專案]**** 對話方塊中的 [Azure 雲端服務]****。
+在 Visual Studio 中，您可以選取 **Azure 雲端服務** 中 **新的專案** 對話方塊的 [ **Python**。
 
-![New Project Dialog](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
+![新專案對話](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
 在 [Azure 雲端服務] 精靈中，您可以建立新的 Web 和背景工作角色。
 
@@ -57,11 +57,11 @@ Azure 提供三種計算模型來執行應用程式: [Azure App Service ][execut
 
 ![Cloud Service Solution](./media/cloud-services-python-ptvs/worker.png)
 
-您可以隨時將 Web 或背景工作角色加入至現有的雲端服務。 您可以選擇加入方案中現有的專案，或建立新專案。
+您可以隨時將 Web 或背景工作角色加入至現有的雲端服務。  您可以選擇加入方案中現有的專案，或建立新專案。
 
 ![Add Role Command](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
-雲端服務可以包含以不同語言實作的角色。 例如，您可以有使用 Django 實作的 Python Web 角色，以及 Python 或 C# 背景工作角色。 您可以使用服務匯流排佇列或儲存體佇列，輕鬆地與角色進行通訊。
+雲端服務可以包含以不同語言實作的角色。  例如，您可以有使用 Django 實作的 Python Web 角色，以及 Python 或 C# 背景工作角色。  您可以使用服務匯流排佇列或儲存體佇列，輕鬆地與角色進行通訊。
 
 ## 在本機執行
 
@@ -69,13 +69,13 @@ Azure 提供三種計算模型來執行應用程式: [Azure App Service ][execut
 
 雖然 PTVS 支援在模擬器中啟動，但無法使用偵錯 (例如，中斷點)。
 
-若要對 Web 和背景工作角色進行偵錯，您可以將角色專案設為啟始專案，然後偵錯。 您也可以設定多個啟始專案。 以滑鼠右鍵按一下方案，然後選取 [設定啟始專案]****。
+若要對 Web 和背景工作角色進行偵錯，您可以將角色專案設為啟始專案，然後偵錯。  您也可以設定多個啟始專案。  以滑鼠右鍵按一下方案，然後選取 **設定啟始專案**。
 
 ![Solution Startup Project Properties](./media/cloud-services-python-ptvs/startup.png)
 
 ## 發佈至 Azure
 
-若要發佈，請以滑鼠右鍵按一下方案中的雲端服務專案，然後選取 [發佈]****。
+若要發行，以滑鼠右鍵按一下方案中的雲端服務專案，然後選取 **發行**。
 
 ![Microsoft Azure Publish Sign In](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
@@ -91,7 +91,7 @@ Azure 提供三種計算模型來執行應用程式: [Azure App Service ][execut
 
 ![Remote Desktop Configuration Dialog](./media/cloud-services-python-ptvs/publish-remote-desktop-configuration.png)
 
-組態設定完成之後，按一下 [發行]****。
+當組態設定完成之後時，按一下 [ **發行**。
 
 輸出視窗中會顯示一些進度，接著會出現 [Microsoft Azure 活動記錄] 視窗。
 
@@ -103,38 +103,40 @@ Azure 提供三種計算模型來執行應用程式: [Azure App Service ][execut
 
 如需在 Python Tools for Visual Studio 中使用 Web 和背景工作角色的相關詳細資訊，請參閱 PTVS 文件：
 
-- [雲端服務專案]][]
+- [雲端服務專案][]
 
 如需有關從 Web 和背景工作角色使用 Azure 服務的詳細資訊，例如使用 Azure 儲存體或服務匯流排，請參閱下列文章。
 
-- [Blob 服務]][]
-- [資料表服務]][]
-- [佇列服務]][]
-- [服務匯流排佇列]][]
-- [服務匯流排主題]][]
+- [Blob 服務][]
+- [資料表服務][]
+- [佇列服務][]
+- [服務匯流排佇列][]
+- [服務匯流排主題][]
 
 
+<!--Link references-->
+
+[What is a Cloud Service?]: /manage/services/cloud-services/what-is-a-cloud-service/
+[execution model-web sites]: fundamentals-application-models.md#WebSites
+[execution model-vms]: fundamentals-application-models.md#VMachine
+[execution model-cloud services]: fundamentals-application-models.md#CloudServices
+[Python Developer Center]: /develop/python/
+
+[Blob Service]: storage-python-how-to-use-blob-storage.md
+[Queue Service]: storage-python-how-to-use-queue-storage.md
+[Table Service]: storage-python-how-to-use-table-storage.md
+[Service Bus Queues]: service-bus-python-how-to-use-queues.md
+[Service Bus Topics]: service-bus-python-how-to-use-topics-subscriptions.md
 
 
+<!--External Link references-->
 
-
-
-[what is a cloud service?]: /manage/services/cloud-services/what-is-a-cloud-service/ 
-[execution model-web sites]: fundamentals-application-models.md#WebSites 
-[execution model-vms]: fundamentals-application-models.md#VMachine 
-[execution model-cloud services]: fundamentals-application-models.md#CloudServices 
-[python developer center]: /develop/python/ 
-[blob service]: storage-python-how-to-use-blob-storage.md 
-[queue service]: storage-python-how-to-use-queue-storage.md 
-[table service]: storage-python-how-to-use-table-storage.md 
-[service bus queues]: service-bus-python-how-to-use-queues.md 
-[service bus topics]: service-bus-python-how-to-use-topics-subscriptions.md 
-[python tools for visual studio]: http://aka.ms/ptvs 
-[python tools for visual studio documentation]: http://aka.ms/ptvsdocs 
-[cloud service projects]: http://go.microsoft.com/fwlink/?LinkId=624028 
-[python tools 2.2 for visual studio]: http://go.microsoft.com/fwlink/?LinkID=624025 
-[azure sdk tools for vs 2013]: http://go.microsoft.com/fwlink/?LinkId=323510 
-[azure sdk tools for vs 2015]: http://go.microsoft.com/fwlink/?LinkId=518003 
-[python 2.7 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517190 
-[python 3.4 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517191 
+[Python Tools for Visual Studio]: http://aka.ms/ptvs
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[Cloud Service Projects]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
+[Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
+[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
+[Python 2.7 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517190
+[Python 3.4 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517191
 

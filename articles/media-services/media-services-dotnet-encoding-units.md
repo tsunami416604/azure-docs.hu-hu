@@ -17,18 +17,17 @@
     ms.author="juliako"/>
 
 
+#如何使用 .NET SDK 調整編碼
 
-# 如何使用 .NET SDK 調整編碼
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-encoding-units.md)
+- [入口網站](media-services-portal-encoding-units.md)
 - [.NET](media-services-dotnet-encoding-units.md)
 - [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 - [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
-
-## 概觀
+##概觀
 
 媒體服務帳戶是與可決定編碼工作處理速度的保留單元類型相關聯。 您可以在下列的保留單元類型之間選擇：Basic、Standard 或 Premium。 例如，在執行相同編碼工作的前提下，使用 Standard 保留單元類型的速度會比 Basic 類型快。 如需詳細資訊，請參閱撰寫的 「 編碼保留單元類型 」 部落格 [Milan Gada](http://azure.microsoft.com/blog/author/milanga/)。
 
@@ -46,43 +45,39 @@
     
     Console.WriteLine("Number of reserved units: {0}", encodingBasicReservedUnit.CurrentReservedUnits);
 
-## 建立支援票證
+##建立支援票證
 
 依預設，每一個媒體服務帳戶可調整為最多 25 個編碼保留單元和 5 個隨選串流保留單元。 您可以建立支援票證來要求更高的限制。
 
-### 開啟支援票證
+###開啟支援票證
 
 若要建立支援票證，請執行下列動作：
 
-1. Click [Get Support](https://manage.windowsazure.com/?getsupport=true). 如果您未登入，系統會提示您輸入認證。
+1. 按一下 [ [取得支援](https://manage.windowsazure.com/?getsupport=true)。 如果您未登入，系統會提示您輸入認證。
 
 1. 選取您的訂閱。
-
+ 
 1. 在支援類型下，選取 [技術]。
-
-1. 按一下 [建立票證]。
-
+ 
+1. 按一下 [建立票證]。 
+ 
 1. 在下一頁顯示的產品清單中，選取 [Azure 媒體服務]。
-
+ 
 1. 選取適合您的問題的 [問題類型]。
-
+ 
 1. 按一下 [繼續]。
-
-1. 遵循下一頁的指示，然後輸入問題的詳細資訊。
-
+ 
+1. 遵循下一頁的指示，然後輸入問題的詳細資訊。   
+ 
 1. 按一下 [提交] 來建立票證。
+ 
 
 
-
-## 媒體服務學習路徑
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 

@@ -16,15 +16,15 @@
    ms.date="12/14/2015"
    ms.author="ruturajd@microsoft.com"/>
 
-
 # 利用 Azure Site Recovery 將 VMware 虛擬機器和實體伺服器從 Azure 容錯回復到 VMware
 
 ## 概觀
 
-本文件說明如何將 VMware 虛擬機器和 Windows/Linux 實體伺服器從 Azure 容錯回復到內部部署網站。
+本文件說明如何將 VMware 虛擬機器和 Windows/Linux 實體伺服器從 Azure 容錯回復到內部部署網站。 
 
-若要設定複寫和容錯移轉的這種情況下遵循 [這篇文章](site-recovery-vmware-to-azure.md)。 成功利用 Site Recovery 將 VMware 虛擬機器或實體伺服器容錯移轉至 Azure 之後，機器將可在 [Azure 虛擬機器] 索引標籤中使用。
->[AZURE.NOTE] 您可以只將 VMware 虛擬機器和 Windows/Linux 實體伺服器從 Azure 容錯移轉到內部部署主要網站中的 VMware 虛擬機器。 如果您正在容錯回復實體機器，容錯移轉至 Azure 會將它轉換至 Azure VM，容錯回復到 VMware 會將它轉換至 VMware VM。 
+若要設定複寫和容錯移轉的這種情況下遵循 [這篇文章](site-recovery-vmware-to-azure.md)。 成功利用 Site Recovery 將 VMware 虛擬機器或實體伺服器容錯移轉至 Azure 之後，機器將可在 [Azure 虛擬機器] 索引標籤中使用。 
+
+>[AZURE.NOTE] 您只可以容錯回復的 VMware 虛擬機器和 Windows/Linux 實體伺服器從 Azure 到 VMware 虛擬機器在內部部署主要站台。  如果您正在容錯回復實體機器，容錯移轉至 Azure 會將它轉換至 Azure VM，容錯回復到 VMware 會將它轉換至 VMware VM。 
 
 這個圖代表容錯移轉和容錯回復案例。 藍線是在容錯移轉期間使用的連線。 紅線是在容錯回復期間使用的連線。 帶有箭號的線條表示會透過網際網路。
 
@@ -34,26 +34,26 @@
 
 您必須在內部部署安裝 vContinuum 伺服器並將它指向組態伺服器。
 
-1.  [下載 vContinuum](http://go.microsoft.com/fwlink/?linkid=526305)。
+1.  [下載 vContinuum](http://go.microsoft.com/fwlink/?linkid=526305)。 
 2.  您已下載，請下載更新後 [vContinuum 更新](http://go.microsoft.com/fwlink/?LinkID=533813) 新版。
 3.  執行最新版本的安裝程式以安裝 vContinuum。 在 **歡迎** 頁面上，按一下 **下一步**。
     ![](./media/site-recovery-failback-azure-to-vmware/image2.png)
-4.  在精靈的第一個頁面上，指定 CX 伺服器 IP 位址和 CX 伺服器連接埠。 選取 [使用 HTTPS]****。
+4.  在精靈的第一個頁面上，指定 CX 伺服器 IP 位址和 CX 伺服器連接埠。 選取 **使用 HTTPS**。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image3.png)
 
 5.  找不到組態伺服器 IP 位址上 **儀表板** 設定伺服器在 Azure VM] 索引標籤。
     ![](./media/site-recovery-failback-azure-to-vmware/image4.png)
 
-6.  在 Azure 中組態伺服器 VM 的 [端點]**** 索引標籤上尋找組態伺服器 HTTPS 公用連接埠。
+6.  找不到組態伺服器 HTTPS 公用連接埠上 **端點** 設定伺服器在 Azure VM] 索引標籤。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image5.png)
 
-7. 在 [CS 複雜密碼詳細資料]**** 頁面上，指定您在註冊組態伺服器時記下的複雜密碼。 如果您不記得它簽入 **C:\\Program Files (x86) \\InMage Systems\\private\\connection.passphrase** 組態伺服器 VM 上。
+7. 在 **CS 複雜密碼的詳細資料** 頁面上，指定當您在註冊組態伺服器記下複雜密碼。 如果您不記得它簽入 **C:\\Program Files (x86) \\InMage Systems\\private\\connection.passphrase** 組態伺服器 VM 上。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image6.png)
 
-8.  在 [選取目的地位置]**** 頁面上，指定您要安裝 vContinuum 伺服器的地方，並按一下 [安裝]****。
+8.  在 **選取目的地位置** 頁面上，指定您要安裝 vContinuum 伺服器，並按一下 [ **安裝**。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image7.png)
 
@@ -61,11 +61,11 @@
     ![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
 
-## 步驟 2：在 Azure 中安裝處理序伺服器
+## 步驟 2：在 Azure 中安裝處理序伺服器 
 
-您必須在 Azure 上安裝處理序伺服器，讓 Azure 中的 VM 可以將資料傳回內部部署的主要目標伺服器。
+您必須在 Azure 上安裝處理序伺服器，讓 Azure 中的 VM 可以將資料傳回內部部署的主要目標伺服器。 
 
-1.  在 Azure 的 [組態伺服器]**** 頁面中，選取要加入新的處理序伺服器。
+1.  在 **組態伺服器** 在 Azure 中頁面上，選取要加入新的處理序伺服器。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image9.png)
 
@@ -79,11 +79,11 @@
     ![](./media/site-recovery-failback-azure-to-vmware/image11.png)
 
 5.  處理序伺服器部署在 Azure 中之後，可以登入伺服器
-使用指定的認證。 以您註冊內部部署處理序伺服器的相同方式註冊此處理序伺服器。
+使用指定的認證。 以您註冊內部部署處理序伺服器的相同方式註冊此處理序伺服器。 
 
     ![](./media/site-recovery-failback-azure-to-vmware/image12.png)
 
->[AZURE.NOTE] 在容錯回復期間註冊的伺服器將不會顯示於 Site Recovery 中的 VM 屬性下方。 它們將會只顯示於它們已註冊之組態伺服器的 [伺服器]**** 索引標籤下方。 可能需要大約 10-15 分鐘，直到處理序伺服器出現在索引標籤上。
+>[AZURE.NOTE] 容錯回復期間註冊的伺服器將不會顯示於站台復原中的 VM 屬性下方。 只是底下看見 **伺服器** 進行登錄設定的伺服器] 索引標籤。 可能需要大約 10-15 分鐘，直到處理序伺服器出現在索引標籤上。
 
 
 ## 步驟 3：安裝主要目標伺服器內部部署
@@ -124,13 +124,13 @@ vContinuum，主要伺服器也部署在相同電腦上，
 啟用參數 」 磁碟。EnableUUID = TRUE"，如下所示:
 
 1. 關閉虛擬機器。
-2. 以滑鼠右鍵按一下左面板中的 VM 項目 > [編輯設定]****。
-3. 按一下 [選項]**** 索引標籤。 選取 **進階 > 一般項目** > **組態參數**。 [組態參數]**** 選項只有在機器關機時才可以使用。
+2. 以滑鼠右鍵按一下左面板中的 VM 項目 > **編輯設定**。
+3. 按一下 [ **選項** ] 索引標籤。 選取 **進階 > 一般項目** > **組態參數**。  **組態參數** 電腦關機時，才可以使用選項。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 
-4. 查看含有 **disk.EnableUUID** 的資料列是否已經存在？ 如果未設定為 **False** 然後將它設定為 ** True **(不區分大小寫)。 如果存在且已設為 True，可按一下 [取消]****，然後在其開機之後，於客體作業系統內部測試 SCSI 命令。 如果不存在，請按一下 [加入資料列]****。
-5. 在 [名稱]**** 欄中加入 disk.EnableUUID。 將其值儲存為 TRUE。 請勿為上述值加上雙引號。
+4. 檢查使用的資料列是否 **磁碟。EnableUUID** 存在。 如果未設定為 **False** 然後將它設定為 * * True **(not case sensitive)。 如果存在，而且設為 true，然後按一下 **取消** 和開機設定之後，測試 SCSI 命令，於客體作業系統。 如果不存在按一下 **加入資料列。**
+5. 新增磁碟。在 EnableUUID **名稱** 資料行。 將其值儲存為 TRUE。 請勿為上述值加上雙引號。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image15.png)
 
@@ -160,7 +160,7 @@ perl-5.10.1-136.el6\_6.1.x86\_64.rpm
 perl-Module-Pluggable-3.90-136.el6\_6.1.x86\_64.rpm
 
 perl-Pod-Escapes-1.04-136.el6\_6.1.x86\_64.rpm
-
+    
 perl-Pod-Simple-3.13-136.el6\_6.1.x86\_64.rpm
 
 perl-libs-5.10.1-136.el6\_6.1.x86\_64.rpm
@@ -200,7 +200,7 @@ reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
 1. 將 RHEL 6-64 整合代理程式二進位檔複製到新建立的作業系統。
 
-2. 執行這個命令來解壓縮二進位檔: * * tar zxvf \<File name\>* *
+2. 執行這個命令來解壓縮二進位檔: **tar zxvf \ < 檔案名稱 >**
 
 3. 執行此命令，以授與權限: \ # **chmod 755./ApplyCustomChanges.sh**
 
@@ -209,6 +209,7 @@ reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
 
 ### 安裝 Linux 伺服器
+
 
 1. [下載](http://go.microsoft.com/fwlink/?LinkID=529757) 安裝檔案。
 2. 使用您選擇的 sftp 用戶端公用程式，將檔案複製到 Linux 主要目標虛擬機器。 或者您可以登入 Linux 主要目標虛擬
@@ -236,7 +237,7 @@ tar 封存檔內容所要的目錄
 
     ![](./media/site-recovery-failback-azure-to-vmware/image17.png)
 
-8. 當系統提示您選擇主要角色時，選取 [2 (主要目標)]****。 保留其他互動式安裝選項的預設值。
+8. 當系統提示您選擇的主要角色選取 **2 (主要目標)**。 保留其他互動式安裝選項的預設值。
 9. 等待安裝能夠繼續和主機設定
 若要顯示的介面。 針對 Linux 主要主機組態公用程式
 sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
@@ -247,13 +248,13 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 
     ![](./media/site-recovery-failback-azure-to-vmware/image19.png)
 
-10. 在 [IP]**** 欄位中，輸入組態伺服器的內部 IP 位址 (您可以在組態伺服器 VM 的 [儀表板]**** 索引標籤中找到它) 然後按 ENTER 鍵。 在 [連接埠]**** 中，輸入 **22**，然後按 ENTER 鍵。
-11.  保留 [使用 HTTPS]**** 為 [是]****，然後按 ENTER 鍵。
+
+10. 在欄位中 **IP** 輸入設定伺服器的內部 IP 位址 (您可以找到它在 **儀表板** 組態伺服器 VM] 索引標籤) 然後按 ENTER。 在 **連接埠** 輸入 **22** 按下 ENTER。 
+11.  保留 **使用 HTTPS** 為 **是**, ，然後按 ENTER。
 12.  輸入組態伺服器上產生的複雜密碼。 如果您從 Windows 機器使用 PUTTY 用戶端 ssh 到 Linux 虛擬機器，您可以使用 Shift+Insert 鍵來貼上剪貼簿的內容。 使用 Ctrl+C 鍵，將複雜密碼複製到本機剪貼簿，然後使用 Shift+Insert 鍵來貼上它。 按 ENTER 鍵。
 13.  使用向右鍵瀏覽到結束並按 ENTER 鍵。 等待安裝完成。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image20.png)
-
 
 如果基於某些原因，您無法註冊您的 Linux 主要目標
 設定伺服器的伺服器還可以再執行
@@ -265,7 +266,8 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 
 您可以驗證已成功註冊主要目標伺服器
 在 Azure Site Recovery 保存庫中的組態伺服器 > **組態伺服器** > **伺服器詳細資料**。
->[AZURE.NOTE] 在註冊主要目標伺服器之後，如果您收到虛擬機器可能已從 Azure 刪除，或未正確設定端點等錯誤，這是因為在 Azure 中部署主要目標時，雖然 Azure 端點偵測到主要目標組態，但是內部部署主要目標伺服器內部部署卻不是這個情形。 這並不會影響容錯回復，您可以忽略這些錯誤。 
+
+>[AZURE.NOTE] 在註冊之後的主要目標伺服器，如果您收到組態錯誤，虛擬機器可能已從 Azure 刪除，或未正確設定端點，這是因為在 Azure 中部署主要目標時，主要目標設定偵測到由 Azure dndpoints，雖然這不是適用於內部部署主要目標伺服器在內部。 這並不會影響容錯回復，您可以忽略這些錯誤。 
 
 
 
@@ -283,7 +285,7 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 受保護。 以下列方式來執行此動作：
 
 1.  開啟 [電腦管理] 並選取 [儲存管理]，即會列出磁碟已上線且已連接到機器。
-2.  選取連接到機器的暫存磁碟，並選擇使其離線。
+2.  選取連接到機器的暫存磁碟，並選擇使其離線。 
 
 ### 保護 VM
 
@@ -295,9 +297,9 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 
     ![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
-3. 按一下 [新增保護]**** 並選取作業系統類型，這個
+3. 按一下 [ **新的保護** 選取作業的系統類型 
 
-4.  在開啟的新視窗中，選取 [OS 類型]**** > [取得詳細資料]**** 以取得您想要容錯回復的 VM。 在 [主要伺服器詳細資料]**** 中，識別並選取您想要保護的虛擬機器。 在容錯移轉之前，VM 會列在其隸屬的主機名稱之下。
+4.  在新視窗中開啟選取 **OS 類型** > **取得詳細資料** 您想要容錯回復的 vm。 在 **主要伺服器詳細資料**, ，找出並選取您想要保護的虛擬機器。 在容錯移轉之前，VM 會列在其隸屬的主機名稱之下。
 5.  當您選取要保護的虛擬機器 (而且已經將它容錯移轉到 Azure) 時，快顯視窗會提供兩個適用於虛擬機器的項目。 這是因為組態伺服器偵測到兩個已向其註冊的虛擬機器執行個體。 您需要移除內部部署 VM 的項目，如此就能保護正確的 VM。 若要在此處識別正確的 Azure VM 項目，您可以登入 Azure VM，然後移至 C:\Program Files (x86)\Microsoft Azure Site Recovery\Application Data\etc。在 drscout.conf 檔案中，識別主機識別碼。 在 vContinuum 對話方塊中，保留的項目，您必須找到主機識別碼在 VM。 刪除所有其他項目。 若要選取正確的 VM，您可以參考其 IP 位址。 IP 位址範圍內部部署將會在內部部署 VM 上。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image22.png)
@@ -317,31 +319,32 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 
     ![](./media/site-recovery-failback-azure-to-vmware/image25.png)
 
-    **選項**| **選項建議值**
-   ---|---
-    處理序伺服器 IP 位址| 選取部署在 Azure 中的處理序伺服器
-    保留大小 (以 MB 為單位)|
-    保留值| 1
-    天/小時| 星期幾
-    一致性間隔| 1
-    選取目標資料存放區| 可在復原端使用的資料存放區。這個資料存放區應具備足夠空間，而且可供您要在其上還原虛擬機器的 ESX 主機使用。
+    **選項** | **選項建議值**
+    ---|---
+    處理序伺服器 IP 位址 | 選取部署在 Azure 中的處理序伺服器
+    保留大小 (以 MB 為單位)| 
+    保留值 | 1
+    天/小時 | 星期幾
+    一致性間隔 | 1
+    選取目標資料存放區 | 可在復原端使用的資料存放區。 這個資料存放區應具備足夠空間，而且可供您要在其上還原虛擬機器的 ESX 主機使用。
+
 
 10. 設定虛擬機器將在容錯移轉到內部部署站台之後取得的屬性。 下表中會摘要說明這些屬性。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image26.png)
 
-     **屬性**| **詳細資料**
+    **屬性** | **詳細資料**
     ---|---
-     網路組態| 針對偵測到的每個網路介面卡，請選取它，然後按一下 [變更]**** 來設定虛擬機器的容錯回復 IP 位址。
-     硬體組態| 指定 VM 的 CPU 和記憶體。這些設定可套用到您嘗試保護的所有 VM。若要識別 CPU 和記憶體的正確值，您可以參考 IAAS VM 角色大小，並查看核心數及指派的記憶體。
-     顯示名稱| 容錯回復到內部部署之後，您可以在虛擬機器出現在 vCenter 詳細目錄中時將其重新命名。預設名稱是虛擬機器的電腦主機名稱。若要識別 VM 名稱，您可以參考保護群組中的 VM 清單。
-     NAT 組態| 以下將詳細討論
+    網路組態| 偵測到每個網路介面卡，請選取它，然後按一下 [ **變更** 來設定虛擬機器的容錯回復 IP 位址。 
+    硬體組態| 指定 VM 的 CPU 和記憶體。 這些設定可套用到您嘗試保護的所有 VM。 若要識別 CPU 和記憶體的正確值，您可以參考 IAAS VM 角色大小，並查看核心數及指派的記憶體。
+    顯示名稱 | 容錯回復到內部部署之後，您可以在虛擬機器出現在 vCenter 詳細目錄中時將其重新命名。 預設名稱是虛擬機器的電腦主機名稱。 若要識別 VM 名稱，您可以參考保護群組中的 VM 清單。
+    NAT 組態 | 以下將詳細討論
 
     ![](./media/site-recovery-failback-azure-to-vmware/image27.png)
 
 #### 設定 NAT 原則
 
-1. 若要啟用虛擬機器的保護，需要建立兩個通訊通道。 第一個通道位於虛擬機器和處理序伺服器之間。 此通道會從 VM 收集資料，並將其傳送至處理序伺服器，該伺服器會再將資料傳送給主要目標伺服器。 如果處理序伺服器和受保護的虛擬機器位於相同的 Azure 虛擬網路上，則您不需使用 NAT 設定。 否則，請指定 NAT 設定。 在 Azure 中檢視處理序伺服器的公用 IP 位址。
+1. 若要啟用虛擬機器的保護，需要建立兩個通訊通道。 第一個通道位於虛擬機器和處理序伺服器之間。 此通道會從 VM 收集資料，並將其傳送至處理序伺服器，該伺服器會再將資料傳送給主要目標伺服器。 如果處理序伺服器和受保護的虛擬機器位於相同的 Azure 虛擬網路上，則您不需使用 NAT 設定。 否則，請指定 NAT 設定。 在 Azure 中檢視處理序伺服器的公用 IP 位址。 
 
     ![](./media/site-recovery-failback-azure-to-vmware/image28.png)
 
@@ -351,23 +354,25 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 
     ![](./media/site-recovery-failback-azure-to-vmware/image30.png)
 
-3. 如果您尚未刪除指定的內部部署虛擬機器，而且如果您要容錯回復的目標資料存放區仍包含舊的 VMDK，則您必須確定容錯回復的 VM 會建立於新的位置上。 若要這樣做，請選取 [進階]**** 設定，並且在 [資料夾名稱設定]**** 中指定要還原到其中的替代資料夾。 保留其他選項的預設設定。 將資料夾名稱設定套用到所有伺服器。
+3. 如果您尚未刪除指定的內部部署虛擬機器，而且如果您要容錯回復的目標資料存放區仍包含舊的 VMDK，則您必須確定容錯回復的 VM 會建立於新的位置上。 若要執行這個選取 **進階** 設定，並指定要在還原的替代資料夾 **資料夾名稱設定**。 保留其他選項的預設設定。 將資料夾名稱設定套用到所有伺服器。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image31.png)
 
-4. 執行整備檢查，以確保虛擬機器已準備好回復到內部部署接受保護。
+4. 執行整備檢查，以確保虛擬機器已準備好回復到內部部署接受保護。 
 
     ![](./media/site-recovery-failback-azure-to-vmware/image32.png)
 
-5. 等候它完成。 如果已順利位於所有 VM 上，您可以指定保護方案的名稱。 然後按一下 [保護]**** 以開始進行。
+
+5. 等候它完成。 如果已順利位於所有 VM 上，您可以指定保護方案的名稱。 然後按一下 [ **保護** 開始。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image33.png)
+
 
 6. 您可以在 vContinuum 中監視進度。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image34.png)
 
-7. 在 [啟用保護計劃]**** 步驟完成之後，您可以監視 Site Recovery 入口網站中的 VM 保護。
+7. 在步驟之後 **啟用保護計劃** 完成，您可以監視站台復原入口網站中的 VM 保護。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image35.png)
 
@@ -380,31 +385,31 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 您可以準備使用 vContinuum 容錯回復計劃，讓應用程式
 可以容錯回復到內部部署站台在任何時間。 這些復原方案非常類似 Site Recovery 中的復原方案。
 
-1.  啟動 vContinuum，然後選取 [管理方案]**** > [復原]****。您可以看到所有已用來容錯移轉 VM 的方案清單。 您可以使用相同的方案來復原。
+1.  啟動 vContinuum，然後選取 **管理計劃** > **復原。**您可以看到所有已用來容錯移轉 VM 的方案清單。 您可以使用相同的方案來復原。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image37.png)
 
-2. 選取保護方案，以及您想要在其中復原的所有 VM。 當您選取每個 VM 時，您可以看到更多詳細資料，包括目標 ESX 伺服器與來源 VM 磁碟。 按 [下一步]**** 以開始 [復原精靈]，然後選取您想要復原的 VM。
+2. 選取保護方案，以及您想要在其中復原的所有 VM。 當您選取每個 VM 時，您可以看到更多詳細資料，包括目標 ESX 伺服器與來源 VM 磁碟。 按一下 [ **下一步** 開始 [復原精靈]，然後選取您想要復原的 Vm。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image38.png)
 
-3. 您可以根據多個選項進行復原，但建議您使用 **最新的標記**，然後選取 [套用所有 VM]**** 以確保使用虛擬機器的最新資料。
-4. 執行 [整備檢查]****。這會檢查是否設為啟用 VM 復原的正確參數。 如果所有檢查都成功，請按 [下一步]****。 如果未成功，請檢查記錄檔並解決錯誤。
+3. 您可以復原根據多個選項，但我們建議您使用 **最新的標記** ，然後選取 **所有 vm 套用** 以確保會使用虛擬機器的最新資料。
+4. 執行 **整備檢查。**這會檢查是否設為啟用 VM 復原的正確參數。 按一下 [ **下一步** 如果所有檢查都都成功。 如果未成功，請檢查記錄檔並解決錯誤。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image39.png)
 
-8.  在 [VM 組態]**** 中，確定已正確設定復原設定。 您可以在必要時變更 VM 設定。
+8.  在 **VM 組態** 請確定已正確設定復原設定。 您可以在必要時變更 VM 設定。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image40.png)
 
 9. 檢閱將復原的虛擬機器清單並指定復原順序。 請注意，VM 會使用電腦主機名稱列出。 此程式碼
 可能難以對應到虛擬機器的電腦主機名稱。
-若要對應名稱，請移至 Azure 中的虛擬機器 [儀表板]**** 並檢查 VM 主機名稱。
+若要對應的名稱，請移至虛擬機器 **儀表板** 於 Azure 及檢查 VM 主機名稱。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image41.png)
 
-10. 指定方案名稱，然後選取 [稍後復原]****。 建議稍後復原，因為初始保護可能不完整。
-11. 如果您選取立即復原而不是稍後復原，請按一下 [復原]**** 來儲存方案或觸發復原。 您可以檢查復原狀態以查看是否已儲存方案。
+10. 指定方案名稱，然後選取 **稍後復原**。 建議稍後復原，因為初始保護可能不完整。 
+11. 按一下 [ **復原** 儲存計劃，或如果您選取要復原現在與未來不會觸發復原。 您可以檢查復原狀態以查看是否已儲存方案。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image42.png)
 
@@ -416,14 +421,14 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 
 ![](./media/site-recovery-failback-azure-to-vmware/image44.png)
 
-起始復原之前，請關閉 Azure 虛擬機器。 這可確保不會產生核心分裂，而且使用者將只能存取應用程式的複本。
+起始復原之前，請關閉 Azure 虛擬機器。 這可確保不會產生核心分裂，而且使用者將只能存取應用程式的複本。 
 
 
-1.  啟動儲存的方案。 在 vContinuum 中，選取 [監視]**** 方案。 這樣會列出所有已執行的方案。
+1.  啟動儲存的方案。 在 vContinuum 選取 **監視** 計劃。 這樣會列出所有已執行的方案。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image45.png)
 
-2.  在 [復原]**** 中選取方案並按一下 [啟動]****。 您可以監視復原。 開啟 VM 之後，您可以在 vCenter 中與它們連接。
+2.  選取在計劃 **復原** 按一下 **啟動**。 您可以監視復原。 開啟 VM 之後，您可以在 vCenter 中與它們連接。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image46.png)
 
@@ -437,14 +442,10 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 3.  在 Azure 中，刪除已容錯移轉的 Azure 虛擬機器
 4.  刪除 vSpehere 上的舊虛擬機器。 這些是您先前容錯移轉到 Azure 的 VM。
 5.  在 Site Recovery 入口網站中，保護最近容錯移轉的 VM。 它們受保護之後，您可以將它們加入復原計畫。
-
+ 
 ## 後續步驟
 
-[閱讀](site-recovery-vmware-to-azure.md) VMware 虛擬機器複寫至 Azure
+[閱讀有關](site-recovery-vmware-to-azure.md) VMware 虛擬機器複寫至 Azure
 
-
-
-
-
-
+ 
 

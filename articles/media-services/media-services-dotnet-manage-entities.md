@@ -1,47 +1,48 @@
+
 <properties 
-    pageTitle ="管理資產和相關實體與媒體服務.NET SDK 」 
-    描述 = 「"了解如何管理資產和相關的實體使用 Media Services SDK for.NET。 
-    作者 ="juliako" 
+    pageTitle="使用媒體服務 .NET SDK 管理資產和相關的實體" 
+    description="深入了解使用 Media Services SDK for .NET 管理資產和相關的實體" 
+    authors="juliako" 
     manager="dwrede" 
-    編輯器 ="" 
-    服務 = [媒體服務] 
-    documentationCenter =""/ >
+    editor="" 
+    services="media-services" 
+    documentationCenter=""/>
 
 <tags 
-    ms.service= [媒體服務] 
-    ms.workload="media 」 
+    ms.service="media-services" 
+    ms.workload="media" 
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="12/05/2015 」
-    ms.author="juliako"/ >
+    ms.date="12/05/2015"
+    ms.author="juliako"/>
 
 
-# 使用媒體服務 .NET SDK 管理資產和相關的實體
+#使用媒體服務 .NET SDK 管理資產和相關的實體
+
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-manage-entities.md)
 - [REST](media-services-rest-manage-entities.md)
 
 
-
 本主題示範如何完成下列的媒體服務管理工作：
 
-- 取得資產參考
-- 取得工作參考
-- 列出所有資產
-- 列出工作和資產
-- 列出所有存取原則
-- 列出所有定位器
-- 刪除資產
-- 刪除工作
-- 刪除存取原則
+- 取得資產參考 
+- 取得工作參考 
+- 列出所有資產 
+- 列出工作和資產 
+- 列出所有存取原則 
+- 列出所有定位器 
+- 刪除資產 
+- 刪除工作 
+- 刪除存取原則 
 
-## 必要條件
+##先決條件 
 
 請參閱 [設定環境](media-services-set-up-computer.md)
 
-## 取得資產參考
+##取得資產參考
 
 常見的工作是在媒體服務中取得現有資產的參考。 下列程式碼範例顯示如何根據資產識別碼，從伺服器內容物件的資產集合取得資產參考。
 下列程式碼範例會使用 Linq 查詢來取得現有 IAsset 物件的參考。
@@ -59,7 +60,7 @@
         return asset;
     }
 
-## 取得工作參考
+##取得工作參考
 
 當您使用媒體服務程式碼中的處理工作時，您通常需要根據識別碼取得現有工作的參考。 下列程式碼範例顯示如何從「工作」集合取得 IJob 物件的參考。
 警告:
@@ -79,7 +80,7 @@
         return job;
     }
 
-## 列出所有資產
+##列出所有資產
 
 當您在儲存體中的資產數目增加時，最好能將資產列出。 下列程式碼範例顯示如何在伺服器內容物件上逐一查看「資產」集合。 使用各個資產時，程式碼範例也會將它的某些屬性值寫入主控台。 例如，每個資產可以包含多個媒體檔案。 程式碼範例會寫出與每個資產相關聯的所有檔案。
 
@@ -121,15 +122,15 @@
         Console.Write(builder.ToString());
     }
 
-## 列出工作和資產
+##列出工作和資產
 
-重要的相關工作是在媒體服務中列出資產及其相關聯的工作。 下列程式碼範例會示範如何列出每個 IJob 物件，然後它會針對每個工作，顯示作業的相關屬性、所有相關工作、所有輸入資產，以及所有輸出資產。 此範例中的程式碼可用於許多其他工作。 例如，如果您想要從您先前執行的一或多個編碼工作列出輸出資產，此程式碼會示範如何存取輸出資產。 當您有輸出資產的參考時，可以透過下載或提供 URL，將內容傳遞給其他使用者或應用程式。
+重要的相關工作是在媒體服務中列出資產及其相關聯的工作。 下列程式碼範例會示範如何列出每個 IJob 物件，然後它會針對每個工作，顯示作業的相關屬性、所有相關工作、所有輸入資產，以及所有輸出資產。 此範例中的程式碼可用於許多其他工作。 例如，如果您想要從您先前執行的一或多個編碼工作列出輸出資產，此程式碼會示範如何存取輸出資產。 當您有輸出資產的參考時，可以透過下載或提供 URL，將內容傳遞給其他使用者或應用程式。 
 
 如需有關資產有哪些傳遞選項的詳細資訊，請參閱 [使用 Media Services SDK for.NET 傳遞資產](media-services-deliver-streaming-content.md)。
 
     // List all jobs on the server, and for each job, also list 
     // all tasks, all input assets, all output assets.
-    
+
     static void ListJobsAndAssets()
     {
         string waitMessage = "Building the list. This may take a few "
@@ -202,7 +203,7 @@
         Console.Write(builder.ToString());
     }
 
-## 列出所有存取原則
+##列出所有存取原則
 
 在媒體服務中，您可以定義資產或其檔案的存取原則。 存取原則會定義檔案或資產 (存取的類型和持續時間) 的權限。 在您的媒體服務程式碼中，通常會藉由建立 IAccessPolicy 物件，然後將其與現有資產產生關聯，來定義存取原則。 然後您會建立 ILocator 物件，這可讓您直接存取媒體服務中的資產。 本文件系列隨附的 Visual Studio 專案包含數個程式碼範例，示範如何建立及指派存取原則和定位器給資產。
 
@@ -221,7 +222,7 @@
         }
     }
 
-## 列出所有定位器
+##列出所有定位器
 
 定位器是 URL，提供存取資產的直接路徑，以及由定位器相關聯的存取原則所定義之對於資產的權限。 每個資產在其定位器屬性上可以有與其相關聯的 ILocator 物件的集合。 伺服器內容也有定位器集合，其中包含所有定位器。
 
@@ -247,7 +248,8 @@
         }
     }
 
-## 刪除資產
+
+##刪除資產
 
 下列範例會刪除資產。
 
@@ -262,7 +264,7 @@
     
     }
 
-## 刪除工作
+##刪除工作
 
 若要刪除工作，您必須檢查工作的狀態，如 State 屬性所示。 可以刪除已完成或已取消的工作，而其他某些狀態，例如已佇列、已排程或處理中的工作，必須先取消，然後才能刪除。
 下列程式碼範例示範刪除工作的方法，方法是檢查工作狀態，然後於狀態為已完成或已取消時刪除工作。 此程式碼相依於本主題中的前一節，以取得工作的參考：取得工作參考。
@@ -312,7 +314,8 @@
         }
     }
 
-## 刪除存取原則
+
+##刪除存取原則
 
 下列程式碼範例顯示如何根據原則識別碼，取得存取原則的參考，然後刪除原則。
 
@@ -329,16 +332,14 @@
         policy.Delete();
     
     }
+    
 
-## 媒體服務學習路徑
+
+##媒體服務學習路徑
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供意見反應
+##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
 

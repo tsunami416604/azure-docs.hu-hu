@@ -1,4 +1,4 @@
-* 開啟 **QSTodoListViewController.m**，並加入下列方法： 如果您不使用 Facebook 作為識別提供者，請將 _facebook_ 變更為 _microsoftaccount_、_twitter_、_google_ 或 _windowsazureactivedirectory_。
+* 開啟 **QSTodoListViewController.m** 並加入下列方法。 變更 _facebook_ 至 _microsoftaccount_, ，_twitter_, ，_google_, ，或 _windowsazureactivedirectory_ 如果您不使用 Facebook 作為身分識別提供者。
 
 ```
         - (void) loginAndGetData
@@ -14,15 +14,11 @@
         }
 ```
 
-* 取代 `[自動重新整理]` 中 `viewDidLoad` 取代為下列:
+* 使用下列程式碼取代 `viewDidLoad` 中的 `[self refresh]`：
 
 ```
         [self loginAndGetData];
 ```
 
 * 按下  **執行** 以啟動應用程式，然後登入。 當您登入時，應該能夠檢視待辦事項清單並進行更新。
-
-
-
-
 

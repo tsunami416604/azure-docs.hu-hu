@@ -17,7 +17,6 @@
    ms.date="11/01/2015"
    ms.author="kundanap"/>
 
-
 # 使用自訂指令碼擴充功能搭配 Azure 資源管理員範本
 
 這篇文章概要說明如何以自訂指令碼擴充功能撰寫 Azure 資源管理員範本，以啟動 Linux 或 Windows VM 上的工作負載。
@@ -38,7 +37,7 @@ Azure 資源管理員範本可讓您藉由定義資源之間的相依性，以�
 
 ### 必要條件
 
-1. 安裝最新的 Azure PowerShell Cmdlet 或從 Azure CLI [這裡](http://azure.microsoft.com/downloads)。
+1. 從[這裡](http://azure.microsoft.com/downloads)安裝最新版的 Azure PowerShell Cmdlet 或 Azure CLI。
 2. 如果現有的 VM 上執行指令碼，則請確定 VM 代理程式已啟用的 VM 上，如果沒有，請依照 [這](virtual-machines-extensions-install) 進行安裝。
 3. 將您想要在 VM 上執行的指令碼上傳到 Azure 儲存體。 指令碼可以來自單一或多個儲存體容器。
 4. 或者也能將指令碼上傳至 Github 帳戶。
@@ -48,7 +47,7 @@ Azure 資源管理員範本可讓您藉由定義資源之間的相依性，以�
 
 為了部署範本中，我們使用相同版本的 Azure 服務管理 Api 中可用的自訂指令碼延伸模組。 本延伸模組支援將檔案上傳至 Azure 儲存體帳戶或 Github 位置的相同參數和案例。 搭配範本使用時，主要差異在於應該指定正確版本的延伸模組，而不是以 majorversion.* 格式指定版本。
 
- ## Linux VM 的範本範例
+ ## 針對 Linux VM 範本範例
 
 在範本的資源區段中定義下列延伸模組資源
 
@@ -101,11 +100,7 @@ Azure 資源管理員範本可讓您藉由定義資源之間的相依性，以�
 
 如需在 VM 上使用自訂指令碼擴充功能來設定應用程式的完整範例，請參閱以下範例。
 
-<a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM 上的自訂指令碼延伸模組</a>。
+<a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM 上的自訂指令碼延伸模組</a>.
 </br>
-<a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">在 Windows VM 上的自訂指令碼延伸模組</a>。
-
-
-
-
+<a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">在 Windows VM 上的自訂指令碼延伸模組</a>.
 

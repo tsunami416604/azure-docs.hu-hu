@@ -16,19 +16,18 @@
    ms.date="12/07/2015"
    ms.author="ryanwi"/>
 
-
 # REST 架構應用程式生命週期範例
 
 這個範例會透過 REST API 呼叫示範 Service Fabric 應用程式生命週期。 如需 Service Fabric 應用程式生命週期的詳細資訊，請參閱 [Service Fabric 應用程式生命週期](service-fabric-application-lifecycle.md)。
 
 這個範例會執行下列作業：
 
-* 佈建映像存放區中之 WordCount 應用程式封裝的 **WordCount 1.0.0** 範例。
+* 佈建 **WordCount 1.0.0** 範例映像存放區中的 WordCount 應用程式封裝。
 * 顯示包含 WordCount 1.0.0 的應用程式類型清單。
-* 將 WordCount 應用程式建立為 **fabric:/WordCount**。
+* 會建立 WordCount 應用程式做為 **fabric: / WordCount**。
 * 顯示包含 fabric:/WordCount 1.0.0 版的應用程式清單。
-* 佈建映像存放區中之 **WordCountUpgrade** 應用程式封裝的 1.1.0 版 WordCount 範例。
-* 顯示包含 WordCount 1.0.0 與 **WordCount 1.1.0** 的應用程式類型清單。
+* WordCount 範例的佈建 1.1.0 版 **WordCountUpgrade** 映像存放區中的應用程式封裝。
+* 顯示包含兩個 WordCount 1.0.0 清單中的應用程式類型和 **WordCount 1.1.0**。
 * 將 WordCount 應用程式升級為 1.1.0 版。
 * 顯示包含 WordCount 1.1.0 版，但不再包含 WordCount 1.0.0 版的應用程式清單。
 * 刪除 WordCount 應用程式。
@@ -39,21 +38,21 @@
 * 顯示不再包含 WordCount 的應用程式類型清單。
 
 
-## 必要條件
+## 先決條件
 
 這個範例會使用 [字數範例](http://aka.ms/servicefabricsamples) (位於 **開始** 範例)。 必須先建置 WordCount 範例，再兩個應用程式封裝複製到映像存放區。
 
-| 資料夾| 說明|
+|資料夾|說明|
 |------|-----------|
-| WordCount| WordCount 範例應用程式。**ApplicationManifest.xml** 包含 **ApplicationTypeVersion ="1.0.0"**。|
-| WordCountUpgrade| WordCount 範例應用程式。ApplicationManifest.xml 檔案必須變更為 **ApplicationTypeVersion ="1.1.0"**，應用程式才能升級。|
+|WordCount|WordCount 範例應用程式。  **ApplicationManifest.xml** 檔案包含 **ApplicationTypeVersion ="1.0.0"**。|
+|WordCountUpgrade|WordCount 範例應用程式。 ApplicationManifest.xml 檔案必須變更為 **ApplicationTypeVersion ="1.1.0"** 以允許應用程式升級。|
 
 若要建立應用程式封裝，並將其複製到映像存放區，請執行下列步驟：
 
-1. 將 **C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug** 複製到 **C:\Temp\WordCount**。 即會建立 WordCount 應用程式封裝。
-2. 將 C:\Temp\WordCount 複製到 **C:\Temp\WordCountUpgrade**。 這會建立 **WordCountUpgrade** 應用程式封裝。
-3. 在文字編輯器中，開啟 **C:\Temp\WordCountUpgrade\ApplicationManifest.xml**。
-4. 在 **ApplicationManifest** 項目中，將 **ApplicationTypeVersion** 屬性變更為 **"1.1.0"**。 即會更新應用程式的版本號碼。
+1. 複製 **C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug** 至 **C:\Temp\WordCount**。 即會建立 WordCount 應用程式封裝。
+2. 複製到 C:\Temp\WordCount **C:\Temp\WordCountUpgrade**。 這會建立 **WordCountUpgrade 應用程式** 封裝。
+3. 開啟 **C:\Temp\WordCountUpgrade\ApplicationManifest.xml** 在文字編輯器中。
+4. 在 **ApplicationManifest** 項目，變更 **ApplicationTypeVersion** 屬性設定為 **"1.1.0"**。  即會更新應用程式的版本號碼。
 5. 儲存已變更的 ApplicationManifest.xml 檔案。
 6. 以系統管理員身分執行下列 PowerShell 指令碼，將應用程式複製到映像存放區：
 
@@ -705,12 +704,8 @@ namespace ServiceFabricRestCaller
 ```
 
 
-
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
 [Service Fabric 應用程式生命週期](service-fabric-application-lifecycle.md)
-
-
-
-
 

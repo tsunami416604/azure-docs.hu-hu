@@ -1,19 +1,20 @@
+
 <properties
-    pageTitle ="Azure RemoteApp 中 VNET 的大小資訊 |Microsoft Azure 「
-    描述 ="了解使用 VNET 執行 Azure RemoteApp 的 IP 位址需求 」
-    服務 ="remoteapp"
+    pageTitle="Azure RemoteApp 中 VNET 的大小調整資訊 | Microsoft Azure"
+    description="深入了解使用 VNET 執行之 Azure RemoteApp 的 IP 位址需求"
+    services="remoteapp"
     documentationCenter=""
-    作者 ="lizap"
-    管理員 ="mbaldwin"/ >
+    authors="lizap"
+    manager="mbaldwin" />
 
 <tags
-    ms.service="remoteapp 」
-    ms.workload="compute 」
+    ms.service="remoteapp"
+    ms.workload="compute"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="12/05/2015 」
-    ms.author="elizapo"/ >
+    ms.date="12/05/2015"
+    ms.author="elizapo" />
 
 
 
@@ -27,8 +28,4 @@
 
 - [從個人 VNET 移轉至 Azure VNET](remoteapp-migratevnet.md)
 - [驗證要搭配 Azure RemoteApp 使用的 Azure VNET](remoteapp-vnet.md)
-
-
-
-
 

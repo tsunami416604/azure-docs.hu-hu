@@ -16,33 +16,33 @@
     ms.date="11/30/2015"
     ms.author="krisragh"/>
 
-
 # 將驗證新增至您的 iOS 應用程式
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 &nbsp;  
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
-在本教學課程中，您可以將驗證新增至使用支援的身分識別提供者的 [iOS 快速入門] 專案。 本教學課程為基礎的 [iOS 快速入門] 教學課程，您必須先完成。
+在本教學課程中，您將驗證加入至 [iOS quick start] 專案使用支援的身分識別提供者。 本教學課程根據 [iOS quick start] 教學課程，您必須先完成。 
 
-## <a name="register"></a>註冊應用程式進行驗證，並設定應用程式服務
+##<a name="register"></a>註冊應用程式進行驗證，並設定應用程式服務
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="permissions"></a>限制已驗證的使用者權限
+##<a name="permissions"></a>限制只有通過驗證的使用者具有權限
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-在 Xcode 中，按下 **執行** 啟動應用程式。 因為應用程式嘗試以未驗證的使用者身分來存取後端，但 _TodoItem_ 資料表現在需要驗證，所以會引發例外狀況。
+在 Xcode 中，按下 **執行** 啟動應用程式。 將會引發例外狀況，因為應用程式嘗試存取後端以未驗證的使用者，但 _TodoItem_ 資料表現在需要驗證。
 
-## <a name="add-authentication"></a>將驗證新增至應用程式
+##<a name="add-authentication"></a>將驗證加入應用程式
 
 [AZURE.INCLUDE [app-service-mobile-ios-authenticate-app](../../includes/app-service-mobile-ios-authenticate-app.md)]
 
 
+<!-- URLs. -->
 
+[iOS quick start]: app-service-mobile-ios-get-started.md
 
-
-[ios quick start]: app-service-mobile-ios-get-started.md 
-[azure portal]: https://portal.azure.com 
+[Azure portal]: https://portal.azure.com
+ 
 

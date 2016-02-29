@@ -16,7 +16,6 @@
     ms.date="11/03/2015" 
     ms.author="tomfitz"/>
 
-
 # 以新的閘道佈建 API 應用程式
 
 在本主題中，您將學習如何建立 Azure 資源管理員範本，以部署 Azure API 應用程式和閘道。 您將學習如何定義要部署哪些資源， 
@@ -38,7 +37,7 @@
 
 若要自動執行部署，請按一下下列按鈕：
 
-[![部署至 Azure](http://azuredeploy.net/deploybutton.png)] (https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-app-gateway-new%2Fazuredeploy.json)
+[![Deploy 到 Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-app-gateway-new%2Fazuredeploy.json)
 
 ## 參數
 
@@ -46,7 +45,7 @@
 
 ### hostingPlanName
 
-App Service 方案的名稱。
+App Service 方案的名稱。 
 
     "hostingPlanName": {
       "type": "string"
@@ -66,7 +65,7 @@ App Service 方案的名稱。
         "hostingEnvironment": ""
       }
     }
-
+    
 ## 變數
 
 此範本會定義部署資源時使用的變數。
@@ -74,7 +73,7 @@ App Service 方案的名稱。
     "variables": {
       "packageId": "Microsoft.ApiApp"
     }
-
+    
 下方使用的值為 **variables('packageId')**。 它包含 API 應用程式的 NuGet 套件 ID。
 
 ## 要部署的資源
@@ -99,10 +98,10 @@ App Service 方案的名稱。
 
 ### 主控閘道的 Web 應用程式
 
-建立主控閘道的 Web 應用程式。
+建立主控閘道的 Web 應用程式。 
 
-請注意，請將 **kind** 設為 **gateway**，這麼做會通知 Azure 入口網站此 Web 應用程式正在主控某個閘道。 入口網站會在瀏覽 Web 應用程式刀鋒視窗中隱藏此 Web 應用程式。 
-裝載的 Web 應用程式與閘道之間會定義一個連結。 應用程式設定區段中會包含主控 API 應用程式的必要值。 **serverFarmId** 包含您在 **hostingPlanName** 參數中提供的 App Service 方案名稱。
+請注意， **種類** 設為 **閘道** 這麼做會通知 Azure 入口網站此 web 應用程式正在主控某個閘道。 入口網站會在瀏覽 Web 應用程式刀鋒視窗中隱藏此 Web 應用程式。 
+裝載的 Web 應用程式與閘道之間會定義一個連結。 應用程式設定區段中會包含主控 API 應用程式的必要值。  **ServerFarmId** 包含您在提供的應用程式服務計劃名稱 **hostingPlanName** 參數。
 
 
     {
@@ -187,10 +186,10 @@ App Service 方案的名稱。
 
 ### 主控 API 應用程式的 Web 應用程式
 
-建立主控 API 應用程式的 Web 應用程式。
+建立主控 API 應用程式的 Web 應用程式。 
 
-請注意，**kind** 是設定為 **apiApp**，這樣會通知 Azure 入口網站此 Web 應用程式正在主控某個 API 應用程式。 入口網站會在瀏覽 Web 應用程式刀鋒視窗中隱藏此 Web 應用程式。 應用程式包含的延伸模組 
-若要安裝預設空白 API 應用程式封裝。 API 應用程式與主控 Web 應用程式之間會定義一個連結。 應用程式設定區段中會包含主控 API 應用程式的必要值。 **serverFarmId** 包含您在 **hostingPlanName** 參數中提供的 App Service 方案名稱。
+請注意， **種類** 設為 **apiApp** 這麼做會通知 Azure 入口網站此 web 應用程式裝載 API 應用程式。 入口網站會在瀏覽 Web 應用程式刀鋒視窗中隱藏此 Web 應用程式。 應用程式包含的延伸模組 
+若要安裝預設空白 API 應用程式封裝。 API 應用程式與主控 Web 應用程式之間會定義一個連結。 應用程式設定區段中會包含主控 API 應用程式的必要值。  **ServerFarmId** 包含您在提供的應用程式服務計劃名稱 **hostingPlanName** 參數。
 
     {
       "type": "Microsoft.Web/sites",
@@ -260,7 +259,7 @@ App Service 方案的名稱。
 
 建立 API 應用程式。
 
-請注意，主控 Web 應用程式和閘道的名稱會定義為 API 應用程式中的屬性。
+請注意，主控 Web 應用程式和閘道的名稱會定義為 API 應用程式中的屬性。 
 
     {
       "type": "Microsoft.AppService/apiapps",
@@ -310,4 +309,5 @@ App Service 方案的名稱。
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-api-app-gateway-new/azuredeploy.json
 
 
+ 
 

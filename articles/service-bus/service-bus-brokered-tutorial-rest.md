@@ -15,7 +15,6 @@
    ms.date="09/15/2015"
    ms.author="sethm" />
 
-
 # 服務匯流排代理傳訊 REST 教學課程
 
 本教學課程示範如何建立基本的 REST 型 Azure 服務匯流排佇列和主題/訂用帳戶服務。
@@ -28,11 +27,11 @@
 
 1. 如需如何建立服務命名空間的完整資訊，請參閱主題 [How To: 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690931.aspx) 中 [管理的服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690928.aspx) 一節。
 
-1. 在主視窗中的 [Azure 傳統入口網站 []][], ，按一下您在上一個步驟中建立的命名空間的名稱。
+1. 在主視窗中的 [Azure 傳統入口網站][], ，按一下您在上一個步驟中建立的命名空間的名稱。
 
-1. 按一下 [設定]**** 索引標籤。
+1. 按一下 [ **設定** ] 索引標籤。
 
-1. 在 [**共用存取金鑰產生器**] 區段中，記下與 **RootManageSharedAccessKey** 原則相關聯的 [**主要金鑰**]，或是將它複製到剪貼簿。 您稍後會在本教學課程中使用此值。
+1. 在 **共用的存取金鑰產生器** 區段中，記下 **主索引鍵** 聯 **RootManageSharedAccessKey** 原則，或將它複製到剪貼簿。 您稍後會在本教學課程中使用此值。
 
 ## 建立主控台用戶端
 
@@ -56,11 +55,11 @@
 
 ### 建立主控台應用程式
 
-1. 以系統管理員身分啟動 Visual Studio：以滑鼠右鍵按一下 [**開始**] 功能表中的程式，然後按一下 [**以系統管理員身分執行**]。
+1. 系統管理員身分啟動 Visual Studio 中的程式上按一下滑鼠右鍵 **啟動** ] 功能表上，然後按一下 [ **系統管理員身分執行**。
 
-1. 這會建立新的主控台應用程式專案。 依序按一下 [**檔案**] 功能表、[**新增**] 和 [**專案**]。 在 [**新增專案**] 對話方塊中，按一下 **Visual C#** (如果 **Visual C#** 未出現，請在 [**其他語言**] 中尋找)，選取 [**主控台應用程式**] 範本，並將它命名為 **Microsoft.ServiceBus.Samples**。 使用預設位置。 按一下 [確定]**** 以建立專案。
+1. 這會建立新的主控台應用程式專案。 按一下 [ **檔案** 功能表，然後按一下 **新增**, ，然後按一下 [ **專案**。 在 **新專案** 對話方塊中，按一下 **Visual C#** (如果 **Visual C#** 不會出現，請查看 **其他語言**)，請選取 **主控台應用程式** 範本，並將其命名 **Microsoft.ServiceBus.Samples**。 使用預設位置。 按一下 [ **確定** 以建立專案。
 
-1. 在 Program.cs 中，請確定您 `使用` 陳述式會出現，如下所示:
+1. 在 Program.cs 中，確定您的 `using` 陳述式如下所示：
 
     ```
     using System;
@@ -72,10 +71,10 @@
     using System.Xml;
     ```
 
-1. 如有必要，將命名空間從 Visual Studio 預設值，程式 `Microsoft.ServiceBus.Samples`。
+1. 如有需要，將程式的命名空間從 Visual Studio 預設值重新命名為 `Microsoft.ServiceBus.Samples`。
 
-1. 內部 `程式` 類別中，新增下列全域變數:
-
+1. 在 `Program` 類別中，新增下列全域變數：
+    
     ```
     static string serviceNamespace;
     static string baseAddress;
@@ -83,56 +82,56 @@
     const string sbHostName = "servicebus.windows.net";
     ```
 
-1. 內部 `main ()`, ，貼上下列程式碼:
+1. 在 `Main()` 內，貼上下列程式碼：
 
     ```
     Console.Write("Enter your service namespace: ");
     serviceNamespace = Console.ReadLine();
-
+    
     Console.Write("Enter your SAS key: ");
     string SASKey = Console.ReadLine();
-
+    
     baseAddress = "https://" + serviceNamespace + "." + sbHostName + "/";
     try
     {
         token = GetSASToken("RootManageSharedAccessKey", SASKey);
-
+    
         string queueName = "Queue" + Guid.NewGuid().ToString();
-
+    
         // Create and put a message in the queue
         CreateQueue(queueName, token);
         SendMessage(queueName, "msg1");
         string msg = ReceiveAndDeleteMessage(queueName);
-
+    
         string topicName = "Topic" + Guid.NewGuid().ToString();
         string subscriptionName = "Subscription" + Guid.NewGuid().ToString();
         CreateTopic(topicName);
         CreateSubscription(topicName, subscriptionName);
         SendMessage(topicName, "msg2");
-
+    
         Console.WriteLine(ReceiveAndDeleteMessage(topicName + "/Subscriptions/" + subscriptionName));
-
+    
         // Get an Atom feed with all the queues in the namespace
         Console.WriteLine(GetResources("$Resources/Queues"));
-
+    
         // Get an Atom feed with all the topics in the namespace
         Console.WriteLine(GetResources("$Resources/Topics"));
-
+    
         // Get an Atom feed with all the subscriptions for the topic we just created
         Console.WriteLine(GetResources(topicName + "/Subscriptions"));
-
+    
         // Get an Atom feed with all the rules for the topic and subscription we just created
         Console.WriteLine(GetResources(topicName + "/Subscriptions/" + subscriptionName + "/Rules"));
-
+    
         // Delete the queue we created
         DeleteResource(queueName);
-
+    
         // Delete the topic we created
         DeleteResource(topicName);
-
+    
         // Get an Atom feed with all the topics in the namespace, it shouldn't have the one we created now
         Console.WriteLine(GetResources("$Resources/Topics"));
-
+    
         // Get an Atom feed with all the queues in the namespace, it shouldn't have the one we created now
         Console.WriteLine(GetResources("$Resources/Queues"));
     }
@@ -150,7 +149,7 @@
             }
         }
     }
-
+    
     Console.WriteLine("\nPress ENTER to exit.");
     Console.ReadLine();
     ```
@@ -161,7 +160,7 @@
 
 ### 建立 GetSASToken() 方法
 
-貼上下列程式碼之後 `main ()` 方法，請在 `程式` 類別:
+在 `Program` 類別中，將下列程式碼貼在 `Main()` 方法之後︰
 
 ```
 private static string GetSASToken(string SASKeyName, string SASKeyValue)
@@ -181,7 +180,7 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 
 下一個步驟是撰寫一個方法，以使用 REST 樣式 HTTP PUT 命令來建立佇列。
 
-貼上下列程式碼直接之後 `getsastoken ()` 您在上一個步驟中加入程式碼:
+將下列程式碼直接貼在您在上一個步驟中新增的 `GetSASToken()` 程式碼之後︰
 
 ```
 // Uses HTTP PUT to create the queueprivatestaticstring CreateQueue(string queueName, string token)
@@ -207,7 +206,7 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 
 在此步驟中，您可以新增一個方法，以使用 REST 樣式 HTTP POST 命令將訊息傳送至您在上一個步驟中建立的佇列。
 
-1. 貼上下列程式碼直接之後 `CreateQueue()` 您在上一個步驟中加入程式碼:
+1. 將下列程式碼直接貼在您在上一個步驟中新增的 `CreateQueue()` 程式碼之後︰
 
     ```
     // Sends a message to the "queueName" queue, given the name and the value to enqueue
@@ -217,12 +216,12 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
         Console.WriteLine("\nSending message {0} - to address {1}", body, fullAddress);
         WebClient webClient = new WebClient();
         webClient.Headers[HttpRequestHeader.Authorization] = token;
-
+    
         webClient.UploadData(fullAddress, "POST", Encoding.UTF8.GetBytes(body));
     }
     ```
 
-1. 標準的仲介的訊息屬性都會被置於 `BrokerProperties` HTTP 標頭。 代理人屬性必須以 JSON 格式進行序列化。 若要指定 **TimeToLive** 值為 30 秒，並將訊息標籤"M1"至訊息、 前面加入下列程式碼 `webClient.UploadData()` 呼叫前一個範例所示:
+1. 標準代理訊息屬性會放在 `BrokerProperties` HTTP 標頭中。 代理人屬性必須以 JSON 格式進行序列化。 若要指定 **TimeToLive** 值為 30 秒，並將訊息標籤"M1"至訊息、 前面加入下列程式碼 `webClient.UploadData()` 呼叫前一個範例所示:
 
     ```
     // Add brokered message properties "TimeToLive" and "Label"
@@ -231,7 +230,7 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 
     請注意，從前和以後都會新增代理訊息屬性。 因此，傳送要求指定的 API 版本必須支援屬於此要求的一部分的所有代理訊息屬性。 如果指定的 API 版本不支援代理訊息屬性，則會忽略該屬性。
 
-1. 自訂訊息屬性會定義為一組機碼值組。 每個自訂屬性都會儲存在自己的 TPPT 標頭中。 若要加入自訂屬性"Priority"和"Customer"，加入下列程式碼前面 `webClient.UploadData()` 呼叫前一個範例所示:
+1. 自訂訊息屬性會定義為一組機碼值組。 每個自訂屬性都會儲存在自己的 TPPT 標頭中。 若要加入自訂屬性 "Priority" 和 "Customer"，請將下列程式碼直接加在前一個範例所示的 `webClient.UploadData()` 呼叫前面：
 
     ```
     // Add custom properties "Priority" and "Customer".
@@ -243,7 +242,7 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 
 下一個步驟是新增一個方法，以使用 REST 樣式 HTTP DELETE 命令來接收和刪除佇列中的訊息。
 
-貼上下列程式碼直接之後 `sendmessage ()` 您在上一個步驟中加入程式碼:
+將下列程式碼直接貼在您在上一個步驟中新增的 `SendMessage()` 程式碼之後︰
 
 ```
 // Receives and deletes the next message from the given resource (queue, topic, or subscription)
@@ -269,7 +268,7 @@ private static string ReceiveAndDeleteMessage(string resourceName)
 
 ### 建立主題
 
-貼上下列程式碼直接之後 `ReceiveAndDeleteMessage()` 您在上一個步驟中加入程式碼:
+將下列程式碼直接貼在您在上一個步驟中新增的 `ReceiveAndDeleteMessage()` 程式碼之後︰
 
 ```
 // Using an HTTP PUT request.
@@ -295,7 +294,7 @@ private static string CreateTopic(string topicName)
 
 ### 建立訂用帳戶
 
-下列程式碼會建立您在上一個步驟中建立之主題的訂用帳戶。 加入下列程式碼直接之後 `CreateTopic()` 定義:
+下列程式碼會建立您在上一個步驟中建立之主題的訂用帳戶。 將下列程式碼直接加在 `CreateTopic()` 定義之後：
 
 ```
 private static string CreateSubscription(string topicName, string subscriptionName)
@@ -324,7 +323,7 @@ private static string CreateSubscription(string topicName, string subscriptionNa
 
 ### 擷取含有指定資源的 Atom 摘要
 
-加入下列程式碼直接之後 `CreateSubscription()` 您在上一個步驟中加入的方法:
+將下列程式碼直接加在您在上一個步驟中新增的 `CreateSubscription()` 方法之後︰
 
 ```
 private static string GetResources(string resourceAddress)
@@ -356,7 +355,7 @@ private static string DeleteResource(string resourceName)
 
 ### 格式化 Atom 摘要
 
-`GetResources()` 方法包含呼叫 `FormatXml()` 方法重新格式化，使擷取的 Atom 摘要其更容易閱讀。 下列是定義 `FormatXml()`; 加入下列程式碼直接之後 `DeleteResource()` 您在上一節中新增的程式碼:
+`GetResources()` 方法包含呼叫 `FormatXml()` 方法，可將擷取的 Atom 摘要重新格式化為更容易讀取的內容。 以下是 `FormatXml()` 的定義；將下列程式碼直接加在您在上一節中新增的 `DeleteResource()` 程式碼之後︰
 
 ```
 // Formats the XML string to be more human-readable; intended for display purposes
@@ -378,7 +377,7 @@ private static string FormatXml(string inputXml)
 
 ## 建置並執行應用程式
 
-您現在可以建置並執行應用程式。 在 Visual Studio 的 [**建置**] 功能表中，按一下 [**建置方案**] 或按 F6 鍵。
+您現在可以建置並執行應用程式。 從 **建置** ] 功能表，在 Visual Studio 中，按一下 [ **建置方案**, ，或按 F6。
 
 ### 執行應用程式
 
@@ -628,8 +627,6 @@ namespace Microsoft.ServiceBus.Samples
 
 - [服務匯流排訊息概觀](service-bus-messaging-overview.md)
 - [Azure 服務匯流排基本概念](fundamentals-service-bus-hybrid-solutions.md)
-- [服務匯流排轉送的 REST 教學課程](service-bus-relay-rest-tutorial.md)
+- [服務匯流排轉送 REST 教學課程](service-bus-relay-rest-tutorial.md)
 
-
-[azure classic portal]: http://manage.windowsazure.com 
-
+[Azure classic portal]: http://manage.windowsazure.com

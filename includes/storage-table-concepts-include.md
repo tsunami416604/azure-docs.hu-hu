@@ -22,19 +22,19 @@ Azure 資料表儲存體服務可儲存大量的
 
 資料表服務包含下列元件：
 
-![表格 1][table1]
+![表格 1][Table1]
 
 -   **URL 格式:** 程式碼位址使用此帳戶中的資料表
     ：   
-    http://`< 儲存體帳戶 >`.table.core.windows.net/`< 資料表 >`
-
+    http://`<storage account>`.table.core.windows.net/`<table>`  
+      
     您可以使用此位址搭配 OData 通訊協定，直接定址 Azure 資料表
-    。 如需詳細資訊，請參閱 [OData.org []][]
+    。 如需詳細資訊，請參閱 [OData.org][]
 
 -   **儲存體帳戶:** 已完成所有存取 Azure 儲存體
     。 請參閱 [Azure 儲存體延展性和效能目標](storage-scalability-targets.md) 儲存體帳戶容量的詳細資料。
 
--   **資料表**：資料表是一組實體。 資料表不會強制使用
+-   **資料表**: 資料表是實體的集合。 資料表不會強制使用
     實體的結構描述，也就是說，單一資料表可以包含
     具有不同組屬性的實體。 儲存體帳戶可以包含的資料表數目 
     僅受到儲存體帳戶 
@@ -43,7 +43,7 @@ Azure 資料表儲存體服務可儲存大量的
 -   **實體**: 實體是一組屬性，類似於資料庫
     資料列。 實體的大小上限為 1MB。
 
--   **屬性**：屬性是名稱/值組。 每個實體可以
+-   **屬性**: 屬性是名稱 / 值組。 每個實體可以
     包含高達 252 個屬性來儲存資料。 每個實體也有 3 個
     系統屬性，可指定資料分割索引鍵、資料列索引鍵以及
     時間戳記。 資料分割索引鍵相同的實體可以更快的速度
@@ -51,8 +51,7 @@ Azure 資料表儲存體服務可儲存大量的
     索引鍵在資料分割內是唯一的識別碼。
 
 
-
-
-[table1]: ./media/storage-table-concepts-include/table1.png 
-[odata.org]: http://www.odata.org/ 
+  
+  [Table1]: ./media/storage-table-concepts-include/table1.png
+  [OData.org]: http://www.odata.org/
 

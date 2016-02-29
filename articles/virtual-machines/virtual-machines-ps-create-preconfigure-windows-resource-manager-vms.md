@@ -17,16 +17,14 @@
     ms.date="10/08/2015"
     ms.author="cynthn"/>
 
-
 # 利用資源管理員和 Azure PowerShell 建立及設定 Windows 虛擬機器
 
 > [AZURE.SELECTOR]
-- [Azure Portal - Windows](virtual-machines-windows-tutorial.md)
+- [Azure 入口網站-Windows](virtual-machines-windows-tutorial.md)
 - [Azure PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
-- [Azure PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
-- [Azure Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
+- [Azure PowerShell-範本](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Azure 入口網站的 Linux](virtual-machines-linux-tutorial-portal-rm.md)
 - [Azure CLI](virtual-machines-linux-tutorial.md)
-
 
 <br>
 
@@ -54,10 +52,11 @@
 
     Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
 
-設定您的 Azure 訂用帳戶取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
+設定您的 Azure 訂用帳戶 取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
 
     $subscr="<subscription name>"
     Select-AzureSubscription -SubscriptionName $subscr –Current
+
 
 ## 步驟 3：建立資源
 
@@ -65,7 +64,8 @@
 
 ### 資源群組
 
-使用資源管理員部署模型建立的 VM 需要資源群組。如果需要，為新虛擬機器建立新資源群組。取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
+
+使用資源管理員部署模型建立的 VM 需要資源群組。 如果需要，為新虛擬機器建立新資源群組。 取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
 
     $rgName="<resource group name>"
     $locName="<location name, such as West US>"
@@ -82,6 +82,7 @@
 
 ### 儲存體帳戶
 
+
 以資源管理員部署模型建立的 VM，需要以資源管理員建立的儲存體帳戶。 如果需要，請使用這些命令建立新虛擬機器的新儲存體帳戶。
 
     $rgName="<resource group name>"
@@ -94,16 +95,17 @@
 
     Get-AzureRmStorageAccount | Sort Name | Select Name
 
-若要測試選擇的儲存體帳戶名稱是否為全域唯一的，您必須執行 **Test-AzureName** 命令。
+若要測試選擇的儲存體帳戶名稱是否為全域唯一，您需要執行 **Test-azurename** 命令。
 
     Test-AzureName -Storage <Proposed storage account name>
 
-如果 Test-AzureName 命令顯示 "False"，表示您提出的名稱是唯一的。
+如果 Test-AzureName 命令顯示 "False"，表示您提出的名稱是唯一的。  
 
 
 ### 公用網域名稱標籤
 
-以資源管理員部署模型建立的虛擬機器可以使用公用網域名稱標籤。 標籤只能包含字母、數字和連字號。 第一個和最後一個字元必須是字母或數字。
+
+以資源管理員部署模型建立的虛擬機器可以使用公用網域名稱標籤。 標籤只能包含字母、數字和連字號。 第一個和最後一個字元必須是字母或數字。  
 
 若要測試選擇的網域名稱標籤是否為全域唯一的，請使用這些命令。
 
@@ -114,6 +116,7 @@
 如果 DNSNameAvailability 為 "True"，表是您提出的名稱是全域唯一的。
 
 ### 可用性集合
+
 
 如果需要，請使用這些命令建立新虛擬機器的新可用性集合。
 
@@ -130,7 +133,7 @@
 
 使用輸入 NAT 規則可設定以資源管理員為基礎的虛擬機器，允許來自網際網路的連入流量並放在負載平衡集中。 在這兩種情況下，您必須指定負載平衡器執行個體和其他設定。 如需詳細資訊，請參閱 [建立使用 Azure 資源管理員的負載平衡器](../load-balancer/load-balancer-arm-powershell.md)。
 
-以資源管理員部署模型建立的 VM，需要以資源管理員建立的虛擬網路。 如果需要，請使用新虛擬機器的至少一個子網路建立以資源管理員為基礎的新虛擬網路。 以下是具有 **frontendSubnet** 和 **backendSubnet** 兩個子網路的新虛擬網路 **TestNet** 的範例。
+以資源管理員部署模型建立的 VM，需要以資源管理員建立的虛擬網路。 如果需要，請使用新虛擬機器的至少一個子網路建立以資源管理員為基礎的新虛擬網路。 以下是名為新的虛擬網路範例 **TestNet** 具有兩個子網路，名為 **frontendSubnet** 和 **backendSubnet**。
 
     $rgName="LOBServers"
     $locName="West US"
@@ -145,13 +148,13 @@
 
 ## 步驟 4：建置命令集
 
-開啟您所選的或 PowerShell 整合式指令碼環境 (ISE) 的文字編輯器之新執行個體，並複製下列行以啟動您的命令集。指定這個新的虛擬機器的資源群組名稱、Azure 位置和儲存體帳戶。取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
+開啟您所選的或 PowerShell 整合式指令碼環境 (ISE) 的文字編輯器之新執行個體，並複製下列行以啟動您的命令集。 指定這個新的虛擬機器的資源群組名稱、Azure 位置和儲存體帳戶。 取代引號中，包括裡面 < 和 > 字元，以正確的名稱。
 
     $rgName="<resource group name>"
     $locName="<Azure location, such as West US>"
     $saName="<storage account name>"
 
-在虛擬網路中，您必須指定以資源管理員為基礎之虛擬網路的名稱和子網路的索引編號。 使用這些命令列出虛擬網路的子網路。
+在虛擬網路中，您必須指定以資源管理員為基礎之虛擬網路的名稱和子網路的索引編號。  使用這些命令列出虛擬網路的子網路。
 
     $rgName="<resource group name>"
     $vnetName="<virtual network name>"
@@ -162,7 +165,7 @@
 關於此範例：
 
     PS C:\> Get-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName LOBServers | Select Subnets
-    
+
     Subnets
     -------
     {frontendSubnet, backendSubnet}
@@ -268,7 +271,7 @@ $NicName 字串必須是資源群組中獨特的字串。 最佳作法是將虛�
     $avName="<availability set name>"
     Get-AzureRmVMSize -ResourceGroupName $rgName -AvailabilitySetName $avName | Select Name
 
-> [AZURE.NOTE] 利用資源管理員，您目前只能在建立虛擬機器期間，將其新增至可用性集合。
+> [AZURE.NOTE] 目前使用資源管理員，您可以只加入虛擬機器設定在其建立期間的可用性。
 
 若要將其他資料磁碟新增至 VM，請將這幾行複製到您的命令集，並指定磁碟設定。
 
@@ -281,17 +284,17 @@ $NicName 字串必須是資源群組中獨特的字串。 最佳作法是將虛�
 
 接下來，您必須判斷虛擬機器發行者、優惠以及映像的 SKU。 以下是常用的、以 Windows 為基礎的映像資料表。
 
-| 發行者名稱| 優惠名稱| SKU 名稱
+|發行者名稱 | 優惠名稱 | SKU 名稱
 |:---------------------------------|:-------------------------------------------|:---------------------------------|
-| MicrosoftWindowsServer| WindowsServer| 2008-R2-SP1|
-| MicrosoftWindowsServer| WindowsServer| 2012-Datacenter|
-| MicrosoftWindowsServer| WindowsServer| 2012-R2-Datacenter|
-| MicrosoftDynamicsNAV| DynamicsNAV| 2015|
-| MicrosoftSharePoint| MicrosoftSharePointServer| 2013|
-| MicrosoftSQLServer| SQL2014-WS2012R2| Enterprise-Optimized-for-DW|
-| MicrosoftSQLServer| SQL2014-WS2012R2| Enterprise-Optimized-for-OLTP|
-| MicrosoftWindowsServerEssentials| WindowsServerEssentials| WindowsServerEssentials|
-| MicrosoftWindowsServerHPCPack| WindowsServerHPCPack| 2012R2|
+|MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 |
+|MicrosoftWindowsServer | WindowsServer | 2012-Datacenter |
+|MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter |
+|MicrosoftDynamicsNAV | DynamicsNAV | 2015 |
+|MicrosoftSharePoint | MicrosoftSharePointServer | 2013 |
+|MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW |
+|MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP |
+|MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials |
+|MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 |
 
 如果未列出您所需要的虛擬機器映像，請使用指示 [這裡](resource-groups-vm-searching.md#powershell) 來判斷發行者、 優惠以及 SKU 名稱。
 
@@ -315,7 +318,7 @@ $NicName 字串必須是資源群組中獨特的字串。 最佳作法是將虛�
 
 ## 步驟 5：執行命令集
 
-檢閱在步驟 4 中使用文字編輯器或 PowerShell ISE 建立的 Azure PowerShell 命令集。確定您已指定所有變數，且這些變數具有正確的值。另外請確定您已移除所有 < 和 > 字元。
+檢閱在步驟 4 中使用文字編輯器或 PowerShell ISE 建立的 Azure PowerShell 命令集。 確定您已指定所有變數，且這些變數具有正確的值。 另外請確定您已移除所有 < 和 > 字元。
 
 如果您將您的命令放入文字編輯器中，將命令複製到剪貼簿，然後以滑鼠右鍵按一下 Azure PowerShell 提示字元。 這會將命令集設為一系列的 PowerShell 命令，並建立 Azure 虛擬機器。 或者，從 Azure PowerShell ISE 執行命令集。
 
@@ -337,25 +340,25 @@ $NicName 字串必須是資源群組中獨特的字串。 最佳作法是將虛�
     $rgName="LOBServers"
     $locName="West US"
     $saName="contosolobserverssa"
-    
+
     # Set the existing virtual network and subnet index
     $vnetName="AZDatacenter"
     $subnetIndex=0
     $vnet=Get-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
-    
+
     # Create the NIC
     $nicName="LOB07-NIC"
     $domName="contoso-vm-lob07"
     $pip=New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName $rgName -DomainNameLabel $domName -Location $locName -AllocationMethod Dynamic
     $nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
-    
+
     # Specify the name, size, and existing availability set
     $vmName="LOB07"
     $vmSize="Standard_A3"
     $avName="WEB_AS"
     $avSet=Get-AzureRmAvailabilitySet –Name $avName –ResourceGroupName $rgName
     $vm=New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
-    
+
     # Add a 200 GB additional data disk
     $diskSize=200
     $diskLabel="APPStorage"
@@ -363,7 +366,7 @@ $NicName 字串必須是資源群組中獨特的字串。 最佳作法是將虛�
     $storageAcc=Get-AzureRmStorageAccount -ResourceGroupName $rgName -Name $saName
     $vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + $diskName  + ".vhd"
     Add-AzureRmVMDataDisk -VM $vm -Name $diskLabel -DiskSizeInGB $diskSize -VhdUri $vhdURI -CreateOption empty
-    
+
     # Specify the image and local administrator account, and then add the NIC
     $pubName="MicrosoftWindowsServer"
     $offerName="WindowsServer"
@@ -372,7 +375,7 @@ $NicName 字串必須是資源群組中獨特的字串。 最佳作法是將虛�
     $vm=Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
     $vm=Set-AzureRmVMSourceImage -VM $vm -PublisherName $pubName -Offer $offerName -Skus $skuName -Version "latest"
     $vm=Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-    
+
     # Specify the OS disk name and create the VM
     $diskName="OSDisk"
     $storageAcc=Get-AzureRmStorageAccount -ResourceGroupName $rgName -Name $saName
@@ -382,17 +385,13 @@ $NicName 字串必須是資源群組中獨特的字串。 最佳作法是將虛�
 
 ## 其他資源
 
-[Azure 運算、 網路和存放裝置提供者在 Azure 資源管理員](virtual-machines-azurerm-versus-azuresm.md)
+[Azure Resource Manager 提供的 Azure 運算、網路和儲存提供者](virtual-machines-azurerm-versus-azuresm.md)
 
-[Azure 資源管理員概觀](../resource-group-overview.md)
+[Azure Resource Manager 概觀](../resource-group-overview.md)
 
-[部署和管理虛擬機器使用資源管理員範本和 PowerShell](virtual-machines-deploy-rmtemplates-powershell.md)
+[使用 Resource Manager 範本和 PowerShell 部署以及管理 Azure 虛擬機器](virtual-machines-deploy-rmtemplates-powershell.md)
 
-[利用資源管理員範本和 PowerShell 建立 Windows 虛擬機器](virtual-machines-create-windows-powershell-resource-manager-template-simple)
+[利用 Resource Manager 範本和 PowerShell 建立 Windows 虛擬機器](virtual-machines-create-windows-powershell-resource-manager-template-simple)
 
 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)
-
-
-
-
 

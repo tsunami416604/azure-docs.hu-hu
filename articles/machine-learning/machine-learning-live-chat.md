@@ -14,12 +14,11 @@
     ms.topic="article" 
     ms.date="10/14/2015" 
     ms.author="olgali"/>
+#取得來自機器學習即時聊天支援的說明
 
-# 取得來自機器學習即時聊天支援的說明
+[Azure Machine Learning Studio](machine-learning-what-is-ml-studio.md) 建置機器學習模型提供的直覺式介面。 沒有 [圖庫](machine-learning-gallery-how-to-use-contribute-publish.md) 和 [論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) 一路指引您。 
 
-[Azure Machine Learning Studio](machine-learning-what-is-ml-studio.md) 建置機器學習模型提供的直覺式介面。 沒有 [圖庫](machine-learning-gallery-how-to-use-contribute-publish.md) 和 [論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) 一路指引您。
-
-但是有時候您只是需要對於疑問快速提出問題。 在 [Studio](machine-learning-what-is-ml-studio.md) 尋找在最上層導覽的聊天圖示。 如果您看到此圖示，就表示產品團隊的成員目前正在線上，可以即時協助您。
+但是有時候您只是需要對於疑問快速提出問題。 在 [Studio](machine-learning-what-is-ml-studio.md) 尋找在最上層導覽的聊天圖示。  如果您看到此圖示，就表示產品團隊的成員目前正在線上，可以即時協助您。
 
 ![Azure ML 聊天](./media/machine-learning-live-chat/AzureMLChatNavBar.png)
 
@@ -28,12 +27,7 @@
 ![Azure ML 聊天對話方塊](./media/machine-learning-live-chat/AzureMLChat.png)
 
 ## 看不到即時聊天圖示嗎？
+小組成員實際上在回答您的問題。 如果您看不到即時聊天圖示，這是因為該圖示不會在工作時間以外的時間顯示。 
 
-小組成員實際上在回答您的問題。 如果您看不到即時聊天圖示，這是因為該圖示不會在工作時間以外的時間顯示。
-
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)] 
 

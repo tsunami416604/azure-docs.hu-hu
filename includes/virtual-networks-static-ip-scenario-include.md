@@ -4,10 +4,6 @@
 
 ![VNet 案例](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
 
-在這個案例中，您將建立名為 **DNS01** 的 VM，位於 **前端**子網路，並將其設定為使用靜態 IP 位址 **192.168.1.101**。
+在此案例中，您將建立名為的 VM **DNS01** 中 **前端** 子網路，並將它設定為使用靜態 IP 位址的 **192.168.1.101**。
 
-
-
-
-
-
+ 

@@ -16,7 +16,6 @@
    ms.author="tarcher" />
 
 
-
 # 使用 Emulator Express 在本機電腦上執行及偵錯雲端服務
 
 使用 Emulator Express，您可以測試及偵錯雲端服務，而不需以系統管理員身分執行 Visual Studio。 視您的雲端服務的需求而定，您可以進行專案設定以使用 Emulator Express 或完整模擬器。 如需完整版模擬器的詳細資訊，請參閱 [在計算模擬器中執行 Azure 應用程式](../storage/storage-use-emulator.md)。 Emulator Express 最初隨附在 Azure SDK 2.1 中，而從 Azure SDK 2.3 起，它成為預設模擬器。
@@ -27,11 +26,11 @@
 
 ### 設定專案使用 Emulator Express
 
-1. 在 Azure 專案的捷徑功能表上，選擇 [屬性]****，然後選擇 [Web]**** 索引標籤。
+1. 在 Azure 專案的捷徑功能表，選擇 [ **屬性**, ，然後選擇 [ **Web** ] 索引標籤。
 
-1. 在 [本機開發伺服器]**** 之下，選擇 [使用 IIS Express 選項]**** 按鈕。 Emulator Express 與 IIS Web 伺服器不相容。
+1. 在 **本機開發伺服器**, ，選擇 [ **使用 IIS Express 選項** ] 按鈕。 Emulator Express 與 IIS Web 伺服器不相容。
 
-1. 在 [模擬器]**** 之下，選擇 [使用 Emulator Express]**** 選項按鈕。
+1. 在 **模擬器**, ，選擇 [ **使用 Emulator Express** 選項按鈕。
 
     ![Emulator Express](./media/vs-azure-tools-emulator-express-debug-run/IC673363.gif)
 
@@ -54,8 +53,4 @@
 ## 後續步驟
 
 [偵錯雲端服務](https://msdn.microsoft.com/library/azure/ee405479.aspx)
-
-
-
-
 

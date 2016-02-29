@@ -16,10 +16,9 @@
     ms.date="12/11/2015" 
     ms.author="bradsev" /> 
 
-
 # 使用 SQL 資料分割資料表平行處理大量資料匯入
 
-若要將巨量資料載入/傳輸至 SQL Database，可使用「資料分割資料表和檢視」__，來改善將資料匯入 SQL DB 的程序和後續查詢。 本文件說明如何建置資料分割資料表，以快速的平行處理方式將大量資料匯入 SQL Server 資料庫。
+巨量資料載入/傳輸至 SQL 資料庫，匯入至 SQL 資料庫和後續查詢的資料可以改善使用 _分割資料表和檢視表_。 本文件說明如何建置資料分割資料表，以快速的平行處理方式將大量資料匯入 SQL Server 資料庫。
 
 
 ## 建立新的資料庫和一組檔案群組
@@ -29,8 +28,9 @@
 - 注意: 這可以使用 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) 如果是新或 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) 如果資料庫已經存在
 
 - 將一或多個檔案 (視需要) 新增至每個資料庫檔案群組
- > [AZURE.NOTE] 指定將保留這個資料分割之資料的目標檔案群組，以及將儲存檔案群組資料的實體資料庫檔案名稱。
 
+ > [AZURE.NOTE] 指定將保留這個資料分割資料的目標檔案群組和檔案群組資料的儲存位置的實體資料庫檔案名稱。
+ 
 下列範例會建立含有三個檔案群組的新資料庫，這三個檔案群組不包括主要和記錄群組，且每個檔案群組中都會包含一個實體檔案。 資料庫檔案建立於預設的 SQL Server [資料] 資料夾中，如 SQL Server 執行個體中所設定。 如需預設檔案位置的詳細資訊，請參閱 [名為 SQL Server 的執行個體和預設的檔案位置](https://msdn.microsoft.com/library/ms143547.aspx)。
 
     DECLARE @data_path nvarchar(256);
@@ -51,7 +51,7 @@
         LOG ON 
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
-
+    
 ## 建立資料分割資料表
 
 根據資料結構描述來建立資料分割資料表，其會對應到上一個步驟中建立的資料庫檔案群組。 將資料大量匯入資料分割資料表時，記錄將根據資料分割配置分佈於檔案群組中，如下所述。
@@ -84,7 +84,7 @@
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-- [建立分割的資料表](https://msdn.microsoft.com/library/ms174979.aspx)(s) 根據您的資料結構描述，並指定資料分割配置和條件約束欄位用來分割資料表，例如:
+- [建立資料分割的資料表](https://msdn.microsoft.com/library/ms174979.aspx)(s) 根據您的資料結構描述，並指定資料分割配置和條件約束欄位用來分割資料表，例如:
 
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
@@ -107,11 +107,11 @@
     # This example loads comma-separated input data files
     # The example assumes the partitioned data files are named as <base_file_name>_<partition_number>.csv
     # Assumes the input data files include a header line. Loading starts at line number 2.
-    
+
     $dbname = "<database_name>"
     $indir  = "<path_to_data_files>"
     $logdir = "<path_to_log_directory>"
-    
+
     # Select authentication mode
     $sqlauth = 0
     
@@ -119,18 +119,18 @@
     $sqlusr = "<user@server>"
     $server = "<tcp:serverdns>"
     $pass   = "<password>"
-    
+
     # Set number of partitions per table - Should match the number of input data files per table
     $numofparts = <number_of_partitions>
-    
+       
     # Set table name to be loaded, basename of input data files, input format file, and number of partitions
     $tbname = "<table_name>"
     $basename = "<base_input_data_filename_no_extension>"
     $fmtfile = "<full_path_to_format_file>"
-    
+   
     # Create log directory if it does not exist
     New-Item -ErrorAction Ignore -ItemType directory -Path $logdir
-    
+      
     # BCP example using Windows authentication
     $ScriptBlock1 = {
        param($dbname, $tbname, $basename, $fmtfile, $indir, $logdir, $num)
@@ -172,7 +172,6 @@
 
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-
 或者，
 
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
@@ -183,8 +182,4 @@
 ## 進階分析程序和技術實務範例
 
 如需 Cortana 分析程序使用公用資料集的端對端逐步解說範例，請參閱 [作用中的 Cortana 分析程序: 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
-
-
-
-
-
+ 

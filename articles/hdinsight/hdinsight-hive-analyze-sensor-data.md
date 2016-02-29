@@ -17,11 +17,11 @@
     ms.date="12/04/2015" 
     ms.author="larryfr"/>
 
-
-# 在 HDInsight 的 Hadoop 上使用 Hive 查詢主控台分析感應器資料
+#在 HDInsight 的 Hadoop 上使用 Hive 查詢主控台分析感應器資料
 
 了解如何使用 Hive 查詢主控台搭配 HDInsight (Hadoop) 分析感應器資料，然後在 Microsoft Excel 中使用 Power View 將資料視覺化。
-> [AZURE.NOTE] 本文件的步驟只適用於 Windows HDInsight 叢集。
+
+> [AZURE.NOTE] 這份文件中的步驟只適用於 Windows 為基礎的 HDInsight 叢集。
 
 在此範例中，您將使用 Hive 來處理暖氣、通風和空調 (HVAC) 系統所產生的歷史資料，以識別無法可靠地維持規定溫度的系統。 您將了解如何：
 
@@ -32,28 +32,25 @@
 
 ![A diagram of the solution architecture](./media/hdinsight-hive-analyze-sensor-data/hvac-architecture.png)
 
-## 必要條件
+##先決條件
 
-* HDInsight (Hadoop) 叢集: 請參閱 [HDInsight 中佈建 Hadoop 叢集](hdinsight-provision-clusters.md) 建立叢集的相關資訊。
+* HDInsight (Hadoop) 叢集: 請參閱 [在 HDInsight 中佈建 Hadoop 叢集](hdinsight-provision-clusters.md) 建立叢集的相關資訊。
 
 * Microsoft Excel 2013
+
     > [AZURE.NOTE] Microsoft Excel 用來與資料視覺效果 [Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US)。
 
 * [Microsoft Hive ODBC 驅動程式](http://www.microsoft.com/download/details.aspx?id=40886)
 
-## 執行範例
+##執行範例
 
-1. 請使用網頁瀏覽器瀏覽至下列 URL。取代 `< 叢集名稱 >` 與 HDInsight 叢集的名稱。
+1. 請使用網頁瀏覽器瀏覽至下列 URL。 將 `<clustername>` 替換為 HDInsight 叢集的名稱。
 
         https://<clustername>.azurehdinsight.net
 
     出現提示時，使用您佈建此叢集時所用的系統管理員使用者名稱和密碼來進行驗證。
 
-2. 從開啟的網頁中，按一下 [Getting Started Gallery]**** 索引標籤，然後在 [搭配範例資料的方案]**** 類別下，按一下 [感應器資料分析]**** 範例。
+2. 從開啟的網頁中，按一下 [ **Getting Started Gallery** ] 索引標籤，然後在 **使用範例資料的解決方案** 類別中，按一下 [ **感應器資料分析** 範例。
 
 3. 依照網頁上提供的指示完成範例。
-
-
-
-
 

@@ -17,8 +17,7 @@
     ms.date="02/23/2015"
     ms.author="guybo"/>
 
-
-# 使用適用於 Linux 的 Azure CustomScript 延伸模組部署 LAMP 應用程式
+#使用適用於 Linux 的 Azure CustomScript 延伸模組部署 LAMP 應用程式#
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
 
@@ -31,7 +30,7 @@
 
 ## 必要條件
 
-在此範例中，會先建立兩個執行 Ubuntu 14.04 或更新版本的 Azure VM。 VM 的名稱為 *script-vm* 和 *lamp-vm*。 建立 VM 時請使用唯一名稱。 其中一個用來執行 CLI 命令，而另一個用來部署 LAMP 應用程式。
+在此範例中，會先建立兩個執行 Ubuntu 14.04 或更新版本的 Azure VM。 稱為 Vm *指令碼 vm* 和 *lamp_install.sh*。 建立 VM 時請使用唯一名稱。 其中一個用來執行 CLI 命令，而另一個用來部署 LAMP 應用程式。
 
 您也需要 Azure 儲存體帳戶和金鑰才能存取它 (您可以從 Azure 傳統入口網站取得此資訊)。
 
@@ -52,30 +51,31 @@ script-vm VM 需要安裝 Azure CLI，並且與 Azure 之間具有正常運作�
     #!/bin/bash
     # set up a silent install of MySQL
     dbpass="mySQLPassw0rd"
-    
+
     export DEBIAN_FRONTEND=noninteractive
     echo mysql-server-5.6 mysql-server/root_password password $dbpass | debconf-set-selections
     echo mysql-server-5.6 mysql-server/root_password_again password $dbpass | debconf-set-selections
-    
+
     # install the LAMP stack
     apt-get -y install apache2 mysql-server php5 php5-mysql  
-    
+
     # write some PHP
     echo \<center\>\<h1\>My Demo App\</h1\>\<br/\>\</center\> > /var/www/html/phpinfo.php
     echo \<\?php phpinfo\(\)\; \?\> >> /var/www/html/phpinfo.php
-    
+
     # restart Apache
     apachectl restart
 
 ### 上傳指令碼
 
-將指令碼儲存為文字檔 (例如 *lamp_install.sh*)，然後將它上傳到 Azure 儲存體。 您可以使用 Azure CLI，輕鬆執行這個動作。 下列範例會將檔案上傳到名為 "scripts" 的儲存體容器中。 如果此容器不存在，您必須先建立它。
+將指令碼儲存為文字檔案，例如 *lamp_install.sh*, ，然後將它上傳至 Azure 儲存體。 您可以使用 Azure CLI，輕鬆執行這個動作。 下列範例會將檔案上傳到名為 "scripts" 的儲存體容器中。 如果此容器不存在，您必須先建立它。
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
-此外，還會建立 JSON 檔案，此檔案會描述如何從 Azure 儲存體下載指令碼。 將此檔案儲存為 *public_config.json* (使用您的儲存體帳戶名稱來取代 "mystorage")：
+此外，還會建立 JSON 檔案，此檔案會描述如何從 Azure 儲存體下載指令碼。 儲存為 *public_config.json* (取代"mystorage"的儲存體帳戶名稱):
 
     {"fileUris":["https://mystorage.blob.core.windows.net/scripts/install_lamp.sh"], "commandToExecute":"sh install_lamp.sh" }
+
 
 ## 部署延伸模組
 
@@ -83,7 +83,7 @@ script-vm VM 需要安裝 Azure CLI，並且與 Azure 之間具有正常運作�
 
     azure vm extension set -c "./public_config.json" lamp-vm CustomScriptForLinux Microsoft.OSTCExtensions 1.*
 
-前一個命令會在名為 *lamp-vm* 的 VM 上下載並執行 *lamp_install.sh* 指令碼。
+前一個命令會下載並執行 *lamp_install.sh* 指令碼的 VM 上 *lamp_install.sh*。
 
 因為該應用程式包含 Web 伺服器，所以請記得使用下列命令，在遠端 VM 上開啟 HTTP 接聽連接埠。
 
@@ -91,7 +91,7 @@ script-vm VM 需要安裝 Azure CLI，並且與 Azure 之間具有正常運作�
 
 ## 監視與疑難排解
 
-您可以藉由查看遠端 VM 上的記錄檔來檢查自訂指令碼執行的情況。 SSH 連線到 *lamp-vm*，並使用下一個命令顯示記錄檔的結尾。
+您可以藉由查看遠端 VM 上的記錄檔來檢查自訂指令碼執行的情況。 Ssh 連線到 *lamp_install.sh* 並顯示下一個命令的記錄檔的結尾。
 
     cd /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.0/
     tail -f extension.log
@@ -104,13 +104,9 @@ script-vm VM 需要安裝 Azure CLI，並且與 Azure 之間具有正常運作�
 
 以下列出 Azure CLI、Linux 與 CustomScript 延伸模組的其他資源。
 
-[使用 CustomScript 延伸模組的 Linux VM 自訂工作自動化](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/)
+[使用 CustomScript 延伸模組以將 Linux VM 自訂工作自動化](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/)
 
 [Azure Linux 延伸模組 (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
-[Linux 和開放原始碼運算在 Azure 上](virtual-machines-linux-opensource.md)
-
-
-
-
+[Azure 上的 Linux 和開放原始碼運算](virtual-machines-linux-opensource.md)
 

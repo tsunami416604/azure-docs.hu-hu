@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="C++ 應用程式的 Application Insights" 
-    description="分析使用量和 Application Insights c + + 應用程式的效能。" 
-    services="application-insights" 
-    documentationCenter="cpp"
-    authors="crystk" 
-    manager="douge""/>
+    pageTitle ="適用於 c + + 應用程式的 Application Insights" 
+    描述 ="分析使用量和 Application Insights c + + 應用程式的效能。 」 
+    服務 = 「 application insights 」 
+    documentationCenter ="cpp 」
+    作者 ="crystk" 
+    管理員 ="douge 」"/ >
 
 <tags 
     ms.service="application-insights" 
@@ -14,7 +14,6 @@
     ms.topic="article" 
     ms.date="11/17/2015" 
     ms.author="crystk"/>
-
 
 # C++ 應用程式的 Application Insights
 
@@ -30,34 +29,35 @@ Visual Studio Application Insights 可讓您監視行動應用程式的使用量
 
 ## 建立 Application Insights 資源
 
-在 [Azure 入口網站 ][portal], ，建立新的 Application Insights 資源。 選擇 [Windows Phone] 或 [Windows 市集] 選項。
+在 [Azure 入口網站][portal], ，建立新的 Application Insights 資源。 選擇 [Windows Phone] 或 [Windows 市集] 選項。
 
-![按一下 ](./media/app-insights-windows-cpp/01-universal.png)
+![按一下 [新增]、[開發人員服務]、[Application Insights]](./media/app-insights-windows-cpp/01-universal.png)
 
 開啟的刀鋒視窗是您要查看您的應用程式效能和使用量資料的位置。 若要在下次登入 Azure 時回到此位置，您應該會在開始畫面上發現它的磚。 或者按一下 [瀏覽] 以尋找它。
 
-#### 取得檢測金鑰的副本。
+####  取得檢測金鑰的副本。
 
 該金鑰識別資源，您很快就會將它安裝在 SDK 中，以將資源導向資料。
 
-![按一下 ](./media/app-insights-windows-cpp/02-props-asp.png)
+![按一下 [屬性]，選取金鑰，然後按下 CTRL+C](./media/app-insights-windows-cpp/02-props-asp.png)
 
-## <a name="sdk"></a> 在您的應用程式中安裝 SDK
+## <a name="sdk"></a> 在應用程式中安裝 SDK
+
 
 1. 在 Visual Studio 中，編輯桌面應用程式專案的 NuGet 封裝。
 
-    ![以滑鼠右鍵按一下專案，然後選取 ](./media/app-insights-windows-cpp/03-nuget.png)
+    ![以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 封裝]](./media/app-insights-windows-cpp/03-nuget.png)
 
 2. 安裝 C++ 應用程式適用的 Application Insights SDK。
 
     ![選取 * * 包含發行前版本 * *，並搜尋 「 Application Insights 」](./media/app-insights-windows-cpp/04-nuget.png)
 
-3. 在專案的版本與偵錯設定中：
+3. 在專案的版本與偵錯設定中： 
   - 將 $(SolutionDir)packages\ApplicationInsights-CPP.1.0.0-Beta\src\inc 加入至 [專案屬性] -> [VC + + 目錄] -> [包含目錄]
-  - 將 $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native\<PLATFORM TYPE>\release\AppInsights_Win10-UAP 專案屬性]-> [VC + + 目錄]-> [程式庫目錄
+  - 將 $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native\ < 平台類型 > \release\AppInsights_Win10-UAP 專案屬性]-> [VC + + 目錄]-> [程式庫目錄
 
-4. 中新增為專案的參考從 $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native\<PLATFORM TYPE>\release\ApplicationInsights
-5. 加入從 $ AppInsights_Win10 UAP.dll (SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native\<PLATFORM TYPE>\release\AppInsights_Win10-UAP。移至 [屬性]，並將內容設為 [是]。這會將 dll 複製到組建目錄。
+4. 為您的專案參考從 $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native\ < 平台類型 > \release\ApplicationInsights 加入中
+5. 新增 AppInsights_Win10 UAP.dll 從 $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native\ < 平台類型 > \release\AppInsights_Win10-UAP。 移至 [屬性]，並將內容設為 [是]。 這會將 dll 複製到組建目錄。
 
 
 #### 將 SDK 更新為未來版本
@@ -71,20 +71,20 @@ Visual Studio Application Insights 可讓您監視行動應用程式的使用量
 
 初始化 SDK，並開始追蹤遙測。
 
-1. 在 App.xaml.h 中：
+1. 在 App.xaml.h 中： 
   - 新增:
-    `ApplicationInsights::CX::SessionTracking ^ m_session;`
+    `ApplicationInsights::CX::SessionTracking^ m_session;`
 2. 在 App.xaml.cpp 中：
   - 新增:
-    `使用命名空間 ApplicationInsights::CX;`
+    `using namespace ApplicationInsights::CX;`
 
   - 在 App:App() 中
-
-     `這會執行自動追蹤的工作階段和自動分頁檢視集合`
-     `m_session = ref 新 ApplicationInsights::CX::SessionTracking();`
+    
+     `// this will do automatic session tracking and automatic page view collection`
+     `m_session = ref new ApplicationInsights::CX::SessionTracking();`
 
   - 一旦建立根框架 (通常是在 App::OnLaunched 結尾)，請初始化 m_session：
-
+    
     ```
     String^ iKey = L"<YOUR INSTRUMENTATION KEY>";
     m_session->Initialize(this, rootFrame, iKey);
@@ -103,7 +103,7 @@ Visual Studio Application Insights 可讓您監視行動應用程式的使用量
 ```
 
 
-## <a name="run"></a> 執行您的專案
+## <a name="run"></a> 執行專案
 
 執行應用程式以產生遙測。 您可以在開發電腦上以偵錯模式執行，或是發佈應用程式，讓使用者自行執行。
 
@@ -111,9 +111,9 @@ Visual Studio Application Insights 可讓您監視行動應用程式的使用量
 
 回到 http://portal.azure.com，瀏覽至 Application Insights 資源。
 
-按一下 [搜尋] 以開啟 [診斷搜尋 ][diagnostic] -這是前幾個事件顯示的位置。 如果您看不到任何資料，請稍做等待後再按一下 [重新整理]。
+按一下 [搜尋] 以開啟 [診斷搜尋][diagnostic] -這是前幾個事件顯示的位置。 如果您看不到任何資料，請稍做等待後再按一下 [重新整理]。
 
-![按一下 ](./media/app-insights-windows-cpp/21-search.png)
+![按一下 [診斷搜尋]](./media/app-insights-windows-cpp/21-search.png)
 
 使用您的應用程式時，[概觀] 刀鋒視窗上會顯示資料。
 
@@ -126,25 +126,26 @@ Visual Studio Application Insights 可讓您監視行動應用程式的使用量
 
 ## <a name="usage"></a>後續步驟
 
-[追蹤 ][track]
+[追蹤應用程式的使用量][track]
 
-[使用 API 來傳送自訂事件和度量的 ][api]
+[使用 API 傳送自訂事件和度量][api]
 
-[[診斷] 的診斷搜尋][diagnostic]
+[診斷搜尋][diagnostic]
 
-[計量瀏覽器 ][metrics]
+[計量瀏覽器][metrics]
 
-[疑難排解 ][qna]
-
-
+[疑難排解][qna]
 
 
 
+<!--Link references-->
 
-[api]: app-insights-api-custom-events-metrics.md 
-[diagnostic]: app-insights-diagnostic-search.md 
-[metrics]: app-insights-metrics-explorer.md 
-[portal]: http://portal.azure.com/ 
-[qna]: app-insights-troubleshoot-faq.md 
-[track]: app-insights-api-custom-events-metrics.md 
+[api]: app-insights-api-custom-events-metrics.md
+[diagnostic]: app-insights-diagnostic-search.md
+[metrics]: app-insights-metrics-explorer.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
+[track]: app-insights-api-custom-events-metrics.md
+
+ 
 

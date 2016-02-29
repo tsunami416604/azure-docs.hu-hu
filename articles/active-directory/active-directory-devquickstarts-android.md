@@ -16,22 +16,21 @@
     ms.date="10/13/2015"
     ms.author="brandwe"/>
 
-
 # 將 Azure AD 整合至 Android 應用程式
 
 [AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher.md)]
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-如果您正在開發桌面應用程式，Azure AD 讓使用 Active Directory 帳戶驗證您的使用者變得簡單明瞭。 它也可讓您的應用程式安全地使用任何受 Azure AD 保護的 Web API，例如 Office 365 API 或 Azure API。
+如果您正在開發桌面應用程式，Azure AD 讓使用 Active Directory 帳戶驗證您的使用者變得簡單明瞭。  它也可讓您的應用程式安全地使用任何受 Azure AD 保護的 Web API，例如 Office 365 API 或 Azure API。
 
-對於需要存取受保護資源的 Android 用戶端，Azure AD 提供 Active Directory 驗證程式庫 (ADAL)。 ADAL 存在的唯一目的是為了讓您的應用程式輕鬆取得存取權杖。 為了示範究竟多麼簡單，我們將建置一個執行下列動作的 Android 待辦事項清單應用程式：
+對於需要存取受保護資源的 Android 用戶端，Azure AD 提供 Active Directory 驗證程式庫 (ADAL)。  ADAL 存在的唯一目的是為了讓您的應用程式輕鬆取得存取權杖。  為了示範究竟多麼簡單，我們將建置一個執行下列動作的 Android 待辦事項清單應用程式：
 
 -   取得存取權杖來呼叫待辦事項清單 API 使用 [OAuth 2.0 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn645545.aspx)。
 -   取得使用者的待辦事項清單
 -   將使用者登出。
 
-首先，您需要 Azure AD 租用戶，供您建立使用者並登錄應用程式。 如果您還沒有租用戶， [了解如何取得租用](active-directory-howto-tenant.md)。
+首先，您需要 Azure AD 租用戶，供您建立使用者並登錄應用程式。  如果您還沒有租用戶， [了解如何取得租用](active-directory-howto-tenant.md)。
 
 ## 步驟 1：下載並執行 Node.js REST API TODO 範例伺服器
 
@@ -39,13 +38,13 @@
 
 如需有關如何設定的資訊，請造訪我們現有的範例：
 
-* [Microsoft Azure Active Directory 範例 REST API 服務的 Node.js](active-directory-devquickstarts-webapi-nodejs.md)
+* [適用於 Node.js 的 Microsoft Azure Active Directory 範例 REST API 服務](active-directory-devquickstarts-webapi-nodejs.md)
 
 ## 步驟 2：向 Microsoft Azure AD 租用戶註冊 Web API
 
 **我要做什麼？**
 
-* Microsoft Active Directory 支援加入兩種類型的應用程式。 Web API 提供服務給可存取這些 Web API 的使用者和應用程式 (無論是在 Web 或在裝置上執行的應用程式)。 在此步驟中，您要註冊在本機執行且用來測試此範例的 Web API。 這個 Web API 通常是 REST 服務，提供您想要應用程式存取的功能。 Microsoft Azure Active Directory 可以保護任何端點! *
+*Microsoft Active Directory 支援加入兩種類型的應用程式。 Web API 提供服務給可存取這些 Web API 的使用者和應用程式 (無論是在 Web 或在裝置上執行的應用程式)。 在此步驟中，您要註冊在本機執行且用來測試此範例的 Web API。 這個 Web API 通常是 REST 服務，提供您想要應用程式存取的功能。 Microsoft Azure Active Directory 可以保護任何端點!*
 
 *在本範例中，我們假設您正要註冊上述的 TODO REST API，但這適用於任何您想要 Azure Active Directory 保護的 Web API。*
 
@@ -58,24 +57,24 @@
 5. 在下拉式清單中，按一下 [新增]。
 6. 按一下 [加入我的組織正在開發的應用程式]。
 7. 輸入應用程式的易記名稱，例如 "TodoListService"，選取 [Web 應用程式和/或 Web API]，然後按 [下一步]。
-8. 登入 URL，請輸入基礎 URL 範例中，預設為 `https://localhost:8080`。
-9. 應用程式識別碼 uri] 中，輸入 `https://<your_tenant_name>/TodoListService`, ，並將 `< your_tenant_name >` Azure AD 租用戶的名稱。按一下 [確定] 以完成註冊。
+8. 在 [登入 URL] 中，輸入範例的基礎 URL，預設為 `https://localhost:8080`。
+9. 在 [應用程式識別碼 URI] 中，輸入 `https://<your_tenant_name>/TodoListService`，將 `<your_tenant_name>` 換成您的 Azure AD 租用戶名稱。  按一下 [確定] 以完成註冊。
 10. 在 Azure 入口網站中時，按一下您的應用程式的 [設定] 索引標籤。
-11. **找出 [用戶端識別碼] 值，將它複製到別處**，稍後設定應用程式時需要此值。
+11. **找到用戶端識別碼值，並將它複製到別處**, ，您稍後需要此設定應用程式時。
 
 ## 步驟 3：註冊範例 Android 原生用戶端應用程式
 
 第一個步驟是註冊您的 Web 應用程式。 接下來，您也需要讓 Azure Active Directory 知道您的應用程式。 這可讓您的應用程式與剛註冊的 Web API 通訊
 
-**我要做什麼？**
+**我要做什麼？**  
 
-* 如上所述，Microsoft Azure Active Directory 支援加入的兩種類型的應用程式。 Web API 提供服務給可存取這些 Web API 的使用者和應用程式 (無論是在 Web 或在裝置上執行的應用程式)。 在此步驟中，您要註冊此範例中的應用程式。 您必須執行此動作，此應用程式才能要求存取您剛剛註冊的 Web API。 除非註冊應用程式，否則 Azure Active Directory 甚至會拒絕讓您的應用程式要求登入！ 這是安全性模型的一部分
+*如上所述，Microsoft Azure Active Directory 支援加入的兩種類型的應用程式。 Web API 提供服務給可存取這些 Web API 的使用者和應用程式 (無論是在 Web 或在裝置上執行的應用程式)。 在此步驟中，您要註冊此範例中的應用程式。 您必須執行此動作，此應用程式才能要求存取您剛剛註冊的 Web API。 除非註冊應用程式，否則 Azure Active Directory 甚至會拒絕讓您的應用程式要求登入！ 這是安全性模型的一部分。*
 
 *在本範例中，我們假設您要註冊上述的範例應用程式，但這適用於任何您想要開發的應用程式。*
 
 **為什麼我要將應用程式和 Web API 都放在一個租用戶？**
 
-* 您可能已經猜到，您可以建置的應用程式存取另一個租用戶的 Azure Active Directory 中註冊的外部 API。 如果您這麼做，系統會提示您的客戶同意您可以使用應用程式中的 API。 幸好，Active Directory Authentication Library for iOS 會替您處理此同意舉動！ 隨著我們深入更進階的功能，您將了解這是從 Azure 和 Office 及任何其他服務提供者存取 Microsoft API 套件時所需的一件重要工作。 現在，因為您在相同租用戶下註冊您的 Web API 和應用程式，因此您不會看到任何要求同意的提示。 這通常是如果您正在開發應用程式僅供自己公司 use.* 案例
+*您可能已經猜到，您也可以建置的應用程式存取另一個租用戶的 Azure Active Directory 中註冊的外部 API。 如果您這麼做，系統會提示您的客戶同意您可以使用應用程式中的 API。 幸好，Active Directory Authentication Library for iOS 會替您處理此同意舉動！ 隨著我們深入更進階的功能，您將了解這是從 Azure 和 Office 及任何其他服務提供者存取 Microsoft API 套件時所需的一件重要工作。 現在，因為您在相同租用戶下註冊您的 Web API 和應用程式，因此您不會看到任何要求同意的提示。 如果您正在開發的應用程式僅供自己公司使用，這是通常是如此。*
 
 1. 登入 [Azure 管理入口網站](https://manage.windowsazure.com)。
 2. 在左側導覽中按一下 Active Directory。
@@ -84,10 +83,10 @@
 5. 在下拉式清單中，按一下 [新增]。
 6. 按一下 [加入我的組織正在開發的應用程式]。
 7. 輸入應用程式的易記名稱，例如 "TodoListClient-Android"，選取 [原生用戶端應用程式]，然後按 [下一步]。
-8. 重新導向 uri] 中，輸入 `http://TodoListClient`。 按一下 [完成]。
+8. 在 [重新導向 URI] 中，輸入 `http://TodoListClient`。  按一下 [完成]。
 9. 按一下應用程式的 [設定] 索引標籤。
 10. 找出 [用戶端識別碼] 值，將它複製到別處，稍後設定應用程式時需要此值。
-11. 在 [其他應用程式的權限] 中，按一下 [新增應用程式]。在 [顯示] 下拉式清單中選取 [其他]，然後按一下上方的核取記號。找到並按一下 TodoListService，然後按一下底部的核取記號，以新增應用程式。從 [委派的權限] 下拉式清單中選取 [存取 TodoListService]，並儲存組態。
+11. 在 [其他應用程式的權限] 中，按一下 [新增應用程式]。  在 [顯示] 下拉式清單中選取 [其他]，然後按一下上方的核取記號。  找到並按一下 TodoListService，然後按一下底部的核取記號，以新增應用程式。  從 [委派的權限] 下拉式清單中選取 [存取 TodoListService]，並儲存組態。
 
 
 
@@ -95,7 +94,7 @@
 
   * 將此儲存機制複製到您選擇的目錄：
 
-  `$ git 複製 git@github.com:AzureADSamples / /xamarin Android.git`
+  `$ git clone git@github.com:AzureADSamples/NativeClient-Android.git`  
 
   * 請依照下列步驟，在 [Prerequests 一節，以設定您的 maven android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android)
   * 安裝模擬器與 SDK 19
@@ -113,20 +112,20 @@
 我們提供多個選項，讓您輕鬆地在 Android 專案中使用此程式庫：
 
 * 您可以使用原始程式碼將此程式庫匯入到 Eclipse，並連結至您的應用程式。
-* 如果是使用 Android Studio，您可以使用 *aar* 封裝格式，並參考二進位檔。
+* 如果使用 Android Studio，您可以使用 *aar* 封裝格式，並參考二進位檔。
 
-#### 選項 1：原始檔 Zip
+####選項 1：原始檔 Zip
 
 若要下載原始程式碼的複本，請按一下頁面右下方的 [下載 ZIP]，或按一下 [這裡](https://github.com/AzureAD/azure-activedirectory-library-for-android/archive/v1.0.9.tar.gz)。
 
-#### 選項 2：透過 Git 取得原始檔
+####選項 2：透過 Git 取得原始檔
 
 若要透過 git 取得 SDK 的原始程式碼，只要輸入：
 
     git clone git@github.com:AzureAD/azure-activedirectory-library-for-android.git
     cd ./azure-activedirectory-library-for-android/src
 
-#### 選項 3：透過 Gradle 取得二進位檔
+####選項 3：透過 Gradle 取得二進位檔
 
 您可以從 Maven 中央儲存機制取得二進位檔。 AAR 封裝可以在 AndroidStudio 中加入您的專案中，如下所示：
 
@@ -148,7 +147,7 @@ dependencies {
 }
 ```
 
-#### 選項 4：透過 Maven 取得 aar
+####選項 4：透過 Maven 取得 aar
 
 如果您在 Eclipse 中使用 m2e 外掛程式，您可以在 pom.xml 檔案中指定相依性：
 
@@ -162,12 +161,12 @@ dependencies {
 ```
 
 
-#### 選項 5：libs 資料夾內的 jar 封裝
-
-您可以從 maven 儲存機制取得 jar 檔案，並放入專案的 *libs* 資料夾中。 您也需要將必要的資源複製到專案，因為 jar 封裝不包含它們。
+####選項 5：libs 資料夾內的 jar 封裝
+您可以從 maven 儲存機制取得 jar 檔案，並放入 *libs* 專案資料夾。 您也需要將必要的資源複製到專案，因為 jar 封裝不包含它們。
 
 
 ### 步驟 5：將 Android ADAL 參考加入至您的專案
+
 
 2. 在專案中加入參考，並指定為 Android 程式庫。 如果您不確定如何執行這項操作，請在 [按一下這裡取得詳細資訊] (http://developer.android.com/tools/projects/projects-eclipse.html)
 
@@ -390,7 +389,7 @@ private syncronized void writeToLogFile(Context ctx, String msg) {
 您設定記錄層級如下:
 ```Java
 Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
-```
+ ```
 
  所有記錄訊息除了傳送至任何自訂記錄檔回呼，也會傳送至 logcat。
  您可以將記錄傳送至檔案形式 logcat，如下所示：
@@ -402,16 +401,15 @@ Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
 
 #### 網路追蹤
 
-您可以使用各種工具來擷取 ADAL 產生的 HTTP 流量。 如果您熟悉 OAuth 通訊協定，或如果您需要提供診斷資訊給 Microsoft 或其他支援管道，這是最有用。
+您可以使用各種工具來擷取 ADAL 產生的 HTTP 流量。  如果您熟悉 OAuth 通訊協定，或如果您需要提供診斷資訊給 Microsoft 或其他支援管道，這是最有用。
 
-Fiddler 是最簡單的 HTTP 追蹤工具。 請使用下列連結來設定它，以正確記錄 ADAL 網路流量。 必須設定 fiddler 或任何其他工具 (例如 Charles) 來記錄未加密的 SSL 流量，才會更實用。 注意：這種方式產生的追蹤可能包含極機密的資訊，例如存取權杖、使用者名稱和密碼。 如果您使用實際執行帳戶，請勿將這些追蹤洩漏給第三方。 如果您需要提供追蹤給某人以取得支援，請以您不介意共用使用者名稱和密碼的暫時帳戶來重現問題。
+Fiddler 是最簡單的 HTTP 追蹤工具。  請使用下列連結來設定它，以正確記錄 ADAL 網路流量。  必須設定 fiddler 或任何其他工具 (例如 Charles) 來記錄未加密的 SSL 流量，才會更實用。  注意：這種方式產生的追蹤可能包含極機密的資訊，例如存取權杖、使用者名稱和密碼。  如果您使用實際執行帳戶，請勿將這些追蹤洩漏給第三方。  如果您需要提供追蹤給某人以取得支援，請以您不介意共用使用者名稱和密碼的暫時帳戶來重現問題。
 
 + [設定適用於 Android 的 Fiddler](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
 + [設定適用於 ADAL 的 Fiddler 規則](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/How-to-listen-to-httpUrlConnection-in-Android-app-from-Fiddler)
 
 
 ### 對話方塊模式
-
 沒有活動的 acquireToken 方法支援對話方塊提示。
 
 ### 加密
@@ -452,12 +450,7 @@ ADAL 程式庫包含下列兩個 ProgressDialog 訊息英文字串。
 =======
 
 ### NTLM 對話方塊
-
 Adal 1.1.0 版支援 NTLM 對話方塊，此對話方塊是透過 WebViewClient 的 onReceivedHttpAuthRequest 事件來處理。 您可以自訂對話方塊版面配置和字串。### 步驟 5：下載 iOS 原生用戶端範例程式碼
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-
-
+ 

@@ -16,20 +16,15 @@
    ms.author="lauraa" />
 
 
-
 下列限制適用於 Azure Site Recovery：
 
 
-| 限制識別碼| 預設限制|
+|限制 IDENTIFIER|預設 LIMIT|
 |---|---|---|---|
-| 每個訂用帳戶的保存庫數目| 25|
-| 每個 Azure 保存庫的伺服器數目| 250|
-| 每個 Azure 保存庫的保護群組數目| 沒有限制|
-| 每個 Azure 保存庫的復原計劃數目| 沒有限制|
-| 每個保護群組的伺服器數目| 沒有限制|
-| 每個復原計畫的伺服器數目| 50|
-
-
-
-
+|每個 subscription|25| 的保存庫數目
+|每個 Azure vault|250| 的伺服器數目
+|每個 Azure vault| 的保護群組數目沒有 limit|
+|每個 Azure vault| 復原計劃的數目沒有 limit|
+|每個保護 group| 的伺服器數目沒有 limit|
+|每個復原 plan|50| 的伺服器數目
 

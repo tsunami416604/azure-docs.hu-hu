@@ -16,7 +16,6 @@
     ms.date="10/05/2015"
     ms.author="ricksal"/>
 
-
 # 將影像上傳至 Azure 儲存體 Android 裝置
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -36,7 +35,7 @@
 
 本教學課程還需要下列各項：
 
-+ [Azure 儲存體帳戶](../storage-create-storage-account.md)
++  [Azure 儲存體帳戶](../storage-create-storage-account.md)
 + 內建相機的 Android 裝置
 
 ## 應用程式的運作方式
@@ -44,7 +43,7 @@
 上傳相片影像的程序有多個步驟：
 
 - 第一次您一張照片，而 TodoItem 的資料列插入 SQL 資料庫，其中包含 Azure 儲存體會使用新的中繼資料欄位。
-- 新的行動服務 SQL **插入**指令碼會要求 Azure 儲存體提供共用存取簽章 (SAS)。
+- 新的行動服務 SQL **插入** 指令碼會要求 Azure 儲存體共用存取簽章 (SAS) 的。
 - 該指令碼會將 SAS 及 Blob 的 URI 傳回用戶端。
 - 用戶端就能使用 SAS 及 Blob URI 上傳相片。
 
@@ -53,7 +52,6 @@
 將上傳資料所需的認證儲存至用戶端應用程式中的 Azure 儲存體服務，是不安全的做法。 您應該將這些認證儲存在您的行動服務中，並使用這些認證來產生共用存取簽章 (SAS)，以便提供上傳新影像的權限。 行動服務會以安全的方式，將 SAS (5 分鐘後到期的認證) 傳回用戶端應用程式。 應用程式會使用此暫存認證來上傳影像。 如需詳細資訊，請參閱 [共用存取簽章，第 1 部分: 了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md)
 
 ## 程式碼範例
-
 [這裡](https://github.com/Azure/mobile-services-samples/tree/master/UploadImages) 是此應用程式的程式碼已完成的用戶端來源組件。 若要執行此程式碼，您必須完成本教學課程的行動服務後端組件。
 
 ## 在 Azure 傳統入口網站中更新已註冊的插入指令碼
@@ -65,22 +63,23 @@
 
 ### 參照 Azure 儲存體 Android 用戶端程式庫
 
-1. 若要將參考加入至程式庫，在 **應用程式** > **build.gradle** 檔案中，新增此行 `相依性` 區段:
+1. 若要將參考加入至程式庫，在 **應用程式** > **build.gradle** 檔案中，新增此行 `dependencies` 區段:
 
         compile 'com.microsoft.azure.android:azure-storage-android:0.6.0@aar'
 
-2. 變更 `minSdkVersion` 值為 15 (相機 API 所需)。
 
-3. 按 [**同步處理專案與 Gradle 檔案**] 圖示。
+2. 將 `minSdkVersion` 值變更為 15 (相機 API 所需)。
+
+3. 按下 **同步處理專案與 Gradle 檔案** 圖示。
 
 ### 更新相機和儲存體的資訊清單檔案
 
-1. 若要指定應用程式，必須有可用的相機，方法是在 **AndroidManifest.xml** 中加入這一行：
+1. 指定您的應用程式，則需要加入此行具有可用的攝影機 **AndroidManifest.xml**:
 
         <uses-feature android:name="android.hardware.camera"
             android:required="true" />
 
-2. 若要指定應用程式，必須有寫入外部儲存體的權限，方法是在 **AndroidManifest.xml** 中加入這一行：
+2. 指定您的應用程式需要使用權限加入此行來寫入外部儲存體 **AndroidManifest.xml**:
 
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -88,7 +87,7 @@
 
 ### 更新新使用者介面的資源檔案
 
-1. 在*值*目錄的 **strings.xml** 檔案中加入下列內容，以新增新按鈕的標題：
+1. 加入新按鈕的標題新增至下列 **strings.xml** 檔案中 *值* 目錄:
 
         <string name="preview_button_text">Take Photo</string>
         <string name="upload_button_text">Upload</string>
@@ -102,7 +101,7 @@
              android:onClick="takePicture"
              android:text="@string/preview_button_text" />
 
-3. 以下列程式碼取代 [**新增**] 按鈕項目：
+3. 取代 **新增** button 元素，以下列程式碼:
 
          <Button
              android:id="@+id/buttonUpload"
@@ -112,10 +111,9 @@
              android:text="@string/upload_button_text" />
 
 
-
 ### 新增拍攝相片的程式碼
 
-1. 在 **ToDoActivity.java** 中加入此程式碼，以建立具有唯一名稱的**檔案**物件。
+1. 在 **ToDoActivity.java** 加入此程式碼來建立 **檔案** 物件具有唯一名稱。
 
         // Create a File object for storing the photo
         private File createImageFile() throws IOException {
@@ -131,129 +129,129 @@
             return image;
         }
 
-5. 加入此程式碼以啟動 Android 相機應用程式。 接著您就可以拍照，確定照片令您滿意後，請按 [**儲存**]，該照片就會儲存在您剛才建立的檔案中。
+5. 加入此程式碼以啟動 Android 相機應用程式。 您可以拍照，並當其中一個看起來正常，請按 **儲存**, ，其中會儲存在您剛才建立的檔案。
 
-     // Run an Intent to start up the Android camera
-     static final int REQUEST_TAKE_PHOTO = 1;
-     public Uri mPhotoFileUri = null;
-     public File mPhotoFile = null;
-    
-     public void takePicture(View view) {
-         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-         // Ensure that there's a camera activity to handle the intent
-         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-             // Create the File where the photo should go
-             try {
-                 mPhotoFile = createImageFile();
-             } catch (IOException ex) {
-                 // Error occurred while creating the File
-                 //
-             }
-             // Continue only if the File was successfully created
-             if (mPhotoFile != null) {
-                 mPhotoFileUri = Uri.fromFile(mPhotoFile);
-                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mPhotoFileUri);
-                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-             }
-         }
-     }
+        // Run an Intent to start up the Android camera
+        static final int REQUEST_TAKE_PHOTO = 1;
+        public Uri mPhotoFileUri = null;
+        public File mPhotoFile = null;
 
+        public void takePicture(View view) {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            // Ensure that there's a camera activity to handle the intent
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                // Create the File where the photo should go
+                try {
+                    mPhotoFile = createImageFile();
+                } catch (IOException ex) {
+                    // Error occurred while creating the File
+                    //
+                }
+                // Continue only if the File was successfully created
+                if (mPhotoFile != null) {
+                    mPhotoFileUri = Uri.fromFile(mPhotoFile);
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mPhotoFileUri);
+                    startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+                }
+            }
+        }
 
 ### 加入程式碼以將相片檔案上傳至 Blob 儲存體
 
+
 1. 我們先新增一些新的中繼資料欄位至 `ToDoItem` 物件加上此程式碼 **ToDoItem.java**。
 
-     /**
-      *  imageUri - points to location in storage where photo will go
-      */
-     @com.google.gson.annotations.SerializedName("imageUri")
-     private String mImageUri;
-    
-     /**
-      * Returns the item ImageUri
-      */
-     public String getImageUri() {
-         return mImageUri;
-     }
-    
-     /**
-      * Sets the item ImageUri
-      *
-      * @param ImageUri
-      *            Uri to set
-      */
-     public final void setImageUri(String ImageUri) {
-         mImageUri = ImageUri;
-     }
-    
-     /**
-      * ContainerName - like a directory, holds blobs
-      */
-     @com.google.gson.annotations.SerializedName("containerName")
-     private String mContainerName;
-    
-     /**
-      * Returns the item ContainerName
-      */
-     public String getContainerName() {
-         return mContainerName;
-     }
-    
-     /**
-      * Sets the item ContainerName
-      *
-      * @param ContainerName
-      *            Uri to set
-      */
-     public final void setContainerName(String ContainerName) {
-         mContainerName = ContainerName;
-     }
-    
-     /**
-      *  ResourceName
-      */
-     @com.google.gson.annotations.SerializedName("resourceName")
-     private String mResourceName;
-    
-     /**
-      * Returns the item ResourceName
-      */
-     public String getResourceName() {
-         return mResourceName;
-     }
-    
-     /**
-      * Sets the item ResourceName
-      *
-      * @param ResourceName
-      *            Uri to set
-      */
-     public final void setResourceName(String ResourceName) {
-         mResourceName = ResourceName;
-     }
-    
-     /**
-      *  SasQueryString - permission to write to storage
-      */
-     @com.google.gson.annotations.SerializedName("sasQueryString")
-     private String mSasQueryString;
-    
-     /**
-      * Returns the item SasQueryString
-      */
-     public String getSasQueryString() {
-         return mSasQueryString;
-     }
-    
-     /**
-      * Sets the item SasQueryString
-      *
-      * @param SasQueryString
-      *            Uri to set
-      */
-     public final void setSasQueryString(String SasQueryString) {
-         mSasQueryString = SasQueryString;
-     }
+        /**
+         *  imageUri - points to location in storage where photo will go
+         */
+        @com.google.gson.annotations.SerializedName("imageUri")
+        private String mImageUri;
+
+        /**
+         * Returns the item ImageUri
+         */
+        public String getImageUri() {
+            return mImageUri;
+        }
+
+        /**
+         * Sets the item ImageUri
+         *
+         * @param ImageUri
+         *            Uri to set
+         */
+        public final void setImageUri(String ImageUri) {
+            mImageUri = ImageUri;
+        }
+
+        /**
+         * ContainerName - like a directory, holds blobs
+         */
+        @com.google.gson.annotations.SerializedName("containerName")
+        private String mContainerName;
+
+        /**
+         * Returns the item ContainerName
+         */
+        public String getContainerName() {
+            return mContainerName;
+        }
+
+        /**
+         * Sets the item ContainerName
+         *
+         * @param ContainerName
+         *            Uri to set
+         */
+        public final void setContainerName(String ContainerName) {
+            mContainerName = ContainerName;
+        }
+
+        /**
+         *  ResourceName
+         */
+        @com.google.gson.annotations.SerializedName("resourceName")
+        private String mResourceName;
+
+        /**
+         * Returns the item ResourceName
+         */
+        public String getResourceName() {
+            return mResourceName;
+        }
+
+        /**
+         * Sets the item ResourceName
+         *
+         * @param ResourceName
+         *            Uri to set
+         */
+        public final void setResourceName(String ResourceName) {
+            mResourceName = ResourceName;
+        }
+
+        /**
+         *  SasQueryString - permission to write to storage
+         */
+        @com.google.gson.annotations.SerializedName("sasQueryString")
+        private String mSasQueryString;
+
+        /**
+         * Returns the item SasQueryString
+         */
+        public String getSasQueryString() {
+            return mSasQueryString;
+        }
+
+        /**
+         * Sets the item SasQueryString
+         *
+         * @param SasQueryString
+         *            Uri to set
+         */
+        public final void setSasQueryString(String SasQueryString) {
+            mSasQueryString = SasQueryString;
+        }
 
 2. 以下列程式碼取代 0 參數建構函式：
 
@@ -291,75 +289,75 @@
             this.setSasQueryString(sasQueryString);
         }
 
+
 4. 在 **ToDoActivity.java** 檔案中，將 **addItem** 方法中的 **ToDoActivity.java**  上傳映像為下列程式碼。
 
-     /**
-      * Add a new item
-      *
-      * @param view
-      *            The view that originated the call
-      */
-     public void uploadPhoto(View view) {
-         if (mClient == null) {
-             return;
-         }
-    
-         // Create a new item
-         final ToDoItem item = new ToDoItem();
-    
-         item.setText(mTextNewToDo.getText().toString());
-         item.setComplete(false);
-         item.setContainerName("todoitemimages");
-    
-         // Use a unigue GUID to avoid collisions.
-         UUID uuid = UUID.randomUUID();
-         String uuidInString = uuid.toString();
-         item.setResourceName(uuidInString);
-    
-         // Send the item to be inserted. When blob properties are set this
-         // generates an SAS in the response.
-         AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
-             @Override
-             protected Void doInBackground(Void... params) {
-                 try {
-                         final ToDoItem entity = addItemInTable(item);
-    
-                         // If we have a returned SAS, then upload the blob.
-                         if (entity.getSasQueryString() != null) {
-    
-                        // Get the URI generated that contains the SAS
-                         // and extract the storage credentials.
-                         StorageCredentials cred =
-                             new StorageCredentialsSharedAccessSignature(entity.getSasQueryString());
-                         URI imageUri = new URI(entity.getImageUri());
-    
-                         // Upload the new image as a BLOB from a stream.
-                         CloudBlockBlob blobFromSASCredential =
-                                 new CloudBlockBlob(imageUri, cred);
-    
-                         blobFromSASCredential.uploadFromFile(mPhotoFileUri.getPath());
-                     }
-    
-                     runOnUiThread(new Runnable() {
-                         @Override
-                         public void run() {
-                             if(!entity.isComplete()){
-                                 mAdapter.add(entity);
-                             }
-                         }
-                     });
-                 } catch (final Exception e) {
-                     createAndShowDialogFromTask(e, "Error");
-                 }
-                 return null;
-             }
-         };
-    
-         runAsyncTask(task);
-    
-         mTextNewToDo.setText("");
-     }
+        /**
+         * Add a new item
+         *
+         * @param view
+         *            The view that originated the call
+         */
+        public void uploadPhoto(View view) {
+            if (mClient == null) {
+                return;
+            }
 
+            // Create a new item
+            final ToDoItem item = new ToDoItem();
+
+            item.setText(mTextNewToDo.getText().toString());
+            item.setComplete(false);
+            item.setContainerName("todoitemimages");
+
+            // Use a unigue GUID to avoid collisions.
+            UUID uuid = UUID.randomUUID();
+            String uuidInString = uuid.toString();
+            item.setResourceName(uuidInString);
+
+            // Send the item to be inserted. When blob properties are set this
+            // generates an SAS in the response.
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                            final ToDoItem entity = addItemInTable(item);
+
+                            // If we have a returned SAS, then upload the blob.
+                            if (entity.getSasQueryString() != null) {
+
+                           // Get the URI generated that contains the SAS
+                            // and extract the storage credentials.
+                            StorageCredentials cred =
+                                new StorageCredentialsSharedAccessSignature(entity.getSasQueryString());
+                            URI imageUri = new URI(entity.getImageUri());
+
+                            // Upload the new image as a BLOB from a stream.
+                            CloudBlockBlob blobFromSASCredential =
+                                    new CloudBlockBlob(imageUri, cred);
+
+                            blobFromSASCredential.uploadFromFile(mPhotoFileUri.getPath());
+                        }
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(!entity.isComplete()){
+                                    mAdapter.add(entity);
+                                }
+                            }
+                        });
+                    } catch (final Exception e) {
+                        createAndShowDialogFromTask(e, "Error");
+                    }
+                    return null;
+                }
+            };
+
+            runAsyncTask(task);
+
+            mTextNewToDo.setText("");
+        }
 
 
 此程式碼會將要求傳送給行動服務以插入新 TodoItem。 回應內容包含 SAS，這能用來將影像從本機儲存體上傳至 Azure 儲存體中的 Blob 。
@@ -367,17 +365,17 @@
 
 ## 測試上傳影像
 
-1. 在 Android Studio 中按 [**執行**]。 在對話方塊中，選擇要使用的裝置。
+1. 在 Android Studio **執行**。 在對話方塊中，選擇要使用的裝置。
 
-2. 應用程式 UI 出現後，在標示為 [**新增待辦事項**] 的文字方塊中輸入文字。
+2. 當應用程式 UI 隨即出現，標示為文字方塊中輸入文字時 **新增 ToDo 項目**。
 
-3. 按 [**拍照**]。 相機應用程式啟動後，請拍攝相片。 按下核取記號以接受拍攝的相片。
+3. 按下 **拍照**。 相機應用程式啟動後，請拍攝相片。 按下核取記號以接受拍攝的相片。
 
-4. 按 [**上傳**]。 如往常一樣注意 ToDoItem 加入至清單中的方式。
+4. 按下 **上載**。 如往常一樣注意 ToDoItem 加入至清單中的方式。
 
-5. 在 Azure 傳統入口網站中，移至您的儲存體帳戶並按 [**容器**] 索引標籤，然後在清單中按您的容器名稱。
+5. 在 Azure 傳統入口網站，請移至儲存體帳戶並按下 **容器** 索引標籤，然後在清單中按下您的容器名稱。
 
-6. 已上傳的 Blob 檔案清單會隨即出現。 選取任一項目，然後按 [**下載**]。
+6. 已上傳的 Blob 檔案清單會隨即出現。 選取其中一個，然後按 **下載**。
 
 7. 瀏覽器視窗會隨即顯示您所上傳的影像。
 
@@ -398,30 +396,33 @@
 
   參考使用伺服器指令碼來執行伺服器端工作以及與其他 Azure 元件和外部資源整合的主題。
 
-+ [行動服務.NET 作法概念參考資料]
++ [行動服務 .NET 作法概念性參考]
 
   深入了解如何搭配使用行動服務與 .NET
 
 
+<!-- Anchors. -->
+[Install the Storage Client library]: #install-storage-client
+[Update the client app to capture images]: #add-select-images
+[Update the insert script to generate an SAS]: #update-scripts
+[Upload images to test the app]: #test
+[Next Steps]:#next-steps
+
+<!-- Images. -->
+
+[2]: ./media/mobile-services-windows-store-dotnet-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
 
 
+<!-- URLs. -->
+[Send email from Mobile Services with SendGrid]: store-sendgrid-mobile-services-send-email-scripts.md
+[Schedule backend jobs in Mobile Services]: mobile-services-schedule-recurring-tasks.md
+[Send push notifications to Windows Store apps using Service Bus from a .NET back-end]: http://go.microsoft.com/fwlink/?LinkId=277073&clcid=0x409
+[Mobile Services server script reference]: mobile-services-how-to-use-server-scripts.md
+[Get started with Mobile Services]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
 
-
-
-[install the storage client library]: #install-storage-client 
-[update the client app to capture images]: #add-select-images 
-[update the insert script to generate an sas]: #update-scripts 
-[upload images to test the app]: #test 
-[next steps]: #next-steps 
-[2]: ./media/mobile-services-windows-store-dotnet-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png 
-[send email from mobile services with sendgrid]: store-sendgrid-mobile-services-send-email-scripts.md 
-[schedule backend jobs in mobile services]: mobile-services-schedule-recurring-tasks.md 
-[send push notifications to windows store apps using service bus from a .net back-end]: http://go.microsoft.com/fwlink/?LinkId=277073&clcid=0x409 
-[mobile services server script reference]: mobile-services-how-to-use-server-scripts.md 
-[get started with mobile services]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md 
-[azure classic portal]: https://manage.windowsazure.com/ 
-[how to create a storage account]: ../storage-create-storage-account.md 
-[azure storage client library for store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866 
-[mobile services .net how-to conceptual reference]: mobile-services-windows-dotnet-how-to-use-client-library.md 
-[app settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7 
+[Azure classic portal]: https://manage.windowsazure.com/
+[How To Create a Storage Account]: ../storage-create-storage-account.md
+[Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
+[Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
+[App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 

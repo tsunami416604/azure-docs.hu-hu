@@ -16,7 +16,6 @@
    ms.date="10/27/2015"
    ms.author="curtand"/>
 
-
 # Azure Active Directory (Azure AD) B2B 共同作業
 
 Azure AD B2B 共同作業允許以合作夥伴管理的身分識別來存取您的公司應用程式。 您可以建立跨公司的關聯性，邀請並授權合作夥伴公司的使用者存取您的資源。 複雜性降低，因為每一家公司與 Azure Active Directory 只同盟一次，且每一位使用者都由單一 Azure AD 帳戶來代表。 安全性提高，因為當合作夥伴使用者從他們的組織中離職時，存取權即撤銷，絕不可能再透過內部目錄中的成員資格來存取。 對於還沒有 Azure AD 的商務夥伴，B2B 共同作業有簡便的註冊體驗提供 Azure AD 帳戶給您的商務夥伴。
@@ -43,7 +42,7 @@ Azure Active Directory B2B 共同作業的設定很簡單，各種規模的合�
 
 4. 登入之後，使用者將重新導向至與他們共用的應用程式。
 
-取用者的邀請電子郵件地址 (例如 Gmail 或 [*comcast.net*](http://comcast.net/)) 目前不支援。
+取用者的邀請電子郵件地址 (例如 Gmail 或 [*comcast.net*](http://comcast.net/)) 目前不支援。
 
 如需 B2B 共同作業的運作方式，請參閱 [這段影片](http://aka.ms/aadshowb2b)。
 
@@ -52,16 +51,15 @@ Azure Active Directory B2B 共同作業的設定很簡單，各種規模的合�
 CSV 檔案採用以下的格式。 新增所有必要的逗號，即使您沒有指定一個或多個選項。
 
 **電子郵件:** 電子郵件地址邀請使用者。<br/>
-**DisplayName:** 受邀的使用者 (通常，第一個和最後一個名稱) 的顯示名稱。<br/>
-**InviteAppID:**  之應用程式使用的標示電子郵件邀請]，然後接受的頁面識別碼。<br/>
-**InviteReplyURL:** URL，以接受邀請之後直接受邀的使用者。這應該是特定公司的 URL (例如 [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/))。如果未指定此選用欄位，就會產生邀請其他公司的存取面板 URL (此 URL 的格式是  `https://account.activedirectory.windowsazure.com/applications/default.aspx?tenantId=&lt;TenantID&gt;`)。<br/>
-**InviteAppResources:** 應用程式可以將使用者指派的 Appid。 藉由呼叫擷取 Appid 的 `Get-msolserviceprincipal | fl DisplayName、 AppPrincipalId`<br/>
-**InviteGroupResources:** 群組的 objectid 將要新增使用者。 藉由呼叫擷取 objectid 將要的 `Get-msolgroup | fl DisplayName，ObjectId`<br/>
-**InviteContactUsUrl:** 「 與我們連絡 」 URL 包含在電子郵件邀請，以防受邀的使用者想要連絡您的組織。<br/>
+**顯示名稱:** 受邀的使用者 (通常，第一個和最後一個名稱) 的顯示名稱。<br/>
+**InviteAppID:**  應用程式使用的標示電子郵件邀請]，然後接受頁面的識別碼。<br/>
+**InviteReplyURL:** URL，以接受邀請之後直接受邀的使用者。 這應該是特定公司的 URL (例如 [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/))。 如果未指定此選用欄位，就會產生邀請其他公司的存取面板 URL (此 URL 的格式是  `https://account.activedirectory.windowsazure.com/applications/default.aspx?tenantId=<TenantID>`)。<br/>
+**InviteAppResources:** 應用程式可以將使用者指派的 Appid。 藉由呼叫擷取 Appid 的 `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId`<br/>
+**InviteGroupResources:** 群組的 objectid 將要新增使用者。 Objectid 將要呼叫中擷取的 `Get-MsolGroup | fl DisplayName, ObjectId`<br/>
+**InviteContactUsUrl:** 「 與我們連絡 」 URL 包含在電子郵件邀請，以防受邀的使用者想要連絡您的組織。<br/>
 
 ## CSV 檔案範例
-
-以下是範例 CSV，您可以修改您的目的。 將它儲存為您喜歡的任何檔案名稱，但必須確定副檔名為 '.csv'。
+以下是 CSV 範例，請依用途自行修改。 將它儲存為您喜歡的任何檔案名稱，但必須確定副檔名為 '.csv'。
 
 ```
 Email,DisplayName,InviteAppID,InviteReplyUrl,InviteAppResources,InviteGroupResources,InviteContactUsUrl
@@ -70,18 +68,13 @@ jsmith@contoso.com,Jeff Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.
 bsmith@contoso.com,Ben Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
 ```
 ## 後續步驟
-
 請瀏覽有關 Azure B2B 共同作業的其他文章
 
-- [什麼是 Azure AD B2B 共同作業?](active-directory-b2b-what-is-azure-ad-b2b.md)
-- [它的運作方式](active-directory-b2b-how-it-works.md)
+- [何謂 Azure AD B2B 共同作業？](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [運作方式](active-directory-b2b-how-it-works.md)
 - [詳細的逐步解說](active-directory-b2b-detailed-walkthrough.md)
-- [CSV 檔案格式的參考](active-directory-b2b-references-csv-file-format.md)
-- [外部使用者的權杖格式](active-directory-b2b-references-external-user-token-format.md)
+- [CSV 檔案格式參考](active-directory-b2b-references-csv-file-format.md)
+- [外部使用者權杖格式](active-directory-b2b-references-external-user-token-format.md)
 - [外部使用者物件屬性變更](active-directory-b2b-references-external-user-object-attribute-changes.md)
-- [目前的預覽限制](active-directory-b2b-current-preview-limitations.md)
-
-
-
-
+- [目前的預覽版本限制](active-directory-b2b-current-preview-limitations.md)
 

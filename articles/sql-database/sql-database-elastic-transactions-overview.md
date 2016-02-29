@@ -16,14 +16,13 @@
    ms.date="11/02/2015"
    ms.author="torsteng"/>
 
-
 # Azure SQL Database (預覽版) 的彈性資料庫交易概觀
 
-Azure SQL Database (SQL DB) 的彈性資料庫交易可讓您在 SQL DB 中跨多個資料庫執行交易。 SQL 資料庫的彈性資料庫交易適用於使用 ADO.NET 的.NET 應用程式，並整合與熟悉程式設計經驗使用 [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) 類別。
+Azure SQL Database (SQL DB) 的彈性資料庫交易可讓您在 SQL DB 中跨多個資料庫執行交易。 SQL 資料庫的彈性資料庫交易適用於使用 ADO.NET 的.NET 應用程式，並整合與熟悉程式設計經驗使用 [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) 類別。 
 
-在內部部署，這種案例通常需要執行 Microsoft Distributed Transaction Coordinator (MSDTC)。 因為 MSDTC 不適用於 Azure 中的平台即服務應用程式，協調分散式交易的功能現在已直接整合至 SQL DB。 應用程式可以連接到任何 SQL Database 來啟動分散式交易，而其中一個資料庫會明確協調分散式交易，如下圖所示。
+在內部部署，這種案例通常需要執行 Microsoft Distributed Transaction Coordinator (MSDTC)。 因為 MSDTC 不適用於 Azure 中的平台即服務應用程式，協調分散式交易的功能現在已直接整合至 SQL DB。 應用程式可以連接到任何 SQL Database 來啟動分散式交易，而其中一個資料庫會明確協調分散式交易，如下圖所示。 
 
-  ![Azure SQL Database 的分散式交易 - 使用彈性資料庫交易][1]
+  ![分散式的交易與使用彈性資料庫交易的 Azure SQL Database][] 1
 
 ## 常見案例
 
@@ -48,7 +47,7 @@ SQL DB 的彈性資料庫交易可讓應用程式對數個不同 SQL Database �
 
 ### 多重資料庫應用程式
 
-下列範例程式碼使用熟悉的 .NET System.Transactions 程式設計經驗。 TransactionScope 類別會在 .NET 中建立環境交易 (「環境交易」是位於目前執行緒中的交易)。 TransactionScope 內開啟的所有連接都參與交易。 如果有不同的資料庫參與，交易會自動提升為分散式交易。 設定完成範圍來指出認可，即可控制交易的結果。
+下列範例程式碼使用熟悉的 .NET System.Transactions 程式設計經驗。 TransactionScope 類別會在 .NET 中建立環境交易 (「環境交易」是位於目前執行緒中的交易)。TransactionScope 內開啟的所有連接都參與交易。 如果有不同的資料庫參與，交易會自動提升為分散式交易。 設定完成範圍來指出認可，即可控制交易的結果。
 
     using (var scope = new TransactionScope())
     {
@@ -59,7 +58,7 @@ SQL DB 的彈性資料庫交易可讓應用程式對數個不同 SQL Database �
             cmd1.CommandText = string.Format("insert into T1 values(1)");
             cmd1.ExecuteNonQuery();
         }
-    
+
         using (var conn2 = new SqlConnection(connStrDb2))
         {
             conn2.Open();
@@ -67,12 +66,12 @@ SQL DB 的彈性資料庫交易可讓應用程式對數個不同 SQL Database �
             cmd2.CommandText = string.Format("insert into T2 values(2)");
             cmd2.ExecuteNonQuery();
         }
-    
+
         scope.Complete();
     }
 
 ### 分區化資料庫應用程式
-
+ 
 SQL DB 的彈性資料庫交易也支援協調分散式交易，您需要使用彈性資料庫用戶端程式庫的 OpenConnectionForKey 方法，開啟相應放大資料層的連接。 假設變更跨數個不同分區化索引鍵值，而您需要保證交易一致性。 連接到裝載不同分區化索引鍵值的分區時，由 OpenConnectionForKey 代理連接。 在一般情況下可連接到不同分區，以確保交易保證需要分散式交易。 
 下列程式碼範例說明此方法。 其中假設使用一個稱為 shardmap 的變數，代表來自彈性資料庫用戶端程式庫的分區對應：
 
@@ -85,7 +84,7 @@ SQL DB 的彈性資料庫交易也支援協調分散式交易，您需要使用�
             cmd1.CommandText = string.Format("insert into T1 values(1)");
             cmd1.ExecuteNonQuery();
         }
-    
+        
         using (var conn2 = shardmap.OpenConnectionForKey(tenantId2, credentialsStr))
         {
             conn2.Open();
@@ -93,13 +92,14 @@ SQL DB 的彈性資料庫交易也支援協調分散式交易，您需要使用�
             cmd2.CommandText = string.Format("insert into T1 values(2)");
             cmd2.ExecuteNonQuery();
         }
-    
+
         scope.Complete();
     }
 
+
 ## 設定 Azure 背景工作角色
 
-您可以自動將彈性資料庫交易所需的 .NET 版本和程式庫安裝和部署至 Azure (到雲端服務中的客體 OS)。 對於 Azure 背景工作角色，請使用啟動工作。 概念和步驟所述 [雲端服務角色上安裝的.NET](../cloud-services/cloud-services-dotnet-install-dotnet.md)。
+您可以自動將彈性資料庫交易所需的 .NET 版本和程式庫安裝和部署至 Azure (到雲端服務中的客體 OS)。 對於 Azure 背景工作角色，請使用啟動工作。 概念和步驟所述 [雲端服務角色上安裝的.NET](../cloud-services/cloud-services-dotnet-install-dotnet.md)。  
 
 請注意，與 .NET 4.6 的安裝程式相比，.NET 4.6.1 的安裝程式在於 Azure 雲端服務上進行啟動程序時，需要更多的暫存儲存體。 為了確保能夠順利安裝，您必須在 ServiceDefinition.csdef 檔案中，於啟動工作的 LocalResources 區段和環境設定中，增加 Azure 雲端服務的暫存儲存體，如以下範例所示：
 
@@ -125,19 +125,19 @@ SQL DB 的彈性資料庫交易也支援協調分散式交易，您需要使用�
 ## 監視交易狀態
 
 使用 SQL DB 中的動態管理檢視 (DMV) 來監視進行中彈性資料庫交易的狀態和進度。 所有與交易相關的 DMV 都與 SQL DB 中的分散式交易有關聯。 您可以找出對應清單的 Dmv 如下: [交易相關動態管理檢視和函數 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)。
-
+ 
 這些 DMV 特別有用：
 
 * **sys.dm\_tran\_active\_transactions**: 列出目前使用中交易及其狀態。 UOW (工作單位) 資料行可以識別屬於相同分散式交易的不同子交易。 相同分散式交易內的所有交易具有相同的 UOW 值。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms174302.aspx) 如需詳細資訊。
 * **sys.dm\_tran\_database\_transactions**: 提供有關交易，例如放置交易記錄檔中的其他資訊。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms186957.aspx) 如需詳細資訊。
 * **sys.dm\_tran\_locks**: 提供目前進行中的交易所持有的鎖定的相關資訊。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms190345.aspx) 如需詳細資訊。
 
-## 限制
+## 限制 
 
 SQL DB 中的彈性資料庫交易目前有下列限制：
 
-* 僅支援 SQL DB 中跨資料庫的交易。 其他 [X / Open XA](https://en.wikipedia.org/wiki/X/Open_XA) 資源提供者和 SQL 資料庫之外的資料庫無法參與彈性資料庫交易。 這表示彈性資料庫交易無法延伸到內部部署 SQL Server 和 Azure SQL Database。 對於內部部署的分散式交易，請繼續使用 MSDTC。
-* 僅支援來自 .NET 應用程式的用戶端協調交易。 目前已規劃 T-SQL 的伺服器端支援，例如 BEGIN DISTRIBUTED TRANSACTION，但尚未推出。
+* 僅支援 SQL DB 中跨資料庫的交易。 其他 [X / Open XA](https://en.wikipedia.org/wiki/X/Open_XA) 資源提供者和 SQL 資料庫之外的資料庫無法參與彈性資料庫交易。 這表示彈性資料庫交易無法延伸到內部部署 SQL Server 和 Azure SQL Database。 對於內部部署的分散式交易，請繼續使用 MSDTC。 
+* 僅支援來自 .NET 應用程式的用戶端協調交易。 目前已規劃 T-SQL 的伺服器端支援，例如 BEGIN DISTRIBUTED TRANSACTION，但尚未推出。 
 * 僅支援 Azure SQL DB V12 上的資料庫。
 * 僅支援屬於 SQL DB 中相同邏輯伺服器的資料庫。
 
@@ -145,7 +145,9 @@ SQL DB 中的彈性資料庫交易目前有下列限制：
 
 您的 Azure 應用程式還未使用彈性資料庫功能嗎？ 請查看我們 [文件地圖](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)。 如有問題，請將與我們在 [SQL Database 論壇](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) 功能要求，請將它們加入 [SQL Database 意見反應論壇](http://feedback.azure.com/forums/217321-sql-database)。
 
+<!--Image references-->
+[1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
 
-[1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png 
+
 

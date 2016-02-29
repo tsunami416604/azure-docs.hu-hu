@@ -18,14 +18,9 @@
     ms.author="cephalin"/>
 
 
-
-# 針對 Azure App Service 中的 App 啟用 HTTPS
+#針對 Azure App Service 中的 App 啟用 HTTPS
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 [AZURE.INCLUDE [configure-ssl-web-site](../../includes/configure-ssl-web-site.md)]
-
-
-
-
 

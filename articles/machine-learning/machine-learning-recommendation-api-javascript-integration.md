@@ -16,15 +16,13 @@
     ms.date="10/14/2015" 
     ms.author="luisca"/>
 
-
 # Azure Machine Learning Recommendations - JavaScript 整合
 
 本文件說明如何使用 JavaScript 整合您的網站。 JavaScript 可讓您傳送資料擷取事件，並在建立建議模型之後取用建議。 透過 JS 完成的所有操作也能從伺服器端完成。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## 1.一般概觀
-
+##1. 一般概觀
 利用 2 階段所包含的 Azure ML Recommendations 來整合您的網站：
 
 1.  將事件傳送到 Azure ML Recommendations。 這樣做將能建立建議模型。
@@ -41,28 +39,26 @@
 
 在第二階段中，當您想要在頁面上顯示建議時，請選取下列其中一個選項：
 
-1.您的伺服器 (在頁面轉譯階段) 會呼叫 Azure ML Recommendations 伺服器 (透過資料市場) 以取得建議。 結果會包含項目識別碼的清單。 您的伺服器需要利用「中繼資料」 (例如影像、描述) 項目擴充結果，以及將建立的頁面傳送給瀏覽器。
+1. 您的伺服器 (在頁面轉譯階段) 呼叫 Azure ML Recommendations 伺服器 (透過資料市場) 以取得建議。 結果會包含項目識別碼的清單。 您的伺服器需要利用「中繼資料」 (例如影像、描述) 項目擴充結果，以及將建立的頁面傳送給瀏覽器。
 
 ![繪圖 2][2]
 
-2.另一個選項是使用從第一階段的小型 JavaScript 檔案，以取得簡單的清單，建議的項目。 這裡收到的資料會比第一個選擇還要精簡。
+2. 另一個選擇是使用第一階段中的小型 JavaScript 檔案，以取得簡單的建議項目清單。 這裡收到的資料會比第一個選擇還要精簡。
 
 ![繪圖 3][3]
 
-## 2.必要條件
+##2. 必要條件
 
 1. 使用 API 建立新的模型。 如需如何執行此操作，請參閱快速入門指南。
-2. 編碼您 < k >: < a m a > 使用 base64。 (這將會用於基本驗證，讓 JS 程式碼能夠呼叫 API)。
+2. 使用 base64 將 &lt;dataMarketUser&gt;:&lt;dataMarketKey&gt; 編碼。 (這將會用於基本驗證，讓 JS 程式碼能夠呼叫 API)。
 
 
-## 3.使用 JavaScript 傳送資料擷取事件
-
+##3. 使用 JavaScript 傳送資料擷取事件
 下列步驟可加入傳送事件的速度：
 
 1.  在程式碼中納入 JQuery 程式庫。 您可以利用下列 URL 來從 nuget 下載。
 
         http://www.nuget.org/packages/jQuery/1.8.2
-
 2.  納入 Recommendations Java Script 程式庫，從下列 URL: http://1drv.ms/1Aoa1Zp
 
 3.  使用適當參數初始化 Azure ML Recommendations 程式庫。
@@ -82,17 +78,13 @@
         </script>
 
 
-
-### 3.1.限制和瀏覽器支援
-
+###3.1. 限制和瀏覽器支援
 這是參考實作並依現況提供。 其應該支援所有主要瀏覽器。
 
-### 3.2.事件類型
-
+###3.2. 事件類型
 程式庫一共支援 5 種類型的事件：點選 (Click)、建議點選 (Recommendation Click)、加入購物車 (Add to Shop Cart)、從購物車移除 (Remove from Shop Cart) 以及購買 (Purchase)。 另外還有一種用來設定使用者內容的事件，稱為登入 (Login)。
 
-#### 3.2.1.點選事件
-
+####3.2.1. 點選事件
 每當使用者點選項目時，都應該會使用這個事件。 當使用者點選項目時，通常會開啟含有該項目詳細資料的新頁面。在這個頁面中，應該會觸發此事件。
 
 參數：
@@ -101,12 +93,11 @@
 - itemName (字串，選擇性) – 項目的名稱
 - itemDescription (字串，選擇性) – 項目的描述
 - itemCategory (字串，選擇性) – 項目的類別
-
+        
         <script>
             if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
             AzureMLRecommendationsEvent.push({ event: "click", item: "3111718" });
         </script>
-
 
 或使用選擇性資料：
 
@@ -115,8 +106,8 @@
             AzureMLRecommendationsEvent.push({event: "click", item: "3111718", itemName: "Plane", itemDescription: "It is a big plane", itemCategory: "Aviation"});
         </script>
 
-#### 3.2.2.建議點選事件
 
+####3.2.2. 建議點選事件
 每當使用者點選項目 (從 Azure ML Recommendations 接收當成建議的項目) 時，都應該會使用這個事件。 當使用者點選項目時，通常會開啟含有該項目詳細資料的新頁面。在這個頁面中，應該會觸發此事件。
 
 參數：
@@ -127,12 +118,11 @@
 - itemCategory (字串，選擇性) – 項目的類別
 - 植入 (字串陣列，選擇性) – 產生建議查詢的根源。
 - recoList (字串陣列，選擇性) – 產生已按下此項目的建議要求的結果。
-
+        
         <script>
             if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
             AzureMLRecommendationsEvent.push({event: "recommendationclick", item: "18899918" });
         </script>
-
 
 或使用選擇性資料：
 
@@ -141,8 +131,8 @@
             AzureMLRecommendationsEvent.push({ event: eventName, item: "198", itemName: "Plane2", itemDescription: "It is a big plane2", itemCategory: "Default2", seeds: ["Seed1", "Seed2"], recoList: ["199", "198", "197"]               });
         </script>
 
-#### 3.2.3.加入購物車事件
 
+####3.2.3. 加入購物車事件
 當使用者將項目加入購物車時，應該會使用這個事件。
 參數：
 * event (字串，強制) –"addshopcart"
@@ -150,15 +140,13 @@
 * itemName (字串，選擇性) – 項目的名稱
 * itemDescription (字串，選擇性) – 項目的描述
 * itemCategory (字串，選擇性) – 項目的類別
-
+        
         <script>
             if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
             AzureMLRecommendationsEvent.push({event: "addshopcart", item: "13221118" });
         </script>
 
-
-#### 3.2.4.移除購物車事件
-
+####3.2.4. 移除購物車事件
 當使用者移除購物車中的項目時，應該會使用這個事件。
 
 參數：
@@ -167,15 +155,13 @@
 * itemName (字串，選擇性) – 項目的名稱
 * itemDescription (字串，選擇性) – 項目的描述
 * itemCategory (字串，選擇性) – 項目的類別
-
+        
         <script>
             if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
             AzureMLRecommendationsEvent.push({ event: "removeshopcart", item: "111118" });
         </script>
 
-
-#### 3.2.5.購買事件
-
+####3.2.5. 購買事件
 當使用者購買購物車中的項目時，應該會使用這個事件。
 
 參數：
@@ -193,8 +179,7 @@
             AzureMLRecommendationsEvent.push({ event: "purchase", items: [{ item: "33", count: "1", price: "10" }, { item: "34", count: "2" }, { item: "35", count: "1", price: "210" }] });
         </script>
 
-#### 3.2.6.使用者登入事件
-
+####3.2.6. 使用者登入事件
 Azure ML Recommendations 事件程式庫會建立並使用 Cookie，以識別來自相同瀏覽器的事件。 為了改善模型結果，Azure ML Recommendations 能夠為使用者設定將覆寫 Cookie 使用的唯一識別。
 
 在使用者登入您的網站後，應該會使用這個事件。
@@ -207,12 +192,10 @@ Azure ML Recommendations 事件程式庫會建立並使用 Cookie，以識別來
             AzureMLRecommendationsEvent.push ({事件:"userlogin"，使用者:"ABCD10AA"})。
         </script>
 
-## 4.透過 JavaScript 取用建議
-
+##4. 透過 JavaScript 取用建議
 取用建議的程式碼是由用戶端網頁的某些 JavaScript 事件所觸發。 建議回應包含建議項目識別碼、其名稱及評等。 最好只有在以清單顯示建議的項目時，才使用這個選項 – 較複雜的處理 (例如，新增項目的中繼資料) 應該在伺服器端整合完成。
 
-### 4.1 取用建議
-
+###4.1 取用建議
 若要取用建議，您必須將必要的 JavaScript 程式碼納入頁面中，然後呼叫 AzureMLRecommendationsStart。 請參閱第 2 節。
 
 若要取用一或多個項目的建議，您必須呼叫以下方法： AzureMLRecommendationsGetI2IRecommendation。
@@ -240,7 +223,8 @@ Azure ML Recommendations 事件程式庫會建立並使用 Cookie，以識別來
         </script>
 
 
-[1]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing1.png 
-[2]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing2.png 
-[3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png 
+[1]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing1.png
+[2]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing2.png
+[3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
+ 
 

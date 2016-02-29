@@ -1,6 +1,6 @@
 <properties 
     pageTitle="什麼是 Azure WebJobs SDK" 
-    description="Azure WebJobs SDK 簡介。說明 SDK 是什麼、適用哪些典型案例，以及程式碼範例。" 
+    description="Azure WebJobs SDK 簡介。 說明 SDK 是什麼、適用哪些典型案例，以及程式碼範例。" 
     services="app-service\web, storage" 
     documentationCenter=".net" 
     authors="tdykstra" 
@@ -16,7 +16,6 @@
     ms.date="12/14/2015" 
     ms.author="tdykstra"/>
 
-
 # 什麼是 Azure WebJobs SDK
 
 ## <a id="overview"></a>概觀
@@ -28,7 +27,7 @@
 WebJobs SDK 包含下列元件：
 
 * **NuGet 封裝**。 您新增至 Visual Studio 主控台應用程式專案的 NuGet 封裝，會利用 WebJobs SDK 屬性修飾您的方法，提供一個供您程式碼使用的架構。
-
+  
 * **儀表板**。 Azure App Service 中包含部分的 WebJobs SDK，該部份項目可針對使用 NuGet 封裝的程式提供豐富的監控和診斷功能。 您無需撰寫程式碼就可以使用這些監視和診斷功能。
 
 ## <a id="scenarios"></a>案例
@@ -41,11 +40,11 @@ WebJobs SDK 包含下列元件：
 
 * RSS 彙總。 如果您有維持 RSS 摘要清單的網站，您可以在背景處理序中提取摘要的所有文章。
 
-* 檔案維護，例如彙總或清除記錄檔案。 您可能擁有由數個網站在不同的時間範圍內所建立的記錄檔案，您想要結合這些檔案以便執行分析工作。 或者您想要排程每週執行的工作，來將舊的記錄檔案清除。
+* 檔案維護，例如彙總或清除記錄檔案。  您可能擁有由數個網站在不同的時間範圍內所建立的記錄檔案，您想要結合這些檔案以便執行分析工作。 或者您想要排程每週執行的工作，來將舊的記錄檔案清除。
 
 * 輸入 Azure 資料表。 您可能會有想要剖析的儲存檔案和 Blob，並想要將資料儲存在資料表中。 輸入函數可能會寫入許多行 (在某些情況下可能有上百萬行)，而 WebJobs SDK 讓您可以輕易地實作此功能。 SDK 還提供進度指標的即時監控，例如資料表中的寫入行數。
 
-* 您想要執行背景執行緒，其他長時間執行工作 [傳送電子郵件](https://github.com/victorhurdugaci/AzureWebJobsSamples/tree/master/SendEmailOnFailure)。
+* 您想要執行背景執行緒，其他長時間執行工作 [傳送電子郵件](https://github.com/victorhurdugaci/AzureWebJobsSamples/tree/master/SendEmailOnFailure)。 
 
 * 任何您想要依排程執行的工作，例如每晚執行備份作業。
 
@@ -55,7 +54,7 @@ WebJobs SDK 也可讓您輕鬆地處理常見的錯誤處理案例。 您可以�
 
 ## <a id="code"></a> 程式碼範例
 
-使用 Azure 儲存體的處理傳統工作程式碼十分簡單。 在主控台應用程式的 `Main` 方法建立 `JobHost` 協調您撰寫方法呼叫的物件。 WebJobs SDK 架構會根據您在方法中使用的 WebJobs SDK 屬性，知道何時要呼叫方法及要使用哪些參數值。 SDK 提供可指定造成呼叫函式之條件的「觸發程序」**，以及可指定如何將資訊傳入方法參數及從方法參數傳出的「繫結器」**。
+使用 Azure 儲存體的處理傳統工作程式碼十分簡單。 在您「主控台應用程式」的 `Main` 方法中，您會建立一個 `JobHost` 物件來協調對您所撰寫之方法的呼叫。 WebJobs SDK 架構會根據您在方法中使用的 WebJobs SDK 屬性，知道何時要呼叫方法及要使用哪些參數值。 SDK 提供 *觸發程序* 旗標會指定什麼條件會造成要呼叫的函式和 *文件夾* ，指定如何將資訊傳入及傳出方法參數。
 
 例如， [QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md) 屬性就會導致佇列接收訊息時，如果訊息格式的位元組陣列或自訂型別為 JSON，訊息就會自動還原序列化時要呼叫的函式。  [BlobTrigger](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md) 屬性觸發程序，每當 Azure 儲存體帳戶中建立新的 blob。
 
@@ -66,18 +65,18 @@ WebJobs SDK 也可讓您輕鬆地處理常見的錯誤處理案例。 您可以�
             JobHost host = new JobHost();
             host.RunAndBlock();
         }
-    
+
         public static void ProcessQueueMessage([QueueTrigger("webjobsqueue")] string inputText, 
             [Blob("containername/blobname")]TextWriter writer)
         {
             writer.WriteLine(inputText);
         }
 
-`JobHost` 物件是一組背景功能的容器。  `JobHost` 物件可監視的函式，會觸發的事件以及發生觸發事件時執行功能。 您呼叫 `JobHost` 方法，指出是否要在目前的執行緒或背景執行緒上執行容器程序。 在範例中， `RunAndBlock` 方法程序會持續執行目前執行緒上。
+`JobHost` 物件是一組背景功能的容器。 `JobHost` 物件可監視功能、注意可觸發功能的事件，以及發生觸發事件時執行功能。 您可以呼叫 `JobHost` 方法，指出您要在目前執行緒或背景執行緒上執行容器程序。 在此範例中，`RunAndBlock` 方法會在目前執行緒上持續執行程序。
 
-因為 `ProcessQueueMessage` 方法，在此範例中有 `QueueTrigger` 屬性 (attribute)，觸發程序函式是新的佇列訊息的接收。  `JobHost` 物件監看新的佇列訊息上指定的佇列 (在本例中為"webjobsqueue")，並在找到其中一個時，它會呼叫 `ProcessQueueMessage`。
+由於此範例中的 `ProcessQueueMessage` 方法具有 `QueueTrigger` 屬性，接收新的佇列訊息時便會觸發該功能。 `JobHost` 物件會注意指定佇列 (在此範例中是 "webjobsqueue") 上的新佇列訊息，找到新佇列訊息時，此物件便會呼叫 `ProcessQueueMessage`。 
 
-`QueueTrigger` 屬性繫結 `inputText` 參數的佇列訊息的值。 而 `Blob` 屬性繫結 `TextWriter` 名為"blobname"，"containername"容器中的 blob 的物件。
+`QueueTrigger` 屬性會將 `inputText` 參數繫結至佇列訊息的值。 而 `Blob` 屬性則會將 `TextWriter` 物件繫結至名為 "containername" 容器中名為 "blobname" 的 Blob。  
 
         public static void ProcessQueueMessage([QueueTrigger("webjobsqueue")]] string inputText, 
             [Blob("containername/blobname")]TextWriter writer)
@@ -88,7 +87,7 @@ WebJobs SDK 也可讓您輕鬆地處理常見的錯誤處理案例。 您可以�
 
 WebJobs SDK 的觸發程序和繫結器功能可大幅簡化您所必須撰寫的程式碼。 WebJobs SDK 架構會為您完成處理佇列、Blob 或檔案或是起始已排定的工作所需的低階程式碼。 例如，此架構會建立尚未存在的佇列、開啟佇列、讀取佇列訊息、在處理完成後刪除佇列訊息、建立尚未存在的 Blob 容器、寫入 Blob 等。
 
-下列程式碼範例顯示各種不同的觸發程序中一個 WebJob: `QueueTrigger`, ，`FileTrigger`, ，`WebHookTrigger`, ，和 `ErrorTrigger`。
+下列程式碼範例以一個 WebJob 示範各種不同的觸發程序：`QueueTrigger`、`FileTrigger`、`WebHookTrigger` 及 `ErrorTrigger`。 
 
 ```
     public class Functions
@@ -139,7 +138,7 @@ WebJobs SDK 的觸發程序和繫結器功能可大幅簡化您所必須撰寫�
 
 ## <a id="schedule"></a> 排程
 
-`TimerTrigger` 屬性可讓您在排程上執行的觸發程序函式。 您可以透過 Azure 或排程 WebJob 使用 WebJobs SDK 的個別函數的整體排程 WebJob `TimerTrigger`。 以下是程式碼範例。
+`TimerTrigger` 屬性可讓您依排程觸發函式執行。 您可以透過 Azure 來進行 WebJob 的整體排程，或是使用 WebJobs SDK `TimerTrigger` 來排定 WebJob 的個別函式。 以下是程式碼範例。
 
 ```
 public class Functions
@@ -156,13 +155,13 @@ public class Functions
 
 ## 擴充性
 
-您並不受限於使用內建功能 -- WebJobs SDK 可讓您撰寫自訂的觸發程序和繫結器。 例如，您可以撰寫用於快取事件和定期排程的觸發程序。  [開放原始碼儲存機制](https://github.com/Azure/azure-webjobs-sdk-extensions) 包含 [詳盡的指南，以 WebJobs SDK 擴充性](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) 和範例程式碼，可幫助您開始撰寫您自己的觸發程序和繫結器。
+您並不受限於使用內建功能 -- WebJobs SDK 可讓您撰寫自訂的觸發程序和繫結器。  例如，您可以撰寫用於快取事件和定期排程的觸發程序。  [開放原始碼儲存機制](https://github.com/Azure/azure-webjobs-sdk-extensions) 包含 [詳盡的指南，以 WebJobs SDK 擴充性](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) 和範例程式碼，可幫助您開始撰寫您自己的觸發程序和繫結器。
 
-## <a id="workerrole"></a>使用外部 WebJobs SDK
+## <a id="workerrole"></a>在 WebJobs 外部使用 WebJobs SDK
 
-使用 WebJobs SDK 的程式是指可在任意位置執行的標準主控台應用程式 -- 它不一定要以 WebJob 的形式執行。 您可以在開發電腦上本機測試程式，並在實際執行環境中，以雲端服務背景工作角色或 Windows 服務的身分執行此程式 (如果您慣用其中一個環境)。
+使用 WebJobs SDK 的程式是指可在任意位置執行的標準主控台應用程式 -- 它不一定要以 WebJob 的形式執行。 您可以在開發電腦上本機測試程式，並在實際執行環境中，以雲端服務背景工作角色或 Windows 服務的身分執行此程式 (如果您慣用其中一個環境)。 
 
-不過，對於 Azure App Service Web 應用程式，儀表板只能做為延伸模組來使用。 如果您想要在 WebJob 外部執行但仍然使用儀表板，則您可以設定 Web 應用程式使用 WebJobs SDK 儀表板連接字串所參考的相同儲存體帳戶，接著該 Web 應用程式的 WebJobs 儀表板便會顯示有關這個異地執行程式中的執行函數資料。 您可以使用 URL https:// 來進入儀表板*{webappname}*.scm.azurewebsites.net/azurejobs/#/functions。 如需詳細資訊，請參閱 [取得使用 WebJobs SDK 的本機開發的儀表板](http://blogs.msdn.com/b/jmstall/archive/2014/01/27/getting-a-dashboard-for-local-development-with-the-webjobs-sdk.aspx), ，但請注意，此部落格文章顯示舊的連接字串名稱。
+不過，對於 Azure App Service Web 應用程式，儀表板只能做為延伸模組來使用。 如果您想要在 WebJob 外部執行但仍然使用儀表板，則您可以設定 Web 應用程式使用 WebJobs SDK 儀表板連接字串所參考的相同儲存體帳戶，接著該 Web 應用程式的 WebJobs 儀表板便會顯示有關這個異地執行程式中的執行函數資料。 您可以使用 URL https:// 來進入儀表板*{webappname}*.scm.azurewebsites.net/azurejobs/#/functions。 如需詳細資訊，請參閱 [取得使用 WebJobs SDK 的本機開發的儀表板](http://blogs.msdn.com/b/jmstall/archive/2014/01/27/getting-a-dashboard-for-local-development-with-the-webjobs-sdk.aspx), ，但請注意，此部落格文章顯示舊的連接字串名稱。 
 
 ## <a id="nostorage"></a>儀表板功能
 
@@ -170,18 +169,14 @@ public class Functions
 
 * 您可以從儀表板叫用函數。
 * 您可以從儀表板轉送函數。
-* 您可以檢視記錄檔中的儀表板連結至特定 WebJob (應用程式記錄檔使用 Console.Out、 Console.Error、 追蹤等。) 或連結到產生它們的特定函式引動過程 (使用 `TextWriter` SDK 傳遞至函式做為參數的物件)。
+* 您可以在儀表板中檢視記錄檔，連結到特定的 WebJob (使用 Console.Out、Console.Error、Trace 等編寫的應用程式記錄檔) 或連結到產生它們的特定函式引動過程 (使用 SDK 傳遞至函數做為參數的 `TextWriter` 物件編寫的記錄檔)。 
 
-如需詳細資訊，請參閱 [如何手動叫用函式](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual) 和 [如何寫入記錄檔](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
+如需詳細資訊，請參閱 [如何手動叫用函式](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual) 和 [如何寫入記錄檔](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs) 
 
 ## <a id="nextsteps"></a>後續步驟
 
 如需 WebJobs SDK 的詳細資訊，請參閱 [Azure WebJobs 建議資源](http://go.microsoft.com/fwlink/?linkid=390226)。
 
 WebJobs SDK 的最新增強功能的相關資訊，請參閱 [版本資訊](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)。
-
-
-
-
-
+ 
 

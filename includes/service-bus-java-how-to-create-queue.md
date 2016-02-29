@@ -39,15 +39,15 @@
 
 建立服務命名空間：
 
-1.  登入 [Azure 傳統入口網站 []][]。
+1.  登入 [Azure 傳統入口網站][]。
 
 2.  在入口網站的左方瀏覽窗格中，按一下
     **服務匯流排**。
 
-3.  在入口網站的下方窗格中，按一下 [建立]****。
+3.  在入口網站的下方窗格中，按一下 [ **建立**。
     ![](./media/service-bus-java-how-to-create-queue/sb-queues-03.png)
 
-4.  在 [Add a new namespace]**** 對話方塊中，輸入命名空間名稱。
+4.  在 **加入新的命名空間** ] 對話方塊中，輸入命名空間名稱。
     系統會立即檢查此名稱是否可用。
     ![](./media/service-bus-java-how-to-create-queue/sb-queues-04.png)
 
@@ -59,11 +59,11 @@
     重要事項: 請挑選 **同一個地區** 您想要的選擇
     來部署應用程式。 這樣可以獲得最佳效能。
 
-6.  讓對話方塊中的其他欄位保留其預設值 ([**傳訊**] 和 [**標準層**])，然後按一下核取記號。 此時系統會建立並啟用命名空間。 系統為帳戶提供資源時，您可能需要等幾分鐘。
+6.  讓對話方塊中的其他欄位保留其預設值 (**Messaging** 和 **標準層**)，然後按一下核取記號。 此時系統會建立並啟用命名空間。 系統為帳戶提供資源時，您可能需要等幾分鐘。
 
     ![](./media/service-bus-java-how-to-create-queue/getting-started-multi-tier-27.png)
 
-然後，您建立的命名空間稍待片刻就會生效，然後就會出現在 Azure 入口網站中。 等到命名空間狀態變成 [**作用中**] 之後再繼續。
+然後，您建立的命名空間稍待片刻就會生效，然後就會出現在 Azure 入口網站中。 等到命名空間狀態變成 **Active** 才能繼續。
 
 ## 取得命名空間的預設管理認證
 
@@ -71,7 +71,7 @@
 您必須取得命名空間的管理認證
 。 您可以從入口網站取得這些認證。
 
-### 從入口網站取得管理認證
+###從入口網站取得管理認證
 
 1.  在左的導覽窗格中，按一下 [ **服務匯流排** 節點至
     顯示可用的命名空間清單：
@@ -84,7 +84,7 @@
 
 4.  記下主要金鑰，或將它複製到剪貼簿。
 
+  [Azure classic portal]: http://manage.windowsazure.com
 
-[azure classic portal]: http://manage.windowsazure.com 
-[34]: ./media/service-bus-java-how-to-create-queue/VSProperties.png 
+  [34]: ./media/service-bus-java-how-to-create-queue/VSProperties.png
 

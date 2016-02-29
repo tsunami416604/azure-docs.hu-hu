@@ -17,7 +17,6 @@
  ms.date="11/11/2015"
  ms.author="danlep"/>
 
-
 # 開始使用 Azure 中的 HPC Pack 叢集執行 Excel 和 SOA 工作負載
 
 本文將說明如何在 Azure 基礎結構服務 (IaaS) 上使用 Azure 快速入門範本或 Azure PowerShell 部署指令碼部署 HPC Pack 叢集。 您將使用 Azure Marketplace VM 映像，其設計目的為使用 HPC Pack 執行 Microsoft Excel 或服務導向架構 (SOA) 工作負載。 您可以從內部部署用戶端電腦使用叢集來執行簡單的 Excel HPC 和 SOA 服務。 Excel HPC 服務包括 Excel 活頁簿卸載和 Excel 使用者定義函數或 UDF。
@@ -27,68 +26,68 @@
 
 在較高層級上，下圖顯示您將建立的 HPC Pack 叢集。
 
-![HPC 叢集與執行 Excel 工作負載的節點][scenario]
+![HPC 叢集的節點執行 Excel 工作負載][案例]
 
-## 必要條件
+## 先決條件
 
-* **用戶端電腦** - 您需要 Windows 用戶端電腦才能執行 Azure PowerShell 叢集部署指令碼 (如果您選擇該部署方法) 以及提交範例 Excel 和 SOA 工作至叢集。
+* **用戶端電腦** -您必須執行 Azure PowerShell 叢集部署指令碼 (如果您選擇的部署方法)，以及提交範例 Excel 和 SOA 工作至叢集的 Windows 用戶端電腦。
 
-* **Azure 訂用帳戶** - 如果您沒有帳戶，僅需幾分鐘就可以建立免費試用帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂用帳戶** -如果您沒有帳戶，您可以建立免費試用帳戶只需要幾分鐘的時間。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/)。
 
-* **核心配額** - 您可能需要增加核心的配額，特別是如果您選擇部署多核心 VM 大小的數個叢集節點。 如果您使用 Azure 快速入門範本，請注意資源管理員中的核心配額為每個 Azure 區域，您可能需要增加特定區域中的配額。 請參閱 [Azure 訂用帳戶限制、 配額和條件約束](../azure-subscription-service-limits.md)。 若要增加配額，您可以 [開啟線上客戶支援要求](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) 不另外加收費用。
+* **核心配額** -您可能需要增加核心配額，特別是如果您選擇部署多核心 VM 大小的數個叢集節點。 如果您使用 Azure 快速入門範本，請注意資源管理員中的核心配額為每個 Azure 區域，您可能需要增加特定區域中的配額。 請參閱 [Azure 訂用帳戶限制、 配額和條件約束](../azure-subscription-service-limits.md)。 若要增加配額，您可以 [開啟線上客戶支援要求](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) 不另外加收費用。
 
 
-## 步驟 1.在 Azure 中設定 HPC Pack 叢集
+## 步驟 1. 在 Azure 中設定 HPC Pack 叢集
 
 我們將說明設定叢集的兩種方式：第一，使用 Azure 快速入門範本和 Azure 入口網站；第二，使用 Azure PowerShell 部署指令碼。
 
 
 ### 使用快速入門範本
-
 使用 Azure 快速入門範本在 Azure 入口網站中快速、輕鬆地部署 HPC Pack 叢集。 在 Preview 入口網站中開啟範本時，您會看到一個可供您輸入叢集設定的簡單 UI。 步驟如下：
 
 1. 請瀏覽 [GitHub 上的建立 HPC 叢集範本頁面](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster)。 您可根據意願檢視範本和原始碼的相關資訊。
 
-2. 按一下 [部署至 Azure]****，以在 Azure 入口網站中利用範本開始部署。
+2. 按一下 [ **部署至 Azure** Azure 入口網站中的範本開始進行部署。
 
-    ![將範本部署到 Azure][github]
+    ![將範本部署到 Azure][] github
 
 3. 在 Preview 入口網站中，依照下列步驟輸入 HPC 叢集範本的參數。
 
-    a. 在 [**編輯範本**] 頁面上，按一下 [**儲存**]。
+    a. 在 **編輯範本** 頁面上，按一下 **儲存**。
 
-    ![儲存範本][template]
+    ![儲存範本][範本]
 
-    b. 在 [參數]**** 頁面上，輸入範本參數的值。 (按一下說明資訊的每個設定旁邊的圖示。) 下列畫面顯示範例值。 此範例會在 *hpc.local* 網域中建立名為 *hpc01* 的新 HPC Pack 叢集，由一個前端節點和 2 個運算節點組成。 運算節點將會從 HPC Pack VM 映像建立，包括 Microsoft Excel。
+    b. 在 **參數** 頁面上，輸入範本參數的值。 (按一下說明資訊的每個設定旁邊的圖示。)下列畫面顯示範例值。 這個範例會建立名為的新 HPC Pack 叢集 *hpc01* 中 *hpc.local* 網域組成的前端節點和 2 的運算節點。 運算節點將會從 HPC Pack VM 映像建立，包括 Microsoft Excel。
 
-    ![輸入參數][parameters]
+    ![輸入參數][參數]
+
     >[AZURE.NOTE]前端節點 VM 就會自動建立從 [最新 Marketplace 映像](http://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) 的 Windows Server 2012 R2 上的 HPC Pack 2012 R2。 目前此映像以 HPC Pack 2012 R2 Update 3 為基礎。
     >
-    >運算節點 VM 會從選取之運算節點系列的最新映像建立。 選取 **ComputeNode** 選項做為一般用途的最新 HPC Pack 2012 R2 Update 3 計算映像。 選取 **ComputeNodeWithExcel** 選項做為最新的 HPC Pack 運算節點映像，包含評估版 Microsoft Excel Professional Plus 2013。 如果您想要部署一般 SOA 工作階段或 Excel UDF 卸載的叢集，請選擇 **ComputeNode** 選項 (不需安裝 Excel)。
+    >運算節點 VM 會從選取之運算節點系列的最新映像建立。 選取 **ComputeNode** 的最新 HPC Pack 2012 R2 更新 3 選項運算用於一般用途的映像。 選取 **ComputeNodeWithExcel** 選項的最新的 HPC Pack 運算節點映像，包括 Microsoft Excel Professional Plus 2013 評估版。 如果您想要部署一般 SOA 工作階段或 Excel UDF 卸載的叢集，請選擇 **ComputeNode** 選項 (不需安裝 Excel)。
     >
     >當使用  **ComputeNodeWithExcel** 生產工作負載，您必須提供有效的 Excel 授權運算節點上啟動 Excel。 否則，Excel 評估版會在 30 天內到期，且執行 Excel 活頁簿會不斷失敗並出現 COMExeption (0x800AC472)。 如果發生這種情況，您可登入前端節點，透過 [HPC 叢集管理員] 主控台在所有 Excel 運算節點上 clusrun “%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe”，進而重設 Excel 的授權狀態以獲得另外 30 天的評估時間。 寬限期的重設授權狀態時間上限為 2，之後您可能需要提供有效的 Excel 授權。
 
     c. 選擇訂用帳戶。
 
-    d. 建立叢集的新資源群組，例如 *hpc01RG*。
+    d. 建立新的資源群組的叢集，例如 *hpc01RG*。
 
     e. 選擇資源群組的位置，例如美國東部。
 
-    f. 在 [**法律條款**] 頁面上檢閱條款。 如果您同意，請按一下 [**購買**]。
+    f. 在 **法律條款** 頁面上，檢閱條款。 如果您同意，請按一下 [ **購買**。
 
-    g. 當您完成設定範本的值，請按一下 [**建立**]。
+    g. 當您完成設定範本的值，請按一下 **建立** 。
 
-    ![建立叢集][create]
+    ![建立叢集][建立]
 
 3.  當部署完成時 (通常需要約 30 分鐘)，從叢集前端節點匯出叢集憑證檔。 在稍後的步驟中，此公開憑證將在用戶端電腦上匯入以提供安全 HTTP 繫結的伺服器端驗證。
 
     a. 從 Azure 入口網站透過「遠端桌面」連線到前端節點。
 
-     ![連接至前端節點][connect]
+     ![連線到前端節點][連線]
 
-    b. 使用標準程序來使用憑證管理員匯出前端節點憑證 (位於 Cert: \LocalMachine\My 之下) 而不需私密金鑰。 在此範例中，匯出 *CN = hpc01.eastus.cloudapp.azure.com*。
+    b. 使用標準程序來使用憑證管理員匯出前端節點憑證 (位於 Cert: \LocalMachine\My 之下) 而不需私密金鑰。 在此範例中，將匯出 *CN = hpc01.eastus.cloudapp.azure.com*。
 
-    ![匯出憑證][cert]
+    ![匯出憑證][憑證]
 
 ### 使用 HPC Pack IaaS 部署指令碼
 
@@ -96,9 +95,9 @@ HPC Pack IaaS 部署指令碼提供靈活的另一種方式部署 HPC Pack 叢�
 
 **其他必要條件**
 
-* **PowerShell** - [安裝和設定 Azure PowerShell](../powershell-install-configure.md) (0.8.10 或更新版本) 用戶端電腦上。
+* **Azure PowerShell** - [安裝和設定 Azure PowerShell](../powershell-install-configure.md) (0.8.10 或更新版本) 用戶端電腦上。
 
-* **HPC Pack IaaS 部署指令碼** -下載並解壓縮最新版的指令碼的 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=44949)。 執行檢查的指令碼版本 `New-hpciaascluster.ps1 – 版本`。 這篇文章根據 4.5.0 版或更新版本的指令碼。
+* **HPC Pack IaaS 部署指令碼** -下載並解壓縮最新版的指令碼從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=44949)。 執行 `New-HPCIaaSCluster.ps1 –Version` 以檢查指令碼的版本。 這篇文章根據 4.5.0 版或更新版本的指令碼。
 
 **建立組態檔**
 
@@ -148,9 +147,9 @@ HPC Pack IaaS 部署指令碼提供靈活的另一種方式部署 HPC Pack 叢�
 
 **組態檔的相關注意事項**
 
-* 前端節點的 **VMName** **必須**和 **ServiceName** 完全相同，否則 SOA 工作會無法執行。
+*  **VMName** 前端節點的 **必須** 能完全相同 **ServiceName**, 、 或 SOA 工作無法執行。
 
-* 請確定您會指定 **EnableWebPortal**，所以已經產生並匯出前端節點憑證。
+* 請確定您指定 **EnableWebPortal** 以便產生並匯出前端節點憑證。
 
 * 後組態 PowerShell 指令碼 PostConfig.ps1 會在前端節點上進行某些設定，例如設定 Azure 儲存體連接字串、從前端節點移除運算節點角色，並在部署所有節點時使其上線。 隨後會出現範例指令碼。
 
@@ -189,34 +188,36 @@ HPC Pack IaaS 部署指令碼提供靈活的另一種方式部署 HPC Pack 叢�
 2. 將目錄變更為指令碼資料夾 (在本範例中為 E:\IaaSClusterScript)。
 
     ```
-    E:\IaaSClusterScript cd
+    cd E:\IaaSClusterScript
 ```
 
 4. Run the command below to deploy the HPC Pack cluster. This example assumes that the configuration file is located in E:\HPCDemoConfig.xml.
-```
+
+    ```
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
-
 ```
 
-The HPC Pack deployment script will run for some time. One thing the script wil do is to export and download the cluster certificate and save it in the current user’s Documents folder on the client computer. The script will generate a message similar to the following. In a following step you'll import the certificate in the appropriate certificate store.
+HPC Pack 部署指令碼將執行一段時間。 指令碼將會匯出和下載叢集憑證，並將它儲存在用戶端電腦上目前使用者的文件資料夾中。 指令碼將產生類似下方的訊息。 在下列步驟中，您將在適當的憑證存放區中匯入憑證。
+
 ```
-您已啟用 REST API 或 web 入口網站，HPC Pack 前端節點上。 請匯入要提交工作或存取 HPC web 入口網站的電腦上的受信任的根憑證授權單位 」 憑證存放區中的下列憑證:
+You have enabled REST API or web portal on HPC Pack head node. Please import the following certificate in the Trusted Root Certification Authorities certificate store on the computer where you are submitting job or accessing the HPC web portal:
  C:\Users\hpcuser\Documents\HPCWebComponent_HPCExcelHN004_2015070716
 2011.cer
 ```
 
-## Step 2. Offload Excel workbooks and run UDFs from an on-premises client
+## 步驟 2. 卸載 Excel 活頁簿並從內部部署用戶端執行 UDF
 
-### Offload Excel workbooks
+### 卸載 Excel 活頁簿
 
-Follow these steps to offload an Excel workbook to run on the HPC Pack cluster in Azure. To do this, you must have Excel 2010 or 2013 already installed on the client computer.
+遵循下列步驟來卸載要在 Azure 的 HPC Pack 叢集上執行的 Excel 活頁簿。 若要這樣做，您必須在用戶端電腦上安裝 Excel 2010 或 2013。
 
-1. Use one of the methods in Step 1 to deploy an HPC Pack cluster with the Excel compute node image. Obtain the cluster certificate file (.cer) and cluster username and password.
+1. 使用步驟 1 中的下列其中一個方法來部署具有 Excel 運算節點映像的 HPC Pack 叢集。 取得叢集憑證檔 (.cer) 以及叢集的使用者名稱和密碼。
 
-2. On the client computer, import the cluster certificate under Cert:\CurrentUser\Root.
+2. 在用戶端電腦上，在 Cert:\CurrentUser\Root 下匯入叢集憑證。
 
-3. Make sure Excel is installed. Create an Excel.exe.config file with the following contents in the same folder with Excel.exe on the client computer. This ensures that the HPC Pack 2012 R2 Excel COM add-in will be loaded successfully.
-```
+3. 請確定已安裝 Excel。 利用用戶端電腦上的 Excel.exe，建立具備相同資料夾中下列內容的  Excel.exe.config 檔案。 這樣可確保 HPC Pack 2012 R2 Excel COM 增益集順利載入。
+
+    ```
 <?xml version="1.0"?>
 <configuration>
     <startup useLegacyV2RuntimeActivationPolicy="true">
@@ -227,33 +228,33 @@ Follow these steps to offload an Excel workbook to run on the HPC Pack cluster i
 4.  Download the full [HPC Pack 2012 R2 Update 3 installation](http://www.microsoft.com/download/details.aspx?id=49922) and install the HPC Pack client,
 or download and install the [HPC Pack 2012 R2 Update 3 client utilities](https://www.microsoft.com/download/details.aspx?id=49923) and the appropriate Visual C++ 2010 redistributable for your computer ([x64](http://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555)).
 
-5.  In this example, we use a sample Excel workbook named ConvertiblePricing_Complete.xlsb, available for download [here](https://www.microsoft.com/en-us/download/details.aspx?id=2939).
+5.  在此範例中，我們使用名為 ConvertiblePricing_Complete.xlsb，可供下載的範例 Excel 活頁簿 [這裡](https://www.microsoft.com/en-us/download/details.aspx?id=2939)。
 
-6.  Copy the Excel workbook to a working folder such as D:\Excel\Run.
+6.  將 Excel 活頁簿複製到工作資料夾，例如 D:\Excel\Run。
 
-7.  Open the Excel workbook. On the **Develop** ribbon, click **COM Add-Ins** and confirm that the HPC Pack Excel COM add-in is loaded successfully as shown in the following screen.
+7.  開啟 Excel 活頁簿。 在 **開發** 功能區上，按一下 [ **COM 增益集** 和 HPC Pack Excel COM 增益集已載入成功，如下列螢幕畫面所示。
 
-    ![Excel add-in for HPC Pack][addin]
+    ![Excel 增益集的 HPC Pack][增益集]
 
-8.  Edit the VBA macro HPCControlMacros in Excel by changing the commented lines as shown in the following script. Substitute appropriate values for your environment.
+8.  藉由變更加上註解的行，編輯 Excel 中的 VBA 巨集 HPCControlMacros，如下列指令碼所示。 請將您的環境取代為適當的值。
 
-    ![Excel macro for HPC Pack][macro]
-```
+    ![HPC pack 的 Excel 巨集][巨集]
+
+    ```
     'Private Const HPC_ClusterScheduler = "HEADNODE_NAME"
     Private Const HPC_ClusterScheduler = "hpc01.eastus.cloudapp.azure.com"
-    
+
     'Private Const HPC_NetworkShare = "\\PATH\TO\SHARE\DIRECTORY"
     Private Const HPC_DependFiles = "D:\Excel\Upload\ConvertiblePricing_Complete.xlsb=ConvertiblePricing_Complete.xlsb"
-    
+
     'HPCExcelClient.Initialize ActiveWorkbook
     HPCExcelClient.Initialize ActiveWorkbook, HPC_DependFiles
-    
+
     'HPCWorkbookPath = HPC_NetworkShare & Application.PathSeparator & ActiveWorkbook.name
     HPCWorkbookPath = "ConvertiblePricing_Complete.xlsb"
-    
+
     'HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath
     HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath, UserName:="hpc\azureuser", Password:="<YourPassword>"
-
 ```
 
 9.  Copy the Excel work book to an upload directory such as D:\Excel\Upload, as specified in the HPC_DependsFiles constant in the VBA macro.
@@ -299,23 +300,25 @@ To run general SOA applications on the HPC Pack IaaS cluster, first use one of t
 To use Http binding with an Azure storage queue, make a few changes to the sample code.
 
 * Update the cluster name.
-```
-之前
-const headnode 字串 ="[前端節點]";
-之後如
-const headnode 字串 ="hpc01.eastus.cloudapp.azure.com 」。
-或
-const headnode 字串 ="hpc01.cloudapp.net";
+
+    ```
+// Before
+const string headnode = "[headnode]";
+// After e.g.
+const string headnode = "hpc01.eastus.cloudapp.azure.com";
+or
+const string headnode = "hpc01.cloudapp.net";
 ```
 
-* Optionally, use default TransportScheme in SessionStartInfo or explicitly set it to Http.
+* (選擇性) 在 SessionStartInfo 中使用預設 TransportScheme 或明確地將它設為 Http。
+
 ```
     info.TransportScheme = TransportScheme.Http;
-
 ```
 
-* Use default binding for the BrokerClient.
-```
+* 使用預設繫結做為 BrokerClient。
+
+    ```
 之前
 使用 (BrokerClient<IService1> 用戶端 = 新 BrokerClient<IService1>(工作階段，繫結))
 之後
@@ -323,59 +326,59 @@ const headnode 字串 ="hpc01.cloudapp.net";
 ```
 
     Or set explicitly using the basicHttpBinding.
-```
-BasicHttpBinding 繫結 = 新 BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
-繫結。Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;   繫結。Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+
+    ```
+BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
+binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;    binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 ```
 
-* Optionally, set the UseAzureQueue flag to true in SessionStartInfo. If not set, it will be set to true by default when the cluster name has Azure domain suffixes and the TransportScheme is Http.
-```
+* 選擇性地，在 SessionStartInfo 中將 UseAzureQueue 旗標設為 true。 如果未設定，它會根據預設，在叢集名稱具有 Azure 網域尾碼且 TransportScheme 為 Http 時設為 true。
+
+    ```
     info.UseAzureQueue = true;
-
 ```
 
 ###Use Http binding without Azure storage queue
 
 To do this, explicitly set UseAzureQueue flag to false in the SessionStartInfo.
+
 ```
     info.UseAzureQueue = false;
-
 ```
 
-### 使用 NetTcp 繫結
+### Use NetTcp binding
 
-若要使用 NetTcp 繫結，組態就像是連接至內部部署叢集。 您必須開啟幾個前端節點 VM 上的端點。 在 Azure 傳統入口網站中執行下列動作。
-
-
-1. 停止 VM。
-
-2. 新增 TCP 連接埠 9090、9087、9091、9094 分別做為工作階段、代理人、 代理背景工作和資料服務
-
-    ![設定端點][endpoint]
-
-3. 啟動 VM。
-
-SOA 用戶端應用程式不需要變更，除了將標頭名稱改變為 IaaS 叢集的完整名稱。
-
-## 後續步驟
-
-* 請參閱 [這些資源](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) 如需有關使用 HPC Pack 執行 Excel 工作負載。
-
-* 請參閱 [Microsoft HPC Pack 中管理 SOA 服務](https://technet.microsoft.com/library/ff919412.aspx) 如需有關部署和管理 HPC pack SOA 服務。
+To use NetTcp binding, the configuration is like connecting to an on-premises cluster. You'll need to open a few endpoints on the head node VM. In the Azure classic portal do the following.
 
 
+1. Stop the VM.
 
-[scenario]: ./media/virtual-machines-excel-cluster-hpcpack/scenario.png 
-[github]: ./media/virtual-machines-excel-cluster-hpcpack/github.png 
-[template]: ./media/virtual-machines-excel-cluster-hpcpack/template.png 
-[parameters]: ./media/virtual-machines-excel-cluster-hpcpack/parameters.png 
-[create]: ./media/virtual-machines-excel-cluster-hpcpack/create.png 
-[connect]: ./media/virtual-machines-excel-cluster-hpcpack/connect.png 
-[cert]: ./media/virtual-machines-excel-cluster-hpcpack/cert.png 
-[addin]: ./media/virtual-machines-excel-cluster-hpcpack/addin.png 
-[macro]: ./media/virtual-machines-excel-cluster-hpcpack/macro.png 
-[options]: ./media/virtual-machines-excel-cluster-hpcpack/options.png 
-[run]: ./media/virtual-machines-excel-cluster-hpcpack/run.png 
-[endpoint]: ./media/virtual-machines-excel-cluster-hpcpack/endpoint.png 
-[udf]: ./media/virtual-machines-excel-cluster-hpcpack/udf.png 
+2. Add the TCP ports 9090, 9087, 9091, 9094 for the Session, Broker, Broker worker and Data services, respectively
+
+    ![Configure endpoints][endpoint]
+
+3. Start the VM.
+
+The SOA client application requires no changes except altering the head name to the IaaS cluster full name.
+
+## Next steps
+
+* See [these resources](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) for more information about running Excel workloads with HPC Pack.
+
+* See [Managing SOA Services in Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) for more about deploying and managing SOA services with HPC Pack.
+
+<!--Image references-->
+[scenario]: ./media/virtual-machines-excel-cluster-hpcpack/scenario.png
+[github]: ./media/virtual-machines-excel-cluster-hpcpack/github.png
+[template]: ./media/virtual-machines-excel-cluster-hpcpack/template.png
+[parameters]: ./media/virtual-machines-excel-cluster-hpcpack/parameters.png
+[create]: ./media/virtual-machines-excel-cluster-hpcpack/create.png
+[connect]: ./media/virtual-machines-excel-cluster-hpcpack/connect.png
+[cert]: ./media/virtual-machines-excel-cluster-hpcpack/cert.png
+[addin]: ./media/virtual-machines-excel-cluster-hpcpack/addin.png
+[macro]: ./media/virtual-machines-excel-cluster-hpcpack/macro.png
+[options]: ./media/virtual-machines-excel-cluster-hpcpack/options.png
+[run]: ./media/virtual-machines-excel-cluster-hpcpack/run.png
+[endpoint]: ./media/virtual-machines-excel-cluster-hpcpack/endpoint.png
+[udf]: ./media/virtual-machines-excel-cluster-hpcpack/udf.png
 

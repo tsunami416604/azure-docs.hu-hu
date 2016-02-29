@@ -17,8 +17,7 @@
    ms.date="12/11/2015"
    ms.author="telmos" />
 
-
-# 在 Azure CLI 中建立使用者定義的路由 (UDR)
+#在 Azure CLI 中建立使用者定義的路由 (UDR)
 
 [AZURE.INCLUDE [virtual-network-create-udr-arm-selectors-include.md](../../includes/virtual-network-create-udr-arm-selectors-include.md)]
 
@@ -33,10 +32,9 @@
 [AZURE.INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
 ## 建立前端子網路的 UDR
-
 若要根據上述案例建立前端子網路所需的路由表和路由，請依照下列步驟執行。
 
-3. 執行 * *`azure 網路的路由表建立`* * 命令，以建立路由表的前端子。
+3. 執行 **`azure network route-table create`** 命令，以建立路由表的前端子。
 
         azure network route-table create -g TestRG -n UDR-FrontEnd -l uswest
 
@@ -55,11 +53,11 @@
         info:    network route-table create command OK
 
     參數：
-    - **-g (or --resource-group)**。 將會在當中建立 NSG 之資源群組的名稱。 在本文案例中為 *TestRG*。
-    - **-l (或 --location)**。 將要建立新 NSG 的 Azure 區域。 在本文案例中為 *westus*。
-    - **-n (or --name)**。 新 NSG 的名稱。 在本文案例中為 *NSG-FrontEnd*。
+    - **-g (或--資源群組)**。 將會在當中建立 NSG 之資源群組的名稱。 我們的案例， *TestRG*。
+    - **-l (或--location)**。 將要建立新 NSG 的 Azure 區域。 我們的案例， *westus*。
+    - **-n (或--名稱)**。 新 NSG 的名稱。 我們的案例， *NSG 前端*。
 
-4. 執行 * *`azure 網路路由表路由建立`* * 命令來建立上述建立要傳送到後端的子網路 (192.168.2.0/24) 的所有流量的路由表中的路由到 **FW1** VM (192.168.0.4)。
+4. 執行 **`azure network route-table route create`** 命令來建立上述建立要傳送到後端的子網路 (192.168.2.0/24) 的所有流量的路由表中的路由到 **FW1** VM (192.168.0.4)。
 
         azure network route-table route create -g TestRG -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -y VirtualAppliance -p 192.168.0.4
 
@@ -80,11 +78,11 @@
 
     參數：
     - **-r (或--路由資料表名稱)**。 將會加入路由的路由表的名稱。 我們的案例， *UDR 前端*。
-    - **-a (或 --address-prefix)**。 封包所指向位置的子網路的位址首碼。 我們的案例， *192.168.2.0/24*。
+    - **-a (或-位址首碼)**。 封包所指向位置的子網路的位址首碼。 我們的案例， *192.168.2.0/24*。
     - **-y (或--下一個躍點類型)**。 將傳送流量的目標物件類型。 可能的值為 *VirtualAppliance*, ，*VirtualNetworkGateway*, ，*VNETLocal*, ，*網際網路*, ，或 *無*。
-    - **-p (或--下一個躍點 ip-位址**)。 下個躍點的 IP 位址。 在本文案例中為 *192.168.0.4*。
+    - **-p (或--下一個躍點 ip-位址**)。 下個躍點的 IP 位址。 我們的案例， *192.168.0.4*。
 
-5. 執行 * *`azure 網路的 vnet 子網路集`* * 命令，以將先前建立的路由表關聯 **前端** 子網路。
+5. 執行 **`azure network vnet subnet set`** 命令，以將先前建立的路由表關聯 **前端** 子網路。
 
         azure network vnet subnet set -g TestRG -e TestVNet -n FrontEnd -r UDR-FrontEnd
 
@@ -113,35 +111,32 @@
         info:    network vnet subnet set command OK
 
     參數：
-    - **-e (或-vnet 名稱)**。 子網路所在的 VNet 名稱。 在本文案例中為 *TestVNet*。
-
+    - **-e (或-vnet 名稱)**。 子網路所在的 VNet 名稱。 我們的案例， *TestVNet*。
+ 
 ## 建立後端子網路的 UDR
-
 若要根據上述案例建立後端子網路所需的路由表和路徑，請依照下列步驟執行。
 
-1. 執行 * *`azure 網路的路由表建立`* * 命令，以建立路由表的後端的子網路。
+1. 執行 **`azure network route-table create`** 命令，以建立路由表的後端的子網路。
 
         azure network route-table create -g TestRG -n UDR-BackEnd -l westus
 
-4. 執行 * *`azure 網路路由表路由建立`* * 命令來建立上述傳送所有流量端子 (192.168.1.0/24) 所建立的路由表中的路由到 **FW1** VM (192.168.0.4)。
+4. 執行 **`azure network route-table route create`** 命令來建立上述傳送所有流量端子 (192.168.1.0/24) 所建立的路由表中的路由到 **FW1** VM (192.168.0.4)。
 
         azure network route-table route create -g TestRG -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -y VirtualAppliance -p 192.168.0.4
 
-5. 執行 * *`azure 網路的 vnet 子網路集`* * 命令，以將先前建立的路由表關聯 **後端** 子網路。
+5. 執行 **`azure network vnet subnet set`** 命令，以將先前建立的路由表關聯 **後端** 子網路。
 
         azure network vnet subnet set -g TestRG -e TestVNet -n BackEnd -r UDR-BackEnd
 
-
 ## 啟用 FW1 上的 IP 轉送
+若要啟用 IP 轉送所使用的 NIC **FW1**, ，依照下列步驟。
 
-若要啟用 **FW1** 所使用的 NIC 中的 IP 轉送，請依照下列步驟執行。
-
-1. 執行 * *`azure 網路的 nic 顯示`* * 命令，並注意到的值 **啟用 IP 轉送**。 應該設定為 *false*。
+1. 執行 **`azure network nic show`** 命令，並注意到的值 **啟用 IP 轉送**。 應該設定為 *false*。
 
         azure network nic show -g TestRG -n NICFW1
 
     Output:
-
+        
         info:    Executing command network nic show
         info:    Looking up the network interface "NICFW1"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
@@ -167,7 +162,7 @@
         data:    
         info:    network nic show command OK
 
-2. 執行 * *`azure 網路的 nic 組`* * 命令，以啟用 IP 轉送。
+2. 執行 **`azure network nic set`** 命令來啟用 IP 轉送。
 
         azure network nic set -g TestRG -n NICFW1 -f true
 
@@ -203,8 +198,4 @@
     參數：
 
     - **-f (或--啟用 ip 轉送)**。 *true* 或 *false*。
-
-
-
-
 

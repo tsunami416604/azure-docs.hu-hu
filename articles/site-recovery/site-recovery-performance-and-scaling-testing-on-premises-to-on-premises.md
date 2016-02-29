@@ -16,7 +16,6 @@
     ms.date="12/14/2015"
     ms.author="raynew"/>
 
-
 # 使用 Site Recovery 進行內部部署對內部部署 Hyper-V 複寫的效能測試和調整結果
 
 您可以使用 Microsoft Azure Site Recovery 來協調和管理將虛擬機器與實體伺服器複寫至 Azure 或次要資料中心的複寫作業。 本文提供我們在兩個內部部署資料中心之間複寫 Hyper-V 虛擬機器時所執行之效能測試的結果。
@@ -106,7 +105,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ### 結論
 
-結果會清楚地顯示搭配 Hyper-V 複本的 Azure Site Recovery 透過最小的負荷，就可以為大型叢集妥善調整。 Azure Site Recovery 提供簡單的部署、複寫、管理和監視功能。 Hyper-V 複本提供成功調整複寫所需的基礎結構。 為規劃最佳的部署，建議您下載 [HYPER-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057)。
+結果會清楚地顯示搭配 Hyper-V 複本的 Azure Site Recovery 透過最小的負荷，就可以為大型叢集妥善調整。  Azure Site Recovery 提供簡單的部署、複寫、管理和監視功能。 Hyper-V 複本提供成功調整複寫所需的基礎結構。 為規劃最佳的部署，建議您下載 [HYPER-V 複本的容量規劃工具](https://www.microsoft.com/download/details.aspx?id=39057)。
 
 ## 測試環境詳細資料
 
@@ -124,10 +123,10 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ![主要硬體需求](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
 
-| 伺服器| RAM| 模型| 處理器| 處理器數目| NIC| 軟體|
+|伺服器|RAM|模型|處理器|處理器數目|NIC|軟體|
 |---|---|---|---|---|---|---|
-| 在叢集中的 HYPER-V 伺服器: <br />estlab-host11<br />estlab-host12<br />estlab-host13<br />estlab-host14<br />estlab-host25| 128ESTLAB-HOST25 具備 256| Dell ™ PowerEdge ™ R820| Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz| 4| I Gbps x 4| Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
-| VMM 伺服器| 2| | | 2| 1 Gbps| Windows Server Database 2012 R2 (x64) + VMM 2012 R2|
+|在叢集中的 HYPER-V 伺服器: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25|128ESTLAB-HOST25 具備 256|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|4|I Gbps x 4|Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
+|VMM 伺服器|2|||2|1 Gbps|Windows Server Database 2012 R2 (x64) + VMM 2012 R2|
 
 ### 次要 (復原) 站台
 
@@ -137,12 +136,12 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ![主要硬體規格](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744923.png)
 
-| 伺服器| RAM| 模型| 處理器| 處理器數目| NIC| 軟體|
+|伺服器|RAM|模型|處理器|處理器數目|NIC|軟體|
 |---|---|---|---|---|---|---|
-| 在叢集中的 HYPER-V 伺服器: <br />estlab-host07<br />estlab-host08<br />estlab-host09<br />estlab-host10| 96| Dell ™ PowerEdge ™ R720| Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz| 2| I Gbps x 4| Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
-| ESTLAB-HOST17| 128| Dell ™ PowerEdge ™ R820| Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz| 4| | Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
-| ESTLAB-HOST24| 256| Dell ™ PowerEdge ™ R820| Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz| 2| | Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
-| VMM 伺服器| 2| | | 2| 1 Gbps| Windows Server Database 2012 R2 (x64) + VMM 2012 R2|
+|在叢集中的 HYPER-V 伺服器: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10|96|Dell ™ PowerEdge ™ R720|Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz|2|I Gbps x 4|Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
+|ESTLAB-HOST17|128|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|4||Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
+|ESTLAB-HOST24|256|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|2||Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
+|VMM 伺服器|2|||2|1 Gbps|Windows Server Database 2012 R2 (x64) + VMM 2012 R2|
 
 ### 伺服器工作負載
 
@@ -152,13 +151,13 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 - 所有 IOMeter 設定檔都設為寫入隨機位元組，以模擬最壞情況的工作負載寫入模式。
 
-| 工作負載| I/O 大小 (KB)| 存取百分比| 讀取百分比| 未完成的 I/O| I/O 模式|
+|工作負載|I/O 大小 (KB)|存取百分比|讀取百分比|未完成的 I/O|I/O 模式|
 |---|---|---|---|---|---|
-| 檔案伺服器| 48163264| 60%20%5%5%10%| 80%80%80%80%80%| 88888| 全部 100% 隨機|
-| SQL Server (磁碟區 1) SQL Server (磁碟區 2)| 864| 100%100%| 70%0%| 88| 100% 隨機 100% 循序|
-| Exchange| 32| 100%| 67%| 8| 100% 隨機|
-| 工作站/VDI| 464| 66%34%| 70%95%| 11| 兩者都 100% 隨機|
-| Web 檔案伺服器| 4864| 33%34%33%| 95%95%95%| 888| 全部 75% 隨機|
+|檔案伺服器|48163264|60%20%5%5%10%|80%80%80%80%80%|88888|全部 100% 隨機|
+|SQL Server (磁碟區 1) SQL Server (磁碟區 2)|864|100%100%|70%0%|88|100% 隨機 100% 循序|
+|Exchange|32|100%|67%|8|100% 隨機|
+|工作站/VDI|464|66%34%|70%95%|11|兩者都 100% 隨機|
+|Web 檔案伺服器|4864|33%34%33%|95%95%95%|888|全部 75% 隨機|
 
 ### 虛擬機器組態
 
@@ -168,14 +167,14 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 - 虛擬機器執行資料表中摘要說明的工作負載。 全部都使用 VMM 範本建立。
 
-| 工作負載| VM 數| RAM 下限 (GB)| RAM 上限 (GB)| 每個 VM 的邏輯磁碟大小 (GB)| IOPS 上限|
+|工作負載|# VM|RAM 下限 (GB)|RAM 上限 (GB)|每個 VM 的邏輯磁碟大小 (GB)|IOPS 上限|
 |---|---|---|---|---|---|
-| SQL Server| 51| 1| 4| 167| 10|
-| Exchange Server| 71| 1| 4| 552| 10|
-| 檔案伺服器| 50| 1| 2| 552| 22|
-| VDI| 149| .5| 1| 80| 6|
-| Web 伺服器| 149| .5| 1| 80| 6|
-| 總計| 470| | | 96.83 TB| 4108|
+|SQL Server|51|1|4|167|10|
+|Exchange Server|71|1|4|552|10|
+|檔案伺服器|50|1|2|552|22|
+|VDI|149|.5|1|80|6|
+|Web 伺服器|149|.5|1|80|6|
+|總計|470|||96.83 TB|4108|
 
 ### Azure Site Recovery 設定
 
@@ -183,35 +182,31 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 - VMM 伺服器已設定四個雲端，其中包含 Hyper-V 叢集伺服器及其虛擬機器。
 
-| 主要 VMM 雲端| 雲端中受保護的虛擬機器| 複寫頻率| 其他復原點|
+|主要 VMM 雲端|雲端中受保護的虛擬機器|複寫頻率|其他復原點|
 |---|---|---|---|
-| PrimaryCloudRpo15m| 142| 15 分鐘| None|
-| PrimaryCloudRpo30s| 47| 30 秒| None|
-| PrimaryCloudRpo30sArp1| 47| 30 秒| 1|
-| PrimaryCloudRpo5m| 235| 5 分鐘| None|
+|PrimaryCloudRpo15m|142|15 分鐘|None|
+|PrimaryCloudRpo30s|47|30 秒|None|
+|PrimaryCloudRpo30sArp1|47|30 秒|1|
+|PrimaryCloudRpo5m|235|5 分鐘|None|
 
 ### 效能度量
 
 資料表摘要說明在部署中測量的效能度量和計數器。
 
-| 度量| 計數器|
+|度量|計數器|
 |---|---|
-| CPU| \Processor(_Total)\% 處理器時間|
-| 可用的記憶體| \記憶體\可用的 MB|
-| IOPS| \PhysicalDisk(_Total)\每秒的磁碟傳輸數|
-| 每秒的 VM 讀取 (IOPS) 作業數| \Hyper-V 虛擬存放裝置 (<VHD>) \Read 作業數|
-| 每秒的 VM 寫入 (IOPS) 作業數| \Hyper-V 虛擬存放裝置 (<VHD>) \Write 作業/秒|
-| VM 讀取輸送量| \Hyper-V 虛擬存放裝置 (<VHD>) \Read 位元組數|
-| VM 寫入輸送量| \Hyper-V 虛擬存放裝置 (<VHD>) \Write 位元組數|
+|CPU|\Processor(_Total)\% 處理器時間|
+|可用的記憶體|\記憶體\可用的 MB|
+|IOPS|\PhysicalDisk(_Total)\每秒的磁碟傳輸數|
+|每秒的 VM 讀取 (IOPS) 作業數|\Hyper-V 虛擬存放裝置 (<VHD>) \Read 作業數|
+|每秒的 VM 寫入 (IOPS) 作業數|\Hyper-V 虛擬存放裝置 (<VHD>) \Write 作業/秒|
+|VM 讀取輸送量|\Hyper-V 虛擬存放裝置 (<VHD>) \Read 位元組數|
+|VM 寫入輸送量|\Hyper-V 虛擬存放裝置 (<VHD>) \Write 位元組數|
 
 
 ## 後續步驟
 
-- [設定兩個內部部署 VMM 站台之間的保護](site-recovery-vmm-to-vmm.md)
+- [設定兩個內部部署 VMM 網站之間的保護](site-recovery-vmm-to-vmm.md)
 
-
-
-
-
-
+ 
 

@@ -15,10 +15,9 @@
    ms.date="12/11/2015"
    ms.author="telmos" />
 
-
 # 如何使用 PowerShell 管理端點的存取控制清單 (ACL)
 
-您可以使用 Azure PowerShell 或在管理入口網站中建立和管理端點的網路存取控制清單 (ACL)。 在本主題中，您會了解一些可使用 PowerShell 完成 ACL 一般工作的程序。 清單的 Azure PowerShell 指令程式請參閱 [Azure 管理 Cmdlet](http://go.microsoft.com/fwlink/?LinkId=317721)。 如需有關 Acl 的詳細資訊，請參閱 [什麼是網路存取控制清單 (ACL)?](../virtual-networks-acl). 如果您想要使用管理入口網站來管理您的 Acl，請參閱 [如何設定端點的虛擬機器](../virtual-machines-set-up-endpoints/)。
+您可以使用 Azure PowerShell 或在管理入口網站中建立和管理端點的網路存取控制清單 (ACL)。 在本主題中，您會了解一些可使用 PowerShell 完成 ACL 一般工作的程序。 清單的 Azure PowerShell 指令程式請參閱 [Azure 管理 Cmdlet](http://go.microsoft.com/fwlink/?LinkId=317721)。 如需有關 Acl 的詳細資訊，請參閱 [什麼是網路存取控制清單 (ACL)?](../virtual-networks-acl)。 如果您想要使用管理入口網站來管理您的 Acl，請參閱 [如何設定端點的虛擬機器](../virtual-machines-set-up-endpoints/)。
 
 ## 使用 Azure PowerShell 來管理網路 ACL
 
@@ -37,7 +36,7 @@
 
         $acl1 = New-AzureAclConfig
 
-1. 設定規則以允許從遠端子網路進行存取。 在下方範例中，您可以將規則設定為 *100* (其中的優先順序高於 200 及以上) 以允許遠端子網路 *10.0.0.0/8* 存取虛擬機器端點。 根據您自己的組態需求來取代值。 「SharePoint ACL config」的名稱應該取代為您命名此規則的易記名稱。
+1. 設定規則以允許從遠端子網路進行存取。 在下列範例中，您將規則設定 *100* (其中的優先順序高於 200 及以上) 以允許遠端子網路 *10.0.0.0/8* 虛擬機器端點的存取權。 根據您自己的組態需求來取代值。 「SharePoint ACL config」的名稱應該取代為您命名此規則的易記名稱。
 
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
@@ -68,23 +67,21 @@
         |Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
         |Update-AzureVM
 
-
 ### 設定網路 ACL 規則以允許從遠端子網路進行存取
 
-下方範例示範移除網路 ACL 規則的方式。 若要移除包含遠端子網路允許規則的網路 ACL 規則，請開啟 Azure PowerShell ISE。 複製並貼上下方的指令碼，接著使用您自己的值設定指令碼後執行。
+下方範例示範移除網路 ACL 規則的方式。  若要移除包含遠端子網路允許規則的網路 ACL 規則，請開啟 Azure PowerShell ISE。 複製並貼上下方的指令碼，接著使用您自己的值設定指令碼後執行。
 
-1. 第一個步驟是取得虛擬機器端點的網路 ACL 物件， 然後移除 ACL 規則。 在此案例中，我們依據規則 ID 進行移除。 這只會從 ACL 移除規則 ID 0， 並不會從虛擬機器端點移除 ACL 物件。
+1. 第一個步驟是取得虛擬機器端點的網路 ACL 物件， 然後移除 ACL 規則。 在此案例中，我們依據規則 ID 進行移除。 這只會從 ACL 移除規則 ID 0， 並不會從虛擬機器端點移除 ACL 物件。 
 
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Get-AzureAclConfig –EndpointName "web" `
         | Set-AzureAclConfig –RemoveRule –ID 0 –ACL $acl1
 
-1. 接下來，您必須將網路 ACL 物件套用至虛擬機器端點，並更新虛擬機器。
+1. 接下來，您必須將網路 ACL 物件套用至虛擬機器端點，並更新虛擬機器。 
 
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Set-AzureEndpoint –ACL $acl1 –Name "web" `
         | Update-AzureVM
-
 
 ### 從虛擬機器端點移除網路 ACL
 
@@ -96,10 +93,6 @@
 
 ## 另請參閱
 
-[什麼是網路存取控制清單 (ACL)?](../virtual-networks-acl)
+[什麼是網路存取控制清單 (ACL)？](../virtual-networks-acl)
 
-[如何設定與虛擬機器的通訊](http://go.microsoft.com/fwlink/?LinkId=303938)
-
-
-
-
+[如何設定與虛擬機器的通訊](http://go.microsoft.com/fwlink/?LinkId=303938) 

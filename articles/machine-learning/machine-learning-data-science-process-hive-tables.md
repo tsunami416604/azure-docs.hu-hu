@@ -16,35 +16,32 @@
     ms.date="12/11/2015"
     ms.author="hangzh;bradsev" />
 
-
-# <a name="heading"></a> 將 Hive 查詢提交至 HDInsight Hadoop 叢集的進階分析程序和技術
+#<a name="heading"></a> 將 Hive 查詢提交至 HDInsight Hadoop 叢集的進階分析程序和技術 
 
 本文件說明在 Azure 中，將 Hive 查詢提交至 HDInsight 服務所管理的 Hadoop 叢集的各種方式。 此工作是 Cortana 分析程序 (CAP) 中的一部分。 我們將討論數個資料有爭議的工作：資料探索和功能產生。 即會顯示泛型 Hive 查詢，示範如何探索資料，或是在 Azure HDInsight Hadoop 叢集中使用 Hive 來產生功能。 這些 Hive 查詢會使用所提供的內嵌 Hive 使用者定義函式 (UDF)。
 
-特有的查詢的範例 [NYC 計程車車程資料](http://chriswhong.com/open-data/foil_nyc_taxi/) 案例也會提供在 [Github 儲存機制](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。
+[Github 儲存機制](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也會提供 [NYC 計程車車程資料](http://chriswhong.com/open-data/foil_nyc_taxi/)案例的專屬查詢範例。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。
 
 最後一節將討論可用來微調並改善 Hive 查詢效能的參數。
 
 ## 必要條件
-
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱 [建立 Azure 儲存體帳戶](../hdinsight-get-started.md#storage)
-* 佈建含有 HDInsight 服務的自訂 Hadoop 叢集。 如需指示，請參閱 [適用於進階分析自訂 Azure HDInsight Hadoop 叢集](machine-learning-data-science-customize-hadoop-cluster.md)。
+* 佈建含有 HDInsight 服務的自訂 Hadoop 叢集。  如需指示，請參閱 [適用於進階分析自訂 Azure HDInsight Hadoop 叢集](machine-learning-data-science-customize-hadoop-cluster.md)。
 * 已將資料上傳至 Azure HDInsight Hadoop 叢集中的 Hive 資料表。 如果沒有，請遵循 [建立資料並載入 Hive 資料表](machine-learning-data-science-move-hive-tables.md) 第一次資料上傳至 Hive 資料表。
 * 啟用叢集的遠端存取。 如需指示，請參閱 [存取 Hadoop 叢集的前端節點](machine-learning-data-science-customize-hadoop-cluster.md#headnode)。
 
 
 ## <a name="submit"></a>如何提交 Hive 查詢
-
 Hive 查詢可以使用下列應用程式來提交：
 
-* 叢集前端節點上的 **Hadoop 命令列主控台**
+* **Hadoop 命令列主控台** 叢集的前端節點上
 * **IPython Notebook**
 * **Hive 編輯器**
 * **PowerShell** 指令碼
 
-Hive 查詢類似 SQL。 熟悉 SQL 的使用者可能會發現 <a href="http://hortonworks.com/wp-content/uploads/downloads/2013/08/Hortonworks.CheatSheet.SQLtoHive.pdf" target="_blank">SQL 若要 Hive 小抄</a> 很有用。
+Hive 查詢類似 SQL。 熟悉 SQL 的使用者可能會發現 <a href="http://hortonworks.com/wp-content/uploads/downloads/2013/08/Hortonworks.CheatSheet.SQLtoHive.pdf" target="_blank">SQL 若要 Hive 小祕技</a> 很有用。
 
 提交 Hive 查詢時，您也可以控制 Hive 查詢輸出的目的地，它是否會出現在螢幕上，或是輸出到前端節點上的本機檔案或 Azure Blob。
 
@@ -74,20 +71,21 @@ Hive 查詢類似 SQL。 熟悉 SQL 的使用者可能會發現 <a href="http://
 
 #### 提交 .hql 檔案中的 Hive 查詢。
 
-當 Hive 查詢更為複雜且有多行時，在 Hadoop 命令列或 Hive 命令主控台中編輯查詢並不實際。 替代方法是在 Hadoop 叢集的前端節點中使用文字編輯器，並將 Hive 查詢儲存在前端節點本機目錄中的 .hql 檔案。 然後可以提交.hql 檔案中的 Hive 查詢使用 `-f` 引數中的 `hive` 命令，如下所示:
+當 Hive 查詢更為複雜且有多行時，在 Hadoop 命令列或 Hive 命令主控台中編輯查詢並不實際。 替代方法是在 Hadoop 叢集的前端節點中使用文字編輯器，並將 Hive 查詢儲存在前端節點本機目錄中的 .hql 檔案。 然後可在 `hive` 命令中使用 `-f` 引數來提交 .hql 檔案中的 Hive 查詢，如下所示：
 
     `hive -f "<path to the .hql file>"`
 
+
 #### 隱藏 Hive 查詢的進度狀態畫面顯示
 
-根據預設，在 Hadoop 命令列主控台中提交 Hive 查詢之後，Map/Reduce 工作的進度將顯示於螢幕上。 若要隱藏 Map/Reduce 工作進度的畫面列印，您可以使用引數 `-S` (區分大小寫) 的引數，在命令列中，如下所示:
+根據預設，在 Hadoop 命令列主控台中提交 Hive 查詢之後，Map/Reduce 工作的進度將顯示於螢幕上。 若要隱藏 Map/Reduce 工作進度的畫面顯示，您可以在命令列中使用引數 `-S` (區分大小寫)，如下所示：
 
     hive -S -f "<path to the .hql file>"
     hive -S -e "<Hive queries>"
 
 #### 在 Hive 命令主控台中提交 Hive 查詢。
 
-使用者也可以輸入 Hive 命令主控台執行  `hive` 從 Hadoop 命令列命令，然後提交 Hive 查詢從 Hive 命令主控台 **hive >** 提示字元。 範例如下。
+使用者也可以輸入 Hive 命令主控台執行  `hive` 從 Hadoop 命令列命令，然後提交 Hive 查詢從 Hive 命令主控台 **hive >** 提示字元。 範例如下。  
 
 ![建立工作區](./media/machine-learning-data-science-process-hive-tables/run-hive-queries-2.png)
 
@@ -101,13 +99,14 @@ Hive 查詢類似 SQL。 熟悉 SQL 的使用者可能會發現 <a href="http://
 
     `hive -e "<hive query>" > <local path in the head node>`
 
+
 #### 將 Hive 查詢結果輸出到 Azure Blob
 
 使用者也可以將 Hive 查詢結果輸出到 Hadoop 叢集預設容器內的 Azure Blob。 執行此動作的 Hive 查詢看起來如下：
 
     insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
 
-在下列範例中，Hive 查詢的輸出會寫入 blob 目錄 `queryoutputdir` Hadoop 叢集預設容器內。 在此處，您應該只提供目錄名稱，而不需提供 Blob 名稱。 錯誤將會擲回如果您同時提供目錄和 blob 名稱，例如 *wasb:///queryoutputdir/queryoutput.txt*。
+在下列範例中，Hive 查詢的輸出會寫入 Hadoop 叢集預設容器內的 Blob 目錄 `queryoutputdir`。 在此處，您應該只提供目錄名稱，而不需提供 Blob 名稱。 錯誤將會擲回如果您同時提供目錄和 blob 名稱，例如 *wasb:///queryoutputdir/queryoutput.txt*。
 
 ![建立工作區](./media/machine-learning-data-science-process-hive-tables/output-hive-results-2.png)
 
@@ -119,29 +118,28 @@ Hive 查詢的輸出會顯示於 Blob 儲存體中，方法是使用 Azure 儲�
 
 使用者也可以透過下列方式來使用查詢主控台 (Hive 編輯器)：在 Web 瀏覽器中輸入
 
-*https://&#60;Hadoop 叢集名稱>.azurehdinsight.net/Home/HiveEditor*
+*https://&#60;Hadoop 叢集名稱>.azurehdinsight.net/Home/HiveEditor*  
 
 。 請注意，系統將要求您輸入 Hadoop 叢集認證以進行登入。 或者，您可以 [使用 PowerShell 提交 Hive 工作](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)。
 
 
-## <a name="hive-dataexploration"></a>資料探索
-
+##<a name="hive-dataexploration"></a>資料探索
 以下提供數個 Hive 指令碼範例，可用來探索 Hive 資料表中的資料。
 
 1. 取得每個資料分割的觀察計數
-    `SELECT < partitionfieldname >、 < 資料庫名稱 > 從 count(*)。 由 < partitionfieldname >; < 表格名稱 > 群組`
+    `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
 
 2. 取得每天的觀察計數
-    `選取 to_date (< date_columnname >)、 count(*) 從 < 資料庫名稱 >。 < e > 分組 to_date (< date_columnname >)。`
+    `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 
 3. 取得類別資料行中的層級  
-    `選取相異 < column_name > 從 < 資料庫名稱 >。 < e >`
+    `SELECT  distinct <column_name> from <databasename>.<tablename>`
 
 4. 取得兩個類別資料行組合中的層級數目
-    `選取 < column_a >，< column_b >、 < 資料庫名稱 > 從 count(*)。 < e > 群組依據] < column_a >，< column_b >`
+    `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 
 5. 取得數值資料行的分佈  
-    `SELECT < column_name >、 < 資料庫名稱 > 從 count(*)。 < column_name > 的 < e > 群組`
+    `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 
 6. 聯結兩個資料表來擷取記錄
 
@@ -170,21 +168,21 @@ Hive 查詢的輸出會顯示於 Blob 儲存體中，方法是使用 Azure 儲�
             ) b
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
-
-## <a name="hive-featureengineering"></a>功能產生
+##<a name="hive-featureengineering"></a>功能產生
 
 本節將說明使用 Hive 查詢產生功能的方式。
+
 > [AZURE.NOTE] 本節中的 Hive 查詢範例假設資料已上傳至 Azure HDInsight Hadoop 叢集中的 Hive 資料表。 如果沒有，請遵循 [建立資料並載入 Hive 資料表](machine-learning-data-science-hive-tables.md) 第一次資料上傳至 Hive 資料表。
 
-一旦產生額外功能之後，就可以將它們當成資料行新增至現有的資料表，或是建立具有其他功能和主索引鍵的新資料表 (然後與原始資料表聯結)。
+一旦產生額外功能之後，就可以將它們當成資料行新增至現有的資料表，或是建立具有其他功能和主索引鍵的新資料表 (然後與原始資料表聯結)。  
 
-1. [以頻率為基礎功能產生](#hive-frequencyfeature)
+1. [以頻率為基礎的功能產生](#hive-frequencyfeature)
 2. [二進位分類中類別變數的風險](#hive-riskfeature)
 3. [從日期時間欄位擷取功能](#hive-datefeatures)
 4. [從文字欄位擷取功能](#hive-textfeatures)
 5. [計算 GPS 座標間的距離](#hive-gpsdistance)
 
-### <a name="hive-frequencyfeature"></a>以頻率為基礎功能產生
+###<a name="hive-frequencyfeature"></a>以頻率為基礎的功能產生
 
 計算類別變數層級的頻率，或是來自多個類別變數之特定層級組合的頻率，通常很實用。 使用者可以使用下列指令碼來計算這些頻率：
 
@@ -198,7 +196,8 @@ Hive 查詢的輸出會顯示於 Blob 儲存體中，方法是使用 Azure 儲�
         )a
         order by frequency desc;
 
-### <a name="hive-riskfeature"></a>二進位分類中類別變數的風險
+
+###<a name="hive-riskfeature"></a>二進位分類中類別變數的風險
 
 在二進位分類中，若使用的模型只會採用數值功能，我們就需要將非數值類別變數轉換成數值功能。 您可以使用數值風險來取代每個非數值層級，藉以完成這個動作。 在本節中，我們將說明一些計算類別變數風險值 (記錄機率) 的泛型 Hive 查詢。
 
@@ -221,40 +220,40 @@ Hive 查詢的輸出會顯示於 Blob 儲存體中，方法是使用 Azure 儲�
             group by <column_name1>, <column_name2>
             )b
 
-在此範例中，變數 `smooth_param1` 和 `smooth_param2，以` 以減緩從資料計算出來的風險值來設定。 風險範圍介於-Inf 和 Inf 之間。 風險 > 0 表示目標等於 1 的機率大於 0.5。
+這個範例會設定變數 `smooth_param1` 和 `smooth_param2`，以減緩從資料計算得來的風險值。 風險範圍介於-Inf 和 Inf 之間。 風險 > 0 表示目標等於 1 的機率大於 0.5。
 
 計算出風險資料表之後，使用者就可以藉由將資料表聯結至風險資料表，來將風險值指派給該資料表。 Hive 聯結查詢已在上一節中提供。
 
-### <a name="hive-datefeatures"></a>從日期時間欄位擷取功能
+###<a name="hive-datefeatures"></a>從日期時間欄位擷取功能
 
 Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 中，預設的日期時間格式是 'yyyy-MM-dd 00:00:00' (例如 '1970-01-01 12:21:32')。 本節會顯示擷取月份日期和來自日期時間欄位的月份範例，以及其他可將預設格式以外格式的日期時間字串轉換為預設格式的日期時間字串範例。
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-這個 Hive 查詢假設 *&#60;datetime field>* 是預設的日期時間格式。
+這個 Hive 查詢假設 *& #60，則為日期時間欄位 >* 是預設的日期時間格式。
 
 如果日期時間欄位不是預設格式，您需要先將日期時間欄位轉換為 Unix 時間戳記，然後將 Unix 時間戳記轉換為預設格式的日期時間字串。 將日期時間為預設格式之後，使用者就可以套用內嵌的日期時間 UDF 來擷取功能。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-在此查詢中，如果 *(& s) #60，則為日期時間欄位 >* 具有類似模式 *03/26/2015年 12:04:39*, 、 *'& #60，則為日期時間欄位的模式 >'* 應該 `' MM/dd/yyyy hh: mm:'`。 若要進行測試，使用者可以執行
+在此查詢中，如果 *(& s) #60，則為日期時間欄位 >* 具有類似模式 *03/26/2015年 12:04:39*, 、 *' & #60，則為日期時間欄位的模式 >'* 應該 `'MM/dd/yyyy HH:mm:ss'`。 若要進行測試，使用者可以執行
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
 
-佈建叢集時，這個查詢中的 *hivesampletable* 預設會預先安裝於所有 Azure HDInsight Hadoop 叢集中。
+ *Hivesampletable* 這個查詢中預先安裝於所有 Azure HDInsight Hadoop 叢集預設會佈建叢集時。
 
 
-### <a name="hive-textfeatures"></a>從文字欄位擷取功能
+###<a name="hive-textfeatures"></a>從文字欄位擷取功能
 
 當 Hive 資料表具有一個文字欄位且其中包含以空格分隔的文字字串時，下列查詢便會擷取字串長度，以及字串中的字數。
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-### <a name="hive-gpsdistance"></a>計算 GPS 座標組之間的距離
+###<a name="hive-gpsdistance"></a>計算 GPS 座標組之間的距離
 
 本節中提供的查詢可直接套用至「NYC 計程車車程資料」。 此查詢的目的是示範如何在 Hive 中套用內嵌的數學函式來產生功能。
 
@@ -276,38 +275,39 @@ Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 
         and dropoff_latitude between 30 and 90
         limit 10;
 
-可以上找到計算兩個 GPS 座標間之距離的數學方程式 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">可移動的類型指令碼</a> 站台，Peter Lapisu 所撰寫。 在他的 Javascript 函式 `torad () 僅` 只是 *lat_or_lon*pi/180 *，可將角度轉換為弧度。 此處的 *lat_or_lon* 為緯度或經度。 由於 Hive 不提供函式 `atan2`, ，但提供函數 `atan`, 、 `atan2` 函式由實作 `atan` 上述 Hive 查詢中提供的定義中的函式 <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>。
+您可以在<a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">可移動的類型指令碼</a>網站 (作者為 Peter Lapisu) 上找到計算兩個 GPS 座標間之距離的數學方程式。 在他的 Javascript 函式 `toRad()` 只是 *lat_or_lon*pi/180 *，可將角度轉換為弧度。 在這裡， *lat_or_lon* 為緯度或經度。 由於 Hive 不提供函式 `atan2`，但提供函式 `atan`，因此 `atan2` 函式是由上述 Hive 查詢中的 `atan` 函式以 <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定義來實作。
 
 ![test](./media/machine-learning-data-science-process-hive-tables/atan2new.png)
 
-Hive 內嵌的 Udf 可以在中找到的完整清單 **內建函式** 區段 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>)。
+Hive 內嵌的 Udf 可以在中找到的完整清單 **內建函式** 區段 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>)。  
 
-## <a name="tuning"></a> 進階主題: 微調 Hive 參數以提升查詢速度
+## <a name="tuning"></a> 進階主題：微調 Hive 參數以提升查詢速度
 
 Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處理的資料。 本節將討論一些使用者可以微調的參數，來提升 Hive 查詢的效能。 使用者需要在處理資料的查詢之前新增參數微調查詢。
 
-1. **Java 堆積空間**：對於涉及聯結大型資料集或處理長記錄的查詢，常見的一項錯誤是**堆積空間不足**。 這可藉由將參數 *mapreduce.map.java.opts* 和 *mapreduce.task.io.sort.mb* 設定為所需的值來進行微調。 下列是一個範例：
+1. **Java 堆積空間**: 對於涉及聯結大型資料集，或處理長記錄的查詢 **堆積空間不足** 是其中一個常見的錯誤。 這可以藉由設定參數微調 *mapreduce.map.java.opts* 和 *mapreduce.task.io.sort.mb* 為需要的值。 下列是一個範例：
 
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
+
     這個參數會配置 4 GB 記憶體給 Java 堆積空間，也會藉由配置更多記憶體來使排序更有效率。 如果發生任何與堆積空間相關的工作失敗錯誤，那麼使用這些配置會是個好主意。
 
-2. **DFS 區塊大小**：這個參數會設定檔案系統所儲存的最小資料單位。 例如，如果 DFS 區塊大小為 128 MB，則任何大小小於等於 128 MB 的資料都會儲存於單一區塊中，而大於 128 MB 的資料則會配置額外的區塊。 選擇非常小的區塊大小會在 Hadoop 中造成極大的負荷，因為名稱節點必須處理更多要求，以尋找與檔案有關的相關區塊。 在處理 GB (或更大型) 資料時，建議的設定如下：
+2. **DFS 區塊大小** : 這個參數會設定檔案系統所儲存資料的最小單位。 例如，如果 DFS 區塊大小為 128 MB，則任何大小小於等於 128 MB 的資料都會儲存於單一區塊中，而大於 128 MB 的資料則會配置額外的區塊。 選擇非常小的區塊大小會在 Hadoop 中造成極大的負荷，因為名稱節點必須處理更多要求，以尋找與檔案有關的相關區塊。 在處理 GB (或更大型) 資料時，建議的設定如下：
 
         set dfs.block.size=128m;
 
-3. **將 Hive 中的聯結作業最佳化**：儘管 Map/Reduce 架構中的聯結作業通常是在縮減階段執行，但有時可藉由在對應階段中排程聯結 (亦稱為 "mapjoin") 來得到大量的收穫。 若要在適當時機引導 Hive 執行這個動作，我們可以設定：
+3. **將 Hive 中的聯結作業最佳化** : 儘管 map/reduce 架構中的聯結作業通常是在縮減階段，某些情況下，極可以改善由排程聯結 (也稱為"mapjoin") 在對應階段中。 若要在適當時機引導 Hive 執行這個動作，我們可以設定：
 
         set hive.auto.convert.join=true;
 
-4. **指定 Hive 的對應程式數目**：儘管 Hadoop 允許使用者設定縮減程式的數目，但使用者通常不會設定對應程式的數目。 允許對這個數目進行某種程度控制的技巧是選擇 Hadoop 變數 *mapred.min.split.size* 和 *mapred.max.split.size*，因為每個對應工作的大小由下列決定：
+4. **指定 Hive 的對應程式數目** : 儘管 Hadoop 允許使用者設定縮減程式的對應程式數目通常是由使用者設定。 可讓某種程度控制對此數目的技巧是選擇 Hadoop 變數 *mapred.min.split.size* 和 *mapred.max.split.size* 大小，每個對應的工作取決於:
 
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
 
-    一般而言，*mapred.min.split.size* 的預設值為 0，*mapred.max.split.size* 的預設值是 **Long.MAX**，而 *dfs.block.size* 的預設值則是 64 MB。 誠如所見，若指定了資料大小，則藉由「設定」這些參數來微調它們，讓我們能夠微調所使用的對應程式數目。
+    一般而言，預設值的 *mapred.min.split.size* 為 0 的 *mapred.max.split.size* 是 **Long.MAX** 與 *dfs.block.size* 是 64 MB。 誠如所見，若指定了資料大小，則藉由「設定」這些參數來微調它們，讓我們能夠微調所使用的對應程式數目。
 
-5. 以下將提及最佳化 Hive 效能的其他數個更**進階選項**。 這些選項讓您能夠設定配置的記憶體來對應和縮減工作，而且在調整效能時非常實用。 請記住，*mapreduce.reduce.memory.mb* 不能大於 Hadoop 叢集中每個背景工作角色節點的實際記憶體大小。
+5. 其他幾個 **進階選項** 最佳化 Hive 效能是下面所述。 這些選項讓您能夠設定配置的記憶體來對應和縮減工作，而且在調整效能時非常實用。 請記住， *mapreduce.reduce.memory.mb* 不能大於 Hadoop 叢集中的每個背景工作節點的實體記憶體大小。
 
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;
@@ -317,10 +317,5 @@ Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處
 
 
 
-
-
-
-
-
-
+ 
 

@@ -17,11 +17,10 @@
    ms.date="09/01/2015"
    ms.author="kundanap"/>
 
-
 # 使用 VM 延伸模組編寫 Azure 資源管理員範本。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
-
+ 
 
 ## Azure 資源管理員範本概觀。
 
@@ -30,7 +29,6 @@ Azure 資源管理員範本可讓您藉由定義資源之間的相依性，以�
 [資源群組概觀](../resource-group-overview.md)
 
 ## VM 延伸模組的範例範本程式碼片段。
-
 若要將 VM 延伸模組部署到 Azure 資源管理員範本中，您必須以宣告方式在範本中指定延伸模組組態。
 以下是用來指定延伸模組組態的格式。
 
@@ -87,13 +85,9 @@ Azure VM 延伸模組是由 Microsoft 和受信任的第 3 方發行者所發佈
 
 請參閱 VM 範本的下列項目以取得 VM 延伸模組的完整範本。
 
-[在 Windows VM 上的自訂指令碼延伸模組](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
+[Windows VM 上的自訂指令碼延伸模組](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
 [Linux VM 上的自訂指令碼延伸模組](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
 編寫範本之後，您可以使用 Azure CLI 或 Azure Powershell 部署它們。
-
-
-
-
 

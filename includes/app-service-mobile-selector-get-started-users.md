@@ -7,8 +7,3 @@
 - [Xamarin.iOS](../articles/app-service-mobile-xamarin-ios-get-started-users.md)
 
 
-
-
-
-
-

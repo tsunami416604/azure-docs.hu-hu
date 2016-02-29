@@ -15,10 +15,9 @@
    ms.date="11/13/2015"
    ms.author="bwren;sngun"/>
 
-
 # 在 Azure 自動化中啟動 Runbook
 
-下表將協助您判斷在 Azure 自動化中啟動 Runbook 的方法，最適合您的特定案例。 這篇文章包含有關使用 Azure 入口網站和 Windows PowerShell 啟動 Runbook 的詳細資料。 其他方法的詳細資訊在其他文件中提供，您可以從下列連結來存取。
+下表將協助您判斷在 Azure 自動化中啟動 Runbook 的方法，最適合您的特定案例。    這篇文章包含有關使用 Azure 入口網站和 Windows PowerShell 啟動 Runbook 的詳細資料。  其他方法的詳細資訊在其他文件中提供，您可以從下列連結來存取。
 
 <table>
  <tr>
@@ -67,7 +66,7 @@
    <ul>
     <li>從單一 HTTP 要求啟動 Runbook。</li>
     <li>在 URL 中使用安全性權杖進行驗證。</li>
-    <li>用戶端無法覆寫建立 Webhook 時指定的參數值。Runbook 可以定義填入了 HTTP 要求詳細資料的單一參數。</li>
+    <li>用戶端無法覆寫建立 Webhook 時指定的參數值。  Runbook 可以定義填入了 HTTP 要求詳細資料的單一參數。</li>
     <li>無法透過 Webhook URL 追蹤工作狀態。</li>
    </ul>
   </td>
@@ -110,19 +109,19 @@
 
 ## 使用 Azure 入口網站啟動 Runbook
 
-1. 在 Azure 入口網站中，選取 [**自動化**]，然後按一下自動化帳戶的名稱。
-1. 選取 [**Runbook**] 索引標籤。
-1. 選取 Runbook，然後按一下 [**啟動**]。
+1. 在 Azure 入口網站中，選取 **自動化** ，然後按一下自動化帳戶的名稱。
+1. 選取 **Runbook** ] 索引標籤。
+1. 選取 runbook，然後再按 **啟動**。
 1. 如果 Runbook 有參數，系統會提示您提供每個參數的文字方塊的值。 請參閱 [Runbook 參數](#Runbook-parameters) 下方以進一步參數的詳細資訊。
-1. 選取 [**啟動**] Runbook 訊息旁邊的 [**檢視工作**]，或選取 Runbook 的 [**工作**] 索引標籤，以檢視 Runbook 工作的狀態。
+1. 請選取 **檢視作業** 旁 **起始** runbook 訊息，或選取 **工作** 的 runbook，以檢視 runbook 工作的狀態] 索引標籤。
 
 ## 使用 Azure 預覽入口網站啟動 Runbook
 
-1. 從您的自動化帳戶，按一下 [**Runbook**] 部分，以開啟 [**Runbook**] 分頁。
-1. 按一下 Runbook 以開啟其 [**Runbook**] 分頁。
-2. 按一下 [啟動]****。
-1. 如果 Runbook 沒有參數，系統會提示您確認您是否想要啟動它。 如果 Runbook 有參數，[**啟動 Runbook**] 分頁會開啟，因此您可以提供參數值。 請參閱 [Runbook 參數](#Runbook-parameters) 下方以進一步參數的詳細資訊。
-3. [**工作**] 分頁隨即開啟，因此您可以追蹤工作的狀態。
+1. 從您的自動化帳戶，按一下 [ **Runbook** 部分，以開啟 **Runbook** 刀鋒視窗。
+1. 按一下 runbook 以開啟其 **Runbook** 刀鋒視窗。
+2. 按一下 [ **啟動**。
+1. 如果 Runbook 沒有參數，系統會提示您確認您是否想要啟動它。  如果 runbook 有參數， **啟動 Runbook** 刀鋒視窗會開啟，因此您可以提供參數值。 請參閱 [Runbook 參數](#Runbook-parameters) 下方以進一步參數的詳細資訊。
+3.  **工作** ] 分頁隨即開啟，讓您可以追蹤工作的狀態。
 
 
 ## 使用 Windows PowerShell 啟動 Runbook
@@ -157,7 +156,7 @@ Azure 自動化 Web 服務會為特定資料型別的參數提供特殊功能，
 
 ### 具名的值
 
-如果參數是資料型別 [object]，則您可以使用下列 JSON 格式，將它傳送的具名值清單：*{"Name1":Value1, "Name2":Value2, "Name3":Value3}*。 這些值必須是簡單型別。 Runbook 將會收到參數 [PSCustomObject](http://msdn.microsoft.com/library/azure/system.management.automation.pscustomobject(v=vs.85).aspx) 與每個具名值相對應的屬性。
+如果參數是資料型別 [object]，則您可以使用下列 JSON 格式來傳送具名值的清單: *{"Name1": Value1，"Name2": Value2，"Name3": Value3}*。 這些值必須是簡單型別。 Runbook 將會收到參數 [PSCustomObject](http://msdn.microsoft.com/library/azure/system.management.automation.pscustomobject(v=vs.85).aspx) 與每個具名值相對應的屬性。
 
 請考慮可接受稱為 user 的參數的下列測試 Runbook。
 
@@ -189,7 +188,7 @@ Azure 自動化 Web 服務會為特定資料型別的參數提供特殊功能，
 
 如果參數是陣列，例如 [array] 或 [string []]，您可以使用下列 JSON 格式來傳送值的清單: *[Value1，Value2，Value3]*。 這些值必須是簡單型別。
 
-請考慮可接受稱為 *user* 的參數的下列測試 Runbook。
+請考慮可接受參數，呼叫下列測試 runbook *使用者*。
 
     Workflow Test-Parameters
     {
@@ -229,18 +228,14 @@ Azure 自動化 Web 服務會為特定資料型別的參數提供特殊功能，
        $credential.UserName
     }
 
-假設有稱為 *My Credential* 的認證資產，則下列文字可用於 user 參數。
+下列文字可用於使用者參數假設有認證資產 *My Credential*。
 
     My Credential
 
-假設在認證中的使用者名稱是 *jsmith*，這會導致下列輸出。
+假設認證中的使用者名稱是 *jsmith*, ，這會導致下列輸出。
 
     jsmith
 
 ## 相關文章
 
-- [在 Azure 自動化中的子系 runbook](automation-child-runbooks.md)
-
-
-
-
+- [Azure 自動化中的子 Runbook](automation-child-runbooks.md) 

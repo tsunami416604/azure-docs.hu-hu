@@ -16,30 +16,27 @@
     ms.date="11/25/2015"
     ms.author="wesmc"/>
 
-
 # 註冊管理
 
-## 概觀
+##概觀
 
-本主題說明如何向通知中樞註冊裝置以接收推播通知。 本主題會概要說明註冊，然後介紹註冊裝置的兩個主要模式：直接從裝置向通知中樞註冊，以及透過應用程式後端註冊。
+本主題說明如何向通知中樞註冊裝置以接收推播通知。 本主題會概要說明註冊，然後介紹註冊裝置的兩個主要模式：直接從裝置向通知中樞註冊，以及透過應用程式後端註冊。 
 
 
-## 什麼是裝置註冊
+##什麼是裝置註冊
 
-向「通知中樞」註冊裝置是藉由使用 [註冊]**** 或 [安裝]**** 來完成。
+裝置註冊，並在通知中心會藉由 **註冊** 或 **安裝**。
 
 #### 註冊
-
 註冊是通知中樞的子實體，會將裝置的「平台通知服務」(PNS) 控制代碼與標記 (以及也可能與範本) 建立關聯。 PNS 控制代碼可能是 ChannelURI、裝置權杖或 GCM 註冊識別碼。 標記是用來將通知路由至一組正確的裝置控制代碼。 如需詳細資訊，請參閱 [路由和標記運算式](notification-hubs-routing-tag-expressions.md)。 範本是用來實作每一註冊的轉換。 如需詳細資訊，請參閱 [範本](notification-hubs-templates.md)。
 
 #### 安裝
-
-安裝是增強型的註冊，包含一組推播相關的屬性。 不過，它也是最新且最佳的裝置註冊方式。
+安裝是增強型的註冊，包含一組推播相關的屬性。 不過，它也是最新且最佳的裝置註冊方式。 
 
 以下是使用安裝的一些主要優點：
 
 * 建立或更新安裝是完全等冪的。 因此您可以重試它，而不需顧慮重複註冊的情況。
-* 安裝模型可讓您更容易進行個別推播 (以特定裝置為目標)。 在每個安裝型註冊，都會自動新增一個系統標記 **"$InstallationId:[installationId]"**。 因此，您不需編寫任何額外的程式碼，即可對此標記進行傳送呼叫來以特定裝置做為目標。
+* 安裝模型可讓您更容易進行個別推播 (以特定裝置為目標)。 系統標記 **"$InstallationId: [安裝 Id] 」** 會自動加入每個安裝基礎的註冊。 因此，您不需編寫任何額外的程式碼，即可對此標記進行傳送呼叫來以特定裝置做為目標。
 * 使用安裝也可讓您進行部分註冊更新。 部分安裝的更新要求的修補程式的方法使用 [JSON Patch 標準](https://tools.ietf.org/html/rfc6902)。 當您想要更新註冊的相關標記時，這會特別有用。 您不需要移除整個註冊，然後再次重新傳送所有先前的標記。
 
 正在安裝才支援 [後端作業的通知中樞 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。 請參閱 [安裝類別](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation.aspx) 如需詳細資訊。 若要註冊用戶端裝置的安裝識別碼，而不需要後端，您將需要使用 [通知中樞 REST API](https://msdn.microsoft.com/library/mt621153.aspx) 這一次。
@@ -80,9 +77,11 @@
         }
     }
 
+ 
+
 請務必注意，註冊與安裝以及它們所包含的 PNS 控制代碼有到期時間。 您可以在「通知中樞」上設定最長 90 天的存留時間。 這個限制代表它們必須定期重新整理，也代表它們不應該是重要資訊的唯一存放區。 這個自動到期機制同時也簡化了將您行動應用程式解除安裝時的清除作業。
 
-註冊與安裝必須包含每個裝置/通道的最新 PNS 控制代碼。 由於 PNS 控制代碼只能在裝置上的用戶端 app 中取得，因此有一種模式是直接在該裝置上使用用戶端 app 進行註冊。 另一方面，與標記相關的安全性考量和商務邏輯可能會需要您在 app 後端管理裝置註冊。
+註冊與安裝必須包含每個裝置/通道的最新 PNS 控制代碼。 由於 PNS 控制代碼只能在裝置上的用戶端 app 中取得，因此有一種模式是直接在該裝置上使用用戶端 app 進行註冊。 另一方面，與標記相關的安全性考量和商務邏輯可能會需要您在 app 後端管理裝置註冊。 
 
 #### 範本
 
@@ -98,7 +97,7 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
 如同主要 ChannelUri，次要磚的 ChannelUri 也會隨時變更。 為了讓通知中樞內的安裝保持更新，裝置必須以次要磚的 ChannelUri 來重新整理它們。
 
 
-## 從裝置管理註冊
+##從裝置管理註冊
 
 從用戶端 app 管理裝置註冊時，後端只負責傳送通知。 用戶端 app 會讓 PNS 控制代碼保持在最新狀態，並且會註冊標記。 下圖說明這個模式。
 
@@ -113,7 +112,7 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
 
 
 
-#### 使用安裝從裝置向通知中樞註冊的範例程式碼
+#### 使用安裝從裝置向通知中樞註冊的範例程式碼 
 
 在此階段中，這僅支援使用 [通知中樞 REST API](https://msdn.microsoft.com/library/mt621153.aspx)。
 
@@ -126,50 +125,50 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
         public string pushChannel { get; set; }
         public string[] tags { get; set; }
     }
-    
+
     private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
          string hubName, string listenConnectionString)
     {
         if (deviceInstallation.installationId == null)
             return HttpStatusCode.BadRequest;
-    
+
         // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
         ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
         string hubResource = "installations/" + deviceInstallation.installationId + "?";
         string apiVersion = "api-version=2015-04";
-    
+
         // Determine the targetUri that we will sign
         string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
-    
+
         //=== Generate SaS Security Token for Authorization header ===
         // See, https://msdn.microsoft.com/library/azure/dn495627.aspx
         string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
-    
+
         using (var httpClient = new HttpClient())
         {
             string json = JsonConvert.SerializeObject(deviceInstallation);
-    
+
             httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
-    
+
             var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
             return response.StatusCode;
         }
     }
-    
+
     var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-    
+
     string installationId = null;
     var settings = ApplicationData.Current.LocalSettings.Values;
-    
+
     // If we have not stored a installation id in application data, create and store as application data.
     if (!settings.ContainsKey("__NHInstallationId"))
     {
         installationId = Guid.NewGuid().ToString();
         settings.Add("__NHInstallationId", installationId);
     }
-    
+
     installationId = (string)settings["__NHInstallationId"];
-    
+
     var deviceInstallation = new DeviceInstallation
     {
         installationId = installationId,
@@ -177,10 +176,10 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
         pushChannel = channel.Uri,
         //tags = tags.ToArray<string>()
     };
-    
+
     var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
                         "<HUBNAME>", "<SHARED LISTEN CONNECTION STRING>");
-    
+
     if (statusCode != HttpStatusCode.Accepted)
     {
         var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
@@ -194,22 +193,25 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
         await dialog.ShowAsync();
     }
 
+   
+
 #### 使用註冊從裝置向通知中樞註冊的範例程式碼
+
 
 這些方法會建立或更新其所在呼叫位置的裝置註冊。 這表示為了更新控制代碼或標記，您必須覆寫整個註冊。 請記住，註冊是暫時性的，因此您應該一律要有一個可靠的存放區，內含特定裝置所需的目前標記。
 
 
     // Initialize the Notification Hub
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
-    
+
     // The Device id from the PNS
     var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-    
+
     // If you are registering from the client itself, then store this registration id in device
     // storage. Then when the app starts, you can check if a registration id already exists or not before
     // creating.
     var settings = ApplicationData.Current.LocalSettings.Values;
-    
+
     // If we have not stored a registration id in application data, store in application data.
     if (!settings.ContainsKey("__NHRegistrationId"))
     {
@@ -227,18 +229,18 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
                 await hub.DeleteRegistrationAsync(registration);
             }
         }
-    
+
         newRegistrationId = await hub.CreateRegistrationIdAsync();
-    
+
         settings.Add("__NHRegistrationId", newRegistrationId);
     }
-    
+     
     string regId = (string)settings["__NHRegistrationId"];
-    
+
     RegistrationDescription registration = new WindowsRegistrationDescription(pushChannel.Uri);
     registration.RegistrationId = regId;
     registration.Tags = new HashSet<string>(YourTags);
-    
+
     try
     {
         await hub.CreateOrUpdateRegistrationAsync(registration);
@@ -248,6 +250,7 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
         // regId likely expired, delete from local storage and try again
         settings.Remove("__NHRegistrationId");
     }
+
 
 ## 從後端管理註冊
 
@@ -263,20 +266,20 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
 用戶端裝置仍會如先前一樣取得其 PNS 控制代碼及相關的安裝屬性，然後在可以執行註冊及授權標記等的後端上呼叫自訂 API。後端可以利用 [後端作業的通知中樞 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 您也可以使用補充程式的方法使用 [JSON Patch 標準](https://tools.ietf.org/html/rfc6902) 更新安裝。
-
+ 
 
     // Initialize the Notification Hub
     NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
-    
+
     // Custom API on the backend
     public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
     {
-    
+
         Installation installation = new Installation();
         installation.InstallationId = deviceUpdate.InstallationId;
         installation.PushChannel = deviceUpdate.Handle;
         installation.Tags = deviceUpdate.Tags;
-    
+
         switch (deviceUpdate.Platform)
         {
             case "mpns":
@@ -294,43 +297,41 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
             default:
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
         }
-    
-    
+
+
         // In the backend we can control if a user is allowed to add tags
         //installation.Tags = new List<string>(deviceUpdate.Tags);
         //installation.Tags.Add("username:" + username);
-    
+
         await hub.CreateOrUpdateInstallationAsync(installation);
-    
+
         return Request.CreateResponse(HttpStatusCode.OK);
     }
+
 
 #### 使用註冊識別碼從裝置向通知中樞註冊的範例程式碼
 
 您可以從 app 後端，對註冊執行基本 CRUD 作業。 例如：
 
     var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
-    
+            
     // create a registration description object of the correct type, e.g.
     var reg = new WindowsRegistrationDescription(channelUri, tags);
-    
+
     // Create
     await hub.CreateRegistrationAsync(reg);
-    
+
     // Get by id
     var r = await hub.GetRegistrationAsync<RegistrationDescription>("id");
-    
+
     // update
     r.Tags.Add("myTag");
-    
+
     // update on hub
     await hub.UpdateRegistrationAsync(r);
-    
+
     // delete
     await hub.DeleteRegistrationAsync(r);
 
+
 後端必須處理註冊更新之間的並行存取。 「服務匯流排」可提供開放式並行存取控制來管理註冊。 在 HTTP 層級，這是藉由在註冊管理作業上使用 ETag 來進行實作。 Microsoft SDK 會在背景使用這項功能，如果因並行存取而導致更新被拒，將會擲回例外狀況。 App 後端會負責處理這些例外狀況，並視需要重試更新。
-
-
-
-

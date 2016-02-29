@@ -1,9 +1,4 @@
 > [AZURE.SELECTOR]
-- [Update 2](../articles/storsimple/storsimple-clone-volume-u2.md)
-- [Update 1 & earlier](../articles/storsimple/storsimple-clone-volume.md)
-
-
-
-
-
+- [更新 2](../articles/storsimple/storsimple-clone-volume-u2.md)
+- [1 與先前的更新](../articles/storsimple/storsimple-clone-volume.md)
 

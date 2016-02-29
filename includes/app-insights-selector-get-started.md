@@ -3,10 +3,5 @@
 - [Java](../article/application-insights/app-insights-java-get-started.md)
 - [JavaScript](../article/application-insights/app-insights-javascript.md)
 - [Windows](../article/application-insights/app-insights-windows-desktop.md)
-- [Other](../article/application-insights/app-insights-platforms.md)
-
-
-
-
-
+- [其他](../article/application-insights/app-insights-platforms.md)
 

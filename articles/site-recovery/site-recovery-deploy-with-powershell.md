@@ -16,8 +16,8 @@
     ms.date="12/14/2015"
     ms.author="lauraa"/>
 
-
 # 使用 Azure Site Recovery 及 PowerShell 複寫 VMM 雲端中的 HYPER-V 虛擬機器
+
 
 ## 概觀
 
@@ -40,8 +40,7 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 - 您需要 Azure 儲存體帳戶來儲存複寫的資料。 此帳戶必須啟用異地複寫。 它應該與 Azure Site Recovery 保存庫位於相同的區域，且和同一個訂用帳戶產生關聯。 [深入了解 Azure 儲存體](../storage/storage-introduction.md)。
 - 您必須確定您想要保護的虛擬機器遵守 [Azure 虛擬機器必要條件](site-recovery-best-practices.md#virtual-machines)。
 
-### VMM 必要條件
-
+### VMM 先決條件
 - 您必須在 System Center 2012 R2 上執行的 VMM 伺服器。
 - 在您想要保護的 VMM 伺服器上，您至少需要一個雲端。 這個雲端應該包含：
     - 一或多個 VMM 主機群組。
@@ -51,11 +50,10 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 ### Hyper-V 的必要條件
 
 - 主機 Hyper-V 伺服器至少必須執行附帶 Hyper-V 角色的 Windows Server 2012，並且已安裝最新更新。
-- 如果您在叢集中執行 Hyper-V，請注意，如果您具有靜態 IP 位址叢集，並不會自動建立叢集代理。 您必須手動設定叢集代理。 若要執行此作業，請在 [伺服器管理員] > [容錯移轉叢集管理員] 中連接到叢集，再按一下 [設定角色]****，然後在 [高可用性精靈] 畫面之 [選取角色]**** 中選取 [HYPER-V 複本代理人]****。
+- 如果您在叢集中執行 Hyper-V，請注意，如果您具有靜態 IP 位址叢集，並不會自動建立叢集代理。 您必須手動設定叢集代理。 若要這樣做，請在 [伺服器管理員 > 容錯移轉叢集管理員中，連接到叢集，請按一下 **設定角色** ，然後選取 **HYPER-V 複本代理人** 中 **選取角色** 高可用性精靈] 的畫面。 
 - 您想要管理保護的任何 Hyper-V 主機伺服計或叢集都必須包含在 VMM 雲端中。
 
 ### 網路對應的必要條件
-
 當您在 Azure 網路對應中保護虛擬機器，請對應來源 VMM 伺服器上的 VM 網路和目標 Azure 網路，以啟用下列項目：
 
 - 在相同網路上容錯移轉的所有機器都可以彼此連接，無論它們隸屬於哪個復原計畫都一樣。
@@ -66,15 +64,14 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 
 - 您想要在來源 VMM 伺服器上保護的虛擬機器應該連線到 VM 網路。 該網路應該連結到與雲端相關聯的邏輯網路。
 - 複寫的虛擬機器可在容錯移轉之後連線的 Azure 網路。 您將在容錯移轉時選取此網路。 此網路應該和您的 Azure Site Recovery 訂用帳戶在相同的區域中。
-- [深入](site-recovery-network-mapping.md) 解網路對應:
+- [了解詳細](site-recovery-network-mapping.md) 解網路對應:
 
-### PowerShell 必要條件
-
-確定 Azure PowerShell 已經準備就緒。 如果您已經使用 PowerShell，您必須升級至 0.8.10 版或更新版本。 如需設定 PowerShell 的相關資訊，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。 一旦您已安裝並設定 PowerShell，您可以檢視所有可用服務的 cmdlet [這裡](https://msdn.microsoft.com/library/dn850420.aspx)。
+###PowerShell 必要條件
+確定 Azure PowerShell 已經準備就緒。 如果您已經使用 PowerShell，您必須升級至 0.8.10 版或更新版本。 如需設定 PowerShell 的相關資訊，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。 一旦您已安裝並設定 PowerShell，您可以檢視所有可用服務的 cmdlet [這裡](https://msdn.microsoft.com/library/dn850420.aspx)。 
 
 若要深入了解提示，可協助您使用 cmdlet，例如參數值、 輸入和輸出通常處理方式在 Azure PowerShell 中，請參閱 [開始使用 Azure Cmdlet](https://msdn.microsoft.com/library/azure/jj554332.aspx)。
 
-## 步驟 1：設定訂用帳戶
+## 步驟 1：設定訂用帳戶 
 
 在 PowerShell 中，執行這些 Cmdlet：
 
@@ -83,11 +80,12 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
             $UserName = "<user@live.com>"
     $Password = "<password>"
     $AzureSubscriptionName = "prod_sub1"
-    
+
     $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
     $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $securePassword
     Add-AzureAccount -Credential $Cred;
     $AzureSubscription = Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
+
 
 以您的特定資訊取代 "< >" 中的元素。
 
@@ -100,12 +98,14 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
     $VaultName = "<testvault123>"
     $VaultGeo  = "<Southeast Asia>"
     $OutputPathForSettingsFile = "<c:\>"
+
 ```
 
 
 ```
     New-AzureSiteRecoveryVault -Location $VaultGeo -Name $VaultName;
     $vault = Get-AzureSiteRecoveryVault -Name $VaultName;
+
 ```
 
 ## 步驟 3：產生保存庫註冊金鑰
@@ -113,44 +113,52 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 在保存庫中產生註冊金鑰。 下載 Azure Site Recovery 提供者並將其安裝在 VMM 伺服器之後，您將使用此金鑰在保存庫中註冊 VMM 伺服器。
 
 1.  取得保存庫設定檔並設定內容：
-
+    
     ```
+    
         $VaultName = "<testvault123>"
         $VaultGeo  = "<Southeast Asia>"
         $OutputPathForSettingsFile = "<c:\>"
-
+    
         $VaultSetingsFile = Get-AzureSiteRecoveryVaultSettingsFile -Location $VaultGeo -Name $VaultName -Path $OutputPathForSettingsFile;
+    
     ```
-
+    
 2.  執行下列命令來設定保存庫內容：
-
+    
     ``` 
         $VaultSettingFilePath = $vaultSetingsFile.FilePath 
-        $VaultContext = 匯入 AzureSiteRecoveryVaultSettingsFile-路徑 $VaultSettingFilePath-ErrorAction 停駐點
+        $VaultContext = Import-AzureSiteRecoveryVaultSettingsFile -Path $VaultSettingFilePath -ErrorAction Stop
 ```
 
 ## Step 4: Install the Azure Site Recovery Provider
 
 1.  On the VMM machine, create a directory by running the following command:
-```
-
+    
+    ```
+    
         pushd C:\ASR\
     
     ```
-
-2. 執行下列命令，使用已下載的提供者將檔案解壓縮
-
+    
+2. Extract the files using the downloaded provider by running the following command
+    
     ```
+    
         AzureSiteRecoveryProvider.exe /x:. /q
+    
     ```
-
-3. 使用下列命令安裝提供者：
-
+    
+3. Install the provider using the following commands:
+    
     ```
+    
     .\SetupDr.exe /i
+    
     ```
-
+    
     ```
+    
     $installationRegPath = "hklm:\software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
     do
     {
@@ -160,174 +168,192 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
                                     $isNotInstalled = $false;
                     }
     }While($isNotInstalled)
+    
     ```
-
-    等待安裝完成。
-
-4. 使用下列命令在保存庫中註冊伺服器：
-
+    
+    Wait for the installation to finish.
+    
+4. Register the server in the vault using the following command:
+    
     ```
+    
     $BinPath = $env:SystemDrive+"\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin"
     pushd $BinPath
     $encryptionFilePath = "C:\temp\"
     .\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
+    
     ```
+    
+## Step 5: Create an Azure storage account
 
-## 步驟 5：建立 Azure 儲存體帳戶
-
-如果您沒有 Azure 儲存體帳戶，請執行下列命令來建立啟用帳戶的異地複寫：
+If you don't have an Azure storage account, create a geo-replication enabled account by running the following command:
 
 ```
 
-$StorageAccountName = "teststorageacc1"
-$StorageAccountGeo  = "Southeast Asia"
+$StorageAccountName ="teststorageacc1"
+$StorageAccountGeo ="Southeast Asia"
 
-New-AzureStorageAccount -StorageAccountName $StorageAccountName -Label $StorageAccountName -Location $StorageAccountGeo;
+新 AzureStorageAccount StorageAccountName $StorageAccountName-$StorageAccountName 加上標籤的位置 $StorageAccountGeo;
+
 ```
 
-請注意，儲存體帳戶必須與 Azure Site Recovery 服務位於相同的區或，且與相同的訂用帳戶相關聯。
+Note that the storage account must be in the same region as the Azure Site Recovery service, and be associated with the same subscription.
 
 
-## 步驟 6：安裝 Azure 復原服務代理程式
+## Step 6: Install the Azure Recovery Services Agent
 
-從 Azure 入口網站，在 VMM 雲端中您要保護的每一個 Hyper-V 主機伺服器上，安裝 Azure 復原服務代理程式。
+From the Azure portal, install the Azure Recovery Services agent on each Hyper-V host server located in the VMM clouds you want to protect.
 
-在所有 VMM 主機上執行下列命令：
+Run the following command on all VMM hosts:
 
 ```
 
     marsagentinstaller.exe /q /nu
+
 ```
 
 
-## 步驟 7：設定雲端保護設定
+## Step 7: Configure cloud protection settings
 
-1.  執行下列命令來建立 Azure 的雲端保護設定檔：
-
+1.  Create a cloud protection profile to Azure by running the following command:
+    
     ```
+    
     $ReplicationFrequencyInSeconds = "300";
     $ProfileResult = New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider  HyperVReplica -RecoveryAzureSubscription $AzureSubscriptionName `
     -RecoveryAzureStorageAccount $StorageAccountName -ReplicationFrequencyInSeconds     $ReplicationFrequencyInSeconds;
+    
     ```
-
-2.  執行下列命令以取得保護容器：
-
+    
+2.  Get a protection container by running the following commands:
+    
     ```
+    
         $PrimaryCloud = "testcloud"
         $protectionContainer = Get-AzureSiteRecoveryProtectionContainer -Name $PrimaryCloud;    
+    
     ```
-
-3.  啟動與雲端的保護容器關聯：
-
+    
+3.  Start the association of the protection container with the cloud:
+    
     ```
+    
         $associationJob = Start-AzureSiteRecoveryProtectionProfileAssociationJob -  ProtectionProfile $profileResult -PrimaryProtectionContainer $protectionContainer;      
+    
     ```
-
-4.  完成工作之後，執行下列命令：
+    
+4.  After the job has finished, run the following command:
 
             $job = Get-AzureSiteRecoveryJob -Id $associationJob.JobId;
             if($job -eq $null -or $job.StateDescription -ne "Completed")
             {
                 $isJobLeftForProcessing = $true;
             }
-
-5. 完成工作處理之後，執行下列命令：
+5. After the job has finished processing, run the following command:
 
         if($isJobLeftForProcessing)
             {
             Start-Sleep -Seconds 60
             }
                 }While($isJobLeftForProcessing)
+    
+    
+To check the completion of the operation, follow the steps in [Monitor Activity](#monitor).
 
+## Step 8: Configure network mapping
+Before you begin network mapping verify that virtual machines on the source VMM server are connected to a VM network. In addition, create one or more Azure virtual networks. Note that multiple VM networks can be mapped to a single Azure network.
 
+Note that if the target network has multiple subnets and one of those subnets has the same name as subnet on which the source virtual machine is located, then the replica virtual machine will be connected to that target subnet after failover. If there is not a target subnet with a matching name, the virtual machine will be connected to the first subnet in the network.
 
-若要檢查作業完成，請依照下列中的步驟 [監視活動](#monitor)。
-
-## 步驟 8：設定網路對應
-
-開始網路對應之前，請確認來源 VMM 伺服器上的虛擬機器已連線到 VM 網路。 此外，請建立一或多個 Azure 虛擬網路。 請注意，多個 VM 網路可對應至單一 Azure 網路。
-
-請注意，如果目標網路具有多個子網路，且其中一個子網路的名稱和來源虛擬機器所在之子網路名稱相同，複本虛擬機器將會在容錯移轉之後連線到該目標子網路。 如果沒有目標子網路具有相符的名稱，虛擬機器將會連線到網路中的第一個子網路。
-
-第一個命令會取得目前的 Azure Site Recovery 保存庫的伺服器。 命令會將 Microsoft Azure Site Recovery 伺服器儲存在 $Servers 陣列變數。
+The first command gets servers for the current Azure Site Recovery vault. The command stores the Microsoft Azure Site Recovery servers in the $Servers array variable.
 
 
 
     $Servers = Get-AzureSiteRecoveryServer
 
-第二個命令會取得 $Servers 陣列中第一部伺服器的站台復原網路。 此命令會在 $Networks 變數中儲存網路。
+
+The second command gets the site recovery network for the first server in the $Servers array. The command stores the networks in the $Networks variable.
 
 ```
 
     $Networks = Get-AzureSiteRecoveryNetwork -Server $Servers[0]
+
 ```
 
-第三個命令使用 Get-AzuresubScription Cmdlet 取得 Azure 訂用帳戶，然後再將該值儲存在 $Subscriptions 變數中。
+The third command gets your Azure subscriptions by using the Get-AzureSubscription cmdlet, and then stores that value in the $Subscriptions variable. 
 
 ```
 
     $Subscriptions = Get-AzureSubscription
+
 ```
 
-第四個命令會使用 Get-AzureVNetSite Cmdlet，然後是 $AzureVmNetworks 變數中的該值來取得 Azure 虛擬網路。
+The fourth command gets Azure virtual networks by using the Get-AzureVNetSite cmdlet, and then that value in the $AzureVmNetworks variable.
 
 ```
 
     $AzureVmNetworks = Get-AzureVNetSite
-```
-
-最終的 Cmdlet 會在主要網路與 Azure 虛擬機器網路之間建立對應。 Cmdlet 會將主要網路指定為 $Networks 的第一個元素。 Cmdlet 為使用其識別碼，將虛擬機器網路指定為 $AzureVmNetworks 的第一個元素。 此命令包含您的 Azure 訂用帳戶識別碼。
 
 ```
 
-PS C:\> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureSubscriptionId $Subscriptions[0].SubscriptionId -AzureVMNetworkId $AzureVmNetworks[0].Id
+The final cmdlet creates a mapping between the primary network and the Azure virtual machine network. The cmdlet specifies the primary network as the first element of $Networks. The cmdlet specifies a virtual machine network as the first element of $AzureVmNetworks by using its ID. The command includes your Azure subscription ID. 
+
 ```
 
-## 步驟 9：對虛擬機器啟用保護
+PS C:\ > 新 AzureSiteRecoveryNetworkMapping PrimaryNetwork $Networks [0] AzureSubscriptionId $Subscriptions [0]。SubscriptionId AzureVMNetworkId $AzureVmNetworks [0]。識別碼
 
-正確設定伺服器、雲端和網路後，您就可以對雲端中的虛擬機器啟用保護。 請注意：
+```
 
-虛擬機器必須符合 [Azure 虛擬機器必要條件](site-recovery-best-practices.md#virtual-machines)。
+## Step 9: Enable protection for virtual machines
 
-若要啟用保護功能，您必須為虛擬機器設定作業系統和作業系統磁碟屬性。 當您使用虛擬機器範本在 VMM 中建立虛擬機器時，您可以設定屬性。 您也可以在虛擬機器屬性的 [一般]**** 及 [硬體設定]**** 索引標籤上，為現有的虛擬機器設定這些屬性。 若未在 VMM 中設定這些屬性，您將可在 Azure 站台復原入口網站中加以設定。
+After servers, clouds, and networks are configured correctly, you can enable protection for virtual machines in the cloud. Note the following:
+
+Virtual machines must meet [Azure virtual machine prerequisites](site-recovery-best-practices.md#virtual-machines).
+
+To enable protection the operating system and operating system disk properties must be set for the virtual machine. When you create a virtual machine in VMM using a virtual machine template you can set the property. You can also set these properties for existing virtual machines on the **General** and **Hardware Configuration** tabs of the virtual machine properties. If you don't set these properties in VMM you'll be able to configure them in the Azure Site Recovery portal.
 
 
-
-1.  若要啟用保護，請執行下列命令以取得保護容器：
-
+    
+1.  To enable protection, run the following command to get the protection container:
+        
     ```
+    
     $ProtectionContainer = Get-AzureSiteRecoveryProtectionContainer -Name $CloudName
+    
     ```
-
-2. 執行下列命令以取得保護實體 (VM)：
-
+    
+2. Get the protection entity (VM) by running the following command:
+        
     ```
+    
     $protectionEntity = Get-AzureSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
+        
+        ```
+            
+3. Enable the DR for the VM by running the following command:
+
+    
+    $jobResult = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity  -Protection Enable -Force
+    
+
+## Test your deployment
+
+To test your deployment you can run a test failover for a single virtual machine, or create a recovery plan consisting of multiple virtual machines and run a test failover for the plan. Test failover simulates your failover and recovery mechanism in an isolated network. Note that:
+
+- If you want to connect to the virtual machine in Azure using Remote Desktop after the failover, enable Remote Desktop Connection on the virtual machine before you run the test failover.
+- After failover, you'll use a public IP address to connect to the virtual machine in Azure using Remote Desktop. If you want to do this, ensure you don't have any domain policies that prevent you from connecting to a virtual machine using a public address.
+
+To check the completion of the operation, follow the steps in [Monitor Activity](#monitor).
+
+### Create a recovery plan
+
+1. Create an .xml file as a template for your recovery plan using the data below, and then save it as "C:\RPTemplatePath.xml".
+2. Change the RecoveryPlan node Id, Name, PrimaryServerId, and SecondaryServerId.
+3. Change the ProtectionEntity node PrimaryProtectionEntityId (vmid from VMM).
+4. You can add more VMs by adding more ProtectionEntity nodes.
+    
     ```
-
-3. 執行下列命令以啟用 VM 的 DR：
-
-    $jobResult = 組 AzureSiteRecoveryProtectionEntity ProtectionEntity $protectionEntity-啟用保護-Force
-
-
-## 測試您的部署
-
-若要測試部署，您可以對單一虛擬機器執行測試容錯移轉，或者建立包含多部虛擬機器的復原方案，再對這個方案執行測試容錯移轉。 測試容錯移轉會在隔離的網路中模擬您的容錯移轉與復原機制。 請注意：
-
-- 如果您在容錯移轉之後要使用遠端桌面連接到 Azure 中的虛擬機器，請先在虛擬機器上啟用遠端桌面連線，再執行測試容錯移轉。
-- 容錯移轉之後，您將透過遠端桌面使用公用 IP 位址連接到 Azure 中的虛擬機器。 如果想要這樣做，請確定沒有任何網域原則禁止您使用公用位址連接到虛擬機器。
-
-若要檢查作業完成，請依照下列中的步驟 [監視活動](#monitor)。
-
-### 建立復原計畫
-
-1. 使用下列資料，建立 .xml 檔案做為復原計劃範本，然後將它儲存為 "C:\RPTemplatePath.xml"。
-2. 變更 RecoveryPlan 節點識別碼、Name、PrimaryServerId 和 SecondaryServerId。
-3. 變更 ProtectionEntity 節點 PrimaryProtectionEntityId (來自 VMM 的 vmid)。
-4. 您可以新增更多 ProtectionEntity 節點來新增更多 VM。
-
-    ```
-
+    
     <#
     <?xml version="1.0" encoding="utf-16"?>
     <RecoveryPlan Id="d0323b26-5be2-471b-addc-0a8742796610" Name="rp-test"  PrimaryServerId="9350a530-d5af-435b-9f2b-b941b5d9fcd5"  SecondaryServerId="21a9403c-6ec1-44f2-b744-b4e50b792387" Description=""     Version="V2014_07">
@@ -354,67 +380,74 @@ PS C:\> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureS
       </ActionGroupSequence>
     </RecoveryPlan>
     #>
+    
     ```
-
-4. 在範本中填入資料：
-
+    
+4. Fill in the data in the template:
+    
     ```
+    
     $TemplatePath = "C:\RPTemplatePath.xml";
+    
     ```
-
-5. 建立 RecoveryPlan：
-
+    
+5. Create the RecoveryPlan:
+    
     ```
+    
         $RPCreationJob = New-AzureSiteRecoveryRecoveryPlan -File $TemplatePath -WaitForCompletion;
+    
     ```
+    
+### Run a test failover
 
-### 執行測試容錯移轉
-
-1. 執行下列命令以取得 RecoveryPlan 物件：
-
+1. Get the RecoveryPlan object by running the following command:
+    
     ```
+    
         $RPObject = Get-AzureSiteRecoveryRecoveryPlan -Name $RPName;
+    
     ```
-
-2. 執行下列命令來啟動測試容錯移轉：
-
+    
+2. Start the test failover by running the following command:
+    
     ```
+    
     $jobIDResult = Start-AzureSiteRecoveryTestFailoverJob -RecoveryPlan $RPObject -Direction PrimaryToRecovery;
+    
     ```
+    
+## <a name=monitor></a> Monitor Activity
 
-## <a name=monitor></a> 監視活動
-
-使用下列命令來監視活動。 請注意，您必須在工作之間等候處理程序完成。
+Use the following commands to monitor the activity. Note that you have to wait in between jobs for the processing to finish.
 
 ```
 
-Do
+執行
 {
-                $job = Get-AzureSiteRecoveryJob -Id $associationJob.JobId;
-                Write-Host "Job State:{0}, StateDescription:{1}" -f Job.State, $job.StateDescription;
-                if($job -eq $null -or $job.StateDescription -ne "Completed")
+                $job = get AzureSiteRecoveryJob-Id $associationJob.JobId;
+                寫入主機 」 工作狀態: {0} StateDescription: \\ {1 \\}"-f Job.State，$job。StateDescription
+                如果 ($job-eq $null-或 $job。「 已完成 」 StateDescription-ne)
                 {
                                 $isJobLeftForProcessing = $true;
                 }
+
 ```
 
 ```
 
 if($isJobLeftForProcessing)
                 {
-                                Start-Sleep -Seconds 60
+                                Start-sleep-60 (秒)
                 }
-}While($isJobLeftForProcessing)
+} While($isJobLeftForProcessing)
+
 ```
 
 
-## 後續步驟
+## Next steps
 
-[閱讀更多](https://msdn.microsoft.com/library/dn850420.aspx) Azure Site Recovery PowerShell cmdlet 的相關。 </a>.
-
-
-
-
+[Read more](https://msdn.microsoft.com/library/dn850420.aspx) about Azure Site Recovery PowerShell cmdlets. </a>.
 
 
 

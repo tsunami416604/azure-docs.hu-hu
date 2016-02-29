@@ -17,16 +17,13 @@
     ms.date="11/17/2015"
     ms.author="heidist"/>
 
-
 # 使用 REST 呼叫在 Azure 搜尋服務中建立查詢
-
 > [AZURE.SELECTOR]
-- [Overview](search-query-overview.md)
+- [概觀](search-query-overview.md)
 - [Fiddler](search-fiddler.md)
 - [Postman](search-chrome-postman.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
-
 
 本文將說明如何建構查詢的索引使用 [Azure 搜尋服務 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)。 下列內容的一些取自 [搜尋文件 (Azure 搜尋 REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx)。 請參閱上層文章以取得更多內容。
 
@@ -34,7 +31,7 @@
 
 若要使用 REST API 搜尋索引，您將發出 GET HTTP 要求。 查詢參數會在 HTTP 要求的 URL 內定義。
 
-**要求和要求標頭**：
+**要求和要求標頭**:
 
 在 URL 中，您將必須提供您的服務名稱、索引名稱和適當的 API 版本。 URL 結尾的查詢字串是您將用來提供查詢參數的位置。 查詢字串中的其中一個參數必須是適當的 API 版本 (發行這份文件時最新的 API 版本是 "2015-02-28")。
 
@@ -46,7 +43,7 @@
 
 Azure 搜尋服務提供許多選項可建立功能極為強大的查詢。 若要深入了解查詢字串的所有不同的參數，請造訪 [本頁](https://msdn.microsoft.com/library/azure/dn798927.aspx)。
 
-**範例**：
+**範例**:
 
 以下是各種不同查詢字串的幾個範例。 這些範例會使用名為 "hotels" 的空索引：
 
@@ -69,8 +66,4 @@ Azure 搜尋服務提供許多選項可建立功能極為強大的查詢。 若�
     api-key:[primary admin key or secondary admin key]
 
 成功的查詢要求會造成狀態碼「200 確定」，而可在回應主體中找到 JSON 格式的搜尋結果。 若要深入了解，請造訪 「 回應 」 一節 [本頁](https://msdn.microsoft.com/library/azure/dn798927.aspx)。
-
-
-
-
 

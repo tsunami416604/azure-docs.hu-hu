@@ -18,7 +18,6 @@
     ms.author="huvalo"/>
 
 
-
 # 在 Azure 中使用 Bottle 建立 Web 應用程式
 
 本教學課程說明如何在 Azure App Service Web Apps 上開始執行 Python。 Web Apps 提供有限的免費裝載和快速部署，而您可以使用 Python！ 隨著應用程式規模增加，您可以切換為付費主控，也可以與其他所有 Azure 服務整合。
@@ -26,6 +25,7 @@
 您將建立使用 Bottle web 架構的 web 應用程式 (請參閱本教學課程的其他版本 [Django](web-sites-python-create-deploy-django-app.md) 和 [Flask](web-sites-python-create-deploy-flask-app.md))。 您會從 Azure Marketplace 建立 Web 應用程式、設定 Git 部署，並於本機複製儲存機制。 然後您會在本機執行 web 應用程式、 進行變更、 認可和推送至 [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)。 本教學課程示範如何從 Windows 或 Mac/Linux 執行這項操作。
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+
 >[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
 
 ## 必要條件
@@ -34,9 +34,9 @@
 - Python 2.7 或 3.4
 - setuptools、pip、virtualenv (僅 Python 2.7)
 - Git
-- [Visual Studio [] 的 Python 工具 2.2][] (PTVS)-請注意: 這是選擇性的
+- [Python 工具 2.2 for Visual Studio][] (PTVS)-注意: 這是選擇性的
 
-**注意**：Python 專案目前不支援 TFS 發佈。
+**請注意**: Python 專案目前不支援 TFS 發佈。
 
 ### Windows
 
@@ -53,15 +53,15 @@
 
 ## 在 Azure 入口網站上建立 Web 應用程式
 
-建立您的應用程式的第一個步驟是建立 web 應用程式透過 [Azure 入口網站](https://portal.azure.com)。
+建立您的應用程式的第一個步驟是建立 web 應用程式透過 [Azure 入口網站](https://portal.azure.com)。  
 
-1. 登入 Azure 入口網站中，並按一下左下角的 [新增]**** 按鈕。
-2. 按一下 [Web + 行動]****。
+1. 登入 Azure 入口網站並按一下 **新增** 左上角的按鈕。 
+2. 按一下 [ **Web + 行動**。
 3. 在搜尋方塊中，輸入 "python"。
-4. 在搜尋結果中，選取 [Bottle]****，然後按一下 [建立]****。
-5. 設定新的 Bottle 應用程式，例如為其建立新的 App Service 方案和新的資源群組。 然後按一下 [建立]****。
+4. 在搜尋結果中，選取 **Bottle**, ，然後按一下 [ **建立**。
+5. 設定新的 Bottle 應用程式，例如為其建立新的 App Service 方案和新的資源群組。 然後按一下 [ **建立**。
 6. 設定 Git 發行功能新建立的 web 應用程式的指示，在 [Azure App Service 中使用 GIT 連續部署](web-sites-publish-source-control.md)。
-
+ 
 ## 應用程式概觀
 
 ### Git 儲存機制內容
@@ -77,7 +77,7 @@
     \views\index.tpl
     \views\layout.tpl
 
-應用程式的主要來源。 包含 3 個主要的版面配置頁面 (index、about、contact)。 靜態內容和指令碼，包含啟動程序、jquery、modernizr 和回應。
+應用程式的主要來源。 包含 3 個主要的版面配置頁面 (index、about、contact)。  靜態內容和指令碼，包含啟動程序、jquery、modernizr 和回應。
 
     \app.py
 
@@ -95,7 +95,7 @@
     \requirements.txt
 
 此應用程式所需的外部封裝。 部署指令碼將 pip 安裝在這個檔案中所列的封裝。
-
+ 
     \web.2.7.config
     \web.3.4.config
 
@@ -119,7 +119,7 @@ IIS 組態檔。 從 web.x.y.config 建立於每個部署上。
 
     \env\
 
-Python 虛擬環境。 如果 Web 應用程式上不存在相容的虛擬環境，會於部署期間建立。 requirements.txt 中所列封裝為 pip 安裝，但是如果封裝已安裝，pip 會跳過安裝。
+Python 虛擬環境。 如果 Web 應用程式上不存在相容的虛擬環境，會於部署期間建立。  requirements.txt 中所列封裝為 pip 安裝，但是如果封裝已安裝，pip 會跳過安裝。
 
 接下來的 3 小節會說明如何在 3 個不同環境中繼續進行 Web 應用程式開發：
 
@@ -140,17 +140,17 @@ Python 虛擬環境。 如果 Web 應用程式上不存在相容的虛擬環境�
 
 ### 建立虛擬環境
 
-現在我們要建立本機開發的虛擬環境。 以滑鼠右鍵按一下 [Python 環境]****，選取 [新增虛擬環境...]****。
+現在我們要建立本機開發的虛擬環境。 以滑鼠右鍵按一下 **Python 環境** 選取 **新增虛擬環境**。
 
 - 請確定環境的名稱是 `env`。
 
-- 選取基礎解譯器。 確認使用針對您 Web 應用程式選取的 Python 版本 (在 runtime.txt 中，或在 Azure 入口網站中您的 Web 應用程式的 [應用程式設定]**** 分頁中) 相同的版本。
+- 選取基礎解譯器。 請務必使用相同版本的已選取的 Python web 應用程式 (在 runtime.txt 中或 **應用程式設定** Azure 入口網站中 web 應用程式的刀鋒視窗)。
 
 - 確定已勾選下載並安裝封裝的選項。
 
 ![](./media/web-sites-python-create-deploy-bottle-app/ptvs-add-virtual-env-27.png)
 
-按一下 [建立]****。 這會建立虛擬環境，並安裝 requirements.txt 中列出的相依性。
+按一下 [ **建立**。 這會建立虛擬環境，並安裝 requirements.txt 中列出的相依性。
 
 ### 使用開發伺服器來執行
 
@@ -172,19 +172,19 @@ Python 虛擬環境。 如果 Web 應用程式上不存在相容的虛擬環境�
 
 您的應用程式可能會擁有 Python 和 Bottle 之外的相依性。
 
-您可以使用 pip 安裝其他封裝。 若要安裝封裝，以滑鼠右鍵按一下虛擬環境，然後選取 [安裝 Python 封裝]****。
+您可以使用 pip 安裝其他封裝。 若要安裝封裝，以滑鼠右鍵按一下虛擬環境，然後選取 **安裝 Python 封裝**。
 
-例如，若要安裝 Azure SDK for Python，讓您存取 Azure 儲存體、 服務匯流排和其他 Azure 服務，請輸入 `azure`:
+例如，若要安裝 Azure SDK for Python，讓您可存取 Azure 儲存體、服務匯流排和其他 Azure 服務，請輸入 `azure`：
 
 ![](./media/web-sites-python-create-deploy-bottle-app/ptvs-install-package-dialog.png)
 
-以滑鼠右鍵按一下虛擬環境，然後選取 [產生 requirements.txt]**** 更新 requirements.txt。
+虛擬環境上按一下滑鼠右鍵，然後選取 **產生 requirements.txt** 更新 requirements.txt。
 
 然後，將變更認可到 Git 儲存機制的 requirements.txt。
 
 ### 部署至 Azure
 
-若要觸發部署，按一下 [同步]**** 或 [推送]****。 同步處理會推送和提取。
+若要觸發部署，按一下 **同步** 或 **推送**。 同步處理會推送和提取。
 
 ![](./media/web-sites-python-create-deploy-bottle-app/ptvs-git-push.png)
 
@@ -297,7 +297,6 @@ Visual Studio 不會顯示部署進度。 如果您想要檢閱輸出，請參�
 針對 Python 3.4：
 
     python -m venv env
-
 或
     pyvenv env
 
@@ -368,8 +367,8 @@ Visual Studio 不會顯示部署進度。 如果您想要檢閱輸出，請參�
 
 ## 後續步驟
 
-請遵循下列連結以深入了解 Bottle 和 Python Tools for Visual Studio：
-
+請遵循下列連結以深入了解 Bottle 和 Python Tools for Visual Studio： 
+ 
 - [Bottle 文件]
 - [Python Tools for Visual Studio 文件]
 
@@ -379,23 +378,23 @@ Visual Studio 不會顯示部署進度。 如果您想要檢閱輸出，請參�
 - [Bottle 和 Azure 資料表儲存體，Azure 上採用 Python Tools for Visual Studio]
 
 ## 變更的項目
-
 * 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 
+<!--Link references-->
+[Bottle and MongoDB on Azure with Python Tools for Visual Studio]: web-sites-python-ptvs-bottle-table-storage.md
+[Bottle and Azure Table Storage on Azure with Python Tools for Visual Studio]: web-sites-python-ptvs-bottle-table-storage.md
 
-
-
-[bottle and mongodb on azure with python tools for visual studio]: web-sites-python-ptvs-bottle-table-storage.md 
-[bottle and azure table storage on azure with python tools for visual studio]: web-sites-python-ptvs-bottle-table-storage.md 
-[azure sdk for python 2.7]: http://go.microsoft.com/fwlink/?linkid=254281 
-[azure sdk for python 3.4]: http://go.microsoft.com/fwlink/?linkid=516990 
-[python.org]: http://www.python.org/ 
-[git for windows]: http://msysgit.github.io/ 
-[github for windows]: https://windows.github.com/ 
-[python tools for visual studio]: http://aka.ms/ptvs 
-[python tools 2.2 for visual studio]: http://go.microsoft.com/fwlink/?LinkID=624025 
-[visual studio]: http://www.visualstudio.com/ 
-[python tools for visual studio documentation]: http://aka.ms/ptvsdocs 
-[bottle documentation]: http://bottlepy.org/docs/dev/index.html 
+<!--External Link references-->
+[Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?linkid=254281
+[Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?linkid=516990
+[python.org]: http://www.python.org/
+[Git for Windows]: http://msysgit.github.io/
+[GitHub for Windows]: https://windows.github.com/
+[Python Tools for Visual Studio]: http://aka.ms/ptvs
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
+[Visual Studio]: http://www.visualstudio.com/
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs 
+[Bottle Documentation]: http://bottlepy.org/docs/dev/index.html
+ 
 

@@ -16,34 +16,32 @@
     ms.date="12/10/2015" 
     ms.author="LuisCa"/>
 
-
-# Azure Machine Learning 建議 API 文件
+#Azure Machine Learning 建議 API 文件
 
 本文件說明 Microsoft Azure Machine Learning 建議 API。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## 1.一般概觀
-
+##1. 一般概觀
 本文件是 API 參考。 您應該從＜Azure Machine Learning 建議 – 快速入門＞文件開始。
 
 Azure Machine Learning 建議 API 可分成下列邏輯群組：
 
-- <ins>限制</ins> -建議 API 限制。
-- <ins>一般資訊</ins> -資訊的驗證，服務 URI 和版本控制。
-- <ins>模型基本</ins> – 可讓您執行模型基本操作的 Api (例如建立、 更新和刪除模型)。
-- <ins>模型進階</ins> – 可讓您取得資料深入了解進階模型的 Api。
-- <ins>模型商務規則</ins> – 可讓您管理模型建議結果中的商務規則的 Api。
-- <ins>類別目錄</ins> – 可讓您執行基本操作模型目錄 Api。 目錄包含使用狀況資料項目的相關中繼資料資訊。
-- <ins>功能</ins> -Api 可讓項目上取得深入資訊到目錄，以及如何使用此資訊來建置更好的建議。
-- <ins>使用資料</ins> – 可讓您執行基本操作模型使用狀況資料的 Api。 基本格式的使用狀況資料由資料列組成，這些資料列包含成對的 &#60;userId&#62;,&#60;itemId&#62;。
+- <ins>限制</ins> -建議 API 的限制。
+- <ins>一般資訊</ins> 驗證、 服務 URI 和版本設定資訊。
+- <ins>模型基本操作</ins> – 可讓您執行基本操作模型 Api (例如建立、 更新和刪除模型)。
+- <ins>模型進階操作</ins> – 可讓您取得資料深入了解進階模型的 Api。
+- <ins>模型商務規則</ins> – 可讓您管理模型建議結果相關商業規則的 Api。
+- <ins>目錄</ins> – 可讓您執行基本操作模型目錄 Api。 目錄包含使用狀況資料項目的相關中繼資料資訊。
+- <ins>功能</ins> -啟用深入項目至類別目錄，以及如何使用此資訊來建立更佳建議的 Api。
+- <ins>使用狀況資料</ins> – 可讓您執行模型使用狀況資料的基本操作的 Api。 基本格式的使用狀況資料由資料列組成，這些資料列包含成對的 &#60;userId&#62;,&#60;itemId&#62;。
 - <ins>建置</ins> – 可讓您觸發模型組建並執行與此組建相關的基本操作的 Api。 您可以在獲得有價值的使用狀況資料之後，觸發模型組建。
 - <ins>建議</ins> – 可讓您取用建議模型組建結束之後，Api。
-- <ins>使用者資料</ins> -Api 可讓您擷取使用者的使用狀況資料的資訊。
-- <ins>通知</ins> – 您 API 操作相關的 Api，可讓您接收之問題的通知。 (例如，您透過資料擷取回報使用量資料，而大部分的事件處理都失敗了。 這將會引發錯誤通知。)
+- <ins>使用者資料</ins> -Api，可讓您擷取使用者的使用狀況資料的資訊。
+- <ins>通知</ins> – 可讓您接收與 API 操作相關的問題通知的 Api。 (例如，您透過資料擷取回報使用量資料，而大部分的事件處理都失敗了。 這將會引發錯誤通知。)
 
-## 2.限制
+##2. 限制
 
 - 每個訂用帳戶的模型數上限是 10。
 - 一個目錄可以保留的項目數上限是 100,000。
@@ -51,68 +49,63 @@ Azure Machine Learning 建議 API 可分成下列邏輯群組：
 - POST 中可以傳送的資料大小上限 (例如：匯入目錄資料、匯入使用資料) 是 200 MB。
 - 非作用中建議模型組建的每秒交易數目是 ~ 2TPS。 作用中建議模型組建可以保留高達 20TPS。
 
-## 3.API – 一般資訊
+##3. API – 一般資訊
 
-### 3.1.驗證
-
+###3.1. 驗證
 請遵循與驗證相關的 Microsoft Azure Marketplace 指導方針。 Marketplace 可支援基本或 OAuth 驗證方法。
 
-### 3.2.服務 URI
+###3.2. 服務 URI
+服務根 URI Azure Machine Learning 建議 Api [這裡。](https://api.datamarket.azure.com/amla/recommendations/v3/)
 
-服務根 Azure Machine Learning 建議 Api 的 URI 是 [這裡。](https://api.datamarket.azure.com/amla/recommendations/v3/)
+完整服務 URI 是使用 OData 規格的元素來表示。  
 
-完整服務 URI 是使用 OData 規格的元素來表示。
-
-### 3.3.API 版本
-
+###3.3. API 版本
 每個 API 呼叫最後會有名為 apiVersion 的查詢參數 (應設為 1.0)。
 
-### 3.4.識別碼會區分大小寫
-
+###3.4. 識別碼會區分大小寫
 任何 API 所傳回的識別碼都會區分大小寫，且在後續 API 呼叫中做為參數傳遞時，也應該如此使用。 例如，模型識別碼和目錄識別碼都會區分大小寫。
 
-## 4.建議品質和冷項目
+##4. 建議品質和冷項目
 
-### 4.1.建議品質
+###4.1. 建議品質
 
-建立建議模型通常足以允許系統提供建議。 不過，建議品質取決於處理的使用量以及目錄的涵蓋範圍。 例如，如果您有許多冷項目 (沒有高使用量的項目)，系統很難提供建議給這類項目，或使用這類項目做為建議項目。 為了克服冷項目的問題，系統允許使用項目的中繼資料增強建議。 中繼資料可稱為功能。 典型的功能是書籍的作者或電影的演員。 功能是透過目錄，以索引鍵/值字串的格式提供。 類別目錄檔案的完整格式，請參閱 [匯入目錄區段](#81-import-catalog-data)。
+建立建議模型通常足以允許系統提供建議。 不過，建議品質取決於處理的使用量以及目錄的涵蓋範圍。 例如，如果您有許多冷項目 (沒有高使用量的項目)，系統很難提供建議給這類項目，或使用這類項目做為建議項目。 為了克服冷項目的問題，系統允許使用項目的中繼資料增強建議。 中繼資料可稱為功能。 典型的功能是書籍的作者或電影的演員。 功能是透過目錄，以索引鍵/值字串的格式提供。 類別目錄檔案的完整格式，請參閱 [匯入目錄區段](#81-import-catalog-data)。 
 
-### 4.2.排名組建
+###4.2. 排名組建
 
 功能可增強建議模型，但若要這樣做需要使用有意義的功能。 為了這個目的，引入新的組建 - 排名組建。 此組建會對功能的效益進行排名。 有意義的功能為排名分數 2 以上的功能。
-了解哪些是有意義的功能之後，會利用有意義功能的清單 (或子清單) 觸發建議組建。 這樣就可以使用這些功能同時增強暖項目和冷項目。 若要將它們用於暖項目， `UseFeatureInModel` 應該設定組建參數。 為冷項目，使用功能 `AllowColdItemPlacement` 應該啟用組建參數。
-注意: 不可能啟用 `AllowColdItemPlacement` 不啟用 `UseFeatureInModel`。
+了解哪些是有意義的功能之後，會利用有意義功能的清單 (或子清單) 觸發建議組建。 這樣就可以使用這些功能同時增強暖項目和冷項目。 若要將它們用於暖項目，應設定 `UseFeatureInModel` 組建參數。 若要將它們用於冷項目，應啟用 `AllowColdItemPlacement` 組建參數。
+注意：不可能啟用 `AllowColdItemPlacement` 而不啟用 `UseFeatureInModel`。
 
-### 4.3.建議推論
+###4.3. 建議推論
 
 建議推論是功能使用方式的另一個層面。 的確，Azure Machine Learning 建議引擎可以使用功能來提供建議說明 (也稱為 推理)，導致讓建議取用者對建議項目時更具信心。
-若要啟用推論， `AllowFeatureCorrelation` 和 `ReasoningFeatureList` 參數應該是在要求建議組建之前設定。
+若要啟用推論，應在要求建議組建之前設定 `AllowFeatureCorrelation` 和 `ReasoningFeatureList` 參數。
 
 
-## 5.模型基本操作
+##5. 模型基本操作
 
-### 5.1.建立模型
-
+###5.1. 建立模型
 建立「建立模型」要求。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| POST| `< rootURI > /CreateModel?modelName=%27 < model_name > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /CreateModel?modelName=%27MyFirstModel%27 & apiVersion=%271.0%27`|
+|POST     |`<rootURI>/CreateModel?modelName=%27<model_name>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/CreateModel?modelName=%27MyFirstModel%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelName| 字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 20|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelName   |   字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 20 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
-- `摘要/項目 / / 屬性/content-id` – 包含模型識別碼。
-**注意**: 模型識別碼會區分大小寫。
+- `feed/entry/content/properties/id` – 包含模型識別碼。
+**請注意**: 模型識別碼會區分大小寫。
 
 OData XML
 
@@ -144,37 +137,36 @@ OData XML
       </entry>
     </feed>
 
-### 5.2.取得模型
-
+###5.2. 取得模型
 建立一個「取得模型」要求。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetModel?id=%27 < model_id > %27 & apiVersion=%271.0%27`<br>範例:<br>`< rootURI > /GetModel?id=%271cac7b76-def4-41f1-bc81-29b806adb1de%27 & apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetModel?id=%27<model_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetModel?id=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| id| 模型的唯一識別碼 (區分大小寫)|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   id  |   模型的唯一識別碼 (區分大小寫) |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 在下列項目之下，您可以找到模型資料：
 
-- `摘要/項目 / / 屬性/Content-id` – 模型的唯一識別碼。
-- `摘要/項目/內容/屬性/Name` – 模型名稱。
-- `摘要/項目/內容/屬性/日期` – 模型建立日期。
-- `摘要/項目/內容/屬性/狀態` – 模型狀態。 下列其中之一：
+- `feed/entry/content/properties/Id` – 模型的唯一識別碼。
+- `feed/entry/content/properties/Name` – 模型名稱。
+- `feed/entry/content/properties/Date` – 模型建立日期。
+- `feed/entry/content/properties/Status` – 模型狀態。 下列其中之一：
     - Created - 模型已建立且不包含目錄和使用方式。
     - ReadyForBuild – 模型已建立且包含目錄和使用方式。
-- `摘要/項目/內容/屬性/HasActiveBuild` – 表示模型是否已成功建置。
-- `摘要/項目/內容/屬性/BuildId` – 模型的作用中組建識別碼。
-- `摘要/項目/內容/屬性/Mpr` – 模型平均值百分位數排名 (MPR-如需詳細資訊，請參閱 ModelInsight)。
-- `摘要/項目/內容/屬性/使用者名稱` – 模型的內部使用者名稱。
+- `feed/entry/content/properties/HasActiveBuild` – 表示模型是否已成功建置。
+- `feed/entry/content/properties/BuildId` – 模型的作用中組建識別碼。
+- `feed/entry/content/properties/Mpr` – 模型的平均值百分位數排名 (MPR - 如需詳細資訊，請參閱 ModelInsight)。
+- `feed/entry/content/properties/UserName` – 模型的內部使用者名稱。
 
 OData XML
 
@@ -209,38 +201,37 @@ OData XML
       </entry>
     </feed>
 
-### 5.3.取得所有模型
-
+###5.3. 取得所有模型
 擷取目前使用者的所有模型。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetAllModels?apiVersion=%271.0%27`<br>範例:<br>`< rootURI > /GetAllModels?apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetAllModels?apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetAllModels?apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
-- `摘要/項目 / / 屬性/Content-id` – 模型的唯一識別碼。
-- `摘要/項目/內容/屬性/Name` – 模型名稱。
-- `摘要/項目/內容/屬性/日期` – 模型建立日期。
-- `摘要/項目/內容/屬性/狀態` – 模型狀態。 下列其中之一：
+- `feed/entry/content/properties/Id` – 模型的唯一識別碼。
+- `feed/entry/content/properties/Name` – 模型名稱。
+- `feed/entry/content/properties/Date` – 模型建立日期。
+- `feed/entry/content/properties/Status` – 模型狀態。 下列其中之一：
   - Created - 模型已建立且不包含目錄和使用方式。
   - ReadyForBuild – 模型已建立且包含目錄和使用方式。
-- `摘要/項目/內容/屬性/HasActiveBuild` – 表示模型是否已成功建置。
-- `摘要/項目/內容/屬性/BuildId` – 模型的作用中組建識別碼。
-- `摘要/項目/內容/屬性/Mpr` – 模型 MPR (如需詳細資訊，請參閱 ModelInsight)。
-- `摘要/項目/內容/屬性/使用者名稱` – 模型的內部使用者名稱。
-- `摘要/項目/內容/屬性/UsageFileNames` – 逗號分隔的模型使用方式檔案清單。
-- `摘要/項目/內容/屬性/CatalogId` – 模型目錄識別碼。
-- `摘要/項目/內容/屬性/說明` – 模型說明。
-- `摘要/項目/內容/屬性/CatalogFileName` – 模型目錄檔案名稱。
+- `feed/entry/content/properties/HasActiveBuild` – 表示模型是否已成功建置。
+- `feed/entry/content/properties/BuildId` – 模型的作用中組建識別碼。
+- `feed/entry/content/properties/Mpr` – 模型 MPR (如需詳細資訊，請參閱 ModelInsight)。
+- `feed/entry/content/properties/UserName` – 模型的內部使用者名稱。
+- `feed/entry/content/properties/UsageFileNames` – 逗號分隔的模型使用方式檔案清單。
+- `feed/entry/content/properties/CatalogId` – 模型目錄識別碼。
+- `feed/entry/content/properties/Description` – 模型說明。
+- `feed/entry/content/properties/CatalogFileName` – 模型目錄檔案名稱。
 
 OData XML
 
@@ -276,44 +267,43 @@ OData XML
         </entry>
     </feed>
 
-### 5.4.更新模型
+###5.4. 更新模型
 
-您可以更新模型說明或作用中組建識別碼。<br>
-<ins>作用中組建識別碼</ins> – 每個模型的每個組建都有組建識別碼。作用中組建識別碼是每個新模型的第一個成功組建。一旦您有作用中組建識別碼，而且您執行相同模型的其他組建，您必須是需要將它明確設為預設組建識別碼。當您取用建議時，如果您未指定您想要使用的組建 ID 時，將會自動使用預設值。<br>
+您可以更新模型描述或作用中組建識別碼。<br>
+<ins>作用中組建識別碼</ins> – 每個組建的每個模型都有組建識別碼。 作用中組建識別碼是每個新模型的第一個成功組建。 一旦您有作用中組建識別碼，而且您執行相同模型的其他組建，您必須是需要將它明確設為預設組建識別碼。 當您取用建議時，如果您未指定想要使用的組建識別碼，則會自動使用預設值。<br>
 此機制可讓您在生產環境中有建議模型時建置新模型，並先加以測試，再將其提升至生產環境。
 
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| PUT| `< rootURI > /UpdateModel?id=%27 < modelId > %27 & apiVersion=%271.0%27`<br>範例:<br>`< rootURI > /UpdateModel?id=%279559872f-7a53-4076-a3c7-19d9385c1265%27 & apiVersion=%271.0%27`|
+|PUT     |`<rootURI>/UpdateModel?id=%27<modelId>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/UpdateModel?id=%279559872f-7a53-4076-a3c7-19d9385c1265%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| id| 模型的唯一識別碼 (區分大小寫)|
-| apiVersion| 1.0|
-| | |
-| 要求本文| `< ModelUpdateParams xmlns:xsd ="http://www.w3.org/2001/XMLSchema"xmlns: xsi ="http://www.w3.org/2001/XMLSchema-instance">`<br>`< 描述 > 新的描述 < / 描述 >`<br>`< ActiveBuildId >-1 < / ActiveBuildId >`<br>` < / ModelUpdateParams >`<br><br>請注意，XML 標記 Description 和 ActiveBuildId 為選擇性。若不想設定 Description 或 ActiveBuildId，請移除整個標記。|
+|   id      | 模型的唯一識別碼 (區分大小寫)  |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>請注意，XML 標記 Description 和 ActiveBuildId 是選擇性的。 如果您不想設定 Description 或 ActiveBuildId，請移除整個標記。|
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
-### 5.5.刪除模型
-
+###5.5. 刪除模型
 根據識別碼刪除現有的模型。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| 刪除| `< rootURI > /DeleteModel?id=%27 < model_id > %27 & apiVersion=%271.0%27`<br>範例:<br>`< rootURI > /DeleteModel?id=%271cac7b76-def4-41f1-bc81-29b806adb1de%27 & apiVersion=%271.0%27`|
+|刪除     |`<rootURI>/DeleteModel?id=%27<model_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/DeleteModel?id=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| id| 模型的唯一識別碼 (區分大小寫)|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   id  |   模型的唯一識別碼 (區分大小寫) |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
@@ -339,53 +329,52 @@ OData XML
       </entry>
     </feed>
 
-## 6.模型進階操作
+##6. 模型進階操作
 
-### 6.1.模型資料深入了解
-
+###6.1. 模型資料深入了解
 傳回建置此模型時所用之使用狀況資料的相關統計資料。
 
 僅適用於建議組建。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetDataInsight?modelId=%27 < model_id > %27 & apiVersion=%271.0%27`<br>範例:<br>`< rootURI > /GetDataInsight?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27 & apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetDataInsight?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetDataInsight?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelId |   模型的唯一識別碼 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 傳回資料做為屬性的集合。
 
-- `摘要/項目/識別碼/內容/屬性/key` -保留屬性名稱。
-- `摘要/項目/識別碼/內容/屬性/值` -保留屬性值。
+- `feed/entry/id/content/properties/key` - 保留屬性名稱。
+- `feed/entry/id/content/properties/value` - 保留屬性值。
 
 下表描述每個索引鍵表示的值。
 
-| 金鑰| 說明|
+|金鑰|說明|
 |:-----|:----|
-| AvgItemLength| 每個項目不同使用者的平均數目。|
-| AvgUserLength| 每個使用者不同項目的平均數目。|
-| DensificationNumberOfItems| 剪除不能模型化的項目之後的項目數目。|
-| DensificationNumberOfUsers| 剪除不能模型化的使用者和項目之後的始用點數目。|
-| DensificationNumberOfRecords| 剪除不能模型化的使用者和項目之後的始用點數目。|
-| MaxItemLength| 最受歡迎項目的不同使用者數目。|
-| MaxUserLength| 使用者之不同項目的最大數目。|
-| MinItemLength| 項目之不同使用者的最大數目。|
-| MinUserLength| 使用者之不同項目的最小數目。|
-| RawNumberOfItems| 使用方式檔案中的項目數目。|
-| RawNumberOfUsers| 任何剪除動作之前的使用點數目。|
-| RawNumberOfRecords| 任何剪除動作之前的使用點數目。|
-| SamplingNumberOfItems| N/A|
-| SamplingNumberOfRecords| N/A|
-| SamplingNumberOfUsers| N/A|
+| AvgItemLength | 每個項目不同使用者的平均數目。 |
+| AvgUserLength | 每個使用者不同項目的平均數目。 |
+| DensificationNumberOfItems | 剪除不能模型化的項目之後的項目數目。 |
+| DensificationNumberOfUsers | 剪除不能模型化的使用者和項目之後的始用點數目。 |
+| DensificationNumberOfRecords | 剪除不能模型化的使用者和項目之後的始用點數目。 |
+| MaxItemLength | 最受歡迎項目的不同使用者數目。 |
+| MaxUserLength | 使用者之不同項目的最大數目。 |
+| MinItemLength | 項目之不同使用者的最大數目。 |
+| MinUserLength | 使用者之不同項目的最小數目。 |
+| RawNumberOfItems | 使用方式檔案中的項目數目。 |
+| RawNumberOfUsers | 任何剪除動作之前的使用點數目。 |
+| RawNumberOfRecords | 任何剪除動作之前的使用點數目。 |
+| SamplingNumberOfItems | N/A |
+| SamplingNumberOfRecords | N/A |
+| SamplingNumberOfUsers | N/A |
 
 OData XML
 
@@ -578,41 +567,40 @@ OData XML
     </entry>
     </feed>
 
-### 6.2.模型深入了解
-
+###6.2. 模型深入了解
 傳回作用中組建或 (如果有) 特定組建上的模型深入了解。
 
 僅適用於建議組建。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| 具有作用中組建識別碼:<br>`< rootURI > /GetModelInsight?modelId=%27 < model_id > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /GetModelInsight?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27 & apiVersion=%271.0%27`<br><br>具有特定組建識別碼:<br>`< rootURI > /GetModelInsight?modelId=%27 < model_id > %27 & buildId = %27 < build_id > %27 apiVersion=%271.0%27`|
+|GET     |具有作用中組建識別碼：<br>`<rootURI>/GetModelInsight?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetModelInsight?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`<br><br>具有特定組建識別碼：<br>`<rootURI>/GetModelInsight?modelId=%27<model_id>%27&buildId=%27<build_id>%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| buildId| 選擇性 – 識別成功組建的編號。|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelId |   模型的唯一識別碼 |
+|   buildId |   選擇性 – 識別成功組建的編號。 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 傳回資料做為屬性的集合。
 
-- `摘要/項目/識別碼/內容/屬性/索引鍵`
-- `摘要/項目/識別碼/內容/屬性/值`
+- `feed/entry/id/content/properties/key`
+- `feed/entry/id/content/properties/value`
 
 
 下表描述每個索引鍵表示的值。
 
-| 金鑰| 說明|
+| 金鑰 | 說明 |
 |:---- |:----|
-| CatalogCoverage| 目錄的哪個部分可以利用使用模式進行模型化。其餘的項目都需要以內容為基礎的功能。|
-| Mpr| 模型的平均值百分位數排名。越低越好。|
-| NumberOfDimensions| 矩陣分解演算法所使用的維度數目。|
+| CatalogCoverage | 目錄的哪個部分可以利用使用模式進行模型化。 其餘的項目都需要以內容為基礎的功能。 |
+| Mpr | 模型的平均值百分位數排名。 越低越好。 |
+| NumberOfDimensions | 矩陣分解演算法所使用的維度數目。 |
 
 
 OData XML
@@ -662,22 +650,21 @@ OData XML
     </entry>
     </feed>
 
-### 6.3.取得模型範例
-
+###6.3. 取得模型範例
 取得建議模型的範例。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetModelSample?modelId=%27 < model_id > %27 & apiVersion=%271.0%27`<br>範例:<br>`< rootURI > /GetModelSample?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27 & apiVersion=%271.0%27`<br><br>具有特定組建識別碼:<br>`< rootURI > /GetModelSample?modelId=%27 < model_id > %27 & buildId = %27 < build_id > %27 apiVersion=%271.0%27`<br>範例:<br>`< rootURI > /GetModelSample?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27 & buildId = %271500068 %27 & apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetModelSample?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetModelSample?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`<br><br>具有特定組建識別碼：<br>`<rootURI>/GetModelSample?modelId=%27<model_id>%27&buildId=%27<build_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetModelSample?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&buildId=%271500068%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelId |   模型的唯一識別碼 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
@@ -687,8 +674,7 @@ OData XML
 
 <pre>
 層級 1
-----
-
+---------------
 655fc955-a5a3-4a26-9723-3090859cb27b, Prey: A Novel
     655fc955-a5a3-4a26-9723-3090859cb27b, Prey: A Novel 評等：0.5215
     3f471802-f84f-44a0-99c8-6d2e7418eec1, Black Hawk Down: A Story of Modern War 評等：0.5151
@@ -729,7 +715,7 @@ ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball
     d008dae9-c73a-40a1-9a9b-96d5cf546f36, The Gulag Archipelago 1918-1956: An Experiment in Literary Investigation I-II 評等：0.5416
     ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball 評等：0.5403
     49dec30e-0adb-411a-b186-48eaabf6f8bc, Fatherland 評等：0.5394
-    cc7964fd-d30f-478e-a425-93ddbdf094ed，Magic the Gathering: 競技場 vol. 1 評等: 0.5379
+    cc7964fd-d30f-478e-a425-93ddbdf094ed, Magic the Gathering: Arena Vol. 1 評等：0.5379
     8a1e9f36-97af-4614-bed9-24e3940a05f3, More Sniglets: Any Word That Doesn't Appear in the Dictionary but Should 評等：0.5377
 12a6d988-be21-4a09-8143-9d5f4261ba16, A Dream of Eagles
     07b10e28-9e7c-4032-90b7-10acab7f2460, Cryptonomicon 評等：0.5417
@@ -751,8 +737,7 @@ de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Sm
     e53b4baa-8c09-45c4-95c0-b6a26b98770b, Miss Smillas Feeling for Snow 評等：0.5367
 
 層級 2
-----
-
+---------------
 352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony)
     352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony) 評等：0.5425
     74c49398-bc10-4af5-a658-a996a1201254, Children of the Storm (Peters Elizabeth) 評等：0.5387
@@ -766,11 +751,11 @@ c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days
     6f6e192e-0d64-49ca-9b63-f09413ea1ee6, Politically Correct Holiday Stories: For an Enlightened Yuletide Season 評等：0.5307
     798051a8-147d-4d46-b0dc-e836325029e6, AGE OF INNOCENCE (MOVIE TIE-IN) 評等：0.5301
 73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics)
-    cba8163f-6536-436b-8130-47b4a43c827f，信任任何人 (The Official Guide to the X-files vol. 2) 評等: 0.5434
+    cba8163f-6536-436b-8130-47b4a43c827f, Trust No One (The Official Guide to the X-Files Vol. 2) 評等：0.5434
     5708e4cb-2492-49c0-94a8-cc413eec5d89, Small Gods (Discworld Novels (Paperback)) 評等：0.5406
     73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics) 評等：0.5403
     d885b0bd-ae4b-452d-bdf2-faa90197dbc9, The Color of Magic 評等：0.539
-    b133a9c4-4784-4db3-b100-d0d6dffb94d2，其實有 (The Official Guide to the X-files vol. 1) 評等: 0.5367
+    b133a9c4-4784-4db3-b100-d0d6dffb94d2, The Truth Is Out There (The Official Guide to the X-Files Vol. 1) 評等：0.5367
 271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings
     271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings 評等：0.5445
     2de1c354-90ff-47c5-a0db-1bad7d88ef94, The Salaryman's Wife (Children of Violence Series) 評等：0.5329
@@ -819,37 +804,36 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 
 
 
-## 7.模型商務規則
-
+##7. 模型商務規則
 以下是支援的規則類型:
-- <strong>BlockList</strong> -BlockList 可讓您提供您不想在建議結果中傳回的項目清單。
+- <strong>封鎖清單</strong> -BlockList 可讓您提供您不想在建議結果中傳回的項目清單。
 - <strong>FeatureBlockList</strong> -功能 BlockList 可讓您封鎖項目根據其特徵的值。
 - <strong>Upsale</strong> -Upsale 可讓您強制在建議結果中傳回的項目。
 - <strong>白名單</strong> -白名單可讓您僅建議的項目清單的建議。
 - <strong>FeatureWhiteList</strong> -功能白名單可讓您只建議特定的功能值的項目。
-- <strong>PerSeedBlockList</strong> -Perseedblocklist 可讓您提供每個項目，因此無法做為建議結果傳回的項目清單。
+- <strong>PerSeedBlockList</strong> -每個種子區塊清單可讓您提供每個項目不能做為建議結果傳回的項目清單。
 
 
-### 7.1.取得模型規則
+###7.1. 取得模型規則
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetModelRules?modelId=%27 < model_id > %27 & apiVersion=%271.0%27`<br>範例:<br>`< rootURI > /GetModelRules?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27 & apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetModelRules?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetModelRules?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelId |   模型的唯一識別碼 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
-- `摘要/項目 / / 屬性/Content-id` – 此規則的唯一識別碼。
-- `摘要/項目/內容/屬性/類型` – 規則的類型。
-- `摘要/項目/內容/屬性/參數` – 規則參數。
+- `feed/entry/content/properties/Id` – 此規則的唯一識別碼。
+- `feed/entry/content/properties/Type` – 規則的類型。
+- `feed/entry/content/properties/Parameter` – 規則參數。
 
 OData XML
 
@@ -888,42 +872,41 @@ OData XML
     </entry>
     </feed>
 
-### 7.2.新增規則
+###7.2. 新增規則
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| POST| `< rootURI > /AddRule?apiVersion=%271.0%27`|
-| 標頭| `「 內容類型 」、 「 text/xml 」`|
+|POST     |`<rootURI>/AddRule?apiVersion=%271.0%27`|
+|標頭   |`"Content-Type", "text/xml"`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| apiVersion| 1.0|
-| | |
-| 要求本文|
-
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 
 <ins>每當商務規則的提供項目 Id，請務必使用 (您在類別目錄檔案中使用相同識別碼) 的項目外部識別碼</ins><br>
-<ins>若要新增 BlockList 規則:</ins><br>`< ApiFilter xmlns:xsd ="http://www.w3.org/2001/XMLSchema"xmlns: xsi ="http://www.w3.org/2001/XMLSchema-instance">< 24024f7e-b45c-419e-bfa2-dfd947e0d253 ModelId > < / ModelId >< 類型 > 封鎖清單 < / 類型 >< 值 > {"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]} < / v >< / ApiFilter >`<br><br><ins>
+<ins>若要新增 BlockList 規則:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
 <ins>若要新增 FeatureBlockList 規則:</ins><br>
 <br>
-`< ApiFilter xmlns:xsd ="http://www.w3.org/2001/XMLSchema"xmlns: xsi ="http://www.w3.org/2001/XMLSchema-instance">< 24024f7e-b45c-419e-bfa2-dfd947e0d253 ModelId > < / ModelId >< 類型 > FeatureBlockList < / 類型 >< 值 > {"Name":"Movie_category 」、 「 值 」: ["成人"，"Drama"]} < / v >< / ApiFilter >`<br><br><ins>
-若要新增 Upsale 規則:</ins><br>`< ApiFilter xmlns:xsd ="http://www.w3.org/2001/XMLSchema"xmlns: xsi ="http://www.w3.org/2001/XMLSchema-instance">< 24024f7e-b45c-419e-bfa2-dfd947e0d253 ModelId > < / ModelId >< 類型 > Upsale < / 類型 >< 值 > {"ItemsToUpsale": ["2406E770-769C-4189-89DE-1C9283F93A96"]} < / v >< / ApiFilter >`<br><br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>
+若要新增 Upsale 規則:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br>
 <ins>若要新增 WhiteList 規則:</ins><br>
-`< ApiFilter xmlns:xsd ="http://www.w3.org/2001/XMLSchema"xmlns: xsi ="http://www.w3.org/2001/XMLSchema-instance">< 24024f7e-b45c-419e-bfa2-dfd947e0d253 ModelId > < / ModelId >< 類型 > 白名單 < / 類型 >< 值 > {"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]} < / v >< / ApiFilter >`<br><br><ins>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>
 <ins>若要新增 FeatureWhiteList 規則:</ins><br>
 <br>
-`< ApiFilter xmlns:xsd ="http://www.w3.org/2001/XMLSchema"xmlns: xsi ="http://www.w3.org/2001/XMLSchema-instance">< 24024f7e-b45c-419e-bfa2-dfd947e0d253 ModelId > < / ModelId >< 類型 > FeatureWhiteList < / 類型 >< 值 > {"Name":"Movie_rating 」、 「 值 」: ["PG13"]} < / v >< / ApiFilter >`<br><br><ins>
-若要新增 PerSeedBlockList 規則:</ins><br>`< ApiFilter xmlns:xsd ="http://www.w3.org/2001/XMLSchema"xmlns: xsi ="http://www.w3.org/2001/XMLSchema-instance">< 24024f7e-b45c-419e-bfa2-dfd947e0d253 ModelId > < / ModelId >< 類型 > PerSeedBlockList < / 類型 >< 值 > {"SeedItems": ["9949"]"ItemsToExclude": ["9862"、"8158"、"8244"]} < / v >< / ApiFilter >`|
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>
+若要新增 PerSeedBlockList 規則:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 API 會傳回新建立的規則及其詳細資料。 規則屬性可從下列路徑擷取：
 
-- `摘要/項目 / / 屬性/Content-id` – 此規則的唯一識別碼。
-- `摘要/項目/內容/屬性/類型` – 規則的類型: BlockList 或 Upsale。
-- `摘要/項目/內容/屬性/參數` – 規則參數。
+- `feed/entry/content/properties/Id` – 此規則的唯一識別碼。
+- `feed/entry/content/properties/Type` – 規則的類型：BlockList 或 Upsale。
+- `feed/entry/content/properties/Parameter` – 規則參數。
 
 OData XML
 
@@ -949,81 +932,81 @@ OData XML
     </entry>
     </feed>
 
-### 7.3.刪除規則
+###7.3. 刪除規則
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| 刪除| `< rootURI > /DeleteRule?modelId=%27 < model_id > %27 & filterId = %27 < filter_Id > %27 apiVersion=%271.0%27`<br><br>範例:<br>`DeleteRule? modelId = %2724024f7e-b45c-419e-bfa2-dfd947e0d253 %27 filterId = %271000011 %27 & apiVersion=%271.0%27`|
+|刪除     |`<rootURI>/DeleteRule?modelId=%27<model_id>%27&filterId=%27<filter_Id>%27&apiVersion=%271.0%27`<br><br>範例：<br>`DeleteRule?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&filterId=%271000011%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| filterId| 篩選器的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelId |   模型的唯一識別碼 |
+|   filterId    |   篩選器的唯一識別碼 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
-### 7.4.刪除所有規則
+###7.4. 刪除所有規則
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| 刪除| `< rootURI > /DeleteAllRules?modelId=%27 < model_id > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`DeleteAllRules? modelId = %2724024f7e-b45c-419e-bfa2-dfd947e0d253 %27 apiVersion=%271.0%27`|
+|刪除     |`<rootURI>/DeleteAllRules?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>範例：<br>`DeleteAllRules?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelId |   模型的唯一識別碼 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
-## 8.目錄
+##8. 目錄
 
-### 8.1.匯入目錄資料
+###8.1. 匯入目錄資料
 
 如果您將數個目錄檔案上傳至具有多個呼叫的相同模型，我們只會插入新的目錄項目。 現有的項目會保留原始值。 您無法使用這個方法更新目錄資料。
 
 目錄資料應該遵循下列格式：
 
-- 沒有功能- `< 項目識別碼 >，< 項目名稱 >、 < 項目分類 > [，< 描述 >]`
+- 沒有功能 - `<Item Id>,<Item Name>,<Item Category>[,<Description>]`
 
-- 具有功能- `< 項目識別碼 >，< 項目名稱 >、 < 項目分類 > [< 描述 >] < 功能清單 >`
+- 具有功能 - `<Item Id>,<Item Name>,<Item Category>,[<Description>],<Features list>`
 
 注意：檔案大小上限為 200 MB。
 
-** 格式詳細資料 **
+**格式詳細資料**
 
-| 名稱| 強制| 類型| 說明|
+| 名稱 | 強制 | 類型 |  說明 |
 |:---|:---|:---|:---|
-| 項目識別碼| 是| [A-z]、 [a-z]、 [0-9]、 [_] (& s) #40。底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 50| 項目的唯一識別碼。|
-| 項目名稱| 是| 任何英數字元<br> 最大長度: 255| 項目名稱。|
-| 項目類別| 是| 任何英數字元 <br> 最大長度: 255| 此項目所屬類別 (例如烹飪書籍、劇本...) 可以是空的。|
-| 說明| 否，除非顯示功能 (但可能是空的)| 任何英數字元 <br> 最大長度: 4000| 此項目的說明。|
-| 功能清單| 否| 任何英數字元 <br> 最大長度: 4000。功能: 20 的最大數目| 以逗號分隔的功能名稱清單 = 功能值，可用來增強模型建議;請參閱 [進階主題](#2-advanced-topics) 一節。|
+| 項目識別碼 |是 | [A-z]、 [a-z]、 [0-9]、 [_] (& s) #40。底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 50 | 項目的唯一識別碼。 |
+| 項目名稱 | 是 | 任何英數字元<br> 最大長度: 255 | 項目名稱。 | 
+| 項目類別 | 是 | 任何英數字元 <br> 最大長度: 255 | 此項目所屬類別 (例如烹飪書籍、劇本...) 可以是空的。 |
+| 說明 | 否，除非顯示功能 (但可能是空的) | 任何英數字元 <br> 最大長度: 4000 | 此項目的說明。 |
+| 功能清單 | 否 | 任何英數字元 <br> 最大長度: 4000。功能: 20 的最大數目 | 以逗號分隔的功能名稱清單 = 功能值，可用來增強模型建議;請參閱 [進階主題](#2-advanced-topics) 一節。 |
 
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| POST| `< rootURI > /ImportCatalogFile?modelId=%27 < modelId > %27 和檔案名稱 = %27 < 檔名 > %27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27 filename=%27catalog10_small.txt%27 & apiVersion=%271.0%27`|
-| 標頭| `「 內容類型 」、 「 text/xml 」`|
+|POST     |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`|
+|標頭   |`"Content-Type", "text/xml"`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| 檔名| 目錄的文字識別碼。<br>只字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-) 及底線 (_) 允許。<br>最大長度: 50|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 範例 (包含功能):<br/>2406e770-769 c-4189-89de-1c9283f93a96，克拉拉 Callan，活頁簿，本書說明中，撰寫 = Richard Wright，發行者 = Harper Flamingo Canada，year = 2001年<br>21bf8088-b6c0-4509-870 c-e1c7ac78304a，忘了空間: 小說 (拜占庭書籍)、 書籍、 作者 = Nick Bantock，發行者 = Harpercollins，年 = 1997年<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23，Spadework、 書籍、 作者 = Timothy Findley，發行者 = HarperFlamingo Canada，年 = 2001年<br>552a1940-21e4-4399-82bb-594b46d7ed54，本例的傢伙，活頁簿，本書說明中，撰寫 = Magnus Mills，發行者 = Arcade Publishing，年 = 1998年</pre>|
+|   modelId |   模型的唯一識別碼  |
+| 檔名 | 目錄的文字識別碼。<br>字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 50 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 範例 (包含功能):<br/>2406e770-769 c-4189-89de-1c9283f93a96，克拉拉 Callan，活頁簿，本書說明中，撰寫 = Richard Wright，publisher = Harper Flamingo Canada，year = 2001年<br>21bf8088-b6c0-4509-870 c-e1c7ac78304a，忘記空間: 小說 (拜占庭書籍)、 書籍、 作者 = Nick Bantock，publisher = Harpercollins，year = 1997年<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23，Spadework、 書籍、 作者 = Timothy Findley，publisher = HarperFlamingo Canada，year = 2001年<br>552a1940-21e4-4399-82bb-594b46d7ed54，本例的傢伙，活頁簿，本書說明中，撰寫 = Magnus Mills，publisher = Arcade Publishing，year = 1998年</pre> |
 
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
@@ -1054,33 +1037,32 @@ OData XML
     </entry>
     </feed>
 
-### 8.2.取得目錄
-
+###8.2. 取得目錄
 擷取所有目錄項目。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetCatalog?modelId=%27 < model_id > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`GetCatalog? modelId = %2724024f7e-b45c-419e-bfa2-dfd947e0d253 %27 apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetCatalog?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>範例：<br>`GetCatalog?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelId |   模型的唯一識別碼 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 回應會包含每個目錄項目的一個項目。 每個項目都有下列資料：
 
-- `摘要/項目/內容/屬性/ExternalId` – 目錄項目外部識別碼，由客戶提供。
-- `摘要/項目/內容/屬性/InternalId` – 目錄項目內部識別碼，由 Azure Machine Learning 建議產生。
-- `摘要/項目/內容/屬性/Name` – 目錄項目名稱。
-- `摘要/項目/內容/屬性/類別` – 目錄項目類別。
-- `摘要/項目/內容/屬性/說明` – 目錄項目說明。
-- `摘要/項目/內容/屬性/Metadata` – 目錄項目中繼資料。
+- `feed/entry/content/properties/ExternalId` – 目錄項目外部識別碼，由客戶提供。
+- `feed/entry/content/properties/InternalId` – 目錄項目內部識別碼，由 Azure Machine Learning 建議產生。
+- `feed/entry/content/properties/Name` – 目錄項目名稱。
+- `feed/entry/content/properties/Category` – 目錄項目類別。
+- `feed/entry/content/properties/Description` – 目錄項目說明。
+- `feed/entry/content/properties/Metadata` – 目錄項目中繼資料。
 
 
 OData XML
@@ -1158,32 +1140,32 @@ OData XML
     </entry>
     </feed>
 
-### 8.3.依語彙基元取得目錄項目
+###8.3. 依語彙基元取得目錄項目
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetCatalogItemsByToken?modelId=%27 < modelId > %27 和語彙基元 = %27 < 權杖 > %27 apiVersion=%271.0%27`<br><br>範例:<br>`GetCatalogItemsByToken? modelId = %270dbb55fa-7f11-418 d-8537-8ff2d9d1d9c6 %27 語彙基元 = %27Cla %27 apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetCatalogItemsByToken?modelId=%27<modelId>%27&token=%27<token>%27&apiVersion=%271.0%27`<br><br>範例：<br>`GetCatalogItemsByToken?modelId=%270dbb55fa-7f11-418d-8537-8ff2d9d1d9c6%27&token=%27Cla%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| token| 目錄項目名稱的 token。應該至少包含 3 個字元。|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   modelId |   模型的唯一識別碼 |
+|   token   |   目錄項目名稱的 token。 應該至少包含 3 個字元。 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 回應會包含每個目錄項目的一個項目。 每個項目都有下列資料：
 
-- `摘要/項目/內容/屬性/ExternalId` – 目錄項目外部識別碼，由客戶提供。
-- `摘要/項目/內容/屬性/InternalId` – 目錄項目內部識別碼，由 Azure Machine Learning 建議產生。
-- `摘要/項目/內容/屬性/Name` – 目錄項目名稱。
-- `摘要/項目/內容/屬性/類別` – 目錄項目類別。
-- `摘要/項目/內容/屬性/說明` – 目錄項目說明。
-- `摘要/項目/內容/屬性/Metadata` – 目錄項目中繼資料。
+- `feed/entry/content/properties/ExternalId` – 目錄項目外部識別碼，由客戶提供。
+- `feed/entry/content/properties/InternalId` – 目錄項目內部識別碼，由 Azure Machine Learning 建議產生。
+- `feed/entry/content/properties/Name` – 目錄項目名稱。
+- `feed/entry/content/properties/Category` – 目錄項目類別。
+- `feed/entry/content/properties/Description` – 目錄項目說明。
+- `feed/entry/content/properties/Metadata` – 目錄項目中繼資料。
 
 OData XML
 
@@ -1212,27 +1194,24 @@ OData XML
         </entry>
     </feed>
 
-## 9.使用狀況資料
-
-### 9.1.匯入使用資料
-
-#### 9.1.1.上傳檔案
-
+##9. 使用狀況資料
+###9.1. 匯入使用資料
+####9.1.1. 上傳檔案
 本節試範如何使用檔案上傳使用資料。 您可以利用使用資料呼叫此 API 數次。 將會針對所有呼叫儲存所有使用狀況資料。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| POST| `< rootURI > /ImportUsageFile?modelId=%27 < modelId > %27 和檔案名稱 = %27 < 檔名 > %27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27 filename=%27ImplicitMatrix10_Guid_small.txt%27 & apiVersion=%271.0%27`|
+|POST     |`<rootURI>/ImportUsageFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27ImplicitMatrix10_Guid_small.txt%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| 檔名| 目錄的文字識別碼。<br>只字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-) 及底線 (_) 允許。<br>最大長度: 50|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 使用量資料。Format:<br>`<User Id>,<Item Id>[,&lt;Time&gt;,&lt;Event&gt;]`<br><br><table><tr><th>Name</th><th>Mandatory</th><th>Type</th><th>Description</th></tr><tr><td>User Id</td><td>Yes</td><td>[A-z], [a-z], [0-9], [_] &#40;底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 255 </td><td>使用者的唯一識別碼。</td></tr><tr><td>Item Id</td><td>Yes</td><td>[A-z], [a-z], [0-9], [&#95;] &#40;底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 50</td><td>項目的唯一識別碼。</td></tr><tr><td>Time</td><td>No</td><td>Date in format: YYYY/MM/DDTHH:MM:SS (e.g. 2013/06/20T10:00:00)</td><td>Time of data.</td></tr><tr><td>事件</td><td>否; 如果提供，也必須提供日期</td><td>有下列幾種:<br>• 按一下<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• 購買</td><td></td></tr></table><br>檔案大小上限: 200 MB<br><br>範例:<br><pre>149452 1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>6360，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>50321，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>71285，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>224450，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>236645，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>107951，1b3d95e2-84e4-414 c-bb38-be9cf461c347</pre>|
+|   modelId |   模型的唯一識別碼  |
+| 檔名 | 目錄的文字識別碼。<br>字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 50 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 使用量資料。 格式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名稱</th><th>強制</th><th>類型</th><th>描述</th></tr><tr><td>使用者識別碼</td><td>是</td><td>[a-z]、 [a-z]、 [0-9]、 [_] (& s) #40;底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 255 </td><td>使用者的唯一識別碼。</td></tr><tr><td>項目識別碼</td><td>是</td><td>[a-z]、 [a-z]、 [0-9] [& #95;] (& s) #40;底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 50</td><td>項目的唯一識別碼。</td></tr><tr><td>時間</td><td>否</td><td>日期格式: YYYY/MM/ddthh (例如 2013年/06/20T10:00:00)</td><td>資料的時間。</td></tr><tr><td>事件</td><td>否; 如果提供，也必須提供日期</td><td>有下列幾種:<br>• 按一下<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• 購買</td><td></td></tr></table><br>檔案大小上限: 200 MB<br><br>範例:<br><pre>149452，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>6360，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>50321，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>71285，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>224450，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>236645，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>107951，1b3d95e2-84e4-414 c-bb38-be9cf461c347</pre> |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
@@ -1264,19 +1243,19 @@ OData XML
     </entry>
     </feed>
 
-#### 9.1.2.使用資料擷取
 
+####9.1.2. 使用資料擷取
 本節示範如何將事件即時傳送到 Azure Machine Learning 建議 (通常是從您的網站)。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| POST| `< rootURI > /AddUsageEvent?apiVersion=%271.0%27`|
-| 標頭| `「 內容類型 」、 「 text/xml 」`|
+|POST     |`<rootURI>/AddUsageEvent?apiVersion=%271.0%27`|
+|標頭   |`"Content-Type", "text/xml"`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| apiVersion| 1.0|
-| Request body| 您想要傳送的每個事件的事件資料項目。您應該為相同的使用者或瀏覽器工作階段在 SessionId 欄位中傳送相同的識別碼。(請參閱下面的事件本文範例。)|
+|   apiVersion      | 1.0 |
+|Request body| 您想要傳送的每個事件的事件資料項目。 您應該為相同的使用者或瀏覽器工作階段在 SessionId 欄位中傳送相同的識別碼。 (請參閱下面的事件本文範例。)|
 
 
 - 事件 'Click' 的範例：
@@ -1352,6 +1331,11 @@ OData XML
             </EventData>
         </EventData>
         </Event>
+        
+        
+        
+
+
 
 - 傳送 2 個事件 ('Click' 和 'AddShopCart') 的範例：
 
@@ -1373,35 +1357,33 @@ OData XML
         </EventData>
         </Event>
 
-
-**回應**：
+**回應**:
 HTTP 狀態碼：200
 
-### 9.2.列出模型使用方式檔案
-
+###9.2. 列出模型使用方式檔案
 擷取所有模型使用方式檔案的中繼資料。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /ListModelUsageFiles?forModelId=%27 < model_id > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /ListModelUsageFiles?forModelId=%270dbb55fa-7f11-418d-8537-8ff2d9d1d9c6%27 & apiVersion=%271.0%27`|
+|GET     |`<rootURI>/ListModelUsageFiles?forModelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/ListModelUsageFiles?forModelId=%270dbb55fa-7f11-418d-8537-8ff2d9d1d9c6%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| forModelId| 模型的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+|   forModelId  |   模型的唯一識別碼 |
+|   apiVersion      | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 回應會包含每個使用方式檔案的一個項目。 每個項目都有下列資料：
 
 - `feed\entry\content\properties\Id` – 使用方式檔案識別碼。
-- `feed\entry\content\properties\Length` – 使用方式檔案長度，以 mb 為單位。
-- `feed\entry\content\properties\DateModified` – 使用方式檔案建立的日期。
-- `feed\entry\content\properties\UseInModel` – 使用方式檔案用於模型中。
+- `feed\entry\content\properties\Length` – 使用方式檔案長度，以 MB 為單位。
+- `feed\entry\content\properties\DateModified` – 使用方式檔案建立日期。
+- `feed\entry\content\properties\UseInModel` – 使用方式檔案是否在模型中使用。
 
 OData XML
 
@@ -1440,35 +1422,33 @@ OData XML
             </m:properties>
         </content>
     </entry>
-
 </feed>
 
-### 9.3.取得使用狀況統計資料
-
+###9.3. 取得使用狀況統計資料
 取得使用狀況統計資料。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetUsageStatistics?modelId=%27 < modelId > %27 & startDate = %27 < 日期 > %27 endDate = %27 < 日期 > %27 eventTypes = %27 < 類型 > %27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /GetUsageStatistics?modelId=%271d20c34f-dca1-4eac-8e5d-f299e4e4ad66%27 & startDate = %272014%2f10%2f17t00%3a00%3A00 %27 endDate = %272014%2f11%2f16t00%3a00%3A00 %27 eventTypes = %271 C 2 的 %2 C 3 的 %2 %2 C 4 到 %2 C 5%的 27 & apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetUsageStatistics?modelId=%27<modelId>%27& startDate=%27<date>%27&endDate=%27<date>%27&eventTypes=%27<types>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetUsageStatistics?modelId=%271d20c34f-dca1-4eac-8e5d-f299e4e4ad66%27&startDate=%272014%2F10%2F17T00%3A00%3A00%27&endDate=%272014%2F11%2F16T00%3A00%3A00%27&eventTypes=%271%2C2%2C3%2C4%2C5%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| startDate| 開始日期。格式：yyyy/MM/ddTHH:mm:ss|
-| endDate| 結束日期。格式：yyyy/MM/ddTHH:mm:ss|
-| eventTypes| 以逗號分隔的事件類型字串或是 null，可取得所有事件|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| modelId | 模型的唯一識別碼  |
+| startDate |   開始日期。 格式：yyyy/MM/ddTHH:mm:ss |
+| endDate | 結束日期。 格式：yyyy/MM/ddTHH:mm:ss |
+| eventTypes |  以逗號分隔的事件類型字串或是 null，可取得所有事件  |
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 索引鍵/值項目的集合。 每個集合都包含以小時分組之特定事件類型的事件總和。
 
-- `feed\entry [i] \content\properties\Key` – 包含時間 (以小時分組) 和事件類型。
-- `feed\entry [i] \content\properties\Value` – 總事件計數。
+- `feed\entry[i]\content\properties\Key` – 包含時間 (以小時分組) 和事件類型。
+- `feed\entry[i]\content\properties\Value` – 總事件計數。
 
 OData XML
 
@@ -1529,23 +1509,22 @@ OData XML
     </entry>
     </feed>
 
-### 9.4.取得使用方式檔案範例
-
+###9.4. 取得使用方式檔案範例
 擷取前 2KB 的使用方式檔案內容。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetUsageFileSample?modelId=%27 < modelId > %27 & fileId = %27 < fileId > %27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /GetUsageFileSample?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27 & fileId = %274c067b42-e975-4cb2-8 c 98 a6ab80ed6d63 %27 apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetUsageFileSample?modelId=%27<modelId>%27& fileId=%27<fileId>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetUsageFileSample?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&fileId=%274c067b42-e975-4cb2-8c98-a6ab80ed6d63%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| fileId| 模型使用方式檔案的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| modelId | 模型的唯一識別碼  |
+| fileId |  模型使用方式檔案的唯一識別碼  |
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
@@ -1569,24 +1548,23 @@ HTTP 狀態碼：200
 </pre>
 
 
-### 9.5.取得模型使用方式檔案
-
+###9.5. 取得模型使用方式檔案
 擷取使用方式檔案的完整內容。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetModelUsageFile?mid=%27 < modelId > %27 & fid = %27 < fileId > %27 & 下載 = %27 < download_value > %27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /GetModelUsageFile?mid=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27 & fid = %273126 d 816-4e80-4248-8339-1ebbdb9d544d %27 & 下載 271%= %27 & apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetModelUsageFile?mid=%27<modelId>%27& fid=%27<fileId>%27&download=%27<download_value>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetModelUsageFile?mid=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&fid=%273126d816-4e80-4248-8339-1ebbdb9d544d%27&download=%271%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| mid| 模型的唯一識別碼|
-| fid| 模型使用方式檔案的唯一識別碼|
-| 下載| 1|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| mid | 模型的唯一識別碼  |
+| fid | 模型使用方式檔案的唯一識別碼 |
+| 下載 | 1 |
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
@@ -1627,79 +1605,75 @@ HTTP 狀態碼：200
 144717，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
 </pre>
 
-### 9.6.刪除使用方式檔案
-
+###9.6. 刪除使用方式檔案
 刪除指定的模型使用方式檔案。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| 刪除| `< rootURI > /DeleteUsageFile?modelId=%27 < modelId > %27 & fileId = %27 < fileId > %27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /DeleteUsageFile?modelId=%270f86d698-d0f4-4406-a684-d13d22c47a73%27 & fileId = %27f2e0b09d-be5c-46b2-9ac2-c7f622e5e1a5 %27 apiVersion=%271.0%27`|
+|刪除     |`<rootURI>/DeleteUsageFile?modelId=%27<modelId>%27&fileId=%27<fileId>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/DeleteUsageFile?modelId=%270f86d698-d0f4-4406-a684-d13d22c47a73%27&fileId=%27f2e0b09d-be5c-46b2-9ac2-c7f622e5e1a5%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+| 參數名稱    |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| fileId| 要刪除之檔案的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| modelId | 模型的唯一識別碼  |
+| fileId | 要刪除之檔案的唯一識別碼 |
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 
-### 9.7.刪除所有使用方式檔案
-
+###9.7. 刪除所有使用方式檔案
 刪除所有模型使用方式檔案。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| 刪除| `< rootURI > /DeleteAllUsageFiles?modelId=%27 < modelId > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /DeleteAllUsageFiles?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27 & apiVersion=%271.0%27`|
+|刪除     |`<rootURI>/DeleteAllUsageFiles?modelId=%27<modelId>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/DeleteAllUsageFiles?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+| 參數名稱    |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| modelId | 模型的唯一識別碼  |
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
-## 10.特性
-
+##10. 特性
 本節示範如何擷取功能資訊，例如匯入的功能和其值、其排名，以及此排名的配置時機。 匯入功能做為目錄資料的一部分，然後在排名組建完成時建立和其排名的關聯。
 功能排名可根據使用狀況資料和項目類型而變更。 但是對於一致的使用量/項目，排名只能有小幅的起伏。
 功能的排名為非負數的數字。 編號 0 表示未排名功能 (如果您叫用這個 API 的第一個排名組建完成之前發生)。 配置排名的日期稱為分數有效時間。
 
-### 10.1.取得功能資訊 (適用於上一個排名組建)
-
+###10.1. 取得功能資訊 (適用於上一個排名組建)
 擷取最後一次成功排名組建的功能資訊，包括排名。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetModelFeatures?modelId=%27 < modelId > %27 & samplingSize = %27 < samplingSize > %27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /GetModelFeatures?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27 & samplingSize = 10 %27 & apiVersion=%271.0%27`
+|GET      |`<rootURI>/GetModelFeatures?modelId=%27<modelId>%27&samplingSize=%27<samplingSize>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetModelFeatures?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&samplingSize=10%27&apiVersion=%271.0%27`
 
-| 參數名稱| 有效值|
+| 參數名稱    |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| samplingSize| 每個功能要包含的值數目是根據出現在目錄中的資料。<br/>可能的值為:<br> -1-所有範例。<br>0-沒有取樣。<br>N-傳回每個功能名稱的 N 範例。|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| modelId | 模型的唯一識別碼  |
+|samplingSize| 每個功能要包含的值數目是根據出現在目錄中的資料。 <br/>可能的值包括：<br> -1-所有範例。 <br>0-沒有取樣。 <br>N-傳回每個功能名稱的 N 範例。|
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 回應包含功能資訊項目的清單。 每個項目包含：
 
-- `摘要/項目/content/m:properties / d:Name` -功能名稱。
-- `摘要/項目/content/m:properties / d:RankUpdateDate` -陣序規範已配置的這項功能，又稱為日期 分數有效時間功能。 歷程記錄日期 ('0001-01-01T00:00:00') 表示未執行排名組建。
-- `摘要/項目/content/m:properties / d:Rank` -功能排名 (float)。 排名 2.0 以上會被視為良好的功能。
-- `摘要/項目/content/m:properties / d:SampleValues` -高達要求的取樣大小值的逗號分隔的清單。
+- `feed/entry/content/m:properties/d:Name` - 功能名稱。
+- `feed/entry/content/m:properties/d:RankUpdateDate` -日期陣序規範已配置的這項功能，又稱為 分數有效時間功能。 歷程記錄日期 ('0001-01-01T00:00:00') 表示未執行排名組建。
+- `feed/entry/content/m:properties/d:Rank` - 功能排名 (float)。 排名 2.0 以上會被視為良好的功能。
+- `feed/entry/content/m:properties/d:SampleValues` - 逗號分隔的值清單高達要求的取樣大小。
 
 OData XML
 
@@ -1752,38 +1726,37 @@ OData XML
         </m:properties>
         </content>
     </entry>
-
 </feed>
 
 
-### 10.2.取得功能資訊 (適用於特定排名組建)
+###10.2. 取得功能資訊 (適用於特定排名組建)
 
 擷取功能資訊，包括特定排名組建的排名。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetModelFeatures?modelId=%27 < modelId > %27 & samplingSize = %27 < samplingSize > %27 rankBuildId = < rankBuildId > & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /GetModelFeatures?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27 & samplingSize = 10 %27 & rankBuildId = 1000551 apiVersion=%271.0%27`
+|GET      |`<rootURI>/GetModelFeatures?modelId=%27<modelId>%27&samplingSize=%27<samplingSize>%27&rankBuildId=<rankBuildId>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetModelFeatures?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&samplingSize=10%27&rankBuildId=1000551&apiVersion=%271.0%27`
 
-| 參數名稱| 有效值|
+| 參數名稱    |   有效值    |
 |:--------          |:--------          |
-| modelId| 模型的唯一識別碼|
-| samplingSize| 根據出現在目錄中的資料每個功能要包含的值數目。<br/>可能的值為:<br> -1-所有範例。<br>0-沒有取樣。<br>N-傳回每個功能名稱的 N 範例。|
-| rankBuildId| 排名組建的唯一識別碼或代表上一個排名組建的 -1|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| modelId | 模型的唯一識別碼  |
+|samplingSize| 每個功能要包含的值數目是根據出現在目錄中的資料。<br/> 可能的值包括：<br> -1-所有範例。 <br>0-沒有取樣。 <br>N-傳回每個功能名稱的 N 範例。|
+|rankBuildId| 排名組建的唯一識別碼或代表上一個排名組建的 -1|
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 回應包含功能資訊項目的清單。 每個項目包含：
 
-- `摘要/項目/content/m:properties / d:Name` -功能名稱。
-- `摘要/項目/content/m:properties / d:RankUpdateDate` -陣序規範已配置的這項功能，又稱為日期 分數有效時間功能。 歷程記錄日期 ('0001-01-01T00:00:00') 表示未執行排名組建。
-- `摘要/項目/content/m:properties / d:Rank` -功能排名 (float)。 排名 2.0 以上會被視為良好的功能。
-- `摘要/項目/content/m:properties / d:SampleValues` -高達要求的取樣大小值的逗號分隔的清單。
+- `feed/entry/content/m:properties/d:Name` - 功能名稱。
+- `feed/entry/content/m:properties/d:RankUpdateDate` -日期陣序規範已配置的這項功能，又稱為 分數有效時間功能。 歷程記錄日期 ('0001-01-01T00:00:00') 表示未執行排名組建。
+- `feed/entry/content/m:properties/d:Rank` - 功能排名 (float)。 排名 2.0 以上會被視為良好的功能。
+- `feed/entry/content/m:properties/d:SampleValues` - 逗號分隔的值清單高達要求的取樣大小。
 
 OData
 
@@ -1838,7 +1811,8 @@ OData
         </entry>
     </feed>
 
-## 11.建置
+
+##11. 建置
 
   本節說明和組建相關的不同 API。 有 3 個類型的組建：建議組建、排名組建和 FBT (通常會一起購買) 組建。
 
@@ -1850,13 +1824,13 @@ OData
 - 觸發排名組建 (除非您功能的分數是穩定的)，並等候覺特徵分數。
 - 呼叫以擷取您的功能等級 [取得功能資訊](#101-get-features-info-for-last-rank-build) API。
 - 設定的建議組建，並指定下列參數:
-    - `useFeatureInModel` -設為 True。
-    - `ModelingFeatureList` -設為 2.0 或更 (根據您在上一個步驟中所擷取的排名) 分數的功能以逗號分隔清單。
-    - `AllowColdItemPlacement` -設為 True。
+    - `useFeatureInModel` -設定為 True。
+    - `ModelingFeatureList` -設為以逗號分隔清單的分數 2.0 或更 (根據您在上一個步驟中所擷取的排名) 的功能。
+    - `AllowColdItemPlacement` -設定為 True。
     - 您可以選擇設定 `EnableFeatureCorrelation` 設為 True 和 `ReasoningFeatureList` 的功能清單中您要使用的說明 (通常是在製作模型或子清單中使用的功能相同清單)。
 - 觸發建議組建已設定的參數。
 
-注意: 如果您未設定任何參數 (例如叫用不含參數的建議組建) 或您未明確停用功能的使用方式 (例如 `UseFeatureInModel` 設為 False)，系統將會設定與功能相關的參數，為上述的說明值排名組建存在的情況下。
+注意：如果您未設定任何參數 (例如叫用不含參數的建議組建) 或您沒有明確停用功能的使用方式 (例如 `UseFeatureInModel` 設為 False)，系統將會在排名組建存在時，將與功能相關的參數設定為上述的說明值。
 
 同時執行相同模行的排名組建和建議組建時並沒有任何限制。 不過，您無法在同一個模型上，以平行方式執行兩個相同類型的組建。
 
@@ -1865,79 +1839,76 @@ FBT (通常會一起購買) 組建也是另一種建議運算法，有時稱為�
 注意：如果您上傳的使用方式檔案包含選擇性欄位 [事件類型]，則 FBT 模型只會使用 "Purchase" 事件。 如果沒有提供事件類型，所有事件都會視為 Purchase。
 
 
-#### 11.1 組建參數
+####11.1 組建參數
 
 每個組建類型都可以透過一組參數 (如下所述) 進行設定。 如果您未設定參數，系統會自動根據您觸發組建時出現的資訊分配值給參數。
 
-##### 11.1.1.使用狀況冷凝器
-
+#####11.1.1. 使用狀況冷凝器
 附帶少數使用點的使用者或項目可能包含較多雜訊而非資訊。 系統會嘗試預測要用於模型之每個使用者/項目的使用點數目下限。 這個數字會在項目的 ItemCutoffLowerBound 和 ItemCutoffUpperBound 參數所定義的範圍內，也在使用者的 UserCutOffLowerBound 和 UserCutoffUpperBound 參數所定義的範圍內。 將至少一個對應的界限設為零，可以使冷凝器對項目或使用者的影響最小化。
 
-##### 11.1.2.排名組建參數
+#####11.1.2. 排名組建參數
 
 下表描述排名組建的組建參數。
 
-| 金鑰| 說明| 類型| 有效值|
+|金鑰|說明|類型|有效值|
 |:-----|:----|:----|:---|
-| NumberOfModelIterations| 整體運算時間和模型精確度會反映模型執行反覆運算的次數。數字越高，得到的精確度就越高，但需要較久的運算時間。| Integer| 10-50|
-| NumberOfModelDimensions| 維度的數目與「功能」的數目相關，模型會嘗試尋找資料中的數目。增加維度的數目將允許結果進一步微調成較小的叢集。不過，太多維度會讓模型無法尋找項目之間的關聯。| Integer| 10-40|
-| ItemCutOffLowerBound| 定義冷凝器的項目下限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| ItemCutOffUpperBound| 定義冷凝器的項目上限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| UserCutOffLowerBound| 定義冷凝器的使用者下限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| UserCutOffUpperBound| 定義冷凝器的使用者上限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
+|NumberOfModelIterations | 整體運算時間和模型精確度會反映模型執行反覆運算的次數。 數字越高，得到的精確度就越高，但需要較久的運算時間。| Integer | 10-50 |
+| NumberOfModelDimensions | 維度的數目與「功能」的數目相關，模型會嘗試尋找資料中的數目。 增加維度的數目將允許結果進一步微調成較小的叢集。 不過，太多維度會讓模型無法尋找項目之間的關聯。 | Integer | 10-40 |
+|ItemCutOffLowerBound| 定義冷凝器的項目下限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|ItemCutOffUpperBound| 定義冷凝器的項目上限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|UserCutOffLowerBound| 定義冷凝器的使用者下限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|UserCutOffUpperBound| 定義冷凝器的使用者上限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
 
-##### 11.1.3.建議組建參數
-
+#####11.1.3. 建議組建參數
 下表描述建議組建的組建參數。
 
-| 金鑰| 說明| 類型| 有效值|
+|金鑰|說明|類型|有效值|
 |:-----|:----|:----|:---|
-| NumberOfModelIterations| 整體運算時間和模型精確度會反映模型執行反覆運算的次數。數字越高，得到的精確度就越高，但需要較久的運算時間。| Integer| 10-50|
-| NumberOfModelDimensions| 維度的數目與「功能」的數目相關，模型會嘗試尋找資料中的數目。增加維度的數目將允許結果進一步微調成較小的叢集。不過，太多維度會讓模型無法尋找項目之間的關聯。| Integer| 10-40|
-| ItemCutOffLowerBound| 定義冷凝器的項目下限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| ItemCutOffUpperBound| 定義冷凝器的項目上限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| UserCutOffLowerBound| 定義冷凝器的使用者下限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| UserCutOffUpperBound| 定義冷凝器的使用者上限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| 說明| 建置說明。| String| 任何文字，最多 512 個字元|
-| EnableModelingInsights| 可讓您計算建議模型上的度量。| Boolean| True/False|
-| UseFeaturesInModel| 指出是否可以使用功能以加強建議模型。| Boolean| True/False|
-| ModelingFeatureList| 使用於建議組建中的功能名稱逗號分隔清單，可加強建議。| String| 功能名稱，最多 512 個字元|
-| AllowColdItemPlacement| 指出建議是否也應該透過功能相似度推入冷項目。| Boolean| True/False|
-| EnableFeatureCorrelation| 指出功能是否可用於推論。| Boolean| True/False|
-| ReasoningFeatureList| 用於推論句 (例如建議說明) 的功能名稱逗號分隔清單。| String| 功能名稱，最多 512 個字元|
-| EnableU2I| 允許個人化的建議，又稱為U2I (使用者對項目的建議)。| Boolean| True/False (預設值為 True)|
+|NumberOfModelIterations | 整體運算時間和模型精確度會反映模型執行反覆運算的次數。 數字越高，得到的精確度就越高，但需要較久的運算時間。| Integer | 10-50 |
+| NumberOfModelDimensions | 維度的數目與「功能」的數目相關，模型會嘗試尋找資料中的數目。 增加維度的數目將允許結果進一步微調成較小的叢集。 不過，太多維度會讓模型無法尋找項目之間的關聯。 | Integer | 10-40 |
+|ItemCutOffLowerBound| 定義冷凝器的項目下限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|ItemCutOffUpperBound| 定義冷凝器的項目上限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|UserCutOffLowerBound| 定義冷凝器的使用者下限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|UserCutOffUpperBound| 定義冷凝器的使用者上限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+| 說明 | 建置說明。 | String | 任何文字，最多 512 個字元 |
+| EnableModelingInsights | 可讓您計算建議模型上的度量。 | Boolean | True/False |
+| UseFeaturesInModel | 指出是否可以使用功能以加強建議模型。 | Boolean | True/False |
+| ModelingFeatureList | 使用於建議組建中的功能名稱逗號分隔清單，可加強建議。 | String | 功能名稱，最多 512 個字元 |
+| AllowColdItemPlacement | 指出建議是否也應該透過功能相似度推入冷項目。 | Boolean | True/False |
+| EnableFeatureCorrelation | 指出功能是否可用於推論。 | Boolean | True/False |
+| ReasoningFeatureList | 用於推論句 (例如建議說明) 的功能名稱逗號分隔清單。  | String | 功能名稱，最多 512 個字元 |
+| EnableU2I | 允許個人化的建議，又稱為 U2I (使用者對項目的建議)。 | Boolean | True/False (預設值為 True) |
 
-##### 11.1.4.FBT 組建參數
-
+#####11.1.4. FBT 組建參數
 下表描述建議組建的組建參數。
 
-| 金鑰| 說明| 類型| 有效的值 (預設值)|
+|金鑰|說明|類型|有效的值 (預設值)|
 |:-----|:----|:----|:---|
-| FbtSupportThreshold| 模型的保守程度。模型化時要考量項目的共同出現次數。| Integer| 3-50 (6)|
-| FbtMaxItemSetSize| 頻繁集合中的項目數界限。| Integer| 2-3 (2)|
-| FbtMinimalScore| 頻繁集合應該具有的最低分數，以包含在傳回的結果中。愈高愈好。| 兩倍| 0 以上 (0)|
-| FbtSimilarityFunction| 定義組建所使用的相似度函式。Lift 有利於機緣巧合、Co-occurrence 有助於可預測性，而 Jaccard 可在兩者間取得一個很好的平衡。| String| cooccurrence, lift, jaccard (lift)|
+|FbtSupportThreshold | 模型的保守程度。 模型化時要考量項目的共同出現次數。| Integer | 3-50 (6) |
+|FbtMaxItemSetSize | 頻繁集合中的項目數界限。| Integer | 2-3 (2) |
+|FbtMinimalScore | 頻繁集合應該具有的最低分數，以包含在傳回的結果中。 愈高愈好。| 兩倍 | 0 以上 (0) |
+|FbtSimilarityFunction | 定義組建所使用的相似度函式。 Lift 有利於機緣巧合、Co-occurrence 有助於可預測性，而 Jaccard 可在兩者間取得一個很好的平衡。 | String | cooccurrence, lift, jaccard (lift) |
 
 
-### 11.2.觸發建議組建
+###11.2. 觸發建議組建
 
   根據預設，此 API 會觸發建議模型組建。 若要觸發排名組建 (以評分功能)，應使用附帶組建類型參數的組建 API 變數。
 
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| POST| `< rootURI > /BuildModel?modelId=%27 < modelId > %27 & userDescription = 27 < 描述 > %%27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27 & userDescription = %27first%20build %27 apiVersion=%271.0%27`|
-| 標頭| `「 內容類型 」、 「 text/xml 」` (若傳送要求內文)|
+|POST     |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27`|
+|標頭   |`"Content-Type", "text/xml"` (如果傳送要求本文)|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| userDescription| 目錄的文字識別碼。請注意，如果您使用空格，必須將其編碼改成 %20。請參閱上面的範例。<br>最大長度: 50|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 如果保留空白，就會使用預設組建參數執行組建。<br><br>如果您想要設定組建參數，以 XML 傳送參數至本文，如下列範例所示。(請參閱 < 組建參數 > 一節，取得參數的說明)。`< NumberOfModelIterations > 40 < / NumberOfModelIterations >< NumberOfModelDimensions > 20 < / NumberOfModelDimensions >< MinItemAppearance > 5 < / MinItemAppearance >< MinUserAppearance > 5 < / MinUserAppearance >< EnableModelingInsights > true < / EnableModelingInsights >< UseFeaturesInModel > false < / UseFeaturesInModel >< ModelingFeatureList > feature_name_1，feature_name_2，< / ModelingFeatureList >< AllowColdItemPlacement > false < / AllowColdItemPlacement >< EnableFeatureCorrelation > false < / EnableFeatureCorrelation >< ReasoningFeatureList > feature_name_afeature_name_b，< / ReasoningFeatureList >< / BuildParametersList >`|
+| modelId | 模型的唯一識別碼  |
+| userDescription | 目錄的文字識別碼。 請注意，如果您使用空格，必須將其編碼改成 %20。 請參閱上面的範例。<br>最大長度: 50 |
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 如果保留空白，則就會使用預設值來執行組建的組建參數。<br><br>如果您想要設定組建參數，請以 XML 傳送參數至本文，如下列範例所示。 (請參閱 < 組建參數 > 一節，取得參數的說明)。`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
@@ -1956,7 +1927,7 @@ HTTP 狀態碼：200
 - 取消中 - 組建的取消要求已傳送。
 
 
-請注意，組建識別碼可以在下列路徑下找到: `Feed\entry\content\properties\Id`
+請注意，組建識別碼可以在下列路徑下找到：`Feed\entry\content\properties\Id`
 
 OData XML
 
@@ -1997,23 +1968,23 @@ OData XML
     </entry>
     </feed>
 
-### 11.3.觸發組建 (建議、排名或 FBT)
+###11.3. 觸發組建 (建議、排名或 FBT)
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| POST| `< rootURI > /BuildModel?modelId=%27 < modelId > %27 & userDescription = 27 < 描述 > %%27 buildType = %27 < buildType > %27 apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27 & userDescription = %27first%20build %27 buildType = %27Ranking %27 apiVersion=%271.0%27`|
-| 標頭| `「 內容類型 」、 「 text/xml 」` (若傳送要求內文)|
+|POST     |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&buildType=%27<buildType>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&buildType=%27Ranking%27&apiVersion=%271.0%27`|
+|標頭   |`"Content-Type", "text/xml"` (如果傳送要求本文)|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| userDescription| 目錄的文字識別碼。請注意，如果您使用空格，必須將其編碼改成 %20。請參閱上面的範例。<br>最大長度: 50|
-| buildType| 要叫用的組建類型: <br/> -'Recommendation' 為建議組建 <br> -'Ranking' 為排名組建 <br/> -'Fbt' 為 FBT 組建
-| apiVersion| 1.0|
-| | |
-| 要求本文| 如果保留空白，就會使用預設組建參數執行組建。<br><br>如果您想要設定組建參數，傳送它們至做為 XML 本文在下列範例所示。(請參閱 < 組建參數 > 一節的說明和參數的完整清單)。`< BuildParametersList >< NumberOfModelIterations > 40 < / NumberOfModelIterations >< NumberOfModelDimensions > 20 < / NumberOfModelDimensions >< MinItemAppearance > 5 < / MinItemAppearance >< MinUserAppearance > 5 < / MinUserAppearance >< / BuildParametersList >`|
+| modelId | 模型的唯一識別碼  |
+| userDescription | 目錄的文字識別碼。 請注意，如果您使用空格，必須將其編碼改成 %20。 請參閱上面的範例。<br>最大長度: 50 |
+| buildType | 要叫用的組建類型: <br/> -'Recommendation' 為建議組建 <br> -'排序' 為排名組建 <br/> -'Fbt' 為 FBT 組建
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 如果保留空白，則就會使用預設值來執行組建的組建參數。<br><br>如果您想要設定組建參數，它們以傳送 XML 到本文在下列範例所示。 (請參閱 < 組建參數 > 一節的說明和參數的完整清單)。`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
@@ -2031,7 +2002,7 @@ HTTP 狀態碼：200
 - 已取消 – 組建已取消。
 - 取消中 – 正在取消組建。
 
-請注意，組建識別碼可以在下列路徑下找到: `Feed\entry\content\properties\Id`
+請注意，組建識別碼可以在下列路徑下找到：`Feed\entry\content\properties\Id`
 
 OData XML
 
@@ -2072,41 +2043,43 @@ OData XML
     </entry>
     </feed>
 
-### 11.4.取得模型的組建狀態
 
+
+
+###11.4. 取得模型的組建狀態
 擷取指定之模型的組建及其狀態。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetModelBuildsStatus?modelId=%27 < modelId > %27 & onlyLastBuild = < bool > & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /GetModelBuildsStatus?modelId=%279559872f-7a53-4076-a3c7-19d9385c1265%27 & onlyLastBuild = true apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetModelBuildsStatus?modelId=%27<modelId>%27&onlyLastBuild=<bool>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetModelBuildsStatus?modelId=%279559872f-7a53-4076-a3c7-19d9385c1265%27&onlyLastBuild=true&apiVersion=%271.0%27`|
 
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| onlyLastBuild| 指出是要傳回模型的所有組建歷程記錄，還是只傳回最近一個組建的狀態|
-| apiVersion| 1.0|
+|   modelId         |   模型的唯一識別碼  |
+|   onlyLastBuild   |   指出是要傳回模型的所有組建歷程記錄，還是只傳回最近一個組建的狀態  |
+|   apiVersion      |   1.0                                 |
 
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 回應會包含每個組建的一個項目。 每個項目都有下列資料：
 
-- `摘要/項目/內容/屬性/使用者名稱` – 使用者的名稱。
-- `摘要/項目/內容/屬性/ModelName` – 模型的名稱。
-- `摘要/項目/內容/屬性/ModelId` – 模型的唯一識別碼。
-- `摘要/項目/內容/屬性/IsDeployed` – 組建已部署 (又稱為 作用中組建)。
-- `摘要/項目/內容/屬性/BuildId` – 組建的唯一識別碼。
-- `摘要/項目/內容/屬性/BuildType` -組建類型。
-- `摘要/項目/內容/屬性/狀態` – 組建狀態。 可以是下列其中之一：錯誤、建置中、已排入佇列、取消中、已取消、成功。
-- `摘要/項目/內容/屬性/StatusMessage` – 詳細的狀態訊息 (僅適用於特定狀態)。
-- `摘要/項目/內容/屬性/進度` – 組建進度 (%)。
-- `摘要/項目/內容/屬性/StartTime` – 組建開始時間。
-- `摘要/項目/內容/屬性/結束時間` – 組建結束時間。
-- `摘要/項目/內容/屬性/ExecutionTime` – 組建持續時間。
-- `摘要/項目/內容/屬性/ProgressStep` – 正在進行中組建的目前階段相關詳細資料。
+- `feed/entry/content/properties/UserName` – 使用者的名稱。
+- `feed/entry/content/properties/ModelName` – 模型的名稱。
+- `feed/entry/content/properties/ModelId` – 模型的唯一識別碼。
+- `feed/entry/content/properties/IsDeployed` – 組建是否已部署 (又稱為 作用中組建)。
+- `feed/entry/content/properties/BuildId` – 組建的唯一識別碼。
+- `feed/entry/content/properties/BuildType` - 組建類型。
+- `feed/entry/content/properties/Status` – 組建狀態。 可以是下列其中之一：錯誤、建置中、已排入佇列、取消中、已取消、成功。
+- `feed/entry/content/properties/StatusMessage` – 詳細狀態訊息 (僅適用於特定狀態)。
+- `feed/entry/content/properties/Progress` – 組建進度 (%)。
+- `feed/entry/content/properties/StartTime` – 組建開始時間。
+- `feed/entry/content/properties/EndTime` – 組建結束時間。
+- `feed/entry/content/properties/ExecutionTime` – 組建持續時間。
+- `feed/entry/content/properties/ProgressStep` – 正在進行中組建的目前階段相關詳細資料。
 
 有效的組建狀態：
 - 建立 – 已建立組建要求項目。
@@ -2157,40 +2130,40 @@ OData XML
         </entry>
     </feed>
 
-### 11.5.取得組建狀態
 
+###11.5. 取得組建狀態
 擷取使用者之所有模型的組建狀態。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > / GetUserBuildsStatus? onlyLastBuilds = < bool > & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > / GetUserBuildsStatus? onlyLastBuilds = true apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetUserBuildsStatus?onlyLastBuilds=<bool>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetUserBuildsStatus?onlyLastBuilds=true&apiVersion=%271.0%27`|
 
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| onlyLastBuild| 指出是要傳回模型的所有組建歷程記錄，還是只傳回最近一個組建的狀態。|
-| apiVersion| 1.0|
+|   onlyLastBuild   |   指出是要傳回模型的所有組建歷程記錄，還是只傳回最近一個組建的狀態。 |
+|   apiVersion      |   1.0                                 |
 
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 回應會包含每個組建的一個項目。 每個項目都有下列資料：
 
-- `摘要/項目/內容/屬性/使用者名稱` – 使用者的名稱。
-- `摘要/項目/內容/屬性/ModelName` – 模型的名稱。
-- `摘要/項目/內容/屬性/ModelId` – 模型的唯一識別碼。
-- `摘要/項目/內容/屬性/IsDeployed` – 是否已部署的組建。
-- `摘要/項目/內容/屬性/BuildId` – 組建的唯一識別碼。
-- `摘要/項目/內容/屬性/BuildType` -組建類型。
-- `摘要/項目/內容/屬性/狀態` – 組建狀態。 可以是下列其中之一：錯誤、建置中、已排入佇列、已取消、取消中、成功。
-- `摘要/項目/內容/屬性/StatusMessage` – 詳細的狀態訊息 (僅適用於特定狀態)。
-- `摘要/項目/內容/屬性/進度` – 組建進度 (%)。
-- `摘要/項目/內容/屬性/StartTime` – 組建開始時間。
-- `摘要/項目/內容/屬性/結束時間` – 組建結束時間。
-- `摘要/項目/內容/屬性/ExecutionTime` – 組建持續時間。
-- `摘要/項目/內容/屬性/ProgressStep` – 正在進行中組建的目前階段相關詳細資料。
+- `feed/entry/content/properties/UserName` – 使用者的名稱。
+- `feed/entry/content/properties/ModelName` – 模型的名稱。
+- `feed/entry/content/properties/ModelId` – 模型的唯一識別碼。
+- `feed/entry/content/properties/IsDeployed` – 組建是否已部署。
+- `feed/entry/content/properties/BuildId` – 組建的唯一識別碼。
+- `feed/entry/content/properties/BuildType` - 組建類型。
+- `feed/entry/content/properties/Status` – 組建狀態。 可以是下列其中之一：錯誤、建置中、已排入佇列、已取消、取消中、成功。
+- `feed/entry/content/properties/StatusMessage` – 詳細狀態訊息 (僅適用於特定狀態)。
+- `feed/entry/content/properties/Progress` – 組建進度 (%)。
+- `feed/entry/content/properties/StartTime` – 組建開始時間。
+- `feed/entry/content/properties/EndTime` – 組建結束時間。
+- `feed/entry/content/properties/ExecutionTime` – 組建持續時間。
+- `feed/entry/content/properties/ProgressStep` – 正在進行中組建的目前階段相關詳細資料。
 
 有效的組建狀態：
 - 建立 – 已建立組建要求項目。
@@ -2242,80 +2215,78 @@ OData XML
         </entry>
     </feed>
 
-### 11.6.刪除組建
 
+###11.6. 刪除組建
 刪除組建。
 
-注意: <br>您無法刪除作用中組建。在刪除之前，應該模型更新至不同的作用中組建。<br>您無法刪除進行中組建。您應該先取消組建，藉由呼叫 <strong>取消組建</strong>。
+注意： <br>您無法刪除作用中組建。 在刪除之前，應該模型更新至不同的作用中組建。<br>您無法刪除進行中組建。 您應該先取消組建，方式是呼叫 <strong>取消組建</strong>.
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| 刪除| `< rootURI > /DeleteBuild?buildId=%27 < buildId > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /DeleteBuild?buildId=%271500068%27 & apiVersion=%271.0%27`|
+|刪除     |`<rootURI>/DeleteBuild?buildId=%27<buildId>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/DeleteBuild?buildId=%271500068%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| buildId| 組建的唯一識別碼。|
-| apiVersion| 1.0|
+| buildId | 組建的唯一識別碼。 |
+| apiVersion | 1.0 |
 
 **回應：**
 
 HTTP 狀態碼：200
 
-### 11.7.取消組建
-
+###11.7. 取消組建
 取消狀態為建置中的組建。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| PUT| `< rootURI > /CancelBuild?buildId=%27 < buildId > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /CancelBuild?buildId=%271500076%27 & apiVersion=%271.0%27`|
+|PUT     |`<rootURI>/CancelBuild?buildId=%27<buildId>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/CancelBuild?buildId=%271500076%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| buildId| 組建的唯一識別碼。|
-| apiVersion| 1.0|
+| buildId | 組建的唯一識別碼。 |
+| apiVersion | 1.0 |
 
 **回應：**
 
 HTTP 狀態碼：200
 
-### 11.8.取得組建參數
-
+###11.8. 取得組建參數
 擷取組建參數。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetBuildParameters?buildId=%27 < buildId > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /GetBuildParameters?buildId=%271000653%27 & apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetBuildParameters?buildId=%27<buildId>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetBuildParameters?buildId=%271000653%27&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| buildId| 組建的唯一識別碼。|
-| apiVersion| 1.0|
+| buildId | 組建的唯一識別碼。 |
+| apiVersion | 1.0 |
 
 **回應：**
 
 HTTP 狀態碼：200
 
 此 API 會傳回索引鍵/值項目的集合。 每個項目都代表參數和它的值:
-- `摘要/項目/內容/properties/Key` – 組建參數名稱。
-- `摘要/項目/內容/properties/Value` – 組建參數值。
+- `feed/entry/content/properties/Key` – 組建參數名稱。
+- `feed/entry/content/properties/Value` – 組建參數值。
 
 下表描述每個索引鍵表示的值。
 
-| 金鑰| 說明| 類型| 有效值|
+|金鑰|說明|類型|有效值|
 |:-----|:----|:----|:---|
-| NumberOfModelIterations| 整體運算時間和模型精確度會反映模型執行反覆運算的次數。數字越高，得到的精確度就越高，但需要較久的運算時間。| Integer| 10-50|
-| NumberOfModelDimensions| 維度的數目與「功能」的數目相關，模型會嘗試尋找資料中的數目。增加維度的數目將允許結果進一步微調成較小的叢集。不過，太多維度會讓模型無法尋找項目之間的關聯。| Integer| 10-40|
-| ItemCutOffLowerBound| 定義冷凝器的項目下限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| ItemCutOffUpperBound| 定義冷凝器的項目上限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| UserCutOffLowerBound| 定義冷凝器的使用者下限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| UserCutOffUpperBound| 定義冷凝器的使用者上限。請參閱上述的使用狀況冷凝器。| Integer| 2 個以上 (0 代表停用冷凝器)|
-| 說明| 建置說明。| String| 任何文字，最多 512 個字元|
-| EnableModelingInsights| 可讓您計算建議模型上的度量。| Boolean| True/False|
-| UseFeaturesInModel| 指出是否可以使用功能以加強建議模型。| Boolean| True/False|
-| ModelingFeatureList| 使用於建議組建中的功能名稱逗號分隔清單，可加強建議。| String| 功能名稱，最多 512 個字元|
-| AllowColdItemPlacement| 指出建議是否也應該透過功能相似度推入冷項目。| Boolean| True/False|
-| EnableFeatureCorrelation| 指出功能是否可用於推論。| Boolean| True/False|
-| ReasoningFeatureList| 用於推論句 (例如建議說明) 的功能名稱逗號分隔清單。| String| 功能名稱，最多 512 個字元|
+|NumberOfModelIterations | 整體運算時間和模型精確度會反映模型執行反覆運算的次數。 數字越高，得到的精確度就越高，但需要較久的運算時間。| Integer | 10-50 |
+| NumberOfModelDimensions | 維度的數目與「功能」的數目相關，模型會嘗試尋找資料中的數目。 增加維度的數目將允許結果進一步微調成較小的叢集。 不過，太多維度會讓模型無法尋找項目之間的關聯。 | Integer | 10-40 |
+|ItemCutOffLowerBound| 定義冷凝器的項目下限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|ItemCutOffUpperBound| 定義冷凝器的項目上限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|UserCutOffLowerBound| 定義冷凝器的使用者下限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+|UserCutOffUpperBound| 定義冷凝器的使用者上限。 請參閱上述的使用狀況冷凝器。 | Integer | 2 個以上 (0 代表停用冷凝器) |
+| 說明 | 建置說明。 | String | 任何文字，最多 512 個字元 |
+| EnableModelingInsights | 可讓您計算建議模型上的度量。 | Boolean | True/False |
+| UseFeaturesInModel | 指出是否可以使用功能以加強建議模型。 | Boolean | True/False |
+| ModelingFeatureList | 使用於建議組建中的功能名稱逗號分隔清單，可加強建議。 | String | 功能名稱，最多 512 個字元 |
+| AllowColdItemPlacement | 指出建議是否也應該透過功能相似度推入冷項目。 | Boolean | True/False |
+| EnableFeatureCorrelation | 指出功能是否可用於推論。 | Boolean | True/False |
+| ReasoningFeatureList | 用於推論句 (例如建議說明) 的功能名稱逗號分隔清單。  | String | 功能名稱，最多 512 個字元 |
 
 
 OData XML
@@ -2485,23 +2456,22 @@ OData XML
         </entry>
     </feed>
 
-## 12.建議
-
-### 12.1.取得項目建議 (適用於作用中組建)
+##12. 建議
+###12.1. 取得項目建議 (適用於作用中組建)
 
 根據種子 (輸入) 項目的清單，取得 "Recommendation" 或 "Fbt" 類型之作用中組建的建議。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /ItemRecommend?modelId=%27 < modelId > %27 & itemIds = %27 < 識別碼 > %27 numberOfResults = < int > & includeMetadata = < bool > (& s) apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /ItemRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27 & itemIds 271003%= %27 & numberOfResults = 10 includeMetadata = false apiVersion=%271.0%27`|
+|GET     |`<rootURI>/ItemRecommend?modelId=%27<modelId>%27&itemIds=%27<itemId>%27&numberOfResults=<int>&includeMetadata=<bool>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/ItemRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&itemIds=%271003%27&numberOfResults=10&includeMetadata=false&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| itemIds| 要建議的以逗號分隔項目清單。<br>如果作用中組建的類型是 FBT，您可以傳送只有一個項目。<br>最大長度: 1024年|
-| numberOfResults| 必要結果的數目|
-| includeMetatadata| 未來使用，永遠為 false|
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼 |
+| itemIds | 要建議的以逗號分隔項目清單。 <br>如果作用中組建的類型是 FBT，您可以傳送只有一個項目。 <br>最大長度：1024 |
+| numberOfResults | 必要結果的數目 |
+| includeMetatadata | 未來使用，永遠為 false |
+| apiVersion | 1.0 |
 
 **回應：**
 
@@ -2509,9 +2479,9 @@ HTTP 狀態碼：200
 
 
 回應會包含每個建議項目的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id` – 建議項目 id。
+- `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
-- `Feed\entry\content\properties\Rating` – 建議的評等數字越高表示信賴度越高。
+- `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
 - `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
 
 以下範例回應包含 10 個建議項目。
@@ -2667,22 +2637,22 @@ OData XML
      </entry>
     </feed>
 
-### 12.2.取得項目建議 (屬於特定組建)
+###12.2. 取得項目建議 (屬於特定組建)
 
 取得 "Recommendation" 或 "Fbt" 等類型之特定組建的建議。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /ItemRecommend?modelId=%27 < modelId > %27 & itemIds = %27 < 識別碼 > %27 numberOfResults = < int > & includeMetadata = < bool > (& s) buildId = < int > (& s) apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /ItemRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27 & itemIds 271003%= %27 & numberOfResults = 10 includeMetadata = false buildId = 1234年 (& s) apiVersion=%271.0%27`|
+|GET     |`<rootURI>/ItemRecommend?modelId=%27<modelId>%27&itemIds=%27<itemId>%27&numberOfResults=<int>&includeMetadata=<bool>&buildId=<int>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/ItemRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&itemIds=%271003%27&numberOfResults=10&includeMetadata=false&buildId=1234&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| itemIds| 要建議的以逗號分隔項目清單。<br>如果作用中組建的類型是 FBT，您可以傳送只有一個項目。<br>最大長度: 1024年|
-| numberOfResults| 必要結果的數目|
-| includeMetatadata| 未來使用，永遠為 false
-| buildId| 要用於此建議要求的組建識別碼|
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼 |
+| itemIds | 要建議的以逗號分隔項目清單。 <br>如果作用中組建的類型是 FBT，您可以傳送只有一個項目。 <br>最大長度：1024 |
+| numberOfResults | 必要結果的數目 |
+| includeMetatadata | 未來使用，永遠為 false
+| buildId | 要用於此建議要求的組建識別碼 |
+| apiVersion | 1.0 |
 
 **回應：**
 
@@ -2690,29 +2660,29 @@ HTTP 狀態碼：200
 
 
 回應會包含每個建議項目的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id` – 建議項目 id。
+- `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
-- `Feed\entry\content\properties\Rating` – 建議的評等數字越高表示信賴度越高。
+- `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
 - `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
 
 請參閱 12.1 中的回應範例
 
-### 12.3.取得 FBT 建議 (適用於作用中組建)
+###12.3. 取得 FBT 建議 (適用於作用中組建)
 
 根據種子 (輸入) 項目，取得 "Fbt" 類型之作用中組建的建議。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /ItemFbtRecommend?modelId=%27 < modelId > %27 & 項目識別碼 = %27 < 識別碼 > %27 numberOfResults = < int > (& s) minimalScore < 雙 > = (& s) includeMetadata = < bool > (& s) apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /ItemFbtRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27 和項目識別碼 = %271003 %27 & numberOfResults = 10 minimalScore < 雙 > = (& s) includeMetadata = false apiVersion=%271.0%27`|
+|GET     |`<rootURI>/ItemFbtRecommend?modelId=%27<modelId>%27&itemId=%27<itemId>%27&numberOfResults=<int>&minimalScore=<double>&includeMetadata=<bool>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/ItemFbtRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&itemId=%271003%27&numberOfResults=10&minimalScore=<double>&includeMetadata=false&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| itemId| 建議的項目。<br>最大長度: 1024年|
-| numberOfResults| 必要結果的數目|
-| minimalScore| 頻繁集合應該具有的最低分數，以包含在傳回的結果中|
-| includeMetatadata| 未來使用，永遠為 false|
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼 |
+| itemId | 建議的項目。 <br>最大長度：1024 |
+| numberOfResults | 必要結果的數目 |
+| minimalScore | 頻繁集合應該具有的最低分數，以包含在傳回的結果中 |
+| includeMetatadata | 未來使用，永遠為 false |
+| apiVersion | 1.0 |
 
 **回應：**
 
@@ -2720,11 +2690,11 @@ HTTP 狀態碼：200
 
 
 回應會包含每個建議項目集 (通常會與種子/輸入項目一起購買的一組項目) 的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id1` – 建議項目 id。
+- `Feed\entry\content\properties\Id1` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name1` – 項目的名稱。
-- `Feed\entry\content\properties\Id2` – 第 2 個建議項目識別碼 (選擇性)。
+- `Feed\entry\content\properties\Id2` (選擇性) – 第 2 個建議項目識別碼。
 - `Feed\entry\content\properties\Name2` – (選擇性) 第 2 個項目的名稱。
-- `Feed\entry\content\properties\Rating` – 建議的評等數字越高表示信賴度越高。
+- `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
 - `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
 
 以下範例回應包含 3 個建議項目集。
@@ -2788,23 +2758,23 @@ OData XML
      </entry>
     </feed>
 
-### 12.4.取得 FBT 建議 (屬於特定組建)
+###12.4. 取得 FBT 建議 (屬於特定組建)
 
 取得 "Fbt" 類型之特定組建的建議。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /ItemFbtRecommend?modelId=%27 < modelId > %27 & 項目識別碼 = %27 < 識別碼 > %27 numberOfResults = < int > (& s) minimalScore < 雙 > = (& s) includeMetadata = < bool > (& s) buildId = < int > (& s) apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /ItemFbtRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27 和項目識別碼 = %271003 %27 & numberOfResults = 10 minimalScore = 0.1 includeMetadata = false buildId = 1234年 (& s) apiVersion=%271.0%27`|
+|GET     |`<rootURI>/ItemFbtRecommend?modelId=%27<modelId>%27&itemId=%27<itemId>%27&numberOfResults=<int>&minimalScore=<double>&includeMetadata=<bool>&buildId=<int>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/ItemFbtRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&itemId=%271003%27&numberOfResults=10&minimalScore=0.1&includeMetadata=false&buildId=1234&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| itemId| 建議的項目。<br>最大長度: 1024年|
-| numberOfResults| 必要結果的數目|
-| minimalScore| 頻繁集合應該具有的最低分數，以包含在傳回的結果中|
-| includeMetatadata| 未來使用，永遠為 false|
-| buildId| 要用於此建議要求的組建識別碼|
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼 |
+| itemId | 建議的項目。 <br>最大長度：1024 |
+| numberOfResults | 必要結果的數目 |
+| minimalScore | 頻繁集合應該具有的最低分數，以包含在傳回的結果中 |
+| includeMetatadata | 未來使用，永遠為 false |
+| buildId | 要用於此建議要求的組建識別碼 |
+| apiVersion | 1.0 |
 
 **回應：**
 
@@ -2812,36 +2782,36 @@ HTTP 狀態碼：200
 
 
 回應會包含每個建議項目集 (通常會與種子/輸入項目一起購買的一組項目) 的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id1` – 建議項目 id。
+- `Feed\entry\content\properties\Id1` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name1` – 項目的名稱。
-- `Feed\entry\content\properties\Id2` – 第 2 個建議項目識別碼 (選擇性)。
+- `Feed\entry\content\properties\Id2` (選擇性) – 第 2 個建議項目識別碼。
 - `Feed\entry\content\properties\Name2` – (選擇性) 第 2 個項目的名稱。
-- `Feed\entry\content\properties\Rating` – 建議的評等數字越高表示信賴度越高。
+- `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
 - `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
 
 請參閱 12.3 中的回應範例
 
-### 12.5.取得使用者建議 (適用於作用中組建)
+###12.5. 取得使用者建議 (適用於作用中組建)
 
 取得標示為作用中組建之 "Recommendation" 類型之組建的使用者建議。
 
 這個 API 會根據使用者的使用歷程記錄，傳回預測的項目清單。
 
-注意：
+注意： 
  1. FBT 組建沒有使用者建議。
  2. 如果作用中組建是 FBT，這個方法會傳回錯誤。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /UserRecommend?modelId=%27 < modelId > %27 & userId = %27 < 識別碼 > %27 numberOfResults = < int > & includeMetadata = < bool > (& s) apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /UserRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27 和使用者識別碼 = %27u1101 %27 numberOfResults = 10 includeMetadata = false apiVersion=%271.0%27`|
+|GET     |`<rootURI>/UserRecommend?modelId=%27<modelId>%27&userId=%27<userId>%27&numberOfResults=<int>&includeMetadata=<bool>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/UserRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&userId=%27u1101%27&numberOfResults=10&includeMetadata=false&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| userId| 使用者的唯一識別碼|
-| numberOfResults| 必要結果的數目|
-| includeMetatadata| 未來使用，永遠為 false|
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼 |
+| userId  | 使用者的唯一識別碼 |
+| numberOfResults | 必要結果的數目 |
+| includeMetatadata | 未來使用，永遠為 false |
+| apiVersion | 1.0 |
 
 **回應：**
 
@@ -2849,36 +2819,36 @@ HTTP 狀態碼：200
 
 
 回應會包含每個建議項目的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id` – 建議項目 id。
+- `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
-- `Feed\entry\content\properties\Rating` – 建議的評等數字越高表示信賴度越高。
+- `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
 - `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
 
 請參閱 12.1 中的回應範例
 
-### 12.6.使用項目清單取得使用者建議 (適用於作用中組建)
+###12.6. 使用項目清單取得使用者建議 (適用於作用中組建)
 
 使用額外的項目清單，取得標示為作用中組建之 "Recommendation" 類型之組建的使用者建議。
 
 這個 API 會根據使用者的使用歷程記錄和額外提供的項目，傳回預測的項目清單。
 
-注意：
+注意： 
  1. FBT 組建沒有使用者建議。
  2. 如果作用中組建是 FBT，這個方法會傳回錯誤。
 
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /UserRecommend?modelId=%27 < modelId > %27 & userId = %27 < 識別碼 > & itemsIds = %27 < itemsIds > %27 numberOfResults = < int > & includeMetadata = < bool > (& s) apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /UserRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27 和使用者識別碼 = %27u1101 %27 itemsIds = %271003 %2 C 1000 %27 & numberOfResults = 10 includeMetadata = false apiVersion=%271.0%27`|
+|GET     |`<rootURI>/UserRecommend?modelId=%27<modelId>%27&userId=%27<userId>&itemsIds=%27<itemsIds>%27&numberOfResults=<int>&includeMetadata=<bool>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/UserRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&userId=%27u1101%27&itemsIds=%271003%2C1000%27&numberOfResults=10&includeMetadata=false&apiVersion=%271.0%27`|
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| userId| 使用者的唯一識別碼|
-| itemIds| 要建議的以逗號分隔項目清單。最大長度：1024|
-| numberOfResults| 必要結果的數目|
-| includeMetatadata| 未來使用，永遠為 false|
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼 |
+| userId  | 使用者的唯一識別碼 |
+| itemIds | 要建議的以逗號分隔項目清單。 最大長度：1024 |
+| numberOfResults | 必要結果的數目 |
+| includeMetatadata | 未來使用，永遠為 false |
+| apiVersion | 1.0 |
 
 **回應：**
 
@@ -2886,14 +2856,14 @@ HTTP 狀態碼：200
 
 
 回應會包含每個建議項目的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id` – 建議項目 id。
+- `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
-- `Feed\entry\content\properties\Rating` – 建議的評等數字越高表示信賴度越高。
+- `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
 - `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
 
 請參閱 12.1 中的回應範例
 
-### 12.7.取得使用者建議 (屬於特定組建)
+###12.7. 取得使用者建議 (屬於特定組建)
 
 取得 "Recommendation" 類型之特定組建的使用者建議。
 
@@ -2901,19 +2871,19 @@ HTTP 狀態碼：200
 
 注意：FBT 組建沒有使用者建議。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /UserRecommend?modelId=%27 < modelId > %27 & userId = %27 < 識別碼 > %27 numberOfResults = < int > (& s) includeMetadata = < bool > & buildId = < int > (& s) apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /UserRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27 和使用者識別碼 = %27u1101 %27 numberOfResults = 10 includeMetadata = false buildId = 50012 apiVersion=%271.0%27`|
+|GET     |`<rootURI>/UserRecommend?modelId=%27<modelId>%27&userId=%27<userId>%27&numberOfResults=<int>&includeMetadata=<bool>&buildId=<int>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/UserRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&userId=%27u1101%27&numberOfResults=10&includeMetadata=false&buildId=50012&apiVersion=%271.0%27`|
 
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| userId| 使用者的唯一識別碼|
-| numberOfResults| 必要結果的數目|
-| includeMetatadata| 未來使用，永遠為 false|
-| buildId| 要用於此建議要求的組建識別碼|
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼 |
+| userId  | 使用者的唯一識別碼 |
+| numberOfResults | 必要結果的數目 |
+| includeMetatadata | 未來使用，永遠為 false |
+| buildId | 要用於此建議要求的組建識別碼 |
+| apiVersion | 1.0 |
 
 **回應：**
 
@@ -2921,15 +2891,15 @@ HTTP 狀態碼：200
 
 
 回應會包含每個建議項目的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id` – 建議項目 id。
+- `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
-- `Feed\entry\content\properties\Rating` – 建議的評等數字越高表示信賴度越高。
+- `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
 - `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
 
 請參閱 12.1 中的回應範例
 
 
-### 12.8.使用項目清單取得使用者建議 (屬於特定組建)
+###12.8. 使用項目清單取得使用者建議 (屬於特定組建)
 
 取得 "Recommendation" 類型和額外的項目清單之特定組建的使用者建議。
 
@@ -2937,21 +2907,21 @@ HTTP 狀態碼：200
 
 注意：FBT 組建沒有使用者建議。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /UserRecommend?modelId=%27 < modelId > %27 & userId = %27 < 識別碼 > %27 itemsIds = %27 < itemsIds > %27 numberOfResults = < int > (& s) includeMetadata = < bool > (& s) buildId = < int > (& s) apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /UserRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27 和使用者識別碼 = %27u1101 %27 itemsIds = %271003 %27 & numberOfResults = 10 includeMetadata = false buildId = 50012 apiVersion=%271.0%27`|
+|GET     |`<rootURI>/UserRecommend?modelId=%27<modelId>%27&userId=%27<userId>%27&itemsIds=%27<itemsIds>%27&numberOfResults=<int>&includeMetadata=<bool>&buildId=<int>&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/UserRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&userId=%27u1101%27&itemsIds=%271003%27&numberOfResults=10&includeMetadata=false&buildId=50012&apiVersion=%271.0%27`|
 
 
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| userId| 使用者的唯一識別碼|
-| itemIds| 要建議的以逗號分隔項目清單。最大長度：1024|
-| numberOfResults| 必要結果的數目|
-| includeMetatadata| 未來使用，永遠為 false|
-| buildId| 要用於此建議要求的組建識別碼|
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼 |
+| userId  | 使用者的唯一識別碼 |
+| itemIds | 要建議的以逗號分隔項目清單。 最大長度：1024 |
+| numberOfResults | 必要結果的數目 |
+| includeMetatadata | 未來使用，永遠為 false |
+| buildId | 要用於此建議要求的組建識別碼 |
+| apiVersion | 1.0 |
 
 **回應：**
 
@@ -2959,35 +2929,33 @@ HTTP 狀態碼：200
 
 
 回應會包含每個建議項目的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id` – 建議項目 id。
+- `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
-- `Feed\entry\content\properties\Rating` – 建議的評等數字越高表示信賴度越高。
+- `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
 - `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
 
 請參閱 12.1 中的回應範例
 
-## 13.使用者使用歷程記錄
-
+##13. 使用者使用歷程記錄
 一旦建置建議模型，系統即會允許擷取用於組建的使用者歷程記錄 (與特定使用者相關聯的項目)。
 這個 API 可擷取使用者歷程記錄
 
 注意：目前只有建議組建可使用使用者歷程記錄。
 
-### 13.1 擷取使用者歷程記錄
-
+###13.1 擷取使用者歷程記錄
 擷取用於作用中組建或指定使用者識別碼之指定組建中的項目清單。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| 取得作用中組建的使用者歷程記錄。<br/>`< rootURI > /GetUserHistory?modelId=%27 < model_id > %27 & userId = %27 < 識別碼 > %27 apiVersion=%271.0%27`<br/><br/>取得指定組建的使用者歷程記錄 `< rootURI > /GetUserHistory?modelId=%27 < model_id > %27 & userId = %27 < 識別碼 > %27 buildId = < int > (& s) apiVersion=%271.0%27`<br/><br/>範例:`< rootURI > /GetUserHistory?modelId=%2727967136e8-f868-4258-9331-10d567f87fae%27 (& s) (& s) 使用者識別碼 = %27u_1013 %27 apiVersion=%271.0%277`|
+|GET     | 取得作用中組建的使用者歷程記錄。<br/>`<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&apiVersion=%271.0%27`<br/><br/>取得指定組建的使用者歷程記錄 `<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&buildId=<int>&apiVersion=%271.0%27`<br/><br/>範例：`<rootURI>/GetUserHistory?modelId=%2727967136e8-f868-4258-9331-10d567f87fae%27&&userId=%27u_1013%27&apiVersion=%271.0%277`|
 
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼。|
-| userId| 使用者的唯一識別碼。
-| buildId| 選擇性參數，可用來表示應從中擷取使用者歷程記錄的組建
-| apiVersion| 1.0|
+| modelId | 模型的唯一識別碼。|
+| userId | 使用者的唯一識別碼。
+| buildId | 選擇性參數，可用來表示應從中擷取使用者歷程記錄的組建
+| apiVersion | 1.0 |
 
 
 **回應：**
@@ -2995,10 +2963,10 @@ HTTP 狀態碼：200
 HTTP 狀態碼：200
 
 回應會包含每個建議項目的一個項目。 每個項目都有下列資料：
-- `Feed\entry\content\properties\Id` – 建議項目 id。
+- `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
-- `Feed\entry\content\properties\Rating` – n/A。
-- `Feed\entry\content\properties\Reasoning` – n/A。
+- `Feed\entry\content\properties\Rating` -N/A。
+- `Feed\entry\content\properties\Reasoning` -N/A。
 
 OData XML
 
@@ -3025,32 +2993,29 @@ OData XML
             </m:properties>
         </content>
     </entry>
-
 </feed>
 
-## 14.通知
-
+##14. 通知
 Azure Machine Learning 建議會在系統中持續發生錯誤時建立通知。 有 3 種通知類型:
 1.  組建失敗 – 每個組建失敗都會觸發此通知。
 2.  資料擷取處理失敗 - 當我們在處理每一模型的使用事件時，如果最後 5 分鐘有超過 100 個錯誤，就會觸發此通知。
 3.  建議取用失敗 - 當我們在處理每一模型的建議要求時，如果最後 5 分鐘有超過 100 個錯誤，就會觸發此通知。
 
 
-### 14.1.取得通知
-
+###14.1. 取得通知
 擷取所有模型或單一模型的所有通知。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| GET| `< rootURI > /GetNotifications?modelId=%27 < model_id > %27 & apiVersion=%271.0%27`<br><br>取得所有模型的所有通知:<br>`< rootURI > /GetNotifications?apiVersion=%271.0%27`<br><br>都取得特定模型通知的範例:<br>`< rootURI > /GetNotifications?modelId=%27967136e8-f868-4258-9331-10d567f87fae%27 & apiVersion=%271.0%277`|
+|GET     |`<rootURI>/GetNotifications?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>取得所有模型的所有通知：<br>`<rootURI>/GetNotifications?apiVersion=%271.0%27`<br><br>取得特定模型通知的範例：<br>`<rootURI>/GetNotifications?modelId=%27967136e8-f868-4258-9331-10d567f87fae%27&apiVersion=%271.0%277`|
 
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 選擇性參數。如果省略此參數，您將會取得所有模型的所有通知。<br>有效值: 模型的唯一識別碼。|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| modelId | 選擇性參數。 如果省略此參數，您將會取得所有模型的所有通知。 <br>有效值: 模型的唯一識別碼。|
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
 **回應：**
 
@@ -3064,7 +3029,7 @@ OData XML
         * feed\entry\content\properties\Message – Notification message.
         * feed\entry\content\properties\DateCreated – Date that this notification was created in UTC format.
         * feed\entry\content\properties\NotificationType – Notification types. Values are BuildFailure, RecommendationFailure, and DataAquisitionFailure.
-    
+
     <feed xmlns:base="https://api.datamarket.azure.com/amla/recommendations/v3/GetNotifications" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
         <title type="text" />
         <subtitle type="text">Get a list of Notifications for a user</subtitle>
@@ -3089,57 +3054,50 @@ OData XML
         </entry>
     </feed>
 
-### 14.2.刪除模型通知
-
+###14.2. 刪除模型通知
 刪除模型的所有已讀通知。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| 刪除| `< rootURI > /DeleteModelNotifications?modelId=%< model_id > %27 & apiVersion=%271.0%27`<br><br>範例:<br>`< rootURI > /DeleteModelNotifications?modelId=%27967136e8-f868-4258-9331-10d567f87fae%27 & apiVersion=%271.0%27`|
+|刪除     |`<rootURI>/DeleteModelNotifications?modelId=%<model_id>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/DeleteModelNotifications?modelId=%27967136e8-f868-4258-9331-10d567f87fae%27&apiVersion=%271.0%27`|
 
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId| 模型的唯一識別碼|
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| modelId | 模型的唯一識別碼 |
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
-### 14.3.刪除使用者通知
-
+###14.3. 刪除使用者通知
 刪除所有模型的所有通知。
 
-| HTTP 方法| URI|
+| HTTP 方法 | URI |
 |:--------|:--------|
-| 刪除| `< rootURI > /DeleteUserNotifications?apiVersion=%271.0%27`|
+|刪除     |`<rootURI>/DeleteUserNotifications?apiVersion=%271.0%27`|
 
 
-| 參數名稱| 有效值|
+|   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| apiVersion| 1.0|
-| | |
-| 要求本文| 無|
+| apiVersion | 1.0 |
+|||
+| 要求本文 | 無 |
 
-**回應**：
+**回應**:
 
 HTTP 狀態碼：200
 
 
 
 
-## 15.法律
-
-這份文件係依「現狀」提供。資訊與本文件中，包括 URL 及其他網際網路網站參考資料，以表示有變更恕不另行通知。<br><br>
-此處描述的一些範例僅供說明之用，純屬虛構。任何真實關聯或連結是純屬巧合。<br><br>
-本文件未提供給您任何 Microsoft 產品中任何智慧財產的任何法定權利。您可以複製並使用這份文件供內部參考之用。<br><br>
+##15. 法律
+這份文件係依 「現狀」提供。 本文件中提供的資訊與畫面 (包括 URL 及其他網際網路網站參考資料) 如有變更，恕不另行通知。<br><br>
+此處描述的一些範例僅供說明之用，純屬虛構。 並未影射或關聯任何真實的人、事、物。<br><br>
+本文件未提供給您任何 Microsoft 產品中任何智慧財產的任何法定權利。 您可以複製並使用這份文件，供內部參考之用。<br><br>
 © 2015 Microsoft。 著作權所有，並保留一切權利。
-
-
-
-
-
+ 
 

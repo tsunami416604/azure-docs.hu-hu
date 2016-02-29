@@ -1,6 +1,6 @@
 <properties
     pageTitle="管理 .NET SDK：串流分析的管理 .NET SDK | Microsoft Azure"
-    description="Azure 串流分析管理 .NET SDK 入門。了解如何設定及執行分析工作：建立專案、輸入、輸出及轉換。"
+    description="Azure 串流分析管理 .NET SDK 入門。 了解如何設定及執行分析工作：建立專案、輸入、輸出及轉換。"
     keywords=".net SDK, analytics API"
     services="stream-analytics"
     documentationCenter=""
@@ -18,35 +18,35 @@
     ms.author="jeffstok"/>
 
 
-
 # 管理 .NET SDK：透過適用於 .NET 的 Azure 串流分析 API 來設定及執行分析工作
 
 了解如何使用管理 .NET SDK，透過串流分析 API 來設定及執行分析工作。 設定專案，建立輸入與輸出來源、轉換，以及開始和停止工作。 對於您的分析工作，您可以從 Blob 儲存體或從事件中樞串流資料。
 
 請參閱 [管理參考文件資料流分析 API for.NET](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
 
-Azure 資料流分析是完全受管理的服務，可用來對雲端中的串流資料進行低延遲、高可用性、可延展的複雜事件處理。 串流分析可讓客戶設定串流工作以分析資料流，並可讓客戶以接近即時的方式進行分析。
+Azure 資料流分析是完全受管理的服務，可用來對雲端中的串流資料進行低延遲、高可用性、可延展的複雜事件處理。 串流分析可讓客戶設定串流工作以分析資料流，並可讓客戶以接近即時的方式進行分析。  
 
 
 ## 必要條件
-
 開始閱讀本文之前，您必須符合下列必要條件：
 
 - 安裝 Visual Studio 2012 或 2013。
 - 下載並安裝 [Azure.NET SDK](http://azure.microsoft.com/downloads/)。
-- 在您的訂閱中建立 Azure 資源群組。 下列是 PowerShell 指令碼範例。 Azure PowerShell 資訊，請參閱 [安裝和設定 Azure PowerShell](../install-configure-powershell.md);
+- 在您的訂閱中建立 Azure 資源群組。 下列是 PowerShell 指令碼範例。 Azure PowerShell 資訊，請參閱 [安裝和設定 Azure PowerShell](../install-configure-powershell.md);  
 
-      # Log in to your Azure account
-      Add-AzureAccount
-    
-      # Select the Azure subscription you want to use to create the resource group
-      Select-AzureSubscription -SubscriptionName <subscription name>
-    
-          # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
-          #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
-    
-      # Create an Azure resource group
-      New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
+
+        # Log in to your Azure account
+        Add-AzureAccount
+
+        # Select the Azure subscription you want to use to create the resource group
+        Select-AzureSubscription -SubscriptionName <subscription name>
+
+            # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
+            #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
+
+        # Create an Azure resource group
+        New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
+
 
 -   設定要使用的輸入來源和輸出目標。 無法進一步說明請參閱 [加入輸入](stream-analytics-add-inputs.md) 設定範例輸入及 [加入輸出](stream-analytics-add-outputs.md) 設定的範例輸出。
 
@@ -61,10 +61,10 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
         Install-Package Microsoft.Azure.Management.StreamAnalytics
         Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-4. 將下列 **appSettings** 區段加入 App.config 檔案：
+4. 新增下列 **appSettings** 區段加入 App.config 檔案:
 
         <appSettings>
-          
+          <!--CSM Prod related values-->
           <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
           <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
           <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
@@ -74,11 +74,12 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
           <add key="ActiveDirectoryTenantId" value="YOU TENANT ID" />
         </appSettings>
 
-    以您的 Azure 訂用帳戶與租用戶識別碼取代 **SubscriptionId** 和 **ActiveDirectoryTenantId** 的值。 您可以藉由執行下列 Azure PowerShell Cmdlet 來取得這些值：
+
+    值取代 **SubscriptionId** 和 **ActiveDirectoryTenantId** 與您的 Azure 訂用帳戶和租用戶識別碼。 您可以藉由執行下列 Azure PowerShell Cmdlet 來取得這些值：
 
         Get-AzureAccount
 
-5. 將下列 **using** 陳述式加入專案的原始程式檔 (Program.cs) 中。
+5. 新增下列 **使用** 原始程式檔 (Program.cs) 專案中的陳述式:
 
         using System;
         using System.Configuration;
@@ -90,68 +91,67 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
 
 6.  新增驗證協助程式方法：
 
-    public static string GetAuthorizationHeader()
-    {
-        AuthenticationResult result = null;
-        var thread = new Thread(() =>
+        public static string GetAuthorizationHeader()
         {
-            try
+            AuthenticationResult result = null;
+            var thread = new Thread(() =>
             {
-                var context = new AuthenticationContext(
-                    ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
-                    ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
-    
-                result = context.AcquireToken(
-                    resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
-                    clientId: ConfigurationManager.AppSettings["AsaClientId"],
-                    redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-                    promptBehavior: PromptBehavior.Always);
-            }
-            catch (Exception threadEx)
-            {
-                Console.WriteLine(threadEx.Message);
-            }
-        });
-    
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Name = "AcquireTokenThread";
-        thread.Start();
-        thread.Join();
-    
-        if (result != null)
-        {
-            return result.AccessToken;
-        }
-    
-        throw new InvalidOperationException("Failed to acquire token");
-    }  
+                try
+                {
+                    var context = new AuthenticationContext(
+                        ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
+                        ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
 
+                    result = context.AcquireToken(
+                        resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+                        clientId: ConfigurationManager.AppSettings["AsaClientId"],
+                        redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
+                        promptBehavior: PromptBehavior.Always);
+                }
+                catch (Exception threadEx)
+                {
+                    Console.WriteLine(threadEx.Message);
+                }
+            });
+
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Name = "AcquireTokenThread";
+            thread.Start();
+            thread.Join();
+
+            if (result != null)
+            {
+                return result.AccessToken;
+            }
+
+            throw new InvalidOperationException("Failed to acquire token");
+        }  
 
 
 ## 建立資料流分析管理用戶端
 
-**StreamAnalyticsManagementClient** 物件可讓您管理工作和工作元件，例如輸入、輸出和轉換。
+A **StreamAnalyticsManagementClient** 物件可讓您管理工作和工作元件，例如輸入、 輸出和轉換。
 
-在 **Main** 方法的開頭加入下列程式碼：
+將下列程式碼加入至開頭 **Main** 方法:
 
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
     string streamAnalyticsInputName = "<YOUR JOB INPUT NAME>";
     string streamAnalyticsOutputName = "<YOUR JOB OUTPUT NAME>";
     string streamAnalyticsTransformationName = "<YOUR JOB TRANSFORMATION NAME>";
-    
+
     // Get authentication token
     TokenCloudCredentials aadTokenCredentials =
         new TokenCloudCredentials(
             ConfigurationManager.AppSettings["SubscriptionId"],
             GetAuthorizationHeader());
-    
+
     // Create Stream Analytics management client
     StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
 
-**resourceGroupName** 變數的值應該會與您在先決條件步驟中建立或選取的資源群組名稱相同。
+ **ResourceGroupName** 變數的值應該是您建立或選取在先決條件步驟中的資源群組名稱相同。
 
-本文的其餘章節會假設 **Main** 方法的開頭已有這段程式碼。
+這篇文章的其餘章節會假設此程式碼會在開頭 **Main** 方法。
 
 ## 建立串流分析工作
 
@@ -174,12 +174,13 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
             }
         }
     };
-    
+
     JobCreateOrUpdateResponse jobCreateResponse = client.StreamingJobs.CreateOrUpdate(resourceGroupName, jobCreateParameters);
+
 
 ## 建立資料流分析輸入來源
 
-下列程式碼會使用 Blob 輸入來源類型和 CSV 序列化，來建立資料流分析輸入來源。 若要建立事件中心輸入來源，請使用 **EventHubStreamInputDataSource**，而不是 **BlobStreamInputDataSource**。 同樣地，您可以自訂輸入來源的序列化類型。
+下列程式碼會使用 Blob 輸入來源類型和 CSV 序列化，來建立資料流分析輸入來源。 若要建立事件中心輸入的來源，請使用 **EventHubStreamInputDataSource** 而不是 **BlobStreamInputDataSource**。 同樣地，您可以自訂輸入來源的序列化類型。
 
     // Create a Stream Analytics input source
     InputCreateOrUpdateParameters jobInputCreateParameters = new InputCreateOrUpdateParameters()
@@ -216,7 +217,7 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
             }
         }
     };
-    
+
     InputCreateOrUpdateResponse inputCreateResponse =
         client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
 
@@ -225,7 +226,7 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
 
 ## 測試資料流分析輸入來源
 
-**TestConnection** 方法可測試資料流分析作業是否能夠連接到輸入來源，以及測試輸入來源類型特定的其他層面。 例如，在您在先前步驟中建立的 Blob 輸入來源中，此方法會檢查可用來連接到儲存體帳戶的儲存體帳戶名稱和金鑰組，以及檢查指定的容器是否存在。
+ **TestConnection** 方法會測試是否能夠連接到輸入來源特定的輸入的來源類型，以及其他層面的資料流分析工作。 例如，在您在先前步驟中建立的 Blob 輸入來源中，此方法會檢查可用來連接到儲存體帳戶的儲存體帳戶名稱和金鑰組，以及檢查指定的容器是否存在。
 
     // Test input source connection
     DataSourceTestConnectionResponse inputTestResponse =
@@ -259,13 +260,13 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
             }
         }
     };
-    
+
     OutputCreateOrUpdateResponse outputCreateResponse =
         client.Outputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobOutputCreateParameters);
 
 ## 測試資料流分析輸出目標
 
-資料流分析輸出目標也有可測試連線的 **TestConnection** 方法。
+資料流分析輸出目標也有 **TestConnection** 測試連線的方法。
 
     // Test output target connection
     DataSourceTestConnectionResponse outputTestResponse =
@@ -289,15 +290,14 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
             }
         }
     };
-    
+
     var transformationCreateResp =
         client.Transformations.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, transformationCreateParameters);
 
 和輸入和輸出一樣，轉換也會繫結至建立該轉換的特定串流分析工作。
 
 ## 啟動資料流分析工作
-
-建立資料流分析工作及其輸入、輸出和轉換之後，您可以藉由呼叫 **Start** 方法來啟動工作。
+建立資料流分析工作及其輸入、 輸出，以及轉換之後, 您才能啟動工作，藉由呼叫 **啟動** 方法。
 
 下列範例程式碼會啟動自訂輸出開始時間設為 2012 年 12 月 12 日 12:12:12 UTC 的資料流分析工作：
 
@@ -307,25 +307,25 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
         OutputStartMode = OutputStartMode.CustomTime,
         OutputStartTime = new DateTime(2012, 12, 12, 0, 0, 0, DateTimeKind.Utc)
     };
-    
+
     LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName, jobStartParameters);
 
-## 停止資料流分析工作
 
-您可以藉由呼叫 **Stop** 方法來停止執行中的資料流分析工作。
+
+## 停止資料流分析工作
+您可以停止執行中的資料流分析工作，藉由呼叫 **停止** 方法。
 
     // Stop a Stream Analytics job
     LongRunningOperationResponse jobStopResponse = client.StreamingJobs.Stop(resourceGroupName, streamAnalyticsJobName);
 
 ## 刪除資料流分析工作
-
-**Delete** 方法將會刪除作業及其基礎子資源，包括輸入、輸出，以及轉換工作。
+ **刪除** 方法將會刪除作業，以及基礎子資源，包括輸入、 輸出，以及轉換工作。
 
     // Delete a Stream Analytics job
     LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
 
-## 取得支援
 
+## 取得支援
 如需進一步的協助，請嘗試我們 [Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 
@@ -333,30 +333,34 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
 
 您已經學到使用 .NET SDK 建立及執行分析工作的基本知識。 若要深入了解，請參閱下列文章：
 
-- [Azure 串流分析簡介](stream-analytics-introduction.md)
-- [開始使用 Azure 串流分析](stream-analytics-get-started.md)
-- [調整 Azure 串流分析工作](stream-analytics-scale-jobs.md)
+- [Azure 資料流分析簡介](stream-analytics-introduction.md)
+- [開始使用 Azure 資料流分析](stream-analytics-get-started.md)
+- [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
 - [Azure 串流分析管理.NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
-- [Azure 串流分析查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+- [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 
+<!--Image references-->
+[5]: ./media/markdown-template-for-new-articles/octocats.png
+[6]: ./media/markdown-template-for-new-articles/pretty49.png
+[7]: ./media/markdown-template-for-new-articles/channel-9.png
 
 
+<!--Link references-->
+[azure.blob.storage]: http://azure.microsoft.com/documentation/services/storage/
+[azure.blob.storage.use]: http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
 
-[5]: ./media/markdown-template-for-new-articles/octocats.png 
-[6]: ./media/markdown-template-for-new-articles/pretty49.png 
-[7]: ./media/markdown-template-for-new-articles/channel-9.png 
-[azure.blob.storage]: http://azure.microsoft.com/documentation/services/storage/ 
-[azure.blob.storage.use]: http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/ 
-[azure.event.hubs]: http://azure.microsoft.com/services/event-hubs/ 
-[azure.event.hubs.developer.guide]: http://msdn.microsoft.com/library/azure/dn789972.aspx 
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299 
-[stream.analytics.forum]: http://go.microsoft.com/fwlink/?LinkId=512151 
-[stream.analytics.introduction]: stream-analytics-introduction.md 
-[stream.analytics.get.started]: stream-analytics-get-started.md 
-[stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md 
-[stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md 
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299 
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301 
+[azure.event.hubs]: http://azure.microsoft.com/services/event-hubs/
+[azure.event.hubs.developer.guide]: http://msdn.microsoft.com/library/azure/dn789972.aspx
+
+[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.forum]: http://go.microsoft.com/fwlink/?LinkId=512151
+
+[stream.analytics.introduction]: stream-analytics-introduction.md
+[stream.analytics.get.started]: stream-analytics-get-started.md
+[stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
+[stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
+[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 

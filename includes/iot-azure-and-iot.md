@@ -30,7 +30,7 @@ IoT 專案所面臨的其中一個最大挑戰，就是如何可靠且安全地�
 
 雲端中的 IoT 方案後端：
 
-- 接收大規模來自裝置的遙測資料，並判斷如何處理與儲存該資料。
+- 接收大規模來自裝置的遙測資料，並判斷如何處理與儲存該資料。 
 - 也可能讓您由雲端將命令傳送到特定裝置。
 - 提供可讓您佈建裝置並且控制哪些裝置能夠連線到您基礎結構的裝置註冊功能。
 - 可讓您追蹤您的裝置狀態並監視其活動。
@@ -41,8 +41,8 @@ IoT 解決方案可以包含自動意見反應迴圈。 例如，後端中的機
 
 許多 IoT 解決方案可讓使用者檢視和分析從他們的裝置所收集的資料。 這些檢視可以採用儀表板或 BI 報告的格式。
 
+[img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png
 
-[img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png 
-[lnk-machinelearning]: http://azure.microsoft.com/services/machine-learning/ 
-[azure iot suite]: http://azure.microsoft.com/solutions/iot 
+[lnk-machinelearning]: http://azure.microsoft.com/services/machine-learning/
+[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
 

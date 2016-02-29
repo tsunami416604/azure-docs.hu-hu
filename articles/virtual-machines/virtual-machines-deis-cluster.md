@@ -17,15 +17,14 @@
    ms.date="06/24/2015"
    ms.author="hbai"/>
 
-
 # 部署 3 個節點的 Deis 叢集
 
-本文將逐步引導您完成佈建 [Deis](http://deis.io/) Azure 叢集上的。 它涵蓋建立必要的憑證，以及在新佈建的叢集上部署及調整 **Go** 應用程式範例的所有步驟。
+本文將逐步引導您完成佈建 [Deis](http://deis.io/) Azure 叢集上的。 其中涵蓋建立必要的憑證，才能部署及調整範例的所有步驟 **移** 新佈建叢集上的應用程式。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
 
 
-下圖顯示已部署的系統之架構。 系統管理員會使用 Deis 工具 (如 **deis** 和 **deisctl**) 來管理叢集。 連線是透過會將連線轉送到叢集上其中一個節點的 Azure 負載平衡器而建立。 用戶端也是透過負載平衡器存取部署的應用程式。 在此情況下，負載平衡器將流量轉送到 Deis 路由器網狀結構，進一步將流量路由至裝載於叢集上且相對應的 Docker 容器。
+下圖顯示已部署的系統之架構。 系統管理員管理叢集使用 Deis 工具，例如 **deis** 和 **deisctl**。 連線是透過會將連線轉送到叢集上其中一個節點的 Azure 負載平衡器而建立。 用戶端也是透過負載平衡器存取部署的應用程式。 在此情況下，負載平衡器將流量轉送到 Deis 路由器網狀結構，進一步將流量路由至裝載於叢集上且相對應的 Docker 容器。
 
   ![已部署之 Desis 叢集的架構圖](media/virtual-machines-deis-cluster/architecture-overview.png)
 
@@ -34,7 +33,7 @@
  * 有效的 Azure 訂用帳戶。 如果您沒有帳戶，您可以取得免費試用版 [azure.com](https://azure.microsoft.com)。
  * 用於 Azure 資源群組的工作或學校識別碼。 如果您有個人帳戶和登入 Microsoft id，您需要 [建立您的個人工作 id](resource-group-create-work-id-from-personal.md)。
  * -根據您用戶端作業系統- [PowerShell](powershell-install-configure.md) 或 [適用於 Mac、 Linux 和 Windows 的 Azure CLI](xplat-cli-install.md)。
- * [OpenSSL](https://www.openssl.org/). OpenSSL 是用來產生必要的憑證。
+ * [OpenSSL](https://www.openssl.org/)。 OpenSSL 是用來產生必要的憑證。
  * Git 用戶端，例如 [Git Bash](https://git-scm.com/)。
  * 若要測試範例應用程式，您也需要 DNS 伺服器。 您也可以使用任何 DNS 伺服器或 支援萬用字元 A 記錄的服務。
  * 執行 Deis 用戶端工具的電腦。 您可以使用本機電腦或虛擬機器。 您可以在幾乎所有 Linux 散發套件執行這些工具，但是以下指示使用的是 Ubuntu。
@@ -62,7 +61,6 @@
 5. 移至 [https://discovery.etcd.io/new](https://discovery.etcd.io/new) 來產生新的叢集權杖，看起來像是:
 
         https://discovery.etcd.io/6a28e078895c5ec737174db2419bb2f3
-
 <br />
 每個 CoreOS 叢集必須有唯一的語彙基元從這項免費服務。 請參閱 [CoreOS 文件](https://coreos.com/docs/cluster-management/setup/cluster-discovery/) 如需詳細資訊。
 
@@ -77,11 +75,11 @@
             discovery: https://discovery.etcd.io/3973057f670770a7628f917d58c2208a
         ...
 
-7. 修改 **azuredeploy parameters.json** 檔案：開啟您在步驟 4 中，於文字編輯器內建立的憑證。 複製之間的所有文字 `---BEGIN CERTIFICATE---` 和 `---END CERTIFICATE---` 到 **sshKeyData** 參數 (您必須移除所有的新行字元)。
+7. 修改 **azuredeploy-parameters.json** 檔案: 開啟您在文字編輯器中的步驟 4 中建立的憑證。 複製之間的所有文字 `----BEGIN CERTIFICATE-----` 和 `-----END CERTIFICATE-----` 到 **sshKeyData** 參數 (您必須移除所有的新行字元)。
 
 8. 修改 **newStorageAccountName** 參數。 這是 VM OS 磁碟的儲存體帳戶。 此帳戶名稱必須是全域唯一的。
 
-9. 修改 **publicDomainName** 參數。 這會成為 DNS 名稱與負載平衡器公用 IP 相關聯的一部分。 最終的 FQDN 必須 _ 此參數值的格式_。._ [區域]_。.cloudapp.azure.com。 例如，如果名稱指定為 deishbai32，且資源群組部署至美國西部地區，則您負載平衡器會最終的 FQDN 會是 deishbai32.westus.cloudapp.azure.com。
+9. 修改 **publicDomainName** 參數。 這會成為 DNS 名稱與負載平衡器公用 IP 相關聯的一部分。 最終的 FQDN 必須格式 _此參數值_。_[region]_。.cloudapp.azure.com。 例如，如果名稱指定為 deishbai32，且資源群組部署至美國西部地區，則您負載平衡器會最終的 FQDN 會是 deishbai32.westus.cloudapp.azure.com。
 
 10. 儲存參數檔案。 然後您可以使用 Azure PowerShell 佈建叢集：
 
@@ -99,7 +97,7 @@
 
 ## 安裝用戶端
 
-您需要 **deisctl** 來控制 Deis 叢集。 雖然 deisctl 會自動安裝在所有叢集節點中，但較佳做法是在個別的系統管理電腦上使用 deisctl。 此外，因為所有節點都只設定私用 IP 位址，所以您會需要使用 SSH 在負載平衡器 (有公用 IP) 建立通道，以連線到節點電腦。 以下是在各別的 Ubuntu 實體或虛擬機器上設定 deisctl 的步驟。
+您需要 **deisctl** 來控制您 Deis 叢集。 雖然 deisctl 會自動安裝在所有叢集節點中，但較佳做法是在個別的系統管理電腦上使用 deisctl。 此外，因為所有節點都只設定私用 IP 位址，所以您會需要使用 SSH 在負載平衡器 (有公用 IP) 建立通道，以連線到節點電腦。 以下是在各別的 Ubuntu 實體或虛擬機器上設定 deisctl 的步驟。
 
 1. 安裝 deisctl：mkdir deis
 
@@ -116,11 +114,11 @@
 
         export DEISCTL_TUNNEL=[public ip of the load balancer]:2223
 
-
 範本會定義傳入的 NAT 規則，將 2223 對應到執行個體 1、2224 對應到執行個體 2、2225 對應到執行個體 3。 這會提供使用 deisctl 工具的備援。 您可以在 Azure 傳統入口網站檢查這些規則：
 
 ![負載平衡器上的 NAT 規則](media/virtual-machines-deis-cluster/nat-rules.png)
-> [AZURE.NOTE] 範本目前僅支援 3 個節點的叢集。 這是因為 Azure 資源管理員範本 NAT 規則定義不支援迴圈與法的限制。
+
+> [AZURE.NOTE] 目前範本僅支援 3 個節點的叢集。 這是因為 Azure 資源管理員範本 NAT 規則定義不支援迴圈與法的限制。
 
 ## 安裝並啟動 Deis 平台
 
@@ -131,9 +129,9 @@
     deisctl install platform
     deisctl start platform
 
-> [AZURE.NOTE] 啟動平台需要一些時間 (最多 10 分鐘)。 尤其啟動建立器服務需要較長的時間。 而且有時要嘗試幾次成功: 若作業似乎無回應，請嘗試輸入 `ctrl + c` 中斷執行的命令，然後重試。
+> [AZURE.NOTE] 啟動平台需要一段時間 (最多可達 10 分鐘)。 尤其啟動建立器服務需要較長的時間。 而且有時要嘗試幾次才會成功：如果作業似乎無回應，請嘗試輸入 `ctrl+c` 來中斷命令的執行，然後再試一次。
 
-您可以使用 `deisctl 清單` 以確認是否所有服務都執行:
+您可以使用 `deisctl list` 確認是否所有服務都在執行：
 
     deisctl list
     UNIT                            MACHINE                 LOAD    ACTIVE          SUB
@@ -181,7 +179,7 @@
         cd deis
         curl -sSL http://deis.io/deis-cli/install.sh | sh
         ln -fs $PWD/deis /usr/local/bin/deis
-
+        
 3. 建立新的 SSH 金鑰，然後將公用金鑰加入 GitHub (當然，您也可以使用您現有的金鑰)。 若要建立新的 SSH 金鑰組，請使用：
 
         cd ~/.ssh
@@ -194,22 +192,19 @@
 5. 註冊新的使用者：
 
         deis register http://deis.[your domain]
-
 <p />
 6. 加入 SSH 金鑰：
 
         deis keys:add [path to your SSH public key]
-
-  <p />
+  <p />      
 7. 建立應用程式。
 
         git clone https://github.com/deis/helloworld.git
         cd helloworld
         deis create
         git push deis master
-
 <p />
-8. git push 會觸發建置及部署 Docker 映像，這需要幾分鐘來完成。根據我的經驗，第 10 步驟 (將映像推送到私用儲存機制) 通常會無回應。當發生這種情況時，您可以停止程序，移除應用程式使用 `deis 應用程式: 摧毀 – < 應用程式名稱 >` 移除應用程式並再試一次。您可以使用 `deis apps:list` 找出您的應用程式的名稱。如果一切都正常運作，您會在命令輸出的結尾看到訊息如下：
+8. Git push 會觸發 Docker 映像來建置和部署，將需要花幾分鐘的時間。 根據我的經驗，第 10 步驟 (將映像推送到私用儲存機制) 通常會無回應。 當發生這種情況時，您可以停止程序，移除應用程式使用 ' deis 應用程式: 摧毀 – <application name>` to remove the application and try again. You can use `deis apps:list' 若要找出應用程式的名稱。 如果一切都正常運作，您會在命令輸出的結尾看到訊息如下：
 
         -----> Launching...
                done, lambda-underdog:v2 deployed to Deis
@@ -217,60 +212,54 @@
                To learn more, use `deis help` or visit http://deis.io
         To ssh://git@deis.artitrack.com:2222/lambda-underdog.git
          * [new branch]      master -> master
-
 <p />
 9. 確認應用程式是否正在運作：
 
         curl -S http://[your application name].[your domain]
-
   您應該會看到：
 
         Welcome to Deis!
         See the documentation at http://docs.deis.io/ for more information.
         (you can use geis apps:list to get the name of your application).
-
 <p />
 10. 將應用程式調整為 3 個執行個體：
 
         deis scale cmd=3
-
 <p />
 11. 或者，您可以使用 deis info 來檢查應用程式的詳細資料。 以下是我的應用程式部署的輸出結果：
 
-    deis info
-    === lambda-underdog Application
-    {
-      "updated": "2015-05-22T06:14:10UTC",
-      "uuid": "10c74ee7-b7ff-4786-967a-7e65af7eabc3",
-      "created": "2015-05-22T06:07:55UTC",
-      "url": "lambda-underdog.artitrack.com",
-      "owner": "haishi",
-      "id": "lambda-underdog",
-      "structure": {
-        "cmd": 3
-      }
-    }
-    
-    === lambda-underdog Processes
-    --- cmd:
-    cmd.1 up (v2)
-    cmd.2 up (v2)
-    cmd.3 up (v2)
-    
-    === lambda-underdog Domains
-    No domains
+        deis info
+        === lambda-underdog Application
+        {
+          "updated": "2015-05-22T06:14:10UTC",
+          "uuid": "10c74ee7-b7ff-4786-967a-7e65af7eabc3",
+          "created": "2015-05-22T06:07:55UTC",
+          "url": "lambda-underdog.artitrack.com",
+          "owner": "haishi",
+          "id": "lambda-underdog",
+          "structure": {
+            "cmd": 3
+          }
+        }
 
+        === lambda-underdog Processes
+        --- cmd:
+        cmd.1 up (v2)
+        cmd.2 up (v2)
+        cmd.3 up (v2)
+
+        === lambda-underdog Domains
+        No domains
 
 ## 後續步驟
 
 本文章會引導您使用 Azure 資源管理員範本，完成所有佈建新 Deis 叢集的步驟。 範本支援工具連線的備援，以及已部署應用程式的負載平衡。 該範本也避免在成員節點使用公用 IP，這可以節省寶貴的公用 IP 資源，並提供主機應用程式更安全的環境。 若要深入了解，請參閱下列文章：
 
-[Azure 資源管理員概觀 ][resource-group-overview]  
-[如何使用 Azure CLI ][azure-command-line-tools]  
-[使用 Azure PowerShell 與 Azure 資源管理員 ][powershell-azure-resource-manager]
+[Azure 資源管理員概觀] [resource-group-overview]  
+[如何使用 Azure CLI] [azure-command-line-tools]  
+[使用 Azure PowerShell 與 Azure 資源管理員] [powershell-azure-resource-manager]  
 
-
-[azure-command-line-tools]: ../xplat-cli-install.md 
-[resource-group-overview]: ../resource-group-overview.md 
-[powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md 
+[azure-command-line-tools]: ../xplat-cli-install.md
+[resource-group-overview]: ../resource-group-overview.md
+[powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 

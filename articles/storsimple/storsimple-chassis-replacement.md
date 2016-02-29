@@ -15,7 +15,6 @@
    ms.date="08/31/2015"
    ms.author="alkohli" />
 
-
 # 更換 StorSimple 裝置上的底座
 
 ## 概觀
@@ -23,6 +22,7 @@
 本教學課程說明如何取下並更換 StorSimple 裝置中的底座。 StorSimple 8100 模型是單一機箱裝置 (一個底座)，而 8600 是雙重機箱裝置 (兩個底座)。 若為 8600 型號，裝置中可能有兩個會發生故障的底座：主要機箱的底座或 EBOD 機箱的底座。
 
 在任一情況下，Microsoft 隨附的更換底座將是空的。 將不會包含電源和冷卻模組 (PCM)、控制器模組、固態硬碟 (SSD)、硬碟機 (HDD) 或 EBOD 模組。
+
 >[AZURE.IMPORTANT] 取下及更換底座，檢視中的安全資訊之前 [StorSimple 硬體元件更換](storsimple-hardware-component-replacement.md)。
 
 ## 取下底座
@@ -39,7 +39,7 @@
 
 4. 取下每個磁碟機，並記下從哪些插槽中取下它們。 如需詳細資訊，請參閱 [移除磁碟機](storsimple-disk-drive-replacement.md#remove-the-disk-drive)。
 
-5. 在 EBOD 機箱 (如果這是故障的底座) 上，取下 EBOD 控制器模組。 如需詳細資訊，請參閱 [移除 EBOD 控制器](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller)。
+5. 在 EBOD 機箱 (如果這是故障的底座) 上，取下 EBOD 控制器模組。 如需詳細資訊，請參閱 [移除 EBOD 控制器](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller)。 
 
     在主要機箱 (如果這是故障的底座) 上，取下控制器，並記下從哪些插槽中取下它們。 如需詳細資訊，請參閱 [取下控制器](storsimple-controller-replacement.md#remove-a-controller)。
 
@@ -54,16 +54,13 @@
 2. 在以機架掛接了底座之後，請將控制器模組安裝在先前安裝它們的同一位置中。
 
 3. 將磁碟機安裝在先前安裝它們的同一位置和插槽中。
-    >[AZURE.NOTE] 一般而言，我們建議您先將 SSD 置於插槽中，然後再安裝 HDD。
+
+    >[AZURE.NOTE] 一般情況下，我們建議您先將 Ssd 置於插槽中，並再安裝 Hdd。
 
 2. 在以機架掛接裝置，並安裝元件之後，請將裝置連接至適當的電源，並開啟裝置。 如需詳細資訊，請參閱 [StorSimple 8100 裝置纜線連接](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) 或 [StorSimple 8600 裝置纜線連接](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)。
 
 ## 後續步驟
 
 深入了解 [StorSimple 硬體元件更換](storsimple-hardware-component-replacement.md)。
-
-
-
-
 
 

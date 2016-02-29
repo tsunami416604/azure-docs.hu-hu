@@ -15,12 +15,11 @@
    ms.date="10/07/2015"
    ms.author="sethm" />
 
-
 # 搭配使用 Java 的服務匯流排與 AMQP 1.0
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
-Java 訊息服務 (JMS) 是在 Java 平台上搭配訊息導向中介軟體一起使用的標準 API。 我們已根據 Apache Qpid 專案開發的 JMS 用戶端程式庫，使用 AMQP 1.0 測試過 Azure 服務匯流排。 此程式庫支援完整的 JMS 1.1 API，可以搭配 AMQP 1.0 相容的任何訊息服務一起使用。 在 Service Bus for Windows Server (服務匯流排內部部署) 中也支援這種情況。 如需詳細資訊，請參閱 [服務匯流排的 Windows Server [] 中的 AMQP][]。
+Java 訊息服務 (JMS) 是在 Java 平台上搭配訊息導向中介軟體一起使用的標準 API。 我們已根據 Apache Qpid 專案開發的 JMS 用戶端程式庫，使用 AMQP 1.0 測試過 Azure 服務匯流排。 此程式庫支援完整的 JMS 1.1 API，可以搭配 AMQP 1.0 相容的任何訊息服務一起使用。 在 Service Bus for Windows Server (服務匯流排內部部署) 中也支援這種情況。 如需詳細資訊，請參閱 [適用於 Windows server 服務匯流排的 AMQP][]。
 
 ## 下載 Apache Qpid AMQP 1.0 JMS 用戶端程式庫
 
@@ -40,7 +39,7 @@ Java 訊息服務 (JMS) 是在 Java 平台上搭配訊息導向中介軟體一�
 
 ### Java 命名及目錄介面 (JNDI)
 
-JMS 使用 Java 命名及目錄介面 (JNDI) 建立邏輯名稱與實際名稱之間的區別。 使用 JNDI 可以解析兩種 JMS 物件：**ConnectionFactory** 和 **Destination**。 JNDI 使用提供者模型，您可以在其中插入不同的目錄服務處理名稱解析作業。 Apache Qpid JMS AMQP 1.0 程式庫隨附一個簡單的屬性檔 JNDI 提供者，可使用文字檔來設定。
+JMS 使用 Java 命名及目錄介面 (JNDI) 建立邏輯名稱與實際名稱之間的區別。 使用 JNDI 可以解析兩種 JMS 物件: **ConnectionFactory** 和 **目的地**。 JNDI 使用提供者模型，您可以在其中插入不同的目錄服務處理名稱解析作業。 Apache Qpid JMS AMQP 1.0 程式庫隨附一個簡單的屬性檔 JNDI 提供者，可使用文字檔來設定。
 
 Qpid 屬性檔 JNDI 提供者是透過下列格式的屬性檔來設定：
 
@@ -60,18 +59,18 @@ queue.QUEUE = queue1
 
 #### 設定連接工廠
 
-在 Qpid 內容檔案 JNDI 提供者中用來定義 **ConnectionFactory** 的項目使用下列格式：
+用來定義的項目 **ConnectionFactory** 在 Qpid 內容檔案 JNDI 提供者是下列格式:
 
 ```
 connectionfactory.[jndi_name] = [ConnectionURL]
 ```
 
-其中 `[jndi\_name]` 和 `[ConnectionURL]` 具有下列意義:
+其中 `[jndi\_name]` 和 `[ConnectionURL]` 具有下列意義：
 
-| 名稱| 意義| | | | |
+| 名稱            | 意義                                                                                                                                    |   |   |   |   |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|---|
-| `[] jndi\_name`| 連接工廠的邏輯名稱。這個名稱會解析 Java 應用程式中使用 JNDI `intialcontext.lookup ()` 方法。| | | | |
-| `[ConnectionURL]`| 將包含所需資訊的 JMS 程式庫提供給 AMQP 代理人的 URL。| | | | |
+| `[jndi\_name]`    | 連接工廠的邏輯名稱。 Java 應用程式中使用 JNDI `IntialContext.lookup()` 方法解析這個名稱。 |   |   |   |   |
+| `[ConnectionURL]` | 將包含所需資訊的 JMS 程式庫提供給 AMQP 代理人的 URL。                                                      |   |   |   |   |
 
 連接 URL 的格式如下：
 
@@ -79,340 +78,356 @@ connectionfactory.[jndi_name] = [ConnectionURL]
 amqps://[username]:[password]@[namespace].servicebus.windows.net
 ```
 
-Where `[namespace]`, `[username]`, and `[password]` have the following meanings:
+其中 `[namespace]`、`[username]` 和 `[password]` 具有下列意義：
 
-| Name          | Meaning                                                                        |   |   |   |   |
+| 名稱          | 意義                                                                        |   |   |   |   |
 |---------------|--------------------------------------------------------------------------------|---|---|---|---|
-| `[namespace]` | The Service Bus namespace obtained from the [Azure classic portal][].                      |   |   |   |   |
-| `[username]`  | The Service Bus issuer name obtained from the [Azure classic portal][].                    |   |   |   |   |
-| `[password]`  | URL-encoded form of the Service Bus issuer key obtained from the [Azure classic portal][]. |   |   |   |   |
+| `[namespace]` | 從服務匯流排命名空間取得 [Azure 傳統入口網站][]。                      |   |   |   |   |
+| `[username]`  | 服務匯流排簽發者名稱取自 [Azure 傳統入口網站][]。                    |   |   |   |   |
+| `[password]`  | 從取得的服務匯流排發行者金鑰 URL 編碼形式 [Azure 傳統入口網站][]。 |   |   |   |   |
 
-> [AZURE.NOTE] You must URL-encode the password manually. A useful URL encoding utility is available at [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp).
+> [AZURE.NOTE] 您必須進行 URL 編碼手動密碼。 實用的 URL 編碼公用程式將會位於 [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp)。
 
-For example, if the information obtained from the portal is as follows:
+例如，如果從入口網站取得的資訊如下：
 
-| Namespace:   | test.servicebus.windows.net                  |
+| 命名空間：   | test.servicebus.windows.net                  |
 |--------------|----------------------------------------------|
-| Issuer name: | owner                                        |
-| Issuer key:  | abcdefg |
+| 發行者名稱： | owner                                        |
+| 發行者金鑰：  | abcdefg |
 
-Then in order to define a **ConnectionFactory** object named `SBCONNECTIONFACTORY`, the configuration string would be as follows:
+然後，為了定義 **ConnectionFactory** 物件名為 `SBCONNECTIONFACTORY`, ，組態字串應如下:
+
 ```
-connectionfactory。SBCONNECTIONFACTORY = amqps://owner:abcdefg@test.servicebus.windows.net
+connectionfactory.SBCONNECTIONFACTORY = amqps://owner:abcdefg@test.servicebus.windows.net
 ```
 
-#### Configuring destinations
+#### 設定目的地
 
-The entry that defines a destination in the Qpid Properties File JNDI Provider is of the following format:
+在 Qpid 屬性檔 JNDI 提供者中用來定義目的地的項目使用下列格式：
+
 ```
 queue.[jndi_name] = [physical_name]
 topic.[jndi_name] = [physical_name]
 ```
 
-Where `[jndi\_name]` and `[physical\_name]` have the following meanings:
+其中 `[jndi\_name]` 和 `[physical\_name]` 具有下列意義：
 
-| Name              | Meaning                                                                                                                                  |
+| 名稱              | 意義                                                                                                                                  |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `[jndi\_name]`    | The logical name of the destination. This is name is resolved in the Java application by using the JNDI `IntialContext.lookup()` method. |
-| `[physical\name]` | The name of the Service Bus entity to which the application sends or receives messages.                                                  |
+| `[jndi\_name]`    | 目的地的邏輯名稱。 我們已使用 JNDI `IntialContext.lookup()` 方法在 Java 應用程式中解析此名稱。 |
+| `[physical\name]` | 應用程式傳送或接收訊息的服務匯流排實體名稱。                                                  |
 
-Note the following:
+請注意：
 
-- The `[physical\name]` value can be a Service Bus queue or topic.
-- When receiving from a Service Bus topic subscription, the physical name specified in JNDI should be the name of the topic. The subscription name is provided when the durable subscription is created in the JMS application code.
-- It is also possible to treat a Service Bus topic subscription as a JMS Queue. There are several advantages to this approach: the same receiver code can be used for queues and topic subscriptions, and all the address information (the topic and subscription names) is externalized in the properties file.
-- To treat a Service Bus topic subscription as a JMS Queue, the entry in properties file should be of the form: `queue.[jndi\_name] = [topic\_name]/Subscriptions/[subscription\_name]`.|
+- `[physical\name]` 值可以是服務匯流排佇列或主題。
+- 從服務匯流排主題訂用帳戶收到在 JNDI 中指定的實體名稱應該是主題的名稱。 以 JMS 應用程式程式碼建立持續性訂用帳戶時，將建立訂用帳戶名稱。
+- 也可以將服務匯流排主題訂用帳戶視為 JMS 佇列。 這種方法有幾個好處：相同的接收者程式碼可用於佇列和主題訂用帳戶，而屬性檔中的所有位址資訊 (主題和訂用帳戶名稱) 都外部化。
+- 若要將服務匯流排主題訂用帳戶視為 JMS 佇列，屬性檔案中的項目格式應為：`queue.[jndi\_name] = [topic\_name]/Subscriptions/[subscription\_name]`。|
 
-To define a logical JMS destination named "TOPIC" that maps to a Service Bus topic named "topic1," the entry in the properties file would be as follows:
+若要定義名為 "TOPIC" 的邏輯 JMS 目的地來對應至名為 "topic1" 的服務匯流排主題，屬性檔中的項目應該如下:
+
 ```
-主題。主題 = topic1
+topic.TOPIC = topic1
 ```
 
-### Sending messages using JMS
+### 使用 JMS 傳送訊息
 
-The following code shows how to send a message to a Service Bus topic. It is assumed that `SBCONNECTIONFACTORY` and `TOPIC` are defined in a **servicebus.properties** configuration file as described in the previous section.
+下列程式碼示範如何將訊息傳送至服務匯流排主題。 它假設 `SBCONNECTIONFACTORY` 和 `TOPIC` 中定義 **servicebus.properties** 上一節中所述的組態檔。
+
 ```
-雜湊表<String, String> env = 新的雜湊表<String, String>(); 
+Hashtable<String, String> env = new Hashtable<String, String>(); 
 env.put(Context.INITIAL_CONTEXT_FACTORY, 
         "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory"); 
-env.put(Context.PROVIDER_URL, "servicebus.properties");
+env.put(Context.PROVIDER_URL, "servicebus.properties"); 
+ 
+InitialContext context = new InitialContext(env); 
+ 
+ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCONNECTIONFACTORY");
+Topic topic = (Topic) context.lookup("TOPIC");
+Connection connection = cf.createConnection();
+Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+MessageProducer producer = session.createProducer(topic);
+TextMessage message = session.createTextMessage("This is a text string"); 
+producer.send(message);
+```
 
+### 使用 JMS 接收訊息
+
+下列程式碼示範 `how` 從服務匯流排主題訂用帳戶收到訊息。 它假設 `SBCONNECTIONFACTORY` 主題定義位於 **servicebus.properties** 上一節中所述的組態檔。 也假設訂用帳戶名稱為 `subscription1`。
+
+```
+Hashtable<String, String> env = new Hashtable<String, String>(); 
+env.put(Context.INITIAL_CONTEXT_FACTORY, 
+        "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory"); 
+env.put(Context.PROVIDER_URL, "servicebus.properties"); 
+ 
 InitialContext context = new InitialContext(env);
 
 ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCONNECTIONFACTORY");
-主題主題 = (主題) context.lookup("TOPIC");
+Topic topic = (Topic) context.lookup("TOPIC");
 Connection connection = cf.createConnection();
-工作階段的工作階段 = connection.createSession (false、 Session.AUTO_ACKNOWLEDGE;)
-對於生產者 = session.createProducer(topic);
-TextMessage 訊息 = session.createTextMessage (「 這是文字字串"); 
-producer.send(message)
-```
-
-### Receiving messages using JMS
-
-The following code shows `how` to receive a message from a Service Bus topic subscription. It is assumed that `SBCONNECTIONFACTORY` and TOPIC are defined in a **servicebus.properties** configuration file as described in the previous section. It is also assumed that the subscription name is `subscription1`.
-```
-雜湊表<String, String> env = 新的雜湊表<String, String>(); 
-env.put(Context.INITIAL_CONTEXT_FACTORY, 
-        "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory"); 
-env.put(Context.PROVIDER_URL, "servicebus.properties");
-
-InitialContext context = new InitialContext(env);
-
-ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCONNECTIONFACTORY");
-主題主題 = (主題) context.lookup("TOPIC");
-Connection connection = cf.createConnection();
-工作階段的工作階段 = connection.createSession (false、 Session.AUTO_ACKNOWLEDGE;)
-TopicSubscriber 訂閱者 = session.createDurableSubscriber (主題、"subscription1");
+Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+TopicSubscriber subscriber = session.createDurableSubscriber(topic, "subscription1");
 connection.start();
-訊息的訊息 = messageConsumer.receive();
+Message message = messageConsumer.receive();
 ```
 
-### Guidelines for building robust applications
+### 建置健全應用程式的指導方針
 
-The JMS specification defines how the exception contract of the API methods and application code should be written to handle such exceptions. Here are some other points to consider regarding exception handling:
+JMS 規格定義如何撰寫 API 方法和應用程式碼的例外狀況合約來處理這類例外狀況。 以下是有關例外狀況處理的一些其他考慮事項：
 
--   Register an **ExceptionListener** with the JMS connection using **connection.setExceptionListener**. This enables a client to be notified of a problem asynchronously. This notification is particularly important for connections that only consume messages, as they would have no other way to learn that their connection has failed. The **ExceptionListener** is called if there is a problem with the underlying AMQP connection, session, or link. In this situation, the application program should recreate the **JMS Connection**, **Session**, **MessageProducer** and **MessageConsumer** objects from scratch.
+-   註冊 **ExceptionListener** JMS 連線使用 **connection.setExceptionListener**。 這樣可透過非同步方式向用戶端通知問題。 此通知對於只取用訊息的連接特別重要，因為它們沒有其他方法可得知連接已失敗。  **ExceptionListener** 基礎 AMQP 連線、 工作階段中或連結發生問題時呼叫。 在此情況下，應用程式應該會重新建立 **JMS 連線**, ，**工作階段**, ，**對於** 和 **Messageproducer** 從可用的物件。
 
--   To verify that a message has been successfully sent from a **MessageProducer** to a Service Bus entity, ensure that the application has been configured with the **qpid.sync\_publish** system property set. You can do this by starting the program with the **-Dqpid.sync\_publish=true** Java VM option set on the command line when starting the application. Setting this option configures the library to not return from the send call until confirmation has been received that the message has been accepted by Service Bus. If a problem occurs during the send operation, a **JMSException** is raised. There are two possible causes: 
-    1. If the problem is due to Service Bus rejecting the particular message being sent, then a **MessageRejectedException** exception will be raised. This error is either transitory, or due to some problem with the message. The recommended course of action is to make several attempts to retry the operation with some back-off logic. If the problem persists, then the message should be abandoned with an error logged locally. There is no need to recreate the **JMS Connection**, **Session**, or **MessageProducer** objects in this situation. 
-    2. If the problem is due to Service Bus closing the AMQP Link, then an **InvalidDestinationException** exception will be raised. This can be due to a transient problem, or due to the message entity being deleted. In either case, the **JMS Connection**, **Session**, and **MessageProducer** objects should be recreated. If the error condition was transient, then this operation will eventually be successful. If the entity has been deleted, the failure will be permanent.
+-   若要確認訊息已從已成功傳送 **對於** 至服務匯流排實體，請確定應用程式已設有 **qpid.sync\_publish** 系統屬性集。 您可以啟動程式與 **-Dqpid.sync\_publish=true** 啟動應用程式時，在命令列上設定的 Java VM 選項。 設定此選項可在接獲確認服務匯流排已收到訊息之前，不要讓程式庫從傳送呼叫返回。 如果傳送作業期間，發生問題 **JMSException** ，就會引發。 有兩個可能的原因： 
+    1. 如果問題是因為服務匯流排拒絕特定的訊息傳送，則 **MessageRejectedException** 會引發例外狀況。 這個錯誤可能是暫時性，或由於訊息的某些問題而引起。 建議是動作是以某種後退邏輯來多次重試作業。 如果問題持續發生，就應該放棄訊息並在本機記錄錯誤。 不需要重新建立 **JMS 連線**, ，**工作階段**, ，或 **對於** 在此情況下的物件。 
+    2. 如果問題是因為服務匯流排關閉 AMQP 連結，則 **InvalidDestinationException** 會引發例外狀況。 這可能是因為暫時性問題或已刪除訊息實體。 在任一情況下， **JMS 連線**, ，**工作階段**, ，和 **對於** 物件應該重新建立。 如果錯誤狀況是暫時性，此作業最終還是會成功。 如果已刪除實體，則為永久失敗。
 
-## Messaging between .NET and JMS
+## 在 .NET 與 JMS 之間傳訊
 
-### Message bodies
+### 訊息主體
 
-JMS defines five different message types: **BytesMessage**, **MapMessage**, **ObjectMessage**, **StreamMessage**, and **TextMessage**. The Service Bus .NET API has a single message type, [BrokeredMessage][].
+JMS 定義五種不同的訊息類型: **BytesMessage**, ，**MapMessage**, ，**ObjectMessage**, ，**StreamMessage**, ，和 **TextMessage**。 服務匯流排.NET API 有一個單一訊息類型， [BrokeredMessage][]。
 
-#### JMS to Service Bus .NET API
+#### JMS 至服務匯流排 .NET API
 
-The following sections show how to consume messages of each of the JMS message types from .NET. An **ObjectMessage** example has not been included, as the body of an **ObjectMessage** contains a serializable object in the Java programming language, which is not interpretable by a .NET application.
+下列各節顯示如何從 .NET 取用每一種 JMS 訊息類型的訊息。  **ObjectMessage** 範例已包含在內，做為主體 **ObjectMessage** 包含 Java 程式設計語言，並非由.NET 應用程式的可序列化物件。
 
 ##### BytesMessage
 
-The following code shows how to consume the body of a **BytesMessage** object by using the Service Bus .NET APIs.
+下列程式碼示範如何使用本文 **BytesMessage** 使用服務匯流排.NET Api 的物件。
+
 ```
-資料流的資料流 = 訊息。GetBody<Stream>();
-int streamLength = (int) 資料流。長度。
+Stream stream = message.GetBody<Stream>();
+int streamLength = (int)stream.Length;
 
-byte [] byteArray = 新的 byte [streamLength];
-資料流。讀取 (byteArray，0，streamLength);
+byte[] byteArray = new byte[streamLength];
+stream.Read(byteArray, 0, streamLength);
 
-Console.WriteLine ("長度 ="+ streamLength);
-for (int 我 = 0; 我 < 資料流。長度。i + +)
+Console.WriteLine("Length = " + streamLength);
+for (int i = 0; i < stream.Length; i++)
 {
-  Console.Write ("["+ (sbyte) byteArray [i] +"]");
+  Console.Write("[" + (sbyte) byteArray[i] + "]");
 }
 ```
 
 ##### MapMessage
 
-The following code shows how to consume the body of a **MapMessage** object by using the Service Bus .NET APIs. This code iterates through the elements of the map, displaying the name and value of each element.
-```
-字典<String, Object> 字典 = 訊息。GetBody<Dictionary<String, Object>> ();
+下列程式碼示範如何使用本文 **MapMessage** 使用服務匯流排.NET Api 的物件。 此程式碼會逐一檢查對應的元素，顯示每個元素的名稱和值。
 
-foreach (字串 mapItemName 字典中。索引鍵)
+```
+Dictionary<String, Object> dictionary = message.GetBody<Dictionary<String, Object>>();
+
+foreach (String mapItemName in dictionary.Keys)
 {
-  物件 mapItemValue = null;
-  如果 (字典。TryGetValue (出 mapItemValue mapItemName))
+  Object mapItemValue = null;
+  if (dictionary.TryGetValue(mapItemName, out mapItemValue))
   {
-    Console.WriteLine (mapItemName +":"+ mapItemValue);
+    Console.WriteLine(mapItemName + ":" + mapItemValue);
   }
 }
 ```
 
 ##### StreamMessage
 
-The following code shows how to consume the body of a **StreamMessage** object by using the Service Bus .NET APIs. This code lists each of the items from the stream, together with their types.
-```
-清單<Object> 清單 = 訊息。GetBody<List<Object>> ();
+下列程式碼示範如何使用本文 **StreamMessage** 使用服務匯流排.NET Api 的物件。 此程式碼會列出串流中的每個項目及其類型。
 
-foreach (在清單中的物件項目)
+```
+List<Object> list = message.GetBody<List<Object>>();
+
+foreach (Object item in list)
 {
-  Console.WriteLine (項目 +"("+ 項目。GetType() +")");
+  Console.WriteLine(item + " (" + item.GetType() + ")");
 }
 ```
 
 ##### TextMessage
 
-The following code shows how to consume the body of a **TextMessage** object by using the Service Bus .NET APIs. This code displays the text string contained in the body of the message.
+下列程式碼示範如何使用本文 **TextMessage** 使用服務匯流排.NET Api 的物件。 此程式碼會顯示訊息主體所包含的文字字串。
+
 ```
-Console.WriteLine ("文字:"+ 訊息。GetBody<String>())。
+Console.WriteLine("Text: " + message.GetBody<String>());
 ```
 
-#### Service Bus .NET APIs to JMS
+#### 服務匯流排 .NET API 至 JMS
 
-The following sections show how a .NET application can create a message that is received in JMS in each of the different JMS message types. An **ObjectMessage** example has not been included, as the body of an **ObjectMessage** contains a serializable object in the Java programming language, which is not interpretable by a .NET application.
+下列各節以每一種不同的 JMS 訊息類型示範 .NET 應用程式如何建立 JMS 中接收的訊息。  **ObjectMessage** 範例已包含在內，做為主體 **ObjectMessage** 包含 Java 程式設計語言，並非由.NET 應用程式的可序列化物件。
 
 ##### BytesMessage
 
-The following code shows how to create a [BrokeredMessage][] object in .NET that is received by a JMS client as a **BytesMessage**.
+下列程式碼示範如何建立 [BrokeredMessage][] 中接收的 JMS 用戶端，做為.NET 物件 **BytesMessage**。
+
 ```
-byte [] 位元組 = {33、 12、 45、 33、 12、 45、 33、 12、 45、 33、 12、 45};
-訊息 = 新 BrokeredMessage(bytes);
+byte[] bytes = { 33, 12, 45, 33, 12, 45, 33, 12, 45, 33, 12, 45 };
+message = new BrokeredMessage(bytes);
 ```
 
 ##### StreamMessage
 
-The following code shows how to create a [BrokeredMessage][] object in .NET that is received by a JMS client as a **StreamMessage**.
+下列程式碼示範如何建立 [BrokeredMessage][] 中接收的 JMS 用戶端，做為.NET 物件 **StreamMessage**。
+
 ```
-清單<Object> 清單 = new List<Object>();
-清單。新增 (「 字串 1 」)。
-清單。新增 (「 字串 2 」)。
-清單。新增 (「 字串 3 」)。
-清單。Add((double)3.14159)
-訊息 = 新 BrokeredMessage(list);
+List<Object> list = new List<Object>();
+list.Add("String 1");
+list.Add("String 2");
+list.Add("String 3");
+list.Add((double)3.14159);
+message = new BrokeredMessage(list);
 ```
 
 ##### TextMessage
 
-The following code shows how to consume the body of a **TextMessage** using the Service Bus .NET API. This code displays the text string contained in the body of the message.
+下列程式碼示範如何使用本文 **TextMessage** 使用服務匯流排.NET API。 此程式碼會顯示訊息主體所包含的文字字串。
+
 ```
-訊息 = 新 BrokeredMessage (「 這是文字字串");
+message = new BrokeredMessage("this is a text string");
 ```
 
-### Application properties
+### 應用程式屬性
 
-####JMS to Service Bus .NET APIs
+####JMS 至服務匯流排 .NET API
 
-JMS messages support application properties of the following types: **boolean**, **byte**, **short**, **int**, **long**, **float**, **double**, and **String**. The following Java code shows how to set properties on a message by using each of these property types.
+JMS 訊息支援下列類型的應用程式屬性: **布林**, ，**位元組**, ，**簡短**, ，**int**, ，**長**, ，**float**, ，**double**, ，和 **字串**。 下列 Java 程式碼使用以上每一種屬性類型示範如何設定訊息的屬性。
+
 ```
-message.setBooleanProperty (「 TestBoolean 」，true); 
-message.setByteProperty (「 TestByte 」，(位元組) 33)。 
-message.setDoubleProperty (「 TestDouble 」，3.14159 D); 
-message.setFloatProperty (「 TestFloat 」，3.13159F); 
-message.setIntProperty (「 TestInt 」，100)。 
-message.setStringProperty (「 TestString 」，「 服務匯流排 」)。
+message.setBooleanProperty("TestBoolean", true); 
+message.setByteProperty("TestByte", (byte) 33); 
+message.setDoubleProperty("TestDouble", 3.14159D); 
+message.setFloatProperty("TestFloat", 3.13159F); 
+message.setIntProperty("TestInt", 100); 
+message.setStringProperty("TestString", "Service Bus");
 ```
 
-In the Service Bus .NET APIs, message application properties are carried in the **Properties** collection of [BrokeredMessage][]. The following code shows how to read the application properties of a message received from a JMS client.
+在服務匯流排.NET Api 中，訊息應用程式屬性位於在 **屬性** 集合 [BrokeredMessage][]。 下列程式碼示範如何讀取從 JMS 用戶端接收之訊息的應用程式屬性。
+
 ```
-如果 (訊息。Properties.Keys.Count > 0)
+if (message.Properties.Keys.Count > 0)
 {
-  foreach (訊息中的字串名稱。) Properties.Keys
+  foreach (string name in message.Properties.Keys)
   {
-    物件值 = 訊息。屬性 [名稱]。
-    Console.WriteLine (名稱 +":"+ 值 +"("+ 值。GetType() +")");
+    Object value = message.Properties[name];
+    Console.WriteLine(name + ": " + value + " (" + value.GetType() + ")" );
   }
   Console.WriteLine();
 }
 ```
 
-The following table shows how the JMS property types map to the .NET property types.
+下表顯示 JMS 屬性類型如何對應至 .NET 屬性類型。
 
-| JMS Property Type | .NET Property Type |
+| JMS 屬性類型 | .NET 屬性類型 |
 |-------------------|--------------------|
 | Byte              | sbyte              |
 | Integer           | int                |
 | Float             | float              |
 | Double            | double             |
-| Boolean           | bool               |
-| String            | string             |
+| Boolean           | 布林               |
+| String            | 字串             |
 
-The [BrokeredMessage][] type supports application properties of the following types: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset**, and **TimeSpan**. The following .NET code shows how to set properties on a [BrokeredMessage][] object using each of these property types.
+ [BrokeredMessage][] 型別支援下列類型的應用程式屬性: **位元組**, ，**sbyte**, ，**char**, ，**簡短**, ，**ushort**, ，**int**, ，**uint**, ，**長**, ，**ulong**, ，**float**, ，**double**, ，**十進位**, ，**bool**, ，**Guid**, ，**字串**, ，**Uri**, ，**DateTime**, ，**DateTimeOffset**, ，和 **TimeSpan**。 下列.NET 程式碼示範如何設定屬性 [BrokeredMessage][] 物件使用這些屬性的型別。
+
 ```
-訊息。屬性 ["TestByte"] = (位元組) 128。
-訊息。屬性 ["TestSbyte"] = (sbyte)-22;
-訊息。屬性 ["TestChar"] = (char) 'X';
-訊息。屬性 ["TestShort"] = (簡短)-12345;
-訊息。屬性 ["TestUshort"] = (ushort) 12345;
-訊息。屬性 ["TestInt"] = (int)-100。
-訊息。屬性 ["TestUint"] = (uint) 100。
-訊息。屬性 ["TestLong"] = (長整數)-12345;
-訊息。屬性 ["TestUlong"] = (ulong) 12345;
-訊息。屬性 ["TestFloat"] = (float) 3.14159;
-訊息。屬性 ["TestDouble"] = (double) 3.14159;
-訊息。屬性 ["TestDecimal"] = (十進位) 是 3.14159;
-訊息。屬性 ["TestBoolean"] = true;
-訊息。屬性 ["TestGuid"] = Guid.NewGuid();
-訊息。屬性 ["TestString"] = 「 服務匯流排 」;
-訊息。屬性 ["TestUri"] = new Uri (「 http://www.bing.com 」)。
-訊息。屬性 ["TestDateTime"] = Ticks;
-訊息。屬性 ["TestDateTimeOffSet"] = DateTimeOffset.Now;
-訊息。屬性 ["TestTimeSpan"] = TimeSpan.FromMinutes(60);
+message.Properties["TestByte"] = (byte)128;
+message.Properties["TestSbyte"] = (sbyte)-22;
+message.Properties["TestChar"] = (char) 'X';
+message.Properties["TestShort"] = (short)-12345;
+message.Properties["TestUshort"] = (ushort)12345;
+message.Properties["TestInt"] = (int)-100;
+message.Properties["TestUint"] = (uint)100;
+message.Properties["TestLong"] = (long)-12345;
+message.Properties["TestUlong"] = (ulong)12345;
+message.Properties["TestFloat"] = (float)3.14159;
+message.Properties["TestDouble"] = (double)3.14159;
+message.Properties["TestDecimal"] = (decimal)3.14159;
+message.Properties["TestBoolean"] = true;
+message.Properties["TestGuid"] = Guid.NewGuid();
+message.Properties["TestString"] = "Service Bus";
+message.Properties["TestUri"] = new Uri("http://www.bing.com");
+message.Properties["TestDateTime"] = DateTime.Now;
+message.Properties["TestDateTimeOffSet"] = DateTimeOffset.Now;
+message.Properties["TestTimeSpan"] = TimeSpan.FromMinutes(60);
 ```
 
-The following Java code shows how to read the application properties of a message received from a Service Bus .NET client.
+下列 Java 程式碼示範如何讀取從服務匯流排 .NET 用戶端接收之訊息的應用程式屬性。
+
 ```
-列舉型別 propertyNames = message.getPropertyNames(); 
-(propertyNames.hasMoreElements()) 時 
+Enumeration propertyNames = message.getPropertyNames(); 
+while (propertyNames.hasMoreElements()) 
 { 
-  字串名稱 = (字串) propertyNames.nextElement(); 
-  物件值 = message.getObjectProperty(name); 
-  System.out.println (名稱 +":"+ 值 +"("+ value.getClass() +") 」); 
+  String name = (String) propertyNames.nextElement(); 
+  Object value = message.getObjectProperty(name); 
+  System.out.println(name + ": " + value + " (" + value.getClass() + ")"); 
 }
 ```
 
 下表顯示 .NET 屬性類型如何對應至 JMS 屬性類型。
 
-| .NET 屬性類型| JMS 屬性類型| 注意事項|
+| .NET 屬性類型 | JMS 屬性類型 | 注意事項                                                                                                                                                               |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte| UnsignedByte| -|
-| sbyte| 位元組| -|
-| char| 字元| -|
-| short| 簡短| -|
-| ushort| UnsignedShort| -|
-| int| Integer| -|
-| uint| UnsignedInteger| -|
-| long| Long| -|
-| ulong| UnsignedLong| -|
-| float| Float| -|
-| double| 兩倍| -|
-| decimal| BigDecimal| -|
-| 布林| Boolean| -|
-| Guid| UUID| -|
-| 字串| String| -|
-| DateTime| Date| -|
-| DateTimeOffset| DescribedType| Datetimeoffset.utcticks 會對應至 AMQP 類型:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>|
-| TimeSpan| DescribedType| Timespan.ticks 會對應至 AMQP 類型:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>|
-| Uri| DescribedType| Uri.absoluteuri 會對應至 AMQP 類型:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>|
+| byte               | UnsignedByte      | -                                                                                                                                                                      |
+| sbyte              | 位元組              | -                                                                                                                                                                     |
+| char               | 字元         | -                                                                                                                                                                     |
+| short              | 簡短             | -                                                                                                                                                                     |
+| ushort             | UnsignedShort     | -                                                                                                                                                                     |
+| int                | Integer           | -                                                                                                                                                                     |
+| uint               | UnsignedInteger   | -                                                                                                                                                                     |
+| long               | Long              | -                                                                                                                                                                     |
+| ulong              | UnsignedLong      | -                                                                                                                                                                     |
+| float              | Float             | -                                                                                                                                                                     |
+| double             | 兩倍            | -                                                                                                                                                                     |
+| decimal            | BigDecimal        | -                                                                                                                                                                     |
+| 布林               | Boolean           | -                                                                                                                                                                     |
+| Guid               | UUID              | -                                                                                                                                                                     |
+| 字串             | String            | -                                                                                                                                                                     |
+| DateTime           | Date              | -                                                                                                                                                                     |
+| DateTimeOffset     | DescribedType     | Datetimeoffset.utcticks 會對應至 AMQP 類型:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan           | DescribedType     | Timespan.ticks 會對應至 AMQP 類型:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>                        |
+| Uri                | DescribedType     | Uri.absoluteuri 會對應至 AMQP 類型:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>                               |
 
 ### 標準標頭
 
-下表顯示如何 JMS 標準標頭和 [BrokeredMessage []][] 對應使用 AMQP 1.0 標準屬性。
+下表顯示如何 JMS 標準標頭和 [BrokeredMessage][] 對應使用 AMQP 1.0 標準屬性。
 
 #### JMS 至服務匯流排 .NET API
 
-| JMS| 服務匯流排 .NET| 注意事項|
+| JMS              | 服務匯流排 .NET               | 注意事項                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| JMSCorrelationID| Message.CorrelationID| -|
-| JMSDeliveryMode| 目前無法使用| 服務匯流排僅支援長期訊息;例如，DeliveryMode.PERSISTENT，不論指定的內容。|
-| JMSDestination| Message.To| -|
-| JMSExpiration| 訊息。TimeToLive| 轉換|
-| JMSMessageID| Message.MessageID| 根據預設，JMSMessageID 在 AMQP 訊息中的二進位格式編碼。收到二進位訊息識別碼時，.NET 用戶端程式庫會根據位元組的 unicode 值，將它轉換為字串表示法。若要將 JMS 程式庫切換為使用字串訊息識別碼，請將 “binary-messageid=false” 字串附加至 JNDI ConnectionURL 的查詢參數。例如: 「 amqps://[username]:[password]@[namespace].servicebus.windows.net 嗎?二進位訊息識別碼 = false"。|
-| JMSPriority| 目前無法使用| 服務匯流排不支援訊息優先順序。|
-| JMSRedelivered| 目前無法使用| -|
-| JMSReplyTo| 訊息。ReplyTo| -|
-| JMSTimestamp| Message.EnqueuedTimeUtc| 轉換|
-| JMSType| Message.Properties ["jms-type"]| -|
+| JMSCorrelationID | Message.CorrelationID          | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| JMSDeliveryMode  | 目前無法使用        | 服務匯流排僅支援長期訊息;例如，DeliveryMode.PERSISTENT，不論指定的內容。                                                                                                                                                                                                                                                                                                                                                         |
+| JMSDestination   | Message.To                     | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| JMSExpiration    | 訊息。 TimeToLive            | 轉換                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| JMSMessageID     | Message.MessageID              | 根據預設，JMSMessageID 在 AMQP 訊息中的二進位格式編碼。 收到二進位訊息識別碼時，.NET 用戶端程式庫會根據位元組的 unicode 值，將它轉換為字串表示法。 若要將 JMS 程式庫切換為使用字串訊息識別碼，請將 “binary-messageid=false” 字串附加至 JNDI ConnectionURL 的查詢參數。 例如: 「 amqps://[username]:[password]@[namespace].servicebus.windows.net 嗎? 二進位訊息識別碼 = false"。 |
+| JMSPriority      | 目前無法使用        | 服務匯流排不支援訊息優先順序。                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| JMSRedelivered   | 目前無法使用        | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| JMSReplyTo       | 訊息。 ReplyTo               | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| JMSTimestamp     | Message.EnqueuedTimeUtc        | 轉換                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| JMSType          | Message.Properties ["jms-type"] | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 #### 服務匯流排 .NET API 至 JMS
 
-| 服務匯流排 .NET| JMS| 注意事項|
+| 服務匯流排 .NET        | JMS              | 注意事項                   |
 |-------------------------|------------------|-------------------------|
-| ContentType| -| 目前無法使用|
-| CorrelationId| JMSCorrelationID| -|
-| EnqueuedTimeUtc| JMSTimestamp| 轉換|
-| 標籤| n/a| 目前無法使用|
-| MessageId| JMSMessageID| -|
-| ReplyTo| JMSReplyTo| -|
-| {1>replytosessionid| n/a| 目前無法使用|
-| ScheduledEnqueueTimeUtc| n/a| 目前無法使用|
-| SessionId| n/a| 目前無法使用|
-| TimeToLive| JMSExpiration| 轉換|
-| 收件人| JMSDestination| -|
+| ContentType             | -                  | 目前無法使用 |
+| CorrelationId           | JMSCorrelationID | -                         |
+| EnqueuedTimeUtc         | JMSTimestamp     | 轉換              |
+| 標籤                   | n/a              | 目前無法使用 |
+| MessageId               | JMSMessageID     | -                         |
+| ReplyTo                 | JMSReplyTo       | -                         |
+| {1>replytosessionid        | n/a              | 目前無法使用 |
+| ScheduledEnqueueTimeUtc | n/a              | 目前無法使用 |
+| SessionId               | n/a              | 目前無法使用 |
+| TimeToLive              | JMSExpiration    | 轉換              |
+| 收件人                      | JMSDestination   | -                         |
 
 ## 不支援的功能和限制
 
 JMS over AMQP 1.0 和服務匯流排一起使用時有下列限制：
 
--   每工作階段僅允許一個 **MessageProducer** 或 **MessageConsumer**。 如果您想要在應用程式中建立多個 **MessageProducer** 或 **MessageConsumer** 物件，請分別建立專用的工作階段。
+-   只有一個 **對於** 或 **Messageproducer** 允許每個工作階段。 如果您想要建立多個 **對於** 或 **Messageproducer** 應用程式中，物件建立專用的工作階段，每個訊息。
 
 -   目前不支援可變更的主題訂用帳戶。
 
--   不支援 **MessageSelector** 物件。
+-   **MessageSelector** 不支援物件。
 
--   不支援 **TemporaryQueue** 或 **TemporaryTopic** 這些暫時目的地，也不支援使用它們的 **QueueRequestor** 和 **TopicRequestor** API。
+-   暫時目的地;例如， **TemporaryQueue** 或 **TemporaryTopic**, ，不支援，以及 **QueueRequestor** 和 **TopicRequestor** 使用它們的 Api。
 
 -   不支援交易式工作階段。
 
@@ -423,11 +438,11 @@ JMS over AMQP 1.0 和服務匯流排一起使用時有下列限制：
 準備好進行深入了解嗎？ 請造訪下列連結：
 
 - [服務匯流排 AMQP 概觀]
-- [Windows Server 適用的服務匯流排中的 AMQP]
+- [Windows Server 服務匯流排中的 AMQP]
 
+[AMQP in Service Bus for Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
-[amqp in service bus for windows server]: https://msdn.microsoft.com/library/dn574799.aspx 
-[brokeredmessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx 
-[service bus amqp overview]: service-bus-amqp-overview.md 
-[azure classic portal]: http://manage.windowsazure.com 
+[Service Bus AMQP overview]: service-bus-amqp-overview.md
+[Azure classic portal]: http://manage.windowsazure.com
 

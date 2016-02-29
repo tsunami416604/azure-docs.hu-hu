@@ -17,7 +17,6 @@
    ms.date="12/07/2015"
    ms.author="telmos"/>
 
-
 # 使用 ARM 範本建立虛擬網路
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
@@ -39,7 +38,3 @@
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-template-cli-include](../../includes/virtual-networks-create-vnet-arm-template-cli-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-template-click-include](../../includes/virtual-networks-create-vnet-arm-template-click-include.md)]
-
-
-
-

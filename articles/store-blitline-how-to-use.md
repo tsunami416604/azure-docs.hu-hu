@@ -15,7 +15,6 @@
     ms.topic="article" 
     ms.date="12/09/2014" 
     ms.author="support@blitline.com"/>
-
 # 如何使用搭配 Azure 和 Azure 儲存體的 Blitline
 
 本指南將說明如何存取 Blitline 服務，以及如何將工作提交至 Blitline。
@@ -62,7 +61,7 @@ Blitline 使用 JSON 定義您要對影像採取的動作。 此 JSON 是由幾�
 
 在此，我們要求 JSON 準備一個 "src" 影像 "...boys.jpeg"，然後將該影像大小調整為 240x140。
 
-您可以在 Azure 上的 [連接資訊]**** 或 [管理]**** 索引標籤中找到應用程式識別碼的資訊。 應用程式識別碼是可讓您在 Blitline 上執行工作的密碼識別碼。
+您可以在中找到應用程式識別碼是您 **連線資訊** 或 **管理** 在 Azure 上的索引標籤。 應用程式識別碼是可讓您在 Blitline 上執行工作的密碼識別碼。
 
 "save" 參數可識別有關處理完影像時，您想要放置該影像的位置資訊。 在這個簡單的案例中，我們尚未定義一個位置。 如果沒有定義位置，Blitline 會將它儲存在本機 (並暫時地) 的唯一雲端位置。 建立 Blitline 時，您將能夠從 Blitline 所傳回的 JSON 取得該位置。 "image" 識別碼為必要欄位，並會在要識別此特定儲存影像時傳回。
 
@@ -70,7 +69,7 @@ Blitline 使用 JSON 定義您要對影像採取的動作。 此 JSON 是由幾�
 
 您也可以找到有關工作選項的文件: <http://www.blitline.com/docs/api>
 
-在有了 JSON 之後，您唯一需要做的動作是將它**發行**至 `http://api.blitline.com/jobs`
+有了 JSON 之後您只需要為 **POST** 它 `http://api.blitline.com/jobs`
 
 您將取回如下所示的 JSON：
 
@@ -85,8 +84,9 @@ Blitline 使用 JSON 定義您要對影像採取的動作。 此 JSON 是由幾�
          }
     }
 
+
 這代表 Blitline 已收到您的要求，它已將您的要求置入處理佇列，且當它完成影像時的影像位置：
-**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
+**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR \_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
 ## 如何將影像儲存至您的 Azure 儲存體帳戶
 
@@ -109,15 +109,17 @@ Blitline 使用 JSON 定義您要對影像採取的動作。 此 JSON 是由幾�
          }]
        }'
 
+
 透過靠您自己填入大寫值，您可以將此 JSON 提交至 http://api.blitline.com/job，並對 "src" 影像採用模糊濾鏡的處理，然後推送至 Azure 目的地。
 
-### 請注意：
+###請注意：
 
 SAS 必須包含整個 SAS URL，包括目的地檔案的檔案名稱。
 
 範例：
 
     http://blitline.blob.core.windows.net/sample/image.jpg?sr=b&sv=2012-02-12&st=2013-04-12T03%3A18%3A30Z&se=2013-04-12T04%3A18%3A30Z&sp=w&sig=Bte2hkkbwTT2sqlkkKLop2asByrE0sIfeesOwj7jNA5o%3D
+
 
 您也可以閱讀最新版本 Blitline Azure 儲存體文件 [這裡](http://www.blitline.com/docs/azure_storage)。
 
@@ -130,8 +132,4 @@ SAS 必須包含整個 SAS URL，包括目的地檔案的檔案名稱。
 * Blitline API 函數 <http://www.blitline.com/docs/functions>
 * Blitline API 範例 <http://www.blitline.com/docs/examples>
 * 協力廠商 Nuget 程式庫 <http://nuget.org/packages/Blitline.Net>
-
-
-
-
 

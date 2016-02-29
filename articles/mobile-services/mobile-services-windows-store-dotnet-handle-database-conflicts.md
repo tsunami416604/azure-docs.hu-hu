@@ -16,7 +16,6 @@
     ms.date="10/05/2015"
     ms.author="wesmc"/>
 
-
 # 處理資料庫寫入衝突
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -26,14 +25,14 @@
 
 
 
-## 概觀
+##概觀
 
 本教學課程可協助您深入了解如何處理在兩個或更多用戶端寫入至 Windows 市集應用程式中的相同資料庫記錄時所發生的衝突。 在部分案例中，兩個或多個用戶端可能會同時對相同項目寫入變更。 在沒有偵測到任何衝突的情況下，最後寫入將覆寫任何先前的更新，即使這不是您想要的結果。 Azure 行動服務可支援偵測及解決這些衝突的作業。 本主題將逐步引導您完成下列步驟，讓您處理伺服器上與應用程式中的資料庫寫入衝突。
 
 在本教學課程中，您會在快速入門應用程式中新增功能，以處理更新 TodoItem 資料庫時所發生的爭用情況。
 
 
-## 必要條件
+##必要條件
 
 本教學課程需要下列各項
 
@@ -41,24 +40,24 @@
 + 本教學課程會以行動服務快速入門為基礎。 在開始本教學課程之前，您必須先完成 [開始使用行動服務]。
 + [Azure 帳戶]
 + Azure 行動服務 NuGet 封裝 1.1.0 或更新版本。 若要取得最新版本，請遵循下列步驟：
-    1. 在 Visual Studio 中開啟專案，在 [方案總管] 中以滑鼠右鍵按一下專案，然後按一下 [管理 NuGet 封裝]****。
+    1. 在 Visual Studio 中，開啟專案，並以滑鼠右鍵按一下 [方案總管] 中的專案，然後按一下 [ **管理 Nuget 封裝**。
 
         ![][19]
 
-    2. 展開 [線上]****，然後按一下 [Microsoft and .NET]****。 在搜尋文字方塊中，輸入 [Azure 行動服務]****。 在 [Azure 行動服務]**** NuGet 封裝上，按一下 [安裝]****。
+    2. 展開 **線上** 按一下 **Microsoft and.NET**。 在搜尋文字方塊中輸入 **Azure 行動服務**。 按一下 [ **安裝** 上 **Azure 行動服務** NuGet 封裝。
 
         ![][20]
 
 
 
 
-## 更新應用程式以允許更新
+##更新應用程式以允許更新
 
-在本節中您將會更新 TodoList 使用者介面，使 ListBox 控制項中各個項目的文字能夠進行更新。 ListBox 將包含資料庫資料表中各個項目的 CheckBox 和 TextBox 控制項。 您將可更新 TodoItem 的文字欄位。 應用程式會處理來自該文字方塊的 `LostFocus` 事件，以更新資料庫中的項目。
+在本節中您將會更新 TodoList 使用者介面，使 ListBox 控制項中各個項目的文字能夠進行更新。 ListBox 將包含資料庫資料表中各個項目的 CheckBox 和 TextBox 控制項。 您將可更新 TodoItem 的文字欄位。 應用程式會處理來自該 TextBox 的 `LostFocus` 事件，以更新資料庫中的項目。
 
 
 1. 在 Visual Studio 中，開啟您在下載的 TodoList 專案 [開始使用行動服務] 教學課程。
-2. 在 Visual Studio 的 [方案總管] 中開啟 MainPage.xaml，然後將 `ListView` 定義取代為下方顯示的 `ListView`，並儲存變更。
+2. 在 Visual Studio 的 [方案總管] 中開啟 MainPage.xaml，將 `ListView` 定義以下方顯示的 `ListView` 取代，然後儲存變更。
 
         <ListView Name="ListItems" Margin="62,10,0,0" Grid.Row="1">
             <ListView.ItemTemplate>
@@ -71,7 +70,9 @@
             </ListView.ItemTemplate>
         </ListView>
 
+
 4. 在 Visual Studio 方案總管中，開啟共用專案中的 MainPage.cs。 將事件處理常式新增至 TextBox `LostFocus` 事件的 MainPage，如下所示。
+
 
         private async void ToDoText_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -85,7 +86,7 @@
             }
         }
 
-4. 在共用專案的 MainPage.cs 中新增定義 `updatetodoitem ()` 方法參考的事件處理常式，如下所示。
+4. 在共用專案的 MainPage.cs 中，為事件處理常式中參考的 MainPage `UpdateToDoItem()` 方法加入定義，如下所示。
 
         private async Task UpdateToDoItem(TodoItem item)
         {
@@ -105,14 +106,13 @@
             }
         }
 
-
 現在，當 TextBox 失去焦點時，應用程式會將每個項目的文字變更重新寫入至資料庫。
 
-## 在應用程式中啟用衝突偵測
+##在應用程式中啟用衝突偵測
 
 在部分案例中，兩個或多個用戶端可能會同時對相同項目寫入變更。 在沒有偵測到任何衝突的情況下，最後寫入將覆寫任何先前的更新，即使這不是您想要的結果。 [開放式並行存取控制] 會假設每筆交易可以認可，因此不使用任何資源鎖定。 在認可交易之前，開放式並行存取控制項會驗證沒有其他交易已修改此資料。 如果資料已修改，則會復原認可的交易。 Azure 行動服務支援開放式並行存取控制項，方法是使用新增至每個資料表的 `__version` 系統屬性資料欄來追蹤對每個項目的變更。 在本節中，我們將使應用程式能夠透過 `__version` 系統屬性偵測這些寫入衝突。 在嘗試更新期間，如果記錄自前次查詢後有所變更，系統將會以 `MobileServicePreconditionFailedException` 通知應用程式。 此時，應用程式將可選擇是要認可它對資料庫的變更，還是保留資料庫的最後變更。 如需有關系統屬性適用於行動服務，請參閱 [系統內容]。
 
-1. 開啟共用的專案和 update TodoItem.cs `TodoItem` 類別定義以下列程式碼，包括 `__version` 支援寫入衝突偵測系統屬性。
+1. 開啟共用專案中的 TodoItem.cs，以下列程式碼更新 `TodoItem` 類別定義，以加入可用來支援寫入衝突偵測的 `__version` 系統屬性。
 
         public class TodoItem
         {
@@ -125,14 +125,15 @@
             public string Version { set; get; }
         }
 
-    > [AZURE.NOTE] 使用不具型別的資料表時，開放式並行存取的啟用方式，是在資料表的 SystemProperties 中新增 Version 旗標。
+    > [AZURE.NOTE] 使用不具型別的的資料表時，啟用開放式並行存取是將資料表 SystemProperties 中新增 Version 旗標。
     >
     >`````
     //Enable optimistic concurrency by retrieving __version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 `````
 
-2. 將 `Version` 屬性新增至 `TodoItem` 類別後，如果在更新期間發現自前次查詢後有所變更的記錄，系統將會以 `MobileServicePreconditionFailedException` 例外狀況通知應用程式。 此例外狀況會包含來自伺服器的最新版項目。 在共用專案的 MainPage.cs 中新增下列程式碼來處理中的例外狀況 `updatetodoitem ()` 方法。
+
+2. By adding the `Version` property to the `TodoItem` class, the application will be notified with a `MobileServicePreconditionFailedException` exception during an update if the record has changed since the last query. This exception includes the latest version of the item from the server. In MainPage.cs for the shared project, add the following code to handle the exception in the `UpdateToDoItem()` method.
 
         private async Task UpdateToDoItem(TodoItem item)
         {
@@ -165,7 +166,9 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
             }
         }
 
-3. 在 MainPage.cs 中新增的定義 `resolveconflict ()` 中所參考方法 `updatetodoitem ()`。 請注意，若要解決衝突，您必須先將本機項目的版本設為來自伺服器的更新版本，再認可使用者的決策。 否則將會持續發生衝突。
+
+3. In MainPage.cs, add the definition for the `ResolveConflict()` method referenced in `UpdateToDoItem()`. Notice that in order to resolve the conflict, you set the local item's version to the updated version from the server before committing the user's decision. Otherwise, you will continually encounter the conflict.
+
 
         private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
         {
@@ -196,88 +199,88 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 
 
+##Test database write conflicts in the application
 
-## 在應用程式中測試資料庫寫入衝突
-
-在本節中您將會建置 Windows 市集應用程式封裝，以將應用程式安裝至第二部機器或虛擬機器。 接著，您將同時在兩部機器上執行應用程式而產生寫入衝突，以測試程式碼。 兩個應用程式執行個體將會嘗試更新相同項目的 `text` 屬性，而讓使用者必須解決衝突。
+In this section you will build a Windows Store app package to install the app on a second machine or virtual machine. Then you will run the app on both machines generating a write conflict to test the code. Both instances of the app will attempt to update the same item's `text` property requiring the user to resolve the conflict.
 
 
-1. 建立 Windows 市集應用程式封裝，以安裝在第二部機器或虛擬機器上。 若要執行此動作，請在 Visual Studio 中按一下 [專案]****->[市集]****->[建立應用程式套件]****。
+1. Create a Windows Store app package to install on second machine or virtual machine. To do this, click **Project**->**Store**->**Create App Packages** in Visual Studio.
 
     ![][0]
 
-2. 在 [建立您的套件] 畫面上按一下 [否]****，因為此封裝將不會上傳至 Windows 市集。 然後按 [下一步]****。
+2. On the Create Your Packages screen, click **No** as this package will not be uploaded to the Windows Store. Then click **Next**.
 
     ![][1]
 
-3. 在 [選取和設定套件] 畫面上接受預設值，然後按一下 [建立]****。
+3. On the Select and Configure Packages screen, accept the defaults and click **Create**.
 
     ![][10]
 
-4. 在 [套件建立完成] 畫面上按一下 [輸出位置]**** 連結，以開啟封裝位置。
+4. On the Package Creation Completed screen, click the **Output location** link to open the package location.
 
     ![][11]
 
-5. 將封裝資料夾 "todolist_1.0.0.0_AnyCPU_Debug_Test" 複製到第二部機器。 在該機器上開啟封裝資料夾，以滑鼠右鍵按一下 **Add-AppDevPackage.ps1** PowerShell 指令碼，然後按一下 [用 PowerShell 執行]****，如下所示。 依照提示安裝應用程式。
+5. Copy the package folder, "todolist_1.0.0.0_AnyCPU_Debug_Test", to the second machine. On that machine, open the package folder and right click on the **Add-AppDevPackage.ps1** PowerShell script and click **Run with PowerShell** as shown below. Follow the prompts to install the app.
 
     ![][12]
 
-5. 按一下 [偵錯]****->[開始偵錯]****，在 Visual Studio 中執行應用程式的執行個體 1。 在第二部機器的 [開始] 畫面上按一下向下箭頭，以依名稱檢視應用程式。 接著，按一下 **todolist** 應用程式，以執行應用程式的執行個體 2。
+5. Run instance 1 of the app in Visual Studio by clicking **Debug**->**Start Debugging**. On the Start screen of the second machine, click the down arrow to see "Apps by name". Then click the **todolist** app to run instance 2 of the app.
 
-    應用程式執行個體 1
+    App Instance 1
     ![][2]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][2]
 
-6. 在應用程式的執行個體 1 中，將最後一個項目的文字更新為「測試寫入 1」****，然後按一下另一個文字方塊，使 `LostFocus` 事件處理常式更新資料庫。 其範例如下列螢幕擷取畫面所示。
 
-    應用程式執行個體 1
+6. In instance 1 of the app, update the text of the last item to **Test Write 1**, then click another text box so that the `LostFocus` event handler updates the database. The screenshot below shows an example.
+
+    App Instance 1
     ![][3]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][2]
 
-7. 此時，應用程式執行個體 2 中的對應項目具有舊版的項目。 在此應用程式執行個體中，針對 **text** 屬性輸入「測試寫入 2」``。 然後按一下另一個文字方塊，使 `LostFocus` 事件處理常式嘗試以舊的 `_version` 屬性更新資料庫。
+7. At this point the corresponding item in instance 2 of the app has an old version of the item. In that instance of the app, enter **Test Write 2** for the `text` property. Then click another text box so the `LostFocus` event handler attempts to update the database with the old `_version` property.
 
-    應用程式執行個體 1
+    App Instance 1
     ![][4]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][5]
 
-8. 由於用於更新嘗試的 `__version` 值不符合伺服器 `__version` 值，因此行動服務 SDK 會擲回 `MobileServicePreconditionFailedException`，讓應用程式能夠解決此衝突。 若要解決衝突，您可以按一下 [Commit Local Text]****，以認可執行個體 2 中的值。 或者，您可以按一下 [Leave Server Text]**** 捨棄執行個體 2 中的值，而保留已認可的應用程式執行個體 1 中的值。
+8. Since the `__version` value used with the update attempt didn't match the server `__version` value, the Mobile Services SDK throws a `MobileServicePreconditionFailedException` allowing the app to resolve this conflict. To resolve the conflict, you can click **Commit Local Text** to commit the values from instance 2. Alternatively, click **Leave Server Text** to discard the values in instance 2, leaving the values from instance 1 of the app committed.
 
-    應用程式執行個體 1
+    App Instance 1
     ![][4]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][6]
 
 
 
-## 以伺服器指令碼自動處理衝突的解決方式
+##Automatically handling conflict resolution in server scripts
 
-您可以使用伺服器指令碼來偵測及解決寫入衝突。 當您使用指令碼邏輯 (而非使用者互動) 來解決衝突時，這將是理想的作法。 在本節中，您會在應用程式的 TodoItem 資料表中新增伺服器端指令碼。 此指令碼將使用下列邏輯來解決衝突：
+You can detect and resolve write conflicts in server scripts. This is a good idea when you can use scripted logic instead of user interaction to resolve the conflict. In this section, you will add a server side script to the TodoItem table for the application. The logic this script will use to resolve conflicts is as follows:
 
-+  如果 TodoItem 的 ` 完整` 欄位設為 true，則會視為已完成和 `文字` 再變更。
-+  如果 TodoItem 的 ` 完整` 欄位仍為 false，則會嘗試更新 `文字` 將會被認可。
++  If the TodoItem's ` complete` field is set to true, then it is considered completed and `text` can no longer be changed.
++  If the TodoItem's ` complete` field is still false, then attempts to update `text` will be comitted.
 
-下列步驟將引導您新增伺服器更新指令碼並加以測試。
+The following steps walk you through adding the server update script and testing it.
 
-1. 登入 [Azure 傳統入口網站]，按一下 [ **行動電話服務**, ，然後按一下您的應用程式。
+1. Log into the [Azure classic portal], click **Mobile Services**, and then click your app.
 
     ![][7]
 
-2. 按一下 [資料]**** 索引標籤，然後按一下 [TodoItem]**** 資料表。
+2. Click the **Data** tab, then click the **TodoItem** table.
 
     ![][8]
 
-3. 按一下 [指令碼]****，然後選取 [更新]**** 作業。
+3. Click **Script**, then select the **Update** operation.
 
     ![][9]
 
-4. 以下列函數取代現有的指令碼，然後按一下 [儲存]****。
+4. Replace the existing script with the following function, and then click **Save**.
 
         function update(item, user, request) {
             request.execute({
@@ -294,95 +297,95 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
                 }
             });
         }
+5. Run the **todolist** app on both machines. Change the TodoItem `text` for the last item in instance 2. Then click another text box so the `LostFocus` event handler updates the database.
 
-5. 在兩部機器上執行 **todolist** 應用程式。 變更執行個體 2 中最後一個項目的 TodoItem `text`。 接著，按一下另一個文字方塊，使 `LostFocus` 事件處理常式更新資料庫。
-
-    應用程式執行個體 1
+    App Instance 1
     ![][4]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][5]
 
-6. 在應用程式的執行個體 1 中，為最後一個文字屬性輸入不同的值。 然後按一下另一個文字方塊，使 `LostFocus` 事件處理常式嘗試以不正確的 `_version` 屬性更新資料庫。
+6. In instance 1 of the app, enter a different value for the last text property. Then click another text box so the `LostFocus` event handler attempts to update the database with an incorrect `__version` property.
 
-    應用程式執行個體 1
+    App Instance 1
     ![][13]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][14]
 
-7. 請留意到，由於伺服器指令碼已解決衝突，而使更新得以進行 (因為項目未標示為完成)，因此應用程式中未發生例外狀況。 若要確認更新已順利完成，請在執行個體 2 中按一下 [重新整理]****，以重新查詢資料庫。
+7. Notice that no exception was encountered in the app since the server script resolved the conflict allowing the update since the item is not marked complete. To see that the update was truly successful, click **Refresh** in instance 2 to re-query the database.
 
-    應用程式執行個體 1
+    App Instance 1
     ![][15]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][15]
 
-8. 在執行個體 1 中，按一下可完成最後一個待辦事項的核取方塊。
+8. In instance 1, click the check box to complete the last Todo item.
 
-    應用程式執行個體 1
+    App Instance 1
     ![][16]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][15]
 
-9. 在執行個體 2 中，嘗試更新最後一個 TodoItem 的文字，並觸發 `LostFocus` 事件。 指令碼對衝突的因應方式是拒絕更新以解決衝突，因為項目已完成。
+9. In instance 2, try to update the last TodoItem's text and trigger the `LostFocus` event. In response to the conflict, the script resolved it by refusing the update because the item was already completed.
 
-    應用程式執行個體 1
+    App Instance 1
     ![][17]
 
-    應用程式執行個體 2
+    App Instance 2
     ![][18]
 
-## 後續步驟
+##Next steps
 
-本教學課程示範了如何讓 Windows 市集應用程式處理在行動服務中使用資料時所發生的寫入衝突。 接著，請考慮完成下列其中一個 Windows 市集教學課程：
+This tutorial demonstrated how to enable a Windows Store app to handle write conflicts when working with data in Mobile Services. Next, consider completing one of the following Windows Store tutorials:
 
-* [將驗證新增至您的應用程式]
-  <br/>了解如何驗證應用程式的使用者。
+* [Add authentication to your app]
+  <br/>Learn how to authenticate users of your app.
 
-* [新增推播通知至您的應用程式]
-  <br/>了解如何將非常基本的推播通知傳送至您的應用程式使用行動服務。
-
-
+* [Add push notifications to your app]
+  <br/>Learn how to send a very basic push notification to your app with Mobile Services.
 
 
 
+<!-- Images. -->
+[0]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
+[1]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package2.png
+[2]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1.png
+[3]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write1.png
+[4]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write2.png
+[5]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write2.png
+[6]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write2-conflict.png
+[7]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-services-selection.png
+[8]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-portal-data-tables.png
+[9]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-insert-script-users.png
+[10]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package3.png
+[11]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package4.png
+[12]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-install-app-package.png
+[13]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write3.png
+[14]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write3.png
+[15]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-write3.png
+[16]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-checkbox.png
+[17]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-2-items.png
+[18]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-already-complete.png
+[19]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-manage-nuget-packages-VS.png
+[20]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png
 
-[0]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package1.png 
-[1]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package2.png 
-[2]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1.png 
-[3]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write1.png 
-[4]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write2.png 
-[5]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write2.png 
-[6]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write2-conflict.png 
-[7]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-services-selection.png 
-[8]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-portal-data-tables.png 
-[9]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-insert-script-users.png 
-[10]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package3.png 
-[11]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package4.png 
-[12]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-install-app-package.png 
-[13]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write3.png 
-[14]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write3.png 
-[15]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-write3.png 
-[16]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-checkbox.png 
-[17]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-2-items.png 
-[18]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-already-complete.png 
-[19]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-manage-nuget-packages-VS.png 
-[20]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png 
-[optimistic concurrency control]: http://go.microsoft.com/fwlink/?LinkId=330935 
-[get started with mobile services]: /develop/mobile/tutorials/get-started/#create-new-service 
-[azure account]: http://www.windowsazure.com/pricing/free-trial/ 
-[validate and modify data with scripts]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet 
-[refine queries with paging]: /develop/mobile/tutorials/add-paging-to-data-dotnet 
-[get started with mobile services]: /develop/mobile/tutorials/get-started 
-[get started with data]: /develop/mobile/tutorials/get-started-with-data-dotnet 
-[add authentication to your app]: /develop/mobile/tutorials/get-started-with-users-dotnet 
-[add push notifications to your app]: /develop/mobile/tutorials/get-started-with-push-dotnet 
-[azure classic portal]: https://manage.windowsazure.com/ 
-[windows phone 8 sdk]: http://go.microsoft.com/fwlink/p/?LinkID=268374 
-[mobile services sdk]: http://go.microsoft.com/fwlink/p/?LinkID=268375 
-[developer code samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146 
-[system properties]: http://go.microsoft.com/fwlink/?LinkId=331143 
+<!-- URLs. -->
+[Optimistic Concurrency Control]: http://go.microsoft.com/fwlink/?LinkId=330935
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
+[Azure Account]: http://www.windowsazure.com/pricing/free-trial/
+[Validate and modify data with scripts]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[Refine queries with paging]: /develop/mobile/tutorials/add-paging-to-data-dotnet
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started
+[Get started with data]: /develop/mobile/tutorials/get-started-with-data-dotnet
+[Add authentication to your app]: /develop/mobile/tutorials/get-started-with-users-dotnet
+[Add push notifications to your app]: /develop/mobile/tutorials/get-started-with-push-dotnet
+
+[Azure classic portal]: https://manage.windowsazure.com/
+[Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
+[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
+[Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
+[System Properties]: http://go.microsoft.com/fwlink/?LinkId=331143
 

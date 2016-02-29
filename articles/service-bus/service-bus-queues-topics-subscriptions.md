@@ -15,7 +15,6 @@
    ms.date="12/09/2015"
    ms.author="sethm" />
 
-
 # 服務匯流排佇列、主題和訂用帳戶
 
 Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的中介軟體技術，包括可靠的訊息佇列和持久的發佈/訂閱訊息。 這些代理傳訊功能可以視為低耦合訊息功能，可使用服務匯流排訊息網狀架構來支援發佈-訂閱、時脈解離及負載平衡案例。 低耦合通訊有許多優點︰例如，用戶端和伺服器可視需要連接並以非同步方式執行其作業。
@@ -48,7 +47,7 @@ MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateS
 QueueClient myQueueClient = factory.CreateQueueClient("TestQueue");
 ```
 
-您接著可以將訊息傳送至佇列。 例如，如果您有呼叫代理訊息清單 `MessageList`, ，出現類似下面的程式碼:
+您接著可以將訊息傳送至佇列。 例如，如果您有稱為 `MessageList` 的代理訊息清單，程式碼會如下所示︰
 
 ```
 for (int count = 0; count < 6; count++)
@@ -78,13 +77,13 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
 
 如果應用程式無法處理訊息，因為某些原因，它可以呼叫 [放棄](https://msdn.microsoft.com/library/azure/hh181837.aspx) 所接收訊息的方法 (而不是 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx))。 這可讓服務匯流排將訊息解除鎖定，讓此訊息可被相同的取用者或其他競爭取用取再次接收。 其次，鎖定有相關聯的逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會將訊息解除鎖定並且讓訊息可以被重新接收。
 
-請注意，應用程式當機之前處理訊息之後, [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 發出要求，重新啟動時，訊息會傳遞給應用程式。 這通常稱為「至少處理一次」；也就是說，每個訊息至少會被處理一次。 不過，但在特定狀況下，可能會重新傳遞相同訊息。 如果此案例不容許重複處理，則應用程式中需要額外的邏輯才能根據訊息的 **MessageId** 屬性偵測可達成的重複項目，而該屬性在所有傳遞嘗試中維持不變。 這就是所謂的「剛好一次」**處理。
+請注意，應用程式當機之前處理訊息之後, [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 發出要求，重新啟動時，訊息會傳遞給應用程式。 這通常稱為「至少處理一次」；也就是說，每個訊息至少會被處理一次。 不過，但在特定狀況下，可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則需要額外的邏輯來偵測重複項目，可根據應用程式中 **MessageId** 訊息，各個傳遞嘗試保持不變的屬性。 這稱為 *正好一次* 處理。
 
 如需詳細資訊和如何建立和傳送訊息的工作範例，從佇列，請參閱 [服務匯流排代理傳訊.NET 教學課程](https://msdn.microsoft.com/library/azure/hh367512.aspx)。
 
 ## 主題和訂用帳戶
 
-有別於佇列，佇列中的每個訊息只會由單一取用者處理，主題和訂用帳戶採用發佈/訂用帳戶**模式，提供一對多的通訊形式。 適合用於相應增加為非常大量的收件者，每個發佈的訊息都會提供給每個在主題註冊的訂用帳戶。 根據可依每個訂用帳戶設定的篩選規則，訊息會傳送至主題並傳遞給一或多個相關聯的訂用帳戶。 訂用帳戶可以使用其他篩選器來限制他們想要接收的訊息。 訊息會以其傳送至佇列的相同方式傳送至主題，但不會從主題直接接收訊息。 反而會從訂用帳戶接收。 主題訂用帳戶類似於虛擬佇列，同樣可接收已傳送到主題的訊息複本。 訊息會以從佇列接收的相同方式從訂用帳戶進行接收。
+相較於佇列，每個訊息會由單一取用者，主題和訂閱提供-一對多的通訊形式，在 *發佈/訂閱* 模式。 適合用於相應增加為非常大量的收件者，每個發佈的訊息都會提供給每個在主題註冊的訂用帳戶。 根據可依每個訂用帳戶設定的篩選規則，訊息會傳送至主題並傳遞給一或多個相關聯的訂用帳戶。 訂用帳戶可以使用其他篩選器來限制他們想要接收的訊息。 訊息會以其傳送至佇列的相同方式傳送至主題，但不會從主題直接接收訊息。 反而會從訂用帳戶接收。 主題訂用帳戶類似於虛擬佇列，同樣可接收已傳送到主題的訊息複本。 訊息會以從佇列接收的相同方式從訂用帳戶進行接收。
 
 藉由比較，佇列的訊息傳送功能會直接對應至主題，而其訊息接收功能會對應至訂用帳戶。 除此之外，這表示訂用帳戶支援本節前面所述有關佇列的相同模式︰競爭取用者、時脈解離、負載調節和負載平衡。
 
@@ -119,7 +118,7 @@ foreach (BrokeredMessage message in messageList)
 }
 ```
 
-與佇列類似，訊息接收來自訂用帳戶使用 [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 物件而非 [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) 物件。 建立訂用帳戶用戶端，並將主題名稱、訂用帳戶名稱及 (選擇性) 接收模式當作參數傳遞。 例如，以 **Inventory** subscription: 訂用帳戶為例︰
+與佇列類似，訊息接收來自訂用帳戶使用 [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 物件而非 [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) 物件。 建立訂用帳戶用戶端，並將主題名稱、訂用帳戶名稱及 (選擇性) 接收模式當作參數傳遞。 例如，使用 **清查** 訂用帳戶:
 
 ```
 // Create the subscription client
@@ -145,15 +144,15 @@ while ((message = auditSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != n
 
 ### 執行和動作
 
-在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要這麼做，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可達成。 這類修改稱之為「篩選器動作」**。 建立訂用帳戶後，您可以提供篩選運算式，以在訊息的屬性上運作，包括系統屬性 (例如 **Label**) 和自訂應用程式屬性 (例如 **StoreName**)。 在此情況下，SQL 篩選運算式是選擇性的；若沒有 SQL 篩選運算式，將會對訂用帳戶的所有訊息執行在該訂用帳戶上定義的所有篩選動作。
+在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要這麼做，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可達成。 這類修改可稱為 *篩選器動作*。 建立訂閱時，您可以提供訊息，這兩個系統屬性的屬性運作的篩選條件運算式 (例如， **標籤**) 和自訂應用程式屬性 (例如， **StoreName**。)在此情況下，SQL 篩選運算式是選擇性的；若沒有 SQL 篩選運算式，將會對訂用帳戶的所有訊息執行在該訂用帳戶上定義的所有篩選動作。
 
-以上述範例為例，若只要篩選來自 **Store1** 的訊息，您可建立 [儀表板] 訂用帳戶，如下所示：
+使用上述範例中的，只有來自篩選訊息 **Store1**, ，您會建立儀表板訂用帳戶，如下所示:
 
 ```
 namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFilter("StoreName = 'Store1'"));
 ```
 
-使用此訂閱篩選條件，訊息之 `StoreName` 屬性設定為 `Store1` 會複製到的虛擬佇列 `儀表板` 訂用帳戶。
+採用此訂用帳戶篩選器，只有 `StoreName` 屬性設定為 `Store1` 的訊息會複製到 `Dashboard` 訂用帳戶的虛擬佇列。
 
 如需可能篩選值的詳細資訊，請參閱文件 [SqlFilter](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) 和 [SqlRuleAction](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlruleaction.aspx) 類別。 此外，請參閱 [代理傳訊: 進階篩選](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) 範例。
 
@@ -168,13 +167,9 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 請參閱下列進階主題，以取得使用服務匯流排代理傳訊實體的詳細資訊和範例。
 
 - [服務匯流排訊息概觀](service-bus-messaging-overview.md)
-- [服務匯流排代理訊息.NET 教學課程](service-bus-brokered-tutorial-dotnet.md)
-- [服務匯流排代理訊息 REST 教學課程](service-bus-brokered-tutorial-rest.md)
+- [服務匯流排代理傳訊 .NET 教學課程](service-bus-brokered-tutorial-dotnet.md)
+- [服務匯流排代理傳訊 REST 教學課程](service-bus-brokered-tutorial-rest.md)
 - [事件中心開發人員指南](../event-hubs/event-hubs-programming-guide.md)
-- [代理的傳訊: 進階篩選器](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
-
-
-
-
+- [代理傳訊︰進階篩選器](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
 

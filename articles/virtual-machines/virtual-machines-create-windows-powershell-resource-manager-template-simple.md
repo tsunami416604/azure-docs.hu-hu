@@ -17,7 +17,6 @@
     ms.date="10/08/2015"
     ms.author="davidmu"/>
 
-
 # 利用 Resource Manager 範本和 PowerShell 建立 Windows 虛擬機器
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
@@ -42,7 +41,7 @@
     New-AzureRmResourceGroup –Name $RGName –Location $locName
     New-AzureRmResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
-執行 **New-AzureRmResourceGroupDeployment** 命令時，系統會提示您提供 JSON 檔案 "parameters" 區段中的參數值。 指定所有的參數值後，這個命令會建立資源群組和虛擬機器。
+當您執行 **新增 AzureRmResourceGroupDeployment** 命令，將會提示您提供 JSON 檔案"parameters"區段中的參數值。 指定所有的參數值後，這個命令會建立資源群組和虛擬機器。
 
     $deployName="TestDeployment"
     $RGName="TestRG"
@@ -70,8 +69,8 @@
     VERBOSE: 10:57:45 AM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is running
     VERBOSE: 10:57:45 AM - Resource Microsoft.Network/networkInterfaces 'myVMNic' provisioning status is succeeded
     VERBOSE: 11:01:59 AM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is succeeded
-    
-    
+
+
     DeploymentName    : TestDeployment
     ResourceGroupName : TestRG
     ProvisioningState : Succeeded
@@ -86,26 +85,22 @@
                         adminPassword    SecureString
                         dnsNameForPublicIP  String                     contoso
                         windowsOSVersion  String                     2012-R2-Datacenter
-    
+
     Outputs           :
 
 在新的資源群組中，您現在擁有新的 Windows 虛擬機器，名稱是 MyWindowsVM。
 
 ## 其他資源
 
-[Azure 運算、 網路和存放裝置提供者在 Azure 資源管理員](virtual-machines-azurerm-versus-azuresm.md)
+[Azure Resource Manager 提供的 Azure 運算、網路和儲存提供者](virtual-machines-azurerm-versus-azuresm.md)
 
-[Azure 資源管理員概觀](resource-group-overview.md)
+[Azure Resource Manager 概觀](resource-group-overview.md)
 
-[使用 Azure 資源管理員和 PowerShell 建立 Windows 虛擬機器](virtual-machines-create-windows-powershell-resource-manager.md)
+[利用 Azure Resource Manager 和 PowerShell 建立 Windows 虛擬機器](virtual-machines-create-windows-powershell-resource-manager.md)
 
-[利用 Powershell 和傳統部署模型中建立 Windows 虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)
+[以 Powershell 和傳統部署模型建立 Windows 虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 [虛擬機器文件](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [如何安裝和設定 Azure PowerShell](install-configure-powershell.md)
-
-
-
-
 

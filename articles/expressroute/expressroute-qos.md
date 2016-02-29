@@ -15,43 +15,38 @@
    ms.date="10/06/2015"
    ms.author="cherylmc"/>
 
-
 # ExpressRoute QoS 需求
 
 商務用 Skype 具有各種工作負載，其所要求的 QoS 處理方式各有差異。 如果您打算透過 ExpressRoute 取用語音服務，應遵守以下所述的需求。
 
 ![](./media/expressroute-qos/expressroute-qos.png)
 
-**附註：**QoS 需求僅適用於 Microsoft 對等項目。
+**注意:** QoS 需求適用於 Microsoft 只對等互連。
 
 下表提供一份商務用 Skype 所使用的 DSCP 標示清單。 請參閱 [管理商務用 Skype 的 QoS](https://technet.microsoft.com/library/gg405409.aspx) 如需詳細資訊。
 
-| **傳輸類別**| **處理方式 (DSCP 標示)**| **商務用 Skype 的工作負載**|
+| **傳輸類別** | **處理方式 (DSCP 標示)** | **商務用 Skype 的工作負載** |
 |---|---|---|
-| **語音**| EF (46)| Skype / Lync 語音|
-| **互動式**| AF41 (34)| 影片|
-| | AF21 (18)| APP 共用|
-| | CS3 (24)| SIP 訊號|
-| **預設值**| AF11 (10)| 檔案傳輸|
-| | CS0 (0)| 任何其他項目|
+| **語音** | EF (46) | Skype / Lync 語音 |
+| **互動式** | AF41 (34) | 影片 |
+|   | AF21 (18) | APP 共用 | 
+|   | CS3 (24) | SIP 訊號 |
+| **預設值** | AF11 (10) | 檔案傳輸|
+|   | CS0 (0) | 任何其他項目| 
 
 
 - 您應將工作負載分類，並標記正確的 DSCP 值。 請遵循所提供的指引 [這裡](https://technet.microsoft.com/library/gg405409.aspx) 如何在您的網路設定 DSCP 標示。
 
-- 您應在網路中設定並支援多個 QoS 佇列。 語音必須是獨立的類別，並可接收 RFC 3246 中指定的 EF 處理方式。
+- 您應在網路中設定並支援多個 QoS 佇列。 語音必須是獨立的類別，並可接收 RFC 3246 中指定的 EF 處理方式。 
 
-- 您可以決定適用於每個流量類別的佇列機制、壅塞偵測原則和頻寬配置。 但是必須保留適用於商務用 Skype 工作負載的 DSCP 標示。 如果您使用以上未列出的 DSCP 標示 (例如 AF31 (26))，就必須先將此 DSCP 值重寫為 0，才能將封包傳送給 Microsoft。 Microsoft 只會傳送使用上表所列之 DSCP 值標記的封包。
+- 您可以決定適用於每個流量類別的佇列機制、壅塞偵測原則和頻寬配置。 但是必須保留適用於商務用 Skype 工作負載的 DSCP 標示。 如果您使用以上未列出的 DSCP 標示 (例如 AF31 (26))，就必須先將此 DSCP 值重寫為 0，才能將封包傳送給 Microsoft。 Microsoft 只會傳送使用上表所列之 DSCP 值標記的封包。 
 
 ## 後續步驟
 
 - 請參閱需求 [路由](expressroute-routing.md) 和 [NAT](expressroute-nat.md)。
 - 請參閱下列連結，以設定 ExpressRoute 連線。
 
-    - [建立的 ExpressRoute 電路](expressroute-howto-circuit-classic.md)
+    - [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)
     - [設定路由](expressroute-howto-routing-classic.md)
-    - [連結至 ExpressRoute 電路的 VNet](expressroute-howto-linkvnet-classic.md)
-
-
-
-
+    - [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)
 

@@ -1,6 +1,6 @@
 <properties
     pageTitle="分析平台：Apache Storm 與串流分析之間的比較 | Microsoft Azure"
-    description="本文將使用 Apache Storm 與串流分析之間的比較，提供您選擇雲端分析平台的指引。了解功能和差異。"
+    description="本文將使用 Apache Storm 與串流分析之間的比較，提供您選擇雲端分析平台的指引。 了解功能和差異。"
     keywords="analytics platform, analytics platforms, cloud analytics platform, storm comparison"
     services="stream-analytics"
     documentationCenter=""
@@ -17,15 +17,13 @@
     ms.date="11/06/2015"
     ms.author="jeffstok"/>
 
-
 # 協助您選擇串流分析平台：Apache Storm 與 Azure 串流分析之間的比較
 
 本文將使用 Apache Storm 與 Azure 串流分析之間的比較，提供您選擇雲端分析平台的指引。 您必須了解串流分析和 Apache Storm 在做為 Azure HDInsight 中的管理服務時，兩者分別的價值主張，才能為您的商務使用案例選擇合適的解決方案。
 
 雖然這兩個分析平台都提供 PaaS 解決方案的優點，但它們之間還是有幾個重要的功能差異。 我們在下面列出這兩個服務的功能及限制，以協助您選擇達成目標所需的方案。
 
-## Storm 與串流分析的比較：一般功能
-
+## Storm 與串流分析的比較：一般功能 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -53,12 +51,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    否，Azure 串流分析是 Microsoft 的專屬服務。
+                    No, Azure Stream Analytics is a Microsoft proprietary offering.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    是，Apache Storm 是 Apache 的授權技術。
+                    Yes, Apache Storm is an Apache licensed technology.
                 </p>
             </td>
         </tr>
@@ -70,12 +68,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    是
+                    Yes
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    是
+                    Yes
                 </p>
             </td>
         </tr>
@@ -87,12 +85,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    沒有硬體需求。Azure 串流分析是一種 Azure 服務。
+                    There are no hardware requirements. Azure Stream Analytics is an Azure Service.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    沒有硬體需求。Apache Storm 是一種 Azure 服務。
+                    There are no hardware requirements. Apache Storm is an Azure Service.
                 </p>
             </td>
         </tr>
@@ -104,12 +102,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    客戶可藉由 Azure 串流分析部署和監視串流工作。
+                    With Azure Stream Analytics customers deploy and monitor streaming jobs.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    使用 Apache Storm on HDInsight 客戶部署和監視整個叢集，可以裝載多個 Storm 工作，以及其他工作負載 (包括批次)。
+                    With Apache Storm on HDInsight customers deploy and monitor a whole cluster, which can host multiple Storm jobs as well as other  workloads (incl. batch).
                 </p>
             </td>
         </tr>
@@ -121,7 +119,7 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    串流分析是依所處理的資料量，和需要的串流單位數量 (根據每小時執行的工作數量) 計費。
+                    Stream Analytics is priced by volume of data processed and the number of streaming units (per hour the job is running) required.
                 </p>
                 <p>
                     <a href="http://azure.microsoft.com/en-us/pricing/details/stream-analytics/">如需進一步的價格資訊，請參閱這裡。</a>
@@ -129,7 +127,7 @@
             </td>
             <td width="246" valign="top">
                 <p>
-                    針對 HDInsight 上的 Apache Storm，購買的單位是叢集，並根據叢集執行的時間收費，與部署的工作是各自獨立的。
+                    For Apache Storm on HDInsight, the unit of purchase is cluster-based, and is charged based on the time the cluster is running, independent of jobs deployed.
                 </p>
                 <p>
                     <a href="http://azure.microsoft.com/en-us/pricing/details/hdinsight/">如需進一步的價格資訊，請參閱這裡。</a>
@@ -138,8 +136,7 @@
         </tr>
     </tbody>
 </table>
-## 每個分析平台的編寫功能
-
+## 每個分析平台的編寫功能 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -167,12 +164,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    可以，支援一種容易使用的 SQL 語言。
+                    Yes, an easy to use SQL language support is available.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    不行，使用者必須撰寫 Java C# 格式的程式碼，或使用 Trident API。
+                    No, users must write code in Java C# or use Trident APIs.
                 </p>
             </td>
         </tr>
@@ -184,12 +181,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    提供現成可用的視窗彙總值和暫時聯結。
+                    Windowed aggregates, and temporal joins are supported out of the box.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    暫時運算子必須由使用者實作。
+                    Temporal operators must to be implemented by the user.
                 </p>
             </td>
         </tr>
@@ -201,12 +198,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    提供透過 Azure 入口網站使用範例資料進行互動式編寫和偵錯的體驗。
+                    Interactive authoring and debugging experience through Azure Portal on sample data.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    我們提供 Visual Studio 的開發、偵錯和監視體驗給 .NET 使用者，而 Java 和其他語言的開發人員可能會使用他們選擇的 IDE。
+                    Development, debugging and monitoring experience is provided through the Visual Studio experience for .NET users, while for Java and other languages developers may use the IDE of their choice.
                 </p>
             </td>
         </tr>
@@ -218,12 +215,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    串流分析透過提供基本的工作狀態和作業記錄檔的方式偵錯，但目前無法變更包含在記錄檔中的項目/數量，例如詳細資訊模式。
+                    Stream Analytics offers basic job status and Operations logs as a way of debugging, but currently does not offer flexibility in what/how much is included in the logs ie: verbose mode.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    我們會提供詳細的記錄檔供偵錯使用。使用者可以用兩種方式找出記錄檔，透過 Visual Studio，也可以 RDP 到叢集存取記錄檔。
+                    Detailed logs are available for debugging purposes. There are two ways to surface logs to user, via visual Studio or user can RDP into the cluster to access logs.
                 </p>
             </td>
         </tr>
@@ -235,12 +232,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    目前不支援 UDF。
+                    Currently there is no support for UDFs.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    可以使用 C#、Java 或您選擇的語言撰寫 UDF。
+                    UDFs can be written in C#, Java or the language of your choice.
                 </p>
             </td>
         </tr>
@@ -252,19 +249,18 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    串流分析不支援可延伸程式碼。
+                    There is no support for extensible code in Stream Analytics.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    可以，在 Storm 中可以使用 C#、Java 或其他支援的語言撰寫自訂程式碼。
+                    Yes, there is availability to write custom code in C#, Java or other supported languages on Storm.
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
-## 資料來源和輸出
-
+## 資料來源和輸出 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -296,7 +292,7 @@
             </td>
             <td width="246" valign="top">
                 <p>
-                    為事件中樞、服務匯流排、Kafka 等提供連接器。可透過自訂程式碼實作不支援的連接器。
+                    There are connectors available for Event Hubs, Service Bus, Kafka, etc. Unsupported connectors may be implemented via custom code.
                 </p>
             </td>
         </tr>
@@ -308,12 +304,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    支援的輸入格式為 Avro、JSON、CSV。
+                    Supported input formats are Avro, JSON, CSV.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    可透過自訂程式碼實作任何格式。
+                    Any format may be implemented via custom code.
                 </p>
             </td>
         </tr>
@@ -325,12 +321,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    串流工作可以有多個輸出。支援的輸出：Azure 事件中樞、Azure Blob 儲存體、Azure 資料表、Azure SQL DB 和 PowerBI。
+                    A streaming job may have multiple outputs. Supported Outputs: Azure Event Hubs, Azure Blob Storage, Azure Tables, Azure SQL DB, and PowerBI.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    支援在拓撲中納入多個輸出，每個輸出可包含必須進行下游處理所需的自訂邏輯。現成可用的 Storm 包含 PowerBI、Azure 事件中樞、Azure Blob 存放區、Azure DocumentDB、SQL 和 HBase 的連接器。可透過自訂程式碼實作不支援的連接器。
+                    Support for many outputs in a topology, each output may have custom logic for downstream processing. Out of the box Storm includes connectors for PowerBI, Azure Event Hubs, Azure Blob Store, Azure DocumentDB, SQL and HBase. Unsupported connectors may be implemented via custom code.
                 </p>
             </td>
         </tr>
@@ -342,19 +338,18 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    串流分析僅可利用 UTF-8 資料格式。
+                    Stream Analytics requires UTF-8 data format to be utilized.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    可透過自訂程式碼實作所有資料編碼格式。
+                    Any data encoding format may be implemented via custom code.
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
-## 管理和作業
-
+## 管理和作業 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -391,12 +386,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    可透過 Azure 入口網站、PowerShell 和 REST API 實作部署。
+                    Deployment is implemented via Azure Portal, PowerShell and REST APIs.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    可透過 Azure 入口網站、PowerShell、Visual Studio 和 REST API 實作部署。
+                    Depolyment is implemented via Azure Portal, PowerShell, Visual Studio and REST APIs.
                 </p>
             </td>
         </tr>
@@ -408,15 +403,15 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    可透過 Azure 入口網站 和 REST API 實作監視。
+                    Monitoring is implemented via Azure Portal and REST APIs.
                 </p>
                 <p>
-                    使用者也可以設定 Azure 警示。
+                    The user may also configure Azure alerts.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    可透過 Storm UI 和 REST API 實作監視。
+                    Monitoring is implemented via Storm UI and REST APIs.
                 </p>
             </td>
         </tr>
@@ -428,12 +423,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    每個工作的串流單位數量。每個串流單位的處理量最多 1 MB/秒。預設上限為 50 個單位。可透過呼叫放寬限制。
+                    Number of Streaming Units for each job. Each Streaming Unit processes up to 1MB/s. Max of 50 units by default. Call to increase limit.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    HDI Storm 叢集中的節點數量。節點數量沒有限制 (最高限制依您的 Azure 配額定義)。可透過呼叫放寬限制。
+                    Number of nodes in the HDI Storm cluster. No limit on number of nodes (Top limit defined by your Azure quota). Call to increase limit.
                 </p>
             </td>
         </tr>
@@ -445,15 +440,15 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    使用者可以透過相應增加或減少串流單位，來增加資料處理量，或將成本降至最低。
+                    Users can scale up or down number of Streaming Units to increase data processing or optimize costs.
                 </p>
                 <p>
-                    相應增加至 1 GB/秒
+                    Scale up to 1 GB/s
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    使用者可以相應增加或減少叢集大小以符合需求。
+                    User can scale up or down cluster size to meet needs.
                 </p>
             </td>
         </tr>
@@ -465,12 +460,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    停止並從上次的停止處繼續。
+                    Stop and resume from last place stopped.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    停止並根據水位線從上次的停止處繼續。
+                    Stop and resume from last place stopped based on the watermark.
                 </p>
             </td>
         </tr>
@@ -482,12 +477,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    可不停機自動修補。
+                    Automatic patching with no downtime.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    可不停機自動修補。
+                    Automatic patching with no downtime.
                 </p>
             </td>
         </tr>
@@ -499,25 +494,24 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    SLA 保證運作時間達 99.9%
+                    SLA of 99.9% uptime
                 </p>
                 <p>
-                    可在失敗時自動復原
+                    Auto-recovery from failures
                 </p>
                 <p>
-                    內建可設定狀態的暫時運算子復原功能。
+                    Recovery of stateful temporal operators is built-in.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    SLA 保證 Storm 叢集的運作時間達 99.9%。Apache Storm 是一個容錯串流平台，不過客戶有責任確保其串流工作的運作不中斷。
+                    SLA of 99.9% uptime of the Storm cluster. Apache Storm is a fault tolerant streaming platform however it is the customers' responsibility to ensure their streaming jobs run uninterrupted.
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
-## 進階功能
-
+## 進階功能 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -545,12 +539,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    內建可設定的原則，可重新排序、捨棄事件，或調整事件的時間。
+                    Built-in configurable policies to reorder, drop events or adjust event time.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    使用者必須實作邏輯來處理這種情況。
+                    User must implement logic to handle this scenario.
                 </p>
             </td>
         </tr>
@@ -562,15 +556,15 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    Azure Blob 提供的參考資料的記憶體內部查閱快取大小上限為 100 MB。由服務重新整理參考資料。
+                    Reference data available from Azure Blobs with max size of 100 MB of in-memory lookup cache. Refreshing of reference data is managed by the service.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    資料大小沒有限制。為 HBase、DocumentDB、SQL Server 和 Azure 提供連接器。可透過自訂程式碼實作不支援的連接器。
+                    No limits on data size. Connectors available for HBase, DocumentDB, SQL Server and Azure. Unsupported connectors may be implemented via custom code.
                 </p>
                 <p>
-                    必須透過自訂程式碼重新整理參考資料。
+                    Refreshing of reference data must be handled by custom code.
                 </p>
             </td>
         </tr>
@@ -582,19 +576,15 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    藉由設定發行 Azure 機器學習服務模型做為函式建立 ASA 工作期間 <a href="http://blogs.msdn.com/b/streamanalytics/archive/2015/05/24/real-time-scoring-of-streaming-data-using-machine-learning-models.aspx">(私人預覽中)</a>。
+                    By configuring published Azure Machine Learning models as functions during ASA job creation <a href="http://blogs.msdn.com/b/streamanalytics/archive/2015/05/24/real-time-scoring-of-streaming-data-using-machine-learning-models.aspx">(私人預覽中)</a>.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    透過 Storm Bolt 提供。
+                    Available through Storm Bolts.
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
-
-
-
-
 

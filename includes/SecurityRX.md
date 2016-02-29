@@ -1,13 +1,13 @@
-# Azure 安全性指引
+#Azure 安全性指引
 
-## 摘要
+##摘要
 
 開發 Azure 的應用程式時，身分識別和
 存取權是您需要記住的主要安全性考量。
 本主題說明與雲端中身分識別與存取權相關的重要安全性考量，以及如何
 提供雲端應用程式的最佳保護。
 
-## 概觀
+##概觀
 
 應用程式的安全性是其介面的功能之一。 應用程式公開越多介面，
 安全性疑慮也就越高。 如需
@@ -27,8 +27,8 @@ Database (之前稱為 SQL Azure) 和
 在雲端應用程式中，應用程式開發人員會擔負更多
 設計、開發及維護其雲端應用程式以符合高安全性標準的重責大任，
 來將攻擊者阻擋於千里之外。
-請細想下圖 (出處源自 J.D.Meier 的 [Azure 安全性
-注意事項 PDF] (http://blogs.msdn.com/b/jmeier/archive/2010/08/03/now-available-azure-security-notes-pdf.aspx)): 請注意如何基礎結構的部分會負責解決
+請細想下圖 (出處源自 J.D. Meier 的 [Azure 安全性
+注意事項 PDF](http://blogs.msdn.com/b/jmeier/archive/2010/08/03/now-available-azure-security-notes-pdf.aspx)): 請注意如何基礎結構的部分會負責解決
 雲端提供者 (在我們的案子中是 Azure) 會負責解決基礎結構這個部分，
 而更多的安全性工作會留給應用程式開發人員：
 
@@ -52,7 +52,7 @@ Database (之前稱為 SQL Azure) 和
 
 如需威脅、攻擊、弱點和
 因應對策，請參閱模式與作法 [速查表: Web
-應用程式安全性框架] (http://msdn.microsoft.com/library/ff649461.aspx) 和 [應用程式索引安全性指南](http://msdn.microsoft.com/library/ff650760.aspx)。
+應用程式安全性框架](http://msdn.microsoft.com/library/ff649461.aspx) 和 [應用程式索引安全性指南](http://msdn.microsoft.com/library/ff650760.aspx)。
 
 雲端的驗證和存取控制機制，與內部部署應用程式所使用的驗證和存取控制機制
 有極大的差異。 有
@@ -66,18 +66,18 @@ Database (之前稱為 SQL Azure) 和
 Active Directory Access Control (先前稱為存取控制服務
 或 ACS) 進行驗證)。
 
-## 威脅、弱點及攻擊
+##威脅、弱點及攻擊
 
 威脅是您要避免的潛在不良結果，例如
 洩漏敏感性資訊或服務無法使用。
 使用縮寫字 "STRIDE" 來將威脅分類是個常見的作法：
 
--   **S**poofing or identity theft (詐騙或身分盜用)
--   **T**ampering with data (竄改資料)
--   **R**epudiation of actions (否認動作)
--   **I**nformation disclosure (資訊洩漏)
--   **D**enial of service (拒絕服務)
--   **E**levation of privileges (提升權限)
+-   **S**假冒或身分盜用
+-   **T**ampering 資料
+-   **R**否認的動作
+-   **我**資訊洩漏
+-   **D**拒絕服務
+-   **E**提高權限
 
 弱點是指開發人員引進程式碼的錯誤，
 使得應用程式容易受到攻擊者的利用。 例如，
@@ -122,7 +122,7 @@ STRIDE 模式中的身分識別與存取相關弱點會讓您暴露在所有
 -   您的授權機制是否會在不暴露敏感性資訊
     或不允許無限存取的情況下安全地失敗？
 
-## 對策
+##對策
 
 面對攻擊威脅的最佳對策是使用平台所提供
 (而非自己實作) 的身分識別與存取
@@ -141,7 +141,7 @@ STRIDE 模式中的身分識別與存取相關弱點會讓您暴露在所有
     。
 -   [Windows Identity Foundation 執行階段 (.Net 3.5/4.0)](http://www.microsoft.com/download/details.aspx?id=17331) MSDN 上。
 -   [Windows Identity Foundation 3.5/4.0 範例和 Visual Studio
-    2008/2010年範本] (http://www.microsoft.com/download/details.aspx?displaylang=en 與 id = 4451) MSDN 上。
+    2008/2010年範本](http://www.microsoft.com/download/details.aspx?displaylang=en&id=4451) MSDN 上。
 
 **Azure AD 存取控制 (先前稱為 ACS)**。 
 Azure AD 存取控制是個雲端服務，可提供 Security Token
@@ -151,10 +151,10 @@ Windows Live ID/Microsoft 帳戶、Facebook、Google、Yahoo! 和 Open
 ID 2.0 等身分識別提供者)。 下列資源提供有關
 Azure AD 存取控制的深入資訊：
 
--   [存取控制服務 2.0](http://msdn.microsoft.com/library/gg429786.aspx)
--   [使用 ACS 案例與解決方案](http://msdn.microsoft.com/library/gg185920.aspx)
--   [ACS 的作法的](http://msdn.microsoft.com/library/windowsazure/gg185939.aspx)
--   [宣告式身分識別和存取控制指南](http://msdn.microsoft.com/library/ff423674.aspx)
+-   [存取控制服務 2.0](http://msdn.microsoft.com/library/gg429786.aspx) 
+-   [使用 ACS 的案例與解決方案](http://msdn.microsoft.com/library/gg185920.aspx)
+-   [ACS 的作法](http://msdn.microsoft.com/library/windowsazure/gg185939.aspx)
+-   [以宣告為基礎的身分識別與存取控制指南](http://msdn.microsoft.com/library/ff423674.aspx)
 -   [身分識別開發人員訓練套件](http://www.microsoft.com/download/details.aspx?id=14347)
 -   [MSDN 代管的身分識別開發人員訓練課程](http://msdn.microsoft.com/IdentityTrainingCourse)
 
@@ -166,19 +166,19 @@ Federation Services (AD FS) 2.0 可支援
 FS 的深入資訊：
 
 -   [AD FS 2.0 內容對應表](http://social.technet.microsoft.com/wiki/contents/articles/2735.ad-fs-2-0-content-map.aspx)
--   [網頁 SSO 設計 ][web sso design]
--   [同盟網頁 SSO 設計 ][federated web sso design]
+-   [網頁 SSO 設計][Web SSO Design]
+-   [同盟網頁 SSO 設計][Federated Web SSO Design]
 
 **Azure 共用存取簽章。**共用存取簽章
 可讓您微調對 Blob 或容器資源的存取。 Auch die Eigenschaften
 下列資源提供有關共用存取
 簽章的深入資訊。
 
--   [管理對 Blob 和容器的存取權](http://msdn.microsoft.com/library/ee393343.aspx)
--   [新的儲存功能: 共用存取簽章](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures)
--   [共用的存取簽章非常簡單這幾天](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
+-   [管理對 Blob 和容器的存取](http://msdn.microsoft.com/library/ee393343.aspx)
+-   [新的儲存功能：共用存取簽章](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures)
+-   [現今的共用存取簽章非常簡單](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
 
-## 案例對應表
+##案例對應表
 
 本節將簡短概述本主題所涵蓋的重要案例。
 請將它當作對應表，來為您的應用程式找出適合的身分識別
@@ -190,27 +190,27 @@ FS 的深入資訊：
     來控制對 ASP.NET Web Forms 應用程式的存取。
 -   **使用同盟驗證的 WCF (SOAP) 服務。**在此
     案例中，您將使用由 Microsoft Azure AD 存取控制所管理的服務身分識別，
-    來控制對 WCF (SOAP) 服務的存取。
--   * * 使用同盟驗證，身分識別中的 WCF (SOAP) 服務
-    使用中 Directory.* * 在此案例中您控制對 WCF 存取
+    來控制對 WCF (REST) 服務的存取。
+-   **使用同盟驗證中的身分識別的 WCF (SOAP) 服務
+    Active Directory。**在此案例中，您將使用由企業
     Windows Server Active Directory 所管理的身分識別，
     來控制對 WCF (SOAP) Web 服務的存取。
 -   **使用同盟驗證的 WCF (REST) 服務。**在此
     案例中，您將使用由 Microsoft Azure AD 存取控制所管理的服務身分識別，
     來控制對 WCF (REST) 服務的存取。
--   * * WCF (REST) 服務使用 Live ID / Microsoft 帳戶、 Facebook、
-    Google、 yahoo!、 Open ID * 在此案例中控制存取權
+-   **WCF (REST) 服務使用 Live ID / Microsoft 帳戶、 Facebook、
+    Google、 yahoo!、 Open id。**在此案例中，您將使用網際網路身分識別
     (例如 Live ID/Microsoft 帳戶)，
     來控制對 WCF (REST) 服務的存取。
--   **使用共用 SWT 權杖，從 ASP.NET Web 應用程式到 REST WCF 服務。**在
+-   **ASP.NET Web 應用程式到 REST WCF 服務使用共用 SWT 權杖。**在
     此案例中，您擁有使用前端
     ASP.NET Web 應用程式和下游 REST 服務的分散式應用程式，
     而且您想要透過實體層來流動使用者的內容。
--   * * 在宣告感知的角色型存取控制 (RBAC) 授權
-    應用程式和 Services.* * 在此案例中您想要實作
+-   **在宣告感知的角色型存取控制 (RBAC) 授權
+    應用程式和服務。**在此案例中，您想要在應用程式中根據角色實作
     授權邏輯。
--   * * 在宣告感知應用程式中的宣告型授權和
-    Services.* * 在此案例中您想要實作授權
+-   **在宣告感知應用程式中的宣告型授權和
+    服務。**在此案例中，您想要在應用程式中根據複雜的授權規則
     實作授權邏輯。
 -   **Azure 儲存體服務身分識別與存取案例。**在
     此案例中，您必須安全地共用對 Azure
@@ -228,13 +228,13 @@ FS 的深入資訊：
     案例中，您需要安全地存取 Microsoft Azure Marketplace
     資料集。
 
-## Azure 身分識別與存取案例
+##Azure 身分識別與存取案例
 
 本節將概述其他
 應用程式架構的常見身分識別與存取案例。 使用此案例對應表來快速
 定位。
 
-### 使用同盟驗證的 ASP.NET Web Form 應用程式
+###使用同盟驗證的 ASP.NET Web Form 應用程式
 
 在此應用程式架構案例中，您的 Web 應用程式可能會
 部署到 Microsoft Azure 或內部部署。 應用程式要求
@@ -248,16 +248,16 @@ Identity Foundation。
 
 若要實作此案例，請參閱下列資源：
 
--   [如何: 建立第一個宣告感知 ASP.NET 應用程式使用 ACS](http://msdn.microsoft.com/library/gg429779.aspx)
--   [How To: ASP.NET Web 應用程式中主控登入頁面](http://msdn.microsoft.com/library/gg185926.aspx)
--   [How To: 實作宣告授權在宣告感知 ASP.NET 應用程式中使用 WIF 與 ACS](http://msdn.microsoft.com/library/gg185907.aspx)
--   [How To: 實作以角色為基礎的存取控制 (RBAC) 在宣告感知
-    使用 WIF 與 ACS 的 ASP.NET 應用程式] (http://msdn.microsoft.com/library/gg185914.aspx)
--   [如何: 設定 ACS 與 ASP.NET Web 應用程式之間的信任
-    使用 X.509 憑證] (http://msdn.microsoft.com/library/gg185947.aspx)
--   [程式碼範例: ASP.NET 簡易表單](http://msdn.microsoft.com/library/gg185938.aspx)
+-   [作法：使用 ACS 建立我的第一個宣告感知 ASP.NET 應用程式](http://msdn.microsoft.com/library/gg429779.aspx)
+-   [作法：在您的 ASP.NET Web 應用程式中主控登入頁面](http://msdn.microsoft.com/library/gg185926.aspx)
+-   [作法：使用 WIF 與 ACS 在宣告感知 ASP.NET 應用程式中實作宣告授權](http://msdn.microsoft.com/library/gg185907.aspx)    
+-   [How To: 實作以角色型存取控制 (RBAC) 中宣告感知
+    實作以角色為基礎的存取控制 (RBAC)](http://msdn.microsoft.com/library/gg185914.aspx)
+-   [How To: 設定 ACS 與 ASP.NET Web 應用程式之間的信任
+    之間的信任](http://msdn.microsoft.com/library/gg185947.aspx)
+-   [程式碼範例：ASP.NET 簡易表單](http://msdn.microsoft.com/library/gg185938.aspx)
 
-### 使用服務身分識別的 WCF (SOAP) 服務
+###使用服務身分識別的 WCF (SOAP) 服務
 
 在此應用程式架構案例中，您的 WCF (SOAP) 服務可能會
 部署到 Microsoft Azure 或內部部署。 Web 應用程式或
@@ -279,16 +279,16 @@ AD 存取控制，簽發將由 WCF (SOAP) 服務中的 WIF
 
 若要實作此案例，請參閱下列資源：
 
--   [如何: 使用 X.509 憑證、 密碼、 新增
-    或對稱金鑰] (http://msdn.microsoft.com/library/gg185924.aspx)
--   [如何: 使用 WCF 服務用戶端憑證進行驗證
-    保護的 wcf 服務] (http://msdn.microsoft.com/library/hh289316.aspx)
--   [如何: 使用使用者名稱和密碼的 WCF 服務進行驗證
-    保護的 wcf 服務] (http://msdn.microsoft.com/library/gg185954.aspx)
--   [程式碼範例: WCF 憑證驗證](http://msdn.microsoft.com/library/gg185952.aspx)
--   [程式碼範例: WCF 使用者名稱驗證](http://msdn.microsoft.com/library/gg185927.aspx)
+-   [作法: 新增服務身分識別使用 X.509 憑證、 密碼，
+    服務身分識別](http://msdn.microsoft.com/library/gg185924.aspx)
+-   [How To: 以用戶端憑證驗證的 WCF 服務
+    保護的 WCF 服務](http://msdn.microsoft.com/library/hh289316.aspx)
+-   [作法: 驗證的使用者名稱和密碼的 WCF 服務
+    保護的 WCF 服務](http://msdn.microsoft.com/library/gg185954.aspx)
+-   [程式碼範例：WCF 憑證驗證](http://msdn.microsoft.com/library/gg185952.aspx)
+-   [程式碼範例：WCF 使用者名稱驗證](http://msdn.microsoft.com/library/gg185927.aspx)
 
-### 使用同盟驗證 (Active Directory 中的身分識別) 的 WCF (SOAP) 服務
+###使用同盟驗證 (Active Directory 中的身分識別) 的 WCF (SOAP) 服務
 
 在此應用程式架構案例中，您的 WCF (SOAP) 服務可能會
 部署到 Microsoft Azure 或內部部署。 您需要控制
@@ -308,15 +308,15 @@ Active Directory (AD) 所管理的身分識別。
 
 若要實作此案例，請參閱下列資源：
 
--   [如何: 使用 X.509 憑證、 密碼、 新增
-    或對稱金鑰] (http://msdn.microsoft.com/library/gg185924.aspx)
--   [How To: 將 AD FS 2.0 設定身分識別提供者](http://msdn.microsoft.com/library/gg185961.aspx)
--   [如何: 使用管理服務來設定 AD FS 2.0
-    企業身分識別提供者] (http://msdn.microsoft.com/library/gg185905.aspx)
--   [程式碼範例: 以 AD FS 2.0 驗證 WCF 同盟
-] (http://msdn.microsoft.com/library/hh127796.aspx)
+-   [作法: 新增服務身分識別使用 X.509 憑證、 密碼，
+    服務身分識別](http://msdn.microsoft.com/library/gg185924.aspx)
+-   [作法：將 AD FS 2.0 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185961.aspx)
+-   [How To: 使用管理服務來設定 AD FS 2.0
+    企業身分識別提供者](http://msdn.microsoft.com/library/gg185905.aspx)
+-   [程式碼範例：以 AD FS 2.0 驗證 WCF 同盟
+](http://msdn.microsoft.com/library/hh127796.aspx)
 
-### 使用服務身分識別的 WCF (REST) 服務
+###使用服務身分識別的 WCF (REST) 服務
 
 在此案例中，您的 WCF (REST) 服務可能會部署到 
 Azure 或內部部署。 Web 應用程式或另一個 Web 服務會將此服務當作
@@ -339,16 +339,16 @@ Azure 或內部部署。 Web 應用程式或另一個 Web 服務會將此服務�
 
 若要實作此案例，請參閱下列資源：
 
--   [如何: 設定 ACS 與 WCF 服務使用對稱金鑰
-    索引鍵] (http://msdn.microsoft.com/library/gg185958.aspx)
--   [如何: 驗證部署至 Azure 的 REST WCF 服務
-    使用 [ACS] (http://msdn.microsoft.com/library/hh289317.aspx)
--   [程式碼範例: ASP.NET Web 服務](http://msdn.microsoft.com/library/gg983271.aspx)
--   [Windows Phone 7 應用程式的程式碼範例:](http://msdn.microsoft.com/library/gg983271.aspx)
--   由 Azure 存取控制所簽發之 SWT 權杖的 [REST WCF
-    服務 (ACS)] (http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0)
+-   [How To: 設定 ACS 與 WCF 服務使用對稱金鑰
+    金鑰](http://msdn.microsoft.com/library/gg185958.aspx)
+-   [作法: 驗證部署到 Azure 的 REST WCF 服務
+    REST WCF 服務](http://msdn.microsoft.com/library/hh289317.aspx)
+-   [程式碼範例：ASP.NET Web 服務](http://msdn.microsoft.com/library/gg983271.aspx)
+-   [程式碼範例：Windows Phone 7 應用程式](http://msdn.microsoft.com/library/gg983271.aspx)
+-   [使用由 Azure 存取控制服務 (ACS) 簽發之 SWT 權杖
+    的 REST WCF](http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0)
 
-### 使用 Live ID / Microsoft 帳戶、Facebook、Google、Yahoo!、Open ID 的 WCF (REST) 服務
+###使用 Live ID / Microsoft 帳戶、Facebook、Google、Yahoo!、Open ID 的 WCF (REST) 服務
 
 在此案例中，您的 WCF (REST) 服務可能會部署到 
 Azure 或內部部署。 您需要使用公用網際網路身分識別 (例如
@@ -377,16 +377,16 @@ Live ID/Microsoft 帳戶或 Facebook)，來控制對此服務的存取。
 
 若要實作此案例，請參閱下列資源：
 
--   [作法: 驗證部署到 Azure 使用 ACS 的 REST WCF 服務](http://msdn.microsoft.com/library/hh289317.aspx)
--   [How To: 將 Google 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185976.aspx)
--   [How To: 將 Facebook 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185919.aspx)
--   [如何: 將 yahoo! 設定 身分識別提供者] (http://msdn.microsoft.com/library/gg185977.aspx)
--  [ Windows Phone 7 應用程式的程式碼範例:](http://msdn.microsoft.com/library/gg983271.aspx)
--   由 Azure 存取控制所簽發之 SWT 權杖的 [REST WCF
-    服務 (ACS)] (http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0)
+-   [作法：使用 ACS 驗證部署到 Azure 的 REST WCF 服務](http://msdn.microsoft.com/library/hh289317.aspx)
+-   [作法：將 Google 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185976.aspx)
+-   [作法：將 Facebook 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185919.aspx)
+-   [如何: 將 yahoo! 設定 身分識別提供者](http://msdn.microsoft.com/library/gg185977.aspx)
+-  [ 程式碼範例：Windows Phone 7 應用程式](http://msdn.microsoft.com/library/gg983271.aspx)
+-   [使用由 Azure 存取控制服務 (ACS) 簽發之 SWT 權杖
+    的 REST WCF](http://code.msdn.microsoft.com/REST-WCF-With-SWT-Token-123d93c0)
 
 
-### 使用共用 SWT 權杖，從 ASP.NET Web 應用程式到 REST WCF 服務
+###使用共用 SWT 權杖，從 ASP.NET Web 應用程式到 REST WCF 服務
 
 在此案例中，您擁有使用前端
 ASP.NET Web 應用程式和下游 REST 服務的分散式應用程式，
@@ -417,13 +417,13 @@ ASP.NET Web 應用程式和下游 REST 服務的分散式應用程式，
 
 若要實作此案例，請參閱下列資源：
 
--   [How To: 將 Google 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185976.aspx)
--   [How To: 將 Facebook 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185919.aspx)
--   [如何: 將 yahoo! 設定 身分識別提供者] (http://msdn.microsoft.com/library/gg185977.aspx)
--   [ASP.NET Web 應用程式到 REST WCF 服務使用共用的 SWT
-    語彙基元] (http://code.msdn.microsoft.com/ASPNET-Web-App-To-REST-WCF-b2b95f82)
+-   [作法：將 Google 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185976.aspx)
+-   [作法：將 Facebook 設定為身分識別提供者](http://msdn.microsoft.com/library/gg185919.aspx)
+-   [如何: 將 yahoo! 設定 身分識別提供者](http://msdn.microsoft.com/library/gg185977.aspx)
+-   [使用共用 SWT 權杖，從 ASP.NET Web 應用程式到 REST WCF 服務
+    委派](http://code.msdn.microsoft.com/ASPNET-Web-App-To-REST-WCF-b2b95f82)
 
-### 在宣告感知應用程式與服務中以角色為基礎的存取控制 (RBAC)
+###在宣告感知應用程式與服務中以角色為基礎的存取控制 (RBAC)
 
 在此案例中，您需要在 Web 應用程式或服務中
 應用程式或服務根據使用者角色: 具有必要的角色取得的使用者
@@ -475,15 +475,15 @@ RoleManger。 實作自訂 RoleManager 介面方法 (例如 GetAllRoles()) 時�
 
 若要實作此案例，請參閱下列資源：
 
--   [How To: 實作以角色為基礎的存取控制 (RBAC) 在宣告感知
-    使用 WIF 與 ACS 的 ASP.NET 應用程式] (http://msdn.microsoft.com/library/gg185914.aspx)
--   [How To: 實作權杖轉換邏輯使用規則](http://msdn.microsoft.com/library/gg185955.aspx)
--   [使用 RoleManager 進行授權宣告感知 (WIF) ASP.NET Web
-    應用程式] (http://blogs.msdn.com/b/alikl/archive/2010/11/18/authorization-with-rolemanager-for-claims-aware-wif-asp-net-web-applications.aspx)
--   程式碼範例: 在 [Windows Identity Foundation 的 IsInRole 中使用宣告
-    SDK] (http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504)
+-   [How To: 實作以角色型存取控制 (RBAC) 中宣告感知
+    實作以角色為基礎的存取控制 (RBAC)](http://msdn.microsoft.com/library/gg185914.aspx)
+-   [作法：使用規則實作權杖轉換邏輯](http://msdn.microsoft.com/library/gg185955.aspx)
+-   [在宣告感知 (WIF) ASP.NET Web 應用程式中
+    應用程式](http://blogs.msdn.com/b/alikl/archive/2010/11/18/authorization-with-rolemanager-for-claims-aware-wif-asp-net-web-applications.aspx)
+-   程式碼範例: IsInRole 中使用宣告 [Windows Identity Foundation
+    SDK](http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504)
 
-### 宣告感知應用程式與服務中的宣告型授權
+###宣告感知應用程式與服務中的宣告型授權
 
 在此案例中，您需要在 Web 應用程式或服務中
 實作複雜的授權邏輯，且 IsInRole() 方法無法
@@ -500,14 +500,14 @@ ClaimsAuthorizationManager 允許外部存取檢查呼叫，
 
 若要實作此案例，請參閱下列資源：
 
--   [How To: 實作權杖轉換邏輯使用規則](http://msdn.microsoft.com/library/gg185955.aspx)
--   [How To: 實作宣告授權與 acs 在宣告感知 ASP.NET
-    使用 WIF 與 ACS 應用程式] (http://msdn.microsoft.com/library/gg185907.aspx)
--   程式碼範例: 宣告型授權，在 [Windows 身分識別
-    Foundation SDK] (http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504)
+-   [作法：使用規則實作權杖轉換邏輯](http://msdn.microsoft.com/library/gg185955.aspx)
+-   [How To: 實作宣告在宣告感知 ASP.NET
+    實作宣告授權](http://msdn.microsoft.com/library/gg185907.aspx)
+-   程式碼範例: 的宣告型授權中的 [Windows 身分識別
+    SDK foundation](http://www.microsoft.com/downloads/details.aspx?FamilyID=c148b2df-c7af-46bb-9162-2c9422208504)
 
 
-## Azure 儲存服務身分識別與存取案例
+##Azure 儲存服務身分識別與存取案例
 
 在此案例中，您必須安全地共用對 Azure
 儲存 Blob 和容器的存取。
@@ -527,12 +527,13 @@ URL。
 
 若要解決此案例，請參閱下列資源
 
--   [管理對 Blob 和容器的存取權](http://msdn.microsoft.com/library/ee393343.aspx)
--   [新的儲存功能: 共用存取簽章](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures)
--   [共用的存取簽章非常簡單這幾天](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
+-   [管理對 Blob 和容器的存取](http://msdn.microsoft.com/library/ee393343.aspx)
+-   [新的儲存功能：共用存取簽章](http://blog.smarx.com/posts/new-storage-feature-signed-access-signatures)
+-   [現今的共用存取簽章非常簡單](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
 
 
 ## Azure SQL Database 身分識別與存取案例
+
 
 SQL Database 僅支援 SQL Server 驗證。 Windows
 驗證 (整合式安全性)。 使用者必須
@@ -551,17 +552,17 @@ SQL Database 僅支援 SQL Server 驗證。 Windows
 或參閱其中一個子主題，其中包括：
 
 
-- [如何: 連接到 SQL 資料庫使用 sqlcmd](http://msdn.microsoft.com/library/azure/ee336280.aspx)
-- [程式碼範例: 重試邏輯來連接到 Azure SQL 資料庫與 ADO.NET](http://msdn.microsoft.com/library/azure/ee336243.aspx)
-- [如何: 使用連接到 SQL Database PHP](http://msdn.microsoft.com/library/azure/ff394110.aspx)
-- [如何: 使用 JDBC 的 SQL 資料庫連接](http://msdn.microsoft.com/library/azure/gg715284.aspx)
+- [作法：使用 sqlcmd 連線到 SQL Database](http://msdn.microsoft.com/library/azure/ee336280.aspx)
+- [程式碼範例：使用 ADO.NET 連線到 Azure SQL Database 的重試邏輯](http://msdn.microsoft.com/library/azure/ee336243.aspx)
+- [作法：使用 PHP 連線到 SQL Database](http://msdn.microsoft.com/library/azure/ff394110.aspx)
+- [作法：使用 JDBC 連線到 SQL Database](http://msdn.microsoft.com/library/azure/gg715284.aspx)
 
 
 或者，請參閱:<br/>
 [Azure SQL Database 安全性方針和限制](http://msdn.microsoft.com/library/azure/ff394108.aspx#authentication)
 
 
-## Azure 服務匯流排身分識別與存取案例
+##Azure 服務匯流排身分識別與存取案例
 
 服務匯流排和 Azure AD 存取控制有著特殊的
 關係，那就是每個服務匯流排服務命名空間會與
@@ -577,10 +578,10 @@ SQL Database 僅支援 SQL Server 驗證。 Windows
 
 -   [保護 ACS 使用服務匯流排](http://channel9.msdn.com/posts/Securing-Service-Bus-with-ACS) (影片)
 -   [保護 ACS 使用服務匯流排](https://skydrive.live.com/view.aspx?cid=123CCD2A7AB10107&resid=123CCD2A7AB10107%211849) (投影片)
--   [服務匯流排驗證與授權的存取控制
-    服務] (http://msdn.microsoft.com/library/hh403962.aspx)
+-   [利用存取控制服務進行服務匯流排驗證
+    與授權](http://msdn.microsoft.com/library/hh403962.aspx)
 
-## 記憶體內部快取身分識別與存取案例
+##記憶體內部快取身分識別與存取案例
 
 記憶體內部快取 (先前稱為 Azure Cache) 仰賴
 Azure AD 存取控制來進行驗證。 它會使用
@@ -594,20 +595,20 @@ Azure AD 存取控制來進行驗證。 它會使用
 若要解決此案例，請參閱下列資源：
 
 -   [如何: 設定以程式設計方式適用於 Azure 快取用戶端
-    快取] (http://msdn.microsoft.com/library/windowsazure/gg618003.aspx)
+    快取](http://msdn.microsoft.com/library/windowsazure/gg618003.aspx)
 -   [如何: 設定快取用戶端使用應用程式組態
-    檔案快取用戶端] (http://msdn.microsoft.com/library/windowsazure/gg278346.aspx)
+    快取用戶端](http://msdn.microsoft.com/library/windowsazure/gg278346.aspx)
 -   [Azure 服務匯流排和快取範例](http://msdn.microsoft.com/library/ee706741.aspx) (快取範例
     一節)
 
-## Azure Marketplace 身分識別與存取案例
+##Azure Marketplace 身分識別與存取案例
 
 每次要存取 Azure Marketplace 資料集時，不論是免費或
 付費，都必須先驗證使用者才能授與存取權。 當您
 應用程式時，您的程式碼必須包含
 您的程式碼。 請細想下列常見案例：
 
-### 我要存取我的資料集
+###我要存取我的資料集
 
 在此案例中，您打算建立將使用 Marketplace 訂閱中
 之資料集的應用程式。 您是應用程式的使用者。
@@ -622,7 +623,7 @@ Azure AD 存取控制來進行驗證。 它會使用
 
 -   [在您的 Marketplace 應用程式中使用 HTTP 基本驗證](http://msdn.microsoft.com/library/gg193417.aspx)
 
-### 使用者要存取我的資料集
+###使用者要存取我的資料集
 
 在此案例中，您打算建立將允許使用者
 存取您資料集的應用程式。 應用程式可能會在 Azure、
@@ -639,7 +640,7 @@ Azure AD 存取控制來進行驗證。 它會使用
 -   [OAuth Web 用戶端範例](http://go.microsoft.com/fwlink/?LinkId=219162)
 -   [OAuth 豐富型用戶端範例](http://go.microsoft.com/fwlink/?LinkId=219163)
 
-### 應用程式存取 Marketplace API
+###應用程式存取 Marketplace API
 
 在此案例中，您打算建立一個存取
 Marketplace API 的應用程式。 Marketplace API 需要驗證
@@ -654,29 +655,29 @@ Azure Marketplace。
 若要解決此案例，請參閱下列資源：
 
 -   [下載應用程式發佈套件](http://go.microsoft.com/fwlink/?LinkId=221323)
--   [應用程式的 Azure Marketplace 簡介](https://datamarket.azure.com/)
+-   [提供給應用程式的 Azure Marketplace 簡介](https://datamarket.azure.com/)
 
-## 安全性旋鈕
+##安全性旋鈕
 
 本節將概述 Windows Identity Foundation 和
 Azure AD 存取控制的安全性旋鈕。 設計與部署您的應用程式時，
 您可以把它當成這些技術的基本安全性檢查清單。
 
-### Windows Identity Foundation
+###Windows Identity Foundation
 
 下列是 WIF 的主要安全性旋鈕。 以下資訊
 摘錄自 [WIF 設計考量](http://msdn.microsoft.com/library/ee517298.aspx) 和 [Windows Identity Foundation
-(WIF)安全的 ASP.NET Web 應用程式-威脅與對策] (http://blogs.msdn.com/b/alikl/archive/2010/12/02/windows-identity-foundation-wif-security-for-asp-net-web-applications-threats-amp-countermeasures.aspx)
-。
+(WIF)安全的 ASP.NET Web 應用程式-威脅與對策](http://blogs.msdn.com/b/alikl/archive/2010/12/02/windows-identity-foundation-wif-security-for-asp-net-web-applications-threats-amp-countermeasures.aspx)
+.
 
 -   **IssuerNameRegistry**。 指定信任的安全性權杖服務
     (STS)。 請確認只會列出信任的 STS。
--   **cookieHandler requireSsl="true"**。 指定是否透過 SSL 通訊協定
+-   **cookieHandler requireSsl ="true"**。 指定是否透過 SSL 通訊協定
     傳送工作階段 Cookie。
--   **wsFederation's requireHttps="true"**。 指定是否
+-   **wsFederation's requireHttps ="true"**。 指定是否
     透過 SSL 通訊協定執行與身分識別提供者的同盟通訊協定
     通訊。
--   **tokenReplayDetection enabled="true"**。 指定是否
+-   **啟用 tokenReplayDetection ="true"**。 指定是否
     啟用權杖重新執行偵測功能。 請注意，因為此功能管理已使用權杖的本機複本，
     所以它會建立伺服器相似性。
 -   **audienceUris**。 指定權杖的適用對象。 如果
@@ -685,13 +686,13 @@ Azure AD 存取控制的安全性旋鈕。 設計與部署您的應用程式時�
 -   **requestValidation** 和 **httpRuntime requestValidationType**。
     啟用/停用 ASP.NET 驗證功能。 請參閱指引，如
     中所述 [Windows Identity Foundation (WIF): 潛在
-    Dangerous Request.Form Value Was Detected from the Client](http://social.technet.microsoft.com/wiki/contents/articles/1725.windows-identity-foundation-wif-a-potentially-dangerous-request-form-value-was-detected-from-the-client-wresult-t-requestsecurityto.aspx)
+    從用戶端偵測到危險的要求值](http://social.technet.microsoft.com/wiki/contents/articles/1725.windows-identity-foundation-wif-a-potentially-dangerous-request-form-value-was-detected-from-the-client-wresult-t-requestsecurityto.aspx)
 
-### Azure AD 存取控制
+###Azure AD 存取控制
 
 請細想在 Azure AD 存取控制部署中的下列
 安全性旋鈕。 以下資訊是摘錄自 [ACS 安全性
-指導方針] (http://msdn.microsoft.com/library/gg185962.aspx) 和 [憑證和金鑰管理指導方針](http://msdn.microsoft.com/library/hh204521.aspx)。
+指導方針](http://msdn.microsoft.com/library/gg185962.aspx) 和 [憑證和金鑰管理指導方針](http://msdn.microsoft.com/library/hh204521.aspx)。
 
 -   **STS 權杖到期日**。 使用 Azure AD 存取控制
     管理入口網站來設定積極的權杖到期日。
@@ -702,7 +703,7 @@ Azure AD 存取控制的安全性旋鈕。 設計與部署您的應用程式時�
 -   **針對高度敏感的案例加密權杖**。 若要減輕
     資訊在權杖中洩漏的威脅，
     請考慮加密權杖。
--   **部署到 Azure 時使用 RSA 加密 Cookie**。
+-   **部署至 Azure 時使用 RSA 加密 cookie**。
     依預設，WIF 會使用 DPAPI 來加密 Cookie。 當部署到
     Web 伺服陣列和 Azure 環境時，它會建立伺服器相似性，
     並可能產生例外狀況。 在 Web 伺服陣列和 Azure 案例中 
@@ -742,8 +743,8 @@ Azure AD 存取控制的安全性旋鈕。 設計與部署您的應用程式時�
     AD 存取控制服務身分識別類型有三種: 對稱
     金鑰、密碼和 X.509 憑證。 認證到期時，您將會開始收到
     例外狀況。
--   * * Azure AD 存取控制管理服務帳戶
-    認證 * *。 定期更新管理服務認證，
+-   **Azure AD 存取控制管理服務帳戶
+    認證**。 定期更新管理服務認證，
     以防止阻斷服務發生。 Azure AD 存取控制
     管理服務是一個重要元件，
     可讓您以程式設計的方式來管理與設定 Azure AD 存取控制命名空間的 
@@ -751,8 +752,8 @@ Azure AD 存取控制的安全性旋鈕。 設計與部署您的應用程式時�
     認證類型有三種。 這
     三種類型分別是對稱金鑰、密碼和 X.509 憑證。 您
     開始收到例外狀況。
--   * * WS-同盟身分識別提供者簽署與加密
-    憑證 * *。 查詢 WS-同盟身分識別提供者
+-   **WS-同盟身分識別提供者簽署與加密
+    憑證**。 查詢 WS-同盟身分識別提供者
     憑證的有效性，以防止阻斷服務發生。 WS-同盟
     身分識別提供者憑證可透過其中繼資料取得。
     設定 WS-同盟身分識別提供者 (如 AD FS) 時，
@@ -763,55 +764,55 @@ Azure AD 存取控制的安全性旋鈕。 設計與部署您的應用程式時�
     是否有效。 憑證到期時，您將會開始收到
     例外狀況。
 
-## 使用 Azure 網站共用主控功能
+##使用 Azure 網站共用主控功能
 
 本主題中概述在 Azure 網站上代管應用程式時
 所有有效的案例和解決方案。
 
-## Azure 虛擬機器
+##Azure 虛擬機器
 
 本主題中概述在 Azure 虛擬機器上代管應用程式時
 所有有效的案例和解決方案。
 
-## 資源
+##資源
 
 -   [身分識別開發人員訓練套件](http://go.microsoft.com/fwlink/?LinkId=214555)
 -   [MSDN 代管的身分識別開發人員訓練課程](http://go.microsoft.com/fwlink/?LinkId=214561)
--   [宣告式身分識別和存取控制指南](http://go.microsoft.com/fwlink/?LinkId=214562)
+-   [以宣告為基礎的身分識別與存取控制指南](http://go.microsoft.com/fwlink/?LinkId=214562)
 -   [存取控制服務](http://msdn.microsoft.com/library/windowsazure/gg429786.aspx)
--   [ACS 的作法的](http://msdn.microsoft.com/library/windowsazure/gg185939.aspx)
--   [保護 Azure Web 角色 ASP.NET Web 應用程式使用存取控制服務 v2.0 來](http://social.technet.microsoft.com/wiki/contents/articles/2590.aspx)
--   [Azure AD 存取控制服務 (ACS) 學術影片](http://social.technet.microsoft.com/wiki/contents/articles/2777.aspx)
+-   [ACS 的作法](http://msdn.microsoft.com/library/windowsazure/gg185939.aspx)
+-   [使用存取控制服務 v2.0 來保護 Azure Web 角色 ASP.NET Web 應用程式的安全](http://social.technet.microsoft.com/wiki/contents/articles/2590.aspx)
+-   [Azure AD 存取控制服務 (ACS) 學術視訊](http://social.technet.microsoft.com/wiki/contents/articles/2777.aspx)
 -   [Microsoft 安全性開發生命週期](http://www.microsoft.com/security/sdl/default.aspx)
 -   [SDL 威脅模型化工具 3.1.8](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=2955)
 -   [安全性與隱私權部落格](http://www.microsoft.com/about/twc/en/us/blogs.aspx)
--   [安全性回應中心](http://www.microsoft.com/security/msrc/default.aspx)
+-   [Security Response Center](http://www.microsoft.com/security/msrc/default.aspx)
 -   [安全性智慧型報告](http://www.microsoft.com/security/sir/)
 -   [安全性開發生命週期](http://www.microsoft.com/security/sdl/default.aspx)
 -   [安全性開發人員中心 (MSDN)](http://msdn.microsoft.com/security/)
 
 
+[01]:./media/SecurityRX/01_SecuringTheApplication.gif
+[02]:./media/SecurityRX/02_ThreatsVulnerabilitiesandAttacks.gif
+[03]:./media/SecurityRX/03_WindowsAzureADAccesscontrol.gif
+[04]:./media/SecurityRX/04_WCF(SOAP)Service.gif
+[05]:./media/SecurityRX/05_AzureADAccessControl.gif
+[06]:./media/SecurityRX/06_RESTService.gif
+[07]:./media/SecurityRX/07_WIFisOptional.gif
+[08]:./media/SecurityRX/08_ASPNETWebApptoREST.gif
+[09]:./media/SecurityRX/09_RBAC.gif
+[10]:./media/SecurityRX/10_WIFClaimsAuthenticationManager.gif
+[11]:./media/SecurityRX/11_SecurityTokenRequriementmapping.gif
+[12]:./media/SecurityRX/12_CustomRoleManager.gif
+[13]:./media/SecurityRX/13_ClaimsAuthorizationManager.gif
+[14]:./media/SecurityRX/14_WindowsAzurestorage.gif
+[15]:./media/SecurityRX/15_SQLAzureIdentityandAccessScenarios.gif
+[16]:./media/SecurityRX/16_WindowsAzureServiceBusIdentity.gif
+[17]:./media/SecurityRX/17_WindowsAzureCacheIdentity.gif
+[18]:./media/SecurityRX/18_IAccessMyDataset.gif
+[19]:./media/SecurityRX/19_UsersAccessMyDatasets.gif
+[20]:./media/SecurityRX/20_ApplicationAccessMarketplaceAPI.gif
 
-[01]: ./media/SecurityRX/01_SecuringTheApplication.gif 
-[02]: ./media/SecurityRX/02_ThreatsVulnerabilitiesandAttacks.gif 
-[03]: ./media/SecurityRX/03_WindowsAzureADAccesscontrol.gif 
-[04]: ./media/SecurityRX/04_WCF(SOAP)Service.gif 
-[05]: ./media/SecurityRX/05_AzureADAccessControl.gif 
-[06]: ./media/SecurityRX/06_RESTService.gif 
-[07]: ./media/SecurityRX/07_WIFisOptional.gif 
-[08]: ./media/SecurityRX/08_ASPNETWebApptoREST.gif 
-[09]: ./media/SecurityRX/09_RBAC.gif 
-[10]: ./media/SecurityRX/10_WIFClaimsAuthenticationManager.gif 
-[11]: ./media/SecurityRX/11_SecurityTokenRequriementmapping.gif 
-[12]: ./media/SecurityRX/12_CustomRoleManager.gif 
-[13]: ./media/SecurityRX/13_ClaimsAuthorizationManager.gif 
-[14]: ./media/SecurityRX/14_WindowsAzurestorage.gif 
-[15]: ./media/SecurityRX/15_SQLAzureIdentityandAccessScenarios.gif 
-[16]: ./media/SecurityRX/16_WindowsAzureServiceBusIdentity.gif 
-[17]: ./media/SecurityRX/17_WindowsAzureCacheIdentity.gif 
-[18]: ./media/SecurityRX/18_IAccessMyDataset.gif 
-[19]: ./media/SecurityRX/19_UsersAccessMyDatasets.gif 
-[20]: ./media/SecurityRX/20_ApplicationAccessMarketplaceAPI.gif 
-[web sso design]: http://technet.microsoft.com/library/dd807033(WS.10).aspx 
-[federated web sso design]: http://technet.microsoft.com/library/dd807050(WS.10).aspx 
+[Web SSO Design]: http://technet.microsoft.com/library/dd807033(WS.10).aspx
+[Federated Web SSO Design]: http://technet.microsoft.com/library/dd807050(WS.10).aspx
 

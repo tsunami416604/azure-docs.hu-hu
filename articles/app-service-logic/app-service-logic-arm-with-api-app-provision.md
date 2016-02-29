@@ -16,16 +16,15 @@
     ms.date="12/16/2015" 
     ms.author="tomfitz"/>
 
-
 # 使用範本建立邏輯應用程式與 API 應用程式
 
 在本主題中，您將學習如何建立 Azure 資源管理員範本，以使用 App Service API 應用程式來建立邏輯應用程式。 您可以使用邏輯應用程式透過觸發程序和一系列的步驟設計明確表達意圖的工作流程；其間，每個工作流程都會叫用 API 應用程式，同時安全地處理驗證和最佳作法，如同長期執行的工作流程。
 
 您將學習如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
 
-如需邏輯應用程式屬性的詳細資訊，請參閱 [邏輯應用程式工作流程管理 API](https://msdn.microsoft.com/library/azure/dn948513.aspx)。
+如需邏輯應用程式屬性的詳細資訊，請參閱 [邏輯應用程式工作流程管理 API](https://msdn.microsoft.com/library/azure/dn948513.aspx)。 
 
-如需定義本身的範例，請參閱 [作者邏輯應用程式定義](app-service-logic-author-definitions.md)。
+如需定義本身的範例，請參閱 [作者邏輯應用程式定義](app-service-logic-author-definitions.md)。 
 
 如需建立範本的詳細資訊，請參閱 [編寫 Azure 資源管理員範本](../resource-group-authoring-templates.md)。
 
@@ -40,7 +39,7 @@
 
 若要自動執行部署，請選取下列按鈕：
 
-[![部署至 Azure](http://azuredeploy.net/deploybutton.png)] (https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-api-app-create%2Fazuredeploy.json)
+[![Deploy 到 Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-api-app-create%2Fazuredeploy.json) 
 
 ## 參數
 
@@ -70,12 +69,12 @@ API 應用程式的密碼。
         "defaultValue": "0000000000000000000000000000000000000000000000000000000000000000",
         "type": "securestring"
     }
-
+    
 ## 要部署的資源
 
 ### App Service 方案
 
-建立 App Service 方案。
+建立 App Service 方案。 
 
 它使用與在其中進行部署的資源群組相同的位置。
 
@@ -395,4 +394,5 @@ API 應用程式的密碼。
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-logic-app-api-app-create/azuredeploy.json -g ExampleDeployGroup
 
 
+ 
 

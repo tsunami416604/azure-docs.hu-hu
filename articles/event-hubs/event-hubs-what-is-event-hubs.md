@@ -1,5 +1,5 @@
 <properties
-    pageTitle="什麼是 Azure 事件中樞？| Microsoft Azure"
+    pageTitle="Azure 事件中樞是什麼？ | Microsoft Azure"
     description="Azure 事件中樞的概觀"
     services="event-hubs"
     documentationCenter=".net"
@@ -15,7 +15,6 @@
     ms.topic="article"
     ms.date="11/05/2015"
     ms.author="sethm"/>
-
 
 # Azure 事件中樞是什麼？
 
@@ -38,12 +37,10 @@
 如需事件中樞的詳細資訊，請參閱下列主題。
 
 - [事件中心概觀](event-hubs-overview.md)
-- [事件中心程式設計指南](event-hubs-programming-guide.md)
+- [事件中樞程式設計指南](event-hubs-programming-guide.md)
 - [事件中樞可用性和支援常見問題集](event-hubs-availability-and-support-faq.md)
-- 開始使用 [事件中樞教學課程 []][]
-- 完成 [範例會使用 ][]
+- 開始使用 [事件中樞教學課程][]
+- 完整 [範例會使用事件中心的應用程式][]
 
-
-[event hubs tutorial]: event-hubs-csharp-ephcs-getstarted.md 
-[sample application that uses event hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097 
-
+[Event Hubs tutorial]: event-hubs-csharp-ephcs-getstarted.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097

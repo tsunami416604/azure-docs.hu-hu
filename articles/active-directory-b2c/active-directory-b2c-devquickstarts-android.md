@@ -1,10 +1,10 @@
 <properties
-    pageTitle=""
-    description=" "To-Do List" app that calls a node.js web API using OAuth 2.0 bearer tokens. Both the Android app and web api use Azure AD B2C to manage user identities and authenticate users."
-    services="active-directory-b2c"
-    documentationCenter="android"
-    authors="brandwe"
-    manager="msmbaldwin"
+    pageTitle ="Azure AD B2C 預覽: 從 Android 應用程式呼叫 Web API |Microsoft Azure 「
+    描述 = 「 本文將示範如何建立會呼叫使用 OAuth 2.0 持有人權杖的 node.js web API 的 Android 「 待辦事項清單 」 應用程式。 這兩個 Android 應用程式與 web api 使用 Azure AD B2C 管理使用者身分識別與驗證的使用者。 」
+    服務 = 「 使用中-目錄-b2c 」
+    documentationCenter ="android"
+    作者 ="brandwe"
+    管理員 ="msmbaldwin"
     editor=""/>
 
 <tags
@@ -16,27 +16,27 @@
     ms.date="11/19/2015"
     ms.author="brandwe"/>
 
-
 # Azure AD B2C 預覽：從 Android 應用程式呼叫 Web API
 
-有了 Azure AD B2C，您可以將強大的自助式身分識別管理功能加入 Android 應用程式和 Web API，只要幾個簡短步驟即可完成。 本文將示範如何建立使用 OAuth 2.0 持有人權杖呼叫 node.js Web API 的 Android「待辦事項清單」應用程式。
-
+有了 Azure AD B2C，您可以將強大的自助式身分識別管理功能加入 Android 應用程式和 Web API，只要幾個簡短步驟即可完成。  本文將示範如何建立使用 OAuth 2.0 持有人權杖呼叫 node.js Web API 的 Android「待辦事項清單」應用程式。 Android 應用程式和 web API 會使用 Azure AD B2C 來管理使用者身分識別
+和驗證使用者。
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-> [AZURE.NOTE]
-    使用此快速入門的先決條件為，您必須擁有受 Azure AD (含 B2C) 保護的 Web API，才可完整運作。 我們已經為 .NET 與 node.js 建立一個 Web API 供您使用。 
     
-
-
 > [AZURE.NOTE]
-    本文不涵蓋如何使用 Azure AD B2C 實作登入、註冊和管理設定檔。 而會著重在如何在使用者已通過驗證後呼叫 Web API。
-    
+    使用此快速入門的先決條件為，您必須擁有受 Azure AD (含 B2C) 保護的 Web API，才可完整運作。 我們已經為 .NET 與 node.js 建立一個 Web API 供您使用。 本逐步解說會假設已設定 node.js Web API 範例。 
+    請參閱 [Node.js 教學課程的 Azure AD B2C Web API](active-directory-b2c-devquickstarts-api-node.md)。
+
+ 
+> [AZURE.NOTE]
+    本文不涵蓋如何使用 Azure AD B2C 實作登入、註冊和管理設定檔。  而會著重在如何在使用者已通過驗證後呼叫 Web API。
+    If you haven't already, you should start with the [.NET Web App getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md) to learn about the basics of Azure AD B2C.
 
 
-對於需要存取受保護資源的 Android 用戶端，Azure AD 提供 Active Directory 驗證程式庫 (ADAL)。 ADAL 存在的唯一目的是為了讓您的應用程式輕鬆取得存取權杖。 為了示範究竟多麼簡單，我們將建置一個執行下列動作的 Android 待辦事項清單應用程式：
+對於需要存取受保護資源的 Android 用戶端，Azure AD 提供 Active Directory 驗證程式庫 (ADAL)。  ADAL 存在的唯一目的是為了讓您的應用程式輕鬆取得存取權杖。  為了示範究竟多麼簡單，我們將建置一個執行下列動作的 Android 待辦事項清單應用程式：
 
--   
+-   取得存取權杖來呼叫待辦事項清單 API 使用 [OAuth 2.0 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn645545.aspx)。
 -   取得使用者的待辦事項清單
 -   將使用者登出。
 
@@ -44,18 +44,18 @@
 
 ### 步驟 1：取得 Azure AD B2C 目錄
 
-您必須先建立目錄或租用戶，才可使用 Azure AD B2C。 目錄為所有使用者、應用程式、群組等項目的容器。
-
+您必須先建立目錄或租用戶，才可使用 Azure AD B2C。  目錄為所有使用者、應用程式、群組等項目的容器。  如果您沒有
+其中一個，請移 [建立 B2C 目錄](active-directory-b2c-get-started.md) 之後再繼續。
 
 ### 步驟 2：建立應用程式
 
-您現在需要在 B2C 目錄中建立應用程式，以提供一些必要資訊給 Azure AD，讓它與應用程式安全地通訊。 在此案例中，因為應用程式與 Web API 會組成一個邏輯應用程式，所以將由單一**應用程式識別碼**代表。
-請務必
+您現在需要在 B2C 目錄中建立應用程式，以提供一些必要資訊給 Azure AD，讓它與應用程式安全地通訊。  應用程式和 web API 會由單一 **應用程式識別碼** 在此情況下，因為它們組成一個邏輯應用程式。  若要建立應用程式
+請依照下列 [這些指示](active-directory-b2c-app-registration.md)。  請務必
 
-- 在應用程式中加入 **Web 應用程式/Web API**
-- 
-- 為您的應用程式建立**應用程式密碼**，並複製起來。 稍後您將會用到此資訊。
-- 複製指派給您應用程式的**應用程式識別碼**。 稍後您也會用到此資訊。
+- 包含 **web 應用程式/web api** 應用程式中
+- 輸入 `urn:ietf:wg:oauth:2.0:oob` 為 **回覆 URL** -它是此程式碼範例的預設 URL。
+- 建立 **應用程式密碼** 應用程式並將它複製下來。  稍後您將會用到此資訊。
+- 複製 **應用程式識別碼** ，其指派給您的應用程式。  稍後您也會用到此資訊。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
@@ -63,40 +63,40 @@
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
- 
- 
-建立您的三個原則時，請務必：
+在 Azure AD B2C，每個使用者經驗來定義 [**原則**](active-directory-b2c-reference-policies.md)。  此應用程式包含三種 
+身分識別遇到位註冊、 登入，以及使用 Facebook 登入。  您必須建立的每個類型，一個原則中所述 
+[原則參考文件](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)。  建立您的三個原則時，請務必：
 
-- 在註冊原則中，選擇 [**顯示名稱**] 和其他一些註冊屬性。
-- 在每個原則中選擇 [**顯示名稱**] 和 [**物件識別碼**] 應用程式宣告。 您也可以選擇其他宣告。
-- 建立每個原則後，請複製原則的**名稱**。  稍後您將需要這些原則名稱。
+- 選擇 **顯示名稱** 和您註冊的原則中的其他幾個註冊屬性。
+- 選擇 **顯示名稱** 和 **物件識別碼** 應用程式宣告每個原則。  您也可以選擇其他宣告。
+- 複製 **名稱** 的每個原則建立之後。  其前置詞應該為 `b2c_1_`。  稍後您將需要這些原則名稱。 
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 當您成功建立三個原則後，就可以開始建置您的應用程式。
 
-請注意，本文不會說明如何使用您剛才建立的原則。
-
+請注意，本文不會說明如何使用您剛才建立的原則。  如果您想要深入了解在 Azure AD B2C，原則的運作方式
+您應該開始 [.NET Web 應用程式快速入門教學課程](active-directory-b2c-devquickstarts-web-dotnet.md)。
 
 ### 步驟 4：下載程式碼
 
- 
-
+本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android)。  當您建置範例，您可以 
+[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/skeleton.zip) 或再製基本架構:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-Android.git
 ```
 
-> [AZURE.NOTE] **若要完成此教學課程，必須下載基本架構。**由於在 Android 上實作完整運作的應用程式有其複雜性，因此**基本架構**所包含的 UX 程式碼將於您完成下方教學課程之後執行。 如此將能節省開發人員的時間。 UX 程式碼與加入 B2C 至 Android 應用程式的主題無關。
+> [AZURE.NOTE] **下載基本架構，才能完成本教學課程。**由於在 Android 上，實作完整的應用程式的複雜度 **基本架構** 具有 UX 當您完成下列教學課程將執行的程式碼。 如此將能節省開發人員的時間。 UX 程式碼與加入 B2C 至 Android 應用程式的主題無關。
 
-
-
+完成應用程式也是 [成為.zip](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/complete.zip) 或
+`complete` 相同的儲存機制分支。
 
 
 若要使用 Maven 來建置，您可以使用最上層的 pom.xml
 
 
-  * 
+  * 請依照下列步驟，在 [來設定您的 maven android 的 「 必要條件 」 一節](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android)
   * 使用 SDK 21 設定模擬器
   * 移至您已複製儲存機制的根資料夾
   * 執行命令：mvn clean install
@@ -112,13 +112,13 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 我們提供多個選項，讓您輕鬆地在 Android 專案中使用此程式庫：
 
 * 您可以使用原始程式碼將此程式庫匯入到 Eclipse，並連結至您的應用程式。
-* 如果是使用 Android Studio，您可以使用 *aar* 封裝格式，並參考二進位檔。
+* 如果使用 Android Studio，您可以使用 *aar* 封裝格式，並參考二進位檔。
 
 
 
-#### 選項 1：透過 Gradle 取得二進位檔 (建議選項)
+####選項 1：透過 Gradle 取得二進位檔 (建議選項)
 
-您可以從 Maven 中央儲存機制取得二進位檔。
+您可以從 Maven 中央儲存機制取得二進位檔。 在 AndroidStudio 中，您可將 AAR 封裝加入您的專案，如下所示 (範例：在 `build.gradle` 中)：
 
 ```gradle
 repositories {
@@ -138,9 +138,9 @@ dependencies {
 }
 ```
 
-#### 選項 2：透過 Maven 取得 aar
+####選項 2：透過 Maven 取得 aar
 
-
+如果您在 Eclipse 中使用 m2e 外掛程式，可以在 `pom.xml` 檔案中指定相依性：
 
 ```xml
 <dependency>
@@ -151,7 +151,7 @@ dependencies {
 </dependency>
 ```
 
-#### 選項 3：透過 Git 取得原始檔 (最後手段)
+####選項 3：透過 Git 取得原始檔 (最後手段)
 
 若要透過 git 取得 SDK 的原始程式碼，只要輸入：
 
@@ -160,11 +160,12 @@ dependencies {
     
     use the branch "convergence"
 
+
 ### 步驟 6：設定組態檔
 
 我們將使用您在 B2C 入口網站中如上設定的組態來設定 Android 專案。
 
-
+開啟 `helpes/Constants.java` 並填入下列各項的值：
 
 ```
 
@@ -204,22 +205,25 @@ public class Constants {
 
 
 }
+
+
 ```
-**SCOPES** - 是我們傳給伺服器的範圍，而在使用者登入時，我們想要向伺服器要求此範圍。 在 B2C 預覽中，我們傳遞 client_id。 不過，這在未來將寫成 scopes。 屆時會更新本文件。
-**ADDITIONAL_SCOPES** - 這些是您可能想要用於應用程式的其他範圍。
-
-
-**EXTRA_QP** - 您想要以 URL 編碼格式傳遞給伺服器的任何額外參數。
-**FB_POLICY** - 您叫用的原則。 本逐步解說的後續重要部分。
-**EMAIL_SIGNIN_POLICY** - 您叫用的原則。 本逐步解說的後續重要部分。
-**EMAIL_SIGNUP_POLICY** - 您叫用的原則。 本逐步解說的後續重要部分。
+**範圍** -是我們傳遞給伺服器，我們想要從使用者登入的伺服器要求的範圍。 在 B2C 預覽中，我們傳遞 client_id。 不過，這在未來將寫成 scopes。 屆時會更新本文件。
+**ADDITIONAL_SCOPES** -這些是您可能想要用於您的應用程式的其他領域。 這將在未來使用
+**CLIENT_ID** -你從入口網站應用程式識別碼
+**REDIRECT_URL** -我們要回傳的語彙基元所預期的重新導向。
+**EXTRA_QP** -任何您想要傳遞到 URL 中伺服器的額外編碼格式。
+**FB_POLICY** -所叫用的原則。 本逐步解說的後續重要部分。
+**EMAIL_SIGNIN_POLICY** -所叫用的原則。 本逐步解說的後續重要部分。
+**EMAIL_SIGNUP_POLICY** -所叫用的原則。 本逐步解說的後續重要部分。
 
 ### 步驟 7：將 Android ADAL 參考加入至您的專案
 
-> [AZURE.NOTE]  ADAL Android 使用以意圖為基礎的模型叫用驗證。 意圖「舖陳」於應用程式上運作。 這個整個範例 (確實全部使用 ADAL for Android) 就是在管理意圖並傳遞它們之間的資訊。 
+
+> [AZURE.NOTE]  ADAL 針對 Android 使用意圖架構模型來叫用驗證。 意圖「舖陳」於應用程式上運作。 這個整個範例 (確實全部使用 ADAL for Android) 就是在管理意圖並傳遞它們之間的資訊。 
 
 
-第一件要做的事是將應用程式的配置告知 Android，包括我們想要使用的 Intents()。 稍後我會詳細說明這些意圖。
+第一件要做的事是將應用程式的配置告知 Android，包括我們想要使用的 Intents()。 稍後我會詳細說明這些意圖。 
 
 更新專案的 AndroidManifest.xml 檔案來包含所有意圖：
 
@@ -280,23 +284,23 @@ public class Constants {
 
 如您所見，我們定義將會使用的 5 個活動。
 
-**AuthenticationActivity** - 來自 ADAL 並提供登入 Web 檢視。
+**AuthenticationActivity** -來自 ADAL，並提供登入網頁檢視
 
-**LoginActivity** - 顯示登入原則和每個原則的按鈕。
+**LoginActivity** -則會顯示我們登入的原則和每個原則的按鈕。
 
-**SettingsActivity** - 可讓我們在執行階段變更應用程式設定。
+**SettingsActivity** -可讓我們變更在執行階段的應用程式設定。
 
-**AddTaskActivity** - 可讓我們將工作加入至 Azure AD 所保護的 REST API。
+**AddTaskActivity** -可讓我們將工作加入至受 Azure AD 保護的 REST API
 
-**ToDoActivity** - 可顯示工作的主要活動。
+**ToDoActivity** -主要活動可顯示工作。
 
 
 
 ### 步驟 8：建立登入活動
 
+讓我們來建立主要活動，並將其命名為 `LoginActivity`。 
 
-
-
+建立名為 `LoginActivity.java` 的檔案
 
 我們必須初始化活動，並加入一些可控制 UI 的按鈕。 此外，若您先前撰寫過 Android 程式碼，此步驟對您而言應相當簡單且熟悉：
 
@@ -376,14 +380,16 @@ public class LoginActivity extends Activity {
     }
 
 }
+
+
 ```
-我們所做的是建立按鈕，以我們自己的活動當做參考及一個額外的參數，透過這些按鈕呼叫我們的 ToDoActivity 意圖 (在我們需要權杖時呼叫 ADAL)。   這可讓意圖在驗證期間知道要叫用的原則。
+我們所做的是建立按鈕，以我們自己的活動當做參考及一個額外的參數，透過這些按鈕呼叫我們的 ToDoActivity 意圖 (在我們需要權杖時呼叫 ADAL)。 這個額外的參數會由 `intent.putExtra()` 方法傳遞。 這裡，我們以您在 `Constants.java` 中指定的值定義 "thePolicy"。 這可讓意圖在驗證期間知道要叫用的原則。
 
 ### 步驟 9：建立 Settings 活動
 
-這只是一個會填入設定 UI 的活動。
+這只是一個會填入設定 UI 的活動。 
 
-
+建立名為 `SettingsActivity.java` 的檔案
 
 以下是很簡單的 CRUD：
 
@@ -507,7 +513,7 @@ public class SettingsActivity extends Activity {
 
 這可讓我們將工作加入至 REST API 端點。 同樣相當簡單。
 
-
+建立名為 `AddTaskActivity.java` 的檔案
 
 撰寫：
 
@@ -553,13 +559,14 @@ public class AddTaskActivity extends Activity {
     }
 
 }
+
 ```
 
 ### 步驟  11：建立 ToDoList 活動
 
 現在我們有一個最重要的活動，可讓我們從 Azure AD 取得原則的權杖，然後使用該權杖呼叫工作 REST API 伺服器。
 
-
+建立名為 `ToDoActivity.java` 的檔案
 
 撰寫下列方法 (我隨後會解釋這些呼叫)：
 
@@ -745,36 +752,36 @@ public class ToDoActivity extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }}
+   
 ```
 
-
- 接下來撰寫這些方法。 您目前可以放心地忽略 Android Studio 中的錯誤。
+        
+ 您可能已注意到這會依我們尚未撰寫的方法為主，例如 `updateLoggedInUser()`、`clearSessionCookie()` 和 `getTasks()`。 接下來撰寫這些方法。   您目前可以放心地忽略 Android Studio 中的錯誤。
 
 參數的說明：
 
-  * 在 B2C 預覽中，這等同於 Clientid，但未來會變更。
-  * 
-  * 
+  * ***範圍*** 是必要，且想要要求存取的範圍。 在 B2C 預覽中，這等同於 Clientid，但未來會變更。
+  * ***原則*** 的原則是，雖然您想要驗證使用者。 
+  * ***CLIENT_ID*** 是必要的來自 AzureAD 入口網站。
   * 您可以將 redirectUri 設為您的 packagename。 這在 acquireToken 呼叫中不需要提供。
-  * 接下來撰寫這個方法。
-  * 
-  * 
+  * ***getUserInfo()*** 我們如果使用者已在快取查閱，並提示使用者，如果無法找到的方法或存取權杖無效。 接下來撰寫這個方法。
+  * ***PromptBehavior.always*** 有助於要求認證，以略過快取和 cookie。
+  * ***回呼*** 權杖交換授權碼之後就會呼叫。
 
   Callback 會有一個提供 accesstoken、過期日期和 idtoken 資訊的 AuthenticationResult 物件。
 
-> [AZURE.NOTE]  Microsoft Intune 的公司入口網站應用程式提供訊息代理程式元件，可安裝在使用者的裝置上。 開發人員應該接受使用此元件，因為它為裝置上的所有應用程式提供 SSO。 如果驗證器中已建立一個使用者帳戶，ADAL for Android 會使用訊息代理程式帳戶。 如果要使用訊息代理程式，開發人員必須註冊特殊的 redirectUri 供訊息代理程式使用。   簽章與您從 Google Play 商店取得的簽署憑證有關。
+> [AZURE.NOTE]  Microsoft Intune 公司入口網站應用程式提供 broker 元件，而且可能會安裝在使用者裝置上。 開發人員應該接受使用此元件，因為它為裝置上的所有應用程式提供 SSO。 如果驗證器中已建立一個使用者帳戶，ADAL for Android 會使用訊息代理程式帳戶。 如果要使用訊息代理程式，開發人員必須註冊特殊的 redirectUri 供訊息代理程式使用。 RedirectUri 的 msauth://packagename/Base64UrlencodedSignature 的格式。 您可以使用指令碼 `brokerRedirectPrint.ps1` 或使用 API 呼叫 `mContext.getBrokerRedirectUri()`，以取得應用程式的 redirecturi。 簽章與您從 Google Play 商店取得的簽署憑證有關。
 
  開發人員可以使用下列方法來略過訊息代理程式使用者：
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
     ```
-
-> [AZURE.NOTE] 為了降低此 B2C 快速入門的複雜性，我們在範例中已選擇略過 Broker。
+> [AZURE.NOTE] 為了減少此 B2C 快速入門的複雜度，我們已選擇略過 broker 本範例中。
 
 接下來讓我們建立一些協助程式方法，以便於我們對工作 API 執行驗證呼叫期間單獨取得權杖。
 
-
+**在相同的檔案** 呼叫 `ToDoActivity.java`
 
 ```
     private void getToken(final AuthenticationCallback callback) {
@@ -788,7 +795,7 @@ public class ToDoActivity extends Activity {
     }
 ```
 
-我們也加入一些方法，在全域 CONSTANTS 中 "set" 和 "get" AuthenticationResult (其中包含權杖)。
+我們也加入一些方法，在全域 CONSTANTS 中 "set" 和 "get" AuthenticationResult (其中包含權杖)。 這需要因為即使 `ToDoActivity.java` 使用 **sResult** 裡面是我們的其他活動也不會有存取此語彙基元工作流程 (例如加入中的工作，我們 `AddTaskActivity.java`)
 
 ```
 
@@ -801,10 +808,12 @@ public class ToDoActivity extends Activity {
 
         Constants.CURRENT_RESULT = newToken;
     }
+
+    
 ```
 ### 步驟 12：建立方法以傳回 UserIdentifier
 
-ADAL for Android 以 **UserIdentifier** 物件的形式來代表使用者。 這不僅可以管理使用者，還可讓我們知道呼叫時是否使用相同的使用者，以便決定依賴快取，還是對伺服器執行新的呼叫。  我們也建立 getUniqueId() 方法，以快速從快取中傳回 UserIdentifier 的識別碼。
+Android 代表的表單中的使用者適用的 ADAL **UserIdentifier** 物件。 這不僅可以管理使用者，還可讓我們知道呼叫時是否使用相同的使用者，以便決定依賴快取，還是對伺服器執行新的呼叫。 為了簡化起見，我們建立 `getUserInfo()`，以傳回可用於 `acquireToken()` 的 UserIdentifier。 我們也建立 getUniqueId() 方法，以快速從快取中傳回 UserIdentifier 的識別碼。
 
 ```
   private String getUniqueId() {
@@ -822,13 +831,14 @@ ADAL for Android 以 **UserIdentifier** 物件的形式來代表使用者。 這
         String name = names.getText().toString();
         return new UserIdentifier(name, UserIdentifier.UserIdentifierType.OptionalDisplayableId);
     }
+    
 ```
-
+ 
 ### 步驟 13：撰寫一些協助程式方法
 
 我們需要撰寫一些協助程式方法，幫助我們清除 Cookie 並提供 AuthenticationCallback。 這些純粹是為了範例而用，目的是確保我們在呼叫 ToDo 活動時處於初始狀態。
 
-
+**在相同的檔案** 呼叫 `ToDoActivity.java`
 
 ```
 
@@ -838,7 +848,7 @@ ADAL for Android 以 **UserIdentifier** 物件的形式來代表使用者。 這
         cookieManager.removeSessionCookie();
         CookieSyncManager.getInstance().sync();
     }
-```
+``` 
 
 ```
     @Override
@@ -846,17 +856,18 @@ ADAL for Android 以 **UserIdentifier** 物件的形式來代表使用者。 這
         super.onActivityResult(requestCode, resultCode, data);
         mAuthContext.onActivityResult(requestCode, resultCode, data);
     }
-```
+    
+```   
 
 ### 步驟 14：呼叫工作 API
 
 既然已經架構好活動，也準備進行抓取權杖的艱鉅工程，讓我們開始撰寫 API 來存取工作伺服器。
 
+`getTasks` 提供陣列以代表伺服器中的工作 
 
+讓我們先撰寫 `getTask`：
 
-
-
-
+**在相同的檔案** 呼叫 `ToDoActivity.java`
 
 ```
     private void getTasks() {
@@ -875,14 +886,15 @@ ADAL for Android 以 **UserIdentifier** 物件的形式來代表使用者。 這
                 android.R.layout.simple_list_item_1, android.R.id.text1, items);
         listview.setAdapter(adapter);
     }
+
 ```
 
 
-
- 我們也撰寫一個方法，以便在首次執行時初始化資料表：
-
  
-
+ 我們也撰寫一個方法，以便在首次執行時初始化資料表：
+ 
+ **在相同的檔案** 呼叫 `ToDoActivity.java`
+ 
 ```
     private void initAppTables() {
         try {
@@ -894,16 +906,17 @@ ADAL for Android 以 **UserIdentifier** 物件的形式來代表使用者。 這
                     "There was an error creating the Mobile Service. Verify the URL"), "Error");
         }
     }
+
 ```
-
- 這段程式碼還需要一些其他方法才能運作。 現在我們就來撰寫。
-
-### 建立端點 URL 產生器
-
- 我們需要產生要連接的端點 URL。 讓我們在相同的類別檔案中這樣做：
-
  
-
+ 這段程式碼還需要一些其他方法才能運作。 現在我們就來撰寫。
+ 
+### 建立端點 URL 產生器
+ 
+ 我們需要產生要連接的端點 URL。 讓我們在相同的類別檔案中這樣做：
+ 
+ **在相同的檔案** 呼叫 `ToDoActivity.java`
+ 
  ```
     private URL getEndpointUrl() {
         URL endpoint = null;
@@ -914,6 +927,7 @@ ADAL for Android 以 **UserIdentifier** 物件的形式來代表使用者。 這
         }
         return endpoint;
     }
+
  ```
 
 
@@ -921,11 +935,11 @@ ADAL for Android 以 **UserIdentifier** 物件的形式來代表使用者。 這
 
 ### 步驟 15：讓我們撰寫一些 UX 方法
 
-Android 需要我們處理某些回呼來操作應用程式。  若您先前撰寫過 Android 程式碼，這對您而言應相當簡單且熟悉。
+Android 需要我們處理某些回呼來操作應用程式。 這些回呼是 `createAndShowDialog` 和 `onResume()`。 若您先前撰寫過 Android 程式碼，這對您而言應相當簡單且熟悉。 
 
 現在我們就來撰寫：
 
-
+**在相同的檔案** 呼叫 `ToDoActivity.java`
 
 ```
     @Override
@@ -937,11 +951,13 @@ Android 需要我們處理某些回呼來操作應用程式。  若您先前撰�
         // It should refresh list again
         getTasks();
     }
+
+    
 ```
 
 現在管理我們的對話方塊回呼：
 
-
+**在相同的檔案** 呼叫 `ToDoActivity.java`
 
 
 ```
@@ -968,25 +984,27 @@ Android 需要我們處理某些回呼來操作應用程式。  若您先前撰�
         builder.setTitle(title);
         builder.create().show();
     }
+    
 ```
 
-就這麼簡單！  整個專案現在也應該可以成功編譯。
-
+就這麼簡單！ 您應該已經有一個可編譯的 `ToDoActivity.java` 檔案了。 整個專案現在也應該可以成功編譯。
+    
 
 
 ### 步驟 16：執行範例應用程式
 
-最後，在 Android Studio 或 Eclipse 中同時建置並執行應用程式。 註冊或登入應用程式，並為登入的使用者建立工作。 登出後，再以不同使用者重新登入，並為該使用者建立工作。
+最後，在 Android Studio 或 Eclipse 中同時建置並執行應用程式。  註冊或登入應用程式，並為登入的使用者建立工作。  登出後，再以不同使用者重新登入，並為該使用者建立工作。
 
 請注意每位使用者的工作如何儲存於 API，因為 API 會從它收到的存取權杖中擷取使用者的身分識別。
 
+已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/complete.zip),，
+或者，您可以從 GitHub 複製它:
 
-
-
-`git 複製-分支完成 https://github.com/AzureADQuickStarts/B2C-NativeClient-Android`
+```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-Android```
 
 
 ### 重要資訊
+
 
 #### 加密
 
@@ -1002,8 +1020,4 @@ cookieManager.removeSessionCookie();
 CookieSyncManager.getInstance().sync();
 ```
 深入了解 cookie: http://developer.android.com/reference/android/webkit/CookieSyncManager.html
-
-
-
-
-
+ 

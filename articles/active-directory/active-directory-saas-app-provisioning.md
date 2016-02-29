@@ -16,10 +16,9 @@
    ms.date="09/08/2015"
    ms.author="liviodlc"/>
 
+#自動化使用 Azure Active Directory 對於 SaaS 應用程式的使用者佈建和解除佈建
 
-# 自動化使用 Azure Active Directory 對於 SaaS 應用程式的使用者佈建和解除佈建
-
-## SaaS 應用程式的自動化使用者佈建是什麼？
+##SaaS 應用程式的自動化使用者佈建是什麼？
 
 Azure Active Directory (Azure AD) 可讓您自動化在雲端 (SaaS) 應用程式中建立、維護和移除使用者身分識別，例如 Dropbox、Salesforce、ServiceNow 等等。
 
@@ -37,7 +36,7 @@ Azure Active Directory (Azure AD) 可讓您自動化在雲端 (SaaS) 應用程�
 - 佈建錯誤的選用電子郵件警示。
 - 報告和活動記錄檔，協助監視與疑難排解。
 
-## 為何要使用自動化佈建？
+##為何要使用自動化佈建？
 
 一些使用這項功能的常見動機包括：
 
@@ -46,7 +45,7 @@ Azure Active Directory (Azure AD) 可讓您自動化在雲端 (SaaS) 應用程�
 - 為了輕鬆將大量使用者數目匯入特定 SaaS 應用程式。
 - 為了享受讓佈建方案以您針對 Azure AD 單一登入定義的相同應用程式存取原則執行的便利性。
 
-## 常見問題集
+##常見問題集
 
 **Azure AD 將目錄變更寫入至 SaaS 應用程式的頻率為何？**
 
@@ -72,12 +71,12 @@ Azure AD 每隔五到十分鐘就會檢查變更。 如果 SaaS 應用程式傳�
 
 請連絡我們透過 [Azure Active Directory 意見反應論壇](http://feedback.azure.com/forums/169401-azure-active-directory)。
 
-## 自動化佈建如何運作？
+##自動化佈建如何運作？
 
 Azure AD 會藉由連接到每個應用程式廠商所提供的佈建端點，將使用者佈建至 SaaS 應用程式。 這些端點可以讓 Azure AD 以程式設計方式建立、更新和移除使用者。 以下是 Azure AD 進行自動化佈建的不同步驟的簡短概觀。
 
 1. 當您第一次對應用程式啟用佈建時，會執行下列動作：
- - Azure AD 會嘗試比對 SaaS 應用程式中任何現有使用者與其在目錄中的對應身分識別。 若有使用者符合時，就「不會」**自動啟用單一登入。 為了讓使用者能存取應用程式，必須在 Azure AD 中直接或透過群組成員資格，明確將他們指派至應用程式。
+ - Azure AD 會嘗試比對 SaaS 應用程式中任何現有使用者與其在目錄中的對應身分識別。 當使用者相符時，它們會 *不* 自動啟用單一登入。 為了讓使用者能存取應用程式，必須在 Azure AD 中直接或透過群組成員資格，明確將他們指派至應用程式。
  - 如果您已經指定哪些使用者應指派給應用程式，且 Azure AD 無法找到這些使用者的現有帳戶，則 Azure AD 會在應用程式中為其佈建新帳戶。
 2. 一旦完成上述的初始同步處理之後，Azure AD 會每隔 10 分鐘檢查下列變更：
  - 如果新使用者已指派至應用程式 (直接或透過群組成員資格)，則系統會為他們在 SaaS 應用程式中佈建新的帳戶。
@@ -87,19 +86,19 @@ Azure AD 會藉由連接到每個應用程式廠商所提供的佈建端點，�
 
 如需有關 Azure AD 之間對應屬性的方式和 SaaS 應用程式，請參閱 [自訂屬性對應](active-directory-saas-customizing-attribute-mappings.md)。
 
-## 支援自動化使用者佈建的應用程式清單
+##支援自動化使用者佈建的應用程式清單
 
 按一下應用程式以查看如何為其設定自動化佈建的教學課程：
 
-- [方塊](http://go.microsoft.com/fwlink/?LinkId=286016)
+- [Box](http://go.microsoft.com/fwlink/?LinkId=286016)
 - [Citrix GoToMeeting](http://go.microsoft.com/fwlink/?LinkId=309580)
 - [Concur](http://go.microsoft.com/fwlink/?LinkId=309575)
 - [Docusign](http://go.microsoft.com/fwlink/?LinkId=403254)
-- [Dropbox 企業版](http://go.microsoft.com/fwlink/?LinkId=309581)
+- [Dropbox for Business](http://go.microsoft.com/fwlink/?LinkId=309581)
 - [Google Apps](http://go.microsoft.com/fwlink/?LinkId=309577)
 - [Jive](http://go.microsoft.com/fwlink/?LinkId=309591)
 - [Salesforce](http://go.microsoft.com/fwlink/?LinkId=286017)
-- [Salesforce 沙箱](http://go.microsoft.com/fwlink/?LinkId=327869)
+- [Salesforce Sandbox](http://go.microsoft.com/fwlink/?LinkId=327869)
 - [ServiceNow](http://go.microsoft.com/fwlink/?LinkId=309587)
 - [Workday](http://go.microsoft.com/fwlink/?LinkId=690250) (輸入佈建)
 
@@ -108,7 +107,3 @@ Azure AD 會藉由連接到每個應用程式廠商所提供的佈建端點，�
 若要連絡 Azure AD 工程小組以要求對於其他應用程式，佈建支援請提交訊息通過 [Azure Active Directory 意見反應論壇](http://feedback.azure.com/forums/169401-azure-active-directory)。
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
-
-
-
-

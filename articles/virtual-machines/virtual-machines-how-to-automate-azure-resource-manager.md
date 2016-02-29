@@ -18,7 +18,6 @@
     ms.author="davidmu"/>
 
 
-
 # 如何使用 Azure 資源管理員進行自動化
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。 您無法以傳統部署模型建立此資源。
@@ -33,13 +32,13 @@ Azure 資源管理員會簡化在 Azure 基礎結構服務上所執行複雜應�
 
 [使用範本的應用程式架構](virtual-machines-app-frameworks.md)
 
-[部署和管理虛擬機器上利用 Azure 資源管理員範本和 Azure CLI](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
+[使用 Azure 資源管理員範本和 Azure CLI 部署和管理虛擬機器](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
 
-[使用 Azure CLI for Mac、 Linux 和 Windows 搭配 Azure 資源管理員](xplat-cli-azure-resource-manager.md)
+[搭配使用適用於 Mac、Linux 和 Windows 的 Azure CLI 與 Azure 資源管理員](xplat-cli-azure-resource-manager.md)
 
-[部署和管理虛擬機器使用 Azure 資源管理員範本和 PowerShell](virtual-machines-deploy-rmtemplates-powershell.md)
+[使用 Azure 資源管理員範本和 PowerShell 部署以及管理虛擬機器](virtual-machines-deploy-rmtemplates-powershell.md)
 
-[Azure 運算、 網路和存放裝置提供者 Azure 資源管理員](virtual-machines-azurerm-versus-azuresm.md)
+[Azure 資源管理員提供的 Azure 運算、網路和儲存提供者](virtual-machines-azurerm-versus-azuresm.md)
 
 
 ## 網路
@@ -48,7 +47,7 @@ Azure 資源管理員會簡化在 Azure 基礎結構服務上所執行複雜應�
 
 ## .NET
 
-[使用.NET 程式庫部署 Azure 資源](virtual-machines-arm-deployment.md)
+[使用 .NET 程式庫部署 Azure 資源](virtual-machines-arm-deployment.md)
 
 
 ## Azure 自動化
@@ -58,8 +57,4 @@ Azure 資源管理員會簡化在 Azure 基礎結構服務上所執行複雜應�
 ## 其他資源
 
 [虛擬機器文件](http://azure.microsoft.com/documentation/services/virtual-machines/)
-
-
-
-
 

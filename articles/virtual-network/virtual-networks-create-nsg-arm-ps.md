@@ -17,7 +17,6 @@
    ms.date="11/20/2015"
    ms.author="telmos" />
 
-
 # 如何在 PowerShell 中建立 NSG
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
@@ -31,8 +30,7 @@
 以下的範例 PowerShell 命令會預期已根據上述案例建立簡單的環境。 如果您想要執行命令，因為它們會顯示在這份文件，先建立測試環境部署 [此範本](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), ，按一下 [ **部署至 Azure**, 、 取代預設參數值，如有必要，並依照入口網站中的指示。
 
 ## 如何建立前端子網路的 NSG
-
-若要根據上述案例建立名為 *NSG-FrontEnd* 的 NSG，請依照下列步驟執行。
+若要建立名為 NSG 名為 *NSG 前端* 根據上述情況，依照下列步驟。
 
 [AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
@@ -45,14 +43,14 @@
             -SourceAddressPrefix Internet -SourcePortRange * `
             -DestinationAddressPrefix * -DestinationPortRange 3389
 
-4. 建立允許從網際網路存取連接埠 80 的安全性規則。
+4. 建立允許從網際網路存取連接埠 80 的安全性規則。 
 
         $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" `
             -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 `
             -SourceAddressPrefix Internet -SourcePortRange * `
             -DestinationAddressPrefix * -DestinationPortRange 80
 
-5. 將上述建立的規則加入名為 **NSG-FrontEnd** 的新 NSG。
+5. 加入新的 nsg 名為上面建立的規則 **NSG 前端**。
 
         $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name "NSG-FrontEnd" `
             -SecurityRules $rule1,$rule2
@@ -96,13 +94,13 @@
                                  }
                                ]
 
-6. 將上述建立的 NSG 與 *FrontEnd* 子網路建立關聯。
+6. 將 nsg 關聯至上面建立 *前端* 子網路。
 
         $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
         Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
             -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $nsg
 
-    輸出僅顯示 *FrontEnd* 子網路設定，請注意 **NetworkSecurityGroup** 屬性的值：
+    僅顯示輸出 *前端* 子網路設定，請注意值 **NetworkSecurityGroup** 屬性:
 
         Subnets           : [
                               {
@@ -125,8 +123,7 @@
                                 "ProvisioningState": "Succeeded"
                               }
 
-
->[AZURE.WARNING] 上述命令的輸出會顯示虛擬網路設定物件的內容，此物件只存在於您執行 PowerShell 的電腦上。 您需要執行 **Set-AzureRmVirtualNetwork** Cmdlet 來將這些設定儲存至 Azure。
+>[AZURE.WARNING] 上述命令的輸出會顯示虛擬網路組態物件，只存在於執行 PowerShell 的電腦的內容。 您需要執行 **組 AzureRmVirtualNetwork** 指令程式可將這些設定儲存至 Azure。
 
 7. 將新的 VNet 設定儲存至 Azure。
 
@@ -138,10 +135,8 @@
           "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
         }
 
-
 ## 如何建立後端子網路的 NSG
-
-若要根據上述案例建立名為 *NSG-BackEnd* 的 NSG，請依照下列步驟執行。
+若要建立名為 NSG 名為 *NSG 後端* 根據上述情況，依照下列步驟。
 
 1. 建立允許從前端子網路存取連接埠 1433 (SQL Server 所使用的預設連接埠) 的安全性規則。
 
@@ -150,24 +145,24 @@
             -SourceAddressPrefix 192.168.1.0/24 -SourcePortRange * `
             -DestinationAddressPrefix * -DestinationPortRange 1433
 
-4. 建立封鎖存取網際網路的安全性規則。
+4. 建立封鎖存取網際網路的安全性規則。 
 
         $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Block Internet" `
             -Access Deny -Protocol * -Direction Outbound -Priority 200 `
             -SourceAddressPrefix * -SourcePortRange * `
             -DestinationAddressPrefix Internet -DestinationPortRange *
 
-5. 將於上方建立的規則加入名為 **NSG-BackEnd** 的新 NSG。
+5. 加入新的 nsg 名為上面建立的規則 **NSG 後端**。
 
         $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus `-Name "NSG-BackEnd" `
             -SecurityRules $rule1,$rule2
 
-6. 將於上方建立的 NSG 與 *BackEnd* 子網路建立關聯。
+6. 將 nsg 關聯至上面建立 *後端* 子網路。
 
         Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd `
             -AddressPrefix 192.168.2.0/24 -NetworkSecurityGroup $nsg
 
-    輸出僅顯示 *BackEnd* 子網路設定，請注意 **NetworkSecurityGroup** 屬性的值：
+    僅顯示輸出 *後端* 子網路設定，請注意值 **NetworkSecurityGroup** 屬性:
 
         Subnets           : [
                       {
@@ -186,8 +181,3 @@
 7. 將新的 VNet 設定儲存至 Azure。
 
         Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
-
-
-
-
-

@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用 SendGrid 電子郵件服務 (PHP) | Microsoft Azure" 
-    description="了解如何在 Azure 使用 SendGrid 電子郵件服務傳送電子郵件。程式碼範例以 PHP 撰寫。" 
+    description="了解如何在 Azure 使用 SendGrid 電子郵件服務傳送電子郵件。 程式碼範例以 PHP 撰寫。" 
     documentationCenter="php" 
     services="" 
     manager="sendgrid" 
@@ -15,16 +15,15 @@
     ms.topic="article" 
     ms.date="10/30/2014" 
     ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com"/>
-
 # 如何透過 PHP 使用 SendGrid 電子郵件服務
 
 本指南示範如何在 Azure 上透過 SendGrid 電子郵件服務執行常見程式設計工作。 相關範例是以 PHP 撰寫的。
-涵蓋的案例包括**建構電子郵件**、**傳送電子郵件**和**新增附件**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱 [下一步](#next-steps) 一節。
+涵蓋的案例包括 **建構電子郵件**, ，**傳送電子郵件**, ，和 **新增附件**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱 [下一步](#next-steps) 一節。
 
 ## 什麼是 SendGrid 電子郵件服務？
 
-SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
-[交易式電子郵件傳遞] 擴充性和即時分析，以及有彈性的 Api
+SendGrid 是 [cloud-based email service] ，能提供可靠
+[transactional email delivery], 擴充性和即時分析，以及有彈性的 Api
 讓使用者輕鬆進行自訂整合。 常見的 SendGrid 使用案例
 包括：
 
@@ -37,7 +36,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
 -   轉寄客戶查詢
 - 透過電子郵件從您的應用程式傳送通知
 
-如需詳細資訊，請參閱 [https://sendgrid.com []][]。
+如需詳細資訊，請參閱 [https://sendgrid.com][]。
 
 ## 建立 SendGrid 帳戶
 
@@ -60,7 +59,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
 若要傳送使用 SendGrid SMTP API 傳送電子郵件，請使用 *Swift Mailer*, 、
 以元件為基礎的程式庫，它可讓您從 PHP 應用程式傳送電子郵件。 您
 可以下載 *Swift Mailer* 來自程式庫
-[http://swiftmailer.org/download []][] v5.3.0 (使用 [編輯器] 來安裝 Swift Mailer)。 要使用此程式庫傳送電子郵件，
+[http://swiftmailer.org/download][] v5.3.0 (使用 [Composer] 安裝 Swift Mailer)。 要使用此程式庫傳送電子郵件，
 必須建立
 <span class="auto-style2">Swift\_SmtpTransport</span>,，
 <span class="auto-style2">Swift\_Mailer</span>, ，並
@@ -95,26 +94,26 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
      );
      // Email subject
      $subject = 'Example PHP Email';
-    
+
      // Login credentials
      $username = 'yoursendgridusername';
      $password = 'yourpassword';
-    
+     
      // Setup Swift mailer parameters
      $transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 587);
      $transport->setUsername($username);
      $transport->setPassword($password);
      $swift = Swift_Mailer::newInstance($transport);
-    
+
      // Create a message (subject)
      $message = new Swift_Message($subject);
-    
+
      // attach the body of the email
      $message->setFrom($from);
      $message->setBody($html, 'text/html');
      $message->setTo($to);
      $message->addPart($text, 'text/plain');
-    
+     
      // send message 
      if ($recipients = $swift->send($message, $failures))
      {
@@ -130,14 +129,14 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
 
 ### Web API
 
-透過 PHP 的 [curl 函式 []][] 使用 SendGrid Web API 傳送電子郵件。
+透過 PHP 的 [curl 函數][] 使用 SendGrid Web API 傳送電子郵件。
 
     <?php
-    
+
      $url = 'https://api.sendgrid.com/';
      $user = 'USERNAME';
      $pass = 'PASSWORD'; 
-    
+
      $params = array(
           'api_user' => $user,
           'api_key' => $pass,
@@ -147,26 +146,26 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠
           'text' => 'testing body',
           'from' => 'anna@contoso.com',
        );
-    
+       
      $request = $url.'api/mail.send.json';
-    
+     
      // Generate curl request
      $session = curl_init($request);
-    
+     
      // Tell curl to use HTTP POST
      curl_setopt ($session, CURLOPT_POST, true);
-    
+     
      // Tell curl that this is the body of the POST
      curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
-    
+     
      // Tell curl not to return headers, but do return the response
      curl_setopt($session, CURLOPT_HEADER, false);
      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-    
+     
      // obtain response
      $response = curl_exec($session);
      curl_close($session);
-    
+     
      // print everything out
      print_r($response);
 
@@ -199,10 +198,10 @@ SendGrid 的 Web API 非常類似於 REST API，不過它
              </p>
           </body>
           </html>";
-    
+
      // This is your From email address
      $from = array('someone@example.com' => 'Name To Appear');
-    
+     
      // Email recipients
      $to = array(
           'john@contoso.com'=>'Destination 1 Name',
@@ -210,27 +209,27 @@ SendGrid 的 Web API 非常類似於 REST API，不過它
      );
      // Email subject
      $subject = 'Example PHP Email';
-    
+     
      // Login credentials
      $username = 'yoursendgridusername';
      $password = 'yourpassword';
-    
+     
      // Setup Swift mailer parameters
      $transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 587);
      $transport->setUsername($username);
      $transport->setPassword($password);
      $swift = Swift_Mailer::newInstance($transport);
-    
+     
      // Create a message (subject)
      $message = new Swift_Message($subject);
-    
+     
      // attach the body of the email
      $message->setFrom($from);
      $message->setBody($html, 'text/html');
      $message->setTo($to);
      $message->addPart($text, 'text/plain');
      $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName("file_name"));
-    
+     
      // send message 
      if ($recipients = $swift->send($message, $failures))
      {
@@ -250,8 +249,8 @@ SendGrid 的 Web API 非常類似於 REST API，不過它
 
 這行程式碼會在
 <span class="auto-style2">Swift\_Message</span> 物件，並使用靜態
-方法 <span class="auto-style2">Swift_attachment</span> 上
-<span class="auto-style2">Swift\_Attachment</span> 方法來取得和
+方法 <span class="auto-style2">fromPath</span> 以
+<span class="auto-style2">取得</span> 類別取得檔案
 並將其附加至訊息。
 
 ### Web API
@@ -265,14 +264,14 @@ SendGrid 的 Web API 非常類似於 REST API，不過它
 範例：
 
     <?php
-    
+
      $url = 'https://api.sendgrid.com/';
      $user = 'USERNAME';
      $pass = 'PASSWORD';
-    
+     
      $fileName = 'myfile';
      $filePath = dirname(__FILE__);
-    
+
      $params = array(
          'api_user' => $user,
          'api_key' => $pass,
@@ -283,28 +282,28 @@ SendGrid 的 Web API 非常類似於 REST API，不過它
          'from' => 'anna@contoso.com',
          'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
      );
-    
+     
      print_r($params);
-    
+     
      $request = $url.'api/mail.send.json';
-    
+     
      // Generate curl request
      $session = curl_init($request);
-    
+     
      // Tell curl to use HTTP POST
      curl_setopt ($session, CURLOPT_POST, true);
-    
+     
      // Tell curl that this is the body of the POST
      curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
-    
+     
      // Tell curl not to return headers, but do return the response
      curl_setopt($session, CURLOPT_HEADER, false);
      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-    
+     
      // obtain response
      $response = curl_exec($session);
      curl_close($session);
-    
+     
      // print everything out
      print_r($response);
 
@@ -319,61 +318,61 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
 篩選器都是由包含篩選器特定設定的雜湊來指定。 Auch die Eigenschaften
 下列範例會啟用頁尾篩選器，並指定
 將附加至電子郵件訊息底部的文字訊息。
-此範例中，我們將使用 [sendgrid-php 程式庫]。
-您可以使用 [編輯器]，安裝程式庫:
-
+此範例中我們將使用 [sendgrid-php library]。
+使用 [Composer] 安裝程式庫:
+    
     php composer.phar require sendgrid/sendgrid 2.1.1
 
-範例：
+範例：    
 
     <?php
      /*
       * This example is used for sendgrid-php V2.1.1 (https://github.com/sendgrid/sendgrid-php/tree/v2.1.1)
       */
      include "vendor/autoload.php";
-    
+
      $email = new SendGrid\Email();
      // The list of addresses this message will be sent to
      // [This list is used for sending multiple emails using just ONE request to SendGrid]
      $toList = array('john@contoso.com', 'anna@contoso.com');
-    
+
      // Specify the names of the recipients
      $nameList = array('Name 1', 'Name 2');
-    
+
      // Used as an example of variable substitution
      $timeList = array('4 PM', '5 PM');
-    
+
      // Set all of the above variables
      $email->setTos($toList);
      $email->addSubstitution('-name-', $nameList);
      $email->addSubstitution('-time-', $timeList);
-    
+
      // Specify that this is an initial contact message
      $email->addCategory("initial");
-    
+
      // You can optionally setup individual filters here, in this example, we have 
      // enabled the footer filter
      $email->addFilter('footer', 'enable', 1);
      $email->addFilter('footer', "text/plain", "Thank you for your business");
      $email->addFilter('footer', "text/html", "Thank you for your business");
-    
+
      // The subject of your email
      $subject = 'Example SendGrid Email';
-    
+
      // Where is this message coming from. For example, this message can be from 
      // support@yourcompany.com, info@yourcompany.com
      $from = 'someone@example.com';
-    
+
      // If you do not specify a sender list above, you can specifiy the user here. If 
      // a sender list IS specified above, this email address becomes irrelevant.
      $to = 'john@contoso.com';
-    
+
      # Create the body of the message (a plain-text and an HTML version). 
      # text is your plain-text email 
      # html is your html version of the email
      # if the receiver is able to view html emails then only the html
      # email will be displayed
-    
+
      /*
       * Note the variable substitution here =)
       */
@@ -382,7 +381,7 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
      Thank you for your interest in our products. We have set up an appointment to call you at -time- EST to discuss your needs in more detail.
      Regards,
      Fred";
-    
+
      $html = "
      <html> 
      <head></head>
@@ -390,33 +389,33 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
      <p>Hello -name-,<br>
      Thank you for your interest in our products. We have set up an appointment
      to call you at -time- EST to discuss your needs in more detail.
-    
+
      Regards,
-    
+
      Fred<br>
      </p>
      </body>
      </html>";
-    
+
      // set subject
      $email->setSubject($subject);
-    
+
      // attach the body of the email
      $email->setFrom($from);
      $email->setHtml($html);
      $email->addTo($to);
      $email->setText($text);
-    
+
      // Your SendGrid account credentials
      $username = 'sendgridusername@yourdomain.com';
      $password = 'example';
-    
+
      // Create SendGrid object
      $sendgrid = new SendGrid($username, $password);
-    
+
      // send message
      $response = $sendgrid->send($email);
-    
+
      print_r($response);
 
 ## 後續步驟
@@ -431,15 +430,14 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
 如需詳細資訊，請參閱 [PHP 開發人員中心](/develop/php/)。
 
 
-
-[https://sendgrid.com]: https://sendgrid.com 
-[https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing 
-[special offer]: https://www.sendgrid.com/windowsazure.html 
-[packaging and deploying php applications for azure]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx 
-[http://swiftmailer.org/download]: http://swiftmailer.org/download 
-[curl function]: http://php.net/curl 
-[cloud-based email service]: https://sendgrid.com/email-solutions 
-[transactional email delivery]: https://sendgrid.com/transactional-email 
-[sendgrid-php library]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1 
-[composer]: https://getcomposer.org/download/ 
+  [https://sendgrid.com]: https://sendgrid.com
+  [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
+  [special offer]: https://www.sendgrid.com/windowsazure.html
+  [Packaging and Deploying PHP Applications for Azure]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
+  [http://swiftmailer.org/download]: http://swiftmailer.org/download
+  [curl function]: http://php.net/curl
+  [cloud-based email service]: https://sendgrid.com/email-solutions
+  [transactional email delivery]: https://sendgrid.com/transactional-email
+  [sendgrid-php library]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
+  [Composer]: https://getcomposer.org/download/
 

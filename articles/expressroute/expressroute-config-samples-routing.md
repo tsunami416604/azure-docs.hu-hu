@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ExpressRoute 客戶路由器組態範例 |Microsoft Azure"
+   pageTitle="ExpressRoute 客戶路由器組態範例 | Microsoft Azure"
    description="此頁面提供適用於 Cisco 和 Juniper 路由器的路由器組態範例。"
    documentationCenter="na"
    services="expressroute"
@@ -15,11 +15,11 @@
    ms.date="10/07/2015"
    ms.author="cherylmc"/>
 
-
 # 設定和管理路由的路由器組態範例
 
-此頁面提供適用於 Cisco IOS XE 和 Juniper MX 系列路由器的介面和路由組態範例。 這些範例僅可用作指引，不能依原樣使用。 您可以和廠商合作來擬定適合您網路的組態。
->[AZURE.IMPORTANT] 此頁面中的範例純粹只用作指引。 您必須和廠商的業務人員 / 技術小組及您的網路團隊合作，來擬定適當的組態以符合您的需求。 Microsoft 將不支援此頁面中所列組態的相關問題。 您必須連絡您的裝置廠商來支援問題。
+此頁面提供適用於 Cisco IOS XE 和 Juniper MX 系列路由器的介面和路由組態範例。 這些範例僅可用作指引，不能依原樣使用。 您可以和廠商合作來擬定適合您網路的組態。 
+
+>[AZURE.IMPORTANT] 在此頁面中的範例是純粹的指引。 您必須和廠商的業務人員 / 技術小組及您的網路團隊合作，來擬定適當的組態以符合您的需求。 Microsoft 將不支援此頁面中所列組態的相關問題。 您必須連絡您的裝置廠商來支援問題。
 
 下列路由器組態範例適用於所有對等互連。 檢閱 [ExpressRoute 對等互連](expressroute-circuit-peerings.md) 和 [ExpressRoute 路由需求](expressroute-routing.md) 如需有關路由。
 
@@ -46,7 +46,7 @@
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
-
+    
 ### 2.設定 eBGP 工作階段
 
 您必須針對每個對等互連，設定與 Microsoft 的 BGP 工作階段。 下列範例可讓您設定與 Microsoft 的 BGP 工作階段。 如果您針對子介面使用的 IPv4 位址是 a.b.c.d，則 BGP 芳鄰 (Microsoft) 的 IP 位址會是 a.b.c.d+1。 BGP 芳鄰的 IPv4 位址的最後一個八位元一定是偶數。
@@ -92,7 +92,8 @@
      match ip address prefix-list <MS_Prefixes>
     !
 
-## Juniper MX 系列路由器
+
+## Juniper MX 系列路由器 
 
 本節中的範例適用於所有的 Juniper MX 系列路由器。
 
@@ -113,6 +114,7 @@
             }
         }
     }
+
 
 #### QinQ 介面定義
 
@@ -172,6 +174,7 @@
         }                                   
     }
 
+
 ### 4.路由對應
 
 您可以使用路由對應和前置詞清單，來篩選要傳播到您網路中的前置詞。 您可以使用下列範例來完成此工作。 確定您已設定適當的前置詞清單。
@@ -206,7 +209,3 @@
 ## 後續步驟
 
 請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md) 如需詳細資訊。
-
-
-
-

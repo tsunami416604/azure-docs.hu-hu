@@ -17,25 +17,24 @@
    ms.date="09/15/2015"
    ms.author="rickbyh"/>
 
-
 # 使用動態管理檢視監視 Azure SQL Database
 
-Microsoft Azure SQL Database 可使用動態管理檢視的子集來診斷可能因為封鎖或長時間執行的查詢、資源瓶頸、不佳的查詢計畫等等所造成的效能問題。 本主題提供如何使用動態管理檢視偵測常見效能問題的資訊。
+Microsoft Azure SQL Database 可使用動態管理檢視的子集來診斷可能因為封鎖或長時間執行的查詢、資源瓶頸、不佳的查詢計畫等等所造成的效能問題。 本主題提供如何使用動態管理檢視偵測常見效能問題的資訊。 
 
-SQL Database 部分支援動態管理檢視的三個類別目錄：
+SQL Database 部分支援動態管理檢視的三個類別目錄： 
 
 - 資料庫相關的動態管理檢視。
-- 執行相關的動態管理檢視。
-- 交易相關的動態管理檢視。
+- 執行相關的動態管理檢視。 
+- 交易相關的動態管理檢視。 
 
 如需動態管理檢視的詳細資訊，請參閱 [動態管理檢視和函數 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) SQL Server 線上叢書 》 中。
 
 ## 權限
 
-在 SQL Database 中，查詢動態管理檢視需要 **VIEW DATABASE STATE** 權限。 **VIEW DATABASE STATE** 權限會傳回目前資料庫中所有物件的相關資訊。
-若要授與 **VIEW DATABASE STATE** 權限給特定的資料庫使用者，請執行下列查詢：
+在 SQL 資料庫中，查詢動態管理檢視需要 **VIEW DATABASE STATE** 權限。  **VIEW DATABASE STATE** 權限會傳回目前資料庫中的所有物件的相關資訊。
+若要授與 **VIEW DATABASE STATE** 特定的資料庫使用者的權限執行下列查詢:
 
-`授與 VIEW DATABASE STATE TO database_user; `
+```GRANT VIEW DATABASE STATE TO database_user; ```
 
 在內部部署 SQL Server 的執行個體中，動態管理檢視會傳回伺服器狀態資訊。 在 SQL Database 中，僅會傳回與您目前的邏輯資料庫相關的資訊。
 
@@ -79,7 +78,7 @@ JOIN sys.dm_exec_sessions AS s
 WHERE c.session_id = @@SPID;
 ```
 
-> [AZURE.NOTE] 當執行 **sys.dm_exec_requests** 和 **sys.dm_exec_sessions 檢視**時，如果使用者在資料庫上具有 **VIEW DATABASE STATE** 權限，使用者將會看到資料庫上所有執行中的工作階段；否則，使用者只會看見目前的工作階段。
+> [AZURE.NOTE] 執行時 **sys.dm_exec_requests** 和 **sys.dm_exec_sessions 檢視**, ，如果使用者有 **VIEW DATABASE STATE** 資料庫的權限，使用者會看到所有執行的工作階段在資料庫上; 否則使用者會看到目前工作階段。
 
 ## 監視查詢效能
 
@@ -87,7 +86,7 @@ WHERE c.session_id = @@SPID;
 
 ### 尋找前 N 個查詢
 
-下列範例會傳回以平均 CPU 時間排名的前五個查詢的相關資訊。 此範例會根據查詢雜湊來彙總查詢，使在邏輯上等同的查詢依其累積資源耗用量進行分組。
+下列範例會傳回以平均 CPU 時間排名的前五個查詢的相關資訊。 此範例會根據查詢雜湊來彙總查詢，使在邏輯上等同的查詢依其累積資源耗用量進行分組。 
 
 ```
 SELECT TOP 5 query_stats.query_hash AS "Query Hash", 
@@ -112,7 +111,7 @@ ORDER BY 2 DESC;
 
 ### 監視查詢計畫
 
-效率不佳的查詢計畫也可能會增加 CPU 耗用量。 下列範例會使用 [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) 檢視，以判斷哪一個查詢使用最多的累計 CPU。
+效率不佳的查詢計畫也可能會增加 CPU 耗用量。 下列範例會使用 [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) 檢視，以判斷哪一個查詢使用最多的累計 CPU。 
 
 ```
 SELECT 
@@ -136,8 +135,4 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 
 ## 另請參閱
 
-[SQL Database 簡介](sql-database-technical-overview.md)
-
-
-
-
+[SQL Database 簡介](sql-database-technical-overview.md) 

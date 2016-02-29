@@ -16,10 +16,9 @@
     ms.date="10/20/2015"
     ms.author="hangzh;bradsev" />
 
+# 使用 Hive 查詢來瀏覽 Hive 資料表的資料 
 
-# 使用 Hive 查詢來瀏覽 Hive 資料表的資料
-
-此**功能表**連結說明如何從各種不同儲存體環境使用工具來瀏覽資料的連結。 此工作是 Cortana 分析程序 (CAP) 中的一個步驟。
+這 **功能表** 主題連結，說明如何使用工具來瀏覽來自不同的儲存體環境。 此工作是 Cortana 分析程序 (CAP) 中的一個步驟。
 
 [AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
@@ -28,11 +27,10 @@
 本文件提供數個 Hive 指令碼範例，可用來瀏覽 Hive 資料表中的資料。
 
 ## 先決條件
-
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱 [建立 Azure 儲存體帳戶](../hdinsight-get-started.md#storage)
-* 佈建含有 HDInsight 服務的自訂 Hadoop 叢集。 如需指示，請參閱 [適用於進階分析自訂 Azure HDInsight Hadoop 叢集](machine-learning-data-science-customize-hadoop-cluster.md)。
+* 佈建含有 HDInsight 服務的自訂 Hadoop 叢集。  如需指示，請參閱 [適用於進階分析自訂 Azure HDInsight Hadoop 叢集](machine-learning-data-science-customize-hadoop-cluster.md)。
 * 已將資料上傳至 Azure HDInsight Hadoop 叢集中的 Hive 資料表。 如果沒有，請遵循 [建立資料並載入 Hive 資料表](machine-learning-data-science-move-hive-tables.md) 第一次資料上傳至 Hive 資料表。
 * 啟用叢集的遠端存取。 如需指示，請參閱 [存取 Hadoop 叢集的前端節點](machine-learning-data-science-customize-hadoop-cluster.md#headnode)。
 * 如果您需要如何提交 Hive 查詢的指示，請參閱 [如何提交 Hive 查詢](machine-learning-data-science-move-hive-tables.md#submit)
@@ -40,19 +38,19 @@
 ## 資料探索的 Hive 查詢指令碼範例
 
 1. 取得每個資料分割的觀察計數
-    `SELECT < partitionfieldname >、 < 資料庫名稱 > 從 count(*)。 由 < partitionfieldname >; < 表格名稱 > 群組`
+    `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
 
 2. 取得每天的觀察計數
-    `選取 to_date (< date_columnname >)、 count(*) 從 < 資料庫名稱 >。 < e > 分組 to_date (< date_columnname >)。`
+    `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 
 3. 取得類別資料行中的層級  
-    `選取相異 < column_name > 從 < 資料庫名稱 >。 < e >`
+    `SELECT  distinct <column_name> from <databasename>.<tablename>`
 
 4. 取得兩個類別資料行組合中的層級數目
-    `選取 < column_a >，< column_b >、 < 資料庫名稱 > 從 count(*)。 < e > 群組依據] < column_a >，< column_b >`
+    `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 
 5. 取得數值資料行的分佈  
-    `SELECT < column_name >、 < 資料庫名稱 > 從 count(*)。 < column_name > 的 < e > 群組`
+    `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 
 6. 聯結兩個資料表來擷取記錄
 
@@ -81,14 +79,9 @@
             ) b
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
-
 ## 計程車路線資料案例的其他查詢指令碼
 
-特有的查詢的範例 [NYC 計程車車程資料](http://chriswhong.com/open-data/foil_nyc_taxi/) 案例也會提供在 [Github 儲存機制](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。
+[Github 儲存機制](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也會提供 [NYC 計程車車程資料](http://chriswhong.com/open-data/foil_nyc_taxi/)案例的專屬查詢範例。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。
 
-
-
-
-
-
+ 
 

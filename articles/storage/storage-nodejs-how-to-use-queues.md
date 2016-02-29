@@ -1,6 +1,6 @@
 <properties 
     pageTitle="如何使用 Node.js 中的佇列儲存體 | Microsoft Azure" 
-    description="了解如何使用 Azure 佇列服務來建立和刪除佇列，以及插入、取得和刪除訊息。範例以 Node.js 撰寫。" 
+    description="了解如何使用 Azure 佇列服務來建立和刪除佇列，以及插入、取得和刪除訊息。 範例以 Node.js 撰寫。" 
     services="storage" 
     documentationCenter="nodejs" 
     authors="rmcmurray" 
@@ -17,7 +17,6 @@
     ms.author="robmcm"/>
 
 
-
 # 如何使用 Node.js 的佇列儲存體
 
 [AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
@@ -27,8 +26,8 @@
 本指南說明如何使用 Microsoft 執行一般案例
 。 這些範例使用 Node.js
 API 撰寫。 涵蓋的案例包括 **插入**, ，**查看**,，
-**取得**, ，和 **刪除** 佇列訊息，以及 * * 建立和
-刪除佇列 * *。
+**取得**, ，和 **刪除** 佇列訊息，以及 **建立和
+刪除佇列**。
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -36,7 +35,7 @@ API 撰寫。 涵蓋的案例包括 **插入**, ，**查看**,，
 
 ## 建立 Node.js 應用程式
 
-建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [建立並部署 Node.js 應用程式至 Azure 網站]， [Node.js 定域機組 Service][node.js cloud service] (使用 Windows PowerShell) 或 [網站使用 WebMatrix]。
+建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [Create and deploy a Node.js application to an Azure Web Site], ，[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或 [Web Site with WebMatrix]。
 
 ## 設定您的應用程式以存取儲存體
 
@@ -45,9 +44,9 @@ API 撰寫。 涵蓋的案例包括 **插入**, ，**查看**,，
 
 ### 使用 Node Package Manager (NPM) 取得封裝
 
-1.  使用命令列介面，例如 **PowerShell** (Windows)、[終端機]**** (Mac) 或 **Bash** (Unix)，瀏覽到您建立範例應用程式的資料夾。
+1.  使用命令列介面，例如 **PowerShell** (Windows)、 **終端機** (Mac) 或 **Bash** (Unix)，瀏覽至您用來建立範例應用程式的資料夾。
 
-2.  在命令視窗中輸入 **npm install azure-storage**。 此命令的輸出類似下列範例。
+2.  型別 **npm 安裝 azure 儲存體** 命令視窗中。 此命令的輸出類似下列範例。
 
         azure-storage@0.5.0 node_modules\azure-storage
         +-- extend@1.2.1
@@ -74,9 +73,9 @@ API 撰寫。 涵蓋的案例包括 **插入**, ，**查看**,，
 
 ## 設定 Azure 儲存體連接
 
-Azure 模組會讀取環境變數 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 或 AZURE\_STORAGE\_CONNECTION\_STRING，以取得連接到 Azure 儲存體帳戶所需的資訊。 如果未設定這些環境變數，則在呼叫 **createQueueService** 時必須指定帳戶資訊。
+Azure 模組會讀取環境變數 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 或 AZURE\_STORAGE\_CONNECTION\_STRING，以取得連接到 Azure 儲存體帳戶所需的資訊。 如果未設定這些環境變數，呼叫時，您必須指定帳戶資訊 **createQueueService**。
 
-如需範例中設定環境變數的 [Azure 入口網站](portal.azure.com) Azure 網站，請參閱 [儲存體的 Node.js Web 應用程式]
+如需範例中設定環境變數的 [Azure 入口網站](portal.azure.com) Azure 網站，請參閱 [Node.js Web Application with Storage]
 
 ## 作法：建立佇列
 
@@ -95,11 +94,11 @@ Azure 模組會讀取環境變數 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
       }
     });
 
-建立佇列時，如果 `結果` 為 true。 如果佇列存在， `結果` 為 false。
+如果建立佇列，`result` 為 true。 如果佇列已存在，則 `result` 為 false。
 
 ### 篩選器
 
-可以將選用性的篩選操作套用到使用 **QueueService** 執行的操作。 篩選作業可包含記錄、自動重試等。篩選器是使用簽章實作方法的物件：
+選用的篩選作業可以套用至使用執行的作業 **QueueService**。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
 
         function handle (requestOptions, next)
 
@@ -109,7 +108,7 @@ Azure 模組會讀取環境變數 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 
 在此回呼中，以及處理 returnObject (來自對伺服器之要求的回應) 之後，回呼需要叫用 next (如果存在) 以繼續處理其他篩選，或是就改為叫用 finalCallback 結束服務叫用。
 
-Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下會建立使用 **ExponentialRetryPolicyFilter** 的 **QueueService** 物件：
+實作重試邏輯的兩個篩選器隨附於 Azure SDK for Node.js **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 下列範例會建立 **QueueService** 物件，使用 **ExponentialRetryPolicyFilter**:
 
     var retryOperations = new azure.ExponentialRetryPolicyFilter();
     var queueSvc = azure.createQueueService().withFilter(retryOperations);
@@ -137,8 +136,9 @@ Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**Exponent
       }
     });
 
-`結果` 包含的訊息。
-> [AZURE.NOTE] 當佇列中沒有任何訊息時，使用 **peekMessages** 並不會傳回錯誤，不過也不會傳回任何訊息。
+`result` 包含訊息。
+
+> [AZURE.NOTE] 使用 **peekMessages** 佇列中沒有任何訊息時不會傳回錯誤，不過會不傳回任何訊息。
 
 ## 作法：清除下一個佇列訊息
 
@@ -148,7 +148,7 @@ Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**Exponent
 
 2. 刪除訊息。
 
-若要從佇列中清除訊息，請使用 **getMessages**。 這樣會使訊息從佇列中隱藏起來，而不讓其他用戶端處理它。 當應用程式處理訊息之後，請呼叫 **deleteMessage** 從佇列中刪除它。 下列範例會取得訊息，接著刪除訊息。
+若要清除佇列訊息，使用 **getMessages**。 這樣會使訊息從佇列中隱藏起來，而不讓其他用戶端處理它。 當您的應用程式處理訊息之後時，呼叫 **deleteMessage** 將它從佇列刪除。 下列範例會取得訊息，接著刪除訊息。
 
     queueSvc.getMessages('myqueue', function(error, result, response){
       if(!error){
@@ -162,14 +162,14 @@ Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**Exponent
       }
     });
 
-> [AZURE.NOTE] 依預設，訊息只會隱藏 30 秒，之後又會被其他用戶端看見。 您可以指定不同的值使用 `options.visibilityTimeout` 與 **getMessages**。
+> [AZURE.NOTE] 根據預設，訊息只會隱藏 30 秒之後又, 被其他用戶端看見。 您可以指定不同的值使用 `options.visibilityTimeout` 與 **getMessages**。
 
 > [AZURE.NOTE]
-> 當佇列中沒有任何訊息時，使用 **getMessages** 並不會傳回錯誤，不過也不會傳回任何訊息。
+> 當佇列中沒有任何訊息時，使用 ** getMessages ** 並不會傳回錯誤，不過也不會傳回任何訊息。
 
 ## 作法：變更佇列訊息的內容
 
-您可以使用 **updateMessage** 在佇列中就地變更訊息內容。 下列範例會更新訊息的文字：
+您可以變更訊息就地使用的佇列中的內容 **updateMessage**。 下列範例會更新訊息的文字：
 
     queueSvc.getMessages('myqueue', function(error, result, response){
       if(!error){
@@ -187,10 +187,10 @@ Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**Exponent
 
 自訂從佇列中擷取訊息的方法有兩種：
 
-* `options.numOfMessages` -擷取一批訊息 (最多 32 個)。
-* `options.visibilityTimeout` -設定較長或較短的可見度逾時。
+* `options.numOfMessages` - 擷取一批訊息 (最多 32 個)。
+* `options.visibilityTimeout` - 設定較長或較短的隱藏逾時。
 
-下列範例使用 **getMessages** 方法，在一次呼叫中取得 15 個訊息。 接著，它會
+下列範例會使用 **getMessages** 方法一次呼叫中取得 15 個訊息。 接著，它會
 使用 for 迴圈處理每個訊息。 另外，對此方法傳回的所有訊息，將隱藏逾時設為五分鐘。
 
     queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
@@ -210,7 +210,7 @@ Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**Exponent
 
 ## 作法：取得佇列長度
 
-**getQueueMetadata** 會傳回佇列的中繼資料，包括在佇列中等待的大約訊息數目。
+ **GetQueueMetadata** 傳回佇列，包括訊息佇列中等待的大約數目的中繼資料。
 
     queueSvc.getQueueMetadata('myqueue', function(error, result, response){
       if(!error){
@@ -241,13 +241,13 @@ Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**Exponent
         }
     });
 
-若要從佇列中清除所有訊息但不要刪除，請使用 **clearMessages**。
+若要清除所有訊息從佇列中而非加以刪除，請使用 **clearMessages**。
 
 ## 作法：使用共用存取簽章
 
 共用存取簽章 (SAS) 可安全地提供對佇列的精確存取，而不必提供您的儲存體帳戶名稱或金鑰。 SAS 通常用來提供對佇列的有限存取，例如允許行動應用程式提交訊息。
 
-信任的應用程式 (例如雲端型服務) 會使用 **QueueService** 的 **generateSharedAccessSignature** 來產生 SAS，並提供它給不信任或不完全信任的應用程式。 例如行動應用程式。 SAS 是使用原則來產生，該原則描述 SAS 有效期間的開始和結束日期，以及授與 SAS 持有者的存取等級。
+信任的應用程式，例如雲端服務產生 SAS，使用 **generateSharedAccessSignature** 的 **QueueService**, ，並提供它給不受信任或不完全信任的應用程式。 例如行動應用程式。 SAS 是使用原則來產生，該原則描述 SAS 有效期間的開始和結束日期，以及授與 SAS 持有者的存取等級。
 
 下列範例會產生新的共用存取原則，讓 SAS 持有者將訊息新增至佇列，並於建立它之後的 100 分鐘過期。
 
@@ -263,13 +263,13 @@ Azure SDK for Node.js 包含了實作重試邏輯的兩個篩選器：**Exponent
         Expiry: expiryDate
       }
     };
-    
+
     var queueSAS = queueSvc.generateSharedAccessSignature('myqueue', sharedAccessPolicy);
     var host = queueSvc.host;
 
 請注意，也必須提供主機資訊，因為 SAS 持有者嘗試存取佇列時需要此資訊。
 
-用戶端應用程式接著以 **QueueServiceWithSAS** 來使用 SAS，對佇列執行操作。 下列範例會連線到佇列並建立訊息。
+然後，用戶端應用程式會使用 SAS 加上 **QueueServiceWithSAS** 對佇列執行作業。 下列範例會連線到佇列並建立訊息。
 
     var sharedQueueService = azure.createQueueServiceWithSas(host, queueSAS);
     sharedQueueService.createMessage('myqueue', 'Hello world from SAS!', function(error, result, response){
@@ -305,7 +305,7 @@ ACL 是使用存取原則陣列來實作，每個原則有相關聯的識別碼�
       }
     ];
 
-下列範例會取得 **myqueue** 的目前 ACL，然後使用 **setQueueAcl** 來加入新的原則。 此方法允許：
+下列範例會取得的目前 ACL **myqueue**, ，然後加入新的原則使用 **setQueueAcl**。 此方法允許：
 
     queueSvc.getQueueAcl('myqueue', function(error, result, response) {
       if(!error){
@@ -328,20 +328,24 @@ ACL 是使用存取原則陣列來實作，每個原則有相關聯的識別碼�
 了解佇列儲存體的基礎概念之後，請參考下列連結
 以深入了解更複雜的儲存體工作。
 
--   請瀏覽 [Azure 儲存體團隊部落格]][]。
--   請瀏覽 [節點 [] 的 Azure 儲存體 SDK][] GitHub 上的儲存機制。
+-   請瀏覽 [Azure 儲存體團隊部落格][]。
+-   請瀏覽 [Azure Storage SDK for Node][] GitHub 上的儲存機制。
 
+  [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
+  [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
+  [Azure Portal]: portal.azure.com
+  [Create and deploy a Node.js application to an Azure Web Site]: ../web-sites-nodejs-develop-deploy-mac.md
+  [Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
+  [Node.js Web Application with Storage]: ../storage-nodejs-use-table-storage-web-site.md
 
-[azure storage sdk for node]: https://github.com/Azure/azure-storage-node 
-[using the rest api]: http://msdn.microsoft.com/library/azure/hh264518.aspx 
-[azure portal]: portal.azure.com 
-[create and deploy a node.js application to an azure web site]: ../web-sites-nodejs-develop-deploy-mac.md 
-[node.js cloud service with storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md 
-[node.js web application with storage]: ../storage-nodejs-use-table-storage-web-site.md 
-[queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png 
-[plus-new]: ./media/storage-nodejs-how-to-use-queues/plus-new.png 
-[quick-create-storage]: ./media/storage-nodejs-how-to-use-queues/quick-storage.png 
-[node.js cloud service]: ../cloud-services-nodejs-develop-deploy-app.md 
-[azure storage team blog]: http://blogs.msdn.com/b/windowsazurestorage/ 
-[web site with webmatrix]: ../web-sites-nodejs-use-webmatrix.md 
-
+  
+  [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
+  [plus-new]: ./media/storage-nodejs-how-to-use-queues/plus-new.png
+  [quick-create-storage]: ./media/storage-nodejs-how-to-use-queues/quick-storage.png
+  
+  
+  
+  [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
+  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Web Site with WebMatrix]: ../web-sites-nodejs-use-webmatrix.md
+ 
