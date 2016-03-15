@@ -36,8 +36,8 @@
 
 您也可以直接瀏覽至存取 B2C 功能分頁 [https://portal.azure.com/ {tenant}.onmicrosoft.com/?Microsoft_AAD_B2CAdmin=true#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/{tenant}.onmicrosoft.com](https://portal.azure.com/{tenant}.onmicrosoft.com/?Microsoft_AAD_B2CAdmin=true#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/{tenant}.onmicrosoft.com) 其中 **{tenant}** 要用在租用戶建立時 (例如，contosob2c) 和 B2C 租用戶的全域系統管理員身分登入名稱所取代。 您可將此連結加入書籤供日後參考 (請參閱下面附註)。
 
-    > [AZURE.IMPORTANT]
-    > You need to be a Global Administrator of the B2C tenant to be able to access the B2C features blade. A Global Administrator from any other tenant or a User from any tenant cannot access it.
+> [AZURE.IMPORTANT]
+> You need to be a Global Administrator of the B2C tenant to be able to access the B2C features blade. A Global Administrator from any other tenant or a User from any tenant cannot access it.
 
 ### 2.透過 Azure 入口網站存取
 
