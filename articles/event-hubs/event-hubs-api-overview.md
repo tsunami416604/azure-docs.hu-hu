@@ -23,7 +23,7 @@
 
 ## 管理 API
 
-若要執行下列管理作業必須具有 **管理** 服務匯流排命名空間的權限:
+若要執行下列管理作業必須具有 **管理** 服務匯流排命名空間的權限 ︰
 
 ### 建立
 
@@ -131,7 +131,7 @@ EventProcessorHost host = new EventProcessorHost(WorkerName, EventHubName, defau
 host.UnregisterEventProcessorAsync().Wait();   
 ```
 
- [IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx) 介面定義如下:
+ [IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx) 介面定義如下 ︰
 
 ```
 public class SimpleEventProcessor : IEventProcessor
@@ -187,4 +187,5 @@ public class SimpleEventProcessor : IEventProcessor
 
 - [服務匯流排和事件中樞 .NET API 參考](https://msdn.microsoft.com/library/azure/mt419900.aspx)
 - [事件處理器主機 API 參考](https://msdn.microsoft.com/library/azure/mt445521.aspx)
+
 

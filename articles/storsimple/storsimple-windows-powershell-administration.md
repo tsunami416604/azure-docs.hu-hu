@@ -67,11 +67,11 @@ Windows PowerShell for StorSimple 提供命令列介面，可讓您用來管理 
 您可選擇下列設定：
 
 1. **完整存取權登入**
-此選項可讓您連線 (使用適當的認證) 至 **SSAdminConsole** 本機控制器的 runspace。 (本機控制器是您目前正透過 StorSimple 裝置序列主控台存取的控制器)。 
+此選項可讓您連線 （使用適當的認證） 至 **SSAdminConsole** 本機控制器的 runspace。 (本機控制器是您目前正透過 StorSimple 裝置序列主控台存取的控制器)。 
 也可使用此選項讓「Microsoft 支援」存取不受限制的 Runspace (支援工作階段)，以對任何可能的裝置問題進行疑難排解。 使用選項 1 登入之後，您可以允許 Microsoft 支援工程師執行特定 Cmdlet 去存取不受限制的 Runspace。 如需詳細資訊，請參閱 [啟動支援工作階段](storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)。
 
 1. **登入對等控制器具有完整存取權**
-此選項與選項 1 相同之處在於您可以連線 (使用適當的認證) 至 **SSAdminConsole** 對等控制器的 runspace。 因為 StorSimple 裝置是高可用性的裝置，具有兩個主動-被動組態的控制器；對等指的是您透過序列主控台存取的裝置中的其他控制器。
+此選項與選項 1 相同之處在於您可以連線 （使用適當的認證） 至 **SSAdminConsole** 對等控制器的 runspace。 因為 StorSimple 裝置是高可用性的裝置，具有兩個主動-被動組態的控制器；對等指的是您透過序列主控台存取的裝置中的其他控制器。
 和選項 1 類似，此選項也可用於讓「Microsoft 支援」存取對等控制器上不受限制的 Runspace。
 
 1. **連接具有限制存取**
@@ -84,7 +84,7 @@ Windows PowerShell for StorSimple 提供命令列介面，可讓您用來管理 
     - 安裝 Hotfix 
                                                 
 
-    >[AZURE.NOTE] **This is the preferred option if you have forgotten the device administrator password and cannot connect through option 1 or 2.**
+    >[AZURE.NOTE] **這是慣用的選項，如果您忘記裝置系統管理員密碼而無法透過選項 1 或 2 連線。**
 
 1. **變更語言**
 此選項可讓您變更顯示語言的 Windows PowerShell 介面。 支援的語言有英文、日文、俄文、法文、南韓文、西班牙文、義大利文、德文、中文和巴西葡萄牙文。
@@ -97,14 +97,14 @@ Windows PowerShell for StorSimple 提供命令列介面，可讓您用來管理 
 
 1. 請確定已選取下列選項 (當您啟動新的工作階段時，這些是預設設定)。 
 
-    |鍵盤項目|選取|
-    |---|---|
-    |退格鍵|Control-? (127)|
-    |Home 和 End 按鍵|標準|
-    |功能鍵和數字鍵台|ESC[n~|
-    |方向鍵的初始狀態|正常|
-    |數字鍵台的初始狀態|正常|
-    |啟用額外的鍵盤功能|Control-Alt 和 AltGr 不同|
+  	|鍵盤項目|選取|
+  	|---|---|
+  	|退格鍵|Control-? (127)|
+  	|Home 和 End 按鍵|標準|
+  	|功能鍵和數字鍵台|ESC[n~|
+  	|方向鍵的初始狀態|正常|
+  	|數字鍵台的初始狀態|正常|
+  	|啟用額外的鍵盤功能|Control-Alt 和 AltGr 不同|
 
     ![支援的 PuTTY 設定](./media/storsimple-windows-powershell-administration/IC740877.png)
 
@@ -171,7 +171,7 @@ Windows PowerShell for StorSimple 提供命令列介面，可讓您用來管理 
 
 在 Windows PowerShell for StorSimple 中也有 Cmdlet 的說明。 此說明的最新版本也會線上提供，供您更新您系統上的說明。
 
-在此介面中取得說明和在 Windows PowerShell 中類似，而且大部分與說明相關的 Cmdlet 都能用。 您可以在 TechNet 文件庫中找到協助 Windows PowerShell 的線上: [使用 Windows PowerShell 撰寫指令碼](http://go.microsoft.com/fwlink/?LinkID=108518)。
+在此介面中取得說明和在 Windows PowerShell 中類似，而且大部分與說明相關的 Cmdlet 都能用。 您可以在 TechNet 文件庫中找到協助 Windows PowerShell 的線上 ︰ [使用 Windows PowerShell 撰寫指令碼](http://go.microsoft.com/fwlink/?LinkID=108518)。
 
 以下是此 Windows PowerShell 介面中各種說明類型的簡短描述，包括如何更新說明。
 
@@ -203,5 +203,6 @@ Windows PowerShell for StorSimple 提供命令列介面，可讓您用來管理 
 
 ## 後續步驟
 如果遇到任何問題與 StorSimple 裝置執行其中一個以上的工作流程時，請參閱 [用於疑難排解 StorSimple 部署工具](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)。
+
 
 

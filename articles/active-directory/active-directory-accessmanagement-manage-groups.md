@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) 的其中一項主要功能是管理資源的�
 **若要啟用特定群組的動態成員資格，請執行下列步驟：**
 
 1. 在 Azure 網站中，在 **群組** 索引標籤上，選取您想要編輯的群組，然後在此群組 **設定** 索引標籤上，設定 **啟用動態成員資格** 切換至 **是**。
-2. 您現在可以為將控制此群組的動態成員資格如何運作的群組，設定一個簡單的單一規則。 請確定 **將使用者加入其中** 已核取選項按鈕，然後再從下拉式功能表 (例如，department、 jobTitle 等)，選取一個使用者屬性
+2. 您現在可以為將控制此群組的動態成員資格如何運作的群組，設定一個簡單的單一規則。 請確定 **將使用者加入其中** 已核取選項按鈕，然後再從下拉式功能表 （例如，department、 jobTitle 等），選取一個使用者屬性
 3. 接著，選取一個條件 (不等於、等於、開頭不是、開頭為、不包含、包含、不符合、符合)，最後指定所選使用者屬性的值。
 
 例如，如果某個群組指派給 SaaS 應用程式 (如需詳細資訊，請參閱「在 Azure AD 中將群組存取權指派給 SaaS 應用程式」)，而且您透過設定一個規則，藉以新增設定為 Equals(-eq)Sales Rep 的 jobTitle 的使用者，以啟用此群組的動態成員資格，則在您的 Azure AD 目錄中，其職稱設定為 Sales Rep 的所有使用者將可以存取此 SaaS 應用程式。
@@ -73,4 +73,5 @@ Azure Active Directory (Azure AD) 的其中一項主要功能是管理資源的�
 * [什麼是 Azure Active Directory？](active-directory-whatis.md)
 
 * [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)
+
 

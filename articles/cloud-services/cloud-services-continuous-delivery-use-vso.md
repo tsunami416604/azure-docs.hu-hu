@@ -22,7 +22,7 @@
 
 本教學課程假設您已安裝 Visual Studio 2013 和 Azure SDK。 如果您還沒有 Visual Studio 2013，下載選擇 **免費開始** 連結 [www.visualstudio.com](http://www.visualstudio.com)。 安裝 Azure SDK，透過 [這裡](http://go.microsoft.com/fwlink/?LinkId=239540)。
 
-> [AZURE.NOTE] 您需要有 Visual Studio Team Services 帳戶，才能完成本教學課程:
+> [AZURE.NOTE] 您需要有 Visual Studio Team Services 帳戶，才能完成本教學課程 ︰
 > 您可以 [免費開啟 Visual Studio Team Services 帳戶](http://go.microsoft.com/fwlink/p/?LinkId=512979)。
 
 若要使用 Visual Studio Team Services 將雲端服務設定為自動建立和部署至 Azure，請依照下列步驟進行。
@@ -139,18 +139,18 @@
 
 1. 如果不想要使用預設值，請指定屬性的值。 Azure 發行屬性位於 **部署** 一節。
 
-    下表顯示可用的屬性在 **部署** 區段:
+    下表顯示可用的屬性在 **部署** 區段 ︰
 
-    |屬性|預設值|
-    |---|---|
-    |允許未受信任的憑證|如果為 false，SSL 憑證必須經過根授權單位簽署。|
-    |允許升級|允許部署更新現有的部署而非建立新的部署。 保留 IP 位址。|
-    |不要刪除|如果為 true，則不要覆寫現有不相關的部署 (允許升級)。|
-    |部署設定的路徑|Web 應用程式的 .pubxml 檔的路徑，這是儲存機制之根資料夾的相對路徑。 雲端服務則會忽略。|
-    |SharePoint 部署環境|與服務名稱相同。|
-    |Azure 部署環境|Web 應用程式或雲端服務的名稱。|
+  	|屬性|預設值|
+  	|---|---|
+  	|允許未受信任的憑證|如果為 false，SSL 憑證必須經過根授權單位簽署。|
+  	|允許升級|允許部署更新現有的部署而非建立新的部署。 保留 IP 位址。|
+  	|不要刪除|如果為 true，則不要覆寫現有不相關的部署 (允許升級)。|
+  	|部署設定的路徑|Web 應用程式的 .pubxml 檔的路徑，這是儲存機制之根資料夾的相對路徑。 雲端服務則會忽略。|
+  	|SharePoint 部署環境|與服務名稱相同。|
+  	|Azure 部署環境|Web 應用程式或雲端服務的名稱。|
 
-1. 如果您使用多個服務組態 (.cscfg 檔)，您可以指定所需的服務組態中 **組建、 進階、 MSBuild 引數** 設定。 例如，若要使用 ServiceConfiguration.Test.cscfg，請設定 MSBuild 引數的命令列選項 `/p:TargetProfile=Test`。
+1. 如果您使用多個服務組態 （.cscfg 檔），您可以指定所需的服務組態中 **組建、 進階、 MSBuild 引數** 設定。 例如，若要使用 ServiceConfiguration.Test.cscfg，請設定 MSBuild 引數的命令列選項 `/p:TargetProfile=Test`。
 
     ![][38]
 
@@ -321,4 +321,5 @@
 [48]: ./media/cloud-services-continuous-delivery-use-vso/CheckInChangeToMakeTestsFail.PNG
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
+
 

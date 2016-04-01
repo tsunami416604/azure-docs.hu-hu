@@ -39,7 +39,7 @@ SQL Server 虛擬機器共有兩部。 一部 SQL Server 包含可用性群組�
 - 資料表 ST，適用於儲存體帳戶
 - 資料表 A，適用於可用性設定組
 
-還記得您定義中的資料表 M [第 2 階段: 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md) 和資料表 V、 S、 ST 和在 [第 1 階段: 設定 Azure](virtual-machines-workload-intranet-sharepoint-phase1.md)。
+還記得您定義中的資料表 M [第 2 階段 ︰ 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md) 和資料表 V、 S、 ST 和在 [第 1 階段 ︰ 設定 Azure](virtual-machines-workload-intranet-sharepoint-phase1.md)。
 
 > [AZURE.NOTE] 下列命令會將使用 Azure PowerShell 1.0 和更新版本。 如需詳細資訊，請參閱 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
 
@@ -146,7 +146,7 @@ SQL Server 虛擬機器共有兩部。 一部 SQL Server 包含可用性群組�
 2.  在 **連接到伺服器**, ，按一下 [ **連接**。
 3.  在左窗格中，以滑鼠右鍵按一下最上層節點 — 以機器名稱命名的預設執行個體，然後按一下 [ **屬性**。
 4.  在 **伺服器內容**, ，按一下 [ **資料庫設定**。
-5.  在 **資料庫預設位置**, ，設定下列值:
+5.  在 **資料庫預設位置**, ，設定下列值 ︰
 - 如 **資料**, ，路徑設定為 **f:\Data**。
 - 如 **記錄**, ，路徑設定為 **f:\Log**。
 - 如 **備份**, ，路徑設定為 **f:\Backup**。
@@ -242,4 +242,5 @@ SQL Server AlwaysOn 可用性群組依賴 Windows Server 的容錯移轉叢集 (
 ## 後續步驟
 
 - 使用 [第 4 階段](virtual-machines-workload-intranet-sharepoint-phase4.md) 繼續設定此工作負載。
+
 

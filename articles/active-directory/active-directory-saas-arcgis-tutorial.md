@@ -21,7 +21,7 @@
 -   有效的 Azure 訂閱
 -   啟用 ArcGIS 單一登入的訂用帳戶
 
-完成本教學課程之後, 您已指派給 ArcGIS 的 Azure AD 使用者將能夠登入位於您 ArcGIS 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 ArcGIS 的 Azure AD 使用者將能夠登入位於您 ArcGIS 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -98,7 +98,7 @@
 
     ![企業登入](./media/active-directory-saas-arcgis-tutorial/IC784744.png "Enterprise Logins")
 
-9.  在 **設定身分識別提供者** 組態頁面上，執行下列步驟:
+9.  在 **設定身分識別提供者** 組態頁面上，執行下列步驟 ︰
 
     ![設定識別提供者](./media/active-directory-saas-arcgis-tutorial/IC784745.png "Set Identity Provider")
 
@@ -127,7 +127,7 @@ ArcGIS 需以手動方式佈建。
 
     ![自動加入成員](./media/active-directory-saas-arcgis-tutorial/IC784748.png "Add Members Automatically")
 
-4.  在 **成員** 對話方塊頁面上，執行下列步驟:
+4.  在 **成員** 對話方塊頁面上，執行下列步驟 ︰
 
     ![加入並檢閱](./media/active-directory-saas-arcgis-tutorial/IC784749.png "Add and review")
 
@@ -157,4 +157,5 @@ ArcGIS 需以手動方式佈建。
     ![是](./media/active-directory-saas-arcgis-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

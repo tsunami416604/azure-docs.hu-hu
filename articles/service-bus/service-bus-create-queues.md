@@ -59,7 +59,7 @@
 
 ### 建立服務命名空間
 
-當您有訂用帳戶後，便可建立新的命名空間。 您必須為所有服務匯流排帳戶的新命名空間指定唯一名稱。 每個命名空間會做為一組服務匯流排實體的容器。 如需詳細資訊，請參閱 [How To: 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690931.aspx)。
+當您有訂用帳戶後，便可建立新的命名空間。 您必須為所有服務匯流排帳戶的新命名空間指定唯一名稱。 每個命名空間會做為一組服務匯流排實體的容器。 如需詳細資訊，請參閱 [How To ︰ 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690931.aspx)。
 
 ### 安裝 NuGet 封裝
 
@@ -67,7 +67,7 @@
 
 ### 建立佇列
 
-服務匯流排訊息實體 (佇列和發佈/訂閱主題) 都是經由管理作業 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別。 服務匯流排會使用 [共用存取簽章 (SAS)](service-bus-sas-overview.md) 架構安全性模型。  [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 類別代表安全性權杖提供者傳回部分知名權杖提供者的內建原廠方法。 我們將使用 [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) 方法來保存 SAS 認證。  [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 基底位址的服務匯流排命名空間和權杖提供者，然後建構執行個體。
+服務匯流排訊息實體 （佇列和發佈/訂閱主題） 都是經由管理作業 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別。 服務匯流排會使用 [共用存取簽章 (SAS)](service-bus-sas-overview.md) 架構安全性模型。  [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 類別代表安全性權杖提供者傳回部分知名權杖提供者的內建原廠方法。 我們將使用 [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) 方法來保存 SAS 認證。  [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 基底位址的服務匯流排命名空間和權杖提供者，然後建構執行個體。
 
  [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別提供方法來建立、 列舉及刪除訊息實體。 如下所示的程式碼如何 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 建立並可用來建立執行個體 **DataCollectionQueue** 佇列。
 
@@ -108,12 +108,12 @@ sender.Send(bm);
 
 ### 從佇列接收訊息
 
-從佇列接收訊息的最簡單方式是使用 [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) 物件可以直接從建立 [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 使用 [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx)。 訊息接收者可以在兩個不同的模式下運作: **ReceiveAndDelete** 和 **PeekLock**。  [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 建立訊息接收者時，做為參數設定 [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) 呼叫。
+從佇列接收訊息的最簡單方式是使用 [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) 物件可以直接從建立 [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 使用 [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx)。 訊息接收者可以在兩個不同的模式下運作 ︰ **ReceiveAndDelete** 和 **PeekLock**。  [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 建立訊息接收者時，做為參數設定 [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) 呼叫。
 
 
 當使用 **ReceiveAndDelete** 模式中，接收是一次性作業; 也就是服務匯流排收到要求時，它會標示為已取用的訊息並傳回應用程式。 **ReceiveAndDelete** 模式是最簡單的模型，且最適用於應用程式容許在發生失敗時不處理訊息的案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，所以當應用程式重新啟動並開始再次取用訊息時，它將會遺漏當機前已取用的訊息。
 
-在 **PeekLock** 模式中，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一則訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 所接收訊息。 當服務匯流排看到 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 呼叫時，它會將標示為已取用的訊息。
+在 **PeekLock** 模式中，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一則訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 （或可靠地儲存供未來處理） 之後，完成接收程序的第二個階段 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 所接收訊息。 當服務匯流排看到 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 呼叫時，它會將標示為已取用的訊息。
 
 可能會有兩種不同的結果。 首先，如果應用程式無法處理訊息，因為某些原因，它可以呼叫 [放棄](https://msdn.microsoft.com/library/azure/hh181837.aspx) 所接收訊息 (而不是 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx))。 這會讓服務匯流排將訊息解除鎖定，讓相同的取用者或其他競爭取用者重新接收此訊息。 其次，鎖定有相關聯的逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會將訊息解除鎖定，並讓訊息可以被重新接收。
 
@@ -159,3 +159,4 @@ catch (Exception e)
 ## 後續步驟
 
 現在您已了解基本的佇列，請參閱 [建立應用程式使用服務匯流排主題和訂閱](service-bus-create-topics-subscriptions.md) 繼續討論使用發佈/訂閱功能的服務匯流排代理訊息。
+

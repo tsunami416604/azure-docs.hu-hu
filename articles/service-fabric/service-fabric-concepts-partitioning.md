@@ -20,7 +20,7 @@
 這篇文章介紹分割 Service Fabric 可靠的服務的基本概念。 原始碼用於發行項上也會提供 [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions)。
 
 ## 什麼是分割
-分割不是 Service Fabric 所獨有，實際上它是建置可調整服務的核心模式。 廣義上，我們可以將分割視為將狀態 (資料) 和計算分成較小的可存取單位來改善延展性和效能。 已知的資料分割形式是 [資料分割] [wikipartition] 也稱為分區化。
+分割不是 Service Fabric 所獨有，實際上它是建置可調整服務的核心模式。 廣義上，我們可以將分割視為將狀態 (資料) 和計算分成較小的可存取單位來改善延展性和效能。 已知的資料分割形式是 [資料分割][wikipartition] 也稱為分區化。
 
 
 ### 分割 Service Fabric 無狀態服務
@@ -150,7 +150,7 @@ Service Fabric 具狀態服務的內容中的資料分割是指程序可決定�
     >[AZURE.NOTE] 此範例中，我們假設您使用簡單的 HttpCommunicationListener。 可靠的服務通訊的詳細資訊可以找到 [這裡](service-fabric-reliable-services-communication.md)。
 
 8. 關於複本接聽的 url，建議的模式是下列格式：`{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`，您可以設定通訊接聽程式接聽正確的端點並使用此模式。
-相同電腦上可能裝載此服務的多個複本，因此複本的此位址必須是唯一的，這就是為什麼我們在 URL 中有資料分割識別碼 + 複本識別碼。 只要 URL 首碼是唯一的，HttpListener 就可以在相同連接埠上的多個位址接聽。 在進階案例中，次要複本也會接聽唯讀要求，所以有額外 GUID。 這種情況下，當您想要確定，新的唯一位址時，使用從主要轉換到次要強制用戶端重新解析的位址。 '+' 使用的位址，因此複本會接聽所有可用的主機 (IP、 FQDM localhost 等等)。下列程式碼顯示範例。
+相同電腦上可能裝載此服務的多個複本，因此複本的此位址必須是唯一的，這就是為什麼我們在 URL 中有資料分割識別碼 + 複本識別碼。 只要 URL 首碼是唯一的，HttpListener 就可以在相同連接埠上的多個位址接聽。 在進階案例中，次要複本也會接聽唯讀要求，所以有額外 GUID。 這種情況下，當您想要確定，新的唯一位址時，使用從主要轉換到次要強制用戶端重新解析的位址。 '+' 使用的位址，因此複本會接聽所有可用的主機 （IP、 FQDM localhost 等等）。下列程式碼顯示範例。
 
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -337,20 +337,21 @@ Service Fabric 具狀態服務的內容中的資料分割是指程序可決定�
   </Parameters>
   ```
 
-16. Once deployed you can check the service and all of its partitions in the Service Fabric Explorer.
-![Service](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
-17. In a browser you can test the partitioning logic by entering `http://localhost:8090/?lastname=somename`. You will see that each last name that starts with the same letter is being stored in the same partition.
-![Browser](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
+16. 一旦部署之後，您可以檢查服務和所有資料分割 Service Fabric 總管中。
+![服務](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
+17. 您可以在瀏覽器中輸入 `http://localhost:8090/?lastname=somename` 來測試分割邏輯。 您會看到以相同字母開頭的每個姓氏儲存在相同的資料分割中。
+![瀏覽器](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
 
-The entire source code of the sample is available on [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions)
+此範例的整個原始程式碼位於 [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions)
 
-## Next steps
+## 後續步驟
 
-For information on Service Fabric concepts, see the following:
+如需 Service Fabric 概念的資訊，請參閱下列項目：
 
-- [Availability of Service Fabric Services](service-fabric-availability-services.md)
+- [Service Fabric 服務的可用性](service-fabric-availability-services.md)
 
-- [Scalability of Service Fabric Services](service-fabric-concepts-scalability.md)
+- [Service Fabric 服務的延展性](service-fabric-concepts-scalability.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
+
 

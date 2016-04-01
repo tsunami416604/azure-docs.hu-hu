@@ -27,14 +27,14 @@
 
 簡單地說，彈性資料庫用戶端程式庫的 [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md) Api 會自動將租用戶連接到正確的分區資料庫含有他們的分區化索引鍵 (通常為"TenantId")。 一旦連接之後，在資料庫內的 RLS 安全性原則可確保租用戶只能存取含有其 TenantId 的資料列。 此原則會假設所有資料表都包含一個會指出哪些資料列屬於哪個租用戶的 TenantId 資料行。 
 
-![部落格應用程式架構][] 1
+![部落格應用程式架構][1]
 
 ## 下載範例專案
 
 ### 必要條件
 * 使用 Visual Studio (2012 或更新版本) 
 * 建立三個 Azure SQL Database 
-* 下載範例專案: [的 Azure SQL-多租用戶分區彈性資料庫工具](http://go.microsoft.com/?linkid=9888163)
+* 下載範例專案 ︰ [的 Azure SQL-多租用戶分區彈性資料庫工具](http://go.microsoft.com/?linkid=9888163)
   * 填寫您的資料庫資訊的開頭 **Program.cs** 
 
 此專案會擴充所描述的 [Entity Framework 整合 Azure SQL 的彈性資料庫工具](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) 透過支援多租用戶分區資料庫。 如上圖所示，這麼做可以建立具有四個租用戶與兩個多租用戶分區資料庫的簡單主控台應用程式，以用於建立部落格和文章。 
@@ -47,13 +47,13 @@
 
 請注意，因為分區資料庫中尚未啟用 RLS，所以這些測試都會顯現出一個問題：租用戶能夠查看不屬於自己的部落格，且應用程式無法阻止插入錯誤的租用戶部落格。 本文的其餘部分會說明，如何藉由 RLS 強制執行租用戶隔離來解決這些問題。 有兩個步驟： 
 
-1. **應用程式層**: 修改應用程式程式碼永遠 SESSION_CONTEXT 中開啟連接之後設定目前的 TenantId。 範例專案已經完成此步驟。 
-2. **資料層**: 根據儲存在 SESSION_CONTEXT TenantId 的篩選資料列的每個分區資料庫中建立 RLS 安全性原則。 您需要對每個分區資料庫執行這個動作，否則將不會篩選多租用戶分區中的資料列。 
+1. **應用程式層**︰ 修改應用程式程式碼永遠 SESSION_CONTEXT 中開啟連接之後設定目前的 TenantId。 範例專案已經完成此步驟。 
+2. **資料層**︰ 根據儲存在 SESSION_CONTEXT TenantId 的篩選資料列的每個分區資料庫中建立 RLS 安全性原則。 您需要對每個分區資料庫執行這個動作，否則將不會篩選多租用戶分區中的資料列。 
 
 
 ## 步驟 1) 應用程式層：設定 SESSION_CONTEXT 中的 TenantId
 
-在使用彈性資料庫用戶端程式庫的資料依存路由 API 連接到分區資料庫後，應用程式仍需告訴資料庫哪個 TenantId 使用該連接，然後 RLS 安全性原則才能篩選掉屬於其他租用戶的資料列。 建議的方式來傳遞此資訊是儲存在該連接目前的 TenantId [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806.aspx)。 (請注意: 您也可以使用 [CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125.aspx), ，但 SESSION_CONTEXT 是更好的選項很容易使用，因為根據預設，會傳回 NULL，而且支援索引鍵 / 值組。)
+在使用彈性資料庫用戶端程式庫的資料依存路由 API 連接到分區資料庫後，應用程式仍需告訴資料庫哪個 TenantId 使用該連接，然後 RLS 安全性原則才能篩選掉屬於其他租用戶的資料列。 建議的方式來傳遞此資訊是儲存在該連接目前的 TenantId [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806.aspx)。 (請注意 ︰ 您也可以使用 [CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125.aspx), ，但 SESSION_CONTEXT 是更好的選項很容易使用，因為根據預設，會傳回 NULL，而且支援索引鍵 / 值組。)
 
 ### Entity Framework
 
@@ -215,7 +215,7 @@ CREATE SECURITY POLICY rls.tenantAccessPolicy
 GO 
 ```
 
-> [AZURE.TIP] 對於需要數百個資料表上加入述詞的複雜專案，您可以使用協助程式預存程序，會自動產生的結構描述中的所有資料表上加入述詞的安全性原則。 請參閱 [將資料列層級安全性套用至所有資料表: 協助程式指令碼 (部落格)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)。  
+> [AZURE.TIP] 對於需要數百個資料表上加入述詞的複雜專案，您可以使用協助程式預存程序，會自動產生的結構描述中的所有資料表上加入述詞的安全性原則。 請參閱 [將資料列層級安全性套用至所有資料表 ︰ 協助程式指令碼 （部落格）](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)。  
 
 現在，如果您再次執行範例應用程式，租用戶將只能看到屬於自己的資料列。 此外，應用程式無法插入目前沒有連線到分區資料庫的租用戶所屬的資料列，也無法更新擁有不同 TenantId 的可見資料列。 如果應用程式嘗試執行這兩項作業，就會引發 DbUpdateException。
 
@@ -294,9 +294,9 @@ GO
 
 ### 維護 
 
-* **加入新分區**: 您必須執行的 T-SQL 指令碼來啟用 RLS，所有新分區上的，否則不會篩選對這些分區的查詢。
+* **加入新分區**︰ 您必須執行的 T-SQL 指令碼來啟用 RLS，所有新分區上的，否則不會篩選對這些分區的查詢。
 
-* **加入新的資料表**: 您必須將篩選和封鎖的述詞加入所有分區上的安全性原則，每當建立新的資料表時，否則不會篩選對新資料表的查詢。 自動化此程序會使用 DDL 觸發程序中所述 [將資料列層級安全性套用至新建立的資料表 (部落格) 自動](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)。
+* **加入新的資料表**︰ 您必須將篩選和封鎖的述詞加入所有分區上的安全性原則，每當建立新的資料表時，否則不會篩選對新資料表的查詢。 自動化此程序會使用 DDL 觸發程序中所述 [將資料列層級安全性套用至新建立的資料表 （部落格） 自動](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)。
 
 
 ## 摘要 
@@ -311,4 +311,5 @@ GO
 <!--anchors-->
 
  
+
 

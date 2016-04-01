@@ -44,13 +44,13 @@ Azure 虛擬機器代理程式 (VM 代理程式) 是一個安全、輕量級程�
 
 在下列情況下會啟用 VM 代理程式：
 
--   當您建立虛擬機器的執行個體使用 **快速建立** 方法在管理入口網站中，或使用 **自訂建立** 方法在管理入口網站，並確定 **安裝 VM 代理程式** (如圖所示)，選取核取方塊。 如需詳細資訊，請參閱 [如何建立自訂虛擬機器](virtual-machines-create-custom.md)。
+-   當您建立虛擬機器的執行個體使用 **快速建立** 方法在管理入口網站中，或使用 **自訂建立** 方法在管理入口網站，並確定 **安裝 VM 代理程式** （如圖所示），選取核取方塊。 如需詳細資訊，請參閱 [如何建立自訂虛擬機器](virtual-machines-create-custom.md)。
 
     ![VM 代理程式核取方塊](./media/virtual-machines-extensions-agent-about/IC719409.png "VM Agent Checkbox")
 
 -   當您建立虛擬機器的執行個體使用 [New-azurevm](https://msdn.microsoft.com/library/azure/dn495254.aspx) 或 [新增 AzureQuickVM](https://msdn.microsoft.com/library/azure/dn495183.aspx) 指令程式。 您可以建立的 VM 沒有 VM 代理程式安裝加 **– DisableGuestAgent** 參數 [Add-azureprovisioningconfig](https://msdn.microsoft.com/library/azure/dn495299.aspx) 指令程式。
 
--   手動下載並安裝 VM 代理程式 (Windows 或 Linux 版本) 上現有的 VM 執行個體，然後再設定 **ProvisionGuestAgent** 值 **true** 使用 Powershell 或 REST 呼叫。 (如果您以手動方式安裝 VM 代理程式之後未設定此值，則不會正確偵測到加入 VM 代理程式。)下列程式碼範例示範如何使用 PowerShell 執行此動作，其中 `$svc` 和 `$name` 引數都已經確定。
+-   手動下載並安裝 VM 代理程式 （Windows 或 Linux 版本） 上現有的 VM 執行個體，然後再設定 **ProvisionGuestAgent** 值 **true** 使用 Powershell 或 REST 呼叫。 (如果您以手動方式安裝 VM 代理程式之後未設定此值，則不會正確偵測到加入 VM 代理程式。)下列程式碼範例示範如何使用 PowerShell 執行此動作，其中 `$svc` 和 `$name` 引數都已經確定。
 
         $vm = Get-AzureVM –serviceName $svc –Name $name
         $vm.VM.ProvisionGuestAgent = $TRUE
@@ -67,4 +67,5 @@ Azure 虛擬機器代理程式 (VM 代理程式) 是一個安全、輕量級程�
 ##尋找、加入、更新和移除 VM 擴充功能  
 
 如需這些工作的詳細資訊，請參閱 [新增、 尋找、 更新及移除 Azure VM 擴充程式](virtual-machines-extensions-install.md)。
+
 

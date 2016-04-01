@@ -34,7 +34,7 @@ Microsoft Azure Redis 快取有下列階層：
 
 每一個階層都有不同的功能和定價。 如需定價資訊，請參閱 [快取定價詳細資料][]。
 
-本指南說明如何使用 [StackExchange.Redis][] 用戶端會使用 C# 程式碼。 涵蓋的案例包括 **建立和設定快取**, ，**設定快取用戶端**, ，和 **新增和移除物件從快取**。 如需有關如何使用 Azure Redis 快取的詳細資訊，請參閱 [後續步驟] [] 一節。
+本指南說明如何使用 [StackExchange.Redis][] 用戶端會使用 C# 程式碼。 涵蓋的案例包括 **建立和設定快取**, ，**設定快取用戶端**, ，和 **新增和移除物件從快取**。 如需有關如何使用 Azure Redis 快取的詳細資訊，請參閱 [下一步][] 一節。
 
 <a name="getting-started-cache-service"></a>
 ## 開始使用 Azure Redis 快取
@@ -49,7 +49,7 @@ Microsoft Azure Redis 快取有下列階層：
 
 若要建立快取，請先登入 [Azure 入口網站][], ，然後按一下 **新增**, ，**資料 + 儲存體**, ，**Redis 快取**。
 
-![新的快取][] NewCacheMenu
+![New cache][NewCacheMenu]
 
 >[AZURE.NOTE] 如果您沒有 Azure 帳戶，您可以建立免費試用帳戶，只需要幾分鐘的時間。 如需詳細資料，請參閱 [Azure 免費試用][]。
 
@@ -105,8 +105,8 @@ NuGet 封裝會為您的用戶端應用程式下載並加入必要的組件參�
 
 本節中的步驟描述如何利用快取執行常見工作。
 
--   [連線至快取][]
--   [加入和擷取物件從快取][]
+-   [連接到快取][]
+-   [從快取加入和擷取物件][]
 -   [使用快取中的 .NET 物件](#work-with-net-objects-in-the-cache)
 
 <a name="connect-to-cache"></a>
@@ -124,7 +124,7 @@ NuGet 封裝會為您的用戶端應用程式下載並加入必要的組件參�
 
     ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
 
->[AZURE.IMPORTANT] 警告: 請勿將認證儲存在原始程式碼中。 為了讓這個範例簡單明瞭，我會以原始程式碼來呈現認證內容。 請參閱 [應用程式字串與連接字串的運作][] 如需有關如何儲存認證資訊。
+>[AZURE.IMPORTANT] 警告 ︰ 請勿將認證儲存在原始程式碼中。 為了讓這個範例簡單明瞭，我會以原始程式碼來呈現認證內容。 請參閱 [應用程式字串與連接字串的運作][] 如需有關如何儲存認證資訊。
 
 如果您不想使用 SSL，請設定 `ssl=false` 或省略 `ssl` 參數。
 
@@ -233,8 +233,8 @@ Azure Redis 快取可以快取 .NET 物件及基本資料類型，但必須先�
     -   [Azure Redis 快取 ASP.NET 輸出快取提供者](cache-asp.net-output-cache-provider.md)
 -   [啟用快取診斷](cache-how-to-monitor.md#enable-cache-diagnostics) 讓您可以 [監視](cache-how-to-monitor.md) 快取的健全狀況。 您可以在 Azure 入口網站中檢視度量，您也可以 [下載並檢閱](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) 使用您選擇的工具。
 -   簽出 [StackExchange.Redis 快取用戶端文件][]。
-    -   Azure Redis 快取可以透過許多 Redis 用戶端和開發語言進行存取。 如需詳細資訊，請參閱 [http://redis.io/clients] [] 和 [開發 Azure Redis 快取的其他語言] []。
-    -   Azure Redis 快取也可以與服務搭配使用 (例如 Redsmin)。 如需詳細資訊，請參閱 [如何擷取 Azure Redis 連接字串，並將它與 redsmin 搭配使用] []。
+    -   Azure Redis 快取可以透過許多 Redis 用戶端和開發語言進行存取。 如需詳細資訊，請參閱 [http://redis.io/clients][] 和 [以 Azure Redis 快取的其他語言開發][]。
+    -   Azure Redis 快取也可以與服務搭配使用 (例如 Redsmin)。 如需詳細資訊，請參閱  [如何擷取 Azure Redis 連接字串，並將它與 redsmin 搭配使用][]。
 -   請參閱 [redis][] 文件，並閱讀有關 [redis 資料類型][] 和 [Redis 資料類型的 15 分鐘簡介][]。
 
 
@@ -328,4 +328,5 @@ Azure Redis 快取可以快取 .NET 物件及基本資料類型，但必須先�
 [How Application Strings and Connection Strings Work]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
 [Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
+
 

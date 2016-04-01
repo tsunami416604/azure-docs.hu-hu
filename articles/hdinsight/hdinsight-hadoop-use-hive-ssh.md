@@ -25,7 +25,7 @@
 
 > [AZURE.IMPORTANT] 在以 Linux 為基礎的 HDInsight 叢集上使用 Hive 命令時，您應該考慮使用 Beeline。 Beeline 是可搭配 Hive 使用的較新用戶端，隨附於您的 HDInsight 叢集中。 如需有關如何使用此選項的詳細資訊，請參閱 [Beeline 與 HDInsight 中的 Hadoop 上使用 Hive](hdinsight-hadoop-use-hive-beeline.md)。
 
-##<a id="prereq"></a>先決條件
+##<a id="prereq"></a>必要條件
 
 若要完成本文中的步驟，您需要下列項目：
 
@@ -39,7 +39,7 @@
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
 
-**如果您提供憑證金鑰進行 SSH 驗證** 在建立 HDInsight 叢集時，您可能需要指定用戶端系統上私密金鑰的位置:
+**如果您提供憑證金鑰進行 SSH 驗證** 在建立 HDInsight 叢集時，您可能需要指定用戶端系統上私密金鑰的位置 ︰
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
@@ -59,7 +59,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 
         hive
 
-3. 使用 CLI，輸入下列陳述式來建立新的資料表名稱為 **log4jLogs** 使用範例資料:
+3. 使用 CLI，輸入下列陳述式來建立新的資料表名稱為 **log4jLogs** 使用範例資料 ︰
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -67,12 +67,12 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
         STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
     * **DROP TABLE** -刪除資料表和資料檔中，如果資料表已存在。
     * **建立外部資料表** -在 Hive 中建立新的 「 外部 」 資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。
     * **ROW FORMAT** -告訴 Hive 如何格式化資料。 在此情況下，每個記錄中的欄位會以空格隔開。
-    * **STORED AS TEXTFILE LOCATION** -告訴 Hive 資料的儲存 (example/data 目錄)，且儲存為文字。
+    * **STORED AS TEXTFILE LOCATION** -告訴 Hive 資料的儲存 （example/data 目錄），且儲存為文字。
     * **選取** -選擇的所有資料列計數，資料行 **t4** 包含值 **[錯誤]**。 這應該會傳回值為 **3** 因為有三個資料列包含此值。
     * **像是 '%.log' INPUT__FILE__NAME** -告訴 Hive，我們應該只傳回從檔案中的資料。 記錄檔。 這將限制包含此資料的 sample.log 檔案搜尋，對於不符合我們所定義結構描述的其他範例資料檔案，會防止其傳回資料。
 
@@ -85,7 +85,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
     * **CREATE TABLE IF NOT EXISTS** -建立資料表，如果不存在。 由於 **外部** 未使用關鍵字，這是內部資料表，會儲存在 Hive 資料倉儲並完全透過 Hive 所管理。
     * **STORED AS ORC** -以最佳化資料列單欄式 (ORC) 格式儲存資料。 這是高度最佳化且有效率的 Hive 資料儲存格式。
@@ -103,7 +103,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 
 如您所見，Hive 命令提供簡單的方法，以互動方式在 HDInsight 叢集上執行 Hive 查詢、監視工作狀態，以及擷取輸出。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 Hive 的一般資訊：
 
@@ -143,5 +143,6 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
+
 
 

@@ -19,7 +19,7 @@
 
 # 教學課程：Azure Active Directory 與 Facebook at Work 整合
 
-本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 Facebook 工作。<br>與 Azure AD 整合工作 Facebook 可以提供下列優點: 
+本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 Facebook 工作。<br>與 Azure AD 整合工作 Facebook 可以提供下列優點 ︰ 
 
 - 您可以在 Azure AD 中控制可存取 Facebook at Work 的人員 
 - 您可以自動佈建帳戶已獲授與存取 Facebook at Work 的使用者
@@ -29,7 +29,7 @@
 如果您想要知道更多詳細與 Azure AD 的 SaaS 應用程式整合，請參閱 [什麼是應用程式存取和單一登入與 Azure Active Directory](active-directory-appssoaccess-whatis.md)。
 
 
-## 先決條件 
+## 必要條件 
 
 若要設定 Azure AD 與 CS Stars 整合，您需要下列項目：
 
@@ -48,18 +48,18 @@
 **若要從資源庫加入 Facebook at Work，請執行下列步驟：**
 
 1. 在 **Azure 管理入口網站**, ，在左的導覽窗格中，按一下 [ **Active Directory**。 
-<br><br>![Active] Directory[] 1<br>
+<br><br>![Active Directory][1]<br>
 
 2. 從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
 3. 若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
-<br><br>![應用程式][] 2<br>
+<br><br>![應用程式][2]<br>
 
 4. 按一下 [ **新增** 頁面的底部。
-<br><br>![應用程式][] 3<br>
+<br><br>![應用程式][3]<br>
 
 5. 在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。
-<br><br>![應用程式][] 4<br>
+<br><br>![應用程式][4]<br>
 
 6. 在 [搜尋] 方塊中，輸入 **上班 Facebook**。
 
@@ -75,11 +75,11 @@
 1.  之後將 Facebook 新增工作時，在 Azure 管理入口網站中，按一下 [ **設定單一登入**。
 
 2.  在 **設定應用程式 URL** 畫面上，輸入 URL，其中使用者會登入您工作的應用程式的 Facebook。 這是您在工作的租用戶 URL 的 Facebook 
-(範例: https://example.facebook.com/)。 完成後，按一下 [ **下一步**。
+(範例 ︰ https://example.facebook.com/)。 完成後，按一下 [ **下一步**。
 
 3.  在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Facebook at Work 公司網站。
 
-4. 依照下列指示將 Facebook 設定為使用 Azure AD 身分識別提供者的工作: [https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers)
+4. 依照下列指示將 Facebook 設定為使用 Azure AD 身分識別提供者的工作 ︰ [https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers)
 
 5.  完成後，回到顯示 Azure 管理入口網站的瀏覽器視窗，按一下核取方塊，以確認您已完成此程序，然後按一下 [ **下一步** 和 **完成**。
 
@@ -118,6 +118,7 @@ Azure AD 支援將指派的使用者的帳戶詳細資料自動同步處理至 F
 [2]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_02.png
 [3]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_04.png
+
 
 
 

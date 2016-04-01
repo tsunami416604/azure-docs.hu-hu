@@ -24,7 +24,7 @@
 
 ### 新增功能
 
-- 已新增下列新的活動類型: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 如需有關活動的詳細資訊，請參閱 [更新 Azure ML 模型使用的更新資源活動](https://azure.microsoft.com/documentation/articles/data-factory-azure-ml-batch-execution-activity/#updating-azure-ml-models-using-the-update-resource-activity)。
+- 已新增下列新的活動類型 ︰ [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 如需有關活動的詳細資訊，請參閱 [更新 Azure ML 模型使用的更新資源活動](https://azure.microsoft.com/documentation/articles/data-factory-azure-ml-batch-execution-activity/#updating-azure-ml-models-using-the-update-resource-activity)。
 - 新的選擇性屬性 [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) 已加入至 [AzureMLLinkedService 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)。 
 - [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) 和 [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) 屬性已加入至 [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) 類別。 
 - 允許設定用戶端呼叫 Data Factory 服務的逾時值。 
@@ -83,7 +83,7 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 | TableListResponse | [DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters | [DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) | 
     
--  **API 版本** 這個版本是: **2015年-10-01**。
+-  **API 版本** 這個版本是 ︰ **2015年-10-01**。
 
 -  **清單** 方法現在傳回分頁的結果。 如果回應包含非空白 **NextLink** 屬性，用戶端應用程式必須繼續擷取下一個頁面上，直到所有頁面都會都傳回。  下列是一個範例： 
 
@@ -102,6 +102,7 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 - **清單** 管線 API 傳回的管線，而不是完整的詳細資料的摘要。 例如，管線摘要中的活動只包含名稱和類型。
 
 ### 新增功能
--  [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) 類別支援兩個新屬性: **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**, ，以支援具有等冪性複製到 Azure SQL 資料倉儲。 請參閱 [Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md) 文章，特別是， [機制 1](data-factory-azure-sql-data-warehouse-connector.md#mechanism-1) 和 [機制 2](data-factory-azure-sql-data-warehouse-connector.md#mechanism-2) 區段，如需有關這些屬性的詳細資訊。
+-  [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) 類別支援兩個新屬性 ︰ **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**, ，以支援具有等冪性複製到 Azure SQL 資料倉儲。 請參閱 [Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md) 文章，特別是， [機制 1](data-factory-azure-sql-data-warehouse-connector.md#mechanism-1) 和 [機制 2](data-factory-azure-sql-data-warehouse-connector.md#mechanism-2) 區段，如需有關這些屬性的詳細資訊。
 
-- 我們現在支援對 Azure SQL Database 和 Azure SQL 資料倉儲的來源執行預存程序，做為複製活動的一部分。  [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 類別具有下列屬性以支援此功能: **SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 請參閱 [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) 和 [Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) Azure.com 上的文件，如需有關這些屬性的詳細資訊。  
+- 我們現在支援對 Azure SQL Database 和 Azure SQL 資料倉儲的來源執行預存程序，做為複製活動的一部分。  [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 類別具有下列屬性以支援此功能 ︰ **SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 請參閱 [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) 和 [Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) Azure.com 上的文件，如需有關這些屬性的詳細資訊。  
+

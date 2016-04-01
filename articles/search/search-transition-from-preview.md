@@ -62,7 +62,7 @@ Azure 搜尋服務是在 Microsoft Azure 上託管的雲端搜尋服務。 下�
 
 從程式碼範例 [codeplex 上的 Adventure Works 範例](https://azuresearchadventureworksdemo.codeplex.com/) 具有原始 `Suggestions` 實作。 您可能會想要使用此範例實際在範例程式碼上進行程式碼移轉。 
 
-在下一節中，我們將告訴 [之前](#before) 和 [之後](#after) 建議的實作。 您可以取代 **createcatalogindex ()** 方法中的版本 [之後](#after) 區段，然後建置和部署解決方案以嘗試新功能。
+在下一節中，我們將告訴 [之前](#before) 和 [之後](#after) 建議的實作。 您可以取代 **createcatalogindex （)** 方法中的版本 [之後](#after) 區段，然後建置和部署解決方案以嘗試新功能。
 
 <a name="before"></a>
 ###先前###
@@ -143,3 +143,4 @@ Azure 搜尋服務是在 Microsoft Azure 上託管的雲端搜尋服務。 下�
 API 版本 `2015-02-28` 是在 SLA 下。 使用支援選項和連結上 [本頁](../support/options/) 支援票證。
 
  
+

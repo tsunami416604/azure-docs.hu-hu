@@ -42,7 +42,7 @@
 1. 使用伺服器註冊 SSDT 或應用程式連接字串中的 SQL Server 物件總管時，請指定預設資料庫。 例如，藉由包含 ODBC 連線的 InitialCatalog 參數。
 2. 在 SSDT 中建立工作階段之前先反白顯示使用者資料庫。
 
-> [AZURE.NOTE] 如需連線到 SQL 資料倉儲與 SSDT 的指引，請參閱上一步 [連接和查詢] [] 入門文章。 
+> [AZURE.NOTE] 如需連線到 SQL 資料倉儲與 SSDT 的指引，請參閱上一步 [連接並查詢][] 入門文章。 
 
 一次是很重要的 TRANSACT-SQL 陳述式 **使用 <your DB>** 不支援變更的資料庫連接 
 
@@ -146,7 +146,7 @@ WHERE   s.[session_id] <> SESSION_ID()
 請注意，這項查詢已封裝在檢視中，所以您可以將其併入您的解決方案。 不過，若要查看結果，您必須建立檢視並加以執行。
 
 ## 後續步驟
-一但連線之後，您就可以開始設計您的資料表。 請參閱 [資料表設計] 文件以取得詳細資料。
+一但連線之後，您就可以開始設計您的資料表。 請參閱 [table design] 文章以取得詳細資料。
 
 <!--Image references-->
 
@@ -157,4 +157,5 @@ WHERE   s.[session_id] <> SESSION_ID()
 <!--MSDN references-->
 
 <!--Other references-->
+
 

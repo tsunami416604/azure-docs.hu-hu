@@ -17,7 +17,7 @@
 
 Azure Active Directory 應用程式庫提供已知能支援的單一登入與 Azure Active Directory，表單中所述的應用程式的清單， [這篇文章](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/)。 一旦您 (假設您是 IT 專業人員或組織中的系統整合者) 找到所要連接的應用程式，您就可以遵循應 Azure 管理入口網站中顯示的逐步指示，啟用單一登入。
 
-客戶 [Azure Active Directory Premium](https://msdn.microsoft.com/library/azure/dn532272.aspx) 授權取得這些額外的功能，可以從叫用 **自訂** Azure AD 應用程式庫的類別:
+客戶 [Azure Active Directory Premium](https://msdn.microsoft.com/library/azure/dn532272.aspx) 授權取得這些額外的功能，可以從叫用 **自訂** Azure AD 應用程式庫的類別 ︰
 
 * 任何支援 SAML 2.0 身分識別提供者的應用程式皆可進行自助式連線
 * Web 應用程式可在使用密碼型 SSO 的 HTML 登入頁面上進行自助式連線
@@ -26,7 +26,7 @@ Azure Active Directory 應用程式庫提供已知能支援的單一登入與 Az
 
 這不僅包括您所使用、但尚未在 Azure AD 應用程式庫中上線的 SaaS 應用程式，也包括您的組織已部署至您所控制的伺服器 (在雲端或內部部署中) 的第三方 Web 應用程式。
 
-注意: 應用程式開發人員想要測試其應用程式與這項功能之間的相容性可以這樣使用 [免費試用版的 Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/), ，但建議取得 [內部的使用權限授權](https://mspartner.microsoft.com/en/us/pages/membership/internal-use-software.aspx)。
+注意 ︰ 應用程式開發人員想要測試其應用程式與這項功能之間的相容性可以這樣使用 [免費試用版的 Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/), ，但建議取得 [內部的使用權限授權](https://mspartner.microsoft.com/en/us/pages/membership/internal-use-software.aspx)。
 
 ##新增未列出或自訂的應用程式 
 
@@ -36,7 +36,7 @@ Azure Active Directory 應用程式庫提供已知能支援的單一登入與 Az
 
 在應用程式庫，您可以新增自訂應用程式使用 **自訂** 類別的左側，或選取 **新增未列出的應用程式** 如果找不到您所需的應用程式會顯示在搜尋結果中的連結。 輸入應用程式的名稱之後，您可以設定單一登入選項和行為。 
 
-**快速提示**: 最佳做法，請使用搜尋功能來檢查應用程式庫中是否有應用程式已經存在。 如果找到應用程式，且其描述提及「單一登入」，則應用程式已支援同盟單一登入。 
+**快速提示**︰ 最佳做法，請使用搜尋功能來檢查應用程式庫中是否有應用程式已經存在。 如果找到應用程式，且其描述提及「單一登入」，則應用程式已支援同盟單一登入。 
 
 ![][2]
 
@@ -67,7 +67,7 @@ Azure Active Directory 應用程式庫提供已知能支援的單一登入與 Az
 
 ![][6]
 
-指派使用者可讓 Azure AD 為該使用者核發權杖，並使此應用程式的磚出現在使用者的存取面板中。 如果使用者使用 Office 365，則也會有應用程式磚出現在 Office 365 應用程式啟動器中。 
+指派使用者可讓 Azure AD 為該使用者核發權杖，並使此應用程式的圖格出現在使用者的存取面板中。 如果使用者使用 Office 365，則也會有應用程式圖格出現在 Office 365 應用程式啟動器中。 
 
 您可以上傳的應用程式使用磚標誌 **上傳標誌** 按鈕 **設定** 應用程式] 索引標籤。 
 
@@ -79,9 +79,9 @@ Azure Active Directory 應用程式庫提供已知能支援的單一登入與 Az
 
 ![][7]
 
-有兩個可能的原因，您可能需要編輯 SAML 權杖中發出的宣告: 
+有兩個可能的原因，您可能需要編輯 SAML 權杖中發出的宣告 ︰ 
 已寫入 • 應用程式需要一組不同的宣告 Uri 或宣告的值 
-已將 •Your 應用程式部署需要 NameIdentifier 宣告，是儲存在 Azure Active Directory 中的使用者名稱 (也稱為使用者主體名稱) 以外的方式。 
+已將 •Your 應用程式部署需要 NameIdentifier 宣告，是儲存在 Azure Active Directory 中的使用者名稱 （也稱為使用者主體名稱） 以外的方式。 
 
 如需如何新增和編輯這些案例的宣告資訊，請參閱 [上宣告自訂文件](active-directory-saml-claims-customization.md)。 
 
@@ -101,7 +101,7 @@ Azure Active Directory 應用程式庫提供已知能支援的單一登入與 Az
 
 一旦擷取登入頁面，可能會指派使用者和群組，而可以設定認證原則，就像一般 [密碼 SSO 應用程式](active-directory-appssoaccess-whatis.md)。
 
-注意: 您可以上傳的應用程式使用磚標誌 **上傳標誌** 按鈕 **設定** 應用程式] 索引標籤。 
+注意 ︰ 您可以上傳的應用程式使用磚標誌 **上傳標誌** 按鈕 **設定** 應用程式] 索引標籤。 
 
 ##現有單一登入
 
@@ -109,7 +109,7 @@ Azure Active Directory 應用程式庫提供已知能支援的單一登入與 Az
 
 選取之後 **下一步**, ，將提示您輸入的 URL 連結至應用程式。 完成後，使用者和群組可能會指派給應用程式，讓應用程式會出現在 [Office 365 應用程式啟動程式](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) 或 [Azure AD 存取面板](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/#deploying-azure-ad-integrated-applications-to-users) 這些使用者。
 
-注意: 您可以上傳的應用程式使用磚標誌 **上傳標誌** 按鈕 **設定** 應用程式] 索引標籤。 
+注意 ︰ 您可以上傳的應用程式使用磚標誌 **上傳標誌** 按鈕 **設定** 應用程式] 索引標籤。 
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-custom-apps/customapp1.png
@@ -119,4 +119,5 @@ Azure Active Directory 應用程式庫提供已知能支援的單一登入與 Az
 [5]: ./media/active-directory-saas-custom-apps/customapp5.png
 [6]: ./media/active-directory-saas-custom-apps/customapp6.png
 [7]: ./media/active-directory-saas-custom-apps/customapp7.png
+
 

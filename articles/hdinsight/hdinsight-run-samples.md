@@ -23,10 +23,10 @@
 
 我們提供了一組範例，協助您使用 Azure HDInsight 並開始在 Hadoop 叢集上執行 MapReduce 工作。 這些範例可套用在您所建立的每個 HDInsight 受管理叢集上。 執行這些範例可協助您熟悉使用 Azure PowerShell Cmdlet 在 Hadoop 叢集上執行工作。
 
-- [**字數統計**][hdinsight-sample-wordcount]: 計算文字檔中的文字出現次數。
-- [**C# 串流字數統計**][hdinsight-sample-csharp-streaming]: 計算中使用 Hadoop 串流介面的文字檔案的文字出現次數。
-- [**Pi 估算器**][hdinsight-sample-pi-estimator]: 使用統計 (擬蒙特 Carlo) 方法來估計 pi 的值。
-- [**10-GB Graysort**][hdinsight-sample-10gb-graysort]: 使用 HDInsight 對 10 GB 的檔案上執行一般用途的 GraySort。 有三個工作可執行：Teragen、Terasort 和 Teravalidate，分別用來產生資料、排序資料，以及確認資料已適當排序。
+- [**字數統計**][hdinsight-sample-wordcount]︰ 計算文字檔中的文字出現次數。
+- [**C# 串流字數統計**][hdinsight-sample-csharp-streaming]︰ 計算中使用 Hadoop 串流介面的文字檔案的文字出現次數。
+- [**Pi 估算器**][hdinsight-sample-pi-estimator]︰ 使用統計 (擬蒙特 Carlo) 方法來估計 pi 的值。
+- [**10-GB Graysort**][hdinsight-sample-10gb-graysort]︰ 使用 HDInsight 對 10 GB 的檔案上執行一般用途的 GraySort。 有三個工作可執行：Teragen、Terasort 和 Teravalidate，分別用來產生資料、排序資料，以及確認資料已適當排序。
 
 >[AZURE.NOTE] 可以在附錄中找到的原始程式碼。 
 
@@ -134,7 +134,7 @@ Hadoop 提供 MapReduce 一個串流 API，可讓您以 Java 以外的語言撰�
 
 **提交 C# 串流字數統計工作**
 
-- 請遵循在 procdure [字數統計-Java](#word-count-java), ，並將工作定義取代為下列:
+- 請遵循在 procdure [字數統計-Java](#word-count-java), ，並將工作定義取代為下列 ︰
 
         $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
                                     -File "/example/apps/" `
@@ -156,7 +156,7 @@ Pi 估算器會使用統計 (擬蒙特卡羅法) 方法來估計 pi 的值。 �
 
 **提交 Pi 估算器工作**
 
-- 請遵循在 procdure [字數統計-Java](#word-count-java), ，並將工作定義取代為下列:
+- 請遵循在 procdure [字數統計-Java](#word-count-java), ，並將工作定義取代為下列 ︰
 
         $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
                                     -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
@@ -183,7 +183,7 @@ Pi 估算器會使用統計 (擬蒙特卡羅法) 方法來估計 pi 的值。 �
 
 **提交工作**
 
-- 請遵循在 procdure [字數統計-Java](#word-count-java), ，並使用下列的工作定義:
+- 請遵循在 procdure [字數統計-Java](#word-count-java), ，並使用下列的工作定義 ︰
 
     $teragen = 新增 AzureRmHDInsightMapReduceJobDefinition `
                                 -JarFile "/example/jars/hadoop-mapreduce-examples.jar" `
@@ -1003,3 +1003,4 @@ Wc.cs 檔案中的 reducer 程式碼會使用 [StreamReader][streamreader]   從
 
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
+

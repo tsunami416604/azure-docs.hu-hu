@@ -36,7 +36,7 @@
 ![集合的演化圖。](media/service-fabric-reliable-services-reliable-collections/ReliableCollectionsEvolution.png)
 
 可靠的集合可以視為的自然進化 `System.Collections`
-類別: 一組新的集合，專為雲端和多台電腦
+類別 ︰ 一組新的集合，專為雲端和多台電腦
 而不會增加複雜性，開發人員適用的應用程式。
 因此，它們是：
 
@@ -56,13 +56,13 @@
 (位於 `System.Collections.Concurrent` 命名空間):
 
 1. 非同步：會傳回工作；不同於並行集合，其作業會受到複寫及保存。
-2. 沒有 out 參數: 使用 `ConditionalResult<T>` 傳回 bool 和值，而不是 out 參數。 `ConditionalResult<T>` 就像 `Nullable<T>` ，但不需要 T 結構。
+2. 沒有 out 參數 ︰ 使用 `ConditionalResult<T>` 傳回 bool 和值，而不是 out 參數。 `ConditionalResult<T>` 就像 `Nullable<T>` ，但不需要 T 結構。
 3. 交易：使用交易物件，讓使用者可在交易中的多個可靠的集合上群組動作。
 
 目前，`Microsoft.ServiceFabric.Data.Collections` 包含兩個集合：
 
-1. [可靠的字典](https://msdn.microsoft.com/library/azure/dn971511.aspx): 表示複寫、 交易式和非同步索引鍵/值組的集合。 類似於 `ConcurrentDictionary`，其索引鍵和值可以是任何類型。
-2. [可靠的佇列](https://msdn.microsoft.com/library/azure/dn971527.aspx): 表示可複寫、 交易式和非同步嚴格先進先出 (FIFO) 佇列。 類似於 `ConcurrentQueue`，其值可以是任何類型。
+1. [可靠的字典](https://msdn.microsoft.com/library/azure/dn971511.aspx)︰ 表示複寫、 交易式和非同步索引鍵/值組的集合。 類似於 `ConcurrentDictionary`，其索引鍵和值可以是任何類型。
+2. [可靠的佇列](https://msdn.microsoft.com/library/azure/dn971527.aspx)︰ 表示可複寫、 交易式和非同步嚴格先進先出 (FIFO) 佇列。 類似於 `ConcurrentQueue`，其值可以是任何類型。
 
 ## 隔離層級
 隔離層級是所達隔離程度的量值。
@@ -75,7 +75,7 @@
 可靠的集合支援兩種隔離等級：
 
 - **可重複讀取**: 「 指定陳述式無法讀取已修改但尚未由其他交易確認的資料和任何其他交易都可以修改目前交易完成之前，由目前交易已讀取的資料。 (https://msdn.microsoft.com/library/ms173763.aspx) 」
-- **快照集**: 指定在交易中任何陳述式所讀取的資料將會在交易開始時存在的資料版本一致。 交易只能辨識交易開始之前所認可的資料修改。 在目前交易中執行的陳述式無法看到在目前交易開始之後，其他交易所進行的資料修改。 效果就如同交易中的陳述式會取得認可資料的快照集，因為這項資料於交易開始時就存在。 (https://msdn.microsoft.com/library/ms173763.aspx) 」
+- **快照集**︰ 指定在交易中任何陳述式所讀取的資料將會在交易開始時存在的資料版本一致。 交易只能辨識交易開始之前所認可的資料修改。 在目前交易中執行的陳述式無法看到在目前交易開始之後，其他交易所進行的資料修改。 效果就如同交易中的陳述式會取得認可資料的快照集，因為這項資料於交易開始時就存在。 (https://msdn.microsoft.com/library/ms173763.aspx) 」
 
 可靠的字典和可靠的佇列皆支援「讀寫一致性」(Read Your Writes)。
 換句話說，會看到後續讀取交易內的任何寫入
@@ -119,7 +119,7 @@
 因為檢查點。
 
 ## 鎖定
-可靠的集合中所有交易都是兩個階段: 交易並不會釋放
+可靠的集合中所有交易都是兩個階段 ︰ 交易並不會釋放
 終止與中止或認可交易之前，它所取得鎖定。
 
 可靠的集合都需要獨佔鎖定。
@@ -167,4 +167,5 @@
 - [開始使用 Service Fabric Web API 服務](service-fabric-reliable-services-communication-webapi.md)
 - [可靠服務程式設計模型的進階用法](service-fabric-reliable-services-advanced-usage.md)
 - [可靠的集合的開發人員參考資料](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+
 

@@ -18,10 +18,10 @@
 
 # Microsoft Azure 入口網站概觀
 
-Microsoft Azure 入口網站是一個可以佈建和管理 Azure 資源的中央位置。  本教學課程將您熟悉入口網站，並示範如何使用某些重要功能:
+Microsoft Azure 入口網站是一個可以佈建和管理 Azure 資源的中央位置。  本教學課程將您熟悉入口網站，並示範如何使用某些重要功能 ︰
 - A **完整 marketplace** ，可讓您瀏覽數千個來自 Microsoft 及其他廠商可以購買，及/或佈建的項目。
 - A **統一且可擴充的瀏覽經驗** ，可輕鬆尋找您重視，而且執行各種管理操作的資源。
-- **一致的管理頁面** (或刀鋒視窗)，可讓您管理 Azure 的各種不同的服務，透過一致的方式來設定、 動作、 帳單資訊、 健全狀況監視與使用量資料，以及許多公開更多。
+- **一致的管理頁面** （或刀鋒視窗），可讓您管理 Azure 的各種不同的服務，透過一致的方式來設定、 動作、 帳單資訊、 健全狀況監視與使用量資料，以及許多公開更多。
 - A **個人的經驗** ，可讓您建立自訂的啟動螢幕顯示的資訊，您想要看到每次您登入。  您也可以自訂任何包含磚的管理刀鋒視窗。
 
  ![Azure 入口網站 UI 定位][UIOrientation]
@@ -80,7 +80,7 @@ Azure 會預先設定資源的刀鋒視窗，但您可以控制這些刀鋒視�
 
 ## 摘要
 
-讓我們來檢視您在本教學課程中了解:
+讓我們來檢視您在本教學課程中了解 ︰
 - 您了解如何註冊、 取得訂用帳戶，並瀏覽至入口網站
 - 您有方向與入口網站 UI，學到如何建立和瀏覽資源
 - 您學到如何建立資源，並瀏覽資源
@@ -97,4 +97,5 @@ Microsoft Azure 入口網站會徹底簡化建置及管理您在雲端中的應�
 [ManageResource]: ./media/azure-portal-how-to-use/azure_portal_4.png
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
+
 

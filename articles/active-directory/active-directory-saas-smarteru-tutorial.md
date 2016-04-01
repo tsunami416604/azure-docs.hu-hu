@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   SmarterU 租用戶
   
-完成本教學課程之後, 您已指派給 SmarterU 的 Azure AD 使用者將能夠登入位於您 SmarterU 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 SmarterU 的 Azure AD 使用者將能夠登入位於您 SmarterU 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -120,7 +120,7 @@ SmarterU 需以手動方式佈建。
     ![新使用者](./media/active-directory-saas-smarteru-tutorial/IC777329.png "New User")
 
     1.  按一下 [ **+ User**。
-    2.  在下列文字方塊中輸入的 Azure AD 使用者帳戶相關聯的屬性值: **主要電子郵件**, ，**員工識別碼**, ，**密碼**, ，**確認密碼**, ，**名字**, ，**姓氏**。
+    2.  在下列文字方塊中輸入的 Azure AD 使用者帳戶相關聯的屬性值 ︰ **主要電子郵件**, ，**員工識別碼**, ，**密碼**, ，**確認密碼**, ，**名字**, ，**姓氏**。
     3.  按一下 [ **Active**。
     4.  按一下 [ **儲存**。
 
@@ -143,3 +143,4 @@ SmarterU 需以手動方式佈建。
     ![是](./media/active-directory-saas-smarteru-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

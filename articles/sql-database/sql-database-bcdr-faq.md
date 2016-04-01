@@ -42,13 +42,13 @@
 
 ## 6. 如何找出資料庫的可用還原點？
 
-若要從使用者錯誤復原，目前時間會是可用的最近還原點。 若要找出最早可用還原點，請使用 [取得資料庫](https://msdn.microsoft.com/library/dn505708.aspx) (*RecoveryPeriodStartDate*) 以取得最舊的還原點 (非異地複寫的還原點)。
+若要從使用者錯誤復原，目前時間會是可用的最近還原點。 若要找出最早可用還原點，請使用 [取得資料庫](https://msdn.microsoft.com/library/dn505708.aspx) (*RecoveryPeriodStartDate*) 以取得最舊的還原點 （非異地複寫的還原點）。
 
 從中斷情況復原使用 [取得可復原資料庫](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) 以取得最新的地理區域複寫的還原點。
 
 ## 7. 如何大量還原伺服器下的所有資料庫？
 
-沒有可執行大量還原的內建功能。  [Azure SQL Database: 完整伺服器復原](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) 指令碼是其中一種完成這項工作的範例。 
+沒有可執行大量還原的內建功能。  [Azure SQL Database ︰ 完整伺服器復原](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) 指令碼是其中一種完成這項工作的範例。 
 
 ## 8. 標準異地複寫和主動式異地複寫有何不同？
 
@@ -59,4 +59,5 @@
 ## 9. 什麼是使用標準異地複寫或主動式異地複寫時的複寫延遲？
 
 使用 [sys.dm_geo_replication_link_status](https://msdnstage.redmond.corp.microsoft.com/library/mt575504.aspx) 動態管理檢視 (Dmv) 可取得上次複寫時間、 上次複寫延遲和其他複寫連結的相關資訊。
+
 

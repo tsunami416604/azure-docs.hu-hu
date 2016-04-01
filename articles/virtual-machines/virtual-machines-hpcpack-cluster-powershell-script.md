@@ -62,17 +62,17 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 
 * **AdminPassword** -指定系統管理員的密碼。 如果未在命令列中指定，指令碼會提示您輸入密碼。
 
-* **HPCImageName** (選用)-指定 HPC Pack VM 映像名稱，用來部署 HPC 叢集。 它必須是 Microsoft 在 Azure Marketplace 中提供的 HPC Pack 映像。 如果未指定 (在大部分的情況下建議使用)，指令碼會選擇最新發佈的 HPC Pack 映像。
+* **HPCImageName** （選用）-指定 HPC Pack VM 映像名稱，用來部署 HPC 叢集。 它必須是 Microsoft 在 Azure Marketplace 中提供的 HPC Pack 映像。 如果未指定 (在大部分的情況下建議使用)，指令碼會選擇最新發佈的 HPC Pack 映像。
 
     >[AZURE.NOTE] 如果您未指定有效的 HPC Pack 映像，部署將會失敗。
 
-* **記錄檔** (選用)-指定部署記錄檔路徑。 若未指定，指令碼會在執行指令碼之電腦的暫存目錄中建立記錄檔。
+* **記錄檔** （選用）-指定部署記錄檔路徑。 若未指定，指令碼會在執行指令碼之電腦的暫存目錄中建立記錄檔。
 
-* **強制** (選用)-隱藏所有確認提示。
+* **強制** （選用）-隱藏所有確認提示。
 
-* **NoCleanOnFailure** (選用)-指定將不會移除未成功部署在 Azure Vm。 您必須先手動移除這些 VM 才能重新執行指令碼以繼續部署，否則部署可能會失敗。
+* **NoCleanOnFailure** （選用）-指定將不會移除未成功部署在 Azure Vm。 您必須先手動移除這些 VM 才能重新執行指令碼以繼續部署，否則部署可能會失敗。
 
-* **PSSessionSkipCACheck** (選用)-使用此指令碼部署的每個雲端服務，自我簽署的憑證自動由 Azure 產生，並在雲端服務中的所有 Vm 會都使用此憑證做為預設的 Windows 遠端管理 (WinRM) 憑證。 若要部署 HPC 功能，這些 Azure Vm 中，預設的指令碼暫時安裝這些憑證以隱藏 「 不受信任的 CA 」 安全性錯誤指令碼執行期間，用戶端電腦的本機 Computer\\Trusted 根憑證授權單位存放區中指令碼完成時移除憑證。 如果指定此參數，則不會在用戶端電腦上安裝憑證，並且會抑制安全性警告。
+* **PSSessionSkipCACheck** （選用）-使用此指令碼部署的每個雲端服務，自我簽署的憑證自動由 Azure 產生，並在雲端服務中的所有 Vm 會都使用此憑證做為預設的 Windows 遠端管理 (WinRM) 憑證。 若要部署 HPC 功能，這些 Azure Vm 中，預設的指令碼暫時安裝這些憑證以隱藏 「 不受信任的 CA 」 安全性錯誤指令碼執行期間，用戶端電腦的本機 Computer\\Trusted 根憑證授權單位存放區中指令碼完成時移除憑證。 如果指定此參數，則不會在用戶端電腦上安裝憑證，並且會抑制安全性警告。
 
     >[AZURE.IMPORTANT] 這個參數不建議用於實際部署。
 
@@ -116,7 +116,7 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> 
 和 3 個儲存體帳戶 (亦即，Myhpccnservice01-myhpccn-0001 至 Myhpccn-0005-0005 中
 MyHPCCNService01 和 mycnstorage01;Myhpccnservice01-0006 至 MyHPCCN0010 中
 MyHPCCNService02 和 mycnstorage02;以及 Myhpccnservice03-0011 為 Myhpccnservice01-0012 中
-MyHPCCNService03 和 mycnstorage03)。 從建立計算節點
+MyHPCCNService03 和 mycnstorage03）。 從建立計算節點
 現有私人映像擷取自運算節點。 自動成長
 壓縮和預設值啟用服務放大和縮小的間隔。
 
@@ -453,4 +453,5 @@ A9 使用部署指令碼，您可能會遇到的問題
 * 使用指令碼來建立叢集，並執行 HPC 工作負載的教學課程，請參閱 [開始使用 Azure 來執行 Excel 和 SOA 工作負載中的 HPC Pack 叢集](virtual-machines-excel-cluster-hpcpac), ，[執行 NAMD 使用 Microsoft HPC Pack linux 運算節點，在 Azure 中的](virtual-machines-linux-cluster-hpcpack-namd.md), ，或 [執行 OpenFOAM 使用 Microsoft HPC Pack linux 運算節點，在 Azure 中的](virtual-machines-linux-cluster-hpcpack-openfoam.md)。
 
 * 嘗試以 HPC Pack 的工具啟動、停止、新增和移除您所建立之叢集中的運算節點。 請參閱 [管理計算節點的 HPC Pack 叢集在 Azure 中](virtual-machines-hpcpack-cluster-node-manage.md)
+
 

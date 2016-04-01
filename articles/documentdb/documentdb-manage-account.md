@@ -37,11 +37,11 @@
 
 ### 在 Azure 入口網站中檢視並複製存取金鑰
 
-1.      In the [Azure Portal](https://portal.azure.com/), access your DocumentDB account. 
+1.      在 [Azure 入口網站](https://portal.azure.com/), ，存取 DocumentDB 帳戶。 
 
-2.      In the **Summary** lens, click **Keys**.
+2.      在 **摘要** 鏡頭中，按一下 **金鑰**。
 
-3.      On the **Keys** blade, click the **Copy** button to the right of the
+3.      在 **金鑰** 刀鋒視窗中，按一下 [ **複製** 右邊的按鈕
 您想要複製的索引鍵。
 
   ![在 Azure 入口網站 [金鑰] 刀鋒視窗中檢視並複製存取金鑰](./media/documentdb-manage-account/image004.jpg)
@@ -61,23 +61,23 @@
 您將會導致連線中斷重新產生金鑰，除非您變換
 您的金鑰。 下列步驟概述變換金鑰所牽涉的程序。
 
-1.      Update the access key in your application code to reference the
+1.      更新您的應用程式程式碼以參考中的存取金鑰
 DocumentDB 帳戶的次要存取金鑰。
 
-2.      Regenerate the primary access key for your DocumentDB account.
+2.      重新產生 DocumentDB 帳戶的主要存取金鑰。
 在 [Azure 入口網站](https://portal.azure.com/),，
 存取 DocumentDB 帳戶。
 
-3.      In the Summary lens, click **Keys**.
+3.      在 [摘要] 透鏡中按一下 [ **金鑰**。
 
-4.      On the **Keys** blade, click the **Regenerate Primary** command, then
+4.      在 **金鑰** 刀鋒視窗中，按一下 [ **重新產生主要** 命令，然後
 按一下 [ **確定** 來確認您想要產生新的金鑰。
 
-5.      Once you have verified that the new key is available for use
-(約 5 分鐘後重新產生)，更新存取金鑰。
+5.      一旦確認新的金鑰是可供使用
+（約 5 分鐘後重新產生），更新存取金鑰。
 應用程式程式碼以參考新的主要存取金鑰。
 
-6.      Regenerate the secondary access key.
+6.      重新產生次要存取金鑰。
 
 *請注意，可能需要幾分鐘的時間可以新產生的金鑰
 可用來存取 DocumentDB 帳戶。*
@@ -94,9 +94,9 @@ DocumentDB 支援四個定義完善的使用者可設定資料一致性
 並未過時太久。 它尤其能保證讀取任何
 多個 *K* 比上次寫入的版本還舊的版本。 
 
-- **工作階段** 一致性可保證單純讀取 (您永遠不會
-讀取舊資料，則新的則舊一次)、 單純寫入 (寫入為
-依照順序)，以及您閱讀任何單一內最近的寫入
+- **工作階段** 一致性可保證單純讀取 （您永遠不會
+讀取舊資料，則新的則舊一次)、 單純寫入 （寫入為
+依照順序），以及您閱讀任何單一內最近的寫入
 用戶端的觀點來看。
 
 - **最終** 一致性可保證讀取作業
@@ -109,41 +109,41 @@ DocumentDB 支援四個定義完善的使用者可設定資料一致性
 
 ### 指定 DocumentDB 帳戶的預設一致性
 
-1.      In the [Azure Portal](https://portal.azure.com/), access your DocumentDB account. 
+1.      在 [Azure 入口網站](https://portal.azure.com/), ，存取 DocumentDB 帳戶。 
 
-2.      In the **Configuration** lens, click **Default Consistency**.
+2.      在 **組態** 鏡頭中，按一下 **預設一致性**。
 
-3.      On the **Default Consistency** blade, select the default consistency
+3.      在 **預設一致性** 刀鋒視窗中，選取 [預設一致性
 您要用於 DocumentDB 帳戶的層級。
 
 ![預設一致性工作階段](./media/documentdb-manage-account/image005.png)
 
 ![預設一致性界限](./media/documentdb-manage-account/image006.png)
 
-4.      Click **Save**.
+4.      按一下 [ **儲存**。
 
-5.      The progress of the operation may be monitored via the Azure Portal Notifications hub.
+5.      透過 Azure 入口網站通知中樞可監視作業的進度。
 
 *請注意，可能需要幾分鐘，再變更為預設值
 一致性設定才會生效，整個 DocumentDB 帳戶。*
 
-## <a id="delete"></a> 如何: 刪除 DocumentDB 帳戶，在 Azure 入口網站
+## <a id="delete"></a>如何在 Azure 入口網站中刪除 DocumentDB 帳戶
 若要移除您不再使用 Azure 入口網站的 DocumentDB 帳戶，請使用
 **刪除** 命令 **DocumentDB 帳戶** 刀鋒視窗。
 
 ![如何在 Azure 入口網站中刪除 DocumentDB 帳戶](./media/documentdb-manage-account/image009.png)
 
-1.      In the [Azure Portal](https://portal.azure.com/), access the DocumentDB Account you
+1.      在 [Azure 入口網站](https://portal.azure.com/), ，存取 DocumentDB 帳戶
 想要刪除。 
 
-2.      On the **DocumentDB Account** blade, click the **Delete** command.
+2.      在 **DocumentDB 帳戶** 刀鋒視窗中，按一下 [ **刪除** 命令。
 
-3.      On the resulting confirmation blade, type the DocumentDB Account
+3.      在後續的確認分頁中，輸入 [DocumentDB 帳戶
 若要確認您想要刪除的帳戶名稱。
 
-4.      Click the **Delete** button on the confirmation blade.
+4.      按一下 [ **刪除** 在確認分頁中的按鈕。
 
-## <a id="next"></a>後續步驟
+## <a id="next"></a>接續步驟
 
 了解如何 [開始使用 DocumentDB
    帳戶](http://go.microsoft.com/fwlink/p/?LinkId=402364)。
@@ -154,4 +154,5 @@ DocumentDB 支援四個定義完善的使用者可設定資料一致性
 
  
  
+
 

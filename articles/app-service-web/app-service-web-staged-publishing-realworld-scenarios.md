@@ -63,7 +63,7 @@ if (file_exists($path . $config_file)) {
 require_once $path . $config_file;
 ```
 
-呼叫的 web 應用程式根目錄下建立資料夾 `config` ，並加入第二個檔案:  `wp-config.azure.php`  和 `wp-config.local.php`  分別代表您的 azure 和本機環境。
+呼叫的 web 應用程式根目錄下建立資料夾 `config` ，並加入第二個檔案 ︰  `wp-config.azure.php`  和 `wp-config.local.php`  分別代表您的 azure 和本機環境。
 
 複製 `wp-config.local.php` 中的下列項目：
 
@@ -251,7 +251,7 @@ require_once(ABSPATH . 'wp-settings.php');
 #### 設定環境特定的應用程式設定
 開發人員可以隨著與 Web 應用程式相關聯的組態資訊 (稱為「應用程式設定」) 在 Azure 中儲存索引鍵-值字串組。 在執行階段，App Service Web Apps 會為您自動擷取這些值，並使值可供您的 Web 應用程式中執行的程式碼使用。  從安全性觀點來看，這是不錯的邊際效益，因為資料庫連接字串與密碼之類的機密資訊永遠不會在檔案 (例如 `wp-config.php`) 中顯示為純文字。
 
-下面定義此程序很有用，因為它包含變更檔案和資料庫變更為 WordPress 應用程式執行時:
+下面定義此程序很有用，因為它包含變更檔案和資料庫變更為 WordPress 應用程式執行時 ︰
 
 - WordPress 版本升級
 - 加入新的或編輯或升級外掛程式
@@ -282,7 +282,7 @@ require_once(ABSPATH . 'wp-settings.php');
 ![交換 WordPress 的變更的預覽](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
 
  > [AZURE.NOTE]
- >如果您有的案例，您必須只推入的檔案 (資料庫更新)，然後 **檢查**  **位置設定** 相關的所有資料庫 *應用程式設定* 和 *連接字串設定* Azure 入口網站，然後再執行交換內的 web 應用程式設定刀鋒視窗中。 在此案例的 DB_NAME、 DB_HOST、 DB_PASSWORD、 DB_USER 預設連接字串設定應該不會顯示在預覽變更的時候 **交換**。 在這個階段，當您完成 **交換** 作業 WordPress web 應用程式會產生與更新檔 **僅**。
+ >如果您有的案例，您必須只推入的檔案 （資料庫更新），然後 **檢查**  **位置設定** 相關的所有資料庫 *應用程式設定* 和 *連接字串設定* Azure 入口網站，然後再執行交換內的 web 應用程式設定刀鋒視窗中。 在此案例的 DB_NAME、 DB_HOST、 DB_PASSWORD、 DB_USER 預設連接字串設定應該不會顯示在預覽變更的時候 **交換**。 在這個階段，當您完成 **交換** 作業 WordPress web 應用程式會產生與更新檔 **僅**。
 
 在執行之前交換，以下是生產 WordPress web 應用程式
 ![交換位置之前的生產 Web 應用程式](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
@@ -319,7 +319,7 @@ require_once(ABSPATH . 'wp-settings.php');
 #### 設定預備環境
 如上所述為 Umbraco CMS Web 應用程式建立部署位置，假設您已有 Umbraco CMS Web 應用程式運作且執行中。 如果沒有，您可以從 Marketplace 建立一個。
 
-更新您預備部署位置，以指向新建立的資料庫連接字串 **umbraco-階段 db**。 您的生產 web 應用程式 (umbraositecms-1) 和執行 web 應用程式 (umbracositecms-1-階段) **必須** 指向不同的資料庫。
+更新您預備部署位置，以指向新建立的資料庫連接字串 **umbraco-階段 db**。 您的生產 web 應用程式 (umbraositecms-1) 和執行 web 應用程式 （umbracositecms-1-階段） **必須** 指向不同的資料庫。
 
 ![使用新預備資料庫更新預備 Web 應用程式的連接字串](./media/app-service-web-staged-publishing-realworld-scenarios/9umbconnstr.png)
 
@@ -339,7 +339,7 @@ require_once(ABSPATH . 'wp-settings.php');
 
 #### 設定 Courier2 部署模組
 使用 [Courier2](http://umbraco.com/products/more-add-ons/courier-2) 模組可以推送內容、 樣式表、 開發模組，以及與按一下滑鼠右鍵從預備 web 應用程式至實際執行 web 應用程式有更多的麻煩免費部署，並減少部署更新時，中斷生產 web 應用程式的風險。
-購買的授權網域 Courier2 `*.azurewebsites.net` 和您的自訂網域 (例如 http://abc.com) 一旦您已購買的授權，將下載的授權 (。授權檔) 中 `bin` 資料夾。
+購買的授權網域 Courier2 `*.azurewebsites.net` 和您的自訂網域 (例如 http://abc.com) 一旦您已購買的授權，將下載的授權 (。授權檔） 中 `bin` 資料夾。
 
 ![將授權檔案拖放到 bin 資料夾下](./media/app-service-web-staged-publishing-realworld-scenarios/13droplic.png)
 
@@ -370,7 +370,7 @@ require_once(ABSPATH . 'wp-settings.php');
 
 下 `<repositories>`, ，輸入實際執行網站的 URL 和使用者資訊。 如果您使用預設 Umbraco 成員資格提供者，則將中的系統管理使用者的識別碼 <user> 一節。 如果您使用自訂的 Umbraco 成員資格提供者，使用 `<login>`,，`<password>` Courier2 模組已了解如何連接到實際執行網站。 如需詳細資訊，請檢閱 [文件](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation) 新細明體模組。
 
-同樣地，您的生產網站上安裝新細明體模組和設定階段的 web 應用程式指向其各自的 courier.config 檔案如下所示
+同樣地，請在您的生產網站上安裝 Courier 模組，並如此處所示，將其設定為在各自的 courier.config 檔案中指向 Web 應用程式
 
 ```xml
   <!-- Repository connection settings -->
@@ -424,7 +424,7 @@ Courier 將不會隨著從一個版本的 Umbraco CMS 升級至另一個版本�
 
 ![交換部署 Umbraco CMS 的預覽](./media/app-service-web-staged-publishing-realworld-scenarios/22umbswap.png)
 
-交換 web 應用程式和資料庫的優點:
+交換 Web 應用程式和資料庫的優點：
 1. 可讓您回復成先前的版本與另一個 web 應用程式的 **交換** 是否有任何應用程式問題。
 2. 針對升級，您需要將來自預備 Web 應用程式的檔案和資料庫部署到生產 Web 應用程式和資料庫。 部署檔案和資料庫有許多項目可能出錯。 使用 **交換** 功能的位置，我們可以在升級期間減少停機時間並降低部署變更時所發生的失敗的風險。
 3. 可讓您能夠執行 **A / B 測試** 使用 [在生產環境中測試](http://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/) 功能
@@ -437,4 +437,5 @@ Courier 將不會隨著從一個版本的 Umbraco CMS 升級至另一個版本�
 [針對 Azure App Service 中的 Web 應用程式設定預備環境](web-sites-staged-publishing)
 
 [封鎖對非生產部署位置的 Web 存取](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
+
 

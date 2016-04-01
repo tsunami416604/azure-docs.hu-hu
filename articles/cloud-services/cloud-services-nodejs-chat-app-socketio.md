@@ -25,13 +25,13 @@
 Socket.IO 提供 node.js
 伺服器和用戶端之間的即時通訊。 本教學課程將逐步引導您在 Azure 上裝載
 socket.IO 型交談應用程式。 如需 Blob 的詳細資訊，
-請參閱 <a href="http://socket.io/">http://socket.io/</a>.
+請參閱 <a href="http://socket.io/">http://socket.io/</a>。
 
 完成之應用程式的螢幕擷取畫面如下：
 
 ![A browser window displaying the service hosted on Azure][completed-app]  
 
-## 先決條件
+## 必要條件
 
 請確定已安裝下列產品及版本，以順利完成本文中的範例：
 
@@ -92,7 +92,7 @@ GitHub 儲存機制]。 執行下列步驟以下載範例
 
 1.  開啟 **server.js** Visual Studio 或任何文字編輯器中的檔案。
 
-2.  尋找 **模組相依性** 區段在 server.js 開頭，並變更一行包含 **sio = require('..//..lib//socket.io')** 至 **sio = require('socket.io')** ，如下所示:
+2.  尋找 **模組相依性** 區段在 server.js 開頭，並變更一行包含 **sio = require('..//..lib//socket.io')** 至 **sio = require('socket.io')** ，如下所示 ︰
 
         var express = require('express')
         , stylus = require('stylus')
@@ -102,7 +102,7 @@ GitHub 儲存機制]。 執行下列步驟以下載範例
 
 3.  若要確保應用程式在正確的連接埠上接聽，請
     在 [記事本] 或您最愛的編輯器開啟 server.js，然後變更
-    藉由取代下行 **3000** 與 **process.env.port** ，如下所示:
+    藉由取代下行 **3000** 與 **process.env.port** ，如下所示 ︰
 
         //app.listen(3000, function () {            //Original
         app.listen(process.env.port, function () {  //Updated
@@ -114,7 +114,7 @@ GitHub 儲存機制]。 執行下列步驟以下載範例
 安裝必要的模組，然後在 Azure 模擬器中測試應用程式
 ：
 
-1.  使用 **PowerShell**, ，將目錄變更至 **C:\\node\\chatapp\\WorkerRole1** 目錄，然後使用下列命令來安裝此應用程式所需的模組:
+1.  使用 **PowerShell**, ，將目錄變更至 **C:\\node\\chatapp\\WorkerRole1** 目錄，然後使用下列命令來安裝此應用程式所需的模組 ︰
 
         PS C:\node\chatapp\WorkerRole1> npm install
 
@@ -197,4 +197,5 @@ Socket.IO 在不同的用戶端之間轉送訊息。
   [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
   
  
+
 

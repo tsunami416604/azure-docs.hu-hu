@@ -34,7 +34,7 @@ Engagement API 是由 `EngagementAgent` 類別提供。 此類別的執行個體
 
 如果使用者停留超過幾秒鐘的時間閒置，兩個 *活動*, ，然後他的序列 *活動* 會分成兩個不同 *工作階段*。 這幾秒稱為「工作階段逾時」。
 
- *活動* 是通常與應用程式的某個畫面相關聯也就是說 *活動* 時開始，畫面會顯示，並在畫面關閉時停止: 使用整合 Engagement SDK 時，就以此 `EngagementActivity` 類別。
+ *活動* 是通常與應用程式的某個畫面相關聯也就是說 *活動* 時開始，畫面會顯示，並在畫面關閉時停止 ︰ 使用整合 Engagement SDK 時，就以此 `EngagementActivity` 類別。
 
 但是 *活動* 也可以控制以手動方式使用 Engagement API。 這樣可以將指定的畫面分隔為數個子部分，以取得關於此畫面使用方式的詳細資料 (例如，可了解此畫面內對話方塊的使用頻率與使用時間長度)。
 
@@ -174,7 +174,7 @@ Engagement API 是由 `EngagementAgent` 類別提供。 此類別的執行個體
 假設您想要報告登入程序期間的錯誤：
 
 [...]
-public void 登入 (內容內容，...){
+public void 登入 （內容內容，...）{
 
               /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
               EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
@@ -257,7 +257,7 @@ public void 登入 (內容內容，...){
 
 #### 大小
 
-額外項目限制為 **1024年** 每次呼叫 (以 JSON 編碼之後由 Engagement 服務) 的字元。
+額外項目限制為 **1024年** 每次呼叫 （以 JSON 編碼之後由 Engagement 服務） 的字元。
 
 在上述範例中，傳送到伺服器的 JSON 會是 58 個字元：
 
@@ -292,10 +292,11 @@ public void 登入 (內容內容，...){
 
 #### 大小
 
-應用程式資訊限於 **1024年** 每次呼叫 (以 JSON 編碼之後由 Engagement 服務) 的字元。
+應用程式資訊限於 **1024年** 每次呼叫 （以 JSON 編碼之後由 Engagement 服務） 的字元。
 
 在上述範例中，傳送到伺服器的 JSON 會是 44 個字元：
 
             {"expiration":"2016-12-07","status":"premium"}
  
+
 

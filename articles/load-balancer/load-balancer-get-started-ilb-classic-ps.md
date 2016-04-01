@@ -113,7 +113,7 @@
 
 - Web 層中的 Web 伺服器會使用私人 IP 位址連接到資料庫層中的資料庫伺服器。 另一個選項是為虛擬網路使用您自己的 DNS，並手動註冊內部負載平衡器集的 A 記錄。
 
-下列命令會設定新內部負載平衡的執行個體名為 **ILBset** 並將端點加入至對應到兩部資料庫伺服器的虛擬機器:
+下列命令會設定新內部負載平衡的執行個體名為 **ILBset** 並將端點加入至對應到兩部資料庫伺服器的虛擬機器 ︰
 
     $svc="mytestcloud"
     $ilb="ilbset"
@@ -181,3 +181,4 @@
 [使用來源 IP 同質性設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
+

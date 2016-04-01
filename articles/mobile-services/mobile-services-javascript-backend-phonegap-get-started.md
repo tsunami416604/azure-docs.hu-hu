@@ -39,9 +39,9 @@
 
 + PhoneGap 支援多個平台的開發。 除了 PhoneGap 工具本身以外，您還必須為所要使用的各個平台安裝下列工具：
 
-    - Windows Phone: 安裝 [Visual Studio 2012 Express for Windows Phone](https://go.microsoft.com/fwLink/p/?LinkID=268374)
-    - iOS: 安裝 [Xcode] (必須是 4.4 以上)
-    - Android: 安裝 [Android Developer Tools] [Android SDK]
+    - Windows Phone ︰ 安裝 [Visual Studio 2012 Express for Windows Phone](https://go.microsoft.com/fwLink/p/?LinkID=268374)
+    - iOS ︰ 安裝 [Xcode] （必須是 4.4 以上）
+    - Android ︰ 安裝 [Android 開發人員工具][Android SDK]
         <br/>(Mobile Services SDK for Android 支援適用於 Android 2.2 或更新版本的應用程式。 若要執行快速入門應用程式，則必須使用 Android 4.2 或更新版本。)
 
 ## 建立新的行動服務
@@ -52,7 +52,7 @@
 
 在本節中，您將建立連接到行動服務的新 PhoneGap 應用程式。
 
-1.  在 [Azure 傳統入口網站]，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
+1.  在 [Azure classic portal], ，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
 
 2. 在 [快速入門] 索引標籤中，按一下 [ **PhoneGap** 下 **選擇平台** 展開 **建立新的 PhoneGap 應用程式**。
 
@@ -80,7 +80,7 @@
 
     + **Windows Phone 8**
 
-        1. Windows Phone 8: 開啟中的.sln 檔案 **platforms\wp8** 在 Visual Studio 2012 Express for Windows Phone 的資料夾。
+        1. Windows Phone 8 ︰ 開啟中的.sln 檔案 **platforms\wp8** 在 Visual Studio 2012 Express for Windows Phone 的資料夾。
 
         2. 按下 **F5** 鍵，以重建專案並啟動應用程式。
 
@@ -113,7 +113,7 @@
 
     > [AZURE.IMPORTANT] 如果使用 PhoneGap 工具重新建置主要專案，就會覆寫此平台專案的變更。 因此，請依照下一節中的說明，在專案的根 www 目錄中進行變更。
 
-4. 回到 [Azure 傳統入口網站]，按一下 [ **資料** 標籤，然後按一下 **TodoItem** 資料表。
+4. 回到 [Azure classic portal], ，按一下 [ **資料** 標籤，然後按一下 **TodoItem** 資料表。
 
     ![](./media/mobile-services-javascript-backend-phonegap-get-started/mobile-data-tab.png)
 
@@ -155,10 +155,10 @@
 ## 後續步驟
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
-* **[將驗證新增至您的應用程式]**  
+* **[Add authentication to your app]**  
   了解如何透過身分識別提供者來驗證您的應用程式使用者。  
 
-* **[將推播通知新增至您的應用程式](https://msdn.microsoft.com/magazine/dn879353.aspx)**  
+* **[將推播通知新增至應用程式](https://msdn.microsoft.com/magazine/dn879353.aspx)**  
   了解如何註冊及傳送推播通知至應用程式。
 
 * **[行動服務 HTML/JavaScript 作法概念性參考](mobile-services-html-how-to-use-client-library.md)**  
@@ -180,3 +180,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
  
+

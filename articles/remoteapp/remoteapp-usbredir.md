@@ -64,7 +64,7 @@
 
 此方法最困難的部分是尋找 USB 裝置執行個體識別碼。 您需要有電腦和特定 USB 裝置的存取權。 接著，遵循下列步驟：
 
-1. 中所述，啟用遠端桌面工作階段中的裝置重新導向 [如何使用我的裝置和資源的遠端桌面工作階段中?](http://windows.microsoft.com/en-us/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session)
+1. 中所述，啟用遠端桌面工作階段中的裝置重新導向 [如何使用我的裝置和資源的遠端桌面工作階段中？](http://windows.microsoft.com/en-us/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session)
 2. 開啟 [遠端桌面連線，然後按一下 **顯示選項**。
 3. 按一下 [ **存** RDP 檔案來儲存目前的連接設定。  
     ![將設定儲存為 RDP 檔案](./media/remoteapp-usbredir/ra-saveasrdp.png)
@@ -79,3 +79,4 @@
 
 ### 幫我們來協助您 
 您知道除了評比這篇文章以及在下面留言以外，您可以變更文件本身嗎？ 有所遺漏？ 有所錯誤？ 我是否撰寫了令人混淆的內容？ 向上捲動，然後按一下 [ **GitHub 上的編輯** 若要變更-供檢閱，這些會變成給我們，接著，我們登入它們，就會看到您的變更和改進這裡。
+

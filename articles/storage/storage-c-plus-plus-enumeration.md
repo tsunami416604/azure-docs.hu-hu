@@ -54,7 +54,7 @@ Storage Client Library 提供各種方法來列出或查詢 Azure 儲存體中�
 
 分段列表作業的回應包含：
 
--   <i>_segment</i>其中包含針對列表 API 的單一呼叫所傳回的結果集。 
+-   <i>_segment</i>，其中包含針對列表 API 的單一呼叫所傳回的結果集。 
 -   *continuation_token*, ，其會傳遞至下一步的呼叫，以便取得下一頁結果。 沒有可傳回的結果時，接續 Token 為 null。
 
 例如，列出容器中所有 Blob 的典型呼叫可能如下列程式碼片段所示。 程式碼，在我們 [範例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
@@ -80,7 +80,7 @@ Storage Client Library 提供各種方法來列出或查詢 Azure 儲存體中�
     }
     while (!token.empty());
 
-請注意，參數可以控制在網頁中傳回的結果數目 *max_results* 在多載中的每個 API，例如:
+請注意，參數可以控制在網頁中傳回的結果數目 *max_results* 在多載中的每個 API，例如 ︰
     
     list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing, 
         blob_listing_details::values includes, int max_results, const continuation_token& token, 
@@ -138,7 +138,7 @@ SDK 中的這些窮盡列表 API 不存在於 C#、Java 或 JavaScript Node.js �
 
 如果您也使用 C# 或 Oracle Java SDK，您應該熟悉可提供延遲樣式列表的「可列舉」程式設計模型，其中特定位移的資料只會在必要時提取。 在 C++ 中，以迭代器為基礎的範本也會提供類似的方法。
 
-典型的延遲列表 API，使用 **list_blobs** 做為範例，看起來像這樣:
+典型的延遲列表 API，使用 **list_blobs** 做為範例，看起來像這樣 ︰
 
     list_blob_item_iterator list_blobs() const;
 
@@ -183,4 +183,5 @@ SDK 中的這些窮盡列表 API 不存在於 C#、Java 或 JavaScript Node.js �
 -   [Azure Storage Client Library for C++ API 文件。](http://azure.github.io/azure-storage-cpp/)
 -   [Azure 儲存體團隊部落格](http://blogs.msdn.com/b/windowsazurestorage/)
 -   [Azure 儲存體文件](http://azure.microsoft.com/documentation/services/storage/)
+
 

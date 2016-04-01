@@ -22,7 +22,7 @@
 
 若要管理應用程式，請在 [方案總管] 中，於應用程式專案上按一下滑鼠右鍵。
 
-![應用程式專案上按一下滑鼠右鍵來管理 Service Fabric 應用程式][] manageservicefabric
+![在應用程式專案上按一下滑鼠右鍵以管理 Service Fabric 應用程式][manageservicefabric]
 
 ## 部署 Service Fabric 應用程式
 
@@ -45,11 +45,11 @@
 1. 應用程式專案的捷徑功能表上，選擇 **屬性** (或選擇 **F4** 索引鍵)。
 1. 在 **屬性** 視窗中，設定 **保留資料的開始** 屬性 **是**。
 
-    ![設定啟動屬性保留資料][] preservedata
+    ![設定 [啟動時保留資料] 屬性][preservedata]
 
 當您重新執行應用程式時，這時部署指令碼就會將部署視為使用未受監視之自動模式的升級，將應用程式快速升級至較新版本並附加日期字串。 此升級程序會保留您在前一個偵錯工作階段中輸入的所有資料。
 
-![新的應用程式版本與日期的範例][] preservedate
+![附加日期的新應用程式版本範例][preservedate]
 
 保留資料時，所利用的是來自 Service Fabric 平台的升級功能。 如需有關升級應用程式請參閱 [Service Fabric 應用程式升級](service-fabric-application-upgrade.md)
 
@@ -57,15 +57,15 @@
 
 您可以將新的 Fabric 服務新增至應用程式以擴充其功能。  若要確保該服務包含應用程式封裝中，新增到服務 **新 Fabric 服務** 功能表項目。
 
-![加入新的網狀架構服務應用程式][] newservice
+![新增新 Fabric 服務至應用程式][newservice]
 
 選取要新增至應用程式的 Service Fabric 專案類型，並指定服務的名稱。  請參閱 [選擇您的服務架構](service-fabric-choose-framework.md) 可協助您判斷要使用的服務類型。
 
-![選取網狀架構服務加入至您的應用程式專案類型][] addserviceproject
+![選取要新增至應用程式的 Fabric 服務類型][addserviceproject]
 
 新服務將會新增到方案與現有的應用程式封裝。 服務參照與預設的服務執行個體將會新增到應用程式資訊清單。 該服務會在下次您部署應用程式時建立並啟動。
 
-![新的服務將會新增到您的應用程式資訊清單][] newserviceapplicationmanifest
+![新服務將會新增到應用程式資訊清單][newserviceapplicationmanifest]
 
 ## 封裝 Service Fabric 應用程式
 
@@ -73,7 +73,7 @@
 
 ## 移除應用程式
 
-您可以使用「Service Fabric 總管」將應用程式類型從本機叢集解除佈建。  叢集總管是否可從叢集的 HTTP 閘道端點 (通常 19080 或 19007)，例如 http://localhost:19080/總管。  這會還原上述的部署步驟：
+您可以使用「Service Fabric 總管」將應用程式類型從本機叢集解除佈建。  叢集總管是否可從叢集的 HTTP 閘道端點 （通常 19080 或 19007），例如 http://localhost:19080/總管。  這會還原上述的部署步驟：
 
 1. 移除任何執行中的應用程式執行個體
 2. 取消註冊應用程式類型
@@ -96,4 +96,5 @@
 [newserviceapplicationmanifest]:./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
 [preservedata]:./media/service-fabric-manage-application-in-visual-studio/preservedata.png
 [preservedate]:./media/service-fabric-manage-application-in-visual-studio/preservedate.png
+
 

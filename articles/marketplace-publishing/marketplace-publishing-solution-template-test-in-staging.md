@@ -37,5 +37,6 @@
 
 > [AZURE.NOTE] 行銷內容變更時，就不需要憑證。
 
-請參閱 [快速入門: 如何將方案發行至 Azure Marketplace](marketplace-publishing-getting-started.md) 如 「 發行者 」 的所有工作的指南。
+請參閱 [快速入門 ︰ 如何將方案發行至 Azure Marketplace](marketplace-publishing-getting-started.md) 如 「 發行者 」 的所有工作的指南。
+
 

@@ -359,19 +359,19 @@ Reach 活動現在宣告如下：
             </intent-filter>
           </receiver>
 
-請注意，您的廣播接收器實作的宣告 **EngagementMessageReceiver** 中已變更 `AndroidManifest.xml`。 這是因為已經移除從任意 XMPP 實體傳送和接收任意 XMPP 訊息的 API，以及在裝置之間傳送和接收訊息的 API。 因此，您也必須刪除下列回呼從您 **EngagementMessageReceiver** 實作:
+請注意，您的廣播接收器實作的宣告 **EngagementMessageReceiver** 中已變更 `AndroidManifest.xml`。 這是因為已經移除從任意 XMPP 實體傳送和接收任意 XMPP 訊息的 API，以及在裝置之間傳送和接收訊息的 API。 因此，您也必須刪除下列回呼從您 **EngagementMessageReceiver** 實作 ︰
 
             protected void onDeviceMessageReceived(android.content.Context context, java.lang.String deviceId, java.lang.String payload)
 
-和
+and
 
             protected void onXMPPMessageReceived(android.content.Context context, android.os.Bundle message)
 
-然後在刪除任何呼叫 **EngagementAgent** 的:
+然後在刪除任何呼叫 **EngagementAgent** 的 ︰
 
             sendMessageToDevice(java.lang.String deviceId, java.lang.String payload, java.lang.String packageName)
 
-和
+and
 
             sendXMPPMessage(android.os.Bundle msg)
 
@@ -387,3 +387,4 @@ Proguard 組態受到品牌重新命名的影響，規則現在類似：
               <methods>;
             }
  
+

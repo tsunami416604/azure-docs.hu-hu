@@ -26,7 +26,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
-本主題說明如何新增推播通知給 [快速入門專案](mobile-services-dotnet-backend-ios-get-started.md), ，以便您的行動服務推播通知，每次一筆記錄插入時傳送。 您必須完成 [開始使用行動服務] 第一次。
+本主題說明如何新增推播通知給 [快速入門專案](mobile-services-dotnet-backend-ios-get-started.md), ，以便您的行動服務推播通知，每次一筆記錄插入時傳送。 您必須先完成 [Get Started with Mobile Services] 第一次。
 
 [AZURE.INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
@@ -59,7 +59,7 @@
         }
 ```
 
-##<a name="publish-the-service"></a>行動服務發佈至 Azure
+##<a name="publish-the-service"></a>將行動服務發佈至 Azure
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../../includes/mobile-services-dotnet-backend-publish-service.md)]
 
@@ -131,4 +131,5 @@
 [What are Notification Hubs?]: ../notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: ../notification-hubs-ios-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-ios-send-localized-breaking-news.md
+
 

@@ -29,9 +29,9 @@
 
 > [AZURE.IMPORTANT] 本文件中所列的錯誤數發生是因為已超過設定的上限。 當解決步驟提到您可以變更值時，您必須使用下列其中一項來執行變更：
 
-* 如 **Windows** 叢集: 使用指令碼動作在叢集建立期間設定的值。 如需詳細資訊，請參閱 [開發指令碼動作](hdinsight-hadoop-script-actions.md)。
+* 如 **Windows** 叢集 ︰ 使用指令碼動作在叢集建立期間設定的值。 如需詳細資訊，請參閱 [開發指令碼動作](hdinsight-hadoop-script-actions.md)。
 
-* 如 **Linux** 叢集: 使用 Ambari (web 或 REST API) 來修改的值。 如需詳細資訊，請參閱 [使用 Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
+* 如 **Linux** 叢集 ︰ 使用 Ambari （web 或 REST API） 來修改的值。 如需詳細資訊，請參閱 [使用 Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 
 ###預設組態
 
@@ -85,3 +85,4 @@
 [max-procs]: https://hive.apache.org/javadocs/hcat-r0.5.0/configuration.html
 [max-age-ms]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
  
+

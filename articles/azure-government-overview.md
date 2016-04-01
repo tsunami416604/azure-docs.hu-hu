@@ -31,7 +31,7 @@ Azure Government 是設計來支援美國地區需要速度、 規模、 安全�
 
 ![][2]
 
-Azure Government 包括基礎設施即服務 (IaaS) 和平台即服務 (PaaS) 的核心元件。  這包括基礎結構、網路、儲存體、資料管理、身分識別管理和許多其他服務。  Azure Government 支援公用 Azure 客戶所運用的相同絕佳功能，例如同步通信資料複寫和自動調整。 Microsoft 已被識別為兩者的領導者 <a href="https://www.gartner.com/doc/2575715/magic-quadrant-cloud-infrastructure-service" target="_new">IaaS</a> 和 <a href="https://www.gartner.com/doc/2645317/magic-quadrant-enterprise-application-platform" target="_new">PaaS<a/> 由領導業界的分析師。
+Azure Government 包括基礎設施即服務 (IaaS) 和平台即服務 (PaaS) 的核心元件。  這包括基礎結構、網路、儲存體、資料管理、身分識別管理和許多其他服務。  Azure Government 支援公用 Azure 客戶所運用的相同絕佳功能，例如同步通信資料複寫和自動調整。 Microsoft 藉由領導業界的分析師，已經視為是 <a href="https://www.gartner.com/doc/2575715/magic-quadrant-cloud-infrastructure-service" target="_new">IaaS</a> 和 <a href="https://www.gartner.com/doc/2645317/magic-quadrant-enterprise-application-platform" target="_new">PaaS<a/> 兩者的領導者。
 
 除了提供公用 Azure 的強固服務和功能，Azure Government 為了確保美國政府實體及其資料的安全性，還提供了許多功能：
 
@@ -86,7 +86,7 @@ Azure Government 也讓組織維持其現有的技術投資，並實現雲端服
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged -->
 
-## <a name="next"></a>後續步驟
+## <a name="next"></a>接續步驟
 
 如果您有興趣深入了解 Azure Government，請利用下面的連結。
 
@@ -116,4 +116,5 @@ Azure Government 也讓組織維持其現有的技術投資，並實現雲端服
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines/virtual-machines-windows-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
+
 

@@ -122,7 +122,7 @@ Python 指令碼可用來當做從 Pig 中，透過 UDF **產生** 陳述式。 
 5. 最後，將輸出傾印至 STDOUT 使用 **傾印** 命令。 這只是為了在操作完成之後, 立即顯示結果在實際的指令碼通常 **存放區** 資料插入新的檔案。
 
 <a name="jythonpy"></a>
-以下是 **jython.py** Pig 範例使用檔案:
+以下是 **jython.py** Pig 範例使用檔案 ︰
 
     @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
     def create_structure(input):
@@ -131,7 +131,7 @@ Python 指令碼可用來當做從 Pig 中，透過 UDF **產生** 陳述式。 
       date, time, classname, level, detail = input.split(' ', 4)
       return date, time, classname, level, detail
 
-請記住，我們先前只定義 **列** 輸入為 chararray，因為輸入沒有一致的結構描述? 什麼 **jython.py** 沒有為資料轉換成一致的結構描述的輸出。 運作方式如下：
+請記住，我們先前只定義 **列** 輸入為 chararray，因為輸入沒有一致的結構描述？ 什麼 **jython.py** 沒有為資料轉換成一致的結構描述的輸出。 運作方式如下：
 
 1.  **@OutputSchema** 陳述式會定義將傳回給 Pig 的資料格式。 在此情況下，它有 **資料包**, ，這是一種 Pig 資料類型。 Bag 包含下列欄位，全部都是 chararray (字串)：
 
@@ -157,7 +157,7 @@ Python 指令碼可用來當做從 Pig 中，透過 UDF **產生** 陳述式。 
 
 ###SSH
 
-如需有關如何使用 SSH 的詳細資訊，請參閱 <a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">從 Linux、Unix 或 OS X 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop</a> 或 <a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">從 Windows 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop</a>.
+如需使用 SSH 的詳細資訊，請參閱<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">從 Linux、Unix 或 OS X 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop</a> 或<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">從 Windows 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop</a>
 
 1. 使用 Python 範例 [streaming.py](#streamingpy) 和 [jython.py](#jythonpy), ，建立您的開發電腦上的檔案的本機複本。
 
@@ -319,7 +319,7 @@ Python 指令碼可用來當做從 Pig 中，透過 UDF **產生** 陳述式。 
         -DefaultStorageAccountKey $storageAccountKey `
         -HttpCredential $creds
 
-針對輸出 **Hive** 工作看起來應類似下列:
+針對輸出 **Hive** 工作看起來應類似下列 ︰
 
     100041  RIM 9650    d476f3687700442549a83fac4560c51c
     100041  RIM 9650    d476f3687700442549a83fac4560c51c
@@ -386,7 +386,7 @@ Python 指令碼可用來當做從 Pig 中，透過 UDF **產生** 陳述式。 
         -DefaultStorageAccountKey $storageAccountKey `
         -HttpCredential $creds
 
-針對輸出 **Pig** 工作看起來應類似下列:
+針對輸出 **Pig** 工作看起來應類似下列 ︰
 
     ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
     ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -414,7 +414,7 @@ Python 指令碼可用來當做從 Pig 中，透過 UDF **產生** 陳述式。 
 Hive|/HivePython/stderr<p>/HivePython/stdout
 Pig|/PigPython/stderr<p>/PigPython/stdout
 
-##<a name="next"></a>後續步驟
+##<a name="next"></a>接續步驟
 
 如果您需要載入非預設提供的 Python 模組，請參閱 [如何將模組部署至 Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx) 如需如何執行這項操作的範例。
 
@@ -425,4 +425,5 @@ Pig|/PigPython/stderr<p>/PigPython/stdout
 * [搭配 HDInsight 使用 Pig](hdinsight-use-pig.md)
 
 * [將 HDInsight 與 MapReduce 搭配使用](hdinsight-use-mapreduce.md)
+
 

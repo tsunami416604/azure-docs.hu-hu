@@ -66,7 +66,7 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
 
 接下來，加入程式碼以使用您所產生的 SAS URI 來執行一系列的容器作業。
 
-首先加入下列 **使用** 陳述式:
+首先加入下列 **使用** 陳述式 ︰
 
     using System.IO;
     using System.Text;
@@ -174,7 +174,8 @@ Xamarin 可讓開發人員使用共用的 C# 程式碼基底，使用其原生�
 參閱下列連結以深入了解 Blob、資料表和佇列：
 
 [Microsoft Azure 儲存體簡介](storage-introduction.md)  
-[如何使用.net 的 Blob 儲存體](storage-dotnet-how-to-use-blobs.md)  
-[如何使用.net 的資料表儲存體](storage-dotnet-how-to-use-tables.md)  
-[如何使用.net 的佇列儲存體](storage-dotnet-how-to-use-queues.md)
+[如何使用 .NET 的 Blob 儲存體](storage-dotnet-how-to-use-blobs.md)  
+[如何使用 .NET 的資料表儲存體](storage-dotnet-how-to-use-tables.md)  
+[如何使用 .NET 的佇列儲存體](storage-dotnet-how-to-use-queues.md)
 [使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy) 
+

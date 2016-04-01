@@ -24,13 +24,13 @@
 按一下以查看 [SDK 內容](mobile-engagement-android-sdk-content.md)。
 
 ##整合程序
-1. 從這裡開始: [如何在 Android 應用程式中整合 Mobile Engagement](mobile-engagement-android-integrate-engagement.md)
+1. 從這裡開始 ︰ [如何在 Android 應用程式中整合 Mobile Engagement](mobile-engagement-android-integrate-engagement.md)
 
-2. 通知: [如何在 Android 應用程式中整合 Reach (通知)](mobile-engagement-android-integrate-engagement-reach.md)
+2. 通知 ︰ [如何在 Android 應用程式中整合 Reach （通知）](mobile-engagement-android-integrate-engagement-reach.md)
     1. Google Cloud Messaging (GCM): [如何整合 GCM 與 Mobile Engagement](mobile-engagement-android-gcm-integrate.md)
     2. Amazon Device Messaging (ADM): [如何整合 ADM 與 Mobile Engagement](mobile-engagement-android-adm-integrate.md)
 
-3. 標記計劃實作: [如何使用進階的 Mobile Engagement 標記 API Android 應用程式中](mobile-engagement-android-use-engagement-api.md)
+3. 標記計劃實作 ︰ [如何使用進階的 Mobile Engagement 標記 API Android 應用程式中](mobile-engagement-android-use-engagement-api.md)
 
 
 ##版本資訊
@@ -51,4 +51,5 @@
 ##升級程序
 
 如果您已經整合舊版 SDK 到您的應用程式，請參閱 [升級程序](mobile-engagement-android-upgrade-procedure.md)。
+
 

@@ -24,7 +24,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 若要設定通知，請按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。 這會帶您前往 API 管理發行者入口網站。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 >如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
@@ -34,7 +34,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 下列事件清單可設定通知。
 
--   **訂用帳戶要求 (需要核准)** -指定的電子郵件收件者和使用者會收到關於需要核准的 API 產品訂閱要求的電子郵件通知。
+-   **訂用帳戶要求 （需要核准）** -指定的電子郵件收件者和使用者會收到關於需要核准的 API 產品訂閱要求的電子郵件通知。
 -   **新的訂閱** -指定的電子郵件收件者和使用者會收到有關新的 API 產品訂用帳戶的電子郵件通知。
 -   **應用程式庫要求** -指定的電子郵件收件者和使用者會收到電子郵件通知時，新的應用程式提交至應用程式庫。
 -   **[密件副本** -指定的電子郵件收件者和使用者會收到電子郵件密件副本傳送給開發人員的所有電子郵件。
@@ -113,3 +113,4 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
+

@@ -52,7 +52,7 @@
 
 在本節中，您將佈建採用 Spark 1.3.1 版的 HDInsight 3.2 版叢集。 HDInsight 版本及其 Sla 的相關資訊，請參閱 [HDInsight 元件版本設定](hdinsight-component-versioning.md)。
 
->[AZURE.NOTE] 這篇文章中的步驟使用基本組態設定，在 HDInsight 中建立的 Apache Spark 叢集。 (例如使用 Hive 的其他儲存體、 Azure 虛擬網路或中繼存放區) 的其他叢集組態設定的相關資訊，請參閱 [使用自訂選項佈建 HDInsight 叢集](hdinsight-apache-spark-provision-clusters.md)。
+>[AZURE.NOTE] 這篇文章中的步驟使用基本組態設定，在 HDInsight 中建立的 Apache Spark 叢集。 （例如使用 Hive 的其他儲存體、 Azure 虛擬網路或中繼存放區） 的其他叢集組態設定的相關資訊，請參閱 [使用自訂選項佈建 HDInsight 叢集](hdinsight-apache-spark-provision-clusters.md)。
 
 
 **佈建 Spark 叢集** 
@@ -64,17 +64,17 @@
     ![在 HDInsight 中建立 Spark 叢集](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.QuickCreateCluster.png "Create a Spark cluster in HDInsight")
 
 
-##<a name="zeppelin"></a>執行互動式 Spark SQL 查詢使用 Zeppelin notebook
+##<a name="zeppelin"></a>使用 Zeppelin Notebook 執行互動式 Spark SQL 查詢
 
 佈建叢集後，您可以使用網頁型的 Zeppelin Notebook 來針對 Spark HDInsight 叢集執行 Spark SQL 互動式查詢。 在本節中，我們將使用叢集預設提供的範例資料檔案 (hvac.csv) 來執行一些互動式 Spark SQL 查詢。
 
 >[AZURE.NOTE] 遵循以下指示建立的 notebook 也會提供在叢集上的預設值。 啟動 Zeppelin 後，您將會依名稱找到本 notebook **Zeppelin HVAC tutorial**。
 
-1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 (如果固定至開始面板)。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
+1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 （如果固定至開始面板）。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
 
 2. 從 Spark 叢集刀鋒視窗中，按一下 [ **快速連結**, ，然後從 **叢集儀表板** 刀鋒視窗中，按一下 [ **Zeppelin Notebook**。 出現提示時，輸入叢集的系統管理員認證。
 
-    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Zeppelin Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱:
+    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Zeppelin Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱 ︰
     >
     > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
@@ -150,17 +150,17 @@
 
     ![重新啟動 Zeppelin 解譯器](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Zeppelin.Restart.Interpreter.png "Restart the Zeppelin intepreter")
 
-##<a name="jupyter"></a>使用 Jupyter notebook 執行 Spark SQL 查詢
+##<a name="jupyter"></a>使用 Jupyter Notebook 執行 Spark SQL 查詢
 
 在本節中，您會使用 Jupyter Notebook 來針對 Spark 叢集執行 Spark SQL 查詢。
 
 >[AZURE.NOTE] 遵循以下指示建立的 notebook 也會提供在叢集上的預設值。 啟動 Jupyter 後，您將會依名稱找到本 notebook **HVACTutorial.ipynb**。
 
-1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 (如果固定至開始面板)。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
+1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 （如果固定至開始面板）。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
 
 2. 從 Spark 叢集刀鋒視窗中，按一下 [ **快速連結**, ，然後從 **叢集儀表板** 刀鋒視窗中，按一下 [ **Jupyter Notebook**。 出現提示時，輸入叢集的系統管理員認證。
 
-    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Jupyter Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱:
+    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Jupyter Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱 ︰
     >
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
@@ -182,7 +182,7 @@
         sc = SparkContext('spark://headnodehost:7077', 'pyspark')
         sqlContext = SQLContext(sc)
 
-    每當您執行工作時在 Jupyter 中，網頁瀏覽器視窗標題將會顯示 **(忙碌)** notebook 標題和狀態。 您也會旁看到實心圓 **Python 2** 右上角中的文字。 工作完成後，實心圓將會變成空心圓。
+    每當您執行工作時在 Jupyter 中，網頁瀏覽器視窗標題將會顯示 **（忙碌）** notebook 標題和狀態。 您也會旁看到實心圓 **Python 2** 右上角中的文字。 工作完成後，實心圓將會變成空心圓。
 
      ![Jupyter Notebook 工作的狀態](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Jupyter.Job.Status.png "Status of a Jupyter notebook job")
 
@@ -244,7 +244,7 @@
 
 * [概觀：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 * [在 HDInsight 叢集上佈建 Spark](hdinsight-apache-spark-provision-clusters.md)
-* [在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
+* [執行 HDInsight 中使用 Spark 與 BI 工具的互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
 * [在 HDInsight 中使用 Spark 建置機器學習應用程式](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 * [在 HDInsight 中使用 Spark 建置即時串流應用程式](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](hdinsight-apache-spark-resource-manager.md)
@@ -259,6 +259,7 @@
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/ 
+
 
 
 

@@ -21,12 +21,12 @@
 [AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
 
 ##概觀
-本主題說明如何將推播通知傳送給任何已註冊之 iOS 裝置上的驗證使用者。 不同於先前的 [新增推播通知給您的應用程式] 教學課程，本教學課程會變更您的行動服務要求用戶端才能向通知中心註冊推播通知之前，必須驗證使用者。 此外也會修改註冊，以根據指派的使用者識別碼新增標記。 最後會更新伺服器指令碼，而僅將通知傳送給已驗證的使用者，而不是所有的註冊。
+本主題說明如何將推播通知傳送給任何已註冊之 iOS 裝置上的驗證使用者。 不同於先前 [Add push notifications to your app] 教學課程，本教學課程會變更您的行動服務要求用戶端才能向通知中心註冊推播通知之前，必須驗證使用者。 此外也會修改註冊，以根據指派的使用者識別碼新增標記。 最後會更新伺服器指令碼，而僅將通知傳送給已驗證的使用者，而不是所有的註冊。
 
 本教學課程將逐步引導您完成下列程序：
 
 1. [更新服務以要求註冊的驗證]
-2. [更新以在註冊前先登入應用程式]
+2. [更新應用程式以在註冊前先登入]
 3. [測試應用程式]
  
 本教學課程支援 Windows 市集和 Windows Phone 市集應用程式。
@@ -35,9 +35,9 @@
 
 在開始本教學課程之前，您必須已完成下列行動服務教學課程：
 
-+ [將驗證新增至您的應用程式]<br/>將登入需求加入至 TodoList 範例應用程式。
++ [Add authentication to your app]<br/>將登入需求加入至 TodoList 範例應用程式。
 
-+ [新增推播通知至您的應用程式]<br/>使用通知中心設定推播通知的 TodoList 範例應用程式。 
++ [Add push notifications to your app]<br/>使用通知中心設定推播通知的 TodoList 範例應用程式。 
 
 在您完成這兩個教學課程後，您即可防止未經授權的使用者從您的行動服務註冊推播通知。
 
@@ -94,3 +94,4 @@
 <!-- URLs. -->
 [Add authentication to your app]: ../mobile-services-windows-store-dotnet-get-started-users.md
 [Add push notifications to your app]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md 
+

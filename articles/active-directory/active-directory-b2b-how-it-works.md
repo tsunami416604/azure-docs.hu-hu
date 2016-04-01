@@ -16,7 +16,7 @@
    ms.date="10/27/2015"
    ms.author="viviali"/>
 
-# Azure Active Directory (Azure AD) B2B 共同作業預覽: 它的運作方式
+# Azure Active Directory (Azure AD) B2B 共同作業預覽 ︰ 它的運作方式
 Azure AD B2B 共同作業是根據邀請和兌換模型。 您提供您想要合作的合作對象電子郵件地址，以及您想要讓他們使用的應用程式。 Azure AD 會以電子郵件將具有連結的邀請傳送給他們。 合作夥伴使用者遵循連結並且會收到提示以使用其 Azure AD 帳戶登入或註冊新的 Azure AD 帳戶。
 
 1. 您的系統管理員讓夥伴使用者上傳 [結構化的.csv 檔案](active-directory-b2b-references-csv-file-format.md) 使用 Azure 入口網站。
@@ -41,4 +41,5 @@ Azure AD B2B 共同作業是根據邀請和兌換模型。 您提供您想要合
  - [外部使用者權杖格式](active-directory-b2b-references-external-user-token-format.md)
  - [外部使用者物件屬性變更](active-directory-b2b-references-external-user-object-attribute-changes.md)
  - [目前的預覽版本限制](active-directory-b2b-current-preview-limitations.md)
+
 

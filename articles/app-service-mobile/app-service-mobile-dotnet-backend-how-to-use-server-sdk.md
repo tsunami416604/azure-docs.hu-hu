@@ -30,7 +30,7 @@
 
 ## 參考文件
 
-伺服器 SDK 的參考文件位於此處: [Azure 行動應用程式的.NET 參考](https://msdn.microsoft.com/library/azure/dn961176.aspx)。
+伺服器 SDK 的參考文件位於此處 ︰ [Azure 行動應用程式的.NET 參考](https://msdn.microsoft.com/library/azure/dn961176.aspx)。
 
 ## <a name="create-app"></a>如何：為您的行動應用程式建立 .NET 後端
 
@@ -64,7 +64,7 @@
 
 6. 按一下 [ **確定**。 您的應用程式會建立並且在 [方案總管] 中顯示。
 
-## <a name="install-sdk"></a>做法：下載並初始化 SDK
+## <a name="install-sdk"></a>如何：下載並初始化 SDK
 
 一套 SDK 可在 [NuGet.org]。 此封裝包含開始使用 SDK 所需的基本功能。 若要初始化 SDK，您需要上執行的動作 **HttpConfiguration** 物件。 
 
@@ -155,7 +155,7 @@
 
 ## 做法：定義資料表控制器
 
-資料表控制器提供資料表型資料存放區 (例如 SQL Database 或 Azure 資料表儲存體) 中實體資料的存取權。 資料表控制器繼承自 **TableController** 泛型類別，其中的泛型型別是代表資料表結構描述，如下所示的模型中的實體:
+資料表控制器提供資料表型資料存放區 (例如 SQL Database 或 Azure 資料表儲存體) 中實體資料的存取權。 資料表控制器繼承自 **TableController** 泛型類別，其中的泛型型別是代表資料表結構描述，如下所示的模型中的實體 ︰
 
     public class TodoItemController : TableController<TodoItem>
     {  
@@ -185,7 +185,7 @@
 
         using Microsoft.Azure.Mobile.Server.Config;
 
-4. 套用 **MobileAppControllerAttribute** API 控制器類別定義，如下列範例所示:
+4. 套用 **MobileAppControllerAttribute** API 控制器類別定義，如下列範例所示 ︰
 
         [MobileAppController] 
         public class CustomController : ApiController
@@ -193,7 +193,7 @@
               //...
         }
 
-4. 在 App_Start/Startup.MobileApp.cs 檔案中，新增呼叫至  **MapApiControllers** 擴充方法，如下列範例所示:
+4. 在 App_Start/Startup.MobileApp.cs 檔案中，新增呼叫至  **MapApiControllers** 擴充方法，如下列範例所示 ︰
 
         new MobileAppConfiguration()
             .MapApiControllers()
@@ -210,7 +210,7 @@
 
 1. 在 Visual Studio 中安裝 [Microsoft.Azure.Mobile.Server.Authentication] 封裝。 
 
-2. Startup.cs 專案檔案中新增下列程式碼行的開頭 **組態** 方法:
+2. Startup.cs 專案檔案中新增下列程式碼行的開頭 **組態** 方法 ︰
 
         app.UseMobileAppAuthentication(config);
 
@@ -220,7 +220,7 @@
 
 若要深入了解如何驗證您的行動應用程式後端的用戶端，請參閱 [將驗證新增至您的應用程式](app-service-mobile-ios-get-started-users.md)。
 
-## <a name="custom-auth"></a>做法：針對應用程式使用自訂驗證
+## <a name="custom-auth"></a>如何：針對應用程式使用自訂驗證
 
 如果您不想要使用其中一個 App Service 驗證/授權提供者，您可以選擇提供自己的登入系統。 若要這樣做，請安裝 [Microsoft.Azure.Mobile.Server.Login] 封裝。
 
@@ -272,7 +272,7 @@
  
 3. 重複這個步驟以安裝 `Microsoft.Azure.NotificationHubs` 封裝，其中包含通知中樞用戶端程式庫。 
 
-2. 在 App_Start/Startup.MobileApp.cs，並新增呼叫 **AddPushNotifications** 擴充方法，在初始化期間，如下列所示:
+2. 在 App_Start/Startup.MobileApp.cs，並新增呼叫 **AddPushNotifications** 擴充方法，在初始化期間，如下列所示 ︰
 
         new MobileAppConfiguration()
             // other features...
@@ -304,9 +304,9 @@
 
 目前您可以使用「通知中樞」用戶端將推播通知傳送到已註冊的裝置。 如需詳細資訊，請參閱 [將推播通知新增至您的應用程式](app-service-mobile-ios-get-started-push.md)。 若要深入了解所有您可以使用通知中心，請參閱 [通知中心概觀](../notification-hubs/notification-hubs-overview.md)。
 
-##<a name="tags"></a>做法：將標記新增至裝置安裝以啟用發送到標記
+##<a name="tags"></a>如何：將標記加入裝置安裝中以啟用推送至標記
 
-依照上述 **How to: 定義自訂的 API 控制器**, ，您會想要將設定為使用通知中心，將標記加入至特定裝置安裝在您的後端上的自訂 API。 請確定您已傳遞儲存在用戶端本機儲存體的裝置識別碼和您想加入的標記 (可省略，因為您也可以直接在您的後端指定標記)。 下列程式碼片段應新增至您的控制器，才能使用通知中樞新增標記至裝置安裝識別碼。
+依照上述 **How to ︰ 定義自訂的 API 控制器**, ，您會想要將設定為使用通知中心，將標記加入至特定裝置安裝在您的後端上的自訂 API。 請確定您已傳遞儲存在用戶端本機儲存體的裝置識別碼和您想加入的標記 (可省略，因為您也可以直接在您的後端指定標記)。 下列程式碼片段應新增至您的控制器，才能使用通知中樞新增標記至裝置安裝識別碼。
 
 使用 [Azure 通知中樞 NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) ([參考](https://msdn.microsoft.com/library/azure/mt414893.aspx)):
 
@@ -341,7 +341,7 @@ Azure App Service 提供了數個適用於 ASP.NET 應用程式的偵錯和疑�
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");  
 
-### <a name="local-debug"></a>本機偵錯使用驗證
+### <a name="local-debug"></a>使用驗證進行本機偵錯
 
 您可以在將變更發佈至雲端之前，在本機執行您的應用程式以測試變更。 許多應用程式，則只需按 *F5* Visual Studio 中。 不過，使用驗證時有一些其他考量。
 
@@ -368,4 +368,5 @@ Azure App Service 提供了數個適用於 ASP.NET 應用程式的偵錯和疑�
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+
 

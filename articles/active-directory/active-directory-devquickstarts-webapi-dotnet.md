@@ -137,8 +137,9 @@ public IEnumerable<TodoItem> Get()
 
 最後，清除、建置並執行每個專案！  如果您還沒有這麼做，現在正是使用 *.onmicrosoft.com 網域在租用戶中建立新使用者的好時機。  使用該名使用者登入待辦事項清單用戶端，並在使用者的待辦清單中加入一些工作。
 
-提供完整的範例 (不含您的設定值) 是供您參考 [這裡](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)。  您可以立即移至您要嘗試更多其他身分識別案例:
+提供完整的範例 （不含您的設定值） 是供您參考 [這裡](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)。  您可以立即移至您要嘗試更多其他身分識別案例 ︰
 
 [使用 Azure AD 建置 .NET 原生用戶端 >>](../active-directory-devquickstarts-native-dotnet.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
+

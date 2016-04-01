@@ -34,7 +34,7 @@ ms.author="adegeo"/>
 
 啟動工作也可以在重新開機之間執行數次。 例如，每次角色回收時，都會執行啟動工作，但每次角色回收不一定會重新開機。 啟動工作的撰寫方式，應該要可讓它們順利執行多次。
 
-啟動工作的結尾必須 **errorlevel** (或結束代碼) 為零完成啟動程序。 如果啟動工作會結束有非零 **errorlevel**, ，角色將不會啟動。
+啟動工作的結尾必須 **errorlevel** （或結束代碼） 為零完成啟動程序。 如果啟動工作會結束有非零 **errorlevel**, ，角色將不會啟動。
 
 
 ## 角色啟動順序
@@ -87,9 +87,9 @@ EXIT /B 0
 
 ## 工作屬性說明
 
-以下說明的屬性 **工作** 中的項目 [ServiceDefinition.csdef] 檔案:
+以下說明的屬性 **工作** 中的項目 [ServiceDefinition.csdef] 檔案 ︰
 
-**命令列** -指定啟動工作的命令列:
+**命令列** -指定啟動工作的命令列 ︰
 
 - 此命令使用選擇性命令列參數，可開始啟動工作。
 - 這通常是 .cmd 或 .bat 批次檔的檔名。
@@ -101,7 +101,7 @@ EXIT /B 0
 - **限制**  
 啟動工作執行之角色的相同權限。 當 **executionContext** 屬性 [Runtime] 項目也是 **有限**, ，則會使用使用者權限。
 
-- **提高權限**  
+- **elevated**  
 以系統管理員權限執行啟動工作。 這可讓啟動工作安裝程式、變更 IIS 組態、執行登錄變更，以及其他系統管理員層級的工作，且不會提高角色本身的權限等級。  
 
 > [AZURE.NOTE] 啟動工作的權限層級不需要是指角色本身相同。
@@ -133,7 +133,7 @@ RoleEnvironment 類別的成員為基礎的環境變數不使用 **值** 屬性 
 
 
 
-例如，若要建立環境變數是 「**true**」 時在計算模擬器中，執行個體的和 」**false**」 定域機組中執行時，使用下列 [Variable] 和 [RoleInstanceValue] 項目:
+例如，若要建立環境變數是 「**true**」 時在計算模擬器中，執行個體的和 」**false**」 定域機組中執行時，使用下列 [Variable] 和 [RoleInstanceValue] 項目 ︰
 
 ```xml
 <Startup>
@@ -168,3 +168,4 @@ RoleEnvironment 類別的成員為基礎的環境變數不使用 **值** 屬性 
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
+

@@ -19,7 +19,7 @@
 
 # 教學課程：Azure Active Directory 與 Questetra BPM Suite 整合
 
-本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 Questetra BPM 套件。<br>與 Azure AD 整合 Questetra BPM 套件可以提供下列優點: 
+本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 Questetra BPM 套件。<br>與 Azure AD 整合 Questetra BPM 套件可以提供下列優點 ︰ 
 
 - 您可以在 Azure AD 中控制可存取 Questetra BPM Suite 的人員。 
 - 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Questetra BPM Suite (單一登入)
@@ -27,7 +27,7 @@
 
 如果您想要知道更多詳細與 Azure AD 的 SaaS 應用程式整合，請參閱 [什麼是應用程式存取和單一登入與 Azure Active Directory](active-directory-appssoaccess-whatis.md)。
 
-## 先決條件 
+## 必要條件 
 
 若要設定 Azure AD 與 Questetra BPM Suite 整合，您需要以下項目：
 
@@ -46,7 +46,7 @@
  
 ## 案例描述
 此教學課程的目標是讓您在測試環境中測試 Azure AD 單一登入。 <br>
-本教學課程中說明的案例包含三個主要建置區塊:
+本教學課程中說明的案例包含三個主要建置區塊 ︰
 
 1. 從資源庫加入 Questetra BPM Suite 
 2. 設定並測試 Azure AD 單一登入
@@ -58,18 +58,18 @@
 **若要從資源庫新增 Questetra BPM Suite，請執行下列步驟：**
 
 1. 在 **Azure 管理入口網站**, ，在左的導覽窗格中，按一下 [ **Active Directory**。 <br><br>
-![Active] Directory[] 1
+![Active Directory][1]
 
 2. 從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
 3. 若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。<br><br>
-![應用程式][] 2
+![應用程式][2]
 4. 按一下 [ **新增** 頁面的底部。<br><br>
-![應用程式][] 3
+![應用程式][3]
 5. 在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。<br><br>
-![應用程式][] 4
+![應用程式][4]
 6. 在 [搜尋] 方塊中，輸入 **Questetra BPM 套件**。<br>
-![應用程式][] 5
+![應用程式][5]
 7. 在 [結果] 窗格中，選取 **Questetra BPM 套件**, ，然後按一下 [ **完成** 加入應用程式。<br>
 
 
@@ -77,7 +77,7 @@
 ##  設定並測試 Azure AD 單一登入
 本節的目標是說明如何以名為 "Britta Simon" 的測試使用者為基礎，使用 Questetra BPM Suite 來設定及測試 Azure AD 單一登入。
 
-單一登入若要運作，Azure AD 必須知道 Questetra BPM Suite 與 Azure AD 中互相對應的使用者。 換句話說，Azure AD 使用者和 Questetra BPM Suite 中的相關使用者之間必須建立連結關聯性。<br>
+單一登入若要運作，Azure AD 必須知道 Questetra BPM Suite 與 Azure AD 中互相對應的使用者。 換句話說，必須建立 Azure AD 使用者和 Questetra BPM 套件中的相關的使用者之間的連結關聯性。<br>
 藉由指定的值建立此連結關聯性 **使用者名稱** 在 Azure AD 中的值為 **Username** Questetra BPM 套件中。
  
 若要使用 Questetra BPM Suite 設定並測試 Azure AD 單一登入，您需要完成下列建置組塊：
@@ -108,7 +108,7 @@
 5. 若要開啟 **SingleSignOnSAML** 頁面上，按一下 **SSO (SAML)**。 <br><br> ![Azure AD 單一登入][11]
 
 
-6. 在 Azure 網站中，在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟: <br><br>![設定應用程式設定][13]
+6. 在 Azure 網站中，在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟 ︰ <br><br>![設定應用程式設定][13]
  
     a. 在您 **Questetra BPM 套件** 公司網站，在預存程序資訊] 區段中，複製 **ACS URL**, ，然後將它貼入 **登入 URL** 文字方塊。
 
@@ -122,7 +122,7 @@
 7. 在 **Questetra BPM 套件在設定單一登入** 頁面上，按一下 **下載憑證**, ，然後將儲存在本機電腦上的憑證檔案。<br><br>![設定單一登入][14]
 
 
-8. 在您 **Questetra BPM 套件** 公司網站中，執行下列步驟: <br><br>![設定單一登入][15]
+8. 在您 **Questetra BPM 套件** 公司網站中，執行下列步驟 ︰ <br><br>![設定單一登入][15]
 
     a. 選取 **啟用單一登入**。
      
@@ -132,7 +132,7 @@
 
     d. 在 Azure 入口網站中，複製 **單一登出服務 URL** 值，並接著將它貼入 **登出頁面 URL** 文字方塊。
 
-    e. 在 **NameID 格式** 文字方塊中，輸入 **urn: oasis: 名稱: tc: SAML:1.1:nameid-格式: emailAddress**。
+    e. 在 **NameID 格式** 文字方塊中，輸入 **urn: oasis ︰ 名稱 ︰ tc: SAML:1.1:nameid-格式 ︰ emailAddress**。
 
 
     f. Create a base-64 encoded file from your downloaded certificate. 
@@ -168,7 +168,7 @@
 4. 若要開啟 **新增使用者** ] 對話方塊的底部工具列上，按一下 [ **新增使用者**。 
 <br><br>![建立 Azure AD 測試使用者][102] 
 
-5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟:
+5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![建立 Azure AD 測試使用者][103]
  
     a. 做為 **使用者類型**, ，請選取 **貴組織中的新使用者**。
@@ -176,7 +176,7 @@
     b. 在 [使用者名稱 **文字方塊**, ，型別 **britta Simon**。
 
     c. 按 [下一步]。
-6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟: 
+6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟 ︰ 
 <br><br>![建立 Azure AD 測試使用者][104] 
   
     a. 在 **名字** 文字方塊中，輸入 **Britta**。 
@@ -192,7 +192,7 @@
 7. 在 **取得暫時密碼** 對話方塊頁面上，按一下 [ **建立**。
 <br><br>![建立 Azure AD 測試使用者][105]  
 
-8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟:
+8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![建立 Azure AD 測試使用者][106]   
   1. 請記下的值 **新密碼**。
   2. 按一下 [ **完整**。   
@@ -206,7 +206,7 @@
 
 1.  以系統管理員身分登入您的 Questetra BPM Suite 公司網站。
 2.  移至 **系統設定 > 使用者清單 > 新的使用者**。 
-3.  在 [新使用者] 對話方塊中，執行下列步驟: <br><br>![建立測試使用者][300] 
+3.  在 [新使用者] 對話方塊中，執行下列步驟 ︰ <br><br>![建立測試使用者][300] 
 
     a. 在 **名稱** 文字方塊中，在 Azure AD 中輸入 Britta 的使用者名稱。
 
@@ -286,3 +286,4 @@
 [205]: ./media/active-directory-saas-questetra-bpm-suite/questera_bpm_suite_12.png
 
 [300]: ./media/active-directory-saas-questetra-bpm-suite/questera_bpm_suite_11.png 
+

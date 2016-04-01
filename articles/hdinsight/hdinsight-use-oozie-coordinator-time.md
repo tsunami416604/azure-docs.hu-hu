@@ -54,12 +54,12 @@ Apache Oozie 是可管理 Hadoop 工作的工作流程/協調系統。 它可與
 
 2.  Sqoop 動作會將 HiveQL 動作的輸出匯出至 Azure SQL Database 中的資料表。 如需 Sqoop 的詳細資訊，請參閱 [搭配 HDInsight 使用 Sqoop][hdinsight-use-sqoop]。
 
-> [AZURE.NOTE] 支援在 HDInsight 叢集上的 Oozie 版本，請參閱 [的 HDInsight 所提供叢集版本的新功能?][hdinsight-versions]。
+> [AZURE.NOTE] 支援在 HDInsight 叢集上的 Oozie 版本，請參閱 [的 HDInsight 所提供叢集版本的新功能？][hdinsight-versions]。
 
 > [AZURE.NOTE] 本教學課程將執行於 HDInsight 2.1 和 3.0 版。 本文並未使用 HDInsight 模擬器進行測試。
 
 
-##<a id="prerequisites"></a>先決條件
+##<a id="prerequisites"></a>必要條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -102,7 +102,7 @@ Oozie 工作流程定義會以 hPDL 撰寫 (一種 XML 程序定義語言)。 �
 3.  **Log4j 記錄檔的位置**。 欄位分隔符號為 ","。 預設的行分隔符號為 "\n"。 Hive 外部資料表可讓您在需要執行 Oozie 工作流程多次時，避免資料檔案從原始位置遭到移除。
 3. **INSERT OVERWRITE 陳述式** 計算 log4j Hive 資料表，並從每個記錄層級類型的出現次數就會將輸出儲存至 Azure Blob 儲存體位置。
 
-**請注意**: 這是已知的 Hive 路徑問題。 此問題會在您提交 Oozie 工作時發生。 修正此問題的指示位於 TechNet Wiki: [HDInsight Hive 錯誤: 無法重新命名][technetwiki-hive-error]。
+**請注意**︰ 這是已知的 Hive 路徑問題。 此問題會在您提交 Oozie 工作時發生。 修正此問題的指示位於 TechNet Wiki: [HDInsight Hive 錯誤 ︰ 無法重新命名][technetwiki-hive-error]。
 
 **定義要由工作流程呼叫的 HiveQL 指令碼檔案**
 
@@ -189,9 +189,9 @@ Oozie 工作流程定義會以 hPDL 撰寫 (一種 XML 程序定義語言)。 �
 
     <table border = "1">
     <tr><th>工作流程變數</th><th>說明</th></tr>
-    <tr><td>${jobTracker}</td><td>指定 Hadoop 工作追蹤器的 URL。 使用 <strong>jobtrackerhost:9010</strong> 在 HDInsight 叢集 3.0 和 2.0 版。</td></tr>
-    <tr><td>${nameNode}</td><td>指定 Hadoop 名稱節點的 URL。 使用預設檔案系統 wasb: / / 位址，例如 <i>wasb: / / (& s) lt; containerName (& s) gt; @& lt; a g e (& s) gt;。windows.net</i>.</td></tr>
-    <tr><td>${queueName}</td><td>指定要將工作提交過去的佇列名稱。 使用 <strong>預設值</strong>.</td></tr>
+    <tr><td>${jobTracker}</td><td>指定 Hadoop 工作追蹤器的 URL。 使用 <strong>jobtrackerhost: 9010</strong> 在 HDInsight 叢集 3.0 和 2.0 版。</td></tr>
+    <tr><td>${nameNode}</td><td>指定 Hadoop 名稱節點的 URL。 使用預設檔案系統 wasb: / 位址，例如 <i>wasb: / / （& s) lt; containerName （& s) gt; @& lt; a g e （& s) gt;。windows.net</i>。</td></tr>
+    <tr><td>${queueName}</td><td>指定要將工作提交過去的佇列名稱。 使用 <strong>預設</strong>。</td></tr>
     </table>
 
 
@@ -228,13 +228,13 @@ Oozie 工作流程定義會以 hPDL 撰寫 (一種 XML 程序定義語言)。 �
 
     定義檔中使用五種變數：
 
-    | 變數          | 說明 |
-    | ------------------|------------ |
-    | ${coordFrequency} | 工作暫停時間。 頻率一律以分鐘表示。 |
-    | ${coordStart}     | 工作開始時間。 |
-    | ${coordEnd}       | 工作結束時間。 |
-    | ${coordTimezone}  | Oozie 在固定時區處理協調器工作，不受日光節約時間影響 (通常使用 UTC 表示)。 此時區稱為「Oozie 處理時區」。 |
-    | ${wfPath}         | workflow.xml 的路徑。  如果工作流程檔案名稱不是預設檔案名稱 (workflow.xml)，您必須加以指定。 |
+  	| 變數          | 說明 |
+  	| ------------------|------------ |
+  	| ${coordFrequency} | 工作暫停時間。 頻率一律以分鐘表示。 |
+  	| ${coordStart}     | 工作開始時間。 |
+  	| ${coordEnd}       | 工作結束時間。 |
+  	| ${coordTimezone}  | Oozie 在固定時區處理協調器工作，不受日光節約時間影響 (通常使用 UTC 表示)。 此時區稱為「Oozie 處理時區」。 |
+  	| ${wfPath}         | workflow.xml 的路徑。  如果工作流程檔案名稱不是預設檔案名稱 (workflow.xml)，您必須加以指定。 |
 
 2. 將檔案儲存為 **C:\Tutorials\UseOozie\coordinator.xml** 使用 ANSI (ASCII) 編碼方式。 (如果您的文字編輯器沒有此選項，請使用「記事本」)。
 
@@ -378,7 +378,7 @@ HDInsight 會使用 Azure Blob 儲存體來儲存資料。 wasb: / / 是 Microso
 
 ##<a id="run"></a>執行 Oozie 專案
 
-Azure PowerShell 目前並未提供任何用以定義 Oozie 工作的 Cmdlet。 您可以使用 **Invoke-restmethod** cmdlet 來叫用 Oozie web 服務。 Oozie Web 服務 API 是 HTTP REST JSON API。 如需 Oozie web 服務 API 的詳細資訊，請參閱 [Apache Oozie 4.0 文件][apache-oozie-400] (適用於 HDInsight 叢集 3.0 版) 或 [Apache Oozie 3.3.2 文件][apache-oozie-332] (適用於 HDInsight 叢集 2.1 版)。
+Azure PowerShell 目前並未提供任何用以定義 Oozie 工作的 Cmdlet。 您可以使用 **Invoke-restmethod** cmdlet 來叫用 Oozie web 服務。 Oozie Web 服務 API 是 HTTP REST JSON API。 如需 Oozie web 服務 API 的詳細資訊，請參閱 [Apache Oozie 4.0 文件][apache-oozie-400] （適用於 HDInsight 叢集 3.0 版） 或 [Apache Oozie 3.3.2 文件][apache-oozie-332] （適用於 HDInsight 叢集 2.1 版）。
 
 **提交 Oozie 工作**
 
@@ -684,7 +684,7 @@ Azure PowerShell 目前並未提供任何用以定義 Oozie 工作的 Cmdlet。 
     $conn.close()
 
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 在本教學課程中，您已了解如何定義 Oozie 工作流程和 Oozie 協調器，以及如何使用 Azure PowerShell 來執行 Oozie 協調器工作。 若要深入了解，請參閱下列文章：
 
 - [開始使用 HDInsight][hdinsight-get-started]
@@ -744,4 +744,5 @@ Azure PowerShell 目前並未提供任何用以定義 Oozie 工作的 Cmdlet。 
 [img-runworkflow-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png  
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+
 

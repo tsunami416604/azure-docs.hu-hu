@@ -221,3 +221,4 @@
 - 使用 [第 2 階段](virtual-machines-workload-high-availability-LOB-application-phase2.md) 繼續設定此工作負載。
 
 
+

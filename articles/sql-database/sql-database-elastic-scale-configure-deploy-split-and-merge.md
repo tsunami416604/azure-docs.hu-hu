@@ -24,15 +24,15 @@
 3. 使用下列命令，將最新的分割合併封裝下載到目前的目錄：
 `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge`  
 
-上述步驟將分割合併檔案下載至目前的目錄。 檔案會放在名為 **microsoft.azure.sqldatabase.elasticscale.service.splitmerge.x.x.xxx.x** 其中 *x.x.xxx.x* 反映版本號碼。 找出分割合併服務檔案，在 **content\splitmerge\service** 子目錄，分割合併 PowerShell 指令碼 (和必要的用戶端.dll 檔) 中 **content\splitmerge\powershell** 子目錄。
+上述步驟將分割合併檔案下載至目前的目錄。 檔案會放在名為 **microsoft.azure.sqldatabase.elasticscale.service.splitmerge.x.x.xxx.x** 其中 *x.x.xxx.x* 反映版本號碼。 找出分割合併服務檔案，在 **content\splitmerge\service** 子目錄，分割合併 PowerShell 指令碼 （和必要的用戶端.dll 檔） 中 **content\splitmerge\powershell** 子目錄。
 
-## 先決條件
+## 必要條件
 
 1. 建立用來作為分割合併狀態資料庫的 Azure SQL DB 資料庫。 移至 [Azure 入口網站](https://ms.portal.azure.com)。 建立新 **SQL Database**。 填入資料庫名稱，並建立新的使用者名稱和密碼。 請務必記錄名稱和密碼，以供稍後使用。
 
 2. 請確定您的 Azure SQL DB 伺服器允許 Azure 服務進行連接。 在網站中，在 **防火牆設定**, ，請確認 **允許存取 Azure 服務** 設定設為 **上**。 按一下儲存圖示。
 
-    ![允許的服務][] 1
+    ![允許的服務][1]
 
 3. 建立要用於診斷輸出的 Azure 儲存體帳戶。 移至 Azure 入口網站。 在左列中，按一下 [ **新增**, ，按一下 [ **資料 + 儲存體**, ，然後 **儲存體**。
 
@@ -65,7 +65,7 @@
 
 ### 建立自我簽署憑證
 
-建立新的目錄，並從此目錄執行下列命令使用 [Visual Studio 的開發人員命令提示字元](http://msdn.microsoft.com/library/ms229859.aspx) 視窗:
+建立新的目錄，並從此目錄執行下列命令使用 [Visual Studio 的開發人員命令提示字元](http://msdn.microsoft.com/library/ms229859.aspx) 視窗 ︰
 
     makecert ^
     -n "CN=*.cloudapp.net" ^
@@ -128,13 +128,13 @@ Web 角色：
 3. 按一下 [ **儀表板**。
 4. 選擇預備環境，然後按一下 [ **上傳新的預備部署**。
 
-    ![預備][] 3
+    ![預備][3]
 
 5. 在對話方塊中，輸入部署的標籤。 封裝] 和 [設定] 中，按一下 [從本機] 並選擇 **SplitMergeService.cspkg** 檔案和您稍早設定的.cscfg 檔案。
 6. 請確認核取方塊 **即使一個或多個角色包含單一執行個體部署** 已核取。
 7. 點按右下方的勾號按鈕，開始進行部署。 預期會需要幾分鐘才能完成。
 
-![上傳][] 4
+![上傳][4]
 
 
 ## 部署疑難排解
@@ -164,8 +164,8 @@ Web 角色：
 
 內含的指令碼檔案：
 
-1. **SetupSampleSplitMergeEnvironment.ps1** -設定分割/合併的測試資料層 (請參閱下表中的詳細說明)
-2. **ExecuteSampleSplitMerge.ps1** -執行測試的測試作業資料層 (請參閱下表中的詳細說明)
+1. **SetupSampleSplitMergeEnvironment.ps1** -設定分割/合併的測試資料層 （請參閱下表中的詳細說明）
+2. **ExecuteSampleSplitMerge.ps1** -執行測試的測試作業資料層 （請參閱下表中的詳細說明）
 3. **GetMappings.ps1** – 最上層範例指令碼會印出目前分區對應的狀態。
 4. **ShardManagement.psm1**  – 包裝 ShardManagement API 的協助程式指令碼
 5. **SqlDatabaseHelpers.psm1** – 協助程式指令碼來建立及管理 SQL 資料庫
@@ -335,4 +335,5 @@ Web 角色：
 [4]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/upload.png
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
+
 

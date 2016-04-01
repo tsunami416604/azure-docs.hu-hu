@@ -152,7 +152,8 @@ Azure Active Directory (Azure AD) 包括您的目錄的安全性、活動和稽�
 
 ### 取得聯繫
 
-電子郵件 [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) 意見反應、 說明，或您可能會有任何問題!
+電子郵件 [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) 意見反應、 說明，或您可能會有任何問題 ！
 
 > [AZURE.TIP] 如需有關 Azure AD 報告的詳細文件，請參閱 [檢視存取和使用方式報告](active-directory-view-access-usage-reports.md)。
+
 

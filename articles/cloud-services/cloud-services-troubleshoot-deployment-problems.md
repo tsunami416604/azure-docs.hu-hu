@@ -35,7 +35,7 @@
 入口網站中顯示的網站 URL 連結未包含連接埠。 網站的預設連接埠為 80。 不過，如果您的應用程式設定為執行於不同的連接埠，您必須在存取網站時將正確的連接埠新增至 URL。
 
 1. 在 Azure 傳統入口網站中，按一下您的雲端服務部署。
-2. 在 **屬性** 窗格 Azure 傳統入口網站，檢查角色執行個體 (在下方輸入端點) 的連接埠。
+2. 在 **屬性** 窗格 Azure 傳統入口網站，檢查角色執行個體 （在下方輸入端點） 的連接埠。
 3. 如果沒有該連接埠 *80*, ，為 URL 加入正確的連接埠值，當您存取應用程式。 若要指定非預設連接埠，請輸入 URL，後面依序加上冒號 (:) 和不含空格的連接埠號碼。
 
 ## 問題：我的角色執行個體無故自行重新啟動
@@ -71,7 +71,7 @@
 ## 問題：我的應用程式停止運作
 
 1. 在 Azure 傳統入口網站中，按一下 [角色執行個體]。
-2. 在 **屬性** 窗格 Azure 傳統入口網站，請考慮下面狀況來解決您的問題:
+2. 在 **屬性** 窗格 Azure 傳統入口網站，請考慮下面狀況來解決您的問題 ︰
    * 如果最近停止角色執行個體 (您可以檢查的值 **中止計數**)，無法更新部署。 請等候並觀察角色執行個體是否會自行恢復運作。
    * 如果角色執行個體為 「 忙碌 」，請檢查您的應用程式程式碼，看看是否 [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) 處理事件。 您可能需要新增或修正處理此事件的程式碼。
    * 瀏覽的診斷資料及疑難排解案例部落格文章 [Azure PaaS Compute Diagnostics Data]。
@@ -84,4 +84,5 @@
 
 
 [Azure PaaS Compute Diagnostics Data]: http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx
+
 

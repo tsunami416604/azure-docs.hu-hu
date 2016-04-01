@@ -45,8 +45,8 @@
 執行下列步驟來檢視裝置元件的硬體狀態：
 
 1. 瀏覽至 **裝置**, ，選取特定的 StorSimple 裝置。 按一下以進入裝置層級功能表，然後按一下 [ **維護** ] 索引標籤。 
-2. 找出 **硬體狀態** 區段並選擇可用的元件 (如上面所述)。 只要按一下元件標籤之前的箭號即可展開清單並檢視各種裝置元件的狀態。 請參閱 [主要機箱的詳細的元件清單](#component-list-for-primary-enclosure-of-storsimple-device) 和 [EBOD 機箱的詳細的元件清單](#component-list-for-ebod-enclosure-of-storsimple-device)。
-2. 您可以使用下列色彩編碼配置來解譯元件狀態:
+2. 找出 **硬體狀態** 區段並選擇可用的元件 （如上面所述）。 只要按一下元件標籤之前的箭號即可展開清單並檢視各種裝置元件的狀態。 請參閱 [主要機箱的詳細的元件清單](#component-list-for-primary-enclosure-of-storsimple-device) 和 [EBOD 機箱的詳細的元件清單](#component-list-for-ebod-enclosure-of-storsimple-device)。
+2. 您可以使用下列色彩編碼配置來解譯元件狀態 ︰
     -  **綠色核取** – 代表 **狀況良好** 或 **確定** 元件。
     -  **黃色** – 表示中的元件 **警告** 狀態。
     -  **紅色驚嘆號** – 代表元件的 **失敗** 或 **需注意** 狀態。
@@ -133,4 +133,5 @@
 - 若要更換故障的硬體元件，請參閱 [StorSimple 硬體元件更換](storsimple-hardware-component-replacement.md)。
 
 - 如果持續發生裝置問題 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md)。
+
 

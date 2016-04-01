@@ -22,18 +22,18 @@
 
 了解如何使用 Azure 管理 Azure 資料湖分析帳戶、資料來源、使用者和工作。 若要使用其他工具查看管理主題，請按一下上方選取的索引標籤。
 
-**先決條件**
+**必要條件**
 
 開始進行本教學課程之前，您必須具備下列條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - **Azure CLI**。 請參閱 [安裝和設定 Azure CLI](xplat-cli.md)。
     - 下載並安裝 **發行前版本** [Azure CLI 工具](https://github.com/MicrosoftBigData/AzureDataLake/releases) 才能完成這個示範。
-- **驗證**, ，使用下列命令:
+- **驗證**, ，使用下列命令 ︰
 
         azure login
     如需有關如何使用工作或學校帳戶進行驗證的詳細資訊，請參閱 [從 Azure CLI 連接至 Azure 訂用帳戶](xplat-cli-connect.md)。
-- **切換至 Azure 資源管理員模式**, ，使用下列命令:
+- **切換至 Azure 資源管理員模式**, ，使用下列命令 ︰
 
         azure config mode arm
 
@@ -224,5 +224,6 @@ U-SQL 目錄是用來建構資料和程式碼，讓 U-SQL 指令碼可以共用�
 - [使用 Azure 入口網站開始使用資料湖分析](data-lake-analytics-get-started-portal.md)
 - [使用 Azure 入口網站管理 Azure 資料湖分析](data-lake-analytics-use-portal.md)
 - [使用 Azure 入口網站監視和疑難排解 Azure 資料湖分析作業](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
 
 

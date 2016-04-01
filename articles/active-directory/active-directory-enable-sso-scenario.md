@@ -36,7 +36,7 @@
 
 這兩個元件一起稱為 *身分識別與存取管理 (IAM)*, ，所定義的所在 [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) 群組做為 「*啟用適當的人員存取適當的資源，在右邊的安全性原則右基於時間*」。
 
-好，那麼問題是什麼？ 如果是 IAM *未受管理* 且具有整合式解決方案:
+好，那麼問題是什麼？ 如果是 IAM *未受管理* 且具有整合式解決方案 ︰
 
 - 身分識別系統管理員需要個別建立和個別更新所有應用程式中的使用者帳戶，這是既重複又耗時的活動。
 
@@ -123,4 +123,5 @@ Azure AD 為您提供預先整合的報告與監控功能，可讓您知道可�
 ## 開始使用
 
 若要開始使用 Azure AD 整合應用程式，看看 [整合 Azure Active Directory 與應用程式快速啟動指南](active-directory-integrating-applications-getting-started.md)。
+
 

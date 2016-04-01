@@ -62,12 +62,12 @@ App Service 是大部分 Web 應用程式的最佳選擇。 部署和管理都�
 <!-- In this case, the best option is to combine compute hosting options, as the figure below shows.--
 
 <a name="fig4"></a>
-![] 07_CombineTechnologies[] 07_CombineTechnologies 
+![07_CombineTechnologies][07_CombineTechnologies] 
  
-**圖: 單一應用程式可以使用多個裝載選項。**
+**Figure: A single application can use multiple hosting options.**
 
-如圖所示，雲端服務 VM 在虛擬機器 VM 以外的個別雲端服務中執行。 不過，兩者可以有效通訊，因此以這種方式建立應用程式有時候是最好的選擇。
-[07_CombineTechnologies]:./media/fundamentals-application-models/ExecModels_07_CombineTechnologies.png
+As the figure illustrates, the Cloud Services VMs run in a separate cloud service from the Virtual Machines VMs. Still, the two can communicate quite efficiently, so building an app this way is sometimes the best choice.
+[07_CombineTechnologies]: ./media/fundamentals-application-models/ExecModels_07_CombineTechnologies.png
 !-->
 
 [App Service]: #tellmeas
@@ -80,4 +80,5 @@ App Service 是大部分 Web 應用程式的最佳選擇。 部署和管理都�
 * 深入了解 [應用程式服務](../app-service-web-overview.md)
 * 深入了解 [雲端服務](services/cloud-services/)
 * 深入了解 [虛擬機器](https://msdn.microsoft.com/library/azure/jj156143.aspx) 
+
 

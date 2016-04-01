@@ -26,7 +26,7 @@ StorSimple 會使用 [存放裝置階層處理](#automatic-storage-tiering) 來�
 
 StorSimple Update 2 中，您就可以找出適當的磁碟區做為 *在本機固定* 以確保主要資料保持本機裝置，並不會不層到雲端。 這可讓您在本機固定磁碟區執行對雲端延遲敏感的工作負載，例如 SQL 和虛擬機器工作負載，同時繼續使用雲端備份。 如需在本機固定磁碟區的詳細資訊，請參閱 [使用 StorSimple Manager 服務來管理磁碟區](storsimple-manage-volumes-u2.md)。 
 
-Update 2 也可讓您建立 StorSimple 虛擬裝置，可利用 Azure 進階儲存體所提供的低延遲及高效能。 如需 StorSimple 高階虛擬裝置的詳細資訊，請參閱 [部署和管理 Azure 中的 StorSimple 虛擬裝置](storsimple-virtual-device-u1.md)。 如需 Azure 儲存體帳戶的詳細資訊，請移至 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
+Update 2 也可讓您建立 StorSimple 虛擬裝置，可利用 Azure 進階儲存體所提供的低延遲及高效能。 如需 StorSimple 高階虛擬裝置的詳細資訊，請參閱 [部署和管理 Azure 中的 StorSimple 虛擬裝置](storsimple-virtual-device-u1.md)。 如需 Azure 儲存體帳戶的詳細資訊，請移至 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
 
 除了儲存體管理外，StorSimple 資料保護功能可讓您建立依需求和排程的備份，然後將其儲存在本機或雲端中。 備份採用累加快照的形式，這表示建立及還原備份更快速。 雲端快照在災害復原案例中至關重要，因為這些快照會取代次要儲存體系統 (例如磁帶備份)，並讓您將資料還原到資料中心或在必要時還原至其他網站。
 
@@ -99,7 +99,7 @@ StorSimple 裝置包括 SSD 和硬碟 HDD，並支援叢集和自動容錯移轉
 - 您可以在雲端中建立無限量的虛擬裝置，視需要將其開啟和關閉。 
 - 可協助您模擬災害復原、開發和測試案例中的內部部署環境，並可協助從備份進行項目層級的擷取。 
 
-利用 Update 2 和更新版本，StorSimple 虛擬裝置可在兩個模型中使用：8010 裝置 (先前稱為 1100 模型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 (Azure 進階儲存體會將資料儲存在 SSD 上，而標準儲存體會將資料儲存在 HDD 上。)請注意，您必須具有 Azure 進階儲存體帳戶才能使用進階儲存體。 如需有關高階儲存體的詳細資訊，請移至 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
+利用 Update 2 和更新版本，StorSimple 虛擬裝置可在兩個模型中使用：8010 裝置 (先前稱為 1100 模型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 (Azure 進階儲存體會將資料儲存在 SSD 上，而標準儲存體會將資料儲存在 HDD 上。)請注意，您必須具有 Azure 進階儲存體帳戶才能使用進階儲存體。 如需有關高階儲存體的詳細資訊，請移至 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
 
 如需有關 StorSimple 虛擬裝置的詳細資訊，請移至 [部署和管理 Azure 中的 StorSimple 虛擬裝置](storsimple-virtual-device-u1)。
 
@@ -151,7 +151,7 @@ StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管�
 
 如果發生損毀，或如果因為其他原因而必須還原資料，StorSimple Snapshot Manager 會在需要時將它以累加方式還原。 當您還原檔案、更換設備或將作業移到另一個站台時，資料還原不需要您將整個系統關閉。
 
-如需詳細資訊，請移至 [什麼是 StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+如需詳細資訊，請移至 [什麼是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)
 
 ## StorSimple Adapter for SharePoint
 
@@ -193,7 +193,7 @@ StorSimple 會隨著使用模式變更而調整並重新排列資料和儲存體
 
 ### 精簡佈建
 
-精簡佈建是一項虛擬化技術，讓可用的儲存空間超過實體資源。 與其預先保留足夠的儲存空間，StorSimple 會使用精簡佈建來配置剛好足夠的空間，以符合目前的需求。 雲端儲存體的彈性本質正好支援這種方法，因為 StorSimple 可以增加或減少雲端儲存體，以符合不斷變更的需求。 
+精簡佈建是一種虛擬化技術，精簡佈建中的可用儲存體會顯示超過實體資源。 與其預先保留足夠的儲存空間，StorSimple 會使用精簡佈建來配置剛好足夠的空間，以符合目前的需求。 雲端儲存體的彈性本質正好支援這種方法，因為 StorSimple 可以增加或減少雲端儲存體，以符合不斷變更的需求。 
 
 >[AZURE.NOTE] 在本機固定磁碟區不會精簡佈建。 建立磁碟區時，配置給本機專用磁碟區的儲存體會完整佈建。
 
@@ -277,4 +277,5 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
  
 
  
+
 

@@ -63,7 +63,7 @@
 ![在 RemoteApp 中發佈 Access](./media/remoteapp-anyapp/ra-anyapppublishaccess.png)
 
 
-1. 應用程式完成發佈之後，前往 **使用者存取** ] 索引標籤，新增所有需要存取您的應用程式的使用者。 輸入您使用者的使用者名稱 (電子郵件地址)，然後按一下 **儲存**。
+1. 應用程式完成發佈之後，前往 **使用者存取** ] 索引標籤，新增所有需要存取您的應用程式的使用者。 輸入您使用者的使用者名稱 （電子郵件地址），然後按一下 **儲存**。
 
 ![將使用者新增至 RemoteApp](./media/remoteapp-anyapp/ra-anyappaddusers.png)
 
@@ -80,7 +80,7 @@
 1. 請從發佈命令列介面 (cmd.exe) 開始。 在 **發佈** 索引標籤上，選取 **cmd**, ，然後按一下 [ **發佈 > 使用路徑發佈程式**。
 2. 輸入應用程式和路徑的名稱。 我們的目的，使用"File Explorer"做為名稱"%systemdrive%\windows\explorer.exe"做為路徑。
 ![發佈 cmd.exe 檔案。](./media/remoteapp-anyapp/ra-publishcmd.png)
-3. 現在，您需要建立 Azure [儲存體帳戶](../storage-create-storage-account.md)。 我們的命名為 "accessstorage"，因此請選擇對您有意義的名稱。 (以 misquote Highlander，可以有只有一個"accessstorage"。)
+3. 現在，您需要建立 Azure [儲存體帳戶](../storage-create-storage-account.md)。 我們的命名為 "accessstorage"，因此請選擇對您有意義的名稱。 （以 misquote Highlander，可以有只有一個"accessstorage"。）
 ![我們的 Azure 儲存體帳戶](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
 4. 現在，回到您的儀表板，以取得您儲存體的路徑 (端點位置)。 您將立即使用此項，因此請確定在某個位置複製它。
 ![儲存體帳戶路徑](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
@@ -118,4 +118,5 @@
 
 <!--Image references-->
  
+
 

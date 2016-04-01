@@ -64,7 +64,7 @@ Web 應用程式將所有使用者內容儲存在一組 UNC 共用上，此種�
 
 Web 應用程式對於暫存本機儲存體的兩種使用方式範例：暫存 ASP.NET 檔案的目錄和 IIS 壓縮檔案的目錄。 ASP.NET 編譯系統會使用 "Temporary ASP.NET Files" 目錄作為暫存編譯快取位置。 IIS 則使用 "IIS Temporary Compressed Files" 目錄來儲存壓縮回應輸出。 這兩種檔案使用方式 (和其他方式) 都會在 Web 應用程式中重新對應至每個應用程式的暫存本機儲存體。 此重新對應可確保功能如預期般繼續運作。
 
-在 Web 應用程式中的每個應用程式執行以隨機獨特的低權限背景工作處理序識別，稱為 「 應用程式集區身分識別 」，進一步的說明如下: [http://www.iis.net/learn/manage/configuring-security/application-pool-identities](http://www.iis.net/learn/manage/configuring-security/application-pool-identities)。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
+在 Web 應用程式中的每個應用程式執行以隨機獨特的低權限背景工作處理序識別，稱為 「 應用程式集區身分識別 」，進一步的說明如下 ︰ [http://www.iis.net/learn/manage/configuring-security/application-pool-identities](http://www.iis.net/learn/manage/configuring-security/application-pool-identities)。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
 
 <a name="multipleinstances"></a>
 ### 跨越多個執行個體的檔案存取
@@ -105,9 +105,10 @@ Web 應用程式可以繁衍和執行任意程式碼。 允許 Web 應用程式�
 
 登錄的寫入存取權已遭封鎖，其中包括任何每一使用者登錄機碼的存取。 從應用程式的觀點來看，因為應用程式可以在不同虛擬機器之間移轉，所以雲端環境中的登錄寫入存取權並不可靠。 Web 應用程式唯一可依賴的持續可寫入儲存體，就是儲存在 Web 應用程式 UNC 共用上的各應用程式內容目錄結構。 
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
  
  
+
 

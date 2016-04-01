@@ -75,12 +75,12 @@ Service Fabric SDK 包含一組豐富的架構以及用來建立應用程式的�
 6. 叫用 SDK 的部署命令來建立新的應用程式，並提供應用程式封裝的名稱和路徑。
 
     ```powershell  
-  發行 NewServiceFabricApplication-ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg-ApplicationName"fabric: / WordCount 」
+  Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
     ```
 
-    If all goes well, you should see output like the following:
+    如果順利執行，您應該會看到如下的輸出：
 
-    ![Deploy an application to the local cluster][deploy-app-to-local-cluster]
+    ![將應用程式部署至本機叢集][deploy-app-to-local-cluster]
 
 7. 若要查看應用程式執行動作，啟動瀏覽器並瀏覽至 [http://localhost:8081/wordcount/索引](http://localhost:8081/wordcount/index)。 您應該會看到如下的結果：
 
@@ -181,4 +181,5 @@ Service Fabric 會在應用程式推展於叢集時監視其健康狀態，進�
 [ps-getsfsvc-postupgrade]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc-PostUpgrade.png
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
+
 

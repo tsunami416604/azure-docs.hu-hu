@@ -53,7 +53,7 @@ DataFu 是搭配 Hadoop 使用的開放原始碼程式庫集合。 在這份文�
 
 本節中的步驟假設您已經熟悉在 HDInsight 上使用 Pig，且只提供 Pig Latin 陳述式，沒有提供如何搭配叢集使用它們的步驟。 如需有關如何搭配使用 Pig 與 HDInsight 的詳細資訊，請參閱 [搭配使用 Pig 與 HDInsight](hdinsight-use-pig.md)。
 
-> [AZURE.IMPORTANT] 當使用 DataFu 從 Pig 中，在以 Linux 為基礎的 HDInsight 叢集上，您必須先登錄下列 Pig Latin 陳述式的 jar 檔案:
+> [AZURE.IMPORTANT] 當使用 DataFu 從 Pig 中，在以 Linux 為基礎的 HDInsight 叢集上，您必須先登錄下列 Pig Latin 陳述式的 jar 檔案 ︰
 >
 > ```register wasb:///example/jars/datafu-1.2.0.jar```
 >
@@ -106,4 +106,5 @@ DataFu 是搭配 Hadoop 使用的開放原始碼程式庫集合。 在這份文�
 * [Apache DataFu Pig 指南](http://datafu.incubator.apache.org/docs/datafu/guide.html)。
 
 * [搭配 HDInsight 使用 Pig](hdinsight-use-pig.md)
+
 

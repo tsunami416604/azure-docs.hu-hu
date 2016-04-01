@@ -25,7 +25,7 @@
 -   選擇性建立一組可將訊息從待處理項目佇列移到主要佇列的「訊息幫浦」。
 -   協調關閉/錯誤的主要和次要 [MessagingFactory][] 執行個體。
 
-概括而言，此功能的運作方式如下：當主要實體的狀況良好時，不會發生任何行為變更。 當 [FailoverInterval][] 持續時間超過和不成功，主要實體所看到會在之後傳送非暫時性 [Istransient][] 或 [TimeoutException][], ，會發生下列行為:
+概括而言，此功能的運作方式如下：當主要實體的狀況良好時，不會發生任何行為變更。 當 [FailoverInterval][] 持續時間超過和不成功，主要實體所看到會在之後傳送非暫時性 [Istransient][] 或 [TimeoutException][], ，會發生下列行為 ︰
 
 1.  傳送至主要實體的作業會停用，而系統會 ping 主要實體，直到可以成功傳送 ping 為止。
 
@@ -87,7 +87,7 @@
 
 ## Ping
 
-Ping 訊息是空白 [BrokeredMessage][] 與其 [ContentType][] 屬性設定為 application/vnd.ms-服務匯流排-ping 和 [TimeToLive][] 值為 1 秒。 此 ping 服務匯流排中有一個特性: 伺服器永遠不會傳送 ping 要求的任何呼叫端時 [BrokeredMessage][]。 因此，您永遠都不必了解如何接收並忽略這些訊息。 每個實體 (唯一佇列或主題)，每個 [MessagingFactory][] 視為無法使用時，將會被 ping 每個用戶端的執行個體。 根據預設，這會每分鐘發生一次。 Ping 訊息會被視為一般的服務匯流排訊息，可能會導致頻寬和訊息的費用。 只要用戶端偵測到系統可以使用，訊息就會停止。
+Ping 訊息是空白 [BrokeredMessage][] 與其 [ContentType][] 屬性設定為 application/vnd.ms-服務匯流排-ping 和 [TimeToLive][] 值為 1 秒。 此 ping 服務匯流排中有一個特性 ︰ 伺服器永遠不會傳送 ping 要求的任何呼叫端時 [BrokeredMessage][]。 因此，您永遠都不必了解如何接收並忽略這些訊息。 每個實體 （唯一佇列或主題），每個 [MessagingFactory][] 視為無法使用時，將會被 ping 每個用戶端的執行個體。 根據預設，這會每分鐘發生一次。 Ping 訊息會被視為一般的服務匯流排訊息，可能會導致頻寬和訊息的費用。 只要用戶端偵測到系統可以使用，訊息就會停止。
 
 ## Syphon
 
@@ -128,3 +128,4 @@ Ping 訊息是空白 [BrokeredMessage][] 與其 [ContentType][] 屬性設定為 
   [ContentType]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx
   [TimeToLive]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx
   [Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md
+

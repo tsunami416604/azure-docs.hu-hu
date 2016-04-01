@@ -18,7 +18,7 @@ Azure Active Directory 必須驗證您在使用 Azure 資源管理員的資源�
     }
     ```
 
-2. 建立 **ResourceManagementClient** 結尾加入下列程式碼使用權杖的物件 **Main** 方法:
+2. 建立 **ResourceManagementClient** 結尾加入下列程式碼使用權杖的物件 **Main** 方法 ︰
 
     ```
     var creds = new TokenCloudCredentials(subscriptionId, token.AccessToken);
@@ -39,3 +39,4 @@ Azure Active Directory 必須驗證您在使用 Azure 資源管理員的資源�
     ```
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
+

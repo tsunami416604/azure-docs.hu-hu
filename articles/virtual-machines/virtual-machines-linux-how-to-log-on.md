@@ -46,10 +46,11 @@
 
     ![登入虛擬機器](./media/virtual-machines-linux-how-to-log-on/sshlogin.png)
 
->[AZURE.NOTE] VMAccess 擴充功能可協助您如果您忘記重設 SSH 金鑰或密碼。 如果忘記使用者名稱，您可以使用擴充功能，以 sudo 權限建立新的使用者名稱。 如需指示，請參閱 [如何重設密碼或 SSH 為 Linux 虛擬機器]。
+>[AZURE.NOTE] VMAccess 擴充功能可協助您如果您忘記重設 SSH 金鑰或密碼。 如果忘記使用者名稱，您可以使用擴充功能，以 sudo 權限建立新的使用者名稱。 如需指示，請參閱 [How to Reset a Password or SSH for Linux Virtual Machines]。
 
 您現在可以開始使用虛擬機器，就如同操作任何其他伺服器一樣。
 
 <!-- LINKS -->
 [How to Reset a Password or SSH for Linux Virtual Machines]: http://go.microsoft.com/fwlink/p/?LinkId=512138
+
 

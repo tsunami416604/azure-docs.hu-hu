@@ -36,11 +36,11 @@
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 您需要下列項目完成本教學課程：
 
-- 在內部部署 AD FS (如我所使用的測試實驗室的端對端逐步解說，請參閱 [測試實驗室: 搭配 Azure VM (僅適用於測試) 中的 AD FS 的獨立 STS](TODO))
+- 在內部部署 AD FS (如我所使用的測試實驗室的端對端逐步解說，請參閱 [測試實驗室 ︰ 搭配 Azure VM （僅適用於測試） 中的 AD FS 的獨立 STS](TODO))
 - 在 AD FS 管理中建立信賴憑證者信任的權限
 - Visual Studio 2013
 - [Azure SDK 2.5.1](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) 或更新版本
@@ -52,7 +52,7 @@
 
 - 使用 [WS-同盟](http://msdn.microsoft.com/library/bb498017.aspx) 來向內部部署 AD FS 部署
 - 登入和登出功能
-- 使用 [Microsoft.Owin](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana) (而不是 Windows Identity Foundation，也就是 WIF)，也就是未來的 ASP.NET 和更容易地進行驗證和授權比使用 WIF 設定
+- 使用 [Microsoft.Owin](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana) （而不是 Windows Identity Foundation，也就是 WIF)，也就是未來的 ASP.NET 和更容易地進行驗證和授權比使用 WIF 設定
 
 <a name="bkmk_setup"></a>
 ## 設定範例應用程式 ##
@@ -94,14 +94,14 @@
     <pre class="prettyprint">
     & l t; appSettings & gt;
       & lt; 新增機碼 ="webpages:Version"value ="3.0.0.0"/ & gt;
-      & lt; 新增機碼 ="網頁: 啟用"值 ="false"/ (& s) gt;
+      & lt; 新增機碼 ="網頁 ︰ 啟用"值 ="false"/ （& s) gt;
       & lt; 新增機碼 ="ClientValidationEnabled"value ="true"/ & gt;
       & lt; 新增機碼 ="UnobtrusiveJavaScriptEnabled"value ="true"/ & gt;
-      <mark><del>& lt; 新增機碼 ="ida: Wtrealm"value ="[請輸入研究 WSFederation WebApp DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet 應用程式識別碼 URI]"/ (& s) gt;</del></mark>
-      <mark><del>& lt; 新增機碼 ="ida: AADInstance"value ="https://login.windows.net"/ (& s) gt;</del></mark>
-      <mark><del>& lt; 新增機碼 ="ida: Tenant"value ="[Enter 租用戶名稱，例如 contoso.onmicrosoft.com]"/ (& s) gt;</del></mark>
-      <mark>(& s) lt; 新增機碼 ="ida: RPIdentifier"value ="[輸入信賴憑證者的合作對象識別項設定在 AD FS 中，例如 https://localhost:44320 /]"/ (& s) gt;</mark>
-      <mark>& lt; 新增機碼 ="ida: ADFS"value ="[請輸入的 FQDN，AD FS 服務，例如 adfs.contoso.com]"/ (& s) gt;</mark>
+      <mark><del>& lt; 新增機碼 ="ida: Wtrealm"value ="[請輸入研究 WSFederation WebApp DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet 應用程式識別碼 URI]"/ （& s) gt;</del></mark>
+      <mark><del>& lt; 新增機碼 ="ida: AADInstance"value ="https://login.windows.net"/ （& s) gt;</del></mark>
+      <mark><del>& lt; 新增機碼 ="ida: Tenant"value ="[Enter 租用戶名稱，例如 contoso.onmicrosoft.com]"/ （& s) gt;</del></mark>
+      <mark>（& s) lt; 新增機碼 ="ida: RPIdentifier"value ="[輸入信賴憑證者的合作對象識別項設定在 AD FS 中，例如 https://localhost:44320 /]"/ （& s) gt;</mark>
+      <mark>& lt; 新增機碼 ="ida: ADFS"value ="[請輸入的 FQDN，AD FS 服務，例如 adfs.contoso.com]"/ （& s) gt;</mark>
 
     & l t; / appSettings & gt;
     </pre>
@@ -136,7 +136,7 @@
 11. 在 Visual Studio 中開啟 **Web.Release.config** 專案中。 將下列 XML 插入 `<configuration>` 標記，並使用發佈 Web 應用程式的 URL 取代索引鍵值。  
     <pre class="prettyprint">
 & l t; appSettings & gt;
-   (& s) lt; 新增機碼 ="ida: RPIdentifier"value ="<mark>[例如 https://mylobapp.azurewebsites.net/]</mark>"xdt:Transform ="SetAttributes"xdt:Locator="Match(key)"/ (& s) gt;
+   & lt; 新增機碼 ="ida: RPIdentifier"value ="<mark>[例如 https://mylobapp.azurewebsites.net/]</mark>「 xdt:Transform ="SetAttributes"xdt:Locator="Match(key)"/ & gt;
 & l t; / appSettings & gt;</pre>
 
 當您完成時，您會在專案中設定兩個 RP 識別碼，一個適用於 Visual Studio 中的偵錯環境，另一個適用於 Azure 中的已發行 Web 應用程式。 您會在 AD FS 中，為兩種環境的每種環境設定一個 RP 信任。 偵錯期間，Web.config 中的應用程式設定可讓您 **偵錯** 搭配 AD FS 和發行組態工作 (根據預設， **版本** 發行組態)，會上傳轉換的 Web.config，其中包含 Web.Release.config 的應用程式設定變更。
@@ -173,7 +173,7 @@
 
     ![](./media/web-sites-dotnet-lob-application-adfs/4-configure-url.png)
 
-    > [AZURE.NOTE] URL 會指定在驗證成功後，將用戶端傳送的位置。 偵錯環境中，它應該是 <code>https://localhost: & lt; 連接埠 (& s) gt; /</code>。 已發行的 Web 應用程式中，它應該是 Web 應用程式 URL。
+    > [AZURE.NOTE] URL 會指定在驗證成功後，將用戶端傳送的位置。 若為偵錯環境，其應該是 <code>https://localhost:&lt;port&gt;/</code>。 已發行的 Web 應用程式中，它應該是 Web 應用程式 URL。
 
 7.  在 **設定識別碼** 頁面上，確認已列出專案 SSL URL 時，按一下 **下一步**。 按一下 [ **下一步** 到預設選取項目在精靈的結尾。
 
@@ -186,7 +186,7 @@
     -   群組成員資格與角色 (http://schemas.microsoft.com/ws/2008/06/identity/claims/role)-可以搭配 `[Authorize(Roles="role1, role2,...")]` 裝飾來授權控制站/動作。 事實上，這可能不是角色授權的最有效方法，特別是如果您的 AD 使用者定期屬於數百個安全性群組時，因為這會轉譯成 SAML 權杖中的數百個角色宣告。 替代方式是根據特定群組中的使用者成員資格，有條件地傳送單一角色宣告。 不過，我們會在本教學課程中簡化該作業。
     -   名稱識別碼 (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier)-可用於防偽驗證。 如需有關如何讓其使用防偽驗證的詳細資訊，請參閱 **將特定業務功能新增至範例應用程式** 區段 [Azure App Service 中建立的.NET MVC web 應用程式，使用 Azure Active Directory 驗證](web-sites-dotnet-lob-application-azure-ad.md#bkmk_crud)。
 
-    > [AZURE.NOTE] 您必須設定您的應用程式的宣告類型取決於您的應用程式需求。 Azure Active Directory 應用程式 (也就是 RP 信任) 所支援的宣告清單，例如，請參閱 [支援的權杖和宣告類型](http://msdn.microsoft.com/library/azure/dn195587.aspx)。
+    > [AZURE.NOTE] 您必須設定您的應用程式的宣告類型取決於您的應用程式需求。 Azure Active Directory 應用程式 （也就是 RP 信任） 所支援的宣告清單，例如，請參閱 [支援的權杖和宣告類型](http://msdn.microsoft.com/library/azure/dn195587.aspx)。
 
 8.  在 [編輯宣告規則] 對話方塊中，按一下 [ **新增規則**。
 9.  設定名稱、 UPN 和角色宣告，如下所示，再按一下 [ **完成**。
@@ -203,7 +203,7 @@
     c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"]
         => add(
             store = "_OpaqueIdStore",
-            類型 = (「<mark>http://contoso.com/internal/sessionid</mark>」)，
+            類型 = ("<mark>http://contoso.com/internal/sessionid</mark>"),
             查詢 ="{0}，\\ {1 \\}，\\ {<2\}}; \\ {<3\}}; \\ {<4\}}"，
             param = "useEntropy",
             param = c1.Value,
@@ -218,7 +218,7 @@
 
 9.  按一下 [ **新增規則** 一次。
 10. 選取 **傳輸傳入宣告** 按一下 **下一步**。
-11. 設定規則，如下所示 (使用您建立自訂規則中的宣告類型)，按一下 [ **完成**。
+11. 設定規則，如下所示 （使用您建立自訂規則中的宣告類型），按一下 [ **完成**。
 
     ![](./media/web-sites-dotnet-lob-application-adfs/7-transient-name-id.png)
 
@@ -243,7 +243,7 @@
 
 ![](./media/web-sites-dotnet-lob-application-adfs/9-test-debugging.png)
 
-一旦您登入 AD FS 部署的 AD 網域中的使用者，您現在應該會看到首頁，首頁再次 **大家好， <User Name>!** 角。 以下是我看到的內容。
+一旦您登入 AD FS 部署的 AD 網域中的使用者，您現在應該會看到首頁，首頁再次 **大家好， <User Name>！** 角。 以下是我看到的內容。
 
 ![](./media/web-sites-dotnet-lob-application-adfs/11-test-debugging-success.png)
 
@@ -253,7 +253,7 @@
 - AD FS 已成功驗證 AD 使用者，並將您重新導向回應用程式的首頁
 - 做為 AD FS 成功傳送至您的應用程式的名稱宣告 (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name) 的使用者名稱並顯示在角所示。 
 
-如果缺少名稱宣告，您應該會看到 **大家好，!**。 如果您看一下 Views\Shared\_LoginPartial.cshtml，您會發現它會使用 `User.Identity.Name` 來顯示使用者名稱。 如前所述，若可在 SAML 權杖中取得，ASP.NET 會使用已驗證使用者的名稱宣告來產生這個屬性。 若要查看 AD FS 傳送的所有宣告，請將中斷點放在索引動作方法的 Controllers\HomeController.cs 中。 驗證使用者後，檢查 `System.Security.Claims.Current.Claims` 集合。
+如果缺少名稱宣告，您應該會看到 **大家好，！**。 如果您看一下 Views\Shared\_LoginPartial.cshtml，您會發現它會使用 `User.Identity.Name` 來顯示使用者名稱。 如前所述，若可在 SAML 權杖中取得，ASP.NET 會使用已驗證使用者的名稱宣告來產生這個屬性。 若要查看 AD FS 傳送的所有宣告，請將中斷點放在索引動作方法的 Controllers\HomeController.cs 中。 驗證使用者後，檢查 `System.Security.Claims.Current.Claims` 集合。
 
 ![](./media/web-sites-dotnet-lob-application-adfs/12-test-debugging-all-claims.png) 
 
@@ -265,7 +265,7 @@
 1. 開啟 Controllers\HomeController.cs。
 2. 使用已驗證使用者擁有的安全性群組成員資格來裝飾 `About` 和 `Contact` 動作方法 (類似下列作法)。  
     <pre class="prettyprint">
-    <mark>[授權 (角色 = 「 測試群組 」)]</mark>
+    <mark>[Authorize(Roles="Test Group")]</mark>
     public ActionResult About()
     {
         ViewBag.Message = "Your application description page.";
@@ -291,11 +291,11 @@
 
     如果您在 AD FS 伺服器的事件檢視器中調查此錯誤，您會看到這則例外狀況訊息：  
     <pre class="prettyprint">
-    Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>相同的用戶端瀏覽器工作階段已在 last '11' 秒 '6' 的要求。</mark> 如需詳細資訊，請連絡您的系統管理員。
-       在 Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie (WrappedHttpListenerContext 內容)
-       在 Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse (WSFederationContext 內容、 MSISSignInResponse 回應)
-       在 Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest (ProtocolContext protocolContext、 PassiveProtocolHandler protocolHandler)
-       在 Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext (WrappedHttpListenerContext 內容)
+    Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>相同的用戶端瀏覽器工作階段已在 last '11' 秒 '6' 的要求。</mark> 請連絡您的系統管理員以取得詳細資訊。
+       at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context)
+       at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response)
+       at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler)
+       at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context)
     </pre>
 
     發生這種情況的原因是，在未授權使用者的角色時，MVC 預設會傳回「401 未授權」。 這樣會針對您的身分識別提供者 (AD FS) 觸發重新驗證要求。 因為使用者已通過驗證，AD FS 會返回相同的頁面，然後發出另一個 401，從而建立重新導向迴圈。 您會使用簡單的邏輯來覆寫 AuthorizeAttribute 的 `HandleUnauthorizedRequest` 方法，從而顯示有意義的資訊而非持續出現重新導向迴圈。
@@ -325,9 +325,9 @@
             }
         }
 
-    覆寫程式碼會在進行驗證，但-未經授權的情況下傳送 HTTP 403 (禁止) 而不是 HTTP 401 (未經授權)。
+    覆寫程式碼會在進行驗證，但-未經授權的情況下傳送 HTTP 403 （禁止） 而不是 HTTP 401 （未經授權）。
 
-6. 按 `F5` 再次執行偵錯工具。 按一下 **連絡人** 現在會顯示更具參考性的 (雖然不討喜) 錯誤訊息:
+6. 按 `F5` 再次執行偵錯工具。 按一下 **連絡人** 現在會顯示更具參考性的 （雖然不討喜） 錯誤訊息 ︰
 
     ![](./media/web-sites-dotnet-lob-application-adfs/14-unauthorized-forbidden.png)
 
@@ -338,7 +338,7 @@
 
 您會想要使用 AD FS (而不是使用 Azure Active Directory) 來實作特定業務應用程式的原因是，遵守在外部部署保存組織資料的法規需求。 這也表示您在 Azure 中的 web 應用程式必須存取在內部部署資料庫，因為不允許您使用 [SQL Database](/services/sql-database/) 做為 web 應用程式的資料層。
 
-Azure App Service Web Apps 支援存取在內部部署資料庫，透過兩種方式: [混合式連線](../integration-hybrid-connection-overview.md) 和 [虛擬網路](web-sites-integrate-with-vnet.md)。 如需詳細資訊，請參閱 [使用 VNET 整合和混合式連線搭配 Azure App Service Web Apps](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)。
+Azure App Service Web Apps 支援存取在內部部署資料庫，透過兩種方式 ︰ [混合式連線](../integration-hybrid-connection-overview.md) 和 [虛擬網路](web-sites-integrate-with-vnet.md)。 如需詳細資訊，請參閱 [使用 VNET 整合和混合式連線搭配 Azure App Service Web Apps](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)。
 
 <a name="bkmk_resources"></a>
 ## 進一步資源
@@ -355,4 +355,5 @@ Azure App Service Web Apps 支援存取在內部部署資料庫，透過兩種�
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
  
  
+
 

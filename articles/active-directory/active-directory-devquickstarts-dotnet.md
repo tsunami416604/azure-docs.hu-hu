@@ -68,7 +68,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ## *3.使用 ADAL 來取得 AAD 的權杖*
 ADAL 的基本原則是每當您的應用程式需要存取權杖時，它只需呼叫 `authContext.AcquireToken(...)`，ADAL 就會進行其餘工作。  
 
--   在 `DirectorySearcher` 專案中，開啟 `MainWindow.xaml.cs` 並找出 `MainWindow()` 方法。  第一步是初始化應用程式的 `AuthenticationContext` - ADAL 的主要類別。  您在這裡將 ADAL 與 Azure AD 通訊所需的座標傳給 ADAL，並告訴它如何快取權杖。
+-   在 `DirectorySearcher` 專案中，開啟 `MainWindow.xaml.cs` 並找出 `MainWindow()` 方法。  第一步是初始化應用程式的 `AuthenticationContext` -ADAL 的主要類別。  您在這裡將 ADAL 與 Azure AD 通訊所需的座標傳給 ADAL，並告訴它如何快取權杖。
 
 ```C#
 public MainWindow()
@@ -108,7 +108,7 @@ private void Search(object sender, RoutedEventArgs e)
 }
 ```
 - 當您的應用程式透過呼叫 `AcquireToken(...)` 要求權杖時，ADAL 會嘗試在不要求使用者認證的情況下傳回權杖。  如果 ADAL 決定使用者需要登入才能取得權杖，它會顯示登入對話方塊、收集使用者的認證，並在成功驗證後傳回權杖。  如果基於任何原因 ADAL 無法傳回權杖，則會擲回 `AdalException`。
-- 請注意，`AuthenticationResult` 物件包含 `UserInfo` 物件，可用來收集您的應用程式可能需要的資訊。  在 DirectorySearcher 中，`UserInfo` 用來以使用者的識別碼自訂應用程式的 UI。
+- 請注意，`AuthenticationResult` 物件包含 `UserInfo` 物件，可用來收集您的應用程式可能需要的資訊。  在 DirectorySearcher 中， `UserInfo` 用來自訂應用程式的 UI 與使用者的識別碼。
 
 - 當使用者按一下 [登出] 按鈕時，我們想要確保下次呼叫 `AcquireToken(...)` 時會要求使用者登入。  有了 ADAL，這會和清除權杖快取一樣簡單：
 
@@ -159,9 +159,10 @@ public MainWindow()
 
 ADAL 可讓您輕鬆地將這些常見的身分識別功能全部納入您的應用程式。  它會為您處理一切麻煩的事，包括快取管理、OAuth 通訊協定支援、向使用者顯示登入 UI、重新整理過期權杖等等。  您唯一需要知道的就是單一 API 呼叫，`authContext.AcquireToken(...)`。
 
-提供完整的範例 (不含您的設定值) 是供您參考 [這裡](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)。  您現在可以繼續探索其他案例。  您可以嘗試：
+提供完整的範例 （不含您的設定值） 是供您參考 [這裡](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)。  您現在可以繼續探索其他案例。  您可以嘗試：
 
 [使用 Azure AD 保護 .NET Web API >>](active-directory-devquickstarts-webapi-dotnet.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
+

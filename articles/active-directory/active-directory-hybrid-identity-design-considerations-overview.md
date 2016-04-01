@@ -38,7 +38,7 @@
 上方的圖例說明使用雲端服務與內部部署功能進行整合，為使用者提供以單一程序完成驗證的體驗，及協助 IT 人員管理這些資源的混合式身分識別解決方案。 雖然這可能是很常見的案例，但每個組織的混合式身分識別設計都可能會因不同的需求而與圖 1 所示的範例不同。 
 本指南將提供一系列您可以依循的步驟和工作，用以設計符合組織獨特需求的混合式身分識別解決方案。 在下列步驟和工作中，本指南將提供相關的技術和功能選項，讓您能夠因應組織的功能和服務品質層級需求。
 
-**假設**: 您已有 Windows Server、 Active Directory 網域服務與 Azure Active Directory 的經驗。 在本文件中，我們假設您想要了解這些解決方案本身或在整合式解決方案中如何滿足您的商務需求。
+**假設**︰ 您已有 Windows Server、 Active Directory 網域服務與 Azure Active Directory 的經驗。 在本文件中，我們假設您想要了解這些解決方案本身或在整合式解決方案中如何滿足您的商務需求。
 
 ## 設計考量概觀
 本文件將提供一組您可以依循的步驟和工作，用以設計最能符合您需求的混合式身分識別解決方案。 步驟會依序呈現。 不過，您在後續步驟中學習的設計考量，可能會因為設計選擇的衝突，而需要變更您在先前步驟中所做的決策。 在本文件中會持續嘗試警告您潛在的設計衝突。 
@@ -47,8 +47,8 @@
 
 | 混合式身分識別階段                                             | 主題清單                                                                                                                                                                                       |
 |-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 判斷身分識別需求                                   | [判定商務需求](active-directory-hybrid-identity-design-considerations-business-needs.md)<br> [判斷目錄同步作業需求](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [判斷多重要素驗證需求](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [定義混合式身分識別採用策略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)                       |
-| 透過增強式身分識別解決方案規劃更高的資料安全性 | [決定資料保護需求](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [決定內容管理需求](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [判斷存取控制需求](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [判斷事件回應需求](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [定義的資料保護策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)  |
+| 判斷身分識別需求                                   | [判斷商務需求](active-directory-hybrid-identity-design-considerations-business-needs.md)<br> [判斷目錄同步處理需求](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [判斷多重要素驗證需求](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [定義混合式身分識別採用策略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)                       |
+| 透過增強式身分識別解決方案規劃更高的資料安全性 | [判斷資料保護需求](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [判斷內容管理需求](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [判斷存取控制需求](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [判斷事件因應需求](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [定義資料保護策略](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)  |
 | 規劃混合式身分識別生命週期                                | [判斷混合式身分識別管理工作](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md) <br> [同步處理管理](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md)<br> [判斷混合式身分識別管理採用策略](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |     
 
 
@@ -56,3 +56,4 @@
 您可以下載 pdf 版本的混合式身分識別設計考量指南從 [Technet 組件庫](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288)。 
 
                                                              
+

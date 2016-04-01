@@ -52,7 +52,7 @@ Foundation Server-Team Build 定義來使用 MSBuild 命令
 3.  安裝 [Azure Libraries for.NET](http://go.microsoft.com/fwlink/?LinkId=623519)。
 4.  將 Microsoft.WebApplication.targets 檔案從 Visual Studio 安裝複製到組建伺服器上。
 
-    在電腦上已安裝 Visual studio，這個檔案位於目錄 C:\\Program Files (x86) \\MSBuild\\Microsoft\\VisualStudio\\v14.0\\WebApplications。 您應該將它複製至組建伺服器上的相同目錄。
+    在電腦上已安裝 Visual studio，這個檔案位於目錄 C:\\Program 檔案 (x86) \\MSBuild\\Microsoft\\VisualStudio\\v14.0\\WebApplications。 您應該將它複製至組建伺服器上的相同目錄。
 5.  安裝 [Azure Tools for Visual Studio](https://www.visualstudio.com/features/azure-tools-vs.aspx)。
 
 ## 步驟 2：使用 MSBuild 命令建置封裝
@@ -183,7 +183,7 @@ Azure 封裝設定自動化組建。 如需
 
     ![][2]
 
-    **注意:** 將檔案複製至公用共用可讓您更輕鬆地
+    **注意 ︰** 將檔案複製至公用共用可讓您更輕鬆地
     從開發電腦手動部署封裝。
 
 5.  簽入專案的變更來測試組建步驟是否成功，
@@ -433,7 +433,7 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
             ![][4]
 
     4.  如果您使用 TFS 2012 或更早版本，請在新序列的開頭新增 ConvertWorkspaceItem 活動
-        。 如果您使用 TFS 2013 或更新版本，請在新序列的開頭新增 GetLocalPath 活動。 針對 ConvertWorkspaceItem，設定屬性，如下所示: 方向 = ServerToLocal，DisplayName ='Convert publish
+        。 如果您使用 TFS 2013 或更新版本，請在新序列的開頭新增 GetLocalPath 活動。 針對 ConvertWorkspaceItem，設定屬性，如下所示 ︰ 方向 = ServerToLocal，DisplayName ='Convert publish
         script filename', Input=' PublishScriptLocation',
         Result='PublishScriptFilePath', Workspace='Workspace'。 針對 GetLocalPath 活動，請將內容 IncomingPath 設定為 'PublishScriptLocation'，以及將 Result 設定為 'PublishScriptFilePath'。 此
         活動會將發行指令碼的路徑從 TFS 伺服器
@@ -534,7 +534,7 @@ Visual Studio TFS Team Build 中的流程範本工作流程活動中呼叫它。
 9.  在 Misc 區段中設定如下參數屬性值：
 
     1.  CloudConfigLocation ='c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg'
-        *這個值會衍生自:
+        *這個值會衍生自 ︰
         ($PublishDir)ServiceConfiguration.Cloud.cscfg*
 
     2.  PackageLocation = 'c:\\drops\\app.publish\\ContactManager.Azure.cspkg'
@@ -786,4 +786,5 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
+
 

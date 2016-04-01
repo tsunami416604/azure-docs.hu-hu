@@ -24,7 +24,7 @@
 
 > [AZURE.NOTE] 如果您想要了解如何建立 web 應用程式，但不必在 App Service 環境，請參閱 [建立.NET web 應用程式](web-sites-dotnet-get-started.md) 或其中一個相關的教學課程的其他語言和架構。
 
-## 先決條件
+## 必要條件
 
 本教學課程假設您已建立 App Service 環境。 如果尚未執行此作業，請參閱 [建立 App Service 環境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
@@ -40,7 +40,7 @@
 
 3. 選取或建立資源群組。
 
-    *資源群組* 可讓您管理相關的 Azure 資源當做一個單位，有助於建立時 *角色型存取控制* (RBAC) 規則針對您的應用程式。 如需詳細資訊，請參閱 [管理您的 Azure 資源] [ResourceGroups]。 
+    *資源群組* 可讓您管理相關的 Azure 資源當做一個單位，有助於建立時 *角色型存取控制* (RBAC) 規則針對您的應用程式。 如需詳細資訊，請參閱 [管理您的 Azure 資源][ResourceGroups]。 
 
 4. 選取或建立 App Service 方案。
 
@@ -64,7 +64,7 @@
 
     [*sitename*]。 azurewebsites.net
 
-## <a name="createplan"></a> 建立應用程式服務方案
+## <a name="createplan"></a> 建立 App Service 方案
 
 當您在 App Service 環境中建立 App Service 方案時，您的背景工作角色選擇會因為在 ASE 中沒有共用的背景工作角色而有所不同。  您必須使用的背景工作角色也就是由系統管理員配置給 ASE 的背景工作角色。  這代表在建立新的方案時，配置給 ASE 背景工作集區的背景工作角色數目，必須超過該背景工作集區中所有方案的執行個體總數。  如果您的 ASE 背景工作集區中沒有足夠的背景工作角色來建立方案，則您需要與 ASE 系統管理員合作來新增背景工作角色。
 
@@ -117,4 +117,5 @@
 [HowtoConfigureASE]: http://azure.microsoft.com/documentation/articles/app-service-web-configure-an-app-service-environment
 [ResourceGroups]: http://azure.microsoft.com/documentation/articles/resource-group-portal/
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
+
 

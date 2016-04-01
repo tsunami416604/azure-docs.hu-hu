@@ -37,7 +37,7 @@
 
 1. 建立 Azure 虛擬機器。 請參閱 [建立虛擬機器執行 Windows Server](virtual-machines-windows-tutorial.md) 或 [建立和管理 Visual Studio 中的 Azure 虛擬機器](vs-azure-tools-virtual-machines-create-manage.md)。
 2. 在 [Azure 傳統入口網站頁面](http://go.microsoft.com/fwlink/p/?LinkID=269851), ，檢視虛擬機器的儀表板，請參閱虛擬機器的 **RDP 憑證指紋**。 此值是用於延伸模組組態中的 `ServerThumbprint` 值。
-3. 建立用戶端憑證中所述 [的 Azure 雲端服務憑證概觀](cloud-services-certs-create.md) (保留.pfx 和 RDP 憑證指紋)。
+3. 建立用戶端憑證中所述 [的 Azure 雲端服務憑證概觀](cloud-services-certs-create.md) （保留.pfx 和 RDP 憑證指紋）。
 4. 安裝 Azure Powershell (0.7.4 版或更新版本) 中所述 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
 5. 執行下列指令碼來啟用 RemoteDebug 延伸模組。 將路徑和個人資料替換成您自己的路徑和個人資料，例如您的訂用帳戶、服務名稱和指紋。
 
@@ -89,4 +89,5 @@
     </pre>
 
 6. 將憑證 (.pfx) 匯入已安裝 Visual Studio with Azure SDK for .NET 的機器。
+
 

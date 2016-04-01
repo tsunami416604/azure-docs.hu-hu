@@ -22,8 +22,8 @@
 > [AZURE.SELECTOR]
 - [Azure 入口網站](virtual-machines-windows-tutorial.md)
 - [Azure 傳統入口網站](virtual-machines-windows-tutorial-classic-portal.md)
-- [PowerShell: 資源管理員部署](virtual-machines-deploy-rmtemplates-powershell.md)
-- [PowerShell: 傳統部署](virtual-machines-ps-create-preconfigure-windows-vms.md)
+- [PowerShell ︰ 資源管理員部署](virtual-machines-deploy-rmtemplates-powershell.md)
+- [PowerShell ︰ 傳統部署](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [資源管理員部署模型](virtual-machines-windows-tutorial.md)。
 
@@ -52,4 +52,5 @@
 - 登入虛擬機器。 如需指示，請參閱 [如何登入執行 Windows Server 的虛擬機器](virtual-machines-log-on-windows-server.md)。
 
 - 附加磁碟來儲存資料。 您可以附加空的磁碟和含有資料的磁碟。 如需指示，請參閱 [附加資料磁碟教學課程](storage-windows-attach-disk.md)。
+
 

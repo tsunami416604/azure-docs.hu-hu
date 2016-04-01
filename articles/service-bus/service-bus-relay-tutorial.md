@@ -31,7 +31,7 @@
 
 第一步是建立服務匯流排的服務命名空間，並取得共用存取簽章 (SAS) 金鑰。 服務命名空間會為每個透過服務匯流排公開的應用程式提供應用程式界限。 服務命名空間與 SAS 金鑰的結合提供了一個認證，供服務匯流排驗證對應用程式的存取權。
 
-若要建立命名空間，請依照下列所述的步驟 [How To: 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/hh690931.aspx)。
+若要建立命名空間，請依照下列所述的步驟 [How To ︰ 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/hh690931.aspx)。
 
 >[AZURE.NOTE] 您不需要對用戶端和服務應用程式使用相同的命名空間。
 
@@ -51,7 +51,7 @@
 
 1. 這會建立新的主控台應用程式專案。 按一下 [ **檔案** 功能表，然後選取 **新增**, ，然後按一下 [ **專案**。 在 **新的專案** ] 對話方塊中，按一下 [ **Visual C#** (如果 **Visual C#** 不會出現，請查看 **其他語言**)。 按一下 [ **主控台應用程式** 範本，並將其命名 **EchoService**。 使用預設 **位置**。 按一下 [ **確定** 以建立專案。
 
-1. 將參考加入 `System.ServiceModel.dll` 至專案: 在方案總管] 中，以滑鼠右鍵按一下 **參考** 資料夾下專案資料夾，然後按一下 [ **加入參考**。 選取 **.NET** 索引標籤中 **加入參考** 對話方塊和向下的捲動直到您看到 **System.ServiceModel**。 並加以選取，然後按一下 [ **確定**。
+1. 將參考加入 `System.ServiceModel.dll` 至專案 ︰ 在方案總管] 中，以滑鼠右鍵按一下 **參考** 資料夾下專案資料夾，然後按一下 [ **加入參考**。 選取 **.NET** 索引標籤中 **加入參考** 對話方塊和向下的捲動直到您看到 **System.ServiceModel**。 並加以選取，然後按一下 [ **確定**。
 
 1. 在方案總管中，按兩下 Program.cs 檔案，以在編輯器中開啟它。
 
@@ -65,7 +65,7 @@
 
 1. 變更命名空間名稱的預設名稱 **EchoService** 至 **Microsoft.ServiceBus.Samples**。
 
-    >[AZURE.IMPORTANT] 本教學課程使用 C# 命名空間 Micr**osoft。ServiceBus.Samples**, ，這是合約的命名空間管理步驟 6 中的組態檔中所使用的型別: WCF 用戶端設定。 您可以在建置此範例時指定您要的任何命名空間；不過，除非您後來在應用程式組態檔中相應地修改合約的命名空和服務，否則本教學課程將無法運作。 在 App.config 檔案中指定的命名空間必須與在 C# 檔案中指定的命名空間相同。
+    >[AZURE.IMPORTANT] 本教學課程使用 C# 命名空間 Micr**osoft。ServiceBus.Samples**, ，這是合約的命名空間管理步驟 6 中的組態檔中所使用的型別 ︰ WCF 用戶端設定。 您可以在建置此範例時指定您要的任何命名空間；不過，除非您後來在應用程式組態檔中相應地修改合約的命名空和服務，否則本教學課程將無法運作。 在 App.config 檔案中指定的命名空間必須與在 C# 檔案中指定的命名空間相同。
 
 1. 緊接 `Microsoft.ServiceBus.Samples` 命名空間宣告，但在命名空間內定義名為的新介面 `IEchoContract` 並套用 `ServiceContractAttribute` 屬性的命名空間值介面 **http://samples.microsoft.com/ServiceModel/Relay/**。 命名空間值與您的整個程式碼範圍中使用的命名空間不同。 然而，命名空間值會作為此合約的唯一識別碼。 明確指定命名空間可避免將預設命名空間值新增至合約名稱。
 
@@ -170,7 +170,7 @@ namespace Microsoft.ServiceBus.Samples
 
 1. 此組態檔非常類似於 WCF 組態檔。 其中包含服務名稱、端點 (也就是公開的位置服務匯流排，讓用戶端與主機彼此通訊) 和繫結 (用於通訊的通訊協定類型)。 主要差異在於，此設定的服務端點是指 [netTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx), ，這不是.NET Framework 的一部分。 [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) 是服務匯流排所定義的繫結的其中一個。
 
-1. 在 **方案總管] 中**, ，按一下 App.config 檔案中，目前包含下列 XML 項目:
+1. 在 **方案總管] 中**, ，按一下 App.config 檔案中，目前包含下列 XML 項目 ︰
 
     ```
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -273,7 +273,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ### 建立服務匯流排認證
 
-1. Microsoft.servicebus.dll 的參考加入至專案: 請參閱 [使用 NuGet 服務匯流排封裝](https://msdn.microsoft.com/library/dn741354.aspx)。
+1. Microsoft.servicebus.dll 的參考加入至專案 ︰ 請參閱 [使用 NuGet 服務匯流排封裝](https://msdn.microsoft.com/library/dn741354.aspx)。
 
     >[AZURE.NOTE] 使用命令列編譯器時，您也必須在組件，提供的路徑。
 
@@ -321,7 +321,7 @@ namespace Microsoft.ServiceBus.Samples
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    連線模式可描述服務用來與服務匯流排通訊的通訊協定 (HTTP 或 TCP)。 使用預設設定 `AutoDetect`，服務會嘗試透過 TCP 連接至服務匯流排，如果無法使用 TCP，則會透過 HTTP 連接。 請注意，這有別於服務針對用戶端通訊指定的通訊協定。 該通訊協定取決於使用的繫結。 例如，服務可以使用 [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) 指定其端點 (公開服務匯流排上) 與通訊的用戶端透過 HTTP 繫結。 相同服務可以指定 **ConnectivityMode.AutoDetect** ，以便透過 TCP 與服務匯流排服務通訊。
+    連線模式可描述服務用來與服務匯流排通訊的通訊協定 (HTTP 或 TCP)。 使用預設設定 `AutoDetect`，服務會嘗試透過 TCP 連接至服務匯流排，如果無法使用 TCP，則會透過 HTTP 連接。 請注意，這有別於服務針對用戶端通訊指定的通訊協定。 該通訊協定取決於使用的繫結。 例如，服務可以使用 [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) 指定其端點 （公開服務匯流排上） 與通訊的用戶端透過 HTTP 繫結。 相同服務可以指定 **ConnectivityMode.AutoDetect** ，以便透過 TCP 與服務匯流排服務通訊。
 
 1. 使用本節稍早建立的 URI，建立服務主機。
 
@@ -467,7 +467,7 @@ namespace Microsoft.ServiceBus.Samples
 下一步是建立基本服務匯流排用戶端應用程式並定義您將在後續步驟中實作服務合約。 請注意，其中有許多步驟類似於用來建立服務的步驟︰定義合約、編輯 App.config 檔案、使用認證來連接至服務匯流排等等。 程序後面的範例提供用來執行這些工作的程式碼。
 
 1. 若要在目前的 Visual Studio 方案中為用戶端建立新專案，請執行下列作業︰
-    1. 在 [方案總管] 中，包含服務的相同方案中目前的方案 (不是專案)，以滑鼠右鍵按一下，然後按一下 **新增**。 然後按一下 [ **新的專案**。
+    1. 在 [方案總管] 中，包含服務的相同方案中目前的方案 （不是專案），以滑鼠右鍵按一下，然後按一下 **新增**。 然後按一下 [ **新的專案**。
     2. 在 **加入新的專案** 對話方塊中，按一下 [ **Visual C#** (如果 **Visual C#** 不會出現，請看下 **其他語言**)，請選取 **主控台應用程式** 範本，並將它命名 **EchoClient**。
     3. 按一下 [ **確定**。
 <br />
@@ -539,7 +539,7 @@ namespace Microsoft.ServiceBus.Samples
 
 在此步驟中，您可為基本用戶端應用程式建立 App.config 檔案，以存取先前在本教學課程中建立的服務。 此 App.config 檔案定義端點的合約、繫結和名稱。 程序後面的範例提供用來執行這些工作的程式碼。
 
-1. 在 [方案總管] 中，在用戶端專案中，按兩下 **App.config** 開啟檔案，其中目前包含下列 XML 項目:
+1. 在 [方案總管] 中，在用戶端專案中，按兩下 **App.config** 開啟檔案，其中目前包含下列 XML 項目 ︰
 
     ```
     <?xmlversion="1.0"?>
@@ -844,3 +844,4 @@ namespace Microsoft.ServiceBus.Samples
 - [服務匯流排架構](service-bus-architecture.md)
 
 [Azure classic portal]: http://manage.windowsazure.com
+

@@ -48,7 +48,7 @@ Azure SQL Database 中的彈性資料庫集區可讓 SaaS ISV 將一組資料庫
 
 下圖顯示資料庫的範例，該資料庫花費太多時間閒置，但也定期因活動達到尖峰。 這是非常適合彈性資料庫集區的使用量模式： 
  
-   ![資料庫][] 1
+   ![一個資料庫][1]
 
 針對如上所示的一小時期間，DB1 尖峰最高達 90 個 DTU，但其整體平均使用量 < 5 個 DTU。 需要 S3 效能層級，才能在單一資料庫中執行此工作負載。 不過，這會在活動較少的期間保留大多數的資源未使用。 
 
@@ -56,9 +56,9 @@ Azure SQL Database 中的彈性資料庫集區可讓 SaaS ISV 將一組資料庫
 
 以上一個範例為建置基礎，假設有其他資料庫具有與 DB1 類似的使用量模式。 在接下來的兩個圖形中，4 個資料庫和 20 個資料庫的使用量分層放在相同的圖形，來說明經過一段時間其使用量非重疊的本質： 
 
-   ![四個資料庫][] 2
+   ![四個資料庫][2]
 
-   ![二十個資料庫][] 3
+   ![二十個資料庫][3]
 
 在上圖中，黑色線條說明跨所有 20 個資料庫的彙總 DTU 使用量。 這顯示彙總的 DTU 使用量永遠不會超過 100 個 DTU，並指出 20 個資料庫可以在這段期間共用 100 個 eDTU。 相較於將每個資料庫放在單一資料庫的 S3 效能層級，這會導致 DTU 減少 20 倍且價格降低 13 倍。 
 
@@ -115,7 +115,7 @@ Azure SQL Database 中的彈性資料庫集區可讓 SaaS ISV 將一組資料庫
     
     最大值 (*資料庫的總數目* * *平均每一資料庫的 DTU 使用量*, ，*數目同時尖峰資料庫* * *每一資料庫的尖峰 DTU 使用量*)
 
-2. 選取大於步驟 1 估計值的集區的最小可用 eDTU 值。 如需可用的 eDTU 選擇，請參閱此處所列的 Edtu 的有效值: [彈性資料庫集區和彈性資料庫的 eDTU 和儲存體限制](sql-database-elastic-pool-reference.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)。
+2. 選取大於步驟 1 估計值的集區的最小可用 eDTU 值。 如需可用的 eDTU 選擇，請參閱此處所列的 Edtu 的有效值 ︰ [彈性資料庫集區和彈性資料庫的 eDTU 和儲存體限制](sql-database-elastic-pool-reference.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)。
 
 
 3. 計算集區的價格，如下所示：
@@ -194,11 +194,11 @@ STA 是在加入彈性資料庫集區至現有的伺服器時，於入口網站�
 
 您可以從本機電腦或雲端上的 VM 上執行指令碼。 從本機機器上執行時，因為指令碼需要從您的目標資料庫下載資料，可能會產生資料輸出費用。 以下顯示根據目標資料庫的數目和執行指令碼持續時間的資料磁碟區估計。 針對 Azure 資料傳輸成本，請參閱 [資料傳輸定價詳細資料](http://azure.microsoft.com/pricing/details/data-transfers/)。
        
- -     1 database per hour = 38KB
- -     1 database per day = 900KB
- -     1 database per week = 6MB
- -     100 databases per day = 90MB
- -     500 databases per week = 3GB
+ -     1 個資料庫每小時 = 38 KB
+ -     1 個資料庫每日 = 900 KB
+ -     1 個資料庫每週 = 6 MB
+ -     100 個資料庫每日 = 90 MB
+ -     500 個資料庫每週 = 3 GB
 
 指令碼會排除不適合做為標準彈性集區層的目前公用預覽提供項目的特定資料庫。 
 如果您需要從目標伺服器排除其他資料庫，您可以變更指令碼以符合您的準則。 根據預設，指令碼不會編譯下列項目的資訊：
@@ -438,4 +438,5 @@ STA 是在加入彈性資料庫集區至現有的伺服器時，於入口網站�
 [1]: ./media/sql-database-elastic-pool-guidance/one-database.png
 [2]: ./media/sql-database-elastic-pool-guidance/four-databases.png
 [3]: ./media/sql-database-elastic-pool-guidance/twenty-databases.png
+
 

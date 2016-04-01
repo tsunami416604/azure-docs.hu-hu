@@ -42,7 +42,7 @@ Webhook 可以定義由該 Webhook 啟動 Runbook 時所使用的 Runbook 參數
 
 ![Webhookdata](media/automation-webhooks/webhookdata.png)
 
- **$WebhookData** 物件具有下列屬性:
+ **$WebhookData** 物件具有下列屬性 ︰
 
 | 屬性 | 說明 |
 |:--- |:---|
@@ -273,4 +273,5 @@ Runbook 預期在要求的主體中有 JSON 格式的虛擬機器清單。 我�
 - [啟動 Runbook](automation-starting-a-runbook.md)
 - [檢視 Runbook 工作的狀態](automation-viewing-the-status-of-a-runbook-job.md)
 - [使用 Azure 自動化對 Azure 警示採取動作](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
+
 

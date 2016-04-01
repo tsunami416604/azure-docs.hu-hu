@@ -4,3 +4,4 @@
 - [PowerShell](../articles/hdinsight/hdinsight-hadoop-use-mapreduce-powershell.md)
 - [遠端桌面](../articles/hdinsight/hdinsight-hadoop-use-mapreduce-remote-desktop.md)
 - [Curl](../articles/hdinsight/hdinsight-hadoop-use-mapreduce-curl.md)
+

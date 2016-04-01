@@ -78,10 +78,10 @@ storedProcedureParameters | 指定預存程序參數的值 | 否
             VALUES (newid(), @DateTime)
         END
 
-    > [AZURE.IMPORTANT] **名稱** 和 **大小寫** 的參數 (在此範例中的日期時間) 必須符合在管線/活動 JSON 中指定的參數。 在預存程序定義中，確定 **@** 參數做為前置詞。
+    > [AZURE.IMPORTANT] **名稱** 和 **大小寫** 的參數 （在此範例中的日期時間） 必須符合在管線/活動 JSON 中指定的參數。 在預存程序定義中，確定 **@** 參數做為前置詞。
     
 ### 建立 Data Factory  
-4. 登入後 [Azure 入口網站](http://portal.azure.com/), ，執行下列動作:
+4. 登入後 [Azure 入口網站](http://portal.azure.com/), ，執行下列動作 ︰
     1.  按一下 [ **新增** 左側功能表。 
     2.  按一下 [ **資料分析** 中 **建立** 刀鋒視窗。
     3.  按一下 [ **Data Factory** 上 **資料分析** 刀鋒視窗。
@@ -126,7 +126,7 @@ storedProcedureParameters | 指定預存程序參數的值 | 否
 ### 使用 SqlServerStoredProcedure 活動建立管線
 現在，讓我們使用 SqlServerStoredProcedure 活動來建立管線。
  
-9. 按一下 [ **...(省略符號)** 命令列，然後按一下 [ **新增管線**。 
+9. 按一下 [ **...（省略符號）** 命令列，然後按一下 [ **新增管線**。 
 9. 複製/貼上下列 JSON 程式碼片段。   **StoredProcedureName** 設 **sp_sample**。 名稱和參數的大小寫 **DateTime** 必須符合的名稱和大小寫的預存程序定義中的參數。  
 
         {
@@ -171,7 +171,7 @@ storedProcedureParameters | 指定預存程序參數的值 | 否
 
     請參閱 [監視管線](data-factory-monitor-manage-pipelines.md) 需監視 Azure Data Factory 管線的詳細資訊。  
 
-> [AZURE.NOTE] 在上述範例中，sprocactivitysample 沒有輸入。 如果您想要鏈結這個項目與活動上游 (也就是 一個處理)、 上游活動的輸出可以用作此活動的輸入。  在這種情況下，此活動不會執行直到上游活動完成且上游活動的輸出可用 (處於就緒狀態)。 輸入無法直接做為預存程序活動的參數使用。
+> [AZURE.NOTE] 在上述範例中，sprocactivitysample 沒有輸入。 如果您想要鏈結這個項目與活動上游 （也就是 一個處理）、 上游活動的輸出可以用作此活動的輸入。  在這種情況下，此活動不會執行直到上游活動完成且上游活動的輸出可用 （處於就緒狀態）。 輸入無法直接做為預存程序活動的參數使用。
 
 ## 傳遞靜態值 
 現在我們來考量在包含稱為「文件範例」的靜態值的資料表中，新增另一個名為「案例」的資料行。
@@ -198,4 +198,5 @@ storedProcedureParameters | 指定預存程序參數的值 | 否
             "Scenario": "Document sample"
         }
     }
+
 

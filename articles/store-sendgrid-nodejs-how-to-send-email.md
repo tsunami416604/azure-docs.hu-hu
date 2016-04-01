@@ -105,10 +105,10 @@ callback 函數，您也可以直接叫用 send
 >
 >`````
 sendgrid.send({
-    若要: 'john@contoso.com'，
-    從: 'anna@contoso.com'，
-    主旨: 測試郵件，
-    文字: 「 This is 範例電子郵件訊息 」。
+    to: 'john@contoso.com',
+    from: 'anna@contoso.com',
+    subject: 'test mail',
+    text: 'This is a sample email message.'
 });
 `````
 
@@ -226,4 +226,5 @@ these links to learn more.
   [SendGrid API documentation]: https://sendgrid.com/docs
   [cloud-based email service]: https://sendgrid.com/email-solutions
   [transactional email delivery]: https://sendgrid.com/transactional-email
+
 

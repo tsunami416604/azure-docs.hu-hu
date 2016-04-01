@@ -170,7 +170,7 @@ Application Insights。 [其他封裝](http://www.nuget.org/packages?q=Microsoft
 
 #### 固定取樣遙測處理器 (自 2.0.0-beta1 起)
 
-另外還有一種標準 [取樣遙測處理器](app-insights-api-filtering-sampling.md#sampling) (從 2.0.1):
+另外還有一種標準 [取樣遙測處理器](app-insights-api-filtering-sampling.md#sampling) （從 2.0.1):
 
 ```XML
 
@@ -295,5 +295,6 @@ Application Insights。 [其他封裝](http://www.nuget.org/packages?q=Microsoft
 [new]: app-insights-create-new-resource.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
+
 
 

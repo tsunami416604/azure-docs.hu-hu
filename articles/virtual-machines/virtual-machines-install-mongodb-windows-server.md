@@ -31,14 +31,14 @@
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
-> [AZURE.NOTE] 您可以在建立虛擬機器時為 MongoDB 加入端點，並設定它，如下所示: 將它命名為 **Mongo**, ，使用 **TCP** 做為通訊協定，並將公用和私人連接埠設定為 **27017**。
+> [AZURE.NOTE] 您可以在建立虛擬機器時為 MongoDB 加入端點，並設定它，如下所示 ︰ 將它命名為 **Mongo**, ，使用 **TCP** 做為通訊協定，並將公用和私人連接埠設定為 **27017**。
 
 ## 連接資料磁碟
 若要為虛擬機器提供儲存體，請連接並初始化資料磁碟，這樣 Windows 才能使用該磁碟。 您可以連接現有磁碟 (如果您已擁有想要使用的資料的話)，或連接空白磁碟。
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
 
-如需初始化磁碟的指示，請參閱 「 如何: 初始化新的資料磁碟在 Windows Server 「 在 [如何將資料磁碟連接至 Windows 虛擬機器](storage-windows-attach-disk.md)。
+如需初始化磁碟的指示，請參閱 「 如何 ︰ 初始化新的資料磁碟在 Windows Server 「 在 [如何將資料磁碟連接至 Windows 虛擬機器](storage-windows-attach-disk.md)。
 
 ## 在虛擬機器上安裝及執行 MongoDB
 
@@ -50,4 +50,5 @@
 [MongoDocs]: http://docs.mongodb.org/manual/
 [MongoDB]: http://www.mongodb.org/
 [AzurePortal]: http://manage.windowsazure.com
+
 

@@ -34,10 +34,10 @@ SharePoint Online 連接器和 SharePoint Server 連接器資源庫應用程式�
 
     名稱 |需要 |描述
 --- | --- | ---
-網站 URL |[是 |輸入 SharePoint 網站的完整 URL。 例如，輸入: *https://microsoft.sharepoint.com/teams/wabstest*。
-文件庫 / 清單相對 URL | 是 | 輸入相對於 SharePoint 網站 URL、且可由連接器修改的文件庫/清單 URL。 例如，輸入: *清單/工作、 共用文件*。
+網站 URL |[是 |輸入 SharePoint 網站的完整 URL。 例如，輸入 ︰ *https://microsoft.sharepoint.com/teams/wabstest*。
+文件庫 / 清單相對 URL | 是 | 輸入相對於 SharePoint 網站 URL、且可由連接器修改的文件庫/清單 URL。 例如，輸入 ︰ *清單/工作、 共用文件*。
 
-5. 完成時，[封裝設定看起來如下所示:  
+5. 完成時，[封裝設定看起來如下所示 ︰  
 ![][1]
 
 完成後，您現在可以在相同的資源群組中建立邏輯應用程式，以便使用 SharePoint Online 連接器。
@@ -53,14 +53,14 @@ SharePoint Online 連接器和 SharePoint Server 連接器資源庫應用程式�
 
     名稱 |需要 |描述
 --- | --- | ---
-網站 URL |[是 |輸入 SharePoint 網站的完整 URL。 例如，輸入: *https://microsoft.sharepoint.com/teams/wabstest*。
-驗證模式 | 是 | 指定連線到 SharePoint 網站時的驗證模式。 選項包括：<ul><li>預設</li><li>WindowsAuthentication</li><li>FormBasedAuthentication</li></ul><br/><br/>如果您選擇 [預設]，則會使用執行 SharePoint 連接器的認證；不需要使用者名稱/密碼。 使用者名稱和密碼所需的其他驗證類型。<br/><br/>**請注意** 不支援匿名驗證。
+網站 URL |[是 |輸入 SharePoint 網站的完整 URL。 例如，輸入 ︰ *https://microsoft.sharepoint.com/teams/wabstest*。
+驗證模式 | 是 | 指定連線到 SharePoint 網站時的驗證模式。 選項包括：<ul><li>預設值</li><li>WindowsAuthentication</li><li>FormBasedAuthentication</li></ul><br/><br/>如果您選擇預設值，會使用執行 SharePoint 連接器的認證。不需要使用者名稱/密碼。 使用者名稱和密碼所需的其他驗證類型。<br/><br/>**請注意** 不支援匿名驗證。
 使用者名稱 |否 |如果驗證模式不是預設值，請輸入有效的使用者名稱連接到 SharePoint 網站。
 密碼 |否 |如果驗證模式不是預設值，請輸入有效的密碼來連線到 SharePoint 網站。
-文件庫 / 清單相對 URL | 是 | 輸入相對於 SharePoint 網站 URL、且可由連接器修改的文件庫/清單 URL。 例如，輸入: *清單/工作、 共用文件*。
+文件庫 / 清單相對 URL | 是 | 輸入相對於 SharePoint 網站 URL、且可由連接器修改的文件庫/清單 URL。 例如，輸入 ︰ *清單/工作、 共用文件*。
 服務匯流排連接字串 |否 |如果您要連線至內部部署上，輸入服務匯流排轉送連接字串。<br/><br/>[使用混合式連線管理員](app-service-logic-hybrid-connection-manager.md)<br/>[服務匯流排定價](http://azure.microsoft.com/pricing/details/service-bus/)
 
-5. 完成時，[封裝設定看起來如下所示:  
+5. 完成時，[封裝設定看起來如下所示 ︰  
 ![][2]
 
 完成後，您現在可以在相同的資源群組中建立邏輯應用程式，以便使用 SharePoint Server 連接器。
@@ -76,16 +76,16 @@ SharePoint Online 連接器和 SharePoint Server 連接器資源庫應用程式�
 
 3. 如果在啟動邏輯應用程式時就選取 SharePoint 連接器，它就會像觸發程序般運作。 否則，可以使用連接器在 SharePoint 帳戶上採取動作。
 
-4. 使用 SharePoint Online 連接器時，您必須驗證和授權邏輯應用程式來代表您執行作業。 若要開始授權，請按一下 [ **授權** SharePoint 連接器上:  
+4. 使用 SharePoint Online 連接器時，您必須驗證和授權邏輯應用程式來代表您執行作業。 若要開始授權，請按一下 [ **授權** SharePoint 連接器上 ︰  
 ![][3]
 
-5. 按一下 [授權] 便會開啟 SharePoint 的 [驗證] 對話方塊。 輸入符號，您要執行作業的 SharePoint 帳戶的詳細資料:  
+5. 按一下 [授權] 便會開啟 SharePoint 的 [驗證] 對話方塊。 輸入符號，您要執行作業的 SharePoint 帳戶的詳細資料 ︰  
 ![][4]
 
-6. 授與您的帳戶，以代表您執行作業的邏輯應用程式存取權限:  
+6. 授與您的帳戶，以代表您執行作業的邏輯應用程式存取權限 ︰  
 ![][5]
 
-7. 如果 SharePoint 連接器設定為觸發程序，則會顯示觸發程序。 否則，會顯示動作清單，您可以選擇您想要執行的適當作業:  
+7. 如果 SharePoint 連接器設定為觸發程序，則會顯示觸發程序。 否則，會顯示動作清單，您可以選擇您想要執行的適當作業 ︰  
 ![][6]
   
 **設定文件庫的相對 URL**  
@@ -110,7 +110,7 @@ SharePoint Online 連接器和 SharePoint Server 連接器資源庫應用程式�
 檢視名稱 | 否 | 輸入有效檢視用來篩選要挑選的文件。 例如，輸入「核准的訂單」。 若要處理所有的現有文件，請將此欄位留空。
 封存位置 | 否 | 輸入相對於 SharePoint 網站的有效資料夾 URL，用來封存已處理的文件。
 在封存中覆寫 | 否 | 勾選此選項即可覆寫封存路徑中的檔案 (如果已存在)。
-CAML 查詢 | 否，進階 | 輸入有效的 CAML 查詢來篩選文件。 例如，輸入:  `<Where><Geq><FieldRef Name='ID'/><Value Type='Number'>10</Value></Geq></Where>`
+CAML 查詢 | 否，進階 | 輸入有效的 CAML 查詢來篩選文件。 例如，輸入 ︰  `<Where><Geq><FieldRef Name='ID'/><Value Type='Number'>10</Value></Geq></Where>`
 
 #### 輸出
 
@@ -132,7 +132,7 @@ ContentTransferEncoding | 訊息的內容傳送編碼。 ("none"或"base64")
 --- | --- | ---
 檢視名稱 | 否 | 輸入用於清單中篩選項目的有效檢視。 例如，輸入「核准的訂單」。 若要處理所有新的項目，請將此欄位留空。
 封存位置 | 否 | 輸入相對於 SharePoint 網站的有效資料夾 URL，用來封存已處理的清單項目。
-CAML 查詢 | 否，進階 | 輸入有效的 CAML 查詢來篩選文件。 例如，輸入:  `<Where><Geq><FieldRef Name='ID'/><Value Type='Number'>10</Value></Geq></Where>`
+CAML 查詢 | 否，進階 | 輸入有效的 CAML 查詢來篩選文件。 例如，輸入 ︰  `<Where><Geq><FieldRef Name='ID'/><Value Type='Number'>10</Value></Geq></Where>`
 
 #### 輸出
 
@@ -152,7 +152,7 @@ CAML 查詢 | 否，進階 | 輸入有效的 CAML 查詢來篩選文件。 例�
 檢視名稱 | 否 | 輸入有效檢視用來篩選要挑選的文件。 例如，輸入「核准的訂單」。 若要處理所有的現有文件，請將此欄位留空。
 封存位置 | 否 | 輸入相對於 SharePoint 網站的有效資料夾 URL，用來封存已處理的清單文件。
 在封存中覆寫 | 否 | 勾選此選項即可覆寫封存路徑中的檔案 (如果已存在)。
-CAML 查詢 | 否，進階 | 輸入有效的 CAML 查詢來篩選文件。 例如，輸入:  `<Where><Geq><FieldRef Name='ID'/><Value Type='Number'>10</Value></Geq></Where>`
+CAML 查詢 | 否，進階 | 輸入有效的 CAML 查詢來篩選文件。 例如，輸入 ︰  `<Where><Geq><FieldRef Name='ID'/><Value Type='Number'>10</Value></Geq></Where>`
 
 #### 輸出
 
@@ -221,7 +221,7 @@ ItemId | 加入文件庫的文件項目識別碼。
 
 名稱 | 必要 | 說明
 --- | --- | ---
-文件相對 URI | 否 | 輸入相對於「共用文件」的文件 URL。 例如，輸入: *myspec1、 myfolder/orders*。
+文件相對 URI | 否 | 輸入相對於「共用文件」的文件 URL。 例如，輸入 ︰ *myspec1、 myfolder/orders*。
 
 #### 輸出
 
@@ -245,7 +245,7 @@ Param2* | 這是位於文件庫中文件的其中一個參數。
 
 名稱 | 必要 | 說明
 --- | --- | ---
-文件相對 URI | 否 | 輸入相對於「共用文件」的文件 URL。 例如，輸入: *myspec1、 myfolder/orders*。
+文件相對 URI | 否 | 輸入相對於「共用文件」的文件 URL。 例如，輸入 ︰ *myspec1、 myfolder/orders*。
 
 #### 輸出
 
@@ -347,13 +347,13 @@ ItemId | 是 | 清單項目的項目識別碼。
 名稱 | 必要 | 說明
 --- | --- | ---
 檢視名稱 | 否 | 輸入有效檢視用來篩選要挑選的文件。 例如，輸入「核准的訂單」。 若要處理所有的現有文件，請將此欄位留空。
-CAML 查詢 | 否 | 輸入有效的 CAML 查詢來篩選文件。 例如，輸入:  `<Where><Geq><FieldRef Name='ID'/><Value Type='Number'>10</Value></Geq></Where>`
+CAML 查詢 | 否 | 輸入有效的 CAML 查詢來篩選文件。 例如，輸入 ︰  `<Where><Geq><FieldRef Name='ID'/><Value Type='Number'>10</Value></Geq></Where>`
 
 #### 輸出
 
 名稱 | 說明
 --- | ---
-文件 | 所有文件的陣列。 每份文件具有下列欄位: <ul><li>文件 []</li><li>名稱</li><li>項目識別碼</li><li>項目完整 URL</li><li>進階</li><li>項目編輯 URL</li><li>清單名稱</li><li>清單完整 URL</li></ul>
+文件 | 所有文件的陣列。 每份文件具有下列欄位 ︰ <ul><li>文件 []</li><li>名稱</li><li>項目識別碼</li><li>項目完整 URL</li><li>進階</li><li>項目編輯 URL</li><li>清單名稱</li><li>清單完整 URL</li></ul>
 狀態 | 成功插入清單項目會傳回狀態碼 200 (確定)。
 
 
@@ -385,7 +385,7 @@ ContentTransferEncoding | 是 | 訊息的內容傳送編碼。 ("none"或"base64
 
 名稱 | 必要 | 說明
 --- | --- | ---
-文件相對 URI | 否 | 輸入相對於「共用文件」的文件 URL。 例如，輸入: *myspec1、 myfolder/orders*。
+文件相對 URI | 否 | 輸入相對於「共用文件」的文件 URL。 例如，輸入 ︰ *myspec1、 myfolder/orders*。
 檔案類型 | 是 | 輸入檔案是二進位檔案或文字檔案。
 
 #### 輸出
@@ -463,9 +463,9 @@ App Service 使用混合式組態管理員來安全地連線到內部部署系�
 請參閱 [使用混合式連線管理員](app-service-logic-hybrid-connection-manager.md)。
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -480,4 +480,5 @@ App Service 使用混合式組態管理員來安全地連線到內部部署系�
 [5]: ./media/app-service-logic-connector-sharepoint/image_4.jpg
 [6]: ./media/app-service-logic-connector-sharepoint/image_5.png
 [7]: ./media/app-service-logic-connector-sharepoint/image_6.png
+
 

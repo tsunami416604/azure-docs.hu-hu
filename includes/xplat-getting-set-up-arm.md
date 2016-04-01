@@ -35,7 +35,7 @@
     warn:    Please note that currently you can login only via Microsoft organizational account or service principal. For instructions on how to set them up, please read http://aka.ms/Dhf67j.
     Username: ahmet@contoso.onmicrosoft.com
     Password: *********
-    |info:    Added subscription Visual Studio Ultimate with MSDN
+  	|info:    Added subscription Visual Studio Ultimate with MSDN
     info:    Setting subscription Visual Studio Ultimate with MSDN as default
     info:    Added subscription Azure Free Trial
     +
@@ -63,4 +63,5 @@
     info:    New mode is arm
 
 > [AZURE.NOTE] 您可以切換回使用 Azure 服務管理命令輸入 `azure config mode asm`。
+
 

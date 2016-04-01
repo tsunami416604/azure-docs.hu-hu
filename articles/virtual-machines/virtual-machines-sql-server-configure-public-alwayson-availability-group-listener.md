@@ -118,16 +118,17 @@
 
 ## 測試可用性群組接聽程式 (位於網際網路)
 
-若要從虛擬網路外部存取接聽程式，您必須使用外部/公用負載平衡 (如本主題中所述) 而非 ILB，因為 ILB 僅能在相同的 VNet 中進行存取。 在連接字串中，您將指定雲端服務名稱。 例如，如果您必須具有名稱的雲端服務 *mycloudservice*, ，sqlcmd 陳述式將如下:
+若要從虛擬網路外部存取接聽程式，您必須使用外部/公用負載平衡 (如本主題中所述) 而非 ILB，因為 ILB 僅能在相同的 VNet 中進行存取。 在連接字串中，您將指定雲端服務名稱。 例如，如果您必須具有名稱的雲端服務 *mycloudservice*, ，sqlcmd 陳述式將如下 ︰
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-不同於先前範例，必須使用 SQL 驗證，因為呼叫端無法透過網際網路使用 Windows 驗證。 如需詳細資訊，請參閱 [Azure VM 中的 AlwaysOn 可用性群組: 用戶端連線案例](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)。 使用 SQL 驗證時，請確定您在兩個複本上建立相同的登入。 如需疑難排解與可用性群組的登入的詳細資訊，請參閱 [如何將登入對應，或使用包含連接到其他複本，並將對應至可用性資料庫的 SQL 資料庫使用者](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)。
+不同於先前範例，必須使用 SQL 驗證，因為呼叫端無法透過網際網路使用 Windows 驗證。 如需詳細資訊，請參閱 [Azure VM 中的 AlwaysOn 可用性群組 ︰ 用戶端連線案例](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)。 使用 SQL 驗證時，請確定您在兩個複本上建立相同的登入。 如需疑難排解與可用性群組的登入的詳細資訊，請參閱 [如何將登入對應，或使用包含連接到其他複本，並將對應至可用性資料庫的 SQL 資料庫使用者](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)。
 
 如果 AlwaysOn 複本位於不同子網路中，用戶端必須指定 **MultisubnetFailover = True** 連接字串中。 這會導致對於不同子網路中的複本進行平行連接嘗試。 請注意，此情況包含跨區域的 AlwaysOn 可用性群組部署。
 
 ## 後續步驟
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
+
 
 

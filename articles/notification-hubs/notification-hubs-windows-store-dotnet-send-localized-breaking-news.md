@@ -24,7 +24,7 @@
 
 ##概觀
 
-本主題說明如何使用 **範本** Azure 通知中樞廣播已由語言和裝置當地語系化的即時新聞通知功能。 在本教學課程開始在 [使用通知中樞傳送即時新聞] 建立的 Windows 市集應用程式。 完成之後，您將可註冊您感興趣的類別、指定您要接收哪種語言的通知，並以該語言針對選取的類別接收推播通知。
+本主題說明如何使用 **範本** Azure 通知中樞廣播已由語言和裝置當地語系化的即時新聞通知功能。 本教學課程中您開始使用 Windows 市集應用程式中建立 [Use Notification Hubs to send breaking news]。 完成之後，您將可註冊您感興趣的類別、指定您要接收哪種語言的通知，並以該語言針對選取的類別接收推播通知。
 
 
 此案例分成兩部分：
@@ -35,16 +35,16 @@
 
 
 
-##先決條件
+##必要條件
 
-您必須已完成 [使用通知中心傳送即時新聞] 教學課程中並具有可用的程式碼，因為本教學課程是直接根據該程式碼而建置。
+您必須已完成 [Use Notification Hubs to send breaking news] 教學課程中並具有可用的程式碼，因為本教學課程是直接根據該程式碼而建置。
 
 您也需要 Visual Studio 2012 或更新版本。
 
 
 ##範本概念
 
-在 [使用通知中樞傳送即時新聞] 所建置的應用程式，使用 **標記** 來訂閱不同即時新聞類別的通知。
+在 [Use Notification Hubs to send breaking news] 建置的應用程式，使用 **標記** 來訂閱不同即時新聞類別的通知。
 但有許多應用程式是以多個市場為目標的，因此需要當地語系化。 這表示通知本身的內容必須進行當地語系化，並傳遞至正確的裝置集。
 在本主題中，我們將說明如何使用 **範本** 輕鬆地傳遞已當地語系化的即時新聞通知的通知中樞功能。
 
@@ -75,7 +75,7 @@
 
 ##應用程式使用者介面
 
-現在，我們將修改您建立主題 [使用通知中心傳送即時新聞] 中的即時新聞應用程式傳送當地語系化的即時新聞使用範本。
+現在，我們將修改您建立主題中的即時新聞應用程式 [Use Notification Hubs to send breaking news] 傳送當地語系化的即時新聞使用範本。
 
 在您的 Windows 市集應用程式中：
 
@@ -137,7 +137,7 @@
             return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
         }
 
-    請注意，而不是呼叫 *RegisterNativeAsync* 我們呼叫的方法 *RegisterTemplateAsync*: 我們將會註冊讓範本依循地區設定的特定通知格式。 我們也為範本提供名稱 ("localizedWNSTemplateExample")，因為我們可能會想註冊多個範本 (例如，一個供快顯通知使用，一個供磚使用)，而且我們必須為其命名，才能加以更新或刪除。
+    請注意，而不是呼叫 *RegisterNativeAsync* 我們呼叫的方法 *RegisterTemplateAsync*︰ 我們將會註冊讓範本依循地區設定的特定通知格式。 我們也為範本提供名稱 ("localizedWNSTemplateExample")，因為我們可能會想註冊多個範本 (例如，一個供快顯通知使用，一個供磚使用)，而且我們必須為其命名，才能加以更新或刪除。
 
     請注意，如果有裝置使用相同的標籤註冊多個範本，一個以該標籤為目標的傳入訊息將會使多個通知傳遞至裝置 (每個範本各一個)。 此行為在相同的邏輯訊息必須產生多個視覺化通知時將有所幫助，例如，在一個 Windows 市集應用程式中同時顯示徽章和快顯通知。
 
@@ -228,4 +228,5 @@
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+
 

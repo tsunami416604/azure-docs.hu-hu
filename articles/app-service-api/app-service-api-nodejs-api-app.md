@@ -1,11 +1,11 @@
 <properties
-    pageTitle ="建置和部署 Node.js API 應用程式在 Azure App Service 中的 」
-    描述 = 「"了解如何建立 Node.js API 應用程式封裝，並將它部署至 Azure App Service。
-    服務 ="app-service\api"
-    documentationCenter ="node"
-    作者 ="bradygaster"
-    管理員 ="mohisri"，
-    編輯器 ="tdykstra"/ >
+    pageTitle="在 Azure App Service 中建置和部署 Node.js API 應用程式"
+    description="了解如何建立 Node.js API 應用程式封裝並將其部署至 Azure App Service。"
+    services="app-service\api"
+    documentationCenter="node"
+    authors="bradygaster"
+    manager="mohisri",
+    editor="tdykstra "/>
 
 <tags
     ms.service="app-service-api"
@@ -20,8 +20,8 @@
 
 [AZURE.INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-## 先決條件
-1. [Node.js](nodejs.org) (這個範例會假設已安裝的 Node.js 版本 4.2.2) 的開發機器上執行
+## 必要條件
+1. [Node.js](nodejs.org) （這個範例會假設已安裝的 Node.js 版本 4.2.2） 的開發機器上執行
 1. [GitHub](https://github.com/) 帳戶
 1. Microsoft Azure [免費試用帳戶](https://azure.microsoft.com/pricing/free-trial/)
 1. 安裝在本機開發工作站上的 Git
@@ -42,9 +42,9 @@
 
         yo swaggerize
         
-    **注意:** API.json 不一樣 *apiapp.json* 從 API 應用程式預覽時間範圍內的檔案。
+    **注意 ︰** API.json 不一樣 *apiapp.json* 從 API 應用程式預覽時間範圍內的檔案。
 
-1. Swaggerize 會建立處理常式，並設定 Swagger 中繼資料中包含的結構 **api.json**。 在建構處理期間，系統會詢問您各種問題，如 GitHub 使用者名稱和電子郵件地址。 這項資訊用來產生 **package.json** 應用程式的資料夾中的檔案。 出現的所有問題樣板程序期間，最重要的都是您選取 **express** 當要求時，此範例會造成使用 API 應用程式在 Azure 中 (或本機) 執行時，稍後再產生的 Swagger 說明頁面，快速檢視引擎。  
+1. Swaggerize 會建立處理常式，並設定 Swagger 中繼資料中包含的結構 **api.json**。 在建構處理期間，系統會詢問您各種問題，如 GitHub 使用者名稱和電子郵件地址。 這項資訊用來產生 **package.json** 應用程式的資料夾中的檔案。 出現的所有問題樣板程序期間，最重要的都是您選取 **express** 當要求時，此範例會造成使用 API 應用程式在 Azure 中 （或本機） 執行時，稍後再產生的 Swagger 說明頁面，快速檢視引擎。  
 
     ![Swaggerize 命令列](media/app-service-api-nodejs-api-app/swaggerize-command-line.png)
     
@@ -130,7 +130,7 @@
 
     執行此命令將會啟動 Node.js HTTP 伺服器並開始為您的 API 提供服務。 
 
-1. 當您瀏覽至 **http://localhost:8000//contacts** 您會看到 JSON 輸出的連絡人清單 (或提示您下載它，視您的瀏覽器而定)。 
+1. 當您瀏覽至 **http://localhost:8000//contacts** 您會看到 JSON 輸出的連絡人清單 （或提示您下載它，視您的瀏覽器而定）。 
 
     ![所有連絡人 Api 呼叫](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
 
@@ -138,7 +138,7 @@
 
     ![特定連絡人 Api 呼叫](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
 
-1. 透過提供的 Swagger JSON 資料 **/swagger** 端點:
+1. 透過提供的 Swagger JSON 資料 **/swagger** 端點 ︰
 
     ![連絡人 Swagger Json](media/app-service-api-nodejs-api-app/contacts-swagger-json.png)
 
@@ -181,7 +181,7 @@
 
     ![從入口網站取得 Git Url](media/app-service-api-nodejs-api-app/get-the-git-url-from-the-portal.png)
 
-    **請注意**: 您必須在下一個步驟中的 URL 以確定儲存到目前的 Git clone。
+    **請注意**︰ 您必須在下一個步驟中的 URL 以確定儲存到目前的 Git clone。
 
 現在，您有新的 API 應用程式並以 Git 儲存機制進行備份，您可以將程式碼推送至儲存機制並利用 Azure 的連續部署功能來自動部署變更。 
 
@@ -202,7 +202,7 @@
 
         git remote add azure YOUR_GIT_CLONE_URL_HERE
 
-    **請注意**: 您會想要 「 YOUR_GIT_CLONE_URL_HERE 」 上述字串取代為您稍早複製您的 Git 複製 URL。 
+    **請注意**︰ 您會想要 「 YOUR_GIT_CLONE_URL_HERE 」 上述字串取代為您稍早複製您的 Git 複製 URL。 
 
 1. 接著，從 Node.js 命令列體驗執行以下兩個命令。 
 
@@ -229,9 +229,9 @@
 
     ![部署已完成](media/app-service-api-nodejs-api-app/deployment-completed.png)
 
-1. 使用 Postman 或 Fiddler (或您的 web 瀏覽器)，例如 REST API 用戶端 API 呼叫，應該會提供您連絡人的 URL **/連絡** API 應用程式端點。 
+1. 使用 Postman 或 Fiddler （或您的 web 瀏覽器），例如 REST API 用戶端 API 呼叫，應該會提供您連絡人的 URL **/連絡** API 應用程式端點。 
 
-    **注意:** 的 URL 會類似 http://myapiapp.azurewebsites.net/contacts
+    **注意 ︰** 的 URL 會類似 http://myapiapp.azurewebsites.net/contacts
 
     當您對此端點發出 GET 要求時，您應會看到您的 API 應用程式的 JSON 輸出。
 
@@ -242,3 +242,4 @@
 此時您已使用 Node.js 成功建立並部署第一個 API 應用程式。 下一個教學課程，在 API 應用程式取得如何啟動系列的節目以 [取用 API 應用程式，從 JavaScript 用戶端，使用 CORS](app-service-api-cors-consume-javascript.md)。
 
 為了根據此範例進行建置，您可以將程式碼加入至處理常式，以便在資料庫中或在 API 應用程式執行個體的磁碟上儲存資料。 既然您已連接 [連續部署]，變更 API 應用程式功能並加以擴充，就如同變更您的程式碼並推送至 Git 儲存機制一樣容易。 
+

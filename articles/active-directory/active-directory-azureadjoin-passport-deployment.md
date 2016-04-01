@@ -25,8 +25,8 @@
 如果要根據 Microsoft Passport 金鑰部署使用者憑證，您需要下列項目：
 
 - **System Center Configuration Manager 技術預覽版本 1509年**。 如需詳細資訊，請參閱 [Microsoft System Center Configuration Manager 技術 Preview](https://technet.microsoft.com/library/dn965439.aspx#BKMK_TP3Update)。 和 [System Center Configuration Manager 小組部落格](http://blogs.technet.com/b/configmgrteam/archive/2015/09/23/now-available-update-for-system-center-config-manager-tp3.aspx)。
-- **PKI 基礎結構**: 若要啟用 Microsoft Passport for Work 使用使用者憑證，您必須備妥 PKI 基礎結構。 如果您沒有或不想為了使用者憑證而使用它，您可以部署新版 Windows Server 的網域控制站 (DC)：
- - **部署新版本的 Windows Server 的 DC**: 全新的 Windows Server 組建 10551 或更新版本上 (Iso 可供下載 [Signiant 媒體交換](https://datatransfer.microsoft.com/signiant_media_exchange/spring/main?sdkAccessible=true)) 遵循步驟 [現有網域中安裝複本 DC](https://technet.microsoft.com/en-us/library/jj574134.aspx) 或 [如果建立全新的環境安裝新的 Active Directory 樹系](https://technet.microsoft.com/en-us/library/jj574134.aspx)。
+- **PKI 基礎結構**︰ 若要啟用 Microsoft Passport for Work 使用使用者憑證，您必須備妥 PKI 基礎結構。 如果您沒有或不想為了使用者憑證而使用它，您可以部署新版 Windows Server 的網域控制站 (DC)：
+ - **部署新版本的 Windows Server 的 DC**︰ 全新的 Windows Server 組建 10551 或更新版本上 (Iso 可供下載 [Signiant 媒體交換](https://datatransfer.microsoft.com/signiant_media_exchange/spring/main?sdkAccessible=true)) 遵循步驟 [現有網域中安裝複本 DC](https://technet.microsoft.com/en-us/library/jj574134.aspx) 或 [如果建立全新的環境安裝新的 Active Directory 樹系](https://technet.microsoft.com/en-us/library/jj574134.aspx)。
 
 ## 透過 Active Directory 中的群組原則設定 Microsoft Passport for Work
 
@@ -115,3 +115,4 @@
 * [了解適用於 Azure AD Join 的使用案例](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [將已加入網域的裝置連接到 Azure AD 以體驗 Windows 10](active-directory-azureadjoin-devices-group-policy.md)
 * [設定 Azure AD Join](active-directory-azureadjoin-setup.md)
+

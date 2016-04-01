@@ -26,7 +26,7 @@
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
-##<a name="create-client"></a>如何: 建立行動服務用戶端
+##<a name="create-client"></a>作法：建立行動服務用戶端
 
 您新增行動服務用戶端參考的方式取決於您的應用程式平台，包括下列項目：
 
@@ -45,16 +45,16 @@
 
 您必須將預留位置 `AppUrl` 與您的行動服務的應用程式 URL 和 `AppKey` 與應用程式索引鍵，您從取得 [Azure 傳統入口網站](http://manage.windowsazure.com/)。
 
->[AZURE.IMPORTANT]應用程式金鑰用來針對行動服務中，篩選出隨機要求，它會隨應用程式。 因為此金鑰並未加密，所以並不安全。 若要真正保護行動服務資料的安全，您必須改在允許存取之前驗證使用者。 如需詳細資訊，請參閱 [How to: 驗證使用者](#authentication)。
+>[AZURE.IMPORTANT]應用程式金鑰用來針對行動服務中，篩選出隨機要求，它會隨應用程式。 因為此金鑰並未加密，所以並不安全。 若要真正保護行動服務資料的安全，您必須改在允許存取之前驗證使用者。 如需詳細資訊，請參閱 [How to ︰ 驗證使用者](#authentication)。
 
-##<a name="querying"></a>如何: 查詢行動服務中的資料
+##<a name="querying"></a>作法：查詢行動服務中的資料
 
 存取或修改 SQL Database 資料表中資料的所有程式碼，都會在 `MobileServiceTable` 物件上呼叫函數。 您可以在 `MobileServiceClient` 執行個體上呼叫 `getTable()` 函數，以取得資料表的參考。
 
     var todoItemTable = client.getTable('todoitem');
 
 
-### <a name="filtering"></a>如何: 篩選傳回的資料
+### <a name="filtering"></a>作法：篩選傳回的資料
 
 下列程式碼說明如何在查詢中包含 `where` 子句，以篩選資料。 它會傳回所有項目從 `todoItemTable` complete 欄位等於 `false`。 `todoItemTable` 是我們先前建立的行動服務資料表的參考。 where 函數會套用資料列篩選述語來查詢資料表。 它接受一個定義資料列篩選器的 JSON 物件或函數做為引數，然後傳回可進一步編寫的查詢。
 
@@ -66,7 +66,7 @@
         alert("Error: " + err);
     });
 
-藉由呼叫 `where` 上在 Query 物件並傳遞物件做為參數，我們指示行動服務傳回的資料列的 `complete` 資料行包含 `false` 值。 此外，看看下面的，要求 URI，並注意我們打算修改查詢字串本身:
+藉由呼叫 `where` 上在 Query 物件並傳遞物件做為參數，我們指示行動服務傳回的資料列的 `complete` 資料行包含 `false` 值。 此外，看看下面的，要求 URI，並注意我們打算修改查詢字串本身 ︰
 
     GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 
@@ -160,7 +160,7 @@
 
 您可以將 `where` 與 `orderBy`、`take` 和 `skip` 合併。 如需詳細資料，請參閱下一節。
 
-### <a name="sorting"></a>如何: 排序傳回的資料
+### <a name="sorting"></a>作法：排序傳回的資料
 
 下列程式碼說明如何在查詢中加入 `orderBy` 或 `orderByDescending` 函數，以將資料排序。 它會從 `todoItemTable` 傳回項目，並依據 `text` 欄位以遞增順序排列。 依預設，伺服器只傳回前 50 個元素。
 
@@ -185,7 +185,7 @@
        alert("Error: " + err);
     });
 
-### <a name="paging"></a>如何: 以分頁方式傳回資料
+### <a name="paging"></a>作法：以分頁方式傳回資料
 
 根據預設，行動服務在指定的要求中只會傳回 50 個資料列，除非用戶端在回應中明確要求更多資料。 下列程式碼顯示如何在查詢中使用 `take` 和 `skip` 子句，以便在傳回的資料中實作分頁。  執行下列查詢時，會傳回資料表中的前三個項目。
 
@@ -209,7 +209,7 @@
 
 這是一個簡化的案例，可將硬式編碼的分頁值傳遞至 `take` 和 `skip` 函數。 在實際的應用程式中，您可以搭配頁面巡覽區控制項或類似的 UI 來使用類似上述的查詢，讓使用者導覽至上一頁和下一頁。
 
-### <a name="selecting"></a>如何: 選取特定資料行
+### <a name="selecting"></a>作法：選取特定資料欄
 
 若要指定將哪些屬性集包含在結果中，您可以在查詢中加入 `select` 子句。 例如，下列程式碼會從 `todoItemTable` 的每個資料列傳回 `id`、`complete` 和 `text` 屬性：
 
@@ -235,7 +235,7 @@
     }, function (err) {
        alert("Error: " + err);
 
-### <a name="lookingup"></a>如何: 按識別碼查詢資料
+### <a name="lookingup"></a>作法：按識別碼查詢資料
 
 `lookup` 函數只取得 `id` 值，並從包含該識別碼的資料庫中傳回物件。 資料庫的資料表是使用整數或字串 `id` 資料欄所建立。 字串 `id` 資料欄是預設值。
 
@@ -259,7 +259,7 @@
 
 >[AZURE.NOTE]當您提供原始的 OData 查詢選項字串至 `read` 函式，您不能也在相同查詢中使用查詢產生器方法。 在此情況下，您必須將整個查詢撰寫成 OData 查詢字串。 如需 OData 系統查詢選項的詳細資訊，請參閱 [OData system query options reference]。
 
-##<a name="inserting"></a>如何: 將資料插入行動服務
+##<a name="inserting"></a>作法：將資料插入行動服務
 
 下列程式碼將說明如何將新的資料列插入資料表中。 用戶端可以將 POST 要求傳送至行動服務來要求插入一列資料。 要求內文中以 JSON 物件形式包含要插入的資料。
 
@@ -295,11 +295,11 @@
 + 輕鬆合併不同資料表或資料庫的記錄。
 + 識別碼值與應用程式邏輯的整合更理想。
 
-當插入的記錄上尚未設定字串識別碼值時，行動服務會產生唯一值做為識別碼。 如需有關如何產生您自己的識別碼值，用戶端上或在.NET 後端，請參閱 [How to: 產生唯一的識別碼值](mobile-services-how-to-use-server-scripts.md#generate-guids)。
+當插入的記錄上尚未設定字串識別碼值時，行動服務會產生唯一值做為識別碼。 如需有關如何產生您自己的識別碼值，用戶端上或在.NET 後端，請參閱 [How to ︰ 產生唯一的識別碼值](mobile-services-how-to-use-server-scripts.md#generate-guids)。
 
 您也可以在資料表中使用整數識別碼。 若要使用整數識別碼，您必須使用 `--integerId` 選項，以 `mobile table create` 命令建立資料表。 此命令需要在 Azure 的命令列介面 (CLI) 中執行。 如需有關如何使用 CLI 的詳細資訊，請參閱 [CLI 管理行動服務資料表](../virtual-machines-command-line-tools.md#Mobile_Tables)。
 
-##<a name="modifying"></a>如何: 修改行動服務中的資料
+##<a name="modifying"></a>作法：修改行動服務中的資料
 
 下列程式碼顯示如何更新資料表中的資料。 用戶端可以將 PATCH 要求傳送至行動服務來要求更新一列資料。 要求內文中以 JSON 物件形式包含要更新的特定欄位。 它會更新 `todoItemTable` 資料表中的現有項目。
 
@@ -321,7 +321,7 @@
        alert("Error: " + err);
     });
 
-##<a name="deleting"></a>如何: 刪除行動服務中的資料
+##<a name="deleting"></a>作法：刪除行動服務中的資料
 
 下列程式碼顯示如何從資料表中刪除資料。 用戶端可以將 DELETE 要求傳送至行動服務來要求刪除一列資料。 它會刪除資料表 todoItemTable 中的現有項目。
 
@@ -341,7 +341,7 @@
        alert("Error: " + err);
     });
 
-##<a name="binding"></a>如何: 在使用者介面中顯示資料
+##<a name="binding"></a>作法：在使用者介面中顯示資料
 
 本節說明如何使用 UI 元素來顯示傳回的資料物件。 若要查詢 `todoItemTable` 中的項目，並顯示在非常簡單的清單中，您可以執行下列範例程式碼。 不做任何選擇、篩選或排序。
 
@@ -365,9 +365,9 @@
 
 在 Windows 市集應用程式中，查詢的結果可以用來建立 [WinJS.Binding.List] 物件，可做為資料來源繫結 [ListView] 物件。 如需詳細資訊，請參閱 [Data binding (Windows Store apps using JavaScript and HTML)]。
 
-##<a name="custom-api"></a>如何: 呼叫自訂 API
+##<a name="custom-api"></a>作法：呼叫自訂 API
 
-自訂 API 可讓您定義自訂端點，並用來公開無法對應插入、更新、刪除或讀取等操作的伺服器功能。 透過使用自訂 API，您可以進一步控制訊息，包括讀取與設定 HTTP 訊息標頭，並定義除了 JSON 以外的訊息內文格式。 如需如何在您的行動服務中建立自訂 API 的範例，請參閱 [How to: 定義自訂 API 端點](mobile-services-dotnet-backend-define-custom-api.md)。
+自訂 API 可讓您定義自訂端點，並用來公開無法對應插入、更新、刪除或讀取等操作的伺服器功能。 透過使用自訂 API，您可以進一步控制訊息，包括讀取與設定 HTTP 訊息標頭，並定義除了 JSON 以外的訊息內文格式。 如需如何在您的行動服務中建立自訂 API 的範例，請參閱 [How to ︰ 定義自訂 API 端點](mobile-services-dotnet-backend-define-custom-api.md)。
 
 從用戶端呼叫自訂 API 呼叫 [invokeApi](https://github.com/Azure/azure-mobile-services/blob/master/sdk/Javascript/src/MobileServiceClient.js#L337) 方法 **MobileServiceClient**。 例如，下列程式碼會傳送 POST 要求至 **completeAll** 行動服務上的 API:
 
@@ -385,17 +385,17 @@
 
 如需更實際的範例和更完整的討論 **invokeApi**, ，請參閱 [Azure 行動服務用戶端 Sdk 中的自訂 API](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)。
 
-##<a name="authentication"></a>如何: 驗證使用者
+##<a name="authentication"></a>作法：驗證使用者
 
 行動服務支援使用各種外部識別提供者 (Facebook、Google、Microsoft 帳戶以及 Twitter) 來驗證與授權應用程式使用者。 您可以在資料表上設定權限，以限制僅有通過驗證使用者可以存取特定操作。 您也可以使用通過驗證使用者的身分識別來實作伺服器指令碼中的授權規則。 如需詳細資訊，請參閱 [開始使用驗證] 教學課程。
 
->[AZURE.NOTE] 使用驗證時在 PhoneGap 或 Cordova 應用程式中，您也必須將下列外掛程式加入專案:
+>[AZURE.NOTE] 使用驗證時在 PhoneGap 或 Cordova 應用程式中，您也必須將下列外掛程式加入專案 ︰
 >
 >+ https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git
 >+ https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
 
 
-支援兩種驗證流程: _伺服器流程_ 和 _用戶端流程_。 由於伺服器流程採用提供者的 Web 驗證介面，因此所提供的驗證體驗也最為簡單。 用戶端流程依賴提供者專屬的裝置專用 SDK，可以與裝置特有的功能深入整合，例如單一登入。
+支援兩種驗證流程 ︰ _伺服器流程_ 和 _用戶端流程_。 由於伺服器流程採用提供者的 Web 驗證介面，因此所提供的驗證體驗也最為簡單。 用戶端流程依賴提供者專屬的裝置專用 SDK，可以與裝置特有的功能深入整合，例如單一登入。
 
 ###伺服器流程
 若要讓行動服務管理 Windows 市集或 HTML5 應用程式中的驗證程序，
@@ -533,7 +533,7 @@ In some cases, the call to the login method can be avoided after the first time 
 
 >[AZURE.NOTE]此外掛程式目前只支援 iOS 和 Android 裝置。 如需也包含 Windows 裝置的解決方案，請參閱文章 [推播通知到 PhoneGap 應用程式使用通知中樞整合](http://blogs.msdn.com/b/azuremobile/archive/2014/06/17/push-notifications-to-phonegap-apps-using-notification-hubs-integration.aspx)。
 
-##<a name="errors"></a>如何: 處理錯誤
+##<a name="errors"></a>作法：處理錯誤
 
 在行動服務中遇到、驗證及解決錯誤的方式有數種。
 
@@ -573,11 +573,11 @@ In some cases, the call to the login method can be avoided after the first time 
     client.getTable("tablename").read()
         .then(function (data) { /* do something */ }, handleError);
 
-##<a name="promises"></a>如何: 使用 promise
+##<a name="promises"></a>作法：使用 Promise
 
 Promise 提供一種機制，可排定工作來處理尚未計算的值。 這是一種管理非同步 API 互動的抽象觀念。
 
-當所提供的函數順利完成或發生錯誤時，`done` Promise 就會立即執行。 與 `then` Promise 不同，此函數一定會擲回函數內未處理的任何錯誤，而且在處理常式執行完成之後，會擲回原本由 then 在錯誤狀態下以 Promise 傳回的任何錯誤。 如需詳細資訊，請參閱 [完成]。
+當所提供的函數順利完成或發生錯誤時，`done` Promise 就會立即執行。 與 `then` Promise 不同，此函數一定會擲回函數內未處理的任何錯誤，而且在處理常式執行完成之後，會擲回原本由 then 在錯誤狀態下以 Promise 傳回的任何錯誤。 如需詳細資訊，請參閱 [done]。
 
     promise.done(onComplete, onError);
 
@@ -590,7 +590,7 @@ Promise 提供一種機制，可排定工作來處理尚未計算的值。 這�
        alert("Error: " + err);
     });
 
-`then` Promise 與 `done` Promise 相同，但不同於 `then` Promise 的是，`done` 一定會擲回函數內未處理的任何錯誤。 如果您沒有提供錯誤處理常式給 `then`，而作業發生錯誤，它不會擲回例外狀兄，但會傳回錯誤狀態的 Promise。 如需詳細資訊，請參閱 [然後]。
+`then` Promise 與 `done` Promise 相同，但不同於 `then` Promise 的是，`done` 一定會擲回函數內未處理的任何錯誤。 如果您沒有提供錯誤處理常式給 `then`，而作業發生錯誤，它不會擲回例外狀兄，但會傳回錯誤狀態的 Promise。 如需詳細資訊，請參閱 [then]。
 
     promise.then(onComplete, onError).done( /* Your success and error handlers */ );
 
@@ -603,7 +603,7 @@ Promise 提供一種機制，可排定工作來處理尚未計算的值。 這�
        alert("Error: " + err);
     });
 
-Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳回的 Promise 上呼叫 `then` 或 `done`，以鏈結 Promise 作業。 將 `then` 用於作業的過渡階段 (例如 `.then().then()`)，將 `done` 用於作業的最終階段 (例如 `.then().then().done()`)。  您可以鏈結多個 `then` 函數，因為 `then` 會傳回 Pomise。 您無法鏈結多個 `done` 方法，因為它會傳回 undefined。 [深入了解 then 與 done 之間的差異]。
+Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳回的 Promise 上呼叫 `then` 或 `done`，以鏈結 Promise 作業。 將 `then` 用於作業的過渡階段 (例如 `.then().then()`)，將 `done` 用於作業的最終階段 (例如 `.then().then().done()`)。  您可以鏈結多個 `then` 函數，因為 `then` 會傳回 Pomise。 您無法鏈結多個 `done` 方法，因為它會傳回 undefined。 [Learn more about the  differences between then and done].
 
     todoItemTable.insert({
        text: "foo"
@@ -614,7 +614,7 @@ Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳
        alert(JSON.stringify(insertedAndUpdated));
     })
 
-##<a name="customizing"></a>如何: 自訂要求標頭
+##<a name="customizing"></a>作法：自訂用戶端要求標頭
 
 您可以使用 `withFilter` 函數來傳送自訂要求標頭，在篩選器內讀取和寫入即將傳送的要求的任何屬性。 如果伺服器端指令碼需要自訂 HTTP 標頭或可透過它而增強，您可以新增自訂 HTTP 標頭。
 
@@ -626,7 +626,7 @@ Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳
 
 篩選器的用途比自訂要求標頭更多。 它們可用來檢查或變更要求、 檢查或變更回應、 略過網路呼叫、 傳送多個呼叫等等。
 
-##<a name="hostnames"></a>如何: 使用跨原始資源共用
+##<a name="hostnames"></a>作法：使用跨原始資源共用
 
 若要控制允許哪些網站與您的行動服務互動，以及傳送要求至您的行動服務，請務必將您用來代管行動服務的網站主機名稱，加入跨原始資源共用 (Cross-Origin Resource Sharing，CORS) 白名單。 對於 JavaScript 後端行動服務，您可以設定允許清單中的 [設定] 索引標籤上 [Azure 傳統入口網站](https://manage.windowsazure.com)。 需要的話可使用萬用字元。 依預設，新的行動服務會指示瀏覽器只允許來自 `localhost` 的存取，而跨原始資源共用 (CORS) 可讓在外部主機名稱的瀏覽器中執行的 JavaScript 程式碼與您的行動服務互動。  WinJS 應用程式不需要此組態。
 
@@ -668,4 +668,5 @@ Promise 有許多不同的使用方式。 您可以在前一個 `then` 函數傳
 [login]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/Javascript/src/MobileServiceClient.js#L301
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData system query options reference]: http://go.microsoft.com/fwlink/p/?LinkId=444502
+
 

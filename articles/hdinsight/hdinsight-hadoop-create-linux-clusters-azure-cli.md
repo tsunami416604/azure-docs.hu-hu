@@ -23,7 +23,7 @@
 
 Azure CLI 是可讓您管理 Azure 服務的跨平台命令列公用工具。 它可搭配 Azure 資源管理範本用來建立 HDInsight 叢集，以及相關聯的儲存體帳戶和其他服務。
 
-Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的所有資源 (例如 HDInsight。)此範本方法可讓您定義的所有資源，您需要在一個範本中，HDInsight，並透過整個管理群組進行變更 __部署__ ，將變更套用至群組。
+Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的所有資源 （例如 HDInsight。)此範本方法可讓您定義的所有資源，您需要在一個範本中，HDInsight，並透過整個管理群組進行變更 __部署__ ，將變更套用至群組。
 
 本文件中的步驟將逐步完成使用 Azure CLI 和範本建立新 HDInsight 叢集的程序。
 
@@ -31,7 +31,7 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 >
 > 如需有關在節點大小和相關聯的成本的詳細資訊，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-##先決條件
+##必要條件
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
@@ -64,35 +64,35 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 
     您將需要的檔案 __azuredeploy.json__ 和 __azuredeploy.parameters.json__。 在繼續之前，請在本機複製這些檔案。
 
-5. 開啟 __azuredeploy.parameters.json__ 檔案在編輯器中，並提供值中的項目 `parameters` 區段:
+5. 開啟 __azuredeploy.parameters.json__ 檔案在編輯器中，並提供值中的項目 `parameters` 區段 ︰
 
     * __位置__: 資源將會建立在資料中心。 您可以檢視 `location` 一節中 __azuredeploy.json__ 允許的位置清單的檔案。
     * __clusterName__: HDInsight 叢集的名稱。 這個名稱必須是唯一的，否則部署將會失敗。
-    * __clusterStorageAccountName__: 將 HDInsight 叢集建立的 Azure 儲存體帳戶名稱。 這個名稱必須是唯一的，否則部署將會失敗。
-    * __clusterLoginPassword__: 叢集系統管理員使用者的密碼。 這應該是安全的密碼，因為它是用來存取網站和叢集上的 REST 服務。
-    * __sshUserName__: 第一個建立此叢集的 SSH 使用者名稱。 SSH 將利用此帳戶用來從遠端存取此叢集。
-    * __sshPublicKey__: 如果您使用的範本，需要有 SSH 公開金鑰，您必須加入您的公開金鑰這一行上。 如需產生和使用公開金鑰的詳細資訊，請參閱下列文章：
+    * __clusterStorageAccountName__︰ 將 HDInsight 叢集建立的 Azure 儲存體帳戶名稱。 這個名稱必須是唯一的，否則部署將會失敗。
+    * __clusterLoginPassword__︰ 叢集系統管理員使用者的密碼。 這應該是安全的密碼，因為它是用來存取網站和叢集上的 REST 服務。
+    * __sshUserName__︰ 第一個建立此叢集的 SSH 使用者名稱。 SSH 將利用此帳戶用來從遠端存取此叢集。
+    * __sshPublicKey__︰ 如果您使用的範本，需要有 SSH 公開金鑰，您必須加入您的公開金鑰這一行上。 如需產生和使用公開金鑰的詳細資訊，請參閱下列文章：
 
         * [從 Linux、Unix 或 OS X 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
         * [從 Windows 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-    * __sshPassword__: 如果您使用需要 SSH 密碼的範本，您必須在這一行加入密碼。
+    * __sshPassword__︰ 如果您使用需要 SSH 密碼的範本，您必須在這一行加入密碼。
 
     完成後，請儲存並關閉檔案。
 
-5. 使用下列來建立空的資源群組。 取代 __RESOURCEGROUPNAME__ 與您想要用於此群組的名稱。 取代 __位置__ 您想要建立的資料中心與您的 HDInsight 叢集:
+5. 使用下列來建立空的資源群組。 取代 __RESOURCEGROUPNAME__ 與您想要用於此群組的名稱。 取代 __位置__ 您想要建立的資料中心與您的 HDInsight 叢集 ︰
 
         azure group create RESOURCEGROUPNAME LOCATION
     
     > [AZURE.NOTE] 如果位置名稱包含空格，請將它放在引號中。 例如 "South Central US"。
 
-6. 使用下列命令來建立此資源群組的初始部署。 取代 __PATHTOTEMPLATE__ 的路徑 __azuredeploy.json__ 範本檔案。 取代 __PATHTOPARAMETERSFILE__ 的路徑 __azuredeploy.parameters.json__ 檔案。 取代 __RESOURCEGROUPNAME__ 與您在上一個步驟中建立的群組的名稱:
+6. 使用下列命令來建立此資源群組的初始部署。 取代 __PATHTOTEMPLATE__ 的路徑 __azuredeploy.json__ 範本檔案。 取代 __PATHTOPARAMETERSFILE__ 的路徑 __azuredeploy.parameters.json__ 檔案。 取代 __RESOURCEGROUPNAME__ 與您在上一個步驟中建立的群組的名稱 ︰
 
         azure group deployment create -f PATHTOTEMPLATE -e PATHTOPARAMETERSFILE -g RESOURCEGROUPNAME -n InitialDeployment
 
     一旦接受部署，您應該會看到類似 `group deployment create command ok` 的訊息。
 
-7. 它可能需要一些時間才能完成，約 15 分鐘的時間部署。 您可以檢視使用下列命令的部署資訊。 取代 __RESOURCEGROUPNAME__ 的上一個步驟中使用的資源群組名稱:
+7. 它可能需要一些時間才能完成，約 15 分鐘的時間部署。 您可以檢視使用下列命令的部署資訊。 取代 __RESOURCEGROUPNAME__ 的上一個步驟中使用的資源群組名稱 ︰
 
         azure group log show -l RESOURCEGROUPNAME
     
@@ -120,3 +120,4 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 * [在 HDInsight 上開發適用於 Storm 的 Java 拓撲](hdinsight-storm-develop-java-topology.md)
 * [在 HDInsight 上的 Storm 中使用 Python 元件](hdinsight-storm-develop-python-topology.md)
 * [在 HDInsight 上使用 Storm 部署和監視拓撲](hdinsight-storm-deploy-monitor-topology-linux.md)
+

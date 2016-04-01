@@ -45,7 +45,7 @@
 
 2. 在 **支援封裝** 區段中，按一下 **建立及上傳支援封裝**。
 
-3. 在 **建立及上傳支援封裝** 對話方塊方塊中，執行下列動作:
+3. 在 **建立及上傳支援封裝** 對話方塊方塊中，執行下列動作 ︰
 
     ![建立支援封裝](./media/storsimple-create-manage-support-package/IC740923.png)
                                             
@@ -116,7 +116,7 @@
 | 3      | 認證           | 選用          | 使用這個參數來提供網路共用資料夾的存取認證。                                                                                        |
 | 4      | Force                | 選用          | 用來略過加密複雜密碼確認步驟。                                                                                                                |
 | 5      | PackageTag           | 選用          | 用來指定 Path 下存放支援封裝的目錄。 預設值是 [裝置名稱]-[目前日期和時間：yyyy-MM-dd-HH-mm-ss]。       |
-| 6      | Scope                | 選用          | 指定為 **叢集** (預設值) 來建立兩個控制器的支援封裝。 如果您想要只針對目前的控制器建立套件時，指定 **控制器**。 |
+| 6      | Scope                | 選用          | 指定為 **叢集** （預設值） 來建立兩個控制器的支援封裝。 如果您想要只針對目前的控制器建立套件時，指定 **控制器**。 |
 
 
 ## 編輯支援封裝
@@ -198,6 +198,7 @@
 
 - 了解如何 [用於支援封裝和裝置記錄檔疑難排解裝置部署](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)。 
 - 了解如何 [使用 StorSimple Manager 服務來管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+
 
 
 

@@ -29,7 +29,7 @@
 
 
 
-* **以批次的提供者命名空間 (一次性) 註冊** -之前使用批次帳戶，您必須註冊批次的提供者命名空間。 每個訂用帳戶只需要執行這項作業一次。
+* **以批次的提供者命名空間 （一次性） 註冊** -之前使用批次帳戶，您必須註冊批次的提供者命名空間。 每個訂用帳戶只需要執行這項作業一次。
 
     ```
     Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch
@@ -95,7 +95,7 @@ $context = Get-AzureRmBatchAccountKeys -AccountName <account_name>
 
 您可以將此內容傳入與批次服務互動所使用的 cmdlet **BatchContext** 參數。
 
-> [AZURE.NOTE] 根據預設，帳戶的主要金鑰用於驗證，但您可以明確地選取要使用透過變更 BatchAccountContext 物件的索引鍵 **KeyInUse** 屬性: `$context.KeyInUse = "Secondary"`。
+> [AZURE.NOTE] 根據預設，帳戶的主要金鑰用於驗證，但您可以明確地選取要使用透過變更 BatchAccountContext 物件的索引鍵 **KeyInUse** 屬性 ︰ `$context.KeyInUse = "Secondary"`。
 
 
 ### 查詢資料
@@ -151,4 +151,5 @@ Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 * [如何安裝和設定 Azure PowerShell](../powershell-install-configure.md)
 * [Azure 批次 Cmdlet 參考資料](https://msdn.microsoft.com/library/azure/mt125957.aspx)
 * [有效率地查詢 Batch 服務](batch-efficient-list-queries.md)
+
 

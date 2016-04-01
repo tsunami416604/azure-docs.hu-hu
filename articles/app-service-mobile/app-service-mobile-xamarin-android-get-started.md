@@ -38,9 +38,9 @@
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，可以註冊 Azure 試用版並取得最多 10 個免費的行動應用程式，即使在試用期結束之後仍可繼續使用這些應用程式。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/)。
  
-* [Visual Studio Community 2013] 或更新版本。  如果您安裝 Visual Studio Community 2013，請個別安裝 [Xamarin]。  當您安裝 Visual Studio 2015 時，可以安裝 Xamarin 工具。
+* [Visual Studio Community 2013] 或更新版本。  如果您安裝 Visual Studio Community 2013，請安裝 [Xamarin] 分開。  當您安裝 Visual Studio 2015 時，可以安裝 Xamarin 工具。
  
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://tryappservice.azure.com/?appServiceName=mobile), ，您可以立即建立短期入門行動應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://tryappservice.azure.com/?appServiceName=mobile), ，您可以立即建立短期入門行動應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 建立新的 Azure 行動應用程式後端
 
@@ -72,8 +72,8 @@
 
 ##後續步驟
 
-* [將驗證新增至您的應用程式 ](app-service-mobile-xamarin-android-get-started-users.md)
-  <br/>了解如何驗證應用程式的身分識別提供者的使用者。
+* [將驗證加入您的應用程式 ](app-service-mobile-xamarin-android-get-started-users.md)
+  <br/>了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
 
 <!-- Images. -->
@@ -90,4 +90,5 @@
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
  
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+
 

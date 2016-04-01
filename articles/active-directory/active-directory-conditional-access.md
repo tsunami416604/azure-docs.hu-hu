@@ -31,7 +31,7 @@
 
 ![][1]
 
-## 接下來
+## 後續步驟
 
 下列主題討論在組織中設定條件式存取原則的各種不同機制。
 
@@ -43,4 +43,5 @@
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access/condaccoverviewvsdx1.png
+
 

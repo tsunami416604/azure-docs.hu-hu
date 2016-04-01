@@ -25,7 +25,7 @@
 
 
 - 簡短範例連接和查詢。
-- 重試範例連接和查詢，但如果遇到的錯誤分類為自動重試 [*暫時性錯誤*](sql-database-develop-error-messages.md#bkmk_connection_errors) (例如連接逾時)。
+- 重試範例連接和查詢，但如果遇到的錯誤分類為自動重試 [*暫時性錯誤*](sql-database-develop-error-messages.md#bkmk_connection_errors) （例如連接逾時）。
 
 
 這些範例涵蓋：
@@ -88,10 +88,11 @@
 
 - [適用於多種語言和平台的 SDK 與工具的下載項目](http://azure.microsoft.com/downloads/#cmd-line-tools)
 - [SQL Database 和 SQL Server 的連線庫](sql-database-libraries.md)
-- [暫時性錯誤的數字代碼的清單](sql-database-develop-error-messages.md#bkmk_connection_errors)<br/>(& s) nbsp;
+- [暫時性錯誤的數字代碼的清單](sql-database-develop-error-messages.md#bkmk_connection_errors)<br/>&nbsp;
 - [Azure SQL Database 開發：使用說明主題](http://msdn.microsoft.com/library/azure/ee621787.aspx)
 - [連接到 SQL Database：連結、最佳作法和設計方針](sql-database-connect-central-recommendations.md)
 - [建立您的第一個 Azure SQL Database](sql-database-get-started.md)
 - [Entity Framework 6 在此處，EF 7 在 GitHub 上](http://entityframework.codeplex.com/)
+
 
 

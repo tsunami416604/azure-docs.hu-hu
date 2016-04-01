@@ -26,7 +26,7 @@
 
 > [AZURE.NOTE] 這是舊版軟體，因此檢查回更新的資訊來建立很大，在 Azure 上使用此平衡，並控制的叢集的 Docker 容器，以及檢查 docker swarm 文件來探索它的功能。
 <!-- -->
-> 此外，本主題使用 swarm 使用 docker 和 Azure CLI *不* 使用 **docker-machine-** 以顯示不同的工具如何一起運作，但是保持獨立。 **docker-machine-** 有 **-swarm** 參數可讓您使用 **docker-machine-** 直接將節點新增到 swarm。 如需範例，請參閱 [docker-machine](https://github.com/docker/machine) 文件。 如果您錯過 **docker-machine-** Vm 上執行的 Azure，請參閱 [How to use docker-machine with Azure](virtual-machines-docker-machine.md)。
+> 此外，本主題使用 swarm 使用 docker 和 Azure CLI *不* 使用 **docker-machine-** 以顯示不同的工具如何一起運作，但是保持獨立。 **docker-machine-** 有 **-swarm** 參數可讓您使用 **docker-machine-** 直接將節點新增到 swarm。 如需範例，請參閱 [docker-machine-](https://github.com/docker/machine) 文件。 如果您錯過 **docker-machine-** Vm 上執行的 Azure，請參閱 [如何搭配 Azure 使用 docker-machine](virtual-machines-docker-machine.md)。
 
 ## 使用 Azure 虛擬機器建立 docker 主機
 
@@ -67,7 +67,7 @@
 
 > [AZURE.NOTE] 只是要先聲明，我們正使用本機 docker 安裝來連接到 **swarm 主要** VM 在 Azure 和指示 **swarm 主要** 下載、 安裝及執行 **建立** 命令，其會傳回我們稍後要基於探索目的而使用的叢集識別碼。
 <!-- -->
-> 若要確認這一點，執行 `docker -H tcp://`*& lt; 主機名稱 (& s) gt;* ` images` 上列出的容器處理程序 **swarm 主要** 電腦和用於比較的另一個節點上 (因為我們已與上一個 swarm 命令，所以 **--rm** 交換器，容器已移除它完成，因此使用 **docker ps-a** 不會傳回任何項目)。:
+> 若要確認這一點，執行 `docker -H tcp://`*& lt; 主機名稱 （& s) gt;* ` images` 上列出的容器處理程序 **swarm 主要** 電腦和用於比較的另一個節點上 (因為我們已與上一個 swarm 命令，所以 **--rm** 交換器，容器已移除它完成，因此使用 **docker ps-a** 不會傳回任何項目)。:
 
 
         $ docker --tls -H tcp://swarm-master.cloudapp.net:2376 images
@@ -109,7 +109,7 @@
     Status: Downloaded newer image for swarm:latest
     bbf88f61300bf876c6202d4cf886874b363cd7e2899345ac34dc8ab10c7ae924
 
-看起來不錯。 若要確認 **swarm** 上執行 **swarm 節點 1** 我們輸入:
+看起來不錯。 若要確認 **swarm** 上執行 **swarm 節點 1** 我們輸入 ︰
 
     $ docker --tls -H tcp://swarm-node-1.cloudapp.net:2376 ps -a
         CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS               NAMES
@@ -138,3 +138,4 @@
 
 [docker-machine-azure]: virtual-machines-docker-machine.md
  
+

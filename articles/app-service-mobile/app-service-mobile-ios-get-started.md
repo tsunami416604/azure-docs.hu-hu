@@ -26,13 +26,13 @@
 
 本教學課程會示範如何使用雲端型後端服務 ([Azure Mobile Apps](app-service-mobile-value-prop.md)) iOS 行動應用程式。  您建立新的行動後端，並且使用一個簡單的 _待辦事項清單_ iOS 應用程式在 Azure 中儲存應用程式資料。
 
-## 先決條件
+## 必要條件
 
 若要完成此教學課程，您需要下列項目：
 
 *  [有效的 Azure 帳戶](http://azure.microsoft.com/pricing/free-trial/)
 
-* 使用 [Visual Studio Community 2013] 的電腦或更新版本
+* 裝有 [Visual Studio Community 2013] 或更新版本
 
 * 具有 Xcode v7.0 或更新版本的 Mac 電腦
 
@@ -48,7 +48,7 @@
 
 ## 下載伺服器專案
 
-1. 在您的電腦，請造訪 [Azure 入口網站]。 按一下 [ **全部瀏覽** > **行動應用程式**, ，然後按一下您剛才建立的行動裝置應用程式後端。
+1. 在您的電腦，請瀏覽 [Azure portal]。 按一下 [ **全部瀏覽** > **行動應用程式**, ，然後按一下您剛才建立的行動裝置應用程式後端。
 
 2. 在 [行動應用程式] 分頁中，按一下 [ **設定**, ，然後在 **行動應用程式**, ，按一下 [ **快速入門** > **iOS (Objective C)**。 如果您偏好 Swift 時，按一下 [ **快速入門** > **iOS (Swift)** 改。
 
@@ -68,4 +68,5 @@
 [Azure portal]: https://portal.azure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+
 

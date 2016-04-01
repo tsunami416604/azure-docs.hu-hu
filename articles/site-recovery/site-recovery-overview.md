@@ -60,11 +60,12 @@ Site Recovery 可協助您的應用裝置感知業務持續性。 您可以使�
 - 豐富的自動化程式庫，提供已可用於生產環境，且可下載並已經與 Site Recovery 整合的應用程式特定指令碼。  
 
 
-深入了解  [哪些工作負載可以 Site Recovery 保護?](site-recovery-workload.md)。
+深入了解  [哪些工作負載可以 Site Recovery 保護？](site-recovery-workload.md)。
 
 
 ## 後續步驟
 
 完成此概觀之後 [深入](site-recovery-components.md) 有關站台復原架構。 
  
+
 

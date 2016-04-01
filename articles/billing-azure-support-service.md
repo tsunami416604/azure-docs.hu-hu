@@ -25,3 +25,4 @@ Azure 為所有客戶提供彈性的支援選項，從雲端服務入門的開�
 
 也有自助服務資源可用。 您可以檢視 Azure 支援 [常見問題集](https://azure.microsoft.com/support/faq/) 這裡及任何 Azure.com 上支援的文件索引標籤中的文件的存取。
 
+

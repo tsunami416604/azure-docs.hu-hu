@@ -66,7 +66,7 @@
 
         (Get-AzureStorageAccount | where { $_.GeoPrimaryLocation -eq $dcLocation }).StorageAccountName
 
-    >[AZURE.NOTE] 如果您需要新的儲存體帳戶時，第一次全部小寫的儲存體帳戶名稱以建立 New-azurestorageaccount 命令，如下列範例所示: **New-azurestorageaccount StorageAccountName"<storage account name>"-位置 $dcLocation**
+    >[AZURE.NOTE] 如果您需要新的儲存體帳戶時，第一次全部小寫的儲存體帳戶名稱以建立 New-azurestorageaccount 命令，如下列範例所示 ︰ **New-azurestorageaccount StorageAccountName"<storage account name>"-位置 $dcLocation**
 
 1. 指定目標儲存體帳戶名稱即可 **$staccount**。 然後使用 **Set-azuresubscription** 設定訂用帳戶和目前的儲存體帳戶。
 
@@ -173,4 +173,5 @@
 如果您還想看看如何在 Azure 傳統入口網站執行這些步驟，請參閱 [佈建 Azure 上的 SQL Server 虛擬機器](virtual-machines-provision-sql-server.md)。
 
 除了這些資源，我們建議您檢閱 [與 Azure 虛擬機器中執行 SQL Server 相關的其他主題](virtual-machines-sql-server-infrastructure-services.md)。
+
 

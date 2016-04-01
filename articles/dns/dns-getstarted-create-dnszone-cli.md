@@ -69,7 +69,7 @@ Azure DNS 使用 Azure 資源管理員。 務必切換 CLI 以使用 ARM 命令�
 
     Azure group create -n myresourcegroup --location "West US"
 
-Azure 資源管理員需要所有的資源群組指定一個位置。 這用來作為該資源群組中資源的預設位置。 然而，因為所有 DNS 資源是全球性，而非區域性，資源群組位置的選擇不會對 Azure DNS 造成影響。
+Azure Resource Manager 需要所有的資源群組指定一個位置。 這用來作為該資源群組中資源的預設位置。 然而，因為所有 DNS 資源是全球性，而非區域性，資源群組位置的選擇不會對 Azure DNS 造成影響。
 
 ### 步驟 6
 
@@ -79,7 +79,7 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
 
 ## 標記
 
-標記與 Etag 不同。 標記是名稱-值組的清單，由 Azure 資源管理員在計費或分群用途上用來標示資源。 如需標記的詳細資訊，請參閱 [使用標記來組織您的 Azure 資源](resource-group-using-tags.md)。 Azure DNS CLI 在區域與記錄集上支援使用選項 ‘-Tag’ 參數來指定標記。 下列範例示範如何使用兩個標記 ‘project = demo’ 和 ‘env = test’ 建立 DNS 區域：
+標記與 Etag 不同。 標記是名稱-值組的清單，由 Azure Resource Manager 在計費或分群用途上用來標示資源。 如需標記的詳細資訊，請參閱 [使用標記來組織您的 Azure 資源](resource-group-using-tags.md)。 Azure DNS CLI 在區域與記錄集上支援使用選項 ‘-Tag’ 參數來指定標記。 下列範例示範如何使用兩個標記 ‘project = demo’ 和 ‘env = test’ 建立 DNS 區域：
 
     Azure network dns zone create -n contoso.com -g myresourcegroup -t "project=demo";"env=test"
 
@@ -123,7 +123,7 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
     data:      Retry time                    : 300
     data:                                    :
 <BR>
-若要檢視建立的 NS 記錄，請使用下列命令:
+若要檢視建立的 NS 記錄，請使用下列命令 ︰
 
     azure network dns record-set show myresourcegroup "contoso.com" "@" NS
     info:    Executing command network dns-record-set show
@@ -141,7 +141,7 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
     data:
     info:    network dns-record-set show command OK
 
->[AZURE.NOTE] 在根 (或 「 頂點 」) 的 DNS 記錄集區域使用"@"做為記錄集名稱。
+>[AZURE.NOTE] 在根 （或 「 頂點 」） 的 DNS 記錄集區域使用"@"做為記錄集名稱。
 
 建立第一個 DNS 區域之後，您可以測試它使用 nslookup、 DIG 之類的 DNS 工具或 **Resolve-dnsname** PowerShell cmdlet。
 如果您還沒有將網域委派給 Azure DNS 中的新區域，您必須將 DNS 查詢直接導向您的區域的其中一個名稱伺服器。 如上面的 "azure network dns-record-set show" 所列，NS 記錄提供您區域的名稱伺服器。 請務必在下列命令中用正確的值取代您的區域。
@@ -178,3 +178,4 @@ Azure DNS 服務由 Microsoft.Network 資源提供者管理。 您的 Azure 訂�
 [如何管理 DNS 記錄](dns-operations-recordsets-cli.md)<BR>
 [使用.NET SDK 自動化 Azure 作業](dns-sdk.md)<BR>
 [Azure DNS REST API 參考](https://msdn.microsoft.com/library/azure/mt163862.aspx)
+

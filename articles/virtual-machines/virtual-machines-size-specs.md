@@ -33,16 +33,16 @@ ms.service="virtual-machines"
 
 *   Dv2 系列是原始 D 系列的延續，擁有更強大的 CPU。 Dv2 系列 CPU 比 D 系列 CPU 快約 35%。 它以最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 處理器為基礎，搭配 Intel Turbo Boost Technology 2.0，最高可達 3.2 GHz。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
 
-    Dv2 系列的區域可用性會根據這個排程:
-        10 月 ' 15: 美國東部 2、 美國中部、 美國北部中部、 美國西部
-        11 月 ' 15: 美國東部、 北歐、 西歐
-        1 月 ' 16: 美國中南部、 APAC 東部、 APAC 東南亞、 日本東部、 日本西部、
+    Dv2 系列的區域可用性會根據這個排程 ︰
+        10 月 ' 15 ︰ 美國東部 2、 美國中部、 美國北部中部、 美國西部
+        11 月 ' 15 ︰ 美國東部、 北歐、 西歐
+        1 月 ' 16 ︰ 美國中南部、 APAC 東部、 APAC 東南亞、 日本東部、 日本西部、
                 澳洲東部、 澳大利亞東南部巴西南部
 
 
 *   G 系列 VM 提供最大的大小和最佳效能，並且可在具有 Intel Xeon E5 V3 系列處理器的主機上執行。
 
-*   DS 系列和 GS 系列 VM 可以使用進階儲存體，針對使用大量 I/O 的工作負載提供高效能、低延遲的儲存體。 這些 VM 會使用固態硬碟 (SSD) 來裝載虛擬機器的磁碟，還可提供本機 SSD 磁碟快取。 僅特定地區可用進階儲存體。 如需詳細資訊，請參閱 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](../storage-premium-storage-preview-portal.md)。
+*   DS 系列和 GS 系列 VM 可以使用進階儲存體，針對使用大量 I/O 的工作負載提供高效能、低延遲的儲存體。 這些 VM 會使用固態硬碟 (SSD) 來裝載虛擬機器的磁碟，還可提供本機 SSD 磁碟快取。 僅特定地區可用進階儲存體。 如需詳細資訊，請參閱 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](../storage-premium-storage-preview-portal.md)。
 
 虛擬機器的大小會影響定價。 大小也會影響虛擬機器的處理、記憶體和儲存體容量。 儲存體成本會分別根據儲存體帳戶中使用的頁面來計算。 如需詳細資訊，請參閱 [虛擬機器定價詳細資料](http://azure.microsoft.com/pricing/details/virtual-machines/) 和 [Azure 儲存體定價](http://azure.microsoft.com/pricing/details/storage/)。 如需 VMss 的儲存體的詳細資訊，請參閱 [有關磁碟和虛擬機器的 Vhd ](virtual-machines-disks-vhds.md)。
 
@@ -89,10 +89,10 @@ ms.service="virtual-machines"
 |Standard_A5|2|14 GB|1|暫存 = 135 GB |4|4X500|
 |Standard_A6|4|28 GB|2|暫存 = 285 GB |8|8x500|
 |Standard_A7|8|56 GB|4|暫存 = 605 GB |16|16x500|
-|Standard_A8|8|56 GB|2| 暫存 = 382 GB 附註: 資訊及考量，需使用此大小，請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](http://go.microsoft.com/fwlink/p/?linkid=328042)。 |16|16x500|
-|Standard_A9|16|112 GB|4| 暫存 = 382 GB 附註: 資訊及考量，需使用此大小，請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](http://go.microsoft.com/fwlink/p/?linkid=328042)。 |16|16x500|
-|Standard_A10|8|56 GB|2| 暫存 = 382 GB 附註: 資訊及考量，需使用此大小，請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](http://go.microsoft.com/fwlink/p/?linkid=328042)。 |16|16x500|
-|Standard_A11|16|112 GB|4| 暫存 = 382 GB 附註: 資訊及考量，需使用此大小，請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](http://go.microsoft.com/fwlink/p/?linkid=328042)。 |16|16x500|
+|Standard_A8|8|56 GB|2| 暫存 = 382 GB 附註 ︰ 資訊及考量，需使用此大小，請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](http://go.microsoft.com/fwlink/p/?linkid=328042)。 |16|16x500|
+|Standard_A9|16|112 GB|4| 暫存 = 382 GB 附註 ︰ 資訊及考量，需使用此大小，請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](http://go.microsoft.com/fwlink/p/?linkid=328042)。 |16|16x500|
+|Standard_A10|8|56 GB|2| 暫存 = 382 GB 附註 ︰ 資訊及考量，需使用此大小，請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](http://go.microsoft.com/fwlink/p/?linkid=328042)。 |16|16x500|
+|Standard_A11|16|112 GB|4| 暫存 = 382 GB 附註 ︰ 資訊及考量，需使用此大小，請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](http://go.microsoft.com/fwlink/p/?linkid=328042)。 |16|16x500|
 
 ## 標準層級：D 系列
 
@@ -134,7 +134,7 @@ ms.service="virtual-machines"
 |Standard_DS13 |8|56|8|本機 SSD 磁碟 = 112 GB |16|288| 25600 每秒 256 MB |
 |Standard_DS14 |16|112|8|本機 SSD 磁碟 = 224 GB |32|576| 50000 每秒 512 MB |
 
-*磁碟大小會影響 DS 系列 VM 每秒 (IOPS) 輸入/輸出作業量最大值，和可以達到最大輸送量 (頻寬)。 如需詳細資訊，請參閱 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](../storage-premium-storage-preview-portal.md)。
+*磁碟大小會影響 DS 系列 VM 每秒 (IOPS) 輸入/輸出作業量最大值，和可以達到最大輸送量 (頻寬)。 如需詳細資訊，請參閱 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](../storage-premium-storage-preview-portal.md)。
 
 ## 標準層級：G 系列
 
@@ -161,7 +161,8 @@ ms.service="virtual-machines"
 
 [Azure 訂用帳戶和服務限制、配額與限制](../azure-subscription-service-limits.md)
 
-[關於 A8、A9、A10 及 A11 計算密集型執行個體](virtual-machines-a8-a9-a10-a11-specs.md)
+[關於 A8、A9、A10 和 A11 運算密集型執行個體](virtual-machines-a8-a9-a10-a11-specs.md)
+
 
 
 

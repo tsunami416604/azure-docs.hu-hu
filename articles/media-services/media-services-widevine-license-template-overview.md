@@ -81,7 +81,7 @@ parse_only | 布林值。 True 或 False | 剖析授權要求，但不會發出�
 名稱 | 值 | 說明
 ---|---|---
 content_key_specs。 track_type | 字串 | 追蹤類型名稱。 如果授權要求中指定 content_key_specs，則請務必明確指定所有追蹤類型。 未這樣做會導致無法播放過去 10 秒。 
-content_key_specs  <br/> security_level | uint32 | 定義用戶端對於播放的穩健性需求。 <br/> 1-需要以軟體為基礎的白箱加密。 <br/> 2-軟體加密和模糊化的解碼器需要。 <br/> 3-的金鑰材料和密碼編譯作業必須在硬體備份信任的執行的環境中執行。 <br/> 4-加密和解密內容必須在硬體備份信任的執行的環境中執行。  <br/> 5-硬體備份受信任的執行環境中，則必須處理密碼編譯、 解碼和媒體 (壓縮和未壓縮) 的所有處理。  
+content_key_specs  <br/> security_level | uint32 | 定義用戶端對於播放的穩健性需求。 <br/> 1-需要以軟體為基礎的白箱加密。 <br/> 2-軟體加密和模糊化的解碼器需要。 <br/> 3-的金鑰材料和密碼編譯作業必須在硬體備份信任的執行的環境中執行。 <br/> 4-加密和解密內容必須在硬體備份信任的執行的環境中執行。  <br/> 5-硬體備份受信任的執行環境中，則必須處理密碼編譯、 解碼和媒體 （壓縮和未壓縮） 的所有處理。  
 content_key_specs <br/> required_output_protection.hdc | 字串 - 以下項目的其中一個：HDCP_NONE、HDCP_V1、HDCP_V2 | 指出是否需要 HDCP
 content_key_specs <br/>索引鍵 | Base64 <br/>編碼的字串|要用於此追蹤的內容金鑰。 如果指定，則需要 track_type 或 key_id。  此選項可讓內容提供者插入此追蹤的內容金鑰，而不是讓 Widevine 授權伺服器產生或查閱金鑰。
 content_key_specs.key_id| Base64 編碼二進位字串 16 個位元組 | 金鑰的唯一識別碼。 
@@ -209,4 +209,5 @@ override_provider_client_token | 布林值。 True 或 False |如果為 false �
 ##另請參閱
 
 [使用 PlayReady 和/或 Widevine 動態 Common Encryption](media-services-protect-with-drm.md)
+
 

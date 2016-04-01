@@ -31,13 +31,13 @@
 
 儲存體帳戶包含的認證可供裝置用來存取雲端服務提供者的儲存體帳戶。 對於 Microsoft Azure 儲存體帳戶，像是帳戶名稱與主要存取金鑰就屬於這些認證。 
 
-在 **設定** 頁面上，會建立包含下列資訊以表格格式顯示的計費訂用帳戶的所有儲存體帳戶:
+在 **設定** 頁面上，會建立包含下列資訊以表格格式顯示的計費訂用帳戶的所有儲存體帳戶 ︰
 
 - **名稱** – 建立時指派給該帳戶的唯一名稱。
 - **啟用 SSL** – 是否已啟用 SSL，以及裝置對雲端的通訊都會透過安全通道。
 - **使用** – 使用儲存體帳戶的磁碟區數目。
 
-最常見的工作與相關儲存體帳戶，可對 **設定** 頁面:
+最常見的工作與相關儲存體帳戶，可對 **設定** 頁面 ︰
 
 - 新增儲存體帳戶 
 - 編輯儲存體帳戶 
@@ -48,7 +48,7 @@
 
 有三種儲存體帳戶類型能與 StorSimple 裝置搭配使用。
 
-- **自動產生的儲存體帳戶** – 第一次建立服務時，正如其名，自動產生這種類型的儲存體帳戶。 若要深入了解如何建立此儲存體帳戶，請參閱 [步驟 1: 建立新的服務](storsimple-deployment-walkthrough-u1.md#step-1-create-a-new-service) 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。 
+- **自動產生的儲存體帳戶** – 第一次建立服務時，正如其名，自動產生這種類型的儲存體帳戶。 若要深入了解如何建立此儲存體帳戶，請參閱 [步驟 1 ︰ 建立新的服務](storsimple-deployment-walkthrough-u1.md#step-1-create-a-new-service) 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。 
 - **儲存體帳戶的服務訂閱** – 這些是與服務相同的訂閱相關聯的 Azure 儲存體帳戶。 若要深入了解如何使用這些儲存體建立帳戶，請參閱 [關於 Azure 儲存體帳戶](../storage/storage-create-storage-account.md)。 
 - **服務訂閱以外的儲存體帳戶** – 這些是不與您的服務相關聯且可能存在的服務建立之前的 Azure 儲存體帳戶。
 
@@ -76,7 +76,7 @@
 
 2. 按一下 [ **新增/編輯儲存體帳戶**。
 
-3. 在 **新增/編輯儲存體帳戶** ] 對話方塊中:
+3. 在 **新增/編輯儲存體帳戶** ] 對話方塊中 ︰
 
   1. 在下拉式清單中 **儲存體帳戶**, ，選擇您想要修改的現有帳戶。 這也包含服務初次建立時自動產生的儲存體帳戶。
   2. 如果有需要，您可以修改 **啟用 SSL 模式** 選取項目。
@@ -130,7 +130,7 @@ Microsoft Azure 系統管理員可以直接存取儲存體帳戶 (透過 Microso
 3. 在對話方塊中，執行下列動作：
 
   1. 選取您要同步處理其金鑰的儲存體帳戶。 儲存體帳戶金鑰是以加密的狀態顯示。
-  2. 在 StorSimple Manager 服務中，您需要更新先前在 Microsoft Azure 儲存體服務中變更的金鑰。 如果主要存取金鑰有所變更 (重新產生)，按一下 [ **同步處理主要金鑰**。 如果次要金鑰有所變更，按一下 [ **同步處理次要金鑰**。
+  2. 在 StorSimple Manager 服務中，您需要更新先前在 Microsoft Azure 儲存體服務中變更的金鑰。 如果主要存取金鑰有所變更 （重新產生），按一下 [ **同步處理主要金鑰**。 如果次要金鑰有所變更，按一下 [ **同步處理次要金鑰**。
 
     ![synchronize keys](./media/storsimple-manage-storage-accounts/HCS_KeyRotationStorageAccountSameSubscriptionAsService.png)
 
@@ -150,3 +150,4 @@ Microsoft Azure 系統管理員可以直接存取儲存體帳戶 (透過 Microso
 
 - 深入了解 [StorSimple 安全性](storsimple-security.md)。
 - 深入了解 [使用 StorSimple Manager 服務管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+

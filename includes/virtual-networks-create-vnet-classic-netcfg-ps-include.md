@@ -16,7 +16,7 @@ Azure 會使用 xml 檔案定義訂用帳戶所有可用的 VNet。 您可以下
         <?xml version="1.0" encoding="utf-8"?>...  
 
 3. 開啟您儲存的任何 XML 或文字編輯器應用程式，上述步驟 2 中的檔案，並尋找 **<VirtualNetworkSites>** 項目。 如果您有任何已建立的網路，每個網路將會變成自己 **<VirtualNetworkSite>** 項目。
-4. 若要建立虛擬網路在此案例中所述，新增下列 XML 低於 **<VirtualNetworkSites>** 項目:
+4. 若要建立虛擬網路在此案例中所述，新增下列 XML 低於 **<VirtualNetworkSites>** 項目 ︰
 
         <VirtualNetworkSite name="TestVNet" Location="Central US">
           <AddressSpace>
@@ -64,3 +64,4 @@ Azure 會使用 xml 檔案定義訂用帳戶所有可用的 VNet。 您可以下
         OperationDescription : Get-AzureVNetSite
         OperationId          : 3f35d533-1f38-09c0-b286-3d07cd0904d8
         OperationStatus      : Succeeded
+

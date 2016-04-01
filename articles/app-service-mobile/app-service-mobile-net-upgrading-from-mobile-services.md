@@ -32,7 +32,7 @@ App Service Mobile 是一種使用 Microsoft Azure 建置行動應用程式的�
 
 ###Mobile Apps .NET 伺服器 SDK 中的增強功能
 
-升級至新 [行動應用程式 SDK](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) 提供下列優點:
+升級至新 [行動應用程式 SDK](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) 提供下列優點 ︰
 
 - NuGet 相依性有更多彈性。 裝載環境不再提供它自己的 NuGet 封裝版本，因此您可以使用替代的相容版本。 不過，如果行動伺服器 SDK 或相依性有新的重要 Bug 修正或安全性更新，您必須手動更新您的服務。
 
@@ -64,7 +64,7 @@ App Service Mobile 是一種使用 Microsoft Azure 建置行動應用程式的�
 
 接下來，依照建立第二個應用程式執行個體 [.NET 後端建立指示](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app)。 當系統提示選取您的 App Service 方案或「主控方案」時，請選擇已移轉之應用程式的方案。
 
-您可能會想要使用與行動服務中相同的資料庫和通知中心。 您可以複製這些值，藉由開啟 [Azure portal] 瀏覽至原始的應用程式，然後按一下 [ **設定** > **應用程式設定**。 在 **連接字串**, ，複製 `MS_NotificationHubConnectionString` 和 `MS_TableConnectionString`。 瀏覽至新的升級網站並將它們貼上，覆寫任何現有的值。 針對您的 app 需要的任何其他應用程式設定重複執行此程序。 如果不使用移轉的服務，您可以讀取連接字串和應用程式設定，從 **設定** ] 索引標籤的 [行動服務] 區段的 [Azure classic portal]。
+您可能會想要使用與行動服務中相同的資料庫和通知中心。 您可以複製這些值，藉由開啟 [Azure portal] 瀏覽至原始的應用程式，然後按一下 [ **設定** > **應用程式設定**。 在 **連接字串**, ，複製 `MS_NotificationHubConnectionString` 和 `MS_TableConnectionString`。 瀏覽至新的升級網站並將它們貼上，覆寫任何現有的值。 針對您的應用程式需要的任何其他應用程式設定重複執行此程序。 如果不使用移轉的服務，您可以讀取連接字串和應用程式設定，從 **設定** ] 索引標籤的 [行動服務] 區段的 [Azure classic portal]。
 
 針對您的應用程式製作 ASP.NET 專案的複本，然後將它發佈到新的網站。 透過利用新 URL 更新的用戶端應用程式複本，驗證一切運作正常。
 
@@ -277,3 +277,4 @@ Mobile Apps 中並未內建排程的工作，因此您在 .NET 後端中的任�
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [App Service pricing]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+

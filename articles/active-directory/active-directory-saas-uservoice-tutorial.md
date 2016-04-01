@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   UserVoice 租用戶
   
-完成本教學課程之後, 您已指派給 UserVoice 的 Azure AD 使用者將能夠登入您的 UserVoice 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 UserVoice 的 Azure AD 使用者將能夠登入您的 UserVoice 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -59,7 +59,7 @@
 
 6.  在 **搜尋方塊**, ，型別 **UserVoice**。
 
-    ![應用程式資源庫](./media/active-directory-saas-uservoice-tutorial/IC777513.png "Application gallery")
+    ![應用程式庫](./media/active-directory-saas-uservoice-tutorial/IC777513.png "Application gallery")
 
 7.  在 [結果] 窗格中，選取 **UserVoice**, ，然後按一下 [ **完成** 加入應用程式。
 
@@ -99,7 +99,7 @@
 
     ![Web 入口網站](./media/active-directory-saas-uservoice-tutorial/IC777520.png "Web portal")
 
-8.  在 **編輯使用者驗證** 對話方塊頁面上，執行下列步驟:
+8.  在 **編輯使用者驗證** 對話方塊頁面上，執行下列步驟 ︰
 
     ![編輯使用者驗證](./media/active-directory-saas-uservoice-tutorial/IC777521.png "Edit user authentication")
 
@@ -139,7 +139,7 @@ UserVoice 需以手動的方式佈建。
 
     ![加入管理員](./media/active-directory-saas-uservoice-tutorial/IC777813.png "Add admins")
 
-6.  在 **邀請管理員** ] 對話方塊中，執行下列步驟:
+6.  在 **邀請管理員** ] 對話方塊中，執行下列步驟 ︰
 
     ![邀請管理員](./media/active-directory-saas-uservoice-tutorial/IC777814.png "Invite admins")
 
@@ -165,3 +165,4 @@ UserVoice 需以手動的方式佈建。
     ![是](./media/active-directory-saas-uservoice-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

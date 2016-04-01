@@ -80,8 +80,8 @@ Application Insights 支援 Linux、Unix 或 Windows 上執行的 Java 應用程
     </dependencies>
 
 
-* *建置或總和檢查碼驗證錯誤?*嘗試使用特定版本，例如：`<version>1.0.n</version>`。 您可以找到最新版本 [SDK 版本資訊](app-insights-release-notes-java.md) 或是在我們 [Maven 成品](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)。
-* *需要更新為新版 sdk?*請重新整理專案的相依項目。
+* *建置或總和檢查碼驗證錯誤？* 嘗試使用特定版本，例如：`<version>1.0.n</version>`。 您可以找到最新版本 [SDK 版本資訊](app-insights-release-notes-java.md) 或是在我們 [Maven 成品](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)。
+* *需要更新為新的 SDK？* 請重新整理專案的相依項目。
 
 #### 如果您使用 Gradle...
 
@@ -111,7 +111,7 @@ Application Insights 支援 Linux、Unix 或 Windows 上執行的 Java 應用程
 
 ### 問題...
 
-* *什麼是之間的關聯性 `-core` 和 `-web` zip 中的元件?*
+* *什麼是之間的關聯性 `-core` 和 `-web` zip 中的元件？*
 
  * `applicationinsights-core` 會提供裸機 API。 您一律會需要它。
  * `applicationinsights-web` 提供追蹤 HTTP 要求計數和回應時間的度量。 如果您不想自動收集此遙測，您可以忽略這個。 例如，如果您想要自己撰寫。
@@ -267,11 +267,11 @@ Application Insights 假設 MVC 應用程式的 HTTP 要求的格式為：`VERB 
 
 會自動收集未處理的例外狀況：
 
-![向下捲動，並按一下 [失敗] 磚](./media/app-insights-java-get-started/21-exceptions.png)
+![向下捲動，並按一下 [失敗] 圖格](./media/app-insights-java-get-started/21-exceptions.png)
 
 若要收集其他例外狀況的資料，您有兩個選項：
 
-* [您的程式碼中插入 trackexception () 呼叫][apiexceptions]。 
+* [您的程式碼中插入 trackexception （） 呼叫][apiexceptions]。 
 * [在伺服器上安裝 Java 代理程式](app-insights-java-agent.md)。 指定您想要觀看的方法。
 
 
@@ -320,7 +320,7 @@ Application Insights 假設 MVC 應用程式的 HTTP 要求的格式為：`VERB 
 
 #### Windows 效能計數器
 
-每個 [Windows 效能計數器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) 是類別的成員 (在相同的方式，以欄位是類別的成員)。 類別可以是全域，或可以有一定數量或指定的執行個體。
+每個 [Windows 效能計數器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) 是類別的成員 （在相同的方式，以欄位是類別的成員）。 類別可以是全域，或可以有一定數量或指定的執行個體。
 
     <PerformanceCounters>
       <Windows>
@@ -397,4 +397,5 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
+
 

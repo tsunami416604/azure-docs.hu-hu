@@ -28,9 +28,9 @@
 指定特定通知註冊的唯一方法，就是關聯標記與註冊，然後再指定這些標記。 中所述 [註冊管理](notification-hubs-registration-management.md), ，以接收推播通知註冊裝置的應用程式有處理通知中心。 當在通知中樞建立註冊之後，應用程式後端便能傳送推播通知。
 應用程式後端可以下列方式，選擇特定通知的目標註冊：
 
-1. **廣播**: 通知中心內的所有註冊都收到通知。
-2. **標記**: 包含指定之的標記的所有註冊都收到通知。
-3. **標記運算式**: 標記集的比對指定之的運算式的所有註冊都收到通知。
+1. **廣播**︰ 通知中心內的所有註冊都收到通知。
+2. **標記**︰ 包含指定之的標記的所有註冊都收到通知。
+3. **標記運算式**︰ 標記集的比對指定之的運算式的所有註冊都收到通知。
 
 ## 標記
 
@@ -112,4 +112,5 @@
     toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
     "You want info on the Red Socks</text></binding></visual></toast>";
     outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
+
 

@@ -19,7 +19,7 @@
 
 # 在 Azure Active Directory 應用程式庫中列出您的應用程式
 
-若要列出支援單一登入與 Azure Active Directory 中的應用程式 [Azure AD 庫](http://azure.microsoft.com/marketplace/active-directory/all/), ，首先必須實作下列整合模式的其中一個應用程式:
+若要列出支援單一登入與 Azure Active Directory 中的應用程式 [Azure AD 庫](http://azure.microsoft.com/marketplace/active-directory/all/), ，首先必須實作下列整合模式的其中一個應用程式 ︰
 
 * **OpenID Connect** -使用 OpenID Connect 的驗證和 Azure AD 同意組態 API 與 Azure AD 直接整合。 如果您是剛開始整合，而您的應用程式不支援 SAML，這是建議的模式。
 
@@ -51,7 +51,7 @@
 > 
 > 應用程式技術支援網站或連絡資訊：
 > 
-> 用戶端識別碼的應用程式，在 https://manage.windowsazure.com 應用程式詳細資料中所示:
+> 用戶端識別碼的應用程式，在 https://manage.windowsazure.com 應用程式詳細資料中所示 ︰
 > 
 > 客戶前往註冊和 (或) 購買應用程式的應用程式註冊 URL：
 > 
@@ -69,7 +69,7 @@
 
 * 提供可由 Azure AD 小組搭配您的應用程式來測試整合的測試租用戶或帳戶的認證。  
 
-* SAML 登入 URL、 簽發者 URL (實體 ID) 和回覆 URL (判斷提示取用者服務) 的值提供應用程式，所述 [這裡](active-directory-saas-custom-apps.md)。 如果您通常會提供這些值做為一個 SAML 中繼資料檔的一部分，也請一併傳送該檔案。
+* SAML 登入 URL、 簽發者 URL (實體 ID) 和回覆 URL （判斷提示取用者服務） 的值提供應用程式，所述 [這裡](active-directory-saas-custom-apps.md)。 如果您通常會提供這些值做為一個 SAML 中繼資料檔的一部分，也請一併傳送該檔案。
 
 * 提供如何在使用 SAML 2.0 的應用程式中設定 Azure AD 做為身分識別提供者的簡短描述。 如果您的應用程式支援透過自助系統管理入口網站來設定 Azure AD 做為身分識別提供者，請確認以上提供的認證包含執行這項設定所需的能力。
 
@@ -96,4 +96,5 @@
 > 附加應用程式大型圖示 (PNG 檔案、215px x 215px、背景純色)：
 > 
 > 附加應用程式標誌 (PNG 檔案、150px x 122px、透明背景色彩)：
+
 

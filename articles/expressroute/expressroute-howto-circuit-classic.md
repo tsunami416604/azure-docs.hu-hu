@@ -19,8 +19,8 @@
 # 使用 PowerShell 建立和修改 ExpressRoute 線路
 
 > [AZURE.SELECTOR]
-[PowerShell-傳統](expressroute-howto-circuit-classic.md)
-[PowerShell-資源管理員](expressroute-howto-circuit-arm.md)
+[PowerShell - 傳統](expressroute-howto-circuit-classic.md)
+[PowerShell - 資源管理員](expressroute-howto-circuit-arm.md)
 
 本文將逐步引導您使用 PowerShell Cmdlet 和傳統部署模型建立 ExpressRoute 線路。 下列步驟也會示範如何檢查狀態、更新或刪除和取消佈建 ExpressRoute 線路。 
 
@@ -193,7 +193,7 @@
 
 6. **建立路由設定。**
     
-    請參閱 [ExpressRoute 電路的路由組態 (建立及修改電路對等互連)](expressroute-howto-routing-classic.md) 畫面來取得逐步指示。 
+    請參閱 [ExpressRoute 電路的路由組態 （建立及修改電路對等互連）](expressroute-howto-routing-classic.md) 畫面來取得逐步指示。 
 
 7. **將 VNet 連結到 ExpressRoute 線路。** 
 
@@ -295,7 +295,7 @@
 
 ### 如何更新 ExpressRoute 線路頻寬
 
-檢查 [ExpressRoute 常見問題集](expressroute-faqs.md) 頁面，以您的提供者支援的頻寬選項。 您可以挑選任何比現有電路規模還大的大小。 一旦決定需要的大小後，您可以使用下列命令來調整線路大小。
+檢查 [ExpressRoute 常見問題集](expressroute-faqs.md) 頁面，以您的提供者支援的頻寬選項。 您可以挑選任何比現有線路規模還大的大小。 一旦決定需要的大小後，您可以使用下列命令來調整線路大小。
 
         PS C:\> Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
         
@@ -327,5 +327,6 @@
 ## 後續步驟
 
 - [設定路由](expressroute-howto-routing-classic.md)
+
 
 

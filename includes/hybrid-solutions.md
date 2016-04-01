@@ -54,11 +54,11 @@ Windows 應用程式可以利用 Windows Communication Foundation (WCF) 來使�
 
 佇列雖然很實用，但不見得是最適當的解決方案。 有時，服務匯流排主題更適合。 [[圖 3](#Fig3) 闡明此概念。
 
-<a name="Fig3"></a>![服務匯流排主題和訂用帳戶的圖表][topics-subs]
+<a name="Fig3"></a>![服務匯流排主題和訂閱的圖表][topics-subs]
  
 **圖 3：根據訂閱端應用程式所指定的篩選，應用程式可以接收部分或所有傳送至服務匯流排主題的訊息。**
 
-主題在許多方面與佇列很類似。 傳送者將訊息提交至主題，作法如同將訊息提交至佇列一樣，而這些訊息就像使用佇列時一樣，看起來完全相同。 主要的差別在於，主題可讓每個接收應用程式，建立自己的訂閱定義 *篩選*。 所以，訂閱者只會看到符合此篩選的訊息。 例如， [[圖 3](#Fig3) 顯示寄件者和有三個 「 訂閱者 」，每個都有自己的篩選條件的主題:
+主題在許多方面與佇列很類似。 傳送者將訊息提交至主題，作法如同將訊息提交至佇列一樣，而這些訊息就像使用佇列時一樣，看起來完全相同。 主要的差別在於，主題可讓每個接收應用程式，建立自己的訂閱定義 *篩選*。 所以，訂閱者只會看到符合此篩選的訊息。 例如， [[圖 3](#Fig3) 顯示寄件者和有三個 「 訂閱者 」，每個都有自己的篩選條件的主題 ︰
 
 - 訂閱者 1 只接收訊息必須包含屬性 *Seller ="Ava"*。
 - 訂閱者 2 接收的訊息必須包含屬性 *Seller ="Ruby"* 及/或包含 *量* 屬性的值大於 100000。 Ruby 可能是銷售經理，因此想查看自己的銷售和所有人的銷售佳績。
@@ -100,4 +100,5 @@ Windows 應用程式可以利用 Windows Communication Foundation (WCF) 來使�
 [topics-subs]: ./media/hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [relay]: ./media/hybrid-solutions/SvcBus_04_relay.png
 [Event Hubs overview]: https://msdn.microsoft.com/library/azure/dn836025.aspx
+
 

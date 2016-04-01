@@ -30,9 +30,9 @@
 
 ## Azure 資源
 
-使用 Azure 資源管理員來建立和管理一群 _資源_ (使用者管理的實體，例如虛擬機器、 資料庫伺服器、 資料庫或網站) 作為單一邏輯單元或 _資源群組_。
+使用 Azure 資源管理員來建立和管理一群 _資源_ （使用者管理的實體，例如虛擬機器、 資料庫伺服器、 資料庫或網站） 作為單一邏輯單元或 _資源群組_。
 
-Azure 資源管理員的優點之一是，您可以建立 Azure 資源 _宣告式_ 方式: 您描述的結構和部署的 JSON 中的資源群組的關聯性 *範本*。 範本會識別可在執行命令時內嵌的參數，或儲存於個別 JSON azuredeploy-parameters.json 檔案中的參數。 如此一來，您只要提供不同的參數，就能使用相同的範本輕易建立新資源。 例如，建立網站的範本將具有網站名稱的參數、網站將放置的區域，以及其他共同設定。
+Azure 資源管理員的優點之一是，您可以建立 Azure 資源 _宣告式_ 方式 ︰ 您描述的結構和部署的 JSON 中的資源群組的關聯性 *範本*。 範本會識別可在執行命令時內嵌的參數，或儲存於個別 JSON azuredeploy-parameters.json 檔案中的參數。 如此一來，您只要提供不同的參數，就能使用相同的範本輕易建立新資源。 例如，建立網站的範本將具有網站名稱的參數、網站將放置的區域，以及其他共同設定。
 
 若要修改或建立群組時，使用範本 _部署_ 建立時，接著將其套用至群組。 如需 Azure 資源管理員的詳細資訊，請瀏覽 [Azure 資源管理員概觀](../resource-group-overview.md)。
 
@@ -112,19 +112,19 @@ Azure 資源管理員的優點之一是，您可以建立 Azure 資源 _宣告�
           }
         }
     ```
-3. 儲存 azuredeploy.parameters.json 檔案後，請使用下列命令以根據範本建立新資源群組。 `-e` 選項會指定您在上一個步驟中修改的 azuredeploy.parameters.json 檔案。 取代 *testRG* 與您想要使用時，群組的名稱和 *testDeploy* 與您所選擇的部署名稱。 位置應與您在範本參數檔案中指定的位置相同。
+3. After saving the azuredeploy.parameters.json file, use the following command to create a new resource group based on the template. The `-e` option specifies the azuredeploy.parameters.json file that you modified in the previous step. Replace the *testRG* with the group name you wish to use, and *testDeploy* with a deployment name of your choice. The location should be same as the one specified in your template parameter file.
 
         azure group create "testRG" "West US" -f azuredeploy.json -d "testDeploy" -e azuredeploy.parameters.json
 
-    上傳部署之後及將部署套用至群組中的資源之前，此命令會傳回 [確定]。
+    This command will return OK after the deployment is uploaded, but before the deployment is applied to resources in the group.
 
-4. 若要檢查部署的狀態，請使用下列命令。
+4. To check the status of the deployment, use the following command.
 
         azure group deployment show "testRG" "testDeploy"
 
-     **ProvisioningState** 顯示部署的狀態。
+    The **ProvisioningState** shows the status of the deployment.
 
-    如果部署成功，您會看到類似下列的輸出。
+    If your deployment is successful, you will see output similar to the following.
 
         azure-cli@0.8.0:/# azure group deployment show testRG testDeploy
         info:    Executing command group deployment show
@@ -144,69 +144,70 @@ Azure 資源管理員的優點之一是，您可以建立 Azure 資源 _宣告�
         data:    ubuntuOSVersion        String        14.04.2-LTS
         info:    group deployment show command OK
 
-    >[AZURE.NOTE] 如果您認為您的設定不正確，並需要停止長期執行部署，請使用下列命令。
+    >[AZURE.NOTE] If you realize that your configuration isn't correct, and need to stop a long-running deployment, use the following command.
     >
     > `azure group deployment stop "testRG" "testDeploy"`
     >
-    > 若未提供部署名稱，則會根據範本檔案的名稱自動建立一個名稱。 `azure group create` 命令的輸出會傳回該名稱。
+    > If you don't provide a deployment name, one is created automatically based on the name of the template file. It is returned as part of the output of the `azure group create` command.
 
-    現在您可以使用您指定的網域名稱，透過 SSH 連接到 VM。 連接到 VM 時，您需要使用格式為 `<domainName>.<region>.cloudapp.azure.com` 的完整網域名稱，例如 `MyDomainName.westus.cloudapp.azure.com`。
+    Now you can SSH to the VM, using the domain name you specified. When connnecting to the VM, you need to use a fully qualified domain name of the form `<domainName>.<region>.cloudapp.azure.com`, such as `MyDomainName.westus.cloudapp.azure.com`.
 
-5. 若要檢視群組，請使用下列命令。
+5. To view the group, use the following command.
 
         azure group show "testRG"
 
-    此命令會傳回群組中資源的相關資訊。 如果您有多個群組，可使用 `azure group list` 命令來擷取群組名稱清單，然後使用 `azure group show` 來檢視特定群組的詳細資料。
+    This command returns information about the resources in the group. If you have multiple groups, use the `azure group list` command to retrieve a list of group names, and then use `azure group show` to view details of a specific group.
 
-您也可以使用範本，以直接從 [GitHub](https://github.com/Azure/azure-quickstart-templates), ，而不是下載到您的電腦的其中一個。 若要這樣做，請將 URL 傳給您的命令中的範本的 azuredeploy.json 檔案使用 **-範本 url** 選項。 若要取得此 URL，開啟 [在 GitHub 上的 azuredeploy.json _原始_ 模式中，然後複製瀏覽器的網址列中的 URL。 接著，您可以使用類似下列的命令，直接使用此 URL 建立部署。
+You can also use a template directly from [GitHub](https://github.com/Azure/azure-quickstart-templates), instead of downloading one to your computer. To do this, pass the URL to the azuredeploy.json file for the template in your command by using the **--template-url** option. To get the URL, open azuredeploy.json on GitHub in _raw_ mode, and copy the URL that appears in the browser's address bar. You can then use this URL directly to create a deployment by using a command similar to the following.
 
     azure group deployment create "testDeploy" -g "testResourceGroup" --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json
-系統會提示您輸入必要的範本參數。
+You are prompted to enter the necessary template parameters.
 
-> [AZURE.NOTE] 請務必開啟 JSON 範本 _原始_ 模式。 瀏覽器網址列中出現的 URL，與一般模式中出現的不同。 若要開啟的檔案中 _原始_ 模式時檢視 GitHub 上的檔案在右上角按一下 **Raw**。
+> [AZURE.NOTE] It is important to open the JSON template in _raw_ mode. The URL that appears in the browser's address bar is different from the one that appears in regular mode. To open the file in _raw_ mode when viewing the file on GitHub, in the upper-right corner click **Raw**.
 
-## 使用資源
+## Working with resources
 
-雖然範本可讓您宣告設定中整個群組的變更，但有時您只需要使用特定的資源。 您可以使用 `azure resource` 命令執行此工作。
+While templates allow you to declare group-wide changes in configuration, sometimes you need to work with just a specific resource. You can do this using the `azure resource` commands.
 
-> [AZURE.NOTE] 當使用 `azure resource` 命令以外 `list` 命令，您必須指定您搭配使用的資源的 API 版本 `-o` 參數。 如果您不確定要使用的 API 版本，請參閱範本檔，並尋找 **apiVersion** 資源欄位。
+> [AZURE.NOTE] When using the `azure resource` commands other than the `list` command, you must specify the API version of the resource you are working with using the `-o` parameter. If you are unsure about the API version to use, consult the template file and find the **apiVersion** field for the resource.
 
-1. 若要列出群組中的所有資源，請使用下列命令。
+1. To list all resources in a group, use the following command.
 
         azure resource list "testRG"
 
-2. 若要檢視群組內的個別資源，請使用如下所示的命令。
+2. To view an individual resource within the group, use a command like the following.
 
         azure resource show "testRG" "MyUbuntuVM" Microsoft.Compute/virtualMachines -o "2015-06-15"
 
-    請注意 **microsoft.compute/virtualmachines** 參數。 這表示您正在要求哪類資源的資訊。 如果您查看稍早下載的範本檔案，您會發現此相同的值可用來定義範本中說明的虛擬機器資源類型。
+    Notice the **Microsoft.Compute/virtualMachines** parameter. This indicates the type of the resource you are requesting information on. If you look at the template file downloaded earlier, you will notice that this same value is used to define the type of the virtual machine resource described in the template.
 
-    此命令會傳回虛擬機器的相關資訊。
+    This command returns information related to the virtual machine.
 
-3. 檢視資源的詳細資料時，建議使用 `--json` 參數，更加實用。 此參數可製作更具可讀性的輸出，其中部分值是巢狀結構或集合。 下列範例示範的結果傳回 **顯示** 命令做為 JSON 文件。
+3. When viewing details on a resource, it is often useful to use the `--json` parameter. This makes the output more readable as some values are nested structures, or collections. The following example demonstrates returning the results of the **show** command as a JSON document.
 
         azure resource show "testRG" "MyUbuntuVM" Microsoft.Compute/virtualMachines -o "2015-06-15" --json
 
-    >[AZURE.NOTE] 您也可以使用檔案儲存的 JSON 資料 (& s) gt;將輸出導向至檔案的字元。 例如：
+    >[AZURE.NOTE] You can save the JSON data to file by using the &gt; character to pipe the output to file. For example:
     >
     > `azure resource show "testRG" "MyUbuntuVM" Microsoft.Compute/virtualMachines -o "2015-06-15" --json > myfile.json`
 
-4. 若要刪除現有的資源，請使用如下所示的命令。
+4. To delete an existing resource, use a command like the following.
 
         azure resource delete "testRG" "MyUbuntuVM" Microsoft.Compute/virtualMachines -o "2015-06-15"
 
-## 記錄
+## Logging
 
-若要檢視群組上執行之作業的記錄資訊，請使用 `azure group log show` 命令。 依預設，這會列出在群組上執行的最後一個作業。 若要檢視所有作業，請使用選用的 `--all` 參數。 針對前次部署，使用 `--last-deployment`。 針對特定部署，使用 `--deployment` 並指定部署名稱。 下列範例會傳回的群組上執行的所有作業記錄 *MyGroup*。
+To view logged information on operations performed on a group, use the `azure group log show` command. By default, this will list the last operation performed on the group. To view all operations, use the optional `--all` parameter. For the last deployment, use `--last-deployment`. For a specific deployment, use `--deployment` and specify the deployment name. The following example returns a log of all operations performed on the group *MyGroup*.
 
     azure group log show MyGroup --all
 
-## 後續步驟
+## Next steps
 
-* 如需使用 Azure 資源管理員使用 Azure PowerShell 資訊，請參閱 [使用 Azure PowerShell 與 Azure 資源管理員](../powershell-azure-resource-manager.md)。
-* 如需使用搭配 Azure 資源管理員從 Azure 入口網站的資訊，請參閱 [使用資源群組來管理您的 Azure 資源][psrm]。
+* For information on working with Azure Resource Manager using Azure PowerShell, see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
+* For information on working with Azure Resource Manager from the Azure portal, see [Using resource groups to manage your Azure resources][psrm].
 
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
+
 

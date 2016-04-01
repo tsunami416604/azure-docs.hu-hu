@@ -27,11 +27,11 @@
 ## 負載平衡方法
 Azure 流量管理員使用三種不同的負載平衡方法。 這些說明下列清單中，因為它們專屬於 Azure web 應用程式。 
 
-* **容錯移轉**: 如果您在不同地區有 web 應用程式複本，您可以使用這個方法來設定 web 應用程式來服務所有 web 用戶端流量，並設定不同的區域，以便都服務該流量的第一個 web 應用程式變得無法使用另一個 web 應用程式。 
+* **容錯移轉**︰ 如果您在不同地區有 web 應用程式複本，您可以使用這個方法來設定 web 應用程式來服務所有 web 用戶端流量，並設定不同的區域，以便都服務該流量的第一個 web 應用程式變得無法使用另一個 web 應用程式。 
     
-* **循環配置資源**: 如果您在不同地區有 web 應用程式複本，您可以使用這個方法，將流量平均分散在不同地區的 web 應用程式。 
+* **循環配置資源**︰ 如果您在不同地區有 web 應用程式複本，您可以使用這個方法，將流量平均分散在不同地區的 web 應用程式。 
     
-* **效能**: 效能方法可分散至用戶端的最短來回時間為基礎的流量。 效能方法可用於相同地區內或不同地區中的 Web 應用程式。 
+* **效能**︰ 效能方法可分散至用戶端的最短來回時間為基礎的流量。 效能方法可用於相同地區內或不同地區中的 Web 應用程式。 
 
 如需 Azure 流量管理員中負載平衡的詳細資訊，請參閱 [關於流量管理員負載平衡方法](../traffic-manager/traffic-manager-load-balancing-methods.md)。
 
@@ -63,4 +63,5 @@ Azure 流量管理員使用三種不同的負載平衡方法。 這些說明下�
 如需使用流量管理員搭配 Web Apps 的詳細資訊，請參閱部落格文章 
 [使用 Azure 流量管理員搭配 Azure 網站](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx) 和 [Azure 流量管理員現在可以整合 Azure 網站上](http://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)。
  
+
 

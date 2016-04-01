@@ -88,7 +88,7 @@
                         --name $backendSubnetName|grep Id)"
         subnetId=${subnetId#*/}
 
->[AZURE.TIP] 第一個命令會使用上述 [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) 和 [字串操作](http://tldp.org/LDP/abs/html/string-manipulation.html) (更具體來說，子字串移除項目)。 
+>[AZURE.TIP] 第一個命令會使用上述 [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) 和 [字串操作](http://tldp.org/LDP/abs/html/string-manipulation.html) （更具體來說，子字串移除項目）。 
 
 4. 擷取 `NSG-RemoteAccess` NSG 的識別碼。 您需要這麼做，因為要和這個 NSG 關聯的 NIC 位於不同的資源群組中。
 
@@ -329,6 +329,7 @@
         info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk2-2.vhd
         info:    Updating VM "DB2"
         info:    vm disk attach-new command OK
+
 
 
 

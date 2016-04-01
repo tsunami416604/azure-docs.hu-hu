@@ -57,7 +57,7 @@
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-建立圖表中的 [計量瀏覽器](app-insights-metric-explorer.md) 以查看您的警示:
+建立圖表中的 [計量瀏覽器](app-insights-metric-explorer.md) 以查看您的警示 ︰
 
 ![](./media/app-insights-how-do-i/010-alarm.png)
 
@@ -208,7 +208,7 @@
 
 ## 停用遙測
 
-若要 **動態停止和啟動** 收集和傳輸的遙測資料從伺服器:
+若要 **動態停止和啟動** 收集和傳輸的遙測資料從伺服器 ︰
 
 ```
 
@@ -239,6 +239,7 @@
 
 * 首先， [加入新的圖表](app-insights-metrics-explorer.md) 和計數器是否在我們提供基本集合中。
 * 如果沒有， [將計數器加入至收集效能計數器模組集](app-insights-web-monitor-performance.md#system-performance-counters)。
+
 
 
 

@@ -29,28 +29,28 @@
 
 多重路徑有雙重目的：
 
-- **高可用性**: I/O 路徑 (例如纜線、 交換器、 網路介面或控制站) 的任何項目失敗時，它會提供替代路徑。
+- **高可用性**: I/O 路徑 （例如纜線、 交換器、 網路介面或控制站） 的任何項目失敗時，它會提供替代路徑。
 
-- **負載平衡**: 根據您的儲存裝置的設定，它可以改善效能，偵測 I/O 路徑上的負載，並以動態方式重新平衡這樣的負載量。
+- **負載平衡**︰ 根據您的儲存裝置的設定，它可以改善效能，偵測 I/O 路徑上的負載，並以動態方式重新平衡這樣的負載量。
 
 
 ### 關於多重路徑元件 
 
 Linux 中的多重路徑是由核心元件和下列的使用者空間元件所組成。
 
-- **核心**: 主要元件是 *裝置對應工具* ，排列 I/O，並支援容錯移轉路徑和路徑的群組。
+- **核心**︰ 主要元件是 *裝置對應工具* ，排列 I/O，並支援容錯移轉路徑和路徑的群組。
 
-1. **使用者空間**: 這些是 *多重路徑工具* ，藉由指示裝置對應工具多重路徑模組如何管理多重路徑裝置。 這些工具包括：
+1. **使用者空間**︰ 這些是 *多重路徑工具* ，藉由指示裝置對應工具多重路徑模組如何管理多重路徑裝置。 這些工具包括：
 
-    - **多重路徑**: 列出並設定 multipathed 裝置。
+    - **多重路徑**︰ 列出並設定 multipathed 裝置。
         
-    - **Multipathd**: 服務精靈會執行多重路徑，並監視路徑。
+    - **Multipathd**︰ 服務精靈會執行多重路徑，並監視路徑。
     
     - **Devmap 名稱**: devmaps 提供有意義的 udev 裝置的名稱。
  
-    - **Kpartx**: 線性 devmaps 會對應至裝置，讓多重路徑對應可分割的磁碟分割。
+    - **Kpartx**︰ 線性 devmaps 會對應至裝置，讓多重路徑對應可分割的磁碟分割。
     
-    - **Multipath.conf**: 組態檔用來覆寫內建組態資料表的多重路徑服務精靈。
+    - **Multipath.conf**︰ 組態檔用來覆寫內建組態資料表的多重路徑服務精靈。
 
 ### 關於 multipath.conf 組態檔
 
@@ -58,15 +58,15 @@ Linux 中的多重路徑是由核心元件和下列的使用者空間元件所�
 
 multipath.conf 有五個區段：
 
-- **系統層級的預設值** *(預設)*: 您可以覆寫系統層級的預設值。
+- **系統層級的預設值** *（預設）*︰ 您可以覆寫系統層級的預設值。
 
-1. **黑名單裝置** *(p)*: 您可以指定不受裝置對應工具的裝置清單。
+1. **黑名單裝置** *(p)*︰ 您可以指定不受裝置對應工具的裝置清單。
 
-1. **例外狀況的黑名單** *(blacklist_exceptions)*: 您可以找出特定的裝置，即使列入黑名單，被視為多重路徑裝置。
+1. **例外狀況的黑名單** *(blacklist_exceptions)*︰ 您可以找出特定的裝置，即使列入黑名單，被視為多重路徑裝置。
 
-1. **儲存體控制器的特定設定** *(裝置)*: 您可以指定將套用到裝置的廠商和產品資訊的組態設定。
+1. **儲存體控制器的特定設定** *（裝置）*︰ 您可以指定將套用到裝置的廠商和產品資訊的組態設定。
 
-1. **裝置特定設定** *(multipaths)*: 您可以使用本節來微調個別 Lun 的組態設定。
+1. **裝置特定設定** *(multipaths)*︰ 您可以使用本節來微調個別 Lun 的組態設定。
 
 ## 在連線到 Linux 主機的 StorSimple 上設定多重路徑
 
@@ -469,19 +469,19 @@ multipath.conf 有五個區段：
 |**iSCSI**|`service iscsid start`|啟動 iSCSI 服務|
 ||`service iscsid stop`|停止 iSCSI 服務|
 ||`service iscsid restart`|重新啟動 iSCSI 服務|
-||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|探索指定的位址上的可用目標|
+||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|探索指定位址上的可用目標|
 ||`iscsiadm -m node --login -T <TARGET_IQN>`|登入 iSCSI 目標|
 ||`iscsiadm -m node --logout -p <Target_IP>`|登出 iSCSI 目標|
-||`cat /etc/iscsi/initiatorname.iscsi`|列印的 iSCSI 啟動器名稱|
-||`iscsiadm –m session –s <sessionid> -P 3`|檢查的 iSCSI 工作階段和在主機上探索到的磁碟區的狀態|
-||`iscsi –m session`|顯示所有主機與 StorSimple 裝置之間建立 iSCSI 工作階段|
+||`cat /etc/iscsi/initiatorname.iscsi`|列印 iSCSI 啟動器名稱|
+||`iscsiadm –m session –s <sessionid> -P 3`|檢查 iSCSI 工作階段的狀態以及在主機上探索到的磁碟區|
+||`iscsi –m session`|顯示在主機與 StorSimple 裝置之間建立的所有 iSCSI 工作階段|
 | | | |
-|**多重路徑**|`service multipathd start`|啟動精靈多重路徑|
-||`service multipathd stop`|停止多重路徑精靈|
-||`service multipathd restart`|重新啟動服務精靈多重路徑|
-||`chkconfig multipathd on` </br> OR </br> `mpathconf –with_chkconfig y`|啟用多重路徑為在開機時啟動精靈|
-||`multipathd –k`|啟動互動式主控台進行疑難排解|
-||`multipath –l`|多重路徑清單的連線和裝置|
+|**多重路徑**|`service multipathd start`|啟動多重路徑 daemon|
+||`service multipathd stop`|停止多重路徑 daemon|
+||`service multipathd restart`|重新啟動多重路徑 daemon|
+||`chkconfig multipathd on` </br> 或 </br> `mpathconf –with_chkconfig y`|啟用多重路徑 daemon 以在開機時啟動|
+||`multipathd –k`|啟動互動式主控台以進行疑難排解|
+||`multipath –l`|列出多重路徑連接和裝置|
 ||`mpathconf --enable`|建立範例 mulitpath.conf 檔案中 `/etc/mulitpath.conf`|
 ||||
 
@@ -491,5 +491,6 @@ multipath.conf 有五個區段：
 
 - [在 CentOS 上設定 MPIO](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux 訓練指南](http://linux-training.be/files/books/LinuxAdm.pdf)
+
 
 

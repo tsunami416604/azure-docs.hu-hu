@@ -25,7 +25,7 @@ Azure Batch 是大型運算，在實際執行環境中，工作、作業和運�
 
 列出工作、作業、計算節點 -- 以下是每個使用 Azure Batch 的應用程式幾乎都必須執行的作業範例，而且通常是經常執行： 監視是常見的使用案例。 例如，判斷集區的容量和狀態需要查詢集區中的所有計算節點。 另一個例子是查詢工作的作業，判斷是否有任何作業仍在佇列中。
 
-這 [批次.NET][api_net] API 程式碼片段會擷取所有工作，以及這些工作的屬性為完整組件相關聯的工作:
+這 [批次.NET][api_net] API 程式碼片段會擷取所有工作，以及這些工作的屬性為完整組件相關聯的工作 ︰
 
 ```
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -66,7 +66,7 @@ IPagedEnumerable<CloudTask> completedTasks = batchClient.JobOperations.ListTasks
   - 指定每一個項目應該傳回統計資料資訊的展開字串範例：`stats`
   - 當所有屬性都是必要且指定了任何選取的字串，在擴充字串 *必須* 用來取得統計資料資訊。 如果使用選取字串來取得屬性子集，則可以在選取字串中指定 `stats`，不需要指定展開字串。
 
-> [AZURE.NOTE] 當建構的任何三個查詢字串類型 (篩選條件，[選取]，展開)，您必須確定屬性名稱和大小寫相符的 REST API 項目與其。 例如，當使用.NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask), ，您必須指定 **狀態** 而不是 **狀態** 即使.NET 屬性是 [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state)。 關於 .NET 和 REST API 之間的屬性對應，請參閱下表。
+> [AZURE.NOTE] 當建構的任何三個查詢字串類型 （篩選條件，[選取]，展開），您必須確定屬性名稱和大小寫相符的 REST API 項目與其。 例如，當使用.NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask), ，您必須指定 **狀態** 而不是 **狀態** 即使.NET 屬性是 [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state)。 關於 .NET 和 REST API 之間的屬性對應，請參閱下表。
 
 ### 篩選、選取和展開字串規格
 
@@ -149,7 +149,7 @@ IPagedEnumerable<CloudTask> completedTasks = batchClient.JobOperations.ListTasks
 
 ### 範例：建構篩選字串
 
-建構篩選字串時 [ODATADetailLevel.FilterClause][odata_filter], ，請參閱下的表 *對應的篩選字串* 來尋找對應至您想要執行的清單作業的 REST API 文件頁面。 在該頁面的第一個含有多資料列的資料表中，您可以找到可篩選的屬性及其支援的運算子。 如果您想要擷取其結束代碼為非零的所有工作，例如，此資料列上 [列出與作業相關聯的工作][rest_list_tasks] 指定適用的屬性字串，可允許的運算子:
+建構篩選字串時 [ODATADetailLevel.FilterClause][odata_filter], ，請參閱下的表 *對應的篩選字串* 來尋找對應至您想要執行的清單作業的 REST API 文件頁面。 在該頁面的第一個含有多資料列的資料表中，您可以找到可篩選的屬性及其支援的運算子。 如果您想要擷取其結束代碼為非零的所有工作，例如，此資料列上 [列出與作業相關聯的工作][rest_list_tasks] 指定適用的屬性字串，可允許的運算子 ︰
 
 | 屬性 | 允許的作業 | 類型 |
 | :--- | :--- | :--- |
@@ -174,7 +174,7 @@ IPagedEnumerable<CloudTask> completedTasks = batchClient.JobOperations.ListTasks
 
 ## 後續步驟
 
-簽出 [EfficientListQueries][efficient_query_sample] 上以查看如何進行有效率的清單查詢的 GitHub 範例專案會影響應用程式的效能。 這個 C# 主控台應用程式會建立並將大量的工作加入至工作，然後使用不同的批次服務會查詢 [ODATADetailLevel][odata] 規格，顯示類似下面的輸出:
+簽出 [EfficientListQueries][efficient_query_sample] 上以查看如何進行有效率的清單查詢的 GitHub 範例專案會影響應用程式的效能。 這個 C# 主控台應用程式會建立並將大量的工作加入至工作，然後使用不同的批次服務會查詢 [ODATADetailLevel][odata] 規格，顯示類似下面的輸出 ︰
 
         Adding 5000 tasks to job jobEffQuery...
         5000 tasks added in 00:00:47.3467587, hit ENTER to query tasks...
@@ -236,4 +236,5 @@ IPagedEnumerable<CloudTask> completedTasks = batchClient.JobOperations.ListTasks
 [net_pool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+
 

@@ -53,14 +53,14 @@
 
         # sudo rpm -e --nodeps NetworkManager
 
-    **注意:** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
+    **注意 ︰** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
 
-4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
+4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
+5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -82,9 +82,9 @@
         # sudo chkconfig network on
 
 
-8. **僅限 centOS 6.3**: 安裝 Linux Integration Services (LIS) 驅動程式
+8. **僅限 centOS 6.3**︰ 安裝 Linux Integration Services (LIS) 驅動程式
 
-    **重要事項: 此步驟僅適用於 CentOS 6.3 和更早版本。**Linux 整合服務會在 CentOS 6.4 + *已可在標準的核心*。
+    **重要事項：此步驟僅適用於 CentOS 6.3 和較舊的版本。**  Linux 整合服務會在 CentOS 6.4 + *已可在標準的核心*。
 
     - 依照安裝指示 [LIS 下載頁面](https://www.microsoft.com/en-us/download/details.aspx?id=46842) 並安裝到您的映像 RPM。  
 
@@ -93,7 +93,7 @@
 
         # sudo yum install python-pyasn1
 
-10. 如果您想要使用在 Azure 資料中心內託管的 OpenLogic 鏡像，請使用下列儲存機制來取代 /etc/yum.repos.d/CentOS-Base.repo 檔案。  這也會新增 **[openlogic]** 包含 Azure Linux 代理程式封裝的儲存機制:
+10. 如果您想要使用在 Azure 資料中心內託管的 OpenLogic 鏡像，請使用下列儲存機制來取代 /etc/yum.repos.d/CentOS-Base.repo 檔案。  這也會新增 **[openlogic]** 包含 Azure Linux 代理程式封裝的儲存機制 ︰
 
         [openlogic]
         name=CentOS-$releasever - openlogic packages for $basearch
@@ -137,14 +137,14 @@
         enabled=0
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-    **注意:** 本指南的其餘部分將假設您至少會使用 [openlogic] 儲存機制，將會用來安裝 Azure Linux 代理程式。
+    **注意 ︰** 本指南的其餘部分將假設您至少會使用 [openlogic] 儲存機制，將會用來安裝 Azure Linux 代理程式。
 
 
 11. 在 /etc/yum.conf 中加入這一行：
 
         http_caching=packages
 
-    和 **CentOS 6.3** 加入下列這一行:
+    和 **CentOS 6.3** 加入下列這一行 ︰
 
         exclude=kernel*
 
@@ -156,7 +156,7 @@
 
         # yum clean all
 
-14. **僅限 centOS 6.3**, ，使用下列命令更新核心:
+14. **僅限 centOS 6.3**, ，使用下列命令更新核心 ︰
 
         # sudo yum --disableexcludes=all install kernel
 
@@ -166,7 +166,7 @@
 
     這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 因為 CentOS 6 所使用核心版本的一個錯誤，這將會停用 NUMA。
 
-    除了上述建議 *移除* 下列參數:
+    除了上述建議 *移除* 下列參數 ︰
 
         rhgb quiet crashkernel=auto
 
@@ -222,12 +222,12 @@
 
 2. 按一下 [ **連接** 開啟虛擬機器的主控台視窗。
 
-3.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
+3.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
+4.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -251,7 +251,7 @@
 
         # sudo yum install python-pyasn1
 
-8. 如果您想要使用在 Azure 資料中心內託管的 OpenLogic 鏡像，請使用下列儲存機制來取代 /etc/yum.repos.d/CentOS-Base.repo 檔案。  這也會新增 **[openlogic]** 包含 Azure Linux 代理程式封裝的儲存機制:
+8. 如果您想要使用在 Azure 資料中心內託管的 OpenLogic 鏡像，請使用下列儲存機制來取代 /etc/yum.repos.d/CentOS-Base.repo 檔案。  這也會新增 **[openlogic]** 包含 Azure Linux 代理程式封裝的儲存機制 ︰
 
         [openlogic]
         name=CentOS-$releasever - openlogic packages for $basearch
@@ -297,7 +297,7 @@
 
 
 
-    **注意:** 本指南的其餘部分將假設您至少會使用 [openlogic] 儲存機制，將會用來安裝 Azure Linux 代理程式。
+    **注意 ︰** 本指南的其餘部分將假設您至少會使用 [openlogic] 儲存機制，將會用來安裝 Azure Linux 代理程式。
 
 9.  執行下列命令，以清除目前的 yum 中繼資料並安裝任何更新：
 
@@ -308,7 +308,7 @@
 
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述建議 *移除* 下列參數:
+    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述建議 *移除* 下列參數 ︰
 
         rhgb quiet crashkernel=auto
 
@@ -343,4 +343,5 @@
         # logout
 
 16. 按一下 [ **動作]-> [關閉下** HYPER-V 管理員中。 您現在可以將 Linux VHD 上傳至 Azure。
+
 

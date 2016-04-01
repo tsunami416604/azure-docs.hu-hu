@@ -31,14 +31,14 @@
 HDInsight 目前僅支援 Ambari 監視功能。 HDInsight  3.0 及 2.1 版叢集可支援 Ambari API 1.0。 本文涵蓋於 HDInsight 3.1 和 2.1 版叢集上存取 Ambari API。 兩者的主要差別在於某些元件已隨著新功能引進而變更 (例如工作歷程伺服器)。
 
 
-**先決條件**
+**必要條件**
 
 開始進行本教學課程之前，您必須具備下列條件：
 
 - **具有 Azure PowerShell 的工作站**。 請參閱 [安裝 Azure PowerShell 1.0 和更新版本所](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)。
 
 
-- (選擇性) [cURL][curl]。 若要安裝它，請參閱 [cURL 版本和下載][curl-download]。
+- （選擇性） [cURL][curl]。 若要安裝它，請參閱 [cURL 版本和下載][curl-download]。
 
     >[AZURE.NOTE] 使用 cURL 命令時在 Windows 中，使用雙引號而不是單引號選項值。
 
@@ -50,7 +50,7 @@ HDInsight 叢集名稱|$clusterName||您的 HDInsight 叢集名稱。
 叢集使用者名稱|$clusterUsername||佈建時指定的叢集使用者名稱。
 叢集密碼|$clusterPassword||叢集使用者密碼。
 
-    > [AZURE.NOTE] Fill-in the values in the table. This will be helpful for going through this tutorial.
+    > [AZURE.NOTE] 填入資料表中的值。 這將有助於本教學課程的執行。
 
 
 
@@ -60,7 +60,7 @@ HDInsight 叢集名稱|$clusterName||您的 HDInsight 叢集名稱。
 
 **使用 Azure PowerShell**
 
-以下是取得 MapReduce 工作追蹤程式資訊的 PowerShell 指令碼 *在 HDInsight 3.1 叢集。*主要差別在於我們從 YARN 服務 (而非 MapReduce) 提取這些詳細資料。
+以下是取得 MapReduce 工作追蹤程式資訊的 PowerShell 指令碼 *在 HDInsight 3.1 叢集。*  主要差別在於我們從 YARN 服務 (而非 MapReduce) 提取這些詳細資料。
 
     $clusterName = "<HDInsightClusterName>"
     $clusterUsername = "<HDInsightClusterUsername>"
@@ -174,4 +174,5 @@ HDInsight 叢集名稱|$clusterName||您的 HDInsight 叢集名稱。
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
+
 

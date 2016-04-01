@@ -74,13 +74,13 @@
 
     ![Configure symbol loading][SymbolLoading]
 
-3. 選取 **符號** 左邊節點，並加入至 [SymbolSource] 伺服器使用的 URI 參考 [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public)。 行動服務 .NET 後端的符號會以最新的版本啟用。
+3. 選取 **符號** 左方節點以及將參考加入 [SymbolSource] 伺服器使用的 URI [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public)。 行動服務 .NET 後端的符號會以最新的版本啟用。
 
     ![Configure symbol server][SymbolServer]
 
-4. 在程式碼片段中要進行偵錯之處，設定一個中斷點。 例如在中設定中斷點 **getalltodoitems ()** 方法 **TodoItemController** 所附的 Visual Studio 中的行動服務專案範本。
+4. 在程式碼片段中要進行偵錯之處，設定一個中斷點。 例如在中設定中斷點 **getalltodoitems （)** 方法 **TodoItemController** 所附的 Visual Studio 中的行動服務專案範本。
 5. 服務的偵錯在本機進行按 **F5**。 第一次載入可能會比較慢，因為 Visual Studio 必須為行動服務 .NET 後端下載符號。
-6. 如先前關於 HTTP 偵錯的章節所說明，您可以使用測試用戶端將 HTTP 要求傳送至您設定中斷點之處。 例如，您可以傳送要求以 **getalltodoitems ()** 方法藉由選取 **GET tables/TodoItem** 在說明頁面上，然後選取 **試試看** ，然後 **傳送**。
+6. 如先前關於 HTTP 偵錯的章節所說明，您可以使用測試用戶端將 HTTP 要求傳送至您設定中斷點之處。 例如，您可以傳送要求以 **getalltodoitems （)** 方法藉由選取 **GET tables/TodoItem** 在說明頁面上，然後選取 **試試看** ，然後 **傳送**。
 7. Visual Studio 應會在您設定時，中斷點中斷，而且應該提供附有原始程式碼的完整堆疊追蹤 **呼叫堆疊** Visual Studio 視窗中的。
 
     ![Hitting a breakpoint][Breakpoint]
@@ -163,3 +163,4 @@
 
 <!-- Links -->
 [SymbolSource]:http://symbolsource.org
+

@@ -29,17 +29,17 @@
 
 本主題說明如何使用伺服器端邏輯來授權使用者。  在此教學課程中，您會修改資料表控制器、根據使用者識別碼篩選查詢，以及只提供使用者對自己資料的存取權。 根據使用者識別碼篩選使用者查詢結果是最基本的授權形式。 根據特定案例，您也可能也會想要建立使用者或角色資料表，以便追蹤更詳細的使用者授權資訊，例如使用者可以存取哪些端點。
 
-本教學課程根據行動服務快速入門，且 [將驗證新增至現有的行動服務應用程式] 教學課程為基礎。 請先完成 [將驗證新增至現有的行動服務應用程式]。
+本教學課程根據行動服務快速入門，並根據 [Add Authentication to Existing Mobile Services App] 教學課程。 請完成 [Add Authentication to Existing Mobile Services App] 第一次。
 
 ## <a name="register-scripts"></a>修改資料存取方法
 
-1. 在 Visual Studio 中開啟行動專案，展開 DataObjects 資料夾，然後開啟 **TodoItem.cs**。  **TodoItem** 類別會定義資料物件，而且您需要新增 **UserId** 要用於篩選的屬性。 新增下列新 UserId 屬性至 **TodoItem** 類別:
+1. 在 Visual Studio 中開啟行動專案，展開 DataObjects 資料夾，然後開啟 **TodoItem.cs**。  **TodoItem** 類別會定義資料物件，而且您需要新增 **UserId** 要用於篩選的屬性。 新增下列新 UserId 屬性至 **TodoItem** 類別 ︰
 
         public string UserId { get; set; }
 
     >[AZURE.NOTE] 若要進行此資料模型變更，並保有資料庫中的現有資料，您必須使用 [Code First 移轉](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)。
 
-2. 在 Visual Studio 中，展開 [控制器] 資料夾中，開啟 **TodoItemController.cs** ，並新增下列 using 陳述式:
+2. 在 Visual Studio 中，展開 [控制器] 資料夾中，開啟 **TodoItemController.cs** ，並新增下列 using 陳述式 ︰
 
         using Microsoft.WindowsAzure.Mobile.Service.Security;
 
@@ -53,7 +53,7 @@
 
     這個程式碼會將已驗證使用者的使用者識別碼新增至項目 (在它插入到 TodoItem 資料表之前)。
 
-3. 找出 **GetAllTodoItems** 方法，並取代現有 **傳回** 陳述式加上下列程式碼行:
+3. 找出 **GetAllTodoItems** 方法，並取代現有 **傳回** 陳述式加上下列程式碼行 ︰
 
         // Get the logged in user
         var currentUser = User as ServiceUser;
@@ -83,4 +83,5 @@
 
 <!-- URLs. -->
 [Add Authentication to Existing Mobile Services App]: mobile-services-dotnet-backend-ios-get-started-users.md
+
 

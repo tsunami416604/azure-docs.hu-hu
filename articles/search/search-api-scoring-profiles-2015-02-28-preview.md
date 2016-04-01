@@ -164,7 +164,7 @@ Azure 搜尋服務會使用預設計分來計算分數，但您可以透過評�
   <tbody>
     <tr>
       <td>
-        <b>Weights</b>
+        <b>加權</b>
       </td>
       <td>
         Specify name-value pairs that assign a relative weight to a field. In the [Example](#example), the albumTitle, genre, and artistName fields are boosted 1, 5, and null, respectively. Why is genre boosted so much higher than the others? If search is conducted over data that is somewhat homogeneous (as is the case with 'genre' in the `musicstoreindex`), you might need a larger variance in the relative weights. For example, in the `musicstoreindex`, 'rock' appears as both a genre and in identically phrased genre descriptions. If you want genre to outweigh genre description, the genre field will need a much higher relative weight.
@@ -260,64 +260,64 @@ Azure 搜尋服務會使用預設計分來計算分數，但您可以透過評�
 <a name="bkmk_indexref"></a>
 ##索引屬性参考
 
-**附註**
+**注意**
 計分函數只能用於篩選的欄位。
 
 <table border="1">
 <tr>
 <th>屬性</th>
-<th>描述</th>
+<th>說明</th>
 </tr>
 <tr>
-<td>名稱</td>   <td>所需。 這是評分設定檔的名稱。 它會遵循欄位的相同命名慣例。 它必須以字母開頭，且不可包含點、冒號或 @ 符號，而且開頭不可以是片語 'azureSearch' (區分大小寫)。 </td>
+<td>名稱</td>   <td>必要。 這是評分設定檔的名稱。 它會遵循欄位的相同命名慣例。 它必須以字母開頭，且不可包含點、冒號或 @ 符號，而且開頭不可以是片語 'azureSearch' (區分大小寫)。 </td>
 </tr><tr>
-<td>文字</td>   <td>包含 「 權數 」 屬性。</td>
+<td>文字</td>   <td>包含「權數」屬性。</td>
 </tr><tr>
-<td>加權</td>    <td>選擇性。 指定欄位名稱和相對權數的名稱值組。 相對權數必須是正整數。 最大值是 int32.MaxValue。 您可以指定不含對應權數的欄位名稱。 權數可用來指出相對於其他欄位的重要性。</td>
+<td>Weights</td>    <td>選用。 指定欄位名稱和相對權數的名稱值組。 相對權數必須是正整數。 最大值是 int32.MaxValue。 您可以指定不含對應權數的欄位名稱。 權數可用來指出某欄位相對於其他欄位的重要性。</td>
 <tr>
-<td>函式</td>  <td>選擇性。 請注意，計分函數只能套用至可篩選欄位。</td>
+<td>Functions</td>  <td>選用。 請注意，計分函數只能套用至可篩選的欄位。</td>
 </tr><tr>
-<td>型別</td>   <td>所需的評分函式。 指出要使用的函數類型。 有效值包括量級、有效性和距離。 您可以在每個評分設定檔中包含多個函數。 函式名稱必須是小寫。</td>
+<td>類型</td>   <td>計分函數的必要項目。 指出要使用的函數類型。 有效值包括量級、有效性和距離。 您可以在每個評分設定檔中包含多個函數。 函數名稱必須是小寫。</td>
 </tr><tr>
-<td>提升</td>  <td>所需的評分函式。 做為原始分數之乘數的正數。 它不能等於 1。</td>
+<td>Boost</td>  <td>計分函數的必要項目。 做為原始分數之乘數的正數。 此值不可等於 1。</td>
 </tr><tr>
-<td>Fieldname</td>  <td>所需的評分函式。 計分函數只能套用至屬於索引的欄位集合、並且可篩選的欄位。 此外，每個函數類型都有額外的限制 (有效性與日期時間欄位搭配使用，量級與整數或雙精確度浮點數欄位搭配，距離與位置欄位搭配，標記與字串或字串集合欄位搭配)。 每個函數定義只能指定一個欄位。 比方說，若要使用兩次是在相同的設定檔的大小，您必須包含兩個定義範圍內，一個用於每個欄位。</td>
+<td>Fieldname</td>  <td>計分函數的必要項目。 計分函數只能套用至屬於索引的欄位集合、並且可篩選的欄位。 此外，每個函數類型都有額外的限制 (有效性與日期時間欄位搭配使用，量級與整數或雙精確度浮點數欄位搭配，距離與位置欄位搭配，標記與字串或字串集合欄位搭配)。 每個函數定義只能指定一個欄位。 例如，若要在相同的設定檔中使用量級兩次，您必須包含兩個定義量級，每個欄位各一個。</td>
 </tr><tr>
-<td>插補</td>  <td>所需的評分函式。 定義從範圍開始到範圍結束提升分數的增加斜率。 有效值包括線性 (預設值)、常數、二次方程式和對數。 請參閱 [Set interpolations](#bkmk_interpolation) 如需詳細資訊。</td>
+<td>Interpolation</td>  <td>計分函數的必要項目。 定義從範圍開始到範圍結束提升分數的增加斜率。 有效值包括線性 (預設值)、常數、二次方程式和對數。 請參閱 [Set interpolations](#bkmk_interpolation) 如需詳細資訊。</td>
 </tr><tr>
-<td>量級</td>  <td>量級計分函數可用來根據數值欄位的值範圍改變排名。 最常見的使用範例包括：
+<td>magnitude</td>  <td>量級計分函數可用來根據數值欄位的值範圍改變排名。 最常見的使用範例包括：
 <br>
-- 星級評等: 改變計分根據 「 星級評等 」 欄位內的值。 當兩個項目相關時，會先顯示具有更高評等的項目。
+- 星級評等 ︰ 改變計分根據 「 星級評等 」 欄位內的值。 當兩個項目相關時，會先顯示具有更高評等的項目。
 <br>
-- 邊界: 當兩份文件相關時，零售商可能會想要提升先具有較高利潤的文件。
+- 邊界 ︰ 當兩份文件相關時，零售商可能會想要提升先具有較高利潤的文件。
 <br>
-- 點擊數: 追蹤的應用程式按一下透過對產品或頁面的動作，您可以使用量級來提升可能獲得最多流量的項目。
+- 點擊數 ︰ 追蹤的應用程式按一下透過對產品或頁面的動作，您可以使用量級來提升可能獲得最多流量的項目。
 <br>
-- 下載計數: 對於追蹤下載，量級函式讓您提升項目，應用程式有最多的下載項目。
+- 下載計數 ︰ 對於追蹤下載，量級函式讓您提升項目，應用程式有最多的下載項目。
 <tr>
-<td>量級 |boostingRangeStart</td> <td>設定量級分數之範圍的開始值。 此值必須是整數或雙精確度浮點數。 就 1 到 4 的星級評等而言，這會是 1。 邊界超過 50%，這會是 50。</td>
+<td>magnitude | boostingRangeStart</td> <td>設定計算量級分數之範圍的起始值。 此值必須是整數或雙精確度浮點數。 就 1 到 4 的星級評等而言，這會是 1。 就超過 50% 的利潤而言，這會是 50。</td>
 </tr><tr>
-<td>量級 |boostingRangeEnd</td>   <td>設定量級分數之範圍的結束值。 此值必須是整數或雙精確度浮點數。 1 到 4 的星級評等而言，這會是 4。</td>
+<td>magnitude | boostingRangeEnd</td>   <td>設定計算量級分數之範圍的結束值。 此值必須是整數或雙精確度浮點數。 就 1 到 4 的星級評等而言，這會是 4。</td>
 </tr><tr>
-<td>量級 |constantBoostBeyondRange</td>   <td>有效的值為 true 或 false (預設值)。 設為 true 時，完整提升仍會繼續套用至目標欄位的值高於範圍上限的文件。 如果為 false，則此函數的提升將不會套用至文件的範圍內的 [目標] 欄位的值。</td>
+<td>magnitude | constantBoostBeyondRange</td>   <td>有效值為 true 或 false (預設值)。 設為 true 時，完整提升仍會繼續套用至目標欄位的值高於範圍上限的文件。 如果為 false，則此函數的提升將不會套用至目標欄位的值超出範圍的文件。</td>
 </tr><tr>
-<td>有效性</td>  <td>有效性計分函數可用來改變根據 DateTimeOffset 欄位中值的項目的排名分數。 例如，日期較近的項目可排在較舊項目之前。 (請注意，也可能會對像是具有未來日期的行事曆事件的項目進行排名，因此，越接近目前日期的項目排名會高於未來日期較遠的項目。)在目前的服務版本中，範圍的其中一端會固定為目前的時間。 另一端是根據過去的時間 `boostingDuration`。 在未來的時間範圍，大幅提升使用負 `boostingDuration`。 從最大與最小範圍變更的提升比率，取決於套用至評分設定檔的插補 (請參閱下圖)。 若要反轉套用的提升係數，請選擇小於 1 的提升係數。</td>
+<td>freshness</td>  <td>有效性計分函數可用來根據 DateTimeOffset 欄位中的值改變項目的排名分數。 例如，日期較近的項目可排在較舊項目之前。 (請注意，也可能會對像是具有未來日期的行事曆事件的項目進行排名，因此，越接近目前日期的項目排名會高於未來日期較遠的項目。)在目前的服務版本中，範圍的其中一端會固定為目前的時間。 另一端是根據過去的時間 `boostingDuration`。 在未來的時間範圍，大幅提升使用負 `boostingDuration`。 從最大與最小範圍變更的提升比率，取決於套用至評分設定檔的插補 (請參閱下圖)。 若要反轉套用的提升係數，請選擇小於 1 的提升係數。</td>
 </tr><tr>
-<td>有效性 |boostingDuration</td>   <td>設定的到期時間的開始停止對特定文件。 [設定 boostingDuration]，請參閱 #bkmk_boostdur 語法和範例的下一節。</td>
+<td>freshness | boostingDuration</td>   <td>設定要開始停止對特定文件進行提升的到期時間。 如需語法和範例，請參閱下一節中的 [設定 boostingDuration](#bkmk_boostdur)。</td>
 </tr><tr>
-<td>距離</td>   <td>距離計分函數可用來影響它們如何關閉或目前相對於參考地理位置為基礎的文件的分數。 參考位置指定為查詢參數中的一部分 (使用 `scoringParameterquery` 字串選項) 為 lon，lat 引數。</td>
+<td>distance</td>   <td>距離計分函數可用來根據文件與參考地理位置的距離，對文件的分數產生影響。 參考位置指定為查詢參數中的一部分 (使用 `scoringParameterquery` 字串選項) 為 lon，lat 引數。</td>
 </tr><tr>
-<td>距離 |referencePointParameter</td> <td>傳入查詢中用來做為參考位置的參數。 scoringParameter 是查詢參數。 請參閱 [Search Documents](search-api-2015-02-28-preview/#SearchDocs) 如需查詢參數的描述。</td>
+<td>distance | referencePointParameter</td> <td>傳入查詢中用來做為參考位置的參數。 scoringParameter 是查詢參數。 請參閱 [Search Documents](search-api-2015-02-28-preview/#SearchDocs) 如需查詢參數的描述。</td>
 </tr><tr>
-<td>距離 |boostingDistance</td>    <td>數字，指出以公里為單位的提升範圍結束處的參考位置的距離。</td>
+<td>distance | boostingDistance</td>    <td>以公里為單位，設定與提升範圍結束處的參考位置相隔的距離。</td>
 </tr><tr>
-<td>標記</td>    <td>標記計分函數可用來影響文件和搜尋查詢中的標記為基礎的文件的分數。 將會提升擁有與搜尋查詢共通之標記的文件。 為每個搜尋要求中的計分參數提供搜尋查詢的標記 (使用 `scoringParameterquery` 字串選項)。</td>
+<td>tag</td>    <td>標記計分函數可用來根據文件和搜尋查詢中的標記，對文件的分數產生影響。 將會提升擁有與搜尋查詢共通之標記的文件。 為每個搜尋要求中的計分參數提供搜尋查詢的標記 (使用 `scoringParameterquery` 字串選項)。</td>
 </tr><tr>
-<td>標記 |tagsParameter</td>    <td>參數來傳遞查詢中用來指定特定要求的標記。 scoringParameter 是查詢參數。 請參閱 [Search Documents](search-api-2015-02-28-preview/#SearchDocs) 如需查詢參數的描述。</td>
+<td>tag | tagsParameter</td>    <td>傳入查詢中用來指定特定要求的標記的參數。 scoringParameter 是查詢參數。 請參閱 [Search Documents](search-api-2015-02-28-preview/#SearchDocs) 如需查詢參數的描述。</td>
 </tr><tr>
-<td>functionAggregation</td>    <td>選擇性。 只有在已指定函數時才會套用。 有效值包括：sum (預設值)、average、minimum、maximum 和 firstMatching。 搜尋分數是從多個變數 (包含多個函數) 計算的單一值。 此屬性可指出所有函數如何結合為後續會套用至基準文件分數的單一彙總提升。 基本分數根據文件和搜尋查詢計算出來的 tf-idf 值。</td>
+<td>functionAggregation</td>    <td>選用。 只有在已指定函數時才會套用。 有效值包括：sum (預設值)、average、minimum、maximum 和 firstMatching。 搜尋分數是從多個變數 (包含多個函數) 計算的單一值。 此屬性可指出所有函數如何結合為後續會套用至基準文件分數的單一彙總提升。 基準分數的基礎是從文件和搜尋查詢計算出來的 tf-idf 值。</td>
 </tr><tr>
-<td>defaultScoringProfile</td>  <td>執行搜尋要求時，如果未不指定任何評分設定檔，則預設評分是使用 (tf-idf 只)。
+<td>defaultScoringProfile</td>  <td>執行搜尋要求時如果未指定評分設定檔，則會使用預設計分 (僅使用 tf-idf)。
 預設的評分設定檔名稱可在此處設定，使 Azure 搜尋服務在搜尋要求中未指定特定的設定檔時使用該設定檔。 </td>
 </tr>
 </table>
@@ -368,13 +368,14 @@ Azure 搜尋服務會使用預設計分來計算分數，但您可以透過評�
 </tbody>
 </table>
 
-如需詳細資訊，請參閱 [XML 結構描述: 資料類型 (W3.org 網站)](http://www.w3.org/TR/xmlschema11-2/)。
+如需詳細資訊，請參閱 [XML 結構描述 ︰ 資料類型 （W3.org 網站）](http://www.w3.org/TR/xmlschema11-2/)。
 
 **另請參閱**
 [Azure 搜尋服務 REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx) MSDN 上 <br/>
-[建立索引 (Azure 搜尋 API)](http://msdn.microsoft.com/library/azure/dn798941.aspx) MSDN 上<br/>
+[建立索引 （Azure 搜尋 API）](http://msdn.microsoft.com/library/azure/dn798941.aspx) MSDN 上<br/>
 [將評分設定檔新增至搜尋索引](http://msdn.microsoft.com/library/azure/dn798928.aspx) MSDN 上<br/>
 
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
+
 

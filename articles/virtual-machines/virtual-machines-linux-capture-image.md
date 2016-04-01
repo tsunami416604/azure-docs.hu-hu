@@ -49,7 +49,7 @@ Azure 會儲存在映像 **映像**。 這也是您已上傳的任何映像儲�
     - 移除 /etc/shadow 中的 `root` 使用者密碼 (如果組態檔中的 Provisioning.DeleteRootPassword 是 'y')
     - 移除快取的 DHCP 用戶端租用
     - 將主機名稱重設為 localhost.localdomain
-    - 刪除最後佈建使用者帳戶 (取自於 /var/lib/waagent) **和相關聯資料**。
+    - 刪除最後佈建使用者帳戶 （取自於 /var/lib/waagent） **和相關聯資料**。
 
     >[AZURE.NOTE] 解除佈建會刪除檔案和資料以 「 一般化 」 映像。 請只在您想要擷取做為新映像範本的虛擬機器上執行這個命令。 這不能保證映像檔中的所有機密資訊都會清除完畢或適合轉散發給第三方。
 
@@ -59,7 +59,7 @@ Azure 會儲存在映像 **映像**。 這也是您已上傳的任何映像儲�
 4. 型別 **結束** 關閉 SSH 用戶端。
 
 
-    >[AZURE.NOTE] The next steps assume you have already [installed the Azure CLI](../xplat-cli-install.md) on your client computer. All the steps below can also be done in the [Azure classic portal] [].
+    >[AZURE.NOTE] 接下來的步驟假設您已經 [安裝 Azure CLI](../xplat-cli-install.md) 用戶端電腦上。 也可以完成所有步驟 [Azure 傳統入口網站] []。
 
 5. 從用戶端電腦，開啟 Azure CLI 並登入您的 Azure 訂用帳戶。 如需詳細資訊，請參閱 [從 Azure CLI 連接至 Azure 訂用帳戶](../xplat-cli-connect.md)。
 
@@ -91,7 +91,7 @@ Azure 會儲存在映像 **映像**。 這也是您已上傳的任何映像儲�
 ## 後續步驟
 映像已準備好用來建立虛擬機器。 您可以使用 Azure CLI 命令 `azure vm create`，並提供您剛才建立的映像名稱。 請參閱 [使用 Azure CLI for Mac、 Linux 和 Windows 搭配 Azure 服務管理](virtual-machines-command-line-tools.md) 命令的詳細資料。 或者，使用 [Azure 傳統入口網站] [] 來建立自訂虛擬機器使用 **從組件庫** 方法，並選取您剛建立的映像。 請參閱 [如何建立自訂虛擬機器] [] 如需詳細資訊。
 
-**另請參閱:** [Azure Linux 代理程式使用者指南](virtual-machines-linux-agent-user-guide.md)
+**另請參閱 ︰** [Azure Linux 代理程式使用者指南](virtual-machines-linux-agent-user-guide.md)
 
 [Azure classic portal]: http://manage.windowsazure.com
 [How to Log on to a Virtual Machine Running Linux]: virtual-machines-linux-how-to-log-on.md
@@ -99,4 +99,5 @@ Azure 會儲存在映像 **映像**。 這也是您已上傳的任何映像儲�
 [How to Create a Custom Virtual Machine]: virtual-machines-linux-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: storage-windows-attach-disk.md
 [How to Create a Virtual Machine Running Linux]: virtual-machines-linux-tutorial.md
+
 

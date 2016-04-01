@@ -105,7 +105,7 @@
 
 ##<a id="closed_captioning"></a>支援隱藏式字幕
 
-內嵌時， **媒體編碼器高階工作流程** 支援:
+內嵌時， **媒體編碼器高階工作流程** 支援 ︰
 
 1. SCC 檔案
 1. SMPTE-TT 檔案
@@ -135,4 +135,5 @@
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

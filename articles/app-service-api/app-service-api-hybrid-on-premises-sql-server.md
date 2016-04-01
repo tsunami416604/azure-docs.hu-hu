@@ -24,7 +24,7 @@
 
 在本教學課程中，您將學習如何建立 App Service API 應用程式中的 [Azure 預覽](http://go.microsoft.com/fwlink/?LinkId=529715) 以連接到本機內部 SQL Server 資料庫，使用新的 「 混合式連線 」 功能。 本教學課程假設您沒有使用 Azure 或 SQL Server 的經驗。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 必要條件
 
@@ -54,15 +54,15 @@
     </tr>
     <tr>
         <td>80</td>
-        <td><strong>必要</strong> 可供 HTTP 連接埠進行憑證驗證以及可供進行資料連線 (選用)。</td>
+        <td><strong>需要</strong> 供 HTTP 連接埠進行憑證驗證，以及選擇性的資料連接。</td>
     </tr>
     <tr>
         <td>443</td>
-        <td><strong>選用</strong> 可供資料連線。 如果無法使用 443 的輸出連線，則使用 TCP 連接埠 80。</td>
+        <td><strong>選擇性</strong> 供進行資料連線。 如果無法使用 443 的輸出連線，則使用 TCP 連接埠 80。</td>
     </tr>
     <tr>
         <td>5671 和 9352</td>
-        <td><strong>建議</strong> 但可供進行資料連線 (選用)。 請注意，此模式通常會產生較高的輸送量。 如果無法使用這些連接埠的輸出連線，則使用 TCP 連接埠 443。</td>
+        <td><strong>建議</strong> 但選用的資料連接。 請注意，此模式通常會產生較高的輸送量。 如果無法使用這些連接埠的輸出連線，則使用 TCP 連接埠 443。</td>
     </tr>
 </table>
 
@@ -80,7 +80,7 @@
 <a name="InstallSQLDB"></a>
 ### 安裝 SQL Server Express
 
-1. 若要安裝 SQL Server Express，請下載 **SQLEXPRWT_x64_ENU.exe** (64 位元版本) 或 **SQLEXPR_x86_ENU.exe** (32 位元版本) 檔案，並將它解壓縮到所需的資料夾。 
+1. 若要安裝 SQL Server Express，請下載 **SQLEXPRWT_x64_ENU.exe** （64 位元版本） 或 **SQLEXPR_x86_ENU.exe** （32 位元版本） 檔案，並將它解壓縮到所需的資料夾。 
 
 2. 一旦您解壓縮 SQL Server Express 安裝檔案，執行 **setup.exe**。
 
@@ -98,7 +98,7 @@
     
 6. 接受預設值在 **伺服器組態** 頁面，然後按一下 **下一步**。
     
-7. 在 **資料庫引擎組態** ] 頁面的 [ **驗證模式**, ，選擇 [ **混合模式 (SQL Server 驗證和 Windows 驗證)**, ，並提供密碼。
+7. 在 **資料庫引擎組態** ] 頁面的 [ **驗證模式**, ，選擇 [ **混合模式 （SQL Server 驗證和 Windows 驗證）**, ，並提供密碼。
     
     ![資料庫引擎組態](./media/app-service-api-hybrid-on-premises-sql-server/database-engine-configuration.png)
     
@@ -202,7 +202,7 @@
 
 10. 以下列程式碼取代 `SpeakersController.cs` 檔案中的程式碼。 請務必在 `connectionString` 中為 &lt;serverName> 與 &lt;password> 預留位置指定您自己的值。 &lt;serverName> 值是 SQL Server 所在位置的機器名稱，而 &lt;password> 值則是當您安裝與設定 SQL Server 時所設定的值
 
-    > [AZURE.NOTE] 下列程式碼片段包含密碼資訊。 這麼做是為了簡化示範。 在實際生產環境中，您不應該在程式碼中儲存認證。 請改為參考 [密碼 (和其他機密資料) 部署至 ASP.NET 和 Azure 的最佳作法](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)。
+    > [AZURE.NOTE] 下列程式碼片段包含密碼資訊。 這麼做是為了簡化示範。 在實際生產環境中，您不應該在程式碼中儲存認證。 請改為參考 [密碼 （和其他機密資料） 部署至 ASP.NET 和 Azure 的最佳作法](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)。
 
         using System;
         using System.Collections.Generic;
@@ -306,7 +306,7 @@
 
 4. 按一下 [ **GET/api/喇叭** 以展開該區段。
 
-5. 按一下 [ **試試看!** 來檢視您先前輸入到資料庫的資料。
+5. 按一下 [ **試試看 ！** 若要檢視您先前輸入到資料庫的資料。
 
     ![](./media/app-service-api-hybrid-on-premises-sql-server/try-it-out.png) 
 
@@ -314,11 +314,11 @@
 
 既然您已經在本機測試過應用程式，就可以開始將應用程式部署至 Azure。
 
-1. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 (而非方案)，然後按一下 **發佈...**。 
+1. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 （而非方案），然後按一下 **發佈...**。 
 
     ![專案發佈功能表選項](./media/app-service-api-hybrid-on-premises-sql-server/publish-menu.png)
 
-2. 按一下 [ **設定檔** ] 索引標籤上，按一下 [ **Microsoft Azure API 應用程式 (預覽)**。 
+2. 按一下 [ **設定檔** ] 索引標籤上，按一下 [ **Microsoft Azure API 應用程式 （預覽）**。 
 
     ![專案發佈功能表選項](./media/app-service-api-hybrid-on-premises-sql-server/publish-web.png)
 
@@ -326,7 +326,7 @@
 
     ![選取現有的 API 服務對話方塊](./media/app-service-api-hybrid-on-premises-sql-server/publish-to-existing-api-app.png)
 
-4. 在 **建立 API 應用程式** ] 對話方塊中，輸入下列命令:
+4. 在 **建立 API 應用程式** ] 對話方塊中，輸入下列命令 ︰
 
     - 在 **API 應用程式名稱**, ，輸入應用程式的名稱。 
     - 如果您有多個 Azure 訂用帳戶，請選取您要使用的訂用帳戶。
@@ -376,7 +376,7 @@
 8. 在 **建立混合式連線分頁]**:
     - 如 **名稱**, ，提供連線的名稱。
     - 如 **Hostname**, ，輸入您的 SQL Server 主機電腦的電腦名稱。
-    - 如 **連接埠**, ，輸入 `1433` (SQL Server 的預設連接埠)。
+    - 如 **連接埠**, ，輸入 `1433` （SQL Server 的預設連接埠）。
     - 按一下 [ **Biz Talk 服務** 並輸入 BizTalk 服務的名稱。
     
     ![Create a hybrid connection](./media/app-service-api-hybrid-on-premises-sql-server/create-biztalk-service.png)
@@ -407,11 +407,11 @@
 
 4. 按一下 [ **GET/api/喇叭** 以展開該區段。
 
-5. 按一下 [ **試試看!** 來檢視您先前輸入到資料庫的資料。
+5. 按一下 [ **試試看 ！** 若要檢視您先前輸入到資料庫的資料。
 
     ![](./media/app-service-api-hybrid-on-premises-sql-server/try-it-out-azure.png) 
     
-**恭喜您!**您已經建立一個可在 Azure 上執行，並且使用混合式連線連線至本機內部部署 SQL Server 資料庫的 API 應用程式。 
+**恭喜！** 您已經建立一個可在 Azure 上執行，並且使用混合式連線連線至本機內部部署 SQL Server 資料庫的 API 應用程式。 
 
 ## 另請參閱
 [混合式連線概觀](http://go.microsoft.com/fwlink/p/?LinkID=397274)
@@ -431,4 +431,5 @@
 [ASP.NET 身分識別概觀](http://www.asp.net/identity)
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
+
 

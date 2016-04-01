@@ -22,7 +22,7 @@
 
 Data Factory 服務支援使用資料管理閘道器連接至內部部署 PostgreSQL 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 文章來了解資料管理閘道器和設定閘道器的逐步指示。 
 
-**注意:** 您需要運用閘道器連接到 PostgreSQL，即使裝載於 Azure IaaS Vm 中。 如果您正嘗試連接到裝載於雲端中的 PostgreSQL 執行個體，您也可以在 IaaS VM 中安裝閘道器執行個體。
+**注意 ︰** 您需要運用閘道器連接到 PostgreSQL，即使裝載於 Azure IaaS Vm 中。 如果您正嘗試連接到裝載於雲端中的 PostgreSQL 執行個體，您也可以在 IaaS VM 中安裝閘道器執行個體。
 
 資料處理站只支援將資料從 PostgreSQL 移至其他資料存放區，而不支援從其他資料存放區移至 PostgreSQL。
 
@@ -214,7 +214,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
-類型 | Type 屬性必須設定為: **OnPremisesPostgreSql** | 是
+類型 | Type 屬性必須設定為 ︰ **OnPremisesPostgreSql** | 是
 伺服器 | PostgreSQL 伺服器的名稱。 | 是 
 資料庫 | PostgreSQL 資料庫的名稱。 | 是 
 結構描述 | 在資料庫中的結構描述名稱。 | 否 
@@ -229,7 +229,7 @@ gatewayName | Data Factory 服務應該用來連接到內部部署 PostgreSQL �
 
 如需區段和屬性可用來定義資料集的完整清單，請參閱 [建立資料集](data-factory-create-datasets.md) 文件。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
 
-每個資料集類型的 typeProperties 區段都不同，可提供資料存放區中資料的位置相關資訊。 類型的資料集的 typeProperties 區段 **RelationalTable** (包含 PostgreSQL 資料集) 具有下列屬性。
+每個資料集類型的 typeProperties 區段都不同，可提供資料存放區中資料的位置相關資訊。 類型的資料集的 typeProperties 區段 **RelationalTable** （包含 PostgreSQL 資料集） 具有下列屬性。
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
@@ -241,7 +241,7 @@ tableName | PostgreSQL 資料庫執行個體中連結服務所參照的資料表
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
-在複製活動類型的來源時 **RelationalSource** (包含 PostgreSQL) 在 typeProperties 區段中會提供下列屬性:
+在複製活動類型的來源時 **RelationalSource** （包含 PostgreSQL） 在 typeProperties 區段中會提供下列屬性 ︰
 
 屬性 | 說明 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
@@ -251,7 +251,7 @@ query | 使用自訂查詢來讀取資料。 | SQL 查詢字串。 例如：sele
 
 ## PostgreSQL 的類型對應
 
-中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章複製活動會執行轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換的自動類型轉換:
+中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章複製活動會執行轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換的自動類型轉換 ︰
 
 1. 從原生來源類型轉換成 .NET 類型
 1. 從 .NET 類型轉換成原生接收類型
@@ -305,4 +305,5 @@ serial | serial4 | Int32
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+
 

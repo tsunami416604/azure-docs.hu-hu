@@ -24,7 +24,7 @@
 
 本主題說明如何從用戶端應用程式驗證行動應用程式的使用者。 在本教學課程中，您會使用 Azure 行動應用程式所支援的身分識別提供者將驗證新增至快速入門專案。 在行動應用程式中成功驗證並授權之後，就會顯示使用者識別碼值。
 
-本教學課程以行動應用程式快速入門為基礎。 您還必須先完成教學課程 [建立 Xamarin.Android 應用程式]。 如果您不要使用下載的快速入門伺服器專案，必須將驗證擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
+本教學課程以行動應用程式快速入門為基礎。 您還必須先完成本教學課程 [Create a Xamarin.Android app]。 如果您不要使用下載的快速入門伺服器專案，必須將驗證擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
 
 ##<a name="register"></a>註冊應用程式進行驗證，並設定應用程式服務
 
@@ -42,7 +42,7 @@
 
 應用程式更新，使用者必須點選 **登入** 按鈕，並顯示資料之前進行驗證。
 
-1. 加入下列程式碼以 **TodoActivity** 類別:
+1. 加入下列程式碼以 **TodoActivity** 類別 ︰
 
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -82,13 +82,13 @@
 
     這會建立新的方法來驗證使用者和方法處理常式，讓新 **登入** ] 按鈕。 上述範例程式碼中的使用者是使用 Facebook 登入進行驗證。 對話方塊會在驗證後用來顯示使用者識別碼。 
 
-    > [AZURE.NOTE] 如果您使用的身分識別提供者不是 Facebook，變更值傳遞至 **LoginAsync** 上方的下列其中一個: _MicrosoftAccount_, ，_Twitter_, ，_Google_, ，或 _WindowsAzureActiveDirectory_。
+    > [AZURE.NOTE] 如果您使用的身分識別提供者不是 Facebook，變更值傳遞至 **LoginAsync** 上方的下列其中一個 ︰ _MicrosoftAccount_, ，_Twitter_, ，_Google_, ，或 _WindowsAzureActiveDirectory_。
 
-3. 在 **OnCreate** 方法刪除或註解化下列程式碼行:
+3. 在 **OnCreate** 方法刪除或註解化下列程式碼行 ︰
 
         OnRefreshItemsSelected ();
 
-4. 在 Activity_To_Do.axml 檔案中，新增下列 *LoginUser* 按鈕前現有 *AddItem* 按鈕:
+4. 在 Activity_To_Do.axml 檔案中，新增下列 *LoginUser* 按鈕前現有 *AddItem* 按鈕 ︰
 
         <Button
             android:id="@+id/buttonLoginUser"
@@ -109,4 +109,5 @@
 <!-- URLs. -->
 [Create a Xamarin.Android app]: app-service-mobile-xamarin-android-get-started.md
  
+
 

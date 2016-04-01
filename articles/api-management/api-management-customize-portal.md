@@ -20,13 +20,13 @@
 
 本指南示範如何在 Azure API 管理中修改開發人員入口網站的外觀及操作，以便與您的品牌保持一致。
 
-## <a name="change-page-headers"> </a>變更文字或分頁標頭中的標誌
+## <a name="change-page-headers"> </a>變更頁首的文字或標誌
 
 入口網站自訂的一個主要層面，便是將所有頁面頂端的文字以您的公司名稱或標誌取代。
 
 開發人員入口網站內的內容，是透過經 Azure 傳統入口網站存取的發佈者入口網站加以修改。 若要存取 API 發行者入口網站，按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 開發人員入口網站是以內容管理系統 (CMS) 為基礎。 每個頁面上出現的頁首是特殊類型的內容，也稱為 Widget。 若要編輯該 widget 的內容，請按一下 [ **Widget** 從 **開發人員入口網站** 左邊的功能表，然後選取 **標頭** 從清單中的 widget。
 
@@ -98,4 +98,5 @@
 [Get started with advanced API configuration]: api-management-get-started-advanced.md
 [bootstrap]: http://getbootstrap.com/
 [LESS variables]: http://getbootstrap.com/css/
+
 

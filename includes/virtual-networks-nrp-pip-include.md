@@ -8,7 +8,7 @@
 |**ipAddress**|IP 位址已指派給物件。 這是唯讀屬性。|104.42.233.77|
 
 ### DNS 設定
-公用 IP 位址都有一個子系物件名為 **dnssettings** 包含下列屬性:
+公用 IP 位址都有一個子系物件名為 **dnssettings** 包含下列屬性 ︰
 
 |屬性|說明|範例值|
 |---|---|---|
@@ -39,3 +39,4 @@ JSON 格式的範例公用 IP 位址：
 - 取得有關的詳細資訊 [公用 IP 位址](virtual-networks-reserved-public-ip.md)。
 - 深入了解 [執行個體層級的公用 IP 位址](virtual-networks-instance-level-public-ip.md)。
 - 讀取 [REST API 參考文件](https://msdn.microsoft.com/library/azure/mt163638.aspx) 公用 ip 位址。
+

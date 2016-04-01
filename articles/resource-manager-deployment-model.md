@@ -69,7 +69,7 @@
 
             azure config mode arm
 
-- 資源類型不包含 **(傳統)** 名稱中。 下圖顯示與類型 **儲存體帳戶**。
+- 資源類型不包含 **（傳統）** 名稱中。 下圖顯示與類型 **儲存體帳戶**。
 
     ![Web 應用程式](./media/resource-manager-deployment-model/resource-manager-type.png)
 
@@ -97,7 +97,7 @@
 
   - [服務管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) REST 作業。
   - 在執行 azure CLI 命令 **asm** 或預設模式。
-- 資源類型包含 **(傳統)** 名稱中。 下圖顯示與類型 **儲存體帳戶 (傳統)**。
+- 資源類型包含 **（傳統）** 名稱中。 下圖顯示與類型 **儲存體帳戶 （傳統）**。
 
     ![傳統類型](./media/resource-manager-deployment-model/classic-type.png)
 
@@ -181,5 +181,6 @@
 
 - 若要了解如何建立宣告式部署範本，請參閱 [撰寫 Azure 資源管理員範本](resource-group-authoring-templates.md)。
 - 部署範本的命令，請參閱 [應用程式使用 Azure 資源管理員範本部署](resource-group-template-deploy.md)。
+
 
 

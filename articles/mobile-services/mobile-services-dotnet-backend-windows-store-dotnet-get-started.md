@@ -42,7 +42,7 @@
 若要完成此教學課程，您需要下列項目：
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，您可以註冊 Azure 試用版並取得高達 10 項的免費行動服務。此外，在試用期間結束後您仍可繼續使用這些服務。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started%2F)。
-* [Visual Studio 2013]。
+* [Visual Studio 2013].
 
 ## 建立新的行動服務
 
@@ -54,7 +54,7 @@
 
 在本節中，您將建立與行動服務連線的新通用 Windows 應用程式。
 
-1. 在 [Azure 傳統入口網站]，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
+1. 在 [Azure classic portal], ，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
 
 2. 在 [快速入門] 索引標籤中，按一下 [ **Windows** 下 **選擇平台** 展開 **建立新的 Windows 市集應用程式**。
 
@@ -62,7 +62,7 @@
 
     ![行動服務快速入門步驟](./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started/mobile-quickstart-steps.png)
 
-3. 如果您尚未這樣做，請下載並安裝在您本機電腦或虛擬機器上的 [Visual Studio 2013]。
+3. 如果您尚未這樣做，請下載並安裝 [Visual Studio 2013] 在您本機電腦或虛擬機器。
 
 4. 在 **下載與執行您的應用程式，並在本機**, ，選取 Windows 市集應用程式的語言，然後按一下 [ **下載**。
 
@@ -81,7 +81,7 @@
 
 
 <ol start="4">
-<li><p>在共用程式碼專案中，開啟 App.xaml.cs 檔案中，找出建立的程式碼 <a href="http://msdn.microsoft.com/library/Windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx" target="_blank">MobileServiceClient</a> 執行個體，註解的程式碼，建立使用此用戶端 <em>localhost</em> 並取消註解的程式碼建立用戶端使用遠端行動服務的 URL，如下所示:</p>
+<li><p>在共用程式碼專案中，開啟 App.xaml.cs 檔案中，找出程式碼會建立 <a href="http://msdn.microsoft.com/library/Windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx" target="_blank">MobileServiceClient</a> 執行個體，註解的程式碼，建立使用此用戶端 <em>localhost</em> 並建立用戶端會使用遠端行動服務 URL，如下列所示的程式碼取消註解 ︰</p>
 
         <pre><code>public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://todolist.azure-mobile.net/",
@@ -100,19 +100,19 @@
 ## 後續步驟
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
-* [新增行動服務至現有的應用程式][開始使用資料]
+* [將行動服務新增至現有的應用程式][Get started with data]
   <br/>進一步了解使用行動服務來儲存和查詢資料。
 
-* [開始使用離線資料同步]
+* [Get started with offline data sync]
   <br/>了解如何使用離線資料同步處理，建立可快速回應和功能強大的應用程式。
 
-* [將驗證新增至行動服務應用程式][開始使用驗證]
+* [在您的行動服務應用程式中新增驗證 ][Get started with authentication]
   <br/>了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
-* [新增推播通知至您的應用程式][開始使用推播通知]
+* [將推播通知新增至應用程式][Get started with push notifications]
   <br/>了解如何將非常基本的推播通知傳送至您的應用程式。
 
-* [行動服務.NET 後端的疑難排解]
+* [Troubleshoot a Mobile Services .NET backend]
   <br/> 了解如何診斷和修正行動服務 .NET 後端可能發生的問題。
 
 如需通用 Windows 應用程式的詳細資訊，請參閱 [支援從單一行動服務的多個裝置平台](mobile-services-how-to-use-multiple-clients-single-service.md#shared-vs)。
@@ -137,4 +137,5 @@
 [JavaScript and HTML]: mobile-services-win8-javascript/
 [Azure classic portal]: https://manage.windowsazure.com/
 [Troubleshoot a Mobile Services .NET backend]: mobile-services-dotnet-backend-how-to-troubleshoot.md
+
 

@@ -22,9 +22,9 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure 的傳統的 PowerShell 步驟](application-gateway-create-gateway.md)
-- [Azure 資源管理員 PowerShell](application-gateway-create-gateway-arm.md)
-- [Azure 資源管理員範本 ](application-gateway-create-gateway-arm-template.md)
+- [Azure 傳統 PowerShell 步驟](application-gateway-create-gateway.md)
+- [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
+- [Azure Resource Manager 範本 ](application-gateway-create-gateway-arm-template.md)
 
 
 <BR>
@@ -33,7 +33,7 @@
 本文將逐步引導您完成建立和設定、啟動及刪除應用程式閘道的步驟。
 
 
->[AZURE.IMPORTANT] 您使用的 Azure 資源之前，務必了解 Azure 目前有兩種部署模型: 資源管理員，以及傳統。 請確定您了解 [部署模型和工具](azure-classic-rm.md) 之前使用的任何 Azure 資源。 您可以按一下本文頂端的索引標籤，檢視不同工具的文件。本文件將說明使用 Azure 資源管理員建立應用程式閘道的方式。 若要使用傳統的版本，請移至 [建立應用程式閘道傳統部署使用 PowerShell](application-gateway-create-gateway.md)。
+>[AZURE.IMPORTANT] 您使用的 Azure 資源之前，務必了解 Azure 目前有兩種部署模型 ︰ 資源管理員，以及傳統。 請確定您了解 [部署模型和工具](azure-classic-rm.md) 之前使用的任何 Azure 資源。 您可以按一下本文頂端的索引標籤，檢視不同工具的文件。本文件將說明使用 Azure 資源管理員建立應用程式閘道的方式。 若要使用傳統的版本，請移至 [建立應用程式閘道傳統部署使用 PowerShell](application-gateway-create-gateway.md)。
 
 
 
@@ -46,11 +46,11 @@
 ## 建立應用程式閘道需要什麼？
  
 
-- **後端伺服器集區:** 的後端伺服器的 IP 位址清單。 列出的 IP 位址應屬於虛擬網路子網路或是公用 IP/VIP。 
-- **後端伺服器集區設定:** 每個集區有設定，例如連接埠、 通訊協定和 cookie 為基礎的親和性。 這些設定會繫結至集區，並套用至集區內所有伺服器。
-- **前端連接埠:** 此連接埠是在應用程式閘道上開啟的公用連接埠。 流量會達到此連接埠，然後重新導向至其中一個後端伺服器。
-- **接聽程式:** 接聽程式具有前端連接埠、 通訊協定 (Http 或 Https，這些都區分大小寫) 和 SSL 憑證名稱 (如果已設定 SSL 卸載)。 
-- **規則:** 規則繫結接聽程式和後端伺服器集區，並定義哪個後端伺服器集區達到特定接聽程式時，應該要導向流量。 目前，只有 *基本* 規則受支援。  *基本* 規則是循環配置資源負載散發。
+- **後端伺服器集區 ︰** 的後端伺服器的 IP 位址清單。 列出的 IP 位址應屬於虛擬網路子網路或是公用 IP/VIP。 
+- **後端伺服器集區設定 ︰** 每個集區有設定，例如連接埠、 通訊協定和 cookie 為基礎的親和性。 這些設定會繫結至集區，並套用至集區內所有伺服器。
+- **前端連接埠 ︰** 此連接埠是在應用程式閘道上開啟的公用連接埠。 流量會達到此連接埠，然後重新導向至其中一個後端伺服器。
+- **接聽程式 ︰** 接聽程式具有前端連接埠、 通訊協定 （Http 或 Https，這些都區分大小寫） 和 SSL 憑證名稱 （如果已設定 SSL 卸載）。 
+- **規則 ︰** 規則繫結接聽程式和後端伺服器集區，並定義哪個後端伺服器集區達到特定接聽程式時，應該要導向流量。 目前，只有 *基本* 規則受支援。  *基本* 規則是循環配置資源負載散發。
 
 
  
@@ -101,7 +101,7 @@
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 
-Azure 資源管理員需要所有的資源群組指定一個位置。 這用來作為該資源群組中資源的預設位置。 請確定所有用來建立應用程式閘道的命令都使用同一個資源群組。
+Azure Resource Manager 需要所有的資源群組指定一個位置。 這用來作為該資源群組中資源的預設位置。 請確定所有用來建立應用程式閘道的命令都使用同一個資源群組。
 
 在上述範例中，我們建立名為 "appgw-RG" 的資源群組，且位置為美國西部 ("West US")。 
 
@@ -195,7 +195,7 @@ Azure 資源管理員需要所有的資源群組指定一個位置。 這用來�
 設定閘道之後，請使用 `Start-AzureRmApplicationGateway` Cmdlet 來啟動閘道。 成功啟動閘道之後，會開始應用程式閘道計費。 
 
 
-**注意:**  `Start-AzureRmApplicationGateway` cmdlet 可能需要 15-20 分鐘才能完成。 
+**注意 ︰**  `Start-AzureRmApplicationGateway` cmdlet 可能需要 15-20 分鐘才能完成。 
 
 在以下範例中，應用程式閘道名為 "appgwtest"，資源群組為 "app-rg"：
 
@@ -416,5 +416,6 @@ Azure 資源管理員需要所有的資源群組指定一個位置。 這用來�
 
 - [Azure 負載平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure 流量管理員](https://azure.microsoft.com/documentation/services/traffic-manager/)
+
 
 

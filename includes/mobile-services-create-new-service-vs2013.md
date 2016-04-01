@@ -9,7 +9,7 @@
 
     ![create service manage subscriptions](./media/mobile-services-create-new-service-vs2013/mobile-create-service-from-vs2013.png)
 
-3. 管理 Microsoft Azure 訂用帳戶中，按一下 [ **登入** 登入您的 Azure 帳戶 (如有必要)，選取可用的訂閱，然後按一下 [ **關閉**。
+3. 管理 Microsoft Azure 訂用帳戶中，按一下 [ **登入** 登入您的 Azure 帳戶 （如有必要），選取可用的訂閱，然後按一下 [ **關閉**。
 
     當訂閱已經有一或多個現有的行動服務時，便會顯示這些服務名稱。 
 
@@ -23,9 +23,10 @@
 
 
     > [AZURE.NOTE]
-    > As part of this tutorial, you create a new free SQL Database instance and server. You can reuse this new database and administer it as you would any other SQL Database instance. You can only have one free database instance. If you already have a database in the same region as the new mobile service, you can instead choose the existing database. When you choose an existing database, make sure that you supply correct login credentials. If you supply incorrect login credentials, the mobile service is created in an unhealthy state.
+    > 作為本教學課程的一部分，您需要建立新的 SQL Database 執行個體和伺服器。 You can reuse this new database and administer it as you would any other SQL Database instance. 您只能有一個免費的資料庫執行個體。 如果新行動服務的區域已經有資料庫存在，您可以改選現有的資料庫。 當您選擇現有的資料庫時，請確保您提供的是正確的登入認證。 如果您提供不正確的登入認證，則行動服務會建立在不健全的狀態下。
 
 7. 建立行動服務後，從 Service Manager 中的清單中選取新建立的行動服務，然後按一下 **確定**。
 
     在精靈完成後，便會安裝必要的 NuGet 封裝，專案會新增行動服務用戶端程式庫的參考，並更新您的專案原始程式碼。
+
 

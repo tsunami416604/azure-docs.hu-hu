@@ -104,10 +104,10 @@ ASR 中的每個作業都會被稽核，並且在 [工作] 索引標籤底下追
 
 | 事件來源                | 詳細資料                                                                                                                                                                                           |
 |-------------------------  |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    |
-| **應用程式和 Service Logs/Microsoft/VirtualMachineManager/Server/Admin** (VMM 伺服器)   |  這可提供很有用的記錄以疑難排解許多不同的 VMM 問題。 |
-| **應用程式和 Service Logs/MicrosoftAzureRecoveryServices/Replication** (HYPER-V 主機)   | 這會提供許多的 Microsoft Azure 復原服務代理程式問題的疑難排解很有用的記錄。 <br/> ![Hyper-V 主機的事件來源](media/site-recovery-monitoring-and-troubleshooting/eventviewer03.png) |
-| **應用程式及服務記錄檔/Microsoft/Azure 站台復原/提供者/操作** (HYPER-V 主機)   | 這會提供許多的 Microsoft Azure Site Recovery 服務問題的疑難排解很有用的記錄。 <br/> ![Hyper-V 主機的事件來源](media/site-recovery-monitoring-and-troubleshooting/eventviewer02.png) |
-| **應用程式和服務記錄檔/Microsoft/Windows/Hyper-v-HYPER-V-VMMS/Admin** (HYPER-V 主機) | 這會提供許多 HYPER-V 虛擬機器管理問題的疑難排解很有用的記錄。 <br/> ![Hyper-V 主機的事件來源](media/site-recovery-monitoring-and-troubleshooting/eventviewer01.png) |
+| **應用程式和 Service Logs/Microsoft/VirtualMachineManager/Server/Admin** （VMM 伺服器）   |  這可提供很有用的記錄以疑難排解許多不同的 VMM 問題。 |
+| **應用程式和 Service Logs/MicrosoftAzureRecoveryServices/Replication** （HYPER-V 主機）   | 這會提供許多的 Microsoft Azure 復原服務代理程式問題的疑難排解很有用的記錄。 <br/> ![Hyper-V 主機的事件來源](media/site-recovery-monitoring-and-troubleshooting/eventviewer03.png) |
+| **應用程式及服務記錄檔/Microsoft/Azure 站台復原/提供者/操作** （HYPER-V 主機）   | 這會提供許多的 Microsoft Azure Site Recovery 服務問題的疑難排解很有用的記錄。 <br/> ![Hyper-V 主機的事件來源](media/site-recovery-monitoring-and-troubleshooting/eventviewer02.png) |
+| **應用程式和服務記錄檔/Microsoft/Windows/Hyper-v-HYPER-V-VMMS/Admin** （HYPER-V 主機） | 這會提供許多 HYPER-V 虛擬機器管理問題的疑難排解很有用的記錄。 <br/> ![Hyper-V 主機的事件來源](media/site-recovery-monitoring-and-troubleshooting/eventviewer01.png) |
 
 
 ### HYPER-V 複寫記錄選項
@@ -141,7 +141,7 @@ ASR 中的每個作業都會被稽核，並且在 [工作] 索引標籤底下追
 
 對於 HYPER-V 網站保護，下載
 [工具](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)
-(& s) 並且在 HYPER-V 主機，以收集記錄檔上執行。
+（& s) 並且在 HYPER-V 主機，以收集記錄檔上執行。
 
 對於 VMware/實體案例，請參閱 [Azure Site Recovery 記錄檔收集
 VMware 和實體網站
@@ -195,7 +195,7 @@ VMware 和實體網站
 ### 復原
 - VMM 無法完成主機作業 -
     -   [容錯移轉至虛擬機器的所選復原點：一般拒絕存取錯誤。](http://social.technet.microsoft.com/wiki/contents/articles/25504.fail-over-to-the-selected-recovery-point-for-virtual-machine-general-access-denied-error.aspx)
-    -   [HYPER-V 無法容錯移轉至虛擬機器的所選的復原點: 作業中止。 請嘗試較新的復原點。 () 0x80004004](http://social.technet.microsoft.com/wiki/contents/articles/25503.hyper-v-failed-to-fail-over-to-the-selected-recovery-point-for-virtual-machine-operation-aborted-try-a-more-recent-recovery-point-0x80004004.aspx)
+    -   [HYPER-V 無法容錯移轉至虛擬機器的所選的復原點 ︰ 作業中止。 請嘗試較新的復原點。 () 0x80004004](http://social.technet.microsoft.com/wiki/contents/articles/25503.hyper-v-failed-to-fail-over-to-the-selected-recovery-point-for-virtual-machine-operation-aborted-try-a-more-recent-recovery-point-0x80004004.aspx)
     -   無法建立與伺服器的連線。(0x00002EFD)
         -   [Hyper-V 無法啟用虛擬機器的反向複寫](http://social.technet.microsoft.com/wiki/contents/articles/25505.a-connection-with-the-server-could-not-be-established-0x00002efd-hyper-v-failed-to-enable-reverse-replication-for-virtual-machine.aspx)
         -   [Hyper-V 無法啟用虛擬機器的複寫](http://social.technet.microsoft.com/wiki/contents/articles/25506.a-connection-with-the-server-could-not-be-established-0x00002efd-hyper-v-failed-to-enable-replication-for-virtual-machine-virtual-machine.aspx)
@@ -213,4 +213,5 @@ VMware 和實體網站
 
 ### 容錯移轉之後的遠端桌面疑難排解
 -   許多客戶面臨在 Azure 中連接到容錯移轉的 VM 的問題。 [使用疑難排解文件 RDP 至 VM](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
+
 

@@ -27,11 +27,11 @@
 
 > [AZURE.NOTE] 如果您不熟悉 Hadoop 和巨量資料，您可以閱讀更多關於條款 [Apache Hadoop](http://go.microsoft.com/fwlink/?LinkId=510084), ，[MapReduce](http://go.microsoft.com/fwlink/?LinkId=510086), ，[Hadoop 分散式檔案系統 (HDFS)](http://go.microsoft.com/fwlink/?LinkId=510087), ，和 [Hive](http://go.microsoft.com/fwlink/?LinkId=510085)。 若要了解如何透過 HDInsight 在 Azure 中的 Hadoop，請參閱 [在 HDInsight 中 Hadoop 的簡介](hdinsight-hadoop-introduction.md)。
 
-## 先決條件
+## 必要條件
 
 開始進行 Hadoop 的本 Linux 教學課程之前，您必須具備下列條件：
 
-- **Azure 訂用帳戶**: 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- **Azure 訂用帳戶**︰ 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="provision"></a>在 Linux 上佈建 HDInsight 叢集
 
@@ -74,13 +74,13 @@
 
     目前您可以選取 Azure 儲存體帳戶做為 HDInsight 叢集資料來源。 了解這些項目上使用下列 **資料來源** 刀鋒視窗。
 
-    - **選取方法**: 設為 **從所有的訂閱** 才能瀏覽儲存體帳戶從您的訂閱。 請設為 **便捷鍵** 如果您想要輸入 **儲存體名稱** 和 **便捷鍵** 現有的儲存體帳戶。
+    - **選取方法**︰ 設為 **從所有的訂閱** 才能瀏覽儲存體帳戶從您的訂閱。 請設為 **便捷鍵** 如果您想要輸入 **儲存體名稱** 和 **便捷鍵** 現有的儲存體帳戶。
 
-    - **選取儲存體帳戶建立新的 /**: 按一下 **選取儲存體帳戶** 瀏覽並選取您要與叢集相關聯的現有儲存體帳戶。 或者，按一下 [ **新建** 來建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
+    - **選取儲存體帳戶建立新的 /**︰ 按一下 **選取儲存體帳戶** 瀏覽並選取您要與叢集相關聯的現有儲存體帳戶。 或者，按一下 [ **新建** 來建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
 
-    - **選擇預設容器**: 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
+    - **選擇預設容器**︰ 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
 
-    - **位置**: 儲存體帳戶，或將中建立的地理區域。
+    - **位置**︰ 儲存體帳戶，或將中建立的地理區域。
 
         > [AZURE.IMPORTANT] 選取的預設資料來源的位置也會設定 HDInsight 叢集的位置。 叢集和預設資料來源必須位於相同區域中。
 
@@ -126,11 +126,11 @@ Ambari 檢視可透過網頁提供幾個公用程式。 在下列各節中，您
 
 ![Hive 檢視頁面的影像，包含查詢編輯器區段](./media/hdinsight-hadoop-linux-tutorial-get-started/hiveview.png)
 
-##<a name="hivequery"></a>執行 HIVE 查詢
+##<a name="hivequery"></a>執行 Hive 查詢
 
 從 Hive 檢視使用下列步驟，對叢集內含的資料執行 Hive 查詢。
 
-1. 在 __查詢編輯器__ 區段的頁面上，將下列 HiveQL 陳述式貼到工作表:
+1. 在 __查詢編輯器__ 區段的頁面上，將下列 HiveQL 陳述式貼到工作表 ︰
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -138,12 +138,12 @@ Ambari 檢視可透過網頁提供幾個公用程式。 在下列各節中，您
         STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
     - **DROP TABLE** -刪除資料表和資料檔中，如果資料表已存在。
     - **建立外部資料表** -在 Hive 中建立新的 「 外部 」 資料表。 外部資料表只會在 Hive 中儲存資料表定義；資料會保留在原始位置。
     - **ROW FORMAT** -告訴 Hive 如何格式化資料。 在此情況下，每個記錄中的欄位會以空格隔開。
-    - **STORED AS TEXTFILE LOCATION** -告訴 Hive 資料的儲存 (example/data 目錄)，且儲存為文字。
+    - **STORED AS TEXTFILE LOCATION** -告訴 Hive 資料的儲存 （example/data 目錄），且儲存為文字。
     - **選取** -選擇其資料欄 t4 包含值 [ERROR] 的其中的所有資料列的計數。
 
     >[AZURE.NOTE] 當您預期以外部來源，例如自動化的資料上傳程序，或以其他 MapReduce 作業，更新基礎資料時，應該使用外部資料表，但您希望 Hive 查詢一律使用最新的資料。 捨棄外部資料表並 *不* 刪除資料，資料表定義。
@@ -152,7 +152,7 @@ Ambari 檢視可透過網頁提供幾個公用程式。 在下列各節中，您
 
     > [AZURE.IMPORTANT] 某些瀏覽器可能無法正確重新整理記錄或結果的資訊。 如果您執行一項作業，而該作業似乎會一直執行，但未更新記錄檔或傳回結果，請嘗試改用 Mozilla FireFox 或 Google Chrome。
     
-3. 當查詢完成之後時， __查詢程序結果__ 區段會顯示作業的結果。  __停止執行__ 按鈕也會變更回綠色 __Execute__ ] 按鈕。  __結果__ ] 索引標籤應該包含下列資訊:
+3. 當查詢完成之後時， __查詢程序結果__ 區段會顯示作業的結果。  __停止執行__ 按鈕也會變更回綠色 __Execute__ ] 按鈕。  __結果__ ] 索引標籤應該包含下列資訊 ︰
 
         sev       cnt
         [ERROR]   3
@@ -168,7 +168,7 @@ Ambari 檢視可透過網頁提供幾個公用程式。 在下列各節中，您
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
     - **CREATE TABLE IF NOT EXISTS** -建立資料表，如果不存在。 由於 **外部** 未使用關鍵字，這是內部資料表，會儲存在 Hive 資料倉儲並完全透過 Hive 所管理。 與外部資料表不同，捨棄內部資料表也會同時刪除基礎資料。
     - **STORED AS ORC** -以最佳化資料列單欄式 (ORC) 格式儲存資料。 這是高度最佳化且有效率的 Hive 資料儲存格式。
@@ -190,7 +190,7 @@ Ambari 檢視可透過網頁提供幾個公用程式。 在下列各節中，您
         * Tez: Displays the Directed Acyclic Graph (DAG) that Tez used to perform the query. If you want to view the DAG for queries you've ran in the past, use the __Tez View__ instead.
         * Notifications: Displays notifications, such as "Query has been submitted" or if an error occurs when running a query.
 
-5. 選取 __SQL__ 圖示以切換回至 [查詢編輯器，然後建立新的工作表，並輸入下列查詢:
+5. 選取 __SQL__ 圖示以切換回至 [查詢編輯器，然後建立新的工作表，並輸入下列查詢 ︰
 
         SELECT * from errorLogs;
     
@@ -205,7 +205,7 @@ Ambari 檢視可透過網頁提供幾個公用程式。 在下列各節中，您
         2012-02-03  18:55:54    SampleClass1    [ERROR]     incorrect   id  
         2012-02-03  19:25:27    SampleClass4    [ERROR]     incorrect   id
 
-## <a name="nextsteps"></a>後續步驟
+## <a name="nextsteps"></a>接續步驟
 
 在本文件中，您已經學會如何使用 Azure 入口網站建立以 Linux 為基礎的 HDInsight 叢集、如何使用 SSH 連線到叢集，以及如何執行基本的 Hive 查詢，。
 
@@ -259,4 +259,5 @@ Ambari 檢視可透過網頁提供幾個公用程式。 在下列各節中，您
 [image-hdi-clusterstatus]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.ClusterStatus.png
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
+
 

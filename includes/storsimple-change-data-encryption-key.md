@@ -73,7 +73,8 @@
 
     `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 
-3. 提供您在中取得的服務資料加密金鑰 [步驟 2: 使用 Windows PowerShell for StorSimple 起始服務資料加密金鑰變更](#to-initiate-the-service-data-encryption-key-change)。
+3. 提供您在中取得的服務資料加密金鑰 [步驟 2 ︰ 使用 Windows PowerShell for StorSimple 起始服務資料加密金鑰變更](#to-initiate-the-service-data-encryption-key-change)。
+
 
 
 

@@ -22,10 +22,10 @@ Microsoft 雲端服務提供超大規模的服務和基礎結構、企業級的�
 
 ## 快速開始
 以下邏輯圖表以具體範例說明 Microsoft Azure 平台可用的許多安全性技術。 使用此選項可尋找所需的速度快，或閱讀文件取得許多可用選項的說明。
-![安全性選項流程圖][] 0
+![安全性選項流程圖][0]
 
 [範例 1 – 建立 DMZ 來保護應用程式與 Nsg](#example-1-build-a-simple-dmz-with-nsgs)</br>
-[範例 2 – 建立 DMZ 來保護應用程式使用防火牆和 Nsg](#example-2-build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs)</br>
+[範例 2 – 建置 DMZ 以透過防火牆和 NSG 保護應用程式](#example-2-build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs)</br>
 [範例 3 – 建置 DMZ 來保護網路與防火牆、 UDR，NSG](#example-3-build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg)</br>
 [範例 4 – 新增混合式連線與站台間，虛擬應用裝置的 VPN](#example-4-adding-a-hybrid-connection-with-a-site-to-site-virtual-appliance-vpn)</br>
 [範例 5 – 新增混合式連線與站台間，Azure 閘道的 VPN](#example-5-adding-a-hybrid-connection-with-a-site-to-site-azure-gateway-vpn)</br>
@@ -33,14 +33,14 @@ Microsoft 雲端服務提供超大規模的服務和基礎結構、企業級的�
 接下來的幾個月加入 VNet 的 VNet 連線、 高可用性，以及服務鏈結的範例將會加入此文件。 
 
 ## Microsoft 法規遵循與基礎結構保護
-Microsoft 已領先支援企業客戶所需的法規遵循計劃。 以下是一些適用於 Azure 的相容性認證:
-![Azure 的相容性徽章][] 1
+Microsoft 已領先支援企業客戶所需的法規遵循計劃。 以下是一些適用於 Azure 的相容性認證 ︰
+![Azure 法規遵循徽章][1]
 
-詳細資訊，請參閱: [http://azure.microsoft.com/support/trust-center/compliance/](http://azure.microsoft.com/support/trust-center/compliance/)
+詳細資訊，請參閱 ︰ [http://azure.microsoft.com/support/trust-center/compliance/](http://azure.microsoft.com/support/trust-center/compliance/)
 
 Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲端基礎結構。 Microsoft 雲端基礎結構包括硬體、軟體、網路、管理和操作人員以及實體資料中心。
 
-![Azure 安全性功能][] 2
+![Azure 安全性功能][2]
 
 上述方法提供安全的基礎，讓客戶將服務部署在 Microsoft 的雲端。 接著就由客戶設計和建立安全性架構來保護這些服務。
 
@@ -49,7 +49,7 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 
 在典型的企業網路中，核心基礎結構的周邊有多層的安全性裝置，嚴加防禦。 每一層的界限由裝置和原則強制執行點組成。 裝置可能包括防火牆、DDoS (分散式阻斷服務) 預防 IDS/IPS (入侵偵測或保護系統)、VPN (虛擬私人網路) 裝置等。原則可能以防火牆原則、ACL 或特定路由等形式強制執行。 網路的第一防線 (直接接受來自網際網路的連入流量) 由這些機制聯合起來阻擋攻擊和有害的流量，但允許合法的要求進入網路。 此流量會直接路由傳送至 DMZ 中的資源。 該資源可能與網路中更深處的資源「交談」，在更深入路由傳送至網路之前，需通過下一個界限的驗證。 最外層稱為 DMZ，因為網路的這個部分對網際網路公開，而 DMZ 的兩側通常會有某種形式的保護。 下圖顯示公司網路中的單一子網路 DMZ 範例，其中有兩個安全性界限 (DMZ 網際網路及 DMZ 後端 VLAN)。 
 
-![在公司網路周邊網路][] 3
+![公司網路中的 DMZ][3]
 
 有許多架構用來實作 DMZ，從 Web 伺服陣列前面簡單的負載平衡器，到多重子網路 DMZ，每個界限上設有各種機制來阻擋流量，並保護公司網路的更深層級。 如何建置 DMZ 取決於組織的特定需求和相關聯的風險承受度。
 
@@ -64,7 +64,7 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 
 下圖顯示 Azure 以 Azure 平台本身內建的功能和透過客戶定義的功能，提供給客戶的各種安全性層級：
 
-![Azure 的安全性架構][] 4
+![Azure 安全性架構][4]
 
 從網際網路往內，有 Azure DDoS 保護在監看針對 Azure 發動的大規模攻擊。 過了這一層就到達客戶定義的公用端點，這些端點用來判斷什麼流量可通過雲端服務進入虛擬網路。 原生 Azure 虛擬網路隔離可確保與其他所有網路完全隔離，而且流量只能流經使用者設定的路徑和方法。 這些路徑和方法就是下一層，可利用網路安全性群組 (NSG)、使用者定義的路由 (UDR) 和網路虛擬應用裝置來建立安全性界限 (包括 DMZ)，以保護受保護網路中的應用程式部署。
 
@@ -73,21 +73,21 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 ## Azure 虛擬網路的概觀
 在網際網路流量能進入 Azure 虛擬網路之前，Azure 平台本身就有兩層安全性：
 
-1.  **DDoS 保護**: 分散式的阻斷服務保護 (DDoS) 是 Azure 大規模網際網路為基礎的攻擊可防止 Azure 平台本身的實體網路的圖層，攻擊者使用嘗試垮網際網路服務多個"bot"節點。 Azure 有一層很強大的 DDoS 保護網可篩選所有連入的網際網路連線。 此 DDoS 保護層沒有可讓使用者設定的屬性，客戶也無法接觸。 這可保護 Azure 平台不受大規模攻擊，但不會直接保護個別的客戶應用程式。 客戶可以設定額外的防禦層來防止局部攻擊。 例如，如果客戶 A 在公用端點上遭受大規模 DDoS 攻擊，Azure 將會封鎖該服務的連線。 客戶 A 可以容錯移轉至另一個未遭受攻擊的虛擬網路或服務端點，以還原服務。 請注意，當客戶 A 在該端點上受到影響時，該端點之外的其他任何服務不會受到影響。 此外，其他客戶和服務也不會看到此攻擊所造成的影響。
-2.  **服務端點**: 端點可讓雲端服務或資源群組 (網際網路) 上的公用 IP 位址和連接埠都，端點將 NAT 流量的內部位址與 Azure 虛擬網路上的連接埠。 這是外部流量進入 Azure 虛擬網路的主要路徑。 服務端點可由使用者設定，用於判斷什麼流量傳入，以及該流量在虛擬網路上如何及轉譯至何處。 
+1.  **DDoS 保護**︰ 分散式的阻斷服務保護 (DDoS) 是 Azure 大規模網際網路為基礎的攻擊可防止 Azure 平台本身的實體網路的圖層，攻擊者使用嘗試垮網際網路服務多個"bot"節點。 Azure 有一層很強大的 DDoS 保護網可篩選所有連入的網際網路連線。 此 DDoS 保護層沒有可讓使用者設定的屬性，客戶也無法接觸。 這可保護 Azure 平台不受大規模攻擊，但不會直接保護個別的客戶應用程式。 客戶可以設定額外的防禦層來防止局部攻擊。 例如，如果客戶 A 在公用端點上遭受大規模 DDoS 攻擊，Azure 將會封鎖該服務的連線。 客戶 A 可以容錯移轉至另一個未遭受攻擊的虛擬網路或服務端點，以還原服務。 請注意，當客戶 A 在該端點上受到影響時，該端點之外的其他任何服務不會受到影響。 此外，其他客戶和服務也不會看到此攻擊所造成的影響。
+2.  **服務端點**︰ 端點可讓雲端服務或資源群組 （網際網路） 上的公用 IP 位址和連接埠都，端點將 NAT 流量的內部位址與 Azure 虛擬網路上的連接埠。 這是外部流量進入 Azure 虛擬網路的主要路徑。 服務端點可由使用者設定，用於判斷什麼流量傳入，以及該流量在虛擬網路上如何及轉譯至何處。 
 
 一旦流量達到虛擬網路，有許多功能就派上用場，因為 Azure 虛擬網路是客戶連接其工作負載的基礎，也是套用基本網路層級安全性的所在之處。 它是客戶在 Azure 中的私人網路 (虛擬網路覆疊)，具有下列功能和特性：
  
-1.  **流量隔離**: 虛擬網路是 Azure 平台上的流量隔離界限。 一個虛擬網路中的 VM 無法與不同虛擬網路中的 VM 直接通訊，即使兩個虛擬網路是由同一位客戶所建立也一樣。 這是很重要的屬性，可確保客戶 VM 和通訊仍然隱蔽於虛擬網路內。 
-2.  **多層式拓撲**: 虛擬網路可讓客戶藉由配置子網路，並指定不同的項目或 「 層 」 的工作負載的不同的位址空間中定義多層式拓撲。 這些邏輯分群和拓撲可讓客戶根據工作負載類型來定義不同的存取原則，還可控制各層之間的流量。 
-3.  **跨單位連線**: 客戶可以建立多個虛擬網路之間的跨單位連線在內部部署站台或其他虛擬網路中透過 Azure VPN 閘道或第 3 Azure 廠商網路虛擬裝置。 Azure 支援使用標準 IPsec/IKE 通訊協定和 ExpressRoute 私人連線能力的站對站 (S2S) VPN。 
-4.  **網路安全性群組** (NSG) 可讓客戶建立規則 (Acl)，在所需的資料粒度層級: 網路介面、 個別的 Vm 或虛擬子網路。 客戶可以從客戶網路上的系統，透過跨單位連線或直接網際網路通訊，允許或拒絕虛擬網路內的工作負載，以控制存取權。 
+1.  **流量隔離**︰ 虛擬網路是 Azure 平台上的流量隔離界限。 一個虛擬網路中的 VM 無法與不同虛擬網路中的 VM 直接通訊，即使兩個虛擬網路是由同一位客戶所建立也一樣。 這是很重要的屬性，可確保客戶 VM 和通訊仍然隱蔽於虛擬網路內。 
+2.  **多層式拓撲**︰ 虛擬網路可讓客戶藉由配置子網路，並指定不同的項目或 「 層 」 的工作負載的不同的位址空間中定義多層式拓撲。 這些邏輯分群和拓撲可讓客戶根據工作負載類型來定義不同的存取原則，還可控制各層之間的流量。 
+3.  **跨單位連線**︰ 客戶可以建立多個虛擬網路之間的跨單位連線在內部部署站台或其他虛擬網路中透過 Azure VPN 閘道或第 3 Azure 廠商網路虛擬裝置。 Azure 支援使用標準 IPsec/IKE 通訊協定和 ExpressRoute 私人連線能力的站對站 (S2S) VPN。 
+4.  **網路安全性群組** (NSG) 可讓客戶建立規則 (Acl)，在所需的資料粒度層級 ︰ 網路介面、 個別的 Vm 或虛擬子網路。 客戶可以從客戶網路上的系統，透過跨單位連線或直接網際網路通訊，允許或拒絕虛擬網路內的工作負載，以控制存取權。 
 5.  **使用者定義的路由** (UDR) 和 **IP 轉送** 可讓客戶以定義虛擬網路內的不同層之間的通訊路徑。 客戶可以部署防火牆、IDS/IPS 和其他虛擬應用裝置，並透過這些安全性應用裝置來路由傳送網路流量，以強制執行安全性界限原則、稽核和檢查。
-6.  **網路虛擬裝置** Azure Marketplace 中: 安全性應用裝置，例如防火牆、 負載平衡器和 IDS/IPS (入侵偵測/預防服務) 都是在 Azure Marketplace 和 VM 映像庫。 客戶可以將這些應用裝置部署到其虛擬網路，特別是安全性界限 (包括 DMZ 子網路)，以完成多層式安全網路環境。
+6.  **網路虛擬裝置** Azure Marketplace 中 ︰ 安全性應用裝置，例如防火牆、 負載平衡器和 IDS/IPS （入侵偵測/預防服務） 都是在 Azure Marketplace 和 VM 映像庫。 客戶可以將這些應用裝置部署到其虛擬網路，特別是安全性界限 (包括 DMZ 子網路)，以完成多層式安全網路環境。
 
 根據這些功能，以下提供一個如何在 Azure 中建構 DMZ 架構的範例：
 
-![在 Azure 虛擬網路周邊網路][] 5
+![Azure 虛擬網路中的 DMZ][5]
 
 ## DMZ 特性和需求
 本節描述 Azure 中的 DMZ 特性和需求。 如前文所述，DMZ 主要是作為網路的前端，直接與來自網際網路的通訊正面接觸。 連入封包應該流經安全性應用裝置，即 DMZ 中的防火牆、ID、IPS 等，才會到達後端伺服器。 來自工作負載的網際網路繫結封包可能也會流經 DMZ 中的安全性應用裝置，經過原則強制執行、檢查和稽核之後，才會離開網路。 此外，DMZ 也可以用來裝載客戶虛擬網路與內部部署網路之間的跨單位 VPN 閘道。
@@ -147,7 +147,7 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 
 >[AZURE.TIP] 使用符合安全性需求的特定情況下的界限的最小數目。 界限越多，操作和疑難排解就越困難，後續管理多個界限原則時的管理負荷也越沈重。 不過，沒有足夠的界限會增加風險。 取得平衡相當重要。
 
-![使用三種安全性界限的混合式網路][] 6
+![具有三個安全性界限的混合式網路][6]
 
 上圖以高階觀點顯示的網路具有三個安全性界限，一個在 DMZ 與網際網路之間、一個在 Azure 前端與後端私人子網路之間，還有一個在 Azure 後端子網路與內部部署公司網路之間。
 
@@ -173,9 +173,9 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 
 ## 建置 Azure 虛擬網路的安全性界限
 ### 範例 1 – 使用 NSG 建置簡單的 DMZ
-[回到 [快速啟動](#fast-start) |[詳細的建置此範例指示]範例 [1]
+[回到 [快速啟動](#fast-start) | [詳細的建置此範例中的指示][Example1]
 
-![輸入 nsg DMZ][] 7
+![具有 NSG 的輸入 DMZ][7]
 
 #### 環境描述
 此範例中，有一個訂用帳戶包含下列項目：
@@ -187,7 +187,7 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 - 兩個代表應用程式後端伺服器的 Windows Server (“AppVM01”、“AppVM02”)
 - 一個代表 DNS 伺服器的 Windows Server ("DNS01")
 
-還有其他詳細資料，以建置 (提供指令碼和 ARM 範本) 這個範例位於 [詳細的組建指令] [Example1] 頁面。
+還有其他詳細資料，以建置這個範例 （提供指令碼和 ARM 範本） 位於  [詳細組建指示][Example1] 頁面。
 
 #### 網路安全性群組 (NSG) 描述
 此範例會建置 NSG 群組，然後載入六個規則。 
@@ -215,12 +215,12 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 - 每個 NSG 命令的詳細描述
 - 顯示如何在每一層允許或拒絕流量的詳細流量流程案例
 
-位於 [詳細的組建指令] [Example1] 頁面。
+位於 [詳細組建指示][Example1] 頁面。
 
 ### 範例 2 – 建置 DMZ 以透過防火牆和 NSG 保護應用程式
-[回到 [快速啟動](#fast-start) |[詳細的建置此範例指示]範例 [2]
+[回到 [快速啟動](#fast-start) | [詳細的建置此範例中的指示][Example2]
 
-![輸入 NVA 與 NSG DMZ][] 8
+![具有 NVA 和 NSG 的輸入 DMZ][8]
 
 #### 環境描述
 此範例中，有一個訂用帳戶包含下列項目：
@@ -233,7 +233,7 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 - 兩個代表應用程式後端伺服器的 Windows Server (“AppVM01”、“AppVM02”)
 - 一個代表 DNS 伺服器的 Windows Server ("DNS01")
 
-還有其他詳細資料，以建置 (提供指令碼和 ARM 範本) 這個範例位於 [詳細的組建指令] [Example2] 頁面。
+還有其他詳細資料，以建置這個範例 （提供指令碼和 ARM 範本） 位於  [詳細組建指示][Example2] 頁面。
 
 #### 網路安全性群組 (NSG) 描述
 此範例會建置 NSG 群組，然後載入六個規則。
@@ -266,12 +266,12 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 - 每個 NSG 命令和防火牆規則的詳細描述
 - 顯示如何在每一層允許或拒絕流量的詳細流量流程案例
 
-位於 [詳細的組建指令] [Example2] 頁面。
+位於 [詳細組建指示][Example2] 頁面。
 
 ### 範例 3 – 建置 DMZ 以透過防火牆、UDR 和 NSG 保護網路
-[回到 [快速啟動](#fast-start) |[詳細的建置此範例指示]範例 [3]
+[回到 [快速啟動](#fast-start) | [詳細的建置此範例中的指示][Example3]
 
-![雙向 DMZ NVA、 NSG，而且 UDR][] 9
+![具有 NVA、NSG 和 UDR 的雙向 DMZ][9]
 
 #### 環境設定
 此範例中，有一個訂用帳戶包含下列項目：
@@ -283,7 +283,7 @@ Microsoft 有完整的方法來保護執行超大規模全域服務所需的雲�
 - 兩個代表應用程式後端伺服器的 Windows Server (“AppVM01”、“AppVM02”)
 - 一個代表 DNS 伺服器的 Windows Server ("DNS01")
 
-還有其他詳細資料，以建置 (提供指令碼和 ARM 範本) 這個範例位於 [詳細的組建指令] [Example3] 頁面。
+還有其他詳細資料，以建置這個範例 （提供指令碼和 ARM 範本） 位於  [詳細組建指示][Example3] 頁面。
 
 #### 使用者定義的路由 (UDR) 描述
 根據預設，下列系統路由的定義如下：
@@ -334,7 +334,7 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 #### 防火牆規則
 防火牆上必須建立轉送規則。 因為防火牆會封鎖或轉送所有輸入、輸出和內部 VNet 流量，所以需要許多防火牆規則。 此外，所有輸入流量都會抵達安全性服務的公用 IP 位址 (在不同連接埠上)，並由防火牆進行處理。 最佳作法是先繪製邏輯流量圖，再設定子網路和防火牆規則，以避免事後還要修改。 下圖是此範例中的防火牆規則的邏輯視圖：
  
-![防火牆規則的邏輯檢視][] 10
+![防火牆規則的邏輯視圖][10]
 
 >[AZURE.NOTE] 根據使用網路虛擬應用裝置，管理連接埠將會有所不同。 在此範例中，所參考的 Barracuda NG 防火牆使用連接埠 22、801 和 807。 請參閱應用裝置廠商的說明文件來尋找用於管理所使用裝置的確切連接埠。
 
@@ -368,12 +368,12 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 - 每個 UDR、NSG 命令和防火牆規則的詳細描述
 - 顯示如何在每一層允許或拒絕流量的詳細流量流程案例
 
-位於 [詳細的組建指令] [Example3] 頁面。
+位於 [詳細組建指示][Example3] 頁面。
 
 ### 範例 4 – 使用站對站虛擬應用裝置 VPN 新增混合式連線
 [回到 [快速啟動](#fast-start) |詳細建置指示即將可用
 
-![NVA 已連線的混合式網路與周邊網路][] 11
+![連接 NVA 的 DMZ 混合式網路][11]
 
 #### 環境設定
 使用網路虛擬應用裝置 (NVA) 的混合式網路可以加入至範例 1、2 或 3 所描述的任何 DMZ 類型。
@@ -388,13 +388,13 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 
 使用範例 3「建置 DMZ 以透過防火牆、UDR 和 NSG 保護網路」中建置的環境，然後加入站對站 VPN 混合式網路連線，將會產生下列設計：
 
-![使用站台對站 VPN NVA 與周邊網路連線][] 12
+![使用站對站 VPN 連接 NVA 的 DMZ][12]
 
 在上面的設計中，內部部署路由器或與 VPN 網路虛擬應用裝置相容的任何其他網路裝置，就是 VPN 用戶端。 此實體裝置負責起始並維護網路虛擬應用裝置的 VPN 連線。
 
 就 NVA 而言，網路在邏輯上就像四個不同的「安全性區域 」，而以 NVA 上的規則為總指揮，統管這些區域之間的流量。 這在邏輯上如下所示：
 
-![NVA 觀點的邏輯網路][] 13
+![從 NVA 觀點來看的邏輯網路][13]
 
 #### 結論
 將站對站 VPN 混合式網路連線加入至 Azure 虛擬網路，能夠安全地將內部部署網路擴充至 Azure。 使用 VPN 連線時，流量會加密並透過網際網路來路由傳送。 如這個範例所示，使用 NVA 可集中強制執行和管理安全性原則。 如需此範例的詳細資訊，例如：
@@ -408,7 +408,7 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 ### 範例 5 – 使用站對站 Azure 閘道 VPN 新增混合式連線
 [回到 [快速啟動](#fast-start) |詳細建置指示即將可用
 
-![周邊網路與閘道連線的混合式網路][] 14
+![連接閘道的 DMZ 混合式網路][14]
 
 #### 環境設定
 使用 Azure VPN 閘道的混合式網路可以加入至範例 1 和 2 所描述的任一種 DMZ 類型。
@@ -423,7 +423,7 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 
 使用範例 1「建置 DMZ 以透過 NSG 保護應用程式」中建置的環境，然後加入站對站 VPN 混合式網路連線，將會產生下列設計：
 
-![周邊網路與閘道連線使用 ExpressRoute 連線][] 15
+![使用 ExpressRoute 連線連接閘道的 DMZ][15]
 
 #### 結論
 將站對站 VPN 混合式網路連線加入至 Azure 虛擬網路，能夠安全地將內部部署網路擴充至 Azure。 使用原生 Azure VPN 閘道時，流量會由 IPSec 加密並透過網際網路來路由傳送。 此外，使用 Azure VPN 閘道的成本也較低 (不像協力廠商網路虛擬應用裝置一樣需要額外的授權成本)。 這是在範例 1 中最經濟實惠，其中沒有使用任何網路虛擬應用裝置。 如需此範例的詳細資訊，例如：
@@ -437,7 +437,7 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 ### 範例 6 – 使用 ExpressRoute 新增混合式連線
 [回到 [快速啟動](#fast-start) |詳細建置指示即將可用
 
-![周邊網路與閘道連線的混合式網路][] 16
+![連接閘道的 DMZ 混合式網路][16]
 
 #### 環境設定
 使用 ExpressRoute 私用對等連線的混合式網路可以加入至範例 1 或 2 所描述的任一種 DMZ 類型。
@@ -455,7 +455,7 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 
 使用範例 1「使用 NSG 建置簡單的 DMZ」中建置的環境，然後加入 ExpressRoute 混合式網路連線，將會產生下列設計：
 
-![周邊網路與閘道連線使用 ExpressRoute 連線][] 17
+![使用 ExpressRoute 連線連接閘道的 DMZ][17]
 
 #### 結論
 加入 ExpressRoute 私用對等網路連線，能夠以安全、延遲短、效能高的方式將內部部署網路擴充至 Azure。 此外，如這個範例所示，使用原生 Azure 閘道的成本也較低 (不像協力廠商網路虛擬應用裝置一樣需要額外授權)。 如需此範例的詳細資訊，例如：
@@ -470,12 +470,12 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 ### 實用的網站和文件
 - 使用 ARM 存取 Azure： 
 - 存取 Azure powershell: [https://azure.microsoft.com/documentation/articles/powershell-install-configure/](./powershell-install-configure.md)
-- 虛擬網路文件: [https://azure.microsoft.com/documentation/services/virtual-network/](https://azure.microsoft.com/documentation/services/virtual-network/)
-- 網路安全性群組文件: [https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/](./virtual-network/virtual-networks-nsg.md)
-- 使用者定義路由的文件: [https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/](./virtual-network/virtual-networks-udr-overview.md)
-- Azure 虛擬閘道: [https://azure.microsoft.com/documentation/services/vpn-gateway/](https://azure.microsoft.com/documentation/services/vpn-gateway/)
+- 虛擬網路文件 ︰ [https://azure.microsoft.com/documentation/services/virtual-network/](https://azure.microsoft.com/documentation/services/virtual-network/)
+- 網路安全性群組文件 ︰ [https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/](./virtual-network/virtual-networks-nsg.md)
+- 使用者定義路由的文件 ︰ [https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/](./virtual-network/virtual-networks-udr-overview.md)
+- Azure 虛擬閘道 ︰ [https://azure.microsoft.com/documentation/services/vpn-gateway/](https://azure.microsoft.com/documentation/services/vpn-gateway/)
 - 站台對站 Vpn: [https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/](./virtual-network/vpn-gateway-site-to-site-create.md)
-- (請務必簽出的 「 開始 」 和 「 如何 」 區段) 的 ExpressRoute 文件: [https://azure.microsoft.com/documentation/services/expressroute/](https://azure.microsoft.com/documentation/services/expressroute/)
+- （請務必簽出的 「 開始 」 和 「 如何 」 區段） 的 ExpressRoute 文件 ︰ [https://azure.microsoft.com/documentation/services/expressroute/](https://azure.microsoft.com/documentation/services/expressroute/)
 
 <!--Image References-->
 [0]: ./media/best-practices-network-security/flowchart.png "Security Options Flowchart"
@@ -506,5 +506,6 @@ UDR 隨附 IP 轉送功能。 這是虛擬應用裝置的一項設定，以允�
 [Example6]: ./virtual-network/virtual-networks-hybrid-expressroute-asm.md
 [Example7]: ./virtual-network/virtual-networks-vnet2vnet-direct-asm.md
 [Example8]: ./virtual-network/virtual-networks-vnet2vnet-transit-asm.md
+
 
 

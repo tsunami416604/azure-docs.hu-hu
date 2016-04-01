@@ -16,7 +16,7 @@
     ms.date="10/20/2015" 
     ms.author="sunliangms;fashah;garye;bradsev" /> 
 
-#<a name="heading"></a>在 Azure 中的範例資料 blob 儲存體
+#<a name="heading"></a>Azure blob 儲存體中的取樣資料
 
 這 **功能表** 主題連結，說明如何從不同的儲存體環境中取樣資料。 此工作是 Cortana 分析程序 (CAP) 中的一個步驟。
 
@@ -62,7 +62,7 @@
 
     現在您可以使用上述具有 1% 樣本的資料框架，進行進一步探索和功能產生。
 
-##<a name="heading"></a>將資料上傳和讀取到 Azure Machine Learning
+##<a name="heading"></a>將資料上傳並將其讀入 Azure Machine Learning
 
 您可以使用下列程式碼範例，對資料進行向下取樣，並直接在 Azure ML 中使用它：
 
@@ -92,7 +92,7 @@
         except:         
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. 從使用 Azure ML 的 Azure blob 讀取資料 [讀取器](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 如下圖所示:
+3. 從使用 Azure ML 的 Azure blob 讀取資料 [讀取器](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 如下圖所示 ︰
  
 ![讀取器 Blob][1]
 
@@ -102,3 +102,4 @@
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
+

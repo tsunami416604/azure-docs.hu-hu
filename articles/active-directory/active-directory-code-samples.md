@@ -24,7 +24,7 @@
 
 若要了解每個範例類型的基本案例，請參閱「Azure AD 的驗證案例」。
 
-對我們在 GitHub 的範例: [Microsoft Azure Active Directory 範例與文件](https://github.com/AzureADSamples)。
+對我們在 GitHub 的範例 ︰ [Microsoft Azure Active Directory 範例與文件](https://github.com/AzureADSamples)。
 
 ## Web 瀏覽器到 Web 應用程式
 
@@ -150,4 +150,5 @@ PHP | [Azure AD Graph API 的 PHP 範例應用程式](http://code.msdn.microsoft
 [Azure AD Graph API 協助程式庫](http://code.msdn.microsoft.com/Windows-Azure-AD-Graph-API-a8c72e18)
 
 [使用 OAuth 和 Active Directory Federation Services 開發現代化的應用程式](http://msdn.microsoft.com/library/dn633593.aspx)
+
 

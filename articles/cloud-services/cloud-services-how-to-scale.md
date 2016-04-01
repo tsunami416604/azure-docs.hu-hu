@@ -34,7 +34,7 @@
 
 - 您必須先建立佇列並且將它與角色或可用性設定組建立關聯，然後才能根據訊息閾值調整應用程式。 如需詳細資訊，請參閱 [如何使用佇列儲存體服務](../storage-dotnet-how-to-use-queues.md)。
 
-- 您可以調整與您雲端服務連結的資源。 如需連結資源的詳細資訊，請參閱 [How to: 將資源連結到雲端服務](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service)。
+- 您可以調整與您雲端服務連結的資源。 如需連結資源的詳細資訊，請參閱 [How to ︰ 將資源連結到雲端服務](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service)。
 
 - 若要對應用程式啟用高可用性，您應該確定應用程式是以兩個以上的角色執行個體或虛擬機器來部署。 如需詳細資訊，請參閱 [服務等級協定](http://azure.microsoft.com/support/legal/sla/)。
 
@@ -84,7 +84,7 @@
 
 4. 每個角色或可用性設定組都有個滑桿來變更可以使用的執行個體數目。 若要設定可以使用的執行個體數目上限，請將右側條塊往右拖曳。 若要設定可使用的執行個體數目下限，請將左側條塊往左拖曳。
     
-    **注意:** 調整] 頁面上 **執行個體** 代表角色執行個體或虛擬機器的執行個體。
+    **注意 ︰** 調整] 頁面上 **執行個體** 代表角色執行個體或虛擬機器的執行個體。
     
     ![Instance range][instance_range]
     
@@ -136,7 +136,7 @@
 
     ![Queue range][queue_range]
     
-    **注意:** 調整] 頁面上 **執行個體** 代表角色執行個體或虛擬機器的執行個體。
+    **注意 ︰** 調整] 頁面上 **執行個體** 代表角色執行個體或虛擬機器的執行個體。
     
     執行個體數目上限受限於訂閱中的可用核心數目。 滑桿的色彩代表您的訂閱中已使用和可用的核心：
     - 藍色代表角色可以使用的核心數目上限。
@@ -197,7 +197,7 @@
 
 - **白天與夜晚** -此選項可讓您指定在白天與晚上的特定時間進行的調整。
 
-**注意:** 排程並非目前適用於使用虛擬機器的應用程式。
+**注意 ︰** 排程並非目前適用於使用虛擬機器的應用程式。
 
 1. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **雲端服務**, ，然後按一下以開啟儀表板的雲端服務的名稱。
 2. 按一下 [ **延展**。
@@ -230,4 +230,5 @@
 [linked_resources]: ./media/cloud-services-how-to-scale/CloudServices_ScaleLinkedResources.png
 [scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
  
+
 

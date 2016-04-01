@@ -72,7 +72,7 @@ Cmdlet 需要有您的訂閱，才能用來管理您的服務。 您可以購買
 
 若要顯示您的 Azure 訂閱，請輸入 **Get-azuresubscription**。
 
-## 步驟 4: 測試<a id="Ex"></a>
+## 步驟 4：測試<a id="Ex"></a>
 
 
 安裝這個模組並設定電腦來連接至您的訂用帳戶後，您可以建立一個 Azure Web 應用程式，以確認一切運作正常。
@@ -128,4 +128,5 @@ Cmdlet 需要有您的訂閱，才能用來管理您的服務。 您可以購買
 
 - [MSDN 上的 Azure 論壇]( http://go.microsoft.com/fwlink/p/?LinkId=320212)
 - [Stackoverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
+
 

@@ -24,10 +24,10 @@
 - [PolyBase](sql-data-warehouse-load-with-polybase-short.md)
 - [BCP](sql-data-warehouse-load-with-bcp.md)
 
-本教學課程將示範如何將資料載入至您的 Azure SQL 資料倉儲使用 PolyBase。  若要進一步瞭解 PolyBase，請參閱 [PolyBase 在 SQL 資料倉儲教學課程] []。
+本教學課程將示範如何將資料載入至您的 Azure SQL 資料倉儲使用 PolyBase。  若要深入了解 PolyBase，請參閱 [SQL 資料倉儲教學課程中的 PolyBase][]。
 
 
-## 先決條件
+## 必要條件
 若要逐步執行本教學課程，您需要
 
 - SQL 資料倉儲資料庫
@@ -55,7 +55,7 @@
 
 ## 步驟 2：將資料移轉至 Azure Blob 儲存體
 
-- 下載的 [最新版本的 AzCopy] []。
+- 下載 [最新版本的 AzCopy][]。
 - 開啟命令視窗，並瀏覽至電腦上的 AzCopy 安裝目錄，也就是 AzCopy.exe 的位置。 根據預設，安裝目錄是在 64 位元 Windows 電腦上的 %programfiles(x86) %\Microsoft SDKs\Azure\AzCopy\。
 - 執行下列命令以上傳檔案。 指定 /DestKey 的 Azure 儲存體帳戶金鑰。
 
@@ -63,7 +63,7 @@
 .\AzCopy.exe /Source:C:\Temp\ /Dest:https://pbdemostorage.blob.core.windows.net/datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
 ```
 
-若要深入了解 AzCopy，請參閱 [開始使用 AzCopy 命令列公用程式] []。
+若要深入了解 AzCopy，請參閱 [開始使用 AzCopy 命令列公用程式][]。
 
 
 ## 步驟 3：建立外部資料表
@@ -71,11 +71,11 @@
 接下來，您必須在 SQL 資料倉儲中建立外部資料表以參考 Azure blob 儲存體中的資料。
 若要建立外部資料表，請使用下列步驟：
 
-- [建立主要金鑰][]: 加密的密碼。 您的資料庫範圍認證。
-- [Create Database Scoped Credential]: 若要指定儲存體帳戶的驗證資訊。
-- [Create External Data Source]: 若要指定 Azure blob 儲存體的位置。
-- [Create External File Format]: 若要指定的資料配置。
-- [Create External Table]: 若要參考的 Azure 儲存體資料。
+- [建立主要金鑰][]︰ 加密的密碼。 您的資料庫範圍認證。
+- [Create Database Scoped Credential]︰ 若要指定儲存體帳戶的驗證資訊。
+- [Create External Data Source]︰ 若要指定 Azure blob 儲存體的位置。
+- [Create External File Format]︰ 若要指定的資料配置。
+- [Create External Table]︰ 若要參考的 Azure 儲存體資料。
 
 
 ```
@@ -183,4 +183,5 @@ create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 <!--Article references-->
 
 [Statistics]: ./sql-data-warehouse-develop-statistics.md
+
 

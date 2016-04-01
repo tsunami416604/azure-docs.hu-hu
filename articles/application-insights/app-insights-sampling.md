@@ -32,7 +32,7 @@ Application Insights SDK 中針對 ASP.NET 2.0.0 版 beta3 或更新版本預設
 
 ## 啟用調適性取樣
 
-**更新專案的 NuGet** 至最新的封裝 *發行前版本* 版本的 Application Insights: 以滑鼠右鍵按一下 [方案總管] 中的專案中，選擇 [管理 NuGet 封裝，檢查 **包括發行前版本** 和 Microsoft.ApplicationInsights.Web 的搜尋。 
+**更新專案的 NuGet** 至最新的封裝 *發行前版本* 版本的 Application Insights ︰ 以滑鼠右鍵按一下 [方案總管] 中的專案中，選擇 [管理 NuGet 封裝，檢查 **包括發行前版本** 和 Microsoft.ApplicationInsights.Web 的搜尋。 
 
 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), ，您可以調整中的參數數目 `AdaptiveSamplingTelemetryProcessor` 節點。 顯示的數字是預設值：
 
@@ -152,7 +152,7 @@ Application Insights SDK 中針對 ASP.NET 2.0.0 版 beta3 或更新版本預設
 
 1. **更新專案的 NuGet 封裝** 至最新 *發行前版本* 版本的 Application Insights。 以滑鼠右鍵按一下 [方案總管] 中的專案中，選擇 [管理 NuGet 封裝，請檢查 **包括發行前版本** 和 Microsoft.ApplicationInsights.Web 的搜尋。 
 
-2. **停用調適性取樣**: 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), 、 移除或註解 `AdaptiveSamplingTelemetryProcessor` 節點。
+2. **停用調適性取樣**︰ 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), 、 移除或註解 `AdaptiveSamplingTelemetryProcessor` 節點。
 
     ```xml
 
@@ -166,7 +166,7 @@ Application Insights SDK 中針對 ASP.NET 2.0.0 版 beta3 或更新版本預設
 
     ```
 
-2. **啟用固定速率取樣模組。**新增此程式碼片段來 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
+2. **啟用固定取樣率模組。** 新增此程式碼片段來 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
 
     ```XML
 
@@ -210,7 +210,7 @@ Application Insights SDK 中針對 ASP.NET 2.0.0 版 beta3 或更新版本預設
 
 ([深入了解遙測處理器](app-insights-api-filtering-sampling.md#filtering)。)
 
-## 使用取樣的時機?
+## 使用取樣的時機？
 
 如果您使用 ASP.NET SDK 版本 2.0.0-beta3 或更新版本，調適性取樣會自動啟用。
 
@@ -294,7 +294,8 @@ SDK 會決定要卸除的遙測項目以及要保留哪些。 取樣決策會根
 
 * 目前，調適性取樣適用於 ASP.NET Web Apps 的伺服器端 (裝載在 Azure 或您自己的伺服器上)。 固定取樣率可供任何網頁使用，並且供 .NET Web 應用程式的用戶端和伺服器端使用。
 
-*有一定想要看到某些罕見的事件。 我要如何取得這些過去取樣模組?*
+*有一定想要看到某些罕見的事件。 我要如何取得這些過去取樣模組？*
 
  * 使用新的 TelemetryConfiguration (非預設使用中的組態) 初始化個別的 TelemetryClient 執行個體。 使用該執行個體來傳送您的罕見的事件。
+
 

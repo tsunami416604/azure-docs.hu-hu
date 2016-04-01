@@ -108,7 +108,7 @@
     }
 
 ### 傳送通知
-首先，讓我們定義呈現通知的類別。
+首先，讓我們先定義代表通知的類別。
 
     class Notification {
         public $format;
@@ -255,4 +255,5 @@
 [PHP REST wrapper sample]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
  
+
 

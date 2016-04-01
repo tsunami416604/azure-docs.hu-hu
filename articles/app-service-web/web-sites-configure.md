@@ -37,10 +37,10 @@
 
 **Framework 版本**。 如果您的應用程式使用下列任何 Framework，請設定下列選項： 
 
-- **.NET framework**: 設定.NET framework 版本。 
-- **PHP**: 設定 PHP 版本，或 * * OFF * * 以停用 PHP。 
-- **Java**: 選取 Java 版本或 **OFF** 以停用 Java。 使用 **Web 容器** 選項來選擇 Tomcat 或 Jetty 版本。
-- **Python**: 選取 Python 版本，或 **OFF** 以停用 Python。
+- **.NET framework**︰ 設定.NET framework 版本。 
+- **PHP**︰ 設定 PHP 版本，或 * * OFF * * 以停用 PHP。 
+- **Java**︰ 選取 Java 版本或 **OFF** 以停用 Java。 使用 **Web 容器** 選項來選擇 Tomcat 或 Jetty 版本。
+- **Python**︰ 選取 Python 版本，或 **OFF** 以停用 Python。
 
 在技術上，針對您的應用程式啟用 Java 就會停用 .NET、PHP 與 Python 選項。
 
@@ -164,9 +164,9 @@ Web 應用程式可能會使用根據 URL 路由傳送的模組，而非處理�
 
 在基本或標準模式中，您可以測試 HTTP 或 HTTPS 端點，最多三個地理位置的可用性。 如果 HTTP 回應碼為錯誤 (4xx 或 5xx)，或是當回應時間超過 30 秒時，監視測試即告失敗。 如果所有指定位置上的端點監視測試全都成功，表示該端點可用。 
 
-如需詳細資訊，請參閱 [How to: 監視 web 端點狀態](http://go.microsoft.com/fwLink/?LinkID=279906&clcid=0x409)。
+如需詳細資訊，請參閱 [How to ︰ 監視 web 端點狀態](http://go.microsoft.com/fwLink/?LinkID=279906&clcid=0x409)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 後續步驟
 
@@ -176,6 +176,7 @@ Web 應用程式可能會使用根據 URL 路由傳送的模組，而非處理�
 - [在 Azure App Service 中監視 Web 應用程式的基本概念](web-sites-monitor.md)
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
  
+
 

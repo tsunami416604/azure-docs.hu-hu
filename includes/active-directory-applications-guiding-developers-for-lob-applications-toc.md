@@ -4,3 +4,4 @@
 - [將群組指派給應用程式](active-directory-applications-guiding-developers-assigning-groups.md)
 - [整合應用程式與 Azure Active Directory](active-directory-integrating-applications.md)
 
+

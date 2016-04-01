@@ -43,7 +43,7 @@
 
 * [Visual Studio Community 2013] 或更新版本。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://tryappservice.azure.com/?appServiceName=mobile), ，您可以立即建立短期入門行動應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://tryappservice.azure.com/?appServiceName=mobile), ，您可以立即建立短期入門行動應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ##建立新的行動應用程式後端
 
@@ -55,7 +55,7 @@
 
 ## 下載伺服器專案
 
-1. 在 [Azure 網站]，按一下 [ **全部瀏覽** > **Web 應用程式**, ，然後按一下您剛才建立的行動應用程式後端。 
+1. 在 [Azure Portal], ，按一下 [ **全部瀏覽** > **Web 應用程式**, ，然後按一下您剛才建立的行動應用程式後端。 
 
 2. 在行動應用程式後端中，按一下 [ **所有設定** 歲以下 **行動應用程式** 按一下 **快速入門** > **HTML/JavaScript**。
 
@@ -69,7 +69,7 @@
 
 根據預設，您將從入口網站下載的用戶端快速入門專案會在連接埠 8000 的 localhost 上執行。 因此，您接下來會在伺服器專案中為 `http://localhost:8000` 啟用 CORS。  
 
-1. 在 Visual Studio [工具] 功能表中，按一下 [ **NuGet 封裝管理員** > **Package Manager Console**, ，選取為 Nuget.org **套件來源** 並在主控台視窗中執行下列命令:
+1. 在 Visual Studio [工具] 功能表中，按一下 [ **NuGet 封裝管理員** > **Package Manager Console**, ，選取為 Nuget.org **套件來源** 並在主控台視窗中執行下列命令 ︰
  
         Install-Package Microsoft.AspNet.WebApi.Cors  
 
@@ -77,7 +77,7 @@
 
         using System.Web.Http.Cors;
 
-3. 接下來，加入下列程式碼以 **Startup.ConfigureMobileApp** 方法之後 **HttpConfiguration** (*config*) 建立:
+3. 接下來，加入下列程式碼以 **Startup.ConfigureMobileApp** 方法之後 **HttpConfiguration** (*config*) 建立 ︰
 
         // Enable CORS support for localhost port 8000, all headers and methods.
         var cors = new EnableCorsAttribute("http://localhost:8000", "*", "*");
@@ -99,15 +99,15 @@
 
 3. 瀏覽至儲存壓縮的專案檔案的位置、 您的電腦上將檔案解壓縮並啟動一個從下列的命令檔 **伺服器** 子資料夾。
 
-    + **啟動 windows** (Windows 電腦)
-    + **launch-mac.command** (Mac OS X 電腦)
-    + **launch-linux.sh** (Linux 電腦)
+    + **啟動 windows** （Windows 電腦）
+    + **launch-mac.command** （Mac OS X 電腦）
+    + **launch-linux.sh** （Linux 電腦）
 
     > [AZURE.NOTE] 在 Windows 電腦上，輸入 `R` PowerShell 要求您確認您想要執行指令碼時。 因為指令碼是從網際網路中下載，所以您的網頁瀏覽器可能會警告您不要執行指令碼。 發生此情況時，您必須要求瀏覽器繼續載入指令碼。
 
     如此會在本機電腦上啟動網頁伺服器來裝載新的應用程式。
 
-4. 在網頁瀏覽器中開啟 URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> 來啟動應用程式。 用戶端應用程式會設定為連接到 Azure 中您的行動應用程式後端。
+4. 在網頁瀏覽器中開啟 URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> 以啟動應用程式。 用戶端應用程式會設定為連接到 Azure 中您的行動應用程式後端。
 
 5. 在應用程式中，輸入有意義的文字，例如 _完成教學課程_, 中 **輸入新工作**, ，然後按一下 [ **新增**。
 
@@ -126,4 +126,5 @@
 
 [Visual Studio Community 2013]: https://www.visualstudio.com/downloads
  
+
 

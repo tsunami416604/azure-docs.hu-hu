@@ -32,7 +32,7 @@
 
 ## 建立 Node.js 應用程式
 
-如需有關如何建立 Node.js 應用程式的指示，請參閱 [建立並部署 Node.js 應用程式至 Azure 網站]， [Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或 [Web app with WebMatrix]。
+如需有關如何建立 Node.js 應用程式的指示，請參閱 [建立並部署 Node.js 應用程式至 Azure 網站]， [Node.js 雲端服務][Node.js Cloud Service] （使用 Windows PowerShell） 或 [Web app with WebMatrix]。
 
 ## 設定您的應用程式以存取儲存體
 
@@ -59,7 +59,7 @@
 
 ### 匯入封裝
 
-使用記事本或其他文字編輯器，將下列加入至頂端 **server.js** 您打算使用儲存體的應用程式檔案:
+使用記事本或其他文字編輯器，將下列加入至頂端 **server.js** 您打算使用儲存體的應用程式檔案 ︰
 
     var azure = require('azure-storage');
 
@@ -119,7 +119,7 @@ Azure 模組會讀取環境變數 `AZURE_STORAGE_ACCOUNT` 及 `AZURE_STORAGE_ACC
 
 ### 篩選器
 
-您可以將選用的篩選作業套用至使用執行的作業 **BlobService**。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
+您可以將選用的篩選作業套用至使用執行的作業 **BlobService**。 篩選作業可包含記錄、自動重試等。篩選器是使用簽章實作方法的物件：
 
         function handle (requestOptions, next)
 
@@ -209,7 +209,7 @@ Blob 可以區塊或分頁為基礎。 Block 區塊可讓您更有效率地上�
 
 * **createReadStream** -提供串流來讀取 blob
 
-下列程式碼範例示範如何使用 **getBlobToStream** 的內容下載 **myblob** blob，然後將其儲存至 **output.txt** 使用資料流的檔案:
+下列程式碼範例示範如何使用 **getBlobToStream** 的內容下載 **myblob** blob，然後將其儲存至 **output.txt** 使用資料流的檔案 ︰
 
     var fs = require('fs');
     blobSvc.getBlobToStream('mycontainer', 'myblob', fs.createWriteStream('output.txt'), function(error, result, response){
@@ -376,4 +376,5 @@ ACL 是使用存取原則陣列來實作，每個原則有相關聯的識別碼�
 [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node API Reference]: http://dl.windowsazure.com/nodestoragedocs/index.html
+
 

@@ -63,7 +63,7 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server® 2008 R2 SP1�
     - 鏡像動態磁碟區 (RAID 1)
     - 叢集共用磁碟區
  
-    如需 StorSimple 裝置或 StorSimple 虛擬裝置上建立磁碟區資訊，請移至 [步驟 6: 建立磁碟區](storsimple-deployment-walkthrough.md#step-6-create-a-volume), 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。
+    如需 StorSimple 裝置或 StorSimple 虛擬裝置上建立磁碟區資訊，請移至 [步驟 6 ︰ 建立磁碟區](storsimple-deployment-walkthrough.md#step-6-create-a-volume), 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。
 
 ## 安裝新的 StorSimple Snapshot Manager
 
@@ -95,7 +95,7 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server® 2008 R2 SP1�
 
 3. 在 **解壓縮壓縮 (Zipped) 資料夾** 視窗，請在 **選取目的地並解壓縮檔案** 方塊中，輸入或瀏覽至您想要解壓縮檔案的路徑。 
 
-       >[AZURE.IMPORTANT] You must install StorSimple Snapshot Manager on the C: drive.
+       >[AZURE.IMPORTANT] 您必須在 c ︰ 磁碟機上安裝 StorSimple Snapshot Manager。
  
 4. 選取 **顯示解壓縮的檔案時完成** 核取方塊，，然後按一下 [ **擷取**。
 
@@ -117,9 +117,9 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server® 2008 R2 SP1�
 
     ![StorSimple Snapshot Manager 使用者介面](./media/storsimple-snapshot-manager-deployment/HCS_SSM_gui_panes.png) 
 
-    -  **範圍** 窗格 (左窗格) 包含組織成樹狀結構的節點清單。 您可以展開一些節點來選取檢視或與該節點相關的特定資料。 按一下箭頭圖示來展開或摺疊節點。 以滑鼠右鍵按一下中的項目 **範圍** 窗格，以查看可用的動作項目清單。 
+    -  **範圍** 窗格 （左窗格） 包含組織成樹狀結構的節點清單。 您可以展開一些節點來選取檢視或與該節點相關的特定資料。 按一下箭頭圖示來展開或摺疊節點。 以滑鼠右鍵按一下中的項目 **範圍** 窗格，以查看可用的動作項目清單。 
 
-    -  **結果** 窗格 (中央窗格) 包含節點、 檢視表或您在選取的資料相關的詳細的狀態資訊 **範圍** 窗格。
+    -  **結果** 窗格 （中央窗格） 包含節點、 檢視表或您在選取的資料相關的詳細的狀態資訊 **範圍** 窗格。
 
     -  **動作** 窗格會列出您可以在節點、 檢視表或您在選取的資料執行的作業 **範圍** 窗格。
 
@@ -147,7 +147,7 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server® 2008 R2 SP1�
 
     ![StorSimple Snapshot Manager 裝置狀態](./media/storsimple-snapshot-manager-deployment/HCS_SSM_Device_status.png) 
 
-2. 檢查 **結果** 窗格: 
+2. 檢查 **結果** 窗格 ︰ 
 
    - 如果裝置圖示上出現綠色指標和 **可用** 會出現在 **狀態** 資料行，表示裝置已連接。 
 
@@ -251,8 +251,9 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server® 2008 R2 SP1�
 
 ## 後續步驟
 
-- 若要深入了解 StorSimple Snapshot Manager，請移至 [什麼是 StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)。
+- 若要深入了解 StorSimple Snapshot Manager，請移至 [什麼是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)。
 
 - 若要深入了解 StorSimple Snapshot Manager 使用者介面，請移至 [StorSimple Snapshot Manager 使用者介面](storsimple-use-snapshot-manager.md)。
 
 - 若要深入瞭解如何使用 StorSimple Snapshot Manager，請移至 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
+

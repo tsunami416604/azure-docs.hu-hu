@@ -32,7 +32,7 @@
 
 如果您想要看影片，下方片段播放的步驟與本教學課程相同。
 
-影片: 「 取得開始使用 Xamarin 和 Azure 行動服務 」，Craig Dunn Xamarin 開發人員推廣者 (持續時間: 10:05 最小值)
+影片: 「 取得開始使用 Xamarin 和 Azure 行動服務 」，Craig Dunn Xamarin 開發人員推廣者 (持續時間 ︰ 10:05 最小值)
 
 > [AZURE.VIDEO getting-started-with-xamarin-and-mobile-services]
 
@@ -64,7 +64,7 @@
 
     ![][7]
 
-3. 如果您尚未這樣做，請下載並安裝的 Xcode (我們建議最新版 Xcode 6.0 或更新版本) 和 [Xamarin Studio]。
+3. 如果您尚未這樣做，請下載並安裝的 Xcode （我們建議最新版 Xcode 6.0 或更新版本） 和 [Xamarin Studio]。
 
 4. 按一下 [ **Create TodoItems table** 來建立儲存應用程式資料的資料表。
 
@@ -104,16 +104,16 @@
 ## 後續步驟
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
-* [開始使用離線資料同步]
+* [Get started with offline data sync]
   了解快速入門如何使用離線資料同步處理，讓應用程式迅速回應而且穩固。
 
-* [開始使用驗證]
+* [Get started with authentication]
   了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
-* [開始使用推播通知]
+* [Get started with push notifications]
   了解如何將非常基本的推播通知傳送至您的應用程式。
 
-* [如何使用 Azure 行動服務的 Xamarin 元件用戶端](partner-xamarin-mobile-services-how-to-use-client-library.md)
+* [如何使用適用於 Azure 行動服務的 Xamarin 元件用戶端](partner-xamarin-mobile-services-how-to-use-client-library.md)
    了解如何查詢行動服務、 處理資料，以及存取自訂 Api。
 
 
@@ -145,4 +145,5 @@
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 [Azure classic portal]: https://manage.windowsazure.com/
+
 

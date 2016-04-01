@@ -79,7 +79,7 @@
 
     ![[在 Visual Studio 中開啟] 按鈕][20-OpenInVisualStudioButton]
 
-7. 按一下 [ **社群 (免費)** 連結或類似的連結。 新的網頁會隨即新增。
+7. 按一下 [ **社群 （免費）** 連結或類似的連結。 新的網頁會隨即新增。
 
 8. 使用新網頁上的連結安裝 Visual Studio。
 
@@ -141,7 +141,7 @@
 1. 在 Visual Studio 中，從 [方案總管] 窗格開啟 App.config 檔案。
 
 2. 新增 **& #x3c; 組態 #x3e; & #x3c; / 組態與 #x3e;** 項目，如下列範例 App.config 程式碼範例所示。
- - 取代 *{your_placeholders}* 以您的實際值:
+ - 取代 *{your_placeholders}* 以您的實際值 ︰
 
 ```
     <?xml version="1.0" encoding="utf-8" ?>
@@ -324,8 +324,8 @@ namespace ConnectAndQuery_Example
 
 
 
-如需詳細資訊，請參閱:<br/>
-[如何: 在 SQL 資料庫上設定防火牆設定](sql-database-configure-firewall-settings.md)
+如需詳細資訊，請參閱：<br/>
+[如何：在 SQL Database 上進行防火牆設定](sql-database-configure-firewall-settings.md)
 
 
 
@@ -345,7 +345,7 @@ namespace ConnectAndQuery_Example
 
 - [SQL Database 的用戶端快速入門程式碼範例](sql-database-develop-quick-start-client-code-samples.md)
 
-- 如果用戶端程式在 Azure VM 上執行，了解在 1433年以外的 TCP 連接埠:<br/>[針對 ADO.NET 4.5 及 SQL Database V12 的 1433年以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)。
+- 如果用戶端程式在 Azure VM 上執行，了解在 1433年以外的 TCP 連接埠 ︰<br/>[針對 ADO.NET 4.5 及 SQL 1433 以外的連接埠資料庫 V12](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
 
 
@@ -358,4 +358,5 @@ namespace ConnectAndQuery_Example
 [40-VSProgramCsOverlay]: ./media/sql-database-connect-query/connqry-vs-program-cs-overlay-g.png
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
+
 

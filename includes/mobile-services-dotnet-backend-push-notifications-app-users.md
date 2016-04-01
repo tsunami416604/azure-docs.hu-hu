@@ -1,7 +1,7 @@
 
 1. 在 Visual Studio 的 [方案總管] 中，展開 App_Start 資料夾，然後開啟 WebApiConfig.cs 專案檔。
 
-2. 之後的 Register 方法中加入下列程式碼行 **ConfigOptions** 定義:
+2. 之後的 Register 方法中加入下列程式碼行 **ConfigOptions** 定義 ︰
 
         options.PushAuthorization = 
             Microsoft.WindowsAzure.Mobile.Service.Security.AuthorizationLevel.User;
@@ -12,7 +12,7 @@
 
 3. 將新的空類別命名 `PushRegistrationHandler` 然後按一下 [ **新增**。
 
-4. 在程式碼頁面頂端，新增下列 **使用** 陳述式:
+4. 在程式碼頁面頂端，新增下列 **使用** 陳述式 ︰
 
         using System.Threading.Tasks; 
         using System.Web.Http; 
@@ -21,7 +21,7 @@
         using Microsoft.WindowsAzure.Mobile.Service.Notifications; 
         using Microsoft.WindowsAzure.Mobile.Service.Security; 
 
-5. 取代現有 **PushRegistrationHandler** 類別取代下列程式碼:
+5. 取代現有 **PushRegistrationHandler** 類別取代下列程式碼 ︰
  
         public class PushRegistrationHandler : INotificationHandler
         {
@@ -79,7 +79,7 @@
 
      **註冊** 在註冊期間呼叫方法。 這樣讓您能夠將標籤新增到已登入使用者識別碼的註冊中。 已驗證所提供的標記，防止使用者註冊另一位使用者的識別碼。 傳送通知給這位使用者時，此裝置和該使用者已註冊的任何其他裝置都會收到該通知。 
 
-6. 展開 Controllers 資料夾、 開啟 TodoItemController.cs 專案檔案、 找出 **PostTodoItem** 方法，並呼叫的程式碼行取代 **SendAsync** 為下列程式碼:
+6. 展開 Controllers 資料夾、 開啟 TodoItemController.cs 專案檔案、 找出 **PostTodoItem** 方法，並呼叫的程式碼行取代 **SendAsync** 為下列程式碼 ︰
 
         // Get the logged-in user.
         var currentUser = this.User as ServiceUser;
@@ -91,3 +91,4 @@
 
 現在，服務會使用使用者識別碼標籤，將推播通知 (以及插入項目的文字) 傳送到該位已登入使用者建立的所有註冊中。
  
+

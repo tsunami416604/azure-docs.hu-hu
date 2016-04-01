@@ -48,6 +48,7 @@
 
 ## 後續步驟
 
-了解 Azure 傳統入口網站更好: http://azure.microsoft.com。
+了解 Azure 傳統入口網站更好 ︰ http://azure.microsoft.com。
+
 
 

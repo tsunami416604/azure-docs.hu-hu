@@ -22,9 +22,9 @@ Azure 可讓客戶執行安全性事件產生和集合，從 Azure 基礎結構�
 
 Azure 安全性記錄、分析和監視生命週期包括：
 
-- **產生**: 檢測應用程式和基礎結構引發事件
-- **集合**: 設定 Azure 來收集各種儲存體帳戶中的安全性記錄檔
-- **分析**: 使用 Azure HDInsight 等工具和內部 SIEM 系統，以分析的記錄檔及產生的安全性深入解析
+- **產生**︰ 檢測應用程式和基礎結構引發事件
+- **集合**︰ 設定 Azure 來收集各種儲存體帳戶中的安全性記錄檔
+- **分析**︰ 使用 Azure HDInsight 等工具和內部 SIEM 系統，以分析的記錄檔及產生的安全性深入解析
 - **監視和報告**: Azure 提供集中式監控與分析系統，提供連續的可見性和即時警示
 
 本文著重於生命週期的產生和集合階段。
@@ -186,7 +186,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
  ```
 
 ##### 步驟 5：產生事件
-基於示範目的，我們將建立一些登入事件並確認資料流向 Azure 儲存體。 XML 檔案所示先前在步驟 2 中，會設定為收集事件識別碼 4624 (登入成功) 和事件識別碼 4625 (登入失敗) 從 **安全性** 通道。
+基於示範目的，我們將建立一些登入事件並確認資料流向 Azure 儲存體。 XML 檔案所示先前在步驟 2 中，會設定為收集事件識別碼 4624 （登入成功） 和事件識別碼 4625 （登入失敗） 從 **安全性** 通道。
 
  產生這些事件：
 
@@ -202,12 +202,12 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 
 檢視您的資料：
 
-1.  在 Visual Studio (2013年、 2012年和 2010 含 SP1)，按一下 **檢視**, ，然後按一下 [ **伺服器總管**。
+1.  在 Visual Studio （2013年、 2012年和 2010 含 SP1），按一下 **檢視**, ，然後按一下 [ **伺服器總管**。
 2.  瀏覽至儲存體帳戶。
 3.  按一下 [ **資料表** ，然後按兩下適當的資料表，以檢視安全性記錄檔收集來自虛擬機器。
 ![][2]
 
-4.  名為 WADWindowsEventLogsTable，資料表上按一下滑鼠右鍵，然後按一下 [ **檢視資料** 若要開啟 [資料表] 檢視，如下所示:
+4.  名為 WADWindowsEventLogsTable，資料表上按一下滑鼠右鍵，然後按一下 [ **檢視資料** 若要開啟 [資料表] 檢視，如下所示 ︰
 
 ![][3]
 
@@ -254,10 +254,10 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
     </WadCfg>
     </PublicConfig>
 
-驗證組態檔使用相同的步驟，如先前顯示於 [步驟 3: 驗證 XML 組態檔](#step3)。
+驗證組態檔使用相同的步驟，如先前顯示於 [步驟 3 ︰ 驗證 XML 組態檔](#step3)。
 
 ##### 步驟 2：更新 Azure 診斷以使用新的組態檔
-使用 **Set-azurevmdiagnosticsextension** 和 **Update-azurevm** 指令程式來更新組態，如先前顯示於 [步驟 4: 設定 Azure 診斷](#step4)。
+使用 **Set-azurevmdiagnosticsextension** 和 **Update-azurevm** 指令程式來更新組態，如先前顯示於 [步驟 4 ︰ 設定 Azure 診斷](#step4)。
 
 ##### 步驟 3：確認組態設定
 執行下列命令來確認組態設定已更新：
@@ -278,7 +278,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 ![][6]
 
 ##### 步驟 5：檢視資料
-在 Visual Studio 中開啟伺服器總管以檢視記錄資料。 您應該會看到 **EventID 100** 上建立 **ContosoDesktop** 如下所示:
+在 Visual Studio 中開啟伺服器總管以檢視記錄資料。 您應該會看到 **EventID 100** 上建立 **ContosoDesktop** 如下所示 ︰
 
 ![][7]
 
@@ -352,7 +352,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 ```
 
 #### 步驟 3：驗證組態 XML 檔案
-驗證組態檔使用相同的步驟，如先前顯示於 [步驟 3: 驗證 XML 組態檔](#step3)。
+驗證組態檔使用相同的步驟，如先前顯示於 [步驟 3 ︰ 驗證 XML 組態檔](#step3)。
  
 #### 步驟 4：設定 Azure 診斷
 執行下列 Azure PowerShell 指令碼以啟用 Azure 診斷 (請務必更新 storage_name、金鑰、config_path 和 service_name)。
@@ -378,7 +378,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
     net user contosoadmin  <enterpassword> /add
     net localgroup administrators contosoadmin  /add
 
-3.  開啟事件檢視器中，開啟 **安全性** 通道，並注意事件 4732 已經建立的如下所示:
+3.  開啟事件檢視器中，開啟 **安全性** 通道，並注意事件 4732 已經建立的如下所示 ︰
 
 ![][9]
 
@@ -403,7 +403,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 #### 步驟 1：取得現有的組態
 >[AZURE.NOTE] 新的組態設定會覆寫現有的組態。 因此，任何現有的 Azure 診斷組態設定都必須和新的組態檔合併。
 
-若要擷取現有的組態設定，您可以使用 **Set-azureservicediagnosticsextension** 指令程式:
+若要擷取現有的組態設定，您可以使用 **Set-azureservicediagnosticsextension** 指令程式 ︰
 
     Get-AzureServiceDiagnosticsExtension -ServiceName <ServiceName>
 
@@ -421,7 +421,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
     </WadCfg>
     </PublicConfig>
 
-在稍早所述使用相同的驗證程序來驗證 XML 內容 [步驟 3: 驗證 XML 組態檔](#step3)。
+在稍早所述使用相同的驗證程序來驗證 XML 內容 [步驟 3 ︰ 驗證 XML 組態檔](#step3)。
 
 #### 步驟 3：更新 Azure 診斷以使用新的組態
 
@@ -454,7 +454,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 2.  按一下 [ **新增規則**, ，然後按一下 [ **連接埠**。
 3.  在 **本機連接埠** 欄位中，輸入 **5000**, ，然後按一下 [ **下一步** 三次。
 4.  在 **名稱** 欄位中，輸入 **Test5000**, ，然後按一下 [ **完成**。
-5.  開啟事件檢視器中，開啟 **安全性** 通道，並注意 [事件識別碼 4946 已經建立的如下所示:
+5.  開啟事件檢視器中，開啟 **安全性** 通道，並注意 [事件識別碼 4946 已經建立的如下所示 ︰
 
 ![][13]
 
@@ -464,7 +464,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 ![][14]
 
 ### 安全性事件分佈和尖峰偵測
-事件在客戶的儲存體帳戶之後，應用程式可以使用儲存體用戶端程式庫來存取和執行事件彙總。 範例程式碼來存取資料表的資料，請參閱 [How to: 擷取資料表資料](storage-dotnet-how-to-use-tables.md)。
+事件在客戶的儲存體帳戶之後，應用程式可以使用儲存體用戶端程式庫來存取和執行事件彙總。 範例程式碼來存取資料表的資料，請參閱 [How to ︰ 擷取資料表資料](storage-dotnet-how-to-use-tables.md)。
 
 以下是事件彙總的範例。 可進一步調查事件分佈的尖峰是否有異常活動。
 
@@ -492,7 +492,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 
 在先前的 Azure 診斷組態中， **containerName** 是記錄檔將會移至客戶的儲存體帳戶內的 blob 容器名稱。
 
-驗證組態檔使用相同的步驟，如先前顯示於 [步驟 3: 驗證 XML 組態檔](#step3)。
+驗證組態檔使用相同的步驟，如先前顯示於 [步驟 3 ︰ 驗證 XML 組態檔](#step3)。
 
 
 #### 步驟 2：更新 Azure 診斷以使用新的組態
@@ -519,15 +519,15 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 ![][16]
 4.  開啟雲端服務執行個體的遠端桌面工作階段。
 5.  開啟 IIS 管理員。
-6.  根據預設，IIS 記錄會啟用並設定為每小時產生包含 W3C 格式之所有欄位的檔案。 按一下 [ **瀏覽**, ，而且會有一個以上的記錄檔，如下所示:
+6.  根據預設，IIS 記錄會啟用並設定為每小時產生包含 W3C 格式之所有欄位的檔案。 按一下 [ **瀏覽**, ，而且會有一個以上的記錄檔，如下所示 ︰
 ![][17]
 
-7.  等候約五分鐘，讓 Azure 診斷代理程式將記錄檔推播至 blob 容器。 若要驗證資料，請開啟 **伺服器總管** > **儲存體** > **儲存體帳戶** > **Blob**。 如下所示，blob **iislogs** 建立:
+7.  等候約五分鐘，讓 Azure 診斷代理程式將記錄檔推播至 blob 容器。 若要驗證資料，請開啟 **伺服器總管** > **儲存體** > **儲存體帳戶** > **Blob**。 如下所示，blob **iislogs** 建立 ︰
 ![][18]
 
-8.  以滑鼠右鍵按一下並選取 **檢視 Blob 容器** 來顯示儲存在 blob 中的 IIS 記錄檔:
+8.  以滑鼠右鍵按一下並選取 **檢視 Blob 容器** 來顯示儲存在 blob 中的 IIS 記錄檔 ︰
 ![][19]
-9.  IIS 事件位於客戶的儲存體帳戶中之後，運用 HDInsight 分析的應用程式可以用來執行事件彙總。 下列的折線圖會顯示 HTTP 狀態碼 500 的事件彙總工作的範例:
+9.  IIS 事件位於客戶的儲存體帳戶中之後，運用 HDInsight 分析的應用程式可以用來執行事件彙總。 下列的折線圖會顯示 HTTP 狀態碼 500 的事件彙總工作的範例 ︰
 ![][20]
 
 ## 安全性記錄檔收集建議
@@ -624,4 +624,5 @@ Azure Active Directory (Azure AD) 包含一組安全性、使用方式與稽核�
 [18]: ./media/azure-security-audit-log-management/sec-blob-iis-logs.png
 [19]: ./media/azure-security-audit-log-management/sec-view-blob-container.png
 [20]: ./media/azure-security-audit-log-management/sec-hdinsight-analysis.png
+
 

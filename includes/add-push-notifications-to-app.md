@@ -1,5 +1,5 @@
 
-## <a id="add-push"></a>新增推播通知至應用程式
+## <a id="add-push"></a>推播通知新增至應用程式
 
 * 在 QSAppDelegate.m 中，匯入 iOS SDK 和 QSTodoService.h：
 
@@ -56,4 +56,5 @@
             [alert show];
         }
 ```
+
 

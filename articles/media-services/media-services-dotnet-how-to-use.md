@@ -25,7 +25,7 @@
  **Azure 媒體服務.NET SDK** 程式庫可讓您對使用.NET 進行媒體服務進行程式設計。 若要讓使用.NET 進行開發更為簡單 **Azure 媒體服務.NET SDK 延伸** 程式庫。 此程式庫包含一組延伸方法和協助程式函數，以簡化 .NET 程式碼。 這兩個程式庫都是透過 **NuGet** 和 **GitHub**。
 
 
-##先決條件
+##必要條件
 
 -   新的或現有 Azure 訂閱中的媒體服務帳戶。 請參閱主題 [如何建立媒體服務帳戶](media-services-create-account.md)。
 -   作業系統：Windows 10、Windows 7、Windows 2008 R2 或 Windows 8。
@@ -70,7 +70,7 @@
 3. 按下 [確定]。
 
 
-4. 開啟 App.config 檔案 (如果尚未新增，則預設，檔案新增至您的專案)，並新增 *appSettings* 區段加入檔案。 設定 Azure 媒體服務帳戶名稱和帳戶金鑰的值 (如下列範例所示)。
+4. 開啟 App.config 檔案 （如果尚未新增，則預設，檔案新增至您的專案），並新增 *appSettings* 區段加入檔案。 設定 Azure 媒體服務帳戶名稱和帳戶金鑰的值 (如下列範例所示)。
 
 若要取得 **帳戶名稱** 和 **帳戶金鑰** 資訊，請開啟 **Azure 傳統入口網站**, ，選取媒體服務帳戶，然後按一下 [ **管理金鑰** ] 按鈕。
 
@@ -107,4 +107,5 @@
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

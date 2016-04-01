@@ -28,7 +28,7 @@
 > [AZURE.NOTE] 本主題示範如何使用的應用程式服務驗證 / 授權功能。 這會取代大部分應用程式的 App Service 閘道器。 如果使用閘道，請參閱 [alternative method]。 該小節中使用閘道器所產生的差異都列在注意事項中。
 
 
-## <a name="express"> </a>設定 Azure Active Directory 使用快速設定
+## <a name="express"> </a>使用快速設定設定 Azure Active Directory
 
 13. 在 [Azure portal], ，瀏覽至您的應用程式。 按一下 [ **設定**, ，然後 **驗證/授權**。
 
@@ -42,13 +42,13 @@
     
     App Service 預設會提供驗證，但不會限制對您網站內容和 API 的已授權存取。 您必須在應用程式程式碼中授權使用者。 
 
-17. (選擇性)若要限制存取您的站台由 Azure Active Directory 驗證的使用者，請設定 **不會驗證要求時要採取的動作** 至 **Azure Active Directory**。 這會要求所有要求都需經過驗證，且所有未經驗證的要求都會重新導向至 Azure Active Directory 以進行驗證。
+17. （選擇性）若要限制存取您的站台由 Azure Active Directory 驗證的使用者，請設定 **不會驗證要求時要採取的動作** 至 **Azure Active Directory**。 這會要求所有要求都需經過驗證，且所有未經驗證的要求都會重新導向至 Azure Active Directory 以進行驗證。
 
 17. 按一下 [ **儲存**。 
 
 現在，您已可在應用程式中使用 Azure Active Directory 進行驗證。
 
-## <a name="advanced"> </a>(替代方法)手動設定 Azure Active Directory 使用進階設定
+## <a name="advanced"> </a>(替代方法) 使用進階設定手動設定 Azure Active Directory
 您也可以選擇手動提供組態設定。 如果您想使用的 AAD 租用戶不同於您登入 Azure 所用的租用戶，這會是較佳的解決方案。 若要完成組態，您必須先在 Azure Active Directory 中建立註冊，接著必須提供一些註冊詳細資料給 App Service。
 
 ### <a name="register"> </a>向 Azure Active Directory 註冊您的應用程式
@@ -73,16 +73,16 @@
     
     
     > [AZURE.NOTE]
-    If you are using the App Service Gateway instead of the App Service Authentication / Authorization feature, your Reply URL instead uses the gateway URL with the _/signin-aad_ path.
+    如果您使用應用程式服務閘道，而不應用程式服務驗證 / 授權功能，回覆 URL 改為使用閘道的 URL 與 _/signin-aad_ 路徑。
 
 
 9. 按一下 [ **儲存**。 然後將複製 **用戶端識別碼** 應用程式。 稍後您會設定您的應用程式使用此資訊。
 
 10. 在底部命令列中，按一下 [ **檢視端點**, ，然後將複製 **同盟中繼資料文件** URL 和文件或瀏覽器中瀏覽至它的下載。
 
-11. 根目錄內 **EntityDescriptor** 項目，應該有 **entityID** 表單的屬性 `https://sts.windows.net/` 後面跟著 GUID 特定租用戶 (稱為 「 租用戶識別碼 」)。 複製此值 – 會成為您 **簽發者 URL**。 稍後您會設定您的應用程式使用此資訊。
+11. 根目錄內 **EntityDescriptor** 項目，應該有 **entityID** 表單的屬性 `https://sts.windows.net/` 後面跟著 GUID 特定租用戶 （稱為 「 租用戶識別碼 」）。 複製此值 – 會成為您 **簽發者 URL**。 稍後您會設定您的應用程式使用此資訊。
 
-### <a name="secrets"> </a>將 Azure Active Directory 資訊新增至您的應用程式
+### <a name="secrets"> </a>將 Azure Active Directory 資訊新增至應用程式
 
 > [AZURE.NOTE]
 如果您使用 App Service 閘道器，請忽略此章節，並改為在入口網站中瀏覽至您的閘道器。 選取 **設定**, ，**識別**, ，然後 **Azure Active Directory**。 ClientID 中貼上，並新增至租用戶識別碼 **允許的租用戶** 清單。 按一下 [ **儲存**。
@@ -98,7 +98,7 @@
     
     App Service 預設會提供驗證，但不會限制對您網站內容和 API 的已授權存取。 您必須在應用程式程式碼中授權使用者。 
 
-17. (選擇性)若要限制存取您的站台由 Azure Active Directory 驗證的使用者，請設定 **不會驗證要求時要採取的動作** 至 **Azure Active Directory**。 這會要求所有要求都需經過驗證，且所有未經驗證的要求都會重新導向至 Azure Active Directory 以進行驗證。
+17. （選擇性）若要限制存取您的站台由 Azure Active Directory 驗證的使用者，請設定 **不會驗證要求時要採取的動作** 至 **Azure Active Directory**。 這會要求所有要求都需經過驗證，且所有未經驗證的要求都會重新導向至 Azure Active Directory 以進行驗證。
 
 17. 按一下 [ **儲存**。 
 
@@ -145,3 +145,4 @@ Azure Active Directory 也可讓您註冊更能控制權限對應的原生用戶
 [Azure classic portal]: https://manage.windowsazure.com/
 [ios-adal]: ../app-service-mobile-xamarin-ios-aad-sso.md
 [alternative method]:#advanced
+

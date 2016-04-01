@@ -28,7 +28,7 @@ Azure RemoteApp 幾乎可讓您在任何裝置上與使用者共用應用程式�
 
 Azure RemoteApp 屬於 [Microsoft 虛擬桌面基礎結構](http://www.microsoft.com/server-cloud/products/virtual-desktop-infrastructure/explore.aspx)。
 
-**新功能!**想要深入了解 Azure RemoteApp 嗎？ 或準備要驗證 Azure RemoteApp？ 加入我們每週 [詢問專家網路研討會](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)。
+**新增！** 想要深入了解 Azure RemoteApp 嗎？ 或準備要驗證 Azure RemoteApp？ 加入我們每週 [詢問專家網路研討會](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)。
 
 ## Azure RemoteApp 收藏
 有兩種類型的 [Azure RemoteApp 集合](remoteapp-collections.md):
@@ -79,3 +79,4 @@ Windows 和 Windows RT 的 RemoteApp 用戶端應用程式以及 Mac、iOS 和 A
 
 ### 幫我們來協助您 
 您知道除了評比這篇文章以及在下面留言以外，您可以變更文件本身嗎？ 有所遺漏？ 有所錯誤？ 我是否撰寫了令人混淆的內容？ 向上捲動，然後按一下 [ **GitHub 上的編輯** 若要變更-供檢閱，這些會變成給我們，接著，我們登入它們，就會看到您的變更和改進這裡。
+

@@ -145,7 +145,7 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使�
 
 如您所見，.NET SDK for Hadoop 可讓您建立 .NET 應用程式，以將 Pig 工作提交至 HDInsight 叢集、監視工作狀態，以及擷取輸出。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 Pig 的一般資訊。
 
@@ -157,3 +157,4 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您輕鬆地從 .NET 使�
 
 * [搭配使用 MapReduce 與 HDInsight 上的 Hadoop](hdinsight-use-mapreduce.md)
 [預覽入口網站]: https://portal.azure.com/
+

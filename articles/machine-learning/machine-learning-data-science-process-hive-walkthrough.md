@@ -58,12 +58,12 @@
 處理資料時，根據分析來決定您想要進行的預測種類，有助於釐清您必須在程序中包含的工作。
 以下是三個預測問題，我們在構想根據此逐步解說的範例 *tip\_amount 來*:
 
-1. **二進位分類**: 預測是否已支付小費針對某趟車程，也就是 *tip\_amount 來* 大於 $0 高於為正面範例，而 *tip\_amount 來* $0 的為負面範例。
+1. **二進位分類**︰ 預測是否已支付小費針對某趟車程，也就是 *tip\_amount 來* 大於 $0 高於為正面範例，而 *tip\_amount 來* $0 的為負面範例。
 
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0
 
-2. **多元分類**: 預測針對該趟車程支付的小費金額範圍。 我們將 *tip\_amount 來* 分成五個分類收納組或類別:
+2. **多元分類**︰ 預測針對該趟車程支付的小費金額範圍。 我們將 *tip\_amount 來* 分成五個分類收納組或類別 ︰
 
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -71,16 +71,16 @@
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
 
-3. **迴歸工作**: 預測已針對某趟車程支付小費金額。  
+3. **迴歸工作**︰ 預測已針對某趟車程支付小費金額。  
 
 
-## <a name="setup"></a>設定適用於進階分析 HDInsight Hadoop 叢集
+## <a name="setup"></a>設定進階分析的 HDInsight Hadoop 叢集
 
 >[AZURE.NOTE] 這通常是 **Admin** 工作。
 
 您可以採取三個步驟，為利用 HDInsight 叢集的進階分析設定 Azure 環境：
 
-1. [建立儲存體帳戶](../storage-whatis-account.md): 此儲存體帳戶用於將資料儲存在 Azure Blob 儲存體。 HDInsight 叢集中使用的資料也位於此處。
+1. [建立儲存體帳戶](../storage-whatis-account.md)︰ 此儲存體帳戶用於將資料儲存在 Azure Blob 儲存體。 HDInsight 叢集中使用的資料也位於此處。
 
 2. [針對進階分析程序和技術自訂 Azure HDInsight Hadoop 叢集](machine-learning-data-science-customize-hadoop-cluster.md)。 這個步驟會建立已在所有節點上安裝 64 位元 Anaconda Python 2.7 的 Azure HDInsight Hadoop 叢集。 自訂 HDInsight 叢集時應注意兩個重要的步驟。
 
@@ -88,7 +88,7 @@
 
     * 建立叢集之後，請對叢集的前端節點啟用遠端存取。 瀏覽至 **組態** ] 索引標籤上，按一下 [ **啟用遠端**。 這個步驟可指定使用於遠端登入的使用者認證。
 
-3. [建立 Azure Machine Learning 工作區](machine-learning-create-workspace.md): 此 Azure Machine Learning 工作區用來建置機器學習模型。 使用 HDInsight 叢集完成初始資料探索和縮小取樣之後，會處理這項工作。
+3. [建立 Azure Machine Learning 工作區](machine-learning-create-workspace.md)︰ 此 Azure Machine Learning 工作區用來建置機器學習模型。 使用 HDInsight 叢集完成初始資料探索和縮小取樣之後，會處理這項工作。
 
 ## <a name="getdata"></a>從公用來源取得資料
 
@@ -98,7 +98,7 @@
 
 我們在這裡說明如何使用 AzCopy 來傳輸含有資料的檔案。 若要下載並安裝 AzCopy，請遵循指示 [開始使用 AzCopy 命令列公用程式](../storage-use-azcopy.md)。
 
-1. 從命令提示字元] 視窗中，發出下列 AzCopy 命令，將 *< path_to_data_folder >* 與所需的目的地:
+1. 從命令提示字元] 視窗中，發出下列 AzCopy 命令，將 *< path_to_data_folder >* 與所需的目的地 ︰
 
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -112,7 +112,7 @@
 
 在下列 AzCopy 命令中，以建立 Hadoop 叢集和解壓縮資料檔案時指定的實際值取代下列參數。
 
-* ***& #60; path_to_data_folder >*** 包含未解壓縮的資料檔案之電腦上的目錄 (以及路徑)  
+* ***& #60; path_to_data_folder >*** 包含未解壓縮的資料檔案之電腦上的目錄 （以及路徑）  
 * ***& #60，Hadoop 叢集的儲存體帳戶名稱 >*** 與 HDInsight 叢集相關聯的儲存體帳戶
 * ***& #60，Hadoop 叢集預設容器 >*** 叢集所使用之預設容器。 請注意，預設容器的名稱通常與叢集本身的名稱相同。 例如，如果叢集稱為 "abc123.azurehdinsight.net"，預設容器即為 abc123。
 * ***& #60; 儲存體帳戶金鑰 >*** 您叢集所使用的儲存體帳戶金鑰
@@ -129,7 +129,7 @@
 
 資料現在應該位於 Azure Blob 儲存體，而且準備好在 HDInsight 叢集內使用。
 
-## <a name="#download-hql-files"></a>登入 Hadoop 叢集的前端節點，並準備將探索資料分析
+## <a name="#download-hql-files"></a>登入 Hadoop 叢集的前端節點，並準備進行探索資料分析
 
 >[AZURE.NOTE] 這通常是 **Admin** 工作。
 
@@ -137,7 +137,7 @@
 
 在本逐步解說中，我們主要是使用中撰寫的查詢 [Hive](https://hive.apache.org/), ，類似 SQL 的查詢語言，來執行初步資料探索。 Hive 查詢會儲存在 .hql 檔案。 我們接著會縮小取樣這份資料，以便在 Azure Machine Learning 中用來建置模型。
 
-若要準備叢集探索資料分析，我們可以下載包含從相關的 Hive 指令碼的.hql 檔案 [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) 前端節點上的本機目錄 (C:\temp)。 若要這樣做，請開啟 **命令提示字元** 從叢集的前端節點內，然後發出下列兩個命令:
+若要準備叢集探索資料分析，我們可以下載包含從相關的 Hive 指令碼的.hql 檔案 [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) 前端節點上的本機目錄 (C:\temp)。 若要這樣做，請開啟 **命令提示字元** 從叢集的前端節點內，然後發出下列兩個命令 ︰
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
@@ -145,7 +145,7 @@
 
 這兩個命令會下載到本機目錄的這個逐步解說中所需的所有.hql 檔案 ***C:\temp & #92;*** 的前端節點中。
 
-## <a name="#hive-db-tables"></a>建立依月份進行資料分割的 Hive 資料庫和資料表
+## <a name="#hive-db-tables"></a>建立依月份分割的 Hive 資料庫和資料表
 
 >[AZURE.NOTE] 這通常是 **Admin** 工作。
 
@@ -208,7 +208,7 @@
 
 如果您需要使用這些程序的任何額外協助，或想要調查替代項目，請參閱節 [提交 Hive 查詢直接從 Hadoop 命令列 ](machine-learning-data-science-process-hive-tables.md#submit)。
 
-## <a name="#load-data"></a>依資料分割資料載入 Hive 資料表
+## <a name="#load-data"></a>依資料分割將資料載入 Hive 資料表
 
 >[AZURE.NOTE] 這通常是 **Admin** 工作。
 
@@ -275,7 +275,7 @@ NYC 計程車資料集會依月份自然分割資料，可讓我們更快速處�
     month=9
     Time taken: 1.887 seconds, Fetched: 12 row(s)
 
-## <a name="#explore-hive"></a>Hive 中的資料探索和功能工程
+## <a name="#explore-hive"></a>Hive 中的資料探索和特徵工程
 
 >[AZURE.NOTE] 這通常是 **資料科學家** 工作。
 
@@ -452,7 +452,7 @@ NYC 計程車資料集中的 medallion 會識別唯一的計程車。 我們可�
 
 ### 探索：車程小費的二元類別分佈
 
-**注意:** 這通常是 **資料科學家** 工作。
+**注意 ︰** 這通常是 **資料科學家** 工作。
 
 二元分類問題中所述的 [預測工作的範例](machine-learning-data-science-process-hive-walkthrough.md#mltasks) ] 區段中，最好要知道是否已指定小費。 小費是二元分佈：
 
@@ -476,7 +476,7 @@ NYC 計程車資料集中的 medallion 會識別唯一的計程車。 我們可�
 
 ### 探索：多元設定中的類別分佈
 
-**注意:** 這通常是 **資料科學家** 工作。
+**注意 ︰** 這通常是 **資料科學家** 工作。
 
 多類別分類問題中所述的 [預測工作的範例](machine-learning-data-science-process-hive-walkthrough.md#mltasks) 這個資料集也可用於自然分類，我們想要預測指定的小費金額的區段。 我們可以使用二元分類來定義查詢中的小費範圍。 若要取得各種小費範圍的類別分佈，我們使用 *sample\_hive\_tip\_range\_frequencies.hql* 檔案。 以下是其內容。
 
@@ -497,11 +497,11 @@ NYC 計程車資料集中的 medallion 會識別唯一的計程車。 我們可�
 
 ### 探索：計算兩個經度-緯度位置之間的直線距離
 
-**注意:** 這通常是 **資料科學家** 工作。
+**注意 ︰** 這通常是 **資料科學家** 工作。
 
 直線距離的量值可協助我們了解與實際車程距離之間的差異。 這項特徵是用來指出當乘客認為駕駛刻意繞遠路時，他們可能比較不會給小費。
 
-若要查看實際車程距離之間的比較和 [Haversine 距離](http://en.wikipedia.org/wiki/Haversine_formula) 之間兩個經度-緯度點 (「 大圓 」 距離)，我們使用可用三角函數內 Hive，因此:
+若要查看實際車程距離之間的比較和 [Haversine 距離](http://en.wikipedia.org/wiki/Haversine_formula) 之間兩個經度-緯度點 （「 大圓 」 距離），我們使用可用三角函數內 Hive，因此 ︰
 
     set R=3959;
     set pi=radians(180);
@@ -543,24 +543,24 @@ NYC 計程車資料集中的 medallion 會識別唯一的計程車。 我們可�
 
     hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
-**警告:** `copyToLocal` 可能會非常慢的大型檔案，並不建議使用。  
+**警告 ︰** `copyToLocal` 可能會非常慢的大型檔案，並不建議使用。  
 
-包含此資料位於 Azure blob 中的主要優點是，我們可能瀏覽使用 [讀取器] [讀取器] 模組的 Azure Machine Learning 中的資料。
+包含此資料位於 Azure blob 中的主要優點是我們可能使用 Azure Machine Learning 中的，資料瀏覽 [讀取器][reader] 模組。
 
 
-## <a name="#downsample"></a>關閉 Azure Machine Learning 中的範例資料和組建模型
+## <a name="#downsample"></a>在 Azure Machine Learning 中縮小取樣和建置模型
 
-**注意:** 這通常是 **資料科學家** 工作。
+**注意 ︰** 這通常是 **資料科學家** 工作。
 
-在探索資料分析階段之後，我們現在已準備好縮小取樣資料，以便在 Azure Machine Learning 中建置模型。 在本節中，我們會說明如何使用 Hive 查詢來縮小取樣資料，然後透過 Azure Machine Learning 中的 [讀取器] [讀取器] 模組。
+在探索資料分析階段之後，我們現在已準備好縮小取樣資料，以便在 Azure Machine Learning 中建置模型。 在本節中，我們示範如何使用 Hive 查詢來縮小取樣資料，然後透過 [讀取器][reader] Azure Machine Learning 中的模組。
 
 ### 縮小取樣資料
 
 這個程序包含兩個步驟。 首先我們要加入 **nyctaxidb.trip** 和 **nyctaxidb.fare** 上的所有記錄中出現的三個索引鍵的資料表:"medallion"、"hack\_license 」 和 「 pickup\_datetime 」。 接著產生二進位分類標籤 **tipped** 和多類別分類標籤 **tip\_class**。
 
-若要能夠使用 Azure Machine Learning 中縮小取樣的資料直接從 [讀取器] [讀取器] 模組，就必須儲存到內部的 Hive 資料表將上述查詢的結果。 接下來我們將建立內部 Hive 資料表，並以加入和縮小取樣的資料來填入其內容。
+若要能夠使用縮小取樣資料直接從 [讀取器][reader] Azure Machine Learning 中的模組，就必須儲存到內部的 Hive 資料表將上述查詢的結果。 接下來我們將建立內部 Hive 資料表，並以加入和縮小取樣的資料來填入其內容。
 
-查詢會套用標準 Hive 函數，來產生天、 週年，從 「 pickup\_datetime 」 欄位，以及上車與下車位置之間距離的工作日 (1 代表星期一和 7 代表星期日) 中的時間。 使用者可以參考 [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) 的這類函式的完整清單。
+查詢會套用標準 Hive 函數，來產生天、 週年，從 「 pickup\_datetime 」 欄位，以及上車與下車位置之間距離的工作日 （1 代表星期一和 7 代表星期日） 中的時間。 使用者可以參考 [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) 的這類函式的完整清單。
 
 查詢會接著縮小取樣資料，以將查詢結果填入 Azure Machine Learning Studio。 只有約 1% 的原始資料集會匯入 Studio。
 
@@ -691,27 +691,27 @@ NYC 計程車資料集中的 medallion 會識別唯一的計程車。 我們可�
 
     hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-我們現在有內部資料表"nyctaxidb.nyctaxi_downsampled_dataset"，可以使用 [讀取器] [讀取器] 模組，從 Azure Machine Learning 來存取。 此外，我們可能使用這個資料集來建置機器學習服務模型。  
+我們現在有內部資料表"nyctaxidb.nyctaxi_downsampled_dataset"，可以使用存取 [讀取器][reader] 從 Azure Machine Learning 模組。 此外，我們可能使用這個資料集來建置機器學習服務模型。  
 
 ### 在 Azure Machine Learning 中，使用讀取器模組來存取縮小取樣的資料
 
-當做發行之 [讀者] [讀取器] 模組中的 Azure Machine Learning 中的 Hive 查詢的必要條件，我們需要存取 Azure Machine Learning 工作區，以及對叢集和與其相關聯的儲存體帳戶的認證。
+發出 Hive 查詢中 [讀取器][reader] Azure Machine Learning 模組中的，我們需要存取 Azure Machine Learning 工作區以及叢集和與其相關聯的儲存體帳戶的認證來存取。
 
-[讀取器] [讀取器] 模組和輸入參數的一些詳細資料:
+一些有關 [讀取器][reader] 模組和輸入參數 ︰
 
-**HCatalog 伺服器 URI**: 如果叢集名稱是 abc123，則這就是: https://abc123.azurehdinsight.net
+**HCatalog 伺服器 URI**︰ 如果叢集名稱是 abc123，則這就是 ︰ https://abc123.azurehdinsight.net
 
-**Hadoop 使用者帳戶名稱** : 為叢集選擇的使用者名稱 (**不** 遠端存取使用者名稱)
+**Hadoop 使用者帳戶名稱** ︰ 為叢集選擇的使用者名稱 (**不** 遠端存取使用者名稱)
 
-**Hadoop 使用者帳戶密碼** : 為叢集選擇的密碼 (**不** 遠端存取密碼)
+**Hadoop 使用者帳戶密碼** ︰ 為叢集選擇的密碼 (**不** 遠端存取密碼)
 
-**輸出資料的位置** : 選擇為 azure。
+**輸出資料的位置** ︰ 選擇為 azure。
 
-**Azure 儲存體帳戶名稱** : 叢集相關聯的預設儲存體帳戶名稱。
+**Azure 儲存體帳戶名稱** ︰ 叢集相關聯的預設儲存體帳戶名稱。
 
-**Azure 容器名稱** : 這是預設容器名稱，對於叢集，且通常與叢集名稱相同。 如果叢集為 "abc123"，即為 abc123。
+**Azure 容器名稱** ︰ 這是預設容器名稱，對於叢集，且通常與叢集名稱相同。 如果叢集為 "abc123"，即為 abc123。
 
-**重要事項:** **任何我們想要使用 Azure Machine Learning 中的 [讀取器] [讀取器] 模組查詢的資料表必須是內部資料表。**以下是判斷資料庫 D.db 中的資料表 T 是否為內部資料表的秘訣。
+**重要事項 ︰** **我們想要使用查詢的任何資料表 [讀取器][reader] Azure Machine Learning 中的模組必須是內部資料表。** 以下是判斷資料庫 D.db 中的資料表 T 是否為內部資料表的秘訣。
 
 從 Hive 目錄提示字元發出下列命令：
 
@@ -719,7 +719,7 @@ NYC 計程車資料集中的 medallion 會識別唯一的計程車。 我們可�
 
 如果資料表是內部資料表並已填妥，其內容必須顯示在這裡。 判斷資料表是否為內部資料表的另一種方式是使用 Azure 儲存體總管。 您可以使用它巡覽至叢集的預設容器名稱，然後依資料表名稱篩選。 如果有顯示資料表及其內容，則可確認它是內部資料表。
 
-以下是 Hive 查詢，且 [讀者] [讀取器] 模組的快照集:
+以下是 Hive 查詢的快照集和 [讀取器][reader] 模組 ︰
 
 ![](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
 
@@ -733,9 +733,9 @@ NYC 計程車資料集中的 medallion 會識別唯一的計程車。 我們可�
 
 **1.二元分類**：預測是否已支付某趟車程的小費。
 
-**已使用學習者:** 雙類別羅吉斯迴歸
+**已使用學習者 ︰** 雙類別羅吉斯迴歸
 
-a. 對於這個問題，我們的目標 (或類別) 標籤是 "tipped"。 縮小取樣的原始資料集有幾個資料行會顯示這個分類實驗目標。 特別是: tip\_class、 [tip\_amount] 和 [total\_amount 顯示測試時所沒有的目標標籤的相關資訊。 我們考慮使用 [Project Columns] 和 [專案資料行] 模組移除這些資料行。
+a. 對於這個問題，我們的目標 (或類別) 標籤是 "tipped"。 縮小取樣的原始資料集有幾個資料行會顯示這個分類實驗目標。 特別是 ︰ tip\_class、 [tip\_amount] 和 [total\_amount 顯示測試時所沒有的目標標籤的相關資訊。 我們就會移除這些資料行考量使用 [專案資料行][project-columns] 模組。
 
 下列快照集顯示我們的實驗，目的是預測是否會支付指定車程的小費。
 
@@ -753,9 +753,9 @@ b. 對於這項實驗，我們的目標標籤分佈大約是 1:1。
 
 **2.多元分類**：若要預測針對該趟車程支付的小費金額範圍，請使用先前定義的類別。
 
-**已使用學習者:** 多級羅吉斯迴歸
+**已使用學習者 ︰** 多級羅吉斯迴歸
 
-a. 對於這個問題，我們的目標 (或類別) 標籤是 「 tip\_class 」，這個做法可能需要五個值 (0,1,2,3,4)。 如二元分類案例所示，我們有幾個資料行會顯示這個實驗的目標。 特別是: tipped、 [tip\_amount] total\_amount 顯示測試時所沒有的目標標籤的相關資訊。 我們會移除這些資料行，使用 [Project Columns] 和 [專案資料行] 模組。
+a. 對於這個問題，我們的目標 （或類別） 標籤是 「 tip\_class 」，這個做法可能需要五個值 (0,1,2,3,4)。 如二元分類案例所示，我們有幾個資料行會顯示這個實驗的目標。 特別是 ︰ tipped、 [tip\_amount] total\_amount 顯示測試時所沒有的目標標籤的相關資訊。 我們會移除這些資料行使用 [專案資料行][project-columns] 模組。
 
 下列快照集顯示我們的實驗預測小費可能落在哪個分類收納組中 (類別 0：小費 = 美金 $0 元，類別 1：小費 > 美金 $0 元且 <= 美金 $5 元，類別 2：小費 > 美金 $5 元且 <= 美金 $10 元，類別 3：小費 > 美金 $10 元且 <= 美金 $20 元，類別 4：小費 > 美金 $20 元)
 
@@ -774,9 +774,9 @@ b. 對於這項實驗，我們使用混淆矩陣來查看預測精確度。 如�
 
 **3.迴歸工作**：預測針對某趟車程支付的小費金額。
 
-**已使用學習者:** 推進式決策樹
+**已使用學習者 ︰** 推進式決策樹
 
-a. 對於這個問題，我們的目標 (或類別) 標籤是 「 tip\_amount 來 」。 在此情況下是我們的目標流失: tipped、 tip\_class，total\_amount;這些變數會顯示測試時，通常無法使用之小費金額的相關資訊。 我們會移除這些資料行，使用 [Project Columns] 和 [專案資料行] 模組。
+a. 對於這個問題，我們的目標 （或類別） 標籤是 「 tip\_amount 來 」。 在此情況下是我們的目標流失 ︰ tipped、 tip\_class，total\_amount;這些變數會顯示測試時，通常無法使用之小費金額的相關資訊。 我們會移除這些資料行使用 [專案資料行][project-columns] 模組。
 
 下列快照集顯示我們用來預測指定小費金額的實驗。
 
@@ -788,7 +788,7 @@ b. 對於迴歸問題，我們會藉由查看預測中的平方誤差、決定�
 
 我們看到決定係數是 0.709，其中隱含的變異大約有 71% 是由我們的模型係數所造成。
 
-**重要事項:** 若要深入了解 Azure Machine Learning，以及如何存取並使用它，請參閱 [什麼是 Machine Learning?](machine-learning-what-is-machine-learning.md)。 非常實用的資源進行眾多機器學習實驗，Azure Machine learning 是 [Cortana 分析圖庫](https://gallery.azureml.net/)。 該資源庫涵蓋了所有實驗，並且完整介紹了 Azure 機器學習的功能範圍。
+**重要事項 ︰** 若要深入了解 Azure Machine Learning，以及如何存取並使用它，請參閱 [什麼是 Machine Learning？](machine-learning-what-is-machine-learning.md)。 非常實用的資源進行眾多機器學習實驗，Azure Machine learning 是 [Cortana 分析圖庫](https://gallery.azureml.net/)。 該資源庫涵蓋了所有實驗，並且完整介紹了 Azure 機器學習的功能範圍。
 
 ## 授權資訊
 
@@ -811,4 +811,5 @@ b. 對於迴歸問題，我們會藉由查看預測中的平方誤差、決定�
 <!-- Module References -->
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+
 

@@ -47,24 +47,24 @@ Web 應用程式必須在執行 **標準** 或 **高階** 模式中，若要啟�
 1. 在 [Azure 入口網站](https://portal.azure.com/), ，開啟 web 應用程式的刀鋒視窗。
 2. 按一下 [ **部署位置**。 然後，在 **部署位置** 刀鋒視窗中，按一下 [ **加入位置**。
 
-    ![加入新的部署位置][] QGAddNewDeploymentSlot
+    ![新增部署位置][QGAddNewDeploymentSlot]
 
     > [AZURE.NOTE]
     > 如果 web 應用程式尚未處於 **標準** 或 **高階** 模式，您將會收到一則訊息指出支援啟用預備的發行的模式。 此時，您可以選取 **升級** 並瀏覽至 **延展** ] 索引標籤的 web 應用程式才能繼續。
 
 2. 在 **新增位置** 刀鋒視窗中，指定之位置的名稱，然後選取是否要複製其他現有部署位置的 web 應用程式設定。 按一下打勾記號繼續。
 
-    ![設定來源][] ConfigurationSource1
+    ![組態來源][ConfigurationSource1]
 
     第一次新增位置時，您只會有兩個選項：從生產環境的預設位置複製設定，或者完全不複製。
 
     建立數個位置後，就可以從生產位置以外的位置複製組態：
 
-    ![設定來源][] MultipleConfigurationSources
+    ![組態來源][MultipleConfigurationSources]
 
 5. 在 **部署位置** 刀鋒視窗中，按一下 [部署位置，以使用一組度量和設定，就像任何其他 web 應用程式開啟位置的刀鋒視窗。 **your-web-app-name-deployment-slot-name** 會出現在刀鋒視窗頂端，提醒您正在檢視部署位置。
 
-    ![部署位置標題][] StagingTitle
+    ![Deployment Slot Title][StagingTitle]
 
 5. 在位置的刀鋒視窗中按一下應用程式 URL。 請注意，部署位置有自己的主機名稱，同時也是作用中的應用程式。 若要限制對部署位置的公用存取，請參閱 [應用程式服務 Web 應用程式-封鎖對非生產部署位置的 web 存取](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)。
 
@@ -91,9 +91,9 @@ Web 應用程式必須在執行 **標準** 或 **高階** 模式中，若要啟�
 - 擴充設定
 - WebJobs 排程器
 
-若要設定為停留在某一個位置 (未交換) 將應用程式設定或連接字串，存取 **應用程式設定** 刀鋒視窗中特定位置，然後選取 **位置設定** 應該停留在該位置的設定項目] 方塊中。 請注意，將組態項目標記為位置特定的，會在將該項目建立為無法跨所有與該 Web 應用程式相關聯的部署位置進行交換時產生影響。
+若要設定為停留在某一個位置 （未交換） 將應用程式設定或連接字串，存取 **應用程式設定** 刀鋒視窗中特定位置，然後選取 **位置設定** 應該停留在該位置的設定項目] 方塊中。 請注意，將組態項目標記為位置特定的，會在將該項目建立為無法跨所有與該 Web 應用程式相關聯的部署位置進行交換時產生影響。
 
-![位置設定][] SlotSettings
+![位置設定][SlotSettings]
 
 <a name="Swap"></a>
 ## 交換部署位置 ##
@@ -102,7 +102,7 @@ Web 應用程式必須在執行 **標準** 或 **高階** 模式中，若要啟�
 
 1. 若要交換部署位置，按一下 [ **交換** 按鈕在命令列中的 web 應用程式或命令列中的部署位置。 請確定交換來源和交換目標都已正確設定。 交換目標通常是生產位置。  
 
-    ![交換] 按鈕][] SwapButtonBar
+    ![Swap Button][SwapButtonBar]
 
 3. 按一下 [ **確定** 完成作業。 當操作完成時，部署位置就已交換完畢。
 
@@ -110,19 +110,19 @@ Web 應用程式必須在執行 **標準** 或 **高階** 模式中，若要啟�
 
 自動交換會簡化 DevOps 案例，在此案例中，您希望為該 Web 應用程式的客戶在不需冷啟動和不需關機的情況下連續部署您的 Web 應用程式。 當部署位置已設為自動交換至生產位置時，每當您將程式碼更新推送至該位置時，App Service 就會在其已於該位置上做好準備之後，自動將該 Web 應用程式交換至生產位置。
 
->[AZURE.IMPORTANT] 當您啟用自動交換位置時，請確定位置設定適用於目標位置 (通常是生產位置) 的設定完全相同。
+>[AZURE.IMPORTANT] 當您啟用自動交換位置時，請確定位置設定適用於目標位置 （通常是生產位置） 的設定完全相同。
 
 為位置設定自動交換很容易。 請依照下列步驟執行：
 
 1. 在 **部署位置** 刀鋒視窗中，選取非生產位置，按一下 **所有設定** 該位置刀鋒視窗。  
 
-    ![] [Autoswap1]
+    ![][Autoswap1]
 
 2. 按一下 [ **應用程式設定**。 選取 **上** 的 **自動交換**, ，選取所需的目標位置中 **自動交換位置**, ，然後按一下 **儲存** 命令列中。 確定此位置的組態設定完全適用於目標位置的組態設定。
 
      **通知** ] 索引標籤便會閃爍綠色 **成功** 一旦作業已完成。
 
-    ![] [Autoswap2]
+    ![][Autoswap2]
 
     >[AZURE.NOTE] 若要測試自動交換 web 應用程式，您可以先選取非生產的目標位置中 **自動交換位置** 熟悉此功能。  
 
@@ -142,7 +142,7 @@ Web 應用程式必須在執行 **標準** 或 **高階** 模式中，若要啟�
 
 在部署位置的刀鋒視窗中，按一下 [ **刪除** 命令列中。  
 
-![刪除的部署位置][] DeleteStagingSiteButton
+![刪除部署位置][DeleteStagingSiteButton]
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -236,7 +236,7 @@ Azure CLI 提供跨平台命令供您處理 Azure，包括支援管理 Web 應�
 
 ----------
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 後續步驟 ##
 [Azure App Service Web 應用程式 - 封鎖對非生產部署位置的 Web 存取](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
@@ -244,7 +244,7 @@ Azure CLI 提供跨平台命令供您處理 Azure，包括支援管理 Web 應�
 [Microsoft Azure 免費試用](/pricing/free-trial/)
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- IMAGES -->
 [QGAddNewDeploymentSlot]:  ./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png
@@ -261,4 +261,5 @@ Azure CLI 提供跨平台命令供您處理 Azure，包括支援管理 Web 應�
 [Autoswap2]: ./media/web-sites-staged-publishing/AutoSwap02.png
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
+
 

@@ -96,7 +96,7 @@ Azure 搜尋服務會對每個文件 (blob) 編制索引，如下所示：
 
     - **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) 的上次修改 blob 的時間戳記。 Azure 搜尋服務會使用此時間戳記來識別已變更的 blob，以避免在初始編製索引之後重新對所有項目編制索引。
 
-    - **metadata\_storage\_size** (Edm.Int64)-blob 大小 (位元組)。
+    - **metadata\_storage\_size** (Edm.Int64)-blob 大小 （位元組）。
 
     - **metadata\_storage\_content\_md5** (Edm.String) 的 MD5 雜湊的 blob 內容，如果有的話。
 
@@ -112,13 +112,13 @@ Azure 搜尋服務會對每個文件 (blob) 編制索引，如下所示：
    
 您應該仔細考慮哪一個擷取的欄位應該對應至您的索引的索引鍵欄位。 候選對象是：
 
-- **metadata\_storage\_name** -這可能是方便的候選項目，但請注意，1) 的名稱可能不是唯一的因為您可能會有 blob 具有相同的名稱，在不同的資料夾，以及 2) 的名稱可能包含無效的文件索引鍵，例如連字號字元。 您可以藉由在索引子屬性中啟用 `base64EncodeKeys` 選項，處理無效的字元 - 如果您這麼做，請記得在將它們傳入例如「查閱」的 API 呼叫時，對文件索引鍵進行編碼。 (例如，在.NET 中您可以使用 [UrlTokenEncode 方法](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) 針對該用途)。
+- **metadata\_storage\_name** -這可能是方便的候選項目，但請注意，1) 的名稱可能不是唯一的因為您可能會有 blob 具有相同的名稱，在不同的資料夾，以及 2） 的名稱可能包含無效的文件索引鍵，例如連字號字元。 您可以藉由在索引子屬性中啟用 `base64EncodeKeys` 選項，處理無效的字元 - 如果您這麼做，請記得在將它們傳入例如「查閱」的 API 呼叫時，對文件索引鍵進行編碼。 (例如，在.NET 中您可以使用 [UrlTokenEncode 方法](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) 針對該用途)。
 
 - **metadata\_storage\_path** -使用完整路徑，可確保唯一性，但路徑明確包含 `/` 字元 [無效的文件索引鍵](https://msdn.microsoft.com/library/azure/dn857353.aspx)。  如上所述，您可以選擇使用 `base64EncodeKeys` 選項來編碼索引鍵。
 
 - 如果上述任何選項都不適合，您有最終的彈性選項，就是將自訂中繼資料屬性新增至 blob。 但是，此選項需要您的 blob 上傳程序，將該中繼資料屬性新增至所有 blob。 因為索引鍵是必要屬性，所以沒有該屬性的所有 blob 都無法編製索引。
 
-> [AZURE.IMPORTANT] 如果沒有明確對應的索引中的索引鍵欄位，Azure 搜尋服務會自動使用 `metadata_storage_path` (第二個選項上面) 做為索引鍵和啟用 base 64 編碼的索引鍵。
+> [AZURE.IMPORTANT] 如果沒有明確對應的索引中的索引鍵欄位，Azure 搜尋服務會自動使用 `metadata_storage_path` （第二個選項上面） 做為索引鍵和啟用 base 64 編碼的索引鍵。
 
 對於此範例，讓我們挑選 `metadata_storage_name` 欄位做為文件索引鍵。 同時假設您的索引具有名為 `key` 的索引鍵欄位和欄位 `fileSize`，來儲存文件大小。 若要連接所需的項目，在建立或更新您的索引子時，指定下列欄位對應：
 
@@ -192,7 +192,7 @@ PPT (application/vnd.ms-powerpoint) | `metadata_content_type`<br/>`metadata_auth
 MSG (application/vnd.ms-outlook) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` | 擷取文字，包括附件
 ZIP (application/zip) | `metadata_content_type` | 從封存中的所有文件擷取文字
 XML (application/xml) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 移除 XML 標記並且擷取文字 </td>
-JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | 擷取文字<br/>附註: 如果您需要擷取多個文件欄位從 JSON blob，請投票 [此處 UserVoice 的建議](https://feedback.azure.com/forums/263029-azure-search/suggestions/11113539-extract-document-structure-from-json-blobs)
+JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | 擷取文字<br/>注意 ︰ 如果您需要擷取多個文件欄位從 JSON blob，請投票 [此處 UserVoice 的建議](https://feedback.azure.com/forums/263029-azure-search/suggestions/11113539-extract-document-structure-from-json-blobs)
 純文字 (text/plain) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 
 
 <a name="CustomMetadataControl"></a>
@@ -207,4 +207,5 @@ AzureSearch_Skip | "true" | 指示 blob 索引子完全略過 blob，不會嘗�
 ## 協助我們改進 Azure 搜尋服務
 
 如果您有的功能要求或改進的想法，請將與我們在我們 [UserVoice 網站](https://feedback.azure.com/forums/263029-azure-search)。
+
 

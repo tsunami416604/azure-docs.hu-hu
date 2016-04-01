@@ -70,8 +70,8 @@
     warn:   Remember to delete it now that it has been imported.
     info:   Account publish settings imported successfully
 
-> [AZURE.NOTE] Publishsettings 檔可能包含多個訂閱的相關細節 (也就是訂用帳戶名稱和 ID)。 當您匯入 publishsettings 檔時，第一個訂閱將作為預設訂閱。 若要使用不同的訂閱，請執行下列命令。
-<code>~ $ azure config 設定訂閱 lt; 其他訂用帳戶 id & gt;</code>
+> [AZURE.NOTE] Publishsettings 檔可能包含多個訂閱的相關細節 （也就是訂用帳戶名稱和 ID）。 當您匯入 publishsettings 檔時，第一個訂閱將作為預設訂閱。 若要使用不同的訂閱，請執行下列命令。
+<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
 
 **account clear [options]**
 
@@ -212,10 +212,10 @@ This command creates a new affinity group
 
 此命令可支援下列選用參數：
 
-**-c，-連接** 內建立虛擬機器已建立的部署中主控的服務。 如果使用此選項時並未加上 -vmname，則會自動產生新虛擬機器的名稱。<br />
-**-n，--名稱** 指定虛擬機器的名稱。 此參數預設使用主機服務名稱。 如果未指定-vmname，以產生新的虛擬機器的名稱 (& s) lt; 服務名稱 > & lt; 識別碼 >，其中 (& s) lt; 識別碼 > 是服務加上 1 的範例中，在現有的虛擬機器數目，如果您使用此命令將新的虛擬機器新增至主機服務 MyService 已有一個現有的虛擬機器新的虛擬機器會 myservice2。<br />
+**-c，-連接** 內建立虛擬機器已建立的部署中主控的服務。 如果使用此選項時未加上 -vmname，則會自動產生新虛擬機器的名稱。<br />
+**-n，--名稱** 指定虛擬機器的名稱。 此參數預設使用主機服務名稱。 如果未指定-vmname，以產生新的虛擬機器的名稱 （& s) lt; 服務名稱 > & lt; 識別碼 >，其中 （& s) lt; 識別碼 > 是服務加上 1 的範例中，在現有的虛擬機器數目，如果您使用此命令將新的虛擬機器新增至主機服務 MyService 已有一個現有的虛擬機器新的虛擬機器會 myservice2。<br />
 **-u，--blob url** 指定要建立虛擬機器系統磁碟的目標 blob 儲存體 URL。 <br />
-**-z，---大小** 指定虛擬機器的大小。 有效值為:
+**-z，---大小** 指定虛擬機器的大小。 有效值為 ︰
 "ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic_A0"、"Basic_A1"、"Basic_A2"、"Basic_A3"、"Basic_A4"、"Standard_D1"、"Standard_D2"、"Standard_D3"、"Standard_D4"、"Standard_D11"、"Standard_D12"、"Standard_D13"、"Standard_D14"、"Standard_DS1"、"Standard_DS2"、"Standard_DS3"、"Standard_DS4"、"Standard_DS11"、"Standard_DS12"、"Standard_DS13"、"Standard_DS14"、"Standard_G1"、"Standard_G2"、"Standard_G3"、"Standard_G4"、"Standard_G55"。 預設值是 「 小 」。 <br />
 **-r** 將 RDP 連線至 Windows 虛擬機器。 <br />
 **-e-ssh** 將 SSH 連線功能新增至 Windows 虛擬機器。 <br />
@@ -369,7 +369,7 @@ info:   vm shutdown command OK
     + Updating network configuration
     info:   vm endpoint create command OK
 
-**vm 端點建立多個 [選項] & l t; vm 名稱 > & lt; lb 連接埠 > [: (& s) lt; vm 連接埠 > [: (& s) lt; 通訊協定 > [: (& s) lt; 啟用直接伺服器-傳回 > [: (& s) lt; lb 集名稱 > [: (& s) lt; 探查通訊協定 > [: (& s) lt; 探查連接埠 > [: (& s) lt; 探查路徑 > [: (& s) lt; 內部 lb 名稱 >]]] {1-*}**
+**vm 端點建立多個 [選項] & l t; vm 名稱 > & lt; lb 連接埠 > [: （& s) lt; vm 連接埠 > [: （& s) lt; 通訊協定 > [: （& s) lt; 啟用直接伺服器-傳回 > [: （& s) lt; lb 集名稱 > [: （& s) lt; 探查通訊協定 > [: （& s) lt; 探查連接埠 > [: （& s) lt; 探查路徑 > [: （& s) lt; 內部 lb 名稱 >]]] {1-*}**
 
 建立多個 vm 端點。
 
@@ -808,7 +808,7 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-* *-q 或 **-quiet**: 不顯示確認提示。 請在自動化指令碼中使用此選項。
+* *-q 或 **-quiet**︰ 不顯示確認提示。 請在自動化指令碼中使用此選項。
 
 
 **site start [options] [name]**
@@ -837,7 +837,7 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-**-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
+**-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 
 **site location list [options]**
@@ -1004,9 +1004,9 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-+ **--** & lt; 作業類型 >: 選用。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。 預設傳回
++ **--** & lt; 作業類型 > ︰ 選用。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。 預設傳回
 所有類型的 Web 工作。
-+ **-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
++ **-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 **site job show [options] &lt;jobName> &lt;jobType> [name]**
 
@@ -1014,9 +1014,9 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-+ **--** (& s) lt; 作業名稱 >: 必要。 Web 工作的名稱。
-+ **--** & lt; 作業類型 >: 必要。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。
-+ **-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
++ **--** （& s) lt; 作業名稱 > ︰ 必要。 Web 工作的名稱。
++ **--** & lt; 作業類型 > ︰ 必要。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。
++ **-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 **site job delete [options] &lt;jobName> &lt;jobType> [name]**
 
@@ -1026,8 +1026,8 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 + **--** & lt; 作業名稱 > 必要。 Web 工作的名稱。
 + **--** & lt; 作業類型 > 必要。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。
-+ **-q** 或 **-quiet**: 不顯示確認提示。 請在自動化指令碼中使用此選項。
-+ **-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
++ **-q** 或 **-quiet**︰ 不顯示確認提示。 請在自動化指令碼中使用此選項。
++ **-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 **站台工作上傳 [選項] & l t; 工作名稱 > & l t; jobType > <jobFile> [名稱]**
 
@@ -1035,10 +1035,10 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-+ **--** (& s) lt; 作業名稱 >: 必要。 Web 工作的名稱。
-+ **--** & lt; 作業類型 >: 必要。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。
-+ **--job-file** (& s) lt; 工作檔案 >: 必要。 工作檔案。
-+ **-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
++ **--** （& s) lt; 作業名稱 > ︰ 必要。 Web 工作的名稱。
++ **--** & lt; 作業類型 > ︰ 必要。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。
++ **--job-file** （& s) lt; 工作檔案 > ︰ 必要。 工作檔案。
++ **-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 **site job start [options] &lt;jobName> &lt;jobType> [name]**
 
@@ -1046,9 +1046,9 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-+ **--** (& s) lt; 作業名稱 >: 必要。 Web 工作的名稱。
-+ **--** & lt; 作業類型 >: 必要。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。
-+ **-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
++ **--** （& s) lt; 作業名稱 > ︰ 必要。 Web 工作的名稱。
++ **--** & lt; 作業類型 > ︰ 必要。 Web 工作的類型。 有效值為 "triggered" 或 "continuous"。
++ **-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 **site job stop [options] &lt;jobName> &lt;jobType> [name]**
 
@@ -1056,8 +1056,8 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-+ **--** (& s) lt; 作業名稱 >: 必要。 Web 工作的名稱。
-+ **-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
++ **--** （& s) lt; 作業名稱 > ︰ 必要。 Web 工作的名稱。
++ **-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 ###管理 Web 工作歷程記錄的命令
 
@@ -1067,8 +1067,8 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-+ **--** (& s) lt; 作業名稱 >: 必要。 Web 工作的名稱。
-+ **-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
++ **--** （& s) lt; 作業名稱 > ︰ 必要。 Web 工作的名稱。
++ **-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 **site job history show [options] [jobName] [runId] [name]**
 
@@ -1076,9 +1076,9 @@ Azure Web 應用程式是一種可透過 URI 存取的 Web 組態。 Web 應用�
 
 此命令還支援下列其他選項：
 
-+ **--** (& s) lt; 作業名稱 >: 必要。 Web 工作的名稱。
-+ **--run-id** & lt; 執行識別碼 >: 選用。 執行歷程記錄的 ID。 如果未指定，則會顯示最近的執行。
-+ **-位置** & lt; 位置 >: 要重新啟動之位置的名稱。
++ **--** （& s) lt; 作業名稱 > ︰ 必要。 Web 工作的名稱。
++ **--run-id** & lt; 執行識別碼 > ︰ 選用。 執行歷程記錄的 ID。 如果未指定，則會顯示最近的執行。
++ **-位置** & lt; 位置 > ︰ 要重新啟動之位置的名稱。
 
 ###管理 Web 應用程式診斷的命令
 
@@ -1152,10 +1152,10 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 下列選項適用於大部分行動服務命令：
 
-+ **-h** 或 **-協助**: 顯示輸出用法資訊。
-+ **-s `<id>`** 或 **-訂閱 `<id>`**: 使用特定的訂閱，指定為 `<id>`。
-+ **-v** 或 **-verbose**: 寫入詳細資訊輸出。
-+ **--json**: 寫出 JSON 輸出。
++ **-h** 或 **-協助**︰ 顯示輸出用法資訊。
++ **-s `<id>`** 或 **-訂閱 `<id>`**︰ 使用特定的訂閱，指定為 `<id>`。
++ **-v** 或 **-verbose**︰ 寫入詳細資訊輸出。
++ **--json**︰ 寫出 JSON 輸出。
 
 ### <a name="Mobile_Services"></a>管理行動服務執行個體的命令
 
@@ -1184,10 +1184,10 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-r `<sqlServer>`**  或 **--sqlServer `<sqlServer>`**: 使用現有的 SQL 資料庫伺服器，指定為 `<sqlServer>`。
-+ **-d `<sqlDb>`** 或 **--sqlDb `<sqlDb>`**: 使用現有的 SQL 資料庫，指定為 `<sqlDb>`。
-+ **-l `<location>`** 或 **-位置 `<location>`**: 建立服務在特定位置，指定為 `<location>`。 請執行 azure mobile locations 取得可用的位置。
-+ **--sqlLocation `<location>`**: 建立以特定的 SQL server `<location>`; 預設為行動服務的位置。
++ **-r `<sqlServer>`**  或 **--sqlServer `<sqlServer>`**︰ 使用現有的 SQL 資料庫伺服器，指定為 `<sqlServer>`。
++ **-d `<sqlDb>`** 或 **--sqlDb `<sqlDb>`**︰ 使用現有的 SQL 資料庫，指定為 `<sqlDb>`。
++ **-l `<location>`** 或 **-位置 `<location>`**︰ 建立服務在特定位置，指定為 `<location>`。 請執行 azure mobile locations 取得可用的位置。
++ **--sqlLocation `<location>`**︰ 建立以特定的 SQL server `<location>`; 預設為行動服務的位置。
 
 **mobile delete [options] [servicename]**
 
@@ -1208,9 +1208,9 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-d** 或 **--deleteData**: 來自此行動服務，從資料庫刪除所有的資料。
-+ **-a** 或 **--deleteAll**: 刪除 SQL 資料庫和伺服器。
-+ **-q** 或 **-quiet**: 不顯示確認提示。 請在自動化指令碼中使用此選項。
++ **-d** 或 **--deleteData**︰ 來自此行動服務，從資料庫刪除所有的資料。
++ **-a** 或 **--deleteAll**︰ 刪除 SQL 資料庫和伺服器。
++ **-q** 或 **-quiet**︰ 不顯示確認提示。 請在自動化指令碼中使用此選項。
 
 **mobile list [options]**
 
@@ -1276,10 +1276,10 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-r `<query>`** 或 **-查詢 `<query>`**: 執行指定的記錄查詢。
-+ **-t `<type>`** 或 **-類型 `<type>`**: 篩選傳回的記錄項目 `<type>`, ，它可以是 `information`, ，`warning`, ，或 `error`。
-+ **-k `<skip>`** 或 **-略過 `<skip>`**: 略過指定的資料列數目 `<skip>`。
-+ **-p `<top>`** 或 **-頂端 `<top>`**: 傳回的資料列，所指定的特定數字 `<top>`。
++ **-r `<query>`** 或 **-查詢 `<query>`**︰ 執行指定的記錄查詢。
++ **-t `<type>`** 或 **-類型 `<type>`**︰ 篩選傳回的記錄項目 `<type>`, ，它可以是 `information`, ，`warning`, ，或 `error`。
++ **-k `<skip>`** 或 **-略過 `<skip>`**︰ 略過指定的資料列數目 `<skip>`。
++ **-p `<top>`** 或 **-頂端 `<top>`**︰ 傳回的資料列，所指定的特定數字 `<top>`。
 
 > [AZURE.NOTE]  **-查詢** 參數的優先順序高於 **-類型**, ，**-略過**, ，和 **-頂端**。
 
@@ -1289,7 +1289,7 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-**-q** 或 **-quiet**: 隱藏確認復原的提示。
+**-q** 或 **-quiet**︰ 隱藏確認復原的提示。
 
 **mobile key regenerate [options] [servicename] [type]**
 
@@ -1400,7 +1400,7 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-p `&lt;permissions>`** 或 **-權限 `&lt;permissions>`**: 逗號分隔的清單 `<operation>`=`<permission>` 組，其中 `<operation>` 是 `insert`, ，`read`, ，`update`, ，或 `delete` 和 `&lt;permissions>` 是 `public`, ，`application` (預設)、 `user`, ，或 `admin`。
++ **-p `&lt;permissions>`** 或 **-權限 `&lt;permissions>`**︰ 逗號分隔的清單 `<operation>`=`<permission>` 組，其中 `<operation>` 是 `insert`, ，`read`, ，`update`, ，或 `delete` 和 `&lt;permissions>` 是 `public`, ，`application` （預設）、 `user`, ，或 `admin`。
 
 **mobile data read [options] [servicename] [tablename] [query]**
 
@@ -1418,9 +1418,9 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-k `<skip>`** 或 **-略過 `<skip>`**: 略過指定的資料列數目 `<skip>`。
-+ **-t `<top>`** 或 **-頂端 `<top>`**: 傳回的資料列，所指定的特定數字 `<top>`。
-+ **-l** 或 **-清單**: 以清單格式傳回資料。
++ **-k `<skip>`** 或 **-略過 `<skip>`**︰ 略過指定的資料列數目 `<skip>`。
++ **-t `<top>`** 或 **-頂端 `<top>`**︰ 傳回的資料列，所指定的特定數字 `<top>`。
++ **-l** 或 **-清單**︰ 以清單格式傳回資料。
 
 **mobile table update [options] [servicename] [tablename]**
 
@@ -1434,11 +1434,11 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-p `&lt;permissions>`** 或 **-權限 `&lt;permissions>`**: 逗號分隔的清單 `<operation>`=`<permission>` 組，其中 `<operation>` 是 `insert`, ，`read`, ，`update`, ，或 `delete` 和 `&lt;permissions>` 是 `public`, ，`application` (預設)、 `user`, ，或 `admin`。
-+ **--deleteColumn `<columns>`**: 要刪除的資料行的逗號分隔清單做為 `<columns>`。
-+ **-q** 或 **-quiet**: 刪除欄而不顯示確認提示。
-+ **--addIndex `<columns>`**: 要包含到索引中的資料行的逗號分隔清單。
-+ **--deleteIndex `<columns>`**: 要從索引中排除的資料行的逗號分隔清單。
++ **-p `&lt;permissions>`** 或 **-權限 `&lt;permissions>`**︰ 逗號分隔的清單 `<operation>`=`<permission>` 組，其中 `<operation>` 是 `insert`, ，`read`, ，`update`, ，或 `delete` 和 `&lt;permissions>` 是 `public`, ，`application` （預設）、 `user`, ，或 `admin`。
++ **--deleteColumn `<columns>`**︰ 要刪除的資料行的逗號分隔清單做為 `<columns>`。
++ **-q** 或 **-quiet**︰ 刪除欄而不顯示確認提示。
++ **--addIndex `<columns>`**︰ 要包含到索引中的資料行的逗號分隔清單。
++ **--deleteIndex `<columns>`**︰ 要從索引中排除的資料行的逗號分隔清單。
 
 **mobile table delete [options] [servicename] [tablename]**
 
@@ -1499,10 +1499,10 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-p `<path>`** 或 **-路徑 `<path>`**: 用來儲存指令碼，其中目前的工作目錄為預設的檔案中的位置。
-+ **-f `<file>`** 或 **-檔案 `<file>`**: 用來儲存指令碼檔案的名稱。
-+ **-o** 或 **-覆寫**: 覆寫現有的檔案。
-+ **-c** 或 **-主控台**: 指令碼寫入主控台而非檔案。
++ **-p `<path>`** 或 **-路徑 `<path>`**︰ 用來儲存指令碼，其中目前的工作目錄為預設的檔案中的位置。
++ **-f `<file>`** 或 **-檔案 `<file>`**︰ 用來儲存指令碼檔案的名稱。
++ **-o** 或 **-覆寫**︰ 覆寫現有的檔案。
++ **-c** 或 **-主控台**︰ 指令碼寫入主控台而非檔案。
 
 **mobile script upload [options] [servicename] [scriptname]**
 
@@ -1552,13 +1552,13 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-i `<number>`** 或 **-間隔 `<number>`**: 工作間隔，以整數的類型，預設值是 `15`。
-+ **-u `<unit>`** 或 **--intervalUnit `<unit>`**: 單位 _間隔_, ，它可以是下列值之一:
-    + **分鐘** (預設值)
++ **-i `<number>`** 或 **-間隔 `<number>`**︰ 工作間隔，以整數的類型，預設值是 `15`。
++ **-u `<unit>`** 或 **--intervalUnit `<unit>`**: 單位 _間隔_, ，它可以是下列值之一 ︰
+    + **分鐘** （預設值）
     + **hour**
     + **day**
     + **month**
-    + **無** (隨選工作)
+    + **無** （隨選工作）
 + **-t `<time>`** **--startTime `<time>`** 第一次執行的開始時間的指令碼，以 ISO 格式; 預設值是 `now`。
 
 > [AZURE.NOTE] 停用的狀態會建立新工作，因為指令碼必須仍將上傳。 使用 **行動的指令碼上傳** 命令來上傳指令碼和 **行動工作更新** 命令啟用工作。
@@ -1573,15 +1573,15 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-i `<number>`** 或 **-間隔 `<number>`**: 工作間隔，以整數的類型，預設值是 `15`。
-+ **-u `<unit>`** 或 **--intervalUnit `<unit>`**: 單位 _間隔_, ，它可以是下列值之一:
-    + **分鐘** (預設值)
++ **-i `<number>`** 或 **-間隔 `<number>`**︰ 工作間隔，以整數的類型，預設值是 `15`。
++ **-u `<unit>`** 或 **--intervalUnit `<unit>`**: 單位 _間隔_, ，它可以是下列值之一 ︰
+    + **分鐘** （預設值）
     + **hour**
     + **day**
     + **month**
-    + **無** (隨選工作)
+    + **無** （隨選工作）
 + **-t `<time>`** **--startTime `<time>`** 第一次執行的開始時間的指令碼，以 ISO 格式; 預設值是 `now`。
-+ **-a `<status>`** 或 **-狀態 `<status>`**: 工作狀態，這可以是 `enabled` 或 `disabled`。
++ **-a `<status>`** 或 **-狀態 `<status>`**︰ 工作狀態，這可以是 `enabled` 或 `disabled`。
 
 **mobile job delete [options] [servicename] [jobname]**
 
@@ -1619,8 +1619,8 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-c `<mode>`** 或 **--computeMode `<mode>`**: 計算模式必須是 `Free` 或 `Reserved`。
-+ **-i `<count>`** 或 **--numberOfInstances `<count>`**: 以保留模式執行時使用的執行個體數目。
++ **-c `<mode>`** 或 **--computeMode `<mode>`**︰ 計算模式必須是 `Free` 或 `Reserved`。
++ **-i `<count>`** 或 **--numberOfInstances `<count>`**︰ 以保留模式執行時使用的執行個體數目。
 
 > [AZURE.NOTE] 當您將計算模式設定為 `Reserved`, ，全都位於相同區域中的行動服務以進階模式執行。
 
@@ -1673,7 +1673,7 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-**-p** 或 **-權限** & lt; 權限 >: 逗號分隔的清單 & l t; 方法 > = & lt; 權限 > 組。
+**-p** 或 **-權限** & lt; 權限 > ︰ 逗號分隔的清單 & l t; 方法 > = & lt; 權限 > 組。
 
 **mobile api update [options] [servicename] [apiname]**
 
@@ -1683,8 +1683,8 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-p** 或 **-權限** & lt; 權限 >: 逗號分隔的清單 & l t; 方法 > = & lt; 權限 > 組。
-+ **-f** 或 **-強制**: 覆寫對權限中繼資料檔案的任何自訂變更。
++ **-p** 或 **-權限** & lt; 權限 > ︰ 逗號分隔的清單 & l t; 方法 > = & lt; 權限 > 組。
++ **-f** 或 **-強制**︰ 覆寫對權限中繼資料檔案的任何自訂變更。
 
 **mobile api delete [options] [servicename] [apiname]**
 
@@ -1894,11 +1894,11 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-e** 或 **-標籤** & l t; 標籤 >: 儲存體帳戶的標籤。
-+ **-d** 或 **-描述** & l t; 描述 >: 儲存體帳戶的描述。
-+ **-l** 或 **-位置** & lt; 名稱 >: 要在其中建立儲存體帳戶的地理區域。
-+ **-a** 或 **-同質群組** & lt; 名稱 >: 要與儲存體帳戶相關聯的同質群組。
-+ **-類型**: 指出要建立的帳戶類型: Standard 儲存體備援選項 (LRS/ZRS/GRS/RAGRS) 」 或 「 Premium 儲存體 (PLRS)。
++ **-e** 或 **-標籤** & l t; 標籤 > ︰ 儲存體帳戶的標籤。
++ **-d** 或 **-描述** & l t; 描述 > ︰ 儲存體帳戶的描述。
++ **-l** 或 **-位置** & lt; 名稱 > ︰ 要在其中建立儲存體帳戶的地理區域。
++ **-a** 或 **-同質群組** & lt; 名稱 > ︰ 要與儲存體帳戶相關聯的同質群組。
++ **-類型**︰ 指出要建立的帳戶類型 ︰ Standard 儲存體備援選項 (LRS/ZRS/GRS/RAGRS) 」 或 「 Premium 儲存體 (PLRS)。
 
 **storage account set [options] <name>**
 
@@ -1911,10 +1911,10 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-e** 或 **-標籤** & l t; 標籤 >: 儲存體帳戶的標籤。
-+ **-d** 或 **-描述** & l t; 描述 >: 儲存體帳戶的描述。
-+ **-l** 或 **-位置** & lt; 名稱 >: 要在其中建立儲存體帳戶的地理區域。
-+ **-類型**: 指出新的帳戶類型: Standard 儲存體備援選項 (LRS/ZRS/GRS/RAGRS) 」 或 「 Premium 儲存體 (PLRS)。
++ **-e** 或 **-標籤** & l t; 標籤 > ︰ 儲存體帳戶的標籤。
++ **-d** 或 **-描述** & l t; 描述 > ︰ 儲存體帳戶的描述。
++ **-l** 或 **-位置** & lt; 名稱 > ︰ 要在其中建立儲存體帳戶的地理區域。
++ **-類型**︰ 指出新的帳戶類型 ︰ Standard 儲存體備援選項 (LRS/ZRS/GRS/RAGRS) 」 或 「 Premium 儲存體 (PLRS)。
 
 **storage account delete [options] <name>**
 
@@ -1922,7 +1922,7 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-**-q** 或 **-quiet**: 不顯示確認提示。 請在自動化指令碼中使用此選項。
+**-q** 或 **-quiet**︰ 不顯示確認提示。 請在自動化指令碼中使用此選項。
 
 ###管理儲存體帳戶金鑰的命令
 
@@ -1940,11 +1940,11 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-p** 或 **-前置詞** & l t; 前置詞 >: 儲存體容器名稱前置詞。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱。
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰。
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串。
-+ **-偵錯**: 在偵錯模式中執行 storage 命令。
++ **-p** 或 **-前置詞** & l t; 前置詞 > ︰ 儲存體容器名稱前置詞。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱。
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰。
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串。
++ **-偵錯**︰ 在偵錯模式中執行 storage 命令。
 
 **儲存體容器顯示 [選項] [容器]**
 **儲存體容器中建立 [選項] [容器]**
@@ -1953,12 +1953,12 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-容器** & l t; 容器 >: 要建立的儲存體容器的名稱。
-+ **-p** 或 **-前置詞** & l t; 前置詞 >: 儲存體容器名稱前置詞。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串
-+ **-偵錯**: 在偵錯模式中執行 storage 命令。
++ **-容器** & l t; 容器 > ︰ 要建立的儲存體容器的名稱。
++ **-p** 或 **-前置詞** & l t; 前置詞 > ︰ 儲存體容器名稱前置詞。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串
++ **-偵錯**︰ 在偵錯模式中執行 storage 命令。
 
 **storage container delete [options] [container]**
 
@@ -1966,12 +1966,12 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-容器** & l t; 容器 >: 要建立的儲存體容器的名稱。
-+ **-p** 或 **-前置詞** & l t; 前置詞 >: 儲存體容器名稱前置詞。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱。
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰。
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串。
-+ **-偵錯**: 在偵錯模式中執行 storage 命令。
++ **-容器** & l t; 容器 > ︰ 要建立的儲存體容器的名稱。
++ **-p** 或 **-前置詞** & l t; 前置詞 > ︰ 儲存體容器名稱前置詞。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱。
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰。
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串。
++ **-偵錯**︰ 在偵錯模式中執行 storage 命令。
 
 **storage container set [options] [container]**
 
@@ -1979,12 +1979,12 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-容器** & l t; 容器 >: 要建立的儲存體容器的名稱。
-+ **-p** 或 **-前置詞** & l t; 前置詞 >: 儲存體容器名稱前置詞。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱。
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰。
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串。
-+ **-偵錯**: 在偵錯模式中執行 storage 命令。
++ **-容器** & l t; 容器 > ︰ 要建立的儲存體容器的名稱。
++ **-p** 或 **-前置詞** & l t; 前置詞 > ︰ 儲存體容器名稱前置詞。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱。
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰。
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串。
++ **-偵錯**︰ 在偵錯模式中執行 storage 命令。
 
 ###管理儲存體 Blob 的命令
 
@@ -1994,12 +1994,12 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-容器** & l t; 容器 >: 要建立的儲存體容器的名稱。
-+ **-p** 或 **-前置詞** & l t; 前置詞 >: 儲存體容器名稱前置詞。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱。
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰。
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串。
-+ **-偵錯**: 在偵錯模式中執行 storage 命令。
++ **-容器** & l t; 容器 > ︰ 要建立的儲存體容器的名稱。
++ **-p** 或 **-前置詞** & l t; 前置詞 > ︰ 儲存體容器名稱前置詞。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱。
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰。
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串。
++ **-偵錯**︰ 在偵錯模式中執行 storage 命令。
 
 **storage blob show [options] [container] [blob]**
 
@@ -2007,24 +2007,24 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-容器** & l t; 容器 >: 要建立的儲存體容器的名稱。
-+ **-p** 或 **-前置詞** & l t; 前置詞 >: 儲存體容器名稱前置詞。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱。
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰。
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串。
-+ **-偵錯**: 偵錯中執行 storage 命令。
++ **-容器** & l t; 容器 > ︰ 要建立的儲存體容器的名稱。
++ **-p** 或 **-前置詞** & l t; 前置詞 > ︰ 儲存體容器名稱前置詞。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱。
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰。
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串。
++ **-偵錯**︰ 偵錯中執行 storage 命令。
 
 **storage blob delete [options] [container] [blob]**
 
 此命令還支援下列其他選項：
 
-+ **-容器** & l t; 容器 >: 要建立的儲存體容器的名稱。
-+ **-b** 或 **-blob** & l t; blobName >: 要刪除的儲存體 blob 的名稱。
-+ **-q** 或 **-quiet**: 移除指定的儲存體 blob 而不進行確認。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱。
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰。
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串。
-+ **-偵錯**: 偵錯中執行 storage 命令。
++ **-容器** & l t; 容器 > ︰ 要建立的儲存體容器的名稱。
++ **-b** 或 **-blob** & l t; blobName > ︰ 要刪除的儲存體 blob 的名稱。
++ **-q** 或 **-quiet**︰ 移除指定的儲存體 blob 而不進行確認。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱。
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰。
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串。
++ **-偵錯**︰ 偵錯中執行 storage 命令。
 
 **storage blob upload [options] [file] [container] [blob]**
 
@@ -2032,17 +2032,17 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-容器** & l t; 容器 >: 要建立的儲存體容器的名稱。
-+ **-b** 或 **-blob** & lt; blobName >: 要上傳的儲存體 blob 的名稱。
-+ **-t** 或 **--blobtype** & l t; blobtype >: 儲存體 blob 類型: 分頁或區塊。
-+ **-p** 或 **-屬性** & l t; 屬性 >: 已上傳檔案的儲存體 blob 屬性。 屬性為 key=value 組並以分號 (;) 分隔。 可用的屬性為 contentType、contentEncoding、contentLanguage 和 cacheControl。
-+ **-m** 或 **--metadata** & l t; 中繼資料 >: 已上傳檔案的儲存體 blob 中繼資料。 中繼資料為 key=value 組並以分號 (;) 分隔。
-+ **--concurrenttaskcount** & l t; concurrenttaskcount >: 並行上傳要求的數目上限。
-+ **-q** 或 **-quiet**: 覆寫指定的儲存體 blob 而不進行確認。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱。
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰。
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串。
-+ **-偵錯**: 偵錯中執行 storage 命令。
++ **-容器** & l t; 容器 > ︰ 要建立的儲存體容器的名稱。
++ **-b** 或 **-blob** & lt; blobName > ︰ 要上傳的儲存體 blob 的名稱。
++ **-t** 或 **--blobtype** & l t; blobtype > ︰ 儲存體 blob 類型 ︰ 分頁或區塊。
++ **-p** 或 **-屬性** & l t; 屬性 > ︰ 已上傳檔案的儲存體 blob 屬性。 屬性為 key=value 組並以分號 (;) 分隔。 可用的屬性為 contentType、contentEncoding、contentLanguage 和 cacheControl。
++ **-m** 或 **--metadata** & l t; 中繼資料 > ︰ 已上傳檔案的儲存體 blob 中繼資料。 中繼資料為 key=value 組並以分號 (;) 分隔。
++ **--concurrenttaskcount** & l t; concurrenttaskcount > ︰ 並行上傳要求的數目上限。
++ **-q** 或 **-quiet**︰ 覆寫指定的儲存體 blob 而不進行確認。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱。
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰。
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串。
++ **-偵錯**︰ 偵錯中執行 storage 命令。
 
 **storage blob download [options] [container] [blob] [destination]**
 
@@ -2050,16 +2050,16 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
 
 此命令還支援下列其他選項：
 
-+ **-容器** & l t; 容器 >: 要建立的儲存體容器的名稱。
-+ **-b** 或 **-blob** & l t; blobName >: 儲存體 blob 名稱。
++ **-容器** & l t; 容器 > ︰ 要建立的儲存體容器的名稱。
++ **-b** 或 **-blob** & l t; blobName > ︰ 儲存體 blob 名稱。
 + **-d** 或 **-目的地** [destination]: 下載目的地檔案或目錄路徑。
-+ **-m** 或 **-checkmd5**: 下載的檔案的 check md5sum。
++ **-m** 或 **-checkmd5**︰ 下載的檔案的 check md5sum。
 + **--concurrenttaskcount** & l t; concurrenttaskcount > 並行上傳要求的數目上限
-+ **-q** 或 **-quiet**: 覆寫目的地檔案而不進行確認。
-+ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 >: 儲存體帳戶名稱。
-+ **-k** 或 **-帳戶金鑰** & l t; k e y >: 儲存體帳戶金鑰。
-+ **-c** 或 **--connection-string** & lt; connectionString >: 儲存體連接字串。
-+ **-偵錯**: 偵錯中執行 storage 命令。
++ **-q** 或 **-quiet**︰ 覆寫目的地檔案而不進行確認。
++ **-a** 或 **-帳戶名稱** & lt; 帳戶名稱 > ︰ 儲存體帳戶名稱。
++ **-k** 或 **-帳戶金鑰** & l t; k e y > ︰ 儲存體帳戶金鑰。
++ **-c** 或 **--connection-string** & lt; connectionString > ︰ 儲存體連接字串。
++ **-偵錯**︰ 偵錯中執行 storage 命令。
 
 ## 管理 SQL Database 的命令
 
@@ -2368,4 +2368,5 @@ Azure 行動服務整合了一組為應用程式啟用後端功能的 Azure 服�
     Delete the DNS server entry dns-4 ( 77.88.99.11 ) %s ? (y/n) y
     + Deleting the DNS server entry dns-4 ( 77.88.99.11 )
     info:    network dnsserver unregister command OK
+
 

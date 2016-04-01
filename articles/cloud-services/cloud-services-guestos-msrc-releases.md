@@ -176,7 +176,7 @@
 | MS15-014    | [3004361][3004361] | SMB 中的弱點可能會允許略過安全性功能                                | 4.17、3.24、2.36 | N/A |
 | MS15-015    | [3031432][3031432] | Microsoft Windows 中的弱點可能會允許權限提高                   | 4.17、3.24、2.36 | N/A |
 | MS15-016    | [3029944][3029944] | Microsoft 圖形元件中的弱點可能會允許資訊洩漏        | 4.17、3.24、2.36 | N/A |
-| N/A         | [3004375][3004375] | 若要改善 Windows 命令列稽核的更新<p/>**注意**: 已安裝，但若要啟用它的登錄機碼已關閉 | 4.17、3.24、2.36 | N/A |
+| N/A         | [3004375][3004375] | 更新來改善 Windows 命令列稽核<p/>**請注意**︰ 已安裝，但若要啟用它的登錄機碼已關閉 | 4.17、3.24、2.36 | N/A |
  
 
 ## 一月客體作業系統
@@ -353,4 +353,5 @@
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
+
 

@@ -76,20 +76,20 @@ Azure 虛擬網路的站對站連線會使用 VPN 閘道來提供採用 Ipsec/IK
 3.  輸入：
 
     - **名稱**: CONTOSO-VNET-EU 的-
-    - **位置**: 北歐
+    - **位置**︰ 北歐
 
         本教學課程使用北歐和美國東部資料中心。 您可以選擇自己的資料中心。
 4.  輸入：
 
-    - **DNS 伺服器**: (保留為空白) 
+    - **DNS 伺服器**: （保留為空白） 
     
         您需要有自己的 DNS 伺服器才能在虛擬網路內進行名稱解析。 如需有關何時使用 Azure 提供的名稱解析，以及何時使用自己的 DNS 伺服器，請參閱 [名稱解析 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 若要設定 Vnet 之間名稱解析的指示，請參閱 [兩個 Azure 虛擬網路之間設定 DNS][hdinsight-hbase-dns]。
   
-    - **設定點對站 VPN**: (未核取)
+    - **設定點對站 VPN**: （未核取）
 
         點對站不適用於這種情況。
 
-    - **設定站台對站 VPN**: (未核取)
+    - **設定站台對站 VPN**: （未核取）
     
         您將在美國東部設定站台對站 VPN 連線到 Azure 虛擬網路 資料中心。
 5.  輸入：
@@ -106,11 +106,11 @@ Azure 虛擬網路的站對站連線會使用 VPN 閘道來提供採用 Ipsec/IK
 - 使用下列值重複上一個程序：
 
     - **名稱**: CONTOSO-VNET-US 的-
-    - **位置**: 美國東部
+    - **位置**︰ 美國東部
      
-    - **DNS 伺服器**: (保留為空白)
-    - **設定點對站 VPN**: (未核取)
-    - **設定站台對站 VPN**: (未核取)
+    - **DNS 伺服器**: （保留為空白）
+    - **設定點對站 VPN**: （未核取）
+    - **設定站台對站 VPN**: （未核取）
      
     - **位址空間起始 IP**: 10.2.0.0
     - **位址空間 CIDR**: / 16
@@ -148,7 +148,7 @@ Azure 虛擬網路的站對站連線會使用 VPN 閘道來提供採用 Ipsec/IK
 3. 輸入：
 
     - **名稱**:-CONTOSO-LNET-EU
-    - **VPN 裝置 IP 位址**: 192.168.0.1 (此位址將會於稍後更新)
+    - **VPN 裝置 IP 位址**: 192.168.0.1 (此位址將會於稍後更新）
 
         一般而言，您會將實際的外部 IP 位址用於 VPN 裝置。 若是 VNet 對 VNet 組態，您將使用 VPN 閘道 IP 位址。 假設您尚未建立這兩個 Vnet 的 VPN 閘道，請輸入任意 IP 位址，再回頭修正此問題。
 4.  輸入：
@@ -163,7 +163,7 @@ Azure 虛擬網路的站對站連線會使用 VPN 閘道來提供採用 Ipsec/IK
 - 使用下列參數重複上一個程序：
 
     - **名稱**:-CONTOSO-LNET-US
-    - **VPN 裝置 IP 位址**: 192.168.0.1 (此位址將會於稍後更新)
+    - **VPN 裝置 IP 位址**: 192.168.0.1 (此位址將會於稍後更新）
      
     - **位址空間起始 IP**: 10.2.0.0
     - **位址空間 CIDR**: / 16
@@ -269,4 +269,5 @@ Vnet 閘道會使用共用金鑰來驗證虛擬網路之間的連線。 此金�
 [img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.diagram.png
 [img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.LNet.diagram.png
 [img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.status.png 
+
 

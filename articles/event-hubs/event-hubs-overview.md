@@ -63,7 +63,7 @@ Azure 事件中樞是事件處理服務，它能提供大規模進入雲端的�
 
 #### 發佈事件
 
-您可以透過 AMQP 1.0 或 HTTPS 來發佈事件。 服務匯流排提供 [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) 事件發佈到事件中樞，從.NET 用戶端類別。 其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端，例如 [Apache Qpid](http://qpid.apache.org/)。 您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發行 (事件資料執行個體) 的上限為 256KB。 發佈大於此限制的事件會導致錯誤。 最好別顧慮事件中樞內的資料分割，並只指定發行者 *資料分割索引鍵* (下一節中介紹)，或透過其 SAS 權杖其身分識別。
+您可以透過 AMQP 1.0 或 HTTPS 來發佈事件。 服務匯流排提供 [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) 事件發佈到事件中樞，從.NET 用戶端類別。 其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端，例如 [Apache Qpid](http://qpid.apache.org/)。 您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發行 (事件資料執行個體) 的上限為 256KB。 發佈大於此限制的事件會導致錯誤。 最好別顧慮事件中樞內的資料分割，並只指定發行者 *資料分割索引鍵* （下一節中介紹），或透過其 SAS 權杖其身分識別。
 
 使用 AMQP 或 HTTPS 的選擇因使用案例而異。 除了傳輸層級安全性 (TLS) 或 SSL/TLS 之外，AMQP 還需要建立持續性的雙向通訊端。 這是需要耗費大量網路流量的作業，不過只會發生在 AMQP 工作階段的開始。 HTTPS 的初始額外負荷較低，但每個要求都需要額外的 SSL 額外負荷。 對於經常發佈事件的發佈者，AMQP 能帶來可觀的效能、延遲及輸送量節約效益。
 
@@ -167,4 +167,5 @@ Azure 事件中樞提供超規模事件和遙測處理服務，該服務適用�
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 [queued messaging solution]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
+
 

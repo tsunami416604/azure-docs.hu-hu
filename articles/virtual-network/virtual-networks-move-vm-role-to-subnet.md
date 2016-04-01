@@ -26,17 +26,17 @@
 若要移動 VM，請執行 Set AzureSubnet PowerShell Cmdlet，並使用下方範例作為範本。 在下列範例中，我們會將 TestVM 從其目前的子網路移到 Subnet-2。 請務必編輯該範例來反映您的環境。 請注意，每當您執行 Update-azurevm Cmdlet 作為程序的一部分，其會重新啟動您的 VM 作為更新程序的一部分。
 
     Get-AzureVM –ServiceName TestVMCloud –Name TestVM `
-    | Set-AzureSubnet –SubnetNames Subnet-2 `
-    | Update-AzureVM
+  	| Set-AzureSubnet –SubnetNames Subnet-2 `
+  	| Update-AzureVM
 
 如果您針對 VM 指定靜態 DIP，您必須清除該設定，才能將 VM 移至新的子網路。 在此案例中，請使用下列方法：
 
     Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
-    | Remove-AzureStaticVNetIP `
-    | Update-AzureVM
+  	| Remove-AzureStaticVNetIP `
+  	| Update-AzureVM
     Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
-    | Set-AzureSubnet -SubnetNames Subnet-2 `
-    | Update-AzureVM
+  	| Set-AzureSubnet -SubnetNames Subnet-2 `
+  	| Update-AzureVM
 
 ## 若要將角色執行個體移至另一個子網路
 
@@ -50,3 +50,4 @@
            </InstanceAddress>
         </AddressAssignments>
     </NetworkConfiguration> 
+

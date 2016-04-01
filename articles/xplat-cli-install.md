@@ -37,7 +37,7 @@ Azure CLI 以 JavaScript 撰寫，而且需要 [Node.js](https://nodejs.org)。 
 2. 安裝 Node.js 和 npm，然後使用 **npm 安裝** 命令
 3. 執行 Azure CLI 做為 Docker 容器
 
-一旦安裝 Azure CLI 之後，您將能夠使用 **azure** 命令從命令列介面 (Bash、 終端機、 命令提示字元，等等) 來存取 Azure CLI 命令。
+一旦安裝 Azure CLI 之後，您將能夠使用 **azure** 命令從命令列介面 （Bash、 終端機、 命令提示字元，等等） 來存取 Azure CLI 命令。
 
 ## 使用安裝程式
 
@@ -101,22 +101,22 @@ Azure CLI 以 JavaScript 撰寫，而且需要 [Node.js](https://nodejs.org)。 
 在安裝結束時，您會看到類似下列的項目：
 
     azure-cli@0.8.0 ..\node_modules\azure-cli
-    |-- easy-table@0.0.1
-    |-- eyes@0.1.8
-    |-- xmlbuilder@0.4.2
-    |-- colors@0.6.1
-    |-- node-uuid@1.2.0
-    |-- async@0.2.7
-    |-- underscore@1.4.4
-    |-- tunnel@0.0.2
-    |-- omelette@0.1.0
-    |-- github@0.1.6
-    |-- commander@1.0.4 (keypress@0.1.0)
-    |-- xml2js@0.1.14 (sax@0.5.4)
-    |-- streamline@0.4.5
-    |-- winston@0.6.2 (cycle@1.0.2, stack-trace@0.0.7, async@0.1.22, pkginfo@0.2.3, request@2.9.203)
-    |-- kuduscript@0.1.2 (commander@1.1.1, streamline@0.4.11)
-    |-- azure@0.7.13 (dateformat@1.0.2-1.2.3, envconf@0.0.4, mpns@2.0.1, mime@1.2.10, validator@1.4.0, xml2js@0.2.8, wns@0.5.3, request@2.25.0)
+  	|-- easy-table@0.0.1
+  	|-- eyes@0.1.8
+  	|-- xmlbuilder@0.4.2
+  	|-- colors@0.6.1
+  	|-- node-uuid@1.2.0
+  	|-- async@0.2.7
+  	|-- underscore@1.4.4
+  	|-- tunnel@0.0.2
+  	|-- omelette@0.1.0
+  	|-- github@0.1.6
+  	|-- commander@1.0.4 (keypress@0.1.0)
+  	|-- xml2js@0.1.14 (sax@0.5.4)
+  	|-- streamline@0.4.5
+  	|-- winston@0.6.2 (cycle@1.0.2, stack-trace@0.0.7, async@0.1.22, pkginfo@0.2.3, request@2.9.203)
+  	|-- kuduscript@0.1.2 (commander@1.1.1, streamline@0.4.11)
+  	|-- azure@0.7.13 (dateformat@1.0.2-1.2.3, envconf@0.0.4, mpns@2.0.1, mime@1.2.10, validator@1.4.0, xml2js@0.2.8, wns@0.5.3, request@2.25.0)
 
 >[AZURE.NOTE] 對於 Linux 系統，您也可以安裝 Azure CLI 建置從 [來源](http://go.microsoft.com/fwlink/?linkid=253472)。 如需從原始碼進行建置的詳細資訊，請參閱封存中內含的 INSTALL 檔案。
 
@@ -129,7 +129,7 @@ Azure CLI 以 JavaScript 撰寫，而且需要 [Node.js](https://nodejs.org)。 
 
 ## 執行 Azure CLI 命令
 
-一旦安裝 Azure CLI 之後，您將能夠使用 **azure** 命令從命令列使用者介面 (Bash、 終端機、 命令提示字元，等等) 來存取 Azure CLI 命令。 例如，若要在 Windows 執行 help 命令，請啟動命令視窗並輸入下列命令：
+一旦安裝 Azure CLI 之後，您將能夠使用 **azure** 命令從命令列使用者介面 （Bash、 終端機、 命令提示字元，等等） 來存取 Azure CLI 命令。 例如，若要在 Windows 執行 help 命令，請啟動命令視窗並輸入下列命令：
 
 ```
     c:\> azure help
@@ -156,5 +156,6 @@ Azure CLI 以 JavaScript 撰寫，而且需要 [Node.js](https://nodejs.org)。 
 [linux-installer]: http://go.microsoft.com/fwlink/?linkid=253472
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
+
 
 

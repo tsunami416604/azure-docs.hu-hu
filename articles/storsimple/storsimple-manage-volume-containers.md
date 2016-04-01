@@ -35,7 +35,7 @@ Microsoft Azure StorSimple 裝置中的磁碟區容器包含一個或多個可�
 
 ![磁碟區容器頁面](./media/storsimple-manage-volume-containers/HCS_VolumeContainersPage.png)
 
-以下程序說明如何使用 StorSimple **磁碟區容器** 頁面，完成下列常見的作業:
+以下程序說明如何使用 StorSimple **磁碟區容器** 頁面，完成下列常見的作業 ︰
 
 - 新增磁碟區容器 
 - 修改磁碟區容器 
@@ -65,3 +65,4 @@ Microsoft Azure StorSimple 裝置中的磁碟區容器包含一個或多個可�
 
 - 深入了解 [管理 StorSimple 磁碟區](storsimple-manage-volumes.md)。 
 - 深入了解 [使用 StorSimple Manager 服務管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+

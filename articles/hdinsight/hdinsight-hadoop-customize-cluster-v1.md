@@ -64,7 +64,7 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝下列元件：
 **從 Azure 傳統入口網站。**
 
 1. 開始使用佈建叢集 **自訂建立** 選項述 [佈建叢集，使用自訂選項](hdinsight-provision-clusters.md#portal)。 
-2. 在 **指令碼動作** 頁面的精靈中，按一下 [ **加入指令碼動作** 提供有關指令碼動作，詳細資料，如下所示:
+2. 在 **指令碼動作** 頁面的精靈中，按一下 [ **加入指令碼動作** 提供有關指令碼動作，詳細資料，如下所示 ︰
 
     ![使用指令碼動作以自訂叢集](./media/hdinsight-hadoop-customize-cluster-v1/HDI.CustomProvision.Page6.png "Use Script Action to customize a cluster")
     
@@ -75,7 +75,7 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝下列元件：
         <tr><td>指令碼 URI</td>
             <td>對自訂叢集所叫用的指令碼指定 URI。 s</td></tr>
         <tr><td>節點類型</td>
-            <td>指定執行自訂指令碼的節點。 您可以選擇 <b>所有節點</b>， <b>僅限前端節點</b>或 <b>僅限背景工作節點</b>.
+            <td>指定執行自訂指令碼的節點。 您可以選擇 <b>所有節點</b>, ，<b>僅限前端節點</b>, ，或 <b>僅限背景工作節點</b>。
         <tr><td>參數</td>
             <td>如果指令碼要求，請指定參數。</td></tr>
     </table>
@@ -106,7 +106,7 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝下列元件：
 
 **從 HDInsight .NET SDK**
 
-HDInsight.NET SDK 提供 <a href="http://msdn.microsoft.com/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx" target="_blank">ScriptAction</a> 叫用自訂指令碼的類別。 若要使用 HDInsight .NET SDK：
+HDInsight .NET SDK 提供 <a href="http://msdn.microsoft.com/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx" target="_blank">ScriptAction</a> 類別以叫用自訂指令碼。 若要使用 HDInsight .NET SDK：
 
 1. 建立 Visual Studio 應用程式，然後從 NuGet 安裝 SDK。 從 **工具** ] 功能表上，按一下 [ **Nuget 封裝管理員**, ，然後按一下 [ **Package Manager Console**。 在主控台中執行下列命令，以安裝封裝：
 
@@ -114,7 +114,7 @@ HDInsight.NET SDK 提供 <a href="http://msdn.microsoft.com/library/microsoft.wi
 
 2. 使用 SDK 來建立叢集。 如需指示，請參閱 [使用.NET SDK 佈建 HDInsight 叢集](hdinsight-provision-clusters.md#sdk)。
 
-3. 使用 **ScriptAction** 類別以叫用自訂指令碼，如下所示:
+3. 使用 **ScriptAction** 類別以叫用自訂指令碼，如下所示 ︰
 
         
         var clusterInfo = new ClusterCreateParameters()
@@ -146,7 +146,7 @@ HDInsight 服務中有兩種類型的開放原始碼元件可用：
 
 內建元件受到完整支援，且 Microsoft 支援服務將會協助釐清與解決這些元件的相關問題。
 
-自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題或要求您參與可在其中找到開放原始碼技術深度專業知識的可用管道。 例如，有許多社群網站可以使用，像是： <a href ="https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight" target="_blank">HDInsight 的 MSDN 論壇</a> 和 <a href="http://stackoverflow.com" target="_blank">堆疊溢位</a>. 另外，Apache 專案對專案網站 <a href="http://apache.org" target="_blank">Apache.org</a>;例如， <a href="http://hadoop.apache.org/" target="_blank">Hadoop</a> 和 <a href="http://spark.apache.org/" target="_blank">Spark</a>.
+自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題或要求您參與可在其中找到開放原始碼技術深度專業知識的可用管道。 例如，有許多社群網站可以使用，像是：<a href ="https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight" target="_blank">適用於 HDInsight 的 MSDN 論壇</a>和<a href="http://stackoverflow.com" target="_blank">堆疊溢位</a>。 另外，Apache 專案在 <a href="http://apache.org" target="_blank">Apache.org</a> 上有專案網站；例如，<a href="http://hadoop.apache.org/" target="_blank">Hadoop</a> 和 <a href="http://spark.apache.org/" target="_blank">Spark</a>。
 
 HDInsight 服務提供數種方式以使用自訂元件。 無論元件如何使用或如何安裝在叢集上，都適用相同層級的支援。 以下是自訂元件可用於 HDInsight 叢集之最常見方式的清單：
 
@@ -177,3 +177,4 @@ HDInsight 服務提供數種方式以使用自訂元件。 無論元件如何使
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-v1/HDI-Cluster-state.png "Stages during cluster provisioning"
  
+

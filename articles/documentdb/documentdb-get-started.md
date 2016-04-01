@@ -54,7 +54,7 @@
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-##<a id="SetupVS"></a> 步驟 2: 安裝 Visual Studio 方案
+##<a id="SetupVS"></a> 步驟 2：設定您的 Visual Studio 方案
 
 1. 開啟 **Visual Studio** 電腦上。
 2. 在 **檔案** 功能表上，選取 **新增**, ，然後選擇 [ **專案**。
@@ -68,7 +68,7 @@
 
 太棒了！ 現在已完成安裝程式，讓我們開始撰寫一些程式碼。
 
-##<a id="Connect"></a> 步驟 3: 連接到 DocumentDB 帳戶
+##<a id="Connect"></a> 步驟 3：連接到 DocumentDB 帳戶
 
 首先，在 Program.cs 檔案中，將這些參考新增到 C# 應用程式的開頭：
 
@@ -109,7 +109,7 @@
         }
     }
 
-> [AZURE.WARNING]請勿將認證儲存在原始程式碼中。 為了讓這個範例簡單明瞭，原始程式碼中會顯示認證。 請參閱 [Azure 網站: 應用程式字串與連接字串的運作](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/) 如需有關如何在生產環境中儲存認證資訊。 看一下我們的範例應用程式 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) 如需原始程式碼外儲存認證的範例。
+> [AZURE.WARNING]請勿將認證儲存在原始程式碼中。 為了讓這個範例簡單明瞭，原始程式碼中會顯示認證。 請參閱 [Azure 網站 ︰ 應用程式字串與連接字串的運作](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/) 如需有關如何在生產環境中儲存認證資訊。 看一下我們的範例應用程式 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) 如需原始程式碼外儲存認證的範例。
 
 既然您已了解如何連接到 DocumentDB 帳戶，並建立的執行個體 **DocumentClient** 類別中，讓我們來看看如何使用與 DocumentDB 資源。  
 
@@ -135,7 +135,7 @@ DocumentDB [資料庫](documentdb-resources.md#databases) 可以藉由建立 [Cr
         Console.Clear();
     }
 
-##<a id="CreateColl"></a>步驟 5: 建立集合  
+##<a id="CreateColl"></a>步驟 5：建立集合  
 
 > [AZURE.WARNING] **CreateDocumentCollectionAsync** 會建立具有定價含意的新 S1 集合。 如需詳細資訊，請造訪我們 [定價頁面](https://azure.microsoft.com/pricing/details/documentdb/)。
 
@@ -282,7 +282,7 @@ A [文件](documentdb-resources.md#documents) 可以藉由建立 [CreateDocument
 
 ![說明帳戶、資料庫、集合和文件之間階層式關聯性的圖表](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-##<a id="Query"></a>步驟 7: 查詢 DocumentDB 資源
+##<a id="Query"></a>步驟 7：查詢 DocumentDB 資源
 
 DocumentDB 支援豐富 [查詢](documentdb-sql-query.md) 對每個集合中儲存的 JSON 文件。  下列範例程式碼示範可在我們於前一個步驟中插入的文件上執行的各種查詢 (同時使用 DocumentDB SQL 語法和 LINQ)。 將這些查詢加入您 **GetStartedDemo** 非同步方法。
 
@@ -324,7 +324,7 @@ DocumentDB 支援豐富 [查詢](documentdb-sql-query.md) 對每個集合中儲�
 
  [FROM](documentdb-sql-query.md#from-clause) 關鍵字是選擇性的查詢中，因為 DocumentDB 查詢已侷限於單一集合。 因此，"FROM Families f" 可以換成 "FROM root r"，或您選擇的任何其他變數名稱。 依預設，DocumentDB 會推斷該系列、根或您選擇的變數名稱來參考目前的集合。
 
-##<a id="DeleteDatabase"></a>步驟 8: 刪除資料庫
+##<a id="DeleteDatabase"></a>步驟 8：刪除資料庫
 
 刪除已建立的資料庫將會移除資料庫和所有子系資源 (集合、文件等)。 您可以刪除資料庫和文件用戶端的結尾加入下列程式碼片段程式 **GetStartedDemo** 非同步方法。
 
@@ -332,7 +332,7 @@ DocumentDB 支援豐富 [查詢](documentdb-sql-query.md) 對每個集合中儲�
     await client.DeleteDatabaseAsync("dbs/" + database.Id);
     client.Dispose();
 
-##<a id="Run"></a>步驟 9: 執行 C# 主控台應用程式!
+##<a id="Run"></a>步驟 9：執行您的 C# 主控台應用程式！
 
 您現在可以開始執行應用程式。 在結束您 **Main** 方法中，新增下行程式碼，可讓您讀取主控台輸出應用程式完成執行之前。
 
@@ -459,7 +459,7 @@ DocumentDB 支援豐富 [查詢](documentdb-sql-query.md) 對每個集合中儲�
 
 恭喜！ 您已經完成本 NoSQL 教學課程！ 
 
-##<a id="GetSolution"></a> 取得完整的方案
+##<a id="GetSolution"></a>取得完整的方案
 若要建置包含本文中所有範例的 GetStarted 方案，您將需要下列項目：
 
 -   [DocumentDB 帳戶][documentdb-create-account]。
@@ -480,4 +480,5 @@ DocumentDB 支援豐富 [查詢](documentdb-sql-query.md) 對每個集合中儲�
 
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
  
+
 

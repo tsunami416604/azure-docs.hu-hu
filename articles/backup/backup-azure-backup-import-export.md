@@ -7,13 +7,13 @@
    manager="shreeshd"
    editor=""/>
 <tags
-   ms.service="backup 」
+   ms.service="backup"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload= 「 儲存體的備份復原的 」
-   ms.date="11/25/2015 」
-   ms.author="aashishr 」。「 jimpark 」 / >
+   ms.workload="storage-backup-recovery"
+   ms.date="11/25/2015"
+   ms.author="aashishr"; "jimpark"/>
 
 # 在 Azure 備份中離線備份工作流程
 
@@ -23,7 +23,7 @@ Azure 備份與 Azure 匯入/匯出服務密切整合，可讓您快速傳輸初
 
 您可以使用 Azure 備份和 Azure 匯入/匯出，透過磁碟簡單且直接地將資料離線上傳至 Azure。 不需透過網路傳輸初始完整複本，備份資料寫入至 *預備位置*。 預備位置可以是直接連接的儲存體或網路共用。 完成初始複本時，使用 *Azure 匯入/匯出工具*, ，此資料會寫入最後送至 Azure 資料中心的 SATA 磁碟機。 根據初始備份的大小，可能需要一個或多個 SATA 磁碟機才能完成此作業。 Azure 匯入/匯出工具帳戶適用於三種案例。 將備份寫入至磁碟後，您可以將其送至最近的資料中心位置，以便上傳至 Azure。 接著 Azure 備份會將備份資料複製至備份保存庫，並排程增量備份。
 
-## 先決條件
+## 必要條件
 
 1. 請務必熟悉 Azure 匯入匯出工作流程會列出 [這裡](../storage-import-export-service.md)。
 2. 起始工作流程之前，請確定已建立 Azure 備份保存庫、已下載保存庫認證、Azure 備份代理程式已安裝於您的 Windows Server/Windows 用戶端或 System Center Data Protection Manager (SCDPM) 伺服器，且電腦已註冊 Azure 備份保存庫。
@@ -48,7 +48,7 @@ Azure 備份與 Azure 匯入/匯出服務密切整合，可讓您快速傳輸初
     其中：
 
     - **預備位置** -這是指初始備份複本寫入暫存位置。 這可能是網路共用或在本機電腦上。
-    - **Azure 匯入工作名稱** -作為完成此工作流程的一部分，您必須建立 *匯入工作* Azure 入口網站 (文件的後續部分所涵蓋)。 提供您打算在 Azure 入口網站中稍後使用的輸入。
+    - **Azure 匯入工作名稱** -作為完成此工作流程的一部分，您必須建立 *匯入工作* Azure 入口網站 （文件的後續部分所涵蓋）。 提供您打算在 Azure 入口網站中稍後使用的輸入。
     - **Azure 發佈設定** -這是一個 XML 檔案包含您的訂用帳戶設定檔的相關資訊。 也包含與訂用帳戶相關聯的安全認證。 您可以從下載的檔案 [這裡](https://manage.windowsazure.com/publishsettings)。 提供發佈設定檔案的本機路徑。
     - **Azure 訂用帳戶 ID** -提供您打算初始化 Azure 匯入工作的 Azure 訂用帳戶識別碼。 如果您有多個 Azure 訂用帳戶，請使用與匯入工作相關聯的識別碼。
     - **Azure 儲存體帳戶** -輸入要與此匯入工作相關聯的 Azure 儲存體帳戶的名稱。
@@ -96,7 +96,7 @@ Azure 備份與 Azure 匯入/匯出服務密切整合，可讓您快速傳輸初
 
     ![入口網站](./media/backup-azure-backup-import-export/azureportal.png)
 
-2. 在精靈的步驟 1，指出您已備妥磁碟機並有可用的磁碟機日誌。 在精靈的步驟 2 中，提供負責處理此匯入工作的人員連絡資訊。
+2. 在精靈的步驟 1 中，指出您已備妥磁碟機並有可用的磁碟機日誌。 在精靈的步驟 2 中，提供負責處理此匯入工作的人員連絡資訊。
 3. 在步驟 3 中，上傳在上一個章節中您所取得的磁碟機日誌檔案。
 4. 在步驟 4 中，輸入匯入工作的描述性名稱。 請注意，您輸入的名稱只能包含小寫字母、數字、連字號和底線，必須以字母開頭，且不得包含空格。 當工作正在進行中和一旦完成後，您將使用您所選的名稱來進行追蹤。
 5. 接著，從清單中選取資料中心區域。 資料中心區域將會指出您的包裹必須送達的資料中心和地址。
@@ -115,4 +115,5 @@ Azure 備份與 Azure 匯入/匯出服務密切整合，可讓您快速傳輸初
 ## 後續步驟
 - Azure 匯入/匯出工作流程上的任何問題，請參閱此 [文章](../storage-import-export-service.md)。
 - 離線備份 > 章節的 Azure 備份，請參閱 [常見問題集](backup-azure-backup-faq.md) 的任何工作流程的相關問題
+
 

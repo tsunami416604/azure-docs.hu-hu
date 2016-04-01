@@ -21,7 +21,7 @@
 -   有效的 Azure 訂閱
 -   ScreenSteps 租用戶
   
-完成本教學課程之後, 您已指派給 ScreenSteps 的 Azure AD 使用者將能夠登入位於您 ScreenSteps 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 ScreenSteps 的 Azure AD 使用者將能夠登入位於您 ScreenSteps 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -98,7 +98,7 @@
 
     ![遠端驗證](./media/active-directory-saas-screensteps-tutorial/IC778525.png "Remote authentication")
 
-9.  在 **建立驗證端點** 區段中，執行下列步驟:
+9.  在 **建立驗證端點** 區段中，執行下列步驟 ︰
 
     ![建立驗證端點](./media/active-directory-saas-screensteps-tutorial/IC778526.png "Create an authentication endpoint")
 
@@ -106,7 +106,7 @@
     2.  從 **模式** 清單中，選取 **SAML**。
     3.  按一下 [ **建立**。
 
-10. 在 **遠端驗證端點** 區段中，執行下列步驟:
+10. 在 **遠端驗證端點** 區段中，執行下列步驟 ︰
 
     ![遠端驗證端點](./media/active-directory-saas-screensteps-tutorial/IC778527.png "Remote authentication endpoint")
 
@@ -168,3 +168,4 @@
     ![指派使用者](./media/active-directory-saas-screensteps-tutorial/IC778548.png "Assign users")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

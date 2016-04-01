@@ -38,7 +38,7 @@
 
 3. 檢閱資訊，然後按一下 **建立**。
 
-4. 在 **新批次帳戶** 刀鋒視窗中，輸入下列資訊:
+4. 在 **新批次帳戶** 刀鋒視窗中，輸入下列資訊 ︰
 
     a. 在 **帳戶名稱**, ，輸入要在批次帳戶 URL 中使用的唯一名稱。
 
@@ -57,7 +57,7 @@
 ## 管理存取金鑰和帳戶設定
 建立帳戶之後，您可以在入口網站找到它，以便管理存取金鑰、授權使用者和其他設定。
 
-批次帳戶 URL 會出現在 **Essentials**。 此為格式 `https://<account_name>.<region>.batch.azure.com` 的 URL。
+批次帳戶 URL 會出現在 **Essentials**。 它是下列形式的 URL `https://<account_name>.<region>.batch.azure.com`。
 
 若要查看和管理存取金鑰，按一下金鑰圖示。
 
@@ -83,4 +83,5 @@
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace_batch.PNG
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
+
 

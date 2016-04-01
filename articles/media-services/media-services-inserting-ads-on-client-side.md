@@ -151,7 +151,7 @@ VAST 檔案會指定要顯示的廣告。 下列 XML 是線性廣告的 VAST 檔
     </Creative>
 
  
- **<NonLinearAds>** 元素可以包含一或多個 **<NonLinear>** 項目，其中每個可以描述非線性廣告。  **<NonLinear>** 項目會指定非線性廣告的資源。 資源可以是 **<StaticResouce>**, 、 **<IFrameResource>**, ，或 **<HTMLResouce>**。**<StaticResource>** 說明非 HTML 資源，並且定義 creativeType 屬性來指定資源的顯示方式:
+ **<NonLinearAds>** 元素可以包含一或多個 **<NonLinear>** 項目，其中每個可以描述非線性廣告。  **<NonLinear>** 項目會指定非線性廣告的資源。 資源可以是 **<StaticResouce>**, 、 **<IFrameResource>**, ，或 **<HTMLResouce>**。**<StaticResource>** 說明非 HTML 資源，並且定義 creativeType 屬性來指定資源的顯示方式 ︰
 
 Image/gif、 image/jpeg、 image/png – 資源會顯示在 HTML **<img>** 標記。
 
@@ -161,7 +161,7 @@ Application/x-shockwave-flash – 資源在 Flash Player 中顯示。
 
 **<IFrameResource>** 說明 HTML 資源，可以在 IFrame 中顯示。 **<HTMLResource>** 說明可以插入 web 網頁的 HTML 程式碼的片段。 **<TrackingEvents>** 指定追蹤事件和事件發生時所要求的 URI。 在此範例中，會追蹤 acceptInvitation 和 collapse 事件。 如需有關 **<NonLinearAds>** 元素和其子系，請參閱 iab.net /vast。 請注意， **<TrackingEvents>** 項目是位於 * * <NonLinearAds>* * 項目而不是 **<NonLinear>** 項目。
 
-隨播廣告會在 <CompanionAds> 元素內定義。 <CompanionAds> 元素可以包含一或多個 <Companion> 元素。 每個 <Companion> 元素都會說明隨播廣告，而且可以包含 <StaticResource>、<IFrameResource> 或 <HTMLResource>，其指定方式與非線性廣告相同。 VAST 檔案可以包含多個隨播廣告，而且播放器應用程式可以選擇要顯示的最適當廣告。 如需 VAST 的詳細資訊，請參閱 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。
+隨播廣告會定義在 <CompanionAds> 項目。 Auch die Eigenschaften <CompanionAds> 元素可以包含一或多個 <Companion> 項目。 每個 <Companion> 項目說明隨播廣告，而且可以包含 <StaticResource>， <IFrameResource>或 <HTMLResource> 其指定方式與非線性廣告相同。 VAST 檔案可以包含多個隨播廣告，而且播放器應用程式可以選擇要顯示的最適當廣告。 如需 VAST 的詳細資訊，請參閱 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。
 
 ###使用 Digital Video Multiple Ad Playlist (VMAP) 檔案
 
@@ -221,7 +221,7 @@ VMAP 檔案開頭 <VMAP> 包含一或多個項目 <AdBreak> 項目，每個都�
 1. 開始/結束 – 指定廣告應該在視訊顯示之前或之後顯示
 1. 位置 – 指定當廣告插播的時機為未知時 (例如即時串流)，廣告插播的順序。 每個廣告插播的順序是以 #n 格式指定，其中 n 是大於或等於 1 的整數。 1 表示廣告應該在第一個機會時播放，2 表示廣告應該在第二個機會時播放，依此類推。
 
-在 <**AdBreak**> 有項目可以是一個 <**AdSource**> 項目。 <**AdSource**> 項目包含下列屬性:
+在 <**AdBreak**> 有項目可以是一個 <**AdSource**> 項目。 <**AdSource**> 項目包含下列屬性 ︰
 
 1. Id – 指定廣告來源的識別碼
 1. allowMultipleAds – 布林值，指定在廣告插播期間是否可以顯示多個廣告
@@ -233,7 +233,7 @@ VMAP 檔案開頭 <VMAP> 包含一或多個項目 <AdBreak> 項目，每個都�
 - <AdTagURI> 從另一個系統參考廣告回應的 URI
 - <CustomAdData> -的任意字串表示非 VAST 回應
 
-在這個範例中，內嵌廣告回應是以 <VASTAdData> 元素指定，該元素包含 VAST 廣告回應。 如需其他元素的詳細資訊，請參閱 [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)。
+在此範例中，內嵌廣告回應會使用指定 <VASTAdData> 元素包含 VAST 廣告回應。 如需其他元素的詳細資訊，請參閱 [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)。
 
 <**AdBreak**> 項目也可以包含一個 <**TrackingEvents**> 項目。 <**TrackingEvents**> 項目可讓您追蹤的開始或結束廣告插播，或廣告插播期間是否發生錯誤。 <**TrackingEvents**> 項目包含一個或多個 <**追蹤**> 項目，其中每個指定的追蹤事件和追蹤 URI。 可能的追蹤事件如下：
 
@@ -313,16 +313,16 @@ MAST 檔案可讓您指定觸發程序，定義何時顯示廣告。 以下是�
 
  
 
-MAST 檔案開頭 **<MAST>** 元素，包含一個 **<triggers>** 項目。  <triggers> 項目包含一個或多個 **<trigger>** 項目會定義何時應該播放廣告。 
+MAST 檔案開頭 **<MAST>** 元素，包含一個 **<triggers>** 項目。 Auch die Eigenschaften <triggers> 元素包含一或多個 **<trigger>** 項目會定義何時應該播放廣告。 
 
- **<trigger>** 項目包含 **<startConditions>** 元素，定義何時應該播放廣告。  **<startConditions>** 項目包含一個或多個 <condition> 項目。 當每個 <condition> 評估為 true，觸發程序起始或撤銷取決 <condition> 內含 **< 於**> 或 **<endConditions>** 項目分別。 當多個 <condition> 項目都存在，則會視為隱含 OR，任何評估為 true 的條件都會導致起始觸發程序。 <condition> 可以是巢狀項目。 當預設子系 <condition> 元素時，它們會被視為隱含 AND，所有條件必須評估為 true，才會起始觸發程序。 <condition> 元素包含會定義條件的下列屬性： 
+ **<trigger>** 項目包含 **<startConditions>** 元素，定義何時應該播放廣告。  **<startConditions>** 項目包含一個或多個 <condition> 項目。 當每個 <condition> 評估為 true，觸發程序起始或撤銷根據 <condition> 包含在 **< 於**> 或 **<endConditions>** 項目分別。 當多個 <condition> 項目都存在，則會視為隱含或者，任何評估為 true 的條件都會導致起始觸發程序。 <condition> 可以是巢狀項目。 當子系 <condition> 預設項目，則會視為隱含，所有條件必須都評估為 true，起始觸發程序。 Auch die Eigenschaften <condition> 元素包含會定義條件的下列屬性 ︰ 
 
 1. **型別** – 指定條件、 事件或屬性的型別
 1. **名稱** – 屬性或事件在評估期間使用的名稱
 1. **值** – 將會評估屬性的值
-1. **運算子** – 要在評估期間所使用的運算: EQ (等於)、 NEQ (不等於)、 GTR (大於)、 GEQ (大於或等於)、 LT (小於)、 LEQ (小於或等於)、 MOD (模數)
+1. **運算子** – 要在評估期間所使用的運算 ︰ EQ （等於）、 NEQ （不等於）、 GTR （大於）、 GEQ （大於或等於）、 LT （小於）、 LEQ （小於或等於）、 MOD （模數）
 
-**<endConditions>** 也包含 <condition> 項目。 當條件評估為 true 時，會重設觸發程序。<trigger> 元素也包含 <sources> 元素，該元素包含一或多個 <source> 元素。 <source> 元素定義廣告回應的 URI 與廣告回應的類型。 在此範例中，會對 VAST 回應指定 URI。 
+**<endConditions>** 也包含 <condition> 項目。 當條件評估為 true，觸發程序會重設。的 <trigger> 項目也包含 <sources> 包含一或多個項目 <source> 項目。 Auch die Eigenschaften <source> 元素定義廣告回應與廣告回應的類型的 URI。 在此範例中，會對 VAST 回應指定 URI。 
 
 
     <trigger id="postroll" description="postroll"  >
@@ -352,7 +352,7 @@ VPAID 是 API，用於啟用可執行廣告單元，以便與視訊播放器通�
     </MediaFiles>
  
 
-可以使用 VAST 回應中 <Linear> 或 <NonLinear> 元素內的 <AdParameters> 元素，初始化可執行廣告。 如需有關 <AdParameters> 項目，請參閱 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。 如需 VPAID API 的詳細資訊，請參閱 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
+可以使用初始化可執行廣告 <AdParameters> 內的項目 <Linear> 或 <NonLinear> VAST 回應中的項目。 如需詳細資訊 <AdParameters> 項目，請參閱 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。 如需 VPAID API 的詳細資訊，請參閱 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
 ##實作包含廣告支援的 Windows 或 Windows Phone 8 播放器
 
@@ -569,7 +569,7 @@ ProgrammaticAdPage.xaml.cs 檔案會建立 AdHandlerPlugin，加入 TimelineMark
 ##實作具有廣告支援的 iOS 視訊播放器
 
 
-Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以下載 Player Framework 和範例 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)。 此 github 頁面有 Wiki，其中包含 player framework 的其他資訊的連結和播放程式範例的簡介: [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
+Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合，為您示範如何使用架構實作視訊播放器應用程式。 您可以下載 Player Framework 和範例 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)。 此 github 頁面有 Wiki，其中包含 player framework 的其他資訊的連結和播放程式範例的簡介 ︰ [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 
 ###使用 VMAP 排程廣告
@@ -622,9 +622,9 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
     }
          
    下列範例示範如何排程早期繫結 VAST 廣告。
-    範例 4: 排程早期繫結 VAST 廣告
+    範例 4 ︰ 排程早期繫結 VAST 廣告
     下載 VAST 檔案
-    如果 (! [framework.adResolver downloadManifest: & m s t withURL: [NSURL URLWithString: @"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]])
+    如果 (！ [framework.adResolver downloadManifest: & m s t withURL: [NSURL URLWithString: @"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]])
     {
         [self logFrameworkError];
     }
@@ -821,4 +821,5 @@ Microsoft 媒體平台：Player Framework for iOS 包含範例應用程式集合
 ##另請參閱
 
 [開發視訊播放器應用程式](media-services-develop-video-players.md)
+
 

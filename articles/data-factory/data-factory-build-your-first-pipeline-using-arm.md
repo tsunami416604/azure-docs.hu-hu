@@ -43,7 +43,7 @@
 
 ## 步驟 1：建立 ARM 範本
 
-建立名為的 JSON 檔案 **ADFTutorialARM.json** 中 **C:\ADFGetStarted** 資料夾含有下列內容: 
+建立名為的 JSON 檔案 **ADFTutorialARM.json** 中 **C:\ADFGetStarted** 資料夾含有下列內容 ︰ 
 
 > [AZURE.IMPORTANT] 變更的值 **storageAccountName** 和 **storageAccountKey** 變數。 變更 **dataFactoryName** 太因為名稱必須是唯一的。 
 
@@ -199,3 +199,4 @@
     ![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png) 
 10. 當配量處於 **準備** 狀態時，檢查 **partitioneddata** 資料夾中的 **資料** 輸出資料的 blob 儲存體中的容器。  
  
+

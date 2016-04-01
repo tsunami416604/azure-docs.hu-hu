@@ -25,7 +25,7 @@
 若要在 Machine Learning Studio 中使用您自己的資料來開發和訓練預測性分析方案，您可以： 
 
 - 將資料從上傳 **本機檔案** 事先從硬碟來建立工作區中的資料集模組。  
-- 從一種存取資料 **線上資料來源** 您的實驗執行時使用 [讀取器] [讀取器] 模組。 
+- 從一種存取資料 **線上資料來源** 您的實驗執行時使用 [讀取器][reader] 模組。 
 - 使用資料，從另一個 Azure 機器學習實驗儲存為 **資料集**。 
 
 [AZURE.INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
@@ -67,9 +67,9 @@ Machine Learning Studio 是專為與矩形或表格式資料搭配使用而設�
 
 如果您以 TSV 或 CSV 格式匯入不包含此中繼資料的資料，Machine Learning Studio 會透過取樣資料來推斷每個資料行的資料類型。 如果資料也沒有資料行標題，Machine Learning Studio 會提供預設名稱。
 
-您可以明確指定，或變更標題，使用 [中繼資料編輯器] [中繼資料編輯器] 的資料行資料類型。
+您可以明確指定或變更使用的資料行的標題和資料類型 [中繼資料編輯器][metadata-editor]。
 
-下列 **資料型別** Machine Learning Studio 可辨識:
+下列 **資料型別** Machine Learning Studio 可辨識 ︰
 
 - String
 - Integer
@@ -78,7 +78,7 @@ Machine Learning Studio 是專為與矩形或表格式資料搭配使用而設�
 - DateTime
 - TimeSpan
 
-Machine Learning Studio 使用名為的內部資料類型 ***資料表*** 模組之間傳遞資料。 您可以明確地將使用 [轉換成資料集] 的 [轉換-dataset] 模組的資料表格格式將資料轉換。
+Machine Learning Studio 使用名為的內部資料類型 ***資料表*** 模組之間傳遞資料。 您可以明確地轉換資料的資料表格式使用 [轉換為資料集][convert-to-dataset] 模組。
 
 接受「資料表格」以外格式的任何模組，會在將資料傳遞至下一個模組之前，無訊息地將資料轉換為「資料表格」。
 
@@ -91,4 +91,5 @@ Machine Learning Studio 使用名為的內部資料類型 ***資料表*** 模組
 [convert-to-dataset]: https://msdn.microsoft.com/library/azure/72bf58e0-fc87-4bb1-9704-f1805003b975/
 [metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+
 

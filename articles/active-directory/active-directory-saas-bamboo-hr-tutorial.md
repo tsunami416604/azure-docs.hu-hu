@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 BambooHR 單一登入的訂用帳戶
 
-完成本教學課程之後, 您已指派給 BambooHR 的 Azure AD 使用者將能夠登入位於您 BambooHR 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 BambooHR 的 Azure AD 使用者將能夠登入位於您 BambooHR 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -79,7 +79,7 @@
 
     ![設定單一登入](./media/active-directory-saas-bamboo-hr-tutorial/IC796688.png "Configure single sign-on")
 
-3.  在 **設定應用程式 URL** 頁面上，於 **BambooHR 登入 URL** 文字方塊中，輸入您的 URL，讓使用者中用來登入 BambooHR 的應用程式 (例如: https://company.bamboohr.com)，然後按一下 [ **下一步**。
+3.  在 **設定應用程式 URL** 頁面上，於 **BambooHR 登入 URL** 文字方塊中，輸入您的 URL，讓使用者中用來登入 BambooHR 的應用程式 (例如 ︰ https://company.bamboohr.com)，然後按一下 [ **下一步**。
 
     ![設定應用程式 URL](./media/active-directory-saas-bamboo-hr-tutorial/IC796689.png "Configure app URL")
 
@@ -97,7 +97,7 @@
     2.  在左側的應用程式功能表，按一下 [ **單一登入**。
     3.  按一下 [ **SAML 單一登入**。
 
-7.  在 **SAML 單一登入** 區段中，執行下列步驟:
+7.  在 **SAML 單一登入** 區段中，執行下列步驟 ︰
 
     ![SAML 單一登入](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML Single Sign-On")
 
@@ -152,4 +152,5 @@ BambooHR 需以手動方式佈建。
     ![是](./media/active-directory-saas-bamboo-hr-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

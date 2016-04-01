@@ -127,5 +127,6 @@ JSON 組態檔會指定待部署項目的詳細資料。 它會包含您在建�
 
 ## 後續步驟
 
-如需詳細資訊，請參閱 [發行 WebApplicationVM (Windows PowerShell 指令碼)](vs-azure-tools-publish-webapplicationvm.md)
+如需詳細資訊，請參閱 [發行 WebApplicationVM （Windows PowerShell 指令碼）](vs-azure-tools-publish-webapplicationvm.md)
+
 

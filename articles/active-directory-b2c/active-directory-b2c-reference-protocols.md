@@ -31,7 +31,7 @@ Azure AD B2C 支援 OpenID Connect 與 OAuth 2.0 兩種業界標準通訊協定�
 - A **重新導向 URI** 或 **封裝識別碼** ，可用來直接回應給您的應用程式
 - 其他幾個狀況特定的值。  如需詳細資訊，了解如何 [註冊應用程式](active-directory-b2c-app-registration.md)。
 
-註冊之後，應用程式會將要求傳送到 v2.0 端點與 Azure AD 通訊:
+註冊之後，應用程式會將要求傳送到 v2.0 端點與 Azure AD 通訊 ︰
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -72,4 +72,5 @@ Azure AD B2C 中使用的 token 不同類型的進一步詳細資料位於 [Azur
 - 透過 OAuth 2.0 代理者流程在 Web API 中取得權杖 (敬請期待)
 
 <!-- [Call the Azure AD Graph API using the OAuth 2.0 Client Credentials Flow](active-directory-reference-graph.md) -->
+
 

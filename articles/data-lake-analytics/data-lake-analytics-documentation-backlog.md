@@ -56,3 +56,4 @@ U-SQL  | 說明進行範圍型 JOIN 的技術 | 1 | Pending | [@MikeRys](https:/
 * 在此文件中將提取要求提交 [Azure 內容儲存機制](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)
 * 傳送電子郵件給 [microsoft.com adlafeedback](mailto:adlafeedback@microsoft.com?subject=DocBacklog)
 
+

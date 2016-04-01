@@ -92,7 +92,7 @@
 ## 網路安全性群組 (NSG)
 在資源管理員部署中，VM 上的任何 NIC 可能會關聯至網路安全性群組 (NSG)，包括已啟用多個 NIC 功能的 VM 上的任何 NIC。 如果已為 NIC 指派子網路 (該子網路會關聯至 NSG) 內的位址，則子網路 NSG 中的規則也適用於該 NIC。 除了將子網路關聯至 NSG，您也可以將 NIC 關聯至 NSG。 
 
-如果將子網路關聯至 NSG，而且內的 NIC 子網路會個別關聯至 NSG，相關聯的 NSG 規則會套用在 **流程順序** 根據傳入或傳出 NIC 的流量方向: 
+如果將子網路關聯至 NSG，而且內的 NIC 子網路會個別關聯至 NSG，相關聯的 NSG 規則會套用在 **流程順序** 根據傳入或傳出 NIC 的流量方向 ︰ 
 
 - **連入流量** 的目的地是問題流量中的 NIC，首先會通過子網路，並在傳入 NIC 前觸發子網路的 NSG 規則，然後再觸發 NIC 的 NSG 規則。 
 - **連出流量** 的來源是有問題的 NIC 流動先出的 NIC，觸發 NIC 的 NSG 規則，再通過子網路，然後觸發子網路的 NSG 規則。 
@@ -164,7 +164,7 @@
 
         New-AzureVM -ServiceName "MultiNIC-CS" –VNetName "MultiNIC-VNet" –VMs $vm
 
->[AZURE.NOTE] 您在此處指定的 VNet 必須已存在 (如先決條件所述)。 下列範例會指定虛擬網路，名為 **Multinic-vnet**。 
+>[AZURE.NOTE] 您在此處指定的 VNet 必須已存在 （如先決條件所述）。 下列範例會指定虛擬網路，名為 **Multinic-vnet**。 
 
 ## 其他子網路的次要 NIC 存取
 
@@ -264,4 +264,5 @@
 
 - 部署 [MultiNIC Vm 在 2 層應用程式案例中，在資源管理員部署](virtual-network-deploy-multinic-arm-template.md)。
 - 部署 [MultiNIC Vm 在 2 層應用程式案例中，在傳統部署](virtual-network-deploy-multinic-classic-ps.md)。
+
 

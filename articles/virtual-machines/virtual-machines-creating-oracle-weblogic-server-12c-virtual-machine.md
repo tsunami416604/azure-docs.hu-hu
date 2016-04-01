@@ -28,7 +28,7 @@
 
 2. 按一下 [ **Marketplace**, ，按一下 [ **計算**, ，然後輸入 **Oracle** 在搜尋方塊。
 
-3.  選取 **上 Windows Server 2012 的 Oracle WebLogic Server 12c Standard Edition** 或 **Windows Server 2012 上的 Oracle WebLogic Server 12c Enterprise Edition** 映像。  檢閱的資訊 (例如建議的大小)，此映像，然後按一下 **下一步**。
+3.  選取 **上 Windows Server 2012 的 Oracle WebLogic Server 12c Standard Edition** 或 **Windows Server 2012 上的 Oracle WebLogic Server 12c Enterprise Edition** 映像。  檢閱的資訊 （例如建議的大小），此映像，然後按一下 **下一步**。
 
 4.  指定 **主機名稱**VM 的。
 
@@ -76,7 +76,7 @@
 
     ![](media/virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine/image12.png)
 
-10. 在 **設定系統管理員使用者名稱和密碼** 對話方塊:
+10. 在 **設定系統管理員使用者名稱和密碼** 對話方塊 ︰
 
     1.  [選用]變更使用者名稱從 **weblogic** 到您選擇的值。
 
@@ -86,7 +86,7 @@
 
     ![](media/virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine/image13.png)
 
-11. 在 **設定伺服器開始模式與 JDK** 對話方塊中，選取 **實際執行模式**, ，選取可用的 JDK (或瀏覽器到想要的 JDK)，然後按一下 [ **下一步**。
+11. 在 **設定伺服器開始模式與 JDK** 對話方塊中，選取 **實際執行模式**, ，選取可用的 JDK （或瀏覽器到想要的 JDK），然後按一下 [ **下一步**。
 
     ![](media/virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine/image14.png)
 
@@ -186,4 +186,5 @@
 -   [Microsoft Azure 上使用 Linux 的 Oracle WebLogic Server 12c (英文)](http://www.oracle.com/technetwork/middleware/weblogic/learnmore/oracle-weblogic-on-azure-wp-2020930.pdf)
 
 -   [適用於 Azure 的 Oracle 虛擬機器映像](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
+
 

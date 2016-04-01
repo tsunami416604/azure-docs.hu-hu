@@ -19,7 +19,7 @@
 # App Service 環境簡介
 
 ## 概觀 ##
-App Service 環境是 Azure 應用程式服務可提供完全隔離和專用的環境，以便安全地執行 Azure 應用程式服務應用程式在高規模，包括 [Web 應用程式] [WebApps]，[高階] [PremiumTier] 服務方案選項 [行動應用程式] [MobileApps]，和 [API 應用程式] [APIApps]。  
+App Service 環境是 [高階][PremiumTier] 服務提供完全隔離和專用的環境，以便安全地高大規模執行 Azure 應用程式服務應用程式的 Azure 應用程式服務方案選項包括 [Web 應用程式][WebApps], ，[行動應用程式][MobileApps], ，和 [API 應用程式][APIApps]。  
 
 適合應用程式工作負載的 App Service 環境需要：
 
@@ -30,9 +30,9 @@ App Service 環境是 Azure 應用程式服務可提供完全隔離和專用的�
 
 App Service 環境已經過隔離，可執行只有單一客戶的應用程式，且一律會部署到虛擬網路。  客戶對於輸入和輸出的應用程式網路流量都有更細微的控制，且應用程式可以透過虛擬網路建立與內部部署公司資源的高速安全連線。
 
-如需如何啟用 App Service 環境的概觀高延展性和安全的網路存取，請參閱 [AzureCon 深入瞭解] [AzureConDeepDive] 在 App Service 環境!
+如需 App Service 環境如何啟用高延展性和安全性的概觀網路存取，請參閱 [AzureCon 深入探討][AzureConDeepDive] 在 App Service 環境 ！
 
-深入探討在水平縮放使用多個應用程式服務環境參閱文件如何設定 [地理位置分散的應用程式使用量] [GeodistributedAppFootprint]。
+深入探討在水平縮放使用多個應用程式服務環境參閱文件如何安裝 [地理位置分散的應用程式使用量][GeodistributedAppFootprint]。
 
 顯示 AzureCon 深入探討的安全性架構的設定方式，請參閱文件上實作 [分層安全性架構](app-service-app-service-environment-layered-security.md) 使用 App Service 環境。
 
@@ -47,34 +47,34 @@ App Service 環境是由前端計算資源集區，以及一到三個背景工�
 
 前端集區包含負責處理 SSL 終止以及 App Service 環境中應用程式要求的自動負載平衡的計算資源。 
 
-每個背景工作集區包含計算資源配置到 [應用程式服務計劃] [AppServicePlan]，其中又包含一或多個 Azure App Service 應用程式。  因為 App Service 環境中可有多達三個不同的背景工作集區，所以您有彈性可為每個背景工作集區選擇不同的計算資源。  
+每個背景工作集區包含計算資源配置給 [應用程式服務計劃][AppServicePlan], ，其中又包含一或多個 Azure App Service 應用程式。  因為 App Service 環境中可有多達三個不同的背景工作集區，所以您有彈性可為每個背景工作集區選擇不同的計算資源。  
 
 比方說，您可以針對主要用於開發或測試應用程式的 App Service 方案，建立一個計算資源較不強大的背景工作集區。  第二個 (或甚至第三個) 背景工作集區可以使用比較強大的運算資源，以供 App Service 方案執行生產應用程式。
 
-如需前端和背景工作集區可用計算資源數量的詳細資訊，請參閱 [如何設定 App Service 環境] [HowToConfigureanAppServiceEnvironment]。  
+如需前端和背景工作集區可用計算資源數量的詳細資訊，請參閱 [如何設定 App Service 環境][HowToConfigureanAppServiceEnvironment]。  
 
-如需 App Service 環境中支援的可用計算資源大小的詳細資訊，請參閱 [應用程式服務定價] [AppServicePricing] 頁面上，並檢閱 Premium 定價層中 App Service 環境可用的選項。
+如需 App Service 環境中支援的可用計算資源大小的詳細資訊，請參閱 [App Service 定價][AppServicePricing] 頁面，並檢閱 Premium 定價層中 App Service 環境的可用選項。
 
 ## 虛擬網路支援 ##
-App Service 環境可以建立於預先存在的區域傳統"v1"虛擬網路或新地區的傳統"v1"的虛擬網路 ([詳細資訊虛擬 networks][MoreInfoOnVirtualNetworks]) 上。  因為 App Service 環境一律存在於區域虛擬網路，而更精確來說是在區域虛擬網路的子網路中，所以您可以運用虛擬網路的安全性功能來控制傳入和傳出網路通訊。  
+App Service 環境可以建立於預先存在的地區傳統"v1"虛擬網路或新的地區傳統"v1"虛擬網路 ([虛擬網路的詳細資訊][MoreInfoOnVirtualNetworks])。  因為 App Service 環境一律存在於區域虛擬網路，而更精確來說是在區域虛擬網路的子網路中，所以您可以運用虛擬網路的安全性功能來控制傳入和傳出網路通訊。  
 
-您可以使用 [網路安全性群組] [NetworkSecurityGroups] App Service 環境所在的子網路的傳入的網路通訊限制。  這可讓您在上游裝置和服務 (例如 Ｗeb 應用程式防火牆和網路 SaaS 提供者) 背後執行應用程式。  
+您可以使用 [網路安全性群組][NetworkSecurityGroups] 將 App Service 環境所在的子網路的傳入的網路通訊限制。  這可讓您在上游裝置和服務 (例如 Ｗeb 應用程式防火牆和網路 SaaS 提供者) 背後執行應用程式。  
 
-應用程式也經常需要存取公司資源，例如內部資料庫和 Web 服務。  常見的方法是讓這些端點僅可用於在 Azure 虛擬網路中傳送的內部網路流量。  一旦 App Service 環境加入與內部服務相同的虛擬網路，在環境中執行的應用程式可以存取，其中包括可透過 [站台對站] [SiteToSite] 連線的端點和 [Azure ExpressRoute] [ExpressRoute] 連線。
+應用程式也經常需要存取公司資源，例如內部資料庫和 Web 服務。  常見的方法是讓這些端點僅可用於在 Azure 虛擬網路中傳送的內部網路流量。  一旦 App Service 環境加入與內部服務相同的虛擬網路，在環境中執行的應用程式可以存取，其中包括可透過連線端點 [站台對站台][SiteToSite] 和 [Azure ExpressRoute][ExpressRoute] 連線。
 
-如需 App Service 環境的虛擬網路和內部網路的運作方式的詳細資訊，請參閱下列文件，在 [網路架構] [NetworkArchitectureOverview]，[控制輸入流量] [ControllingInboundTraffic]，[安全地連接到後端] 和 [SecurelyConnectingToBackends]。 
+如需 App Service 環境的虛擬網路和內部網路的運作方式的詳細資訊，請參閱下列文件上 [網路架構][NetworkArchitectureOverview], ，[控制輸入流量][ControllingInboundTraffic], ，和 [安全地連接到後端][SecurelyConnectingToBackends]。 
 
-**注意:**  無法在"v2"的虛擬網路中建立 App Service 環境。
+**注意 ︰**  無法在"v2"的虛擬網路中建立 App Service 環境。
 
 ## 開始使用
 
-若要開始使用 App Service 環境，請參閱 [如何建立應用程式服務環境] [HowToCreateAnAppServiceEnvironment]
+若要開始使用 App Service 環境，請參閱 [如何建立 App Service 環境][HowToCreateAnAppServiceEnvironment]
 
-如需有關 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service] [AzureAppService]。
+如需 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service][AzureAppService]。
 
-如需 App Service 環境網路架構的概觀，請參閱 [網路架構概觀] [NetworkArchitectureOverview] 文件。
+如需 App Service 環境網路架構的概觀，請參閱 [網路架構概觀][NetworkArchitectureOverview] 文件。
 
-透過 ExpressRoute，使用 App Service 環境的詳細資訊，請參閱下列文章 [Express Route 與 App Service 環境] 的 [NetworkConfigDetailsForExpressRoute]。
+如需透過 ExpressRoute，使用 App Service 環境的詳細資訊，請參閱下列文章 [Express Route 與 App Service 環境][NetworkConfigDetailsForExpressRoute]。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -105,4 +105,5 @@ App Service 環境可以建立於預先存在的區域傳統"v1"虛擬網路或�
 <!-- IMAGES -->
 
  
+
 

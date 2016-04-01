@@ -67,7 +67,7 @@ web API 會由單一 **應用程式識別碼** 在此情況下，因為它們組
 ## 4.下載程式碼
 
 本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet)。  當您建置範例，您可以 
-[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip) 或再製基本架構:
+[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git
@@ -77,13 +77,13 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-Web
 `complete` 相同的儲存機制分支。
 
 下載範例程式碼後，請開啟 Visual Studio `.sln` 檔案開始進行。  您會看到方案中有兩個專案：`TaskWebApp` 專案和 `TaskService` 專案。   `TaskWebApp` 是 WPF 
-web 應用程式前端使用者進行互動。  `TaskService` 是應用程式的後端 Web API，儲存每個使用者的待辦事項清單。 
+web 應用程式前端使用者進行互動。   `TaskService` 是應用程式的後端 web API 儲存每個使用者的待辦事項清單。 
 
 ## 5.設定工作服務
 
 當 `TaskService` 收到 `TaskWebApp` 的要求時，它會檢查存取權杖是否有效可驗證要求。  若要驗證的存取語彙基元 
 您必須提供 `TaskService` 一些您的應用程式相關資訊。  在 `TaskService` 專案中，開啟 `web.config` 根目錄中的檔案 
-在專案中的值取代和 `<appSettings>` 區段:
+在專案中的值取代和 `<appSettings>` 區段 ︰
 
 ```
 <appSettings>
@@ -159,7 +159,7 @@ public class TasksController : Controller
 在任何原則成功執行之後 ，包括登入、註冊和編輯設定檔原則，您可以從 Azure AD 收到授權碼。
 
 首先，請使用 Visual Studio Package Manager Console 安裝 OWIN OpenID Connect 中介軟體。 我們將使用 OWIN 來傳送驗證
-Azure ad 要求並處理其回應:
+Azure ad 要求並處理其回應 ︰
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect -ProjectName TaskWebApp
@@ -168,7 +168,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TaskWebApp
 ```
 
 開啟檔案 `App_Start\Startup.Auth.cs`。  這可讓我們將設定 OWIN 驗證管線中，提供您 B2C 目錄的詳細資料
-與您所建立的應用程式:
+與您所建立的應用程式 ︰
 
 ```C#
 // App_Start\Startup.Auth.cs
@@ -368,7 +368,7 @@ public async Task<ActionResult> Index()
 #### 在 Web API 上建立和刪除工作
 
 您可以遵循完全相同的模式來傳送 POST 和 DELETE 要求給 `TaskService`。  只要呼叫 `AuthenticationContext.AcquireTokenSilentAsync(...)`,，
-並將產生的權杖附加至要求中 `Authorization` 標頭。  我們已經為您實作 `Create` 動作。  請嘗試完成 `Delete` 中的動作
+並將產生的權杖附加至要求中 `Authorization` 標頭。  我們已經實作 `Create` 為您的動作。  請嘗試完成 `Delete` 中的動作
 `TasksController.cs` 您自己。
 
 ## 8.登出使用者
@@ -404,18 +404,19 @@ public void SignOut()
 請注意每位使用者的工作如何儲存於 API，因為 API 會從它收到的存取權杖中擷取使用者的身分識別。
 
 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip),，
-或者，您可以從 GitHub 複製它:
+或者，您可以從 GitHub 複製它 ︰
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git```
 
 <!--
 
-## 後續步驟
+## Next Steps
 
-您現在可以進入更進階的 B2C 主題。  您可以嘗試：
+You can now move onto more advanced B2C topics.  You may want to try:
 
-[從 Web 應用程式呼叫 Web API >>]()
+[Calling a Web API from a Web App >>]()
 
-[自訂 B2C 應用程式的 UX >>]()
+[Customizing the your B2C App's UX >>]()
 
 -->
+

@@ -27,7 +27,7 @@
 
 Azure 提供您建立在虛擬機器上的絕佳雲端解決方案，虛擬機器是根據實際的電腦硬體而模擬出來的電腦，為了是要靈活移動軟體部署，並且比實體硬體更能大幅強化資源的運用。 過去幾年來，多虧 [Docker](https://www.docker.com) 方法和 docker 生態系統，Linux 容器技術大幅擴充的方式，您可以開發和管理分散式的軟體。 由於容器中的應用程式程式碼與主機 Azure VM 獨立，也與相同 VM 上的其他容器獨立，除了 Azure VM 賦予您的靈活度之外，您還可以在應用程式層級做更多的開發，擁有更高的部署靈活度。
 
-**但這是舊新聞。** *新* 消息是，Azure 提供您更多的 Docker 優點:
+**但這是舊新聞。**  *新* 消息是，Azure 提供您更多的 Docker 優點 ︰
 
 - [許多](virtual-machines-docker-with-xplat-cli-install.md) [不同](virtual-machines-docker-with-portal.md) [方式](virtual-machines-docker-ubuntu-quickstart.md) 至 [建立 Docker 主機](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu) 讓容器能符合您的情況
 - [Azure 資源管理員](resource-group-overview.md) 和 [資源群組範本](resource-group-authoring-templates.md) 可簡化部署和更新複雜分散式應用程式
@@ -39,7 +39,7 @@ Azure 提供您建立在虛擬機器上的絕佳雲端解決方案，虛擬機�
 
 ## 虛擬機器與容器之間的差異
 
-所提供的獨立的硬體虛擬化環境內執行的虛擬機器 [hypervisor](http://en.wikipedia.org/wiki/Hypervisor)。 在 Azure 中， [虛擬機器](http://azure.microsoft.com/services/virtual-machines/) 為您的服務控制代碼: 選擇作業系統並設定它來執行您想要的方式與出來; 或上傳您自己自訂的 VM 映像只是建立虛擬機器。 「虛擬機器」是一種經過長時間測試、歷經考驗而根深蒂固的技術，而且有許多工具可用來管理作業系統，以及設定您安裝及執行的應用程式。 從主機作業系統並不會看見虛擬機器中執行的任何事物，而從虛擬機器內執行的應用程式或使用者的角度來看，虛擬機器就像是一部獨立存在的實體電腦。
+所提供的獨立的硬體虛擬化環境內執行的虛擬機器 [hypervisor](http://en.wikipedia.org/wiki/Hypervisor)。 在 Azure 中， [虛擬機器](http://azure.microsoft.com/services/virtual-machines/) 為您的服務控制代碼 ︰ 選擇作業系統並設定它來執行您想要的方式與出來; 或上傳您自己自訂的 VM 映像只是建立虛擬機器。 「虛擬機器」是一種經過長時間測試、歷經考驗而根深蒂固的技術，而且有許多工具可用來管理作業系統，以及設定您安裝及執行的應用程式。 從主機作業系統並不會看見虛擬機器中執行的任何事物，而從虛擬機器內執行的應用程式或使用者的角度來看，虛擬機器就像是一部獨立存在的實體電腦。
 
 [Linux 容器](http://en.wikipedia.org/wiki/LXC)& mdash; 其中包括建立及裝載使用 docker 工具以及有其他方法和出來; 不需要或不使用 hypervisor 提供隔離。 相反地，容器主機使用 Linux 核心的程序和檔案系統隔離功能，但是容器 (及其應用程式) 只能使用某些核心功能及其專屬隔離的檔案系統 (最低限度)。 從容器內執行的應用程式的角度來看，容器就像是唯一的作業系統執行個體。 包含在其中的應用程式看不見處理程序或其容器以外的任何其他資源。 
 
@@ -53,7 +53,7 @@ Windows 容器對於任何在 Windows 執行的應用程式提供與 Linux 容�
 
 ### 真的這麼好嗎？
 
-是 (& s) 出來; 並沒有。 等其他技術的容器，請勿辦法避免分散式應用程式所需的所有繁重的工作。 不過在此同時，容器真的會改變：
+是 （& s) 出來; 並沒有。 等其他技術的容器，請勿辦法避免分散式應用程式所需的所有繁重的工作。 不過在此同時，容器真的會改變：
 
 - 可以多快速開發和廣泛地共用應用程式程式碼
 - 可以多快速，以及有多少信心測試應用程式程式碼
@@ -63,7 +63,7 @@ Windows 容器對於任何在 Windows 執行的應用程式提供與 Linux 容�
 
 ## 容器適用的情況？
 
-它們適合許多項目，但它們建議 (& s) 出來; 也是如此 [Azure 雲端服務](http://azure.microsoft.com/services/cloud-services/) 和 [Azure Service Fabric](service-fabric-overview.md)& mdash; 建立單一服務，[微服務]-導向應用程式的設計根據多個小型、 可組合的組件而非較大、 更強的結合元件的分散式應用程式。 
+它們適合許多項目，但它們建議 （& s) 出來; 也是如此 [Azure 雲端服務](http://azure.microsoft.com/services/cloud-services/) 和 [Azure Service Fabric](service-fabric-overview.md)& 出來; 建立單一服務， [microservice]-導向應用程式的設計根據多個小型、 可組合的組件而非較大、 更強的結合元件的分散式應用程式。 
 
 尤其是對於像 Azure 這種您在需要時可以租用 VM 的公用雲端環境，特別適合。 您不只可以獲得隔離、快速的部署以及協調流程工具，還能更有效率決定應用程式基礎結構。 
 
@@ -75,7 +75,7 @@ Windows 容器對於任何在 Windows 執行的應用程式提供與 Linux 容�
 
 ### 容器對開發人員的優點
 
-一般而言，我們很容易看到容器技術持續進步，但是還有更多明確的優點。 我們來看看 Docker 容器的範例。 本主題將不深入討論 Docker 現在 (讀取 [什麼是 Docker?](https://www.docker.com/whatisdocker/) 該劇本，或 [wikipedia](http://wikipedia.org/wiki/Docker_%28software%29))，但是 Docker 和及其生態系統開發人員和 IT 專業人員可以提供極大的優點。
+一般而言，我們很容易看到容器技術持續進步，但是還有更多明確的優點。 我們來看看 Docker 容器的範例。 本主題將不深入討論 Docker 現在 (讀取 [什麼是 Docker？](https://www.docker.com/whatisdocker/) 該劇本，或 [wikipedia](http://wikipedia.org/wiki/Docker_%28software%29))，但是 Docker 和及其生態系統開發人員和 IT 專業人員可以提供極大的優點。
 
 開發人員能夠很快速地開始使用 Docker 容器，因為使用 Linux 容器最簡單：
 
@@ -127,7 +127,7 @@ Windows 容器對於任何在 Windows 執行的應用程式提供與 Linux 容�
 
 ### Azure 資源群組範本
 
-最近，Azure 發行 [Azure 資源管理](virtual-machines-azurerm-versus-azuresm.md) REST API 和更新的 PowerShell 和 Azure CLI 工具，可輕鬆使用。 您可以部署、 修改或重新部署整個應用程式拓樸使用 [Azure 資源管理員範本](../resource-group-authoring-templates.md) 與 Azure 資源管理 API 使用:
+最近，Azure 發行 [Azure 資源管理](virtual-machines-azurerm-versus-azuresm.md) REST API 和更新的 PowerShell 和 Azure CLI 工具，可輕鬆使用。 您可以部署、 修改或重新部署整個應用程式拓樸使用 [Azure 資源管理員範本](../resource-group-authoring-templates.md) 與 Azure 資源管理 API 使用 ︰
 
 -  [Azure 入口網站使用的範本](https://github.com/Azure/azure-quickstart-templates)& mdash; 提示，請使用 [DeployToAzure] 按鈕
 -  [Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
@@ -140,7 +140,7 @@ Windows 容器對於任何在 Windows 執行的應用程式提供與 Linux 容�
 
 Docker 有它自己組的 VM 建立工具 ([docker-machine-](virtual-machines-docker-machine.md)) 與負載平衡的 docker 容器叢集管理工具 ([swarm](virtual-machines-docker-swarm.md))。 此外， [Azure Docker VM 擴充程式](https://github.com/Azure/azure-docker-extension/blob/master/README.md) 隨附的預設支援 [`docker-compose`](https://docs.docker.com/compose/), ，可以將部署到多個容器中設定應用程式容器。
 
-此外，您可以試試 [Mesosphere 的資料中心作業系統 (DCOS)](http://docs.mesosphere.com/install/azurecluster/)。 DCOS 根據開放原始碼 [mesos](http://mesos.apache.org/) 「 分散式的系統核心 」，可讓您將您的資料中心視為一個可定址的服務。 DCOS 擁有幾個重要系統的內建套件例如 [Spark](http://spark.apache.org/) 和 [Kafka](http://kafka.apache.org/) (以及其他) 以及內建的服務，如 [馬拉松](https://mesosphere.github.io/marathon/) (容器控制系統) 和 [Chronos](https://mesosphere.github.io/chronos/) (分散式排程器)。 Mesos 衍生自在 Twitter、AirBnb 和其他 Web 規模的企業學習到的工作。
+此外，您可以試試 [Mesosphere 的資料中心作業系統 (DCOS)](http://docs.mesosphere.com/install/azurecluster/)。 DCOS 根據開放原始碼 [mesos](http://mesos.apache.org/) 「 分散式的系統核心 」，可讓您將您的資料中心視為一個可定址的服務。 DCOS 擁有幾個重要系統的內建套件例如 [Spark](http://spark.apache.org/) 和 [Kafka](http://kafka.apache.org/) （以及其他） 以及內建的服務，如 [馬拉松](https://mesosphere.github.io/marathon/) （容器控制系統） 和 [Chronos](https://mesosphere.github.io/chronos/) （分散式排程器）。 Mesos 衍生自在 Twitter、AirBnb 和其他 Web 規模的企業學習到的工作。
 
 此外， [kubernetes](http://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure) 是開放原始碼系統衍生自在 Google 學習到的 VM 和容器群組管理。 您甚至可以使用 [kubernetes 搭配 weave 提供網路支援](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)。
 
@@ -212,7 +212,7 @@ Linux 散發套件和 Azure 範例：
     - [Kubernetes Visualizer](http://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure)
     
 -   [Mesos](http://mesos.apache.org/)
-    -   [Mesosphere 的資料中心作業系統 (DCOS)。](http://beta-docs.mesosphere.com/install/azurecluster/)
+    -   [Mesosphere 的資料中心作業系統 (DCOS)](http://beta-docs.mesosphere.com/install/azurecluster/)
     
 -   [Jenkins](https://jenkins-ci.org/) 和 [Hudson](http://hudson-ci.org/)
     - [部落格：適用於 Azure 的 Jenkins 從屬外掛程式](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
@@ -239,4 +239,5 @@ Linux 散發套件和 Azure 範例：
 [microservices]: http://martinfowler.com/articles/microservices.html
 [microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
+
 

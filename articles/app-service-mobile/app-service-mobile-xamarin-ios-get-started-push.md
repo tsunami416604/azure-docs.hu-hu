@@ -26,14 +26,14 @@
 
 本教學課程根據 [Xamarin.iOS 快速入門教學課程](app-service-mobile-xamarin-ios-get-started.md), ，您必須先完成。 您將會新增推播通知至 Xamarin.iOS 快速入門專案，以便在每次插入一筆記錄時傳送推播通知。 如果您不要使用下載的快速入門伺服器專案，必須將推播通知擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
 
-##先決條件
+##必要條件
 
 若要完成此教學課程，您需要下列項目：
 
 * 使用中的 Azure 帳戶。  
 如果您還沒有帳戶，請註冊 Azure 試用版，還可獲得最多 10 個免費的行動應用程式後端。 試用結束之後您仍可以繼續使用它們。 請參閱 [Azure 免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
 
-* Mac 的 [Xamarin Studio] 和 [Xcode] v4.4 或更新版本安裝它。 如果想要，您可以在 Windows 電腦上使用 Visual Studio 執行 Xamarin.iOS 應用程式，但這樣會比較複雜，因為您必須連線到已加入網路並正在執行 Xamarin.iOS 組建主機 的 Mac。 如果您想要這樣做，請參閱 [在 Windows 上的安裝 Xamarin.iOS]。
+* 使用 Mac [Xamarin Studio] 和 [Xcode] v4.4 或更新版本安裝它。 如果想要，您可以在 Windows 電腦上使用 Visual Studio 執行 Xamarin.iOS 應用程式，但這樣會比較複雜，因為您必須連線到已加入網路並正在執行 Xamarin.iOS 組建主機 的 Mac。 如果您想這麼做，請參閱 [Installing Xamarin.iOS on Windows]。
 
 * 實體的 iOS 裝置。 iOS 模擬器不支援推播通知。
 
@@ -74,7 +74,7 @@
 
 ##將推播通知新增至應用程式
 
-1. 在 **QSTodoService**, ，新增下列屬性，讓 **AppDelegate** 可以取得行動用戶端:
+1. 在 **QSTodoService**, ，新增下列屬性，讓 **AppDelegate** 可以取得行動用戶端 ︰
         
             public MobileServiceClient GetClient {
             get
@@ -92,7 +92,7 @@
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
 
-2. 在 **AppDelegate**, ，覆寫 **FinishedLaunching** 事件: 
+2. 在 **AppDelegate**, ，覆寫 **FinishedLaunching** 事件 ︰ 
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -132,7 +132,7 @@
         }
 
 
-4. 然後，覆寫 **DidReceivedRemoteNotification** 事件:
+4. 然後，覆寫 **DidReceivedRemoteNotification** 事件 ︰
 
         public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
@@ -176,3 +176,4 @@
 
 
  
+

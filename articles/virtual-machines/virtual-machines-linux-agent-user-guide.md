@@ -69,7 +69,7 @@ Azure Linux 代理程式 (/usr/sbin/waagent) 可管理虛擬機器與 Azure 網�
 
 
 ## 需求
-下列系統已經過測試，且已知可與 Azure Linux 代理程式一同運作。 **請注意，這份清單可能與官方的 Microsoft Azure 平台上支援系統清單不同**, ，如下所示:
+下列系統已經過測試，且已知可與 Azure Linux 代理程式一同運作。 **請注意，這份清單可能與官方的 Microsoft Azure 平台上支援系統清單不同**, ，如下所示 ︰
 [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
 
 ###支援的 Linux 散發套件
@@ -154,13 +154,13 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 
  * 將主機名稱重設為 localhost.localdomain
 
- **警告:** 取消佈建不保證映像時的所有機密資訊的清除完畢而適合再度散發。
+ **警告 ︰** 取消佈建不保證映像時的所有機密資訊的清除完畢而適合再度散發。
 
 - deprovision+user：執行 -deprovision (上述) 下的一切動作，並刪除最後佈建的使用者帳戶 (取自於 /var/lib/waagent) 和相關聯的資料。 此參數是為了取消佈建 Azure 上先前佈建的映像檔，以便擷取並重複使用。
 
 - version：顯示 waagent 的版本
 
-- serialconsole: 設定 GRUB 將 ttyS0 (第一個序列埠) 做為
+- serialconsole ︰ 設定 GRUB 將 ttyS0 （第一個序列埠） 做為
    開機主控台。 這樣可以確保核心開機記錄會傳送至
    序列埠，並可供偵錯之用。
 
@@ -198,43 +198,43 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 **Role.StateConsumer：**
 
 類型：字串  
-預設值: 無
+預設值 ︰ 無
 
 如果指定可執行程式的路徑，則當 waagent 已佈建映像檔，且即將向網狀架構報告 "Ready" 狀態時，就會叫用此程式。 指定給程式的引數為 "Ready"。 代理程式會繼續執行而不會等待程式返回。
 
 **Role.ConfigurationConsumer：**
 
 類型：字串  
-預設值: 無
+預設值 ︰ 無
 
 如果指定可執行程式的路徑，則當網狀架構指出虛擬機器有可用的組態檔時，就會叫用此程式。 XML 組態檔的路徑當做引數提供給可執行檔。 只要組態檔有變動，就會叫用程式，因此可能叫用多次。 附錄中提供一個範例檔。 此檔案的目前路徑為 /var/lib/waagent/HostingEnvironmentConfig.xml。
 
 **Role.TopologyConsumer：**
 
 類型：字串  
-預設值: 無
+預設值 ︰ 無
 
 如果指定可執行程式的路徑，則當網狀架構指出有新的網路拓撲配置可用於虛擬機器時，就會叫用此程式。XML 組態檔的路徑當做引數提供給可執行檔。 只要網路拓撲有變動 (例如由於維修)，就會叫用程式，因此可能叫用多次。 附錄中提供一個範例檔。 此檔案的目前位置為 /var/lib/waagent/SharedConfig.xml。
 
 **Provisioning.Enabled：**
 
-型別: 布林值  
+型別 ︰ 布林值  
 預設：y
 
 這可讓使用者啟用或停用代理程式的佈建功能。 有效值為 "y" 或 "n"。 如果停用佈建，則會保留映像檔中的 SSH 主機金鑰和使用者金鑰，並忽略 Azure 佈建 API 中指定的任何組態。
 
-**注意:** 這個參數的預設值為"n"使用 cloud-init 佈建的 Ubuntu 雲端映像。
+**注意 ︰** 這個參數的預設值為"n"使用 cloud-init 佈建的 Ubuntu 雲端映像。
 
 **Provisioning.DeleteRootPassword：**
 
-型別: 布林值  
+型別 ︰ 布林值  
 預設：n
 
 如果設定，則佈建過程中會清除 /etc/shadow 檔案中的根密碼。
 
 **Provisioning.RegenerateSshHostKeyPair：**
 
-型別: 布林值  
+型別 ︰ 布林值  
 預設：y
 
 如果設定，則佈建過程會從 /etc/ssh/ 中刪除所有 SSH 主機金鑰組 (ecdsa、dsa 和 rsa)。 還會產生單一全新的金鑰組。
@@ -250,14 +250,14 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 
 **Provisioning.MonitorHostName：**
 
-型別: 布林值  
+型別 ︰ 布林值  
 預設：y
 
 如果設定，waagent 會監視 Linux 虛擬機器的主機名稱有無變動 (由 "hostname" 命令傳回)，並自動更新映像檔中的網路組態來反映此變動。 為了將名稱變更發送至 DNS 伺服器，虛擬機器中將重新啟動網路功能。 這會導致網際網路連線短暫中斷。
 
 **ResourceDisk.Format：**
 
-型別: 布林值  
+型別 ︰ 布林值  
 預設：y
 
 如果設定，如果使用者在 "ResourceDisk.Filesystem" 中要求的檔案系統類型不是 "ntfs"，則 waagent 會格式化並掛接平台所提供的資源磁碟。 磁碟上將會有 Linux (83) 類型的單一磁碟分割。 請注意，如果可順利掛接此磁碟分割，則不會格式化。
@@ -272,49 +272,49 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 **ResourceDisk.MountPoint：**
 
 類型：字串  
-預設值: /mnt/資源 
+預設值 ︰ /mnt/資源 
 
 這指定資源磁碟的掛接路徑。 請注意，資源磁碟是 *暫存* 磁碟，以及可能會在 VM 取消佈建時清空。
 
 **ResourceDisk.EnableSwap：**
 
-型別: 布林值  
+型別 ︰ 布林值  
 預設：n 
 
 如果設定，則會在資源磁碟上建立交換檔 (/swapfile) 並加入至系統交換空間。
 
 **ResourceDisk.SwapSizeMB：**
 
-型別: 整數  
-預設值: 0
+型別 ︰ 整數  
+預設值 ︰ 0
 
 交換檔的大小 (MB)。
 
 **LBProbeResponder：**
 
-型別: 布林值  
+型別 ︰ 布林值  
 預設：y
 
 如果設定，waagent 會回應來自平台的負載平衡器探查 (若有的話)。
 
 **Logs.Verbose：**
 
-型別: 布林值  
+型別 ︰ 布林值  
 預設：n
 
 如果設定，則記錄詳細程度會提高。 Waagent 會記錄到 /var/log/waagent.log，並利用系統 logrotate 功能來輪換記錄檔。
 
 **OS.RootDeviceScsiTimeout：**
 
-型別: 整數  
-預設值: 300
+型別 ︰ 整數  
+預設值 ︰ 300
 
 這會在 OS 磁碟和資料磁碟機上設定 SCSI 逾時 (以秒為單位)。 如果未設定，則會使用系統預設值。
 
 **OS.OpensslPath：**
 
 類型：字串  
-預設值: 無
+預設值 ︰ 無
 
 這可用來指定加密作業使用的 openssl 二進位檔的替代路徑。
 
@@ -341,3 +341,4 @@ Linux 代理程式需要一些系統封裝才能正確運作：
  - [將自訂資料插入 Azure 虛擬機器](virtual-machines-how-to-inject-custom-data.md)
 
  
+

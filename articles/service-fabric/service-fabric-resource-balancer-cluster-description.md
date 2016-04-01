@@ -182,7 +182,7 @@ NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
-如需詳細資訊: [資源平衡器架構](service-fabric-resource-balancer-architecture.md)
+如需詳細資訊 ︰ [資源平衡器架構](service-fabric-resource-balancer-architecture.md)
 
 
 [Image1]: media/service-fabric-resource-balancer-cluster-description/FD1.png
@@ -192,4 +192,5 @@ NodeName、NodeType、FaultDomain 和 UpgradeDomain 位置屬性均有預設值�
 [Image5]: media/service-fabric-resource-balancer-cluster-description/Config.png
 [Image6]: media/service-fabric-resource-balancer-cluster-description/Thresholds.png
  
+
 

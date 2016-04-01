@@ -424,3 +424,4 @@ SAML 權杖
 
 [Azure Active Directory 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 
+

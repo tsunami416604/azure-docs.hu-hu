@@ -21,7 +21,7 @@
 
 Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、HTTP 即時資料流和 MPEG-Dash。 本主題會指引您可用來測試串流的現有播放程式。  
 
->[AZURE.NOTE]若要播放動態封裝或動態加密的內容，請確定您計畫從該處傳遞內容的串流端點取得至少一個串流單元。 如需調整串流單位的相關資訊，請參閱: [如何調整串流單位](media-services-manage-origins.md#scale_streaming_endpoints)。
+>[AZURE.NOTE]若要播放動態封裝或動態加密的內容，請確定您計畫從該處傳遞內容的串流端點取得至少一個串流單元。 如需調整串流單位的相關資訊，請參閱 ︰ [如何調整串流單位](media-services-manage-origins.md#scale_streaming_endpoints)。
 
 ###Azure 傳統入口網站媒體服務內容播放程式
 
@@ -38,7 +38,7 @@ Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、
 
 ###Azure Media Player
 
-使用 [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) 來播放內容 (清除或受保護) 下列任一形式:
+使用 [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) 來播放內容 （清除或受保護） 下列任一形式 ︰
 
 - Smooth Streaming
 - MPEG DASH
@@ -92,3 +92,4 @@ Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、
 
  
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png 
+

@@ -24,15 +24,15 @@
 
 本主題說明一些管理 API 應用程式的不同選項。 
 
-若要查看這些內建功能，請開啟 [API 應用程式中 [Azure 入口網站](http://go.microsoft.com/fwlink/p/?LinkID=525040)。 如果 API 應用程式是在儀表板上，則請選取它以開啟屬性。 您也可以選取 **瀏覽**, ，請選取 **API 應用程式**, ，然後選取 [API 應用程式:
+若要查看這些內建功能，請開啟 [API 應用程式中 [Azure 入口網站](http://go.microsoft.com/fwlink/p/?LinkID=525040)。 如果 API 應用程式是在儀表板上，則請選取它以開啟屬性。 您也可以選取 **瀏覽**, ，請選取 **API 應用程式**, ，然後選取 [API 應用程式 ︰
 
-![瀏覽]]
+![][browse]
 
 ## 查看您所輸入的內容
 
 當您開啟 API 應用程式時，有幾個功能和工作可用：
 
-![設定]]
+![][settings]
 
 您可以： 
 
@@ -51,18 +51,18 @@
 1. 開啟連接器或 API 應用程式。 這麼做之後，[API 應用程式] 刀鋒視窗隨即開啟。
 2. 在 **Essentials**, ，主機屬性底下按一下超連結。 超連結的命名類似 *slackconnector* 或 *microsoftsqlconnector123*:
 
-    ![] [apiapphost]
+    ![][apiapphost]
 
 3. 在 [API 應用程式主機刀鋒視窗中，選取 [ **設定**。 在 [設定] 分頁中，選取 **應用程式設定**。 您的設定值會列在下 **應用程式設定**: 
     
-    ![] [hostsettings]
+    ![][hostsettings]
 
 4. 按一下您想要變更，請輸入新值的設定和 **儲存** 您的變更。 
 
 
 ## 安裝混合式連線管理員 - 選擇性
 
-![] [hcsetup]
+![][hcsetup]
 
 Hybrid Connection Manager 可讓您連線至內部部署系統 (例如 SQL Server 或 SAP)。 此混合式連線使用 Azure 服務匯流排連線，並控制 Azure 資源與內部部署資源之間的安全性。
 
@@ -73,7 +73,7 @@ Hybrid Connection Manager 可讓您連線至內部部署系統 (例如 SQL Serve
 ## 監視效能
 效能度量是內建功能，並隨附於您所建立的每個 API 應用程式。 這些度量專屬於 Azure 中所裝載的 API 應用程式。 範例度量：
 
-![監視]]
+![][monitoring]
 
 您可以： 
 
@@ -98,7 +98,7 @@ API 應用程式使用以角色為基礎的安全性。 這些角色會套用至
 
 您可以輕鬆地加入使用者，並將 API 應用程式的特定角色指派給他們。 入口網站會顯示具有存取權的使用者和其獲指派角色：
 
-![存取]]  
+![][access]  
 
 - 選取 **使用者** 將使用者指派角色，以及移除使用者。
 - 選取 **角色** 若要查看特定角色中的所有使用者，將使用者新增至角色，並從角色移除使用者。 
@@ -108,9 +108,9 @@ API 應用程式使用以角色為基礎的安全性。 這些角色會套用至
 - 選取 **API 定義** 開啟特定的 API 應用程式會自動建立的 Swagger 檔案。
 - 選取 **相依性** 檢視 API 應用程式所需的檔案。 例如，如果您使用 SAP 連接器，則會在內部部署混合式連線管理員上安裝一些額外檔案。 這些相依性顯示於 [API 應用程式] 刀鋒視窗中。 
 
-> [AZURE.IMPORTANT] 當您開啟您的 API 應用程式屬性，並查看 [ **Essentials**, ，有 **主機** 和 **閘道** 開啟新刀鋒視窗的連結:
+> [AZURE.IMPORTANT] 當您開啟您的 API 應用程式屬性，並查看 [ **Essentials**, ，有 **主機** 和 **閘道** 開啟新刀鋒視窗的連結 ︰
 > 
-> ![主機]]
+> ![][host]
 > 
 > 這些屬性專屬於裝載您 API 應用程式的網站。 使用內建的 API 應用程式或連接器時，這些屬性大部分並未實際套用，我們建議您不要更新這些屬性。 如果您已在 Visual Studio 中建立專屬 API 應用程式，並將其部署至 Azure 訂用帳戶，則可以使用 [主機] 和 [閘道] 刀鋒視窗。 [管理 API 應用程式](../app-service-api/app-service-api-manage-in-portal.md) 進行的動作可以在這些刀鋒視窗中使用自訂建立 API 應用程式提供的詳細資訊。 
 
@@ -134,3 +134,4 @@ API 應用程式使用以角色為基礎的安全性。 這些角色會套用至
 [host]: ./media/app-service-logic-monitor-your-connectors/host.png
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
+

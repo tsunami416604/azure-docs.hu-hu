@@ -23,9 +23,9 @@
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概觀
-在本教學課程中，您將推播通知加入 [Android 的快速入門] 專案，以便每次插入記錄時，要傳送推播通知。 本教學課程為基礎的 [Android 的快速入門] 教學課程，您必須先完成。 如果您不要使用下載的快速入門伺服器專案，必須將推播通知擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
+在本教學課程中，您可以新增推播通知給 [Android quick start] 專案，所以每次插入記錄時，會傳送推播通知。 本教學課程根據 [Android quick start] 教學課程，您必須先完成。 如果您不要使用下載的快速入門伺服器專案，必須將推播通知擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
 
-##先決條件
+##必要條件
 
 若要完成此教學課程，您需要下列項目：
 
@@ -41,7 +41,7 @@
 
 [AZURE.INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-##設定行動應用程式後端以傳送推播要求
+##設定行動應用程式後端以傳送推送要求
 
 [AZURE.INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
@@ -81,3 +81,4 @@
 
 <!-- URLs -->
 [Android quick start]: app-service-mobile-android-get-started.md
+

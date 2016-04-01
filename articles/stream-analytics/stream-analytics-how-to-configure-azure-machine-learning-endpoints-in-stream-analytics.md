@@ -50,9 +50,9 @@ Microsoft Azure Machine Learning 提供可共同作業的拖放工具，供您�
 
 ## 使用基本屬性建立 UDF
 
-例如，下列範例程式碼會建立名為純量 UDF *newudf* 繫結至 Azure 機器學習服務端點。 請注意， *端點* (服務 URI) 可以找到所選服務的 API 說明頁面和 *apiKey* 可以找到服務的主要頁面。
+例如，下列範例程式碼會建立名為純量 UDF *newudf* 繫結至 Azure 機器學習服務端點。 請注意， *端點* （服務 URI） 可以找到所選服務的 API 說明頁面和 *apiKey* 可以找到服務的主要頁面。
 
-PUT: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>? api 版本 =<apiVersion>  
+PUT: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>？ api 版本 =<apiVersion>  
 
 要求本文範例：  
 
@@ -76,7 +76,7 @@ PUT: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Mi
 
 一旦建立好基本架構 UDF，就需要 UDF 的完整定義。 RetreiveDefaultDefinition 端點可協助您取得繫結至 Azure Machine Learning 端點之純量函式的預設定義。 下列內容會要求您取得繫結至 Azure Machine Learning 端點之純量函式的預設 UDF 定義。 因為已在 PUT 要求期間提供，因此它不會指定實際的端點。 串流分析會呼叫要求中提供的端點 (如果已明確提供)。 否則，它會使用原本參考的端點。 UDF 在這邊會採用單一字串參數 (一個句子)，並傳回指出該句子的「情緒」標籤的單一類型字串輸出。
 
-POST: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/ RetrieveDefaultDefinition? api 版本 =<apiVersion>
+POST: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/ RetrieveDefaultDefinition？ api 版本 =<apiVersion>
 
 要求本文範例：  
 
@@ -131,9 +131,9 @@ POST: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/M
 
 現在必須使用先前的回應修補 UDF，如下所示。
 
-修補程式: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>? api 版本 =<apiVersion>
+修補程式 ︰ /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>？ api 版本 =<apiVersion>
 
-要求內文: RetrieveDefaultDefinition 輸出
+要求內文 ︰ RetrieveDefaultDefinition 輸出
 
 ## 實作串流分析轉換來呼叫 UDF
 
@@ -159,3 +159,4 @@ POST: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/M
 - [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
 - [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+

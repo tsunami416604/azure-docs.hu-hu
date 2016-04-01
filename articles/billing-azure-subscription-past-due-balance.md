@@ -28,10 +28,11 @@
 
 全額支付您未付的差額。
 
-**案例 1**: 如果您位於付款的發票模式時，將款項傳送至列在您的發票底部的位置。 如果您需要協助，請連絡 [Azure 支援](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+**案例 1**︰ 如果您位於付款的發票模式時，將款項傳送至列在您的發票底部的位置。 如果您需要協助，請連絡 [Azure 支援](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-**案例 2**: 如果因為信用額度介面卡上，將未支付帳單檔案已被拒絕，或已過期、 使用不同的信用卡卡或付款方法訂閱，或連絡您的銀行以解決此問題。 如需有關如何變更付款方法，在 Azure 中的指示，請參閱 [如何變更用來支付 Azure 訂閱的信用卡](./billing-how-to-change-credit-card.md)。 您必須以帳戶管理員的身分登入才能進行這項變更。
+**案例 2**︰ 如果因為信用額度介面卡上，將未支付帳單檔案已被拒絕，或已過期、 使用不同的信用卡卡或付款方法訂閱，或連絡您的銀行以解決此問題。 如需有關如何變更付款方法，在 Azure 中的指示，請參閱 [如何變更用來支付 Azure 訂閱的信用卡](./billing-how-to-change-credit-card.md)。 您必須以帳戶管理員的身分登入才能進行這項變更。
 
 
-**案例 3**: 如果沒有收到 bill 請注意，因為帳戶系統管理員已離開公司或變更的角色，請連絡 [Azure 支援](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 來解決問題。
+**案例 3**︰ 如果沒有收到 bill 請注意，因為帳戶系統管理員已離開公司或變更的角色，請連絡 [Azure 支援](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 來解決問題。
+
 

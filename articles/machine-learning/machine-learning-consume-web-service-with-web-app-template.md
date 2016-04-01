@@ -130,3 +130,4 @@ Web 應用程式將會顯示具有工作狀態的頁面。
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
+

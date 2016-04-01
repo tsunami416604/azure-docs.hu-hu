@@ -33,7 +33,7 @@
 用戶端開發電腦上必須有下列軟體項目。
 
 
--  Node.js- [0.8.9 版 (32 位元版本)](http://blog.nodejs.org/2012/09/11/node-v0-8-9-stable/)。 捲動並按一下適用於 32 位元 x86 的 Window Installer 下載連結，而不是 Windows x64 Installer 64 位元。
+-  Node.js- [0.8.9 版 （32 位元版本）](http://blog.nodejs.org/2012/09/11/node-v0-8-9-stable/)。 捲動並按一下適用於 32 位元 x86 的 Window Installer 下載連結，而不是 Windows x64 Installer 64 位元。
 - [Python 2.7.6](https://www.python.org/download/releases/2.7.6/), ，x86 或 x64 的安裝程式。
 - [Visual c + + 2010年](https://app.vssps.visualstudio.com/profile/review?download=true&family=VisualStudioCExpress&release=VisualStudio2010&type=web&slcid=0x409&context=eyJwZSI6MSwicGMiOjEsImljIjoxLCJhbyI6MCwiYW0iOjEsIm9wIjpudWxsLCJhZCI6bnVsbCwiZmEiOjAsImF1IjpudWxsLCJjdiI6OTY4OTg2MzU1LCJmcyI6MCwic3UiOjAsImVyIjoxfQ2) -Express edition 是 Microsoft 免費提供。
 - SQL Server Native Client 11.0-使用 Microsoft SQL Server 2012 Native Client 中所找到 [SQL Server 2012 Feature Pack](http://www.microsoft.com/download/details.aspx?id=29065)。
@@ -89,7 +89,7 @@
         node index.js
 
 
-## 步驟 3: 執行查詢
+## 步驟 3 ︰ 執行查詢
 
 
     var http = require('http');
@@ -121,7 +121,7 @@
     });
 
 
-## 步驟 4: 插入資料列
+## 步驟 4 ︰ 插入資料列
 
 
     var http = require('http');
@@ -153,7 +153,7 @@
     });
 
 
-## 步驟 5: 回復交易
+## 步驟 5 ︰ 回復交易
 
 
 此方法 **conn.beginTransactions** 在 Azure SQL Database 中無法運作。 相反地，請遵循下列程式碼範例，以在 SQL Database 中執行交易。
@@ -228,4 +228,5 @@
 ## 後續步驟
 
 如需詳細資訊，請參閱 [Node.js 開發人員中心](/develop/nodejs/)。
+
 

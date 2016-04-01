@@ -36,7 +36,7 @@
 <a id="manualinstallation"></a>
 ## 使用手動安裝
 
-手動安裝的自訂 io.js 版本只包括兩個步驟。 首先，下載 **win-x64** 直接從二進位 [io.js distribution]。 需要兩個檔案- **iojs.exe** 和 **iojs.lib**。 將這兩個檔案至您的 web 應用程式內的資料夾，例如儲存在 **bin/iojs**。
+手動安裝的自訂 io.js 版本只包括兩個步驟。 首先，下載 **win x64** 直接從二進位 [io.js distribution]。 需要兩個檔案- **iojs.exe** 和 **iojs.lib**。 將這兩個檔案至您的 web 應用程式內的資料夾，例如儲存在 **bin/iojs**。
 
 若要設定 Web 應用程式以使用 **iojs.exe** 而不是預先安裝的 Node 版本，建立 **IISNode.yml** 檔案在您的應用程式的根目錄，並加入下列這一行。
 
@@ -50,12 +50,13 @@
 > [AZURE.NOTE] io.js 正在密集的開發中，而且比 Node.js 更頻繁地更新。 許多 Node.js 模組可能不適用於 io.js，請參閱 [io.js on GitHub] 進行疑難排解。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 [io.js]: https://iojs.org
 [io.js distribution]: https://iojs.org/dist/
 [io.js on GitHub]: https://github.com/iojs/io.js
 [io.js Deployment Script]: https://github.com/felixrieseberg/iojs-azure
  
+

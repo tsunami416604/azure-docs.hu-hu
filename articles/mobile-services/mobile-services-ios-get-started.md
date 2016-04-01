@@ -55,18 +55,18 @@
 [AZURE.INCLUDE [mobile-services-ios-run-app](../../includes/mobile-services-ios-run-app.md)]
 
 <ol start="4">
-<li><p>回到 [Azure 傳統入口網站]，按一下 [ **資料** 標籤，然後按一下 **TodoItem** 資料表。 這可讓您瀏覽由應用程式插入資料表的資料。<p></li></ol></p>
+<li><p>回到 [Azure 傳統入口網站]，按一下 [ **資料** 標籤，然後按一下 **TodoItem** 資料表。 如此可讓您瀏覽由應用程式插入資料表中的資料。<p></li></ol></p>
 
 ## <a name="next-steps"> </a>後續步驟
 了解如何在行動服務中執行其他重要工作：
 
-* [開始使用離線資料同步]
+* [Get started with offline data sync]
     <br/>了解如何使用離線資料同步處理，建立可快速回應和功能強大的應用程式。
 
-* [將驗證新增至現有的應用程式]
+* [Add authentication to an existing app]
     <br/>了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
-* [將推播通知新增至現有的應用程式]
+* [Add push notifications to an existing app]
     <br/>了解如何將非常基本的推播通知傳送至您的應用程式。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
@@ -98,4 +98,5 @@
 [Azure classic portal]: https://manage.windowsazure.com/
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET backend version]: mobile-services-dotnet-backend-ios-get-started.md
+
 

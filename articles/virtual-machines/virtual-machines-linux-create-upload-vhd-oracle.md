@@ -59,14 +59,14 @@
 
         # sudo rpm -e --nodeps NetworkManager
 
-    **注意:** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
+    **注意 ︰** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
 
-4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
+4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
+5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -96,7 +96,7 @@
 
     這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 因為 Oracle Red Hat 相容核心的一個錯誤，這將會停用 NUMA。
 
-    除了上述建議 *移除* 下列參數:
+    除了上述建議 *移除* 下列參數 ︰
 
         rhgb quiet crashkernel=auto
 
@@ -153,12 +153,12 @@
 
 2. 按一下 [ **連接** 開啟虛擬機器的主控台視窗。
 
-3.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
+3.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
+4.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -191,7 +191,7 @@
 
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述建議 *移除* 下列參數:
+    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述建議 *移除* 下列參數 ︰
 
         rhgb quiet crashkernel=auto
 
@@ -227,4 +227,5 @@
         # logout
 
 15. 按一下 [ **動作]-> [關閉下** HYPER-V 管理員中。 您現在可以將 Linux VHD 上傳至 Azure。
+
 

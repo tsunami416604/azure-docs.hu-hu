@@ -90,7 +90,7 @@ Azure 中的映像庫會提供預先配置的可用虛擬機器清單。 使用�
     - 在 **雲端服務**, ，請選取 **建立新的雲端服務**, ，在此情況下也提供雲端服務 DNS 名稱，或選取現有的雲端服務。
     - 在 **區域/同質群組/虛擬網路**, ，選取將裝載虛擬映像的區域。
     - 在 **儲存體帳戶**, ，按一下 [ **使用自動產生的儲存體帳戶** 或選取現有的儲存體帳戶名稱。 每個區域只會自動建立一個儲存體帳戶。 您利用此設定建立的所有其他虛擬機器均位於此儲存體帳戶。 您的儲存體帳戶限制為 20 個。 如需詳細資訊，請移至 [在 Azure 中建立儲存體帳戶](virtual-machines-create-upload-vhd-windows-server.md#step-2-create-a-storage-account-in-azure)。
-    - 在 **可用性設定組**, ，請選取 **(無)**, ，然後按一下向右箭號。
+    - 在 **可用性設定組**, ，請選取 **（無）**, ，然後按一下向右箭號。
 6. 在第三個 **虛擬機器組態** 對話方塊方塊中，按一下核取記號以建立虛擬機器。
 
 若要連線至虛擬機器，請參閱 [如何登入執行 Windows Server 的虛擬機器](virtual-machines-log-on-windows-server.md)。
@@ -287,4 +287,5 @@ Azure 虛擬機器可用來執行完整而連續的 SharePoint 部署。 Azure �
 [Azure 基礎結構服務實作指導方針](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
 [在 Azure 中測試 SharePoint Server 2016 IT 預覽版](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)
+
 

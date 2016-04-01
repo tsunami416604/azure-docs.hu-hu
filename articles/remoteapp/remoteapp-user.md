@@ -17,7 +17,7 @@
 
 # 如何將使用者新增至您的 Azure RemoteApp 集合
 
-您必須先授與使用者您集合的存取權，他們才能在 Azure RemoteApp 中看到和使用您的應用程式。 這是最簡單的部分: 在 **使用者存取** ] 索引標籤上，輸入使用者的帳戶資訊，然後按一下 [核取記號。
+您必須先授與使用者您集合的存取權，他們才能在 Azure RemoteApp 中看到和使用您的應用程式。 這是最簡單的部分 ︰ 在 **使用者存取** ] 索引標籤上，輸入使用者的帳戶資訊，然後按一下 [核取記號。
 
 您需要什麼帳戶資訊？ 這取決於您建立的收藏類型 (雲端或混合式)，還有您是否正在該收藏中使用 Office 365 ProPlus。
 
@@ -41,7 +41,7 @@ Office 365 使用者為 Azure Active Directory 使用者。 如果這些使用�
 |具有密碼同步的 ADsync  |是    |是    |
 |不具密碼同步的 ADsync|  是 |否 |
 |具 AD FS 的 ADsync  |是    |是    |
-|第 3 方 Azure 支援的身分識別提供者 (例如 Ping)   |是    |是|
+|第 3 方 Azure 支援的身分識別提供者 （例如 Ping）   |是    |是|
 |Multi-Factor Authentication    |是    |是    |
 
 簽出 [更多資訊](remoteapp-ad.md) 有關設定 RemoteApp 的 Active Directory。
@@ -51,4 +51,5 @@ Office 365 使用者為 Azure Active Directory 使用者。 如果這些使用�
 
 ## Office 365 ProPlus 使用者帳戶資訊
 如果您的收藏中使用 Office 365 ProPlus 範本映像 *或* 如果您建立使用 Office 365 的自訂映像，您只能新增 Azure Active Directory 使用者擁有 Office 365 訂用帳戶的預設網域您的訂閱。 請參閱 [透過 Azure RemoteApp 使用 Office 365](remoteapp-o365.md) 如需詳細資訊。
+
 

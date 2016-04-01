@@ -74,7 +74,7 @@ class HelloActor : Actor, IHello
 
 下圖為說明這些概念的範例。
 
-![在範例中的閒置時間][] 1
+![閒置時間的範例][1]
 
 本範例假設作用中動作項目資料表只有一個作用中動作項目。 範例將說明動作項目方法呼叫、提醒，以及此動作項目存留期之計時器的影響。 範例中有幾下幾點值得注意：
 
@@ -89,4 +89,5 @@ class HelloActor : Actor, IHello
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
+
 

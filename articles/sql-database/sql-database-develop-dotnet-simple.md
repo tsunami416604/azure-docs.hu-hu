@@ -34,11 +34,11 @@
 
 請參閱 [入門頁面](sql-database-get-started.md) 以了解如何建立範例資料庫。  請務必遵循該指南以建立 **AdventureWorks 資料庫範本**。 只有如下所示的範例適用於 **AdventureWorks 結構描述**。  
 
-## 步驟 1: 取得連接字串
+## 步驟 1 ︰ 取得連接字串
 
 [AZURE.INCLUDE [sql-database-include-connection-string-dotnet-20-portalshots](../../includes/sql-database-include-connection-string-dotnet-20-portalshots.md)]
 
-## 步驟 2: 連接
+## 步驟 2 ︰ 連接
 
  [System.Data.SqlClient.SqlConnection 類別](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 用來連接到 SQL 資料庫。
 
@@ -132,4 +132,5 @@ class Sample
     }
 }
 ```
+
 

@@ -21,9 +21,9 @@
 
 ## 升級所需的參數
 
-您可以選擇的部署有兩種： 一般或升級。 一般部署會將叢集上所有先前的部署資訊和資料都清除，而升級部署則會將其保留。 當您在 Visual Studio 中升級 Service Fabric 應用程式時，您需要提供應用程式升級參數和健康情況檢查原則。 應用程式升級參數可協助控制升級，而健康情況檢查原則則可判斷升級是否成功。 請參閱 [Service Fabric 應用程式升級: 升級參數](service-fabric-application-upgrade-parameters.md) 如需詳細資訊。
+您可以選擇的部署有兩種： 一般或升級。 一般部署會將叢集上所有先前的部署資訊和資料都清除，而升級部署則會將其保留。 當您在 Visual Studio 中升級 Service Fabric 應用程式時，您需要提供應用程式升級參數和健康情況檢查原則。 應用程式升級參數可協助控制升級，而健康情況檢查原則則可判斷升級是否成功。 請參閱 [Service Fabric 應用程式升級 ︰ 升級參數](service-fabric-application-upgrade-parameters.md) 如需詳細資訊。
 
-有三種升級模式: *監視*, ，*UnmonitoredAuto*, ，和 *手動*。
+有三種升級模式 ︰ *監視*, ，*UnmonitoredAuto*, ，和 *手動*。
 
   - A *監視* 升級會自動升級和應用程式健全狀況檢查。
 
@@ -49,7 +49,7 @@
     @{ ConsiderWarningAsError = "false"; MaxPercentUnhealthyDeployedApplications = 0; MaxPercentUnhealthyServices = 0; MaxPercentUnhealthyPartitionsPerService = 0; MaxPercentUnhealthyReplicasPerPartition = 0 }
     ```
     
-    *ServiceTypeHealthPolicyMap* 是採用下列格式的雜湊資料表輸入另一個選擇性參數:
+    *ServiceTypeHealthPolicyMap* 是採用下列格式的雜湊資料表輸入另一個選擇性參數 ︰
 
     ```    
     @ {"ServiceTypeName" : "MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices"}
@@ -62,7 +62,7 @@
     @{ "ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5" }
     ```
 
-3. 如果您選取 *UnmonitoredManual* 升級模式，您必須手動啟動 PowerShell 主控台中，以繼續並完成升級程序。 請參閱 [Service Fabric 應用程式升級: 進階主題](service-fabric-application-upgrade-advanced.md) 若要了解如何手動升級的運作方式
+3. 如果您選取 *UnmonitoredManual* 升級模式，您必須手動啟動 PowerShell 主控台中，以繼續並完成升級程序。 請參閱 [Service Fabric 應用程式升級 ︰ 進階主題](service-fabric-application-upgrade-advanced.md) 若要了解如何手動升級的運作方式
 
 ## 使用 PowerShell 升級應用程式
 
@@ -89,5 +89,6 @@ Service Fabric 應用程式中的每個服務都可以有自己的健康情況�
 ```
 ## 後續步驟
 如需有關部署應用程式的詳細資訊，請參閱 [部署現有的應用程式在 Azure Service Fabric](service-fabric-deploy-existing-app.md)。
+
 
 

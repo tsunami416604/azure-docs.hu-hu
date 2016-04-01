@@ -42,7 +42,7 @@ Blob|**預設 URL:** http://mystorageaccount.blob.core.windows.net/mycontainer/m
 
 如果您不需要顧及使用者會短暫地無法存取網域的問題，抑或是自訂網域目前未主控應用程式，您可以使用此程序來註冊自訂網域。 
 
-如果自訂網域目前支援不得發生停機時間的應用程式，可使用 <a href="#register-asverify">使用中繼的 asverify 子網域針對儲存體帳戶註冊自訂網域</a>.
+若自訂網域目前支援不允許發生任何停機狀況的應用程式，請執行 <a href="#register-asverify">使用中繼的 asverify 子網域針對儲存體帳戶註冊自訂網域</a> 列出的程序。
 
 若要設定自訂網域名稱，您必須向網域註冊機構建立新的 CNAME 記錄。 CNAME 記錄能指定網域名稱的別名。在這種情況下，它能將自訂網域的位址對應至儲存體帳戶的 Blob 服務端點。
 
@@ -101,7 +101,7 @@ asverify 子網域是 Azure 認可的特殊子網域。 附加在前面 **asveri
 
 8.  您已建立 CNAME 記錄後，回到 **管理自訂網域** ] 對話方塊中，輸入您的自訂網域名稱中 **自訂網域名稱** 欄位。 例如，如果您的網域是 **contoso.com** 子網域，而且 **www**, ，輸入 **www.contoso.com**; 如果您的子網域為 **相片**, ，輸入 **photos.contoso.com**。 請注意，子網域是必要項目。
 
-9.  按一下核取方塊，指出 **進階: 使用 'asverify' 子網域將核取方塊**。 
+9.  按一下核取方塊，指出 **進階 ︰ 使用 'asverify' 子網域將核取方塊**。 
 
 10. 按一下 [ **註冊** 按鈕以預先註冊自訂網域。 
 
@@ -121,12 +121,13 @@ asverify 子網域是 Azure 認可的特殊子網域。 附加在前面 **asveri
 
 例如，您可以使用下列 URI 透過
 **photos.contoso.com** 自訂子網域中之 blob 對應程式
-**myforms** 容器:
+**myforms** 容器 ︰
 
 -   http://photos.contoso.com/myforms/applicationform.htm
 
 ## 其他資源
 
--   <a href="http://msdn.microsoft.com/library/azure/gg680307.aspx">如何將 CDN 對應至自訂網域</a>
+-   <a href="http://msdn.microsoft.com/library/azure/gg680307.aspx">如何將 CDN 內容對應至自訂網域</a>
  
+
 

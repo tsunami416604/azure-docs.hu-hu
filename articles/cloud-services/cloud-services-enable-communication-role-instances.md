@@ -23,7 +23,7 @@ ms.author="adegeo"/>
 ## 輸入端點
 輸入端點是在您要對外公開連接埠時使用。 您可以指定通訊協定類型端點連接埠，稍後這些連接埠將套用至端點的外部和內部連接埠。 如果您想，您可以指定不同的內部連接埠的端點 [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 屬性。
 
-輸入的端點可以使用下列通訊協定: **http、 https、 tcp、 udp**。
+輸入的端點可以使用下列通訊協定 ︰ **http、 https、 tcp、 udp**。
 
 若要建立的輸入的端點， **InputEndpoint** 子項目 **端點** web 或背景工作角色的項目。
 
@@ -53,7 +53,7 @@ ms.author="adegeo"/>
 ## 內部端點
 內部端點可供執行個體對執行個體通訊時使用。 該連接埠是選擇性的，如果省略，將指派動態連接埠至端點。 可以使用連接埠範圍。 每個角色的限制為五個內部端點。
 
-內部端點可以使用下列通訊協定: **http、 tcp、 udp、 任何**。
+內部端點可以使用下列通訊協定 ︰ **http、 tcp、 udp、 任何**。
 
 若要建立內部的輸入的端點， **InternalEndpoint** 子項目 **端點** web 或背景工作角色的項目。
 
@@ -358,3 +358,4 @@ namespace WorkerRole1
 
 ## 後續步驟
 深入了解雲端服務 [模型](cloud-services-model-and-package.md)。
+

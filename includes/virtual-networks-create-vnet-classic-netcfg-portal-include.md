@@ -16,7 +16,7 @@ Azure 使用 xml 檔案定義訂用帳戶可用的所有 VNet。 您可以下載
 4. 在 **匯出網路組態** 頁面上，選取您想要匯出虛擬網路組態，來自訂用的帳戶，然後按一下 [在頁面的左下角的核取記號按鈕。
 5. 遵循您的瀏覽器指示儲存 **NetworkConfig.xml** 檔案。 請務必記下儲存檔案的位置。
 6. 開啟您在上面使用任何 XML 或文字編輯器應用程式的步驟 5 中所儲存的檔案，並尋找 **<VirtualNetworkSites>** 項目。 如果您有任何已建立的網路，每個網路將會變成自己 **<VirtualNetworkSite>** 項目。
-7. 若要建立虛擬網路在此案例中所述，新增下列 XML 低於 **<VirtualNetworkSites>** 項目:
+7. 若要建立虛擬網路在此案例中所述，新增下列 XML 低於 **<VirtualNetworkSites>** 項目 ︰
 
         <VirtualNetworkSite name="TestVNet" Location="Central US">
           <AddressSpace>
@@ -48,3 +48,4 @@ Azure 使用 xml 檔案定義訂用帳戶可用的所有 VNet。 您可以下載
 12.   按一下頁面右下角的核取記號按鈕建立 VNet。 幾秒鐘後，VNet 會顯示在可用 VNet 清單中，如下圖所示。
 
     ![New virtual network](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure6.png)
+

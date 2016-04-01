@@ -84,7 +84,7 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
 
 1. 在 Hudson 儀表板中，按一下 [ **Manage Hudson**。
 2. 在 **Manage Hudson** 頁面上，按一下 **設定系統**。
-3. 在 **Microsoft Azure 儲存體帳戶組態** 區段:
+3. 在 **Microsoft Azure 儲存體帳戶組態** 區段 ︰
 
     a. 輸入您儲存體帳戶名稱，您可以從取得 [Azure 入口網站](portal.azure.com)。
 
@@ -105,7 +105,7 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
 1. 在 Hudson 儀表板中，按一下 [ **新工作**。
 2. 將工作 **MyJob**, ，按一下 [ **建置自由樣式的軟體作業**, ，然後按一下 [ **確定**。
 3. 在 **建置** 區段的工作組態中，按一下 [ **新增建置步驟** 選擇 **Execute Windows batch 命令**。
-4. 在 **命令**, ，使用下列命令:
+4. 在 **命令**, ，使用下列命令 ︰
 
         md text
         cd text
@@ -122,7 +122,7 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
     下面 **命令** 您已輸入的指令碼的區段 **Execute Windows batch 命令** 會連結到 Hudson 認可的環境變數。 按一下該連結即可了解各環境變數名稱和描述。 請注意，環境變數包含特殊字元，例如 **BUILD_URL** 環境變數不能當做容器名稱或共同虛擬路徑。
 
 8. 按一下 [ **新容器變成公開預設** 此範例中。 (如果您想要使用私用容器，則需要建立共用存取簽章來允許存取。 這已超出本文的範圍。 您可以進一步了解共用的存取簽章在 [建立共用存取簽章](http://go.microsoft.com/fwlink/?LinkId=279889)。)
-9. [選用]按一下 [ **Clean container** 如果您想要上傳組建成品之前清除內容的容器 (保留為未選取如果您不想清除容器的內容)。
+9. [選用]按一下 [ **Clean container** 如果您想要上傳組建成品之前清除內容的容器 （保留為未選取如果您不想清除容器的內容）。
 10. 如 **要上傳--成品**, ，輸入 **文字 /*.txt**。
 11. 如 **已上傳的成品的共同虛擬路徑**, ，輸入 **${BUILD\_ID} / ${BUILD\_NUMBER}**。
 12. 按一下 [ **儲存** 以儲存設定。
@@ -139,7 +139,7 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
 
     e. 按一下 [容器名稱 **myjob**, ，這是您在建立 Hudson 工作時所指派之工作名稱的小寫版本。 在 Azure 儲存體中，容器名稱和 Blob 名稱皆為小寫 (並且區分大小寫)。 清單內的 blob 容器名稱 **myjob** 您應該會看到 **hello.txt** 和 **date.txt**。 請複製這些項目中任何一項的 URL，然後在瀏覽器中開啟它。 您會看到文字檔已上傳作為組建成品。
 
-每個工作只能建立一個將成品上傳至 Azure Blob 儲存體的建置後動作。 請注意，將成品上傳至 Azure Blob 儲存體的單一建置後動作可以指定不同的檔案 (包含萬用字元) 和中的檔案路徑 **要上傳--成品** 使用分號作為分隔符號。 例如，若 Hudson 組建產生 JAR 檔和 TXT 檔，在工作區的 **建置** 資料夾，而您想要上傳至 Azure Blob 儲存體兩者，請使用下列 **要上傳--成品** 值: **build/\*.jar;build/\*.txt**。 您也可以使用雙冒號語法來指定要在 Blob 名稱內使用的路徑。 比方說，如果您想要使用上傳 Jar **二進位檔** 在 blob 路徑和使用上傳的 TXT 檔案 **通知** 在 blob 路徑中，使用下列 **要上傳--成品** 值: **build/\*.jar::binaries;build/\*.txt::notices**。
+每個工作只能建立一個將成品上傳至 Azure Blob 儲存體的建置後動作。 請注意，將成品上傳至 Azure Blob 儲存體的單一建置後動作可以指定不同的檔案 （包含萬用字元） 和中的檔案路徑 **要上傳--成品** 使用分號作為分隔符號。 例如，若 Hudson 組建產生 JAR 檔和 TXT 檔，在工作區的 **建置** 資料夾，而您想要上傳至 Azure Blob 儲存體兩者，請使用下列 **要上傳--成品** 值 ︰ **build/\*.jar;build/\*.txt**。 您也可以使用雙冒號語法來指定要在 Blob 名稱內使用的路徑。 比方說，如果您想要使用上傳 Jar **二進位檔** 在 blob 路徑和使用上傳的 TXT 檔案 **通知** 在 blob 路徑中，使用下列 **要上傳--成品** 值 ︰ **build/\*.jar::binaries;build/\*.txt::notices**。
 
 ## 如何建立從 Azure Blob 儲存體下載的組建步驟 ##
 
@@ -159,16 +159,16 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
 
 以下提供 Blob 服務元件的概觀。
 
-- **儲存體帳戶**: 存取 Azure 儲存體透過儲存體帳戶。 這是存取 blob 用的最高等級的命名空間。 帳戶可以包含不限數目的容器，只要它們的大小總計低於 100 TB 即可。
-- **容器**: 容器提供一組 blob 的群組。 所有 Blob 都必須放在容器中。 一個帳戶可以包含的容器不限數量。 容器可以儲存無限制的 Blob。
-- **Blob**: 任何類型和大小的檔案。 Azure 儲存中可以儲存兩種 Blob：區塊 Blob 和分頁 Blob。 大部分檔案都是區塊 Blob。 單一區塊 Blob 的大小上限為 200 GB。 本教學課程使用區塊 Blob。 分頁 Blob (另一種 Blob 類型) 的大小上限為 1 TB，當檔案中的位元組範圍經常修改時，分頁 Blob 的效率較高。 如需 blob 的詳細資訊，請參閱 [了解區塊 Blob 和分頁 Blob](http://msdn.microsoft.com/library/azure/ee691964.aspx)。
-- **URL 格式**: 利用下列 URL 格式來定址 Blob:
+- **儲存體帳戶**︰ 存取 Azure 儲存體透過儲存體帳戶。 這是存取 blob 用的最高等級的命名空間。 帳戶可以包含不限數目的容器，只要它們的大小總計低於 100 TB 即可。
+- **容器**︰ 容器提供一組 blob 的群組。 所有 Blob 都必須放在容器中。 一個帳戶可以包含的容器不限數量。 容器可以儲存無限制的 Blob。
+- **Blob**︰ 任何類型和大小的檔案。 Azure 儲存中可以儲存兩種 Blob：區塊 Blob 和分頁 Blob。 大部分檔案都是區塊 Blob。 單一區塊 Blob 的大小上限為 200 GB。 本教學課程使用區塊 Blob。 分頁 Blob (另一種 Blob 類型) 的大小上限為 1 TB，當檔案中的位元組範圍經常修改時，分頁 Blob 的效率較高。 如需 blob 的詳細資訊，請參閱 [了解區塊 Blob 和分頁 Blob](http://msdn.microsoft.com/library/azure/ee691964.aspx)。
+- **URL 格式**︰ 利用下列 URL 格式來定址 Blob:
 
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
 
     (上述格式適用於公用 Azure 雲端。 如果您使用不同的 Azure 雲端，使用中的端點 [Azure 入口網站](portal.azure.com) 來判斷您的 URL 端點。)
 
-    在上述格式中，`storageaccount` 代表您的儲存體帳戶名稱，`container_name` 代表您的容器名稱，而 `blob_name` 代表您的 Blob 名稱。 容器名稱中可以有多個以正斜線分隔的路徑 **/**。 在本教學課程的範例容器名稱為 **MyJob**, ，和 **${BUILD\_ID} / ${BUILD\_NUMBER}** 所使用的共同虛擬路徑，產生的 blob url 格式如下:
+    在上述格式中，`storageaccount` 代表您的儲存體帳戶名稱，`container_name` 代表您的容器名稱，而 `blob_name` 代表您的 Blob 名稱。 容器名稱中可以有多個以正斜線分隔的路徑 **/**。 在本教學課程的範例容器名稱為 **MyJob**, ，和 **${BUILD\_ID} / ${BUILD\_NUMBER}** 所使用的共同虛擬路徑，產生的 blob url 格式如下 ︰
 
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
@@ -176,4 +176,5 @@ Hudson 提供軟體專案的連續整合，方法是允許開發人員輕易整�
 
   [How to Create a Storage Account]: http://go.microsoft.com/fwlink/?LinkId=279823
   [Meet Hudson]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
+
 

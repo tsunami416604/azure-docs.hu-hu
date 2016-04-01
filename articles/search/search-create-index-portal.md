@@ -60,7 +60,7 @@
 
 8. 取代 **識別碼** 與 **hotelId**。
 
-9. 按一下 [ **確定** (欄位和索引) 來建立索引的每個分頁上。
+9. 按一下 [ **確定** （欄位和索引） 來建立索引的每個分頁上。
 
 ## 新增欄位
 
@@ -104,4 +104,5 @@
 [3]: ./media/search-create-index-portal/AzureSearch-PortalIndex-3.PNG
 [4]: ./media/search-create-index-portal/AzureSearch-PortalIndex-4.PNG
 [5]: ./media/search-create-index-portal/AzureSearch-PortalIndex-5.PNG
+
 

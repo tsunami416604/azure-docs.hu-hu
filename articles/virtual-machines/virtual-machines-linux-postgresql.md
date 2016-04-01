@@ -69,7 +69,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 
         # ./configure --prefix=/opt/postgresql-9.3.5
 
-5. 如果您想要建置所有項目可以建置，包括文件 (HTML 和 man 頁面) 和其他模組 (contrib))，則執行下列命令:
+5. 如果您想要建置所有項目可以建置，包括文件 （HTML 和 man 頁面） 和其他模組 (contrib）)，則執行下列命令 ︰
 
         # gmake install-world
 
@@ -98,7 +98,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
    > [AZURE.NOTE] 基於安全性理由，PostgreSQL 會使用非根使用者，來初始化、 啟動或關閉資料庫。
 
 
-4. 編輯 *bash_profile* 檔案中的輸入下列命令。 這幾行將加入到結尾 *bash_profile* 檔案:
+4. 編輯 *bash_profile* 檔案中的輸入下列命令。 這幾行將加入到結尾 *bash_profile* 檔案 ︰
 
         cat >> ~/.bash_profile <<EOF
         export PGPORT=1999
@@ -113,7 +113,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
         alias ll='ls -lh'
         EOF
 
-5. 執行 *bash_profile* 檔案:
+5. 執行 *bash_profile* 檔案 ︰
 
         $ source .bash_profile
 
@@ -147,7 +147,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 
     # cp linux /etc/init.d/postgresql
 
-修改 /etc/init.d/postgresql 檔案中的兩個變數。 前置詞設為 PostgreSQL 的安裝路徑: **/選擇/pgsql**。 PGDATA 設為 PostgreSQL 的資料儲存路徑: **/opt/pgsql_data**。
+修改 /etc/init.d/postgresql 檔案中的兩個變數。 前置詞設為 PostgreSQL 的安裝路徑 ︰ **/選擇/pgsql**。 PGDATA 設為 PostgreSQL 的資料儲存路徑 ︰ **/opt/pgsql_data**。
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
@@ -255,4 +255,5 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 
 ##取得 PostgreSQL 的詳細資訊
 既然您已完成在 Azure Linux VM 中的 PostgreSQL 安裝，您可以在 Azure 中享用它。 若要深入了解 PostgreSQL，請造訪 [PostgreSQL 網站](http://www.postgresql.org/)。
+
 

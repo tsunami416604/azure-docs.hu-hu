@@ -24,7 +24,7 @@
 
 若要建立新的開發人員，請按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。 這會帶您前往 API 管理發行者入口網站。 如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 按一下 [ **使用者** 從 **API 管理** 左邊的功能表，然後按一下 **將使用者加入**。
 
@@ -90,3 +90,4 @@
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Configure email templates]: api-management-howto-configure-notifications.md#email-templates
+

@@ -38,8 +38,8 @@
 
 若要複製 SQL Database，您需要下列項目：
 
-- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
-- 要複製的 SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟: [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
+- Azure 訂閱。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
+- 要複製的 SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟 ︰ [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
 
 
 
@@ -49,15 +49,15 @@
 
 1.  移至 [Azure 入口網站](https://portal.azure.com)。
 2.  移至您要複製的資料庫：瀏覽 > SQL Database
-3.  在 SQL 資料庫分頁中按一下 [ **複製** 開啟 **複製** 刀鋒視窗中:
+3.  在 SQL 資料庫分頁中按一下 [ **複製** 開啟 **複製** 刀鋒視窗中 ︰
 
-    ![複製資料庫][] 1
+    ![複製資料庫][1]
 
 1.  輸入資料庫副本的名稱。 系統會提供預設名稱，但您可視需要加以變更。
 2.  選取 **目標伺服器**。 目標伺服器就是要建立資料庫副本的位置。 您可以建立新的伺服器，或從清單中選取現有的伺服器。
 3.  按一下 [ **確定** 啟動複製程序。
 
-    ![資料庫名稱和伺服器][] 2
+    ![資料庫名稱和伺服器][2]
 
 
 
@@ -100,5 +100,6 @@
 [2]: ./media/sql-database-copy/copy-ok.png
 [3]: ./media/sql-database-copy/copy-notification.png
 [4]: ./media/sql-database-copy/monitor-copy.png
+
 
 

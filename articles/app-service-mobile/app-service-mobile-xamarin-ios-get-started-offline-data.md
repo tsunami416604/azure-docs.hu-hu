@@ -26,9 +26,9 @@
 
 此教學課程介紹適用於 Xamarin.iOS 之 Azure 行動應用程式的離線同步處理功能。 離線同步處理可讓使用者與行動應用程式進行互動--檢視、新增或修改資料--即使沒有網路連線進也可行。 變更會儲存在本機資料庫中︰裝置上線後，這些變更就會與遠端服務進行同步處理。
 
-在本教學課程中，您將更新教學課程以支援 Azure 行動應用程式的離線功能的 [建立 Xamarin iOS 應用程式] 的 Xamarin.iOS 應用程式的專案。 如果您不要使用下載的快速入門伺服器專案，必須將資料存取擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
+在本教學課程中，您將更新的教學課程的 Xamarin.iOS 應用程式專案 [Create a Xamarin iOS app] 以支援 Azure 行動應用程式的離線功能。 如果您不要使用下載的快速入門伺服器專案，必須將資料存取擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
 
-若要深入了解離線同步功能，請參閱主題 [離線資料同步處理在 Azure 行動應用程式]。
+若要深入了解離線同步功能，請參閱本主題 [Offline Data Sync in Azure Mobile Apps]。
 
 ## 需求
 
@@ -36,11 +36,11 @@
 
 * Visual Studio 2013
 * Visual Studio [Xamarin extension] **或** [Xamarin Studio] 在 OS X 上
-* 完成本教學課程 [建立 Xamarin iOS 應用程式]。 本教學課程使用該教學課程中涵蓋的已完成應用程式。
+* 完成本教學課程 [Create a Xamarin iOS app]。 本教學課程使用該教學課程中涵蓋的已完成應用程式。
 
 ## 檢閱用戶端同步處理程式碼
 
-當您已經完成本教學課程 [建立 Xamarin iOS 應用程式] 時，您下載 Xamarin 用戶端專案包含支援使用本機的 SQLite 資料庫的離線同步處理的程式碼。 以下是已經包含在教學課程程式碼中之內容的簡要概觀。 此功能的概觀，請參閱 [離線 Azure 行動應用程式中的資料同步]。
+下載完成教學課程的 Xamarin 用戶端專案 [Create a Xamarin iOS app] 已包含程式碼支援使用本機的 SQLite 資料庫的離線同步處理。 以下是已經包含在教學課程程式碼中之內容的簡要概觀。 此功能的概觀，請參閱 [Offline Data Sync in Azure Mobile Apps]。
 
 * 必須先初始化本機存放區，才可以執行資料表作業。 當 `QSTodoListViewController.ViewDidLoad()` 執行 `QSTodoService.InitializeStoreAsync()` 時會初始化本機存放區資料庫。 這會使用 Azure 行動應用程式用戶端 SDK 所提供之 `MobileServiceSQLiteStore` 類別，建立新的本機 SQLite 資料庫。 
 
@@ -64,7 +64,7 @@
 
     每當重新整理 todoitem 清單或是已新增或完成 todoitem 時，提供的程式碼會呼叫 `QSTodoService.SyncAsync()` 來進行同步處理。 因此，它會在每次本機變更執行同步處理內容推送和同步處理資料表提取之後同步處理。 不過，請務必了解，如果針對具有內容追蹤之擱置中本機更新的資料表執行提取，該提取作業將會先自動觸發內容推送。 因此，在這些情況下 (重新整理、加入和完成項目) 您可以省略明確 `PushAsync` 呼叫。 它是多餘的。
 
-    在提供的程式碼中，遠端 `TodoItem` 資料表中的所有記錄都會進行查詢，但是也可能透過將查詢識別碼與查詢傳遞至 `PushAsync` 來篩選記錄。 如需詳細資訊，請參閱區段 *增量同步處理* [離線資料同步處理在 Azure 行動應用程式] 中。
+    在提供的程式碼中，遠端 `TodoItem` 資料表中的所有記錄都會進行查詢，但是也可能透過將查詢識別碼與查詢傳遞至 `PushAsync` 來篩選記錄。 如需詳細資訊，請參閱區段 *增量同步處理* 中 [Offline Data Sync in Azure Mobile Apps]。
 
     <!-- Need updated conflict handling info : `InitializeAsync` uses the default conflict handler, which fails whenever there is a conflict. To provide a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services].
     -->
@@ -144,17 +144,17 @@
 
 ## 其他資源
 
-* [Azure 行動應用程式中的離線資料同步]
+* [Azure 行動應用程式中的離線資料同步處理]
 
-* [Cloud Cover: Offline Sync in Azure Mobile Services] \ (附註: 的視訊會在行動服務，但是離線同步處理的運作方式類似的方式，在 Azure 行動應用程式)    
+* [Cloud Cover: Offline Sync in Azure Mobile Services] \ (附註 ︰ 的視訊會在行動服務，但是離線同步處理的運作方式類似的方式，在 Azure 行動應用程式)    
 
 <!-- ##Summary
 
 [AZURE.INCLUDE [mobile-services-offline-summary-csharp](../../includes/mobile-services-offline-summary-csharp.md)]
 
-## 後續步驟
+## Next steps
 
-* [處理行動服務的離線支援衝突]
+* [Handling conflicts with offline support for Mobile Services]
 
 * [How to use the Xamarin Component client for Azure Mobile Services]
  -->
@@ -171,4 +171,5 @@
 [Xamarin extension]: http://xamarin.com/visual-studio
  
 [Cloud Cover: Offline Sync in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+
 

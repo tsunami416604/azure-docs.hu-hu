@@ -63,3 +63,4 @@
 
 第二個呼叫使用 OData $filter 運算式，類別為 eq 'Luxury'。 這會將搜尋限制為只傳回類別欄位完全符合 "Luxury" 字串的文件。 您可以深入了解有關在 OData 語法 [Azure 搜尋服務的 OData 運算式語法](https://msdn.microsoft.com/library/azure/dn798921.aspx)。
 
+

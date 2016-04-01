@@ -25,7 +25,7 @@
 
 > [AZURE.NOTE] Beeline 會用來連接到 Hive JDBC。 如需有關如何搭配 Hive 使用 JDBC 的詳細資訊，請參閱 [連接到 Azure HDInsight 使用 Hive JDBC 驅動程式上的 Hive](hdinsight-connect-hive-jdbc-driver.md)。
 
-##<a id="prereq"></a>先決條件
+##<a id="prereq"></a>必要條件
 
 若要完成本文中的步驟，您需要下列項目：
 
@@ -39,7 +39,7 @@
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
 
-**如果您提供憑證金鑰進行 SSH 驗證** 在建立 HDInsight 叢集時，您可能需要指定用戶端系統上私密金鑰的位置:
+**如果您提供憑證金鑰進行 SSH 驗證** 在建立 HDInsight 叢集時，您可能需要指定用戶端系統上私密金鑰的位置 ︰
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
@@ -65,7 +65,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 
         beeline
 
-2. 從 `beeline>` 命令提示字元，使用下列命令來連接至 HiveServer2 服務。 取代 __HOSTNAME__ 的前端節點 ealier 傳回主機名稱:
+2. 從 `beeline>` 命令提示字元，使用下列命令來連接至 HiveServer2 服務。 取代 __HOSTNAME__ 的前端節點 ealier 傳回主機名稱 ︰
 
         !connect jdbc:hive2://HOSTNAME:10001/;transportMode=http admin
 
@@ -80,7 +80,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
         !sql show tables;
         show tables;
     
-    在新叢集上，只有一個資料表應該會列出: __hivesampletable__。
+    在新叢集上，只有一個資料表應該會列出 ︰ __hivesampletable__。
 
 4. 使用下列命令來顯示 hivesampletable 的結構描述︰
 
@@ -106,7 +106,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 
     這會顯示資料表中的資料行。 我們雖可對此資料執行某些查詢，但讓我們改為建立全新的資料表來示範如何將資料載入 Hive 及套用結構描述。
     
-5. 輸入下列陳述式來建立新的資料表名稱為 **log4jLogs** 使用隨附於 HDInsight 叢集的範例資料:
+5. 輸入下列陳述式來建立新的資料表名稱為 **log4jLogs** 使用隨附於 HDInsight 叢集的範例資料 ︰
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -114,12 +114,12 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
         STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
     * **DROP TABLE** -刪除資料表和資料檔中，如果資料表已存在。
     * **建立外部資料表** -在 Hive 中建立新的 「 外部 」 資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。
     * **ROW FORMAT** -告訴 Hive 如何格式化資料。 在此情況下，每個記錄中的欄位會以空格隔開。
-    * **STORED AS TEXTFILE LOCATION** -告訴 Hive 資料的儲存 (example/data 目錄)，且儲存為文字。
+    * **STORED AS TEXTFILE LOCATION** -告訴 Hive 資料的儲存 （example/data 目錄），且儲存為文字。
     * **選取** -選擇的所有資料列計數，資料行 **t4** 包含值 **[錯誤]**。 這應該會傳回值為 **3** 因為有三個資料列包含此值。
     * **像是 '%.log' INPUT__FILE__NAME** -告訴 Hive，我們應該只傳回從檔案中的資料。 記錄檔。 通常在使用 hive 查詢時，您在相同的資料夾中只會有具有相同結構描述的資料，不過此範例記錄檔會以其他資料格式儲存。
 
@@ -166,7 +166,7 @@ Beeline 也可以用來執行包含 HiveQL 陳述式的檔案。 使用下列步
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
     * **CREATE TABLE IF NOT EXISTS** -建立資料表，如果不存在。 由於 **外部** 未使用關鍵字，這是內部資料表，會儲存在 Hive 資料倉儲並完全透過 Hive 所管理。
     * **STORED AS ORC** -以最佳化資料列單欄式 (ORC) 格式儲存資料。 這是高度最佳化且有效率的 Hive 資料儲存格式。
@@ -176,7 +176,7 @@ Beeline 也可以用來執行包含 HiveQL 陳述式的檔案。 使用下列步
     
 3. 若要儲存檔案時，使用 __Ctrl__+ ___X__, ，然後輸入 __Y__, ，最後 __Enter__。
 
-4. 使用下列命令，以使用 Beeline 來執行檔案。 Replease __HOSTNAME__ 稍早取得的前端節點的名稱和 __密碼__ 取代為系統管理員帳戶的密碼:
+4. 使用下列命令，以使用 Beeline 來執行檔案。 Replease __HOSTNAME__ 稍早取得的前端節點的名稱和 __密碼__ 取代為系統管理員帳戶的密碼 ︰
 
         beeline -u 'jdbc:hive2://HOSTNAME:10001/;transportMode=http' -n admin -p PASSWORD -f query.hql
 
@@ -184,7 +184,7 @@ Beeline 也可以用來執行包含 HiveQL 陳述式的檔案。 使用下列步
 
         SELECT * from errorLogs;
 
-    三個資料列應該傳回，全部包含 **[錯誤]** 資料欄 t4 中:
+    三個資料列應該傳回，全部包含 **[錯誤]** 資料欄 t4 中 ︰
     
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         | errorlogs.t1  | errorlogs.t2  | errorlogs.t3  | errorlogs.t4  | errorlogs.t5  | errorlogs.t6  | errorlogs.t7  |
@@ -199,7 +199,7 @@ Beeline 也可以用來執行包含 HiveQL 陳述式的檔案。 使用下列步
 
 如您所見，Beeline 命令提供簡單的方法，以互動方式在 HDInsight 叢集上執行 Hive 查詢。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 Hive 的一般資訊：
 
@@ -236,5 +236,6 @@ Beeline 也可以用來執行包含 HiveQL 陳述式的檔案。 使用下列步
 
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+
 
 

@@ -93,7 +93,7 @@
     - 啟動 dnsmasq 服務 (“systemctl start dnsmasq.service”) 
     - 編輯 “/etc/sysconfig/network/config” 並將 NETCONFIG_DNS_FORWARDER="" 變更為 ”dnsmasq”
     - 更新 resolv.conf ("netconfig update") 來設定快取做為本機 DNS 解析程式
-- **(使用 NetworkManager) OpenLogic**:
+- **（使用 NetworkManager） OpenLogic**:
     - 安裝 dnsmasq 封裝 (“sudo yum install dnsmasq”)
     - 啟用 dnsmasq 服務 (“systemctl enable dnsmasq.service”)
     - 啟動 dnsmasq 服務 (“systemctl start dnsmasq.service”)
@@ -115,13 +115,13 @@ DNS 主要是 UDP 通訊協定。  因為 UDP 通訊協定並不保證訊息傳�
 
 resolv.conf 檔案通常是自動產生的，且不可編輯。  新增 [選項] 行的特定步驟會因散發版本而有所不同：
 
-- **Ubuntu** (使用 resolvconf):
+- **Ubuntu** （使用 resolvconf） ︰
     - 將選項行新增至 '/etc/resolveconf/resolv.conf.d/head' 
     - 執行 'resolvconf -u' 以進行更新
-- **SUSE** (使用 netconf):
+- **SUSE** （使用 netconf） ︰
     - 將 'timeout:1 attempts:5' 新增至 '/etc/sysconfig/network/config' 中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 參數 
     - 執行 'netconfig update' 以進行更新
-- **OpenLogic** (使用 NetworkManager):
+- **OpenLogic** （使用 NetworkManager） ︰
     - 將 'echo "options timeout:1 attempts:5"' 新增至 '/etc/NetworkManager/dispatcher.d/11-dhclient' 
     - 執行 'service network restart' 以進行更新
 
@@ -159,7 +159,7 @@ resolv.conf 檔案通常是自動產生的，且不可編輯。  新增 [選項]
 
 ### 使用組態檔指定 DNS 伺服器 (Azure 傳統)
 
-對於傳統的虛擬網路，您可以使用兩個不同的組態檔指定 DNS 設定: *網路組態* 檔案和 *服務組態* 檔案。
+對於傳統的虛擬網路，您可以使用兩個不同的組態檔指定 DNS 設定 ︰ *網路組態* 檔案和 *服務組態* 檔案。
 
 網路組態檔說明您的訂用帳戶中的虛擬網路。 當您將角色執行個體或 VM 新增至虛擬網路中的雲端服務時，網路組態檔中的 DNS 設定就會套用到每個角色執行個體或 VM，除非已指定雲端服務特定 DNS 伺服器。
 
@@ -177,6 +177,7 @@ resolv.conf 檔案通常是自動產生的，且不可編輯。  新增 [選項]
 [關於設定管理入口網站中的虛擬網路設定](virtual-networks-settings.md) 
 
 [使用網路組態檔設定虛擬網路](virtual-networks-using-network-configuration-file.md) 
+
 
 
 

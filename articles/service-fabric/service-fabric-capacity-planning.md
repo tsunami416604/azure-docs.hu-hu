@@ -54,13 +54,13 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 
 現在，根據這所有資訊，試算表會顯示您可以實際上取得在具有 26 個節點的叢集上所需的資料分割和複本的所有資料。 不過，此叢集已密集壓縮，因此可能會想要一些其他節點以容納節點失敗和升級。 試算表也顯示具有超過 57 個節點不會提供任何額外的值；您會有空白節點。 同樣地，您可能想要有超過 57 節點以容納節點失敗和升級。 您可以調整試算表以符合應用程式的特定需求。   
 
-![] [Image1]
+![][Image1]
 
 
 
 ## 後續步驟
 
-簽出 [分割 Service Fabric 服務] [10] 若要深入了解資料分割您的服務。
+簽出 [分割 Service Fabric 服務][10] 若要深入了解如何分割您的服務。
 
 
 
@@ -69,4 +69,5 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-concepts-partitioning.md
+
 

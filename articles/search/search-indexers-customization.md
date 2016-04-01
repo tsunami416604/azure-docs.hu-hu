@@ -42,7 +42,7 @@
         "fieldMappings" : [ { "sourceFieldName" : "_id", "targetFieldName" : "id" } ] 
     } 
 
-**注意:** 您需要使用預覽 API 2015-02-28-preview 版本以使用欄位對應。 
+**注意 ︰** 您需要使用預覽 API 2015-02-28-preview 版本以使用欄位對應。 
 
 您可以指定多個欄位對應： 
 
@@ -78,7 +78,7 @@
 
 ##URL 編碼的文件金鑰，包含不安全 URL 字元##
 
-Azure 搜尋服務會將文件索引鍵欄位內的字元限制為 URL 安全字元，因為使用者必須能夠依其索引鍵查閱文件。 因此當您需要編製索引的文件在索引鍵欄位中包含這類字元時會發生什麼事？ 如果您使用用戶端 SDK 或 REST API 自行編製文件索引，您可以 URL 編碼索引鍵。 使用索引子，您可以告知 Azure 搜尋服務以 URL 編碼您的金鑰設定 **base64EncodeKeys** 參數 `true` 時建立或更新索引子:
+Azure 搜尋服務會將文件索引鍵欄位內的字元限制為 URL 安全字元，因為使用者必須能夠依其索引鍵查閱文件。 因此當您需要編製索引的文件在索引鍵欄位中包含這類字元時會發生什麼事？ 如果您使用用戶端 SDK 或 REST API 自行編製文件索引，您可以 URL 編碼索引鍵。 使用索引子，您可以告知 Azure 搜尋服務以 URL 編碼您的金鑰設定 **base64EncodeKeys** 參數 `true` 時建立或更新索引子 ︰
 
     PUT https://[service name].search.windows.net/indexers/myindexer?api-version=[api-version]
     Content-Type: application/json
@@ -98,8 +98,8 @@ Azure 搜尋服務會將文件索引鍵欄位內的字元限制為 URL 安全字
 
 根據預設，只要單一文件無法進行索引編製，Azure 搜尋服務索引子就會停止編製索引。 根據您的情況而定，您可以選擇容忍某些失敗 (例如，如果您重複地重新編製整個資料來源的索引)。 Azure 搜尋服務提供兩個索引子參數以微調此行為： 
 
-- **maxFailedItems**: 可能無法編製索引的索引子執行視為失敗之前的項目數。 預設值為 0。
-- **maxFailedItemsPerBatch**: 可能無法編製索引以單一批次索引子執行視為失敗之前的項目數。 預設值為 0。
+- **maxFailedItems**︰ 可能無法編製索引的索引子執行視為失敗之前的項目數。 預設值為 0。
+- **maxFailedItemsPerBatch**︰ 可能無法編製索引以單一批次索引子執行視為失敗之前的項目數。 預設值為 0。
 
 建立或更新您的索引子時，您可以指定其中一個參數或同時指定兩個參數，隨時變更這些值：
 
@@ -116,3 +116,4 @@ Azure 搜尋服務會將文件索引鍵欄位內的字元限制為 URL 安全字
 
 目前是如此。 如果您有任何想法和建議未來內容的想法，推文給我們使用 #AzureSearch 雜湊標記，或提出您的想法上我們 [UserVoice 頁面](http://feedback.azure.com/forums/263029-azure-search)。    
  
+

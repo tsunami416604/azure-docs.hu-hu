@@ -21,7 +21,7 @@
 
 <p> Microsoft Azure Government 映像庫類似於公用 Azure 入口網站。  客戶可以選擇部署 Microsoft 和我們的合作夥伴預先建立的映像，或是上傳自己的 VHD。  這提供了依照您的需求部署自己的標準化映像的彈性。
 
-下面提供 Azure Government 映像庫中可用映像的清單。  某些預先建立的映像確實包含了特定軟體的隨用隨付授權。  請檢閱 <a href="http://azure.microsoft.com/pricing/details/virtual-machines/">虛擬機器定價</a> 如需詳細的指引和使用您的 Microsoft 帳戶小組或轉銷商取得 Azure Government 專屬定價頁面。
+下面提供 Azure Government 映像庫中可用映像的清單。  某些預先建立的映像確實包含了特定軟體的隨用隨付授權。  請先檢閱 [<a href="http://azure.microsoft.com/pricing/details/virtual-machines/">虛擬機器定價</a>] 頁面以取得詳細指引，並向您的 Microsoft 帳戶小組或轉銷商取得 Azure Government 專屬定價。
 
 
 ## Azure Government 映像清單
@@ -87,9 +87,9 @@ SUSE|SUSE Linux Enterprise Server 12|因為下列原因，所以可以在 Micros
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged -->
 
-## <a name="next"></a>後續步驟
+## <a name="next"></a>接續步驟
 
-下面的資源應該會提供關於從映像庫部署或建立您自己的 VHD 的詳細資訊。  請參閱 <a href="../azure-government-developer-guide">Azure Government 開發人員指南</a> 若要使用 Azure Government 時，找出端點的程式設計差異。
+下面的資源應該會提供關於從映像庫部署或建立您自己的 VHD 的詳細資訊。  請參考 <a href="../azure-government-developer-guide">Azure Government 開發人員指南</a>，以發現使用 Azure Government 時端點的程式設計差異。
 
 ###其他資源： 
 
@@ -117,4 +117,5 @@ SUSE|SUSE Linux Enterprise Server 12|因為下列原因，所以可以在 Micros
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines/virtual-machines-windows-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
+
 

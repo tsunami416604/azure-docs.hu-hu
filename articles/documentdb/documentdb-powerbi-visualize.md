@@ -39,7 +39,7 @@
     - 示範帳戶會填入此教學課程中所顯示的火山資料。 此示範帳戶未受限於任何 SLA，而是僅供示範之用。  我們保留對此示範帳戶隨時進行修改的權利，包括 (但不限於) 終止帳戶、變更金鑰、限制存取權、變更和刪除資料，不事先通知或告知原因。 
         - URL: https://analytics.documents.azure.com
         - 唯讀金鑰：MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
-    - 或者，若要建立您自己的帳戶，請參閱 [建立 DocumentDB 資料庫帳戶，使用 Azure 入口網站](https://azure.microsoft.com/documentation/articles/documentdb-create-account/)。 然後，若要取得範例火山內容類似的資料使用在本教學課程 (但不包含 GeoJSON 區塊)，請參閱 [起降網站](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5) ，然後匯入資料使用 [DocumentDB 資料移轉工具](https://azure.microsoft.com/documentation/articles/documentdb-import-data/)。
+    - 或者，若要建立您自己的帳戶，請參閱 [建立 DocumentDB 資料庫帳戶，使用 Azure 入口網站](https://azure.microsoft.com/documentation/articles/documentdb-create-account/)。 然後，若要取得範例火山內容類似的資料使用在本教學課程 （但不包含 GeoJSON 區塊），請參閱 [起降網站](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5) ，然後匯入資料使用 [DocumentDB 資料移轉工具](https://azure.microsoft.com/documentation/articles/documentdb-import-data/)。
 
 
 若要在 PowerBI.com 上共用您的報告，您必須有 PowerBI.com 中的帳戶。  若要深入了解 Power BI 的免費及 Power BI Pro，請造訪 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
@@ -129,14 +129,14 @@
 
 6. 中央窗格現在會顯示的資料行座標 **清單** 型別。  如本教學課程一開始所說明，本教學課程中的 GeoJSON 資料屬於 Point 類型，具有座標陣列中所記錄的緯度和經度值。
 
-    *附註。 座標 [0] 項目代表經度，而座標 [1] 表示緯度。*
+    *附註。  座標 [0] 項目代表經度，而座標 [1] 表示緯度。*
     ![Power BI Desktop 協調清單](./media/documentdb-powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 
 7. 若要簡維座標的陣列，我們將建立 **自訂資料行** 呼叫 LatLong。  選取 **加入資料行** 功能區，然後按一下 [ **加入自訂資料行**。   **加入自訂資料行** 視窗應該會出現。
 
 8. 提供新資料行的名稱，例如 LatLong。
 
-9. 接下來，指定新資料行的自訂公式。  我們的範例中，我們將會串連，使用以下公式如下所示，以逗號分隔的緯度和經度值: Text.From([coordinates]\{1\}) &"，"& Text.From([coordinates]{0})。 按一下 [ **確定**。
+9. 接下來，指定新資料行的自訂公式。  我們的範例中，我們將會串連，使用以下公式如下所示，以逗號分隔的緯度和經度值 ︰ Text.From([coordinates]\{1\}) &"，"& Text.From([coordinates]{0})。 按一下 [ **確定**。
     
     *附註。 如需有關資料分析 Expressions(DAX) 包括 DAX 函數的詳細資訊，請瀏覽 [DAX 基本在 Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)。*
 
@@ -195,4 +195,5 @@
 ## 後續步驟
 - 若要深入了解 Power BI，按一下 [ [這裡](https://support.powerbi.com/knowledgebase)
 - 若要深入了解 DocumentDB，請按一下 [這裡](https://azure.microsoft.com/documentation/services/documentdb/)。
+
 

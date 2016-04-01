@@ -1,10 +1,10 @@
 <properties
-    pageTitle ="Azure AD B2C 預覽: 從 Android 應用程式呼叫 Web API |Microsoft Azure 「
-    描述 = 「 本文將示範如何建立會呼叫使用 OAuth 2.0 持有人權杖的 node.js web API 的 Android 「 待辦事項清單 」 應用程式。 這兩個 Android 應用程式與 web api 使用 Azure AD B2C 管理使用者身分識別與驗證的使用者。 」
-    服務 = 「 使用中-目錄-b2c 」
-    documentationCenter ="android"
-    作者 ="brandwe"
-    管理員 ="msmbaldwin"
+    pageTitle="Azure AD B2C 預覽 ︰ 從 Android 應用程式呼叫 Web API |Microsoft Azure"
+    description="本文將說明如何建立 Android "To-Do List" app that calls a node.js web API using OAuth 2.0 bearer tokens. Both the Android app and web api use Azure AD B2C to manage user identities and authenticate users."
+    services="active-directory-b2c"
+    documentationCenter="android"
+    authors="brandwe"
+    manager="msmbaldwin"
     editor=""/>
 
 <tags
@@ -81,13 +81,13 @@
 ### 步驟 4：下載程式碼
 
 本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android)。  當您建置範例，您可以 
-[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/skeleton.zip) 或再製基本架構:
+[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-Android.git
 ```
 
-> [AZURE.NOTE] **下載基本架構，才能完成本教學課程。**由於在 Android 上，實作完整的應用程式的複雜度 **基本架構** 具有 UX 當您完成下列教學課程將執行的程式碼。 如此將能節省開發人員的時間。 UX 程式碼與加入 B2C 至 Android 應用程式的主題無關。
+> [AZURE.NOTE] **下載基本架構，才能完成本教學課程。** 由於在 Android 上，實作完整的應用程式的複雜度 **基本架構** 具有 UX 當您完成下列教學課程將執行的程式碼。 如此將能節省開發人員的時間。 UX 程式碼與加入 B2C 至 Android 應用程式的主題無關。
 
 完成應用程式也是 [成為.zip](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/complete.zip) 或
 `complete` 相同的儲存機制分支。
@@ -998,7 +998,7 @@ Android 需要我們處理某些回呼來操作應用程式。 這些回呼是 `
 請注意每位使用者的工作如何儲存於 API，因為 API 會從它收到的存取權杖中擷取使用者的身分識別。
 
 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/complete.zip),，
-或者，您可以從 GitHub 複製它:
+或者，您可以從 GitHub 複製它 ︰
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-Android```
 
@@ -1012,7 +1012,7 @@ Android 需要我們處理某些回呼來操作應用程式。 這些回呼是 `
 
 #### Web 檢視中的工作階段 Cookie
 
-在應用程式關閉後，Android Web 檢視不會清除工作階段 Cookie。 您可以使用下列範例程式碼來處理這:
+在應用程式關閉後，Android Web 檢視不會清除工作階段 Cookie。 您可以使用下列範例程式碼來處理這 ︰
 ```
 CookieSyncManager.createInstance(getApplicationContext());
 CookieManager cookieManager = CookieManager.getInstance();
@@ -1021,3 +1021,4 @@ CookieSyncManager.getInstance().sync();
 ```
 深入了解 cookie: http://developer.android.com/reference/android/webkit/CookieSyncManager.html
  
+

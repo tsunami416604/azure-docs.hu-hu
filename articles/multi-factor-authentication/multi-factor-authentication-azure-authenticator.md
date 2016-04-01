@@ -33,7 +33,7 @@
 
 首先確定，您必須有 QR 代碼或程式碼和 URL，以便手動輸入您要加入至應用程式的帳戶。
 
-> [AZURE.NOTE] 不確定如何取得 QR 代碼? 請連絡支援人員尋求協助。
+> [AZURE.NOTE] 不確定如何取得 QR 代碼？ 請連絡支援人員尋求協助。
 > 
 > 無法使用新的應用程式啟動您的帳戶？ 請連絡支援人員。
 >
@@ -164,5 +164,6 @@
 往後當您被要求驗證登入時，您只要點選收到的推播通知並且掃描您的指紋即可，不需要輸入您的 PIN。
 
 ![Touch ID](./media/multi-factor-authentication-azure-authenticator/touchid2.png)
+
 
 

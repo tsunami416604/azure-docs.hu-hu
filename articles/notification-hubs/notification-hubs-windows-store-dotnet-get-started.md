@@ -34,7 +34,7 @@
 
 
 
-##先決條件
+##必要條件
 
 本教學課程需要下列各項：
 
@@ -42,7 +42,7 @@
 
 + 有效的 Windows 市集帳戶
 
-+ 作用中的 Azure 帳戶 <br/> 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)。
++ 有效的 Azure 帳戶 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)。
 
 完成本教學課程是 Windows 市集應用程式所有其他通知中心教學課程的先決條件。
 
@@ -95,7 +95,7 @@
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="7">
-<li><p>選取 <b>設定</b> 索引標籤頂端，輸入 <b>用戶端密碼</b> 和 <b>封裝 SID</b> 值，您在上一節中從 WNS 取得，然後按一下 <b>儲存</b>.</p>
+<li><p>選取 <b>設定</b> 索引標籤頂端，輸入 <b>用戶端密碼</b> 和 <b>封裝 SID</b> 值，您在上一節中從 WNS 取得，然後按一下 <b>儲存</b>。</p>
 </li>
 </ol>
 
@@ -114,7 +114,7 @@
 
     ![][20]
 
-    這會下載、 安裝，並將參考加入所有專案中的 Azure 訊息程式庫適用於 Windows 使用 <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet 封裝</a>.
+    此時會在所有專案中使用 <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet 封裝</a>下載、安裝並新增適用於 Windows 的 Azure 訊息程式庫參考。
 
 3. 開啟 App.xaml.cs 專案檔案，並新增下列 `using` 陳述式。 在通用專案中，此檔案位於 `<project_name>.Shared` 資料夾中。
 
@@ -124,7 +124,7 @@
 
 
 
-4. 也在 App.xaml.cs 中，新增下列 **InitNotificationsAsync** 方法定義以 **應用程式** 類別:
+4. 也在 App.xaml.cs 中，新增下列 **InitNotificationsAsync** 方法定義以 **應用程式** 類別 ︰
 
         private async void InitNotificationsAsync()
         {
@@ -145,9 +145,9 @@
 
     此程式碼會從 WNS 中擷取應用程式的通道 URI，然後向您的通知中樞註冊該通道 URI。
 
-    >[AZURE.NOTE]請務必使用出現在 [Azure 傳統入口網站] 上的通知中心名稱來取代"hub name"預留位置 **通知中心** ] 索引標籤 (例如， **mynotificationhub2** 前一個範例中)。 連線字串預留位置取代 **DefaultListenSharedAccessSignature** 您在上一節中取得的連接字串。
+    >[AZURE.NOTE]請務必使用出現在通知中心名稱來取代"hub name"預留位置 [Azure Classic Portal] 上 **通知中心** ] 索引標籤 (例如， **mynotificationhub2** 前一個範例中)。 連線字串預留位置取代 **DefaultListenSharedAccessSignature** 您在上一節中取得的連接字串。
 
-5. 在頂端 **OnLaunched** 事件處理常式，在 App.xaml.cs 中，新增下列呼叫新 **InitNotificationsAsync** 方法:
+5. 在頂端 **OnLaunched** 事件處理常式，在 App.xaml.cs 中，新增下列呼叫新 **InitNotificationsAsync** 方法 ︰
 
         InitNotificationsAsync();
 
@@ -173,7 +173,7 @@
 
 ##傳送通知 
 
-您可以測試應用程式中接收通知，如下列畫面所示，[Azure 傳統入口網站] 透過通知中心上的 [偵錯] 索引標籤，以傳送通知。
+您可以測試應用程式中接收通知，傳送通知給以 [Azure Classic Portal] 透過通知中心，如下列畫面所示的 [偵錯] 索引標籤。
 
 ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-debug.png)
 
@@ -181,15 +181,15 @@
 
 在本教學課程中，為了簡單起見，我們只會在主控台應用程式 (而非後端服務) 中使用適用於通知中樞的 .NET SDK 傳送通知，示範如何測試您的用戶端應用程式。 我們建議 [Use Notification Hubs to push notifications to users] 教學課程的下一個步驟，從 ASP.NET 後端傳送通知。 不過，下列方法可用來傳送通知：
 
-* **REST 介面**: 您可以使用您建立任何後端平台上支援通知 [REST 介面](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)。
+* **REST 介面**︰ 您可以使用您建立任何後端平台上支援通知 [REST 介面](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)。
 
-* **Microsoft Azure 通知中樞 SDK**: 在 Nuget Package Manager for Visual Studio 中，執行 [Install-package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+* **Microsoft Azure 通知中樞 SDK**︰ 在 Nuget Package Manager for Visual Studio 中，執行 [Install-package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 * **Node.js** : [如何從 Node.js 使用通知中樞](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure 行動服務**: 如需如何從整合通知中心之 Azure 行動服務後端傳送通知的範例，請參閱 「 開始使用行動服務中的推播通知 」 ([.NET 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md))。
+* **Azure 行動服務**︰ 如需如何從整合通知中心之 Azure 行動服務後端傳送通知的範例，請參閱 「 開始使用行動服務中的推播通知 」 ([.NET 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md))。
 
-* **Java / PHP**: 如需如何使用 REST Api 傳送通知的範例，請參閱 < 如何從 Java/PHP 使用通知中樞 」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
+* **Java / PHP**︰ 如需如何使用 REST Api 傳送通知的範例，請參閱 < 如何從 Java/PHP 使用通知中樞 」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
 
 
 ## (選擇性) 從主控台應用程式傳送通知
@@ -207,11 +207,11 @@
 
     這會在 Visual Studio 中顯示 [封裝管理員主控台]。
 
-3. 在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令:
+3. 在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令 ︰
 
         Install-Package Microsoft.Azure.NotificationHubs
 
-    這會加入到使用 Azure 通知中心 SDK 參考 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification 中樞 NuGet 封裝</a>.
+    這會使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 封裝</a> 加入對 Azure 通知中樞 SDK 的參考。
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -220,7 +220,7 @@
 
         using Microsoft.Azure.NotificationHubs;
 
-5. 在 **程式** 類別中，新增下列方法:
+5. 在 **程式** 類別中，新增下列方法 ︰
 
         private static async void SendNotificationAsync()
         {
@@ -230,11 +230,11 @@
             await hub.SendWindowsNativeNotificationAsync(toast);
         }
 
-    請務必使用出現在 [Azure 傳統入口網站] 上的通知中心名稱來取代"hub name"預留位置 **通知中心** ] 索引標籤。 此外，將連接字串預留位置取代連接字串呼叫 **DefaultFullSharedAccessSignature** 您取得的一節中 「 設定您的通知中心 」。
+    請務必使用出現在通知中心名稱來取代"hub name"預留位置 [Azure Classic Portal] 上 **通知中心** ] 索引標籤。 此外，將連接字串預留位置取代連接字串呼叫 **DefaultFullSharedAccessSignature** 您取得的一節中 「 設定您的通知中心 」。
 
     >[AZURE.NOTE]請確定您使用的連接字串具有 **完整** 存取權，而非 **接聽** 存取。 接聽存取權的字串沒有傳送通知的權限。
 
-6. 新增以下幾行，在 **Main** 方法:
+6. 新增以下幾行，在 **Main** 方法 ︰
 
          SendNotificationAsync();
          Console.ReadLine();
@@ -253,7 +253,7 @@
 
 如果您想要按興趣群組分隔使用者，請參閱 [Use Notification Hubs to send breaking news]。 
 
-若要了解通知中心的詳細資訊，請參閱 [通知中心指引]。
+若要了解通知中心的詳細資訊，請參閱 [Notification Hubs Guidance]。
 
 
 
@@ -284,4 +284,5 @@
 [toast catalog]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
 [tile catalog]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [badge overview]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+
 

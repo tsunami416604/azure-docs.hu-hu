@@ -105,9 +105,9 @@
 
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool) 
 
-##<a name="sql-featuregen"></a>將資料寫回 Azure blob 和 Azure Machine Learning 中取用
+##<a name="sql-featuregen"></a>將資料寫回 Azure Blob 並在 AzureMachine Learning 中取用
 
-探索資料並建立必要功能，您可以將資料上傳之後 (取樣性或功能性) 至 Azure blob，然後使用它在 Azure 機器學習中使用下列步驟:
+探索資料並建立必要功能，您可以將資料上傳之後 (取樣性或功能性) 至 Azure blob，然後使用它在 Azure 機器學習中使用下列步驟 ︰
 請注意，Azure Machine Learning Studio 也可以建立額外的功能。 
 1. 將資料框架寫入本機檔案中
 
@@ -135,9 +135,10 @@
         except:         
             print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. 現在可以使用 Azure Machine Learning 從 blob 讀取資料 [讀取器](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 模組，如下列畫面所示:
+3. 現在可以使用 Azure Machine Learning 從 blob 讀取資料 [讀取器](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 模組，如下列畫面所示 ︰
  
 ![讀取器 Blob](./media/machine-learning-data-science-process-data-blob/reader_blob.png)
 
 
  
+

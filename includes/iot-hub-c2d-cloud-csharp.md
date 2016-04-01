@@ -14,7 +14,7 @@
 
     這會下載、 安裝，並將參考加入 [Azure IoT - Service SDK NuGet package]。
 
-4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案:
+4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案 ︰
 
         using Microsoft.Azure.Devices;
 
@@ -23,7 +23,7 @@
         static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
 
-6. 將下列方法加入 **程式** 類別:
+6. 將下列方法加入 **程式** 類別 ︰
 
         private async static Task SendCloudToDeviceMessageAsync()
         {
@@ -33,7 +33,7 @@
 
     這個方法會將新的雲端到裝置訊息傳送至識別碼為 `myFirstDevice` 的裝置。 因此，變更此參數，以防您修改中所用的 [Get started with IoT Hub]。
 
-7. 最後，加入下列幾行以 **Main** 方法:
+7. 最後，加入下列幾行以 **Main** 方法 ︰
 
         Console.WriteLine("Send Cloud-to-Device message\n");
         serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
@@ -45,7 +45,7 @@
 
 8. 從在 Visual Studio 中，以滑鼠右鍵按一下您的方案並選取 [ **設定啟始專案**。 選取 **多個啟始專案**, ，然後選取 **啟動** 動作 **ProcessDeviceToCloudMessages**, ，**SimulatedDevice**, ，和 **SendCloudToDevice**。
 
-9.  按下 **F5**, ，而且您會看到所有三個應用程式啟動。 選取 **SendCloudToDevice** windows 和按 **Enter**: 您應該會看到模擬應用程式所收到的訊息。
+9.  按下 **F5**, ，而且您會看到所有三個應用程式啟動。 選取 **SendCloudToDevice** windows 和按 **Enter**︰ 您應該會看到模擬應用程式所收到的訊息。
 
     ![][21]
 
@@ -76,7 +76,7 @@
 
     請注意，這裡的接收模式，與用來從裝置應用程式接收雲端到裝置訊息的模式相同。
 
-2. 新增下列方法中的 **Main** 方法緊接著 `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` 行:
+2. 新增下列方法中的 **Main** 方法緊接著 `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` 行 ︰
 
         ReceiveFeedbackAsync();
 
@@ -84,11 +84,11 @@
 
         commandMessage.Ack = DeliveryAcknowledgement.Full;
 
-4.  執行應用程式，按下 **F5**, ，而且您會看到所有三個應用程式啟動。 選取 **SendCloudToDevice** windows 和按 **Enter**: 您應該會看到正在接收模擬應用程式，以及幾秒鐘後，所接收的回應訊息的訊息您 **SendCloudToDevice** 應用程式。
+4.  執行應用程式，按下 **F5**, ，而且您會看到所有三個應用程式啟動。 選取 **SendCloudToDevice** windows 和按 **Enter**︰ 您應該會看到正在接收模擬應用程式，以及幾秒鐘後，所接收的回應訊息的訊息您 **SendCloudToDevice** 應用程式。
 
     ![][22]
 
-> [AZURE.NOTE] 為了簡單起見，本教學課程不會實作任何重試原則。 在實際執行程式碼，它可以是 reccommended 實作 (例如指數輪詢)，如 MSDN 文章中所建議的重試原則 [Transient Fault Handling]。
+> [AZURE.NOTE] 為了簡單起見，本教學課程不會實作任何重試原則。 在實際執行程式碼，它可以是 reccommended 實作 （例如指數輪詢），如 MSDN 文章中所建議的重試原則 [Transient Fault Handling]。
 
 <!-- Links -->
 
@@ -101,6 +101,7 @@
 [20]: ./media/iot-hub-c2d-cloud-csharp/create-identity-csharp1.png
 [21]: ./media/iot-hub-c2d-cloud-csharp/sendc2d1.png
 [22]: ./media/iot-hub-c2d-cloud-csharp/sendc2d2.png
+
 
 
 

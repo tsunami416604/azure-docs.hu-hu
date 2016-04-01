@@ -24,7 +24,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
 
 
-## 先決條件
+## 必要條件
 使用 Powershell cmdlet 的需求：
 
 - 最新的 Azure 命令列 SDK [可在這裡](http://azure.microsoft.com/downloads/)
@@ -37,8 +37,8 @@
 
 ## 延伸模組可用的服務
 
-- **SQL 自動化的備份**: 這項服務會自動在 VM 中的 SQL Server 的預設執行個體的所有資料庫的備份排程。 若要查看此服務的詳細資訊，請參閱 [Azure 虛擬機器中 SQL Server 的自動化備份](virtual-machines-sql-server-automated-backup.md)。
-- **SQL 自動化修補**: 這項服務可讓您設定維護視窗期間更新您的 VM 可能發生，您可以避免在您的工作負載的尖峰期間的更新。 若要查看此服務的詳細資訊，請參閱 [的 Azure 虛擬機器中 SQL Server 自動修補](virtual-machines-sql-server-automated-patching.md)。
+- **SQL 自動化的備份**︰ 這項服務會自動在 VM 中的 SQL Server 的預設執行個體的所有資料庫的備份排程。 若要查看此服務的詳細資訊，請參閱 [Azure 虛擬機器中 SQL Server 的自動化備份](virtual-machines-sql-server-automated-backup.md)。
+- **SQL 自動化修補**︰ 這項服務可讓您設定維護視窗期間更新您的 VM 可能發生，您可以避免在您的工作負載的尖峰期間的更新。 若要查看此服務的詳細資訊，請參閱 [的 Azure 虛擬機器中 SQL Server 自動修補](virtual-machines-sql-server-automated-patching.md)。
 
 ## 利用 Powershell 新增延伸模組
 如果您佈建您的 SQL Server VM 使用 [Azure 入口網站](https://portal.azure.com/), ，將會自動安裝延伸模組。 針對 SQL Server Vm 佈建 [Azure 傳統入口網站](https://manage.windowsazure.com), ，對於您授與自己 SQL 授權至 Vm，可以將此延伸模組加入至現有的 VM 使用下列 Azure PowerShell cmdlet。
@@ -77,4 +77,5 @@ Get AzureVMSqlServerExtension [[-VM] <IPersistentVM>] [[-版本] <string>] [<Com
 
 ### 語法
 Remove-azurevmsqlserverextension VM <IPersistentVM> [<CommonParameters>]
+
 

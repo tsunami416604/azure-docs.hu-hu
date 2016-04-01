@@ -39,10 +39,10 @@
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
     New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
-    | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
-    | Set-AzureSubnet –SubnetNames Subnet-1 `
-    | Set-AzureStaticVNetIP -IPAddress 10.0.0.7 `
-    | New-AzureVM -ServiceName "TestService" –VNetName TestVnet
+  	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
+  	| Set-AzureSubnet –SubnetNames Subnet-1 `
+  	| Set-AzureStaticVNetIP -IPAddress 10.0.0.7 `
+  	| New-AzureVM -ServiceName "TestService" –VNetName TestVnet
 
 ## 如何擷取 VM 的靜態內部 IP 資訊
 若要檢視使用上述指令碼建立之 VM 的靜態內部 IP 資訊，請執行下列 PowerShell 命令，並觀察值 *IpAddress*:
@@ -80,15 +80,15 @@
 若要移除在上述指令碼中新增至 VM 的靜態內部 IP，請執行下列 PowerShell 命令：
     
     Get-AzureVM -ServiceName TestService -Name TestVM `
-    | Remove-AzureStaticVNetIP `
-    | Update-AzureVM
+  	| Remove-AzureStaticVNetIP `
+  	| Update-AzureVM
 
 ## 如何將靜態內部 IP 位址新增至現有的 VM
 若要將靜態內部 IP 新增至使用上述指令碼建立的 VM，請執行下列命令：
 
     Get-AzureVM -ServiceName TestService000 -Name TestVM `
-    | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
-    | Update-AzureVM
+  	| Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
+  	| Update-AzureVM
 
 ## 後續步驟
 
@@ -98,4 +98,5 @@
 
 [保留的 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
+
 

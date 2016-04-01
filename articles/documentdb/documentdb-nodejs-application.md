@@ -45,7 +45,7 @@ DocumentDB。
 
 是否沒有時間完成本教學課程，只是想要取得完整的解決方案？ 沒問題，您可以取得完整的範例方案從 [GitHub][]。
 
-## <a name="_Toc395783176"></a>先決條件
+## <a name="_Toc395783176"></a>必要條件
 
 > [AZURE.TIP] 此 Node.js 教學課程假設您有些許使用 Node.js 和 Azure 網站的經驗。
 
@@ -59,13 +59,13 @@ DocumentDB。
 
 ## <a name="_Toc395637761"></a>步驟 1：建立 DocumentDB 資料庫帳戶
 
-現在就開始建立 DocumentDB 帳戶。 如果您已經有帳戶，您可以跳到 [步驟 2: 建立新的 Node.js 應用程式](#_Toc395783178)。
+現在就開始建立 DocumentDB 帳戶。 如果您已經有帳戶，您可以跳到 [步驟 2 ︰ 建立新的 Node.js 應用程式](#_Toc395783178)。
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="_Toc395783178"></a>步驟 2: 了解如何建立新的 Node.js 應用程式
+## <a name="_Toc395783178"></a>步驟 2：了解如何建立新的 Node.js 應用程式
 
 現在讓我們了解如何建立基本的 Hello World Node.js 專案使用 [Express](http://expressjs.com/) 架構。
 
@@ -88,7 +88,7 @@ DocumentDB。
 
     ![了解 Node.js - Hello World 應用程式在瀏覽器視窗中的螢幕擷取畫面](./media/documentdb-nodejs-application/image12.png)
 
-## <a name="_Toc395783179"></a>步驟 3: 安裝其他模組
+## <a name="_Toc395783179"></a>步驟 3：安裝其他模組
 
  **Package.json** 檔案是其中一個的根目錄中建立的檔案
 專案根目錄中的其中一個檔案。 這個檔案包含 Node.js 應用程式
@@ -110,7 +110,7 @@ DocumentDB。
 
        This tells Node (and Azure later) that your application depends on these additional modules.
 
-## <a name="_Toc395783180"></a>步驟 4: 在節點應用程式中使用 DocumentDB 服務
+## <a name="_Toc395783180"></a>步驟 4：在節點應用程式中使用 DocumentDB 服務
 
 前面的內容在講述所有初始設定和組態，現在讓我們來了解本教學課程的真正目的，也就是使用 Azure DocumentDB 撰寫一些程式碼。
 
@@ -196,7 +196,7 @@ DocumentDB。
         
 3. 儲存並關閉 **docdbUtils.js** 檔案。
 
-4. 在開始 **taskDao.js** 檔案中，新增下列程式碼以參考 **DocumentDBClient** 和 **docdbUtils.js** 前面所建立:
+4. 在開始 **taskDao.js** 檔案中，新增下列程式碼以參考 **DocumentDBClient** 和 **docdbUtils.js** 前面所建立 ︰
 
         var DocumentDBClient = require('documentdb').DocumentClient;
         var docdbUtils = require('./docdbUtils');
@@ -316,7 +316,7 @@ DocumentDB。
 ### 建立控制器
 
 1. 在 **路由** 您專案的目錄建立名為的新檔案 **tasklist.js**。 
-2. 加入下列程式碼以 **tasklist.js**。 這會載入 DocumentDBClient 和 async 模組，可供 **tasklist.js**。 這也會定義 **TaskList** 函式，傳遞的執行個體 **工作** 我們稍早定義的物件:
+2. 加入下列程式碼以 **tasklist.js**。 這會載入 DocumentDBClient 和 async 模組，可供 **tasklist.js**。 這也會定義 **TaskList** 函式，傳遞的執行個體 **工作** 我們稍早定義的物件 ︰
 
         var DocumentDBClient = require('documentdb').DocumentClient;
         var async = require('async');
@@ -420,7 +420,7 @@ DocumentDB。
         var TaskDao = require('./models/taskDao');
 
 3. 此程式碼會定義要使用的組態檔，並繼續讀出此檔案中的值到我們即將使用的變數。
-4. 在下列兩行取代 **app.js** 檔案:
+4. 在下列兩行取代 **app.js** 檔案 ︰
 
         app.use('/', routes);
         app.use('/users', users); 
@@ -443,7 +443,7 @@ DocumentDB。
 
 7. 最後，儲存並關閉 **app.js** 檔案中，我們即將結束。
  
-## <a name="_Toc395783181"></a>步驟 5: 建置使用者介面
+## <a name="_Toc395783181"></a>步驟 5：建置使用者介面
 
 現在，讓我們將注意力轉到建置使用者介面，以便使用者可以實際與我們的應用程式互動。 我們建立使用的 Express 應用程式 **Jade** 做為檢視引擎。 如需 Jade 的詳細資訊請參閱 [http://jade-lang.com/](http://jade-lang.com/)。
 
@@ -469,7 +469,7 @@ DocumentDB。
     這實際上會指示 **Jade** 引擎呈現我們應用程式的部分 HTML，並建立 **區塊** 呼叫 **內容** 我們可以在其中提供內容頁面的配置。
     儲存並關閉此 **layout.jade** 檔案。
 
-4. 現在開啟 **index.jade** 檔案，將由我們的應用程式，並將檔案的內容取代為下列檢視:
+4. 現在開啟 **index.jade** 檔案，將由我們的應用程式，並將檔案的內容取代為下列檢視 ︰
 
         extends layout
         
@@ -517,7 +517,7 @@ DocumentDB。
     
     這應該就是要讓應用程式開始運作所需的所有程式碼。
 
-5. 開啟 **style.css** 檔案中 **public\stylesheets** 目錄並取代為下列程式碼:
+5. 開啟 **style.css** 檔案中 **public\stylesheets** 目錄並取代為下列程式碼 ︰
 
         body {
           padding: 50px;
@@ -539,7 +539,7 @@ DocumentDB。
 
     儲存並關閉此 **style.css** 檔案。
 
-## <a name="_Toc395783181"></a>步驟 6: 在本機執行您的應用程式
+## <a name="_Toc395783181"></a>步驟 6：在本機執行您的應用程式
 
 1. 若要在本機電腦上測試應用程式，請在終端機中執行 `npm start` 以啟動應用程式，並啟動顯示如下圖所示頁面的瀏覽器：
 
@@ -557,7 +557,7 @@ DocumentDB。
 4. 若要完成工作，您只需勾選 [已完成] 資料行中的核取方塊，
 然後按一下 [ **更新工作**。
 
-## <a name="_Toc395783182"></a>步驟 7: 將您的應用程式開發專案部署至 Azure 網站
+## <a name="_Toc395783182"></a>步驟 7：將應用程式開發專案部署至 Azure 網站
 
 1. 如果您還沒有這麼做，請為您的 Azure 網站提供一個 Git 儲存機制。 您可以找到有關如何執行這項操作的指示 [這裡](../web-sites-publish-source-control-git.md#step4)。
 
@@ -573,7 +573,7 @@ DocumentDB。
 應用程式並啟動瀏覽器，您可以在瀏覽器中看到您方便好用的應用程式
 已在 Azure 中執行！
 
-## <a name="_Toc395637775"></a>後續步驟
+## <a name="_Toc395637775"></a>接續步驟
 
 恭喜！ 您剛剛已使用 Azure DocumentDB 建立您的第一個 Express Web
 應用程式並發行至 Azure 網站。
@@ -586,4 +586,5 @@ DocumentDB。
 [Git]: http://git-scm.com/
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
+
 

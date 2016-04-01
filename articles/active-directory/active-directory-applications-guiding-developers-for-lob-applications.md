@@ -22,11 +22,11 @@
 
 本指南提供開發用於 Azure Active Directory 的企業營運 (LoB) 應用程式的概觀，是專為 Active Directory/Office 365 全域系統管理員撰寫的。
 
-建置整合 Azure AD 的應用程式，可讓您組織的使用者使用  Office 365 單一登入。 在 Azure AD 中擁有應用程式可讓您控制為應用程式設定的驗證原則。 若要深入了解條件式存取，以及如何保護應用程式使用多因素驗證 (MFA) 請參閱下列文件: [設定存取規則](active-directory-conditional-access-azuread-connected-apps.md)
+建置整合 Azure AD 的應用程式，可讓您組織的使用者使用  Office 365 單一登入。 在 Azure AD 中擁有應用程式可讓您控制為應用程式設定的驗證原則。 若要深入了解條件式存取，以及如何保護應用程式使用多因素驗證 (MFA) 請參閱下列文件 ︰ [設定存取規則](active-directory-conditional-access-azuread-connected-apps.md)
 
 您的應用程式必須註冊，才能使用 Azure Active Directory。 註冊應用程式可讓組織的開發人員使用 Azure AD 驗證組織的成員，以及要求存取他們的使用者資源，例如其電子郵件、行事曆及文件等...
 
-您的目錄 (而不是訪客) 的任何成員可以註冊應用程式，又稱為 *建立應用程式物件*。
+您的目錄 （而不是訪客） 的任何成員可以註冊應用程式，又稱為 *建立應用程式物件*。
 
 註冊應用程式可讓任一使用者執行下列動作：
 
@@ -38,9 +38,9 @@
   - 以 Azure Active Directory 做為 oAuth 授權伺服器 (保護應用程式公開的 API)
 
 - 宣告讓應用程式如預期般運作所需的必要權限。 這些包括：
-      應用程式的權限 (僅限全域系統管理員)。 例如：
+      應用程式的權限 （僅限全域系統管理員）。 例如：
         另一個 Azure AD 應用程式或角色成員資格相對於 Azure 資源，資源群組或訂用帳戶中的角色成員資格
-      -委派權限 (任何使用者)。 例如：
+      -委派權限 （任何使用者）。 例如：
         -(AAD) 登入並讀取設定檔
         -(Exchange) 讀取郵件，傳送郵件
         -(SharePoint) 讀取
@@ -77,4 +77,5 @@
 對於您信任的應用程式，您可以代表您組織中的所有使用者同意應用程式。
 
 如需使用者同意的詳細資訊和同意體驗在 Azure 中，請參閱 [與 Azure Active Directory 整合的應用程式](active-directory-integrating-applications.md)
+
 

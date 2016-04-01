@@ -8,13 +8,13 @@
     editor=""/>
 
 <tags
-    ms.service="backup 」
-    ms.workload= 「 儲存體的備份復原的 」
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="英雄文章 」
-    ms.date="11/26/2015 」
-    ms.author="jimpark 」。「 aashishr 」 / >
+    ms.topic="hero-article"
+    ms.date="11/26/2015"
+    ms.author="jimpark"; "aashishr"/>
 
 # 準備環境以備份 Windows 電腦
 
@@ -40,4 +40,5 @@
 - [從 Azure 還原 Windows Server 或 Windows 用戶端](backup-azure-restore-windows-server.md)
 - [Azure 備份常見問題集](backup-azure-backup-faq.md)
 - [Azure 備份論壇](http://go.microsoft.com/fwlink/p/?LinkId=290933)
+
 

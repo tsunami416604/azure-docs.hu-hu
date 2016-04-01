@@ -76,7 +76,7 @@
 >這項 Web 服務是使用 Azure Machine Learning 所建立。 免費的試用版，以及有關建立實驗的簡介影片和 [發佈 web 服務](machine-learning-publish-a-machine-learning-web-service.md), ，請參閱 [azure.com /ml](http://azure.com/ml)。 以下是建立 Web 服務之實驗的螢幕擷取畫面，以及實驗內每個模組的範例程式碼。
 
 
-Azure Machine Learning 中新的空白實驗建立的這兩個 [Execute R Script] 的 [執行-r-指令碼] 模組提取到工作區。 這項 Web 服務使用基礎 R 指令碼來執行 Azure Machine Learning 實驗。 這項實驗有兩個部分：結構描述定義，以及定型模型 + 計分。 第一個模組會定義輸入資料集的預期結構，其中第一個變數是相依變數，而其餘變數是獨立變數。 第二個模組會將輸入資料套入一般線性迴歸模型。  
+從 Azure Machine Learning 中新的空白實驗建立並將兩個 [執行 R 指令碼][execute-r-script] 模組提取到工作區。 這項 Web 服務使用基礎 R 指令碼來執行 Azure Machine Learning 實驗。 這項實驗有兩個部分：結構描述定義，以及定型模型 + 計分。 第一個模組會定義輸入資料集的預期結構，其中第一個變數是相依變數，而其餘變數是獨立變數。 第二個模組會將輸入資料套入一般線性迴歸模型。  
   
 ![實驗流程][3]
 
@@ -87,7 +87,7 @@ Azure Machine Learning 中新的空白實驗建立的這兩個 [Execute R Script
 
 ####模組 2：
 ####LM 模型   
-    資料 <-maml.mapinputport (1) # 類別: data.frame  
+    資料 <-maml.mapinputport （1） # 類別 ︰ data.frame  
   
     data.split <- strsplit(data[1,1], ",")[[1]]  
     data.split <- sapply(data.split, strsplit, ";", simplify = TRUE)  
@@ -116,4 +116,5 @@ Web 服務或發佈至 Azure Marketplace 的耗用量常見問題集解答，請
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
  
+
 

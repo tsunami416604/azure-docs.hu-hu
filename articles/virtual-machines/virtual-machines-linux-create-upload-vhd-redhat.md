@@ -50,14 +50,14 @@
 
         # sudo rpm -e --nodeps NetworkManager
 
-    **注意:** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
+    **注意 ︰** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
 
-4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
+4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
+5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -112,7 +112,7 @@
         # sudo yum install WALinuxAgent
         # sudo chkconfig waagent on
 
-    **注意:** 安裝 WALinuxAgent 套件將會移除 NetworkManager 和 Networkmanager-gnome 時會封裝沒有已移除所述，如果在步驟 2。
+    **注意 ︰** 安裝 WALinuxAgent 套件將會移除 NetworkManager 和 Networkmanager-gnome 時會封裝沒有已移除所述，如果在步驟 2。
 
 13. 請不要在 OS 磁碟上建立交換空間
 Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是暫存磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
@@ -142,12 +142,12 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
 2.  按一下 [連接] 以開啟虛擬機器的主控台視窗。
 
-3.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
+3.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
+4.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -165,7 +165,7 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-7.  修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要開啟 `/etc/default/grub` 中的文字編輯器，編輯 **GRUB_CMDLINE_LINUX** 參數，例如:
+7.  修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要開啟 `/etc/default/grub` 中的文字編輯器，編輯 **GRUB_CMDLINE_LINUX** 參數，例如 ︰
 
         GRUB_CMDLINE_LINUX="rootdelay=300 
         console=ttyS0 
@@ -239,12 +239,12 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
 3.  從建立虛擬機器中 KVM qcow2 映像，將磁碟類型設定為 **qcow2**, ，若要設定虛擬網路介面裝置型號 **virtio**。 然後啟動虛擬機器並以 root 的身分登入。
 
-4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
+4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
+5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -308,7 +308,7 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
         # yum install WALinuxAgent
         # chkconfig waagent on
 
-14. Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是暫存磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式之後 (請參閱上一個步驟)，修改下列參數在 **/etc/waagent.conf** 適當:
+14. Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，資源磁碟是暫存磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式之後 （請參閱上一個步驟），修改下列參數在 **/etc/waagent.conf** 適當 ︰
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -368,12 +368,12 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
 3.  從建立虛擬機器中 KVM qcow2 映像，將磁碟類型設定為 **qcow2**, ，若要設定虛擬網路介面裝置型號 **virtio**。 然後啟動虛擬機器並以 root 的身分登入。
 
-4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字:
+4.  建立名為 **網路** 中 `/etc/sysconfig/` 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字:
+5.  建立名為 **ifcfg-eth0** 中 `/etc/sysconfig/network-scripts/` 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -391,7 +391,7 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
         # subscription-manager register –auto-attach --username=XXX --password=XXX
 
-8.  修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要開啟 `/etc/default/grub` 中的文字編輯器，編輯 **GRUB_CMDLINE_LINUX** 參數，例如:
+8.  修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要開啟 `/etc/default/grub` 中的文字編輯器，編輯 **GRUB_CMDLINE_LINUX** 參數，例如 ︰
 
         GRUB_CMDLINE_LINUX="rootdelay=300 
         console=ttyS0 
@@ -493,14 +493,14 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
          # sudo rpm -e --nodeps NetworkManager
 
-    **注意:** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
+    **注意 ︰** 如果尚未安裝封裝，這個命令會失敗並出現錯誤訊息。 這是預期行為。
 
-2.  建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字:
+2.  建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-3.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字:
+3.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -593,12 +593,12 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
 ###RHEL 7.1/7.2
 
-1.  建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字:
+1.  建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-2.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字:
+2.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -616,7 +616,7 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-5.  修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要開啟 `/etc/default/grub` 中的文字編輯器，編輯 **GRUB_CMDLINE_LINUX** 參數，例如:
+5.  修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要開啟 `/etc/default/grub` 中的文字編輯器，編輯 **GRUB_CMDLINE_LINUX** 參數，例如 ︰
 
         GRUB_CMDLINE_LINUX="rootdelay=300 
         console=ttyS0 
@@ -847,4 +847,5 @@ Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的�
 
 ## 後續步驟
 您現在可以開始在 Azure 中建立新的 Azure 虛擬機器使用 Red Hat Enterprise Linux.vhd。 如需已通過認證可執行 Red Hat Enterprise Linux hypervisor 的詳細資訊，請瀏覽 [Red Hat 網站](https://access.redhat.com/certified-hypervisors)。
+
 

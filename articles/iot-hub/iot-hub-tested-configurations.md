@@ -49,7 +49,7 @@ Azure IoT 程式庫已在下列作業系統平台上測試：
 
 ## C 程式庫
 
- [C 的 Microsoft Azure IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdks/blob/master/c/readme.md) 已經過測試下列設定:
+ [C 的 Microsoft Azure IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdks/blob/master/c/readme.md) 已經過測試下列設定 ︰
 
 |作業系統平台| 版本|通訊協定|
 |:---------|:----------:|:----------:|
@@ -65,7 +65,7 @@ Azure IoT 程式庫已在下列作業系統平台上測試：
 
 ## Node.js 程式庫
 
- [Node.js 的 Microsoft Azure IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdks/blob/master/node/device/readme.md) 已經過測試下列設定:
+ [Node.js 的 Microsoft Azure IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdks/blob/master/node/device/readme.md) 已經過測試下列設定 ︰
 
 
 |執行階段| 版本|通訊協定|
@@ -76,7 +76,7 @@ Azure IoT 程式庫已在下列作業系統平台上測試：
 
 ## Java 程式庫
 
- [Java 的 Microsoft Azure IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdks/blob/master/java/device/readme.md) 已經過測試下列設定:
+ [Java 的 Microsoft Azure IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdks/blob/master/java/device/readme.md) 已經過測試下列設定 ︰
 
 |執行階段| 版本|通訊協定|
 |:---------|:----------:|----|
@@ -92,7 +92,7 @@ Azure IoT 程式庫已在下列作業系統平台上測試：
 
 ## CSharp
 
- [適用於.NET 的 Microsoft Azure IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdks/blob/master/csharp/device/readme.md) 已經過測試下列設定:
+ [適用於.NET 的 Microsoft Azure IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdks/blob/master/csharp/device/readme.md) 已經過測試下列設定 ︰
 
 |作業系統平台| 版本|通訊協定|
 |:---------|:----------:|:----------:|
@@ -143,4 +143,5 @@ Azure IoT 程式庫已在下列作業系統平台上測試：
 ## 後續步驟
 
 深入了解使用開發解決方案 [IoT 裝置認證](http://azure.com/iotdev)。
+
 

@@ -58,7 +58,7 @@
 
 API 應用程式來撥出電話至 SaaS 平台，SaaS 平台具有在指定 *apiapp.json* 檔案。 
 
-1. 開啟 *apiapp.json* 檔案，並加入 `authentication` 屬性，如下所示 (您也必須在前面的屬性後加入逗號):
+1. 開啟 *apiapp.json* 檔案，並加入 `authentication` 屬性，如下所示 （您也必須在前面的屬性後加入逗號） ︰
 
         "authentication": [
           {
@@ -119,7 +119,7 @@ API 應用程式來撥出電話至 SaaS 平台，SaaS 平台具有在指定 *api
 
     * 從 **工具** ] 功能表上，按一下 [ **NuGet 封裝管理員 > Package Manager Console**。
 
-    * 在 **Package Manager Console** ] 視窗中，輸入下列命令:
+    * 在 **Package Manager Console** ] 視窗中，輸入下列命令 ︰
      
             install-package DropboxRestAPI  
 
@@ -207,7 +207,7 @@ API 應用程式來撥出電話至 SaaS 平台，SaaS 平台具有在指定 *api
 
 下列步驟參考 Dropbox 連接器 API 應用程式，但程序和 UI 也適用於您將在本教學課程中建立的 SimpleDropbox API 應用程式。
 
-> **注意:** 如果您沒有看到 Dropbox 用戶端識別碼和用戶端密碼] 欄位上 SimpleDropbox API 應用程式的 **驗證** 刀鋒視窗的螢幕擷取畫面所示確定之後將 API 應用程式專案部署至 API 應用程式的指示，重新啟動閘道。 中的"dropbox"值 `authentication` 屬性 *apiapp.json* 先前部署的檔案就會觸發入口網站顯示這些欄位。
+> **注意 ︰** 如果您沒有看到 Dropbox 用戶端識別碼和用戶端密碼] 欄位上 SimpleDropbox API 應用程式的 **驗證** 刀鋒視窗的螢幕擷取畫面所示確定之後將 API 應用程式專案部署至 API 應用程式的指示，重新啟動閘道。 中的"dropbox"值 `authentication` 屬性 *apiapp.json* 先前部署的檔案就會觸發入口網站顯示這些欄位。
 
 [AZURE.INCLUDE [app-service-api-exchange-dropbox-settings](../../includes/app-service-api-exchange-dropbox-settings.md)]
 
@@ -342,13 +342,13 @@ API 應用程式來撥出電話至 SaaS 平台，SaaS 平台具有在指定 *api
 
 1. 將 {閘道 URL} 取代為您閘道的實際 URL。
  
-    您可以取得閘道 URL，從 **閘道** 入口網站中的分頁:
+    您可以取得閘道 URL，從 **閘道** 入口網站中的分頁 ︰
 
     ![](./media/app-service-api-dotnet-connect-to-saas/gwurl.png)
 
         private const string GATEWAY_URL = @"https://sd1aeb4ae60b7cb4f3d966dfa43b660.azurewebsites.net";
 
-    > **重要**: 請確定閘道 URL 的開頭 `https://`, ，而非 `http://`。 **如果您從入口網站複製 http://，您必須將它變更為 https://，當您將它貼在程式碼。**
+    > **重要**︰ 請確定閘道 URL 的開頭 `https://`, ，而非 `http://`。 **如果您從入口網站複製 http://，在將其貼入程式碼時，必須變更為 https://。**
 
 ### 程式碼的說明
 
@@ -358,7 +358,7 @@ API 應用程式來撥出電話至 SaaS 平台，SaaS 平台具有在指定 *api
 
 * 將瀏覽器開啟為已設定識別提供者 (在此情況下是 Azure Active Directory) 的閘道登入 URL。 
      
-* 預期的回應 URL 使用者登入後: 擷取使用者識別碼和 Zumo 權杖，提供這些應用程式服務用戶端物件。 
+* 預期的回應 URL 使用者登入後 ︰ 擷取使用者識別碼和 Zumo 權杖，提供這些應用程式服務用戶端物件。 
 
 * 使用應用程式服務用戶端物件擷取閘道 URL，將重新導向至 Dropbox 登入和同意連結。 圖表中的步驟 1。
 
@@ -378,7 +378,7 @@ API 應用程式來撥出電話至 SaaS 平台，SaaS 平台具有在指定 *api
 
         browser.Navigate(string.Format(@"{0}/login/aad", GATEWAY_URL));
 
-    若要使用其他提供者的值如下:
+    若要使用其他提供者的值如下 ︰
     * "microsoftaccount"
     * "facebook"
     * "twitter"
@@ -421,7 +421,7 @@ API 應用程式來撥出電話至 SaaS 平台，SaaS 平台具有在指定 *api
 * [HTTP 錯誤 400 而非 Dropbox 登入頁面](#400)
 * [呼叫 API 應用程式時的 HTTP 錯誤 403](#403)
 
-### <a id="405"></a> 閘道登入後的 HTTP 錯誤 405
+### <a id="405"></a> 閘道器登入後發生的 HTTP 錯誤 405
 
 如果您在程式碼呼叫 GetConsentLinkAsync 時收到 HTTP 錯誤 405，請確認您針對閘道 URL 使用 https:// 而非 http://。
 
@@ -429,13 +429,13 @@ API 應用程式來撥出電話至 SaaS 平台，SaaS 平台具有在指定 *api
 
 收到 「 405 不允許使用錯誤的方法，因為用戶端嘗試進行非 SSL HTTP POST 要求，閘道會重新導向至 *https://*, ，並重新導向將導致 GET 要求。 擷取同意連結的 URL 只接受 POST 要求。
 
-### <a id="400"></a>HTTP 錯誤 400 而非 Dropbox 登入頁面
+### <a id="400"></a>出現 HTTP 錯誤 400 而非 Dropbox 登入頁面
 
 請確定您已正確 **用戶端識別碼** 在 API 應用程式的 **驗證** 刀鋒視窗中，並確定沒有任何開頭或尾端空格。 
 
-### <a id="403"></a> 呼叫 API 應用程式時的 HTTP 錯誤 403
+### <a id="403"></a> 呼叫 API 應用程式時發生 HTTP 錯誤 403
 
-* 請確定 **存取層級** API 的應用程式設定為 **公用 (驗證)**, ，而非 **內部**。
+* 請確定 **存取層級** API 的應用程式設定為 **公用 （驗證）**, ，而非 **內部**。
 
 * 請確定您已正確 **用戶端密碼** 在 API 應用程式的 **驗證** 刀鋒視窗中，並確定沒有任何開頭或尾端空格。
 
@@ -453,4 +453,5 @@ Dropbox 登入之後的重新導向 URL 可能與此範例類似：
 
 [Azure preview portal]: https://portal.azure.com/
 [Azure portal]: https://manage.windowsazure.com/
+
 

@@ -46,7 +46,7 @@ Azure 儲存體使用自動分割系統，可自動根據流量負載平衡您�
 
 為了方便開發，Azure 儲存體支援使用各種作業系統 (包括 Windows 和 Linux) 和多種程式設計語言 (包括 .NET、Java 和 C++) 的用戶端。 Azure 儲存體還可透過簡單 REST API 公開資料資源，REST API 適用於任何能夠透過 HTTP/HTTPS 傳送與接收資料的用戶端。
 
-Azure Premium 儲存體對於 Azure 虛擬機器上執行的 I/O 密集工作負載提供高效能、低延遲磁碟支援。 透過 Azure Premium 儲存體，您可以將多個持續資料磁碟連接到虛擬機器，並設定這些磁碟符合您的效能需求。 各個資料磁碟都有 Azure Premium 儲存體的 SSD 磁碟做為備援，充分達到最大的 I/O 效能。 請參閱 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](../storage-premium-storage-preview-portal) 如需詳細資訊。 
+Azure Premium 儲存體對於 Azure 虛擬機器上執行的 I/O 密集工作負載提供高效能、低延遲磁碟支援。 透過 Azure Premium 儲存體，您可以將多個持續資料磁碟連接到虛擬機器，並設定這些磁碟符合您的效能需求。 各個資料磁碟都有 Azure Premium 儲存體的 SSD 磁碟做為備援，充分達到最大的 I/O 效能。 請參閱 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](../storage-premium-storage-preview-portal) 如需詳細資訊。 
 
 ## Azure 儲存體服務簡介
 
@@ -55,7 +55,7 @@ Azure 儲存體帳戶是可讓您存取 Azure 儲存體服務的安全帳戶。 
 - 標準儲存體帳戶包含 Blob、資料表、佇列和檔案儲存體。
 - Premium 儲存體帳戶目前僅支援 Azure 虛擬機器磁碟。
 
-在建立儲存體帳戶之前，您必須擁有 Azure 訂閱，訂閱是指可讓您存取各種 Azure 服務的方案。 [您可以建立最多 100 個唯一命名的儲存體帳戶有一個訂閱。](../azure-subscription-service-limits.md)請參閱 [儲存體定價詳細資料](http://azure.microsoft.com/pricing/details/storage/) 如需批量價格的詳細資訊。
+在建立儲存體帳戶之前，您必須擁有 Azure 訂閱，訂閱是指可讓您存取各種 Azure 服務的方案。 [單一訂用帳戶可讓您建立最多 100 個唯一命名的儲存體帳戶。](../azure-subscription-service-limits.md) 請參閱 [儲存體定價詳細資料](http://azure.microsoft.com/pricing/details/storage/) 如需批量價格的詳細資訊。
 
 您可以開始使用 Azure 與 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。 一旦您決定購買方案，您可以選擇各式各樣的 [購買選項](http://azure.microsoft.com/pricing/purchase-options/)。 如果您是 [MSDN 訂閱者](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), ，取得您可以使用 Azure 服務，包括 Azure 儲存體每月免費額度。
 
@@ -78,7 +78,7 @@ Azure 儲存體帳戶是可讓您存取 Azure 儲存體服務的安全帳戶。 
 
 ### Premium 儲存體帳戶
 
-Azure Premium 儲存體目前僅支援 Azure 虛擬機器磁碟。 Azure 高階儲存體的深入概觀，請參閱 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](http://go.microsoft.com/fwlink/?LinkId=521898)。
+Azure Premium 儲存體目前僅支援 Azure 虛擬機器磁碟。 Azure 高階儲存體的深入概觀，請參閱 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](http://go.microsoft.com/fwlink/?LinkId=521898)。
 
 [AZURE.INCLUDE [storage-versions-include](../../includes/storage-versions-include.md)]
 
@@ -235,4 +235,5 @@ Azure 儲存體公開儲存體資源，透過 [REST API](http://msdn.microsoft.c
 - [如何使用 Python 的資料表儲存體](storage-python-how-to-use-table-storage.md)
 - [如何使用 Python 的佇列儲存體](storage-python-how-to-use-queue-storage.md)
  
+
 

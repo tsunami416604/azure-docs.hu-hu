@@ -26,7 +26,7 @@
 > [AZURE.NOTE] 這份文件中的步驟需要 Windows 用戶端和 Windows 為基礎的 HDInsight 叢集。 如需搭配使用來自 Linux、 OS X 或 Unix 用戶端與以 Linux 為基礎的 HDInsight 叢集的資訊，請參閱 [Apache Mahout 與 Linux 為基礎的 Hadoop，在 HDInsight 中搭配使用來產生電影推薦](hdinsight-hadoop-mahout-linux-mac.md)
 
 
-##<a name="learn"></a>學習目標
+##<a name="learn"></a>您將了解
 
 Mahout 是 [機器學習][ml] Apache hadoop 文件庫。 Mahout 包含可處理資料的演算法，例如篩選、分類和叢集化。 在本文中，您將使用推薦引擎，其將根據朋友看過的電影來產生電影推薦。 您也將了解如何利用決策森林來進行分類。 本文將會告訴您：
 
@@ -50,7 +50,7 @@ Mahout 是 [機器學習][ml] Apache hadoop 文件庫。 Mahout 包含可處理�
 >
 > 如需使用 Hadoop 命令列執行 Mahout 工作的範例，請參閱 [使用 Hadoop 命令列將資料分類](#classify)。
 
-Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID``itemId` 和 `prefValue` (使用者偏好的項目) 格式的資料。 Mahout 接著可以執行共生分析判斷出: _具有喜好設定項目的使用者也喜歡這些其他項目_。 接著 Mahout 會以偏好的類似項目判斷使用者，並以此做出推薦。
+Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID``itemId` 和 `prefValue` (使用者偏好的項目) 格式的資料。 Mahout 接著可以執行共生分析判斷出 ︰ _具有喜好設定項目的使用者也喜歡這些其他項目_。 接著 Mahout 會以偏好的類似項目判斷使用者，並以此做出推薦。
 
 以下使用電影做一個很簡單的範例：
 
@@ -58,7 +58,7 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
 * __共生__: Bob 和 Alice 也喜歡 _威脅潛伏 》_, ，_進攻_, ，和 _大帝的復仇 》_。 Mahout 將判斷喜歡前三部電影的使用者，也會喜歡這三部電影。
 
-* __相似性推薦__: 因為 Joe 喜歡前三部電影，Mahout 會查看所電影的其他使用者具有相似偏好喜歡但 Joe 還沒看過 (喜歡/評價)。 在此情況下，Mahout 將會推薦 _威脅潛伏 》_, ，_進攻_, ，和 _大帝的復仇 》_。
+* __相似性推薦__︰ 因為 Joe 喜歡前三部電影，Mahout 會查看所電影的其他使用者具有相似偏好喜歡但 Joe 還沒看過 （喜歡/評價）。 在此情況下，Mahout 將會推薦 _威脅潛伏 》_, ，_進攻_, ，和 _大帝的復仇 》_。
 
 ###載入資料
 
@@ -108,7 +108,7 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
 ###執行工作
 
-使用下列 Windows PowerShell 指令碼執行的工作，透過 Mahout 推薦引擎 __u.data__ 先前上傳的檔案:
+使用下列 Windows PowerShell 指令碼執行的工作，透過 Mahout 推薦引擎 __u.data__ 先前上傳的檔案 ︰
 
     # The HDInsight cluster name.
     $clusterName = "the cluster name"
@@ -197,11 +197,11 @@ Mahout 工作不會將輸出傳回 STDOUT。 相反地，它將它儲存在指�
     3   [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
     4   [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-第一欄是`userID`。 '[' 和 ']' 中包含的值是 `movieId`:`recommendationScore`。
+第一欄是`userID`。 中包含的值 '[' 和']' 是 `movieId`:`recommendationScore`。
 
 ###檢視輸出
 
-雖然產生的輸出可以在應用程式中使用，但非常難以讓人判讀。 其他一些檔案解壓縮至 __ml-100k__ 資料夾稍早可用於解決 `movieId` 成電影名稱，這就是下列 PowerShell 指令碼執行:
+雖然產生的輸出可以在應用程式中使用，但非常難以讓人判讀。 其他一些檔案解壓縮至 __ml-100k__ 資料夾稍早可用於解決 `movieId` 成電影名稱，這就是下列 PowerShell 指令碼執行 ︰
 
     <#
     .SYNOPSIS
@@ -328,9 +328,9 @@ Mahout 可用的分類方法之一是建置 [隨機樹系][forest]。 這是多�
 
 1. 下載下列檔案從 [NSL-KDD 資料集](http://nsl.cs.unb.ca/NSL-KDD/)。
 
-  * [KDDTrain +。ARFF](http://nsl.cs.unb.ca/NSL-KDD/KDDTrain+.arff): 訓練檔案
+  * [KDDTrain +。ARFF](http://nsl.cs.unb.ca/NSL-KDD/KDDTrain+.arff)︰ 訓練檔案
 
-  * [KDDTest +。ARFF](http://nsl.cs.unb.ca/NSL-KDD/KDDTest+.arff): 測試資料
+  * [KDDTest +。ARFF](http://nsl.cs.unb.ca/NSL-KDD/KDDTest+.arff)︰ 測試資料
 
 2. 開啟每一個檔案並移除頂端以 '@' 開頭的各行，然後儲存檔案。 如果未移除，則在 Mahout 中使用此資料時會收到錯誤訊息。
 
@@ -364,7 +364,7 @@ Mahout 可用的分類方法之一是建置 [隨機樹系][forest]。 這是多�
 
 1. 這項工作需要 Hadoop 命令列。 依照[使用 RDP 連線到 HDInsight 叢集](hdinsight-administer-use-management-portal.md#rdp)中的指示，為 HDInsight 叢集啟用遠端桌面，然後進行連線。
 
-3. 連線之後，使用 __Hadoop 命令列__ 圖示開啟 Hadoop 命令列:
+3. 連線之後，使用 __Hadoop 命令列__ 圖示開啟 Hadoop 命令列 ︰
 
     ![hadoop cli][hadoopcli]
 
@@ -432,7 +432,7 @@ Mahout 安裝於 HDInsight 3.1 叢集上，且可使用下列步驟來手動安�
 
         > [AZURE.NOTE] When Mahout 1.0 is released, you should be able to use the prebuilt packages with HDInsight 3.0.
 
-2. 上傳 jar 檔案 __範例/jars__ 叢集之預設儲存體。 下列指令碼將 CLUSTERNAME 取代您的 HDInsight 叢集的名稱和路徑取代檔名 __mahout 課程: 0.9-job.jar<__ 檔案...
+2. 上傳 jar 檔案 __範例/jars__ 叢集之預設儲存體。 下列指令碼將 CLUSTERNAME 取代您的 HDInsight 叢集的名稱和路徑取代檔名 __mahout 課程 ︰ 0.9-job.jar<__ 檔案...
 
         #Get the cluster info so we can get the resource group, storage, etc.
         $clusterName = "CLUSTERNAME"
@@ -484,7 +484,7 @@ HDInsight 3.1 叢集包含 Mahout。 路徑和檔案名稱包含叢集上安裝�
             -DefaultStorageAccountKey $storageAccountKey `
             -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target\*-job.jar'
 
-###<a name="nopowershell"></a>無法搭配 Windows PowerShell 的類別
+###<a name="nopowershell"></a>不適用於 Windows PowerShell 的類別
 
 如果從 Windows PowerShell 中使用的 Mahout 工作利用到下列類別，則會傳回各種錯誤訊息：
 
@@ -529,3 +529,4 @@ HDInsight 3.1 叢集包含 Mahout。 路徑和檔案名稱包含叢集上安裝�
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
+

@@ -31,7 +31,7 @@
 
 如需雲端服務及其相較於 Azure 網站和虛擬機器的詳細資訊，請參閱 [Azure 網站、 雲端服務和虛擬機器的比較](../choose-web-site-cloud-service-vm.md)。
 
->[AZURE.TIP] 尋求建置簡單的網站? 如果您只需要簡單的網站前端，請考慮使用<a href="../app-service-web/web-sites-nodejs-develop-deploy-mac.md">輕量型 Web 應用程式。</a>隨著 Web 應用程式擴大以及需求改變，您可以輕易地升級到雲端服務。
+>[AZURE.TIP] 尋求建置簡單的網站？ 如果您只需要簡單的網站前端，請考慮使用<a href="../app-service-web/web-sites-nodejs-develop-deploy-mac.md">輕量型 Web 應用程式。</a> 隨著 Web 應用程式擴大以及需求改變，您可以輕易地升級到雲端服務。
 
 
 按照本教學課程進行，您將建立在 Web 角色內代管的簡單 Web 應用程式。 您
@@ -42,7 +42,7 @@
 
 ![顯示 Hello World 網頁的網頁瀏覽器](./media/cloud-services-nodejs-develop-deploy-app/node14.png)
 
-## 先決條件
+## 必要條件
 
 > [AZURE.NOTE] 本教學課程使用 Azure PowerShell，需要有 Windows。
 
@@ -76,7 +76,7 @@
         重新接收。 如需詳細資訊，請參閱
         [建立 Azure 託管的服務概觀][]。
 
-    -   **deploymentSettings.json**: 儲存所使用的本機設定
+    -   **deploymentSettings.json**︰ 儲存所使用的本機設定
         Azure PowerShell 部署 Cmdlet 所使用的本機設定。
 
 4.  輸入下列命令以新增 Web 角色：
@@ -153,7 +153,7 @@ Node.js 應用程式定義檔中 **server.js**, ，位於 web 角色的目錄 (*
 
 您的應用程式現在成功在 Azure 上執行了！
 
- **Publish-azureserviceproject** 指令程式會執行下列步驟:
+ **Publish-azureserviceproject** 指令程式會執行下列步驟 ︰
 
 1.  建立部署的封裝。 該封裝包含 node.js 應用程式資料夾中所有的檔案。
 
@@ -208,4 +208,5 @@ Node.js 應用程式定義檔中 **server.js**, ，位於 web 角色的目錄 (*
 [How to Delete a Storage Account from an Azure Subscription]: https://www.windowsazure.com/manage/services/storage/how-to-manage-a-storage-account/
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
+
 

@@ -8,7 +8,7 @@
 
     這會傳送新項目以插入至行動服務。
 
-    您可以重新啟動應用程式，以確認變更持續存留至 Azure 中的資料庫。 您也可以檢查使用 Azure 傳統入口網站的資料庫: 後續的兩個步驟執行此動作以檢視您的資料庫中的變更。
+    您可以重新啟動應用程式，以確認變更持續存留至 Azure 中的資料庫。 您也可以檢查使用 Azure 傳統入口網站的資料庫 ︰ 後續的兩個步驟執行此動作以檢視您的資料庫中的變更。
 
 
 4. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [管理您的行動服務相關聯的資料庫。
@@ -22,3 +22,4 @@
     ![](./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/sql-azure-query.png)
 
 這將結束 **開始使用資料** android 教學課程。
+

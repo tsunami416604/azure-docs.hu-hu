@@ -38,7 +38,7 @@
 
 ## 替代架構：網站和 WebJobs
 
-本教學課程示範如何在 Azure 雲端服務中執行前端與後端。 替代方法是執行前端 [Azure 網站](/services/web-sites/) 並用 [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) 功能 (目前處於預覽) 用於後端。 如需使用 Webjob 的教學課程，請參閱 [開始使用 Azure WebJobs SDK](../websites-dotnet-webjobs-sdk-get-started.md)。 如需如何選擇最適合您案例的服務資訊，請參閱 [Azure 網站、 雲端服務和虛擬機器的比較](../choose-web-site-cloud-service-vm.md)。
+本教學課程示範如何在 Azure 雲端服務中執行前端與後端。 替代方法是執行前端 [Azure 網站](/services/web-sites/) 並用 [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) 功能 （目前處於預覽） 用於後端。 如需使用 Webjob 的教學課程，請參閱 [開始使用 Azure WebJobs SDK](../websites-dotnet-webjobs-sdk-get-started.md)。 如需如何選擇最適合您案例的服務資訊，請參閱 [Azure 網站、 雲端服務和虛擬機器的比較](../choose-web-site-cloud-service-vm.md)。
 
 ## 您將學到什麼
 
@@ -49,7 +49,7 @@
 * 如何上傳檔案並將檔案儲存在 Azure Blob 服務。
 * 如何將 Azure 佇列服務用於層級之間的通訊。
 
-## 先決條件
+## 必要條件
 
 此教學課程假設您已了解 [基本概念，Azure 雲端服務](fundamentals-application-models.md#CloudServices) 例如 *web 角色* 和 *背景工作角色* 術語。  同時也假設您知道如何使用 [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 或 [Web Form](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) Visual Studio 中的專案。 範例應用程式使用 MVC，但大多數的教學課程內容亦適用於 Web Form。
 
@@ -370,7 +370,7 @@ Web 角色專案和背景工作角色專案的 Azure 儲存體帳戶連接字串
 
 3. 將專案和方案命名為 ContosoAdsCloudService，，再按一下 **確定**。
 
-    ![New Project](./media/cloud-services-dotnet-get-started/newproject.png)
+    ![新增專案](./media/cloud-services-dotnet-get-started/newproject.png)
 
 4. 在 **New Azure Cloud Service** 對話方塊方塊中，加入 web 角色和背景工作角色。 將 Web 角色命名為 ContosoAdsWeb，並將背景工作角色命名為 ContosoAdsWorker。 (使用右窗格中的鉛筆圖示來變更角色的預設名稱。)
 
@@ -386,7 +386,7 @@ Web 角色專案和背景工作角色專案的 Azure 儲存體帳戶連接字串
 
 8. 在 **新增 ASP.NET 專案** ] 對話方塊中，按一下 [ **確定**。
 
-9. 在 **方案總管] 中**, ，以滑鼠右鍵按一下方案 (不其中一個專案)，然後選擇 [ **加入-新專案**。
+9. 在 **方案總管] 中**, ，以滑鼠右鍵按一下方案 （不其中一個專案），然後選擇 [ **加入-新專案**。
 
 11. 在 **加入新的專案** 對話方塊方塊中，選擇 [ **Windows 桌面** 下 **Visual C#** 中左的窗格中，然後按一下 **類別庫** 範本。  
 
@@ -452,7 +452,7 @@ Web 角色專案和背景工作角色專案的 Azure 儲存體帳戶連接字串
 
 3. 遵循相同程序，在 ContosoAdsWorker 角色屬性中加入儲存體連接字串。
 
-5. 仍在 **ContosoAdsWorker [Role]** 屬性] 視窗中，加入另一個連接字串:
+5. 仍在 **ContosoAdsWorker [Role]** 屬性] 視窗中，加入另一個連接字串 ︰
 
     * 名稱：ContosoAdsDbConnectionString
     * 類型：字串
@@ -470,10 +470,10 @@ Web 角色專案和背景工作角色專案的 Azure 儲存體帳戶連接字串
 
 3. 在 ContosoAdsWeb 專案中，從所下載的專案加入下列檔案。
     - *Global.asax.cs*。  
-    - 在 *Views\Shared* 資料夾: <em>\_Layout.cshtml</em>。
-    - 在 *Views\Home* 資料夾: *Index.cshtml*。
-    - 在 *控制器* 資料夾: *AdController.cs*。
-    - 在 *Views\Ad* 資料夾 (先建立資料夾): 五個 *.cshtml* 檔案。
+    - 在 *Views\Shared* 資料夾 ︰ <em>\_Layout.cshtml</em>。
+    - 在 *Views\Home* 資料夾 ︰ *Index.cshtml*。
+    - 在 *控制器* 資料夾 ︰ *AdController.cs*。
+    - 在 *Views\Ad* 資料夾 （先建立資料夾） ︰ 五個 *.cshtml* 檔案。
 
 3. 在 ContosoAdsWorker 專案中，加入 *WorkerRole.cs* 從下載的專案。
 
@@ -813,4 +813,5 @@ Azure 儲存體最佳作法和模式影片介紹，請參閱 [Microsoft Azure �
 * [Azure 雲端服務第 1 部分：簡介](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [如何管理雲端服務](cloud-services-how-to-manage.md)
 * [Azure 儲存體](/documentation/services/storage/)
+
 

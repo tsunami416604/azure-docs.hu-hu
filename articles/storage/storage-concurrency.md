@@ -49,7 +49,7 @@ Azure 儲存體服務對這三種策略都可支援，但此服務依其設計�
 4.  如果目前的 ETag 值，blob 的版本中的 ETag 不同 **If-match** 條件式標頭，在要求中，服務將 412 錯誤傳回給用戶端。 這會向用戶端指出在用戶端擷取 Blob 後，有另一個程序更新過該 Blob。
 5.  如果目前的 blob 的 ETag 值是相同的版本中的 ETag **If-match** 條件式標頭，在要求中，服務執行要求的作業，並更新目前的 ETag 值，以顯示它已建立的新版本的 blob。  
 
-下列 C# 程式碼片段 (使用用戶端儲存體程式庫 4.2.0) 示範如何建構的簡單範例 **If-match AccessCondition** 根據從先前擷取或插入之 blob 的屬性中存取的 ETag 值。 然後它會使用 **AccessCondition** 物件時它在更新 blob: **AccessCondition** 物件中加入 **If-match** 要求標頭。 如果有其他程序更新了 Blob，Blob 服務將會傳回 HTTP 412 (預先指定的條件失敗) 狀態訊息。 您可以下載完整的範例 [這裡](http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)。  
+下列 C# 程式碼片段 （使用用戶端儲存體程式庫 4.2.0） 示範如何建構的簡單範例 **If-match AccessCondition** 根據從先前擷取或插入之 blob 的屬性中存取的 ETag 值。 然後它會使用 **AccessCondition** 物件時它在更新 blob: **AccessCondition** 物件中加入 **If-match** 要求標頭。 如果有其他程序更新了 Blob，Blob 服務將會傳回 HTTP 412 (預先指定的條件失敗) 狀態訊息。 您可以下載完整的範例 [這裡](http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)。  
 
     // Retrieve the ETag from the newly created blob
     // Etag is already populated as UploadText should cause a PUT Blob call 
@@ -205,9 +205,9 @@ Azure 儲存體服務對這三種策略都可支援，但此服務依其設計�
 2.  當您更新實體時，包括您在步驟 1 中的必要接收到的 ETag 值 **If-match** 傳送至服務的要求標頭。
 3.  服務會比較要求中的 ETag 值與實體目前的 ETag 值。
 4.  如果目前的實體的 ETag 值中的必要的 ETag 不同 **If-match** 標頭，在要求中，服務將 412 錯誤傳回給用戶端。 這會向用戶端指出在用戶端擷取實體後，有另一個程序更新過該實體。
-5.  如果目前的實體的 ETag 值中的必要的 ETag 相同 **If-match** 要求標頭或 **If-match** 標頭包含萬用字元 (*)，服務執行要求的作業，並更新目前的 ETag 值，以顯示已更新過的實體。  
+5.  如果目前的實體的 ETag 值中的必要的 ETag 相同 **If-match** 要求標頭或 **If-match** 標頭包含萬用字元 （*），服務執行要求的作業，並更新目前的 ETag 值，以顯示已更新過的實體。  
 
-請注意，不同於 blob 服務中，資料表服務需要用戶端来包含 **If-match** 在更新要求中的標頭。 不過，它是無法強制執行無條件更新 (最後一個寫入器為準 」 策略)，並略過並行存取檢查，如果用戶端設定 **If-match** 設為萬用字元 (*) 中要求的標頭。  
+請注意，不同於 blob 服務中，資料表服務需要用戶端来包含 **If-match** 在更新要求中的標頭。 不過，它是無法強制執行無條件更新 （最後一個寫入器為準 」 策略），並略過並行存取檢查，如果用戶端設定 **If-match** 設為萬用字元 （*） 中要求的標頭。  
 
 下列 C# 程式碼片段說明先前建立或擷取的客戶實體更新了其電子郵件地址。 初始插入或擷取作業將 ETag 值儲存在客戶物件中，且因為範例在執行取代作業時使用了相同的物件執行個體，因此自動將 ETag 值傳回至資料表服務，使服務能夠檢查是否有並行存取違規。 如果有其他程序更新了資料表儲存體中的實體，服務將會傳回 HTTP 412 (預先指定的條件失敗) 狀態訊息。 您可以下載完整的範例 [這裡](http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)。  
 
@@ -281,7 +281,8 @@ Microsoft Azure 儲存體服務的設計已符合最複雜的線上應用程式�
 - [Microsoft Azure 儲存體首頁](http://azure.microsoft.com/services/storage/)
 - [Azure 儲存體簡介](storage-introduction.md)
 - 開始使用的儲存體 [Blob](storage-dotnet-how-to-use-blobs.md), ，[資料表](storage-dotnet-how-to-use-tables.md) 和 [佇列](storage-dotnet-how-to-use-queues.md)
-- 儲存體架構 – [Microsoft Azure 儲存體: 具有高度一致性的高可用性雲端儲存體服務](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- 儲存體架構 – [Microsoft Azure 儲存體 ︰ 具有高度一致性的高可用性雲端儲存體服務](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
  
+
 

@@ -53,9 +53,9 @@
         info:    network route-table create command OK
 
     參數：
-    - **-g (或--資源群組)**。 將會在當中建立 NSG 之資源群組的名稱。 我們的案例， *TestRG*。
-    - **-l (或--location)**。 將要建立新 NSG 的 Azure 區域。 我們的案例， *westus*。
-    - **-n (或--名稱)**。 新 NSG 的名稱。 我們的案例， *NSG 前端*。
+    - **-g （或--資源群組）**。 將會在當中建立 NSG 之資源群組的名稱。 我們的案例， *TestRG*。
+    - **-l （或--location）**。 將要建立新 NSG 的 Azure 區域。 我們的案例， *westus*。
+    - **-n （或--名稱）**。 新 NSG 的名稱。 我們的案例， *NSG 前端*。
 
 4. 執行 **`azure network route-table route create`** 命令來建立上述建立要傳送到後端的子網路 (192.168.2.0/24) 的所有流量的路由表中的路由到 **FW1** VM (192.168.0.4)。
 
@@ -77,9 +77,9 @@
         info:    network route-table route create command OK
 
     參數：
-    - **-r (或--路由資料表名稱)**。 將會加入路由的路由表的名稱。 我們的案例， *UDR 前端*。
-    - **-a (或-位址首碼)**。 封包所指向位置的子網路的位址首碼。 我們的案例， *192.168.2.0/24*。
-    - **-y (或--下一個躍點類型)**。 將傳送流量的目標物件類型。 可能的值為 *VirtualAppliance*, ，*VirtualNetworkGateway*, ，*VNETLocal*, ，*網際網路*, ，或 *無*。
+    - **-r （或--路由資料表名稱）**。 將會加入路由的路由表的名稱。 我們的案例， *UDR 前端*。
+    - **-a （或-位址首碼）**。 封包所指向位置的子網路的位址首碼。 我們的案例， *192.168.2.0/24*。
+    - **-y （或--下一個躍點類型）**。 將傳送流量的目標物件類型。 可能的值為 *VirtualAppliance*, ，*VirtualNetworkGateway*, ，*VNETLocal*, ，*網際網路*, ，或 *無*。
     - **-p (或--下一個躍點 ip-位址**)。 下個躍點的 IP 位址。 我們的案例， *192.168.0.4*。
 
 5. 執行 **`azure network vnet subnet set`** 命令，以將先前建立的路由表關聯 **前端** 子網路。
@@ -111,7 +111,7 @@
         info:    network vnet subnet set command OK
 
     參數：
-    - **-e (或-vnet 名稱)**。 子網路所在的 VNet 名稱。 我們的案例， *TestVNet*。
+    - **-e （或-vnet 名稱）**。 子網路所在的 VNet 名稱。 我們的案例， *TestVNet*。
  
 ## 建立後端子網路的 UDR
 若要根據上述案例建立後端子網路所需的路由表和路徑，請依照下列步驟執行。
@@ -197,5 +197,6 @@
 
     參數：
 
-    - **-f (或--啟用 ip 轉送)**。 *true* 或 *false*。
+    - **-f （或--啟用 ip 轉送）**。 *true* 或 *false*。
+
 

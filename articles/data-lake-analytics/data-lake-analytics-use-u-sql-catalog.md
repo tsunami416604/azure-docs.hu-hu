@@ -84,3 +84,4 @@ U-SQL 資料庫包含：
     - [使用 Azure 資料湖分析互動式教學課程](data-lake-analytics-use-interactive-tutorials.md)
     - [使用 Azure 資料湖分析來分析網站記錄](data-lake-analytics-analyze-weblogs.md)
 
+

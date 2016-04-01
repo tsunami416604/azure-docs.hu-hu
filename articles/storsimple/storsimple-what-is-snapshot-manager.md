@@ -23,7 +23,7 @@ StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管�
 
 本概觀簡介 StorSimple Snapshot Manager、描述其功能，並說明其在 Microsoft Azure StorSimple 的角色。 
 
-如需整個 Microsoft Azure StorSimple 系統，包括 StorSimple 裝置、 StorSimple Manager 服務、 StorSimple Snapshot Manager，以及 StorSimple Adapter for SharePoint 的概觀，請參閱 [StorSimple 8000 系列: 混合式雲端儲存體解決方案](storsimple-overview.md)。 
+如需整個 Microsoft Azure StorSimple 系統，包括 StorSimple 裝置、 StorSimple Manager 服務、 StorSimple Snapshot Manager，以及 StorSimple Adapter for SharePoint 的概觀，請參閱 [StorSimple 8000 系列 ︰ 混合式雲端儲存體解決方案](storsimple-overview.md)。 
  
 ## StorSimple Snapshot Manager 用途和架構
 
@@ -127,7 +127,7 @@ VSS 的 StorSimple Snapshot Manager 實作會使用 SQL Server 和一般 NTFS �
 
 - **名稱** – 所選備份原則的唯一名稱。
 
-- **型別** – 備份原則: 本機快照或雲端快照的類型。
+- **型別** – 備份原則 ︰ 本機快照或雲端快照的類型。
 
 - **磁碟區群組** – 所選備份原則指派給磁碟區群組。
 
@@ -149,3 +149,4 @@ VSS 的 StorSimple Snapshot Manager 實作會使用 SQL Server 和一般 NTFS �
 - 深入了解 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 
 - 下載 [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)。
+

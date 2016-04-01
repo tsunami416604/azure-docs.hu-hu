@@ -39,7 +39,7 @@ Microsoft HPC Pack 是在 Azure 中建立 Windows Server 型 HPC 叢集時建議
 
 * 案例 2. 在大量運算 VM 中部署運算節點 (IaaS)
 
-## 先決條件
+## 必要條件
 
 * **檢閱 [背景資訊和考量](virtual-machines-a8-a9-a10-a11-specs.md)** 關於大量運算執行個體
 
@@ -52,20 +52,20 @@ Microsoft HPC Pack 是在 Azure 中建立 Windows Server 型 HPC 叢集時建議
 ## 案例 1. 部署大量運算背景工作角色執行個體 (PaaS)
 
 
-從現有的 HPC Pack 叢集，加入 Azure 背景工作角色執行個體 (Azure 節點) 的雲端中執行額外的計算資源
+從現有的 HPC Pack 叢集，加入 Azure 背景工作角色執行個體 （Azure 節點） 的雲端中執行額外的計算資源
 服務 (PaaS)。 這項功能，也稱為 「 高載至 Azure 」 從 HPC
 組件支援各式各樣的背景工作角色執行個體的大小。 若要使用
 計算密集型執行個體，只要指定的大小為 A8 或 A9 時
 加入 Azure 節點。
 
 以下是暴增至 A8 或 A9 Azure 執行個體中的步驟
-現有的 (通常是內部) 叢集。 使用類似的程序
+現有的 （通常是內部） 叢集。 使用類似的程序
 將背景工作角色執行個體加入至部署 HPC Pack 前端節點
 在 Azure VM。
 
 >[AZURE.NOTE] 若要使用 HPC Pack 擴充至 Azure 的教學課程，請參閱 [設定混合式 HPC pack 叢集](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)。 請留意下列步驟中僅適用於 A8 和 A9 大小之 Azure 節點的考量。
 
-![高載至 Azure][高載]
+![將量擴大到 Azure][burst]
 
 
 
@@ -99,7 +99,7 @@ Microsoft HPC Pack 是在 Azure 中建立 Windows Server 型 HPC 叢集時建議
 
 10. **將工作提交至叢集**
 
-    使用 HPC Pack 工作提交工具來執行叢集工作。 請參閱 [Microsoft HPC Pack: 作業管理](http://technet.microsoft.com/library/jj899585.aspx)。
+    使用 HPC Pack 工作提交工具來執行叢集工作。 請參閱 [Microsoft HPC Pack ︰ 作業管理](http://technet.microsoft.com/library/jj899585.aspx)。
 
 11. **停止 (解除佈建) 節點**
 
@@ -125,7 +125,7 @@ Microsoft HPC Pack 是在 Azure 中建立 Windows Server 型 HPC 叢集時建議
 網域中，在前端節點 VM，計算節點 Vm 和其他部分
 在 Azure 中的 HPC Pack 叢集基礎結構。 請參閱 [使用 Microsoft HPC Pack，在 Azure 中的 HPC 叢集選項](virtual-machines-hpcpack-cluster-options.md)。
 
-![Azure Vm 中的叢集][] iaas
+![Azure VM 中的叢集][iaas]
 
 
 1. **在用戶端電腦上執行 HPC Pack IaaS 部署指令碼，以建立叢集前端節點和運算節點 VM**
@@ -156,13 +156,13 @@ Microsoft HPC Pack 是在 Azure 中建立 Windows Server 型 HPC 叢集時建議
 * **雲端服務** -我們建議您部署主節點中有一個雲端服務和 A8 和 A9 計算不同的雲端服務中的節點。
 
 
-* **前端節點大小** -A8 或 A9 大小新增計算節點 Vm 至少考慮的大小為 A4 (超大型) 的前端節點。
+* **前端節點大小** -A8 或 A9 大小新增計算節點 Vm 至少考慮的大小為 A4 （超大型） 的前端節點。
 
 
 * **HpcVmDrivers 延伸模組** -部署指令碼會安裝 Azure VM 代理程式和 HpcVmDrivers 延伸模組部署 A8 或 A9 大小時，自動計算與 Windows Server 作業系統的節點。 HpcVmDrivers 會在運算節點 VM 上安裝驅動程式，使其可以連接到 RDMA 網路。 請參閱 [Azure VM 延伸模組與功能](virtual-machines-extensions-features.md)。
 
 
-* **叢集網路組態** -部署指令碼會自動設定 HPC Pack 叢集拓撲 5 (企業網路上的所有節點)。 VM 中的所有 HPC Pack 叢集部署都需要此拓撲，包括大小為 A8 或 A9 的運算節點在內。 後續請勿變更此叢集網路拓撲。
+* **叢集網路組態** -部署指令碼會自動設定 HPC Pack 叢集拓撲 5 （企業網路上的所有節點）。 VM 中的所有 HPC Pack 叢集部署都需要此拓撲，包括大小為 A8 或 A9 的運算節點在內。 後續請勿變更此叢集網路拓撲。
 
 ## 在 A8 和 A9 執行個體上執行 MPI 應用程式
 
@@ -195,7 +195,7 @@ RDMA 網路。
 
     命令會傳回已提交之工作的 ID。
 
-    如果您部署 HPC Pack 叢集部署在 Azure Vm 上，指定包含的節點群組計算節點 Vm 部署在單一雲端服務中，並修改 **mpiexec** 命令，如下所示:
+    如果您部署 HPC Pack 叢集部署在 Azure Vm 上，指定包含的節點群組計算節點 Vm 部署在單一雲端服務中，並修改 **mpiexec** 命令，如下所示 ︰
 
   ```
   job submit /nodegroup:vmcomputenodes /numnodes:4 mpiexec -c 1 -affinity -env MSMPI\_DISABLE\_SOCK 1 -env MSMPI\_PRECONNECT all -env MPICH\_NETMASK 172.16.0.0/255.255.0.0 mpipingpong -p 1:100000 -op -s nul
@@ -211,9 +211,9 @@ RDMA 網路。
 
     輸出會包含如下的延遲結果。
 
-    ![Ping pong 延遲][] pingpong1
+    ![Ping pong 延遲][pingpong1]
 
-4. 若要估計成對 Azure 高載節點之間的輸送量，請輸入下列命令以送出工作來執行 **mpipingpong** 具有大型封包和少量反覆項目:
+4. 若要估計成對 Azure 高載節點之間的輸送量，請輸入下列命令以送出工作來執行 **mpipingpong** 具有大型封包和少量反覆項目 ︰
 
     ```
     job submit /nodegroup:azurenodes /numnodes:4 mpiexec -c 1 -affinity mpipingpong -p 4000000:1000 -op -s nul
@@ -231,15 +231,15 @@ RDMA 網路。
     
   輸出會包含如下的輸送量結果。
 
-  ![Ping pong 輸送量][] pingpong2
+  ![Ping pong 輸送量][pingpong2]
 
 
 ### MPI 應用程式考量
 
 
 以下是在 Azure 上執行 MPI 應用程式的考量
-執行個體。 部分僅適用於部署的 Azure 節點 (背景工作角色
-執行個體在 「 高載至 Azure 」 組態中加入)。
+執行個體。 部分僅適用於部署的 Azure 節點 （背景工作角色
+執行個體在 「 高載至 Azure 」 組態中加入）。
 
 * Azure 會定期重新佈建雲端服務中的背景工作角色執行個體，不另行通知 (例如為了維護系統，或是因為執行個體失敗)。 如果執行個體在執行 MPI 工作時重新佈建，執行個體將會遺失其所有的資料，並回復到第一次部署時的狀態，而這會導致 MPI 工作失敗。 您為單一 MPI 工作使用的節點愈多，工作執行的時間愈久，且其中一個執行個體就愈有可能在工作執行時重新佈建。 如果您在部署中將單一節點指定為檔案伺服器，您也應考量這一點。
 
@@ -276,4 +276,5 @@ RDMA 網路。
 [iaas]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/iaas.png
 [pingpong1]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/pingpong2.png
+
 

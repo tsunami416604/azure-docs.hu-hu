@@ -32,7 +32,7 @@ ms.service="virtual-machines"
 
 您可以使用下列方法來建立包含或不含工作排程器的 Linux RDMA 叢集。
 
-* **HPC Pack** -在 Azure 中建立的 Microsoft HPC Pack 叢集，並加入計算節點執行 (啟動 HPC Pack 2012 R2 Update 2 中的 Linux 運算節點支援) 支援的 Linux 散發套件。 某些 Linux 節點可以設定為存取 RDMA 網路。 請參閱 [開始使用 Linux 運算節點，在 Azure 中的 HPC Pack 叢集](virtual-machines-linux-cluster.md)。
+* **HPC Pack** -在 Azure 中建立的 Microsoft HPC Pack 叢集，並加入計算節點執行 （啟動 HPC Pack 2012 R2 Update 2 中的 Linux 運算節點支援） 支援的 Linux 散發套件。 某些 Linux 節點可以設定為存取 RDMA 網路。 請參閱 [開始使用 Linux 運算節點，在 Azure 中的 HPC Pack 叢集](virtual-machines-linux-cluster.md)。
 
 * **Azure CLI 指令碼** -本文使用的其餘部分中的步驟中所示 [Azure 命令列介面](../xplat-cli-install.md) (CLI) 用於 Mac、 Linux 和 Windows 編寫指令碼在部署的虛擬網路和其他必要元件來建立 Linux 叢集。 傳統 (服務管理) 部署模式中的 CLI 將循序建立叢集節點，因此如果您正在部署許多運算節點，則可能需要花費幾分鐘才能完成部署。
 
@@ -42,7 +42,7 @@ ms.service="virtual-machines"
 
 下列步驟可協助您使用 Azure CLI 部署 SLES 12 VM、安裝 Intel MPI Library 和其他自訂項目、建立自訂的 VM 映像，然後再編寫 A8 或 A9 VM 叢集部署的指令碼。
 
-### 先決條件
+### 必要條件
 
 *   **用戶端電腦** -您將需要 Mac、 Linux 或 Windows 用戶端電腦與 Azure 進行通訊。 這些步驟假設您使用 Linux 用戶端。
 
@@ -52,7 +52,7 @@ ms.service="virtual-machines"
 
 *   **Azure CLI** - [安裝](../xplat-cli-install.md) Azure CLI 和 [設定 ](../xplat-cli-connect.md) 從用戶端電腦連線到您的 Azure 訂閱。
 
-*   **Intel MPI** -自訂您的叢集的 Linux VM 映像的一部分 (請參閱本文稍後詳細資料)，您需要下載並安裝 Intel MPI Library 5 執行階段從 [Intel.com 網站](https://software.intel.com/en-us/intel-mpi-library/) 佈建 Azure Linux VM 上。 若要為此做準備，註冊 Intel 之後，請遵循確認電子郵件中相關網頁的連結，並針對適當版本的 Intel MPI 複製 .tgz 檔案的下載連結。 這篇文章根據 Intel MPI 5.0.3.048 版。
+*   **Intel MPI** -自訂您的叢集的 Linux VM 映像的一部分 （請參閱本文稍後詳細資料），您需要下載並安裝 Intel MPI Library 5 執行階段從 [Intel.com 網站](https://software.intel.com/en-us/intel-mpi-library/) 佈建 Azure Linux VM 上。 若要為此做準備，註冊 Intel 之後，請遵循確認電子郵件中相關網頁的連結，並針對適當版本的 Intel MPI 複製 .tgz 檔案的下載連結。 這篇文章根據 Intel MPI 5.0.3.048 版。
 
 ### 佈建 SLES 12 VM
 
@@ -275,7 +275,7 @@ source /opt/intel/impi_latest/bin64/mpivars.sh
 ```
 /opt/intel/impi_latest/bin64/mpirun -ppn 1 -n 2 -hosts <host1>,<host2> -env I_MPI_FABRICS=shm:dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 hostname
 ```
-您的輸出應該會列出您傳遞做為 `-hosts` 之輸入的所有節點名稱。 例如， **mpirun** 具有兩個節點的命令會傳回輸出類似如下:
+您的輸出應該會列出您傳遞做為 `-hosts` 之輸入的所有節點名稱。 例如， **mpirun** 具有兩個節點的命令會傳回輸出類似如下 ︰
 
 ```
 cluster11
@@ -369,4 +369,5 @@ cluster12
 * 嘗試在 Linux 叢集上部署並執行 Linux MPI 應用程式。
 
 * 請參閱 [Intel MPI Library 文件](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/) 如需 Intel MPI 的指引。
+
 

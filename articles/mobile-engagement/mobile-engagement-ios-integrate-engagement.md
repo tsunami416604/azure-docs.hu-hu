@@ -33,9 +33,9 @@
 ##將 Engagement SDK 嵌入您的 iOS 專案
 
 下載 iOS SDK 從 [這裡](http://aka.ms/qk2rnj)。
-將 Engagement SDK 加入至您的 iOS 專案: 在 Xcode 中，以滑鼠右鍵按一下專案，然後選取 **[新增檔案至...]** 選擇 `EngagementSDK` 資料夾。
+將 Engagement SDK 加入至您的 iOS 專案 ︰ 在 Xcode 中，以滑鼠右鍵按一下專案，然後選取 **[新增檔案至...]** 選擇 [ `EngagementSDK` 資料夾。
 
-Engagement 需要額外的架構才能運作：在專案總管中，開啟專案窗格並選取正確的目標。 然後，開啟 **[建置階段]** ] 索引標籤和 **"Link Binary With Libraries"** ] 功能表上，加入下列架構:
+Engagement 需要額外的架構才能運作：在專案總管中，開啟專案窗格並選取正確的目標。 然後，開啟 **[建置階段]** ] 索引標籤和 **"Link Binary With Libraries"** ] 功能表上，加入下列架構 ︰
 
 > -   `AdSupport.framework`：將連結設為`Optional`
 > -   `SystemConfiguration.framework`
@@ -105,13 +105,13 @@ Engagement 需要額外的架構才能運作：在專案總管中，開啟專案
 
 Apple 服務條款不允許應用程式只為了統計資料的目的而使用位置追蹤。 因此，建議您只有當應用程式也會因為另一個原因而使用位置追蹤時，才啟用位置報告。
 
-從 iOS 8 開始，您必須在應用程式的 Info.plist 檔案中提供您的應用程式設定的機碼 [NSLocationWhenInUseUsageDescription] 或 [NSLocationAlwaysUsageDescription] 的字串所使用的位置服務的描述。 如果您想要在背景以 Engagement 報告位置，請加入 NSLocationAlwaysUsageDescription 索引鍵。 在其他情況下，請加入 NSLocationWhenInUseUsageDescription 索引鍵。
+從 iOS 8 開始，您必須提供您的應用程式設定索引鍵的字串所使用的位置服務的描述 [NSLocationWhenInUseUsageDescription] 或 [NSLocationAlwaysUsageDescription] 在您的應用程式的 Info.plist 檔案中。 如果您想要在背景以 Engagement 報告位置，請加入 NSLocationAlwaysUsageDescription 索引鍵。 在其他情況下，請加入 NSLocationWhenInUseUsageDescription 索引鍵。
 
 ### 延遲區域位置報告
 
 延遲區域位置報告允許報告國家、地區以及與裝置相關聯的位置。 這類位置報告只會使用網路位置 (根據基地台識別碼或 WIFI)。 每個工作階段最多報告一次裝置區域。 絕不會使用 GPS，因此這類位置報告對於電池的影響很小 (但不是沒有)。
 
-報告的區域用來計算關於使用者、工作階段、事件與錯誤的地理統計資料。 它們也可用來做為觸達活動的準則。 針對裝置報告的最後已知的區域可以藉由 [裝置 API] 來擷取。
+報告的區域用來計算關於使用者、工作階段、事件與錯誤的地理統計資料。 它們也可用來做為觸達活動的準則。 最後一個已知的區域所報告的裝置可以擷取要感謝 [Device API]。
 
 若要啟用延遲區域位置報告，請在初始化 Engagement 代理程式之後加入下面這一行：
 
@@ -147,7 +147,7 @@ Apple 服務條款不允許應用程式只為了統計資料的目的而使用�
 
 > [AZURE.NOTE] 當應用程式在背景執行，網路位置只會報告，即使啟用 GPS。
 
-您的應用程式進入背景時，此函式的實作會呼叫 [startMonitoringSignificantLocationChanges]。 請注意，如果新的位置事件抵達，它會自動重新啟動您的應用程式到背景中。
+此函式的實作會呼叫 [startMonitoringSignificantLocationChanges] 您的應用程式進入背景時。 請注意，如果新的位置事件抵達，它會自動重新啟動您的應用程式到背景中。
 
 ##進階報告
 
@@ -160,7 +160,7 @@ Engagement API 允許使用所有 Engagement 的進階功能，詳情請見＜�
 
 根據預設，Engagement 會使用 [IDFA] 來唯一識別使用者。 但是，如果您未在應用程式中的其他地方使用廣告，您可能會遭到應用程式市集審查程序拒絕。 您可以在 pch 檔案 (或是在應用程式的 `Build Settings` 中) 加入前置處理器巨集 `ENGAGEMENT_DISABLE_IDFA`，藉此停用 IDFA 集合。 如此可確保應用程式組建中沒有任何對 `ASIdentifierManager`、`advertisingIdentifier` 或 `isAdvertisingTrackingEnabled` 的參考。
 
-中的整合 **prefix.pch** 檔案:
+中的整合 **prefix.pch** 檔案 ︰
 
     #define ENGAGEMENT_DISABLE_IDFA
     ...
@@ -209,4 +209,5 @@ Engagement API 允許使用所有 Engagement 的進階功能，詳情請見＜�
 [NSLocationAlwaysUsageDescription]:https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18
 [startMonitoringSignificantLocationChanges]:http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]:https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
+
 

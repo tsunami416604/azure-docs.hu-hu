@@ -33,7 +33,7 @@
 ### 使用 Azure 入口網站從 Runbook 資源庫匯入 Runbook
 
 1. 在 Azure 管理入口網站中，按一下， **新增**, ，**應用程式服務**, ，**自動化**, ，**Runbook**, ，**從組件庫**。
-2. 選取類別以檢視相關的 Runbook，然後選取 Runbook 以檢視其詳細資料。 當您選取您想的 runbook 時，按一下向右箭號按鈕。<br>
+2. 選取類別以檢視相關的 Runbook，然後選取 Runbook 以檢視其詳細資料。 當您選取您想要的 Runbook 時，按一下向右箭頭按鈕。<br>
 ![Runbook 資源庫](media/automation-runbook-gallery/runbook-gallery.png)
 3. 檢閱 Runbook 的內容並記下說明中的任何需求。 當您完成時按一下向右箭頭按鈕。
 4. 輸入 Runbook 詳細資料，然後按一下勾選記號按鈕。 Runbook 名稱已填入。
@@ -45,12 +45,12 @@
 2. 按一下 [ **Runbook** 磚以開啟 runbook 的清單。
 3. 按一下 [ **瀏覽組件庫** ] 按鈕。 <br>
 ![瀏覽組件庫] 按鈕](media/automation-runbook-gallery/browse-gallery-button.png)
-4. 找出主機庫項目，並選取它，以便檢視其詳細資料。   <br>
+4. 找出您想要的資源庫項目，並且選取以檢視其詳細資料。   <br>
 ![瀏覽資源庫](media/automation-runbook-gallery/browse-gallery.png)
 4. 按一下 [ **檢視原始碼專案** 檢視中的項目 [TechNet 指令碼中心](http://gallery.technet.microsoft.com/)。
 5. 若要匯入項目，請按一下以檢視其詳細資料，然後按一下 **匯入** ] 按鈕。<br>
 ![匯入] 按鈕](media/automation-runbook-gallery/gallery-item-detail.png)
-6. (選擇性) 變更 runbook 的名稱，然後按一下 **確定** 匯入 runbook。
+6. （選擇性） 變更 runbook 的名稱，然後按一下 **確定** 匯入 runbook。
 5. Runbook 會出現在 **Runbook** 自動化帳戶] 索引標籤。
 
 
@@ -114,3 +114,4 @@ PowerShell 模組包含 cmdlet，可用於您的 runbook，而且可在現有的
 
 - [在 Azure 自動化中建立或匯入 Runbook](automation-creating-importing-runbook.md)
 - [了解 PowerShell 工作流程](automation-powershell-workflow.md)
+

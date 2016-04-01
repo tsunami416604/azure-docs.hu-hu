@@ -75,3 +75,4 @@ Azure 雲端服務具備獨特的服務組態機制，可讓您從 Azure 管理�
 [connection-string5]: ./media/storage-configure-connection-string-include/connection-string5.png
 
 [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
+

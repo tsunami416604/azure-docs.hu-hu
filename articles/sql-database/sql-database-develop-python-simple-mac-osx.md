@@ -39,15 +39,15 @@
 
 開啟您的終端機並安裝
 
-**1) Homebrew**: 從您的終端機執行下列命令。 這會在您的電腦上下載 Homebrew 封裝管理員。
+**1) Homebrew**︰ 從您的終端機執行下列命令。 這會在您的電腦上下載 Homebrew 封裝管理員。
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-**2) FreeTDS**: 從您的終端機執行下列命令。 這會在您的電腦上下載 FreeTDS。 pymmsql 需要 FreeTDS 才能工作。
+**2) FreeTDS**︰ 從您的終端機執行下列命令。 這會在您的電腦上下載 FreeTDS。 pymmsql 需要 FreeTDS 才能工作。
 
     brew install FreeTDS
 
-**3) Pymmsql**: 從您的終端機執行下列命令。 這將會在您的電腦上安裝 pymmsql。
+**3) Pymmsql**︰ 從您的終端機執行下列命令。 這將會在您的電腦上安裝 pymmsql。
 
     sudo -H pip install pymssql
 
@@ -59,7 +59,7 @@
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## 步驟 2: 連接
+## 步驟 2 ︰ 連接
 
  [Pymssql.connect](http://pymssql.org/en/latest/ref/pymssql.html) 函式用來連接到 SQL 資料庫。
 
@@ -67,9 +67,9 @@
     conn = pymssql.connect(server='yourserver.database.windows.net', user='yourusername@yourserver', password='yourpassword', database='AdventureWorks')
 
 
-## 步驟 3: 執行查詢
+## 步驟 3 ︰ 執行查詢
 
- [Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 函式可用來擷取對 SQL Database 設定從查詢的結果。 此函式基本上會接受任何查詢，並傳回結果集，這可以藉由使用反覆 [cursor.fetchone ()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone)。
+ [Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 函式可用來擷取對 SQL Database 設定從查詢的結果。 此函式基本上會接受任何查詢，並傳回結果集，這可以藉由使用反覆 [cursor.fetchone （)](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone)。
 
 
     import pymssql
@@ -82,7 +82,7 @@
         row = cursor.fetchone()
 
 
-## 步驟 4: 插入資料列
+## 步驟 4 ︰ 插入資料列
 
 在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。  
 
@@ -98,7 +98,7 @@
         row = cursor.fetchone()
 
 
-## 步驟 5: 回復交易
+## 步驟 5 ︰ 回復交易
 
 
 這個程式碼範例示範如何使用交易，您將：
@@ -122,4 +122,5 @@
 ## 後續步驟
 
 如需詳細資訊，請參閱 [Python 開發人員中心](/develop/python/)。
+
 

@@ -1,12 +1,12 @@
 Microsoft Azure 儲存體帳戶中的資料一律會複寫以確保持久性及高可用性，會議 [Azure 儲存體 SLA](http://azure.microsoft.com/support/legal/sla/) 即使是面對暫時性硬體故障。 
 建立儲存體帳戶時，您必須選取下列其中一個複寫選項：  
 
-- **本機備援儲存體 (LRS)。**本地備援儲存體可維護三個資料複本。 LRS 會在單一區域的單一設備內複寫三次。 LRS 可保護您的資料以避免一般的硬體故障，但無法避免單一設備的故障。  
+- **本地備援儲存體 (LRS)。** 本地備援儲存體可維護三個資料複本。 LRS 會在單一區域的單一設備內複寫三次。 LRS 可保護您的資料以避免一般的硬體故障，但無法避免單一設備的故障。  
   
     使用 LRS 可享有折扣費率。 如需最高的持久性，建議您採用異地備援儲存體，如下所述。
 
 
-- **區域備援儲存體 (ZRS)。**區域備援儲存體可維護三個資料複本。 ZRS 會在單一地區或兩個地區內的二或三個設備中複寫三次，提供比 LRS 更高的持久性。 ZRS 可確保資料在單一地區內的持續性。  
+- **區域備援儲存體 (ZRS)。** 區域備援儲存體可維護三個資料複本。 ZRS 會在單一地區或兩個地區內的二或三個設備中複寫三次，提供比 LRS 更高的持久性。 ZRS 可確保資料在單一地區內的持續性。  
 
     ZRS 提供高於 LRS 等級的持久性；不過，如需最高的持久性，建議您採用地理區域備援儲存體，如下所述。  
 
@@ -26,5 +26,6 @@ Microsoft Azure 儲存體帳戶中的資料一律會複寫以確保持久性及�
 如需儲存體帳戶複寫定價資訊，請參閱 [儲存體定價詳細資料](http://azure.microsoft.com/pricing/details/storage/)。
 
 如需 Azure 儲存體持久性的架構的詳細資訊，請參閱 [Azure 儲存體 sosp 文件](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。
+
 
 

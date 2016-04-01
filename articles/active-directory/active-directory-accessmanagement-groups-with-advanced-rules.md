@@ -157,7 +157,7 @@ Azure 入口網站可讓您彈性地設定 Azure Active Directory (Azure AD) 中
 設定群組為「經理」群組
 --------------------------------------------------------------------------------
 1. 在系統管理員入口網站中，按一下 [ **設定** 索引標籤，然後選取 **進階規則**。
-2. 輸入使用下列語法規則:
+2. 輸入使用下列語法規則 ︰
 直屬員工 *Direct Reports for {UserID_of_manager}*
 3. 儲存這項規則時，符合規則的所有使用者都會加入成為群組的成員。 請注意，一開始填入群組可能需要幾分鐘的時間。
 
@@ -172,4 +172,5 @@ Azure 入口網站可讓您彈性地設定 Azure Active Directory (Azure AD) 中
 * [什麼是 Azure Active Directory？](active-directory-whatis.md)
 
 * [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)
+
 

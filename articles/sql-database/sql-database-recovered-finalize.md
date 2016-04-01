@@ -29,10 +29,10 @@
   + 復原的資料庫使用的名稱與來源資料庫不同
   + 復原的資料庫和來源伺服器位於不同的伺服器
 
-如需變更連接字串的詳細資訊，請參閱 [連接到 Azure SQL 資料庫以程式設計方式方針](https://msdn.microsoft.com/library/azure/ee336282.aspx) 和 [連接至 Azure SQL Database: 重要的建議 ](sql-database-connect-central-recommendations.md)。
+如需變更連接字串的詳細資訊，請參閱 [連接到 Azure SQL 資料庫以程式設計方式方針](https://msdn.microsoft.com/library/azure/ee336282.aspx) 和 [連接至 Azure SQL Database ︰ 重要的建議 ](sql-database-connect-central-recommendations.md)。
  
 ## 修改防火牆規則
-請確認伺服器層級和資料庫層級的防火牆規則，並確定已啟用您用戶端電腦或 Azure 與伺服器以及剛復原之資料庫的連接。 如需詳細資訊，請參閱 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/azure/ee621782.aspx) 和 [How to: 進行防火牆設定 (Azure SQL Database)](https://msdn.microsoft.com/library/azure/jj553530.aspx)。
+請確認伺服器層級和資料庫層級的防火牆規則，並確定已啟用您用戶端電腦或 Azure 與伺服器以及剛復原之資料庫的連接。 如需詳細資訊，請參閱 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/azure/ee621782.aspx) 和 [How to ︰ 進行防火牆設定 (Azure SQL Database)](https://msdn.microsoft.com/library/azure/jj553530.aspx)。
 
 ## 確認伺服器登入和資料庫使用者
 
@@ -48,11 +48,12 @@
   + 復原的資料庫使用的名稱與來源資料庫不同
   + 復原的資料庫和來源伺服器位於不同的伺服器
 
-關於資料庫警示規則的詳細資訊，請參閱 [How to: 接收警示通知及管理在 Azure 中的警示規則](https://msdn.microsoft.com/library/azure/dn306638.aspx)。
+關於資料庫警示規則的詳細資訊，請參閱 [How to ︰ 接收警示通知及管理在 Azure 中的警示規則](https://msdn.microsoft.com/library/azure/dn306638.aspx)。
 
 
 ## 啟用稽核
 
 如果需要稽核才能存取您的資料庫，則您必須在資料庫復原之後啟用稽核。 用戶端應用程式必須在 *.database.secure.windows.net 的模式中使用安全連接字串，才能有良好的稽核指標。 如需詳細資訊，請參閱 [開始使用 SQL database 稽核](sql-database-auditing-get-started.md)。 
  
+
 

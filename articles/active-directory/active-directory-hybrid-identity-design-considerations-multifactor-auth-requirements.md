@@ -22,7 +22,7 @@
 一開始，先評估組織對於多重要素驗證的需求。 也就是，組織試圖保護哪些項目。  當您定義如何設定和啟用組織使用者來進行多重要素驗證的技術需求時，這項評估非常重要。
 
 >[AZURE.NOTE]
-如果您不熟悉使用 MFA 和作用，強烈建議您閱讀文件 [何謂 Azure 多重要素驗證?](multi-factor-authentication.md) 之前繼續閱讀本節。
+如果您不熟悉使用 MFA 和作用，強烈建議您閱讀文件 [何謂 Azure 多重要素驗證？](multi-factor-authentication.md) 若要繼續閱讀本節之前。
 
 請確定回答下列問題：
 
@@ -58,4 +58,5 @@
 
 ## 另請參閱
 [設計考量概觀](active-directory-hybrid-identity-design-considerations-overview.md)
+
 

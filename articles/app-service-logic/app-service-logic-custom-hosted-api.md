@@ -23,7 +23,7 @@
 
 ## 部署 Web 應用程式
 
-首先，您必須將 API 部署為 App Service 中的 Web 應用程式。 此處的指示涵蓋基本的部署: [建立 ASP.NET web 應用程式](web-sites-dotnet-get-started.md)。
+首先，您必須將 API 部署為 App Service 中的 Web 應用程式。 此處的指示涵蓋基本的部署 ︰ [建立 ASP.NET web 應用程式](web-sites-dotnet-get-started.md)。
 
 請務必取得 **URL** 出現在您的 Web 應用程式- **Essentials** 頂端的 [Web 應用程式。
 
@@ -35,7 +35,7 @@
 
 1. 選擇 **方法** -將會在您的 API 程式碼定義
 2. 在 **URL** 區段貼上 **URL** 已部署的 Web 應用程式
-3. 如果您需要使用任何 **標頭** 納入 JSON 格式如下: `{"Content-type" : "application/json", "Accept" : "application/json" }`
+3. 如果您需要使用任何 **標頭** 納入 JSON 格式如下 ︰ `{"Content-type" : "application/json", "Accept" : "application/json" }`
 4. 如果您的 API 是公用，則您可能會留下 **驗證** 空白。 如果要保護您 API 的呼叫，請參閱下列各節。
 5. 最後，包括 **主體** 問題在您的 API 中所定義。
 
@@ -64,7 +64,7 @@
 6. 按一下 [ **設定** 此應用程式] 索引標籤
 7. 複製 **用戶端識別碼**, ，這將會使用邏輯應用程式中
 8. 在 **金鑰** 區段中，按一下 **選取持續時間** 並選擇 [1 年或 2 年
-9. 按一下 [ **儲存** (您可能需要等候幾秒鐘) 在畫面底部的按鈕
+9. 按一下 [ **儲存** （您可能需要等候幾秒鐘） 在畫面底部的按鈕
 10. 現在，請確實將金鑰複製到方塊中。 這也會用於您的邏輯應用程式
 
 #### 使用 PowerShell 建立應用程式身分識別碼
@@ -97,7 +97,7 @@
 
 >[AZURE.NOTE]當您建立應用程式的 Web 應用程式時，您必須使用 [Azure 傳統入口網站方法](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory), 、 PowerShell 指令程式無法設定使用者登入網站的必要權限。
 
-一旦開啟了用戶端識別碼，則在部署範本中包含下列子資源的 Web 應用程式的租用戶識別碼:
+一旦開啟了用戶端識別碼，則在部署範本中包含下列子資源的 Web 應用程式的租用戶識別碼 ︰
 
 ```
 "resources" : [
@@ -119,7 +119,7 @@
 ]
 ```
 
-若要執行的部署會自動將空白的 Web 應用程式和邏輯應用程式部署在一起使用 AAD 按一下下列按鈕:
+若要執行的部署會自動將空白的 Web 應用程式和邏輯應用程式部署在一起使用 AAD 按一下下列按鈕 ︰
 [![部署至 Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json) 
 
 如需完整的範本，請參閱 [邏輯應用程式呼叫自訂 api，裝載於 App Service，並受 AAD](https://github.com/Azure/azure-quickstart-templates/blob/master/201-logic-app-custom-api/azuredeploy.json)。
@@ -127,7 +127,7 @@
 
 ### 第 3 部分：填入邏輯應用程式中的授權區段
 
-在 **授權** 區段 **HTTP** 動作:
+在 **授權** 區段 **HTTP** 動作 ︰
 `{"tenant":"<<tenantId>>", "audience":"<<clientID from Part 2>>", "clientId":"<<clientID from Part 1>>","secret": "<<Password or Key from Part 1>>","type":"ActiveDirectoryOAuth" }`
 
 | 元素 | 說明 |
@@ -146,7 +146,7 @@
 
 您可以使用用戶端憑證來驗證對您 Web 應用程式的傳入要求。 請參閱 [方式來設定的 TLS 相互驗證的 Web 應用程式](app-service-web-configure-tls-mutual-auth.md) 如何設定您的程式碼。 
 
-在 *授權* 應該提供的區段: `{"type": "clientcertificate","password": "test","pfx": "long-pfx-key"}`。 
+在 *授權* 應該提供的區段 ︰ `{"type": "clientcertificate","password": "test","pfx": "long-pfx-key"}`。 
 
 | 元素 | 說明 |
 |---------|-------------|
@@ -158,7 +158,7 @@
 
 您可以使用基本驗證 (例如使用者名稱和密碼) 來驗證傳入要求。 基本驗證是常見模式，你可以使用您用來建置應用程式的任何語言執行此驗證。
 
-在 *授權* 應該提供的區段: `{"type": "basic","username": "test","password": "test"}`。 
+在 *授權* 應該提供的區段 ︰ `{"type": "basic","username": "test","password": "test"}`。 
 
 | 元素 | 說明 |
 |---------|-------------|
@@ -172,6 +172,7 @@
 
 如果您要將 API 限定給邏輯應用程式使用 (例如在程式碼中)，您可以擷取包含 JWT 的標頭，並檢查呼叫端為何，而拒絕任何不相符的要求。
 
-繼續進行，如果您想要完全在自己的程式碼中加以實作，並不會利用入口網站功能，您可以閱讀這篇文章: [使用 Active Directory 進行驗證，在 Azure App Service 中](web-sites-authentication-authorization.md)。
+繼續進行，如果您想要完全在自己的程式碼中加以實作，並不會利用入口網站功能，您可以閱讀這篇文章 ︰ [使用 Active Directory 進行驗證，在 Azure App Service 中](web-sites-authentication-authorization.md)。
 
 您仍然必須遵循前述步驟建立邏輯應用程式的應用程式身分識別碼，並用它來呼叫 API。
+

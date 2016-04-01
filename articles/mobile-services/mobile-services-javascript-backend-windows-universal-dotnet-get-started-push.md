@@ -46,7 +46,7 @@
 
 &nbsp;&nbsp;8. 重複上述步驟，將推播通知新增至 Windows Phone 市集應用程式專案，然後從共用的 App.xaml.cs 檔案中移除額外的呼叫 **行動服務用戶端**, ，**UploadChannel** ，而其餘 `#if...#endif` 條件式包裝函式。 這兩個專案現在都會共用單一呼叫至 **UploadChannel**。 
 
-(& s) nbsp; & nbsp;請注意，也可以藉此簡化產生的程式碼 `#if...#endif` 包裝 [MobileServiceClient] 定義統一至單一未包裝定義這兩個版本的應用程式所使用。
+（& s) nbsp; & nbsp;請注意，也可以藉此簡化產生的程式碼 `#if...#endif` 包裝 [MobileServiceClient] 定義統一至單一未包裝定義這兩個版本的應用程式所使用。
 
 現在應用程式已經啟用了推播通知，您必須更新行動服務以傳送推播通知。 
 
@@ -57,7 +57,7 @@
 [AZURE.INCLUDE [mobile-services-javascript-update-script-notification-hubs](../../includes/mobile-services-javascript-update-script-notification-hubs.md)]
 
 
-##<a id="test"></a> 在應用程式中測試推播通知
+##<a id="test"></a>在應用程式中測試推播通知
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-windows-universal-test-push](../../includes/mobile-services-javascript-backend-windows-universal-test-push.md)]
 
@@ -65,28 +65,28 @@
 
 本教學課程示範如何啟用 Windows 市集應用程式以便使用行動服務與通知中心來傳送推播通知的基礎。 接著，請考慮完成下列其中一個教學課程：
 
-+ [將推播通知傳送給已驗證的使用者](mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users.md)
++ [傳送推播通知給已驗證的使用者](mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users.md)
     <br/>了解如何使用標記從行動服務傳送推播通知給已驗證的使用者。
 
-+ [將廣播的通知傳送給訂閱者](../notification-hubs-windows-store-dotnet-send-breaking-news.md)
-    <br/>了解使用者如何註冊和接收他們感興趣的推播通知的類別。
++ [將廣播通知傳送給訂閱者](../notification-hubs-windows-store-dotnet-send-breaking-news.md)
+    <br/>了解使用者如何註冊及接收他們所需類別的推播通知。
 
 + [跨平台通知傳送給訂閱者](../notification-hubs-aspnet-cross-platform-notify-users.md)
     <br/>了解如何使用範本從您的行動服務傳送推播通知，而不必在後端製作平台特定裝載。
 
 在下列主題中深入了解行動服務和通知中心：
 
-* [Azure 通知中樞-診斷指導方針](../notification-hubs-diagnosing.md)
+* [Azure 通知中樞 - 診斷指導方針](../notification-hubs-diagnosing.md)
     <br/>了解如何疑難排解推播通知問題。
 
-* [開始使用驗證]
+* [Get started with authentication]
   <br/>了解如何使用行動服務以不同帳戶類型驗證應用程式的使用者。
 
 * [What are Notification Hubs?]
-  <br/>進一步了解通知中心將通知傳遞到您的應用程式跨所有主要用平台的運作方式。
+  <br/>深入了解通知中樞如何跨所有主要用戶端平台將通知傳遞到您的應用程式。
 
 * [How to use a .NET client for Azure Mobile Services]
-  <br/>進一步了解如何使用 C# Windows 應用程式的行動服務。
+  <br/>進一步了解如何從 C# Windows 應用程式中使用行動服務。
 
 <!-- Anchors. -->
 
@@ -106,3 +106,4 @@
 [How to use a .NET client for Azure Mobile Services]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
+

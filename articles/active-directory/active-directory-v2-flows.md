@@ -47,10 +47,10 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 7. 應用程式會定期重新整理安全性權杖。
 
 <!-- TODO: Need a page for libraries to link to -->
-這七個步驟的每一個都會根據您建置的應用程式類型而略有不同，而我們公開的原始碼程式庫會為您顧及細節。  您可以深入了解 [permissions, consent, and scopes](active-directory-v2-scopes.md), ，或讀取在探索一些具體的範例。
+這七個步驟的每一個都會根據您建置的應用程式類型而略有不同，而我們公開的原始碼程式庫會為您顧及細節。  您可以深入了解 [權限、 同意，以及範圍](active-directory-v2-scopes.md), ，或讀取在探索一些具體的範例。
 
 ## Web Apps
-針對 web 應用程式 (.NET、 PHP、 Java、 Ruby、 Python、 節點等等)，可以透過瀏覽器存取，2.0 版應用程式模型可支援使用者登入使用 [OpenID Connect](active-directory-v2-protocols.md#openid-connect-sign-in-flow)。  在 OpenID Connect 中，Web 應用程式會接收到 `id_token`，這是一個安全性權杖，可驗證使用者的身分識別並以宣告形式提供使用者的相關資訊：
+針對 web 應用程式 （.NET、 PHP、 Java、 Ruby、 Python、 節點等等），可以透過瀏覽器存取，2.0 版應用程式模型可支援使用者登入使用 [OpenID Connect](active-directory-v2-protocols.md#openid-connect-sign-in-flow)。  在 OpenID Connect 中，Web 應用程式會接收到 `id_token`，這是一個安全性權杖，可驗證使用者的身分識別並以宣告形式提供使用者的相關資訊：
 
 ```
 // Partial raw id_token
@@ -119,7 +119,7 @@ Web API 可以接收來自所有類型應用程式的 access_token，包括 Web 
 v2.0 應用程式模型預覽目前不支援這些類型的應用程式，但計劃於正式運作時提供支援。  其他限制和限制 v2.0 應用程式模型公開預覽版本中所述 [v2.0 預覽限制文章](active-directory-v2-limitations.md)。
 
 ### 精靈/伺服器端應用程式
-包含長時執行處理序或不需要使用者操作的應用程式，也需他法存取受保護的資源，例如 Web API。  這些應用程式可以驗證並取得使用應用程式的身分識別 (而非使用者的委派的識別) 使用的權杖 [OAuth 2.0 用戶端認證流程](active-directory-v2-protocols.md#oauth2-client-credentials-grant-flow)。  
+包含長時執行處理序或不需要使用者操作的應用程式，也需他法存取受保護的資源，例如 Web API。  這些應用程式可以驗證並取得使用應用程式的身分識別 （而非使用者的委派的識別） 使用的權杖 [OAuth 2.0 用戶端認證流程](active-directory-v2-protocols.md#oauth2-client-credentials-grant-flow)。  
 
 v2.0 應用程式模型目前不支援此流程，也就是說應用程式只能在互動式使用者登入流程之後取得權杖。  近期內即會加入用戶端認證流程。  如果您想要查看用戶端認證流程正式推出的 Azure AD 中的服務，請參閱 [GitHub 上的服務精靈範例](https://github.com/AzureADSamples/Daemon-DotNet)。
 
@@ -127,4 +127,5 @@ v2.0 應用程式模型目前不支援此流程，也就是說應用程式只能
 許多架構包含需要呼叫另一個下游 Web API 的 Web API，而這兩者都受到 v2.0 應用程式模型的保護。  有 Web API 後端的原生用戶端中常出現這種情況，而呼叫 Office 365 或 Graph API 等 Microsoft 線上服務。
 
 可支援此鏈結的 Web API 案例使用 OAuth 2.0 Jwt 承載認證授與，又稱為 [On-Behalf-Of 流程](active-directory-v2-protocols.md#oauth2-on-behalf-of-flow)。  不過，v2.0 應用程式模型預覽目前尚未施行代理者流程。  若要查看此流程可供使用的 Azure AD 中的運作方式服務，請參閱 [代表的程式碼範例在 GitHub 上](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)。
+
 

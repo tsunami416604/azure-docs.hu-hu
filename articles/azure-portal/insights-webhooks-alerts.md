@@ -34,7 +34,7 @@ Webhook URI 必須是有效的 HTTP 或 HTTPS 端點。 Azure 警示服務會在
 驗證可以有兩種類型：
 
 1. **根據驗證語彙基元** -在此情況下，您會使用 token 的識別碼，例如儲存 webhook uri *https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue*
-2.  **基本驗證** -使用使用者識別碼和密碼:
+2.  **基本驗證** -使用使用者識別碼和密碼 ︰
 在此情況下，您將儲存為 webhook uri *https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar*
 
 ## 承載結構描述
@@ -88,11 +88,11 @@ POST 作業對於所有以計量為基礎的警示將會包含下列 JSON 承載
 |conditionType      |Y                  |“Metric”、“Event”          |支援兩種類型的警示。 一個根據計量，一個根據事件。 我們未來會支援事件的警示，因此使用此值可檢查警示是根據計量或事件|
 |condition          |Y                  |                           |這會根據 conditionType 檢查特定欄位|
 |metricName         |用於計量警示  |                           |定義規則所監視的計量名稱。|
-|metricUnit         |用於計量警示  |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds"|  計量允許的單位。 允許的值: https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx|
+|metricUnit         |用於計量警示  |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds"|  計量允許的單位。 允許的值 ︰ https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx|
 |metricValue        |用於計量警示  |                           |造成警示的計量實際值|
 |threshold          |用於計量警示  |                           |啟動警示的閾值|
 |windowSize         |用於計量警示  |                           |根據 threshold 用來監視警示活動的時間長度。 必須介於 5 分鐘到 1 天之間。 ISO 8601 持續時間格式。|
-|timeAggregation    |用於計量警示  |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |  收集的資料應如何隨著時間結合。 預設值為 Average。 允許的值: https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx|
+|timeAggregation    |用於計量警示  |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |  收集的資料應如何隨著時間結合。 預設值為 Average。 允許的值 ︰ https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx|
 |operator           |用於計量警示  |                           |用來比較資料和閾值的運算子。|
 |subscriptionId     |Y                  |                           |Azure 訂用帳戶 GUID|
 |resourceGroupName  |Y                  |                           |受影響資源的 resource-group-name|
@@ -101,7 +101,7 @@ POST 作業對於所有以計量為基礎的警示將會包含下列 JSON 承載
 |resourceId         |Y                  |                           |可唯一識別該資源的資源識別碼 URI|
 |resourceRegion     |Y                  |                           |受影響資源的區域/位置|
 |portalLink         |Y                  |                           |連到資源摘要頁面的直接 Azure 入口網站連結|
-|properties         |N                  |選用                   |是一組 < k e y，> 組 (也就是字典 < 字串、 字串 >)，其中包含有關事件的詳細資料。 properties 欄位是選擇性的。 在自訂 UI 或邏輯應用程式的工作流程中，使用者可以輸入可透過承載傳遞的索引鍵/值。 另一種將自訂屬性傳回給 Webhook 的替代方式是透過 Webhook URI 本身 (做為查詢參數)|
+|properties         |N                  |選用                   |是一組 < k e y，> 組 （也就是字典 < 字串、 字串 >），其中包含有關事件的詳細資料。 properties 欄位是選擇性的。 在自訂 UI 或邏輯應用程式的工作流程中，使用者可以輸入可透過承載傳遞的索引鍵/值。 另一種將自訂屬性傳回給 Webhook 的替代方式是透過 Webhook URI 本身 (做為查詢參數)|
 
 
 >[AZURE.NOTE] 您無法使用透過入口網站的 [內容] 欄位。 在我們即將推出的 Insights SDK 中，您可以透過警示 API 設定屬性。
@@ -123,4 +123,5 @@ POST 作業對於所有以計量為基礎的警示將會包含下列 JSON 承載
 [使用邏輯應用程式傳送殘存訊息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
 
 [使用邏輯應用程式傳送訊息至 Azure 佇列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
+
 

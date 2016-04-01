@@ -19,10 +19,10 @@
 # 開始使用適用於 iOS 應用程式 (Objective C) 的 Azure Mobile Engagement
 
 > [AZURE.SELECTOR]
-- [Windows 通用](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Universal Windows](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
-- [iOS |Obj C](mobile-engagement-ios-get-started.md)
-- [iOS |Swift](mobile-engagement-ios-swift-get-started.md)
+- [iOS | Obj C](mobile-engagement-ios-get-started.md)
+- [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
 - [Android](mobile-engagement-android-get-started.md)
 - [Cordova](mobile-engagement-cordova-get-started.md)
 
@@ -32,13 +32,13 @@
 本教學課程需要下列各項：
 
 + Xcode 6 或 XCode 7，可以從您的 MAC App Store 安裝
-+ [Mobile Engagement iOS SDK]
++ 的 [Mobile Engagement iOS SDK]
 
 完成本教學課程是所有其他 iOS 應用程式 Mobile Engagement 教學課程的先決條件。
 
 > [AZURE.IMPORTANT] 完成本教學課程是 iOS 應用程式，所有其他 Mobile Engagement 教學課程的先決條件，若要完成此作業，您必須具有有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
 
-##<a id="setup-azme"></a>IOS 應用程式設定 Mobile Engagement
+##<a id="setup-azme"></a>為您的 iOS 應用程式設定 Mobile Engagement
 
 [AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -64,7 +64,7 @@
 
     ![][2]
 
-5. 開啟 **建置階段** ] 索引標籤，然後在 **Link Binary With Libraries** ] 功能表中新增框架，如下所示:
+5. 開啟 **建置階段** ] 索引標籤，然後在 **Link Binary With Libraries** ] 功能表中新增框架，如下所示 ︰
 
     ![][3]
 
@@ -91,7 +91,7 @@
 
 10. `setTestLogEnabled` 是選擇性的陳述式，可啟用 SDK 記錄檔，供您找出問題。 
 
-##<a id="monitor"></a>若要啟用即時監視
+##<a id="monitor"></a>啟用即時監視
 
 若要開始傳送資料並確定使用者正在使用，您必須至少傳送一個畫面 (活動) 到 Mobile Engagement 後端。
 
@@ -107,7 +107,7 @@
 
 [AZURE.INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-##<a id="integrate-push"></a>啟用推播通知與應用程式內傳訊
+##<a id="integrate-push"></a>啟用推播通知與 App 內傳訊
 
 Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊」，於活動進行時與使用者互動和觸達 (REACH)。 此模組在 Mobile Engagement 入口網站中稱為觸達 (REACH)。
 以下各節將設定您的用程式來接收它們。
@@ -185,5 +185,6 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 [2]: ./media/mobile-engagement-ios-get-started/xcode-select-engagement-sdk.png
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
+
 
 

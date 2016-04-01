@@ -4,7 +4,7 @@
 
 接著，您將使用與您的行動應用程式相同的資料庫，建立一個 Web 應用程式。 在本教學課程的結尾，您將擁有一個使用相同資料的 Web 用戶端和一個行動用戶端。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 建立新的行動應用程式後端和用戶端
 
@@ -65,11 +65,12 @@
     ![Xamarin 行動應用程式的檢視](./media/app-service-mobile-dotnet-backend-web-and-mobile/xamarin-ios-quickstart-device.png)
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 如需舊入口網站變更為新入口網站的指南，請參閱: [瀏覽 Azure 入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需舊入口網站變更為新入口網站的指南，請參閱 ︰ [瀏覽 Azure 入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 <!-- Links -->
 
 [MultiChannelToDo]: https://github.com/Azure/mobile-services-samples/tree/web-mobile/MultiChannelToDo
 [Create a mobile app]: ../article/app-service-mobile/app-service-mobile-xamarin-ios-get-started.md
+
 

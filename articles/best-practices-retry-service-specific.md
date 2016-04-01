@@ -101,13 +101,13 @@ var stats = await client.GetServiceStatsAsync(interactiveRequestOption, operatio
     };
     var stats = await client.GetServiceStatsAsync(null, context);
 
-除了指出錯誤是否適合重試，傳回擴充的重試原則 **RetryContext** 物件，表示重試次數、 最後一個要求的結果，以及下次重試會在主要或次要位置發生 (請參閱下表中的詳細資料)。 內容 **RetryContext** 物件可以用來判定是否與何時嘗試重試。 如需詳細資訊，請參閱 [IExtendedRetryPolicy.Evaluate Method](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx)。
+除了指出錯誤是否適合重試，傳回擴充的重試原則 **RetryContext** 物件，表示重試次數、 最後一個要求的結果，以及下次重試會在主要或次要位置發生 （請參閱下表中的詳細資料）。 內容 **RetryContext** 物件可以用來判定是否與何時嘗試重試。 如需詳細資訊，請參閱 [IExtendedRetryPolicy.Evaluate Method](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx)。
 
 下表顯示內建重試原則的的預設設定。
 
 | **Context**              | **設定**                                                 | **預設值**                  | **意義**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |--------------------------|-------------------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 資料表 / Blob / 檔案<br />QueueRequestOptions | MaximumExecutionTime<br /><br />Queuerequestoptions<br /><br /><br /><br /><br />LocationMode<br /><br /><br /><br /><br /><br /><br />RetryPolicy | 120 秒<br /><br />None<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />ExponentialPolicy | 要求的執行時間上限，包括所有的可能重試嘗試。<br />要求的伺服器逾時間隔 (以秒為單位捨入值)。 如果未指定，則會對伺服器的所有要求使用預設值。 通常，最好的選擇是略過此設定，讓系統使用伺服器預設值。<br />如果使用讀取權限異地備援儲存體 (RA-GRS) 複寫選項建立儲存體帳戶，您可以使用位置模式來指出哪個位置應接收要求。 例如，如果 **PrimaryThenSecondary** 指定，則要求一律會先傳送到主要位置。 如果要求失敗，就會傳送到次要位置。<br />如需每個選項的詳細資訊，請參閱下列內容。 |
+| 資料表 / Blob / 檔案<br />QueueRequestOptions | MaximumExecutionTime<br /><br />Queuerequestoptions<br /><br /><br /><br /><br />LocationMode<br /><br /><br /><br /><br /><br /><br />RetryPolicy | 120 秒<br /><br />None<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />ExponentialPolicy | 要求的最大執行時間，包含所有可能的重試嘗試。<br />要求的伺服器逾時間隔 （以秒為單位，會捨入值）。 如果未指定，則會對伺服器的所有要求使用預設值。 通常，最好的選擇是略過此設定，以便使用伺服器預設值。<br />如果儲存體帳戶會建立具有讀取存取地理區域備援儲存體 (RA-GRS) 複寫選項，您可以使用位置模式來指出哪個位置應接收要求。 例如，如果 **PrimaryThenSecondary** 指定，則要求一律會先傳送到主要位置。 如果要求失敗，它會傳送到次要位置。<br />每個選項的詳細資訊，請參閱下方。 |
 | 指數原則                      | maxAttempt<br />deltaBackoff<br /><br /><br />MinBackoff<br /><br />MaxBackoff               | 3<br />4 秒<br /><br /><br />3 秒<br /><br />30 秒   | 重試嘗試的次數。<br />重試之間的輪詢間隔。 此時間範圍，包含隨機元素的倍數將用於後續的重試嘗試次數。<br />新增從 deltaBackoff 計算的所有重試間隔。 無法變更此值。<br />如果計算的重試間隔大於 MaxBackoff，則會使用 MaxBackoff。 無法變更此值。                                                                                                                                                                                                                                                                                                                                                                       |
 | 線性原則                           | maxAttempt<br />deltaBackoff                                     | 3<br />30 秒                                 | 重試嘗試的次數。<br />重試之間的輪詢間隔。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
@@ -125,7 +125,7 @@ var stats = await client.GetServiceStatsAsync(interactiveRequestOption, operatio
 | **Context**          | **範例目標 E2E<br />最大延遲** | **重試原則** | **設定**            | **值**  | **運作方式**                                                            |
 |----------------------|-----------------------------------|------------------|-------------------------|-------------|-----------------------------------------------------------------------------|
 | 互動式使用者介面，<br />或前景 | 2 秒                         | 線性           | maxAttempt<br />deltaBackoff | 3<br />500 毫秒    | 嘗試 1-延遲 500 毫秒<br />嘗試 2-延遲 500 毫秒<br />嘗試 3-延遲 500 毫秒  |
-| 背景<br />或批次            | 30 秒                        | 指數      | maxAttempt<br />deltaBackoff | 5<br />4 秒 | 嘗試 1-延遲 ~ 3 秒<br />嘗試 2-延遲 ~ 7 秒<br />嘗試 3-延遲 ~ 15 毫秒 |
+| 背景資訊<br />或批次            | 30 秒                        | 指數      | maxAttempt<br />deltaBackoff | 5<br />4 秒 | 嘗試 1-延遲 ~ 3 秒<br />嘗試 2-延遲 ~ 7 秒<br />嘗試 3-延遲 ~ 15 毫秒 |
 
 ## 遙測
 
@@ -227,7 +227,7 @@ SQL Database 是託管的 SQL 資料庫，有各種大小，並以標準 (共用
   * 定義同步和非同步 **Execute*** 方法。
   * 定義類別以直接使用或在資料庫內容上設定以做為預設策略、對應至提供者名稱，或對應至提供者名稱和伺服器名稱。 在內容上設定時，重試是在個別資料庫作業層級發生的，其中可能有數個重試是針對指定的內容作業。
   * 定義何時要重試失敗的連接，以及如何重試。
-* 它包含數個內建實作 **IDbExecutionStrategy** 介面:
+* 它包含數個內建實作 **IDbExecutionStrategy** 介面 ︰
   * 預設值 - 無重試。
   * SQL Database 的預設值 (自動) - 沒有重試，但會檢查例外狀況，並以使用 SQL Database 策略的建議來包裝例外狀況。
   * SQL Database 的預設值 - 指數 (繼承自基底類別) 再加上 SQL Database 偵測邏輯。
@@ -281,7 +281,7 @@ public class BloggingContextConfiguration : DbConfiguration
 
 最簡單的方式使用 **DbConfiguration** 類別是相同的組件中找出它 **DbContext** 類別。 不過，這不適用在不同案例中需要相同的內容時，例如不同的互動式和背景重試策略。 如果不同的內容在不同的 AppDomain 中執行，您可以使用內建支援在組態檔案中指定組態類別，或使用程式碼明確地設定組態類別。 如果不同的內容必須在相同的 AppDomain 中執行，則需要自訂解決方案。
 
-如需詳細資訊，請參閱 [程式碼式組態 (ef6 之後版本)](http://msdn.microsoft.com/data/jj680699.aspx)。
+如需詳細資訊，請參閱 [程式碼式組態 （ef6 之後版本）](http://msdn.microsoft.com/data/jj680699.aspx)。
 
 下表顯示使用 EF6 時內建重試原則的預設設定。
 
@@ -300,7 +300,7 @@ public class BloggingContextConfiguration : DbConfiguration
 | **Context**          | **範例目標 E2E<br />最大延遲** | **重試原則** | **設定**           | **值**   | **運作方式**                                                                                                            |
 |----------------------|-----------------------------------|--------------------|------------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------|
 | 互動式使用者介面，<br />或前景 | 2 秒                         | 指數        | MaxRetryCount<br />MaxDelay | 3<br />750 毫秒     | 嘗試 1-延遲 0 秒<br />嘗試 2-延遲 750 毫秒<br />嘗試 3-延遲 750 毫秒                                                   |
-| 背景<br /> 或批次            | 30 秒                        | 指數        | MaxRetryCount<br />MaxDelay | 5<br />12 秒 | 嘗試 1-延遲 0 秒<br />嘗試 2-延遲 ~ 1 秒<br />嘗試 3-延遲 ~ 3 秒<br />嘗試 4-延遲 ~ 7 秒<br />嘗試 5-延遲 12 秒 |
+| 背景資訊<br /> 或批次            | 30 秒                        | 指數        | MaxRetryCount<br />MaxDelay | 5<br />12 秒 | 嘗試 1-延遲 0 秒<br />嘗試 2-延遲 ~ 1 秒<br />嘗試 3-延遲 ~ 3 秒<br />嘗試 4-延遲 ~ 7 秒<br />嘗試 5-延遲 12 秒 |
 
 > [AZURE.NOTE] 端對端延遲目標會假設服務連接的預設逾時。 如果您指定較長的連接逾時值，則系統會為每個重試嘗試增加這段時間，來延長端對端延遲。
 
@@ -427,7 +427,7 @@ RetryManager.SetDefault(new RetryManager(
 | **Context**          | **範例目標 E2E<br />最大延遲** | **重試策略** | **設定**                                                          | **值**                 | **運作方式**                                                                                                              |
 |----------------------|-----------------------------------|--------------------|-----------------------------------------------------------------------|----------------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | 互動式使用者介面，<br />或前景 | 2 秒                             | FixedInterval      | 重試計數<br />重試間隔<br />第一個快速重試                           | 3<br />500 毫秒<br />true              | 嘗試 1-延遲 0 秒<br />嘗試 2-延遲 500 毫秒<br />嘗試 3-延遲 500 毫秒                                                     |
-| 背景<br />或批次            | 30 秒                            | ExponentialBackoff | 重試計數<br />最小退避<br />最大輪詢<br />差異退退避<br />第一個快速重試 | 5<br />0 秒<br />60 秒<br />2 秒<br />false | 嘗試 1-延遲 0 秒<br />嘗試 2-延遲 ~ 2 秒<br />嘗試 3-延遲 ~ 6 秒<br />嘗試 4-延遲 ~ 14 秒<br />嘗試 5-延遲 ~ 30 秒 |
+| 背景資訊<br />或批次            | 30 秒                            | ExponentialBackoff | 重試計數<br />最小退避<br />最大輪詢<br />差異退退避<br />第一個快速重試 | 5<br />0 秒<br />60 秒<br />2 秒<br />false | 嘗試 1-延遲 0 秒<br />嘗試 2-延遲 ~ 2 秒<br />嘗試 3-延遲 ~ 6 秒<br />嘗試 4-延遲 ~ 14 秒<br />嘗試 5-延遲 ~ 30 秒 |
 
 > [AZURE.NOTE] 端對端延遲目標會假設服務連接的預設逾時。 如果您指定較長的連接逾時值，則系統會為每個重試嘗試增加這段時間，來延長端對端延遲。
 
@@ -507,7 +507,7 @@ using (var reader = await sqlCommand.ExecuteReaderWithRetryAsync(retryPolicy))
 *  [RetryExponential 類別](http://msdn.microsoft.com/library/microsoft.servicebus.retryexponential.aspx)。 這會公開控制退避間隔，重試計數，而 **TerminationTimeBuffer** 屬性，用來限制作業完成的總時間。
 *  [NoRetry 類別](http://msdn.microsoft.com/library/microsoft.servicebus.noretry.aspx)。 這用於當不需要在服務匯流排 API 層級重試時，例如當在批次或多步驟作業期間由另一個處理序管理重試時。
 
-服務匯流排動作會傳回例外狀況，範圍，如下所示 [附錄: 傳訊例外狀況](http://msdn.microsoft.com/library/hh418082.aspx)。 此清單會提供這些重試作業的表示是否適合的資訊。 例如， [ServerBusyException](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.serverbusyexception.aspx) 表示用戶端應等待一段時間，再重試作業。 發生 **ServerBusyException** 也會導致服務匯流排切換至不同的模式，並額外加上 10 秒延遲加入計算的重試延遲。 此模式會在短時間後重設。
+服務匯流排動作會傳回例外狀況，範圍，如下所示 [附錄 ︰ 傳訊例外狀況](http://msdn.microsoft.com/library/hh418082.aspx)。 此清單會提供這些重試作業的表示是否適合的資訊。 例如， [ServerBusyException](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.serverbusyexception.aspx) 表示用戶端應等待一段時間，再重試作業。 發生 **ServerBusyException** 也會導致服務匯流排切換至不同的模式，並額外加上 10 秒延遲加入計算的重試延遲。 此模式會在短時間後重設。
 
 傳回從服務匯流排公開的例外狀況 **IsTransient** 屬性，指出用戶端是否應該重試作業。 內建 **RetryExponential** 原則會依賴 **IsTransient** 屬性 **Istransient** 類別，這是所有服務匯流排例外狀況的基底類別。 如果您建立的自訂實作 **RetryPolicy** 基底類別，您可以使用例外狀況類型的組合和 **IsTransient** 屬性，以提供更細微地控制重試動作。 例如，您可能會偵測 **QuotaExceededException** ，並採取動作清空佇列，然後再重試傳送訊息給它。
 
@@ -534,7 +534,7 @@ using (var reader = await sqlCommand.ExecuteReaderWithRetryAsync(retryPolicy))
                                                         terminationTimeBuffer: TimeSpan.FromSeconds(5),
                                                         maxRetryCount: 3);
 
-若要重試原則設為傳訊用戶端，或覆寫其預設原則，設定其 **RetryPolicy** 使用所需的原則類別的執行個體的屬性:
+若要重試原則設為傳訊用戶端，或覆寫其預設原則，設定其 **RetryPolicy** 使用所需的原則類別的執行個體的屬性 ︰
 
 ```csharp
 client.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
@@ -722,9 +722,9 @@ var conn = ConnectionMultiplexer.Connect("redis0:6380,redis1:6380,connectRetry=3
 
 下表顯示內建重試原則的預設設定。
 
-| **Context**          | **設定**                             | **預設值**<br />(v 1.0.331)           | **意義**                                                                                                                                                                                                   |
+| **Context**          | **設定**                             | **預設值**<br />(1.0.331) v           | **意義**                                                                                                                                                                                                   |
 |----------------------|-----------------------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ConfigurationOptions | ConnectRetry<br /><br />ConnectTimeout<br /><br />SyncTimeout | 3<br /><br />最多 5000 毫秒加上 SyncTimeout<br />1000 | 重複次數初始連接作業期間，連接嘗試。<br />逾時 (毫秒) 連接作業。 嘗試重試之間的延遲。<br />若要允許同步作業的時間 (毫秒)。 |
+| ConfigurationOptions | ConnectRetry<br /><br />ConnectTimeout<br /><br />SyncTimeout | 3<br /><br />最多 5000 毫秒加上 SyncTimeout<br />1000 | 重複次數初始連接作業期間，連接嘗試。<br />逾時 （毫秒） 連接作業。 嘗試重試之間的延遲。<br />若要允許同步作業的時間 （毫秒）。 |
 
 > [AZURE.NOTE] Synctimeout 作業的端對端延遲。 不過一般而言，不建議使用同步作業。 如需詳細資訊，請參閱 [管線與多工器](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers.md)。
 
@@ -738,7 +738,7 @@ var conn = ConnectionMultiplexer.Connect("redis0:6380,redis1:6380,connectRetry=3
 
 ## 遙測
 
-您可以收集連接 (而非其他作業) 使用資訊 **TextWriter**。
+您可以收集連接 （而非其他作業） 使用資訊 **TextWriter**。
 
 ```csharp
 var writer = new StringWriter();
@@ -899,7 +899,7 @@ Azure 搜尋服務可用來在網站或應用程式中加入強大且複雜的�
 
 使用 Azure 搜尋服務時請考慮下列指引：
 
-* 您可以使用服務所傳回的狀態碼來判斷失敗的類型。 中所定義的狀態碼 [HTTP 狀態碼 (Azure 搜尋服務)](http://msdn.microsoft.com/library/dn798925.aspx)。 狀態碼 503 (服務無法使用) 表示服務負載過重時，且無法立即處理要求。 適當的動作是只有在允許復原服務的時間過後才重試作業。 若在過短的延遲間隔之後重試，可能會延長無法使用的時間。
+* 您可以使用服務所傳回的狀態碼來判斷失敗的類型。 中所定義的狀態碼 [HTTP 狀態碼 （Azure 搜尋服務）](http://msdn.microsoft.com/library/dn798925.aspx)。 狀態碼 503 (服務無法使用) 表示服務負載過重時，且無法立即處理要求。 適當的動作是只有在允許復原服務的時間過後才重試作業。 若在過短的延遲間隔之後重試，可能會延長無法使用的時間。
 * 請參閱章節 [一般 REST 與重試指引](#general-rest-and-retry-guidelines) 稍後在本指南中的重試 REST 作業的一般資訊。
 
 ## 詳細資訊
@@ -1079,7 +1079,7 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
   * WebExceptionStatus.ConnectFailure
   * WebExceptionStatus.Timeout
   * WebExceptionStatus.RequestCanceled
-* 在服務無法使用狀態下，服務可能在重試之前先指出適當的延遲 **重試之後** 回應標頭或不同的自訂標頭 (如 DocumentDB 服務)。 服務也可能傳送額外的資訊做為自訂標頭，或內嵌在回應的內容中。 暫時性錯誤處理應用程式區塊無法使用標準或任何自訂的「retry-after」標頭。
+* 在服務無法使用狀態下，服務可能在重試之前先指出適當的延遲 **重試之後** 回應標頭或不同的自訂標頭 （如 DocumentDB 服務）。 服務也可能傳送額外的資訊做為自訂標頭，或內嵌在回應的內容中。 暫時性錯誤處理應用程式區塊無法使用標準或任何自訂的「retry-after」標頭。
 * 408 要求逾時除外，不要重試代表用戶端錯誤 (4xx 範圍中的錯誤) 的狀態碼。
 * 在各種條件下 (例如不同的網路狀態及各種的系統負載) 徹底測試您的重試策略和機制。
 
@@ -1087,7 +1087,7 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
 
 以下為一般類型的重試策略間隔：
 
-* **指數**: 執行指定的次數的重試次數，使用隨機的指數退避方法來決定重試之間的間隔重試原則。 例如：
+* **指數**︰ 執行指定的次數的重試次數，使用隨機的指數退避方法來決定重試之間的間隔重試原則。 例如：
 
         var random = new Random();
 
@@ -1098,12 +1098,12 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
                        this.maxBackoff.TotalMilliseconds);
         retryInterval = TimeSpan.FromMilliseconds(interval);
 
-* **累加**: 重試策略具有指定次數的重試次數和重試之間使用累加時間間隔。 例如：
+* **累加**︰ 重試策略具有指定次數的重試次數和重試之間使用累加時間間隔。 例如：
 
         retryInterval = TimeSpan.FromMilliseconds(this.initialInterval.TotalMilliseconds +
                        (this.increment.TotalMilliseconds * currentRetryCount));
 
-* **線性重試**: 執行指定的次數的重試次數，使用指定的固定的時間間隔重試之間的重試原則。 例如：
+* **線性重試**︰ 執行指定的次數的重試次數，使用指定的固定的時間間隔重試之間的重試原則。 例如：
 
         retryInterval = this.deltaBackoff;
 
@@ -1121,4 +1121,5 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
 | **累加**         | retryCount<br />initialInterval<br />遞增<br /><br />fastFirstRetry<br />| 10<br />1 秒<br />1 秒<br /><br />true   | 重試嘗試次數。<br />初始間隔，適用於第一個重試。<br />累加時間值會用來計算重試之間的漸進式延遲。<br />第一個重試是否嘗試立即進行。                                          |
 | **線性 (固定間隔)** | retryCount<br />retryInterval<br />fastFirstRetry<br />             | 10<br />1 秒<br />true            | 重試嘗試次數。<br />重試之間的延遲。<br />是否將立即進行第一次重試嘗試。                                                                                                                                                                              |
 如需使用暫時性錯誤處理應用程式區塊的範例，請參閱本指引中稍早＜範例＞各節中有關使用 ADO.NET 和 Azure Active Directory 的 Azure SQL Database 說明。
+
 

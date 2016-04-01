@@ -55,3 +55,4 @@
 6. 數秒後，您會看到 NSG 中的新規則。
 
 ![Preview 入口網站 - 新增規則](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
+

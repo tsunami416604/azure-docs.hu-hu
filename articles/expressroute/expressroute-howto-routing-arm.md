@@ -19,8 +19,8 @@
 # 使用 Azure 資源管理員及 PowerShell 建立和修改 ExpressRoute 線路的路由
 
 > [AZURE.SELECTOR]
-[PowerShell-傳統](expressroute-howto-routing-classic.md)
-[PowerShell-資源管理員](expressroute-howto-routing-arm.md)
+[PowerShell - 傳統](expressroute-howto-routing-classic.md)
+[PowerShell - 資源管理員](expressroute-howto-routing-arm.md)
 
 本文將逐步引導您使用 PowerShell Cmdlet 和 Azure 資源管理員部署模型，以建立和管理 ExpressRoute 線路的路由組態。  下列步驟也會示範如何檢查狀態、更新或刪除和取消佈建 ExpressRoute 線路的對等。
 
@@ -30,7 +30,7 @@
 
 - 您需要最新版的 Azure PowerShell 模組 (版本 1.0 或更新版本)。 
 - 請確定您已檢閱 [必要條件](expressroute-prerequisites.md) ] 頁面上， [路由需求](expressroute-routing.md) 頁面和 [工作流程](expressroute-workflows.md) 之前開始設定] 頁面上。
-- 您必須擁有作用中的 ExpressRoute 循環。 請依照下列指示 [建立的 ExpressRoute 電路](expressroute-howto-circuit-classic.md) 和有電路啟用您的連線提供者，才能繼續。 ExpressRoute 線路必須處於已佈建和已啟用狀態，您才能執行如下所述的 Cmdlet。
+- 您必須擁有作用中的 ExpressRoute 線路。 請依照下列指示 [建立的 ExpressRoute 電路](expressroute-howto-circuit-classic.md) 和有電路啟用您的連線提供者，才能繼續。 ExpressRoute 線路必須處於已佈建和已啟用狀態，您才能執行如下所述的 Cmdlet。
 
 >[AZURE.IMPORTANT] 這些指示僅適用於建立與服務提供者提供第 2 層連線服務的電路。 如果您使用的服務提供者是提供受管理的第 3 層服務 (通常是 IPVPN，如 MPLS)，您的連線提供者會為您設定和管理路由。 在此情況下，您無法建立或管理對等。 
 
@@ -349,7 +349,7 @@
     - 公告的首碼：您必須提供一份您打算在 BGP 工作階段上公告的所有首碼的清單。 只接受公用 IP 位址首碼。 如果您打算傳送一組首碼，您可以傳送逗號分隔清單。 這些首碼必須在 RIR / IRR 中註冊給您。
     - 客戶 ASN：如果您要公告的首碼未註冊給對等 AS 編號，您可以指定它們所註冊的 AS 編號。 **這是選擇性的**。
     - 路由登錄名稱：您可以指定可供註冊 AS 編號和首碼的 RIR / IRR。
-    - MD5 雜湊 (如果選擇使用)。 **這是選擇性的。**
+    - MD5 雜湊 (如果選擇使用)。 **這是選擇性。**
     
     您可以執行下列 Cmdlet 來為線路設定 Microsoft 對等
 
@@ -394,5 +394,6 @@
 -  如需對等互連電路的詳細資訊，請參閱 [ExpressRoute 電路與路由網域](expressroute-circuit-peerings.md)。
 
 -  如需使用虛擬網路的詳細資訊，請參閱 [虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
+
 
 

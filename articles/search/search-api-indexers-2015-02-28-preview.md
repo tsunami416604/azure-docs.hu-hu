@@ -31,7 +31,7 @@ Azure 搜尋服務是 Microsoft Azure 上之託管的雲端搜尋服務。 Azure
 
  **索引子** 想定期更新索引時非常有用。 您可以設定內嵌排程做為一部分的索引子定義，或執行視需要使用 [執行索引子](#RunIndexer)。 
 
-A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及可讓 Azure 搜尋服務有效識別資料 (例如修改或刪除的資料庫資料表中的資料列) 中的變更原則的認證。 資料來源會被定義為獨立的資源，因此可供多個索引子使用。
+A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及可讓 Azure 搜尋服務有效識別資料 （例如修改或刪除的資料庫資料表中的資料列） 中的變更原則的認證。 資料來源會被定義為獨立的資源，因此可供多個索引子使用。
 
 目前支援下列資料來源：
 
@@ -58,7 +58,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 您應該規劃為每個目標索引和資料來源組合建立一個索引子。 您可將多個索引子寫入相同的索引中，並針對多個索引子重複使用相同的資料來源。 不過，索引子一次只能取用一個資料來源，也只能寫入一個索引中。 
 
-建立索引子之後, 您可以擷取其執行狀態使用 [取得索引子狀態](#GetIndexerStatus) 作業。 您也可以執行索引子在任何時間 (而不是，或依照排程定期執行之外) 使用 [執行索引子](#RunIndexer) 作業。
+建立索引子之後, 您可以擷取其執行狀態使用 [取得索引子狀態](#GetIndexerStatus) 作業。 您也可以執行索引子在任何時間 （而不是，或依照排程定期執行之外） 使用 [執行索引子](#RunIndexer) 作業。
 
 <!-- MSDN has 2 art files plus a API topic link list -->
 
@@ -75,7 +75,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
     PUT https://[service name].search.windows.net/datasources/[datasource name]?api-version=[api-version]
 
-**請注意**: 允許的資料來源的數目上限依定價層而有所不同。 免費服務允許最多 3 個資料來源。 標準服務允許 50 個資料來源。 請參閱 [服務限制](search-limits-quotas-capacity.md) 如需詳細資訊。
+**請注意**︰ 允許的資料來源的數目上限依定價層而有所不同。 免費服務允許最多 3 個資料來源。 標準服務允許 50 個資料來源。 請參閱 [服務限制](search-limits-quotas-capacity.md) 如需詳細資訊。
 
 **要求**
 
@@ -90,7 +90,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 下列清單說明必要及選用的要求標頭。 
 
 - `Content-Type`：必要。 請設為 `application/json`
-- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **建立資料來源** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 (相對於查詢金鑰)。 
+- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **建立資料來源** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 （相對於查詢金鑰）。 
  
 您也必須提供服務名稱才能建構要求 URL。 您可以取得服務名稱和 `api-key` 服務儀表板 [Azure 傳統入口網站](https://portal.azure.com/)。 請參閱 [入口網站中建立搜尋服務](search-create-service-portal.md) 如需頁面導覽說明。
 
@@ -135,9 +135,9 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 資料變更偵測原則是用來有效識別已變更的資料項目。 支援的原則根據資料來源類型而有所不同。 下節會對每項原則進行說明。 
 
-**注意:** 您可以切換資料偵測原則之後已經建立索引子，使用 [重設索引子](#ResetIndexer) API。
+**注意 ︰** 您可以切換資料偵測原則之後已經建立索引子，使用 [重設索引子](#ResetIndexer) API。
 
-***undefined*** 
+***高水位線變更偵測原則*** 
 
 如果資料來源包含的資料行或屬性符合下列準則，請使用此原則：
  
@@ -157,7 +157,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
         "highWaterMarkColumnName" : "[a row version or last_updated column name]" 
     } 
 
-***undefined***
+***SQL 整合式變更偵測原則***
 
 如果您的 SQL database 支援 [變更追蹤](https://msdn.microsoft.com/library/bb933875.aspx), ，我們建議您使用 SQL 整合變更追蹤原則。 這項原則可保障最高效的變更追蹤，並讓 Azure 搜尋服務識別出已刪除的資料列，而不需在結構描述中具備明確的「虛刪除」資料行。
 
@@ -169,7 +169,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 此原則僅可用於資料表，無法用於檢視表。 您必須先啟用正在使用之資料表的變更追蹤，才能使用這項原則。 請參閱 [啟用和停用變更追蹤](https://msdn.microsoft.com/library/bb964713.aspx) 如需相關指示。    
  
-建構時 **建立資料來源** 要求時，SQL 整合的變更追蹤原則可以指定，如下所示:
+建構時 **建立資料來源** 要求時，SQL 整合的變更追蹤原則可以指定，如下所示 ︰
 
     { 
         "@odata.type" : "#Microsoft.Azure.Search.SqlIntegratedChangeTrackingPolicy" 
@@ -186,7 +186,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
         "softDeleteMarkerValue" : "the value that identifies a row as deleted" 
     }
 
-**注意:** 支援具有字串、 整數或布林值的資料行。 即使對應的資料行具有整數或布林值，做為 `softDeleteMarkerValue` 的值仍必須是字串。 例如，若資料來源中顯示的值為 1，請使用 `"1"` 做為 `softDeleteMarkerValue`。    
+**注意 ︰** 支援具有字串、 整數或布林值的資料行。 即使對應的資料行具有整數或布林值，做為 `softDeleteMarkerValue` 的值仍必須是字串。 例如，若資料來源中顯示的值為 1，請使用 `"1"` 做為 `softDeleteMarkerValue`。    
 
 <a name="CreateDataSourceRequestExamples"></a>
 **要求本文範例**
@@ -233,11 +233,11 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 **要求**
 要求本文的語法是相同 [建立資料來源要求](#CreateDataSourceRequestSyntax)。
 
-**回應**
-要求成功: 「 201 已建立新的資料來源是否建立，「 204 沒有內容如果更新現有的資料來源。
+**Response**
+對於成功的要求：如果已建立新的資料來源，會顯示「201 已建立」；如果已更新現有的資料來源，則會顯示「204 沒有內容」。
 
-**注意:**
-有些屬性無法更新現有的資料來源上。 例如，您無法變更現有資料來源的類型。  
+**注意：**
+無法更新現有資料來源上的某些屬性。 例如，您無法變更現有資料來源的類型。  
 
 <a name="ListDataSource"></a>
 ## 列出資料來源 ##
@@ -344,7 +344,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=[api-version]
 
-**請注意**: 允許的索引子數目上限依定價層而有所不同。 免費服務允許最多 3 個索引子。 標準服務允許 50 個索引子。 請參閱 [服務限制](search-limits-quotas-capacity.md) 如需詳細資訊。
+**請注意**︰ 允許的索引子數目上限依定價層而有所不同。 免費服務允許最多 3 個索引子。 標準服務允許 50 個索引子。 請參閱 [服務限制](search-limits-quotas-capacity.md) 如需詳細資訊。
 
 `api-version` 為必要項目。 目前版本為 `2015-02-28`。 [Azure 搜尋服務版本設定](https://msdn.microsoft.com/library/azure/dn864560.aspx) 有提供替代版本的詳細資訊。
 
@@ -549,7 +549,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 <a name="RunIndexer"></a>
 ## 執行索引子 ##
 
-除了依照排程定期執行，索引子可以也視需要叫用透過 **執行索引子** 作業: 
+除了依照排程定期執行，索引子可以也視需要叫用透過 **執行索引子** 作業 ︰ 
 
     POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=[api-version]
     api-key: [admin key]
@@ -565,7 +565,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 <a name="GetIndexerStatus"></a>
 ## 取得索引子狀態 ##
 
- **取得索引子狀態** 作業會擷取索引子的目前狀態和執行記錄: 
+ **取得索引子狀態** 作業會擷取索引子的目前狀態和執行記錄 ︰ 
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=[api-version]
     api-key: [admin key]
@@ -611,7 +611,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 **索引子狀態**
 
-索引子狀態可以是下列值之一:
+索引子狀態可以是下列值之一 ︰
 
 - `running` 表示索引子正常執行。 請注意，有些索引子的執行仍可能會失敗，因此建議一併檢查 `lastResult` 屬性。 
 
@@ -676,65 +676,65 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 <table style="font-size:12">
 <tr>
-<td>SQL 資料型別</td>  
-<td>允許目標索引欄位類型</td>
-<td>備忘稿</td>
+<td>SQL 資料類型</td>  
+<td>允許的目標索引欄位類型</td>
+<td>注意事項</td>
 </tr>
 <tr>
-<td>元</td>
-<td>Edm.Boolean、 Edm.String</td>
+<td>bit</td>
+<td>Edm.Boolean、Edm.String</td>
 <td></td>
 </tr>
 <tr>
-<td>int、 smallint、 tinyint</td>
-<td>Edm.Int32、 Edm.Int64、 Edm.String</td>
+<td>int、smallint、tinyint</td>
+<td>Edm.Int32、Edm.Int64、Edm.String</td>
 <td></td>
 </tr>
 <tr>
 <td>bigint</td>
-<td>Edm.Int64、 Edm.String</td>
+<td>Edm.Int64、Edm.String</td>
 <td></td>
 </tr>
 <tr>
-<td>real、 float</td>
-<td>Edm.Double、 Edm.String</td>
+<td>real、float</td>
+<td>Edm.Double、Edm.String</td>
 <td></td>
 </tr>
 <tr>
-<td>smallmoney、 money<br>十進位<br>數值
+<td>smallmoney、money<br>decimal<br>numeric
 </td>
 <td>Edm.String</td>
-<td>Azure 搜尋服務不支援將十進位類型轉換成 Edm.Double，因為這會遺失有效位數
+<td>Azure 搜尋服務不支援將十進位類型轉換為 Edm.Double，因為這麼做會降低準確度。
 </td>
 </tr>
 <tr>
-<td>char、 nchar、 varchar、 nvarchar</td>
-<td>Edm.String<br/>collection (edm.string)</td>
-<td>請參閱 [Field Mapping Functions](#FieldMappingFunctions) 如需有關如何將字串資料行轉換成 collection (edm.string) 這份文件中</td>
+<td>char、nchar、varchar、nvarchar</td>
+<td>Edm.String<br/>Collection(Edm.String)</td>
+<td>請參閱 [Field Mapping Functions](#FieldMappingFunctions) 在這份文件，如需有關如何將字串資料行轉換成 collection （edm.string）</td>
 </tr>
 <tr>
-<td>smalldatetime、 datetime、 datetime2、 date、 datetimeoffset</td>
-<td>Edm.DateTimeOffset、 Edm.String</td>
+<td>smalldatetime、datetime、datetime2、date、datetimeoffset</td>
+<td>Edm.DateTimeOffset、Edm.String</td>
 <td></td>
 </tr>
 <tr>
-<td>uniqueidentifier</td>
+<td>uniqueidentifer</td>
 <td>Edm.String</td>
 <td></td>
 </tr>
 <tr>
-<td>地理位置</td>
+<td>geography</td>
 <td>Edm.GeographyPoint</td>
-<td>支援只使用 SRID 4326 (這是預設值) 的 POINT 類型地理位置執行個體</td>
+<td>僅支援使用 SRID 4326 (預設) 之 POINT 類型的 geography 執行個體。</td>
 </tr>
 <tr>
 <td>rowversion</td>
-<td>n/A</td>
-<td>資料列版本資料行無法儲存在搜尋索引可用於變更追蹤，但</td>
+<td>N/A</td>
+<td>資料列版本的資料行無法儲存在搜尋索引中，但可用於追蹤變更。</td>
 </tr>
 <tr>
-<td>time、 timespan<br>binary、 varbinary、 image、<br>xml、 geometry、 CLR 型別</td>
-<td>n/A</td>
+<td>time、timespan<br>binary、varbinary、image<br>xml、geometry、CLR 類型</td>
+<td>N/A</td>
 <td>不支援</td>
 </tr>
 </table>
@@ -788,3 +788,4 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 <td>不支援；Azure 搜尋服務目前僅支援基本類型與字串集合</td>
 </tr>
 </table>
+

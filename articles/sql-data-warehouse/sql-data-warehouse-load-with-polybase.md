@@ -21,7 +21,7 @@
 PolyBase 技術可讓您查詢和聯結多個來源的資料，且完全使用 Transact-SQL 命令。 
 
 使用 PolyBase 時，您還可以查詢 Azure blob 儲存體中儲存資料並載入 SQL 資料 
-倉儲資料庫執行下列步驟:
+倉儲資料庫執行下列步驟 ︰
 
 - 建立資料庫主要金鑰和認證。
 - 建立 PolyBase 物件：外部資料來源、外部檔案格式和外部資料表。 
@@ -38,7 +38,7 @@ PolyBase 技術可讓您查詢和聯結多個來源的資料，且完全使用 T
 
 首先，您將建立當 PolyBase 連接到 Azure blob 儲存體和查詢資料時所需要的物件。
 
-> [AZURE.IMPORTANT] PolyBase 所支援的 Azure 儲存體帳戶類型包括:
+> [AZURE.IMPORTANT] PolyBase 所支援的 Azure 儲存體帳戶類型包括 ︰
 > 
 > + 標準本機備援儲存體 (標準-LRS)
 > + 標準異地備援儲存體 (標準-GRS)
@@ -83,7 +83,7 @@ DROP DATABASE SCOPED CREDENTIAL ASBSecret
 ```
 
 ## 步驟 2：建立外部資料來源
-外部資料來源是儲存 Azure blob 儲存體資料位置及存取資訊的資料庫物件。 您可以使用 [建立外部資料來源 (TRANSACT-SQL)] [] 來定義為每個 Azure 儲存體 blob，您想要存取外部資料來源。
+外部資料來源是儲存 Azure blob 儲存體資料位置及存取資訊的資料庫物件。 使用 [建立外部資料來源 (TRANSACT-SQL)][] 您想要存取定義為每個 Azure 儲存體 blob 的外部資料來源。
 
     ```
     -- Create an external data source for an Azure storage blob
@@ -108,7 +108,7 @@ DROP DATABASE SCOPED CREDENTIAL ASBSecret
 ## 步驟 3：建立外部檔案格式
 外部檔案格式是指定外部資料格式的資料庫物件。 PolyBase 可以處理壓縮和未壓縮的資料，包括分隔的文字、Hive RCFILE 和 HIVE ORC 格式。 
 
-您可以使用 [建立外部檔案格式 (TRANSACT-SQL)] [] 來建立外部檔案格式。 此範例指定檔案中的資料為未壓縮的文字，而欄位是以縱線字元 ('|') 分隔。 
+使用 [建立外部檔案格式 (TRANSACT-SQL)][] 建立外部檔案格式。 此範例指定檔案中的資料為未壓縮的文字，而欄位是以縱線字元 ('|') 分隔。 
 
 ```
 -- Create an external file format for a text-delimited file.
@@ -142,7 +142,7 @@ DROP EXTERNAL FILE FORMAT text_file_format
 - 外部資料表定義會以中繼資料的形式儲存在 SQL 資料倉儲資料庫中。 
 - 資料會儲存在資料來源所指定的外部位置。
 
-您可以使用 [建立外部資料表 (TRANSACT-SQL)] [] 來定義外部資料表。
+使用 [建立外部資料表 (TRANSACT-SQL)][] 定義外部資料表。
 
 LOCATION 選項指定從資料來源根目錄到資料的路徑。 在此範例中，資料是位於 'wasbs://mycontainer@test.blob.core.windows.net/path/Demo/'。 同一個資料表所用的所有檔案，都必須位於 Azure Blob 儲存體中相同的邏輯資料夾底下。
 
@@ -179,7 +179,7 @@ DROP EXTERNAL TABLE [ext].[CarSensor_Data]
 
 > [AZURE.NOTE] 捨棄外部資料表時必須使用 `DROP EXTERNAL TABLE`。 您 **無法** 使用 `DROP TABLE`。 
 
-參考主題: [卸除的外部資料表 (TRANSACT-SQL)][]。
+參考主題 ︰ [卸除的外部資料表 (TRANSACT-SQL)][]。
 
 另外值得注意的是，在 `sys.tables` 和 `sys.external_tables` 目錄檢視中 (後者更為明確) 都會顯示外部資料表。
 
@@ -244,7 +244,7 @@ FROM   [ext].[CarSensor_Data]
 
 ## 建立新載入資料的統計資料
 
-Azure 資料倉儲尚未支援自動建立或自動更新統計資料。  為了獲得查詢的最佳效能，在首次載入資料，或是資料中發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  統計資料的詳細說明，請參閱主題開發群組中的 [統計資料] [] 主題。  以下是快速範例，說明如何在此範例中建立載入資料表的統計資料。
+Azure 資料倉儲尚未支援自動建立或自動更新統計資料。  為了獲得查詢的最佳效能，在首次載入資料，或是資料中發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  如需統計資料的詳細說明，請參閱 [統計資料][] 開發一組主題中的主題。  以下是快速範例，說明如何在此範例中建立載入資料表的統計資料。
 
 ```
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -335,7 +335,7 @@ $write.Dispose()
 ```
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
@@ -366,6 +366,7 @@ $write.Dispose()
 [CREATE MASTER KEY (Transact-SQL)]:https://msdn.microsoft.com/library/ms174382.aspx
 [CREATE CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189450.aspx
+
 
 
 

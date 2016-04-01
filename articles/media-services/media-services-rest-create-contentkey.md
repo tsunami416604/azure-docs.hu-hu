@@ -27,9 +27,9 @@
 
 媒體服務可讓您建立新的資產及傳遞已加密的資產。 A **ContentKey** 提供安全存取您 **資產**s。 
 
-當您建立新的資產 (例如，您之前 [檔案上傳](media-services-rest-upload-files.md))，您可以指定下列加密選項: **StorageEncrypted**, ，**CommonEncryptionProtected**, ，或 **EnvelopeEncryptionProtected**。 
+當您建立新的資產 (例如，您之前 [檔案上傳](media-services-rest-upload-files.md))，您可以指定下列加密選項 ︰ **StorageEncrypted**, ，**CommonEncryptionProtected**, ，或 **EnvelopeEncryptionProtected**。 
 
-當您將資產傳遞給用戶端時，您可以 [設定的動態加密資產](media-services-rest-configure-asset-delivery-policy.md) 與下列兩個加密的其中一個: **DynamicEnvelopeEncryption** 或 **DynamicCommonEncryption**。
+當您將資產傳遞給用戶端時，您可以 [設定的動態加密資產](media-services-rest-configure-asset-delivery-policy.md) 與下列兩個加密的其中一個 ︰ **DynamicEnvelopeEncryption** 或 **DynamicCommonEncryption**。
 
 加密的資產必須與相關聯 **ContentKey**s。 本文說明如何建立內容金鑰。
 
@@ -63,13 +63,13 @@
             return Convert.ToBase64String(array2);
         }
 
-5. 建立內容金鑰 **EncryptedContentKey** (轉換為 base64 編碼字串)， **ProtectionKeyId**, ，**ProtectionKeyType**, ，**ContentKeyType**, ，和 **總和檢查碼** 您在先前步驟中收到的值。
+5. 建立內容金鑰 **EncryptedContentKey** （轉換為 base64 編碼字串）， **ProtectionKeyId**, ，**ProtectionKeyType**, ，**ContentKeyType**, ，和 **總和檢查碼** 您在先前步驟中收到的值。
 6. 建立關聯 **ContentKey** 實體與您 **資產** 透過 $links 作業的實體。
 
 請注意，本主題已省略產生 AES 金鑰、加密金鑰，以及計算總和檢查碼的範例。 僅提供示範如何與媒體服務互動的範例。
 
 
->[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量:
+>[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量 ︰
 >
 >在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
@@ -261,4 +261,5 @@
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

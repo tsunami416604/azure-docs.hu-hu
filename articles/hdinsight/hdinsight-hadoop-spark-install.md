@@ -26,17 +26,17 @@
 **相關文章**
 - [在以 Linux 為基礎的 HDInsight 叢集上安裝 Spark](hdinsight-hadoop-spark-install-linux.md)。
 
-- [在 HDInsight 中建立 Hadoop 叢集](hdinsight-provision-clusters.md): 建立 HDInsight 叢集的一般資訊。
+- [在 HDInsight 中建立 Hadoop 叢集](hdinsight-provision-clusters.md)︰ 建立 HDInsight 叢集的一般資訊。
 
-- [開始使用 HDInsight 上的 Apache Spark](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md): 在 Windows 作業系統上建立 spark 型別。
+- [開始使用 HDInsight 上的 Apache Spark](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)︰ 在 Windows 作業系統上建立 spark 型別。
 
-- [自訂 HDInsight 叢集使用指令碼動作][hdinsight-cluster-customize]: 自訂 HDInsight 叢集使用指令碼動作的一般資訊。
+- [自訂 HDInsight 叢集使用指令碼動作][hdinsight-cluster-customize]︰ 自訂 HDInsight 叢集使用指令碼動作的一般資訊。
 
 - [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions.md)。
 
 ## 什麼是 Spark？
 
-<a href="http://spark.apache.org/docs/latest/index.html" target="_blank">Apache Spark</a> 開放原始碼平行處理架構，可支援記憶體中處理，大幅提升巨量資料分析應用程式的效能。 Spark 的記憶體內計算功能，使其成為機器學習和圖表計算中反覆演算法的絕佳選擇 。
+<a href="http://spark.apache.org/docs/latest/index.html" target="_blank">Apache Spark</a> 是一個開放原始碼平行處理架構，可支援記憶體內部處理，大幅提升巨量資料分析應用程式的效能。 Spark 的記憶體內計算功能，使其成為機器學習和圖表計算中反覆演算法的絕佳選擇 。
 
 Spark 也可用來執行傳統的磁碟型資料處理。 Spark 以避免在中繼階段寫入磁碟的方式，改善傳統的 MapReduce 架構。 此外，Spark 與 Hadoop 分散式檔案系統 (HDFS) 和 Azure Blob 儲存體相容，因此可以輕鬆地透過 Spark 來處理現有的資料。
 
@@ -59,18 +59,18 @@ Spark 也可用來執行傳統的磁碟型資料處理。 Spark 以避免在中�
     - 如果您想要安裝 **Spark 1.0.2**, ，建立 HDInsight 3.1 叢集。
 
 
-2. 在 **指令碼動作** 頁面的精靈中，按一下 [ **加入指令碼動作** 提供有關指令碼動作，詳細資料，如下所示:
+2. 在 **指令碼動作** 頁面的精靈中，按一下 [ **加入指令碼動作** 提供有關指令碼動作，詳細資料，如下所示 ︰
 
     ![使用指令碼動作以自訂叢集](./media/hdinsight-hadoop-spark-install/HDI.CustomProvision.Page6.png "Use Script Action to customize a cluster")
 
     <table border='1'>
         <tr><th>屬性</th><th>值</th></tr>
         <tr><td>名稱</td>
-            <td>指定指令碼動作的名稱。 例如， <b>安裝 Spark</b>.</td></tr>
+            <td>指定指令碼動作的名稱。 例如， <b>安裝 Spark</b>。</td></tr>
         <tr><td>指令碼 URI</td>
-            <td>指定為自訂叢集叫用的指令碼統一資源識別項 (URI)。 例如， <i>https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1</i></td></tr>
+            <td>指定為了自訂叢集所叫用之指令碼的統一資源識別項 (URI)。 例如， <i>https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1</i></td></tr>
         <tr><td>節點類型</td>
-            <td>指定執行自訂指令碼的節點。 您可以選擇 <b>所有節點</b>， <b>僅限前端節點</b>或 <b>僅限背景工作節點</b>.
+            <td>指定執行自訂指令碼的節點。 您可以選擇 <b>所有節點</b>, ，<b>僅限前端節點</b>, ，或 <b>僅限背景工作節點</b>。
         <tr><td>參數</td>
             <td>如果指令碼要求，請指定參數。 用來安裝 Spark 的指令碼不需要任何參數，因此可以讓此處空白。</td></tr>
     </table>
@@ -91,7 +91,7 @@ Spark 提供以 Scala、Python 及 Java 撰寫的 API。 您也可以使用互�
 
 1. 從 Azure 入口網站，針對您所建立且已安裝 Spark 的叢集啟用遠端桌面，然後遠端登入到叢集。 如需指示，請參閱[使用 RDP 連線到 HDInsight 叢集](hdinsight-administer-use-management-portal.md#rdp)。
 
-2. 在遠端桌面通訊協定 (RDP) 工作階段中，從桌面開啟 Hadoop 命令列 (從桌面捷徑)，並瀏覽至 Spark 的安裝; 位置例如， **C:\apps\dist\spark-1.2.0**。
+2. 在遠端桌面通訊協定 (RDP) 工作階段中，從桌面開啟 Hadoop 命令列 （從桌面捷徑），並瀏覽至 Spark 的安裝; 位置例如， **C:\apps\dist\spark-1.2.0**。
 
 
 3. 執行下列命令以啟動 Spark 殼層：
@@ -125,7 +125,7 @@ Spark SQL 可讓您使用 Spark 來執行以結構化查詢語言 (SQL)、HiveQL
 
 1. 從 Azure 入口網站，針對您所建立且已安裝 Spark 的叢集啟用遠端桌面，然後遠端登入到叢集。 如需指示，請參閱[使用 RDP 連線到 HDInsight 叢集](hdinsight-administer-use-management-portal.md#rdp)。
 
-2. 在 RDP 工作階段，從桌面開啟 Hadoop 命令列 (從桌面捷徑)，並瀏覽至 Spark 的安裝; 位置例如， **C:\apps\dist\spark-1.2.0**。
+2. 在 RDP 工作階段，從桌面開啟 Hadoop 命令列 （從桌面捷徑），並瀏覽至 Spark 的安裝; 位置例如， **C:\apps\dist\spark-1.2.0**。
 
 
 3. 執行下列命令以啟動 Spark 殼層：
@@ -188,7 +188,7 @@ Spark SQL 可讓您使用 Spark 來執行以結構化查詢語言 (SQL)、HiveQL
 2. 儲存檔案名稱 **SimpleApp.scala**。
 
 #### 建置 Scala 程式
-在本節中，您使用 <a href="http://www.scala-sbt.org/0.13/docs/index.html" target="_blank">簡單建置工具</a> (或稱 sbt) 來建置 Scala 程式。 sbt 需要 Java 1.6 或更新版本，因此請確定使用正確的安裝，才能繼續進行本節的 Java 版本。
+在本節中，您使用 <a href="http://www.scala-sbt.org/0.13/docs/index.html" target="_blank">簡單建置工具</a> （或稱 sbt） 來建置 Scala 程式。 sbt 需要 Java 1.6 或更新版本，因此請確定使用正確的安裝，才能繼續進行本節的 Java 版本。
 
 1. 從 http://www.scala-sbt.org/0.13/tutorial/Installing-sbt-on-Windows.html 安裝 sbt。
 2. 建立一個稱為 **SimpleScalaApp**, ，在此資料夾中，建立名為的檔案和 **simple.sbt**。 這是包含 Scala 版本、程式庫相依性等相關資訊的組態檔。將下列程式碼貼到 simple.sbt 檔案中並加以儲存：
@@ -264,7 +264,7 @@ Spark SQL 可讓您使用 Spark 來執行以結構化查詢語言 (SQL)、HiveQL
         # Add a script action to the cluster configuration
         $config = Add-AzureHDInsightScriptAction -Config $config -Name "Install Spark" -ClusterRoleCollection HeadNode -Uri https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1
 
-    **Add-azurehdinsightscriptaction** cmdlet 可接受下列參數:
+    **Add-azurehdinsightscriptaction** cmdlet 可接受下列參數 ︰
 
     <table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
     <tr>
@@ -306,11 +306,11 @@ Spark SQL 可讓您使用 Spark 來執行以結構化查詢語言 (SQL)、HiveQL
 
 ## 另請參閱
 
-- [在以 Linux 為基礎的 HDInsight 叢集上安裝 Spark](hdinsight-hadoop-spark-install-linux.md): 安裝 Linux 上的 Spark 基礎的 HDInsight 叢集。
-- [在 HDInsight 中建立 Hadoop 叢集](hdinsight-provision-clusters.md): 建立 HDInsight 叢集。
-- [開始使用 HDInsight 上的 Apache Spark](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md): 開始使用 HDInsight 上的 Spark。
-- [自訂 HDInsight 叢集使用指令碼動作][hdinsight-cluster-customize]: 來自訂 HDInsight 叢集使用指令碼動作。
-- [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions.md): 開發指令碼動作指令碼。
+- [在以 Linux 為基礎的 HDInsight 叢集上安裝 Spark](hdinsight-hadoop-spark-install-linux.md)︰ 安裝 Linux 上的 Spark 基礎的 HDInsight 叢集。
+- [在 HDInsight 中建立 Hadoop 叢集](hdinsight-provision-clusters.md)︰ 建立 HDInsight 叢集。
+- [開始使用 HDInsight 上的 Apache Spark](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)︰ 開始使用 HDInsight 上的 Spark。
+- [自訂 HDInsight 叢集使用指令碼動作][hdinsight-cluster-customize]︰ 來自訂 HDInsight 叢集使用指令碼動作。
+- [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions.md)︰ 開發指令碼動作指令碼。
 - [HDInsight 叢集上安裝 R][hdinsight-install-r] 提供如何使用叢集自訂，以安裝和使用 R HDInsight Hadoop 叢集上的指示。 R 是一個用於統計計算的開放原始碼語言和環境。 它提供數百個內建的統計函式及它自己的程式設計語言，此語言結合了函式型和物件導向程式設計的層面。 它也提供廣泛的圖形功能。
 - [HDInsight 叢集上安裝 Giraph](hdinsight-hadoop-giraph-install.md)。 在 HDInsight Hadoop 叢集上使用叢集自訂安裝 Giraph。 Giraph 可讓您利用 Hadoop 執行圖形處理，且可以搭配 Azure HDInsight 一起使用。
 - [HDInsight 叢集上安裝 Solr](hdinsight-hadoop-solr-install.md)。 在 HDInsight Hadoop 叢集上使用叢集自訂安裝 Solr。 Solr 可讓您對儲存的資料執行功能強大的搜尋作業。
@@ -319,4 +319,5 @@ Spark SQL 可讓您使用 Spark 來執行以結構化查詢語言 (SQL)、HiveQL
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [powershell-install-configure]: ../install-configure-powershell.md
+
 

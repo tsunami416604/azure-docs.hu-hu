@@ -19,7 +19,7 @@
 
 如果您使用 NLog、 log4Net 或 System.Diagnostics.Trace 進行診斷追蹤，在 ASP.NET 應用程式，您可以將記錄傳送至 [Visual Studio Application Insights][start], ，其中您可以瀏覽和搜尋它們。 您的記錄檔會與來自應用程式的其他遙測合併，讓您可以識別與服務每個使用者要求相關聯的追蹤，並將它們與其他事件和例外狀況報告相互關聯。
 
-> [AZURE.NOTE] 您需要的記錄擷取模組嗎? 它是第 3 方記錄器的實用介面卡，但如果您尚未使用 NLog、 log4Net 或 System.Diagnostics.Trace，請考慮只呼叫 [Application Insights tracktrace ()](app-insights-api-custom-events-metrics.md#track-trace) 直接。
+> [AZURE.NOTE] 您需要的記錄擷取模組嗎？ 它是第 3 方記錄器的實用介面卡，但如果您尚未使用 NLog、 log4Net 或 System.Diagnostics.Trace，請考慮只呼叫 [Application Insights tracktrace （)](app-insights-api-custom-events-metrics.md#track-trace) 直接。
 
 如果您尚未 [為您的專案設定 Application Insights][start], ，請立即進行安裝。 您的專案應該會有檔案 `ApplicationInsights.config` 以及 NuGet 封裝 `Microsoft.ApplicationInsights.Web`。
 
@@ -79,7 +79,7 @@ TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如�
 * 尋找與相同使用者要求相關的其他遙測 (也就是使用相同的 OperationId) 
 * 將此頁面的組態儲存為我的最愛
 
-> [AZURE.NOTE] **取樣。**如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [進一步了解取樣。](app-insights-sampling.md)
+> [AZURE.NOTE] **取樣。** 如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](app-insights-sampling.md)
 
 ## 後續步驟
 
@@ -91,7 +91,7 @@ TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如�
 
 ## 疑難排解
 
-### <a name="emptykey"></a>我收到「檢測機碼不能是空白」的錯誤
+### <a name="emptykey"></a>我收到「檢測金鑰不能是空白」的錯誤
 
 您可能只安裝記錄配接器 Nuget 封裝，但未安裝 Application Insights。
 
@@ -107,9 +107,9 @@ TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如�
 
 ### 我沒看到一些預期的記錄項目
 
-如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [進一步了解取樣。](app-insights-sampling.md)
+如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](app-insights-sampling.md)
 
-## <a name="add"></a>後續步驟
+## <a name="add"></a>接續步驟
 
 * [設定可用性和回應性測試][availability]
 * [疑難排解][qna]
@@ -128,3 +128,4 @@ TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如�
 [start]: app-insights-overview.md
 
  
+

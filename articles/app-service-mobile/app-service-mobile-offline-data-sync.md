@@ -45,7 +45,7 @@
 
 若要存取 "/tables" 端點，Azure 行動用戶端 SDK 提供 `IMobileServiceTable` (.NET 用戶端 SDK) 或 `MSTable` (iOS 用戶端) 等介面。 這些 API 直接連接至 Azure 行動應用程式後端，如果用戶端裝置沒有網路連線將會失敗。
 
-若要支援離線使用，您的應用程式應該改用 *同步處理資料表* Api，例如 `IMobileServiceSyncTable` (.NET 用戶端 SDK) 或 `MSSyncTable` (iOS 用戶端)。 所有相同 CRUD 作業 (建立、 讀取、 更新、 刪除) 用於同步處理資料表的 Api，但現在它們會讀取或寫入 *本機存放區*。 必須先初始化本機存放區，才能執行任何同步處理資料表作業。 
+若要支援離線使用，您的應用程式應該改用 *同步處理資料表* Api，例如 `IMobileServiceSyncTable` （.NET 用戶端 SDK） 或 `MSSyncTable` （iOS 用戶端）。 所有相同 CRUD 作業 （建立、 讀取、 更新、 刪除） 用於同步處理資料表的 Api，但現在它們會讀取或寫入 *本機存放區*。 必須先初始化本機存放區，才能執行任何同步處理資料表作業。 
 
 ## 什麼是本機存放區？
 
@@ -67,30 +67,30 @@ A *同步處理內容* 相關聯的行動用戶端物件 (例如 `IMobileService
 <!-- 
 Client code will interact with the table using the `IMobileServiceSyncTable` interface to support offline buffering. This interface supports all the methods of `IMobileServiceTable` along with additional support for pulling data from a Mobile App backend table and merging it into a local store table. How the local table is synchronized with the backend database is mainly controlled by your logic in the client app.
 
-同步處理資料表中使用 [系統內容](https://msdn.microsoft.com/library/azure/dn518225.aspx) 上實作的離線同步處理變更追蹤資料表。 
+The sync table uses the [System Properties](https://msdn.microsoft.com/library/azure/dn518225.aspx) on the table to implement change tracking for offline synchronization. 
 
 
 
-* 在用戶端上的資料物件應有有些系統屬性，大部分不需要。
-    * 受管理
-        * 寫出屬性
+* The data objects on the client should have some system properties, most are not required.
+    * Managed
+        * Write out the attributes
     * iOS
-        * 資料表實體
-* 注意: 因為 iOS 本機存放區以核心資料為基礎，開發人員必須定義下列資料表:
-    * 系統資料表-->
+        *table for the entity
+* Note: because the iOS local store is based on Core Data, the developer must define the following tables:
+    * System tables  -->
 
 
 ## 離線同步處理如何運作
 
 使用同步處理資料表的時候，您的用戶端程式碼可控制本機變更與 Azure 行動應用程式後端同步處理的時機。 直到呼叫也不會傳送到後端 *推播* 本機變更。 同樣地，本機存放區會填入新資料時，才呼叫 *提取* 資料。
 
-* **推播**: 推播作業的同步處理內容，並自最後一個推播傳送 CUD 的所有變更。 請注意，您無法只傳送個別資料表的變更，因為這樣作業傳送順序可能會發生錯誤。 推送會對 Azure 行動應用程式後端執行一系列的 REST 呼叫，這將會修改伺服器資料庫。
+* **推播**︰ 推播作業的同步處理內容，並自最後一個推播傳送 CUD 的所有變更。 請注意，您無法只傳送個別資料表的變更，因為這樣作業傳送順序可能會發生錯誤。 推送會對 Azure 行動應用程式後端執行一系列的 REST 呼叫，這將會修改伺服器資料庫。
 
-* **提取**: 提取會執行每個資料表為基礎，並可自訂的查詢來擷取伺服器資料的子集。 然後 Azure 行動用戶端 SDK 會將該結果資料插入本機存放區。
+* **提取**︰ 提取會執行每個資料表為基礎，並可自訂的查詢來擷取伺服器資料的子集。 然後 Azure 行動用戶端 SDK 會將該結果資料插入本機存放區。
 
-* **隱含推送**: 提取如果針對具有暫止的本機更新的資料表執行提取時，會先執行推送同步處理內容上。 這有助於將已排入佇列的變更與來自伺服器的新資料之間的衝突最小化。
+* **隱含推送**︰ 提取如果針對具有暫止的本機更新的資料表執行提取時，會先執行推送同步處理內容上。 這有助於將已排入佇列的變更與來自伺服器的新資料之間的衝突最小化。
 
-* **增量同步處理**: 提取作業的第一個參數是 *查詢名稱* ，只適用於用戶端。 如果您使用非 null 的查詢名稱，將會執行 Azure Mobile SDK *增量同步處理*。 每當提取作業傳回結果集，該結果集中最新的 `__updatedAt` 時間戳記就會儲存在 SDK 本機系統資料表。 後續的提取作業只會擷取該時間戳記之後的記錄。
+* **增量同步處理**︰ 提取作業的第一個參數是 *查詢名稱* ，只適用於用戶端。 如果您使用非 null 的查詢名稱，將會執行 Azure Mobile SDK *增量同步處理*。 每當提取作業傳回結果集，該結果集中最新的 `__updatedAt` 時間戳記就會儲存在 SDK 本機系統資料表。 後續的提取作業只會擷取該時間戳記之後的記錄。
 
   若要使用增量同步處理，您的伺服器必須傳回有意義的 `__updatedAt` 值，也必須支援依據此欄位排序。 不過，由於 SDK 會在 updatedAt 欄位上加入自己的排序，所以您不能使用本身具備 `$orderBy$` 子句的提取查詢。
 
@@ -107,7 +107,7 @@ Client code will interact with the table using the `IMobileServiceSyncTable` int
 <!--   mymobileservice-code.azurewebsites.net/tables/TodoItem?$filter=(__updatedAt ge datetimeoffset'1970-01-01T00:00:00.0000000%2B00:00')&$orderby=__updatedAt&$skip=0&$top=50&__includeDeleted=true&__systemproperties=__updatedAt%2C__deleted
  -->
     
-* **清除**: 您可以清除本機存放區使用的內容 `IMobileServiceSyncTable.PurgeAsync`。 如果用戶端資料庫中有過時資料，或者您想要捨棄所有擱置的變更，可能就需要此作業。
+* **清除**︰ 您可以清除本機存放區使用的內容 `IMobileServiceSyncTable.PurgeAsync`。 如果用戶端資料庫中有過時資料，或者您想要捨棄所有擱置的變更，可能就需要此作業。
 
   清除作業會從本機存放區清除資料表。 如果有暫止的伺服器資料庫的同步處理作業，清除作業會擲回例外狀況除非 *強制清除* 參數設定。
 
@@ -126,4 +126,5 @@ Client code will interact with the table using the `IMobileServiceSyncTable` int
 [Xamarin iOS: Enable offline sync]: ../app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: Enable offline sync]: ../app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Windows 8.1: Enable offline sync]: ../app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+
 

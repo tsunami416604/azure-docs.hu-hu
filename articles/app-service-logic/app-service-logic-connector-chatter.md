@@ -55,7 +55,7 @@ Chatter 連接器可以在邏輯應用程式中用作觸發程序或動作，且
 
 1. 邏輯應用程式中開啟 **觸發程序和動作** 以開啟邏輯應用程式設計工具並設定您的流程。
 
-2. Chatter 連接器會列在組件庫:  
+2. Chatter 連接器會列在組件庫 ︰  
     ![][4]
 3. 選取 Chatter 連接器以自動加入至設計工具。 選取 **授權**, 、 輸入您的認證，然後選取 **允許**:  
     ![][5]
@@ -64,7 +64,7 @@ Chatter 連接器可以在邏輯應用程式中用作觸發程序或動作，且
 
 您現在便可以在流程中使用 Chatter 連接器。 您可以在流程的其他動作中使用從 Chatter 觸發程序 ([新訊息]) 擷取的新訊息。 設定 Chatter 觸發程序的輸入屬性，如下所示：
 
-**群組識別碼** -輸入應該從中擷取新訊息之群組的識別碼。 如果未提供群組識別碼，從使用者的摘要擷取新訊息:  
+**群組識別碼** -輸入應該從中擷取新訊息之群組的識別碼。 如果未提供群組識別碼，從使用者的摘要擷取新訊息 ︰  
     ![][8]
     ![][9]
 
@@ -83,9 +83,9 @@ Chatter 連接器可以在邏輯應用程式中用作觸發程序或動作，且
 ![][11]
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -104,4 +104,5 @@ Chatter 連接器可以在邏輯應用程式中用作觸發程序或動作，且
 [9]: ./media/app-service-logic-connector-chatter/img9.PNG
 [10]: ./media/app-service-logic-connector-chatter/img10.PNG
 [11]: ./media/app-service-logic-connector-chatter/img11.PNG
+
 

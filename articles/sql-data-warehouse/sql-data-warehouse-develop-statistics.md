@@ -31,7 +31,7 @@
 
 多重資料行統計資料是對一份資料行清單建立的統計資料。 其中包含清單中第一個資料行的單一資料行統計資料，再加上一些跨資料行關聯性資訊 (稱為密度)。 多重資料行統計資料可以改善某些作業 (例如複合 joins 和 group by) 的查詢效能。
 
-如需詳細資訊，請參閱 MSDN 上的 [DBCC SHOW_STATISTICS] []。
+如需詳細資訊，請參閱 [DBCC SHOW_STATISTICS][] MSDN 上。
 
 ## 為何需要統計資料？
 若無正確的統計資料，您將無法獲得 SQL 資料倉儲預計提供的效能。 資料表和資料行都沒有 SQL 資料倉儲自動產生的統計資料，所以您需要自行建立。 在建立資料表時建立統計資料，然後在您填入統計資料後予以更新是個不錯的主意。
@@ -45,9 +45,9 @@
 
 只有在資料行位於複合 joins 或 group by 子句時，查詢最佳化工具才會使用多重資料行統計資料。 複合篩選條件目前並未受益於多重資料行統計資料。
 
-啟動 SQL 資料倉儲開發時因此它是個不錯的主意實作下列模式:
-- 每個資料表上的每個資料行上建立單一資料行統計資料
-- 使用聯結和群組中的查詢子句的資料行上建立多個資料行統計資料。
+開始進行 SQL 資料倉儲開發時，實作下列模式是個不錯的主意：
+- 對每個資料表上的每個資料行建立單一資料行統計資料
+- 對 joins 和 group by 子句中查詢所用的資料行，建立多重資料行統計資料。
 
 當您了解要如何查詢您的資料時，您可能想要修改此模型 - 尤其在資料表的範圍很廣時。 如需更進階的方法，請參閱 [實作統計資料管理] (## 實作統計資料管理) 一節。
 
@@ -62,7 +62,7 @@
 
 相反地，客戶資料表上性別資料行的統計資料可能永遠不需要更新。 假設客戶間的散發固定不變，將新資料列加入至資料表變化並不會改變資料散發情況。 不過，如果資料倉儲只包含一種性別，而新的需求導致多種性別，您肯定需要更新性別資料行的統計資料。
 
-如需進一步說明，請參閱 MSDN 上的 [統計資料] []。
+如需進一步說明，請參閱 [統計資料][] MSDN 上。
 
 ## 實作統計資料管理
 
@@ -78,7 +78,7 @@
 
 > [AZURE.NOTE] 如需 [遞增索引鍵] 的詳細資訊，請參閱 SQL Server 2014 基數估計模型白皮書。
 
-如需進一步說明，請參閱 MSDN 上的 [基數估計] []。
+如需進一步說明，請參閱  [基數估計][] MSDN 上。
 
 ## 範例：建立統計資料
 
@@ -146,7 +146,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-如需完整的參考，請參閱 MSDN 上的 [建立統計資料] []。
+如需完整的參考，請參閱 [建立統計資料][] MSDN 上。
 
 ### F. 建立多重資料行統計資料
 
@@ -318,9 +318,9 @@ UPDATE STATISTICS dbo.table1;
 
 > [AZURE.NOTE] 在更新的資料表上的所有統計資料時，SQL 資料倉儲會進行掃描，每個統計資料的資料表範例。 如果資料表很大、有許多資料行以及許多統計資料，則根據需求來更新個別統計資料可能比較有效率。
 
-實作 `UPDATE STATISTICS` 程序，請參閱 [暫存資料表] 文件。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但最終結果相同。
+實作 `UPDATE STATISTICS` 程序，請參閱 [temporary tables] 文件。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但最終結果相同。
 
-如需完整的語法，請參閱 MSDN 上的 [更新統計資料] []。
+如需完整的語法，請參閱 [更新統計資料][] MSDN 上。
 
 ## 統計資料中繼資料
 您可利用數個系統檢視和函式來尋找統計資料相關資訊。 例如，使用 stats-date 函式來查看最後建立或更新統計資料的時間，即可查看統計資料物件是否可能過期。
@@ -330,13 +330,13 @@ UPDATE STATISTICS dbo.table1;
 
 | 目錄檢視 | 說明 |
 | :----------- | :---------- |
-| [] sys.columns[]  | 每個資料行有一個資料列。 |
-| [] sys.objects[]  | 資料庫中每個物件有一個資料列。 |  |
-| [] sys.schemas[]  | 資料庫中每個結構描述有一個資料列。 |  |
-| [] sys.stats[] | 每個統計資料物件有一個資料列。 |
-| [] sys.stats_columns[] | 統計資料物件中每個資料行有一個資料列。 連結回到 sys.columns。 |
-| [] sys.tables[] | 每個資料表 (包括外部資料表) 有一個資料列。 |
-| [] sys.table_types[] | 每個資料類型有一個資料列。 |
+| [sys.columns][]  | 每個資料行有一個資料列。 |
+| [sys.objects][]  | 資料庫中每個物件有一個資料列。 |  |
+| [sys.schemas][]  | 資料庫中每個結構描述有一個資料列。 |  |
+| [sys.stats][] | 每個統計資料物件有一個資料列。 |
+| [sys.stats_columns][] | 統計資料物件中每個資料行有一個資料列。 連結回到 sys.columns。 |
+| [sys.tables][] | 每個資料表 (包括外部資料表) 有一個資料列。 |
+| [sys.table_types][] | 每個資料類型有一個資料列。 |
 
 
 ### 統計資料的系統函式
@@ -438,7 +438,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [SQL 資料倉儲開發概觀] []。
+如需更多開發秘訣，請參閱 [SQL 資料倉儲開發概觀][]。
 
 <!--Image references-->
 
@@ -460,4 +460,5 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 [sys.tables]:https://msdn.microsoft.com/library/ms187406.aspx
 [sys.table_types]:https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]:https://msdn.microsoft.com/library/ms187348.aspx
+
 

@@ -24,7 +24,7 @@
 
 ## 編輯現有信用卡的付款資訊
 1. 登入 [Azure 帳戶中心](https://account.windowsazure.com/Subscriptions) 的帳戶管理員。
-2. 在 **按一下訂閱，以檢視詳細資料及使用量**, ，選取連結至信用額度的訂閱卡</br> ![selectsub](./media/billing-how-to-change-credit-card/selectsub.png)
+2. 在 **按一下訂閱，以檢視詳細資料及使用量**, ，選取連結至信用卡的訂閱。</br> ![selectsub](./media/billing-how-to-change-credit-card/selectsub.png)
 3. 在頁面右側選取 **變更付款方式**。</br> ![changesub](./media/billing-how-to-change-credit-card/changesub.png)
 4. 在 **選擇付款方式** 頁面上，選取 **編輯** 旁邊的信用卡號碼。</br> ![changesub](./media/billing-how-to-change-credit-card/editcard.png)
 5. 在 **編輯** 頁面上，確認您已選取正確的信用卡類型與卡片號碼。
@@ -43,4 +43,5 @@
 2. 在 **按一下訂閱，以檢視詳細資料及使用量**, ，選取您要更新付款方式的訂閱。
 3. 在頁面右側選取 **變更付款方式**。
 4. 在 **選擇付款方式** 頁面上，選取下拉式清單旁的箭號的信用卡，選取您想要使用，然後再選取信用卡 ![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png) 關閉視窗。
+
 

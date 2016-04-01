@@ -42,7 +42,7 @@
  
 
 
-## 先決條件
+## 必要條件
 
 安裝 Azure SDK 2.4 版或更新版本後，您便可在 Visual Studio 2013 中使用 WebJobs 部署功能：
 
@@ -121,7 +121,7 @@
 
 2. 完成 [Add Azure WebJob](#configure) ] 對話方塊中，然後按一下 **確定**。
 
-## <a id="configure"></a>新增 Azure WebJob 對話方塊
+## <a id="configure"></a>[新增 Azure WebJob] 對話方塊
 
  **Add Azure WebJob** 對話方塊可讓您輸入 WebJob 的名稱和排程設定。 
 
@@ -129,7 +129,7 @@
 
 在此對話方塊中的欄位對應到欄位 **新工作** 的 Azure 入口網站] 對話方塊。 如需詳細資訊，請參閱 [使用 WebJobs 執行背景工作](web-sites-create-web-jobs.md)。
 
-若是排程 WebJob (不適用於連續 WebJobs)，Visual Studio 會建立 [Azure 排程器](/services/scheduler/) 工作集合，如果其中一個不存在，而且在集合中建立工作:
+若是排程 WebJob （不適用於連續 WebJobs)，Visual Studio 會建立 [Azure 排程器](/services/scheduler/) 工作集合，如果其中一個不存在，而且在集合中建立工作 ︰
 
 * 排程器工作集合名為 *WebJobs-{regionname}* 其中 *{regionname}* 指的是 web 應用程式中裝載的區域。 例如：WebJobs-WestUS。
 * 名為排程器工作 *{webappname}-{webjobname}*。 例如：MyWebApp-MyWebJob。 
@@ -190,12 +190,13 @@
     
 在獨立的 WebJob，相同 **發行 Web** web 專案隨即出現，但其中幾個設定可以變更使用的精靈。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## <a id="nextsteps"></a>後續步驟
 
 本文說明如何使用 Visual Studio 部署 WebJobs。 如需有關如何部署 Azure WebJobs 的 Visual Studio 使用連續傳遞程序的資訊，請參閱 [Azure WebJobs-建議資源-部署](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying)。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+
 

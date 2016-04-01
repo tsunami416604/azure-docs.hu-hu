@@ -56,9 +56,9 @@ Azure IoT 中樞會以下列方式解決裝置連線能力面臨的挑戰：
 
 對於許多通訊模式這些優點都是通用的。 IoT 中樞目前可讓您實作下列特定的通訊模式：
 
--   **以事件為基礎的裝置來定域機組擷取。**IoT 中心可靠地接收數以百萬計的事件，每秒從您的裝置和處理使用事件處理器引擎，您最忙碌路徑或將它們儲存在冷分析的路徑。 IoT 中樞可保留最多 7 天的事件資料，以保證可靠的處理並吸收負載尖峰。
+-   **以事件為基礎的裝置到雲端擷取。** IoT 中心可靠地接收數以百萬計的事件，每秒從您的裝置和處理使用事件處理器引擎，您最忙碌路徑或將它們儲存在冷分析的路徑。 IoT 中樞可保留最多 7 天的事件資料，以保證可靠的處理並吸收負載尖峰。
 
--   **可信賴傳訊定域機組的裝置 (或 *命令*)。**解決方案後端可以使用 IoT 中樞傳送訊息給個別裝置 (含至少一次的傳遞保證)。 每個訊息都有個別的存留時間設定，且後端可以要求傳遞和到期的回條，以確保雲端到裝置訊息的生命週期有完整可見度。 這樣您就可以實作包含在裝置上執行之作業的商務邏輯。
+-   **可信賴傳訊定域機組的裝置 (或 *命令*)。** 解決方案後端可以使用 IoT 中樞傳送訊息給個別裝置 (含至少一次的傳遞保證)。 每個訊息都有個別的存留時間設定，且後端可以要求傳遞和到期的回條，以確保雲端到裝置訊息的生命週期有完整可見度。 這樣您就可以實作包含在裝置上執行之作業的商務邏輯。
 
 利用 IoT 中樞裡的 IoT 特定功能 (例如一致的裝置身分識別管理、連線能力監視和調整)，您也可以實作其他常見的模式，像是上傳和下載檔案。
 
@@ -108,4 +108,5 @@ Azure IoT 中心會實作 [服務輔助通訊][lnk-service-assisted-pattern] 模
 [lnk-wns]: https://msdn.microsoft.com/library/windows/apps/mt187203.aspx
 [lnk-google-messaging]: https://developers.google.com/cloud-messaging/
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
+
 

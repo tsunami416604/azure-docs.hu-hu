@@ -26,20 +26,21 @@
     New-AzureService [-ServiceName] <String> [-Location] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
 ```
 
-   An example invoking the cmdlet is:
+   以下是叫用 Cmdlet 的範例：
 ```
 New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 ```
 
-3. For more information about creating Azure Cloud Service, please run:
+3. 如需建立 Azure 雲端服務的詳細資訊，請執行：
 ```
 Get-help New-AzureService
 ```
 
-4. Next steps:
+4. 後續步驟：
 
-   - To manage the Cloud Service deployment, please refer to [Get-AzureService](https://msdn.microsoft.com/library/azure/dn495131.aspx), [Remove-AzureService](https://msdn.microsoft.com/library/azure/dn495120.aspx), and [Set-AzureService](https://msdn.microsoft.com/library/azure/dn495242.aspx) commands. Also please refer to [How to Configure Cloud Services](cloud-services-how-to-configure.md)
+   - 若要管理雲端服務部署，請參閱 [Get-azureservice](https://msdn.microsoft.com/library/azure/dn495131.aspx), ，[Remove-azureservice](https://msdn.microsoft.com/library/azure/dn495120.aspx), ，和 [Set-azureservice](https://msdn.microsoft.com/library/azure/dn495242.aspx) 命令。 另請參閱 [如何設定雲端服務](cloud-services-how-to-configure.md)
 
-    - To publish your Cloud Service project to Azure, please refer to **PublishCloudService.ps1** code sample from [Continuous Delivery for Cloud Service in Azure](cloud-services-dotnet-continuous-delivery.md)
+    - 若要將您的雲端服務專案發佈至 Azure，請參閱 **PublishCloudService.ps1** 程式碼範例從 [Azure 中雲端服務的連續傳遞](cloud-services-dotnet-continuous-delivery.md)
  
+
 

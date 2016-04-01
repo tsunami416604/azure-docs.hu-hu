@@ -19,7 +19,7 @@
 
 # 教學課程：Azure Active Directory 與 Litmos 整合
 
-本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 Litmos。<br>與 Azure AD 整合 Litmos 可以提供下列優點: 
+本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 Litmos。<br>與 Azure AD 整合 Litmos 可以提供下列優點 ︰ 
 
 - 您可以在 Azure AD 中控制可存取 Litmos 的人員 
 - 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Litmos (單一登入)
@@ -46,7 +46,7 @@
  
 ## 案例描述
 此教學課程的目標是讓您在測試環境中測試 Azure AD 單一登入。 <br>
-本教學課程中說明的案例包含三個主要建置區塊:
+本教學課程中說明的案例包含三個主要建置區塊 ︰
 
 1. 從資源庫加入 Litmos 
 2. 設定並測試 Azure AD 單一登入
@@ -77,7 +77,7 @@
 ##  設定並測試 Azure AD 單一登入
 本節的目標是要說明如何以名為 "Britta Simon" 的測試使用者為基礎，設定及測試與 Litmos 搭配運作的 Azure AD 單一登入。
 
-若要讓單一登入運作，Azure AD 必須知道 Litmos 與 Azure AD 中互相對應的使用者。 換句話說，必須在 Azure AD 使用者與 Litmos 中的相關使用者之間建立連結關聯性。<br>
+若要讓單一登入運作，Azure AD 必須知道 Litmos 與 Azure AD 中互相對應的使用者。 換句話說，必須建立 Azure AD 使用者和 Litmos 中的相關的使用者之間的連結關聯性。<br>
 藉由指定的值建立此連結關聯性 **使用者名稱** 在 Azure AD 中的值為 **Username** Litmos 中。
  
 若要設定及測試與 Litmos 搭配運作的 Azure AD 單一登入，您需要完成下列構成要素：
@@ -90,7 +90,7 @@
 
 ### 設定 Azure AD 單一登入
 
-本節的目標是要在 Azure AD 入口網站中啟用 Azure AD 單一登入，並在您的 Litmos 應用程式中設定單一登入。<br>
+本節目標是要啟用 Azure AD 單一登入 Azure AD 入口網站中，並 Litmos 應用程式中設定單一登入。<br>
 在此程序中，您必須建立 base-64 編碼的憑證檔案。  
 如果您不熟悉此程序，請參閱 [如何將二進位檔案憑證轉換成文字檔](http://youtu.be/PlgrzUZ-Y1o)。
 
@@ -106,7 +106,7 @@
 <br><br> ![Azure AD 單一登入][7] <br>
 
 
-1. 登入您 Litmos 公司網站 (例如: *https://azureapptest.litmos.com/account/Login*) 以系統管理員。
+1. 登入您 Litmos 公司網站 (例如 ︰ *https://azureapptest.litmos.com/account/Login*) 以系統管理員。
 <br><br> ![Azure AD 單一登入][21] <br>
 
 
@@ -121,26 +121,26 @@
 1. 在 **整合** 索引標籤上，向下捲動至 **第 3 個廠商整合**, ，然後按一下 [ **SAML 2.0** ] 索引標籤。
 <br><br> ![Azure AD 單一登入][24] <br>
 
-1. 複製底下的值 **litmos 的 SAML endoiint 是:**。
+1. 複製底下的值 **litmos 的 SAML endoiint 是 ︰**。
 <br><br> ![Azure AD 單一登入][26] <br>
 
 
-3. 在 Azure 網站中，在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟:
+3. 在 Azure 網站中，在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![Azure AD 單一登入][8] <br>
  
-    a. 在 **識別碼** 文字方塊中，輸入 URL，讓使用者中用來登入 Litmos 應用程式 (例如: *https://azureapptest.litmos.com/account/Login*)。
+    a. 在 **識別碼** 文字方塊中，輸入 URL，讓使用者中用來登入 Litmos 應用程式 (例如 ︰ *https://azureapptest.litmos.com/account/Login*)。
      
     b. 在 **回覆 URL** 文字方塊中，貼上您從 Litmos 應用程式在上一個步驟中複製的值。
 
     c. 按一下 [ **下一步**。
  
-4. 在 **Litmos 在設定單一登入** 頁面上，執行下列步驟:
+4. 在 **Litmos 在設定單一登入** 頁面上，執行下列步驟 ︰
 <br><br>![Azure AD 單一登入][2] <br>
 
     a. 按一下 [下載憑證]，然後將檔案儲存在您的電腦上。
 
 
-1. 在您 **Litmos** 應用程式中，執行下列步驟:
+1. 在您 **Litmos** 應用程式中，執行下列步驟 ︰
 <br><br>![Azure AD 單一登入][25] <br>
 
     a. 按一下 [ **啟用 SAML**。
@@ -165,14 +165,14 @@
 <br><br>![設定單一登入][12]<br>
 
 
-24. 在 **加入使用者屬性** ] 對話方塊中，執行下列步驟: 
+24. 在 **加入使用者屬性** ] 對話方塊中，執行下列步驟 ︰ 
 <br><br>![設定單一登入][14]<br>
 
-    | 屬性名稱 | 屬性值 |
-    | ---            | ---             |
-    | 電子郵件          | user.mail       |
-    | FirstName      | user.givenname  |
-    | lastname       | user.surname    |
+  	| 屬性名稱 | 屬性值 |
+  	| ---            | ---             |
+  	| 電子郵件          | user.mail       |
+  	| FirstName      | user.givenname  |
+  	| lastname       | user.surname    |
 
     針對上表中的每個資料列，執行下列步驟：
    
@@ -193,7 +193,7 @@
 
 
 ### 建立 Azure AD 測試使用者
-本節的目標是要在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。<br>
+本節的目標是在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。<br>
 在 [使用者] 清單中選取 **Britta Simon**。<br><br>![建立 Azure AD 使用者][20]<br>
 
 **若要在 Azure AD 中建立測試使用者，請執行下列步驟：**
@@ -209,7 +209,7 @@
 4. 若要開啟 **新增使用者** ] 對話方塊的底部工具列上，按一下 [ **新增使用者**。 
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-litmos-tutorial/create_aaduser_04.png) <br>
 
-5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟: 
+5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟 ︰ 
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-litmos-tutorial/create_aaduser_05.png) <br> 
 
     a. 做為 **使用者類型**, ，請選取 **貴組織中的新使用者**。
@@ -218,7 +218,7 @@
 
     c. 按一下 [ **下一步**。
 
-6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟: 
+6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟 ︰ 
 <br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-litmos-tutorial/create_aaduser_06.png) <br>
  
     a. 在 **名字** 文字方塊中，輸入 **Britta**。  
@@ -233,7 +233,7 @@
 7. 在 **取得暫時密碼** 對話方塊頁面上，按一下 [ **建立**。
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-litmos-tutorial/create_aaduser_07.png) <br>
  
-8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟:
+8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-litmos-tutorial/create_aaduser_08.png) <br>
   
     a. 請記下的值 **新密碼**。
@@ -250,7 +250,7 @@ Litmos 應用程式支援 Just-in-Time 佈建。 這表示，在使用存取面�
 **若要在 Litmos 中建立名為 Britta Simon 的使用者，請執行下列步驟：**
 
 
-1. 登入您 Litmos 公司網站 (例如: *https://azureapptest.litmos.com/account/Login*) 以系統管理員。
+1. 登入您 Litmos 公司網站 (例如 ︰ *https://azureapptest.litmos.com/account/Login*) 以系統管理員。
 <br><br> ![Azure AD 單一登入][21] <br>
 
 
@@ -265,7 +265,7 @@ Litmos 應用程式支援 Just-in-Time 佈建。 這表示，在使用存取面�
 1. 在 **整合** 索引標籤上，向下捲動至 **第 3 個廠商整合**, ，然後按一下 [ **SAML 2.0** ] 索引標籤。
 <br><br> ![Azure AD 單一登入][24] <br>
 
-1. 選取 **自動產生使用者:**。
+1. 選取 **自動產生使用者 ︰**。
 <br><br> ![Azure AD 單一登入][27] <br>
 
 
@@ -277,11 +277,11 @@ Litmos 應用程式支援 Just-in-Time 佈建。 這表示，在使用存取面�
 **若要將 Britta Simon 指派給 Litmos，請執行下列步驟：**
 
 1. 在 Azure 入口網站中，若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
-<br><br>![將使用者指派][201] <br>
+<br><br>![指派給使用者][201] <br>
 2. 在應用程式清單中，選取 **Litmos**。
-<br><br>![將使用者指派][202] <br>
+<br><br>![指派給使用者][202] <br>
 1. 在頂端功能表中，按一下 [ **使用者**。
-<br><br>![將使用者指派][203] <br>
+<br><br>![指派給使用者][203] <br>
 1. 在 [使用者] 清單中選取 **Britta Simon**。
 
 2. 在底部工具列中，按一下 [ **指派**。
@@ -343,6 +343,7 @@ Litmos 應用程式支援 Just-in-Time 佈建。 這表示，在使用存取面�
 [400]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_400.png
 [401]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_401.png
 [402]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_402.png
+
 
 
 

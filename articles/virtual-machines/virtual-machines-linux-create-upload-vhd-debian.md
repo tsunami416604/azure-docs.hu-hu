@@ -53,7 +53,7 @@
 
         # apt-get install -y git parted
 
-7.  安裝 Azure Linux 代理程式從使用 Github [指引](virtual-machines-linux-update-agent.md) 並選擇 2.0.14 版本:
+7.  安裝 Azure Linux 代理程式從使用 Github [指引](virtual-machines-linux-update-agent.md) 並選擇 2.0.14 版本 ︰
 
             # wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.14/waagent
             # chmod +x waagent
@@ -79,4 +79,5 @@ Credativ 網站具有協助您自動建立 Debian VHD 的指令碼。 您可以�
 ## 後續步驟
 
 現在您可以開始使用 Debian.vhd 來建立新的 Azure 虛擬機器。
+
 

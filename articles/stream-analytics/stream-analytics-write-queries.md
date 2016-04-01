@@ -19,7 +19,7 @@
 
 # 如何在串流分析中撰寫查詢
 
-在 Azure 串流分析中編寫串流處理邏輯的查詢會實作為「常設查詢」，它在工作開始前就已經獲得定義，且會在到達工作時針對資料來執行。 資料轉換以類似 SQL 的查詢語言來表示這是主要的子集 T-SQL 的一些新增語言擴充功能，例如 [視窗化](https://msdn.microsoft.com/library/azure/dn835019.aspx) 用來表示暫時的語意 (semantics)。
+在 Azure 串流分析中編寫串流處理邏輯的查詢會實作為「常設查詢」，它在工作開始前就已經獲得定義，且會在到達工作時針對資料來執行。 資料轉換以類似 SQL 的查詢語言來表示這是主要的子集 T-SQL 的一些新增語言擴充功能，例如 [視窗化](https://msdn.microsoft.com/library/azure/dn835019.aspx) 用來表示暫時的語意 （semantics）。
 
 ## 編寫查詢： ##
 
@@ -70,3 +70,4 @@
 - [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
 - [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+

@@ -19,9 +19,9 @@
 # 在 Azure App Service Web Apps 上建立數位行銷活動
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps 是數位行銷活動的絕佳選擇。 數位行銷活動通常只有短暫週期，目的是推廣短期的行銷目標。 有兩個需要考量的主要案例。 在第一個案例中，協力廠商行銷公司在促銷期間為其客戶建立及管理行銷活動。 第二個案例則涉及行銷公司建立數位行銷活動資源擁有權，然後將該擁有權轉移給其客戶。 客戶接著便可自行執行及管理數位行銷活動。 為這兩種案例完全相符。 
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
-以下是使用 Azure 應用程式服務 Web 應用程式進行全域、多管道之數位行銷活動的範例。 此範例示範不需要使用複雜的技術，只要組合應用程式服務 Web 應用程式和其他服務便能完成的工作。 **若要進一步了解拓樸中的項目上按一下而已。** 
+以下是使用 Azure 應用程式服務 Web 應用程式進行全域、多管道之數位行銷活動的範例。 此範例示範不需要使用複雜的技術，只要組合應用程式服務 Web 應用程式和其他服務便能完成的工作。 **按一下拓樸中的項目以讀取詳細資訊。** 
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/digital-marketing-notitle.svg" width="100%" height="100%"></object>
 
@@ -138,4 +138,5 @@ App Service Web Apps 的能力 [scale up and out] 非常適合無法預期的工
   
   [gitstaging]:http://www.bradygaster.com/post/multiple-environments-with-windows-azure-web-sites  
  
+
 

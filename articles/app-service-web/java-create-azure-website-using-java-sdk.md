@@ -34,7 +34,7 @@
 
 ### 軟體安裝
 
-在本文中的 AzureWebDemo 應用程式程式碼以 Azure Java SDK 0.7.0，您可以使用安裝 [Web Platform Installer][] (WebPI)。 此外，務必使用最新版的 [Azure Toolkit for Eclipse][]。 安裝 SDK 之後，更新您的 Eclipse 專案中的相依性執行 **更新索引** 中 **Maven 儲存機制**, ，再重新加入每個封裝中的最新版本 **相依性** 視窗。 您可以按一下來確認您在 Eclipse 中安裝的軟體版本 **協助 > 安裝詳細資料**; 您至少應該有下列版本:
+在本文中的 AzureWebDemo 應用程式程式碼以 Azure Java SDK 0.7.0，您可以使用安裝 [Web Platform Installer][] (WebPI)。 此外，務必使用最新版的 [Azure Toolkit for Eclipse][]。 安裝 SDK 之後，更新您的 Eclipse 專案中的相依性執行 **更新索引** 中 **Maven 儲存機制**, ，再重新加入每個封裝中的最新版本 **相依性** 視窗。 您可以按一下來確認您在 Eclipse 中安裝的軟體版本 **協助 > 安裝詳細資料**; 您至少應該有下列版本 ︰
 
 - Package for Microsoft Azure Libraries for Java 0.7.0.20150309
 - Eclipse IDE for Java EE Developers 4.4.2.20150219
@@ -59,7 +59,7 @@
 
 5. 在 **國家或地區**, ，選取您的地區設定。
 
-如需 AD 詳細資訊，請參閱 [什麼是 Azure AD 目錄][]?
+如需 AD 詳細資訊，請參閱 [什麼是 Azure AD 目錄][]？
 
 
 ### 建立 Azure 的管理憑證
@@ -81,7 +81,7 @@ Azure SDK for Java 使用管理憑證來向 Azure 訂用帳戶進行驗證。 �
 
 若要建立自己的自我簽署憑證，請開啟作業系統上的命令主控台並執行下列命令。
 
-> **注意:**  執行此命令的電腦必須已安裝 JDK。 此外，keytool 的路徑取決於您安裝 JDK 的位置。 如需詳細資訊，請參閱 [金鑰和憑證管理工具 (keytool)][] Java 線上文件中。
+> **注意 ︰**  執行此命令的電腦必須已安裝 JDK。 此外，keytool 的路徑取決於您安裝 JDK 的位置。 如需詳細資訊，請參閱 [金鑰和憑證管理工具 (keytool)][] Java 線上文件中。
 
 若要建立 .pfx 檔案：
 
@@ -137,7 +137,7 @@ Azure SDK for Java 使用管理憑證來向 Azure 訂用帳戶進行驗證。 �
 
 1. 建立新的 Maven 專案。 按一下 [ **檔案 > 新增 > Maven 專案**。 在 **新的 Maven 專案**, ，請選取 **建立簡單專案** 和 **使用預設工作區位置**。
 
-2. 在第二頁 **新的 Maven 專案**, ，指定下列各項:
+2. 在第二頁 **新的 Maven 專案**, ，指定下列各項 ︰
 
     - 群組識別碼：`com.<username>.azure.webdemo`
     - 成品識別碼：AzureWebDemo
@@ -162,7 +162,7 @@ Azure SDK for Java 使用管理憑證來向 Azure 訂用帳戶進行驗證。 �
         com.microsoft.azure  azure-management
         com.microsoft.azure  azure-management-websites
 
-    > **注意:** 如果您要更新後的新版本的相依性
+    > **注意 ︰** 如果您要更新後的新版本的相依性
     > 版本中，您需要重新新增每個這份清單中的相依性。
     > 按一下之後 **新增** 並選取每個相依性，它會
     > 在新的版本號碼與 **相依性** 清單。
@@ -243,9 +243,9 @@ Azure SDK for Java 使用管理憑證來向 Azure 訂用帳戶進行驗證。 �
 - `webSpaceName` 應該有一個定義中的值 [WebSpaceNames][] 類別。
 -  `appServicePlanName` 應如上所述加以指定。
 
-> **注意:** 每次執行此應用程式時，您需要變更值 
->  `webAppName` 和 `appServicePlanName` (或刪除 web 應用程式在 Azure 上 
-> 入口網站) 然後再執行一次應用程式。 否則，將會執行 
+> **注意 ︰** 每次執行此應用程式時，您需要變更值 
+>  `webAppName` 和 `appServicePlanName` （或刪除 web 應用程式在 Azure 上 
+> 入口網站） 然後再執行一次應用程式。 否則，將會執行 
 > 失敗，因為 Azure 上已存在相同的資源。
 
 
@@ -388,11 +388,11 @@ Azure SDK for Java 使用管理憑證來向 Azure 訂用帳戶進行驗證。 �
 
 1. 以滑鼠右鍵按一下 **JSPHello** 專案，然後選取 **屬性**。
 
-2. 在 **屬性** 對話方塊: 選取 **Java 組建路徑**, ，請選取 **順序和匯出** ] 索引標籤，核取 **JRE 系統程式庫**, ，然後按一下 [ **總** 將它移到清單頂端。
+2. 在 **屬性** 對話方塊 ︰ 選取 **Java 組建路徑**, ，請選取 **順序和匯出** ] 索引標籤，核取 **JRE 系統程式庫**, ，然後按一下 [ **總** 將它移到清單頂端。
 
     ![][4]
 
-3. 此外，在 **屬性** 對話方塊: 選取 **目標執行階段** 按一下 **新增**。
+3. 此外，在 **屬性** 對話方塊 ︰ 選取 **目標執行階段** 按一下 **新增**。
 
 4. 在 **新的伺服器執行階段環境** ] 對話方塊中，選取伺服器，例如 **Apache Tomcat v7.0** 按一下 **下一步**。 在 **Tomcat 伺服器** 對話方塊上，將 **名稱** 至 `Apache Tomcat v7.0`, ，並設定 **Tomcat 安裝目錄** 到您安裝 Tomcat 伺服器，您想要使用的版本的目錄。
 
@@ -410,7 +410,7 @@ Azure SDK for Java 使用管理憑證來向 Azure 訂用帳戶進行驗證。 �
 
     按一下 [ **完成**。
 
-7. 當應用程式執行時，您應該會看到 **JSPHello** 頁面就會出現在 Eclipse 的 localhost 視窗 (`http://localhost:8080/JSPHello/`)，顯示下列訊息:
+7. 當應用程式執行時，您應該會看到 **JSPHello** 頁面就會出現在 Eclipse 的 localhost 視窗 (`http://localhost:8080/JSPHello/`)，顯示下列訊息 ︰
 
     `Hello World, the time is Tue Mar 24 23:21:10 GMT 2015`
 
@@ -438,9 +438,9 @@ Azure SDK for Java 使用管理憑證來向 Azure 訂用帳戶進行驗證。 �
 
 選取協力廠商 FTP 用戶端，以發佈應用程式。 此程序說明兩個選項：Azure 內建的 Kudu 主控台；以及 FileZilla (具有便利圖形 UI 的熱門工具)。
 
-> **注意:** Azure Toolkit for Eclipse 支援部署至儲存體帳戶和雲端服務，但目前不支援部署至 web 應用程式。 您可以部署至儲存體帳戶和雲端服務中所述，使用 Azure 部署專案 [在 Eclipse 中建立 Azure 的 Hello World 應用程式](http://msdn.microsoft.com/library/azure/hh690944.aspx), ，但不是包含對 web 應用程式。 使用 FTP 或 GitHub 等方法將檔案移轉至您的 Web 應用程式。
+> **注意 ︰** Azure Toolkit for Eclipse 支援部署至儲存體帳戶和雲端服務，但目前不支援部署至 web 應用程式。 您可以部署至儲存體帳戶和雲端服務中所述，使用 Azure 部署專案 [在 Eclipse 中建立 Azure 的 Hello World 應用程式](http://msdn.microsoft.com/library/azure/hh690944.aspx), ，但不是包含對 web 應用程式。 使用 FTP 或 GitHub 等方法將檔案移轉至您的 Web 應用程式。
 
-> **注意:** 我們不建議從 Windows 命令提示字元 (命令列 FTP.EXE 公用程式隨附於 Windows) 使用 FTP。 採用使用中 FTP (例如 FTP.EXE) 的 FTP 用戶端通常無法透過防火牆作業。 使用中 FTP 可指定 FTP 伺服器將可能無法連線的內部 LAN 位址。
+> **注意 ︰** 我們不建議從 Windows 命令提示字元 （命令列 FTP.EXE 公用程式隨附於 Windows） 使用 FTP。 採用使用中 FTP (例如 FTP.EXE) 的 FTP 用戶端通常無法透過防火牆作業。 使用中 FTP 可指定 FTP 伺服器將可能無法連線的內部 LAN 位址。
 
 如需使用 FTP 部署至 App Service Web 應用程式的詳細資訊，請參閱下列主題：
 
@@ -542,25 +542,25 @@ Tomcat Server 會在短時間 (或許少於 5 分鐘) 內將 WAR 檔案解壓縮
 
 #### 使用 FileZilla 發佈您的應用程式 (選用)
 
-FileZilla 是另一項可用來發佈應用程式的工具 ，這是具有便利圖形 UI 的熱門協力廠商 FTP 用戶端。 您可以下載並安裝從 FileZilla [http://filezilla-project.org/](http://filezilla-project.org/) 如果您還沒有它。 如需有關如何使用用戶端的詳細資訊，請參閱 [FileZilla 文件](https://wiki.filezilla-project.org/Documentation) 和在此部落格項目 [FTP 用戶端-第 4 部分: FileZilla](http://blogs.msdn.com/b/robert_mcmurray/archive/2008/12/17/ftp-clients-part-4-filezilla.aspx)。
+FileZilla 是另一項可用來發佈應用程式的工具 ，這是具有便利圖形 UI 的熱門協力廠商 FTP 用戶端。 您可以下載並安裝從 FileZilla [http://filezilla-project.org/](http://filezilla-project.org/) 如果您還沒有它。 如需有關如何使用用戶端的詳細資訊，請參閱 [FileZilla 文件](https://wiki.filezilla-project.org/Documentation) 和在此部落格項目 [FTP 用戶端-第 4 部分 ︰ FileZilla](http://blogs.msdn.com/b/robert_mcmurray/archive/2008/12/17/ftp-clients-part-4-filezilla.aspx)。
 
 1. 在 FileZilla 中，按一下 [ **檔案 > Site Manager**。
 2. 在 **Site Manager** ] 對話方塊中，按一下 [ **新站台**。 新的空白 FTP 網站會出現在 **選取項目** 提示您提供的名稱。 在此程序中，將它命名為 `AzureWebDemo-FTP`
 
-    在 **一般** 索引標籤上，指定下列設定:
-    - **主機:** Enter **FTP 主機名稱** 您複製從儀表板。
-    - **連接埠:** (留白，因為這是被動式傳輸，伺服器將會決定要使用的連接埠。)
-    - **通訊協定:** FTP 檔案傳輸通訊協定
-    - **加密:** 使用一般 FTP
-    - **登入類型:** 正常
-    - **使用者:** 輸入部署 / FTP 您從儀表板中複製的使用者。 這是完整 FTP 使用者名稱，其格式 *webappname\username*。
-    - **密碼:** 輸入您指定當您設定部署認證的密碼。
+    在 **一般** 索引標籤上，指定下列設定 ︰
+    - **主機 ︰** Enter **FTP 主機名稱** 您複製從儀表板。
+    - **連接埠 ︰** （留白，因為這是被動式傳輸，伺服器將會決定要使用的連接埠。）
+    - **通訊協定 ︰** FTP 檔案傳輸通訊協定
+    - **加密 ︰** 使用一般 FTP
+    - **登入類型 ︰** 正常
+    - **使用者 ︰** 輸入部署 / FTP 您從儀表板中複製的使用者。 這是完整 FTP 使用者名稱，其格式 *webappname\username*。
+    - **密碼 ︰** 輸入您指定當您設定部署認證的密碼。
 
     在 **傳輸設定** 索引標籤上，選取 **被動**。
 
 3. 按一下 [ **連接**。 如果成功，FileZilla 的主控台將顯示 `Status: Connected` 訊息並發出 `LIST` 命令以列出目錄內容。
 
-4. 在 **本機** 網站面板中，選取 JSPHello.war 檔案所在; 路徑將類似下列的來源目錄:
+4. 在 **本機** 網站面板中，選取 JSPHello.war 檔案所在; 路徑將類似下列的來源目錄 ︰
 
     `<project-path>/JSPHello/src/`
 
@@ -575,7 +575,7 @@ FileZilla 是另一項可用來發佈應用程式的工具 ，這是具有便利
 
 1. 上傳 WAR 檔案並確認 Tomcat Server 已建立解壓縮的 `JSPHello` 目錄後，請瀏覽至 `http://webdemowebapp.azurewebsites.net/JSPHello` 以執行應用程式。
 
-    > **注意:** 如果您按一下 **瀏覽** 從傳統入口網站中，您可能會
+    > **注意 ︰** 如果您按一下 **瀏覽** 從傳統入口網站中，您可能會
     取得預設網頁，指出 「 此 Java web 應用程式有
     已建立成功 」。 您可能必須重新整理網頁中
     以檢視應用程式輸出，而不是預設網頁。
@@ -615,4 +615,5 @@ FileZilla 是另一項可用來發佈應用程式的工具 ，這是具有便利
 [WebSiteManagementClient]: http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/WebSiteManagementClient.html
 [WebSpaceNames]: http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/models/WebSpaceNames.html
 [Azure Portal]: https://portal.azure.com
+
 

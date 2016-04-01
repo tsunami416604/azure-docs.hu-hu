@@ -39,13 +39,13 @@ Azure 資訊安全中心利用加強對 Azure 資源的能見度及安全性控�
 已啟用的安全性原則將會影響這裡監督的控制項類型。 如果 Azure 資訊安全中心可辨識的弱點可能會需要定址，例如遺漏安全性更新或不含的子網路的 VM [網路安全性群組](virtual-networks-nsg.md), ，將此識別。 
 
 ###虛擬機器
-當您按一下 [ **虛擬機器** 中 **資源健全狀況** 磚， **虛擬機器** 刀鋒視窗會開啟更多詳細的上架和預防步驟，以及一份所有 Vm 受到 Azure 安全性中心，如下所示:
+當您按一下 [ **虛擬機器** 中 **資源健全狀況** 磚， **虛擬機器** 刀鋒視窗會開啟更多詳細的上架和預防步驟，以及一份所有 Vm 受到 Azure 安全性中心，如下所示 ︰
 
 ![遺漏系統更新 (依 VM)](./media/security-center-monitoring/security-center-monitoring-fig2.png)
 
 開啟此刀鋒視窗後，您會看到三個區段。 針對每個區段，您可以選取一個個別的選項，以查看有關解決該問題之建議步驟的更多詳細資訊。 
 
-比方說，如果您按一下 **遺漏的系統更新** 下 **預防步驟**, 、 **遺漏的系統更新** 刀鋒視窗會開啟遺漏修補程式和嚴重性層級的每一個，如下所示的 Vm 清單: 
+比方說，如果您按一下 **遺漏的系統更新** 下 **預防步驟**, 、 **遺漏的系統更新** 刀鋒視窗會開啟遺漏修補程式和嚴重性層級的每一個，如下所示的 Vm 清單 ︰ 
 
 ![遺漏系統更新預防](./media/security-center-monitoring/security-center-monitoring-fig3.png)
 
@@ -56,7 +56,7 @@ Azure 資訊安全中心利用加強對 Azure 資源的能見度及安全性控�
 > [AZURE.NOTE] 安全性建議是 [建議] 刀鋒視窗相同。 請參閱文章 [實作 Azure 資訊安全中心的安全性建議](security-center-recommendations.md) 如需有關解決的建議。 這不只適用於 VM，也適用於 [資源健康情況] 磚中所有可用的資源。
 
 ###網路
-網路的預防狀態會顯示受到「Azure 資訊安全中心」監視的虛擬網路。 當您按一下 [ **網路** 資源健全狀況] 磚中 **網路** 刀鋒視窗會開啟更多詳細資料，如下所示:
+網路的預防狀態會顯示受到「Azure 資訊安全中心」監視的虛擬網路。 當您按一下 [ **網路** 資源健全狀況] 磚中 **網路** 刀鋒視窗會開啟更多詳細資料，如下所示 ︰
 
 ![建議的系統更新 (依 VM)](./media/security-center-monitoring/security-center-monitoring-fig5.png)
 
@@ -64,7 +64,7 @@ Azure 資訊安全中心利用加強對 Azure 資源的能見度及安全性控�
 
 例如，在網路的狀態明細區段，步驟預防 [端點上的 Acl](virtual-machines-set-up-endpoints.md) 未啟用， [網路安全性群組](virtual-networks-nsg.md) 未啟用，並列出狀況良好的子網路。 您可以按一下其中的任何一項來取得更多詳細資訊，並採取進一步的動作來解決問題。 
 
-這個範例會 **上未啟用的子網路的 Nsg** 警示。 如果您按一下此警示， **設定遺失網路安全性群組的子網路** 刀鋒視窗會開啟。 在這裡，您將會看到未啟用「網路安全性群組」的子網路描述，以及屬於此子網路的網路介面卡清單。 選取您要套用的安全性群組，然後按一下 [子的網路 **設定 NSG** 選項。  **選擇網路安全性** 群組分頁會開啟最多，如下所示:
+這個範例會 **上未啟用的子網路的 Nsg** 警示。 如果您按一下此警示， **設定遺失網路安全性群組的子網路** 刀鋒視窗會開啟。 在這裡，您將會看到未啟用「網路安全性群組」的子網路描述，以及屬於此子網路的網路介面卡清單。 選取您要套用的安全性群組，然後按一下 [子的網路 **設定 NSG** 選項。  **選擇網路安全性** 群組分頁會開啟最多，如下所示 ︰
 
 ![建議的系統更新 (依 VM)](./media/security-center-monitoring/security-center-monitoring-fig6.png)
 
@@ -78,7 +78,7 @@ Azure 資訊安全中心利用加強對 Azure 資源的能見度及安全性控�
 ![建議的系統更新 (依 VM)](./media/security-center-monitoring/security-center-monitoring-fig8.png)
 
 ###應用程式
-如果您的 Azure 工作負載有應用程式位於 [資源管理員 Vm](resource-manager-deployment-model.md) Azure 資訊安全中心可以公開的 web 連接埠 (TCP 連接埠 80 和 443)，以監視這些找出潛在的安全性問題，並建議補救步驟。 當您按一下在 **應用程式** 磚， **應用程式** 一系列的建議預防步驟一節中會開啟分頁，它也會顯示每個主機/虛擬 IP 的應用程式細分如下所示:
+如果您的 Azure 工作負載有應用程式位於 [資源管理員 Vm](resource-manager-deployment-model.md) Azure 資訊安全中心可以公開的 web 連接埠 （TCP 連接埠 80 和 443），以監視這些找出潛在的安全性問題，並建議補救步驟。 當您按一下在 **應用程式** 磚， **應用程式** 一系列的建議預防步驟一節中會開啟分頁，它也會顯示每個主機/虛擬 IP 的應用程式細分如下所示 ︰
 
 ![建議的系統更新 (依 VM)](./media/security-center-monitoring/security-center-monitoring-fig9.png)
 
@@ -89,9 +89,10 @@ Azure 資訊安全中心利用加強對 Azure 資源的能見度及安全性控�
 ## 後續步驟
 在本文件中，您已來了解如何使用「Azure 資訊安全中心」的監視功能。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
 
-- [設定安全性原則，在 Azure 資訊安全中心](security-center-policies.md)
+- [在 Azure 資訊安全中心設定安全性原則](security-center-policies.md)
 -了解如何在 Azure 資訊安全中心的安全性設定
 - [管理和 Azure 資訊安全中心的安全性警示回應](security-center-managing-and-responding-alerts.md) -了解如何管理和回應安全性警示
 - [Azure 安全性中心常見問題集](security-center-faq.md) – 尋找使用服務的相關的常見問題集
 - [Azure 安全性部落格](http://blogs.msdn.com/b/azuresecurity/) – 尋找關於 Azure 安全性與相容性部落格文章
+
 

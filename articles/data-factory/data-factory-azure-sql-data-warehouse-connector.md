@@ -195,7 +195,7 @@
 
 > [AZURE.NOTE] 在上述範例中， **sqlReaderQuery** SqlDWSource 指定。 複製活動會針對 Azure SQL 資料倉儲來源執行這項查詢以取得資料。
 >  
-> 或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** (如果預存程序不接受參數)。
+> 或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** （如果預存程序不接受參數）。
 >  
 > 如果您未指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，就會使用資料集 JSON 的結構區段中定義的資料行來建立一個查詢，以對 Azure SQL 資料倉儲執行 (從 mytable 選取 column1、column2)。 如果資料集定義沒有結構，則會從資料表中選取所有資料行。
 
@@ -379,10 +379,10 @@
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
-類型 | Type 屬性必須設定為: **AzureSqlDW** | 是
+類型 | Type 屬性必須設定為 ︰ **AzureSqlDW** | 是
 **connectionString** | 針對 connectionString 屬性指定連線到 Azure SQL 資料倉儲執行個體所需的資訊。 | 是
 
-注意: 您需要設定 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 您需要將資料庫伺服器設定成 [允許 Azure 服務存取伺服器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果您要從 Azure 外部 (包括從具有 Fata Factory 閘道器的內部部署資料來源) 將資料複製到 Azure SQL 資料倉儲，則必須為傳送資料到 Azure SQL 資料倉儲的機器設定適當的 IP 位址範圍。 
+注意 ︰ 您需要設定 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 您需要將資料庫伺服器設定成 [允許 Azure 服務存取伺服器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果您要從 Azure 外部 (包括從具有 Fata Factory 閘道器的內部部署資料來源) 將資料複製到 Azure SQL 資料倉儲，則必須為傳送資料到 Azure SQL 資料倉儲的機器設定適當的 IP 位址範圍。 
 
 ## Azure SQL 資料倉儲資料集類型屬性
 
@@ -398,13 +398,13 @@
 
 如需區段和屬性可用來定義活動的完整清單，請參閱 [建立管線](data-factory-create-pipelines.md) 文件。 名稱、描述、輸入和輸出資料表、各種原則等屬性都適用於所有活動類型。
 
-**注意:** 複製活動會採用一個輸入，而且只產生一個輸出。
+**注意 ︰** 複製活動會採用一個輸入，而且只產生一個輸出。
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
 ### SqlDWSource
 
-在複製活動類型的來源時 **SqlDWSource** 下列屬性可用於 **typeProperties** 區段:
+在複製活動類型的來源時 **SqlDWSource** 下列屬性可用於 **typeProperties** 區段 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
@@ -414,7 +414,7 @@
 
 如果 **sqlReaderQuery** 指定 SqlDWSource，複製活動會執行這項查詢針對 Azure SQL 資料倉儲來源取得資料。 
 
-或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** (如果預存程序不接受參數)。 
+或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** （如果預存程序不接受參數）。 
 
 如果您未指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，就會使用資料集 JSON 的結構區段中定義的資料行來建立一個查詢，以對 Azure SQL 資料倉儲執行 (從 mytable 選取 column1、column2)。 如果資料集定義沒有結構，則會從資料表中選取所有資料行。
 
@@ -448,7 +448,7 @@
  
 
 ### SqlDWSink
-**SqlDWSink** 支援下列屬性:
+**SqlDWSink** 支援下列屬性 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
@@ -473,7 +473,7 @@
 
 ### Azure SQL 資料倉儲的類型對應
 
-中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章複製活動會執行轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換的自動類型轉換:
+中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章複製活動會執行轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換的自動類型轉換 ︰
 
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
@@ -508,7 +508,7 @@
 | smallint | Int16 |
 | smallmoney | 十進位 | 
 | sql_variant | 物件 * |
-| text | 字串，Char] |
+| 文字 | 字串，Char] |
 | 分析 | TimeSpan |
 | timestamp | Byte] |
 | tinyint | 位元組 |
@@ -522,6 +522,7 @@
 [AZURE.INCLUDE [data-factory-type-conversion-sample](../../includes/data-factory-type-conversion-sample.md)]
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+
 
 
 

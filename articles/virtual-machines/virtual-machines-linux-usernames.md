@@ -29,7 +29,7 @@
 
 **不過**, ，Linux 會定義一組不應該使用的使用者名稱。 佈建程序將 **失敗** 如果您嘗試佈建 Linux VM，使用現有的系統使用者，其定義為具有 UID 0-99 的使用者。 常見的範例是 `root` 使用者，其 UID 為 0。
 
- - 另請參閱: [Linux 標準基礎-使用者 ID 範圍](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
+ - 另請參閱 ︰ [Linux 標準基礎-使用者 ID 範圍](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
 
 以下是在佈建 Linux 虛擬機器時應避免使用的使用者名稱。 我們建議您 **不使用這些使用者名稱**, ，否則 VM 佈建程序可能會失敗。
 
@@ -250,3 +250,4 @@
 - www-data
 
  
+

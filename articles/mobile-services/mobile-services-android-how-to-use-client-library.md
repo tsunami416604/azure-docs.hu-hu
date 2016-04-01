@@ -27,7 +27,7 @@
 
 本指南將說明如何使用 Azure 行動服務的 Android 用戶端執行一般案例。  所涵蓋的案例包括查詢資料，以及插入、更新和刪除資料、驗證使用者、處理錯誤和自訂用戶端。
 
-如果您不熟悉行動服務，您應該先完成快速入門教學課程 [開始使用行動服務]。 成功完成該教學課程可確保您將已安裝 Android Studio;它會幫助您設定您的帳戶並建立第一個行動服務，並安裝行動服務 SDK 支援 Android 2.2 或更新版本，但我們建議您針對 Android 4.2 或更新版本進行建置。
+如果您不熟悉行動服務，您應該先完成快速入門教學課程 [Get started with Mobile Services]。 成功完成該教學課程可確保您將已安裝 Android Studio;它會幫助您設定您的帳戶並建立第一個行動服務，並安裝行動服務 SDK 支援 Android 2.2 或更新版本，但我們建議您針對 Android 4.2 或更新版本進行建置。
 
 您可以找到 Android 用戶端程式庫的 Javadocs API 參考 [這裡](http://go.microsoft.com/fwlink/p/?LinkId=298735)。
 
@@ -35,7 +35,7 @@
 
 ##<a name="setup"></a>設定和必要條件
 
-我們假設您已建立行動服務和資料表。 如需詳細資訊，請參閱 [建立資料表](http://go.microsoft.com/fwlink/p/?LinkId=298592)。 在使用本主題中的程式碼，我們假設資料表的名稱為 *ToDoItem*, ，且其中包含下列資料行:
+我們假設您已建立行動服務和資料表。 如需詳細資訊，請參閱 [建立資料表](http://go.microsoft.com/fwlink/p/?LinkId=298592)。 在使用本主題中的程式碼，我們假設資料表的名稱為 *ToDoItem*, ，且其中包含下列資料行 ︰
 
 - id
 - text
@@ -61,7 +61,7 @@
 
 在上述程式碼中，請以行動服務 URL 和應用程式金鑰依序取代 `MobileServiceUrl` 和 `AppKey`。 這兩種都位於 Azure 傳統入口網站中，選取您的行動服務，然後按一下 [ *儀表板*。
 
-##<a name="instantiating"></a>如何: 建立資料表參考
+##<a name="instantiating"></a>作法：建立資料表參考
 
 查詢或修改行動服務中的資料最簡單的作法是使用 *型別程式設計模型*, ，因為 Java 屬於強型別的語言 (後續我們將討論 *不具型別的* 模型)。 這個模型會在用戶端與行動服務之間傳送資料時，使用 [gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) 程式庫提供順暢的 JSON 序列化和還原序列化：開發人員不需要執行任何動作，架構會處理一切。
 
@@ -74,7 +74,7 @@
 
 下列程式碼， *mClient* 是您的行動服務用戶端的參考。
 
- [第一個多載](http://go.microsoft.com/fwlink/p/?LinkId=296839) 會使用其中的類別名稱和資料表名稱都相同:
+ [第一個多載](http://go.microsoft.com/fwlink/p/?LinkId=296839) 會使用其中的類別名稱和資料表名稱都相同 ︰
 
         MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
 
@@ -88,13 +88,13 @@
 從 2.0 版用戶端程式庫，行動服務資料表作業會使用 [未來](http://developer.android.com/reference/java/util/concurrent/Future.html) 和 [AsyncTask](http://developer.android.com/reference/android/os/AsyncTask.html) 物件中的所有非同步作業，例如涉及查詢和作業的方法，像是插入、 更新和刪除。 如此可使得執行多個多個作業 (在背景執行緒時) 變得更容易，而無需處理多個巢狀回呼。
 
 
-##<a name="querying"></a>如何: 查詢行動服務中的資料
+##<a name="querying"></a>作法：查詢行動服務中的資料
 
 本節將說明如何對行動服務發出查詢。 各小節將說明不同的層面，例如排序、篩選和分頁等。 最後，我們將討論如何將這些作業串連在一起。
 
-### <a name="showAll"></a>如何: 從資料表傳回所有項目
+### <a name="showAll"></a>作法：從資料表傳回所有項目
 
-下列程式碼傳回的所有項目 *ToDoItem* 資料表。 新增項目到配接器，即會在 UI 中顯示。 此程式碼是類似功能的快速入門教學課程 [開始使用行動服務]。
+下列程式碼傳回的所有項目 *ToDoItem* 資料表。 新增項目到配接器，即會在 UI 中顯示。 此程式碼是類似功能的快速入門教學課程 [Get started with Mobile Services]。
 
         new AsyncTask<Void, Void, Void>() {
 
@@ -126,7 +126,7 @@
  *結果* 變數傳回結果集的查詢和後面的程式碼 `mToDoTable.execute().get()` 陳述式示範如何顯示個別資料列。
 
 
-### <a name="filtering"></a>如何: 篩選傳回的資料
+### <a name="filtering"></a>作法：篩選傳回的資料
 
 下列程式碼傳回的所有項目 *ToDoItem* 資料表 *完整* 欄位等於 *false*。 *mToDoTable* 是我們先前建立的行動服務資料表的參考。
 
@@ -180,7 +180,7 @@
 
 如需詳細討論與篩選的範例，請參閱 [探索功能豐富的行動服務 Android 用戶端查詢模型](http://hashtagfail.com/post/46493261719/mobile-services-android-querying)。
 
-### <a name="sorting"></a>如何: 排序傳回的資料
+### <a name="sorting"></a>作法：排序傳回的資料
 
 下列程式碼傳回資料表中的所有項目 *ToDoItems* 遞增排序的 *文字* 欄位。 *mToDoTable* 是您先前建立的行動服務資料表的參考。
 
@@ -192,7 +192,7 @@
 
 請注意，如果您要篩選使用 ***其中*** 方法， ***其中*** 必須叫用方法之前 ***orderBy*** 方法。
 
-### <a name="paging"></a>如何: 以分頁方式傳回資料
+### <a name="paging"></a>作法：以分頁方式傳回資料
 
 第一個範例將說明如何從資料表中選取前 5 個項目。 查詢傳回的項目資料表中的  *ToDoItems*。 *mToDoTable* 是您先前建立的行動服務資料表的參考。
 
@@ -204,7 +204,7 @@
         mToDoTable.skip(5).top(5).execute().get();
 
 
-### <a name="selecting"></a>如何: 選取特定資料行
+### <a name="selecting"></a>作法：選取特定資料欄
 
 下列程式碼說明如何傳回資料表中的所有項目  *ToDoItems*, ，但僅顯示 *完整* 和 *文字* 欄位。 *mToDoTable* 是我們先前建立的行動服務資料表的參考。
 
@@ -215,7 +215,7 @@
 
  [**選取**](http://go.microsoft.com/fwlink/p/?LinkId=290689) 方法，就必須跟隨之類的方法 [**其中**](http://go.microsoft.com/fwlink/p/?LinkId=296296) 和 [**orderBy**](http://go.microsoft.com/fwlink/p/?LinkId=296313), ，如果有的話。 類似的方法後面 [**頂端**](http://go.microsoft.com/fwlink/p/?LinkId=298731)。
 
-### <a name="chaining"></a>如何: 串連查詢方法
+### <a name="chaining"></a>作法：串連查詢方法
 
 用來查詢行動服務資料表的方法是可以串連的。 這可讓您從排序和分頁的篩選資料列中選取特定資料行，或執行類似作業。 您可以建立複雜的邏輯篩選器。
 
@@ -233,7 +233,7 @@
 主要的要求方法鏈結在一起是 *其中* 方法和述詞必須先。 其後，您可以依據應用程式的需求，以最適當的順序呼叫後續方法。
 
 
-##<a name="inserting"></a>如何: 將資料插入行動服務
+##<a name="inserting"></a>作法：將資料插入行動服務
 
 下列程式碼說明如何在資料表中插入新的資料列。
 
@@ -302,14 +302,14 @@
 
 `id` 的值必須是唯一的，且不可包含下列字元集中的字元：
 
-+ 控制字元：[0x0000-0x001F] 和 [0x007F-0x009F]。 如需詳細資訊，請參閱 [ASCII 控制碼 C0 和 C1]。
-+  可列印的字元: **"**(0x0022)、 **\ +** (0x002B)、 **/** (0x002F)、 **嗎?**(0x003F)、 **\\** (0x005C)、 **'** (0x0060)
++ 控制字元：[0x0000-0x001F] 和 [0x007F-0x009F]。 如需詳細資訊，請參閱 [ASCII control codes C0 and C1]。
++  可列印的字元 ︰ **"**(0x0022)、 **\ +** (0x002B)、 **/** (0x002F)、 **嗎？** (0x003F)、 **\\** (0x005C)、 **'** (0x0060)
 +  識別碼 "." 和 ".."
 
 另外，您也可以在資料表中使用整數識別碼。 若要使用整數識別碼，您必須使用 `--integerId` 選項，以 `mobile table create` 命令建立資料表。 此命令需要在 Azure 的命令列介面 (CLI) 中執行。 如需關於使用 CLI 的詳細資訊，請參閱「使用 CLI 管理行動服務資料表」。
 
 
-##<a name="updating"></a>如何: 更新行動服務中的資料
+##<a name="updating"></a>作法︰更新行動服務中的資料
 
 下列程式碼說明如何更新資料表中的資料。 在此範例中， *項目* 中的資料列的參考 *ToDoItem* 資料表，其中已有一些變更。 下列方法會更新資料表和 UI 配接器。
 
@@ -340,7 +340,7 @@
         }.execute();
     }
 
-##<a name="deleting"></a>如何: 刪除行動服務中的資料
+##<a name="deleting"></a>作法：刪除行動服務中的資料
 
 下列程式碼說明如何刪除資料表中的資料。 從已有 ToDoItem 資料表中刪除現有的項目 **完成** 選取核取方塊，在 UI 上。
 
@@ -428,14 +428,14 @@
         }.execute();
     }
 
-##<a name="untyped"></a>如何: 使用不具型別的資料
+##<a name="untyped"></a>作法：使用不具類型的資料
 
 不具型別的程式設計模型可讓您精確掌控 JSON 序列化，因此在某些情況下，您可能會想加以使用，例如：您的行動服務資料表包含大量資料行，但您只需要參考其中幾個而已。 使用型別模型時，您必須在資料類別中定義所有行動服務資料表的資料行。 但在使用不具型別的模型時，您只需定義需要使用的資料行即可。
 
 用來存取資料的 API 呼叫大多會與型別程式設計呼叫相類似。 主要差異在於，不具型別的模型中您叫用方法上 **MobileServiceJsonTable** 物件，而不是 **MobileServiceTable** 物件。
 
 
-### <a name="json_instance"></a>如何: 建立具型別的資料表執行個體
+### <a name="json_instance"></a>作法：建立不具型別的資料表執行個體
 
 類似於型別模型，您取得資料表參考，但在此案例是 [MobileServicesJsonTable](http://go.microsoft.com/fwlink/p/?LinkId=298733) 物件。 您藉由呼叫以取得參考 [Gettable](http://go.microsoft.com/fwlink/p/?LinkId=298734) 的行動服務用戶端執行個體上的方法。
 
@@ -456,7 +456,7 @@
 
 一旦您建立的執行個體 **MobileServiceJsonTable**, ，您可以將幾乎所有方法呼叫上，您在使用型別程式設計模型。 但在某些情況下，方法會採用不具型別的參數，如下列範例所示。
 
-### <a name="json_insert"></a>如何: 插入不具型別的資料表中
+### <a name="json_insert"></a>作法：插入不具型別的資料表中
 
 下列程式碼將說明如何執行插入。 第一個步驟是建立 [**JsonObject**](http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonObject.html), ，其屬於 <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> 程式庫。
 
@@ -487,7 +487,7 @@
                 jsonObject.getAsJsonPrimitive("id").getAsInt());
 
 
-### <a name="json_delete"></a>如何: 從具型別的資料表中刪除
+### <a name="json_delete"></a>作法：在不具型別的資料表中進行刪除
 
 下列程式碼說明如何刪除執行個體，在此情況下，相同的執行個體 **JsonObject** 中前一次建立 *插入* 範例。 請注意，程式碼是最具類型的情況下，與相同，但方法具有不同的簽章，因為它會參考 **JsonObject**。
 
@@ -501,7 +501,7 @@
 
 
 
-### <a name="json_get"></a>如何: 從具型別的資料表傳回所有資料列
+### <a name="json_get"></a>作法：從不具型別的資料表傳回所有資料列
 
 下列程式碼將說明如何擷取整個資料表。 由於您使用 JSON 資料表，因此可以選擇性地只擷取資料表的某些資料行。
 
@@ -540,7 +540,7 @@
 您可以篩選、 排序和分頁串連具有相同名稱的型別程式設計模型中所用的方法。
 
 
-##<a name="binding"></a>如何: 將資料繫結至使用者介面
+##<a name="binding"></a>作法：將資料繫結到使用者介面
 
 資料繫結牽涉到三項要件：
 
@@ -554,7 +554,7 @@
 
 這兩個是繫結在一起; 在這段程式碼中是延伸模組的配接器的 *ArrayAdapter & lt;ToDoItem & gt;* 類別。
 
-### <a name="layout"></a>如何: 定義配置
+### <a name="layout"></a>作法：定義配置
 
 配置可使用數個 XML 程式碼片段來定義。 現有的版面配置，我們假設下列程式碼代表 **ListView** 我們想要使用伺服器資料填入。
 
@@ -581,11 +581,11 @@
     </LinearLayout>
 
 
-### <a name="adapter"></a>如何: 定義配接器
+### <a name="adapter"></a>作法：定義配接器
 
 由於我們的檢視資料來源是一組 *ToDoItem*, ，我們子類別化我們將配接器 *ArrayAdapter & lt;ToDoItem & gt;* 類別。 這個子類別會產生一個檢視，針對每個 *ToDoItem* 使用 *row_list_to_do* 版面配置。
 
-在程式碼中定義了下列類別的擴充功能的 *ArrayAdapter & l t;& Gt;* 類別:
+在程式碼中定義了下列類別的擴充功能的 *ArrayAdapter & l t;& Gt;* 類別 ︰
 
     public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
@@ -617,13 +617,13 @@
     ToDoItemAdapter mAdapter;
     mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
 
-請留意到，ToDoItemAdapter 建構函式的第二個參數是配置的參考。 建構函式呼叫後面接著下列程式碼會先取得參考 **ListView**, ，然後呼叫 *setAdapter* 將自己設定成使用我們剛才建立的配接器:
+請留意到，ToDoItemAdapter 建構函式的第二個參數是配置的參考。 建構函式呼叫後面接著下列程式碼會先取得參考 **ListView**, ，然後呼叫 *setAdapter* 將自己設定成使用我們剛才建立的配接器 ︰
 
     ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
     listViewToDo.setAdapter(mAdapter);
 
 
-### <a name="use-adapter"></a>如何: 使用配接器
+### <a name="use-adapter"></a>作法：使用配接器
 
 您現在已可使用資料繫結。 下列程式碼會示範如何取得行動服務資料表中的項目、 清除配接器，然後呼叫配接器的 *加入* 方法以填入傳回的項目。
 
@@ -653,18 +653,18 @@
 
 您還必須呼叫配接器在任何時間修改 *ToDoItem* 資料表，如果您想要顯示其執行的結果。 修改是對個別記錄逐一執行的，因此您將會處理單一資料列，而不是集合。 當您插入的項目，您呼叫 *加入* 方法的介面卡上，刪除時，您呼叫 *移除* 方法。
 
-##<a name="custom-api"></a>如何: 呼叫自訂 API
+##<a name="custom-api"></a>作法：呼叫自訂 API
 
-自訂 API 可讓您定義自訂端點，並用來公開無法對應插入、更新、刪除或讀取等操作的伺服器功能。 透過使用自訂 API，您可以進一步控制訊息，包括讀取與設定 HTTP 訊息標頭，並定義除了 JSON 以外的訊息內文格式。 如需如何在您的行動服務中建立自訂 API 的範例，請參閱 [How to: 定義自訂 API 端點](mobile-services-dotnet-backend-define-custom-api.md)。
+自訂 API 可讓您定義自訂端點，並用來公開無法對應插入、更新、刪除或讀取等操作的伺服器功能。 透過使用自訂 API，您可以進一步控制訊息，包括讀取與設定 HTTP 訊息標頭，並定義除了 JSON 以外的訊息內文格式。 如需如何在您的行動服務中建立自訂 API 的範例，請參閱 [How to ︰ 定義自訂 API 端點](mobile-services-dotnet-backend-define-custom-api.md)。
 
 [AZURE.INCLUDE [mobile-services-android-call-custom-api](../../includes/mobile-services-android-call-custom-api.md)]
 
 
-##<a name="authentication"></a>如何: 驗證使用者
+##<a name="authentication"></a>作法：驗證使用者
 
 行動服務支援使用各種外部識別提供者 (Facebook、Google、Microsoft 帳戶、Twitter 以及 Azure Active Directory) 來驗證與授權應用程式使用者。 您可以在資料表上設定權限，以限制僅有通過驗證使用者可以存取特定操作。 您也可以使用經驗證使用者的身分識別，以在後端實作授權規則。 如需詳細資訊，請參閱 [開始使用驗證](http://go.microsoft.com/fwlink/p/?LinkId=296316)。
 
-支援兩種驗證流程: *server* 流程和 *用戶端* 流程。 由於伺服器流程採用提供者的 Web 驗證介面，因此所提供的驗證體驗也最為簡單。 用戶端流程可支援裝置特定功能 (例如單一登入) 的深入整合，因為此流程使用的是提供者特定裝置的專用 SDK。
+支援兩種驗證流程 ︰ *server* 流程和 *用戶端* 流程。 由於伺服器流程採用提供者的 Web 驗證介面，因此所提供的驗證體驗也最為簡單。 用戶端流程可支援裝置特定功能 (例如單一登入) 的深入整合，因為此流程使用的是提供者特定裝置的專用 SDK。
 
 要在您的應用程式中啟用驗證，必須執行三個步驟：
 
@@ -685,7 +685,7 @@
 
 完成前兩項工作使用 [Azure 傳統入口網站](https://manage.windowsazure.com/)。 如需詳細資訊，請參閱 [開始使用驗證](http://go.microsoft.com/fwlink/p/?LinkId=296316)。
 
-### <a name="caching"></a>如何: 將驗證程式碼加入至您的應用程式
+### <a name="caching"></a>作法：將驗證碼新增至您的應用程式
 
 1.  將下列 Import 陳述式新增至應用程式的活動檔案。
 
@@ -699,7 +699,7 @@
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
 
-2. 在 **onCreate** 活動類別的方法建立的程式碼後面加入下列程式碼行 `MobileServiceClient` 物件: 我們假設參考 `MobileServiceClient` 物件是 *mClient*。
+2. 在 **onCreate** 活動類別的方法建立的程式碼後面加入下列程式碼行 `MobileServiceClient` 物件 ︰ 我們假設參考 `MobileServiceClient` 物件是 *mClient*。
 
         // Login using the Google provider.
 
@@ -721,13 +721,13 @@
 
     此程式碼會使用 Google 登入來驗證使用者。 此時會出現對話方塊，顯示已驗證的使用者 ID。 必須通過驗證才能繼續。
 
-    > [AZURE.NOTE] 如果您使用 Google 以外的識別提供者，變更值傳遞至 **登入** 上述方法有下列幾種: _MicrosoftAccount_, ，_Facebook_, ，_Twitter_, ，或 _WindowsAzureActiveDirectory_。
+    > [AZURE.NOTE] 如果您使用 Google 以外的識別提供者，變更值傳遞至 **登入** 上述方法有下列幾種 ︰ _MicrosoftAccount_, ，_Facebook_, ，_Twitter_, ，或 _WindowsAzureActiveDirectory_。
 
 
 3. 當您執行應用程式時，請以您選擇的身分識別提供者登入。
 
 
-### <a name="caching"></a>如何: 快取驗證權杖
+### <a name="caching"></a>作法：快取驗證權杖
 
 本節將說明如何快取驗證權杖。 執行這項操作可讓使用者在應用程式「休眠」、但語彙基元仍有效的情況下，無須再次驗證。
 
@@ -791,13 +791,13 @@
 權杖過期將有何影響？ 在此情況下，當您嘗試使用它來連線，就會 *401 未經授權的* 回應。 使用者將必須登入，以取得新權杖。 您可以使用篩選器攔截對行動服務的呼叫和行動服務的回應，如此，您即無須在呼叫行動服務的應用程式中逐一撰寫處理此狀況的程式碼。 篩選器程式碼將會測試 401 的回應，並視需要觸發登入程序，然後繼續執行產生 401 的要求。
 
 
-##<a name="customizing"></a>如何: 自訂用戶端
+##<a name="customizing"></a>作法：自訂用戶端
 
 有幾種方式可以自訂行動服務用戶端的預設行為。
 
-### <a name="headers"></a>如何: 自訂要求標頭
+### <a name="headers"></a>作法：自訂要求標頭
 
-您可能會想要將自訂標頭附加至每個外送要求。 您可以藉由設定完成， **ServiceFilter** 如下所示:
+您可能會想要將自訂標頭附加至每個外送要求。 您可以藉由設定完成， **ServiceFilter** 如下所示 ︰
 
     private class CustomHeaderFilter implements ServiceFilter {
 
@@ -822,7 +822,7 @@
             }
         }
 
-### <a name="serialization"></a>如何: 自訂序列化
+### <a name="serialization"></a>作法：自訂序列化
 
 根據預設，行動服務會假設伺服器上的資料表名稱、資料行名稱和資料類型，全都會與用戶端上的對應項目完全相符。 但實際上卻有各種原因可能導致伺服器與用戶端的名稱不相符。 例如，如果您要變更現有的用戶端，使其改用行動服務，而不再使用其他品牌的產品，就會造成名稱不符。
 
@@ -833,7 +833,7 @@
 - 開啟自動使用大寫屬性
 - 將複雜屬性新增至物件
 
-### <a name="columns"></a>如何: 對應不同的用戶端和伺服器名稱
+### <a name="columns"></a>作法：對應不同的用戶端和伺服器名稱
 
 假設您的 Java 用戶端程式碼會使用標準 Java 樣式名稱 *ToDoItem* 物件屬性，如下所示。
 
@@ -857,21 +857,21 @@
     @com.google.gson.annotations.SerializedName("duration")
     private String mDuration;
 
-### <a name="table"></a>如何: 用戶端與行動服務之間對應不同的資料表名稱
+### <a name="table"></a>作法：在用戶端與行動服務之間對應不同的資料表名稱
 
 將用戶端資料表名稱對應至不同的行動服務資料表名稱很簡單，我們只是使用
-<a href="http://go.microsoft.com/fwlink/p/?LinkId=296840" target="_blank">getTable()</a> 函數的其中一個覆寫，如下列程式碼所示。
+<a href="http://go.microsoft.com/fwlink/p/?LinkId=296840" target="_blank">Gettable</a> 函式，如下列程式碼所示。
 
     mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
 
-### <a name="conversions"></a>如何: 自動化資料行名稱對應
+### <a name="conversions"></a>作法：自動化資料行名稱對應
 
-在上一節中我們了解到，要為一個只有幾個資料行的小型資料表對應資料行名稱，並不困難。 但假設我們的資料表有許多資料行，例如 20 或 30 個。 其實我們可以呼叫 <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> 並指定會套用至每個資料行的轉換策略，而無須為每一個資料行名稱加註。
+在上一節中我們了解到，要為一個只有幾個資料行的小型資料表對應資料行名稱，並不困難。 但假設我們的資料表有許多資料行，例如 20 或 30 個。 此時，我們可以呼叫 <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> API，並指定會套用至每個資料行的轉換策略，而無須為每一個資料行名稱加註。
 
-若要這麼做，我們可以使用 <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> 程式庫，Android 用戶端程式庫在背景用來將 Java 物件序列化為 JSON 資料 (會傳送至 Azure 行動服務)。
+若要這麼做，我們可以使用 Android 用戶端程式庫在背景用來將 Java 物件序列化為 JSON 資料 (會傳送至 Azure 行動服務) 的 <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> 程式庫。
 
-下列程式碼會使用 *setfieldnamingstrategy ()* 方法中，我們定義 *fieldnamingstrategy ()* 方法。 此方法會刪除每個欄位名稱的起始字元 ("m")，然後將下一個字元轉換為小寫。 此程式碼也會啟用輸出 JSON 的美化顯示功能。
+下列程式碼會使用 *setfieldnamingstrategy （)* 方法中，我們定義 *fieldnamingstrategy （)* 方法。 此方法會刪除每個欄位名稱的起始字元 ("m")，然後將下一個字元轉換為小寫。 此程式碼也會啟用輸出 JSON 的美化顯示功能。
 
     client.setGsonBuilder(
         MobileServiceClient
@@ -889,11 +889,11 @@
 
 此程式碼必須在對行動服務用戶端物件呼叫任何方法之前執行。
 
-### <a name="complex"></a>如何: 將物件或陣列屬性儲存在資料表
+### <a name="complex"></a>作法：將物件或陣列屬性儲存在資料表中
 
 到目前為止，我們的序列化範例所示範的，都是能夠輕易序列化為 JSON 和行動服務資料表的基本類型，例如整數和字串。 假設我們想要將複雜的物件新增至用戶端類型，而該物件無法自動序列化為 JSON 和資料表。 例如，我們可能想要將字串陣列新增至用戶端物件。 現在，要如何執行序列化，以及如何將陣列儲存到行動服務資料表中，全都可由我們指定。
 
-若要查看如何執行這項操作的範例，請參閱部落格文章 <a href="http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson" target="_blank">使用 <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> 在行動服務 Android 用戶端程式庫中自訂序列化</a>.
+若要檢視執行此作業的範例，請參閱部落格貼文<a href="http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson" target="_blank">在行動服務 Android 用戶端中使用 <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> 程式庫自訂序列化</a> (英文)。
 
 只要有無法自動序列化為 JSON 和行動服務資料表的複雜物件出現時，我們即可使用此一般方法。
 
@@ -937,4 +937,5 @@
 <!-- URLs. -->
 [Get started with Mobile Services]: mobile-services-android-get-started.md
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+
 

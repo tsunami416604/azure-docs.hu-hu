@@ -25,13 +25,13 @@
 範例應用程式會使用虛構資料 (稱為 `musicstoreindex`) 來示範評分行為。 簡單的範例應用程式便於修改評分設定檔和查詢，而接著便可查看執行程式後對於排名順序的立即效果。
 
 <a id="sub-1"></a>
-## 先決條件
+## 必要條件
 
 範例應用程式是使用 Visual Studio 2013 以 C# 撰寫。 請試用免費 [Visual Studio 2013 Express 版](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) 如果您還沒有 Visual Studio 的複本。
 
 您需要 Azure 訂用帳戶和 Azure 搜尋服務來完成教學課程。 請參閱 [入口網站中建立搜尋服務](search-create-service-portal.md) 有關設定此服務。
 
-[AZURE。包含 [需要 Azure 帳戶才能完成此教學課程:](../../includes/free-trial-note.md)]
+[AZURE。包含 [需要 Azure 帳戶才能完成此教學課程 ︰](../../includes/free-trial-note.md)]
 
 <a id="sub-2"></a>
 ## 下載範例應用程式
@@ -66,7 +66,7 @@
 
 **Data1 3.json** 提供資料，也就是跨多種內容類型的 246 張專輯。 此資料是實際專輯和藝術工作者資訊的組合，其中包含用來說明搜尋作業的 `price` 和 `margin` 等虛構欄位。。 資料檔案符合索引並且會上傳到 Azure Search 服務。 資料上傳並編成索引之後，您即可對其發出查詢。
 
-**Program.cs** 執行下列作業:
+**Program.cs** 執行下列作業 ︰
 
 - 開啟主控台視窗。
 
@@ -125,3 +125,4 @@
 [11]: ./media/search-get-started-scoring-profiles/AzureSearch_Scoring_AppConfig.PNG
 [10]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX1.PNG
 [9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG 
+

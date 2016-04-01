@@ -34,11 +34,11 @@
 完成本教學課程中的程式碼可以在 GitHub 上找到 [這裡](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)。 
 
 
-##先決條件
+##必要條件
 
 本教學課程需要下列各項：
 
-+ Android Studio 中，您可以從下載 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 的站台</a>.
++ Android Studio，您可以從 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 網站</a>下載。
 + 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)。
 
 
@@ -130,10 +130,10 @@
         private static Boolean isVisible = false;
 
 
-    請務必更新三個預留位置:
-    * **SENDER_ID**: 設定 `SENDER_ID` 為您稍早取得從專案中所建立的專案編號 [Google Cloud Console](http://cloud.google.com/console)。
-    * **HubListenConnectionString**: 設定 `HubListenConnectionString` 至 **DefaultListenAccessSignature** 中心的連接字串。 您可以複製該連接字串，藉以 **檢視連接字串** 上 **儀表板** 您的中心，在 [Azure 傳統入口網站] 索引標籤。
-    * **HubName**: 在 Azure 中頁面頂端會出現在通知中心名稱用於您的中心 (**不** 的完整 URL)。 例如，使用 `"myhub"`。
+    請務必更新三個預留位置︰
+    * **SENDER_ID**︰ 設定 `SENDER_ID` 為您稍早取得從專案中所建立的專案編號 [Google Cloud Console](http://cloud.google.com/console)。
+    * **HubListenConnectionString**︰ 設定 `HubListenConnectionString` 至 **DefaultListenAccessSignature** 中心的連接字串。 您可以複製該連接字串，藉以 **檢視連接字串** 上 **儀表板** ] 索引標籤上中心的 [Azure Classic Portal]。
+    * **HubName**︰ 在 Azure 中頁面頂端會出現在通知中心名稱用於您的中心 (**不** 的完整 URL)。 例如，使用 `"myhub"`。
 
 
 
@@ -145,7 +145,7 @@
         hub = new NotificationHub(HubName, HubListenConnectionString, this);
         registerWithNotificationHubs();
 
-6. 在 **MainActivity.java**, ，加入下列程式碼，如 **registerwithnotificationhubs ()** 方法。 向 Google Cloud Messaging 和通知中樞註冊之後，此方法即回報成功。
+6. 在 **MainActivity.java**, ，加入下列程式碼，如 **registerwithnotificationhubs （)** 方法。 向 Google Cloud Messaging 和通知中樞註冊之後，此方法即回報成功。
 
         @SuppressWarnings("unchecked")
         private void registerWithNotificationHubs() {
@@ -284,7 +284,7 @@
 
 
 
-您可以測試應用程式中接收通知，如下列畫面所示，[Azure 傳統入口網站] 透過通知中心上的 [偵錯] 索引標籤，以傳送通知。
+您可以測試應用程式中接收通知，傳送通知給以 [Azure Classic Portal] 透過通知中心，如下列畫面所示的 [偵錯] 索引標籤。
 
 ![][30]
 
@@ -343,7 +343,7 @@
 
 5. 在您 **MainActivity.java** 檔案頂端新增下列成員的 `MainActivity` 類別。
 
-    更新 `HubFullAccess` 與 **DefaultFullSharedAccessSignature** 中心的連接字串。 此連接字串可以從 [Azure 傳統入口網站]，即可複製 **檢視連接字串** 上 **儀表板** 通知中樞] 索引標籤。
+    更新 `HubFullAccess` 與 **DefaultFullSharedAccessSignature** 中心的連接字串。 此連接字串可以從複製 [Azure Classic Portal] 按一下 **檢視連接字串** 上 **儀表板** 通知中樞] 索引標籤。
 
         private String HubEndpoint = null;
         private String HubSasKeyName = null;
@@ -508,11 +508,11 @@
 
 ##後續步驟
 
-在此簡單範例中，您會使用入口網站或主控台應用程式，將廣播通知傳送到您的所有 Windows 裝置。 我們建議 [使用通知中心來推播通知給使用者] 教學課程的下一個步驟。 它會示範如何使用標記以特定使用者為目標，從 ASP.NET 後端傳送通知。
+在此簡單範例中，您會使用入口網站或主控台應用程式，將廣播通知傳送到您的所有 Windows 裝置。 我們建議 [Use Notification Hubs to push notifications to users] 教學課程的下一個步驟。 它會示範如何使用標記以特定使用者為目標，從 ASP.NET 後端傳送通知。
 
-如果您想要按興趣群組分隔使用者，請參閱 [使用通知中心傳送即時新聞]。 
+如果您想要按興趣群組分隔使用者，請參閱 [Use Notification Hubs to send breaking news]。 
 
-若要了解通知中心的詳細資訊，請參閱 [通知中心指引]。
+若要了解通知中心的詳細資訊，請參閱 [Notification Hubs Guidance]。
 
 
 
@@ -550,4 +550,5 @@
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-android-notify-users.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-breaking-news.md
+
 

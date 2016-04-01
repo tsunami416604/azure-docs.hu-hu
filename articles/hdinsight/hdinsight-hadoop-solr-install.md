@@ -30,14 +30,14 @@
 **相關文章**
 
 - [在 HDInsight Hadoop 叢集上安裝和使用 Solr (Linux)](hdinsight-hadoop-solr-install-linux.md)
-- [在 HDInsight 中建立 Hadoop 叢集](hdinsight-provision-clusters.md): 建立 HDInsight 叢集的一般資訊。
-- [自訂 HDInsight 叢集使用指令碼動作][hdinsight-cluster-customize]: 自訂 HDInsight 叢集使用指令碼動作的一般資訊。
+- [在 HDInsight 中建立 Hadoop 叢集](hdinsight-provision-clusters.md)︰ 建立 HDInsight 叢集的一般資訊。
+- [自訂 HDInsight 叢集使用指令碼動作][hdinsight-cluster-customize]︰ 自訂 HDInsight 叢集使用指令碼動作的一般資訊。
 - [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions.md)。
 
 
 ## 什麼是 Solr？
 
-<a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> 是可對資料執行強大全文檢索搜尋的企業搜尋平台。 Hadoop 可儲存和管理大量資料，而 Apache Solr 則是提供搜尋功能以便快速擷取資料。 
+<a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> 是可對資料執行強大全文搜尋作業的企業搜尋平台。 Hadoop 可儲存和管理大量資料，而 Apache Solr 則是提供搜尋功能以便快速擷取資料。 
 
 ## 使用入口網站安裝 Solr
 
@@ -46,18 +46,18 @@
 * [在 HDInsight 叢集上安裝 Solr](hdinsight-hadoop-solr-install-v1.md)
 
 1. 開始建立叢集使用 **自訂建立** 選項述 [建立 Hadoop 叢集的 HDInsight](hdinsight-provision-clusters.md#portal)。
-2. 在 **指令碼動作** 頁面的精靈中，按一下 [ **加入指令碼動作** 提供有關指令碼動作，詳細資料，如下所示:
+2. 在 **指令碼動作** 頁面的精靈中，按一下 [ **加入指令碼動作** 提供有關指令碼動作，詳細資料，如下所示 ︰
 
     ![使用指令碼動作以自訂叢集](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "Use Script Action to customize a cluster")
 
     <table border='1'>
         <tr><th>屬性</th><th>值</th></tr>
         <tr><td>名稱</td>
-            <td>指定指令碼動作的名稱。 例如， <b>安裝 Solr</b>.</td></tr>
+            <td>指定指令碼動作的名稱。 例如， <b>安裝 Solr</b>。</td></tr>
         <tr><td>指令碼 URI</td>
-            <td>指定為自訂叢集叫用的指令碼統一資源識別項 (URI)。 例如， <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
+            <td>指定為了自訂叢集所叫用之指令碼的統一資源識別項 (URI)。 例如， <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
         <tr><td>節點類型</td>
-            <td>指定執行自訂指令碼的節點。 您可以選擇 <b>所有節點</b>， <b>僅限前端節點</b>或 <b>僅限背景工作節點</b>.
+            <td>指定執行自訂指令碼的節點。 您可以選擇 <b>所有節點</b>, ，<b>僅限前端節點</b>, ，或 <b>僅限背景工作節點</b>。
         <tr><td>參數</td>
             <td>如果指令碼要求，請指定參數。 用來安裝 Solr 的指令碼不需要任何參數，因此可以讓此處空白。</td></tr>
     </table>
@@ -148,7 +148,7 @@
               }
 
 
-4. **建議值: 索引的資料從備份 Solr 到 HDInsight 叢集相關聯的 Azure Blob 儲存體**。 您最好從 Solr 叢集節點將已編製索引的資料備份到 Azure Blob 儲存體。 請執行下列步驟來進行此作業：
+4. **建議值 ︰ 索引的資料從備份 Solr 到 HDInsight 叢集相關聯的 Azure Blob 儲存體**。 您最好從 Solr 叢集節點將已編製索引的資料備份到 Azure Blob 儲存體。 請執行下列步驟來進行此作業：
 
     1. 從 RDP 工作階段開啟 Internet Explorer，然後指向下列 URL：
 
@@ -186,12 +186,12 @@
 ## 另請參閱
 
 - [在 HDInsight Hadoop 叢集上安裝和使用 Solr (Linux)](hdinsight-hadoop-solr-install-linux.md)
-- [在 HDInsight 中建立 Hadoop 叢集](hdinsight-provision-clusters.md): 建立 HDInsight 叢集的一般資訊。
-- [自訂 HDInsight 叢集使用指令碼動作][hdinsight-cluster-customize]: 自訂 HDInsight 叢集使用指令碼動作的一般資訊。
+- [在 HDInsight 中建立 Hadoop 叢集](hdinsight-provision-clusters.md)︰ 建立 HDInsight 叢集的一般資訊。
+- [自訂 HDInsight 叢集使用指令碼動作][hdinsight-cluster-customize]︰ 自訂 HDInsight 叢集使用指令碼動作的一般資訊。
 - [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions.md)。
-- [安裝和使用 Spark HDInsight 叢集上][hdinsight-install-spark]: 有關安裝 Spark 的指令碼動作範例。
-- [HDInsight 叢集上安裝 R][hdinsight-install-r]: 指令碼動作範例需安裝。
-- [HDInsight 叢集上安裝 Giraph](hdinsight-hadoop-giraph-install.md): 有關安裝 Giraph 的指令碼動作範例。
+- [安裝和使用 Spark HDInsight 叢集上][hdinsight-install-spark]︰ 有關安裝 Spark 的指令碼動作範例。
+- [HDInsight 叢集上安裝 R][hdinsight-install-r]︰ 指令碼動作範例需安裝。
+- [HDInsight 叢集上安裝 Giraph](hdinsight-hadoop-giraph-install.md)︰ 有關安裝 Giraph 的指令碼動作範例。
 
 
 [powershell-install-configure]: ../install-configure-powershell.md
@@ -199,4 +199,5 @@
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
+
 

@@ -36,11 +36,11 @@
 
 其他考量：
 
-媒體服務會使用值 **IAssetFile.Name** 建置串流內容 (例如，http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。) 的 Url 時的屬性基於這個理由，不允許 percent-encoding。 Name 屬性的值不能有下列任何一個 [%-保留字元](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $，/? %# [] 」。 此外，只能有一個 '。 ' 副檔名。
+媒體服務會使用值 **IAssetFile.Name** 建置串流內容 (例如，http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。) 的 Url 時的屬性基於這個理由，不允許 percent-encoding。 Name 屬性的值不能有下列任何一個 [%-保留字元](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): ！ *' （);: @& = + $，/？ %# [] 」。 此外，只能有一個 '。 ' 副檔名。
 
 ##使用 Azure 服務管理 REST API 附加儲存體帳戶
 
-目前，附加多個儲存體帳戶的唯一方法是使用 [Azure 服務管理 REST API](http://msdn.microsoft.com/library/azure/dn167014.aspx)。 中的程式碼範例 [How to: 使用媒體服務管理 REST API](https://msdn.microsoft.com/library/azure/dn167656.aspx) 主題定義 **AttachStorageAccountToMediaServiceAccount** 將儲存體帳戶附加到指定的媒體服務帳戶的方法。 相同主題中的程式碼定義 **ListStorageAccountDetails** 列出所有儲存體帳戶的方法附加到指定的媒體服務帳戶。
+目前，附加多個儲存體帳戶的唯一方法是使用 [Azure 服務管理 REST API](http://msdn.microsoft.com/library/azure/dn167014.aspx)。 中的程式碼範例 [How to ︰ 使用媒體服務管理 REST API](https://msdn.microsoft.com/library/azure/dn167656.aspx) 主題定義 **AttachStorageAccountToMediaServiceAccount** 將儲存體帳戶附加到指定的媒體服務帳戶的方法。 相同主題中的程式碼定義 **ListStorageAccountDetails** 列出所有儲存體帳戶的方法附加到指定的媒體服務帳戶。
 
 
 ##管理跨多個儲存體帳戶的媒體服務資產
@@ -258,4 +258,5 @@
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

@@ -33,8 +33,8 @@
 3. 開啟 [AD FS 管理主控台並瀏覽至 **AD FS**>**信任關係 > 信賴憑證者信任**。 Microsoft Office 365 識別平台信賴憑證者信任物件上按一下滑鼠右鍵，然後選取 **編輯宣告規則...**
 4. 在 **發佈轉換規則** 索引標籤上，選取 **新增規則**。
 5. 選取 **使用自訂規則傳送宣告** 從 **宣告規則** 範本下拉式方塊。 選取 **下一步**。
-6. 型別 *驗證方法宣告規則* 中 **宣告規則名稱:** 文字方塊。
-7. 輸入下列宣告規則中的 **宣告規則:** 文字方塊:
+6. 型別 *驗證方法宣告規則* 中 **宣告規則名稱 ︰** 文字方塊。
+7. 輸入下列宣告規則中的 **宣告規則 ︰** 文字方塊 ︰
 
         c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"]
         => issue(claim = c);
@@ -59,9 +59,9 @@ Internet Explorer 設定
 ------------------------------------------------------------------------------
 在您的 Windows 裝置的 Internet Explorer 中，對「近端內部網路」安全性區域進行下列設定：
 
-- 只有一個憑證時，不提示用戶端憑證選取:  **啟用**
-- 允許指令碼:  **啟用**
-- 只在近端內部網路區域自動登入:  **檢查**
+- 只有一個憑證時，不提示用戶端憑證選取 ︰  **啟用**
+- 允許指令碼 ︰  **啟用**
+- 只在近端內部網路區域自動登入 ︰  **檢查**
 
 這些是 Internet Explorer 近端內部網路安全性區域的預設設定。 您可以檢視或管理這些設定，在 Internet Explorer 中的瀏覽至 **網際網路選項** > **安全性** > 近端內部網路 > 自訂層級。 您也可以使用 Active Directory 群組原則進行這些設定。
 
@@ -101,3 +101,4 @@ Windows 7 和 Windows 8.1 裝置會藉由結合使用者帳戶名稱與知名裝
 - [Azure Active Directory 裝置註冊概觀](active-directory-conditional-access-device-registration-overview.md)
 - [為加入網域的 Windows 7 裝置設定自動註冊裝置](active-directory-conditional-access-automatic-device-registration-windows7.md)
 - [為加入網域的 Windows 8.1 裝置設定自動註冊裝置](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+

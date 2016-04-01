@@ -22,10 +22,10 @@
 
 ## 概觀
 
-本教學課程示範如何使用 App Service SDK 撰寫程式碼，會呼叫 [API 應用程式](app-service-api-apps-why-best-platform.md) ，已針對設定 **公用 (匿名)** 或 **公用 (驗證)** 存取層級。 本文涵蓋以下範例案例：
+本教學課程示範如何使用 App Service SDK 撰寫程式碼，會呼叫 [API 應用程式](app-service-api-apps-why-best-platform.md) ，已針對設定 **公用 （匿名）** 或 **公用 （驗證）** 存取層級。 本文涵蓋以下範例案例：
 
-- 呼叫 **公用 (匿名)** 從主控台應用程式的 API 應用程式
-- 呼叫 **公用 (驗證)** 從 Windows 桌面應用程式的 API 應用程式 
+- 呼叫 **公用 （匿名）** 從主控台應用程式的 API 應用程式
+- 呼叫 **公用 （驗證）** 從 Windows 桌面應用程式的 API 應用程式 
 
 下列的教學課程章節各自獨立--您可以直接依照第二個案例的指示，而不需要完成的第一個案例的步驟。
 
@@ -53,9 +53,9 @@
 
 1. 如果您尚未這麼做，請遵循 [部署 API 應用程式](app-service-dotnet-deploy-api-app.md) 來將 ContactsList 範例專案部署到 Azure 訂閱中的 API 應用程式。
 
-    該教學課程會引導您設定的存取層級，在 Visual Studio 發佈對話方塊 **可供任何人**, ，這是與相同 **公用 (匿名)** 入口網站中。 不過，如果您未 [保護 API 應用程式](../app-service-api-dotnet-add-authentication.md) 之後的教學課程中，存取層級已經設為 **公用 (驗證)**, ，在此情況下您需要依照下列步驟的引導進行變更。
+    該教學課程會引導您設定的存取層級，在 Visual Studio 發佈對話方塊 **可供任何人**, ，這是與相同 **公用 （匿名）** 入口網站中。 不過，如果您未 [保護 API 應用程式](../app-service-api-dotnet-add-authentication.md) 之後的教學課程中，存取層級已經設為 **公用 （驗證）**, ，在此情況下您需要依照下列步驟的引導進行變更。
 
-2. 在 [Azure 預覽入口網站](https://portal.azure.com/), 中 **API 應用程式** 您想要呼叫，請移至 API 應用程式刀鋒視窗 **設定 > 應用程式設定** 並設定 **存取層級** 至 **公用 (匿名)**。
+2. 在 [Azure 預覽入口網站](https://portal.azure.com/), 中 **API 應用程式** 您想要呼叫，請移至 API 應用程式刀鋒視窗 **設定 > 應用程式設定** 並設定 **存取層級** 至 **公用 （匿名）**。
 
     ![](./media/app-service-api-dotnet-consume/setpublicanon.png)
  
@@ -104,7 +104,7 @@
 
 ### 設定 API 應用程式並建立專案
 
-1. 請依照下列 [保護 API 應用程式](../app-service-api-dotnet-add-authentication.md) 設定 API 應用程式的教學課程 **公用 (驗證)** 存取層級。
+1. 請依照下列 [保護 API 應用程式](../app-service-api-dotnet-add-authentication.md) 設定 API 應用程式的教學課程 **公用 （驗證）** 存取層級。
 
 1. 在 Visual Studio 中，建立 Windows Forms 桌面專案。
 
@@ -122,7 +122,7 @@
 
 ### 加入 App Service SDK 產生的用戶端程式碼
 
-3. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 (而非方案)，然後選取 **加入 > Azure API 應用程式用戶端**。 
+3. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 （而非方案），然後選取 **加入 > Azure API 應用程式用戶端**。 
 
 3. 在 **加入的 Azure API 應用程式用戶端** ] 對話方塊中，按一下 [ **從 Azure API 應用程式下載**。 
 
@@ -200,10 +200,11 @@
 
 ## 後續步驟
 
-本文已說明如何從.NET 用戶端，設定為 API 應用程式的 API 應用程式 **公用 (驗證)** 和 **公用 (匿名)** 存取層級。 
+本文已說明如何從.NET 用戶端，設定為 API 應用程式的 API 應用程式 **公用 （驗證）** 和 **公用 （匿名）** 存取層級。 
 
 如需其他從.NET 用戶端呼叫 API 應用程式的程式碼範例，請下載 [Azure Cards](https://github.com/Azure-Samples/API-Apps-DotNet-AzureCards-Sample) 範例應用程式。
 
 如需如何在 API 應用程式中使用驗證資訊，請參閱 [API 應用程式和行動應用程式在 Azure App Service 中的驗證](../app-service/app-service-authentication-overview.md)。
  
+
 

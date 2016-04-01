@@ -99,9 +99,9 @@ Azure 會使用 Hypervisor 防火牆 (封包篩選器)；此防火牆會在 Hype
 
 在此介紹兩種規則：
 
--   **電腦設定] 或 [基礎結構規則**: 根據預設，封鎖所有通訊。 有部分例外狀況可允許 VM 傳送與接收 DHCP 和 DNS 流量。 VM 也可以將流量傳送至「公用」網際網路，以及將流量傳送至叢集和 OS 啟用伺服器內的其他 VM。 VM 的連出目的地允許清單不包含 Azure 路由器子網路、Azure 管理後端和其他 Microsoft 屬性。
+-   **電腦設定] 或 [基礎結構規則**︰ 根據預設，封鎖所有通訊。 有部分例外狀況可允許 VM 傳送與接收 DHCP 和 DNS 流量。 VM 也可以將流量傳送至「公用」網際網路，以及將流量傳送至叢集和 OS 啟用伺服器內的其他 VM。 VM 的連出目的地允許清單不包含 Azure 路由器子網路、Azure 管理後端和其他 Microsoft 屬性。
 
--   **角色設定檔**: 這會定義輸入租用戶的服務模型為基礎的 Acl。 比方說，如果租用戶特定 VM 上的連接埠 80 上擁有 Web 前端，則 Azure 會開啟 TCP 連接埠 80 的所有 Ip，如果您設定中的端點 [Azure 服務管理](resource-manager-deployment-model.md) 模型。 如果 VM 有執行中的後端或背景工作角色，我們就只會將背景工作角色開放給相同租用戶內的 VM。
+-   **角色設定檔**︰ 這會定義輸入租用戶的服務模型為基礎的 Acl。 比方說，如果租用戶特定 VM 上的連接埠 80 上擁有 Web 前端，則 Azure 會開啟 TCP 連接埠 80 的所有 Ip，如果您設定中的端點 [Azure 服務管理](resource-manager-deployment-model.md) 模型。 如果 VM 有執行中的後端或背景工作角色，我們就只會將背景工作角色開放給相同租用戶內的 VM。
 
 ##隔離
 
@@ -169,13 +169,13 @@ IP 篩選器有助於防止客體 VM：
 
 當 Azure 在正常作業中或嚴重損壞期間移動客戶的資料時，它會使用私人、加密的通訊通道來進行。 Azure 運用在虛擬網路和防火牆中的其他功能包括：
 
--   **原生的主機防火牆**: 有沒有 hypervisor 原生 OS 上執行的 Azure 網狀架構和儲存體，因此上述這兩組規則與設定 windows 防火牆。 儲存體以原生方式執行，以達到效能最佳化。
+-   **原生的主機防火牆**︰ 有沒有 hypervisor 原生 OS 上執行的 Azure 網狀架構和儲存體，因此上述這兩組規則與設定 windows 防火牆。 儲存體以原生方式執行，以達到效能最佳化。
 
--   **主機防火牆**: 主機防火牆是要保護執行 hypervisor 主機作業系統。 規則設計成僅允許網狀架構控制器，並以跳躍方式在特定的連接埠上與主機 OS 通訊。 其他例外狀況包括允許 DHCP 回應與 DNS 回覆。 Azure 會使用具有其主機 OS 之防火牆規則範本的機器組態檔。 主機本身會由 Windows 防火牆來抵禦外部攻擊，而防火牆會設定成只允許已驗證的已知來源所進行的通訊。
+-   **主機防火牆**︰ 主機防火牆是要保護執行 hypervisor 主機作業系統。 規則設計成僅允許網狀架構控制器，並以跳躍方式在特定的連接埠上與主機 OS 通訊。 其他例外狀況包括允許 DHCP 回應與 DNS 回覆。 Azure 會使用具有其主機 OS 之防火牆規則範本的機器組態檔。 主機本身會由 Windows 防火牆來抵禦外部攻擊，而防火牆會設定成只允許已驗證的已知來源所進行的通訊。
 
--   **來賓防火牆**: 複寫 VM 切換封包篩選器，但在不同的軟體 (也就是客體作業系統的 Windows 防火牆項) 中程式化中的規則。 客體 VM 防火牆可以設定成限制往來於客體 VM 的通訊，即使主機 IP 篩選器的組態允許通訊亦然。 例如，您可以選擇使用客體 VM 防火牆，限制兩個已設定為彼此連接的 VNet 之間的通訊。 
+-   **來賓防火牆**︰ 複寫 VM 切換封包篩選器，但在不同的軟體 （也就是客體作業系統的 Windows 防火牆項） 中程式化中的規則。 客體 VM 防火牆可以設定成限制往來於客體 VM 的通訊，即使主機 IP 篩選器的組態允許通訊亦然。 例如，您可以選擇使用客體 VM 防火牆，限制兩個已設定為彼此連接的 VNet 之間的通訊。 
 
--   **儲存體防火牆 (FW)**: 前端的儲存體上的防火牆篩選要在連接埠 80/443 和其他必要的公用程式連接埠上的流量。 儲存體後端的防火牆會將通訊限定為來自儲存體前端伺服器的通訊。
+-   **儲存體防火牆 (FW)**︰ 前端的儲存體上的防火牆篩選要在連接埠 80/443 和其他必要的公用程式連接埠上的流量。 儲存體後端的防火牆會將通訊限定為來自儲存體前端伺服器的通訊。
 
 -   **虛擬網路閘道**: [Azure 虛擬網路閘道](virtual-networks-configure-vnet-to-vnet-connection.md) 做為跨單位連接您的工作負載在 Azure 虛擬網路上的內部部署站台閘道。 需要連接到內部部署網站，透過 [IPsec 站台對站台 VPN 通道](vpn-gateway-create-site-to-site-rm-powershell.md), ，或是透過 [ExpressRoute](expressroute-introduction.md) 電路。 就 IPsec/IKE VPN 通道而言，這些閘道會執行 IKE 交握，並建立虛擬網路和內部部署網站之間的 IPsec S2S VPN 通道。 虛擬網路閘道也會終止 [點對站 Vpn](vpn-gateway-point-to-site-create.md)。
 
@@ -185,7 +185,7 @@ IP 篩選器有助於防止客體 VM：
 
 內建的密碼編譯技術可讓您對部署內部與各部署間的通訊、Azure 區域之間的通訊，以及 Azure 對內部部署資料中心的通訊進行加密。 透過虛擬機器的系統管理員存取 [遠端桌面工作階段](virtual-machines-log-on-windows-server.md), ，[遠端 Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx), ，而 [Azure 管理入口網站](https://azure.microsoft.com/overview/preview-portal/) 一律加密。
 
-若要安全地擴充您的內部部署資料中心至雲端，Azure 提供了 [站對站 VPN](vpn-gateway-create-site-to-site-rm-powershell.md) 和 [點對站台 VPN](vpn-gateway-point-to-site-create.md), ，以及使用的專用連結 [ExpressRoute](expressroute-introduction.md) (透過 VPN 的 Azure 虛擬網路的連線都會經過加密)。
+若要安全地擴充您的內部部署資料中心至雲端，Azure 提供了 [站對站 VPN](vpn-gateway-create-site-to-site-rm-powershell.md) 和 [點對站台 VPN](vpn-gateway-point-to-site-create.md), ，以及使用的專用連結 [ExpressRoute](expressroute-introduction.md) （透過 VPN 的 Azure 虛擬網路的連線都會經過加密）。
 
 ### Azure 如何實作安全的遠端存取
 
@@ -227,7 +227,7 @@ Azure 有安全性控制可實作威脅防護功能，並協助客戶降低其�
 
 -   您可以選擇來部署您的訂閱，例如從 web 應用程式防火牆內的第 3 方安全性解決方案 [Barracuda](https://techlib.barracuda.com/ng54/deployonazure)。
 
--   滲透測試 Microsoft 的方式包括 「[紅色小組](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)」，這會涉及攻擊若要測試的防護措施來實際、 進階的持續威脅的 Azure 中的 (非客戶) 實際生產系統的 Microsoft 安全性專業人員。
+-   滲透測試 Microsoft 的方式包括 「[紅色小組](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)」，這會涉及攻擊若要測試的防護措施來實際、 進階的持續威脅的 Azure 中的 （非客戶） 實際生產系統的 Microsoft 安全性專業人員。
 
 -   整合的部署系統會管理整個 Azure 平台的安全性修補程式的散發與安裝。
 
@@ -240,5 +240,6 @@ Azure 有安全性控制可實作威脅防護功能，並協助客戶降低其�
 [Microsoft 安全性回應中心](https://technet.microsoft.com/library/dn440717.aspx)
 
 [Active Directory 部落格](http://blogs.technet.com/b/ad/)
+
 
 

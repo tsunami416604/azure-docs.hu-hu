@@ -29,8 +29,8 @@
         data:
         info:    group create command OK
 
-    - **-n (或--名稱)**。 新資源群組的名稱。 我們的案例， *TestRG*。
-    - **-l (或--location)**。 將會在當中建立新資源群組的 Azure 區域。 我們的案例， *centralus*。
+    - **-n （或--名稱）**。 新資源群組的名稱。 我們的案例， *TestRG*。
+    - **-l （或--location）**。 將會在當中建立新資源群組的 Azure 區域。 我們的案例， *centralus*。
 
 4. 執行 **azure 群組部署建立** 指令程式來部署新的 VNet 使用的範本和參數檔案下載並修改上面。 輸出後顯示的清單可說明所使用的參數。
 
@@ -61,9 +61,9 @@
         data:    subnet2Name    String  BackEnd
         info:    group deployment create command OK
 
-    - **-g (或--資源群組)**。 要建立新 VNet 的資源群組名稱。
-    - **-f (或--範本檔案)**。 ARM 範本檔案的路徑。
-    - **-e (或--參數檔案)**。 ARM 參數檔案的路徑。
+    - **-g （或--資源群組）**。 要建立新 VNet 的資源群組名稱。
+    - **-f （或--範本檔案）**。 ARM 範本檔案的路徑。
+    - **-e （或--參數檔案）**。 ARM 參數檔案的路徑。
 
 5. 執行 **azure 網路 vnet 顯示** 命令來檢視新的 vnet 的屬性，如下所示。
 
@@ -88,4 +88,5 @@
         data:      Address prefix                : 192.168.2.0/24
         data:
         info:    network vnet show command OK
+
 

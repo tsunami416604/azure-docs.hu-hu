@@ -59,3 +59,4 @@ Azure 自動化中的每個 Runbook 具備多個有助於識別其本身及變�
 ## 相關文章
 - [Runbook 輸出和訊息](../automation-runbook-output-and-messages) 
 - [建立或匯入 Runbook](https://msdn.microsoft.com/library/dn643637.aspx) 
+

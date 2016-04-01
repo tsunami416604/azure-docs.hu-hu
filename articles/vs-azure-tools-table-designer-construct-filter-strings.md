@@ -19,7 +19,7 @@
 
 ## 概觀
 
-在 Visual Studio 中會顯示 Azure 資料表中篩選資料 **資料表設計工具**, ，建構篩選字串，並輸入篩選的欄位。 篩選條件字串語法由 WCF Data Services 定義，類似於 SQL WHERE 子句，但會透過 HTTP 要求傳送至表格服務。  **資料表設計工具** 處理適當編碼，因此若要篩選所要的屬性值，您必須只輸入屬性名稱、 比較運算子、 準則值和 (選擇性) 的布林值篩選] 欄位中的運算子。 您不需要包含 $filter 查詢選項，就可以像在建構查詢資料表透過 URL 依照 [儲存體服務 REST API 參考](http://go.microsoft.com/fwlink/p/?LinkId=400447)。
+在 Visual Studio 中會顯示 Azure 資料表中篩選資料 **資料表設計工具**, ，建構篩選字串，並輸入篩選的欄位。 篩選條件字串語法由 WCF Data Services 定義，類似於 SQL WHERE 子句，但會透過 HTTP 要求傳送至表格服務。  **資料表設計工具** 處理適當編碼，因此若要篩選所要的屬性值，您必須只輸入屬性名稱、 比較運算子、 準則值和 （選擇性） 的布林值篩選] 欄位中的運算子。 您不需要包含 $filter 查詢選項，就可以像在建構查詢資料表透過 URL 依照 [儲存體服務 REST API 參考](http://go.microsoft.com/fwlink/p/?LinkId=400447)。
 
 WCF 資料服務會根據 [開放式資料通訊協定](http://go.microsoft.com/fwlink/p/?LinkId=214805) (OData)。 如需有關 filter 系統查詢選項 (**$filter**)，請參閱 [OData URI 慣例規格](http://go.microsoft.com/fwlink/p/?LinkId=214806)。
 
@@ -51,7 +51,7 @@ WCF 資料服務會根據 [開放式資料通訊協定](http://go.microsoft.com/
 
 當您篩選字串屬性時，請用單引號括住字串常數。
 
-下列範例會篩選 **PartitionKey** 和 **RowKey** 屬性; 其他的非索引鍵屬性也可以加入篩選條件字串:
+下列範例會篩選 **PartitionKey** 和 **RowKey** 屬性; 其他的非索引鍵屬性也可以加入篩選條件字串 ︰
 
     PartitionKey eq 'Partition1' and RowKey eq '00001'
 
@@ -98,4 +98,5 @@ WCF 資料服務會根據 [開放式資料通訊協定](http://go.microsoft.com/
 下列範例會傳回 CustomerSince 屬性等於 2008 年 7 月 10 日的實體：
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
+
 

@@ -10,7 +10,7 @@
 
 本文提供有關使用 Node.js 模組與 Azure 上代管之應用程式搭配的指引。 它提供有關確保應用程式使用模組特定版本，以及搭配原生模組與 Azure 使用的指引。
 
-如果您已熟悉使用 Node.js 模組、 **package.json** 和 **npm-shrinkwrap.json** 檔案，則下列是本文中討論內容的快速摘要:
+如果您已熟悉使用 Node.js 模組、 **package.json** 和 **npm-shrinkwrap.json** 檔案，則下列是本文中討論內容的快速摘要 ︰
 
 * Azure 網站熟悉 **package.json** 和 **npm-shrinkwrap.json** 檔案，並可安裝這些檔案中的項目為基礎的模組。
 * Azure 雲端服務期望在開發環境上安裝所有模組和 **node\_modules** 目錄會將部署套件的一部分。
@@ -21,7 +21,7 @@
 
 ##Node.js 模組
 
-模組是指可載入的 JavaScript 封裝，可為您的應用程式提供特定功能。 模組通常會安裝使用 **npm** 命令列工具，不過也有一些 (例如 http 模組) 會提供核心 Node.js 封裝的一部分。
+模組是指可載入的 JavaScript 封裝，可為您的應用程式提供特定功能。 模組通常會安裝使用 **npm** 命令列工具，不過也有一些 （例如 http 模組） 會提供核心 Node.js 封裝的一部分。
 
 當安裝模組時，它們會儲存在 **node\_modules** 目錄應用程式目錄結構的根目錄。 每個模組內 **node\_modules** 目錄都會維護它自己 **node\_modules** 包含任何模組而定，且這會一直重複一次針對每個模組相依性鏈結中一路向下的目錄。 這可讓每個已安裝模組都有它自己所相依的模組版本需求，不過，它會產生相當大的目錄結構。
 
@@ -79,4 +79,5 @@ Azure 網站不支援所有的原生模組，而且在編譯具有非常特定�
 [Publishing with Git]: web-sites-publish-source-control.md
 [Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [Custom Website Deployment Scripts with Kudu]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
+
 

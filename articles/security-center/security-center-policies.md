@@ -39,7 +39,7 @@ Azure 資訊安全中心利用加強對 Azure 資源的能見度及安全性控�
 
     ![啟用資料收集](./media/security-center-policies/security-center-policies-fig0.png)
 
-3.  **安全性原則**  該訂用帳戶的刀鋒視窗會開啟一組選項類似如下所示:
+3.  **安全性原則**  該訂用帳戶的刀鋒視窗會開啟一組選項類似如下所示 ︰
 
     ![啟用資料收集](./media/security-center-policies/security-center-policies-fig1.png)
 
@@ -62,14 +62,14 @@ Azure 資訊安全中心利用加強對 Azure 資源的能見度及安全性控�
 
 9. 在 **安全性原則** 刀鋒視窗中按一下 **上** 啟用您想要使用此訂用帳戶的安全性建議。 請使用下表做為參考，以了解每個選項會執行的動作：  
 
-    |原則 |在狀態 |
+  	|原則 |在狀態 |
 |----- |-----|
 |系統更新 |在您的 Windows 虛擬機器上安裝的擷取從 Windows Update 或 WSUS，視哪一項服務的可用更新清單已針對該虛擬機器，每隔 12 小時和遺失更新的建議。 |
 |基準規則 |會分析所有支援的虛擬機器每隔 12 小時，以識別任何 OS 組態，可以讓虛擬機器更容易受到攻擊，並建議解決這些弱點的組態變更。 請參閱 [清單的建議基準](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) 如需有關受監視的特定設定。 |
 |反惡意程式碼 |建議的反惡意程式碼來協助識別和移除病毒、 間諜軟體及其他惡意軟體的所有 Windows 虛擬機器佈都建。 |
 |在端點上存取控制清單 |建議 [存取控制清單](virtual-machines-set-up-endpoints.md) (ACL) 設定來限制存取傳統虛擬機器端點。 這通常是用來確保只有連線到公司網路的使用者才能存取虛擬機器。 |
 |網路子網路和網路介面上的安全性群組 |建議 [網路安全性群組](virtual-networks-nsg.md) (Nsg) 設定來控制傳入和傳出流量子網路及網路資源管理員的虛擬機器的介面。 除非另有指定，否則所有虛擬機器網路介面都會繼承為子網路設定的 NSG。 除了檢查是否已設定 NSG 之外，還會評估「輸入安全性規則」來識別允許「任何」連入流量的規則。 |
-|Web 應用程式防火牆 |建議您在資源管理員的虛擬機器上佈建 Web 應用程式防火牆時: [執行個體層級公用 IP](virtual-networks-instance-level-public-ip.md) (ILPIP) 會使用和相關聯的 NSG 輸入安全性規則都設定為允許存取連接埠 80/443。 使用負載平衡 IP (VIP)，而且相關聯的負載平衡以及傳入的 NAT 規則都設定為允許存取連接埠 80/443 (如需詳細資訊，請參閱 [Azure 資源管理員的負載平衡器支援](load-balancer-arm.md)) |
+|Web 應用程式防火牆 |建議您在資源管理員的虛擬機器上佈建 Web 應用程式防火牆時 ︰ [執行個體層級公用 IP](virtual-networks-instance-level-public-ip.md) (ILPIP) 會使用和相關聯的 NSG 輸入安全性規則都設定為允許存取連接埠 80/443。 使用負載平衡 IP (VIP)，而且相關聯的負載平衡以及傳入的 NAT 規則都設定為允許存取連接埠 80/443 (如需詳細資訊，請參閱 [Azure 資源管理員的負載平衡器支援](load-balancer-arm.md)) |
 |SQL 稽核 |建議的相容性，進階偵測及調查的目的啟用稽核的 Azure SQL 伺服器和資料庫的存取。 |
 |SQL 透明資料加密 |建議您加密靜止能夠針對您的 Azure SQL 資料庫、 相關聯的備份和交易記錄檔，因此即使在達到您的資料時，它將無法讀取。 |
 
@@ -84,4 +84,5 @@ Azure 資訊安全中心利用加強對 Azure 資源的能見度及安全性控�
 - [管理和 Azure 資訊安全中心的安全性警示回應](security-center-managing-and-responding-alerts.md) -了解如何管理和回應安全性警示
 - [Azure 安全性中心常見問題集](security-center-faq.md) – 尋找使用服務的相關的常見問題集
 - [Azure 安全性部落格](http://blogs.msdn.com/b/azuresecurity/) – 尋找關於 Azure 安全性與相容性部落格文章
+
 

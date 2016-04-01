@@ -23,7 +23,7 @@
 
 在 Azure Machine Learning 中建立新的工作區時，預設會包含一些範例資料集和實驗。 許多範例資料集所使用中的範例模型 [Azure Cortana 分析庫](http://gallery.azureml.net/), ，其他則是包含做為各種類型的資料通常是機器學習中使用的範例。
 
-其中的部分資料集可在 Azure Blob 儲存體中使用。 下表提供這些資料集的直接連結。 您可以使用 [讀取器] [讀取器] 模組，您的實驗中使用這些資料集。
+其中的部分資料集可在 Azure Blob 儲存體中使用。 下表提供這些資料集的直接連結。 您也可以使用您的實驗中使用這些資料集 [讀取器][reader] 模組。
 
 這些範例資料集的其餘部分都會在 **儲存的資料集** 時開啟，或在 ML Studio 中建立新的實驗畫布左邊的實驗模組調色盤中。
 您可以將資料集拖曳到您的實驗畫布上，在自己的實驗中使用任一資料集。
@@ -32,7 +32,7 @@
 <!--
 For a list of sample experiments available in ML Studio, see [Machine Learning Sample Experiments][sample-experiments].
 
--->mple-experiments]: machine-learning-sample-experiments.md
+[sample-experiments]: machine-learning-sample-experiments.md
 -->
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -103,7 +103,7 @@ For a list of sample experiments available in ML Studio, see [Machine Learning S
 
 <tr ID=breast-cancer-features>
   <td valign=top>乳癌特徵
- <td valign=top>
+  <td valign=top>
 [AZURE.INCLUDE [machine-learning-sample-dataset-breast-cancer-features](../../includes/machine-learning-sample-dataset-breast-cancer-features.md)]
   </td>
 </tr>
@@ -193,14 +193,14 @@ For a list of sample experiments available in ML Studio, see [Machine Learning S
 </tr>
 
 <tr ID=movie-tweets>
-  <td valign=top>電影推文</td>
+  <td valign=top>影片推文</td>
   <td valign=top>
 [AZURE.INCLUDE [machine-learning-sample-dataset-movie-tweets](../../includes/machine-learning-sample-dataset-movie-tweets.md)]
   </td>
 </tr>
 
 <tr>
-  <td valign=top>各種汽車的油耗資料</td>
+  <td valign=top>不同汽車的油耗資料</td>
   <td valign=top>
 [AZURE.INCLUDE [machine-learning-sample-dataset-automobile-mpg](../../includes/machine-learning-sample-dataset-automobile-mpg.md)]
   </td>
@@ -295,7 +295,7 @@ For a list of sample experiments available in ML Studio, see [Machine Learning S
 </tr>
 
 <tr ID=rcv1-v2-topics-qrels>
-  <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1 v2.topics.qrels.csv</a></td>
+  <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td valign=top>
 [AZURE.INCLUDE [machine-learning-sample-dataset-rcv1-v2-topics](../../includes/machine-learning-sample-dataset-rcv1-v2-topics.md)]
   </td>
@@ -316,4 +316,5 @@ For a list of sample experiments available in ML Studio, see [Machine Learning S
 
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+
 

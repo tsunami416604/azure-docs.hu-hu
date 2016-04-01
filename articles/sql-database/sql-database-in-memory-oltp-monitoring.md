@@ -24,7 +24,7 @@
 
 ## 判斷資料是否在記憶體內部儲存容量上限內
 
-判斷儲存體上限: 請參閱 [SQL Database 服務層文章](sql-database-service-tiers.md#service-tiers-for-single-databases) 針對不同的高階服務層的儲存體上限。
+判斷儲存體上限 ︰ 請參閱 [SQL Database 服務層文章](sql-database-service-tiers.md#service-tiers-for-single-databases) 針對不同的高階服務層的儲存體上限。
 
 估計記憶體最佳化資料表的記憶體需求，其方式如同在 Azure SQL Database 中估計 SQL Server 的記憶體需求。 若要檢閱在該主題在數分鐘 [MSDN](https://msdn.microsoft.com/library/dn282389.aspx)。
 
@@ -57,4 +57,5 @@
 
 ## 後續步驟
 深入了解有關 [監視 Azure SQL Database 使用動態管理檢視](sql-database-monitoring-with-dmvs.md)
+
 

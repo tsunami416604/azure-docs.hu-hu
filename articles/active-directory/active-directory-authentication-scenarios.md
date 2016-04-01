@@ -144,15 +144,15 @@ Azure AD 所簽發的安全性權杖包含宣告，或已驗證之主體的相�
 
 以下是 Azure AD 支援的五個主要應用程式案例：
 
-- [Web 瀏覽器到 Web 應用程式](#web-browser-to-web-application): 使用者需要登入由 Azure AD 保護 web 應用程式。
+- [Web 瀏覽器到 Web 應用程式](#web-browser-to-web-application)︰ 使用者需要登入由 Azure AD 保護 web 應用程式。
 
-- [單一頁面應用程式 (SPA)](#single-page-application-spa): 使用者需要登入 Azure AD 所保護的單一頁面應用程式。
+- [單一頁面應用程式 (SPA)](#single-page-application-spa)︰ 使用者需要登入 Azure AD 所保護的單一頁面應用程式。
 
-- [原生應用程式到 Web API](#native-application-to-web-api): 電話、 平板電腦或電腦執行的原生應用程式需要驗證使用者，以便從 web 由 Azure AD 保護的 API 取得資源。
+- [原生應用程式到 Web API](#native-application-to-web-api)︰ 電話、 平板電腦或電腦執行的原生應用程式需要驗證使用者，以便從 web 由 Azure AD 保護的 API 取得資源。
 
 - [Web 應用程式到 Web API](#web-application-to-web-api): web 應用程式需要從 Azure AD 所保護的 web API 取得資源。
 
-- [精靈或伺服器應用程式到 Web API](#daemon-or-server-application-to-web-api): 精靈應用程式或伺服器應用程式，無 web 使用者介面需要從 Azure AD 所保護的 web API 取得資源。
+- [精靈或伺服器應用程式到 Web API](#daemon-or-server-application-to-web-api)︰ 精靈應用程式或伺服器應用程式，無 web 使用者介面需要從 Azure AD 所保護的 web API 取得資源。
 
 ### Web 瀏覽器到 Web 應用程式
 
@@ -466,4 +466,5 @@ Azure AD 所簽發的安全性權杖包含宣告，或已驗證之主體的相�
 [Azure AD 中簽署金鑰變換的相關重要資訊](https://msdn.microsoft.com/library/azure/dn641920.aspx)
 
 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
+
 

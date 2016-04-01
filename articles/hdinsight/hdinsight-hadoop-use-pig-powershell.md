@@ -25,7 +25,7 @@
 
 > [AZURE.NOTE] 這份文件不提供範例中使用的 Pig Latin 陳述式所執行的工作詳細的的描述。 如需此範例中使用的 Pig Latin 的相關資訊，請參閱[搭配使用 Pig 與 HDInsight 上的 Hadoop](hdinsight-use-pig.md)。
 
-##<a id="prereq"></a>先決條件
+##<a id="prereq"></a>必要條件
 
 若要完成這篇文章中的步驟，您需要下列項目。
 
@@ -39,15 +39,15 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 Pig �
 
 在遠端 HDInsight 叢集上執行 Pig 工作時，會使用下列 Cmdlet：
 
-* **登入 AzureRmAccount**: 驗證您的 Azure 訂閱的 PowerShell
+* **登入 AzureRmAccount**︰ 驗證您的 Azure 訂閱的 PowerShell
 
-* **新 AzureRmHDInsightPigJobDefinition**: 建立新 *作業定義* 使用指定的 Pig Latin 陳述式
+* **新 AzureRmHDInsightPigJobDefinition**︰ 建立新 *作業定義* 使用指定的 Pig Latin 陳述式
 
-* **開始 AzureRmHDInsightJob**: 將工作定義傳送至 HDInsight、 啟動工作，並傳回 *工作* 物件，可用來檢查工作狀態
+* **開始 AzureRmHDInsightJob**︰ 將工作定義傳送至 HDInsight、 啟動工作，並傳回 *工作* 物件，可用來檢查工作狀態
 
-* **等候 AzureRmHDInsightJob**: 使用工作物件來檢查工作狀態。 它會等到工作完成，或等到等候時間超過。
+* **等候 AzureRmHDInsightJob**︰ 使用工作物件來檢查工作狀態。 它會等到工作完成，或等到等候時間超過。
 
-* **Get AzureRmHDInsightJobOutput**: 用來擷取工作的輸出
+* **Get AzureRmHDInsightJobOutput**︰ 用來擷取工作的輸出
 
 下列步驟示範如何使用這些 Cmdlet，在您的 HDInsight 叢集上執行工作。
 
@@ -110,7 +110,7 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 Pig �
             -DefaultStorageAccountKey $storageAccountKey `
             -HttpCredential $creds
 
-2. 開啟新的 Azure PowerShell 命令提示字元。 將目錄變更至位置 **pigjob.ps1** 檔案，然後使用下列命令來執行指令碼:
+2. 開啟新的 Azure PowerShell 命令提示字元。 將目錄變更至位置 **pigjob.ps1** 檔案，然後使用下列命令來執行指令碼 ︰
 
         .\pigjob.ps1
         
@@ -161,7 +161,7 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 Pig �
 
 如您所見，Azure PowerShell 提供簡單的方法，在 HDInsight 叢集上執行 Pig 工作、監視工作狀態，以及擷取輸出。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 Pig 的一般資訊：
 
@@ -172,4 +172,5 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 Pig �
 * [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 MapReduce 與 HDInsight 上的 Hadoop](hdinsight-use-mapreduce.md)
+
 

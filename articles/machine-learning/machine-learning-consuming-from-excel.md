@@ -21,7 +21,7 @@
 
  Azure Machine Learning Studio 可以讓您直接從 Excel 輕鬆呼叫 Web 服務，而不需要撰寫任何程式碼。
 
- 如果您執行 Excel 2013 (或更新版本)，或者您可以使用 Excel Online 儲存使用 OneDrive 或 SharePoint 上的檔案則 [Excel 增益集](machine-learning-excel-add-in-for-web-services.md) 建議。
+ 如果您執行 Excel 2013 （或更新版本），或者您可以使用 Excel Online 儲存使用 OneDrive 或 SharePoint 上的檔案則 [Excel 增益集](machine-learning-excel-add-in-for-web-services.md) 建議。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -70,4 +70,5 @@
 [2]: ./media/machine-learning-consuming-from-excel/enableeditting.png
 [3]: ./media/machine-learning-consuming-from-excel/enablecontent.png
 [4]: ./media/machine-learning-consuming-from-excel/sampletable.png
+
 

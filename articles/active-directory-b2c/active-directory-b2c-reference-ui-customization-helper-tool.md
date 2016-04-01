@@ -28,7 +28,7 @@
 
 ## 建立註冊原則
 
-範例內容，我們提供了自訂中的兩個頁面 [註冊原則](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy): [IDP 選取] 頁面上](active-directory-b2c-reference-ui-customization.md#identity-provider-selection-page) 和 [本機帳戶註冊網頁](active-directory-b2c-reference-ui-customization.md#local-account-sign-up-page)。  當 [建立您的註冊原則](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy), ，新增本機帳戶 (電子郵件地址)、 Facebook 及 Google + 為 **身分識別提供者**。  我們的範例 HTML 內容只接受這些 IDP。
+範例內容，我們提供了自訂中的兩個頁面 [註冊原則](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy): [IDP 選取] 頁面上](active-directory-b2c-reference-ui-customization.md#identity-provider-selection-page) 和 [本機帳戶註冊網頁](active-directory-b2c-reference-ui-customization.md#local-account-sign-up-page)。  當 [建立您的註冊原則](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy), ，新增本機帳戶 （電子郵件地址）、 Facebook 及 Google + 為 **身分識別提供者**。  我們的範例 HTML 內容只接受這些 IDP。
 
 ## 註冊應用程式
 
@@ -61,7 +61,7 @@
 
 1. 登入 [Azure 預覽入口網站](https://portal.azure.com/)。
 2. 按一下 [ **+ 新增** ]-> [ **資料 + 儲存體** ]-> [ **儲存體帳戶**。 您需要有  Azure 訂用帳戶才能建立 Azure Blob 儲存體帳戶。 您可以註冊免費試用版 [這裡](https://azure.microsoft.com/pricing/free-trial/)。
-3. 提供 **名稱** 的儲存體帳戶 (例如，「 contoso 」)，並挑選適當的選擇，如 **定價層**, ，**資源群組** 和 **訂閱**。 請確定您有 **釘選到開始面板** 選項處於選取狀態。 按一下 [ **建立**。
+3. 提供 **名稱** 的儲存體帳戶 （例如，「 contoso 」），並挑選適當的選擇，如 **定價層**, ，**資源群組** 和 **訂閱**。 請確定您有 **釘選到開始面板** 選項處於選取狀態。 按一下 [ **建立**。
 4. 回到「開始面板」，按一下您剛建立的儲存體帳戶。
 5. 在 **摘要** 區段中，按一下 **容器** 然後 **+ 新增**。
 6. 提供 **名稱** 容器 (例如，「 b2c 」) 並選取 **Blob** 為 **存取類型**。 按一下 [ **確定**。
@@ -73,7 +73,7 @@
 
 #### 下載協助程式工具和範例檔案
 
-您可以下載 [Azure Blob 儲存體協助程式工具和範例檔案的.zip 為](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip) 或從 GitHub 複製:
+您可以下載 [Azure Blob 儲存體協助程式工具和範例檔案的.zip 為](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip) 或從 GitHub 複製 ︰
 
 ```
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
@@ -83,11 +83,12 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 #### 上傳範例檔案
 
-在相同的儲存機制中，解壓縮 `B2CAzureStorageClient.zip` 並執行其中的 `B2CAzureStorageClient.exe` 檔案。  這個程式只是將您指定的目錄中的所有檔案上傳至您的儲存體帳戶，並允許透過 CORS 存取這些檔案。  如果您遵循上述步驟操作，HTML 和 CSS 檔案現在會指向您的儲存體帳戶。  請注意您的儲存體帳戶名稱是 `blob.core.windows.net` 前面的部分，例如 `contoso`。  您可以試著在瀏覽器上存取 `https://{storage-account-name}.blob.core.windows.net/{container-name}/Index.html`，確認該內容已正確地上傳。 也使用 [http://test-cors.org/](http://test-cors.org/) 藉此確定內容已啟用 CORS (尋找 XHR 狀態: 200 結果)。
+在相同的儲存機制中，解壓縮 `B2CAzureStorageClient.zip` 並執行其中的 `B2CAzureStorageClient.exe` 檔案。  這個程式只是將您指定的目錄中的所有檔案上傳至您的儲存體帳戶，並允許透過 CORS 存取這些檔案。  如果您遵循上述步驟操作，HTML 和 CSS 檔案現在會指向您的儲存體帳戶。  請注意您的儲存體帳戶名稱是 `blob.core.windows.net` 前面的部分，例如 `contoso`。  您可以試著在瀏覽器上存取 `https://{storage-account-name}.blob.core.windows.net/{container-name}/Index.html`，確認該內容已正確地上傳。 也使用 [http://test-cors.org/](http://test-cors.org/) 藉此確定內容已啟用 CORS (尋找 XHR 狀態 ︰ 200 結果)。
 
 #### 再次自訂您的原則
 
 既然已經將範例內容上載至您自己的儲存體帳戶，您必須編輯註冊原則來參考它。  重複步驟，從 [」 來自訂您的原則 」](#customize-your-policy) 節，這次使用您自己的儲存體帳戶 Url。  比方說，`Index.html` 檔案的位置是 `<url-of-your-container>/Index.html`。  
         
 現在您可以使用 **立即執行** 按鈕或您自己的 applicaition，若要重新執行您的原則。  結果看起來應該幾乎完全相同 - 您在兩個案例中都使用相同的範例 HTML 和 CSS。  不過，您的原則現在會參考您自己的 Azure Blob 儲存體執行個體，您可以自由編輯和重新上傳檔案。  如需有關自訂 HTML 和 CSS 的詳細資訊，請參閱 [主要 UI 自訂文件](active-directory-b2c-reference-ui-customization.md)。
+
 

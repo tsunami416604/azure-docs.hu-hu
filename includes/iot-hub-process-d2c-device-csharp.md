@@ -20,12 +20,12 @@
             }
         }
 
-    這個方法是非常類似於 `SendDeviceToCloudMessagesAsync()` 方法建立的 [開始使用 IoT 中心]，唯一的差異在於， `MessageId` 系統屬性和使用者的屬性稱為 `messageType` 現在設定。
+    這個方法是非常類似於 `SendDeviceToCloudMessagesAsync()` 中所建立的方法 [Get started with IoT Hub], 、 唯一的差異在於， `MessageId` 系統屬性和使用者的屬性稱為 `messageType` 現在設定。
     `MessageId` 屬性設為全域唯一識別碼 (guid)，用於刪除重複接收的訊息。 `messageType` 屬性用於區別來自資料點訊息的互動。 這項資訊是在訊息屬性中傳遞，不是在訊息主體中傳遞，所以後端中的事件處理器就不必只為執行路由而還原序列化整個訊息。
 
-> [AZURE.NOTE] 很重要， `MessageId`, 用於互動式訊息使用重複資料刪除時，請在裝置中，因為因間歇性的網路通訊 (或其他失敗) 可能會導致相同的訊息，從裝置的多個 retrasmissions。 相較於 GUID，也可以使用語意的訊息識別碼 (例如相關訊息資料欄位的雜湊)。
+> [AZURE.NOTE] 很重要， `MessageId`, 用於互動式訊息使用重複資料刪除時，請在裝置中，因為因間歇性的網路通訊 （或其他失敗） 可能會導致相同的訊息，從裝置的多個 retrasmissions。 相較於 GUID，也可以使用語意的訊息識別碼 (例如相關訊息資料欄位的雜湊)。
 
-2. 新增下列方法中的 **Main** 方法就馬上 `Console.ReadLine()` 行:
+2. 新增下列方法中的 **Main** 方法就馬上 `Console.ReadLine()` 行 ︰
 
         SendDeviceToCloudInteractiveMessagesAsync();
 
@@ -42,6 +42,7 @@
 [20]: ./media/iot-hub-getstarted-cloud-csharp/create-storage1.png
 [21]: ./media/iot-hub-getstarted-cloud-csharp/create-storage2.png
 [22]: ./media/iot-hub-getstarted-cloud-csharp/create-storage3.png
+
 
 
 

@@ -36,8 +36,8 @@
 
 | 函數 | 使用的軟體 | 其他注意事項 |
 | -------- | ------------- | ------- |
-| 加密 | Bitlocker 或 dmcrypt | 因為加密會在 *不同* 圖層時相較於 Azure 備份，無論使用何種加密軟體。 但只有 Bitlocker 和 dmcrypt 經過驗證。<br><br>若要加密資料，需要有金鑰。 您必須將金鑰存放在安全的位置，以確保資料的存取經過授權。  |
-| 金鑰管理 | CloudLink SecureVM<br>或 Azure 金鑰保存庫 | 金鑰是加密或解密資料的必要項目。 如果沒有正確的金鑰，就無法擷取資料。 這會成為 *非常* 重要:<br><li>金鑰變換<li>長期保留<br><br>比方說，它可以用來備份資料 7 年前的金鑰不是目前使用的相同索引鍵。 如果沒有 7 年前的金鑰，就無法使用從該時間還原的資料。|
+| 加密 | Bitlocker 或 dmcrypt | 因為加密會在 *不同* 圖層時相較於 Azure 備份，無論使用何種加密軟體。 話雖如此，只有 Bitlocker 和 dmcrypt 已驗證這種經驗。<br><br> 若要加密資料，需要有金鑰。 您必須將金鑰存放在安全的位置，以確保資料的存取經過授權。  |
+| 金鑰管理 | CloudLink SecureVM<br>或 Azure 金鑰保存庫 | 金鑰是加密或解密資料的必要項目。 如果沒有正確的金鑰，就無法擷取資料。 這會成為 *非常* 重要 ︰<br><li>金鑰變換<li>長期保留<br><br>比方說，它可能不是用來備份資料 7 年前的金鑰使用相同的金鑰今天。 如果沒有 7 年前的金鑰，就無法使用從該時間還原的資料。|
 | 資料備份 | Azure 備份 | 使用 Azure 備份來備份您的 Azure IaaS Vm 使用 [Azure 管理入口網站](http://manage.windowsazure.com) 或使用 PowerShell |
 | 資料還原 | Azure 備份 | 使用 Azure 備份從復原點還原磁碟或整個 VM。 資料不是由 Azure 備份當做還原作業的一部分來解密。|
 | 解密 | Bitlocker 或 dmcrypt | 為了從還原的資料磁碟或還原的 VM 讀取資料，軟體需要有來自金鑰管理軟體的金鑰。 如果沒有正確的金鑰，就無法解密資料。 |
@@ -61,4 +61,5 @@
 
 - [部署指南 - PDF](http://www.cloudlinktech.com/Azure/CL_SecureVM_4_0_DG_EMC_Azure_R2.pdf)
 - [部署及使用 SecureVM - 影片](https://www.youtube.com/watch?v=8AIRe92UDNg)
+
 

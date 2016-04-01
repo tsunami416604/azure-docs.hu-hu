@@ -31,7 +31,7 @@
 
 ## 若要開始，您需要：
 
-在開始本教學課程之前，您必須先完成行動服務快速入門: [開始使用行動服務]。
+在開始本教學課程之前，您必須先完成行動服務快速入門 ︰ [Get started with Mobile Services]。
 
 本教學課程還需要下列各項：
 
@@ -49,7 +49,7 @@
 
 那麼，什麼是 SAS？
 
-將上傳資料所需的認證儲存至用戶端應用程式中的 Azure 儲存體服務，是不安全的做法。 您應該將這些認證儲存在您的行動服務中，並使用這些認證來產生共用存取簽章 (SAS)，以便提供上傳新影像的權限。 行動服務會以安全的方式，將 SAS (5 分鐘後到期的認證) 傳回用戶端應用程式。 應用程式會使用此暫存認證來上傳影像。 如需詳細資訊，請參閱 [共用存取簽章，第 1 部分: 了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md)
+將上傳資料所需的認證儲存至用戶端應用程式中的 Azure 儲存體服務，是不安全的做法。 您應該將這些認證儲存在您的行動服務中，並使用這些認證來產生共用存取簽章 (SAS)，以便提供上傳新影像的權限。 行動服務會以安全的方式，將 SAS (5 分鐘後到期的認證) 傳回用戶端應用程式。 應用程式會使用此暫存認證來上傳影像。 如需詳細資訊，請參閱 [共用存取簽章，第 1 部分 ︰ 了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md)
 
 ## 程式碼範例
 [這裡](https://github.com/Azure/mobile-services-samples/tree/master/UploadImages) 是此應用程式的程式碼已完成的用戶端來源組件。 若要執行此程式碼，您必須完成本教學課程的行動服務後端組件。
@@ -63,7 +63,7 @@
 
 ### 參照 Azure 儲存體 Android 用戶端程式庫
 
-1. 若要將參考加入至程式庫，在 **應用程式** > **build.gradle** 檔案中，新增此行 `dependencies` 區段:
+1. 若要將參考加入至程式庫，在 **應用程式** > **build.gradle** 檔案中，新增此行 `dependencies` 區段 ︰
 
         compile 'com.microsoft.azure.android:azure-storage-android:0.6.0@aar'
 
@@ -83,11 +83,11 @@
 
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    請注意，Android 的外部儲存體不一定是 SD 卡: 如需詳細資訊，請參閱 [儲存檔案](http://developer.android.com/training/basics/data-storage/files.html)。
+    請注意，Android 的外部儲存體不一定是 SD 卡 ︰ 如需詳細資訊，請參閱 [儲存檔案](http://developer.android.com/training/basics/data-storage/files.html)。
 
 ### 更新新使用者介面的資源檔案
 
-1. 加入新按鈕的標題新增至下列 **strings.xml** 檔案中 *值* 目錄:
+1. 加入新按鈕的標題新增至下列 **strings.xml** 檔案中 *值* 目錄 ︰
 
         <string name="preview_button_text">Take Photo</string>
         <string name="upload_button_text">Upload</string>
@@ -101,7 +101,7 @@
              android:onClick="takePicture"
              android:text="@string/preview_button_text" />
 
-3. 取代 **新增** button 元素，以下列程式碼:
+3. 取代 **新增** button 元素，以下列程式碼 ︰
 
          <Button
              android:id="@+id/buttonUpload"
@@ -388,7 +388,7 @@
 
   了解如何使用 SendGrid 電子郵件服務將電子郵件功能新增到行動服務 本主題示範如何新增伺服器端指令碼，以使用 SendGrid 傳送電子郵件。
 
-+ [行動服務中排程後端工作]
++ [在行動服務中排程後端工作]
 
   了解如何使用行動服務工作排程器功能，定義可依您定義的排程執行的伺服器指令碼。
 
@@ -425,4 +425,5 @@
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+
 

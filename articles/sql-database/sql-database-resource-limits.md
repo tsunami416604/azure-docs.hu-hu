@@ -22,7 +22,7 @@
 
 ## 概觀
 
-Azure SQL Database 管理資料庫，使用兩個不同的機制可用的資源: **資源控管** 和 **強制的限制**。 本主題將說明資源管理的這兩種主要方法。
+Azure SQL Database 管理資料庫，使用兩個不同的機制可用的資源 ︰ **資源控管** 和 **強制的限制**。 本主題將說明資源管理的這兩種主要方法。
 
 ## 資源管理
 基本、標準和進階服務層的設計目的之一，是讓 Azure SQL Database 彷彿在獨立的電腦上執行，與其他資料庫完全隔離。 資源管理便會模擬這個行為。 如果彙總的資源使用率達到可用 CPU、記憶體、記錄 I/O 和資料 I/O 資源 (指派至資料庫) 的上限，資源管理會將查詢排入執行佇列中，並在系統釋出資源時，適時將資源指派給佇列中的查詢。
@@ -65,7 +65,7 @@ Azure SQL Database 的每個邏輯伺服器目前有 15000 個 DTU 的 DTU 配�
 
 | 領域 | 限制 | 說明 |
 |---|---|---|
-| 每個訂用帳戶使用自動匯出的資料庫 | 10 | 自動匯出可讓您建立自訂排程以備份 SQL Database。 如需詳細資訊，請參閱 [SQL 資料庫: 支援自動化的 SQL 資料庫匯出](http://weblogs.asp.net/scottgu/windows-azure-july-updates-sql-database-traffic-manager-autoscale-virtual-machines)。|
+| 每個訂用帳戶使用自動匯出的資料庫 | 10 | 自動匯出可讓您建立自訂排程以備份 SQL Database。 如需詳細資訊，請參閱 [SQL 資料庫 ︰ 支援自動化的 SQL 資料庫匯出](http://weblogs.asp.net/scottgu/windows-azure-july-updates-sql-database-traffic-manager-autoscale-virtual-machines)。|
 
 ## 資源
 
@@ -74,4 +74,5 @@ Azure SQL Database 的每個邏輯伺服器目前有 15000 個 DTU 的 DTU 配�
 [Azure SQL Database 服務層和效能層級](sql-database-service-tiers.md)
 
 [SQL Database 用戶端程式的錯誤訊息](sql-database-develop-error-messages.md)
+
 

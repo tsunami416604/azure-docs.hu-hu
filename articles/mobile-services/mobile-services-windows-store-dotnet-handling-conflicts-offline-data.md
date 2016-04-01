@@ -36,10 +36,10 @@
 
 在本教學課程中，您會為支援處理離線同步處理衝突的應用程式，下載通用的 Windows C# 解決方案。 您將在應用程式中整合行動服務，然後執行 Windows 市集 8.1 和 Windows Phone 8.1 用戶端以產生同步衝突，並加以解決。
 
-本教學課程為基礎的步驟和範例應用程式，從先前的教學課程 [開始使用離線資料]。 在開始本教學課程之前，您應該先完成 [開始使用離線資料]。
+本教學課程的步驟和範例應用程式，從先前的教學課程建置 [Get started with offline data]。 在開始本教學課程之前，您應該先完成 [Get started with offline data]。
 
 
-##先決條件
+##必要條件
 
 本教學課程需要執行於 Windows 8.1 的 Visual Studio 2013。
 
@@ -48,15 +48,15 @@
 
 ![][0]
 
-本教學課程會逐步解說 [Todo 離線行動服務範例] 如何處理本機離線存放區與 Azure 中的行動服務資料庫之間的同步衝突。
+本教學課程會逐步解說如何 [Todo Offline Mobile Services sample] 控點的同步處理本機離線存放區與 Azure 中的行動服務資料庫之間的衝突。
 
-1. 下載的 zip 檔案的 [行動服務範例 GitHub 儲存機制]，並將它解壓縮到工作目錄。
+1. 下載的 zip 檔案 [Mobile Services Samples GitHub Repository] 並將它解壓縮到工作目錄。
 
-2. 如果您尚未安裝 SQLite for Windows 8.1 和 Windows Phone 8.1 中所述 [開始使用離線資料] 教學課程中，安裝這兩個執行階段。
+2. 如果您尚未安裝 SQLite for Windows 8.1 和 Windows Phone 8.1 中所述 [Get started with offline data] 教學課程中，安裝這兩個執行階段。
 
 3. 在 Visual Studio 2013，開啟 *mobile-services-samples\TodoOffline\WindowsUniversal\TodoOffline-Universal.sln* 方案檔。 按下 **F5** 鍵重新建置並執行專案。 確認 NuGet 封裝已還原，並已正確設定參考。
 
-    >[AZURE.NOTE] 您可能需要刪除任何舊的 SQLite 執行階段參考，並取代更新過的參考中所述 [開始使用離線資料] 教學課程。
+    >[AZURE.NOTE] 您可能需要刪除任何舊的 SQLite 執行階段參考，並取代更新過的參考中所述 [Get started with offline data] 教學課程。
 
 4. 在應用程式中，輸入某些文字 **Insert a TodoItem**, ，然後按一下 [ **儲存** 將一些 todo 項目至本機存放區。 然後關閉應用程式。
 
@@ -69,9 +69,9 @@
 
 現在，我們將對行動服務進行應用程式測試。
 
-1. 在 [Azure 傳統入口網站]，找出您的行動服務應用程式金鑰依序按一下 **管理金鑰** 命令列上的 **儀表板** ] 索引標籤。 複製 **應用程式金鑰**。
+1. 在 [Azure classic portal], ，尋找您的行動服務應用程式金鑰，可以按一下 **管理金鑰** 命令列上的 **儀表板** ] 索引標籤。 複製 **應用程式金鑰**。
 
-2. 在 Visual Studio 的 [方案總管] 中，開啟 JavaScript 用戶端範例專案中的 App.xaml.cs 檔案。 初始化變更 **MobileServiceClient** 使用您的行動服務 URL 和應用程式金鑰:
+2. 在 Visual Studio 的 [方案總管] 中，開啟 JavaScript 用戶端範例專案中的 App.xaml.cs 檔案。 初始化變更 **MobileServiceClient** 使用您的行動服務 URL 和應用程式金鑰 ︰
 
          public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://your-mobile-service.azure-mobile.net/",
@@ -85,7 +85,7 @@
 
 ##更新後端中的資料以產生衝突
 
-在實際情況中，如果有一個應用程式推送資料庫中某筆記錄的更新，然後又有另一個應用程式嘗試使用該記錄的過期版本欄位來推送同一筆記錄的更新，此時便會發生同步衝突。 如果您還記得從 [開始使用離線資料]，version 系統屬性才能支援離線同步處理功能。 每個資料庫更新都會檢查此版本資訊。 如果應用程式的執行個體嘗試使用過期版本更新記錄，衝突便會發生，而且它會在應用程式中被當作 `MobileServicePreconditionFailedException` 加以攔截。 如果應用程式未攔截 `MobileServicePreconditionFailedException`，則最後會擲回 `MobileServicePushFailedException` 以說明發生多少個同步錯誤。
+在實際情況中，如果有一個應用程式推送資料庫中某筆記錄的更新，然後又有另一個應用程式嘗試使用該記錄的過期版本欄位來推送同一筆記錄的更新，此時便會發生同步衝突。 如果您還記得 [Get started with offline data], ，version 系統屬性才能支援離線同步處理功能。 每個資料庫更新都會檢查此版本資訊。 如果應用程式的執行個體嘗試使用過期版本更新記錄，衝突便會發生，而且它會在應用程式中被當作 `MobileServicePreconditionFailedException` 加以攔截。 如果應用程式未攔截 `MobileServicePreconditionFailedException`，則最後會擲回 `MobileServicePushFailedException` 以說明發生多少個同步錯誤。
 
 >[AZURE.NOTE] 若要支援離線資料同步處理已刪除的記錄，您應該啟用 [虛刪除](mobile-services-using-soft-delete.md)。 否則，您必須手動移除本機存放區中的記錄，或呼叫 `IMobileServiceSyncTable::PurgeAsync()` 以清除本機存放區。
 
@@ -167,5 +167,6 @@
 [Handling Database Conflicts]: mobile-services-windows-store-dotnet-handle-database-conflicts.md#test-app
 [Mobile Services Samples GitHub Repository]: http://go.microsoft.com/fwlink/?LinkId=512865
 [Todo Offline Mobile Services sample]: http://go.microsoft.com/fwlink/?LinkId=512866
+
 
 

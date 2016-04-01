@@ -58,7 +58,7 @@
 * **指令碼 URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1* 
     * *publicscripts* 是儲存體帳戶中的公用容器 
     * *getgoing* 來共用 PowerShell 指令碼檔案，以協助使用者在 Azure 中的工作。 
-* **參數** -(保留空白)
+* **參數** -（保留空白）
 
 最後，按一下勾號，開始建立自訂的 HDInsight Hadoop 叢集。 
 
@@ -86,7 +86,7 @@
 
      ![建立工作區][9]
 
-進階的分析程序的下一個步驟中的對應 [學習指南: 進階資料處理，在 Azure 中](machine-learning-data-science-advanced-data-processing.md) ，而且可能包括將資料移至 HDInsight，程序並進行取樣，並在與 Azure Machine Learning 從資料學習的準備步驟。
+進階的分析程序的下一個步驟中的對應 [學習指南 ︰ 進階資料處理，在 Azure 中](machine-learning-data-science-advanced-data-processing.md) ，而且可能包括將資料移至 HDInsight，程序並進行取樣，並在與 Azure Machine Learning 從資料學習的準備步驟。
 
 請參閱 [Hive 查詢提交至 HDInsight Hadoop 叢集的進階的分析程序](machine-learning-data-science-process-hive-tables.md) 如需如何存取之 Python 模組的隨附於 Anaconda 從前端節點叢集的使用者定義函數 (Udf)，用來處理儲存在叢集中之 Hive 記錄。
 
@@ -101,3 +101,4 @@
 [9]: ./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-3.png
 
  
+

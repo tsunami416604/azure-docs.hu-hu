@@ -72,7 +72,7 @@ Azure 提供安全 FTP 存取權限的檔案系統 web 應用程式透過 **FTPS
 
 如需 FTPS 的詳細資訊，請參閱 [檔案傳輸通訊協定](http://en.wikipedia.org/wiki/File_Transfer_Protocol)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 後續步驟
 
@@ -83,5 +83,6 @@ Azure 提供安全 FTP 存取權限的檔案系統 web 應用程式透過 **FTPS
 如需記錄資訊的 web 應用程式，可能會偵測攻擊很有用的請參閱 [啟用診斷記錄](web-sites-enable-diagnostic-log.md)。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+
 

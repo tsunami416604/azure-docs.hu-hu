@@ -32,7 +32,7 @@
 1. 登入 Azure 入口網站 [http://aka.ms/servicefabricportal](http://aka.ms/servicefabricportal)。
 
 2. 瀏覽至服務網狀架構叢集
- ![] BrowseServiceFabricClusterResource[] BrowseServiceFabricClusterResource
+ ![BrowseServiceFabricClusterResource][BrowseServiceFabricClusterResource]
 
 3. 選取您想要調整規模的叢集
 
@@ -80,4 +80,5 @@ Service Fabric 叢集目前還不支援自動調整規模。 不久之後，叢�
 
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
+
 

@@ -24,7 +24,7 @@
 
 另一點要注意的是，在您自己的訂用帳戶和控制下，所有排程的工作都將從 Microsoft Managed Azure 排程器方案移至 Azure 排程器方案。 類似於移轉至 App Service 的優點，這可讓您運用 Azure 排程器的完整功能。
 
-### <a name="why-host"></a>為什麼要裝載應用程式服務中?
+### <a name="why-host"></a>為何裝載於 App Service 中？
 
 App Service 可為您的應用程式提供功能更豐富的裝載環境。 藉由在 App Service 中裝載，您的服務將可存取預備位置、自訂網域、流量管理員支援等功能。 雖然您可以在移轉到 App Service 之後，將行動服務升級至行動 App 後端，但有些客戶可能尚未執行 SDK 更新，就想要立即運用這些功能。  
 
@@ -51,7 +51,7 @@ App Service 中的 Mobile Apps 是使用 Azure 建置行動應用程式的新方
 
 將行動服務移轉至 App Service 的最簡單且建議的方式是使用 [移轉至 App Service] 精靈，這適用於 Azure 傳統入口網站。 瀏覽至 [Azure classic portal],  ，瀏覽您的行動服務，然後選取要移轉的行動服務，在畫面底部，您會看到 **移轉至應用程式服務** 逐步引導您完成移轉您的行動服務的程序的按鈕。
 
-### <a name="what-gets-migrated"></a>移轉?
+### <a name="what-gets-migrated"></a>移轉哪些項目？
 
 移轉精靈會將主控行動服務的伺服器陣列，從受行動服務管理變更為受 App Service 管理。 它也會將行動服務所管理的任何排程器方案，從 Microsoft 管理的訂用帳戶移至您的訂用帳戶。 將伺服器陣列傳輸到 App Service 的管理控制項時，所有與該伺服器陣列相關聯的行動服務會同時移動。
 
@@ -83,7 +83,7 @@ App Service 中的 Mobile Apps 是使用 Azure 建置行動應用程式的新方
 ### <a name="app-settings"></a>應用程式設定
 若要使用行動服務，必須在環境中完成幾項應用程式設定，本節將說明這幾項設定。
 
-若要設定的應用程式在行動應用程式後端上，請先登入 [Azure portal]。 瀏覽至您想要做為您的行動應用程式後端使用，請按一下 [應用程式服務應用程式 **設定** > **應用程式設定**, ，然後向下捲動至 **應用程式設定**, ，這是可讓您設定下列必要的索引鍵-值組:
+若要設定的應用程式在行動應用程式後端上，請先登入 [Azure portal]。 瀏覽至您想要做為您的行動應用程式後端使用，請按一下 [應用程式服務應用程式 **設定** > **應用程式設定**, ，然後向下捲動至 **應用程式設定**, ，這是可讓您設定下列必要的索引鍵-值組 ︰
 
 + **MS_MobileServiceName** 應該設定為您的應用程式的名稱。 例如，當您的後端的 URL 是 `contoso.azurewebsites.net`, ，然後 *contoso* 的正確值。
 
@@ -96,11 +96,11 @@ App Service 中的 Mobile Apps 是使用 Azure 建置行動應用程式的新方
 主要金鑰和應用程式金鑰時移轉行動服務，可從取得 **設定** ] 索引標籤的 [行動服務] 區段的 [Azure classic portal]。 按一下 [ **管理金鑰** 底部，並將複製的索引鍵。
 
 
-### <a name="client-sdk"></a>如何: 修改用戶端 SDK
+### <a name="client-sdk"></a>作法：修改用戶端 SDK
 
 在用戶端 app 專案中修改行動服務用戶端物件的建構函式，使其接受新的 app URL (例如 `https://contoso.azurewebsites.net`) 和先前設定的應用程式索引鍵。 用戶端 SDK 版本號碼應為 **行動電話服務** 版本應該和 **不** 升級。 如果是 IOS 和 Android 用戶端，請使用 2.x 版，Windows/Xamarin 用戶端請使用 1.3.2。 Javascript 用戶端應使用 1.2.7。
 
-### <a name="data"></a>如何: 啟用資料功能
+### <a name="data"></a>作法：啟用資料功能
 
 若要在行動服務中使用預設的 Entity Framework 類別，必須完成兩項額外的設定。
 
@@ -108,7 +108,7 @@ App Service 中的 Mobile Apps 是使用 Azure 建置行動應用程式的新方
 
 根據預設，要使用的結構描述是 **MS_MobileServiceName**, ，但這將會覆寫與 **MS_TableSchema** 設定。 回到 **應用程式設定** 設定 **MS_TableSchema** 設為要使用的結構描述的名稱。 如果您要移動現有的行動服務應用程式，目前已有使用 Entity Framework 建立的結構描述 - 這是行動服務的名稱，而不是現在會裝載程式碼的 App Service 執行個體。
 
-### <a name="push"></a>如何: 啟用推播功能
+### <a name="push"></a>作法：啟用推送功能
 
 若要讓推送功能運作，Web app 還必須知道通知中樞的相關資訊。
 
@@ -116,7 +116,7 @@ App Service 中的 Mobile Apps 是使用 Azure 建置行動應用程式的新方
 
  **MS_NotificationHubName** 應用程式應該設定為中心的名稱。 當您移動現有的行動服務，您可以從行動服務取得此值 **推送** 索引標籤中 [Azure 傳統入口網站](https://manage.windowsazure.com/)。 此索引標籤上的其他欄位會連結至中樞本身，不需要複製到任何位置。
 
-### <a name="auth"></a>如何: 啟用驗證功能
+### <a name="auth"></a>作法：啟用驗證功能
 
 身分識別功能也有必須為個別提供者進行應用程式設定的需求。 如果從現有的行動服務，每個欄位中移動 **識別** ] 索引標籤，在 Azure 傳統入口網站中的有對應的應用程式設定。
 
@@ -150,9 +150,9 @@ AAD
 
 * **MS_AadClientID**
 
-* **MS_AadTenants** -注意: **MS_AadTenants** 儲存為逗號分隔的清單的租用戶網域 ( **允許的租用戶** Azure 傳統入口網站中的欄位)。
+* **MS_AadTenants** -注意 ︰ **MS_AadTenants** 儲存為逗號分隔的清單的租用戶網域 ( **允許的租用戶** Azure 傳統入口網站中的欄位)。
 
-### <a name="publish"></a>如何: 發行行動服務專案
+### <a name="publish"></a>作法：發佈行動服務專案
 
 1. 在 [Azure portal], ，瀏覽至您的應用程式，按一下 **取得發行設定檔** 命令列中，並儲存到本機電腦下載的設定檔。
 2. 在 Visual Studio 中，以滑鼠右鍵按一下行動服務伺服器專案，然後按一下 [ **發行**。 
@@ -183,4 +183,5 @@ AAD
 [App Service Environment]: app-service-app-service-environment-intro.md
 [Mobile Services vs. App Service]: app-service-mobile-value-prop-migration-from-mobile-services-preview.md
 [migrate a mobile service to a mobile app on App Service]: app-service-mobile-migrating-from-mobile-services.md
+
 

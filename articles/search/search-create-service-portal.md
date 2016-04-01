@@ -82,7 +82,7 @@ Azure 搜尋作業同時需要儲存體和服務複本。 相較於沒有選項�
 
 1. 在 Jumpbar 中按一下 [ **首頁** ，然後按一下以開啟服務儀表板的 Azure 搜尋服務。
 
-2. 您會在服務儀表板上看到基本資訊磚，以及存取系統管理金鑰的鑰匙圖示。
+2. 您會在服務儀表板上看到基本資訊圖格，以及存取系統管理金鑰的鑰匙圖示。
 
     ![][3]
 
@@ -122,4 +122,5 @@ Azure 搜尋作業同時需要儲存體和服務複本。 相較於沒有選項�
 [1]: ./media/search-create-service-portal/create-search-portal-1.PNG
 [2]: ./media/search-create-service-portal/create-search-portal-2.PNG
 [3]: ./media/search-create-service-portal/create-search-portal-3.PNG
+
 

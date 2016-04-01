@@ -18,7 +18,7 @@
 
 # 使用 Azure PowerShell 管理角色型存取控制 (RBAC)
 <!-- Azure Selector -->
-> [AZURE。選取器]
+> [AZURE.SELECTOR]
 - [PowerShell](role-based-access-control-manage-access-powershell.md)
 - [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 
@@ -72,7 +72,7 @@
     Get-AzureRmADGroup -SearchString <group name in quotes>
 
 #### 尋找 Azure AD 服務主體的物件識別碼
-若要取得 Azure AD 服務主體使用的物件識別碼:
+若要取得 Azure AD 服務主體使用的物件識別碼 ︰
     Get AzureRmADServicePrincipal-SearchString <service name in quotes>
 
 ### 將角色指派給訂用帳戶範圍中的群組
@@ -149,4 +149,5 @@
 
 ## RBAC 主題
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+
 

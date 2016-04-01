@@ -449,7 +449,7 @@ A **CloudTableClient** 物件可讓您取得資料表的參考物件
 
 ## 以非同步方式擷取頁面中的實體
 
-如果您要讀取大量實體，且您想要在擷取實體時處理/顯示實體，但不想等待它們全部傳回，您可以使用分割查詢來擷取實體。 這個範例示範如何使用 Async-Await 模式，在您等候大量的結果集傳回時亦不會妨礙執行作業，以便在頁面中傳回結果。 如需有關如何在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [使用 Async 和 Await (C# 和 Visual Basic) 的非同步程式設計](https://msdn.microsoft.com/library/hh191443.aspx)。
+如果您要讀取大量實體，且您想要在擷取實體時處理/顯示實體，但不想等待它們全部傳回，您可以使用分割查詢來擷取實體。 這個範例示範如何使用 Async-Await 模式，在您等候大量的結果集傳回時亦不會妨礙執行作業，以便在頁面中傳回結果。 如需有關如何在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [使用 Async 和 Await （C# 和 Visual Basic） 的非同步程式設計](https://msdn.microsoft.com/library/hh191443.aspx)。
 
     // Initialize a default TableQuery to retrieve all the entities in the table.
     TableQuery<CustomerEntity> tableQuery = new TableQuery<CustomerEntity>();
@@ -476,7 +476,7 @@ A **CloudTableClient** 物件可讓您取得資料表的參考物件
 ## 後續步驟
 
 了解資料表儲存體的基礎概念之後，請參考下列連結
-若要了解有關更複雜的儲存體工作:
+若要了解有關更複雜的儲存體工作 ︰
 
 - 如需可用 API 的完整詳細資訊，請檢視資料表服務參考文件：
     - [Storage Client Library for .NET 參考資料](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
@@ -503,4 +503,5 @@ A **CloudTableClient** 物件可讓您取得資料表的參考物件
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
+
 

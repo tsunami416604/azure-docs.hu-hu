@@ -1,6 +1,6 @@
 <properties
-    pageTitle="建立使用.NET 的 Azure 搜尋服務索引 |Microsoft Azure |託管的雲端搜尋服務"
-    description="使用 Azure 搜尋服務.NET SDK 或程式庫程式碼中建立索引。"
+    pageTitle="使用 .NET 建立 Azure 搜尋服務索引 | Microsoft Azure | 雲端託管搜尋服務"
+    description="使用 Azure 搜尋服務 .NET SDK 或程式庫在程式碼中建立索引。"
     services="search"
     documentationCenter=""
     authors="HeidiSteen"
@@ -17,7 +17,7 @@
     ms.date="11/09/2015"
     ms.author="heidist"/>
 
-# 建立使用.NET 的 Azure 搜尋服務索引
+# 使用 .NET 建立 Azure 搜尋服務索引
 > [AZURE.SELECTOR]
 - [概觀](search-what-is-an-index.md)
 - [入口網站](search-create-index-portal.md)
@@ -65,3 +65,4 @@
     }
 
 此方法會以定義新索引結構描述的 `Field` 物件清單，建立新的 `Index` 物件。 每個欄位均有一個名稱、資料類型和一些屬性，以用於定義欄位的搜尋行為。 除了欄位之外，您還可以新增評分設定檔、建議工具或 CORS 選項到 Index (基於簡化目的，範例已省略這些選項)。 您可以找到更多資訊 Index 物件以及其組成部分 SDK 參考上 [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.index_members.aspx), 、 以及如下所示 [Azure 搜尋服務 REST API 參考](https://msdn.microsoft.com/library/azure/dn798935.aspx)。
+

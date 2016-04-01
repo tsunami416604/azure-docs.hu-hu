@@ -44,8 +44,9 @@
 
 ##下一步
 
-發佈內容。 如需詳細資訊，請參閱 [How to: 為資產編碼](../media-services-manage-content#publish)。 
+發佈內容。 如需詳細資訊，請參閱 [How to ︰ 為資產編碼](../media-services-manage-content#publish)。 
 
 
 [checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
  
+

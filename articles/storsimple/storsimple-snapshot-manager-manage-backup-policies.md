@@ -43,7 +43,7 @@
 
     ![建立原則 - 一般索引標籤](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
 
-3. 在 **一般** 索引標籤上，完成下列資訊:
+3. 在 **一般** 索引標籤上，完成下列資訊 ︰
 
    1. 在 **名稱** ] 文字方塊中，輸入原則的名稱。
 
@@ -51,13 +51,13 @@
 
    3. 選取 [ **本機快照** 或 **雲端快照集**。
 
-   4. 選取要保留的快照數目。 如果您選取 **所有**, ，64 個快照會保留 (上限)。 
+   4. 選取要保留的快照數目。 如果您選取 **所有**, ，64 個快照會保留 （上限）。 
 
 4. 按一下 [ **排程** ] 索引標籤。
 
     ![建立原則 - 排程索引標籤](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
 
-5. 在 **排程** 索引標籤上，完成下列資訊: 
+5. 在 **排程** 索引標籤上，完成下列資訊 ︰ 
 
    1. 按一下 [ **啟用** 核取方塊以排定下次備份。
 
@@ -69,7 +69,7 @@
 
    5. 按一下 [ **確定**。
 
-建立備份原則之後，下列資訊會出現在 **結果** 窗格:
+建立備份原則之後，下列資訊會出現在 **結果** 窗格 ︰
 
 - **名稱** – 備份原則的名稱。
 
@@ -81,7 +81,7 @@
 
 - **建立** – 這個原則的建立日期。
 
-- **啟用** – 原則目前是否生效: **True** 表示生效; 它是 **False** 表示不在作用中。 
+- **啟用** – 原則目前是否生效 ︰ **True** 表示生效; 它是 **False** 表示不在作用中。 
 
 ## 編輯備份原則
 
@@ -119,3 +119,4 @@ e
 
 - 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 - 了解如何 [使用 StorSimple Snapshot Manager 來檢視和管理備份作業](storsimple-snapshot-manager-manage-backup-jobs.md)。
+

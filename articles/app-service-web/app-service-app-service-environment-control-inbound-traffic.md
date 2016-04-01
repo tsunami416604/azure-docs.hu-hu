@@ -19,13 +19,13 @@
 # 如何控制 App Service 環境的輸入流量
 
 ## 概觀 ##
-App Service 環境一律會建立在子網路的地區傳統"v1"[虛擬網路] [virtualnetwork]。  建立 APP Service 環境時，可定義新的區域傳統 "v1" 虛擬網路和新的子網路。  或者亦可在先前既存的區域傳統 "v1" 虛擬網路與子網路中，建立 APP Service 環境。  如需建立 App Service 環境的詳細資訊，請參閱 < 如何建立 App Service 環境] [HowToCreateAnAppServiceEnvironment]。
+App Service 環境一律會建立在子網路的地區傳統"v1" [虛擬網路][virtualnetwork]。  建立 APP Service 環境時，可定義新的區域傳統 "v1" 虛擬網路和新的子網路。  或者亦可在先前既存的區域傳統 "v1" 虛擬網路與子網路中，建立 APP Service 環境。  如需建立 App Service 環境的詳細資訊，請參閱 [如何建立 App Service 環境][HowToCreateAnAppServiceEnvironment]。
 
-**注意:**  無法"v2"ARM 管理虛擬網路中建立 App Service 環境。
+**注意 ︰**  無法"v2"ARM 管理虛擬網路中建立 App Service 環境。
 
 App Service 環境必須一律建立於子網路中，因為子網路可提供網路界限以便用來鎖定上游裝置和服務背後的輸入流量，因此只接受來自特定上游 IP 位址的 HTTP 和 HTTPS 流量。
 
-使用 [網路安全性群組] 控制子網路上的輸入和輸出網路流量 [NetworkSecurityGroups]。  控制輸入流量時，需要在網路安全性群組中建立網路安全性規則，然後將網路安全性群組指派給包含 App Service 環境的子網路。
+使用控制子網路上的輸入和輸出網路流量 [網路安全性群組][NetworkSecurityGroups]。  控制輸入流量時，需要在網路安全性群組中建立網路安全性規則，然後將網路安全性群組指派給包含 App Service 環境的子網路。
 
 將網路安全性群組指派給子網路後，會根據網路安全性群組中定義的允許和拒絕規則，允許/封鎖 App Service 環境中應用程式的輸入流量。
 
@@ -38,10 +38,10 @@ App Service 環境必須一律建立於子網路中，因為子網路可提供�
 
 - 454:  **必要連接埠** Azure 基礎結構用來管理和維護 App Service 環境。  不會封鎖對此連接埠的流量。
 - 455:  **必要連接埠** Azure 基礎結構用來管理和維護 App Service 環境。  不會封鎖對此連接埠的流量。
-- 80: 預設的應用程式服務方案 App Service 環境中執行的應用程式的輸入 HTTP 流量的連接埠
+- 80 ︰ 預設的應用程式服務方案 App Service 環境中執行的應用程式的輸入 HTTP 流量的連接埠
 - 443：對於在 App Service 環境的 App Service 方案中執行的應用程式，其輸入 SSL 流量的預設連接埠。
 - 21: FTP 的控制通道。  如果未使用 FTP，就可以安全地封鎖此連接埠。
-- 10001-10020：FTP 的資料通道。  控制通道中，這些連接埠可以安全地封鎖若未使用 FTP (**附註:** FTP 資料通道可能會在預覽期間變更。)
+- 10001-10020：FTP 的資料通道。  控制通道中，這些連接埠可以安全地封鎖若未使用 FTP (**附註 ︰** FTP 資料通道可能會在預覽期間變更。)
 - 4016：用於 Visual Studio 2012 的遠端偵錯。  如果未使用此功能，就可以安全地封鎖此連接埠。
 - 4018：用於 Visual Studio 2013 的遠端偵錯。  如果未使用此功能，就可以安全地封鎖此連接埠。
 - 4020：用於 Visual Studio 2015 的遠端偵錯。  如果未使用此功能，就可以安全地封鎖此連接埠。
@@ -49,12 +49,12 @@ App Service 環境必須一律建立於子網路中，因為子網路可提供�
 ## 輸出連線和 DNS 需求 ##
 為了讓 App Service 環境正確運作，需要全球 Azure 儲存體以及相同 Azure 區域中 SQL Database 的輸出存取權。  如果虛擬網路中封鎖輸出網際網路存取，則 App Service 環境將無法存取這些 Azure 端點。
 
-App Service 環境也需要針對虛擬網路設定的有效 DNS 基礎結構。  如果 DNS 設定在建立 App Service 環境之後因為任何原因而變更，開發人員可以強制 App Service 環境挑選新的 DNS 組態。  觸發輪流的環境重新開機，使用 「 重新啟動 」 圖示位於頂端的 [新的管理入口網站] 中的 App Service 環境管理分頁 [NewPortal] 會挑選新的 DNS 組態的環境。
+App Service 環境也需要針對虛擬網路設定的有效 DNS 基礎結構。  如果 DNS 設定在建立 App Service 環境之後因為任何原因而變更，開發人員可以強制 App Service 環境挑選新的 DNS 組態。  在 App Service 環境管理刀鋒視窗頂端觸發輪流的環境重新開機，使用 「 重新啟動 」 圖示位於 [新的管理入口網站][NewPortal] 會挑選新的 DNS 組態的環境。
 
 以下清單詳細描述 App Service 環境所需的連線能力和 DNS：
 
--  全球 Azure 儲存體端點的輸出網路連線。  這包括端點位於與 App Service 環境中，相同的區域，以及儲存體端點位於 **其他** Azure 區域。  在下列的 DNS 網域的 azure 儲存體端點解析: *.table.core.windows.net*, ，*windows.net*, ，*queue.core.windows.net* 和 *windows.net*。  
--  位於與 App Service 環境相同區域中的 SQL DB 端點的輸出網路連接。  SQl 資料庫端點解析下列網域下:  *.database.windows.net*。
+-  全球 Azure 儲存體端點的輸出網路連線。  這包括端點位於與 App Service 環境中，相同的區域，以及儲存體端點位於 **其他** Azure 區域。  在下列的 DNS 網域的 azure 儲存體端點解析 ︰ *.table.core.windows.net*, ，*windows.net*, ，*queue.core.windows.net* 和 *windows.net*。  
+-  位於與 App Service 環境相同區域中的 SQL DB 端點的輸出網路連接。  SQl 資料庫端點解析下列網域下 ︰  *.database.windows.net*。
 -  Azure 管理平面端點 (ASM 和 ARM 端點) 的輸出網路連線。  這包括兩者的輸出連線 *management.core.windows.net* 和 *management.azure.com*。 
 -  輸出網路連線 *ocsp.msocsp.com*。  需要此連線才能支援 SSL 功能。
 -  虛擬網路的 DNS 設定必須能夠解析前面幾點所提到的所有端點和網域。  如果無法解析這些端點，App Service 環境建立嘗試將會失敗，而且現有的 App Service 環境會標示為狀況不良。
@@ -65,9 +65,9 @@ App Service 環境也需要針對虛擬網路設定的有效 DNS 基礎結構。
 也建議事先在虛擬網路上設定任何自訂 DNS 伺服器，再建立 App Service 環境。  如果在建立 App Service 環境時變更虛擬網路的 DNS 組態，則會導致 App Service 環境建立程序失敗。  同樣地，若自訂 DNS 伺服器存在於 VPN 閘道的另一端，且 DNS 伺服器無法連線或使用，則 App Service 環境建立程序也會失敗。
 
 ## 建立網路安全性群組 ##
-如需網路安全性群組如何運作的完整詳細資訊，請參閱下列 [資訊] [NetworkSecurityGroups]。  以下詳細資料是有關網路安全性群組的重點，著重於設定網路安全群組並套用到包含 App Service 環境的子網路。
+如需網路安全性群組如何運作的完整詳細資訊，請參閱下列 [資訊][NetworkSecurityGroups]。  以下詳細資料是有關網路安全性群組的重點，著重於設定網路安全群組並套用到包含 App Service 環境的子網路。
 
-**注意:** 網路安全性群組只能設定使用 Powershell cmdlet，如下所述。  無法設定網路安全性群組，以圖形方式使用 [Azure 入口網站](portal.azure.com) 因為 Azure 網站只允許圖形以"v2"的虛擬網路相關聯的 Nsg 的組態。  不過，App Service 環境目前僅支援處理傳統 "v1" 虛擬網路。  因此，您僅可使用 Powershell Cmdlet 將網路安全性群組設為與 "v1" 虛擬網路關聯。
+**注意 ︰** 網路安全性群組只能設定使用 Powershell cmdlet，如下所述。  無法設定網路安全性群組，以圖形方式使用 [Azure 入口網站](portal.azure.com) 因為 Azure 網站只允許圖形以"v2"的虛擬網路相關聯的 Nsg 的組態。  不過，App Service 環境目前僅支援處理傳統 "v1" 虛擬網路。  因此，您僅可使用 Powershell Cmdlet 將網路安全性群組設為與 "v1" 虛擬網路關聯。
 
 網路安全性群組首次會建立為與訂用帳戶相關聯的獨立實體。 由於網路安全性群組建立於 Azure 區域，所以請確保網路安全性群組建立於與 App Service 環境相同的區域中。
 
@@ -95,7 +95,7 @@ App Service 環境也需要針對虛擬網路設定的有效 DNS 基礎結構。
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPCtrl" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '21' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 
-(**附註:**  資料通道連接埠範圍可能會在預覽期間變更。)
+(**附註 ︰**  資料通道連接埠範圍可能會在預覽期間變更。)
 
 如果使用 Visual Studio 遠端偵錯，則下列規則會示範如何授與存取權。  因為每個支援的 Visual Studio 版本使用不同的連接埠進行遠端偵錯，所以每個版本會有個別的規則。  如同 FTP 存取，遠端偵錯流量可能不會透過傳統 WAF 或 Proxy 裝置正確傳送。   *SourceAddressPrefix* 可以改為設定成執行 Visual Studio 的開發人員電腦的 IP 位址範圍。
 
@@ -113,7 +113,7 @@ App Service 環境也需要針對虛擬網路設定的有效 DNS 基礎結構。
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
-網路安全性群組指派成功後 (指派是長時間執行的作業並可能需要幾分鐘才能完成)，僅輸入流量符合 *允許* 規則才能成功抵達 App Service 環境中的應用程式。
+網路安全性群組指派成功後 （指派是長時間執行的作業並可能需要幾分鐘才能完成），僅輸入流量符合 *允許* 規則才能成功抵達 App Service 環境中的應用程式。
 
 基於完整性，下列範例示範如何移除進而取消網路安全性群組與子網路的關聯：
 
@@ -127,11 +127,11 @@ App Service 環境也需要針對虛擬網路設定的有效 DNS 基礎結構。
 
 ## 開始使用
 
-若要開始使用 App Service 環境，請參閱 [App Service 環境簡介] [IntroToAppServiceEnvironment]
+若要開始使用 App Service 環境，請參閱 [App Service 環境簡介][IntroToAppServiceEnvironment]
 
-如需安全地從 App Service 環境連接到後端資源的應用程式的詳細資訊，請參閱 [安全地連接到後端資源從 App Service 環境] [SecurelyConnecttoBackend]
+如需安全地從 App Service 環境連接到後端資源的應用程式的詳細資訊，請參閱 [安全地連接到後端資源從 App Service 環境][SecurelyConnecttoBackend]
 
-如需有關 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service] [AzureAppService]。
+如需 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service][AzureAppService]。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -148,4 +148,5 @@ App Service 環境也需要針對虛擬網路設定的有效 DNS 基礎結構。
 
 <!-- IMAGES -->
  
+
 

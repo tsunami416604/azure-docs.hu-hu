@@ -19,9 +19,9 @@
 # 將虛擬網路連結到 ExpressRoute 電路
 
 > [AZURE.SELECTOR]
-- [PowerShell-傳統](expressroute-howto-linkvnet-classic.md)
+- [PowerShell - 傳統](expressroute-howto-linkvnet-classic.md)
 - [PowerShell 的資源管理員](expressroute-作法-linkvnet-arm.md)
-- [資源管理員範本](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
+- [範本 - 資源管理員](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
 
 本文提供如何將虛擬網路 (Vnet) 連結到 ExpressRoute 線路的概觀。 虛擬網路可以位於相同的訂用帳戶中，或屬於另一個訂用帳戶。 本文適用於使用傳統部署模型部署的 VNet。 如果您想要連結已使用 Azure 資源管理員部署方法進行部署的虛擬網路，您可以使用範本來執行。 請參閱上述索引標籤以瀏覽至範本。
 
@@ -31,8 +31,8 @@
 
 - 您需要最新版的 Azure PowerShell 模組 (版本 1.0 或更新版本)。 
 - 請確定您已檢閱 [必要條件](expressroute-prerequisites.md) ] 頁面上， [路由需求](expressroute-routing.md) 頁面和 [工作流程](expressroute-workflows.md) 之前開始設定] 頁面上。
-- 您必須擁有作用中的 ExpressRoute 循環。 請依照下列指示 [建立的 ExpressRoute 電路](expressroute-howto-circuit-classic.md) 和有電路啟用您的連線提供者，才能繼續。 ExpressRoute 線路必須處於已佈建和已啟用狀態，您才能執行如下所述的 Cmdlet。
-- 您必須擁有作用中的 ExpressRoute 循環。 
+- 您必須擁有作用中的 ExpressRoute 線路。 請依照下列指示 [建立的 ExpressRoute 電路](expressroute-howto-circuit-classic.md) 和有電路啟用您的連線提供者，才能繼續。 ExpressRoute 線路必須處於已佈建和已啟用狀態，您才能執行如下所述的 Cmdlet。
+- 您必須擁有作用中的 ExpressRoute 線路。 
     - 請依照下列指示 [建立的 ExpressRoute 電路](expressroute-howto-circuit-arm.md) 和有連線提供者所啟用的電路。 
     - 確定您已針對循環設定了 Azure 私用對等。 請參閱 [設定路由](expressroute-howto-routing-arm.md) 路由指示的文章。 
     - Azure 私用對等必須設定，且在您的網路與 Microsoft 之間的 BGP 對等必須為您啟用端對端連線。
@@ -58,7 +58,7 @@
 
 ### 系統管理
 
- *電路擁有者* 是 ExpressRoute 電路資源的授權的進階使用者。 電路擁有者可以建立可由折的授權 *電路使用者*。 *電路使用者* 擁有者的虛擬網路閘道 (也就不在相同 ExpressRoute 電路的訂閱)。 *電路使用者* 可以兌換授權 (每個虛擬網路的一個授權。
+ *電路擁有者* 是 ExpressRoute 電路資源的授權的進階使用者。 電路擁有者可以建立可由折的授權 *電路使用者*。 *電路使用者* 擁有者的虛擬網路閘道 （也就不在相同 ExpressRoute 電路的訂閱）。 *電路使用者* 可以兌換授權 （每個虛擬網路的一個授權。
 
  *電路擁有者* 有修改，並隨時撤銷授權。 如果撤銷授權，則在存取權遭撤銷的訂用帳戶中，所有連結連線均會被刪除。
 
@@ -136,4 +136,5 @@
 ## 後續步驟
 
 如需有關 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
+
 

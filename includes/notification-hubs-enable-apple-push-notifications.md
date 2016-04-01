@@ -35,11 +35,11 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 2. 更新新應用程式的下列三個欄位，然後按一下 [ **繼續**:
 
-    * **名稱**: 輸入您的應用程式中的描述性名稱 **名稱** 欄位 **應用程式識別碼描述** 一節。
+    * **名稱**︰ 輸入您的應用程式中的描述性名稱 **名稱** 欄位 **應用程式識別碼描述** 一節。
     
-    * **配套識別碼**: 下 **明確的應用程式識別碼** 區段中，輸入 **Bundle Identifier** 形式 `<Organization Identifier>.<Product Name>` 中所述 [應用程式散發指南](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)。  *組織識別碼* 和 *產品名稱* 使用必須符合當您建立 XCode 專案時，您將使用的組織識別碼和產品名稱。 在下面的快照中 *NotificationHubs* 做為組織識別碼和 *GetStarted* 做為產品名稱。 確定這符合您將在 XCode 專案中使用的值，讓您使用正確的發行設定檔搭配 XCode。 
+    * **配套識別碼**︰ 下 **明確的應用程式識別碼** 區段中，輸入 **Bundle Identifier** 形式 `<Organization Identifier>.<Product Name>` 中所述 [應用程式散發指南](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)。  *組織識別碼* 和 *產品名稱* 使用必須符合當您建立 XCode 專案時，您將使用的組織識別碼和產品名稱。 在下面的快照中 *NotificationHubs* 做為組織識別碼和 *GetStarted* 做為產品名稱。 確定這符合您將在 XCode 專案中使用的值，讓您使用正確的發行設定檔搭配 XCode。 
     
-    * **推播通知**: 檢查 **推播通知** 選項 **應用程式服務** 一節。
+    * **推播通知**︰ 檢查 **推播通知** 選項 **應用程式服務** 一節。
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
@@ -134,6 +134,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 7. 當新的佈建設定檔建立好時，按一下它來下載並安裝在 Xcode 開發電腦上。 然後按一下 [ **完成**。
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
+
 
 
 

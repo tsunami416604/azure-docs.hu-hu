@@ -57,11 +57,11 @@ ns.CreateTopic(td);
 
 根據這個案例，會使用不同的訊息屬性做為分割索引鍵：
 
-**工作階段識別碼**: 如果訊息具有 [BrokeredMessage.SessionId][] 設定屬性，則服務匯流排會使用此屬性作為資料分割索引鍵。 如此一來，所有屬於相同工作階段的訊息都會由相同的訊息代理人處理。 這樣可讓服務匯流排保證訊息的排序以及工作階段狀態的一致性。
+**工作階段識別碼**︰ 如果訊息具有 [BrokeredMessage.SessionId][] 設定屬性，則服務匯流排會使用此屬性作為資料分割索引鍵。 如此一來，所有屬於相同工作階段的訊息都會由相同的訊息代理人處理。 這樣可讓服務匯流排保證訊息的排序以及工作階段狀態的一致性。
 
-**PartitionKey**: 如果訊息具有 [BrokeredMessage.PartitionKey][] 屬性而非 [BrokeredMessage.SessionId][] 設定屬性，則服務匯流排會使用 [PartitionKey][] 做為資料分割索引鍵屬性。 如果訊息都 [SessionId][] 和 [PartitionKey][] 設定屬性之後，這兩個屬性必須相同。 如果 [PartitionKey][] 屬性設定為不同的值 [SessionId][] 屬性、 服務匯流排傳回 **InvalidOperationException** 例外狀況。  [PartitionKey][] 應該使用屬性，如果寄件者傳送非工作階段感知的交易式訊息。 分割索引鍵可確保在交易內傳送的所有訊息都由相同的訊息代理人處理。
+**PartitionKey**︰ 如果訊息具有 [BrokeredMessage.PartitionKey][] 屬性而非 [BrokeredMessage.SessionId][] 設定屬性，則服務匯流排會使用 [PartitionKey][] 做為資料分割索引鍵屬性。 如果訊息都 [SessionId][] 和 [PartitionKey][] 設定屬性之後，這兩個屬性必須相同。 如果 [PartitionKey][] 屬性設定為不同的值 [SessionId][] 屬性、 服務匯流排傳回 **InvalidOperationException** 例外狀況。  [PartitionKey][] 應該使用屬性，如果寄件者傳送非工作階段感知的交易式訊息。 分割索引鍵可確保在交易內傳送的所有訊息都由相同的訊息代理人處理。
 
-**MessageId**: 如果佇列或主題有 [QueueDescription.RequiresDuplicateDetection][] 屬性設定為 **true** 和 [BrokeredMessage.SessionId][] 或 [BrokeredMessage.PartitionKey][] 沒有設定屬性，然後在 [BrokeredMessage.MessageId][] 屬性做為資料分割索引鍵。 (請注意，如果傳送應用程式沒有指派訊息識別碼，Microsoft .NET 和 AMQP 程式庫會自動指派)。在此情況下，相同訊息的所有複本會由相同的訊息代理人處理。 這樣可讓服務匯流排偵測並排除重複的訊息。 如果 [QueueDescription.RequiresDuplicateDetection][] 屬性未設定為 **true**, ，服務匯流排，不會考慮 [MessageId][] 做為資料分割索引鍵屬性。
+**MessageId**︰ 如果佇列或主題有 [QueueDescription.RequiresDuplicateDetection][] 屬性設定為 **true** 和 [BrokeredMessage.SessionId][] 或 [BrokeredMessage.PartitionKey][] 沒有設定屬性，然後在 [BrokeredMessage.MessageId][] 屬性做為資料分割索引鍵。 (請注意，如果傳送應用程式沒有指派訊息識別碼，Microsoft .NET 和 AMQP 程式庫會自動指派)。在此情況下，相同訊息的所有複本會由相同的訊息代理人處理。 這樣可讓服務匯流排偵測並排除重複的訊息。 如果 [QueueDescription.RequiresDuplicateDetection][] 屬性未設定為 **true**, ，服務匯流排，不會考慮 [MessageId][] 做為資料分割索引鍵屬性。
 
 ### 不使用分割索引鍵
 
@@ -73,7 +73,7 @@ ns.CreateTopic(td);
 
 ## 進階主題：搭配交易使用分割的實體
 
-傳送做為交易一部分的訊息必須指定資料分割索引鍵。 這可以是下列屬性: [BrokeredMessage.SessionId][], ，[BrokeredMessage.PartitionKey][], ，或 [BrokeredMessage.MessageId][]。 傳送做為相同交易一部分的所有訊息必須指定相同的分割索引鍵。 如果您嘗試傳送訊息，但在交易內的資料分割索引鍵，則服務匯流排會傳回 **InvalidOperationException** 例外狀況。 如果您嘗試傳送相同的交易中有不同的資料分割索引鍵的多個訊息，則服務匯流排會傳回 **InvalidOperationException** 例外狀況。 例如：
+傳送做為交易一部分的訊息必須指定資料分割索引鍵。 這可以是下列屬性 ︰ [BrokeredMessage.SessionId][], ，[BrokeredMessage.PartitionKey][], ，或 [BrokeredMessage.MessageId][]。 傳送做為相同交易一部分的所有訊息必須指定相同的分割索引鍵。 如果您嘗試傳送訊息，但在交易內的資料分割索引鍵，則服務匯流排會傳回 **InvalidOperationException** 例外狀況。 如果您嘗試傳送相同的交易中有不同的資料分割索引鍵的多個訊息，則服務匯流排會傳回 **InvalidOperationException** 例外狀況。 例如：
 
 ```
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -143,4 +143,5 @@ Azure 服務匯流排支援從分割實體自動轉送訊息、自動轉送訊�
   [OperationTimeout]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
   [AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-entities-amqp-overview.md
+
 

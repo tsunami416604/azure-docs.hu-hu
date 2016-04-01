@@ -22,27 +22,27 @@
 - [.Net](web-sites-dotnet-get-started.md)
 - [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
-- [PHP-Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP-FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
-在本教學課程中，我們將建立簡單的民調 web 應用程式使用其中一個 PTVS 範例範本來使用 [Python Tools for Visual Studio]。 本教學課程也會提供做為 [視訊](https://www.youtube.com/watch?v=oKCApIrS0Lo)。
+在本教學課程中，我們將使用 [Python Tools for Visual Studio] 來建立簡單的民調 web 應用程式使用其中一個 PTVS 範例範本。 本教學課程也會提供做為 [視訊](https://www.youtube.com/watch?v=oKCApIrS0Lo)。
 
 我們將學習如何使用 Azure 上代管的 MySQL 服務、 如何設定 web 應用程式以使用 MySQL，以及如何將 web 應用程式發佈 [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)。
 
-使用 MongoDB、 Azure 資料表儲存體、 MySQL 和 SQL Database 服務搭配使用 Bottle、 Flask 和 Django web 架構的 PTVS，請參閱 [Python 開發人員中心] 如需開發的 Azure 應用程式服務 Web 應用程式的文件。 雖然本文著重於應用程式服務，開發 [Azure 雲端服務] 時的步驟很類似。
+請參閱 [Python Developer Center] 如需文件開發的 Azure 應用程式服務 Web 應用程式使用 PTVS 使用 Bottle、 Flask 和 Django web 架構，來使用 MongoDB、 Azure 資料表儲存體、 MySQL 和 SQL 資料庫的服務。 雖然本文著重於應用程式服務，開發時的步驟很類似 [Azure Cloud Services]。
 
-## 先決條件
+## 必要條件
 
  - Visual Studio 2013 或 2015
- - [Python 工具 2.2 for Visual Studio]
- - [Python Tools for Visual Studio 範例 VSIX 2.2]
- - [Azure SDK Tools for VS 2013] 或 [VS 2015 的 Azure SDK Tools]
- - [Python 2.7 32 位元]
+ - [Python Tools 2.2 for Visual Studio]
+ - [Python Tools 2.2 for Visual Studio 範例 VSIX]
+ - [Azure SDK Tools for VS 2013] 或 [Azure SDK Tools for VS 2015]
+ - [Python 2.7 (32 位元)]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 建立專案
 
@@ -72,7 +72,7 @@
 
     ![Django 管理主控台視窗](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
-1.  確認應用程式運作方式是按下 <kbd>F5</kbd>.
+1.  按 <kbd>F5</kbd> 確認應用程式可運作。
 
 1.  按一下 [ **登入** 從頂端導覽列。
 
@@ -183,17 +183,17 @@ Azure .NET SDK 提供簡單的方法將 Web 應用程式部署至 Azure App Serv
 
 請遵循下列連結以深入了解 Python Tools for Visual Studio、Django 和 MySQL。
 
-- [Python Tools for Visual Studio 文件]
+- [Python Tools for Visual Studio 說明文件]
   - [Web 專案]
   - [雲端服務專案]
-  - [遠端偵錯 Microsoft Azure]
-- [Django 文件]
-- [] MySQL
+  - [在 Microsoft Azure 上進行遠端偵錯]
+- [Django 說明文件]
+- [MySQL]
 
 如需詳細資訊，請參閱 [Python 開發人員中心](/develop/python/)。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 
 <!--Link references-->
@@ -215,4 +215,5 @@ Azure .NET SDK 提供簡單的方法將 Web 應用程式部署至 Azure App Serv
 [Django Documentation]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
  
+
 

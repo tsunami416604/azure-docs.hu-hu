@@ -97,8 +97,8 @@ VIP 預設是動態的，這表示指派給雲端服務的實際 IP 位址會隨
 若要將雲端服務上的 VIP 關聯至端點，請執行下列 PowerShell 命令：
 
     Get-AzureVM -ServiceName myService -Name myVM1 `
-    | Add-AzureEndpoint -Name myEndpoint -Protocol tcp -LocalPort 8080 -PublicPort 80 -VirtualIPName Vip2 `
-    | Update-AzureVM
+  	| Add-AzureEndpoint -Name myEndpoint -Protocol tcp -LocalPort 8080 -PublicPort 80 -VirtualIPName Vip2 `
+  	| Update-AzureVM
 
 上述命令會建立連結至呼叫的 VIP 端點 *Vip2* 連接埠上 *80*, ，並將它連結至名為 VM *myVM1* 雲端服務中名為 *myService* 使用 *TCP* 連接埠上 *8080*。
 
@@ -128,17 +128,17 @@ VIP 預設是動態的，這表示指派給雲端服務的實際 IP 位址會隨
     ExtensionData   :
 
 ## 如何在特定 VIP 上啟用負載平衡
-您可以將單一 VIP 與多部虛擬機器產生關聯，以達到負載平衡。 例如，假設您有一個名為雲端服務 *myService*, ，和名為兩個虛擬機器 *myVM1* 和 *myVM2*。 與您的雲端服務有多重 Vip，其中一個名為 *Vip2*。 如果您想要確保所有流量的連接埠 *81* 上 *Vip2* 之間達到平衡 *myVM1* 和 *myVM2* 連接埠上 *8181*, ，執行下列 PowerShell 指令碼: 
+您可以將單一 VIP 與多部虛擬機器產生關聯，以達到負載平衡。 例如，假設您有一個名為雲端服務 *myService*, ，和名為兩個虛擬機器 *myVM1* 和 *myVM2*。 與您的雲端服務有多重 Vip，其中一個名為 *Vip2*。 如果您想要確保所有流量的連接埠 *81* 上 *Vip2* 之間達到平衡 *myVM1* 和 *myVM2* 連接埠上 *8181*, ，執行下列 PowerShell 指令碼 ︰ 
 
     Get-AzureVM -ServiceName myService -Name myVM1 `
-    | Add-AzureEndpoint -Name myEndpoint -LoadBalancedEndpointSetName myLBSet `
+  	| Add-AzureEndpoint -Name myEndpoint -LoadBalancedEndpointSetName myLBSet `
         -Protocol tcp -LocalPort 8181 -PublicPort 81 -VirtualIPName Vip2  -DefaultProbe `
-    | Update-AzureVM
+  	| Update-AzureVM
 
     Get-AzureVM -ServiceName myService -Name myVM2 `
-    | Add-AzureEndpoint -Name myEndpoint -LoadBalancedEndpointSetName myLBSet `
+  	| Add-AzureEndpoint -Name myEndpoint -LoadBalancedEndpointSetName myLBSet `
         -Protocol tcp -LocalPort 8181 -PublicPort 81 -VirtualIPName Vip2  -DefaultProbe `
-    | Update-AzureVM
+  	| Update-AzureVM
 
 您也可以更新您的負載平衡器，以使用不同的 VIP。 比方說，如果您執行下列 PowerShell 命令，您將將負載平衡集變更為使用名為 Vip1 的 VIP：
 
@@ -154,4 +154,5 @@ VIP 預設是動態的，這表示指派給雲端服務的實際 IP 位址會隨
 
 [保留的 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
+
 

@@ -30,7 +30,7 @@
 以下的範例 PowerShell 命令會預期已根據上述案例建立簡單的環境。 如果您想要執行命令，因為它們會顯示在這份文件，先建立測試環境，由 [建立 VNet](virtual-networks-create-vnet-classic-netcfg-ps)。
 
 ## 如何建立前端子網路的 NSG
-若要建立名為 NSG 名為 *NSG 前端* 根據上述情況，依照下列步驟:
+若要建立名為 NSG 名為 *NSG 前端* 根據上述情況，依照下列步驟 ︰
 
 1. 如果您從未使用 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md) 並遵循指示以登入 Azure，並選取您的訂閱結束。
 
@@ -209,3 +209,4 @@
                    ALLOW INTERNET       65001     Allow    *               *             INTERNET         *              *       
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *   
+

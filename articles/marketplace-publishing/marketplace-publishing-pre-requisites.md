@@ -27,11 +27,11 @@
 - 請確定 Azure 發佈程序中的專案關係人會收到寄到這個地址的電子郵件。 電子郵件地址必須受到監控並且有所回應才能完成發佈程序。
 - 請避免讓帳戶只與一個人關聯。 否則如果該位人員離職，可能會影響您存取 SKU 相關資訊和發佈 SKU 的能力。
 
-> [AZURE.IMPORTANT] 您沒有完成公司稅金和銀行資訊，如果您計劃發行只免費優惠 (或您自己的授權)。
+> [AZURE.IMPORTANT] 您沒有完成公司稅金和銀行資訊，如果您計劃發行只免費優惠 （或您自己的授權）。
 
 > 您必須先完成公司註冊才能開始使用。 不過，當您的公司中 Microsoft 開發人員帳戶的稅金和銀行資訊時，開發人員可以開始使用建立虛擬機器映像中的 [發佈入口網站](https://publish.windowsazure.com), ，取得認證，並測試 Azure 預備環境中。 只有在將供應項目發佈到 Azure Marketplace 的最後一個步驟時，才必須完成賣方帳戶的核准程序。
 
-> 如果您有完成賣方註冊問題，請記錄的支援票證，如下所示:
+> 如果您有完成賣方註冊問題，請記錄的支援票證，如下所示 ︰
 > 1. 請連絡 [支援](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=en-us&pesid=15635&ccsid=635847950577064286)。
 > 2. 選擇 **開發人員中心**。
 > 3. 選擇 **發行者設定檔**。
@@ -54,4 +54,5 @@
 
 ## 另請參閱
 - [使用者入門：如何將優惠發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
+
 

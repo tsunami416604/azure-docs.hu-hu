@@ -102,7 +102,7 @@ Azure 資料中心失敗的最可能原因是服務匯流排或相依系統的�
 
 ### MessagingFactory.PairNamespaceAsync API
 
-配對的命名空間功能引進下列新方法，在 [Microsoft.ServiceBus.Messaging.MessagingFactory][] 類別:
+配對的命名空間功能引進下列新方法，在 [Microsoft.ServiceBus.Messaging.MessagingFactory][] 類別 ︰
 
 ```
 public Task PairNamespaceAsync(PairedNamespaceOptions options);
@@ -121,15 +121,15 @@ public SendAvailabilityPairedNamespaceOptions(
 
 這些參數具有下列意義：
 
--   *secondaryNamespaceManager*: 初始化 [NamespaceManager][] 次要命名空間的執行個體， [PairNamespaceAsync][] 方法可用來設定次要命名空間。 管理員會用來取得命名空間中的佇列清單，並確定必要的待處理項目佇列存在。 如果這些佇列不存在，則會加以建立。 [NamespaceManager][] 必須能夠建立的語彙基元 **管理** 宣告。
+-   *secondaryNamespaceManager*︰ 初始化 [NamespaceManager][] 次要命名空間的執行個體， [PairNamespaceAsync][] 方法可用來設定次要命名空間。 管理員會用來取得命名空間中的佇列清單，並確定必要的待處理項目佇列存在。 如果這些佇列不存在，則會加以建立。 [NamespaceManager][] 必須能夠建立的語彙基元 **管理** 宣告。
 
 -   *messagingFactory*: [MessagingFactory][] 次要命名空間的執行個體。  [MessagingFactory][] 用來傳送並在 [EnableSyphon][] 屬性設定為 **true**, ，從待處理項目佇列接收訊息。
 
--   *backlogQueueCount*: 若要建立的待處理項目佇列數目。 此值必須至少為 1。 將訊息傳送至待處理項目時，會隨機選擇其中一個佇列。 如果您將此值設定為 1，則只能使用一個佇列。 發生此情況且這一個待處理項目佇列產生錯誤時，用戶端便無法嘗試不同的待處理項目佇列且無法傳送您的訊息。 我們建議將此值設定為較大的值並將此值預設為 10。 視您的應用程式每天傳送的資料量而定，您可以將此值變更為較大或較小的值。 每個待處理項目佇列最多可以保留 5 GB 的訊息。
+-   *backlogQueueCount*︰ 若要建立的待處理項目佇列數目。 此值必須至少為 1。 將訊息傳送至待處理項目時，會隨機選擇其中一個佇列。 如果您將此值設定為 1，則只能使用一個佇列。 發生此情況且這一個待處理項目佇列產生錯誤時，用戶端便無法嘗試不同的待處理項目佇列且無法傳送您的訊息。 我們建議將此值設定為較大的值並將此值預設為 10。 視您的應用程式每天傳送的資料量而定，您可以將此值變更為較大或較小的值。 每個待處理項目佇列最多可以保留 5 GB 的訊息。
 
--   *failoverInterval*: 您接受主要命名空間上的失敗之前切換任何單一實體次要命名空間的時間量。 容錯移轉會以逐一實體的方式進行。 單一命名空間中的實體經常留存在服務匯流排中的不同節點。 某一個實體失敗不表示另一個實體也失敗。 您可以將此值設定為 [System.TimeSpan.Zero][] 容錯移轉至您的第一次、 非暫時性失敗後立即次要資料庫。 觸發容錯移轉計時器的失敗是否有任何 [Istransient][] 所在 [IsTransient][] 屬性為 false，或 [System.TimeoutException][]。 其他例外狀況，例如 [UnauthorizedAccessException][] 不會導致容錯移轉，因為它們指示用戶端設定不正確。 A [ServerBusyException][] 並不造成容錯移轉因為正確的模式是等待 10 秒鐘，然後重新傳送訊息。
+-   *failoverInterval*︰ 您接受主要命名空間上的失敗之前切換任何單一實體次要命名空間的時間量。 容錯移轉會以逐一實體的方式進行。 單一命名空間中的實體經常留存在服務匯流排中的不同節點。 某一個實體失敗不表示另一個實體也失敗。 您可以將此值設定為 [System.TimeSpan.Zero][] 容錯移轉至您的第一次、 非暫時性失敗後立即次要資料庫。 觸發容錯移轉計時器的失敗是否有任何 [Istransient][] 所在 [IsTransient][] 屬性為 false，或 [System.TimeoutException][]。 其他例外狀況，例如 [UnauthorizedAccessException][] 不會導致容錯移轉，因為它們指示用戶端設定不正確。 A [ServerBusyException][] 並不造成容錯移轉因為正確的模式是等待 10 秒鐘，然後重新傳送訊息。
 
--   *enableSyphon*: 表示此特殊的配對應該也會虹吸次要命名空間回到主要命名空間的訊息。 一般情況下，傳送訊息的應用程式應將此值設 **false**; 接收訊息的應用程式應將此值設定為 **true**。 原因是訊息接收端通常比訊息傳送端少。 視接收端的數目而定，您可以選擇讓單一應用程式執行個體處理 Syphon 職責。 使用許多接收端會牽涉到每個待處理項目佇列的計費。
+-   *enableSyphon*︰ 表示此特殊的配對應該也會虹吸次要命名空間回到主要命名空間的訊息。 一般情況下，傳送訊息的應用程式應將此值設 **false**; 接收訊息的應用程式應將此值設定為 **true**。 原因是訊息接收端通常比訊息傳送端少。 視接收端的數目而定，您可以選擇讓單一應用程式執行個體處理 Syphon 職責。 使用許多接收端會牽涉到每個待處理項目佇列的計費。
 
 若要使用的程式碼，建立主要 [MessagingFactory][] 執行個體，次要 [MessagingFactory][] 執行個體，次要 [NamespaceManager][] 執行個體，和 [SendAvailabilityPairedNamespaceOptions][] 執行個體。 呼叫很簡單，如下所示：
 
@@ -171,3 +171,4 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
   [UnauthorizedAccessException]: https://msdn.microsoft.com/library/azure/system.unauthorizedaccessexception.aspx
   [BacklogQueueCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.backlogqueuecount.aspx
   [paired namespaces and cost implications]: service-bus-paired-namespaces.md
+

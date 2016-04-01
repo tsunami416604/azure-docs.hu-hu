@@ -23,27 +23,27 @@
 
 1. 在 [Azure 入口網站](https://portal.azure.com/), 、 使用工作帳戶登入。 例如，使用登入 */users/yourusername*@*YourCompany*。 com。 當您這樣做時，將會自動登入您的公司訂用帳戶。
  
-2. 選取 **瀏覽** 在工作列上:  
+2. 選取 **瀏覽** 在工作列上 ︰  
 ![][4]
 
 3. 在清單中，您可以捲動以尋找 PowerApps 或輸入 *powerapps*:  
 ![][5]  
 
 4. 在 **PowerApps**, ，請選取 **管理 Api**:  
-![瀏覽至已註冊 api][] 2
+![瀏覽至已註冊的 api][2]
 
 2. 在 **管理 Api**, ，請選取 **新增** 新增新的 API:  
-![加入 API][] 3
+![新增 API][3]
 
 3. 輸入描述性 **名稱** 為您的 API。 
 
 4. 在 **來源**, ，請選取 **可用的 API** 選取預先建置的 Api，並選取 **Bing 搜尋**:  
 
-    a) 選取 **設定-設定必要的設定**。  
+    a） 選取 **設定-設定必要的設定**。  
     
-    b) 輸入 *帳戶金鑰*。 如果您沒有 Bing 搜尋索引鍵，建立可用 [Bing 搜尋優惠] [1] 來取得金鑰。 
+    b） 輸入 *帳戶金鑰*。 如果您沒有 Bing 搜尋索引鍵，建立一套免費 [Bing 搜尋優惠][1] 來取得金鑰。 
 
-    c) 選取 **確定**。 
+    c） 選取 **確定**。 
 
 5. 選取 **確定** 完成的步驟。 
 
@@ -61,3 +61,4 @@
 [3]: ./media/powerapps-create-api-dropbox/add-api.PNG
 [4]: ./media/powerapps-create-api-dropbox/browseall.png
 [5]: ./media/powerapps-create-api-dropbox/allresources.png
+

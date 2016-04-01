@@ -36,7 +36,7 @@ Service Fabric 執行階段使用 ETW 來提供診斷資訊 (追蹤)，建議 Se
 ## 在 Azure 上設定 ElasticSearch
 若要設定 ElasticSearch 服務在 Azure 上最直接的方法是透過 [**Azure ARM 範本**](../resource-group-overview.md)。 完整 [ElasticSearch 的快速入門 ARM 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch) 也可以從 Azure 快速入門範本儲存機制。 此範本對縮放單位 (節點的群組) 使用個別的儲存體帳戶，而且可以佈建個別用戶端和伺服器節點，各有不同組態和連接不同的資料磁碟數。
 
-在這篇文章中，我們會使用呼叫另一個範本 **ES MultiNode** 從 [Microsoft 模式和作法 ELK 分支](https://github.com/mspnp/semantic-logging/tree/elk/)。 此範本比較容易使用，依預設會建立由 HTTP 基本驗證所保護的 ElasticSearch 叢集。 繼續之前請下載 [Microsoft p&p"elk 「 儲存機制](https://github.com/mspnp/semantic-logging/tree/elk/) 從 GitHub 到您的電腦 (無論是藉由複製儲存機制或下載的 ZIP 檔案)。 ES-MultiNode 範本位於具有相同名稱的資料夾中。
+在這篇文章中，我們會使用呼叫另一個範本 **ES MultiNode** 從 [Microsoft 模式和作法 ELK 分支](https://github.com/mspnp/semantic-logging/tree/elk/)。 此範本比較容易使用，依預設會建立由 HTTP 基本驗證所保護的 ElasticSearch 叢集。 繼續之前請下載 [Microsoft p&p"elk 「 儲存機制](https://github.com/mspnp/semantic-logging/tree/elk/) 從 GitHub 到您的電腦 （無論是藉由複製儲存機制或下載的 ZIP 檔案）。 ES-MultiNode 範本位於具有相同名稱的資料夾中。
 >[AZURE.NOTE] ES MultiNode 範本和相關聯的指令碼目前支援 ElasticSearch 1.7 版本。 日後將加入 ElasticSearch 2.0 的支援。
 
 ### 準備電腦以執行 ElasticSearch 安裝指令碼
@@ -47,7 +47,7 @@ Service Fabric 執行階段使用 ETW 來提供診斷資訊 (追蹤)，建議 Se
 1. 如果您還沒有安裝的話，安裝 [**Azure PowerSell 模組**](http://go.microsoft.com/fwlink/p/?linkid=320376)。 出現提示時，請按一下 [執行]，再按一下 [安裝]。
 >[AZURE.NOTE] Azure PowerShell 正在進行大量變更 Azure PowerShell 1.0 版。 CreateElasticSearchCluster 目前設計為用於 Azure PowerShell 0.9.8，不支援 Azure PowerShell 1.0 Preview。 日後將提供 Azure PowerShell 1.0 相容指令碼。
 
-2.  **Openssl** 工具隨附的分佈於 [**Git for Windows**](http://www.git-scm.com/downloads)。 如果您有不這麼做，請將安裝 [Git for Windows](http://www.git-scm.com/downloads) 現在 (預設安裝選項是 [確定])。
+2.  **Openssl** 工具隨附的分佈於 [**Git for Windows**](http://www.git-scm.com/downloads)。 如果您有不這麼做，請將安裝 [Git for Windows](http://www.git-scm.com/downloads) 現在 （預設安裝選項是 [確定]）。
 
 3. 假設 Git 已安裝，但未包含在系統路徑中，請開啟 Microsoft Azure PowerShell 視窗並執行下列命令：
 
@@ -76,7 +76,7 @@ Service Fabric 執行階段使用 ETW 來提供診斷資訊 (追蹤)，建議 Se
 |esClusterName           |ElasticSearch 叢集的內部名稱。 <br /><br />需要這個值會變更預設值，除非您打算在相同的虛擬網路，ES MultiNode 範本目前不支援執行一個以上的 ElasticSearch 叢集。|
 |esUserName esPassword  |將設定為可存取 ES 叢集的使用者的認證 (受限於 HTTP 基本驗證)。|
 
-您現在可以開始執行指令碼。 發出下列命令:
+您現在可以開始執行指令碼。 發出下列命令 ︰
 ```powershell
 CreateElasticSearchCluster -ResourceGroupName <es-group-name>
 ```
@@ -91,16 +91,16 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name>
 
 |構件|名稱、位置及備註|
 |----------------------------------|----------------------------------|
-|用於遠端系統管理的 SSH 金鑰 |myBigCluster.key 檔 (在執行 CreateElasticSearchCluster 的目錄中)。 <br /><br />這是在叢集中的資料節點可用來連接到 [系統管理] 節點和 (透過 [系統管理] 節點中) 的索引鍵。|
+|用於遠端系統管理的 SSH 金鑰 |myBigCluster.key 檔 (在執行 CreateElasticSearchCluster 的目錄中)。 <br /><br />這是在叢集中的資料節點可用來連接到 [系統管理] 節點和 （透過 [系統管理] 節點中） 的索引鍵。|
 |管理節點                        |myBigCluster admin.westus.cloudapp.azure.com <br /><br />這是遠端 ElasticSearch 叢集管理，唯一的可讓外部 SSH 連線的專用的 VM。 它與所有 ElasticSearch 叢集節點一樣在相同的虛擬網路上執行，但不會執行 ElasticSearch 服務。|
-|資料節點                        |myBigCluster1... myBigCluster*N* <br /><br />ElasticSearch 和 Kibana 服務執行的資料節點。 您可以透過 SSH 連接至每個節點，但只能透過管理節點。|
-|ElasticSearch 叢集             |http://myBigCluster.westus.cloudapp.azure.com/es/ <br /><br />以上是 ElasticSearch 叢集 (請注意 /es 尾碼) 的主要端點。 它是由基本 HTTP 驗證保護 (由 ES-MultiNode 範本的 esUserName/esPassword 參數指定認證)。 叢集也有基本的叢集系統管理安裝前端的外掛程式 (http://myBigCluster.westus.cloudapp.azure.com/es/_plugin/head)。|
+|資料節點                        |myBigCluster1... myBigCluster*N* <br /><br />執行 ElasticSearch 和 Kibana 服務的資料節點。 您可以透過 SSH 連接至每個節點，但只能透過管理節點。|
+|ElasticSearch 叢集             |http://myBigCluster.westus.cloudapp.azure.com/es/ <br /><br />以上是 ElasticSearch 叢集 （請注意 /es 尾碼） 的主要端點。 它是由基本 HTTP 驗證保護 (由 ES-MultiNode 範本的 esUserName/esPassword 參數指定認證)。 叢集也有基本的叢集系統管理安裝前端的外掛程式 (http://myBigCluster.westus.cloudapp.azure.com/es/_plugin/head)。|
 |Kibana 服務                    |http://myBigCluster.westus.cloudapp.azure.com <br /><br />若要顯示資料，建立的 ElasticSearch 叢集; 設定 Kibana 服務它會受到相同驗證認證，叢集本身。|
 
 ## 同處理序與跨處理序追蹤擷取
 在簡介中，我們曾提過收集診斷資料的兩種基本方法：同處理序和跨處理序。 各有優缺點。
 
-優點 **同處理序追蹤擷取** 包括:
+優點 **同處理序追蹤擷取** 包括 ︰
 
 1. *輕鬆設定及部署*
 
@@ -124,7 +124,7 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name>
 
     * 在跨處理序方法中，必須透過 Windows 事件追蹤 (ETW) 之類的處理序間通訊機制，將資料傳送至代理程式。 這可能會造成額外的限制。
 
-優點 **跨處理序追蹤擷取** 包括:
+優點 **跨處理序追蹤擷取** 包括 ︰
 
 1. *能夠監視應用程式並收集損毀傾印*
 
@@ -151,10 +151,10 @@ Microsoft.Diagnostic.Listeners 程式庫是合作對象叢集範例 Fabric 應�
 
 4. 新增從服務專案至兩個已加入之專案的專案參考 (每個應該會將資料傳送至 ElasticSearch 的服務，都應該參考 Microsoft.Diagnostics.EventListeners 和 Microsoft.Diagnostics.EventListeners.Fabric)。
 
-    ![專案 refererences Microsoft.Diagnostics.EventListeners 和 Microsoft.Diagnostics.EventListeners.Fabric 程式庫][] 1
+    ![Microsoft.Diagnostics.EventListeners 和 Microsoft.Diagnostics.EventListeners.Fabric 程式庫的專案參考][1]
 
 ### Service Fabric 2015 年 11 月預覽版和 Microsoft.Diagnostics.Tracing NuGet 封裝
-2015 年 11 月的預覽服務網狀架構目標的應用程式 **.NET Framework 4.5.1** 因為這是 Azure 時的預覽版本支援的.NET Framework 的最新版本。 可惜，這個版本的架構缺少 Microsoft.Diagnostics.Listeners 程式庫所需的某些 EventListener API。 緊密結合 EventSource (在 [網狀架構應用程式中記錄 Api 的基礎元件) 和 EventListener，因為每個使用 Microsoft.Diagnostics.Listeners 程式庫的專案必須使用 EventSource，其中一個所提供的替代實作 **Microsoft.Diagnostics.Tracing nuget**, 、 由 Microsoft 所撰寫。 此封裝完全與架構中包含的舊版 EventSource 相容，除了變更參考的命名空間，應該不需要變更任何程式碼。
+2015 年 11 月的預覽服務網狀架構目標的應用程式 **.NET Framework 4.5.1** 因為這是 Azure 時的預覽版本支援的.NET Framework 的最新版本。 可惜，這個版本的架構缺少 Microsoft.Diagnostics.Listeners 程式庫所需的某些 EventListener API。 緊密結合 EventSource （在 [網狀架構應用程式中記錄 Api 的基礎元件） 和 EventListener，因為每個使用 Microsoft.Diagnostics.Listeners 程式庫的專案必須使用 EventSource，其中一個所提供的替代實作 **Microsoft.Diagnostics.Tracing nuget**, 、 由 Microsoft 所撰寫。 此封裝完全與架構中包含的舊版 EventSource 相容，除了變更參考的命名空間，應該不需要變更任何程式碼。
 
 若要開始使用 Microsoft.Diagnostics.Tracing 的 EventSource 類別實作，請針對需要將資料傳送至 ElasticSearch 的每個服務專案，執行下列步驟：
 
@@ -239,9 +239,9 @@ ElasticSearch 連接資料應該放在服務組態檔 (PackageRoot\Config\Settin
 值 `serviceUri`, ，`userName` 和 `password` 分別對應到 ElasticSearch 叢集端點位址、 ElasticSearch 使用者名稱和密碼。 `indexNamePrefix` 是 ElasticSearch 索引; 的前置詞Microsoft.Diagnostics.Listeners 程式庫建立新的索引，其資料的每日。
 
 ### 驗證
-就這麼簡單！ 現在每當服務執行時，就會開始將追蹤傳送至組態中指定的 ElasticSearch 服務。 若要開啟 Kibana 目標 ElasticSearch 執行個體 (在本例中的頁面位址會是 http://myBigCluster.westus.cloudapp.azure.com/) 相關聯的 UI，並檢查驗證為選擇的名稱前置詞與該索引 `ElasticSearchListener` 執行個體會確實建立和填入資料。
+就這麼簡單！ 現在每當服務執行時，就會開始將追蹤傳送至組態中指定的 ElasticSearch 服務。 若要開啟 Kibana 目標 ElasticSearch 執行個體 （在本例中的頁面位址會是 http://myBigCluster.westus.cloudapp.azure.com/） 相關聯的 UI，並檢查驗證為選擇的名稱前置詞與該索引 `ElasticSearchListener` 執行個體會確實建立和填入資料。
 
-![Kibana 顯示 PartyCluster 應用程式事件][] 2
+![顯示 PartyCluster 應用程式事件的 Kibana][2]
 
 ## 後續步驟
 - [深入了解診斷和監視 Service Fabric 服務](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
@@ -249,4 +249,5 @@ ElasticSearch 連接資料應該放在服務組態檔 (PackageRoot\Config\Settin
 <!--Image references-->
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
+
 

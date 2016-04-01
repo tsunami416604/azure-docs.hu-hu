@@ -1,7 +1,7 @@
 
 現在讓我們更新應用程式，以將項目儲存在 Azure 行動服務中，而不是儲存在本機記憶體內部集合中。
 
-* 在 **TodoService.h**, ，找出下列一行:
+* 在 **TodoService.h**, ，找出下列一行 ︰
 
 ```
 // TODO - create an MSClient property
@@ -14,7 +14,7 @@
 ```
 
 
-* 在 **TodoService.m**, ，找出下列一行:
+* 在 **TodoService.m**, ，找出下列一行 ︰
 
 ```
 // TODO - create an MSTable property for your items
@@ -30,7 +30,7 @@
 * 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **行動電話服務**, ，然後按一下 [行動服務。 按一下 [ **儀表板** 索引標籤並記下 **網站 URL**。 然後按一下 [ **管理金鑰** 並記下的 **應用程式金鑰**。 從應用程式程式碼存取行動服務時，您將會用到這些值。
 
 
-* 在 **TodoService.m**, ，找出下列一行:
+* 在 **TodoService.m**, ，找出下列一行 ︰
 
 ```
 // Initialize the Mobile Service client with your URL and key.
@@ -43,7 +43,7 @@ self.client = [MSClient clientWithApplicationURLString:@"APPURL" applicationKey:
 ```
 
 
-* 在 **TodoService.m**, ，找出下列一行:
+* 在 **TodoService.m**, ，找出下列一行 ︰
 
 ```
 // Create an MSTable instance to allow us to work with the TodoItem table.
@@ -56,7 +56,7 @@ self.table = [self.client tableWithName:@"TodoItem"];
 ```
 
 
-* 在 **TodoService.m**, ，找出下列一行:
+* 在 **TodoService.m**, ，找出下列一行 ︰
 
 ```
 // Create a predicate that finds items where complete is false
@@ -75,7 +75,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 // Query the TodoItem table and update the items property with the results from the service
 ```
 
-取代註解和後續 **完成** 區塊引動，下列程式碼:
+取代註解和後續 **完成** 區塊引動，下列程式碼 ︰
 
 ```
 [self.table readWhere:predicate completion:^(NSArray *results, NSInteger totalCount, NSError *error)
@@ -100,7 +100,7 @@ self.items = [results mutableCopy];
 ```
 
 
-* 找出 **completeItem** 方法，並找出下列加上註解程式碼行:
+* 找出 **completeItem** 方法，並找出下列加上註解程式碼行 ︰
 
 ```
 // Update the item in the TodoItem table and remove from the items array on completion
@@ -123,7 +123,7 @@ self.items = [results mutableCopy];
 ```
 
 
-* 在 TodoListController.m 中，找出 **onAdd** 方法加以覆寫為下列程式碼:
+* 在 TodoListController.m 中，找出 **onAdd** 方法加以覆寫為下列程式碼 ︰
 
 ```
 - (IBAction)onAdd:(id)sender
@@ -145,4 +145,5 @@ self.items = [results mutableCopy];
     itemText.text = @"";
 }
 ```
+
 

@@ -1,6 +1,7 @@
 <properties
     pageTitle="在 Ubuntu 上使用資源管理員範本的 DataStax Enterprise | Microsoft Azure"
-    description="了解如何使用 Azure PowerShell 或 Azure CLI 搭配資源管理員範本，在 Ubuntu VM 上 輕鬆部署新的 DataStax Enterprise 叢集"
+    description="了解如何使用 Azure PowerShell 或 Azure CLI 搭配資源管理員範本，在 Ubuntu VM 上
+輕鬆部署新的 DataStax Enterprise 叢集"
     services="virtual-machines"
     documentationCenter=""
     authors="scoriani"
@@ -24,7 +25,7 @@
 
 DataStax 是知名的業界領導者，他們根據 Apache Cassandra™ 來開發和提供各種解決方案，這是一種可提供商業支援且符合企業需求的 NoSQL 分散式資料庫技術，此技術廣受市場認可、敏捷、永不停擺，並可依照未來的各種公司規模需求進行調整。 DataStax 提供 Enterprise (DSE) 和 Community (DSC) 等版本。 除了 Community 版本所提供的功能之外，Datastax Enterprise 是經過生產認證的 Cassandra，具備在記憶體中計算、企業級安全性、快速且功能強大的整合分析，以及企業管理等功能。
 
->[AZURE.NOTE] 與不同 Community edition，以便部署 DataStax Enterprise，您必須具備有效的 DataStax 帳戶 (使用者名稱和密碼) 中傳遞做為參數在範本部署期間。 請瀏覽 [Datastax](http://www.datastax.com) 網站來設定您的帳戶，如果您還沒有的話。
+>[AZURE.NOTE] 與不同 Community edition，以便部署 DataStax Enterprise，您必須具備有效的 DataStax 帳戶 （使用者名稱和密碼） 中傳遞做為參數在範本部署期間。 請瀏覽 [Datastax](http://www.datastax.com) 網站來設定您的帳戶，如果您還沒有的話。
 
 除了已經提供 Azure Marketplace 中，現在您可以輕鬆部署新的 Datastax Enterprise 叢集，在 Ubuntu Vm 上使用資源管理員範本部署到 [PowerShell](../powershell-install-configure.md) 或 [Azure CLI](../xplat-cli-install.md)。
 
@@ -252,7 +253,7 @@ DataStax 是知名的業界領導者，他們根據 Apache Cassandra™ 來開�
 
 部署期間以及部署結束之後，您可以檢查所有佈建期間所進行的要求，包括任何發生的錯誤。
 
-若要這樣做，請移至 [Azure 入口網站](https://portal.azure.com) 並執行下列動作:
+若要這樣做，請移至 [Azure 入口網站](https://portal.azure.com) 並執行下列動作 ︰
 
 - 按一下左側導覽列上的 [瀏覽]，向下捲動，然後按一下 [資源群組]。
 - 按一下剛建立的資源群組之後，系統就會顯示 [資源群組] 刀鋒視窗。
@@ -388,14 +389,14 @@ azuredeploy.json 的 "parameters" 區段會指定此範本中所使用的可修�
 
 特別是，下列連結的範本將用於此部署：
 <!-- In list format, using bold typeface in the following manner is ok -->
--   **shared-resource.json**: 包含定義的整個部署中共用的所有資源。 例如，用來儲存 VM 的作業系統磁碟和虛擬網路的儲存體帳戶。
--   **opscenter-resources.json**: 部署 OpsCenter VM 和所有相關的資源，包括網路介面和公用 IP 位址。
--   **安裝-opscenter-resources.json**: 部署 OpsCenter VM 延伸模組 (適用於 Linux 的自訂指令碼)，將會叫用特定的 bash 指令碼檔案 (opscenter.sh)，才能設定該 VM 內設定 OpsCenter 服務。
--   **暫時 azuredeploy.json**: 部署所有叢集節點 Vm 和連接的資源 (例如，網路卡和私人 Ip。)。 此範本也會部署 VM 擴充功能 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼 (dsenode.sh)，在每一個節點上安裝 Apache Cassandra 程式碼。
+-   **shared-resource.json**︰ 包含定義的整個部署中共用的所有資源。 例如，用來儲存 VM 的作業系統磁碟和虛擬網路的儲存體帳戶。
+-   **opscenter-resources.json**︰ 部署 OpsCenter VM 和所有相關的資源，包括網路介面和公用 IP 位址。
+-   **安裝-opscenter-resources.json**︰ 部署 OpsCenter VM 延伸模組 （適用於 Linux 的自訂指令碼），將會叫用特定的 bash 指令碼檔案 (opscenter.sh)，才能設定該 VM 內設定 OpsCenter 服務。
+-   **暫時 azuredeploy.json**︰ 部署所有叢集節點 Vm 和連接的資源 （例如，網路卡和私人 Ip。）。 此範本也會部署 VM 擴充功能 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼 (dsenode.sh)，在每一個節點上安裝 Apache Cassandra 程式碼。
 
 讓我們深入了解最後一個範本的使用方式，因為從範本開發角度來看，這是最有趣的範本之一。 在此要強調一個重要的概念，那就是一個範本檔案可以重複部署某一種資源類型，而且每一個執行個體都可以為必要的設定指定唯一的值。 這個概念稱為資源迴圈。
 
-從主要的 azuredeploy.json 檔案中叫用 ephemeral-nodes-resources.json 時，會提供名為 nodeCount 的參數來做為參數清單的一部分。 將內使用 nodeCount (要部署在叢集中的節點數目) 在子範本中， **「 複製 」** 的每個資源都必須部署於多個複本下, 一個範例中反白顯示的項目。 針對不同的執行個體的部署資源，需要唯一值的所有設定 **copyindex ()** 函式可用來取得數值，指出目前的索引，在這個特定資源迴圈的建立。 在下一個範例中，您可以在為 Datastax Enterprise 叢集節點建立的多個 VM 上看見這個概念的運用。
+從主要的 azuredeploy.json 檔案中叫用 ephemeral-nodes-resources.json 時，會提供名為 nodeCount 的參數來做為參數清單的一部分。 將內使用 nodeCount （要部署在叢集中的節點數目） 在子範本中， **「 複製 」** 的每個資源都必須部署於多個複本下, 一個範例中反白顯示的項目。 針對不同的執行個體的部署資源，需要唯一值的所有設定 **copyindex （)** 函式可用來取得數值，指出目前的索引，在這個特定資源迴圈的建立。 在下一個範例中，您可以在為 Datastax Enterprise 叢集節點建立的多個 VM 上看見這個概念的運用。
 
                {
                   "apiVersion": "2015-05-01-preview",
@@ -503,4 +504,5 @@ vm-disk-utils-0.1.sh 是 azure-quickstart-tempates github 儲存機制中 shared
 -   所有的張貼部署工作 (例如產品安裝和設定) 都會利用指令碼部署擴充功能以及建立每一種技術獨有的指令碼。
 
 如需詳細資訊，請參閱 [Azure 資源管理員範本語言](../resource-group-authoring-templates.md)。
+
 

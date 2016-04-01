@@ -183,7 +183,7 @@ Application Insights SDK 會透過 Java Web 應用程式傳送遙測，使得您
 
 #### Windows 效能計數器
 
-每個 [Windows 效能計數器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) 是類別的成員 (在相同的方式，以欄位是類別的成員)。 類別可以是全域，或可以有一定數量或指定的執行個體。
+每個 [Windows 效能計數器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) 是類別的成員 （在相同的方式，以欄位是類別的成員）。 類別可以是全域，或可以有一定數量或指定的執行個體。
 
     <PerformanceCounters>
       <Windows>
@@ -260,3 +260,4 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 [usage]: app-insights-web-track-usage.md
 
  
+

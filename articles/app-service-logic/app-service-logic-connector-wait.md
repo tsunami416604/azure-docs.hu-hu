@@ -26,16 +26,16 @@ Wait 連接器可讓應用程式將其執行延遲一段指定的持續時間，
 Wait 連接器可用作動作。 它並沒有任何觸發程序。
 
 ### 動作
-- 從右窗格中按一下 [Wait 連接器:  
-!動作清單[] 1
+- 從右窗格中按一下 [Wait 連接器 ︰  
+![動作清單][1]
 - Wait 連接器支援兩個動作： 
     - 延遲
     - 延遲到
      
 - 選取 *延遲*:  
-![延遲輸入][] 2
-- 提供輸入動作，然後將它設定:  
-![設定動作][] 3
+![延遲輸入][2]
+- 提供輸入動作，然後將它設定 ︰  
+![已設定的動作][3]
 
 參數|類型|參數說明
 ---|---|---
@@ -43,9 +43,9 @@ Wait 連接器可用作動作。 它並沒有任何觸發程序。
 
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以使用邏輯應用程式將它加入商務流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以使用邏輯應用程式將它加入商務流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -55,4 +55,5 @@ Wait 連接器可用作動作。 它並沒有任何觸發程序。
 [1]: ./media/app-service-logic-wait/ListOfActions.PNG
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
+
 

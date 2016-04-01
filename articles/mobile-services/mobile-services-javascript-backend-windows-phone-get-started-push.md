@@ -25,11 +25,11 @@
 
 本主題說明如何使用 Azure 行動服務將推播通知傳送至 Windows Phone Silverlight 應用程式。 在本教學課程中，您會啟用透過 Azure 通知中心將推播通知傳送至快速入門專案的功能。 完成後，您的行動服務就會在每次插入記錄時使用通知中心傳送推播通知。 您所建立的通知中心可透過行動服務免費使用、可在行動服務以外個別管理，並且可供其他應用程式和服務使用。
 
-本教學課程以 TodoList 範例應用程式為基礎。 在開始本教學課程之前，您必須先完成 [新增行動服務新增至現有的應用程式] 的主題，將專案連接到行動服務。 若未連接行動服務，[新增推播通知] 精靈可為您建立此連線。 
+本教學課程以 TodoList 範例應用程式為基礎。 在開始本教學課程之前，您必須先完成本主題 [Add Mobile Services to an existing app] ，將專案連接到行動服務。 若未連接行動服務，[新增推播通知] 精靈可為您建立此連線。 
 
 >[AZURE.NOTE]若要將推播通知傳送至 Windows Phone 8.1 市集應用程式，請遵循 [Windows 市集應用程式](../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) 本教學課程的版本。
 
-##<a id="update-app"></a> 更新應用程式以註冊通知
+##<a id="update-app"></a>更新應用程式以註冊通知
 
 您必須先註冊通知通道，您的應用程式才能接收推播通知。
 
@@ -66,7 +66,7 @@
 
     >[AZURE.NOTE]在本教學課程中，行動服務會傳送快顯通知給裝置。 當您傳送磚通知時，您必須改為呼叫 **BindToShellTile** 通道上的方法。
 
-4. 在頂端 **Application_Launching** 事件處理常式，在 App.xaml.cs 中，新增下列呼叫新 **AcquirePushChannel** 方法:
+4. 在頂端 **Application_Launching** 事件處理常式，在 App.xaml.cs 中，新增下列呼叫新 **AcquirePushChannel** 方法 ︰
 
         AcquirePushChannel();
 
@@ -80,7 +80,7 @@
 
     如此可確定您的應用程式可以提出快顯通知。 
 
-##<a id="update-scripts"></a> 更新伺服器指令碼以傳送推播通知
+##<a id="update-scripts"></a>更新伺服器指令碼以傳送推播通知
 
 最後，您必須在 TodoItem 資料表上更新對插入作業註冊的指令碼，以傳送通知。
 
@@ -120,7 +120,7 @@
 
     >[AZURE.NOTE]本教學課程使用未經驗證的模式的 MPNS。 在此模式中，MPNS 會限制可傳送至裝置通道的通知數。 若要移除此限制，您必須產生憑證，然後按一下 [上傳]**** 並選取憑證，以上傳憑證。 如需產生憑證的詳細資訊，請參閱 [Setting up an authenticated web service to send push notifications for Windows Phone]。
 
-##<a id="test"></a> 在應用程式中測試推播通知
+##<a id="test"></a>在應用程式中測試推播通知
 
 1. 在 Visual Studio 中，按 F5 鍵以執行此應用程式。
 
@@ -140,8 +140,8 @@
 
 本教學課程示範如何啟用 Windows 市集應用程式以便使用行動服務與通知中心來傳送推播通知的基礎。 接著，請考慮完成下列其中一個教學課程：
 
-+ [將廣播的通知傳送給訂閱者](../notification-hubs-windows-phone-send-breaking-news.md)
-    <br/>了解使用者如何註冊和接收他們感興趣的推播通知的類別。
++ [將廣播通知傳送給訂閱者](../notification-hubs-windows-phone-send-breaking-news.md)
+    <br/>了解使用者如何註冊及接收他們所需類別的推播通知。
 
 + [跨平台通知傳送給訂閱者](../notification-hubs-aspnet-cross-platform-notify-users.md)
     <br/>了解如何使用範本從您的行動服務傳送推播通知，而不必在後端製作平台特定裝載。
@@ -149,17 +149,17 @@
 
 在下列主題中深入了解行動服務和通知中心：
 
-* [Azure 通知中樞-診斷指導方針](../notification-hubs-diagnosing.md)
+* [Azure 通知中樞 - 診斷指導方針](../notification-hubs-diagnosing.md)
     <br/>了解如何疑難排解推播通知問題。
 
-* [開始使用驗證]
+* [Get started with authentication]
   <br/>了解如何使用行動服務以不同帳戶類型驗證應用程式的使用者。
 
 * [What are Notification Hubs?]
-  <br/>進一步了解通知中心將通知傳遞到您的應用程式跨所有主要用平台的運作方式。
+  <br/>深入了解通知中樞如何跨所有主要用戶端平台將通知傳遞到您的應用程式。
 
 * [Mobile Services .NET How-to Conceptual Reference]
-  <br/>進一步了解如何使用搭配.NET 的行動服務。
+  <br/>深入了解如何搭配使用行動服務與 .NET。
 
 * [Mobile Services server script reference]
   <br/>進一步了解如何在您的行動服務中實作商務邏輯。
@@ -184,3 +184,4 @@
 [What are Notification Hubs?]: ../notification-hubs-overview.md
 
  
+

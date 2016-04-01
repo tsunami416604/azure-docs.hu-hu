@@ -81,32 +81,32 @@ CREATE LOGIN login1 WITH password='<ProvidePassword>';
 
 若要使用您所建立的登入連接到 Microsoft Azure SQL Database，您必須先使用 ``CREATE USER`` 命令授與每個登入資料庫層級權限。 如需詳細資訊，請參閱 **授與資料庫存取權登入** 下一節。
 
-由於部分工具以不同的方式實作表格式資料流 (TDS)，您可能需要以 ``<login>@<server>`` 標記法，將 Azure SQL Database 伺服器名稱附加至登入中的連接字串。 在這些案例中，請使用 ``@`` 符號分隔登入和 Azure SQL Database 伺服器名稱。 例如，如果您登入名為 **login1** 和 Azure SQL Database 伺服器的完整的名稱是 **servername.database**, ，連接字串的使用者名稱參數應該是: **login1@servername**。 這項限制會限制您針對登入名稱可選用的文字。 如需詳細資訊，請參閱 [CREATE LOGIN (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms189751.aspx)。
+由於部分工具以不同的方式實作表格式資料流 (TDS)，您可能需要以 ``<login>@<server>`` 標記法，將 Azure SQL Database 伺服器名稱附加至登入中的連接字串。 在這些案例中，請使用 ``@`` 符號分隔登入和 Azure SQL Database 伺服器名稱。 例如，如果您登入名為 **login1** 和 Azure SQL Database 伺服器的完整的名稱是 **servername.database**, ，連接字串的使用者名稱參數應該是 ︰ **login1@servername**。 這項限制會限制您針對登入名稱可選用的文字。 如需詳細資訊，請參閱 [CREATE LOGIN (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms189751.aspx)。
 
 ## 授與登入伺服器層級權限
 
-為了讓伺服器層級主體以外的登入來管理伺服器層級安全性，Azure SQL Database 提供兩個安全性角色: **loginmanager** 建立登入和 **dbmanager** 建立資料庫。 只有在使用者 **主要** 資料庫可以加入至這些資料庫角色。
+為了讓伺服器層級主體以外的登入來管理伺服器層級安全性，Azure SQL Database 提供兩個安全性角色 ︰ **loginmanager** 建立登入和 **dbmanager** 建立資料庫。 只有在使用者 **主要** 資料庫可以加入至這些資料庫角色。
 
 > [AZURE.NOTE] 若要建立登入或資料庫，您必須連接到 **主要** 資料庫 (即的邏輯表示法 **主要**)。
 
 ### loginmanager 角色
 
-像 **securityadmin** 固定伺服器角色的內部部署 SQL Server 執行個體， **loginmanager** Azure SQL Database 中的資料庫角色是有權建立登入。 只有伺服器層級主體登入 (透過佈建程序所建立) 或成員的 **loginmanager** 資料庫角色可以建立新的登入。 
+像 **securityadmin** 固定伺服器角色的內部部署 SQL Server 執行個體， **loginmanager** Azure SQL Database 中的資料庫角色是有權建立登入。 只有伺服器層級主體登入 （透過佈建程序所建立） 或成員的 **loginmanager** 資料庫角色可以建立新的登入。 
 
 ### dbmanager 角色
 
-Azure SQL Database **dbmanager** 資料庫角色是類似於 **dbcreator** 固定的伺服器角色的內部部署 SQL Server 執行個體。 只有伺服器層級主體登入 (透過佈建程序所建立) 或成員的 **dbmanager** 資料庫角色可以建立資料庫。 使用者一旦成員 **dbmanager** 資料庫角色中，就可以使用 Azure SQL Database 建立資料庫 ``CREATE DATABASE`` 命令，但是該命令必須在 master 資料庫中執行。 如需詳細資訊，請參閱 [CREATE DATABASE (TRANSACT-SQL)](https://msdn.microsoft.com/library/dn268335.aspx)。
+Azure SQL Database **dbmanager** 資料庫角色是類似於 **dbcreator** 固定的伺服器角色的內部部署 SQL Server 執行個體。 只有伺服器層級主體登入 （透過佈建程序所建立） 或成員的 **dbmanager** 資料庫角色可以建立資料庫。 使用者一旦成員 **dbmanager** 資料庫角色中，就可以使用 Azure SQL Database 建立資料庫 ``CREATE DATABASE`` 命令，但是該命令必須在 master 資料庫中執行。 如需詳細資訊，請參閱 [CREATE DATABASE (TRANSACT-SQL)](https://msdn.microsoft.com/library/dn268335.aspx)。
 
 ### 如何指派 SQL Database 伺服器層級角色
 
 若要建立能夠建立資料庫或其他登入的登入及相關聯使用者，請執行下列步驟：
 
-1. 連接到 **主要** 資料庫使用的認證 (透過佈建程序所建立) 的伺服器層級主體登入的或現有成員的認證 **loginmanager** 資料庫角色。
+1. 連接到 **主要** 資料庫使用的認證 （透過佈建程序所建立） 的伺服器層級主體登入的或現有成員的認證 **loginmanager** 資料庫角色。
 2. 使用 ``CREATE LOGIN`` 命令建立登入。 如需詳細資訊，請參閱 [CREATE LOGIN (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms189751.aspx)。
 3. 使用 ``CREATE USER`` 命令在 master 資料庫中為該登入建立新的使用者。 如需詳細資訊，請參閱 [CREATE USER (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms173463.aspx)。
 4. 使用預存程序 ``sp_addrolememeber`` 新增至新的使用者 **dbmanager** 資料庫角色、 loginmanager 資料庫角色，或兩者。
 
-下列程式碼範例示範如何建立名為登入 **login1**, ，和對應的資料庫使用者，名為 **login1User** 能夠建立資料庫或其他登入，連線到時 **主要** 資料庫:
+下列程式碼範例示範如何建立名為登入 **login1**, ，和對應的資料庫使用者，名為 **login1User** 能夠建立資料庫或其他登入，連線到時 **主要** 資料庫 ︰
 
 ```
 -- first, connect to the master database
@@ -168,5 +168,6 @@ SELECT * FROM sys.databases;
 ## 另請參閱
 
 [Azure SQL Database 安全性方針和限制](sql-database-security-guidelines.md) 
-[使用 Azure Active Directory 驗證連接到 SQL 資料庫](sql-database-aad-authentication.md)
+[使用 Azure Active Directory 驗證連接到 SQL Database](sql-database-aad-authentication.md)
+
 

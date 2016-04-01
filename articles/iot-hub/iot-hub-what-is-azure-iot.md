@@ -25,7 +25,7 @@
 - [何謂 IoT 中樞？][lnk-iot-hub]
 - [IoT 中心入門][lnk-getstarted]
 
-您可以使用 IoT 裝置 SDK 來實作用戶端應用程式，以便在各式各樣的裝置硬體平台和作業系統上執行。 IoT 裝置 SDK 包含程式庫，可協助將遙測傳送至 IoT 中樞，並接收雲端到裝置的命令。 當您使用 SDK 時，您可從數個網路通訊協定中挑選，以和 IoT 中樞通訊。 若要深入了解，請參閱 [什麼是裝置 Sdk?][lnk-device-sdks]。
+您可以使用 IoT 裝置 SDK 來實作用戶端應用程式，以便在各式各樣的裝置硬體平台和作業系統上執行。 IoT 裝置 SDK 包含程式庫，可協助將遙測傳送至 IoT 中樞，並接收雲端到裝置的命令。 當您使用 SDK 時，您可從數個網路通訊協定中挑選，以和 IoT 中樞通訊。 若要深入了解，請參閱 [什麼是裝置 Sdk？][lnk-device-sdks]。
 
 您也可能會有興趣 [Azure IoT 套件][lnk-iot-suite], ，預先設定的解決方案，可讓您快速入門，並調整 IoT 專案來解決常見的 IoT 案例，例如遠端監視、 資產管理，以及預測維護的集合。
 
@@ -34,4 +34,5 @@
 [lnk-iot-hub]: iot-hub-what-is-iot-hub.md
 [lnk-iot-suite]: http://azure.microsoft.com/solutions/iot/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
+
 

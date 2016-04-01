@@ -25,7 +25,7 @@
 
 ### 建立服務命名空間並取得共用秘密金鑰
 
-1. 如需如何建立服務命名空間的完整資訊，請參閱主題 [How To: 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690931.aspx) 中 [管理的服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690928.aspx) 一節。
+1. 如需如何建立服務命名空間的完整資訊，請參閱主題 [How To ︰ 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690931.aspx) 中 [管理的服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690928.aspx) 一節。
 
 1. 在主視窗中的 [Azure 傳統入口網站][], ，按一下您在上一個步驟中建立的命名空間的名稱。
 
@@ -221,7 +221,7 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
     }
     ```
 
-1. 標準代理訊息屬性會放在 `BrokerProperties` HTTP 標頭中。 代理人屬性必須以 JSON 格式進行序列化。 若要指定 **TimeToLive** 值為 30 秒，並將訊息標籤"M1"至訊息、 前面加入下列程式碼 `webClient.UploadData()` 呼叫前一個範例所示:
+1. 標準代理訊息屬性會放在 `BrokerProperties` HTTP 標頭中。 代理人屬性必須以 JSON 格式進行序列化。 若要指定 **TimeToLive** 值為 30 秒，並將訊息標籤"M1"至訊息、 前面加入下列程式碼 `webClient.UploadData()` 呼叫前一個範例所示 ︰
 
     ```
     // Add brokered message properties "TimeToLive" and "Label"
@@ -630,3 +630,4 @@ namespace Microsoft.ServiceBus.Samples
 - [服務匯流排轉送 REST 教學課程](service-bus-relay-rest-tutorial.md)
 
 [Azure classic portal]: http://manage.windowsazure.com
+

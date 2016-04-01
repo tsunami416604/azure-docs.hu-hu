@@ -28,7 +28,7 @@ Service Fabric extension for Visual Studio 提供簡單、可重複且可編寫�
 
 ### 發佈設定檔
 
-Service Fabric 應用程式專案的資料夾內名為 **PublishProfiles** 包含 XML 檔案來儲存重要資訊在發行應用程式，例如:
+Service Fabric 應用程式專案的資料夾內名為 **PublishProfiles** 包含 XML 檔案來儲存重要資訊在發行應用程式，例如 ︰
 - Service Fabric 叢集連線參數
 - 應用程式參數檔案的路徑
 - 升級設定
@@ -45,19 +45,19 @@ Service Fabric 應用程式專案的資料夾內名為 **ApplicationParameters**
 
 下列步驟示範如何發行應用程式使用 **發行的 Service Fabric 應用程式** Visual Studio 服務網狀架構的工具所提供的對話方塊。
 
-1. 在 Service Fabric 應用程式專案的捷徑功能表上選擇 [ **發佈...** 檢視 **發行的 Service Fabric 應用程式** 對話方塊。
+1. 在 Service Fabric 應用程式專案的捷徑功能表上選擇 [ **發行...** 若要檢視 **發行的 Service Fabric 應用程式** 對話方塊。
 
     ![][0]
 
     在選取的檔案 **目標設定檔** 下拉式清單方塊就是所有設定，除了 **資訊清單版本**, ，會儲存。 您可以重複使用現有的設定檔，或是建立一個新的選擇 **< 管理設定檔...>** 中 **目標設定檔** 下拉式清單方塊。 當您選擇發佈設定檔時，其內容會出現在對話方塊的對應欄位中。 若要隨時儲存您的變更，請選擇 [ **儲存設定檔** 連結。    
 
-2.  **連接端點** 區段可讓您指定本機或遠端 Service Fabric 叢集中的發行端點。 若要新增或變更連接端點，請選擇 [ **Select …** ] 按鈕。  **選取 Service Fabric 叢集** 對話方塊會顯示可用的 Service Fabric 叢集連線端點，您可以發佈視您的 Azure 訂閱。 請注意，如果您尚未登入 Visual Studio，系統將會提示您登入。
+2.  **連接端點** 區段可讓您指定本機或遠端 Service Fabric 叢集中的發行端點。 若要新增或變更連接端點，請選擇 [ **選取...** 按鈕。  **選取 Service Fabric 叢集** 對話方塊會顯示可用的 Service Fabric 叢集連線端點，您可以發佈視您的 Azure 訂閱。 請注意，如果您尚未登入 Visual Studio，系統將會提示您登入。
 
     [叢集選項] 對話方塊可讓您從一組可用的訂用帳戶和叢集中選擇。
 
     ![][1]
 
-    >[AZURE.NOTE] 如果您想要發行至任何端點 (例如合作對象叢集)，請參閱 **發佈到任意叢集端點** 下一節。
+    >[AZURE.NOTE] 如果您想要發行至任何端點 （例如合作對象叢集），請參閱 **發佈到任意叢集端點** 下一節。
 
     一旦您選擇端點，Visual Studio 會驗證與選取的 Service Fabric 叢集的連線。 如果叢集未受到保護，Visual Studio 可以立即與其連線。 不過，如果叢集受到保護，您必須在本機電腦上安裝憑證才能繼續。 請參閱 [如何設定安全連線](service-fabric-visualstudio-configure-secure-connections.md) 如需詳細資訊。 當您完成時，選擇 [ **確定** ] 按鈕。 選取的叢集出現在 **發行的 Service Fabric 應用程式** ] 對話方塊。
 
@@ -67,7 +67,7 @@ Service Fabric 應用程式專案的資料夾內名為 **ApplicationParameters**
 
 4.  **升級應用程式** 核取方塊可讓您指定此發行動作是否升級。 升級發佈動作不同於一般發佈動作。 請參閱 [Service Fabric 應用程式升級](service-fabric-application-upgrade.md) 差異的清單。 若要設定升級中，選擇 [ **升級設定** 連結。 升級參數編輯器隨即出現。 請參閱 [設定 Service Fabric 應用程式的升級](service-fabric-visualstudio-configure-upgrade.md) 若要深入了解升級的參數。
 
-5. 選擇 **資訊清單版本...** ] 按鈕以檢視 **編輯版本** ] 對話方塊。 您需要更新應用程式和服務版本才能進行升級。 請參閱 [服務網狀架構應用程式升級教學課程](service-fabric-application-upgrade-tutorial.md) 若要了解如何在應用程式和服務資訊清單版本影響升級的程序。
+5. 選擇 **資訊清單版本...** 若要檢視的按鈕 **編輯版本** ] 對話方塊。 您需要更新應用程式和服務版本才能進行升級。 請參閱 [服務網狀架構應用程式升級教學課程](service-fabric-application-upgrade-tutorial.md) 若要了解如何在應用程式和服務資訊清單版本影響升級的程序。
 
     ![][3]
 
@@ -105,4 +105,5 @@ Visual Studio 發佈體驗已針對發佈至遠端叢集 (與您的其中一個 
 [2]: ./media/service-fabric-publish-app-remote-cluster/EditParams.png
 [3]: ./media/service-fabric-publish-app-remote-cluster/EditVersions.png
 [4]: ./media/service-fabric-publish-app-remote-cluster/publish-to-party-cluster.png
+
 

@@ -23,7 +23,7 @@
 
 ## 新增憑證至 cacerts 存放區
 
-1. 在命令提示字元設定為 JDK **jdk\jre\lib\security** 資料夾中，執行下列命令來查看已安裝哪些憑證:
+1. 在命令提示字元設定為 JDK **jdk\jre\lib\security** 資料夾中，執行下列命令來查看已安裝哪些憑證 ︰
 
     `keytool -list -keystore cacerts`
 
@@ -55,4 +55,5 @@ Baltimore 憑證可能已經安裝在您的 cacerts 存放區，因此請記得�
 如需 Azure 所使用的根憑證的詳細資訊，請參閱 [Azure 根憑證移轉](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)。
 
 如需 Java 的詳細資訊，請參閱 [Java 開發人員中心](/develop/java/)。
+
 

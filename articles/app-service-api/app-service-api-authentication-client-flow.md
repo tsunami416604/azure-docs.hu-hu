@@ -91,7 +91,7 @@
 
 1. 下載 web 專案從 [研究 GroupClaims WebApp DotNet 儲存機制](https://github.com/AzureADSamples/WebApp-GroupClaims-DotNet/)
  
-2. 依照指示 **如何執行範例** 中 [讀我檔案](https://github.com/AzureADSamples/WebApp-GroupClaims-DotNet/blob/master/README.md), ，但有下列例外狀況:
+2. 依照指示 **如何執行範例** 中 [讀我檔案](https://github.com/AzureADSamples/WebApp-GroupClaims-DotNet/blob/master/README.md), ，但有下列例外狀況 ︰
  
     * 雖然讀我檔案說明要使用 Visual Studio 2013，但您可以使用 Visual Studio 2015。 
 
@@ -113,7 +113,7 @@
 
     程式碼產生完成之後，您會看到新的資料夾中 **方案總管] 中**, ，API 應用程式的名稱。 此資料夾包含實作用戶端類別和資料模型的程式碼。 
 
-10. 修正模稜兩可的參考所產生的程式碼造成 *ContactsList/ContactsExtensions.cs*: 變更兩個執行個體 `Task.Factory.StartNew` 到 `System.Threading.Tasks.Task.Factory.StartNew`。
+10. 修正模稜兩可的參考所產生的程式碼造成 *ContactsList/ContactsExtensions.cs*︰ 變更兩個執行個體 `Task.Factory.StartNew` 到 `System.Threading.Tasks.Task.Factory.StartNew`。
  
 ## 加入程式碼來交換 Zumo 權杖的 AAD 權杖
 
@@ -227,4 +227,5 @@
 
 [Azure portal]: https://manage.windowsazure.com/
 [Azure preview portal]: https://portal.azure.com/
+
 

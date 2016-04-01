@@ -218,3 +218,4 @@
 ### 其他資源
 
 讀取 [ REST API 的應用程式閘道](https://msdn.microsoft.com/library/azure/mt299388.aspx) 如需詳細資訊。
+

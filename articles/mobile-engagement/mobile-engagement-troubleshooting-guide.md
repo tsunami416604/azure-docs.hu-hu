@@ -79,7 +79,7 @@
 
     - 確定憑證有效且未到期，仍可用於 iOS 推播通知。 
     - 請確定您要正確地設定 *生產* Mobile Engagement 應用程式中的憑證。 
-    - 請確定您要測試的 *真正的實體裝置。*iOS 模擬器無法處理推播訊息。
+    - 請確定您要測試的 *真正的實體裝置。* iOS 模擬器無法處理推播訊息。
     - 確定已在行動應用程式中正確設定 [Bundle Identifier]。 請參閱指示 [這裡](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
     - 測試時，請使用行動佈建設定檔中的「臨機」發佈。 若您的應用程式使用「偵錯」進行編譯，您將無法收到通知
 
@@ -120,4 +120,5 @@
     - 裝置識別碼
     - Mobile Engagement SDK 版本 (例如 Android SDK v2.1.0)
     - 附有確切錯誤訊息與狀況的錯誤詳細資料
+
 

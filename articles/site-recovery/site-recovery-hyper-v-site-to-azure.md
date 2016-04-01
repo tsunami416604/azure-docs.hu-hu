@@ -172,10 +172,10 @@ Azure Site Recovery 可藉由協調複寫、 容錯移轉及復原的虛擬機�
 
 參數包括：
 
-- **/ 認證**: 指定您下載註冊金鑰的位置。
-- **/Friendlyname**: 指定識別 HYPER-V 主機伺服器的名稱。 這個名稱會出現在入口網站中。
-- **/ EncryptionEnabled**: 選擇性。 指定是否要在 Azure 中加密複本虛擬機器 (靜態加密)。
-- **/proxyAddress**; **/proxyport**; **/proxyUsername**; **/proxyPassword**: 選擇性。 如果您想要使用自訂 proxy，或您現有的 proxy 需要驗證，請指定 proxy 參數。
+- **/ 認證**︰ 指定您下載註冊金鑰的位置。
+- **/Friendlyname**︰ 指定識別 HYPER-V 主機伺服器的名稱。 這個名稱會出現在入口網站中。
+- **/ EncryptionEnabled**︰ 選擇性。 指定是否要在 Azure 中加密複本虛擬機器 (靜態加密)。
+- **/proxyAddress**; **/proxyport**; **/proxyUsername**; **/proxyPassword**︰ 選擇性。 如果您想要使用自訂 proxy，或您現有的 proxy 需要驗證，請指定 proxy 參數。
 
 
 ## 步驟 4：建立 Azure 儲存體帳戶 
@@ -221,12 +221,12 @@ Azure Site Recovery 可藉由協調複寫、 容錯移轉及復原的虛擬機�
     - 檢視中的虛擬機器 **受保護項目** > **保護群組** > *protectiongroup_name* > **虛擬機器** 您可以向下切入到機器詳細資料中 **屬性** ] 索引標籤。
     - 設定中的虛擬機器的容錯移轉屬性 **受保護項目** > **保護群組** > *protectiongroup_name* > **虛擬機器** *virtual_machine_name* > **設定**。 您可以設定：
         - **名稱**: Azure 中的虛擬機器的名稱。
-        - **大小**: 容錯移轉的虛擬機器的目標大小。
+        - **大小**︰ 容錯移轉的虛擬機器的目標大小。
 
         ![設定虛擬機器屬性](./media/site-recovery-hyper-v-site-to-azure/VMProperties.png)
-    - 設定中的其他虛擬機器設定 *受保護項目** > **保護群組** > *protectiongroup_name* > **虛擬機器** *virtual_machine_name* > **設定**, ，包括:
+    - 設定中的其他虛擬機器設定 *受保護項目** > **保護群組** > *protectiongroup_name* > **虛擬機器** *virtual_machine_name* > **設定**, ，包括 ︰
 
-        - **網路介面卡**: 網路介面卡數目取決於所指定目標虛擬機器的大小。 檢查 [虛擬機器大小規格](../virtual-machines/virtual-machines-size-specs.md#size-tables) nic 的虛擬機器大小所支援的數目。
+        - **網路介面卡**︰ 網路介面卡數目取決於所指定目標虛擬機器的大小。 檢查 [虛擬機器大小規格](../virtual-machines/virtual-machines-size-specs.md#size-tables) nic 的虛擬機器大小所支援的數目。
 
 
             When you modify the size for a virtual machine and save the settings, the number of network adapter will change when you open **Configure** page the next time. The number of network adapters of target virtual machines is minimum of the number of network adapters on source virtual machine and maximum number of network adapters supported by the size of the virtual machine chosen. It is explained below:
@@ -260,7 +260,7 @@ Azure Site Recovery 可藉由協調複寫、 容錯移轉及復原的虛擬機�
 若要以目標 Azure 網路執行測試容錯移轉，您必須建立與您的 Azure 正式作業網路 (當您在 Azure 中建立新網路時的預設行為) 分隔的新的 Azure 網路。 讀取 [執行測試容錯移轉](site-recovery-failover.md#run-a-test-failover) 如需詳細資訊。
 
 
-若要完整測試您的複寫和網路部署，您必須針對複寫虛擬機器設定基礎結構，以如預期般運作。 這麼做來設定 dns 的網域控制站的虛擬機器，並複寫至 Azure Site Recovery 來執行測試容錯移轉測試網路中建立它的其中一種。  [採取更多有關](site-recovery-active-directory.md#considerations-for-test-failover) 測試 Active Directory 的容錯移轉考量。
+若要完整測試您的複寫和網路部署，您必須針對複寫虛擬機器設定基礎結構，以如預期般運作。 其中一個方式是將虛擬機器設定為具有 DNS 的網域控制站，並且使用 Site Recovery 將其複寫至 Azure，以藉由執行測試容錯移轉在測試網路中建立它。  [採取更多有關](site-recovery-active-directory.md#considerations-for-test-failover) 測試 Active Directory 的容錯移轉考量。
 
 執行測試容錯移轉，如下所示：
 
@@ -281,7 +281,7 @@ Azure Site Recovery 可藉由協調複寫、 容錯移轉及復原的虛擬機�
 
     - 按一下 [ **測試容錯移轉已完成**。 清除測試環境，以自動關閉電源及刪除測試虛擬機器。
     - 按一下 [ **備忘稿** 記錄並儲存關於測試容錯移轉相關聯的任何觀察。
-7. 當容錯移轉到達 **完成測試** 階段完成驗證，如下所示:
+7. 當容錯移轉到達 **完成測試** 階段完成驗證，如下所示 ︰
     1. 在 Azure 入口網站中檢視複本虛擬機器。 確認虛擬機器成功啟動。
     2. 如果您設定從內部部署網路存取虛擬機器，您可以初始化虛擬機器的「遠端桌面」連線。
     3. 按一下 [ **完成測試** 來完成它。
@@ -291,4 +291,5 @@ Azure Site Recovery 可藉由協調複寫、 容錯移轉及復原的虛擬機�
 ## 後續步驟
 
 您的部署設定完成並開始執行之後 [深入](site-recovery-failover.md) 有關容錯移轉。
+
 

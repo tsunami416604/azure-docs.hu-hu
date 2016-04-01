@@ -40,7 +40,7 @@
 ## 在邏輯應用程式中使用 Dropbox 連接器 # ##
 建立 API 應用程式之後，您現在可以使用 OneDrive 連接器做為邏輯應用程式的動作。 若要這樣做，您需要：
 
-1.  建立新的邏輯應用程式，並選擇具有 OneDrive 連接器的相同資源群組。 遵循 [建立新的邏輯應用程式] 的指示。
+1.  建立新的邏輯應用程式，並選擇具有 OneDrive 連接器的相同資源群組。 請依照下列指示 [Create a new Logic App]。
 
 2.  在建立的邏輯應用程式中開啟 [觸發程序和動作] 以開啟 Logic Apps 設計工具，並設定您的流程。
 
@@ -73,12 +73,12 @@
 
     ![][7]
 
-9. 在 [OneDrive API 定義]，可以找到的 Api 的詳細資料。
+9. Api 的詳細資訊，請參閱 [OneDrive API Definition]。
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -96,4 +96,5 @@
 <!-- Links -->
 [Create a new Logic App]: app-service-logic-create-a-logic-app.md
 [OneDrive API Definition]: https://msdn.microsoft.com/library/dn974227.aspx
+
 

@@ -56,7 +56,7 @@ Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管�
         "AccountName=your_storage_account;" + 
         "AccountKey=your_storage_account_key";
 
-在 Microsoft Azure 中的角色內執行的應用程式，這個字串可以儲存在服務組態檔中， *ServiceConfiguration.cscfg*, ，而且可以藉由呼叫存取 **RoleEnvironment.getConfigurationSettings** 方法。 以下是取得的連接字串的範例 **設定** 名 *StorageConnectionString* 服務組態檔中:
+在 Microsoft Azure 中的角色內執行的應用程式，這個字串可以儲存在服務組態檔中， *ServiceConfiguration.cscfg*, ，而且可以藉由呼叫存取 **RoleEnvironment.getConfigurationSettings** 方法。 以下是取得的連接字串的範例 **設定** 名 *StorageConnectionString* 服務組態檔中 ︰
 
     // Retrieve storage account from connection-string.
     String storageConnectionString = 
@@ -68,7 +68,7 @@ Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管�
 
 A **CloudTableClient** 物件可讓您取得資料表的參考物件
 。 下列程式碼會建立 **CloudTableClient** 物件
-並使用它來建立新 **CloudTable** 物件表示資料表名為 「 懂人 」。 (請注意: 還有其他方法來建立 **CloudStorageAccount** 物件; 如需詳細資訊，請參閱 **CloudStorageAccount** 中 [Azure Storage Client SDK Reference]。)
+並使用它來建立新 **CloudTable** 物件表示資料表名為 「 懂人 」。 (請注意 ︰ 還有其他方法來建立 **CloudStorageAccount** 物件; 如需詳細資訊，請參閱 **CloudStorageAccount** 中 [Azure Storage Client SDK Reference]。)
 
     try
     {
@@ -92,7 +92,7 @@ A **CloudTableClient** 物件可讓您取得資料表的參考物件
 
 ## 作法：列出資料表
 
-若要取得資料表的清單，請呼叫 **cloudtableclient.listtables ()** 方法來擷取可逐一查看清單的資料表名稱。
+若要取得資料表的清單，請呼叫 **cloudtableclient.listtables （)** 方法來擷取可逐一查看清單的資料表名稱。
 
     try
     {
@@ -565,3 +565,4 @@ A **CloudTableClient** 物件可讓您取得資料表的參考物件
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [blog post]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
  
+

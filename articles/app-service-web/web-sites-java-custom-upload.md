@@ -18,7 +18,7 @@
 
 # 將自訂 Java Web 應用程式上傳至 Azure
 
-本主題說明如何將自訂 Java web 應用程式上傳至 [Azure App Service] Web 應用程式。 內容包括適用於任何 Java 網站或 Web 應用程式的資訊，以及針對特定應用程式的一些範例。
+本主題說明如何將自訂 Java web 應用程式上傳 [Azure App Service] Web 應用程式。 內容包括適用於任何 Java 網站或 Web 應用程式的資訊，以及針對特定應用程式的一些範例。
 
 請注意，Azure 會提供一種方法來建立 Java web 應用程式使用 Azure 入口網站組態 UI 和 Azure Marketplace 所述在 [Azure App Service 中建立 Java web 應用程式](web-sites-java-get-started.md)。 本教學課程適用於您不打算使用 Azure 入口網站組態 UI 或 Azure Marketplace 的案例。  
 
@@ -154,9 +154,9 @@ Jetty 組態必須在 start.ini 中進行變更，進而設定 `java.net.preferI
 
 我們的測試使用了 Hudson 3.1.2 war 和預設 Tomcat 7.0.50 執行個體，但沒有使用 UI 進行選項設定。  因為 Hudson 是個軟體建置工具，建議您將它安裝在專屬執行個體其中 **AlwaysOn** 旗標可以設定在 web 應用程式。
 
-1. 在 web 應用程式的根目錄，亦即， **d:\home\site\wwwroot**, ，建立 **webapps** 目錄 (如果尚未存在)，並將 hudson.war 放在 **d:\home\site\wwwroot\webapps**。
-2. 下載 apache maven 3.0.5 (與 Hudson 相容)，並將它放在 **d:\home\site\wwwroot**。
-3. 建立 web.config 中的 **d:\home\site\wwwroot** ，並貼上下列內容:
+1. 在 web 應用程式的根目錄，亦即， **d:\home\site\wwwroot**, ，建立 **webapps** 目錄 （如果尚未存在），並將 hudson.war 放在 **d:\home\site\wwwroot\webapps**。
+2. 下載 apache maven 3.0.5 （與 Hudson 相容），並將它放在 **d:\home\site\wwwroot**。
+3. 建立 web.config 中的 **d:\home\site\wwwroot** ，並貼上下列內容 ︰
     
         <?xml version="1.0" encoding="UTF-8"?>
         <configuration>
@@ -184,7 +184,7 @@ Jetty 組態必須在 start.ini 中進行變更，進而設定 `java.net.preferI
 
     ![Hudson](./media/web-sites-java-custom-upload/hudson1.png)
     
-5. 存取 Hudson 組態頁面: 按一下 **Manage Hudson**, ，然後按一下 [ **設定系統**。
+5. 存取 Hudson 組態頁面 ︰ 按一下 **Manage Hudson**, ，然後按一下 [ **設定系統**。
 6. 如下所示設定 JDK：
 
     ![Hudson configuration](./media/web-sites-java-custom-upload/hudson2.png)
@@ -214,7 +214,7 @@ App Service Web Apps 支援 Liferay。 因為 Liferay 需要大量記憶體，We
 
     liferay.home=%HOME%/site/wwwroot/liferay
 
-在與 tomcat-7.0.40 資料夾相同目錄層級，建立名為 **web.config** 含有下列內容:
+在與 tomcat-7.0.40 資料夾相同目錄層級，建立名為 **web.config** 含有下列內容 ︰
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -257,4 +257,5 @@ App Service Web Apps 支援 Liferay。 因為 Liferay 需要大量記憶體，We
  
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
+
 

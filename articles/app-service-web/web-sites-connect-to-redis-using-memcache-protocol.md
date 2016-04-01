@@ -67,7 +67,7 @@ Web Apps Memcache 填充碼可以搭配任何應用程式，只要應用程式�
 
 ![Web 應用程式 AppSetting MEMCACHESHIM_REDIS_ENABLE](./media/web-sites-connect-to-redis-using-memcache-protocol/6-azure-website-appsettings-enable-shim.png)
 
-在您完成新增三 (3) 應用程式設定後，按一下 [ **儲存**。
+在您完成新增三 （3） 應用程式設定後，按一下 [ **儲存**。
 
 ## 啟用適用於 PHP 的 Memcache 延伸模組
 
@@ -179,7 +179,7 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 >[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 
 [0]: http://bit.ly/1F0m3tw
@@ -196,4 +196,5 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [11]: http://stackoverflow.com/questions/tagged/azure-web-sites
 [12]: /services/cache/
 [13]: http://memcached.org
+
 

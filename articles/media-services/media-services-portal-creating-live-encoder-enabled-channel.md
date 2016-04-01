@@ -48,7 +48,7 @@
     使用此 URL 來確認您的通道會正確接收即時串流。
 
 3. 建立程式，此程式也會建立資產。 
-1. 發行的程式 (會建立相關聯的資產的 OnDemand 定位器)。  
+1. 發行的程式 （會建立相關聯的資產的 OnDemand 定位器）。  
 
     確定負責傳送內容的串流端點上，至少有一個串流保留單位。
 1. 當您準備好開始串流和封存時，請啟動程式。
@@ -99,9 +99,9 @@
     配置任何新的單元需要大約 20 分鐘的時間才能完成。 
 
      
-    >[AZURE.NOTE] Currently, going from any positive value of streaming units back to none, can disable streaming for up to an hour.
+    >[AZURE.NOTE] 目前，從任何正值的串流處理單元為 none，可以停用串流長達一小時。
     >
-    > The highest number of units specified for the 24-hour period is used in calculating the cost. For information about pricing details, see [Media Services Pricing Details](http://go.microsoft.com/fwlink/?LinkId=275107).
+    > 計算成本時會使用 24 小時內指定的最大單元數。 如需定價詳細資料的相關資訊，請參閱 [媒體服務定價詳細資料](http://go.microsoft.com/fwlink/?LinkId=275107)。
 
  
 ##建立通道
@@ -114,7 +114,7 @@
 
 ![standard0][standard0]
 
-如 **標準** 編碼類型，有效內嵌通訊協定選項如下:
+如 **標準** 編碼類型，有效內嵌通訊協定選項如下 ︰
 
 - 單一位元速率分段的 MP4 (Smooth Streaming)
 - 單一位元速率 RTMP
@@ -223,7 +223,7 @@
 
 ##播放內容
 
-若要提供您的使用者具有可用於串流處理內容的 URL，您首先要 「 發行 」 您的資產 (如前一節中所說明) 藉由建立定位器 (當您發行資產使用入口網站時，會為您建立定位器)。 定位器提供對於資產中包含之檔案的存取。 
+若要提供您的使用者具有可用於串流處理內容的 URL，您首先要 「 發行 」 您的資產 （如前一節中所說明） 藉由建立定位器 （當您發行資產使用入口網站時，會為您建立定位器）。 定位器提供對於資產中包含之檔案的存取。 
 
 根據您要用來播放您的內容資料流通訊協定，您可能需要修改您從取得的 URL **發佈 URL** channel\program 的連結。
 
@@ -276,3 +276,4 @@
 [standard3]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard3.png
 [standard4]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard4.png
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png 
+

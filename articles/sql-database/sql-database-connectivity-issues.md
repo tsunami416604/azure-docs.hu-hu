@@ -31,7 +31,7 @@
 暫時性錯誤是根本原因很快就自行解決的錯誤。 當 Azure 系統快速地將硬體資源轉移到負載平衡更好的各種工作負載時，偶爾會發生暫時性錯誤。 在此重新設定時間範圍期間，與 Azure SQL Database的連接可能會失去。
 
 
-如果用戶端程式使用 ADO.NET，您的程式接獲指示有關暫時性錯誤所擲回 **SqlException**。  **數目** 屬性可以針對主題頂端附近的暫時性錯誤的清單進行比較:
+如果用戶端程式使用 ADO.NET，您的程式接獲指示有關暫時性錯誤所擲回 **SqlException**。  **數目** 屬性可以針對主題頂端附近的暫時性錯誤的清單進行比較 ︰
 [SQL 資料庫用戶端程式的錯誤訊息](sql-database-develop-error-messages.md)。
 
 
@@ -168,7 +168,7 @@
 -->
 
 
-當您建立 [連接字串](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) 的您 **SqlConnection** 物件時，您應該調整下列參數的值:
+當您建立 [連接字串](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) 的您 **SqlConnection** 物件時，您應該調整下列參數的值 ︰
 
 - ConnectRetryCount &nbsp;&nbsp;*(預設值為 0。範圍是 0 到 255)。*
 - ConnectRetryInterval &nbsp;&nbsp;*(預設值為 1 秒。範圍是 1 到 60)。*
@@ -214,7 +214,7 @@
 
 
 如需詳細資訊，請參閱：
-[如何: 在 SQL 資料庫上設定防火牆設定](sql-database-configure-firewall-settings.md)
+[如何：在 SQL Database 上進行防火牆設定](sql-database-configure-firewall-settings.md)
 
 
 <a id="c-connection-ports" name="c-connection-ports"></a>
@@ -237,10 +237,10 @@
 7. &gt; 新增規則
 
 
-如果用戶端程式裝載於 Azure 的虛擬機器 (VM)，您應該閱讀:<br/>[針對 ADO.NET 4.5 及 SQL Database V12 的 1433年以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)。
+如果用戶端程式裝載於 Azure 的虛擬機器 (VM)，您應該閱讀 ︰<br/>[針對 ADO.NET 4.5 及 SQL 1433 以外的連接埠資料庫 V12](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
 
-如需 cofiguration 背景資訊的連接埠和 IP 位址，請參閱:
+如需 cofiguration 背景資訊的連接埠和 IP 位址，請參閱 ︰
 [Azure SQL Database 防火牆](sql-database-firewall-configure.md)
 
 
@@ -340,14 +340,14 @@ Enterprise Library 6 (EntLib60) 提供 .NET Managed 類別來協助記錄：
 
 | 記錄查詢 | 說明 |
 | :-- | :-- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |  [Sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) 檢視提供個別的事件，包括某些可能會導致暫時性錯誤或連線失敗的相關資訊。<br/><br/>在理想情況下您可以相互關聯 **start_time** 或 **end_time** 值，當用戶端程式發生問題的相關資訊。<br/><br/>**提示:** 您必須連接到 **主要** 資料庫來執行此程序。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |  [Sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) 檢視提供的其他診斷的事件類型的彙總的計算。<br/><br/>**提示:** 您必須連接到 **主要** 資料庫來執行此程序。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>（& s) nbsp; & nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>（& s) nbsp; & nbsp;`e.event_type, e.end_time;` |  [Sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) 檢視提供個別的事件，包括某些可能會導致暫時性錯誤或連線失敗的相關資訊。<br/><br/>在理想情況下您可以相互關聯 **start_time** 或 **end_time** 值，當用戶端程式發生問題的相關資訊。<br/><br/>**提示 ︰** 您必須連接到 **主要** 資料庫來執行此程序。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>（& s) nbsp; & nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |  [Sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) 檢視提供的其他診斷的事件類型的彙總的計算。<br/><br/>**提示 ︰** 您必須連接到 **主要** 資料庫來執行此程序。 |
 
 
 ### 診斷：在 SQL Database 記錄中搜尋問題事件
 
 
-您可以在 Azure SQL Database 的記錄中搜尋有關問題事件的項目。 請嘗試下列的 TRANSACT-SQL SELECT 陳述式中 **主要** 資料庫:
+您可以在 Azure SQL Database 的記錄中搜尋有關問題事件的項目。 請嘗試下列的 TRANSACT-SQL SELECT 陳述式中 **主要** 資料庫 ︰
 
 
 ```
@@ -398,7 +398,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您實作雲
 - [Enterprise Library 6 – 2013 年 4 月](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
 
-處理暫時性失敗重試邏輯是一個區域 EntLib60 可以幫助:
+處理暫時性失敗重試邏輯是一個區域 EntLib60 可以幫助 ︰
 - [4 - 堅持是所有成功的秘方：使用暫時性錯誤處理應用程式區塊](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
@@ -439,9 +439,9 @@ Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您實作雲
 
 以下是 EntLib60 相關資訊的連結：
 
-- 免費 [通訊錄的下載: Microsoft 企業程式庫，第 2 版的開發人員指南](http://www.microsoft.com/download/details.aspx?id=41145)
+- 免費 [通訊錄的下載 ︰ Microsoft 企業程式庫，第 2 版的開發人員指南](http://www.microsoft.com/download/details.aspx?id=41145)
 
-- 最佳作法: [重試一般指引](best-practices-retry-general.md) 已重試邏輯的深入討論。
+- 最佳作法 ︰ [重試一般指引](best-practices-retry-general.md) 已重試邏輯的深入討論。
 
 - NuGet 下載 [Enterprise Library-暫時性錯誤處理應用程式區塊 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
 
@@ -459,7 +459,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您實作雲
 
 
 如需詳細資料，請參閱：
-[5-十分容易，只要跟掉記錄檔: 使用 Logging Application Block](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)
+[5 - 輕而易舉：使用記錄應用程式區塊](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)
 
 
 ### EntLib60 IsTransient 方法的原始程式碼
@@ -544,4 +544,5 @@ public bool IsTransient(Exception ex)
 
 
 - [*重試* 是一般用途的程式庫，以重試一次的 Apache 2.0 授權 **Python**, ，以簡化工作將重試行為加入至幾乎任何項目。](https://pypi.python.org/pypi/retrying)
+
 

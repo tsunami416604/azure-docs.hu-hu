@@ -28,7 +28,7 @@
 
 開始執行本文中的指示之前，您必須擁有以下項目：
 
-- Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- Azure 訂閱。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 
 ## 基本組態選項
@@ -49,19 +49,19 @@
 
     您可以將 HDInsight 叢集佈建在下列兩個作業系統上：
     - **Windows (Windows Server 2012 R2 Datacenter) 上的 HDInsight**:
-    - **Linux (Ubuntu 12.04 LTS 適用於 Linux) 上的 HDInsight (預覽)**: HDInsight 提供在 Azure 上設定 Linux 叢集的選項。 如果您熟悉 Linux 或 Unix、要從現有的 Linux Hadoop 方案進行移轉，或想輕鬆整合針對 Linux 所建置的 Hadoop 生態系統元件，請設定 Linux 叢集。 如需詳細資訊，請參閱 [開始在 HDInsight 中的 Linux 上使用 Hadoop](hdinsight-hadoop-linux-get-started.md)。 
+    - **Linux (Ubuntu 12.04 LTS 適用於 Linux) 上的 HDInsight （預覽）**: HDInsight 提供在 Azure 上設定 Linux 叢集的選項。 如果您熟悉 Linux 或 Unix、要從現有的 Linux Hadoop 方案進行移轉，或想輕鬆整合針對 Linux 所建置的 Hadoop 生態系統元件，請設定 Linux 叢集。 如需詳細資訊，請參閱 [開始在 HDInsight 中的 Linux 上使用 Hadoop](hdinsight-hadoop-linux-get-started.md)。 
 
 
 - **HDInsight 版本**
 
     這可用來決定要用於此叢集的 HDInsight 版本。 如需詳細資訊，請參閱 [Hadoop 叢集版本和在 HDInsight 中的元件](https://go.microsoft.com/fwLink/?LinkID=320896&clcid=0x409)
 
-- **叢集類型** 和 **叢集大小 (亦稱為資料節點)**
+- **叢集類型** 和 **叢集大小 （亦稱為資料節點）**
 
     HDInsight 可讓客戶部署各種不同的叢集類型，用於不同的資料分析工作負載。 目前提供的叢集類型包括：
     
     - Hadoop 叢集：適用於查詢和分析工作負載
-    - HBase 叢集: NoSQL 工作負載
+    - HBase 叢集 ︰ NoSQL 工作負載
     - Storm 叢集：適用於即時事件的處理工作負載
     - Spark 叢集 (預覽)：適用於記憶體內部處理、互動式查詢、資料流和機器學習工作負載。
 
@@ -105,7 +105,7 @@
 
     >[AZURE.NOTE] The cluster size limit varies among Azure subscriptions. Contact billing support to increase the limit.
     
-- **區域/虛擬網路 (又稱為 位置)**
+- **區域/虛擬網路 （又稱為 位置）**
 
     ![Azure 區域](./media/hdinsight-provision-clusters-v1/Azure.regions.png)
 
@@ -117,7 +117,7 @@
 
     選取 VM 的節點大小。 如需詳細資訊，請參閱 [雲端服務的大小](cloud-services-sizes-specs.md)
 
-    根據選擇的 VM ，您的成本可能會有所不同。 HDInsight 針對叢集節點會使用所有標準層 VM。 如需 VM 大小對您價格的影響，請參閱 <a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 定價</a>.
+    根據選擇的 VM ，您的成本可能會有所不同。 HDInsight 針對叢集節點會使用所有標準層 VM。 如需 VM 大小對您價格影響的相關資訊，請參閱 <a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 定價</a>。
 
 
 - **HDInsight 使用者**
@@ -203,7 +203,7 @@
     $OozieConfigValues = new-object 'Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration'
     $OozieConfigValues.Configuration = @{ "oozie.service.coord.normal.default.timeout"="150" }  # default 120
     
-如需詳細資訊，請參閱標題為 Azim (英文) 部落格 [自訂 HDInsight 叢集佈建](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx)。
+如需詳細資訊，請參閱標題為 Azim （英文） 部落格 [自訂 HDInsight 叢集佈建](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx)。
 
 
 
@@ -257,7 +257,7 @@
 
 1. 登入 [Azure 傳統入口網站][azure-management-portal]。
 2. 按一下 [ **+ 新增** 在頁面底部，按一下 [ **DATA SERVICES**, ，按一下 [ **HDINSIGHT**, ，然後按一下 [ **自訂建立**。
-3. 在 **叢集詳細資料** 頁面上，輸入或選擇下列值:
+3. 在 **叢集詳細資料** 頁面上，輸入或選擇下列值 ︰
 
     - 叢集名稱
     - 訂用帳戶名稱
@@ -265,21 +265,21 @@
     - 作業系統
     - HDInsight 版本
 
-4. 在 **設定叢集** 頁面上，輸入或選取下列值:
+4. 在 **設定叢集** 頁面上，輸入或選取下列值 ︰
 
     - 資料節點
     - 區域/虛擬網路
     - 前端節點大小
     - 資料節點大小
 
-5. 在 **Configure Cluster User** 頁面上，提供下列值:
+5. 在 **Configure Cluster User** 頁面上，提供下列值 ︰
 
     - HTTP 使用者名稱
     - HTTP 密碼/確認密碼
     - 為叢集啟用遠端桌面
     - 輸入 Hive/Oozie 中繼存放區
 
-6. 如果您選擇在前一個畫面中，輸入 Hive/Oozie metastore **設定 Hive/Oozie Metastore** 頁面上，提供下列值:
+6. 如果您選擇在前一個畫面中，輸入 Hive/Oozie metastore **設定 Hive/Oozie Metastore** 頁面上，提供下列值 ︰
 
     - Hive 中繼存放區資料庫
     - 資料庫使用者
@@ -288,7 +288,7 @@
     - 資料庫使用者
     - 資料庫使用者密碼
 
-7. 在 **儲存體帳戶** 頁面上，提供下列值:
+7. 在 **儲存體帳戶** 頁面上，提供下列值 ︰
 
     - 儲存體帳戶
     - 帳戶名稱
@@ -299,8 +299,8 @@
 
     - 名稱：指定指令碼動作的名稱。
     - 指令碼 URI：針對自訂叢集時所叫用的指令碼，指定統一資源識別項 (URI)。
-    - 節點類型：指定執行自訂指令碼的節點。 您可以選擇 <b>所有節點</b>， <b>僅限前端節點</b>或 <b>僅限資料節點</b>.
-    - 參數: 指定參數，如果所需的指令碼。</td></tr>
+    - 節點類型：指定執行自訂指令碼的節點。 您可以選擇 [所有節點]<b></b>、[僅限前端節點]<b></b> 或 [僅限資料節點]<b></b>。
+    - 參數 ︰ 指定參數，如果所需的指令碼。</td></tr>
 
     您可以加入一個以上的指令碼動作，以在叢集上安裝多個元件。 加入指令碼之後，請按一下核取記號以開始佈建叢集。
 
@@ -510,7 +510,7 @@ HDInsight 會使用 Azure Blob 儲存容器作為預設檔案系統。 必須要
         azure account import <path/to/the/file>
 
 
-#### <a id="cliwin"></a>設定用於 Windows 的 Azure CLI
+#### <a id="cliwin"></a>設定適用於 Windows 的 Azure CLI
 
 執行下列程序來設定您的 Windows 電腦使用 Azure CLI：
 
@@ -529,7 +529,7 @@ Azure CLI 可使用 NPM 或 Windows Installer 進行安裝。 Microsoft 建議�
 
         npm install -g https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz
 
-    > [AZURE.NOTE] 如果您收到錯誤，指出找不到 NPM 命令，請驗證下列路徑是否在 PATH 環境變數: <i>C:\Program Files (x86) \nodejs;C:\Users\[username]\AppData\Roaming\npm</i> 或 <i>C:\Program Files\nodejs;C:\Users\[username]\AppData\Roaming\npm</i>
+    > [AZURE.NOTE] 如果您收到錯誤，指出找不到 NPM 命令，請驗證下列路徑是否在 PATH 環境變數 ︰ <i>C:\Program Files (x86) \nodejs;C:\Users\[username]\AppData\Roaming\npm</i> 或 <i>C:\Program Files\nodejs;C:\Users\[username]\AppData\Roaming\npm</i>
 
 5.  執行下列命令以驗證安裝：
 
@@ -598,7 +598,7 @@ HDInsight 會使用 Azure Blob 儲存容器作為預設檔案系統。 必須要
     -- Lists the keys for a Storage account
     azure storage account keys list <StorageAccountName>
 
-如需使用 Azure 傳統入口網站來取得資訊的詳細資訊，請參閱 *How to: 檢視、 複製和重新產生儲存體存取金鑰* 區段 [建立、 管理或刪除儲存體帳戶](../storage-create-storage-account.md)。
+如需使用 Azure 傳統入口網站來取得資訊的詳細資訊，請參閱 *How to ︰ 檢視、 複製和重新產生儲存體存取金鑰* 區段 [建立、 管理或刪除儲存體帳戶](../storage-create-storage-account.md)。
 
 HDInsight 叢集同時要求儲存體帳戶內含有容器。 如果您提供的儲存體帳戶沒有容器， *azure hdinsight 叢集建立* 命令會提示您輸入容器名稱，並建立容器。 不過，如果您想要預先建立容器，您可以使用下列命令：
 
@@ -693,12 +693,12 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您能夠輕鬆地從 .NE
 
 2. 從 **檔案** ] 功能表上，按一下 [ **新增**, ，然後按一下 [ **專案**。
 
-3. 從 **新的專案**, ，輸入或選取下列值:
+3. 從 **新的專案**, ，輸入或選取下列值 ︰
 
-    |屬性|值|
-    |--------|-----|
-    |範本|Templates/Visual C#/Windows/Console Application|
-    |名稱|CreateHDICluster|
+  	|屬性|值|
+  	|--------|-----|
+  	|範本|Templates/Visual C#/Windows/Console Application|
+  	|名稱|CreateHDICluster|
 
 4. 按一下 [ **確定** 以建立專案。
 
@@ -820,4 +820,5 @@ Visual Studio 中開啟應用程式時，請按 **F5** 執行應用程式。 主
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
+
 

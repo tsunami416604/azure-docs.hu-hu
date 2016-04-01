@@ -12,9 +12,10 @@ DNS 系統根據 *記錄*。 記錄會關聯特定 *名稱*, ，例如 **contoso
 
 ###CNAME 或別名記錄
 
-CNAME 記錄會對應 *特定* DNS 名稱，例如 **mail.contoso.com** 或 **www.contoso.com**, ，到其他 (正式) 網域名稱。 在 Azure 網站使用流量管理員中，正式網域名稱是 **& lt; p >。 trafficmanager.net** 流量管理員設定檔的網域名稱。 CNAME 建立之後，建立一個別名 **& lt; p >。 trafficmanager.net** 網域名稱。 CNAME 項目會解析為 IP 位址的您 **& lt; p >。 trafficmanager.net** 網域名稱，網站的 IP 位址變更時，如果您不需要採取任何動作。
+CNAME 記錄會對應 *特定* DNS 名稱，例如 **mail.contoso.com** 或 **www.contoso.com**, ，到其他 （正式） 網域名稱。 在 Azure 網站使用流量管理員中，正式網域名稱是 **& lt; p >。 trafficmanager.net** 流量管理員設定檔的網域名稱。 CNAME 建立之後，建立一個別名 **& lt; p >。 trafficmanager.net** 網域名稱。 CNAME 項目會解析為 IP 位址的您 **& lt; p >。 trafficmanager.net** 網域名稱，網站的 IP 位址變更時，如果您不需要採取任何動作。
 
 一旦流量到達流量管理員，流量管理員接著會使用針對其設定的負載平衡方法，將流量路由到您的網站。 這對網站的訪客而言完全是透明的。 訪客只會在其瀏覽器中看到自訂的網域名稱。
 
 > [AZURE.NOTE] 某些網域註冊機構只允許您對應子網域，當使用 CNAME 記錄，例如 **www.contoso.com**, ，而不是根名稱，例如 **contoso.com**。 如需 CNAME 記錄的詳細資訊，請參閱註冊機構提供的文件、<a href="http://en.wikipedia.org/wiki/CNAME_record">維基百科 CNAME 記錄條目</a>，或 <a href="http://tools.ietf.org/html/rfc1035">IETF 網域名稱 - 實作與規格</a>文件。
+
 

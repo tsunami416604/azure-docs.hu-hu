@@ -24,13 +24,13 @@
 
 ## <a name="whatis"></a>什麼是 Spark？
 
-<a href="http://spark.apache.org/docs/latest/index.html" target="_blank">Apache Spark</a> 開放原始碼平行處理架構，可支援記憶體中處理，大幅提升巨量資料分析應用程式的效能。 Spark 的記憶體內計算功能，使其成為機器學習和圖表計算中反覆演算法的絕佳選擇 。
+<a href="http://spark.apache.org/docs/latest/index.html" target="_blank">Apache Spark</a> 是一個開放原始碼平行處理架構，可支援記憶體內部處理，大幅提升巨量資料分析應用程式的效能。 Spark 的記憶體內計算功能，使其成為機器學習和圖表計算中反覆演算法的絕佳選擇 。
 
 Spark 也可用來執行傳統的磁碟型資料處理。 Spark 以避免在中繼階段寫入磁碟的方式，改善傳統的 MapReduce 架構。 此外，Spark 與 Hadoop 分散式檔案系統 (HDFS) 和 Azure Blob 儲存體相容，因此可以輕鬆地透過 Spark 來處理現有的資料。 
 
 本主題說明如何自訂 HDInsight 叢集以安裝 Spark。
 
-## <a name="whatis"></a>可以安裝哪個版本的 Spark?
+## <a name="whatis"></a>可以安裝哪個版本的 Spark？
 
 在本主題中，我們使用指令碼動作自訂指令碼在 HDInsight 叢集上安裝 Spark。 此指令碼會安裝 Spark 1.5.1。
 
@@ -42,7 +42,7 @@ Spark 也可用來執行傳統的磁碟型資料處理。 Spark 以避免在中�
 
 > [AZURE.WARNING] 您可能會發現某些 Spark 1.3.1 二進位碼檔案會安裝在您的 HDInsight 叢集上預設。 但是不應該使用這些檔案，所以在未來的更新會從 HDInsight 叢集映像移除這些檔案。
 
-## <a name="install"></a>安裝 Spark 使用指令碼動作
+## <a name="install"></a>使用指令碼動作安裝 Spark
 
 在 HDInsight 叢集上安裝 Spark 的範例指令碼是可以從唯讀的 Azure 儲存體 blob 位於 [https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh](https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh)。 本節提供有關如何在使用 Azure 入口網站建立叢集時使用範例指令碼的指示。 
 
@@ -50,14 +50,14 @@ Spark 也可用來執行傳統的磁碟型資料處理。 Spark 以避免在中�
 
 1. 開始使用中的步驟建立叢集 [建立 Linux 型 HDInsight 叢集](hdinsight-hadoop-create-linux-clusters-portal.md), ，但是不完成建立。
 
-2. 在 **選擇性組態** 分頁中，選取 **指令碼動作**, ，並提供下列資訊:
+2. 在 **選擇性組態** 分頁中，選取 **指令碼動作**, ，並提供下列資訊 ︰
 
-    * __名稱__: 輸入指令碼動作的易記名稱。
+    * __名稱__︰ 輸入指令碼動作的易記名稱。
     * __指令碼 URI__: https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh
-    * __HEAD__: 勾選此選項
-    * __背景工作__: 取消核取此選項
-    * __ZOOKEEPER__: 取消核取此選項
-    * __參數__: 將此欄位保留空白
+    * __HEAD__︰ 勾選此選項
+    * __背景工作__︰ 取消核取此選項
+    * __ZOOKEEPER__︰ 取消核取此選項
+    * __參數__︰ 將此欄位保留空白
     
     > [AZURE.NOTE] 讓其他節點型別可以是未檢查的範例 Spark 指令碼只在前端節點上安裝元件。
 
@@ -178,7 +178,7 @@ Spark SQL 可讓您使用 Spark 來執行以結構化查詢語言 (SQL)、HiveQL
     
     使用 __Ctrl + X__, ，然後 __Y__ 和 __Enter__ 儲存檔案。
 
-4. 使用下列命令來建立新的檔名為 __SimpleApp.scala__ 中 __SimpleScalaApp/src/main/scala__ 目錄:
+4. 使用下列命令來建立新的檔名為 __SimpleApp.scala__ 中 __SimpleScalaApp/src/main/scala__ 目錄 ︰
 
         nano src/main/scala/SimpleApp.scala
 
@@ -203,7 +203,7 @@ Spark SQL 可讓您使用 Spark 來執行以結構化查詢語言 (SQL)、HiveQL
 
     使用 __Ctrl + X__, ，然後 __Y__, ，和 __Enter__ 儲存檔案。
 
-5. 從 __SimpleScalaApp__ 目錄中，使用下列命令來建置應用程式，並將它儲存 jar 檔案中:
+5. 從 __SimpleScalaApp__ 目錄中，使用下列命令來建置應用程式，並將它儲存 jar 檔案中 ︰
 
         sbt package
 
@@ -235,4 +235,5 @@ Spark SQL 可讓您使用 Spark 來執行以結構化查詢語言 (SQL)、HiveQL
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
  
+
 

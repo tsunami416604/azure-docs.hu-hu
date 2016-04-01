@@ -1,6 +1,6 @@
 <properties
    pageTitle="在 HDinsight 上於 Storm 拓撲中使用 Python 元件 | Microsoft Azure"
-   description="了解如何在{b> <b}Azure HDInsight 上從 Apache Storm 中Python 元件。 您將了解如何從 Java 和 Clojure 型 Storm 拓撲中使用 Python 元件。"
+   description="了解如何在 Azure HDInsight 上從 Apache Storm 中Python 元件。 您將了解如何從 Java 和 Clojure 型 Storm 拓撲中使用 Python 元件。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -97,21 +97,21 @@ Java 在這裡叫用 Python，並執行含有實際 blot 邏輯的指令碼。 J
 
 2. 使用下列其中一種方法，將 jar 檔案上傳至 Hadoop 叢集：
 
-    * 如 __linux__ HDInsight 叢集: 使用 `scp WordCount-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:WordCount-1.0-SNAPSHOT.jar` 將 jar 檔案複製到叢集，您的 SSH 使用者名稱與叢集名稱的使用者名稱取代 HDInsight 叢集名稱。
+    * 如 __linux__ HDInsight 叢集 ︰ 使用 `scp WordCount-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:WordCount-1.0-SNAPSHOT.jar` 將 jar 檔案複製到叢集，您的 SSH 使用者名稱與叢集名稱的使用者名稱取代 HDInsight 叢集名稱。
 
         檔案上傳完成之後，使用 SSH 連接到叢集，然後使用 `storm jar WordCount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount wordcount` 啟動拓撲。
 
-    * 如 __windows__ HDInsight 叢集: 您的瀏覽器中移至 [HTTPS://CLUSTERNAME.azurehdinsight.net/ Storm 儀表板連接。 以您的 HDInsight 叢集名稱取代 CLUSTERNAME，在出現提示時，提供系統管理員名稱和密碼。
+    * 如 __windows__ HDInsight 叢集 ︰ 您的瀏覽器中移至 [HTTPS://CLUSTERNAME.azurehdinsight.net/ Storm 儀表板連接。 以您的 HDInsight 叢集名稱取代 CLUSTERNAME，在出現提示時，提供系統管理員名稱和密碼。
 
         使用表單執行下列動作：
 
-        * __Jar 檔案__: 選取 __瀏覽__, ，然後選取 __WordCount-1.0-SNAPSHOT.jar__ 檔案
-        * __類別名稱__: 輸入 `com.microsoft.example.WordCount`
-        * __其他參數__: 輸入好記的名稱，例如 `wordcount` 來識別拓撲
+        * __Jar 檔案__︰ 選取 __瀏覽__, ，然後選取 __WordCount-1.0-SNAPSHOT.jar__ 檔案
+        * __類別名稱__︰ 輸入 `com.microsoft.example.WordCount`
+        * __其他參數__︰ 輸入好記的名稱，例如 `wordcount` 來識別拓撲
 
         最後，選取 __提交__ 啟動拓撲。
 
-> [AZURE.NOTE] Storm 拓撲啟動之後，執行，直到停止 (已清除)。若要停止拓撲，請使用 `storm kill TOPOLOGYNAME` 命令從命令列 (SSH 工作階段到 Linux 叢集，例如) 或透過 Storm UI 選取拓撲，然後選取 __Kill__ ] 按鈕。
+> [AZURE.NOTE] Storm 拓撲啟動之後，執行，直到停止 （已清除）。若要停止拓撲，請使用 `storm kill TOPOLOGYNAME` 命令從命令列 （SSH 工作階段到 Linux 叢集，例如） 或透過 Storm UI 選取拓撲，然後選取 __Kill__ ] 按鈕。
 
 ##使用 Clojure 拓撲的 Python 元件
 
@@ -119,19 +119,19 @@ Java 在這裡叫用 Python，並執行含有實際 blot 邏輯的指令碼。 J
 
 此拓撲由使用 [Leiningen](http://leiningen.org) 至 [建立新的 Clojure 專案](https://github.com/technomancy/leiningen/blob/stable/doc/TUTORIAL.md#creating-a-project)。 之後，已建立結構的專案經過下列修改：
 
-* __project.clj__: 加入相依性的 Storm 和排除可能造成的問題時，部署到 HDInsight 伺服器的項目。
+* __project.clj__︰ 加入相依性的 Storm 和排除可能造成的問題時，部署到 HDInsight 伺服器的項目。
 * __資源/資源__: Leiningen 建立預設 `resources` 目錄，但檔案儲存在這裡會顯示如何加入此專案中，從建立的 jar 檔案的根目錄，並在 Storm 預期命名的子目錄中的檔案 `resources`。 因此加入一個子目錄，Python 檔案就儲存在 `resources/resources` 中。 在執行階段，這當成存取 Python 元件時的根目錄 (/)。
-* __src/wordcount/core.clj__: 這個檔案包含拓撲定義，且從參考的 __project.clj__ 檔案。 如需有關使用 Clojure 定義 Storm 拓撲的詳細資訊，請參閱 [Clojure DSL](https://storm.apache.org/documentation/Clojure-DSL.html)。
+* __src/wordcount/core.clj__︰ 這個檔案包含拓撲定義，且從參考的 __project.clj__ 檔案。 如需有關使用 Clojure 定義 Storm 拓撲的詳細資訊，請參閱 [Clojure DSL](https://storm.apache.org/documentation/Clojure-DSL.html)。
 
 ###建置並執行專案
 
-__若要建置並執行專案在本機__, ，使用下列命令:
+__若要建置並執行專案在本機__, ，使用下列命令 ︰
 
     lein do clean, run
 
 若要停止拓撲，請使用 __Ctrl + C__。
 
-__若要建置 uberjar 並部署到 HDInsight__, ，請使用下列步驟:
+__若要建置 uberjar 並部署到 HDInsight__, ，請使用下列步驟 ︰
 
 1. 建立包含拓撲和必要相依性的 uberjar：
 
@@ -164,19 +164,19 @@ __若要建置 uberjar 並部署到 HDInsight__, ，請使用下列步驟:
 
         2. 使用表單執行下列動作：
 
-            * __Jar 檔案__: 選取 __瀏覽__, ，然後選取 __wordcount-1.0-SNAPSHOT.jar__ 檔案
-            * __類別名稱__: 輸入 `wordcount.core`
-            * __其他參數__: 輸入好記的名稱，例如 `wordcount` 來識別拓撲
+            * __Jar 檔案__︰ 選取 __瀏覽__, ，然後選取 __wordcount-1.0-SNAPSHOT.jar__ 檔案
+            * __類別名稱__︰ 輸入 `wordcount.core`
+            * __其他參數__︰ 輸入好記的名稱，例如 `wordcount` 來識別拓撲
 
             最後，選取 __提交__ 啟動拓撲。
 
-> [AZURE.NOTE] Storm 拓撲啟動之後，執行，直到停止 (已清除)。若要停止拓撲，請使用 `storm kill TOPOLOGYNAME` 命令從命令列 (SSH 工作階段到 Linux 叢集，) 或使用 Storm UI 選取拓撲，然後選取 __Kill__ ] 按鈕。
+> [AZURE.NOTE] Storm 拓撲啟動之後，執行，直到停止 （已清除）。若要停止拓撲，請使用 `storm kill TOPOLOGYNAME` 命令從命令列 （SSH 工作階段到 Linux 叢集，） 或使用 Storm UI 選取拓撲，然後選取 __Kill__ ] 按鈕。
 
 ##Pyleus 架構
 
-[Pyleus](https://github.com/Yelp/pyleus) 是嘗試要進行更輕鬆地使用 Storm 來使用 Python 藉由提供下列架構:
+[Pyleus](https://github.com/Yelp/pyleus) 是嘗試要進行更輕鬆地使用 Storm 來使用 Python 藉由提供下列架構 ︰
 
-* __YAML 型拓撲定義__: 這會提供更簡單的方法來定義拓撲，而不需要具備 Java 或 Clojure 知識
+* __YAML 型拓撲定義__︰ 這會提供更簡單的方法來定義拓撲，而不需要具備 Java 或 Clojure 知識
 * __Message Pack 為基礎的序列化程式__: message Pack 做為預設的序列化，而不是 JSON。 這可以加速元件之間的傳訊
 * __相依性管理__: Virtualenv 用來確保 Python 相依性會部署到所有背景工作節點。 這需要在背景工作角色節點上安裝 Virtualenv
 
@@ -186,13 +186,13 @@ __若要建置 uberjar 並部署到 HDInsight__, ，請使用下列步驟:
 
 1. 在 HDInsight 叢集上佈建新的 Storm 時，您必須確定 Python Virtualenv 存在於叢集節點上。 在建立新的以 Linux 為基礎的 HDInsight 叢集時，請使用下列指令碼動作設定與 [叢集自訂](hdinsight-hadoop-customize-cluster.md):
 
-    * __名稱__: 提供以下的易記名稱
+    * __名稱__︰ 提供以下的易記名稱
     * __ 指令碼 URI__：使用 `https://hditutorialdata.blob.core.windows.net/customizecluster/pythonvirtualenv.sh` 做為值。 此指令碼會在節點上安裝 Python Virtualenv。
     
         > [AZURE.NOTE] 它也會建立一些 Streamparse framework，本文件稍後所使用的目錄。
         
-    * __Nimbus__: 檢查此項目，好讓指令碼會套用到 Nimbus (前端) 節點。
-    * __監督員__: 請檢查這個項目，好讓指令碼會套用到監督員 (背景工作) 節點
+    * __Nimbus__︰ 檢查此項目，好讓指令碼會套用到 Nimbus （前端） 節點。
+    * __監督員__︰ 請檢查這個項目，好讓指令碼會套用到監督員 （背景工作） 節點
     
     將其他項目保留空白。
 
@@ -228,10 +228,10 @@ __若要建置 uberjar 並部署到 HDInsight__, ，請使用下列步驟:
 
 ##Streamparse 架構
 
-[Streamparse](https://github.com/Parsely/streamparse) 是嘗試要進行更輕鬆地使用 Storm 來使用 Python 藉由提供下列架構:
+[Streamparse](https://github.com/Parsely/streamparse) 是嘗試要進行更輕鬆地使用 Storm 來使用 Python 藉由提供下列架構 ︰
 
-* __Scaffolding__: 這可讓您輕鬆地建立專案的樣板，然後修改檔案以加入您的邏輯
-* __Clojure DSL 函式__: 這些減少 Clojure 拓撲定義中使用 Python 元件的詳細資訊
+* __Scaffolding__︰ 這可讓您輕鬆地建立專案的樣板，然後修改檔案以加入您的邏輯
+* __Clojure DSL 函式__︰ 這些減少 Clojure 拓撲定義中使用 Python 元件的詳細資訊
 * __相依性管理__: Virtualenv 用來確保 Python 相依性會部署到所有背景工作節點。 這需要在背景工作角色節點上安裝 Virtualenv
 * __遠端部署__: Streamparse 可以使用 SSH 自動化部署至背景工作節點的元件，並可以建立 Nimbus 與通訊的 SSH 通道。 讓您輕鬆地從開發環境部署至以 Linux 為基礎的叢集，例如 HDInsight
 
@@ -239,10 +239,10 @@ __若要建置 uberjar 並部署到 HDInsight__, ，請使用下列步驟:
 
 1. 在 HDInsight 叢集上佈建新的 Storm 時，您必須確定 Python Virtualenv 存在於叢集節點上。 在建立新的以 Linux 為基礎的 HDInsight 叢集時，請使用下列指令碼動作設定與 [叢集自訂](hdinsight-hadoop-customize-cluster.md):
 
-    * __名稱__: 提供以下的易記名稱
+    * __名稱__︰ 提供以下的易記名稱
     * __ 指令碼 URI__：使用 `https://hditutorialdata.blob.core.windows.net/customizecluster/pythonvirtualenv.sh` 做為值。 此指令碼會在節點上安裝 Python Virtualenv，並建立 Streamparse 所使用的目錄
-    * __Nimbus__: 檢查此項目，好讓指令碼會套用到 Nimbus (前端) 節點。
-    * __監督員__: 請檢查這個項目，好讓指令碼會套用到監督員 (背景工作) 節點
+    * __Nimbus__︰ 檢查此項目，好讓指令碼會套用到 Nimbus （前端） 節點。
+    * __監督員__︰ 請檢查這個項目，好讓指令碼會套用到監督員 （背景工作） 節點
     
     將其他項目保留空白。
     
@@ -284,22 +284,22 @@ __若要建置 uberjar 並部署到 HDInsight__, ，請使用下列步驟:
     
     儲存 `"workernode0.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net"` 資訊，下一步會用到。
 
-2. 開啟 __config.json__ 檔案中 `wordcount` 目錄中，並變更下列項目:
+2. 開啟 __config.json__ 檔案中 `wordcount` 目錄中，並變更下列項目 ︰
 
-    * __使用者__: 設為您設定 HDInsight 叢集的 SSH 使用者帳戶名稱。 這會在部署專案時用來驗證叢集
-    * __nimbus__: 設為 `CLUSTERNAME-ssh.azurehdinsight.net`。 將 CLUSTERNAME 取代為叢集名稱。 與 Nimbus 節點 (叢集的前端節點) 通訊時會使用此項目
-    * __工作者__: 填入使用 curl 抓取背景工作節點的主機名稱的背景工作項目。 例如：
+    * __使用者__︰ 設為您設定 HDInsight 叢集的 SSH 使用者帳戶名稱。 這會在部署專案時用來驗證叢集
+    * __nimbus__︰ 設為 `CLUSTERNAME-ssh.azurehdinsight.net`。 將 CLUSTERNAME 取代為叢集名稱。 與 Nimbus 節點 (叢集的前端節點) 通訊時會使用此項目
+    * __工作者__︰ 填入使用 curl 抓取背景工作節點的主機名稱的背景工作項目。 例如：
     
         ```
-「 背景工作 」: [
-    「 workernode0.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net 」，
-    「 workernode1.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net 」
+"workers": [
+    "workernode0.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net",
+    "workernode1.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net"
     ]
         ```
     
-    * __virtualenv\_root__: Set this to "/virtualenv"
+    * __virtualenv\_root__︰ 設為"/ virtualenv 」
     
-    This configures the project for your HDInsight cluster, including the `/virtualenv` directory that was created during provisioning by the script action.
+    這會設定 HDInsight 叢集的專案，包括佈建期間由指令碼動作所建立的 `/virtualenv` 目錄。
 
 4. 因為部署在 HDInsight 的 Streamparse 需要透過前端節點將您的驗證轉送至背景工作角色，所以您的工作站上必須啟動 `ssh-agent`。 在大多數的作業系統上，它會自動啟動。 使用下列命令確認它正在執行：
 
@@ -349,3 +349,4 @@ __若要建置 uberjar 並部署到 HDInsight__, ，請使用下列步驟:
 
 * [如何使用 Python 串流處理 MapReduce 工作](hdinsight-hadoop-streaming-python.md)
 * [如何在 Pig 和 Hive 中使用 Python 使用者定義函數 (UDF)](hdinsight-python.md)
+

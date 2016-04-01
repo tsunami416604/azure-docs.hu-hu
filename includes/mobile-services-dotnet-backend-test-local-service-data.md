@@ -17,3 +17,4 @@
 5. 在 Visual Studio 中，您可以開啟 [伺服器總管] 並展開 [資料連線]，以檢視您為後端服務建立之資料庫中的變更。 以滑鼠右鍵按一下 [TodoItems] 表格下方 **MS_TableConnectionString** 按一下 **顯示資料表資料**
 
     ![](./media/mobile-services-dotnet-backend-test-local-service-data/vs-show-local-table-data.png)
+

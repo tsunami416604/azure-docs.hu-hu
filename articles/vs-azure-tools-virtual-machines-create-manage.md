@@ -61,15 +61,15 @@
 
     您將透過遠端桌面使用新名稱和密碼來登入電腦，所以最好能記新名稱和密碼，以免忘記。 Visual Studio 中建立 Azure 虛擬機器之後，您可以變更其大小和中的其他設定 [Azure 管理入口網站](http://go.microsoft.com/fwlink/?LinkID=253103)。
 
-        >[AZURE.NOTE] If you choose larger sizes for the virtual machine, extra charges may apply. See [Virtual Machines Pricing Details](http://azure.microsoft.com/pricing/details/virtual-machines/) for more information.
+        >[AZURE.NOTE] 如果您選擇較大的虛擬機器的大小，可套用額外的費用。 請參閱 [虛擬機器定價詳細資料](http://azure.microsoft.com/pricing/details/virtual-machines/) 如需詳細資訊。
 
-1. 在 Visual Studio 中建立的虛擬機器需要雲端服務。 在 **雲端服務設定** 頁面上，選取雲端服務的虛擬機器，或按一下 **< 建立新的 … >** 如果您還沒有雲端服務，或想要使用新的下拉式清單中。 儲存體帳戶也是必要，因此選擇儲存體帳戶 (或建立新的儲存體帳戶) 中 **儲存體帳戶** 下拉式清單方塊。 請參閱 [Microsoft Azure 儲存體簡介](./storage/storage-introduction/) 如需詳細資訊。
+1. 在 Visual Studio 中建立的虛擬機器需要雲端服務。 在 **雲端服務設定** 頁面上，選取雲端服務的虛擬機器，或按一下 **< 建立新的 … >** 如果您還沒有雲端服務，或想要使用新的下拉式清單中。 儲存體帳戶也是必要，因此選擇儲存體帳戶 （或建立新的儲存體帳戶） 中 **儲存體帳戶** 下拉式清單方塊。 請參閱 [Microsoft Azure 儲存體簡介](./storage/storage-introduction/) 如需詳細資訊。
 
 1. 如果您想要指定虛擬網路 (這是選擇性的)，請在 [虛擬網路] 和 [子網路] 下拉式清單方塊中進行選取。
 
     屬於可用性集合的虛擬機器會部署到不同的容錯網域。 請參閱 [Azure 虛擬網路](http://www.windowsazure.com/services/virtual-network/) 如需詳細資訊。
 
-1. 如果您想讓虛擬機器屬於可用性設定組 (也是選擇性的)，選取 **指定可用性設定組** 核取方塊，然後選擇 [可用性設定組中的下拉式清單方塊。 當您完成時，選擇 [ **下一步** ] 按鈕。
+1. 如果您想讓虛擬機器屬於可用性設定組 （也是選擇性的），選取 **指定可用性設定組** 核取方塊，然後選擇 [可用性設定組中的下拉式清單方塊。 當您完成時，選擇 [ **下一步** ] 按鈕。
 
     將虛擬機器新增至可用性集合，有助於讓應用程式在網路故障、本機磁碟硬體故障和任何規劃停機期間仍可使用。 您必須使用 [Azure 管理入口網站](http://go.microsoft.com/fwlink/?LinkID=253103) 建立虛擬網路、 子網路和可用性集。 請參閱 [管理虛擬機器的可用性](http://www.windowsazure.com/documentation/articles/manage-availability-virtual-machines/) 如需詳細資訊。
 
@@ -157,7 +157,7 @@
 
 ### 若要將虛擬機器還原到先前儲存的狀態
 
-- 請依照下列所述的步驟 [逐步: 執行定域機組還原 Microsoft Azure 虛擬機器的使用 PowerShell-第 2 部分](http://blogs.technet.com/b/keithmayer/archive/2014/02/04/step-by-step-perform-cloud-restores-of-windows-azure-virtual-machines-using-powershell-part-2.aspx)。
+- 請依照下列所述的步驟 [逐步 ︰ 執行定域機組還原 Microsoft Azure 虛擬機器的使用 PowerShell-第 2 部分](http://blogs.technet.com/b/keithmayer/archive/2014/02/04/step-by-step-perform-cloud-restores-of-windows-azure-virtual-machines-using-powershell-part-2.aspx)。
 
 ### 刪除檢查點
 
@@ -176,4 +176,5 @@
 ## 後續步驟
 
 若要深入了解建立虛擬機器，請參閱 [建立執行 Linux 的虛擬機器](virtual-machines-linux-tutorial.md) 和 [建立在 Azure 預覽入口網站中執行 Windows 的虛擬機器](virtual-machines-windows-tutorial.md)。
+
 

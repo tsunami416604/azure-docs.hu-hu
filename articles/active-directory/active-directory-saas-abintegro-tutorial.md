@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Abintegro 單一登入的訂用帳戶
 
-完成本教學課程之後, 您已指派給 Abintegro 的 Azure AD 使用者將能夠登入位於您 Abintegro 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Abintegro 的 Azure AD 使用者將能夠登入位於您 Abintegro 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -38,21 +38,21 @@
 
 ###若要啟用 Abintegro 的應用程式整合，請執行下列步驟：
 
-1.  在 [Azure 管理上 「 入口 」，左邊的瀏覽] 窗格中，按一下 [ **Active Directory**。
+1.  在 Azure 管理入口網站中，在左的導覽窗格中，按一下 [ **Active Directory**。
 
     ![Active Directory](./media/active-directory-saas-abintegro-tutorial/IC700993.png "Active Directory")
 
 2.  從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
-3.  若要開啟應用程式檢視，在 [目錄] 檢視中，按一下 [ **應用程式** 在最上層的功能表。
+3.  若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
 
     ![應用程式](./media/active-directory-saas-abintegro-tutorial/IC700994.png "Applications")
 
-4.  按一下 [ **新增** 在頁面底部。
+4.  按一下 [ **新增** 頁面的底部。
 
     ![新增應用程式](./media/active-directory-saas-abintegro-tutorial/IC749321.png "Add application")
 
-5.  在 **您想要** ] 對話方塊中，按一下 [ **從圖庫中新增應用程式**。
+5.  在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。
 
     ![從組件庫新增應用程式](./media/active-directory-saas-abintegro-tutorial/IC749322.png "Add an application from gallerry")
 
@@ -77,7 +77,7 @@
 
     ![設定單一登入](./media/active-directory-saas-abintegro-tutorial/IC790080.png "Configure Single SignOn")
 
-3.  在 **設定應用程式 URL** 頁面上，於 **Abintegro 登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入 Abintegro (例如: `https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`)，然後按一下 [ **下一步**。
+3.  在 **設定應用程式 URL** 頁面上，於 **Abintegro 登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入 Abintegro (例如 ︰ `https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`)，然後按一下 [ **下一步**。
 
     ![設定應用程式 URL](./media/active-directory-saas-abintegro-tutorial/IC790081.png "Configure App URL")
 
@@ -89,7 +89,7 @@
 
     >[AZURE.NOTE] 單一登入組態必須由 Abintegro 支援小組執行。 設定完成後，您將會收到通知。
 
-6.  在 Azure 的 AD 入口網站中，選取單一的登入設定確認，然後按一下 [ **完成** 關閉 **設定單一登入** 對話方塊。
+6.  在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。
 
     ![設定單一登入](./media/active-directory-saas-abintegro-tutorial/IC790083.png "Configure Single SignOn")
 ##設定使用者佈建
@@ -109,9 +109,10 @@
 
     ![指派使用者](./media/active-directory-saas-abintegro-tutorial/IC790084.png "Assign Users")
 
-3.  選取您的測試使用者，請按一下 [ **指派**, ，然後按一下 [ **是** 以確認您的工作分派。
+3.  選取測試使用者，請按一下 **指派**, ，然後按一下 [ **是** 以確認您的作業。
 
     ![是](./media/active-directory-saas-abintegro-tutorial/IC767830.png "Yes")
 
-如果要測試您的單一登入設定，請開啟存取面板。 如需存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

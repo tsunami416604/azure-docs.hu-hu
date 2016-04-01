@@ -31,7 +31,7 @@
 
 API 是在發行者入口網站中建立和設定。 若要存取發行者入口網站，按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。 如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 按一下 [ **Api** 從 **API 管理** 左邊的功能表，然後按一下 **匯入 API**。
 
@@ -94,4 +94,5 @@ API 是在發行者入口網站中建立和設定。 若要存取發行者入口
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create APIs]: api-management-howto-create-apis.md
 [How to configure API settings]: api-management-howto-create-apis.md#configure-api-settings
+
 

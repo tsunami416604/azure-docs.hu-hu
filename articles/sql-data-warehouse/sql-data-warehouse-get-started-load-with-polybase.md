@@ -38,7 +38,7 @@
 
 - SQL 資料倉儲資料庫。
 - 類型為標準本地備援儲存體 (標準 LRS)、標準異地備援儲存體 (標準 GRS) 或標準讀取存取異地備援儲存體 (標準 RAGRS) 的 Azure 儲存體帳戶。
-- AzCopy 命令列公用程式。 下載並安裝 [最新版本的 AzCopy] [] 和 [Microsoft Azure 儲存體工具一起安裝。
+- AzCopy 命令列公用程式。 下載並安裝 [最新版本的 AzCopy][] 和 Microsoft Azure 儲存體工具一併安裝。
 
     ![Azure 儲存體工具](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
@@ -109,7 +109,7 @@
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-請參閱 [開始使用 AzCopy 命令列公用程式] []。
+另請參閱 [開始使用 AzCopy 命令列公用程式][]。
 
 ### E. 瀏覽 Blob 儲存體容器
 
@@ -240,11 +240,11 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-若要深入了解，請參閱 [統計資料] []。  
+若要深入了解，請參閱 [統計資料][]。  
 
 
 ## 後續步驟
-請參閱 [PolyBase 指南] [] 以取得進一步開發使用 PolyBase 的解決方案時，您應該知道的資訊。
+請參閱 [PolyBase 指南][] 進一步開發使用 PolyBase 的解決方案時，您應該知道的資訊。
 
 <!--Image references-->
 [1]:./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png
@@ -281,6 +281,7 @@ create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 [CREATE CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189522.aspx
 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189450.aspx
+
 
 
 

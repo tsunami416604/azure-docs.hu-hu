@@ -44,3 +44,4 @@ Visual Studio 中的 SQL Server Management Studio (SSMS) 和 SQL Server Data Too
 如需有關管理 Azure SQL Database 使用命令列工具 [使用 PowerShell 管理 SQL 資料庫](sql-database-command-line-tools.md)
  
 
+

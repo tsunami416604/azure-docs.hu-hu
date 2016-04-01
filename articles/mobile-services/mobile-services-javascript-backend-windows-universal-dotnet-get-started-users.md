@@ -26,23 +26,23 @@
 
 >[AZURE.NOTE]本教學課程會示範如何在 Windows 市集和 Windows Phone 市集 8.1 應用程式中驗證使用者。 Windows Phone 8.0 或 Windows Phone Silverlight 8.1 應用程式中，請參閱此版本 [開始使用行動服務中驗證](mobile-services-windows-phone-get-started-users.md)。
 
-##<a name="register"></a> 註冊您的應用程式以驗證與設定行動服務
+##<a name="register"></a>註冊應用程式進行驗證，並設定行動服務
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)] 
 
-##<a name="permissions"></a> 限制只有通過驗證的使用者具有權限
+##<a name="permissions"></a>限制只有通過驗證的使用者具有權限
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-windows](../../includes/mobile-services-restrict-permissions-windows.md)] 
  
 >[AZURE.NOTE] 當您使用 Visual Studio 工具將應用程式連接到行動服務時，此工具會產生兩組 **MobileServiceClient** 定義、 一個用於每個用戶端平台。 這是藉此簡化產生的程式碼的好時機 `#if...#endif` 包裝 **MobileServiceClient** 定義統一至單一未包裝定義這兩個版本的應用程式所使用。 您不需要執行這項操作，如果您已下載的快速入門應用程式 [Azure classic portal]。
 
-##<a name="add-authentication"></a> 將驗證新增至應用程式
+##<a name="add-authentication"></a>將驗證新增至應用程式
 
 [AZURE.INCLUDE [mobile-windows-universal-dotnet-authenticate-app](../../includes/mobile-windows-universal-dotnet-authenticate-app.md)] 
 
 現在，由您信任的身分識別提供者驗證的任何使用者都能存取 *TodoItem* 資料表。 若要更善加保護使用者專屬的資料，您還必須實作授權。 若要進行，您要取得指定使用者的使用者識別碼，然後用來判斷使用者對於指定資源具備何種層級的存取權。
 
-##<a name="tokens"></a>將授權權杖儲存在用戶端上
+##<a name="tokens"></a>將授權權杖儲存在用戶端
 
 先前範例所示範的標準登入，在每次應用程式啟動時，皆需要用戶端連絡身分識別提供者和行動服務。 這個方法不只效率不彰，而且如果同時有許多用戶試圖啟用您的應用程式時，還可能遇到使用量相關的問題。 更好的方法就是快取行動服務傳回的驗證權杖，然後嘗試在使用提供者形式登入前先使用此方法。 
 
@@ -57,7 +57,7 @@
 ##另請參閱
 
 + [增強型的使用者功能](http://go.microsoft.com/fwlink/p/?LinkId=506605)<br/>
-你可以藉由呼叫您的行動服務身分識別提供者所維護的其他使用者資料 **user.getidentities ()** 伺服器指令碼中的函式。 
+你可以藉由呼叫您的行動服務身分識別提供者所維護的其他使用者資料 **user.getidentities （)** 伺服器指令碼中的函式。 
 
 + [Mobile Services .NET How-to Conceptual Reference]<br/>進一步了解如何使用行動服務與.NET 用戶端。
 
@@ -84,3 +84,4 @@
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
+

@@ -3,11 +3,12 @@
 
 1. 在 **QSAppDelegate.m**, ，移除的實作 **didFinishLaunchingWithOptions** 完全。
 
-2. 開啟 **QSTodoListViewController.m** 結尾加入下列程式碼和 **viewDidLoad** 方法:
+2. 開啟 **QSTodoListViewController.m** 結尾加入下列程式碼和 **viewDidLoad** 方法 ︰
 
 ```
 // Register for remote notifications
 [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
 UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 ```
+
 

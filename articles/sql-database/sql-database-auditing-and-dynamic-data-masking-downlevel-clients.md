@@ -1,6 +1,6 @@
 <properties 
     pageTitle="SQL Database 下層用戶端對稽核的支援 | Microsoft Azure" 
-    description="深入了解稽核的 SQL Database 舊版用戶端支援。" 
+    description="了解 SQL Database 下層用戶端對「稽核」的支援。" 
     services="sql-database" 
     documentationCenter="" 
     authors="nadavhelfman" 
@@ -36,6 +36,7 @@
 - JDBC (雖然 JDBC 支援 TDS 7.4，但並未完整支援 TDS 重新導向功能)
 - Tedious (適用於 Node.JS)
 
-**備註:** 上述伺服器 FDQN 修改可能會對於套用 SQL Server 層級稽核原則，不需要其他組態步驟 (暫存緩和) 每個資料庫中。
+**備註 ︰** 上述伺服器 FDQN 修改可能會對於套用 SQL Server 層級稽核原則，不需要其他組態步驟 （暫存緩和） 每個資料庫中。
+
 
 

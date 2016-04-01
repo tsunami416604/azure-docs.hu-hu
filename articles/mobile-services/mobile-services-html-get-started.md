@@ -36,14 +36,14 @@
 
 此教學課程是 HTML 應用程式其他所有行動服務教學課程的先修課程。 PhoneGap/Cordova 應用程式，請參閱 [PhoneGap/Cordova 版本](mobile-services-javascript-backend-phonegap-get-started.md) 本教學課程。
 
-##先決條件
+##必要條件
 
 需要有下列項目，才能完成本教學課程：
 
 + 您的本機電腦必須執行下列其中一部網頁伺服器：
 
     +  **在 Windows 上**: IIS Express。 IIS Express 由安裝 [Microsoft Web Platform Installer]。
-    +  **在 MacOS X 上**: 已安裝 Python。
+    +  **在 MacOS X 上**︰ 已安裝 Python。
     +  **在 Linux 上**: Python。 您必須安裝 [latest version of Python]。
 
     您可以使用任何網頁伺服器來裝載應用程式，但是這些網頁伺服器需受所下載的指令碼支援。  
@@ -91,15 +91,15 @@
 
 1. 瀏覽至儲存壓縮的專案檔案的位置、 您的電腦上將檔案解壓縮並啟動一個從下列的命令檔 **伺服器** 子資料夾。
 
-    + **啟動 windows** (Windows 電腦)
-    + **launch-mac.command** (Mac OS X 電腦)
-    + **launch-linux.sh** (Linux 電腦)
+    + **啟動 windows** （Windows 電腦）
+    + **launch-mac.command** （Mac OS X 電腦）
+    + **launch-linux.sh** （Linux 電腦）
 
     > [AZURE.NOTE] 在 Windows 電腦上，輸入 `R` PowerShell 要求您確認您想要執行指令碼時。 因為指令碼是從網際網路中下載，所以您的網頁瀏覽器可能會警告您不要執行指令碼。 發生此情況時，您必須要求瀏覽器繼續載入指令碼。
 
     如此會在本機電腦上啟動網頁伺服器來裝載新的應用程式。
 
-2. 在網頁瀏覽器中開啟 URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> 來啟動應用程式。
+2. 在網頁瀏覽器中開啟 URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> 以啟動應用程式。
 
 3. 在應用程式中，輸入有意義的文字，例如 _完成教學課程_, 中 **輸入新工作**, ，然後按一下 [ **新增**。
 
@@ -120,7 +120,7 @@
 ## <a name="next-steps"> </a>後續步驟
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
-* **[將驗證新增至您的應用程式]**  
+* **[Add authentication to your app]**  
   了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
 * **[Mobile Services HTML/JavaScript How-to Conceptual Reference]**  
@@ -156,4 +156,5 @@
 [Mobile Services HTML/JavaScript How-to Conceptual Reference]: mobile-services-html-how-to-use-client-library.md
 [Cross-origin resource sharing]: http://msdn.microsoft.com/library/azure/dn155871.aspx
  
+
 

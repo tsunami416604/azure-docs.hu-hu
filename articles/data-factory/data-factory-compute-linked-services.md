@@ -1,6 +1,6 @@
 <properties
     pageTitle="計算連結服務 | Microsoft Azure"
-    description="了解您可以在 Azure Data Factory 管線中用來轉換/處理資料的計算環境。"
+    description="了解您可以在 Azure Data Factory 管線中用來轉換/處理資料的運算環境。"
     services="data-factory"
     documentationCenter=""
     authors="spelluru"
@@ -30,7 +30,7 @@
 
 Azure Data Factory 服務會自動建立隨選 HDInsight 叢集，以便處理資料。 此叢集會建立在與叢集相關聯的儲存體帳戶 (JSON 中的 linkedServiceName 屬性) 相同的區域中。
 
-請注意下列 **重要** 點解隨選 HDInsight 連結服務:
+請注意下列 **重要** 點解隨選 HDInsight 連結服務 ︰
 
 - 您不會看到隨選 HDInsight 叢集建立在您的 Azure 訂用帳戶中；Azure Data Factory 服務會代表您管理隨選 HDInsight 叢集。
 - 在隨選 HDInsight 叢集上執行之工作的記錄檔會被複製到與 HDInsight 叢集相關聯的儲存體帳戶。 您可以從 Azure 傳統入口網站中存取這些記錄檔 **活動執行詳細資料** 刀鋒視窗。 請參閱 [監視和管理管線](data-factory-monitor-manage-pipelines.md) 文章以取得詳細資料。
@@ -65,7 +65,7 @@ Azure Data Factory 服務會自動建立隨選 HDInsight 叢集，以便處理�
 -------- | ----------- | --------
 類型 | Type 屬性應該設定為 **HDInsightOnDemand**。 | 是
 clusterSize | 隨選叢集的大小。 指定您希望此隨選叢集中有多少個節點。 | 是
-timetolive | <p>隨選 HDInsight 叢集允許的閒置時間。 指定多久隨 HDInsight 叢集後會保持運作的活動執行，如果叢集中沒有任何其他使用中的工作完成。</p><p>例如，如果活動執行花費 6 分鐘，而 timetolive 設為 5 分鐘，叢集會保持運作 5 分鐘之後 6 分鐘處理的活動執行。 如果 6 分鐘視窗執行另一個活動執行時，它會處理由相同的叢集。</p><p>建立隨選 HDInsight 叢集是昂貴的作業 (可能需要一段時間)，因此使用這項設定為需要以改善效能的 data factory，重複使用隨 HDInsight 叢集。</p><p>如果您將 timetolive 值設為 0，因為在活動執行處理刪除叢集。 另一方面，如果您設定較高的值，叢集可能會有不必要的閒置而導致高成本。 因此，很重要，您設定適當的值，根據您的需求。</p><p>如果適當地設定 timetolive 屬性值有多個管線可以共用相同的執行個體的隨選 HDInsight 叢集</p> | 是
+timetolive | <p>隨選 HDInsight 叢集允許的閒置時間。 指定多久隨 HDInsight 叢集後會保持運作的活動執行，如果叢集中沒有任何其他使用中的工作完成。</p><p>例如，如果活動執行花費 6 分鐘，而 timetolive 設為 5 分鐘，叢集會保持運作 5 分鐘之後 6 分鐘處理的活動執行。 如果 6 分鐘視窗執行另一個活動執行時，它會處理由相同的叢集。</p><p>建立隨選 HDInsight 叢集是昂貴的作業 （可能需要一段時間），因此使用這項設定為需要以改善效能的 data factory，重複使用隨 HDInsight 叢集。</p><p>如果您將 timetolive 值設為 0，因為在活動執行處理刪除叢集。 另一方面，如果您設定較高的值，叢集可能會有不必要的閒置而導致高成本。 因此，很重要，您設定適當的值，根據您的需求。</p><p>如果適當地設定 timetolive 屬性值有多個管線可以共用相同的執行個體的隨選 HDInsight 叢集</p> | 是
 版本 | HDInsight 叢集的版本。 針對 Windows 叢集的預設值為 3.1，針對 Linux 叢集的預設值為 3.2。 | 否
 linkedServiceName | 隨選叢集用於儲存及處理資料的 Blob 存放區。 | 是
 additionalLinkedServiceNames | 指定 HDInsight 連結服務的其他儲存體帳戶，讓 Data Factory 服務代表您註冊它們。 | 否
@@ -140,7 +140,7 @@ zookeeperNodeSize | 指定 Zoo Keeper 節點的大小。 預設值為：小 | �
     "headNodeSize": "Standard_D4",  
     "dataNodeSize": "Standard_D4",
 
-如果您指定錯誤的值，這些屬性，您可能會收到下列 **錯誤:** 無法建立叢集。 例外狀況：無法完成叢集建立作業。 作業失敗 (錯誤代碼「400」)。 叢集剩餘狀態：「錯誤」。 訊息：「PreClusterCreationValidationFailure」。 當您收到此錯誤時，請確定您使用 **指令程式和 API** 上述文件中的資料表名稱。  
+如果您指定錯誤的值，這些屬性，您可能會收到下列 **錯誤 ︰** 無法建立叢集。 例外狀況：無法完成叢集建立作業。 作業失敗 (錯誤代碼「400」)。 叢集剩餘狀態：「錯誤」。 訊息：「PreClusterCreationValidationFailure」。 當您收到此錯誤時，請確定您使用 **指令程式和 API** 上述文件中的資料表名稱。  
 
 
 
@@ -193,7 +193,7 @@ linkedServiceName | 此 HDInsight 叢集所使用之 Blob 儲存體的連結服�
 
 
 - [Azure 批次的基本概念](../batch/batch-technical-overview.md) Azure 批次服務的概觀。
-- [New-azurebatchaccount](https://msdn.microsoft.com/library/mt125880.aspx) cmdlet 來建立 Azure Batch 帳戶 (或) [Azure 傳統入口網站](../batch/batch-account-create-portal.md) 來建立使用 Azure 傳統入口網站的 Azure 批次帳戶。 請參閱 [使用 PowerShell 管理 Azure 批次帳戶](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) 主題詳細說明如何使用此指令程式。
+- [New-azurebatchaccount](https://msdn.microsoft.com/library/mt125880.aspx) cmdlet 來建立 Azure Batch 帳戶 （或） [Azure 傳統入口網站](../batch/batch-account-create-portal.md) 來建立使用 Azure 傳統入口網站的 Azure 批次帳戶。 請參閱 [使用 PowerShell 管理 Azure 批次帳戶](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) 主題詳細說明如何使用此指令程式。
 - [New-azurebatchpool](https://msdn.microsoft.com/library/mt125936.aspx) cmdlet 來建立 Azure Batch 集區。
 
 ### 範例
@@ -252,7 +252,7 @@ linkedServiceName | 與此 Azure Batch 連結服務相關聯的 Azure 儲存體�
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
-類型 | Type 屬性應該設定為: **AzureML**。 | 是
+類型 | Type 屬性應該設定為 ︰ **AzureML**。 | 是
 mlEndpoint | 批次評分 URL。 | 是
 apiKey | 已發佈的工作區模型的 API。 | 是
 
@@ -282,7 +282,7 @@ apiKey | 已發佈的工作區模型的 API。 | 是
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
-類型 | Type 屬性應該設定為: **AzureDataLakeAnalytics**。 | 是
+類型 | Type 屬性應該設定為 ︰ **AzureDataLakeAnalytics**。 | 是
 accountName | Azure 資料湖分析帳戶名稱。 | 是
 dataLakeAnalyticsUri | Azure 資料湖分析 URI。 |  否
 authorization | 按一下之後，就會自動擷取授權碼 **授權** 按鈕在 Data Factory 編輯器中，並完成 OAuth 登入。 | 是
@@ -294,4 +294,5 @@ sessionId | OAuth 授權工作階段的工作階段識別碼。 每個工作階�
 ## Azure SQL 連結服務
 
 建立 Azure SQL 連結服務，並將它與 [預存程序活動](data-factory-stored-proc-activity.md) 叫用從 Data Factory 管線的預存程序。 請參閱 [Azure SQL 連接器](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) 如需詳細資訊，此連結服務的相關文章。
+
 

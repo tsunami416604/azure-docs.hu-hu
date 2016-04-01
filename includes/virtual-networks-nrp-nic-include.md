@@ -14,7 +14,7 @@
 ![單一 VM 上的 NIC](./media/resource-groups-networking/Figure3.png)
 
 ### IP 組態
-Nic 已命名的子物件 **ipConfigurations** 包含下列屬性:
+Nic 已命名的子物件 **ipConfigurations** 包含下列屬性 ︰
 
 |屬性|說明|範例值|
 |---|---|---|
@@ -76,4 +76,5 @@ JSON 格式的範例公用 IP 位址：
 ### 其他資源
 
 - 讀取 [REST API 參考文件](https://msdn.microsoft.com/library/azure/mt163579.aspx) nic。
+
 

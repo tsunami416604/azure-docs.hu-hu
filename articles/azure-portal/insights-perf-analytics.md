@@ -56,12 +56,12 @@ SDK 會提供 API，讓您可以 [撰寫自訂遙測](../app-insights-api-custom
 使用您的應用程式一段時間以產生一些遙測。
 
 1. 接著，從您的 Web 應用程式或虛擬機器刀鋒視窗，您將會看到已安裝的擴充功能
-2. 按一下代表您的應用程式瀏覽至該提供者的資料列:
+2. 按一下代表您的應用程式瀏覽至該提供者的資料列 ︰
 ![按一下 [重新整理]](./media/insights-perf-analytics/06-overview.png)
 
 您也可以使用 **瀏覽** ，直接移至 Application Insights 元件或您所使用的 New Relic 帳戶。
 
-當您進入 Application insights 刀鋒視窗中，例如，您可以:
+當您進入 Application insights 刀鋒視窗中，例如，您可以 ︰
 - 開啟 [效能]:
 
 ![在 Application Insights 的概觀刀鋒視窗中，按一下 [效能] 磚](./media/insights-perf-analytics/07-dependency.png)
@@ -84,3 +84,4 @@ SDK 會提供 API，讓您可以 [撰寫自訂遙測](../app-insights-api-custom
 * 使用 [JavaScript 應用程式和網頁適用的 Application Insights](../app-insights-web-track-usage.md) 以取得有關造訪網頁瀏覽器的用戶端分析。
 * [監視可用性和回應性的任何網頁](../app-insights-monitor-web-app-availability.md) 使用 Application Insights，因此您可以找出您的頁面是否關閉。
  
+

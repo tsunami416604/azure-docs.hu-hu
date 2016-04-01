@@ -2,9 +2,9 @@
 
 [**Apache Storm**](https://storm.incubator.apache.org) 是分散式的即時運算系統，可簡化未繫結資料串流的可靠處理。 本節顯示如何使用事件中心 Storm Spout 接收來自事件中心的事件。 使用 Apache Storm，您可以將事件分割到多個裝載於不同節點的處理序。 事件中心與 Storm 的整合透過使用 Storm 的 Zookeeper 安裝透明地設定檢查點以檢查其進度、管理持續檢查點以及來自事件中心的平行接收，以簡化事件的使用。
 
-如需有關事件中樞接收模式，請參閱 [事件中樞概觀] []。
+如需有關事件中樞接收模式的資訊，請參閱 [事件中樞概觀][]。
 
-本教學課程使用 [HDInsight Storm] [] 安裝，它包含在已可使用的事件中心 spout。
+本教學課程使用 [HDInsight Storm][] 安裝，其包含使用已存在的事件中心 spout。
 
 1. 請依照下列 [HDInsight Storm-入門](../hdinsight/hdinsight-storm-overview.md) 程序來建立新的 HDInsight 叢集，並透過遠端桌面連線。
 
@@ -54,7 +54,7 @@
             <scope>provided</scope>
         </dependency>
 
-9. 在 **src** 資料夾中，建立一個叫做檔案 **Config.properties** 然後複製下列內容，並替代下列值:
+9. 在 **src** 資料夾中，建立一個叫做檔案 **Config.properties** 然後複製下列內容，並替代下列值 ︰
 
         eventhubspout.username = ReceiveRule
 
@@ -75,7 +75,7 @@
 
     值 **eventhub.receiver.credits** 決定批次處理多少事件它們釋放到 Storm 管線。 為了簡單起見，此範例會將此值設定為 10。 在生產環境中，它通常應設定為較高的值。例如，1024年。
 
-10. 建立新的類別稱為 **LoggerBolt** 為下列程式碼:
+10. 建立新的類別稱為 **LoggerBolt** 為下列程式碼 ︰
 
         import java.util.Map;
         import org.slf4j.Logger;
@@ -112,9 +112,9 @@
 
         }
 
-    此 Storm Bolt 會記錄已接收事件的內容。 這可以輕鬆地擴充以將 Tuple 儲存至儲存體服務。 [HDInsight 感應器分析教學課程] 會使用相同的方式，將資料儲存至 HBase。
+    此 Storm Bolt 會記錄已接收事件的內容。 這可以輕鬆地擴充以將 Tuple 儲存至儲存體服務。  [HDInsight sensor analysis tutorial] 使用這個相同的方式，將資料儲存至 HBase。
 
-11. 建立一個名為 **LogTopology** 為下列程式碼:
+11. 建立一個名為 **LogTopology** 為下列程式碼 ︰
 
         import java.io.FileReader;
         import java.util.Properties;
@@ -229,4 +229,5 @@
 [12]: ./media/service-bus-event-hubs-getstarted/create-storm1.png
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
+
 

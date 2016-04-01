@@ -22,7 +22,7 @@
 &nbsp;  
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
-本主題說明如何從您的行動後端，將通知傳送給特定使用者的所有註冊裝置。 它引進了 [範本]，可讓用戶端應用程式能夠指定裝載格式和變數預留位置在註冊的概念。 然後，這些預留位置會傳送到每個平台，而啟用跨平台通知。
+本主題說明如何從您的行動後端，將通知傳送給特定使用者的所有註冊裝置。 其中將介紹的概念 [templates], ，可讓用戶端應用程式能夠指定裝載格式和變數在註冊的預留位置。 然後，這些預留位置會傳送到每個平台，而啟用跨平台通知。
 
 > [AZURE.NOTE] 若要取得使用跨平台的用戶端推入，您必須完成本教學課程中的您想要啟用每個平台。 您只需要執行 [行動後端更新](#backend) 共用相同行動後端的用戶端一次。
  
@@ -30,13 +30,13 @@
 
 在開始本教學課程之前，您必須已為您要啟用的每個用戶端平台完成下列應用程式服務教學課程：
 
-+ [開始使用驗證]<br/>將登入需求加入至 TodoList 範例應用程式。
++ [Get started with authentication]<br/>將登入需求加入至 TodoList 範例應用程式。
 
-+ [開始使用推播通知]<br/>設定推播通知的 TodoList 範例應用程式。
++ [Get started with push notifications]<br/>設定推播通知的 TodoList 範例應用程式。
 
 ##<a name="client"></a>更新您的用戶端，以註冊處理跨平台推播所需的範本
 
-1. 將 Apn 註冊程式碼片段中移動 **QSAppDelegate.m**的 **: Didfinishlaunchingwithoptions<** 呼叫 **loginWithProvider** 中 **QSTodoListViewController.m** 使其在驗證完成後:
+1. 將 Apn 註冊程式碼片段中移動 **QSAppDelegate.m**的 **: Didfinishlaunchingwithoptions<** 呼叫 **loginWithProvider** 中 **QSTodoListViewController.m** 使其在驗證完成後 ︰
 
         [client loginWithProvider:@"facebook" controller:self animated:YES completion:^(MSUser *user, NSError *error) {
             [self refresh];
@@ -52,7 +52,7 @@
             }
         }];
 
-2. 取代您 **registerDeviceToken** 呼叫 **application: didRegisterForRemoteNotificationsWithDeviceToken** 取代下列以使用範本:
+2. 取代您 **registerDeviceToken** 呼叫 **application: didRegisterForRemoteNotificationsWithDeviceToken** 取代下列以使用範本 ︰
 
         NSDictionary *templates = @{
                                @"testNotificationTemplate": @{ @"body" : @{ @"aps" : @{ @"alert": @"$(message)" } } }
@@ -80,3 +80,4 @@
 [Get started with push notifications]: app-service-mobile-ios-get-started-push.md
 [templates]: https://msdn.microsoft.com/library/dn530748.aspx
  
+

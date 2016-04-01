@@ -41,9 +41,9 @@
     
     在網路組態檔中編輯下列幾行，並取代為您需要的值： 
 
-    **舊值:** \ < t ="VNetUSWest"AffinityGroup ="VNetDemoAG"\ > 
+    **舊值 ︰** \ < t ="VNetUSWest"AffinityGroup ="VNetDemoAG"\ > 
 
-    **新的值:** \ < t ="VNetUSWest"Location ="West US"\ >
+    **新的值 ︰** \ < t ="VNetUSWest"Location ="West US"\ >
 
 1. 儲存您的變更和 [匯入](../virtual-networks-using-network-configuration-file/) 至 Azure 網路組態。
 
@@ -65,4 +65,5 @@
 
 一旦部署 VM，其會部署至單一的縮放單位。 同質群組可針對新的 VM 部署限制可用的 VM 大小集合，但任何已部署的現有 VM 部署，已在 VM 所部署的位置限制縮放單位中可用的 VM 大小集合。 因此，從同質群組中移除 VM 不會產生任何效果。
  
+
 

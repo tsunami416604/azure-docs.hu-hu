@@ -281,3 +281,4 @@ Azure CLI 可讓您輕鬆地管理 Azure 服務。 在下列範例中，您將�
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [Using the Azure CLI]: virtual-machines-command-line-tools.md
 
+

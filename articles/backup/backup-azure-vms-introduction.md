@@ -45,8 +45,8 @@ Azure 備份會在 Windows Vm 上的 VSS 完整備份 (深入了解 [VSS 完整�
 
 | 一致性 | 以 VSS 基礎 | 說明和詳細資料 |
 |-------------|-----------|---------|
-| 應用程式一致性 | 是 | 這是 Microsoft 工作負載的理想一致性類型，因為它可確保:<ol><li> VM *啟動*。 <li>沒有 *沒有發生損毀*。 <li>沒有 *不會遺失資料*。<li>資料會與使用資料的應用程式保持一致，方法是在備份期間使用 VSS 將應用程式納入。</ol>大部分 Microsoft 工作負載都有 VSS 寫入器，負責執行與資料一致性有關的工作負載特定動作。 例如，Microsoft SQL Server 的 VSS 寫入器可確保正確寫入交易記錄檔和資料庫。<br><br>Azure vm 備份，取得應用程式一致復原點表示備份擴充功能可以叫用 VSS 工作流程，並完成它 *正確* VM 之前產生快照集。 當然，這表示，在 Azure VM 中的所有應用程式的 VSS 寫入器已叫用以及。<br><br>(學習 [VSS 的基本知識](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx) 深入的詳細資料和 [它的運作方式](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx))。 |
-| 檔案系統一致性 | 是 - 適用於 Windows 電腦 | 有兩種案例可以復原點 *檔案系統一致性*:<ul><li>備份的 Linux Vm，因為 Linux 沒有相當到 VSS 的平台<li>備份 Windows Vm 期間 VSS 失敗。</li></ul>這兩個這種情況，最佳做法是確保: <ol><li> VM *啟動*。 <li>沒有 *沒有發生損毀*。<li>沒有 *不會遺失資料*。</ol>應用程式需要在還原的資料上實作自己的「修正」機制。|
+| 應用程式一致性 | 是 | 這是 Microsoft 工作負載的理想一致性類型，因為它可確保 ︰<ol><li> VM *啟動*。 <li>沒有 *沒有發生損毀*。 <li>沒有 *不會遺失資料*。<li> 將資料的一致，才能使用資料，涉及備份-使用 VSS 的應用程式在應用程式</ol> 大部分 Microsoft 工作負載都有 VSS 寫入器，負責執行與資料一致性有關的工作負載特定動作。 比方說，Microsoft SQL Server 具有 VSS 寫入器，以確保寫入交易記錄檔和資料庫皆能正確運作。<br><br> Azure vm 備份，取得應用程式一致復原點表示備份擴充功能可以叫用 VSS 工作流程，並完成它 *正確* VM 之前產生快照集。 當然，這表示，在 Azure VM 中的所有應用程式的 VSS 寫入器已叫用以及。<br><br>(學習 [VSS 的基本知識](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx) 深入的詳細資料和 [它的運作方式](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx))。 |
+| 檔案系統一致性 | 是 - 適用於 Windows 電腦 | 有兩種案例可以復原點 *檔案系統一致性*:<ul><li>Linux Vm，因為 Linux 沒有相當的平台來 VSS 的備份<li>備份 Windows Vm 期間 VSS 失敗。</li></ul> 這兩個這種情況，最佳做法是確保 ︰ <ol><li> VM *啟動*。 <li>沒有 *沒有發生損毀*。<li>沒有 *不會遺失資料*。</ol> 應用程式需要在還原的資料上實作自己的「修正」機制。|
 | 損毀一致性 | 否 | 此狀況相當於虛擬機器「當機」(經由軟體重設或硬體重設)。 這通常發生於 Azure 虛擬機器在備份期間關閉時。 對於 Azure 虛擬機器備份，取得損毀一致復原點表示 Azure 備份不保證儲存媒體上的資料一致性 -- 無論從作業系統還是應用程式的觀點來說都一樣。 只有備份時已存在磁碟上的資料才會擷取並備份。 <br/> <br/> 雖然沒有任何保證，在大部分情況下，作業系統會開機。 隨後通常是執行磁碟檢查程序 (如 chkdsk) 以修正任何損毀錯誤。 記憶體中任何未完全排清到磁碟的資料或寫入將會遺失。 如果需要進行資料復原，應用程式通常會接著進行其本身的驗證機制。 <br><br>例如，如果交易記錄檔中有不存在資料庫中的項目然後資料庫軟體會執行復原，直到資料變成一致為止。 當資料跨多個虛擬磁碟時 (例如跨距磁碟區)，損毀一致復原點不保證資料的正確性。|
 
 
@@ -119,4 +119,5 @@ Azure 備份不會在備份過程中加密資料。 不過，您可以在 VM 內
 - [管理虛擬機器備份](backup-azure-manage-vms.md)
 - [還原虛擬機器](backup-azure-restore-vms.md)
 - [疑難排解 VM 備份問題](backup-azure-vms-troubleshoot.md)
+
 

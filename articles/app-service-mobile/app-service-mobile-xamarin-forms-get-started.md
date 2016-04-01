@@ -38,7 +38,7 @@
 
 * 使用 Mac [Xcode] v7.0 或更新版本和 [Xamarin Studio] 安裝。 如果您打算在 Windows 電腦上使用 Visual Studio 建置您的應用程式，您仍會需要存取已加入網路的 Mac 才能這麼做。
  
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://tryappservice.azure.com/?appServiceName=mobile), ，您可以立即建立短期入門行動應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://tryappservice.azure.com/?appServiceName=mobile), ，您可以立即建立短期入門行動應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 建立新的 Azure 行動應用程式後端
 
@@ -73,8 +73,8 @@
 
 了解以上事項之後，請繼續進行。
 
- 1. 在 Mac 上或在您的 Windows 電腦上，開啟 [Azure 入口網站] 以瀏覽器視窗。
- 2. 在行動應用程式設定] 刀鋒視窗中，按一下 [ **開始** (在行動裝置版) > **Xamarin.Forms**。 在步驟 3 中，按一下 [  **建立新的應用程式** 如果尚未選取。  按一下 [下一步 **下載** ] 按鈕。
+ 1. 在 Mac 上或在您的 Windows 電腦上，開啟 [Azure Portal] 瀏覽器視窗中。
+ 2. 在行動應用程式設定] 刀鋒視窗中，按一下 [ **開始** （在行動裝置版） > **Xamarin.Forms**。 在步驟 3 中，按一下 [  **建立新的應用程式** 如果尚未選取。  按一下 [下一步 **下載** ] 按鈕。
 
     這會下載包含連線到您行動應用程式之用戶端應用程式的專案。 將此壓縮專案檔案儲存到您的本機電腦，並記錄儲存位置。
 
@@ -181,3 +181,4 @@
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
 [Installing Xamarin.iOS on Windows]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
  
+

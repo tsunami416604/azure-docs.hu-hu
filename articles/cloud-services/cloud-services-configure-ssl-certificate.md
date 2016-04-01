@@ -143,7 +143,7 @@
 
     ![上傳](./media/cloud-services-configure-ssl-certificate/upload-button.png)
     
-6. 提供 **檔案**, ，**密碼**, ，然後按一下 [ **完成** (勾選記號)。
+6. 提供 **檔案**, ，**密碼**, ，然後按一下 [ **完成** （勾選記號）。
 
 ## 步驟 4：使用 HTTPS 來連線至角色執行個體
 
@@ -156,7 +156,7 @@
 
 2.  網頁瀏覽器，將連結修改為使用 **https** 而不是 **http**, ，然後造訪網頁。
 
-    **注意:** 如果您使用自我簽署的憑證，當您
+    **注意 ︰** 如果您使用自我簽署的憑證，當您
     瀏覽至自我簽署的憑證所關聯的 HTTPS 端點時，
     您會在瀏覽器中看到憑證錯誤。 使用
     信任的憑證授權單位所簽署的憑證，則不會有此問題；因此，您可以忽略該錯誤。 (另一個選項為新增自我簽署憑證至使用者的受信任憑證授權單位憑證存放區。)
@@ -179,4 +179,5 @@
   [2]: ./media/cloud-services-configure-ssl-certificate/CopyURL.png
   [3]: ./media/cloud-services-configure-ssl-certificate/SSLCloudService.png
   [4]: ./media/cloud-services-configure-ssl-certificate/AddCertificateComplete.png  
+
 

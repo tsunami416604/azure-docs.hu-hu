@@ -44,7 +44,7 @@ Azure 的同時仍維持應用程式的企業級功能
 在此服務在預覽時，我們會要求，想測試
 服務 [自我提名](http://aka.ms/acspreview)。 提供預覽存取之後，我們會傳送一封電子郵件，內含進一步詳細資料，包括部署範本以及快速入門指示。 若要使用服務時，您需要 Azure 訂閱，如果您有一個尚未，為什麼不註冊的
 [免費
-試用](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AA4C1C935)嗎?
+試用](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AA4C1C935)嗎？
 
 使用 Azure 容器服務
 -----------------------------
@@ -82,7 +82,7 @@ Docker 和您所選擇的 orchestrator 的 API 端點。 使用這些
 ------------------------
 
 在預覽期間，我們提供 Docker Swarm 或 Apache 的選擇
-Mesos (與 DCOS 馬拉松和 DCOS Chronos 架構)
+Mesos （與 DCOS 馬拉松和 DCOS Chronos 架構）
 協調流程。 
 
 ### 使用 Apache Mesos
@@ -148,7 +148,7 @@ Azure 容器服務。
 ![設定來使用顯示 jumpbox、代理程式與主機之 Apache Mesos 設定的 ACS。](media/acs-intro/acs-swarm.png)
 
 包括支援的工具來管理 Swarm 叢集上的容器，但並不會限制
-要完成下列動作:
+要完成下列動作 ︰
 
 -   Dokku
 
@@ -167,7 +167,7 @@ Azure 容器服務。
 在此服務在預覽時，我們要求那些想要測試
 服務 [自我提名](http://aka.ms/acspreview)。 您首先需要 Azure
 訂用帳戶，如果您有一個尚未為何不註冊的 [免費
-試用](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AA4C1C935)嗎?
+試用](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AA4C1C935)嗎？
 
 影片
 ------
@@ -178,4 +178,5 @@ AzureCon 通知：
 開始使用 ACS：  
 
 > [AZURE.VIDEO connect-2015-getting-started-developing-with-docker-and-azure-container-service]
+
 

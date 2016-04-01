@@ -44,7 +44,7 @@
 + 雖然這些工具不支援所有類型的應用程式，您仍然可將 Application Insights SDK 手動加入至您的專案。 使用 [此程序][windows]。 
 
 
-#### <a name="q02"></a>已建立新的 Web 專案，但加入 Application Insights 失敗。
+#### <a name="q02"></a>我已建立新的 Web 專案，但加入 Application Insights 時失敗。
 
 這可能發生在：
 
@@ -56,10 +56,10 @@
 
 + 請檢查您為正確的 Azure 帳戶提供登入認證。 在部分舊版工具中，Microsoft Azure 認證 (在 [新增專案] 對話方塊中) 與 Visual Studio 右上方的認證可能不同。
 + 在瀏覽器中檢查您是否可以存取 [Azure 入口網站](https://portal.azure.com)。 開啟 [設定] 並查看是否有任何限制。
-+ [將 Application Insights 加入至現有的專案][start]: 在 [方案總管] 中以滑鼠右鍵按一下您的專案，並選擇 [加入 Application Insights 」。
++ [將 Application Insights 加入至現有的專案][start]︰ 在 [方案總管] 中以滑鼠右鍵按一下您的專案，並選擇 [加入 Application Insights 」。
 + 如果仍然無法運作，請遵循 [手動程序](app-insights-start-monitoring-app-health-usage.md) 入口網站中加入資源，然後將 SDK 新增至您的專案。 
 
-#### <a name="emptykey"></a>我收到「檢測機碼不能是空白」的錯誤
+#### <a name="emptykey"></a>我收到「檢測金鑰不能是空白」的錯誤
 
 可能是您在安裝 Application Insights 或記錄配接器時發生問題。
 
@@ -97,14 +97,14 @@
 
  - packages.config
 
-+ (新專案: 如果您 [將 Application Insights 加入至現有的專案][start], ，您必須手動執行這項操作。)將程式碼片段插入至用戶端和伺服器程式碼中，以使用 Application Insights 資源識別碼將這些片段初始化。 例如，在 MVC 應用程式中，程式碼會插入至主版頁面 Views/Shared/_Layout.cshtml
++ (新專案 ︰ 如果您 [將 Application Insights 加入至現有的專案][start], ，您必須手動執行這項操作。)將程式碼片段插入至用戶端和伺服器程式碼中，以使用 Application Insights 資源識別碼將這些片段初始化。 例如，在 MVC 應用程式中，程式碼會插入至主版頁面 Views/Shared/_Layout.cshtml
 
-####<a name="NuGetBuild"></a> 我收到 「 NuGet 封裝遺漏 」 組建伺服器，但均一切組建在我的開發電腦上的 [確定]
+####<a name="NuGetBuild"></a> 我的組建伺服器收到「缺少 NuGet 封裝」的訊息，但在我的開發電腦上，一切組建均正常
 
 請參閱 [NuGet 封裝還原](http://docs.nuget.org/Consume/Package-Restore)
 和 [自動套件還原](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)。
 
-####<a name="FailUpdate"></a> 時，我收到 「 專案參考我的電腦所缺少的 NuGet 封裝 」 嘗試建置之後更新至 0.17 或以上版本的 NuGet 封裝。
+####<a name="FailUpdate"></a> 更新至 0.17 或以上版本的 NuGet 封裝後，當我嘗試建置時，我收到「電腦缺少專案參考 NuGet 封裝」的訊息。
 
 更新至 0.17 或以上版本的 NuGet 封裝後，如果顯示上述錯誤，您需要編輯 proj 檔案並移除剩餘的 BCL 目標。
 
@@ -112,7 +112,7 @@
 
 1. 在 [方案總管] 中以滑鼠右鍵按一下專案，然後選擇 [上傳專案]。
 2. 以滑鼠右鍵按一下專案上一次，並選擇 [編輯 *yourProject.csproj* 
-3. 請移至專案檔案最下方，並移除類似的 BCL 目標: 
+3. 請移至專案檔案最下方，並移除類似的 BCL 目標 ︰ 
     ```
     <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
       
@@ -147,10 +147,10 @@
 + 請確認您實際上已複製所有 Microsoft. ApplicationInsights DLL 到伺服器，並且連帶 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ApplicationInsights Dll 一併複製。
 + 在防火牆中，您可能必須開啟 TCP 連接埠 80 和 443，以允許連出流量送往 dc.services.visualstudio.com 和 f5.services.visualstudio.com。
 + 如果您需要使用 proxy，以貴公司網路之外傳送時，設定 [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) Web.config 中
-+ Windows Server 2008: 確定您已安裝下列更新: [KB2468871](https://support.microsoft.com/kb/2468871), ，[KB2533523](https://support.microsoft.com/kb/2533523), ，[KB2600217](https://support.microsoft.com/kb/2600217)。
++ Windows Server 2008 ︰ 確定您已安裝下列更新 ︰ [KB2468871](https://support.microsoft.com/kb/2468871), ，[KB2533523](https://support.microsoft.com/kb/2533523), ，[KB2600217](https://support.microsoft.com/kb/2600217)。
 
 
-#### <a name="q04"></a>看我的網站流量分析下的沒有資料
+#### <a name="q04"></a>我在網站的流量分析下沒有看到資料
 
 + 資料來自網頁中的指令碼。 如果您將 Application Insights 加入至現有的 web 專案， [您必須以手動方式加入指令碼][start]。
 + 確定 Internet Explorer 並非以相容性模式顯示您的網站。
@@ -164,7 +164,7 @@
 
 #### 我並沒有看到預期的所有資料
 
-* **取樣。**如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 您可以加以停用。 [進一步了解取樣。](app-insights-sampling.md)
+* **取樣** 如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 您可以加以停用。 [深入了解取樣。](app-insights-sampling.md)
 
 
 #### <a name="q08"></a>我可以使用 Application Insights 來監視內部網路 Web 伺服器嗎？
@@ -183,7 +183,7 @@
 
 ## 入口網站
 
-#### <a name="q05"></a>我查看 Microsoft Azure 預覽開始面板。 我如何在 Application Insights 中尋找我的資料？
+#### <a name="q05"></a>我正在查看 Microsoft Azure 預覽開始面板。 我如何在 Application Insights 中尋找我的資料？
 
 下列其中一種方法：
 
@@ -203,13 +203,13 @@
 
 
 
-#### <a name="data"></a>資料保留在入口網站多久的時間？ 是否安全？
+#### <a name="data"></a>資料會保留在入口網站多久？ 是否安全？
 
 看看 [資料保留和隱私權][data]。
 
 ## 記錄
 
-#### <a name="post"></a>如何查看在診斷搜尋中的 POST 資料?
+#### <a name="post"></a>如何在診斷搜尋中查看 POST 資料？
 
 我們不會自動記錄 POST 資料，但您可以使用 TrackTrace 呼叫：將資料放置到訊息參數中。 相較於字串屬性的限制，此呼叫可容許較長的大小，不過您無法篩選。 
 
@@ -220,15 +220,15 @@
 請參閱 [資料保留和隱私權][data]。
 
 
-## <a name="q17"></a> 我已啟用在 Application Insights 中的所有項目嗎？
+## <a name="q17"></a>我是否已啟用 Application Insights 中的所有項目？
 
 <table border="1">
 <tr><th>您應該會看到</th><th>如何取得</th><th>取得原因</th></tr>
 <tr><td>可用性圖表</td><td><a href="../app-insights-monitor-web-app-availability/">Web 測試</a></td><td>知道您的 Web 應用程式已啟動</td></tr>
 <tr><td>伺服器應用程式效能：回應時間...
-</td><td><a href="../app-insights-asp-net/">將 Application Insights 加入至專案</a><br/>或 <br/><a href="../app-insights-monitor-performance-live-website-now/">在伺服器上安裝 AI 狀態監視器</a> (或撰寫您自己的程式碼 <a href="../app-insights-api-custom-events-metrics/#track-dependency">追蹤相依性</a>)</td><td>偵測效能問題</td></tr>
+</td><td><a href="../app-insights-asp-net/">將 Application Insights 加入至專案</a><br/>或 <br/><a href="../app-insights-monitor-performance-live-website-now/">在伺服器上安裝 AI 狀態監視器</a> (或撰寫您自己的程式碼以 <a href="../app-insights-api-custom-events-metrics/#track-dependency">追蹤相依性</a>)</td><td>偵測效能問題</td></tr>
 <tr><td>相依性遙測</td><td><a href="../app-insights-monitor-performance-live-website-now/">在伺服器上安裝 AI 狀態監視器</a></td><td>診斷資料庫或其他外部元件的問題</td></tr>
-<tr><td>取得例外狀況的堆疊追蹤</td><td><a href="../app-insights-search-diagnostic-logs/#exceptions">您的程式碼中插入 TrackException 呼叫</a> (但部分會自動報告)</td><td>偵測並診斷例外狀況</td></tr>
+<tr><td>取得例外狀況的堆疊追蹤</td><td><a href="../app-insights-search-diagnostic-logs/#exceptions">您的程式碼中插入 TrackException 呼叫</a> （但部分會自動報告）</td><td>偵測並診斷例外狀況</td></tr>
 <tr><td>搜尋記錄追蹤</td><td><a href="../app-insights-search-diagnostic-logs/">加入記錄配接器</a></td><td>診斷例外狀況、效能問題</td></tr>
 <tr><td>用戶端使用基本概念：頁面檢視、工作階段...</td><td><a href="../app-insights-javascript/">網頁中的 JavaScript 初始設定式</a></td><td>流量分析</td></tr>
 <tr><td>用戶端自訂度量</td><td><a href="../app-insights-api-custom-events-metrics/">追蹤網頁中的呼叫</a></td><td>增強使用者經驗</td></tr>
@@ -255,3 +255,4 @@
 [windows]: app-insights-windows-get-started.md
 
  
+

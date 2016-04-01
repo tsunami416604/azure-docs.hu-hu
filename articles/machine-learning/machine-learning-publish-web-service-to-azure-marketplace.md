@@ -29,7 +29,7 @@ Azure Marketplace 可讓您發行 Azure Machine Learning Web 服務，作為供�
 
 1. 建立及發佈機器學習服務要求-回應服務 (RRS)
 2. 將服務部署至實際執行環境中，並取得 API 金鑰與 OData 端點資訊。
-3. 使用已發佈的 web 服務的 URL，發行至 [Azure Marketplace (資料市場)](https://publish.windowsazure.com/workspace/) 
+3. 使用已發佈的 web 服務的 URL，發行至 [Azure Marketplace （資料市場）](https://publish.windowsazure.com/workspace/) 
 4. 您的產品在提交之後必須經過審閱和核准，才可供客戶購買。 發行程序可能需要數個工作天。 
 
 ## 逐步解說
@@ -64,7 +64,7 @@ Azure Marketplace 可讓您發行 Azure Machine Learning Web 服務，作為供�
 
 ###步驟 3：使用已發行之 Web 服務的 URL，發行至 Azure Marketplace (資料市場)###
 
-1.  瀏覽至 [Azure Marketplace (資料市場)](http://datamarket.azure.com/home) 
+1.  瀏覽至 [Azure Marketplace （資料市場）](http://datamarket.azure.com/home) 
 2.  按一下 [ **發行** 在頁面頂端的連結。 這樣會帶您到 [Microsoft Azure 發佈入口網站](https://publish.windowsazure.com)
 3.  按一下 [ **發行者** 區段，以註冊為發行者。
 4.  在建立新的優惠，選取 **Data Services**, ，然後按一下 [ **建立新的資料服務**。 
@@ -91,7 +91,7 @@ Azure Marketplace 可讓您發行 Azure Machine Learning Web 服務，作為供�
 11. 如 **驗證**, ，選擇 [ **標頭** 為 **驗證配置**。
 
     - 輸入 「 授權 」 **標頭名稱**。
-    - 如 **標頭值**, 中輸入"Bearer"(不含引號)，按一下 **空間** 列，，然後貼上 API 金鑰。
+    - 如 **標頭值**, 中輸入"Bearer"（不含引號），按一下 **空間** 列，，然後貼上 API 金鑰。
     - 選取 **This Service is OData** 核取方塊。
     - 按一下 [ **測試連接** 來測試連線。
 
@@ -108,4 +108,5 @@ Azure Marketplace 可讓您發行 Azure Machine Learning Web 服務，作為供�
 [apikey]:./media/machine-learning-publish-web-service-to-azure-marketplace/apikey.png
 [odata]:./media/machine-learning-publish-web-service-to-azure-marketplace/odata.png
  
+
 

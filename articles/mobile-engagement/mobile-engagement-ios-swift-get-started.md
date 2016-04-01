@@ -19,10 +19,10 @@
 # 開始使用適用於 iOS 應用程式 (Swift) 的 Azure Mobile Engagement
 
 > [AZURE.SELECTOR]
-- [Windows 通用](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Universal Windows](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
-- [iOS |Obj C](mobile-engagement-ios-get-started.md)
-- [iOS |Swift](mobile-engagement-ios-swift-get-started.md)
+- [iOS | Obj C](mobile-engagement-ios-get-started.md)
+- [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
 - [Android](mobile-engagement-android-get-started.md)
 - [Cordova](mobile-engagement-cordova-get-started.md)
 
@@ -32,7 +32,7 @@
 本教學課程需要下列各項：
 
 + Xcode 6 或 XCode 7，可以從您的 MAC App Store 安裝
-+ [Mobile Engagement iOS SDK]
++ 的 [Mobile Engagement iOS SDK]
 + 推播通知憑證 (.p12)，您可以在 Apple Dev Center 取得
 
 > [AZURE.NOTE] 本教學課程使用 Swift 2.0 版。 
@@ -41,7 +41,7 @@
 
 > [AZURE.IMPORTANT] 完成本教學課程是 iOS 應用程式，所有其他 Mobile Engagement 教學課程的先決條件，若要完成此作業，您必須具有有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
 
-##<a id="setup-azme"></a>IOS 應用程式設定 Mobile Engagement
+##<a id="setup-azme"></a>為您的 iOS 應用程式設定 Mobile Engagement
 
 [AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -88,7 +88,7 @@
         #import "EngagementViewController.h"
         #import "AEIdfaProvider.h"
 
-9. 在 [Build Settings]，請確定在 [Swift Compiler - Code Generation] 下的 [Objective-C Bridging Header] 組件設定有指向此標頭的路徑。 以下是路徑的範例: **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h (取決於路徑)**
+9. 在 [Build Settings]，請確定在 [Swift Compiler - Code Generation] 下的 [Objective-C Bridging Header] 組件設定有指向此標頭的路徑。 以下是路徑的範例 ︰ **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h （取決於路徑）**
 
     ![][6]
 
@@ -160,7 +160,7 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 
 ### 修改您的應用程式代理人
 
-1. 內部 `didFinishLaunchingWithOptions` -建立觸達模組並將它傳遞到您現有的 Engagement 初始化行:
+1. 內部 `didFinishLaunchingWithOptions` -建立觸達模組並將它傳遞到您現有的 Engagement 初始化行 ︰
 
         func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
             let reach = AEReachModule.moduleWithNotificationIcon(UIImage(named:"icon.png")) as! AEReachModule
@@ -210,4 +210,5 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 [4]: ./media/mobile-engagement-ios-swift-get-started/add-header-file.png
 [5]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 [6]: ./media/mobile-engagement-ios-swift-get-started/add-bridging-header.png
+
 

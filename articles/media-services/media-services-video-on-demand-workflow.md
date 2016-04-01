@@ -28,7 +28,7 @@
 下圖顯示在點播視訊工作流程中牽涉到的媒體服務平台的主要部分。
 ![VoD 工作流程][vod-overview]
 
-##<a id="vod_scenarios"></a>常見案例: 點播媒體
+##<a id="vod_scenarios"></a>常見案例：提供點播媒體。
 
 ###保護儲存體中的內容並提供不加密的串流媒體
 
@@ -102,4 +102,5 @@ players.md)。
 
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
  
+
 

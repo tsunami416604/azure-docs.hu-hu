@@ -20,11 +20,11 @@
 
 
 ### 本主題的其他文章
-[什麼是 Azure AD?](active-directory-whatis.md)<br>
-[如何運作?](active-directory-works.md)<br>
+[什麼是 Azure AD？](active-directory-whatis.md)<br>
+[運作方式](active-directory-works.md)<br>
 [開始使用](active-directory-get-started.md)<br>
 [後續步驟](active-directory-next-steps.md)<br>
-[了解更多](active-directory-learn-map.md)
+[詳細資訊](active-directory-learn-map.md)
 
 ## 在 Azure AD 中管理使用者
 管理使用者帳戶不只是建立或刪除使用者及指派權限而已。 您可以產生存取和使用方式相關報告、設定密碼原則、啟用密碼自助式重設、設定多重要素驗證等等。 [深入了解管理使用者](active-directory-create-users.md)。
@@ -44,4 +44,5 @@ Azure AD 裝置註冊會利用當使用者登入時用來驗證裝置的身分�
 * [以組織方式註冊 Azure](sign-up-organization.md)
 * [Azure 身分識別](fundamentals-identity.md)
  
+
 

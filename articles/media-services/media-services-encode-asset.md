@@ -25,9 +25,9 @@ Azure 媒體服務提供多個用於將雲端中之媒體編碼的選項。
 開始使用媒體服務時，請務必了解轉碼器和檔案格式之間的差異。
 轉碼器是實作壓縮/解壓縮演算法的軟體，而檔案格式是保存已壓縮視訊的容器。
 
-媒體服務提供動態封裝，這讓您以媒體服務支援的串流格式 (MPEG DASH、HLS、Smooth Streaming、HDS) 提供調適性位元速率 MP4 或 Smooth Streaming 編碼內容，而不必重新封裝成這些串流格式。
+媒體服務提供動態封裝，這讓您以媒體服務支援的串流格式 (MPEG DASH, 、HLS、Smooth Streaming、HDS) 提供調適性位元速率 MP4 或 Smooth Streaming 編碼內容，而不必重新封裝成這些串流格式。
 
-若要利用 [動態封裝](media-services-dynamic-packaging-overview.md), ，您需要執行下列動作:
+若要利用 [動態封裝](media-services-dynamic-packaging-overview.md), ，您需要執行下列動作 ︰
 
 - 將您的夾層 (來源) 檔編碼為一組調適性位元速率 MP4 檔案或調適性位元速率 Smooth Streaming 檔案 (編碼步驟稍後示範於本教學課程中)。
 - 為您計畫從該處傳遞內容的串流端點取得至少一個隨選串流單元。 如需詳細資訊，請參閱 [如何調整隨選串流保留單元](media-services-manage-origins.md#scale_streaming_endpoints/)。
@@ -143,9 +143,9 @@ Media Encoder Premium Workflow 使用複雜的工作流程設定。 無法建立
 
 媒體處理器名稱|適用的價格|注意事項
 ---|---|---
-**Media Encoder Standard** |ENCODER|編碼工作，將會收取根據輸出大小的費率，指定 [這裡] [1]，在 ENCODER 資料行中的資產。
-**Azure Media Encoder** |ENCODER|編碼工作，將會收取根據輸出大小的費率，指定 [這裡] [1]，在 ENCODER 資料行中的資產。
-**Media Encoder Premium Workflow** |PREMIUM ENCODER|編碼工作，將會收取根據輸出大小的費率，指定 [這裡] [1]，在 PREMIUM ENCODER 資料行中的資產。
+**Media Encoder Standard** |ENCODER|編碼工作，將會收取根據輸出大小的費率，指定資產 [這裡][1], ，ENCODER 資料行之下。
+**Azure Media Encoder** |ENCODER|編碼工作，將會收取根據輸出大小的費率，指定資產 [這裡][1], ，ENCODER 資料行之下。
+**Media Encoder Premium Workflow** |PREMIUM ENCODER|編碼工作將根據輸出的大小會收取資產的費率，指定 [這裡][1], ，在 PREMIUM ENCODER 資料行。
 
 
 本節將比較的編碼功能 **Media Encoder Standard**, ，**Azure Media Encoder**, ，和 **媒體編碼器高階工作流程**。
@@ -265,4 +265,5 @@ Windows Media 音訊|否|是|是
  
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
+
 

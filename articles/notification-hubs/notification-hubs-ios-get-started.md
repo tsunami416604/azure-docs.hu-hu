@@ -33,7 +33,7 @@
 
 完成本教學課程中的程式碼可以在 GitHub 上找到 [這裡](https://github.com/Azure/azure-notificationhubs-samples/tree/master/iOS/GetStartedNH/GetStarted)。 
 
-##先決條件
+##必要條件
 
 本教學課程需要下列各項：
 
@@ -42,7 +42,7 @@
 + 支援 iOS 8 (或更新版本) 的裝置
 + iOS Developer Program 成員資格
 
-   > [AZURE.NOTE] 基於推播通知組態需求，您必須部署和測試推播通知在 iOS 功能裝置 (iPhone 或 iPad) 而不是在 iOS 模擬器。
+   > [AZURE.NOTE] 基於推播通知組態需求，您必須部署和測試推播通知在 iOS 功能裝置 （iPhone 或 iPad） 而不是在 iOS 模擬器。
 
 完成本教學課程是參加 iOS app 所有其他通知中樞教學課程的先決條件。
 
@@ -86,7 +86,7 @@
 
     ![][9]
 
-4. 下載的 [行動服務 iOS SDK 1.2.4 版]，並將檔案解壓縮。 在 Xcode 中，以滑鼠右鍵按一下您的專案，然後按一下 **將檔案新增至** 選項來加入 **WindowsAzureMessaging.framework** Xcode 專案的資料夾。 選取 **複製的項目，如有需要**, ，然後按一下 [ **新增**。
+4. 下載 [Mobile Services iOS SDK version 1.2.4] 並解壓縮檔案。 在 Xcode 中，以滑鼠右鍵按一下您的專案，然後按一下 **將檔案新增至** 選項來加入 **WindowsAzureMessaging.framework** Xcode 專案的資料夾。 選取 **複製的項目，如有需要**, ，然後按一下 [ **新增**。
 
     >[AZURE.NOTE] 通知中心 SDK 目前不支援 bitcode Xcode 7。  您必須設定 **啟用 Bitcode** 至 **否** 中 **建置選項** 為您的專案。
 
@@ -146,7 +146,7 @@
         }
 
 
-9. 在相同檔案中，新增下列方法，以顯示 **UIAlert** 如果應用程式正在作用中時收到通知:
+9. 在相同檔案中，新增下列方法，以顯示 **UIAlert** 如果應用程式正在作用中時收到通知 ︰
 
 
         - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -506,4 +506,5 @@
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-send-breaking-news.md
 
 [Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+
 

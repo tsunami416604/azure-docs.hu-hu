@@ -81,7 +81,7 @@ Async 函數可能需要 [取消語彙基元](http://www.asp.net/mvc/overview/pe
 
 ## 適用於 QueueTrigger 屬性的型別
 
-您可以使用 **QueueTrigger** 具有下列類型:
+您可以使用 **QueueTrigger** 具有下列類型 ︰
 
 * **字串**
 * 序列化為 JSON 的 POCO 型別
@@ -109,7 +109,7 @@ SDK 會實作隨機指數型倒退演算法，以降低閒置佇列輪詢對儲�
 * **DateTimeOffset** expirationTime
 * **DateTimeOffset** insertionTime
 * **DateTimeOffset** nextVisibleTime
-* **字串** queueTrigger (包含訊息文字)
+* **字串** queueTrigger （包含訊息文字）
 * **字串** 識別碼
 * **字串** popReceipt
 * **int** dequeueCount
@@ -178,7 +178,7 @@ SDK 會實作隨機指數型倒退演算法，以降低閒置佇列輪詢對儲�
         }
     }
 
-**注意:** 儀表板可能不會正確顯示的狀態和已關閉的函式的輸出。
+**注意 ︰** 儀表板可能不會正確顯示的狀態和已關閉的函式的輸出。
 
 如需詳細資訊，請參閱 [WebJobs 正常關機](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)。   
 
@@ -229,15 +229,15 @@ SDK 會自動將物件序列化為 JSON。 即使物件是空值，也一律會�
 
 ### 適用於 Queue 屬性的型別
 
-您可以使用 **佇列** 下列參數型別屬性:
+您可以使用 **佇列** 下列參數型別屬性 ︰
 
-* **字串** (如果參數值為非 null，函式結束時，會建立佇列訊息)
+* **字串** （如果參數值為非 null，函式結束時，會建立佇列訊息）
 * **out byte []** (作用就像是 **字串**)
 * **out CloudQueueMessage** (作用就像是 **字串**)
-* **out POCO** (可序列化的型別，如果建立訊息使用 null 物件的函式結束時，參數是 null)
+* **out POCO** （可序列化的型別，如果建立訊息使用 null 物件的函式結束時，參數是 null）
 * **ICollector**
 * **IAsyncCollector**
-* **CloudQueue** (適用於建立訊息以手動方式直接使用 Azure 儲存體 API)
+* **CloudQueue** （適用於建立訊息以手動方式直接使用 Azure 儲存體 API）
 
 ### 在函式主體中使用 WebJobs SDK 屬性
 
@@ -312,19 +312,19 @@ SDK 會使用 [Newtonsoft.Json NuGet 封裝](http://www.nuget.org/packages/Newto
 
 ###可以與 Blob 屬性搭配使用的型別
 
- **Blob** 屬性可以搭配下列類型:
+ **Blob** 屬性可以搭配下列類型 ︰
 
-* **資料流** (讀取或寫入，可使用 FileAccess 建構函式參數所指定)
+* **資料流** （讀取或寫入，可使用 FileAccess 建構函式參數所指定）
 * **TextReader**
 * **TextWriter**
-* **字串** (讀取)
-* **字串** (寫入; 字串參數為非 null，當函式傳回時，才會建立 blob)
+* **字串** （讀取）
+* **字串** （寫入; 字串參數為非 null，當函式傳回時，才會建立 blob）
 * POCO (讀取)
 * out POCO (寫入；一律會建立 Blob，當函式傳回時，如果 POCO 參數為 Null，就建立為 Null 物件)
-* **CloudBlobStream** (寫入)
-* **ICloudBlob** (讀取或寫入)
-* **CloudBlockBlob** (讀取或寫入)
-* **CloudPageBlob** (讀取或寫入)
+* **CloudBlobStream** （寫入）
+* **ICloudBlob** （讀取或寫入）
+* **CloudBlockBlob** （讀取或寫入）
+* **CloudPageBlob** （讀取或寫入）
 
 ##如何處理有害訊息
 
@@ -378,7 +378,7 @@ SDK 將會呼叫函數最多 5 次以處理佇列訊息。 如果第五次嘗試
 
 ## 如何設定組態選項
 
-您可以使用 **JobHostConfiguration** 型別來設定下列組態選項:
+您可以使用 **JobHostConfiguration** 型別來設定下列組態選項 ︰
 
 * 在程式碼中設定 SDK 連接字串。
 * 設定 **QueueTrigger** 設定，例如最大清除佇列計數。
@@ -431,7 +431,7 @@ SDK 將會呼叫函數最多 5 次以處理佇列訊息。 如果第五次嘗試
 
 有時候您不想要採取硬式編碼的方式，而是在程式碼中指定佇列名稱、Blob 名稱或容器或資料表名稱。 例如，您可能想要指定的佇列名稱 **QueueTrigger** 在組態檔或環境變數。
 
-您可以這麼做是要傳入 **NameResolver** 物件傳遞給 **JobHostConfiguration** 型別。 包含以 WebJobs SDK 屬性建構函式參數，以百分比 (%) 符號括住的特殊預留位置和 **NameResolver** 程式碼會指定實際要用以取代那些預留位置的值。
+您可以這麼做是要傳入 **NameResolver** 物件傳遞給 **JobHostConfiguration** 型別。 包含以 WebJobs SDK 屬性建構函式參數，以百分比 （%） 符號括住的特殊預留位置和 **NameResolver** 程式碼會指定實際要用以取代那些預留位置的值。
 
 例如，假設您想要在測試環境中使用名為 logqueuetest 的佇列，和在生產環境中使用名為 logqueueprod 的佇列。 您想要指定的名稱中的項目而不是使用硬式編碼的佇列名稱， **appSettings** 會有實際佇列名稱的集合。 如果 **appSettings** 索引鍵為 logqueue，您的函式看起來如下所示。
 
@@ -440,7 +440,7 @@ SDK 將會呼叫函數最多 5 次以處理佇列訊息。 如果第五次嘗試
             Console.WriteLine(logMessage);
         }
 
-您 **NameResolver** 類別接著可以取得佇列名稱，從 **appSettings** 如下列範例所示:
+您 **NameResolver** 類別接著可以取得佇列名稱，從 **appSettings** 如下列範例所示 ︰
 
         public class QueueNameResolver : INameResolver
         {
@@ -460,7 +460,7 @@ SDK 將會呼叫函數最多 5 次以處理佇列訊息。 如果第五次嘗試
             host.RunAndBlock();
         }
 
-**注意:** 佇列、 資料表和 blob 名稱每次呼叫函式，但應用程式啟動時才解析 blob 容器名稱。 您無法在執行工作時，變更 Blob 容器名稱。
+**注意 ︰** 佇列、 資料表和 blob 名稱每次呼叫函式，但應用程式啟動時才解析 blob 容器名稱。 您無法在執行工作時，變更 Blob 容器名稱。
 
 ## 如何手動觸發函數
 
@@ -493,11 +493,11 @@ SDK 將會呼叫函數最多 5 次以處理佇列訊息。 如果第五次嘗試
 
 ![函式引動過程頁面中的記錄檔](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-從主控台的方法，讓您呼叫的函式中或在輸出 **main ()** 方法會顯示在 webjob 的 [儀表板] 頁面中，而不是特定方法引動過程的頁面。 您從方法簽章的參數所取得 TextWriter 物件的輸出會顯示在方法引動過程的 [儀表板] 頁面。
+從主控台的方法，讓您呼叫的函式中或在輸出 **main （)** 方法會顯示在 webjob 的 [儀表板] 頁面中，而不是特定方法引動過程的頁面。 您從方法簽章的參數所取得 TextWriter 物件的輸出會顯示在方法引動過程的 [儀表板] 頁面。
 
 因為主控台屬於單一執行緒，無法同時執行許多工作函式，所以主控台輸出無法連結到特定的方法引動過程。 這就是為什麼 SDK 提供使用它自己專屬的記錄寫入器物件的每個函式引動過程。
 
-要寫入 [應用程式追蹤記錄](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), ，使用 **Console.Out** (建立標示為 INFO 的記錄檔) 和 **Console.Error** (建立標示為 ERROR 的記錄檔)。 另一個方法是使用 [Trace 或 TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), 、 提供詳細資訊、 警告及嚴重層級，除了資訊與錯誤。 視您設定 Azure 網頁應用程式的方式而定，應用程式追蹤記錄檔會出現在網頁應用程式記錄檔、Azure 資料表或 Azure Blob 中。 所有主控台輸出的應用程式記錄檔裡最近的 100 筆記錄也同樣會顯示在 WebJob 的 [儀表板] 頁面，而不是函式引動過程的頁面。
+要寫入 [應用程式追蹤記錄](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), ，使用 **Console.Out** （建立標示為 INFO 的記錄檔） 和 **Console.Error** （建立標示為 ERROR 的記錄檔）。 另一個方法是使用 [Trace 或 TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), 、 提供詳細資訊、 警告及嚴重層級，除了資訊與錯誤。 視您設定 Azure 網頁應用程式的方式而定，應用程式追蹤記錄檔會出現在網頁應用程式記錄檔、Azure 資料表或 Azure Blob 中。 所有主控台輸出的應用程式記錄檔裡最近的 100 筆記錄也同樣會顯示在 WebJob 的 [儀表板] 頁面，而不是函式引動過程的頁面。
 
 只有當程式是以 Azure WebJob 執行時，主控台輸出才會顯示在儀表板，而不是在本機或在某些其他環境中執行時。
 
@@ -521,7 +521,7 @@ WebJobs SDK 儀表板中，從輸出 **TextWriter** 物件顯示當您移至特�
 
 ![函式引動過程頁面中的記錄檔](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-WebJobs SDK 儀表板中的主控台的最新的 100 行則會顯示輸出當您移至頁面進行 WebJob (不適用於叫用函數)，並按一下 **切換輸出**。
+WebJobs SDK 儀表板中的主控台的最新的 100 行則會顯示輸出當您移至頁面進行 WebJob （不適用於叫用函數），並按一下 **切換輸出**。
 
 ![按一下切換輸出](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
@@ -536,7 +536,7 @@ WebJobs SDK 儀表板中的主控台的最新的 100 行則會顯示輸出當您
         2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!,
         2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
 
-而在 Azure 資料表 **Console.Out** 和 **Console.Error** 記錄檔看起來像這樣:
+而在 Azure 資料表 **Console.Out** 和 **Console.Error** 記錄檔看起來像這樣 ︰
 
 ![在資料表中的資訊記錄檔](./media/vs-storage-webjobs-getting-started-queues/tableinfo.png)
 
@@ -545,4 +545,5 @@ WebJobs SDK 儀表板中的主控台的最新的 100 行則會顯示輸出當您
 ##後續步驟
 
 本文提供的程式碼範例示範如何處理使用 Azure 佇列的常見案例。 如需如何使用 Azure WebJobs 和 WebJobs SDK 的詳細資訊，請參閱 [Azure WebJobs 建議資源](http://go.microsoft.com/fwlink/?linkid=390226)。
+
 

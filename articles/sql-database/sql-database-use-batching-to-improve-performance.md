@@ -99,7 +99,7 @@
 | 1000 | 128852 | 102917 |
 
 
-**Azure 至 Azure (相同資料中心)**:
+**Azure 至 Azure （相同資料中心）**:
 
 | 作業 | 無交易 (毫秒) | 交易 (毫秒) |
 |---|---|---|
@@ -603,4 +603,5 @@ PurchaseOrderDetail 資料表中的 OrderID 資料行必須參考 PurchaseOrder 
 ## 後續步驟
 
 這篇文章著重於與批次處理相關的資料庫設計和程式碼撰寫技術，如何改善應用程式的效能和延展性。 但這只是整體策略中的一個因素。 如需更多以改善效能和延展性的方式，請參閱 [單一資料庫的 Azure SQL Database 效能指引](sql-database-performance-guidance.md) 和 [彈性資料庫集區的價格和效能考量](sql-database-elastic-pool-guidance.md)。
+
 

@@ -55,7 +55,7 @@
 
 本節的第一個步驟只適用於 Windows Phone 8、Windows Phone 8.1 Silverlight 以及非 Windows 市集應用程式。 若是上述應用程式，您也可以忽略封裝安全性識別碼 (SID)，這只有 Windows 市集應用程式可使用。
 
-1. 對於非 Windows 市集應用程式中，瀏覽至 [我的應用程式](http://go.microsoft.com/fwlink/p/?LinkId=262039) (如有必要)，Microsoft 帳戶開發人員中心，使用您的 Microsoft 帳戶登入頁面上，按一下 **建立應用程式**, ，型別 **應用程式名稱**, ，然後按一下 [ **我接受**。
+1. 對於非 Windows 市集應用程式中，瀏覽至 [我的應用程式](http://go.microsoft.com/fwlink/p/?LinkId=262039) （如有必要），Microsoft 帳戶開發人員中心，使用您的 Microsoft 帳戶登入頁面上，按一下 **建立應用程式**, ，型別 **應用程式名稱**, ，然後按一下 [ **我接受**。
 
     這將透過 Microsoft 帳戶為您保留應用程式名稱，並顯示您應用程式的 Microsoft 帳戶頁面。
 
@@ -64,7 +64,7 @@
     + **.NET 後端**: `https://<mobile_service>.azure-mobile.net/signin-microsoft`
     + **JavaScript 後端**: `https://<mobile_service>.azure-mobile.net/login/microsoftaccount`
 
-     >[AZURE.NOTE]請確定您使用正確的重新導向 URL 路徑格式，您的行動服務後端類型。 若格式不正確，驗證將不會成功。  **根網域** 應該自動填寫。
+     >[AZURE.NOTE]請確定您使用正確的重新導向 URL 路徑格式，您的行動服務後端類型。 若這不正確，驗證也將不會成功。  **根網域** 應該自動填寫。
 &nbsp;
 
     ![Microsoft 帳戶 API 設定](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-app-push-auth-2.png)
@@ -75,7 +75,7 @@
     ![Microsoft 帳戶應用程式設定](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-app-push-auth.png)
 
 
-    > [AZURE.NOTE] The client secret is an important security credential. Do not share the client secret with anyone or distribute it with your app. Only Windows Store app registrations will see a Package SID field.
+    > [AZURE.NOTE] 用戶端密碼是重要的安全性認證。 請勿將用戶端密碼與任何人分享，或與您的應用程式一起散發。 只有註冊 Windows 市集應用程式才會顯示 [套件 SID] 欄位。
 
 4. 在 [Azure classic portal], ，按一下 [ **識別** 行動服務] 索引標籤上，輸入用戶端識別碼、 用戶端密碼以及套件 SID 取自您的身分識別提供者，然後按一下 [ **儲存**。
 
@@ -93,4 +93,5 @@
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 
 [Azure classic portal]: https://manage.windowsazure.com/
+
 

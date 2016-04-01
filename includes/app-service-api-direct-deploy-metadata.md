@@ -26,7 +26,7 @@
             "apiDefinition": "/swagger/docs/v1"
         }
 
-> **注意:** 如果使用 Swashbuckle 來產生 Swagger API 定義，Web API 控制器中的 HTTP 方法多載會導致重複的作業識別碼。 如需詳細資訊，請參閱 [自訂 Swashbuckle 產生的作業識別碼](../article/app-service-api/app-service-api-dotnet-swashbuckle-customize.md)。
+> **注意 ︰** 如果使用 Swashbuckle 來產生 Swagger API 定義，Web API 控制器中的 HTTP 方法多載會導致重複的作業識別碼。 如需詳細資訊，請參閱 [自訂 Swashbuckle 產生的作業識別碼](../article/app-service-api/app-service-api-dotnet-swashbuckle-customize.md)。
   
 ### 靜態 Swagger API 定義
 
@@ -35,4 +35,5 @@
 ![](./media/app-service-api-direct-deploy-metadata/apidefinmetadata.png)
 
 保留 `endpoints.apiDefinition` 超出 *apiapp.json* 檔案，或將其值設定為 null。 如果您同時包含 `endpoints.apiDefinition` URL 和 *apiDefinition.swagger.json* 檔案中，將會優先使用 URL，且檔案會被忽略。
+
 

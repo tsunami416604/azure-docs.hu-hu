@@ -71,9 +71,9 @@ Azure 資料湖存放區會使用 Azure Active Directory 進行驗證，並使�
 
 請參閱 [應用程式和服務與 Azure 資料湖](data-lake-store-compatible-oss-other-applications.md) 的互通性與 Azure 資料湖存放區的開放原始碼應用程式的清單。 請參閱 [與其他 Azure 服務整合](data-lake-store-integrate-with-other-services.md) 來了解如何資料湖存放區可用於與其他 Azure 服務啟用廣泛的案例。 
 
-## 什麼是 Azure 資料湖存放區檔案系統 (adl: / /)?
+## 什麼是 Azure 資料湖存放區檔案系統 (adl: / /)？
 
-可以透過新的檔案系統，AzureDataLakeFilesystem 存取資料湖存放區 (adl: / /)，在 Hadoop 環境中 (適用於 HDInsight 叢集)。 使用 adl:// 的應用程式和服務能夠利用 WebHDFS 中目前無法使用的進一步效能最佳化。 因此，資料湖存放區讓您具有彈性：可透過使用 adl:// 的建議選項獲得最佳效能，或繼續直接使用 WebHDFS API 來維護現有的程式碼。 Azure HDInsight 充分利用 AzureDataLakeFilesystem 來提供資料湖存放區的最佳效能。
+可以透過新的檔案系統，AzureDataLakeFilesystem 存取資料湖存放區 (adl: / /)，在 Hadoop 環境中 （適用於 HDInsight 叢集）。 使用 adl:// 的應用程式和服務能夠利用 WebHDFS 中目前無法使用的進一步效能最佳化。 因此，資料湖存放區讓您具有彈性：可透過使用 adl:// 的建議選項獲得最佳效能，或繼續直接使用 WebHDFS API 來維護現有的程式碼。 Azure HDInsight 充分利用 AzureDataLakeFilesystem 來提供資料湖存放區的最佳效能。
 
 您可以使用 `adl://<data_lake_store_name>.azuredatalakestore.net`，在資料湖存放區中存取您的資料。 如需有關如何存取資料湖存放區中的資料的詳細資訊，請參閱 [檢視儲存的資料屬性](data-lake-store-get-started-portal.md#properties)
 
@@ -85,4 +85,5 @@ Azure 資料湖存放區會使用 Azure Active Directory 進行驗證，並使�
 - [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [使用 .NET SDK 開始使用 Azure 資料湖存放區](data-lake-store-get-started-net-sdk.md)
   
+
 

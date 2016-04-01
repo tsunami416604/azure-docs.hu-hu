@@ -6,7 +6,7 @@
 
 2. 開啟 Android Studio。 如果您正在使用專案，而它出現的話，請關閉專案 ([檔案] => [關閉專案])。
 
-3. 選取 **開啟現有的 Android Studio 專案**, ，瀏覽至專案位置，然後按一下 **[確定]。**這會載入專案並開始與 Gradle 同步。
+3. 選取 **開啟現有的 Android Studio 專案**, ，瀏覽至專案位置，然後按一下 **[確定]。** 這會載入專案並開始與 Gradle 同步。
 
     ![](./media/mobile-services-android-get-started/android-studio-import-project.png)
 
@@ -38,4 +38,5 @@
     如此可讓您瀏覽由應用程式插入資料表中的資料。
 
     ![](./media/mobile-services-android-get-started/mobile-data-browse.png)
+
 

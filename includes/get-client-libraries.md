@@ -2,7 +2,7 @@
 
 1. [安裝 Git][install-git]。 請注意在 Windows 中，您也必須將 Git 可執行檔新增至 PATH 環境變數。 
 
-2. 建立名為 **composer.json** 根目錄中的專案並加入下列程式碼:
+2. 建立名為 **composer.json** 根目錄中的專案並加入下列程式碼 ︰
 
     ```
     {
@@ -39,10 +39,11 @@
     
 2. 將已下載之封存檔的 `WindowsAzure` 目錄複製到應用程式目錄結構中。
 
-如需安裝 PHP Client Libraries for Azure (包括關於以 PEAR 封裝的資訊) 的詳細資訊，請參閱 [下載 Azure SDK for PHP][download-SDK-PHP]。
+如需安裝 PHP Client Libraries for Azure （包括關於以 PEAR 封裝的資訊） 的詳細資訊，請參閱 [下載 Azure SDK for PHP][download-SDK-PHP]。
 
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [download-SDK-PHP]: ../articles/php-download-sdk.md
 [composer-phar]: http://getcomposer.org/composer.phar
+
 

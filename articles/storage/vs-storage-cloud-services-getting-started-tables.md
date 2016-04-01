@@ -26,7 +26,7 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 
 若要開始，首先您必須在儲存體帳戶中建立資料表。 我們將說明如何使用程式碼建立 Azure 資料表，以及如何執行基本的資料表和實體作業，例如新增、修改、讀取和讀取資料表實體。 範例均以 C# 程式碼並使用 [適用於.NET 的 Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
-**注意:** 一些對外向 Azure 儲存體執行呼叫的 Api 是非同步。 請參閱 [使用 Async 和 Await 進行非同步程式設計](http://msdn.microsoft.com/library/hh191443.aspx) 如需詳細資訊。 以下程式碼假設使用非同步程式設計方法。
+**注意 ︰** 一些對外向 Azure 儲存體執行呼叫的 Api 是非同步。 請參閱 [使用 Async 和 Await 進行非同步程式設計](http://msdn.microsoft.com/library/hh191443.aspx) 如需詳細資訊。 以下程式碼假設使用非同步程式設計方法。
 
 - 請參閱 [如何使用資料表儲存體.NET](storage-dotnet-how-to-use-tables.md) 如需有關以程式設計方式操作資料表。
 - 請參閱 [儲存體文件](https://azure.microsoft.com/documentation/services/storage/) 的 Azure 儲存體的一般資訊。
@@ -105,7 +105,7 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 
 ## 插入實體批次
 
-您可以在單一寫入操作中將多個項目插入至資料表。 下列程式碼範例會建立兩個實體物件 ("Jeff Smith"和"Ben Smith")、 將它們加入至 **TableBatchOperation** 物件使用 Insert 方法，然後啟動作業，藉由呼叫 **cloudtable.executebatchasync 開始**。
+您可以在單一寫入操作中將多個項目插入至資料表。 下列程式碼範例會建立兩個實體物件 （"Jeff Smith"和"Ben Smith"）、 將它們加入至 **TableBatchOperation** 物件使用 Insert 方法，然後啟動作業，藉由呼叫 **cloudtable.executebatchasync 開始**。
 
     // Get a reference to a **CloudTable** object named 'peopleTable' as described in "Access a table in code".
 
@@ -168,7 +168,7 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 
 ## 插入實體批次
 
-您可以在單一寫入操作中將多個項目插入至資料表。 下列程式碼範例會建立兩個實體物件 ("Jeff Smith"和"Ben Smith")、 將它們加入至 **TableBatchOperation** 物件使用 Insert 方法，然後啟動作業，藉由呼叫 **cloudtable.executebatchasync 開始**。
+您可以在單一寫入操作中將多個項目插入至資料表。 下列程式碼範例會建立兩個實體物件 （"Jeff Smith"和"Ben Smith"）、 將它們加入至 **TableBatchOperation** 物件使用 Insert 方法，然後啟動作業，藉由呼叫 **cloudtable.executebatchasync 開始**。
 
     // Get a reference to a CloudTable object named 'peopleTable' as described in "Access a table in code".
 
@@ -268,4 +268,5 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 ## 後續步驟
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
+
 

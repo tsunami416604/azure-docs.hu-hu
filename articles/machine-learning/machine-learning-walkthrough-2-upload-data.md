@@ -76,7 +76,8 @@ UCI 網站提供了功能向量的屬性說明，這些屬性包括財務資訊�
 
 如需各種類型的資料匯入試驗的詳細資訊，請參閱 [訓練資料匯入 Azure Machine Learning Studio](machine-learning-import-data.md)。
 
-**下一步: [建立新的實驗](machine-learning-walkthrough-3-create-new-experiment.md)**
+**下一步 ︰ [建立新的實驗](machine-learning-walkthrough-3-create-new-experiment.md)**
 
 [1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
+
 

@@ -30,7 +30,7 @@
 
 ## 建立用以撥打電話的 Web 表單
 
-下列 HTML 程式碼示範如何建置網頁 (**callform.html**)，以擷取撥打電話所需的使用者資料:
+下列 HTML 程式碼示範如何建置網頁 (**callform.html**)，以擷取撥打電話所需的使用者資料 ︰
 
     <html>
     <head>
@@ -94,7 +94,7 @@
     </body>
     </html>
 
-除了撥打電話， **makecall.php** 顯示某些通話中繼資料 (例如，下列螢幕擷取畫面所示)。 如需通話中繼資料的詳細資訊，請參閱 [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties]。
+除了撥打電話， **makecall.php** 顯示某些通話中繼資料 （例如，下列螢幕擷取畫面所示）。 如需通話中繼資料的詳細資訊，請參閱 [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties]。
 
 ![Azure Call Response Using Twilio and PHP][twilio_php_response]
 
@@ -142,4 +142,5 @@
 [website-ftp]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-ftp/
 [website-webmatrix]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-webmatrix/
 [twilio_php_github]: https://github.com/twilio/twilio-php
+
 

@@ -20,7 +20,7 @@
 
 本文包含下載及安裝 Azure Libraries for Java。
 
-**注意:** Azure Libraries for Java 分散在 [Apache 授權，2.0 版][license]。
+**注意 ︰** Azure Libraries for Java 分散在 [Apache 授權，2.0 版][license]。
 
 ## Azure Libraries for Java - 手動下載 ##
 
@@ -34,7 +34,7 @@
 
 如需設定在 Eclipse 中的組建路徑的詳細資訊，請參閱 [Java 組建路徑][] Eclipse 網站的發行項。
 
-**注意:** 的 license.txt 和 ThirdPartyNotices.txt ZIP 內的檔案檔案授權及其他資訊，請參閱。
+**注意 ︰** 的 license.txt 和 ThirdPartyNotices.txt ZIP 內的檔案檔案授權及其他資訊，請參閱。
 
 ## Azure Libraries for Java - 使用 Maven 建置 ##
 
@@ -92,7 +92,7 @@
         <version>0.6.0</version>
     </dependency>
 
-**注意:** 在每個 `<version>` 項目，在上述範例中，在此範例中的版本號碼取代有效的版本號碼，您可以從取得 [Azure Libraries Repository on Maven][]。
+**注意 ︰** 在每個 `<version>` 項目，在上述範例中，在此範例中的版本號碼取代有效的版本號碼，您可以從取得 [Azure Libraries Repository on Maven][]。
 
 ## 安裝 Azure Toolkit for Eclipse ##
 
@@ -134,4 +134,5 @@ Azure Toolkit for Eclipse 會使用最新版的 Azure sdk。 這可以下載使�
 [maven-getting-started]: http://go.microsoft.com/fwlink/?LinkID=622998
 [zip-download]: http://go.microsoft.com/fwlink/?LinkId=690320
 [What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=690333
+
 

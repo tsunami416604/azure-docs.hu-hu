@@ -16,19 +16,19 @@
  
 # .NET 適用的 Application Insights SDK 的版本資訊
 
- [.NET 的應用程式洞悉 SDK](app-insights-asp-net.md) 傳送關於您即時的應用程式的 telemetry [應用程式了解](http://azure.microsoft.com/services/application-insights/), ，您可以在此分析其使用情況和效能。
+ [Application Insights SDK for.NET](app-insights-asp-net.md) 傳送有關您即時的應用程式遙測 [Application Insights](http://azure.microsoft.com/services/application-insights/), ，您可以在此分析它的使用狀況與效能。
 
 
 #### 若要在應用程式中安裝 SDK
 
-請參閱 [開始使用應用程式了解.NET 的](app-insights-asp-net.md)。
+請參閱 [開始使用 Application Insights for.NET](app-insights-asp-net.md)。
 
 #### 升級至最新的 SDK 
 
 * 升級之後，必須將您對 ApplicationInsights.config 所做的任何自訂合併回來。 如果您不確定是否自訂過，請建立新專案，將 Application Insights 新增到其中，然後以新專案中的 .config 檔案與您自己的比較。 請記下任何的差異。
-* 在 [方案總管中，您的專案上按一下滑鼠右鍵，然後選擇 [ **管理 NuGet 套件**。
+* 在 [方案總管] 中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 封裝**。
 * 設定篩選器來顯示已安裝的封裝。 
-* 選取 [ **Microsoft.ApplicationInsights.Web** ，然後選擇 [ **升級**。 (這也會升級所有相依的封裝。)
+* 選取 **Microsoft.ApplicationInsights.Web** 選擇 **升級**。 (這也會升級所有相依的封裝。)
 * 與舊的複本比較 ApplicationInsights.config。 您看到的變更大部分是因為我們移除了部分模組，並讓其他的模組可參數化。 恢復您對舊檔案做的任何自訂。
 * 重建您的方案。
 
@@ -38,14 +38,14 @@
 - [調適性取樣](app-insights-sampling.md)
 
 ## 版本 2.0.0-beta2
-- 新增對 ITelemetryProcessor 的支援，而且可以透過程式碼或組態設定。 [可讓您在 SDK 中的自訂篩選](app-insights-api-telemetry-processors/#telemetry-processors)
-- 已移除內容初始設定式。 使用 [Telemetry 的初始設定式]( https://azure.microsoft.com/documentation/articles/app-insights-api-telemetry-processors/#telemetry-initializers) 相反的。
+- 新增對 ITelemetryProcessor 的支援，而且可以透過程式碼或組態設定。 [在 SDK 中啟用自訂篩選](app-insights-api-telemetry-processors/#telemetry-processors)
+- 已移除內容初始設定式。 使用 [遙測初始設定式]( https://azure.microsoft.com/documentation/articles/app-insights-api-telemetry-processors/#telemetry-initializers) 改。
 - 已更新適用於 .Net framework 4.6 的 Application Insights。 
 - 自訂的事件名稱現在最多可包含 512 個字元。
 - 屬性 ```OperationContext.Name``` 已重新命名為 ```RootName```。
 - 已移除屬性 ```RequestTelemetry.Id```。
 - 建立新的 RequestTelemetry 時，不會初始化 RequestTelemetry 的屬性 ```Id``` 和 ```Context.Operation.Id```。
-- ```RequestTelemetry.Name``` 未初始化不再。 ```RequestTelemetry.Context.Operation.Name``` 將改用。
+- ```RequestTelemetry.Name``` 未初始化長。 ```RequestTelemetry.Context.Operation.Name``` 將改用。
 - 在要求監視中，回應碼 401 是一般驗證信號交換的一部分，並會導致成功的要求。
 - 修正從 UI 執行緒初始化 InMemoryChannel (預設通道) 時的 UI 執行緒鎖定。 這會修正 WPF 應用程式的 UI 凍結問題。
  
@@ -64,7 +64,7 @@
 
 - ASP.NET 程式庫上沒有相依性的遙測初始設定式，已從 `Microsoft.ApplicationInsights.Web` 移至新的相依性 NuGet `Microsoft.ApplicationInsights.WindowsServer`
 - 在 `Microsoft.AI.Web.dll` 上的 `Microsoft.ApplicationInsights.Web.dll` 已重新命名
-- `Microsoft.ApplicationInsights.Web.TelemetryChannel` nuget 已重新命名上 `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel`。 `Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` 組件已重新命名上 `Microsoft.AI.ServerTelemetryChannel.dll`。 `Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` 類別已重新命名上 `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel`。
+- `Microsoft.ApplicationInsights.Web.TelemetryChannel` 上的 nuget 已重新命名為 `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel`。 `Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` 上的組件已重新命名為 `Microsoft.AI.ServerTelemetryChannel.dll`。 `Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` 類別已重新命名上 `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel`。
 - 所有屬於 Web SDK 一部分的命名空間，已變更以排除 `Extensibility` 組件。 其中包含 ApplicationInsights.config 中的所有遙測初始設定式，和 web.config 中的 `ApplicationInsightsWebTracking` 模組。
 - 如果執行緒上沒有 HttpContext.Current，則使用執行階段檢測代理程式 (透過狀態監視器或 Azure 網站的延伸模組來啟用) 所收集的相依性將不會標示為非同步。
 - `DependencyTrackingTelemetryModule` 的屬性`SamplingRatio` 不會執行任何動作且將被標記為過時。
@@ -93,13 +93,13 @@
 - OSVersion 不再預設由 SDK 填入。 當它是空的時，Application Insights 管線會根據使用者代理程式來計算 OS 和 OSVersion。 
 - 高負載案例的持續性通道最佳化會用於 Web SDK。 修正「死亡螺旋」問題。 死亡螺旋這種狀況是，當遙測項目計數中的尖峰，遠超過端點上的節流限制時，將會導致在特定的時間後重試，並且會於再次重試時遭到節流。
 - 針對生產最佳化開發人員模式。 若意外地離開，開發人員模式不會像之前般嘗試輸出額外的資訊導致大量負荷。
-- 根據預設，當應用程式於偵錯工具下才會啟用開發人員模式。 您可以覆寫它使用 ```DeveloperMode``` 屬性的  ```ITelemetryChannel``` 介面。
+- 根據預設，當應用程式於偵錯工具下才會啟用開發人員模式。 您可以覆寫使用 ```DeveloperMode``` 屬性  ```ITelemetryChannel``` 介面。
 
 ## 0.16 版 
 
 2015-04-28 預覽
 
-- SDK 現在支援 DNX 目標平台，以啟用監控的 [.NET 核心架構](http://www.dotnetfoundation.org/NETCore5) 應用程式。
+- SDK 現在支援 DNX 目標平台，以監視 [.NET 核心架構](http://www.dotnetfoundation.org/NETCore5) 應用程式。
 - ```TelemetryClient``` 的執行個體不再快取檢測金鑰。 現在如果未明確在 ```TelemetryClient``` 中設定檢測金鑰，則 ```InstrumentationKey``` 會傳回 Null。 它可以在您於已收集一些遙測之後設定 ```TelemetryConfiguration.Active.InstrumentationKey``` 時修正問題，像是相依性收集器的遙測模組、Web 要求資料收集和效能計數器收集器會使用新的檢測金鑰。
 
 ## 0.15 版
@@ -113,4 +113,5 @@
 沒有可用於較舊版本的版本資訊。
 
  
+
 

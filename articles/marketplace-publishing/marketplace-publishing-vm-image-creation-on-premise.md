@@ -134,10 +134,11 @@
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
 ### 使用適用於 Mac 和 Linux 的命令列工具上傳 VHD
-使用 [Linux 命令列工具](../virtual-machines/command-line-tools/), ，使用下列命令:
-        azure vm 映像建立 <image name> -位置 <Location of the data center> -OS Linux <LocationOfLocalVHD>
+使用 [Linux 命令列工具](../virtual-machines/command-line-tools/), ，使用下列命令 ︰
+        建立 azure vm 映像 <image name> -位置 <Location of the data center> Linux-作業系統 <LocationOfLocalVHD>
 
 ## 另請參閱
 - [建立 Marketplace 的虛擬機器映像](marketplace-publishing-vm-image-creation.md)
 - [設定 Azure PowerShell](marketplace-publishing-powershell-setup.md)
+
 

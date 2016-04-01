@@ -27,7 +27,7 @@
 
 * [HBase 教學課程：開始在 HDInsight 中搭配 Hadoop 使用 Apache HBase](hdinsight-hbase-tutorial-get-started.md)
  
-> [AZURE.NOTE] HBase (0.98.0 版) 只適用於 HDInsight 上的 HDInsight 3.1 叢集搭配使用 (以 Apache Hadoop 和 YARN 2.4.0)。 版本資訊，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能?][hdinsight-versions]
+> [AZURE.NOTE] HBase （0.98.0 版） 只適用於 HDInsight 上的 HDInsight 3.1 叢集搭配使用 （以 Apache Hadoop 和 YARN 2.4.0）。 版本資訊，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能？][hdinsight-versions]
 
 下列視訊顯示相同的內容：
 
@@ -36,12 +36,12 @@
 
 
 
-**先決條件**
+**必要條件**
 
 開始進行本 HBase 教學課程之前，您必須具備下列條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-- **工作站** 使用 Visual Studio 2013: 如需指示，請參閱 [安裝 Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)。
+- **工作站** 使用 Visual Studio 2013 ︰ 如需指示，請參閱 [安裝 Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)。
 
 ## 建立 HBase 資料表
 
@@ -151,7 +151,7 @@ HBase 包含數個將資料載入資料表的方法。  如需詳細資訊，請
 
         hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
 
-4. 執行下列命令，以將資料從 /example/data/storedatafileoutput 上傳至 HBase 資料表:
+4. 執行下列命令，以將資料從 /example/data/storedatafileoutput 上傳至 HBase 資料表 ︰
 
         hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
 
@@ -253,12 +253,12 @@ HDInsight 中的 HBase 隨附於 Web UI，以供監視叢集。 使用 Web UI，
 
         Install-Package Microsoft.HBase.Client
 
-5. 新增下列 **使用** 陳述式，在檔案頂端:
+5. 新增下列 **使用** 陳述式，在檔案頂端 ︰
 
         using Microsoft.HBase.Client;
         using org.apache.hadoop.hbase.rest.protobuf.generated;
 
-6. 取代 **Main** 函式取代為下列:
+6. 取代 **Main** 函式取代為下列 ︰
 
         static void Main(string[] args)
         {
@@ -337,7 +337,7 @@ HDInsight 中的 HBase 隨附於 Web UI，以供監視叢集。 使用 Web UI，
 HBase 是建置於 Hadoop 上的 Apache 開放原始碼 NoSQL 資料庫，可針對大量非結構化及半結構化資料，提供隨機存取功能和強大一致性。
 - [在 Azure 虛擬網路上建立 HBase 叢集][hdinsight-hbase-provision-vnet]:
 由於 HBase 叢集已與虛擬網路整合，因此能夠部署到與您應用程式相同的虛擬網路，讓應用程式得以和 HBase 直接通訊。
-- [在 HDInsight 中設定 HBase 複寫](hdinsight-hbase-geo-replication.md): 了解如何跨兩個 Azure 資料中心設定 HBase 複寫。
+- [在 HDInsight 中設定 HBase 複寫](hdinsight-hbase-geo-replication.md)︰ 了解如何跨兩個 Azure 資料中心設定 HBase 複寫。
 - [利用 HDInsight 中的 HBase 分析 Twitter 情緒][hbase-twitter-sentiment]:
 了解如何執行即時 [情感分析](http://en.wikipedia.org/wiki/Sentiment_analysis) 使用 HDInsight 之 Hadoop 叢集中的 HBase 針對巨量資料。
 
@@ -367,4 +367,5 @@ HBase 是建置於 Hadoop 上的 Apache 開放原始碼 NoSQL 資料庫，可針
 [img-hbase-shell]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
+
 

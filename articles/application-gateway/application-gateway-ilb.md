@@ -79,11 +79,11 @@
  
 值如下：
 
-- **後端伺服器集區:** 的後端伺服器的 IP 位址清單。 列出的 IP 位址應該屬於 VNet 子網路，或應該是公用 IP/VIP。 
-- **後端伺服器集區設定:** 每個集區有設定，例如連接埠、 通訊協定和 cookie 為基礎的親和性。 這些設定會繫結至集區，並套用至集區內所有伺服器。
-- **前端連接埠:** 此連接埠是在應用程式閘道上開啟的公用連接埠。 流量會達到此連接埠，然後重新導向至其中一個後端伺服器。
-- **接聽程式:** 接聽程式具有前端連接埠、 通訊協定 (Http 或 Https，這些都區分大小寫) 和 SSL 憑證名稱 (如果已設定 SSL 卸載)。 
-- **規則:** 規則繫結接聽程式和後端伺服器集區，並定義流量在達到特定接聽程式時會導向至哪個後端伺服器集區。 目前，只有 *基本* 規則受支援。  *基本* 規則是循環配置資源負載散發。
+- **後端伺服器集區 ︰** 的後端伺服器的 IP 位址清單。 列出的 IP 位址應該屬於 VNet 子網路，或應該是公用 IP/VIP。 
+- **後端伺服器集區設定 ︰** 每個集區有設定，例如連接埠、 通訊協定和 cookie 為基礎的親和性。 這些設定會繫結至集區，並套用至集區內所有伺服器。
+- **前端連接埠 ︰** 此連接埠是在應用程式閘道上開啟的公用連接埠。 流量會達到此連接埠，然後重新導向至其中一個後端伺服器。
+- **接聽程式 ︰** 接聽程式具有前端連接埠、 通訊協定 （Http 或 Https，這些都區分大小寫） 和 SSL 憑證名稱 （如果已設定 SSL 卸載）。 
+- **規則 ︰** 規則繫結接聽程式和後端伺服器集區，並定義流量在達到特定接聽程式時會導向至哪個後端伺服器集區。 目前，只有 *基本* 規則受支援。  *基本* 規則是循環配置資源負載散發。
 
 建立組態物件或使用組態 XML 檔案，即可建構組態。 
 若要使用組態 XML 檔案以建構組態，請使用下面的範例。
@@ -175,7 +175,7 @@
 設定閘道之後，請使用 `Start-AzureApplicationGateway` Cmdlet 來啟動閘道。 成功啟動閘道之後，會開始應用程式閘道計費。 
 
 
-**注意:**  `Start-AzureApplicationGateway` cmdlet 可能需要 15-20 分鐘才能完成。 
+**注意 ︰**  `Start-AzureApplicationGateway` cmdlet 可能需要 15-20 分鐘才能完成。 
    
     PS C:\> Start-AzureApplicationGateway AppGwTest 
 
@@ -189,7 +189,7 @@
 
 使用 `Get-AzureApplicationGateway` Cmdlet 來檢查閘道狀態。 如果 *Start-azureapplicationgateway* 在上一個步驟成功，則狀態應該是 *執行*, ，且 Vip 和 DnsName 應該具備有效的項目。 這個範例的第一行顯示 Cmdlet，後面接著輸出。 在此範例中，閘道正在執行，且準備好要接受流量。 
 
-**注意:** 應用程式閘道設定為接受設定的 ILB 端點 10.0.0.10 在此範例中的流量。
+**注意 ︰** 應用程式閘道設定為接受設定的 ILB 端點 10.0.0.10 在此範例中的流量。
 
     PS C:\> Get-AzureApplicationGateway AppGwTest 
 
@@ -212,4 +212,5 @@
 
 - [Azure 負載平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure 流量管理員](https://azure.microsoft.com/documentation/services/traffic-manager/)
+
 

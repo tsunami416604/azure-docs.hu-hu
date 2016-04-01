@@ -23,7 +23,7 @@
 > [AZURE.NOTE] 混合式連線功能的 Web 應用程式部分是僅適用於 [Azure 入口網站](https://portal.azure.com)。 若要在 BizTalk 服務中建立的連線，請參閱 [混合式連線](http://go.microsoft.com/fwlink/p/?LinkID=397274)。  
 
 ## 必要條件
-- Azure 訂用帳戶。 如需免費訂閱，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/)。 
+- Azure 訂閱。 如需免費訂閱，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/)。 
 
 - 若要透過混合式連線使用內部部署 SQL Server 或 SQL Server Express 資料庫，必須在靜態連接埠上啟用 TCP/IP。 建議在 SQL Server 上使用預設執行個體，因為其使用靜態連接埠 1433。 如需安裝及設定 SQL Server Express 以搭配混合式連線使用的資訊，請參閱 [從 Azure 網站使用混合式連線連接至內部部署 SQL Server](http://go.microsoft.com/fwlink/?LinkID=397979)。
 
@@ -41,21 +41,21 @@
 
 1. 中的左上角 [Azure 入口網站](https://portal.azure.com), ，按一下 [ **新增** > **Web + 行動** > **Web 應用程式**。
     
-    ![新的 web 應用程式][新網站]
+    ![新 Web 應用程式][NewWebsite]
     
 2. 在 **Web 應用程式** 刀鋒視窗中，提供 URL，然後按一下 [ **建立**。 
     
-    ![網站名稱][] WebsiteCreationBlade
+    ![Website name][WebsiteCreationBlade]
     
 3. 經過一段時間之後，Web 應用程式會建立，並顯示它的 Web 應用程式分頁。 此分頁是垂直捲動的儀表板，可供您管理網站。
     
-    !執行 [網站][] WebSiteRunningBlade
+    ![Website running][WebSiteRunningBlade]
     
 4. 若要確認網站是否已上線啟用，您可以按一下 **瀏覽** 圖示以顯示預設頁面。
     
-    ![按一下以查看您的 web 應用程式的瀏覽][瀏覽]
+    ![按一下 [瀏覽] 以查看您的 Web 應用程式][Browse]
     
-    ![預設 web 應用程式頁面][] DefaultWebSitePage
+    ![預設 Web 應用程式頁面][DefaultWebSitePage]
     
 接著，您將為 Web 應用程式建立混合式連線和 BizTalk 服務。
 
@@ -64,7 +64,7 @@
 
 1. 在您的 web 應用程式刀鋒視窗按一下 **所有設定** > **網路** > **設定混合式連接端點**。
     
-    ![混合式連線][] CreateHCHCIcon
+    ![Hybrid connections][CreateHCHCIcon]
     
 2. 在 [混合式連線] 分頁中，按一下 [ **新增**。
     
@@ -73,7 +73,7 @@
     
 3.  **新增混合式連線** 分頁隨即開啟。  由於這是您第一次的混合式連線， **新增混合式連線** 已預先選取選項，而 **建立混合式連線** 刀鋒視窗會開啟。
     
-    ![建立混合式連線][] TwinCreateHCBlades
+    ![Create a hybrid connection][TwinCreateHCBlades]
     
     在 **建立混合式連線分頁]**:
     - 如 **名稱**, ，提供連線的名稱。
@@ -84,16 +84,16 @@
 
 4.  **建立 BizTalk 服務** 分頁隨即開啟。 輸入 BizTalk 服務的名稱，然後按一下 **確定**。
     
-    ![建立 BizTalk 服務][] CreateHCCreateBTS
+    ![Create BizTalk service][CreateHCCreateBTS]
     
      **建立 BizTalk 服務** 分頁隨即關閉，而您會回到 **建立混合式連線** 刀鋒視窗。
     
 5. 在 [建立混合式連線] 分頁中，按一下 [ **確定**。 
     
-    ![按一下 [確定][] CreateBTScomplete
+    ![Click OK][CreateBTScomplete]
     
 6. 當程序完成時，入口網站中的通知區域會通知您已成功建立連線。
-    <!-TODO
+    < ！-TODO
 
     在這個步驟中，所有項目都會失敗。 我無法在狗食入口網站中建立 BizTalk 服務。 切換到傳統的入口網站
     (完整的入口網站) 並建立 BizTalk 服務，但似乎無法讓您連接它們 - 當您完成
@@ -103,11 +103,11 @@
     「適用於 API 版本 2014-06-01 的 Microsoft.BizTaIkServices」命名空間中找到。
     
     此錯誤表示找不到該類型，而不是該執行個體。
-    ![成功通知][] CreateHCSuccessNotification
+    ![Success notification][CreateHCSuccessNotification]
     -->
 7. 在 web 應用程式的刀鋒視窗中， **混合式連線** 圖示現在會顯示已建立的 1 個混合式連線。
     
-    ![建立一個混合式連線][] CreateHCOneConnectionCreated
+    ![One hybrid connection created][CreateHCOneConnectionCreated]
     
 至此，您已完成雲端混合式連線基礎結構的重要部分。 接下來，您將建立對應的內部部署部分。
 
@@ -116,47 +116,47 @@
 
 1. 在 web 應用程式的刀鋒視窗中，按一下 [ **所有設定** > **網路** > **設定混合式連接端點**。 
     
-    ![混合式連線] 圖示][] HCIcon
+    ![Hybrid connections icon][HCIcon]
     
 2. 在 **混合式連線** 刀鋒視窗中， **狀態** ，最近新增之端點所示的資料行 **未連接**。 請按一下連線加以設定。
     
-    ![未連線][] NotConnected
+    ![Not connected][NotConnected]
     
     [混合式連線] 分頁隨即開啟。
     
-    ![] NotConnectedBlade[] NotConnectedBlade
+    ![NotConnectedBlade][NotConnectedBlade]
     
 3. 在刀鋒視窗中，按一下 [ **接聽程式設定**。
     
-    ![按一下接聽程式設定][] ClickListenerSetup
+    ![Click Listener Setup][ClickListenerSetup]
     
 4.  **混合式連線屬性** 分頁隨即開啟。 在 **內部部署混合式連線管理員**, ，選擇 [ **按這裡安裝**。
     
-    ![按一下此處進行安裝][] ClickToInstallHCM
+    ![Click here to install][ClickToInstallHCM]
     
 5. 在應用程式執行安全性警告對話方塊中，選擇 **執行** 以繼續。
     
-    ![選擇要繼續執行][] ApplicationRunWarning
+    ![Choose Run to continue][ApplicationRunWarning]
     
 6.  在 **使用者帳戶控制** ] 對話方塊中，選擇 [ **是**。
     
-    ![選擇 [是][UAC]
+    ![Choose Yes][UAC]
     
 7. 系統會為您下載並安裝混合式連線管理員。 
     
-    ![安裝][] HCMInstalling
+    ![安裝][HCMInstalling]
     
 8. 安裝完成後，按一下 [ **關閉**。
     
-    ![按一下 [關閉][] HCMInstallComplete
+    ![Click Close][HCMInstallComplete]
     
     在 **混合式連線** 刀鋒視窗中， **狀態** 欄此時會顯示 **連線**。 
     
-    ![連線的狀態][] HCStatusConnected
+    ![Connected Status][HCStatusConnected]
 
 現在，您已完成混合式連線基礎結構，您可以使用它來建立混合式應用程式。 
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 <a name="NextSteps"></a>
 ## 後續步驟 ##
@@ -180,7 +180,7 @@
 [使用混合式連線從 Azure 行動服務連線到內部部署 SQL Server (第 9 頻道視訊)](http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Connect-to-an-on-premises-SQL-Server-from-Azure-Mobile-Services-using-Hybrid-Connections)
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- IMAGES -->
 [New]:./media/web-sites-hybrid-connection-get-started/B01New.png
@@ -207,3 +207,4 @@
 [HCMInstallComplete]:./media/web-sites-hybrid-connection-get-started/D09HCMInstallComplete.png
 [HCStatusConnected]:./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
  
+

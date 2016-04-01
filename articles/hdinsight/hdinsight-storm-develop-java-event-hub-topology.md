@@ -26,9 +26,9 @@ Azure 事件中樞可讓您從網站、應用程式和裝置處理巨量資料�
 
 * Apache Storm on HDInsight 叢集。 使用下列其中一個使用者入門文章以建立叢集：
 
-    - A [Linux 型叢集](hdinsight-apache-storm-tutorial-get-started-linux.md): 如果您想要使用 SSH 與 Linux、 Unix、 OS X 或 Windows 用戶端從叢集一起運作，請選取此選項
+    - A [Linux 型叢集](hdinsight-apache-storm-tutorial-get-started-linux.md)︰ 如果您想要使用 SSH 與 Linux、 Unix、 OS X 或 Windows 用戶端從叢集一起運作，請選取此選項
 
-    - A [windows 叢集](hdinsight-apache-storm-tutorial-get-started.md): 選取此選項，如果您想要使用 PowerShell 來處理從 Windows 用戶端叢集
+    - A [windows 叢集](hdinsight-apache-storm-tutorial-get-started.md)︰ 選取此選項，如果您想要使用 PowerShell 來處理從 Windows 用戶端叢集
 
     > [AZURE.NOTE] 兩個叢集類型之間的唯一差異是您是否使用 SSH 來提交至叢集或 web form 拓撲。
 
@@ -52,11 +52,11 @@ Azure 事件中樞可讓您從網站、應用程式和裝置處理巨量資料�
 
 ##了解範例
 
- [Hdinsight java-storm eventhub](https://github.com/Blackmist/hdinsight-java-storm-eventhub) 範例包含兩種拓撲:
+ [Hdinsight java-storm eventhub](https://github.com/Blackmist/hdinsight-java-storm-eventhub) 範例包含兩種拓撲 ︰
 
 __com.microsoft.example.EventHubWriter__ 隨機資料寫入 Azure 事件中樞。 資料由 Spout 產生，而且是隨機裝置識別碼和裝置值。 所以它是模擬會發出字串識別碼和數值的部分硬體。
 
-__com.microsoft.example.EventHubReader__ 讀取事件中樞 (EventHubWriter，所寫入的資料) 資料，並將它儲存到 HDFS (WASB 在此情況下，因為這是撰寫並測試使用 Azure HDInsight) 中，/devicedata 目錄中。
+__com.microsoft.example.EventHubReader__ 讀取事件中樞 （EventHubWriter，所寫入的資料） 資料，並將它儲存到 HDFS (WASB 在此情況下，因為這是撰寫並測試使用 Azure HDInsight) 中，/devicedata 目錄中。
 
 資料會在寫入事件中樞之前格式化為 JSON 文件，當讀取器讀取時會從 JSON 剖析，並且進入 Tuple。 JSON 格式如下所示：
 
@@ -240,8 +240,8 @@ HdfsBolt 一般是用來將資料儲存至 Hadoop 分散式檔案系統 HDFS。 
 
 這會定義專案所需的資源：
 
-- **EventHubs.properties**: 包含用來連接到 Azure 事件中樞資訊
-- **core-site.xml**: 包含 HDInsight 叢集所使用的 Azure 儲存體的相關資訊。
+- **EventHubs.properties**︰ 包含用來連接到 Azure 事件中樞資訊
+- **core-site.xml**︰ 包含 HDInsight 叢集所使用的 Azure 儲存體的相關資訊。
 
 您必須在這兩個項目中填入事件中樞與 HDInsight 叢集的相關資訊。
 
@@ -251,11 +251,11 @@ HdfsBolt 一般是用來將資料儲存至 Hadoop 分散式檔案系統 HDFS。 
 
 * **JAVA_HOME** -應該指向已安裝 Java 執行階段環境 (JRE) 的目錄。 例如，在 Unix 或 Linux 散發套件上，它的值應該類似 `/usr/lib/jvm/java-7-oracle` 在 Windows 中，它的值應該類似 `c:\Program Files (x86)\Java\jre1.7`
 
-* **路徑** -應該包含下列路徑:
+* **路徑** -應該包含下列路徑 ︰
 
-    * **JAVA_HOME** (或對等的路徑)
+    * **JAVA_HOME** （或對等的路徑）
 
-    * **JAVA_HOME\bin** (或對等的路徑)
+    * **JAVA_HOME\bin** （或對等的路徑）
 
     * 已安裝 Maven 的目錄
 
@@ -293,7 +293,7 @@ HdfsBolt 一般是用來將資料儲存至 Hadoop 分散式檔案系統 HDFS。 
 
 ## 下載和建置專案
 
-1. 從 GitHub 下載的專案: [hdinsight java-storm eventhub](https://github.com/Blackmist/hdinsight-java-storm-eventhub)。 您可以下載封裝為 zip 封存，或使用 [git](https://git-scm.com/) 複製專案在本機。
+1. 從 GitHub 下載的專案 ︰ [hdinsight java-storm eventhub](https://github.com/Blackmist/hdinsight-java-storm-eventhub)。 您可以下載封裝為 zip 封存，或使用 [git](https://git-scm.com/) 複製專案在本機。
 
 2. 使用下列命令以將專案中包含的封裝安裝至本機 Maven 儲存機制。 這樣會啟用事件中樞 Spout 和 Bolt，以及使用 HdfsBolt 寫入 Azure 儲存體 (WASB) 的能力。
 
@@ -339,7 +339,7 @@ HdfsBolt 一般是用來將資料儲存至 Hadoop 分散式檔案系統 HDFS。 
 
     此命令會將檔案複製到叢集上 SSH 使用者的主目錄中。
 
-1. 完成上傳檔案之後，使用 SSH 以連接到 HDInsight 叢集。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱:
+1. 完成上傳檔案之後，使用 SSH 以連接到 HDInsight 叢集。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱 ︰
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
@@ -347,7 +347,7 @@ HdfsBolt 一般是用來將資料儲存至 Hadoop 分散式檔案系統 HDFS。 
     >
     > `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
 
-    如果您要使用 PuTTY，請輸入 `CLUSTERNAME-ssh.azurehdinsight.net` 中 __主機名稱 (或 IP 位址)__ 欄位，，然後按一下 __開啟__ 連線。 系統會提示您輸入 SSH 帳戶名稱。
+    如果您要使用 PuTTY，請輸入 `CLUSTERNAME-ssh.azurehdinsight.net` 中 __主機名稱 （或 IP 位址）__ 欄位，，然後按一下 __開啟__ 連線。 系統會提示您輸入 SSH 帳戶名稱。
 
     > [AZURE.NOTE] 如果您使用 SSH 帳戶的密碼，系統會提示您輸入的密碼。 如果您搭配帳戶使用 SSH 金鑰，可能需要使用下列步驟來選取金鑰：
     >
@@ -409,15 +409,15 @@ HdfsBolt 一般是用來將資料儲存至 Hadoop 分散式檔案系統 HDFS。 
 
 5. 一旦啟動拓撲，使用表單來啟動 EventHubReader：
 
-    * __Jar 檔案__: 選取 EventHubExample-1.0-SNAPSHOT.jar 先前上傳
-    * __類別名稱__: 輸入 `com.microsoft.example.EventHubReader`
-    * __其他參數__: 輸入 `reader`
+    * __Jar 檔案__︰ 選取 EventHubExample-1.0-SNAPSHOT.jar 先前上傳
+    * __類別名稱__︰ 輸入 `com.microsoft.example.EventHubReader`
+    * __其他參數__︰ 輸入 `reader`
 
     按一下 [提交] 以啟動 EventHubReader 拓撲。
 
 6. 等候幾分鐘，讓產生的事件和儲存，然後以 Azure 儲存體，然後選取拓撲 __查詢主控台__ ] 索引標籤頂端的 __Storm 儀表板__ 頁面。
 
-7. 在 __查詢主控台__, ，請選取 __Hive 編輯器__ 和取代預設的 `select * from hivesampletable` 取代為下列:
+7. 在 __查詢主控台__, ，請選取 __Hive 編輯器__ 和取代預設的 `select * from hivesampletable` 取代為下列 ︰
 
         create external table devicedata (deviceid string, devicevalue int) row format delimited fields terminated by ',' stored as textfile location 'wasb:///devicedata/';
         select * from devicedata limit 10;
@@ -454,11 +454,11 @@ EventHubSpout 會定期將其狀態設定檢查點到 Zookeeper 節點，這會�
 
 此目錄中的指令碼有：
 
-* **stormmeta_import.cmd**: 從叢集預設儲存體容器將所有 Storm 中繼資料匯都入到 Zookeeper。
+* **stormmeta_import.cmd**︰ 從叢集預設儲存體容器將所有 Storm 中繼資料匯都入到 Zookeeper。
 
-* **stormmeta_export.cmd**: 將所有 Storm 中繼資料從 Zookeeper 都匯出到叢集預設儲存體容器。
+* **stormmeta_export.cmd**︰ 將所有 Storm 中繼資料從 Zookeeper 都匯出到叢集預設儲存體容器。
 
-* **stormmeta_delete.cmd**: 從 Zookeeper 刪除所有 Storm 中繼資料。
+* **stormmeta_delete.cmd**︰ 從 Zookeeper 刪除所有 Storm 中繼資料。
 
 匯出匯入可讓您在需要刪除叢集，但又想要在讓新的叢集回到線上時從中樞的目前位移繼續處理時，保存檢查點資料。
 
@@ -477,4 +477,5 @@ EventHubSpout 會定期將其狀態設定檢查點到 Zookeeper 節點，這會�
 ##後續步驟
 
 * [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)
+
 

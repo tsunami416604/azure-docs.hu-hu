@@ -9,3 +9,4 @@
 - 虛擬裝置會裝載於 Microsoft Azure 資料中心。
 
 
+

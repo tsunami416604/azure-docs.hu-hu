@@ -88,7 +88,7 @@
 
 如需 maxmemory 原則的詳細資訊，請參閱 [收回原則](http://redis.io/topics/lru-cache#eviction-policies)。
 
- **Maxmemory 保留** 設定會設定記憶體數量 (mb)，保留給非快取作業，例如在容錯移轉期間的複寫。 當具有高片段比率時，也可使用它。 設定此值可讓您在負載變動時具有更一致的 Redis 伺服器體驗。 對於頻繁寫入的工作負載，此值應該設定為更高的值。 當記憶體保留給這類作業時，無法用於儲存快取的資料。
+ **Maxmemory 保留** 設定會設定記憶體數量 （mb），保留給非快取作業，例如在容錯移轉期間的複寫。 當具有高片段比率時，也可使用它。 設定此值可讓您在負載變動時具有更一致的 Redis 伺服器體驗。 對於頻繁寫入的工作負載，此值應該設定為更高的值。 當記憶體保留給這類作業時，無法用於儲存快取的資料。
 
 >[AZURE.IMPORTANT]  **Maxmemory 保留** 設定僅適用於標準和高級快取。
 
@@ -108,7 +108,7 @@
 
 ![Redis 資料永續性](./media/cache-configure/redis-cache-persistence-settings.png)
 
-若要啟用 Redis 持續性，請按一下 [ **啟用** 啟用 RDB (Redis 資料庫) 備份。 若要停用 Redis 持續性，請按一下 [ **已停用**。
+若要啟用 Redis 持續性，請按一下 [ **啟用** 啟用 RDB （Redis 資料庫） 備份。 若要停用 Redis 持續性，請按一下 [ **已停用**。
 
 若要設定備份的時間間隔，請選取 **備份頻率** 從下拉式清單。 選項包括 **15 分鐘**, ，**30 分鐘內**, ，**60 分鐘**, ，**6 小時**, ，**12 小時**, ，和 **24 小時**。 在先前的備份作業成功完成後，此間隔便會開始倒數計時，時間過後就會起始新的備份。
 
@@ -120,7 +120,7 @@
 
 ## Redis 叢集大小
 
-按一下 [ **(預覽) Redis 叢集大小** 來新增或移除分區執行高階啟用叢集的快取。
+按一下 [ **（預覽） Redis 叢集大小** 來新增或移除分區執行高階啟用叢集的快取。
 
 >[AZURE.NOTE] 請注意，雖然 Azure Redis 快取進階層已經發行上市，Redis 叢集大小功能目前為預覽狀態。
 
@@ -152,7 +152,7 @@
 |設定|預設值|說明|
 |---|---|---|
 |資料庫|16|預設資料庫為 DB 0。您可以根據每個連線使用 connection.GetDataBase(dbid) 選取一個不同的資料庫，其中 dbid 是介於 0 與 15 之間的數字。|
-|maxclients|取決於定價層<sup>1</sup>|這是允許同時連線的用戶端數目上限。 一旦達到限制，Redis 將關閉所有新的連接，同時傳送「達到用戶端的數目上限」錯誤。|
+|maxclients|取決於定價層 <sup>1</sup>|這是允許同時連線的用戶端數目上限。 一旦達到限制，Redis 將關閉所有新的連接，同時傳送「達到用戶端的數目上限」錯誤。|
 |maxmemory-policy|volatile-lru|Maxmemory 原則可設定當達到 maxmemory (建立快取時所選取之快取提供項目的大小) 時 Redis 將如何選取要移除的具目。 Azure Redis 快取的預設設定為 volatile-lru，其會移除使用 LRU 演算法設定到期日的金鑰。 此設定可以在 Azure 入口網站中設定。 如需詳細資訊，請參閱 [maxmemory-policy 和 maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)。|
 |maxmemory-samples|3|LRU 和最小 TTL 演算法不是精確的演算法，而是近似的演算法 (為了節省記憶體)，因此您也可以選取要檢查的範例大小。 例如，預設為 Redis 將檢查三個金鑰，並挑選最近較少使用的金鑰。|
 |lua-time-limit|5,000|Lua 指令碼的最大執行時間 (以毫秒為單位)。 如果已到達最大執行時間，Redis 會記錄指令碼在最大允許的時間之後仍在執行中，並開始回覆查詢發生錯誤。|
@@ -210,4 +210,5 @@
 如已停用 Azure Redis 快取的 Redis 命令的清單，請參閱先前 [Azure Redis 快取中不支援的 Redis 命令](#redis-commands-not-supported-in-azure-redis-cache) 一節。 如需 Redis 命令的詳細資訊，請參閱 [http://redis.io/commands](http://redis.io/commands)。 
 
 ## 後續步驟
--   如需有關使用 Redis 命令的詳細資訊，請參閱 [如何執行 Redis 命令?](cache-faq.md#how-can-i-run-redis-commands)。
+-   如需有關使用 Redis 命令的詳細資訊，請參閱 [如何執行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)。
+

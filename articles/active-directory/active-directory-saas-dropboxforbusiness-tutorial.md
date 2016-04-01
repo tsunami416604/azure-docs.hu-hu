@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Dropbox for Business 中的測試租用戶
   
-完成本教學課程之後, 的 Azure AD 使用者您已指派給 Dropbox 商務才能夠使用單一登入應用程式在商務公司網站 (服務提供者起始登入)，或使用 Dropbox [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 的 Azure AD 使用者您已指派給 Dropbox 商務才能夠使用單一登入應用程式在商務公司網站 （服務提供者起始登入），或使用 Dropbox [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -82,7 +82,7 @@
 
     ![設定單一登入](./media/active-directory-saas-dropboxforbusiness-tutorial/IC749327.png "Configure single sign-on")
 
-3.  在 **設定應用程式 URL** 頁面上，執行下列步驟:
+3.  在 **設定應用程式 URL** 頁面上，執行下列步驟 ︰
 
      3.1. 登入您的 Dropbox 企業租用戶。 <br><br>  ![設定單一登入](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769509.png "Configure single sign-on")
 
@@ -101,7 +101,7 @@
 4. 在 **在 dropbox 企業版設定單一登入** 頁面上，按一下 **下載憑證**, ，然後儲存您的電腦上的憑證檔案。  <br><br>  ![設定單一登入](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769515.png "Configure single sign-on")
 
 
-5. 在您的 Dropbox 企業租用戶中 **單一登入** 區段 **驗證** 頁面上，執行下列步驟: <br><br>  ![設定單一登入](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769516.png "Configure single sign-on")
+5. 在您的 Dropbox 企業租用戶中 **單一登入** 區段 **驗證** 頁面上，執行下列步驟 ︰ <br><br>  ![設定單一登入](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769516.png "Configure single sign-on")
 
      5.1. 按一下 [ **需要**。
 
@@ -187,3 +187,4 @@
 
 * [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](active-directory-saas-tutorial-list.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](active-directory-appssoaccess-whatis.md)
+

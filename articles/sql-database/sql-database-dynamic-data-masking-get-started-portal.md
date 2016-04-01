@@ -34,7 +34,7 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 您在 Azure 傳統入口網站中的資料庫 [稽核與安全性] 索引標籤下，設定動態資料遮罩原則。
 
 
-> [AZURE.NOTE] 若要設定在 Azure 入口網站中的動態資料遮罩，請參閱 [開始使用 SQL Database 動態資料遮罩 (Azure 入口網站)](sql-database-dynamic-data-masking-get-started.md)。
+> [AZURE.NOTE] 若要設定在 Azure 入口網站中的動態資料遮罩，請參閱 [開始使用 SQL Database 動態資料遮罩 （Azure 入口網站）](sql-database-dynamic-data-masking-get-started.md)。
 
 
 ### 動態資料遮罩權限
@@ -51,12 +51,12 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 
 | 遮罩函數 | 遮罩邏輯 |
 |----------|---------------|
-| **預設值**  |**完整遮罩根據的資料類型的指定欄位**<br/><br/>• 使用 XXXX 或更少 x，如果欄位的大小小於 4 個字元的字串資料類型 (nchar、 ntext、 nvarchar)。<br/>• 針對數值資料類型 (bigint、 位元、 decimal、 int、 money、 數值、 smallint、 smallmoney、 tinyint、 float、 真實) 使用零值。<br/>• 針對日期/時間資料類型 (date、 datetime2、 datetime、 datetimeoffset、 smalldatetime、 時間) 使用 01-01-1900。<br/>• 對於 SQL 變數，目前型別的預設值使用。<br/>• 對於 XML 文件 <masked/> 用。<br/>• 使用空值的特殊資料型別 (時間戳記資料表、 hierarchyid、 GUID、 二進位、 影像、 varbinary spatial 類型)。
-| **信用卡** |**遮罩方法會公開指定欄位的末四碼** 並新增常數字串做為信用卡格式的前置詞卡<br/><br/>XXXX XXXX XXXX-1234|
+| **預設值**  |**根據指定欄位的資料型別進行完整遮罩**<br/><br/>• 使用 XXXX 或更少 x，如果欄位大小小於 4 個字元字串資料類型 （nchar、 ntext、 nvarchar）。<br/>• 針對數值資料類型 (bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real)，使用零值。<br/>• 使用 01-01-1900 日期/時間資料類型 （date、 datetime2、 datetime、 datetimeoffset、 smalldatetime、 時間）。<br/>• 對於 SQL 變數，會使用目前類型的預設值。<br/>• 對於 XML 文件 <masked/> 會使用。<br/>• 使用空值的特殊資料型別 (時間戳記資料表、 hierarchyid、 GUID、 二進位、 影像、 varbinary spatial 類型)。
+| **信用卡** |**遮罩方法會公開指定欄位的末四碼** 並新增常數字串做為信用卡格式的前置詞。<br/><br/>XXXX XXXX XXXX-1234|
 | **社會安全號碼** |**遮罩方法會公開指定欄位的末四碼** 並新增常數字串做為美國社會安全碼格式的前置詞。<br/><br/>XXX-XX-1234 |
-| **電子郵件** | **遮罩方法會公開 (expose) 的第一個字母並以 XXX.com 取代網域** 使用電子郵件地址格式的常數字串前置詞。<br/><br/>aXX@XXXX.com |
+| **電子郵件** | **遮罩方法會公開 （expose） 的第一個字母並以 XXX.com 取代網域** 使用電子郵件地址格式的常數字串前置詞。<br/><br/>aXX@XXXX.com |
 | **隨機數字** | **遮罩方法會產生一個隨機數字** 根據選取的界限與實際資料類型。 如果指定的邊界相等，則遮罩函數將是常數。<br/><br/>![瀏覽窗格](./media/sql-database-dynamic-data-masking-get-started-portal/1_DDM_Random_number.png) |
-| **自訂文字** | **遮罩方法會公開第一個和最後一個字元** ，並在中間新增自訂填補字串。 如果原始字串小於公開的前置詞和後置詞，將使用填補字串。<br/>前置詞 [填補] 尾碼<br/><br/>![瀏覽窗格](./media/sql-database-dynamic-data-masking-get-started-portal/2_DDM_Custom_text.png) |
+| **自訂文字** | **遮罩方法會公開第一個和最後一個字元** ，並在中間新增自訂填補字串。 如果原始字串小於公開的前置詞和後置詞，將會使用填補字串。<br/>前置詞 [填補] 後置詞<br/><br/>![瀏覽窗格](./media/sql-database-dynamic-data-masking-get-started-portal/2_DDM_Custom_text.png) |
 
 
 <a name="Anchor1"></a>
@@ -95,4 +95,5 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 ## 使用 REST API 為您的資料庫設定動態資料遮罩
 
 請參閱 [Azure SQL Database 的作業](https://msdn.microsoft.com/library/dn505719.aspx)。
+
 

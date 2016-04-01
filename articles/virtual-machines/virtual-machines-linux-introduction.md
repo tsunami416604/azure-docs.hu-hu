@@ -47,7 +47,7 @@
 
 Azure 提供輸入封包篩選器，可限制只能連線至 Azure 傳統入口網站中指定的連接埠。 預設允許的連接埠只有 SSH。 您可以在 Azure 傳統入口網站中設定端點，以開放存取 Linux 虛擬機器上的其他連接埠：
 
- - 請參閱: [如何設定虛擬機器的端點](virtual-machines-set-up-endpoints.md)
+ - 請參閱 ︰ [如何設定虛擬機器的端點](virtual-machines-set-up-endpoints.md)
 
 Azure 映像庫中的 Linux 映像無法進行 *iptables* 預設的防火牆。 如有需要，可設定防火牆來提供其他篩選。
 
@@ -83,7 +83,7 @@ Azure 可將現有虛擬機器的狀態擷取到映像中，供以後用來部�
 
 3. 按一下 [ *擷取* Azure 傳統入口網站或使用 Powershell 或 CLI 工具，將虛擬機器擷取為映像。
 
- - 請參閱: [如何擷取 Linux 虛擬機器作為範本使用](virtual-machines-linux-capture-image.md)
+ - 請參閱 ︰ [如何擷取 Linux 虛擬機器作為範本使用](virtual-machines-linux-capture-image.md)
 
 
 ## 連接磁碟
@@ -95,7 +95,8 @@ Azure 可將現有虛擬機器的狀態擷取到映像中，供以後用來部�
 
 >[AZURE.NOTE] 請注意，資源磁碟是 **暫存** 磁碟，並可能會刪除，並在 VM 重新開機時重新格式化。
 
-在 Linux 上，核心可能會將資料磁碟命名為 `/dev/sdc`，而使用者必須分割、格式化及掛接該資源。 涵蓋這部分的逐步教學課程中: [如何將資料磁碟連接至虛擬機器](virtual-machines-linux-how-to-attach-disk.md)。
+在 Linux 上，核心可能會將資料磁碟命名為 `/dev/sdc`，而使用者必須分割、格式化及掛接該資源。 涵蓋這部分的逐步教學課程中 ︰ [如何將資料磁碟連接至虛擬機器](virtual-machines-linux-how-to-attach-disk.md)。
 
- - **另請參閱:** [Linux 上設定軟體 RAID](virtual-machines-linux-configure-raid.md)
+ - **另請參閱 ︰** [Linux 上設定軟體 RAID](virtual-machines-linux-configure-raid.md)
+
 

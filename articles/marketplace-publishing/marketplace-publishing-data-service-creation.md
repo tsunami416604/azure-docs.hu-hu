@@ -23,7 +23,7 @@
 
 移至 [https://publish.windowsazure.com](https://publish.windowsazure.com. )
 
-**第一次登入發佈入口網站，使用相同的帳戶與您公司的賣方設定檔已在開發人員中心中註冊。**(稍後您可以在發佈入口網站中，將公司的任何員工新增為共同管理員)。 
+**如果是第一次登入發佈入口網站，請使用與貴公司在開發人員中心上註冊的賣方設定檔相同的帳戶**  (稍後您可以在發佈入口網站中，將公司的任何員工新增為共同管理員)。 
 
 按一下 [ **發行資料服務** 並排顯示，如果這是第一次登入發佈入口網站。
 
@@ -63,7 +63,7 @@ Azure Marketplace 服務層必須負責監視每個查詢所取用的交易量 (
 ### 建立方案。
 1. 按一下 [ **"+"** 旁邊 「 新增新的計劃 」。
 
-2. 選擇其中一個選項: **Unlimited** 或 **有限** 此計劃的使用方式。  如果有限制，則需要提供一個月內方案將允許取用的交易數。
+2. 選擇其中一個選項 ︰ **Unlimited** 或 **有限** 此計劃的使用方式。  如果有限制，則需要提供一個月內方案將允許取用的交易數。
 
     ![繪圖](media/marketplace-publishing-data-service-creation/step-5.1.png)  
 
@@ -146,4 +146,5 @@ Azure Marketplace 服務層必須負責監視每個查詢所取用的交易量 (
 
 [link-acct-creation]:marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]:https://publish.windowsazure.com
+
 

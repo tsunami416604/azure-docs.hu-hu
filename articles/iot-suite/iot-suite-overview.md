@@ -50,7 +50,7 @@ IoT 套件包括預先設定的解決方案，可讓您快速地開始使用，�
 
 ## 後續步驟
 
-若要深入了解 IoT 組件中預先設定的解決方案，請參閱 [什麼是 Azure IoT 預先設定的解決方案?][lnk-what-are-preconfig]
+若要深入了解 IoT 組件中預先設定的解決方案，請參閱 [什麼是 Azure IoT 預先設定的解決方案？][lnk-what-are-preconfig]
 
 若要開始使用其中一個預先設定的解決方案，請參閱 [入門 IoT 預先設定的解決方案][lnk-preconfig-start]。
 
@@ -68,3 +68,4 @@ IoT 套件包括預先設定的解決方案，可讓您快速地開始使用，�
 [lnk-what-are-preconfig]: iot-suite-what-are-preconfigured-solutions.md
 [lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
+

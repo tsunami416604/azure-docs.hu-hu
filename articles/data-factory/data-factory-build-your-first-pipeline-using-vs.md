@@ -44,7 +44,7 @@
 
 - Visual Studio 2013 或 Visual Studio 2015
 - 下載 Azure SDK for Visual Studio 2013 或 Visual Studio 2015。 瀏覽至 [Azure 下載頁面](http://azure.microsoft.com/downloads/) 按一下 **VS 2013** 或 **VS 2015** 中 **.NET** 一節。
-- 下載最新的 Azure Data Factory 外掛程式適用於 Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 如果您使用 Visual Studio 2013，您也可以更新外掛程式執行下列步驟: 在功能表上，按一下 [ **工具** ]-> [ **擴充功能和更新** ]-> [ **線上** ]-> [ **Visual Studio 元件庫** ]-> [ **Microsoft Azure Data Factory Tools for Visual Studio** ]-> [ **更新**。 
+- 下載最新的 Azure Data Factory 外掛程式適用於 Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 如果您使用 Visual Studio 2013，您也可以更新外掛程式執行下列步驟 ︰ 在功能表上，按一下 [ **工具** ]-> [ **擴充功能和更新** ]-> [ **線上** ]-> [ **Visual Studio 元件庫** ]-> [ **Microsoft Azure Data Factory Tools for Visual Studio** ]-> [ **更新**。 
     
     
 
@@ -81,7 +81,7 @@
 
 1. 在 **方案總管] 中**, ，以滑鼠右鍵按一下 **連結服務**, ，指向 **新增**, ，然後按一下 **新項目**。
 2. 選取 **HDInsight 隨選連結服務**, ，然後按一下 **新增**。 
-3. 取代 **JSON** 取代為下列:
+3. 取代 **JSON** 取代為下列 ︰
 
         {
           "name": "HDInsightOnDemandLinkedService",
@@ -112,7 +112,7 @@
 
 1. 在 **方案總管] 中**, ，以滑鼠右鍵按一下指向 **新增**, ，然後按一下 **新項目**。 
 2. 選取 **Azure Blob** 從清單中，然後按一下 **新增**。 
-3. 取代 **JSON** 在編輯器中使用下列: 在 JSON 片段中，您要建立資料集稱為 **AzureBlobOutput**, ，並指定將由 Hive 指令碼產生的資料結構。 此外，您指定的結果會儲存在稱為 blob 容器 **資料** 和該資料夾命名為 **partitioneddata**。  **可用性** 區段指定每月為基礎產生輸出資料集。
+3. 取代 **JSON** 在編輯器中使用下列 ︰ 在 JSON 片段中，您要建立資料集稱為 **AzureBlobOutput**, ，並指定將由 Hive 指令碼產生的資料結構。 此外，您指定的結果會儲存在稱為 blob 容器 **資料** 和該資料夾命名為 **partitioneddata**。  **可用性** 區段指定每月為基礎產生輸出資料集。
     
         {
           "name": "AzureBlobOutput",
@@ -181,7 +181,7 @@
     
     Hive 指令碼檔案中， **partitionweblogs.hql**, ，會儲存在 Azure 儲存體帳戶 (透過 scriptLinkedService，呼叫指定 **AzureStorageLinkedService1**)，且在容器中名為 **指令碼**。
 
-     **定義** 區段用來指定將會傳遞到 hive 指令碼作為 Hive 設定值 (例如 ${hiveconf: partitioneddata}) 的執行階段設定。
+     **定義** 區段用來指定將會傳遞到 hive 指令碼作為 Hive 設定值 （例如 ${hiveconf: partitioneddata}） 的執行階段設定。
 
      **啟動** 和 **結束** 管線屬性會指定管線作用期間。
 
@@ -241,6 +241,7 @@
  
 
 ## 後續步驟
-在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用 「 複製活動將資料從 Azure Blob 複製到 Azure SQL，請參閱 [教學課程: 複製資料，從 Azure blob 至 SQL Azure](data-factory-get-started.md)。
+在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用 「 複製活動將資料從 Azure Blob 複製到 Azure SQL，請參閱 [教學課程 ︰ 複製資料，從 Azure blob 至 SQL Azure](data-factory-get-started.md)。
   
+
 

@@ -26,7 +26,7 @@
 若要達成此目標：
 
 - 將您的資料流編碼成多位元速率 (彈性位元速率) 視訊串流 (這會處理品質與網路條件)，並 
-- 使用 Media Services [動態封裝](media-services-dynamic-packaging-overview.md) 動態地重新封裝您的資料流至不同的通訊協定 (這會處理不同裝置上的資料流處理的)。 媒體服務支援傳遞下列可調位元速率資料流技術：HTTP 即時資料流 (HLS)、Smooth Streaming、MPEG DASH 和 HDS (僅適用於 Adobe PrimeTime/Access licensees)。
+- 使用 Media Services [動態封裝](media-services-dynamic-packaging-overview.md) 動態地重新封裝您的資料流至不同的通訊協定 （這會處理不同裝置上的資料流處理的）。 媒體服務支援傳遞下列可調位元速率資料流技術：HTTP 即時資料流 (HLS)、Smooth Streaming、MPEG DASH 和 HDS (僅適用於 Adobe PrimeTime/Access licensees)。
 
 本主題提供內容傳遞概念的重要概觀。
 
@@ -47,10 +47,10 @@
 
 如要想提供 URL 給使用者，讓使用者可以利用這個 URL 來傳送或下載內容，請您先建立定位器來發行您的資產。  定位器提供一個登入點，讓使用者可以存取資產包含的檔案。 媒體服務支援兩種類型的定位器： 
 
-- **OnDemandOrigin** 定位器，用於串流媒體 (例如，MPEG DASH、 HLS 或 Smooth Streaming) 或漸進式下載檔案。
--  **SAS** (存取簽章) URL 定位器，用來將媒體檔案下載到本機電腦。 
+- **OnDemandOrigin** 定位器，用於串流媒體 （例如，MPEG DASH、 HLS 或 Smooth Streaming） 或漸進式下載檔案。
+-  **SAS** （存取簽章） URL 定位器，用來將媒體檔案下載到本機電腦。 
 
- **存取原則** 用來定義的權限 (例如讀取、 寫入和清單) 和用戶端可以存取特定資產多久的時間。 請注意，建立 OrDemandOrigin 定位器時，不應使用清單權限 (AccessPermissions.List)。
+ **存取原則** 用來定義的權限 （例如讀取、 寫入和清單） 和用戶端可以存取特定資產多久的時間。 請注意，建立 OrDemandOrigin 定位器時，不應使用清單權限 (AccessPermissions.List)。
 
 定位器有到期日。 使用入口網站來發佈您的資產時，建立的定位器會在 100 年後失效。 
 
@@ -189,3 +189,4 @@ A **串流端點** 代表可以內容直接傳遞給用戶端播放器應用程�
 
 [啟動儲存體金鑰之後更新媒體服務定位器](media-services-roll-storage-access-keys.md)
  
+

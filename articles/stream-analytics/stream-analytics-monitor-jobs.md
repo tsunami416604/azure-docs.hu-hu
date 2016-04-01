@@ -23,7 +23,7 @@
 
 ![工作監視 [工作] 索引標籤](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
 
-## 先決條件
+## 必要條件
 開始閱讀本文之前，您必須符合下列必要條件：
 
 - Visual Studio 2012 或 2013。
@@ -179,3 +179,4 @@
 - [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
+

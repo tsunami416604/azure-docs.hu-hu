@@ -52,3 +52,4 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 [Virtual Machines]: #tellmevm
 [Cloud Services]: cloud-services-choose-me.md
 
+

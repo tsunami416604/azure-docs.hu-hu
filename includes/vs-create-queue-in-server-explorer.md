@@ -9,3 +9,4 @@
 
 
 [Image1]: ./media/vs-create-queue-in-server-explorer/vs-storage-queues-create-in-server-explorer.png
+

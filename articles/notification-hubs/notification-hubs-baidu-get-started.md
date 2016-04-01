@@ -28,18 +28,18 @@
 
 本教學課程需要下列各項：
 
-+ Android SDK (我們假設您將使用 Eclipse)，您可以從下載 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 的站台</a>
++ Android SDK (我們假設您將使用 Eclipse)，您可從 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 網站</a>下載該套件
 + [行動服務 Android SDK]
-+ [百度推播 Android SDK]
++ [Baidu Push Android SDK]
 
 >[AZURE.NOTE] 若要完成本教學課程，您必須具有有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
 
 
 ##建立百度帳戶
 
-若要使用百度，您必須有百度帳戶。 如果您已經有了，登入 [百度入口網站]，請跳至下一個步驟。 否則請參閱下列指示建立百度帳戶。  
+若要使用百度，您必須有百度帳戶。 如果您已經有一個，登入 [Baidu portal] 直接跳到下一個步驟。 否則請參閱下列指示建立百度帳戶。  
 
-1. 移至 [百度入口網站] 並按一下 **录]** (**登入**) 連結。 按一下 [ **立即注册]** 啟動帳戶註冊程序。
+1. 移至 [Baidu portal] 按一下 **录]** (**登入**) 連結。 按一下 [ **立即注册]** 啟動帳戶註冊程序。
 
     ![][1]
 
@@ -55,15 +55,15 @@
 
     ![][4]
 
-一旦啟動的百度帳戶，登入 [百度入口網站]。
+一旦啟動的百度帳戶，登入 [Baidu portal]。
 
 ##註冊為百度開發人員
 
-1. 一旦您已登入 [百度入口網站]，按一下 [ **更 >>** (**詳細**)。
+1. 一旦您已登入 [Baidu portal], ，按一下 [ **更 >>** (**詳細**)。
 
     ![][5]
 
-2. 向下捲動 **站长与开发者服务 (網站管理員和開發人員服務)** 區段，然後按一下 **百度开放云** (**百度開啟雲端平台**)。
+2. 向下捲動 **站长与开发者服务 （網站管理員和開發人員服務）** 區段，然後按一下 **百度开放云** (**百度開啟雲端平台**)。
 
     ![][6]
 
@@ -93,7 +93,7 @@
 
 建立百度雲端推播專案時，您會收到應用程式識別碼、API 金鑰和秘密金鑰。
 
-1. 一旦您已登入 [百度入口網站]，按一下 [ **更 >>** (**詳細**)。
+1. 一旦您已登入 [Baidu portal], ，按一下 [ **更 >>** (**詳細**)。
 
     ![][5]
 
@@ -137,11 +137,11 @@
 
     ![][33]
 
-您會看到 [保存成功！]**** (**已成功儲存!**)訊息。
+您會看到 [保存成功！]**** (**已成功儲存 ！**)訊息。
 
 ##設定您的通知中樞
 
-1. 登入 [Azure 傳統入口網站]，然後再按一下 **+ 新增** 螢幕的底部。
+1. 登入 [Azure Classic Portal], ，然後按一下 [ **+ 新增** 螢幕的底部。
 
 2. 按一下 [ **應用程式服務**, ，按一下 [ **服務匯流排**, ，按一下 [ **通知中樞**, ，然後按一下 [ **快速建立**。
 
@@ -189,7 +189,7 @@
 
 5. 下載通知-中樞-0.4.jar 檔案從 **檔案** ] 索引標籤的 [通知-中心-Android-SDK 上 Bintray](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4)。 將檔案加入至 **libs** 您 Eclipse 專案，然後重新整理資料夾 *libs* 資料夾。
 
-6. 下載並解壓縮 [百度推播 Android SDK]，開啟 **libs** 資料夾，然後再將複製 **pushservice-x.y.z** jar 檔案和 **armeabi** & **mips** 資料夾中的 **libs** Android 應用程式的資料夾。
+6. 下載並解壓縮 [Baidu Push Android SDK], ，開啟 **libs** 資料夾，然後再將複製 **pushservice-x.y.z** jar 檔案和 **armeabi** & **mips** 資料夾中的 **libs** Android 應用程式的資料夾。
 
 7. 開啟 **AndroidManifest.xml** 檔案，您的 Android 專案，並新增 Baidu SDK 所需的權限。
 
@@ -266,7 +266,7 @@
 
     設定的值 **api 金鑰** 什麼您先前從百度雲端專案，與 **NotificationHubName** 與 Azure 傳統入口網站中的通知中心名稱和 **NotificationHubConnectionString** defaultlistensharedaccesssignature Azure 傳統入口網站。
 
-11. 加入新的類別稱為 **DemoApplication.java**, ，並加入下列程式碼:
+11. 加入新的類別稱為 **DemoApplication.java**, ，並加入下列程式碼 ︰
 
         import com.baidu.frontia.FrontiaApplication;
 
@@ -386,7 +386,7 @@
             }
         }
 
-13. 開啟 **MainActivity.java**, ，並將下列內容加入 **onCreate** 方法:
+13. 開啟 **MainActivity.java**, ，並將下列內容加入 **onCreate** 方法 ︰
 
             PushManager.startWork(getApplicationContext(),
                     PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
@@ -407,15 +407,15 @@
 
 在本教學課程中，為了簡單起見，我們只會在主控台應用程式 (而非後端服務) 中使用適用於通知中樞的 .NET SDK 傳送通知，示範如何測試您的用戶端應用程式。 我們建議 [使用通知中心來推播通知給使用者](notification-hubs-aspnet-backend-windows-dotnet-notify-users.md) 教學課程的下一個步驟，從 ASP.NET 後端傳送通知。 不過，下列方法可用來傳送通知：
 
-* **REST 介面**: 您可以使用您建立任何後端平台上支援通知 [REST 介面](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)。
+* **REST 介面**︰ 您可以使用您建立任何後端平台上支援通知 [REST 介面](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)。
 
-* **Microsoft Azure 通知中樞 SDK**: 在 Nuget Package Manager for Visual Studio 中，執行 [Install-package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+* **Microsoft Azure 通知中樞 SDK**︰ 在 Nuget Package Manager for Visual Studio 中，執行 [Install-package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 * **Node.js** : [如何從 Node.js 使用通知中樞](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure 行動服務**: 如需如何從整合通知中心之 Azure 行動服務後端傳送通知的範例，請參閱 「 開始使用行動服務中的推播通知 」 ([.NET 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md))。
+* **Azure 行動服務**︰ 如需如何從整合通知中心之 Azure 行動服務後端傳送通知的範例，請參閱 「 開始使用行動服務中的推播通知 」 ([.NET 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md))。
 
-* **Java / PHP**: 如需如何使用 REST Api 傳送通知的範例，請參閱 < 如何從 Java/PHP 使用通知中樞 」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
+* **Java / PHP**︰ 如需如何使用 REST Api 傳送通知的範例，請參閱 < 如何從 Java/PHP 使用通知中樞 」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
 
 ##(選擇性) 從 .NET 主控台應用程式傳送通知。
 
@@ -425,15 +425,15 @@
 
     ![][30]
 
-2. 在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令:
+2. 在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令 ︰
 
         Install-Package Microsoft.Azure.NotificationHubs
 
-    這會加入到使用 Azure 通知中心 SDK 參考 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification 中樞 NuGet 封裝</a>.
+    這會使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 封裝</a> 加入對 Azure 通知中樞 SDK 的參考。
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
-3. 開啟檔案 **Program.cs** ，並新增下列 using 陳述式:
+3. 開啟檔案 **Program.cs** ，並新增下列 using 陳述式 ︰
 
         using Microsoft.Azure.NotificationHubs;
 
@@ -446,7 +446,7 @@
             var result = await hub.SendBaiduNativeNotificationAsync(message);
         }
 
-5. 新增以下幾行，在您 **Main** 方法:
+5. 新增以下幾行，在您 **Main** 方法 ︰
 
          SendNotificationAsync();
          Console.ReadLine();
@@ -502,4 +502,5 @@
 [Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
 [Azure Classic Portal]: https://manage.windowsazure.com/
 [Baidu portal]: http://www.baidu.com/
+
 

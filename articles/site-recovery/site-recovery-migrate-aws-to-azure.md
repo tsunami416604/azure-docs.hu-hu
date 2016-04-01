@@ -31,10 +31,10 @@ Azure Site Recovery 可在許多部署中協調虛擬機器的複寫、容錯移
 
 - **設定伺服器**: Azure 虛擬機器，做為設定伺服器。 組態伺服器會協調內部部署機器與 Azure 伺服器之間的通訊。
 - **主要目標伺服器**: Azure 虛擬機器，做為主要目標伺服器。 這部伺服器會接收並保留受保護機器中的複寫資料。
-- **處理序伺服器**: 執行 Windows Server 2012 R2 的虛擬機器。 受保護的虛擬機器會將複寫資料傳送至這部伺服器。
-- **EC2 VM 執行個體**: 您想要移轉，然後再保護的執行個體。
+- **處理序伺服器**︰ 執行 Windows Server 2012 R2 的虛擬機器。 受保護的虛擬機器會將複寫資料傳送至這部伺服器。
+- **EC2 VM 執行個體**︰ 您想要移轉，然後再保護的執行個體。
 
-- 深入了解這些元件在 [我需要什麼?](site-recovery-vmware-to-azure.md#what-do-i-need)
+- 深入了解這些元件在 [我需要什麼？](site-recovery-vmware-to-azure.md#what-do-i-need)
 - 您也應該閱讀的指導方針上 [容量規劃](site-recovery-vmware-to-azure.md#capacity-planning) ，並確定您擁有所有 [部署必要條件](site-recovery-vmware-to-azure.md#before-you-start) 就地啟動之前。
 
 ## 部署步驟
@@ -72,6 +72,7 @@ Azure Site Recovery 可在許多部署中協調虛擬機器的複寫、容錯移
 ## 後續步驟
 
 張貼任何註解或在問題 [站台復原論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)
+
 
 
 

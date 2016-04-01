@@ -33,7 +33,7 @@
 
 本教學課程需要下列各項：
 
-+ [Visual Studio 2012 Express for Windows Phone]，或更新版本。
++ [Visual Studio 2012 Express for Windows Phone], 或更新版本。
 
 完成本教學課程是 Windows Phone 8 應用程式所有其他通知中樞教學課程的先決條件。
 
@@ -44,7 +44,7 @@
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="7">
-<li><p>按一下 <b>設定</b> 索引標籤，然後按一下 <b>啟用未驗證的推播通知</b> 核取方塊 <b>Windows Phone 通知設定</b> 一節中。</p>
+<li><p>按一下 [ <b>設定</b> 索引標籤，然後再按一下 <b>啟用未經驗證的推播通知</b> 中核取方塊 <b>Windows Phone 通知設定</b> 一節。</p>
 </li>
 </ol>
 
@@ -72,14 +72,14 @@
 
     ![][20]
 
-    這會下載、 安裝並新增適用於 Windows 的 Azure 訊息程式庫的參考使用 <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet 封裝</a>.
+    這會使用 <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet 封裝</a>來下載、安裝並新增適用於 Windows 的 Azure 傳訊程式庫參考。
 
 4. 開啟 App.xaml.cs 檔案，並新增下列 `using` 陳述式：
 
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
 
-5. 在頂端加入下列程式碼 **Application_Launching** App.xaml.cs 中的方法:
+5. 在頂端加入下列程式碼 **Application_Launching** App.xaml.cs 中的方法 ︰
 
         var channel = HttpNotificationChannel.Find("MyPushChannel");
         if (channel == null)
@@ -132,17 +132,17 @@
 
     這會顯示 [Package Manager Console]。
 
-5.  在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令:
+5.  在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令 ︰
 
         Install-Package Microsoft.Azure.NotificationHubs
 
-    這會加入到使用 Azure 通知中心 SDK 參考 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification 中樞 NuGet 封裝</a>.
+    這會使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 封裝</a> 加入對 Azure 通知中樞 SDK 的參考。
 
 6. 開啟 Program.cs 檔案，並新增下列 `using` 陳述式：
 
         using Microsoft.Azure.NotificationHubs;
 
-6. 在 **程式** 類別中，新增下列方法:
+6. 在 **程式** 類別中，新增下列方法 ︰
 
         private static async void SendNotificationAsync()
         {
@@ -161,7 +161,7 @@
 
     >[AZURE.NOTE]請確定您使用的連接字串具有 **完整** 存取權，而非 **接聽** 存取。 接聽存取權的字串沒有傳送通知的權限。
 
-4. 加入下列這一行中的您 **Main** 方法:
+4. 加入下列這一行中的您 **Main** 方法 ︰
 
          SendNotificationAsync();
          Console.ReadLine();
@@ -170,11 +170,11 @@
 
     您將會收到快顯通知。 點選快顯通知即可載入 app。
 
-您可以在 [快顯目錄] 中找到所有可能的裝載和 MSDN 上的 [並排顯示類別目錄] 主題。
+您可以找到所有可能的裝載中 [toast catalog] 和 [tile catalog] MSDN 上的主題。
 
 ##後續步驟
 
-在此簡單範例中，您廣播通知到您的所有 Windows Phone 8 裝置。 為了鎖定特定使用者，請參閱本教學課程 [使用通知中心來推播通知給使用者]。 如果您想要按興趣群組分隔使用者，您可以參閱 [使用通知中心傳送即時新聞]。 進一步了解如何使用通知中心，在 [通知中心指引]。
+在此簡單範例中，您廣播通知到您的所有 Windows Phone 8 裝置。 若要鎖定特定使用者，請參閱本教學課程 [Use Notification Hubs to push notifications to users]。 如果您想要按興趣群組分隔使用者，您可以閱讀 [Use Notification Hubs to send breaking news]。 深入了解如何使用通知中心 [Notification Hubs Guidance]。
 
 
 
@@ -206,4 +206,5 @@
 [toast catalog]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [tile catalog]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hub - WP Silverlight tutorial]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
+
 

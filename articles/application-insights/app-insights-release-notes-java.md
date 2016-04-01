@@ -16,11 +16,11 @@
 
 # Java 適用的 Application Insights SDK 的版本資訊
 
- [JAVA 應用程式洞悉 SDK](app-insights-java-get-started.md) 傳送關於您即時的應用程式的 telemetry [應用程式了解](http://azure.microsoft.com/services/application-insights/), ，您可以在此分析其使用情況和效能。
+ [Application Insights SDK for Java](app-insights-java-get-started.md) 傳送有關您即時的應用程式遙測 [Application Insights](http://azure.microsoft.com/services/application-insights/), ，您可以在此分析它的使用狀況與效能。
 
 #### 若要在應用程式中安裝 SDK
 
-請參閱 [好跚始 JAVA SDK](app-insights-java-get-started.md)。
+請參閱 [開始使用 SDK for Java](app-insights-java-get-started.md)。
 
 #### 升級至最新的 SDK
 
@@ -33,7 +33,7 @@
 
 *否則*
 
-* 下載最新版的 [Azure 程式庫的 JAVA](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) ，並取代舊的。
+* 下載最新版 [Azure Libraries for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) 取代舊的版本。
 
 比較舊的和新的 ApplicationInsights.xml。 您看到的變更許多是因為我們新增與移除了模組。 恢復您所做的任何自訂。
 
@@ -44,7 +44,7 @@
 
 
 ## 版本 1.0.1
--  [JAVA 代理程式](app-insights-java-agent.md) 會收集有關下列的相依性資訊:
+-  [Java 代理程式](app-insights-java-agent.md) 會收集下列相關的相依性資訊 ︰
     - 透過 HttpClient、OkHttp 和 RestTemplate (Spring) 進行的 HTTP 呼叫。
     - 透過 Jedis 用戶端對 Redis 進行的呼叫。 傳遞可設定的閾值時，SDK 也將提取呼叫引數。
     - 使用 Oracle DB 和 Apache Derby DB 用戶端對 JDBC 的呼叫。
@@ -72,4 +72,5 @@
 - 支援從 32 位元 Windows 電腦收集效能計數器。
 - 支援使用新的 ```trackDependency``` 方法 API 手動追蹤相依性。
 - 能夠藉由將 ```SyntheticSource``` 屬性加入至報告項目，將遙測項目標記為綜合。
+
 

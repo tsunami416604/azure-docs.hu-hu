@@ -39,13 +39,13 @@
 
 2. 從 **檔案** ] 功能表上，按一下 [ **新增**, ，然後按一下 [ **專案**。
 
-3. 從 **新的專案**, ，輸入或選取下列值:
+3. 從 **新的專案**, ，輸入或選取下列值 ︰
 
-    | 屬性 | 值                       |
-    |----------|-----------------------------|
-    | 類別 | 範本/Visual C#/Windows |
-    | 範本 | 主控台應用程式         |
-    | 名稱     | CreateADLApplication        |
+  	| 屬性 | 值                       |
+  	|----------|-----------------------------|
+  	| 類別 | 範本/Visual C#/Windows |
+  	| 範本 | 主控台應用程式         |
+  	| 名稱     | CreateADLApplication        |
 
 4. 按一下 [ **確定** 以建立專案。
 
@@ -211,7 +211,7 @@
 
 8. 建置並執行應用程式。 請依照提示來執行並完成應用程式。
 
-## 建立資料湖存放區帳戶的其他方式
+## 其他建立資料湖存放區帳戶的方法
 
 - [使用入口網站開始使用資料湖存放區](data-lake-store-get-started-portal.md)
 - [使用 PowerShell 開始使用資料湖存放區](data-lake-store-get-started-powershell.md)
@@ -221,7 +221,8 @@
 ## 後續步驟
 
 - [保護資料湖存放區中的資料](data-lake-store-secure-data.md)
-- [搭配資料湖存放區使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)
+- [搭配 Data Lake 存放區使用 Azure Data Lake 分析](data-lake-analytics-get-started-portal.md)
 - [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
+
 
 

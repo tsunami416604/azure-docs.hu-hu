@@ -59,9 +59,9 @@ SQL 連接器提供下列觸發程序和動作：
 資料表 |否 |列出可由連接器更新的資料庫資料表。 例如，輸入 *OrdersTable* 或 *EmployeeTable*。 如果不輸入任何資料表，則可以使用所有資料表。 需要有效的資料表和/或預存程序，才能使用此連接器做為動作。
 預存程序 |否 |輸入可由連接器呼叫的現有預存程序。 例如，輸入 *sp_IsEmployeeEligible* 或 *sp_CalculateOrderDiscount*。 需要有效的資料表和/或預存程序，才能使用此連接器做為動作。
 資料可用查詢 |觸發程序支援 |若要判斷是否有任何資料可供輪詢 SQL Server 資料庫資料表的 SQL 陳述式。 這應該會傳回數值，代表可用的資料的資料列數目。 範例：SELECT COUNT(*) from table_name。
-輪詢資料查詢 | 觸發程序支援 | SQL Server 資料庫資料表的 SQL 陳述式。您可以輸入任意數目的 SQL 陳述式，以分號隔開。此陳述式以交易式方式執行，而且只有在資料安全地儲存在邏輯應用程式中時才會認可。範例: SELECT * FROM table_name;DELETE FROM table_name。<br/><br/>**請注意**<br/>您必須提供輪詢陳述式，避免因為無限迴圈，刪除、 移動或更新選取的資料，以確保該相同的資料不會重複輪詢一次。
+輪詢資料查詢 | 觸發程序支援 | SQL Server 資料庫資料表的 SQL 陳述式。您可以輸入任意數目的 SQL 陳述式，以分號隔開。此陳述式以交易式方式執行，而且只有在資料安全地儲存在邏輯應用程式中時才會認可。範例 ︰ SELECT * FROM table_name;DELETE FROM table_name。<br/><br/>**請注意**<br/>您必須提供輪詢陳述式，避免因為刪除、 移動或更新選取的資料，以確保該相同的資料不會重複輪詢無限迴圈。
 
-5. 完成時，[封裝設定看起來如下所示:  
+5. 完成時，[封裝設定看起來如下所示 ︰  
 ![][1]  
 
 6. 選取 **建立**。 
@@ -90,13 +90,13 @@ SQL 連接器提供下列觸發程序和動作：
         (SELECT Id FROM [Order] WHERE OrderStatus = 'ProcessedForCollection' ORDER BY Id DESC)
 
 ### 加入觸發程序
-1. 建立或編輯邏輯應用程式時，請選取您建立的連接器做為觸發程序。 這樣會列出可用的觸發程序: **輪詢資料 (JSON)** 和 **輪詢資料 (XML)**:  
+1. 建立或編輯邏輯應用程式時，請選取您建立的連接器做為觸發程序。 這樣會列出可用的觸發程序 ︰ **輪詢資料 (JSON)** 和 **輪詢資料 (XML)**:  
 ![][5]
 
-2. 選取 **輪詢資料 (JSON)** 觸發程序中，輸入頻率，然後按一下 ✓:  
+2. 選取 **輪詢資料 (JSON)** 觸發程序中，輸入頻率，然後按一下 ✓ ︰  
 ![][6]
 
-3. 現在，觸發程序在邏輯應用程式中顯示為已設定。 觸發程序的輸出會顯示，並可用來當做輸入任何後續的動作:  
+3. 現在，觸發程序在邏輯應用程式中顯示為已設定。 觸發程序的輸出會顯示，並可用來當做輸入任何後續的動作 ︰  
 ![][7]
 
 ## 使用連接器做為動作
@@ -107,13 +107,13 @@ SQL 連接器提供下列觸發程序和動作：
 1. 在觸發程序之後 (或選擇 [手動執行此邏輯])，從資源庫加入您建立的 SQL 連接器。 選取其中一個 「 插入 」 動作，例如 *插入到 TempEmployeeDetails (JSON)*:  
 ![][8]
 
-2. 輸入輸入的值的記錄插入，然後按一下 ✓:  
+2. 輸入輸入的值的記錄插入，然後按一下 ✓ ︰  
 ![][9]
 
 3. 從資源庫選取您建立的同一個 SQL 連接器。 做為動作中，選取 「 更新 」 動作的同一個資料表，例如 *Update EmployeeDetails*:  
 ![][11]
 
-4. 輸入更新動作中，輸入的值，然後按一下 ✓:  
+4. 輸入更新動作中，輸入的值，然後按一下 ✓ ︰  
 ![][12]
 
 您可以在所輪詢的資料表中加入新記錄，以測試邏輯應用程式。
@@ -122,8 +122,8 @@ SQL 連接器提供下列觸發程序和動作：
 
 SQL 查詢 | 支援 | 不支援
 --- | --- | ---
-Where 子句 | <ul><li>運算子:，; = <>、 <、 < =、 >、 > = 和喜歡</li><li>可以結合多個 sub 條件 '(' 和')'</li><li>字串常值，日期時間 (以括以單引號括住)、 數字 (應該只包含數字字元)</li><li>絕對格式應該是二進位運算式，例如 ((operand operator operand) 和 (或) (運算元運算子的運算元)) *</li></ul> | <ul><li>運算子: Between、 IN</li><li>所有的內建功能，例如 add ()、 max () now ()、 POWER() 等等</li><li>數學運算子喜歡 *、-、 + 等</li><li>使用字串串連 +。</li><li>所有聯結</li><li>為 NULL，且不是 Null</li><li>具有非數值字元，例如十六進位數字的任何數字</li></ul>
-欄位 (在 Select 查詢) | <ul><li>以逗號分隔的有效資料行名稱。 任何資料表名稱前置詞不允許 (一次一個資料表上的連接器運作)。</li><li>名稱可以使用逸出 '[' 和']'</li></ul> | <ul><li>例如 TOP、 DISTINCT 等關鍵字</li><li>別名，例如 Street + City + Zip AS 位址</li><li>所有內建函數，例如 add ()、 max () now ()、 POWER()，等等</li><li>數學運算子，例如 *、-、 + 等</li><li>使用字串串連 +</li></ul>
+Where 子句 | <ul><li>運算子:，; = <>、 <、 < =、 >、 > = 和喜歡</li><li>可以結合多個 sub 條件 '（' 和'）'</li><li>字串常值，日期時間 （以括以單引號括住）、 數字 （應該只包含數字字元）</li><li>絕對格式應該是二進位運算式，例如 ((operand operator operand) 和 （或) （運算元運算子的運算元）) *</li></ul> | <ul><li>運算子 ︰ Between、 IN</li><li>所有的內建功能，例如 add （）、 max （） now （）、 POWER() 等等</li><li>數學運算子喜歡 *、-、 + 等</li><li>使用字串串連 +。</li><li>所有聯結</li><li>為 NULL，且不是 Null</li><li>具有非數值字元，例如十六進位數字的任何數字</li></ul>
+欄位 （在 Select 查詢） | <ul><li>以逗號分隔的有效資料行名稱。 任何資料表名稱前置詞不允許 （一次一個資料表上的連接器運作）。</li><li>名稱可以使用逸出 '[' 和']'</li></ul> | <ul><li>例如 TOP、 DISTINCT 等關鍵字</li><li>別名，例如 Street + City + Zip AS 位址</li><li>所有內建函數，例如 add （）、 max （） now （）、 POWER()，等等</li><li>數學運算子，例如 *、-、 + 等</li><li>使用字串串連 +</li></ul>
 
 #### 秘訣
 
@@ -137,13 +137,13 @@ Where 子句 | <ul><li>運算子:，; = <>、 <、 < =、 >、 > = 和喜歡</li
 
 App Service 使用混合式組態管理員來安全地連線到內部部署系統。 如果您的連接器使用內部部署 SQL Server，則需要混合式連線管理員。
 
-> [AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+> [AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 請參閱 [使用混合式連線管理員](app-service-logic-hybrid-connection-manager.md)。
 
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -160,4 +160,5 @@ App Service 使用混合式組態管理員來安全地連線到內部部署系�
 [10]: ./media/app-service-logic-connector-sql/LogicApp6.png
 [11]: ./media/app-service-logic-connector-sql/LogicApp7.png
 [12]: ./media/app-service-logic-connector-sql/LogicApp8.png
+
 

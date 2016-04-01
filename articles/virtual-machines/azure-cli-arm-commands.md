@@ -37,7 +37,7 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 
 如同 [Azure 服務管理模式](../virtual-machines-command-line-tools.md), ，Azure CLI 資源管理員模式可讓您在命令列以命令方式建立資源的命令。 例如，若您輸入 `azure group create <groupname> <location>` 表示要求 Azure 建立資源群組，若輸入 `azure group deployment create <resourcegroup> <deploymentname>` 表示指示 Azure 建立任意數目的項目部署，並將其放在群組中。 因為每一種資源類型皆具有命令式指令，您可以將他們鏈結在一起以建立相當複雜的部署。
 
-不過，使用的資源群組 _範本_ 說明資源群組是多項功能，以宣告式方法可讓您基於 (幾乎) 任何用途自動進行 (幾乎) 任意資源數目的複雜部署。 使用範本時，唯一的命令式指令是進行部署。 如範本、 資源及資源群組的一般概觀，請參閱 [Azure 資源群組概觀](../resource-group-overview.md)。  
+不過，使用的資源群組 _範本_ 說明資源群組是多項功能，以宣告式方法可讓您基於 （幾乎） 任何用途自動進行 （幾乎） 任意資源數目的複雜部署。 使用範本時，唯一的命令式指令是進行部署。 如範本、 資源及資源群組的一般概觀，請參閱 [Azure 資源群組概觀](../resource-group-overview.md)。  
 
 ##使用需求
 
@@ -1883,4 +1883,5 @@ Azure 資源管理員可讓您建立資源群組，包含虛擬機器、網站�
 **用來停用叢集 HTTP 存取的命令**
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
+
 

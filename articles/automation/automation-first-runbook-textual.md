@@ -54,7 +54,7 @@
 
 1. 我們的 runbook 是目前空的只需要 *工作流程* 關鍵字，我們的 runbook 和大括號，以包封整個工作流程的名稱。 <br>
 ![Runbook 控制](media/automation-first-runbook-textual/empty-runbook.png)
-2. 型別 *Write-output"Hello World."* 括號之間。 <br>
+2. 型別 *Write-output"Hello World"。* 之間的大括號。 <br>
 ![Hello world](media/automation-first-runbook-textual/hello-world.png)
 3.   按一下以儲存 runbook **儲存**。<br>
 ![儲存 runbook](media/automation-first-runbook-textual/runbook-edit-toolbar-save.png)
@@ -110,7 +110,7 @@
 3.  在下一行中，輸入 *Add-azureaccount-認證 $Credential*。 <br>
 ![驗證](media/automation-first-runbook-textual/authentication.png) 
 3. 按一下 [ **測試窗格** ，以便我們可以測試 runbook。
-10. 按一下 [ **啟動** 以開始測試。  當它完成時，您應該會收到類似下列輸出，它會傳回認證中的使用者資訊。  這可確認認證無效。<br>
+10. 按一下 [ **啟動** 以開始測試。  當它完成時，您應該會收到類似下列輸出，它會傳回認證中的使用者資訊。  這可確認認證有效。<br>
 ![驗證](media/automation-first-runbook-textual/authentication-test.png) 
 
 ## 步驟 6 - 加入程式碼以啟動虛擬機器
@@ -143,3 +143,4 @@
 ## 相關文章
 
 - [我的第一個圖形化 Runbook](automation-first-runbook-graphical.md)
+

@@ -8,13 +8,13 @@
     editor=""/>
 
 <tags
-    ms.service="backup 」
-    ms.workload= 「 儲存體的備份復原的 」
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="11/26/2015 」
-    ms.author="aashishr"，"giridham";「 jimpark 」 / >
+    ms.date="11/26/2015"
+    ms.author="aashishr", "giridham"; "jimpark"/>
 
 
 # 使用 DPM 進行 SQL Server 工作負載的 Azure 備份
@@ -46,7 +46,7 @@
 
     ![選取保護群組類型 - 伺服器](./media/backup-azure-backup-sql/pg-servers.png)
 
-5. 展開要備份之資料庫所在的 SQL Server 電腦。 DPM 顯示可從該伺服器備份的各種資料來源。 展開 **所有 SQL 共用** ，然後選取要備份資料庫 (在此情況下我們選取 ReportServer$ MSDPM2012 和 ReportServer$ MSDPM2012TempDB)。 按一下 [ **下一步**。
+5. 展開要備份之資料庫所在的 SQL Server 電腦。 DPM 顯示可從該伺服器備份的各種資料來源。 展開 **所有 SQL 共用** ，然後選取要備份資料庫 （在此情況下我們選取 ReportServer$ MSDPM2012 和 ReportServer$ MSDPM2012TempDB）。 按一下 [ **下一步**。
 
     您會發現類似以下的畫面。
 
@@ -62,7 +62,7 @@
 
     ![短期目標](./media/backup-azure-backup-sql/pg-shortterm.png)
 
-    >[AZURE.NOTE] 在下午 8:00 (根據螢幕上輸入) 的備份點會建立每一天前一天的下午 8:00 備份點從傳輸已修改的資料。 此程序稱為 **快速完整備份**。 雖然交易記錄檔每隔 15 分鐘同步處理一次，但如果有需要在下午 9:00 復原資料庫，則此點可藉由重新執行最後一個快速完整備份點 (在本例中為下午 8:00) 的記錄檔來建立。
+    >[AZURE.NOTE] 在下午 8:00 （根據螢幕上輸入） 的備份點會建立每一天前一天的下午 8:00 備份點從傳輸已修改的資料。 此程序稱為 **快速完整備份**。 雖然交易記錄檔每隔 15 分鐘同步處理一次，但如果有需要在下午 9:00 復原資料庫，則此點可藉由重新執行最後一個快速完整備份點 (在本例中為下午 8:00) 的記錄檔來建立。
 
 8. 按一下 [ **下一步**
 
@@ -100,7 +100,7 @@
 
     >[AZURE.NOTE] 它是很好的做法，以便快速復原短期磁碟上有幾個復原點。 這稱之為「操作復原」。 Azure 可做為具有較高 SLA 和保證可用性的良好離站位置。
 
-    **最佳作法**: 請確定排程 Azure 備份時，會使用 DPM 的本機磁碟備份完成後。 這可讓最新的磁碟備份複製到 Azure。
+    **最佳作法**︰ 請確定排程 Azure 備份時，會使用 DPM 的本機磁碟備份完成後。 這可讓最新的磁碟備份複製到 Azure。
 
 13. 選擇保留原則排程。 保留原則的運作方式的詳細資料會提供 [使用 Azure 備份來取代您的磁帶基礎結構文章](backup-azure-backup-cloud-as-tape.md)。
 
@@ -173,4 +173,5 @@
 ### 後續步驟：
 
 •   [Azure 備份常見問題集](backup-azure-backup-faq.md)
+
 

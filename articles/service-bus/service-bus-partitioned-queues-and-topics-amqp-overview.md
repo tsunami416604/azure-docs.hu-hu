@@ -118,3 +118,4 @@ receivedMessage.Complete();
 
 [Azure classic portal]: http://manage.windowsazure.com
 
+

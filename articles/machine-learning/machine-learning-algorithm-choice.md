@@ -19,7 +19,7 @@
 
 # 如何選擇 Microsoft Azure Machine Learning 的演算法
 
-「 機器學習演算法應該使用嗎? 」 問題的答案 永遠是 「 這取決於。 」 這可視資料的大小、品質和本質而定。 也可取決於您想用這個答案來做些什麼。 或是取決於演算法的數學運算如何針對您正在使用的電腦轉譯成指令。 而這又需視您有多少時間。 即使經驗最豐富的資料科學家，在沒有嘗試之前，也無法確認哪一個演算法效果會最好。
+「 機器學習演算法應該使用嗎？ 」 問題的答案 永遠是 「 這取決於。 」 這可視資料的大小、品質和本質而定。 也可取決於您想用這個答案來做些什麼。 或是取決於演算法的數學運算如何針對您正在使用的電腦轉譯成指令。 而這又需視您有多少時間。 即使經驗最豐富的資料科學家，在沒有嘗試之前，也無法確認哪一個演算法效果會最好。
 
 ## 機器學習演算法小祕技
 
@@ -43,8 +43,8 @@
 尋找最佳的演算法，就是試著它們全部。
 
 以下是從範例 [Cortana 分析圖庫](http://gallery.azureml.net/) 嘗試的實驗
-針對相同的資料和比較結果的數種演算法:
-[比較多類別分類器: 字母
+針對相同的資料和比較結果的數種演算法 ︰
+[比較多類別分類器 ︰ 字母
 辨識](http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92)。
 
 >[AZURE.TIP] 若要下載及列印圖表，以提供 Machine Learning Studio 功能的概觀，請參閱 [Azure Machine Learning Studio 功能的概觀圖](machine-learning-studio-overview-diagram.md)。
@@ -68,7 +68,7 @@ geopolicitical 干擾性事件，而每一個演算法查看是否有不同
 這是常見且實用的機器學習服務類型。 其中一個
 例外狀況，所有 Azure Machine Learning 中的模組是監督都式學習
 演算法。 有幾種特定類型的監督式學習
-Azure Machine Learning 中的呈現: 分類、 迴歸和異常
+Azure Machine Learning 中的呈現 ︰ 分類、 迴歸和異常
 偵測。
 
 * **分類**。 當資料來預測
@@ -88,7 +88,7 @@ Azure Machine Learning 中的呈現: 分類、 迴歸和異常
 因此許多變化，會和因此幾個，它具有的訓練範例
 若要了解哪些詐騙活動看起來不可行。 Auch die Eigenschaften
 異常偵測採用的方法是，只要了解哪些正常
-活動的外觀 (使用歷程記錄的非詐騙交易)，
+活動的外觀 （使用歷程記錄的非詐騙交易），
 找出任何明顯不同的項目。
 
 ### 未監督式
@@ -135,8 +135,8 @@ VM。 相反地，非監督式的學習演算法的目標是要
 
 許多機器學習演算法都會使用線性。 線性
 分類演算法會假設類別可以使用來分隔
-直線 (或其高維度的類比)。 這些包括羅吉斯
-迴歸與支援向量機器 (如在 Azure Machine Learning 中實作)。
+直線 （或其高維度的類比）。 這些包括羅吉斯
+迴歸與支援向量機器 （如在 Azure Machine Learning 中實作）。
 線性迴歸演算法會假設資料趨勢遵循直線
 上方。 這些假設不是錯誤的某些問題，但在其他它們
 關閉精確度。
@@ -183,7 +183,7 @@ VM。 相反地，非監督式的學習演算法的目標是要
 相較於資料點數目。 這通常是這樣的關聯
 遺傳學或文字資料。 大量的功能可以陷入部分
 學習演算法，使訓練 unfeasibly 長的時間。 支援
-向量機器是也非常適合此情況下 (請參閱下文)。
+向量機器是也非常適合此情況下 （請參閱下文）。
 
 ### 特殊案例
 
@@ -236,21 +236,21 @@ VM。 相反地，非監督式的學習演算法的目標是要
 ### 線性迴歸
 
 如前所述， [線性迴歸](https://msdn.microsoft.com/library/azure/dn905978.aspx)
-資料集符合列 (或平面上或超平面)。 它是主要位置，
+資料集符合列 （或平面上或超平面）。 它是主要位置，
 簡單且快速，但可能過於簡單部分問題。
 請按這裡查看 [線性迴歸
 教學課程](machine-learning-linear-regression-in-azure.md)。
 
 ![具有線性趨勢的資料][3]
 
-***undefined***
+***具有線性趨勢的資料***
 
 ### 羅吉斯迴歸
 
 雖然它會在名稱中，羅吉斯困惑包含 「 迴歸 」
 迴歸是實際的強大工具
 [兩個類別](https://msdn.microsoft.com/library/azure/dn905994.aspx)
-和
+and
 [多級](https://msdn.microsoft.com/library/azure/dn905853.aspx)
 分類。 它既快速又簡單。 它會使用的事實
 '-而不是直線造形的曲線會讓自然
@@ -268,15 +268,15 @@ VM。 相反地，非監督式的學習演算法的目標是要
 決策樹系
 ([迴歸](https://msdn.microsoft.com/library/azure/dn905862.aspx),，
 [二級](https://msdn.microsoft.com/library/azure/dn906008.aspx),，
-和
+and
 [多級](https://msdn.microsoft.com/library/azure/dn906015.aspx))，
 決策叢林
 ([雙類別](https://msdn.microsoft.com/library/azure/dn905976.aspx)
-和
+and
 [多級](https://msdn.microsoft.com/library/azure/dn905963.aspx))，
 和促進式的決策樹
 ([迴歸](https://msdn.microsoft.com/library/azure/dn905801.aspx)
-和
+and
 [二級](https://msdn.microsoft.com/library/azure/dn906025.aspx))
 都是根據決策樹，基本的機器學習
 概念。 有許多的決策樹，但是用途都
@@ -286,9 +286,8 @@ VM。 相反地，非監督式的學習演算法的目標是要
 
 ![細分特徵空間的決策樹][5]
 
-***undefined
-是
-統一 val***
+***決策樹細分特徵空間為區域的大約
+統一的值***
 
 因為特徵空間可以再細分為任意小
 很容易想像不夠精確有一個資料分割區，
@@ -310,7 +309,7 @@ VM。 相反地，非監督式的學習演算法的目標是要
 [快速樹系的分位數
 迴歸](https://msdn.microsoft.com/library/azure/dn913093.aspx)
 是一種特殊案例中您要的決策樹
-知道不僅典型 (中間) 的值區內的資料
+知道不僅典型 （中間） 的值區內的資料
 但也分位數的形式散發。
 
 ### 類神經網路和感知器
@@ -318,11 +317,11 @@ VM。 相反地，非監督式的學習演算法的目標是要
 類神經網路的大腦-啟發學習涵蓋的演算法
 [多級](https://msdn.microsoft.com/library/azure/dn906030.aspx),，
 [二級](https://msdn.microsoft.com/library/azure/dn905947.aspx),，
-和
+and
 [迴歸](https://msdn.microsoft.com/library/azure/dn905924.aspx)
 發生問題。 有無限的各種不同，但是類神經網路
 Azure Machine Learning 中都有向非循環圖的表單。 ,
-表示輸入功能都會通過向前 (永遠不會向後)
+表示輸入功能都會通過向前 （永遠不會向後）
 之前被轉換成輸出層的順序。 在每個圖層，
 輸入各種組合加權、 加總，以及將傳送到
 下一層。 這個簡單的計算值的組合會產生
@@ -341,9 +340,8 @@ inexhaustible 豐富的可能性。
 ![類神經網路所學習的界限][6]
 ---------------------------
 
-***undefined
-nd
-irregu***
+***了解類神經網路界限可以是複雜和
+異常***
 
  [二級平均
 認知](https://msdn.microsoft.com/library/azure/dn906036.aspx)
@@ -368,9 +366,8 @@ SVM](https://msdn.microsoft.com/library/azure/dn905835.aspx) 沒有
 
 ![支援向量機器類別界限][7]
 
-***undefined
-了嗎
-分隔兩個 clas***
+***典型的支援向量機器類別界限發揮最大的邊界
+分隔兩個類別***
 
 另一個產品的 Microsoft Research [二級局部深度
 SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) 是
@@ -390,7 +387,7 @@ SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) 繪製
 
 ### 貝氏方法
 
-貝氏方法有都會令人滿意的品質: 避免它們
+貝氏方法有都會令人滿意的品質 ︰ 避免它們
 過度配適。 方法是做出一些假設事先
 答案可能散發。 另一個的副產品這個
 方法是，他們擁有極少的參數。 Azure Machine Learning 同時具有
@@ -431,7 +428,7 @@ JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) 和
 
 ![使用 K-means 分組的資料集][9]
 
-***undefined***
+***資料集分成使用 k-means 的 5 個叢集***
 
 另外還有一整團 [一個 v 全部多級
 分類器](https://msdn.microsoft.com/library/azure/dn905887.aspx),，
@@ -441,9 +438,8 @@ JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) 和
 
 ![雙類別分類器結合成三個類別分類器][10]
 
-***undefined
-ss
-classif***
+***一組雙類別分類器合併成三個類別
+分類器***
 
 Azure Machine Learning 也包含功能強大的機器學習架構的存取
 標題下的 [Vowpal
@@ -474,4 +470,5 @@ VW 頑強，分類，因為它可以了解這兩個分類
 [8]: ./media/machine-learning-algorithm-choice/image8.png
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
+
 

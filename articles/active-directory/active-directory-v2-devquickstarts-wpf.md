@@ -35,7 +35,7 @@
 3. 安裝及設定 ADAL。
 5. 使用 ADAL 來取得 Azure AD 的權杖。
 
-本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet)。  若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/skeleton.zip) 或再製基本架構:
+本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet)。  若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
 
@@ -66,7 +66,7 @@ PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory
 ## 3.使用 ADAL 取得權杖
 ADAL 的基本原則是，每當應用程式需要存取權杖時，您只需呼叫 `authContext.AcquireToken(...)`，ADAL 就會執行其餘工作。  
 
--   在 `TodoListClient` 專案中，開啟 `MainWindow.xaml.cs` 並找出 `OnInitialized(...)` 方法。  第一步是初始化應用程式的 `AuthenticationContext` - ADAL 的主要類別。  您在這裡將 ADAL 與 Azure AD 通訊所需的座標傳給 ADAL，並告訴它如何快取權杖。
+-   在 `TodoListClient` 專案中，開啟 `MainWindow.xaml.cs` 並找出 `OnInitialized(...)` 方法。  第一步是初始化應用程式的 `AuthenticationContext` -ADAL 的主要類別。  您在這裡將 ADAL 與 Azure AD 通訊所需的座標傳給 ADAL，並告訴它如何快取權杖。
 
 ```C#
 protected override async void OnInitialized(EventArgs e)
@@ -166,7 +166,7 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 }
 ```
 
-- 如果使用者成功登入，ADAL 會為您接收和快取權杖，您可以放心大膽地繼續呼叫 `GetTodoList()` 方法。  要取得使用者工作的剩餘步驟，是實作 `GetTodoList()` 方法。
+- 如果使用者成功登入，ADAL 會為您接收和快取權杖，您可以放心大膽地繼續呼叫 `GetTodoList()` 方法。  若要取得使用者的工作剩下的就是實作 `GetTodoList()` 方法。
 
 ```C#
 private async void GetTodoList()
@@ -241,7 +241,7 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 
 ADAL 可使用個人和工作帳戶，輕鬆地將通用的身分識別功能納入您的應用程式。  它會為您處理一切麻煩的事，包括快取管理、OAuth 通訊協定支援、向使用者顯示登入 UI、重新整理過期權杖等等。  您唯一需要知道的就是單一 API 呼叫，`authContext.AcquireTokenAsync(...)`。
 
-(不含您的設定值) 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip), ，或您可以從 GitHub 複製它:
+（不含您的設定值） 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip), ，或您可以從 GitHub 複製它 ︰
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
 
@@ -254,4 +254,5 @@ ADAL 可使用個人和工作帳戶，輕鬆地將通用的身分識別功能納
 如需其他資源，請參閱：
 - [應用程式模型 v2.0 預覽 >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow"adal"標記 >>](http://stackoverflow.com/questions/tagged/adal)
+
 

@@ -246,3 +246,4 @@ Engagement 組態會集中在您專案的 `Resources\EngagementConfiguration.xml
 
 > [AZURE.WARNING] 高載閾值無法設定的時間間隔為小於一秒。 如果您嘗試這樣做，SDK 會顯示含錯誤訊息的追蹤，並且會自動重設為預設值 (0 秒)。 這樣會觸發 SDK 以即時的方式報告記錄檔。
  
+

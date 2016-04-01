@@ -234,7 +234,7 @@ exit
 示範 JMS 到 .NET 的訊息：
 
 * 不使用任何命令列引數啟動 .NET 範例應用程式。
-* 使用「sendonly」命令列引數啟動 Java 範例應用程式。 在此模式中，應用程式將不會接收來自佇列的訊息，它只會傳送訊息。
+* 使用「sendonly」命令列引數啟動 Java 範例應用程式。 在此模式中，應用程式不會收到來自佇列的訊息，而只會傳送。
 * 按下 **Enter** 幾次在 Java 應用程式主控台中，這會導致要傳送的訊息。
 * 這些訊息將由 .NET 應用程式所接收。
 
@@ -323,4 +323,5 @@ exit
 * [如何使用服務匯流排佇列](service-bus-dotnet-how-to-use-queues.md)
  
 [Azure classic portal]: http://manage.windowsazure.com
+
 

@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Lynda.com 租用戶
   
-完成本教學課程之後, 您已指派給 Lynda.com 的 Azure AD 使用者將能夠登入位於您 Lynda.com 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Lynda.com 的 Azure AD 使用者將能夠登入位於您 Lynda.com 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -79,7 +79,7 @@
 
     ![設定單一登入](./media/active-directory-saas-lynda-tutorial/IC777527.png "Configure single sign-on")
 
-3.  在 **設定應用程式 URL** 頁面上，於 **Lynda.com 登入 URL** 文字方塊中，輸入您 Lynda.com 租用戶 URL (例如: *https://shib.lynda.com/Shibboleth.sso/InCommon?providerId=https://sts.windows-ppe.net/6247032d-9415-403c-b72b-277e3fb6f2c8/&target= https://shib.lynda.com/InCommon*)，然後按一下 [ **下一步**。
+3.  在 **設定應用程式 URL** 頁面上，於 **Lynda.com 登入 URL** 文字方塊中，輸入您 Lynda.com 租用戶 URL (例如 ︰ *https://shib.lynda.com/Shibboleth.sso/InCommon?providerId=https://sts.windows-ppe.net/6247032d-9415-403c-b72b-277e3fb6f2c8/&target= https://shib.lynda.com/InCommon*)，然後按一下 [ **下一步**。
 
     ![設定應用程式 URL](./media/active-directory-saas-lynda-tutorial/IC781047.png "Configure app URL")
 
@@ -117,3 +117,4 @@
     ![是](./media/active-directory-saas-lynda-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

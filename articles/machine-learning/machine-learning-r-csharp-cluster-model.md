@@ -74,7 +74,7 @@
 ##建立 Web 服務  
 >這項 Web 服務是使用 Azure Machine Learning 所建立。 免費的試用版，以及有關建立實驗的簡介影片和 [發佈 web 服務](machine-learning-publish-a-machine-learning-web-service.md), ，請參閱 [azure.com /ml](http://azure.com/ml)。 以下是建立 Web 服務之實驗的螢幕擷取畫面，以及實驗內每個模組的範例程式碼。
 
-Azure Machine Learning 中新的空白實驗建立的這兩個 [Execute R Script] 的 [執行-r-指令碼] 模組提取到工作區。 資料結構描述是以簡單的 [執行 R 指令碼] [執行-r-指令碼] 來建立。 接著，資料結構描述會連結到一次採用 [Execute R Script] [執行-r-指令碼] 建立的叢集模型區段。 在 [Execute R Script] [執行-r-指令碼] 用於叢集模型，web 服務會接著使用"k-means"函數，也就是預先建置到 [執行 R 指令碼] [執行-r-指令碼] 的 Azure Machine Learning。    
+從 Azure Machine Learning 中新的空白實驗建立並將兩個 [執行 R 指令碼][execute-r-script] 模組提取到工作區。 使用簡單的資料結構描述建立 [執行 R 指令碼][execute-r-script]。 接著，資料結構描述會連結到叢集模型區段中，以重新建立 [執行 R 指令碼][execute-r-script]。 在 [執行 R 指令碼][execute-r-script] 用於叢集模型，web 服務會接著使用"k-means"函數，也就是預先建置到 [執行 R 指令碼][execute-r-script] Azure 機器學習。    
    
 
      
@@ -89,7 +89,7 @@ Azure Machine Learning 中新的空白實驗建立的這兩個 [Execute R Script
 
 ####模組 2：
     # 將 1 為基底選擇性輸入連接埠對應至變數
-    mydata <-maml.mapinputport (1) # 類別: data.frame
+    mydata <-maml.mapinputport （1） # 類別 ︰ data.frame
 
     data.split <- strsplit(mydata[1,1], ",")[[1]]
     data.split <- sapply(data.split, strsplit, ";", simplify = TRUE)
@@ -127,4 +127,5 @@ Web 服務或發佈至 Azure Marketplace 的耗用量常見問題集解答，請
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
  
+
 

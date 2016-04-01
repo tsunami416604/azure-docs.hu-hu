@@ -30,7 +30,7 @@ Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 
 - 更新實體 
 - 刪除實體 
 
->[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量:
+>[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量 ︰
 >
 >在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
@@ -111,7 +111,7 @@ Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
->[AZURE.NOTE]$Expand 作業不支援媒體服務，以及不支援的 LINQ 考量 (WCF 資料服務) 中所述的 LINQ 方法。
+>[AZURE.NOTE]$Expand 作業不支援媒體服務，以及不支援的 LINQ 考量 （WCF 資料服務） 中所述的 LINQ 方法。
 
 
 ##更新實體
@@ -158,4 +158,5 @@ Microsoft Azure 媒體服務是以 REST 為基礎的服務，內建在 OData v3 
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

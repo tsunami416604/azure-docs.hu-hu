@@ -41,8 +41,8 @@ Azure AD Connect 安裝精靈提供兩個不同的路徑：
 精靈頁面  | 收集的認證 | 所需的權限| 用於
 ------------- | ------------- |------------- |------------- |
 N/A|執行安裝精靈的使用者| 本機伺服器的系統管理員| <li>建立本機帳戶做為使用 [同步處理引擎服務帳戶](#azure-ad-connect-sync-service-account)。
-連接至 Azure AD| Azure AD 目錄認證 | Azure AD 中的全域管理員角色 | <li>啟用 Azure AD 目錄中的同步處理。</li><li>建立 [Azure AD 帳戶](#azure-ad-service-account) ，將用於持續同步處理作業在 Azure AD 中。</li>
-連線到 AD DS | 內部部署 Active Directory 認證 | Active Directory 中 Enterprise Admins (EA) 群組成員| <li>建立 [帳戶](#active-directory-account) Active Directory 和授與權限。 這個建立的帳戶是在同步處理期間用來讀取和寫入目錄資訊。</li>
+連接至 Azure AD| Azure AD 目錄認證 | Azure AD 中的全域管理員角色 | <li>啟用 Azure AD 目錄中的同步處理。</li>  <li>建立 [Azure AD 帳戶](#azure-ad-service-account) ，將用於持續同步處理作業在 Azure AD 中。</li>
+連線到 AD DS | 內部部署 Active Directory 認證 | Active Directory 中 Enterprise Admins (EA) 群組成員| <li>建立 [帳戶](#active-directory-account) Active Directory 和授與權限。 這個建立帳戶用來讀取和寫入目錄同步處理期間的資訊。</li>
 
 ### 企業管理員認證
 這些認證只能在安裝期間使用，而不能在安裝完成後使用。 它是企業管理員而不是網域管理員，以確定可以在所有網域中設定 Active Directory 中的權限。
@@ -57,7 +57,7 @@ N/A|執行安裝精靈的使用者| 本機伺服器的系統管理員| <li>建�
 ------------- | ------------- |------------- |-------------
 N/A|執行安裝精靈的使用者|<li>本機伺服器的系統管理員</li><li>如果使用完整的 SQL Server，使用者必須是系統管理員 (SA) 在 SQL 中</li>| 根據預設，會建立本機帳戶做為使用 [同步處理引擎服務帳戶](#azure-ad-connect-sync-service-account)。 當系統管理員不會指定特定帳戶，才會建立帳戶。
 安裝同步處理服務，服務帳戶選項 | AD 或本機使用者帳戶認證 | 使用者權限會由安裝精靈授與|如果系統管理員指定帳戶，則此帳戶會做為同步處理服務帳戶。
-連接至 Azure AD|Azure AD 目錄認證| Azure AD 中的全域管理員角色| <li>啟用 Azure AD 目錄中的同步處理。</li><li>建立 [Azure AD 帳戶](#azure-ad-service-account) ，將用於持續同步處理作業在 Azure AD 中。</li>
+連接至 Azure AD|Azure AD 目錄認證| Azure AD 中的全域管理員角色| <li>啟用 Azure AD 目錄中的同步處理。</li>  <li>建立 [Azure AD 帳戶](#azure-ad-service-account) ，將用於持續同步處理作業在 Azure AD 中。</li>
 連接您的目錄|各個將連線至 Azure AD 之樹系的內部部署 Active Directory 認證 | 權限而定，功能啟用，並可在 [建立 AD DS 帳戶](#create-the-ad-ds-account) |這個帳戶是在同步處理期間用來讀取和寫入目錄資訊。
 AD FS 伺服器|在清單的各個伺服器中，如果執行精靈之使用者的登入認證權限不足無法連線，精靈就會收集認證|網域系統管理員|安裝和設定 AD FS 伺服器角色。
 Web 應用程式 Proxy 伺服器 |在清單的各個伺服器中，如果執行精靈之使用者的登入認證權限不足無法連線，精靈就會收集認證|目標電腦上的本機系統管理員|安裝和設定 WAP 伺服器角色。
@@ -121,4 +121,5 @@ AD FS 服務帳戶頁面，「使用網域使用者帳戶選項」|AD 使用者�
 ## 後續步驟
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
+
 

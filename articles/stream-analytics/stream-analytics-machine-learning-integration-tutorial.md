@@ -33,7 +33,7 @@
 
 ![串流分析機器學習服務教學課程圖 2](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
-## 先決條件
+## 必要條件
 
 本文的先決條件如下：
 
@@ -66,14 +66,14 @@
 ## 新增 Cortana 分析資源庫中的情緒分析模型
 
 1.  下載 [預測情感分析模型](https://gallery.cortanaanalytics.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) Cortana 分析圖庫中。  
-2.  按一下 [ **開啟** Studio 中:  
+2.  按一下 [ **開啟** Studio 中 ︰  
 
     ![串流分析機器學習服務教學課程開啟機器學習服務 Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3.  登入以前往工作區。 選擇最適合您所在地的位置。
 4.  現在按一下 **執行** Studio 底部  
 5.  一旦順利執行，按一下 **部署 Web 服務**。
-6.  現在情緒分析模型已可供使用。 若要驗證，請按一下 [ **測試** ] 按鈕，並提供文字輸入，例如"I love Microsoft"和測試會傳回類似的結果，如下所示:
+6.  現在情緒分析模型已可供使用。 若要驗證，請按一下 [ **測試** ] 按鈕，並提供文字輸入，例如"I love Microsoft"和測試會傳回類似的結果，如下所示 ︰
 
 `'Predictive Mini Twitter sentiment analysis Experiment' test returned ["4","0.715057671070099"]...`  
 
@@ -111,7 +111,7 @@
 
     ![串流分析機器學習服務教學課程機器學習服務 Web 服務](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-web-service.png)    
 
-11. 瀏覽至 **查詢** ] 索引標籤上，修改查詢，如下所示:  
+11. 瀏覽至 **查詢** ] 索引標籤上，修改查詢，如下所示 ︰  
 
 ```
     WITH subquery AS (  
@@ -149,4 +149,5 @@
 - 「失敗的函式要求」指出機器學習服務 Web 服務的失敗要求數目。  
 
     ![串流分析機器學習服務教學課程 ml 監視檢視](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)  
+
 

@@ -33,11 +33,11 @@
 
 ## <a name="register"> </a>向 Facebook 註冊您的應用程式
 
-1. 登入 [Azure 入口網站]，並瀏覽至您的應用程式。 複製您 **URL**。 您將使用此 URL 設定您的 Facebook 應用程式。
+1. 登入 [Azure portal], ，並瀏覽至您的應用程式。 複製您 **URL**。 您將使用此 URL 設定您的 Facebook 應用程式。
  
-2. 在另一個瀏覽器視窗中，瀏覽至 [Facebook 開發人員] 網站並使用您的 Facebook 帳戶認證登入。
+2. 在另一個瀏覽器視窗中，瀏覽至 [Facebook Developers] 網站，並使用您的 Facebook 登入帳戶的認證。
 
-3. (選擇性)如果您尚未註冊您，按一下 [ **應用程式** > **身為開發人員註冊**, ，然後接受政策並遵循註冊步驟。
+3. （選擇性）如果您尚未註冊您，按一下 [ **應用程式** > **身為開發人員註冊**, ，然後接受政策並遵循註冊步驟。
 
 4. 按一下 [ **我的應用程式** > **加入新的應用程式** > **網站** 輸入您的應用程式的唯一名稱，然後按一下 [ **建立新的 Facebook 應用程式識別碼**。
 
@@ -58,19 +58,19 @@
 
 
     > [AZURE.NOTE]
-    If you are using the App Service Gateway instead of the App Service Authentication / Authorization feature, your redirect URL instead uses the gateway URL with the _/signin-facebook_ path.
+    如果您使用應用程式服務閘道，而不應用程式服務驗證 / 授權功能重新導向 URL 改為使用閘道的 URL 與 _/signin-facebook_ 路徑。
 
 
 12. 用來註冊應用程式的 Facebook 帳戶是應用程式的系統管理員。 此時，只有系統管理員可以登入此應用程式。 若要驗證其他 Facebook 帳戶，請按一下 [ **狀態和檢閱** 左側的導覽列中。 然後按一下 [ **是** 啟用一般公用存取權。
 
 
-## <a name="secrets"> </a>將 Facebook 資訊新增至您的應用程式
+## <a name="secrets"> </a>將 Facebook 資訊加入應用程式
 
 > [AZURE.NOTE]
 如果您使用 App Service 閘道器，請忽略此章節，並改為在入口網站中瀏覽至您的閘道器。 選取 **設定**, ，**識別**, ，然後 **Facebook**。 貼入您稍早取得的值，然後按一下 [ **儲存**。
 
 
-13. 傳回在 [Azure 入口網站]，瀏覽至您的應用程式。 按一下 [ **設定** > **驗證/授權**, ，並確定 **應用程式服務驗證** 是 **上**。
+13. 回到 [Azure portal], ，瀏覽至您的應用程式。 按一下 [ **設定** > **驗證/授權**, ，並確定 **應用程式服務驗證** 是 **上**。
 
 15. 按一下 [ **Facebook**, 、 貼上您先前取得的應用程式識別碼和應用程式密碼值，選擇性地啟用應用程式所需的任何範圍然後按一下 [ **確定**。
 
@@ -78,7 +78,7 @@
     
     App Service 預設會提供驗證，但不會限制對您網站內容和 API 的已授權存取。 您必須在應用程式程式碼中授權使用者。 
 
-17. (選擇性)若要限制存取您的站台由 Facebook 驗證的使用者，設定 **不會驗證要求時要採取的動作** 至 **Facebook**。 這會要求所有的要求都經過驗證，且所有未經驗證的要求會重新導向至 Facebook 以進行驗證。
+17. （選擇性）若要限制存取您的站台由 Facebook 驗證的使用者，設定 **不會驗證要求時要採取的動作** 至 **Facebook**。 這會要求所有的要求都經過驗證，且所有未經驗證的要求會重新導向至 Facebook 以進行驗證。
 
 17. 按一下 [ **儲存**。 
 
@@ -97,3 +97,4 @@
 [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure portal]: https://portal.azure.com/
+

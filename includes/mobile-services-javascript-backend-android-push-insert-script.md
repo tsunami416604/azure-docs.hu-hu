@@ -36,3 +36,4 @@
         }
 
     這會註冊新的 insert 指令碼，並使用 [gcm 物件](http://go.microsoft.com/fwlink/p/?LinkId=282645) 在插入成功後，傳送推播通知給所有註冊的裝置。 
+

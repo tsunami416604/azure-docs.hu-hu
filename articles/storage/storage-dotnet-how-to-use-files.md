@@ -363,7 +363,7 @@ Windows 現在便可在虛擬機器重新開機時重新連線到檔案共用。
         Console.WriteLine(fileSas.DownloadText());
     }
 
-如需有關建立和使用共用的存取簽章的詳細資訊，請參閱 [共用存取簽章: 了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md) 和 [建立和使用與 Blob 服務 SAS](storage-dotnet-shared-access-signature-part-2.md)。
+如需有關建立和使用共用的存取簽章的詳細資訊，請參閱 [共用存取簽章 ︰ 了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md) 和 [建立和使用與 Blob 服務 SAS](storage-dotnet-shared-access-signature-part-2.md)。
 
 ### 複製檔案
 
@@ -482,7 +482,7 @@ Azure 儲存體分析現在支援檔案儲存體的度量。 利用度量資料�
 
 2. **Azure 檔案共用可公開在網際網路顯示，或只可從 Azure 取得？**
  
-    只要已開啟連接埠 445 (TCP 輸出) 與您的用戶端支援 SMB 3.0 通訊協定 (*例如*, ，Windows 8 或 Windows Server 2012)，您的檔案共用是可透過網際網路使用。  
+    只要已開啟連接埠 445 （TCP 輸出） 與您的用戶端支援 SMB 3.0 通訊協定 (*例如*, ，Windows 8 或 Windows Server 2012)，您的檔案共用是可透過網際網路使用。  
 
 3. **Azure 虛擬機器和檔案共用之間的網路流量，會計算為向訂用帳戶收費的外部頻寬嗎？** 
 
@@ -494,7 +494,7 @@ Azure 儲存體分析現在支援檔案儲存體的度量。 利用度量資料�
 
 5. **從內部部署虛擬機器連接到 Azure 檔案儲存體是否仰賴 Azure ExpressRoute？** 
 
-    編號 如果您沒有 ExpressRoute，您可以仍然存取檔案共用從內部部署上，只要您有連接埠 445 (TCP 輸出) 開啟以供網際網路存取。 不過，您可以搭配使用 ExpressRoute 與檔案儲存體 (如果需要)。
+    編號 如果您沒有 ExpressRoute，您可以仍然存取檔案共用從內部部署上，只要您有連接埠 445 （TCP 輸出） 開啟以供網際網路存取。 不過，您可以搭配使用 ExpressRoute 與檔案儲存體 (如果需要)。
 
 6. **容錯移轉叢集的「檔案共用見證」是Azure 檔案儲存體的其中一個使用案例？**
 
@@ -551,4 +551,5 @@ Azure 儲存體分析現在支援檔案儲存體的度量。 利用度量資料�
 - [Azure 檔案儲存體的深入探討](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409) 
 - [Microsoft Azure 檔案服務簡介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [保留與 Microsoft Azure 檔案的連線](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+
 

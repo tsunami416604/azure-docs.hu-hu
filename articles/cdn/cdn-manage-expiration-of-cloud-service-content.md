@@ -23,7 +23,7 @@
 
 靜態內容，例如影像和樣式表可以控制更新頻率包括 web.config 中包含的內容及修改在 CDN 資料夾 **c h e** 設定，以控制您內容的快取控制標頭。 web.config 設定會影響資料夾和其所有子資料夾中的所有項目，除非未來在另一個子資料夾中覆寫。  例如，您可以設定根目錄的預設存留時間具有快取 3 天的所有靜態內容，但是有一個子資料夾具有快取設定為 6 小時的更多變數內容。  
 
-下列 XML 說明和設定的範例 **clientCache** 指定為 3 天的最長使用期限:  
+下列 XML 說明和設定的範例 **clientCache** 指定為 3 天的最長使用期限 ︰  
 
     <configuration> 
       <system.webServer> 
@@ -33,7 +33,7 @@
       </system.webServer> 
     </configuration>
 
-指定 **UseMaxAge** 加入快取控制: 存留期上限 =<nnn> 回應標頭中指定的值為基礎 **CacheControlMaxAge** 屬性。 Timespan 格式為 **cacheControlMaxAge** 屬性是 <days>。<hours>:<min>:<sec>。 如需有關 **clientCache** 節點，請參閱 [用戶端快取 <clientCache>](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
+指定 **UseMaxAge** 加入快取控制 ︰ 存留期上限 =<nnn> 回應標頭中指定的值為基礎 **CacheControlMaxAge** 屬性。 Timespan 格式為 **cacheControlMaxAge** 屬性 <days>.<hours>：<min>：<sec>. 如需有關 **clientCache** 節點，請參閱 [用戶端快取 <clientCache>](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
 
 傳回應用程式，例如.aspx 頁面的內容，您可以設定 CDN 以程式設計方式快取行為，藉由設定 **HttpResponse.Cache** 屬性。 如需有關 **HttpResponse.Cache** 屬性，請參閱 [HttpResponse.Cache 屬性](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 和 [HttpCachePolicy 類別](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)。  
 
@@ -50,3 +50,4 @@
 
 [如何管理 Azure 內容傳遞網路 (CDN) 中 Blob 內容的到期](./cdn-manage-expiration-of-blob-content.md
 ) 
+

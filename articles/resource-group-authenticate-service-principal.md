@@ -16,7 +16,7 @@
    ms.date="11/18/2015"
    ms.author="tomfitz"/>
 
-# 使用 Azure 資源管理員驗證服務主體
+# 使用 Azure Resource Manager 驗證服務主體
 
 本主題顯示如何允許服務主體 (例如自動化程序、應用程式或服務) 存取您訂用帳戶中的其他資源。 使用 Azure 資源管理員，您可以使用角色存取控制將允許的動作授與服務主體，並驗證該服務主體。 本主題顯示如何使用 PowerShell 和 Azure CLI 將角色指派給服務主體，並驗證服務主體。
 
@@ -98,7 +98,7 @@
 
      使用的使用者名稱， **ApplicationId** 或 **IdentifierUris** 建立應用程式時使用。 針對密碼，使用您在建立帳戶時所指定的密碼。
 
-     使用您輸入做為輸入的認證 **登入 AzureRmAccount** 指令程式，以服務主體登入:
+     使用您輸入做為輸入的認證 **登入 AzureRmAccount** 指令程式，以服務主體登入 ︰
 
         PS C:\> Login-AzureRmAccount -Credential $creds -ServicePrincipal -Tenant $subscription.TenantId
         Environment           : AzureCloud
@@ -239,7 +239,7 @@
 
 您將從建立服務主體開始。 若要這麼做，我們必須在目錄中建立應用程式。 本節將逐步引導如何在目錄中建立新的應用程式。
 
-1. 切換至 Azure 資源管理員模式，並登入您的帳戶。
+1. 切換至 Azure Resource Manager 模式，並登入您的帳戶。
 
         azure config mode arm
         azure login
@@ -294,7 +294,7 @@
 在本節中，您要執行的步驟是為 Azure Active Directory 應用程式建立可使用憑證進行驗證的服務主體。 
 本主題假設您已發出憑證，並可 [OpenSSL](http://www.openssl.org/) 安裝。
 
-1. 建立 **.pem** 檔案中使用:
+1. 建立 **.pem** 檔案中使用 ︰
 
         openssl.exe pkcs12 -in examplecert.pfx -out examplecert.pem -nodes
 
@@ -313,4 +313,5 @@
 
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
+
 

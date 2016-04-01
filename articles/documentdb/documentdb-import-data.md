@@ -31,7 +31,7 @@
 -   我如何將資料從 HBase 匯入至 DocumentDB
 -   如何將資料在 DocumentDB 集合之間進行移轉？
 
-##<a id="Prerequisites"></a>先決條件 ##
+##<a id="Prerequisites"></a>必要條件 ##
 
 在依照本文中的指示進行之前，請確定已安裝下列項目：
 
@@ -57,8 +57,8 @@ DocumentDB 資料移轉工具是一個開放原始碼解決方案，可將資料
 
 移轉工具的原始程式碼可在 GitHub 上 [此儲存機制](https://github.com/azure/azure-documentdb-datamigrationtool) ，編譯的版本可從 [Microsoft 下載中心](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)。  您可以編譯解決方案，或直接下載編譯版本並將它解壓縮至選擇的目錄。  然後執行：
 
-- **Dtui.exe**: 圖形化介面的工具版本
-- **Dt.exe**: 命令列工具的版本
+- **Dtui.exe**︰ 圖形化介面的工具版本
+- **Dt.exe**︰ 命令列工具的版本
 
 ##<a id="JSON"></a>匯入 JSON 檔案 ##
 
@@ -322,7 +322,7 @@ DocumentDB 連接字串的格式如下：
 
 > [AZURE.NOTE] 若要確定可以存取連接字串欄位中指定的 DocumentDB 執行個體，請使用 Verify 命令。 
 
-若要匯入到單一集合，請輸入要匯入資料的目標集合名稱，然後按一下 [新增] 按鈕。  若要匯入到多個集合，請分別輸入每個集合的名稱或使用下列語法來指定多個集合: *collection_prefix*[開始索引-結束索引]。  透過上述語法指定多個集合時，請記住下列事項：
+若要匯入到單一集合，請輸入要匯入資料的目標集合名稱，然後按一下 [新增] 按鈕。  若要匯入到多個集合，請分別輸入每個集合的名稱或使用下列語法來指定多個集合 ︰ *collection_prefix*[開始索引-結束索引]。  透過上述語法指定多個集合時，請記住下列事項：
 
 1. 僅支援整數範圍的名稱模式。  例如，指定 collection[0-3] 將產生下列集合：collection0、collection1、collection2、collection3。
 2. 您可以使用縮寫的語法：collection[3] 將發出一組與步驟 1 中所述相同的集合。
@@ -346,7 +346,7 @@ DocumentDB 連接字串的格式如下：
 
 -   字串：保存為字串值
 -   Epoch：保存為 Epoch 數值
--   兩者：保存字串和 Epoch 數值。  此選項會建立子文件，例如:
+-   兩者：保存字串和 Epoch 數值。  此選項會建立子文件，例如 ︰
 "date_joined": {
     "Value":"2013年-10-21T21:17:25.2410000Z 」，
     "Epoch": 1382390245
@@ -378,7 +378,7 @@ DocumentDB 連接字串的格式如下：
 
 > [AZURE.NOTE] 若要確定可以存取連接字串欄位中指定的 DocumentDB 執行個體，請使用 Verify 命令。 
 
-若要匯入到單一集合，請輸入要匯入資料的目標集合名稱，然後按一下 [新增] 按鈕。  若要匯入到多個集合，請分別輸入每個集合的名稱或使用下列語法來指定多個集合: *collection_prefix*[開始索引-結束索引]。  透過上述語法指定多個集合時，請記住下列事項：
+若要匯入到單一集合，請輸入要匯入資料的目標集合名稱，然後按一下 [新增] 按鈕。  若要匯入到多個集合，請分別輸入每個集合的名稱或使用下列語法來指定多個集合 ︰ *collection_prefix*[開始索引-結束索引]。  透過上述語法指定多個集合時，請記住下列事項：
 
 1. 僅支援整數範圍的名稱模式。  例如，指定 collection[0-3] 將產生下列集合：collection0、collection1、collection2、collection3。
 2. 您可以使用縮寫的語法：collection[3] 將發出一組與步驟 1 中所述相同的集合。
@@ -398,7 +398,7 @@ DocumentDB 連接字串的格式如下：
 
 -   字串：保存為字串值
 -   Epoch：保存為 Epoch 數值
--   兩者：保存字串和 Epoch 數值。  此選項會建立子文件，例如:
+-   兩者：保存字串和 Epoch 數值。  此選項會建立子文件，例如 ︰
 "date_joined": {
     "Value":"2013年-10-21T21:17:25.2410000Z 」，
     "Epoch": 1382390245
@@ -416,7 +416,7 @@ DocumentDB 循序記錄匯入工具具有下列其他進階選項：
 
 > [AZURE.TIP] 匯入工具會預設 DirectTcp 連線模式。  如果您遇到防火牆問題，請切換到閘道器連線模式，因為它只需要連接埠 443。
 
-##<a id="IndexingPolicy"></a>建立 DocumentDB 集合時指定的索引編製原則 ##
+##<a id="IndexingPolicy"></a>建立 DocumentDB 集合時指定索引編製原則 ##
 
 當您允許移轉工具在匯入期間建立集合時，您可以指定集合的索引編製原則。  在 DocumentDB 大量匯入和 DocumentDB 循序記錄選項的進階選項區段中，瀏覽至 [索引編製原則] 區段。
 
@@ -508,4 +508,5 @@ DocumentDB JSON 匯出工具可讓您將任何可用的來源選項匯出至包�
 
 
  
+
 

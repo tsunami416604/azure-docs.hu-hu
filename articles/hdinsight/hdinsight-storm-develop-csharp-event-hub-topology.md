@@ -22,9 +22,9 @@ Azure 事件中樞可讓您從網站、應用程式和裝置處理巨量資料�
 
 在本教學課程中，您將了解如何使用 HDInsight Tools for Visual Studio 及事件中樞 Spout 和 Bolt 來建立兩個混合式 C#/Java 拓撲：
 
-* **EventHubWriter**: 隨機產生資料並將其寫入至事件中心
+* **EventHubWriter**︰ 隨機產生資料並將其寫入至事件中心
 
-* **EventHubReader**: 從事件中樞讀取資料，並將它儲存在 Azure 資料表儲存體
+* **EventHubReader**︰ 從事件中樞讀取資料，並將它儲存在 Azure 資料表儲存體
 
 [AZURE.NOTE] 這份文件中的步驟只適用於以 Windows 為基礎的 HDInsight 叢集。 Java 版本，此專案，將會使用 Linux 或 Windows 為基礎的叢集，請參閱 [處理 Azure 事件中心與 Storm on HDInsight (Java) 的事件](hdinsight-storm-develop-java-event-hub-topology.md)。
 
@@ -40,7 +40,7 @@ Azure 事件中樞可讓您從網站、應用程式和裝置處理巨量資料�
 
 ## 已完成的專案
 
-您可以下載 GitHub 的教學課程中建立的專案的完整版本: [混合 storm eventhub 式](https://github.com/Blackmist/eventhub-storm-hybrid)。 不過，您仍需要遵循本教學課程中的步驟，提供組態設定。
+您可以下載 GitHub 的教學課程中建立的專案的完整版本 ︰ [混合 storm eventhub 式](https://github.com/Blackmist/eventhub-storm-hybrid)。 不過，您仍需要遵循本教學課程中的步驟，提供組態設定。
 
 > [AZURE.NOTE] 當您使用已完成的專案時，您必須使用 **NuGet 封裝管理員** 來還原此方案所需的封裝。
 
@@ -56,13 +56,13 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
 
 > [AZURE.NOTE] 已為其納入 Apache Storm 專案中提交 spout 和 bolt。 如需詳細資訊，請參閱 GitHub 中的 <a href="https://github.com/apache/storm/pull/336/files">STORM-583：Storm 事件中樞的初始簽入</a>
 
-* **下載 ZIP 檔案**: 從 <a href="https://github.com/hdinsight/hdinsight-storm-examples" target="_blank">HDInsight Storm 範例</a> 網站選取 **下載 ZIP** 來下載包含專案的.zip 檔的右窗格中。
+* **下載 ZIP 檔案**︰ 從 <a href="https://github.com/hdinsight/hdinsight-storm-examples" target="_blank">HDInsight Storm 範例</a> 網站選取 **下載 ZIP** 來下載包含專案的.zip 檔的右窗格中。
 
     ![下載 zip 按鈕](./media/hdinsight-storm-develop-csharp-event-hub-topology/download.png)
 
     下載檔案後，在您可以解壓縮此封存，則檔案會出現在 **lib** 目錄。
 
-* **複製專案**: 如果您有 <a href="http://git-scm.com/" target="_blank">Git</a> 安裝，請使用下列命令來複製儲存機制在本機，然後找出檔案中的 **lib** 目錄。
+* **複製專案**︰ 如果您有 <a href="http://git-scm.com/" target="_blank">Git</a> 安裝，請使用下列命令來複製儲存機制在本機，然後找出檔案中的 **lib** 目錄。
 
         git clone https://github.com/hdinsight/hdinsight-storm-examples
 
@@ -118,7 +118,7 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
 
 在本節中，您將建立使用事件中樞 Bolt 將資料寫入事件中樞的拓樸。
 
-1. 如果您尚未安裝最新版本的 HDInsight Tools for Visual Studio，請參閱 <a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">開始使用 HDInsight Tools for Visual Studio</a>.
+1. 如果您尚未安裝最新版本的 HDInsight Tools for Visual Studio，請參閱<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">開始使用 HDInsight Tools for Visual Studio</a>。
 
 2. 開啟 Visual Studio 中，選取 **檔案** > **新增** 然後 **專案**。
 
@@ -128,7 +128,7 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
 
 4. 建立專案之後，您應該會有下列檔案：
 
-    * **Program.cs**: 這會定義您專案的拓撲。 請注意，預設會建立含有一個 Spout 和一個 Bolt 的預設拓撲。
+    * **Program.cs**︰ 這會定義您專案的拓撲。 請注意，預設會建立含有一個 Spout 和一個 Bolt 的預設拓撲。
 
     * **Spout.cs**: spout 範例。
 
@@ -205,7 +205,7 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
             Properties.Settings.Default.EventHubName,
             "true"));
 
-    這會為 Java Bolt 建立新的建構函式，在執行階段時可用來設定 Bolt 的新執行個體。 在此情況下，您會使用 <a href="http://storm.apache.org/documentation/Clojure-DSL.html" target="_blank">Apache Storm Clojure DSL</a> 若要設定 spout 您先前加入的事件中樞組態資訊。 更具體來說，HDInsight 會在執行階段使用此程式碼執行下列動作：
+    這會為 Java Bolt 建立新的建構函式，在執行階段時可用來設定 Bolt 的新執行個體。 在此案例中，您會使用稍早加入的事件中樞組態資訊，透過 <a href="http://storm.apache.org/documentation/Clojure-DSL.html" target="_blank">Apache Storm Clojure DSL</a> 來設定 Spout。 更具體來說，HDInsight 會在執行階段使用此程式碼執行下列動作：
 
     * 建立的新執行個體 **com.microsoft.eventhubs.bolt.EventHubBoltConfig** 使用您提供的事件中樞資訊。
     * 建立的新執行個體 **com.microsoft.eventhubs.bolt.EventHubBolt**, ，並傳入 **EventHubBoltConfig** 執行個體。
@@ -241,7 +241,7 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
 
 事件中樞 Bolt 預期會收到路由傳送至事件中樞的單一字串值。 在下列範例中，您將修改預設 **Spout.cs** 檔案以產生 JSON 字串。
 
-1. 在 **方案總管] 中**, ，開啟 **Spout.cs** 並在檔案頂端加入下列內容:
+1. 在 **方案總管] 中**, ，開啟 **Spout.cs** 並在檔案頂端加入下列內容 ︰
 
         using Newtonsoft.Json;
         using Newtonsoft.Json.Linq;
@@ -263,9 +263,9 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
         this.ctx.DeclareComponentSchema(new ComponentStreamSchema(null, outputSchema));
         this.ctx.DeclareCustomizedSerializer(new CustomizedInteropJSONSerializer());
 
-    這會將 spout 所建立的資料定義變更 **字串** 資料，而 **CustomizedInteropJSONSerializer** 稍早在拓撲中 (在 program.cs 中) 宣告。
+    這會將 spout 所建立的資料定義變更 **字串** 資料，而 **CustomizedInteropJSONSerializer** 稍早在拓撲中 （在 program.cs 中) 宣告。
 
-2. 取代 **NextTuple** 使用下列方法:
+2. 取代 **NextTuple** 使用下列方法 ︰
 
         public void NextTuple(Dictionary<string, Object> parms)
         {
@@ -320,7 +320,7 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
 
 1. 在 **方案總管] 中**, ，以滑鼠右鍵按一下 **Spout.cs** ，然後選取 **刪除**。 您正在使用 Java 事件中樞 Spout，因此不需要此檔案。
 
-2. 開啟 **Program.cs** 檔案，並加入下列程式碼之後立即 `TopologyBuilder topologyBuilder = new TopologyBuilder("EventHubReader");` 行:
+2. 開啟 **Program.cs** 檔案，並加入下列程式碼之後立即 `TopologyBuilder topologyBuilder = new TopologyBuilder("EventHubReader");` 行 ︰
 
         int partitionCount = Properties.Settings.Default.EventHubPartitionCount;
         EventHubSpoutConfig ehConfig = new EventHubSpoutConfig(
@@ -398,7 +398,7 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
 
 1. 在 **方案總管] 中**, ，以滑鼠右鍵按一下 **EventHubReader** 專案，然後選取 **新增**, ，然後 **新類別**。 將新類別 **Devices.cs**。
 
-2. 開啟 **Devices.cs** 和預設程式碼取代為下列:
+2. 開啟 **Devices.cs** 和預設程式碼取代為下列 ︰
 
         using System;
         using System.Collections.Generic;
@@ -453,7 +453,7 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
         this.ctx.DeclareComponentSchema(new ComponentStreamSchema(inputSchema, null));
         this.ctx.DeclareCustomizedDeserializer(new CustomizedInteropJSONDeserializer());
 
-    這會指示 bolt 它將會收到 **字串** 值而不是 **int**, ，以及應該使用還原資料的序列化 **CustomizedInteropJSONDeserialzer** 拓樸先前 (在 program.cs 檔中) 中宣告。
+    這會指示 bolt 它將會收到 **字串** 值而不是 **int**, ，以及應該使用還原資料的序列化 **CustomizedInteropJSONDeserialzer** 拓樸先前 （在 program.cs 檔中） 中宣告。
 
 3. 在先前的程式碼後面緊接著加入下列程式碼：
 
@@ -464,7 +464,7 @@ Spout 和 bolt 隨名為的單一 Java 封存 (.jar) 檔案 **eventhubs-storm-sp
 
     這樣會連接到 **事件** 資料表使用先前設定的連接字串。 建立資料表 (如果不存在)。
 
-2. 尋找 **Execute** 方法並將它取代為下列:
+2. 尋找 **Execute** 方法並將它取代為下列 ︰
 
         public void Execute(SCPTuple tuple)
         {
@@ -542,11 +542,11 @@ EventHubSpout 會定期將其狀態設定檢查點到 Zookeeper 節點，這會�
 
 此目錄中的指令碼有：
 
-* **stormmeta_import.cmd**: 從叢集預設儲存體容器將所有 Storm 中繼資料匯都入到 Zookeeper。
+* **stormmeta_import.cmd**︰ 從叢集預設儲存體容器將所有 Storm 中繼資料匯都入到 Zookeeper。
 
-* **stormmeta_export.cmd**: 將所有 Storm 中繼資料從 Zookeeper 都匯出到叢集預設儲存體容器。
+* **stormmeta_export.cmd**︰ 將所有 Storm 中繼資料從 Zookeeper 都匯出到叢集預設儲存體容器。
 
-* **stormmeta_delete.cmd**: 從 Zookeeper 刪除所有 Storm 中繼資料。
+* **stormmeta_delete.cmd**︰ 從 Zookeeper 刪除所有 Storm 中繼資料。
 
 匯出匯入可讓您在需要刪除叢集，但又想要在讓新的叢集回到線上時從中樞的目前位移繼續處理時，保存檢查點資料。
 
@@ -560,4 +560,5 @@ EventHubSpout 會定期將其狀態設定檢查點到 Zookeeper 節點，這會�
 
 * [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)
  
+
 

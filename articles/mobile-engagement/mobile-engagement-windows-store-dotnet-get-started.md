@@ -19,10 +19,10 @@
 # 開始使用適用於 Windows 通用 App 的 Azure Mobile Engagement
 
 > [AZURE.SELECTOR]
-- [Windows 通用](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Universal Windows](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
-- [iOS |Obj C](mobile-engagement-ios-get-started.md)
-- [iOS |Swift](mobile-engagement-ios-swift-get-started.md)
+- [iOS | Obj C](mobile-engagement-ios-get-started.md)
+- [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
 - [Android](mobile-engagement-android-get-started.md)
 - [Cordova](mobile-engagement-cordova-get-started.md)
 
@@ -34,9 +34,9 @@
 + Visual Studio 2013
 + [MicrosoftAzure.MobileEngagement] Nuget 封裝
 
-> [AZURE.IMPORTANT] 完成本教學課程是為 Windows 通用應用程式所有其他 Mobile Engagement 教學課程的先決條件。 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
+> [AZURE.IMPORTANT] 完成本教學課程是為 Windows 通用應用程式所有其他 Mobile Engagement 教學課程的先決條件。 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
 
-##<a id="setup-azme"></a>設定 Windows 通用 app 的 Mobile Engagement
+##<a id="setup-azme"></a>設定 Windows 通用 App 的 Mobile Engagement
 
 [AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -60,9 +60,9 @@
 
 ###將您的應用程式連線至 Mobile Engagement 後端
 
-1. 在專案中安裝 [MicrosoftAzure.MobileEngagement] nuget 封裝。 如果您是以 Windows 和 Windows Phone 兩個平台為目標，您就必須對這些專案執行此操作。 對於 Windows 8.x 和 Windows Phone 8.1，相同的 Nuget 封裝會在每個專案中放置正確的平台專屬二進位檔。
+1. 安裝 [MicrosoftAzure.MobileEngagement] nuget 封裝，在您的專案。 如果您是以 Windows 和 Windows Phone 兩個平台為目標，您就必須對這些專案執行此操作。 對於 Windows 8.x 和 Windows Phone 8.1，相同的 Nuget 封裝會在每個專案中放置正確的平台專屬二進位檔。
 
-2. 開啟 **Package.appxmanifest** ，並確定，並加入下列功能:
+2. 開啟 **Package.appxmanifest** ，並確定，並加入下列功能 ︰
 
         Internet (Client)
 
@@ -89,7 +89,7 @@
              //... rest of the code
            }
 
-    c. 初始化 SDK 中的 **OnLaunched** 方法:
+    c. 初始化 SDK 中的 **OnLaunched** 方法 ︰
 
             protected override void OnLaunched(LaunchActivatedEventArgs e)
             {
@@ -98,7 +98,7 @@
               //... rest of the code
             }
 
-    c. 中插入以下 **OnActivated** 方法並新增此方法，如果它已經不存在:
+    c. 中插入以下 **OnActivated** 方法並新增此方法，如果它已經不存在 ︰
 
             protected override void OnActivated(IActivatedEventArgs e)
             {
@@ -107,11 +107,11 @@
               //... rest of the code
             }
 
-##<a id="monitor"></a>若要啟用即時監視
+##<a id="monitor"></a>啟用即時監視
 
 若要開始傳送資料並確定使用者正在使用，您必須至少傳送一個畫面 (活動) 到 Mobile Engagement 後端。
 
-1.  在 **MainPage.xaml.cs**, ，新增下列 `using` 陳述式:
+1.  在 **MainPage.xaml.cs**, ，新增下列 `using` 陳述式 ︰
 
         using Microsoft.Azure.Engagement.Overlay;
 
@@ -133,20 +133,20 @@
 
 [AZURE.INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-##<a id="integrate-push"></a>啟用推播通知與應用程式內傳訊
+##<a id="integrate-push"></a>啟用推播通知與 App 內傳訊
 
 Mobile Engagement 可讓您透過推播通知和應用程式內傳訊，於活動進行時與使用者互動和觸達。 此模組在 Mobile Engagement 入口網站中稱為觸達 (REACH)。
 以下各節將設定您的用程式來接收它們。
 
 ###啟用您的應用程式接收 WNS 推播通知
 
-1. 在 `Package.appxmanifest` 中檔案 **應用程式** 索引標籤中，於 **通知**, ，請將 **支援快顯通知:** 至 **是**
+1. 在 `Package.appxmanifest` 中檔案 **應用程式** 索引標籤中，於 **通知**, ，請將 **支援快顯通知 ︰** 至 **是**
 
     ![][5]
 
 ###初始化 REACH SDK
 
-在 `App.xaml.cs`, ，呼叫 **EngagementReach.Instance.Init(e);** 中 **InitEngagement** 代理程式初始化後的函式:
+在 `App.xaml.cs`, ，呼叫 **EngagementReach.Instance.Init(e);** 中 **InitEngagement** 代理程式初始化後的函式 ︰
 
         private void InitEngagement(IActivatedEventArgs e)
         {
@@ -158,7 +158,7 @@ Mobile Engagement 可讓您透過推播通知和應用程式內傳訊，於活�
 
 ###授與 Mobile Engagement 存取權以傳送通知
 
-1. 在您的 web 瀏覽器中開啟 [Windows 市集開發人員中心] 登入並建立一個帳戶，如有必要。
+1. 開啟 [Windows Store Dev Center] 網頁瀏覽器登入並建立一個帳戶，如有必要。
 2. 按一下 [ **儀表板** 右上角，然後按一下 [ **建立新的應用程式** 從左方的面板中的功能表。 
 
     ![][9]
@@ -179,7 +179,7 @@ Mobile Engagement 可讓您透過推播通知和應用程式內傳訊，於活�
 
     ![][13]
 
-6. 瀏覽至 **設定** 您的 Mobile Engagement 入口網站，然後按一下 **原生推送** 左邊的區段。 然後按一下 [ **編輯** 按鈕，輸入您 **封裝安全性識別碼 (SID)** 和 **秘密金鑰** ，如下所示:
+6. 瀏覽至 **設定** 您的 Mobile Engagement 入口網站，然後按一下 **原生推送** 左邊的區段。 然後按一下 [ **編輯** 按鈕，輸入您 **封裝安全性識別碼 (SID)** 和 **秘密金鑰** ，如下所示 ︰
 
     ![][6]
 
@@ -187,7 +187,7 @@ Mobile Engagement 可讓您透過推播通知和應用程式內傳訊，於活�
 
     ![][7]
 
-##<a id="send"></a>將通知傳送至您的應用程式
+##<a id="send"></a>傳送通知至應用程式
 
 [AZURE.INCLUDE [Create Windows Push campaign](../../includes/mobile-engagement-windows-push-campaign.md)]
 
@@ -215,6 +215,7 @@ Mobile Engagement 可讓您透過推播通知和應用程式內傳訊，於活�
 [11]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push.png
 [12]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_1.png
 [13]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_creds.png
+
 
 
 

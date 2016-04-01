@@ -20,7 +20,7 @@
 Azure RemoteApp 會使用 Windows Server 2012 R2 範本映像來主控您要與使用者共用的所有程式。 若要建立自訂 RemoteApp 範本映像，您可以從現有的映像建立，或是建立新映像。 
 
 
-> [AZURE.TIP] 您知道您可以從 Azure VM 建立映像嗎? 這是真的，而且它可以減少匯入映像所花費的時間。 查明步驟 [這裡](remoteapp-image-on-azurevm.md)。
+> [AZURE.TIP] 您知道您可以從 Azure VM 建立映像嗎？ 這是真的，而且它可以減少匯入映像所花費的時間。 查明步驟 [這裡](remoteapp-image-on-azurevm.md)。
 
 可上傳用於 Azure RemoteApp 的映像有下列需求：
 
@@ -63,7 +63,7 @@ Azure RemoteApp 會使用 Windows Server 2012 R2 範本映像來主控您要與�
 7.  安裝及設定您的應用程式。 若要更輕鬆地共用應用程式，新增任何應用程式或您要共用的程式 **啟動** 映像，特別是在 **%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs 的功能表。
 8.  執行您的應用程式所需的任何其他 Windows 設定。
 9.  停用「加密檔案系統 (EFS)」。
-10. **必要:** 前往 Windows Update 並安裝所有重要的更新。
+10. **必要 ︰** 前往 Windows Update 並安裝所有重要的更新。
 9.  進行映像的 SYSPREP 處理。
 
 建立新映像的詳細步驟為：
@@ -77,8 +77,8 @@ Azure RemoteApp 會使用 Windows Server 2012 R2 範本映像來主控您要與�
 
             此作業會執行數秒。 VHD 建立完成後，您會在 [磁碟管理] 主控台中看見不具任何磁碟機代號、狀態為「未初始化」的新磁碟。
 
-        - 以滑鼠右鍵按一下磁碟 (不是未配置空間)，以及 [ **初始化磁碟**。 選取 **MBR** (主開機記錄) 做為磁碟分割樣式，然後按一下 **確定**。
-        - 建立新的磁碟區: 以滑鼠右鍵按一下未配置的空間，然後按一下 **新增簡單磁碟區**。 您可以接受精靈中的預設值，但請務必指派磁碟機代號，以避免在上傳範本映像時發生問題。
+        - 以滑鼠右鍵按一下磁碟 （不是未配置空間），以及 [ **初始化磁碟**。 選取 **MBR** （主開機記錄） 做為磁碟分割樣式，然後按一下 **確定**。
+        - 建立新的磁碟區 ︰ 以滑鼠右鍵按一下未配置的空間，然後按一下 **新增簡單磁碟區**。 您可以接受精靈中的預設值，但請務必指派磁碟機代號，以避免在上傳範本映像時發生問題。
         - 以滑鼠右鍵按一下磁碟，然後按一下 **中斷連結 VHD**。
 
 
@@ -131,7 +131,7 @@ Azure RemoteApp 會使用 Windows Server 2012 R2 範本映像來主控您要與�
 
     **C:\Windows\System32\sysprep\sysprep.exe /generalize /oobe /shutdown**
 
-    **注意:** 不使用 **/mode: vm** 即使這是虛擬機器的 SYSPREP 命令的參數。
+    **注意 ︰** 不使用 **/mode: vm** 即使這是虛擬機器的 SYSPREP 命令的參數。
 
 
 ## 後續步驟 ##
@@ -141,3 +141,4 @@ Azure RemoteApp 會使用 Windows Server 2012 R2 範本映像來主控您要與�
 - [如何建立 RemoteApp 的混合式收藏](remoteapp-create-hybrid-deployment.md)
 - [如何建立 RemoteApp 的雲端收藏](remoteapp-create-cloud-deployment.md)
  
+

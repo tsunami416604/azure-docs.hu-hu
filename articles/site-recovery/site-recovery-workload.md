@@ -39,7 +39,7 @@ Azure Site Recovery 有許多功能都可以協助您實作應用程式層級的
 
 Site Recovery 複寫技術與虛擬機器中執行的任何應用程式相容。 此外，我們已經與其他應用程式產品小組合作完成其他測試，以進一步支援每個應用程式。
 
-**工作負載** | <p>**複寫 HYPER-V Vm**</p> <p>**(至次要站台)**</p> | <p>**複寫 HYPER-V Vm**</p> <p>**(至 Azure)**</p> | <p>**複製 VMware Vm**</p> <p>**(至次要站台)**</p> | <p>**複製 VMware Vm**</p><p>**(至 Azure)**</p>
+**工作負載** | <p>**複寫 HYPER-V Vm**</p> <p>**（至次要站台）**</p> | <p>**複寫 HYPER-V Vm**</p> <p>**（至 Azure)**</p> | <p>**複製 VMware Vm**</p> <p>**（至次要站台）**</p> | <p>**複製 VMware Vm**</p><p>**（至 Azure)**</p>
 ---|---|---|---|---
 Active Directory、DNS | Y | Y | Y | Y 
 Web 應用程式 (IIS、SQL) | Y | Y | Y | Y
@@ -48,7 +48,7 @@ Sharepoint | Y | Y | Y | Y
 <p>SAP</p><p>非叢集將 SAP 站台複寫至 Azure</p> | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) | Y (由 Microsoft 測試)
 Exchange (非 DAG) | Y | 敬請期待 | Y | Y
 遠端桌面/VDI | Y | Y | Y | N/A 
-<p>Linux</p> <p>(作業系統和應用程式)</p> | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) 
+<p>Linux</p> <p>（作業系統和應用程式）</p> | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) 
 Dynamics AX | Y | Y | Y | Y
 Dynamics CRM | Y | 敬請期待 | Y | 敬請期待
 Oracle | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) | Y (由 Microsoft 測試) | Y (由 Microsoft 測試)
@@ -120,5 +120,6 @@ Microsoft Exchange 包含高可用性和災害復原的內建支援。 Exchange 
 - 藉由建立類似生產的複本隨選來測試和偵錯應用程式，以簡化 SAP 開發和測試。
 
 [詳細資訊](http://aka.ms/asr-sap)
+
 
 

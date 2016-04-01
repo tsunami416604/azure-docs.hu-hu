@@ -86,7 +86,7 @@ API 是透過您經由 Azure 傳統入口網站存取的 API 發行者入口網�
 
 ##加入 RRS 作業
 
-首先建立 AzureML RRS 服務的作業。 選取 **POST** 為 **HTTP 指令動詞**。 型別 **中 /services/ {服務} / 執行? api 版本 = {apiversion} & 詳細資料 = {details}** 為 **URL 範本**。 型別 **RRS 執行** 為 **顯示名稱**。
+首先建立 AzureML RRS 服務的作業。 選取 **POST** 為 **HTTP 指令動詞**。 型別 **中 /services/ {服務} / 執行？ api 版本 = {apiversion} & 詳細資料 = {details}** 為 **URL 範本**。 型別 **RRS 執行** 為 **顯示名稱**。
 
 ![加入 RRS 作業簽章](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
@@ -100,19 +100,19 @@ API 是透過您經由 Azure 傳統入口網站存取的 API 發行者入口網�
 
 ###提交 (但不啟動) 批次執行工作
 
-按一下 [ **加入作業** 將 AzureML BES 作業加入至 API。 選取 **POST** 的 **HTTP 指令動詞**。 型別 **中 /services/ {服務} / 作業? api 版本 = {apiversion}** 的 **URL 範本**。 型別 **BES 提交** 的 **顯示名稱**。 按一下 [ **回應** > **新增** 左邊，然後選取 **200 確定**。 按一下 [ **儲存** 儲存這個作業。
+按一下 [ **加入作業** 將 AzureML BES 作業加入至 API。 選取 **POST** 的 **HTTP 指令動詞**。 型別 **中 /services/ {服務} / 作業？ api 版本 = {apiversion}** 的 **URL 範本**。 型別 **BES 提交** 的 **顯示名稱**。 按一下 [ **回應** > **新增** 左邊，然後選取 **200 確定**。 按一下 [ **儲存** 儲存這個作業。
 
 ###啟動批次執行工作
 
-按一下 [ **加入作業** 將 AzureML BES 作業加入至 API。 選取 **POST** 的 **HTTP 指令動詞**。 型別 **中 /services/ {服務} /workspaces/{workspace}/services/{service}/jobs/{jobid}/start 啟動? api 版本 = {apiversion}** 的 **URL 範本**。 型別 **BES 啟動** 的 **顯示名稱**。 按一下 [ **回應** > **新增** 左邊，然後選取 **200 確定**。 按一下 [ **儲存** 儲存這個作業。
+按一下 [ **加入作業** 將 AzureML BES 作業加入至 API。 選取 **POST** 的 **HTTP 指令動詞**。 型別 **中 /services/ {服務} /workspaces/{workspace}/services/{service}/jobs/{jobid}/start 啟動？ api 版本 = {apiversion}** 的 **URL 範本**。 型別 **BES 啟動** 的 **顯示名稱**。 按一下 [ **回應** > **新增** 左邊，然後選取 **200 確定**。 按一下 [ **儲存** 儲存這個作業。
 
 ###取得批次執行工作的狀態或結果
 
-按一下 [ **加入作業** 將 AzureML BES 作業加入至 API。 選取 **取得** 的 **HTTP 指令動詞**。 型別 **中 /services/ {服務} /workspaces/{workspace}/services/{service}/jobs/{jobid}/start? api 版本 = {apiversion}** 的 **URL 範本**。 型別 **BES 狀態** 的 **顯示名稱**。 按一下 [ **回應** > **新增** 左邊，然後選取 **200 確定**。 按一下 [ **儲存** 儲存這個作業。
+按一下 [ **加入作業** 將 AzureML BES 作業加入至 API。 選取 **取得** 的 **HTTP 指令動詞**。 型別 **中 /services/ {服務} /workspaces/{workspace}/services/{service}/jobs/{jobid}/start？ api 版本 = {apiversion}** 的 **URL 範本**。 型別 **BES 狀態** 的 **顯示名稱**。 按一下 [ **回應** > **新增** 左邊，然後選取 **200 確定**。 按一下 [ **儲存** 儲存這個作業。
 
 ###刪除批次執行工作
 
-按一下 [ **加入作業** 將 AzureML BES 作業加入至 API。 選取 **刪除** 的 **HTTP 指令動詞**。 型別 **中 /services/ {服務} /workspaces/{workspace}/services/{service}/jobs/{jobid}/start? api 版本 = {apiversion}** 的 **URL 範本**。 型別 **BES 刪除** 的 **顯示名稱**。 按一下 [ **回應** > **新增** 左邊，然後選取 **200 確定**。 按一下 [ **儲存** 儲存這個作業。
+按一下 [ **加入作業** 將 AzureML BES 作業加入至 API。 選取 **刪除** 的 **HTTP 指令動詞**。 型別 **中 /services/ {服務} /workspaces/{workspace}/services/{service}/jobs/{jobid}/start？ api 版本 = {apiversion}** 的 **URL 範本**。 型別 **BES 刪除** 的 **顯示名稱**。 按一下 [ **回應** > **新增** 左邊，然後選取 **200 確定**。 按一下 [ **儲存** 儲存這個作業。
 
 ##透過開發人員入口網站呼叫作業
 
@@ -154,7 +154,7 @@ API 是透過您經由 Azure 傳統入口網站存取的 API 發行者入口網�
 --- | ---
 這是美好的一天 | 1 1 2 2 0 2 0 1
 
-首先，使用您選擇的瀏覽器巡覽至: [https://studio.azureml.net/](https://studio.azureml.net/) 並輸入您的認證進行登入。 接下來，建立新的空白實驗。
+首先，使用您選擇的瀏覽器巡覽至 ︰ [https://studio.azureml.net/](https://studio.azureml.net/) 並輸入您的認證進行登入。 接下來，建立新的空白實驗。
 
 ![搜尋實驗範本](./media/machine-learning-manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
@@ -198,7 +198,7 @@ API 是透過您經由 Azure 傳統入口網站存取的 API 發行者入口網�
 
 ###測試 Web 服務
 
-AzureML Web 服務是由 RSS (要求/回應服務) 和 BES (批次執行服務) 端點所組成。 RSS 適用於同步執行。 BES 適用於非同步工作執行。 若要測試您的 web 服務使用下面的範例 Python 原始碼，您可能需要下載並安裝 Azure SDK for Python (請參閱: [如何安裝 Python](python-how-to-install.md))。
+AzureML Web 服務是由 RSS (要求/回應服務) 和 BES (批次執行服務) 端點所組成。 RSS 適用於同步執行。 BES 適用於非同步工作執行。 若要測試您的 web 服務使用下面的範例 Python 原始碼，您可能需要下載並安裝 Azure SDK for Python (請參閱 ︰ [如何安裝 Python](python-how-to-install.md))。
 
 您也需要 **工作區**, ，**服務**, ，和 **api 金鑰** 到下面的範例原始碼的實驗。 依序按一下 [尋找] 工作區和服務 **要求/回應** 或 **批次執行** 的 web 服務儀表板中的實驗。
 
@@ -383,4 +383,5 @@ AzureML Web 服務是由 RSS (要求/回應服務) 和 BES (批次執行服務) 
         time.sleep(1) # wait one second
     return
     invokeBatchExecutionService()
+
 

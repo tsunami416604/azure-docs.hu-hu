@@ -82,7 +82,7 @@ StorSimple Manager 登陸頁面會列出所有 StorSimple Manager 服務，您�
 
 將服務註冊金鑰保存在安全的位置。 您需要這個金鑰，以及服務資料加密金鑰，才能對額外裝置註冊此服務。 取得服務註冊金鑰之後，您必須透過 Windows PowerShell for StorSimple 介面設定裝置。
 
-如需有關如何使用這個登錄機碼的詳細資訊，請參閱 [步驟 3: 設定和註冊裝置，透過 Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-2-configure-and-register-the-device-through-windows-powershell-for-storsimple)。
+如需有關如何使用這個登錄機碼的詳細資訊，請參閱 [步驟 3 ︰ 設定和註冊裝置，透過 Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-2-configure-and-register-the-device-through-windows-powershell-for-storsimple)。
 
 ## 重新產生服務註冊金鑰
 
@@ -114,3 +114,4 @@ StorSimple Manager 登陸頁面會列出所有 StorSimple Manager 服務，您�
 - 深入了解如何 [使用 StorSimple Manager 服務來管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
 
  
+

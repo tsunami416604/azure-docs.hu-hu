@@ -24,7 +24,7 @@
 本文將說明如何透過 Azure入口網站將新的和現有的磁碟連接至虛擬機器。 這麼做之前，請先檢閱下列提示：
 
 - 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](virtual-machines-size-specs.md)。
-- 若要使用進階儲存體，您需要 DS 系列或 GS 系列的虛擬機器。 您可以使用進階或標準儲存體帳戶的磁碟搭配這些虛擬機器。 僅特定地區可用進階儲存體。 如需詳細資訊，請參閱 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](../storage/storage-premium-storage-preview-portal.md)。
+- 若要使用進階儲存體，您需要 DS 系列或 GS 系列的虛擬機器。 您可以使用進階或標準儲存體帳戶的磁碟搭配這些虛擬機器。 僅特定地區可用進階儲存體。 如需詳細資訊，請參閱 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](../storage/storage-premium-storage-preview-portal.md)。
 - 連接至虛擬機器的磁碟實際上是 Azure 儲存體帳戶中的 .vhd 檔案。 如需詳細資訊，請參閱 [有關磁碟和虛擬機器的 Vhd](virtual-machines-disks-vhds.md)。
 - 對於新的磁碟，當您連接的時候 Azure 會建立該磁碟，所以您不需要建立它。
 - 對於現有的磁碟，該 .vhd 檔案必須可在 Azure 儲存體帳戶中取得。 您可以使用現有的磁碟 (若尚未連接至其他虛擬機器)，或上傳您自己的 .vhd 檔案至儲存體帳戶。
@@ -79,8 +79,8 @@
 
 新增磁碟之後，您必須準備將它用於虛擬機器的作業系統：
 
-- 適用於 Linux，請參閱 「 如何: 初始化新的資料磁碟，在 Linux 中 「 在此 [文章](virtual-machines-linux-how-to-attach-disk.md)。
-- 適用於 Windows，請參閱 「 如何: 初始化新的資料磁碟在 Windows Server 「 在此 [文章](storage-windows-attach-disk.md)。
+- 適用於 Linux，請參閱 「 如何 ︰ 初始化新的資料磁碟，在 Linux 中 「 在此 [文章](virtual-machines-linux-how-to-attach-disk.md)。
+- 適用於 Windows，請參閱 「 如何 ︰ 初始化新的資料磁碟在 Windows Server 「 在此 [文章](storage-windows-attach-disk.md)。
 
 ## 其他資源
 
@@ -89,4 +89,5 @@
 <!--Link references-->
 
 [About Azure Storage Accounts]: ../storage-whatis-account/
+
 

@@ -19,11 +19,11 @@
 
 *Application Insights 目前僅供預覽。*
 
-[價格][pricing] 的 [Visual Studio 應用程式的見解][start] 根據每個應用程式的資料量。 我們提供實質的免費層，讓您在該層次中使用大部分的功能，但會有一些限制。
+[定價][pricing] 的 [Visual Studio Application Insights][start] 根據每個應用程式的資料量。 我們提供實質的免費層，讓您在該層次中使用大部分的功能，但會有一些限制。
 
 每項 Application Insights 資源的收費方式採個別服務計價，並計入您 Azure 訂用帳戶的帳單。
 
-[計價的配置，請參閱][pricing]。
+[請參閱定價機制][pricing]。
 
 ## 檢視 Application Insights 資源的配額和價格方案
 
@@ -33,10 +33,10 @@
 
 您選擇的定價結構描述會影響：
 
-* [每月的配額](#monthly-quota) -telemetry，您可以分析每個月的量。
-* [資料速率](#data-rate) -從您的應用程式的資料可以處理的最大速率。
-* [保留](#data-retention) -如何在應用程式的見解入口網站，供您檢視會保留長的資料。
-* [連續的匯出](#continuous-export) -是否可以將資料匯出到其他的工具及服務。
+* [每月配額](#monthly-quota) -遙測，您可以分析每個月的數量。
+* [資料速率](#data-rate) -從應用程式可以處理的最大速率。
+* [保留](#data-retention) -long 資料是保存在 Application Insights 入口網站，讓您檢視。
+* [連續匯出](#continuous-export) -是否可以將資料匯出到其他工具和服務。
 
 這些限制會分別為每個 Application Insights 資源加以設定。
 
@@ -49,22 +49,22 @@
 
 ## 每月配額
 
-* 您的應用程式每月最多可以將指定的遙測資料量上傳至 Application Insights。 請參閱 [價格配置][pricing] 的實際數字。 
+* 您的應用程式每月最多可以將指定的遙測資料量上傳至 Application Insights。 請參閱 [定價機制][pricing] 實際數字。 
 * 配額取決於您所選擇的定價層。
 * 配額的計算是從每個月第一天的午夜起 (UTC)。
 * 資料點圖表會顯示您這個月已使用多少配額。
-* 配額以 *資料點。*不論您的程式碼，或其中一個標準遙測模組是否有明確呼叫，單一資料點都是其中一種追蹤方法的呼叫。 資料點包括：
+* 配額以 *資料點。* 不論您的程式碼，或其中一個標準遙測模組是否有明確呼叫，單一資料點都是其中一種追蹤方法的呼叫。 資料點包括：
  * 您在中看到每個資料列 [診斷搜尋](app-insights-diagnostic-search.md)。 
- * 每個未經處理的度量單位的 [公制](app-insights-metrics-explorer.md) 如效能計數器。 (您在圖表看到的點通常是多個原始資料點的彙總)。
- * 每個點上的 [(可用性) 的 web 測試](app-insights-monitor-web-app-availability.md) 圖表。 
-* *工作階段資料* 不計入的配額。 這包括使用者、工作階段、環境和裝置資料的計數。
+ * 每個原始測量 [度量](app-insights-metrics-explorer.md) 效能計數器等。 (您在圖表看到的點通常是多個原始資料點的彙總)。
+ * 在每個點 [web 測試 （可用性）](app-insights-monitor-web-app-availability.md) 圖表。 
+* *工作階段資料* 不會計入配額。 這包括使用者、工作階段、環境和裝置資料的計數。
 
 
 ### 超額部分
 
 如果您的應用程式傳送的配額超過每月上限，您可以：
 
-* 為額外的資料付費： 請參閱 [價格配置][pricing] 如需詳細資訊。 您可以預先選擇此選項。 免費定價層中沒有此選項。
+* 為額外的資料付費： 請參閱 [定價機制][pricing] 如需詳細資訊。 您可以預先選擇此選項。 免費定價層中沒有此選項。
 * 升級定價層。
 * 不做任何動作。 系統仍會繼續記錄工作階段資料，但診斷搜尋或計量瀏覽器中將不會顯示其他資料。
 
@@ -80,12 +80,12 @@
 
 ## 資料速率
 
-除了每月配額，還有資料速率的節流限制。 可用的 [價格層][pricing] 限制為 200 點每秒平均超過 5 分鐘的資料，並為它付費層 500 kb/s 平均超過 1 分鐘。 
+除了每月配額，還有資料速率的節流限制。 針對免費 [定價層][pricing] 限制為 200 個資料點每秒平均超過 5 分鐘，然後針對它付費層 500/s 平均值超過 1 分鐘。 
 
 有三個個別計數的貯體：
 
 * [TrackTrace 呼叫](app-insights-api-custom-events-metrics.md#track-trace) 和 [擷取記錄檔](app-insights-asp-net-trace-logs.md)
-* [例外狀況](app-insights-api-custom-events-metrics.md#track-exception), 、 限制為 50 點/s。
+* [例外狀況](app-insights-api-custom-events-metrics.md#track-exception), ，限制為 50 點/s。
 * 所有其他遙測 (頁面檢視、工作階段、要求、相依性、度量、自訂事件、Web 測試結果)。
 
 如果您的應用程式傳送超過限制的數量達數分鐘，某些資料可能會被捨棄。 您會看到通知，警告這種情況的發生。
@@ -95,14 +95,14 @@
 如果您遇到節流限制，以下是您可以執行的一些事項：
 
 * 使用 [取樣](app-insights-sampling.md)。 這項技術可減少資料率而不會曲解您的計量，且不會中斷在 [搜尋] 中於相關項目之間瀏覽的能力。
-* 關閉您不需要的集合模組 [編輯 ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)。 例如，您可能會決定效能計數器或相依性資料是不必要的。
-* 預先彙總度量。 如果您在應用程式中呼叫 TrackMetric，您可以使用接受批次測量之平均及標準差計算的多載來減少流量。 或者，您可以使用 [預先彙總套件](https://www.myget.org/gallery/applicationinsights-sdk-labs)。 
+* 關閉您不需要收集模組 [編輯 ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)。 例如，您可能會決定效能計數器或相依性資料是不必要的。
+* 預先彙總度量。 如果您在應用程式中呼叫 TrackMetric，您可以使用接受批次測量之平均及標準差計算的多載來減少流量。 或者您可以使用 [預先彙總套件](https://www.myget.org/gallery/applicationinsights-sdk-labs)。 
 
 
 ### 名稱限制
 
-1.  您的應用程式具有最多 200 個唯一計量名稱和 200 個唯一屬性名稱。 度量單位包括透過 TrackMetric，以及其他的資料型別，例如事件上的測量單位的資料傳送。  [度量資訊和屬性名稱][api] 是全域性的每個檢測索引鍵不只限於資料型別。
-2.  [屬性][apiproperties] 可以用於篩選，而且只有在他們具有 100 個唯一的值，每個屬性時，才分組。 唯一值超過 100 之後，屬性仍可用於搜尋與篩選，但無法用於篩選器。
+1.  您的應用程式具有最多 200 個唯一計量名稱和 200 個唯一屬性名稱。 度量包括透過 TrackMetric，以及其他資料類型，例如事件上的度量單位傳送的資料。  [計量和屬性名稱][api] 全域每個檢測金鑰不只限於資料類型。
+2.  [屬性][apiproperties] 可以用於篩選和分組方式，只有在具有少於 100 個唯一值，每個屬性時。 唯一值超過 100 之後，屬性仍可用於搜尋與篩選，但無法用於篩選器。
 3.  標準屬性，例如要求名稱和網頁 URL 會限制為每週 1000 個唯一值。 超過 1000 個唯一值之後，額外值都會標示為「其他值」。 原始值仍然可以用於全文檢索搜尋和篩選。
 
 ## 資料保留
@@ -118,7 +118,7 @@
 
 ## 檢視 Azure 訂用帳戶的帳單
 
-Application Insights 費用會加到您的 Azure 帳單中。 您所見的詳細資料您 Azure 的 Azure 的入口網站，或在帳單寄送區段上向收取費用 [Azure 帳單寄送的入口網站](https://account.windowsazure.com/Subscriptions)。 
+Application Insights 費用會加到您的 Azure 帳單中。 帳單帳務] 區段中的 Azure 入口網站，或是在您的 Azure 的詳細資料請參閱 < [Azure 計費入口網站](https://account.windowsazure.com/Subscriptions)。 
 
 ![選擇側邊功能表中的 [帳務]。](./media/app-insights-pricing/02-billing.png)
 
@@ -135,3 +135,4 @@ Application Insights 費用會加到您的 Azure 帳單中。 您所見的詳細
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 
  
+

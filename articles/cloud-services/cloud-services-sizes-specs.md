@@ -31,10 +31,10 @@ Azure 虛擬機器和雲端服務是 Azure 所提供數種計算資源類型的�
 
 *   Dv2 系列是原始 D 系列的延續，擁有更強大的 CPU。 Dv2 系列 CPU 比 D 系列 CPU 快約 35%。 它以最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 處理器為基礎，搭配 Intel Turbo Boost Technology 2.0，最高可達 3.2 GHz。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
 
-    Dv2 系列的區域可用性會根據這個排程:
-        10 月 ' 15: 美國東部 2、 美國中部、 美國北部中部、 美國西部
-        11 月 ' 15: 美國東部、 北歐、 西歐
-        1 月 ' 16: 美國中南部、 APAC 東部、 APAC 東南亞、 日本東部、 日本西部、
+    Dv2 系列的區域可用性會根據這個排程 ︰
+        10 月 ' 15 ︰ 美國東部 2、 美國中部、 美國北部中部、 美國西部
+        11 月 ' 15 ︰ 美國東部、 北歐、 西歐
+        1 月 ' 16 ︰ 美國中南部、 APAC 東部、 APAC 東南亞、 日本東部、 日本西部、
                 澳洲東部、 澳大利亞東南部巴西南部
 
 * 因系統需求，Web 角色和背景工作角色比 Azure 虛擬機器需要更多的暫存磁碟空間。 系統檔案保留 4 GB 的空間供 Windows 分頁檔和 2 GB 的空間供 Windows 傾印檔案。  
@@ -57,10 +57,10 @@ Azure 虛擬機器和雲端服務是 Azure 所提供數種計算資源類型的�
 |A5|2|14 GB|OS = 客體 OS 大小<br/>本機資源 = 496664 MB<br/>應用程式 = 大約 1.5 GB|
 |A6|4|28 GB|OS = 客體 OS 大小<br/>本機資源 = 1018904 MB<br/>應用程式 = 大約 1.5 GB|
 |A7|8|56 GB|OS = 客體 OS 大小<br/>本機資源 = 2083864 MB<br/>應用程式 = 大約 1.5 GB
-|A8|8|56 GB|OS = 客體 OS 大小<br/>本機資源 = 1856172 MB<br/>應用程式 = 大約 1.5 GB<blockquote> 注意: 如和考量，使用此大小的相關資訊，請參閱 <a href="http://go.microsoft.com/fwlink/p/?linkid=328042">關於 A8、A9、A10 和 A11 計算密集型執行個體</a>.</blockquote>|
-|A9|16|112 GB|OS = 客體 OS 大小<br/>本機資源 = 1856172 MB<br/>應用程式 = 大約 1.5 GB<blockquote> 注意: 如和考量，使用此大小的相關資訊，請參閱 <a href="http://go.microsoft.com/fwlink/p/?linkid=328042">關於 A8、A9、A10 和 A11 計算密集型執行個體</a>.</blockquote>|
-|A10|8|56 GB|OS = 客體 OS 大小<br/>本機資源 = 1856172 MB<br/>應用程式 = 大約 1.5 GB<blockquote> 注意: 如和考量，使用此大小的相關資訊，請參閱 <a href="http://go.microsoft.com/fwlink/p/?linkid=328042">關於 A8、A9、A10 和 A11 計算密集型執行個體</a>.</blockquote>|
-|A11|16|112 GB|OS = 客體 OS 大小<br/>本機資源 = 1856172 MB<br/>應用程式 = 大約 1.5 GB<blockquote> 注意: 如和考量，使用此大小的相關資訊，請參閱 <a href="http://go.microsoft.com/fwlink/p/?linkid=328042">關於 A8、A9、A10 和 A11 計算密集型執行個體</a>.</blockquote>|
+|A8|8|56 GB|OS = 客體 OS 大小<br/>本機資源 = 1856172 MB<br/>應用程式 = 大約 1.5 GB<blockquote> 注意 ︰ 如和考量，使用此大小的相關資訊，請參閱 <a href="http://go.microsoft.com/fwlink/p/?linkid=328042">關於 A8、 A9、 A10 和 A11 計算密集型執行個體</a>。</blockquote>|
+|A9|16|112 GB|OS = 客體 OS 大小<br/>本機資源 = 1856172 MB<br/>應用程式 = 大約 1.5 GB<blockquote> 注意 ︰ 如和考量，使用此大小的相關資訊，請參閱 <a href="http://go.microsoft.com/fwlink/p/?linkid=328042">關於 A8、 A9、 A10 和 A11 計算密集型執行個體</a>。</blockquote>|
+|A10|8|56 GB|OS = 客體 OS 大小<br/>本機資源 = 1856172 MB<br/>應用程式 = 大約 1.5 GB<blockquote> 注意 ︰ 如和考量，使用此大小的相關資訊，請參閱 <a href="http://go.microsoft.com/fwlink/p/?linkid=328042">關於 A8、 A9、 A10 和 A11 計算密集型執行個體</a>。</blockquote>|
+|A11|16|112 GB|OS = 客體 OS 大小<br/>本機資源 = 1856172 MB<br/>應用程式 = 大約 1.5 GB<blockquote> 注意 ︰ 如和考量，使用此大小的相關資訊，請參閱 <a href="http://go.microsoft.com/fwlink/p/?linkid=328042">關於 A8、 A9、 A10 和 A11 計算密集型執行個體</a>。</blockquote>|
 |標準_D1|1|3.5 GB|OS = 客體 OS 大小<br/>本機資源 = 46104 MB<br/>應用程式 = 大約 1.5 GB|
 |標準_D2|2|7 GB|OS = 客體 OS 大小<br/>本機資源 = 97304 MB<br/>應用程式 = 大約 1.5 GB|
 |標準_D3|4|14 GB|OS = 客體 OS 大小<br/>本機資源 = 199704 MB<br/>應用程式 = 大約 1.5 GB|
@@ -93,4 +93,5 @@ Azure 虛擬機器和雲端服務是 Azure 所提供數種計算資源類型的�
 ## 後續步驟
 
 [設定 Azure 的雲端服務](https://msdn.microsoft.com/library/hh124108)  
+
 

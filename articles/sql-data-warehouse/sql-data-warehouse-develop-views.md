@@ -54,16 +54,16 @@ RENAME OBJECT DimDate_New TO DimDate;
 ## 限制
 SQL 資料倉儲中的檢視僅限中繼資料使用。 
 
-因此無法使用下列選項:
+因此無法使用下列選項︰
 -   沒有結構描述繫結選項
 -   無法透過檢視更新基底資料表
 -   無法在暫存資料表上建立檢視
--   不支援 expand / NOEXPAND 提示
--   SQL 資料倉儲中沒有索引的檢視
+-   不支援 EXPAND / NOEXPAND 提示
+-   SQL 資料倉儲中沒有索引檢視表
 
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [SQL 資料倉儲開發概觀] []。
+如需更多開發秘訣，請參閱 [SQL 資料倉儲開發概觀][]。
 
 <!--Image references-->
 
@@ -73,6 +73,7 @@ SQL 資料倉儲中的檢視僅限中繼資料使用。
 <!--MSDN references-->
 
 <!--Other Web references-->
+
 
 
 

@@ -30,7 +30,7 @@ Azure RemoteApp 訂閱包含三個範本映像：
 
 閱讀每個映像包含之內容的詳細資訊。
 
-## Windows Server 2012 R2 (「 vanilla 映像 」)
+## Windows Server 2012 R2 （「 vanilla 映像 」）
 此映像以 Microsoft Windows Server 2012 R2 Datacenter 作業系統為基礎，並已安裝下列角色和功能，以符合 Azure RemoteApp 範本映像的需求：
 
 
@@ -102,5 +102,6 @@ Office 365 ProPlus 應用程式的完整功能只適用於擁有 Office 365 ProP
 - Word
 - Microsoft Office 校訂工具
 
-> [AZURE.IMPORTANT]**法律資訊:** 此映像不包含 Microsoft Office 授權和 *無法用於生產環境*。 Office 2013 Professional Plus 映像僅作為試用之用。 如果您想要在 Azure RemoteApp 中使用 Office 應用程式作為生產之用，您必須使用 Office 365 ProPlus 映像。 如需有關授權 Office 的詳細資訊，請參閱 [透過 Azure RemoteApp 使用 Office 365](remoteapp-o365.md)
+> [AZURE.IMPORTANT]**法律資訊 ︰** 此映像不包含 Microsoft Office 授權和 *無法用於生產環境*。 Office 2013 Professional Plus 映像僅作為試用之用。 如果您想要在 Azure RemoteApp 中使用 Office 應用程式作為生產之用，您必須使用 Office 365 ProPlus 映像。 如需有關授權 Office 的詳細資訊，請參閱 [透過 Azure RemoteApp 使用 Office 365](remoteapp-o365.md)
+
 

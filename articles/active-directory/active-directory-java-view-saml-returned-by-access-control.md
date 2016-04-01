@@ -27,7 +27,7 @@
 > [AZURE.NOTE]
 > Azure Access Services Control Filter 是社群技術預覽。 由於是發行前軟體，Microsoft 尚未提供正式支援。
 
-## 先決條件
+## 必要條件
 
 若要完成本指南中的工作，完成的範例， [Eclipse 搭配 Azure 存取控制服務使用的驗證 Web 使用者如何][] 作為本教學課程的起點。
 
@@ -195,3 +195,4 @@
 [How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: ../active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
+

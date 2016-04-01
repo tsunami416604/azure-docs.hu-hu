@@ -32,7 +32,7 @@
 
 ![][1]
 
-選取此選項，即會開啟新的刀鋒視窗。 將狀態變更為 **上**, ，選取您的資料會被複製到，並選擇您想要複製的資料的 Azure 儲存體帳戶: 記錄、 度量或兩者。 建議您複製記錄檔和度量。
+選取此選項，即會開啟新的刀鋒視窗。 將狀態變更為 **上**, ，選取您的資料會被複製到，並選擇您想要複製的資料的 Azure 儲存體帳戶 ︰ 記錄、 度量或兩者。 建議您複製記錄檔和度量。
 
 ![][2]
 
@@ -203,4 +203,5 @@ properties |物件 |請參閱下方 |包含作業特定資料的物件
 [3]: ./media/search-traffic-analytics/GetData.png
 [4]: ./media/search-traffic-analytics/BlobStorage.png
 [5]: ./media/search-traffic-analytics/QueryEditor.png
+
 

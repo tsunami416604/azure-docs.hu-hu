@@ -33,14 +33,14 @@
 - 實作登入和登出功能
 - 使用 `[Authorize]` 來授權使用者使用不同的 CRUD 動作
 - 查詢 Azure Active Directory 資料使用 [Azure Active Directory Graph API](http://msdn.microsoft.com/library/azure/hh974476.aspx)
-- 使用 [Microsoft.Owin](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana) (而不是 Windows Identity Foundation，也就是 WIF)，也就是未來的 ASP.NET 和更容易地進行驗證和授權比使用 WIF 設定
+- 使用 [Microsoft.Owin](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana) （而不是 Windows Identity Foundation，也就是 WIF)，也就是未來的 ASP.NET 和更容易地進行驗證和授權比使用 WIF 設定
 
 <a name="bkmk_need"></a>
 ## 必要元件 ##
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 您需要下列項目完成本教學課程：
 
@@ -113,7 +113,7 @@
 
     ![](./media/web-sites-dotnet-lob-application-azure-ad/6-enable-code-first-migrations.png)
 
-8. 展開 **RoleClaimContext** ，然後選取 **Execute Code First Migrations (在應用程式啟動時執行)**。 [Code First 移轉](https://msdn.microsoft.com/data/jj591621.aspx) 有助於稍後才要定義其他 Code First 資料模型時，請更新您的應用程式在 Azure 中的資料庫結構描述。
+8. 展開 **RoleClaimContext** ，然後選取 **Execute Code First Migrations （在應用程式啟動時執行）**。 [Code First 移轉](https://msdn.microsoft.com/data/jj591621.aspx) 有助於稍後才要定義其他 Code First 資料模型時，請更新您的應用程式在 Azure 中的資料庫結構描述。
 
 9. 而不是按一下 **發行** 透過 web 發佈，請按一下 [ **關閉**。 按一下 [ **是** 以儲存變更至發行設定檔。
 
@@ -153,9 +153,9 @@
 11. 在 Visual Studio 中開啟 **Web.Release.config** 專案中。 將下列 XML 插入 `<configuration>` 標記中，並以您為新 Azure Active Directory 應用程式儲存的資訊來取代每個索引鍵的值。  
     <pre class="prettyprint">
 & l t; appSettings & gt;
-   (& s) lt; 新增機碼 ="ida: ClientId"value ="<mark>[例如 82692da5-a86f-44c9-9d53-2f88d52b478b]</mark>"xdt:Transform ="SetAttributes"xdt:Locator="Match(key)"/ (& s) gt;
-   (& s) lt; 新增機碼 ="ida: AppKey"value ="<mark>[例如 rZJJ9bHSi/cYnYwmQFxLYDn/6EfnrnIfKoNzv9NKgbo =]</mark>"xdt:Transform ="SetAttributes"xdt:Locator="Match(key)"/ (& s) gt;
-   (& s) lt; 新增機碼 ="ida: PostLogoutRedirectUri"value ="<mark>[例如 https://mylobapp.azurewebsites.net/]</mark>"xdt:Transform ="SetAttributes"xdt:Locator="Match(key)"/ (& s) gt;
+   & lt; 新增機碼 ="ida: ClientId"value ="<mark>[例如 82692da5-a86f-44c9-9d53-2f88d52b478b]</mark>「 xdt:Transform ="SetAttributes"xdt:Locator="Match(key)"/ & gt;
+   & lt; 新增機碼 ="ida: AppKey"value ="<mark>[例如 rZJJ9bHSi/cYnYwmQFxLYDn/6EfnrnIfKoNzv9NKgbo =]</mark>「 xdt:Transform ="SetAttributes"xdt:Locator="Match(key)"/ & gt;
+   & lt; 新增機碼 ="ida: PostLogoutRedirectUri"value ="<mark>[例如 https://mylobapp.azurewebsites.net/]</mark>「 xdt:Transform ="SetAttributes"xdt:Locator="Match(key)"/ & gt;
 & l t; / appSettings & gt;</pre>
 
     請確定 ida:PostLogoutRedirectUri 值的結尾有一條斜線 "/"。
@@ -173,7 +173,7 @@
 
 在這部分的教學課程中，您將學習如何根據範例應用程式建立所需的特定業務功能。 您將建立簡單 CRUD 工作項目追蹤程式，類似於 TaskTracker 控制器，但使用標準的 CRUD 建構和設計模式。 您也會使用隨附的 Scripts\AadPickerLibrary.js，使用 Azure Active Directory Graph API 的資料豐富您的應用程式。  
 
-5.  在 [模型] 資料夾中，建立新 [Code First](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) 模型稱為的 WorkItem.cs，並以下列程式碼取代程式碼:
+5.  在 [模型] 資料夾中，建立新 [Code First](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) 模型稱為的 WorkItem.cs，並以下列程式碼取代程式碼 ︰
 
         using System.ComponentModel.DataAnnotations;
         
@@ -257,7 +257,7 @@
 
     由於您負責 Azure 傳統入口網站 UI 中的角色對應，因此您只需要確定每個動作都授權適當的角色。
 
-    > [AZURE.NOTE] 您可能已經注意到 <code>[ValidateAntiForgeryToken]</code> 裝飾的動作。 由於所描述的行為 [Brock Allen](https://twitter.com/BrockLAllen) 在 [MVC 4、 AntiForgeryToken 和宣告](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/) HTTP POST 可能無法防偽語彙基元驗證，因為:
+    > [AZURE.NOTE] 您可能已經注意到 <code>[ValidateAntiForgeryToken]</code> 裝飾的動作。 由於所描述的行為 [Brock Allen](https://twitter.com/BrockLAllen) 在 [MVC 4、 AntiForgeryToken 和宣告](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/) HTTP POST 可能無法防偽語彙基元驗證，因為 ︰
     > + Azure Active Directory 不會傳送 http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider，所需依預設防偽語彙基元。
     > + 如果 Azure Active Directory 目錄與 AD FS 進行同步處理，AD FS 信任預設並不傳送 http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider 宣告，但您可以手動設定 AD FS 來傳送此宣告。
     > 您會在下一步這麼做。
@@ -285,7 +285,7 @@
         }
         
 14. 在 Views\WorkItems\Create.cshtml (自動建構的項目) 中尋找 `Html.BeginForm` Helper 方法，並如下所示修改它：  
-    <pre class="prettyprint">@ 使用 (Html.BeginForm (<mark>「 建立 」、 「 工作項目 」、 新 FormMethod.Post {id ="主要表單"}</mark>))
+    <pre class="prettyprint">@ 使用 （Html.BeginForm （<mark>「 建立 」、 「 工作項目 」 FormMethod.Post，新 {id ="主要表單"}</mark>))
     {
         @Html.AntiForgeryToken()
         
@@ -389,4 +389,5 @@
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
+
 

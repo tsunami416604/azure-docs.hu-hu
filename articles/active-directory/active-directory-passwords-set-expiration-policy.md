@@ -40,7 +40,7 @@
 
 2.  執行下列其中一項：
 
-    - 若要查看單一使用者的密碼是否設定為永不過期，執行下列指令程式使用使用者主要名稱 (UPN) (例如 aprilr@contoso.onmicrosoft.com) 或使用者的使用者識別碼，您想要檢查: `Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
+    - 若要查看單一使用者的密碼是否設定為永不過期，執行下列指令程式使用使用者主要名稱 (UPN) (例如 aprilr@contoso.onmicrosoft.com) 或使用者的使用者識別碼，您想要檢查 ︰ `Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
 
     - 若要查看所有使用者的「密碼永久有效」設定，請執行下列 Cmdlet：`Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
 
@@ -63,4 +63,5 @@
     - 若要將某位使用者的密碼設為永久有效，請透過使用使用者主體名稱 (UPN) 或使用者的使用者識別碼，來執行下列 Cmdlet：`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires \$true`
 
     - 若要將組織中所有使用者的密碼設為永久有效，請執行下列 Cmdlet：`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$true`
+
 

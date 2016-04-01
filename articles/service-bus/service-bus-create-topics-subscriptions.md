@@ -21,7 +21,7 @@ Azure 服務匯流排支援一套以雲端為基礎、訊息導向的中介軟�
 
 ## 不斷演變的零售案例
 
-這篇文章會繼續使用中的零售案例 [建立使用服務匯流排佇列的應用程式](service-bus-create-queues.md)。 請回想一下先前提過的，個別銷售點 (POS) 終端機的銷售資料，必須路由傳送至庫存管理系統，讓系統使用該資料來判斷何時必須補充庫存。 每個 POS 終端機報告其銷售資料，藉由傳送訊息至 **DataCollectionQueue** 佇列，其中它們保留，直到接收到庫存管理系統，如下所示:
+這篇文章會繼續使用中的零售案例 [建立使用服務匯流排佇列的應用程式](service-bus-create-queues.md)。 請回想一下先前提過的，個別銷售點 (POS) 終端機的銷售資料，必須路由傳送至庫存管理系統，讓系統使用該資料來判斷何時必須補充庫存。 每個 POS 終端機報告其銷售資料，藉由傳送訊息至 **DataCollectionQueue** 佇列，其中它們保留，直到接收到庫存管理系統，如下所示 ︰
 
 ![Service-Bus1](./media/service-bus-create-topics-subscriptions/IC657161.gif)
 
@@ -51,7 +51,7 @@ Azure 服務匯流排支援一套以雲端為基礎、訊息導向的中介軟�
 
 ### 建立主題和訂用帳戶
 
-服務匯流排訊息實體 (佇列和發佈/訂閱主題) 都是經由管理作業 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別。 需要適當的認證，才能建立 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 特定命名空間的執行個體。 服務匯流排會使用 [共用存取簽章 (SAS)](service-bus-sas-overview.md) 架構安全性模型。  [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 類別代表安全性權杖提供者傳回部分知名權杖提供者的內建原廠方法。 我們將使用 [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) 方法來保存 SAS 認證。  [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 基底位址的服務匯流排命名空間和權杖提供者，然後建構執行個體。
+服務匯流排訊息實體 （佇列和發佈/訂閱主題） 都是經由管理作業 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別。 需要適當的認證，才能建立 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 特定命名空間的執行個體。 服務匯流排會使用 [共用存取簽章 (SAS)](service-bus-sas-overview.md) 架構安全性模型。  [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 類別代表安全性權杖提供者傳回部分知名權杖提供者的內建原廠方法。 我們將使用 [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) 方法來保存 SAS 認證。  [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 基底位址的服務匯流排命名空間和權杖提供者，然後建構執行個體。
 
  [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別提供方法來建立、 列舉及刪除訊息實體。 如下所示的程式碼如何 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 建立並可用來建立執行個體 **DataCollectionTopic** 主題。
 
@@ -125,7 +125,7 @@ catch (Exception e)
 
 ![Service-Bus4](./media/service-bus-create-topics-subscriptions/IC657167.gif)
 
-若要設定此路由傳送，您建立 **儀表板** 訂用帳戶，如下所示:
+若要設定此路由傳送，您建立 **儀表板** 訂用帳戶，如下所示 ︰
 
 ```
 SqlFilter dashboardFilter = new SqlFilter("StoreName = 'Redmond'");
@@ -136,7 +136,7 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 
 ## 摘要
 
-所有使用中所述佇列的原因 [建立應用程式使用服務匯流排佇列，](service-bus-create-queues.md) 也可套用到主題，特別是:
+所有使用中所述佇列的原因 [建立應用程式使用服務匯流排佇列，](service-bus-create-queues.md) 也可套用到主題，特別是 ︰
 
 - 暫時分離 – 訊息產生者和取用者不需要同時在線上。
 
@@ -149,3 +149,4 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 ## 後續步驟
 
 請參閱 [建立應用程式使用服務匯流排主題和訂閱](service-bus-create-topics-subscriptions.md) 以了解如何使用 POS 零售案例中的佇列。
+

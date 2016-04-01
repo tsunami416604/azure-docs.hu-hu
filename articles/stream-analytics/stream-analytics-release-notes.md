@@ -41,7 +41,7 @@ SELECT 的新行為 | 「串流分析」中的 SELECT 已經延伸成允許使�
 
 課程名稱 | 說明
 ---|---
-其他查詢語言功能 | 資料流分析已展開的查詢語言包括下列功能: [ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx), ，[CEILING](https://msdn.microsoft.com/library/azure/mt605286.aspx), ，[EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx), ，[FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx), ，[電源](https://msdn.microsoft.com/library/azure/mt605287.aspx), ，[登](https://msdn.microsoft.com/library/azure/mt605290.aspx), ，[方](https://msdn.microsoft.com/library/azure/mt605288.aspx), ，和 [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx)。
+其他查詢語言功能 | 資料流分析已展開的查詢語言包括下列功能 ︰ [ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx), ，[CEILING](https://msdn.microsoft.com/library/azure/mt605286.aspx), ，[EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx), ，[FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx), ，[電源](https://msdn.microsoft.com/library/azure/mt605287.aspx), ，[登](https://msdn.microsoft.com/library/azure/mt605290.aspx), ，[方](https://msdn.microsoft.com/library/azure/mt605288.aspx), ，和 [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx)。
 移除了彙總限制  | 此版本移除一個查詢 15 個彙總的限制。 現在每一個查詢的彙總數目沒有限制。
 新增了 GROUP BY System.Timestamp 功能 |  [GROUP BY](https://msdn.microsoft.com/library/azure/dn835023.aspx) 函式現在允許任一 items> 或 [System.Timestamp](https://msdn.microsoft.com/library/azure/mt598501.aspx)。
 新增了適用於輪轉和跳動視窗的 OFFSET | 根據預設， [輪轉](https://msdn.microsoft.com/library/azure/dn835055.aspx) 和 [Hopping](https://msdn.microsoft.com/library/azure/dn835041.aspx) windows 皆與零的時間 (1/1/0001 12:00:00 UTC)。 新的 (選擇性) 參數 'offsetsize' 允許指定自訂的 位移 (或對齊)。
@@ -83,7 +83,7 @@ Azure Preview 入口網站整合 | 在 Azure 管理入口網站中的持續存�
 
 課程名稱|說明
 ---|---
-與 Azure 識別碼分離的 Power BI 組織識別碼|此功能可讓 [Power BI 輸出](stream-analytics-power-bi-dashboard.md) 在任何 Azure 帳戶類型 (Live Id 或組織識別碼) 下啟用 ASA 工作。 此外，您可以擁有 Azure 帳戶的組織識別碼，並使用另一個識別碼用於授權 Power BI 輸出。
+與 Azure 識別碼分離的 Power BI 組織識別碼|此功能可讓 [Power BI 輸出](stream-analytics-power-bi-dashboard.md) 在任何 Azure 帳戶類型 （Live Id 或組織識別碼） 下啟用 ASA 工作。 此外，您可以擁有 Azure 帳戶的組織識別碼，並使用另一個識別碼用於授權 Power BI 輸出。
 服務匯流排佇列輸出的支援|[服務匯流排佇列](stream-analytics-connect-data-event-outputs.md#service-bus-queues) 輸出現在已可用於資料流分析工作。
 服務匯流排主題輸出的支援|[服務匯流排主題](stream-analytics-connect-data-event-outputs.md#service-bus-topics) 輸出現在已可用於資料流分析工作。
 
@@ -132,4 +132,5 @@ PowerBI 資料集只能包含一個資料表|PowerBI 不允許指定的資料集
 - [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
+
 

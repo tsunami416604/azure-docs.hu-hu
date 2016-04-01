@@ -22,15 +22,15 @@
 
 資源管理員是 Spark 叢集儀表板的元件，它能讓您管理諸如在叢集上執行之每個應用程式所使用的核心和 RAM 等資源。
 
-## <a name="launchrm"></a>我要如何啟動資源管理員?
+## <a name="launchrm"></a>如何啟動資源管理員？
 
-1. 從 [Azure 入口網站](https://ms.portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 (如果固定至開始面板)。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。 
+1. 從 [Azure 入口網站](https://ms.portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 （如果固定至開始面板）。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。 
  
 2. 從 Spark 叢集刀鋒視窗中，按一下 [ **儀表板**。 出現提示時，輸入 Spark 叢集的系統管理員認證。
 
     ![啟動資源管理員](./media/hdinsight-apache-spark-resource-manager/HDI.Cluster.Launch.Dashboard.png "Start Resource Manager")   
 
-##<a name="scenariosrm"></a>如何修正這些問題，資源管理員搭配使用?
+##<a name="scenariosrm"></a>如何使用資源管理員修正這些問題？
 
 以下是一些可能會發生在 Spark 叢集上的常見案例，以及如何使用資源管理員因應的指示。
 
@@ -66,7 +66,7 @@ HDInsight 中的 Apache Spark 叢集是專為多租用戶所設計，因此資�
 
 * [概觀：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 * [在 HDInsight 叢集上佈建 Spark](hdinsight-apache-spark-provision-clusters.md)
-* [在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
+* [執行 HDInsight 中使用 Spark 與 BI 工具的互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
 * [在 HDInsight 中使用 Spark 建置機器學習應用程式](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 * [在 HDInsight 中使用 Spark 建置即時串流應用程式](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 
@@ -81,4 +81,5 @@ HDInsight 中的 Apache Spark 叢集是專為多租用戶所設計，因此資�
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/ 
+
 

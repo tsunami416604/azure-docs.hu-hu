@@ -60,13 +60,13 @@
 <br/><br/>
 若要下載混合式連線管理員，請移至您的內部部署 IIS 伺服器，並移至 **ClickOnce 應用程式** (http://hybridclickonce.azurewebsites.net/install/Microsoft.Azure.BizTalk.Hybrid.ClickOnce.application)。 將會自動開始安裝讓您執行。
 
-5. 在 **接聽程式設定** ] 視窗中，輸入 **主要組態字串** 您先前 (在步驟 3) 貼上，選取 **安裝**。
+5. 在 **接聽程式設定** ] 視窗中，輸入 **主要組態字串** 您先前 （在步驟 3） 貼上，選取 **安裝**。
 
-當安裝完成時，會顯示下列訊息:
+當安裝完成時，會顯示下列訊息 ︰
 <br/>
 ![][3] 
 
-現在，當您重新瀏覽至連接器，混合式連線狀態會是 **連線**。 您可能必須關閉連接器，重新開啟它: 
+現在，當您重新瀏覽至連接器，混合式連線狀態會是 **連線**。 您可能必須關閉連接器，重新開啟它 ︰ 
 <br/>
 ![][4] 
 
@@ -120,15 +120,15 @@ TCP 連接埠 | 理由
 
 ## 常見問題集
 
-**問題**: 有兩個混合式連線管理員。 有何不同？<br/>
-**回應**: 沒有 [混合式連線](../integration-hybrid-connection-overview.md) 主要由 Web Apps (先前的網站) 和 Mobile Apps (先前的行動服務) 用來連接到內部部署的技術。 此混合式連線管理員是其本身 [安裝](../integration-hybrid-connection-create-manage.md) ，並使用 Azure BizTalk 服務 (幕後)。 它僅支援 TCP 和 HTTP 通訊協定。
+**問題**︰ 有兩個混合式連線管理員。 有何不同？<br/>
+**回應**︰ 沒有 [混合式連線](../integration-hybrid-connection-overview.md) 主要由 Web Apps （先前的網站） 和 Mobile Apps （先前的行動服務） 用來連接到內部部署的技術。 此混合式連線管理員是其本身 [安裝](../integration-hybrid-connection-create-manage.md) ，並使用 Azure BizTalk 服務 （幕後）。 它僅支援 TCP 和 HTTP 通訊協定。
 
-在 Azure App Service 連接器方面，我們也有混合式連線管理員。  此混合式連線管理員 *不* 使用 Azure BizTalk 服務 (幕後)，而且支援超過的 TCP 和 HTTP 通訊協定。 請參閱 [連接器和 API 應用程式清單](app-service-logic-connectors-list.md)。
+在 Azure App Service 連接器方面，我們也有混合式連線管理員。  此混合式連線管理員 *不* 使用 Azure BizTalk 服務 （幕後），而且支援超過的 TCP 和 HTTP 通訊協定。 請參閱 [連接器和 API 應用程式清單](app-service-logic-connectors-list.md)。
 
 兩者都使用 Azure 服務匯流排來連接到內部部署系統。
 
-**問題**: 當我建立自訂的 API 應用程式時，我可以使用 App Service 混合式連線管理員連線到內部部署嗎? <br/>
-**回應**: 不是在傳統意義上。 您可以使用內建的連接器，設定 App Service 混合式連線管理員來連接至內部部署系統。 然後，使用此連接器搭配您的自訂 API 應用程式，可能是使用邏輯應用程式。 目前，您無法開發或建立自己的混合式 API 應用程式 (例如 SQL 連接器或檔案連接器)。
+**問題**︰ 當我建立自訂的 API 應用程式時，我可以使用 App Service 混合式連線管理員連線到內部部署嗎？ <br/>
+**回應**︰ 不是在傳統意義上。 您可以使用內建的連接器，設定 App Service 混合式連線管理員來連接至內部部署系統。 然後，使用此連接器搭配您的自訂 API 應用程式，可能是使用邏輯應用程式。 目前，您無法開發或建立自己的混合式 API 應用程式 (例如 SQL 連接器或檔案連接器)。
 
 如果您的自訂 API 使用 TCP 或 HTTP 連接埠，您可以使用 [混合式連線](../integration-hybrid-connection-overview.md) 及其混合式連線管理員。 在此情況下會使用 Azure BizTalk 服務。 [從 web 應用程式連接到內部部署 SQL Server](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md) 可幫助。  
 
@@ -149,4 +149,5 @@ TCP 連接埠 | 理由
 [4]: ./media/app-service-logic-hybrid-connection-manager/BrowseSetupComplete.jpg
 
  
+
 

@@ -100,7 +100,7 @@ DocumentDB 支援對於每一個查詢使用單一數值、字串或布林值屬
     await client.CreateDocumentCollectionAsync(databaseLink, 
         booksCollection);  
 
->[AZURE.NOTE] 請注意，Order By 只會傳回使用 RangeIndex 編製索引的資料類型 (字串和數字) 的結果。 例如，如果您有預設的索引編製原則，只有數字的 RangeIndex，則針對具有字串值之路徑的 Order By 不會傳回任何文件。
+>[AZURE.NOTE] 請注意，Order By 只會傳回使用 RangeIndex 編製索引的資料類型 （字串和數字） 的結果。 例如，如果您有預設的索引編製原則，只有數字的 RangeIndex，則針對具有字串值之路徑的 Order By 不會傳回任何文件。
 
 ### 針對單一屬性編制 Order By 的索引
 以下是僅針對字串的 Title 屬性利用編制 Order By 索引來建立集合的方式。 有兩種路徑，一個用於 Title 屬性 ("/Title/?") 與「範圍」索引編製，而另一個用於具有預設索引編製配置的其他每個屬性，「雜湊」用於字串及「範圍」用於數字。                    
@@ -168,7 +168,7 @@ DocumentDB 支援對於每一個查詢使用單一數值、字串或布林值屬
 
 ## 後續步驟
 
-「 分叉 」 [Github 範例專案](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy) 並開始排序您的資料! 
+「 分叉 」 [Github 範例專案](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy) 並開始排序您的資料 ！ 
 
 ## 參考
 * [DocumentDB 查詢參考](documentdb-sql-query.md)
@@ -176,5 +176,6 @@ DocumentDB 支援對於每一個查詢使用單一數值、字串或布林值屬
 * [DocumentDB SQL 參考](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 * [DocumentDB Order By 範例](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)
  
+
 
 

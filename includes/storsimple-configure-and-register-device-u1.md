@@ -3,7 +3,7 @@
 
 ### 設定和註冊裝置
 
-1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 請參閱 [使用 PuTTY 來連接至裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console) 如需相關指示。 **請務必確實依照此程序，或無法存取主控台。**
+1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 請參閱 [使用 PuTTY 來連接至裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console) 如需相關指示。 **請務必確實依照此程序，否則將無法存取主控台。**
 
 2. 在開啟的工作階段中，按 Enter 鍵一次以取得命令提示字元。 
 
@@ -15,7 +15,7 @@
 
     ![StorSimple 註冊裝置 2](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice2_U1-include.png)
   
-     完成步驟 5-12，為裝置設定最小的必要網路設定。 **這些設定步驟必須在裝置的主動控制器上執行。**序列主控台功能表會在橫幅訊息中指出控制站狀態。 如果您未連接到主動控制器，請中斷連線，然後連接到主動控制器。
+     完成步驟 5-12，為裝置設定最小的必要網路設定。 **這些設定步驟必須在裝置的主動控制器上執行。** 序列主控台功能表會在橫幅訊息中指出控制站狀態。 如果您未連接到主動控制器，請中斷連線，然後連接到主動控制器。
 
 5. 在命令提示字元中，輸入您的密碼。 預設裝置密碼是 **Password1**。
 
@@ -45,7 +45,7 @@
 
     ![StorSimple 註冊裝置 6](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice6_U1-include.png)
 
-12. 註冊裝置之後，隨即會出現服務資料加密金鑰。 複製這個金鑰，並將它儲存在安全的位置。 **這個索引鍵都必須使用服務註冊金鑰，來向 StorSimple Manager 服務註冊其他裝置。**請參閱 [StorSimple 安全性](../articles/storsimple/storsimple-security.md) 如需有關這個機碼。
+12. 註冊裝置之後，隨即會出現服務資料加密金鑰。 複製這個金鑰，並將它儲存在安全的位置。 **這個金鑰需要與服務註冊金鑰搭配使用，來向 StorSimple Manager 服務註冊其他裝置。** 請參閱 [StorSimple 安全性](../articles/storsimple/storsimple-security.md) 如需有關這個機碼。
     
     ![StorSimple 註冊裝置 7](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice7_U1-include.png)    
 
@@ -67,3 +67,4 @@
         如果您的裝置不支援 HTTP 1.1，請檢查連接埠 9354 以確定此連接埠可開放做為傳出通訊之用。 此連接埠用於 StorSimple Manager 服務及 StorSimple 裝置間的通訊。
      
        
+

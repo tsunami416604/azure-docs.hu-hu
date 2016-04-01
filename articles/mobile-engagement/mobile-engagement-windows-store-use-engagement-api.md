@@ -18,7 +18,7 @@
 
 #如何在 Windows 通用上使用 Engagement API
 
-這份文件是在文件的附加元件 [如何在 Windows 通用上整合 Engagement](../mobile-engagement-windows-store-integrate-engagement/): 它會提供有關如何使用 Engagement API 來回報您應用程式統計資料的深入詳細資料。
+這份文件是在文件的附加元件 [如何在 Windows 通用上整合 Engagement](../mobile-engagement-windows-store-integrate-engagement/)︰ 它會提供有關如何使用 Engagement API 來回報您應用程式統計資料的深入詳細資料。
 
 請記住，如果您只想要 Engagement 向您報告應用程式的工作階段、活動、當機和技術資訊，那麼最簡單的方法是讓所有 `Page` 子類別繼承自 `EngagementPage` 類別。
 
@@ -34,7 +34,7 @@ Engagement API 是由 `EngagementAgent` 類別提供。 您可以透過 `Engagem
 
 ### `Session`和`Activity`
 
- *活動* 通常會相關聯的一頁的應用程式，也就是說 *活動* 時開始，頁面會顯示，並關閉頁面時停止: 使用整合 Engagement SDK 時，就以此 `EngagementPage` 類別。
+ *活動* 通常會相關聯的一頁的應用程式，也就是說 *活動* 時開始，頁面會顯示，並關閉頁面時停止 ︰ 使用整合 Engagement SDK 時，就以此 `EngagementPage` 類別。
 
 但是 *活動* 也可以控制以手動方式使用 Engagement API。 這樣可允許將指定的頁面分割成多個部分，以獲得有關該頁面使用方式的詳細資訊 (例如，對話方塊在此頁面的使用平率和使用時間)。
 
@@ -305,7 +305,7 @@ Engagement 也提供一個方法來傳送未處理例外狀況，如果您有 **
             
             EngagementAgent.Instance.SendEvent("Event", extras);
 
-> [AZURE.WARNING] 如果您將其他類型的物件，請確定已實作它們的 tostring () 方法，以傳回使用者可讀取的字串。
+> [AZURE.WARNING] 如果您將其他類型的物件，請確定已實作它們的 tostring （） 方法，以傳回使用者可讀取的字串。
 
 ### 限制
 
@@ -359,3 +359,4 @@ Engagement 也提供一個方法來傳送未處理例外狀況，如果您有 **
 
             {"birthdate":"1983-12-07","gender":"female"}
  
+

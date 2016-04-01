@@ -54,5 +54,6 @@ API 應用程式現在已準備好部署，而且您可以依照 [部署 API 應
 
 如需驗證的 API 應用程式的使用者資訊，請參閱 [API 應用程式和行動應用程式在 Azure App Service 中的驗證](../app-service/app-service-authentication-overview.md)。
 
-API 應用程式功能的相關資訊，請參閱 [什麼是 API 應用程式?](app-service-api-apps-why-best-platform.md)。
+API 應用程式功能的相關資訊，請參閱 [什麼是 API 應用程式？](app-service-api-apps-why-best-platform.md)。
+
 

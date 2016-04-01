@@ -24,7 +24,7 @@
 
 您沒有加入任何項目。 `EngagementReach` 參考資料和資源已在您的專案。
 
-> [AZURE.TIP]  您可以自訂映像位於 `Resources` 資料夾的專案，尤其是品牌圖示 (預設為 Engagement 的圖示)。
+> [AZURE.TIP]  您可以自訂映像位於 `Resources` 資料夾的專案，尤其是品牌圖示 （預設為 Engagement 的圖示）。
 
 ##新增功能
 
@@ -44,7 +44,7 @@ Engagement Reach SDK 需要一些額外的功能。
 
 ##啟用 Microsoft 推播通知服務
 
-若要使用 **Microsoft 推播通知服務** (簡稱 MPNS) 您 `WMAppManifest.xml` 檔案必須具有 `<App />` 標記 `Publisher` 屬性設為您專案的名稱。
+若要使用 **Microsoft 推播通知服務** （簡稱 MPNS） 您 `WMAppManifest.xml` 檔案必須具有 `<App />` 標記 `Publisher` 屬性設為您專案的名稱。
 
 ##初始化 Engagement Reach SDK
 
@@ -105,7 +105,7 @@ Engagement 組態會集中在您專案的 `Resources\EngagementConfiguration.xml
 
 Microsoft 對於推播通知的使用有一些規定：
 
-從 Microsoft [Application Policies] 文件，第 2.9 節:
+從 Microsoft [Application Policies] 文件，第 2.9 節 ︰
 
 1) 您必須詢問使用者是否要接收推播通知。 然後，在您的設定中加入停用推播通知的方法。
 
@@ -113,7 +113,7 @@ EngagementReach 物件提供兩種方法來管理加入/退出、`EnableNativePu
 
 您也可以透過 Engagement 組態 < windows-電話-sdk-觸達-組態 > 停用 MPNS。
 
-> 2.9.1) 應用程式必須先描述提供通知和 **取得使用者明確的許可 (選擇加入的)**, ，和 **必須提供的機制，讓使用者可以選擇退出接收推播通知**。 提供使用 Microsoft 推播通知服務的所有通知必須提供給使用者的描述一致，而且必須遵守所有適用 [應用程式原則] [Content Policies] 和 [Additional Requirements for Specific Application Types]。
+> 2.9.1) 應用程式必須先描述提供通知和 **取得使用者明確的許可 （選擇加入的）**, ，和 **必須提供的機制，讓使用者可以選擇退出接收推播通知**。 提供使用 Microsoft 推播通知服務的所有通知必須提供給使用者的描述一致，而且必須遵守所有適用 [應用程式原則] [Content Policies] 和 [Additional Requirements for Specific Application Types]。
 
 2) 您不應該使用太多推播通知。 Engagement 將為您處理通知。
 
@@ -265,4 +265,5 @@ EngagementReach 物件提供兩種方法來管理加入/退出、`EnableNativePu
 [Content Policies]:http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
 [Additional Requirements for Specific Application Types]:http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
  
+
 

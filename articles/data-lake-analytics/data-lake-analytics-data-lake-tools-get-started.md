@@ -26,7 +26,7 @@
 U-SQL 是高度可擴充、高度可延伸的語言，用來準備、轉換和分析在資料湖的所有資料。 如需詳細資訊，請參閱 [U SQL 參考] (http://go.microsoft.com/fwlink/p/?LinkId=691348)。
 
 
-**先決條件**
+**必要條件**
 
 - **已安裝 Visual Studio 2015、Visual Studio 2013 更新 4，或具有 Visual C++ 的 Visual Studio 2012** 
 - **Microsoft Azure SDK for.NET 2.7 版或以上**。  請使用 [Web platform installer](http://www.microsoft.com/web/downloads/platform.aspx)。
@@ -163,7 +163,7 @@ U-SQL 是高度可擴充、高度可延伸的語言，用來準備、轉換和�
 
     ![提交 U-SQL Visual Studio 專案](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
 
-8. 您必須按一下 [重新整理] 按鈕，才能查看最新的作業狀態並重新整理畫面。 當作業成功，它會顯示 [ **工作圖形**, ，**中繼資料作業**, ，**狀態記錄**, ，**診斷**:
+8. 您必須按一下 [重新整理] 按鈕，才能查看最新的工作狀態並重新整理畫面。 當作業成功，它會顯示 [ **工作圖形**, ，**中繼資料作業**, ，**狀態記錄**, ，**診斷**:
 
     ![U SQL Visual Studio 資料湖分析工作效能圖表](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
@@ -180,7 +180,7 @@ U-SQL 是高度可擴充、高度可延伸的語言，用來準備、轉換和�
 2. 按兩下 **工作** 以列出工作。
 2. 按一下工作以查看狀態。
 
-**查看作業輸出**
+**查看工作輸出**
 
 1. 從 **伺服器總管**, ，依序展開 **Azure**, ，展開 **資料湖分析**, 、 依序展開您的資料湖分析帳戶、 **儲存體帳戶**, ，以滑鼠右鍵按一下預設的資料湖儲存體帳戶，然後按一下 **總管**。 
 2.  按兩下 **輸出** 開啟資料夾
@@ -251,13 +251,13 @@ U-SQL 是高度可擴充、高度可延伸的語言，用來準備、轉換和�
 
 您可以偵錯 C# 組件，而不需提交並向 Azure 資料湖分析服務註冊。 您可以在這兩個程式碼後置檔案和參考的 C# 專案中設定中斷點。
 
-**若要偵錯程式碼後置檔案中的本機程式碼**
+**如何為程式碼後置檔案中的本機程式碼偵錯**
 1.  在程式碼後置檔案中設定中斷點。 
 2.  按下 **F5** 指令碼在本機偵錯。
 
 下列程序僅適用於 Visual Studio 2015。 在舊版 Visual Studio 中，您可能需要手動加入 pdb 檔案。 
 
-**若要偵錯本機的程式碼中參考的 C# 專案**
+**如何為參考的 C# 專案中的本機程式碼偵錯**
 1.  建立 C# 組件專案，並建置它來產生輸出 dll。
 2.  使用 U-SQL 陳述式來註冊 dll：
 
@@ -287,5 +287,6 @@ U-SQL 是高度可擴充、高度可延伸的語言，用來準備、轉換和�
 - [使用適用於 Visual Studio 的資料湖工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)
 - [開始使用 Azure 資料湖分析 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)
 - [針對資料湖分析工作開發 U-SQL 使用者定義運算子](data-lake-analytics-u-sql-user-defined-operators.md)
+
 
 

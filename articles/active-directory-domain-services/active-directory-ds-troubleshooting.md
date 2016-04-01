@@ -16,7 +16,7 @@
     ms.date="12/16/2015"
     ms.author="maheshu"/>
 
-# Azure AD 網域服務 *(預覽)* -疑難排解指南
+# Azure AD 網域服務 *（預覽）* -疑難排解指南
 這篇文章提供設定或管理 Azure Active Directory (AD) 網域服務時，可能會遇到的問題之疑難排解提示。
 
 
@@ -29,13 +29,13 @@
 
 - 確認 Azure AD 租用戶中受影響的使用者帳戶 UPN 前置詞 (也就是 UPN 的第一個部分)，長度少於 20 個字元。 例如，'joereallylongnameuser@contoso.com' UPN 的前置詞 ('joereallylongnameuser') 超過 20 個字元，因而在 Azure AD 網域服務的受管理網域中無法使用此帳戶。
 
-- **同步處理帳戶:** 如果受影響的使用者帳戶會從內部部署目錄同步處理，請確定會遵循下列步驟:
+- **同步處理帳戶 ︰** 如果受影響的使用者帳戶會從內部部署目錄同步處理，請確定會遵循下列步驟 ︰
     - 您已部署或更新為 Azure AD Connect 的最新版本。
     - 您已建立啟用對 Azure AD 同步處理舊版認證所需的登錄機碼。
     - 在執行 Azure AD Connect 的伺服器上建立以上提到的登錄機碼之後，您已如文件中所述，強制 Azure AD 執行完整同步處理。
     - 根據您的目錄大小，可能需要一些時間，使用者帳戶和認證雜湊才可在 Azure AD 網域服務中提供使用。 確定您已等候足夠長的時間之後，再重試驗證 (視目錄大小的不同，可能需要幾個小時到一天的時間，大型目錄則可能需要兩天)。
 
-- **僅限雲端帳戶**: 如果受影響的使用者帳戶僅限雲端的使用者帳戶，請確定使用者已變更其密碼，在您啟用 Azure AD 網域服務。 這個步驟會導致產生 Azure AD 網域服務所需的認證雜湊。
+- **僅限雲端帳戶**︰ 如果受影響的使用者帳戶僅限雲端的使用者帳戶，請確定使用者已變更其密碼，在您啟用 Azure AD 網域服務。 這個步驟會導致產生 Azure AD 網域服務所需的認證雜湊。
 
 
 ### 連絡我們
@@ -43,4 +43,5 @@
 
 -  [Azure Active Directory User Voice 通道](http://feedback.azure.com/forums/169401-azure-active-directory)。 請確定您之前暫止您的問題有幾個字 **'AADDS'** 以達到我們。
 - 您可能也電子郵件傳送給我們 [Azure AD 網域服務的意見反應](mailto:aaddsfb@microsoft.com)
+
 

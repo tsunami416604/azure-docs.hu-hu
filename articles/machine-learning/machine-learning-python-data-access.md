@@ -31,7 +31,7 @@ Microsoft Azure Machine Learning Python 用戶端程式庫的預覽能夠從本�
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
  
-##<a name="prerequisites"></a>先決條件
+##<a name="prerequisites"></a>必要條件
 
 Python 用戶端程式庫已在下列環境下經過測試：
 
@@ -62,7 +62,7 @@ Python 用戶端程式庫已在下列環境下經過測試：
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-##<a name="datasetAccess"></a>使用 Studio 程式碼片段存取資料集
+##<a name="datasetAccess"></a>使用Studio 程式碼片段存取資料集
 
 Python 用戶端程式庫讓您以程式設計方式存取執行實驗所得的現有資料集。
 
@@ -74,7 +74,7 @@ Studio 所提供可與 Python 用戶端程式碼搭配使用的程式碼片段�
 
 基於安全性理由，程式碼片段功能只會提供給使用者，其角色設定為 **擁有者** 工作區。 您的角色會顯示 Azure Machine Learning Studio 中，在 **使用者** 頁面下 **設定**。
 
-![] Security[] security
+![安全性][security]
 
 如果您的角色未設定為 **擁有者**, ，您可以要求重新受邀為擁有者，或要求的工作區擁有者為您提供的程式碼片段。
 
@@ -98,17 +98,17 @@ Studio 所提供可與 Python 用戶端程式碼搭配使用的程式碼片段�
 
 3. 從底部工具列中按一下 **產生的資料存取程式碼**。 請注意，如果資料格式與 Python 用戶端程式課不相容，就會停用這個按鈕。
 
-    ![資料集][資料集]
+    ![資料集][datasets]
 
 4. 從出現的視窗中選取程式碼片段，然後複製到剪貼簿。
 
-    ![存取碼][資料集的存取層程式碼]
+    ![存取程式碼][dataset-access-code]
 
 5. 將程式碼貼入本機 Python 應用程式的筆記本。
 
-    ![筆記本][ipython 資料集]
+    ![筆記本][ipython-dataset]
 
-### <a name="accessingIntermediateDatasets"></a>存取 Machine Learning 實驗中的中繼資料
+### <a name="accessingIntermediateDatasets"></a>存取機器學習服務實驗中的中繼資料
 
 在 Machine Learning Studio 中進行實驗後，您能夠從模組的輸出節點存取中繼資料集。 中繼資料集是指當模型工具執行時
 為中繼步驟建立和使用的資料。
@@ -125,13 +125,13 @@ Studio 所提供可與 Python 用戶端程式碼搭配使用的程式碼片段�
 
 您可以將滑鼠停留在模組輸出節點上方來判斷其格式。 其會與節點名稱一同顯示在工具提示中。
 
-某些模組，例如 [分割] [分割] 模組，輸出格式，名為 `Dataset`, ，不支援 Python 用戶端程式碼。
+有些模組，例如 [分割][split] 模組，輸出格式，名為 `Dataset`, ，Python 用戶端程式庫不支援。
 
-![資料集格式][資料集格式]
+![資料集格式][dataset-format]
 
-您必須使用轉換模組，例如 [轉換為 CSV] [convert 來為 csv]，以讓輸出變成支援的格式。
+您必須使用轉換模組，例如 [轉換成 CSV][convert-to-csv], ，以讓輸出變成支援的格式。
 
-![GenericCSV 格式][csv 格式]
+![GenericCSV 格式][csv-format]
 
 下列步驟示範說明建立實驗、加以執行，然後群組中繼資料集。
 
@@ -139,32 +139,32 @@ Studio 所提供可與 Python 用戶端程式碼搭配使用的程式碼片段�
 
 2. 插入 **成人收入普查二進位分類資料集** 模組。
 
-3. 將 [分割] [分割] 模組，並將其輸入資料集模組輸出連接。
+3. 插入 [分割][split] 模組，並將其輸入資料集模組輸出連接。
 
-4. 將 [轉換為 CSV] 的 [轉換為 csv] 模組，並將其輸入至其中一個 [分割] [分割] 模組的輸出連接。
+4. 插入 [轉換成 CSV][convert-to-csv] 模組並將其輸入的其中一個連接 [分割][split] 模組輸出。
 
 5. 儲存此實驗、加以執行，然後等待執行完成。
 
-6. 按一下 [轉換為 CSV] [轉換為 csv] 模組的輸出節點。
+6. 按一下 [輸出] 節點上 [轉換成 CSV][convert-to-csv] 模組。
 
 7. 隨即出現內容功能表，選取 **產生的資料存取程式碼**。
 
-    ![快顯功能表][實驗]
+    ![內容功能表][experiment]
 
 8. 隨即會出現一個視窗。 選取程式碼片段，然後複製到剪貼簿。
 
-    ![存取碼][中繼-資料集的存取-程式碼]
+    ![存取程式碼][intermediate-dataset-access-code]
 
 9. 將程式碼貼入筆記本。
 
-    ![筆記本][ipython 中繼-資料集]
+    ![筆記本][ipython-intermediate-dataset]
 
 10. 您可以使用 matplotlib 將資料視覺化。 這樣會以長條圖顯示年齡欄：
 
-    ![長條圖][ipython 長條圖]
+    ![長條圖][ipython-histogram]
 
 
-##<a name="clientApis"></a>使用 Machine Learning Python 用戶端程式庫來存取、 讀取、 建立和管理資料集
+##<a name="clientApis"></a>使用 Machine Learning Python 用戶端程式碼來存取、讀取、建立及管理資料集
 
 ### 工作區
 
@@ -367,3 +367,4 @@ Python 用戶端程式碼能夠將 Pandas DataFrame 序列化為下列格式 (�
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
+

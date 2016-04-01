@@ -31,7 +31,7 @@
 
 ![][1]
 
-本架構圖中的關鍵是 Azure 服務匯流排提供主題/訂閱程式撰寫模型 (如需詳細資料在 [服務匯流排發行/訂閱程式撰寫])。 收件者，即在此情況下，行動後端 (通常是 [Azure 行動服務]，這將會將推播發送給行動應用程式) 直接從後端系統接收訊息但方法是把 [Azure 服務匯流排] 所提供的中繼抽象層可讓行動後端以接收來自一或多個後端系統的訊息。 您需要為每個後端系統建立服務匯流排主題 (如客戶、人事、財務)，基本上它們是讓訊息能以推播通知形式傳送的興趣「主題」。 後端系統會將訊息傳送到這些主題。 藉由建立服務匯流排訂閱，行動後端能訂閱一或多個這類型的主題。 如此一來，行動後端便能接收由對應後端系統所傳送的通知。 行動後端會持續接聽與其訂閱相關的訊息，待訊息抵達後，它會立即轉向並以通知形式將訊息傳送到通知匯流排。 通知匯流排再接著將訊息傳遞給行動應用程式。 總結以上關鍵元件，我們可以得出：
+本架構圖中的關鍵是 Azure 服務匯流排提供主題/訂閱程式撰寫模型 (如需在詳細資料 [Service Bus Pub/Sub programming])。 收件者，即在此情況下，行動後端 (通常 [Azure Mobile Service], ，這會將推播發送給行動應用程式) 直接從後端系統接收訊息但方法是把所提供的中繼抽象層 [Azure Service Bus] 可讓行動後端以接收來自一或多個後端系統的訊息。 您需要為每個後端系統建立服務匯流排主題 (如客戶、人事、財務)，基本上它們是讓訊息能以推播通知形式傳送的興趣「主題」。 後端系統會將訊息傳送到這些主題。 藉由建立服務匯流排訂閱，行動後端能訂閱一或多個這類型的主題。 如此一來，行動後端便能接收由對應後端系統所傳送的通知。 行動後端會持續接聽與其訂閱相關的訊息，待訊息抵達後，它會立即轉向並以通知形式將訊息傳送到通知匯流排。 通知匯流排再接著將訊息傳遞給行動應用程式。 總結以上關鍵元件，我們可以得出：
 
 1. 後端系統 (LoB/舊版系統)
     - 建立服務匯流排主題
@@ -53,16 +53,16 @@
 ###必要條件
 您應該先完成下列教學課程以熟悉概念，以及常用的建立和組態步驟：
 
-1. [服務匯流排發行/訂閱程式撰寫]-這說明工作與服務匯流排主題/訂閱的詳細資料如何建立命名空間來容納主題/訂閱、 如何傳送訊息及接收他們的訊息。
-2. [通知中樞-Windows 通用教學課程]-說明如何設定 Windows 市集應用程式，並使用通知中心註冊和接收通知。
+1. [Service Bus Pub/Sub programming] -這說明詳細資料，使用與服務匯流排主題/訂閱、 如何建立命名空間來容納主題/訂閱如何傳送訊息及接收他們的訊息。
+2. [Notification Hubs - Windows Universal tutorial] -這會說明如何設定 Windows 市集應用程式，並使用通知中心註冊和接收通知。
 
 ###範例程式碼
 
-完整範例程式碼的 [通知中樞範例]。 其可劃分為三個元件：
+完整範例程式碼位於 [Notification Hub Samples]。 其可劃分為三個元件：
 
 1. **EnterprisePushBackendSystem**
 
-    a. 本專案使用 *WindowsAzure.ServiceBus* Nuget 封裝，並且根據在 [服務匯流排發行/訂閱程式撰寫]。
+    a. 本專案使用 *WindowsAzure.ServiceBus* Nuget 封裝，並且根據 [Service Bus Pub/Sub programming]。
 
     b. 此為簡易的 C# 主控台應用程式，可用來模擬讓訊息得以傳遞到行動應用程式的 LoB 系統。
 
@@ -126,9 +126,9 @@
 
 2. **ReceiveAndSendNotification**
 
-    a. 本專案使用 *WindowsAzure.ServiceBus* 和 *Microsoft.Web.WebJobs.Publish* Nuget 套件，並會根據 [服務匯流排發行/訂閱程式撰寫]。
+    a. 本專案使用 *WindowsAzure.ServiceBus* 和 *Microsoft.Web.WebJobs.Publish* Nuget 封裝，並且根據 [Service Bus Pub/Sub programming]。
 
-    b. 這是另一個 C# 主控台應用程式，因為它必須連續執行以便接聽來自 LoB/後端系統的訊息，我們會執行為 [Azure WebJob]。 它將會是行動後端的一部分。
+    b. 這是另一個 C# 主控台應用程式以做為我們執行 [Azure WebJob] 由於它必須連續執行以便接聽來自 LoB/後端系統的訊息。 它將會是行動後端的一部分。
 
         static void Main(string[] args)
         {
@@ -214,14 +214,14 @@
 
     ![][3]
 
-    g. 將工作設定為 [連續執行]，讓您登入 [Azure 傳統入口網站] 時您應該會看到類似下列畫面:
+    g. 將工作設定為 [連續執行]，因此當您登入 [Azure Classic Portal] 您應該會看到類似下列的訊息 ︰
 
     ![][4]
 
 
 3. **EnterprisePushMobileApp**
 
-    a. 此為 Windows 市集應用程式，它能接收隨附於行動後端運作之 WebJob 發出的快顯通知並加以顯示。 這根據 [通知中樞-Windows 通用教學課程]。  
+    a. 此為 Windows 市集應用程式，它能接收隨附於行動後端運作之 WebJob 發出的快顯通知並加以顯示。 這根據 [Notification Hubs - Windows Universal tutorial]。  
 
     b. 確認應用程式可接收快顯通知。
 
@@ -247,11 +247,11 @@
 
 1. 確認 WebJob 成功執行，並已排定為 [連續執行]。
 2. 執行 **EnterprisePushMobileApp** 以啟動 Windows 市集應用程式。
-3. 執行 **EnterprisePushBackendSystem** 主控台應用程式以模擬 LoB 後端，它會開始傳送訊息，您應該會看到以下快顯通知:
+3. 執行 **EnterprisePushBackendSystem** 主控台應用程式以模擬 LoB 後端，它會開始傳送訊息，您應該會看到以下快顯通知 ︰
 
     ![][5]
 
-4. 這些訊息最初是傳送給受到 WebJob 中服務匯流排訂閱監視的服務匯流排主題。 待服務匯流排主題接收到訊息後，它會建立通知並傳送給行動應用程式。 您可以瀏覽 WebJob 記錄檔來確認處理，當您移到 [Azure 傳統入口網站] 中的記錄檔連結您的 Web 工作:
+4. 這些訊息最初是傳送給受到 WebJob 中服務匯流排訂閱監視的服務匯流排主題。 待服務匯流排主題接收到訊息後，它會建立通知並傳送給行動應用程式。 您可以瀏覽 WebJob 記錄檔來確認處理，當您移到記錄檔] 連結，在 [Azure Classic Portal] Web 工作 ︰
 
     ![][6]
 
@@ -271,4 +271,5 @@
 [Azure WebJob]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
 [Notification Hubs - Windows Universal tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure Classic Portal]: https://manage.windowsazure.com/
+
 

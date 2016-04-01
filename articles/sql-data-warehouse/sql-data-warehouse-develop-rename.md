@@ -46,10 +46,11 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
 <!--Article references-->
 [development overview]: sql-data-warehouse-overview-develop.md
+
 

@@ -26,12 +26,12 @@
 
 當您將內容傳遞給客戶時 (串流即時事件或點播視訊)，您的目標是在不同的網路條件下將高品質的視訊傳遞到各種裝置。 若要達成此目標，請執行下列動作：
 
-- 將串流編碼成多位元速率 ([調適性位元速率](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) 視訊串流 (這會處理品質與網路條件)， 
-- 使用 Media Services [動態封裝](media-services-dynamic-packaging-overview.md) 動態地重新封裝您的資料流至不同的通訊協定 (這會處理不同裝置上的資料流處理的)。 媒體服務支援傳遞下列可調位元速率資料流技術：HTTP 即時資料流 (HLS)、Smooth Streaming、MPEG DASH 和 HDS (僅適用於 Adobe PrimeTime/Access licensees)。 
+- 將串流編碼成多位元速率 ([調適性位元速率](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) 視訊串流 （這會處理品質與網路條件）， 
+- 使用 Media Services [動態封裝](media-services-dynamic-packaging-overview.md) 動態地重新封裝您的資料流至不同的通訊協定 （這會處理不同裝置上的資料流處理的）。 媒體服務支援傳遞下列可調位元速率資料流技術：HTTP 即時資料流 (HLS)、Smooth Streaming、MPEG DASH 和 HDS (僅適用於 Adobe PrimeTime/Access licensees)。 
 
 ###資訊清單檔案 
 
-當您編碼資產的調適性位元速率串流， **manifest** (播放清單) 檔案建立 (此檔案是文字或 XML 為基礎)。  **Manifest** 檔案包含中繼資料資料流，例如: 追蹤類型 (音訊、 視訊或文字)，追蹤名稱、 開始和結束時間、 位元速率 (品質)、 軌語言、 簡報視窗 (持續時間固定的滑動視窗)，視訊轉碼器 (FourCC)。 此檔案也會透過提供下一個可播放視訊片段及其位置的相關資訊，來指示播放程式擷取下一個片段。 片段 (或區段) 實際上是視訊內容的「區塊」。
+當您編碼資產的調適性位元速率串流， **manifest** （播放清單） 檔案建立 （此檔案是文字或 XML 為基礎）。  **Manifest** 檔案包含中繼資料資料流，例如 ︰ 追蹤類型 （音訊、 視訊或文字），追蹤名稱、 開始和結束時間、 位元速率 （品質）、 軌語言、 簡報視窗 （持續時間固定的滑動視窗），視訊轉碼器 (FourCC)。 此檔案也會透過提供下一個可播放視訊片段及其位置的相關資訊，來指示播放程式擷取下一個片段。 片段 (或區段) 實際上是視訊內容的「區塊」。
 
 
 資訊清單檔案範例如下： 
@@ -235,3 +235,4 @@
 [dvr_filter]: ./media/media-services-dynamic-manifest-overview/media-services-dvr-filter.png
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
+

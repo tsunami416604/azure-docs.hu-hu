@@ -13,7 +13,7 @@
 1. [取得 SSL 憑證](#bkmk_getcert)
 2. [設定標準定價層](#bkmk_standardmode)
 2. [在應用程式中設定 SSL](#bkmk_configuressl)
-3. [應用程式上強制 SSL](#bkmk_enforce) (選擇性)
+3. [應用程式上強制 SSL](#bkmk_enforce) （選擇性）
 
 如果您需要更多協助，在本文中的任何時間點，您可以與 Azure 專家 [MSDN Azure 和堆疊溢位論壇](http://azure.microsoft.com/support/forums/)。 或者，您也可以提出 Azure 支援事件。 移至 [Azure 支援網站](http://azure.microsoft.com/support/options/) ，然後按一下 **取得支援**。
 
@@ -44,7 +44,7 @@
 >
 > Azure App Service 支援橢圓曲線密碼編譯 (ECC) 憑證；不過，它們相對而言比較新，您應該在具體步驟中使用 CA 來建立 CSR。
 
-您可能還需要取得 **[中繼憑證](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities)** (也稱為鏈結憑證)，如果您的 CA 會使用這些。 使用中繼憑證比使用「未鏈結憑證」安全，因此常會見到 CA 使用中繼憑證。 中繼憑證通常是從 CA 網站個別下載而得。 本文章中的步驟提供關於如何確保任何中繼憑證與已上傳至應用程式的憑證相合併的步驟。
+您可能還需要取得 **[中繼憑證](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities)** （也稱為鏈結憑證），如果您的 CA 會使用這些。 使用中繼憑證比使用「未鏈結憑證」安全，因此常會見到 CA 使用中繼憑證。 中繼憑證通常是從 CA 網站個別下載而得。 本文章中的步驟提供關於如何確保任何中繼憑證與已上傳至應用程式的憑證相合併的步驟。
 
 <a name="bkmk_certreq"></a>
 ### 使用 Certreq.exe 取得憑證 (僅限 Windows)
@@ -135,7 +135,7 @@ Certreq.exe 是一項用來建立憑證要求的 Windows 公用程式。 自 Win
 
         A challenge password []:
 
-    此程序完成之後，您應該有兩個檔案: **myserver.key** 和 **server.csr**。  **Server.csr** 包含憑證簽署要求。
+    此程序完成之後，您應該有兩個檔案 ︰ **myserver.key** 和 **server.csr**。  **Server.csr** 包含憑證簽署要求。
 
 3. 將您的 CSR 提交至憑證授權單位，以便取得 SSL 憑證。 如需憑證授權單位的清單，請參閱 [Windows 和 Windows Phone 8 SSL 根憑證計劃 (成員 Ca)][cas] Microsoft TechNet Wiki 上。
 
@@ -163,7 +163,7 @@ Certreq.exe 是一項用來建立憑證要求的 Windows 公用程式。 自 Win
 
     儲存檔案。
 
-5. 從命令列、 Bash 或終端機工作階段，請使用下列的命令，將 **myserver.key** 和 **myserver.crt** 到 **myserver.pfx**, ，Azure App Service 所需的格式:
+5. 從命令列、 Bash 或終端機工作階段，請使用下列的命令，將 **myserver.key** 和 **myserver.crt** 到 **myserver.pfx**, ，Azure App Service 所需的格式 ︰
 
         openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
@@ -171,7 +171,7 @@ Certreq.exe 是一項用來建立憑證要求的 Windows 公用程式。 自 Win
 
     > [AZURE.NOTE] 如果 CA 使用中繼憑證，您必須先匯出憑證的下一個步驟來安裝這些憑證。 這些憑證通常是從 CA 個別下載而得，並且有分數種格式來用於不同的網頁伺服器類型。 請選取以 PEM 檔案 (副檔名為 .pem) 形式提供的版本。
     >
-    > 下列命令示範如何建立.pfx 檔案，其中包含中繼憑證，其包含在 **intermediate-cets.pem** 檔案:  
+    > 下列命令示範如何建立.pfx 檔案，其中包含中繼憑證，其包含在 **intermediate-cets.pem** 檔案 ︰  
     >
     >
     `````
@@ -206,7 +206,7 @@ Certreq.exe 是一項用來建立憑證要求的 Windows 公用程式。 自 Win
 
 OpenSSL 可以用來建立憑證要求 (並讓該要求使用 SubjectAltName 延伸來透過單一憑證支援多個網域名稱)，不過，這需要有組態檔。 下列步驟會逐步引導您建立組態檔，然後使用它來要求憑證。
 
-1. 建立新的檔名為 __sancert.cnf__ ，並使用下列做為檔案的內容:
+1. 建立新的檔名為 __sancert.cnf__ ，並使用下列做為檔案的內容 ︰
 
         # -------------- BEGIN custom sancert.cnf -----
         HOME = .
@@ -255,7 +255,7 @@ OpenSSL 可以用來建立憑證要求 (並讓該要求使用 SubjectAltName 延
         Your common name (eg, domain name) []: www.microsoft.com
 
 
-    此程序完成之後，您應該有兩個檔案: **myserver.key** 和 **server.csr**。  **Server.csr** 包含憑證簽署要求。
+    此程序完成之後，您應該有兩個檔案 ︰ **myserver.key** 和 **server.csr**。  **Server.csr** 包含憑證簽署要求。
 
 3. 將您的 CSR 提交至憑證授權單位，以便取得 SSL 憑證。 如需憑證授權單位的清單，請參閱 [Windows 和 Windows Phone 8 SSL 根憑證計劃 (成員 Ca)][cas] Microsoft TechNet Wiki 上。
 
@@ -283,7 +283,7 @@ OpenSSL 可以用來建立憑證要求 (並讓該要求使用 SubjectAltName 延
 
     儲存檔案。
 
-5. 從命令列、 Bash 或終端機工作階段，請使用下列的命令，將 **myserver.key** 和 **myserver.crt** 到 **myserver.pfx**, ，Azure App Service 所需的格式:
+5. 從命令列、 Bash 或終端機工作階段，請使用下列的命令，將 **myserver.key** 和 **myserver.crt** 到 **myserver.pfx**, ，Azure App Service 所需的格式 ︰
 
         openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
@@ -291,7 +291,7 @@ OpenSSL 可以用來建立憑證要求 (並讓該要求使用 SubjectAltName 延
 
     > [AZURE.NOTE] 如果 CA 使用中繼憑證，您必須先匯出憑證的下一個步驟來安裝這些憑證。 這些憑證通常是從 CA 個別下載而得，並且有分數種格式來用於不同的網頁伺服器類型。 請選取以 PEM 檔案 (副檔名為 .pem) 形式提供的版本。  
     >
-    > 下列命令示範如何建立.pfx 檔案，其中包含中繼憑證，其包含在 **intermediate-cets.pem** 檔案:  
+    > 下列命令示範如何建立.pfx 檔案，其中包含中繼憑證，其包含在 **intermediate-cets.pem** 檔案 ︰  
     >
     >
     `````
@@ -335,7 +335,7 @@ OpenSSL 可以用來建立憑證要求 (並讓該要求使用 SubjectAltName 延
 <a name="bkmk_ssopenssl"></a>
 ####使用 OpenSSL 產生自我簽署憑證 ####
 
-1. 建立名為的新文件 **serverauth.cnf**, ，做為此檔案的內容，使用下列命令:
+1. 建立名為的新文件 **serverauth.cnf**, ，做為此檔案的內容，使用下列命令 ︰
 
         [ req ]
         default_bits           = 2048
@@ -429,7 +429,7 @@ OpenSSL 可以用來建立憑證要求 (並讓該要求使用 SubjectAltName 延
 
 10. 按一下 [ **儲存** ，儲存變更並啟用 SSL。
 
-> [AZURE.NOTE] 如果您選取 **IP 為主的 SSL** 和 A 記錄設定您的自訂網域，您必須執行下列額外步驟:
+> [AZURE.NOTE] 如果您選取 **IP 為主的 SSL** 和 A 記錄設定您的自訂網域，您必須執行下列額外步驟 ︰
 >
 > 1. 設定 IP SSL 繫結之後，您的應用程式將會獲派專用的 IP 位址。 您可以找到這個 IP 位址上 **儀表板** 應用程式頁面，請在 **快速瀏覽** 一節。 它會列出成為 **虛擬 IP 位址**:
 >    
@@ -445,7 +445,7 @@ OpenSSL 可以用來建立憑證要求 (並讓該要求使用 SubjectAltName 延
 <a name="bkmk_enforce"></a>
 ## 4.在應用程式上強制使用 HTTPS
 
-Azure App Service 「 *不* 強制使用 HTTPS。 訪客可能仍會使用 HTTP 存取您的應用程式，而這可能會危及應用程式的安全性。 如果您想要強制您的應用程式使用 HTTPS，您可以使用 **URL 重寫** 模組。 Azure App Service 隨附 URL Rewrite 模組，此模組可讓您定義連入要求在送達應用程式之前要套用的規則。 **它可以用於 Azure 所支援的任何程式設計語言撰寫的應用程式。**
+Azure App Service 「 *不* 強制使用 HTTPS。 訪客可能仍會使用 HTTP 存取您的應用程式，而這可能會危及應用程式的安全性。 如果您想要強制您的應用程式使用 HTTPS，您可以使用 **URL 重寫** 模組。 Azure App Service 隨附 URL Rewrite 模組，此模組可讓您定義連入要求在送達應用程式之前要套用的規則。 **它可用於以任何 Azure 支援的程式設計語言所撰寫的應用程式。**
 
 > [AZURE.NOTE] .NET MVC 應用程式應使用 [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) 篩選，而非 URL Rewrite。 如需使用 RequireHttps 的詳細資訊，請參閱 [安全的 ASP.NET MVC 5 應用程式部署至 web 應用程式](../articles/app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。
 >
@@ -478,9 +478,9 @@ URL 重寫規則定義在 **web.config** 檔案儲存在應用程式的根目錄
 
 ###.NET
 
-對於.NET 應用程式，修改您的應用程式的 web.config 檔案，並新增 **& lt; 重寫 >** > 一節 [範例](#example) 至 **(& s) lt; 系統。Web 伺服器 >** 一節。
+對於.NET 應用程式，修改您的應用程式的 web.config 檔案，並新增 **& lt; 重寫 >** > 一節 [範例](#example) 至 **（& s) lt; 系統。Web 伺服器 >** 一節。
 
-如果您的 web.config 檔案已經包含 **(& s) lt; 重寫 >** 區段中，新增 **(& s) lt; 規則 >** 從 [範例](#example) 中的第一個項目 **& lt; 規則 >** 區段。
+如果您的 web.config 檔案已經包含 **（& s) lt; 重寫 >** 區段中，新增 **（& s) lt; 規則 >** 從 [範例](#example) 中的第一個項目 **& lt; 規則 >** 區段。
 
 ###PHP
 
@@ -500,11 +500,11 @@ URL 重寫規則定義在 **web.config** 檔案儲存在應用程式的根目錄
 
     * **Node.js 和 Python Django**
 
-        為 Node.js 和 Python Django 應用程式便已產生的 web.config 檔案 **& lt; 重寫 >** 區段，其中包含 **(& s) lt; 規則 >** 項目所需的應用程式正常運作。 若要強制應用程式以使用 HTTPS，請新增 **(& s) lt; 規則 >** 範例中的第一個項目中 **& lt; 規則 >** 區段。 這會在保留其他規則不變的情況下強制使用 HTTPS。
+        為 Node.js 和 Python Django 應用程式便已產生的 web.config 檔案 **& lt; 重寫 >** 區段，其中包含 **（& s) lt; 規則 >** 項目所需的應用程式正常運作。 若要強制應用程式以使用 HTTPS，請新增 **（& s) lt; 規則 >** 範例中的第一個項目中 **& lt; 規則 >** 區段。 這會在保留其他規則不變的情況下強制使用 HTTPS。
 
     * **Java**
 
-        使用 Apache Tomcat 的 Java 應用程式的 web.config 檔案不包含 **& lt; 重寫 >** 區段，因此您必須新增 **(& s) lt; 重寫 >** 區段到範例 **(& s) lt;system.webServer >** 區段。
+        使用 Apache Tomcat 的 Java 應用程式的 web.config 檔案不包含 **& lt; 重寫 >** 區段，因此您必須新增 **（& s) lt; 重寫 >** 區段到範例 **（& s) lt;system.webServer >** 區段。
 
 4. 將專案 (包含更新的 web.config) 重新部署至 Azure
 
@@ -519,11 +519,11 @@ URL 重寫規則定義在 **web.config** 檔案儲存在應用程式的根目錄
 - [在 Azure App Service 中設定 Web 應用程式](../articles/app-service-web/web-sites-configure.md)
 - [Azure 管理入口網站](https://manage.windowsazure.com)
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 如需舊入口網站變更為新入口網站的指南，請參閱: [瀏覽預覽入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需舊入口網站變更為新入口網站的指南，請參閱 ︰ [瀏覽預覽入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 [customdomain]: ../articles/app-service-web/web-sites-custom-domain-name.md
 [iiscsr]: http://technet.microsoft.com/library/cc732906(WS.10).aspx
@@ -548,4 +548,5 @@ URL 重寫規則定義在 **web.config** 檔案儲存在應用程式的根目錄
 [certwiz2]: ./media/configure-ssl-web-site/waws-certwiz2.png
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
+
 

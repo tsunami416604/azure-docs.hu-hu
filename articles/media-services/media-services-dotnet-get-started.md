@@ -36,7 +36,7 @@
 取得並執行範例的 [這裡](http://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)。
 
 
-## 先決條件
+## 必要條件
 需要有下列必要條件，才能開始使用 Media Services SDK for .NET 進行開發。
 
 - 作業系統：Windows 8 或更新版本、Windows 2008 R2、Windows 7。
@@ -123,7 +123,7 @@
 
 3. 加入 System.Configuration 組件的參考。 此組件包含 **System.Configuration.ConfigurationManager** 類別，用來存取組態檔，例如，App.config。
 
-4. 開啟 App.config 檔案 (如果尚未新增，則預設，檔案新增至您的專案)，並新增 *appSettings* 區段加入檔案。 設定 Azure 媒體服務帳戶名稱和帳戶金鑰的值 (如下列範例所示)。 取得帳戶名稱和金鑰資訊，請開啟 Azure 傳統入口網站中，選取媒體服務帳戶，然後按一下 **管理金鑰** ] 按鈕。
+4. 開啟 App.config 檔案 （如果尚未新增，則預設，檔案新增至您的專案），並新增 *appSettings* 區段加入檔案。 設定 Azure 媒體服務帳戶名稱和帳戶金鑰的值 (如下列範例所示)。 取得帳戶名稱和金鑰資訊，請開啟 Azure 傳統入口網站中，選取媒體服務帳戶，然後按一下 **管理金鑰** ] 按鈕。
 
 <configuration>
         ...
@@ -151,7 +151,7 @@
 
 ##連線到媒體服務帳戶
 
-當使用媒體服務與.NET，您必須使用 **CloudMediaContext** 類別用於大部分的媒體服務程式設計工作: 連線到媒體服務帳戶; 建立、 更新、 存取和刪除下列物件: 資產、 資產檔案、 工作、 存取原則、 定位器等。
+當使用媒體服務與.NET，您必須使用 **CloudMediaContext** 類別用於大部分的媒體服務程式設計工作 ︰ 連線到媒體服務帳戶; 建立、 更新、 存取和刪除下列物件 ︰ 資產、 資產檔案、 工作、 存取原則、 定位器等。
 
 將預設 Program 類別覆寫為下列程式碼。 程式碼將示範如何讀取 App.config 檔案中的連線值以及如何建立 **CloudMediaContext** 來連線到媒體服務物件。 如需有關連接到媒體服務的詳細資訊，請參閱 [for.NET 連接到媒體服務使用 Media Services SDK](http://msdn.microsoft.com/library/azure/jj129571.aspx)。
 
@@ -206,11 +206,11 @@
 
 ##建立新資產並上傳視訊檔案
 
-在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。  **資產** 實體可以包含視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式輔助字幕檔案 (和這些檔案的相關中繼資料。)上傳檔案之後，您的內容會安全地儲存在雲端，以進一步進行處理和串流處理。 資產中的檔案稱為 **資產檔案**。
+在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。  **資產** 實體可以包含視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式輔助字幕檔案 （和這些檔案的相關中繼資料。）上傳檔案之後，您的內容會安全地儲存在雲端，以進一步進行處理和串流處理。 資產中的檔案稱為 **資產檔案**。
 
- **UploadFile** 方法定義如下呼叫 **CreateFromFile** (定義於.NET SDK 延伸模組)。 **CreateFromFile** 會建立新的資產上傳到所指定的來源檔案。
+ **UploadFile** 方法定義如下呼叫 **CreateFromFile** （定義於.NET SDK 延伸模組）。 **CreateFromFile** 會建立新的資產上傳到所指定的來源檔案。
 
- **CreateFromFile** 方法會採用 **AssetCreationOptions** 可讓您指定下列的資產建立選項的其中一個:
+ **CreateFromFile** 方法會採用 **AssetCreationOptions** 可讓您指定下列的資產建立選項的其中一個 ︰
 
 - **無** -不使用加密。 這是預設值。 請注意，使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
 如果您計劃使用漸進式下載傳遞 MP4，請使用此選項。
@@ -448,4 +448,5 @@ MPEG DASH
 <!-- URLs. -->
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.com/
+
 

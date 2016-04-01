@@ -32,7 +32,7 @@ SQL Database 部分支援動態管理檢視的三個類別目錄：
 ## 權限
 
 在 SQL 資料庫中，查詢動態管理檢視需要 **VIEW DATABASE STATE** 權限。  **VIEW DATABASE STATE** 權限會傳回目前資料庫中的所有物件的相關資訊。
-若要授與 **VIEW DATABASE STATE** 特定的資料庫使用者的權限執行下列查詢:
+若要授與 **VIEW DATABASE STATE** 特定的資料庫使用者的權限執行下列查詢 ︰
 
 ```GRANT VIEW DATABASE STATE TO database_user; ```
 
@@ -136,3 +136,4 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 ## 另請參閱
 
 [SQL Database 簡介](sql-database-technical-overview.md) 
+

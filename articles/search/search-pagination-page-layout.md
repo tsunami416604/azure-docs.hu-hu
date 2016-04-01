@@ -90,7 +90,7 @@
 
 ## 頁面層級的篩選器 ##
 
-如果解決方案設計包含特定類型的內容 (例如，線上零售應用程式具有列於頁面頂端的部門) 的專用的搜尋頁面中，您可以插入與篩選條件運算式 **onClick** 事件，在預先篩選的狀態中開啟頁面。 
+如果解決方案設計包含特定類型的內容 （例如，線上零售應用程式具有列於頁面頂端的部門） 的專用的搜尋頁面中，您可以插入與篩選條件運算式 **onClick** 事件，在預先篩選的狀態中開啟頁面。 
 
 您可以傳送篩選器，但不一定要有搜尋運算式。 例如，下列要求會篩選品牌名稱，只傳回符合該名稱的文件。
 
@@ -113,3 +113,4 @@
 [3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
 [5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png 
+

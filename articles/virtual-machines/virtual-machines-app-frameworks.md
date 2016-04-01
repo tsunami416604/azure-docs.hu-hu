@@ -26,7 +26,7 @@
 
 | 範本 | 說明 | 檢視範本 | 立即部署 |
 |:---|:---|:---:|:---:|
-| 部署 *n* Vm 快速 | 這是 Microsoft 建立的範本部署高達 *n* 新的 Vm (以及新虛擬網路和儲存體帳戶)。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/resource-loop-vms-vnet-aset/) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresource-loop-vms-vnet-aset%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| 部署 *n* Vm 快速 | 這是 Microsoft 建立的範本部署高達 *n* 新的 Vm （以及新虛擬網路和儲存體帳戶）。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/resource-loop-vms-vnet-aset/) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresource-loop-vms-vnet-aset%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Active Directory 樹系和網域 | 這個範本會部署兩個新的 VM (以及一個新的虛擬網路、儲存體帳戶和負載平衡器) 並建立新的 Active Directory 樹系和網域。 會將每個 VM 建立成新網域的 DC，並放置在可用性集合。 每個 VM 也會加入具有負載平衡之公用 IP 位址的 RDP 端點。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Apache 網頁伺服器 | 這個範本使用 Azure Linux CustomScript 延伸模組來部署 Apache 網頁伺服器。 這個範本會建立 Ubuntu VM、安裝 Apache2 以及建立一個簡單的 HTML 檔案。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/apache2-on-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapache2-on-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 | Couchbase 叢集 | 這個範本會在 Ubuntu 虛擬機器上部署 Couchbase 叢集。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/couchbase-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcouchbase-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
@@ -52,4 +52,5 @@
 探索可供您使用的所有範本上 [GitHub](https://github.com/Azure/azure-quickstart-templates)。
 
 深入了解 [Azure 資源管理員](../resource-group-template-deploy.md)。
+
 

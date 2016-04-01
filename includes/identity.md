@@ -25,7 +25,7 @@
 ![虛擬機器中的 Azure Active Directory](./media/identity/identity_01_ADinVM.png)
 
 
-<a name="Fig1"></a>[圖 1: Windows Server Active Directory 可以連線到組織內部部署資料中心使用 Azure 虛擬網路的 Azure 虛擬機器中執行。
+<a name="Fig1"></a>圖 1：Windows Server Active Directory 可以在連接到使用 Azure 虛擬網路的組織內部部署資料中心的 Azure 虛擬機器中執行。
 
 在此處顯示的範例中，Windows Server AD 會在使用 Azure 虛擬機器 (即平台的 IaaS 技術) 建立的 VM 中執行。 這些 VM 和其他幾部 VM 會群組成連接至使用 Azure 虛擬網路的內部部署資料中心的虛擬網路。 虛擬網路會分割出一組透過虛擬私人網路 (VPN) 連接與內部部署網路進行互動的雲端虛擬機器。 如此一來，這些 Azure 虛擬機器就如同內部部署資料中心的另一個子網路。 如圖所示，其中兩個 VM 正在執行 Windows Server AD 網域控制站。 虛擬網路中的其他虛擬機器可能正在執行應用程式 (例如 SharePoint)，或作其他用途使用 (例如開發和測試)。 內部部署資料中心也會執行兩個 Windows Server AD 網域控制站。
 
@@ -64,7 +64,7 @@
 
 ![虛擬機器中的 Azure Active Directory](./media/identity/identity_02_AD.png)
 
-<a name="fig2"></a>[圖 2: Azure Active Directory 會提供給組織的使用者單一登入 SaaS 應用程式，包括 Office 365。
+<a name="fig2"></a>圖 2：Azure Active Directory 會將 SaaS 應用程式 (包括 Office 365) 的單一登入提供給組織的使用者。
 
 如圖所示，Azure AD 是一項多租用戶服務。 這表示它可以同時支援許多不同的組織，以及儲存各組織的使用者相關目錄資訊。 在此範例中，組織 A 的使用者正在嘗試存取 SaaS 應用程式。 此應用程式可能屬於 Office 365 的一部分 (如 SharePoint Online)，或屬於其他應用程式 - 非 Microsoft 應用程式也可以使用此技術。 因為 Azure AD 支援 SAML 2.0 通訊協定，所以應用程式只需具備使用此業界標準進行互動的能力。 (事實上，使用 Azure AD 的應用程式可以在任何資料中心執行，而不限於 Azure 資料中心)。
 
@@ -80,12 +80,12 @@
 
 如果組織未使用 Windows Server Active Directory (該組織沒有內部部署伺服器或網域)，且唯獨依賴採用 Azure AD 的雲端應用程式，則只需要使用此雲端目錄，就可以將所有雲端應用程式的單一登入提供給公司的使用者。 雖然此種情況日益普遍，但大多數組織仍使用以 Windows Server Active Directory 建立的內部部署網域。 Azure AD 有有用的角色扮演，做為 [[圖 3](#fig3) 顯示。
 
-![虛擬機器中的 Azure Active Directory](./media/identity/identity_03_AD.png)
-<a id="fig3"></a>[圖 3: 組織可以聯合 Windows Server Active Directory 與 Azure Active Directory SaaS 應用程式提供給其使用者單一登入。
+![虛擬機器中的 azure Active Directory](./media/identity/identity_03_AD.png)
+<a id="fig3"></a>[圖 3 ︰ 組織可以聯合 Windows Server Active Directory 與 Azure Active Directory SaaS 應用程式提供給其使用者單一登入。
 
 在此案例中，組織 B 的使用者希望存取 SaaS 應用程式。 在使用者這麼做之前，組織的目錄管理員必須先使用 AD FS 來與 Azure AD 建立同盟關係 (如圖所示)。 這些管理員也必須設定組織的內部部署 Windows Server AD 與 Azure AD 之間的資料同步處理。 資料同步處理會自動將使用者和群組資訊從內部部署目錄複製到 Azure AD。 請注意，這麼一來：組織會實際將其內部部署目錄擴充到雲端。 以此方式聯合 Windows Server AD 與 Azure AD，組織即可擁有一項可當作單一實體管理的目錄服務，但仍可支配內部部署和雲端。
 
-為了使用 Azure AD，使用者會先如往常般登入自己的內部部署 Active Directory 網域 (步驟 1)。 當他嘗試存取 SaaS 應用程式時 (步驟 2)，同盟程序會導致 Azure AD 對他簽發此應用程式的權杖 (步驟 3)。 (如需同盟運作方式的詳細資訊，請參閱 [Windows 的 Claims-Based 身分識別: 技術和案例](http://www.davidchappell.com/writing/white_papers/Claims-Based_Identity_for_Windows_v3.0--Chappell.docx)。)如先前所述，此權杖包含使用者的身分識別資訊，並由 Azure AD 進行數位簽章。 然後，此權杖會被傳送至 SaaS 應用程式 (步驟 4)，以便驗證權杖的簽章並使用其內容 (步驟 5)。 在先前的案例中，SaaS 應用程式可以視需要使用圖形 API 來深入了解此使用者 (步驟 6)。
+為了使用 Azure AD，使用者會先如往常般登入自己的內部部署 Active Directory 網域 (步驟 1)。 當他嘗試存取 SaaS 應用程式時 (步驟 2)，同盟程序會導致 Azure AD 對他簽發此應用程式的權杖 (步驟 3)。 (如需同盟運作方式的詳細資訊，請參閱 [Windows 的 Claims-Based 身分識別 ︰ 技術和案例](http://www.davidchappell.com/writing/white_papers/Claims-Based_Identity_for_Windows_v3.0--Chappell.docx)。)如先前所述，此權杖包含使用者的身分識別資訊，並由 Azure AD 進行數位簽章。 然後，此權杖會被傳送至 SaaS 應用程式 (步驟 4)，以便驗證權杖的簽章並使用其內容 (步驟 5)。 在先前的案例中，SaaS 應用程式可以視需要使用圖形 API 來深入了解此使用者 (步驟 6)。
 
 Azure AD 目前並未完全取代內部部署 Windows Server AD。 如先前所述，雲端目錄的架構簡單許多，但也有所欠缺，例如群組原則、儲存電腦相關資訊的功能，以及對 LDAP 的支援。 (事實上，無法將 Windows 電腦設定成讓使用者僅使用 Azure AD 進行登入 - 不支援此案例)。Azure AD 的最初目標包括讓企業使用者不需維護個別的登入，並且讓內部部署目錄管理員不需手動同步處理其內部部署目錄與其組織所用的每個 SaaS 應用程式，即可存取雲端的應用程式。 但是，過一段時間後，便期望此雲端目錄服務能處理更廣泛的案例。
 
@@ -93,13 +93,13 @@ Azure AD 目前並未完全取代內部部署 Windows Server AD。 如先前所�
 
 雲端型身分識別技術可用於解決各種問題。 舉例來說，Azure Active Directory 可將多個 SaaS 應用程式的單一登入提供給組織的使用者。 但雲端的身分識別技術也可用於其他層面。
 
-比方說，假設，應用程式希望讓使用者使用多個所簽發的權杖登入 *身分識別提供者 (idp 建立)*。 現今有為數眾多的身分識別提供者，包括 Facebook、Google、Microsoft 和其他提供者，而應用程式經常讓使用者使用上述其中一個身分識別進行登入。 既然可以依賴已經存在的身分識別，應用程式為何還要麻煩地維護自己的使用者和密碼清單？ 對於要記住不只一個使用者名稱和密碼的使用者，以及建立應用程式且不必再維護自己的使用者名稱和密碼清單的人而言，接受現有的身分識別比較方便。
+比方說，假設，應用程式希望讓使用者使用多個所簽發的權杖登入 *身分識別提供者 （idp） 建立*。 現今有為數眾多的身分識別提供者，包括 Facebook、Google、Microsoft 和其他提供者，而應用程式經常讓使用者使用上述其中一個身分識別進行登入。 既然可以依賴已經存在的身分識別，應用程式為何還要麻煩地維護自己的使用者和密碼清單？ 對於要記住不只一個使用者名稱和密碼的使用者，以及建立應用程式且不必再維護自己的使用者名稱和密碼清單的人而言，接受現有的身分識別比較方便。
 
 但是當每一個身分識別提供者簽發某種權杖時，這些權杖並不標準 - 每個 IdP 都有自己的格式。 此外，這些權杖中的資訊也不標準。 希望接受 Facebook、Google 和 Microsoft 等提供者簽發之權杖的應用程式，面臨到撰寫唯一程式碼來處理各種不同格式的挑戰。
 
 為何要這麼做？ 何不建立一個媒介，以共通的身分識別資訊表示法產生單一權杖格式？ 這種方法對於建立應用程式的開發人員而言比較方便，因為他們現在只需要處理一種權杖。 Azure Active Directory 存取控制就是這麼做，在雲端提供一個媒介以便處理各種權杖。 [[圖 4](#fig4) 顯示其運作方式
 
-![虛擬機器中的 Azure Active Directory](./media/identity/identity_04_IdentityProviders.png)
+![虛擬機器中的 azure Active Directory](./media/identity/identity_04_IdentityProviders.png)
 <a id="fig4"></a>圖 4: Azure Active Directory 存取控制可讓它接受不同的身分識別提供者所簽發的身分識別權杖的應用程式更容易。
 
 此程序會在使用者嘗試透過瀏覽器存取應用程式時開始。 應用程式將使用者重新導向至其所選的 IdP (而且也是應用程式所信任的 IdP)。 使用者可以向此 IdP 驗明正身，例如輸入使用者名稱和密碼 (步驟 1)，而 IdP 會傳回包含其相關資訊的權杖 (步驟 2)。
@@ -119,4 +119,5 @@ Azure AD 目前並未完全取代內部部署 Windows Server AD。 如先前所�
 ##關於作者
 
 David Chappell 是 Chappell & Associates [www.davidchappell.com](http://www.davidchappell.com) San Francisco，california。
+
 

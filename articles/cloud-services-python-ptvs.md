@@ -23,7 +23,7 @@
 
 這篇文章提供使用 Python web 和背景工作角色的概觀 [Python Tools for Visual Studio][]。
 
-## 先決條件
+## 必要條件
 
  - Visual Studio 2013 或 2015
  - [Python Tools for Visual Studio 2.2][] (PTVS)
@@ -34,11 +34,11 @@
 
 ## 什麼是 Python Web 和背景工作角色？
 
-Azure 提供三種計算模型來執行應用程式: [Azure App Service 中的 Web 應用程式功能][execution model-web sites], ，[Azure 虛擬機器][execution model-vms], ，和 [Azure 雲端服務][execution model-cloud services]。 這三種模型都支援 Python。 雲端服務包含 web 和背景工作角色，提供 *平台即服務 (PaaS)*。 在雲端服務中，Web 角色應用程式會提供專用的 Internet Information Services (IIS) Web 伺服器，用以代管前端 Web 應用程式，而背景工作角色則可執行獨立於使用者互動或輸入以外的非同步、長時間執行或持續性工作。
+Azure 提供三種計算模型來執行應用程式 ︰ [Azure App Service 中的 Web 應用程式功能][execution model-web sites], ，[Azure 虛擬機器][execution model-vms], ，和 [Azure 雲端服務][execution model-cloud services]。 這三種模型都支援 Python。 雲端服務包含 web 和背景工作角色，提供 *平台即服務 (PaaS)*。 在雲端服務中，Web 角色應用程式會提供專用的 Internet Information Services (IIS) Web 伺服器，用以代管前端 Web 應用程式，而背景工作角色則可執行獨立於使用者互動或輸入以外的非同步、長時間執行或持續性工作。
 
 如需詳細資訊，請參閱 [What is a Cloud Service?]。
 
-> [AZURE.NOTE] *正在尋求建置簡單的網站嗎?*
+> [AZURE.NOTE] *正在尋求建置簡單的網站嗎？*
 如果您的案例只需要簡單的網站前端，請考慮使用 Azure App Service 中的輕量型 Web Apps 功能。 隨著網站擴大，以及需求改變，您可以很輕易地升級到雲端服務。 請參閱 <a href="/develop/python/">Python 開發人員中心</a> 開發 Azure 應用程式服務的 Web 應用程式功能的文章。
 <br />
 
@@ -139,4 +139,5 @@ Azure 提供三種計算模型來執行應用程式: [Azure App Service 中的 W
 [Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517191
+
 

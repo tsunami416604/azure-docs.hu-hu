@@ -21,7 +21,7 @@
 
 本指南提供在 SQL 資料倉儲中使用 PolyBase 的實用資訊。 
 
-若要開始，請參閱 [使用 PolyBase 載入資料] [] 教學課程。
+若要開始，請參閱 [使用 PolyBase 載入資料][] 教學課程。
 
 
 ## 替換儲存體金鑰
@@ -84,7 +84,7 @@ FROM   [ext].[CarSensor_Data]
 
 ## 建立新載入資料的統計資料
 
-Azure 資料倉儲尚未支援自動建立或自動更新統計資料。  為了獲得查詢的最佳效能，在首次載入資料，或是資料中發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  統計資料的詳細說明，請參閱主題開發群組中的 [統計資料] [] 主題。  以下是快速範例，說明如何在此範例中建立載入資料表的統計資料。
+Azure 資料倉儲尚未支援自動建立或自動更新統計資料。  為了獲得查詢的最佳效能，在首次載入資料，或是資料中發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  如需統計資料的詳細說明，請參閱 [統計資料][] 開發一組主題中的主題。  以下是快速範例，說明如何在此範例中建立載入資料表的統計資料。
 
 ```
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -175,7 +175,7 @@ $write.Dispose()
 ```
 
 ## 後續步驟
-若要了解有關將資料移到 SQL 資料倉儲的詳細資訊，請參閱 [資料移轉概觀] []。
+若要了解有關將資料移到 SQL 資料倉儲的詳細資訊，請參閱 [資料移轉概觀][]。
 
 <!--Image references-->
 
@@ -195,8 +195,7 @@ $write.Dispose()
 
 
 <!-- External Links -->
-[建立外部資料來源 (TRANSACT-SQL)]: https://msdn.microsoft.com/library/dn935022.aspx
-[建立外部檔案格式 (TRANSACT-SQL)]: https://msdn.microsoft.com/library/dn935026).aspx
+[建立外部檔案格式 (TRANSACT-SQL)]: https://msdn.microsoft.com/library/dn935026).aspx[[建立外部資料表 (TRANSACT-SQL)]: https://msdn.microsoft.com/library/dn935021.aspx).aspx
 [CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspx
 
 [DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/mt146367.aspx
@@ -209,6 +208,7 @@ $write.Dispose()
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189522.aspx
 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
+
 
 
 

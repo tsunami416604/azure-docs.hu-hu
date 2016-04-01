@@ -57,7 +57,7 @@ Azure 金鑰保存庫容器 (保存庫) 可以使用 REST、PowerShell 或 CLI �
 
 ## 範例
 
-- 這個下載包含範例應用程式 HelloKeyVault 和 Azure Web 服務範例。 [Azure 金鑰保存庫的程式碼範例](http://www.microsoft.com/download/details.aspx?id=45343)
+- 這個下載包含範例應用程式 HelloKeyVault 和 Azure Web 服務範例。 [Azure 金鑰保存庫程式碼範例](http://www.microsoft.com/download/details.aspx?id=45343)
 - 使用此教學課程來幫助您了解如何從 Azure 中的 Web 應用程式使用 Azure 金鑰保存庫。 [使用 Azure 金鑰保存庫，從 Web 應用程式]() key-vault-use-from-web-application.md
 
 ## 支援程式庫
@@ -65,5 +65,6 @@ Azure 金鑰保存庫容器 (保存庫) 可以使用 REST、PowerShell 或 CLI �
 - [Microsoft Azure 金鑰保存庫核心程式庫](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/1.0.0) IKey 和 IKeyResolver 介面提供尋找索引鍵的識別項和索引鍵與執行作業。
 
 - [Microsoft Azure 金鑰保存庫延伸模組](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/1.0.0) 提供 Azure 金鑰保存庫的擴充的功能。
+
 
 

@@ -28,11 +28,11 @@
 
 本主題說明如何從您的通用 Windows 應用程式在 Azure 行動服務中驗證使用者。 在本教學課程中，您將使用行動服務支援的身分識別提供者，將驗證加入至快速入門專案。 由行動服務成功驗證並授權之後，就會顯示使用者識別碼值。
 
-本教學課程會以行動服務快速入門為基礎。 您還必須先完成本教學課程 [開始使用行動服務] 或 [將行動服務新增至現有的應用程式](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md)。
+本教學課程會以行動服務快速入門為基礎。 您還必須先完成本教學課程 [Get started with Mobile Services] 或 [將行動服務新增至現有的應用程式](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md)。
 
 >[AZURE.NOTE]本教學課程說明如何使用伺服器導向驗證 Windows 市集和 Windows Phone 市集 8.1 應用程式中的使用者。 Fore 資訊用戶端導向驗證，請參閱 [登入 Google、 Microsoft 和 Facebook Azure 行動服務 Sdk](http://azure.microsoft.com/blog/2014/10/27/logging-in-with-google-microsoft-and-facebook-sdks-to-azure-mobile-services/)。
 
-##<a name="register"></a>註冊您的應用程式以驗證與設定行動服務
+##<a name="register"></a>註冊應用程式進行驗證，並設定行動服務
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
@@ -50,7 +50,7 @@
 
 &nbsp;&nbsp;8. 按 F5 鍵執行 Windows 市集應用程式；確認在應用程式啟動後，發生狀態代碼 401 (未經授權) 的未處理例外狀況。
 
-(& s) nbsp; & nbsp;這是因為應用程式會嘗試驗證的使用者身分存取行動服務，但 *TodoItem* 資料表現在需要驗證。
+（& s) nbsp; & nbsp;這是因為應用程式會嘗試驗證的使用者身分存取行動服務，但 *TodoItem* 資料表現在需要驗證。
 
 接下來，您要將應用程式更新為在要求行動服務的資源之前必須驗證使用者。
 
@@ -71,12 +71,12 @@
 
 ## <a name="next-steps"> </a>後續步驟
 
-在下一個 [行動服務使用者的伺服器端授權] [以指令碼授權使用者] 教學課程中，您將使用由行動服務根據經驗證的使用者而提供的使用者識別碼值，來篩選行動服務傳回的資料。
+在下一個教學課程中， [的行動服務使用者服務端授權][Authorize users with scripts], ，您將行動服務根據經驗證的使用者所提供的使用者識別碼值，並用來篩選行動服務所傳回的資料。
 
 ##另請參閱
 
 + [增強型的使用者功能](http://azure.microsoft.com/blog/2014/10/02/custom-login-scopes-single-sign-on-new-asp-net-web-api-updates-to-the-azure-mobile-services-net-backend/)<br/>
-你可以藉由呼叫您的行動服務身分識別提供者所維護的其他使用者資料 **serviceuser.getidentitiesasync ()** .NET 後端中的方法。
+你可以藉由呼叫您的行動服務身分識別提供者所維護的其他使用者資料 **serviceuser.getidentitiesasync （)** .NET 後端中的方法。
 
 + [Mobile Services .NET How-to Conceptual Reference]<br/>進一步了解如何使用行動服務與.NET 用戶端。
 
@@ -103,5 +103,6 @@
 [Azure classic portal]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
+
 
 

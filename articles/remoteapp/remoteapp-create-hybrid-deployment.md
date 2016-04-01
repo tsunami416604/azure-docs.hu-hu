@@ -100,7 +100,7 @@ Azure RemoteApp 收藏分成兩種：
 
 ## 步驟 4：連結至 Azure RemoteApp 映像 ##
 
-Asure RemoteApp 範本映像包含您要與使用者共用的程式。 您可以建立新 [範本映像](remoteapp-imageoptions.md) 或連結至現有的映像 (已匯入或上傳至 Azure RemoteApp)。 您也可以連結到其中一個 Azure RemoteApp [範本映像](remoteapp-images.md) 包含 Office 365 或 Office 2013 (供試用) 程式。 
+Asure RemoteApp 範本映像包含您要與使用者共用的程式。 您可以建立新 [範本映像](remoteapp-imageoptions.md) 或連結至現有的映像 （已匯入或上傳至 Azure RemoteApp）。 您也可以連結到其中一個 Azure RemoteApp [範本映像](remoteapp-images.md) 包含 Office 365 或 Office 2013 （供試用） 程式。 
 
 如果您要上傳新映像，您必須輸入名稱，並選擇映像的位置。 在精靈的下一頁，您會看見一組 PowerShell Cmdlet - 從提高權限的 Windows PowerShell 提示複製並執行這些 Cmdlet，可上傳指定的映像。
 
@@ -148,3 +148,4 @@ Azure RemoteApp 應用程式就是您提供給使用者的應用程式或程式�
  
 ### 幫我們來協助您 
 您知道除了評比這篇文章以及在下面留言以外，您可以變更文件本身嗎？ 有所遺漏？ 有所錯誤？ 我是否撰寫了令人混淆的內容？ 向上捲動，然後按一下 [ **GitHub 上的編輯** 若要變更-供檢閱，這些會變成給我們，接著，我們登入它們，就會看到您的變更和改進這裡。
+

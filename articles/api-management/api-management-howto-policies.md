@@ -46,7 +46,7 @@
 
 原則最初會以唯讀顯示。 為了編輯定義，請按一下 **設定原則** 動作。
 
-![編輯][policies-edit]
+![Edit][policies-edit]
 
 原則定義是一份簡單的 XML 文件，描述一連串輸入和輸出陳述式。 可直接在定義視窗中編輯 XML。 右邊提供陳述式的清單，而適用於目前範圍的陳述式會啟用並反白顯示。如所示 **限制呼叫速率** 上方螢幕擷取畫面中的陳述式。
 
@@ -71,7 +71,7 @@
         <address>1.2.3.4</address>
     </ip-filter>
 
-![儲存][policies-save]
+![Save][policies-save]
 
 完成設定原則的陳述式時，按一下 [ **儲存** 和所做的變更會立即傳播至 API 管理閘道。
 
@@ -147,4 +147,5 @@
 [policies-edit]: ./media/api-management-howto-policies/api-management-policies-edit.png
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
+
 

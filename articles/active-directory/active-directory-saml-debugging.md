@@ -23,7 +23,8 @@
  
 您可以選取這一行，然後選取檢視的 SAML 語彙基元 **偵測器 > WebForms** 右邊窗格中的索引標籤。 從該處，以滑鼠右鍵按一下 **SAMLResponse** 值，然後選取 **傳送至 TextWizard**。 然後選取 **從 Base64** 從 **轉換** 解碼語彙基元，並查看其內容功能表。
  
-**請注意**: 若要查看此 HTTP 要求的內容，Fiddler 可能會提示您設定的 HTTPS 流量，您必須進行解密。
+**請注意**︰ 若要查看此 HTTP 要求的內容，Fiddler 可能會提示您設定的 HTTPS 流量，您必須進行解密。
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-debugging/fiddler.png
+

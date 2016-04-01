@@ -105,11 +105,11 @@ Azure Site Recovery 可藉由協調虛擬機器與實體伺服器的複寫、容
 
 Site Recovery 可協調對 VMM 雲端中 Hyper-V 主機伺服器上之虛擬機器的保護。 您必須確定在開始 Site Recovery 部署之前，已妥善設定這些雲端。 其中一些不錯的資料來源包括：
 
-- [私人雲端的新功能](http://go.microsoft.com/fwlink/?LinkId=324952)
+- [什麼是私用雲端的新功能](http://go.microsoft.com/fwlink/?LinkId=324952)
 - [VMM 2012 和雲端](http://go.microsoft.com/fwlink/?LinkId=324956) Gunter Danzeisen 部落格上。
 - [設定 VMM 雲端網狀架構](https://msdn.microsoft.com/library/azure/dn883636.aspx#BKMK_Fabric)
 - [在 VMM 中建立私人雲端](http://go.microsoft.com/fwlink/?LinkId=324953)
-- [逐步解說: 建立私人雲端](http://go.microsoft.com/fwlink/?LinkId=324954) Keith Mayer 部落格中。
+- [逐步解說 ︰ 建立私人雲端](http://go.microsoft.com/fwlink/?LinkId=324954) Keith Mayer 部落格中。
 
 ### 將 VMM 中的 SAN 存放裝置整合並分類。
 
@@ -190,7 +190,7 @@ Site Recovery 可協調對 VMM 雲端中 Hyper-V 主機伺服器上之虛擬機�
 
 ### 註冊 VMM 伺服器
 
-1. 在 <b>[復原服務]</b> 頁面中，按一下保存庫以開啟 [快速入門] 頁面。 您也可以使用圖示隨時開啟 [快速啟動]。
+1. 在 [復原服務]<b></b> 頁面中，按一下保存庫以開啟 [快速啟動] 頁面。 您也可以使用圖示隨時開啟 [快速啟動]。
 
     ![快速啟動圖示](./media/site-recovery-vmm-san/SRSAN_QuickStartIcon.png)
 
@@ -268,13 +268,13 @@ Site Recovery 可協調對 VMM 雲端中 Hyper-V 主機伺服器上之虛擬機�
         C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin\> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>         
  ####命令列安裝參數清單####
 >
- - **/ 認證** : 指定註冊金鑰檔所在的位置的必要參數  
- - **/Friendlyname** : 必要參數，會出現在 Azure Site Recovery 入口網站中的 HYPER-V 主機伺服器的名稱。
- - **/ EncryptionEnabled** : 選擇性的參數，您需要使用只能在 VMM 至 Azure 案例中，如果您需要的虛擬機器在 Azure 中的靜止的加密。 請確認您提供的檔案名稱具有 **.pfx** 延伸模組。
- - **/proxyAddress** : 選擇性參數，指定 proxy 伺服器的位址。
- - **/proxyport** : 指定的連接埠的 proxy 伺服器的選擇性參數。
- - **/proxyUsername** : 指定的 Proxy 使用者名稱 (如果 proxy 需要驗證) 的選擇性參數。
- - **/proxyPassword** : 指定的密碼來驗證 proxy 伺服器 (如果 proxy 需要驗證) 的選擇性參數。
+ - **/ 認證** ︰ 指定註冊金鑰檔所在的位置的必要參數  
+ - **/Friendlyname** ︰ 必要參數，會出現在 Azure Site Recovery 入口網站中的 HYPER-V 主機伺服器的名稱。
+ - **/ EncryptionEnabled** ︰ 選擇性的參數，您需要使用只能在 VMM 至 Azure 案例中，如果您需要的虛擬機器在 Azure 中的靜止的加密。 請確認您提供的檔案名稱具有 **.pfx** 延伸模組。
+ - **/proxyAddress** ︰ 選擇性參數，指定 proxy 伺服器的位址。
+ - **/proxyport** ︰ 指定的連接埠的 proxy 伺服器的選擇性參數。
+ - **/proxyUsername** ︰ 指定的 Proxy 使用者名稱 （如果 proxy 需要驗證） 的選擇性參數。
+ - **/proxyPassword** ︰ 指定的密碼來驗證 proxy 伺服器 （如果 proxy 需要驗證） 的選擇性參數。
 
 
 ## 步驟 4：對應存放裝置陣列和集區
@@ -298,15 +298,15 @@ Site Recovery 可協調對 VMM 雲端中 Hyper-V 主機伺服器上之虛擬機�
 
 1. 在 [快速入門] 頁面中，按一下 [ **設定 VMM 雲端的保護**。
 2. 在 **受保護項目** 索引標籤上，選取您想要設定，並移至雲端 **組態** ] 索引標籤。 請注意：
-3. 在 <b>目標</b>選取 <b>VMM</b>.
-4. 在 <b>目標位置</b>選取您想要用於復原的雲端進行管理的站台上 VMM 伺服器。
-5. 在 <b>目標雲端</b>選取您要使用來源定域機組中的虛擬機器進行容錯移轉的目標雲端。 請注意：
+3. 在 [目標]<b></b> 中，選取 [VMM]<b></b>。
+4. 在 [目標位置]<b></b> 中，選取網站上負責對您要用於復原之雲端進行管理的 VMM 伺服器。
+5. 在 [目標雲端]<b></b> 中，選取要在來源雲端中用於虛擬機器容錯移轉的目標雲端。 請注意：
     - 建議您，選取的目標雲端要符合所要保護之虛擬機器的復原需求。
     - 雲端只能當成單一雲端組中的主要雲端或目標雲端。
 6. Azure Site Recovery 會確認雲端能夠存取具備 SAN 複寫功能的存放裝置，並確認存放裝置陣列已對等互連。 將會顯示參與的陣列對等項。
 7. 如果驗證成功，請在 **複寫類型**, ，請選取 **SAN**。
 
-<p>儲存設定之後會建立工作，並可監視 <b>作業</b> 索引標籤。 上可修改雲端設定 <b>設定</b> 索引標籤。 如果您要修改目標位置或目標雲端，則必須移除雲端組態，然後重新設定雲端。</p>
+<p>儲存設定之後，即會建立一個工作，並且可在 [工作]<b></b> 索引標籤上進行監視。 上可修改雲端設定 <b>設定</b> ] 索引標籤。 如果您要修改目標位置或目標雲端，則必須移除雲端組態，然後重新設定雲端。</p>
 
 ## 步驟 6：啟用網路對應
 
@@ -324,7 +324,7 @@ Site Recovery 可協調對 VMM 雲端中 Hyper-V 主機伺服器上之虛擬機�
 6.  按一下打勾記號完成對應程序。 隨即有個工作啟動來追蹤對應程序。 您可以檢視上 **工作** ] 索引標籤。
 
 
-## 步驟 7: 為複寫群組啟用複寫</h3>
+## 步驟 7 ︰ 為複寫群組啟用複寫</h3>
 
 您必須先為存放裝置複寫群組啟用複寫，才能為虛擬機器啟用保護。
 
@@ -392,11 +392,12 @@ Site Recovery 可協調對 VMM 雲端中 Hyper-V 主機伺服器上之虛擬機�
 
 ## 監視活動
 
-您可以使用 **工作** ] 索引標籤和 **儀表板** 來檢視和監視的主要工作由 Azure Site Recovery 保存庫，包括設定雲端、 啟用和停用虛擬機器的保護、 執行容錯移轉 (計劃性、 非計劃性或測試)，以及認可非計劃性容錯移轉保護。
+您可以使用 **工作** ] 索引標籤和 **儀表板** 來檢視和監視的主要工作由 Azure Site Recovery 保存庫，包括設定雲端、 啟用和停用虛擬機器的保護、 執行容錯移轉 （計劃性、 非計劃性或測試），以及認可非計劃性容錯移轉保護。
 
 從 **工作** 索引標籤檢視工作、 向下鑽研工作詳細資料和錯誤、 執行工作查詢以擷取符合特定準則，工作將工作匯出至 Excel，以及重新啟動失敗的工作。
 
 從 **儀表板** 可以下載最新版的提供者和代理程式安裝檔案、 取得保存庫的組態資訊、 查看由保存庫的保護、 查看最近的工作、 管理保存庫憑證中，虛擬機器的數目和重新同步虛擬機器。
 
 如需有關與工作和儀表板互動的詳細資訊，請參閱 [作業和監視](http://go.microsoft.com/fwlink/?LinkId=398534)。
+
 

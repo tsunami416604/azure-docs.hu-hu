@@ -27,17 +27,17 @@
 
 <p>本主題顯示如何在 Azure 行動服務中從 Xamarin.Android 應用程式驗證使用者。 在本教學課程中，您將使用行動服務支援的身分識別提供者，將驗證加入至快速入門專案。 由行動服務成功驗證並授權之後，就會顯示使用者識別碼值。</p>
 
-本教學課程將引導您逐步完成以下在您的應用程式中啟用驗證的基本步驟：
+本教學課程帶領您執行下列基本步驟，在您的應用程式中啟用驗證：
 
-1. [註冊應用程式進行驗證，並設定行動服務]
-2. [限制只有經驗證的使用者具有資料表的權限]
-3. [新增驗證至應用程式]
+1. [註冊您的應用程式以驗證與設定行動服務]
+2. [對通過驗證的使用者限制資料表權限]
+3. [將驗證新增至應用程式]
 
-本教學課程是以行動服務快速入門為基礎。 您也必須先完成 [開始使用行動服務] 教學課程。
+本教學課程會以行動服務快速入門為基礎。 您還必須先完成本教學課程 [Get started with Mobile Services]。
 
 完成本教學課程需要有 Xamarin.Android 和 Android SDK 4.2 或更新版本。
 
-##<a name="register"></a>註冊您的應用程式以驗證與設定行動服務
+##<a name="register"></a>註冊應用程式進行驗證，並設定行動服務
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
@@ -47,9 +47,9 @@
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
 
-3. 在 Xamarin Studio 中，開啟您完成教學課程時所建立的專案 [開始使用行動服務]。
+3. 在 Xamarin Studio 中，開啟您完成教學課程時所建立的專案 [Get started with Mobile Services]。
 
-4. 從 **執行** ] 功能表上，按一下 [ **開始偵錯** 來啟動應用程式; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 (未經授權)。
+4. 從 **執行** ] 功能表上，按一下 [ **開始偵錯** 來啟動應用程式; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 （未經授權）。
 
      這是因為應用程式會嘗試驗證的使用者身分存取行動服務，但 _TodoItem_ 資料表現在需要驗證。
 
@@ -57,11 +57,11 @@
 
 ##<a name="add-authentication"></a>將驗證新增至應用程式
 
-1. 新增下列屬性至 **ToDoActivity** 類別:
+1. 新增下列屬性至 **ToDoActivity** 類別 ︰
 
         private MobileServiceUser user;
 
-2. 將下列方法加入 **ToDoActivity** 類別:
+2. 將下列方法加入 **ToDoActivity** 類別 ︰
 
         private async Task Authenticate()
         {
@@ -78,7 +78,7 @@
 
     這會建立新的方法來處理驗證程序。 使用者透過 Microsoft 帳戶登入來驗證。 將出現對話方塊來顯示已驗證的使用者的識別碼。 必須通過驗證才能繼續。
 
-    > [AZURE.NOTE] 如果您使用 Microsoft 以外的識別提供者，變更值傳遞至 **登入** 上述方法有下列幾種: _Facebook_, ，_Google_, ，_Twitter_, ，或 _WindowsAzureActiveDirectory_。
+    > [AZURE.NOTE] 如果您使用 Microsoft 以外的識別提供者，變更值傳遞至 **登入** 上述方法有下列幾種 ︰ _Facebook_, ，_Google_, ，_Twitter_, ，或 _WindowsAzureActiveDirectory_。
 
 3. 在 **OnCreate** 方法，會具現化的程式碼後面加入下列程式碼行 `MobileServiceClient` 物件。
 
@@ -86,7 +86,7 @@
 
     此呼叫會啟動驗證程序再非同步等候它。
 
-4. 移動之後的其餘程式碼 `await Authenticate();` 中 **OnCreate** 至新 **CreateTable** 方法，如下:
+4. 移動之後的其餘程式碼 `await Authenticate();` 中 **OnCreate** 至新 **CreateTable** 方法，如下 ︰
 
         private async Task CreateTable()
         {
@@ -107,7 +107,7 @@
             await RefreshItemsFromTableAsync();
         }
 
-5. 接著，呼叫新 **CreateTable** 方法中的 **OnCreate** 之後 **驗證** 加入在步驟 2 中的呼叫:
+5. 接著，呼叫新 **CreateTable** 方法中的 **OnCreate** 之後 **驗證** 加入在步驟 2 中的呼叫 ︰
 
         await CreateTable();
 
@@ -117,11 +117,11 @@
     成功登入後，應用程式應會正確無誤地執行，而且您應能夠查詢行動服務並更新資料。
 
 ## 取得完成的範例
-下載 [已完成的範例專案]。 請務必更新 **applicationURL** 和 **applicationKey** 變數，以您自己的 Azure 設定。
+下載 [completed example project]。 請務必更新 **applicationURL** 和 **applicationKey** 變數，以您自己的 Azure 設定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接續步驟
 
-在下一個教學課程中，[以指令碼授權使用者，] 所採取的使用者 ID 值行動服務根據經驗證的使用者所提供，並使用它來篩選行動服務所傳回的資料。
+在下一個教學課程中， [Authorize users with scripts], ，您將行動服務根據經驗證的使用者所提供的使用者識別碼值，並用來篩選行動服務所傳回的資料。
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register
@@ -141,4 +141,5 @@
 [Get started with Mobile Services]: partner-xamarin-mobile-services-android-get-started.md
 [Authorize users with scripts]: mobile-services-javascript-backend-service-side-authorization.md
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331328
+
 

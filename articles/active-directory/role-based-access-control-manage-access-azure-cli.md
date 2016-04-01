@@ -18,7 +18,7 @@
 
 # 使用 Azure 命令列介面 (CLI) 管理角色型存取控制 (RBAC)
 <!-- Azure Selector -->
-> [AZURE。選取器]
+> [AZURE.SELECTOR]
 - [PowerShell](role-based-access-control-manage-access-powershell.md)
 - [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 
@@ -43,7 +43,7 @@
 
 ##  列出存取權
 ### 列出資源群組上有效的角色指派
-清單的角色指派有效的資源群組上使用:
+清單的角色指派有效的資源群組上使用 ︰
 
     azure role assignment list --resource-group <resource group name>
 
@@ -153,4 +153,5 @@
 
 ## RBAC 主題
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+
 

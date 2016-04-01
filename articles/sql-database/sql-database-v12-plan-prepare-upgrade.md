@@ -47,7 +47,7 @@
 本文件是關於將 Microsoft Azure SQL Database 從 V11 升級至 V12 版。 更正式的版本號碼為下列兩個值，接近所報告的 TRANSACT-SQL 陳述式 **選取 @@version;** :
 
 
-- 12.0.2000.8 *(或更高版本，V12)*
+- 12.0.2000.8 *（或更高版本，V12）*
 - 11.0.9228.18 *(V11)*
  - 有時 V11 也稱為 SAWA v2。
 
@@ -132,13 +132,13 @@ V12 不支援 Web 和商務服務定價層級。
  - 可以將 V11 資料庫升級至 V12。
 
 
-- [http://manage.windowsazure.com/](http://manage.windowsazure.com/)<br/>此 Azure 傳統入口網站可能最終淘汰時。 此入口網站：
+- [http://manage.windowsazure.com/](http://manage.windowsazure.com/)<br/>此 Azure 傳統入口網站可能最後會被淘汰。 此入口網站：
  - 可以管理您的 V12 伺服器和資料庫。
  - 可以 *不* V11 資料庫升級至 V12。
 
 
 - (http://*yourservername*。.database.windows.net)<br/>
-Azure SQL 資料庫傳統入口網站:
+Azure SQL 資料庫傳統入口網站 ︰
  - 可以*不* 管理 V12 伺服器。
 
 
@@ -156,7 +156,7 @@ Azure SQL 資料庫傳統入口網站:
 在舊版 Azure 傳統入口網站中，在 [資料庫] 頁面中，您可以按一下 **Visual Studio 中開啟** Azure SQL 資料庫連線的電腦上啟動 VS2013。
 
 
-如需另一個替代方式，您可以使用 SQL Server Management Studio (SSMS) 2014年與 [CU6](http://support.microsoft.com/kb/3031047/) 連接到 Azure SQL 資料庫。 此部落格文章會詳細:<br/>[工具更新 Azure SQL database 的用戶端](http://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/)。
+如需另一個替代方式，您可以使用 SQL Server Management Studio (SSMS) 2014年與 [CU6](http://support.microsoft.com/kb/3031047/) 連接到 Azure SQL 資料庫。 此部落格文章包含更多詳細資料：<br/>[用戶端工具更新 Azure SQL database](http://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/)。
 
 
 ### 限制 *期間* 升級至 V12
@@ -167,7 +167,7 @@ Azure SQL 資料庫傳統入口網站:
 
 | 限制 | 說明 |
 | :--- | :--- |
-| 升級期間 | 升級期間取決於大小、版本和伺服器中的資料庫數目而定。 升級程序可以執行數小時至數天伺服器，尤其是對於具有資料庫的伺服器:<br/><br/>* 大於 50 GB，或<br/>* 在非高階服務層<br/><br/>建立新的資料庫升級期間在伺服器上也會增加升級的時間。 |
+| 升級期間 | 升級期間取決於大小、版本和伺服器中的資料庫數目而定。 升級程序可以執行數小時至數天伺服器，尤其是對於具有資料庫的伺服器 ︰<br/><br/>* 大於 50 GB，或<br/>* 在非高階服務層<br/><br/>建立新的資料庫升級期間在伺服器上也會增加升級的時間。 |
 | 沒有異地複寫 | 目前正在進行從 V11 升級的 V12 伺服器不支援異地複寫。 |
 | 資料庫在升級至 V12 的最終階段會短暫地無法使用 | 屬於 V11 伺服器的資料庫在升級過程中仍可以使用。 不過，伺服器和資料庫的連接是在最後一個階段中，當透過交換器會開始從 V11 準備 V12 短暫地無法存取。<br/><br/>期間的交換器可以介於 5 分鐘 40 秒。 大多數伺服器的切換作業預期會在 90 秒內完成。 如果有大量資料庫，或是當資料庫具有大量寫入工作負載時，則伺服器的切換時間會增加。 |
 
@@ -254,4 +254,5 @@ Stop- Cmdlet 表示取消，不是暫停。 升級一旦停止就沒有任何方
 <!--Anchors-->
 [Subheading 1]: #subheading-1
  
+
 

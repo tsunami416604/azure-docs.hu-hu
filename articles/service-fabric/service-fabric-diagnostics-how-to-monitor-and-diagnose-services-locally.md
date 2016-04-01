@@ -44,12 +44,12 @@ Service Fabric 會發出 ETW 事件，以協助應用程式開發人員了解平
 ## 將您自己自訂的追蹤新增至應用程式程式碼
 Service Fabric Visual Studio 專案範本包含範例程式碼。 程式碼示範如何新增自訂的應用程式程式碼 ETW 追蹤，其會與來自 Service Fabric 的系統追蹤一併顯示在 Visual Studio ETW 檢視器中。 這個方法的優點是中繼資料會自動新增至追蹤，且 Visual Studio 診斷檢視器已設定為顯示追蹤。
 
-從建立專案的 **服務範本** (無狀態或可設定狀態) 只要搜尋 `RunAsync` 實作:
+從建立專案的 **服務範本** （無狀態或可設定狀態） 只要搜尋 `RunAsync` 實作 ︰
 
 1. 使用 `RunAsync` 方法呼叫 `ServiceEventSource.Current.ServiceMessage` 時會顯示來自應用程式程式碼的自訂 ETW 追蹤範例。
 2. 在 **ServiceEventSource.cs** 檔案中，您會發現的多載 `ServiceEventSource.ServiceMessage` 方法應用於高頻率事件，因為效能的考量。
 
-從建立專案的 **動作項目範本** (無狀態或可設定狀態):
+從建立專案的 **動作項目範本** （無狀態或可設定狀態） ︰
 
 1. 開啟 **"ProjectName".cs** 檔案，其中 *ProjectName* 是您選擇的 Visual Studio 專案的名稱。  
 2. 尋找程式碼 `ActorEventSource.Current.ActorMessage(this, "Doing Work");` 中 *DoWorkAsync* 方法。  這是來自應用程式程式碼撰寫的自訂 ETW 追蹤範例。  
@@ -59,6 +59,7 @@ Service Fabric Visual Studio 專案範本包含範例程式碼。 程式碼示�
 
 ## 後續步驟
 您加入至上述針對本機診斷應用程式的相同追蹤程式碼會使用工具可讓您檢視這些事件，在 Azure 的叢集上執行應用程式時簽出這些文章會討論工具的不同選項，並且描述如何設定這些。
-* [從 Service Fabric 叢集在 Azure 中使用 WAD (Windows Azure 診斷) 和 Operational Insights 收集記錄檔](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md)
+* [從 Service Fabric 叢集在 Azure 中使用 WAD （Windows Azure 診斷） 和 Operational Insights 收集記錄檔](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md)
 * [使用 ElasticSearch 做為 Service Fabric 應用程式追蹤存放區](service-fabric-diagnostic-how-to-use-elasticsearch.md)
+
 

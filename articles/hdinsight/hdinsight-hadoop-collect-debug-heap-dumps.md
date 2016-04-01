@@ -54,7 +54,7 @@ Azure Blob 儲存體帳戶的使用者在 HDInsightHeapDumps /。
     "javaargs.<service_name>.XX:+HeapDumpOnOutOfMemoryError" = "-XX:+HeapDumpOnOutOfMemoryError",
     "javaargs.<service_name>.XX:HeapDumpPath" = "-XX:HeapDumpPath=c:\Dumps\<service_name>_%date:~4,2%%date:~7,2%%date:~10,2%%time:~0,2%%time:~3,2%%time:~6,2%.hprof"
 
-值 **service_name** 可以是任何前面列出的服務: 
+值 **service_name** 可以是任何前面列出的服務 ︰ 
 tempelton、 hiveserver2、 metastore、 derbyserver、 jobhistoryserver、 resourcemanager、 nodemanager、 timelineserver、 datanode、 secondarynamenode、 或 namenode。
 
 ## 使用 Azure PowerShell 啟用
@@ -72,4 +72,5 @@ tempelton、 hiveserver2、 metastore、 derbyserver、 jobhistoryserver、 reso
     clusterInfo.MapReduceConfiguration.ConfigurationCollection.Add(new KeyValuePair<string, string>("javaargs.jobhistoryserver.XX:+HeapDumpOnOutOfMemoryError", "-XX:+HeapDumpOnOutOfMemoryError"));
 
     clusterInfo.MapReduceConfiguration.ConfigurationCollection.Add(new KeyValuePair<string, string>("javaargs.jobhistoryserver.XX:HeapDumpPath", "-XX:HeapDumpPath=c:\\Dumps\\jobhistoryserver_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof"));
+
 

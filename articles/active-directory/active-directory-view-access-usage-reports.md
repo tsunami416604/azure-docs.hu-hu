@@ -97,9 +97,9 @@
 
 
 ## 異常活動報告
-<p>異常的登入活動報告的可疑旗標 Office365、 Azure 管理入口網站、 Azure AD 存取面板、 Sharepoint Online、 Dynamics CRM Online 和其他 Microsoft 線上服務的活動中。</p>
+<p>異常登入活動報告會將 Office365、Azure 管理入口網站、Azure AD 存取面板、Sharepoint Online、Dynamics CRM Online 和其他 Microsoft Online Services 的可疑登入活動加上旗標。</p>
 <p>所有這些報告，但不包括 「 在多次失敗後登入 」 報告，也旗標可疑 <i>同盟</i> 上述服務，不論同盟提供者的登入。 </p>
-<p>The following reports are available: </p><ul>
+<p>下列報表可用 ︰ </p><ul>
 <li>[Sign ins from unknown sources](active-directory-reporting-sign-ins-from-unknown-sources.md).</li>
 <li>[Sign ins after multiple failures](active-directory-reporting-sign-ins-after-multiple-failures.md).</li>
 <li>[Sign ins from multiple geographies](active-directory-reporting-sign-ins-from-multiple-geographies.md).</li>
@@ -237,7 +237,7 @@
 | 對已新增至目錄的自訂商務應用程式進行的登入        | 否 (敬請期待)  |
 | 登入已加入目錄的 Azure AD 應用程式 Proxy 應用程式    | 否 (敬請期待)  |
 
-> 注意: 若要減少此報告中的雜訊，登入次數由 [Microsoft Online Services 登入小幫手](http://community.office365.com/en-us/w/sso/534.aspx) 不會顯示。
+> 注意 ︰ 若要減少此報告中的雜訊，登入次數由 [Microsoft Online Services 登入小幫手](http://community.office365.com/en-us/w/sso/534.aspx) 不會顯示。
 
 
 
@@ -281,8 +281,9 @@
 
 如需有關 Azure AD 的報告通知，請參閱 [Azure Active Directory 報告通知](active-directory-reporting-notifications.md)。
 
-## 接下來
+## 後續步驟
 
 - [開始使用 Azure Active Directory Premium](active-directory-get-started-premium.md)
 - [將公司商標新增至登入和存取面板頁面](active-directory-add-company-branding.md)
+
 

@@ -53,11 +53,11 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
 若要達到此目標，我們必須撰寫可從應用程式後端擷取安全內容的邏輯。
 
-1. 在 **AppDelegate.m**, ，請確定應用程式已註冊無訊息通知以便處理從後端傳送的通知識別碼。 新增 **UIRemoteNotificationTypeNewsstandContentAvailability** didFinishLaunchingWithOptions 中的選項:
+1. 在 **AppDelegate.m**, ，請確定應用程式已註冊無訊息通知以便處理從後端傳送的通知識別碼。 新增 **UIRemoteNotificationTypeNewsstandContentAvailability** didFinishLaunchingWithOptions 中的選項 ︰
 
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 
-2. 在您 **AppDelegate.m** 處包含下列宣告新增實作區段:
+2. 在您 **AppDelegate.m** 處包含下列宣告新增實作區段 ︰
 
         @interface AppDelegate ()
         - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
@@ -121,7 +121,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
     ![][IOS1]
 
 
-6. 在 **AppDelegate.m** 加入下列可處理推播通知的方法:
+6. 在 **AppDelegate.m** 加入下列可處理推播通知的方法 ︰
 
         -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
         {
@@ -157,4 +157,5 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 3. 在 iOS 應用程式 UI 中，按一下 [ **登入**。 然後按一下 [ **傳送推播**。 您應該會在您的通知中心內看見安全通知。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
+
 

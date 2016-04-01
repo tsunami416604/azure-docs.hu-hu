@@ -16,7 +16,7 @@
     ms.date="10/20/2015" 
     ms.author="fashah;garye;bradsev" /> 
 
-#<a name="heading"></a>在 Azure 上的 SQL Server 中的範例資料
+#<a name="heading"></a>在 Azure 上 SQL Server 中進行資料取樣
 
 這 **功能表** 主題連結，說明如何從不同的儲存體環境中取樣資料。 此工作是 Cortana 分析程序 (CAP) 中的一個步驟。
 
@@ -108,15 +108,16 @@ Tablesample 可用來進行取樣及示範，如下所示。 如果資料大小�
         except:         
             print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. 從使用 Azure ML 的 Azure blob 讀取資料 *讀取器模組* 如下列螢幕擷取畫面所示:
+3. 從使用 Azure ML 的 Azure blob 讀取資料 *讀取器模組* 如下列螢幕擷取畫面所示 ︰
  
 ![讀取器 Blob][2]
 
 ## Cortana 分析程序實務範例
 
-Cortana 分析程序的端對端逐步解說範例，使用公用資料集，請參閱 [作用中的 Cortana 分析程序: 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
+Cortana 分析程序的端對端逐步解說範例，使用公用資料集，請參閱 [作用中的 Cortana 分析程序 ︰ 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
 
 [1]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_blob.png
 
  
+

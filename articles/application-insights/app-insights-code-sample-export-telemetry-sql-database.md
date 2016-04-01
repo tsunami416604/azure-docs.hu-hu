@@ -32,7 +32,7 @@
 開始進行之前：
 
 1. 取得 [Microsoft Azure 帳戶](http://azure.microsoft.com/pricing/)。
-2. 在 [Azure 入口網站][portal], ，加入新的 Application Insights 資源，您的應用程式:
+2. 在 [Azure 入口網站][portal], ，加入新的 Application Insights 資源，您的應用程式 ︰
 
     ![依序選擇 [新增]、[開發人員服務]、[Application Insights]，然後選擇應用程式類型](./media/app-insights-code-sample-export-telemetry-sql-database/010-new-asp.png)
 
@@ -144,7 +144,7 @@
  * EntityFramework 6.1.2 或更新版本 - 根據 Blob 中的 JSON 內容，我們將使用此封裝即時產生資料庫的資料表結構描述。
  * JsonFx - 我們將使用此封裝來簡維 C# 類別屬性的 JSON。
 
-使用此工具從單一 JSON 文件中產生 C# 類別。 它需要一些微幅的變更，JSON 陣列簡維成單一 C# 屬性中的資料庫資料表 (例如開啟單一資料行 ) urlData_port 
+使用此工具從單一 JSON 文件中產生 C# 類別。 它需要一些微幅的變更，JSON 陣列簡維成單一 C# 屬性中的資料庫資料表 （例如開啟單一資料行 ) urlData_port 
 
  * [JSON C# 類別產生器](http://jsonclassgenerator.codeplex.com/)
 
@@ -543,4 +543,5 @@
 [start]: app-insights-overview.md
 
  
+
 

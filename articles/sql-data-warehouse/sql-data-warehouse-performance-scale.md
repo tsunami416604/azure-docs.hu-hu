@@ -73,12 +73,12 @@ PowerShell 也可輕易地繼續執行服務：
 Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
-如需有關如何使用 PowerShell 的詳細資訊，請參閱 [PowerShell cmdlet 簡介] [] 文件。
+如需如何使用 PowerShell 的詳細資訊請參閱 [PowerShell cmdlet 簡介][] 文件。
 
 > [Azure.Note] 由於儲存體是分開計算，您的儲存體不會受到暫停。
 
 ## 後續步驟
-如需效能概觀，請參閱 [效能概觀] []。
+如需效能概觀，請參閱 [效能概觀][]。
 
 <!--Image references-->
 
@@ -92,4 +92,5 @@ Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Se
 <!--Other Web references-->
 
 [Azure Classic Portal]: http://portal.azure.com/
+
 

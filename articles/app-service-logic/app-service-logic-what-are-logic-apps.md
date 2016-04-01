@@ -46,7 +46,7 @@ Logic Apps 可讓開發人員設計從觸發程序啟動的工作流程，然後
 
 - **從範本快速開始** -為了協助您開始，我們提供了 [範本庫][templates] 可讓您快速建立一些常見的解決方案。 從進階 BizTalk 解決方案到簡單的 SaaS 連線 (甚至只為了「好玩」) - 資源庫是了解Logic Apps 強大功能的最快方式。
 
-- **擴充現成可用的** -看不到您所需要的連接器嗎? Logic Apps 是應用程式服務套件的一部分，依設計可與 API 應用程式搭配使用；您可以輕鬆地建立您自己的 API 應用程式，以做為連接器。 建置您專屬的新應用程式，或在 Marketplace 中共用及銷售。
+- **擴充現成可用的** -看不到您所需要的連接器嗎？ Logic Apps 是應用程式服務套件的一部分，依設計可與 API 應用程式搭配使用；您可以輕鬆地建立您自己的 API 應用程式，以做為連接器。 建置您專屬的新應用程式，或在 Marketplace 中共用及銷售。
 
 - **真正的整合馬力** -入門容易，並依需求擴充。 Logic Apps 可輕易地讓 Microsoft 領先業界的整合解決方案 BizTalk 發揮效益，使整合專業人員得以建置其所需的解決方案。 深入了解 [透過應用程式服務提供的 BizTalk 功能][biztalk]。
 
@@ -74,4 +74,5 @@ Logic Apps 可讓開發人員設計從觸發程序啟動的工作流程，然後
 [rules]: app-service-logic-use-biztalk-rules.md
 [templates]: app-service-logic-use-logic-app-templates.md
  
+
 

@@ -1,13 +1,13 @@
 
 ##<a name="update-app"></a>更新應用程式以呼叫自訂 API
 
-1. 在 Visual Studio 中，開啟 [快速入門專案的 default.html 檔案，找出 **按鈕** 名 `buttonRefresh`, ，並緊接其後新增下列新元素: 
+1. 在 Visual Studio 中，開啟 [快速入門專案的 default.html 檔案，找出 **按鈕** 名 `buttonRefresh`, ，並緊接其後新增下列新元素 ︰ 
 
         <button id="buttonCompleteAll" style="margin-left: 5px">Complete All</button>
 
     這會將新按鈕新增至頁面。 
 
-2. 開啟 default.js 程式碼檔案中的 `js` 專案資料夾中，找出 **refreshTodoItems** 函式，並確定此函數包含下列程式碼:
+2. 開啟 default.js 程式碼檔案中的 `js` 專案資料夾中，找出 **refreshTodoItems** 函式，並確定此函數包含下列程式碼 ︰
 
         todoTable.where({ complete: false })
            .read()
@@ -18,7 +18,7 @@
 
     這會篩選項目，如此一來，查詢就不會傳回已完成的項目。
 
-3. 之後 **refreshTodoItems** 函式中，新增下列程式碼:
+3. 之後 **refreshTodoItems** 函式中，新增下列程式碼 ︰
 
         var completeAllTodoItems = function () {
             var okCommand = new Windows.UI.Popups.UICommand("OK");
@@ -61,3 +61,4 @@
     ![](./media/mobile-services-windows-store-javascript-call-custom-api/mobile-custom-api-windows-store-completed.png)
 
     出現訊息對話方塊，指出標示為完成的項目數，並重新執行篩選查詢，以便清除清單的所有項目。
+

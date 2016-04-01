@@ -63,9 +63,9 @@
       <br/>
       <ul>
         <li><p><b>排入佇列</b> – 立即終止工作，並將它們放回工作佇列，以便重新排定它們。</p></li>
-        <li><p><b>終止</b> – 立即終止工作，並將它們從工作佇列移除。</p></li>
+        <li><p><b>終止</b> – 立即終止工作，並將它們從工作佇列中移除。</p></li>
         <li><p><b>taskcompletion</b> – 等候目前執行中的工作完成，然後再從集區移除節點。</p></li>
-        <li><p><b>retaineddata</b> - 等待所有本機工作保留資料清除，然後再從集區移除節點的節點上。</p></li>
+        <li><p><b>retaineddata</b> - 等候清除，然後再從集區移除節點的節點上的本機工作保留的所有資料。</p></li>
       </ul></td>
    </tr>
 </table>
@@ -224,19 +224,19 @@
   </tr>
   <tr>
     <td>雙 & l t; 運算子 & gt;double = & gt;double</td>
-    <td>(& s) lt; (& s) lt; =、 = =、 (& s) gt; =、 & gt;，! =</td>
+    <td>（& s) lt; （& s) lt; =、 = =、 （& s) gt; =、 & gt;，！ =</td>
   </tr>
   <tr>
     <td>字串 & l t; 運算子 & gt;字串 = & gt;double</td>
-    <td>(& s) lt; (& s) lt; =、 = =、 (& s) gt; =、 & gt;，! =</td>
+    <td>（& s) lt; （& s) lt; =、 = =、 （& s) gt; =、 & gt;，！ =</td>
   </tr>
   <tr>
     <td>時間戳記 & l t; 運算子 & gt;時間戳記 = & gt;double</td>
-    <td>(& s) lt;，(& s) lt; =、 = =、 & gt; =、 (& s) gt、! =</td>
+    <td>（& s) lt;，（& s) lt; =、 = =、 & gt; =、 （& s) gt、 ！ =</td>
   </tr>
   <tr>
     <td>timeinterval & l t; 運算子 & gt;timeinterval = & gt;double</td>
-    <td>(& s) lt; (& s) lt; =、 = =、 (& s) gt; =、 & gt;，! =</td>
+    <td>（& s) lt; （& s) lt; =、 = =、 （& s) gt; =、 & gt;，！ =</td>
   </tr>
   <tr>
     <td>雙 & l t; 運算子 & gt;double = & gt;double</td>
@@ -248,28 +248,28 @@
   </tr>
 </table>
 
-### 函式
+### Functions
 
 這些預先定義 **函式** 可用於定義自動調整公式。
 
 <table>
   <tr>
-    <th>函式</th>
+    <th>函數</th>
     <th>說明</th>
   </tr>
   <tr>
-    <td>double <b>avg</b>() doubleVecList</td>
+    <td>double <b>avg</b>(doubleVecList)</td>
     <td>DoubleVecList 中所有值的平均值。</td>
   </tr>
   <tr>
-    <td>double <b>len</b>() doubleVecList</td>
+    <td>double <b>len</b>(doubleVecList)</td>
     <td>從 doubleVecList 建立的向量的長度。</td>
   <tr>
     <td>double <b>lg</b>(double)</td>
     <td>對數底數 2。</td>
   </tr>
   <tr>
-    <td>doubleVec <b>lg</b>() doubleVecList</td>
+    <td>doubleVec <b>lg</b>(doubleVecList)</td>
     <td>逐元對數底數 2。 vec(double) 必須針對單一 double 參數明確傳遞，否則會假設為 double lg(double) 版本。</td>
   </tr>
   <tr>
@@ -277,27 +277,27 @@
     <td>自然對數。</td>
   </tr>
   <tr>
-    <td>doubleVec <b>ln</b>() doubleVecList</td>
+    <td>doubleVec <b>ln</b>(doubleVecList)</td>
     <td>逐元對數底數 2。  vec(double) 必須針對單一 double 參數明確傳遞，否則會假設為 double lg(double) 版本。</td>
   </tr>
   <tr>
-    <td>double <b>log</b>(double)</td>
+    <td>double <b>記錄</b>(double)</td>
     <td>對數底數 10。</td>
   </tr>
   <tr>
-    <td>doubleVec <b>log</b>() doubleVecList</td>
+    <td>doubleVec <b>記錄</b>(doubleVecList)</td>
     <td>逐元對數底數 10。 vec(double) 必須針對單一 double 參數明確傳遞，否則會假設為 double log(double) 版本。</td>
   </tr>
   <tr>
-    <td>double <b>max</b>() doubleVecList</td>
+    <td>double <b>max</b>(doubleVecList)</td>
     <td>doubleVecList 中的最大值。</td>
   </tr>
   <tr>
-    <td>double <b>min</b>() doubleVecList</td>
+    <td>double <b>min</b>(doubleVecList)</td>
     <td>doubleVecList 中的最小值。</td>
   </tr>
   <tr>
-    <td>double <b>norm</b>() doubleVecList</td>
+    <td>double <b>norm</b>(doubleVecList)</td>
     <td>從 doubleVecList 建立的向量的 2-norm。
   </tr>
   <tr>
@@ -305,27 +305,27 @@
     <td>向量 v 的百分位數元素。</td>
   </tr>
   <tr>
-    <td>double <b>rand</b>()</td>
+    <td>double <b>rand</b>（)</td>
     <td>介於 0.0 到 1.0 之間的隨機值。</td>
   </tr>
   <tr>
-    <td>double <b>範圍</b>() doubleVecList</td>
+    <td>double <b>範圍</b>(doubleVecList)</td>
     <td>doubleVecList 中最小和最大值之間的差異。</td>
   </tr>
   <tr>
-    <td>double <b>標準</b>() doubleVecList</td>
+    <td>double <b>std</b>(doubleVecList)</td>
     <td>doubleVecList 中值的標準差範例。</td>
   </tr>
   <tr>
-    <td><b>停止</b>()</td>
+    <td><b>停止</b>（)</td>
     <td>停止自動調整運算式評估。</td>
   </tr>
   <tr>
-    <td>double <b>總和</b>() doubleVecList</td>
+    <td>double <b>總和</b>(doubleVecList)</td>
     <td>doubleVecList 所有元件的總和。</td>
   </tr>
   <tr>
-    <td>timestamp <b>分析</b>(字串 dateTime ="")</td>
+    <td>時間戳記 <b>時間</b>(字串 dateTime ="")</td>
     <td>若未傳遞參數，為目前時間的時間戳記，否則為 dateTime 字串的時間戳記。 支援的 dateTime 格式為 W3CDTF 和 RFC1123。</td>
   </tr>
   <tr>
@@ -362,14 +362,14 @@
     <td><p>傳回資料向量範例。
     <p>一個樣本有 30 秒的度量資料。 換句話說，每 30 秒取得樣本，但如下所述，從收集樣本到可用於公式之間會延遲。 因此，並非一段指定時間內的所有樣本都可供公式評估。
         <ul>
-          <li><p><b>doubleVec GetSample (double 計數)</b> - 指定從收集到的最新樣本取得的樣本數目。</p>
-                  <p>Getsample (1) 會傳回最後一個可用的樣本。 $CPUPercent 等計量，不過，這應該不應用於因為它是不可能知道 <em>當</em> 收集的樣本-它可能是最新，或者，因為系統問題，可能是更舊。 在此情況下，最好使用如下所示的時間間隔。</p></li>
+          <li><p><b>doubleVec GetSample (double count)</b> - 指定從收集到的最新樣本取得的樣本數目。</p>
+                  <p>Getsample (1) 會傳回最後一個可用的樣本。 $CPUPercent 等計量，不過，這應該不應用於因為它是不可能知道 <em>時</em> 收集樣本-它可能是最新，或因為系統問題，可能是更舊。 在此情況下，最好使用如下所示的時間間隔。</p></li>
           <li><p><b>doubleVec GetSample ((timestamp | timeinterval) startTime [，double samplePercent])</b> – 指定收集範例資料的時間範圍，並選擇性地指定必須在要求的時間範圍內可用的範例的百分比。</p>
-          <p><em>$CPUPercent.GetSample(TimeInterval_Minute * 10)</em> 如果最後十分鐘的所有範例都都出現在 cpu Percent 歷程記錄，則會傳回 20 的範例。 不過，如果最後一分鐘的歷程記錄無法使用，則只會傳回 18 個樣本，在此情況下：<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;<em>$CPUPercent.GetSample (TimeInterval_Minute * 10，95)</em> 因為只有 90%的範例可供使用，將會失敗，<br/>
+          <p><em>$CPUPercent.GetSample(TimeInterval_Minute * 10)</em> 會傳回 20 的範例，如果最後十分鐘的所有範例都都出現在 cpu Percent 歷程記錄。 不過，如果最後一分鐘的歷程記錄無法使用，則只會傳回 18 個樣本，在此情況下：<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;<em>$CPUPercent.GetSample (TimeInterval_Minute * 10，95)</em> 會失敗，因為只有 90%的範例可供使用，並<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;<em>$CPUPercent.GetSample (TimeInterval_Minute * 10，80)</em> 會成功。</p></li>
-          <li><p><b>doubleVec GetSample ((timestamp | timeinterval) startTime，(timestamp | timeinterval) endTime [，double samplePercent])</b> -指定收集資料的開始時間和結束時間的時間範圍。</p></li></ul>
-          <p>如上所述，從收集樣本到可用於公式之間會延遲。 使用時必須考量這 <em>GetSample</em> 方法-請參閱 <em>GetSamplePercent</em> 。</td>
+          <li><p><b>doubleVec GetSample ((timestamp | timeinterval) startTime，(timestamp | timeinterval) endTime [，double samplePercent])</b> – 指定用於收集資料的開始時間和結束時間的時間範圍。</p></li></ul>
+          <p>如上所述，從收集樣本到可用於公式之間會延遲。 使用時必須考量這 <em>GetSample</em> 方法-請參閱 <em>GetSamplePercent</em> 下方。</td>
   </tr>
   <tr>
     <td>GetSamplePeriod()</td>
@@ -382,7 +382,7 @@
   <tr>
     <td>GetSamplePercent()</td>
     <td><p>傳回歷程記錄目前在指定的時間間隔內所擁有的範例的百分比。 例如：</p>
-    <p><b>doubleVec GetSamplePercent( (timestamp | timeinterval) startTime [, (timestamp | timeinterval) endTime] )</b>
+    <p><b>doubleVec GetSamplePercent ((timestamp | timeinterval) startTime [，(timestamp | timeinterval) endTime])</b>
     <p>因為 GetSample 方法在傳回範例的百分比小於指定的 samplePercent 時會失敗，因此，您可以使用 GetSamplePercent 方法進行第一次檢查，然後在範例不足時執行替代動作，而不暫停其自動調整評估。</p></td>
   </tr>
 </table>
@@ -394,16 +394,16 @@
 <table>
   <tr>
     <th>度量</th>
-    <th>描述</th>
+    <th>說明</th>
   </tr>
   <tr>
     <td>資源</td>
-    <td><p>資源度量會根據 CPU 使用量、 頻寬使用量、 記憶體使用量和運算節點數目。 這些系統定義的變數 (述 **變數** 上方) 公式中用來管理集區中的運算節點:</p>
+    <td><p>資源度量是根據 CPU 使用率、頻寬使用量、記憶體使用量和運算節點的數目。 這些系統定義的變數 (述 **變數** 上方) 公式中用來管理集區中的運算節點 ︰</p>
     <p><ul>
       <li>$TargetDedicated</li>
       <li>$NodeDeallocationOption</li>
     </ul></p>
-    <p>這些系統定義的變數用於根據節點資源度量進行調整:</p>
+    <p>這些系統定義的變數用於根據節點資源度量進行調整：</p>
     <p><ul>
       <li>$CPUPercent</li>
       <li>$WallClockSeconds</li>
@@ -418,8 +418,8 @@
   </tr>
   <tr>
     <td>工作</td>
-    <td><p>根據狀態的工作，例如使用中、 暫止和已完成。</p>
-    <p>這些系統定義的變數用於根據工作度量進行調整:</p>
+    <td><p>根據工作的狀態，例如作用中、擱置和已完成。</p>
+    <p>這些系統定義的變數用於根據工作度量進行調整：</p>
     <p><ul>
       <li>$ActiveTasks</li>
       <li>$RunningTasks</li>
@@ -437,7 +437,7 @@
 2. 當 CPU 使用率偏低時，減少集區中運算節點的目標數目
 3. 一律以 400 為節點的數目上限
 
-如 *增加* 節點高 CPU 使用量期間，定義填入使用者定義的變數 ($TotalNodes) 的陳述式是目前節點目標數目的 110%的最小值的平均 CPU 使用率在過去 10 分鐘期間是否大於 70%的值:
+如 *增加* 節點高 CPU 使用量期間，定義填入使用者定義的變數 ($TotalNodes) 的陳述式是目前節點目標數目的 110%的最小值的平均 CPU 使用率在過去 10 分鐘期間是否大於 70%的值 ︰
 
     $TotalNodes = (min($CPUPercent.GetSample(TimeInterval_Minute*10)) > 0.7) ? ($CurrentDedicated * 1.1) : $CurrentDedicated;
 
@@ -445,7 +445,7 @@
 
     $TotalNodes = (avg($CPUPercent.GetSample(TimeInterval_Minute*60)) < 0.2) ? ($CurrentDedicated * 0.9) : $TotalNodes;
 
-現在限制專用的運算節點目標數目 **最大** 400 個:
+現在限制專用的運算節點目標數目 **最大** 400 個 ︰
 
     $TargetDedicated = min(400, $TotalNodes)
 
@@ -463,7 +463,7 @@
 - [BatchClient.PoolOperations.CreatePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx) –.NET 呼叫這個方法會建立一個集區之後，您接著會設定集區的 [CloudPool.AutoScaleEnabled](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleenabled.aspx) 和 [CloudPool.AutoScaleFormula](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleformula.aspx) 屬性，以啟用自動調整。
 - [加入集區帳戶](https://msdn.microsoft.com/library/azure/dn820174.aspx) – enableAutoScale 和 autoScaleFormula 元素用於這個 REST API 要求中設定自動調整集區建立時。
 
-> [AZURE.NOTE] 如果您設定自動調整集區建立時使用上述技巧的其中一個 *targetDedicated* 參數集區不是 (也絕對不要) 建立時指定。 也請注意，如果您想要手動調整大小的啟用自動調整集區 (例如 [BatchClient.PoolOperations.ResizePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.resizepool.aspx)) 則必須先停用自動調整集區，然後調整大小之集區。
+> [AZURE.NOTE] 如果您設定自動調整集區建立時使用上述技巧的其中一個 *targetDedicated* 參數集區不是 （也絕對不要） 建立時指定。 也請注意，如果您想要手動調整大小的啟用自動調整集區 (例如 [BatchClient.PoolOperations.ResizePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.resizepool.aspx)) 則必須先停用自動調整集區，然後調整大小之集區。
 
 下列程式碼片段顯示如何建立啟用自動調整- [CloudPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx) 使用 [批次.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx) 程式庫包含的公式，將節點目標數目設定為 5 星期一和一週的一天的 1。 在程式碼片段，「 myBatchClient 」 是已妥善初始化的執行個體的 [BatchClient](http://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx)):
 
@@ -545,7 +545,7 @@
 
 應該定期對公式檢查自動調整回合的結果如預期般執行。 使用以下其中一種方式執行這項操作：
 
-- [CloudPool.AutoScaleRun](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscalerun.aspx) – 當使用.NET 程式庫、 集區的這個屬性提供的執行個體 [AutoScaleRun](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.aspx) 類別可提供最新的自動調整執行的下列屬性:
+- [CloudPool.AutoScaleRun](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscalerun.aspx) – 當使用.NET 程式庫、 集區的這個屬性提供的執行個體 [AutoScaleRun](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.aspx) 類別可提供最新的自動調整執行的下列屬性 ︰
   - [AutoScaleRun.Error](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.error.aspx)
   - [AutoScaleRun.Results](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.results.aspx)
   - [AutoScaleRun.Timestamp](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.timestamp.aspx)
@@ -645,4 +645,5 @@ string formula = string.Format(@"
         * [從節點取得遠端桌面通訊協定檔案](https://msdn.microsoft.com/library/dn820120.aspx) – 這個 REST API 要求的集區的名稱和運算節點的名稱。 回應會包含 RDP 檔案的內容。
         * [Get AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – 此 PowerShell 指令程式會從指定的運算節點取得 RDP 檔案，並將它儲存至指定的檔案位置或資料流。
 2.  有些應用程式會產生可能難以處理的大量資料。 其中一種解決這是透過 [有效率的清單查詢](batch-efficient-list-queries.md)。
+
 

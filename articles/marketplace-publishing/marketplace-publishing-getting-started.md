@@ -35,7 +35,7 @@
 ||虛擬機器映像 |開發人員服務 | 資料服務 | 解決方案範本 |
 |----|----|----|----|----|
 | **取得預先核准** | [Microsoft Azure 認證][link-certification] | [Microsoft Azure 認證][link-certification] | n/a | [Microsoft Azure 認證][link-certification] |
-| **步驟 1: 註冊賣方帳戶** | [Microsoft 賣方帳戶: 建立和註冊][link-accts] | [Microsoft 賣方帳戶: 建立和註冊][link-accts] | [Microsoft 賣方帳戶: 建立和註冊][link-accts] | [Microsoft 賣方帳戶: 建立和註冊][link-accts] |
+| **步驟 1 ︰ 註冊賣方帳戶** | [Microsoft 賣方帳戶 ︰ 建立和註冊][link-accts] | [Microsoft 賣方帳戶 ︰ 建立和註冊][link-accts] | [Microsoft 賣方帳戶 ︰ 建立和註冊][link-accts] | [Microsoft 賣方帳戶 ︰ 建立和註冊][link-accts] |
 |**步驟 2：建立您的優惠**| [一般非技術性必要條件](marketplace-publishing-pre-requisites.md)| [一般非技術性必要條件](marketplace-publishing-pre-requisites.md)| [一般非技術性必要條件](marketplace-publishing-pre-requisites.md)| [一般非技術性必要條件](marketplace-publishing-pre-requisites.md)|
 || [VM 技術性必要條件][link-single-vm-prereq] | 開發人員服務技術性必要條件 | [資料服務技術性必要條件](marketplace-publishing-data-service-creation-prerequisites.md) | [方案範本技術性必要條件](marketplace-publishing-solution-template-creation-prerequisites.md) |
 ||[VM 映像發佈指南][link-single-vm] | 開發人員服務發佈指南 | [資料服務發佈指南](marketplace-publishing-data-service-creation.md) | [解決方案範本發佈指南](marketplace-publishing-solution-template-creation.md) |
@@ -80,4 +80,5 @@
 [link-devsvc-prereq]:marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]:marketplace-publishing-push-to-staging.md
 [link-pushprod]:marketplace-publishing-push-to-production.md
+
 

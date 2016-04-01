@@ -34,16 +34,16 @@ Azure Data Factory 編輯器是 Azure 入口網站中的簡易型 Web 編輯器�
 - **新增資料存放區** 可建立資料存放區連結的服務。 按一下此按鈕會出現含有下列選項的功能表：[Azure 儲存體]、[Azure SQL Database]、[內部部署 SQL Server 資料庫]。
 - **新的計算** 可建立計算連結服務。 按一下此按鈕會出現含有下列選項的功能表：[隨選 HDInsight 叢集]、[HDInsight 叢集]、[AzureML 連結服務]。      
 - **新的資料集** ，建立資料集。 按一下此按鈕會出現下列選項：[Blob 資料表、[Azure SQL 資料表]、[內部部署資料表]。  
-- **新增管線** 可建立管線。 按一下 [ **...(省略符號)** 如果您沒看到此按鈕在工具列上，工具列。
+- **新增管線** 可建立管線。 按一下 [ **...（省略符號）** 如果您沒看到此按鈕在工具列上，工具列。
  
 ### 建立儲存體連結服務
 1. 按一下 [ **新增資料存放區**, ，按一下其中一個功能表中的選項。
  
     ![[新增資料存放區] 功能表][new-data-store-menu] 
 2. 您會看到 JSON 範本，讓您建立儲存體連結服務 **編輯器畫布** 右邊。 您也會看到草稿節點之下 **草稿**。 執行下列動作：
-    1. 如 **Azure 儲存體**: 取代 **< {1>accountname<1} >** 和 **< accountkey\<2\ >** 與 Azure 儲存體帳戶的名稱和金鑰。
-    2. 如 **Azure SQL database**: 取代 **< servername\<2\ >** 取代為您的 Azure SQL server 名稱 **< databasename >** 與資料庫的名稱 **< 使用者名稱 > @< servername\<2\ >** 的使用者名稱和 **< 密碼 >** 取代為使用者帳戶的密碼。 
-    3. 如 **內部部署 SQL server 資料庫**: 取代 **< servername\<6\ >** 取代為您的內部部署 SQL server 名稱 **< databasename >** 的資料庫名稱 **< 使用者名稱 >** 的使用者名稱和 **< 密碼 >** 取代為使用者帳戶的密碼。
+    1. 如 **Azure 儲存體**︰ 取代 **< {1>accountname<1} >** 和 **< accountkey\<2\ >** 與 Azure 儲存體帳戶的名稱和金鑰。
+    2. 如 **Azure SQL database**︰ 取代 **< servername\<2\ >** 取代為您的 Azure SQL server 名稱 **< databasename >** 與資料庫的名稱 **< 使用者名稱 > @< servername\<2\ >** 的使用者名稱和 **< 密碼 >** 取代為使用者帳戶的密碼。 
+    3. 如 **內部部署 SQL server 資料庫**︰ 取代 **< servername\<6\ >** 取代為您的內部部署 SQL server 名稱 **< databasename >** 的資料庫名稱 **< 使用者名稱 >** 的使用者名稱和 **< 密碼 >** 取代為使用者帳戶的密碼。
 4. 按一下 [ **部署** 部署連結的服務] 工具列上。 您可以按一下 **捨棄** ，捨棄您建立的 JSON 草稿。
  
     ![[部署] 按鈕][deploy-button]
@@ -60,17 +60,17 @@ Azure Data Factory 編輯器是 Azure 入口網站中的簡易型 Web 編輯器�
  
     ![[新增計算] 功能表][new-compute-menu] 
 2. 右側的編輯器畫布會顯示 JSON 範本，讓您建立計算連結服務。 執行下列動作：
-    1. 如 **隨 HDInsight 叢集**, ，指定下列屬性的值: 
+    1. 如 **隨 HDInsight 叢集**, ，指定下列屬性的值 ︰ 
         1. 如 **clusterSize** 屬性，指定您希望 Data Factory 服務在執行階段建立的 HDInsight 叢集的大小。 
         3. 如 **timeToLive** 屬性，指定允許的閒置時間之前刪除 HDInsight 叢集。 例如：00:05:00 表示叢集閒置 5 分鐘後，就應該刪除叢集。
-        4. 如 **版本** 屬性，指定叢集的 HDInsight 版本 (預設: 3.1 版)。
+        4. 如 **版本** 屬性，指定叢集的 HDInsight 版本 (預設 ︰ 3.1 版)。
         5. 如 **linkedServiceName** 屬性，指定要與 HDInsight 叢集相關聯的 Azure 儲存體連結服務。 
-    6. 如 **hdinsight** (提到-您為自己)，指定下列屬性的值:
+    6. 如 **hdinsight** （提到-您為自己），指定下列屬性的值 ︰
         1. 如 **clusterUri** 屬性，指定您自己的 HDInsight 叢集的 URL。 
         2. 如 **userName** 屬性，指定 Data Factory 服務應該用來連接到 HDInsight 叢集的使用者帳戶。 
         3. 如 **密碼** 屬性，指定使用者帳戶的密碼。 
         4. 如 **linkedServiceName** 屬性，指定您的 HDInsight 叢集相關聯的 Azure 儲存體連結服務。
-    5. 如 **AzureML 連結服務**, ，指定下列屬性:
+    5. 如 **AzureML 連結服務**, ，指定下列屬性 ︰
         1. 如 **mlEndPoint** 屬性，指定 Azure Machine Learning 批次評分 URL。
         2. 如 **apiKey** 屬性，指定已發行的工作區模型的 API 金鑰。
 3. 按一下 [ **部署** 部署連結的服務] 工具列上。
@@ -80,15 +80,15 @@ Azure Data Factory 編輯器是 Azure 入口網站中的簡易型 Web 編輯器�
 ### 建立新的資料集
 1. 按一下 [ **新的資料集** 按一下其中一個功能表中的選項。
 2. 右側的編輯器畫布會顯示 JSON 範本，讓您建立資料集。 執行下列動作： 
-    1. 如 **Blob 資料表**, ，指定下列屬性的值:
-    2. 如 **Azure SQL 資料表** 或 **內部資料表**, ，指定下列屬性的值: 
-        1. 在 **位置** 區段: 
+    1. 如 **Blob 資料表**, ，指定下列屬性的值 ︰
+    2. 如 **Azure SQL 資料表** 或 **內部資料表**, ，指定下列屬性的值 ︰ 
+        1. 在 **位置** 區段 ︰ 
             2. 如 **linkedServiceName** 屬性，指定服務參考到 Azure SQL/內部部署 SQL Server 資料庫的連結名稱。
             2. 如 **tableName** 屬性，指定資料表的名稱在 Azure SQL Database 執行個體/內部部署 SQL server 中的連結的服務參考到。
-        3. 在 **可用性** 區段:
+        3. 在 **可用性** 區段 ︰
             1. 如 **頻率** 屬性，指定資料配量生產的時間單位。 支援的頻率值：Minute、Hour、Day、Week、Month。
             2. 如 **間隔** 屬性，指定定義頻率內的間隔。 **頻率** 設 **小時** 和 **間隔** 設 **1** 指出應該每小時產生新的資料配量。 
-        3. 在 **結構** 區段: 
+        3. 在 **結構** 區段 ︰ 
             1. 指定資料行的名稱和類型，如下列範例所示：
                 
                     "structure":
@@ -100,7 +100,7 @@ Azure Data Factory 編輯器是 Azure 入口網站中的簡易型 Web 編輯器�
 > [AZURE.NOTE] 請參閱 [資料表][msdn-tables-reference] MSDN Library 中用來定義 Azure Data Factory 資料表的 JSON 元素的說明主題。  
                    
 ### 建立及啟動管線 
-1. 按一下 [ **新增管線** 工具列上。 如果看不到 **新增管線** 按鈕，再按一下 **...(省略符號)** 若要查看它。   
+1. 按一下 [ **新增管線** 工具列上。 如果看不到 **新增管線** 按鈕，再按一下 **...（省略符號）** 若要查看它。   
 2. 右側的編輯器畫布會顯示 JSON 範本，讓您建立管線。 執行下列動作： 
     1. 如 **描述** 屬性，指定管線的描述。
     2. 如 **活動** 區段中，將活動新增至管線。 範例：
@@ -189,14 +189,14 @@ Azure Data Factory 編輯器是 Azure 入口網站中的簡易型 Web 編輯器�
 您可以按一下 [捨棄 Azure Data Factory 實體的 JSON 定義 **捨棄** 工具列上的按鈕。   
 
 ## 複製 Data Factory 實體
-您可以複製現有的 Azure Data Factory 實體 (連結的服務、 資料表或管線) 的樹狀檢視中選取實體，再按一下 **複製** 工具列上的按鈕。
+您可以複製現有的 Azure Data Factory 實體 （連結的服務、 資料表或管線） 的樹狀檢視中選取實體，再按一下 **複製** 工具列上的按鈕。
 
 ![複製 Data Factory 實體][clone-datafactory-entity]
 
 您會看到下建立新的草稿 **草稿** 樹狀結構檢視中的節點。 
 
 ## 刪除 Data Factory 實體
-您可以刪除 Azure Data Factory 實體 (連結的服務、 資料表或管線)，將選取的樹狀檢視中的實體，然後按一下 **刪除** 工具列上 (或) 實體上按一下滑鼠右鍵，然後按一下 **刪除**。
+您可以刪除 Azure Data Factory 實體 （連結的服務、 資料表或管線），將選取的樹狀檢視中的實體，然後按一下 **刪除** 工具列上 （或） 實體上按一下滑鼠右鍵，然後按一下 **刪除**。
 
 ![刪除 Data Factory 實體][delete-datafactory-entity] 
 
@@ -219,3 +219,4 @@ Azure Data Factory 編輯器是 Azure 入口網站中的簡易型 Web 編輯器�
 [delete-datafactory-entity]: ./media/data-factory-editor/delete-datafactory-entity.png
 [clone-datafactory-entity]: ./media/data-factory-editor/clone-datafactory-entity.png
 [add-activity-options]: ./media/data-factory-editor/add-activity-options.png 
+

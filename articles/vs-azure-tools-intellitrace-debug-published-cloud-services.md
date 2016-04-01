@@ -70,3 +70,4 @@ IntelliTrace 記錄檔是循環記錄檔，大小上限是在 IntelliTrace 設�
 [偵錯雲端服務](https://msdn.microsoft.com/library/ee405479.aspx)
 
 
+

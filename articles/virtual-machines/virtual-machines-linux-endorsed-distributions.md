@@ -37,14 +37,14 @@ Azure Linux 代理程式已預先安裝於 Azure 組件庫映像上，而且通�
 
 配送映像|版本|驅動程式|代理程式
 ---|---|---|---
-OpenLogic 的 CentOS |CentOS 6.3+、7.0+| CentOS 6.3: [LIS 下載](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 +: 在核心中|封裝: 在 <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">「 WALinuxAgent 」 下的 OpenLogic 儲存機制<p><p>原始程式碼: [GitHub](https://github.com/Azure/WALinuxAgent)
-[CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)|494.4.0+ |在核心中|原始程式碼: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent)
-Credativ 的 Debian |Debian 7.9+、8.2+|在核心中|封裝: 在 「 waagent 」 下的儲存機制 <p><p>原始程式碼: [GitHub](https://github.com/Azure/WALinuxAgent)
-Oracle Linux| 6.4+、7.0+|在核心中|封裝: 在"WALinuxAgent"下的儲存機制<p><p>原始程式碼: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
-Red Hat Enterprise Linux |RHEL 6.7+、7.1+|在核心中|封裝: 在"WALinuxAgent"下的儲存機制 <p><p>原始程式碼: [GitHub](https://github.com/Azure/WALinuxAgent)
-SUSE Linux Enterprise |SLES 11 SP3+、SLES 12+ 和  <p><p> SLES for SAP 11.3+ |在核心中|封裝: 在 [Cloud: Tools](https://build.opensuse.org/project/show/Cloud:Tools) 「 WALinuxAgent 」 下的儲存機制<p><p>原始程式碼: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
-openSUSE |openSUSE 13.1+|在核心中|封裝: 在 [Cloud: Tools](https://build.opensuse.org/project/show/Cloud:Tools) 「 WALinuxAgent 」 下的儲存機制 <p><p>原始程式碼: [GitHub](https://github.com/Azure/WALinuxAgent)
-Ubuntu|Ubuntu 12.04、14.04、15.04 和 15.10|在核心中|封裝: 在"walinuxagent"下的儲存機制 <p><p>原始程式碼: [GitHub](https://github.com/Azure/WALinuxAgent)
+OpenLogic 的 CentOS |CentOS 6.3+、7.0+| CentOS 6.3: [LIS 下載](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 +：在核心中|封裝 ︰ 在 <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">「 WALinuxAgent 」 下的 OpenLogic 儲存機制<p><p>原始程式碼 ︰ [GitHub](https://github.com/Azure/WALinuxAgent)
+[CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)|494.4.0+ |在核心中|原始程式碼 ︰ [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent)
+Credativ 的 Debian |Debian 7.9+、8.2+|在核心中|封裝 ︰ 在 「 waagent 」 下的儲存機制 <p><p>原始程式碼 ︰ [GitHub](https://github.com/Azure/WALinuxAgent)
+Oracle Linux| 6.4+、7.0+|在核心中|封裝：在 "WALinuxAgent" 下的儲存機制中<p><p>原始程式碼 ︰ [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+Red Hat Enterprise Linux |RHEL 6.7+、7.1+|在核心中|封裝：在 "WALinuxAgent" 下的儲存機制中 <p><p>原始程式碼 ︰ [GitHub](https://github.com/Azure/WALinuxAgent)
+SUSE Linux Enterprise |SLES 11 SP3+、SLES 12+ 和  <p><p> SLES for SAP 11.3+ |在核心中|封裝 ︰ 在 [Cloud: Tools](https://build.opensuse.org/project/show/Cloud:Tools) 「 WALinuxAgent 」 下的儲存機制<p><p>原始程式碼 ︰ [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+openSUSE |openSUSE 13.1+|在核心中|封裝 ︰ 在 [Cloud: Tools](https://build.opensuse.org/project/show/Cloud:Tools) 「 WALinuxAgent 」 下的儲存機制 <p><p>原始程式碼 ︰ [GitHub](https://github.com/Azure/WALinuxAgent)
+Ubuntu|Ubuntu 12.04、14.04、15.04 和 15.10|在核心中|封裝：在 "walinuxagent" 下的儲存機制中 <p><p>原始程式碼 ︰ [GitHub](https://github.com/Azure/WALinuxAgent)
 ## 合作夥伴
 
 ### OpenLogic
@@ -86,5 +86,6 @@ Azure 上的 SUSE Linux Enterprise Server 是一個經證實可為雲端運算�
 Canonical 對工程與開放社群的治理推動了 Ubuntu 的成功，在用戶端、 伺服器和雲端運算，包括消費者的個人雲端服務。 Canonical 對 Ubuntu 的願景是，透過對手機、平板電腦、電視和桌上型電腦而言皆風格一致的一系列介面，成為從手機到雲端皆適用的統一免費平台，讓 Ubuntu 成為從公用雲端供應商到消費性電子產品製造商等各種機構眼中的首選，並成為個人技術人員的愛用平台。
 
 Canonical 在全球各地皆有開發人員和工程中心，此獨特的地位使其能和硬體製造商、內容供應商和軟體開發商合作，將 Ubuntu 解決方案帶到從電腦、伺服器到掌上型裝置等等的市場。
+
 
 

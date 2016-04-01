@@ -27,12 +27,12 @@ Azure RemoteApp 跨越裝置和工作階段儲存使用者身分識別和自訂�
 
 請閱讀更多有關使用者設定檔資料的特殊資訊。
 
->[AZURE.NOTE] 必須停用 UPD 嗎? 您可以執行 Pavithra 的部落格文章，而現在-取出 [停用使用者設定檔磁碟 (Upd) 在 Azure RemoteApp 中](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx), ，如需詳細資訊。
+>[AZURE.NOTE] 必須停用 UPD 嗎？ 您可以執行 Pavithra 的部落格文章，而現在-取出 [停用使用者設定檔磁碟 (Upd) 在 Azure RemoteApp 中](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx), ，如需詳細資訊。
 
 
 ## 系統管理員如何取得資料？
 
-如果您需要存取您的使用者 (針對災害復原或如果使用者離開公司)，其中的資料與 [Azure RemoteApp](mailto:remoteappforum@microsoft.com) ，並提供集合和使用者識別的訂閱資訊。 Azure RemoteApp 小組會為您提供 VHD 的 URL。 請下載該 VHD，並擷取您需要的任何文件或檔案。 請注意，VHD 為 50 GB，因此下載需要一些時間。
+如果您需要存取您的使用者 （針對災害復原或如果使用者離開公司），其中的資料與 [Azure RemoteApp](mailto:remoteappforum@microsoft.com) ，並提供集合和使用者識別的訂閱資訊。 Azure RemoteApp 小組會為您提供 VHD 的 URL。 請下載該 VHD，並擷取您需要的任何文件或檔案。 請注意，VHD 為 50 GB，因此下載需要一些時間。
 
 
 ## 已備份資料嗎？
@@ -137,4 +137,5 @@ Azure RemoteApp 會儲存工作階段間的 Outlook 狀態 (信箱、PST)。 若
 ## 我可以使用 mstsc.exe (遠端桌面程式) 來設定登入指令碼嗎？
 
 不行，Azure RemoteApp 不支援。
+
 

@@ -23,7 +23,7 @@
 - [Windows](../articles/virtual-machines/virtual-machines-windows-use-ssh-key.md)
 - [Linux/Mac](../articles/virtual-machines/virtual-machines-linux-use-ssh-key.md)
 
-本主題描述如何使用 **ssh-keygen** 和 **openssl** 上建立及使用的 Linux 和 Mac **ssh rsa** 格式和 **.pem** 格式來保護通訊安全和 Azure Vm Linux 為基礎的檔案。 Linux 型 Azure 虛擬機器使用的資源管理員部署模型建議您建立新的部署和採用 *ssh rsa* 輸入公開金鑰檔案或字串 (取決於部署用戶端)。  [預覽入口網站](https://portal.azure.com) 目前只接受 **ssh rsa** 格式化字串，無論是基於傳統或資源管理員的部署。
+本主題描述如何使用 **ssh-keygen** 和 **openssl** 上建立及使用的 Linux 和 Mac **ssh rsa** 格式和 **.pem** 格式來保護通訊安全和 Azure Vm Linux 為基礎的檔案。 Linux 型 Azure 虛擬機器使用的資源管理員部署模型建議您建立新的部署和採用 *ssh rsa* 輸入公開金鑰檔案或字串 （取決於部署用戶端）。  [預覽入口網站](https://portal.azure.com) 目前只接受 **ssh rsa** 格式化字串，無論是基於傳統或資源管理員的部署。
 
 > [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 若要建立 Linux Vm 使用安全通訊的 Windows 電腦上的這些類型的檔案以供使用，請參閱 [搭配使用 SSH 金鑰在 Windows 上的](virtual-machines-windows-use-ssh-key.md)。 
@@ -67,13 +67,13 @@ Azure 需要 **ssh rsa** 格式化為 2048 位元的金鑰檔或對等的.pem �
 
     一般而言，您 **ssh-keygen** 實作會將註解，通常使用者名稱和主機電腦的名稱。 您可以使用 `-C` 選項指定特定的註解。
 
-3. 從您 `~/.ssh/id_rsa` 檔案建立.pem 檔案，以便您使用傳統的入口網站。 使用 **openssl** ，如下所示:
+3. 從您 `~/.ssh/id_rsa` 檔案建立.pem 檔案，以便您使用傳統的入口網站。 使用 **openssl** ，如下所示 ︰
 
         openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out myCert.pem
 
     如果您想要從不同的私密金鑰檔案建立.pem 檔案，請修改 `-key` 引數。 
 
-> [AZURE.NOTE] 如果您打算管理服務使用傳統部署模型部署，您可能也要建立 **.cer** 格式檔案上傳至入口網站-雖然這不包括 **ssh** 或連線至 Linux VM，這是本文的主題。 若要建立 Linux 或 Mac 上的檔案，請輸入:
+> [AZURE.NOTE] 如果您打算管理服務使用傳統部署模型部署，您可能也要建立 **.cer** 格式檔案上傳至入口網站-雖然這不包括 **ssh** 或連線至 Linux VM，這是本文的主題。 若要建立 Linux 或 Mac 上的檔案，請輸入 ︰
 <br />
 > openssl.exe x509-outform der-在 myCert.pem-myCert.cer 出
 
@@ -300,4 +300,5 @@ Azure 需要 **ssh rsa** 格式化為 2048 位元的金鑰檔或對等的.pem �
 ## 後續步驟
  
 既然您已連接到您的 VM，請務必先更新您所選的散發套件，再繼續使用它。
+
 

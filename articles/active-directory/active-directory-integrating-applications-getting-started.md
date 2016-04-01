@@ -46,13 +46,13 @@
 - 您是否需要在整合之前清除使用者/群組資料庫？  (這是很重要的問題。 垃圾進，垃圾出 - 應當避免無用資料。)
 
 ### 存取管理清查
-- 您如何目前管理使用者對應用程式存的取？ 需要變更嗎？  您是否考慮其他方式管理存取權，例如，使用 [RBAC](role-based-access-control-configure.md) 例如?
+- 您如何目前管理使用者對應用程式存的取？ 需要變更嗎？  您是否考慮其他方式管理存取權，例如，使用 [RBAC](role-based-access-control-configure.md) 例如？
 - 誰需要存取哪些內容？
 
 也許您事先對這所有問題沒有答案，但是沒關係。  本指南可協助您回答其中一些問題，並做出一些明智的決策。
 
 ## 必要條件
-- 一個 Azure 訂用帳戶，以及一個 Azure Active Directory 目錄。  如果您尚沒有 Azure 訂用帳戶，可以免費試用 Azure 30 天。 [試試看!](https://azure.microsoft.com/trial/get-started-active-directory/)
+- 一個 Azure 訂用帳戶，以及一個 Azure Active Directory 目錄。  如果您尚沒有 Azure 訂用帳戶，可以免費試用 Azure 30 天。 [立即試用！](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ## 與 Azure AD 的應用程式整合
 ### 使用 Cloud App Discovery 尋找未經約束的雲端應用程式
@@ -87,4 +87,5 @@
 如果您正在撰寫新的應用程式並想以協助開發人員強大的 Azure AD 中，請參閱 [Guiding 開發人員](active-directory-applications-guiding-developers-for-lob-applications.md)。
 
 如果您想要新增自訂應用程式至 Azure 應用程式庫，請參閱 [「 攜帶您自己的應用程式 」 使用自助 Azure AD SAML 組態](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)。
+
 

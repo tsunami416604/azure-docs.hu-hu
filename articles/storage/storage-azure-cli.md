@@ -31,7 +31,7 @@ Azure CLI 提供您一組開放原始碼的跨平台命令集合，供您運用�
 
 本指南使用 Ubuntu 作為範例，但其他作業系統平台也同樣能夠執行。
 
-**Azure 新手:** 取得 Microsoft Azure 訂閱和與該訂用帳戶相關聯的 Microsoft 帳戶。 如需 Azure 購買選項的詳細資訊，請參閱 [免費試用版](http://azure.microsoft.com/pricing/free-trial/), ，[購買選項](http://azure.microsoft.com/pricing/purchase-options/), ，和 [會員優惠](http://azure.microsoft.com/pricing/member-offers/) (適用於 MSDN、 Microsoft Partner Network、 BizSpark 和其他 Microsoft 程式的成員)。
+**Azure 新手 ︰** 取得 Microsoft Azure 訂閱和與該訂用帳戶相關聯的 Microsoft 帳戶。 如需 Azure 購買選項的詳細資訊，請參閱 [免費試用版](http://azure.microsoft.com/pricing/free-trial/), ，[購買選項](http://azure.microsoft.com/pricing/purchase-options/), ，和 [會員優惠](http://azure.microsoft.com/pricing/member-offers/) （適用於 MSDN、 Microsoft Partner Network、 BizSpark 和其他 Microsoft 程式的成員）。
 
 請參閱 [管理帳戶、 訂閱和系統管理角色](https://msdn.microsoft.com/library/azure/hh531793.aspx) 如需有關 Azure 訂用帳戶。
 
@@ -74,7 +74,7 @@ Azure CLI 提供您一組開放原始碼的跨平台命令集合，供您運用�
 
 6. 現在，您需要根據您的組態設定更新指令碼變數。
 
-    - **< Storage_account_name >** 指令碼中使用的指定名稱或輸入新名稱儲存體帳戶。 **重要事項:** 的儲存體帳戶名稱必須是唯一在 Azure 中。 而且必須是小寫字母！
+    - **< Storage_account_name >** 指令碼中使用的指定名稱或輸入新名稱儲存體帳戶。 **重要事項 ︰** 的儲存體帳戶名稱必須是唯一在 Azure 中。 而且必須是小寫字母！
 
     - **< Storage_account_key >** 儲存體帳戶的存取金鑰。
 
@@ -84,7 +84,7 @@ Azure CLI 提供您一組開放原始碼的跨平台命令集合，供您運用�
 
     - **< Destination_folder >** 輸入可儲存下載從 Azure 儲存體，例如檔案的本機目錄的路徑:"~/downloadImages"。
 
-7. 您已更新必要變數 vim 中的之後，按下按鍵組合"Esc，:，wq! 」 若要儲存指令碼。
+7. 您已更新必要變數 vim 中的之後，按下按鍵組合"Esc，:，wq ！ 」 若要儲存指令碼。
 
 8. 若要執行這個指令碼，只要在 bash 主控台中輸入指令碼檔案名稱即可。 在這個指令碼執行之後，您應該會有一個本機目的地資料夾，包含下載的映像檔案。 以下螢幕擷取畫面顯示範例輸出︰
 
@@ -129,7 +129,7 @@ Azure 儲存體中的每個 Blob 必須位於一個容器中。 您可以使用 
 
         azure storage container create mycontainer
 
-> [AZURE.NOTE] 有三個層級的匿名讀取權限: **關閉**, ，**Blob**, ，和 **容器**。 若要防止匿名存取 blob，權限] 參數設定為 **關閉**。 新容器預設為私人，且只能由帳戶擁有者存取。 若要允許匿名公開讀取權限 blob 資源，但不是會對容器中繼資料或容器中 blob 清單的權限將參數設定 **Blob**。 若要允許 blob 資源、 容器中繼資料的容器中 blob 清單的完整公用讀取權限，權限] 參數設定為 **容器**。 如需詳細資訊，請參閱 [管理 Azure 儲存體資源的存取](storage-manage-access-to-resources.md)。
+> [AZURE.NOTE] 有三個層級的匿名讀取權限 ︰ **關閉**, ，**Blob**, ，和 **容器**。 若要防止匿名存取 blob，權限] 參數設定為 **關閉**。 新容器預設為私人，且只能由帳戶擁有者存取。 若要允許匿名公開讀取權限 blob 資源，但不是會對容器中繼資料或容器中 blob 清單的權限將參數設定 **Blob**。 若要允許 blob 資源、 容器中繼資料的容器中 blob 清單的完整公用讀取權限，權限] 參數設定為 **容器**。 如需詳細資訊，請參閱 [管理 Azure 儲存體資源的存取](storage-manage-access-to-resources.md)。
 
 ### 將 Blob 上傳至容器
 
@@ -221,4 +221,5 @@ Azure 檔案共用是 Azure 中的 SMB 檔案共用。 所有目錄和檔案都�
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
  
+
 

@@ -22,7 +22,7 @@
 
 Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 文章來了解資料管理閘道器和設定閘道器的逐步指示。 
 
-**注意:** 您需要運用閘道器連線到 MySQL，即使裝載於 Azure IaaS Vm 中。 如果您正嘗試連接到裝載於雲端中的 MySQL 執行個體，您也可以在 IaaS VM 中安裝閘道器執行個體。
+**注意 ︰** 您需要運用閘道器連線到 MySQL，即使裝載於 Azure IaaS Vm 中。 如果您正嘗試連接到裝載於雲端中的 MySQL 執行個體，您也可以在 IaaS VM 中安裝閘道器執行個體。
 
 資料處理站目前只支援將資料從 MySQL 移動到其他資料存放區，而不支援將資料從其他資料存放區移動到 MySQL。
 
@@ -219,7 +219,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- | 
-| 類型 | Type 屬性必須設定為: **OnPremisesMySql** | 是 |
+| 類型 | Type 屬性必須設定為 ︰ **OnPremisesMySql** | 是 |
 | 伺服器 | MySQL 伺服器的名稱。 | 是 |
 | 資料庫 | MySQL 資料庫的名稱。 | 是 | 
 | 結構描述  | 在資料庫中的結構描述名稱。 | 否 | 
@@ -234,7 +234,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 
 如需區段和屬性可用來定義資料集的完整清單，請參閱 [建立資料集](data-factory-create-datasets.md) 文件。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
 
- **TypeProperties** 區段都不同的資料集的每一種，提供資料存放區中資料的位置相關資訊。 類型的資料集的 typeProperties 區段 **RelationalTable** (包含 MySQL 資料集) 具有下列屬性
+ **TypeProperties** 區段都不同的資料集的每一種，提供資料存放區中資料的位置相關資訊。 類型的資料集的 typeProperties 區段 **RelationalTable** （包含 MySQL 資料集） 具有下列屬性
 
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
@@ -246,7 +246,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
-在複製活動類型的來源時 **RelationalSource** (包含 MySQL) 在 typeProperties 區段中會提供下列屬性:
+在複製活動類型的來源時 **RelationalSource** （包含 MySQL） 在 typeProperties 區段中會提供下列屬性 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
@@ -256,7 +256,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 
 ### MySQL 的類型對應
 
-中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章中，複製活動會執行自動類型轉換成接收類型具有下列 2 個步驟的方法的來源類型:
+中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章中，複製活動會執行自動類型轉換成接收類型具有下列 2 個步驟的方法的來源類型 ︰
 
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
@@ -309,6 +309,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 MySQL 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+
 
 
 

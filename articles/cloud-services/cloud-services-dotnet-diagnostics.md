@@ -47,7 +47,7 @@ Windows 事件記錄檔|傳送至 Windows 事件記錄系統的資訊。
 效能計數器|作業系統和自訂效能計數器。
 損毀傾印|應用程式損毀時之處理序狀態的相關資訊。
 自訂錯誤記錄檔|您的應用程式或服務所建立的記錄檔。
-NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a href="http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx">EventSource 類別</a>
+NET EventSource |您的程式碼使用 .NET <a href="http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx">EventSource 類別</a>所產生的事件
 以資訊清單為基礎的 ETW|任何處理序所產生的 ETW 事件。
 
 ## 如何在背景工作角色中啟用診斷
@@ -62,11 +62,11 @@ NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a hre
 2.  建立新 **Azure 雲端服務** 專案從 **定域機組** 以.NET Framework 4.5 為目標的範本。  將專案命名為 "WadExample" 並按一下 [確定]。
 3.  選取 **背景工作角色** 按一下 [確定]。 將會建立專案。 
 4.  在 **方案總管] 中**, ，按兩下 **WorkerRole1** 屬性檔。
-5.  在 **組態** ] 索引標籤上取消核取 **啟用診斷** 以停用診斷 1.0 (Azure SDK 2.4 和更早版本)。
+5.  在 **組態** ] 索引標籤上取消核取 **啟用診斷** 以停用診斷 1.0 （Azure SDK 2.4 和更早版本）。
 6.  建置您的解決方案以確認無誤。
 
 ### 步驟 2：實作您的程式碼
-以下列程式碼取代 WorkerRole.cs 的內容。 SampleEventSourceWriter 類別繼承自 [EventSource 類別][], ，實作四種記錄方法: **SendEnums**, ，**MessageMethod**, ，**SetOther** 和 **HighFreq**。 第一個參數 **WriteEvent** 方法定義個別事件的識別碼。 Run 方法實作一個無限迴圈，每個記錄的方法實作中呼叫 **SampleEventSourceWriter** 類別每隔 10 秒。
+以下列程式碼取代 WorkerRole.cs 的內容。 SampleEventSourceWriter 類別繼承自 [EventSource 類別][], ，實作四種記錄方法 ︰ **SendEnums**, ，**MessageMethod**, ，**SetOther** 和 **HighFreq**。 第一個參數 **WriteEvent** 方法定義個別事件的識別碼。 Run 方法實作一個無限迴圈，每個記錄的方法實作中呼叫 **SampleEventSourceWriter** 類別每隔 10 秒。
 
     using Microsoft.WindowsAzure.ServiceRuntime;
     using System;
@@ -161,11 +161,11 @@ NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a hre
 2.  
         (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd' 
 
-2.  加入 XML 檔，以您 **WorkerRole1** 專案上按一下滑鼠右鍵 **WorkerRole1** 專案，然後選取 **新增** ]-> [ **新項目** ]-> [ **Visual C# 項目** ]-> [ **資料** ]-> [ **XML 檔案**。 將檔案命名為 "WadExample.xml"。
+2.  加入 XML 檔，以您 **WorkerRole1** 專案上按一下滑鼠右鍵 **WorkerRole1** 專案，然後選取 **新增** ]-> [ **新項目...** -> **Visual C# 項目** ]-> [ **資料** ]-> [ **XML 檔案**。 將檔案命名為 "WadExample.xml"。
 
     ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 
-3.  將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按下 **F4** 開啟 **屬性** 視窗。 按一下 [ **結構描述** 屬性 **屬性** 視窗。 按一下 [ **...** 中 **結構描述** 屬性。 按一下 [ **國內** ] 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [ **確定**。
+3.  將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按下 **F4** 開啟 **屬性** 視窗。 按一下 [ **結構描述** 屬性 **屬性** 視窗。 按一下 [ **...** 在 **結構描述** 屬性。 按一下 [ **加入...** 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [ **確定**。
 4.  以下列 XML 取代 WadExample.xml 組態檔的內容，然後儲存檔案。 此組態檔可定義兩個要收集的效能計數器：一個用於 CPU 使用率，一個用於記憶體使用率。 組態會接著定義四個事件，分別對應至 SampleEventSourceWriter 類別中的方法。
 
 ```
@@ -229,7 +229,7 @@ NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a hre
 1.  在您的開發電腦上，啟動 Visual Studio 2013。
 2.  建立以 .NET Framework 4.5 為目標的新 Visual C# 主控台應用程式。 將專案命名為 "WadExampleVM"。
     ![CloudServices_diag_new_project](./media/cloud-services-dotnet-diagnostics/NewProject.png)
-3.  以下列程式碼取代 Program.cs 的內容。 類別 **SampleEventSourceWriter** 實作四種記錄方法: **SendEnums**, ，**MessageMethod**, ，**SetOther** 和 **HighFreq**。 傳遞至 WriteEvent 方法的第一個參數定義個別事件的識別碼。 Run 方法實作一個無限迴圈，每個記錄的方法實作中呼叫 **SampleEventSourceWriter** 類別每隔 10 秒。
+3.  以下列程式碼取代 Program.cs 的內容。 類別 **SampleEventSourceWriter** 實作四種記錄方法 ︰ **SendEnums**, ，**MessageMethod**, ，**SetOther** 和 **HighFreq**。 傳遞至 WriteEvent 方法的第一個參數定義個別事件的識別碼。 Run 方法實作一個無限迴圈，每個記錄的方法實作中呼叫 **SampleEventSourceWriter** 類別每隔 10 秒。
 
         using System;
         using System.Diagnostics;
@@ -302,7 +302,7 @@ NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a hre
 
 ### 步驟 3：部署應用程式
 1.  以滑鼠右鍵按一下 **WadExampleVM** 專案 **方案總管] 中** 選擇 **在檔案總管] 中開啟資料夾**。
-2.  瀏覽至 *bin\Debug* 資料夾並複製所有檔案 (wadexamplevm.*)
+2.  瀏覽至 *bin\Debug* 資料夾並複製所有檔案 （wadexamplevm.*）
 3.  在 **伺服器總管** 虛擬機器上按一下滑鼠右鍵，然後選擇 [ **使用遠端桌面連線**。
 4.  連線至 VM 之後，建立名為 WadExampleVM 的資料夾，並將您的應用程式檔案貼到資料夾中。
 5.  啟動 WadExampleVM.exe 應用程式。 您應該會看見空白的主控台視窗。
@@ -312,8 +312,8 @@ NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a hre
 
         (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd' 
 
-2.  在已開啟專案的 Visual Studio 中，或在未開啟專案的 Visual Studio 執行個體中，開啟新的 XML 檔。 在 Visual Studio 中，選取 **新增** ]-> [ **新項目** ]-> [ **Visual C# 項目** ]-> [ **資料** ]-> [ **XML 檔案**。 將檔案命名為 "WadExample.xml"
-3.  將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按下 **F4** 開啟 **屬性** 視窗。 按一下 [ **結構描述** 屬性 **屬性** 視窗。 按一下 [ **...** 中 **結構描述** 屬性。 按一下 [ **國內** ] 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [ **確定**。
+2.  在已開啟專案的 Visual Studio 中，或在未開啟專案的 Visual Studio 執行個體中，開啟新的 XML 檔。 在 Visual Studio 中，選取 **新增** ]-> [ **新項目...** -> **Visual C# 項目** ]-> [ **資料** ]-> [ **XML 檔案**。 將檔案命名為 "WadExample.xml"
+3.  將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按下 **F4** 開啟 **屬性** 視窗。 按一下 [ **結構描述** 屬性 **屬性** 視窗。 按一下 [ **...** 在 **結構描述** 屬性。 按一下 [ **加入...** 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [ **確定**。
 4.  以下列 XML 取代 WadExample.xml 組態檔的內容，然後儲存檔案。 此組態檔可定義兩個要收集的效能計數器：一個用於 CPU 使用率，一個用於記憶體使用率。 組態會接著定義四個事件，分別對應至 SampleEventSourceWriter 類別中的方法。
 
 ```
@@ -362,7 +362,7 @@ NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a hre
 
 ## 組態檔結構描述
 
-診斷組態檔定義當診斷監視器啟動時，用來初始化診斷組態設定的值。 範例組態檔及有關其結構描述的詳細文件位於此處: [Azure 診斷 1.2 組態結構描述][]。
+診斷組態檔定義當診斷監視器啟動時，用來初始化診斷組態設定的值。 範例組態檔及有關其結構描述的詳細文件位於此處 ︰ [Azure 診斷 1.2 組態結構描述][]。
 
 ## 疑難排解
 
@@ -379,7 +379,7 @@ NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a hre
 -1|一般錯誤。
 -2|無法載入 rcf 檔。<p>這是內部錯誤，只有當不正確地在 VM 上以手動方式叫用客體代理程式外掛程式啟動器時才會發生。
 -3|無法載入診斷組態檔。<p><p>解決方法：這是組態檔未通過結構描述驗證的結果。 解決方法是提供以結構描述編譯的組態檔。
--4|診斷監視代理程式的另一個執行個體已在使用本機資源目錄。<p><p>解決方案: 指定不同的值為 **LocalResourceDirectory**。
+-4|診斷之監視代理程式的另一個執行個體已在使用本機資源目錄。<p><p>解決方案 ︰ 指定不同的值為 **LocalResourceDirectory**。
 -6|客體代理程式外掛程式啟動器嘗試使用無效的命令列來啟動診斷。<p><p>這是內部錯誤，只有當不正確地在 VM 上以手動方式叫用客體代理程式外掛程式啟動器時才會發生。
 -10|診斷外掛程式結束並發生未處理的例外狀況。
 -11|客體代理程式無法建立負責啟動及監視監視代理程式的處理序。<p><p>解決方法：確認有足夠的系統資源，可啟動新的處理序。<p>
@@ -414,20 +414,20 @@ NET EventSource |您的程式碼所產生的事件，方法是使用 .NET <a hre
 ## 常見問題集
 以下是一些常見問題和回答：
 
-**問:。**如何將我的 Visual Studio 解決方案從 Azure Diagnostics 1.0 升級至 Azure Diagnostics 1.1？
+**問：** 如何將我的 Visual Studio 解決方案從 Azure Diagnostics 1.0 升級至 Azure Diagnostics 1.1？
 
-**答:**將 Visual Studio 解決方案從 Diagnostics 1.0 升級至 Diagnostics 1.1 (或更新版本) 是手動程序：
+**答：** 將 Visual Studio 解決方案從 Diagnostics 1.0 升級至 Diagnostics 1.1 (或更新版本) 是手動程序：
 - 請停用您的 Visual Studio 方案中的診斷，以防止 Diagnostics 1.0 隨您的角色部署。
 - 如果您的程式碼使用追蹤接聽項，則需要修改程式碼才能使用 .NET EventSource。 Diagnostics 1.1 及更新版本不支援追蹤接聽項。
 - 請修改您的部署處理序，以安裝 Diagnostics 1.1 擴充功能。
 
-**問:。**如果我已經在角色或 VM 上安裝診斷 1.1 擴充功能，如何才能升級至診斷 1.2 或 1.3？
+**問：** 如果我已經在角色或 VM 上安裝診斷 1.1 擴充功能，如何才能升級至診斷 1.2 或 1.3？
 
-**答:**如果您指定"– 版本 」 1。*"」當您在安裝診斷 1.1，在下一次重新啟動您的角色或 VM 重新開機，它會自動更新為符合規則運算式的最新版本 」 1。*」如果 「 – 版本"1.1""安裝 Diagnostics 1.1 時可以更新較新版本會重新執行 Set-cmdlet 並指定您想要安裝的版本。
+**答：** 如果您指定"– 版本 」 1。*"」當您在安裝診斷 1.1，在下一次重新啟動您的角色或 VM 重新開機，它會自動更新為符合規則運算式的最新版本 」 1。*」 如果在您安裝 Diagnostics 1.1 時 “–Version “1.1””，您可以更新較新的版本，方法是重新執行 Set- Cmdlet，並指定要安裝的版本。
 
-**問:。**資料表的命名方式為何？
+**問：** 資料表的命名方式為何？
 
-**答:**資料表的命名依據如下：
+**答：** 資料表的命名依據如下：
 
         if (String.IsNullOrEmpty(eventDestination)) {
             if (e == "DefaultEvents")
@@ -517,4 +517,5 @@ EventSource|否|資料表|記錄您的程式碼使用 .NET EventSource 類別所
 [Get-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495145.aspx
 [Remove-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495168.aspx
  
+
 

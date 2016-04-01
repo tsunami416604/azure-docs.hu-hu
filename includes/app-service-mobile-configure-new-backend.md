@@ -3,7 +3,7 @@
 
 2. 在 **建立資料表 API**, ，選取您 **的後端語言**, ， **C#** 或 **Node.js**:
 
-    + **Node.js 後端** (透過入口網站):  
+    + **Node.js 後端** （透過入口網站） ︰  
     接受通知，然後按一下 [ **Create TodoItem table**。 這會建立新 *TodoItem* 資料庫資料表中的。
      
         >[AZURE.IMPORTANT] 切換至 Node.js 現有的應用程式後端將會覆寫所有網站內容。
@@ -12,4 +12,5 @@
     按一下 [ **下載**, ，將壓縮的專案檔案解壓縮至本機電腦，在 Visual Studio 中開啟方案、 建置專案，以還原 NuGet 套件，然後將專案部署至 Azure。 若要了解如何將.NET 後端伺服器專案部署至 Azure，請參閱 *將專案部署至 web 應用程式* 區段  [Azure App Service 中建立 ASP.NET web 應用程式](../articles/app-service-web/web-sites-dotnet-get-started.md#deploy-the-project-to-the-web-app)。 在 App Service 中，行動應用程式後端相當於 Web 應用程式。
      
 您的行動應用程式後端現在已經準備好可與用戶端應用程式搭配使用。
+
 

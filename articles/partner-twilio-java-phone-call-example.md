@@ -25,7 +25,7 @@
 您必須執行下列動作才能使用本主題中的程式碼：
 
 1. 取得 Twilio 帳戶和驗證權杖。 若要開始使用 Twilio，請在評估價格 [http://www.twilio.com/pricing][twilio_pricing]。 您可以在註冊 [https://www.twilio.com/try-twilio][try_twilio]。 Twilio 所提供之 API 的相關資訊，請參閱 [http://www.twilio.com/api][twilio_api]。
-2. 取得 Twilio JAR。 在 [https://github.com/twilio/twilio-java][twilio_java_github], ，您可以下載 GitHub 來源及建立您自己的 JAR，或下載預先建置的 JAR (含或不含相依性)。
+2. 取得 Twilio JAR。 在 [https://github.com/twilio/twilio-java][twilio_java_github], ，您可以下載 GitHub 來源及建立您自己的 JAR，或下載預先建置的 JAR （含或不含相依性）。
 本主題中的程式碼是以預先建置的 TwilioJava-3.3.8-with-dependencies JAR 撰寫的。
 3. 將 JAR 新增至您的 Java 建置路徑。
 4. 如果您使用 Eclipse 建立此 Java 應用程式，請使用 Eclipse 的部署組件功能在應用程式部署檔案 (WAR) 中加入 Twilio JAR。 如果您並非使用 Eclipse 建立此 Java 應用程式，請確定 Twilio JAR 與您的 Java 應用程式包含在相同的 Azure 角色內，且已新增至應用程式的類別路徑。
@@ -209,4 +209,5 @@
 [twilio_say]: http://www.twilio.com/docs/api/twiml/say
 [twilio_java]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaCallForm.jpg
 [twilio_java_response]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaMakeCall.jpg
+
 

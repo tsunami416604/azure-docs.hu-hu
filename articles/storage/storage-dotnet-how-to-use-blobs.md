@@ -130,7 +130,7 @@ Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。  在大多數情況下�
 **CloudPageBlob**, ，或 **CloudBlobDirectory** 物件。  如果不清楚類型，可使用
 類型檢查來決定要將其轉換至何種類型。  下列程式碼會
 示範如何擷取和輸出
- `photos` 容器:
+ `photos` 容器 ︰
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -180,7 +180,7 @@ Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。  在大多數情況下�
     2011/architecture/description.txt
     2011/photo7.jpg
 
-當您呼叫 **ListBlobs** 在 'photos' 容器 (如上述範例中)，會傳回階層式列出。 它同時包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 物件分別代表的目錄和 blob 容器中的。 輸出結果看起來像這樣：
+當您呼叫 **ListBlobs** 在 'photos' 容器 （如上述範例中），會傳回階層式列出。 它同時包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 物件分別代表的目錄和 blob 容器中的。 輸出結果看起來像這樣：
 
     Directory: https://<accountname>.blob.core.windows.net/photos/2010/
     Directory: https://<accountname>.blob.core.windows.net/photos/2011/
@@ -188,7 +188,7 @@ Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。  在大多數情況下�
 
 
 您可以選擇性地設定 **UseFlatBlobListing** 參數 **ListBlobs** 方法
-**true**。 在此情況下，每個容器中的 blob 會傳回做為 **CloudBlockBlob** 物件。 若要呼叫 **ListBlobs** 傳回簡單列表看起來像這樣:
+**true**。 在此情況下，每個容器中的 blob 會傳回做為 **CloudBlockBlob** 物件。 若要呼叫 **ListBlobs** 傳回簡單列表看起來像這樣 ︰
 
     // Loop over items within the container and output the length and URI.
     foreach (IListBlobItem item in container.ListBlobs(null, true))
@@ -391,4 +391,5 @@ Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。  在大多數情況下�
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
  
+
 

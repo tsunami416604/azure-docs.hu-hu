@@ -42,3 +42,4 @@ Azure 也能為不同區域中 (異地備援備份) 的每個資料庫提供備�
 
 - 在 [Azure 入口網站](https://azure.microsoft.com/), ，按一下 [ **新增**, ，按一下 **資料和儲存體**, ，按一下 **SQL 資料庫**, ，然後選取 **備份** 做為資料庫來源。 請參閱 [從中斷復原 Azure SQL database](sql-database-disaster-recovery.md) 如需詳細資訊。
 
+

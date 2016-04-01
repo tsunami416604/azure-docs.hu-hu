@@ -24,7 +24,7 @@
 
 ## 摘要
 
-在本教學課程中，您可以使用支援的身分識別提供者，將驗證加入 Android 上的 TodoList 快速入門專案。 本教學課程根據 [開始使用行動應用程式] 教學課程，您必須先完成。
+在本教學課程中，您可以使用支援的身分識別提供者，將驗證加入 Android 上的 TodoList 快速入門專案。 本教學課程根據 [Get started with Mobile Apps] 教學課程，您必須先完成。
 
 ##<a name="register"></a>註冊應用程式進行驗證，並設定應用程式服務
 
@@ -34,7 +34,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-+ 在 Android Studio 中，開啟您完成教學課程時所建立的專案 [開始使用行動應用程式]，然後從 **執行** 功能表上，按一下 **執行應用程式** ，並確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 (未經授權)。
++ 在 Android Studio 中，開啟您完成教學課程時所建立的專案 [Get started with Mobile Apps], ，然後從 **執行** 功能表上，按一下 **執行應用程式** ，並確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 （未經授權）。
 
      這是因為應用程式嘗試存取後端以未驗證的使用者，但 _TodoItem_ 資料表現在需要驗證。
 
@@ -71,4 +71,5 @@
 
 <!-- URLs. -->
 [Get started with Mobile Apps]: app-service-mobile-android-get-started.md
+
 

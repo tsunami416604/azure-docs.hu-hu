@@ -29,7 +29,7 @@ Apache Ambari 提供容易使用的 Web UI 和 REST API，可簡化 Hadoop 叢�
 
 ##<a id="whatis"></a>什麼是 Ambari？
 
-<a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> 提供方便使用 web UI，可用來佈建、 管理及監視 Hadoop 叢集，讓 Hadoop 管理起來更為簡單。 開發人員可以使用 <a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a>.
+<a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> 提供簡單易用的 Web UI，以供用來佈建、管理及監視 Hadoop 叢集，讓 Hadoop 管理起來更為簡單。 開發人員可以使用 <a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a> 將這些功能整合到應用程式。
 
 以 Linux 為基礎的 HDInsight 叢集預設會提供 Ambari Web UI。 
 
@@ -41,7 +41,7 @@ Ambari Web UI 位於您 HDInsight 叢集會在 HTTPS://CLUSTERNAME.azurehdidnsig
 
 ##SSH Proxy
 
-> [AZURE.NOTE] 雖然直接透過網際網路，從 Ambari Web UI (例如 jobtracker) 的一些連結可存取叢集的 Ambari 不是在網際網路上公開。 所以除非您使用安全殼層 (SSH) 通道來代理通往叢集前端節點的 Web 流量，否則會在嘗試存取這些功能時看見「找不到伺服器」錯誤。
+> [AZURE.NOTE] 雖然直接透過網際網路，從 Ambari Web UI （例如 jobtracker） 的一些連結可存取叢集的 Ambari 不是在網際網路上公開。 所以除非您使用安全殼層 (SSH) 通道來代理通往叢集前端節點的 Web 流量，否則會在嘗試存取這些功能時看見「找不到伺服器」錯誤。
 
 建立使用 Ambari SSH 通道的資訊，請參閱 [使用 SSH 通道存取 Ambari web UI、 ResourceManager、 JobHistory、 NameNode、 Oozie、 和其他 web UI](hdinsight-linux-ambari-ssh-tunnel.md)。
 
@@ -157,7 +157,7 @@ Ambari 提供許多警示，其可能狀態如下：
 
 1. 選取您想要管理的主機。
 
-2. 使用 **動作** ] 功能表上，選取您想要執行的動作:
+2. 使用 **動作** ] 功能表上，選取您想要執行的動作 ︰
 
     * **啟動所有元件** -都啟動主機上的所有元件。
 
@@ -223,3 +223,4 @@ Ambari 檢視可讓開發人員將 UI 項目插入 Ambari Web UI 使用 [Ambari 
 * Yarn 佇列管理員：佇列管理員提供簡單的 UI 以用於檢視及修改 YARN 佇列。
 * Hive 檢視：Hive 檢視可讓您直接從網頁瀏覽器執行 Hive 查詢。 您可以儲存查詢、檢視結果、將結果儲存至叢集存放區，或將結果下載到您本機系統。 如需有關使用 Hive 檢視的詳細資訊，請參閱 [搭配 HDInsight 使用 Hive 檢視](hdinsight-hadoop-use-hive-ambari-view.md)。
 * Tez 檢視：Tez 檢視可讓您透過檢視 Tez 工作執行方式及工作使用哪些資源的相關資訊，更深入了解工作以及將工作最佳化。
+

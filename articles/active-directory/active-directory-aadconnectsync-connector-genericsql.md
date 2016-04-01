@@ -34,12 +34,12 @@
 
 | 功能 | 支援 |
 | --- | --- |
-| 連接的資料來源 | 此連接器支援所有 64 位元的 ODBC 驅動程式。 測試過它取代為下列: <li>Microsoft SQL Server 與 SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 和 11 g</li><li>MySQL 5.x</li>
+| 連接的資料來源 | 此連接器支援所有 64 位元的 ODBC 驅動程式。 測試過它取代為下列 ︰ <li>Microsoft SQL Server 與 SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 和 11 g</li><li>MySQL 5.x</li>
 | 案例 | <li>物件生命週期管理</li><li>密碼管理</li> |
-| 作業 | <li>完整匯入和差異匯入、 匯出</li><li>匯出: 新增、 刪除、 更新和取代</li><li>設定密碼、 變更密碼</li>
+| 作業 | <li>完整匯入和差異匯入、 匯出</li><li>匯出 ︰ 新增、 刪除、 更新和取代</li><li>設定密碼、 變更密碼</li>
 | 結構描述 | <li>動態探索的物件和屬性</li>
 
-### 先決條件
+### 必要條件
 
 在您使用連接器之前，請確定除了任何先前提到的 Hotfix 以外，同步處理伺服器上還有下列項目：
 
@@ -78,15 +78,15 @@
 
 資料庫應該支援下列其中一種驗證方法。
 
-- **Windows 驗證**: 驗證資料庫將使用 Windows 認證來驗證使用者。 在此情況下，將使用同步處理服務所使用的服務帳戶。 此帳戶需要資料庫的權限。
-- **SQL 驗證**: 驗證資料庫會使用使用者名稱/密碼定義一個連線螢幕，來連接到資料庫。 如果您在 DSN 檔案中儲存使用者名稱/密碼，則優先使用在 [連線能力] 畫面上提供的認證。
-- **Azure SQL Database 驗證**: 如需詳細資訊，請參閱 [連接到 SQL 資料庫所使用 Azure Active Directory 驗證](sql-database-aad-authentication.md)
+- **Windows 驗證**︰ 驗證資料庫將使用 Windows 認證來驗證使用者。 在此情況下，將使用同步處理服務所使用的服務帳戶。 此帳戶需要資料庫的權限。
+- **SQL 驗證**︰ 驗證資料庫會使用使用者名稱/密碼定義一個連線螢幕，來連接到資料庫。 如果您在 DSN 檔案中儲存使用者名稱/密碼，則優先使用在 [連線能力] 畫面上提供的認證。
+- **Azure SQL Database 驗證**︰ 如需詳細資訊，請參閱 [連接到 SQL 資料庫所使用 Azure Active Directory 驗證](sql-database-aad-authentication.md)
 
-**DN 是錨點**: 如果您選取此選項，DN 將也用於做為錨點屬性。 它可用於簡單實作，但也有下列限制：
+**DN 是錨點**︰ 如果您選取此選項，DN 將也用於做為錨點屬性。 它可用於簡單實作，但也有下列限制：
 
 -   連接器只支援 1 個物件類型。 因此，所有參考屬性只能參考相同的物件類型。
 
-**匯出型別: 物件取代**: 在匯出期間時只有一些屬性已變更，所有屬性的整個物件將會匯出和將取代現有的物件。
+**匯出型別 ︰ 物件取代**︰ 在匯出期間時只有一些屬性已變更，所有屬性的整個物件將會匯出和將取代現有的物件。
 
 ### 結構描述 1 (偵測物件類型)
 
@@ -98,11 +98,11 @@
 
 **物件類型的偵測方法**: 連接器支援這些物件類型的偵測方法。
 
-- **固定值**: 提供以逗號分隔清單的物件類型清單。 例如 使用者、 群組、 部門。  
+- **固定值**︰ 提供以逗號分隔清單的物件類型清單。 例如 使用者、 群組、 部門。  
 ![schema1b](./media/active-directory-aadconnectsync-connector-genericsql/schema1b.png)
-- **資料表/檢視/預存程序**: 提供的資料表/檢視/預存程序的名稱，然後將提供的物件類型清單的資料行名稱。 如果您使用預存程序，然後也為它的格式提供參數 **[名稱]: [方向]: [Value]**。 在個別一行上提供每個參數 (使用 Ctrl+Enter 來換行)。  
+- **資料表/檢視/預存程序**︰ 提供的資料表/檢視/預存程序的名稱，然後將提供的物件類型清單的資料行名稱。 如果您使用預存程序，然後也為它的格式提供參數 **[名稱]: [方向]: [Value]**。 在個別一行上提供每個參數 (使用 Ctrl+Enter 來換行)。  
 ![schema1c](./media/active-directory-aadconnectsync-connector-genericsql/schema1c.png)
-- **SQL 查詢**: 此選項可讓您提供的 SQL 查詢會傳回單一資料行與物件類型，例如 `SELECT [Column Name] FROM TABLENAME`。 傳回的資料行必須是字串類型 (varchar)。
+- **SQL 查詢**︰ 此選項可讓您提供的 SQL 查詢會傳回單一資料行與物件類型，例如 `SELECT [Column Name] FROM TABLENAME`。 傳回的資料行必須是字串類型 (varchar)。
 
 ### 結構描述 2 (偵測屬性類型)
 
@@ -112,7 +112,7 @@
 
 **屬性類型偵測方法**: 連接器支援這些屬性類型偵測方法與每個偵測到的物件型別在結構描述 1] 畫面。
 
-- **資料表/檢視/預存程序**: 提供應該用來尋找屬性名稱的資料表/檢視/預存程序的名稱。 如果您使用預存程序，然後也為它的格式提供參數 **[名稱]: [方向]: [Value]**。 在個別一行上提供每個參數 (使用 Ctrl+Enter 來換行)。 若要偵測多重值屬性中的屬性名稱，請提供以逗號分隔的資料表或檢視清單。 如果父和子資料表具有相同的資料行名稱，則不支援多重值案例。
+- **資料表/檢視/預存程序**︰ 提供應該用來尋找屬性名稱的資料表/檢視/預存程序的名稱。 如果您使用預存程序，然後也為它的格式提供參數 **[名稱]: [方向]: [Value]**。 在個別一行上提供每個參數 (使用 Ctrl+Enter 來換行)。 若要偵測多重值屬性中的屬性名稱，請提供以逗號分隔的資料表或檢視清單。 如果父和子資料表具有相同的資料行名稱，則不支援多重值案例。
 - **SQL 查詢** 此選項可讓您提供的 SQL 查詢會傳回單一資料行與屬性名稱，例如 `SELECT [Column Name] FROM TABLENAME`。 傳回的資料行必須是字串類型 (varchar)。
 
 ### 結構描述 3 (定義錨點和 DN)
@@ -132,8 +132,8 @@
 
 ![schema4a](./media/active-directory-aadconnectsync-connector-genericsql/schema4a.png)
 
-- **資料型別**: 用來同步處理引擎所知的對應屬性類型。 預設會使用在 SQL 結構描述中偵測到的相同類型，但 DateTime 和 Reference 不容易偵測。 您必須指定這些 **DateTime** 或 **參考**。
-- **方向**: 您可以匯入、 匯出或 ImportExport 設定屬性的方向。 ImportExport 是預設值。
+- **資料型別**︰ 用來同步處理引擎所知的對應屬性類型。 預設會使用在 SQL 結構描述中偵測到的相同類型，但 DateTime 和 Reference 不容易偵測。 您必須指定這些 **DateTime** 或 **參考**。
+- **方向**︰ 您可以匯入、 匯出或 ImportExport 設定屬性的方向。 ImportExport 是預設值。
 ![schema4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
 
 注意：
@@ -158,17 +158,17 @@
 
 一般 SQL 連接器支援使用下列差異匯入方法：
 
-- **觸發程序**: 請參閱 [產生使用觸發程序的差異檢視](https://technet.microsoft.com/library/cc708665.aspx)。
-- **浮水印**: 這是泛型方法，可以搭配任何資料庫。 浮水印查詢會根據資料庫供應商預先填入。 浮水印資料行必須出現在所用的每個資料表/檢視上。 必須追蹤資料表的插入和更新，以及其相依 (多重值或子系) 資料表。 同步處理服務與資料庫伺服器之間的時鐘必須同步。 如果沒有同步，則可能會省略差異匯入中的某些項目。  
+- **觸發程序**︰ 請參閱 [產生使用觸發程序的差異檢視](https://technet.microsoft.com/library/cc708665.aspx)。
+- **浮水印**︰ 這是泛型方法，可以搭配任何資料庫。 浮水印查詢會根據資料庫供應商預先填入。 浮水印資料行必須出現在所用的每個資料表/檢視上。 必須追蹤資料表的插入和更新，以及其相依 (多重值或子系) 資料表。 同步處理服務與資料庫伺服器之間的時鐘必須同步。 如果沒有同步，則可能會省略差異匯入中的某些項目。  
 限制：
     - 浮水印策略不支援已刪除的物件。
-- **快照集** (僅適用於 Microsoft SQL Server) [產生使用快照差異檢視](https://technet.microsoft.com/library/cc720640.aspx)
-- **變更追蹤** (僅適用於 Microsoft SQL Server) [有關變更追蹤](https://msdn.microsoft.com/library/bb933875.aspx)  
-限制:
+- **快照集** （僅適用於 Microsoft SQL Server） [產生使用快照差異檢視](https://technet.microsoft.com/library/cc720640.aspx)
+- **變更追蹤** （僅適用於 Microsoft SQL Server） [有關變更追蹤](https://msdn.microsoft.com/library/bb933875.aspx)  
+限制 ︰
     - 錨點和 DN 屬性必須屬於資料表中所選物件的主索引鍵。
     - 在使用變更追蹤的匯入和匯出期間內，不支援 SQL 查詢。
 
-**其他參數**: 指定資料庫伺服器的時區表示您的資料庫伺服器所在的位置。 這個值用來支援各種格式的日期和時間屬性。
+**其他參數**︰ 指定資料庫伺服器的時區表示您的資料庫伺服器所在的位置。 這個值用來支援各種格式的日期和時間屬性。
 
 連接器一律會以 UTC 格式儲存日期和日期時間。 若要能夠正確地轉換日期和時間，必須指定資料庫伺服器的時區以及所用的格式。 格式應該是以 .Net 格式表示。
 
@@ -176,13 +176,13 @@
 
 ![globalparameters2](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters2.png)
 
-**密碼設定**: 連接器提供密碼同步處理功能和支援設定及變更密碼。
+**密碼設定**︰ 連接器提供密碼同步處理功能和支援設定及變更密碼。
 
 連接器提供兩種方法來支援密碼同步處理：
 
-- **預存程序**: 這個方法需要兩個預存程序，以支援設定及變更密碼。 輸入表示新增的所有參數，然後變更下列範例中設定密碼預存程序和變更密碼預存程序參數分別為每個密碼作業。
+- **預存程序**︰ 這個方法需要兩個預存程序，以支援設定及變更密碼。 輸入表示新增的所有參數，然後變更下列範例中設定密碼預存程序和變更密碼預存程序參數分別為每個密碼作業。
 ![globalparameters3](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters3.png)
-- **密碼延伸模組**: 這個方法會要求密碼擴充 DLL (您必須提供實作的擴充功能 DLL 名稱 [IMAExtensible2Password](https://msdn.microsoft.com/library/microsoft.metadirectoryservices.imaextensible2password.aspx) 介面)。 密碼延伸模組組件必須放在擴充功能資料夾中，如此連接器可以載入執行階段 DLL。
+- **密碼延伸模組**︰ 這個方法會要求密碼擴充 DLL (您必須提供實作的擴充功能 DLL 名稱 [IMAExtensible2Password](https://msdn.microsoft.com/library/microsoft.metadirectoryservices.imaextensible2password.aspx) 介面)。 密碼延伸模組組件必須放在擴充功能資料夾中，如此連接器可以載入執行階段 DLL。
 ![globalparameters4](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters4.png)
 
 您也必須在啟用密碼管理 **設定延伸** 頁面。
@@ -228,7 +228,7 @@
 
 - 型別 **員工** 中 **資料表/檢視/預存程序**。
 - 型別中的部門 **名稱的多重資料表/檢視表**。
-- 輸入員工和部門之間的聯結條件 **聯結條件**, ，例如:
+- 輸入員工和部門之間的聯結條件 **聯結條件**, ，例如 ︰
 `Employee.DEPTID=Department.DepartmentID`。
 ![runstep2](./media/active-directory-aadconnectsync-connector-genericsql/runstep2.png)
 
@@ -237,7 +237,7 @@
 ![runstep3](./media/active-directory-aadconnectsync-connector-genericsql/runstep3.png)
 
 - 如果您有大量資料，建議實作預存程序的分頁。
-- 若要讓預存程序支援分頁，您必須提供開始索引和結束索引。 請參閱: [有效率地進行大量的資料分頁](https://msdn.microsoft.com/library/bb445504.aspx)。
+- 若要讓預存程序支援分頁，您必須提供開始索引和結束索引。 請參閱 ︰ [有效率地進行大量的資料分頁](https://msdn.microsoft.com/library/bb445504.aspx)。
 - @StartIndex 和 @EndIndex 將會取代在執行階段上設定個別的頁面大小值 **設定步驟** 頁面。 範例：如果連接器擷取第一頁且頁面大小設為 500，在這種情況下 @StartIndex 會是 1 而 @EndIndex 被視為 500，這些值會隨著連接器擷取後續頁面而增加並變更 @StartIndex 和 @EndIndex 值。
 - 若要執行參數化預存程序，請以 `[Name]:[Direction]:[Value]` 格式提供參數。 在個別一行上輸入每個參數 (使用 Ctrl + Enter 來換行)。
 - 一般 SQL 連接器也支援從分散式環境的匯入作業，例如 Microsoft SQL Server 中連結的伺服器。 如果要從連結的伺服器中的資料表擷取資訊，則會以格式提供資料表：`[ServerName].[Database].[Schema].[TableName]`
@@ -299,12 +299,13 @@
 
 如果使用者選擇 SQL 查詢選項，則匯出需要 3 個不同的查詢來執行各種插入/更新/刪除作業。
 
-- **插入查詢**: 如果任何物件都有個別的資料表中插入作業的連接器，執行此查詢。
-- **更新查詢**: 如果任何物件都有個別的資料表中更新的連接器，執行此查詢。
-- **刪除查詢**: 如果任何物件都有個別的資料表中要刪除連接器，執行此查詢。
+- **插入查詢**︰ 如果任何物件都有個別的資料表中插入作業的連接器，執行此查詢。
+- **更新查詢**︰ 如果任何物件都有個別的資料表中更新的連接器，執行此查詢。
+- **刪除查詢**︰ 如果任何物件都有個別的資料表中要刪除連接器，執行此查詢。
 - 從結構描述選取的屬性會做為查詢的參數值。 範例：`Insert into Employee (ID, Name) Values (@ID, @EmployeeName)`
 
 ## 疑難排解
 
 -   如需如何啟用記錄來疑難排解連接器資訊，請參閱 [如何啟用 ETW 追蹤連接器](http://go.microsoft.com/fwlink/?LinkId=335731)。
+
 

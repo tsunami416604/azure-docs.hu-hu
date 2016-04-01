@@ -9,13 +9,13 @@
     editor=""/>
 
 <tags
-    ms.service="backup 」
-    ms.workload= 「 儲存體的備份復原的 」
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/29/2015 」
-    ms.author="trinadhk 」。「 jimpark 」 / >
+    ms.date="10/29/2015"
+    ms.author="trinadhk"; "jimpark"/>
 
 # 還原 Azure 中的虛擬機器
 您可以使用還原動作，利用儲存在 Azure 備份保存庫的備份，將虛擬機器還原至新的 VM。
@@ -104,7 +104,7 @@ VM 可以從 Azure 入口網站或使用 PowerShell 還原 (就像任何其他 V
 
 由於Azure 中不存在 DSRM 模式，就會產生的挑戰。 因此若要還原這類的 VM，您無法使用 Azure 入口網站。 唯一受支援的還原機制是使用 PowerShell 進行以磁碟為基礎的還原。
 
->[AZURE.WARNING] 在多個 DC 的環境中的網域控制站 vm，並針對還原使用 Azure 入口網站! 僅支援以 PowerShell 為基礎的還原
+>[AZURE.WARNING] 在多個 DC 的環境中的網域控制站 vm，並針對還原使用 Azure 入口網站 ！ 僅支援以 PowerShell 為基礎的還原
 
 深入了解 [USN 復原問題](https://technet.microsoft.com/library/dd363553) 以及建議來修正此問題的策略。
 
@@ -139,4 +139,5 @@ PowerShell 能夠只從備份還原 VM 磁碟，而不建立虛擬機器。 在�
 ## 後續步驟
 - [錯誤疑難排解](backup-azure-vms-troubleshoot.md#restore)
 - [管理虛擬機器](backup-azure-manage-vms.md)
+
 

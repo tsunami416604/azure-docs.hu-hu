@@ -44,7 +44,7 @@ Azure AD B2C 預覽目前不支援下列類型的應用程式。 如需支援的
 
 ### 精靈 / 伺服器端應用程式
 
-如果應用程式含有長時執行的處理序或不需要使用者操作，也仍然需要方法來存取受保護的資源，例如 Web API。 這些應用程式可以驗證並取得使用應用程式的識別 (而非取用者的委派的識別) 使用的權杖 [OAuth 2.0 用戶端認證流程](active-directory-b2c-protocols.md#oauth2-client-credentials-grant-flow)。 Azure AD B2C 預覽中還未提供此流程 - 也就是說，只有在進行互動式取用者登入流程之後，應用程式才能取得權杖。
+如果應用程式含有長時執行的處理序或不需要使用者操作，也仍然需要方法來存取受保護的資源，例如 Web API。 這些應用程式可以驗證並取得使用應用程式的識別 （而非取用者的委派的識別） 使用的權杖 [OAuth 2.0 用戶端認證流程](active-directory-b2c-protocols.md#oauth2-client-credentials-grant-flow)。 Azure AD B2C 預覽中還未提供此流程 - 也就是說，只有在進行互動式取用者登入流程之後，應用程式才能取得權杖。
 
 ### 獨立的 Web API
 
@@ -74,7 +74,7 @@ Azure AD B2C 預覽支援 OpenID Connect 和 OAuth 2.0。 不過，並非每個�
 
 在 Azure Preview 入口網站上可存取 B2C 功能。 不過，您可以使用 Azure 入口網站來存取其他的租用戶功能，包括使用者管理。 目前有幾個已知問題的使用者管理 ( **使用者** ] 索引標籤) 上的 Azure 入口網站。
 
-- 本機帳戶使用者 (亦即，在取用者者註冊的電子郵件地址和密碼或使用者名稱與密碼) **使用者名稱** 欄位不會對應至登入用的識別項 (電子郵件地址或使用者名稱) 在註冊期間。 這是因為 Azure 入口網站上顯示的欄位，實際上是使用者主體名稱 (UPN)，而這在 B2C 案例中沒有用到。 若要檢視本機帳戶的登入識別碼，尋找中的使用者物件 [圖表總管](https://graphexplorer.cloudapp.net/)。 您將會遇到與社交帳戶使用者 (亦即，以 Facebook、Google+ 等註冊的取用者) 同樣的問題，但在此情況下，沒所謂的登入識別項。
+- 本機帳戶使用者 （亦即，在取用者者註冊的電子郵件地址和密碼或使用者名稱與密碼） **使用者名稱** 欄位不會對應至登入用的識別項 （電子郵件地址或使用者名稱） 在註冊期間。 這是因為 Azure 入口網站上顯示的欄位，實際上是使用者主體名稱 (UPN)，而這在 B2C 案例中沒有用到。 若要檢視本機帳戶的登入識別碼，尋找中的使用者物件 [圖表總管](https://graphexplorer.cloudapp.net/)。 您將會遇到與社交帳戶使用者 (亦即，以 Facebook、Google+ 等註冊的取用者) 同樣的問題，但在此情況下，沒所謂的登入識別項。
 
     ![本機帳戶 - UPN](./media/active-directory-b2c-limitations/limitations-user-mgmt.png)
 
@@ -82,9 +82,10 @@ Azure AD B2C 預覽支援 OpenID Connect 和 OAuth 2.0。 不過，並非每個�
 
 ## 在 Azure 入口網站上的系統管理員起始密碼重設問題
 
-如果您重設本機帳戶取用者，在 Azure 入口網站上的密碼 ( **重設密碼** 命令 **使用者** ] 索引標籤)，該取用者將無法變更在下次登入他們的密碼 (&) 會鎖定您的應用程式。 我們正在努力修正這個問題。 解決方法是，使用 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) 取用者的密碼重設。
+如果您重設本機帳戶取用者，在 Azure 入口網站上的密碼 ( **重設密碼** 命令 **使用者** ] 索引標籤)，該取用者將無法變更在下次登入他們的密碼 （&) 會鎖定您的應用程式。 我們正在努力修正這個問題。 解決方法是，使用 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) 取用者的密碼重設。
 
 ## 刪除 Azure AD B2C 目錄時的限制
 
 您無法在 Azure 入口網站中刪除 Azure AD B2C 租用戶。
+
 

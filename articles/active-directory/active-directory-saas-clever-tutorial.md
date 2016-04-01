@@ -21,7 +21,7 @@
 -   有效的 Azure 訂閱
 -   Clever 租用戶
 
-完成本教學課程之後, 您已指派給 Clever 的 Azure AD 使用者將能夠登入您聰明的公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Clever 的 Azure AD 使用者將能夠登入您聰明的公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -80,7 +80,7 @@
 
     ![設定單一登入](./media/active-directory-saas-clever-tutorial/IC798981.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式 URL** 頁面上，於 **聰明登入 URL** 文字方塊中，輸入您的使用者用於登入您聰明的應用程式使用的 URL (例如: *https://clever.com/in/azsandbox*)，然後按一下 [ **下一步**。
+3.  在 **設定應用程式 URL** 頁面上，於 **聰明登入 URL** 文字方塊中，輸入您的使用者用於登入您聰明的應用程式使用的 URL (例如 ︰ *https://clever.com/in/azsandbox*)，然後按一下 [ **下一步**。
 
     ![設定應用程式 URL](./media/active-directory-saas-clever-tutorial/IC798982.png "Configure App URL")
 
@@ -94,7 +94,7 @@
 
     ![立即登入](./media/active-directory-saas-clever-tutorial/IC798984.png "Instant Login")
 
-7.  在 **立即登入** 頁面上，執行下列步驟:
+7.  在 **立即登入** 頁面上，執行下列步驟 ︰
 
     ![立即登入](./media/active-directory-saas-clever-tutorial/IC798985.png "Instant Login")
 
@@ -118,9 +118,9 @@
 
     ![SAML Token 屬性](./media/active-directory-saas-clever-tutorial/IC795921.png "saml token attributes")
 
-    |屬性名稱|屬性值|
-    |---|---|
-    |clever.student.credentials.district\_username|User.userprincipalname|
+  	|屬性名稱|屬性值|
+  	|---|---|
+  	|clever.student.credentials.district\_username|User.userprincipalname|
 
     1.  每個資料列上表中，按一下 [ **新增使用者屬性**。
     2.  在 **屬性名稱** 文字方塊中，輸入該資料列所顯示的屬性名稱。
@@ -153,4 +153,5 @@ Clever 的佈建工作必須由 Clever 支援小組以手動方式執行。
     ![是](./media/active-directory-saas-clever-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

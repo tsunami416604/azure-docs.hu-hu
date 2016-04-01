@@ -56,8 +56,8 @@
 
 網域名稱系統 (DNS) 使用資料記錄，將網域名稱對應至 IP 位址。 有數種 DNS 記錄。 針對 web 應用程式，您要建立 *的* 記錄或 *CNAME* 記錄。
 
-- A **(位址)** 記錄會對應至 IP 位址的網域名稱。
-- A **CNAME (正式名稱)** 記錄會對應至另一個網域名稱的網域名稱。 DNS 會使用第二個名稱查詢位址。 使用者仍然可以在瀏覽器中看到第一個網域名稱。 例如，您可以將 contoso.com 對應至 *& lt; yourwebapp & gt;*。azurewebsites.net。
+- A **（位址）** 記錄會對應至 IP 位址的網域名稱。
+- A **CNAME （正式名稱）** 記錄會對應至另一個網域名稱的網域名稱。 DNS 會使用第二個名稱查詢位址。 使用者仍然可以在瀏覽器中看到第一個網域名稱。 例如，您可以將 contoso.com 對應至 *& lt; yourwebapp & gt;*。azurewebsites.net。
 
 若 IP 位址變更，CNAME 項目仍會有效，但 A 記錄就必須更新。 不過，有部分網域註冊機構不允許 CNAME 記錄使用根網域或萬用字元網域。 若有該情況，則必須使用 A 記錄。
 
@@ -119,8 +119,8 @@
 
 若您建立 A 記錄，Web 應用程式也會要求特定的 CNAME 記錄，用於確認您是否擁有嘗試使用的網域。 此 CNAME 記錄必須具有下列形式。
 
-- *如果 A 記錄對應根網域或萬用字元網域:* 建立 CNAME 記錄對應從 **awverify.lt; 您的網域 & gt;** 至 **awverify.lt; yourwebappname & gt;。azurewebsites.net**。  例如，如果 A 記錄屬於 **contoso.com**, ，建立 CNAME 記錄 **awverify.contoso.com**。
-- *如果 A 記錄對應特定子網域:* 建立 CNAME 記錄對應從 **awverify.lt; 子網域 & gt;** 至 **awverify.lt; yourwebappname & gt;。azurewebsites.net**。 例如，如果 A 記錄屬於 **blogs.contoso.com**, ，建立 CNAME 記錄 **awverify.blogs.contoso.com**。
+- *如果 A 記錄對應根網域或萬用字元網域 ︰* 建立 CNAME 記錄對應從 **awverify.lt; 您的網域 & gt;** 至 **awverify.lt; yourwebappname & gt;。azurewebsites.net**。  例如，如果 A 記錄屬於 **contoso.com**, ，建立 CNAME 記錄 **awverify.contoso.com**。
+- *如果 A 記錄對應特定子網域 ︰* 建立 CNAME 記錄對應從 **awverify.lt; 子網域 & gt;** 至 **awverify.lt; yourwebappname & gt;。azurewebsites.net**。 例如，如果 A 記錄屬於 **blogs.contoso.com**, ，建立 CNAME 記錄 **awverify.blogs.contoso.com**。
 
 您 Web 應用程式的訪客將不會看到 awverify 子網域；這只是供 Azure 用於驗證您的網域。
 
@@ -128,7 +128,7 @@
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 確認 DNS 傳播
 
@@ -136,14 +136,14 @@
 
 ![](./media/web-sites-custom-domain-name/1-digwebinterface.png)
 
-> [AZURE.NOTE] DNS 項目傳用的時間最多 48 小時 (有時再)。 如果您已正確設定所有項目，仍然需要等待傳播成功。
+> [AZURE.NOTE] DNS 項目傳用的時間最多 48 小時 （有時再）。 如果您已正確設定所有項目，仍然需要等待傳播成功。
 
 ## 後續步驟
 
-如需詳細資訊請參閱: [開始使用 Azure DNS](../dns/dns-getstarted-create-dnszone.md) 和 [網域委派給 Azure DNS](../dns/dns-domain-delegation.md)
+如需詳細資訊請參閱 ︰ [開始使用 Azure DNS](../dns/dns-getstarted-create-dnszone.md) 和 [網域委派給 Azure DNS](../dns/dns-domain-delegation.md)
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- Anchors. -->
 [Overview]: #overview
@@ -154,4 +154,5 @@
 
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
+
 

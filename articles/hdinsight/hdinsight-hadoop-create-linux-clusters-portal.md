@@ -66,13 +66,13 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 
     目前您可以選取 Azure 儲存體帳戶做為 HDInsight 叢集資料來源。 了解這些項目上使用下列 **資料來源** 刀鋒視窗。
 
-    - **選取方法**: 設為 **從所有的訂閱** 才能瀏覽儲存體帳戶從您的訂閱。 請設為 **便捷鍵** 如果您想要輸入 **儲存體名稱** 和 **便捷鍵** 現有的儲存體帳戶。
+    - **選取方法**︰ 設為 **從所有的訂閱** 才能瀏覽儲存體帳戶從您的訂閱。 請設為 **便捷鍵** 如果您想要輸入 **儲存體名稱** 和 **便捷鍵** 現有的儲存體帳戶。
 
-    - **選取儲存體帳戶建立新的 /**: 按一下 **選取儲存體帳戶** 瀏覽並選取您要與叢集相關聯的現有儲存體帳戶。 或者，按一下 [ **新建** 來建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
+    - **選取儲存體帳戶建立新的 /**︰ 按一下 **選取儲存體帳戶** 瀏覽並選取您要與叢集相關聯的現有儲存體帳戶。 或者，按一下 [ **新建** 來建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
 
-    - **選擇預設容器**: 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
+    - **選擇預設容器**︰ 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
 
-    - **位置**: 儲存體帳戶，或將中建立的地理區域。
+    - **位置**︰ 儲存體帳戶，或將中建立的地理區域。
 
         > [AZURE.IMPORTANT] 選取的預設資料來源的位置也會設定 HDInsight 叢集的位置。 叢集和預設資料來源必須位於相同區域中。
 
@@ -92,7 +92,7 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 
     * 按一下 [ **HDInsight 版本** 下拉式清單並選取您想要在叢集中使用的版本。 如需詳細資訊，請參閱 [HDInsight 叢集版本](hdinsight-component-versioning.md)。
 
-    * **虛擬網路**: 選取 Azure 虛擬網路和子網路，如果您想要放置到虛擬網路的叢集。  
+    * **虛擬網路**︰ 選取 Azure 虛擬網路和子網路，如果您想要放置到虛擬網路的叢集。  
 
         ![虛擬網路刀鋒視窗](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.6.png "Specify virtual network details")
 
@@ -120,9 +120,9 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 
 10. 在 **新的 HDInsight 叢集** 刀鋒視窗中，確定 **釘選到開始面板** 已選取，然後按一下 [ **建立**。 這將會建立叢集，並將該叢集磚加入到您 Azure 入口網站的「開始面板」。 該圖示可表示該叢集正在佈建，並將在佈建完成後變更為 HDInsight 圖示。
 
-    | 佈建期間 | 佈建完成 |
-    | ------------------ | --------------------- |
-    | ![「開始面板」上的佈建指示器](./media/hdinsight-hadoop-create-linux-cluster-portal/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-hadoop-create-linux-cluster-portal/provisioned.png) |
+  	| 佈建期間 | 佈建完成 |
+  	| ------------------ | --------------------- |
+  	| ![「開始面板」上的佈建指示器](./media/hdinsight-hadoop-create-linux-cluster-portal/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-hadoop-create-linux-cluster-portal/provisioned.png) |
 
     > [AZURE.NOTE] 需要花一些時間，叢集才會建立，通常約 15 分鐘的時間。 在開始面板中，使用 [] 磚或 **通知** 佈建程序檢查頁面左邊的項目。
 
@@ -130,15 +130,15 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 
     ![叢集刀鋒視窗](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.Cluster.Blade.png "Cluster properties")
 
-    使用下列命令以了解在此刀鋒視窗，並在最上方圖示 **Essentials** 區段:
+    使用下列命令以了解在此刀鋒視窗，並在最上方圖示 **Essentials** 區段 ︰
 
-    * **設定** 和 **所有設定**: 顯示 **設定** 叢集中，可讓您存取叢集的詳細的組態資訊的分頁。
+    * **設定** 和 **所有設定**︰ 顯示 **設定** 叢集中，可讓您存取叢集的詳細的組態資訊的分頁。
 
-    * **儀表板**, ，**叢集儀表板**, ，和 **URL**: 這些是所有的方式來存取叢集儀表板，這是入口網站，以在叢集上執行工作。
+    * **儀表板**, ，**叢集儀表板**, ，和 **URL**︰ 這些是所有的方式來存取叢集儀表板，這是入口網站，以在叢集上執行工作。
 
-    * **安全殼層**: 存取使用 SSH 的叢集所需的資訊。
+    * **安全殼層**︰ 存取使用 SSH 的叢集所需的資訊。
 
-    * **刪除**: 刪除 HDInsight 叢集。
+    * **刪除**︰ 刪除 HDInsight 叢集。
 
     * **快速入門** (![定域機組和雷電圖示 = 快速入門](./media/hdinsight-hadoop-create-linux-cluster-portal/quickstart.png)): 顯示資訊可協助您開始使用 HDInsight。
 
@@ -168,3 +168,4 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 * [在 HDInsight 上開發適用於 Storm 的 Java 拓撲](hdinsight-storm-develop-java-topology.md)
 * [在 HDInsight 上的 Storm 中使用 Python 元件](hdinsight-storm-develop-python.md)
 * [在 HDInsight 上使用 Storm 部署和監視拓撲](hdinsight-storm-deploy-monitor-topology-linux.md)
+

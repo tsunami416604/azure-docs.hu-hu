@@ -29,7 +29,7 @@
 
 分析組態可讓您檢視或變更開始週次的日期和天的保留時間。
  
-  !設定 [1][] 46
+  ![settings1][46]
  
 ## 專案
 
@@ -37,9 +37,9 @@
 
 您也可以搜尋專案及檢視您的應用程式所屬之任何專案的名稱、描述、擁有者及您的角色權限。
 
-如需詳細資訊，請參閱: [UI 文件 – 首頁] [連結 13]
+如需詳細資訊，請參閱 ︰ [UI 文件 – 首頁][Link 13]
  
-  ![] settings3[] 48
+  ![settings3][48]
 
 ## 原生推送
 
@@ -53,16 +53,16 @@
 
 若要讓原生推送使用 Apple Push Notification Service，您必須註冊您的憑證。 您將需要指定憑證類型為開發 (DEV) 或生產 (PROD)。 然後您需要上傳您的憑證與密碼。
 
-如需詳細資訊，請參閱: [SDK 文件-iOS-如何準備您的應用程式以使用 Apple 推送通知] [連結 5]
+如需詳細資訊，請參閱 ︰ [SDK 文件-iOS-如何準備您的應用程式以使用 Apple 推送通知][Link 5]
  
-![] settings4[] 49
+![settings4][49]
  
 ### Windows 推播通知服務 (WPNS)
 
 若要讓原生推送使用 Windows 推播通知，您必須提供應用程式的憑證。 
 您將需要您的封裝安全性識別碼 (SID) 與您的秘密金鑰。
  
-![] settings5[] 50
+![settings5][50]
  
 ### Google Cloud Messaging for Android (GCM)
 
@@ -71,40 +71,40 @@
 
 如需詳細資訊，請參閱： 
 
-- [SDK 文件 Android 如何整合 GCM][連結 5]
+- [SDK 文件 Android 如何整合 GCM][Link 5]
 - [Google 開發人員 GCM 指南](http://developer.android.com/guide/google/gcm/gs.html)
  
 ### Android 的 Amazon 裝置傳訊 (ADM)
 
-若要啟用原生推送使用 ADM，您必須提供 <OAuth credentials> 用戶端識別碼和用戶端密碼 (需要 Android v2.1.0 + 的 sdk 整合) 組成。
+若要啟用原生推送使用 ADM，您必須提供 <OAuth credentials> 用戶端識別碼和用戶端密碼 （需要 Android v2.1.0 + 的 sdk 整合） 組成。
 
 如需詳細資訊，請參閱： 
 
-- [SDK 文件 Android 如何整合 ADM][連結 5]
+- [SDK 文件 Android 如何整合 ADM][Link 5]
 - [Amazon 開發人員 ADM 文件](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
  
-![] settings6[] 51
+![settings6][51]
 
 ## 推送速度
 
 顯示您的應用程式目前的推送速度，而且可讓您定義應用程式的推送速度。
  
-  ![] settings7[] 52
+  ![settings7][52]
 
 ## 標記 (應用程式資訊)
 
-![] settings11[] 56
+![settings11][56]
   
 ## 商業壓力
 
 
-![] settings12[] 57
+![settings12][57]
 
 
 ## 另請參閱
 
-- [概念][連結 6]
-- [疑難排解節目表服務][連結 24]
+- [概念][Link 6]
+- [疑難排解指南服務][Link 24]
 
  
 
@@ -203,3 +203,4 @@
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
+

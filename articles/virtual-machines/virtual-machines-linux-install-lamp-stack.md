@@ -1,12 +1,12 @@
 <properties
-    pageTitle ="Linux 虛擬機器上安裝 LAMP 堆疊 |Microsoft Azure 「
-    描述 = 「 了解如何在 Azure 中安裝的 Linux 虛擬機器 (VM) 上的 LAMP 堆疊 」。
-    服務 = 「 虛擬機器 」
+    pageTitle="在 Linux 虛擬機器上安裝 LAMP 堆疊 | Microsoft Azure"
+    description="了解如何在 Azure 中的 Linux 虛擬機器 (VM) 上安裝 LAMP 堆疊。"
+    services="virtual-machines"
     documentationCenter=""
-    作者 ="szarkos"
-    管理員 ="timlt"
-    編輯器 =""
-    標記 ="azure 服務-管理 azure 資源管理員 」 / >
+    authors="szarkos"
+    manager="timlt"
+    editor=""
+    tags=“azure-service-management,azure-resource-manager"/>
 
 <tags
     ms.service="virtual-machines"
@@ -128,3 +128,4 @@ LAMP 堆疊由下列不同元素組成：
 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
  
+

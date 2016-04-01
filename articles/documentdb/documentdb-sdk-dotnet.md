@@ -30,7 +30,7 @@
 <tr><td>**下載**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
 <tr><td>**文件**</td><td>[.NET SDK Reference Documentation](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
 <tr><td>**範例**</td><td>[.NET Code Samples](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)</td></tr>
-<tr><td>**開始**</td><td>[Get started with the DocumentDB .NET SDK](documentdb-get-started.md)</td></tr>
+<tr><td>**開始使用**</td><td>[Get started with the DocumentDB .NET SDK](documentdb-get-started.md)</td></tr>
 <tr><td>**目前支援的架構**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
 </table></br>
 
@@ -76,7 +76,7 @@
   - 新增空間索引編製和查詢的支援
     - 新的 Microsoft.Azure.Documents.Spatial 命名空間，可序列化/還原序列化空間類型，例如 Point 和 Polygon
     - 新的 SpatialIndex 類別，可對儲存在 DocumentDB 中的 GeoJSON 資料編製索引
-  - **[固定]** : 從 linq 運算式所產生的 SQL 查詢不正確 [#38](https://github.com/Azure/azure-documentdb-net/issues/38)
+  - **[固定]** ︰ 從 linq 運算式所產生的 SQL 查詢不正確 [#38](https://github.com/Azure/azure-documentdb-net/issues/38)
 
 ### <a name="1.2.0"/>[1.2.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.2.0)
 - 對 Newtonsoft.Json v5.0.7 的相依性 
@@ -113,7 +113,7 @@ Microsoft 提供通知的最少 **12 個月** 之前淘汰 SDK 從容地轉換�
 使用已停用之 SDK 的任何 DocumentDB 要求都將被服務拒絕。
 
 > [AZURE.WARNING]
-所有之前的版本中，Azure DocumentDB SDK for.NET 版本 **1.0.0** 將淘汰上 **2016 年 2 月 29 日**。 
+所有版本的 Azure DocumentDB SDK for.NET 之前的版本 **1.0.0** 將淘汰上 **2016 年 2 月 29 日**。 
  
 <br/>
  
@@ -139,4 +139,5 @@ Microsoft 提供通知的最少 **12 個月** 之前淘汰 SDK 從容地轉換�
 ## 另請參閱
 
 若要深入了解 DocumentDB，請參閱 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服務頁面。 
+
 

@@ -20,7 +20,7 @@
 
 # 如何在 VM 上從 Github 更新至最新版的 Azure Linux 代理程式
 
-若要更新您 [Azure Linux 代理程式](https://github.com/Azure/WALinuxAgent) 在 Azure 中的 Linux VM，您必須準備好:
+若要更新您 [Azure Linux 代理程式](https://github.com/Azure/WALinuxAgent) 在 Azure 中的 Linux VM，您必須準備好 ︰
 
 1. 在 Azure 中執行的 Linux VM
 2. 您已使用 SSH 連線到 Linux VM
@@ -129,4 +129,5 @@
 您會看到 Linux 代理程式版本已更新為新的版本。
 
 如需有關 Azure Linux 代理程式的詳細資訊，請參閱 [Azure Linux 代理程式讀我檔案](https://github.com/Azure/WALinuxAgent)。
+
 

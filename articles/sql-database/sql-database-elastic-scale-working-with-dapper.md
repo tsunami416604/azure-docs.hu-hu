@@ -38,7 +38,7 @@ Dapper 以及 DapperExtensions 的另一個好處就是應用程式可控制資�
 
 彈性資料庫用戶端程式庫，您定義呼叫的應用程式資料的資料分割 *shardlet* , 、 將它們對應到資料庫，以及利用加以識別 *分區化索引鍵*。 您可以擁有所需數量的資料庫，並將 Shardlet 分散於這些資料庫。 分區化索引鍵值到資料庫的對應，由程式庫的 API 所提供的分區對應來儲存。 這項功能稱為 **分區對應管理**。 對於攜帶分區化索引鍵的要求，分區對應也充當資料庫連接的代理人。 這項功能稱為 **資料相依路由**。
 
-![分區對應和資料相依路由][] 1
+![分區對應和資料相依路由][1]
 
 分區對應管理員可防止使用者檢視 Shardlet 資料時出現不一致，這種情況發生於資料庫正在進行並行 Shardlet 管理作業時。 在作法上，分區對應會代理以程式庫建置的應用程式的資料庫連接。 當分區管理作業可能影響 Shardlet 時，即可允許分區對應功能自動終止資料庫連線。 
 
@@ -48,11 +48,11 @@ Dapper 以及 DapperExtensions 的另一個好處就是應用程式可控制資�
 
 當使用彈性資料庫用戶端程式庫和 Dapper API 時，我們希望保留下列屬性：
 
-* **向外延展**: 我們想要新增或移除資料庫與資料層應用程式的分區化的容量需求，視應用程式。 
+* **向外延展**︰ 我們想要新增或移除資料庫與資料層應用程式的分區化的容量需求，視應用程式。 
 
--    **一致性**: 由於我們的應用程式使用向外擴充分區化，所以我們必須執行資料相依路由。 我們想使用程式庫的資料相依路由功能來執行此作業。 尤其是，我們想要保留透過分區對應管理員代理的連接所提供的驗證和一致性保證，以避免查詢結果損毀或錯誤。 這可確保如果 (例如) Shardlet 目前已使用分割/合併 API 移至不同的分區，則會拒絕或停止對特定 Shardlet 的連線。
+-    **一致性**︰ 由於我們的應用程式使用向外擴充分區化，所以我們必須執行資料相依路由。 我們想使用程式庫的資料相依路由功能來執行此作業。 尤其是，我們想要保留透過分區對應管理員代理的連接所提供的驗證和一致性保證，以避免查詢結果損毀或錯誤。 這可確保如果 (例如) Shardlet 目前已使用分割/合併 API 移至不同的分區，則會拒絕或停止對特定 Shardlet 的連線。
 
--    **物件的對應**: 我們想要保留 Dapper 以轉換應用程式中的類別和基礎資料庫結構所提供的對應便利性。 
+-    **物件的對應**︰ 我們想要保留 Dapper 以轉換應用程式中的類別和基礎資料庫結構所提供的對應便利性。 
 
 下節提供這些需求為基礎的應用程式的指導 **Dapper** 和 **DapperExtensions**。
 
@@ -78,7 +78,7 @@ Dapper 以及 DapperExtensions 的另一個好處就是應用程式可控制資�
                         );
     }
 
-若要呼叫 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) API 會取代預設的建立和開啟 SQL 用戶端連接。  [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 呼叫採用所需的資料相依路由的引數: 
+若要呼叫 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) API 會取代預設的建立和開啟 SQL 用戶端連接。  [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 呼叫採用所需的資料相依路由的引數 ︰ 
 
 -    用來存取資料相依路由介面的分區對應
 -    用來識別 Shardlet 的分區化索引鍵
@@ -86,7 +86,7 @@ Dapper 以及 DapperExtensions 的另一個好處就是應用程式可控制資�
 
 分區對應物件會建立分區的連線，而此分區保留給定分區化索引鍵的 Shardlet。 彈性資料庫用戶端 API 也會標記此連接以履行其一致性保證。 從呼叫 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 傳回標準 SQL 用戶端連線物件，後續呼叫 **Execute** 從 Dapper 延伸方法遵循標準 Dapper 作法。
 
-查詢的運作方式幾乎完全相同: 第一次開啟連接使用 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 從用戶端 API。 然後使用標準 Dapper 延伸方法，將 SQL 查詢的結果對應至 .NET 物件：
+查詢的運作方式幾乎完全相同 ︰ 第一次開啟連接使用 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 從用戶端 API。 然後使用標準 Dapper 延伸方法，將 SQL 查詢的結果對應至 .NET 物件：
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1, 
@@ -141,7 +141,7 @@ Dapper 隨附其他延伸模組的生態系統，可在開發資料庫應用程�
 
 ### 處理暫時性錯誤
 
-Microsoft 典範與實例小組發佈 [暫時性錯誤處理應用程式區塊](http://msdn.microsoft.com/library/hh680934.aspx) 協助應用程式開發人員緩和在雲端中執行時所遇到的常見暫時性錯誤狀況。 如需詳細資訊，請參閱 [堅持，是所有秘方密碼: 使用暫時性錯誤處理應用程式區塊](http://msdn.microsoft.com/library/dn440719.aspx)。
+Microsoft 典範與實例小組發佈 [暫時性錯誤處理應用程式區塊](http://msdn.microsoft.com/library/hh680934.aspx) 協助應用程式開發人員緩和在雲端中執行時所遇到的常見暫時性錯誤狀況。 如需詳細資訊，請參閱 [堅持，是所有秘方密碼 ︰ 使用暫時性錯誤處理應用程式區塊](http://msdn.microsoft.com/library/dn440719.aspx)。
 
 此程式碼範例依賴暫時性錯誤程式庫來防止暫時性錯誤。 
 
@@ -173,3 +173,4 @@ Microsoft 典範與實例小組發佈 [暫時性錯誤處理應用程式區塊](
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-working-with-dapper/dapperimage1.png
  
+

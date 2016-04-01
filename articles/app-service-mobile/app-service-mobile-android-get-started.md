@@ -34,7 +34,7 @@
 
 * [Android 開發人員工具](https://developer.android.com/sdk/index.html), ，其中包括 Android Studio 整合式開發環境，以及最新版 Android 平台。
 * Azure Mobile Android SDK 會自動參考您下載的快速入門專案之 ss 部分。
-* [Visual Studio Community 2013] 的 PC 或更新版本 (& s) 出來; 不需要 Node.js 後端。
+* 裝有 [Visual Studio Community 2013] 或更新版本 （& s) 出來; 不需要 Node.js 後端。
 *  [有效的 Azure 帳戶](http://azure.microsoft.com/pricing/free-trial/)。
 
 ## 建立新的 Azure 行動應用程式後端
@@ -55,4 +55,5 @@
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+
 

@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure 傳統入口網站](virtual-networks-configure-vnet-to-vnet-connection.md)
-- [PowerShell-Azure 資源管理員](vpn-gateway-vnet-vnet-rm-ps.md)
+- [PowerShell - Azure Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
 
 本文將引導您使用資源管理員部署模型的步驟。 如果您要尋找此設定的其他部署模型，請使用上方索引標籤來選取您想要的文章。 
 
@@ -84,7 +84,7 @@
 
 開始之前，請確認您具備下列條件：
 
-- Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用您 [MSDN 訂閱者權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或申請 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
+- Azure 訂閱。 如果您還沒有 Azure 訂用帳戶，則可以啟用您 [MSDN 訂閱者權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或申請 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
 
 ## 安裝 PowerShell 模組
 
@@ -264,5 +264,6 @@ VNet2 的值：
 ## 後續步驟
 
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 請參閱 [建立虛擬機器](../virtual-machines/virtual-machines-windows-tutorial.md) 的步驟。
+
 
 

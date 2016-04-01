@@ -37,5 +37,6 @@
 在完成佈建並設定之後，這些虛擬機器就已經準備好用來做為 IPython Notebook 伺服器，以用於進行資料探索和處理，以及其他需要與 Azure Machine Learning 和 Cortana 分析程序 (CAP) 一起使用的工作。 資料科學程序的下一個步驟中的對應 [CAP 學習途徑](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) ，而且可能包括移到 SQL Server 或 HDInsight，資料處理和取樣，並在與 Azure Machine Learning 從資料學習的準備步驟。
 
 
-> [AZURE.NOTE] Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您不會被計費不使用虛擬機器時，它必須為 **已停止 (取消配置)** 狀態從 [Azure 傳統入口網站](http://manage.windowsazure.com/)。 如需逐步指示或如何取消配置虛擬機器，請參閱  [關閉和解除配置非使用中的虛擬機器](machine-learning-data-science-setup-virtual-machine.md#shutdown)
+> [AZURE.NOTE] Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您不會被計費不使用虛擬機器時，它必須為 **已停止 （取消配置）** 狀態從 [Azure 傳統入口網站](http://manage.windowsazure.com/)。 如需逐步指示或如何取消配置虛擬機器，請參閱  [關閉和解除配置非使用中的虛擬機器](machine-learning-data-science-setup-virtual-machine.md#shutdown)
  
+

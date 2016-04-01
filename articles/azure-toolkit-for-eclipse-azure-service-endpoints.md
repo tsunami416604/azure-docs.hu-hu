@@ -28,14 +28,14 @@ Azure 服務端點會判斷您的應用程式是否已部署至全域 Azure 平�
 
 ## 設定服務端點 ##
 
-在 **服務端點** 對話方塊中，執行下列動作之一:
+在 **服務端點** 對話方塊中，執行下列動作之一 ︰
 
 * 如果想要使用全域 Azure 平台，從 **作用中設定** 下拉式清單中，選取 **windowsazure.com** 按一下 **確定**。
-* 如果您想要使用 Azure 由 21vianet 在中國，提供從 **作用中設定** 下拉式清單中，選取 **windowsazure.cn (中國)** 按一下 **確定**。
+* 如果您想要使用 Azure 由 21vianet 在中國，提供從 **作用中設定** 下拉式清單中，選取 **windowsazure.cn （中國）** 按一下 **確定**。
 * 如果想使用私人 Azure 平台：
     1. 按一下 [ **編輯**。
     2. 會開啟一個對話方塊，通知您， **服務端點** 會關閉對話方塊，並將開啟喜好設定設定檔。 按一下 [ **確定**。
-    3. 在 preferencesets.xml 檔案中，建立新的 `preferenceset` 元素。 針對此新元素，建立 `name`、`blob`、`management`、`portalURL` 和 `publishsettings` 屬性，再為其新增對應至私人 Azure 平台的值。 您可使用為現有 `preferenceset` 元素所提供的值作為範本。 **請注意**: 所使用的值 `blob` 屬性必須包含在 URL 中的"blob"的文字。
+    3. 在 preferencesets.xml 檔案中，建立新的 `preferenceset` 元素。 針對此新元素，建立 `name`、`blob`、`management`、`portalURL` 和 `publishsettings` 屬性，再為其新增對應至私人 Azure 平台的值。 您可使用為現有 `preferenceset` 元素所提供的值作為範本。 **請注意**︰ 所使用的值 `blob` 屬性必須包含在 URL 中的"blob"的文字。
     4. 儲存並關閉 preferencesets.xml。
     5. 重新開啟 **服務端點** ] 對話方塊。
     6. 從 **作用中設定** 下拉式清單中，選取使用中設定您建立，並按一下 [ **確定**。
@@ -61,4 +61,5 @@ Azure 服務端點會判斷您的應用程式是否已部署至全域 Azure 平�
 <!-- IMG List -->
 
 [ic719493]: ./media/azure-toolkit-for-eclipse-azure-service-endpoints/ic719493.png
+
 

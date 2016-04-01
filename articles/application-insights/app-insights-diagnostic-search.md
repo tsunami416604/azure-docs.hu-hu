@@ -63,8 +63,8 @@
 * **追蹤** -診斷記錄包括 TrackTrace、 log4Net、 NLog 和 System.Diagnostic.Trace 呼叫。
 * **要求** -伺服器應用程式，包括頁面、 指令碼、 影像、 樣式檔案和資料所接收到的 HTTP 要求。 這些事件是用來建立要求和回應概觀圖表。
 * **頁面檢視** -遙測是由 web 用戶端，用來建立頁面檢視報告傳送。 
-* **自訂事件** -如果您插入呼叫到 trackevent () 以 [監視使用量][track], ，您可以在這裡搜尋它們。
-* **例外狀況** -未捕捉到的伺服器，以及您記錄的使用 trackexception () 中的例外狀況。
+* **自訂事件** -如果您插入呼叫到 trackevent （） 以 [監視使用量][track], ，您可以在這裡搜尋它們。
+* **例外狀況** -未捕捉到的伺服器，以及您記錄的使用 trackexception （） 中的例外狀況。
 
 ## 依據屬性值篩選
 
@@ -131,8 +131,8 @@
 
 詞彙|是 *不* 所比對|但這些符合
 ---|---|---
-HomeController.About|關於<br/>首頁|h\ * 有關<br/>首頁 *
-IsLocal|本機<br/>is<br/>\*local|isl\ *<br/>islocal<br/>i\<2\ * l\ *
+HomeController.About|about<br/>首頁|h\ * 有關<br/>首頁 *
+IsLocal|local<br/>is<br/>\*local|isl\ *<br/>islocal<br/>i\<2\ * l\ *
 New Delay|w d|新<br/>delay<br/>{1>n<1} * AND {1>d<1} *
 
 
@@ -174,7 +174,7 @@ app* AND banana -(grape pear)|邏輯運算子和括號。
 [了解如何傳送記錄檔和自訂的遙測到 Application Insights][trace]。
 
 
-## <a name="questions"></a>問答集
+## <a name="questions"></a>問與答
 
 ### <a name="limits"></a>保留多少資料？
 
@@ -184,7 +184,7 @@ app* AND banana -(grape pear)|邏輯運算子和括號。
 
 我們不會自動記錄 POST 資料，但您可以使用 [TrackTrace 或記錄呼叫][trace]。 將 POST 資料放在訊息參數中。 您無法以對屬性的相同方式來篩選訊息，但大小限制較長。
 
-## <a name="add"></a>後續步驟
+## <a name="add"></a>接續步驟
 
 * [傳送記錄和自訂的遙測到 Application Insights][trace]
 * [設定可用性和回應性測試][availability]
@@ -203,3 +203,4 @@ app* AND banana -(grape pear)|邏輯運算子和括號。
 [track]: app-insights-spi-custom-events-metrics.md
 
  
+

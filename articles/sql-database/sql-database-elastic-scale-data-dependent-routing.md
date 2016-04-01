@@ -40,7 +40,7 @@
 
 ## 叫用資料相依路由 
 
-此方法 **ShardMap.OpenConnectionForKey (key，connectionString，connectionOptions)** 傳回的 ADO.Net 連接至適當的值為基礎的資料庫發出命令準備 **金鑰** 參數。 分區資訊快取的應用程式中 **ShardMapManager**, ，因此這些要求通常不需要對資料庫尋查 **全域分區對應** 資料庫。 
+此方法 **ShardMap.OpenConnectionForKey （key，connectionString，connectionOptions）** 傳回的 ADO.Net 連接至適當的值為基礎的資料庫發出命令準備 **金鑰** 參數。 分區資訊快取的應用程式中 **ShardMapManager**, ，因此這些要求通常不需要對資料庫尋查 **全域分區對應** 資料庫。 
 
 *  **金鑰** 參數用做為查閱索引鍵為分區對應來決定要求的適當資料庫。 
 
@@ -50,7 +50,7 @@
 
 如果本機分區對應驗證失敗 (表示快取不正確)，分區對應管理員會查詢全域分區對應來取得查閱的新正確值、更新快取，然後取得並傳回適當的資料庫連接。 
 
-唯有 **ConnectionOptions.None** (不驗證) 是可接受應用程式在線上時，不預期分區對應變更時發生。 在此情況下，快取的值可假定為永遠正確，可放心地略過對於目標資料庫的額外往返驗證呼叫。 這樣可減少交易延遲和資料庫流量。  **ConnectionOptions** 可能也可透過設定值，指出是否預期有分區化變更組態檔中或不是在一段時間。  
+唯有 **ConnectionOptions.None** （不驗證） 是可接受應用程式在線上時，不預期分區對應變更時發生。 在此情況下，快取的值可假定為永遠正確，可放心地略過對於目標資料庫的額外往返驗證呼叫。 這樣可減少交易延遲和資料庫流量。  **ConnectionOptions** 可能也可透過設定值，指出是否預期有分區化變更組態檔中或不是在一段時間。  
 
 這是使用分區對應管理員來執行資料相依路由的整數索引鍵的值為基礎的程式碼範例 **CustomerID**, ，並使用 **ShardMap** 物件名為 **customerShardMap**。  
 
@@ -74,7 +74,7 @@
         cmd.ExecuteNonQuery(); 
     }  
 
-請注意，而不是使用建構函式 **SqlConnection**, ，後面接著 **open ()** 連接物件，呼叫 **OpenConnectionForKey** 使用方法，並將新的已開啟連接傳遞至正確的資料庫。 以這種方式使用連接仍可充分利用 ADO.Net 連接共用。 只要一次一個分區就可滿足交易和要求，則已經使用 ADO.Net 的應用程式中只需要如此修改。 
+請注意，而不是使用建構函式 **SqlConnection**, ，後面接著 **open （)** 連接物件，呼叫 **OpenConnectionForKey** 使用方法，並將新的已開啟連接傳遞至正確的資料庫。 以這種方式使用連接仍可充分利用 ADO.Net 連接共用。 只要一次一個分區就可滿足交易和要求，則已經使用 ADO.Net 的應用程式中只需要如此修改。 
 
 此方法 **OpenConnectionForKeyAsync** 也會提供，如果您的應用程式使用非同步程式設計與 ADO.Net。  其行為相當於資料相依路由的 ADO。Net 的 **Connection.OpenAsync** 方法。
 
@@ -120,3 +120,4 @@ int newPersonId = 4321;
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
+

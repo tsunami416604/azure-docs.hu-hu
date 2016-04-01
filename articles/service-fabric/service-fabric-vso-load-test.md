@@ -24,7 +24,7 @@
 
 ![][0]
 
-## 先決條件
+## 必要條件
 開始之前，您需要執行下列動作。
 
 - 取得 Visual Studio Team Services (VSTS) 帳戶。 您可以取得一個免費在 [Visual Studio Team Services](https://www.visualstudio.com)。
@@ -139,4 +139,5 @@ Visual Studio Team Services 負載測試提供的 API 可讓您管理負載測�
 [7]: ./media/service-fabric-vso-load-test/RunTest.png
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
+
 

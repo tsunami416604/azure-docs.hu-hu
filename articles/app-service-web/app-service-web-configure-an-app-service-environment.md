@@ -33,7 +33,7 @@ App Service 環境是由數個主要元件所組成：
 - 傳統 "v1" 虛擬網路具有至少一個子網路
 - 在其中執行 Azure App 環境託管服務的子網路
 
-計算資源會用於您的 4 個資源集區。  每個 App Service 環境都有一組前端和 3 個背景工作集區。  您不需要 3 個背景工作集區都使用，如果您想要，可以只使用其中一個。  前端是您放置在 ASE 中的應用程式的 HTTP 端點。  背景工作是您的應用程式實際執行之處。  何時需要新增更多前端或更多背景工作，牽涉到您放在 ASE 中的應用程式以何種方式執行。  例如，假設您在 ASE 上只有一個應用程式，而且是會有大量要求的 hello world 應用程式。  在此情況下，您將需要相應增加前端來處理 HTTP 負載，但相對地並不需要相應增加背景工作。  以手動方式處理這一切是相當令人怯步的，特別是在考量到每個 ASE 很可能有效能準則互異的不同應用程式執行於其中時。  幸而，我們已在 App Service 環境中新增了自動調整功能，這會讓我們的工作輕鬆許多。  如需調整和自動調整 App Service 環境的詳細資訊的連結這裡 [如何在 App Service 環境中設定自動調整] [ASEAutoscale]
+計算資源會用於您的 4 個資源集區。  每個 App Service 環境都有一組前端和 3 個背景工作集區。  您不需要 3 個背景工作集區都使用，如果您想要，可以只使用其中一個。  前端是您放置在 ASE 中的應用程式的 HTTP 端點。  背景工作是您的應用程式實際執行之處。  何時需要新增更多前端或更多背景工作，牽涉到您放在 ASE 中的應用程式以何種方式執行。  例如，假設您在 ASE 上只有一個應用程式，而且是會有大量要求的 hello world 應用程式。  在此情況下，您將需要相應增加前端來處理 HTTP 負載，但相對地並不需要相應增加背景工作。  以手動方式處理這一切是相當令人怯步的，特別是在考量到每個 ASE 很可能有效能準則互異的不同應用程式執行於其中時。  幸而，我們已在 App Service 環境中新增了自動調整功能，這會讓我們的工作輕鬆許多。  如需調整和自動調整 App Service 環境的詳細資訊，請依照下列的連結 [如何在 App Service 環境中設定自動調整][ASEAutoscale]
 
 每個 ASE 各設有 500 GB 的儲存體。  此空間會用於 ASE 中的所有應用程式。  此儲存空間屬於 ASE 的一部分，且目前無法切換為使用客戶的儲存空間。
 
@@ -62,7 +62,7 @@ App Service 環境是由數個主要元件所組成：
 剛剛所討論的計量是 App Service 環境計量。  另外也有可在 App Service 方案層級上使用的計量。  在其中監視 CPU 和記憶體是很合理的作法。  在 ASE 中，所有的 ASP 都是專用 ASP。  這表示，會在配置給該 ASP 的主機上執行的應用程式，僅限於該 ASP 中的應用程式。  
 若要檢視 ASP 的詳細資料，請直接從 ASE UI 中的任何清單顯示您的 ASP，或藉由瀏覽 App Service 方案全部加以列出。   
 
-您可能已熟悉 ASE 以外可在 ASP 中使用的自動調整功能，及其如何運用可用於資源的計量。  此外您也熟悉 App Service 環境的自動調整。  您不僅仍可根據 ASE 中的計量自動調整 ASP，也可以設定 ASE 本身的自動調整規則。  如需詳細資訊設定自動調整是這裡詳細的指南: [App Service 環境中的自動調整] [ASEAutoscale]  
+您可能已熟悉 ASE 以外可在 ASP 中使用的自動調整功能，及其如何運用可用於資源的計量。  此外您也熟悉 App Service 環境的自動調整。  您不僅仍可根據 ASE 中的計量自動調整 ASP，也可以設定 ASE 本身的自動調整規則。  如需詳細資訊設定自動調整是這裡詳細的指南 ︰ [App Service 環境中的自動調整][ASEAutoscale]  
 
 
 ## 屬性 ##
@@ -73,9 +73,9 @@ App Service 環境是由數個主要元件所組成：
 
 ## IP 位址 ##
 
-您可以在此處將更多 IP 位址新增至 ASE，供您的應用程式使用。  如果您在 ASE 中建立想要以 IP SSL 設定的應用程式，您需要保留一個 IP 位址僅供該應用程式使用。  若要那麼做，您的 ASE 必須有一些本身擁有而可配置的 IP 位址。  ASE 建立時，會有 1 個位址用於此目的。  如果您需要更多，請在這裡新增。  在您拉到最大配額之前，請注意如果您需要更多，額外的 IP 位址將有其費用。  以下頁面上追蹤多個多少定價的詳細資料: [應用程式服務定價] [AppServicePricing] 正向下捲動到在 SSL 連線上的區段。  額外的價格是 IP SSL 價格。
+您可以在此處將更多 IP 位址新增至 ASE，供您的應用程式使用。  如果您在 ASE 中建立想要以 IP SSL 設定的應用程式，您需要保留一個 IP 位址僅供該應用程式使用。  若要那麼做，您的 ASE 必須有一些本身擁有而可配置的 IP 位址。  ASE 建立時，會有 1 個位址用於此目的。  如果您需要更多，請在這裡新增。  在您拉到最大配額之前，請注意如果您需要更多，額外的 IP 位址將有其費用。  這裡上追蹤多個多少定價的詳細資料頁面上 ︰ [App Service 定價][AppServicePricing]  正向下捲動到在 SSL 連線上的區段。  額外的價格是 IP SSL 價格。
 
-**注意:** 如果您需要新增多個 IP 位址然後請注意，這是調整規模作業。  一次只能進行一個調整作業。  共有三種級別作業：
+**注意 ︰** 如果您需要新增多個 IP 位址然後請注意，這是調整規模作業。  一次只能進行一個調整作業。  共有三種級別作業：
 
 - 變更 ASE 中可供 IP SSL 使用的 IP 位址數目
 - 變更用於資源集區中的計算資源大小
@@ -91,7 +91,7 @@ App Service 環境是由數個主要元件所組成：
 
 ### 計算資源數量級別 ###
 
-若要提供更好的觀點來看，在沒有的 ASE 中調整應用程式的指南: [調整 App Service 環境中的應用程式](app-service-web-scale-a-web-app-in-an-app-service-environment.md)。  如果您想要深入了解如何設定自動調整規模 ASE 資源集區，然後從這裡開始上: [App Service 環境中的自動調整] [ASEAutoscale]。  其中詳細說明資源集區的手動調整作業。
+若要提供更好的觀點來看，在沒有的 ASE 中調整應用程式的指南 ︰ [調整 App Service 環境中的應用程式](app-service-web-scale-a-web-app-in-an-app-service-environment.md)。  如果您想要深入了解如何設定自動調整規模 ASE 資源集區，然後從這裡開始上 ︰ [App Service 環境中的自動調整][ASEAutoscale]。  其中詳細說明資源集區的手動調整作業。
 
 租用戶無法直接存取資源集區、前端和背景工作。  也就是說，您無法為他們 RDP、變更其佈建，或作為其系統管理員。  他們會由 Azure 進行操作與維護。  因此，計算資源的數量和大小是由使用者來決定。  
 
@@ -151,7 +151,7 @@ App Service 環境可設定為最多總計使用 55 個計算資源。  在這 5
 
 ## 虛擬網路 ##
 
-裝載服務不同，其中包含 ASE，[虛擬網路] [virtualnetwork] 和子網路全都在使用者控制之下。  App Service 環境的確有一些網路需求，但其餘部分是由使用者控制。  這些 ASE 需求包括：
+不同於裝載服務，其中包含 ASE [虛擬網路][virtualnetwork] 和子網路全都在使用者控制之下。  App Service 環境的確有一些網路需求，但其餘部分是由使用者控制。  這些 ASE 需求包括：
 
 - 傳統 "v1" VNET 
 - 至少有 8 個位址的子網路 
@@ -161,7 +161,7 @@ App Service 環境可設定為最多總計使用 55 個計算資源。  在這 5
 
 因為這項功能會將 Azure App Service 放入 VNET，這表示裝載於 ASE 的應用程式現在可以存取直接透過 ExpressRoute 或站台對站台 VPN 提供的資源。  您的 APP Service 環境中的應用程式不需要額外的網路功能，即可存取裝載 App Service 環境的 VNET 可用的資源。 這表示您不需要使用 VNET 整合或混合式連線，即可將資源移入或連接到您的 VNET。  但您仍然可以使用這兩個功能，存取網路中未連接到 VNET 的資源。  比方說，您可以使用 VNET 整合，與您的訂用帳戶中未連接到您的 ASE 所在之 VNET 的 VNET 相整合。  您仍可使用混合式連線來存取其他網路中的資源，一如既往。  
 
-如果您的 VNET 設定了 ExpressRoute VPN，則應留意 ASE 的某些路由需求。  某些使用者定義的路由 (UDR) 組態與 ASE 不相容。  如需詳細資訊與 ExpressRoute VNET 中執行 ASE，請參閱以下文件: [使用 ExpressRoute 的 VNET 中執行 App Service 環境] [ExpressRoute]
+如果您的 VNET 設定了 ExpressRoute VPN，則應留意 ASE 的某些路由需求。  某些使用者定義的路由 (UDR) 組態與 ASE 不相容。  如需詳細資訊與 ExpressRoute VNET 中執行 ASE，請參閱以下文件 ︰ [與 ExpressRoute VNET 中執行 App Service 環境][ExpressRoute]
 
 您現在也可以使用網路安全性群組來控制應用程式的存取。  這項功能可讓您鎖住您的 App Service 環境，只您想要限制它的 IP 位址。  如需詳細資訊請請參閱以下文件 [如何在 App Service 環境中控制輸入流量](app-service-app-service-environment-control-inbound-traffic.md)。
 
@@ -203,4 +203,5 @@ App Service 環境可設定為最多總計使用 55 個計算資源。  在這 5
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
+
 

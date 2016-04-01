@@ -44,7 +44,7 @@ Azure BizTalk 服務進入節流狀態時會發生下列情況：
 
 - 依每一角色執行個體來節流。 例如：<br/>
 RoleInstanceA 節流。 RoleInstanceB 未節流。 在此情況下，RoleInstanceB 中的訊息如預期般地處理。 RoleInstanceA 中的訊息會捨棄且失敗，並傳回下列錯誤：<br/><br/>
-**伺服器忙碌中。請再試一次。**<br/><br/>
+**伺服器忙碌中。 請再試一次。**<br/><br/>
 - 所有提取來源不會輪詢或下載訊息。 例如：<br/>
 管線從外部 FTP 來源提取訊息。 進行提取的角色執行個體會進入節流狀態。 在此情況下，在角色執行個體停止節流之前，管線會停止下載其他訊息。
 - 回應會傳送給用戶端，讓用戶端可以重新提交訊息。
@@ -59,16 +59,17 @@ RoleInstanceA 節流。 RoleInstanceB 未節流。 在此情況下，RoleInstanc
 ## 其他 Azure BizTalk 服務主題
 
 -  [安裝 Azure BizTalk 服務 SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
--  [教學課程: Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+-  [教學課程 ︰ Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
 -  [如何開始使用 Azure BizTalk 服務 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 -  [Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## 另請參閱
-- [BizTalk 服務: 開發人員、 基本、 標準和高級版本圖表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk 服務: 佈建使用 Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk 服務: 佈建狀態圖](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-- [BizTalk 服務: 儀表板、 監視和調整索引標籤](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-- [BizTalk 服務: 備份與還原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-- [BizTalk 服務: 簽發者名稱和簽發者金鑰](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+- [BizTalk 服務：開發人員、基本、標準和高級版本圖表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+- [BizTalk 服務：使用 Azure 傳統入口網站進行佈建](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk 服務：佈建狀態圖](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [BizTalk 服務：儀表板、監視和調整索引標籤](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+- [BizTalk 服務：備份與還原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+- [BizTalk 服務：簽發者名稱和簽發者金鑰](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
  
+
 

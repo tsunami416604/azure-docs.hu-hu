@@ -26,7 +26,7 @@
 
 
 SQL Database V12 是最新的版本，因此建議升級至 SQL Database V12。
-SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) 包括:
+SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) 包括 ︰
 
 - 提升與 SQL Server 的相容性。
 - 提供改進的高階效能和新的效能等級。
@@ -36,7 +36,7 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 
 在升級至 V12 的過程中，您將會把所有 Web 和商務資料庫都升級至新的服務層級，因此本文也包含了升級 Web 和商務資料庫的說明。 
 
-此外，移轉至 [彈性資料庫集區](sql-database-elastic-pool.md) 更符合成本效益比單一資料庫的升級 (定價層) 的個別效能層級。 集區也可以簡化資料庫管理，因為您只需要管理集區的效能設定，而不需分開管理個別資料庫的效能等級。 如果您的資料庫位於多部伺服器上，請考慮將它們移到相同的伺服器，並利用將它們放入集區所帶來的優點。 您可以輕鬆地 [自動移轉資料庫從 V11 伺服器直接將彈性資料庫集區使用 PowerShell](sql-database-upgrade-server.md)。 您也可以使用入口網站將 V11 資料庫移轉至集區，但在入口網站中，您必須已經備妥 V12 伺服器來建立集區。 稍後建立集區伺服器升級之後，如果您有這篇文章會提供指示 [受益於集區的資料庫](sql-database-elastic-pool-guidance.md)。
+此外，移轉至 [彈性資料庫集區](sql-database-elastic-pool.md) 更符合成本效益比單一資料庫的升級 （定價層） 的個別效能層級。 集區也可以簡化資料庫管理，因為您只需要管理集區的效能設定，而不需分開管理個別資料庫的效能等級。 如果您的資料庫位於多部伺服器上，請考慮將它們移到相同的伺服器，並利用將它們放入集區所帶來的優點。 您可以輕鬆地 [自動移轉資料庫從 V11 伺服器直接將彈性資料庫集區使用 PowerShell](sql-database-upgrade-server.md)。 您也可以使用入口網站將 V11 資料庫移轉至集區，但在入口網站中，您必須已經備妥 V12 伺服器來建立集區。 稍後建立集區伺服器升級之後，如果您有這篇文章會提供指示 [受益於集區的資料庫](sql-database-elastic-pool-guidance.md)。
 
 請注意，您的資料庫會維持在線上，並且在整個升級作業中都會繼續保持運作。 在實際轉換到新的效能等級時，資料庫連線可能會暫時中斷一段非常短的時間，通常約 90 秒，但最長可達 5 分鐘。 如果您的應用程式具有 [暫時性錯誤處理連線終止](sql-database-connect-central-recommendations.md) 就足以保護在升級結束時中斷連線。 
 
@@ -47,9 +47,9 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 
 ## 準備升級
 
-- **將所有的 Web 和 Business 資料庫升級**: 請參閱 [將所有的 Web 和 Business 資料庫升級](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases) 下面章節，或使用 [來升級資料庫和伺服器的 PowerShell](sql-database-upgrade-server-powershell.md)。
-- **檢閱並暫停異地複寫**: 如果您的 Azure SQL database 設定異地複寫，您應該記錄其目前的設定和 [停止地理複寫](sql-database-geo-replication-portal.md#remove-secondary-database)。 在升級完成之後，請重新設定資料庫的異地複寫。
-- **如果您在 Azure VM 上的用戶端開啟這些連接埠**: 如果您的用戶端執行 Azure 的虛擬機器 (VM) 上時，用戶端程式會連接到 SQL Database V12，您必須開啟連接埠範圍 11000-11999 和 VM 上的 14000 14999。 如需詳細資訊，請參閱 [連接埠的 SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)。
+- **將所有的 Web 和 Business 資料庫升級**︰ 請參閱 [將所有的 Web 和 Business 資料庫升級](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases) 下面章節，或使用 [來升級資料庫和伺服器的 PowerShell](sql-database-upgrade-server-powershell.md)。
+- **檢閱並暫停異地複寫**︰ 如果您的 Azure SQL database 設定異地複寫，您應該記錄其目前的設定和 [停止地理複寫](sql-database-geo-replication-portal.md#remove-secondary-database)。 在升級完成之後，請重新設定資料庫的異地複寫。
+- **如果您在 Azure VM 上的用戶端開啟這些連接埠**︰ 如果您的用戶端執行 Azure 的虛擬機器 (VM) 上時，用戶端程式會連接到 SQL Database V12，您必須開啟連接埠範圍 11000-11999 和 VM 上的 14000 14999。 如需詳細資訊，請參閱 [連接埠的 SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
 
 
@@ -58,7 +58,7 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 1. 在 [Azure 入口網站](http://portal.azure.com/) 瀏覽至您想要升級選取的伺服器 **全部瀏覽** > **SQL server**, ，然後選取您要的伺服器。
 2. 選取 **的最新的 SQL database update**, ，然後選取 **升級此伺服器**。
 
-      ![升級伺服器][] 1
+      ![升級伺服器][1]
 
 ## 升級所有 Web 和商務資料庫
 
@@ -76,7 +76,7 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 
     請特別注意，SQL Database 不會鎖定至任何特定的服務層級或效能等級，因此當您的資料庫需求變更時，您可以在可用的服務層級和效能等級之間輕鬆進行變更。 事實上，基本、標準和高階 SQL Database 是以小時計費，您可以在 24 小時內向上或向下調整每個資料庫 4 次。
 
-    ![建議][] 6
+    ![Mahout][6]
 
 
 伺服器的所有資料庫都符合資格之後，您就可以準備開始升級
@@ -85,18 +85,18 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 
 3. 當伺服器上的所有資料庫都適合您需要的升級 **類型的伺服器名稱** 以確認您要執行升級，然後按一下 [ **確定**。 
 
-    ![確認升級][] 3
+    ![確認升級][3]
 
 
 4. 升級隨即開始，過程中也會顯示進度通知。 升級程序即會啟動。 視特定資料庫的詳細資料而定，升級至 V12 可能需要一些時間。 在這段期間，伺服器上的所有資料庫將維持線上狀態，但伺服器和資料庫的管理動作將受到限制。
 
-    ![升級進行中][] 4
+    ![升級進行中][4]
 
     在實際轉換到新的效能層級時，資料庫連線可能會暫時中斷一小段時間 (通常以秒計算)。 若應用程式對於連線終止出現暫時性的錯誤處理 (重試邏輯)，在升級結束時連線將不會中斷。 
 
 5. 升級作業完成後 **最新更新** ] 刀鋒視窗會顯示 **啟用**。 
 
-    ![啟用 V12][] 5  
+    ![已啟用 V12][5]  
 
 ## 將資料庫移至彈性資料庫集區
 
@@ -106,7 +106,7 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 
 如果您看到訊息指出 **按一下這裡以檢視此伺服器的建議的彈性資料庫集區**, ，按一下以輕鬆地建立最適合您的伺服器資料庫的集區。 如需詳細資訊，請參閱 [建議的彈性資料庫集區](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)。
 
-![新增到伺服器集區][] 7
+![將集區加入伺服器][7]
    
 請遵照 [建立彈性資料庫集區](sql-database-elastic-pool.md) 文件，以完成建立您的集區。
 
@@ -118,7 +118,7 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 除了監視個別資料庫中，您可以監視彈性資料庫集區 [使用入口網站](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool) 或 [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) 
 
 
-**資源耗用量資料:** 若是基本、 標準和高階資料庫資源耗用資料是透過 [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV 使用者資料庫中的。 此 DMV 以 15 秒的間隔提供幾乎即時的前一小時作業資源耗用量資訊。 某一間隔的 DTU 百分比耗用量會以 CPU、IO 及記錄檔方面的最大百分比耗用量來計算。 下列是計算前一小時之平均 DTU 百分比耗用量的查詢：
+**資源耗用量資料 ︰** 若是基本、 標準和高階資料庫資源耗用資料是透過 [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV 使用者資料庫中的。 此 DMV 以 15 秒的間隔提供幾乎即時的前一小時作業資源耗用量資訊。 某一間隔的 DTU 百分比耗用量會以 CPU、IO 及記錄檔方面的最大百分比耗用量來計算。 下列是計算前一小時之平均 DTU 百分比耗用量的查詢：
 
     SELECT end_time
          , (SELECT Max(v)
@@ -138,7 +138,7 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 
 
 
-**警示:** 設定 「 警示 」 Azure 入口網站中已升級之資料庫的 DTU 耗用量接近特定的高層級時通知您。 您可以在 Azure 入口網站中為各種效能計量 (例如 DTU、CPU、IO 及記錄檔) 設定資料庫警示。 瀏覽至您的資料庫，然後選取 **警示規則** 中 **設定** 刀鋒視窗。
+**警示 ︰** 設定 「 警示 」 Azure 入口網站中已升級之資料庫的 DTU 耗用量接近特定的高層級時通知您。 您可以在 Azure 入口網站中為各種效能計量 (例如 DTU、CPU、IO 及記錄檔) 設定資料庫警示。 瀏覽至您的資料庫，然後選取 **警示規則** 中 **設定** 刀鋒視窗。
 
 例如，您可以設定若過去 5 分鐘的平均 DTU 百分比值超出 75% 則發出「 DTU 百分比 」電子郵件警示。 請參閱 [接收警示通知](insights-receive-alert-notifications.md) 若要深入了解如何設定警示通知。
 
@@ -168,6 +168,7 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 [5]: ./media/sql-database-upgrade-server-portal/enabled.png
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
+
 
 
 

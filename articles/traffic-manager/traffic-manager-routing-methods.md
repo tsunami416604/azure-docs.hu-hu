@@ -23,11 +23,11 @@
 
 這三種流量管理員流量路由方法包括：
 
-- **容錯移轉**: 您的端點位於相同或不同 Azure 資料中心 (也就是在 Azure 傳統入口網站中的區域)，且想要讓所有流量，都使用主要端點，但提供備份以防主要或備份端點無法使用時，選取 [容錯移轉。 如需詳細資訊，請參閱 [容錯移轉流量路由方法](#failover-traffic-routing-method)。
+- **容錯移轉**︰ 您的端點位於相同或不同 Azure 資料中心 （也就是在 Azure 傳統入口網站中的區域），且想要讓所有流量，都使用主要端點，但提供備份以防主要或備份端點無法使用時，選取 [容錯移轉。 如需詳細資訊，請參閱 [容錯移轉流量路由方法](#failover-traffic-routing-method)。
 
-- **循環配置資源**: 選取您想要一組端點位於相同資料中心或跨越不同的資料中心分配負載時的循環配置資源。 如需詳細資訊，請參閱 [循環配置資源流量路由方法](#round-robin-traffic-routing-method)。
+- **循環配置資源**︰ 選取您想要一組端點位於相同資料中心或跨越不同的資料中心分配負載時的循環配置資源。 如需詳細資訊，請參閱 [循環配置資源流量路由方法](#round-robin-traffic-routing-method)。
 
-- **效能**: 選取您在不同地理位置擁有端點，且您想要使用的 「 最靠近 」 的端點，根據最低延遲要求用戶端時的效能。 如需詳細資訊，請參閱 [效能流量路由方法](#performance-traffic-routing-method)。
+- **效能**︰ 選取您在不同地理位置擁有端點，且您想要使用的 「 最靠近 」 的端點，根據最低延遲要求用戶端時的效能。 如需詳細資訊，請參閱 [效能流量路由方法](#performance-traffic-routing-method)。
 
 請注意，不論網站模式為何，Azure 網站已為資料中心內的網站提供容錯移轉和循環配置資源流量路由方法功能。 流量管理員可讓您在不同的資料中心網站中指定容錯移轉和循環配置資源流量路由。
 
@@ -83,7 +83,7 @@
 
 在此階段中，您無法使用 Azure 傳統入口網站來設定加權流量路由。 Azure 提供以程式設計的方式存取此方法，方法是使用相關聯的服務管理 REST API 和 Azure PowerShell Cmdlet。
 
-使用 REST Api 的相關資訊，請參閱 [流量管理員的相關作業 (REST API 參考)](http://go.microsoft.com/fwlink/p/?LinkId=313584)。
+使用 REST Api 的相關資訊，請參閱 [流量管理員的相關作業 （REST API 參考）](http://go.microsoft.com/fwlink/p/?LinkId=313584)。
 
 使用 Azure PowerShell cmdlet 的相關資訊，請參閱 [Azure 流量管理員 Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=400769)。 如需組態範例，請參閱 [Azure 流量管理員外部端點和透過 PowerShell 的加權循環](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/) Azure 部落格中。
 
@@ -129,3 +129,4 @@
 
 [新增端點。](traffic-manager-endpoints.md)
  
+

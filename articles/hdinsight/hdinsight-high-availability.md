@@ -106,3 +106,4 @@ SDK 的情況十分類似。 建立和使用 SDK 佈建叢集記載於 [使用 H
 - [使用 RDP 連線到 HDInsight 叢集](hdinsight-administer-use-management-portal.md#rdp)
 - [使用 HDInsight .NET SDK](hdinsight-provision-clusters.md#sdk)
 
+

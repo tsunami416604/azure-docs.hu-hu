@@ -51,16 +51,16 @@ Microsoft Connector for Informix 是一個 API 應用程式，可透過 Azure Ap
     名稱 |需要 | 描述
 --- | --- | ---
 連接字串 |[是 |Informix 用戶端連接字串 (例如，「 網路位址 = 伺服器名稱。網路連接埠 = 9089;使用者 ID = username;密碼 = 密碼; Initial Catalog = nwind; 預設結構描述 = informix 」)。
-資料表 |[是 |以逗號分隔清單的資料表、 檢視和別名所需的 OData 作業，以及 (例如產生範例的 swagger 文件的名稱"NEWORDERS")。
-程序 |[是 |以逗號分隔清單的程序和函式名稱 (例如:"SPORDERID")。
+資料表 |[是 |以逗號分隔清單的資料表、 檢視和別名所需的 OData 作業，以及 （例如產生範例的 swagger 文件的名稱"NEWORDERS")。
+程序 |[是 |以逗號分隔清單的程序和函式名稱 （例如 ︰"SPORDERID")。
 OnPremise |否 |部署在內部使用 Azure 服務匯流排轉送。
 ServiceBusConnectionString |否 |Azure 服務匯流排轉送連接字串。
-PollToCheckData |否 |選取計數 (例如使用邏輯應用程式觸發程序的陳述式「 COUNT(\*) 從選取的 NEWORDERS SHIPDATE 所在 NULL 」)。
-PollToReadData |否 |若要使用邏輯應用程式觸發程序 (例如 SELECT 陳述式「 選取 \ * 從 NEWORDERS SHIPDATE 所在更新為 NULL 」)。
-PollToAlterData |否 |UPDATE 或 DELETE 陳述式 (例如使用邏輯應用程式觸發程序"UPDATE NEWORDERS SET SHIPDATE = CURRENT DATE WHERE CURRENT OF &lt;CURSOR&gt;")。
+PollToCheckData |否 |選取計數 （例如使用邏輯應用程式觸發程序的陳述式「 COUNT(\*) 從選取的 NEWORDERS SHIPDATE 所在 NULL 」）。
+PollToReadData |否 |若要使用邏輯應用程式觸發程序 （例如 SELECT 陳述式「 選取 \ * 從 NEWORDERS SHIPDATE 所在更新為 NULL 」)。
+PollToAlterData |否 |UPDATE 或 DELETE 陳述式 （例如使用邏輯應用程式觸發程序"UPDATE NEWORDERS SET SHIPDATE = CURRENT DATE WHERE CURRENT OF &lt;CURSOR&gt;")。
 
 7. 選取 **確定**, ，然後選取 **建立**。
-8. 完成時，[封裝設定看起來如下所示:  
+8. 完成時，[封裝設定看起來如下所示 ︰  
 ![][1]
 
 
@@ -69,7 +69,7 @@ PollToAlterData |否 |UPDATE 或 DELETE 陳述式 (例如使用邏輯應用程�
 
 > [AZURE.TIP] Informix 連接 」*EntitySet 的 Post*」 傳回的識別資料行值和 「*API 插入*」 會傳回受影響的資料列
 
-1. 在 Azure 開始面板中，選取 **+** (加號) **Web + 行動**, ，然後 **邏輯應用程式**。
+1. 在 Azure 開始面板中，選取 **+** （加號） **Web + 行動**, ，然後 **邏輯應用程式**。
 2. 輸入名稱 (例如「 NewOrdersInformix 」)，應用程式服務計劃、 其他屬性，然後選取 **建立**。
 3. 在 Azure 開始面板中，選取您剛建立的邏輯應用程式 **設定**, ，然後 **觸發程序和動作**。
 4. 在 [觸發程序和動作] 分頁中，選取 **從頭開始建立** 邏輯應用程式範本內。
@@ -88,12 +88,12 @@ SHIPREG |WA
 SHIPZIP |99362 
 
 8. 選取 **核取記號** 儲存動作的設定，然後 **儲存**。
-9. 設定應如下所示:  
+9. 設定應如下所示 ︰  
 ![][3]  
-10. 在 **所有執行** 清單 **作業**, ，選取第一個列出的項目 (最近執行)。 
+10. 在 **所有執行** 清單 **作業**, ，選取第一個列出的項目 （最近執行）。 
 11. 在 **邏輯應用程式執行** 分頁中，選取 **動作** 項目 **informixconnectorneworders**。
 12. 在 **邏輯應用程式動作** 分頁中，選取 **輸入連結**。 Informix 連接器會使用輸入來處理參數化的 INSERT 陳述式。
-13. 在 **邏輯應用程式動作** 分頁中，選取 **輸出連結**。 輸入應如下所示:  
+13. 在 **邏輯應用程式動作** 分頁中，選取 **輸出連結**。 輸入應如下所示 ︰  
 ![][4]
 
 #### 您所需了解的事情
@@ -107,7 +107,7 @@ SHIPZIP |99362
 ## 以 Informix 連接器動作新增大量資料的邏輯應用程式 ##
 您可以定義邏輯應用程式動作，以使用 API Bulk Insert 作業將資料加入至 Informix 資料表。 例如，您可使用資料列值的陣列對以身分識別資料行定義的資料表處理 SQL INSERT 陳述式，將受影響的資料列傳回至邏輯應用程式，進而插入兩筆新的客戶訂單記錄 (SELECT ORDID FROM FINAL TABLE (INSERT INTO NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?)))。
 
-1. 在 Azure 開始面板中，選取 **+** (加號) **Web + 行動**, ，然後 **邏輯應用程式**。
+1. 在 Azure 開始面板中，選取 **+** （加號） **Web + 行動**, ，然後 **邏輯應用程式**。
 2. 輸入名稱 (例如「 NewOrdersBulkInformix 」)，應用程式服務計劃、 其他屬性，然後選取 **建立**。
 3. 在 Azure 開始面板中，選取您剛建立的邏輯應用程式 **設定**, ，然後 **觸發程序和動作**。
 4. 在 [觸發程序和動作] 分頁中，選取 **從頭開始建立** 邏輯應用程式範本內。
@@ -119,14 +119,14 @@ SHIPZIP |99362
     [{"custid":10081,"shipid":10000,"shipname":"Trail's Head Gourmet Provisioners","shipaddr":"722 DaVinci Blvd.","shipcity":"Kirkland","shipreg":"WA","shipzip":"98034"},{"custid":10088,"shipid":10000,"shipname":"White Clover Markets","shipaddr":"305 14th Ave. S. Suite 3B","shipcity":"Seattle","shipreg":"WA","shipzip":"98128","shipctry":"USA"}]
     ```
         
-8. 選取 **核取記號** 儲存動作的設定，然後 **儲存**。 設定應如下所示:  
+8. 選取 **核取記號** 儲存動作的設定，然後 **儲存**。 設定應如下所示 ︰  
 ![][6]
 
-9. 在 **所有執行** 清單 **作業**, ，按一下第一個列出的項目 (最近執行)。
+9. 在 **所有執行** 清單 **作業**, ，按一下第一個列出的項目 （最近執行）。
 10. 在 **邏輯應用程式執行** 刀鋒視窗中，按一下 [ **動作** 項目。
-11. 在 **邏輯應用程式動作** 刀鋒視窗中，按一下 [ **輸入連結**。 輸出應如下所示:  
+11. 在 **邏輯應用程式動作** 刀鋒視窗中，按一下 [ **輸入連結**。 輸出應如下所示 ︰  
 [][7]
-12. 在 **邏輯應用程式動作** 刀鋒視窗中，按一下 [ **輸出連結**。 輸出應如下所示:  
+12. 在 **邏輯應用程式動作** 刀鋒視窗中，按一下 [ **輸出連結**。 輸出應如下所示 ︰  
 ![][8]
 
 #### 您所需了解的事情
@@ -166,18 +166,18 @@ PollToAlterData |刪除 NEWORDERS WHERE CURRENT OF & l t;資料指標 & gt;
 
 在此範例中，邏輯應用程式會輪詢、讀取、更新，而後重新讀取 Informix 資料表中的資料。
 
-1. 在 Azure 開始面板中，選取 **+** (加號) **Web + 行動**, ，然後 **邏輯應用程式**。
+1. 在 Azure 開始面板中，選取 **+** （加號） **Web + 行動**, ，然後 **邏輯應用程式**。
 2. 輸入名稱 (例如「 ShipOrdersInformix 」)，應用程式服務計劃、 其他屬性，然後選取 **建立**。
 3. 在 Azure 開始面板中，選取您剛建立的邏輯應用程式 **設定**, ，然後 **觸發程序和動作**。
 4. 在 [觸發程序和動作] 分頁中，選取 **從頭開始建立** 邏輯應用程式範本內。
 5. 在 API 應用程式] 面板中，選取 **Informix 連接器**, ，設定頻率和間隔，然後 **核取記號**。
 6. 在 API 應用程式] 面板中，選取 **Informix 連接器**, ，依序展開 [作業] 清單選取 **可供選取 NEWORDERS**。
-7. 選取 **核取記號** 儲存動作的設定，然後 **儲存**。 設定應如下所示:  
+7. 選取 **核取記號** 儲存動作的設定，然後 **儲存**。 設定應如下所示 ︰  
 ![][10]
 8. 按一下即可關閉 **觸發程序和動作** 刀鋒視窗中，，然後按一下 [關閉 **設定** 刀鋒視窗。
-9. 在 **所有執行** 清單 **作業**, ，按一下第一個列出的項目 (最近執行)。
+9. 在 **所有執行** 清單 **作業**, ，按一下第一個列出的項目 （最近執行）。
 10. 在 **邏輯應用程式執行** 刀鋒視窗中，按一下 [ **動作** 項目。
-11. 在 **邏輯應用程式動作** 刀鋒視窗中，按一下 [ **輸出連結**。 輸出應如下所示:  
+11. 在 **邏輯應用程式動作** 刀鋒視窗中，按一下 [ **輸出連結**。 輸出應如下所示 ︰  
 ![][11]
 
 
@@ -187,7 +187,7 @@ PollToAlterData |刪除 NEWORDERS WHERE CURRENT OF & l t;資料指標 & gt;
 ## 建立使用 Informix 連接器來移除資料的邏輯應用程式 ##
 您可以從 Azure Marketplace 建立新的邏輯應用程式，然後使用 Informix 連接器動作來移除客戶訂單。 例如，您可以使用 Informix 連接器條件式刪除作業來處理 SQL DELETE 陳述式 (DELETE FROM NEWORDERS WHERE ORDID >= 10000)。
 
-1. 中樞] 功能表中的 Azure **啟動** 介面板中，按一下 **+** (再加上正負號)，按一下 [ **Web + 行動**, ，然後按一下 [ **邏輯應用程式**。 
+1. 中樞] 功能表中的 Azure **啟動** 介面板中，按一下 **+** （再加上正負號），按一下 [ **Web + 行動**, ，然後按一下 [ **邏輯應用程式**。 
 2. 在 **建立邏輯應用程式** 刀鋒視窗中，輸入 **名稱**, ，例如 **RemoveOrdersInformix**。
 3. 選取或定義其他設定 (例如服務計劃、資源群組) 的值。
 4. 設定應如下所示。 按一下 [ **建立**:  
@@ -199,15 +199,15 @@ PollToAlterData |刪除 NEWORDERS WHERE CURRENT OF & l t;資料指標 & gt;
 9. 在 **觸發程序和動作** 刀鋒視窗，請在 **API 應用程式** ] 面板中的，在資源群組中，按一下 [ **Informix 連接器**。
 10. 在邏輯應用程式的設計介面，按一下 [ **Informix 連接器** 動作項目，按一下省略符號 (**...**) 以展開 [操作] 清單中，然後按一下 [ **條件式刪除從 N**。
 11. Informix 連接器動作項目，在輸入 **ordid ge 10000** 的 **運算式可識別項目的子集**。
-12. 按一下 [ **核取記號** 以儲存動作的設定，然後按一下 **儲存**。 設定應如下所示:  
+12. 按一下 [ **核取記號** 以儲存動作的設定，然後按一下 **儲存**。 設定應如下所示 ︰  
 ![][13]
 13. 按一下即可關閉 **觸發程序和動作** 刀鋒視窗中，，然後按一下 [關閉 **設定** 刀鋒視窗。
-14. 在 **所有執行** 清單 **作業**, ，按一下第一個列出的項目 (最近執行)。
+14. 在 **所有執行** 清單 **作業**, ，按一下第一個列出的項目 （最近執行）。
 15. 在 **邏輯應用程式執行** 刀鋒視窗中，按一下 [ **動作** 項目。
-16. 在 **邏輯應用程式動作** 刀鋒視窗中，按一下 [ **輸出連結**。 輸出應如下所示:  
+16. 在 **邏輯應用程式動作** 刀鋒視窗中，按一下 [ **輸出連結**。 輸出應如下所示 ︰  
 ![][14]
 
-**注意:** 邏輯應用程式設計工具會截斷資料表名稱。 例如作業 **條件式刪除 NEWORDERS** 會被截斷成 **條件式刪除從 N**。
+**注意 ︰** 邏輯應用程式設計工具會截斷資料表名稱。 例如作業 **條件式刪除 NEWORDERS** 會被截斷成 **條件式刪除從 N**。
 
 
 > [AZURE.TIP] 您可以使用下列 SQL 陳述式來建立範例資料表與預存程序。 
@@ -261,7 +261,7 @@ App Service 使用混合式組態管理員來安全地連線到內部部署系�
 
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
 使用 REST API 建立 API Apps。 請參閱 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -283,6 +283,7 @@ App Service 使用混合式組態管理員來安全地連線到內部部署系�
 [12]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_Create.png
 [13]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_TriggersActions.png
 [14]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_Outputs.png
+
 
 
 

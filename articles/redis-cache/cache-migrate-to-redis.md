@@ -60,7 +60,7 @@ Microsoft Azure Redis 快取有下列階層：
 
 每一個階層都有不同的功能和定價。 探討功能稍後在本指南中，如需定價的詳細資訊，請參閱 [快取定價詳細資料](https://azure.microsoft.com/pricing/details/cache/)。
 
-移轉作業的第一步是挑選符合先前受管理的快取服務快取大小的容量，然後再依據應用程式的需求擴大或縮小規模。 選擇正確的 Azure Redis 快取提供項目上的詳細指引，請參閱 [哪些 Redis 快取提供項目和大小應該使用?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)。
+移轉作業的第一步是挑選符合先前受管理的快取服務快取大小的容量，然後再依據應用程式的需求擴大或縮小規模。 選擇正確的 Azure Redis 快取提供項目上的詳細指引，請參閱 [哪些 Redis 快取提供項目和大小應該使用？](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)。
 
 ## 建立快取
 
@@ -194,5 +194,6 @@ Azure Redis 快取有適用於 ASP.NET 工作階段狀態和頁面輸出快取�
 ## 後續步驟
 
 瀏覽 [Azure Redis 快取文件](https://azure.microsoft.com/documentation/services/cache/) 的教學課程、 範例、 影片及其他。
+
 
 

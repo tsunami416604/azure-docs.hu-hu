@@ -161,7 +161,7 @@ JSON 檔案建立在 **組態** 資料夾，並且包含指定完全要部署至
 
     ![建立 Web Deploy 封裝](./media/vs-azure-tools-publishing-using-powershell-scripts/IC767885.png)
 
-    如需詳細資訊，請參閱 [How to: 在 Visual Studio 中建立 Web 部署套件](https://msdn.microsoft.com/library/dd465323.aspx)。 您也可以將自動化的 Web Deploy 套件，建立一節中所述 **自訂和擴充發行指令碼** 稍後在本主題中。
+    如需詳細資訊，請參閱 [How to ︰ 在 Visual Studio 中建立 Web 部署套件](https://msdn.microsoft.com/library/dd465323.aspx)。 您也可以將自動化的 Web Deploy 套件，建立一節中所述 **自訂和擴充發行指令碼** 稍後在本主題中。
 
 1. 在 **方案總管] 中**, ，開啟指令碼時，內容功能表，然後選擇 **開啟 PowerShell ISE**。
 
@@ -177,7 +177,7 @@ JSON 檔案建立在 **組態** 資料夾，並且包含指定完全要部署至
 
     請注意，當您自動執行指令碼時，這個提供 Azure 認證的方法將沒有作用。 您應該改用 .publishsettings 檔案來提供認證。 一次您只能使用命令 **Get-azurepublishsettingsfile** 從 Azure 下載檔案，並在之後使用 **Import-azurepublishsettingsfile** 匯入檔案。 如需詳細指示，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
 
-1. (選擇性)資料庫和網站，但不要發行 web 應用程式，如果您想要建立 Azure 資源，例如虛擬機器，使用 **Publish-webapplication.ps1** 命令搭配 **-設定** 引數設定為 JSON 組態檔。 此命令列使用 JSON 組態檔來決定要建立哪些資源。 因為它使用其他命令列引數的預設設定，所以會建立資源，但不會發佈 Web 應用程式。 –Verbose 選項可讓您進一步了解會發生什麼事。
+1. （選擇性）資料庫和網站，但不要發行 web 應用程式，如果您想要建立 Azure 資源，例如虛擬機器，使用 **Publish-webapplication.ps1** 命令搭配 **-設定** 引數設定為 JSON 組態檔。 此命令列使用 JSON 組態檔來決定要建立哪些資源。 因為它使用其他命令列引數的預設設定，所以會建立資源，但不會發佈 Web 應用程式。 –Verbose 選項可讓您進一步了解會發生什麼事。
 
     `Publish-WebApplication.ps1 -Verbose –Configuration C:\Path\WebProject-WAWS-dev.json`
 
@@ -314,7 +314,7 @@ JSON 檔案建立在 **組態** 資料夾，並且包含指定完全要部署至
 |---|---|
 |Add-AzureSQLDatabase|建立新的 Azure SQL Database。|
 |Add-AzureSQLDatabases|從 Visual Studio 所產生的 JSON 組態檔中的值建立 Azure SQL Database。|
-|Add-AzureVM|建立 Azure 虛擬機器並傳回所部署 VM 的 URL。 函式會設定先決條件，然後呼叫 **New-azurevm** 函式 (Azure 模組) 來建立新的虛擬機器。|
+|Add-AzureVM|建立 Azure 虛擬機器並傳回所部署 VM 的 URL。 函式會設定先決條件，然後呼叫 **New-azurevm** 函式 （Azure 模組） 來建立新的虛擬機器。|
 |Add-AzureVMEndpoints|將新的輸入端點加入至虛擬機器，並傳回具有新端點的虛擬機器。|
 |Add-AzureVMStorage|在目前的訂用帳戶中建立新的 Azure 儲存體帳戶。 帳戶名稱開頭是 "devtest"，後面接著唯一的英數字元字串。 此函式會傳回新儲存體帳戶的名稱。 您必須指定新儲存體帳戶的位置或同質群組。|
 |Add-AzureWebsite|使用指定的名稱和位置建立網站。 此函數會呼叫 **New-azurewebsite** Azure 模組中的函式。 如果訂用帳戶還沒有具有指定名稱的網站，此函式會建立該網站並傳回網站物件。 否則，它會傳回 `$null`。|
@@ -322,7 +322,7 @@ JSON 檔案建立在 **組態** 資料夾，並且包含指定完全要部署至
 |Find-AzureVM|取得指定的 Azure 虛擬機器。|
 |Format-DevTestMessageWithTime|在訊息前面加上日期和時間。 此函式是專為寫入 Error 和 Verbose 串流的訊息所設計。|
 |Get-AzureSQLDatabaseConnectionString|組合連接字串來連線到 Azure SQL Database。|
-|Get-AzureVMStorage|傳回名稱的第一個儲存體帳戶名稱模式"devtest*"(不區分大小寫) 中指定的位置或同質群組。如果"devtest*」 的位置或同質群組，不符合儲存體帳戶、 函式則會予以忽略。 您必須指定位置或同質群組。|
+|Get-AzureVMStorage|傳回名稱的第一個儲存體帳戶名稱模式"devtest*"（不區分大小寫） 中指定的位置或同質群組。如果"devtest*」 的位置或同質群組，不符合儲存體帳戶、 函式則會予以忽略。 您必須指定位置或同質群組。|
 |Get-MSDeployCmd|傳回執行 MsDeploy.exe 工具的命令。|
 |New-AzureVMEnvironment|在訂用帳戶中尋找或建立符合 JSON 組態檔中的值的虛擬機器。|
 |Publish-WebPackage|使用 MsDeploy.exe 和 Web 發佈封裝 .Zip 檔案將資源部署至網站。 此函式不會產生任何輸出。 如果呼叫 MSDeploy.exe 失敗，此函式會擲回例外狀況。 若要取得更詳細的輸出，請使用 **-Verbose** 選項。|
@@ -331,7 +331,7 @@ JSON 檔案建立在 **組態** 資料夾，並且包含指定完全要部署至
 |Restore-Subscription|將目前的訂用帳戶重設為原始訂用帳戶。|
 |Test-AzureModule|如果所安裝的 Azure 模組版本為 0.7.4 或更新版本，則傳回 `$true`。 如果尚未安裝模組或模組為較舊的版本，則傳回 `$false`。 此函式沒有參數。|
 |Test-AzureModuleVersion|如果 Azure 模組的版本為 0.7.4 或更新版本，則傳回 `$true`。 如果尚未安裝模組或模組為較舊的版本，則傳回 `$false`。 此函式沒有參數。|
-|Test-HttpsUrl|將輸入的 URL 轉換為 System.Uri 物件。 如果 URL 為絕對值，而且其配置為 https，則傳回 `$True`。 如果 URL 是相對值、其配置不是 HTTPS 或輸入的字串無法轉換成 URL，則傳回 `$false`。|
+|Test-HttpsUrl|將輸入的 URL 轉換為 System.Uri 物件。 如果 URL 為絕對值，而且其配置為 https，則傳回 `$True`。 傳回 `$false` 如果是相對 URL，其配置不是 HTTPS，或輸入的字串無法轉換至的 URL。|
 |Test-Member|如果屬性或方法是物件的成員，則傳回 `$true`。 否則傳回 `$false`。|
 |Write-ErrorWithTime|寫入前面會加上目前時間的錯誤訊息。 此函數會呼叫 **格式 DevTestMessageWithTime** 函式可將訊息寫入 Error 串流之前附加時間。|
 |Write-HostWithTime|將訊息寫入主機程式 (**Write-host**) 前面加上目前的時間。 寫入主機程式的效果並不一定。 大部分裝載 Windows PowerShell 的程式會將這些訊息寫入標準輸出。|
@@ -350,4 +350,5 @@ JSON 檔案建立在 **組態** 資料夾，並且包含指定完全要部署至
 ## 後續步驟
 
 深入了解 PowerShell 指令碼讀取 [使用 Windows PowerShell 撰寫指令碼](https://technet.microsoft.com/library/bb978526.aspx) ，並查看其他 Azure PowerShell 指令碼在 [指令碼中心](https://azure.microsoft.com/documentation/scripts/)。
+
 

@@ -25,7 +25,7 @@ Data Factory 會在內部部署、雲端資料來源和 SaaS 之間運作，以�
 
 ![概觀](./media/data-factory-introduction/data-factory-overview.png)
 
-**圖 1。**從許多不同的內部部署資料來源收集資料、擷取和準備資料，透過各種轉換來組織並分析資料，然後發行隨時可用的資料以供使用。
+**圖 1。** 從許多不同的內部部署資料來源收集資料、擷取和準備資料，透過各種轉換來組織並分析資料，然後發行隨時可用的資料以供使用。
 
 您可以視需求隨時使用 Data Factory，在可靠的排程下收集各種外型和大小的資料，並加以轉換和發行，以便得到深入的了解。 Data Factory 用來建立高度可用的資料流管線，適用於不同產業中的許多案例並滿足其分析管的需求。  線上零售商會用它來產生個人化 [產品建議](data-factory-product-reco-usecase.md) 根據客戶瀏覽行為。 遊戲工作室利用它來了解 [的行銷效率](data-factory-customer-profiling-usecase.md) 活動。 直接向我們的客戶學習他們如何及為何使用 Data Factory，藉由檢閱 [客戶案例研究](data-factory-customer-case-studies.md)。 
 
@@ -37,7 +37,7 @@ Azure Data Factory 有幾個主要實體會共同運作，來定義輸入和輸�
 
 ![重要概念](./media/data-factory-introduction/key-concepts.png)
 
-**[圖 2。**資料集、活動、管線和連結服務之間的關聯性。
+**圖 2.** 資料集、活動、管線和連結服務之間的關聯性。
 
 
 ### 活動
@@ -56,6 +56,7 @@ Azure Data Factory 有幾個主要實體會共同運作，來定義輸入和輸�
 - 用來代表可裝載活動執行的計算資源。  例如，“HDInsightHive Activity” 會在 HDInsight Hadoop 叢集上執行。
 
 有了資料集、活動、管線和連結的服務這四個簡單的概念之後，您隨時可以開始使用！  您可以 [建置您的第一個管線](data-factory-build-your-first-pipeline.md)  從頭，或依照下列中的指示，部署現成的樣本我們 [Data Factory 範例](data-factory-samples.md) 文件。 
+
 
 
 

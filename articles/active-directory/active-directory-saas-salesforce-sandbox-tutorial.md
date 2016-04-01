@@ -95,9 +95,9 @@
 
     ![SAML 單一登入設定](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781027.png "SAML Single Sign-On Settings")
 
-    1.  在 [名稱] 文字方塊中，輸入組態的名稱 (例如: *SPSSOWAAD\_Test*)。
+    1.  在 [名稱] 文字方塊中，輸入組態的名稱 (例如 ︰ *SPSSOWAAD\_Test*)。
     2.  在 Azure 網站中，在 **在 Saleforce 沙箱設定單一登入** ] 對話方塊頁面中，複製 **簽發者 URL** 值，並接著將它貼入 **簽發者** 文字方塊。
-    3.  在 **實體識別碼** 文字方塊中，輸入 **https://test.salesforce.com** 如果這是您要新增至您的目錄的第一個 Salesforce 沙箱執行個體。 如果您已新增的 Salesforce 沙箱執行個體然後如 **實體識別碼** 輸入 **登入 URL**, ，應該以下列格式: `http://company.my.salesforce.com`
+    3.  在 **實體識別碼** 文字方塊中，輸入 **https://test.salesforce.com** 如果這是您要新增至您的目錄的第一個 Salesforce 沙箱執行個體。 如果您已新增的 Salesforce 沙箱執行個體然後如 **實體識別碼** 輸入 **登入 URL**, ，應該以下列格式 ︰ `http://company.my.salesforce.com`
     4.  按一下 [ **瀏覽** 上傳已下載的憑證。
     5.  做為 **SAML 身分識別類型**, ，請選取 **判斷提示包含使用者物件的同盟 ID**。
     6.  做為 **SAML 身分識別位置**, ，請選取 **身分識別位於 Subject 陳述式的 NameIdentifier 元素中**。
@@ -157,7 +157,7 @@
 
     ![設定使用者佈建](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769573.png "Configure user provisioning")
 
-8.  在 **輸入 Salesforce 沙箱認證以啟用自動使用者佈建** 頁面上，提供下列組態設定:
+8.  在 **輸入 Salesforce 沙箱認證以啟用自動使用者佈建** 頁面上，提供下列組態設定 ︰
 
     ![Salesforce Sandbox](./media/active-directory-saas-salesforce-sandbox-tutorial/IC746476.png "Salesforce Sandbox")
 
@@ -191,3 +191,4 @@
 請等候 10 分鐘並確認帳戶已同步至 Salesforce 沙箱。
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](https://msdn.microsoft.com/library/dn308586)。
+

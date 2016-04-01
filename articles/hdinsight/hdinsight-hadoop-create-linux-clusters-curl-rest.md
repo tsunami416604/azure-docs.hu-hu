@@ -27,7 +27,7 @@ Azure REST API 可讓您對裝載於 Azure 平台的服務執行管理作業，�
 >
 > 如需有關在節點大小和相關聯的成本的詳細資訊，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-##先決條件
+##必要條件
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
@@ -41,13 +41,13 @@ Azure REST API 可讓您對裝載於 Azure 平台的服務執行管理作業，�
     > 
     > 如果要移除此別名，請從 PowerShell 提示字元執行下列命令：
     >
-    > '' Remove-item 別名: curl'
+    > '' Remove-item 別名 ︰ curl'
     >
     > 移除別名後，就應該能夠使用已安裝在您系統上的 cURL 版本。
 
 ##建立範本
 
-Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的所有資源 (例如 HDInsight。)此範本方法可讓您定義的所有資源，您需要在一個範本中，HDInsight，並透過整個管理群組進行變更 __部署__ ，將變更套用至群組。
+Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的所有資源 （例如 HDInsight。)此範本方法可讓您定義的所有資源，您需要在一個範本中，HDInsight，並透過整個管理群組進行變更 __部署__ ，將變更套用至群組。
 
 範本通常分成兩個部分：範本自己，以及依您的組態而填入特定值的參數檔。 例如，叢集名稱、系統管理員名稱和密碼。 直接使用 REST API 時，您必須將這些值合併到一個檔案中。 此 JSON 文件的格式為：
 
@@ -263,7 +263,7 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 
 ##建立服務主體
 
-> [AZURE.IMPORTANT] 當以下文章中的步驟連結時，您必須進行下列變更:
+> [AZURE.IMPORTANT] 當以下文章中的步驟連結時，您必須進行下列變更 ︰
 > 
 > * 當步驟說出要使用的值 __讀取器__, ，您必須改為使用 __擁有者__。 這會建立可在訂用帳戶上變更服務的服務主體，而這是建立 HDInsight 叢集所必要的。
 >
@@ -278,7 +278,7 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 
 ##取得驗證權杖
 
-使用下列命令從 Azure 取得新的權杖。 取代 __TENANTID__, ，__APPLICATIONID__, ，和 __密碼__ 的資訊儲存在建立服務主體時:
+使用下列命令從 Azure 取得新的權杖。 取代 __TENANTID__, ，__APPLICATIONID__, ，和 __密碼__ 的資訊儲存在建立服務主體時 ︰
 
     curl -X "POST" "https://login.microsoftonline.com/TENANTID/oauth2/token" \
     -H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
@@ -299,11 +299,11 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 * 取代 __SUBSCRIPTIONID__ 與訂閱建立服務主體時，收到識別碼。
 * 取代 __ACCESSTOKEN__ 上一個步驟中所收到的存取權杖。
 * 取代 __DATACENTERLOCATION__ 與您想要建立資源群組和資源，在資料中心。 例如 'South Central US'。 
-* 取代 __GROUPNAME__ 與您想要用於此群組的名稱:
+* 取代 __GROUPNAME__ 與您想要用於此群組的名稱 ︰
 
     curl"PUT"X"https://management.azure.com/subscriptions/SUBSCRIPTIONID/resourcegroups/GROUPNAME?api-version=2015-01-01"\
-        -H"授權: 承載 ACCESSTOKEN"\
-        -H 」 內容類型: 應用程式/json"\
+        -H"授權 ︰ 承載 ACCESSTOKEN"\
+        -H 」 內容類型 ︰ 應用程式/json"\
         -d $'{
     「 位置 」: 「 DATACENTERLOCATION 」
     }’
@@ -319,8 +319,8 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 * 取代 __DEPLOYMENTNAME__ 與您想要用於此部署的名稱。
 
     curl"PUT"X"https://management.azure.com/subscriptions/SUBSCRIPTIONID/resourcegroups/GROUPNAME/providers/microsoft.resources/deployments/DEPLOYMENTNAME?api-version=2015-01-01"\
-    -H"授權: 承載 ACCESSTOKEN"\
-    -H 」 內容類型: 應用程式/json"\
+    -H"授權 ︰ 承載 ACCESSTOKEN"\
+    -H 」 內容類型 ︰ 應用程式/json"\
     -d"{設定內容字串的範本和參數}"
 
 > [AZURE.NOTE] 如果您已儲存的 JSON 文件包含的範本和參數檔案，您可以使用下列而不是 '-d"{範本和參數}"':
@@ -339,8 +339,8 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 * 取代 __GROUPNAME__ 您在上一節中建立的資源群組名稱。
 
     curl-X"GET""https://management.azure.com/subscriptions/SUBSCRIPTIONID/resourcegroups/GROUPNAME/providers/microsoft.resources/deployments/DEPLOYMENTNAME?api-version=2015-01-01"\
-    -H"授權: 承載 ACCESSTOKEN"\
-    -H 」 內容類型: 應用程式/json 」
+    -H"授權 ︰ 承載 ACCESSTOKEN"\
+    -H 」 內容類型 ︰ 應用程式/json 」
 
 這會傳回包含部署作業相關資訊的 JSON 文件。 `"provisioningState"` 元素會包含部署的狀態；如果狀態包含的值為 `"Succeeded"`，表示部署已順利完成。 現在，您的叢集應該可供使用。
 
@@ -364,4 +364,5 @@ Azure 資源管理範本所描述的 JSON 文件 __資源群組__ 和裡面的�
 * [在 HDInsight 上開發適用於 Storm 的 Java 拓撲](hdinsight-storm-develop-java-topology.md)
 * [在 HDInsight 上的 Storm 中使用 Python 元件](hdinsight-storm-develop-python-topology.md)
 * [在 HDInsight 上使用 Storm 部署和監視拓撲](hdinsight-storm-deploy-monitor-topology-linux.md)
+
 

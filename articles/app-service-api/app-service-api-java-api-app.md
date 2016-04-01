@@ -1,11 +1,11 @@
 <properties
-    pageTitle ="建置和部署 Java API 應用程式在 Azure App Service 中的 」
-    描述 = 「"了解如何建立 Java 應用程式封裝，並將它部署至 Azure App Service。
-    服務 ="app-service\api"
-    documentationCenter ="java 」
-    作者 ="bradygaster"
-    管理員 ="mohisri"，
-    編輯器 ="tdykstra"/ >
+    pageTitle="在 Azure App Service 中建置和部署 Java API 應用程式"
+    description="了解如何建立 Java 應用程式封裝並將其部署至 Azure App Service。"
+    services="app-service\api"
+    documentationCenter="java"
+    authors="bradygaster"
+    manager="mohisri",
+    editor="tdykstra"/>
 
 <tags
     ms.service="app-service-api"
@@ -24,7 +24,7 @@
 
 ## 必要條件
 
-1. [Java Developer Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (或更新版本)
+1. [Java Developer Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) （或更新版本）
 1. 付費或 [免費試用版](https://azure.microsoft.com/pricing/free-trial/) 訂閱 [Microsoft Azure](https://azure.microsoft.com)
 1. [Maven](https://maven.apache.org/) 在開發電腦上安裝
 1. 安裝在您開發電腦上的 Git 
@@ -141,7 +141,7 @@
 
     ![檢視 Swagger 產生的文件](media/app-service-api-java-api-app/view-swagger-generated-docs.png)
 
-1. 選取 **產生伺服器]-> [JAX RS** 功能表選項以建立您要編輯之後，將模擬 (mock) 實作伺服器端程式碼的結構。 
+1. 選取 **產生伺服器]-> [JAX RS** 功能表選項以建立您要編輯之後，將模擬 （mock） 實作伺服器端程式碼的結構。 
 
     ![產生程式碼功能表項目](media/app-service-api-java-api-app/generate-code-menu-item.png)
     
@@ -240,7 +240,7 @@
 
         mvn package war:war
         
-    一旦建立 WAR 檔案，將會放入 **目標** 資料夾。 瀏覽到 **目標** 資料夾，然後重新命名 WAR 檔案 **ROOT.war** (請確定大小寫符合這個格式)。
+    一旦建立 WAR 檔案，將會放入 **目標** 資料夾。 瀏覽到 **目標** 資料夾，然後重新命名 WAR 檔案 **ROOT.war** （請確定大小寫符合這個格式）。
     
         rename swagger-jaxrs-server-1.0.0.war ROOT.war
         
@@ -294,4 +294,5 @@
 若要建置在此範例中，您可以深入了解 [Storage SDK for Java](../storage/storage-java-how-to-use-blob-storage.md) 保存 JSON blob。 或者，您可以使用 [文件 DB Java SDK](../documentdb/documentdb-java-application.md) Azure Document DB 儲存您的連絡人資料。 
 
 如需有關如何在 Azure 中使用 Java 的詳細資訊，請參閱 [Java 開發人員中心](/develop/java/)。
+
 

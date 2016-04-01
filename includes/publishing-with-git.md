@@ -4,13 +4,13 @@
 
 > [AZURE.NOTE] 描述的許多 Git 命令在這篇文章時自動執行建立 web 應用程式使用 [適用於 Mac 和 Linux 的 Azure 命令列工具](/develop/nodejs/how-to-guides/command-line-tools/)。
 
-## <a id="Step1"></a>步驟 1: 安裝 Git
+## <a id="Step1"></a>步驟 1：安裝 Git
 
 安裝 Git 所需的步驟會因作業系統而有所不同。 請參閱 [Installing Git] 如需作業系統特定的發佈和安裝指引。
 
 > [AZURE.NOTE] 某些作業系統上的命令列和 GUI 兩種版本的 Git 可用。 本文提供的指示將使用命令列版本。
 
-## <a id="Step2"></a>步驟 2: 建立本機儲存機制
+## <a id="Step2"></a>步驟 2：建立本機儲存機制
 
 請執行下列工作以建立新的 Git 儲存機制。
 
@@ -28,17 +28,17 @@
 
     這應該傳回一則訊息，例如 **初始化空白 Git 儲存機制 [path] 中的**。
 
-## <a id="Step3"></a>步驟 3: 新增網頁
+## <a id="Step3"></a>步驟 3：新增網頁
 
 Web 應用程式支援以各種程式設計語言建立的應用程式。 以此範例為例，您將使用靜態 .html 檔案。
 
-1. 使用文字編輯器中，建立名為的新檔案 **index.html** Git 儲存機制 (您稍早建立的 MyGitRepository 目錄) 的根目錄中。
+1. 使用文字編輯器中，建立名為的新檔案 **index.html** Git 儲存機制 （您稍早建立的 MyGitRepository 目錄） 的根目錄中。
 
 2. 新增下列文字作為 index.html 檔案的內容，然後儲存檔案。
 
         Hello Git!
 
-3. 從命令列，驗證您位在 Git 儲存機制的根目錄。 然後使用下列命令以新增 **index.html** 至儲存機制的檔案:
+3. 從命令列，驗證您位在 Git 儲存機制的根目錄。 然後使用下列命令以新增 **index.html** 至儲存機制的檔案 ︰
 
         git add index.html 
 
@@ -54,7 +54,7 @@ Web 應用程式支援以各種程式設計語言建立的應用程式。 以此
          1 file changed, 1 insertion(+)
          create mode 100644 index.html
 
-## <a id="Step4"></a>啟用 Web 應用程式儲存機制
+## <a id="Step4"></a>啟用 Web App 儲存機制
 
 請執行下列步驟來啟用 Web 應用程式的 Git 儲存機制。
 
@@ -114,19 +114,19 @@ Web 應用程式支援以各種程式設計語言建立的應用程式。 以此
 
     ![](./media/publishing-with-git/azure4-deployed.png)
 
-2. 按一下下方的連結 **URL** ，確認 web 應用程式刀鋒視窗頂端 **index.html** 部署。 包含 ' Hello Git!' 的頁面 會出現。
+2. 按一下下方的連結 **URL** ，確認 web 應用程式刀鋒視窗頂端 **index.html** 部署。 包含 'Hello Git ！' 的頁面 會出現。
 
     ![包含 'Hello Git!' 的網頁][hello-git]
 
-3. 使用文字編輯器，將 **index.html** 檔案，使其包含 'Yay!'，並儲存檔案。
+3. 使用文字編輯器，將 **index.html** 檔案，使其包含 'Yay ！'，並儲存檔案。
 
-4. 使用下列命令，從命令列以 **新增** 和 **認可** 變更，然後 **推播** 遠端儲存機制的變更:
+4. 使用下列命令，從命令列以 **新增** 和 **認可** 變更，然後 **推播** 遠端儲存機制的變更 ︰
 
         git add index.html
         git commit -m "Celebration"
         git push azure master
 
-    一次 **推播** 命令完成後，請重新整理瀏覽器 (您可能需要按 Ctrl + F5，瀏覽器才能正常重新整理)，並請注意，頁面內容現已反映最新的認可變更。
+    一次 **推播** 命令完成後，請重新整理瀏覽器 （您可能需要按 Ctrl + F5，瀏覽器才能正常重新整理），並請注意，頁面內容現已反映最新的認可變更。
 
 ### <a id="Step7"></a>部署來自儲存機制網站 (如 BitBucket、CodePlex、Dropbox、GitHub 或 Mercurial) 的檔案
 
@@ -162,7 +162,7 @@ Azure 將與所選儲存機制建立關聯，然後從指定的分支提取檔�
 
 將 Visual Studio 方案推送至 Azure App Service 中的 Web 應用程式，就像推送簡單的 index.html 檔案一樣容易。 Web 應用程式部署程序會簡化所有細節，包含還原 NuGet 相依性，以及建置應用程式二進位檔。 您可以只在 Git 儲存機制中遵循維護程式碼的原始檔控制最佳做法，然後讓 Web 應用程式部署負責執行剩餘的部分。
 
-將您的 Visual Studio 方案推送至 Web 應用程式的步驟是相同 [上一節](#Step7), ，可提供您設定解決方案和儲存機制，如下所示:
+將您的 Visual Studio 方案推送至 Web 應用程式的步驟是相同 [上一節](#Step7), ，可提供您設定解決方案和儲存機制，如下所示 ︰
 
 -   在儲存機制根目錄中，新增 `.gitignore` 檔案，然後指定所有檔案和資料夾，您想要從儲存機制，例如排除 `Obj`, ，`Bin`, ，和 `packages` 資料夾 (請參閱 [gitignore 文件](http://git-scm.com/docs/gitignore) 如需格式資訊)。 例如：
 
@@ -204,28 +204,28 @@ Azure 將與所選儲存機制建立關聯，然後從指定的分支提取檔�
 
 ****
 
-**徵兆**: 無法存取 '[siteURL]': 無法連線至 [scmAddress]
+**徵兆**︰ 無法存取 '[siteURL]': 無法連線至 [scmAddress]
 
-**原因**: 如果 web 應用程式尚未啟動並執行，可能會發生此錯誤。
+**原因**︰ 如果 web 應用程式尚未啟動並執行，可能會發生此錯誤。
 
-**解析**: 在 Azure 入口網站中啟動 web 應用程式。 除非 Web 應用程式正在執行，否則 Git 部署將無法運作。 
+**解析**︰ 在 Azure 入口網站中啟動 web 應用程式。 除非 Web 應用程式正在執行，否則 Git 部署將無法運作。 
 
-
-****
-
-**徵兆**: 無法解析主機 'hostname'
-
-**原因**: 如果建立 'azure' 遠端時所輸入的位址資訊不正確，可能會發生此錯誤。
-
-**解析**: 使用 `git remote -v` 命令來列出所有遠端以及相關聯的 URL。 驗證 'azure' 遠端的 URL 是否正確。 如有需要，移除此遠端並使用正確的 URL 重新建立。
 
 ****
 
-**徵兆**: 通常沒有參考且沒有指定; 不執行任何動作。 或許您應該指定分支，例如 'master'。
+**徵兆**︰ 無法解析主機 'hostname'
 
-**原因**: 如果您沒有指定分支，當執行 git 推送操作，且沒有設定 Git 所使用的 push.default 值，可能會發生此錯誤。
+**原因**︰ 如果建立 'azure' 遠端時所輸入的位址資訊不正確，可能會發生此錯誤。
 
-**解析**: 執行推送操作一次，指定主要分支。 例如：
+**解析**︰ 使用 `git remote -v` 命令來列出所有遠端以及相關聯的 URL。 驗證 'azure' 遠端的 URL 是否正確。 如有需要，移除此遠端並使用正確的 URL 重新建立。
+
+****
+
+**徵兆**︰ 通常沒有參考且沒有指定; 不執行任何動作。 或許您應該指定分支，例如 'master'。
+
+**原因**︰ 如果您沒有指定分支，當執行 git 推送操作，且沒有設定 Git 所使用的 push.default 值，可能會發生此錯誤。
+
+**解析**︰ 執行推送操作一次，指定主要分支。 例如：
 
     git push azure master
 
@@ -233,21 +233,21 @@ Azure 將與所選儲存機制建立關聯，然後從指定的分支提取檔�
 
 **徵兆**: src refspec [branchname] 不符合任何。
 
-**原因**: 如果您嘗試遠端 'azure' 上推送至除了主要以外的分支，會發生此錯誤。
+**原因**︰ 如果您嘗試遠端 'azure' 上推送至除了主要以外的分支，會發生此錯誤。
 
-**解析**: 執行推送操作一次，指定主要分支。 例如：
+**解析**︰ 執行推送操作一次，指定主要分支。 例如：
 
     git push azure master
 
 ****
 
-**徵兆**: 錯誤-對遠端儲存機制認可變更，但不是會更新您的 web 應用程式。
+**徵兆**︰ 錯誤-對遠端儲存機制認可變更，但不是會更新您的 web 應用程式。
 
-**原因**: 如果您要部署包含 package.json 檔案，指定需要額外的模組的 Node.js 應用程式，可能會發生此錯誤。
+**原因**︰ 如果您要部署包含 package.json 檔案，指定需要額外的模組的 Node.js 應用程式，可能會發生此錯誤。
 
-**解析**: 其他包含 'npm ERR!' 的訊息 應該在記錄的之前，此錯誤，而且可以提供額外的內容失敗。 下列是已知的這項錯誤，對應 'npm ERR!' 的原因 message:
+**解析**︰ 其他包含 'npm ERR ！' 的訊息 應該在記錄的之前，此錯誤，而且可以提供額外的內容失敗。 下列是已知的這項錯誤，對應 'npm ERR ！' 的原因 message:
 
-* **格式錯誤的 package.json 檔案**: npm ERR! 無法讀取相依性。
+* **格式錯誤的 package.json 檔案**: npm ERR ！ 無法讀取相依性。
 
 * **原生模組沒有適用於 Windows 的二進位檔發佈**:
 
@@ -255,7 +255,7 @@ Azure 將與所選儲存機制建立關聯，然後從指定的分支提取檔�
 
         或
 
-    * npm ERR! [modulename@version] 安裝前: \'make | |gmake\'
+    * npm ERR! [modulename@version] 安裝前 ︰ \'make | |gmake\'
 
 
 ## 其他資源
@@ -265,10 +265,10 @@ Azure 將與所選儲存機制建立關聯，然後從指定的分支提取檔�
 * [Git 文件]
 * [專案 Kudu](https://github.com/projectkudu/kudu/wiki)
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [Azure Developer Center]: http://www.windowsazure.com/en-us/develop/overview/
 [Azure Portal]: https://portal.azure.com
@@ -296,4 +296,5 @@ Azure 將與所選儲存機制建立關聯，然後從指定的分支提取檔�
 [Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart
 [Using Dropbox to Share Git Repositories]: https://gist.github.com/trey/2722927
 [Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
+
 

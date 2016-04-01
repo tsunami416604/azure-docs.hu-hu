@@ -57,7 +57,7 @@ Microsoft Azure 媒體服務推出 **媒體編碼器高階工作流程** 媒體�
 
     b. 第二個 – 視訊資產。
     
-    **請注意**: 工作流程資產必須新增至媒體資產前工作。 
+    **請注意**︰ 工作流程資產必須新增至媒體資產前工作。 
 這項工作 (Task) 的組態字串應該是空的。 
 
 6. 提交編碼工作 (Job)。
@@ -277,4 +277,5 @@ Microsoft Azure 媒體服務推出 **媒體編碼器高階工作流程** 媒體�
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

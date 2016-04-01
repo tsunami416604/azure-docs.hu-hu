@@ -72,7 +72,7 @@
 
     ![顯示您可以選取的 Azure VM 大小的螢幕擷取畫面](./media/virtual-machines-windows-tutorial/create_vm_size.PNG)
 
-    >[AZURE.NOTE] 高階儲存體可供某些區域的 DS 系列虛擬機器。 進階儲存體對於如資料庫這類資料密集的工作負載是最佳的儲存體選項。 如需詳細資訊，請參閱 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
+    >[AZURE.NOTE] 高階儲存體可供某些區域的 DS 系列虛擬機器。 進階儲存體對於如資料庫這類資料密集的工作負載是最佳的儲存體選項。 如需詳細資訊，請參閱 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
 
 3. 按一下 [ **設定** 以查看新的虛擬機器的存放裝置和網路設定。 若為第一個虛擬機器，通常您可以接受預設的設定。 如果您選取的虛擬機器大小支援它，您可以試用進階儲存體選取 **進階 (SSD)** 下 **磁碟類型**。
 
@@ -112,4 +112,5 @@
 
 * 使用 Azure PowerShell 和 Azure CLI 以 [找出並選取虛擬機器映像](resource-groups-vm-searching.md)。
 * 自動化虛擬機器和工作負載部署和管理使用 [Azure 資源管理員](virtual-machines-how-to-automate-azure-resource-manager.md) 和 [Azure 資源管理員範本](http://azure.microsoft.com/documentation/templates/)。
+
 

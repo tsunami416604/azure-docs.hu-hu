@@ -19,20 +19,20 @@
 
 # 如何識別案例和規劃進階分析資料處理
 
-在設定環境以對資料集執行進階分析處理時，您應該規劃包含哪些資源？ 本文提出一系列問題，有助於識別您的案例相關的工作和資源。 預測分析的高階步驟順序述 [Cortana 分析程序 (CAP) 是什麼?](machine-learning-data-science-the-cortana-analytics-process.md) 文件。 每個步驟會需要特定的資源與特定的案例相關的工作。 用以識別案例的主要問題是關於資料邏輯、特性、資料集的品質，以及您想要進行分析的工具和語言。
+在設定環境以對資料集執行進階分析處理時，您應該規劃包含哪些資源？ 本文提出一系列問題，有助於識別您的案例相關的工作和資源。 預測分析的高階步驟順序述 [Cortana 分析程序 (CAP) 是什麼？](machine-learning-data-science-the-cortana-analytics-process.md) 文件。 每個步驟會需要特定的資源與特定的案例相關的工作。 用以識別案例的主要問題是關於資料邏輯、特性、資料集的品質，以及您想要進行分析的工具和語言。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## 邏輯問題：資料位置和移動
 羅吉斯問題有關的位置 **資料來源**, 、 **目標目的地** 在 Azure 和移動資料，包括排程、 需求和資源涉及。 在分析程序期間，資料可能需要移動數次。 常見的案例是將本機資料移到 Azure 上的某種儲存體，再移至 Machine Learning Studio。
 
-1. **什麼是資料來源?**在本機還是在雲端？ 例如：
+1. **資料來源是什麼？** 在本機還是在雲端？ 例如：
     - 資料可在 HTTP 位址上公開使用。
     - 資料位於本機或網路檔案位置中。
     - 資料是在 SQL Server 資料庫中。
     - 資料儲存於 Azure 儲存體容器中
 
-2. **什麼是 Azure 的目的?**需要在哪裡處理或建立模型？ 例如：
+2. **Azure 目的地是什麼？** 需要在哪裡處理或建立模型？ 例如：
     - Azure Blob 儲存體
     - SQL Azure 資料庫
     - 在 Azure VM 上的 SQL Server
@@ -40,26 +40,26 @@
     - Azure Machine Learning
     - 可裝載的 Azure 虛擬硬碟。
 
-3. **您要如何移動資料?**下列主題概述可將資料內嵌或載入至各種不同儲存體和處理環境的程序和資源。
+3. **您要如何移動資料？** 下列主題概述可將資料內嵌或載入至各種不同儲存體和處理環境的程序和資源。
 
     -  [將資料載入至儲存體環境以便進行分析](machine-learning-data-science-ingest-data.md) 
     -  [將訓練資料匯入各種資料來源從 Azure Machine Learning Studio](machine-learning-data-science-import-data,md)。
 
-4. **資料是否需要移動定期或在移轉期間修改?**當資料需要持續移轉時，特別是在涉及同時存取內部部署和雲端資源的混合式案例中，或當資料為交易式或在移轉過程中需要修改或新增商務邏輯時，請考慮使用 Azure Data Factory (ADF)。 如需詳細資訊，請參閱 [將資料從內部部署 SQL server 移至 Azure Data Factory 與 SQL Azure](machine-learning-data-science-move-sql-azure-adf.md)
+4. **資料是否需要定期移動或在移轉期間修改？** 當資料需要持續移轉時，特別是在涉及同時存取內部部署和雲端資源的混合式案例中，或當資料為交易式或在移轉過程中需要修改或新增商務邏輯時，請考慮使用 Azure Data Factory (ADF)。 如需詳細資訊，請參閱 [將資料從內部部署 SQL server 移至 Azure Data Factory 與 SQL Azure](machine-learning-data-science-move-sql-azure-adf.md)
 
-5. **有多少的資料移到 Azure?**非常大的資料集可能會超過某些環境的儲存體容量。 如需相關範例，請參閱下一節關於 Machine Learning studio 大小限制的討論。 在這種情況下，分析期間可能使用資料樣本。 如何向下取樣各種 Azure 環境中的資料集的詳細資訊，請參閱 [Cortana 分析程序中的進行資料取樣](machine-learning-data-science-sample-data.md)。
+5. **有多少資料要移至 Azure？** 非常大的資料集可能會超過某些環境的儲存體容量。 如需相關範例，請參閱下一節關於 Machine Learning studio 大小限制的討論。 在這種情況下，分析期間可能使用資料樣本。 如何向下取樣各種 Azure 環境中的資料集的詳細資訊，請參閱 [Cortana 分析程序中的進行資料取樣](machine-learning-data-science-sample-data.md)。
 
 
 ## 資料特性問題：類型、格式和大小
 這些問題是規劃儲存體和處理環境的關鍵，各適用於不同類型的資料，也各有其特定的限制。 
 
-1. **資料類型為何?**例如： 
+1. **資料類型是什麼？** 例如： 
     - 數值
     - 類別
     - 字串
     - Binary
 
-2. **如何將資料格式化?**例如：
+2. **如何將資料格式化？** 例如：
     - 逗號分隔 (CSV) 或定位鍵分隔 (TSV) 一般檔案
     - 已壓縮或未壓縮
     - Azure Blob
@@ -75,15 +75,15 @@
 
 - 如需的資料格式和 Azure Machine Learning Studio 所支援的類型清單，請參閱
 [支援的資料格式和資料類型](machine-learning-data-science-import-data.md#data-formats-and-data-types-supported) 一節。
-- 如需 Azure Machine Learning Studio 的資料限制，請參閱 **多少可以資料集是我的模組適用?** 區段 [匯入及匯出機器學習資料](machine-learning-faq.md#machine-learning-studio-questions)
+- 如需 Azure Machine Learning Studio 的資料限制，請參閱 **多少可以資料集是我的模組適用？** 區段 [匯入及匯出機器學習資料](machine-learning-faq.md#machine-learning-studio-questions)
 
 如需分析程序中使用其他 Azure 服務的限制，請參閱 [Azure 訂用帳戶和服務限制、 配額和條件約束](azure-subscription-service-limits.md)。
 
 ## 資料品質問題：探索和前置處理
 
-1. **您知道您的資料?**當您需要了解資料的基本特性時，請探索資料。 資料呈現什麼模式或趨勢、有什麼極端值或遺漏多少值。 這個步驟很重要，將會決定所需的前置處理程度、形成假設來建議最適合的功能分析類型，以及擬定計劃來收集其他資料。 計算描述性統計資料和繪製視覺效果是很有用的資料檢查技術。 如何瀏覽不同的 Azure 環境中的資料集的詳細資訊，請參閱 [瀏覽 Cortana 分析程序中的資料](machine-learning-data-science-explore-data.md)。
+1. **您對資料的熟悉程度為何？** 當您需要了解資料的基本特性時，請探索資料。 資料呈現什麼模式或趨勢、有什麼極端值或遺漏多少值。 這個步驟很重要，將會決定所需的前置處理程度、形成假設來建議最適合的功能分析類型，以及擬定計劃來收集其他資料。 計算描述性統計資料和繪製視覺效果是很有用的資料檢查技術。 如何瀏覽不同的 Azure 環境中的資料集的詳細資訊，請參閱 [瀏覽 Cortana 分析程序中的資料](machine-learning-data-science-explore-data.md)。
 
-2. **資料是否需要預先處理，或清除?**
+2. **資料是否需要前置處理或清除？**
 前置處理和清除資料是很重要的工作，必須先執行這些工作，才能有效地將資料集用於機器學習服務。 未經處理的資料通常會有雜訊且不可靠，還可能會有遺漏值。 使用這類資料進行模型化可能會產生誤導的結果。 如需說明，請參閱 [工作以準備資料增強機器學習](machine-learning-data-science-prepare-data.md)。
 
 ## 工具和語言的問題
@@ -115,3 +115,4 @@
 
 
  
+

@@ -50,8 +50,8 @@ Azure Active Directory B2B 共同作業的設定很簡單，各種規模的合�
 
 CSV 檔案採用以下的格式。 新增所有必要的逗號，即使您沒有指定一個或多個選項。
 
-**電子郵件:** 電子郵件地址邀請使用者。<br/>
-**顯示名稱:** 受邀的使用者 (通常，第一個和最後一個名稱) 的顯示名稱。<br/>
+**電子郵件 ︰** 電子郵件地址邀請使用者。<br/>
+**顯示名稱 ︰** 受邀的使用者 （通常，第一個和最後一個名稱） 的顯示名稱。<br/>
 **InviteAppID:**  應用程式使用的標示電子郵件邀請]，然後接受頁面的識別碼。<br/>
 **InviteReplyURL:** URL，以接受邀請之後直接受邀的使用者。 這應該是特定公司的 URL (例如 [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/))。 如果未指定此選用欄位，就會產生邀請其他公司的存取面板 URL (此 URL 的格式是  `https://account.activedirectory.windowsazure.com/applications/default.aspx?tenantId=<TenantID>`)。<br/>
 **InviteAppResources:** 應用程式可以將使用者指派的 Appid。 藉由呼叫擷取 Appid 的 `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId`<br/>
@@ -77,4 +77,5 @@ bsmith@contoso.com,Ben Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.m
 - [外部使用者權杖格式](active-directory-b2b-references-external-user-token-format.md)
 - [外部使用者物件屬性變更](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [目前的預覽版本限制](active-directory-b2b-current-preview-limitations.md)
+
 

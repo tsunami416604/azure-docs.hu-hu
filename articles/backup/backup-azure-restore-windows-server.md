@@ -8,13 +8,13 @@
    editor=""/>
 
 <tags
-   ms.service="backup 」
-   ms.workload= 「 儲存體的備份復原的 」
+   ms.service="backup"
+   ms.workload="storage-backup-recovery"
      ms.tgt_pltfrm="na"
      ms.devlang="na"
      ms.topic="article"
-     ms.date="10/21/2015 」
-     ms.author="jimpark 」。「 aashishr 」 / >
+     ms.date="10/21/2015"
+     ms.author="jimpark"; "aashishr"/>
 
 # 將檔案還原到 Windows Server 或 Windows 用戶端電腦
 本文涵蓋執行兩種類型還原作業所需的步驟：
@@ -44,7 +44,7 @@
 
 5. 選取您要還原檔案所在的磁碟區。
 
-    您可以從任何時間點還原。 在顯示的日期會 **粗體** 行事曆控制項中指出的還原點的可用性。 一旦選取日期之後，根據您的備份排程 (以及成功的備份作業)，您可以選取時間點從 **時間** 下拉式清單。
+    您可以從任何時間點還原。 在顯示的日期會 **粗體** 行事曆控制項中指出的還原點的可用性。 一旦選取日期之後，根據您的備份排程 （以及成功的備份作業），您可以選取時間點從 **時間** 下拉式清單。
 
     ![磁碟區和日期](./media/backup-azure-restore-windows-server/volanddate.png)
 
@@ -83,7 +83,7 @@
 
     ![其他伺服器](./media/backup-azure-restore-windows-server/anotherserver.png)
 
-5. 提供對應於保存庫認證檔 *範例保存庫*。 如果保存庫認證檔不正確 (或已過期) 下載新的保存庫認證檔從 *範例保存庫* Azure 入口網站中。 一旦提供保存庫認證檔，即會顯示保存庫認證檔的備份保存庫。
+5. 提供對應於保存庫認證檔 *範例保存庫*。 如果保存庫認證檔不正確 （或已過期） 下載新的保存庫認證檔從 *範例保存庫* Azure 入口網站中。 一旦提供保存庫認證檔，即會顯示保存庫認證檔的備份保存庫。
 
 6. 選取 *來源機器* 顯示的電腦清單。
 
@@ -115,4 +115,5 @@
 - [Azure 備份概觀](http://go.microsoft.com/fwlink/p/?LinkId=222425)
 - [備份 Azure 虛擬機器](backup-azure-vms-introduction.md)
 - [備份 Microsoft 工作負載](backup-azure-dpm-introduction.md)
+
 

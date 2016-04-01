@@ -60,7 +60,7 @@
 ## 4.下載程式碼和設定驗證
 
 此範例的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet)。  當您建置範例，您可以 
-[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) 或再製基本架構:
+[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git
@@ -349,8 +349,8 @@ public ActionResult Claims()
 您可以自由試驗您的原則，並觀察範例應用程式上有何效果 - 新增/移除 IDP、操作應用程式宣告、變更註冊屬性。
 試驗到您開始了解原則、驗證要求和 OWIN 如何結合在一起為止。
 
-(不含您的設定值) 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/complete.zip),，
-或者，您可以從 GitHub 複製它:
+（不含您的設定值） 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/complete.zip),，
+或者，您可以從 GitHub 複製它 ︰
 
 ```
 git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git
@@ -358,13 +358,14 @@ git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-Ope
 
 <!--
 
-## 後續步驟
+## Next Steps
 
-您現在可以進入更進階的 B2C 主題。  您可以嘗試：
+You can now move onto more advanced B2C topics.  You may want to try:
 
-[從 Web 應用程式呼叫 Web API >>]()
+[Calling a Web API from a Web App >>]()
 
-[自訂 B2C 應用程式的 UX >>]()
+[Customizing the your B2C App's UX >>]()
 
 -->
+
 

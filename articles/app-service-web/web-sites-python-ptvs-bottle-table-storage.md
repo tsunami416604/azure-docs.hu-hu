@@ -19,25 +19,25 @@
 
 # Azure 上使用 Python Tools 2.2 for Visual Studio 的 Bottle 和 Azure 資料表儲存體 
 
-在本教學課程中，我們將建立簡單的民調 web 應用程式使用其中一個 PTVS 範例範本來使用 [Python Tools for Visual Studio]。 本教學課程也會提供做為 [視訊](https://www.youtube.com/watch?v=GJXDGaEPy94)。
+在本教學課程中，我們將使用 [Python Tools for Visual Studio] 來建立簡單的民調 web 應用程式使用其中一個 PTVS 範例範本。 本教學課程也會提供做為 [視訊](https://www.youtube.com/watch?v=GJXDGaEPy94)。
 
 民調 Web 應用程式會為其儲存機制定義一個抽象概念，讓您輕鬆地切換不同類型的儲存機制 (記憶體內部、Azure 資料表儲存體、MongoDB)。
 
 我們將學習如何建立 Azure 儲存體帳戶、 如何設定 web 應用程式使用 Azure 資料表儲存體，以及如何將 web 應用程式發佈 [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)s。
 
-使用 MongoDB、 Azure 資料表儲存體、 MySQL 和 SQL Database 服務搭配使用 Bottle、 Flask 和 Django web 架構的 PTVS，請參閱 [Python 開發人員中心] 如需開發的 Azure 應用程式服務 Web 應用程式的文件。 雖然本文著重於應用程式服務，開發 [Azure 雲端服務] 時的步驟很類似。
+請參閱 [Python Developer Center] 如需文件開發的 Azure 應用程式服務 Web 應用程式使用 PTVS 使用 Bottle、 Flask 和 Django web 架構，來使用 MongoDB、 Azure 資料表儲存體、 MySQL 和 SQL 資料庫的服務。 雖然本文著重於應用程式服務，開發時的步驟很類似 [Azure Cloud Services]。
 
 ## 必要條件
 
  - Visual Studio 2013 或 2015
- - [Python 工具 2.2 for Visual Studio]
- - [Python Tools for Visual Studio 範例 VSIX 2.2]
- - [Azure SDK Tools for VS 2013] 或 [VS 2015 的 Azure SDK Tools]
- - [Python 2.7 32 位元] 或 [Python 3.4 32 位元]
+ - [Python Tools 2.2 for Visual Studio]
+ - [Python Tools 2.2 for Visual Studio 範例 VSIX]
+ - [Azure SDK Tools for VS 2013] 或 [Azure SDK Tools for VS 2015]
+ - [Python 2.7 32-bit] 或 [Python 3.4 32-bit]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 建立專案
 
@@ -99,7 +99,7 @@
 
     此外，您也可以使用 Windows 控制台定義環境變數。 如果想要避免將認證儲存在原始碼 / 專案檔案中，這是比較好的選項。 請注意，您必須重新啟動 Visual Studio，新的環境值才可用於應用程式。
 
-1.  實作 Azure 資料表儲存體儲存機制的程式碼位於 **models/azuretablestorage.py**。 如需有關如何從 Python 使用表格服務，請參閱 [文件]。
+1.  實作 Azure 資料表儲存體儲存機制的程式碼位於 **models/azuretablestorage.py**。 請參閱 [documentation] 如需有關如何從 Python 使用表格服務。
 
 1.  使用 `F5` 執行應用程式。 用來建立的民調 **Create Sample Polls** 以及投票所提交的資料將會在 Azure 資料表儲存體中序列化。
 
@@ -113,7 +113,7 @@
 
 使用 Visual Studio 中的 [伺服器總管] 即可輕易檢視和編輯儲存體資料表。 在這一節中，我們將使用 [伺服器總管] 來檢視民調應用程式資料表的內容。
 
-> [AZURE.NOTE] 這需要 Microsoft Azure Tools 安裝，它可以做為 [Azure SDK for.NET] 的一部分。
+> [AZURE.NOTE] 這需要 Microsoft Azure Tools 安裝，也就是可做為屬於 [Azure SDK for .NET]。
 
 1.  開啟 **伺服器總管**。 展開 **Azure**, ，**儲存體**, ，儲存體帳戶，然後 **資料表**。
 
@@ -154,7 +154,7 @@ Azure .NET SDK 提供簡單的方法將 Web 應用程式部署至 Azure App Serv
 
 在本節中，我們將設定 Web Apps 執行個體的環境變數。
 
-1.  在 [Azure 入口網站]，開啟 web 應用程式的刀鋒視窗中依序按一下 **瀏覽** > **Web 應用程式** > 您的 web 應用程式名稱。
+1.  在 [Azure Portal], ，開啟 web 應用程式的刀鋒視窗中，依序按一下 **瀏覽** > **Web 應用程式** > 您的 web 應用程式名稱。
 
 1.  在 web 應用程式的刀鋒視窗中，按一下 [ **所有設定**, ，然後按一下 [ **應用程式設定**。
 
@@ -178,17 +178,17 @@ Azure .NET SDK 提供簡單的方法將 Web 應用程式部署至 Azure App Serv
 
 請遵循下列連結以深入了解 Python Tools for Visual Studio、Bottle 和 Azure 資料表儲存體。
 
-- [Python Tools for Visual Studio 文件]
+- [Python Tools for Visual Studio 說明文件]
   - [Web 專案]
   - [雲端服務專案]
-  - [遠端偵錯 Microsoft Azure]
-- [Bottle 文件]
+  - [在 Microsoft Azure 上進行遠端偵錯]
+- [Bottle 說明文件]
 - [Azure 儲存體]
 - [Azure SDK for Python]
-- [如何使用 Python 的資料表儲存體服務]
+- [如何從 Python 使用資料表儲存體服務]
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 
 <!--Link references-->
@@ -215,4 +215,5 @@ Azure .NET SDK 提供簡單的方法將 Web 應用程式部署至 Azure App Serv
 [Azure Storage]: http://azure.microsoft.com/documentation/services/storage/
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
+
 

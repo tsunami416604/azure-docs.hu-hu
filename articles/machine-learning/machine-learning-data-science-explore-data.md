@@ -29,3 +29,4 @@
 - **Hive 資料表** 資料會探索使用 Hive 查詢。
 - **Azure 機器學習 (AML) Studio** 使用 AML 模組已探索資料。
 
+

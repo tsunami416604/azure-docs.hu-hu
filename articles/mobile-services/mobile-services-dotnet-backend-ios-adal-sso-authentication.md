@@ -32,19 +32,19 @@
 要能夠驗證使用者，您必須向 Azure Active Directory (AAD) 註冊您的應用程式。 此作業有兩個階段。 第一，您必須註冊行動服務，並公開其權限。 第二，您必須註冊 iOS 應用程式，並為其授與對這些權限的存取權
 
 
->[AZURE.NOTE] 本教學課程旨在協助您深入了解行動服務如何讓您執行單一登入 Azure Active Directory 驗證 iOS 應用程式。 如果這是您第一次接觸行動服務，來完成教學課程 [開始使用行動服務]。
+>[AZURE.NOTE] 本教學課程旨在協助您深入了解行動服務如何讓您執行單一登入 Azure Active Directory 驗證 iOS 應用程式。 如果這是您第一次接觸行動服務，來完成教學課程 [Get started with Mobile Services]。
 
 
-##先決條件
+##必要條件
 
 
 本教學課程需要下列各項：
 
 * XCode 4.5 和 iOS 6.0 (或更新版本)
-* 完成 [開始使用行動服務] 教學課程。
-* 完成 [註冊您的應用程式使用 Azure Active Directory 帳戶登入]
+* 完成 [Get started with Mobile Services] 教學課程。
+* 完成 [Register your apps to use an Azure Active Directory Account login]
 * Microsoft Azure 行動服務 SDK
-* [Active Directory Authentication Library for iOS]
+* 的 [Active Directory Authentication Library for iOS]
 
 [AZURE.INCLUDE [mobile-services-dotnet-adal-register-client](../../includes/mobile-services-dotnet-adal-register-client.md)]
 
@@ -54,7 +54,7 @@
 
 ##將驗證程式碼新增至用戶端應用程式
 
-1. 下載 [Active Directory Authentication Library for iOS]，並將它包含在您的專案。 請務必同時從 ADAL 來源新增腳本。
+1. 下載 [Active Directory Authentication Library for iOS] 並將它包含在專案中。 請務必同時從 ADAL 來源新增腳本。
 
 2. 在 QSTodoListViewController 中，使用下列程式碼納入 ADAL：
 
@@ -96,9 +96,9 @@
         }
 
 
-6. 中的程式碼 `loginAndGetData` 方法，取代 **授權單位-INSERT-CLIENT-ID-HERE** 替換為您佈建您的應用程式的租用戶名稱，格式應為 https://login.windows.net/tenant-name.onmicrosoft.com。 此值可從 [Azure 傳統入口網站] 複製到 Azure Active Directory 的 [網域] 索引標籤以外。
+6. 中的程式碼 `loginAndGetData` 方法，取代 **授權單位-INSERT-CLIENT-ID-HERE** 替換為您佈建您的應用程式的租用戶名稱，格式應為 https://login.windows.net/tenant-name.onmicrosoft.com。 Azure Active Directory 中的 [網域] 索引標籤可以複製此值 [Azure classic portal]。
 
-7. 在程式碼中的 `loginAndGetData` 方法，取代 **插入資源 URI-這裡** 與 **應用程式識別碼 URI** 行動服務。 如果您依照 [如何向 Azure Active Directory] 主題您的應用程式識別碼 URI 應類似於 https://todolist.azure-mobile.net/login/aad。
+7. 在程式碼中的 `loginAndGetData` 方法，取代 **插入資源 URI-這裡** 與 **應用程式識別碼 URI** 行動服務。 如果您依照 [How to Register with the Azure Active Directory] 主題您的應用程式識別碼 URI 應類似於 https://todolist.azure-mobile.net/login/aad。
 
 8. 在程式碼中的 `loginAndGetData` 方法，取代 **-用戶端-INSERT-CLIENT-ID-HERE** 您從原生用戶端應用程式中複製的用戶端識別碼。
 
@@ -125,4 +125,5 @@
 [How to Register with the Azure Active Directory]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure classic portal]: https://manage.windowsazure.com/
 [Active Directory Authentication Library for iOS]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
+
 

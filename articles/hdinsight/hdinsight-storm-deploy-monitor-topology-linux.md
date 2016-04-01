@@ -22,19 +22,19 @@
 
 > [AZURE.IMPORTANT] 這篇文章中的步驟需要以 Linux 為基礎的 Storm on HDInsight 叢集。 如需部署和監視 Windows 為基礎的 HDInsight 上的拓撲資訊，請參閱 [部署和管理 Windows 為基礎的 HDInsight 上的 Apache Storm 拓撲](hdinsight-storm-deploy-monitor-topology.md)
 
-## 先決條件
+## 必要條件
 
-- **以 Linux 為基礎的 Storm on HDInsight 叢集**: 請參閱 [開始使用 Apache Storm on HDInsight](hdinsight-storm-get-started-linux.md) 如需建立叢集的步驟
+- **以 Linux 為基礎的 Storm on HDInsight 叢集**︰ 請參閱 [開始使用 Apache Storm on HDInsight](hdinsight-storm-get-started-linux.md) 如需建立叢集的步驟
 
-- **熟悉 SSH 和 SCP**: 如需搭配 HDInsight 使用 SSH 和 SCP 的詳細資訊，請參閱下列:
-    - **Linux、 Unix 或 OS X 用戶端**: 請參閱 [使用 SSH 與以 Linux 為基礎從 Linux、 Unix 或 OS X 在 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
-    - **Windows 用戶端**: 請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md)
+- **熟悉 SSH 和 SCP**︰ 如需搭配 HDInsight 使用 SSH 和 SCP 的詳細資訊，請參閱下列 ︰
+    - **Linux、 Unix 或 OS X 用戶端**︰ 請參閱 [使用 SSH 與以 Linux 為基礎從 Linux、 Unix 或 OS X 在 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
+    - **Windows 用戶端**︰ 請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-- **SCP 用戶端**: 這提供與所有 Linux、 Unix 和 OS X 系統。 Windows 用戶端，我們建議 PSCP 可從 [PuTTY 下載頁面下載](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
+- **SCP 用戶端**︰ 這提供與所有 Linux、 Unix 和 OS X 系統。 Windows 用戶端，我們建議 PSCP 可從 [PuTTY 下載頁面下載](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
 
 ## 啟動 Storm 拓撲
 
-1. 使用 SSH 連接到 HDInsight 叢集。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱:
+1. 使用 SSH 連接到 HDInsight 叢集。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱 ︰
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
@@ -116,37 +116,37 @@ Storm UI 提供 Web 介面來處理執行中的拓撲，包含在您的 HDInsigh
 
 Storm UI 的主頁面會提供下列資訊：
 - **叢集摘要**: Storm 叢集的基本資訊。
-- **拓撲摘要**: 執行中拓撲的清單。 使用本節中的連結來檢視特定拓撲的詳細資訊。
+- **拓撲摘要**︰ 執行中拓撲的清單。 使用本節中的連結來檢視特定拓撲的詳細資訊。
 - **監督員摘要**: Storm 監督員的資訊。
-- **Nimbus 組態**: 叢集的 Nimbus 組態。
+- **Nimbus 組態**︰ 叢集的 Nimbus 組態。
 
 ### 拓撲摘要
 
-選取的連結從 **拓樸摘要** 區段會顯示拓撲的下列資訊:
-- **拓撲摘要**: 拓撲的基本資訊。
-- **拓撲動作**: 您可以針對拓撲執行的管理動作。
-  - **啟用**: 繼續處理的已停用的拓撲。
-  - **停用**: 暫停執行中拓撲。
-  - **重新平衡**: 調整拓撲的平行處理原則。 變更叢集中的節點數目之後，您應該重新平衡執行中拓撲。 這可讓拓撲調整平行處理原則，以彌補叢集中增加或減少的節點數目。
+選取的連結從 **拓樸摘要** 區段會顯示拓撲的下列資訊 ︰
+- **拓撲摘要**︰ 拓撲的基本資訊。
+- **拓撲動作**︰ 您可以針對拓撲執行的管理動作。
+  - **啟用**︰ 繼續處理的已停用的拓撲。
+  - **停用**︰ 暫停執行中拓撲。
+  - **重新平衡**︰ 調整拓撲的平行處理原則。 變更叢集中的節點數目之後，您應該重新平衡執行中拓撲。 這可讓拓撲調整平行處理原則，以彌補叢集中增加或減少的節點數目。
 
-      如需詳細資訊，請參閱 <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Storm 拓撲的平行處理原則</a>.
+      如需詳細資訊，請參閱<a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Storm 拓撲的平行處理原則</a>。
 
-  - **Kill**: 指定的逾時之後終止 Storm 拓撲。
+  - **Kill**︰ 指定的逾時之後終止 Storm 拓撲。
 
-- **拓撲統計資料**: 拓撲的統計資料。 使用中的連結 **視窗** 設定頁面上其餘項目的時間範圍內的資料行。
-- **Spout**: 拓撲所使用的 spout。 使用本節中的連結檢視特定 Spout 的詳細資訊。
-- **Bolt**: 拓撲所使用的 bolt。 使用本節中的連結檢視特定 Bolt 的詳細資訊。
-- **拓撲組態**: 所選取拓撲的組態。
+- **拓撲統計資料**︰ 拓撲的統計資料。 使用中的連結 **視窗** 設定頁面上其餘項目的時間範圍內的資料行。
+- **Spout**︰ 拓撲所使用的 spout。 使用本節中的連結檢視特定 Spout 的詳細資訊。
+- **Bolt**︰ 拓撲所使用的 bolt。 使用本節中的連結檢視特定 Bolt 的詳細資訊。
+- **拓撲組態**︰ 所選取拓撲的組態。
 
 ### Spout 和 Bolt 摘要
 
-選取從 spout **Spout** 或 **Bolt** 區段會顯示所選取項目的下列資訊:
+選取從 spout **Spout** 或 **Bolt** 區段會顯示所選取項目的下列資訊 ︰
 - **元件摘要**: spout 或 bolt 的基本資訊。
 - **Spout/Bolt 統計資料**: spout 或 bolt 的統計資料。 使用中的連結 **視窗** 設定頁面上其餘項目的時間範圍內的資料行。
 - **輸入統計資料** (僅限 bolt): bolt 所使用的輸入資料流的資訊。
 - **輸出統計資料**: spout 或 bolt 發出這個資料流的資訊。
 - **執行程式**: spout 或 bolt 的執行個體的相關資訊。 選取 **連接埠** 針對這個執行個體所產生的特定執行程式，以檢視診斷資訊的記錄項目。
-- **錯誤**: 任何錯誤資訊，此 spout 或 bolt。
+- **錯誤**︰ 任何錯誤資訊，此 spout 或 bolt。
 
 ## REST API
 
@@ -162,9 +162,9 @@ Storm UI 是以 REST API 為建置基礎，因此您可以使用 REST API 執行
 
 您可以用幾種不同的方式尋找叢集前端節點的完整網域名稱 (FQDN)：
 
-* __從 SSH 工作階段__: 使用命令 `headnode -f` 到叢集的 SSH 工作階段。
-* __從 Ambari Web__: 選取 __服務__ 從頁面頂端，然後選取 __Storm__。 從 __摘要__ 索引標籤上，選取 __Storm UI 伺服器__。 Storm UI 和 REST API 執行所在節點的 FQDN 會位於頁面頂端。
-* __Ambari REST API 從__: 使用命令 `curl -u admin:PASSWORD -G "https://CLUSTERNAME
+* __從 SSH 工作階段__︰ 使用命令 `headnode -f` 到叢集的 SSH 工作階段。
+* __從 Ambari Web__︰ 選取 __服務__ 從頁面頂端，然後選取 __Storm__。 從 __摘要__ 索引標籤上，選取 __Storm UI 伺服器__。 Storm UI 和 REST API 執行所在節點的 FQDN 會位於頁面頂端。
+* __Ambari REST API 從__︰ 使用命令 `curl -u admin:PASSWORD -G "https://CLUSTERNAME
 .azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 來擷取節點上執行的 Storm UI 和 REST API 的相關資訊。 取代 __密碼__ 使用叢集系統管理員密碼。 取代 __CLUSTERNAME__ 與叢集名稱。 在回應中，"host_name" 項目包含節點的 FQDN。
 
 ### 驗證
@@ -182,4 +182,5 @@ REST API 的要求必須使用 **基本驗證**, ，所以您使用的 HDInsight
 既然您已了解如何部署和使用 Storm 儀表板監視拓撲、 了解如何 [使用 Maven 開發 Java 型拓撲](hdinsight-storm-develop-java-topology.md)。
 
 如需更多範例拓撲的清單，請參閱 [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)。
+
 

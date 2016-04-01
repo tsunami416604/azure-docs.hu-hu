@@ -36,7 +36,7 @@
 + [Xamarin.iOS Studio]
 + [Azure 行動服務元件]
 
->[AZURE.IMPORTANT] 基於 APNS 需求，您必須部署，並在模擬器中測試推播通知在 iOS 功能裝置 (iPhone 或 iPad) 而不是。
+>[AZURE.IMPORTANT] 基於 APNS 需求，您必須部署，並在模擬器中測試推播通知在 iOS 功能裝置 （iPhone 或 iPad） 而不是。
 
 APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要的憑證，並將憑證上傳至您的行動服務。 正式的 APNS 功能文件，請參閱 [Apple Push Notification Service]。
 
@@ -110,7 +110,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     ![][9]
 
-    注意: 根據預設，下載的檔案開發憑證名為 <strong>aps_development.cer</strong>.
+    注意：根據預設，下載的檔案 (開發憑證) 的名稱會是 <strong>aps_development.cer</strong>。
 
 7. 按兩下下載的推播憑證 **aps_development.cer**。
 
@@ -118,7 +118,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     ![][10]
 
-    注意: 憑證中的名稱可能會不同，但將會加 <strong>Apple Development iOS Push Notification Services:</strong>.
+    注意：憑證中的名稱可能會不同，不過字首會加上 <strong>Apple Development iOS Push Notification Services:</strong> 前置詞。
 
 之後，您會使用該憑證來產生 .p12 檔案，並將該檔案上傳到行動服務以啟用 APNS 驗證。
 
@@ -150,7 +150,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     ![][117]
 
-## <a name="configure-mobileServices"></a>設定行動服務傳送推播要求
+## <a name="configure-mobileServices"></a>設定行動服務以傳送推播要求
 
 在向 APNS 註冊應用程式及設定專案後，接下來您必須設定行動服務以整合 APNS。
 
@@ -200,16 +200,16 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
         public string DeviceToken { get; set; }
 
-2. 開啟 **TodoItem** 類別並新增下列屬性:
+2. 開啟 **TodoItem** 類別並新增下列屬性 ︰
 
         [JsonProperty(PropertyName = "deviceToken")]
         public string DeviceToken { get; set; }
 
-3. 在 **QSTodoService**, ，覆寫現有的用戶端宣告為:
+3. 在 **QSTodoService**, ，覆寫現有的用戶端宣告為 ︰
 
         public MobileServiceClient client { get; private set; }
 
-4. 然後新增下列方法，以便 **AppDelegate** 可以取得更新版本，才能註冊推播通知用戶端:
+4. 然後新增下列方法，以便 **AppDelegate** 可以取得更新版本，才能註冊推播通知用戶端 ︰
 
         public MobileServiceClient GetClient {
             get{
@@ -217,7 +217,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
             }
         }
 
-5. 在 **AppDelegate**, ，覆寫 **FinishedLaunching** 事件:
+5. 在 **AppDelegate**, ，覆寫 **FinishedLaunching** 事件 ︰
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -234,7 +234,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
             return true;
         }
 
-6. 在 **AppDelegate**, ，覆寫 **RegisteredForRemoteNotifications** 事件:
+6. 在 **AppDelegate**, ，覆寫 **RegisteredForRemoteNotifications** 事件 ︰
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
@@ -251,7 +251,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
             push.RegisterNativeAsync (DeviceToken, tag);
         }
 
-7. 在 **AppDelegate**, ，覆寫 **ReceivedRemoteNotification** 事件:
+7. 在 **AppDelegate**, ，覆寫 **ReceivedRemoteNotification** 事件 ︰
 
         public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
         {
@@ -308,7 +308,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
             }, 2500);
         }
 
-    這會註冊新的 insert 指令碼，並使用 [apns object] 推播通知 (插入的文字) 傳送給插入要求中提供的裝置。
+    這會註冊新的 insert 指令碼，並使用 [apns object] 推播通知 （插入的文字） 傳送給插入要求中提供的裝置。
 
    >[AZURE.NOTE] 此指令碼將延遲傳送通知，讓您有時間關閉應用程式以接收快顯通知。
 
@@ -402,4 +402,5 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
 [Xamarin.iOS]: http://xamarin.com/download
+
 

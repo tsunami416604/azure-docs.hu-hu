@@ -22,7 +22,7 @@ Azure SQL Database (SQL DB) 的彈性資料庫交易可讓您在 SQL DB 中跨�
 
 在內部部署，這種案例通常需要執行 Microsoft Distributed Transaction Coordinator (MSDTC)。 因為 MSDTC 不適用於 Azure 中的平台即服務應用程式，協調分散式交易的功能現在已直接整合至 SQL DB。 應用程式可以連接到任何 SQL Database 來啟動分散式交易，而其中一個資料庫會明確協調分散式交易，如下圖所示。 
 
-  ![分散式的交易與使用彈性資料庫交易的 Azure SQL Database][] 1
+  ![Azure SQL Database 的分散式交易 - 使用彈性資料庫交易 ][1]
 
 ## 常見案例
 
@@ -31,7 +31,7 @@ SQL DB 的彈性資料庫交易可讓應用程式對數個不同 SQL Database �
 
 * Azure 中的多資料庫應用程式：在此案例中，資料垂直分割到 SQL DB 中的多個資料庫，使得不同種類的資料位於不同的資料庫。 某些作業需要變更兩個以上的資料庫中保存的資料。 應用程式使用彈性資料庫交易來協調資料庫之間的變更，確保不可部分完成性。
 
-* 在 Azure 中的分區化資料庫應用程式: 使用此案例中，資料層會使用彈性資料庫用戶端程式庫或 [自行分區化](http://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx) 水平分割的資料分散至許多 SQL DB 中的資料庫。 一個顯著的使用案例是在分區化多租用戶應用程式中，當變更牽涉多個租用戶時，需要執行不可部分完成的變更。 例如，從一個租用戶轉移到另一個租用戶，而兩者位於不同的資料庫。 第二個案例是以細緻分區化來因應大型租用戶的容量需求，這又通常表示某些不可部分完成的作業需要延伸至用於相同租用戶的多個資料庫。 第三種案例是以不可部分完成的更新來參考資料庫之間複寫的資料。 現在可以利用預覽版，跨多個資料庫協調這幾方面不可部分完成的交易式作業。
+* 在 Azure 中的分區化資料庫應用程式 ︰ 使用此案例中，資料層會使用彈性資料庫用戶端程式庫或 [自行分區化](http://social.technet.microsoft.com/wiki/contents/articles/17987.cloud-service-fundamentals.aspx) 水平分割的資料分散至許多 SQL DB 中的資料庫。 一個顯著的使用案例是在分區化多租用戶應用程式中，當變更牽涉多個租用戶時，需要執行不可部分完成的變更。 例如，從一個租用戶轉移到另一個租用戶，而兩者位於不同的資料庫。 第二個案例是以細緻分區化來因應大型租用戶的容量需求，這又通常表示某些不可部分完成的作業需要延伸至用於相同租用戶的多個資料庫。 第三種案例是以不可部分完成的更新來參考資料庫之間複寫的資料。 現在可以利用預覽版，跨多個資料庫協調這幾方面不可部分完成的交易式作業。
 彈性資料庫交易使用兩階段認可，確保跨資料庫的交易不可部分完成性。 如果交易涉及的資料庫少於 100，則適合併入單一交易內。 不強制規定這些限制，但超出這些限制時，彈性資料庫交易的效能和成功率必然下降。
 
 
@@ -124,13 +124,13 @@ SQL DB 的彈性資料庫交易也支援協調分散式交易，您需要使用�
 
 ## 監視交易狀態
 
-使用 SQL DB 中的動態管理檢視 (DMV) 來監視進行中彈性資料庫交易的狀態和進度。 所有與交易相關的 DMV 都與 SQL DB 中的分散式交易有關聯。 您可以找出對應清單的 Dmv 如下: [交易相關動態管理檢視和函數 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)。
+使用 SQL DB 中的動態管理檢視 (DMV) 來監視進行中彈性資料庫交易的狀態和進度。 所有與交易相關的 DMV 都與 SQL DB 中的分散式交易有關聯。 您可以找出對應清單的 Dmv 如下 ︰ [交易相關動態管理檢視和函數 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)。
  
 這些 DMV 特別有用：
 
-* **sys.dm\_tran\_active\_transactions**: 列出目前使用中交易及其狀態。 UOW (工作單位) 資料行可以識別屬於相同分散式交易的不同子交易。 相同分散式交易內的所有交易具有相同的 UOW 值。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms174302.aspx) 如需詳細資訊。
-* **sys.dm\_tran\_database\_transactions**: 提供有關交易，例如放置交易記錄檔中的其他資訊。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms186957.aspx) 如需詳細資訊。
-* **sys.dm\_tran\_locks**: 提供目前進行中的交易所持有的鎖定的相關資訊。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms190345.aspx) 如需詳細資訊。
+* **sys.dm\_tran\_active\_transactions**︰ 列出目前使用中交易及其狀態。 UOW (工作單位) 資料行可以識別屬於相同分散式交易的不同子交易。 相同分散式交易內的所有交易具有相同的 UOW 值。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms174302.aspx) 如需詳細資訊。
+* **sys.dm\_tran\_database\_transactions**︰ 提供有關交易，例如放置交易記錄檔中的其他資訊。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms186957.aspx) 如需詳細資訊。
+* **sys.dm\_tran\_locks**︰ 提供目前進行中的交易所持有的鎖定的相關資訊。 請參閱 [DMV 文件](https://msdn.microsoft.com/library/ms190345.aspx) 如需詳細資訊。
 
 ## 限制 
 
@@ -147,6 +147,7 @@ SQL DB 中的彈性資料庫交易目前有下列限制：
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
+
 
 
 

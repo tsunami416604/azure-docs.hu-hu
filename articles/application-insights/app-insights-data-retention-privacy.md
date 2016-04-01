@@ -34,7 +34,7 @@ Application Insights SDK 以及與應用程式合併的代理程式會將資料�
 
 #### 可以擷取多少資料？ 
 
-**每秒**: 每秒每個檢測金鑰最多 500 個資料點 (也就是每個應用程式)。 針對免費 [定價層][pricing], ，限制為 100 dp/s。
+**每秒**︰ 每秒每個檢測金鑰最多 500 個資料點 (也就是每個應用程式)。 針對免費 [定價層][pricing], ，限制為 100 dp/s。
 
 有三個個別計數的貯體：
 
@@ -42,7 +42,7 @@ Application Insights SDK 以及與應用程式合併的代理程式會將資料�
 * [例外狀況](app-insights-api-custom-events-metrics.md#track-exception), ，受限於較低的限制為 50/s。
 * 所有其他遙測 (頁面檢視、要求、相依性、度量、自訂事件以及 Web 測試結果)。
 
-**每月**: 之間 5 和 15 萬個資料點，每個日曆月份中的取決於您 [定價方案](http://azure.microsoft.com/pricing/details/application-insights/)。 除了免費 [定價層][pricing], ，您可以購買額外的容量，如果達到最大限制。
+**每月**︰ 之間 5 和 15 萬個資料點，每個日曆月份中的取決於您 [定價方案](http://azure.microsoft.com/pricing/details/application-insights/)。 除了免費 [定價層][pricing], ，您可以購買額外的容量，如果達到最大限制。
 
 
 A *資料點* 的遙測資料傳送至 Azure 入口網站應用程式相關的項目。 它可透過下列方式傳送：
@@ -183,13 +183,13 @@ Application Insights 不會篩選或刪除資料。 您應該適當地管理資�
 
 您的動作  | 收集的資料類別 (請參閱下一個資料表)
 ---|---
-[將 Application Insights SDK 新增至 .NET Web 專案][greenbrown] | ServerContext<br/>推斷<br/>效能計數器<br/>要求<br/>**例外狀況**<br/>工作階段<br/>使用者
+[將 Application Insights SDK 新增至 .NET Web 專案][greenbrown] | ServerContext<br/>推斷<br/>效能計數器<br/>要求<br/>**例外狀況**<br/>工作階段<br/>users
 [在 IIS 上安裝狀態監視器][redfield]<br/>[將 AI 延伸模組加入至 Azure VM 或 Web 應用程式][azure]|相依項目<br/>ServerContext<br/>推斷<br/>效能計數器
 [將 Application Insights SDK 新增至 Java Web 應用程式][java]|ServerContext<br/>推斷<br/>要求<br/>工作階段<br/>users
 [將 JavaScript SDK 新增至網頁][client]|ClientContext <br/>推斷<br/>Page<br/>用戶端效能
 [將 SDK 新增至 Windows 市集應用程式][windows]|DeviceContext<br/>使用者<br/>當機資料
 [定義預設屬性][apiproperties]|**屬性** 上所有的標準和自訂事件
-[呼叫 TrackMetric][api]|數值<br/>**屬性**
+[呼叫 TrackMetric][api]|數字值<br/>**屬性**
 [呼叫追蹤*][api]|事件名稱<br/>**屬性**
 [呼叫 TrackException][api]|**例外狀況**<br/>堆疊傾印<br/>**屬性**
 SDK 無法收集資料。 例如： <br/> -無法存取效能計數器<br/> -遙測初始設定式中的例外狀況 | SDK 診斷
@@ -258,3 +258,4 @@ SDK 診斷 | 追蹤訊息或例外狀況
 [windows]: app-insights-windows-get-started.md
 
  
+

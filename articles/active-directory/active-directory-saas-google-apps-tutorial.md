@@ -72,7 +72,7 @@
 
     > [AZURE.NOTE] 若要深入了解有關不同單一登入的選項， [按一下這裡](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)
 
-3. 在 **設定應用程式設定** ] 頁面上，針對 **登入 URL** 欄位中，輸入您 Google Apps 租用戶 url 使用下列格式: `https://mail.google.com/a/<yourdomain>`
+3. 在 **設定應用程式設定** ] 頁面上，針對 **登入 URL** 欄位中，輸入您 Google Apps 租用戶 url 使用下列格式 ︰ `https://mail.google.com/a/<yourdomain>`
 
     ![輸入您的租用戶 URL][8]
 
@@ -80,7 +80,7 @@
 
     ![輸入您的網域名稱並按下 [設定]。](./media/active-directory-saas-google-apps-tutorial/ga-auto-config.png)
 
-    > [AZURE.NOTE] 如果您想要手動設定單一登入，請參閱 [選擇性步驟: 手動設定單一登入](#optional-step-manually-configure-single-sign-on)
+    > [AZURE.NOTE] 如果您想要手動設定單一登入，請參閱 [選擇性步驟 ︰ 手動設定單一登入](#optional-step-manually-configure-single-sign-on)
 
 5. 登入您的 Google Apps 管理員帳戶。 然後按一下 [ **允許** 若要允許 Azure Active Directory 中 Google 應用程式訂閱進行組態變更。
 
@@ -108,7 +108,7 @@
 
     > [AZURE.NOTE] 若要深入了解有關不同單一登入的選項， [按一下這裡](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)
 
-3. 在 **設定應用程式設定** ] 頁面上，針對 **登入 URL** 欄位中，輸入您 Google Apps 租用戶 url 使用下列格式: `https://mail.google.com/a/<yourdomain>`
+3. 在 **設定應用程式設定** ] 頁面上，針對 **登入 URL** 欄位中，輸入您 Google Apps 租用戶 url 使用下列格式 ︰ `https://mail.google.com/a/<yourdomain>`
 
     ![輸入您的租用戶 URL][8]
 
@@ -210,7 +210,7 @@
 
     - 對於您想要加入 Google Apps 的任何其他網域重複上述步驟。
 
-    > [AZURE.WARNING] 如果您在 Google Apps 租用戶，變更主要網域，而且如果已經設定單一登入與 Azure AD，則您必須重複執行步驟 #3 下方 [步驟 2: 啟用單一登入](#step-two-enable-single-sign-on)。
+    > [AZURE.WARNING] 如果您在 Google Apps 租用戶，變更主要網域，而且如果已經設定單一登入與 Azure AD，則您必須重複執行步驟 #3 下方 [步驟 2 ︰ 啟用單一登入](#step-two-enable-single-sign-on)。
 
 6. 在 [Google Apps 管理控制台](http://admin.google.com/), ，按一下 [ **系統管理員角色**。
 
@@ -248,7 +248,7 @@
 
     ![按一下 [指派使用者]][29]
 
-3. 選取測試使用者，然後按一下 [ **指派** 在畫面底部的按鈕:
+3. 選取測試使用者，然後按一下 [ **指派** 在畫面底部的按鈕 ︰
 
  - 如果還沒有啟用自動的使用者佈建，您會看到下列確認提示：
 
@@ -291,4 +291,5 @@
 [28]: ./media/active-directory-saas-google-apps-tutorial/gapps-auth.png
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
+
 

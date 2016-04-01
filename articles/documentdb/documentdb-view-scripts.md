@@ -56,7 +56,7 @@
     ![[指令碼總管] 的螢幕擷取畫面和篩選結果](./media/documentdb-view-scripts/scriptexplorerfilterresults.png)
 
 
-    > [AZURE.IMPORTANT] The Script Explorer filter functionality only filters from the ***currently*** loaded set of scripts and does not automatically refresh the currently selected collection.
+    > [AZURE.IMPORTANT] 指令碼總管] 篩選功能只會篩選從 ***目前*** 載入一組指令碼並不會自動重新整理目前選取的集合。
 
 5. 若要重新整理載入的指令碼總管] 的指令碼的清單，只要按一下 **重新整理** 分頁頂端的命令。
 
@@ -105,4 +105,5 @@
 
 若要深入了解 DocumentDB，請按一下 [這裡](http://azure.com/docdb)。
  
+
 

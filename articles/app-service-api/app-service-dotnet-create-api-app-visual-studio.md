@@ -24,7 +24,7 @@
 
 本教學課程示範如何採用現有的 Web API 專案，並設定它以部署為 [API 應用程式](app-service-api-apps-why-best-platform.md) 中 [Azure App Service](../app-service/app-service-value-prop-what-is.md)。 後續的教學課程中的系列節目如何 [部署](app-service-dotnet-deploy-api-app.md) 和 [偵錯](../app-service-dotnet-remotely-debug-api-app.md) 您在本教學課程中建立的 API 應用程式專案。
 
-API 應用程式的相關資訊，請參閱 [什麼是 API 應用程式?](app-service-api-apps-why-best-platform.md)。
+API 應用程式的相關資訊，請參閱 [什麼是 API 應用程式？](app-service-api-apps-why-best-platform.md)。
 
 [AZURE.INCLUDE [install-sdk-2015-2013](../../includes/install-sdk-2015-2013.md)]
 
@@ -60,7 +60,7 @@ API 應用程式的相關資訊，請參閱 [什麼是 API 應用程式?](app-se
 
     ![](./media/app-service-dotnet-create-api-app-visual-studio/sewebapi.png)
 
-10. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 (而非方案)，並選取 **加入 > Azure API 應用程式 SDK**。
+10. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 （而非方案），並選取 **加入 > Azure API 應用程式 SDK**。
 
     ![](./media/app-service-dotnet-create-api-app-visual-studio/addapiappsdk.png)
 
@@ -84,4 +84,5 @@ API 應用程式的相關資訊，請參閱 [什麼是 API 應用程式?](app-se
 
 API 應用程式現在已準備好部署，而且您可以依照 [部署 API 應用程式](app-service-dotnet-deploy-api-app.md) 教學課程，若要這麼做。
  
+
 

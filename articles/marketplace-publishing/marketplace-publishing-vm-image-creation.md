@@ -28,7 +28,7 @@
 
 - Azure.com: http://azure.microsoft.com/marketplace/partners/ {PartnerNamespace} / {OfferIdentifier}-{SKUidentifier}
 
-- Azure 預覽入口網站: https://portal.azure.com/#gallery/ {PublisherNamespace}。{} OfferIdentifier{} SKUIDdentifier  
+- Azure 預覽入口網站 ︰ https://portal.azure.com/#gallery/ {PublisherNamespace}。{} OfferIdentifier{} SKUIDdentifier  
 
 SKU 是 VM 映像的商務名稱。 VM 映像包含一個作業系統磁碟以及零或多個資料磁碟。 它在本質上是虛擬機器的完整儲存體設定檔。 每個磁碟都需要一個 VHD。 即使空的資料磁碟也需要建立一個 VHD。
 
@@ -43,17 +43,17 @@ SKU 是 VM 映像的商務名稱。 VM 映像包含一個作業系統磁碟以�
 ### 1.2 定義 SKU
 在您加入供應項目之後，您必須定義及識別您的 SKU。 您可以有多個供應項目，每個供應項目在其下可以有多個 SKU。 當供應項目進入預備環境，它的所有 SKU 也會一起進入。
 
-1. **新增 SKU。**SKU 必須具備用於 URL 中的識別碼。 此識別碼必須是發行設定檔中的唯一識別碼，但是若與其他發行者發生識別碼衝突，並不會有任何風險。
+1. **加入 SKU。** SKU 必須具備用於 URL 中的識別碼。 此識別碼必須是發行設定檔中的唯一識別碼，但是若與其他發行者發生識別碼衝突，並不會有任何風險。
 
 > [AZURE.NOTE] 在 Marketplace 中提供 URL 中顯示的優惠和 SKU 識別碼。
 
-2. **新增您 SKU 的摘要描述。**客戶可以看見摘要說明，所以您應讓說明可容易閱讀。 此資訊在「進入預備環境」階段之前都不需要鎖定。 在那之前，您都可以任意編輯。
+2. **為 SKU 加入摘要描述。** 客戶可以看見摘要說明，所以您應讓說明可容易閱讀。 此資訊在「進入預備環境」階段之前都不需要鎖定。 在那之前，您都可以任意編輯。
 3. 如果您正在使用以 Windows 為基礎的 SKU，請遵循建議的連結，要求使用核准的 Windows Server 版本。
 
 ## 2.建立與 Azure 相容的 VHD (以 Linux 為基礎)
-本節的焦點在於為 Azure Marketplace 建立以 Linux 為基礎的 VM 映像所採行的最佳作法。 逐步解說，請參閱下列文件: [建立和上傳包含 Linux 作業系統的虛擬硬碟][link-azure-vm-1]
+本節的焦點在於為 Azure Marketplace 建立以 Linux 為基礎的 VM 映像所採行的最佳作法。 逐步解說，請參閱下列文件 ︰ [建立和上傳包含 Linux 作業系統的虛擬硬碟][link-azure-vm-1]
 
-> [AZURE.TIP] 下列步驟 (例如，代理程式安裝、 核心開機參數) 的許多都已處理的 Linux 映像可從 Microsoft Azure 映像庫。 因此，以這些映像其中之一做為基底開始，可以代表節省時間，與設定非 Azure 感知的 Linux 映像做對比。
+> [AZURE.TIP] 下列步驟 （例如，代理程式安裝、 核心開機參數） 的許多都已處理的 Linux 映像可從 Microsoft Azure 映像庫。 因此，以這些映像其中之一做為基底開始，可以代表節省時間，與設定非 Azure 感知的 Linux 映像做對比。
 
 ### 2.1 選擇正確的 VHD 大小
 已發行的 SKU (VM 映像) 應設計為可與所有支援 SKU 磁碟數目的 VM 大小搭配運作。 您可以針對建議的大小提供指導，但是這些大小僅為建議使用，而非強迫使用。
@@ -77,7 +77,7 @@ SKU 是 VM 映像的商務名稱。 VM 映像包含一個作業系統磁碟以�
 除了 Azure Linux 代理程式之外，也要包含下列程式庫：
 
 1.  [Linux 整合服務][link-intsvc] 在核心中，則必須啟用 3.0 或更新版本。 請參閱 [Linux kernel 需求](../virtual-machines/virtual-machines-linux-create-upload-vhd-generic/#linux-kernel-requirements)。
-2. [核心補充程式](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c) Azure I/O 穩定性 (可能不需要任何新的核心，但應該驗證)
+2. [核心補充程式](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c) Azure I/O 穩定性 （可能不需要任何新的核心，但應該驗證）
 3. [Python][link-python] 2.6 或更新版本
 4. Python] pyasn1 封裝 (如果尚未安裝)
 5. [OpenSSL][link-openssl] (1.0 版或更高的建議)
@@ -93,7 +93,7 @@ SKU 是 VM 映像的商務名稱。 VM 映像包含一個作業系統磁碟以�
 這樣可以確保 Azure 支援會在必要時提供序列主控台輸出給客戶。 它也可以提供適當的逾時給從雲端儲存體裝載的作業系統磁碟。 即使您的 SKU 封鎖客戶直接 SSH 進入虛擬機器，還是必須啟用序列主控台輸出。
 
 ### 2.6 預設包含 SSH 伺服器
-強烈建議為客戶啟用 SSH。 如果 SSH 伺服器已啟用，則將 SSH 保持運作加入 sshd 設定下列選項: **ClientAliveInterval 180**。 雖然建議使用 180，但可接受的範圍為 30 到 235。 並非所有應用程式都想讓客戶擁有虛擬機器的直接 SSH 存取權。 如果明確封鎖 SSH， **ClientAliveInterval** 不需要設定選項。
+強烈建議為客戶啟用 SSH。 如果 SSH 伺服器已啟用，則將 SSH 保持運作加入 sshd 設定下列選項 ︰ **ClientAliveInterval 180**。 雖然建議使用 180，但可接受的範圍為 30 到 235。 並非所有應用程式都想讓客戶擁有虛擬機器的直接 SSH 存取權。 如果明確封鎖 SSH， **ClientAliveInterval** 不需要設定選項。
 
 ### 2.7 符合網路需求
 以下是與 Azure 相容之 Linux VM 映像的網路需求：
@@ -182,7 +182,7 @@ VM 映像的作業系統 VHD 必須以獲得 Azure 核准的基底映像為基�
     b.  在 **儲存體帳戶**, ，您可以選擇性地選取存放作業系統 VHD 的儲存體帳戶。
 
     c.  在 **資源群組**, ，您可以選擇性地選取要放置 VM 的邏輯群組。
-6. 選取 **位置** 部署:
+6. 選取 **位置** 部署 ︰
 
     a.  如果您打算開發 VHD 內部部署，位置不會造成影響，因為您稍後會將映像上傳至 Azure。
 
@@ -195,7 +195,7 @@ VM 映像的作業系統 VHD 必須以獲得 Azure 核准的基底映像為基�
 ### 3.3 在雲端開發您的 VHD
 強烈建議您在使用遠端桌面通訊協定 (RDP)，在雲端開發您的 VHD。 您會利用在佈建期間指定的使用者名稱和密碼連接到 RDP。
 
-> [AZURE.IMPORTANT] 如果您開發您的 VHD 在內部 (這不建議使用)，請參閱 [內部部署上建立虛擬機器映像](marketplace-publishing-vm-image-creation-on-premise.md)。 如果您在雲端中開發，就不必下載您的 VHD。
+> [AZURE.IMPORTANT] 如果您開發您的 VHD 在內部 （這不建議使用），請參閱 [內部部署上建立虛擬機器映像](marketplace-publishing-vm-image-creation-on-premise.md)。 如果您在雲端中開發，就不必下載您的 VHD。
 
 
 **透過使用 RDP 連線 [Microsoft Azure 入口網站][link-azure-portal]**
@@ -207,7 +207,7 @@ VM 映像的作業系統 VHD 必須以獲得 Azure 核准的基底映像為基�
 
 **使用 PowerShell，透過 RDP 連接**
 
-若要下載到本機電腦的遠端桌面檔案，請使用 [Get-azureremotedesktopfile cmdlet][link-technet-2]。 為了使用這個 Cmdlet，您必須知道服務名稱和 VM 的名稱。 如果您建立從 VM [Microsoft Azure 入口網站][link-azure-portal], ，您可以找到此資訊於 VM 屬性下方:
+若要下載到本機電腦的遠端桌面檔案，請使用 [Get-azureremotedesktopfile cmdlet][link-technet-2]。 為了使用這個 Cmdlet，您必須知道服務名稱和 VM 的名稱。 如果您建立從 VM [Microsoft Azure 入口網站][link-azure-portal], ，您可以找到此資訊於 VM 屬性下方 ︰
 
 1. 在 Microsoft Azure 入口網站中，選取 **瀏覽** > **Vm**。
 2. [虛擬機器] 刀鋒視窗隨即開啟。 選取您部署的 VM。
@@ -225,7 +225,7 @@ RDP 的詳細資訊可以在 MSDN 上找到文件中 [連線至 Azure VM，透�
 
 **設定 VM 並建立您的 SKU**
 
-下載作業系統 VHD 之後，請使用 Hyper-V 並將 VM 設定為開始建立您的 SKU。 詳細的步驟，請參閱下列 TechNet 連結: [安裝 HyperV 及設定 VM](http://technet.microsoft.com/library/hh846766.aspx)。
+下載作業系統 VHD 之後，請使用 Hyper-V 並將 VM 設定為開始建立您的 SKU。 詳細的步驟，請參閱下列 TechNet 連結 ︰ [安裝 HyperV 及設定 VM](http://technet.microsoft.com/library/hh846766.aspx)。
 
 ### 3.4 選擇正確的 VHD 大小
 您 VM 映像中的 Windows 作業系統 VHD 應建立為 128 GB 固定格式 VHD。  
@@ -252,7 +252,7 @@ Azure Marketplace 中的所有映像通常都必須能夠重複使用。 也就�
 
         sysprep.exe /generalize /oobe /sshutdown
 
-  如何與 sysprep 作業系統提供下列 MSDN 文章的步驟中的指引: [建立並上傳 Windows Server VHD 到 Azure](../virtual-machines/virtual-machines-create-upload-vhd-windows-server/)。
+  如何與 sysprep 作業系統提供下列 MSDN 文章的步驟中的指引 ︰ [建立並上傳 Windows Server VHD 到 Azure](../virtual-machines/virtual-machines-create-upload-vhd-windows-server/)。
 
 ## 4.從您的 VHD 部署 VM
 在您將 VHD (一般化作業系統 VHD 和零或更多個資料磁碟 VHD) 上傳至 Azure 儲存體帳戶之後，您就可以將它們註冊為使用者 VM 映像。 您可以接著測試該映像。 請注意，因為您的作業系統 VHD 已一般化，所以您無法藉由提供 VHD URL 來直接部署 VM。
@@ -437,7 +437,7 @@ Azure Marketplace 中的所有映像通常都必須能夠重複使用。 也就�
 
     ![繪圖][img-manage-vm-new]
 
-2. 移至 **我的映像**, ，然後選取要部署 VM 的 VM 映像:
+2. 移至 **我的映像**, ，然後選取要部署 VM 的 VM 映像 ︰
   1. 請注意您選取的映像時，因為 **我的映像** 檢視會列出作業系統映像和 VM 映像。
   2. 查看磁碟數目有助於判斷您正在部署的映像類型，因為大部分的 VM 映像都具有一個以上的磁碟。 不過，它是仍然可以有只有一個單一的作業系統磁碟，就必須使用的 VM 映像 **磁碟數目** 設為 1。
 
@@ -520,7 +520,7 @@ Azure Marketplace 中的所有映像通常都必須能夠重複使用。 也就�
 - 存取期間應為建立共用存取簽章 URI 起至少 7 個工作天。
 - 為了避免時鐘誤差所造成的即時錯誤，請指定目前時間的前 15 分鐘。
 
-若要建立共用的存取簽章 URI，您可以遵循所提供的指示 [共用存取簽章，第 1 部分: 了解 SAS 模型][link-azure-1] 和 [共用存取簽章，第 2 部分: 建立和使用 Azure Blob 服務 SAS][link-azure-2]。
+若要建立共用的存取簽章 URI，您可以遵循所提供的指示 [共用存取簽章，第 1 部分 ︰ 了解 SAS 模型][link-azure-1] 和 [共用存取簽章，第 2 部分 ︰ 建立和使用 Azure Blob 服務 SAS][link-azure-2]。
 
 而不是使用程式碼，以產生共用的存取金鑰，您也可以使用儲存體的工具，例如 [Azure 儲存體總管][link-azure-codeplex]。
 
@@ -556,17 +556,17 @@ Azure Marketplace 中的所有映像通常都必須能夠重複使用。 也就�
 
     ![繪圖][img-azstg-setup-6]
 
-    a.  **從允許存取**: 若要保護的 UTC 時間，選取 [目前日期的前一天。 例如，如果目前日期為 2014 年 10 月 6 日，則選取 10/5/2014。
+    a.  **從允許存取**︰ 若要保護的 UTC 時間，選取 [目前日期的前一天。 例如，如果目前日期為 2014 年 10 月 6 日，則選取 10/5/2014。
 
-    b.  **若要允許存取**: 選取的日期是在至少 7 至 8 天之後， **存取允許從** 日期。
+    b.  **若要允許存取**︰ 選取的日期是在至少 7 至 8 天之後， **存取允許從** 日期。
 
-    c.  **允許的動作**: 選取 **清單** 和 **讀取** 權限。
+    c.  **允許的動作**︰ 選取 **清單** 和 **讀取** 權限。
 
     d.  如果您已正確地選取.vhd 檔案，則您的檔案會出現在 **存取的 Blob 名稱** 與延伸.vhd。
 
     e.  按一下 [ **產生簽章**。
 
-    f.  在 **產生共用存取簽章 URI 這個容器的**, ，檢查下列反白顯示上述:
+    f.  在 **產生共用存取簽章 URI 這個容器的**, ，檢查下列反白顯示上述 ︰
 
     -   確定 URL 不會以 "https" 開頭。
     -   確定您的映像檔案名稱和 ".vhd" 位於 URI 中。
@@ -606,10 +606,10 @@ Azure Marketplace 中的所有映像通常都必須能夠重複使用。 也就�
     ![繪圖][img-pubportal-vm-skus-2]
 
 ## 後續步驟
-提交憑證您虛擬機器映像 Sku 之後，您可以移至 [Marketplace</行銷內容指南][link-pushstaging]。 在發佈程序的步驟中，提供行銷內容、 價格和其他之前所需的資訊 **步驟 3: 在預備環境中測試您的 VM 提供**, ，其中您測試各種使用實例之前部署至 Azure Marketplace 公用可見性和購買優惠。  
+提交憑證您虛擬機器映像 Sku 之後，您可以移至 [Marketplace</行銷內容指南][link-pushstaging]。 在發佈程序的步驟中，提供行銷內容、 價格和其他之前所需的資訊 **步驟 3 ︰ 在預備環境中測試您的 VM 提供**, ，其中您測試各種使用實例之前部署至 Azure Marketplace 公用可見性和購買優惠。  
 
 ## 另請參閱
-- [使用者入門：如何將優惠發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
+- [使用者入門：如何將供應項目發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
 [img-portal-vm-size]:media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png
@@ -662,4 +662,5 @@ Azure Marketplace 中的所有映像通常都必須能夠重複使用。 也就�
 [link-openssl]:https://www.openssl.org/
 [link-intsvc]:http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]:https://www.python.org/
+
 

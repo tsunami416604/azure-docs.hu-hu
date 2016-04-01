@@ -27,7 +27,7 @@ DocumentDB 支援關聯式資料、 階層式和空間查詢 JSON 文件使用 [
 
 下載查詢 SQL 查詢功能提要做為快速參考使用，讓您快速撰寫查詢。 SQL 功能提要 PDF 檔顯示常見的資料擷取查詢，兩則範例取自 JSON 文件。 為了方便使用，您可以將 SQL 查詢功能提要單面列印 在信紙大小 (8.5 x 11 英吋) 的紙張上。
 
-**下載以下 SQL 小祕技: [Microsoft Azure DocumentDB SQL 小祕技](http://go.microsoft.com/fwlink/?LinkId=623215)**
+**下載以下 SQL 小祕技 ︰ [Microsoft Azure DocumentDB SQL 小祕技](http://go.microsoft.com/fwlink/?LinkId=623215)**
 
 ![DocumentDB SQL 查詢功能提要：DocumentDB 支援之 SQL 語法的快速參考。][cheat-sheet]
 
@@ -38,5 +38,6 @@ DocumentDB 支援關聯式資料、 階層式和空間查詢 JSON 文件使用 [
 
 - 在 DocumentDB 中可用的查詢選項逐步執行，請參閱 [查詢 DocumentDB](documentdb-sql-query.md)。
 - 如需相關的參考文件中，請參閱 [DocumentDB SQL 查詢語言](https://msdn.microsoft.com/library/azure/dn782250.aspx)。
+
 
 

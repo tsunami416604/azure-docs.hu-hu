@@ -39,7 +39,7 @@ Reliable Actor 執行階段定義下列效能計數器類別。
 
 |類別|說明|
 |---|---|
-|Service Fabric 動作項目|Service Fabric 動作項目特定的計數器。 例如: 所花費的時間儲存動作項目狀態。|
+|Service Fabric 動作項目|Service Fabric 動作項目特定的計數器。 例如 ︰ 所花費的時間儲存動作項目狀態。|
 |Service Fabric 動作項目方法|Service Fabric 動作項目所實作的方法特定的計數器。 例如叫用動作項目方法頻率。|
 
 上述的類別每一個都有一或多個計數器。
@@ -47,7 +47,7 @@ Reliable Actor 執行階段定義下列效能計數器類別。
  [Windows 效能監視器](https://technet.microsoft.com/library/cc749249.aspx) Windows 作業系統中預設可用的應用程式可以用來收集和檢視效能計數器資料。 [Azure 診斷](../cloud-services-dotnet-diagnostics.md) 是收集效能計數器資料並上傳至 Azure 資料表的另一個選項。
 
 ### 效能計數器執行個體名稱
-含大量動作項目服務或動作項目服務資料分割的叢集將有大量的動作項目效能計數器執行個體。 效能計數器執行個體名稱可幫助識別特定 [分割](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) 動作項目方法 (如果適用) 和效能計數器執行個體相關聯。
+含大量動作項目服務或動作項目服務資料分割的叢集將有大量的動作項目效能計數器執行個體。 效能計數器執行個體名稱可幫助識別特定 [分割](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) 動作項目方法 （如果適用） 和效能計數器執行個體相關聯。
 
 #### `Service Fabric Actor` 類別
 `Service Fabric Actor` 類別的計數器執行個體名稱格式如下：
@@ -152,4 +152,5 @@ Reliable Actor 執行階段會發佈下列與動作項目狀態管理相關的�
 |---|---|---|---|---|
 |ActorActivated|5|資訊|0x1|動作項目已啟動。|
 |ActorDeactivated|6|資訊|0x1|動作項目已停用。|
+
 

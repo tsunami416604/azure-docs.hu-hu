@@ -39,7 +39,7 @@ Visual Studio Application Insights 會顯示在 Microsoft Azure 中的應用程�
 ## 建立 Application Insights 資源
   
 
-在 [portal.azure.com](https://portal.azure.com), ，加入 Application Insights 資源:
+在 [portal.azure.com](https://portal.azure.com), ，加入 Application Insights 資源 ︰
 
 ![按一下 [新增]，然後按一下 [Application Insights]](./media/app-insights-create-new-resource/01-new.png)
 
@@ -70,7 +70,7 @@ Visual Studio Application Insights 會顯示在 Microsoft Azure 中的應用程�
 SDK 包含不需撰寫任何程式碼，即可傳送遙測資料的標準模組。 若要追蹤使用者動作或診斷問題的詳細資料， [使用 API][api] 傳送您自己的遙測。
 
 
-## <a name="monitor"></a>查看遙測資料
+## <a name="monitor"> </a>查看遙測資料
 
 關閉 [快速入門] 刀鋒視窗，返回 Azure 入口網站中的應用程式刀鋒視窗。
 
@@ -93,3 +93,4 @@ SDK 包含不需撰寫任何程式碼，即可傳送遙測資料的標準模組�
 [start]: app-insights-overview.md
 
  
+

@@ -17,7 +17,7 @@
  
 # Windows 裝置適用的 Application Insights 的疑難排解和問答集
 
-疑問或問題 [Windows 中的 Visual Studio Application Insights][windows]嗎? 以下是一些秘訣。
+疑問或問題 [Windows 中的 Visual Studio Application Insights][windows]嗎？ 以下是一些秘訣。
 
 
 
@@ -123,3 +123,4 @@
 [windows]: app-insights-windows-get-started.md
 
  
+

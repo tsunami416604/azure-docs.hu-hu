@@ -34,7 +34,7 @@
 3. 使用 Passport，向 Azure AD 發出登入和登出要求。
 4. 列印出使用者的相關資料。
 
-本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS)。  若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) 或再製基本架構:
+本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS)。  若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git```
 
@@ -418,7 +418,7 @@ exports.list = function(req, res){
 
 ##後續步驟
 
-(不含您的設定值) 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip), ，或您可以從 GitHub 複製它:
+（不含您的設定值） 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip), ，或您可以從 GitHub 複製它 ︰
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git```
 
@@ -428,13 +428,14 @@ exports.list = function(req, res){
 
 <!--
 
-如需其他資源，請參閱：
-您現在可以進入更進階的 B2C 主題。  您可以嘗試：
+For additional resources, check out:
+You can now move onto more advanced B2C topics.  You may want to try:
 
-[從 node.js Web 應用程式呼叫 node.js Web API >>]()
+[Calling a node.js Web API from a node.js Web App >>]()
 
-[自訂 B2C 應用程式的 UX >>]()
+[Customizing the your B2C App's UX >>]()
 
 -->
+
 
 

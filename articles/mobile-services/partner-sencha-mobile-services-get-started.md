@@ -16,7 +16,7 @@
     ms.date="11/06/2015"
     ms.author="glenga"/>
 
-# <a name="getting-started"> </a>行動服務和 Sencha Touch 入門
+# <a name="getting-started"> </a>開始使用行動服務和 Sencha Touch
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 
@@ -115,13 +115,13 @@
 
 ###以 Sencha 套件形式安裝
 
-> [AZURE.NOTE] 您只可以使用這個方法，當您產生應用程式使用 <code>sencha 產生應用程式</code> 命令。
+> [AZURE.NOTE] 您只可以使用這個方法，當您產生應用程式使用 <code>sencha generate app</code> 命令。
 
 對於所有以 Sencha Cmd 產生的應用程式，其根目錄均有 "packages" 資料夾。 您可以設定該資料夾的位置，但不論位置為何，"packages" 資料夾的角色在於成為容納應用程式 (或多個應用程式，如果您已建立 Sencha Workspace) 使用之所有套件的儲存體。
 
 由於 Ext.Azure 是 Sencha Cmd 套件，因此您可以輕鬆地使用 Sencha Cmd 來安裝來源程式碼並納入應用程式中。 (請參閱 [Sencha Cmd 套件](http://docs.sencha.com/cmd/6.x/cmd_packages/cmd_packages.html) 如需詳細資訊)。
 
-若要下載並安裝 Azure 擴充功能套件從 Sencha Packages 儲存機制，您必須加入封裝名稱您 **app.json** 檔案並建置您的應用程式:
+若要下載並安裝 Azure 擴充功能套件從 Sencha Packages 儲存機制，您必須加入封裝名稱您 **app.json** 檔案並建置您的應用程式 ︰
 
 1. 將 Azure 套件新增至 app.json 檔案的 requires 區段：
 
@@ -132,7 +132,7 @@
             ]
         }
 
-2. 重建您的應用程式使用 **sencha cmd** 以便擷取及安裝套件:
+2. 重建您的應用程式使用 **sencha cmd** 以便擷取及安裝套件 ︰
 
         $ sencha app build
 
@@ -208,7 +208,7 @@
 
 ###設定 Azure 資料 Proxy
 
-**檔案名稱:** app/model/TodoItem.js
+**檔案名稱 ︰** app/model/TodoItem.js
 
 Touch 應用程式將透過資料 Proxy 與行動服務通訊。 Proxy 負責執行將要求傳送給行動服務，以及接收來自行動服務之資料等工作。 搭配 Touch 資料模型和存放區時，Touch 本身會負責移除及處置遠端資料之處理和將遠端資料納入應用程式等所有繁重的工作。
 
@@ -697,14 +697,14 @@ Sencha Touch 存放區可用來儲存資料記錄 (模型) 的集合，這些集
 ##後續步驟
 現在，您已完成入門指南，了解如何在行動服務中搭配 Sencha 執行其他重要工作。
 
-[下載](https://github.com/arthurakay/sencha-touch-azure-example) 與其他樣式和功能，以了解其他 Sencha Touch 的完整的範例應用程式!
+[下載](https://github.com/arthurakay/sencha-touch-azure-example) 與其他樣式和功能，以了解其他 Sencha Touch 的完整的範例應用程式 ！
 
 接著，深入瞭解 Sencha Touch Extensions for Azure 的詳細資訊：
 
   * 範例應用程式 [逐步解說](http://docs.sencha.com/touch-azure/1.0.0/#!/guide/data_filters)
   * 取得說明 [Sencha 論壇](http://www.sencha.com/forum)
   * 瀏覽 [Sencha 文件](http://docs.sencha.com/)
-  * 使用 Azure 行動服務使用 Sencha: [(影片)](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-126-Using-Sencha-With-Windows-Azure-Mobile-Services)
+  * 使用 Azure 行動服務使用 Sencha: [（影片）](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-126-Using-Sencha-With-Windows-Azure-Mobile-Services)
 
 
 ##其他資源
@@ -726,3 +726,4 @@ Sencha Touch Extension for Azure 套件備有此處簡述的範例，其位於 B
 [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
 
 [Azure classic portal]: https://manage.windowsazure.com/
+

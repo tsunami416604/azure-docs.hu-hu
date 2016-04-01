@@ -42,7 +42,7 @@
 
 4.  在頂端功能表中，按一下 [ **設定**。 <br><br>![Cloud App Discovery 的運作方式](./media/active-directory-known-networks/known-netwoks-02.png)
 
-5.  在 [設定] 索引標籤中，移至 **組織公用 IP 位址範圍** <br><br>![雲端應用程式探索的運作方式](./media/active-directory-known-networks/known-netwoks-03.png)
+5.  在 [設定] 索引標籤中，移至 **組織公用 IP 位址範圍** <br><br>![Cloud App Discovery 的運作方式](./media/active-directory-known-networks/known-netwoks-03.png)
 
 6.  按一下 [ **加入已知的 IP 位址範圍**。
 
@@ -55,6 +55,7 @@
 * [檢視存取和使用情況報告](active-directory-view-access-usage-reports.md)
 * [從具有可疑活動的 IP 位址登入](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
 * [從多個地理區域登入](active-directory-reporting-sign-ins-from-multiple-geographies.md)
+
 
 
 

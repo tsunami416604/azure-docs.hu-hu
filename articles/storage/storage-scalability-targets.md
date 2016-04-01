@@ -21,7 +21,7 @@
 
 本主題描述 Microsoft Azure 儲存體的延展性和效能。 如需其他 Azure 限制的摘要，請參閱 [Azure 訂用帳戶和服務限制、 配額和條件約束](../azure-subscription-service-limits.md)。
 
->[AZURE.NOTE] 所有儲存體帳戶在新的平面網路拓撲上執行，並支援下述，不論它們建立時的延展性和效能目標。 如需 Azure 儲存體平面網路架構和延展性的詳細資訊，請參閱 [Microsoft Azure 儲存體: 具有高可用性雲端儲存體服務強式一致性](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。
+>[AZURE.NOTE] 所有儲存體帳戶在新的平面網路拓撲上執行，並支援下述，不論它們建立時的延展性和效能目標。 如需 Azure 儲存體平面網路架構和延展性的詳細資訊，請參閱 [Microsoft Azure 儲存體 ︰ 具有高可用性雲端儲存體服務強式一致性](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。
 
 <!-- -->
 
@@ -50,7 +50,7 @@
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## Azure 資源管理員的延展性目標
+## Azure Resource Manager 的延展性目標
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -64,11 +64,11 @@
 
 - **Blob**: blob 的資料分割索引鍵為容器名稱 + blob 名稱。 這代表每個 Blob 都有專屬的分割。 因此，Blob 可以在許多伺服器間分散，以相應放大對它們的存取。 雖然 Blog 可以在 Blog 容器中邏輯分組，但這種分組方式的意涵卻非分割。
 
-- **檔案**: 檔案的資料分割索引鍵是帳戶名稱 + 檔案共用名稱。 這表示檔案共用中的所有檔案也都位於單一分割區中。
+- **檔案**︰ 檔案的資料分割索引鍵是帳戶名稱 + 檔案共用名稱。 這表示檔案共用中的所有檔案也都位於單一分割區中。
 
-- **訊息**: 訊息的資料分割索引鍵是佇列名稱，所以佇列中的所有訊息會群組成單一資料分割，並由單一伺服器服務。 不同佇列可能由不同伺服器所處理以平衡負載，無論儲存體帳戶可能有多少佇列。
+- **訊息**︰ 訊息的資料分割索引鍵是佇列名稱，所以佇列中的所有訊息會群組成單一資料分割，並由單一伺服器服務。 不同佇列可能由不同伺服器所處理以平衡負載，無論儲存體帳戶可能有多少佇列。
 
-- **實體**: 資料分割索引鍵的實體是資料表名稱 + 分割索引鍵，其中的資料分割索引鍵是所需的使用者定義的值 **PartitionKey** 實體的屬性。  
+- **實體**︰ 資料分割索引鍵的實體是資料表名稱 + 分割索引鍵，其中的資料分割索引鍵是所需的使用者定義的值 **PartitionKey** 實體的屬性。  
 
     所有具有相同分割區索引鍵的實體都分組成一個相同的分割，並儲存在相同的分割伺服器上。 在設計您的應用程式時，這是要了解的重點。 藉由將實體分組到單一分割的資料存取優勢，您的應用程式應該會在多個分割中分配實體時取得延展性優勢的平衡。 
 
@@ -84,4 +84,5 @@
 - [Azure 儲存體複寫](storage-redundancy.md)
 - [Microsoft Azure 儲存體效能與延展性檢查清單](storage-performance-checklist.md)
 - [Microsoft Azure 儲存體：具有高度一致性的高可用性雲端儲存體服務。](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+
 

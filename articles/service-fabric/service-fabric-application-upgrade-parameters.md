@@ -36,7 +36,7 @@
 | HealthCheckStableDurationSec | 移至下一個升級網域或完成升級之前，為了確認應用程式是否穩定的等待持續時間 (以秒為單位)。 這個等候持續時間是用來在執行健康狀態檢查後，防止未偵測到的健康狀態變更。 預設值為 0 秒鐘，建議您針對您的應用程式適當地加以自訂。 |
 | UpgradeDomainTimeoutSec | 升級單一升級網域的時間上限 (以秒為單位)。 如果達到此逾時，升級會停止，並且執行 UpgradeFailureAction 所指定的動作。 預設值為永不 (無限)，建議您針對您的應用程式適當地加以自訂。 |
 | UpgradeTimeout | 逾時 (以秒為單位) 適用於整個升級。 如果達到此逾時，升級會停止，並且會觸發 UpgradeFailureAction。 預設值為永不 (無限)，建議您針對您的應用程式適當地加以自訂。 |
-| UpgradeHealthCheckInterval | 在 ClusterManager 區段中指定 _叢集_ _manifest_ (這未指定為升級 cmdlet 的一部分)，此設定指定的健全狀況狀態檢查的頻率 (預設值為 60 秒)。  |
+| UpgradeHealthCheckInterval | 在 ClusterManager 區段中指定 _叢集_ _manifest_ （這未指定為升級 cmdlet 的一部分），此設定指定的健全狀況狀態檢查的頻率 （預設值為 60 秒）。  |
 
 
 
@@ -81,4 +81,5 @@
 
 [資料序列化](service-fabric-application-upgrade-data-serialization.md)
  
+
 

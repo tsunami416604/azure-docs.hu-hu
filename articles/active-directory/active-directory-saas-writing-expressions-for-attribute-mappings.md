@@ -30,11 +30,11 @@
 
 屬性對應的運算式語法是 Visual Basic for Applications (VBA) 函式。
 
-- 整個運算式必須以函式定義，名稱後面接著括號括住的引數所組成: <br>
+- 整個運算式必須以函式定義，名稱後面接著括號括住的引數所組成 ︰ <br>
 *FunctionName (<< 引數 1 >>，<<argument N>>)*
 
 
-- 您可以在函式內互相巢狀函式。 例如: <br> *FunctionOne (FunctionTwo(<<argument1>>))*
+- 您可以在函式內互相巢狀函式。 例如： <br> *FunctionOne (FunctionTwo(<<argument1>>))*
 
 
 - 您可以將三種不同類型的引數傳入函式：
@@ -43,16 +43,16 @@
 
    2. 字串常數，必須以雙引號括住。 例如："United States"
 
-   3. 其他函式。 例如: FunctionOne (<<argument1>>，FunctionTwo (<<argument2>>))
+   3. 其他函式。 例如 ︰ FunctionOne (<<argument1>>，FunctionTwo (<<argument2>>))
 
 
-- 對於字串常數，如果您在字串中需要反斜線 ( \ ) 或引號 ( " ) ，則必須使用反斜線 ( \ ) 符號逸出。 例如:"公司名稱: \"Contoso\"」
+- 對於字串常數，如果您在字串中需要反斜線 ( \ ) 或引號 ( " ) ，則必須使用反斜線 ( \ ) 符號逸出。 例如:"公司名稱 ︰ \"Contoso\"」
 
 
 
 ## 函式的清單
 
-[附加](#append) (& s) nbsp; (& s) nbsp; & nbsp; & nbsp; [FormatDateTime](#formatdatetime) (& s) nbsp; (& s) nbsp; & nbsp; & nbsp; [加入](#join) (& s) nbsp; & nbsp; & nbsp; (& s) nbsp; [Mid](#mid) (& s) nbsp; (& s) nbsp; & nbsp; & nbsp; [不](#not) (& s) nbsp; (& s) nbsp; & nbsp; & nbsp; [取代](#replace) (& s) nbsp; (& s) nbsp; & nbsp; & nbsp; [StripSpaces](#stripspaces) (& s) nbsp; & nbsp; & nbsp; (& s) nbsp; [參數](#switch)
+[附加](#append) （& s) nbsp; （& s) nbsp; & nbsp; & nbsp; [FormatDateTime](#formatdatetime) （& s) nbsp; （& s) nbsp; & nbsp; & nbsp; [加入](#join) （& s) nbsp; & nbsp; & nbsp; （& s) nbsp; [Mid](#mid) （& s) nbsp; （& s) nbsp; & nbsp; & nbsp; [不](#not) （& s) nbsp; （& s) nbsp; & nbsp; & nbsp; [取代](#replace) （& s) nbsp; （& s) nbsp; & nbsp; & nbsp; [StripSpaces](#stripspaces) （& s) nbsp; & nbsp; & nbsp; （& s) nbsp; [參數](#switch)
 
 
 
@@ -61,13 +61,13 @@
 ----------
 ### Append
 
-**函式:**<br> 
+**函式 ︰**<br> 
 Append(source, suffix)
 
-**描述:**<br> 
+**Description:**<br> 
 來源字串值，並在結尾附加尾碼。
  
-**參數:**<br> 
+**參數：**<br> 
 
 |名稱| 必要 / 重複 | 型別 | 注意事項 |
 |--- | ---                 | ---  | ---   |
@@ -78,13 +78,13 @@ Append(source, suffix)
 ----------
 ### FormatDateTime
 
-**函式:**<br> 
-FormatDateTime (source，inputFormat，outputFormat)
+**函式 ︰**<br> 
+FormatDateTime （source，inputFormat，outputFormat）
 
-**描述:**<br> 
+**Description:**<br> 
 將日期字串的格式，並將它轉換成不同的格式。
  
-**參數:**<br> 
+**參數：**<br> 
 
 |名稱| 必要 / 重複 | 型別 | 注意事項 |
 |--- | ---                 | ---  | ---   |
@@ -97,16 +97,16 @@ FormatDateTime (source，inputFormat，outputFormat)
 ----------
 ### Join
 
-**函式:**<br> 
-聯結 (分隔符號，source1，source2，…)
+**函式 ︰**<br> 
+聯結 （分隔符號，source1，source2，…）
 
-**描述:**<br> 
-執行 join () 類似 append ()，之處在於它可以合併多個 **來源** 成單一字串，值的字串，並將隔開每個值 **分隔符號** 字串。
+**Description:**<br> 
+執行 join （） 類似 append （），之處在於它可以合併多個 **來源** 成單一字串，值的字串，並將隔開每個值 **分隔符號** 字串。
 
 如果其中一個 source 值是多重值屬性，則該屬性中的每個值會結合在一起，並以分隔符號值分隔。
 
  
-**參數:**<br> 
+**參數：**<br> 
 
 |名稱| 必要 / 重複 | 型別 | 注意事項 |
 |--- | ---                 | ---  | ---   |
@@ -118,14 +118,14 @@ FormatDateTime (source，inputFormat，outputFormat)
 ----------
 ### Mid
 
-**函式:**<br> 
-Mid (來源，開始，長度)
+**函式 ︰**<br> 
+Mid （來源，開始，長度）
 
-**描述:**<br> 
+**Description:**<br> 
 傳回來源值的子字串。 子字串是只包含 source 字串某些字元的字串。
 
 
-**參數:**<br> 
+**參數：**<br> 
 
 |名稱| 必要 / 重複 | 型別 | 注意事項 |
 |--- | ---                 | ---  | ---   |
@@ -137,16 +137,16 @@ Mid (來源，開始，長度)
 
 
 ----------
-### Not
+### 否
 
-**函式:**<br> 
-Not (source)
+**函式 ︰**<br> 
+Not （source)
 
-**描述:**<br> 
+**Description:**<br> 
 翻轉的布林值 **來源**。 如果 **來源** 值是"*True*」，會傳回"*False*」。 否則，會傳回 「*True*」。
 
 
-**參數:**<br> 
+**參數：**<br> 
 
 |名稱| 必要 / 重複 | 型別 | 注意事項 |
 |--- | ---                 | ---  | ---   |
@@ -157,32 +157,32 @@ Not (source)
 ----------
 ### 將
 
-**函式:**<br> 
-ObsoleteReplace (來源、 oldValue，regexPattern，regexGroupName，replacementValue，replacementAttributeName，範本)
+**函式 ︰**<br> 
+ObsoleteReplace （來源、 oldValue，regexPattern，regexGroupName，replacementValue，replacementAttributeName，範本）
 
-**描述:**<br>
+**Description:**<br>
 取代字串內的值。 根據提供的參數而以不同的方式運作：
 
-- 當 **oldValue** 和 **replacementValue** 提供:
+- 當 **oldValue** 和 **replacementValue** 提供 ︰
 
    - 以 replacementValue 取代 oldValue 來源中的所有項目
 
-- 當 **oldValue** 和 **範本** 提供:
+- 當 **oldValue** 和 **範本** 提供 ︰
 
    - 所有項目 **oldValue** 中 **範本** 與 **來源** 值
 
-- 當 **oldValueRegexPattern**, ，**oldValueRegexGroupName**, ，**replacementValue** 提供:
+- 當 **oldValueRegexPattern**, ，**oldValueRegexGroupName**, ，**replacementValue** 提供 ︰
 
    - 以 replacementValue 取代 source 字串中符合 oldValueRegexPattern 的所有值
 
-- 當 **oldValueRegexPattern**, ，**oldValueRegexGroupName**, ，**replacementPropertyName** 提供:
+- 當 **oldValueRegexPattern**, ，**oldValueRegexGroupName**, ，**replacementPropertyName** 提供 ︰
 
    - 如果 **來源** 值時， **來源** 傳回
 
    - 如果 **來源** 沒有值，會使用 **oldValueRegexPattern** 和 **oldValueRegexGroupName** 從屬性擷取取代值 **replacementPropertyName**。 結果會傳回取代值
 
 
-**參數:**<br> 
+**參數：**<br> 
 
 |名稱| 必要 / 重複 | 型別 | 注意事項 |
 |--- | ---                 | ---  | ---   |
@@ -199,13 +199,13 @@ ObsoleteReplace (來源、 oldValue，regexPattern，regexGroupName，replacemen
 ----------
 ### StripSpaces
 
-**函式:**<br> 
-Stripspaces (source)
+**函式 ︰**<br> 
+Stripspaces （source)
 
-**描述:**<br> 
+**Description:**<br> 
 移除開頭空格 ("") 從來源字串的字元。
 
-**參數:**<br> 
+**參數：**<br> 
 
 |名稱| 必要 / 重複 | 型別 | 注意事項 |
 |--- | ---                 | ---  | ---   |
@@ -216,13 +216,13 @@ Stripspaces (source)
 ----------
 ### Switch
 
-**函式:**<br> 
-參數 (來源、 defaultValue，key1，value1，key2、 value2，...)
+**函式 ︰**<br> 
+參數 （來源、 defaultValue，key1，value1，key2、 value2，...）
 
-**描述:**<br> 
+**Description:**<br> 
 當 **來源** 值符合 **金鑰**, ，傳回 **值** 的 **金鑰**。 如果 **來源** 值不符合任何 key，則傳回 **defaultValue**。  **索引鍵** 和 **值** 參數必須永遠成對出現。 函式必須要有偶數數目的參數。
 
-**參數:**<br> 
+**參數：**<br> 
 
 |名稱| 必要 / 重複 | 型別 | 注意事項 |
 |--- | ---                 | ---  | ---   |
@@ -238,13 +238,13 @@ Stripspaces (source)
 ### 刪去已知的網域名稱
 
 您必須從使用者的電子郵件刪去已知的網域名稱，得到使用者名稱。 <br>
-例如，如果網域是"contoso.com"，您可以使用下列運算式:
+例如，如果網域是"contoso.com"，您可以使用下列運算式 ︰
 
 
-**運算式:** <br>
+**運算式 ︰** <br>
 `Replace([mail], "@contoso.com", , ,"", ,)`
 
-**範例輸入 / 輸出:** <br>
+**範例輸入 / 輸出 ︰** <br>
 
 - **輸入** (mail):"john.doe@contoso.com"
 
@@ -258,10 +258,10 @@ Stripspaces (source)
 
 
 
-**運算式:** <br>
+**運算式 ︰** <br>
 `Append([userPrincipalName], ".test"))`
 
-**範例輸入/輸出:** <br>
+**範例輸入/輸出：** <br>
 
 - **輸入**: (userPrincipalName):"John.Doe@contoso.com"
 
@@ -277,10 +277,10 @@ Stripspaces (source)
 您必須取出使用者名字的前 3 個字母和使用者姓氏的前 5 個字母來產生使用者別名。
 
 
-**運算式:** <br>
+**運算式 ︰** <br>
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`
 
-**範例輸入/輸出:** <br>
+**範例輸入/輸出：** <br>
 
 - **輸入** (givenName):"John"
 
@@ -298,7 +298,7 @@ Stripspaces (source)
 
 
 
-**運算式:** <br>
+**運算式 ︰** <br>
 
 `FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
 
@@ -318,16 +318,17 @@ Stripspaces (source)
 如果狀態碼不符合任何預先定義的選項，請使用"Australia/Sydney"的預設值。
 
 
-**運算式:** <br>
+**運算式 ︰** <br>
 
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **範例輸入/輸出：**
 
-- **輸入** (狀態):"QLD"
+- **輸入** （狀態）:"QLD"
 
 - **輸出**:"Australia/Brisbane"
 
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+
 

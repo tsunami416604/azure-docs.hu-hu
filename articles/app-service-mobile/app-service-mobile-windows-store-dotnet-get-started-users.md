@@ -58,11 +58,12 @@
 + [將推播通知新增至您的 Windows 應用程式](app-service-mobile-windows-store-dotnet-get-started-push.md)   
   了解如何新增推播通知支援新增至您的應用程式，並設定行動應用程式後端使用 Azure 通知中心傳送推播通知。
 
-+ [啟用您的 Windows 應用程式的離線同步處理](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
++ [啟用 Windows 應用程式離線同步處理](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
   了解如何使用行動應用程式後端應用程式中加入離線支援。 離線同步處理可讓使用者與行動應用程式進行互動 - 檢視、新增或修改資料 - 即使沒有網路連線也可行。 
 
 
 <!-- URLs. -->
 [Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md
  
+
 

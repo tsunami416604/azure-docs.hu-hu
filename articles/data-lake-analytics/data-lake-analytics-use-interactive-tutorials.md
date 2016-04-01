@@ -33,7 +33,7 @@ Azure 入口網站提供您開始使用資料湖分析的互動式教學課程�
 - [使用 .NET SDK 開始使用資料湖分析](data-lake-analytics-get-started-net-sdk.md)
 - [使用適用於 Visual Studio 的資料湖工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md) 
 
-**先決條件**
+**必要條件**
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -60,9 +60,9 @@ Azure 入口網站提供您開始使用資料湖分析的互動式教學課程�
 
     ![Azure 資料湖分析入口網站刀鋒視窗](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
 
-    - **名稱**: 分析帳戶的名稱。
-    - **資料湖存放區**: 每個資料湖分析帳戶有相依的資料湖存放區帳戶。 資料湖分析帳戶和相依的資料湖存放區帳戶必須位於同一個 Azure 資料中心。 請依照指示來建立新的資料湖存放區帳戶，或選取現有的帳戶。
-    - **訂閱**: 選擇用於分析帳戶的 Azure 訂閱。
+    - **名稱**︰ 分析帳戶的名稱。
+    - **資料湖存放區**︰ 每個資料湖分析帳戶有相依的資料湖存放區帳戶。 資料湖分析帳戶和相依的資料湖存放區帳戶必須位於同一個 Azure 資料中心。 請依照指示來建立新的資料湖存放區帳戶，或選取現有的帳戶。
+    - **訂閱**︰ 選擇用於分析帳戶的 Azure 訂閱。
     - **資源群組**。 選取現有的 Azure 資源群組，或建立一個新的群組。 應用程式通常由許多元件組成，例如，Web 應用程式、資料庫、資料庫伺服器、儲存體和協力廠商服務。 Azure 資源管理員 (ARM) 可讓您將應用程式中的資源做為群組使用，稱為 Azure 資源群組。 您可以透過單一、協調的作業來部署、更新、監視或刪除應用程式的所有資源。 您會使用部署的範本，且該範本可以用於不同的環境，例如測試、預備和生產環境。 您可以檢視整個群組的彙總成本，為您的組織釐清計費。 如需詳細資訊，請參閱 [Azure 資源管理員概觀](resource-group-overview.md)。 
     - **位置**。 為資料湖分析帳戶選取 Azure 資料中心。 
 7. 選取 **釘選到開始面板**。 這是遵循本教學課程的必要步驟。
@@ -91,4 +91,5 @@ Azure 入口網站提供您開始使用資料湖分析的互動式教學課程�
 - [使用 Azure PowerShell 開始使用資料湖分析](data-lake-analytics-get-started-powershell.md)
 - [使用適用於 Visual Studio 的資料湖工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)
 - [使用 Azure 資料湖分析來分析網站記錄](data-lake-analytics-analyze-weblogs.md)
+
 

@@ -37,7 +37,7 @@
 
 >[AZURE.NOTE] 這是完整的教學課程。 如果您想要 Azure App Service 和 Visual Studio web 專案的快速簡介，請參閱 [Azure App Service 中建立 ASP.NET web 應用程式](web-sites-dotnet-get-started.md)。 如需疑難排解資訊，請參閱 [疑難排解](#troubleshooting) 一節。
 >
->如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至或者 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至或者 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 必要條件
 
@@ -57,9 +57,9 @@
 
 1. 將應用程式 **ContactManager**, ，然後按一下 [ **確定**。
 
-    ![[新增專案] 對話方塊](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13newprojdb.png)
+    ![New Project dialog box](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13newprojdb.png)
  
-    **注意:** 請確定您輸入"ContactManager"。 您稍後將要複製的程式碼區塊會假設專案名稱為 ContactManager。 
+    **注意 ︰** 請確定您輸入"ContactManager"。 您稍後將要複製的程式碼區塊會假設專案名稱為 ContactManager。 
 
 1. 在 **新增 ASP.NET 專案** 對話方塊中，選取 **MVC** 範本。 確認 **驗證** 設為 **個別使用者帳戶**, ，**定域機組中的主機** 會檢查和 **應用程式服務** 已選取。
 
@@ -67,7 +67,7 @@
 
 1. 按一下 [ **確定**。
 
-3. 當 **設定 Microsoft Azure Web 應用程式設定** 對話方塊隨即出現，請確定您的登入 Azure: 如果您沒有已完成，請登入或重新輸入認證，如果您的登入已過期。
+3. 當 **設定 Microsoft Azure Web 應用程式設定** 對話方塊隨即出現，請確定您的登入 Azure ︰ 如果您沒有已完成，請登入或重新輸入認證，如果您的登入已過期。
 
     ![重新輸入認證](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/reentercredentials.png)
 
@@ -107,7 +107,7 @@
 
 1. 在 **方案總管] 中** 開啟 *Layout.cshtml* 檔案中 *Views\Shared* 資料夾。
 
-    ![_Layout.cshtml in Solution Explorer][newapp004]
+    ![方案總管中的 _Layout.cshtml][newapp004]
 
 1. 內容取代 *Layout.cshtml* 以下列程式碼檔案。
 
@@ -298,20 +298,20 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
     ![[工具] 功能表中的 Package Manager Console](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/SS6.png)
 
-2. 在 **Package Manager Console** ] 視窗中，輸入下列命令:
+2. 在 **Package Manager Console** ] 視窗中，輸入下列命令 ︰
 
         enable-migrations
 
      **啟用移轉** 命令會建立 *移轉* 資料夾，並放入該資料夾中 *Configuration.cs* 來植入資料庫及設定移轉，您可以編輯的檔案。 
 
-2. 在 **Package Manager Console** ] 視窗中，輸入下列命令:
+2. 在 **Package Manager Console** ] 視窗中，輸入下列命令 ︰
 
         add-migration Initial
 
 
      **Initial** 命令會產生名為的檔案 **& lt; date_stamp & gt; 初始** 中 *移轉* 資料夾。 這個檔案中的程式碼會建立資料庫資料表。 第一個參數 ( **初始** ) 用來建立檔案的名稱。 您可以看到新的類別檔案中 **方案總管] 中**。
 
-    在 **初始** 類別， **向上** 方法會建立 Contacts 資料表，和 **下** 方法 (當您想要返回先前的狀態時使用) 則會捨棄它。
+    在 **初始** 類別， **向上** 方法會建立 Contacts 資料表，和 **下** 方法 （當您想要返回先前的狀態時使用） 則會捨棄它。
 
 3. 開啟 *migrations\ configuration.cs* 檔案。 
 
@@ -319,7 +319,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
          using ContactManager.Models;
 
-5. 取代 *種子* 方法取代下列程式碼:
+5. 取代 *種子* 方法取代下列程式碼 ︰
 
         protected override void Seed(ContactManager.Models.ApplicationDbContext context)
         {
@@ -374,7 +374,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
     此程式碼會以連絡人資訊初始化 (植入) 該資料庫。 如需植入資料庫的詳細資訊，請參閱 [植入及偵錯 Entity Framework (EF) Db](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)。
 
-6. 在 **Package Manager Console** 輸入命令:
+6. 在 **Package Manager Console** 輸入命令 ︰
 
         update-database
 
@@ -386,7 +386,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
     應用程式隨即顯示種子資料並提供編輯、詳細資料和刪除連結。 您可以建立、編輯、刪除及檢視資料。
 
-    ![資料的 MVC 檢視][] rx2
+    ![資料的 MVC 檢視][rx2]
 
 ## 新增 OAuth2 提供者
 
@@ -394,7 +394,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 [OAuth](http://oauth.net/ "http://oauth.net/") 是開放的通訊協定，可讓 web、 行動和桌面應用程式簡單、 標準的方法執行安全授權。 ASP.NET MVC 網際網路範本使用 OAuth 來公開 Facebook、Twitter、Google 和 Microsoft 的驗證提供者身分。 雖然本教學課程僅使用 Google 作為驗證提供者，但您可以輕易修改程式碼來使用任何其中一個提供者。 實作其他提供者的步驟，與您在本教學課程中看到的步驟極為類似。 若要使用 Facebook 作為驗證提供者，請參閱 [使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入的 MVC 5 應用程式 ](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on)。
 
-除了驗證，本教學課程使用角色來實作授權。 只有在您加入的使用者 *canEdit* 角色就可以將變更資料 (也就是建立、 編輯或刪除連絡人)。
+除了驗證，本教學課程使用角色來實作授權。 只有在您加入的使用者 *canEdit* 角色就可以將變更資料 （也就是建立、 編輯或刪除連絡人）。
 
 1. 依照 [使用 Facebook、 Twitter、 LinkedIn 和 Google OAuth2 登入的 MVC 5 應用程式 ](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on#goog)  下 **建立 Google app for OAuth 2 以設定 Google app for OAuth2**。
 
@@ -406,12 +406,12 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 在本節中，您將加入本機使用者和 *canEdit* 角色成員資格資料庫。 只有在使用者 *canEdit* 角色可以編輯資料。 最佳作法來命名角色由可執行的動作是讓 *canEdit* 最好能將角色 *admin*。 當應用程式發展時，您可以新增新的角色如 *canDeleteMembers* 而不是欠缺描述性 *superAdmin*。
 
-1. 開啟 *migrations\ configuration.cs* 檔案，並加入下列 `using` 陳述式:
+1. 開啟 *migrations\ configuration.cs* 檔案，並加入下列 `using` 陳述式 ︰
 
         using Microsoft.AspNet.Identity;
         using Microsoft.AspNet.Identity.EntityFramework;
 
-1. 新增下列 **AddUserAndRole** 方法加入類別:
+1. 新增下列 **AddUserAndRole** 方法加入類別 ︰
 
         bool AddUserAndRole(ContactManager.Models.ApplicationDbContext context)
         {
@@ -432,7 +432,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
             return ir.Succeeded;
         }
 
-1. 呼叫新方法，從 **種子** 方法:
+1. 呼叫新方法，從 **種子** 方法 ︰
 
         protected override void Seed(ContactManager.Models.ApplicationDbContext context)
         {
@@ -441,7 +441,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
                 // Code removed for brevity
         }
 
-    下圖顯示所做的變更 *種子* 方法:
+    下圖顯示所做的變更 *種子* 方法 ︰
 
     ![程式碼影像](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss24.PNG)
 
@@ -497,7 +497,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 稍後在本教學課程中，您會將應用程式部署至 Azure，並在後者使用 Google 或其他協力廠商驗證提供者來登入。 這會新增至您新註冊的帳戶 *canEdit* 角色。 任何人只要有您 Web 應用程式的 URL 和 Google ID，就可以註冊及更新您的資料庫。 若要防止其他人這麼做，您可以停止網站。 您可以確認中有誰 *canEdit* 可以檢查資料庫的角色。
 
-在 **Package Manager Console** 點擊向上鍵以帶出下列命令:
+在 **Package Manager Console** 點擊向上鍵以帶出下列命令 ︰
 
         Update-Database
 
@@ -507,7 +507,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 在本節中您套用 [授權](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) 屬性來限制對動作方法的存取。 匿名使用者將能夠僅供檢視 **索引** 首頁控制器的動作方法。 已註冊的使用者將能夠查看連絡人資料 ( **索引** 和 **詳細資料** Cm 控制器的頁面)、 [關於] 頁面中和 [連絡人] 頁面。 只有在使用者 *canEdit* 角色都能夠存取變更資料的動作方法。
 
-1. 開啟 *app_start\ filterconfig.cs* 檔案，並將 *RegisterGlobalFilters* 方法，使用下列程式碼 (其會新增兩個篩選器):
+1. 開啟 *app_start\ filterconfig.cs* 檔案，並將 *RegisterGlobalFilters* 方法，使用下列程式碼 （其會新增兩個篩選器） ︰
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
@@ -532,7 +532,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
     如果您執行全域搜尋 *AllowAnonymous*, ，您會看到它用在帳戶控制器的登入和註冊方法。
 
-1. 在 *CmController.cs*, ，加入 `[Authorize(Roles = "canEdit")]` 中變更資料 (建立、 編輯、 刪除、 索引和詳細資料的每個動作方法) 的 HttpGet 和 HttpPost 方法 *Cm* 控制站。 以下顯示完整程式碼的片段內容： 
+1. 在 *CmController.cs*, ，加入 `[Authorize(Roles = "canEdit")]` 中變更資料 （建立、 編輯、 刪除、 索引和詳細資料的每個動作方法） 的 HttpGet 和 HttpPost 方法 *Cm* 控制站。 以下顯示完整程式碼的片段內容： 
 
         // GET: Cm/Create
         [Authorize(Roles = "canEdit")]
@@ -588,7 +588,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 1. 按一下頁面上的編輯連結，您將會被重新導向至登入頁面 (因為新的本機使用者不會加入至 *canEdit* 角色)。
 
-1. 身分登入 *user1@contoso.com* 使用密碼"P_assw0rd1"("0"中 「 word 」 是數字零)。 系統隨即將您重新導向到先前選取的編輯頁面。 
+1. 身分登入 *user1@contoso.com* 使用密碼"P_assw0rd1"（"0"中 「 word 」 是數字零）。 系統隨即將您重新導向到先前選取的編輯頁面。 
 
     如果無法以該帳戶和密碼登入，請嘗試複製並貼上原始程式碼中的密碼。 如果您仍然無法登入，請檢查 **UserName** 資料行的 **AspNetUsers** 資料表，以確認 *user1@contoso.com* 相加。 
 
@@ -614,7 +614,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 1. 按一下 [ **發行**。
 
-1. 身分登入 *user1@contoso.com* (使用密碼"p_assw0rd1"身分)，並確認您可以編輯資料。
+1. 身分登入 *user1@contoso.com* （使用密碼"p_assw0rd1"身分），並確認您可以編輯資料。
 
 1. 登出。
 
@@ -634,7 +634,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 ### 移除 AddToRoleAsync、發行和測試
 
-1. 註解化或移除下列程式碼從 **ExternalLoginConfirmation** 在帳戶控制器中的方法:
+1. 註解化或移除下列程式碼從 **ExternalLoginConfirmation** 在帳戶控制器中的方法 ︰
 
         await UserManager.AddToRoleAsync(user.Id, "canEdit");
 
@@ -676,7 +676,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 2. 確認您在登入該帳戶後可編輯資料。
 
-    **注意:** 您無法登出 Google 此應用程式和記錄檔到不同的 google 帳戶使用相同的瀏覽器。 若是使用一個瀏覽器，則必須瀏覽到 Google 再登出。 您可以使用不同瀏覽器，以自己在相同協力廠商驗證者 (例如 Google) 那邊的其他帳戶登入。
+    **注意 ︰** 您無法登出 Google 此應用程式和記錄檔到不同的 google 帳戶使用相同的瀏覽器。 若是使用一個瀏覽器，則必須瀏覽到 Google 再登出。 您可以使用不同瀏覽器，以自己在相同協力廠商驗證者 (例如 Google) 那邊的其他帳戶登入。
 
     如果您並未填寫 Google 帳戶資訊中的姓名，則會發生 NullReferenceException。
 
@@ -715,7 +715,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 * 佈建 SQL Database 時發生錯誤 - 請確定您已安裝最新的 SDK。 2.8.1 之前的版本有個錯誤，在某些案例中，VS 嘗試建立資料庫伺服器或資料庫時會造成錯誤。
 * 建立 Azure 資源時出現錯誤訊息「您的訂用帳戶優惠類型不支援此作業」- 與上述相同。
 * 部署-時發生錯誤，請考慮透過 [基本 ASP.NET 部署](web-sites-dotnet-get-started.md) 文件。 部署案例比較簡單，而且如果您有相同的問題，可能會比較容易隔離。 例如，在某些企業環境中，公司防火牆可能會阻止 Web Deploy 對 Azure 進行它所需的連接類型。
-* 沒有連接字串中發行 Web] 精靈時選取部署-如果您使用不同的方法來建立您的 Azure 資源的選項 (例如，您嘗試部署至 web 應用程式和入口網站中建立 SQL 資料庫)，可能無法與 web 應用程式相關聯的 SQL 資料庫。 最簡單的解決方案是使用 VS 來建立新的 web 應用程式和資料庫，如教學課程中所示。 您不需要從頭開始本教學課程 -- 在發佈 Web 精靈中，您可以選擇建立新的 web 應用程式，並取得與您建立專案時所取得的相同 Azure 資源建立對話方塊。
+* 沒有連接字串中發行 Web] 精靈時選取部署-如果您使用不同的方法來建立您的 Azure 資源的選項 （例如，您嘗試部署至 web 應用程式和入口網站中建立 SQL 資料庫），可能無法與 web 應用程式相關聯的 SQL 資料庫。 最簡單的解決方案是使用 VS 來建立新的 web 應用程式和資料庫，如教學課程中所示。 您不需要從頭開始本教學課程 -- 在發佈 Web 精靈中，您可以選擇建立新的 web 應用程式，並取得與您建立專案時所取得的相同 Azure 資源建立對話方塊。
 * Google 或 Facebook 開發人員入口網站的說明已過期 - 請參閱本教學課程結尾處的精選 Disqus 註解。
 
 ## 後續步驟
@@ -736,7 +736,7 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 ## 變更的項目
 
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
 [Add an OAuth Provider]: #addOauth
@@ -796,4 +796,5 @@ ASP.NET MVC 樣板功能可自動產生程式碼來執行建立、讀取、更�
 
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
  
+
 

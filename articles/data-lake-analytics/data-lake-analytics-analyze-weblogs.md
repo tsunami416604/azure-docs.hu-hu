@@ -28,7 +28,7 @@
 - **Microsoft Azure SDK for.NET 2.5 版或以上**。  請使用 [Web platform installer](http://www.microsoft.com/web/downloads/platform.aspx)。
 - **[資料湖 Tools for Visual Studio](http://aka.ms/adltoolsvs)**。 
 
-    資料湖 Tools for Visual Studio 安裝之後，您會看到 **資料湖** Visual Studio 中的功能表:
+    資料湖 Tools for Visual Studio 安裝之後，您會看到 **資料湖** Visual Studio 中的功能表 ︰
     
     ![U-SQL Visual Studio 功能表](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
 
@@ -37,10 +37,10 @@
     - [開始使用 Azure 入口網站的 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)。
     - [開發 U SQL 指令碼使用資料湖 tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)。
 
-- **資料湖分析帳戶。**請參閱 [建立 Azure 資料湖分析帳戶](data-lake-analytics-get-started-portal.md#create_adl_analytics_account)。
+- **資料湖分析帳戶。**  請參閱 [建立 Azure 資料湖分析帳戶](data-lake-analytics-get-started-portal.md#create_adl_analytics_account)。
 
     資料湖工具不支援建立資料湖分析帳戶。  因此您必須使用 Azure 入口網站、Azure PowerShell、.NET SDK 或 Azure CLI 建立帳戶。 
-- **將範例資料上傳至資料湖分析帳戶。**請參閱 [上傳到預設資料湖儲存體帳戶的 SearchLog.tsv](data-lake-analytics-get-started-portal.md#update-data-to-the-default-adl-storage-account)。
+- **將範例資料上傳到資料湖分析帳戶。** 請參閱 [上傳到預設資料湖儲存體帳戶的 SearchLog.tsv](data-lake-analytics-get-started-portal.md#update-data-to-the-default-adl-storage-account)。
 
     若要執行資料湖分析工作，您需要一些資料。 即使資料湖工具支援上傳資料，您將使用入口網站來上傳範例資料，以方便遵循本教學課程。 
  
@@ -181,7 +181,7 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U SQL，請
 
 >[AZURE.NOTE]您無法讀取或寫入 U SQL 資料表建立或修改相同的指令碼中。  這就是為什麼此範例使用兩個指令碼。
 
-**查看作業輸出**
+**查看工作輸出**
 
 1. 從 **伺服器總管**, ，依序展開 **Azure**, ，展開 **資料湖分析**, 、 依序展開您的資料湖分析帳戶、 **儲存體帳戶**, ，以滑鼠右鍵按一下預設的資料湖儲存體帳戶，然後按一下 **總管**。 
 2.  按兩下 **範例** 來開啟資料夾，然後按兩下 **輸出**。
@@ -201,4 +201,5 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U SQL，請
 - [使用適用於 Visual Studio 的資料湖工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)
 - [開始使用 Azure 資料湖分析 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)
 - [針對資料湖分析工作開發 U-SQL 使用者定義運算子](data-lake-analytics-u-sql-user-defined-operators.md)
+
 

@@ -60,11 +60,11 @@ Azure 裝載 Django 型網站。 本教學課程假設您先前沒有使用 Azur
 ![][port80]
 1. 從 **儀表板** 索引標籤上，按一下 [ **連接** 使用 **遠端桌面** 從遠端登入新建立的 Azure 虛擬機器。  
 
-**重要事項:** 以下所有指示皆假設您已登入虛擬機器正確，並且會發出命令，而不是本機電腦。
+**重要事項 ︰** 以下所有指示皆假設您已登入虛擬機器正確，並且會發出命令，而不是本機電腦。
 
-## <a id="setup"> </a>安裝 Python、 Django、 WFastCGI
+## <a id="setup"></a>安裝 Python、Django 和 WFastCGI
 
-**附註:** 以便下載使用 Internet Explorer，您可能需要設定 IE ESC 設定 (開始/系統管理工具] / [伺服器管理員] / [本機伺服器，然後按一下 [  **IE 增強式安全性設定**, ，將其設為 Off)。
+**附註 ︰** 以便下載使用 Internet Explorer，您可能需要設定 IE ESC 設定 (開始/系統管理工具] / [伺服器管理員] / [本機伺服器，然後按一下 [  **IE 增強式安全性設定**, ，將其設為 Off)。
 
 1. 安裝最新的 Python 2.7 或 3.4 從 [python.org][]。
 1. 使用 pip 安裝 wfastcgi 和 django 封裝。
@@ -87,7 +87,7 @@ Azure 裝載 Django 型網站。 本教學課程假設您先前沒有使用 Azur
 
 ## 建立新的 Django 應用程式
 
-1.  從 *C:\inetpub\wwwroot*, ，輸入下列命令以建立新的 Django 專案:
+1.  從 *C:\inetpub\wwwroot*, ，輸入下列命令以建立新的 Django 專案 ︰
 
     針對 Python 2.7，請使用下列命令。
 
@@ -99,7 +99,7 @@ Azure 裝載 Django 型網站。 本教學課程假設您先前沒有使用 Azur
 
     ![The result of the New-AzureService command](./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-cmd-new-azure-service.png)
 
-1.   **Django 管理** 命令會產生 Django 型網站的基本結構:
+1.   **Django 管理** 命令會產生 Django 型網站的基本結構 ︰
 
   -   **helloworld\ manage.py** 可協助您開始裝載及停止裝載 Django 型網站
   -   **helloworld\helloworld\settings.py** 包含您的應用程式的 Django 設定。
@@ -187,4 +187,5 @@ Azure 裝載 Django 型網站。 本教學課程假設您先前沒有使用 Azur
 [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [python.org]: https://www.python.org/downloads/
 [wfastcgi]: https://pypi.python.org/pypi/wfastcgi
+
 

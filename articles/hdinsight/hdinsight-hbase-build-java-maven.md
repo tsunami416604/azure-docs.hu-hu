@@ -41,15 +41,15 @@
 
     這在目前目錄中，建立新目錄所指定的名稱與 __artifactID__ 參數 (**hbaseapp** 在此範例中。)此目錄將包含下列項目：
 
-    * __pom.xml__: 專案物件模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) 包含用來建置專案的資訊和組態詳細資料。
+    * __pom.xml__︰ 專案物件模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) 包含用來建置專案的資訊和組態詳細資料。
 
-    * __src__: 所在的目錄 __main\java\com\microsoft\examples__ 目錄中，您將在此撰寫應用程式。
+    * __src__︰ 所在的目錄 __main\java\com\microsoft\examples__ 目錄中，您將在此撰寫應用程式。
 
 3. 刪除 __src\test\java\com\microsoft\examples\apptest.java__ 檔案，因為它不會用在此範例中。
 
 ##更新專案物件模型
 
-1. 編輯 __pom.xml__ 檔案，並加入下列程式碼 `<dependencies>` 區段:
+1. 編輯 __pom.xml__ 檔案，並加入下列程式碼 `<dependencies>` 區段 ︰
 
         <dependency>
           <groupId>org.apache.hbase</groupId>
@@ -114,7 +114,7 @@
 
 3. 儲存 __pom.xml__ 檔案。
 
-4. 建立新目錄 __conf__ 中 __hbaseapp__ 目錄。 在 __conf__ 目錄中，建立新的檔名為 __hbase-site.xml__ ，並使用下列做為內容:
+4. 建立新目錄 __conf__ 中 __hbaseapp__ 目錄。 在 __conf__ 目錄中，建立新的檔名為 __hbase-site.xml__ ，並使用下列做為內容 ︰
 
         <?xml version="1.0"?>
         <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -164,7 +164,7 @@
 
 1. 移至 __hbaseapp\src\main\java\com\microsoft\examples__ 目錄，並將 app.java 檔案至 __CreateTable.java__。
 
-2. 開啟 __CreateTable.java__ 檔案，並將現有的內容取代為下列:
+2. 開啟 __CreateTable.java__ 檔案，並將現有的內容取代為下列 ︰
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -347,7 +347,7 @@
 
 3. 命令完成時， __hbaseapp\target__ 目錄將包含名為 __hbaseapp-1.0-SNAPSHOT.jar__。
 
-    > [AZURE.NOTE]  __Hbaseapp-1.0-SNAPSHOT.jar__ 檔案是一個 uber jar (有時稱為 fat jar)，內含執行應用程式所需的所有相依性。
+    > [AZURE.NOTE]  __Hbaseapp-1.0-SNAPSHOT.jar__ 檔案是一個 uber jar （有時稱為 fat jar），內含執行應用程式所需的所有相依性。
 
 ##上傳 JAR 檔案並啟動工作
 
@@ -607,7 +607,7 @@
 
 ##刪除資料表
 
-當您完成範例時，使用下列命令，從 Azure PowerShell 工作階段刪除 __人__ 此範例中使用的資料表:
+當您完成範例時，使用下列命令，從 Azure PowerShell 工作階段刪除 __人__ 此範例中使用的資料表 ︰
 
     Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName hdinsightclustername
 
@@ -618,4 +618,5 @@
 ###使用 Start-HBaseExample 時沒有結果或傳回非預期的結果
 
 請使用 `-showErr` 參數，以檢視執行工作時所產生的標準錯誤 (STDERR)。
+
 

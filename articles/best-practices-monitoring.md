@@ -202,7 +202,7 @@ SLA 通常依據下列項目定義：
 - 作業輸送量。 這方面通常是以一或多個關鍵上限標記表示，例如保證系統將能夠支援多達 100,000 個並行使用者要求，或處理 10,000 筆並行商務交易。
 - 作業回應時間。 系統也可能對要求的處理速率做出保證，例如所有商務交易的 99% 將在 2 秒內完成，而且沒有單一交易將花費超過 10 秒。
 
-> [AZURE.NOTE] 商業系統的某些合約也可能包含有關客戶支援，例如所有服務台要求將會在 5 分鐘內都引發回應，以及 1 個工作天內應該完全解決所有問題的 99%的 Sla。 有效 [問題追蹤](#issue-tracking) (本節稍後說明) 是這類符合 Sla 的關鍵。
+> [AZURE.NOTE] 商業系統的某些合約也可能包含有關客戶支援，例如所有服務台要求將會在 5 分鐘內都引發回應，以及 1 個工作天內應該完全解決所有問題的 99%的 Sla。 有效 [問題追蹤](#issue-tracking) （本節稍後說明） 是這類符合 Sla 的關鍵。
 
 ### SLA 監視的需求
 在最高階中，操作員應該能夠快速判斷，系統是否符合協議的 SLA，而且如果不符合，請向下鑽研並檢查基礎因素，以判斷效能未達標準的原因。
@@ -359,7 +359,7 @@ _圖 1.
 
 安全性問題可能會發生在系統中的任何時間點。 例如，使用者可能嘗試以無效的使用者識別碼或密碼登入；已驗證的使用者可能嘗試並取得資源的未獲授權存取；或者，使用者可能提供無效或過期的金鑰，以存取加密的資訊。 應該一律記錄成功和失敗要求的安全性相關資訊。
 
-區段 [檢測應用程式](#instrumenting-an-application) 包含的資訊，您應該擷取，但有各種不同的策略可讓您在第一時間收集此資訊的進一步指引:
+區段 [檢測應用程式](#instrumenting-an-application) 包含的資訊，您應該擷取，但有各種不同的策略可讓您在第一時間收集此資訊的進一步指引 ︰
 
 - **應用程式/系統監視**。 此策略會使用應用程式、應用程式架構、作業系統和基礎結構內的內部來源。 應用程式程式碼本身可以在用戶端要求的生命週期期間於值得注意的時間點產生自己的監視資料。 應用程式可以包含追蹤陳述式，您可以視情況選擇性地啟用或停用這些陳述式。 也可以藉由使用診斷架構動態注入診斷。 這些架構通常會提供可以附加至程式碼中各種檢測點的外掛程式，並在這些點擷取追蹤資料。
 
@@ -457,7 +457,7 @@ _圖 2.
 - Azure 診斷基礎結構記錄檔  
 - 自訂錯誤記錄檔
 
-如需詳細資訊，請參閱文章 [Azure: 遙測基本概念和疑難排解](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx) Microsoft 網站上。
+如需詳細資訊，請參閱文章 [Azure ︰ 遙測基本概念和疑難排解](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx) Microsoft 網站上。
 
 ### 收集檢測資料的策略
 假定雲端的彈性本質，以及避免需要從系統中每個節點手動擷取遙測資料，您應該安排將資料傳送到中央位置並進行合併。 在跨越多個資料中心的系統中，先根據區域收集、合併資料，並將資料儲存在區域上，再將區域資料彙總成單一中央系統，可能很有幫助。
@@ -609,7 +609,7 @@ _圖 6.
 
 ## 詳細資訊
 - 發行項 [監視、 診斷與疑難排解 Microsoft Azure 儲存體](storage-monitoring-diagnosing-troubleshooting.md) Microsoft 網站上。
-- 發行項 [Azure: 遙測基本概念和疑難排解](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx) Microsoft 網站上。
+- 發行項 [Azure ︰ 遙測基本概念和疑難排解](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx) Microsoft 網站上。
 - 頁面 [收集記錄資料使用 Azure 診斷](https://msdn.microsoft.com/library/azure/gg433048.aspx) Microsoft 網站上。
 - 頁面 [設定 Azure 雲端服務和虛擬機器診斷](https://msdn.microsoft.com/library/azure/dn186185.aspx) Microsoft 網站上。
 -  [Azure Redis 快取](http://azure.microsoft.com/services/cache/), ，[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/), ，和 [HDInsight](http://azure.microsoft.com/services/hdinsight/) Microsoft 網站上的頁面。
@@ -617,4 +617,5 @@ _圖 6.
 - 發行項 [Azure 虛擬機器中 SQL Server Business Intelligence](./virtual-machines/virtual-machines-sql-server-business-intelligence.md) Microsoft 網站上。
 - 頁面 [的了解監視警示和通知，在 Azure 中的](https://msdn.microsoft.com/library/azure/dn306639.aspx) Microsoft 網站上。
 -  [Application Insights](app-insights-get-started/) Microsoft 網站上的頁面。
+
 

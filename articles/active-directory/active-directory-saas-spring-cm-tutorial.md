@@ -80,7 +80,7 @@
 
 3.  在 **設定應用程式 URL** 頁面上，於 **SpringCM 登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入您 SpringCM 的應用程式，然後按一下 **下一步**。 
 
-    應用程式 URL 是您 SpringCM 租用戶 URL (例如: *https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=16826*):
+    應用程式 URL 是您 SpringCM 租用戶 URL (例如 ︰ *https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=16826*):
 
     ![設定應用程式 URL](./media/active-directory-saas-spring-cm-tutorial/IC797049.png "Configure App URL")
 
@@ -154,6 +154,7 @@ SpringCM 需以手動方式佈建。
     ![是](./media/active-directory-saas-spring-cm-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 
 
 

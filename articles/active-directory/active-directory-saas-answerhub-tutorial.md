@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 AnswerHub 單一登入的訂用帳戶
 
-完成本教學課程之後, 您已指派給 AnswerHub 的 Azure AD 使用者將能夠登入位於您 AnswerHub 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 AnswerHub 的 Azure AD 使用者將能夠登入位於您 AnswerHub 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -97,7 +97,7 @@
 
 9.  按一下 [ **IDP Config** ] 索引標籤。
 
-10. 在 **IDP Config** 索引標籤上，執行下列步驟:
+10. 在 **IDP Config** 索引標籤上，執行下列步驟 ︰
 
     ![SAML 設定](./media/active-directory-saas-answerhub-tutorial/IC785172.png "SAML Setup")
 
@@ -114,7 +114,7 @@
 
         >[AZURE.TIP] 如需詳細資訊，請參閱 [如何轉換的文字檔案中的二進位檔案的憑證](http://youtu.be/PlgrzUZ-Y1o)
 
-    2.  在記事本中開啟 base-64 編碼的憑證，將它的內容複製到剪貼簿，然後將它貼到 **IDP (x x509 格式) 的公用金鑰** 文字方塊。
+    2.  在記事本中開啟 base-64 編碼的憑證，將它的內容複製到剪貼簿，然後將它貼到 **IDP (x x509 格式） 的公用金鑰** 文字方塊。
     3.  按一下 [ **儲存**。
 
 12. 在 **IDP Config** 索引標籤上，按一下 [ **儲存**。
@@ -160,4 +160,5 @@ AnswerHub 需以手動方式佈建。
     ![是](./media/active-directory-saas-answerhub-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

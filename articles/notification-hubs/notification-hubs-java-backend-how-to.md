@@ -224,7 +224,7 @@ CreateOrUpdate、Patch 和 Delete 最終都會與 Get 一致。 您要求的作�
 
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**具備 SAS 簽章 URI:**
+**具有 SAS 簽章的 URI：**
 這是某個 Blob 檔案或 Blob 容器的 URL，加上參數集 (如權限和到期時間)，再加上所有使用帳戶 SAS 金鑰之項目的簽章。 Azure Storage Java SDK 具有豐富的功能，包括建立此類的 URI。 此外您可以參考 ImportExportE2E 測試類別 (從 github 位置) 的簡單替代方法，它可實作非常基本而精簡的簽署演算法。
 
 ###傳送通知
@@ -306,4 +306,5 @@ CreateOrUpdate、Patch 和 Delete 最終都會與 Get 一致。 您要求的作�
 [Send cross-platform notifications to authenticated users]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
 [Maven]: http://maven.apache.org/
  
+
 

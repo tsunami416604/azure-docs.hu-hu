@@ -18,7 +18,7 @@
 
 # 搭配使用 Azure Data Factory 與 SQL 資料倉儲
 
-Azure Data Factory 提供完全受管理的方法，可供協調資料的傳輸和 SQL 資料倉儲上預存程序的執行。  這可讓您更輕鬆地設定及排程 SQL 資料倉儲的複雜擷取、轉換和載入 (ETL) 程序。 Azure Data Factory 的更完整概觀，請參閱 [Azure Data Factory 文件] []。
+Azure Data Factory 提供完全受管理的方法，可供協調資料的傳輸和 SQL 資料倉儲上預存程序的執行。  這可讓您更輕鬆地設定及排程 SQL 資料倉儲的複雜擷取、轉換和載入 (ETL) 程序。 Azure Data Factory 的更完整概觀，請參閱 [Azure Data Factory 文件][]。
 
 ## 資料移動 
 
@@ -51,4 +51,5 @@ Azure Data Factory 可讓資料在內部部署來源與不同的 Azure 服務之
 <!--Other Web references-->
 [Azure Data Factory documentation]:https://azure.microsoft.com/documentation/services/data-factory/
 [Copy data with Azure Data Factory]:https://azure.microsoft.com/en-us/documentation/articles/data-factory-data-movement-activities/
+
 

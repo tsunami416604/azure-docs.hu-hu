@@ -25,7 +25,7 @@
 > [AZURE.IMPORTANT]
 > 您僅能在啟用 Azure Active Directory Premium 時才可以建立和使用管理單位。 如需詳細資訊，請參閱 [開始使用 Azure AD Premium](active-directory-get-started-premium.md)。
 
-從管理中心的觀點來看，管理單位是可以建立並填入資源的目錄物件。 **在此版本中，這些資源只能是使用者。**一旦建立並填入，管理單位可用作為範圍，以限制僅能針對管理單位中所包含的資源來授與權限。
+從管理中心的觀點來看，管理單位是可以建立並填入資源的目錄物件。 **在此版本中，這些資源僅能為使用者。** 一旦建立並填入，管理單位可用作為範圍，以限制僅能針對管理單位中所包含的資源來授與權限。
 
 ## 管理管理單位
 
@@ -36,4 +36,5 @@
 
 ## 後續步驟
 [Azure Active Directory 版本](active-directory-editions.md)
+
 

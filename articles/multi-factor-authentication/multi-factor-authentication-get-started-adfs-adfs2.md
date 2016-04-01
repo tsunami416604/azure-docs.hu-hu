@@ -94,3 +94,4 @@
 <center>![設定](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
 
  
+

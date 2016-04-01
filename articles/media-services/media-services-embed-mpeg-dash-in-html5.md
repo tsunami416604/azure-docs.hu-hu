@@ -41,7 +41,7 @@ Dash.js 是以 JavaScript 撰寫的開放原始碼 MPEG-DASH 視訊播放程式�
 
 ##建立 HTML 網頁
 
-第一個步驟是建立一個標準 HTML 頁面，其中包含 <video> 項目，此檔案儲存為 basicPlayer.html，如下列範例將說明:
+第一個步驟是建立一個標準 HTML 頁面，其中包含 <video> 項目，此檔案儲存為 basicPlayer.html，如下列範例將說明 ︰
     
     <!DOCTYPE html>
     <html>
@@ -82,7 +82,7 @@ Dash.js 是以 JavaScript 撰寫的開放原始碼 MPEG-DASH 視訊播放程式�
 
 這會呼叫 MediaPlayer 類別的 startup () 函式，以確保播放程式準備好播放視訊。 此外，這個函式可確保已載入所有必要的類別 (如內容所定義)。 一旦播放程式準備就緒，您可以使用 attachview () 函式將視訊元素附加到播放程式。 這可讓 MediaPlayer 將視訊資料流插入元素中，並視需要控制播放。
 
-將 MPD 檔案的 URL 傳遞到 MediaPlayer，讓它知道預期要播放的視訊。一旦頁面整個載入後，就必須執行剛剛建立的 setupVideo() 函式。 做法是使用內文元素的載入事件。 變更程式 <body> 項目:
+將 MPD 檔案的 URL 傳遞到 MediaPlayer，讓它知道預期要播放的視訊。一旦頁面整個載入後，就必須執行剛剛建立的 setupVideo() 函式。 做法是使用內文元素的載入事件。 變更程式 <body> 項目 ︰
 
     <body onload="setupVideo()">
 
@@ -113,4 +113,5 @@ Dash.js 是以 JavaScript 撰寫的開放原始碼 MPEG-DASH 視訊播放程式�
 [開發視訊播放器應用程式](media-services-develop-video-players.md)
 
 [GitHub dash.js 存放庫](https://github.com/Dash-Industry-Forum/dash.js) 
+
 

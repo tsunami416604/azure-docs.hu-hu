@@ -57,7 +57,7 @@ public class CalculatorActor : StatelessActor, ICalculatorActor
 
 > [AZURE.TIP] Fabric Actor 執行階段會發出某些 [動作項目方法相關的事件與效能計數器](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)。 這些項目對於診斷與效能監視很有幫助。
 
-值得一提，是屬於動作項目介面方法的下列規則:
+值得一提，是屬於動作項目介面方法的下列規則 ︰
 - 動作項目介面方法無法多載。
 - 動作項目介面方法不能有輸出、 參照或選擇性參數。
 
@@ -199,4 +199,5 @@ public interface IVoicemailBoxActor : IActor
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
+
 

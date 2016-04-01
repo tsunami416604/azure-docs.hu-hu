@@ -43,7 +43,7 @@ Office 365 訂用帳戶包含的其他 Azure Active Directory 功能在以下比
 >
 >- Active Directory B2C 是面向消費者應用程式適用的身分識別和存取管理解決方案。 如需詳細資訊，請參閱 [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
  
->-  Azure Multi-Factor Authentication 可透過每一使用者或每一驗證提供者方式使用。 如需詳細資訊，請參閱 [何謂 Azure 多重要素驗證?](multi-factor-authentication.md) 
+>-  Azure Multi-Factor Authentication 可透過每一使用者或每一驗證提供者方式使用。 如需詳細資訊，請參閱 [何謂 Azure 多重要素驗證？](multi-factor-authentication.md) 
 
 
 <br>
@@ -51,28 +51,28 @@ Office 365 訂用帳戶包含的其他 Azure Active Directory 功能在以下比
 | 功能類型| 特性| 免費版| 基本版| Premium Edition| 僅 Office 365 應用程式 |
 | --- | --- | --- | --- | --- | --- |
 | **常用功能**| 目錄物件 [1]| 最多 500,000 個物件| 沒有物件數目限制| 沒有物件數目限制| Office 365 使用者帳戶沒有物件數目限制|
-|  | [使用者和群組管理 (加入 / 更新 / 刪除)，以使用者為基礎的佈建](active-directory-administer.md), ，[裝置註冊](active-directory-conditional-access-device-registration-overview.md)| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12|
+|  | [使用者和群組管理 （加入 / 更新 / 刪除），以使用者為基礎的佈建](active-directory-administer.md), ，[裝置註冊](active-directory-conditional-access-device-registration-overview.md)| ![勾選][12]| ![勾選][12]| ![勾選][12]| ![勾選][12]|
 |  | [SSO 至 SaaS 應用程式、自訂應用程式、應用程式 Proxy 應用程式](active-directory-enable-sso-scenario.md)| 每位使用者 10 個應用程式 [2]| 每位使用者 10 個應用程式 [2]| 沒有限制| 每位使用者 10 個應用程式 [2]|
-|  | [雲端使用者的自助式密碼變更](active-directory-passwords-update-your-own-password.md)| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12|
-|  | [Connect - 用於內部部署目錄與 Azure Active Directory 之間的同步處理](active-directory-aadconnect.md)| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12|
-|  | **預覽**:[ B2B 共同作業](active-directory-b2b-collaboration-overview.md)| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12|
+|  | [雲端使用者的自助式密碼變更](active-directory-passwords-update-your-own-password.md)| ![勾選][12]| ![勾選][12]| ![勾選][12]| ![勾選][12]|
+|  | [Connect - 用於內部部署目錄與 Azure Active Directory 之間的同步處理](active-directory-aadconnect.md)| ![勾選][12]| ![勾選][12]| ![勾選][12]| ![勾選][12]|
+|  | **預覽**:[ B2B 共同作業](active-directory-b2b-collaboration-overview.md)| ![勾選][12]| ![勾選][12]| ![勾選][12]| ![勾選][12]|
 |  | [安全性 / 使用量報告](active-directory-view-access-usage-reports.md)| 基本報告| 基本報告| 進階報告| 基本報告|
-| **高階和基本功能**| [以群組為基礎的應用程式存取管理和佈建](active-directory-accessmanagement-group-saasapps.md)|  | ![檢查][] 12| ![檢查][] 12|  |
-|  | [雲端使用者的自助式密碼重設](active-directory-passwords.md)|  | ![檢查][] 12| ![檢查][] 12| ![檢查][] 12|
-|  | [創建公司品牌 (登入頁面與存取面板自訂)](active-directory-add-company-branding.md)|  | ![檢查][] 12| ![檢查][] 12| ![檢查][] 12|
-|  | [應用程式 Proxy](active-directory-application-proxy-get-started.md)|  | ![檢查][] 12| ![檢查][] 12|  |
-|  | [高可用性 SLA 運作時間 (99.9%)](https://azure.microsoft.com/support/legal/sla/)|  | ![檢查][] 12| ![檢查][] 12| ![檢查][] 12|
-| **僅限高階功能**| 自助式群組管理 / 自助式新增應用程式 / 動態群組成員資格|  |  | ![檢查][] 12|  |
-|  | [自助式密碼重設、變更、使用內部部署寫回解鎖](active-directory-passwords-getting-started.md/#enable-users-to-reset-or-change-their-ad-passwords)|  |  | ![檢查][] 12|  |
-|  | [多重要素驗證 (雲端與內部部署)](multi-factor-authentication.md)|  |  | ![檢查][] 12| 針對 Office 365 應用程式限定於雲端|
-|  | [Microsoft Identity Manager (MIM) 使用者授權與 MIM 伺服器 [3]](http://www.microsoft.com/server-cloud/products/microsoft-identity-manager/default.aspx)|  |  | ![檢查][] 12|  |
-|  | [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)|  |  | ![檢查][] 12|  |
-|  | [Azure Active Directory Connect Health](active-directory-aadconnect-health.md)|  |  | ![檢查][] 12|  |
-|  | 群組帳戶的自動密碼變換|  |  | ![檢查][] 12|  |
-|  | **預覽**: 條件式存取|  |  | ![檢查][] 12|  |
-|  | **預覽**: 特殊權限身分識別管理|  |  | ![檢查][] 12|  |
-| **Windows 10 與 Azure AD Join 相關功能**| 將 Windows 10 裝置加入 Azure AD、Desktop SSO、適用於 Azure AD 的 Microsoft Passport、系統管理員 Bitlocker 復原| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12| ![檢查][] 12|
-|  | MDM 自動註冊，自助 Bitlocker 修復，透過 Azure AD Join 的 Windows 10 裝置的其他本機系統管理員|  |  | ![檢查][] 12|  |
+| **高階和基本功能**| [以群組為基礎的應用程式存取管理和佈建](active-directory-accessmanagement-group-saasapps.md)|  | ![勾選][12]| ![勾選][12]|  |
+|  | [雲端使用者的自助式密碼重設](active-directory-passwords.md)|  | ![勾選][12]| ![勾選][12]| ![勾選][12]|
+|  | [創建公司品牌 (登入頁面與存取面板自訂)](active-directory-add-company-branding.md)|  | ![勾選][12]| ![勾選][12]| ![勾選][12]|
+|  | [應用程式 Proxy](active-directory-application-proxy-get-started.md)|  | ![勾選][12]| ![勾選][12]|  |
+|  | [高可用性 SLA 運作時間 (99.9%)](https://azure.microsoft.com/support/legal/sla/)|  | ![勾選][12]| ![勾選][12]| ![勾選][12]|
+| **僅限高階功能**| 自助式群組管理 / 自助式新增應用程式 / 動態群組成員資格|  |  | ![勾選][12]|  |
+|  | [自助式密碼重設、變更、使用內部部署寫回解鎖](active-directory-passwords-getting-started.md/#enable-users-to-reset-or-change-their-ad-passwords)|  |  | ![勾選][12]|  |
+|  | [多重要素驗證 (雲端與內部部署)](multi-factor-authentication.md)|  |  | ![勾選][12]| 針對 Office 365 應用程式限定於雲端|
+|  | [Microsoft Identity Manager (MIM) 使用者授權與 MIM 伺服器 [3]](http://www.microsoft.com/server-cloud/products/microsoft-identity-manager/default.aspx)|  |  | ![勾選][12]|  |
+|  | [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)|  |  | ![勾選][12]|  |
+|  | [Azure Active Directory Connect Health](active-directory-aadconnect-health.md)|  |  | ![勾選][12]|  |
+|  | 群組帳戶的自動密碼變換|  |  | ![勾選][12]|  |
+|  | **預覽**︰ 條件式存取|  |  | ![勾選][12]|  |
+|  | **預覽**︰ 特殊權限身分識別管理|  |  | ![勾選][12]|  |
+| **Windows 10 與 Azure AD Join 相關功能**| 將 Windows 10 裝置加入 Azure AD、Desktop SSO、適用於 Azure AD 的 Microsoft Passport、系統管理員 Bitlocker 復原| ![勾選][12]| ![勾選][12]| ![勾選][12]| ![勾選][12]|
+|  | MDM 自動註冊，自助 Bitlocker 修復，透過 Azure AD Join 的 Windows 10 裝置的其他本機系統管理員|  |  | ![勾選][12]|  |
 
 
 
@@ -86,7 +86,7 @@ Office 365 訂用帳戶包含的其他 Azure Active Directory 功能在以下比
 
 
 
-## 接下來
+## 後續步驟
 
 - [開始使用 Azure Active Directory Premium](active-directory-get-started-premium.md)
 - [將公司商標新增至登入和存取面板頁面](active-directory-add-company-branding.md)
@@ -95,4 +95,5 @@ Office 365 訂用帳戶包含的其他 Azure Active Directory 功能在以下比
 
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
+
 

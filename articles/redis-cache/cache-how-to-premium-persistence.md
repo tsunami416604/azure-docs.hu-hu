@@ -39,7 +39,7 @@ Azure Redis 快取提供 Redis 持續性使用 [RDB 模型](http://redis.io/topi
 
 若要設定持續性，請先選取其中一個 **高階** 會在快取 **選擇價格層** 刀鋒視窗。
 
-![選擇定價層][redis-cache-premium-pricing-tier]
+![選擇價格層][redis-cache-premium-pricing-tier]
 
 選取 [進階定價層後，按一下 [ **Redis 持續性**。
 
@@ -53,7 +53,7 @@ Redis 持續性在設定 **Redis 資料持續性** 刀鋒視窗。 若為新的�
 
 ![Redis 設定][redis-cache-settings]
 
-若要啟用 Redis 持續性，請按一下 [ **啟用** 啟用 RDB (Redis 資料庫) 備份。 若要停用先前啟用的高階快取的 Redis 持續性，請按一下 [ **已停用**。
+若要啟用 Redis 持續性，請按一下 [ **啟用** 啟用 RDB （Redis 資料庫） 備份。 若要停用先前啟用的高階快取的 Redis 持續性，請按一下 [ **已停用**。
 
 若要設定備份的時間間隔，請選取 **備份頻率** 從下拉式清單。 選項包括 **15 分鐘**, ，**30 分鐘內**, ，**60 分鐘**, ，**6 小時**, ，**12 小時**, ，和 **24 小時**。 在先前的備份作業成功完成後，此間隔便會開始倒數計時，時間過後就會起始新的備份。
 
@@ -106,3 +106,4 @@ Redis 持續性在設定 **Redis 資料持續性** 刀鋒視窗。 若為新的�
 [redis-cache-persistence-selected]: ./media/cache-how-to-premium-persistence/redis-cache-persistence-selected.png
 
 [redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
+

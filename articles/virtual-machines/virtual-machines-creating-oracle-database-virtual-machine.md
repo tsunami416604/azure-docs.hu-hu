@@ -28,7 +28,7 @@
 
 2.  按一下 [ **Marketplace**, ，按一下 [ **計算**, ，然後輸入 **Oracle** 在搜尋方塊。
 
-3.  選取其中一個可用的 Oracle 資料庫映像包括 **版本 11g、 版本 12c、 標準版、 企業版或其中一個常用的選項或進階的選項套件組合。**檢閱您選取 (例如建議的最小值)，映像的相關資訊，然後按一下 **下一步**。
+3.  選取其中一個可用的 Oracle 資料庫映像包括 **版本 11g、 版本 12c、 標準版、 企業版或其中一個常用的選項或進階的選項套件組合。**  檢閱您選取 （例如建議的最小值），映像的相關資訊，然後按一下 **下一步**。
 
 4.  指定 **主機名稱** vm。
 
@@ -75,7 +75,7 @@
 
     c.  在 **系統變數** 區段中，按一下 **新增** 建立變數。
 
-    d.  在 **新增系統變數** ] 對話方塊中，輸入 **ORACLE_HOSTNAME** 變數的名稱，然後輸入 VM 的電腦名稱做為值。 若要判斷電腦名稱，開啟命令提示字元並執行 **SET COMPUTERNAME** (該命令的輸出將包含電腦名稱)。
+    d.  在 **新增系統變數** ] 對話方塊中，輸入 **ORACLE_HOSTNAME** 變數的名稱，然後輸入 VM 的電腦名稱做為值。 若要判斷電腦名稱，開啟命令提示字元並執行 **SET COMPUTERNAME** （該命令的輸出將包含電腦名稱）。
 
     e.  按一下 [ **確定** 來儲存新的環境變數，然後關閉 **新增系統變數** 對話方塊。
 
@@ -83,7 +83,7 @@
 
 7.  在 Windows 中，按一下 [ **啟動**, ，然後輸入 **資料庫組態輔助**。 按一下 [ **資料庫組態輔助** 圖示。
 
-8.  內 **資料庫組態輔助** 精靈] 中，視需要針對每個對話方塊步驟提供值:
+8.  內 **資料庫組態輔助** 精靈] 中，視需要針對每個對話方塊步驟提供值 ︰
 
     a.  **步驟 1:** 按一下 **Create Database** 然後按一下 [ **下一步**。
 
@@ -185,7 +185,7 @@
 
  **Oracle Database 包含常用選項套件組合** 包含 Oracle Database Enterprise Edition 和授權包含執行個體的 [資料分割](http://www.oracle.com/us/products/database/options/partitioning/overview/index.html), ，[Active Data Guard](http://www.oracle.com/us/products/database/options/active-data-guard/overview/index.html), ，[Oracle 資料庫的微調組件](http://docs.oracle.com/html/A86647_01/tun_ovw.htm), ，[資料庫的 Oracle 診斷套件](http://docs.oracle.com/cd/B28359_01/license.111/b28287/options.htm#CIHIHDDJ), ，和 [Oracle 資料庫生命週期管理組件](http://www.oracle.com/technetwork/oem/lifecycle-mgmt-495331.html)。
 
- **Oracle Database 包含進階選項套件組合** 授權包含的所有選項的執行個體包含常用選項套件組合中加上 [進階壓縮](http://www.oracle.com/us/products/database/options/advanced-compression/overview/index.html), ，[進階安全性](http://www.oracle.com/us/products/database/options/advanced-security/overview/index.html), ，[標籤安全性](http://www.oracle.com/us/products/database/options/label-security/overview/index.html), ，[資料庫保存庫](http://www.oracle.com/us/products/database/options/database-vault/overview/index.html), ，[進階分析](http://www.oracle.com/us/products/database/options/advanced-analytics/overview/index.html), ，[OLAP](http://docs.oracle.com/cd/E11882_01/license.112/e47877/options.htm#CIHGDEEF), ，[空間和圖形](http://docs.oracle.com/cd/E11882_01/license.112/e47877/options.htm#CIHGDEEF), ，[記憶體中資料庫快取](http://www.oracle.com/technetwork/products/timesten/overview/timesten-imdb-cache-101293.html), ，[資料遮罩的組件](http://docs.oracle.com/cd/E11882_01/license.112/e47877/options.htm#CHDGEEBB), ，與 Oracle 測試資料管理組件 (做為資料遮罩組件的一部分)。
+ **Oracle Database 包含進階選項套件組合** 授權包含的所有選項的執行個體包含常用選項套件組合中加上 [進階壓縮](http://www.oracle.com/us/products/database/options/advanced-compression/overview/index.html), ，[進階安全性](http://www.oracle.com/us/products/database/options/advanced-security/overview/index.html), ，[標籤安全性](http://www.oracle.com/us/products/database/options/label-security/overview/index.html), ，[資料庫保存庫](http://www.oracle.com/us/products/database/options/database-vault/overview/index.html), ，[進階分析](http://www.oracle.com/us/products/database/options/advanced-analytics/overview/index.html), ，[OLAP](http://docs.oracle.com/cd/E11882_01/license.112/e47877/options.htm#CIHGDEEF), ，[空間和圖形](http://docs.oracle.com/cd/E11882_01/license.112/e47877/options.htm#CIHGDEEF), ，[記憶體中資料庫快取](http://www.oracle.com/technetwork/products/timesten/overview/timesten-imdb-cache-101293.html), ，[資料遮罩的組件](http://docs.oracle.com/cd/E11882_01/license.112/e47877/options.htm#CHDGEEBB), ，與 Oracle 測試資料管理組件 （做為資料遮罩組件的一部分）。
 
 ##其他資源
 現在您已經設定虛擬機器並建立了資料庫，請查看下列主題以了解其他資訊。
@@ -199,4 +199,5 @@
 -   [Azure 的 Oracle 虛擬機器影像](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
 -   [Oracle Database 2 Day DBA 12c Release 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
+
 

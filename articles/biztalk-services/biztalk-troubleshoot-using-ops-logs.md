@@ -28,7 +28,7 @@
 ## 檢視 BizTalk 服務作業記錄檔
 1. 在 Azure 傳統入口網站中，選取 **管理服務**, ，然後選取 **作業記錄檔** ] 索引標籤。
 2. 您可以根據不同的參數篩選記錄檔，例如訂用帳戶、日期範圍、服務類型 (例如 BizTalk 服務)、服務名稱或作業狀態 (例如「成功」、「失敗」)。
-3. 選取核取記號以檢視篩選清單。 下圖顯示 testbiztalkservice 的相關活動:
+3. 選取核取記號以檢視篩選清單。 下圖顯示 testbiztalkservice 的相關活動 ︰
     ![View operation logs][ViewLogs] 
 4. 若要檢視更特定的作業，請選取資料列，並按一下 [ **詳細資料** 在底部的工作列。
 
@@ -68,4 +68,5 @@ PurgeBackupBizTalkService | 清除超過保留週期的 BizTalk 服務備份的�
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
  
+
 

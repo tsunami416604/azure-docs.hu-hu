@@ -54,7 +54,7 @@ Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管�
         "AccountName=your_storage_account;" + 
         "AccountKey=your_storage_account_key";
 
-在 Microsoft Azure 中的角色內執行的應用程式，這個字串可以儲存在服務組態檔中， *ServiceConfiguration.cscfg*, ，而且可以藉由呼叫存取 **RoleEnvironment.getConfigurationSettings** 方法。 以下是取得的連接字串的範例 **設定** 名 *StorageConnectionString* 服務組態檔中:
+在 Microsoft Azure 中的角色內執行的應用程式，這個字串可以儲存在服務組態檔中， *ServiceConfiguration.cscfg*, ，而且可以藉由呼叫存取 **RoleEnvironment.getConfigurationSettings** 方法。 以下是取得的連接字串的範例 **設定** 名 *StorageConnectionString* 服務組態檔中 ︰
 
     // Retrieve storage account from connection-string.
     String storageConnectionString = 
@@ -64,7 +64,7 @@ Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管�
 
 ## 作法：建立佇列
 
-A **CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程式碼會建立 **CloudQueueClient** 物件。 (請注意: 還有其他方法來建立 **CloudStorageAccount** 物件; 如需詳細資訊，請參閱 **CloudStorageAccount** 中 [Azure Storage Client SDK Reference]。)
+A **CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程式碼會建立 **CloudQueueClient** 物件。 (請注意 ︰ 還有其他方法來建立 **CloudStorageAccount** 物件; 如需詳細資訊，請參閱 **CloudStorageAccount** 中 [Azure Storage Client SDK Reference]。)
 
 使用 **CloudQueueClient** 物件來取得您想要使用佇列的參考。 如果佇列不存在，您可以建立佇列。
 
@@ -91,7 +91,7 @@ A **CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程�
 
 ## 作法：將訊息新增至佇列
 
-若要將訊息插入現有佇列，先建立新 **CloudQueueMessage**。 接下來，呼叫 **addMessage** 方法。 A **CloudQueueMessage** 可以從字串 (採用 utf-8 格式) 或位元組陣列建立。 以下是建立佇列 (如果佇列不存在) 並插入訊息 "Hello, World" 的程式碼。
+若要將訊息插入現有佇列，先建立新 **CloudQueueMessage**。 接下來，呼叫 **addMessage** 方法。 A **CloudQueueMessage** 可以從字串 （採用 utf-8 格式） 或位元組陣列建立。 以下是建立佇列 (如果佇列不存在) 並插入訊息 "Hello, World" 的程式碼。
 
     try
     {
@@ -325,7 +325,7 @@ A **CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程�
 
 ## 作法：列出佇列
 
-若要取得目前佇列的清單，請呼叫 **cloudqueueclient.listqueues ()** 方法，將傳回的集合 **CloudQueue** 物件。 
+若要取得目前佇列的清單，請呼叫 **cloudqueueclient.listqueues （)** 方法，將傳回的集合 **CloudQueue** 物件。 
 
     try
     {
@@ -390,4 +390,5 @@ A **CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程�
 [Azure Storage Client SDK Reference]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+
 

@@ -103,3 +103,4 @@ Batch API 的常見案例包括相應放大本質平行工作，例如計算節�
 [parallel]: ./media/batch-technical-overview/parallel.png
 [work_item_workflow]: ./media/batch-technical-overview/work_item_workflow.png
 
+

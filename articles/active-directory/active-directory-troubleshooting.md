@@ -18,7 +18,7 @@
 
 # 疑難排解：'Active Directory' 項目遺失或無法使用
 
-許多使用 Azure Active Directory 功能和服務的指示以開始 「 移至 Azure 管理入口網站，按一下 [ **Active Directory**。 」 但該怎麼辦如果 Active Directory 延伸模組或功能表項目不會出現，或標示 **無法使用**嗎? 本主題旨在提供協助。 它會描述的條件 **Active Directory** 不會出現或無法使用，並說明要如何繼續進行。
+許多使用 Azure Active Directory 功能和服務的指示以開始 「 移至 Azure 管理入口網站，按一下 [ **Active Directory**。 」 但該怎麼辦如果 Active Directory 延伸模組或功能表項目不會出現，或標示 **無法使用**嗎？ 本主題旨在提供協助。 它會描述的條件 **Active Directory** 不會出現或無法使用，並說明要如何繼續進行。
 
 ## Active Directory 遺失
 
@@ -53,4 +53,5 @@
 不過，在網頁載入時，項目會呈現灰色而標示為 **無法使用**。 這是暫時性狀態。 如果您稍待片刻，該項目將變成可用狀態。 如果延遲太久，重新整理網頁通常就能解決問題。
 
 ![螢幕擷取畫面：Active Directory 無法使用](./media/active-directory-troubleshooting/not-available.png)
+
 

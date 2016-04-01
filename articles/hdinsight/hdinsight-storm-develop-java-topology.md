@@ -25,11 +25,11 @@
 
 ##必要條件
 
-* <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank">Java Developer Kit (JDK) 7 版</a>
+* <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank">Java Developer Kit (JDK) 第 7 版</a>
 
-* <a href="https://maven.apache.org/download.cgi" target="_blank">Maven</a>: Maven 是 Java 專案系統，專案建置。
+* <a href="https://maven.apache.org/download.cgi" target="_blank">Maven</a>：Maven 是 Java 專案的專案建置系統。
 
-* 文字編輯器 (例如記事本)， <a href="http://www.gnu.org/software/emacs/" target="_blank">Emacs<a>， <a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a>， <a href="https://atom.io/" target="_blank">Atom.io</a>， <a href="http://brackets.io/" target="_blank">Brackets.io</a>. 或者您可以使用整合式的開發環境 (IDE)，例如 <a href="https://eclipse.org/" target="_blank">Eclipse</a> (Luna 版或更新版本)。
+* 文字編輯器，例如記事本、<a href="http://www.gnu.org/software/emacs/" target="_blank">Emacs<a>、<a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a>、<a href="https://atom.io/" target="_blank">Atom.io</a>、<a href="http://brackets.io/" target="_blank">Brackets.io</a>。 或者您可以使用整合式開發環境 (IDE)，例如 <a href="https://eclipse.org/" target="_blank">Eclipse</a> (Luna 版本或更新版本)。
 
     > [AZURE.NOTE] 您的編輯器或 IDE 可能具有處理 maven，但不會記載在這份文件的特定功能。 如需編輯環境功能的詳細資訊，請參閱所使用產品的文件。
 
@@ -39,11 +39,11 @@
 
 * **JAVA_HOME** -應該指向已安裝 Java 執行階段環境 (JRE) 的目錄。 例如，在 Unix 或 Linux 散發套件上，它的值應該類似 `/usr/lib/jvm/java-7-oracle` 在 Windows 中，它的值應該類似 `c:\Program Files (x86)\Java\jre1.7`
 
-* **路徑** -應該包含下列路徑:
+* **路徑** -應該包含下列路徑 ︰
 
-    * **JAVA_HOME** (或對等的路徑)
+    * **JAVA_HOME** （或對等的路徑）
 
-    * **JAVA_HOME\bin** (或對等的路徑)
+    * **JAVA_HOME\bin** （或對等的路徑）
 
     * 已安裝 Maven 的目錄
 
@@ -55,13 +55,13 @@
 
 這會建立新目錄 **WordCount** 目前的位置，其中包含基本 Maven 專案。
 
- **WordCount** 目錄將包含下列項目:
+ **WordCount** 目錄將包含下列項目 ︰
 
-* **pom.xml**: 包含 Maven 專案的設定。
+* **pom.xml**︰ 包含 Maven 專案的設定。
 
-* **src\main\java\com\microsoft\example**: 包含應用程式程式碼。
+* **src\main\java\com\microsoft\example**︰ 包含應用程式程式碼。
 
-* **src\test\java\com\microsoft\example**: 包含應用程式的測試。 在此範例中，我們不會建立測試。
+* **src\test\java\com\microsoft\example**︰ 包含應用程式的測試。 在此範例中，我們不會建立測試。
 
 ###移除範例程式碼
 
@@ -73,7 +73,7 @@
 
 ##新增相依性
 
-因為這是 Storm 拓撲，所以您必須新增 Storm 元件的相依性。 開啟 **pom.xml** 檔案，並加入下列程式碼中的 **& lt; 相依性 >** 區段:
+因為這是 Storm 拓撲，所以您必須新增 Storm 元件的相依性。 開啟 **pom.xml** 檔案，並加入下列程式碼中的 **& lt; 相依性 >** 區段 ︰
 
     <dependency>
       <groupId>org.apache.storm</groupId>
@@ -100,7 +100,7 @@ Maven 外掛程式可讓您自訂專案的建置階段 (例如，如何編譯專
 
 ###加入外掛程式
 
-在 Storm 拓撲中，<a href="http://mojo.codehaus.org/exec-maven-plugin/" target="_blank">Exec Maven 外掛程式</a>十分有用，因為它可讓您輕鬆地在開發環境上以本機執行拓撲。 將下列內容加入 `<plugins>` 區段 **pom.xml** 檔案，以包括 Exec Maven 外掛程式:
+在 Storm 拓撲中，<a href="http://mojo.codehaus.org/exec-maven-plugin/" target="_blank">Exec Maven 外掛程式</a>十分有用，因為它可讓您輕鬆地在開發環境上以本機執行拓撲。 將下列內容加入 `<plugins>` 區段 **pom.xml** 檔案，以包括 Exec Maven 外掛程式 ︰
 
     <plugin>
       <groupId>org.codehaus.mojo</groupId>
@@ -121,7 +121,7 @@ Maven 外掛程式可讓您自訂專案的建置階段 (例如，如何編譯專
       </configuration>
     </plugin>
 
-另一個有用的外掛程式是 <a href="http://maven.apache.org/plugins/maven-compiler-plugin/" target="_blank">Apache Maven 編譯器外掛程式</a>，這用來變更編譯選項。 我們需要此外掛程式的主要原因是要變更 Maven 用於您應用程式之來源和目標的 Java 版本。 我們需要 1.7 版。
+另一個有用的外掛程式是 <a href="http://maven.apache.org/plugins/maven-compiler-plugin/" target="_blank">Apache Maven 編譯器外掛程式</a>，其可用來變更編譯選項。 我們需要此外掛程式的主要原因是要變更 Maven 用於您應用程式之來源和目標的 Java 版本。 我們需要 1.7 版。
 
 中加入下列 `<plugins>` 區段 **pom.xml** 以包括 Apache Maven 編譯器外掛程式並將來源和目標版本設定為 1.7。
 
@@ -138,23 +138,23 @@ Maven 外掛程式可讓您自訂專案的建置階段 (例如，如何編譯專
 
 Java 型 Storm 拓撲包含三個您必須編寫 (或參考) 為相依性的元件。
 
-* **Spout**: 讀取來自外部資料來源並將資料的資料流發出到拓撲。
+* **Spout**︰ 讀取來自外部資料來源並將資料的資料流發出到拓撲。
 
-* **Bolt**: 執行 spout 或其他 bolt，所發出資料流處理，並發出一或多個資料流。
+* **Bolt**︰ 執行 spout 或其他 bolt，所發出資料流處理，並發出一或多個資料流。
 
-* **拓撲**: 定義如何 spout 和 bolt 排列，並提供拓撲的進入點。
+* **拓撲**︰ 定義如何 spout 和 bolt 排列，並提供拓撲的進入點。
 
 ###建立 Spout
 
-若要減少設定外部資料來源的需求，下列 Spout 只會發出隨機的句子。 這是修改過 (提供的 spout 修正版<a href="https://github.com/apache/storm/blob/master/examples/storm-starter/" target="_blank">Storm-starter 範例</a>).
+若要減少設定外部資料來源的需求，下列 Spout 只會發出隨機的句子。 它是所提供的 spout 修正版 (<a href="https://github.com/apache/storm/blob/master/examples/storm-starter/" target="_blank">Storm-starter 範例</a>)。
 
-> [AZURE.NOTE] 如需從外部資料來源讀取之 spout 的範例，請參閱下列範例:
+> [AZURE.NOTE] 如需從外部資料來源讀取之 spout 的範例，請參閱下列範例 ︰
 >
-> * <a href="https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java" target="_blank">TwitterSampleSpout</a>: 從 Twitter 讀取的範例 spout
+> * <a href="https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java" target="_blank">TwitterSampleSpout</a>從 Twitter 讀取的 Spout 範例
 >
-> * <a href="https://github.com/apache/storm/tree/master/external/storm-kafka" target="_blank">Storm-kafka</a>: 從 Kafka 讀取的 spout
+> * <a href="https://github.com/apache/storm/tree/master/external/storm-kafka" target="_blank">Storm-Kafka</a>從 Kafka 讀取的 Spout
 
-針對 spout，建立名為的新檔案 **Src\main\java\com\microsoft\example** 中 **wordcounttopology.java** 目錄，然後使用下列內容:
+針對 spout，建立名為的新檔案 **Src\main\java\com\microsoft\example** 中 **wordcounttopology.java** 目錄，然後使用下列內容 ︰
 
     /**
      * Licensed to the Apache Software Foundation (ASF) under one
@@ -246,9 +246,9 @@ Java 型 Storm 拓撲包含三個您必須編寫 (或參考) 為相依性的元�
 
 Bolt 會處理資料的處理。 針對此拓撲，我們有兩個 Bolt：
 
-* **SplitSentence**: 分割所發出的句子 **RandomSentenceSpout** 分成個別單字。
+* **SplitSentence**︰ 分割所發出的句子 **RandomSentenceSpout** 分成個別單字。
 
-* **WordCount**: 計算每個單字的出現的次數。
+* **WordCount**︰ 計算每個單字的出現的次數。
 
 > [AZURE.NOTE] Bolt 可以工作包辦任何作業，例如計算、 持續性，或與外部元件交談。
 
@@ -453,7 +453,7 @@ Trident 是 Storm 提供的高層級抽象。 它支援具狀態的處理。 Tri
 
 可以使用 Maven 專案來建立 Trident 應用程式。 您使用與本文稍早所呈現的相同基本步驟—只有程式碼不同。
 
-如需 Trident 的詳細資訊，請參閱 <a href="http://storm.apache.org/documentation/Trident-API-Overview.html" target="_blank">Trident API 概觀</a>.
+如需 Trident 的詳細資訊，請參閱 <a href="http://storm.apache.org/documentation/Trident-API-Overview.html" target="_blank">Trident API 概觀</a>。
 
 如需 Trident 應用程式的範例，請參閱 [Twitter 趨勢主題與 Apache Storm on HDInsight](hdinsight-storm-twitter-trending.md)。
 
@@ -466,4 +466,5 @@ Trident 是 Storm 提供的高層級抽象。 它支援具狀態的處理。 Tri
 * [使用 Visual Studio 開發 Apache Storm on HDInsight 的 C# 拓撲](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
 您可以找到更多範例 Storm 拓撲，請造訪 [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)。
+
 

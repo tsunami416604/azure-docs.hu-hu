@@ -20,7 +20,7 @@
 
 了解如何使用 [Apache Phoenix](http://phoenix.apache.org/) HDInsight，以及如何安裝與設定 SQuirreL 您連接到 HDInsight 中的 HBase 叢集的工作站上。 如需有關 Phoenix 的詳細資訊，請參閱 [Phoenix 在 15 分鐘以內](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)。 如需 Phoenix 文法，請參閱 [Phoenix 文法](http://phoenix.apache.org/language/index.html)。
 
->[AZURE.NOTE] 在 HDInsight 中的 Phoenix 版本資訊，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能?][hdinsight-versions]。
+>[AZURE.NOTE] 在 HDInsight 中的 Phoenix 版本資訊，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能？][hdinsight-versions]。
 
 ##使用 SQLLine
 [SQLLine](http://sqlline.sourceforge.net/) 是執行 SQL 命令列公用程式。 
@@ -255,9 +255,9 @@ Phoenix 驅動程式 jar 檔案位於 HBase 叢集上。 此路徑根據版本�
 
     - **名稱**: HBase 叢集或您偏好的任何名稱的名稱。
     - **驅動程式**: Phoenix。  必須符合您在上一個程序中建立的驅動程式名稱。
-    - **URL**: 從驅動程式組態複製的 URL。 請確定使用者全部小寫。
-    - **使用者名稱**: 它可以是任何文字。  因為您在此使用 VPN 連線，所以完全不會使用使用者名稱。
-    - **密碼**: 它可以是任何文字。
+    - **URL**︰ 從驅動程式組態複製的 URL。 請確定使用者全部小寫。
+    - **使用者名稱**︰ 它可以是任何文字。  因為您在此使用 VPN 連線，所以完全不會使用使用者名稱。
+    - **密碼**︰ 它可以是任何文字。
 
     ![HDInsight HBase Phoenix SQuirreL 驅動程式][img-squirrel-alias]
 4. 按一下 [ **測試**。 
@@ -284,7 +284,7 @@ Phoenix 驅動程式 jar 檔案位於 HBase 叢集上。 此路徑根據版本�
 HBase 是建置於 Hadoop 上的 Apache 開放原始碼 NoSQL 資料庫，可針對大量非結構化及半結構化資料，提供隨機存取功能和強大一致性。
 - [佈建 Azure 虛擬網路上的 HBase 叢集][hdinsight-hbase-provision-vnet]:
 由於 HBase 叢集已與虛擬網路整合，因此能夠部署到與您應用程式相同的虛擬網路，讓應用程式得以和 HBase 直接通訊。
-- [在 HDInsight 中設定 HBase 複寫](hdinsight-hbase-geo-replication.md): 了解如何跨兩個 Azure 資料中心設定 HBase 複寫。 
+- [在 HDInsight 中設定 HBase 複寫](hdinsight-hbase-geo-replication.md)︰ 了解如何跨兩個 Azure 資料中心設定 HBase 複寫。 
 - [利用 HDInsight 中的 HBase 分析 Twitter 情緒][hbase-twitter-sentiment]:
 了解如何執行即時 [情感分析](http://en.wikipedia.org/wiki/Sentiment_analysis) 使用 HDInsight 之 Hadoop 叢集中的 HBase 針對巨量資料。
 
@@ -308,4 +308,5 @@ HBase 是建置於 Hadoop 上的 Apache 開放原始碼 NoSQL 資料庫，可針
 
 
  
+
 

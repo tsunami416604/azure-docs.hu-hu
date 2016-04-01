@@ -1,11 +1,11 @@
 <properties
-    pageTitle ="WebApi 專案發生什麼事 (Visual Studio Azure Active Directory 連線服務) |Microsoft Azure 「
-    描述 ="說明 MVC 專案使用 Visual Studio 服務連接到 Azure AD 的 WebApi 會發生什麼事 = [active directory]
-    服務 = [active directory]
+    pageTitle="WebApi 專案發生什麼事 （Visual Studio Azure Active Directory 連線服務） |Microsoft Azure "
+    description="描述在 MVC 專案使用 Visual Studio 服務連接到 Azure AD 的 WebApi 會發生什麼事 ="active-directory"
+    services="active-directory"
     documentationCenter=""
-    作者 ="TomArcher"
-    管理員 ="douge"
-    編輯器 ="tglee"/ >
+    authors="TomArcher"
+    manager="douge"
+    editor="tglee"/>
 
 <tags
     ms.service="active-directory"
@@ -74,7 +74,7 @@
 
 [深入了解 Azure Active Directory](http://azure.microsoft.com/services/active-directory/)
 
-##如果我核取 *停用個別使用者帳戶驗證*, ，我的專案已進行哪些其他的變更?
+##如果我核取 *停用個別使用者帳戶驗證*, ，我的專案已進行哪些其他的變更？
 NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您的專案狀態，您可能必須手動移除其他參考或檔案，或修改為適當的程式碼。
 
 ###移除的 NuGet 封裝參考 (如果存在)
@@ -100,7 +100,7 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 - `Startup.cs`
 - `App_Start\Startup.Auth.cs`
 
-##如果我核取 *讀取目錄資料*, ，我的專案已進行哪些其他的變更?
+##如果我核取 *讀取目錄資料*, ，我的專案已進行哪些其他的變更？
 
 ###app.config 或 web.config 已進行其他變更
 
@@ -116,4 +116,5 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 Azure Active Directory 應用程式已更新為包含 *讀取目錄資料* 使用權限和其他的登錄機碼已建立其再做使用 *ida: Password* 中 `web.config` 檔案。
 
 [深入了解 Azure Active Directory](http://azure.microsoft.com/services/active-directory/)
+
 

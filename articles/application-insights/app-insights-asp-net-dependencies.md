@@ -27,7 +27,7 @@ A *相依性* 由您的應用程式呼叫的外部元件。 這通常是使用 H
 
 ![範例圖表](./media/app-insights-asp-net-dependencies/10-intro.png)
 
-方塊外相依性監視目前會回報這些相依性類型的呼叫:
+方塊外相依性監視目前會回報這些相依性類型的呼叫 ︰
 
 * ASP.NET
  * SQL DATABASE
@@ -52,7 +52,7 @@ A *相依性* 由您的應用程式呼叫的外部元件。 這通常是使用 H
 
     ![使用 Microsoft 帳戶認證登入 Azure](./media/app-insights-asp-net-dependencies/appinsights-035-signin.png)
 
-    *連線錯誤? 請參閱 [疑難排解](#troubleshooting)。*
+    *連線錯誤？ 請參閱 [疑難排解](#troubleshooting)。*
 
 5. 挑選您想要監視的已安裝 Web 應用程式或網站，然後設定您在 Application Insights 入口網站中查看結果時想要使用的資源。
 
@@ -194,3 +194,4 @@ A *相依性* 由您的應用程式呼叫的外部元件。 這通常是使用 H
 [start]: app-insights-overview.md
 
  
+

@@ -7,7 +7,7 @@
 
 1. 在 Visual Studio 方案總管] 中，開啟 push.register.js 專案檔，並在註解化或刪除呼叫 **addEventListener**。 
 
-2. 在 default.js 專案檔案中，將現有的 **登入** 函式，以下列程式碼:
+2. 在 default.js 專案檔案中，將現有的 **登入** 函式，以下列程式碼 ︰
  
         // Request authentication from Mobile Services using a Facebook login.
         var login = function () {
@@ -39,7 +39,7 @@
 
 在這個方法中，您已將從教學課程取得的註冊程式碼直接新增到 default.js 專案檔。
 
-1. 在 Visual Studio 方案總管] 中，開啟 default.js 專案檔案並在 **onActivated** 事件處理常式中，尋找呼叫的程式碼行 **createPushNotificationChannelForApplicationAsync** 函式，如下列所示:
+1. 在 Visual Studio 方案總管] 中，開啟 default.js 專案檔案並在 **onActivated** 事件處理常式中，尋找呼叫的程式碼行 **createPushNotificationChannelForApplicationAsync** 函式，如下列所示 ︰
 
         // Request a push notification channel.
         Windows.Networking.PushNotifications
@@ -50,7 +50,7 @@
                 client.push.registerNative(channel.uri);
             }); 
  
-2. 將這行程式碼貼入移 **登入** 函式，呼叫前面 **refreshTodoItems** 以便 **登入** 函式看起來像這樣:
+2. 將這行程式碼貼入移 **登入** 函式，呼叫前面 **refreshTodoItems** 以便 **登入** 函式看起來像這樣 ︰
  
         // Request authentication from Mobile Services using a Facebook login.
         var login = function () {
@@ -77,4 +77,5 @@
                 });
             });
         }  
+
 

@@ -19,7 +19,7 @@
 
 # 教學課程：Azure Active Directory 與 Moxtra 整合
 
-本教學課程的目標在於告訴您如何 Moxtra 整合 Azure Active Directory (Azure AD)。<br>Moxtra 整合與 Azure AD 讓您獲得下列優勢: 
+本教學課程的目標在於告訴您如何 Moxtra 整合 Azure Active Directory (Azure AD)。<br>Moxtra 整合與 Azure AD 讓您獲得下列優勢 ︰ 
 
 - 您可以在 Azure AD 中控制可存取 Moxtra 的人員 
 - 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Moxtra (單一登入)
@@ -46,7 +46,7 @@
  
 ## 案例描述
 此教學課程的目標是讓您在測試環境中測試 Azure AD 單一登入。 <br>
-本教學課程中說明的案例包含兩個主要建置區塊:
+本教學課程中說明的案例包含兩個主要建置區塊 ︰
 
 1. 從資源庫加入 Moxtra 
 2. 設定並測試 Azure AD 單一登入
@@ -77,7 +77,7 @@
 ##  設定並測試 Azure AD 單一登入
 本節目標是說明如何以名為 "Britta Simon" 的測試使用者為基礎，設定及測試對 Moxtra 的 Azure AD 單一登入。
 
-若要讓單一登入運作，Azure AD 必須知道 Moxtra 與 Azure AD 中互相對應的使用者。 換句話說，必須在 Azure AD 使用者和 Moxtra 中的相關使用者之間建立連結關聯性。<br>
+若要讓單一登入運作，Azure AD 必須知道 Moxtra 與 Azure AD 中互相對應的使用者。 換句話說，必須建立 Azure AD 使用者與 Moxtra 中的相關的使用者之間的連結關聯性。<br>
 藉由指定的值建立此連結關聯性 **使用者名稱** 在 Azure AD 中的值為 **Username** Moxtra 中。
  
 若要設定及測試對 Moxtra 的 Azure AD 單一登入，您需要完成下列建置組塊：
@@ -113,7 +113,7 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
     b. 按一下 [ **下一步**。
  
  
-4. 在 **Moxtra 在設定單一登入** 頁面上，執行下列步驟:
+4. 在 **Moxtra 在設定單一登入** 頁面上，執行下列步驟 ︰
 <br><br>![設定單一登入](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_05.png) <br>
 
     a. 按一下 [ **下載憑證**, ，然後儲存您的電腦上的檔案。
@@ -127,16 +127,16 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 <br><br>![設定單一登入](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_06.png) <br>
 
 
-1. 在 **SAML** 頁面上，執行下列步驟:
+1. 在 **SAML** 頁面上，執行下列步驟 ︰
 <br><br>![設定單一登入](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_08.png) <br>
 
-    a. 在 **名稱** 文字方塊中，輸入您的組態名稱 (例如: *SAML*)。 
+    a. 在 **名稱** 文字方塊中，輸入您的組態名稱 (例如 ︰ *SAML*)。 
 
     b. 在 Azure 網站中，在 **Moxtra 在設定單一登入** 對話方塊頁面中，複製 **實體識別碼** 值，並接著將它貼入 **IdP 實體識別碼** 文字方塊。 
 
     c. 在 Azure 網站中，在 **Moxtra 在設定單一登入** 對話方塊頁面中，複製 **遠端登入 URL** 值，並接著將它貼入 **登入 URL** 文字方塊。 
 
-    d. 在 **AuthnContextClassRef** 文字方塊中，tyoe **urn: oasis: 名稱: tc: SAML:2.0:ac:classes:Password**。
+    d. 在 **AuthnContextClassRef** 文字方塊中，tyoe **urn: oasis ︰ 名稱 ︰ tc: SAML:2.0:ac:classes:Password**。
 
     e. 在 Azure 網站中，在 **Moxtra 在設定單一登入** 對話方塊頁面中，複製 **名稱識別碼格式** 值，並接著將它貼入 **NameID 格式** 文字方塊。 
 
@@ -162,11 +162,11 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 
 1. 針對下表中的每個資料列，執行下列步驟：
 
-    | 屬性名稱 | 屬性值 |
-    | ---            | ---             |
-    | firstname      | givenname       |
-    | lastname       | surname         |
-    | idpid          | *\ < **實體識別碼** 值 **Moxtra 在設定單一登入** Azure 入口網站中的對話方塊 \ >* |
+  	| 屬性名稱 | 屬性值 |
+  	| ---            | ---             |
+  	| firstname      | givenname       |
+  	| lastname       | surname         |
+  	| idpid          | *\ < **實體識別碼** 值 **Moxtra 在設定單一登入** Azure 入口網站中的對話方塊 \ >* |
 
  
     a. Click add user attribute <br><br>![Configure Single Sign-On](./media/active-directory-saas-moxtra-tutorial/tutorial_general_81.png) <br>
@@ -188,7 +188,7 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 
 
 ### 建立 Azure AD 測試使用者
-本節的目標是要在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。<br>
+本節的目標是在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。<br>
 在 [使用者] 清單中選取 **Britta Simon**。<br><br>![建立 Azure AD 使用者][20]<br>
 
 **若要在 Azure AD 中建立測試使用者，請執行下列步驟：**
@@ -204,7 +204,7 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 4. 若要開啟 **新增使用者** ] 對話方塊的底部工具列上，按一下 [ **新增使用者**。 
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-moxtra-tutorial/create_aaduser_04.png) <br>
 
-5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟: 
+5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟 ︰ 
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-moxtra-tutorial/create_aaduser_05.png) <br> 
 
     a. 針對 [使用者類型]，選取 [您組織中的新使用者]。
@@ -213,7 +213,7 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 
     c. 按一下 [ **下一步**。
 
-6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟: 
+6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟 ︰ 
 <br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-moxtra-tutorial/create_aaduser_06.png) <br>
  
     a. 在 **名字** 文字方塊中，輸入 **Britta**。  
@@ -228,7 +228,7 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 7. 在 **取得暫時密碼** 對話方塊頁面上，按一下 [ **建立**。
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-moxtra-tutorial/create_aaduser_07.png) <br>
  
-8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟:
+8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-moxtra-tutorial/create_aaduser_08.png) <br>
   
     a. 請記下的值 **新密碼**。
@@ -250,7 +250,7 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 
 
 
-1. 在 **新增使用者** ] 對話方塊中，執行下列步驟:
+1. 在 **新增使用者** ] 對話方塊中，執行下列步驟 ︰
 
     a. 在 **名字** 文字方塊中，輸入 **Britta**。
 
@@ -278,13 +278,13 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 **若要將 Britta Simon 指派到 Moxtra，請執行下列步驟：**
 
 1. 在 Azure 入口網站中，若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
-<br><br>![將使用者指派][201] <br>
+<br><br>![指派給使用者][201] <br>
 
 2. 在應用程式清單中，選取 **Moxtra**。
 <br><br>![設定單一登入](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_50.png) <br>
 
 1. 在頂端功能表中，按一下 [ **使用者**。
-<br><br>![將使用者指派][203] <br>
+<br><br>![指派給使用者][203] <br>
 
 1. 在 [使用者] 清單中選取 **Britta Simon**。
 
@@ -322,6 +322,7 @@ Moxtra 應用程式需要特定格式的 SAML 判斷提示，因此您必須將�
 [203]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_205.png
+
 
 
 

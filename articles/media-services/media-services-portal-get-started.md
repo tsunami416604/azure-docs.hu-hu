@@ -103,16 +103,16 @@
 3. 按一下 [ **上載** 頁面上，或在入口網站底部的按鈕。
 4. 在 **上傳內容** ] 對話方塊中，瀏覽至想要的資產檔案。 按一下檔案，然後按一下 [ **開啟** 或按下 Enter。
 
-    ![] UploadContentDialog[] uploadcontent
+    ![UploadContentDialog][uploadcontent]
 
 5. 在 **上傳內容** 對話方塊方塊中，按一下核取按鈕以接受 **檔案** 和 **內容名稱**。
 6. 上傳隨即開始，而您可以在入口網站底部追蹤進度。  
 
-    ![] JobStatus[狀態]
+    ![JobStatus][status]
 
 上傳完成之後，您將會看到新資產列在 [內容] 清單中。 依照慣例的名稱包含"**-來源**」 附加在結尾，以協助追蹤新的內容作為編碼工作的來源內容。
 
-![] ContentPage[] contentpage
+![ContentPage][contentpage]
 
 如果檔案大小值未不會更新上傳程序停止之後，選取 **同步處理中繼資料** ] 按鈕。 這樣會以儲存體中的實際檔案大小同步處理資產檔案大小，並重新整理 [內容] 頁面上的值。
 
@@ -144,16 +144,16 @@
 4. 在 **程序** 對話方塊中，選取 * * Azure 媒體編碼器 * * 處理器。
 5. 選擇其中一個 **編碼組態**。
 
-    ![] Process2[] process2
+    ![Process2][process2]
 
-     [Azure Media Encoder 的工作預設字串](https://msdn.microsoft.com/library/azure/dn619392.aspx) 主題說明何謂各 **調適性串流 (動態封裝)**, ，**漸進式下載預設**, ，**調適性串流的傳統 Prsests**  類別表示。  
+     [Azure Media Encoder 的工作預設字串](https://msdn.microsoft.com/library/azure/dn619392.aspx) 主題說明何謂各 **調適性串流 （動態封裝）**, ，**漸進式下載預設**, ，**調適性串流的傳統 Prsests**  類別表示。  
 
      **其他** 後續所述的設定。
 
     + **使用 PlayReady 內容保護進行編碼**。 此預設格式會產生以 PlayReady 內容保護編碼的資產。  
 
         依預設會使用媒體服務 PlayReady 授權服務。 若要指定其他可讓用戶端從中取得授權以播放 PlayReady 加密內容的服務，請使用 REST 或媒體服務 .NET SDK API。 如需詳細資訊，請參閱 [使用靜態加密來保護您的內容]() ，並設定 **licenseAcquisitionUrl** Media Encryptor 預設中的屬性。 或者，您可以使用動態加密，然後設定 **PlayReadyLicenseAcquisitionUrl** 屬性中所述 [使用 PlayReady 動態加密和授權傳遞服務](http://go.microsoft.com/fwlink/?LinkId=507720 )。
-    + **在 (透過 Flash/Silverlight) 的 PC/Mac 上播放**。 此預設會產生具有下列特性的 Smooth Streaming 資產：使用 AAC 編碼的 44.1 kHz 16 位元/樣本立體音訊 CBR (96 kbps)，以及使用 H.264 主要設定檔編碼的 720p 視訊 CBR (6 位元速率，範圍從 3400 kbps 到 400 kbps)，與兩秒 GOP。
+    + **在 （透過 Flash/Silverlight) 的 PC/Mac 上播放**。 此預設會產生具有下列特性的 Smooth Streaming 資產：使用 AAC 編碼的 44.1 kHz 16 位元/樣本立體音訊 CBR (96 kbps)，以及使用 H.264 主要設定檔編碼的 720p 視訊 CBR (6 位元速率，範圍從 3400 kbps 到 400 kbps)，與兩秒 GOP。
     + **透過 HTML5 播放 (IE/Chrome/Safari)**。 此預設會產生具有下列特性的單一 MP4 檔案：使用 AAC 編碼的 44.1 kHz 16 位元/樣本立體音訊 CBR (128 kbps)，以及使用 H.264 主要設定檔編碼的 720p 視訊 CBR (4500 kbps)。
     + **在 iOS 裝置和 PC/Mac 上的播放**。 此預設格式會產生特性與 Smooth Streaming 資產 (如先前所述) 相同、但是其格式可以用來將 Apple HLS 資料流傳遞至 iOS 裝置的資產。
 
@@ -205,7 +205,7 @@ SAS URL 具有下列格式。
 1. 選取資產。
 2. 然後，按一下 [發佈] 按鈕。
 
- ![] PublishedContent[] publishedcontent
+ ![PublishedContent][publishedcontent]
 
 
 ## 從入口網站播放內容
@@ -220,7 +220,7 @@ Azure 傳統入口網站提供內容播放程式，可讓您用來測試視訊�
 -  **媒體服務內容播放程式** 會從預設串流端點播放。 如果您想要從非預設串流端點播放，請使用其他播放程式。 例如， [Azure 媒體服務播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 
 
-![] AMSPlayer[] AMSPlayer
+![AMSPlayer][AMSPlayer]
 
 
 
@@ -237,8 +237,8 @@ Azure 傳統入口網站提供內容播放程式，可讓您用來測試視訊�
 如果本主題未包含您預期的內容、缺少部分內容，或者提供了一些其他不符合您需求的方式，請在下方提供您使用 Disqus 執行緒的意見反應給我們。
 
 ### 其他資源
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure 媒體服務 101 - 立即在線上取得您的影片！</a>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure 媒體服務 102 - 動態封裝和行動裝置</a>
+- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - 立即在線上取得您的影片！</a>
+- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - 動態封裝和行動裝置</a>
 
 
 <!-- Anchors. -->
@@ -260,4 +260,5 @@ Azure 傳統入口網站提供內容播放程式，可讓您用來測試視訊�
 [process2]: ./media/media-services-portal-get-started/media-services-process-video2.png
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
+
 

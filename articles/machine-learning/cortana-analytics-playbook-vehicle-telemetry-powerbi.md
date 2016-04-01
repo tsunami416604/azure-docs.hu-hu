@@ -28,7 +28,7 @@
 本文件包含在您的訂用帳戶中部署方案之後，如何設定 PowerBI 報告和儀表板的逐步指示。 
 
 
-## 先決條件
+## 必要條件
 1.  瀏覽至部署車輛遙測資料分析解決方案 [https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3](https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3)  
 2.  [安裝 Microsoft Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331)
 3.   [Azure 訂用帳戶](https://azure.microsoft.com/pricing/free-trial/)。 如果您沒有 Azure 訂用帳戶，請立即取得免費的 Azure 訂用帳戶
@@ -46,7 +46,7 @@
 
 **Power BI** 提供此解決方案即時資料和預測分析視覺效果豐富的儀表板。 
 
-解決方案會使用兩個不同的資料來源: **模擬車輛訊號和診斷資料集** 和 **車輛目錄**。
+解決方案會使用兩個不同的資料來源 ︰ **模擬車輛訊號和診斷資料集** 和 **車輛目錄**。
 
 此方案包含車輛遠程資訊服務模擬器。 它會在指定時間點發出對應於車輛狀態與駕駛模式的診斷資訊和訊號。 
 
@@ -136,20 +136,20 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
 選取 **城市** 和 **vin** 欄位。 變更視覺化 **「 對應 」**。 拖放到 **vin** 值] 區域中。 拖放到 **城市** 欄位從 **圖例** 區域。   
     ![連線的汽車-卡片視覺效果](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4c.png)
   
-選取 **格式** > 一節 **視覺效果**, ，按一下 [ **標題** 和變更的文字 **"車輛運作的縣 (市) 」**。  
-    ![連線的汽車-車輛運作的縣 (市)](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)   
+選取 **格式** > 一節 **視覺效果**, ，按一下 [ **標題** 和變更的文字 **"車輛運作的縣 （市） 」**。  
+    ![連線的汽車-車輛運作的縣 （市）](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)   
 
 最後一個視覺效果看起來如圖所示。    
     ![Connected Cars - 最終視覺效果](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4e.png)
 
 按一下空白區域以加入新的視覺效果。  
 
-選取 **城市** 和 **vin**, ，視覺效果類型變更為 **群組直條圖**。 請確定 **縣 (市)** 欄位 **軸 」 區域** 和 **vin** 中 **值區域**  
+選取 **城市** 和 **vin**, ，視覺效果類型變更為 **群組直條圖**。 請確定 **縣 （市)** 欄位 **軸 」 區域** 和 **vin** 中 **值區域**  
 
 排序圖表的 **「 計數的 vin 」**  
     ![連線的汽車-vin 的計數](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4f.png)  
 
-變更圖表 **標題** 至 **"車輛運作的縣 (市) 」**  
+變更圖表 **標題** 至 **"車輛運作的縣 （市） 」**  
 
 按一下 [ **格式** 區段，然後選取 **資料色彩**,  ，按一下 [ **「 On 」** 至 **全部顯示**  
     ![連線的汽車-顯示所有資料的色彩](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4g.png)  
@@ -203,15 +203,15 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
 ![連線的汽車-色彩飽和度](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
 
 變更 **資料色彩** 從視覺效果中 **格式** 區段  
-變更最小值色彩: **F2C812**  
-變更最大值色彩: **FF6300**  
+變更最小值色彩 ︰ **F2C812**  
+變更最大值色彩 ︰ **FF6300**  
 ![連線的汽車-色彩變更](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4r.png)  
 ![連線的汽車-新的視覺效果色彩](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4s.png)  
 
 按一下空白區域以加入新的視覺效果。  
 
-選取 **叢集直條圖** 視覺效果，從拖曳 **vin** 欄位到 **值** 區域中，拖曳 **城市** 欄位到 **軸** 區域。 排序圖表的 **「 計數的 vin 」**。 變更圖表 **標題** 至 **"車輛需要維護的縣 (市) 」**   
-![連線的汽車-車輛需要維護的縣 (市)](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4t.png)  
+選取 **叢集直條圖** 視覺效果，從拖曳 **vin** 欄位到 **值** 區域中，拖曳 **城市** 欄位到 **軸** 區域。 排序圖表的 **「 計數的 vin 」**。 變更圖表 **標題** 至 **"車輛需要維護的縣 （市） 」**   
+![連線的汽車-車輛需要維護的縣 （市）](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4t.png)  
 
 按一下空白區域以加入新的視覺效果。  
 
@@ -253,7 +253,7 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
 
 按一下空白區域以加入新的視覺效果。
 
-選取 **行與群組直條圖** 從視覺效果，然後拖曳 **縣 (市)** 欄位到 **共用軸**, ，拖曳 **速度**, ，**tirepressure 和 engineoil 欄位** 到 **資料行值** 區域中，變更其彙總類型 **平均**。 
+選取 **行與群組直條圖** 從視覺效果，然後拖曳 **縣 （市)** 欄位到 **共用軸**, ，拖曳 **速度**, ，**tirepressure 和 engineoil 欄位** 到 **資料行值** 區域中，變更其彙總類型 **平均**。 
 
 拖放到 **engineTemperature** 欄位到 **列值** 區域中，將彙總類型變更為 **平均**。 
 
@@ -279,7 +279,7 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
 
 按一下 [ **格式**, ，請選取 **資料色彩**, ，變更 **MaintenanceProbability** 色彩值 **"F2C80F"**
 
-變更 **標題** 圖表的 **"機率的車輛維護及回收的縣 (市) 」**  
+變更 **標題** 圖表的 **"機率的車輛維護及回收的縣 （市) 」**  
 
 ![Connected Cars - 加入新的視覺效果](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ee.png)
 
@@ -330,7 +330,7 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
  
 ##  設定 Power BI 批次處理儀表板
 
-注意: 花大約 2 小時 (從部署成功完成) 的端對端批次處理完成執行，然後處理值得一年，產生之資料的管線。 請稍候再進行後續步驟。 
+注意 ︰ 花大約 2 小時 （從部署成功完成） 的端對端批次處理完成執行，然後處理值得一年，產生之資料的管線。 請稍候再進行後續步驟。 
 
 **下載 PowerBI 設計工具檔案**
 • 在預先設定的 PowerBI 設計工具的檔案已部署的一部分
@@ -392,13 +392,13 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
 ![車輛遙測 PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png) 
 
 
-**請注意報表有六個頁面:**  
-第 1 頁: 車輛密度  
-第 2 頁: 即時車輛健全狀況  
-第 3 頁: 積極驅動車輛   
-第 4 頁: 回收車輛  
-第 5 頁: 燃料有效率地驅動車輛  
-第 6 頁: Contoso 標誌  
+**請注意報表有六個頁面 ︰**  
+第 1 頁 ︰ 車輛密度  
+第 2 頁 ︰ 即時車輛健全狀況  
+第 3 頁 ︰ 積極驅動車輛   
+第 4 頁 ︰ 回收車輛  
+第 5 頁 ︰ 燃料有效率地驅動車輛  
+第 6 頁 ︰ Contoso 標誌  
 
 ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard2.png)
  
@@ -413,7 +413,7 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
 **從第 5 頁**, ，釘選下列  
 1.  Vin 的計數    
     ![車輛遙測 - 釘選圖表 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)  
-2.  油料有效率的車輛模型: 群組的直條圖  
+2.  油料有效率的車輛模型 ︰ 群組的直條圖  
     ![車輛遙測 - 釘選圖表 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
 
 **從第 4 頁**, ，釘選下列  
@@ -421,7 +421,7 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
 1.  Vin 的計數  
     ![車輛遙測 - 釘選圖表 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
 
-2.  依城市來回收的車輛模型: Treemap  
+2.  依城市來回收的車輛模型 ︰ Treemap  
     ![車輛遙測 - 釘選圖表 8](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard8.png)  
 
 **從第 6 頁**, ，釘選下列  
@@ -440,4 +440,5 @@ Power BI 中將會產生新的資料集。 按一下 [ **ConnectedCarsRealtime**
 ![車輛遙測 - 組織儀表板 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard3.png)
 
 恭喜！ 您已成功建立報報和儀表板，可取得車輛健全狀況和駕駛習慣的即時、預測和批次深入分析。  
+
 

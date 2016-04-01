@@ -27,13 +27,13 @@
 
 開始進行本教學課程之前，您必須具備下列條件：
 
-- [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 或更新版本 (或同等權限，例如 OpenJDK)
+- [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 或更新版本 （或同等權限，例如 OpenJDK）
 
 - [Apache Maven](http://maven.apache.org/)
 
 - **Azure 訂用帳戶**
 
-- **Azure CLI**: 如需詳細資訊，請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md)
+- **Azure CLI**︰ 如需詳細資訊，請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md)
 
 ##設定環境變數
 
@@ -41,11 +41,11 @@
 
 * **JAVA_HOME** -應該指向已安裝 Java 執行階段環境 (JRE) 的目錄。 例如，在 OS X、Unix 或 Linux 系統上，它的值應該類似 `/usr/lib/jvm/java-7-oracle`。 在 Windows 中，它的值應該類似 `c:\Program Files (x86)\Java\jre1.7`
 
-* **路徑** -應該包含下列路徑:
+* **路徑** -應該包含下列路徑 ︰
 
-    * **JAVA_HOME** (或對等的路徑)
+    * **JAVA_HOME** （或對等的路徑）
 
-    * **JAVA_HOME\bin** (或對等的路徑)
+    * **JAVA_HOME\bin** （或對等的路徑）
 
     * 已安裝 Maven 的目錄
 
@@ -67,7 +67,7 @@
 
 ##新增相依性
 
-1. 編輯 __pom.xml__ 檔案，並加入下列內 `<dependencies>` 區段:
+1. 編輯 __pom.xml__ 檔案，並加入下列內 `<dependencies>` 區段 ︰
 
         <dependency>
           <groupId>org.apache.hadoop</groupId>
@@ -88,7 +88,7 @@
           <scope>provided</scope>
         </dependency>
 
-    這向 Maven 表示專案需要將程式庫 (列於內 & lt; artifactId\ >) 具有特定版本 (列於內 (& s) lt; 版本 >)。 編譯時，將會從預設 Maven 儲存機制下載此版本。 您可以使用 [Maven 儲存機制搜尋](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) 檢視詳細資訊。
+    這向 Maven 表示專案需要將程式庫 (列於內 & lt; artifactId\ >) 具有特定版本 (列於內 （& s) lt; 版本 >)。 編譯時，將會從預設 Maven 儲存機制下載此版本。 您可以使用 [Maven 儲存機制搜尋](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) 檢視詳細資訊。
 
     `<scope>provided</scope>` 會告訴 Maven 這些相依性不應該和應用程式一起封裝，因為 HDInsight 叢集會在執行階段提供這些相依性。
 
@@ -126,7 +126,7 @@
           </plugins>
         </build>
 
-    第一個外掛程式會設定 [Maven Shade 外掛程式](http://maven.apache.org/plugins/maven-shade-plugin/), ，用來建置 uberjar (有時稱為 fatjar)，其中包含應用程式所需的相依性。 這麼做也可以防止 jar 封裝中具有重複的授權，以免在某些系統中造成問題。
+    第一個外掛程式會設定 [Maven Shade 外掛程式](http://maven.apache.org/plugins/maven-shade-plugin/), ，用來建置 uberjar （有時稱為 fatjar），其中包含應用程式所需的相依性。 這麼做也可以防止 jar 封裝中具有重複的授權，以免在某些系統中造成問題。
 
     第二個外掛程式會設定 Maven 編譯器，以用來將此應用程式所需的 Java 版本設為 HDInsight 叢集所使用的版本。
 
@@ -136,7 +136,7 @@
 
 1. 移至 __wordcountjava/src/main/java/org/apache/hadoop/examples__ 目錄並重新命名 __App.java__  檔案重新命名為 __WordCount.java__。
 
-2. 開啟 __WordCount.java__ 檔案在文字編輯器中，並取代為下列內容:
+2. 開啟 __WordCount.java__ 檔案在文字編輯器中，並取代為下列內容 ︰
 
         package org.apache.hadoop.examples;
 
@@ -262,7 +262,7 @@
         zelus   1
         zenith  2
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 在本文件中，您已學到如何開發 Java MapReduce 工作。 請參閱下列文件，了解其他的 HDInsight 使用方式。
 
@@ -291,5 +291,6 @@
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
+
 
 

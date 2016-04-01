@@ -71,13 +71,13 @@ Trident 是一種高階抽象概念，可提供聯結、彙總、分組、函數
 
 > [AZURE.NOTE] 而非 spout 和 HashtagExtractor，我們會使用內建 Trident 功能。
 >
-> 內建作業的相關資訊，請參閱 <a href="https://storm.apache.org/apidocs/storm/trident/operation/builtin/package-summary.html" target="_blank">封裝 storm.trident.operation.builtin</a>.
+> 如需關於內建作業的資訊，請參閱 <a href="https://storm.apache.org/apidocs/storm/trident/operation/builtin/package-summary.html" target="_blank">封裝 storm.trident.operation.builtin</a>。
 >
 > 如需非 MemoryMapState 的 Trident-state 實作，請參閱下列各項：
 >
 > * <a href="https://github.com/fhussonnois/storm-trident-elasticsearch" target="_blank">Storm Trident 彈性搜尋</a>
 >
-> * <a href="https://github.com/kstyrc/trident-redis" target="_blank">trident redis</a>
+> * <a href="https://github.com/kstyrc/trident-redis" target="_blank">trident-redis</a>
 
 ###Spout
 
@@ -85,7 +85,7 @@ Spout **TwitterSpout**, ，會使用 <a href="http://twitter4j.org/en/" target="
 
 ###HashtagExtractor
 
-若要擷取雜湊標記 <a href="http://twitter4j.org/javadoc/twitter4j/EntitySupport.html#getHashtagEntities--" target="_blank">getHashtagEntities</a> 用來擷取推文中包含的所有雜湊標記。 之後，會將這些發出至資料流。
+若要擷取 # 標籤，可以使用 <a href="http://twitter4j.org/javadoc/twitter4j/EntitySupport.html#getHashtagEntities--" target="_blank">getHashtagEntities</a> 來擷取推文中包含的所有 # 標籤。 之後，會將這些發出至資料流。
 
 ##啟用 Twitter
 
@@ -128,7 +128,7 @@ Spout **TwitterSpout**, ，會使用 <a href="http://twitter4j.org/en/" target="
 
 ##後續步驟
 
-既然您已經測試在本機的拓撲、 了解如何部署拓撲: [部署和管理 HDInsight 上的 Apache Storm 拓撲](hdinsight-storm-deploy-monitor-topology.md)。
+既然您已經測試在本機的拓撲、 了解如何部署拓撲 ︰ [部署和管理 HDInsight 上的 Apache Storm 拓撲](hdinsight-storm-deploy-monitor-topology.md)。
 
 您也可能會對下列 Storm 主題感興趣：
 
@@ -139,4 +139,5 @@ Spout **TwitterSpout**, ，會使用 <a href="http://twitter4j.org/en/" target="
 如需 HDinsight 的 Storm 範例：
 
 * [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)
+
 

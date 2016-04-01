@@ -101,17 +101,17 @@ OR  y.[is_user_defined] = 1
 - **幾何**, ，使用 varbinary 類型
 - **地理位置**, ，使用 varbinary 類型
 - **hierarchyid**, ，CLR 型別不是原生
-- **映像**, ，**文字**, ，**ntext** 文字為主時使用 varchar/nvarchar (越小越好)
-- **nvarchar (max)**, ，使用 nvarchar (4000) 或更小，效能更好
+- **映像**, ，**文字**, ，**ntext** 文字為主時使用 varchar/nvarchar （越小越好）
+- **nvarchar （max)**, ，使用 nvarchar （4000） 或更小，效能更好
 - **數值**, ，使用 decimal
 - **sql_variant**, 、 分割成數行強型別資料行
-- **sysname**, ，使用 nvarchar (128)
+- **sysname**, ，使用 nvarchar （128）
 - **資料表**, ，轉換成暫時資料表
 - **時間戳記**, ，程式碼來使用 datetime2 和 `CURRENT_TIMESTAMP` 函式。 請注意，您不能以 current_timestamp 做為預設條件約束，因為值不會自動更新。 如果您需要從 timestamp 類型資料行移轉 rowversion 值，請對 NOT NULL 或 NULL 資料列版本值使用 BINARY(8) 或 VARBINARY(8)。
-- **varchar (max)**, ，使用 varchar (8000) 或更小，效能更好
-- **uniqueidentifier**, ，使用 varbinary (8)
+- **varchar （max)**, ，使用 varchar （8000） 或更小，效能更好
+- **uniqueidentifier**, ，使用 varbinary （8）
 - **使用者定義型別**, ，盡可能轉換回原生型別
-- **xml**, 、 使用 varchar (8000) 或更小，效能更好-分割資料行，如果需要
+- **xml**, 、 使用 varchar （8000） 或更小，效能更好-分割資料行，如果需要
 
 部分支援：
 
@@ -201,7 +201,7 @@ WITH
 
 如您在下面所見，雜湊散發對於查詢最佳化非常有用。 這就是它為何會被視為資料散發的最佳化形式。
 
-> [AZURE.NOTE] 請記住! 雜湊不是以資料值為基礎，而是以雜湊的資料類型為基礎。
+> [AZURE.NOTE] 請記住 ！ 雜湊不是以資料值為基礎，而是以雜湊的資料類型為基礎。
 
 以下是依據 ProductKey 進行雜湊散發的資料表。
 
@@ -295,7 +295,7 @@ SQL 資料倉儲不使用或支援下列功能：
 
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
@@ -305,4 +305,5 @@ SQL 資料倉儲不使用或支援下列功能：
 <!--MSDN references-->
 
 <!--Other Web references-->
+
 

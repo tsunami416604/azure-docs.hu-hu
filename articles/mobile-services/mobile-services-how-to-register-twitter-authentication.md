@@ -30,7 +30,7 @@
 
 >[AZURE.NOTE] 本教學課程是有關 [Azure 行動服務](http://azure.microsoft.com/services/mobile-services/), ，此方案可協助您建置用於任何平台的可擴充行動應用程式。 行動服務讓同步處理資料、驗證使用者及推播通知等作業變得簡單。 此頁面支援 [將驗證新增至您的應用程式](mobile-services-ios-get-started-users.md) 教學課程，說明如何將使用者登入您的應用程式。 如果這是您第一次使用行動服務，請完成[開始使用行動服務](mobile-services-ios-get-started.md)教學課程。
 
-若要完成本主題的程序，您必須具有已通過電子郵件地址驗證的 Twitter 帳戶。 若要建立新的 Twitter 帳戶，請前往 <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>.
+若要完成本主題的程序，您必須具有已通過電子郵件地址驗證的 Twitter 帳戶。 若要建立新的 Twitter 帳戶，請前往 <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>。
 
 1. 瀏覽至 [Twitter 開發人員](http://go.microsoft.com/fwlink/p/?LinkId=268300) 網站，使用您的 Twitter 帳戶認證登入並按一下 [ **建立新的應用程式**。
 
@@ -39,7 +39,7 @@
     + **.NET 後端**: `https://<mobile_service>.azure-mobile.net/signin-twitter`
     + **JavaScript 後端**: `https://<mobile_service>.azure-mobile.net/login/twitter`
 
-     >[AZURE.NOTE]請確定您使用正確的重新導向 URL 路徑格式，您的行動服務後端類型。 若格式不正確，驗證將不會成功。
+     >[AZURE.NOTE]請確定您使用正確的重新導向 URL 路徑格式，您的行動服務後端類型。 若這不正確，驗證也將不會成功。
     &nbsp;
 
     ![][2]
@@ -66,4 +66,5 @@
 
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet/
+
 

@@ -65,9 +65,9 @@ Blitline 使用 JSON 定義您要對影像採取的動作。 此 JSON 是由幾�
 
 "save" 參數可識別有關處理完影像時，您想要放置該影像的位置資訊。 在這個簡單的案例中，我們尚未定義一個位置。 如果沒有定義位置，Blitline 會將它儲存在本機 (並暫時地) 的唯一雲端位置。 建立 Blitline 時，您將能夠從 Blitline 所傳回的 JSON 取得該位置。 "image" 識別碼為必要欄位，並會在要識別此特定儲存影像時傳回。
 
-您可以找到更多資訊 *函式* 我們在這裡支援: <http://www.blitline.com/docs/functions>
+您可以找到更多資訊 *函式* 我們在這裡支援 ︰ <http://www.blitline.com/docs/functions>
 
-您也可以找到有關工作選項的文件: <http://www.blitline.com/docs/api>
+您也可以找到有關工作選項的文件 ︰ <http://www.blitline.com/docs/api>
 
 有了 JSON 之後您只需要為 **POST** 它 `http://api.blitline.com/jobs`
 
@@ -86,7 +86,7 @@ Blitline 使用 JSON 定義您要對影像採取的動作。 此 JSON 是由幾�
 
 
 這代表 Blitline 已收到您的要求，它已將您的要求置入處理佇列，且當它完成影像時的影像位置：
-**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR \_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
+**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
 ## 如何將影像儲存至您的 Azure 儲存體帳戶
 
@@ -132,4 +132,5 @@ SAS 必須包含整個 SAS URL，包括目的地檔案的檔案名稱。
 * Blitline API 函數 <http://www.blitline.com/docs/functions>
 * Blitline API 範例 <http://www.blitline.com/docs/examples>
 * 協力廠商 Nuget 程式庫 <http://nuget.org/packages/Blitline.Net>
+
 

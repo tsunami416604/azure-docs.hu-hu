@@ -5,7 +5,7 @@
  
 2. 變更的存取範圍 **AcquirePushChannel** 方法從 `private` 到 `public` ，並新增 `static` 修飾詞。 
 
-3. 開啟 MainPage.xaml.cs 專案檔案，並取代 **OnNavigatedTo** 方法覆寫，取代為下列:
+3. 開啟 MainPage.xaml.cs 專案檔案，並取代 **OnNavigatedTo** 方法覆寫，取代為下列 ︰
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -13,3 +13,4 @@
             App.AcquirePushChannel();
             RefreshTodoItems();
         }
+

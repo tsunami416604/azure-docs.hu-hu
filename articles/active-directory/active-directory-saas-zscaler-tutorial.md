@@ -84,7 +84,7 @@
 
     ![設定應用程式 URL](./media/active-directory-saas-zscaler-tutorial/IC769231.png "Configure app URL")
 
-4.  在 **在 Zscaler 設定單一登入** 頁面上，執行下列步驟:
+4.  在 **在 Zscaler 設定單一登入** 頁面上，執行下列步驟 ︰
 
     ![設定單一登入](./media/active-directory-saas-zscaler-tutorial/IC769232.png "Configure single sign-on")
 
@@ -101,7 +101,7 @@
 
     ![管理系統管理員和角色](./media/active-directory-saas-zscaler-tutorial/IC769487.png "Manage Administrators & Roles")
 
-8.  在 **選擇驗證選項，為您的組織** 區段中，執行下列步驟:
+8.  在 **選擇驗證選項，為您的組織** 區段中，執行下列步驟 ︰
 
     ![選擇驗證選項](./media/active-directory-saas-zscaler-tutorial/IC769488.png "Choose Authentication Options")
 
@@ -117,7 +117,7 @@
     3.  在 **上傳 SSL 公用憑證** 欄位中上, 傳您從 Azure 入口網站下載的憑證。
     4.  選取 **啟用 SAML 自動佈建**。
 
-10. 在 **設定使用者驗證** 對話方塊頁面上，執行下列步驟:
+10. 在 **設定使用者驗證** 對話方塊頁面上，執行下列步驟 ︰
 
     ![設定使用者驗證](./media/active-directory-saas-zscaler-tutorial/IC769490.png "Configure User Authentication")
 
@@ -203,4 +203,5 @@ ZScaler 需以手動的方式佈建。
     ![是](./media/active-directory-saas-zscaler-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

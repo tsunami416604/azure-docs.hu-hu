@@ -10,7 +10,7 @@
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
 
-3. 下載 [Qpid Proton 程式庫](http://qpid.apache.org/proton/index.html) 程式庫，並將它解壓縮，例如:
+3. 下載 [Qpid Proton 程式庫](http://qpid.apache.org/proton/index.html) 程式庫，並將它解壓縮，例如 ︰
 
     ```
     wget http://apache.fastbull.org/qpid/proton/0.7/qpid-proton-0.7.tar.gz
@@ -115,5 +115,6 @@
     gcc sender.c -o sender -lqpid-proton
     ```
 
-> [AZURE.NOTE] 在此程式碼中，我們用於輸出視窗 1 盡快強制輸出訊息。 應用程式一般應該會嘗試批次處理訊息，以增加輸送量。 請參閱 [Qpid AMQP Messenger 頁面](http://qpid.apache.org/components/messenger/index.html) 如需有關如何使用 Qpid Proton 程式庫，這和其他環境中以及從提供繫結的平台 (目前是 Perl、 PHP、 Python 和 Ruby)。
+> [AZURE.NOTE] 在此程式碼中，我們用於輸出視窗 1 盡快強制輸出訊息。 應用程式一般應該會嘗試批次處理訊息，以增加輸送量。 請參閱 [Qpid AMQP Messenger 頁面](http://qpid.apache.org/components/messenger/index.html) 如需有關如何使用 Qpid Proton 程式庫，這和其他環境中以及從提供繫結的平台 （目前是 Perl、 PHP、 Python 和 Ruby）。
+
 

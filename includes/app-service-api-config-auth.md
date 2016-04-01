@@ -6,8 +6,9 @@
 
     ![按一下 [應用程式設定]](./media/app-service-api-config-auth/clickbasicsettings.png)
 
-3. 在 **應用程式設定** 刀鋒視窗中，變更 **存取層級** 至 **公用 (驗證)**, ，然後按一下 [ **儲存**。
+3. 在 **應用程式設定** 刀鋒視窗中，變更 **存取層級** 至 **公用 （驗證）**, ，然後按一下 [ **儲存**。
 
     ![按一下 [基本設定]](./media/app-service-api-config-auth/setpublicauth.png)
+
 
 

@@ -81,3 +81,4 @@ Azure 串流分析工作可以連線至一或多個輸入，且每個輸入都�
 - [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
 - [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+

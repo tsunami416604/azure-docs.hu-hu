@@ -1,10 +1,10 @@
 
-1. 在 MainPage.xaml.cs 專案檔案中，新增下列 **使用** 陳述式:
+1. 在 MainPage.xaml.cs 專案檔案中，新增下列 **使用** 陳述式 ︰
 
         using System.Linq;      
         using Windows.Security.Credentials;
 
-2. 取代 **AuthenticateAsync** 方法取代下列程式碼:
+2. 取代 **AuthenticateAsync** 方法取代下列程式碼 ︰
 
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -79,3 +79,4 @@
 3. 重新啟動應用程式兩次。
 
     請注意，第一次啟動時，需要再次使用該提供者登入。 不過，在第二次重新啟動時，可以使用快取的認證，並略過登入。 
+

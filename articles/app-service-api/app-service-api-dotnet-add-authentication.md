@@ -35,7 +35,7 @@
 
 如需 Azure App Service 中驗證的詳細資訊，請參閱 [API 應用程式和行動應用程式驗證](../app-service/app-service-authentication-overview.md)。
 
-## 先決條件
+## 必要條件
 
 本教學課程會與您在建立 API 應用程式 [建立 API 應用程式](app-service-dotnet-create-api-app.md) 並部署在 [部署 API 應用程式](app-service-dotnet-deploy-api-app.md)。
 
@@ -76,8 +76,8 @@
 當您部署 API 應用程式時，您會將它部署到資源群組。 您可以將 Web 應用程式和其他 API 應用程式加入至相同的資源群組，而資源群組內的每個 API 應用程式可以有下列其中一個可存取性設定：
 <!--todo: diagram showing different accessibility settings-->
 
-- **公用 (匿名)** -未登入的情況下，任何人都可以呼叫 API 應用程式從資源群組外部。
-- **公用 (驗證)** -已驗證的使用者才可以呼叫 API 應用程式從資源群組外部。
+- **公用 （匿名）** -未登入的情況下，任何人都可以呼叫 API 應用程式從資源群組外部。
+- **公用 （驗證）** -已驗證的使用者才可以呼叫 API 應用程式從資源群組外部。
 - **內部** -只有在相同的資源群組中其他 API 應用程式可以呼叫 API 應用程式。 (從 Web 應用程式呼叫會被視為外部呼叫，即使 Web 應用程式位於相同的資源群組也一樣。)
 
 當 Visual Studio 為您建立資源群組時，它也會建立 *閘道*。  閘道是一個特別的 Web 應用程式，可處理以資源群組中的 API 應用程式為目標的所有要求。
@@ -88,7 +88,7 @@
 
 ### <a id="apiapp"></a>將 API 應用程式設定為需要驗證
 
-若要設定您的 API 應用程式只接受已驗證的要求，會將其存取範圍設定為 **公用 (驗證)** 而且您會設定為需要從提供者，例如 Azure Active Directory、 Google 或 Facebook 驗證閘道。
+若要設定您的 API 應用程式只接受已驗證的要求，會將其存取範圍設定為 **公用 （驗證）** 而且您會設定為需要從提供者，例如 Azure Active Directory、 Google 或 Facebook 驗證閘道。
 
 [AZURE.INCLUDE [app-service-api-config-auth](../../includes/app-service-api-config-auth.md)]
 
@@ -100,7 +100,7 @@
 
 ## 確認驗證可以運作
 
-**注意:** 如果您有問題，執行下列步驟時發生登入，請嘗試開啟私人或匿名視窗。
+**注意 ︰** 如果您有問題，執行下列步驟時發生登入，請嘗試開啟私人或匿名視窗。
  
 1. 開啟瀏覽器視窗，並在網址列中輸入可呼叫 API 應用程式之 `Get` 方法的 URL (如同您先前所為)。
 
@@ -128,7 +128,7 @@
 
         https://dropboxrgaeb4ae60b7cb4f3d966dfa43.azurewebsites.net/login/aad/
 
-    請注意，不同於先前的 URL，此 url 不包含您的 API 應用程式名稱: 閘道正在驗證您無法將 API 應用程式。  閘道會處理資源群組中所有 API 應用程式的驗證。
+    請注意，不同於先前的 URL，此 url 不包含您的 API 應用程式名稱 ︰ 閘道正在驗證您無法將 API 應用程式。  閘道會處理資源群組中所有 API 應用程式的驗證。
 
 3. 在瀏覽器顯示登入頁面時輸入您的認證。 
  
@@ -162,7 +162,7 @@
 
 3. 在 **資源** 索引標籤上的 Chrome 開發人員工具，尋找 cookie 閘道器，然後按三下的值 **x zumo 驗證** cookie 來選取它的全部。
 
-    **注意:**  請確定您取得的所有 cookie 的值。 如果按兩下，只會取得它的第一個部分。
+    **注意 ︰**  請確定您取得的所有 cookie 的值。 如果按兩下，只會取得它的第一個部分。
 
 5. 以滑鼠右鍵按一下 **值** 的 **x zumo 驗證** cookie，然後再按一下 **複製**。
 
@@ -180,7 +180,7 @@
 
 9. 新增 *Content-type* 標頭值 *application/json*。
 
-10. 按一下 [ **表單資料**, ，然後新增 *連絡* 金鑰具有下列值:
+10. 按一下 [ **表單資料**, ，然後新增 *連絡* 金鑰具有下列值 ︰
 
         {   "Id": 0,   "Name": "Li Yan",   "EmailAddress": "yan@contoso.com" }
 
@@ -274,4 +274,5 @@
 
 [Azure portal]: https://manage.windowsazure.com/
 [Azure preview portal]: https://portal.azure.com/
+
 

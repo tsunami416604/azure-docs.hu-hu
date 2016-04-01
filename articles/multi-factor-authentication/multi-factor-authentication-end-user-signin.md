@@ -63,7 +63,7 @@
 
 - 請接聽電話並按驗證鍵。
 
-![Verify](./media/multi-factor-authentication-end-user-signin-app-notify/phone.png)
+![驗證](./media/multi-factor-authentication-end-user-signin-app-notify/phone.png)
 
 
 - 您現在應已登入。
@@ -102,3 +102,4 @@
 - 選擇替代方法並且登入。
 
  
+

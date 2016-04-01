@@ -45,7 +45,7 @@ Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量�
          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
            CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
-    **注意:** 所有上述程式碼中的程式碼開頭使用以下各節。
+    **注意 ︰** 所有上述程式碼中的程式碼開頭使用以下各節。
 
 
 3. 使用 **CloudBlobClient** 物件來取得 **CloudBlobContainer** 現有儲存體帳戶中容器的參考。
@@ -60,7 +60,7 @@ Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量�
 
 ##在程式碼中建立容器
 
-您也可以使用 **CloudBlobClient** 儲存體帳戶中建立容器。 您只需要為新增呼叫至 **CreateIfNotExistsAsync** 如下列程式碼所示:
+您也可以使用 **CloudBlobClient** 儲存體帳戶中建立容器。 您只需要為新增呼叫至 **CreateIfNotExistsAsync** 如下列程式碼所示 ︰
 
     // Create a blob client.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -72,7 +72,7 @@ Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量�
     await container.CreateIfNotExistsAsync();
 
 
-**注意:** Azure 儲存體向 ASP.NET 5 中執行呼叫的 Api 是非同步。 請參閱 [使用 Async 和 Await 進行非同步程式設計](http://msdn.microsoft.com/library/hh191443.aspx) 如需詳細資訊。 以下程式碼假設使用非同步程式設計方法。
+**注意 ︰** Azure 儲存體向 ASP.NET 5 中執行呼叫的 Api 是非同步。 請參閱 [使用 Async 和 Await 進行非同步程式設計](http://msdn.microsoft.com/library/hh191443.aspx) 如需詳細資訊。 以下程式碼假設使用非同步程式設計方法。
 
 若要讓所有人都能使用容器中的檔案，您可以使用下列程式碼將容器設定為公用容器。
 
@@ -156,4 +156,5 @@ Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量�
 ## 後續步驟
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
+
 

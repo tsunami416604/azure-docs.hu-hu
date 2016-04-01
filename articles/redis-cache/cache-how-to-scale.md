@@ -40,7 +40,7 @@ Azure Redis 快取都有不同的快取提供項目，以提供選擇快取大�
 
 您也可以按一下 **標準層** 或 **基本層** 部分 **Redis 快取** 刀鋒視窗。
 
-![定價層][redis 快取的定價層層-部分]
+![定價層][redis-cache-pricing-tier-part]
 
 選取想要的定價層從 **定價層** 分頁，然後按一下 **選取**。
 
@@ -159,6 +159,7 @@ Azure Redis 快取都有不同的快取提供項目，以提供選擇快取大�
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
+
 
 
 

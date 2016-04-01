@@ -70,3 +70,4 @@ Azure AD 提供幾種可自訂的方式，來對您組織中的使用者部署�
 沒有更多有關 Azure.com 文件庫中的這些問題的詳細資料
 開頭為 [什麼是應用程式存取和單一登入與 Azure Active Directory。](active-directory-appssoaccess-whatis.md)。
 
+

@@ -26,7 +26,7 @@ OpenID Connect 是建置在 OAuth 2.0 的驗證通訊協定之上，可用來將
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) 擴充 OAuth 2.0 *授權* 作為通訊協定 *驗證* 通訊協定，可讓您執行單一登入使用 OAuth。  它引進 `id_token` 的概念，這是一種安全性權杖，可讓用戶端驗證使用者的身分識別，並取得有關使用者的基本設定檔資訊。  由於它會擴充 OAuth 2.0，它也可讓應用程式安全地取得 **access_tokens** 這可以用來存取受保護的資源 [授權伺服器](active-directory-v2-protocols.md#the-basics)。  如果您要建置 OpenID Connect 是我們建議 [web 應用程式](active-directory-v2-flows.md#web-apps) ，是裝載在伺服器上，而且透過瀏覽器存取。
 
 ## 傳送登入要求
-當您的 Web 應用程式需要驗證使用者時，其可以將使用者導向至 `/authorize` 端點。  這個要求是類似的第一個階段 [OAuth 2.0 授權碼流程](active-directory-v2-protocols-oauth-code.md), ，有幾個重要的區別:
+當您的 Web 應用程式需要驗證使用者時，其可以將使用者導向至 `/authorize` 端點。  這個要求是類似的第一個階段 [OAuth 2.0 授權碼流程](active-directory-v2-protocols-oauth-code.md), ，有幾個重要的區別 ︰
 
 - 要求必須在 `scope` 參數中包含範圍 `openid`。
 - `response_type` 參數必須包含 `id_token`
@@ -133,18 +133,18 @@ v2.0 應用程式模型預覽版目前不支援 OpenIdConnect `end_session_endpo
 
 <!--
 
-當您想要將使用者登出應用程式時，就不足夠清除您的應用程式 cookie 或其他方式結束使用者工作階段。  您也必須將使用者重新導向至登出 v2.0 端點。  如果您無法這樣做，使用者將能夠重新驗證您的應用程式不需要輸入其認證，因為它們會有效單一登入工作階段與 2.0 版的端點。
+When you wish to sign the user out of the  app, it is not sufficient to clear your app's cookies or otherwise end the session with the user.  You must also redirect the user to the v2.0 endpoint for sign out.  If you fail to do so, the user will be able to re-authenticate to your app without entering their credentials again, because they will have a valid single sign-on session with the v2.0 endpoint.
 
-您可以只是將使用者重新導向至 `end_session_endpoint` OpenID Connect 中繼資料文件中所列:
+You can simply redirect the user to the `end_session_endpoint` listed in the OpenID Connect metadata document:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| 參數 | | 說明 |
+| Parameter | | Description |
 | ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | 建議使用 | 使用者在成功登出後應該重新導向的 URL。  如果未包含，使用者將會顯示泛型訊息 v2.0 端點。  |
+| post_logout_redirect_uri | recommended | The URL which the user should be redirected to after successful logout.  If not included, the user will be shown a generic message by the v2.0 endpoint.  |
 
 -->
 
@@ -215,3 +215,4 @@ error=access_denied
 僅供參考，完整 OpenID Connect 登入和權杖取得流程如下所示：
 
 ![OpenId Connect 區隔線](../media/active-directory-v2-flows/convergence_scenarios_webapp_webapi.png)
+

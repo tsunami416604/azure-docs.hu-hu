@@ -61,7 +61,7 @@ tutorials/twitter/twitter.hql|HiveQL 指令碼檔案。
 
 在本教學課程中，您將使用 [Twitter 串流 Api][twitter-streaming-api]。 是的特定 Twitter 串流的 API，您將使用 [狀態/篩選][twitter-statuses-filter]。
 
->[AZURE.NOTE] 公用 Blob 容器中已上傳含有 10000 則推文的檔案和 Hive 指令碼檔案 (下一節所述)。 如果想要使用上傳的檔案，可以略過這一節。
+>[AZURE.NOTE] 公用 Blob 容器中已上傳含有 10000 則推文的檔案和 Hive 指令碼檔案 （下一節所述）。 如果想要使用上傳的檔案，可以略過這一節。
 
 [推文資料](https://dev.twitter.com/docs/platform-objects/tweets) 會儲存在包含複雜巢狀的結構的 JavaScript 物件標記法 (JSON) 格式。 您可以不要使用慣用的程式設計語言撰寫多行程式碼，而將此巢狀結構轉換成 Hive 資料表，以利用 HiveQL 這種類似結構化查詢語言 (SQL) 的語言來查詢資料表。
 
@@ -237,7 +237,7 @@ $trackString|Web 服務會傳回這些關鍵字的相關推文。 預設值是 *
 $lineMax|此值會決定指令碼所將讀取的推文數。 讀取 100 則推文大約需要三分鐘。 您可以設定更大的數目，但下載時間將會較久。
 
 5. 按下 **F5** 執行指令碼。 如果您遇到問題，解決這個問題，請選取程式碼行，並按 **F8**。
-6. 您應該會看到 「 完成! 」 在輸出的結尾。 錯誤訊息會顯示為紅色。
+6. 您應該會看到 「 完成 ！ 」 在輸出的結尾。 錯誤訊息會顯示為紅色。
 
 驗證程序中，您可以檢查輸出檔案 **/tutorials/twitter/data/tweets.txt**, ，在您使用 Azure 儲存體總管或 Azure PowerShell 的 Azure Blob 儲存體上。 如需列出檔案的範例 Windows PowerShell 指令碼，請參閱 [搭配 HDInsight 使用 Blob 儲存體][hdinsight-storage-powershell]。
 
@@ -445,7 +445,7 @@ $outputPath|Hive 查詢將輸出結果的 Azure Blob 儲存體位置。 您無�
 $hqlScriptFile|HiveQL 指令碼檔案的位置和檔案名稱。 您無須變更此變數。
 
 5. 按下 **F5** 執行指令碼。 如果您遇到問題，解決這個問題，請選取程式碼行，並按 **F8**。
-6. 您應該會看到 「 完成! 」 在輸出的結尾。 錯誤訊息會顯示為紅色。
+6. 您應該會看到 「 完成 ！ 」 在輸出的結尾。 錯誤訊息會顯示為紅色。
 
 驗證程序中，您可以檢查輸出檔案 **/tutorials/twitter/twitter.hql**, ，在您使用 Azure 儲存體總管或 Azure PowerShell 的 Azure Blob 儲存體上。 如需列出檔案的範例 Windows PowerShell 指令碼，請參閱 [搭配 HDInsight 使用 Blob 儲存體][hdinsight-storage-powershell]。  
 
@@ -568,4 +568,5 @@ $hqlScriptFile|HiveQL 指令碼檔案的位置和檔案名稱。 您無須變更
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
+
 

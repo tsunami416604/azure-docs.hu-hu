@@ -32,7 +32,7 @@
 
 > [AZURE.NOTE] 請務必強調 Azure 資源群組中資源的配額是每個區域可以存取您的訂閱，並不是每個訂閱，因為服務管理配額。 讓我們以核心配額為例。 如果您需要要求增加配額以支援核心，您必須決定您想要在哪些區域中使用多少個核心，然後提出 Azure 資源群組核心配額的特定要求，以取得您想要的數量和區域。 因此，如果您需要在西歐使用 30 個核心以在該處執行應用程式，您應該在西歐特別要求 30 個核心。 但是您在任何其他區域中的核心配額將不會增加 -- 僅西歐會有 30 個核心配額。
 <!-- -->
-如此一來，您可能會很有幫助您決定您的 Azure 資源群組配額必須為您的工作負載中任何一個區域，並要求該數量在考慮部署每個區域中。 請參閱 [troubleshooting deployment issues](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues) 探索您目前的配額的特定區域的詳細說明。
+因此，考慮決定每個區域中您的工作負載所需的 Azure 資源群組配額，並在要考慮部署的每個區域中要求該數量可能會有所幫助。 請參閱 [移難排解部署問題](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues) 取得探索您目前的配額的特定區域的詳細說明。
 
 
 ## 特定服務的限制
@@ -69,7 +69,7 @@
 - [儲存體](#storage-limits)
 - [StorSimple 系統](#storsimple-system-limits)
 - [串流分析](#stream-analytics-limits)
-- [訂用帳戶](#subscription-limits)
+- [訂閱](#subscription-limits)
 - [流量管理員](#traffic-manager-limits)
 - [虛擬機器](#virtual-machines-limits)
 
@@ -280,4 +280,5 @@
 [了解 Azure 限制和增加](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
 [Azure 的虛擬機器和雲端服務大小](http://msdn.microsoft.com/library/azure/dn197896.aspx)
+
 

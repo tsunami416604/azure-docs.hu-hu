@@ -41,7 +41,7 @@ Azure SQL Database 不支援分散式交易，這些交易會影響數個資源�
 
 ## SQL Server 定序支援
 
-使用 Microsoft Azure SQL Database 的預設資料庫定序是 **SQL_LATIN1_GENERAL_CP1_CI_AS**, ，其中 **LATIN1_GENERAL** 是英文 (美國) **CP1** 是字碼頁 1252， **CI** 不區分大小寫，並 **AS** 區分腔調字。 可以使用 Transact-SQL 改變 V12 資料庫的定序。 如需如何設定定序的詳細資訊，請參閱 [COLLATE (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)。
+使用 Microsoft Azure SQL Database 的預設資料庫定序是 **SQL_LATIN1_GENERAL_CP1_CI_AS**, ，其中 **LATIN1_GENERAL** 是英文 （美國） **CP1** 是字碼頁 1252， **CI** 不區分大小寫，並 **AS** 區分腔調字。 可以使用 Transact-SQL 改變 V12 資料庫的定序。 如需如何設定定序的詳細資訊，請參閱 [COLLATE (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)。
 
 ## 命名需求
 
@@ -68,4 +68,5 @@ Azure SQL Database 不支援分散式交易，這些交易會影響數個資源�
 - 另一個相關範圍與相容性有關，就是 Azure SQL Database 有內部部署版的 SQL Server，例如 SQL Server 2014。 Azure SQL Database 的最新 V12 版已在此方面進行許多改善。 如需詳細資訊，請參閱 [的 SQL Database V12 新功能](sql-database-v12-whats-new.md)。
 
 - 如需驅動程式的可用性和支援的 SQL 資料庫，請參閱 [SQL Database 和 SQL Server 的連線庫](sql-database-libraries.md)。
+
 

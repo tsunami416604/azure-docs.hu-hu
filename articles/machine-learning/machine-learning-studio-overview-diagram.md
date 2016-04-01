@@ -33,7 +33,7 @@
 
 下載 **Microsoft Azure Machine Learning Studio 功能概觀** 圖表，並取得 Machine Learning Studio 功能的高層級檢視。 若要就近保留它，您可以將圖表列印於 Tabloid 大小 (11 x 17 英吋) 的紙張上。
 
-**下載的圖表: [Microsoft Azure Machine Learning Studio 功能概觀](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**下載的圖表 ︰ [Microsoft Azure Machine Learning Studio 功能概觀](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 
 ![Microsoft Azure Machine Learning Studio 功能概觀][studio-overview]
 
@@ -43,8 +43,9 @@
 ## Machine Learning Studio 的更多說明
 
 * 如需 Microsoft Azure Machine Learning 的概觀，請參閱 [machine learning 上 Microsoft Azure 簡介](machine-learning-what-is-machine-learning.md)
-* 如需 Machine Learning Studio 的概觀，請參閱 [什麼是 Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md)。
+* 如需 Machine Learning Studio 的概觀，請參閱 [什麼是 Azure Machine Learning Studio？](machine-learning-what-is-ml-studio.md)。
 * 機器學習演算法 Machine Learning Studio 中可用的詳細討論，請參閱 [如何選擇演算法為 Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md)。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
 

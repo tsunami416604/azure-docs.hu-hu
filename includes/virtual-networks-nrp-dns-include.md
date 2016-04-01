@@ -21,12 +21,12 @@ DNS 區域擁有名為「記錄集」的子物件。 記錄集是 DNS 區域依�
 | CNAME | 正式名稱記錄類型 <sup>1</sup> | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/CNAME/www |
 | MX | 郵件記錄類型 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/MX/mail |
 | NS | 名稱伺服器記錄類型 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/NS/ |
-| SOA | 開始時授權的記錄類型 <sup>2</sup> | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SOA |
+| SOA | 起始授權記錄類型 <sup>2</sup> | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SOA |
 | SRV | 服務記錄類型 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SRV |
 
-<sup>1</sup> 只允許每個資料錄集的一個值。
+<sup>1</sup> 每個記錄集僅允許一個值。
 
-<sup>2</sup> 只允許一種記錄類型 SOA 每個 DNS 區域。 
+<sup>2</sup> 每個 DNS 區域僅允許一種記錄類型 SOA。 
 
 Json 格式的 DNS 區域範例：
 
@@ -88,4 +88,5 @@ Json 格式的 DNS 區域範例：
 讀取 [DNS 區域的 REST API 文件 ](https://msdn.microsoft.com/library/azure/mt130626.aspx) 如需詳細資訊。
 
 讀取 [DNS 記錄集的 REST API 文件](https://msdn.microsoft.com/library/azure/mt130626.aspx) 如需詳細資訊。
+
 

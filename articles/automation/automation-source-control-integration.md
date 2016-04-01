@@ -39,13 +39,13 @@
 
 2.  **原始檔控制** 分頁隨即開啟，您可以在其中設定您的 GitHub 帳戶詳細資料。 以下是要設定的參數清單：  
 
-    |**參數**            |**說明** |
-    |:---|:---| 
-    |選擇原始檔   | 選取原始檔。 目前，只有 **GitHub** 支援。 |
-    |Authorization | 按一下 [ **授權** 按鈕來授與 Azure 自動化存取 GitHub 儲存機制。 如果您已在不同的視窗中登入您的 GitHub 帳戶，則會使用該帳戶的認證。 授權成功後，刀鋒視窗會顯示您的 GitHub 使用者名稱之下 **授權屬性**。 |
-    |選擇儲存機制 | 從可用的儲存機制清單中選取 GitHub 儲存機制。 |
-    |選擇分支 | 從可用的分支清單中選取分支。 只有 **主要** 分支會顯示是否您尚未建立任何分支。 |
-    |Runbook 資料夾路徑 | Runbook 資料夾路徑可指定 GitHub 儲存機制中的路徑，以便您從中推送或提取程式碼。 它必須以格式輸入 **/資料夾名稱/子資料夾名稱**。 只有 Runbook 資料夾路徑中的 Runbook 會同步處理至您的自動化帳戶。 Runbook 資料夾路徑的子資料夾中的 Runbook 將 **不** 進行同步處理。 使用 **/** 同步處理儲存機制下的所有 runbook。 |
+  	|**參數**            |**說明** |
+  	|:---|:---| 
+  	|選擇原始檔   | 選取原始檔。 目前，只有 **GitHub** 支援。 |
+  	|Authorization | 按一下 [ **授權** 按鈕來授與 Azure 自動化存取 GitHub 儲存機制。 如果您已在不同的視窗中登入您的 GitHub 帳戶，則會使用該帳戶的認證。 授權成功後，刀鋒視窗會顯示您的 GitHub 使用者名稱之下 **授權屬性**。 |
+  	|選擇儲存機制 | 從可用的儲存機制清單中選取 GitHub 儲存機制。 |
+  	|選擇分支 | 從可用的分支清單中選取分支。 只有 **主要** 分支會顯示是否您尚未建立任何分支。 |
+  	|Runbook 資料夾路徑 | Runbook 資料夾路徑可指定 GitHub 儲存機制中的路徑，以便您從中推送或提取程式碼。 它必須以格式輸入 **/資料夾名稱/子資料夾名稱**。 只有 Runbook 資料夾路徑中的 Runbook 會同步處理至您的自動化帳戶。 Runbook 資料夾路徑的子資料夾中的 Runbook 將 **不** 進行同步處理。 使用 **/** 同步處理儲存機制下的所有 runbook。 |
 
 
 3. 例如，如果儲存機制中名為 **PowerShellScripts** ，其中包含名為的資料夾 **RootFolder**, ，其中包含名為的資料夾 **子資料夾**。 您可以使用下列字串來同步處理每個資料夾層級：
@@ -69,20 +69,20 @@
       
     * 變數 **Microsoft.Azure.Automation.SourceControl.Connection** ，如下所示，其中包含連接字串的值。  
 
-    |**參數**            |**值** |
-    |:---|:---|
-    | 名稱  | Microsoft.Azure.Automation.SourceControl.Connection |
-    | 型別 | String |
-    | 值  | {「 分支 」: \ <*分支名稱*>，"RunbookFolderPath": \ <*Runbook 資料夾路徑*>，「 提供者類型 」: \ <*GitHub 適用的值 1*>，「 儲存機制 」: \ <*儲存機制名稱*>，"Username": \ <*您的 GitHub 使用者名稱*>} |  <br>
+  	|**參數**            |**值** |
+  	|:---|:---|
+  	| 名稱  | Microsoft.Azure.Automation.SourceControl.Connection |
+  	| 型別 | String |
+  	| 值  | {「 分支 」: \ <*分支名稱*>，"RunbookFolderPath": \ <*Runbook 資料夾路徑*>，「 提供者類型 」: \ <*GitHub 適用的值 1*>，「 儲存機制 」: \ <*儲存機制名稱*>，"Username": \ <*您的 GitHub 使用者名稱*>} |  <br>
 
 
     * The variable **Microsoft.Azure.Automation.SourceControl.OauthToken**, contains the secure encrypted value of your OAuthToken.  
 
-    |**Parameter**            |**Value** |
-    |:---|:---|
-    | Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
-    | Type | Unknown(Encrypted) |
-    | Value | <*Encrypted OAuthToken*> |  
+  	|**Parameter**            |**Value** |
+  	|:---|:---|
+  	| Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
+  	| Type | Unknown(Encrypted) |
+  	| Value | <*Encrypted OAuthToken*> |  
 
     ![Variables](media/automation-source-control-integration/automation_04_Variables.png)  
 
@@ -105,13 +105,13 @@ Runbook 簽入可讓您將對 Azure 自動化中的 Runbook 所做的變更推�
     ![簽入按鈕](media/automation-source-control-integration/automation_06_CheckinButton.png)
 
 
-     >[AZURE.NOTE] Check-in from Azure Automation will overwrite the code that currently exists in your source control. The Git equivalent command line instruction to check-in is **git add + git commit + git push**  
+     >[AZURE.NOTE] 簽入 Azure 自動化會覆寫原始檔控制中目前存在的程式碼。 簽入的 Git 對等的命令列指令 **的 git add + 推送 git 認可 + git**  
 
 3. 當您按一下 **簽入**, ，您將會提示您確認訊息，按一下 [是] 繼續。  
 
     ![簽入訊息](media/automation-source-control-integration/automation_07_CheckinMessage.png)
 
-4. 簽入原始檔控制 runbook 會啟動: **同步 MicrosoftAzureAutomationAccountToGitHubV1**。 此 Runbook 會連接到 GitHub 並將 Azure 自動化中的變更推送至您的儲存機制。 若要檢視簽入作業歷程記錄，請回到 **原始檔控制整合** ] 索引標籤上，按一下以開啟儲存機制同步處理] 分頁。 此刀鋒視窗會顯示所有的原始檔控制工作。  選取您要檢視的工作並按一下以檢視詳細資料。  
+4. 簽入原始檔控制 runbook 會啟動 ︰ **同步 MicrosoftAzureAutomationAccountToGitHubV1**。 此 Runbook 會連接到 GitHub 並將 Azure 自動化中的變更推送至您的儲存機制。 若要檢視簽入作業歷程記錄，請回到 **原始檔控制整合** ] 索引標籤上，按一下以開啟儲存機制同步處理] 分頁。 此刀鋒視窗會顯示所有的原始檔控制工作。  選取您要檢視的工作並按一下以檢視詳細資料。  
 
     ![簽入 Runbook](media/automation-source-control-integration/automation_08_CheckinRunbook.png)
 
@@ -121,7 +121,7 @@ Runbook 簽入可讓您將對 Azure 自動化中的 Runbook 所做的變更推�
 
     ![簽入輸入](media/automation-source-control-integration/automation_09_CheckinInput.png)
 
-6. 在工作完成時重新整理您的 GitHub 儲存機制，即可檢視變更。  在儲存機制的認可訊息應該會有認可: **更新 *Runbook 名稱* Azure 自動化中。**  
+6. 在工作完成時重新整理您的 GitHub 儲存機制，即可檢視變更。  在儲存機制的認可訊息應該會有認可 ︰ **更新 *Runbook 名稱* Azure 自動化中。**  
 
 
 
@@ -138,7 +138,7 @@ Runbook 簽入可讓您將對 Azure 自動化中的 Runbook 所做的變更推�
     ![同步處理 Runbook](media/automation-source-control-integration/automation_11_SyncRunbook.png)
 
  
-    >[AZURE.NOTE] A sync from source control overwrites the draft version of the runbooks that currently exist in your Automation account for **ALL** runbooks that are currently in source control. The Git equivalent command line instruction to sync is **git pull**
+    >[AZURE.NOTE] 從原始檔控制同步處理將會覆寫現有的自動化帳戶中的 runbook 的草稿版本 **所有** runbook 目前在原始檔控制。 同步處理的 Git 對等的命令列指令 **git 提取**
 
 
 ## 原始檔控制問題的疑難排解
@@ -157,8 +157,9 @@ Runbook 簽入可讓您將對 Azure 自動化中的 Runbook 所做的變更推�
 
 ## 後續步驟
 
-如需原始檔控制整合的詳細資訊，請參閱下列資源:  
-- [在 Azure 自動化中的 azure 自動化: 原始檔控制整合](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-- [您最愛的原始檔控制系統的投票](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)  
-- [Azure 自動化: 整合使用 Visual Studio Team Services Runbook 原始檔控制](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+如需原始檔控制整合的詳細資訊，請參閱下列資源：  
+- [Azure 自動化：Azure 自動化中的原始檔控制整合](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+- [票選您最喜愛的原始檔控制系統](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)  
+- [Azure 自動化：使用 Visual Studio Team Services 整合 Runbook 原始檔控制](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+
 

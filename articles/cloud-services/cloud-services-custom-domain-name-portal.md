@@ -34,7 +34,7 @@
 <p/>
 
 > [AZURE.TIP]
-> --開始使用新的 Azure [引導式逐步解說](http://support.microsoft.com/kb/2990804)!  在彈指之間完成自訂網域名稱的關聯，以及與 Azure 雲端服務或 Azure 網站之間的通訊 (SSL) 保護。
+> --開始使用新的 Azure [引導式逐步解說](http://support.microsoft.com/kb/2990804)！  在彈指之間完成自訂網域名稱的關聯，以及與 Azure 雲端服務或 Azure 網站之間的通訊 (SSL) 保護。
 
 ## 了解 CNAME 和 A 記錄
 
@@ -69,7 +69,7 @@ CNAME 記錄會對應 *特定* 網域，例如 **contoso.com** 或 **www.contoso
             
         **或**
   
-    * 安裝和設定 [Powershell](../install-configure-powershell.md), ，然後使用下列命令:
+    * 安裝和設定 [Powershell](../install-configure-powershell.md), ，然後使用下列命令 ︰
 
         ```powershell
         Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -85,7 +85,7 @@ CNAME 記錄會對應 *特定* 網域，例如 **contoso.com** 或 **www.contoso
 
 4. 接著，您必須提供正式主機名稱，也就是您的應用程式 **cloudapp.net** 在此案例中的網域。
 
-例如，下列 CNAME 記錄轉送所有流量 **www.contoso.com** 至 **contoso.cloudapp.net**, ，部署之應用程式的自訂網域名稱:
+例如，下列 CNAME 記錄轉送所有流量 **www.contoso.com** 至 **contoso.cloudapp.net**, ，部署之應用程式的自訂網域名稱 ︰
 
 | 別名/主機名稱/子網域 | 正式網域     |
 | ------------------------- | -------------------- |
@@ -111,7 +111,7 @@ CNAME 記錄會對應 *特定* 網域，例如 **contoso.com** 或 **www.contoso
 
         **或**
 
-    * 安裝和設定 [Powershell](../install-configure-powershell.md), ，然後使用下列命令:
+    * 安裝和設定 [Powershell](../install-configure-powershell.md), ，然後使用下列命令 ︰
 
         ```powershell
         get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -129,7 +129,7 @@ CNAME 記錄會對應 *特定* 網域，例如 **contoso.com** 或 **www.contoso
 
 4. 在提供的欄位中，輸入雲端服務的 IP 位址。 這樣會將 A 記錄中使用的網域項目與雲端服務部署的 IP 位址產生關聯。
 
-例如，下列 A 記錄會將從所有流量都轉送 **contoso.com** 至 **137.135.70.239**, ，部署之應用程式的 IP 位址:
+例如，下列 A 記錄會將從所有流量都轉送 **contoso.com** 至 **137.135.70.239**, ，部署之應用程式的 IP 位址 ︰
 
 | 主機名稱/子網域 | IP 位址     |
 | ------------------- | -------------- |
@@ -158,3 +158,4 @@ CNAME 記錄會對應 *特定* 網域，例如 **contoso.com** 或 **www.contoso
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
  
+

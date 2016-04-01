@@ -30,7 +30,7 @@ Azure 中的虛擬機器會執行根據您建立虛擬機器時所選擇映像�
 
 在建立虛擬機器時，您可以自訂部分作業系統設定，使用它們適合您要執行的應用程式。 如需指示，請參閱 [如何建立自訂虛擬機器](virtual-machines-create-custom.md)。
 
-**重要**: 中，Azure 平台 SLA 才適用於使用組態來使用的其中一個背書散發套件時，才執行 Linux OS 的虛擬機器詳細資料做為支援版本 」 下指定 [Linux on azure 背書散發套件](virtual-machines-../linux-endorsed-distributions.md)。 Azure 映像庫中的所有 Linux 散發套件，皆為使用必要組態的背書散發套件。
+**重要**︰ 中，Azure 平台 SLA 才適用於使用組態來使用的其中一個背書散發套件時，才執行 Linux OS 的虛擬機器詳細資料做為支援版本 」 下指定 [Linux on azure 背書散發套件](virtual-machines-../linux-endorsed-distributions.md)。 Azure 映像庫中的所有 Linux 散發套件，皆為使用必要組態的背書散發套件。
 
 
 ## 必要條件
@@ -89,7 +89,7 @@ Azure 支援各種 Linux 散發套件 (請參閱 [背書散發套件](../linux-e
 
     出現提示時，輸入您的使用者名稱和密碼。
 
-**或者**, ，改為使用 PublishSettings 檔案:
+**或者**, ，改為使用 PublishSettings 檔案 ︰
 
 1. 開啟 Azure CLI 視窗
 
@@ -122,7 +122,7 @@ Azure 支援各種 Linux 散發套件 (請參閱 [背書散發套件](../linux-e
 
     出現提示時，請鍵入貴組織的使用者識別碼和密碼。
 
-**或者**, ，改為使用 PublishSettings 檔案:
+**或者**, ，改為使用 PublishSettings 檔案 ︰
 
 1. 開啟 Azure PowerShell 視窗。
 
@@ -171,4 +171,5 @@ Azure 支援各種 Linux 散發套件 (請參閱 [背書散發套件](../linux-e
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
+
 

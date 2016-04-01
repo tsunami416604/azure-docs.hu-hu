@@ -46,10 +46,10 @@
 1.  建立新的邏輯應用程式：  
 ![][2]
 
-2.  開啟 [觸發程序和動作] 以開啟邏輯應用程式設計工具並設定您的流程:  
+2.  開啟 [觸發程序和動作] 以開啟邏輯應用程式設計工具並設定您的流程 ︰  
 ![][3]
 
-3.  Yammer 接器就會出現在右側資源庫中的 API 應用程式中此資源群組] 區段:  
+3.  Yammer 接器就會出現在右側資源庫中的 API 應用程式中此資源群組] 區段 ︰  
 ![][4]
 
 4. 您可以在 [Yammer 連接器] 上按一下來將 Twilio 連接器 API 應用程式置入編輯器。 按一下 [授權] 按鈕。 提供您的 Yammer 認證。 按一下 [允許]:  
@@ -65,28 +65,28 @@
 
 - **群組識別碼** -應該從中擷取新訊息之群組的識別碼。 如果未提供群組識別碼，訊息將會從「關注摘要」擷取。 群組識別碼可以從 Yammer 中的群組 URL 擷取。
         
-    範例: 下列 URL 中的群組識別碼為"5453203":  
+    範例 ︰ 下列 URL 中的群組識別碼為"5453203":  
 https://www.yammer.com/microsoft.com/#/threads/inGroup?type=in_group&feedId=5453203  
 ![][8]  
 ![][9]
 
 ## 使用 Yammer 連接器張貼訊息
 
-您也可以在邏輯應用程式中使用 Yammer 連接器做為動作。 首先，指定邏輯應用程式的觸發程序，或核取 [手動執行此邏輯] (如下所示)。 加入 yammer 連接器，適當地授權，然後選擇 [張貼訊息] 動作。 設定 「 張貼訊息 」 動作的輸入的屬性，如下所示:
+您也可以在邏輯應用程式中使用 Yammer 連接器做為動作。 首先，指定邏輯應用程式的觸發程序，或核取 [手動執行此邏輯] (如下所示)。 加入 yammer 連接器，適當地授權，然後選擇 [張貼訊息] 動作。 設定 「 張貼訊息 」 動作的輸入的屬性，如下所示 ︰
 
 - **訊息文字** -要張貼訊息的文字內容
 - **群組識別碼** -指定應該張貼新訊息之群組的識別碼。 如果未提供群組識別碼，訊息將會張貼到「所有公司摘要」。 群組識別碼可以從 Yammer 中的群組 URL 擷取。  
 
-    範例: 下列 URL 中的群組識別碼為"5453203":  
+    範例 ︰ 下列 URL 中的群組識別碼為"5453203":  
 https://www.yammer.com/microsoft.com/#/threads/inGroup?type=in_group&feedId=5453203
--   **標記使用者** -需要標記在訊息中使用者網路名稱的陣列:  
+-   **標記使用者** -需要標記在訊息中使用者網路名稱的陣列 ︰  
 ![][10]  
 ![][11]
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -104,4 +104,5 @@ https://www.yammer.com/microsoft.com/#/threads/inGroup?type=in_group&feedId=5453
 [9]: ./media/app-service-logic-connector-yammer/img9.PNG
 [10]: ./media/app-service-logic-connector-yammer/img10.PNG
 [11]: ./media/app-service-logic-connector-yammer/img11.PNG
+
 

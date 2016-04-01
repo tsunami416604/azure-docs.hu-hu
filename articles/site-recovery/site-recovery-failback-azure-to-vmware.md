@@ -49,7 +49,7 @@
 
     ![](./media/site-recovery-failback-azure-to-vmware/image5.png)
 
-7. 在 **CS 複雜密碼的詳細資料** 頁面上，指定當您在註冊組態伺服器記下複雜密碼。 如果您不記得它簽入 **C:\\Program Files (x86) \\InMage Systems\\private\\connection.passphrase** 組態伺服器 VM 上。
+7. 在 **CS 複雜密碼的詳細資料** 頁面上，指定當您在註冊組態伺服器記下複雜密碼。 如果您不記得它簽入 **C:\\Program 檔案 (x86) \\InMage Systems\\private\\connection.passphrase** 組態伺服器 VM 上。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image6.png)
 
@@ -121,7 +121,7 @@ vContinuum，主要伺服器也部署在相同電腦上，
 #### 作業系統的安裝前步驟
 
 若要針對每個 SCSI 硬碟，在 Linux 虛擬機器，取得 SCSI 識別碼
-啟用參數 」 磁碟。EnableUUID = TRUE"，如下所示:
+啟用參數 」 磁碟。EnableUUID = TRUE"，如下所示 ︰
 
 1. 關閉虛擬機器。
 2. 以滑鼠右鍵按一下左面板中的 VM 項目 > **編輯設定**。
@@ -141,7 +141,7 @@ vContinuum，主要伺服器也部署在相同電腦上，
 \ # yum 安裝-y xfsprogs perl lsscsi rsync wget kexec 工具
 
 此命令會從 CentOS 6.6 下載這些 15 的套件
-儲存機制並將它們安裝:
+儲存機制並將它們安裝 ︰
 
 bc-1.06.95-1.el6.x86\_64.rpm
 
@@ -173,7 +173,7 @@ snappy-1.1.0-1.el6.x86\_64.rpm
 
 wget-1.12-5.el6\_6.1.x86\_64.rpm
 
-注意: 如果來源機器使用 Reiser 或 XFS 檔案系統根目錄或開機
+注意 ︰ 如果來源機器使用 Reiser 或 XFS 檔案系統根目錄或開機
 裝置，則下列封裝應該下載和安裝
 保護的前 Linux 主要目標。
 
@@ -200,11 +200,11 @@ reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
 1. 將 RHEL 6-64 整合代理程式二進位檔複製到新建立的作業系統。
 
-2. 執行這個命令來解壓縮二進位檔: **tar zxvf \ < 檔案名稱 >**
+2. 執行這個命令來解壓縮二進位檔 ︰ **tar zxvf \ < 檔案名稱 >**
 
 3. 執行此命令，以授與權限: \ # **chmod 755./ApplyCustomChanges.sh**
 
-4. 執行指令碼: **\ #./ApplyCustomChanges.sh**。 只需在伺服器上執行指令碼一次。 指令碼執行後，請重新啟動伺服器。
+4. 執行指令碼 ︰ **\ #./ApplyCustomChanges.sh**。 只需在伺服器上執行指令碼一次。 指令碼執行後，請重新啟動伺服器。
 
 
 
@@ -227,7 +227,7 @@ Linux 主要目標伺服器，透過 VPN 連線，然後使用
 IP 位址 (從虛擬機器 **儀表板** ] 索引標籤) 和公用
 針對 ssh 建立登入 Linux servder 的端點。
 6. 從下列 Linux 主要目標伺服器安裝程式解壓縮檔案
-藉由執行 tar 封存: *"tar – xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64\*"* 從包含安裝程式檔案的目錄。
+藉由執行 tar 封存 ︰ *"tar – xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64\*"* 從包含安裝程式檔案的目錄。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image16.png)
 
@@ -237,7 +237,7 @@ tar 封存檔內容所要的目錄
 
     ![](./media/site-recovery-failback-azure-to-vmware/image17.png)
 
-8. 當系統提示您選擇的主要角色選取 **2 (主要目標)**。 保留其他互動式安裝選項的預設值。
+8. 當系統提示您選擇的主要角色選取 **2 （主要目標）**。 保留其他互動式安裝選項的預設值。
 9. 等待安裝能夠繼續和主機設定
 若要顯示的介面。 針對 Linux 主要主機組態公用程式
 sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
@@ -258,8 +258,8 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 
 如果基於某些原因，您無法註冊您的 Linux 主要目標
 設定伺服器的伺服器還可以再執行
-主機組態公用程式從 /usr/local/ASR/Vx/bin/hostconfigcli (在您將
-首先要設定此目錄的存取權限，藉由執行 chmod 做為進階使用者)。
+主機組態公用程式從 /usr/local/ASR/Vx/bin/hostconfigcli （在您將
+首先要設定此目錄的存取權限，藉由執行 chmod 做為進階使用者）。
 
 
 #### 驗證主要目標註冊
@@ -385,7 +385,7 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 您可以準備使用 vContinuum 容錯回復計劃，讓應用程式
 可以容錯回復到內部部署站台在任何時間。 這些復原方案非常類似 Site Recovery 中的復原方案。
 
-1.  啟動 vContinuum，然後選取 **管理計劃** > **復原。**您可以看到所有已用來容錯移轉 VM 的方案清單。 您可以使用相同的方案來復原。
+1.  啟動 vContinuum，然後選取 **管理計劃** > **復原。** 您可以看到所有已用來容錯移轉 VM 的方案清單。 您可以使用相同的方案來復原。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image37.png)
 
@@ -394,7 +394,7 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
     ![](./media/site-recovery-failback-azure-to-vmware/image38.png)
 
 3. 您可以復原根據多個選項，但我們建議您使用 **最新的標記** ，然後選取 **所有 vm 套用** 以確保會使用虛擬機器的最新資料。
-4. 執行 **整備檢查。**這會檢查是否設為啟用 VM 復原的正確參數。 按一下 [ **下一步** 如果所有檢查都都成功。 如果未成功，請檢查記錄檔並解決錯誤。
+4. 執行 **整備檢查。** 這會檢查是否設為啟用 VM 復原的正確參數。 按一下 [ **下一步** 如果所有檢查都都成功。 如果未成功，請檢查記錄檔並解決錯誤。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image39.png)
 
@@ -448,4 +448,5 @@ sarget 伺服器是命令列公用程式。 不調整 ssh 用戶端
 [閱讀有關](site-recovery-vmware-to-azure.md) VMware 虛擬機器複寫至 Azure
 
  
+
 

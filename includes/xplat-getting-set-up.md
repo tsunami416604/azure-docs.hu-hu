@@ -34,3 +34,4 @@
 
 > [AZURE.NOTE] 如果您還沒有 Azure 帳戶，但您沒有 MSDN 訂閱的訂閱，您可以取得免費的 Azure 點數藉由啟用您 [MSDN 訂閱者權益這裡](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) -您可以使用免費帳戶。 這其中一種方式將可用來存取 Azure。
 
+

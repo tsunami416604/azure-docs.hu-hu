@@ -79,7 +79,7 @@
 
 運作時間是透過 HTTP 回應碼來加以監視，而回應時間的測量單位是毫秒。 如果 HTTP 回應碼大於或等於 400，或是當回應時間超過 30 秒時，監視測試即告失敗。 如果所有指定位置上的端點監視測試全都成功，表示該端點可用。
 
-若要設定，請參閱 [How to: 監視 web 端點狀態](web-sites-monitor.md#webendpointstatus)。
+若要設定，請參閱 [How to ︰ 監視 web 端點狀態](web-sites-monitor.md#webendpointstatus)。
 
 此外，請參閱 [保留 Azure 網站上以及端點監視-Stefan schackow](/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/) 如需端點監視的影片。
 
@@ -106,7 +106,7 @@ Web Apps 環境會針對來自 Web 伺服器和 Web 應用程式的記錄資訊�
 
 您可以啟用或停用下列各種記錄：
 
--   **詳細的錯誤記錄** -對於表示失敗 (狀態碼 400 或以上) 的 HTTP 狀態碼的詳細錯誤資訊。 這當中包含的資訊可協助您判斷為何伺服器傳回錯誤碼。
+-   **詳細的錯誤記錄** -對於表示失敗 （狀態碼 400 或以上） 的 HTTP 狀態碼的詳細錯誤資訊。 這當中包含的資訊可協助您判斷為何伺服器傳回錯誤碼。
 -   **失敗要求追蹤** -關於失敗的要求，包括用來處理要求和每個元件所花費的時間的 IIS 元件追蹤的詳細資訊。 若您嘗試提升 Web 應用程式的效能，或是想要隔離造成特定 HTTP 錯誤的原因，這個方法將有所助益。
 -   **Web 伺服器記錄** -使用 W3C 擴充的記錄檔案格式的 HTTP 交易相關資訊。 當您需要判斷整體 Web 應用程式計量 (例如，所處理的要求數量，或來自特定 IP 位址要求的數量) 時，這個方法將有所助益。
 
@@ -187,4 +187,5 @@ AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體
 
 您也可以使用 Azure Powershell 管理 Web 應用程式。 如需詳細資訊，請參閱
 [使用 Azure PowerShell 與 Azure 資源管理員](powershell-azure-resource-manager.md)。
+
 

@@ -33,7 +33,7 @@
 
 
 - 只有 Azure SQL Database V12 伺服器才可以使用彈性資料庫集區。 若要升級至 V12 並直接在集區，將資料庫移轉，請參閱 [升級至 Azure SQL Database V12](sql-database-upgrade-server-powershell.md)。
-- 建立和管理彈性資料庫集區也支援使用 [Azure 入口網站](https://portal.azure.com), 、 PowerShell 和.NET 用戶端程式庫 (REST Api 包裝函式) 僅適用於 Azure 資源管理員; [傳統入口網站](https://manage.windowsazure.com/) 並不支援服務管理命令。
+- 建立和管理彈性資料庫集區也支援使用 [Azure 入口網站](https://portal.azure.com), 、 PowerShell 和.NET 用戶端程式庫 （REST Api 包裝函式） 僅適用於 Azure 資源管理員; [傳統入口網站](https://manage.windowsazure.com/) 並不支援服務管理命令。
 - 此外，還支援使用 Transact-SQL 建立新的彈性資料庫，並將現有的資料庫移入和移出彈性資料庫集區。
 
 
@@ -43,11 +43,11 @@
 
 - 每個集區有最大數目的資料庫和集區 eDTU：
 
-    | 服務層 | 每個集區的最大資料庫* | 每個集區的最大 eDTU* |
-    | :-- | :-- | :-- |
-    | 基本 | 200 | 1200 | 
-    | 標準 | 200 | 1200 |
-    | 高級 | 50 | 1500 |
+  	| 服務層 | 每個集區的最大資料庫* | 每個集區的最大 eDTU* |
+  	| :-- | :-- | :-- |
+  	| 基本 | 200 | 1200 | 
+  	| 標準 | 200 | 1200 |
+  	| 高級 | 50 | 1500 |
 
     ****每個集區的資料庫數和集區 eDTU 數的目前限制預期會增加。***
 
@@ -76,7 +76,7 @@
 彈性資料庫集區是 Microsoft Azure SQL Database 中 "ElasticPool" 類型的 Azure 資源管理員資源。
 
 - **命名空間**: microsoft.sql/elasticpool
-- **管理端點** 用於 REST API 呼叫 (資源管理員): https://management.azure.com
+- **管理端點** 用於 REST API 呼叫 （資源管理員） ︰ https://management.azure.com
 
 
 
@@ -209,6 +209,7 @@ Azure SQL Database V12 伺服器位於資源群組中。
 | 40889 | EX_USER | 不能減少彈性集區 '%.*ls' 的 DTU 數或儲存體限制，因為這麼做會無法提供足夠的儲存空間給位於其中的資料庫。 | 彈性集區名稱。 | 試圖將彈性集區的儲存體限制減少為低於其儲存體使用量。 | 請考慮減少彈性集區中之個別資料庫的儲存體使用量，或從集區中移除資料庫，以便減少集區的 DTU 數或儲存體限制。 |
 | 40891 | EX_USER | 每個資料庫的最小 DTU (%d) 不能超過每個資料庫的最大 DTU (%d)。 | 每個資料庫的最小 DTU、每個資料庫的最大 DTU。 | 試圖將每個資料庫的最小 DTU 設為超過每個資料庫的最大 DTU。 | 請確定每個資料庫的最小 DTU 並未超過每個資料庫的最大 DTU。 |
 | TBD | EX_USER | 彈性集區中個別資料庫的儲存體大小，不能超過 '%.*ls' 服務層彈性集區所允許的大小上限。 | 彈性集區服務層 | 資料庫的大小上限超過彈性集區服務層所允許的大小上限。 | 請將資料庫的大小上限設定在彈性集區服務層所允許的大小上限內。 |
+
 
 
 

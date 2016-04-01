@@ -96,3 +96,4 @@ Azure 資源群組專案提供的 PowerShell 指令碼在這個版本中已更�
 [Azure SDK for .NET 和 API 的支援和停用資訊](https://msdn.microsoft.com/library/azure/dn479282.aspx)
 
 
+

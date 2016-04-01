@@ -26,7 +26,7 @@
 -   如何透過網頁瀏覽器輕鬆地檢視 DocumentDB 文件的系統屬性？
 -   如何透過網頁瀏覽器輕鬆地在 DocumentDB 中執行文件的大量擷取？
 
-##<a id="Launch"></a>啟動 Document Explorer##
+##<a id="Launch"></a>啟動 [文件總管]##
 
 您可以從任何 DocumentDB 帳戶、資料庫和集合分頁啟動 Document Explorer。  
 
@@ -86,11 +86,11 @@ Document Explorer 可讓您輕鬆地建立、編輯和刪除文件。
 
     > [AZURE.NOTE] 時間戳記 (_ts) 屬性內部會以 epoch 時間表示，但是 Document Explorer 人類可讀的 GMT 格式顯示的值。
 
-##<a id="Navigate"></a>文件總管瀏覽選項和進階的設定##
+##<a id="Navigate"></a>文件總管導覽選項以及進階設定##
 
 [文件總管] 支援許多導覽選項以及進階設定。
 
-1. 根據預設，Document Explorer 會在選取的集合中，依照建立日期 (最早到最晚) 載入前 100 個文件。  您可以藉由選取載入 (以每批 100 個) 的其他文件 **載入更多** Document Explorer 分頁底部的選項。  按一下 [Document Explorer] 刀鋒視窗頂端的 [設定] 命令，即可修改預設行為。
+1. 根據預設，Document Explorer 會在選取的集合中，依照建立日期 (最早到最晚) 載入前 100 個文件。  您可以藉由選取載入 （以每批 100 個） 的其他文件 **載入更多** Document Explorer 分頁底部的選項。  按一下 [Document Explorer] 刀鋒視窗頂端的 [設定] 命令，即可修改預設行為。
 
     ![[Document Explorer 設定] 刀鋒視窗的螢幕擷取畫面](./media/documentdb-view-JSON-document-explorer/documentexplorersettings.png)
 
@@ -112,7 +112,7 @@ Document Explorer 可讓您輕鬆地建立、編輯和刪除文件。
     ![含篩選結果的 [Document Explorer] 螢幕擷取畫面](./media/documentdb-view-JSON-document-explorer/documentexplorerfilterresults.png)
 
 
-    > [AZURE.IMPORTANT] The Document Explorer filter functionality only filters from the ***currently*** loaded set of documents and does not perform a query against the currently selected collection.
+    > [AZURE.IMPORTANT] Document Explorer 篩選功能只會篩選從 ***目前*** 載入的文件集，並不會執行查詢，以針對目前選取的集合。
 
 5. 若要重新整理 Document Explorer 所載入的文件清單，只要按一下 **重新整理** 分頁頂端的命令。
 
@@ -138,10 +138,11 @@ Document Explorer 支援大量擷取一或多個現有 JSON 文件。
 
 4. 作業完成後，您可以另外選取多達 100 個文件進行上傳。
 
-##<a name="NextSteps"></a>後續步驟
+##<a name="NextSteps"></a>接續步驟
 
 - 若要深入了解 DocumentDB，請按一下 [這裡](http://azure.com/docdb)。
 - 若要開始使用程式碼，請按一下 [ [這裡](documentdb-get-started.md)。
 
  
+
 

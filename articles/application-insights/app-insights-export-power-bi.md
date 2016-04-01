@@ -41,7 +41,7 @@ Noam Ben Zeev 會示範我們在本文中的描述。
 > [AZURE.VIDEO export-to-power-bi-from-application-insights]
 
 
-**取樣。**如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [進一步了解取樣。](app-insights-sampling.md)
+**取樣** 如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](app-insights-sampling.md)
 
 ## 使用 Application Insights 監視您的應用程式
 
@@ -100,7 +100,7 @@ Noam Ben Zeev 會示範我們在本文中的描述。
 
 ## 建立 Azure 串流分析執行個體
 
-從 [傳統 Azure 入口網站](https://manage.windowsazure.com/), ，選取 Azure 串流分析服務，然後建立新的資料流分析工作:
+從 [傳統 Azure 入口網站](https://manage.windowsazure.com/), ，選取 Azure 串流分析服務，然後建立新的資料流分析工作 ︰
 
 
 ![](./media/app-insights-export-power-bi/090.png)
@@ -268,4 +268,5 @@ Noam Ben Zeev 會示範如何匯出至 Power BI。
 * [屬性類型和值的詳細資料模型參考。](app-insights-export-data-model.md)
 * [Application Insights](app-insights-overview.md)
 * [更多範例和逐步解說](app-insights-code-samples.md)
+
 

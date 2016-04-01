@@ -41,3 +41,4 @@
 
 如需這些 Azure CLI 虛擬機器命令的詳細資訊，請閱讀 [使用 Azure CLI 搭配服務管理 API](../articles/virtual-machines/virtual-machines-command-line-tools.md)。
 
+

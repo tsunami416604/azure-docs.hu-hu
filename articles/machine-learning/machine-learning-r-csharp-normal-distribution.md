@@ -67,7 +67,7 @@
 
 >在 Azure Marketplace 上託管的這項服務是一個 OData 服務，可透過 POST 或 GET 方法進行呼叫。 
 
-有幾種以自動化方式取用服務 (範例應用程式如下: [產生器](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionGenerator.aspx),，
+有幾種以自動化方式取用服務 (範例應用程式如下 ︰ [產生器](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionGenerator.aspx),，
 [機率計算機](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionProbabilityCalculator.aspx),，
 [分位數計算機](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionQuantileCalculator.aspx))。
 
@@ -267,4 +267,5 @@ Web 服務或發佈至 Azure Marketplace 的耗用量常見問題集解答，請
 [3]: ./media/machine-learning-r-csharp-normal-distribution/normal-img3.png
 [4]: ./media/machine-learning-r-csharp-normal-distribution/normal-img4.png
  
+
 

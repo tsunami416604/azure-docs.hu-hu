@@ -90,7 +90,7 @@ Swashbuckle 會藉由串連控制器名稱與方法名稱來產生 Swagger 作�
     
 ## 允許 200 以外的回應碼
 
-根據預設，Swashbuckle 會假設 HTTP 200 (確定) 回應 *只* 合法回應來自 Web API 方法。 在某些情況下，您可能想要傳回其他回應碼，而不造成用戶端引發例外狀況。  例如，下列的 Web API 程式碼示範您想要用戶端接受 200 或 404  做為有效回應的案例。
+根據預設，Swashbuckle 會假設 HTTP 200 （確定） 回應 *只* 合法回應來自 Web API 方法。 在某些情況下，您可能想要傳回其他回應碼，而不造成用戶端引發例外狀況。  例如，下列的 Web API 程式碼示範您想要用戶端接受 200 或 404  做為有效回應的案例。
 
     [ResponseType(typeof(Contact))]
     public HttpResponseMessage Get(int id)
@@ -249,4 +249,5 @@ Swashbuckle 提供兩種方法 (使用 XML 註解或 `SwaggerResponse` 屬性) �
 
 本文已經示範如何自訂 Swashbuckle 產生作業識別碼和有效回應碼的方式。 如需詳細資訊，請參閱 [GitHub 上的 Swashbuckle](https://github.com/domaindrivendev/Swashbuckle)。
  
+
 

@@ -22,7 +22,7 @@
 
 ##檢查什麼？
 
-**注意:** 才能正確偵測先前的驗證程式碼專案中，您必須建置專案。  如果遇到這個錯誤，且您的專案中沒有先前的驗證碼，請重建並再試一次。
+**注意 ︰** 才能正確偵測先前的驗證程式碼專案中，您必須建置專案。  如果遇到這個錯誤，且您的專案中沒有先前的驗證碼，請重建並再試一次。
 
 ###專案類型
 
@@ -64,12 +64,12 @@
     &lt;/configuration&gt;
 </pre>
 
-為偵測 Web API 專案中的 Windows 驗證，精靈會尋找 `IISExpressWindowsAuthentication` 從您的專案項目 **.csproj** 檔案:
+為偵測 Web API 專案中的 Windows 驗證，精靈會尋找 `IISExpressWindowsAuthentication` 從您的專案項目 **.csproj** 檔案 ︰
 
 <pre>
     &lt;Project&gt;
         &lt;PropertyGroup&gt;
-            <span style="background-color: yellow">(& s) lt; IISExpressWindowsAuthentication & gt; 啟用 (& s) lt; / IISExpressWindowsAuthentication & gt;</span>
+            <span style="background-color: yellow">（& s) lt; IISExpressWindowsAuthentication & gt; 啟用 （& s) lt; / IISExpressWindowsAuthentication & gt;</span>
         &lt;/PropertyGroup>
     &lt;/Project&gt;
 </pre>
@@ -78,7 +78,7 @@
 
 <pre>
     &lt;packages&gt;
-        <span style="background-color: yellow">& lt; 封裝 id="Microsoft.AspNet.Identity.EntityFramework 」 版本 ="2.1.0"targetFramework ="net45"/ (& s) gt;</span>
+        <span style="background-color: yellow">& lt; 封裝 id="Microsoft.AspNet.Identity.EntityFramework 」 版本 ="2.1.0"targetFramework ="net45"/ （& s) gt;</span>
     &lt;/packages&gt;
 </pre>
 
@@ -87,7 +87,7 @@
 <pre>
     &lt;configuration&gt;
         &lt;appSettings&gt;
-            <span style="background-color: yellow">& lt; 新增機碼 ="ida: 領域 」 值 ="* * *"/ (& s) gt;</span>
+            <span style="background-color: yellow">& lt; 新增機碼 ="ida ︰ 領域 」 值 ="* * *"/ （& s) gt;</span>
         &lt;/appSettings&gt;
     &lt;/configuration&gt;
 </pre>
@@ -95,3 +95,4 @@
 若要變更驗證類型，請移除不相容的驗證類型，然後重新執行精靈。
 
 如需詳細資訊，請參閱 [Azure AD 的驗證案例](active-directory-authentication-scenarios.md)。
+

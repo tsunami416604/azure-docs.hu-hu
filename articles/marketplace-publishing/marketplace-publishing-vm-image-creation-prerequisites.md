@@ -30,10 +30,10 @@
 ## 支援的平台
 您可以在 Windows 或 Linux 上開發 Azure VM。 發佈程序的一些項目—例如建立與 Azure 相容的虛擬硬碟 (VHD)—會根據使用的作業系統而使用不同的工具和步驟。  
 
-- 如果您使用 Linux，請參閱 「 建立 Azure 相容 VHD (以 Linux 為基礎) 」 一節的 [虛擬機器映像發佈指南](marketplace-publishing-vm-image-creation.md)。
-- 如果您使用 Windows，請參閱 「 建立 Azure 相容 VHD (以 Windows 為基礎) 」 章節 [虛擬機器映像發佈指南](marketplace-publishing-vm-image-creation.md)。
+- 如果您使用 Linux，請參閱 「 建立 Azure 相容 VHD （以 Linux 為基礎） 」 一節的 [虛擬機器映像發佈指南](marketplace-publishing-vm-image-creation.md)。
+- 如果您使用 Windows，請參閱 「 建立 Azure 相容 VHD （以 Windows 為基礎） 」 章節 [虛擬機器映像發佈指南](marketplace-publishing-vm-image-creation.md)。
 
-> [AZURE.NOTE] 您需要以 windows 電腦的存取權:
+> [AZURE.NOTE] 您需要以 windows 電腦的存取權 ︰
 - 執行憑證驗證工具。
 - 建立 VHD 憑證送出的 VHD 共用存取簽章 URL。
 
@@ -47,9 +47,10 @@
 既然您檢閱的先決條件，並完成必要的工作，您可以繼續進行建立虛擬機器映像服務項目中所述 [虛擬機器映像發佈指南](marketplace-publishing-vm-image-creation.md)。
 
 ## 另請參閱
-- [使用者入門：如何將供應項目發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
+- [使用者入門：如何將優惠發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
 - [在 Azure Preview 入口網站中建立執行 Windows 的虛擬機器](../virtual-machines/virtual-machines-windows-tutorial/)
 
 
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
+
 

@@ -100,10 +100,10 @@ SendGrid 是 [cloud-based email service] ，能提供可靠
         Session mailSession = Session.getDefaultInstance(properties, auth);
 
 4.  建立郵件並指派 **至**, ，**從**, ，**主體** 和
-    內容值。 這會顯示 [How To: 建立電子郵件](#bkmk_HowToCreateEmail) 一節。
+    內容值。 這會顯示 [How To ︰ 建立電子郵件](#bkmk_HowToCreateEmail) 一節。
 5.  透過
     *javax.mail.Transport* 物件。 此
-    顯示在 [How To: 傳送電子郵件] [如何: 傳送電子郵件]
+    顯示在 [How To ︰ 傳送電子郵件] [如何 ︰ 傳送電子郵件]
     一節中。
 
 ## 如何：建立電子郵件
@@ -198,7 +198,7 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
 某些電子郵件屬性將會覆寫使用 **設定*屬性** * 或
 附加使用 **新增*屬性** *。
 
-例如，若要指定 **ReplyTo** 地址，使用下列命令:
+例如，若要指定 **ReplyTo** 地址，使用下列命令 ︰
 
     InternetAddress addresses[] = 
         { new InternetAddress("john@contoso.com"),
@@ -206,7 +206,7 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
     
     message.setReplyTo(addresses);
 
-若要新增 **副本** 收件者，使用下列命令:
+若要新增 **副本** 收件者，使用下列命令 ︰
 
     message.addRecipient(Message.RecipientType.CC, new 
     InternetAddress("john@contoso.com"));
@@ -222,10 +222,10 @@ SendGrid 功能。 如需完整的
 了解 SendGrid 電子郵件服務的基本概念後，請參考
 下列連結以取得更多資訊。
 
-* 示範如何在 Azure 部署中使用 SendGrid 的範例: [如何在 Azure 部署中使用 SendGrid 透過 Java 傳送電子郵件](store-sendgrid-java-how-to-send-email-example.md)
+* 示範如何在 Azure 部署中使用 SendGrid 的範例 ︰ [如何在 Azure 部署中使用 SendGrid 透過 Java 傳送電子郵件](store-sendgrid-java-how-to-send-email-example.md)
 * SendGrid SDK Java: <https://sendgrid.com/docs/Code_Examples/java.html>
-* SendGrid API 文件: <https://sendgrid.com/docs/API_Reference/index.html>
-* Azure 客戶的 SendGrid 特別優惠: <https://sendgrid.com/windowsazure.html>
+* SendGrid API 文件 ︰ <https://sendgrid.com/docs/API_Reference/index.html>
+* Azure 客戶的 SendGrid 特別優惠 ︰ <https://sendgrid.com/windowsazure.html>
 
   [http://sendgrid.com]: https://sendgrid.com
   [http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html
@@ -237,4 +237,5 @@ SendGrid 功能。 如需完整的
   [http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
   [cloud-based email service]: https://sendgrid.com/email-solutions
   [transactional email delivery]: https://sendgrid.com/transactional-email
+
 

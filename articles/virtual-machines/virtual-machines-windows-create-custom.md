@@ -37,3 +37,4 @@ A *自訂* 虛擬機器是指您使用建立虛擬機器 **從組件庫** 選項
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
+

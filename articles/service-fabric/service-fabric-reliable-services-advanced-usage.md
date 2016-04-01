@@ -61,3 +61,4 @@ StatefulServiceBase 也會提供與 StatelessServiceBase 相同的四個生命�
 
 - [位置限制概觀](service-fabric-placement-constraint.md)
 
+

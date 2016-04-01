@@ -38,12 +38,12 @@
 
 當您建立自己的行動服務之後，就可以依照 Azure 傳統入口網站中簡單的快速入門，來建立新的 Windows Store 8.1 JavaScript 應用程式，以便連線到您的行動服務。
 
-1.  在 [Azure 傳統入口網站]，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
+1.  在 [Azure classic portal], ，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
 
 
 2. 在 [快速入門] 索引標籤中，按一下 [ **Windows** 下 **選擇平台** 展開 **建立新的 Windows 市集應用程式**。
 
-3. 如果您尚未這樣做，請下載並安裝在您本機電腦或虛擬機器上的 [Visual Studio 2013] [Visual Studio 2013 Express for Windows]。
+3. 如果您尚未這樣做，請下載並安裝 [Visual Studio 2013][Visual Studio 2013 Express for Windows] 在您本機電腦或虛擬機器。
 
 4. 按一下 [ **Create TodoItem table** 來建立儲存應用程式資料的資料表。
 
@@ -65,7 +65,7 @@
 
 4. (選用) 再執行一次 app，並注意，從先前步驟中儲存的資料，會在應用程式啟動後從行動服務載入。
  
-4. 回到 [Azure 傳統入口網站]，按一下 [ **資料** 標籤，然後按一下 **TodoItems** 資料表。
+4. 回到 [Azure classic portal], ，按一下 [ **資料** 標籤，然後按一下 **TodoItems** 資料表。
 
     如此可讓您瀏覽由應用程式插入資料表中的資料。
 
@@ -88,4 +88,5 @@
 [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure classic portal]: https://manage.windowsazure.com/
+
 

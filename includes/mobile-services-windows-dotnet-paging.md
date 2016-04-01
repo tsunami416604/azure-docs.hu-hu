@@ -6,7 +6,7 @@
 
 3. 重複前述步驟至少三次，以在 TodoItem 資料表中儲存三個以上的項目。 
 
-2. 在 MainPage.xaml.cs 檔案中取代 **RefreshTodoItems** 方法取代下列程式碼:
+2. 在 MainPage.xaml.cs 檔案中取代 **RefreshTodoItems** 方法取代下列程式碼 ︰
 
         private async void RefreshTodoItems()
         {
@@ -24,11 +24,11 @@
 
     請注意，TodoItem 資料表中只有前三個結果會顯示出來。 
 
-4. (選用) 使用訊息檢查軟體 (例如瀏覽器開發人員工具或 Fiddler) 檢視傳送至行動服務之要求的 URI。 
+4. （選擇性）檢視傳送至行動服務使用訊息檢查軟體，例如瀏覽器開發人員工具的要求的 URI 或 [Fiddler]。 
 
     請注意，`Take(3)` 方法在查詢 URI 中會轉譯成查詢選項 `$top=3`。
 
-5. 更新 **RefreshTodoItems** 方法一次以下列程式碼:
+5. 更新 **RefreshTodoItems** 方法一次以下列程式碼 ︰
             
         private async void RefreshTodoItems()
         {
@@ -52,3 +52,4 @@
 
 <!-- URLs -->
 [Fiddler]: http://go.microsoft.com/fwlink/?LinkID=262412
+

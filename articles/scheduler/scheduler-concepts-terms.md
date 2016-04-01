@@ -34,8 +34,8 @@
 
 |功能|描述和 URI 位址|
 |---|---|
-|**雲端服務管理**|GET、PUT 和 DELETE 支援建立和修改雲端服務<p>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}`</p>|
-|**工作集合管理**|GET、PUT 和 DELETE 支援建立和修改工作集合及其內含的工作。 工作集合是工作的容器，並對應至配額和共用設定。 稍後所述的配額範例為最大工作數目和最小週期間隔。 <p>PUT 和 DELETE：`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/jobcollections/{jobCollectionName}`</p><p>GET：`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}`</p>
+|**雲端服務管理**|GET、 PUT 和 DELETE 支援建立和修改雲端服務 <p>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}`</p>|
+|**工作集合管理**|GET、PUT 和 DELETE 支援建立和修改工作集合及其內含的工作。 工作集合是工作的容器，並對應至配額和共用設定。 稍後所述的配額範例為最大工作數目和最小週期間隔。 <p>PUT 和 DELETE: `https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/jobcollections/{jobCollectionName}`</p><p>取得 ︰ `https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}`</p>
 |**工作管理**|GET、PUT、POST、PATCH 和 DELETE 支援建立和修改雲端服務。 所有工作必須都屬於的工作集合已經存在，因此沒有隱含的建立。 <p>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}/jobs/{jobId}`</p>|
 |**工作歷程記錄管理**|GET 支援擷取 60 天的工作執行歷程記錄，例如工作經歷時間和工作執行結果。 加入查詢字串參數支援的狀態和狀態為基礎的篩選。 <P>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}/jobs/{jobId}/history`</p>|
 
@@ -183,7 +183,7 @@
 
 如果排程器工作失敗，則可以指定重試原則，以判斷是否及如何重試動作。 這取決於 **retryType** 物件 — 設為 **無** 如果沒有重試原則，如上所示。 將它設定為 **固定** 如果重試原則。
 
-若要設定重試原則，可指定兩個額外的設定: 重試間隔 (**retryInterval**) 和重試次數 (**retryCount**)。
+若要設定重試原則，可指定兩個額外的設定 ︰ 重試間隔 (**retryInterval**) 和重試次數 (**retryCount**)。
 
 重試間隔，以指定 **retryInterval** 物件，會重試的間隔。 其預設值為 1 分鐘、最小值為 1 分鐘，而最大值為 18 個月。 它是以 ISO 8601 格式定義。 同樣地，使用指定的重試次數值 **retryCount** 物件; 它是在嘗試重試的次數。 其預設值為 5，和最大值是 20\。 同時 **retryInterval** 和 **retryCount** 是選擇性的。 如果會指定成為其預設值 **retryType** 設為 **固定** 和明確指定任何值。
 
@@ -206,4 +206,5 @@
  [Azure 排程器限制、預設值和錯誤碼](scheduler-limits-defaults-errors.md)
 
  [Azure 排程器輸出驗證](scheduler-outbound-authentication.md)
+
 

@@ -21,7 +21,7 @@
 Azure Active Directory 有三種版本：免費、基本和進階。 免費版本隨附於 Azure 或 Office 365 訂用帳戶。 基本和進階版本都是透過 [Microsoft Enterprise 合約](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) 或 [開啟大量授權](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) 程式。 Azure 和 Office 365 訂閱者也可以線上購買 Active Directory Premium。 [在這裡登入](https://portal.office.com/Commerce/Catalog.aspx) 購買。
 
 > [AZURE.NOTE]
-Azure Active Directory Premium 和 Basic 版本適用於使用全球 Azure Active Directory 執行個體的中國客戶。 由 21Vianet 在中國提供的 Microsoft Azure 服務目前不支援 Azure Active Directory Premium 和 Basic 版本。 如需詳細資訊，與我們連絡 [Azure Active Directory 論壇](http://feedback.azure.com/forums/169401-azure-active-directory)。
+Azure Active Directory Premium 和 Basic 版本適用於使用 Azure Active Directory 全球執行個體的中國客戶。 由 21Vianet 在中國提供的 Microsoft Azure 服務目前不支援 Azure Active Directory Premium 和 Basic 版本。 如需詳細資訊，與我們連絡 [Azure Active Directory 論壇](http://feedback.azure.com/forums/169401-azure-active-directory)。
 
 Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite**。 Enterprise Mobility Suite 是一個符合成本效益的方式，可供組織根據單一授權方案來搭配使用 Microsoft Intune、Azure 版權管理和 Active Directory Premium 服務。 如需詳細資訊，請參閱 [Enterprise Mobility Suite](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) 網站。
 
@@ -49,7 +49,7 @@ Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite**。 Ent
 
 ## 步驟 3：啟用 Azure Active Directory 存取
 
-一旦授權佈建至您的目錄後，您將會收到一封歡迎使用電子郵件 (請見下文)，確認您已經可以開始管理 Azure Active Directory Premium 或 Enterprise Mobility Suite 的授權和功能。 如果您之前用過 Microsoft Azure，您可以跳至 http://manage.windowsazure.com 以指派新的授權 (如需進一步的指示，請參閱下面的步驟 4)。 如果您不熟悉 Microsoft azure，請選取電子郵件上的 [登入] 連結，或移至 [存取 Azure Active Directory 啟用頁面](https://account.windowsazure.com/signup?offer=MS-AZR-0110P) 會引導您完成一系列的步驟，以協助您透過 Azure 管理入口網站存取您的目錄。
+一旦授權佈建至您的目錄後，您將會收到一封歡迎使用電子郵件 (請見下文)，確認您已經可以開始管理 Azure Active Directory Premium 或 Enterprise Mobility Suite 的授權和功能。 如果您之前用過 Microsoft Azure，您可以跳至 http://manage.windowsazure.com 以指派新的授權 （如需進一步的指示，請參閱下面的步驟 4）。 如果您不熟悉 Microsoft azure，請選取電子郵件上的 [登入] 連結，或移至 [存取 Azure Active Directory 啟用頁面](https://account.windowsazure.com/signup?offer=MS-AZR-0110P) 會引導您完成一系列的步驟，以協助您透過 Azure 管理入口網站存取您的目錄。
 
 ![][4]
 
@@ -103,7 +103,7 @@ Azure Active Directory Premium 也包含在 **Enterprise Mobility Suite**。 Ent
 
 Microsoft 雲端服務的服務和功能可用性會依國家或地區而有所不同。 服務 (例如網路電話，VoIP) 有可能在一個國家或地區可以使用，但在另一個國家或地區卻無法使用。 基於某些國家或地區的法律問題，服務中的功能可能會受到限制。 若要查看服務或功能在使用上有無限制，請到服務授權限制網站並尋找您的國家或地區。
 
-## 接下來
+## 後續步驟
 
 - [將公司商標新增至登入和存取面板頁面](active-directory-add-company-branding.md)
 - [檢視存取和使用情況報告](active-directory-view-access-usage-reports.md)
@@ -121,4 +121,5 @@ Microsoft 雲端服務的服務和功能可用性會依國家或地區而有所�
 [10]: ./media/active-directory-get-started-premium/contosolicenseplan.png
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
+
 

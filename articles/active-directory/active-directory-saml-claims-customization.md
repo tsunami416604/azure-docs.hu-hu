@@ -28,11 +28,11 @@
 
 ![][1]
 
-有兩個可能的原因，您可能需要編輯 SAML 權杖中發出的宣告:
+有兩個可能的原因，您可能需要編輯 SAML 權杖中發出的宣告 ︰
 已寫入 • 應用程式需要一組不同的宣告 Uri 或宣告的值 
-已將 •Your 應用程式部署需要 NameIdentifier 宣告，是儲存在 Azure Active Directory 中的使用者名稱 (也稱為使用者主體名稱) 以外的方式。 
+已將 •Your 應用程式部署需要 NameIdentifier 宣告，是儲存在 Azure Active Directory 中的使用者名稱 （也稱為使用者主體名稱） 以外的方式。 
 
-您可以編輯任一個預設的宣告值，方法是選取每當您的滑鼠游標移到 SAML 權杖屬性表格的其中一個資料列上方時會顯示於右側的鉛筆形狀圖示。 您也可以移除使用 (非 NameIdentifier) 宣告 **X** 圖示，並加入新的宣告使用 **加入使用者屬性** ] 按鈕。
+您可以編輯任一個預設的宣告值，方法是選取每當您的滑鼠游標移到 SAML 權杖屬性表格的其中一個資料列上方時會顯示於右側的鉛筆形狀圖示。 您也可以移除使用 （非 NameIdentifier) 宣告 **X** 圖示，並加入新的宣告使用 **加入使用者屬性** ] 按鈕。
 
 ##編輯 NameIdentifier 宣告
 
@@ -52,11 +52,11 @@
 
 ![][4]
 
-比方說，如果您需要傳送做為宣告其組織內的使用者所屬的部門 (例如銷售)，則您可以輸入任何宣告值是預期應用程式，然後選取 **user.department** 做為值。
+比方說，如果您需要傳送做為宣告其組織內的使用者所屬的部門 （例如銷售），則您可以輸入任何宣告值是預期應用程式，然後選取 **user.department** 做為值。
 
 如果指定的使用者沒有針對選取的屬性儲存的值，則該宣告不會發出在權杖中。
 
-**注意:**  **user.onpremisesecurityidentifier** 和 **user.onpremisesamaccountname** 同步處理使用者資料從內部 Active Directory 使用 AAD Connect 工具的最新的預覽時，才支援。 您可以在下面的連結下載 Connect 工具預覽版：  
+**注意 ︰**  **user.onpremisesecurityidentifier** 和 **user.onpremisesamaccountname** 同步處理使用者資料從內部 Active Directory 使用 AAD Connect 工具的最新的預覽時，才支援。 您可以在下面的連結下載 Connect 工具預覽版：  
 
 http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=53949
     
@@ -65,4 +65,5 @@ http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=
 [2]: ./media/active-directory-saml-claims-customization/claimscustomization2.png
 [3]: ./media/active-directory-saml-claims-customization/claimscustomization3.png
 [4]: ./media/active-directory-saml-claims-customization/claimscustomization4.png
+
 

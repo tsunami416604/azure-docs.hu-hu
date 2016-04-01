@@ -36,7 +36,7 @@ API 應用程式是以 Web 應用程式為基礎的事實，也表示您可以�
 
 [AZURE.INCLUDE [app-service-api-pub-web-create](../../includes/app-service-api-pub-web-create.md)]
 
-## <a id="deploy"></a>程式碼部署至新的 Azure API 應用程式
+## <a id="deploy"></a>將您的程式碼部署到新的 Azure API 應用程式
 
 您可以使用相同 **發行 Web** 精靈，將您的程式碼部署到新的 API 應用程式。
 
@@ -127,5 +127,6 @@ API 應用程式是以 Web 應用程式為基礎的事實，也表示您可以�
 
 API 應用程式為 Web 應用程式，具有裝載 API 之額外功能，這表示您可以使用任何適用於 Web 應用程式的部署方法。 如需 web 應用程式的部署選項的詳細資訊，請參閱 [部署 web 應用程式在 Azure App Service 中的](../app-service-web/web-sites-deploy.md)。
 
-API 應用程式功能的相關資訊，請參閱 [什麼是 API 應用程式?](app-service-api-apps-why-best-platform.md)。
+API 應用程式功能的相關資訊，請參閱 [什麼是 API 應用程式？](app-service-api-apps-why-best-platform.md)。
+
 

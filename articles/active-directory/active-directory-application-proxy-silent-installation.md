@@ -23,7 +23,7 @@
 ## 啟用存取
 應用程式 Proxy 的運作方式是透過在網路內部安裝一個稱為連接器的精簡型 Windows Server 服務。 應用程式 Proxy 連接器必須使用全域系統管理員和密碼向 Azure AD 目錄註冊後才能運作。 通常，這是在連接器安裝期間於一個快顯對話方塊中輸入的。 但是，您可以使用 Windows PowerShell 來建立認證物件以輸入您的註冊資訊，或者您可以建立自己的語彙基元並使用它來輸入註冊資訊。
 
-## 步驟 1: 安裝但不註冊連接器
+## 步驟 1 ︰ 安裝但不註冊連接器
 
 
 下列是安裝連接器但不註冊連接器的方式：
@@ -51,7 +51,7 @@
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
 
-2. 移至 **C:\Program Files\Microsoft AAD 應用程式 Proxy 連接器** 和執行指令碼使用 PowerShell 認證物件所建立: $cred 其中是您所建立的 PowerShell 認證物件的名稱:
+2. 移至 **C:\Program Files\Microsoft AAD 應用程式 Proxy 連接器** 和執行指令碼使用 PowerShell 認證物件所建立 ︰ $cred 其中是您所建立的 PowerShell 認證物件的名稱 ︰
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
@@ -118,7 +118,7 @@
 
 
 
-2. 一旦建立 SecureString，使用的語彙基元的語彙基元: <br>
+2. 一旦建立 SecureString，使用的語彙基元的語彙基元 ︰ <br>
 `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 3. 執行下列 Windows PowerShell 命令，其中 SecureToken 是您先前建立的語彙基元的名稱，而 tenantID 是租用戶的 GUID: <br>
 `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
@@ -143,4 +143,5 @@
 ## 其他資源
 * [以組織方式註冊 Azure](sign-up-organization.md)
 * [Azure 身分識別](fundamentals-identity.md)
+
 

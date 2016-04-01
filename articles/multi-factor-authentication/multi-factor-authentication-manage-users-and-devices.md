@@ -40,12 +40,12 @@
 
 <ol>
 <li>登入 Azure 管理入口網站。</li>
-<li>在左側，按一下 [Active Directory。</li>
-<li>目錄底下，按一下您想要再次提供連絡方法需要使用者的目錄。</li>
-<li>在頂端，按一下 [使用者]。</li>
-<li>在頁面底部，按一下 [管理 Multi-factor auth]。 這會開啟 Multi-Factor Authentication 頁面。
+<li>在左側按一下 [Active Directory]。</li>
+<li>在 [目錄] 下方，針對欲要求再次提供連絡方法的使用者按一下目錄。</li>
+<li>在頂端按一下 [使用者]。</li>
+<li>在頁面底部，按一下 [管理 Multi-Factor Auth]。 這會開啟 Multi-Factor Authentication 頁面。
 <li>尋找要管理的使用者，並在名稱旁的方塊中打勾。 您可能需要在頂端變更檢視。</li>
-<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下該</li> 
+<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下此按鈕。</li> 
 <li>勾選 **要求選定的使用者再次提供連絡方法**。</li>
 
 ![提供連絡方法](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
@@ -61,12 +61,12 @@
 
 <ol>
 <li>登入 Azure 管理入口網站。</li>
-<li>在左側，按一下 [Active Directory。</li>
-<li>目錄底下，按一下您想要刪除應用程式密碼 for...in 使用者的目錄</li>
-<li>在頂端，按一下 [使用者]。</li>
-<li>在頁面底部，按一下 [管理 Multi-factor auth]。 這會開啟 Multi-Factor Authentication 頁面。
+<li>在左側按一下 [Active Directory]。</li>
+<li>在 [目錄] 下方，針對要刪除應用程式密碼的使用者按一下目錄。</li>
+<li>在頂端按一下 [使用者]。</li>
+<li>在頁面底部，按一下 [管理 Multi-Factor Auth]。 這會開啟 Multi-Factor Authentication 頁面。
 <li>尋找要管理的使用者，並在名稱旁的方塊中打勾。 您可能需要在頂端變更檢視。</li>
-<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下該</li> 
+<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下此按鈕。</li> 
 <li>勾選 **刪除所選使用者產生的所有現有的應用程式密碼**。</li>
 ![Delete app passwords](./media/multi-factor-authentication-manage-users-and-devices/deleteapppasswords.png)
 <li>按一下 [儲存]。</li>
@@ -84,16 +84,17 @@
 
 <ol>
 <li>登入 Azure 管理入口網站。</li>
-<li>在左側，按一下 [Active Directory。</li>
-<li>目錄底下，按一下您想要還原 mfa 使用者的目錄。</li>
-<li>在頂端，按一下 [使用者]。</li>
-<li>在頁面底部，按一下 [管理 Multi-factor auth]。 這會開啟 Multi-Factor Authentication 頁面。
+<li>在左側按一下 [Active Directory]。</li>
+<li>在 [目錄] 下方，針對要還原 MFA 的使用者按一下目錄。</li>
+<li>在頂端按一下 [使用者]。</li>
+<li>在頁面底部，按一下 [管理 Multi-Factor Auth]。 這會開啟 Multi-Factor Authentication 頁面。
 <li>尋找要管理的使用者，並在名稱旁的方塊中打勾。 您可能需要在頂端變更檢視。</li>
-<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下該</li> 
-<li>在所有已暫停的裝置上還原多重要素驗證打勾。</li>
+<li>這會顯示 **管理使用者設定** 右邊的連結。 按一下此按鈕。</li> 
+<li>勾選所有暫停之裝置上還原多重要素驗證。</li>
 ![Delete app passwords](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
 <li>按一下 [儲存]。</li>
 <li>按一下 [關閉]。</li>
+
 
 
 

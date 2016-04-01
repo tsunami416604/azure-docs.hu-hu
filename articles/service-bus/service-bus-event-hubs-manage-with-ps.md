@@ -67,7 +67,7 @@ catch [System.Exception]
 
 ## 佈建服務匯流排命名空間
 
-當使用服務匯流排命名空間，有兩個指令程式，而不是.NET SDK，您可以使用: [Get-AzureSBNamespace] 和 [New-AzureSBNamespace]。
+當使用服務匯流排命名空間，有兩個指令程式，而不是.NET SDK，您可以使用 ︰ [Get-AzureSBNamespace] 和 [New-AzureSBNamespace]。
 
 這個範例會在指令碼中建立幾個區域變數：`$Namespace` 和 `$Location`。
 
@@ -276,4 +276,5 @@ catch [System.Exception]
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
 [.NET API for Service Bus]: https://msdn.microsoft.com/en-us/library/azure/mt419900.aspx
 [Install and configure Azure PowerShell]: ../install-configure-powershell.md
+
 

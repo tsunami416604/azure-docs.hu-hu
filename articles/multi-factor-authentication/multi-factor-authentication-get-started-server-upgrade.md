@@ -38,7 +38,7 @@
 
 
 
-<li>如果已安裝 Mobile App Web 服務:
+<li>如果已安裝 Mobile App Web 服務 ︰
 <ol>
 <li>請移至安裝資料夾，並將備份 web.config 檔案。 預設安裝位置是 C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService。</li>
 <li>解除安裝 Mobile App Web 服務，透過 Windows 程式和功能。</li></ol>
@@ -55,7 +55,7 @@
 
 <li>如果使用者入口網站之前已安裝在 PhoneFactor Agent Server 上，安裝新多因素驗證使用者入口網站透過 Multi-factor Authentication Server 使用者介面。 請注意，預設虛擬目錄名稱現在是 "MultiFactorAuth"，而非 "PhoneFactor"。 如果您想要使用先前的名稱，必須在安裝期間變更虛擬目錄的名稱。 否則，如果您允許安裝使用新預設名稱，應該要在 Multi-Factor Authentication Server 中按一下 [使用者入口網站] 圖示，然後更新 [設定] 索引標籤中的使用者入口網站 URL。 
 
-<li>如果使用者入口網站和/或 Mobile App Web 服務之前已安裝在 PhoneFactor Agent 不同的伺服器上:
+<li>如果使用者入口網站和/或 Mobile App Web 服務之前已安裝在 PhoneFactor Agent 不同的伺服器上 ︰
 <ol>
 <li>移至安裝位置 (例如 C:\Program Files\PhoneFactor)，並將適當的安裝到其他伺服器。 使用者入口網站和 Mobile App Web 服務備有 32 位元和 64 位元安裝程式。 它們分別稱為 MultiFactorAuthenticationUserPortalSetupXX.msi 和 MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi 分別。</li>
 <li>若要安裝使用者入口網站網頁伺服器上，開啟以系統管理員命令提示字元並執行 MultiFactorAuthenticationUserPortalSetupXX.msi。 請注意，預設虛擬目錄名稱現在是 "MultiFactorAuth"，而非 "PhoneFactor"。 如果您想要使用先前的名稱，必須在安裝期間變更虛擬目錄的名稱。 否則，如果您允許安裝使用新預設名稱，應該要在 Multi-Factor Authentication Server 中按一下 [使用者入口網站] 圖示，然後更新 [設定] 索引標籤中的使用者入口網站 URL。 現有的使用者必須瞭解新的 URL。</li>
@@ -68,3 +68,4 @@
 
 
  
+

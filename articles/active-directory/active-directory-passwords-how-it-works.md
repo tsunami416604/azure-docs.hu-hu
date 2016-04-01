@@ -49,7 +49,7 @@ Azure Active Directory 中的密碼管理是由以下所述的數個邏輯元件
 - 其他系統管理員重設自己的密碼時，啟用電子郵件通知給系統管理員 (位於 **通知** 區段 [Azure 管理入口網站](https://manage.windowsazure.com)
 - 使用者密碼重設入口網站和租用戶商標自訂功能的使用密碼重設的電子郵件與您組織的標誌和名稱 (位於 **目錄內容** 區段 [Azure 管理入口網站](https://manage.windowsazure.com)
 
-若要深入了解您組織中設定密碼管理，請參閱 [開始使用: Azure AD 密碼管理](active-directory-passwords-getting-started.md)。
+若要深入了解您組織中設定密碼管理，請參閱 [開始使用 ︰ Azure AD 密碼管理](active-directory-passwords-getting-started.md)。
 
 ##使用者註冊入口網站
 使用者可以使用密碼重設之前，必須使用正確的驗證資料更新其雲端使用者帳戶，以確保他們可以通過由他們的系統管理員定義的適當數目密碼重設挑戰。  系統管理員也可以代表使用者定義此驗證資訊，方法是使用 Azure 或 Office Web 入口網站、DirSync / Azure AD Connect 或 Windows PowerShell。
@@ -58,10 +58,10 @@ Azure Active Directory 中的密碼管理是由以下所述的數個邏輯元件
 
   ![][001]
 
-如需詳細資訊，請參閱 [開始使用: Azure AD 密碼管理](active-directory-passwords-getting-started.md) 和 [最佳作法: Azure AD 密碼管理](active-directory-passwords-best-practices.md)。 
+如需詳細資訊，請參閱 [開始使用 ︰ Azure AD 密碼管理](active-directory-passwords-getting-started.md) 和 [最佳作法 ︰ Azure AD 密碼管理](active-directory-passwords-best-practices.md)。 
 
 ##使用者密碼重設入口網站
-一旦您啟用自助式密碼重設、 設定組織的自助式密碼重設原則，並確保您的使用者有適當的連絡資料目錄中，您的組織中的使用者將能夠重設自己的密碼會自動從任何網頁上使用工作或學校帳戶進行登入 (例如 [portal.microsoftonline.com](https://portal.microsoftonline.com))。 在這類頁面中，使用者會看到 **無法存取您的帳戶?** 連結。 
+一旦您啟用自助式密碼重設、 設定組織的自助式密碼重設原則，並確保您的使用者有適當的連絡資料目錄中，您的組織中的使用者將能夠重設自己的密碼會自動從任何網頁上使用工作或學校帳戶進行登入 (例如 [portal.microsoftonline.com](https://portal.microsoftonline.com))。 在這類頁面中，使用者會看到 **無法存取您的帳戶嗎？** 連結。 
 
   ![][002]
 
@@ -69,7 +69,7 @@ Azure Active Directory 中的密碼管理是由以下所述的數個邏輯元件
 
   ![][003]
 
-若要深入了解有關使用者如何重設自己的密碼，請參閱 [開始使用: Azure AD 密碼管理](active-directory-passwords-getting-started.md)。
+若要深入了解有關使用者如何重設自己的密碼，請參閱 [開始使用 ︰ Azure AD 密碼管理](active-directory-passwords-getting-started.md)。
 
 ##使用者密碼變更入口網站
 如果使用者想要變更自己的密碼，也可以隨時使用密碼變更入口網站來完成。  使用者可以透過存取面板設定檔頁面，或按一下 Office 365 應用程式中的 [變更密碼] 連結，來存取密碼變更入口網站。  在其密碼過期的案例中，使用者也會在登入時被系統要求自動變更它們。 
@@ -80,21 +80,21 @@ Azure Active Directory 中的密碼管理是由以下所述的數個邏輯元件
 
   ![][005]
 
-若要深入了解使用者如何變更自己的內部部署 Active Directory 密碼，請參閱 [開始使用: Azure AD 密碼管理](active-directory-passwords-getting-started.md)。
+若要深入了解使用者如何變更自己的內部部署 Active Directory 密碼，請參閱 [開始使用 ︰ Azure AD 密碼管理](active-directory-passwords-getting-started.md)。
 
 ##密碼管理報告
-瀏覽至 **報表** 索引標籤，並查看下 **活動記錄檔** ] 區段中，您會看到兩個密碼管理報告: **密碼重設活動** 和 **密碼重設註冊活動**。  您可以使用這兩份報告，取得使用者在您的組織中註冊和使用密碼重設的檢視。 以下是這些報表中的外觀 [Azure 管理入口網站](https://manage.windowsazure.com):
+瀏覽至 **報表** 索引標籤，並查看下 **活動記錄檔** ] 區段中，您會看到兩個密碼管理報告 ︰ **密碼重設活動** 和 **密碼重設註冊活動**。  您可以使用這兩份報告，取得使用者在您的組織中註冊和使用密碼重設的檢視。 以下是這些報表中的外觀 [Azure 管理入口網站](https://manage.windowsazure.com):
 
   ![][006]
 
-如需詳細資訊，請參閱 [取得深入了解: Azure AD 密碼管理報告](active-directory-passwords-get-insights.md)。
+如需詳細資訊，請參閱 [取得深入了解 ︰ Azure AD 密碼管理報告](active-directory-passwords-get-insights.md)。
 
 ##Azure AD Connect 的密碼回寫元件
 如果您的組織中的使用者密碼源自於您的內部部署環境 (透過同盟或密碼同步處理)，您可以安裝最新版的 Azure AD Connect，以便直接從雲端更新這些密碼。  這表示當使用者忘記或想要修改其 AD 密碼時，它們可以直接從 Web 進行。  以下是 Azure AD Connect 安裝精靈中，密碼回寫的位置：
 
   ![][007]
 
-如需有關 Azure AD Connect 的詳細資訊，請參閱 [開始使用: Azure AD Connect](active-directory-aadconnect.md)。 如需密碼回寫的詳細資訊，請參閱 [開始使用: Azure AD 密碼管理](active-directory-passwords-getting-started.md)。
+如需有關 Azure AD Connect 的詳細資訊，請參閱 [開始使用 ︰ Azure AD Connect](active-directory-aadconnect.md)。 如需密碼回寫的詳細資訊，請參閱 [開始使用 ︰ Azure AD 密碼管理](active-directory-passwords-getting-started.md)。
 
 
 <br/>
@@ -122,4 +122,5 @@ Azure Active Directory 中的密碼管理是由以下所述的數個邏輯元件
 [005]: ./media/active-directory-passwords-how-it-works/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-how-it-works/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-how-it-works/007.jpg "Image_007.jpg"
+
 

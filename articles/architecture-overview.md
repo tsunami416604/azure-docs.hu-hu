@@ -78,7 +78,7 @@ Microsoft 發佈一組的高層級 [架構藍圖](http://aka.ms/azblueprints) �
 
 ##3D 藍圖 Visio 範本
 
-3D 版本 [Microsoft 架構藍圖](http://aka.ms/azblueprints) 一開始所建立的非 Microsoft 工具。 新的 Visio 2013 (和更新版本) 範本隨附於 2015 年 8 月 5 日的 [Microsoft 架構認證課程分佈在 EDX.ORG](#microsoft-architecture-certification-course)。 
+3D 版本 [Microsoft 架構藍圖](http://aka.ms/azblueprints) 一開始所建立的非 Microsoft 工具。 新的 Visio 2013 （和更新版本） 範本隨附於 2015 年 8 月 5 日的 [Microsoft 架構認證課程分佈在 EDX.ORG](#microsoft-architecture-certification-course)。 
 
 此範本在課程外也可供使用。 
 
@@ -102,7 +102,7 @@ CnE 符號都為 Visio 和 PNG 格式。 集合中包含如何在 PowerPoint 中
 
 Microsoft Office 和相關的技術的其他符號都在 [Microsoft Office Visio 樣板](http://www.microsoft.com/en-us/download/details.aspx?id=35772), ，但是不適合架構圖表，但是 CnE 集是。   
 
-**意見反應:** 如果您已使用但是 CnE 符號，填寫簡短的 5 個問題 [調查](http://aka.ms/azuresymbolssurveyv2) 我們的電子郵件或 [CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com) 的特定問題和問題。 我們想要知道您的想法，包括正面意見回應，讓我們知道可以繼續投入時間。 
+**意見反應 ︰** 如果您已使用但是 CnE 符號，填寫簡短的 5 個問題 [調查](http://aka.ms/azuresymbolssurveyv2) 我們的電子郵件或 [CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com) 的特定問題和問題。 我們想要知道您的想法，包括正面意見回應，讓我們知道可以繼續投入時間。 
 
 ![雲端和企業符號/圖示集](./media/architecture-overview/CnESymbols.png)
 
@@ -112,4 +112,5 @@ Microsoft Office 和相關的技術的其他符號都在 [Microsoft Office Visio
 Microsoft 出版了數個與架構相關的海報/資訊圖。 其中包括 [建置真實世界雲端應用程式](http://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/) 和 [與雲端服務調整](http://azure.microsoft.com/documentation/infographics/cloud-services/) 。 
 
 ![Azure 架構資訊圖](./media/architecture-overview/AzureArchInfographicThumb.jpg)
+
 

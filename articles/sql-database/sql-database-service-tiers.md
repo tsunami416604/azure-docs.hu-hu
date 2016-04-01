@@ -46,7 +46,7 @@
 >[AZURE.NOTE] 此服務層資料表中的所有資料列的詳細說明，請參閱 [服務層功能和限制](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)。
 
 ### eDTU 中的彈性資料庫集區服務層和效能
-除了建立及調整單一資料庫，您也可以管理多個資料庫內的 [彈性資料庫集區](sql-database-elastic-pool.md)。 彈性資料庫集區中的所有資料庫會共用一組通用資源。 測量的效能特性 *彈性資料庫交易單位* (Edtu)。 當使用單一資料庫時，彈性資料庫集區有三種服務層: **基本**, ，**標準**, ，和 **高階**。 彈性資料庫的這三個服務層仍會定義整體效能限制與多項功能。  
+除了建立及調整單一資料庫，您也可以管理多個資料庫內的 [彈性資料庫集區](sql-database-elastic-pool.md)。 彈性資料庫集區中的所有資料庫會共用一組通用資源。 測量的效能特性 *彈性資料庫交易單位* (Edtu)。 當使用單一資料庫時，彈性資料庫集區有三種服務層 ︰ **基本**, ，**標準**, ，和 **高階**。 彈性資料庫的這三個服務層仍會定義整體效能限制與多項功能。  
 
 彈性資料庫集區可讓這些資料庫共用和取用 DTU 資源，無須指派特定效能層級給集區中的資料庫。 例如，標準集區中的單一資料庫可從使用 0 eDTU 到最大資料庫 eDTU (由服務層定義的 100 eDTU，或是您設定的自訂數字)。 如此可讓多個具有不同工作負載的資料庫有效使用整個集區中的可用 eDTU。 
 
@@ -84,7 +84,7 @@
 
 效能度量也可協助您判斷您是否能夠降級至較低的效能層級。 假設您使用標準 S2 資料庫，且所有效能度量皆顯示在指定時間內，資料庫平均使用率沒有超過 10%。 則該資料庫可能在標準 S1 中會運作得不錯。 不過，在您決定將資料庫移至較低效能層級前，請先注意暴增或大幅變動的工作負載。 
 
-在入口網站中公開的相同度量也是可透過系統檢視表: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 中的邏輯 **主要** 您伺服器的資料庫和 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 使用者資料庫中 (**sys.dm_db_resource_stats** 會在每個基本、 標準和高階的使用者資料庫中建立。 Web 和 Business Edition 資料庫會傳回空的結果集)。 使用 **sys.resource_stats** 如果您需要一段較長時間監視較不精細的資料。 使用 **sys.dm_db_resource_stats** 如果您需要監視較精細的資料較小的時間範圍內。 如需詳細資訊，請參閱 [Azure SQL Database 效能指引](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats)。
+在入口網站中公開的相同度量也是可透過系統檢視表 ︰ [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 中的邏輯 **主要** 您伺服器的資料庫和 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 使用者資料庫中 (**sys.dm_db_resource_stats** 會在每個基本、 標準和高階的使用者資料庫中建立。 Web 和 Business Edition 資料庫會傳回空的結果集)。 使用 **sys.resource_stats** 如果您需要一段較長時間監視較不精細的資料。 使用 **sys.dm_db_resource_stats** 如果您需要監視較精細的資料較小的時間範圍內。 如需詳細資訊，請參閱 [Azure SQL Database 效能指引](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats)。
 
 若為彈性資料庫集區，您可以監視其中的個別資料庫，技巧如本節所述。 但您也可以監視集區整體。 如需資訊，請參閱 [監視和管理彈性資料庫集區](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool)。
 
@@ -93,6 +93,7 @@
 
 如果您有興趣管理多個資料庫，為群組，請考慮 [彈性資料庫集區](sql-database-elastic-pool-guidance.md) 隨著相關聯 [彈性資料庫集區的價格和效能考量](sql-database-elastic-pool-guidance.md)。
 
-既然您了解 SQL Database 層，親身 [免費試用版](http://azure.microsoft.com/pricing/free-trial/) ，並了解 [如何建立您的第一個 SQL database](sql-database-get-started.md)!
+既然您了解 SQL Database 層，親身 [免費試用版](http://azure.microsoft.com/pricing/free-trial/) ，並了解 [如何建立您的第一個 SQL database](sql-database-get-started.md)！
  
+
 

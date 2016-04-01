@@ -25,7 +25,7 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Azure 中控�
 
 > [AZURE.NOTE] 只有在 Windows 用戶端上，您可以使用 azure PowerShell。 如果您使用 Linux、 Unix 或 Mac OS X 用戶端，請參閱 [建立以 Linux 為基礎的 HDInsight 叢集使用 Azure CLI](hdinsight-hadoop-create-linux-cluster-azure-cli.md) 如需使用 Azure CLI 建立叢集。
 
-###先決條件
+###必要條件
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
@@ -127,3 +127,4 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Azure 中控�
 * [在 HDInsight 上開發適用於 Storm 的 Java 拓撲](hdinsight-storm-develop-java-topology.md)
 * [在 HDInsight 上的 Storm 中使用 Python 元件](hdinsight-storm-develop-python.md)
 * [在 HDInsight 上使用 Storm 部署和監視拓撲](hdinsight-storm-deploy-monitor-topology-linux.md)
+

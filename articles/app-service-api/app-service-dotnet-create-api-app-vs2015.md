@@ -26,7 +26,7 @@
 
 此教學課程假設您已了解如何使用 Visual Studio 中檔案和資料夾 **方案總管] 中**。 
 
-本教學課程使用目前發行的 ASP.NET Web API 版本。  如需如何建立 ASP.NET MVC 6 API 應用程式資訊，請參閱部落格文章: [https://alexanderzeitler.com/articles/Deploying-a-ASP-NET-MVC-6-API-as-Azure-API-App-in-Azure-App-Services/](https://alexanderzeitler.com/articles/Deploying-a-ASP-NET-MVC-6-API-as-Azure-API-App-in-Azure-App-Services/ "為 Azure API 應用程式在 Azure 應用程式服務中部署 ASP.NET MVC 6 API")。   
+本教學課程使用目前發行的 ASP.NET Web API 版本。  如需如何建立 ASP.NET MVC 6 API 應用程式資訊，請參閱部落格文章 ︰ [https://alexanderzeitler.com/articles/Deploying-a-ASP-NET-MVC-6-API-as-Azure-API-App-in-Azure-App-Services/](https://alexanderzeitler.com/articles/Deploying-a-ASP-NET-MVC-6-API-as-Azure-API-App-in-Azure-App-Services/ "為 Azure API 應用程式在 Azure 應用程式服務中部署 ASP.NET MVC 6 API")。   
 
 [AZURE.INCLUDE [install-sdk-2015-only](../../includes/install-sdk-2015-only.md)]
 
@@ -64,7 +64,7 @@ Visual Studio 2015 RC 還沒有 API 應用程式專案範本，所以若要建�
 
 API 應用程式的應用程式服務執行階段由 [Microsoft.Azure.AppService.ApiApps.Service](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/) NuGet 封裝，並且動態 [Swagger](http://swagger.io/ "官方 Swagger 資訊") 提供 API 中繼資料產生 [Swashbuckle](http://www.nuget.org/packages/Swashbuckle/) NuGet 封裝。 
 
-> **注意:** 當您安裝 Swashbuckle 封裝時，預設會啟用 API 測試頁。 如果您發佈 API 應用程式，並設定其存取層級為 **公用 (匿名)**, ，找到測試頁面 URL 的人可以使用它來呼叫您的 API。  您稍後將在此教學課程中使用測試頁面。
+> **注意 ︰** 當您安裝 Swashbuckle 封裝時，預設會啟用 API 測試頁。 如果您發佈 API 應用程式，並設定其存取層級為 **公用 （匿名）**, ，找到測試頁面 URL 的人可以使用它來呼叫您的 API。  您稍後將在此教學課程中使用測試頁面。
 
 1. 按一下 [ **工具 > NuGet 封裝管理員 > Package Manager Console**。
 
@@ -191,7 +191,7 @@ API 應用程式的應用程式服務執行階段由 [Microsoft.Azure.AppService
 
     * 在 **名稱** 輸入 ContactsList。
 
-    * 在 **App Service 方案** 按一下 **新建** 並輸入名稱，例如: **ContactsList**。
+    * 在 **App Service 方案** 按一下 **新建** 並輸入名稱，例如 ︰ **ContactsList**。
 
         如需 App Service 方案的詳細資訊，請參閱 [Azure App Service 方案深入概觀](azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 
@@ -199,7 +199,7 @@ API 應用程式的應用程式服務執行階段由 [Microsoft.Azure.AppService
 
         您可以使用已付費的定價層，但本教學課程不需要它。
 
-    * 在 **資源群組**, ，按一下 [ **新建** ，然後輸入名稱，例如: ContactsList。
+    * 在 **資源群組**, ，按一下 [ **新建** ，然後輸入名稱，例如 ︰ ContactsList。
 
         如需資源群組的詳細資訊，請參閱 [使用資源群組來管理您的 Azure 資源](resource-group-overview.md)。
 
@@ -211,13 +211,13 @@ API 應用程式的應用程式服務執行階段由 [Microsoft.Azure.AppService
 
         ![](./media/app-service-dotnet-create-api-app-vs2015/createapiapp2.png)
 
-2. 當 Azure 完成建立 API 應用程式中，將 API 應用程式的存取等級設 **公用 (匿名)**。
+2. 當 Azure 完成建立 API 應用程式中，將 API 應用程式的存取等級設 **公用 （匿名）**。
 
     * 按一下 [ **瀏覽 > 資源群組 > [您建立的資源群組] > [API 應用程式建立]**。
 
     * 按一下 [ **設定 > 應用程式設定**。
 
-    * 變更 **存取層級** 至 **公用 (匿名)**。
+    * 變更 **存取層級** 至 **公用 （匿名）**。
      
     * 按一下 [ **儲存**。
 
@@ -265,7 +265,7 @@ API 應用程式基本上是 Azure 提供其他功能作為 Web 服務功能的 
 
 在本節中，您瀏覽至入口網站，以檢視您剛剛所建立之 API 應用程式的 API 定義。
 
-1. 在 [Azure 預覽入口網站](https://portal.azure.com), ，瀏覽至 **API 應用程式** API 應用程式的刀鋒視窗: 按一下 **瀏覽 > 資源群組 > [您建立的資源群組] > [API 應用程式建立]**。
+1. 在 [Azure 預覽入口網站](https://portal.azure.com), ，瀏覽至 **API 應用程式** API 應用程式的刀鋒視窗 ︰ 按一下 **瀏覽 > 資源群組 > [您建立的資源群組] > [API 應用程式建立]**。
 
 4. 按一下 [ **API 定義**。 
 
@@ -302,4 +302,5 @@ API 應用程式基本上是 Azure 提供其他功能作為 Web 服務功能的 
 
 您現已使用 Visual Studio 2015 RC 建立及部署 API 應用程式。  如需 API 應用程式的相關文件，請參閱顯示於頁面左邊 (適用於寬瀏覽器視窗) 或頁面頂端 (適用於窄瀏覽器視窗) 的瀏覽窗格中的項目。 大部分 API 應用程式文件目前顯示 Visual Studio 2013，但其中許多內容適用於 VS 2015，因為 UI 類似，您所撰寫的程式碼相同，而且入口網站 UI 也相同。
  
+
 

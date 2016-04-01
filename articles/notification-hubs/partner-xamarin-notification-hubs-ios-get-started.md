@@ -37,7 +37,7 @@
 + [Xamarin.iOS]
 + [Azure 行動服務元件]
 
-   > [AZURE.NOTE] 基於推播通知組態需求，您必須部署和測試推播通知在 iOS 功能裝置 (iPhone 或 iPad) 而非在模擬器中。
+   > [AZURE.NOTE] 基於推播通知組態需求，您必須部署和測試推播通知在 iOS 功能裝置 （iPhone 或 iPad） 而非在模擬器中。
 
 完成本教學課程是 Xamarin.iOS app 所有其他通知中樞教學課程的必要條件。
 
@@ -80,7 +80,7 @@
 
 2. 新增 Azure 訊息元件的參考。 在 [方案] 檢視中，以滑鼠右鍵按一下 **元件** 專案的資料夾，然後選擇 **取得更多元件**。 搜尋 **Azure 訊息** 元件並將元件新增至您的專案。
 
-3. 在 **AppDelegate.cs**, ，新增下列 using 陳述式:
+3. 在 **AppDelegate.cs**, ，新增下列 using 陳述式 ︰
 
         using WindowsAzure.Messaging;
 
@@ -88,14 +88,14 @@
 
         private SBNotificationHub Hub { get; set; }
 
-5. 建立 **Constants.cs** 類別含有下列變數:
+5. 建立 **Constants.cs** 類別含有下列變數 ︰
 
         // Azure app-specific connection string and hub path
         public const string ConnectionString = "<Azure connection string>";
         public const string NotificationHubPath = "<Azure hub path>";
 
 
-6. 在 **AppDelegate.cs**, ，更新 **finishedlaunching ()** 以符合下列:
+6. 在 **AppDelegate.cs**, ，更新 **finishedlaunching （)** 以符合下列 ︰
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -178,7 +178,7 @@
             }
         }
 
-    > [AZURE.NOTE] 您可以選擇覆寫 **failedtoregisterforremotenotifications ()** 處理情況，例如沒有網路連線。
+    > [AZURE.NOTE] 您可以選擇覆寫 **failedtoregisterforremotenotifications （)** 處理情況，例如沒有網路連線。
 
 
 10. 在您的裝置上執行應用程式。
@@ -195,15 +195,15 @@
 
 在本教學課程中，為了簡單起見，我們只會在主控台應用程式 (而非後端服務) 中使用適用於通知中樞的 .NET SDK 傳送通知，示範如何測試您的用戶端應用程式。 我們建議 [使用通知中心來推播通知給使用者](notification-hubs-aspnet-backend-ios-notify-users.md) 教學課程的下一個步驟，從 ASP.NET 後端傳送通知。 不過，下列方法可用來傳送通知：
 
-* **REST 介面**: 您可以使用您建立任何後端平台上支援通知 [REST 介面](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)。
+* **REST 介面**︰ 您可以使用您建立任何後端平台上支援通知 [REST 介面](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)。
 
-* **Microsoft Azure 通知中樞 SDK**: 在 Nuget Package Manager for Visual Studio 中，執行 [Install-package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+* **Microsoft Azure 通知中樞 SDK**︰ 在 Nuget Package Manager for Visual Studio 中，執行 [Install-package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 * **Node.js** : [如何從 Node.js 使用通知中樞](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure 行動服務**: 如需如何從整合通知中心之 Azure 行動服務後端傳送通知的範例，請參閱 「 開始使用行動服務中的推播通知 」 ([.NET 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md))。
+* **Azure 行動服務**︰ 如需如何從整合通知中心之 Azure 行動服務後端傳送通知的範例，請參閱 「 開始使用行動服務中的推播通知 」 ([.NET 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 後端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md))。
 
-* **Java / PHP**: 如需如何使用 REST Api 傳送通知的範例，請參閱 < 如何從 Java/PHP 使用通知中樞 」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
+* **Java / PHP**︰ 如需如何使用 REST Api 傳送通知的範例，請參閱 < 如何從 Java/PHP 使用通知中樞 」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
 
 
 ####(選用) 從 .NET 主控台應用程式傳送通知。
@@ -218,11 +218,11 @@
 
     這會在 Visual Studio 中顯示 [封裝管理員主控台]。
 
-3. 在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令:
+3. 在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令 ︰
 
         Install-Package Microsoft.Azure.NotificationHubs
 
-    這會加入到使用 Azure 通知中心 SDK 參考 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification 中樞 NuGet 封裝</a>.
+    這會使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 封裝</a> 加入對 Azure 通知中樞 SDK 的參考。
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -254,7 +254,7 @@
 
 在本節中，我們將使用行動服務透過節點指令碼傳送通知。
 
-若要使用的行動服務來傳送通知，請遵循 [Get started with Mobile Services], ，然後:
+若要使用的行動服務來傳送通知，請遵循 [Get started with Mobile Services], ，然後 ︰
 
 1. 登入 [Azure Classic Portal], ，然後選取您的行動服務。
 
@@ -331,4 +331,5 @@
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
+
 

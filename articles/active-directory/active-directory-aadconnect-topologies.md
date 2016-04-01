@@ -38,7 +38,7 @@
 ## 單一樹系、單一 Azure AD 目錄
 ![SingleForestSingleDirectory](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-最常見的拓樸是單一樹系內部，以一或多個網域和單一 Azure AD 目錄 (也稱為 租用戶)。 Azure AD 驗證方法是使用密碼同步處理。 這是 Azure AD Connect 快速安裝所支援的拓撲。
+最常見的拓樸是單一樹系內部，以一或多個網域和單一 Azure AD 目錄 （也稱為 租用戶）。 Azure AD 驗證方法是使用密碼同步處理。 這是 Azure AD Connect 快速安裝所支援的拓撲。
 
 ### 單一樹系、多部同步處理伺服器連接到同一 Azure AD 目錄
 ![SingleForestFilteredUnsupported](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
@@ -54,7 +54,7 @@
 
 Azure AD Connect 精靈會提供如何合併使用者的數個選項，所以即使不同的樹系中顯示同一個使用者多次，該使用者將會只在 Azure AD 中顯示一次。 有一些常見的拓樸如下所述。 您使用安裝精靈中的自訂安裝路徑設定您擁有的拓撲，並在「唯一識別您的使用者」頁面上選取對應的選項。 只對使用者產生合併。 如果群組重複，這些群組不會和預設組態合併。
 
-下一節中討論常見的拓樸: [分割拓撲](#multiple-forests-separate-topologies), ，[完整網狀](#multiple-forests-full-mesh-with-optional-galsync), ，和 [帳戶資源](#multiple-forests-account-resource-forest)。
+下一節中討論常見的拓樸 ︰ [分割拓撲](#multiple-forests-separate-topologies), ，[完整網狀](#multiple-forests-full-mesh-with-optional-galsync), ，和 [帳戶資源](#multiple-forests-account-resource-forest)。
 
 在由 Azure AD Connect 同步處理所提供的預設組態中，有以下假設：
 1.  使用者只有一個啟用的帳戶，且此帳戶所在之樹系用於驗證使用者。 這是針對密碼同步處理和同盟；userPrincipalName 和 sourceAnchor/immutableID 將來自此樹系。
@@ -116,8 +116,8 @@ FSP 可在 ADDS 中用來代表安全性群組中來自其他樹系的成員。 
 
 | 工作負載 |  |
 | --------- | --------- |
-| Exchange Online | 如果有一個以上的 Exchange 組織內部部署 (也就是 Exchange 已部署至一個以上的樹系)，則您必須使用 Exchange 2013 SP1 或更新版本。 詳細資料可以在這裡找到: [具有多個 Active Directory 樹系混合式部署](https://technet.microsoft.com/en-us/library/jj873754.aspx) |
-| 商務用 Skype | 使用多個樹系內部部署時，只會支援帳戶資源樹系拓撲。 這裡可以找到支援的拓撲的詳細資料: [Skype for Business Server 2015 的環境需求](https://technet.microsoft.com/en-us/library/dn933910.aspx) |
+| Exchange Online | 如果有一個以上的 Exchange 組織內部部署 (也就是 Exchange 已部署至一個以上的樹系)，則您必須使用 Exchange 2013 SP1 或更新版本。 詳細資料可以在這裡找到 ︰ [具有多個 Active Directory 樹系混合式部署](https://technet.microsoft.com/en-us/library/jj873754.aspx) |
+| 商務用 Skype | 使用多個樹系內部部署時，只會支援帳戶資源樹系拓撲。 這裡可以找到支援的拓撲的詳細資料 ︰ [Skype for Business Server 2015 的環境需求](https://technet.microsoft.com/en-us/library/dn933910.aspx) |
 
 ## 預備伺服器
 ![StagingServer](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
@@ -177,4 +177,5 @@ Azure AD 目錄在設計上是隔離的。 它不支援將 Azure AD Connect 同�
 深入了解 [Azure AD Connect 同步處理](active-directory-aadconnectsync-whatis.md) 組態。
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
+
 

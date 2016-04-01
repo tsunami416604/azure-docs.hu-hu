@@ -59,7 +59,7 @@ Api 存在於 [app service 環境](powerapps-get-started-azure-portal.md)。 您
 2. 在此新分頁中選取 **連接使用者存取**。  在下列範例中， **混合式通道** 選取連接。 此時會開啟新分頁，而這是您在其中選取 **連接使用者存取**:  
 ![][2]
   
-3. 在 **連接使用者存取**, ，請選取 **新增**, ，然後選取要授與的權限:  
+3. 在 **連接使用者存取**, ，請選取 **新增**, ，然後選取要授與的權限 ︰  
 ![][3]
   
 4. 加入使用者或群組。 選取 **新增** 以儲存變更。
@@ -89,4 +89,5 @@ Api 存在於 [app service 環境](powerapps-get-started-azure-portal.md)。 您
 [2]: ./media/powerapps-manage-api-connection-user-access/connectionuseraccess.png
 [3]: ./media/powerapps-manage-api-connection-user-access/selectpermission.png
 [4]: ./media/powerapps-manage-api-connection-user-access/deleteapi.png
+
 

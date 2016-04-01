@@ -35,7 +35,7 @@ Engagement API 是由 `EngagementAgent` 類別提供。 此類別的執行個體
 
 ### `Session`和`Activity`
 
- *活動* 是通常與應用程式的某個畫面相關聯也就是說 *活動* 時開始，畫面會顯示，並在畫面關閉時停止: 使用整合 Engagement SDK 時，就以此 `EngagementViewController` 類別。
+ *活動* 是通常與應用程式的某個畫面相關聯也就是說 *活動* 時開始，畫面會顯示，並在畫面關閉時停止 ︰ 使用整合 Engagement SDK 時，就以此 `EngagementViewController` 類別。
 
 但是 *活動* 也可以控制以手動方式使用 Engagement API。 這樣可以將指定的畫面分隔為數個子部分，以取得關於此畫面使用方式的詳細資料 (例如，可了解此畫面內對話方塊的使用頻率與使用時間長度)。
 
@@ -51,7 +51,7 @@ Engagement API 是由 `EngagementAgent` 類別提供。 此類別的執行個體
 
             [[EngagementAgent shared] endActivity];
 
-> [AZURE.WARNING] 您應該 **永不** 呼叫此函式，除了如果您想要將應用程式分成數個工作階段的一次使用分割: 呼叫此函式會結束目前的工作階段，因此，後續呼叫 `startActivity()` 會啟動新的工作階段。 當您的應用程式關閉時，SDK 會自動呼叫此函數。
+> [AZURE.WARNING] 您應該 **永不** 呼叫此函式，除了如果您想要將應用程式分成數個工作階段的一次使用分割 ︰ 呼叫此函式會結束目前的工作階段，因此，後續呼叫 `startActivity()` 會啟動新的工作階段。 當您的應用程式關閉時，SDK 會自動呼叫此函數。
 
 ##報告事件
 
@@ -244,7 +244,7 @@ Engagement API 是由 `EngagementAgent` 類別提供。 此類別的執行個體
 
 #### 大小
 
-額外項目限制為 **1024年** 每次呼叫 (以 JSON 編碼之後由 Engagement 代理程式) 的字元。
+額外項目限制為 **1024年** 每次呼叫 （以 JSON 編碼之後由 Engagement 代理程式） 的字元。
 
 在上述範例中，傳送到伺服器的 JSON 會是 58 個字元：
 
@@ -277,9 +277,10 @@ Engagement API 是由 `EngagementAgent` 類別提供。 此類別的執行個體
 
 #### 大小
 
-應用程式資訊限於 **1024年** 每次呼叫 (以 JSON 編碼之後由 Engagement 代理程式) 的字元。
+應用程式資訊限於 **1024年** 每次呼叫 （以 JSON 編碼之後由 Engagement 代理程式） 的字元。
 
 在上述範例中，傳送到伺服器的 JSON 會是 44 個字元：
 
     {"birthdate":"1983-12-07","gender":"female"}
+
 

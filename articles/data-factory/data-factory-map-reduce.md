@@ -95,7 +95,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 您可以使用「HDInsight MapReduce 活動」，在 HDInsight 叢集上執行任何 MapReduce Jar 檔案。 在下列管線的範例 JSON 定義中，已設定讓「HDInsight 活動」執行 Mahout JAR 檔案。
 
 ## GitHub 上的範例
-您可以下載使用中的 HDInsight MapReduce 活動的範例: [GitHub 上的 Data Factory 範例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample)。  
+您可以下載使用中的 HDInsight MapReduce 活動的範例 ︰ [GitHub 上的 Data Factory 範例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample)。  
 
 ## 執行字數統計程式
 本範例中的管線會在 Azure HDInsight 叢集上執行字數統計 Map/Reduce 程式。   
@@ -163,7 +163,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 屬性 | 注意事項
 :-------- | :-----
 類型 | 類型必須設為 **HDInsightMapReduce**。 
-className | 類別名稱是: **wordcount**
+className | 類別名稱是 ︰ **wordcount**
 jarFilePath | 包含上述類別之 Jar 檔案的路徑。 如果您複製/貼上下列程式碼，請記得變更叢集的名稱。 
 jarLinkedService | 包含 Jar 檔案的 Azure 儲存體連結服務。 這是與 HDInsight 叢集相關聯的儲存體。 
 引數 | 字數統計程式會採用輸入和輸出兩個引數。 輸入檔為 davinci.txt 檔案。
@@ -220,3 +220,4 @@ linkedServiceName | 表示您先前建立的 HDInsight 連結服務。
 [Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Classic Portal]: http://portal.azure.com
  
+

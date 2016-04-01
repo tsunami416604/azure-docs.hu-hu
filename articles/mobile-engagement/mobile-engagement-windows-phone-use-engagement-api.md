@@ -34,7 +34,7 @@ Engagement API 是由 `EngagementAgent` 類別提供。 您可以透過 `Engagem
 
 ### `Session`和`Activity`
 
- *活動* 通常會相關聯的一頁的應用程式，也就是說 *活動* 時開始，頁面會顯示，並關閉頁面時停止: 使用整合 Engagement SDK 時，就以此 `EngagementPage` 類別。
+ *活動* 通常會相關聯的一頁的應用程式，也就是說 *活動* 時開始，頁面會顯示，並關閉頁面時停止 ︰ 使用整合 Engagement SDK 時，就以此 `EngagementPage` 類別。
 
 但是 *活動* 也可以控制以手動方式使用 Engagement API。 這樣可允許將指定的頁面分割成多個部分，以獲得有關該頁面使用方式的詳細資訊 (例如，對話方塊在此頁面的使用平率和使用時間)。
 
@@ -324,7 +324,7 @@ Engagement 也提供將傳送未處理的例外狀況之方法。 在 Silverligh
             
             EngagementAgent.Instance.SendEvent("Event", extras);
 
-> [AZURE.WARNING] 如果您將其他類型的物件，請確定已實作它們的 tostring () 方法，以傳回使用者可讀取的字串。
+> [AZURE.WARNING] 如果您將其他類型的物件，請確定已實作它們的 tostring （） 方法，以傳回使用者可讀取的字串。
 
 ### 限制
 
@@ -378,4 +378,5 @@ Engagement 也提供將傳送未處理的例外狀況之方法。 在 Silverligh
 
             {"subscription":"2013-12-07","premium":"true"}
  
+
 

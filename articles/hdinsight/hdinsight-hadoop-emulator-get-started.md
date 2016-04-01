@@ -20,7 +20,7 @@
 
 # 透過 HDInsight Emulator (Hadoop 沙箱) 開始使用 Hadoop 生態系統
 
-本教學課程協助您開始使用 Microsoft HDInsight Emulator for Azure (先前稱為 HDInsight Server Developer Preview) 中的 Hadoop 叢集。 HDInsight Emulator 提供 Hadoop 生態系統 Azure HDInsight 的相同元件。 如需詳細資訊，包括部署、 版本資訊，請參閱 [Azure HDInsight 是 Hadoop 的什麼版本?](hdinsight-component-versioning.md)。
+本教學課程協助您開始使用 Microsoft HDInsight Emulator for Azure (先前稱為 HDInsight Server Developer Preview) 中的 Hadoop 叢集。 HDInsight Emulator 提供 Hadoop 生態系統 Azure HDInsight 的相同元件。 如需詳細資訊，包括部署、 版本資訊，請參閱 [Azure HDInsight 是 Hadoop 的什麼版本？](hdinsight-component-versioning.md)。
 
 安裝模擬器後，請遵循字數統計的 MapReduce 教學課程，然後執行範例。
 
@@ -48,9 +48,9 @@ HDInsight Emulator 提供本機部署環境，與 Hadoop 沙箱極為相似。 �
 
 可以透過 Microsoft Web Platform Installer 安裝 Microsoft HDInsight Emulator。  
 
-> [AZURE.NOTE] HDInsight Emulator 目前支援只有英文版的作業系統。 如果您有舊版的 emulator，您必須解除安裝下列兩個元件從 [控制台/程式和功能再安裝最新版本的模擬器:
+> [AZURE.NOTE] HDInsight Emulator 目前支援只有英文版的作業系統。 如果已安裝舊版的 Emulator，您必須從 [控制台/程式和功能] 中解除安裝下列兩個元件，再安裝最新版的 Emulator：
 ><ul>
-<li>Microsoft HDInsight Emulator for Azure 或 HDInsight Developer Preview，視安裝</li>
+<li>Microsoft HDInsight Emulator for Azure 或 HDInsight Developer Preview (視安裝何者而定)。</li>
 <li>Hortonworks Data Platform</li>
 </ul>
 
@@ -80,7 +80,7 @@ HDInsight Emulator 提供本機部署環境，與 Hadoop 沙箱極為相似。 �
 
 ![Hadoop 生態系統服務列在模擬器視窗中。][image-hdi-emulator-services]
 
-依預設不會啟動 HDInsight Emulator 的相關服務。 若要啟動服務，請從 Hadoop 命令列，執行 **start\_local\_hdp_services.cmd** C:\hdp (預設位置) 底下。 若要重新開機之後，自動啟動服務，執行 **set-onebox-autostart.cmd/onebox**。  
+依預設不會啟動 HDInsight Emulator 的相關服務。 若要啟動服務，請從 Hadoop 命令列，執行 **start\_local\_hdp_services.cmd** C:\hdp （預設位置） 底下。 若要重新開機之後，自動啟動服務，執行 **set-onebox-autostart.cmd/onebox**。  
 
 對於安裝和執行 HDInsight Emulator 的已知問題，請參閱 [HDInsight Emulator 版本資訊](hdinsight-emulator-release-notes.md)。 安裝記錄檔是位於 **C:\HadoopFeaturePackSetup\HadoopFeaturePackSetupTools\gettingStarted.winpkg.install.log**。
 
@@ -114,14 +114,14 @@ HDInsight Emulator 提供本機部署環境，與 Hadoop 沙箱極為相似。 �
 
 1. 連接到 HDInsight Emulator 時，即使對話方塊顯示 HiveServer2 已連接成功，您必須手動設定 **hive.security.authorization.enabled 屬性** 至 **false** Hive 組態檔，C:\hdp\hive-*版本*\conf\hive-site.xml，，然後重新啟動本機 Emulator。 HDInsight Tools for Visual Studio 只會在您預覽資料表的前 100 列的情況下，連接到 HiveServer2。 如果您不打算使用此類查詢，可以保留 Hive 組態的現狀。
 
-2. 如果您在執行 HDInsight Emulator 的電腦上使用動態 IP 配置 (DHCP)，您可能需要更新 C:\hdp\hadoop-*版本*\etc\hadoop\core-site.xml，並且變更屬性的值 **hadoop.proxyuser.hadoop.hosts** 到 (*)。 如此可以讓 Hadoop 使用者從所有主機進行連接，以模擬您在 Visual Studio 中輸入的使用者。
+2. 如果您在執行 HDInsight Emulator 的電腦上使用動態 IP 配置 (DHCP)，您可能需要更新 C:\hdp\hadoop-*版本*\etc\hadoop\core-site.xml，並且變更屬性的值 **hadoop.proxyuser.hadoop.hosts** 到 （*）。 如此可以讓 Hadoop 使用者從所有主機進行連接，以模擬您在 Visual Studio 中輸入的使用者。
 
         <property>
             <name>hadoop.proxyuser.hadoop.hosts</name>
             <value>*</value>
         </property>
 
-3. 當 Visual Studio 嘗試連接到 WebHCat 服務時，您可能會收到錯誤 (「錯誤：找不到工作 job_XXXX_0001」)。 若是如此，您必須重新啟動 WebHCat 服務，然後再試一次。 若要重新啟動 WebHCat 服務，請啟動 **服務** MMC 中，以滑鼠右鍵按一下 **Apache Hadoop Templeton** (這是 WebHCat 服務的舊名稱)，然後按一下 **重新啟動**。
+3. 當 Visual Studio 嘗試連接到 WebHCat 服務時，您可能會收到錯誤 (「錯誤：找不到工作 job_XXXX_0001」)。 若是如此，您必須重新啟動 WebHCat 服務，然後再試一次。 若要重新啟動 WebHCat 服務，請啟動 **服務** MMC 中，以滑鼠右鍵按一下 **Apache Hadoop Templeton** （這是 WebHCat 服務的舊名稱），然後按一下 **重新啟動**。
 
 ##<a name="runwordcount"></a>字數統計 MapReduce 教學課程
 
@@ -183,7 +183,7 @@ HDInsight Emulator 提供本機部署環境，與 Hadoop 沙箱極為相似。 �
 
 如需 Hadoop 命令的詳細資訊，請參閱 [Hadoop 命令手冊][hadoop-commands-manual]。
 
-##<a name="rungetstartedsamples"></a> 分析範例 web 記錄資料
+##<a name="rungetstartedsamples"></a> 分析範例 Web 記錄資料
 
 HDInsight Emulator 安裝提供一些範例，讓使用者開始學習 Windows 上以 Apache Hadoop 為基礎的服務。 這些範例涵蓋處理巨量資料集時通常需要的一些工作。 這些範例是以上述 MapReduce 教學課程為基礎，可協助您熟悉 MapReduce 程式設計模型及其生態系統。
 
@@ -203,7 +203,7 @@ HDInsight Emulator 安裝提供一些範例，讓使用者開始學習 Windows �
 W3C 案例會產生三種大小的 IIS W3C 記錄資料並匯入到 HDFS 或 Azure Blob 儲存體：1MB (小)、500MB (中) 及 2GB (大)。 它提供三種工作類型，並且以 C#、Java、Pig 及 Hive 實作各個類型。
 
 - **totalhits** -計算指定頁面的要求總數。
-- **avgtime** -計算每個頁面的要求 (以秒為單位) 所花費的平均時間。
+- **avgtime** -計算每個頁面的要求 （以秒為單位） 所花費的平均時間。
 - **錯誤** -計算各頁、 每小時、 對於狀態為 404 或 500 的要求的錯誤數目。
 
 這些範例及其文件不提供關鍵 Hadoop 技術的深入研究或完整實作。 使用的叢集只有一個節點，因此，對於這個版本，無法觀察新增更多節點的效果。
@@ -243,7 +243,7 @@ W3C 案例會產生三種大小的 IIS W3C 記錄資料並匯入到 HDFS 或 Azu
 
 現在您已經建立資料檔案並匯入到 HDFS。 您可以開始執行不同的 Hadoop 工作。
 
-###<a name="javamapreduce"></a> 執行 Java MapReduce 工作
+###<a name="javamapreduce"></a>執行 Java MapReduce 工作
 
 MapReduce 是 Hadoop 的基本運算引擎。 依預設，它是以 Java 實作，但是另外也有利用 .NET 及 C# Hadoop 串流的範例。 執行 MapReduce 工作的語法：
 
@@ -304,7 +304,7 @@ jar 檔及原始程式檔位在 C:\Hadoop\GettingStarted\Java 資料夾。
 
         hadoop fs -rmr /w3c/hive/input
 
-4. 執行下列命令來建立 **/w3c/hive/input** 資料夾，然後將複製資料檔/hive/輸入資料夾:
+4. 執行下列命令來建立 **/w3c/hive/input** 資料夾，然後將複製資料檔/hive/輸入資料夾 ︰
 
         hadoop fs -mkdir /w3c/hive
         hadoop fs -mkdir /w3c/hive/input
@@ -330,7 +330,7 @@ jar 檔及原始程式檔位在 C:\Hadoop\GettingStarted\Java 資料夾。
         OK
         Time taken: 2.881 seconds
 
-6. 執行下列命令來執行 **w3ctotalhitsbypage.hql** HiveQL 指令碼檔案:
+6. 執行下列命令來執行 **w3ctotalhitsbypage.hql** HiveQL 指令碼檔案 ︰
 
     > [AZURE.NOTE] 如稍早所述，您可以執行這個查詢使用 HDInsight Visual Studio 工具。  
 
@@ -420,10 +420,10 @@ Pig 處理使用稱為的資料流程語言 *Pig Latin*。 Pig Latin 抽象提�
 The samples currently contain all the required binaries, so building is not required. If you'd like to make changes to the Java or .NET samples, you can rebuild them by using either the Microsoft Build Engine (MSBuild) or the included Azure PowerShell script.
 
 
-**重建範例**
+**To rebuild the samples**
 
-1. 開啟 Hadoop 命令列。
-2. 執行以下命令：
+1. Open a Hadoop command line.
+2. Run the following command:
 
         powershell -F buildsamples.ps1
 --->
@@ -454,7 +454,7 @@ HDInsight Emulator 使用 HDFS 做為預設檔案系統。 不過，Azure HDInsi
 **設定 Azure 儲存體帳戶的連線**
 
 1. 開啟 **C:\hdp\hadoop-2.4.0.2.1.3.0-1981\etc\hadoop\core-site.xml** [記事本] 中。
-2. 新增下列 < 屬性 > 標籤旁邊的 < 屬性 > 標記:
+2. 新增下列 < 屬性 > 標籤旁邊的 < 屬性 > 標記 ︰
 
         <property>
             <name>fs.azure.account.key.<StorageAccountName>.blob.core.windows.net</name>
@@ -474,7 +474,7 @@ HDInsight Emulator 使用 HDFS 做為預設檔案系統。 不過，Azure HDInsi
     hadoop fs -ls wasb://myContainer@myStorage.blob.core.windows.net/
 
 
-##<a name="powershell"></a> 執行 Azure PowerShell
+##<a name="powershell"></a>執行 Azure PowerShell
 HDInsight Emulator 也支援部分 Azure PowerShell Cmdlet。 這些 Cmdlet 包括：
 
 - HDInsight 工作定義 Cmdlet
@@ -537,3 +537,4 @@ HDInsight Emulator 也支援部分 Azure PowerShell Cmdlet。 這些 Cmdlet 包�
 
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
+

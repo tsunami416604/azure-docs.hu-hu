@@ -87,7 +87,7 @@
 下列清單顯示常見的函式。
 
 - parameters(parameterName) - 傳回在執行構件命令時所提供的參數值。
-- concat (arg1，arg2，arg3，...)-結合多個字串值。 此函數可以接受任意數目的引數。
+- concat （arg1，arg2，arg3，...）-結合多個字串值。 此函數可以接受任意數目的引數。
 
 下列範例示範如何使用運算式和函式來建構值。
 
@@ -122,4 +122,5 @@
 ## 後續步驟
 
 了解如何 [Git 成品儲存機制加入至 DevTest 實驗室](devtest-lab-add-artifact-repo.md)。
+
 

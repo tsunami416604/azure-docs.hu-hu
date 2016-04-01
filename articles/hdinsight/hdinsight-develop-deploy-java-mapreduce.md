@@ -22,7 +22,7 @@
 
 本教學課程引導您完成一項端對端案例，在 Java 中使用 Apache Maven 來開發字數統計 Hadoop MapReduce 工作。 本教學課程也說明如何在 HDInsight Emulator for Azure 上測試應用程式，然後在以 Windows 為基礎的 HDInsight 叢集上部署並執行。
 
-##<a name="prerequisites"></a>先決條件
+##<a name="prerequisites"></a>必要條件
 
 開始進行本教學課程之前，您必須完成下列工作：
 
@@ -59,7 +59,7 @@
 
 **更新 POM**
 
-1. 編輯 __pom.xml__ 檔案，並加入下列內 `<dependencies>` 區段:
+1. 編輯 __pom.xml__ 檔案，並加入下列內 `<dependencies>` 區段 ︰
 
         <dependency>
           <groupId>org.apache.hadoop</groupId>
@@ -77,7 +77,7 @@
           <version>2.5.1</version>
         </dependency>
 
-    這向 Maven 表示專案需要列出的程式庫 (< artifactId\ > 內) 具有特定版本 (列於 < 版本 > 內)。 編譯時，將會從預設 Maven 儲存機制下載此版本。 您可以使用 [Maven 儲存機制搜尋](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) 檢視詳細資訊。
+    這向 Maven 表示專案需要列出的程式庫 （< artifactId\ > 內） 具有特定版本 （列於 < 版本 > 內）。 編譯時，將會從預設 Maven 儲存機制下載此版本。 您可以使用 [Maven 儲存機制搜尋](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) 檢視詳細資訊。
 
 2. 將下列內容加入 __pom.xml__ 檔案。 這必須在檔案中的 `<project>...</project>` 標籤內；例如，在 `</dependencies>` 和 `</project>` 之間。
 
@@ -295,7 +295,7 @@
         hadoop fs -ls /WordCount/Output/
         hadoop fs -cat /WordCount/Output/part-r-00000
 
-    您可以在命令尾端附加 "|more" 來取得頁面檢視。 或使用 **findstr** 命令來尋找字串模式:
+    您可以在命令尾端附加 "|more" 來取得頁面檢視。 或使用 **findstr** 命令來尋找字串模式 ︰
 
         hadoop fs -cat /WordCount/Output/part-r-00000 | findstr "there"
 
@@ -568,7 +568,7 @@ Azure HDInsight 使用 Azure Blob 儲存體來儲存資料。 佈建 HDInsight �
 
 在工作完成之後，您可以將資料匯出至 SQL Server 或 Azure SQL Database，使用 [Sqoop][hdinsight-use-sqoop], ，或將資料匯出至 Excel。  
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 本教學課程中，您學到如何開發 Java MapReduce 工作、如何在 HDInsight Emulator 上測試應用程式，以及如何撰寫 Azure PowerShell 指令碼來佈建 HDInsight 叢集並於叢集上執行 MapReduce 工作。 若要深入了解，請參閱下列文章：
 
 - [開發 HDInsight 的 C# Hadoop 串流 MapReduce 程式][hdinsight-develop-streaming]
@@ -609,4 +609,5 @@ Azure HDInsight 使用 Azure Blob 儲存體來儲存資料。 佈建 HDInsight �
 
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
+
 

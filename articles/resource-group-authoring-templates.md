@@ -238,11 +238,11 @@ Azure 應用程式通常需要將資源 (如資料庫伺服器、資料庫或網
 | 屬性               |   否     | 資源特定的組態設定。
 | 資源                |   否     | 與正在定義的資源相依的下層資源。 您只能提供父資源的結構描述所允許的資源類型。 子資源類型的完整限定名稱中包含父系的資源類型，例如 **Microsoft.Web/sites/extensions**。
 
-如果資源名稱不是唯一的您可以使用 **resourceId** helper 函式 (如下所述) 來取得任何資源的唯一識別碼。
+如果資源名稱不是唯一的您可以使用 **resourceId** helper 函式 （如下所述） 來取得任何資源的唯一識別碼。
 
-值 **屬性** 項目並完全 REST API 作業 (PUT 方法) 來建立資源，提供要求主體中的值相同。 請參閱 [Azure 參考](https://msdn.microsoft.com/library/azure/mt420159.aspx) REST API 作業，您想要部署的資源。
+值 **屬性** 項目並完全 REST API 作業 （PUT 方法） 來建立資源，提供要求主體中的值相同。 請參閱 [Azure 參考](https://msdn.microsoft.com/library/azure/mt420159.aspx) REST API 作業，您想要部署的資源。
 
-下列範例所示 **microsoft.web/serverfarms** 資源和 **microsoft.web/sites** 含巢狀資源 **延伸** 資源:
+下列範例所示 **microsoft.web/serverfarms** 資源和 **microsoft.web/sites** 含巢狀資源 **延伸** 資源 ︰
 
     "resources": [
         {
@@ -420,4 +420,5 @@ Azure 應用程式通常需要將資源 (如資料庫伺服器、資料庫或網
 - 若要了解如何部署您建立的範本，請參閱 [部署應用程式使用 Azure 資源管理員範本](resource-group-template-deploy.md)
 - 部署應用程式的深入範例，請參閱 [佈建和部署如預期般在 Azure 中的微服務](app-service-web/app-service-deploy-complex-application-predictably.md)
 - 若要查看可用的結構描述，請參閱 [Azure 資源管理員結構描述](https://github.com/Azure/azure-resource-manager-schemas)
+
 

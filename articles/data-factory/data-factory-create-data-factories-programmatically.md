@@ -22,7 +22,7 @@
 
 
 
-## 先決條件
+## 必要條件
 
 - Visual Studio 2012 或 2013
 - 下載並安裝 [Azure.NET SDK][azure-developer-center]
@@ -31,22 +31,22 @@
 ## 逐步介紹
 1. 使用 Visual Studio 2012 或 2013 來建立 C# .NET 主控台應用程式。
     <ol type="a">
-        <li>啟動 <b>Visual Studio 2012</b> 或 <b>Visual Studio 2013</b>.</li>
-        <li>按一下 <b>檔案</b>，指向 <b>新增</b>，然後按一下 <b>隨附此逐步解說的專案</b>.</li> 
-        <li>展開 <b>範本</b>，然後選取 <b>Visual C#</b>. 在此逐步解說中，您使用的是 C#，但您可以使用任何 .NET 語言。</li> 
-        <li>選取 <b>主控台應用程式</b> (從右邊的專案類型清單中選取)。</li>
-        <li>Enter <b>DataFactoryAPITestApp</b> 值以重複使用認證，藉此呼叫 <b>名稱</b>.</li> 
-        <li>選取 <b>C:\ADFGetStarted</b> 值以重複使用認證，藉此呼叫 <b>位置</b>.</li>
-        <li>按一下 <b>OK</b> 建立專案。</li>
+        <li>啟動 <b>Visual Studio 2012</b> 或 <b>Visual Studio 2013</b>。</li>
+        <li>按一下 [ <b>檔案</b>, ，指向 [ <b>新增</b>, ，然後按一下 <b>專案</b>。</li> 
+        <li>展開 <b>範本</b>, ，然後選取 <b>Visual C#</b>。 在此逐步解說中，您使用的是 C#，但您可以使用任何 .NET 語言。</li> 
+        <li>選取 <b>主控台應用程式</b> 從右邊的專案類型清單。</li>
+        <li>輸入 <b>DataFactoryAPITestApp</b> 的 <b>名稱</b>。</li> 
+        <li>選取 <b>C:\ADFGetStarted</b> 的 <b>位置</b>。</li>
+        <li>按一下 [ <b>確定</b> 以建立專案。</li>
     </ol>
-2. 按一下 <b>工具</b>，指向 <b>NuGet 封裝管理員</b>，然後按一下 <b>封裝管理員主控台</b>.
-3.  在 <b>封裝管理員主控台</b>中，依序執行下列命令</b>. 
+2. 按一下 [<b>工具</b>]，指向 [<b>NuGet 封裝管理員</b>]，然後按一下 [<b>封裝管理員主控台</b>]。
+3.  在 [Package Manager Console]<b></b> 中，逐一執行下列命令。</b>。 
 
         Install-Package Microsoft.Azure.Management.DataFactories
         Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-6. 新增下列 **appSetttings** 區段 **App.config** 檔案。 Helper 方法會使用這些: **GetAuthorizationHeader**。 
+6. 新增下列 **appSetttings** 區段 **App.config** 檔案。 Helper 方法會使用這些 ︰ **GetAuthorizationHeader**。 
 
-    值取代 **SubscriptionId** 和 **ActiveDirectoryTenantId** 與您的 Azure 訂用帳戶和租用戶識別碼。 您可以取得這些值執行 **Get-azureaccount** 從 Azure PowerShell (您可能需要先使用 Add-azureaccount 登入)。
+    值取代 **SubscriptionId** 和 **ActiveDirectoryTenantId** 與您的 Azure 訂用帳戶和租用戶識別碼。 您可以取得這些值執行 **Get-azureaccount** 從 Azure PowerShell （您可能需要先使用 Add-azureaccount 登入）。
  
         <appSettings>
             <!--CSM Prod related values-->
@@ -125,9 +125,9 @@
         );
 9. 新增下列程式碼會建立 **輸入和輸出資料集** 至 **Main** 方法。 
 
-    請注意， **FolderPath** 輸入的 blob 設為 **adftutorial /** 其中 **adftutorial** 是 blob 儲存體中容器的名稱。 如果此容器不存在於 Azure blob 儲存體中，以下列名稱建立容器: **adftutorial** 將文字檔上傳至容器。
+    請注意， **FolderPath** 輸入的 blob 設為 **adftutorial /** 其中 **adftutorial** 是 blob 儲存體中容器的名稱。 如果此容器不存在於 Azure blob 儲存體中，以下列名稱建立容器 ︰ **adftutorial** 將文字檔上傳至容器。
     
-    請注意，輸出 blob 的 FolderPath 設為: **adftutorial/apifactoryoutput / {Slice}** 其中 **配量** 動態計算的值根據 **SliceStart** (開始日期時間的每個配量)。  
+    請注意，輸出 blob 的 FolderPath 設為 ︰ **adftutorial/apifactoryoutput / {Slice}** 其中 **配量** 動態計算的值根據 **SliceStart** （開始日期時間的每個配量）。  
 
  
         // create input and output datasets
@@ -331,7 +331,7 @@
             }
         }
 
-14. **(選擇性)** 加入下列程式碼，取得執行資料配量配量的詳細資料 **Main** 方法。
+14. **（選擇性）** 加入下列程式碼，取得執行資料配量配量的詳細資料 **Main** 方法。
 
         Console.WriteLine("Getting run details of a data slice");
 
@@ -371,10 +371,10 @@
         Jane, Doe
      
 17. 執行範例時，即可 **偵錯** ]-> [ **開始偵錯** ] 功能表上。 當您看到 **取得執行資料配量的詳細資料**, ，等待幾分鐘，再按 **ENTER**。 
-18. 使用 Azure 入口網站確認 data factory: **APITutorialFactory** 建立使用下列成品: 
-    - 連結服務: **LinkedService_AzureStorage** 
-    - 資料集: **DatasetBlobSource** 和 **DatasetBlobDestination**。
-    - 管線: **PipelineBlobSample** 
+18. 使用 Azure 入口網站確認 data factory: **APITutorialFactory** 建立使用下列成品 ︰ 
+    - 連結服務 ︰ **LinkedService_AzureStorage** 
+    - 資料集 ︰ **DatasetBlobSource** 和 **DatasetBlobDestination**。
+    - 管線 ︰ **PipelineBlobSample** 
 18. 確認輸出檔案已建立在 **apifactoryoutput** 資料夾中的 **adftutorial** 容器。
 
 
@@ -391,4 +391,5 @@
 [adf-class-library-reference]: http://go.microsoft.com/fwlink/?LinkID=521877
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
+
 

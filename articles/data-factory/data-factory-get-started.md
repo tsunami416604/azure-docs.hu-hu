@@ -30,24 +30,24 @@
 ##教學課程的必要條件
 開始進行本教學課程之前，您必須具備下列條件：
 
-- **Azure 訂用帳戶**。  如果您沒有訂用帳戶，則只需要幾分鐘的時間就可以建立免費試用帳戶。 請參閱 [免費試用] [azure-免費試用] 如需詳細資訊。
+- **Azure 訂用帳戶**。  如果您沒有訂用帳戶，則只需要幾分鐘的時間就可以建立免費試用帳戶。 請參閱 [免費試用版][azure-free-trial] 文章以取得詳細資料。
 - **Azure 儲存體帳戶**。 您將使用 blob 儲存體做 **來源** 本教學課程中的資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶][data-factory-create-storage] 份文件建立一個步驟。
 - **Azure SQL Database**。 您將使用 Azure SQL 資料庫做為 **目的地** 本教學課程中的資料存放區。 如果您沒有 Azure SQL database 可讓您在本教學課程，請參閱 [如何建立和設定 Azure SQL Database][data-factory-create-sql-database] 建立一個。
 - **SQL Server 2012/2014年或 Visual Studio 2013**。 您將使用 SQL Server Management Studio 或 Visual Studio，建立範例資料庫以及檢視資料庫中的結果資料。  
 
 ### 收集 Azure 儲存體帳戶的帳戶名稱和帳戶金鑰
-您需要有 Azure 儲存體帳戶的帳戶名稱和帳戶金鑰，才能進行這個教學課程。 記下 **帳戶名稱** 和 **帳戶金鑰** 您儲存體帳戶，依照下列指示:
+您需要有 Azure 儲存體帳戶的帳戶名稱和帳戶金鑰，才能進行這個教學課程。 記下 **帳戶名稱** 和 **帳戶金鑰** 您儲存體帳戶，依照下列指示 ︰
 
-1. 登入 [Azure 網站] [azure 入口網站]。
+1. 登入 [Azure 入口網站][azure-portal]。
 2. 按一下 [ **瀏覽** 左邊，然後選取中樞 **儲存體帳戶**。
 3. 在 **儲存體帳戶** 分頁中，選取 **Azure 儲存體帳戶** 您想要在本教學課程中使用。
 4. 在 **儲存體** 刀鋒視窗中，按一下 [ **金鑰** 並排顯示。
-5. 在 **管理金鑰** 刀鋒視窗中，按一下 **複製** (影像)] 按鈕旁邊 **儲存體帳戶名稱** 文字並儲存它/貼到某個位置 (例如: 文字檔案中)。  
+5. 在 **管理金鑰** 刀鋒視窗中，按一下 **複製** （影像）] 按鈕旁邊 **儲存體帳戶名稱** 文字並儲存它/貼到某個位置 (例如 ︰ 文字檔案中)。  
 6. 重複上述步驟來複製或記下 **主要存取金鑰**。
 7. 關閉所有刀鋒視窗按一下 **X**。
 
 ### 收集 Azure SQL Database 的伺服器名稱、資料庫名稱和使用者帳戶
-您需要有 Azure SQL 伺服器、資料庫和使用者的名稱，才能進行這個教學課程。 請記下名稱 **伺服器**, ，**資料庫**, ，和 **使用者** Azure SQL database 下列指示:
+您需要有 Azure SQL 伺服器、資料庫和使用者的名稱，才能進行這個教學課程。 請記下名稱 **伺服器**, ，**資料庫**, ，和 **使用者** Azure SQL database 下列指示 ︰
 
 1. 在 **Azure 入口網站**, ，按一下 [ **瀏覽** 左邊，然後選取 **SQL 資料庫**。
 2. 在 **SQL 資料庫] 分頁中**, ，請選取 **資料庫** 您想要在本教學課程中使用。 記下 **資料庫名稱**。  
@@ -110,4 +110,5 @@
 [data-factory-introduction]: data-factory-introduction.md
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database-get-started.md 
+
 

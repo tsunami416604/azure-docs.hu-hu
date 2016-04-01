@@ -27,13 +27,13 @@
 
 您在為協力廠商 SaaS 應用程式設定使用者佈建時，就可以啟用或停用帳戶佈建通知。
 
-![使用者佈建][] 1 
+![使用者佈建][1] 
 
 
 
 若要啟用帳戶佈建通知，請選取相關的核取方塊上 **確認** 對話方塊頁面，然後輸入電子郵件別名的收件者。
 
-![帳戶佈建通知][] 2
+![帳戶佈建通知][2]
  
 
 
@@ -48,3 +48,4 @@
 <!--Image references-->
 [1]: ./media/active-directory-saas-account-provisioning-notifications/ic766307.png
 [2]: ./media/active-directory-saas-account-provisioning-notifications/ic766308.png
+

@@ -170,28 +170,28 @@ Azure 目前有兩種管理模式：Azure 服務管理員 (稱為傳統) 和 Azu
 1. 下載 azuredeploy.json 和 azuredeploy-parameters.json 檔案從 [git 中心](https://github.com/Azure/azure-quickstart-templates/tree/master/arm-asm-s2s)。
 2. 在 Visual Studio 中開啟 azuredeploy.json 檔案，並注意此範本會建立四個資源： 
 
-    - **本機閘道**: 此資源代表針對您想要連接到 VNet 所建立的閘道。 在此案例中，指的是 vnet01 的閘道。
-    - **虛擬網路**: 此資源代表要建立 ARM VNet。 在此案例中，指的是 vnet02。
-    - **閘道公用 IP**: 此資源代表要建立 ARM vnet 閘道的公用 IP 位址。 
-    - **閘道**: 此資源代表要針對 ARM VNet (vnet02) 建立的閘道。
+    - **本機閘道**︰ 此資源代表針對您想要連接到 VNet 所建立的閘道。 在此案例中，指的是 vnet01 的閘道。
+    - **虛擬網路**︰ 此資源代表要建立 ARM VNet。 在此案例中，指的是 vnet02。
+    - **閘道公用 IP**︰ 此資源代表要建立 ARM vnet 閘道的公用 IP 位址。 
+    - **閘道**︰ 此資源代表要針對 ARM VNet (vnet02) 建立的閘道。
 
 3. 請注意此檔案中所使用的參數。 其中大部分都有預設值。 您可以根據您的需求變更這些值。 
 
 4. 在 Visual Studio 中開啟 azuredeploy-parameters.json 檔案。 此檔案包含要對範本檔案中的參數使用的值。  如有必要，請編輯下列值。
 
-    - **subscriptionId**: 編輯並貼上您的訂閱識別碼。 如果您不知道您的訂閱識別碼、 執行 **Get-azuresubscription** PowerShell cmdlet 來擷取您的識別碼。
-    - **位置**: 指定將會建立 VNet 的 Azure 位置。 在此案例中，它將是 **中部**。
-    - **virtualNetworkName**: 這是要建立 ARM VNet 名稱。 在此案例中， **vnet02**。
-    - **localGatewayName**: 這是您想要從新的 ARM VNet 連線，區域網路。 在此案例中， **vnet01**。
-    - **localGatewayIpAddress**: 這是您想要連線到網路建立閘道的公用 IP 位址。 在此案例中，這是您記下在上述步驟 9 中時建立的 VPN 閘道的 IP 位址 **vnet01**。
-    - **localGatewayAddressPrefix**: 這是 VNet 將連接到區域網路的 CIDR 區塊。 在此案例中，您會連接到 VNet 是 **vnet01**, ，而且其 CIDR 區塊 **10.1.0.0/16**。
-    - **gatewayPublicIPName**: 這是要建立將建立 ARM vnet 之閘道的公用 ip 的 IP 物件名稱。
-    - **gatewayName**: 這是將建立 ARM vnet 之閘道物件的名稱。
-    - **addressPrefix**: 這是 ARM VNet 的 CIDR 區塊。 在此案例中， **10.2.0.0/16**。
-    - **subnet1Prefix**: 這是 ARM VNet 中的子網路的 CIDR 區塊。 在此案例中， **10.2.0.0/24**。
-    - **gatewaySubnetPrefix**: 這是 ARM VNet 中閘道子網路的 CIDR 區塊。 在此案例中， **10.2.200.0/29**。
-    - **連線名稱**: 這是要建立連接物件的名稱。
-    - **sharedKey**: 這是連線的 IPSec 共用的金鑰。 在此案例中， **abc123**。
+    - **subscriptionId**︰ 編輯並貼上您的訂閱識別碼。 如果您不知道您的訂閱識別碼、 執行 **Get-azuresubscription** PowerShell cmdlet 來擷取您的識別碼。
+    - **位置**︰ 指定將會建立 VNet 的 Azure 位置。 在此案例中，它將是 **中部**。
+    - **virtualNetworkName**︰ 這是要建立 ARM VNet 名稱。 在此案例中， **vnet02**。
+    - **localGatewayName**︰ 這是您想要從新的 ARM VNet 連線，區域網路。 在此案例中， **vnet01**。
+    - **localGatewayIpAddress**︰ 這是您想要連線到網路建立閘道的公用 IP 位址。 在此案例中，這是您記下在上述步驟 9 中時建立的 VPN 閘道的 IP 位址 **vnet01**。
+    - **localGatewayAddressPrefix**︰ 這是 VNet 將連接到區域網路的 CIDR 區塊。 在此案例中，您會連接到 VNet 是 **vnet01**, ，而且其 CIDR 區塊 **10.1.0.0/16**。
+    - **gatewayPublicIPName**︰ 這是要建立將建立 ARM vnet 之閘道的公用 ip 的 IP 物件名稱。
+    - **gatewayName**︰ 這是將建立 ARM vnet 之閘道物件的名稱。
+    - **addressPrefix**︰ 這是 ARM VNet 的 CIDR 區塊。 在此案例中， **10.2.0.0/16**。
+    - **subnet1Prefix**︰ 這是 ARM VNet 中的子網路的 CIDR 區塊。 在此案例中， **10.2.0.0/24**。
+    - **gatewaySubnetPrefix**︰ 這是 ARM VNet 中閘道子網路的 CIDR 區塊。 在此案例中， **10.2.200.0/29**。
+    - **連線名稱**︰ 這是要建立連接物件的名稱。
+    - **sharedKey**︰ 這是連線的 IPSec 共用的金鑰。 在此案例中， **abc123**。
 
 5. 若要建立 ARM VNet 和其相關的物件，在新的資源群組，名為 **RG1**, ，執行下列 PowerShell 命令。 確定您變更範本檔案和參數檔案的路徑。  
 
@@ -318,7 +318,7 @@ Azure 目前有兩種管理模式：Azure 服務管理員 (稱為傳統) 和 Azu
     ![VNet 儀表板](..\virtual-network\media\virtual-networks-arm-asm-s2s\figure11.png)
 
 5. 雖然您可以從傳統的入口網站來管理傳統的 VNet 和其連線，但是建議使用新的 Azure 入口網站。 若要開啟新的入口網站，瀏覽 https://portal.azure.com。
-6. 在新入口網站中，按一下 [ **全部瀏覽**, ，然後按一下 [ **虛擬網路 (傳統)**, ，然後按一下 [ **vnet01**。 請注意 **VPN 連線** 窗格如下所示。
+6. 在新入口網站中，按一下 [ **全部瀏覽**, ，然後按一下 [ **虛擬網路 （傳統）**, ，然後按一下 [ **vnet01**。 請注意 **VPN 連線** 窗格如下所示。
 
     ![VNet 儀表板](..\virtual-network\media\virtual-networks-arm-asm-s2s\figure12.png)
 
@@ -333,7 +333,7 @@ Azure 目前有兩種管理模式：Azure 服務管理員 (稱為傳統) 和 Azu
 5. 在 **遠端桌面連線** 對話方塊中，按一下 [ **是**。
 6. 一旦您從連線至 VM， **伺服器管理員**, ，按一下 [ **工具**, ，然後按一下 [ **具有進階安全性的 Windows 防火牆**。
 7. 在 **具有進階安全性的 Windows 防火牆** ] 視窗中，按一下 [ **輸入規則**。
-8. 在 **輸入規則** 清單中，以滑鼠右鍵按一下 **檔案及印表機共用 (回應要求-ICMPv4 中)** 然後按一下 [ **啟用規則**。
+8. 在 **輸入規則** 清單中，以滑鼠右鍵按一下 **檔案及印表機共用 （回應要求-ICMPv4 中）** 然後按一下 [ **啟用規則**。
 9. 在工作列上，按一下 [ **Windows PowerShell** ] 按鈕，然後執行下列命令。
 
         ipconfig
@@ -345,7 +345,7 @@ Azure 目前有兩種管理模式：Azure 服務管理員 (稱為傳統) 和 Azu
         Default Gateway . . . . . . . . . : 10.2.0.101
 
 10. 寫下 VM 的 IP 位址。 在此案例中， **10.2.0.101**。 您將從其他 VM ping 該位址來測試 VNet 之間的連線能力。
-11. 從 Azure 入口網站中，在左窗格中，按一下 [ **虛擬機器 (傳統)**, ，然後按一下 [ **VM01**, ，然後按一下 [ **連接**。 如有需要按一下 [ **開啟** 開啟 RDP 檔案瀏覽器安全性橫幅上。
+11. 從 Azure 入口網站中，在左窗格中，按一下 [ **虛擬機器 （傳統）**, ，然後按一下 [ **VM01**, ，然後按一下 [ **連接**。 如有需要按一下 [ **開啟** 開啟 RDP 檔案瀏覽器安全性橫幅上。
 12. 在 **遠端桌面連線** 對話方塊中，按一下 [ **連接**。
 13. 在 **Windows 安全性** ] 對話方塊中，輸入您的 VM 使用者名稱和密碼。 
 14. 在 **遠端桌面連線** 對話方塊中，按一下 [ **是**。
@@ -362,4 +362,5 @@ Azure 目前有兩種管理模式：Azure 服務管理員 (稱為傳統) 和 Azu
 
 - 深入了解 [ARM 的網路資源提供者 (NRP)](../resource-groups-networking.md)。
 - 如何檢視的一般指導方針 [建立傳統 VNet 和 ARM VNet 之間的 S2S VPN 連線](../virtual-networks-arm-asm-s2s-howto.md)。
+
 

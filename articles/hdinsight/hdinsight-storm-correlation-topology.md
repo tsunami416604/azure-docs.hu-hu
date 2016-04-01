@@ -25,9 +25,9 @@
 
 [AZURE.INCLUDE [windows-only](../../includes/hdinsight-windows-only.md)]
 
-## 先決條件
+## 必要條件
 
--   HDInsight tools for Visual Studio: 請參閱 [開始使用 HDInsight tools for Visual Studio](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md) 取得安裝資訊。
+-   HDInsight tools for Visual Studio ︰ 請參閱 [開始使用 HDInsight tools for Visual Studio](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md) 取得安裝資訊。
 
 -   Apache Storm on HDInsight 叢集
 
@@ -59,7 +59,7 @@
 
 當工作階段啟動時， **啟動** 事件會由拓撲接收並記錄至 HBase。 當 **結束** 收到事件時，拓撲會擷取 **啟動** 事件並計算兩個事件之間的時間。 這 **持續時間** 值接著會儲存在 HBase 連同 **結束** 事件資訊。
 
-> [AZURE.IMPORTANT] 雖然此拓撲示範基本模式，生產環境方案必須採用下列案例的設計:
+> [AZURE.IMPORTANT] 雖然此拓撲示範基本模式，生產環境方案必須採用下列案例的設計 ︰
 >
 > - 未按順序抵達的事件
 > - 重複的事件
@@ -113,7 +113,7 @@
 
     ![已選取屬性的功能表螢幕擷取畫面](./media/hdinsight-storm-correlation-topology/selectproperties.png)
 
-3. 選取 **設定**, ，然後設定下列值:
+3. 選取 **設定**, ，然後設定下列值 ︰
 
     -   HBaseClusterURL：HBase 叢集的 URL。 例如，https://myhbasecluster.azurehdinsight.net
 
@@ -135,7 +135,7 @@
 
 2.  在 **方案總管] 中**, ，以滑鼠右鍵按一下 **CorrelationTopology** 專案，然後選取 [內容]。
 
-3.  在 [屬性] 視窗中，選取 **設定** ，並提供下列資訊。 前 5 項應該是使用相同值 **SessionInfo** 專案:
+3.  在 [屬性] 視窗中，選取 **設定** ，並提供下列資訊。 前 5 項應該是使用相同值 **SessionInfo** 專案 ︰
 
     -   HBaseClusterURL：HBase 叢集的 URL。 例如，https://myhbasecluster.azurehdinsight.net
 
@@ -165,7 +165,7 @@
 
     拓撲開始產生資料，在值 **發出** 將會遞增。
 
-    > [AZURE.NOTE] 如果 **Storm 拓撲檢視** 不會自動開啟，使用下列步驟來開啟它:
+    > [AZURE.NOTE] 如果 **Storm 拓撲檢視** 不會自動開啟，使用下列步驟來開啟它 ︰
     >
     > 1. 在 **方案總管] 中**, ，依序展開 **Azure**, ，然後展開 **HDInsight**。
     >
@@ -199,3 +199,4 @@
 
 如需更多 Storm 範例，請參閱 [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)。
  
+

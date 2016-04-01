@@ -47,11 +47,12 @@ Azure RemoteApp 支援來自 Windows Server 2012 R2 映像的資料流 32 位元
 - 安裝 [單一使用者的應用程式 ](https://msdn.microsoft.com/library/aa380661.aspx)在多使用者環境中造成問題。
 - 應用程式應 [儲存使用者專屬資訊](https://msdn.microsoft.com/library/aa383452.aspx) 在使用者特定位置，分別從適用於所有使用者的全域資訊。
 - RemoteApp 會使用多個 [命名空間的核心物件](https://msdn.microsoft.com/library/aa382954.aspx); 主要是由服務用戶端/伺服器應用程式中使用全域命名空間。
-- 並不安全地假設電腦名稱或 [IP 位址](https://msdn.microsoft.com/library/aa382942.aspx) 指派給電腦會與單一使用者相關聯，因為多個使用者可以遠端桌面工作階段主機 (RD 工作階段主機) 伺服器同時登入。
+- 並不安全地假設電腦名稱或 [IP 位址](https://msdn.microsoft.com/library/aa382942.aspx) 指派給電腦會與單一使用者相關聯，因為多個使用者可以遠端桌面工作階段主機 （RD 工作階段主機） 伺服器同時登入。
 
 ### 效能
 - 停用 [圖形效果](https://msdn.microsoft.com/library/aa380822.aspx) 您的應用程式新增至 RemoteApp 之前。
 - 若要最大化所有使用者的 CPU 可用性，請停用 [背景工作 ](https://msdn.microsoft.com/library/aa380665.aspx) 或建立不需要大量資源的高效率背景工作。
 - 您應該微調和平衡應用程式 [執行緒使用量](https://msdn.microsoft.com/library/aa383520.aspx) 多使用者、 多處理器環境。
 - 若要最佳化效能，最好讓應用程式 [偵測](https://msdn.microsoft.com/library/aa380798.aspx) 在用戶端工作階段是否正在執行。
+
 

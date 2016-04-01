@@ -29,8 +29,9 @@
   - [https://github.com/azure/azure-quickstart-templates](https://github.com/azure/azure-quickstart-templates)
 
 ## 後續步驟
-既然您已檢閱的先決條件，並完成必要的工作，您可以繼續進行建立您的方案範本產品中所述 [建立方案範本指南](marketplace-publishing-solution-template-creation.md)。 如需最佳做法，請參閱 [建立方案範本的最佳作法](marketplace-publishing-solution-template-best-practices.md)。 若要返回主頁面的 「 發行者 」 工作，請參閱 [快速入門: 如何將方案發行至 Azure Marketplace](marketplace-publishing-getting-started.md)。
+既然您已檢閱的先決條件，並完成必要的工作，您可以繼續進行建立您的方案範本產品中所述 [建立方案範本指南](marketplace-publishing-solution-template-creation.md)。 如需最佳做法，請參閱 [建立方案範本的最佳作法](marketplace-publishing-solution-template-best-practices.md)。 若要返回主頁面的 「 發行者 」 工作，請參閱 [快速入門 ︰ 如何將方案發行至 Azure Marketplace](marketplace-publishing-getting-started.md)。
 
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md
+
 

@@ -48,7 +48,7 @@ iOS 格式的重新導向 URI：
 -   **aap 配置** -這在您的 XCode 專案中註冊。 它是其他應用程式呼叫您的方式。 您可以在 Info.plist -> URL types -> URL Identifier 下找到此項目。 如果您尚未設定任何一個，建議您建立一個。
 -   **配套識別碼** -這是 [identity] 下找到 [Bundle Identifier 解除您在 XCode 中的專案設定。
     
-此 QuickStart 程式碼範例: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
+此 QuickStart 程式碼範例 ︰ ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
 ## *2.註冊 DirectorySearcher 應用程式*
 若要讓您的應用程式取得權杖，您必須先在 Azure AD 租用戶中註冊這個應用程式，並授權它存取 Azure AD Graph API：
@@ -220,8 +220,9 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 
 ADAL 可讓您輕鬆地將這些常見的身分識別功能全部納入您的應用程式。  它會為您處理一切麻煩的事，包括快取管理、OAuth 通訊協定支援、向使用者顯示登入 UI、重新整理過期權杖等等。  您唯一需要知道的就是單一 API 呼叫，`getToken`。
 
-提供完整的範例 (不含您的設定值) 是供您參考 [這裡](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)。  您現在可以繼續探索其他案例。  您可以嘗試：
+提供完整的範例 （不含您的設定值） 是供您參考 [這裡](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)。  您現在可以繼續探索其他案例。  您可以嘗試：
 
 [使用 Azure AD 保護 Node.JS Web API >>](../active-directory-devquickstarts-webapi-nodejst.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
+

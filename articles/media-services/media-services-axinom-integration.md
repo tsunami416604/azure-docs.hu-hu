@@ -26,7 +26,7 @@
 
 Azure 媒體服務 (AMS) 已加入 Google Widevine 動態保護 (請參閱 [Mingfei 的部落格](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) 如需詳細資訊)。 此外，Azure Media Player (AMP) 也已開始 Widevine 支援 (請參閱 [AMP 文件](http://amp.azure.net/libs/amp/latest/docs/) 如需詳細資訊)。 談到在配備 MSE 和 EME 的現代瀏覽器上串流處理受到 CENC 與多重原生 DRM (PlayReady 和 Widevine) 保護的 DASH 內容時，這可說是一大成就。
 
-從媒體服務 .NET SDK 版本 3.5.2 開始，媒體服務讓您可設定 Widevine 授權範本並取得 Widevine 授權。 您也可以使用下列 AMS 合作夥伴可協助您提供 Widevine 授權: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), ，[EZDRM](http://ezdrm.com/), ，[castLabs](http://castlabs.com/company/partners/azure/)。
+從媒體服務 .NET SDK 版本 3.5.2 開始，媒體服務讓您可設定 Widevine 授權範本並取得 Widevine 授權。 您也可以使用下列 AMS 合作夥伴可協助您提供 Widevine 授權 ︰ [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), ，[EZDRM](http://ezdrm.com/), ，[castLabs](http://castlabs.com/company/partners/azure/)。
 
 本文說明如何整合和測試受 Axinom 管理的 Widevine 授權伺服器。 具體而言，其內容包括：  
 
@@ -40,7 +40,7 @@ Azure 媒體服務 (AMS) 已加入 Google Widevine 動態保護 (請參閱 [Ming
 
 ##內容保護
 
-如需動態保護和金鑰傳遞原則設定，請參閱 Mingfei 的部落格: [如何使用 Azure 媒體服務設定 Widevine 封裝](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)。
+如需動態保護和金鑰傳遞原則設定，請參閱 Mingfei 的部落格 ︰ [如何使用 Azure 媒體服務設定 Widevine 封裝](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)。
 
 您可以使用多重 DRM 為同時具有下列二者的 DASH 串流設定動態 CENC 保護：
 
@@ -49,7 +49,7 @@ Azure 媒體服務 (AMS) 已加入 Google Widevine 動態保護 (請參閱 [Ming
 
 請參閱 [JWT 權杖產生](media-services-axinom-integration.md#jwt-token-generation) 區段為什麼 Azure Active Directory 無法作為 STS Axinom 的 Widevine 授權伺服器。
 
-###注意事項
+###考量
 
 1. 您必須使用 Axinom 指定的金鑰種子 (8888000000000000000000000000000000000000) 和您產生或選取的金鑰識別碼，產生用以設定金鑰傳遞服務的內容金鑰。 Axinom 授權伺服器會根據相同的金鑰種子 (同時適用於測試和生產環境)，發行包含內容金鑰的所有授權。
 1. 測試 Widevine 授權取得 URL: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense)。 HTTP 與 HTTS 皆可使用。
@@ -210,4 +210,5 @@ Widevine 授權取得 URL|必須設定資產傳遞原則 DASH 資料流中使用
 ###通知 
 
 我們想要向下列為建立此文件貢獻心力的人員致謝：Kristjan Jõgi of Axinom、Mingfei Yan 及 Amit Rajput。
+
 

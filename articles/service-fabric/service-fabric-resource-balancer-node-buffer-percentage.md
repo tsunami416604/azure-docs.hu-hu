@@ -44,6 +44,7 @@
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
-如需詳細資訊: [資源平衡器架構](service-fabric-resource-balancer-architecture.md)
+如需詳細資訊 ︰ [資源平衡器架構](service-fabric-resource-balancer-architecture.md)
  
+
 

@@ -23,7 +23,7 @@
 
 Azure 提供建立 VM 的不同方式，因為 VM 適用於不同的使用者和用途。 這表示您必須進行一些關於 VM 的選擇，並選擇建立它的方式。 本文提供這些選項及指示連結的摘要說明。
 
-我們最近推出 Azure 資源管理員範本做為一種方式，用以建立虛擬機器，並將它與其不同資源當成一個邏輯部署單位來管理。 以下提供這個可用方法的指示。 若要深入了解 Azure 資源管理員，以及如何管理資源當成一個單位，請參閱 [概觀] []。
+我們最近推出 Azure 資源管理員範本做為一種方式，用以建立虛擬機器，並將它與其不同資源當成一個邏輯部署單位來管理。 以下提供這個可用方法的指示。 若要深入了解 Azure 資源管理員，以及如何管理資源當成一個單位，請參閱 [概觀][]。
 
 ## 工具選項
 
@@ -102,4 +102,5 @@ Azure 提供建立 VM 的不同方式，因為 VM 適用於不同的使用者和
 
 [Create a Virtual Machine Running Linux]: virtual-machines-linux-tutorial.md
 [Create a Custom Virtual Machine]: virtual-machines-create-custom.md
+
 

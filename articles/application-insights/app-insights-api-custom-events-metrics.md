@@ -62,7 +62,7 @@ API 是跨所有平台統一的，除了一些小變化形式。
 
 建構 TelemetryClient 的執行個體 (除了在網頁中的 JavaScript)：
 
-*C#:* 
+*C#：* 
 
     private TelemetryClient telemetry = new TelemetryClient();
 
@@ -226,7 +226,7 @@ TelemetryClient 具備執行緒安全。
 
 ## 追蹤例外狀況
 
-傳送例外狀況至 Application Insights: 以 [計算它們][metrics], ，做為有問題; 以及頻率的指示 [檢查個別發生次數][diagnostic]。 報告包含堆疊追蹤。
+傳送例外狀況至 Application Insights ︰ 以 [計算它們][metrics], ，做為有問題; 以及頻率的指示 [檢查個別發生次數][diagnostic]。 報告包含堆疊追蹤。
 
 *C#*
 
@@ -254,7 +254,7 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
 
 * ASP.NET: [撰寫程式碼來攔截例外狀況](app-insights-asp-net-exceptions.md)
 * J2EE: [會自動攔截例外狀況](app-insights-java-get-started.md#exceptions-and-request-failures)
-* Windows 應用程式: [自動偵測到損毀](app-insights-windows-crashes.md)
+* Windows 應用程式 ︰ [自動偵測到損毀](app-insights-windows-crashes.md)
 * JavaScript：自動攔截。 如果您想要停用自動收集，請在您插入網頁的程式碼片段中加入一行：
 
     ```
@@ -438,13 +438,13 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
 
 > [AZURE.NOTE] 切勿在屬性中記錄個人識別資訊。
 
-**如果您使用度量**, ，開啟 [計量瀏覽器，並從自訂群組中選取度量:
+**如果您使用度量**, ，開啟 [計量瀏覽器，並從自訂群組中選取度量 ︰
 
 ![開啟計量瀏覽器，選取圖表，並選取度量](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
 *如果您的度量未顯示，或自訂標題不存在，請關閉選取刀鋒視窗，稍後再試。 有時候可能需要透過管線彙總度量一小時。*
 
-**如果您使用屬性和度量**, ，依據屬性分割度量:
+**如果您使用屬性和度量**, ，依據屬性分割度量 ︰
 
 
 ![設定群組，然後在 [群組依據] 底下選取屬性](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
@@ -481,7 +481,7 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
 
 
 
-#### <a name="timed"></a> 計時事件
+#### <a name="timed"></a>計時事件
 
 有時候您想要繪製執行某些動作耗費多少時間的圖表。 例如，您可能想要知道使用者在遊戲中思考選項時花費多少時間。 這是使用測量參數的實用範例。
 
@@ -506,7 +506,7 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
 
 
 
-## <a name="defaults"></a>自訂遙測的預設屬性
+## <a name="defaults"></a>自訂遙測資料的預設屬性
 
 如果您想為您撰寫的一些自訂事件設定預設屬性值，您可以在 TelemetryClient 中設定它們。 它們會附加至從該用戶端傳送的每個遙測項目。 
 
@@ -561,7 +561,7 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
 
 ## 停用遙測
 
-若要 **動態停止和啟動** 的收集和傳輸遙測:
+若要 **動態停止和啟動** 的收集和傳輸遙測 ︰
 
 *C#*
 
@@ -588,7 +588,7 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 
-## <a name="ikey"></a> 設定已選取自訂遙測的檢測金鑰
+## <a name="ikey"></a>設定已選取自訂遙測的檢測金鑰
 
 *C#*
     
@@ -597,7 +597,7 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
     // ...
 
 
-## <a name="dynamic-ikey"></a> 動態檢測金鑰
+## <a name="dynamic-ikey"></a>動態檢測金鑰
 
 若要避免混合來自開發、 測試和生產環境的遙測，您可以 [建立個別 Application Insights 資源][create] 並變更其金鑰的環境而定。
 
@@ -643,13 +643,13 @@ TelemetryClient 具有內容屬性，其中包含與所有遙測資料一起傳�
 如果您設定這些值自己，請考慮從相關的程式碼行移除 [ApplicationInsights.config][config], ，好讓您的值和標準值才不致混淆。
 
 * **元件** 識別應用程式及其版本
-* **裝置** 應用程式執行所在裝置的相關資料 (在 web 應用程式，這是傳送遙測的伺服器或用戶端裝置)
+* **裝置** 應用程式執行所在裝置的相關資料 （在 web 應用程式，這是傳送遙測的伺服器或用戶端裝置）
 * **InstrumentationKey** 識別的 Azure 中遙測顯示之位置的 Application Insights 資源。 通常會從 ApplicationInsights.config 揀選
 * **位置** 識別裝置的地理位置。
 * **作業** 在 web 應用程式，目前的 HTTP 要求。 在其他應用程式類型中，您可以設定以將事件群組在一起。
- * **識別碼**: 產生的值，與不同事件相互關聯，如此當您檢查任何事件在診斷搜尋中的，您可以發現 「 相關項目 」
- * **名稱**: 識別項，通常是 HTTP 要求的 URL。 
- * **SyntheticSource**: 如果不為 null 或空白，這個字串表示要求的來源已被識別為傀儡程式或 web 測試。 根據預設，會從計量瀏覽器的計算中排除。
+ * **識別碼**︰ 產生的值，與不同事件相互關聯，如此當您檢查任何事件在診斷搜尋中的，您可以發現 「 相關項目 」
+ * **名稱**︰ 識別項，通常是 HTTP 要求的 URL。 
+ * **SyntheticSource**︰ 如果不為 null 或空白，這個字串表示要求的來源已被識別為傀儡程式或 web 測試。 根據預設，會從計量瀏覽器的計算中排除。
 * **屬性** 與所有遙測資料一起傳送的屬性。 可以在個別 Track* 呼叫中覆寫。
 * **工作階段** 識別使用者的工作階段。 識別碼會設為產生的值，當使用者一段時間沒有作用時會變更。
 * **使用者** 使用者資訊。 
@@ -709,7 +709,7 @@ TelemetryClient 具有內容屬性，其中包含與所有遙測資料一起傳�
 
     是，但我們尚未發佈。
 
-## <a name="next"></a>後續步驟
+## <a name="next"></a>接續步驟
 
 
 [搜尋事件和記錄檔][diagnostic]
@@ -735,3 +735,4 @@ TelemetryClient 具有內容屬性，其中包含與所有遙測資料一起傳�
 [windows]: app-insights-windows-get-started.md
 
  
+

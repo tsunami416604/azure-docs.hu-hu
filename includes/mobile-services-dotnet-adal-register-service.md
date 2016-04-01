@@ -3,7 +3,7 @@
 
 在本節中，您將向 Azure Active Directory 註冊您的行動服務，並設定權限以允許單一登入模擬。
 
-1. 向 Azure Active Directory 註冊應用程式，依照 [如何向 Azure Active Directory] 主題。
+1. 向 Azure Active Directory 註冊應用程式，依照 [How to Register with the Azure Active Directory] 主題。
 
 2. 在 [Azure clasic 入口網站](https://manage.windowsazure.com/), 回到 Azure Active Directory 擴充功能，按一下您的 active directory
 
@@ -37,4 +37,5 @@
 
 <!-- URLs. -->
 [How to Register with the Azure Active Directory]: ../articles/mobile-services/mobile-services-how-to-register-active-directory-authentication.md
+
 

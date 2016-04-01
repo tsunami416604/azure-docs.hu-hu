@@ -139,7 +139,7 @@ HDInsight 叢集會被指派特定的虛擬網路介面完整網域名稱 (FQDN)
 
 在擁有仲裁資訊後，請將其用於用戶端應用程式中。
 
-例如，對於使用 HBase API 的 Java 應用程式，您將加入 **hbase-site.xml** 專案檔案，並在檔案中指定仲裁資訊，如下所示:
+例如，對於使用 HBase API 的 Java 應用程式，您將加入 **hbase-site.xml** 專案檔案，並在檔案中指定仲裁資訊，如下所示 ︰
 
 ```
 <configuration>
@@ -164,7 +164,7 @@ HDInsight 叢集會被指派特定的虛擬網路介面完整網域名稱 (FQDN)
 
 如果您在從 HDInsight 存取服務時遇到問題，請參閱相關服務文件，以確定您已啟用網路存取功能。 您也可以藉由在相同虛擬網路上建立 Azure 虛擬機器來驗證網路存取功能，並使用用戶端公用程式來驗證虛擬機器可以透過虛擬網路連接服務。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 下列範例示範如何搭配使用 HDInsight 與 Azure 虛擬網路：
 
@@ -175,4 +175,5 @@ HDInsight 叢集會被指派特定的虛擬網路介面完整網域名稱 (FQDN)
 * [在 HDInsight 中搭配 Hadoop 使用 Sqoop](hdinsight-use-sqoop-mac-linux.md) -提供有關搭配使用 sqoop 與 SQL Server 透過虛擬網路傳輸資料。
 
 若要深入了解 Azure 虛擬網路，請參閱 [虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
+
 

@@ -42,7 +42,7 @@ Azure HDInight 上的 Apache Spark 叢集能封裝 Spark 作業伺服器，使�
     curl.exe -k -u "myuser:myPass@word1" -d "" "https://mysparkcluster.azurehdinsight.net/sparkjobserver/contexts/mystreaming?num-cpu-cores=4&memory-per-node=1024m"
 
 
-##<a name="submitapp"></a>提交至叢集的應用程式
+##<a name="submitapp"></a>將應用程式提交到叢集
 
     curl.exe -k -u "<hdinsight user>:<user password>" -d @<input file name> "https://<cluster name>.azurehdinsight.net/sparkjobserver/jobs?appName=<app name>&classPath=<class path>&context=<context>"
 
@@ -66,7 +66,7 @@ Azure HDInight 上的 Apache Spark 叢集能封裝 Spark 作業伺服器，使�
 
 * [概觀：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 * [在 HDInsight 叢集上佈建 Spark](hdinsight-apache-spark-provision-clusters.md)
-* [在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
+* [執行 HDInsight 中使用 Spark 與 BI 工具的互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
 * [在 HDInsight 中使用 Spark 建置機器學習應用程式](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 * [在 HDInsight 中使用 Spark 建置即時串流應用程式](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](hdinsight-apache-spark-resource-manager.md)
@@ -81,4 +81,5 @@ Azure HDInight 上的 Apache Spark 叢集能封裝 Spark 作業伺服器，使�
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/ 
+
 

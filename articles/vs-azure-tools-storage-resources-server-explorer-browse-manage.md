@@ -86,13 +86,13 @@ Blob 節點會顯示所選之儲存體帳戶的容器清單。 Blob 容器包含
 
     ![將檔案上傳至 blob 資料夾](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766037.png)
 
-1. 在 **上傳新的檔案** 對話方塊方塊中，選擇 [ **瀏覽** 按鈕來指定您要上傳的檔案，然後輸入資料夾名稱 **資料夾 (選擇性)** 方塊。
+1. 在 **上傳新的檔案** 對話方塊方塊中，選擇 [ **瀏覽** 按鈕來指定您要上傳的檔案，然後輸入資料夾名稱 **資料夾 （選擇性）** 方塊。
 
     您可以遵循相同的程序將子資料夾加入至容器資料夾。 如果您未指定資料夾名稱，檔案將會上傳至 blob 容器的最上層。檔案會出現在容器中指定的資料夾。
 
     ![加入至 blob 容器的資料夾](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766038.png)
 
-1. 按兩下資料夾或按下 ENTER 以查看資料夾的內容。 當您準備在容器的資料夾中時，您可以藉由選擇巡覽回容器的根目錄 **開啟上層目錄** (向上箭頭) 按鈕。
+1. 按兩下資料夾或按下 ENTER 以查看資料夾的內容。 當您準備在容器的資料夾中時，您可以藉由選擇巡覽回容器的根目錄 **開啟上層目錄** （向上箭頭） 按鈕。
 
 ### 刪除容器資料夾
 
@@ -104,7 +104,7 @@ Blob 節點會顯示所選之儲存體帳戶的容器清單。 Blob 容器包含
 
 您可以藉由指定一般的前置詞來篩選顯示的 blob。
 
-例如，如果您輸入的前置詞 `hello` 篩選文字的方塊，然後選擇 [ **Execute** (**!**)按鈕，以 'hello' 開頭的 blob 會出現。
+例如，如果您輸入的前置詞 `hello` 篩選文字的方塊，然後選擇 [ **Execute** (**！**)按鈕，以 'hello' 開頭的 blob 會出現。
 
 ![VST_SE_FilterBlobs](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC519076.png)
 
@@ -161,7 +161,7 @@ Blob 節點會顯示所選之儲存體帳戶的容器清單。 Blob 容器包含
 
 ![檢視佇列](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
 
-如需有關儲存體服務佇列，請參閱 [How to: 使用佇列儲存體服務](http://go.microsoft.com/fwlink/?LinkID=264702)。 如需 web 服務的儲存體服務佇列，請參閱 [佇列服務概念](http://go.microsoft.com/fwlink/?LinkId=264788)。 如需如何使用 Visual Studio，將訊息傳送至儲存體服務佇列的資訊，請參閱 [傳送訊息至儲存體服務佇列](https://msdn.microsoft.com/library/azure/jj649344.aspx)。
+如需有關儲存體服務佇列，請參閱 [How to ︰ 使用佇列儲存體服務](http://go.microsoft.com/fwlink/?LinkID=264702)。 如需 web 服務的儲存體服務佇列，請參閱 [佇列服務概念](http://go.microsoft.com/fwlink/?LinkId=264788)。 如需如何使用 Visual Studio，將訊息傳送至儲存體服務佇列的資訊，請參閱 [傳送訊息至儲存體服務佇列](https://msdn.microsoft.com/library/azure/jj649344.aspx)。
 
 >[AZURE.NOTE] 儲存體服務佇列與服務匯流排佇列截然不同。 如需服務匯流排佇列的詳細資訊，請參閱服務匯流排佇列、主題和訂用帳戶。
 
@@ -189,12 +189,12 @@ Azure 資料表儲存體服務可儲存大量的結構化資料。 此服務是�
 
 ### 編輯資料表資料
 
-1. 在 **資料表設計工具**, ，開啟實體 (單一資料列) 或屬性 (單一儲存格) 的捷徑功能表，然後選擇 **編輯**。
+1. 在 **資料表設計工具**, ，開啟實體 （單一資料列） 或屬性 （單一儲存格） 的捷徑功能表，然後選擇 **編輯**。
 
     ![新增或編輯資料表實體](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC656238.png)
 
     單一資料表中的實體不一定要有同一組屬性 (資料行)。 請記住下列檢視和編輯資料表資料的限制。
-    - 您無法檢視或編輯二進位資料 (類型 byte[])，但是您可以將它儲存在資料表中。
+    - 您無法檢視或編輯二進位資料 （類型 byte[])，但是您可以將它儲存在資料表中。
 
     - 您無法編輯 **PartitionKey** 或 **RowKey** 值，因為在 Azure 中的資料表儲存體不支援這項操作。
 
@@ -313,4 +313,5 @@ Azure 資料表儲存體服務可儲存大量的結構化資料。 此服務是�
 ## 後續步驟
 
 若要了解更多有關如何使用 Azure 儲存體服務，請參閱 [存取 Azure 儲存體服務](https://msdn.microsoft.com/library/azure/ee405490.aspx)。
+
 

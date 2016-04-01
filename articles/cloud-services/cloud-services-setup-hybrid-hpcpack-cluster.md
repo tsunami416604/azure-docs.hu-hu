@@ -29,7 +29,7 @@
 
 >[AZURE.NOTE] Azure 提供 [各種大小](../virtual-machines/virtual-machines-size-specs.md) 為您的運算資源，適用於不同的工作負載。 例如，A8 和 A9 執行個體結合了高效能與特定 HPC 應用程式所需的低延遲、高輸送量應用程式網路存取。 請參閱 [關於 A8、 A9、 A10 和 A11 計算密集型執行個體](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)。
 
-## 先決條件
+## 必要條件
 
 >[AZURE.NOTE]若要完成此教學課程，您需要 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 [建立 Azure 帳戶](http://azure.microsoft.com/develop/php/tutorials/create-a-windows-azure-account/)。
 
@@ -179,7 +179,7 @@ HPC Pack 會在前端節點安裝一個自我簽署憑證 (稱為 Default Micros
 
     b. 按一下 [ **下一步** 以接受預設範本名稱。
 
-    c. 在 **提供訂閱資訊** 頁面上，輸入您的 Azure 訂閱識別碼 (位於您的 Azure <a href="[https://account.windowsazure.com/Subscriptions">帳戶資訊</a>)。 然後，在 **管理憑證**, ，按一下 [ **瀏覽** ，然後選取 **Default HPC Azure Management。**然後按一下 [ **下一步**。
+    c. 在 **提供訂閱資訊** 頁面上，輸入您的 Azure 訂閱識別碼 (位於您的 Azure <a href="[https://account.windowsazure.com/Subscriptions">帳戶資訊</a>)。 然後，在 **管理憑證**, ，按一下 [ **瀏覽** ，然後選取 **Default HPC Azure Management。** 然後按一下 [ **下一步**。
 
     ![Node Template][config_hpc12]
 
@@ -189,7 +189,7 @@ HPC Pack 會在前端節點安裝一個自我簽署憑證 (稱為 Default Micros
 
     e. 按一下 [ **下一步** 以接受精靈剩餘頁面上的預設值。 然後，在 **檢閱** 索引標籤上，按一下 [ **建立** 建立節點範本。
 
-    >[AZURE.NOTE]根據預設，Azure 節點範本包含讓您啟動 (佈建) 和手動停止節點的設定。 您也可以設定排程來自動啟動和停止 Azure 節點。
+    >[AZURE.NOTE]根據預設，Azure 節點範本包含讓您啟動 （佈建） 和手動停止節點的設定。 您也可以設定排程來自動啟動和停止 Azure 節點。
 
 ## 將 Azure 節點新增至叢集
 
@@ -238,7 +238,7 @@ HPC Pack 會在前端節點安裝一個自我簽署憑證 (稱為 Default Micros
 
     ![Running Instances][view_instances1]
 
-    您會看到服務中有兩個執行中的背景工作角色執行個體。 HPC Pack 也會自動部署兩個 **HpcProxy** 執行個體 (中型大小) 以處理前端節點與 Azure 之間的通訊。
+    您會看到服務中有兩個執行中的背景工作角色執行個體。 HPC Pack 也會自動部署兩個 **HpcProxy** 執行個體 （中型大小） 以處理前端節點與 Azure 之間的通訊。
 
 5. 若要讓 Azure 節點上線以執行叢集工作，請選取節點、 按一下滑鼠右鍵，然後按一下 [ **上線**。
 
@@ -261,13 +261,13 @@ HPC Pack 會在前端節點安裝一個自我簽署憑證 (稱為 Default Micros
 
 ## 執行測試工作
 
-您可以提交一個在混合式叢集上執行的測試工作。 這個範例是藉由將整數加入至本身的子工作會執行簡單的 「 參數式掃蕩 」 工作 (一種在本質上平行的運算) **set /a** 命令。 叢集中的所有節點皆參與完成從 1 到 100 之整數的子工作。
+您可以提交一個在混合式叢集上執行的測試工作。 這個範例是藉由將整數加入至本身的子工作會執行簡單的 「 參數式掃蕩 」 工作 （一種在本質上平行的運算） **set /a** 命令。 叢集中的所有節點皆參與完成從 1 到 100 之整數的子工作。
 
 1. 在 HPC 叢集管理員中，在 **作業管理**, 中 **動作** ] 窗格中，按一下 [ **新增參數整理工作**。
 
     ![New Job][test_job1]
 
-2. 在 **新增參數整理工作** 對話方塊中，於 **命令列**, ，型別 `set /a *+*` (覆寫出現的預設命令行)。 保留其餘設定，預設值，然後按 **提交** 提交工作。
+2. 在 **新增參數整理工作** 對話方塊中，於 **命令列**, ，型別 `set /a *+*` （覆寫出現的預設命令行）。 保留其餘設定，預設值，然後按 **提交** 提交工作。
 
     ![Parametric Sweep][param_sweep1]
 
@@ -347,4 +347,5 @@ HPC Pack 會在前端節點安裝一個自我簽署憑證 (稱為 Default Micros
 [stop_node2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node2.png
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
+
 

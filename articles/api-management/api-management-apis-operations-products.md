@@ -28,7 +28,7 @@ API 管理中的 API 代表可供用戶端應用程式叫用的一組作業。 �
 
 -   [如何建立 API][]
 
-## <a name="add-operations"> </a>如何將作業加入至 API
+## <a name="add-operations"> </a>如何將作業新增至 API
 
 您必須先加入作業，才能夠使用 API 管理中的 API。 本指南示範如何在 API 管理中對 API 加入和設定不同類型的作業。
 
@@ -38,7 +38,7 @@ API 管理中的 API 代表可供用戶端應用程式叫用的一組作業。 �
 
 -   [如何匯入具有作業之 API 的定義][]
 
-## <a name="add-product"> </a>如何建立和發行產品
+## <a name="add-product"> </a>如何建立和發佈產品
 
 在 API 管理中，產品包含一或多個 API 以及使用量配額與使用規定。 發行產品之後，開發人員便可訂閱產品，並開始使用產品的 API。 這些主題提供建立產品、 加入 API 和發行供開發人員的指南。
 
@@ -61,3 +61,4 @@ API 管理中的 API 代表可供用戶端應用程式叫用的一組作業。 �
 [Monitoring and analytics]: ../api-management-monitoring.md
 [How to import the definition of an API with operations]: api-management-howto-import-api.md
 [How create and configure advanced product settings]: api-management-howto-product-with-rules.md 
+

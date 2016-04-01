@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="如何使用 blob 儲存體 (c + +) |Microsoft Azure" 
+    pageTitle="如何使用 blob 儲存體 （c + +） |Microsoft Azure" 
     description="了解如何在 Azure 中使用 Blob 儲存體服務。 範例是以 C++ 撰寫的。" 
     services="storage" 
     documentationCenter=".net" 
@@ -67,7 +67,7 @@ Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管�
     // Retrieve storage account from connection string.
     azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-接下來，取得參考 **cloud_blob_client** 類別，因為它可讓您擷取代表容器和 blob 儲存在 Blob 儲存體服務內的物件。 下列程式碼會建立 **cloud_blob_client** 物件使用我們在前面擷取的儲存體帳戶物件:  
+接下來，取得參考 **cloud_blob_client** 類別，因為它可讓您擷取代表容器和 blob 儲存在 Blob 儲存體服務內的物件。 下列程式碼會建立 **cloud_blob_client** 物件使用我們在前面擷取的儲存體帳戶物件 ︰  
 
     // Create the blob client.
     azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();  
@@ -140,7 +140,7 @@ Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。 在大多數情況下，
 或者，您可以使用 **upload_from_file** 檔案上傳至區塊 blob 的方法。
 
 ## 作法：列出容器中的 Blob
-若要列出容器中的 Blob，請先取得容器參照。 然後，您可以使用容器的 **list_blobs** 方法來擷取 blob 和/或目錄。 若要存取一組豐富的屬性和方法傳回 **list_blob_item**, ，您必須呼叫 **list_blob_item.as_blob** 方法來取得  **cloud_blob** 物件，或 **list_blob.as_directory** 方法來取得 cloud_blob_directory 物件。 下列程式碼示範如何擷取和輸出中各個項目的 URI **我範例容器** 容器:
+若要列出容器中的 Blob，請先取得容器參照。 然後，您可以使用容器的 **list_blobs** 方法來擷取 blob 和/或目錄。 若要存取一組豐富的屬性和方法傳回 **list_blob_item**, ，您必須呼叫 **list_blob_item.as_blob** 方法來取得  **cloud_blob** 物件，或 **list_blob.as_directory** 方法來取得 cloud_blob_directory 物件。 下列程式碼示範如何擷取和輸出中各個項目的 URI **我範例容器** 容器 ︰
 
     // Retrieve storage account from connection string.
     azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -242,4 +242,5 @@ Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。 在大多數情況下，
 
 
  
+
 

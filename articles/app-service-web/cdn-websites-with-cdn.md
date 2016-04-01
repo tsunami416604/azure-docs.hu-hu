@@ -23,7 +23,7 @@
 
 整合 Web Apps 與 Azure CDN 提供下列優點：
 
-- 將 web 應用程式的內容部署 (影像、 指令碼和樣式表) 整合 [連續部署](web-sites-publish-source-control.md) 程序
+- 將 web 應用程式的內容部署 （影像、 指令碼和樣式表） 整合 [連續部署](web-sites-publish-source-control.md) 程序
 - 輕鬆地升級 Azure App Service 的 Web 應用程式中的 NuGet 封裝 (例如 jQuery 或 Bootstrap 版本) 
 - 從相同的 Visual Studio 介面來管理 Web 應用程式和 CDN 提供的內容
 - 整合 ASP.NET 統合和縮製與 Azure CDN
@@ -41,11 +41,11 @@
 -   使用中 [Microsoft Azure 帳戶](/account/)
 -   使用 visual Studio 2015 [Azure SDK for.NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)。 如果您使用 Visual Studio，則步驟可能有差異。
 
-> [AZURE.NOTE] 您需要 Azure 帳戶才能完成此教學課程:
+> [AZURE.NOTE] 您需要 Azure 帳戶才能完成此教學課程 ︰
 > + 您可以 [免費申請 Azure 帳戶](/pricing/free-trial/?WT.mc_id=A261C142F) -取得點數可用來試用付費 Azure 服務，並甚至用完後，您可以保留帳戶，並使用免費的 Azure 服務，例如 Web 應用程式。
 > + 您可以 [啟用 Visual Studio 訂閱者權益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) -您的 Visual Studio 訂閱提供您額度，您可以使用 Azure 付費服務的每個月。
 >
-> 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+> 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 將具有整合式 CDN 端點的 Web 應用程式部署至 Azure ##
 
@@ -92,7 +92,7 @@
 
     ![](media/cdn-websites-with-cdn/9-enable-query-string.png)
 
-    >[AZURE.NOTE] 雖然啟用查詢字串並不需要本節教學課程，您會想要這樣做任何變更後的方便盡這裡是長時間才能傳播至所有 CDN 節點，您不希望任何非字串-啟用查詢的內容塞滿 CDN 快取 (更新 CDN 內容將會稍後討論)。
+    >[AZURE.NOTE] 雖然啟用查詢字串並不需要本節教學課程，您會想要這樣做任何變更後的方便盡這裡是長時間才能傳播至所有 CDN 節點，您不希望任何非字串-啟用查詢的內容塞滿 CDN 快取 （更新 CDN 內容將會稍後討論）。
 
 2. 現在，按一下 CDN 端點位址。 如果端點已準備就緒，您應該會看到顯示的 Web 應用程式。 如果您收到 **HTTP 404** 錯誤，CDN 端點還未準備就緒。 您可能需要等候一小時，CDN 組態才能傳播到所有邊緣節點。 
 
@@ -137,7 +137,7 @@
       ...
     </system.webServer>
 
-這樣做時，Azure Web 應用程式中的所有靜態檔案會在您的 CDN 快取中遵守相同規則。 更精確控制快取設定，請新增 *Web.config* 檔案的資料夾，並加入您的設定。 例如，加入 *Web.config* 檔案重新命名為 *\Content* 資料夾，並將以下列 XML 內容:
+這樣做時，Azure Web 應用程式中的所有靜態檔案會在您的 CDN 快取中遵守相同規則。 更精確控制快取設定，請新增 *Web.config* 檔案的資料夾，並加入您的設定。 例如，加入 *Web.config* 檔案重新命名為 *\Content* 資料夾，並將以下列 XML 內容 ︰
 
     <?xml version="1.0"?>
     <configuration>
@@ -158,7 +158,7 @@
 
 整合 Web 應用程式與 Azure CDN 時，透過 Azure CDN 從控制器動作提供內容就非常簡單。 同樣地，如果您決定透過 CDN 來提供整個 Azure Web 應用程式，則您不需要這麼做，因為已可透過 CDN 來呼叫所有控制器動作。 我已經將指出的原因，但是 [部署具有整合式 CDN 端點的 Azure web 應用程式](#deploy-a-web-app-to-azure-with-an-integrated-cdn-endpoint), ，您可能決定不這樣，而是選擇選取您想要提供 Azure CDN 從控制器動作。 [Maarten Balliauw](https://twitter.com/maartenballiauw) 示範步驟以一個有趣的 MemeGenerator 控制器中的 [降低延遲與 Azure CDN 從網站上的](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)。 我在這裡簡單地重述一次。
 
-假設您想要拍攝查克羅禮士年輕 web 應用程式中 (相片 [Alan Light](http://www.flickr.com/photos/alan-light/218493788/)) 如下所示:
+假設您想要拍攝查克羅禮士年輕 web 應用程式中 (相片 [Alan Light](http://www.flickr.com/photos/alan-light/218493788/)) 如下所示 ︰
 
 ![](media/cdn-websites-with-cdn/cdn-5-memegenerator.PNG)
 
@@ -272,7 +272,7 @@
 
     ![](media/cdn-websites-with-cdn/cdn-7-configureview.PNG)
 
-4. 開啟新 *Views\MemeGenerator\Index.cshtml* 和內容取代成下列簡單的 HTML 來提交笑梗:
+4. 開啟新 *Views\MemeGenerator\Index.cshtml* 和內容取代成下列簡單的 HTML 來提交笑梗 ︰
 
         <h2>Meme Generator</h2>
         
@@ -329,7 +329,7 @@
 
 ## 整合 ASP.NET 統合和縮製與 Azure CDN ##
 
-指令碼和 CSS 樣式表不常變更，是 Azure CDN 快取的最佳候選項。 透過 Azure CDN 提供整個 Web 應用程式是整合統合和縮製與 Azure CDN 最輕鬆的方法。 不過，您可以選擇這種作法的原因說明中 [整合 Azure CDN 端點與 Azure web 應用程式，並從 Azure CDN 提供網頁的靜態內容](#deploy-a-web-app-to-azure-with-an-integrated-cdn-endpoint), ，我將示範如何同時保留開發人員希望經驗的 ASP.NET 統合和縮製，例如:
+指令碼和 CSS 樣式表不常變更，是 Azure CDN 快取的最佳候選項。 透過 Azure CDN 提供整個 Web 應用程式是整合統合和縮製與 Azure CDN 最輕鬆的方法。 不過，您可以選擇這種作法的原因說明中 [整合 Azure CDN 端點與 Azure web 應用程式，並從 Azure CDN 提供網頁的靜態內容](#deploy-a-web-app-to-azure-with-an-integrated-cdn-endpoint), ，我將示範如何同時保留開發人員希望經驗的 ASP.NET 統合和縮製，例如 ︰
 
 -   絕佳的偵錯模式體驗
 -   流暢的部署
@@ -509,7 +509,7 @@
     ```
     ...
     <link href="http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
-<script>(function () {
+<script>(function() {
                 var loadFallback,
                     len = document.styleSheets.length;
                 for (var i = 0; i < len; i++) {
@@ -521,12 +521,12 @@
                         var value = window.getComputedStyle(meta).getPropertyValue('width');
                         document.head.removeChild(meta);
                         if (value !== '1px') {
-                            事實 ('<link href="/Content/css" rel="stylesheet" type="text/css" />');
+                            document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />');
                         }
                     }
                 }
                 return true;
-            }())||事實 ('< src ="/ Content/css">< \/script >');</script>
+            }())||document.write('<script src="/Content/css"><\/script>');</script>
 
     <script src="http://az673227.vo.msecnd.net/bundles/modernizer?v=1.0.0.25474"></script>
     <script>(window.Modernizr)||document.write('<script src="/bundles/modernizr"><\/script>');</script>
@@ -539,11 +539,11 @@
     ...
     ```
 
-    Note that injected script for the CSS bundle still contains the errant remnant from the `CdnFallbackExpression` property in the line:
+    請注意，針對 CSS 套件組合插入的指令碼，仍在這一行中包含 `CdnFallbackExpression` 屬性殘留的遊蕩部分：
 
         }())||document.write('<script src="/Content/css"><\/script>');</script>
 
-    But since the first part of the || expression will always return true (in the line directly above that), the document.write() function will never run.
+    但因為 || 運算式的開頭部分一定會傳回 true (緊鄰的上一行)，所以 document.write() 函數永遠不會執行。
 
 6. 若要測試後援指令碼是否可運作，請回到 CDN 端點的儀表板，按一下 [ **停用端點**。
 
@@ -559,8 +559,9 @@
 - [使用 Azure 的 CDN](../cdn-how-to-use-cdn.md)
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 如需舊入口網站變更為新入口網站的指南，請參閱: [瀏覽預覽入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需舊入口網站變更為新入口網站的指南，請參閱 ︰ [瀏覽預覽入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
  
+
 
 

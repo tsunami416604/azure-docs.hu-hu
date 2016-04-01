@@ -27,13 +27,13 @@
 
 本主題說明如何在 Azure 行動服務中註冊您的應用程式，使其能夠採用 Facebook 驗證。
 
->[AZURE.NOTE] 本教學課程是有關 [Azure 行動服務]，此方案可協助您建置用於任何平台的可擴充行動應用程式。 行動服務讓同步處理資料、驗證使用者及推播通知等作業變得簡單。 此頁面是[開始使用驗證](mobile-services-ios-get-started-users.md)教學課程的輔助，說明如何將使用者登入您的應用程式。 如果這是您第一次使用行動服務，請完成[開始使用行動服務](mobile-services-ios-get-started.md)教學課程。
+>[AZURE.NOTE] 本教學課程是有關 [Azure Mobile Services], ，此方案可協助您建置用於任何平台的可擴充行動應用程式。 行動服務讓同步處理資料、驗證使用者及推播通知等作業變得簡單。 此頁面是[開始使用驗證](mobile-services-ios-get-started-users.md)教學課程的輔助，說明如何將使用者登入您的應用程式。 如果這是您第一次使用行動服務，請完成[開始使用行動服務](mobile-services-ios-get-started.md)教學課程。
 
 若要完成本主題的程序，您必須具有已通過電子郵件地址與手機號碼驗證的 Facebook 帳戶。 若要建立新的 Facebook 帳戶，請前往 [facebook.com](http://go.microsoft.com/fwlink/p/?LinkId=268285)。
 
 1. 導覽至 [Facebook 開發人員](http://go.microsoft.com/fwlink/p/?LinkId=268285)網站，並以您的 Facebook 帳戶認證登入。
 
-2. (選擇性)如果您尚未註冊您，按一下 [ **我的應用程式** 然後按一下 [ **身為開發人員註冊**, ，接受政策並遵循註冊步驟。
+2. （選擇性）如果您尚未註冊您，按一下 [ **我的應用程式** 然後按一下 [ **身為開發人員註冊**, ，接受政策並遵循註冊步驟。
 
 3. 按一下 [ **我的應用程式** > **加入新的應用程式** > **進階安裝**。
 
@@ -60,7 +60,7 @@
     + **.NET 後端**: `https://<mobile_service>.azure-mobile.net/signin-facebook`
     + **JavaScript 後端**: `https://<mobile_service>.azure-mobile.net/login/facebook`
 
-     >[AZURE.NOTE]請確定您使用正確的重新導向 URL 路徑格式，您的行動服務後端類型。 若格式不正確，驗證將不會成功。
+     >[AZURE.NOTE]請確定您使用正確的重新導向 URL 路徑格式，您的行動服務後端類型。 若這不正確，驗證也將不會成功。
 
 
 9. 按一下 [ **狀態和檢閱** > **是** 以啟用您的應用程式的一般公用存取權。
@@ -80,4 +80,5 @@
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure Mobile Services]: http://azure.microsoft.com/services/mobile-services/
+
 

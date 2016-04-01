@@ -126,7 +126,7 @@ Async 函數可能需要 [取消語彙基元](http://www.asp.net/mvc/overview/pe
 * `byte[]`
 * `CloudQueueMessage`
 
-### <a id="polling"></a> 輪詢演算法
+### <a id="polling"></a>輪詢演算法
 
 SDK 會實作隨機指數型倒退演算法，以降低閒置佇列輪詢對儲存體交易成本的影響。  找到訊息時，SDK 會等待兩秒，然後檢查的另一個訊息；當找不到任何訊息時，它會等候大約四秒，然後再試一次。 連續嘗試取得佇列訊息失敗後，等候時間會持續增加，直到它到達等待時間上限 (預設值為一分鐘)。 [最長等待時間是可以設定](#config)。
 
@@ -134,7 +134,7 @@ SDK 會實作隨機指數型倒退演算法，以降低閒置佇列輪詢對儲�
 
 如果您的 Web 應用程式是在多個執行個體上執行，則會有一個連續的 WebJob 在每部機器上執行，而每部機器將會等待觸發程序，才嘗試執行函式。 WebJobs SDK 佇列觸發程序會自動防止函式處理佇列訊息多次；不需將函式撰寫成等冪函式。 不過，如果您想要確保在即使有多個主 Web 應用程式執行個體的情況下，仍然只有一個函式執行個體會執行，則您可以使用 `Singleton` 屬性。 
 
-### <a id="parallel"></a> 平行執行
+### <a id="parallel"></a>平行執行
 
 如果您有多個函數在不同的佇列上接聽，則同時接收到訊息時，SDK 會以平行方式呼叫它們。 
 
@@ -142,7 +142,7 @@ SDK 會實作隨機指數型倒退演算法，以降低閒置佇列輪詢對儲�
 
 如果您不想要平行執行在單一佇列上收到的訊息，您可以將批次大小設定為 1。 另請參閱 **更充分掌控佇列處理** 中 [Azure WebJobs SDK 1.1.0 RTM](/blog/azure-webjobs-sdk-1-1-0-rtm/)。
 
-### <a id="queuemetadata"></a>取得佇列或佇列訊息中繼資料
+### <a id="queuemetadata"></a> 取得佇列或佇列訊息中繼資料
 
 您可以透過新增參數至方法簽章來取得下列訊息屬性：
 
@@ -195,7 +195,7 @@ SDK 會實作隨機指數型倒退演算法，以降低閒置佇列輪詢對儲�
         queue endpoint=https://contosoads.queue.core.windows.net/
         queueTrigger=Hello world!
 
-### <a id="graceful"></a>正常關機
+### <a id="graceful"></a>順利關機
 
 在連續 WebJob 中執行的函數可以接受 `CancellationToken` 參數，該參數可讓作業系統在 WebJob 即將終止時通知函數。 您可以使用此通知來確保函數不會在讓資料維持不一致狀態的情況下意外終止。
 
@@ -218,7 +218,7 @@ SDK 會實作隨機指數型倒退演算法，以降低閒置佇列輪詢對儲�
         }
     }
 
-**注意:** 儀表板可能不會正確顯示的狀態和已關閉的函式的輸出。
+**注意 ︰** 儀表板可能不會正確顯示的狀態和已關閉的函式的輸出。
  
 如需詳細資訊，請參閱 [WebJobs 正常關機](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)。   
 
@@ -297,7 +297,7 @@ SDK 會自動將物件序列化為 JSON。 即使物件是空值，也一律會�
 
 `IBinder` 介面也能與 `Table` 和 `Blob` 屬性搭配使用。
 
-## <a id="blobs"></a> 如何在處理佇列訊息時讀取和寫入 Blob 和資料表
+## <a id="blobs"></a> 如何在處理佇列訊息時讀取及寫入 Blob 與表格
 
 `Blob` 與 `Table` 屬性可讓您讀取和寫入 Blob 與資料表。 本節中的範例適用於 Blob。 程式碼範例示範如何建立或更新 blob 時觸發程序，請參閱 [如何透過 WebJobs SDK 使用 Azure blob 儲存體](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), ，以及讀取和寫入資料表的程式碼範例，請參閱 [如何透過 WebJobs SDK 使用 Azure 資料表儲存體](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)。
 
@@ -500,7 +500,7 @@ SDK 將會呼叫函數最多 5 次以處理佇列訊息。 如果第五次嘗試
             host.RunAndBlock();
         }
  
-**注意:** 佇列、 資料表和 blob 名稱每次呼叫函式，但應用程式啟動時才解析 blob 容器名稱。 您無法在執行工作時，變更 Blob 容器名稱。 
+**注意 ︰** 佇列、 資料表和 blob 名稱每次呼叫函式，但應用程式啟動時才解析 blob 容器名稱。 您無法在執行工作時，變更 Blob 容器名稱。 
 
 ## <a id="manual"></a>如何手動觸發函數
 
@@ -537,7 +537,7 @@ SDK 將會呼叫函數最多 5 次以處理佇列訊息。 如果第五次嘗試
 
 因為主控台屬於單一執行緒，無法同時執行許多工作函式，所以主控台輸出無法連結到特定的方法引動過程。 這就是為什麼 SDK 提供使用它自己專屬的記錄寫入器物件的每個函式引動過程。
 
-要寫入 [應用程式追蹤記錄](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), ，使用 `Console.Out` (建立標示為 INFO 的記錄檔) 和 `Console.Error` (建立標示為 ERROR 的記錄檔)。 另一個方法是使用 [Trace 或 TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), 、 提供詳細資訊、 警告及嚴重層級，除了資訊與錯誤。 視您設定 Azure 網頁應用程式的方式而定，應用程式追蹤記錄檔會出現在網頁應用程式記錄檔、Azure 資料表或 Azure Blob 中。 所有主控台輸出的應用程式記錄檔裡最近的 100 筆記錄也同樣會顯示在 WebJob 的 [儀表板] 頁面，而不是函式引動過程的頁面。 
+要寫入 [應用程式追蹤記錄](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), ，使用 `Console.Out` （建立標示為 INFO 的記錄檔） 和 `Console.Error` （建立標示為 ERROR 的記錄檔）。 另一個方法是使用 [Trace 或 TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), 、 提供詳細資訊、 警告及嚴重層級，除了資訊與錯誤。 視您設定 Azure 網頁應用程式的方式而定，應用程式追蹤記錄檔會出現在網頁應用程式記錄檔、Azure 資料表或 Azure Blob 中。 所有主控台輸出的應用程式記錄檔裡最近的 100 筆記錄也同樣會顯示在 WebJob 的 [儀表板] 頁面，而不是函式引動過程的頁面。 
 
 只有當程式是以 Azure WebJob 執行時，主控台輸出才會顯示在儀表板，而不是在本機或在某些其他環境中執行時。
 
@@ -566,7 +566,7 @@ WebJobs SDK 儀表板中，從輸出 `TextWriter` 物件顯示當您移至特定
 
 ![函式引動過程頁面中的記錄檔](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardlogs.png)
 
-WebJobs SDK 儀表板中的主控台的最新的 100 行則會顯示輸出當您移至頁面進行 WebJob (不適用於叫用函數)，並按一下 **切換輸出**。
+WebJobs SDK 儀表板中的主控台的最新的 100 行則會顯示輸出當您移至頁面進行 WebJob （不適用於叫用函數），並按一下 **切換輸出**。
  
 ![按一下切換輸出](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
 
@@ -613,4 +613,5 @@ public static void ErrorMonitor(
 
 本指南提供的程式碼範例示範如何處理使用 Azure 佇列的常見案例。 如需如何使用 Azure WebJobs 和 WebJobs SDK 的詳細資訊，請參閱 [Azure WebJobs 建議資源](http://go.microsoft.com/fwlink/?linkid=390226)。
  
+
 

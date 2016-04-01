@@ -36,7 +36,7 @@ Install-Module Azure
     
 4. 請記下的 **ApplicationId** 您所建立的應用程式。 稍後您將會需要此資訊。
 
-5. 建立新的服務主體使用下列命令，取代 **{MyApplicationId}** 與 **ApplicationId** 上一個步驟:
+5. 建立新的服務主體使用下列命令，取代 **{MyApplicationId}** 與 **ApplicationId** 上一個步驟 ︰
 
     ```
     New-AzureRmADServicePrincipal -ApplicationId {MyApplicationId}
@@ -57,4 +57,5 @@ Install-Module Azure
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 [lnk-powershell-install]: https://azure.microsoft.com/en-us/blog/azps-1-0-pre/
+
 

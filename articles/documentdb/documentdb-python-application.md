@@ -61,7 +61,7 @@ Azure 網站。
 
 ## 步驟 1：建立 DocumentDB 資料庫帳戶
 
-現在就開始建立 DocumentDB 帳戶。 如果您已經有帳戶，您可以跳到 [步驟 2: 建立新的 Python Flask web 應用程式](#Step-2:-Create-a-new-Python-Flask-Web-Application)。
+現在就開始建立 DocumentDB 帳戶。 如果您已經有帳戶，您可以跳到 [步驟 2 ︰ 建立新的 Python Flask web 應用程式](#Step-2:-Create-a-new-Python-Flask-Web-Application)。
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -92,7 +92,7 @@ Azure 網站。
 您的專案設定好之後，您需要新增特定 Flask 封裝
 您必須針對您的專案，包括 pydocumentdb，DocumentDB 的 Python 封裝。
 
-1. 開啟檔案的名稱 **requirements.txt** 並取代為下列內容:
+1. 開啟檔案的名稱 **requirements.txt** 並取代為下列內容 ︰
 
         flask==0.9
         flask-mail==0.7.6
@@ -112,7 +112,7 @@ Azure 網站。
 
 > [AZURE.NOTE] 在罕見的情況下，您可能會看到 [輸出] 視窗中的失敗。 If
 發生此情形，請檢查錯誤是否與清除有關。 有時是
-清理失敗，但安裝卻成功 (向上捲動
+清理失敗，但安裝卻成功 （向上捲動
 來驗證這一點)。
 <a name="verify-the-virtual-environment"></a>如果發生這種情況，您可以放心繼續進行。
 
@@ -386,7 +386,7 @@ import tutorial.views
 DocumentDB 中，我們要部署至 Azure 網站。
 
 1. 以滑鼠右鍵按一下 [方案總管] 中的專案 (請確定您已沒有仍在執行它
-在本機上)，然後選取 **發行**。  接著，請選取 **Microsoft Azure 網站**。
+在本機上），然後選取 **發行**。  接著，請選取 **Microsoft Azure 網站**。
 
     ![[方案總管] 中選取之教學課程 (具有反白顯示的 [發佈] 選項) 的螢幕擷取畫面](./media/documentdb-python-application/image20.png)
 
@@ -418,4 +418,5 @@ DocumentDB 中，我們要部署至 Azure 網站。
   [3]: http://aka.ms/vcpython27
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
+
 

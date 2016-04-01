@@ -70,12 +70,12 @@
     ```
 1.  執行 PowerShell 指令碼 Create-ServicePrincipal.ps1 與下列參數：
 
-    |參數|值|
-    |---|---|
-    |ServicePrincipalDisplayName|任何名稱。|
-    |ServicePrincipalHomePage|任何 URI。 不一定要實際存在。|
-    |ServicePrincipalIdentifierUri|任何唯一的 URI。 不一定要實際存在。|
-    |ServicePrincipalSecurePassword|$password|
+  	|參數|值|
+  	|---|---|
+  	|ServicePrincipalDisplayName|任何名稱。|
+  	|ServicePrincipalHomePage|任何 URI。 不一定要實際存在。|
+  	|ServicePrincipalIdentifierUri|任何唯一的 URI。 不一定要實際存在。|
+  	|ServicePrincipalSecurePassword|$password|
 
     當指令碼完成時，它會輸出下列三個值。 請記下值，因為它們會用來做為組建變數。
 
@@ -88,14 +88,14 @@
 1.  在系統管理 PowerShell 提示字元中，將目錄變更為您解壓縮 ServiceFabricCIManualScripts.zip 所在的位置。
 1.  執行 PowerShell 指令碼 CreateAndUpload-Certificate.ps1 與下列參數：
 
-    |參數|值|
-    |---|---|
-    |ServiceFabricKeyVaultLocation|任何值。 必須符合您計劃建立叢集的位置。|
-    |ServiceFabricCertificateSecretName|任何值。|
-    |ServiceFabricSecureCertificatePassword|任何值。 當您在組建電腦上匯入憑證時使用。|
-    |ServiceFabricKeyVaultResourceGroupName|任何值。 不過，不要使用您計劃用於您的叢集的資源群組名稱。|
-    |ServiceFabricKeyVaultName|任何值。|
-    |ServiceFabricPfxFileOutputPath|任何值。 此檔案是用來將憑證匯入您的組建電腦。|
+  	|參數|值|
+  	|---|---|
+  	|ServiceFabricKeyVaultLocation|任何值。 必須符合您計劃建立叢集的位置。|
+  	|ServiceFabricCertificateSecretName|任何值。|
+  	|ServiceFabricSecureCertificatePassword|任何值。 當您在組建電腦上匯入憑證時使用。|
+  	|ServiceFabricKeyVaultResourceGroupName|任何值。 不過，不要使用您計劃用於您的叢集的資源群組名稱。|
+  	|ServiceFabricKeyVaultName|任何值。|
+  	|ServiceFabricPfxFileOutputPath|任何值。 此檔案是用來將憑證匯入您的組建電腦。|
 
     當指令碼完成時，它會輸出下列三個值。 請記下這些值，因為它們會用來做為組建變數。
 
@@ -110,7 +110,7 @@
 
 ### 安裝 Visual Studio 2015
 
-1.  如果您已佈建機器 (或提供您自己的計劃)，安裝 [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) 在該電腦上。
+1.  如果您已佈建機器 （或提供您自己的計劃），安裝 [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) 在該電腦上。
 2.  如果您還沒有電腦，可以使用預先安裝的 Visual Studio 2015 快速佈建 Azure 虛擬機器 (VM)。 作法：
     1.  登入 [Azure 管理入口網站](http://portal.azure.com)。
     1.  選擇 **新增** 左上角的 [螢幕命令。
@@ -203,15 +203,15 @@
 
 1.  從系統管理 PowerShell 命令提示字元中，執行 `C:\agent\ConfigureAgent.ps1`。 指令碼會提示您下列參數：
 
-    |參數|值|
-    |---|---|
-    |代理程式名稱|接受預設值，`Agent-[machine name]`。)
-    |TFS Url|輸入您 Team 專案的 URL，例如 `https://[your-VSTS-account-name].visualstudio.com`。
-    |代理程式集區|輸入代理程式集區的名稱。 (如果您尚未建立代理程式集區，接受預設值。)|
-    |工作資料夾|接受預設值。 這是組建代理程式實際建置您的應用程式的資料夾。 請注意：如果您計劃建置 ASP.NET 5 Web 服務，建議您為資料夾選擇可能的最短名稱，以避免在部署期間發生 PathTooLongExceptions 錯誤。|
-    |安裝為 Windows 服務？|預設值為 N。將值變更為 Y。|
-    |執行服務的使用者帳戶|接受預設值，`NT AUTHORITY\LocalService)`。|
-    |取消設定現有的代理程式？|接受預設值， **N**。|
+  	|參數|值|
+  	|---|---|
+  	|代理程式名稱|接受預設值，`Agent-[machine name]`。)
+  	|TFS Url|輸入您 Team 專案的 URL，例如 `https://[your-VSTS-account-name].visualstudio.com`。
+  	|代理程式集區|輸入代理程式集區的名稱。 (如果您尚未建立代理程式集區，接受預設值。)|
+  	|工作資料夾|接受預設值。 這是組建代理程式實際建置您的應用程式的資料夾。 請注意：如果您計劃建置 ASP.NET 5 Web 服務，建議您為資料夾選擇可能的最短名稱，以避免在部署期間發生 PathTooLongExceptions 錯誤。|
+  	|安裝為 Windows 服務？|預設值為 N。將值變更為 Y。|
+  	|執行服務的使用者帳戶|接受預設值，`NT AUTHORITY\LocalService)`。|
+  	|取消設定現有的代理程式？|接受預設值， **N**。|
 
 1. 系統將會提示您輸入認證。 輸入具有您的小組專案權限的 Microsoft 帳戶的認證。
 1. 請確認您的組建代理程式已註冊。 作法：
@@ -241,25 +241,25 @@
     1.  選取您已註冊您的組建代理程式的代理程式佇列，並檢查 **連續整合** 核取方塊。
 1.  在 **變數** 索引標籤上，使用這些值建立下列變數。
 
-    |變數|值|Secret|在佇列時間允許|
-    |---|---|---|---|
-    |BuildConfiguration|發行||X|
-    |BuildPlatform|x64|||
-    |ServicePrincipalPassword|您傳遞給 CreateServicePrincipal.ps1 的密碼|X||
-    |ServicePrincipalId|從 CreateServicePrincipal.ps1 的輸出|||
-    |ServicePrincipalTenantId|從 CreateServicePrincipal.ps1 的輸出|||
-    |ServicePrincipalSubscriptionId|從 CreateServicePrincipal.ps1 的輸出|||
-    |ServiceFabricCertificateThumbprint|從 GenerateCertificate.ps1 的輸出|||
-    |ServiceFabricKeyVaultId|從 GenerateCertificate.ps1 的輸出|||
-    |ServiceFabricCertificateSecretId|從 GenerateCertificate.ps1 的輸出|||
-    |ServiceFabricClusterResourceGroupName|任何您想要的名稱。|||
-    |ServiceFabricClusterName|任何您想要的名稱。|||
-    |ServiceFabricClusterLocation|任何符合您的金鑰保存庫位置的名稱。|||
-    |ServiceFabricClusterAdminPassword|任何您想要的名稱。|X||
-    |ServiceFabricClusterResourceGroupTemplateFilePath|`<path/to/extracted/automation/scripts/ArmTemplate-Full-3xVM-Secure.json>`|||
-    |ServiceFabricPublishProfilePath|`<path/to/your/publish/profiles/MyPublishProfile.xml>` 請注意：發佈設定檔中的連接端點會被忽略。 會改為使用暫存叢集的連接端點。|||
-    |ServiceFabricDeploymentScriptPath|`<path/to/Deploy-FabricApplication.ps1>`|||
-    |ServiceFabricApplicationProjectPath|`<path/to/your/fabric/application/project/folder>` 這應該是包含 .sfproj 檔案的資料夾。||||
+  	|變數|值|Secret|在佇列時間允許|
+  	|---|---|---|---|
+  	|BuildConfiguration|發行||X|
+  	|BuildPlatform|x64|||
+  	|ServicePrincipalPassword|您傳遞給 CreateServicePrincipal.ps1 的密碼|X||
+  	|ServicePrincipalId|從 CreateServicePrincipal.ps1 的輸出|||
+  	|ServicePrincipalTenantId|從 CreateServicePrincipal.ps1 的輸出|||
+  	|ServicePrincipalSubscriptionId|從 CreateServicePrincipal.ps1 的輸出|||
+  	|ServiceFabricCertificateThumbprint|從 GenerateCertificate.ps1 的輸出|||
+  	|ServiceFabricKeyVaultId|從 GenerateCertificate.ps1 的輸出|||
+  	|ServiceFabricCertificateSecretId|從 GenerateCertificate.ps1 的輸出|||
+  	|ServiceFabricClusterResourceGroupName|任何您想要的名稱。|||
+  	|ServiceFabricClusterName|任何您想要的名稱。|||
+  	|ServiceFabricClusterLocation|任何符合您的金鑰保存庫位置的名稱。|||
+  	|ServiceFabricClusterAdminPassword|任何您想要的名稱。|X||
+  	|ServiceFabricClusterResourceGroupTemplateFilePath|`<path/to/extracted/automation/scripts/ArmTemplate-Full-3xVM-Secure.json>`|||
+  	|ServiceFabricPublishProfilePath|`<path/to/your/publish/profiles/MyPublishProfile.xml>` 請注意：發佈設定檔中的連接端點會被忽略。 會改為使用暫存叢集的連接端點。|||
+  	|ServiceFabricDeploymentScriptPath|`<path/to/Deploy-FabricApplication.ps1>`|||
+  	|ServiceFabricApplicationProjectPath|`<path/to/your/fabric/application/project/folder>` 這應該是包含 .sfproj 檔案的資料夾。||||
 
 1.  在 **觸發程序** 索引標籤上，選取 **連續整合** 和 **批次變更** 選項。
 1.  在 **一般** 索引標籤上，選擇您已註冊您的組建代理程式的佇列。
@@ -267,32 +267,32 @@
 
 ### 新增「組建」步驟
 
-1.  在 **建置** 索引標籤上，選擇 [ **Add build step...** 命令。 」
+1.  在 **建置** 索引標籤上，選擇 [ **新增建置步驟...** 命令 」。
 2.  選擇 **建置** > **MSBuild**。
 3.  建置步驟的名稱來選擇鉛筆圖示，然後重新命名為 **建置**。
-4.  選擇 **...** 旁 **方案** 欄位，然後選擇 [.sln 檔案。
+4.  選擇 **...** 下一步按鈕 **方案** 欄位，然後選擇 [.sln 檔案。
 5.  輸入 `$(BuildPlatform)` 的 **平台**。
 6.  輸入 `$(BuildConfiguration)` 的 **組態**。
-7.  選取 **還原 NuGet 封裝** 核取方塊 (若尚未選取)。
+7.  選取 **還原 NuGet 封裝** 核取方塊 （若尚未選取）。
 8.  儲存組建定義。
 
 ### 新增「封裝」步驟
 
-1.  在 **建置** 索引標籤上，選擇 [ **Add build step...** 命令。
+1.  在 **建置** 索引標籤上，選擇 [ **新增建置步驟...** 命令。
 2.  選擇 **建置** > **MSBuild**。
 3.  選擇建置步驟名稱旁的鉛筆圖示，然後重新命名為 **封裝**。
-4.  選擇 **...** 旁 **方案** 欄位，然後選取您的應用程式專案.sfproj 檔案。
+4.  選擇 **...** 下一步按鈕 **方案** 欄位，然後選取您的應用程式專案.sfproj 檔案。
 5.  輸入 `$(BuildPlatform)` 的 **平台**。
 6.  輸入 `$(BuildConfiguration)` 的 **組態**。
 7.  輸入 `/t:Package` 的 **MSBuild 引數**。
-8.  清除 **還原 NuGet 封裝** 核取方塊 (如果它不清除)。
+8.  清除 **還原 NuGet 封裝** 核取方塊 （如果它不清除）。
 9.  儲存組建定義。
 
 ### 新增「移除叢集資源群組」步驟
 
 如果前一個組建未在本身之後清除 (例如，如果組建已在可以清除之前取消)，現有資源群組可能會與新的資源群組發生衝突。 若要避免衝突，在建立新的資源群組之前，清除任何剩餘的資源群組 (和其相關聯的資源)。
 
-1.  在 **建置** 索引標籤上，選擇 [ **Add build step...** 命令。
+1.  在 **建置** 索引標籤上，選擇 [ **新增建置步驟...** 命令。
 2.  選擇 **公用程式** > **PowerShell**。
 3.  選擇建置步驟名稱旁的鉛筆圖示，然後重新命名為 **移除叢集資源群組**。
 4.  選擇 **...** 命令旁邊 **指令碼檔名**。 瀏覽至您解壓縮自動化指令碼，然後選擇 [ **移除 ClusterResourceGroup.ps1**。
@@ -301,10 +301,10 @@
 
 ### 新增「佈建和部署至安全叢集」步驟
 
-1.  在 **建置** 索引標籤上，選擇 [ **Add build step...** 命令。
+1.  在 **建置** 索引標籤上，選擇 [ **新增建置步驟...** 命令。
 2.  選擇 **公用程式** > **PowerShell**。
 3.  選擇建置步驟名稱旁的鉛筆圖示，然後重新命名為 **佈建和部署安全叢集**。
-4.  選擇 **...** 旁 **指令碼檔名**。 瀏覽至您解壓縮自動化指令碼，然後選擇 [ **ProvisionAndDeploy SecureCluster.ps1**。
+4.  選擇 **...** 下一步按鈕 **指令碼檔名**。 瀏覽至您解壓縮自動化指令碼，然後選擇 [ **ProvisionAndDeploy SecureCluster.ps1**。
 5.  針對 [引數]，輸入 `-ServicePrincipalPassword "$(ServicePrincipalPassword)" -ServiceFabricClusterAdminPassword "$(ServiceFabricClusterAdminPassword)"`。
 6.  儲存組建定義。
 
@@ -312,10 +312,10 @@
 
 現在您已經完成使用暫存叢集，您應該清除它。 如果您不這麼做，將會繼續針對暫存叢集向您計費。 這個步驟會移除資源群組，如此會移除群組中的叢集與所有其他資源。
 
-1.  在 **建置** 索引標籤上，選擇 [ **Add build step...** 命令。
+1.  在 **建置** 索引標籤上，選擇 [ **新增建置步驟...** 命令。
 1.  選擇 **公用程式** > **PowerShell**。
 1.  選擇建置步驟名稱旁的鉛筆圖示，然後重新命名為 **移除叢集資源群組**。
-1.  選擇 **...** 旁 **指令碼檔名**。 瀏覽至您解壓縮自動化指令碼，然後選擇 [ **RemoveClusterResourceGroup.ps1**。
+1.  選擇 **...** 下一步按鈕 **指令碼檔名**。 瀏覽至您解壓縮自動化指令碼，然後選擇 [ **RemoveClusterResourceGroup.ps1**。
 1.  針對 [引數]，輸入 `-ServicePrincipalPassword "$(ServicePrincipalPassword)`。
 1.  在 **控制選項**, ，請選取 **永遠執行** 核取方塊。
 1.  儲存組建定義。
@@ -332,7 +332,7 @@
 1.  透過 Azure 管理入口網站或 Azure PowerShell 手動建立測試叢集。 您可以參考 "ProvisionAndDeploy-SecureCluster.ps1" 指令碼。
 1.  設定發行設定檔，以支援應用程式升級下列 [這些指示](service-fabric-visualstudio-configure-upgrade.md)。
 
-1.  取代 **佈建和部署安全叢集** 與步驟，直接呼叫部署 FabricApplication.ps1 (並將其傳遞發行設定檔) 的步驟。
+1.  取代 **佈建和部署安全叢集** 與步驟，直接呼叫部署 FabricApplication.ps1 （並將其傳遞發行設定檔） 的步驟。
 1.  移除這兩個 **移除叢集資源群組** 建置您的組建定義中的步驟。
 
 ## 後續步驟
@@ -341,4 +341,5 @@
 - [建置文件首頁](https://msdn.microsoft.com/Library/vs/alm/Build/overview)
 - [部署組建代理程式](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
 - [建立和設定組建定義](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
+
 

@@ -44,11 +44,11 @@
 ## 在邏輯應用程式中使用 Twilio 連接器 ##
 建立 API 應用程式之後，您現在可以使用 Twilio 連接器做為邏輯應用程式的動作。 若要這樣做，您需要：
 
-1.  建立新的邏輯應用程式，並選擇具有 Twilio 連接器的相同資源群組:  
+1.  建立新的邏輯應用程式，並選擇具有 Twilio 連接器的相同資源群組 ︰  
 ![][2]
-2.  開啟 [觸發程序和動作] 以開啟邏輯應用程式設計工具並設定您的流程:  
+2.  開啟 [觸發程序和動作] 以開啟邏輯應用程式設計工具並設定您的流程 ︰  
 ![][3]
-3.  Twilio 連接器就會出現在右側資源庫中的 API 應用程式中此資源群組] 區段中:  
+3.  Twilio 連接器就會出現在右側資源庫中的 API 應用程式中此資源群組] 區段中 ︰  
 ![][4]
 4. 您可以在 [Twilio 連接器] 上按一下來將 Twilio 連接器 API 應用程式置入編輯器。
 
@@ -61,9 +61,9 @@
     ![][6]
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -76,4 +76,5 @@
 [4]: ./media/app-service-logic-connector-twilio/img4.png
 [5]: ./media/app-service-logic-connector-twilio/img5.PNG
 [6]: ./media/app-service-logic-connector-twilio/img6.PNG
+
 

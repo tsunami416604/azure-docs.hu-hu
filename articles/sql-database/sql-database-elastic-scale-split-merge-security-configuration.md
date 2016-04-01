@@ -45,7 +45,7 @@
 
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
 
-* 從 [Windows 8.1: 下載套件與工具](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* 從 [Windows 8.1 ︰ 下載套件與工具](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## 設定 SSL 憑證
 需要 SSL 憑證，才能將通訊加密和驗證伺服器。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
@@ -102,21 +102,21 @@
 
 ### 使用新的自我簽署憑證
 
-1.     [Create a Self-Signed Certificate](Create#a#Self-Signed#Certificate)
-2.     [Create PFX file for Self-Signed Encryption Certificate](Create#PFX#file#for#Self-Signed#Encryption#Certificate)
-3.     [Upload Encryption Certificate to Cloud Service](Upload#Encryption#Certificate#to#Cloud#Service)
-4.     [Update Encryption Certificate in Service Configuration File](Update#Encryption#Certificate#in#Service#Configuration#File)
+1.     [建立自我簽署憑證](Create#a#Self-Signed#Certificate)
+2.     [建立自我簽署加密憑證的 PFX 檔案](Create#PFX#file#for#Self-Signed#Encryption#Certificate)
+3.     [將加密憑證上傳至雲端服務](Upload#Encryption#Certificate#to#Cloud#Service)
+4.     [在服務組態檔中更新加密憑證](Update#Encryption#Certificate#in#Service#Configuration#File)
 
 ### 從憑證存放區使用現有的憑證
 
-1.     [Export Encryption Certificate From Certificate Store](Export#Encryption#Certificate#From#Certificate#Store)
-2.     [Upload Encryption Certificate to Cloud Service](Upload#Encryption#Certificate#to#Cloud#Service)
-3.     [Update Encryption Certificate in Service Configuration File](Update#Encryption#Certificate#in#Service#Configuration#File)
+1.     [從憑證存放區匯出加密憑證](Export#Encryption#Certificate#From#Certificate#Store)
+2.     [將加密憑證上傳至雲端服務](Upload#Encryption#Certificate#to#Cloud#Service)
+3.     [在服務組態檔中更新加密憑證](Update#Encryption#Certificate#in#Service#Configuration#File)
 
 ### 使用 PFX 檔案中現有的憑證
 
-1.     [Upload Encryption Certificate to Cloud Service](Upload#Encryption#Certificate#to#Cloud#Service)
-2.     [Update Encryption Certificate in Service Configuration File](Update#Encryption#Certificate#in#Service#Configuration#File)
+1.     [將加密憑證上傳至雲端服務](Upload#Encryption#Certificate#to#Cloud#Service)
+2.     [在服務組態檔中更新加密憑證](Update#Encryption#Certificate#in#Service#Configuration#File)
 
 ## 預設組態
 
@@ -459,15 +459,15 @@
 2. 按一下 [ **下一步**。
 3. 如果從檔案匯入，請確認檔案路徑。
 4. 如果匯入 .PFX 檔案：
-    1.     Enter the password protecting the private key
-    2.     Select import options
-5.     Select "Place" certificates in the following store
-6.     Click **Browse**.
-7.     Select the desired store.
-8.     Click **Finish**.
+    1.     輸入密碼以保護私密金鑰
+    2.     選取匯入選項
+5.     選取將憑證「放入」以下的存放區
+6.     按一下 [ **瀏覽**。
+7.     選取所需的存放區。
+8.     按一下 [ **完成**。
        
     * 如果已選擇受信任的根憑證授權單位存放區，請按一下 [ **是**。
-9.     Click **OK** on all dialog windows.
+9.     按一下 [ **確定** 所有對話方塊視窗上。
 
 ## Upload certificate
 
@@ -490,3 +490,4 @@
 這個資料庫中儲存的認證會被加密。 此外，最佳作法是確定服務部署的 Web 和背景工作角色保持在最新狀態且安全，因為它們都能存取中繼資料資料庫和用來加密和解密已儲存的認證。 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+

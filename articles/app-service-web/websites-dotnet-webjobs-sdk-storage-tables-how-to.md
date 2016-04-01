@@ -69,7 +69,7 @@
 
 ![輸入函式執行中](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
 
- **引動過程詳細資料** 頁面會報告函式的進度 (寫入的實體數目) 時它正在執行，並讓您有機會將它中止。 
+ **引動過程詳細資料** 頁面會報告函式的進度 （寫入的實體數目） 時它正在執行，並讓您有機會將它中止。 
 
 ![輸入函式執行中](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressprogress.png)
 
@@ -162,3 +162,4 @@
 
 本指南提供的程式碼範例示範如何處理使用 Azure 資料表的常見案例。 如需如何使用 Azure WebJobs 和 WebJobs SDK 的詳細資訊，請參閱 [Azure WebJobs 建議資源](http://go.microsoft.com/fwlink/?linkid=390226)。
  
+

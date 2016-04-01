@@ -136,7 +136,7 @@
 
 在此案例中，我們先取得文章清單，然後第二個步驟根據已定義為參數的類別，在對應中查詢可取得內容的 URL。 
 
-要注意的兩個項目: [`intersection()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#intersection) 函數用來檢查類別是否符合其中一個已知的類別定義。 其次，一旦得到類別，我們可以使用方括號提取對應的項目：`parameters[...]`。 
+要注意的兩個項目 ︰ [`intersection()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#intersection) 函數用來檢查類別是否符合其中一個已知的類別定義。 其次，一旦得到類別，我們可以使用方括號提取對應的項目：`parameters[...]`。 
 
 ## 逐一查看清單時鏈結/巢狀 Logic Apps
 
@@ -287,7 +287,7 @@
 }
 ```
 
-因為我在第一個步驟中逐一查看清單，所以我使用兩個條件。 如果您只是有單一動作，您只需要一個條件 (第一個)。 另外請注意，您可以使用 *輸入* 補救步驟中對失敗動作 — 此處我將失敗的 URL 傳給第二個步驟:  
+因為我在第一個步驟中逐一查看清單，所以我使用兩個條件。 如果您只是有單一動作，您只需要一個條件 (第一個)。 另外請注意，您可以使用 *輸入* 補救步驟中對失敗動作 — 此處我將失敗的 URL 傳給第二個步驟 ︰  
 
 ![補救](./media/app-service-logic-author-definitions/remediation.png)
 
@@ -353,7 +353,7 @@
 
 您可以使用單一動作取得兩個分支的資料，以結合邏輯的兩個條件式流程 (可能已執行，也可能尚未執行)。 
 
-這方面的決策取決於您要處理一個項目或一組項目。 如果是單一項目，您會想要使用 [`coalesce()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#coalesce) 函式:
+這方面的決策取決於您要處理一個項目或一組項目。 如果是單一項目，您會想要使用 [`coalesce()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#coalesce) 函式 ︰
 
 ```
 {
@@ -572,13 +572,13 @@
 }
 ```
 
-在此範例中，我們擷取前一個步驟的 `startTime`。 然後，我們取得目前的時間並減去一秒:[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/dn948512.aspx#addseconds) (您可以使用其他的時間單位，例如 `minutes` 或 `hours`)。 最後，我們可以比較這兩個值。 如果第一個值小於第二個值，即表示自從訂單最初提交以來已超過一秒。 
+在此範例中，我們擷取前一個步驟的 `startTime`。 然後，我們取得目前的時間並減去一秒 ︰[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/dn948512.aspx#addseconds) (您可以使用其他的時間單位，例如 `minutes` 或 `hours`)。 最後，我們可以比較這兩個值。 如果第一個值小於第二個值，即表示自從訂單最初提交以來已超過一秒。 
 
-也請注意，我們可以使用字串格式子來格式化日期: 我使用的查詢字串中 [`utcnow('r')`](https://msdn.microsoft.com/library/azure/dn948512.aspx#utcnow) 取得 RFC1123。 所有日期格式 [記載於 MSDN 上](https://msdn.microsoft.com/library/azure/dn948512.aspx#utcnow)。 
+也請注意，我們可以使用字串格式子來格式化日期 ︰ 我使用的查詢字串中 [`utcnow('r')`](https://msdn.microsoft.com/library/azure/dn948512.aspx#utcnow) 取得 RFC1123。 所有日期格式 [記載於 MSDN 上](https://msdn.microsoft.com/library/azure/dn948512.aspx#utcnow)。 
 
 ## 在執行階段傳入值來改變行為
 
-假設您想要根據用來啟動邏輯應用程式的某些值，以執行不同的行為。 您可以使用 [`triggerOutputs()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#triggerOutputs) 函式可取得您傳入這些值:
+假設您想要根據用來啟動邏輯應用程式的某些值，以執行不同的行為。 您可以使用 [`triggerOutputs()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#triggerOutputs) 函式可取得您傳入這些值 ︰
 
 ```
 {
@@ -722,4 +722,5 @@ Content-type: application/json
 ```
 
 請參閱 [REST API 文件](https://msdn.microsoft.com/library/azure/dn948513.aspx) 來建立及管理邏輯應用程式需所有可用的選項。 
+
 

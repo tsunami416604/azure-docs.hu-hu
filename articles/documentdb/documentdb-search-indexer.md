@@ -20,13 +20,13 @@
 
 如果您想要實作 DocumentDB 資料上的絕佳搜尋經驗，請在 DocumentDB 中使用 Azure 搜尋索引子！ 在本文中，我們將說明如何整合 Azure DocumentDB 與 Azure 搜尋，而不需要撰寫任何程式碼來維護索引的基礎結構！
 
-若要設定此功能，您必須 [設定 Azure 搜尋服務帳戶](../search-get-started.md#start-with-the-free-service) (您不需要升級至標準搜尋)，然後呼叫 [Azure 搜尋服務 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 以建立 DocumentDB **資料來源** 和 **索引子** 針對該資料來源。
+若要設定此功能，您必須 [設定 Azure 搜尋服務帳戶](../search-get-started.md#start-with-the-free-service) （您不需要升級至標準搜尋），然後呼叫 [Azure 搜尋服務 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 以建立 DocumentDB **資料來源** 和 **索引子** 針對該資料來源。
 
-##<a id="Concepts"></a>Azure 搜尋索引子概念
+##<a id="Concepts"></a>Azure 搜尋服務索引子概念
 
 Azure 搜尋服務支援建立與管理資料來源 (包括 DocumentDB) 和操作這些資料來源的索引子。
 
-A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及可讓 Azure 搜尋服務有效識別資料 (例如修改或刪除集合內的文件) 中的變更原則的認證。 資料來源會被定義為獨立的資源，因此可供多個索引子使用。
+A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及可讓 Azure 搜尋服務有效識別資料 （例如修改或刪除集合內的文件） 中的變更原則的認證。 資料來源會被定義為獨立的資源，因此可供多個索引子使用。
 
  **索引子** 說明如何將資料流動從資料來源到目標搜尋索引。 您應該規劃為每個目標索引和資料來源組合建立一個索引子。 雖然您可以擁有寫入相同索引的多個索引子，但一個索引子只能寫入單一索引。 索引子可用來： 
 
@@ -34,7 +34,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 - 依照排程將索引與資料來源中的變更同步。 排程是索引子定義的一部分。
 - 視需要叫用索引的隨選更新。 
 
-##<a id="CreateDataSource"></a>步驟 1: 建立資料來源
+##<a id="CreateDataSource"></a>步驟 1：建立資料來源
 
 發出 HTTP POST 要求，以便在您的 Azure 搜尋服務中建立新的資料來源，包括下列要求標頭。
     
@@ -46,23 +46,23 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 要求的主體包含資料來源定義，其中應包含下列欄位：
 
-- **名稱**: 資料來源的名稱。
+- **名稱**︰ 資料來源的名稱。
 
-- **型別**: 使用 `documentdb`。
+- **型別**︰ 使用 `documentdb`。
 
 - **認證**:
 
-    - **connectionString**: 必要。 以下列格式指定 Azure DocumentDB 資料庫的連接資訊：`AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
+    - **connectionString**︰ 必要。 以下列格式指定 Azure DocumentDB 資料庫的連接資訊：`AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
 
 - **容器**:
 
-    - **名稱**: 必要。 指定要編製索引的 DocumentDB 集合。 
+    - **名稱**︰ 必要。 指定要編製索引的 DocumentDB 集合。 
 
-    - **查詢**: 選擇性。 您可以指定查詢將任意 JSON 文件簡維成 Azure 搜尋服務可以編製索引的一般結構描述。
+    - **查詢**︰ 選擇性。 您可以指定查詢將任意 JSON 文件簡維成 Azure 搜尋服務可以編製索引的一般結構描述。
 
-- **dataChangeDetectionPolicy**: 選擇性。 請參閱 [資料變更偵測原則](#DataChangeDetectionPolicy) 下方。
+- **dataChangeDetectionPolicy**︰ 選擇性。 請參閱 [資料變更偵測原則](#DataChangeDetectionPolicy) 下方。
 
-- **dataDeletionDetectionPolicy**: 選擇性。 請參閱 [資料刪除偵測原則](#DataDeletionDetectionPolicy) 下方。
+- **dataDeletionDetectionPolicy**︰ 選擇性。 請參閱 [資料刪除偵測原則](#DataDeletionDetectionPolicy) 下方。
 
 ###<a id="DataChangeDetectionPolicy"></a>擷取已變更的文件
 
@@ -90,7 +90,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 > [AZURE.NOTE] 您必須在 SELECT 子句中包含該屬性，如果您打算使用自訂投射。
 
-###<a id="CreateDataSourceExample"></a>要求內文範例
+###<a id="CreateDataSourceExample"></a>要求本文範例
 
 下列範例會建立包含自訂查詢和原則提示的資料來源：
 
@@ -119,7 +119,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 如果已成功建立該資料來源，您將會收到一則 HTTP 201 已建立的回應。
 
-##<a id="CreateIndex"></a>步驟 2: 建立索引
+##<a id="CreateIndex"></a>步驟 2：建立索引
 
 建立目標 Azure 搜尋服務索引 (如果您尚未建立)。 您可以從 [Azure 傳統入口網站 UI](../search-get-started.md#test-service-operations) 或使用 [建立索引 API](https://msdn.microsoft.com/library/azure/dn798941.aspx)。
 
@@ -143,7 +143,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 |GeoJSON 物件，例如 { "type": "Point"、"coordinates": [ long, lat ] } | Edm.GeographyPoint |
 |其他 JSON 物件|N/A|
 
-###<a id="CreateIndexExample"></a>要求內文範例
+###<a id="CreateIndexExample"></a>要求本文範例
 
 下列範例會建立包含識別碼和描述欄位的索引：
 
@@ -168,7 +168,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 如果已成功建立該索引，您將會收到一則 [HTTP 201 已建立] 的回應。
 
-##<a id="CreateIndexer"></a>步驟 3: 建立索引子
+##<a id="CreateIndexer"></a>步驟 3：建立索引子
 
 您可以使用包含下列標頭的 HTTP POST 要求，在 Azure 搜尋服務內建立新的索引子。
     
@@ -178,23 +178,23 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 要求的本文包含索引子定義，其中應包含下列欄位：
 
-- **名稱**: 必要。 索引子的名稱。
+- **名稱**︰ 必要。 索引子的名稱。
 
-- **dataSourceName**: 必要。 現有資料來源的名稱。
+- **dataSourceName**︰ 必要。 現有資料來源的名稱。
 
-- **targetIndexName**: 必要。 現有索引的名稱。
+- **targetIndexName**︰ 必要。 現有索引的名稱。
 
-- **排程**: 選擇性。 請參閱 [索引排程](#IndexingSchedule) 下方。
+- **排程**︰ 選擇性。 請參閱 [索引排程](#IndexingSchedule) 下方。
 
 ###<a id="IndexingSchedule"></a>依照排程執行索引子
 
 索引子可以選擇性地指定排程。 如有排程，索引子將會依照排程定期執行。 排程具有下列屬性：
 
-- **間隔**: 必要。 可用以指定索引子執行間隔或期間的持續時間值。 允許的最小間隔為 5 分鐘；最長間隔為一天。 其必須格式化為 XSD"dayTimeDuration"值 (的受限的子集 [ISO 8601 持續時間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值)。 間隔的模式為：`P(nD)(T(nH)(nM))`。 範例：`PT15M` 代表每隔 15 分鐘，`PT2H` 代表每隔 2 個小時。 
+- **間隔**︰ 必要。 可用以指定索引子執行間隔或期間的持續時間值。 允許的最小間隔為 5 分鐘；最長間隔為一天。 其必須格式化為 XSD"dayTimeDuration"值 (的受限的子集 [ISO 8601 持續時間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值)。 間隔的模式為：`P(nD)(T(nH)(nM))`。 範例：`PT15M` 代表每隔 15 分鐘，`PT2H` 代表每隔 2 個小時。 
 
-- **startTime**: 必要。 指定索引子應該開始執行的 UTC 日期時間。 
+- **startTime**︰ 必要。 指定索引子應該開始執行的 UTC 日期時間。 
 
-###<a id="CreateIndexerExample"></a>要求內文範例
+###<a id="CreateIndexerExample"></a>要求本文範例
 
 下列範例會建立索引子，可將資料從 `myDocDbDataSource` 資料來源所參考的集合，依照排程 (從 2015 年 1 月 1 日 UTC 開始，每小時執行一次) 複製到 `mySearchIndex` 索引。
 
@@ -209,7 +209,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 如果已成功建立該索引子，您將會收到一則 [HTTP 201 已建立] 的回應。
 
-##<a id="RunIndexer"></a>步驟 4: 執行索引子
+##<a id="RunIndexer"></a>步驟 4：執行索引子
 
 為了依照排程定期執行，您也可以發出下列 HTTP POST 要求，視需要叫用索引子： 
 
@@ -220,7 +220,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 如果已成功叫用該索引子，您將會收到一則 [HTTP 202 已接受] 的回應。
 
-##<a name="GetIndexerStatus"></a>步驟 5: 取得索引子狀態
+##<a name="GetIndexerStatus"></a>步驟 5：取得索引子狀態
 
 您可以發出 HTTP GET 要求來擷取索引子的目前狀態和執行記錄： 
 
@@ -261,7 +261,7 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
 執行歷程記錄包含多達 50 個最近完成的執行，以倒序的方式進行儲存 (因此最新的執行會排在回應中的第一位)。
 
-##<a name="NextSteps"></a>後續步驟
+##<a name="NextSteps"></a>接續步驟
 
 恭喜！ 您剛剛了解如何使用 DocumentDB 的索引子來整合 Azure DocumentDB 與 Azure 搜尋服務。
 
@@ -269,4 +269,5 @@ A **資料來源** 指定哪些資料需要編製索引、 存取資料，以及
 
  - 若要深入了解 Azure 搜尋服務，請按一下 [ [這裡](/services/search/)。
  
+
 

@@ -22,7 +22,7 @@
 
 ### 在 Power BI Desktop 中開啟資料來源
 
-當使用 「 開啟中 Power BI Desktop 」 選項，從 **Azure 資料目錄** 入口網站，使用者可能會遇到的其中一個 Power BI Desktop 應用程式中的兩個問題:
+當使用 「 開啟中 Power BI Desktop 」 選項，從 **Azure 資料目錄** 入口網站，使用者可能會遇到的其中一個 Power BI Desktop 應用程式中的兩個問題 ︰
 
 - 會顯示標題為「無法開啟文件」的對話方塊
 - Power BI Desktop 應用程式可開啟，但檔案是空的
@@ -35,7 +35,7 @@
 
 連接到 Teradata 資料來源時，使用者必須已安裝正確的 Teradata ODBC 驅動程式，符合所使用軟體的位元 (32 位元或 64 位元)。
 
-此 ADC 發行日期為止，最新 [for windows (版本 15.10) 的 Teradata ODBC 驅動程式](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) 相容與 Office 2013，但不是能搭配 Office 2016。
+此 ADC 發行日期為止，最新 [for windows （版本 15.10） 的 Teradata ODBC 驅動程式](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) 相容與 Office 2013，但不是能搭配 Office 2016。
 
 ## Azure 資料目錄 2015 年 11 月 6 日版本的注意事項
 
@@ -83,7 +83,7 @@ Azure 資料目錄初始預覽版本中對於 SQL Server Reporting Services (SSR
 
 如需詳細資訊，請參閱 [設定驗證原則](https://technet.microsoft.com/en-us/library/dn486781.aspx)。
 
-**原因 2: 網路 proxy 設定**
+**原因 2 ︰ 網路 proxy 設定**
 如果公司網路使用 proxy 伺服器，註冊工具可能無法透過 proxy 連線到 Azure Active Directory。 使用者可以編輯註冊工具的組態檔，將此區段加入至檔案，以確保註冊工具能夠連線：
 
 
@@ -97,4 +97,5 @@ Azure 資料目錄初始預覽版本中對於 SQL Server Reporting Services (SSR
 
 
 若要找出 RegistrationTool.exe.config 檔案，請啟動註冊工具，然後開啟 Windows 工作管理員公用程式。 在工作管理員的 [詳細資料] 索引標籤，以滑鼠右鍵按一下 RegistrationTool.exe，再從快顯功能表中選擇 [開啟檔案位置]。
+
 

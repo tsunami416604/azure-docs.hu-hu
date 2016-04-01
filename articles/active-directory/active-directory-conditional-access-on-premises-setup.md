@@ -118,7 +118,7 @@
 4.  選取 **目錄整合** ] 索引標籤。
 5.  在 **部署和管理** 區段中，請遵循步驟 1 到 3，Azure Active Directory 整合您的本機目錄。
   1.    新增網域。
-  2.    安裝和執行 Azure AD Connect: 使用下列指示，安裝 Azure AD Connect [的 Azure AD Connect 的自訂安裝](active-directory-aadconnect-get-started-custom.md)。
+  2.    安裝和執行 Azure AD Connect ︰ 使用下列指示，安裝 Azure AD Connect [的 Azure AD Connect 的自訂安裝](active-directory-aadconnect-get-started-custom.md)。
   3. 驗證及管理目錄同步作業。 此步驟中可取得單一登入的指示。
   >[AZURE.NOTE] 上述連結的文件中所述，使用 AD FS 設定同盟。 
   >[AZURE.NOTE] 您不需要設定任何預覽功能。
@@ -133,7 +133,7 @@
 1. 使用具有企業系統管理員與結構描述系統管理員權限的帳戶登入網域控制站。
 2. 複製 **[media] \support\adprep** 目錄和子目錄到您的 Active Directory 網域控制站的其中一個。 
 3. 其中 [media] 是 Windows Server 2012 R2 安裝媒體的路徑。
-4. 從命令提示字元中，瀏覽至 adprep 目錄並執行: **adprep.exe /forestprep**。 請遵循畫面上的指示完成結構描述升級。
+4. 從命令提示字元中，瀏覽至 adprep 目錄並執行 ︰ **adprep.exe /forestprep**。 請遵循畫面上的指示完成結構描述升級。
 
 ## 準備您的 Active Directory 以支援裝置
 >[AZURE.NOTE] 這是您必須執行以準備您的 Active Directory 樹系，以支援裝置一次作業。 您必須以企業系統管理員權限登入，且您的 Active Directory 樹系必須具有 Windows Server 2012 R2 結構描述才能完成此程序。
@@ -155,7 +155,7 @@
 ### 在 AD FS 中啟用裝置驗證
 
 1. 在您的同盟伺服器上開啟 AD FS 管理主控台並瀏覽至 **AD FS** > **驗證原則**。
-2. 選取 **編輯全域主要驗證...** 從 **動作** 窗格。
+2. 選取 **啟用全域主要驗證...** 從 **動作** 窗格。
 3. 檢查 **啟用裝置驗證** ，然後選取**確定**。
 4. 根據預設，AD FS 會定期從 Active Directory 移除未使用的裝置。 使用 Azure Active Directory 裝置註冊時，您必須停用這項工作，以便在 Azure 中管理裝置。
 
@@ -212,9 +212,9 @@ Azure Active Directory 裝置註冊使用 iOS 裝置的空中下載設定檔註�
 2. 找出新存取規則將套用的應用程式。 以滑鼠右鍵按一下應用程式並選取 [編輯宣告規則...]
 3. 選取 **發佈授權規則** 索引標籤，然後選取 **新增規則...**
 4. 從 **宣告規則** 範本下拉式清單中，選取 **拒絕使用者根據連入宣告允許或**。 選取 **下一步**。
-5. 在 [宣告規則名稱: 欄位型別: **允許存取已註冊的裝置**
-6. 從連入宣告類型: 下拉式清單中選取 **已註冊的使用者**。
-7. 在連入宣告值: 欄位中，輸入: **，則為 true**
+5. 在 [宣告規則名稱 ︰ 欄位型別 ︰ **允許存取已註冊的裝置**
+6. 從連入宣告類型 ︰ 下拉式清單中選取 **已註冊的使用者**。
+7. 在連入宣告值 ︰ 欄位中，輸入 ︰ **，則為 true**
 8. 選取 **使用者具有這個傳入宣告來允許存取** 選項按鈕。
 9. 選取 **完成** ，然後選取 **套用**。
 10. 移除任何比您剛才建立之規則更寬鬆的規則。 例如，移除預設 **允許所有使用者存取** 規則。
@@ -240,9 +240,10 @@ Azure Active Directory 裝置註冊使用 iOS 裝置的空中下載設定檔註�
 
 其中"**信賴憑證者信任名稱**」 是 AD FS 中的應用程式信賴憑證者信任物件的名稱。 
 其中 **yourdomain.com** 是您設定與 Azure Active Directory 的網域名稱。 例如 contoso.com。 
-請務必移除任何分行符號 (如果有的話) 傳遞至 html 內容 **Set-adfsrelyingpartywebcontent** 指令程式。
+請務必移除任何分行符號 （如果有的話） 傳遞至 html 內容 **Set-adfsrelyingpartywebcontent** 指令程式。
 
 
 現在當使用者從未使用 Azure Active Directory 裝置註冊服務註冊的裝置存取您的應用程式時，使用者會看到類似下面螢幕擷取畫面所示的頁面。 
 
 ![使用者尚未向 Azure AD 註冊其裝置時的錯誤螢幕擷取畫面](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
+

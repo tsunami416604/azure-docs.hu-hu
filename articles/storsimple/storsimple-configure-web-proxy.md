@@ -135,7 +135,7 @@ Web Proxy 設定已透過 Windows PowerShell 介面設定，無法從傳統入�
 |1.|0x80070001|命令是從被動控制器執行，無法與主動控制器通訊。|在主動控制器上執行命令。 若要從被動控制器執行命令，您必須將連線從被動控制器修正為主動控制器。 如果此連線已中斷，您必須連絡 Microsoft 支援服務。|
 |2.|0x800710dd - 作業識別碼無效|StorSimple 虛擬裝置不支援 Proxy 設定。|StorSimple 虛擬裝置不支援 Proxy 設定。 這些設定只能在 StorSimple 實體裝置上設定。|
 |3.|0x80070057 - 無效的參數|針對 Proxy 設定提供的其中一個參數無效。|提供的 URI 不是正確格式。 使用下列格式：`http://<IP address or FQDN of the web proxy server>:<TCP port number>`|
-|4.|0x800706ba - RPC 伺服器無法使用|根本原因是下列其中一項:</br></br>叢集未啟動。</br></br>資料路徑服務未執行。</br></br>從被動控制器執行命令並不能與主動控制器通訊。|連絡 Microsoft 支援服務，以確保叢集已啟動，而且資料路徑服務正在執行。</br></br>從主動控制器執行命令。 如果您想要從被動控制器執行命令，就必須確保被動控制器能與主動控制器通訊。 如果此連線已中斷，您必須連絡 Microsoft 支援服務。|
+|4.|0x800706ba - RPC 伺服器無法使用|根本原因是下列其中一項 ︰</br></br>叢集未啟動。</br></br>資料路徑服務未執行。</br></br>從被動控制器執行命令並不能與主動控制器通訊。|連絡 Microsoft 支援服務，以確保叢集已啟動，而且資料路徑服務正在執行。</br></br>從主動控制器執行命令。 如果您想要從被動控制器執行命令，就必須確保被動控制器能與主動控制器通訊。 如果此連線已中斷，您必須連絡 Microsoft 支援服務。|
 |5.|0x800706be - RPC 呼叫失敗|叢集已關閉。|連絡 Microsoft 支援服務以確定叢集已啟動。|
 |6.|0x8007138f - 找不到叢集資源|找不到平台服務叢集資源。 若未正確安裝，即會發生此情況。|您可能需要在裝置上執行原廠重設。您可能需要建立平台資源。 請連絡 Microsoft 支援服務來請示後續步驟。|
 |7.|0x8007138c - 叢集資源不在線上|平台或資料路徑叢集資源不在線上。|請連絡 Microsoft 支援服務，以確定資料路徑和平台服務資源都在線上。|
@@ -150,4 +150,5 @@ Web Proxy 設定已透過 Windows PowerShell 介面設定，無法從傳統入�
 - 如果您在部署您的裝置，或設定 web proxy 設定時遇到任何問題，請參閱 [疑難排解您的 StorSimple 裝置部署](storsimple-troubleshoot-deployment.md)。
 
 - 若要了解如何使用 StorSimple Manager 服務，請移至 [使用 StorSimple Manager 服務來管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+
 

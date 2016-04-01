@@ -16,7 +16,7 @@
     ms.date="10/12/2015"
     ms.author="maheshu"/>
 
-# Azure AD 網域服務 *(預覽)* -快速入門
+# Azure AD 網域服務 *（預覽）* -快速入門
 
 本文將逐步解說針對 Azure AD 租用戶啟用 Azure AD 網域服務所需的組態步驟。
 
@@ -48,5 +48,6 @@
     ![將使用者新增至系統管理員群組](./media/active-directory-domain-services-getting-started/add-group-members.png)
 
 ---
-[**下一步: 建立或選取 Azure 虛擬網路。**](active-directory-ds-getting-started-vnet.md)
+[**下一步 ︰ 建立或選取 Azure 虛擬網路。**](active-directory-ds-getting-started-vnet.md)
+
 

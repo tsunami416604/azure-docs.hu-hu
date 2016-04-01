@@ -57,7 +57,7 @@
 
 - 在 .cscfg 檔案中的診斷連接字串的優先順序高於 .wadcfgx 檔案中的儲存體帳戶。 如果在 .cscfg 檔案中指定診斷連接字串，Visual Studio 會使用它並忽略 .wadcfgx 中的儲存體帳戶。
 
-### 「 更新開發儲存體連接字串...」 的用途 核取方塊嗎?
+### 「 更新開發儲存體連接字串...」 的用途 核取方塊嗎？
 
 核取方塊， **更新開發儲存體連接字串供診斷和快取，Microsoft Azure 儲存體帳戶認證時，發佈至 Microsoft Azure** 可讓您方便您在發行期間指定的 Azure 儲存體帳戶更新任何開發儲存體帳戶連接字串。
 
@@ -101,7 +101,7 @@
 
   - 如果您選擇「手動輸入的認證」選項，您會收到提示以輸入您想要使用之 Azure 帳戶的名稱和金鑰。
 
-1. 選擇 **設定** ] 按鈕以檢視 **診斷組態** 對話方塊。每個索引標籤 (除了 **一般** 和 **記錄檔目錄**) 表示您可以收集的診斷資料來源。 預設值] 索引標籤， **一般**, ，提供您下列的診斷資料收集選項: **只限錯誤**, ，**的所有資訊**, ，和 **自訂計劃**。 預設選項， **只限錯誤**, ，需要最少的儲存體，因為它不會傳輸警告或追蹤訊息。 [所有資訊] 選項會傳輸大部分的資訊，因此它是對儲存體而言最昂貴的選項。
+1. 選擇 **設定** ] 按鈕以檢視 **診斷組態** 對話方塊。每個索引標籤 (除了 **一般** 和 **記錄檔目錄**) 表示您可以收集的診斷資料來源。 預設值] 索引標籤， **一般**, ，提供您下列的診斷資料收集選項 ︰ **只限錯誤**, ，**的所有資訊**, ，和 **自訂計劃**。 預設選項， **只限錯誤**, ，需要最少的儲存體，因為它不會傳輸警告或追蹤訊息。 [所有資訊] 選項會傳輸大部分的資訊，因此它是對儲存體而言最昂貴的選項。
 
     ![啟用 Azure 診斷和組態](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 
@@ -143,7 +143,7 @@
 
     ![啟用 Azure 診斷和組態](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 
-    預設值] 索引標籤， **一般**, ，提供您下列的診斷資料收集選項: **只限錯誤**, ，**的所有資訊**, ，和 **自訂計劃**。 預設選項， **只限錯誤**, ，需要最少的儲存體，因為它不會傳輸警告或追蹤訊息。  **的所有資訊** 選項傳輸的資訊，因此，是最昂貴的方法，以儲存體。
+    預設值] 索引標籤， **一般**, ，提供您下列的診斷資料收集選項 ︰ **只限錯誤**, ，**的所有資訊**, ，和 **自訂計劃**。 預設選項， **只限錯誤**, ，需要最少的儲存體，因為它不會傳輸警告或追蹤訊息。  **的所有資訊** 選項傳輸的資訊，因此，是最昂貴的方法，以儲存體。
 
 1. 此範例中，選取 **自訂計劃** 選項，使您可以自訂資料收集。
 
@@ -165,7 +165,7 @@
 
 ### 應用程式記錄檔
 
-**應用程式記錄檔** 包含 web 應用程式所產生的診斷資訊。 如果您想要擷取應用程式記錄檔中，選取 **啟用傳輸應用程式記錄檔** 核取方塊。 您可以增加或減少儲存體帳戶的應用程式記錄檔傳送時的分鐘數，藉由變更 **傳輸期間 (分鐘)** 值。 您也可以藉由設定記錄層級值變更記錄檔中擷取的資訊量。 例如，您可以選擇 **Verbose** 以取得詳細資訊，或選擇 **重大** 來擷取重大的錯誤。 如果您有特定的診斷提供者發出應用程式記錄檔，可以擷取這些新增提供者的 GUID 至 **提供者 GUID** 方塊。
+**應用程式記錄檔** 包含 web 應用程式所產生的診斷資訊。 如果您想要擷取應用程式記錄檔中，選取 **啟用傳輸應用程式記錄檔** 核取方塊。 您可以增加或減少儲存體帳戶的應用程式記錄檔傳送時的分鐘數，藉由變更 **傳輸期間 （分鐘）** 值。 您也可以藉由設定記錄層級值變更記錄檔中擷取的資訊量。 例如，您可以選擇 **Verbose** 以取得詳細資訊，或選擇 **重大** 來擷取重大的錯誤。 如果您有特定的診斷提供者發出應用程式記錄檔，可以擷取這些新增提供者的 GUID 至 **提供者 GUID** 方塊。
 
   ![應用程式記錄檔](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758145.png)
 
@@ -173,7 +173,7 @@
 
 ### Windows 事件記錄檔
 
-如果您想要擷取 Windows 事件記錄檔中，選取 **啟用傳輸 Windows 事件記錄檔的** 核取方塊。 您可以增加或減少儲存體帳戶的事件記錄檔傳送時的分鐘數，藉由變更 **傳輸期間 (分鐘)** 值。 選取您想要追蹤之事件類型的核取方塊。
+如果您想要擷取 Windows 事件記錄檔中，選取 **啟用傳輸 Windows 事件記錄檔的** 核取方塊。 您可以增加或減少儲存體帳戶的事件記錄檔傳送時的分鐘數，藉由變更 **傳輸期間 （分鐘）** 值。 選取您想要追蹤之事件類型的核取方塊。
 
   ![事件記錄檔](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796664.png)
 
@@ -189,7 +189,7 @@
 ```
 ### 效能計數器
 
-效能計數器資訊可協助您找出系統瓶頸並微調系統和應用程式效能。 請參閱 [建立及使用 Azure 應用程式中的效能計數器](https://msdn.microsoft.com/library/azure/hh411542.aspx) 如需詳細資訊。 如果您想要擷取效能計數器，請選取 **啟用傳輸效能計數器** 核取方塊。 您可以增加或減少儲存體帳戶的事件記錄檔傳送時的分鐘數，藉由變更 **傳輸期間 (分鐘)** 值。 選取您想要追蹤之效能計數器的核取方塊。
+效能計數器資訊可協助您找出系統瓶頸並微調系統和應用程式效能。 請參閱 [建立及使用 Azure 應用程式中的效能計數器](https://msdn.microsoft.com/library/azure/hh411542.aspx) 如需詳細資訊。 如果您想要擷取效能計數器，請選取 **啟用傳輸效能計數器** 核取方塊。 您可以增加或減少儲存體帳戶的事件記錄檔傳送時的分鐘數，藉由變更 **傳輸期間 （分鐘）** 值。 選取您想要追蹤之效能計數器的核取方塊。
 
   ![效能計數器](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758147.png)
 
@@ -205,7 +205,7 @@ RemoteAccess 模組和 RemoteForwarder 模組，如果您想要擷取基礎結�
 
 ### 記錄檔目錄
 
-失敗的要求或資料夾，您選擇，如果您想要擷取記錄檔目錄，包含從網際網路資訊服務 (IIS) 要求的記錄檔目錄所收集的資料，請選取 **啟用傳輸記錄檔目錄** 核取方塊。 您可以增加或減少儲存體帳戶的記錄傳送時的分鐘數，藉由變更 **傳輸期間 (分鐘)** 值。
+失敗的要求或資料夾，您選擇，如果您想要擷取記錄檔目錄，包含從網際網路資訊服務 (IIS) 要求的記錄檔目錄所收集的資料，請選取 **啟用傳輸記錄檔目錄** 核取方塊。 您可以增加或減少儲存體帳戶的記錄傳送時的分鐘數，藉由變更 **傳輸期間 （分鐘）** 值。
 
 您可以選取您想要收集，例如記錄檔的方塊 **IIS 記錄檔** 和 **失敗要求** 記錄檔。 提供預設儲存體容器名稱，但您可以任意變更名稱。
 
@@ -215,23 +215,23 @@ RemoteAccess 模組和 RemoteForwarder 模組，如果您想要擷取基礎結�
 
 ### ETW 記錄檔
 
-如果您使用 [Windows 事件追蹤](https://msdn.microsoft.com/library/windows/desktop/bb968803(v=vs.85).aspx) (ETW)，而且想要擷取 ETW 記錄檔，請選取 **啟用傳輸 ETW 記錄檔** 核取方塊。 您可以增加或減少儲存體帳戶的記錄傳送時的分鐘數，藉由變更 **傳輸期間 (分鐘)** 值。
+如果您使用 [Windows 事件追蹤](https://msdn.microsoft.com/library/windows/desktop/bb968803(v=vs.85).aspx) (ETW)，而且想要擷取 ETW 記錄檔，請選取 **啟用傳輸 ETW 記錄檔** 核取方塊。 您可以增加或減少儲存體帳戶的記錄傳送時的分鐘數，藉由變更 **傳輸期間 （分鐘）** 值。
 
 從事件來源和您指定的事件資訊清單擷取事件。 若要指定事件來源，請輸入中的名稱 **事件來源** 區段，然後選擇 [ **加入事件來源** ] 按鈕。 同樣地，您可以指定事件資訊清單中的 **事件資訊清單** 區段，然後選擇 [ **新增事件資訊清單** ] 按鈕。
 
   ![ETW 記錄檔](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766025.png)
 
-  ETW 架構支援在 ASP.NET 中透過類別中 [System.Diagnostics.aspx] (https://msdn.microsoft.com/library/system.diagnostics (v = vs.110) 命名空間。 Microsoft.WindowsAzure.Diagnostics 命名空間，它會繼承並擴充標準 [System.Diagnostics.aspx] (https://msdn.microsoft.com/library/system.diagnostics (v = vs.110) 類別，可讓您使用 [System.Diagnostics.aspx] (在 Azure 環境中的記錄架構 https://msdn.microsoft.com/library/system.diagnostics (v = vs.110)。 如需詳細資訊，請參閱 [取得控制項的記錄和追蹤在 Microsoft Azure](https://msdn.microsoft.com/magazine/ff714589.aspx) 和 [在 Azure 雲端服務和虛擬機器中啟用診斷](cloud-services-dotnet-diagnostics.md)。
+  ETW 架構支援在 ASP.NET 中透過類別中 [System.Diagnostics.aspx] （https://msdn.microsoft.com/library/system.diagnostics (v = vs.110) 命名空間。 Microsoft.WindowsAzure.Diagnostics 命名空間，它會繼承並擴充標準 [System.Diagnostics.aspx] (https://msdn.microsoft.com/library/system.diagnostics (v = vs.110) 類別，可讓您使用 [System.Diagnostics.aspx] (在 Azure 環境中的記錄架構 https://msdn.microsoft.com/library/system.diagnostics (v = vs.110)。 如需詳細資訊，請參閱 [取得控制項的記錄和追蹤在 Microsoft Azure](https://msdn.microsoft.com/magazine/ff714589.aspx) 和 [在 Azure 雲端服務和虛擬機器中啟用診斷](cloud-services-dotnet-diagnostics.md)。
 
 ### 損毀傾印
 
-如果您想要擷取的相關資訊時的角色執行個體當機，請選取 [ **啟用傳輸損毀傾印** 核取方塊。 (由於 ASP.NET 處理大多數例外狀況，這通常只對背景工作角色才有用。)您可以增加或減少專供損毀傾印的儲存空間的百分比變更 **目錄配額 (%)** 值。 您可以變更其中損毀傾印會儲存，而且您可以選擇是否要擷取的儲存體容器 **完整** 或 **迷你** 傾印。
+如果您想要擷取的相關資訊時的角色執行個體當機，請選取 [ **啟用傳輸損毀傾印** 核取方塊。 (由於 ASP.NET 處理大多數例外狀況，這通常只對背景工作角色才有用。)您可以增加或減少專供損毀傾印的儲存空間的百分比變更 **目錄配額 （%）** 值。 您可以變更其中損毀傾印會儲存，而且您可以選擇是否要擷取的儲存體容器 **完整** 或 **迷你** 傾印。
 
 列出目前正在追蹤的處理序。 選取您想要擷取之處理序的核取方塊。 若要新增另一個處理序清單，請輸入處理序名稱，然後選擇 [ **新增程序** ] 按鈕。
 
   ![損毀傾印](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766026.png)
 
-  請參閱 [取得控制項的記錄和追蹤在 Microsoft Azure](https://msdn.microsoft.com/magazine/ff714589.aspx) 和 [Microsoft Azure 診斷第 4 部分: 自訂記錄元件和 Azure 診斷 1.3 變更](http://justazure.com/microsoft-azure-diagnostics-part-4-custom-logging-components-azure-diagnostics-1-3-changes/) 如需詳細資訊。
+  請參閱 [取得控制項的記錄和追蹤在 Microsoft Azure](https://msdn.microsoft.com/magazine/ff714589.aspx) 和 [Microsoft Azure 診斷第 4 部分 ︰ 自訂記錄元件和 Azure 診斷 1.3 變更](http://justazure.com/microsoft-azure-diagnostics-part-4-custom-logging-components-azure-diagnostics-1-3-changes/) 如需詳細資訊。
 
 ## 檢視診斷資料
 
@@ -257,15 +257,15 @@ RemoteAccess 模組和 RemoteForwarder 模組，如果您想要擷取基礎結�
 
 1. 在資料表檢視器中開啟診斷資料表，然後檢閱您所收集的資料。 在 IIS 記錄檔和自訂記錄檔中，您可以開啟 blob 容器。 您可以透過檢閱下表，尋找包含您感興趣之資料的資料表或 blob 容器。 除了該記錄檔的資料之外，資料表項目包含 EventTickCount、DeploymentId、角色和 RoleInstance 以協助您識別哪些虛擬機器與角色產生了資料及其時機。 
 
-    |診斷資料|說明|位置|
-    |---|---|---|
-    |應用程式記錄檔|您的程式碼藉由呼叫 System.Diagnostics.Trace 類別的方法所產生的記錄檔。|WADLogsTable|
-    |事件記錄檔|這項資料來自虛擬機器上的 Windows 事件記錄檔。 Windows 會將資訊儲存在這些記錄檔中，但應用程式和服務也會使用它們來報告錯誤或記錄檔資訊。|WADWindowsEventLogsTable|
-    |效能計數器|您可以在可供虛擬機器使用的任何效能計數器上收集資料。 作業系統會提供效能計數器，其包括記憶體使用狀況和處理器時間等多種統計資料。|WADPerformanceCountersTable|
-    |基礎結構記錄檔|這些記錄檔會從診斷基礎結構本身產生。|WADDiagnosticInfrastructureLogsTable|
-    |IIS 記錄檔|這些記錄檔會記錄 web 要求。 如果您的雲端服務取得大量的流量，這些記錄檔可能會相當冗長，因此您應該只在需要時收集並儲存此資料。|您可以在部署、角色及執行個體之路徑下的 wad-iis-failedreqlogs 下的 blob 容器中找到失敗要求記錄檔。 您可以在 wad-iis-logfiles 下找到完整的記錄檔。 每個檔案的項目都建立於 WADDirectories 資料表中。|
-    |損毀傾印|這項資訊提供雲端服務處理序的二進位映像 (通常是背景工作角色)。|wad-crush-dumps blob 容器|
-    |自訂記錄檔|您預先定義的資料記錄檔。|您可以在儲存體帳戶中以程式碼指定自訂記錄檔的位置。 例如，您可以指定自訂 blob 容器。|
+  	|診斷資料|說明|位置|
+  	|---|---|---|
+  	|應用程式記錄檔|您的程式碼藉由呼叫 System.Diagnostics.Trace 類別的方法所產生的記錄檔。|WADLogsTable|
+  	|事件記錄檔|這項資料來自虛擬機器上的 Windows 事件記錄檔。 Windows 會將資訊儲存在這些記錄檔中，但應用程式和服務也會使用它們來報告錯誤或記錄檔資訊。|WADWindowsEventLogsTable|
+  	|效能計數器|您可以在可供虛擬機器使用的任何效能計數器上收集資料。 作業系統會提供效能計數器，其包括記憶體使用狀況和處理器時間等多種統計資料。|WADPerformanceCountersTable|
+  	|基礎結構記錄檔|這些記錄檔會從診斷基礎結構本身產生。|WADDiagnosticInfrastructureLogsTable|
+  	|IIS 記錄檔|這些記錄檔會記錄 web 要求。 如果您的雲端服務取得大量的流量，這些記錄檔可能會相當冗長，因此您應該只在需要時收集並儲存此資料。|您可以在部署、角色及執行個體之路徑下的 wad-iis-failedreqlogs 下的 blob 容器中找到失敗要求記錄檔。 您可以在 wad-iis-logfiles 下找到完整的記錄檔。 每個檔案的項目都建立於 WADDirectories 資料表中。|
+  	|損毀傾印|這項資訊提供雲端服務處理序的二進位映像 (通常是背景工作角色)。|wad-crush-dumps blob 容器|
+  	|自訂記錄檔|您預先定義的資料記錄檔。|您可以在儲存體帳戶中以程式碼指定自訂記錄檔的位置。 例如，您可以指定自訂 blob 容器。|
 
 1. 如果任何類型的資料遭到截斷，您可以嘗試增加該資料類型的緩衝區，或是縮短資料從虛擬機器傳輸至儲存體帳戶之間的間隔。
 
@@ -335,7 +335,7 @@ RemoteAccess 模組和 RemoteForwarder 模組，如果您想要擷取基礎結�
 
 根據預設，IIS 不會收集失敗要求記錄檔。 如果您編輯 web 角色的 web.config 檔案，您就可以設定 IIS 以收集這些記錄檔。
 
-**我不從 OnStart 之類的 RoleEntryPoint 方法取得追蹤資訊。 問題是什麼?**
+**我不從 OnStart 之類的 RoleEntryPoint 方法取得追蹤資訊。 問題是什麼？**
 
 RoleEntryPoint 的方法是在 WAIISHost.exe 的內容中呼叫，而不是 IIS。 因此，在通常會啟用追蹤的 web.config 中，組態資訊並不適用。 若要解決這個問題，請將.config 檔案新增至 web 角色專案，並將檔案命名以符合包含 RoleEntryPoint 程式碼的輸出組件。 在預設 web 角色專案中，.config 檔案的名稱將會是 WAIISHost.exe.config。 然後將下列幾行新增至此檔案：
 
@@ -356,4 +356,5 @@ RoleEntryPoint 的方法是在 WAIISHost.exe 的內容中呼叫，而不是 IIS�
 ## 後續步驟
 
 若要深入了解診斷記錄功能在 Azure 中，請參閱 [在 Azure 雲端服務和虛擬機器中啟用診斷](cloud-services-dotnet-diagnostics.md) 和 [啟用診斷記錄功能，在 Azure App Service web 應用程式的](web-sites-enable-diagnostic-log.md)。
+
 

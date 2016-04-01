@@ -18,7 +18,7 @@
 
 #在推播通知內使用 Emoji 表情符號
 
-您可以包含 Emoji 表情符號，如果您在幾個簡單步驟，推播通知: 
+只要幾個簡單步驟，您就可以在推播通知中加入 Emoji 表情符號： 
 
 1. 首先您需要尋找要在訊息中傳送的 Emoji。 請確定您要選取的 Emoji 可受目標裝置支援，因為裝置製造商需要一些時間才能將新核准的 Emoji 新增至裝置平台。 
 
@@ -26,7 +26,7 @@
 
     ![][7] 
 
-3. 在 **Mac** -您可以找到 Emojis 字典應用程式，[編輯]-> [Emoji (&) 符號。
+3. 在 **Mac** -您可以找到 Emojis 字典應用程式，[編輯]-> [Emoji （&) 符號。
 
     ![][6] 
 
@@ -49,5 +49,6 @@
 [5]: ./media/mobile-engagement-use-emoji-with-push/WindowsPhone_Emoji.png
 [6]: ./media/mobile-engagement-use-emoji-with-push/Mac_SelectEmoji.png
 [7]: ./media/mobile-engagement-use-emoji-with-push/Windows_SelectEmoji.png
+
 
 

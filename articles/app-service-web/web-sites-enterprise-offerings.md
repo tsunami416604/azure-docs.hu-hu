@@ -53,10 +53,10 @@ App Service Web Apps 是裝載此類應用程式的最佳選項，提供可擴�
 
 下列圖表說明一個內含內部部署資源連線選項的範例概略解決方案。  第一個範例示範如何使用標準 Azure App Service 功能來達成此解決方案，第二個範例則示範如何使用進階提供項目 (App Service 環境) 來達成此解決方案。
 
-使用標準的應用程式服務功能:
+使用標準的應用程式服務功能 ︰
 ![](./media/web-sites-enterprise-offerings/on-premise-connectivity-solutions.png "Using Standard App Service Features")
 
-使用 App Service 環境:
+使用 App Service 環境 ︰
 ![](./media/web-sites-enterprise-offerings/on-premise-connectivity-solutions-ASE.png "Using an App Service Environment")
 
 ## 商業利益 ##
@@ -160,4 +160,5 @@ App Service Web Apps 針對快速發展環境中的企業動態需求，提供�
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
  
+
 

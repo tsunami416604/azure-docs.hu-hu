@@ -60,7 +60,7 @@ Node.js 包含核心執行時期的一組最低功能。
 
     ![Windows PowerShell displaying the output of the npm install express command.](./media/cloud-services-nodejs-develop-deploy-express-app/express-g.png)
 
-2. 將目錄變更至 **WebRole1** 目錄，然後使用 express 命令來產生新的應用程式:
+2. 將目錄變更至 **WebRole1** 目錄，然後使用 express 命令來產生新的應用程式 ︰
 
         PS C:\node\expressapp\WebRole1> express
 
@@ -114,7 +114,7 @@ Azure" 訊息。
 
 2.  修改最後一行文字，加上 **azure**。
 
-    ![Index.jade 檔案最後一行顯示: p 歡迎 \#{title} 在 Azure 中](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
+    ![Index.jade 檔案最後一行顯示 ︰ p 歡迎 \#{title} 在 Azure 中](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 
 3.  儲存檔案並結束 [記事本]。
 
@@ -143,4 +143,5 @@ Azure" 訊息。
   [http://jade-lang.com]: http://jade-lang.com
 
  
+
 

@@ -24,9 +24,9 @@
 ## 瀏覽 Cortana 分析資源庫
 1. 移至 [組件庫](http://gallery.azureml.net/)
 2. 瀏覽前往 **實驗趨勢** 或 **Microsoft 範例**。
-3. 使用搜尋與篩選器來縮小結果的範圍:
+3. 使用搜尋與篩選器來縮小結果的範圍 ︰
 ![](./media/machine-learning-sample-experiments/image1.png) 
-4. 按一下實驗，以深入了解相關資訊。 若要執行和 (或) 修改實驗，按一下 [ **在 Studio 中開啟**。
+4. 按一下實驗，以深入了解相關資訊。 若要執行和 （或） 修改實驗，按一下 [ **在 Studio 中開啟**。
 ![](./media/machine-learning-sample-experiments/image2.png) 
 5.  以您的 Microsoft 帳戶認證登入。 如果您還沒有機器學習服務工作區，就會建立免費試用的工作區。 [了解在 Machine Learning 的免費試用版中包含的內容](http://azure.microsoft.com/pricing/details/machine-learning/)
 ![](./media/machine-learning-sample-experiments/image3.png) 
@@ -41,4 +41,5 @@
 - [檢閱範例 R 實驗](machine-learning-r-csharp-web-service-examples.md)
 - [建立 Web 服務 API](machine-learning-publish-a-machine-learning-web-service.md)
 - [瀏覽立即可用的應用程式](https://datamarket.azure.com/browse?query=machine+learning)
+
 

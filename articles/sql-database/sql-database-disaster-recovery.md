@@ -20,10 +20,10 @@
 
 Azure SQL Database 提供下列功能，以從中斷復原：
 
-- 作用中地理複寫 [(部落格)](http://azure.microsoft.com/blog/2014/07/12/spotlight-on-sql-database-active-geo-replication/)
-- 標準異地複寫 [(部落格)](http://azure.microsoft.com/blog/2014/09/03/azure-sql-database-standard-geo-replication/)
-- 地理還原 [(部落格)](http://azure.microsoft.com/blog/2014/09/13/azure-sql-database-geo-restore/)
-- 新的地理區域複寫功能 [(部落格)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
+- 作用中地理複寫 [（部落格）](http://azure.microsoft.com/blog/2014/07/12/spotlight-on-sql-database-active-geo-replication/)
+- 標準異地複寫 [（部落格）](http://azure.microsoft.com/blog/2014/09/03/azure-sql-database-standard-geo-replication/)
+- 地理還原 [（部落格）](http://azure.microsoft.com/blog/2014/09/13/azure-sql-database-geo-restore/)
+- 新的地理區域複寫功能 [（部落格）](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 
 若要了解如何準備嚴重損壞和可復原資料庫時，請造訪我們 [業務續航力的設計](sql-database-business-continuity-design.md) 頁面。 
 
@@ -44,7 +44,7 @@ Azure SQL Database 提供下列功能，以從中斷復原：
 
 1. 登入 [Azure 傳統入口網站](https://portal.Azure.com)
 2. 在畫面左側選取 **瀏覽** ，然後選取 **SQL 資料庫**
-3. 巡覽至您的資料庫，然後加以選取。 
+3. 瀏覽至您的資料庫，然後選取它。 
 4. 在您的資料庫分頁底部選取 **異地複寫對應**。
 4. 在 **次要** 以滑鼠右鍵按一下您要復原到選取的資料庫名稱的資料列 **容錯移轉**。
 
@@ -94,7 +94,7 @@ Azure SQL Database 提供下列功能，以從中斷復原：
     
 4.  追蹤狀態的復原使用 [資料庫操作狀態](http://msdn.microsoft.com/library/azure/dn720371.aspx) 作業。
  
-## 設定復原後的資料庫<a name="postrecovery"></a>
+## 在復原之後設定資料庫<a name="postrecovery"></a>
 
 這份工作檢查清單可以用來幫助您準備產生復原的資料庫。
 
@@ -105,10 +105,10 @@ Azure SQL Database 提供下列功能，以從中斷復原：
   + 復原的資料庫使用的名稱與來源資料庫不同
   + 復原的資料庫和來源伺服器位於不同的伺服器
 
-如需變更連接字串的詳細資訊，請參閱 [連接至 Azure SQL Database: 重要的建議 ](sql-database-connect-central-recommendations.md)。
+如需變更連接字串的詳細資訊，請參閱 [連接至 Azure SQL Database ︰ 重要的建議 ](sql-database-connect-central-recommendations.md)。
  
 ### 修改防火牆規則
-請確認伺服器層級和資料庫層級的防火牆規則，並確定已啟用您用戶端電腦或 Azure 與伺服器以及剛復原之資料庫的連接。 如需詳細資訊，請參閱 [How to: 進行防火牆設定 (Azure SQL Database)](sql-database-configure-firewall-settings.md)。
+請確認伺服器層級和資料庫層級的防火牆規則，並確定已啟用您用戶端電腦或 Azure 與伺服器以及剛復原之資料庫的連接。 如需詳細資訊，請參閱 [How to ︰ 進行防火牆設定 (Azure SQL Database)](sql-database-configure-firewall-settings.md)。
 
 ### 確認伺服器登入和資料庫使用者
 
@@ -130,4 +130,5 @@ Azure SQL Database 提供下列功能，以從中斷復原：
 ### 啟用稽核
 
 如果需要稽核才能存取您的資料庫，則您必須在資料庫復原之後啟用稽核。 用戶端應用程式必須在 *.database.secure.windows.net 的模式中使用安全連接字串，才能有良好的稽核指標。 如需詳細資訊，請參閱 [開始使用 SQL database 稽核](sql-database-auditing-get-started.md)。 
+
 

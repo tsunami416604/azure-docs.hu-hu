@@ -16,7 +16,7 @@
    ms.date="08/25/2015"
    ms.author="vturecek"/>
 
-# Service Fabric Testability 案例: 服務通訊
+# Service Fabric Testability 案例 ︰ 服務通訊
 
 微服務及服務導向的架構樣式會在 Service Fabric 中自然出現。 在這些類型的分散式架構中，元件化的微服務應用程式通常是由需要彼此通訊的多個服務所組成。 即使在最簡單的情況下，您通常至少會有一個無狀態網路服務及一個可設定狀態的資料儲存服務需要相互通訊。
 
@@ -41,7 +41,7 @@
 
 妥善處理這些案例，對於系統流暢運作至關重要。 為了達成此目標，需要考量一些事項：
 
-+ 可以連接到每個服務 *位址* 可接聽 (HTTP、 WebSockets 等)。 若服務執行個體或分割區已移動，其位址端點將會變更 (已移至其他具有不同的 IP 位址的節點)。 如果使用內建的通訊元件，這些元件會為您處理重新解析服務位址。 
++ 可以連接到每個服務 *位址* 可接聽 （HTTP、 WebSockets 等）。 若服務執行個體或分割區已移動，其位址端點將會變更 (已移至其他具有不同的 IP 位址的節點)。 如果使用內建的通訊元件，這些元件會為您處理重新解析服務位址。 
 + 當服務執行個體再次開啟接聽程式時，服務延遲時間可能會短暫增加，這需取決於服務在移動後開啟的速度。
 + 必須先關閉任何現有的連線，然後等服務於新的節點上開啟時再重新開啟。 妥善關閉節點或重新開啟，可讓現有連線擁有足夠時間正常關閉。
 
@@ -100,4 +100,5 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 [深入了解 Testability 動作](service-fabric-testability-actions.md)
 
 [深入了解 Testability 案例](service-fabric-testability-scenarios.md) 
+
 

@@ -31,7 +31,7 @@
 ## 必要條件
 需要下列必要條件，才能開始使用 REST API 用媒體服務進行開發。
 
-- 了解如何使用媒體服務 REST API 進行開發。 如需詳細資訊，請參閱 [媒體服務-其餘概觀](http://msdn.microsoft.com/library/azure/hh973616.aspx)。
+- 了解如何使用媒體服務 REST API 進行開發。 如需詳細資訊，請參閱 [媒體服務的 rest 概觀](http://msdn.microsoft.com/library/azure/hh973616.aspx)。
 - 由您選擇可以傳送 HTTP 要求和回應的應用程式。 本教學課程使用 [Fiddler](http://www.telerik.com/download/fiddler)。 
 
 本快速入門會顯示下列工作。
@@ -47,25 +47,25 @@
 
 ## <a id="create_ams"></a>使用入口網站建立媒體服務帳戶
 
-1. 在 [Azure 傳統的入口網站] [] 中，按一下 [ **新增**, ，按一下 [ **媒體服務**, ，然後按一下 [ **快速建立**。
+1. 在 [Azure 傳統入口網站][], ，按一下 [ **新增**, ，按一下 [ **媒體服務**, ，然後按一下 [ **快速建立**。
    
     ![Media Services Quick Create](./media/media-services-rest-get-started/wams-QuickCreate.png)
 
 2. 在 **名稱**, ，輸入新帳戶的名稱。 媒體服務帳戶名稱是全部小寫且不含空格的數字或字母，而且長度是 3 到 24 個字元。 
 
-3. 在 **區域**, ，選取將用來儲存您的媒體服務帳戶的中繼資料記錄的地理區域。 只有可用的媒體服務區域才會出現在下拉式清單中。 
+3. 在 **區域**, ，選取將用來儲存您的媒體服務帳戶之中繼資料記錄的地理區域。 只有可用的媒體服務區域才會出現在下拉式清單中。 
 
-4. 在 **儲存帳戶**, ，請選取儲存帳戶來提供媒體內容，從您的媒體服務帳戶的 blob 儲存體。 您可以選取與媒體服務帳戶相同地理區域中的現有儲存體帳戶，也可以建立新的儲存體帳戶。 新的儲存體帳戶會建立於相同的區域中。 
+4. 在 **儲存體帳戶**, ，選取儲存體帳戶提供媒體內容從媒體服務帳戶的 blob 儲存體。 您可以選取與媒體服務帳戶相同地理區域中的現有儲存體帳戶，也可以建立新的儲存體帳戶。 新的儲存體帳戶會建立於相同的區域中。 
 
-5. 如果您在建立新的 「 儲存 」 帳戶， **新的儲存帳戶名稱**, ，輸入儲存帳戶的名稱。 儲存體帳戶名稱的規則會與媒體服務帳戶相同。
+5. 如果您在建立新的儲存體帳戶， **新的儲存體帳戶名稱**, ，輸入儲存體帳戶的名稱。 儲存體帳戶名稱的規則會與媒體服務帳戶相同。
 
-6. 按一下 [ **快速建立** 在表單底部。
+6. 按一下 [ **快速建立** 表單底部。
 
     您可以在視窗底端的訊息區域監視程序的狀態。
 
     成功建立帳戶之後，狀態會變更為作用中。 
     
-    底部的頁面上， **管理金鑰** ] 按鈕會出現。 當您按一下此按鈕時，會顯示對話方塊，其中具有媒體服務帳戶名稱和主要和次要金鑰。 您將需要帳戶名稱和主要金鑰資訊，以便以程式設計方式存取媒體服務帳戶。 
+    在頁面底部 **管理金鑰** ] 按鈕會出現。 當您按一下此按鈕時，會顯示對話方塊，其中具有媒體服務帳戶名稱和主要和次要金鑰。 您將需要帳戶名稱和主要金鑰資訊，以便以程式設計方式存取媒體服務帳戶。 
 
     
     ![Media Services Page](./media/media-services-rest-get-started/wams-mediaservices-page.png)
@@ -112,7 +112,7 @@
     Accept: application/json
 
     
-**主體**:
+**本文**:
 
 您需要在這個要求的主體中提供 client_id 與 client_secret 值；client_id 與 client_secret 分別對應到 AccountName 與 AccountKey 值。 當您設定帳戶時，媒體服務會提供這些值給您。 
 
@@ -158,7 +158,7 @@
 
 請注意，上傳與下載資產檔案的根 URI 是 https://yourstorageaccount.blob.core.windows.net/，其中儲存體帳戶名稱是您在媒體服務帳戶設定期間所用的相同名稱。
 
-下列範例會示範媒體服務根目錄的 URI (https://media.windows.net/) 的 HTTP 要求。 此要求會在回應中得到 301 重新導向。 後續的要求使用新的 URI (https://wamsbayclus001rest-hs.cloudapp.net/api/)。     
+下列範例示範對媒體服務根 URI (https://media.windows.net/) 的 HTTP 要求。 此要求會在回應中得到 301 重新導向。 後續的要求使用新的 URI (https://wamsbayclus001rest-hs.cloudapp.net/api/)。     
 
 **HTTP 要求**:
     
@@ -186,7 +186,7 @@
     </body></html>
 
 
-**HTTP 要求** (使用新的 URI):
+**HTTP 要求** （使用新的 URI） ︰
             
     GET https://wamsbayclus001rest-hs.cloudapp.net/api/ HTTP/1.1
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
@@ -214,20 +214,20 @@
      
 
 
->[AZURE.NOTE] 從現在起新的 URI 將用在此教學課程。
+>[AZURE.NOTE] 從現在起新 URI 將用於本教學課程。
 
 ## <a id="upload"></a>使用 REST API 建立新資產並上傳視訊檔案
 
-在媒體服務中，您會將數位檔案上傳到到資產。  **資產** 實體可以包含視訊、 音訊、 影像、 縮圖的集合、 文字曲目和隱藏式的字幕檔案 (以及這些檔案的相關中繼資料。)一旦檔案會上傳到資產，您的內容會安全地儲存在雲端，以便進行進一步的處理和串流。 
+在媒體服務中，您會將數位檔案上傳到到資產。  **資產** 實體可以包含視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式輔助字幕檔案 （和這些檔案的相關中繼資料。）一旦檔案會上傳到資產，您的內容會安全地儲存在雲端，以便進行進一步的處理和串流。 
 
-您必須建立資產時提供的值是資產建立選項。  **選項** 屬性是列舉值，說明您可以使用建立資產的加密選項。 有效的值是以下清單的其中一個值，而不是值的組合。
+您必須建立資產時提供的值是資產建立選項。  **選項** 屬性是描述可以使用建立資產之加密選項的列舉值。 有效的值是以下清單的其中一個值，而不是值的組合。
 
  
-- **無** = **0** -會使用任何加密。 請注意，使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
+- **無** = **0** -不使用加密。 請注意，使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
     如果您計劃使用漸進式下載傳遞 MP4，請使用此選項。 
-- **StorageEncrypted** = **1** -加密您在本機使用 AES 256 位元加密的清除內容，然後再將它上載到其中的飛出 Azure 存放它的儲存位置加密靈魂安息了。 以儲存體加密保護的資產會自動解除加密並在編碼前放置在加密的檔案系統中，並且會在上傳為新輸出資產之前選擇性地重新編碼。 儲存體加密的主要使用案例是讓您可以使用強式加密來保護磁碟中靜止的高品質輸入媒體檔。
-- **CommonEncryptionProtected** = **2** -如果您上載已被加密並使用常見的加密或 PlayReady DRM (例如，平滑資料流保護與 PlayReady DRM) 保護的內容，請使用此選項。
-- **EnvelopeEncryptionProtected** = **4** – 如果您上載 HLS 使用 AES 加密，請使用此選項。 請注意，檔案必須已由 Transform Manager 編碼和加密。
+- **StorageEncrypted** = **1** -您在本機使用 aes-256 位元加密的內容，然後上傳到 Azure 儲存位置加密儲存體。 以儲存體加密保護的資產會自動解除加密並在編碼前放置在加密的檔案系統中，並且會在上傳為新輸出資產之前選擇性地重新編碼。 儲存體加密的主要使用案例是讓您可以使用強式加密來保護磁碟中靜止的高品質輸入媒體檔。
+- **CommonEncryptionProtected** = **2** -使用此選項，如果您要上傳已加密並使用一般加密或 PlayReady DRM (例如，保護的 Smooth Streaming PlayReady DRM) 保護的內容。
+- **EnvelopeEncryptionProtected** = **4** – 如果您要上傳使用 AES 加密的 HLS，請使用此選項。 請注意，檔案必須已由 Transform Manager 編碼和加密。
 
 ### 建立資產
 
@@ -286,9 +286,9 @@
     
 ### 建立 AssetFile
 
- [AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) 實體代表視訊或音訊檔案存放在 blob 容器中。 資產檔案一律會與資產相關聯，資產可包含一或多個 Assetfile。 如果資產檔案物件並未與 blob 容器中的數位檔案相關聯，媒體服務編碼器工作將會失敗。
+ [AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) 實體代表儲存在 blob 容器中的視訊或音訊檔案。 資產檔案一律會與資產相關聯，資產可包含一或多個 Assetfile。 如果資產檔案物件並未與 blob 容器中的數位檔案相關聯，媒體服務編碼器工作將會失敗。
 
-您將數位媒體檔案上載到 blob 容器後，您會使用 **合併** HTTP 要求以更新您的媒體檔案的相關資訊的 AssetFile，(如這個主題稍後所示)。 
+您將數位媒體檔案上傳至 blob 容器之後，您將使用 **合併** HTTP 要求，以媒體檔案的相關資訊更新 AssetFile （如本主題稍後所示）。 
 
 **HTTP 要求**
 
@@ -349,7 +349,7 @@
 
 ### 建立具有寫入權限的 AccessPolicy。 
 
-將任何檔案上傳到 blob 儲存體之前，請設定寫入資產的存取原則權限。 若要這樣做，請 POST HTTP 要求到 AccessPolicies 實體集。 請在建立時定義 DurationInMinutes 值，否則您會在回應中收到 500 內部伺服器錯誤訊息。 如需有關 AccessPolicies 的詳細資訊，請參閱 [AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx)。
+將任何檔案上傳到 blob 儲存體之前，請設定寫入資產的存取原則權限。 若要這樣做，請 POST HTTP 要求到 AccessPolicies 實體集。 請在建立時定義 DurationInMinutes 值，否則您會在回應中收到 500 內部伺服器錯誤訊息。 如需 AccessPolicies 的詳細資訊，請參閱 [AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx)。
 
 下列範例示範如何建立 AccessPolicy：
         
@@ -411,7 +411,7 @@ SAS URL 具有下列格式：
 - 如果您需要立即上傳檔案，您應該將 StartTime 值設為目前時間的五分鐘前。 這是因為用戶端電腦與媒體服務之間可能有時間差。 此外，您的 StartTime 值必須是以下日期時間格式：YYYY-MM-DDTHH:mm:ssZ (例如，"2014-05-23T17:53:50Z")。   
 - 建立 Locator 之後到它可供使用時，中間可能會有 30 到 40 秒的延遲。 此問題同時適用於 SAS URL 與原始定位器。
 
-下列範例會示範如何建立 SAS URL 定位器，如要求主體中的 Type 屬性所定義 ("1" 代表 SAS 定位器，"2" 代表隨選原始定位器)。  **路徑** 傳回的屬性包含的 URL，您必須使用來上載您的檔案。
+下列範例會示範如何建立 SAS URL 定位器，如要求主體中的 Type 屬性所定義 ("1" 代表 SAS 定位器，"2" 代表隨選原始定位器)。  **路徑** 傳回的屬性包含上傳您的檔案時，必須使用的 URL。
     
 **HTTP 要求**
     
@@ -470,9 +470,9 @@ SAS URL 具有下列格式：
     
 一旦設定 AccessPolicy 與 Locator，實際檔案會使用 Azure 儲存體 REST API 上傳至 Azure Blob 儲存容器。 您可以使用頁面或區塊 blob 上傳。 
 
->[AZURE.NOTE] 您必須新增您想要尋找程式來上載檔案的檔案名稱 **路徑** 在前一節中所收到的值。 例如，https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
+>[AZURE.NOTE] 您必須新增您想要上傳至定位器檔案的檔案名稱 **路徑** 上一節中所收到的值。 例如，https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
 
-如需有關使用 Azure 的儲存體 blob 的詳細資訊，請參閱 [Blob 服務其餘 API](http://msdn.microsoft.com/library/azure/dd135733.aspx)。
+如需有關使用 Azure 儲存體 blob 的詳細資訊，請參閱 [Blob 服務 REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)。
 
 
 ### 更新 AssetFile 
@@ -558,7 +558,7 @@ SAS URL 具有下列格式：
 使用動態封裝，您只需要以單一儲存格式儲存及播放檔案，媒體服務會根據來自用戶端的要求建置及傳遞適當的回應。 
 
 
->[AZURE.NOTE] 如需有關計價的詳細資料的資訊，請參閱 [媒體服務價格詳細資料](http://go.microsoft.com/fwlink/?LinkId=275107)。
+>[AZURE.NOTE] 如需定價詳細資料的相關資訊，請參閱 [媒體服務定價詳細資料](http://go.microsoft.com/fwlink/?LinkId=275107)。
 
 若要變更串流保留單元數目，請執行下列動作：
     
@@ -618,7 +618,7 @@ SAS URL 具有下列格式：
     
 ### <a id="long_running_op_status"></a> 檢查長時間執行作業的狀態
 
-配置任何新的單元需要大約 20 分鐘的時間才能完成。 若要檢查作業使用的狀態 **作業** 方法，並指定作業的識別碼。 作業識別碼傳回至回應中 **比例** 要求。
+配置任何新的單元需要大約 20 分鐘的時間才能完成。 若要檢查作業使用的狀態 **作業** 方法，並指定作業的識別碼。 作業的回應中傳回識別碼 **延展** 要求。
 
     operation-id: nb:opid:UUID:1853bcbf-b71f-4ed5-a4c7-a581d4f45ae7
  
@@ -665,7 +665,7 @@ SAS URL 具有下列格式：
 
 ## <a id="encode"></a>將來源檔案編碼為一組調適性位元速率 MP4 檔案
 
-將資產內嵌到媒體服務之後，可以先將媒體編碼、轉碼多工處理、加上浮水印等，再傳遞給用戶端。 這些活動會針對多個背景角色執行個體排定和執行，以確保高效能與可用性。 這些活動稱為 「 工作和每 [工作](http://msdn.microsoft.com/library/azure/hh974289.aspx) 執行資產檔案的實際工時的不可部分完成工作所組成。 
+將資產內嵌到媒體服務之後，可以先將媒體編碼、轉碼多工處理、加上浮水印等，再傳遞給用戶端。 這些活動會針對多個背景角色執行個體排定和執行，以確保高效能與可用性。 這些活動稱為工作，每個 [工作](http://msdn.microsoft.com/library/azure/hh974289.aspx) 執行資產檔案的實際工作的不可部分完成工作所組成。 
 
 如稍早所提及，使用 Azure 媒體服務時，其中一個最常見的案例是將調適性位元速率串流傳遞給用戶端。 媒體服務可以以下列其中一種格式動態封裝一組可調位元速率 MP4 檔案：HTTP 即時資料流 (HLS)、Smooth Streaming、MPEG DASH 和 HDS (僅適用於 Adobe PrimeTime/存取使用權)。 
 
@@ -674,7 +674,7 @@ SAS URL 具有下列格式：
 - 將您的夾層 (來源) 檔編碼或轉換為一組調適性位元速率 MP4 檔案或調適性位元速率 Smooth Streaming 檔案。  
 - 為您打算從該處傳遞內容的串流端點取得至少一個串流單位。 
 
-下一節示範如何建立包含一個編碼工作的工作。 工作指定轉碼的夾層檔案成一組使用適應性的位元速率 MP4s **Azure Media 編碼器**。 此節也會示範如何監視工作處理進度。 工作完成時，您將能夠建立存取資產所需的定位器。 
+下一節示範如何建立包含一個編碼工作的工作。 工作指定為夾層檔為一組調適性位元速率 mp4 使用 **Azure Media Encoder**。 此節也會示範如何監視工作處理進度。 工作完成時，您將能夠建立存取資產所需的定位器。 
 
 ### 取得媒體處理器
 
@@ -725,9 +725,9 @@ SAS URL 具有下列格式：
 
 ### 建立工作
 
-每個工作可以有一或多個工作，視您想要完成的處理類型而定。 您可以透過 REST API 以兩種方式的其中之一建立工作和其相關工作：工作可以透過 Job 實體上的 Tasks 導覽屬性，或透過 OData 批次處理進行內嵌定義。 媒體服務 SDK 使用批次處理；不過，為了本主題中的程式碼範例可讀性，工作都是內嵌定義。 在批次處理的資訊，請參閱 [開啟的資料通訊協定 (OData) 批次處理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
+每個工作可以有一或多個工作，視您想要完成的處理類型而定。 您可以透過 REST API 以兩種方式的其中之一建立工作和其相關工作：工作可以透過 Job 實體上的 Tasks 導覽屬性，或透過 OData 批次處理進行內嵌定義。 媒體服務 SDK 使用批次處理；不過，為了本主題中的程式碼範例可讀性，工作都是內嵌定義。 如需批次處理的資訊，請參閱 [開放式資料通訊協定 (OData) 批次處理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
 
-下列範例會示範如何建立和張貼工作，並將一個工作設為在特定的解析度與品質將視訊編碼。 下列的文件區段包含的所有清單 [工作預設](http://msdn.microsoft.com/library/azure/dn619392.aspx) Azure 媒體處理器支援。  
+下列範例會示範如何建立和張貼工作，並將一個工作設為在特定的解析度與品質將視訊編碼。 下列文件區段包含的所有清單 [工作預設](http://msdn.microsoft.com/library/azure/dn619392.aspx) Azure 媒體處理器所支援。  
 
 **HTTP 要求**
     
@@ -826,16 +826,16 @@ SAS URL 具有下列格式：
 有任何工作要求中有一些重要事項要注意：
 
 - TaskBody 屬性必須使用 XML 常值來定義工作所使用的輸入或輸出資產數目。 工作主題包含 XML 的 XML 結構描述定義。
-- 在 TaskBody 定義中，每個 <inputAsset> 和 <outputAsset> 必須設定為 JobInputAsset(value) 或 JobOutputAsset(value)。
+- 在 TaskBody 定義中，每個 <inputAsset> and <outputAsset> 必須設定為 jobinputasset （value） 或 joboutputasset （value）。
 - 每個工作可以有多個輸出資產。 一個 JobOutputAsset(x) 只能使用一次做為工作中的工作輸出。
 - 您可以指定 JobInputAsset 或 JobOutputAsset 做為工作的輸入資產。
 - 工作不能形成循環。
 - 您傳遞至 JobInputAsset 或 JobOutputAsset 的 value 參數代表資產的索引值。 實際資產定義在作業實體定義上的 InputMediaAsset 與 OutputMediaAsset 導覽屬性。 
 
->[AZURE.NOTE] 由於媒體服務建置在 OData v3，InputMediaAssets 和 OutputMediaAssets 的導覽屬性集合中個別的資產透過參照 「 __metadata: uri"名稱 / 值組。 
+>[AZURE.NOTE] 由於媒體服務建置在 OData v3，因此 Inputmediaasset 與 Outputmediaasset 導覽屬性集合中的個別資產會透過參考"__metadata: uri"名稱 / 值組。 
 
 - InputMediaAsset 對應至您在媒體服務中建立的一個或多個資產。 OutputMediaAsset 由系統建立。 它們不會參考現有的資產。
-- OutputMediaAsset 可以使用 assetName 屬性命名。 如果這個屬性不存在，那麼 OutputMediaAsset 名稱為任何內部文字的值 <outputAsset> 項目是以工作名稱的值或作業識別碼中的值 (大小寫，不在已定義名稱] 屬性) 的尾碼。 例如，如果您將 assetName 的值設為 "Sample"，則 OutputMediaAsset Name 屬性會設為 "Sample"。 不過，如果您未設定 assetName 的值，但已將工作名稱設為 "NewJob"，則 OutputMediaAsset Name 會是 "JobOutputAsset(value)_NewJob"。 
+- OutputMediaAsset 可以使用 assetName 屬性命名。 如果這個屬性不存在，則 OutputMediaAsset 的名稱會是內部文字的任何值 <outputAsset> 項目是與工作名稱值或工作識別碼值 （在未定義 Name 屬性的情況下） 的尾碼。 例如，如果您將 assetName 的值設為 "Sample"，則 OutputMediaAsset Name 屬性會設為 "Sample"。 不過，如果您未設定 assetName 的值，但已將工作名稱設為 "NewJob"，則 OutputMediaAsset Name 會是 "JobOutputAsset(value)_NewJob"。 
 
     下列範例示範如何設定 assetName 屬性：
     
@@ -847,7 +847,7 @@ SAS URL 具有下列格式：
     - 工作必須有至少 2 個工作
     - 必須有至少一個工作的輸入是工作中另一項工作的輸出。
 
-如需詳細資訊，請參閱 [媒體服務其餘的 api 建立編碼工作](http://msdn.microsoft.com/library/azure/jj129574.aspx)。
+如需詳細資訊，請參閱 [使用媒體服務 REST API 建立編碼工作](http://msdn.microsoft.com/library/azure/jj129574.aspx)。
 
 ### 監看處理進度
 
@@ -907,7 +907,7 @@ SAS URL 具有下列格式：
 
 如果成功，會傳回 204 回應碼且沒有訊息主體。
 
->[AZURE.NOTE] 您必須進行 URL 編碼的作業識別碼 (通常是 nb:jid:UUID: somevalue) 時將它在做為參數傳遞到 CancelJob。
+>[AZURE.NOTE] 您必須進行 URL 編碼的作業識別碼 (通常是 nb: somevalue) 在當做參數傳遞到 CancelJob 時。
 
 
 ### 取得輸出資產 
@@ -994,7 +994,7 @@ MPEG DASH 的串流 URL 具有下列格式：
 
 ###建立具有讀取權限的 AccessPolicy
 
-下載或串流任何媒體內容之前，請先定義具有讀取權限的 AccessPolicy，並建立適當的 Locator 實體，指定您想要為用戶端啟用的傳遞機制類型。 如需有關可用的屬性的詳細資訊，請參閱 [AccessPolicy 實體屬性](https://msdn.microsoft.com/library/azure/hh974297.aspx#accesspolicy_properties)。
+下載或串流任何媒體內容之前，請先定義具有讀取權限的 AccessPolicy，並建立適當的 Locator 實體，指定您想要為用戶端啟用的傳遞機制類型。 如需可用屬性的詳細資訊，請參閱 [AccessPolicy 實體屬性](https://msdn.microsoft.com/library/azure/hh974297.aspx#accesspolicy_properties)。
 
 下列範例示範如何針對指定資產指定讀取權限的 AccessPolicy。
 
@@ -1078,7 +1078,7 @@ MPEG DASH 的串流 URL 具有下列格式：
     }
 
 
-傳回 **路徑** 屬性包含 SA URL。
+傳回 **路徑** 屬性包含 SAS URL。
 
 >[AZURE.NOTE]
 如果您下載儲存體加密內容，則必須手動將其解密才能呈現，或是在處理工作中使用儲存體解密 MediaProcessor，以純文字將處理的檔案輸出到 OutputAsset，然後從該資產下載。 如需有關處理的詳細資訊，請參閱＜使用媒體服務 REST API 建立編碼工作＞。 此外，已建立 SAS URL 定位器之後，無法更新它們。 例如，您無法以更新的 StartTime 值重複使用相同的定位器。 這是因為建立 SAS URL 的方式。 如果您想要在定位器過期之後存取資產以便下載，您必須用新的 StartTime 建立一個新的定位器。
@@ -1087,9 +1087,9 @@ MPEG DASH 的串流 URL 具有下列格式：
 
 設定 AccessPolicy 與 Locator 之後，您可以使用 Azure 儲存體 REST API 下載檔案。  
 
->[AZURE.NOTE] 您必須新增您想要下載，以尋找程式的檔案的檔案名稱 **路徑** 在前一節中所收到的值。 例如，https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
+>[AZURE.NOTE] 您必須新增您想要尋找程式來下載檔案的檔案名稱 **路徑** 上一節中所收到的值。 例如，https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
 
-如需有關使用 Azure 的儲存體 blob 的詳細資訊，請參閱 [Blob 服務其餘 API](http://msdn.microsoft.com/library/azure/dd135733.aspx)。
+如需有關使用 Azure 儲存體 blob 的詳細資訊，請參閱 [Blob 服務 REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)。
 
 由於您先前執行的編碼工作 (編碼成自調適性 MP4 集)，您有多個可以漸進式下載的 MP4 檔案。 例如：    
     
@@ -1185,7 +1185,7 @@ MPEG DASH 的串流 URL 具有下列格式：
 
 ## <a id="play"></a>播放您的內容  
 
-要傳送您的串流視訊，使用 [Azure 服務媒體播放](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
+若要串流您的視訊，請使用 [Azure 媒體服務播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 
 若要測試漸進式下載，請將 URL 貼入瀏覽器 (例如，IE、Chrome、Safari)。
 
@@ -1203,13 +1203,14 @@ MPEG DASH 的串流 URL 具有下列格式：
 如果本主題未包含您預期的內容、缺少部分內容，或者提供了一些其他不符合您需求的方式，請在下方提供您使用 Disqus 執行緒的意見反應給我們。
 
 ##其他資源
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure 媒體服務 101 - 立即在線上取得您的影片！</a>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure 媒體服務 102 - 動態封裝和行動裝置</a>
+- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - 立即在線上取得您的影片！</a>
+- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - 動態封裝和行動裝置</a>
 
 
 
 <!-- URLs. -->
   [Azure Classic Portal]: http://manage.windowsazure.com/
+
 
 
 

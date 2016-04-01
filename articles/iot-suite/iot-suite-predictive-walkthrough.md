@@ -55,11 +55,11 @@ IoT 中樞會提供裝置命令通知。
 
 ## Azure 串流分析作業
 
-**工作: 遙測** 使用兩個陳述式的內送裝置遙測資料流上運作。 第一個陳述式會從裝置選取所有遙測，然後將此資料從在 Web 應用程式中視覺化的位置傳送至 Blob 儲存體。 第二個陳述式會計算平均感應器值經過兩分鐘滑動視窗，並將事件中心，以透過此資料傳送 **事件處理器**。
+**工作 ︰ 遙測** 使用兩個陳述式的內送裝置遙測資料流上運作。 第一個陳述式會從裝置選取所有遙測，然後將此資料從在 Web 應用程式中視覺化的位置傳送至 Blob 儲存體。 第二個陳述式會計算平均感應器值經過兩分鐘滑動視窗，並將事件中心，以透過此資料傳送 **事件處理器**。
 
 ## 事件處理器
 
- **事件處理器** 已完成的週期採用平均感應器值並將這些值傳遞至 Machine Learning 定型的模型來計算引擎 RUL 公開 (expose) 的 API。
+ **事件處理器** 已完成的週期採用平均感應器值並將這些值傳遞至 Machine Learning 定型的模型來計算引擎 RUL 公開 （expose) 的 API。
 
 ## Azure Machine Learning
 
@@ -71,7 +71,7 @@ IoT 中樞會提供裝置命令通知。
 
 ### 預測性維護儀表板
 
-在 web 應用程式的這個頁面會使用 PowerBI JavaScript 控制項 (請參閱 [PowerBI 視覺效果的儲存機制][lnk-powerbi]) 以視覺化方式檢視:
+在 web 應用程式的這個頁面會使用 PowerBI JavaScript 控制項 (請參閱 [PowerBI 視覺效果的儲存機制][lnk-powerbi]) 以視覺化方式檢視 ︰
 
 - Blob 儲存體中串流分析作業的輸出資料。
 - 每個飛機引擎的 RUL 和週期計數。
@@ -122,4 +122,5 @@ IoT 中樞會提供裝置命令通知。
 [lnk-cortana-analytics]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
+
 

@@ -2,7 +2,7 @@
 
 ### 設定和註冊裝置
 
-1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 請參閱 [使用 PuTTY 來連接至裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console) 如需相關指示。 **請務必確實依照此程序，或無法存取主控台。**
+1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 請參閱 [使用 PuTTY 來連接至裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console) 如需相關指示。 **請務必確實依照此程序，否則將無法存取主控台。**
 
 2. 在開啟的工作階段中，按 Enter 鍵一次以取得命令提示字元。 
 
@@ -95,13 +95,13 @@
 
     <br/>![StorSimple 註冊裝置 5](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice5_gov-include.png)
 
-14. 安裝精靈的最後一個步驟是向 StorSimple Manager 服務註冊您的裝置。 為此，您必須在您取得服務註冊金鑰 [步驟 2: 取得服務註冊金鑰](storsimple-get-service-registration-key-gov.md)。 提供註冊金鑰之後，您可能需要等待 2-3 分鐘，才能註冊裝置。
+14. 安裝精靈的最後一個步驟是向 StorSimple Manager 服務註冊您的裝置。 為此，您必須在您取得服務註冊金鑰 [步驟 2 ︰ 取得服務註冊金鑰](storsimple-get-service-registration-key-gov.md)。 提供註冊金鑰之後，您可能需要等待 2-3 分鐘，才能註冊裝置。
 
       > [AZURE.NOTE] 您可以按 Ctrl + C 以結束安裝精靈的任何時候。 如果您輸入所有網路設定 (Data 0 的 IP 位址、子網路遮罩和閘道器)，則會保留您的項目。
 
     ![StorSimple 註冊進度](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegistrationProgress-gov-include.png)
 
-15. 註冊裝置之後，隨即會出現服務資料加密金鑰。 複製這個金鑰，並將它儲存在安全的位置。 **這個索引鍵都必須使用服務註冊金鑰，來向 StorSimple Manager 服務註冊其他裝置。**請參閱 [StorSimple 安全性](../articles/storsimple/storsimple-security.md) 如需有關這個機碼。
+15. 註冊裝置之後，隨即會出現服務資料加密金鑰。 複製這個金鑰，並將它儲存在安全的位置。 **這個金鑰需要與服務註冊金鑰搭配使用，來向 StorSimple Manager 服務註冊其他裝置。** 請參閱 [StorSimple 安全性](../articles/storsimple/storsimple-security.md) 如需有關這個機碼。
     
     ![StorSimple 註冊裝置 7](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice7_gov-include.png)    
 
@@ -123,4 +123,5 @@
         如果裝置依然為離線狀態後幾分鐘的時間，則您必須先確認您的防火牆網路已設定中所述 [StorSimple 裝置的網路需求](https://msdn.microsoft.com/library/dn772371.aspx)。 如果您的裝置不支援 HTTP 1.1，請檢查連接埠 9354 以確定此連接埠可開放做為傳出通訊之用。 此連接埠用於 StorSimple Manager 服務及 StorSimple 裝置間的通訊。
      
         
+
 

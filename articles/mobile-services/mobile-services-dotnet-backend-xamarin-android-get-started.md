@@ -28,9 +28,9 @@
 
 >[AZURE.TIP] 如果您是使用 Microsoft Azure 的行動應用程式開發新手 [開始使用 Azure 行動應用程式](app-service-mobile-dotnet-backend-xamarin-android-get-started-preview.md) 而不是 Azure 行動服務。行動應用程式可讓您 [其他優點](app-service-mobile-value-prop-migration-from-mobile-services-preview.md)。
 
-本教學課程顯示如何使用 Azure 行動服務，將雲端型後端服務新增到 Xamarin Android 應用程式。 在本教學課程中，您將建立新的行動服務，並建立可在新的行動服務中儲存應用程式資料的簡單_待辦事項清單_應用程式。 您所將建立的行動服務，會使用 Visual Studio 與支援的 .NET 語言撰寫伺服器端商務邏輯，並管理行動服務。 若要建立可讓您以 JavaScript 撰寫伺服器端商務邏輯的行動服務，請參閱 [JavaScript 後端版本] 本主題。
+本教學課程顯示如何使用 Azure 行動服務，將雲端型後端服務新增到 Xamarin Android 應用程式。 在本教學課程中，您將建立新的行動服務，並建立可在新的行動服務中儲存應用程式資料的簡單_待辦事項清單_應用程式。 您所將建立的行動服務，會使用 Visual Studio 與支援的 .NET 語言撰寫伺服器端商務邏輯，並管理行動服務。 若要建立可讓您以 JavaScript 撰寫伺服器端商務邏輯的行動服務，請參閱 [JavaScript backend version] 本主題。
 
->[AZURE.NOTE]本主題說明如何使用 Azure 傳統入口網站建立新的行動服務專案。 使用 Visual Studio 2013 Update 2，可讓您將新的行動服務專案新增至現有的 Visual Studio 方案。 如需詳細資訊，請參閱 [快速入門: 新增行動服務 (.NET 後端)](http://msdn.microsoft.com/library/windows/apps/dn629482.aspx)
+>[AZURE.NOTE]本主題說明如何使用 Azure 傳統入口網站建立新的行動服務專案。 使用 Visual Studio 2013 Update 2，可讓您將新的行動服務專案新增至現有的 Visual Studio 方案。 如需詳細資訊，請參閱 [快速入門 ︰ 新增行動服務 （.NET 後端）](http://msdn.microsoft.com/library/windows/apps/dn629482.aspx)
 
 以下是完成應用程式的螢幕擷取畫面：
 
@@ -51,7 +51,7 @@
 
 在本節中，您將為行動服務下載新的 Xamarin Android 應用程式和服務專案。
 
-1. 在 [Azure 傳統入口網站]，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
+1. 在 [Azure classic portal], ，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
 
 2. 在 [快速入門] 索引標籤中，按一下 [ **Xamarin** 下 **選擇平台** 展開 **建立新的 Xamarin 應用程式**。
 
@@ -101,16 +101,16 @@
 ## 後續步驟
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
-* [開始使用離線資料同步]
+* [Get started with offline data sync]
   <br/>了解快速入門如何使用離線資料同步處理，讓應用程式迅速回應而且穩固。
 
-* [開始使用驗證]
+* [Get started with authentication]
   <br/>了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
-* [開始使用推播通知]
+* [Get started with push notifications]
   <br/>了解如何將非常基本的推播通知傳送至您的應用程式。
 
-* [行動服務.NET 後端的疑難排解]
+* [Troubleshoot a Mobile Services .NET backend]
   <br/> 了解如何診斷和修正行動服務 .NET 後端可能發生的問題。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
@@ -145,4 +145,5 @@
 [Xamarin Studio]: http://xamarin.com/download
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
+
 

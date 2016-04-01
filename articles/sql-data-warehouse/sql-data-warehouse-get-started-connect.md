@@ -107,3 +107,4 @@
 [6]: ./media/sql-data-warehouse-get-started-connect/new-query2.png
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
+

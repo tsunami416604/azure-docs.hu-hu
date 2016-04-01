@@ -35,7 +35,7 @@
 
 ![](./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png)
 
-完成本教學課程，您需要 [Android Developer Tools] [Android Studio]，其中包括 Android Studio 整合式開發環境，以及最新版 Android 平台。 需要 Android 4.2 或以上的版本。
+完成本教學課程，您需要 [Android Developer Tools][Android Studio], ，其中包括 Android Studio 整合式開發環境，以及最新版 Android 平台。 需要 Android 4.2 或以上的版本。
 
 下載的快速入門專案包含 Mobile Services SDK for Android。
 
@@ -78,7 +78,7 @@
 
     ![][2]
 
-3. 如果您尚未這樣做，請下載並安裝在您本機電腦或虛擬機器上的 [Android Developer Tools] [Android SDK]。
+3. 如果您尚未這樣做，請下載並安裝 [Android Developer Tools][Android SDK] 在您本機電腦或虛擬機器。
 
 4. 在 **下載並執行您的應用程式**, ，按一下 [ **下載**。
 
@@ -91,13 +91,13 @@
 ## <a name="next-steps"> </a>後續步驟
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
-* [新增推播通知至您的應用程式]
+* [Add push notifications to your app]
   <br/>了解如何將非常基本的推播通知傳送至您的應用程式。
 
-* [將驗證新增至您的應用程式]
+* [Add authentication to your app]
   <br/>了解如何限制對特定應用程式的已註冊的使用者在後端資料存取。
 
-* [行動服務.NET 後端的疑難排解]
+* [Troubleshoot a Mobile Services .NET backend]
   <br/> 了解如何診斷和修正行動服務 .NET 後端可能發生的問題。
 
 <!-- Anchors. -->
@@ -133,4 +133,5 @@
 [Troubleshoot a Mobile Services .NET backend]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
 [Azure classic portal]: https://manage.windowsazure.com/
+
 

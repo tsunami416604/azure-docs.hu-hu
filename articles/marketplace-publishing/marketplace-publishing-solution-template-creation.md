@@ -31,19 +31,19 @@
   ![繪圖][img-pubportal-sol-templ-new]
 
 ### 3.開始使用拓樸
-解決方案範本是所有其拓撲的「父項」。 您可以在一個供應項目/解決方案範本中定義多個拓撲。 當供應項目進入預備環境時，它的所有拓撲也會一起進入。 請遵循下列步驟來定義您的產品:     
-- 建立拓撲: 「 拓樸識別項 」 通常是拓樸的解決方案範本的名稱。 拓撲識別項用於 URL，如下所示：
+解決方案範本是所有其拓撲的「父項」。 您可以在一個供應項目/解決方案範本中定義多個拓撲。 當供應項目進入預備環境時，它的所有拓撲也會一起進入。 請遵循下列步驟來定義您的供應項目：     
+- 建立拓撲：「拓樸識別項」通常是解決方案範本的拓撲名稱。 拓撲識別項用於 URL，如下所示：
 
   Azure Marketplace:
 http://azure.microsoft.com/marketplace/partners/ {PublisherNamespace} / {OfferIdentifier} {TopologyIdentifier}
 
-  Azure 預覽入口網站:
+  Azure 預覽入口網站 ︰
 https://ms.portal.azure.com/#gallery/ {PublisherNamespace}。{} OfferIdentifier{} TopologyIdentifier
 
 - 加入新的版本。
 
 ### 4.讓您的拓撲版本取得認證
-上傳一個 zip 檔案，其包含佈建該特定拓撲版本所需的所有檔案。 此 zip 檔案必須包含下列內容:
+上傳一個 zip 檔案，其包含佈建該特定拓撲版本所需的所有檔案。 此 zip 檔案必須包含下列項目：
 - *mainTemplate.json* 和 *createUiDefinition.json* 在其根目錄的檔案。
 - 任何連結的範本和所有必要的指令碼。
 
@@ -62,20 +62,21 @@ https://ms.portal.azure.com/#gallery/ {PublisherNamespace}。{} OfferIdentifier{
   > [AZURE.TIP] 而您的開發人員建立方案範本拓撲及取得這些認證，商務貴公司的行銷及/或法律部門可以處理行銷和合法的內容。
 
 ## 後續步驟
-現在，您建立自己的解決方案範本，並送出具有所需的憑證檔案的 zip 檔案，您可以可以繼續並依照 [市場行銷內容指南](marketplace-publishing-push-to-staging.md) 之前準備在預備環境中測試您的產品。 或者，若要查看完整的服務商場發表文章，請參閱 [快速入門: 如何將方案發行至 Azure Marketplace](marketplace-publishing-getting-started.md)。
+現在，您建立自己的解決方案範本，並送出具有所需的憑證檔案的 zip 檔案，您可以可以繼續並依照 [市場行銷內容指南](marketplace-publishing-push-to-staging.md) 之前準備在預備環境中測試您的產品。 或者，若要查看完整的服務商場發表文章，請參閱 [快速入門 ︰ 如何將方案發行至 Azure Marketplace](marketplace-publishing-getting-started.md)。
 
 您也可能對以下相關文章有興趣：
 
-- VM 映像: [關於虛擬機器映像在 Azure 中](https://msdn.microsoft.com/library/azure/dn790290.aspx)
+- VM 映像 ︰ [關於虛擬機器映像在 Azure 中](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-- VM 延伸模組: [VM 代理程式和 VM 延伸模組概觀](https://msdn.microsoft.com/library/azure/dn832621.aspx) 和 [Azure VM 延伸模組與功能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
+- VM 延伸模組 ︰ [VM 代理程式和 VM 延伸模組概觀](https://msdn.microsoft.com/library/azure/dn832621.aspx) 和 [Azure VM 延伸模組與功能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
 
-- Azure 資源管理員: [撰寫 Azure ARM 範本](../resource-group-authoring-templates/) 和 [簡單 ARM 範本範例](https://github.com/rjmax/ArmExamples)
+- Azure 資源管理員 ︰ [撰寫 Azure ARM 範本](../resource-group-authoring-templates/) 和 [簡單 ARM 範本範例](https://github.com/rjmax/ArmExamples)
 
-- 儲存體帳戶會節流處理: [如何監視儲存體帳戶節流](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) 和 [高階儲存體](../storage/storage-premium-storage-preview-portal/#scalability-and-performance-targets-when-using-premium-storage)
+- 儲存體帳戶會節流處理 ︰ [如何監視儲存體帳戶節流](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) 和 [高階儲存體](../storage/storage-premium-storage-preview-portal/#scalability-and-performance-targets-when-using-premium-storage)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png
 [link-acct-creation]:marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]:https://publish.windowsazure.com
+
 

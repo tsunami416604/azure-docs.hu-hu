@@ -78,7 +78,7 @@
 
 3.  在 **設定應用程式 URL** 頁面上，於 **新 Relic 登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入您的 New Relic 應用程式，然後按一下 **下一步**。 
 
-    應用程式 URL 是您的 New Relic 租用戶 URL (例如: *https://rpm.newrelic.com*):
+    應用程式 URL 是您的 New Relic 租用戶 URL (例如 ︰ *https://rpm.newrelic.com*):
 
     ![設定應用程式 URL](./media/active-directory-saas-new-relic-tutorial/IC797034.png "Configure App URL")
 
@@ -125,7 +125,7 @@
 
     ![帳戶設定](./media/active-directory-saas-new-relic-tutorial/IC797041.png "Account Settings")
 
-4.  在 **作用中使用者** ] 對話方塊中，執行下列步驟:
+4.  在 **作用中使用者** ] 對話方塊中，執行下列步驟 ︰
 
     ![作用中使用者](./media/active-directory-saas-new-relic-tutorial/IC797042.png "Active Users")
 
@@ -152,6 +152,7 @@
     ![是](./media/active-directory-saas-new-relic-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 
 
 

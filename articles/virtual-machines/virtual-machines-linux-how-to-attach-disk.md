@@ -24,14 +24,14 @@
 
 您可以附加空的磁碟和含有資料的磁碟。 在這兩種情況下，磁碟實際上是位於 Azure 儲存體帳戶中的 .vhd 檔案。 另外，在這兩種情況下，當您附加磁碟之後，磁碟必須完成初始化才能使用。 請注意，本文指的是使用傳統的部署模型所建立的虛擬機器。
 
-> [AZURE.NOTE] 您最好使用一或多個不同的磁碟來儲存虛擬機器的資料。 當您建立 Azure 虛擬機器時，它會有作業系統磁碟和暫存磁碟。 **請勿使用暫存磁碟來儲存資料。**顧名思義，它只提供暫存儲存空間。 它並不提供備援或備份，因為它不在 Azure 儲存體內。
-> 暫存磁碟通常由 Azure Linux 代理程式管理，並自動掛接到 **//mnt/資源** (或 **/mnt** Ubuntu 映像)。 換句話說，Linux 核心可能會將資料磁碟命名為 `/dev/sdc`，且您必須分割、格式化及掛接此資源。 請參閱 [Azure Linux 代理程式使用者指南] [代理程式] 以取得詳細資料。
+> [AZURE.NOTE] 您最好使用一或多個不同的磁碟來儲存虛擬機器的資料。 當您建立 Azure 虛擬機器時，它會有作業系統磁碟和暫存磁碟。 **請勿使用暫存磁碟來儲存資料。** 顧名思義，它只提供暫存儲存空間。 它並不提供備援或備份，因為它不在 Azure 儲存體內。
+> 暫存磁碟通常由 Azure Linux 代理程式管理，並自動掛接到 **//mnt/資源** (或 **/mnt** Ubuntu 映像)。 換句話說，Linux 核心可能會將資料磁碟命名為 `/dev/sdc`，且您必須分割、格式化及掛接此資源。 請參閱 [Azure Linux 代理程式使用者指南][Agent] 如需詳細資訊。
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-linux.md)]
 
 ## 做法：在 Linux 中初始化新的資料磁碟
 
-1. 連接至虛擬機器。 如需指示，請參閱 [如何登入執行 Linux 的虛擬機器] [登入]。
+1. 連接至虛擬機器。 如需指示，請參閱 [如何登入執行 Linux 的虛擬機器][Logon]。
 
 
 
@@ -49,7 +49,7 @@
 
     或
 
-    b) 使用 `lsscsi` 命令，以找出裝置識別碼。 `lsscsi` 可以透過下列方式安裝 `yum install lsscsi` (Red Hat 根據散發套件) 或 `apt-get install lsscsi` (Debian 根據散發套件)。 您可以找到您所需的磁碟其 _lun_ 或 **邏輯單元編號**。 例如， _lun_ 如您所連接的磁碟可以輕鬆地從看出 `azure vm disk list <virtual-machine>` 為:
+    b） 使用 `lsscsi` 命令，以找出裝置識別碼。 `lsscsi` 可以透過下列方式安裝 `yum install lsscsi` （Red Hat 根據散發套件） 或 `apt-get install lsscsi` （Debian 根據散發套件）。 您可以找到您所需的磁碟其 _lun_ 或 **邏輯單元編號**。 例如， _lun_ 如您所連接的磁碟可以輕鬆地從看出 `azure vm disk list <virtual-machine>` 為 ︰
 
             ~$ azure vm disk list ubuntuVMasm
             info:    Executing command vm disk list
@@ -115,7 +115,7 @@
     >[AZURE.NOTE] 請注意，SUSE Linux Enterprise 11 系統僅對 ext4 檔案系統支援唯讀存取權。  針對這些系統，建議您將新檔案系統格式化為 ext3，而非 ext4。
 
 
-9. 建立目錄以掛接新的檔案系統。 例如，輸入下列命令，然後輸入帳戶密碼:
+9. 建立目錄以掛接新的檔案系統。 例如，輸入下列命令，然後輸入帳戶密碼 ︰
 
         # sudo mkdir /datadrive
 
@@ -129,7 +129,7 @@
 
 11. 將新的磁碟機新增至 /etc/fstab：
 
-    為了確保重新開機之後自動重新掛接磁碟機，必須將磁碟機新增至 /etc/fstab 檔案。 此外，強烈建議在 /et/fstab 中使用全域唯一識別碼 (Universally Unique IDentifier, UUID) 來參考磁碟機，而不只是裝置名稱 (例如，/dev/sdc1)。 若要尋找您可以使用新的磁碟機的 UUID **blkid** 公用程式:
+    為了確保重新開機之後自動重新掛接磁碟機，必須將磁碟機新增至 /etc/fstab 檔案。 此外，強烈建議在 /et/fstab 中使用全域唯一識別碼 (Universally Unique IDentifier, UUID) 來參考磁碟機，而不只是裝置名稱 (例如，/dev/sdc1)。 若要尋找您可以使用新的磁碟機的 UUID **blkid** 公用程式 ︰
 
         # sudo -i blkid
 
@@ -146,7 +146,7 @@
 
         # sudo vi /etc/fstab
 
-    在此範例中我們將使用新的 UUID 值 **/dev/sdc1** 所建立的上一個步驟，並使用掛接點裝置 **/datadrive**。 加入下列這一行的結尾 **eg /etc/ fstab** 檔案:
+    在此範例中我們將使用新的 UUID 值 **/dev/sdc1** 所建立的上一個步驟，並使用掛接點裝置 **/datadrive**。 加入下列這一行的結尾 **eg /etc/ fstab** 檔案 ︰
 
         UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
 
@@ -154,21 +154,21 @@
 
         /dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext3   defaults   1   2
 
-    您現在可以測試檔案系統適當掛接，方法取消，然後重新掛上檔案系統中，也就， 使用的範例掛接點 `/datadrive` 先前步驟中建立:
+    您現在可以測試檔案系統適當掛接，方法取消，然後重新掛上檔案系統中，也就， 使用的範例掛接點 `/datadrive` 先前步驟中建立 ︰
 
         # sudo umount /datadrive
         # sudo mount /datadrive
 
     如果 `mount` 命令發生錯誤，請檢查 /etc/fstab 檔案的語法是否正確。 如果還有建立其他資料磁碟機或磁碟分割，同樣也需要分別在 /etc/fstab 中輸入。
 
-    您必須使用這些命令，將磁碟機可寫入:
+    您必須使用這些命令，將磁碟機可寫入 ︰
         # cd /datadrive
         # sudo chmod 移 + w /datadrive
 
 >[AZURE.NOTE] 後續移除資料磁碟而不編輯 fstab，可能會造成 VM 無法開機。 如果這是常見情況，那麼多數散發套件會提供 `nofail` 和/或 `nobootwait` fstab 選項，即使磁碟在開機時無法掛接，也能讓系統開機。 請查閱散發套件的文件，以取得這些參數的相關資訊。
 
 ## 其他資源
-[如何登入執行 Linux 的虛擬機器][登入]
+[如何登入執行 Linux 的虛擬機器][Logon]
 
 [如何從 Linux 虛擬機器卸離磁碟 ](virtual-machines-linux-how-to-detach-disk.md)
 
@@ -177,4 +177,5 @@
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-how-to-log-on.md
+
 

@@ -30,7 +30,7 @@
 下列範例 Azure CLI 命令會預期已經建立簡單的環境。 如果您想要執行命令，因為它們會顯示在這份文件，先建立測試環境中所述 [建立 vnet](virtual-networks-create-vnet-arm-cli.md)。
 
 ## 建立 VM 時如何指定靜態私人 IP 位址
-若要建立名為的 VM *DNS01* 中 *前端* 名為 VNet 的子網路 *TestVNet* 固定的私人 ip *192.168.1.101*, ，依照下列步驟:
+若要建立名為的 VM *DNS01* 中 *前端* 名為 VNet 的子網路 *TestVNet* 固定的私人 ip *192.168.1.101*, ，依照下列步驟 ︰
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli-install.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
 
@@ -61,9 +61,9 @@
         data:    Idle timeout                    : 4
         info:    network public-ip create command OK
 
-    - **-g (或--資源群組)**。 要在其中建立公用 IP 的資源群組名稱。
-    - **-n (或--名稱)**。 公用 IP 的名稱。
-    - **-l (或--location)**。 將要建立公用 IP 的 Azure 區域。 我們的案例， *centralus*。
+    - **-g （或--資源群組）**。 要在其中建立公用 IP 的資源群組名稱。
+    - **-n （或--名稱）**。 公用 IP 的名稱。
+    - **-l （或--location）**。 將要建立公用 IP 的 Azure 區域。 我們的案例， *centralus*。
 
 3. 執行 **azure 網路的 nic 建立** 命令來建立靜態私人 ip 位址的 NIC。 輸出後顯示的清單可說明所使用的參數。
 
@@ -90,9 +90,9 @@
         data:
         info:    network nic create command OK
 
-    - **-a (或-私用 ip 位址)**。 NIC 的靜態私人 IP 位址
-    - **-m (或--子網路的 vnet 名稱)**。 將建立 NIC 之 VNet 的名稱。
-    - **-k (或-子網路名稱)**。 將建立 NIC 之子網路的名稱。
+    - **-a （或-私用 ip 位址）**。 NIC 的靜態私人 IP 位址
+    - **-m （或--子網路的 vnet 名稱）**。 將建立 NIC 之 VNet 的名稱。
+    - **-k （或-子網路名稱）**。 將建立 NIC 之子網路的名稱。
 
 4. 執行 **azure vm 建立** 命令來建立使用公用 IP 與上面所建立的 NIC 的 VM。 輸出後顯示的清單可說明所使用的參數。
 
@@ -118,11 +118,11 @@
         + Creating VM "DNS01"
         info:    vm create command OK
 
-    - **-y (或-os 類型)**。 類型的作業系統的 VM，或是 *Windows* 或 *Linux*。
-    - **-f (或-nic 名稱)**。 VM 將使用的 NIC 名稱。
-    - **-i (或--公用 ip 名稱)**。 VM 將使用的公用 IP 名稱。
-    - **-F (或-vnet 名稱)**。 將建立 VM 之 VNet 的名稱。
-    - **-j (或-vnet 子網路名稱)**。 將建立 VM 之子網路的名稱。
+    - **-y （或-os 類型）**。 類型的作業系統的 VM，或是 *Windows* 或 *Linux*。
+    - **-f （或-nic 名稱）**。 VM 將使用的 NIC 名稱。
+    - **-i （或--公用 ip 名稱）**。 VM 將使用的公用 IP 名稱。
+    - **-F （或-vnet 名稱）**。 將建立 VM 之 VNet 的名稱。
+    - **-j （或-vnet 子網路名稱）**。 將建立 VM 之子網路的名稱。
 
 ## 如何擷取 VM 的靜態私人 IP 位址資訊
 
@@ -263,4 +263,5 @@
 - 深入了解 [保留公用 IP](../virtual-networks-reserved-public-ip) 位址。
 - 深入了解 [執行個體層級公用 IP (ILPIP)](../virtual-networks-instance-level-public-ip) 位址。
 - 請參閱 [保留的 IP REST Api](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
+
 

@@ -29,7 +29,7 @@
 
 本教學課程要求您具備下列項目：
 
-- **現有的行動應用程式後端** <br/>遵循 [快速入門教學課程](app-service-mobile-windows-store-dotnet-get-started.md) 建立和下載新的.NET 後端行動應用程式從 [Azure 入口網站]。
+- **現有的行動應用程式後端** <br/>請依照下列 [快速入門教學課程](app-service-mobile-windows-store-dotnet-get-started.md) 建立和下載新的.NET 後端行動應用程式從 [Azure portal]。
 
 [AZURE.INCLUDE [hybrid-connections-prerequisites](../../includes/hybrid-connections-prerequisites.md)]
 
@@ -41,7 +41,7 @@
 
 您必須為行動應用程式後端的程式碼部分 (也就是 Web 應用程式) 建立新的混合連線和 BizTalk 服務。
 
-1. 在 [Azure 入口網站]，瀏覽至您的行動應用程式並按一下 **網路** 設定中。
+1. 在 [Azure portal], 、 瀏覽至您的行動應用程式，然後按一下 **網路** 設定中。
 
     ![瀏覽到 Web 應用程式](./media/app-service-mobile-dotnet-backend-hybrid-connections-get-started/mobile-app-link-to-web-app-backend.png)
 
@@ -79,7 +79,7 @@
 
     若要了解如何下載.NET 後端專案，請參閱 [快速入門教學課程](app-service-mobile-windows-store-dotnet-get-started.md)。
 
-2. 在 [方案總管] 中，開啟 Web.config 檔案中，找出 **connectionStrings** 區段中，如下所示，它會指向內部部署 SQL Server 資料庫的新 SqlClient 項目:
+2. 在 [方案總管] 中，開啟 Web.config 檔案中，找出 **connectionStrings** 區段中，如下所示，它會指向內部部署 SQL Server 資料庫的新 SqlClient 項目 ︰
 
         <add name="OnPremisesDBConnection"
          connectionString="Data Source=OnPremisesServer,1433;
@@ -97,7 +97,7 @@
 
 4. 展開 **模型** 資料夾，然後開啟資料模型檔案，以 *Context.cs*。
 
-6. 修改 **DbContext** 執行個體建構函式將值傳遞 `OnPremisesDBConnection` 基底 **DbContext** 建構函式，類似下列的程式碼片段:
+6. 修改 **DbContext** 執行個體建構函式將值傳遞 `OnPremisesDBConnection` 基底 **DbContext** 建構函式，類似下列的程式碼片段 ︰
 
         public class hybridService1Context : DbContext
         {
@@ -113,7 +113,7 @@
 
 接下來，您必須為這個新的連接字串新增應用程式設定，以便能夠從 Azure 使用。  
 
-1. 回到 [Azure 入口網站] 在您的行動應用程式的 web 應用程式後端程式碼中，按一下 [ **所有設定**, ，然後 **應用程式設定**。
+1. 回到 [Azure portal] web 應用程式後端行動應用程式程式碼，在按一下 **所有設定**, ，然後 **應用程式設定**。
 
 3. 在 **Web 應用程式設定** 刀鋒視窗中，向下捲動至 **連接字串** 並加入新 **SQL Server** 名為連接字串 `OnPremisesDBConnection` 之類的值 `Server=OnPremisesServer,1433;Database=OnPremisesDB;User ID=HybridConnectionsLogin;Password=<**secure_password**>`。
 
@@ -161,4 +161,5 @@
 [Azure portal]: https://portal.azure.com/
 [Azure classic portal]: http://go.microsoft.com/fwlink/p/?linkid=213885
 [Get started with Mobile Services]: ../mobile-services-windows-store-dotnet-get-started.md
+
 

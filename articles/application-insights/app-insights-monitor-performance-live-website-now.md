@@ -29,15 +29,15 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
 下列三種方法均可讓您將 Application Insights 套用至 IIS Web 應用程式：
 
-* **建置階段:** [加入 Application Insights SDK][greenbrown] 您的 web 應用程式程式碼。 這會提供您：
+* **建置階段 ︰** [加入 Application Insights SDK][greenbrown] 您的 web 應用程式程式碼。 這會提供您：
  * 標準診斷和使用狀況遙測的範圍。
  *  [Application Insights API][api] 可讓您自行撰寫遙測來追蹤使用量詳細或診斷問題。
-* **執行階段:** 使用狀態監視器檢測伺服器上的 web 應用程式。
+* **執行階段 ︰** 使用狀態監視器檢測伺服器上的 web 應用程式。
  * 監視執行中的 Web 應用程式：不需要重建或重新發佈。
  * 標準診斷和使用狀況遙測的範圍。
  * 相依性診斷：找出 App 使用其他元件 (例如資料庫、REST API 或其他服務) 時的錯誤或效能不佳原因。
  * 對任何遙測問題進行疑難排解。
-* **兩者:** 將 SDK 編譯至 web 應用程式程式碼，並在您的 web 伺服器上執行狀態監視。  集合兩者之優點：
+* **兩者 ︰** 將 SDK 編譯至 web 應用程式程式碼，並在您的 web 伺服器上執行狀態監視。  集合兩者之優點：
  * 標準診斷和使用狀況遙測。
  * 相依性診斷。
  * 此 API 可讓您撰寫自訂遙測。
@@ -56,7 +56,7 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
     ![使用 Microsoft 帳戶認證登入 Azure](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
 
-    *連線錯誤? 請參閱 [疑難排解](#troubleshooting)。*
+    *連線錯誤？ 請參閱 [疑難排解](#troubleshooting)。*
 
 5. 挑選您想要監視的已安裝 Web 應用程式或網站，然後設定您在 Application Insights 入口網站中查看結果時想要使用的資源。
 
@@ -136,7 +136,7 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
 ## 取樣
 
-如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [進一步了解取樣。](app-insights-sampling.md)
+如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](app-insights-sampling.md)
 
 
 ## 疑難排解
@@ -194,10 +194,10 @@ Visual Studio Application Insights 的狀態監視器可讓您診斷 ASP.NET 應
 
 在用戶端 Windows 7、8 和 8.1 上，一樣需含有 .NET Framework 4.0 和 4.5
 
-IIS 支援: IIS 7、 7.5、 8、 8.5
-(IIS 是必要的)
+IIS 支援 ︰ IIS 7、 7.5、 8、 8.5
+（IIS 是必要的）
 
-## <a name="next"></a>後續步驟
+## <a name="next"></a>接續步驟
 
 * [建立 web 測試][availability] 藉此確定您的網站保持即時狀態。
 * [搜尋事件和記錄][diagnostic] 以協助診斷問題。
@@ -220,4 +220,5 @@ IIS 支援: IIS 7、 7.5、 8、 8.5
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
+
 

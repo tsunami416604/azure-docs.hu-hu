@@ -20,7 +20,7 @@
 
 # 開始使用適用於 HDInsight 的 Visual Studio Hadoop 工具來執行 Hive 查詢
 
-了解如何使用 HDInsight Tools for Visual Studio 來連線到 HDInsight 叢集並提交 Hive 查詢。 如需使用 HDInsight 的詳細資訊，請參閱 [HDInsight][hdinsight.introduction 簡介] 和 [開始使用 HDInsight][hdinsight.get.started]。 如需連線到 Storm 叢集的詳細資訊，請參閱 [開發 C# 拓撲 Apache Storm on HDInsight 使用視覺化 Studio][hdinsight.storm.visual.studio.tools]。
+了解如何使用 HDInsight Tools for Visual Studio 來連線到 HDInsight 叢集並提交 Hive 查詢。 如需有關如何使用 HDInsight 的詳細資訊，請參閱 [HDInsight 簡介][hdinsight.introduction] 和 [開始使用 HDInsight][hdinsight.get.started]。 如需連線到 Storm 叢集的詳細資訊，請參閱 [Apache Storm on HDInsight 使用 Visual Studio 開發 C# 拓撲][hdinsight.storm.visual.studio.tools]。
 
 **必要條件**
 
@@ -43,21 +43,21 @@
 
 ## Install HDInsight tools for Visual Studio
 
-HDInsight Tools for Visual Studio 和 Microsoft Hive ODBC Driver 已封裝在 Microsoft Azure SDK for .NET 2.5.1 版或更新版本內。 您也可以使用安裝 [Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386)。 您必須選擇與 Visual Studio 版本相符的封裝。 如果您沒有安裝 Visual Studio，您可以安裝最新的 Visual Studio 社群和 Azure SDK 使用 [Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) 或使用下列連結:
+HDInsight Tools for Visual Studio 和 Microsoft Hive ODBC Driver 已封裝在 Microsoft Azure SDK for .NET 2.5.1 版或更新版本內。 您也可以使用安裝 [Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386)。 您必須選擇與 Visual Studio 版本相符的封裝。 如果您沒有安裝 Visual Studio，您可以安裝最新的 Visual Studio 社群和 Azure SDK 使用 [Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) 或使用下列連結 ︰
 
 - [Visual Studio Community 2015 與 Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids) 
 - [Visual Studio Community 2013 與 Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids) 
 - [Microsoft Azure SDK for .NET (VS 2015)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids) 
 - [Microsoft Azure SDK for .NET (VS 2013)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids) 
 
-![Hadoop 工具: HDinsight Tools for Visual Studio Web Platform installer。][] 1
+![Hadoop 工具：HDinsight Tools for Visual Studio Web Platform installer.][1]
 
 ## 連線到 Azure 訂用帳戶
 「適用於 Visual Studio 的 HDInsight 工具」可讓您連線到您的 HDInsight 叢集、執行一些基本管理作業，以及執行 Hive 查詢。
 
 >[AZURE.NOTE] 如需連線到 HDInsight Emulator 的詳細資訊，請參閱 [開始使用 HDInsight Emulator](../hdinsight-get-started-emulator.md/#vstools)。
 
->[AZURE.NOTE] 如需連接到一般 Hadoop 叢集 (預覽) 的資訊，請參閱 [撰寫和提交 Hive 查詢，使用 Visual Studio](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)。
+>[AZURE.NOTE] 如需連接到一般 Hadoop 叢集 （預覽） 的資訊，請參閱 [撰寫和提交 Hive 查詢，使用 Visual Studio](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)。
 
 
 **連線到您的 Azure 訂用帳戶**
@@ -68,9 +68,9 @@ HDInsight Tools for Visual Studio 和 Microsoft Hive ODBC Driver 已封裝在 Mi
 
     >[AZURE.NOTE]請注意 **HDInsight 工作清單** 視窗應會開啟。 如果您沒有看到它，按一下 [ **其他視窗** 從 **檢視** 功能表，然後再按一下 **HDInsight 工作清單視窗**。  
 4.  輸入您 Azure 訂用帳戶的認證，然後再按一下 **登入**。 只有當您從未在此工作站上從 Visual Studio 連線到 Azure 訂用帳戶時，才需要這樣做。
-5.  在 [伺服器總管] 中，您會看到現有 HDInsight 叢集的清單。 如果您沒有任何叢集，可以使用 Azure 入口網站、Azure PowerShell 或 HDInsight SDK 來佈建一個。 如需詳細資訊，請參閱 [佈建 HDInsight 叢集] [hdinsight 佈建]。
+5.  在 [伺服器總管] 中，您會看到現有 HDInsight 叢集的清單。 如果您沒有任何叢集，可以使用 Azure 入口網站、Azure PowerShell 或 HDInsight SDK 來佈建一個。 如需詳細資訊，請參閱 [佈建 HDInsight 叢集][hdinsight-provision]。
 
-    ![Hadoop 工具: HDInsight Tools for Visual Studio 伺服器總管叢集清單][] 5
+    ![Hadoop 工具：HDInsight Tools for Visual Studio 伺服器總管叢集清單][5]
 6.  展開某個 HDInsight 叢集。 您會看到 **Hive 資料庫**, ，預設儲存體帳戶、 連結的儲存體帳戶和 **Hadoop 服務記錄**。 您可以進一步展開這些實體。
 
 在連線到您的 Azure 訂用帳戶之後，您將可以執行下列工作：
@@ -87,10 +87,10 @@ HDInsight Tools for Visual Studio 和 Microsoft Hive ODBC Driver 已封裝在 Mi
 
 從 [伺服器總管] 中，您可以看到預設的儲存體帳戶，以及任何連結的儲存體帳戶。 如果您展開預設儲存體帳戶，您可以看到儲存體帳戶上的容器。 預設儲存體帳戶和預設容器皆已標示。 您也可以在任何容器上按一下滑鼠右鍵來檢視該容器。
 
-![HDInsight Tools for Visual Studio 伺服器總管叢集清單][] 2
+![HDInsight Tools for Visual Studio 伺服器總管叢集清單][2]
 
 ## 執行 HIVE 查詢
-[Apache Hive][apache.hive] 是建置於 Hadoop 上，提供資料摘要、 查詢和分析的資料倉儲基礎結構。 「適用於 Visual Studio 的 HDInsight 工具」支援從 Visual Studio 執行 Hive 查詢。 如需 Hive 的詳細資訊，請參閱 [搭配使用 Hive HDInsight][hdinsight.hive]。
+[Apache Hive][apache.hive] 是建置於 Hadoop 上，提供資料摘要、 查詢和分析的資料倉儲基礎結構。 「適用於 Visual Studio 的 HDInsight 工具」支援從 Visual Studio 執行 Hive 查詢。 如需 Hive 的詳細資訊，請參閱 [搭配 HDInsight 使用 Hive][hdinsight.hive]。
 
 針對 HDInsight 叢集測試 Hive 指令碼十分耗時。 這可能需要數分鐘以上的時間。 HDInsight Tools for Visual Studio 可以在本機驗證 Hive 指令碼，而不需要連線到即時叢集。
 
@@ -110,7 +110,7 @@ HDInsight Tools for Visual Studio 也可讓使用者透過收集和呈現特定 
 
     您可以自訂資料列計數。
 
-    ![Hadoop 工具: HDinsight Hive Visual Studio 結構描述查詢][] 6
+    ![Hadoop 工具：HDinsight Hive Visual Studio 結構描述查詢][6]
 
 ### 建立 Hive 資料表
 
@@ -122,7 +122,7 @@ HDInsight Tools for Visual Studio 也可讓使用者透過收集和呈現特定 
 2. 設定資料表。
 3. 按一下 [ **Create Table** 送出工作來建立新 Hive 資料表。
 
-    ![Hadoop 工具: hdinsight visual studio 工具建立 hive 資料表][] 7
+    ![Hadoop 工具：hdinsight visual studio 工具建立 hive 資料表][7]
 
 ### <a name="run.queries"></a>驗證和執行 Hive 查詢
 有兩種方式可建立和執行 Hive 查詢：
@@ -136,24 +136,24 @@ HDInsight Tools for Visual Studio 也可讓使用者透過收集和呈現特定 
 2. 以滑鼠右鍵按一下您想要用來執行查詢，然後按一下的叢集 **撰寫 Hive 查詢**。
 3. 輸入 Hive 查詢。 請注意，Hive 編輯器支援 Intellisense。 HDInsight Tools for Visual Studio 支援在編輯 Hive 指令碼時載入遠端中繼資料。 例如，當您輸入 "SELECT * FROM"，IntelliSense 會列出所有建議的資料表名稱。 在指定了資料表名稱時，IntelliSense 會列出資料行名稱。 此工具幾乎支援所有的 Hive DML 陳述式、子查詢以及內建 UDF。
 
-    ![Hadoop 工具: HDInsight Visual Studio 工具 IntelliSense][] 13
+    ![Hadoop 工具：HDInsight Visual Studio 工具 IntelliSense][13]
 
-    ![Hadoop 工具: HDInsight Visual Studio 工具 IntelliSense][] 14
+    ![Hadoop 工具：HDInsight Visual Studio 工具 IntelliSense][14]
 
     > [AZURE.NOTE] 會建議僅中繼資料的叢集 HDInsight 工具列中選取。
-4. (選擇性): 按一下 **驗證指令碼** 檢查指令碼語法錯誤。
+4. （選擇性） ︰ 按一下 **驗證指令碼** 檢查指令碼語法錯誤。
 
-    ![Hadoop 工具: hdinsight tools for Visual Studio 本機驗證][] 10
+    ![Hadoop 工具：HDInsight Tools for Visual Studio 本機驗證][10]
 
-4. 按一下 [ **提交** 或 **提交 (進階)**。 使用進階的提交選項時，您會設定 **工作名稱**, ，**引數**, ，**其他組態**, ，和 **狀態目錄** 指令碼:
+4. 按一下 [ **提交** 或 **提交 （進階）**。 使用進階的提交選項時，您會設定 **工作名稱**, ，**引數**, ，**其他組態**, ，和 **狀態目錄** 指令碼 ︰
 
-    ![hdinsight hadoop hive 查詢][] 9
+    ![hdinsight hadoop hive 查詢][9]
 
     提交工作之後，您會看到 **Hive 工作摘要** 視窗。
 
-    ![HDInsight Hadoop Hive 查詢的摘要][] 8
+    ![HDInsight Hadoop Hive 查詢的摘要][8]
 5. 使用 **重新整理** ] 按鈕來更新狀態，直到工作狀態變更為 **完成**。
-6. 按一下頁面底部看到下列連結: **工作查詢**, ，**工作輸出**, ，**工作記錄**, ，或 **Yarn 記錄**。
+6. 按一下頁面底部看到下列連結 ︰ **工作查詢**, ，**工作輸出**, ，**工作記錄**, ，或 **Yarn 記錄**。
 
 
 
@@ -162,7 +162,7 @@ HDInsight Tools for Visual Studio 也可讓使用者透過收集和呈現特定 
 1. 從 **檔案** ] 功能表上，按一下 [ **新增**, ，然後按一下 [ **專案**。
 2. 選取 **HDInsight** 從左窗格中，選取 **Hive 應用程式** 在中間窗格中，輸入屬性，然後按一下 **確定**。
 
-    ![Hadoop 工具: hdinsight visual studio 工具新 hive 專案][] 11
+    ![Hadoop 工具：hdinsight visual studio 工具新 hive 專案][11]
 3. 從 **方案總管] 中**, ，連按兩下 **Script.hql** 以開啟它。
 4. 若要驗證 Hive 指令碼，您可以按一下 **驗證指令碼** ] 按鈕，或在 Hive 編輯器中，指令碼上按一下滑鼠右鍵，然後按一下 **驗證指令碼** 從內容功能表。
 
@@ -170,7 +170,7 @@ HDInsight Tools for Visual Studio 也可讓使用者透過收集和呈現特定 
 ### 檢視 Hive 工作
 您可以檢視 Hive 工作的工作查詢、工作輸出、工作記錄和 Yarn 記錄。 如需詳細資訊，請參閱上一個螢幕擷取畫面。
 
-最新版本的工具可讓您查看 Hive 工作所收集和呈現 YARN 記錄。 YARN 記錄可協助您調查效能問題。 如需有關 HDInsight 如何收集 YARN 記錄檔的詳細資訊，請參閱 [存取 HDInsight 應用程式記錄檔 Programmatically][hdinsight.access.application.logs]。
+最新版本的工具可讓您查看 Hive 工作所收集和呈現 YARN 記錄。 YARN 記錄可協助您調查效能問題。 如需有關 HDInsight 如何收集 YARN 記錄，請參閱 [存取 HDInsight 應用程式記錄檔以程式設計方式][hdinsight.access.application.logs]。
 
 **檢視 Hive 工作**
 
@@ -178,7 +178,7 @@ HDInsight Tools for Visual Studio 也可讓使用者透過收集和呈現特定 
 2. HDInsight 叢集，以滑鼠右鍵按一下，然後按一下 [ **檢視工作**。 您會看到在該叢集上執行之 Hive 工作的清單。
 3. 按一下工作清單來選取它，然後使用中的某個工作 **Hive 工作摘要** ] 視窗來開啟 **工作查詢**, ，**工作輸出**, ，**工作記錄**, ，或 **Yarn 記錄**。
 
-    ![Hadoop 工具: HDInsight Visual Studio 工具檢視 Hive 工作][] 12
+    ![Hadoop 工具：HDInsight Visual Studio 工具檢視 Hive 工作][12]
 
 ### 透過 HiveServer2 的更快速路徑 Hive 執行
 
@@ -188,7 +188,7 @@ HDInsight 工具用來透過 WebHCat (也稱為 Templeton) 提交 Hive 工作。
 為了解決此效能問題，HDInsight 工具會透過 HiveServer2 直接在叢集中執行 Hive 工作，以便略過 RDP/SSH。 
 除了提升效能，使用者也可以檢視 Tez 圖形上的 Hive 和工作詳細資料。
 
-針對 HDInsight 叢集 3.2 版或更新版本，您可以看到 **Execute 透過 HiveServer2** 按鈕:
+針對 HDInsight 叢集 3.2 版或更新版本，您可以看到 **Execute 透過 HiveServer2** 按鈕 ︰
 
 ![透過 hiveserver2 執行 hdinsight visual studio 工具](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.execute.via.hiveserver2.png)
 
@@ -210,7 +210,7 @@ HDInsight 工具用來透過 WebHCat (也稱為 Templeton) 提交 Hive 工作。
 
 ### Tez Hive 工作效能圖表
 
-HDInsight Visual Studio 工具支援顯示由 Tez 執行引擎執行之 Hive 工作的效能圖形。 如需啟用 Tez 的資訊，請參閱 [使用中 HDInsight][hdinsight.hive Hive]。 您提交 Visual Studio 中的 Hive 工作之後，Visual Studio 會在工作完成時顯示圖形。  您可能需要按一下 **重新整理** ] 按鈕以取得最新的作業狀態。
+HDInsight Visual Studio 工具支援顯示由 Tez 執行引擎執行之 Hive 工作的效能圖形。 如需啟用 Tez 的資訊，請參閱 [在 HDInsight 上使用 Hive][hdinsight.hive]。 您提交 Visual Studio 中的 Hive 工作之後，Visual Studio 會在工作完成時顯示圖形。  您可能需要按一下 **重新整理** ] 按鈕以取得最新的作業狀態。
 
 > [AZURE.NOTE] 此功能只適用於 HDInsight 叢集版本 3.2.4.593，且可以只適用於已完成的工作。 這適用於以 Windows 和 Linux 為基礎的叢集。
 
@@ -222,7 +222,7 @@ HDInsight Visual Studio 工具支援顯示由 Tez 執行引擎執行之 Hive 工
 
 Tez 工作上 Hive 的工作執行檢視可用來取得結構化和視覺化 Hive 工作的資訊，以及取得更多工作詳細資料。 當 
 效能問題，您可以使用檢視來取得進一步的詳細資料。 例如，每個工作的運作方式以及每個工作的詳細的資訊 
-(讀取/寫入資料、 排程/開始/結束時間等)，以便調整工作的設定或以視覺化的資訊為基礎的系統架構。
+（讀取/寫入資料、 排程/開始/結束時間等），以便調整工作的設定或以視覺化的資訊為基礎的系統架構。
 
 ![hdinsight visual studio 工具工作執行檢視](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png)
 
@@ -233,10 +233,10 @@ HDInsight Tools for Visual Studio 支援建立 Pig 指令碼並提交至 HDInsig
 ## 後續步驟
 在本文中，您學會如何使用 Hadoop 工具套件從 Visual Studio 連線到 HDInsight 叢集，以及如何執行 Hive 查詢。 如需詳細資訊，請參閱：
 
-- [使用在 HDInsight Hadoop Hive][] hdinsight.hive
-- [開始使用 Hdinsight 中][] hdinsight.get.started
-- [提交 hdinsight][] hdinsight.submit.jobs
-- [分析 Twitter 資料，在 HDInsight 上使用 Hadoop][] hdinsight.analyze.twitter.data
+- [在 HDInsight 上使用 Hadoop Hive][hdinsight.hive]
+- [開始使用 HDInsight 中的 Hadoop][hdinsight.get.started]
+- [在 HDInsight 上提交 Hadoop 工作][hdinsight.submit.jobs]
+- [在 HDInsight 上使用 Hadoop 分析 Twitter 資料][hdinsight.analyze.twitter.data]
 
 
 <!--Anchors-->
@@ -272,4 +272,5 @@ HDInsight Tools for Visual Studio 支援建立 Pig 指令碼並提交至 HDInsig
 [hdinsight.access.application.logs]: ../hdinsight/hdinsight-hadoop-access-yarn-app-logs.md
 
 [apache.hive]: http://hive.apache.org
+
 

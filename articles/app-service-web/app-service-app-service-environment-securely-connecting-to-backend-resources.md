@@ -19,13 +19,13 @@
 # 安全地從 App Service 環境連接到後端資源 #
 
 ## 概觀 ##
-因為 App Service 環境一律會建立在子網路的地區傳統"v1"[虛擬網路] [virtualnetwork]，App Service 環境的其他後端資源的傳出連線可以獨佔方式透過虛擬網路傳送。  
+因為 App Service 環境一律會建立在子網路的地區傳統"v1" [虛擬網路][virtualnetwork], ，App Service 環境的其他後端資源的傳出連線可以獨佔方式透過虛擬網路傳送。  
 
-**注意:**  無法"v2"ARM 管理虛擬網路中建立 App Service 環境。
+**注意 ︰**  無法"v2"ARM 管理虛擬網路中建立 App Service 環境。
 
 例如，SQL Server 可能會在已鎖定連接埠 1433 的虛擬機器叢集上執行。  此端點可能已納入 ACL，只允許從相同虛擬網路上的其他資源進行存取。  
 
-另一個範例是，敏感性端點可能會在內部執行並連接到 Azure 透過任一個 [站台對站] [SiteToSite] 或 [Azure ExpressRoute] [ExpressRoute] 連線。  因此，只有虛擬網路中連接到站台對站台或 ExpressRoute 通道的資源能夠存取內部部署端點。
+舉個例子，敏感性端點可能會在內部執行並連接至 Azure，透過 [站台對站台][SiteToSite] 或 [Azure ExpressRoute][ExpressRoute] 連線。  因此，只有虛擬網路中連接到站台對站台或 ExpressRoute 通道的資源能夠存取內部部署端點。
 
 在上述這些案例中，在 App Service 環境上執行的應用程式將能夠安全地連接到各種伺服器和資源。  從 App Service 環境中執行之應用程式送至相同虛擬網路中私密端點 (或連接到相同的虛擬網路) 的輸出流量，只會透過虛擬網路傳送。  送至私密端點的輸出流量不會透過公用網際網路傳送。
 
@@ -41,21 +41,21 @@
 ## 連接至 SQL Server
 常見的 SQL Server 組態會有在連接埠 1433 上接聽的端點：
 
-![SQL Server 端點][] SqlServerEndpoint
+![SQL Server 端點][SqlServerEndpoint]
 
 有兩種方法可限制送至此端點的流量：
 
 
-- [網路存取控制清單][] NetworkAccessControlLists(網路 Acl)
+- [網路存取控制清單][NetworkAccessControlLists] （網路 Acl）
 
-- [網路安全性群組][] NetworkSecurityGroups
+- [網路安全性群組][NetworkSecurityGroups]
 
 
 ## 利用網路 ACL 限制存取
 
 使用網路存取控制清單可以保護連接埠 1433。  下列範例將源自虛擬網路內部的用戶端位址列入白名單，並封鎖對所有其他用戶端的存取。
 
-![網路存取控制清單範例][] NetworkAccessControlListExample
+![網路存取控制清單範例][NetworkAccessControlListExample]
 
 SQL Server 能夠連接到 SQL Server 執行個體使用，在 App Service 環境中執行相同的虛擬網路中的任何應用程式 **VNet 內部** SQL Server 虛擬機器的 IP 位址。  
 
@@ -82,16 +82,16 @@ SQL Server 能夠連接到 SQL Server 執行個體使用，在 App Service 環�
     
 最終結果是一組可封鎖外部存取，同時允許 VNet 內部存取的安全性規則：
 
-![預設網路安全性規則][] DefaultNetworkSecurityRules
+![預設網路安全性規則][DefaultNetworkSecurityRules]
 
 
 ## 開始使用
 
-若要開始使用 App Service 環境，請參閱 [App Service 環境簡介] [IntroToAppServiceEnvironment]
+若要開始使用 App Service 環境，請參閱 [App Service 環境簡介][IntroToAppServiceEnvironment]
 
-如需控制 App Service 環境輸入的流量的詳細資訊，請參閱 [輸入 App Service 環境的流量控制] [ControlInboundASE]
+如需控制 App Service 環境輸入的流量的詳細資訊，請參閱 [控制 App Service 環境輸入的流量][ControlInboundASE]
 
-如需有關 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service] [AzureAppService]。
+如需 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service][AzureAppService]。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -113,4 +113,5 @@ SQL Server 能夠連接到 SQL Server 執行個體使用，在 App Service 環�
 [SqlServerEndpoint]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/SqlServerEndpoint01.png
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png 
+
 

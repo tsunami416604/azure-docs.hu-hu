@@ -21,13 +21,13 @@
 
 > [AZURE.SELECTOR]
 - [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-- [Linux、 Unix OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Linux、Unix、OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 [安全殼層 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 可讓您從遠端執行您使用命令列介面的 Liux 為基礎的 HDInsight 叢集上的作業。 本文提供從以 Windows 為基礎的用戶端使用 PuTTY SSH 用戶端連接到 HDInsight 的資訊。
 
 > [AZURE.NOTE] 這篇文章中的步驟假設您使用 windows 用戶端。 如果您使用 Linux、 Unix 或 OS X 用戶端，請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Linux、 Unix 或 OS X 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-##先決條件
+##必要條件
 
 * **PuTTY** 和 **PuTTYGen** Windows 架構用戶端。 這些公用程式可從下列位置取得：[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
 
@@ -121,7 +121,7 @@ SSH 使用者可以使用密碼或公開金鑰來驗證。 密碼是您自己設
 
     ![putty 介面，選取私密金鑰](./media/hdinsight-hadoop-linux-use-ssh-windows/puttykey.png)
 
-3. 在 **類別**, ，請選取 **工作階段**。 從 **PuTTY 工作階段的基本選項** 畫面中，輸入您的 HDInsight 伺服器的 SSH 位址 **主機名稱 (或 IP 位址)** 欄位。 SSH 位址是叢集名稱，然後 **-ssh.azurehdinsight.net**。 例如， **mycluster-ssh.azurehdinsight.net**。
+3. 在 **類別**, ，請選取 **工作階段**。 從 **PuTTY 工作階段的基本選項** 畫面中，輸入您的 HDInsight 伺服器的 SSH 位址 **主機名稱 （或 IP 位址）** 欄位。 SSH 位址是叢集名稱，然後 **-ssh.azurehdinsight.net**。 例如， **mycluster-ssh.azurehdinsight.net**。
 
     ![已輸入 ssh 位址的 putty 介面](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
 
@@ -165,7 +165,7 @@ SSH 使用者可以使用密碼或公開金鑰來驗證。 密碼是您自己設
 
         curl --user admin:ADMINPASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/hosts
 
-    這樣會以 JSON 格式傳回叢集中節點的資訊，包括 `host_name`，其中包含每個節點的完整網域名稱 (FQDN)。 以下是範例 `host_name` 所傳回的項目 **curl** 命令:
+    這樣會以 JSON 格式傳回叢集中節點的資訊，包括 `host_name`，其中包含每個節點的完整網域名稱 (FQDN)。 以下是範例 `host_name` 所傳回的項目 **curl** 命令 ︰
 
         "host_name" : "workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net"
 
@@ -228,4 +228,5 @@ SSH 可用來建立通道以將本機要求 (例如 Web 要求) 傳送到 HDInsi
 * [搭配 HDInsight 使用 MapReduce 工作](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
+
 

@@ -152,3 +152,4 @@ Web 伺服器虛擬機器共有兩部，您可以在其中部署 ASP.NET 應用�
 
 - 使用 [第 5 階段](virtual-machines-workload-high-availability-LOB-application-phase5.md) 以完成此工作負載的設定。
 
+

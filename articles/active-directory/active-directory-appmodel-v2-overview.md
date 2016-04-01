@@ -47,7 +47,7 @@ V2.0 應用程式模型為預覽狀態。  在預覽期間，歡迎您提供使�
 下列連結有助於深入探索平台：
 
 - 取得有關堆疊溢位使用 [azure active 目錄](http://stackoverflow.com/questions/tagged/azure-active-directory) 或 [adal](http://stackoverflow.com/questions/tagged/adal) 標記。
-- 請不吝提供您的想法預覽使用 [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) -我們想聽聽他們!  請在您的貼文標題中使用 "AppModelv2:" 字詞，以方便我們尋找。
+- 請不吝提供您的想法預覽使用 [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) -我們想聽聽他們 ！  請在您的貼文標題中使用 "AppModelv2:" 字詞，以方便我們尋找。
 - [應用程式模型 v2.0 通訊協定參考](active-directory-v2-protocols.md)
 - [應用程式模型 v2.0 權杖參考](active-directory-v2-tokens.md)
 - [Office 365 REST API 參考](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)
@@ -57,4 +57,5 @@ V2.0 應用程式模型為預覽狀態。  在預覽期間，歡迎您提供使�
 - [ADAL Library Reference]()
 - [v2 Endpoint FAQs](active-directory-v2-faq.md)
 -->
+
 

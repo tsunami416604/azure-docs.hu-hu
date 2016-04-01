@@ -50,9 +50,9 @@ Apache Oozie 是可管理 Hadoop 工作的工作流程/協調系統。 它可與
 
 2.  Sqoop 動作會將 HiveQL 的輸出匯出至 Azure SQL Database 中的資料表。 如需 Sqoop 的詳細資訊，請參閱 [搭配 HDInsight 使用 Hadoop Sqoop][hdinsight-use-sqoop]。
 
-> [AZURE.NOTE] 支援在 HDInsight 叢集上的 Oozie 版本，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能?][hdinsight-versions]。
+> [AZURE.NOTE] 支援在 HDInsight 叢集上的 Oozie 版本，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能？][hdinsight-versions]。
 
-###先決條件
+###必要條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -123,9 +123,9 @@ RunHiveScript 有數個變數。 當您使用 Azure PowerShell 從工作站提�
 
 <table border = "1">
 <tr><th>工作流程變數</th><th>說明</th></tr>
-<tr><td>${jobTracker}</td><td>指定 Hadoop 工作追蹤器的 URL。 使用 <strong>jobtrackerhost:9010</strong> 在 HDInsight 3.0 和 2.1 版。</td></tr>
-<tr><td>${nameNode}</td><td>指定 Hadoop 名稱節點的 URL。 例如，使用預設檔案系統位址， <i>wasb: / / (& s) lt; containerName (& s) gt; @& lt; a g e (& s) gt;。windows.net</i>.</td></tr>
-<tr><td>${queueName}</td><td>指定要將工作提交過去的佇列名稱。 使用 <strong>預設值</strong>.</td></tr>
+<tr><td>${jobTracker}</td><td>指定 Hadoop 工作追蹤器的 URL。 使用 <strong>jobtrackerhost: 9010</strong> 在 HDInsight 3.0 和 2.1 版。</td></tr>
+<tr><td>${nameNode}</td><td>指定 Hadoop 名稱節點的 URL。 使用預設檔案系統位址，例如 <i>wasb: / / （& s) lt; containerName （& s) gt; @& lt; a g e （& s) gt;。windows.net</i>。</td></tr>
+<tr><td>${queueName}</td><td>指定要將工作提交過去的佇列名稱。 使用 <strong>預設</strong>。</td></tr>
 </table>
 
 <table border = "1">
@@ -142,7 +142,7 @@ RunHiveScript 有數個變數。 當您使用 Azure PowerShell 從工作站提�
 <tr><td>${hiveOutputFolder}</td><td>指定 Hive INSERT OVERWRITE 陳述式的輸出資料夾。 這和 Sqoop 匯出 (export-dir) 使用同一個資料夾。</td></tr>
 </table>
 
-如需 Oozie 工作流程和使用工作流程動作的詳細資訊，請參閱 [Apache Oozie 4.0 文件][apache-oozie-400] (適用於 HDInsight 3.0 版) 或 [Apache Oozie 3.3.2 文件][apache-oozie-332] (適用於 HDInsight 2.1 版)。
+如需 Oozie 工作流程和使用工作流程動作的詳細資訊，請參閱 [Apache Oozie 4.0 文件][apache-oozie-400] （適用於 HDInsight 3.0 版) 或 [Apache Oozie 3.3.2 文件][apache-oozie-332] （適用於 HDInsight 2.1 版)。
 
 
 此工作流程中的 Hive 動作會呼叫 HiveQL 指令碼檔案。 此指令碼檔案包含三個 HiveQL 陳述式：
@@ -168,7 +168,7 @@ RunHiveScript 有數個變數。 當您使用 Azure PowerShell 從工作站提�
 
 ##使用 PowerShell 提交 Oozie 工作
 
-Azure PowerShell 目前並未提供任何用以定義 Oozie 工作的 Cmdlet。 您可以使用 **Invoke-restmethod** cmdlet 來叫用 Oozie web 服務。 Oozie Web 服務 API 是 HTTP REST JSON API。 如需 Oozie web 服務 API 的詳細資訊，請參閱 [Apache Oozie 4.0 文件][apache-oozie-400] (適用於 HDInsight 3.0 版) 或 [Apache Oozie 3.3.2 文件][apache-oozie-332] (適用於 HDInsight 2.1 版)。
+Azure PowerShell 目前並未提供任何用以定義 Oozie 工作的 Cmdlet。 您可以使用 **Invoke-restmethod** cmdlet 來叫用 Oozie web 服務。 Oozie Web 服務 API 是 HTTP REST JSON API。 如需 Oozie web 服務 API 的詳細資訊，請參閱 [Apache Oozie 4.0 文件][apache-oozie-400] （適用於 HDInsight 3.0 版) 或 [Apache Oozie 3.3.2 文件][apache-oozie-332] （適用於 HDInsight 2.1 版)。
 
 本節中的 PowerShell 指令碼會執行下列步驟：
 
@@ -679,4 +679,5 @@ Azure PowerShell 目前並未提供任何用以定義 Oozie 工作的 Cmdlet。 
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+
 

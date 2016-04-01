@@ -24,7 +24,7 @@
 
 ##使用 VM 擴充功能
 
-Azure VM 延伸模組實作行為或功能，是協助 Azure Vm 上使用其他程式 (例如， **WebDeployForVSDevTest** 延伸到 Azure VM 上的 Web Deploy 解決方案可讓 Visual Studio) 或可讓您與 VM 互動來支援其他的行為 (例如，您可以使用 powershell 或 Azure CLI 的 VM 存取延伸模組與其他用戶端重設或修改您的 Azure VM 上的遠端存取值)。
+Azure VM 延伸模組實作行為或功能，是協助 Azure Vm 上使用其他程式 (例如， **WebDeployForVSDevTest** 延伸到 Azure VM 上的 Web Deploy 解決方案可讓 Visual Studio) 或可讓您與 VM 互動來支援其他的行為 （例如，您可以使用 powershell 或 Azure CLI 的 VM 存取延伸模組與其他用戶端重設或修改您的 Azure VM 上的遠端存取值)。
 
 >[AZURE.IMPORTANT] 擴充功能所支援的功能的完整清單，請參閱 [Azure VM 延伸模組與功能](virtual-machines-extensions-features.md)。 因為每個 VM 擴充功能支援特定功能，您確切可以及不可以使用擴充功能做到的事取決於擴充功能。 因此，在修改 VM 之前，請確定您已閱讀想要使用之 VM 擴充功能的文件。 不支援移除一些 VM 擴充功能。其他則具有已設定來大幅變更 VM 行為的屬性。
 
@@ -144,4 +144,5 @@ Api，您會收到有關如何設定擴充功能的資訊。 傳回的資訊可�
 -   針對虛擬機器執行個體 **PublicConfigurationSchema** 和 **PrivateConfigurationSchema** 項目中包含的資訊從回應中 [列出資源擴充功能](https://msdn.microsoft.com/library/dn495441.aspx) 作業。
 
 >[AZURE.NOTE]延伸模組也可以使用組態所定義的 JSON。 這些類型的擴充功能使用時，只有 **SampleConfig** 使用項目。
+
 

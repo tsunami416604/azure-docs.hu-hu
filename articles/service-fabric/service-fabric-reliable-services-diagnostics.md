@@ -48,9 +48,10 @@ StatefulRunAsyncInvocation、 StatefulRunAsyncCompletion 和 StatefulRunAsyncCan
 StatefulRunAsyncSlowCancellation 及 StatefulRunAsyncFailure 事件，表示服務的問題。 
 
 就會發出 StatefulRunAsyncFailure 時
-服務 runasync () 工作擲回例外狀況。 通常，擲回例外狀況表示服務中的錯誤。 此外，會導致服務失敗，例外狀況，並因此移至 
+服務 runasync （） 工作擲回例外狀況。 通常，擲回例外狀況表示服務中的錯誤。 此外，會導致服務失敗，例外狀況，並因此移至 
 另一個節點可以是昂貴的作業和服務移動時的延遲時間內送要求。 服務撰寫者應該判斷例外狀況的原因，並盡可能減少這種情況。 
 
 只要 RunAsync 工作的取消要求所花費的時間超過 4 秒，就會發出 StatefulRunAsyncSlowCancellation。 服務太多時間完成取消時，會影響
 快速在另一個節點上重新啟動服務，可能會影響服務的整體可用性。 
+
 

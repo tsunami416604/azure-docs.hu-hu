@@ -116,9 +116,9 @@ Service Fabric 還導入一種新的具狀態服務：可以在服務本身內�
 
 ![使用新增專案對話方塊來建立新的 Service Fabric 具狀態服務](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
-您的應用程式現在應該有兩個服務: 無狀態服務 *HelloWorld* 和具狀態服務 *HelloWorldStateful*。
+您的應用程式現在應該有兩個服務 ︰ 無狀態服務 *HelloWorld* 和具狀態服務 *HelloWorldStateful*。
 
-開啟 **Helloworldstateful** 中 *HelloWorldStateful* 其中包含下列 `RunAsync` 方法:
+開啟 **Helloworldstateful** 中 *HelloWorldStateful* 其中包含下列 `RunAsync` 方法 ︰
 
 ```C#
 protected override async Task RunAsync(CancellationToken cancelServicePartitionReplica)
@@ -222,4 +222,5 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 [應用程式升級](service-fabric-application-upgrade.md)
 
 [可靠的服務的開發人員參考資料](https://msdn.microsoft.com/library/azure/dn706529.aspx)
+
 

@@ -59,7 +59,7 @@
 - 如需進行分析，您可以在資料倉儲建立分析 Cube，然後針對資料倉儲執行分析，或是前置處理資料，然後再匯出到分析伺服器進行進一步分析。 
 
 ## 後續步驟
-若要開始開發您的資料倉儲，請參閱 [開發概觀] []。
+若要開始開發您的資料倉儲，請參閱 [開發概觀][]。
 
 ## 叢書
 [巨量資料倉儲](https://www.manning.com/books/big-data-warehousing) Karthik Ramachandran、 Istvan Szededi 和 Richard L.Saltzer (Manning Publications)。 [第 1 章](https://manning-content.s3.amazonaws.com/download/e/3d94acd-9512-46c8-b0b0-8c9c3c6a303b/BDW_MEAP_ch1.pdf)
@@ -72,5 +72,6 @@
 <!--MSDN references-->
 
 <!--Other web references-->
+
 
 

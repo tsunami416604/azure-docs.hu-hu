@@ -35,7 +35,7 @@
 
 只有向 IoT 中心註冊的裝置可與該 IoT 中心進行通訊。 已註冊的裝置必須被授與 *DeviceConnect* 權限。 裝置識別本身包括封裝在它建立時，每個要求的裝置唯一識別碼的權杖和集線器檢查權杖的有效性，並，裝置不在黑名單 (*DeviceConnect* 撤銷權限)。
 
-IoT 中心中的其他管理端點的存取也透過一組權限: *iothubowner*, ，*服務*, ，*registryRead*, ，和 *registryReadWrite*。 連接到 IoT 中心的所有用戶端管理應用程式，都必須包含具有適當權限的權杖。
+IoT 中心中的其他管理端點的存取也透過一組權限 ︰ *iothubowner*, ，*服務*, ，*registryRead*, ，和 *registryReadWrite*。 連接到 IoT 中心的所有用戶端管理應用程式，都必須包含具有適當權限的權杖。
 
 ## 後續步驟
 
@@ -48,4 +48,5 @@ IoT 中心中的其他管理端點的存取也透過一組權限: *iothubowner*,
 [lnk-iothub]: iot-hub-what-is-iot-hub.md
 [lnk-devguide]: iot-hub-devguide.md#security
 [lnk-manage-portal]: iot-hub-manage-through-portal.md
+
 

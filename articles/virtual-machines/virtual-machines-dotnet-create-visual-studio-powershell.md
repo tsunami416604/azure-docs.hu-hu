@@ -26,7 +26,7 @@
 若要在建立 Web 應用程式時建立虛擬機器，請依照下列步驟進行：
 
 1. 在 Visual Studio 中，按一下 [ **檔案** > **新增** > **專案** > **Web**, ，然後選擇 [ **ASP.NET Web 應用程式** (下 **Visual C#** 或 **Visual Basic** 節點)。
-2. 在 **新增 ASP.NET 專案** 對話方塊中，選取想要的話，web 應用程式的類型，並在對話方塊 (位於右下角) 的 Azure 區段，請確定 **定域機組中的主機** 核取方塊 (此核取方塊會標示為 **建立遠端資源** 在某些安裝)。
+2. 在 **新增 ASP.NET 專案** 對話方塊中，選取想要的話，web 應用程式的類型，並在對話方塊 （位於右下角） 的 Azure 區段，請確定 **定域機組中的主機** 核取方塊 (此核取方塊會標示為 **建立遠端資源** 在某些安裝)。
 
     ![][0]
 
@@ -70,4 +70,5 @@
 [3]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_Provisioning.png
 [4]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_SolutionExplorer.png
 [5]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/VS_Create_VM_Connect.png
+
 

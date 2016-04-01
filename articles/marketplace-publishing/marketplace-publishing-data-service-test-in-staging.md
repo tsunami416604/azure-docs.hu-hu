@@ -52,7 +52,7 @@
 
 ## 步驟 2. 在 DataMarket 中測試已推送到預備環境中的產品
 
-按一下連結，在文字之後 **「 查看您的服務提供時間...」** 以顯示該 「 訂閱者 」 將會看到您提供的服務到生產環境，而且會出現在 DataMarket 的螢幕。
+按一下連結，在文字之後 **」 看到您在提供的服務。...」** 若要顯示 「 訂閱者 」 將會看到您提供的服務到生產環境，而且會出現在 DataMarket 螢幕。
 
   ![繪圖](media/marketplace-publishing-data-service-test-in-staging/step-2.2.png)
 
@@ -85,4 +85,5 @@
 
 ## 另請參閱
 - [使用者入門：如何將供應項目發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
+
 

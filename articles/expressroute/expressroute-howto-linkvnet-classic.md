@@ -19,7 +19,7 @@
 # 將虛擬網路連結到 ExpressRoute 線路
 
 > [AZURE.SELECTOR]
-- [PowerShell-傳統](expressroute-howto-linkvnet-classic.md)
+- [PowerShell - 傳統](expressroute-howto-linkvnet-classic.md)
 - [PowerShell 的資源管理員](expressroute-作法-linkvnet-arm.md)  
 - [範本-Azure 資源管理員](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
 
@@ -31,7 +31,7 @@
 
 - 您需要最新版的 Azure PowerShell 模組。 您可以從的 PowerShell 區段下載最新的 PowerShell 模組 [Azure 下載頁面](http://azure.microsoft.com/downloads)。 按照指示 [如何安裝和設定 Azure PowerShell](../powershell-install-configure.md) 頁面，如需如何設定電腦以使用 Azure PowerShell 模組的逐步指引。 
 - 請確定您已檢閱 [必要條件](expressroute-prerequisites.md) ] 頁面上，  [路由需求](expressroute-routing.md) 頁面和 [工作流程](expressroute-workflows.md) 之前開始設定] 頁面上。
-- 您必須擁有作用中的 ExpressRoute 循環。 
+- 您必須擁有作用中的 ExpressRoute 線路。 
     - 請依照下列指示 [建立的 ExpressRoute 電路](expressroute-howto-circuit-classic.md) 和有連線提供者所啟用的電路。 
     - 確定您已針對循環設定了 Azure 私用對等。 請參閱 [設定路由](expressroute-howto-routing-classic.md) 路由指示的文章。 
     - Azure 私用對等必須設定，且在您的網路與 Microsoft 之間的 BGP 對等必須為您啟用端對端連線。
@@ -149,5 +149,6 @@
 ## 後續步驟
 
 如需有關 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
+
 
 

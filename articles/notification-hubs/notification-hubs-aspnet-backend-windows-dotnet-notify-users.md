@@ -23,9 +23,9 @@
 
 ##概觀
 
-Azure 中的推播通知支援可讓您存取易於使用、多重平台的大規模推播基礎結構，而大幅簡化消費者和企業應用程式在行動平台上的推播通知實作。 本教學課程將示範如何使用 Azure 通知中心，來將推播通知傳送到特定裝置上的特定應用程式使用者。 ASP.NET WebAPI 後端是用來驗證用戶端。 使用驗證的用戶端使用者，後端就會自動將標記新增通知註冊。 後端會傳送此標記，以產生特定使用者的通知。 如需有關使用應用程式後端註冊通知的詳細資訊，請參閱指引主題 [從應用程式後端註冊](http://msdn.microsoft.com/library/dn743807.aspx)。 本教學課程為基礎的通知中樞和專案中建立 [開始使用通知中心] 教學課程。
+Azure 中的推播通知支援可讓您存取易於使用、多重平台的大規模推播基礎結構，而大幅簡化消費者和企業應用程式在行動平台上的推播通知實作。 本教學課程將示範如何使用 Azure 通知中心，來將推播通知傳送到特定裝置上的特定應用程式使用者。 ASP.NET WebAPI 後端是用來驗證用戶端。 使用驗證的用戶端使用者，後端就會自動將標記新增通知註冊。 後端會傳送此標記，以產生特定使用者的通知。 如需有關使用應用程式後端註冊通知的詳細資訊，請參閱指引主題 [從應用程式後端註冊](http://msdn.microsoft.com/library/dn743807.aspx)。 本教學課程為基礎的通知中心和您建立的專案 [Get started with Notification Hubs] 教學課程。
 
-本教學課程也是 [安全推播] 教學課程的必要條件。 完成本教學課程中的步驟之後，您可以前往 [安全推播] 教學課程，示範如何修改程式碼，在本教學課程以安全的方式傳送推播通知。
+本教學課程也是必要條件 [Secure Push] 教學課程。 完成本教學課程中的步驟後，您可以繼續到 [Secure Push] 教學課程中，說明如何修改程式碼，在本教學課程以安全的方式傳送推播通知。
 
 
 
@@ -39,11 +39,11 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
 
 
 
-##先決條件
+##必要條件
 
 在開始本教學課程之前，您必須已完成下列行動服務教學課程：
 
-+ [開始使用通知中心]<br/>建立您的通知中心並保留應用程式名稱並註冊以接收通知，在本教學課程。 本教學課程假設您已完成這些步驟。 如果沒有，請依照 [開始使用通知中心 (Windows 市集)](notification-hubs-windows-store-dotnet-get-started.md); 尤其是區段 [註冊 Windows 市集應用程式](notification-hubs-windows-store-dotnet-get-started.md#register-your-app-for-the-windows-store) 和 [設定通知中心](notification-hubs-windows-store-dotnet-get-started.md#configure-your-notification-hub)。 特別是，確定您已輸入 **封裝 SID** 和 **用戶端密碼** 中的值在網站中， **設定** 的通知中心] 索引標籤。 此組態程序一節中所述 [設定通知中心](notification-hubs-windows-store-dotnet-get-started.md#configure-your-notification-hub)。 這是重要步驟：如果入口網站上的認證與您為所選應用程式名稱指定的認證不符，則推播通知將無法順利進行。
++ [Get started with Notification Hubs]<br/>您要建立通知中樞，然後保留應用程式名稱並註冊以接收本教學課程中的通知。 本教學課程假設您已完成這些步驟。 如果沒有，請依照 [開始使用通知中心 （Windows 市集）](notification-hubs-windows-store-dotnet-get-started.md); 尤其是區段 [註冊 Windows 市集應用程式](notification-hubs-windows-store-dotnet-get-started.md#register-your-app-for-the-windows-store) 和 [設定通知中心](notification-hubs-windows-store-dotnet-get-started.md#configure-your-notification-hub)。 特別是，確定您已輸入 **封裝 SID** 和 **用戶端密碼** 中的值在網站中， **設定** 的通知中心] 索引標籤。 此組態程序一節中所述 [設定通知中心](notification-hubs-windows-store-dotnet-get-started.md#configure-your-notification-hub)。 這是重要步驟：如果入口網站上的認證與您為所選應用程式名稱指定的認證不符，則推播通知將無法順利進行。
 
 
 
@@ -57,9 +57,9 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
 
 ## 更新用戶端專案的程式碼
 
-本節中，您可以更新您已完成的專案中的程式碼 [開始使用通知中心] 教學課程。 這應該已經與市集相關聯，並已針對您的通知中樞進行設定。 在本節中，您將加入程式碼以呼叫新的 WebAPI 後端，並使用它來註冊和傳送通知。
+本節中，您可以更新您已完成的專案中的程式碼 [Get started with Notification Hubs] 教學課程。 這應該已經與市集相關聯，並已針對您的通知中樞進行設定。 在本節中，您將加入程式碼以呼叫新的 WebAPI 後端，並使用它來註冊和傳送通知。
 
-1. 在 Visual Studio 中開啟方案，您建立的 [開始使用通知中心] 教學課程。
+1. 在 Visual Studio 中開啟您建立的方案 [Get started with Notification Hubs] 教學課程。
 
 2. 在 [方案總管] 中，以滑鼠右鍵按一下 **(Windows 8.1)** 專案，然後按一下 **管理 NuGet 封裝**。
 
@@ -365,8 +365,8 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
 
 ## 後續步驟
 
-* 如果您想要按興趣群組分隔使用者，請參閱 [使用通知中心傳送即時新聞]。
-* 若要深入了解如何使用通知中心，請參閱 [通知中心指引]。
+* 如果您想要按興趣群組分隔使用者，請參閱 [Use Notification Hubs to send breaking news]。
+* 若要深入了解如何使用通知中心，請參閱 [Notification Hubs Guidance]。
 
 
 
@@ -386,4 +386,5 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-secure-push.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+
 

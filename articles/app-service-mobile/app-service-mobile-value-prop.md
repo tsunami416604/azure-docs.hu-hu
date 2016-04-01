@@ -16,7 +16,7 @@
     ms.date="08/05/2015"
     ms.author="kirillg"/>
 
-# <a name="getting-started"> </a>什麼是行動應用程式?
+# <a name="getting-started"> </a>什麼是行動應用程式？
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
@@ -44,7 +44,7 @@ Azure 應用程式服務是完全受管理的平台即服務 (PaaS) 產品，適
 
 如需有關 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service]。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://tryappservice.azure.com/?appServiceName=mobile), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://tryappservice.azure.com/?appServiceName=mobile), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 <!-- URLs. -->
 [Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
@@ -53,4 +53,5 @@ Azure 應用程式服務是完全受管理的平台即服務 (PaaS) 產品，適
 [Get Started]: app-service-mobile-ios-get-started.md
 
  
+
 

@@ -22,7 +22,7 @@
 
 使用 Git，即可將 ASP.NET 應用程式部署至 Azure App Service Web Apps。 在本教學課程中，您將建置簡易的前端 ASP.NET MVC 工作清單應用程式，以連接至在 Azure 的虛擬機器上執行的 MongoDB 資料庫。  [MongoDB][MongoDB] 是受歡迎的開放原始碼、 高效能的 NoSQL 資料庫。 在部署電腦上執行和測試 ASP.NET 應用程式之後，您將使用 Git 將此應用程式上傳至 App Service Web Apps。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 
 ## 背景知識 ##
@@ -34,7 +34,7 @@
 * ASP .NET MVC Web 應用程式架構。 您可以了解在 [ASP.NET MVC 網站][MVCWebSite]。
 * Azure。 您可以開始在讀取 [Azure][WindowsAzure]。
 
-## 先決條件 ##
+## 必要條件 ##
 
 - [Visual Studio Express 2013 for Web] [VSEWeb] 或 [Visual Studio 2013] [VSUlt]
 - [Azure SDK for .NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
@@ -107,7 +107,7 @@ MongoDB C# 驅動程式現已安裝。  參考 **MongoDB.Bson**, ，**MongoDB.Dr
 ![MongoDB C# Driver References][MongoDBCSharpDriverReferences]
 
 ## 新增模型 ##
-在 **方案總管] 中**, ，以滑鼠右鍵按一下 *模型* 資料夾和 **新增** 新 **類別** ，並將它 *TaskModel.cs*。  在 *TaskModel.cs*, ，以下列程式碼取代現有的程式碼:
+在 **方案總管] 中**, ，以滑鼠右鍵按一下 *模型* 資料夾和 **新增** 新 **類別** ，並將它 *TaskModel.cs*。  在 *TaskModel.cs*, ，以下列程式碼取代現有的程式碼 ︰
 
     using System;
     using System.Collections.Generic;
@@ -140,7 +140,7 @@ MongoDB C# 驅動程式現已安裝。  參考 **MongoDB.Bson**, ，**MongoDB.Dr
     }
 
 ## 新增資料存取層 ##
-在 **方案總管] 中**, ，以滑鼠右鍵按一下 *MyTaskListApp* 專案和 **新增**  **新資料夾** 名為 *DAL*。  以滑鼠右鍵按一下 *DAL* 資料夾和 **新增** 新 **類別**。 類別檔案命名為 *Dal.cs*。  在 *Dal.cs*, ，以下列程式碼取代現有的程式碼:
+在 **方案總管] 中**, ，以滑鼠右鍵按一下 *MyTaskListApp* 專案和 **新增**  **新資料夾** 名為 *DAL*。  以滑鼠右鍵按一下 *DAL* 資料夾和 **新增** 新 **類別**。 類別檔案命名為 *Dal.cs*。  在 *Dal.cs*, ，以下列程式碼取代現有的程式碼 ︰
 
     using System;
     using System.Collections.Generic;
@@ -248,7 +248,7 @@ MongoDB C# 驅動程式現已安裝。  參考 **MongoDB.Bson**, ，**MongoDB.Dr
     }
 
 ## 新增控制器 ##
-開啟 *controllers\ homecontroller.cs* 檔案中 **方案總管] 中** 和現有的程式碼取代為下列:
+開啟 *controllers\ homecontroller.cs* 檔案中 **方案總管] 中** 和現有的程式碼取代為下列 ︰
 
     using System;
     using System.Collections.Generic;
@@ -329,11 +329,11 @@ MongoDB C# 驅動程式現已安裝。  參考 **MongoDB.Bson**, ，**MongoDB.Dr
     }
 
 ## 設定樣式 ##
-若要變更頁面頂端的標題，請開啟 *Views\Shared\\_Layout.cshtml* 檔案中 **方案總管] 中** 並取代"Application name"導覽列中，以"My Task List Application"使它看起來像這樣:
+若要變更頁面頂端的標題，請開啟 *Views\Shared\\_Layout.cshtml* 檔案中 **方案總管] 中** 並取代"Application name"導覽列中，以"My Task List Application"使它看起來像這樣 ︰
 
     @Html.ActionLink("My Task List Application", "Index", "Home", null, new { @class = "navbar-brand" })
 
-若要設定 Task List 功能表，開啟 *\Views\Home\Index.cshtml* 檔案並以下列程式碼取代現有的程式碼:
+若要設定 Task List 功能表，開啟 *\Views\Home\Index.cshtml* 檔案並以下列程式碼取代現有的程式碼 ︰
     
     @model IEnumerable<MyTaskListApp.Models.MyTask>
     
@@ -413,7 +413,7 @@ MongoDB C# 驅動程式現已安裝。  參考 **MongoDB.Bson**, ，**MongoDB.Dr
         </fieldset>
     }
 
-**方案總管] 中** 應該看起來像這樣:
+**方案總管] 中** 應該看起來像這樣 ︰
 
 ![Solution Explorer][SolutionExplorerMyTaskListApp]
 
@@ -422,7 +422,7 @@ MongoDB C# 驅動程式現已安裝。  參考 **MongoDB.Bson**, ，**MongoDB.Dr
 
     private string connectionString = "mongodb://<vm-dns-name>";
 
-取代 `<vm-dns-name>` 執行 MongoDB 之虛擬機器的 DNS 名稱與您在 [建立虛擬機器和安裝 MongoDB] [] 本教學課程步驟。  若要尋找您的虛擬機器的 DNS 名稱，請移至 Azure 入口網站中，選取 **虛擬機器**, ，並尋找 **DNS 名稱**。
+取代 `<vm-dns-name>` 與執行您在中建立的 MongoDB 的虛擬機器的 DNS 名稱 [建立虛擬機器和安裝 MongoDB][] 本教學課程的步驟。  若要尋找您的虛擬機器的 DNS 名稱，請移至 Azure 入口網站中，選取 **虛擬機器**, ，並尋找 **DNS 名稱**。
 
 如果虛擬機器的 DNS 名稱為 "testlinuxvm.cloudapp.net"，且 MongoDB 是在預設連接埠 27017 上接聽，則連接字串程式碼行如下所示：
 
@@ -501,3 +501,4 @@ MongoDB C# 驅動程式現已安裝。  參考 **MongoDB.Bson**, ，**MongoDB.Dr
 [Create an Azure web site]: #createwebsite
 [Deploy the ASP.NET application to the web site using Git]: #deployapp
  
+

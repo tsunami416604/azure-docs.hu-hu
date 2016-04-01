@@ -39,7 +39,7 @@
 
 ##啟用 Tez
 
-[Apache Tez](http://hortonworks.com/hadoop/tez/) 是 MapReduce 引擎的替代執行引擎:
+[Apache Tez](http://hortonworks.com/hadoop/tez/) 是 MapReduce 引擎的替代執行引擎 ︰
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
@@ -49,7 +49,7 @@ Tez 比較迅速，因為：
 - 在 MapReduce 引擎中以單一工作的形式執行有向非循環圖 (DAG)，而所表示的 DAG 要求每一組對應器的後面都接著一組歸納器。 這會導致多個 MapReduce 工作針對每個 Hive 查詢而分拆。 Tez 沒有此種條件約束，並可將複雜的 DAG 當作一項工作處理，因而將工作啟動的額外負荷降至最低。
 - **避免不必要的寫入** 正針對相同的 Hive 查詢 MapReduce 引擎中的多個工作，因為每個工作的輸出會寫入至 HDFS 為中繼資料。 Tez 可以將每個 Hive 查詢的工作數目降至最低，所以能夠避免不必要的寫入。
 - **最小化啟動延遲** Tez 會比較能夠減少所需啟動的對應器數目，又能提升整個最佳化，啟動延遲降到最低。
-- **重複使用容器** 每當可能: Tez 會重複使用容器，確保減少因為啟動容器而延遲。
+- **重複使用容器** 每當可能 ︰ Tez 會重複使用容器，確保減少因為啟動容器而延遲。
 - **連續最佳化技巧** 習慣上在編譯階段進行最佳化。 但是有更多關於輸入的資訊可用，所以在執行階段進行最佳化比較理想。 Tez 會使用連續最佳化技巧，進一步在執行階段將計劃最佳化。
 
 如需有關這些概念的詳細資訊，請按一下 [這裡](http://hortonworks.com/hadoop/tez/)
@@ -95,11 +95,11 @@ Hive 分割的實作方法是將未經處理的資料重新整理成新的目錄
 
 - **執行不置中的磁碟分割** -依據只有少數幾個值的資料行可能會造成極少的資料分割。 例如，依據性別進行分割只會建立兩個分割區 (男性和女性)，因此只會降低最多一半的延遲。
 
-- **請勿分割過度** -啟動另一個極端，建立具有唯一值 (如使用者識別碼) 的資料行的分割區會造成很多壓力以致叢集 namenode 因為必須處理大量目錄的多個資料分割。
+- **請勿分割過度** -啟動另一個極端，建立具有唯一值 （如使用者識別碼） 的資料行的分割區會造成很多壓力以致叢集 namenode 因為必須處理大量目錄的多個資料分割。
 
 - **避免資料扭曲** -明智地選擇分割索引鍵，使所有分割區大小。 範例資料分割上 *狀態* 可能會導致是幾乎 30 加州的記錄數目，因為人口差異佛蒙特 x。
 
-若要建立資料分割資料表，請使用 *Partitioned By* 子句:
+若要建立資料分割資料表，請使用 *Partitioned By* 子句 ︰
 
     CREATE TABLE lineitem_part
         (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
@@ -140,9 +140,9 @@ Hive 分割的實作方法是將未經處理的資料重新整理成新的目錄
 
 Hive 支援不同的檔案格式。 例如：
 
-- **文字**: 這是預設檔案格式，適用於大部分的案例
-- **Avro**: 適用於互通性案例
-- **ORC/Parquet**: 最適用於效能
+- **文字**︰ 這是預設檔案格式，適用於大部分的案例
+- **Avro**︰ 適用於互通性案例
+- **ORC/Parquet**︰ 最適用於效能
 
 ORC (最佳化的資料列單欄式) 格式是儲存 Hive 資料的高效率方式。 相較於其他格式，ORC 具有下列優點：
 
@@ -200,8 +200,8 @@ ORC (最佳化的資料列單欄式) 格式是儲存 Hive 資料的高效率方�
 
 您有更多最佳化方法可以考慮，例如：
 
-- **Hive 值區:** ，讓使用者能夠叢集化或分段大型資料集的技術來最佳化查詢效能。
-- **聯結最佳化:** 最佳化 Hive 的查詢執行計劃來改善聯結的效率並減少使用者提示的需求。 如需詳細資訊，請參閱 [聯結最佳化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
+- **Hive 值區 ︰** ，讓使用者能夠叢集化或分段大型資料集的技術來最佳化查詢效能。
+- **聯結最佳化 ︰** 最佳化 Hive 的查詢執行計劃來改善聯結的效率並減少使用者提示的需求。 如需詳細資訊，請參閱 [聯結最佳化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
 - **增加歸納器**
 
 ##<a id="nextsteps"></a> 後續步驟
@@ -218,4 +218,5 @@ ORC (最佳化的資料列單欄式) 格式是儲存 Hive 資料的高效率方�
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_2.png
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/partitioning_1.png
+
 

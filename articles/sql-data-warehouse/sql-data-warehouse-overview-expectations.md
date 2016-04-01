@@ -67,7 +67,7 @@ Azure SQL 資料倉儲每個月都可能有高達 4 個維護事件，用以安�
 
 ## 後續步驟
 
-[開始]公用預覽]。 
+[開始使用][] 公用預覽版本。 
 
 <!--Image references-->
 
@@ -77,4 +77,5 @@ Azure SQL 資料倉儲每個月都可能有高達 4 個維護事件，用以安�
 <!--MSDN references-->
 
 <!--Other Web references-->
+
 

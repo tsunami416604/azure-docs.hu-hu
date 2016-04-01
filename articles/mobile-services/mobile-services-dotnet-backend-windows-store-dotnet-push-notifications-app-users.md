@@ -27,7 +27,7 @@
 
 ##概觀
 
-本主題說明如何將推播通知傳送給任何已註冊之 iOS 裝置上的驗證使用者。 上一個 [推播通知] 與 [開始使用推播通知] 教學課程，本教學課程會變更您的行動服務要求用戶端才能向通知中心註冊推播通知之前，必須驗證使用者。 此外也會修改註冊，以根據指派的使用者識別碼新增標記。 最後會更新伺服器程式碼，而僅將通知傳送給已驗證的使用者，而不是所有的註冊。
+本主題說明如何將推播通知傳送給任何已註冊之 iOS 裝置上的驗證使用者。 不同於先前 [推播通知][Get started with push notifications] 教學課程，本教學課程會變更您的行動服務要求用戶端才能向通知中心註冊推播通知之前，必須驗證使用者。 此外也會修改註冊，以根據指派的使用者識別碼新增標記。 最後會更新伺服器程式碼，而僅將通知傳送給已驗證的使用者，而不是所有的註冊。
 
 本教學課程支援 Windows 市集和 Windows Phone 市集應用程式。
 
@@ -35,10 +35,10 @@
 
 在開始本教學課程之前，您必須已完成下列行動服務教學課程：
 
-+ [開始使用驗證]
++ [Get started with authentication]
 將登入需求加入至 TodoList 範例應用程式。
 
-+ [開始使用推播通知]
++ [Get started with push notifications]
 使用通知中心設定推播通知的 TodoList 範例應用程式。
 
 在您完成這兩個教學課程後，您即可防止未經授權的使用者從您的行動服務註冊推播通知。
@@ -67,5 +67,6 @@
 <!-- URLs. -->
 [Get started with authentication]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md
 [Get started with push notifications]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
+
 
 

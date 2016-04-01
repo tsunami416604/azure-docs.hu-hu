@@ -22,15 +22,15 @@
 本文首先討論 ADF 複製、SSIS 和 bcp 的簡單移轉案例。 接著稍微深入討論如何將移轉最佳化。
 
 ## Azure Data Factory (ADF) 複製
-[ADF 複製][] 是 [Azure Data Factory] [] 的一部分。 您可以使用 ADF 複製將資料匯出到位於本機儲存體的一般檔案、匯出到到保留在 Azure blob 儲存體中的遠端一般檔案，或直接匯出到 SQL 資料倉儲。
+[ADF 複製][] 屬於 [Azure Data Factory][]。 您可以使用 ADF 複製將資料匯出到位於本機儲存體的一般檔案、匯出到到保留在 Azure blob 儲存體中的遠端一般檔案，或直接匯出到 SQL 資料倉儲。
 
-如果資料是從一般檔案開始，則在開始將資料載入 SQL 資料倉儲之前，您首先要將資料傳輸到 Azure 儲存體 blob。 一旦資料傳輸到 Azure blob 儲存體您可以選擇再次使用 [ADF 複製] []，以將資料推送至 SQL 資料倉儲。 
+如果資料是從一般檔案開始，則在開始將資料載入 SQL 資料倉儲之前，您首先要將資料傳輸到 Azure 儲存體 blob。 一旦資料傳輸到 Azure blob 儲存體可以選擇使用 [ADF 複製][] ] 以將資料推送至 SQL 資料倉儲。 
 
 PolyBase 還提供極高效能選項來載入資料。 不過，這表示要使用兩種工具，而不止一種工具。 如果您需要達到最佳效能，請使用 PolyBase。 如果只想要使用單一工具 (且資料量不大)，則 ADF 就是答案。
 
 > [AZURE.NOTE] PolyBase 規定必須為 utf-8 資料檔案。 這是 ADF 複製的預設編碼，無可變更之處。 這是提醒您不要變更 ADF 複製的預設行為。
 
-前往下列文件的一些很棒的 [ADF 複製範例]。
+前往一些很好的下列文件 [ADF Copy examples]。
 
 ## Integration Services ##
 Integration Services (SSIS) 是一個功能強大且靈活的擷取轉換和載入 (ETL) 工具，支援複雜的工作流程、資料轉換，以及數個資料載入選項。 使用 SSIS 來單純將資料傳輸至 Azure，或做為更廣泛移轉的一部分。
@@ -63,7 +63,7 @@ bcp 的限制包括：
 - 當透過網際網路載入資料時，bcp 的設計尚不夠健全。 任何網路不穩定狀況都可能造成載入錯誤。
 - bcp 依賴載入之前存在於目標資料庫中的結構描述
 
-如需詳細資訊，請參閱 [使用 bcp 將資料載入 SQL 資料倉儲] []。
+如需詳細資訊，請參閱 [使用 bcp 將資料載入 SQL 資料倉儲][]。
 
 ## 最佳化資料移轉
 SQLDW 資料移轉程序可以有效地分成三個獨立的步驟：
@@ -103,19 +103,19 @@ SQL 資料倉儲只使用 PolyBase 從 Azure Blob 儲存體載入資料。 因�
 
 所幸您有數個選項可以提升此程序的速度及恢復力：
 
-### [] ExpressRoute[]
-您可能要考慮使用 [ExpressRoute] [] 來加速傳輸。 [] ExpressRoute[] 讓您建立的私人連接至 Azure 連接不經過公用網際網路。 這絕不是必要的步驟。 不過，從內部部署或共置設備推送資料到 Azure 時，將會改善輸送量。
+### [ExpressRoute][]
+您可能要考慮使用 [ExpressRoute][] 來加速傳輸。 [ExpressRoute][]讓您建立的私人連線至 Azure，連接不經過公用網際網路。 這絕不是必要的步驟。 不過，從內部部署或共置設備推送資料到 Azure 時，將會改善輸送量。
 
-使用 [ExpressRoute] [] 的優點如下:
+使用的優點 [ExpressRoute][] 是 ︰
 
 1. 更高的可靠性
 2. 更快的網路速度
 3. 更短的網路延遲
 4. 更高的網路安全性
 
-[] ExpressRoute[] 是很有幫助的案例。不只是移轉。
+[ExpressRoute][] 就很有助益的情況下，不只是移轉。
 
-有興趣嗎？ 如需詳細資訊和定價，請造訪 [ExpressRoute 文件] []。
+有興趣嗎？ 如需詳細資訊和定價，請瀏覽 [ExpressRoute 文件][]。
 
 ### Azure 匯入和匯出服務
 Azure 匯入和匯出服務是針對大量 (GB++) 到巨量 (TB++) 的資料傳輸至 Azure 而設計的資料傳輸程序。 它牽涉到將您的資料寫入磁碟及傳送至 Azure 資料中心。 然後會代替您將磁碟內容載入 Azure 儲存體 Blob。
@@ -130,8 +130,8 @@ Azure 匯入和匯出服務是針對大量 (GB++) 到巨量 (TB++) 的資料傳�
 5. 您的資料傳輸至 Azure Blob 儲存體容器
 6. 使用 PolyBase 將資料載入 SQLDW
 
-### [] AZCopy[] 公用程式
-[AZCopy] [] 公用程式是很棒的工具，將資料傳輸至 Azure 儲存體 Blob。 它是針對少量 (MB++) 到非常大量 (GB++) 資料傳輸而設計。 [AZCopy] 也已設計成提供絕佳彈性的輸送量時將資料傳送至 Azure，因此是資料傳輸步驟的絕佳選擇。 一旦傳輸之後，您就可以使用 PolyBase 將資料載入 SQL 資料倉儲。 您也可以使用「執行程序」工作，將 AZCopy 納入 SSIS 封裝。
+### [AZCopy][] 公用程式
+ [AZCopy][] 公用程式是很棒的工具，將資料傳輸至 Azure 儲存體 Blob。 它是針對少量 (MB++) 到非常大量 (GB++) 資料傳輸而設計。 [AZCopy] 也已設計成提供絕佳彈性的輸送量時將資料傳送至 Azure，因此是資料傳輸步驟的絕佳選擇。 一旦傳輸之後，您就可以使用 PolyBase 將資料載入 SQL 資料倉儲。 您也可以使用「執行程序」工作，將 AZCopy 納入 SSIS 封裝。
 
 若要使用 AZCopy，您必須先下載並安裝它。 沒有 [實際執行版本][] 和 [預覽版本][] 可用。
 
@@ -148,7 +148,7 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
 3. AZCopy 您在 Azure Blob 儲存體容器中的資料
 4. 使用 PolyBase 將資料載入 SQL 資料倉儲
 
-完整的文件: [AZCopy] []。
+完整的文件 ︰ [AZCopy][]。
 
 ## 最佳化資料匯出
 除了確保匯出符合 PolyBase 所規定的需求，您也可以設法最佳化資料匯出，以進一步改善程序。
@@ -163,12 +163,12 @@ PolyBase 可以讀取 gzip 壓縮的資料。 如果您可以將資料壓縮成 
 
 PolyBase 也支援一項稱為「遞迴資料夾周遊」的功能。 您可以使用這項功能來進一步加強組織您匯出的資料，以改善資料管理。 
 
-若要深入了解使用 PolyBase 載入資料，請參閱 [使用 PolyBase 將資料載入 SQL 資料倉儲] []。
+若要深入了解使用 PolyBase 載入資料，請參閱 [使用 PolyBase 將資料載入 SQL 資料倉儲][]。
 
 
 ## 後續步驟
-如需有關移轉的詳細資訊，請參閱 [移轉至 SQL 資料倉儲方案] []。
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需有關移轉的詳細資訊，請參閱 [將您的解決方案移轉至 SQL 資料倉儲][]。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
@@ -194,5 +194,6 @@ PolyBase 也支援一項稱為「遞迴資料夾周遊」的功能。 您可以�
 [preview version]: http://aka.ms/downloadazcopypr/
 [ADO.NET destination adapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS documentation]: https://msdn.microsoft.com/library/ms141026.aspx
+
 
 

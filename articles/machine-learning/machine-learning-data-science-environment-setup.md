@@ -28,3 +28,4 @@ Cortana 分析程序使用各種資料科學環境儲存、處理和分析資料
 
 * 如需進行這項決策時要考量的問題的指引，請參閱 [計劃您 Azure Machine Learning 資料科學環境](machine-learning-data-science-plan-your-environment.md)。 
 * 針對某些狀況進行進階的分析時，可能會遇到的目錄，請參閱 [進階分析程序和技術在 Azure Machine Learning 中的案例](../machine-learning-data-science-plan-sample-scenarios.md)
+

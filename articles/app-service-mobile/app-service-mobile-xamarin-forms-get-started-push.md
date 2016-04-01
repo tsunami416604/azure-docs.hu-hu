@@ -37,7 +37,7 @@
 * 使用中的 Azure 帳戶。  
 如果您還沒有帳戶，註冊 Azure 試用版並取得最多 10 個免費的行動應用程式。 試用結束之後您仍可以繼續使用它們。 請參閱 [Azure 免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
 
-* Mac 的 [Xamarin Studio] 和 [Xcode] v4.4 或更新版本安裝它。 如果想要，您可以在 Windows 電腦上使用 Visual Studio 執行 Xamarin.Forms 應用程式，但這樣會比較複雜，因為您必須連線到已加入網路並正在執行 Xamarin.iOS 組建主機的 Mac。 如果您想要這樣做，請參閱 [在 Windows 上的安裝 Xamarin.iOS]。
+* 使用 Mac [Xamarin Studio] 和 [Xcode] v4.4 或更新版本安裝它。 如果想要，您可以在 Windows 電腦上使用 Visual Studio 執行 Xamarin.Forms 應用程式，但這樣會比較複雜，因為您必須連線到已加入網路並正在執行 Xamarin.iOS 組建主機的 Mac。 如果您想這麼做，請參閱 [Installing Xamarin.iOS on Windows]。
 
 * 實體的 iOS 裝置。 iOS 模擬器不支援推播通知。
 
@@ -377,7 +377,7 @@
         }
 
 
-4. 在 AppDelegate.cs 中，也將新增的覆寫 **RegisteredForRemoteNotifications** 以註冊通知的事件:
+4. 在 AppDelegate.cs 中，也將新增的覆寫 **RegisteredForRemoteNotifications** 以註冊通知的事件 ︰
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
@@ -394,7 +394,7 @@
             push.RegisterAsync(deviceToken, templates);
         }
 
-5. 在 AppDelegate.cs 中也新增的覆寫 **DidReceivedRemoteNotification** 事件來處理內送通知，應用程式執行時:
+5. 在 AppDelegate.cs 中也新增的覆寫 **DidReceivedRemoteNotification** 事件來處理內送通知，應用程式執行時 ︰
 
         public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
@@ -541,5 +541,6 @@
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [Installing Xamarin.iOS on Windows]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
+
 
 

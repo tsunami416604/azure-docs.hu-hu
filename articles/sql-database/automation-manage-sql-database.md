@@ -50,6 +50,7 @@ Azure 自動化也可直接與 SQL 伺服器通訊，只要使用 PowerShell 發
 了解 Azure 自動化的基本概念以及如何用它來管理 Azure SQL 資料庫之後，請參考下列連結，以深入了解 Azure 自動化。
 
  * 請參閱 Azure 自動化 [快速入門教學課程](../automation-create-runbook-from-samples.md)
- * 讀取 [Azure 自動化: 您的 SQL 代理程式定域機組中](http://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 部落格文章
+ * 讀取 [Azure 自動化 ︰ 您的 SQL 代理程式定域機組中](http://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 部落格文章
  
+
 

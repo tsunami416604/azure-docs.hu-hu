@@ -130,15 +130,15 @@
     ![預設 rails 頁面][default-rails-cloud]
 
 
-##<a id="next"></a>後續步驟
+##<a id="next"></a>接續步驟
 
 在此教學課程中，您必須手動執行大部分的步驟。 在生產環境中，您會在開發電腦上撰寫應用程式，並將它部署至 Azure VM。 另外，大部分生產環境均代管 Rails 應用程式以及 Apache 或 NginX 之類的其他伺服器程序，處理傳送至多個 Rails 應用程式及執行個體並提供靜態資源的要求。 如需詳細資訊，請參閱 http://rubyonrails.org/deploy/。
 
-若要深入了解 Ruby on Rails，請參閱 [Ruby on Rails 指南] [滑軌輔助線]。
+若要深入了解 Ruby on Rails，請瀏覽 [Ruby on Rails 指南][rails-guides]。
 
 若要從您的 Ruby 應用程式 使用 Azure 服務，請參閱：
 
-* [儲存非結構化的資料使用 blob][blob]
+* [使用 Blob 儲存非結構化資料][blobs]
 
 * [使用資料表儲存機碼值組][tables]
 
@@ -174,4 +174,5 @@
 [new-endpoint]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint.png
 
 [new-endpoint1]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint1.png
+
 

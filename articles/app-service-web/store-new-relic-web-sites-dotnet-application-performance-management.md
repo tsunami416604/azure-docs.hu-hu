@@ -63,7 +63,7 @@ New Relic 與 Azure Web 角色、背景工作角色和 Azure App Service 緊密�
     - **名稱**
     - **定價層**
     - **資源群組**
-    - **訂用帳戶**
+    - **訂閱**
     - **位置**
     - **法律條款**
 
@@ -82,7 +82,7 @@ New Relic 與 Azure Web 角色、背景工作角色和 Azure App Service 緊密�
 
     ![](./media/store-new-relic-web-sites-dotnet-application-performance-management/configure-new-relic-integration.png)
 
-    一旦儲存操作完成後，按一下 [ **所有設定** 在 web 應用程式的刀鋒視窗中，然後按一下 [ **應用程式設定**。 您應該會看到 **NEWRELIC\_LICENSEKEY** 設定新增至 **應用程式設定** 刀鋒視窗，以支援 New Relic 的區段:
+    一旦儲存操作完成後，按一下 [ **所有設定** 在 web 應用程式的刀鋒視窗中，然後按一下 [ **應用程式設定**。 您應該會看到 **NEWRELIC\_LICENSEKEY** 設定新增至 **應用程式設定** 刀鋒視窗，以支援 New Relic 的區段 ︰
 
     >[AZURE.NOTE] 可能需要長達 30 秒，新的應用程式設定才會生效。 若要強制設定立即生效，請重新啟動 Web 應用程式。
 
@@ -100,7 +100,7 @@ New Relic 與 Azure Web 角色、背景工作角色和 Azure App Service 緊密�
     ![](./media/store-new-relic-web-sites-dotnet-application-performance-management/view-new-relic-data.png)
 
 3. 如果這是您首次使用帳戶，請設定您的帳戶資訊。
-3. 從 New Relic 功能表列中，選取 **應用程式 > (應用程式的名稱)**。
+3. 從 New Relic 功能表列中，選取 **應用程式 > （應用程式的名稱）**。
 
      **監視 > 概觀** 儀表板] 會自動出現。
 
@@ -112,7 +112,7 @@ New Relic 與 Azure Web 角色、背景工作角色和 Azure App Service 緊密�
 
 從 [Applications] 功能表的清單中選取應用程式之後，[Overview] 儀表板會顯示目前的應用程式伺服器和瀏覽器資訊。 若要將兩個檢視之間切換，請按一下 [ **應用程式伺服器** 或 **瀏覽器** ] 按鈕。
 
-除了 <a href="https://newrelic.com/docs/site/the-new-relic-ui#functions">標準 New Relic UI</a> 和 <a href="https://newrelic.com/docs/site/the-new-relic-ui#drilldown">儀表板向下鑽取</a> 功能以外，[應用程式概觀] 儀表板還有其他功能。
+除了<a href="https://newrelic.com/docs/site/the-new-relic-ui#functions">標準 New Relic UI</a>和<a href="https://newrelic.com/docs/site/the-new-relic-ui#drilldown">儀表板向下鑽研</a>功能，[Applications Overview] 儀表板還有其他功能。
 
 <table border="1">
   <thead>
@@ -124,23 +124,23 @@ New Relic 與 Azure Web 角色、背景工作角色和 Azure App Service 緊密�
   <tbody>
     <tr>
        <td>顯示所選取應用程式的伺服器或瀏覽器的儀表板資訊</td>
-       <td>按一下 <b>[應用程式伺服器]</b> 或 <b>[瀏覽器]</b> 按鈕。</td>
+       <td>按一下 [ <b>應用程式伺服器</b> 或 <b>瀏覽器</b> ] 按鈕。</td>
     </tr>
      <tr>
-       <td>檢視應用程式的臨界值等級 <a href="https://newrelic.com/docs/site/apdex" target="_blank">Apdex</a> 分數</td>
-       <td>指向 Apdex 分數 <b>?<b> 圖示。</b></b></td>
+       <td>適用於您的應用程式和 #39 檢視臨界值層級，貴用戶 <a href="https://newrelic.com/docs/site/apdex" target="_blank">Apdex</a> 分數</td>
+       <td>指向 Apdex 分數 <b>嗎？<b> 圖示。</b></b></td>
     </tr>
     <tr>
        <td>檢視全球 Apdex 詳細資料</td>
-       <td>從 [概觀] 的 <b>[瀏覽器]</b> 檢視中，指向 Global Apdex 地圖上。<br /><b>秘訣：</b> 若要直接移至選取的應用程式 <a href="https://newrelic.com/docs/site/geography" target="_blank">[地理位置]</a>儀表板，請按一下 <b>[全球 Apdex]</b> 標題，或按一下 [全球 Apdex] 地圖上的任一處。</td>
+       <td>概觀與 #39; 從 s <b>瀏覽器</b> 檢視中，指向 Global Apdex 地圖上。<br /><b>提示 ︰</b> ，直接移至選取的應用程式和 #39; s <a href="https://newrelic.com/docs/site/geography" target="_blank">Geography</a>儀表板，按一下 [ <b>Global Apdex</b> 標題，或按一下 Global Apdex 地圖的任意處。</td>
     </tr>
     <tr>
-       <td>檢視 <a href="https://docs.newrelic.com/docs/applications-menu/transactions-dashboard" target="_blank">[Web 交易]</a> 儀表板</td>
-       <td>按一下 [Applications Overview] 儀表板的 [Web Transactions] 資料表。 或者，若要檢視特定 Web 交易 (包括 <a href="https://newrelic.com/docs/site/key-transactions" target="_blank">Key Transactions</a>) 的詳細資料，請按一下其名稱。</td>
+       <td>檢視 <a href="https://docs.newrelic.com/docs/applications-menu/transactions-dashboard" target="_blank">Web 交易</a> 儀表板</td>
+       <td>按一下 [Applications Overview] 儀表板的 [Web Transactions] 資料表。 或者，若要檢視特定 web 交易的詳細資料 (包括 <a href="https://newrelic.com/docs/site/key-transactions" target="_blank">Key Transactions</a>)，按一下其名稱。</td>
     </tr>
     <tr>
-       <td>檢視 <a href="https://newrelic.com/docs/site/errors" target="_blank">錯誤數</a> 儀表板</td>
-       <td>按一下 [Error rate] 圖表 & #39; s 應用程式概觀] 儀表板的標題。<br /><b>秘訣：</b> 您可以從 <b>應用程式</b> & gt;(您的應用程式) (& s) gt;事件與 gt;發生錯誤。</td>
+       <td>檢視 <a href="https://newrelic.com/docs/site/errors" target="_blank">錯誤</a> 儀表板</td>
+       <td>按一下 [Error rate] 圖表 & #39; s 應用程式概觀] 儀表板的標題。<br /><b>提示 ︰</b> 您也可以檢視從 <b>應用程式</b> & gt;（您的應用程式） （& s) gt;事件與 gt;發生錯誤。</td>
     </tr>
     <tr>
        <td>檢視應用程式的伺服器詳細資料</td>
@@ -167,16 +167,16 @@ New Relic 與 Azure Web 角色、背景工作角色和 Azure App Service 緊密�
  * [為 Azure 網站安裝.NET 代理程式](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/azure-websites#manual): New Relic.NET 代理程式安裝程序 
  * [New Relic 使用者介面](https://newrelic.com/docs/site/the-new-relic-ui): 
 New Relic UI,、設定使用者權限和設定檔，以及使用標準功能和儀表板向下鑽研詳細資料的概觀
- * [應用程式概觀](https://newrelic.com/docs/site/applications-overview): 特性及功能時使用 New Relic 的應用程式概觀儀表板
+ * [應用程式概觀](https://newrelic.com/docs/site/applications-overview)︰ 特性及功能時使用 New Relic 的應用程式概觀儀表板
  * [Apdex](https://newrelic.com/docs/site/apdex): Apdex 如何衡量應用程式的使用者滿意度的概觀
- * [實際使用者監控](https://newrelic.com/docs/features/real-user-monitoring): 概觀 RUM 如何詳細資料時所需為您的使用者 
+ * [實際使用者監控](https://newrelic.com/docs/features/real-user-monitoring)︰ 概觀 RUM 如何詳細資料時所需為您的使用者 
 使用者來自何處，和使用者使用什麼瀏覽器的概觀
  * [尋找說明](https://newrelic.com/docs/site/finding-help): New Relic 線上說明中心提供的資源
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 
 [vswebsite]: web-sites-dotnet-get-started.md
@@ -189,3 +189,4 @@ New Relic UI,、設定使用者權限和設定檔，以及使用標準功能和�
 [add-on]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nraddon.png
 [custom]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
  
+

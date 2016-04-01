@@ -32,7 +32,7 @@ App Service Mobile 是一種使用 Microsoft Azure 建置行動應用程式的�
 
 ### Mobile Apps Node.js 伺服器 SDK 中的改進功能
 
-升級至新 [行動應用程式 SDK](https://www.npmjs.com/package/azure-mobile-apps) 提供了許多改進，包括:
+升級至新 [行動應用程式 SDK](https://www.npmjs.com/package/azure-mobile-apps) 提供了許多改進，包括 ︰
 
 - 根據 [Express 架構](http://expressjs.com/en/index.html), ，新節點 SDK 是輕量級和設計目的是為了跟上新節點的版本為送。 您可以利用 Express 中介軟體來自訂應用程式行為。
 
@@ -69,11 +69,11 @@ App Service Mobile 是一種使用 Microsoft Azure 建置行動應用程式的�
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-您可能會想要使用與行動服務中相同的資料庫和通知中心。 您可以複製這些值，藉由開啟 [Azure portal] 瀏覽至原始的應用程式，然後按一下 [ **設定** > **應用程式設定**。 在 **連接字串**, ，複製 `MS_NotificationHubConnectionString` 和 `MS_TableConnectionString`。 瀏覽至新的升級網站並將它們貼上，覆寫任何現有的值。 針對您的 app 需要的任何其他應用程式設定重複執行此程序。 如果不使用移轉的服務，您可以讀取連接字串和應用程式設定，從 **設定** ] 索引標籤的 [行動服務] 區段的 [Azure portal]。
+您可能會想要使用與行動服務中相同的資料庫和通知中心。 您可以複製這些值，藉由開啟 [Azure portal] 瀏覽至原始的應用程式，然後按一下 [ **設定** > **應用程式設定**。 在 **連接字串**, ，複製 `MS_NotificationHubConnectionString` 和 `MS_TableConnectionString`。 瀏覽至新的升級網站並將它們貼上，覆寫任何現有的值。 針對您的應用程式需要的任何其他應用程式設定重複執行此程序。 如果不使用移轉的服務，您可以讀取連接字串和應用程式設定，從 **設定** ] 索引標籤的 [行動服務] 區段的 [Azure portal]。
 
 ### 利用節點建立基本的行動 App 後端
 
-每個 Azure App Service Mobile App Node.js 後端都會以 ExpressJS 應用程式的形式啟動。 您可以建立基本 [Express](http://expressjs.com/en/index.html) 應用程式，如下所示:
+每個 Azure App Service Mobile App Node.js 後端都會以 ExpressJS 應用程式的形式啟動。 您可以建立基本 [Express](http://expressjs.com/en/index.html) 應用程式，如下所示 ︰
 
 1. 在命令或 PowerShell 視窗中，為您的專案建立新的目錄。
 
@@ -86,7 +86,7 @@ App Service Mobile 是一種使用 Microsoft Azure 建置行動應用程式的�
 
     Npm init 命令會詢問一組問題以初始化專案。  請參閱以下的範例輸出
 
-    ![Npm init 輸出][] 0
+    ![npm init 輸出][0]
 
 3. 從 npm 儲存機制安裝 express 和 azure-mobile-apps 資源庫。
 
@@ -144,7 +144,7 @@ SDK 隨附記憶體內部的資料提供者，以便取得快速且輕鬆開始�
 
 在含有 TodoItem 資料表及一個讀取操作的行動服務中 (其會根據使用者識別碼來篩選)，如下：
 
-  函式 (查詢、 使用者、 要求) {
+  函式 （查詢、 使用者、 要求） {
     query.where ({userId: user.userId})。
     request.execute();
   }
@@ -166,7 +166,7 @@ SDK 隨附記憶體內部的資料提供者，以便取得快速且輕鬆開始�
 
 ### 推播通知
 
-Azure 通知中樞 SDK 具有一些自從行動服務以來的重大更新，因此部分通知中樞函式簽章可能會不同。 除此之外，該功能與行動服務相似；如果應用程式擁有通知中樞的設定，Azure Mobile SDK 將會佈建通知中樞執行個體，並在 `context.push` 公開。 範例位於 [GitHub](https://github.com/Azure/azure-mobile-apps-node/blob/master/samples/push-on-insert/tables/TodoItem.js), ，如下所示相關區段如下所示:
+Azure 通知中樞 SDK 具有一些自從行動服務以來的重大更新，因此部分通知中樞函式簽章可能會不同。 除此之外，該功能與行動服務相似；如果應用程式擁有通知中樞的設定，Azure Mobile SDK 將會佈建通知中樞執行個體，並在 `context.push` 公開。 範例位於 [GitHub](https://github.com/Azure/azure-mobile-apps-node/blob/master/samples/push-on-insert/tables/TodoItem.js), ，如下所示相關區段如下所示 ︰
 
     table.insert(function (context) {
         // For details of the Notification Hubs JavaScript SDK,
@@ -266,4 +266,5 @@ Azure 通知中樞 SDK 具有一些自從行動服務以來的重大更新，因
 [Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
+
 

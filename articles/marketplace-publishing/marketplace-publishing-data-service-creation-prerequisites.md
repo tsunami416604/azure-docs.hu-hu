@@ -34,7 +34,7 @@
 
 ## 採用 REST 的 Web 服務
 
-支援通訊協定: **僅 HTTPS**
+支援通訊協定 ︰ **僅 HTTPS**
 
 現有 REST 服務可以透過 Azure Marketplace 公開。 因為資料集一律會透過 OData 摘要公開給使用者，所以 Azure Marketplace 服務必須能夠將服務對應到 OData 服務。 為達成此目的，REST 端點必須透過 HTTP 參數公開所有參數。
 
@@ -46,13 +46,13 @@
 
 ## 採用 SOAP 的 Web 服務
 
-通訊協定: **僅 HTTPS**
+通訊協定 ︰ **僅 HTTPS**
 
 這類服務的需求與 REST 服務一節所述相同。 唯一差別是每一個透過 Azure Marketplace 所發出的要求，也可在要張貼到發行者服務的 XML 主體中提供參數。 這表示使用者在前端提供的 HTTP 參數，將會在對內容提供者 Web 服務發出要求時，轉譯成所要張貼之 XML 文件的 XML 元素。
 
 ## 採用 OData 的 Web 服務
 
-通訊協定: **僅 HTTPS**
+通訊協定 ︰ **僅 HTTPS**
 
 資料可以在 Azure Marketplace 以OData 服務公開。 系統會透過服務連接，並以 Azure Marketplace 服務的根目錄取代服務的根目錄，以確保後續的所有呼叫皆會透過 Azure Marketplace 服務的根目錄。
 
@@ -62,7 +62,8 @@ OData 服務不再只是需要仰賴後端的資料庫。 OData 支援各種儲�
 ## 後續步驟
 既然您檢閱必要元件，並完成必要的工作，您可以繼續進行建立您的資料服務提供項目中所述 [資料服務的發行指導](marketplace-publishing-data-service-creation.md)。
 
-或者，如果您想要檢閱每個發行階段的整個程序與個別的文件，請瀏覽文件 [快速入門: 如何將方案發行至 Azure Marketplace](marketplace-publishing-getting-started.md)。
+或者，如果您想要檢閱每個發行階段的整個程序與個別的文件，請瀏覽文件 [快速入門 ︰ 如何將方案發行至 Azure Marketplace](marketplace-publishing-getting-started.md)。
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md
+
 

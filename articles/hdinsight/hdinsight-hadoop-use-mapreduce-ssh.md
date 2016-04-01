@@ -25,7 +25,7 @@
 
 > [AZURE.NOTE] 如果您已熟悉使用以 Linux 為基礎的 Hadoop 伺服器，但剛接觸 HDInsight，請參閱 [Linux 為基礎的 HDInsight 秘訣](hdinsight-hadoop-linux-information.md)。
 
-##<a id="prereq"></a>先決條件
+##<a id="prereq"></a>必要條件
 
 若要完成本文中的步驟，您需要下列項目：
 
@@ -39,7 +39,7 @@
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
 
-**如果您提供憑證金鑰進行 SSH 驗證** 在建立 HDInsight 叢集時，您可能需要在用戶端系統上，指定私密金鑰的位置，例如:
+**如果您提供憑證金鑰進行 SSH 驗證** 在建立 HDInsight 叢集時，您可能需要在用戶端系統上，指定私密金鑰的位置，例如 ︰
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
@@ -55,7 +55,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 
 ##<a id="hadoop"></a>使用 Hadoop 命令
 
-1. 您已連接到 HDInsight 叢集之後，請使用下列 **Hadoop** 命令來啟動 MapReduce 工作:
+1. 您已連接到 HDInsight 叢集之後，請使用下列 **Hadoop** 命令來啟動 MapReduce 工作 ︰
 
         hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
@@ -96,7 +96,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 
 如您所見，Hadoop 命令提供簡單的方法，在 HDInsight 叢集中執行 MapReduce 工作，然後檢視工作輸出。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 MapReduce 工作的一般資訊：
 
@@ -107,4 +107,5 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 * [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 Pig 與 HDInsight 上的 Hadoop](hdinsight-use-pig.md)
+
 

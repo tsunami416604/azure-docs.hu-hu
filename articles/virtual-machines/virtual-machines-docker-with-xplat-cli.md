@@ -27,10 +27,10 @@
 + [如何搭配使用 Docker VM 擴充程式與 Azure]
 + [Linux 及 Windows 的虛擬機器擴充程式]
 + [Azure 容器及容器管理資源]
-+ [下一步]
++ [後續步驟]
 
 ##如何搭配使用 Docker VM 擴充程式與 Azure
-若要使用 Azure 的 Docker VM 延伸模組，您必須安裝的版本 [Azure 命令列介面](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) 以上 0.8.6 (撰寫本文的目前版本為 0.8.10)。 您可以在 Mac、Linux 及 Windows 上安裝 Azure CLI。
+若要使用 Azure 的 Docker VM 延伸模組，您必須安裝的版本 [Azure 命令列介面](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) 以上 0.8.6 （撰寫本文的目前版本為 0.8.10）。 您可以在 Mac、Linux 及 Windows 上安裝 Azure CLI。
 
 
 
@@ -77,23 +77,23 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 + *& l t; vm cloudservice 名稱 & gt;* 是 VM 將成為 Azure 中的 Docker 容器主機電腦的名稱
 
-+  *& l t; 使用者名稱 (& s) gt;* 是 VM 預設根目錄使用者的使用者名稱
++  *& l t; 使用者名稱 （& s) gt;* 是 VM 預設根目錄使用者的使用者名稱
 
 + *& l t; password & gt;* 是的密碼 *username* 帳戶符合 Azure 的複雜性標準。
 
-> [AZURE.NOTE] 目前，密碼必須至少 8 個字元，包含一個小寫字母和一個大寫字母、 數字和特殊字元，例如下列字元: `!@#$%^&+=`。 不，上一個句子中的句號並不是一個特殊字元。
+> [AZURE.NOTE] 目前，密碼必須至少 8 個字元，包含一個小寫字母和一個大寫字母、 數字和特殊字元，例如下列字元 ︰ `!@#$%^&+=`。 不，上一個句子中的句號並不是一個特殊字元。
 
 如果命令執行成功，根據您使用的精準引數和選項，您應該可以看到如下所示的畫面：
 
 ![](./media/virtual-machines-docker-with-xplat-cli/dockercreateresults.png)
 
-> [AZURE.NOTE] 建立虛擬機器可能需要幾分鐘的時間，但已佈建它之後 (狀態值是 `ReadyRole`)，Docker 精靈 (Docker 服務) 啟動，而您可以 Docker 容器主機連線。
+> [AZURE.NOTE] 建立虛擬機器可能需要幾分鐘的時間，但已佈建它之後 (狀態值是 `ReadyRole`)，Docker 精靈 （Docker 服務） 啟動，而您可以 Docker 容器主機連線。
 
 若要測試您已在 Azure 中建立的 Docker VM，請輸入
 
 `docker --tls -H tcp://<vm-name-you-used>.cloudapp.net:2376 info`
 
-其中 *& lt; vm-名稱-您的使用 (& s) gt;* 是您在呼叫中使用的虛擬機器名稱 `azure vm docker create`。 您應該可看到如下所示的內容，這代表您的 Docker 主機 VM 已在 Azure 中啟用和執行，並且正等待您的命令。 
+其中 *& lt; vm-名稱-您的使用 （& s) gt;* 是您在呼叫中使用的虛擬機器名稱 `azure vm docker create`。 您應該可看到如下所示的內容，這代表您的 Docker 主機 VM 已在 Azure 中啟用和執行，並且正等待您的命令。 
 
 現在您可以嘗試用您的 Docker 用戶端取得資訊以連線 (在某些 Docker 用戶端設定中，例如 Mac 的設定，您可能需要使用 `sudo`)：
 
@@ -154,7 +154,7 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 ## 後續步驟
 
-您已準備好前往 [Docker User Guide] 並使用 Docker VM。 若要建立新的入口網站啟用 Docker 的 VM，請參閱 [如何使用 Docker VM 擴充程式與入口網站]。
+您已準備好前往 [Docker User Guide] 並使用 Docker VM。 若要建立新的入口網站啟用 Docker 的 VM，請參閱 [How to use the Docker VM Extension with the Portal]。
 
 <!--Anchors-->
 [Subheading 1]: #subheading-1
@@ -180,3 +180,4 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 [Docker User Guide]: https://docs.docker.com/userguide/
  
+

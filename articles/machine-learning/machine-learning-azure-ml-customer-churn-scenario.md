@@ -38,7 +38,7 @@
 
 手機產品日新月異，是造成以最新手機款式為主的客戶流失模型迅速失效的一項因素。 此外，行動電話不只是通訊裝置，也是流行的代表 (例外 iPhone)，而這些社會性指標並不在一般的電信資料集之內。
 
-建構模型的最後結果就是，單純地排除客戶流失的已知原因，就不可能設計出一套完美的策略。 事實上，持續模型化策略，包括量化類別 (例如決策樹) 的傳統模型是 **強制**。
+建構模型的最後結果就是，單純地排除客戶流失的已知原因，就不可能設計出一套完美的策略。 事實上，持續模型化策略，包括量化類別 （例如決策樹） 的傳統模型是 **強制**。
 
 組織對客戶利用巨量資料集來進行巨量資料分析 (尤其是根據巨量資料的客戶流失偵測)，當做解決問題的有效手段。 您可以在＜建議＞中的 ETL 一節深入了解對付客戶流失問題的巨量資料作法。  
 
@@ -132,7 +132,7 @@
 ###評分的正確性和準確度
 一般而言，在機器學習中實作的正確性低於 SAS 大約 10-15% (曲線下面積或 AUC)。  
 
-不過，客戶流失中最重要的度量是分類誤判率: 亦即的前 N 位客戶的分類器所預測，哪些實際上並 **不** 流失，但到特殊待遇? 下圖比較所有模型的此項分類誤判率：  
+不過，客戶流失中最重要的度量是分類誤判率 ︰ 亦即的前 N 位客戶的分類器所預測，哪些實際上並 **不** 流失，但到特殊待遇？ 下圖比較所有模型的此項分類誤判率：  
 
 ![][7]
 
@@ -185,7 +185,7 @@ AUC 通常用來判斷不同演算法 (或不同系統) 是否有用處，因為
 在電信業中，已出現許多作法來分析客戶流失，包括：  
 
 -   導出四個基本類別的度量：
-    -   **實體 (例如訂閱)**。 提供訂閱及/或客戶 (客源流失主題的對象) 的基本資訊。
+    -   **實體 （例如訂閱）**。 提供訂閱及/或客戶 (客源流失主題的對象) 的基本資訊。
     -   **活動**。 取得與實體相關的所有可能使用資訊，例如登入數目。
     -   **客戶支援**。 從客戶支援記錄中取得資訊，指出訂閱是否有問題或曾經與客戶支援的互動。
     -   **競爭性和商務資料**。 取得與客戶有關的任何可能資訊 (例如可能無法取得或難以追蹤)。
@@ -216,15 +216,15 @@ Azure Machine Learning 中另一項吸引人的功能是可以將自訂模組加
 [傳送意見反應](mailto:sqlfback@microsoft.com)。
  
 ##參考
-[1] 預測分析: 超出預測，W.McKnight，資訊管理、 7 月/年 8 月 2011 年第 18-20。  
+[1] 預測分析 ︰ 超出預測，W.McKnight，資訊管理、 7 月/年 8 月 2011 年第 18-20。  
 
 [2] [正確性和準確度](http://en.wikipedia.org/wiki/Accuracy_and_precision) 維基百科上
 
-[3] [CRISP-DM 1.0: 逐步資料採礦指南](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0 ︰ 逐步資料採礦指南](http://www.the-modeling-agency.com/crisp-dm.pdf)   
 
 [4] 巨量資料行銷  
 
-[5] [巨量資料行銷: 更有效地吸引您的客戶和促進價值](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[5] [巨量資料行銷 ︰ 更有效地吸引您的客戶和促進價值](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
  
 ##附錄
 
@@ -243,4 +243,5 @@ Azure Machine Learning 中另一項吸引人的功能是可以將自訂模組加
 [8]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-8.png
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
+
 

@@ -37,7 +37,7 @@ Azure SQL 資料庫同盟功能即將於 2015 年 9 月的 Web/企業版中淘�
 ## 從同盟根建立分區對應管理員
 移轉同盟應用程式的第一個步驟是將同盟根資料庫的中繼資料移轉到分區對應管理員的建構。 
 
-![複製同盟根，分區對應管理員][] 1
+![將同盟根複製到分區對應管理員][1]
  
 在測試環境中從現有的同盟應用程式開始。
  
@@ -45,7 +45,7 @@ Azure SQL 資料庫同盟功能即將於 2015 年 9 月的 Web/企業版中淘�
 
 將同盟根資料庫複製到分區對應管理員就是複製和轉譯中繼資料。 不會更改同盟根上的中繼資料。 請注意，使用同盟移轉公用程式來複製同盟根是時間點作業，對同盟根或分區對應所做的任何變更，將不會反映在其他各自的資料存放區。 如果在測試新的 API 時變更同盟根，同盟移轉公用程式可用來整理分區對應以呈現目前的狀態。 
 
-![移轉現有的應用程式以使用彈性資料庫工具 Api][] 2
+![移轉現有的應用程式以使用彈性資料庫工具 API][2]
 
 ## 修改現有的應用程式 
 
@@ -56,7 +56,7 @@ Azure SQL 資料庫同盟功能即將於 2015 年 9 月的 Web/企業版中淘�
 
 #### 變更 1：具現化分區對應管理員物件： 
 
-不同於同盟，彈性資料庫工具 Api 互動分區對應管理員，透過 **ShardMapManager** 類別。 具現化 **ShardMapManager** 物件和分區對應可以完成，如下所示:
+不同於同盟，彈性資料庫工具 Api 互動分區對應管理員，透過 **ShardMapManager** 類別。 具現化 **ShardMapManager** 物件和分區對應可以完成，如下所示 ︰
      
     //Instantiate ShardMapManger Object 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(
@@ -90,7 +90,7 @@ Azure SQL 資料庫同盟功能即將於 2015 年 9 月的 Web/企業版中淘�
 
 ## 切換移出現有的同盟成員 
 
-![切換出分區的同盟成員][] 3
+![切換移出分區的同盟成員][3]
 
 修改應用程式後加入彈性資料庫工具 Api，在移轉同盟應用程式的最後一個步驟是 **SWITCH OUT** 同盟成員 (如需詳細資訊，請參閱 MSDN 參考的 [ALTER FEDERATION (Azure SQL Database](http://msdn.microsoft.com/library/dn269988(v=sql.120).aspx))。 發出的最終結果 **SWITCH OUT** 對於特定同盟成員就是移除所有同盟建構和呈現同盟成員一般 Azure SQL 資料庫，和其他任何 Azure SQL 資料庫採取相同的中繼資料。  
 
@@ -149,4 +149,5 @@ Azure SQL 資料庫同盟功能即將於 2015 年 9 月的 Web/企業版中淘�
 [2]: ./media/sql-database-elastic-scale-federation-migration/migrate-2.png
 [3]: ./media/sql-database-elastic-scale-federation-migration/migrate-3.png
  
+
 

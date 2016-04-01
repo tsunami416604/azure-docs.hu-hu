@@ -39,7 +39,7 @@
 2. 雲端服務之 ServiceConfiguration.cscfg 檔案未明確指定 osFamily 的值。 在本案例中，系統目前使用預設值 "1" 。
 3. Azure 傳統入口網站列出您的客體作業系統系列值為「Windows Server 2008」。
 
-若要尋找每個雲端服務正在執行的 OS 系列，您可以執行下列指令碼在 Azure PowerShell 中，但您必須 [設定 Azure PowerShell](../install-configure-powershell.md) 第一次。 如需有關指令碼的詳細資訊，請參閱 [Azure 客體作業系統系列 1 生命週期結束: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。 
+若要尋找每個雲端服務正在執行的 OS 系列，您可以執行下列指令碼在 Azure PowerShell 中，但您必須 [設定 Azure PowerShell](../install-configure-powershell.md) 第一次。 如需有關指令碼的詳細資訊，請參閱 [Azure 客體作業系統系列 1 生命週期結束 ︰ 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。 
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -57,7 +57,7 @@ foreach($subscription in Get-AzureSubscription) {
 
 我們建議您將雲端服務角色移轉到任一個受支援的客體作業系統系列：
 
-**客體作業系統系列 4.x** -Windows Server 2012 R2 *(建議選項)*
+**客體作業系統系列 4.x** -Windows Server 2012 R2 *（建議選項）*
 
 1. 請確認您的應用程式使用 SDK 2.1 或更新版本，搭配 .NET Framework 4.0、4.5 或 4.5.1。
 2. 在 ServiceConfiguration.cscfg 檔案中將 osFamily 屬性設定為 "4" 的，然後重新部署雲端服務。
@@ -80,3 +80,4 @@ foreach($subscription in Get-AzureSubscription) {
 
 ## 後續步驟
 檢閱最新 [客體作業系統版次](cloud-services-guestos-update-matrix.md)。
+

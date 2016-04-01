@@ -29,13 +29,13 @@
 
 ##必要條件
 
-本主題是根據您在建立應用程式 [開始使用通知中心]。 在開始本教學課程之前, 您必須已完成 [開始使用通知中心]。
+本主題會在您建立的應用程式以 [Get started with Notification Hubs]。 在開始本教學課程之前, 您必須已完成 [Get started with Notification Hubs]。
 
 ##在應用程式中新增類別選項
 
 第一個步驟是在您的現有主頁面上新增 UI 元素，以便使用者選取要註冊的類別。 使用者所選取的類別會儲存在裝置上。 啟動應用程式時，您的通知中心內會建立以所選取類別作為標籤的裝置註冊。
 
-1. 開啟 MainPage.xaml 專案檔案，然後取代 **方格** 名為元素 `TitlePanel` 和 `ContentPanel` 為下列程式碼:
+1. 開啟 MainPage.xaml 專案檔案，然後取代 **方格** 名為元素 `TitlePanel` 和 `ContentPanel` 為下列程式碼 ︰
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="Breaking News" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
@@ -62,14 +62,14 @@
             <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
         </Grid>
 
-2. 在專案中，建立新的類別，名為 **通知**, ，新增 **公用** 修飾詞新增至類別定義，然後新增下列 **使用** 陳述式，以新的程式碼檔案:
+2. 在專案中，建立新的類別，名為 **通知**, ，新增 **公用** 修飾詞新增至類別定義，然後新增下列 **使用** 陳述式，以新的程式碼檔案 ︰
 
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
         using System.IO.IsolatedStorage;
         using System.Windows;
 
-3. 下列程式碼複製到新 **通知** 類別:
+3. 下列程式碼複製到新 **通知** 類別 ︰
 
         private NotificationHub hub;
 
@@ -229,7 +229,7 @@
 > [AZURE.NOTE] 因為指派的 Microsoft 推播通知服務 (MPNS) 的通道 URI 可以隨時變更，您應該註冊經常以避免通知失敗的通知。 此範例會在應用程式每次啟動時註冊通知。 若是經常執行 (一天多次) 的應用程式，如果距離上次註冊的時間不到一天，則您可能可以略過註冊以保留頻寬。
 
 
-1. 開啟 App.xaml.cs 檔案，並新增 **非同步** 修飾詞新增至 **Application_Launching** 方法，並取代通知中心註冊程式碼中加入您 [開始使用通知中心] 取代為下列程式碼:
+1. 開啟 App.xaml.cs 檔案，並新增 **非同步** 修飾詞新增至 **Application_Launching** 方法，並取代通知中心註冊程式碼中加入您 [Get started with Notification Hubs] 為下列程式碼 ︰
 
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
@@ -244,7 +244,7 @@
 
     這會確保應用程式每次啟動時都會從本機儲存體擷取類別，並要求這些類別的註冊。
 
-2. 在 MainPage.xaml.cs 專案檔案中，新增下列程式碼實作 **OnNavigatedTo** 方法:
+2. 在 MainPage.xaml.cs 專案檔案中，新增下列程式碼實作 **OnNavigatedTo** 方法 ︰
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -288,15 +288,15 @@
 
 <!--##Next steps
 
-在本教學課程中，我們了解到如何按類別廣播即時新聞。 請考慮完成下列其中一個強調其他進階通知中心案例的教學課程：
+In this tutorial we learned how to broadcast breaking news by category. Consider completing one of the following tutorials that highlight other advanced Notification Hubs scenarios:
 
-+ [使用通知中心廣播已當地語系化的即時新聞]
++ [Use Notification Hubs to broadcast localized breaking news]
 
-    了解如何擴充即時新聞應用程式，以啟用傳送已當地語系化的通知。
+    Learn how to expand the breaking news app to enable sending localized notifications.
 
-+ [通知使用通知中心的使用者]
++ [Notify users with Notification Hubs]
 
-    了解如何推播通知給特定的經驗證使用者。 在僅傳送通知給特定使用者的情況下，這是很好的解決方案。
+    Learn how to push notifications to specific authenticated users. This is a good solution for sending notifications only to specific users.
 -->
 
 <!-- Anchors. -->
@@ -320,5 +320,6 @@
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Phone]: ??
+
 
 

@@ -40,7 +40,7 @@ SQL Server AlwaysOn 可用性群組現在可以與 ILB 搭配執行。 可用性
 
 ### 步驟 1.
 
-在下列範例中，我們將設定包含名稱為 ' 子網路 1' 的子網路的虛擬網路:
+在下列範例中，我們將設定包含名稱為 ' 子網路 1' 的子網路的虛擬網路 ︰
 
     Add-AzureInternalLoadBalancer -InternalLoadBalancerName ILB_SQL_AO -SubnetName Subnet-1 -ServiceName SqlSvc
 
@@ -55,7 +55,7 @@ SQL Server AlwaysOn 可用性群組現在可以與 ILB 搭配執行。 可用性
 
 上述範例中，您有 2 個分別稱為 "sqlsvc1" 和 "sqlsvc2" 的 VM 正在雲端服務 "Sqlsvc" 中執行。 在使用 "DirectServerReturn" 參數建立 ILB 之後，您就可以將負載平衡端點加入 ILB，讓 SQL 可以設定可用性群組的接聽程式。
 
-您可以找到詳細資訊，請建立 SQL AlwaysOn 中 [教學課程: Azure 中 AlwaysOn 可用性群組](https://msdn.microsoft.com/library/dn249504.aspx) 或 [使用入口網站組件庫](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)。
+您可以找到詳細資訊，請建立 SQL AlwaysOn 中 [教學課程 ︰ Azure 中 AlwaysOn 可用性群組](https://msdn.microsoft.com/library/dn249504.aspx) 或 [使用入口網站組件庫](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)。
 
 
 ## 另請參閱
@@ -68,3 +68,4 @@ SQL Server AlwaysOn 可用性群組現在可以與 ILB 搭配執行。 可用性
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
  
+

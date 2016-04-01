@@ -25,7 +25,7 @@ Service Fabric 讓您能決定您的服務與使用者以及服務彼此之間�
 
 ASP.NET Web API 是在 .NET Framework 建置 HTTP API 的常用且功能強大的架構。 前往 [www.asp.net/webapi](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) 若要深入了解 Web API 如果您不熟悉它。
 
-Service Fabric 中的 Web API 是您熟知而且喜愛的相同 ASP.NET Web API。 不同之處在於如何您 *主機* Web API 應用程式 (提示: 您不使用 IIS)。 若要進一步了解差異，讓我們將它分成兩個部分：
+Service Fabric 中的 Web API 是您熟知而且喜愛的相同 ASP.NET Web API。 不同之處在於如何您 *主機* Web API 應用程式 (提示 ︰ 您不使用 IIS)。 若要進一步了解差異，讓我們將它分成兩個部分：
 
  1. Web API 應用程式 (您的控制器、模型等)
  2. 主機 (Web 伺服器，通常是 IIS)
@@ -173,7 +173,7 @@ namespace WebApiService
 
 ## 服務裝載
 
-Service Fabric 中，您的服務執行 *服務主機處理程序* 的可執行您的服務程式碼。 使用可靠服務 API 撰寫服務時，以及其實您在 .NET 中的 Service Fabric 上撰寫服務的大多數情況下，您的服務專案會編譯為 .EXE，其註冊您的服務類型並執行程式碼。 事實上，如果您開啟 **Program.cs** 在無狀態服務專案，您應該會看到:
+Service Fabric 中，您的服務執行 *服務主機處理程序* 的可執行您的服務程式碼。 使用可靠服務 API 撰寫服務時，以及其實您在 .NET 中的 Service Fabric 上撰寫服務的大多數情況下，您的服務專案會編譯為 .EXE，其註冊您的服務類型並執行程式碼。 事實上，如果您開啟 **Program.cs** 在無狀態服務專案，您應該會看到 ︰
 
 ```csharp
 
@@ -265,9 +265,9 @@ namespace WebApi
 
 ICommunicationListener 介面提供三個方法來管理服務的通訊接聽程式：
 
- + **OpenAsync**: 開始接聽要求。
- + **CloseAsync**: 停止接聽要求，完成任何進行中的要求，並正常關機。
- + **中止**: 取消所有項目，並立即停止。
+ + **OpenAsync**︰ 開始接聽要求。
+ + **CloseAsync**︰ 停止接聽要求，完成任何進行中的要求，並正常關機。
+ + **中止**︰ 取消所有項目，並立即停止。
 
 若要開始，加入 URL 路徑前置詞的私用類別成員和 **啟動** 稍早建立的類別。 這些會透過建構函式初始化，並在稍後設定接聽 URL 時使用。 另外也加入私用類別成員，以儲存分別在初始化期間和稍後啟動伺服器時建立的接聽位址和伺服器控制代碼。
 
@@ -399,7 +399,7 @@ private void StopWebServer()
 
 ## 啟動 Web 伺服器
 
-您現在可以開始建立並傳回 OwinCommunicationListener 的執行個體以啟動 Web 伺服器。 回到 Service 類別 (Service.cs)，覆寫 **CreateServiceInstanceListeners()** 方法:
+您現在可以開始建立並傳回 OwinCommunicationListener 的執行個體以啟動 Web 伺服器。 回到 Service 類別 (Service.cs)，覆寫 **CreateServiceInstanceListeners()** 方法 ︰
 
 ```csharp
 
@@ -413,7 +413,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ```
 
-這正是 Web API *應用程式* 和 OWIN *主機* 最後相會: *主機* (**OwinCommunicationListener**) 指定的執行個體 *應用程式* (透過 Web API **啟動**)，且 Service Fabric 會管理其生命週期。 通常可以針對任何通訊堆疊運用相同的模式。
+這正是 Web API *應用程式* 和 OWIN *主機* 最後相會 ︰ *主機* (**OwinCommunicationListener**) 指定的執行個體 *應用程式* (透過 Web API **啟動**)，且 Service Fabric 會管理其生命週期。 通常可以針對任何通訊堆疊運用相同的模式。
 
 ## 總整理
 
@@ -582,4 +582,5 @@ New-ServiceFabricService -ApplicationName "fabric:/WebServiceApplication" -Servi
 ## 後續步驟
 
 [在 Visual Studio 中偵錯 Service Fabric 應用程式](service-fabric-debugging-your-application.md)
+
 

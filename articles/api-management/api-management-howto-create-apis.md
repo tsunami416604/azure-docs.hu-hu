@@ -26,7 +26,7 @@ API 管理中的 API 代表可供用戶端應用程式叫用的一組作業。 �
 
 API 是在發行者入口網站中建立和設定。 若要存取發行者入口網站，按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 >如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
@@ -44,13 +44,13 @@ API 是在發行者入口網站中建立和設定。 若要存取發行者入口
 -   **Web 服務 URL** 參考實作 API 的 HTTP 服務。 API 管理則將要求轉送至此位址。
 -   **Web API URL 尾碼** 附加至 API 管理服務的基底 URL。 基礎 URL 是 API 管理服務主控的所有 API 所共有。 API 管理依尾碼來區分 API，因此，特定發行者的每一個 API 必須有唯一的尾碼。
 -   **Web API URL 配置** 決定哪些通訊協定可以用來存取 API。 預設會指定 HTTPs。
--   若要選擇性地將這個新的 API 加入產品中，按一下 [ **產品 (選擇性)** 下拉式清單並選擇產品。 可以重複此步驟多次來將 API 加入多個產品。
+-   若要選擇性地將這個新的 API 加入產品中，按一下 [ **產品 （選擇性）** 下拉式清單並選擇產品。 可以重複此步驟多次來將 API 加入多個產品。
 
 一旦設定所需的值，按一下 **儲存**。 建立新 API 之後，API 的摘要頁面隨即會顯示在發行者入口網站中。
 
 ![API summary][api-management-api-summary]
 
-## <a name="configure-api-settings"> </a>設定 API 的設定
+## <a name="configure-api-settings"> </a>設定 API 設定
 
 您可以使用 **設定** ] 索引標籤來驗證和編輯 API 的組態。 **Web API 名稱**, ，**Web 服務 URL**, ，和 **Web API URL 尾碼** 最初設定時，API 會建立，而且可以修改這裡。 **描述** 提供選擇性描述，和 **Web API URL 配置** 決定哪些通訊協定可以用來存取 API。
 
@@ -96,3 +96,4 @@ API 是在發行者入口網站中建立和設定。 若要存取發行者入口
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [How to secure back-end services using client certificate authentication in Azure API Management]: api-management-howto-mutual-certificates.md
 [How to authorize developer accounts using OAuth 2.0 in Azure API Management]: api-management-howto-oauth2.md
+

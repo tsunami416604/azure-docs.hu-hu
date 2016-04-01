@@ -29,7 +29,7 @@
 
 因為在這個時間點，您不能讓配備單一 NIC 的 VM 與配備多個 NIC 的 VM 位在同一個資源群組中，您要在某個資源群組中實作後端伺服器，並且將所有其他的元件放置在另一個安全性群組中。 下列步驟使用的資源群組名稱 *IaaSStory* 主要資源群組，以及 *IaaSStory 後端* 的後端伺服器。
 
-## 先決條件
+## 必要條件
 
 您必須為此案例部署含有所有必要資源的主要資源群組，然後才可以部署後端伺服器。 若要部署這些資源，請遵循下列步驟。
 
@@ -213,7 +213,7 @@
 
 > [AZURE.IMPORTANT] 請確定您遵循 [先決條件](#Pre-requisites) 前下列指示的步驟。
 
-公用儲存機制中可用的範例範本會使用一個包含預設值的參數檔案，這些預設值可用來產生上述案例。 若要部署使用按一下要部署此範本，請遵循 [此連結](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC), ，右邊的 **後端資源群組 (請參閱文件)** 按一下 **部署至 Azure**, 、 取代預設參數值，如有必要，並依照入口網站中的指示。
+公用儲存機制中可用的範例範本會使用一個包含預設值的參數檔案，這些預設值可用來產生上述案例。 若要部署使用按一下要部署此範本，請遵循 [此連結](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC), ，右邊的 **後端資源群組 （請參閱文件）** 按一下 **部署至 Azure**, 、 取代預設參數值，如有必要，並依照入口網站中的指示。
 
 下圖顯示部署之後，新資源群組的內容。
 
@@ -291,3 +291,4 @@
         data:    Tags: null
         data:
         info:    group create command OK
+

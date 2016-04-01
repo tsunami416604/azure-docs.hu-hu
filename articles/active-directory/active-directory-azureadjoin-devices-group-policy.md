@@ -60,8 +60,8 @@
 
 Azure AD Connect 可讓內部部署電腦佈建為雲端中的裝置物件。 若要部署 Azure AD Connect，請參閱「使用 Azure AD Connect 啟用目錄的混合式管理」。
 
- - 如果您依照 [Azure AD connect 的自訂安裝](active-directory-aadconnect-get-started-custom.md) (不是快速安裝)，您必須遵循的程序， **在內部部署 Active Directory 中建立服務連線點 (SCP)**, ，以下所述。
- - 如果您擁有與之前 (例如，如果您已部署 Active Directory 同盟服務 (AD FS) 之前)，安裝 Azure AD Connect 的 Azure AD 的同盟的設定必須依照 **將 AD FS 宣告規則** 下列程序。
+ - 如果您依照 [Azure AD connect 的自訂安裝](active-directory-aadconnect-get-started-custom.md) （不是快速安裝），您必須遵循的程序， **在內部部署 Active Directory 中建立服務連線點 (SCP)**, ，以下所述。
+ - 如果您擁有與之前 （例如，如果您已部署 Active Directory 同盟服務 (AD FS) 之前），安裝 Azure AD Connect 的 Azure AD 的同盟的設定必須依照 **將 AD FS 宣告規則** 下列程序。
 
 ### 在內部部署 Active Directory 中建立服務連接點 (SCP)
 
@@ -137,9 +137,9 @@ Windows 10 電腦將會使用 Windows 整合式驗證，對 AD FS 所裝載的�
  - 加入網域而會向 Azure AD 自動註冊的 Windows 10 電腦所屬的特定安全性群組。
  
 >[AZURE.NOTE]
-此群組原則範本在 Windows 10 中已重新命名。 如果您從 Windows 10 電腦執行群組原則工具，原則會顯示為: <br>
+此群組原則範本在 Windows 10 中已重新命名。 如果您從 Windows 10 電腦執行群組原則工具，原則會顯示為 ︰ <br>
 **為裝置註冊加入網域的電腦**
-然後，原則將會位於下列位置:<br>
+然後，原則將會位於下列位置 ︰<br>
 ***電腦設定/原則/系統管理範本 /windows 元件/裝置註冊***
 
  
@@ -149,4 +149,5 @@ Windows 10 電腦將會使用 Windows 整合式驗證，對 AD FS 所裝載的�
 * [了解適用於 Azure AD Join 的使用案例](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [將已加入網域的裝置連接到 Azure AD 以體驗 Windows 10](active-directory-azureadjoin-devices-group-policy.md)
 * [設定 Azure AD Join](active-directory-azureadjoin-setup.md)
+
 

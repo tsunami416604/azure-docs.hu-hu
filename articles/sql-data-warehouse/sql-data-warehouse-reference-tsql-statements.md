@@ -87,7 +87,7 @@
 
 ## 安全性陳述式
 
-- 權限: [授與](https://msdn.microsoft.com/library/ms187965.aspx), ，[拒絕](https://msdn.microsoft.com/library/ms188338.aspx), ，[撤銷](https://msdn.microsoft.com/library/ms187728.aspx)
+- 權限 ︰ [授與](https://msdn.microsoft.com/library/ms187965.aspx), ，[拒絕](https://msdn.microsoft.com/library/ms188338.aspx), ，[撤銷](https://msdn.microsoft.com/library/ms187728.aspx)
 - [ALTER AUTHORIZATION](https://msdn.microsoft.com/library/ms187359.aspx)
 - [ALTER CERTIFICATE](https://msdn.microsoft.com/library/ms189511.aspx)
 - [ALTER DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630389.aspx)
@@ -116,7 +116,7 @@
 
 
 ## 後續步驟
-如需 TSQL 範例，請參閱 [SQL 資料倉儲開發概觀] []。
+如需 TSQL 範例，請參閱 [SQL 資料倉儲開發概觀][]。
 
 <!--Image references-->
 
@@ -127,4 +127,5 @@
 
 
 <!--Other Web references-->
+
 

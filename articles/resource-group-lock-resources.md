@@ -42,12 +42,12 @@
 
 當您在父範圍套用鎖定時，所有子系資源都會都繼承相同的鎖定。
 
-如果您將多個鎖定套用至資源，最嚴格的鎖定優先順序較高。 例如，如果您套用 **ReadOnly** (例如資源群組) 的父層級和 **CanNotDelete** 該群組內的資源，從父更嚴格的鎖定 (唯讀) 的優先順序。
+如果您將多個鎖定套用至資源，最嚴格的鎖定優先順序較高。 例如，如果您套用 **ReadOnly** （例如資源群組） 的父層級和 **CanNotDelete** 該群組內的資源，從父更嚴格的鎖定 （唯讀） 的優先順序。
 
 ## 在範本中建立鎖定
 
 以下範例顯示的範本會在儲存體帳戶建立鎖定。 要套用鎖定的儲存體帳戶提供做為參數，並使用 
-搭配 concat () 函式。  結果是在此情況下附加 'Microsoft.Authorization'，然後是名稱的鎖定的資源名稱 **myLock**。
+搭配 concat （） 函式。  結果是在此情況下附加 'Microsoft.Authorization'，然後是名稱的鎖定的資源名稱 **myLock**。
 
 必須依資源型別提供型別。 針對儲存體，此型別為 "Microsoft.Storage/storageaccounts/providers/locks"。
 
@@ -113,4 +113,5 @@ Azure PowerShell 提供其他命令的使用中的鎖定，例如 **組 AzureRmR
 - 若要深入了解以邏輯方式組織資源，請參閱 [使用標記來組織您的資源](resource-group-using-tags.md)
 - 若要變更資源位於哪一個資源群組，請參閱 [將資源移動到新的資源群組](resource-group-move-resources.md)
 - 您可以使用自訂原則，在訂用帳戶內套用限制和慣例。 如需詳細資訊，請參閱 [的使用原則來管理資源，並控制存取](resource-manager-policy.md)。
+
 

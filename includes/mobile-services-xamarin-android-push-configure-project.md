@@ -5,7 +5,7 @@
 
         using Gcm.Client;
 
-3. 在 **ToDoActivity** 類別中，新增下列新程式碼: 
+3. 在 **ToDoActivity** 類別中，新增下列新程式碼 ︰ 
 
         // Create a new instance field for this activity.
         static ToDoActivity instance = new ToDoActivity();
@@ -29,7 +29,7 @@
 
     這樣做可讓您從推播處理常式服務處理程序存取行動服務用戶端執行個體。
 
-4.  加入下列程式碼以 **OnCreate** 方法之後， **MobileServiceClient** 建立:
+4.  加入下列程式碼以 **OnCreate** 方法之後， **MobileServiceClient** 建立 ︰
 
         // Set the current instance of TodoActivity.
         instance = this;
@@ -42,3 +42,4 @@
         GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
 
 您 **ToDoActivity** 現在已準備好供新增推播通知。
+

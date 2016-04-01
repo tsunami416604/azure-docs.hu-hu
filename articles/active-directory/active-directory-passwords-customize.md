@@ -17,7 +17,7 @@
     ms.author="asteen"/>
 
 # 自訂密碼管理以符合您的組織的需求
-為了給予您的使用者最佳的體驗，我們建議您探索和試驗您可以使用的所有密碼管理組態選項。 事實上，您可以開始探索立即移至 [設定] 索引標籤的 **Active Directory 延伸模組** 中 [Azure 管理入口網站](https://manage.windowsazure.com)。 本主題將逐步引導您了解所有您可以從系統管理員身分進行的不同密碼管理自訂 **設定** ] 索引標籤中目錄的 [Azure 管理入口網站](https://manage.windowsazure.com), ，包括:
+為了給予您的使用者最佳的體驗，我們建議您探索和試驗您可以使用的所有密碼管理組態選項。 事實上，您可以開始探索立即移至 [設定] 索引標籤的 **Active Directory 延伸模組** 中 [Azure 管理入口網站](https://manage.windowsazure.com)。 本主題將逐步引導您了解所有您可以從系統管理員身分進行的不同密碼管理自訂 **設定** ] 索引標籤中目錄的 [Azure 管理入口網站](https://manage.windowsazure.com), ，包括 ︰
 
 | 主題 |  |
 | --------- | --------- |
@@ -49,12 +49,12 @@
               </td>
               <td>
                 <p>
-                  <strong>說明</strong>
+                  <strong>描述</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>影響？</strong>
+                  <strong>會影響嗎？</strong>
                 </p>
               </td>
             </tr>
@@ -69,20 +69,20 @@
               </td>
               <td>
                 <p>
-                  <strong>「連絡您的系統管理員」電子郵件：</strong>
+                  <strong>「 連絡您的系統管理員 」 電子郵件 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
-                                                Determines the from address friendly name, e.g. “Microsoft on behalf of <strong>Wingtip Toys</strong>」的作法指南。<br><br></li>
+                                                Determines the from address friendly name, e.g. “Microsoft on behalf of <strong>Wingtip Toys</strong>」<br><br></li>
                   <li class="unordered">
                                                 Determines the subject name of the email, e.g. “<strong>Wingtip Toys</strong> 帳戶電子郵件驗證碼 」<br><br></li>
                 </ul>
                 <p>
-                  <strong>密碼重設電子郵件：</strong>
+                  <strong>密碼重設電子郵件 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
-                                                Determines the from address friendly name, e.g. “Microsoft on behalf of <strong>Wingtip Toys</strong>」的作法指南。<br><br></li>
+                                                Determines the from address friendly name, e.g. “Microsoft on behalf of <strong>Wingtip Toys</strong>」<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -130,7 +130,7 @@
 ## 密碼管理行為
 下表描述每個控制項如何影響使用者註冊密碼重設及重設其密碼的體驗。  您可以設定這些選項 **使用者密碼重設原則** 您的目錄區段 **設定** 索引標籤中 [Azure 管理入口網站](https://manage.windowsazure.com)。
 
-> [AZURE.NOTE] 您使用的系統管理員帳戶必須擁有才能看到這些原則控制項所指派的 AAD Premium 授權。<br><br>這些原則控制項只適用於使用者重設其密碼，不適用於系統管理員。  **系統管理員擁有備用電子郵件和/或 microsoft，且無法變更為指定的行動電話的預設原則。**
+> [AZURE.NOTE] 您使用的系統管理員帳戶必須具有才能看到這些原則控制項所指派的 AAD Premium 授權。<br><br>這些原則控制項只適用於使用者重設其密碼，不適用於系統管理員。  **系統管理員擁有備用電子郵件和/或行動電話的預設原則，由 Microsoft 為其指定且無法變更。**
 
 <table>
             <tbody><tr>
@@ -141,12 +141,12 @@
               </td>
               <td>
                 <p>
-                  <strong>說明</strong>
+                  <strong>描述</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>影響？</strong>
+                  <strong>會影響嗎？</strong>
                 </p>
               </td>
             </tr>
@@ -161,26 +161,26 @@
               </td>
               <td>
                 <p>
-                  <strong>註冊入口網站：</strong>
+                  <strong>註冊入口網站 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
                                                 If set to no, no users can register their own challenge data.<br><br></li>
                   <li class="unordered">
-                                                If set to yes, any end user in the directory can register challenge data by going to the registration portal at <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a>.<br><br></li>
+                                                If set to yes, any end user in the directory can register challenge data by going to the registration portal at <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a>。<br><br></li>
                   <li class="unordered">
-                    <strong>注意：</strong> 使用者必須擁有 Azure AD Premium 或 Basic 授權指派才可以註冊密碼重設。<br><br></li>
+                    <strong>注意 ︰</strong> 使用者必須擁有 Azure AD Premium 或 Basic 授權指派才可以註冊密碼重設。<br><br></li>
                 </ul>
                 <p>
-                  <strong>密碼重設入口網站：</strong>
+                  <strong>密碼重設入口網站 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
                                                 If set to no, users see a message saying the must contact their admin to reset their password.<br><br></li>
                   <li class="unordered">
-                                                If set to yes, users are able to reset their passwords automatically by going to  <a href="http://passwordreset.microsoftonline.com">http://passwordreset.microsoftonline.com</a>或按一下 <strong>無法存取您的帳戶</strong> 任何組織識別碼登入頁面上的連結。<br><br></li>
+                                                If set to yes, users are able to reset their passwords automatically by going to  <a href="http://passwordreset.microsoftonline.com">http://passwordreset.microsoftonline.com</a>, ，或按一下 <strong>無法存取您的帳戶</strong> 任何組織識別碼登入頁面的連結。<br><br></li>
                   <li class="unordered">
-                    <strong>注意：</strong> 使用者必須擁有 Azure AD Premium 或 Basic 授權指派才可以重設其密碼。<br><br></li>
+                    <strong>注意 ︰</strong> 使用者必須擁有 Azure AD Premium 或 Basic 授權指派才可以重設其密碼。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -191,26 +191,26 @@
                 </div>
               </td>
               <td>
-                <p>決定是否只允許特定群組使用者使用密碼重設。 (只有時才能看見 <strong>啟用密碼重設的使用者</strong> 設定為 <strong>yes</strong>).</p>
+                <p>決定是否只允許特定群組使用者使用密碼重設。 (只顯示如果 <strong>使用者啟用密碼重設</strong> 設為 <strong>是</strong>)。</p>
               </td>
               <td>
                 <p>
-                  <strong>註冊入口網站：</strong>
+                  <strong>註冊入口網站 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
                                                 If set to no, then all end users in your directory can register for password reset at <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a><br><br></li>
                   <li class="unordered">
-                                                If set to yes, then only end users specified in the <strong>可以執行密碼重設的群組</strong> 控制項可以註冊密碼重設  <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a><br><br></li>
+                                                If set to yes, then only end users specified in the <strong>群組可以執行密碼重設</strong> 控制項可以註冊密碼重設 ︰  <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a><br><br></li>
                 </ul>
                 <p>
-                  <strong>密碼重設入口網站：</strong>
+                  <strong>密碼重設入口網站 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
                                                 If set to no, then all end users in your directory can reset their passwords.<br><br></li>
                   <li class="unordered">
-                                                If set to yes, then only end users specified in the <strong>可以執行密碼重設的群組</strong> 控制項可以重設其密碼。<br><br></li>
+                                                If set to yes, then only end users specified in the <strong>群組可以執行密碼重設</strong> 控制項可以重設其密碼。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -790,12 +790,12 @@
               </td>
               <td>
                 <p>
-                  <strong>說明</strong>
+                  <strong>描述</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>影響？</strong>
+                  <strong>會影響嗎？</strong>
                 </p>
               </td>
             </tr>
@@ -810,7 +810,7 @@
               </td>
               <td>
                 <p>
-                  <strong>密碼重設入口網站：</strong>
+                  <strong>密碼重設入口網站 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
@@ -821,7 +821,7 @@
                                                 This notification is sent via an email to the primary email addresses of all other global admins in the organization.<br><br></li>
                 </ul>
                 <p>
-                  <strong>範例：</strong>
+                  <strong>範例 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
@@ -840,7 +840,7 @@
               </td>
               <td>
                 <p>
-                  <strong>密碼重設入口網站：</strong>
+                  <strong>密碼重設入口網站 ︰</strong>
                 </p>
                 <ul>
                   <li class="unordered">
@@ -873,3 +873,4 @@
 
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
+

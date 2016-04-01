@@ -125,3 +125,4 @@ Blob 可包含任意數目的快照集。 系統會保存快照集，直到您�
 
 ![Azure 儲存體資源](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
+

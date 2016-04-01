@@ -211,7 +211,7 @@
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
-類型 | Type 屬性必須設定為: **OnPremisesOracle** | 是
+類型 | Type 屬性必須設定為 ︰ **OnPremisesOracle** | 是
 connectionString | 針對 connectionString 屬性指定連接到 Oracle 資料庫執行個體所需的資訊。 | 是 
 gatewayName | 將用來連接到內部部署 Oracle 伺服器的閘道器名稱 | 是
 
@@ -230,22 +230,22 @@ tableName | Oracle 資料庫中連結服務所參照的資料表名稱。 | 否 
 
 如需區段和屬性可用來定義活動的完整清單，請參閱 [建立管線](data-factory-create-pipelines.md) 文件。 名稱、描述、輸入和輸出資料表、各種原則等屬性都適用於所有活動類型。 
 
-**注意:** 複製活動會採用一個輸入，而且只產生一個輸出。
+**注意 ︰** 複製活動會採用一個輸入，而且只產生一個輸出。
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
-在複製活動類型的來源時 **OracleSource** 下列屬性可用於 **typeProperties** 區段:
+在複製活動類型的來源時 **OracleSource** 下列屬性可用於 **typeProperties** 區段 ︰
 
 屬性 | 說明 |允許的值 | 必要
 -------- | ----------- | ------------- | --------
 oracleReaderQuery | 使用自訂查詢來讀取資料。 | SQL 查詢字串。 
-例如: 選取 * from MyTable <p>如果未指定，執行 SQL 陳述式: 選取 * from MyTable</p> | 否 (如果 **tableName** 的 **資料集** 指定)
+例如 ︰ 選取 * from MyTable <p>如果未指定，執行 SQL 陳述式 ︰ 選取 * from MyTable</p> | 否 (如果 **tableName** 的 **資料集** 指定)
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### Oracle 的類型對應
 
-中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章複製活動會執行轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換的自動類型轉換:
+中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章複製活動會執行轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換的自動類型轉換 ︰
 
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
@@ -281,7 +281,7 @@ XML | String
 ## 疑難排解秘訣
 
 * * 問題: * *
-您會看到下列 **錯誤訊息**: 複製活動遇到無效的參數: 'UnknownParameterName'，詳細的訊息: 找不到要求的.Net Framework 資料提供者。 可能尚未安裝」。  
+您會看到下列 **錯誤訊息**︰ 複製活動遇到無效的參數: 'UnknownParameterName'，詳細的訊息 ︰ 找不到要求的.Net Framework 資料提供者。 可能尚未安裝」。  
 
 **可能的原因**
 
@@ -292,15 +292,16 @@ XML | String
 
 1. 如果您尚未安裝 Oracle 的.NET 提供者，請 [安裝](http://www.oracle.com/technetwork/topics/dotnet/utilsoft-086879.html) ，然後重試的案例。 
 2. 如果您即使在安裝提供者之後還是會收到錯誤訊息，請執行下列作業： 
-    1. 從資料夾開啟.NET 2.0 的機器組態: <system disk>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config。
-    2. 搜尋 **適用於.NET 的 Oracle 資料提供者**, ，您應該能夠找到一個項目類似下面 **system.data** ]-> [ **DbProviderFactories**:
-            」，culture = neutral，PublicKeyT for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />」
-2.  將此項目複製到下列 v4.0 資料夾中的 machine.config 檔案中: <system disk>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config，以及變更要 4.xxx.x.x 的版本。
+    1. 從資料夾開啟.NET 2.0 的機器組態 ︰ <system disk>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config。
+    2. 搜尋 **適用於.NET 的 Oracle 資料提供者**, ，您應該能夠找到一個項目類似下面 **system.data** ]-> [ **DbProviderFactories**:下列 **system.data** 下的-> **DbProviderFactories**:
+            “<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
+2.  將此項目複製到下列 v4.0 資料夾中的 machine.config 檔案中 ︰ <system disk>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config，以及變更要 4.xxx.x.x 的版本。
 3.  執行 「 gacutil /i [提供者路徑]""< ODP.NET 安裝路徑 > \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll 」 安裝到全域組件快取 (GAC)。
 
 
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+
 
 
 

@@ -74,3 +74,4 @@ Azure AD B2C 預覽目前提供免費使用但有限制 (每個租用戶最多�
 
 移入 [登錄應用程式與 Azure AD B2C 和建置快速啟動應用程式](active-directory-b2c-app-registration.md)。
 
+

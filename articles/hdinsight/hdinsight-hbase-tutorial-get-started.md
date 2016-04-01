@@ -26,16 +26,16 @@
 
 了解如何使用 Apache Hive 在 HDInsight 中建立 HBase 叢集、建立 HBase 資料表，以及查詢資料表。 如需一般 HBase 資訊，請參閱 [HDInsight HBase 概觀][hdinsight-hbase-overview]。
 
-> [AZURE.NOTE] 這份文件中的資訊旨在說明 Windows 為基礎的 HDInsight 叢集。 如需使用以 Linux 為基礎的叢集，請參閱 [HBase 教學課程: 開始使用 HDInsight (Linux) 中的 Hadoop 使用 Apache HBase](hdinsight-hbase-tutorial-get-started-linux.md)。
+> [AZURE.NOTE] 這份文件中的資訊旨在說明 Windows 為基礎的 HDInsight 叢集。 如需使用以 Linux 為基礎的叢集，請參閱 [HBase 教學課程 ︰ 開始使用 HDInsight (Linux) 中的 Hadoop 使用 Apache HBase](hdinsight-hbase-tutorial-get-started-linux.md)。
 >
-> 以 Windows 為基礎的 HDInsight 上的 HBase (0.98.0 版) 只能與 HDInsight 3.1 叢集一起使用 (以 Apache Hadoop 和 YARN 2.4.0 為基礎)。 版本資訊，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能?][hdinsight-versions]
+> 以 Windows 為基礎的 HDInsight 上的 HBase (0.98.0 版) 只能與 HDInsight 3.1 叢集一起使用 (以 Apache Hadoop 和 YARN 2.4.0 為基礎)。 版本資訊，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能？][hdinsight-versions]
 
-###先決條件
+###必要條件
 
 開始進行本 HBase 教學課程之前，您必須具備下列條件：
 
 - **Microsoft Azure 訂閱**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-- **工作站** 用於 Visual Studio 2013 或更新版本: 如需指示，請參閱 [安裝 Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)。
+- **工作站** 用於 Visual Studio 2013 或更新版本 ︰ 如需指示，請參閱 [安裝 Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)。
 
 ## 建立 HBase 叢集
 
@@ -49,11 +49,11 @@
 
     - **叢集名稱** -輸入要識別此叢集的名稱。
     - **叢集類型** -選取 **HBase**。
-    - **叢集作業系統** -選取 **Windows**。  建立以 Linux 為基礎的 HBase 叢集，請參閱  [HBase 教學課程: 開始使用 HDInsight (Linux) 中的 Hadoop 使用 Apache HBase](hdinsight-hbase-tutorial-get-started-linux.md)。
+    - **叢集作業系統** -選取 **Windows**。  建立以 Linux 為基礎的 HBase 叢集，請參閱  [HBase 教學課程 ︰ 開始使用 HDInsight (Linux) 中的 Hadoop 使用 Apache HBase](hdinsight-hbase-tutorial-get-started-linux.md)。
     - **版本** -選取 HBase 版本。
     - **訂閱** -選取您用來建立此叢集的 Azure 訂閱。
     - **資源群組** -建立新的 Azure 資源群組，或選取現有的 gpo。 如需詳細資訊，請參閱 [Azure 資源管理員概觀](resource-group-overview.md)
-    - **認證** -適用於 Windows 叢集，您可以建立叢集使用者 (又稱為 HTTP 使用者、 HTTP web 服務使用者) 和遠端桌面使用者。 按一下 [ **啟用遠端桌面** 將遠端桌面使用者認證。 我們在下一節將需要使用 RDP。
+    - **認證** -適用於 Windows 叢集，您可以建立叢集使用者 （又稱為 HTTP 使用者、 HTTP web 服務使用者） 和遠端桌面使用者。 按一下 [ **啟用遠端桌面** 將遠端桌面使用者認證。 我們在下一節將需要使用 RDP。
     - **資料來源** -建立新的 Azure 儲存體帳戶，或選取現有的 Azure 儲存體帳戶作為叢集預設檔案系統。 預設儲存體帳戶的位置，會決定叢集的位置。 預設儲存體帳戶和叢集必須位於同一個資料中心。
     - **請注意定價層** -選取區域的 HBase 叢集的伺服器數目
 
@@ -208,12 +208,12 @@ HBase 包含數個將資料載入資料表的方法。 如需詳細資訊，請�
 
         Install-Package Microsoft.HBase.Client
 
-5. 新增下列 **使用** 陳述式，在檔案頂端:
+5. 新增下列 **使用** 陳述式，在檔案頂端 ︰
 
         using Microsoft.HBase.Client;
         using org.apache.hadoop.hbase.rest.protobuf.generated;
 
-6. 取代 **Main** 函式取代為下列:
+6. 取代 **Main** 函式取代為下列 ︰
 
         static void Main(string[] args)
         {
@@ -333,4 +333,5 @@ HBase 是建置於 Hadoop 上的 Apache 開放原始碼 NoSQL 資料庫，可針
 [img-hbase-shell]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
+
 

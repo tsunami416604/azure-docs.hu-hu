@@ -1,12 +1,12 @@
 <properties
-    pageTitle ="建立 Jupyter/IPython Notebook |Microsoft Azure 「
-    描述 = 「 了解如何部署 Jupyter/IPython Notebook 上建立與資源管理員部署模型，在 Azure 中的 Linux 虛擬機器 」。
-    服務 = 「 虛擬機器 」
+    pageTitle="建立 Jupyter/IPython Notebook | Microsoft Azure"
+    description="了解如何在 Azure 中使用資源管理員部署模型建立的 Linux 虛擬機器上，部署 Jupyter/IPython Notebook。"
+    services="virtual-machines"
     documentationCenter="python"
-    作者 ="crwilcox"
+    authors="crwilcox"
     manager="wpickett"
-    編輯器 =""
-    標記 ="azure 服務-管理 azure 資源管理員 」 / >
+    editor=""
+    tags=“azure-service-management,azure-resource-manager"/>
 
 <tags
     ms.service="virtual-machines"
@@ -49,8 +49,8 @@ Azure 提供的服務，您可以使用 [快速開始使用 Jupyter
 
 請遵循所提供的指示 [這裡][portal-vm-linux] 來建立虛擬機器的 *Ubuntu* 發佈。 本教學課程使用 Ubuntu Server 14.04 LTS。 我們假設使用者名稱 *azureuser*。
 
-部署虛擬機器之後，我們需要開啟關於網路安全性群組的安全性規則。  從 Azure 入口網站中，移至 **網路安全性群組** 並開啟 [] 索引標籤對應到您的 VM 的安全性群組。 您必須使用下列設定加入輸入安全性規則:
-**TCP** 通訊協定， **\ *** 做為來源 (公用) 連接埠和 **9999** (私人) 目的地連接埠。
+部署虛擬機器之後，我們需要開啟關於網路安全性群組的安全性規則。  從 Azure 入口網站中，移至 **網路安全性群組** 並開啟 [] 索引標籤對應到您的 VM 的安全性群組。 您必須使用下列設定加入輸入安全性規則 ︰
+**TCP** 通訊協定， **\ *** 做為來源 （公用） 連接埠和 **9999** （私人） 目的地連接埠。
 
 ![螢幕擷取畫面](./media/virtual-machines-python-ipython-notebook/azure-add-endpoint.png)
 
@@ -215,7 +215,7 @@ Jupyter 並非單純的文書處理器因為它可讓
 * 做為運算記錄器，用來記錄對於問題進行的探究工作。
 
 * 以 「 即時 」 運算形式或在與同事分享結果
-  檔案格式 (HTML、 PDF)。
+  檔案格式 （HTML、 PDF）。
 
 * 用於散佈和顯示涉及運算的即時教學材料
   以便學生能夠立即試驗實際程式碼、修改程式碼，並且
@@ -224,7 +224,7 @@ Jupyter 並非單純的文書處理器因為它可讓
 * 提供 「 可執行文件 」 的方式顯示研究結果的
   可以立即重現、 驗證以及擴充其他人。
 
-* 做為共同運算的平台: 多位使用者可以登入
+* 做為共同運算的平台 ︰ 多位使用者可以登入
   同一個 notebook 伺服器共用即時運算工作階段。
 
 
@@ -254,4 +254,5 @@ Python 生態系統對於 Azure 所具備的功能。  其中涵蓋廣泛的
 [portal-vm-linux]: https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
 [repository]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
+
 

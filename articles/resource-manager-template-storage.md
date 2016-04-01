@@ -42,7 +42,7 @@
 | 名稱 | 類型 | 必要 | 允許的值 | 說明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
 | 類型 | 列舉 | 是 | **Microsoft.Storage/storageAccounts** | 要建立的資源類型。 |
-| apiVersion | 列舉 | 是 | **2015-06-15** <br /> **2015年-05-01-預覽** | 要用來建立資源的應用程式開發介面 (API) 版本。 | 
+| apiVersion | 列舉 | 是 | **2015-06-15** <br /> **2015-05-01-預覽** | 要用來建立資源的應用程式開發介面 (API) 版本。 | 
 | 名稱 | 字串 | 是 | 介於 3 到 24 個字元，只能使用數字和小寫字母  | 要建立的儲存體帳戶的名稱。 此名稱在整個 Azure 中必須是唯一的。 請考慮使用 [uniqueString](resource-group-template-functions.md#uniquestring) 函式與您的命名慣例，如下列範例所示。 |
 | location | 字串 | 是 | 若要判斷有效的區域，請參閱 [支援區域](resource-manager-supported-services.md#supported-regions)。  | 要裝載儲存體帳戶的區域。 |
 | properties | 物件 | 是 | (如下所示) | 指定儲存體帳戶要建立之類型的物件。
@@ -82,4 +82,5 @@
 
 - 如需儲存體的一般資訊，請參閱 [Microsoft Azure 儲存體簡介](./storage/storage-introduction.md)。
 - 例如，使用虛擬機器時，新的儲存體帳戶的範本，請參閱 [部署簡單的 Linux VM](https://azure.microsoft.com/documentation/templates/101-simple-linux-vm/) 或 [部署簡單的 Windows VM](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)。
+
 

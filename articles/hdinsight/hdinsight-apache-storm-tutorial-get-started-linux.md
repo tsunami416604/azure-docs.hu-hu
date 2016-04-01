@@ -22,7 +22,7 @@
 
 Apache Storm 是一個可處理資料串流的分散式、容錯、即時的運算系統。 在 Storm on Azure HDInsight 中，您可以建立雲端式 Storm 叢集，以執行即時的巨量資料分析。
 
-> [AZURE.NOTE] 這篇文章中的步驟建立以 Linux 為基礎的 HDInsight 叢集。 如需建立 Windows 架構的 Storm on HDInsight 叢集的步驟，請參閱 [Apache Storm 教學課程: 開始使用 HDInsight 上使用資料分析的 Storm Starter 範例](hdinsight-apache-storm-tutorial-get-started.md)
+> [AZURE.NOTE] 這篇文章中的步驟建立以 Linux 為基礎的 HDInsight 叢集。 如需建立 Windows 架構的 Storm on HDInsight 叢集的步驟，請參閱 [Apache Storm 教學課程 ︰ 開始使用 HDInsight 上使用資料分析的 Storm Starter 範例](hdinsight-apache-storm-tutorial-get-started.md)
 
 ## 開始之前
 
@@ -32,9 +32,9 @@ Apache Storm 是一個可處理資料串流的分散式、容錯、即時的運�
 
 - **熟悉 SSH 和 SCP**。 如需搭配 HDInsight 使用 SSH 和 SCP 的詳細資訊，請參閱下列文章：
 
-    - **Linux、 Unix 或 OS X 用戶端**: 請參閱 [使用 SSH 與以 Linux 為基礎從 Linux、 Unix 或 OS X 在 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
+    - **Linux、 Unix 或 OS X 用戶端**︰ 請參閱 [使用 SSH 與以 Linux 為基礎從 Linux、 Unix 或 OS X 在 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-    - **Windows 用戶端**: 請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md)
+    - **Windows 用戶端**︰ 請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ## 建立 Storm 叢集
 
@@ -74,17 +74,17 @@ Storm on HDInsight 使用 Azure Blob 儲存體來儲存提交給叢集的記錄�
     
     目前您可以選取 Azure 儲存體帳戶做為 HDInsight 叢集資料來源。 了解這些項目上使用下列 __資料來源__ 刀鋒視窗。
     
-    - __選取方法__: 設為 __從所有的訂閱__ 才能瀏覽儲存體帳戶，您的訂閱。 設定為 __便捷鍵__ 如果您想要輸入 __儲存體名稱__ 和 __便捷鍵__ 的現有儲存體帳戶。
+    - __選取方法__︰ 設為 __從所有的訂閱__ 才能瀏覽儲存體帳戶，您的訂閱。 設定為 __便捷鍵__ 如果您想要輸入 __儲存體名稱__ 和 __便捷鍵__ 的現有儲存體帳戶。
     
-    - __建立新__: 使用此選項可建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
+    - __建立新__︰ 使用此選項可建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
     
-    - __選擇預設容器__: 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
+    - __選擇預設容器__︰ 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
     
-    - __位置__: 儲存體帳戶的地理區域中，或將中建立。
+    - __位置__︰ 儲存體帳戶的地理區域中，或將中建立。
     
         > [AZURE.IMPORTANT] 選取的預設資料來源的位置也會設定 HDInsight 叢集的位置。 叢集和預設資料來源必須位於相同區域中。
         
-    - __選取__: 使用此選項可將儲存的資料來源的設定。
+    - __選取__︰ 使用此選項可將儲存的資料來源的設定。
     
 7. 選取 __節點定價層__ 顯示將建立此叢集節點的相關資訊。 根據預設，背景工作節點數會設定為 __4__。 該叢集的預估成本將會顯示在此刀鋒視窗的底部。
 
@@ -98,9 +98,9 @@ Storm on HDInsight 使用 Azure Blob 儲存體來儲存提交給叢集的記錄�
 
 9. 請確認 __釘選到開始面板__ 已選取，然後選取 __建立__。 這將會建立叢集，並將該叢集磚加入到您 Azure 入口網站的「開始面板」。 該圖示可表示該叢集正在佈建，並將在佈建完成後變更為 HDInsight 圖示。
 
-    | 佈建期間 | 佈建完成 |
-    | ------------------ | --------------------- |
-    | ![「開始面板」上的佈建指示器](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioned.png) |
+  	| 佈建期間 | 佈建完成 |
+  	| ------------------ | --------------------- |
+  	| ![「開始面板」上的佈建指示器](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioned.png) |
 
     > [AZURE.NOTE] 需要花一些時間，叢集才會建立，通常約 15 分鐘的時間。 在開始面板中，使用 [] 磚或 __通知__ 佈建程序檢查頁面左邊的項目。
 
@@ -142,7 +142,7 @@ Storm UI 提供 Web 介面來處理執行中的拓撲，包含在您的 HDInsigh
 
 1. 一旦您建立叢集的 SSH 通道，開啟網頁瀏覽器 https://CLUSTERNAME.azurehdinsight.net，其中 __CLUSTERNAME__ 是叢集的名稱。 這會開啟 Ambari Web UI。
 
-    > [AZURE.NOTE] 如果系統要求您提供使用者名稱和密碼，請輸入叢集系統管理員 (管理員) 和建立叢集時使用的密碼。 系統可能會要求驗證兩次，一次是來自瀏覽器，第二次是來自 Ambari Web UI。兩次都使用相同的認證。
+    > [AZURE.NOTE] 如果系統要求您提供使用者名稱和密碼，請輸入叢集系統管理員 （管理員） 和建立叢集時使用的密碼。 系統可能會要求驗證兩次，一次是來自瀏覽器，第二次是來自 Ambari Web UI。兩次都使用相同的認證。
 
 2. 從左邊的頁面上的服務清單中選取 __Storm__。 然後選取 __Storm UI__ 從 __快速連結__。
 
@@ -219,7 +219,7 @@ Storm UI 提供 Web 介面來處理執行中的拓撲，包含在您的 HDInsigh
 
 您已在本 Apache Storm 教學課程中藉由 Storm Starter 了解如何建立 Storm on HDInsight 叢集，以及如何使用 Storm 儀表板部署、監視和管理 Storm 拓撲。
 
-##<a id="next"></a>後續步驟
+##<a id="next"></a>接續步驟
 
 * 以下文件含有可和 Storm on HDInsight 搭配使用的其他範例清單：
 
@@ -232,3 +232,4 @@ Storm UI 提供 Web 介面來處理執行中的拓撲，包含在您的 HDInsigh
 [azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
+

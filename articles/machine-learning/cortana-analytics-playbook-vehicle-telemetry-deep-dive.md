@@ -19,7 +19,7 @@
 
 # 車輛遙測分析方案腳本：深入探索方案
 
-這 **功能表** 這個腳本的章節連結: 
+這 **功能表** 這個腳本的章節連結 ︰ 
 
 [AZURE.INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
@@ -106,7 +106,7 @@ XUF99EW9OIQOMV7Q7 | 家庭房車
 3.  執行應用程式 **CarEventGenerator.exe**。
 
 ### 參考
-[車輛車用通訊模擬器 Visual Studio 方案](http://go.microsoft.com/fwlink/?LinkId=717075) 
+[Vehicle Telematics Simulator Visual Studio 方案](http://go.microsoft.com/fwlink/?LinkId=717075) 
 [Azure 事件中樞](http://azure.microsoft.com/services/event-hubs/)
 [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 
@@ -151,10 +151,10 @@ XUF99EW9OIQOMV7Q7 | 家庭房車
 *圖 10 - PrepareSampleDataPipeline 輸出*
 
 ### 參考
-[Azure 事件中樞 SDK 進行資料流擷取](event-hubs-csharp-ephcs-getstarted.md)
+[適用於串流擷取的 Azure 事件中樞 SDK](event-hubs-csharp-ephcs-getstarted.md)
 [Azure Data Factory 資料移動功能](data-factory-data-movement-activities.md)
 [Azure Data Factory DotNet 活動](data-factory-use-custom-activities.md)
-[Azure 資料處理站 DotNet 活動 visual studio 方案，來準備範例資料](http://go.microsoft.com/fwlink/?LinkId=717077) 
+[適用於準備範例資料的 Azure Data Factory DotNet 活動 Visual Studio 方案](http://go.microsoft.com/fwlink/?LinkId=717077) 
 
 
 ## 準備
@@ -323,20 +323,20 @@ XUF99EW9OIQOMV7Q7 | 家庭房車
 
 本節中，您會看到我們如何使用 Azure 串流分析、Azure Machine Learning、Azure Data Factory 和 Azure HDInsight 的組合，對車輛健全狀況和駕駛習慣進行多樣化的進階分析。  本節有 3 個小節：
 
-1.  **機器學習**: 這個子節包含有關異常偵測實驗我們在此解決方案中用來預測需要服務維護的車輛車輛需要恢復因為安全性問題
-2.  **即時分析**: 這個子節包含有關使用資料流分析查詢語言，另尋高就 machine learning 實驗，在即時使用自訂的應用程式的即時分析
-3.  **批次分析**: 這個子節包含有關轉換和處理使用 Azure HDInsight 和 Azure Data Factory 所運作的 Azure Machine Learning 批次資料的資訊
+1.  **機器學習**︰ 這個子節包含有關異常偵測實驗我們在此解決方案中用來預測需要服務維護的車輛車輛需要恢復因為安全性問題
+2.  **即時分析**︰ 這個子節包含有關使用資料流分析查詢語言，另尋高就 machine learning 實驗，在即時使用自訂的應用程式的即時分析
+3.  **批次分析**︰ 這個子節包含有關轉換和處理使用 Azure HDInsight 和 Azure Data Factory 所運作的 Azure Machine Learning 批次資料的資訊
 
 ### 機器學習服務
 
 這裡的目標是根據特定的健全狀況統計資料，預測需要維修或召回的車輛。  我們有下列假設
 
-- 車輛需要 **服務維護** 如果其中一個下列三個條件都成立:
+- 車輛需要 **服務維護** 如果其中一個下列三個條件都成立 ︰
     - 胎壓偏低
     - 機油量偏低
     - 引擎溫度偏高
 
-- 可能會有車輛 **安全問題** ，而且需要 **重新叫用** 其中下列條件成立時:
+- 可能會有車輛 **安全問題** ，而且需要 **重新叫用** 其中下列條件成立時 ︰
     - 引擎溫度偏高，但外部溫度偏低
     - 引擎溫度偏低，但外部溫度偏高
 
@@ -367,7 +367,7 @@ XUF99EW9OIQOMV7Q7 | 家庭房車
 
 所有平均值都以 3 秒的 TumblingWindow 來計算。 因為我們需要非重疊和連續的時間間隔，所以在此案例中使用 TubmlingWindow。 
 
-若要深入了解 Azure 串流分析中的所有 'Windowing' 功能，按一下 [ [視窗化 (Azure 資料流分析)](https://msdn.microsoft.com/library/azure/dn835019.aspx)。
+若要深入了解 Azure 串流分析中的所有 'Windowing' 功能，按一下 [ [視窗化 （Azure 資料流分析）](https://msdn.microsoft.com/library/azure/dn835019.aspx)。
 
 **即時預測**
 
@@ -393,7 +393,7 @@ XUF99EW9OIQOMV7Q7 | 家庭房車
 
 *圖 19 – RealtimeDashboardApp：登入 PowerBI*
 
->[AZURE.NOTE] 附註: 如果您想要排清 PowerBI 資料集，執行與 'flushdata' 參數 RealtimeDashboardApp: 
+>[AZURE.NOTE] 附註 ︰ 如果您想要排清 PowerBI 資料集，執行與 'flushdata' 參數 RealtimeDashboardApp: 
 
     RealtimeDashboardApp.exe -flushdata
 
@@ -703,4 +703,5 @@ Power BI 給此方案一個豐富的儀表板來提供即時資料和預測性�
 ## 摘要
 
 本文件包含車輛遙測資料分析方案的詳細探討。 這以預測和動作示範即時和批次分析的 Lambda 架構模式。 此模式適用於需要最忙碌路徑 (即時) 和不忙碌路徑 (批次) 分析的各種使用案例。 
+
 

@@ -65,7 +65,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
 
 若要將訊息插入現有佇列，建立新 **CloudQueueMessage** 物件，然後呼叫 **AddMessage** 方法。
 
-A **CloudQueueMessage** 可以從字串 (採用 utf-8 格式) 或位元組陣列建立物件。
+A **CloudQueueMessage** 可以從字串 （採用 utf-8 格式） 或位元組陣列建立物件。
 
 以下是插入訊息 'Hello, World' 的範例。
 
@@ -151,7 +151,7 @@ A **CloudQueueMessage** 可以從字串 (採用 utf-8 格式) 或位元組陣列
 
 ## 搭配使用 Async-Await 模式和通用佇列 API
 
-這個範例示範如何搭配使用 Async-Await 模式和通用佇列 API。 此範例會呼叫每個指定方法的非同步版本，這可透過每個方法的非同步 Postfix 來查看。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [Async 和 Await (C# 和 Visual Basic)] (https://msdn.microsoft.com/library/hh191443.aspx)
+這個範例示範如何搭配使用 Async-Await 模式和通用佇列 API。 此範例會呼叫每個指定方法的非同步版本，這可透過每個方法的非同步 Postfix 來查看。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [Async 和 Await （C# 和 Visual Basic）] (https://msdn.microsoft.com/library/hh191443.aspx)
 
     // Get a reference to the CloudQueue object named 'messageQueue' as described in "Access a queue in code"
 
@@ -185,4 +185,5 @@ A **CloudQueueMessage** 可以從字串 (採用 utf-8 格式) 或位元組陣列
 ## 後續步驟
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
+
 

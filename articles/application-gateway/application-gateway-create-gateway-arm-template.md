@@ -22,9 +22,9 @@
 應用程式閘道是第 7 層負載平衡器。 它提供在不同伺服器之間進行容錯移轉、效能路由傳送 HTTP 要求，而不論它們是在雲端或內部部署中。 應用程式閘道具有下列應用程式傳遞功能：HTTP 負載平衡、以 Cookie 為基礎的工作階段同質性、SSL 卸載。 
 
 > [AZURE.SELECTOR]
-- [傳統的 azure PowerShell](application-gateway-create-gateway.md)
-- [Azure 資源管理員 PowerShell](application-gateway-create-gateway-arm.md)
-- [Azure 資源管理員範本](application-gateway-create-gateway-arm-template.md)
+- [Azure 傳統 PowerShell](application-gateway-create-gateway.md)
+- [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
+- [Azure Resource Manager 範本](application-gateway-create-gateway-arm-template.md)
 
 <BR>
 
@@ -33,7 +33,7 @@
 如果您只需直接從 GitHub 部署 ARM 範本而不做任何變更，請跳至＜從 GitHub 部署範本＞。
 
 
->[AZURE.IMPORTANT] 您使用的 Azure 資源之前，務必了解 Azure 目前有兩種部署模型: 資源管理員，以及傳統。 請確定您了解 [部署模型和工具](azure-classic-rm.md) 之前使用的任何 Azure 資源。 您可以按一下本文頂端的索引標籤，檢視不同工具的文件。本文件將說明使用 Azure 資源管理員建立應用程式閘道的方式。 若要使用傳統的版本，請移至 [建立應用程式閘道傳統部署使用 PowerShell](application-gateway-create-gateway.md)。
+>[AZURE.IMPORTANT] 您使用的 Azure 資源之前，務必了解 Azure 目前有兩種部署模型 ︰ 資源管理員，以及傳統。 請確定您了解 [部署模型和工具](azure-classic-rm.md) 之前使用的任何 Azure 資源。 您可以按一下本文頂端的索引標籤，檢視不同工具的文件。本文件將說明使用 Azure 資源管理員建立應用程式閘道的方式。 若要使用傳統的版本，請移至 [建立應用程式閘道傳統部署使用 PowerShell](application-gateway-create-gateway.md)。
 
 
 
@@ -65,22 +65,22 @@
 4. 如果您熟悉 ARM 範本的使用方式，請跳至步驟 7。
 5. 開啟您剛才儲存的檔案，並查看內容受到 **參數** 第 5 行中。 ARM 範本的參數提供值的預留位置，可以在部署期間填寫。
 
-    | 參數 | 說明 |
-    |---|---|
-    | **location** | 將建立應用程式閘道的 Azure 區域 |
-    | **VirtualNetwork1** | 新 VNet 的名稱 |
-    | **addressPrefix** | 以 CIDR 格式表示的 VNet 位址空間 |
-    | **ApplicationGatewaysubnet** | 適用於應用程式閘道子網路的名稱 |
-    | **subnetPrefix** | 適用於應用程式閘道子網路的 CIDR 區塊 |
-    | **skuname** | sku 執行個體大小 |
-    | **容量** | 執行個體數目 |
-    | **backendaddress1** | 第一部 Web 伺服器的 IP 位址 |
-    | **backendaddress2** | 第二部 Web 伺服器的 IP 位址 |
+  	| 參數 | 說明 |
+  	|---|---|
+  	| **location** | 將建立應用程式閘道的 Azure 區域 |
+  	| **VirtualNetwork1** | 新 VNet 的名稱 |
+  	| **addressPrefix** | 以 CIDR 格式表示的 VNet 位址空間 |
+  	| **ApplicationGatewaysubnet** | 適用於應用程式閘道子網路的名稱 |
+  	| **subnetPrefix** | 適用於應用程式閘道子網路的 CIDR 區塊 |
+  	| **skuname** | sku 執行個體大小 |
+  	| **容量** | 執行個體數目 |
+  	| **backendaddress1** | 第一部 Web 伺服器的 IP 位址 |
+  	| **backendaddress2** | 第二部 Web 伺服器的 IP 位址 |
     
 
 >[AZURE.IMPORTANT] 在 github 中維護的 ARM 範本可以隨時間改變。 使用範本前，請務必先檢查當中的內容。
     
-6. 檢查的內容下 **資源** ，並注意下列:
+6. 檢查的內容下 **資源** ，並注意下列 ︰
 
     - **型別**。 範本所建立的資源類型。 在此情況下， **Microsoft.Network/applicationGateways**, ，代表應用程式閘道。
     - **名稱**。 資源的名稱。 請注意，使用 **[parameters('applicationGatewayName')]**, ，這表示名稱將做為輸入的使用者或參數檔案在部署期間提供。
@@ -193,9 +193,9 @@
 
         azure group create -n appgatewayRG -l eastus
 
-**-n (或--名稱)**。 新資源群組的名稱。 我們的案例， *appgatewayRG*。
+**-n （或--名稱）**。 新資源群組的名稱。 我們的案例， *appgatewayRG*。
 
-**-l (或--location)**。 將會在當中建立新資源群組的 Azure 區域。 我們的案例， *Eastus*。
+**-l （或--location）**。 將會在當中建立新資源群組的 Azure 區域。 我們的案例， *Eastus*。
 
 4. 執行 **azure 群組部署建立** 指令程式來部署新的 VNet 使用的範本和參數檔案下載並修改上面。 輸出後顯示的清單可說明所使用的參數。
 
@@ -225,11 +225,11 @@
         data:    backendIpAddress2  String  10.0.1.11
         info:    group deployment create command OK
 
-**-g (或--資源群組)**。 要建立新 VNet 的資源群組名稱。
+**-g （或--資源群組）**。 要建立新 VNet 的資源群組名稱。
 
-**-f (或--範本檔案)**。 ARM 範本檔案的路徑。
+**-f （或--範本檔案）**。 ARM 範本檔案的路徑。
 
-**-e (或--參數檔案)**。 ARM 參數檔案的路徑。
+**-e （或--參數檔案）**。 ARM 參數檔案的路徑。
 
 ## 使用「按一下即部署」部署 ARM 範本
 
@@ -272,4 +272,5 @@
 
 - [Azure 負載平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure 流量管理員](https://azure.microsoft.com/documentation/services/traffic-manager/)
+
 

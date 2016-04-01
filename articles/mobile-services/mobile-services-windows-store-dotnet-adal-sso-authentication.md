@@ -32,15 +32,15 @@
 要能夠驗證使用者，您必須向 Azure Active Directory (AAD) 註冊您的應用程式。 此作業有兩個階段。 第一，您必須註冊行動服務，並公開其權限。 第二，您必須註冊 Windows 市集應用程式，並為其授與對這些權限的存取權
 
 
->[AZURE.NOTE] 本教學課程旨在協助您深入了解行動服務如何讓您執行單一登入 Azure Active Directory 驗證 Windows 市集應用程式使用 [用戶端主導登入作業](http://msdn.microsoft.com/library/azure/jj710106.aspx)。 如果這是您第一次接觸行動服務，來完成教學課程 [開始使用行動服務]。
+>[AZURE.NOTE] 本教學課程旨在協助您深入了解行動服務如何讓您執行單一登入 Azure Active Directory 驗證 Windows 市集應用程式使用 [用戶端主導登入作業](http://msdn.microsoft.com/library/azure/jj710106.aspx)。 如果這是您第一次接觸行動服務，來完成教學課程 [Get started with Mobile Services]。
 
 
-##先決條件
+##必要條件
 
 本教學課程需要下列各項：
 
 * 執行於 Windows 8.1 的 Visual Studio 2013。
-* 完成 [開始使用行動服務] 教學課程。
+* 完成 [Get started with Mobile Services] 教學課程。
 * Microsoft Azure 行動服務 SDK NuGet 封裝
 * Active Directory Authentication Library NuGet 封裝
 
@@ -72,7 +72,7 @@
 
 現在，您必須擷取將使用原生應用程式設定進行設定的封裝 SID。
 
-1. 登入 [Windows 開發人員中心儀表板] 並按一下 **編輯** 應用程式。
+1. 登入您 [Windows Dev Center Dashboard] 按一下 **編輯** 應用程式。
 
     ![][3]
 
@@ -90,7 +90,7 @@
 
 ###建立原生應用程式註冊
 
-1. 瀏覽至 **Active Directory** [Azure 傳統入口網站]，然後按一下您的目錄。
+1. 瀏覽至 **Active Directory** 中 [Azure classic portal], ，然後按一下您的目錄。
 
     ![][7]
 
@@ -167,13 +167,13 @@
             }
         }
 
-6. 中的程式碼 `AuthenticateAsync` 方法，取代 **授權單位-INSERT-CLIENT-ID-HERE** 替換為您佈建您的應用程式的租用戶名稱，格式應為 https://login.windows.net/tenant-name.onmicrosoft.com。 此值可從 [Azure 傳統入口網站] 複製到 Azure Active Directory 的 [網域] 索引標籤以外。
+6. 中的程式碼 `AuthenticateAsync` 方法，取代 **授權單位-INSERT-CLIENT-ID-HERE** 替換為您佈建您的應用程式的租用戶名稱，格式應為 https://login.windows.net/tenant-name.onmicrosoft.com。 Azure Active Directory 中的 [網域] 索引標籤可以複製此值 [Azure classic portal]。
 
-7. 在程式碼中的 `AuthenticateAsync` 方法，取代 **插入資源 URI-這裡** 與 **應用程式識別碼 URI** 行動服務。 如果您依照 [如何向 Azure Active Directory] 主題您的應用程式識別碼 URI 應類似於 https://todolist.azure-mobile.net/login/aad。
+7. 在程式碼中的 `AuthenticateAsync` 方法，取代 **插入資源 URI-這裡** 與 **應用程式識別碼 URI** 行動服務。 如果您依照 [How to Register with the Azure Active Directory] 主題您的應用程式識別碼 URI 應類似於 https://todolist.azure-mobile.net/login/aad。
 
 8. 在程式碼中的 `AuthenticateAsync` 方法，取代 **-用戶端-INSERT-CLIENT-ID-HERE** 您從原生用戶端應用程式中複製的用戶端識別碼。
 
-9. 在 Visual Studio 的 [方案總管] 視窗中，開啟用戶端專案中的 Package.appxmanifest 檔案。 按一下 [ **功能** ] 索引標籤上，並啟用 **企業應用程式** 和 **私人網路 (用戶端和伺服器)**。 儲存檔案。
+9. 在 Visual Studio 的 [方案總管] 視窗中，開啟用戶端專案中的 Package.appxmanifest 檔案。 按一下 [ **功能** ] 索引標籤上，並啟用 **企業應用程式** 和 **私人網路 （用戶端和伺服器）**。 儲存檔案。
 
     ![][14]
 
@@ -219,3 +219,4 @@
 [Azure classic portal]: https://manage.windowsazure.com/
 [Get started with Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows Dev Center Dashboard]: http://go.microsoft.com/fwlink/p/?LinkID=266734
+

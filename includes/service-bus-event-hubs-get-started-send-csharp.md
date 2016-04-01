@@ -14,19 +14,19 @@
 
     ![][8]
 
-    這會下載、 安裝，並將參考加入 <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus/">Azure 服務匯流排程式庫 NuGet 封裝</a>.
+    這會下載、安裝並新增 <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus/">Azure Service Bus 程式庫 NuGet 封裝</a>的參考。
 
-4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案:
+4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案 ︰
 
         using System.Threading;
         using Microsoft.ServiceBus.Messaging;
 
-5. 加入下列欄位來 **程式** 類別，以取代預留位置值，以您在上一節中建立事件中樞的名稱和連接字串與 **傳送** 權限:
+5. 加入下列欄位來 **程式** 類別，以取代預留位置值，以您在上一節中建立事件中樞的名稱和連接字串與 **傳送** 權限 ︰
 
         static string eventHubName = "{event hub name}";
         static string connectionString = "{send connection string}";
 
-6. 將下列方法加入 **程式** 類別:
+6. 將下列方法加入 **程式** 類別 ︰
 
         static void SendingRandomMessages()
         {
@@ -52,7 +52,7 @@
 
     這個方法會以 200 毫秒的延遲時間持續將事件傳送至事件中心。
 
-7. 最後，加入下列幾行以 **Main** 方法:
+7. 最後，加入下列幾行以 **Main** 方法 ︰
 
         Console.WriteLine("Press Ctrl-C to stop the sender process");
         Console.WriteLine("Press Enter to start now");
@@ -63,3 +63,4 @@
 <!-- Images -->
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
+

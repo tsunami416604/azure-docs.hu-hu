@@ -26,12 +26,12 @@
 <ol>
 <li>登入 Office 365 入口網站</li>
 <li>在右上角選取設定 Widget</li>
-<li>在左側選取 \[其他安全性驗證\]</li>
+<li>在左側選取 [其他安全性驗證]</li>
 
 ![雲端](./media/multi-factor-authentication-end-user-app-passwords-create-o365/security.png)
 
 <li>在右側，選取 **更新用於帳戶安全性的電話號碼**</li>
-<li>在 proofup 頁面的頂端，選取 [應用程式密碼</li>
+<li>在 proofup 頁面的頂端，選取應用程式密碼</li>
 
 <center>![雲端](./media/multi-factor-authentication-end-user-app-passwords-create-o365/addsec.png)</center>
 
@@ -41,7 +41,7 @@
 <center>![雲端](./media/multi-factor-authentication-end-user-app-passwords-create-o365/apppass.png)</center>
 
 <li>輸入應用程式密碼的名稱，然後按一下 **下一步**</li>
-<li>應用程式密碼複製到剪貼簿，並將它貼到您的應用程式。</li>
+<li>將應用程式密碼複製到剪貼簿，並將它貼到您的應用程式。</li>
 
 
 
@@ -50,13 +50,13 @@
 
 <ol>
 <li>登入 Office 365 入口網站</li>
-<li>在右上角選取 widget 並選擇 [Office 365 設定</li>
-<li>的下方，按一下 [其他安全性驗證，並選取 **更新您的電話號碼用於帳戶安全性**.3</li>
+<li>在右上角選取 \[Widget\] 並選擇 \[Office 365 設定\]</li>
+<li>在底部，按一下 [其他安全性驗證，然後選取 **更新您的電話號碼用於帳戶安全性**.3</li>
 
 ![雲端](./media/multi-factor-authentication-end-user-app-passwords-create-o365/security.png)
 
 <li>在右側，選取 **更新用於帳戶安全性的電話號碼**</li>
-<li>在 proofup 頁面的頂端，選取 [應用程式密碼</li>
+<li>在 proofup 頁面的頂端，選取應用程式密碼</li>
 
 <center>![雲端](./media/multi-factor-authentication-end-user-app-passwords-create-o365/addsec.png)</center>
 
@@ -65,10 +65,11 @@
 
 <center>![雲端](./media/multi-factor-authentication-end-user-app-passwords-create-o365/apppass.png)</center>
 
-<li>您會收到快顯視窗，要求您確認刪除。</li>
+<li>您將會看到確認刪除的快顯示窗。</li>
 <li>按一下 [ **是**。</li>
 
 
 
  
  
+

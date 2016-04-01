@@ -38,16 +38,16 @@ Microsoft SQL Server 和 Azure SQL Database 都支援應用程式相依的大部
 
 SQL Database V12 支援部分而非全部的引數，這些引數存在於對應的 SQL Server 2016 Transact-SQL 陳述式中。 例如，CREATE PROCEDURE 陳述式可以使用，但是 CREATE PROCEDURE 的 WITH ENCRYPTION 選項無法使用。 請參閱連結的語法主題，以了解每個陳述式支援區域的詳細資訊。
 
-- 資料庫: [建立](https://msdn.microsoft.com/library/dn268335.aspx )/[改變](https://msdn.microsoft.com/library/ms174269.aspx)
+- 資料庫 ︰ [建立](https://msdn.microsoft.com/library/dn268335.aspx )/[改變](https://msdn.microsoft.com/library/ms174269.aspx)
 - DMV 通常可用於已公開推出的功能
-- 函式: [建立](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER 函式](https://msdn.microsoft.com/library/ms186967.aspx)
+- 函式 ︰ [建立](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER 函式](https://msdn.microsoft.com/library/ms186967.aspx)
 - [KILL](https://msdn.microsoft.com/library/ms173730.aspx) 
-- 登入: [建立](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)
-- 預存程序: [建立](https://msdn.microsoft.com/library/ms187926.aspx)/[ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
-- 資料表: [建立](https://msdn.microsoft.com/library/dn305849.aspx)/[改變](https://msdn.microsoft.com/library/ms190273.aspx)
-- 型別 (自訂): [建立型別](https://msdn.microsoft.com/library/ms175007.aspx)
-- 使用者: [建立](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
-- 檢視: [建立](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
+- 登入 ︰ [建立](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)
+- 預存程序 ︰ [建立](https://msdn.microsoft.com/library/ms187926.aspx)/[ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
+- 資料表 ︰ [建立](https://msdn.microsoft.com/library/dn305849.aspx)/[改變](https://msdn.microsoft.com/library/ms190273.aspx)
+- 型別 （自訂） ︰ [建立型別](https://msdn.microsoft.com/library/ms175007.aspx)
+- 使用者 ︰ [建立](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
+- 檢視 ︰ [建立](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
 
 ## 在 SQL Database 中不支援的功能
 
@@ -106,5 +106,6 @@ Transact-SQL 參考包括從 SQL Server 版本 2008 到目前版本的相關主�
  例如，可用性群組是在 SQL Server 2012 中導入。  **建立可用性群組** 主題指出它會套用至 **SQL Server (SQL Server 2012 到目前的版本)** 因為不會套用至 SQL Server 2008，SQL Server 2008 R2，或 Azure SQL Database。
 
 在某些情況下，一般主題的主旨可用於產品中，但產品之間會有些微的差異。 依適當情況會在主題的中間點指出差異。
+
 
 

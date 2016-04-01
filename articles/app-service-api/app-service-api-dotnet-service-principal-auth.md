@@ -231,7 +231,7 @@ ContactsList.API 專案已有產生的用戶端程式碼，但是您要將其刪
 
 4. 複製 [用戶端識別碼]。
 
-3. 在 Azure 入口網站 **應用程式設定** 刀鋒視窗中， **應用程式設定** 區段中，新增名為 ida: 資源，並在 [值] 欄位中貼上您剛才複製的用戶端識別碼。
+3. 在 Azure 入口網站 **應用程式設定** 刀鋒視窗中， **應用程式設定** 區段中，新增名為 ida ︰ 資源，並在 [值] 欄位中貼上您剛才複製的用戶端識別碼。
 
 4. 加入名為"CompanyContactsAPIUrl"，機碼，並在 [值] 欄位中輸入 「 https://{your api 應用程式名稱}.azurewebsites.net.net 」，例如: 「 https://companycontactsapi.azurewebsites.net 」。
 
@@ -291,7 +291,7 @@ ContactsList.API 專案已有產生的用戶端程式碼，但是您要將其刪
 
     若要將 web 專案部署至 web 應用程式，使用 Visual Studio 或其他方式的相關資訊 [自動化部署](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) 從 [原始檔控制系統](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control), ，請參閱 [如何部署 Azure web 應用程式](web-sites-deploy.md)。
 
-    Visual Studio 也可產生您可以用來將部署自動化的 Windows PowerShell 指令碼。 如需詳細資訊，請參閱 [自動化各個項目 (建置真實世界雲端應用程式與 Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。
+    Visual Studio 也可產生您可以用來將部署自動化的 Windows PowerShell 指令碼。 如需詳細資訊，請參閱 [自動化各個項目 （建置真實世界雲端應用程式與 Azure）](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。
 
 * 如何疑難排解 App Service 應用程式
 
@@ -303,4 +303,5 @@ ContactsList.API 專案已有產生的用戶端程式碼，但是您要將其刪
 
     * [在 Azure App Service 中設定自訂網域名稱](web-sites-custom-domain-name.md)
     * [對 Azure 網站啟用 HTTPS](web-sites-configure-ssl-certificate.md)
+
 

@@ -51,21 +51,21 @@
 
 5. 在 **選取資料庫及資料表** 對話方塊中，選取 **AdventureWorks** 資料庫從下拉功能表，然後選取 **vGetAllCategories** 從清單中的資料表和檢視表，然後按一下 [ **下一步**。
 
-    ![選取資料庫和資料表]。[] 5
+    ![選取資料庫和資料表。][5]
 
 6. 在 **儲存資料連線檔案和完成** ] 對話方塊中，按一下 [ **完成**。
 
 7. 在 **匯入資料** 對話方塊中，選取 **樞紐分析圖** 按一下 **確定**。
 
-    ![資料匯入 Excel: 在匯入資料] 對話方塊選取樞紐分析圖。][] 2
+    ![將資料匯入 Excel：在 [匯入資料] 對話方塊中選取 [樞紐分析圖]。][2]
 
 8. 在 **樞紐分析圖欄位** ] 對話方塊中，選取下列組態來建立的每個分類的產品計數報告。
 
-    ![設定資料庫的報表]。[] 3
+    ![設定資料庫報告。][3]
 
     成功案例看起來像這樣：
 
-    ![成功: Excel 連接到 SQL 資料庫。][] 4
+    ![成功：Excel 已連接到 SQL Database。][4]
 
 ## 後續步驟
 
@@ -77,4 +77,5 @@
 [3]: ./media/sql-database-connect-excel/power-pivot.png
 [4]: ./media/sql-database-connect-excel/power-pivot-results.png
 [5]: ./media/sql-database-connect-excel/select-database-and-table.png
+
 

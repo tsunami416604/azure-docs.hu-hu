@@ -32,7 +32,7 @@
 
 **HTTP** → **驗證** → **轉換** → **服務匯流排**
 
-![基本 VETR 流程][] 1
+![基本 VETR 流程][1]
 
 下列的 BizTalk API Apps 可協助您建立這種模式：
 
@@ -53,8 +53,8 @@
 ## 新增 HTTP 觸發程序
 1. 在 **邏輯應用程式範本**, ，請選取 **從頭建立**。
 1. 選取 **HTTP 接聽程式** 從組件庫建立新的接聽程式。 稱它為 **HTTP1**。
-2. 設定 **自動傳送回應?** 設定為 false。 設定觸發程序動作，藉由設定 _HTTP 方法_ 至 _POST_ 和設定 _相對 URL_ 至 _/OneWayPipeline_:  
-    ![HTTP 觸發程序][] 2
+2. 設定 **自動傳送回應？** 將設定為 false。 設定觸發程序動作，藉由設定 _HTTP 方法_ 至 _POST_ 和設定 _相對 URL_ 至 _/OneWayPipeline_:  
+    ![HTTP 觸發程序][2]
 3. 選取綠色打勾記號來完成觸發程序。
 
 ## 加入驗證動作
@@ -66,7 +66,7 @@
 
 目前，驗證動作是 HTTP 接聽程式之後的第一個動作： 
 
-![BizTalk XML 驗證器][] 3
+![BizTalk XML 驗證器][3]
 
 讓我們以類似的方式加入其餘動作。 
 
@@ -77,7 +77,7 @@
 2. 若要設定轉換來轉換傳入的 XML 訊息，請選取 **轉換** 做的動作，會呼叫此 API 時執行的動作。 選取 ```triggers(‘httplistener’).outputs.Content``` 做為值 _inputXml_。 *對應* 是一個選擇性參數，因為內送資料符合所有已設定的轉換，而只是符合結構描述會套用。
 3. 最後，只有當驗證成功時才會執行轉換。 若要設定這種情況，請選取右上方的齒輪圖示，然後選取 _新增條件，以符合_。 將條件設為 ```equals(actions('xmlvalidator').status,'Succeeded')```：  
 
-![BizTalk 轉換][] 4
+![BizTalk 轉換][4]
 
 
 ## 新增服務匯流排連接器
@@ -87,7 +87,7 @@
 2. 選取 **傳送訊息** 動作，並設定 **內容** 動作欄位 _actions('transformservice').outputs。OutputXml_。
 3. 設定 **內容類型** 欄位 *應用程式/xml*:  
 
-![服務匯流排][] 5
+![服務匯流排][5]
 
 
 ## 傳送 HTTP 回應
@@ -97,9 +97,9 @@
 2. 設定 **回應識別碼** 傳送 *訊息*。
 2. 設定 **回應內容** 至 *完成管線處理*。
 3. **回應狀態碼** 至 *200* 表示 HTTP 200 OK。
-4. 選取右上方的下拉式功能表，然後選取 **新增條件，以符合**。  將條件設為下列運算式:  
+4. 選取右上方的下拉式功能表，然後選取 **新增條件，以符合**。  將條件設為下列運算式 ︰  
     ```@equals(actions('azureservicebusconnector').status,'Succeeded')```  <br/>
-5. 您也可以重複上述步驟來傳送失敗的 HTTP 回應。 變更 **條件** 為下列運算式:  
+5. 您也可以重複上述步驟來傳送失敗的 HTTP 回應。 變更 **條件** 為下列運算式 ︰  
 ```@not(equals(actions('azureservicebusconnector').status,'Succeeded'))``` <br/>
 6. 選取 **確定** 然後 **建立**。
 
@@ -119,4 +119,5 @@
 [3]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkXMLValidator.PNG
 [4]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkTransforms.PNG
 [5]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/AzureServiceBus.PNG
+
 

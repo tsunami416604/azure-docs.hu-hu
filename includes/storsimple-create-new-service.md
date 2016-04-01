@@ -27,3 +27,4 @@
 ![可用的視訊](./media/storsimple-create-new-service/Video_icon.png) **可用的視訊**
 
 若要看影片，示範如何建立新的 StorSimple Manager 服務，按一下 [ [這裡](http://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/)。
+

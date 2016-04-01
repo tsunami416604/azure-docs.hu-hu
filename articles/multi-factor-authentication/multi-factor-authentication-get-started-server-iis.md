@@ -50,7 +50,7 @@ Azure Multi-Factor Authentication Server 的 [IIS 驗證] 區段可讓您啟用�
 1. 在 Azure Multi-Factor Authentication Server 內，按一下左功能表中的 [IIS 驗證] 圖示。
 2. 按一下 [HTTP] 索引標籤。 按一下 [表單架構] 索引標籤。
 3. 按一下 [新增... 按鈕。
-4. 在 [新增基底 URL] 對話方塊中，輸入 URL 執行 HTTP 驗證網站位置 (例如 http://localhost/owa) 基底 URL] 欄位並輸入應用程式名稱 (選擇性)。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
+4. 在 [新增基底 URL] 對話方塊中，輸入 URL 執行 HTTP 驗證網站位置 (例如 http://localhost/owa) 基底 URL] 欄位並輸入應用程式名稱 （選擇性）。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
 5. 調整 [閒置逾時] 和 [最長工作階段時間] (如果預設值不足夠)。
 6. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受多因素驗證，請核取 [需要進行 Multi-Factor Authentication 使用者比對] 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除多重要素驗證，請勿核取此方塊。 如需此功能的其他資訊，請參閱說明檔。 
 7. 如有需要，請核取 Cookie 快取方塊。
@@ -75,4 +75,5 @@ Azure Multi-Factor Authentication Server 的 [IIS 驗證] 區段可讓您啟用�
 2. 按一下 [新增... 按鈕。
 3. 當 [新增信任的 IP] 對話方塊出現時，請選取 [單一 IP]、[IP 範圍] 或 [子網路] 選項按鈕。
 4. 輸入應列入白名單中的 IP 位址、IP 位址範圍或子網路。 如果輸入子網路，請選取適當的網路遮罩，然後按一下 [確定] 按鈕。 現已加入白名單。
+
 

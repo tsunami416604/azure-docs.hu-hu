@@ -164,7 +164,7 @@
 
     ![網站預覽](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
-    >[AZURE.TIP] 如果您想要對預備部署而不是生產部署使用 SSL，您必須先判斷使用預備環境部署的 URL。 部署您的雲端服務之後，預備環境的 URL 由 **部署 ID** GUID，格式如下: `https://deployment-id.cloudapp.net/`  
+    >[AZURE.TIP] 如果您想要對預備部署而不是生產部署使用 SSL，您必須先判斷使用預備環境部署的 URL。 部署您的雲端服務之後，預備環境的 URL 由 **部署 ID** GUID，格式如下 ︰ `https://deployment-id.cloudapp.net/`  
       
     >建立憑證的一般名稱 (CN) 等於 GUID 型 URL (例如， **328187776e774ceda8fc57609d404462.cloudapp.net**)、 使用入口網站的憑證新增至預備的雲端服務、 將憑證資訊新增至 CSDEF 與 CSCFG 檔案、 重新封裝應用程式，然後將預備的部署更新為使用新的套件與 CSCFG 檔。
 
@@ -174,4 +174,5 @@
 * 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
 * 設定 [自訂網域名稱](cloud-services-custom-domain-name-portal.md)。
 * [管理您的雲端服務](cloud-services-how-to-manage-portal.md)。
+
 

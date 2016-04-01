@@ -24,7 +24,7 @@
 - 您擁有的某些東西 (不容易輕易複製的信任裝置，例如電話)
 - 您身上的某些特徵 (生物識別技術)
 
-<center>![使用者名稱和密碼](./media/multi-factor-authentication/pword.png) (& s) nbsp; & nbsp; & nbsp; (& s) nbsp; (& s) nbsp;![憑證](./media/multi-factor-authentication/phone.png) (& s) nbsp; & nbsp; & nbsp; (& s) nbsp; (& s) nbsp;![智慧型手機](./media/multi-factor-authentication/hware.png) (& s) nbsp; & nbsp; & nbsp; (& s) nbsp; (& s) nbsp;![智慧卡](./media/multi-factor-authentication/smart.png) (& s) nbsp; & nbsp; & nbsp; (& s) nbsp; (& s) nbsp;![虛擬智慧卡](./media/multi-factor-authentication/vsmart.png) (& s) nbsp; & nbsp; & nbsp; (& s) nbsp; (& s) nbsp;![使用者名稱和密碼](./media/multi-factor-authentication/cert.png)</center>
+<center>![使用者名稱和密碼](./media/multi-factor-authentication/pword.png) （& s) nbsp; & nbsp; & nbsp; （& s) nbsp; （& s) nbsp;![憑證](./media/multi-factor-authentication/phone.png) （& s) nbsp; & nbsp; & nbsp; （& s) nbsp; （& s) nbsp;![智慧型手機](./media/multi-factor-authentication/hware.png) （& s) nbsp; & nbsp; & nbsp; （& s) nbsp; （& s) nbsp;![智慧卡](./media/multi-factor-authentication/smart.png) （& s) nbsp; & nbsp; & nbsp; （& s) nbsp; （& s) nbsp;![虛擬智慧卡](./media/multi-factor-authentication/vsmart.png) （& s) nbsp; & nbsp; & nbsp; （& s) nbsp; （& s) nbsp;![使用者名稱和密碼](./media/multi-factor-authentication/cert.png)</center>
 
 
 
@@ -197,17 +197,18 @@ MFA 報告 |● |●
 通話的自訂問候語 |● |● 
 撥打電話的可自訂來電 |● |● 
 信任的 Ip |● |● 
-暫停對已記住之裝置 (公開預覽) 的 MFA |● |  
+暫停對已記住之裝置 （公開預覽） 的 MFA |● |  
 條件式存取 |● |● 
 快取 |● |● 
 
-既然我們已判斷出要使用雲端 Multi-Factor Authentication 或內部部署 MFA Server，接下來可以開始設定及使用 Azure Multi-Factor Authentication。   **選取代表您案例的圖示!**
+既然我們已判斷出要使用雲端 Multi-Factor Authentication 或內部部署 MFA Server，接下來可以開始設定及使用 Azure Multi-Factor Authentication。   **選取代表您案例的圖示！**
 
 <center>
 
 
 
 
-[![定域機組](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) (& s) nbsp; & nbsp; & nbsp; (& s) nbsp; (& s) nbsp;
+[![定域機組](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) （& s) nbsp; & nbsp; & nbsp; （& s) nbsp; （& s) nbsp;
 </center>
+
 

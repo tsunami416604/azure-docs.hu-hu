@@ -31,7 +31,7 @@
 1. 使用資料建立要示範的資料表。
 
 2. 建立現有擴充事件工作階段，也就是 **sqlserver.sql_statement_starting**。
- - 事件僅限於包含特定的更新字串的 SQL 陳述式: **陳述式 '%更新 %tabemployee**。
+ - 事件僅限於包含特定的更新字串的 SQL 陳述式 ︰ **陳述式 '%更新 %tabemployee**。
  - 選擇要傳送事件的輸出型別信號緩衝區目標，也就是  **package0.ring_buffer**。
 
 3. 啟動事件工作階段。
@@ -70,7 +70,7 @@
 
 只要稍加修改，就可以在 Azure SQL Database 或 Microsoft SQL Server 上執行下列環形緩衝區的程式碼範例。 不同之處在於步驟 5 的 FROM 子句中，有些動態管理檢視 (DMV) 的名稱會出現 '_database'。 例如：
 
-- sys.dm_xe**(_d)**_session_targets
+- sys.dm_xe**（_d)**_session_targets
 - sys.dm_xe_session_targets
 
 
@@ -331,7 +331,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 #### 釋放環形緩衝區佔用的資源
 
 
-當您完成信號緩衝區之後時，可以將它移除，並釋放其資源發出 **ALTER** 如下所示:
+當您完成信號緩衝區之後時，可以將它移除，並釋放其資源發出 **ALTER** 如下所示 ︰
 
 
 ```
@@ -368,13 +368,14 @@ Azure SQL Database 上擴充事件的主要主題是：
 下列連結提供擴充事件的其他程式碼範例主題。 不過，您必須定期檢查所有範例以查看範例是否適用於 Microsoft SQL Server 與 Azure SQL Database。 然後您可以決定是否需要稍加變更來執行範例。
 
 
-- Azure SQL Database 的程式碼範例: [SQL 資料庫中的擴充事件的事件檔案目標程式碼](sql-database-xevent-code-event-file.md)
+- Azure SQL Database 的程式碼範例 ︰ [SQL 資料庫中的擴充事件的事件檔案目標程式碼](sql-database-xevent-code-event-file.md)
 
 
 <!--
 ('lock_acquired' event.)
 
-- SQL Server 的程式碼範例: [判斷的查詢會持有鎖定](http://msdn.microsoft.com/library/bb677357.aspx)
-- SQL Server 的程式碼範例: [發現物件具有最鎖定採取上面](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
+
 

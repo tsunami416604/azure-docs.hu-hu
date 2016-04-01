@@ -27,7 +27,7 @@
 
 本文說明如何使用 Azure 媒體服務 (AMS) 來傳遞 AMS 使用 PlayReady 與 Widevine DRM 動態加密的資料流。 PlayReady 授權來自媒體服務 PlayReady 授權伺服器，Widevine 授權是由 **castLabs** 授權伺服器。
 
-若要播放串流 CENC (PlayReady 和/或 Widevine) 所保護的內容，您可以使用  [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。 請參閱 [AMP 文件](http://amp.azure.net/libs/amp/latest/docs/) 如需詳細資訊。
+若要播放串流 CENC （PlayReady 和/或 Widevine） 所保護的內容，您可以使用  [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。 請參閱 [AMP 文件](http://amp.azure.net/libs/amp/latest/docs/) 如需詳細資訊。
 
 以下為 Azure 媒體服務與 castLabs 整合架構概況圖。
 
@@ -71,7 +71,7 @@ jti|權杖的唯一識別碼 (每個權杖在 castLabs 系統中只使用一次)
 
 ##範例解決方案設定 
 
- [範例方案](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) 包含兩個專案:
+ [範例方案](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) 包含兩個專案 ︰
 
 -   主控台應用程式，用於為 PlayReady 與 Widevine 在已內嵌的資產上設定 DRM 限制。
 -   Web 應用程式，用於遞出權杖，可視為「非常簡易」的 STS 版本。
@@ -100,7 +100,7 @@ jti|權杖的唯一識別碼 (每個權杖在 castLabs 系統中只使用一次)
 
 ##播放視訊
 
-若要播放使用一般加密 (PlayReady 和/或 Widevine) 的視訊，您可以使用 [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。 執行主控台應用程式時，會回應內容金鑰識別碼和資訊清單 URL。
+若要播放使用一般加密 （PlayReady 和/或 Widevine） 的視訊，您可以使用 [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。 執行主控台應用程式時，會回應內容金鑰識別碼和資訊清單 URL。
 
 1.  開啟新索引標籤，並啟動 STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]。
 2.  移至 [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
@@ -121,4 +121,5 @@ jti|權杖的唯一識別碼 (每個權杖在 castLabs 系統中只使用一次)
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

@@ -9,7 +9,7 @@
 
     ![連接空的磁碟][Image2]
 
-    **注意:** 所有磁碟都從.vhd 檔案都建立 Azure 儲存體中。 您可以為新增至儲存體的 VHD 檔案提供名稱，但是 Azure 會自動產生磁碟的名稱。
+    **注意 ︰** 所有磁碟都從.vhd 檔案都建立 Azure 儲存體中。 您可以為新增至儲存體的 VHD 檔案提供名稱，但是 Azure 會自動產生磁碟的名稱。
 
 4. 按一下核取記號將資料磁碟連接至虛擬機器。
 
@@ -20,7 +20,7 @@
 ##使用 SSH 或 PuTTY 連接至虛擬機器並完成安裝
 您必須登入虛擬機器並完成磁碟的設定，才能使用磁碟來儲存資料。
 
-1. 佈建虛擬機器之後，使用 SSH 或 PuTTY 和以登入連接 **newuser** (如前面步驟中所述)。 
+1. 佈建虛擬機器之後，使用 SSH 或 PuTTY 和以登入連接 **newuser** （如前面步驟中所述）。 
 
 
 2. 在 SSH 或 PuTTY 視窗中，輸入下列命令，然後輸入帳戶密碼：
@@ -57,7 +57,7 @@
     ![FDISK][Image8]
 
 
-8. 格式化新的磁碟使用 **mkfs** 命令:
+8. 格式化新的磁碟使用 **mkfs** 命令 ︰
 
     `$ sudo mkfs -t ext4 /dev/sdc1`
 
@@ -75,7 +75,7 @@
 
 11. 將新的磁碟機新增至 /etc/fstab：
 
-    為了確保重新開機之後自動重新掛接磁碟機，必須將磁碟機新增至 /etc/fstab 檔案。 此外，強烈建議在 /et/fstab 中使用全域唯一識別碼 (Universally Unique IDentifier, UUID) 來參考磁碟機，而不只是裝置名稱 (例如，/dev/sdc1)。 若要尋找您可以使用新的磁碟機的 UUID **blkid** 公用程式:
+    為了確保重新開機之後自動重新掛接磁碟機，必須將磁碟機新增至 /etc/fstab 檔案。 此外，強烈建議在 /et/fstab 中使用全域唯一識別碼 (Universally Unique IDentifier, UUID) 來參考磁碟機，而不只是裝置名稱 (例如，/dev/sdc1)。 若要尋找您可以使用新的磁碟機的 UUID **blkid** 公用程式 ︰
     
         `sudo -i blkid`
 
@@ -87,7 +87,7 @@
 
     >[AZURE.NOTE] blkid 並不要求在所有情況下 sudo 存取權，不過，可能與執行的工作變得更容易 `sudo -i` 在一些散發，如果 /sbin 或 /usr/sbin 不在您 `$PATH`。
 
-    **注意:** 不當編輯 / /etc/fstab 檔案會導致系統無法開機。 如果不確定，請參閱散發套件的文件，以取得如何適當編輯此檔案的相關資訊。 在編輯之前，也建議先備份 /etc/fstab 檔案。
+    **注意 ︰** 不當編輯 / /etc/fstab 檔案會導致系統無法開機。 如果不確定，請參閱散發套件的文件，以取得如何適當編輯此檔案的相關資訊。 在編輯之前，也建議先備份 /etc/fstab 檔案。
 
     請使用文字編輯器，在 /etc/fstab 檔案的結尾輸入新檔案系統的相關資訊。  在此範例中我們將使用新的 UUID 值 **/dev/sdc1** 所建立的上一個步驟，並使用掛接點裝置 **/datadrive**:
 
@@ -95,7 +95,7 @@
 
     如果還有建立其他資料磁碟機或磁碟分割，同樣也需要分別在 /etc/fstab 中輸入。
 
-    您現在可以測試檔案系統適當掛接，方法取消，然後重新掛上檔案系統中，也就， 使用的範例掛接點 `/datadrive` 先前步驟中建立: 
+    您現在可以測試檔案系統適當掛接，方法取消，然後重新掛上檔案系統中，也就， 使用的範例掛接點 `/datadrive` 先前步驟中建立 ︰ 
 
         `sudo umount /datadrive`
         `sudo mount /datadrive`
@@ -103,7 +103,7 @@
     如果第二個命令會產生錯誤，請檢查 /etc/fstab 檔案的正確語法。
 
 
-    >[AZURE.NOTE] Subsequently removing a data disk without editing fstab could cause the VM to fail to boot. If this is a common occurrence, then most distributions provide either the `nofail` and/or `nobootwait` fstab options that will allow a system to boot even if the disk is not present. Please consult your distribution's documentation for more information on these parameters.
+    >[AZURE.NOTE] 後續移除資料磁碟而不編輯 fstab，可能會造成 VM 無法開機。 如果這是常見情況，那麼多數散發套件會提供 `nofail` 和/或 `nobootwait` fstab 選項，使得即使沒有磁碟，也能讓系統開機。 請查閱散發套件的文件，以取得這些參數的相關資訊。
 
 
 [Image2]: ./media/attach-data-disk-centos-vm-in-portal/AttachDataDiskLinuxVM2.png
@@ -113,5 +113,6 @@
 [Image7]: ./media/attach-data-disk-centos-vm-in-portal/fdisk3.png
 [Image8]: ./media/attach-data-disk-centos-vm-in-portal/fdisk4.png
 [Image9]: ./media/attach-data-disk-centos-vm-in-portal/mkfs.png
+
 
 

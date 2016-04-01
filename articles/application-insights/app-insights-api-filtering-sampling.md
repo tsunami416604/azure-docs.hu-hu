@@ -47,15 +47,15 @@
 
 ### 啟用取樣
 
-**更新專案的 NuGet** 至最新的封裝 *發行前版本* 版本的 Application Insights: 以滑鼠右鍵按一下 [方案總管] 中的專案中，選擇 [管理 NuGet 封裝，檢查 **包括發行前版本** 和 Microsoft.ApplicationInsights.Web 的搜尋。 
+**更新專案的 NuGet** 至最新的封裝 *發行前版本* 版本的 Application Insights ︰ 以滑鼠右鍵按一下 [方案總管] 中的專案中，選擇 [管理 NuGet 封裝，檢查 **包括發行前版本** 和 Microsoft.ApplicationInsights.Web 的搜尋。 
 
-在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), ，您可以調整適應性演算法的目標是針對遙測資料的最大速率:
+在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), ，您可以調整適應性演算法的目標是針對遙測資料的最大速率 ︰
 
     <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
 
 ### 用戶端端取樣
 
-若要取得固定速率取樣的資料，從網頁，將額外的程式行放在 [Application Insights 片段](app-insights-javascript.md) 您插入 (通常是在主版頁面，例如 _Layout.cshtml):
+若要取得固定速率取樣的資料，從網頁，將額外的程式行放在 [Application Insights 片段](app-insights-javascript.md) 您插入 （通常是在主版頁面，例如 _Layout.cshtml） ︰
 
 *JavaScript*
 
@@ -377,7 +377,7 @@ public void Process(ITelemetry item)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 
-## <a name="next"></a>後續步驟
+## <a name="next"></a>接續步驟
 
 
 [搜尋事件和記錄檔][diagnostic]
@@ -403,3 +403,4 @@ public void Process(ITelemetry item)
 [windows]: app-insights-windows-get-started.md
 
  
+

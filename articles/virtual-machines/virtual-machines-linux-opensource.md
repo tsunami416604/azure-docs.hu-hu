@@ -32,7 +32,7 @@
 - [Azure Marketplace](http://azure.microsoft.com/marketplace/virtual-machines/)
 - [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index)
 - [事件和示範：Microsoft Openness CEE](http://www.opennessatcee.com/)
-- [如何: 上傳您自己的 Distro 映像](virtual-machines-linux-create-upload-vhd.md) (和指示使用 [背書散發版本](virtual-machines-linux-endorsed-distributions.md))
+- [如何 ︰ 上傳您自己的 Distro 映像](virtual-machines-linux-create-upload-vhd.md) (和指示使用 [背書散發版本](virtual-machines-linux-endorsed-distributions.md))
 - [注意：在 Azure 中執行的一般 Linux 需求](virtual-machines-linux-create-upload-vhd-generic.md)
 - [注意：Azure 上的 Linux 一般簡介](virtual-machines-linux-introduction.md)
 
@@ -90,7 +90,7 @@ CentOS Linux 散發版本是一個穩定、可預測、容易管理且可重製�
 11. [做法：安裝和執行 MySQL](virtual-machines-linux-mysql-use-opensuse.md)
 12. [做法：準備自訂 SLES 或 openSUSE VM](virtual-machines-linux-create-upload-vhd-suse.md)  
 13. [[SUSE 論壇] 做法：移至新的修補程式伺服器](https://forums.suse.com/showthread.php?5622-New-Update-Infrastructure)
-14. [映像: SUSE Linux Enterprise Server for SAP 雲端應用裝置程式庫](http://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver11sp3forsapcloudappliance/)
+14. [映像 ︰ SUSE Linux Enterprise Server for SAP 雲端應用裝置程式庫](http://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver11sp3forsapcloudappliance/)
 
 ### CoreOS
 
@@ -100,7 +100,7 @@ CoreOS 是一個小型、最佳化的散發版本，適用於高度控制自訂�
 11. [做法：在 Azure 上使用 CoreOS](virtual-machines-linux-coreos-how-to.md)
 12. [做法：開始在 Azure 上的 CoreOS 使用 Fleet 和 Docker](virtual-machines-linux-coreos-fleet-get-started.md)
 13. [部落格：TechEd Europe -- Windows Docker 用戶端和 Linux 容器](http://azure.microsoft.com/blog/2014/10/28/new-docker-coreos-topics-linux-on-azure/)
-14. [部落格：Azure 日益壯大、快速且更加開放](http://azure.microsoft.com/blog/2014/10/20/azures-getting-bigger-faster-and-more-open/)
+14. [部落格 ︰ Azure 的開始壯大、 快速且更加開放](http://azure.microsoft.com/blog/2014/10/20/azures-getting-bigger-faster-and-more-open/)
 15. [GitHub：在 Azure 上部署 CoreOS 的快速入門](https://github.com/timfpark/coreos-azure)
 16. [GitHub：使用 Spring Boot、MongoDB 和 CoreOS 部署 Java 應用程式](https://github.com/chanezon/azure-linux/tree/master/coreos/cloud-init)
 
@@ -186,8 +186,8 @@ CoreOS 是一個小型、最佳化的散發版本，適用於高度控制自訂�
 瀏覽本節，即能快速了解。 如果您有任何建議，請傳送 PR 給我們，或在註解中留下建議，如下。
 
 1. [使用 Azure CLI 建立多個 VM 的部署](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
-2. [Patrick Chanezon 的 Azure Linux Github 儲存機制](https://github.com/chanezon/azure-linux)
-3. [影片: 如何在內部部署 USB 資料移在 Linux 上使用 Azure **usbip**](http://channel9.msdn.com/Blogs/Open/On-premises-USB-devices-on-Linux-on-Azure-via-usbip)
+2. [Patrick Chanezon 的 Azure Linux GitHub 儲存機制](https://github.com/chanezon/azure-linux)
+3. [影片 ︰ 如何在內部部署 USB 資料移在 Linux 上使用 Azure **usbip**](http://channel9.msdn.com/Blogs/Open/On-premises-USB-devices-on-Linux-on-Azure-via-usbip)
 4. [影片：在瀏覽器中使用 fernapp 存取 Azure 上的 Linux GUI](http://channel9.msdn.com/Blogs/Open/Accessing-Linux-based-GUI-on-Azure-over-browser-with-fernapp)
 5. [影片：在 Linux 上使用 Azure 檔案預覽的共用儲存體 -- 第 1 部分](http://channel9.msdn.com/Blogs/Open/Shared-storage-on-Linux-via-Azure-Files-Preview-Part-1)
 6. [影片：在 Azure 上採行使用服務匯流排和網站的 Linux 裝置](http://channel9.msdn.com/Blogs/Open/Embracing-Linux-devices-on-Azure-via-Service-Bus-and-Web-Sites)
@@ -248,7 +248,7 @@ CoreOS 是一個小型、最佳化的散發版本，適用於高度控制自訂�
 
 在使用開放原始碼工具或 Microsoft HPC Pack 建置的 Linux VM 叢集上執行 HPC 工作負載。
 
-1.  [快速入門範本: 加速 SLURM 叢集](http://azure.microsoft.com/documentation/templates/slurm/)
+1.  [快速入門範本 ︰ 加速 SLURM 叢集](http://azure.microsoft.com/documentation/templates/slurm/)
  (和 [部落格文章](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx))
 2.  [快速入門範本：加速扭力叢集](http://azure.microsoft.com/documentation/templates/torque-cluster/)
 3.  [快速入門範本：建立 Linux 計算節點的 HPC 叢集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)
@@ -259,7 +259,7 @@ CoreOS 是一個小型、最佳化的散發版本，適用於高度控制自訂�
 
 ## 開發、管理和最佳化
 
-這一節的開頭包含一系列影片的部落格項目 [影片: Azure 虛擬機器: 使用 Chef、 Puppet 和 Docker 管理 Linux Vm](http://azure.microsoft.com/blog/2014/12/15/azure-virtual-machines-using-chef-puppet-and-docker-for-managing-linux-vms/)。 不過，開發、管理和最佳化的領域相當廣泛、瞬息萬變，因此您應考慮從下列清單著手。
+這一節的開頭包含一系列影片的部落格項目 [影片 ︰ Azure 虛擬機器 ︰ 使用 Chef、 Puppet 和 Docker 管理 Linux Vm](http://azure.microsoft.com/blog/2014/12/15/azure-virtual-machines-using-chef-puppet-and-docker-for-managing-linux-vms/)。 不過，開發、管理和最佳化的領域相當廣泛、瞬息萬變，因此您應考慮從下列清單著手。
 
 1. Docker
     - [Azure 上 Linux 的 Docker VM 延伸模組](virtual-machines-docker-vm-extension.md)
@@ -311,4 +311,5 @@ CoreOS 是一個小型、最佳化的散發版本，適用於高度控制自訂�
 <!--Link references--In actual articles, you only need a single period before the slash. -->
 [How to use docker-machine on Azure]: virtual-machines-docker-machine.md
 [How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
+
 

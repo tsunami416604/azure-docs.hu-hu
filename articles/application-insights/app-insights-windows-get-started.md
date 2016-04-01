@@ -17,7 +17,7 @@
 
 # Windows Phone 和市集應用程式的分析
 
-Microsoft 提供兩種解決方案裝置 「 開發維運: [HockeyApp](http://hockeyapp.net/) devOps 工作流程和當機分析; 和 [Application Insights](app-insights-overview.md) 使用量和當機分析。
+Microsoft 提供兩種解決方案裝置 「 開發維運 ︰ [HockeyApp](http://hockeyapp.net/) devOps 工作流程和當機分析; 和 [Application Insights](app-insights-overview.md) 使用量和當機分析。
 
 [HockeyApp](http://hockeyapp.net/) 是我們的行動運解決方案 ios、 OS X、 Android 或 Windows 裝置應用程式，以及根據 Xamarin、 Cordova 及 Unity 的跨平台應用程式。 利用該解決方案，您可以將組建散發給 Beta 版測試人員、收集損毀資料，以及取得使用者意見反應。 與 Visual Studio Team Services 整合，您即可輕鬆建置部署和工作項目整合。 您可以進一步從 [HockeyApp 知識庫](http://support.hockeyapp.net/kb) 並保持最新的 [HockeyApp 部落格](http://hockeyapp.net/blog/)。
 
@@ -79,7 +79,7 @@ A [資源][roles] 在 Azure 中是服務的執行個體。 此資源是來自您
         </ApplicationInsights>
     ```
 
-    設定 ApplicationInsights.config 檔案的屬性: **建置動作** = = **內容** 和 **複製到輸出目錄** = = **永遠複製**。
+    設定 ApplicationInsights.config 檔案的屬性 ︰ **建置動作** = = **內容** 和 **複製到輸出目錄** = = **永遠複製**。
     
     ![](./media/app-insights-windows-get-started/AIConfigFileSettings.png)
 
@@ -96,7 +96,7 @@ A [資源][roles] 在 Azure 中是服務的執行個體。 此資源是來自您
     }  
 ```
 
-**Windows 通用應用程式**: 對 Phone 和市集專案重複步驟。 [Windows 8.1 通用應用程式的範例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/Windows%208.1%20Universal)。
+**Windows 通用應用程式**︰ 對 Phone 和市集專案重複步驟。 [Windows 8.1 通用應用程式的範例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/Windows%208.1%20Universal)。
 
 ## <a name="network"></a>3.對應用程式啟用網路存取
 
@@ -178,11 +178,11 @@ Application Insights SDK 包含數個收集器，它會從您的應用程式中�
 * [深入了解診斷搜尋][diagnostic]
 
 
-## <a name="ide"></a>自動的安裝
+## <a name="ide"></a>自動化設定
 
 如果您偏好使用 Visual Studio 執行設定步驟，可以針對 Windows Phone、Windows 市集和其他許多類型的應用程式這樣做。
 
-###<a name="new"></a> 如果您要建立新的 Windows 應用程式專案...
+###<a name="new"></a>如果您要建立新的 Windows 應用程式專案...
 
 在 [新增專案] 對話方塊中，選取 [Application Insights]。 
 
@@ -191,7 +191,7 @@ Application Insights SDK 包含數個收集器，它會從您的應用程式中�
 ![](./media/app-insights-windows-get-started/appinsights-d21-new.png)
 
 
-###<a name="existing"></a> 或者，如果是現有專案...
+###<a name="existing"></a>或者，如果是現有的專案...
 
 從 [方案總管] 加入 Application Insights。
 
@@ -232,4 +232,5 @@ Application Insights SDK 包含數個收集器，它會從您的應用程式中�
 [roles]: app-insights-resources-roles-access-control.md
 [windowsCrash]: app-insights-windows-crashes.md
 [windowsUsage]: app-insights-windows-usage.md
+
 

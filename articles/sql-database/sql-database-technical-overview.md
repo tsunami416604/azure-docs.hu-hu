@@ -62,3 +62,4 @@ SQL Server 有傳統的 SQL 資料庫做表示支持的功能，限制存取、 
 - 要開始 [建立第一個資料庫](sql-database-get-started.md)。 然後建立第一個應用程式 [C#](sql-database-connect-query.md), ，[Java](sql-database-develop-java-simple-windows.md), ，[Node.js](sql-database-develop-nodejs-simple-windows.md), ，[PHP](sql-database-develop-php-retry-windows.md), ，[Python](sql-database-develop-python-simple-windows.md), ，或 [Ruby](sql-database-develop-ruby-simple-linux)。 
 
 
+

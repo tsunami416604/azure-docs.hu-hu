@@ -258,3 +258,4 @@ Azure CLI 是從任何平台管理 Azure 基礎結構的一個好方法。 本�
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
+

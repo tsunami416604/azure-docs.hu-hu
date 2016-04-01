@@ -19,7 +19,7 @@
    />
    
 # 管理虛擬網路：負載平衡器分配模式 (來源 IP 同質性)
-**來源 IP 同質性** (也稱為 **工作階段同質性** 或 **用戶端 IP 同質性**)，Azure 負載平衡器分配模式，繫結從單一用戶端連接到單一的 Azure 裝載伺服器，而不是散發到不同的 Azure 裝載伺服器 (預設負載平衡器行為) 動態每個用戶端連線。
+**來源 IP 同質性** (也稱為 **工作階段同質性** 或 **用戶端 IP 同質性**)，Azure 負載平衡器分配模式，繫結從單一用戶端連接到單一的 Azure 裝載伺服器，而不是散發到不同的 Azure 裝載伺服器 （預設負載平衡器行為） 動態每個用戶端連線。
 
 使用來源 IP 同質性，可設定 Azure 負載平衡器設定來使用 2-tuple 組合 (來源 IP、目的地 IP) 或 3-tuple 組合 (來源 IP、目的地 IP 及通訊協定)，以將流量對應至可用的 Azure 裝載伺服器集區。 使用來源 IP 同質性時，從相同用戶端電腦初始化的連線是由單一 DIP 端點 ( Azure 裝載的單一伺服器) 所處理。
 
@@ -148,7 +148,7 @@ LoadBalancerDistribution 可設定為 sourceIP 以用於 2-tuple (來源 IP、�
       </InputEndpoint> 
     </LoadBalancedEndpointList>
 
-LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、 sourceipprotocol 以用於 3-tuple 同質性或 none (適用於沒有任何關聯性。 也就是 5-tuple)
+LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、 sourceipprotocol 以用於 3-tuple 同質性或 none （適用於沒有任何關聯性。 也就是 5-tuple)
 
 #### Response
 
@@ -160,4 +160,5 @@ LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、
     x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af 
     Date: Thu, 16 Oct 2014 22:49:21 GMT
  
+
 

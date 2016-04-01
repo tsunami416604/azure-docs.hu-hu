@@ -28,3 +28,4 @@
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-classic-cli-include](../../includes/virtual-networks-create-vnet-classic-cli-include.md)]
+

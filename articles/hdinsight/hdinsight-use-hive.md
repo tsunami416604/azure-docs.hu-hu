@@ -26,9 +26,9 @@
 在本教學課程中，您將了解如何在 HDInsight 中使用 Hadoop 內的 Apache Hive，以及選擇要如何執行 Hive 工作。 您也將了解 HiveQL 以及如何分析範例 Apache Log4j 檔案。
 
 ##<a id="why"></a>什麼是 Hive，為什麼要使用它？
-[Apache Hive](http://hive.apache.org/) hadoop，可以使用 HiveQL (類似 SQL 的查詢語言) 可讓資料摘要、 查詢和分析資料是資料倉儲系統。 Hive 可以互動方式用於探索資料，或者建立可重複使用的批次處理工作。
+[Apache Hive](http://hive.apache.org/) hadoop，可以使用 HiveQL （類似 SQL 的查詢語言） 可讓資料摘要、 查詢和分析資料是資料倉儲系統。 Hive 可以互動方式用於探索資料，或者建立可重複使用的批次處理工作。
 
-Hive 可讓您將結構投影在大量非結構化資料上。 定義結構後，您不須具備 Jave 或 MapReduce 相關知識，即可使用 Hive 查詢該資料。 **HiveQL** (Hive 查詢語言) 可讓您使用類似於 T-SQL 的陳述式撰寫查詢。
+Hive 可讓您將結構投影在大量非結構化資料上。 定義結構後，您不須具備 Jave 或 MapReduce 相關知識，即可使用 Hive 查詢該資料。 **HiveQL** （Hive 查詢語言） 可讓您使用類似於 T-SQL 的陳述式撰寫查詢。
 
 Hive 了解如何處理結構化和半結構化資料 (例如，以特定字元分隔欄位的文字檔)。 Hive 也支援自訂 **序列化/反序列化程式 (SerDe)** 複雜或不規則結構化資料。 如需詳細資訊，請參閱 [如何搭配 HDInsight 使用自訂 JSON SerDe](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)。
 
@@ -46,7 +46,7 @@ Hive 也可以透過擴充 **使用者定義函數 (UDF)**。 UDF 可讓您在 H
 關於 Hive 內部資料表和外部資料表，有若干事項您必須了解：
 
 -  **CREATE TABLE** 命令會建立內部資料表。 資料檔案必須位於預設容器中。
--  **CREATE TABLE** 命令會將資料檔案移至 /hive/warehouse/<TableName> 資料夾。
+-  **CREATE TABLE** 命令會將資料檔案移至 /hive/warehouse/<TableName> 資料夾)。
 -  **建立外部資料表** 命令會建立外部資料表。 資料檔案可位於預設容器外。
 -  **建立外部資料表** 命令不會移動資料檔案。
 -  **建立外部資料表** 命令不允許任何資料夾的位置。 因此，此教學課程複製了 sample.log 檔案。
@@ -54,7 +54,7 @@ Hive 也可以透過擴充 **使用者定義函數 (UDF)**。 UDF 可讓您在 H
 如需詳細資訊，請參閱 [HDInsight: Hive 內部和外部資料表簡介][cindygross-hive-tables]。
 
 
-##<a id="data"></a>關於範例資料 Apache log4j 檔案
+##<a id="data"></a>關於範例資料 Apache Log4j 檔案
 
 這個範例會使用 *log4j* 範例檔案，其儲存在 **/example/data/sample.log** blob 儲存體容器中。 檔案中的每一筆記錄均由一列欄位組成，包括以 `[LOG LEVEL]` 欄位來顯示類型和嚴重性，例如：
 
@@ -72,9 +72,9 @@ Hive 也可以透過擴充 **使用者定義函數 (UDF)**。 UDF 可讓您在 H
 
 > [AZURE.NOTE] 語法， **wasb: / /**, ，用來存取儲存在您的 HDInsight 叢集的預設儲存體容器中的檔案。 如果您在佈建叢集，而且您想要存取這些帳戶中儲存檔案時，您可以指定其他儲存體帳戶，您可以藉由指定容器名稱和儲存體帳戶位址，例如，存取資料 **wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log**。
 
-##<a id="job"></a>範例工作: 資料行投影在帶分隔符號的資料
+##<a id="job"></a>範例工作：將資料行投影至帶分隔符號的資料上
 
-下列 HiveQL 陳述式將資料行投影在帶分隔符號的資料會儲存在 **wasb: / 範例/資料** 目錄:
+下列 HiveQL 陳述式將資料行投影在帶分隔符號的資料會儲存在 **wasb: / 範例/資料** 目錄 ︰
 
     DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -84,11 +84,11 @@ Hive 也可以透過擴充 **使用者定義函數 (UDF)**。 UDF 可讓您在 H
 
 在上一個範例中，HiveQL 陳述式會執行下列動作：
 
-* **DROP TABLE**: 刪除資料表和資料檔，如果資料表已存在。
-* **建立外部資料表**: 建立新 **外部** 在 Hive 中的資料表。 外部資料表只會在 Hive 中儲存資料表定義；資料會以原始格式保留在原始位置。
-* **ROW FORMAT**: 告訴的 Hive 如何格式化資料。 在此情況下，每個記錄中的欄位會以空格隔開。
-* **STORED AS TEXTFILE LOCATION**: 告訴 Hive 資料的儲存 (example/data 目錄)，並儲存為文字。 資料可以在目錄的一個檔案中，也可以分散在多個檔案中。
-* **選取**: 選擇的所有資料列計數，資料行 **t4** 包含值 **[錯誤]**。 這應該會傳回值為 **3** 因為有三個資料列包含此值。
+* **DROP TABLE**︰ 刪除資料表和資料檔，如果資料表已存在。
+* **建立外部資料表**︰ 建立新 **外部** 在 Hive 中的資料表。 外部資料表只會在 Hive 中儲存資料表定義；資料會以原始格式保留在原始位置。
+* **ROW FORMAT**︰ 告訴的 Hive 如何格式化資料。 在此情況下，每個記錄中的欄位會以空格隔開。
+* **STORED AS TEXTFILE LOCATION**︰ 告訴 Hive 資料的儲存 （example/data 目錄），並儲存為文字。 資料可以在目錄的一個檔案中，也可以分散在多個檔案中。
+* **選取**︰ 選擇的所有資料列計數，資料行 **t4** 包含值 **[錯誤]**。 這應該會傳回值為 **3** 因為有三個資料列包含此值。
 * **像是 '%.log' INPUT__FILE__NAME** -告訴 Hive，我們應該只傳回從檔案中的資料。 記錄檔。 這將限制包含此資料的 sample.log 檔案搜尋，對於不符合我們所定義結構描述的其他範例資料檔案，會防止其傳回資料。
 
 > [AZURE.NOTE] 當您預期以外部來源，例如自動化的資料上傳程序，或以其他 MapReduce 作業，更新基礎資料，而且您希望 Hive 查詢一律使用最新的資料時，必須使用外部資料表。
@@ -102,11 +102,11 @@ Hive 也可以透過擴充 **使用者定義函數 (UDF)**。 UDF 可讓您在 H
     INSERT OVERWRITE TABLE errorLogs
     SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
 
-這些陳述式會執行下列動作：
+這些陳述式將執行下列動作：
 
-* **CREATE TABLE IF NOT EXISTS**: 建立資料表，如果不存在。 因為 **外部** 未使用關鍵字，這是內部資料表，會儲存在 Hive 資料倉儲並完全透過 Hive 所管理。
-* **STORED AS ORC**: 以最佳化資料列單欄式 (ORC) 格式儲存資料。 這是高度最佳化且有效率的 Hive 資料儲存格式。
-* **INSERT OVERWRITE ...選取**: 選取資料列從 **log4jLogs** 資料表，其中包含 **[錯誤]**, ，然後將資料插入 **errorLogs** 資料表。
+* **CREATE TABLE IF NOT EXISTS**︰ 建立資料表，如果不存在。 因為 **外部** 未使用關鍵字，這是內部資料表，會儲存在 Hive 資料倉儲並完全透過 Hive 所管理。
+* **STORED AS ORC**︰ 以最佳化資料列單欄式 (ORC) 格式儲存資料。 這是高度最佳化且有效率的 Hive 資料儲存格式。
+* **INSERT OVERWRITE ...選取**︰ 選取資料列從 **log4jLogs** 資料表，其中包含 **[錯誤]**, ，然後將資料插入 **errorLogs** 資料表。
 
 > [AZURE.NOTE] 不同於外部資料表，捨棄內部資料表也會刪除基礎資料。
 
@@ -150,7 +150,7 @@ HDInsight 可以使用各種方法執行 Hive QL 工作。 請使用下表決定
 深入了解 Azure Feature Pack ssis [這裡][ssispack]。
 
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 現在您已了解什麼是 Hive 以及如何搭配 HDInsight 中的 Hadoop 使用它，接著請使用下列連結探索 Azure HDInsight 的其他使用方式。
 
@@ -200,4 +200,5 @@ HDInsight 可以使用各種方法執行 Hive QL 工作。 請使用下表決定
 
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+
 

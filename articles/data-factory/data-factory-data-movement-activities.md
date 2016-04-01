@@ -44,11 +44,11 @@
 
 | 來源| 接收 |
 |:------- | :---- |
-| <ul><li>[Azure Blob](data-factory-azure-blob-connector.md)</li><li>[Azure 資料表](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB](data-factory-azure-documentdb-connector.md)</li><li>[Azure 資料湖市集](data-factory-azure-datalake-connector.md)</li><li>[SQL Server 在內部部署/Azure IaaS](data-factory-sqlserver-connector.md)</li><li>[檔案系統在內部部署/Azure IaaS](data-factory-onprem-file-system-connector.md)</li><li>[Oracle 資料庫在內部部署/Azure IaaS](data-factory-onprem-oracle-connector.md)</li><li>[MySQL 資料庫在內部部署/Azure IaaS ](data-factory-onprem-mysql-connector.md)</li><li>[DB2 資料庫在內部部署/Azure IaaS](data-factory-onprem-db2-connector.md)</li><li>[Teradata 資料庫在內部部署/Azure IaaS ](data-factory-onprem-teradata-connector.md)</li><li>[Sybase 資料庫在內部部署/Azure IaaS](data-factory-onprem-sybase-connector.md)</li><li>[PostgreSQL 資料庫在內部部署/Azure IaaS](data-factory-onprem-postgresql-connector.md)</li></ul> | <ul><li>[Azure Blob](data-factory-azure-blob-connector.md)</li><li>[Azure 資料表](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB](data-factory-azure-documentdb-connector.md)</li><li>[Azure 資料湖市集](data-factory-azure-datalake-connector.md)</li><li>[SQL Server 在內部部署/Azure IaaS](data-factory-sqlserver-connector.md)</li><li>[檔案系統在內部部署/Azure IaaS](data-factory-onprem-file-system-connector.md)</li></ul> |
+| <ul><li>[Azure Blob](data-factory-azure-blob-connector.md)</li><li>[Azure 資料表](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB](data-factory-azure-documentdb-connector.md)</li><li>[Azure 資料湖存放區](data-factory-azure-datalake-connector.md)</li><li>[SQL Server 在內部部署/Azure IaaS](data-factory-sqlserver-connector.md)</li><li>[檔案系統內部部署/Azure IaaS](data-factory-onprem-file-system-connector.md)</li><li>[Oracle 資料庫內部部署/Azure IaaS](data-factory-onprem-oracle-connector.md)</li><li>[MySQL 資料庫內部部署/Azure IaaS ](data-factory-onprem-mysql-connector.md)</li><li>[DB2 資料庫內部部署/Azure IaaS](data-factory-onprem-db2-connector.md)</li><li>[Teradata 資料庫內部部署/Azure IaaS ](data-factory-onprem-teradata-connector.md)</li><li>[Sybase 資料庫內部部署/Azure IaaS](data-factory-onprem-sybase-connector.md)</li><li>[PostgreSQL 資料庫內部部署/Azure IaaS](data-factory-onprem-postgresql-connector.md)</li></ul> | <ul><li>[Azure Blob](data-factory-azure-blob-connector.md)</li><li>[Azure 資料表](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB](data-factory-azure-documentdb-connector.md)</li><li>[Azure 資料湖存放區](data-factory-azure-datalake-connector.md)</li><li>[SQL Server 在內部部署/Azure IaaS](data-factory-sqlserver-connector.md)</li><li>[檔案系統內部部署/Azure IaaS](data-factory-onprem-file-system-connector.md)</li></ul> |
 
 
 ## 教學課程
-如需使用 「 複製活動的快速教學課程，請參閱 [教學課程: Azure Data Factory 管線中使用複製活動](data-factory-get-started.md)。  在教學課程中，您會使用複製活動將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。 下列區段列出複製活動支援的所有來源與接收。 
+如需使用 「 複製活動的快速教學課程，請參閱 [教學課程 ︰ Azure Data Factory 管線中使用複製活動](data-factory-get-started.md)。  在教學課程中，您會使用複製活動將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。 下列區段列出複製活動支援的所有來源與接收。 
 
 ## <a name="copyactivity"></a>複製活動
 複製活動會採用一個輸入資料集 (**來源**) 和一個輸出資料集 (**接收器**)。 資料複製是根據活動上指定的排程以批次方式完成。 若要深入了解整體活動定義於高的層級，例如各種 JSON 區段和屬性可用於所有活動，請參閱 [了解管線 & 活動](data-factory-create-pipelines.md) 文件。
@@ -74,8 +74,8 @@
 
 請注意： 
 
-- 如果您要複製的資料 **內部部署資料來源** 至 **定域機組** ，反之亦然 (例如: 內部部署 SQL Server]-> [Azure Blob)，資料移動實際上是藉由 **資料管理閘道器** 不參與資料移動服務與內部部署環境中。
-- 如果您要複製 **定域機組來源** 至 **定域機組目的地** (例如: Azure Blob]-> [Azure SQL)、 **資料移動服務** 挑選部署 **最接近中相同的地理位置的接收位置** 傳輸。 例如，如果您要從東南亞複製到日本西部，就可以使用日本東部的資料移動服務部署來執行複製活動。 當來源和目的地位於同一個地理位置，且該地理位置 (例如，目前是澳大利亞) 中沒有可用的資料移動服務時，複製活動將會失敗，而不會透過替代的地理位置。 附註：資料移動服務也會延伸到澳大利亞。 
+- 如果您要複製的資料 **內部部署資料來源** 至 **定域機組** ，反之亦然 (例如 ︰ 內部部署 SQL Server]-> [Azure Blob)，資料移動實際上是藉由 **資料管理閘道器** 不參與資料移動服務與內部部署環境中。
+- 如果您要複製 **定域機組來源** 至 **定域機組目的地** (例如 ︰ Azure Blob]-> [Azure SQL)、 **資料移動服務** 挑選部署 **最接近中相同的地理位置的接收位置** 傳輸。 例如，如果您要從東南亞複製到日本西部，就可以使用日本東部的資料移動服務部署來執行複製活動。 當來源和目的地位於同一個地理位置，且該地理位置 (例如，目前是澳大利亞) 中沒有可用的資料移動服務時，複製活動將會失敗，而不會透過替代的地理位置。 附註：資料移動服務也會延伸到澳大利亞。 
 
 ### <a name="moveonpremtocloud"></a>安全地在內部部署位置與雲端之間移動資料
 現代資料整合的挑戰之一是順暢地在內部部署和雲端之間來回移動資料。 資料管理閘道器是您可以安裝內部部署以啟用混合式資料管線的代理程式。 
@@ -86,7 +86,7 @@
 2.  在相同資料處理站內建立內部部署資料存放區和雲端資料存放區的模型及移動資料。
 3.  具有用於監視和管理的單一窗格，可利用資料處理站雲端為基礎的儀表板看見閘道器的狀態。
 
-您應該將您的資料來源做為內部部署資料來源 (亦即在防火牆後面) 即使使用 **ExpressRoute** 和 **使用閘道** 來建置服務與資料來源之間的連線。 
+您應該將您的資料來源做為內部部署資料來源 （亦即在防火牆後面） 即使使用 **ExpressRoute** 和 **使用閘道** 來建置服務與資料來源之間的連線。 
 
 請參閱 [內部和雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 如需詳細資訊。
 
@@ -108,6 +108,7 @@
 名稱、描述、輸入和輸出資料表、各種原則等屬性都適用於所有活動類型。 中可用的屬性 **typeProperties** 活動區段另一方面會隨著每個活動類型。 
 
 在複製活動 **typeProperties** 區段的來源類型而異，可接收。 以上所列的每個資料存放區特定頁面都會記錄這些資料存放區類型專屬的屬性。
+
 
 
 

@@ -23,22 +23,22 @@
 
 1. 在 [Azure 入口網站](https://portal.azure.com/), 、 使用工作帳戶登入。 例如，使用登入 */users/yourusername*@*YourCompany*。 com。 當您這樣做時，將會自動登入您的公司訂用帳戶。
  
-2. 選取 **瀏覽** 在工作列上:  
+2. 選取 **瀏覽** 在工作列上 ︰  
 ![][14]
 
 3. 在清單中，您可以捲動以尋找 PowerApps 或輸入 *powerapps*:  
 ![][15]  
 
 4. 在 **PowerApps**, ，請選取 **管理 Api**:  
-![瀏覽至已註冊 api][] 5
+![瀏覽至已註冊的 api][5]
 
 5. 在 **管理 Api**, ，請選取 **新增** 新增新的 API:  
-![加入 API][] 6
+![新增 API][6]
 
 6. 輸入描述性 **名稱** 為您的 API。   
 7. 在 **來源**, ，請選取 **可用 Api** 選取預先建置的 Api，並選取 **SharePoint Server**。 
 8. 選取 **設定-設定必要的設定**。
-9. 輸入 *用戶端識別碼* 和 *應用程式金鑰* SharePoint Server 的 Azure Active Directory (AAD 應用程式) 和 *SharePoint URL* 和 *資源識別碼* AAD 的 Proxy 應用程式。 依照下節所列步驟設定您內部部署 SharePoint Server 的連線。  
+9. 輸入 *用戶端識別碼* 和 *應用程式金鑰* SharePoint Server 的 Azure Active Directory （AAD 應用程式） 和 *SharePoint URL* 和 *資源識別碼* AAD 的 Proxy 應用程式。 依照下節所列步驟設定您內部部署 SharePoint Server 的連線。  
 
     > [AZURE.IMPORTANT] 儲存 **重新導向 URL**。 您在本主題的後半部可能需要此值。  
     
@@ -53,12 +53,12 @@ SharePoint Server 使用 Active Directory 進行使用者驗證。 App Service �
 
 [Azure 應用程式 Proxy (AAD Proxy)](../active-directory-application-proxy-publish.md) 用這項需求。 它是 GA 中的 Azure 服務，可保護對內部部署 Web 應用程式的遠端存取與 SSO。 MSDN 中詳細記錄了啟用 AAD Proxy 的步驟。 概括而言，步驟包括：  
 
-1. [啟用應用程式 Proxy 服務](../active-directory-application-proxy-enable.md) – 這包括:  
+1. [啟用應用程式 Proxy 服務](../active-directory-application-proxy-enable.md) – 這包括 ︰  
 
     - 在 Azure AD 中啟用應用程式 Proxy
     - 安裝與註冊 Azure 應用程式 Proxy 連接器
 
-2. [使用應用程式 Proxy 發行應用程式](../active-directory-application-proxy-publish.md) – 這包括:  
+2. [使用應用程式 Proxy 發行應用程式](../active-directory-application-proxy-publish.md) – 這包括 ︰  
 
     - 使用精靈發佈應用程式 Proxy 應用程式。 Proxy 應用程式建立後，請隨即記下內部網路 Sharepoint 網站的外部 URL。
     - 將使用者與群組指派至應用程式。
@@ -80,4 +80,5 @@ Proxy 應用程式建立後，您必須建立另一個委派給 Proxy 應用程�
 [6]: ./media/powerapps-create-api-dropbox/add-api.PNG
 [14]: ./media/powerapps-create-api-office365-outlook/browseall.png
 [15]: ./media/powerapps-create-api-office365-outlook/allresources.png
+
 

@@ -20,7 +20,7 @@
 
 ## 概觀
 
-您可以在 Webjob 中執行程式或指令碼程式 [應用程式服務](http://go.microsoft.com/fwlink/?LinkId=529714) 三種方式的 web 應用程式: 隨選、 連續或根據排程。 使用 WebJob 不會產生額外的費用。
+您可以在 Webjob 中執行程式或指令碼程式 [應用程式服務](http://go.microsoft.com/fwlink/?LinkId=529714) 三種方式的 web 應用程式 ︰ 隨選、 連續或根據排程。 使用 WebJob 不會產生額外的費用。
 
 本文將說明如何使用部署 WebJobs [Azure 入口網站](https://portal.azure.com)。 如需如何使用 Visual Studio 或連續傳遞程序部署的資訊，請參閱 [如何將 Azure Webjob 部署至 Web 應用程式](websites-dotnet-deploy-webjobs.md)。
 
@@ -74,7 +74,7 @@ Azure WebJobs SDK 能簡化許多 WebJobs 程式設計工作。 如需詳細資�
     
 > 若要讓連續 WebJobs 能夠在所有執行個體上可靠地執行，請對 Web 應用程式啟用 [永遠開啟] 組態設定，否則當 SCM 主機網站閒置太久時，其可能會停止執行。
 
-## <a name="CreateScheduledCRON"></a>建立排程的 WebJob 使用 CRON 運算式
+## <a name="CreateScheduledCRON"></a>使用 CRON 運算式建立排定的 WebJob 
 
 這項技術可用於在標準或高階模式中執行的 Web 應用程式，並需要 **Always On** 啟用應用程式設定。
 
@@ -97,10 +97,10 @@ CRON 運算式由 6 個欄位組成: `{second} {minute} {hour} {day} {month} {da
 - 每天上午 9:30：`0 30 9 * * *`
 - 每個工作日上午 9:30：`0 30 9 * * 1-5`
 
-**請注意**: 在部署 webjob 的形式從 Visual Studio，請務必將標示您 `settings.job` 檔案做為 '複本才' 屬性。
+**請注意**︰ 在部署 webjob 的形式從 Visual Studio，請務必將標示您 `settings.job` 檔案做為 '複本才' 屬性。
 
 
-## <a name="CreateScheduled"></a>建立使用 Azure 排程器排定的 WebJob
+## <a name="CreateScheduled"></a>使用 Azure 排程器建立排定的 WebJob 
 
 以下的替代技術會使用 Azure 排程器。 在此情況下，您的 WebJob 對排程一無所知。 反而是 Azure 排程器會被設定為依排程觸發 WebJob。 
 
@@ -114,11 +114,11 @@ Azure 入口網站尚未具備建立排定的 WebJob 的能力，但之前加入
     
 2. 選擇 **排程器區域** 為您的工作，然後按一下右下方，前進到下一個畫面] 對話方塊上的箭號。
 
-3. 在 **建立工作** ] 對話方塊中，選擇的型別 **循環** 想: **一次工作** 或 **週期性工作**。
+3. 在 **建立工作** ] 對話方塊中，選擇的型別 **循環** 想 ︰ **一次工作** 或 **週期性工作**。
     
     ![排定週期][SchdRecurrence]
     
-4. 也選擇 **起始** 時間: **現在** 或 **在特定時間**。
+4. 也選擇 **起始** 時間 ︰ **現在** 或 **在特定時間**。
     
     ![排定開始時間][SchdStart]
     
@@ -150,7 +150,7 @@ Azure 入口網站尚未具備建立排定的 WebJob 的能力，但之前加入
     
     ![工作清單][WebJobsListWithSeveralJobs]
     
-### <a name="Scheduler"></a>排程的工作和 Azure 排程器
+### <a name="Scheduler"></a>排程工作和 Azure 排程器
 
 Azure 排程器頁面中可以進一步設定排程的工作 [傳統入口網站](http://manage.windowsazure.com)。
 
@@ -193,7 +193,7 @@ Azure 排程器頁面中可以進一步設定排程的工作 [傳統入口網站
     按一下這些連結中的任一連結可帶您前往選取之工作的 [WebJob 詳細資料] 頁面。
 
 
-## <a name="WHPNotes"></a>注意事項
+## <a name="WHPNotes"></a>注意
     
 - 如果沒有對 scm (部署) 網站提出任何要求，則免費模式的 Web 應用程式可能會在 20 分鐘之後逾時，且 Web 應用程式在 Azure 中的入口網站也不會開啟。 對實際網站的要求將不會重設此項目。
 - 連續工作的程式碼需經過撰寫，才能以無限迴圈的形式執行。
@@ -201,15 +201,15 @@ Azure 排程器頁面中可以進一步設定排程的工作 [傳統入口網站
 - [基本] 和 [標準] 模式能提供「永遠開啟」功能，此功能在啟用後能預防 Web 應用程式進入閒置狀態。
 - 您僅可偵錯連續執行的 WebJobs。 不支援偵錯排程或隨選的 WebJobs。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## <a name="NextSteps"></a>後續步驟
  
 如需詳細資訊，請參閱 [Azure WebJobs 建議資源][WebJobsRecommendedResources]。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 如需舊入口網站變更為新入口網站的指南，請參閱: [瀏覽預覽入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需舊入口網站變更為新入口網站的指南，請參閱 ︰ [瀏覽預覽入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 [PSonWebJobs]:http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 [WebJobsRecommendedResources]:http://go.microsoft.com/fwlink/?LinkId=390226
@@ -238,4 +238,5 @@ Azure 排程器頁面中可以進一步設定排程的工作 [傳統入口網站
 [SchedulerPortal]: ./media/web-sites-create-web-jobs/32SchedulerPortal.png
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
+
 

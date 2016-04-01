@@ -25,7 +25,7 @@
 
 > [AZURE.SELECTOR]
 - [.NET 後端](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [Javascript 後端](mobile-services-schedule-recurring-tasks.md)
+- [JavaScript 後端](mobile-services-schedule-recurring-tasks.md)
 
 本主題將示範如何在 Azure 傳統入口網站中使用作業排程器功能，以根據您所定義的排程來定義要執行的伺服器指令碼。 在此情況下，指令碼會定期向遠端服務 (在此案例中為 Twitter) 查詢，並將結果儲存在新資料表中。 可排定的其他一些定期工作包括：
 
@@ -35,7 +35,7 @@
 
 本教學課程將逐步引導您瞭解如何使用工作排程器，來建立向 Twitter 要求推文資料並在新的 Updates 資料表中儲存推文的排定工作。
 
->[AZURE.NOTE]本教學課程會使用第三方 LINQ to Twitter 程式庫來簡化對 Twitter v1.1 OAuth 2.0 存取。 。 您必須下載並安裝 LINQ to Twitter NuGet 封裝，才能完成本教學課程。 如需詳細資訊，請參閱 [LINQ to Twitter CodePlex 專案中的]。
+>[AZURE.NOTE]本教學課程會使用第三方 LINQ to Twitter 程式庫來簡化對 Twitter v1.1 OAuth 2.0 存取。 。 您必須下載並安裝 LINQ to Twitter NuGet 封裝，才能完成本教學課程。 如需詳細資訊，請參閱 [LINQ to Twitter CodePlex project]。
 
 ##<a name="get-oauth-credentials"></a>註冊以取得 Twitter v1.1 API 的存取權與儲存認證
 
@@ -74,12 +74,12 @@
 
     這會加入新的組件參考。
 
-2. 在此新類別中新增下列 **使用** 陳述式:
+2. 在此新類別中新增下列 **使用** 陳述式 ︰
 
         using Microsoft.WindowsAzure.Mobile.Service;
         using System.ComponentModel.DataAnnotations;
 
-3. 取代 **更新** 類別定義以下列程式碼:
+3. 取代 **更新** 類別定義以下列程式碼 ︰
 
         public class Updates
         {
@@ -250,7 +250,7 @@
 
 3. 將行動服務專案重新發佈至 Azure。
 
-4. 在 [Azure 傳統入口網站]，按一下 [行動服務，然後按一下您的應用程式。
+4. 在 [Azure classic portal], ，按一下 [行動服務，然後按一下 [應用程式。
 
 2. 按一下 [ **排程器** 索引標籤，然後按一下 [ **+ 建立**。
 
@@ -268,7 +268,7 @@
 
     >[AZURE.NOTE]POST 要求仍然可以用於啟動排程的工作。 However, the authorization defaults to user, which means that the request must include the application key in the header.
 
-4. (選擇性)在 [Azure 傳統入口網站]，按一下 [管理您的行動服務相關聯的資料庫。
+4. （選擇性）在 [Azure classic portal], ，按一下 [管理您的行動服務相關聯的資料庫。
 
     ![][6]
 
@@ -304,3 +304,4 @@
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter CodePlex project]: http://linqtotwitter.codeplex.com/
+

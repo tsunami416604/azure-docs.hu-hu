@@ -25,7 +25,7 @@
 
 ## 工作區擁有者
 
-當您建立新的 Machine Learning 工作區時，工作區擁有者] 欄位中輸入的識別碼必須是有效的 Microsoft 帳戶 (先前稱為 Windows Live ID)，例如 john-contoso@live.com 或 john-contoso@hotmail.com。 不可以使用非 Microsoft 帳戶，例如您的公司電子郵件帳戶。 若要建立免費的 Microsoft 帳戶，請移至 [www.live.com](http://www.live.com)。
+當您建立新的 Machine Learning 工作區時，工作區擁有者] 欄位中輸入的識別碼必須是有效的 Microsoft 帳戶 （先前稱為 Windows Live ID)，例如 john-contoso@live.com 或 john-contoso@hotmail.com。 不可以使用非 Microsoft 帳戶，例如您的公司電子郵件帳戶。 若要建立免費的 Microsoft 帳戶，請移至 [www.live.com](http://www.live.com)。
 
 請注意，您用來登入 Azure 傳統入口網站來建立工作區的帳戶不會自動沒有權限 *開啟* 該工作區中，除非該帳戶指定為擁有者。 若要在 Machine Learning Studio 中開啟工作區，您必須使用定義為工作區擁有者的 Microsoft 帳戶登入，或者您需要收到來自擁有者的邀請，才能加入工作區。 不過，您可以在 Azure 傳統入口網站從 *管理* 工作區中，其中包括變更擁有者和設定存取能力。
 
@@ -79,4 +79,5 @@ To see if you can create a new storage account, in the Classic Portal, go to **S
 [screen4]:media/machine-learning-troubleshooting-creating-ml-workspace/screen4.png
 [screen5]:media/machine-learning-troubleshooting-creating-ml-workspace/screen5.png
 [screen6]:media/machine-learning-troubleshooting-creating-ml-workspace/screen6.png
+
 

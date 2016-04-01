@@ -24,7 +24,7 @@
 
 如圖 1 所示，儘管通常是使用 VIP:&lt;連接埠號碼&gt; 來存取個別 VM，但還是會使用 VIP 來存取雲端服務。 將 ILPIP 指派給特定的 VM，就能直接使用該 IP 位址來存取 VM。
 
-當您在 Azure 中建立雲端服務時，對應的 DNS A 記錄即會自動建立，以允許透過完整格式的網域名稱 (FQDN) 存取服務，而不需使用實際的 VIP。 相同程序也適用於 ILPIP，但可改為透過 FQDN 而不是 ILPIP 來允許存取 VM 或角色執行個體。 比方說，如果您建立雲端服務，名為 *contosoadservice*, ，並設定名為的 web 角色 *contosoweb* 有兩個執行個體，Azure 會登錄下列 A 記錄的執行個體:
+當您在 Azure 中建立雲端服務時，對應的 DNS A 記錄即會自動建立，以允許透過完整格式的網域名稱 (FQDN) 存取服務，而不需使用實際的 VIP。 相同程序也適用於 ILPIP，但可改為透過 FQDN 而不是 ILPIP 來允許存取 VM 或角色執行個體。 比方說，如果您建立雲端服務，名為 *contosoadservice*, ，並設定名為的 web 角色 *contosoweb* 有兩個執行個體，Azure 會登錄下列 A 記錄的執行個體 ︰
 
 - contosoweb\_IN_0.contosoadservice.cloudapp.net
 - contosoweb\_IN_1.contosoadservice.cloudapp.net 
@@ -37,13 +37,13 @@
 - **輸出 IP** -源自 VM 的輸出流量使用 ILPIP 做為來源所送出，這可唯一識別為外部實體 VM。
 
 ## 如何在建立 VM 期間要求 ILPIP
-下列 PowerShell 指令碼會建立新的雲端服務，名為 *FTPService*, ，然後從 Azure 擷取映像，並建立名為 VM *FTPInstance* 使用擷取的映像，設定要使用 ILPIP，VM，並將 VM 加入新的服務:
+下列 PowerShell 指令碼會建立新的雲端服務，名為 *FTPService*, ，然後從 Azure 擷取映像，並建立名為 VM *FTPInstance* 使用擷取的映像，設定要使用 ILPIP，VM，並將 VM 加入新的服務 ︰
 
     New-AzureService -ServiceName FTPService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
     New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
-    | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
-    | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
+  	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
+  	| Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 
 ## 如何擷取 VM 的 ILPIP 資訊
 若要檢視使用上述指令碼建立之 VM 的 ILPIP 資訊，請執行下列 PowerShell 命令，並觀察值 *PublicIPAddress* 和 *PublicIPName*:
@@ -81,15 +81,15 @@
 若要移除在上述指令碼中加入 VM 的 ILPI，請執行下列 PowerShell 命令：
     
     Get-AzureVM -ServiceName FTPService -Name FTPInstance `
-    | Remove-AzurePublicIP `
-    | Update-AzureVM
+  	| Remove-AzurePublicIP `
+  	| Update-AzureVM
 
 ## 如何將 ILPIP 加入現有的 VM
 若要將 ILPIP 加入使用上述指令碼建立的 VM，請執行下列命令：
 
     Get-AzureVM -ServiceName FTPService -Name FTPInstance `
-    | Set-AzurePublicIP -PublicIPName ftpip2 `
-    | Update-AzureVM
+  	| Set-AzurePublicIP -PublicIPName ftpip2 `
+  	| Update-AzureVM
 
 ## 如何使用服務組態檔來將 ILPIP 關聯至 VM
 您也可以使用服務組態檔 (CSCFG) 來將 ILPIP 關聯至 VM。 下列範例 xml 示範如何設定雲端服務，以使用保留的 IP，名為 *MyReservedIP* 做為角色執行個體的 ILPIP: 
@@ -124,3 +124,4 @@
 
 [保留的 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
+

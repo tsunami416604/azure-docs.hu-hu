@@ -30,7 +30,7 @@
 Azure PowerShell 隨附的 Cmdlet 無法直接支援「管理通知中樞」。 從 PowerShell 進行的最佳方法，是參考 Microsoft.Azure.NotificationHubs.dll 組件。 組件隨附於 [Microsoft Azure 通知中樞 NuGet 封裝](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 
-## 先決條件
+## 必要條件
 
 開始閱讀本文之前，您必須符合下列必要條件：
 
@@ -99,8 +99,8 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 1. `$Namespace`：將此變數設定為要建立通知中樞之命名空間的名稱。
 2. `$Path`：將此路徑設定為新的通知中樞之名稱。  例如，"MyHub"。    
-3. `$WnsPackageSid` : 將此值設為您的封裝 SID Windows 應用程式從 [Windows 開發人員中心](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)。
-4. `$WnsSecretkey`: 這秘密金鑰來為您設定 Windows 應用程式從 [Windows 開發人員中心](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)。
+3. `$WnsPackageSid` ︰ 將此值設為您的封裝 SID Windows 應用程式從 [Windows 開發人員中心](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)。
+4. `$WnsSecretkey`︰ 這秘密金鑰來為您設定 Windows 應用程式從 [Windows 開發人員中心](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)。
 
 這些變數可用以連接命名空間，以及建立新的通知中樞，並將其設定為利用 WNS 認證，為 Windows 應用程式處理 Windows Notification Services (WNS) 通知。 如需取得封裝 SID 和秘密金鑰，請參閱 [開始使用通知中心](notification-hubs-windows-store-dotnet-get-started.md) 教學課程。 
 
@@ -173,4 +173,5 @@ else
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
  
+
 

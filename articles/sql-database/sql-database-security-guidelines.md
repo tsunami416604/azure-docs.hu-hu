@@ -33,7 +33,7 @@ SQL 資料庫和您的應用程式之間的所有通訊隨時都需要加密 (SS
 
 若要使用應用程式程式碼或工具驗證憑證，請明確地要求加密的連接，並且不要信任伺服器憑證。 即使您的應用程式程式碼或工具未要求加密連接，它們仍然會接收加密的連接。 不過，它們可能不會驗證伺服器憑證，這樣一來很容易受到「攔截式」攻擊。
 
-若要使用 ADO.NET 應用程式程式碼驗證憑證，請在資料庫連接字串中設定 ``Encrypt=True`` 和 ``TrustServerCertificate=False``。 如需詳細資訊，請參閱 [程式碼範例: 重試邏輯來連接到 Azure SQL 資料庫與 ADO.NET](https://msdn.microsoft.com/library/azure/ee336243.aspx)。
+若要使用 ADO.NET 應用程式程式碼驗證憑證，請在資料庫連接字串中設定 ``Encrypt=True`` 和 ``TrustServerCertificate=False``。 如需詳細資訊，請參閱 [程式碼範例 ︰ 重試邏輯來連接到 Azure SQL 資料庫與 ADO.NET](https://msdn.microsoft.com/library/azure/ee336243.aspx)。
 
 SQL Server Management Studio 也支援憑證驗證。 在 **連接到伺服器** 對話方塊中，按一下 [ **加密連接** 上 **連接屬性** ] 索引標籤。 
 
@@ -88,7 +88,7 @@ GO
 - 只有伺服器層級主體登入和成員 **dbmanager** 中的資料庫角色 **主要** 資料庫擁有執行權限 ``CREATE DATABASE`` 和 ``DROP DATABASE`` 陳述式。
 - 只有伺服器層級主體登入和成員 **loginmanager** 中的資料庫角色 **主要** 資料庫擁有執行權限 ``CREATE LOGIN``, ，``ALTER LOGIN``, ，和 ``DROP LOGIN`` 陳述式。
 - 若要 ``CREATE/ALTER/DROP``，使用者必須擁有資料庫的 ``ALTER ANY USER`` 權限。
-- 當資料庫角色的擁有者會嘗試新增或移除該資料庫角色的另一個資料庫使用者時，可能會發生下列錯誤: **使用者或角色 'Name' 不存在於這個資料庫。**因為擁有者看不到使用者，所以會發生此錯誤。 若要解決這個問題，請為角色擁有者授與使用者的 ``VIEW DEFINITION`` 權限。 
+- 當資料庫角色的擁有者會嘗試新增或移除該資料庫角色的另一個資料庫使用者時，可能會發生下列錯誤 ︰ **使用者或角色 'Name' 不存在於這個資料庫。** 因為擁有者看不到使用者，所以會發生此錯誤。 若要解決這個問題，請為角色擁有者授與使用者的 ``VIEW DEFINITION`` 權限。 
 
 如需登入和使用者的詳細資訊，請參閱 [管理資料庫和登入 Azure SQL Database 中的](sql-database-manage-logins.md)。
 
@@ -110,4 +110,5 @@ GO
 [管理 Azure SQL Database 的資料庫和登入](sql-database-manage-logins.md)
 
 [SQL Server Database Engine 和 Azure SQL Database 的資訊安全中心](https://msdn.microsoft.com/library/bb510589)
+
 

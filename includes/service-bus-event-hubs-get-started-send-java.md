@@ -6,14 +6,14 @@
 
 2. 在 Eclipse 中，建立名為的新 Java 專案 **寄件者**。
 
-3. 在 Eclipse 封裝總管] 中，以滑鼠右鍵按一下 **寄件者** 專案，然後選取 **屬性**。 在對話方塊的左窗格中，按一下 [ **Java 組建路徑**, ，然後按一下 [ **程式庫** ] 索引標籤，然後 **新增程式庫** ] 按鈕。 選取 **Apache Qpid Client Libraries for JMS (由 MS Open Tech) 套件**, ，按一下 [ **下一步**, ，然後按一下 [ **完成**。
+3. 在 Eclipse 封裝總管] 中，以滑鼠右鍵按一下 **寄件者** 專案，然後選取 **屬性**。 在對話方塊的左窗格中，按一下 [ **Java 組建路徑**, ，然後按一下 [ **程式庫** ] 索引標籤，然後 **新增程式庫** ] 按鈕。 選取 **Apache Qpid Client Libraries for JMS （由 MS Open Tech) 套件**, ，按一下 [ **下一步**, ，然後按一下 [ **完成**。
 
     ![][8]
 
 4. 建立名為 **servicebus.properties** 根目錄中的 **寄件者** 專案中的，使用下列內容。 請記得將值取代為您的：
     - 事件中樞名稱。
     - 命名空間名稱 (後者通常是 `{event hub name}-ns`)。
-    - URL 編碼 **SendRule** (您記下這個機碼時建立事件中樞) 的索引鍵。 您可以進行 URL 編碼它 [這裡](http://www.w3schools.com/tags/ref_urlencode.asp)。
+    - URL 編碼 **SendRule** （您記下這個機碼時建立事件中樞） 的索引鍵。 您可以進行 URL 編碼它 [這裡](http://www.w3schools.com/tags/ref_urlencode.asp)。
 
             # servicebus.properties - sample JNDI configuration
 
@@ -91,4 +91,5 @@
 
 <!-- Images -->
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-java1.png
+
 

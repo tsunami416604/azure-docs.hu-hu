@@ -30,7 +30,7 @@
 <tr><td>**下載**</td><td>[Maven](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)</td></tr>
 <tr><td>**參與**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 <tr><td>**文件**</td><td>[Java SDK Reference Documentation](http://azure.github.io/azure-documentdb-java/)</td></tr>
-<tr><td>**開始**</td><td>[Get started with the Java SDK](documentdb-java-application.md)</td></tr>
+<tr><td>**開始使用**</td><td>[Get started with the Java SDK](documentdb-java-application.md)</td></tr>
 <tr><td>**目前支援的執行階段**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
@@ -91,4 +91,5 @@ Microsoft 提供通知的最少 **12 個月** 之前淘汰 SDK 從容地轉換�
 ## 另請參閱
 
 若要深入了解 DocumentDB，請參閱 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服務頁面。 
+
 

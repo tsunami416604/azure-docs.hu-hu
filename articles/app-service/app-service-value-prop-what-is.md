@@ -60,3 +60,4 @@ Azure 應用程式著重於 Web 和行動應用程式的快速開發以及商務
 [建立新的應用程式](http://go.microsoft.com/fwlink/?LinkId=523751) 立即免費。 不需要信用卡，無需承諾和繁複程序。
  
 
+

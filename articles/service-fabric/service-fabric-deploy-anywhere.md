@@ -20,13 +20,13 @@
 Service Fabric 可允許在執行 Windows Server 或 Linux 的任何 VM 或電腦上建立 Service Fabric 叢集。 這可讓您在任何環境中 (不論是在內部部署環境或在任何您有一組互連式 Windows Server 或 Linux 電腦的雲端提供者上) 部署和執行 Service Fabric 應用程式。 Service Fabric 會提供一個安裝套件供您建立 Service Fabric 叢集。 「隨處部署」功能的主要優點在於當您使用 Service Fabric 來建置應用程式時，不會受到廠商限制，因為是您選擇這些應用程式的執行位置。 這也增加了您拓展客戶群的可能性，因為不同的客戶針對要用來執行您應用程式的環境可能會有各種不同的需求，例如「醫療保健」和「金融」業客戶的需求可能與「汽車製造」或「旅遊」業不同。 這項功能的技術預覽版預期會在 2016 年的第一季發行。
 
 ## 支援的作業系統
-您可以在 Vm 或執行這些作業系統的機器上建立叢集:
+您可以在 Vm 或執行這些作業系統的機器上建立叢集 ︰
 * Windows Server 2012 R2
 * Windows 2016 Server
 * Linux
 
 ## 支援的程式設計語言
-您可以撰寫 Service Fabric 應用程式與任何一種程式設計語言:
+您可以撰寫 Service Fabric 應用程式與任何一種程式設計語言 ︰
 * C#
 * Java
 
@@ -49,6 +49,7 @@ Service Fabric 將會提供您可從 Microsoft 下載中心下載的安裝套件
 
 * Azure 入口網站：Azure 入口網站能輕鬆建立和管理叢集。
 * Azure 資源管理員：使用 ARM 可輕鬆管理叢集做為單位使用的所有資源，並簡化成本追蹤與付費作業。 
-* 診斷: 在 Azure 上我們提供您整合 WAD (Windows Azure 診斷) 和 Operational Insights 的診斷。
+* 診斷 ︰ 在 Azure 上我們提供您整合 WAD （Windows Azure 診斷） 和 Operational Insights 的診斷。
 * 自動調整：對於 Azure 裝載的叢集，我們將提供內建的自動調整功能。 在其他使用「隨處部署」功能的環境中，您將必須建置您自己的自動調整規模功能，或使用 Service Fabric 針對調整叢集規模顯示的 API 來手動調整規模。
+
 

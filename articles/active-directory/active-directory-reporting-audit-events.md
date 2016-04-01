@@ -80,11 +80,11 @@ Azure Active Directory 稽核報告可協助客戶識別其 Azure Active Directo
 
 <!---
 
-仍然需要描述事件的清單:
+List of events that still need descriptions:
 
-還原應用程式
-設定字串驗證原則
-升級至夥伴的租用戶
+Restore Application
+Set String Auth Policy
+Promote tenant to partner
 
 --->
 
@@ -121,4 +121,5 @@ StrongAuthenticationUserDetails | 使用者用於多因素驗證和密碼重設�
 TelephoneNumber                 | 使用者的電話號碼。
 
 稽核記錄是許多標準規定的必要控制項。 對於使用 Azure Active Directory 稽核報告以符合其標準規定的客戶，建議客戶提交一份本說明主題的副本 (連同客戶匯出的稽核報告副本)，協助說明報告的詳細資料。 如果稽核人員想要了解 Azure 目前符合的法規，稽核人員導向至 [相容性頁面](http://azure.microsoft.com/support/trust-center/compliance/) 的 Microsoft Azure 信任中心。
+
 

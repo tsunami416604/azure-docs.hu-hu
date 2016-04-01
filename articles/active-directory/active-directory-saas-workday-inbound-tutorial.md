@@ -124,7 +124,7 @@
 
 ## 設定安全性群組選項
 
-在此步驟中，您授與新的安全性群組權限的 **取得** 和 **放** 下列網域安全性原則所保護的物件上的作業:
+在此步驟中，您授與新的安全性群組權限的 **取得** 和 **放** 下列網域安全性原則所保護的物件上的作業 ︰
 
 - 外部帳戶佈建
 
@@ -151,7 +151,7 @@
 
  
 
-5. 重複上述步驟 1，返回選取功能區域，畫面，這次，搜尋人員配置，請選取 [人員配置] 功能區域，然後按一下 **確定**。<br><br> ![網域安全性原則](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "Domain Security Policies")  
+5. 重複上述步驟 1，返回選取功能區域，畫面，這次，搜尋人員配置，請選取 [人員配置] 功能區域，然後按一下 **確定**。<br><br>   ![網域安全性原則](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "Domain Security Policies")  
  
 
 6. 在 [人員配置] 功能區域的安全性原則清單中，展開 [人員資料：人員配置]，並對其餘的各安全性原則重複上述步驟 4：
@@ -225,4 +225,5 @@
 
 * [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](active-directory-saas-tutorial-list.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](active-directory-appssoaccess-whatis.md)
+
 

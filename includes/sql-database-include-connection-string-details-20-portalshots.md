@@ -1,7 +1,7 @@
 <!--
 includes/sql-database-include-connection-string-20-portalshots.md
 
-最新的有效性檢查: 2015年-09-02，GeneMi。
+Latest Freshness check:  2015-09-02 , GeneMi.
 
 ## Connection string
 -->
@@ -10,7 +10,7 @@ includes/sql-database-include-connection-string-20-portalshots.md
 ### 從 Azure 入口網站取得連接字串
 
 
-使用 [Azure 預覽入口網站](http://portal.azure.com/) 來取得用戶端程式與 Azure SQL 資料庫互動所需的連接字串:
+使用 [Azure 預覽入口網站](http://portal.azure.com/) 來取得用戶端程式與 Azure SQL 資料庫互動所需的連接字串 ︰
 
 
 1. 按一下 [ **瀏覽** > **SQL 資料庫**。
@@ -35,7 +35,7 @@ includes/sql-database-include-connection-string-20-portalshots.md
 <!--
 Could not find a good link for PHP
 
-如需詳細資訊，請參閱:<br/>[連接字串和組態檔](https://msdn.microsoft.com/library/ms378428.aspx)。
+For more information, see:<br/>[Connection Strings and Configuration Files](https://msdn.microsoft.com/library/ms378428.aspx).
 -->
 
 
@@ -55,4 +55,5 @@ includes/sql-database-include-connection-string-20-portalshots.md
 includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
+
 

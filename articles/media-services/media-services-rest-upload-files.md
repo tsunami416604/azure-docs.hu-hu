@@ -22,10 +22,10 @@
 [AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
  
 
-在媒體服務中，您會將數位檔案上傳到到資產。  [資產](https://msdn.microsoft.com/library/azure/hh974277.aspx) 實體可以包含視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式輔助字幕檔案 (和這些檔案的相關中繼資料。)一旦檔案會上傳到資產，您的內容會安全地儲存在雲端，以便進行進一步的處理和串流。 
+在媒體服務中，您會將數位檔案上傳到到資產。  [資產](https://msdn.microsoft.com/library/azure/hh974277.aspx) 實體可以包含視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式輔助字幕檔案 （和這些檔案的相關中繼資料。）一旦檔案會上傳到資產，您的內容會安全地儲存在雲端，以便進行進一步的處理和串流。 
 
 
->[AZURE.NOTE]媒體服務在建置串流內容 (例如，http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。) 的 Url 時使用 IAssetFile.Name 屬性的值基於這個理由，不允許 percent-encoding。 值 **名稱** 屬性不能有下列任何一個 [%-保留字元](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $，/? %# []"。 此外，只能有一個 '。 ' 副檔名。
+>[AZURE.NOTE]媒體服務在建置串流內容 (例如，http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。) 的 Url 時使用 IAssetFile.Name 屬性的值基於這個理由，不允許 percent-encoding。 值 **名稱** 屬性不能有下列任何一個 [%-保留字元](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): ！ *' （);: @& = + $，/？ %# []"。 此外，只能有一個 '。 ' 副檔名。
 
 上傳資產的基本工作流程分成下列各節：
 
@@ -39,7 +39,7 @@ AMS 也可讓您上傳大量資產。 如需詳細資訊，請參閱 [這](media
 
 ###建立資產
 
->[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量:
+>[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量 ︰
 >
 >在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
@@ -49,18 +49,18 @@ AMS 也可讓您上傳大量資產。 如需詳細資訊，請參閱 [這](media
 
 當建立資產時，您可以指定屬性的其中一個 **選項**。 **選項** 是描述可以使用建立資產之加密選項的列舉值。 有效的值是以下清單的其中一個值，而不是值的組合。 
 
-- **無** = **0**: 不會使用加密。 這是預設值。 請注意，使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
+- **無** = **0**︰ 不會使用加密。 這是預設值。 請注意，使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
     如果您計劃使用漸進式下載傳遞 MP4，請使用此選項。 
 
-- **StorageEncrypted** = **1**: 指定是否要加密 AES 256 位元加密上, 傳和儲存檔案。
+- **StorageEncrypted** = **1**︰ 指定是否要加密 AES 256 位元加密上, 傳和儲存檔案。
 
     如果您的資產是儲存體加密，必須設定資產傳遞原則。 如需詳細資訊，請參閱 [設定資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)。
 
-- **CommonEncryptionProtected** = **2**: 指定是否您要上傳使用一般加密方法 (例如 PlayReady) 保護的檔案。 
+- **CommonEncryptionProtected** = **2**︰ 指定是否您要上傳使用一般加密方法 （例如 PlayReady) 保護的檔案。 
 
-- **EnvelopeEncryptionProtected** = **4**: 指定是否您要上傳使用 AES 檔案加密的 HLS。 請注意，檔案必須已由 Transform Manager 編碼和加密。
+- **EnvelopeEncryptionProtected** = **4**︰ 指定是否您要上傳使用 AES 檔案加密的 HLS。 請注意，檔案必須已由 Transform Manager 編碼和加密。
 
->[AZURE.NOTE]如果您的資產會使用加密，您必須建立 **ContentKey** 並將它連結到您的資產，如下列主題中所述:[如何建立 ContentKey](media-services-rest-create-contentkey.md)。 請注意，將檔案上傳到資產之後，需要上加密屬性更新 **AssetFile** 期間得到的值與實體 **資產** 加密。 請使用 **合併** HTTP 要求。 
+>[AZURE.NOTE]如果您的資產會使用加密，您必須建立 **ContentKey** 並將它連結到您的資產，如下列主題中所述 ︰[如何建立 ContentKey](media-services-rest-create-contentkey.md)。 請注意，將檔案上傳到資產之後，需要上加密屬性更新 **AssetFile** 期間得到的值與實體 **資產** 加密。 請使用 **合併** HTTP 要求。 
 
 
 下列範例示範如何建立資產。
@@ -116,7 +116,7 @@ AMS 也可讓您上傳大量資產。 如需詳細資訊，請參閱 [這](media
 
 請注意， **AssetFile** 執行個體和實際的媒體檔案是兩個不同的物件。 AssetFile 執行個體包含媒體檔案的相關中繼資料，而媒體檔案包含實際的媒體內容。
 
-您將數位媒體檔案上傳至 blob 容器之後，您將使用 **合併** HTTP 要求，以媒體檔案的相關資訊更新 AssetFile (如本主題稍後所示)。 
+您將數位媒體檔案上傳至 blob 容器之後，您將使用 **合併** HTTP 要求，以媒體檔案的相關資訊更新 AssetFile （如本主題稍後所示）。 
 
 **HTTP 要求**
 
@@ -528,3 +528,4 @@ IngestManifestFile 代表實際的視訊或音訊 Blob 物件，將針對資產�
  
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
+

@@ -1,11 +1,11 @@
 <properties
-    pageTitle ="HDInsight 應用程式合作夥伴 |Microsoft Azure 「 
-    描述 = 「 客戶輕鬆地現在可以探索和部署旁直接從其 HDInsight 叢集佈建入口網站中的巨量資料應用程式。 」
-    服務 ="hdinsight" 
-    documentationCenter ="na" 
-    作者 ="pablissima" 
-    管理員 ="paulettm ="" 
-    標記 =""/ >
+    pageTitle="HDInsight 應用程式合作夥伴 |Microsoft Azure" 
+    description="客戶可以立即輕鬆地探索和部署旁直接從其 HDInsight 叢集佈建入口網站中的巨量資料應用程式。"
+    services="hdinsight" 
+    documentationCenter="na" 
+    authors="pablissima" 
+    manager="paulettm="" 
+    tags=""/>
 <tags
     ms.service="hdinsight"
     ms.devlang="na"
@@ -57,7 +57,7 @@ Datameer 的端對端巨量資料探索方案可讓商務使用者
 巨量資料應用程式。 並行建置應用程式基礎結構
 產品專為協助企業建立、 部署、 執行和
 管理大規模 Apache Hadoop 上的資料處理應用程式。
-並行是最廣泛使用的重疊顯示 ™ 背後心和
+並行是最廣泛使用 Cascading™ 背後心和
 部署具有超過 75000 + 巨量資料應用程式的技術
 使用者會下載一個月。 使用千分位資料驅動型企業
 Twitter，包括是 eBay 氣候 Corp Etsy、 重疊顯示
@@ -86,7 +86,7 @@ RedPoint 難以找出具有 MapReduce 技術人員，具有
 已經在使用傳統的資料庫現在已可輕易地
 使用儲存在 Hadoop 中的資料。 不需要新的技能。 沒有 MapReduce、 無
 沒有 Pig – 由於 RedPoint 的圖形化使用者介面和純粹 hive
-YARN 架構 (Hadoop 2.0 由 Hortonworks 認證)。
+YARN 架構 （Hadoop 2.0 由 Hortonworks 認證）。
 
 使用 RedPoint:  
 -  可在執行所有的資料品質和資料整合函式
@@ -136,4 +136,5 @@ Kyvos 致力於解除鎖定使用巨量資料分析的強大功能及其
 多維度分析巨量資料。 使用者可以視覺化，
 探索和分析其資料以互動方式上沒有的 Hadoop
 所需的程式設計。
+
 

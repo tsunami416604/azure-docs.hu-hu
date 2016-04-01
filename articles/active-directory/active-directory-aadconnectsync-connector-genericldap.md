@@ -27,7 +27,7 @@
 對於 MIM2016 和 FIM2010R2 連接器是可以從下載 [Microsoft 下載中心](http://go.microsoft.com/fwlink/?LinkId=717495)。
 
 提到 IETF RFC 時，本文件會使用 (RFC [RFC 編號]/[RFC 文件中的區段]) 格式，例如：(RFC 4512/4.3)。
-您可以在 http://tools.ietf.org/html/rfc4500 (您需要使用正確的 RFC 編號來取代 4500) 中找到詳細資訊。
+您可以在 http://tools.ietf.org/html/rfc4500 （您需要使用正確的 RFC 編號來取代 4500） 中找到詳細資訊。
 
 ## 一般 LDAP 連接器概觀
 
@@ -39,10 +39,10 @@ IETF RFC 中未指定某些作業和結構描述項目，例如需要執行差�
 
 | 功能 | 支援 |
 | --- | --- |
-| 連接的資料來源 | 此連接器支援所有 LDAP v3 伺服器 (RFC 4510 相容)。 測試過它取代為下列: <li>Microsoft Active Directory Lightweight Directory Services (AD LDS)</li><li>Microsoft Active Directory Global Catalog (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (之前為 Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>不支援值得注意的目錄: <li>Microsoft Active Directory 網域服務 (AD DS) [改為使用內建的 Active Directory 連接器]</li><li>Oracle 網際網路目錄 (OID)</li> |
+| 連接的資料來源 | 此連接器支援所有 LDAP v3 伺服器 (RFC 4510 相容)。 測試過它取代為下列 ︰ <li>Microsoft Active Directory Lightweight Directory Services (AD LDS)</li><li>Microsoft Active Directory Global Catalog (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (之前為 Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>不支援值得注意的目錄 ︰ <li>Microsoft Active Directory 網域服務 (AD DS) [改為使用內建的 Active Directory 連接器]</li><li>Oracle 網際網路目錄 (OID)</li> |
 | 案例 | <li>物件生命週期管理</li><li>群組管理</li><li>密碼管理</li> |
-| 作業 |在 LDAP 目錄中的所有支援下列作業: <li>完整匯入</li><li>匯出</li>在指定的目錄上只支援下列作業:<li>差異匯入</li><li>設定密碼、 變更密碼</li> |
-| 結構描述 | <li>(RFC3673 和 RFC4512/4.2) 的 LDAP 結構描述中偵測到結構描述</li><li>支援結構化的類別、 aux 類別和 extensibleObject 物件類別 (RFC4512/4.3)</li>
+| 作業 |在 LDAP 目錄中的所有支援下列作業 ︰ <li>完整匯入</li><li>匯出</li>在指定的目錄上只支援下列作業 ︰<li>差異匯入</li><li>設定密碼、 變更密碼</li> |
+| 結構描述 | <li>（RFC3673 和 RFC4512/4.2） 的 LDAP 結構描述中偵測到結構描述</li><li>支援結構化的類別、 aux 類別和 extensibleObject 物件類別 (RFC4512/4.3)</li>
 
 ### 差異匯入和密碼管理支援
 
@@ -149,7 +149,7 @@ True/False 篩選通常不會報告所支援 LDAP 目錄，並可能出現在 **
 - LDAP Accesslog。 請參閱 [http://www.openldap.org/doc/admin24/overlays.html#Access 記錄](http://www.openldap.org/doc/admin24/overlays.html#Access Logging)
 - LDAP Changelog。 請參閱 [http://tools.ietf.org/html/draft-good-ldap-changelog-04](http://tools.ietf.org/html/draft-good-ldap-changelog-04)
 - TimeStamp。 對於 Novell/NetIQ eDirectory，連接器會使用最後的日期/時間來取得已建立和更新的物件。 Novell/NetIQ eDirectory 不提供對等方法來擷取已刪除的物件。 如果 LDAP 伺服器上沒有其他作用中的差異匯入方法，也可以使用此選項。 此選項無法匯入已刪除的物件。
-- USNChanged。 請參閱: [https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
+- USNChanged。 請參閱 ︰ [https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
 
 ### 不支援
 
@@ -194,7 +194,7 @@ True/False 篩選通常不會報告所支援 LDAP 目錄，並可能出現在 **
 
 最上方區段顯示伺服器本身所提供的資訊，例如伺服器名稱。 連接器也會確認強制控制項是否位於根 DSE 中。 如果未列出這些項目，則會顯示一則警告。 某些 LDAP 目錄不會列出根 DSE 中的所有功能，而即使出現警告，連接器也可能正常運作。
 
- **支援的控制項** 核取方塊控制項之特定作業的行為:
+ **支援的控制項** 核取方塊控制項之特定作業的行為 ︰
 
 - 選取樹狀目錄刪除後，將透過一個 LDAP 呼叫來刪除階層。 若未選取樹狀目錄刪除，則連接器會視需要進行遞迴刪除。
 - 選取分頁結果後，連接器會以執行步驟上指定的大小進行分頁匯入。
@@ -210,15 +210,15 @@ True/False 篩選通常不會報告所支援 LDAP 目錄，並可能出現在 **
 | --- | --- |
 | Microsoft AD LDS 和 AD GC | 自動偵測。 USNChanged。 |
 | Apache Directory Server | 無法使用。 |
-| Directory 389 | 變更記錄檔。 預設使用的值: **cn = discovery** |
-| IBM Tivoli DS | 變更記錄檔。 預設使用的值: **cn = discovery** |
-| Isode Directory | 變更記錄檔。 預設使用的值: **cn = Discovery**
+| Directory 389 | 變更記錄檔。 預設使用的值 ︰ **cn = discovery** |
+| IBM Tivoli DS | 變更記錄檔。 預設使用的值 ︰ **cn = discovery** |
+| Isode Directory | 變更記錄檔。 預設使用的值 ︰ **cn = Discovery**
 | Novell/NetIQ eDirectory | 無法使用。 TimeStamp。 連接器會使用上次更新日期/時間來取得已新增和更新的記錄。 |
-| Open DJ/DS | 變更記錄檔。  預設使用的值: **cn = Discovery** |
-| Open LDAP | 存取記錄檔。 預設使用的值: **cn = accesslog** |
-| Oracle DSEE | 變更記錄檔。 預設使用的值: **cn = discovery** |
+| Open DJ/DS | 變更記錄檔。  預設使用的值 ︰ **cn = Discovery** |
+| Open LDAP | 存取記錄檔。 預設使用的值 ︰ **cn = accesslog** |
+| Oracle DSEE | 變更記錄檔。 預設使用的值 ︰ **cn = discovery** |
 | RadiantOne VDS | 虛擬目錄。 取決於 VDS 連接的目錄。 |
-| Sun One Directory Server | 變更記錄檔。 預設使用的值: **cn = Discovery** |
+| Sun One Directory Server | 變更記錄檔。 預設使用的值 ︰ **cn = Discovery** |
 
 密碼屬性是連接器在密碼變更和密碼設定作業中應用來設定密碼的屬性名稱。
 這是預設值為 **userPassword** 但如果需要特定的 LDAP 系統來進行變更。
@@ -280,4 +280,5 @@ Open LDAP 中的差異浮水印是 UTC 日期/時間。 基於這個理由，FIM
 ## 疑難排解
 
 -   如需如何啟用記錄來疑難排解連接器資訊，請參閱 [如何啟用 ETW 追蹤連接器](http://go.microsoft.com/fwlink/?LinkId=335731)。
+
 

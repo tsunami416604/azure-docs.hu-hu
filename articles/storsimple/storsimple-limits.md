@@ -26,3 +26,4 @@ StorSimple 提供您的資料中心的擴充性和彈性儲存體。 不過，�
 ## 後續步驟
 
 檢閱 [StorSimple 系統需求](storsimple-system-requirements.md)。 
+

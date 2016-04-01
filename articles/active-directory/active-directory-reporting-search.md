@@ -22,7 +22,7 @@
 
 Azure Active Directory 可以讓目錄管理員跨多個報告搜尋使用者安全性、活動和稽核事件。
 
-若要尋找搜尋面板，瀏覽至 **Azure 管理入口網站]-> [您的 Azure Active Directory-> [報告。**您可以在報告清單頂端找到面板。
+若要尋找搜尋面板，瀏覽至 **Azure 管理入口網站]-> [您的 Azure Active Directory-> [報告。** 您可以在報告清單頂端找到面板。
 
 若要搜尋特定使用者的活動或稽核事件，請在 [從] 和 [到] 欄位中選取日期範圍、輸入使用者的 UPN 或顯示名稱，然後按一下核取記號按鈕。
 
@@ -57,4 +57,5 @@ RMS 裝置使用量                                    | 否
 
  - [Azure Active Directory 報告](active-directory-view-access-usage-reports.md)
  - [Azure Active Directory 報告稽核事件](active-directory-reporting-audit-events.md)
+
 

@@ -391,3 +391,4 @@
         info:    group show command OK
 
 >[AZURE.TIP] 如果看不到的所有資源，執行 **azure 群組部署顯示** 命令，以確保部署的佈建狀態為 *成功*。
+

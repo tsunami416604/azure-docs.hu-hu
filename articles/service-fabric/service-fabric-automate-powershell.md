@@ -20,11 +20,11 @@
 
 本文示範如何使用 Powershell，自動化部署、升級、移除和測試 Azure Service Fabric 應用程式的常見工作。  
 
-## 先決條件
+## 必要條件
 
 您移至文件中的工作之前，務必先 [安裝執行階段、 SDK 和工具](service-fabric-get-started.md), ，這也會安裝 **ServiceFabric** 和 **ServiceFabricTestability** PowerShell 模組。 [啟用 PowerShell 指令碼執行](service-fabric-get-started.md#enable-powershell-script-execution) 和 [安裝並啟動本機叢集](service-fabric-get-started.md#install-and-start-a-local-cluster) 以便執行範例文件中。
 
-在此範例本文使用 [**WordCount** 範例應用程式](http://aka.ms/servicefabricsamples) (位於快速入門範例)。 下載和建置範例應用程式。
+在此範例本文使用 [**WordCount** 範例應用程式](http://aka.ms/servicefabricsamples) （位於快速入門範例）。 下載和建置範例應用程式。
 
 在本文中執行任何 PowerShell 命令之前，先使用連線到本機 Service Fabric 叢集 [**Connect-servicefabriccluster**](https://msdn.microsoft.com/library/azure/mt125938.aspx):
 
@@ -44,7 +44,7 @@ Copy-ServiceFabricApplicationPackage C:\ServiceFabricSamples\Services\WordCount\
 ```
 
 ### 步驟 2：註冊應用程式類型
-註冊應用程式封裝，讓應用程式類型和應用程式資訊清單中宣告的版本可供使用。 系統會讀取上一個步驟中上傳的封裝，請確認封裝 (相當於執行 [**Test-servicefabricapplicationpackage**](https://msdn.microsoft.com/library/azure/mt125950.aspx) 本機)、 處理封裝內容，然後將處理過的封裝複製到內部系統位置。  執行 [**Register-servicefabricapplicationtype**](https://msdn.microsoft.com/library/azure/mt125958.aspx) 指令程式:
+註冊應用程式封裝，讓應用程式類型和應用程式資訊清單中宣告的版本可供使用。 系統會讀取上一個步驟中上傳的封裝，請確認封裝 (相當於執行 [**Test-servicefabricapplicationpackage**](https://msdn.microsoft.com/library/azure/mt125950.aspx) 本機)、 處理封裝內容，然後將處理過的封裝複製到內部系統位置。  執行 [**Register-servicefabricapplicationtype**](https://msdn.microsoft.com/library/azure/mt125958.aspx) 指令程式 ︰
 
 ```powershell
 Register-ServiceFabricApplicationType WordCount
@@ -56,7 +56,7 @@ Get-ServiceFabricApplicationType
 ```
 
 ### 步驟 3：建立應用程式執行個體
-應用程式可以使用任何已順利註冊所使用的應用程式類型版本來具現化 [**New-servicefabricapplication**](https://msdn.microsoft.com/library/azure/mt125913.aspx) 命令。 每個應用程式名稱開頭必須 **網狀架構:** 配置，並且是唯一的每個應用程式執行個體。 在中宣告的應用程式類型名稱和應用程式類型版本 **ApplicationManifest.xml** 檔案。 如果已在目標應用程式類型的應用程式資訊清單中定義預設服務，則這些服務也會一併建立。
+應用程式可以使用任何已順利註冊所使用的應用程式類型版本來具現化 [**New-servicefabricapplication**](https://msdn.microsoft.com/library/azure/mt125913.aspx) 命令。 每個應用程式名稱開頭必須 **網狀架構 ︰** 配置，並且是唯一的每個應用程式執行個體。 在中宣告的應用程式類型名稱和應用程式類型版本 **ApplicationManifest.xml** 檔案。 如果已在目標應用程式類型的應用程式資訊清單中定義預設服務，則這些服務也會一併建立。
 
 ```powershell
 New-ServiceFabricApplication fabric:/WordCount WordCount 1.0.0
@@ -101,15 +101,15 @@ Get-ServiceFabricApplication | Get-ServiceFabricService
 
 ### 步驟 2：複製和註冊已更新的應用程式封裝
 
-現在應用程式已建置，並且準備好進行升級。 如果您開啟 PowerShell 視窗，系統管理員，並輸入 [**Get-servicefabricapplication**](https://msdn.microsoft.com/library/azure/mt163515.aspx), ，您應該會看到部署 1.0.0 版的 WordCount 應用程式類型。  如 WordCount 範例，在中找到的應用程式封裝: *C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug*。
+現在應用程式已建置，並且準備好進行升級。 如果您開啟 PowerShell 視窗，系統管理員，並輸入 [**Get-servicefabricapplication**](https://msdn.microsoft.com/library/azure/mt163515.aspx), ，您應該會看到部署 1.0.0 版的 WordCount 應用程式類型。  如 WordCount 範例，在中找到的應用程式封裝 ︰ *C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug*。
 
-現在將更新的應用程式封裝複製到 Service Fabric 映像存放區 (Service Fabric 在其中儲存應用程式封裝)。 參數 **ApplicationPackagePathInImageStore** 會通知 Service Fabric 可以在哪裡找到應用程式封裝。 下列命令將應用程式套件複製到 **WordCountV2** 映像存放區中:  
+現在將更新的應用程式封裝複製到 Service Fabric 映像存放區 (Service Fabric 在其中儲存應用程式封裝)。 參數 **ApplicationPackagePathInImageStore** 會通知 Service Fabric 可以在哪裡找到應用程式封裝。 下列命令將應用程式套件複製到 **WordCountV2** 映像存放區中 ︰  
 
 ```powershell
 Copy-ServiceFabricApplicationPackage C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStoreShare -ApplicationPackagePathInImageStore WordCountV2
 ```
 
-下一步是新版的應用程式向服務網狀架構，可以使用執行 [**Register-servicefabricapplicationtype**](https://msdn.microsoft.com/library/azure/mt125958.aspx) 指令程式:
+下一步是新版的應用程式向服務網狀架構，可以使用執行 [**Register-servicefabricapplicationtype**](https://msdn.microsoft.com/library/azure/mt125958.aspx) 指令程式 ︰
 
 ```powershell
 Register-ServiceFabricApplicationType WordCountV2
@@ -118,9 +118,9 @@ Register-ServiceFabricApplicationType WordCountV2
 如果此命令不成功，您可能需要重建服務，如步驟 1 中所述。
 
 ### 步驟 3：開始升級
-各種升級參數、逾時和健全狀況準則可以套用至應用程式升級。 閱讀 [應用程式升級參數](service-fabric-application-upgrade-parameters.md) 和 [升級程序](service-fabric-application-upgrade.md) 深入的文件。 對於此逐步解說，將服務健全狀況評估準則設定為預設值 (及建議值)。 所有服務和執行個體應該都是 _良好_ 在升級之後。  不過，您應增加 **HealthCheckStableDuration** 為 60 秒 (如此服務至少 20 秒之前升級繼續至下一個升級網域是狀況良好)。  也設定 **UpgradeDomainTimeout** 為 1200 秒， **UpgradeTimeout** 為 3000 秒。 最後，設定 **UpgradeFailureAction** 至 **回復**, ，這樣可要求，Service Fabric 會回復為舊版應用程式如果升級期間發生失敗。
+各種升級參數、逾時和健全狀況準則可以套用至應用程式升級。 閱讀 [應用程式升級參數](service-fabric-application-upgrade-parameters.md) 和 [升級程序](service-fabric-application-upgrade.md) 深入的文件。 對於此逐步解說，將服務健全狀況評估準則設定為預設值 (及建議值)。 所有服務和執行個體應該都是 _良好_ 在升級之後。  不過，您應增加 **HealthCheckStableDuration** 為 60 秒 （如此服務至少 20 秒之前升級繼續至下一個升級網域是狀況良好）。  也設定 **UpgradeDomainTimeout** 為 1200 秒， **UpgradeTimeout** 為 3000 秒。 最後，設定 **UpgradeFailureAction** 至 **回復**, ，這樣可要求，Service Fabric 會回復為舊版應用程式如果升級期間發生失敗。
 
-您現在可以使用啟動應用程式升級 [**Start-servicefabricapplicationupgrade**](https://msdn.microsoft.com/library/azure/mt125975.aspx) 指令程式:
+您現在可以使用啟動應用程式升級 [**Start-servicefabricapplicationupgrade**](https://msdn.microsoft.com/library/azure/mt125975.aspx) 指令程式 ︰
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/WordCount -ApplicationTypeVersion 2.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000  -FailureAction Rollback -Monitored
@@ -128,13 +128,13 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/WordCount -Applic
 
 請注意，應用程式名稱與先前部署的 v1.0.0 應用程式名稱相同 (fabric:/WordCount)。 Service Fabric 會使用這個名稱來識別要升級哪一個應用程式。 如果您設定的逾時太短，您可能會遇到逾時失敗訊息，指出此問題。 請參閱 [疑難排解應用程式升級](service-fabric-application-upgrade-troubleshooting.md), ，或增加逾時。
 
-您可以使用，以監視應用程式升級進度 [Service Fabric 總管](service-fabric-visualizing-your-cluster.md), ，或使用 [**Get-servicefabricapplicationupgrade**](https://msdn.microsoft.com/library/azure/mt125988.aspx) 指令程式:
+您可以使用，以監視應用程式升級進度 [Service Fabric 總管](service-fabric-visualizing-your-cluster.md), ，或使用 [**Get-servicefabricapplicationupgrade**](https://msdn.microsoft.com/library/azure/mt125988.aspx) 指令程式 ︰
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/WordCount
 ```
 
-在幾分鐘的時間， [Get-servicefabricapplicationupgrade](https://msdn.microsoft.com/library/azure/mt125988.aspx) 指令程式應該會顯示已升級所有升級網域 (完成)。
+在幾分鐘的時間， [Get-servicefabricapplicationupgrade](https://msdn.microsoft.com/library/azure/mt125988.aspx) 指令程式應該會顯示已升級所有升級網域 （完成）。
 
 ## 工作：測試 Service Fabric 應用程式
 
@@ -202,4 +202,5 @@ Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString file:C:\SfDev
 [Azure Service Fabric Cmdlet](https://msdn.microsoft.com/library/azure/mt125965.aspx)
 
 [Azure Service Fabric 可測試性 Cmdlet](https://msdn.microsoft.com/library/azure/mt125844.aspx)
+
 

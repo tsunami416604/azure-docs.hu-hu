@@ -8,13 +8,13 @@
     editor=""/>
 
 <tags
-    ms.service="backup 」
-    ms.workload= 「 儲存體的備份復原的 」
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="11/20/2015 」
-    ms.author="aashishr 」。「 jimpark 」 / >
+    ms.date="11/20/2015"
+    ms.author="aashishr"; "jimpark"/>
 
 
 # 使用 PowerShell 部署和管理 Windows Server/Windows 用戶端的 Azure 備份
@@ -25,8 +25,8 @@
 ## 設定和註冊
 開始：
 
-1. [下載最新的 PowerShell](https://github.com/Azure/azure-powershell/releases) (所需的最低版本是: 1.0.0)
-2. 啟用 Azure 備份指令程式，藉由切換至 *AzureResourceManager* 模式使用 **Switch-azuremode** 指令程式:
+1. [下載最新的 PowerShell](https://github.com/Azure/azure-powershell/releases) (所需的最低版本是 ︰ 1.0.0)
+2. 啟用 Azure 備份指令程式，藉由切換至 *AzureResourceManager* 模式使用 **Switch-azuremode** 指令程式 ︰
 
 ```
 PS C:\> Switch-AzureMode AzureResourceManager
@@ -108,7 +108,7 @@ PS C:\> $credsfilename
 f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
 ```
 
-向保存庫註冊電腦是使用 [Start-obregistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) 指令程式:
+向保存庫註冊電腦是使用 [Start-obregistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) 指令程式 ︰
 
 ```
 PS C:\> $cred = $credspath + $credsfilename
@@ -129,7 +129,7 @@ Machine registration succeeded.
 
 您也可以針對給定的一組當週天數，使用 [```work hour bandwidth```] 和 [```non-work hour bandwidth```] 的選項來控制頻寬使用情形。
 
-設定 proxy 和頻寬的詳細資料使用 [Set-obmachinesetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) 指令程式:
+設定 proxy 和頻寬的詳細資料使用 [Set-obmachinesetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) 指令程式 ︰
 
 ```
 PS C:\> Set-OBMachineSetting -NoProxy
@@ -407,7 +407,7 @@ IsRecursive : True
 ```
 
 ### 執行臨機操作備份
-設定備份原則之後，即會根據排程進行備份。 也可以使用觸發臨機操作備份是 [Start-obbackup](https://technet.microsoft.com/library/hh770426) 指令程式:
+設定備份原則之後，即會根據排程進行備份。 也可以使用觸發臨機操作備份是 [Start-obbackup](https://technet.microsoft.com/library/hh770426) 指令程式 ︰
 
 ```
 PS C:> Get-OBPolicy | Start-OBBackup
@@ -517,7 +517,7 @@ ItemSize : 96256
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
-您也可以使用 ```Get-OBRecoverableItem``` Cmdlet 來搜尋要還原的項目。 在範例中，搜尋 *finances.xls* 我們無法取得檔案控制代碼執行下列命令:
+您也可以使用 ```Get-OBRecoverableItem``` Cmdlet 來搜尋要還原的項目。 在範例中，搜尋 *finances.xls* 我們無法取得檔案控制代碼執行下列命令 ︰
 
 ```
 PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyData" -SearchString "finance*"
@@ -530,7 +530,7 @@ PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyDat
 PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-立即觸發還原使用 [Start-obrecovery](https://technet.microsoft.com/library/hh770402.aspx) 命令對所選 ```$item``` 的輸出從 ```Get-OBRecoverableItem``` 指令程式:
+立即觸發還原使用 [Start-obrecovery](https://technet.microsoft.com/library/hh770402.aspx) 命令對所選 ```$item``` 的輸出從 ```Get-OBRecoverableItem``` 指令程式 ︰
 
 ```
 PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option
@@ -599,4 +599,5 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 
 - [Azure 備份的簡介](backup-configure-vault.md)
 - [備份 Windows 伺服器](backup-azure-backup-windows-server.md)
+
 

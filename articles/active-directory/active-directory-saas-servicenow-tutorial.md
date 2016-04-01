@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   ServiceNow 中的租用戶
   
-完成本教學課程之後, 您已指派給 ServiceNow 的 Azure AD 使用者將能夠登入您的 ServiceNow 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)
+完成本教學課程之後, 您已指派給 ServiceNow 的 Azure AD 使用者將能夠登入您的 ServiceNow 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -58,7 +58,7 @@
 
 6.  在 **搜尋方塊**, ，型別 **ServiceNow**。
 
-    ![應用程式資源庫](./media/active-directory-saas-servicenow-tutorial/IC701016.png "Application gallery")
+    ![應用程式庫](./media/active-directory-saas-servicenow-tutorial/IC701016.png "Application gallery")
 
 7.  在 [結果] 窗格中，選取 **ServiceNow**, ，然後按一下 [ **完成** 加入應用程式。
 
@@ -79,13 +79,13 @@
 
     ![設定單一登入](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
 
-3.  在 **設定應用程式設定** 頁面上，執行下列步驟:
+3.  在 **設定應用程式設定** 頁面上，執行下列步驟 ︰
 
     ![設定應用程式 URL](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
 
-    a. 在 **ServiceNow 登入 URL** 文字方塊中，輸入您的使用者用於登入您的 ServiceNow 應用程式使用您的 URL (例如: *https://\<InstanceName\>.service-now.com*)。
+    a. 在 **ServiceNow 登入 URL** 文字方塊中，輸入您的使用者用於登入您的 ServiceNow 應用程式使用您的 URL (例如 ︰ *https://\<InstanceName\>.service-now.com*)。
 
-    b. 在 **簽發者 URL** 文字方塊中，輸入您的 URL，讓使用者中用來登入您的 ServiceNow 應用程式 (例如: *https://\<InstanceName\>.service-now.com*)。
+    b. 在 **簽發者 URL** 文字方塊中，輸入您的 URL，讓使用者中用來登入您的 ServiceNow 應用程式 (例如 ︰ *https://\<InstanceName\>.service-now.com*)。
 
     c. 按一下 [ **下一步**
 
@@ -106,7 +106,7 @@
     ![設定應用程式 URL](./media/active-directory-saas-servicenow-tutorial/IC7694980.png "Configure app URL")
 
 
-3. 在 **多個提供者 SSO 屬性** ] 對話方塊中，執行下列步驟:
+3. 在 **多個提供者 SSO 屬性** ] 對話方塊中，執行下列步驟 ︰
 
     ![設定應用程式 URL](./media/active-directory-saas-servicenow-tutorial/IC7694981.png "Configure app URL")
 
@@ -130,13 +130,13 @@
     ![設定單一登入](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "Configure single sign-on")
 
 
-1. 在 **X.509 憑證** ] 對話方塊中，執行下列步驟:
+1. 在 **X.509 憑證** ] 對話方塊中，執行下列步驟 ︰
 
     ![設定單一登入](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
 
     a. 按一下 [ **新**。
 
-    b. 在 **名稱** 文字方塊中，輸入您的組態名稱 (例如: **TestSAML2.0**)。
+    b. 在 **名稱** 文字方塊中，輸入您的組態名稱 (例如 ︰ **TestSAML2.0**)。
 
     c. 選取 **Active**。
 
@@ -161,7 +161,7 @@
     ![設定單一登入](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "Configure single sign-on")
 
 
-1. 在 **身分識別提供者** ] 對話方塊中，按一下 [ **SAML2 更新 1?**:
+1. 在 **身分識別提供者** ] 對話方塊中，按一下 [ **SAML2 更新 1？**:
 
     ![設定單一登入](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "Configure single sign-on")
 
@@ -228,7 +228,7 @@
 1. 在 Azure 管理入口網站中，在 **ServiceNow** 應用程式整合頁面上，按一下 [ **設定使用者佈建**。 <br><br> ![使用者佈建](./media/active-directory-saas-servicenow-tutorial/IC769498.png "User provisioning")
 
 
-2. 在 **輸入您的 ServiceNow 認證以啟用自動使用者佈建** 頁面上，提供下列組態設定:
+2. 在 **輸入您的 ServiceNow 認證以啟用自動使用者佈建** 頁面上，提供下列組態設定 ︰
 設定使用者佈建 
 
      2.1. 在 **ServiceNow 執行個體名稱** 文字方塊中，輸入 ServiceNow 執行個體名稱。
@@ -278,3 +278,4 @@
 
 * [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](active-directory-saas-tutorial-list.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](active-directory-appssoaccess-whatis.md)
+

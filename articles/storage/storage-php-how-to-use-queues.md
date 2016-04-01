@@ -72,7 +72,7 @@
 若要建立任何 Azure 服務用戶端，您必須使用 **ServicesBuilder** 類別。 您可以使用下列其中一種方式：
 
 * 直接將連接字串傳遞給它。
-* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串:
+* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串 ︰
     * 預設已支援一種外部來源，即環境變數。
     * 您可以擴充，以加入新來源 **ConnectionStringSource** 類別。
 
@@ -148,7 +148,7 @@ A **QueueRestProxy** 物件可讓您藉由建立佇列 **createQueue** 方法。
 
 ## 查看下一個訊息
 
-您可以查看訊息 (或訊息) 在佇列前面它從佇列移除藉由呼叫 **queuerestproxy->peekmessages**。 根據預設， **peekMessage** 方法會傳回單一訊息，但您可以藉由變更這個值 **peekmessagesoptions->setnumberofmessages** 方法。
+您可以查看訊息 （或訊息） 在佇列前面它從佇列移除藉由呼叫 **queuerestproxy->peekmessages**。 根據預設， **peekMessage** 方法會傳回單一訊息，但您可以藉由變更這個值 **peekmessagesoptions->setnumberofmessages** 方法。
 
     require_once 'vendor\autoload.php';
 
@@ -383,5 +383,6 @@ A **QueueRestProxy** 物件可讓您藉由建立佇列 **createQueue** 方法。
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [require_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: portal.azure.com
+
 
 

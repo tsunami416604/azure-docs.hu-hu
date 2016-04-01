@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Mimecast Admin Console 單一登入的訂用帳戶
   
-完成本教學課程之後, 您已指派給 Mimecast 管理員主控台的 Azure AD 使用者將能夠登入位於您 Mimecast 管理員主控台公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Mimecast 管理員主控台的 Azure AD 使用者將能夠登入位於您 Mimecast 管理員主控台公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -103,7 +103,7 @@
 
     ![新驗證設定檔](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795000.png "New Authentication Profiles")
 
-9.  在 **驗證設定檔** 區段中，執行下列步驟:
+9.  在 **驗證設定檔** 區段中，執行下列步驟 ︰
 
     ![驗證設定檔](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795015.png "Authentication Profile")
 
@@ -120,7 +120,7 @@
 
         >[AZURE.TIP]如需詳細資訊，請參閱 [如何將二進位檔案憑證轉換成文字檔](http://youtu.be/PlgrzUZ-Y1o)。
 
-    8.  開啟您在 [記事本] 的 base 64 編碼的憑證移除的第一行 (「*-*") 和最後一行 (「*-*」)，將它的其餘內容複製到剪貼簿，然後將它貼到 **身分識別提供者憑證 (中繼資料)** 文字方塊。
+    8.  開啟您在 [記事本] 的 base 64 編碼的憑證移除的第一行 (「*-*") 和最後一行 (「*-*」)，將它的其餘內容複製到剪貼簿，然後將它貼到 **身分識別提供者憑證 （中繼資料）** 文字方塊。
     9.  選取 **允許單一登入**。
     10. 按一下 [ **儲存**。
 
@@ -152,7 +152,7 @@ Mimecast Admin Consol 需以手動的方式佈建。
 
 5.  在 [新位址] 對話方塊中，執行下列步驟：
 
-    ![儲存](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795006.png "Save")
+    ![Save](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795006.png "Save")
 
     1.  型別 **電子郵件地址**, ，**全域名稱**, ，**密碼** 和 **確認密碼** 您想要佈建到相關文字方塊之有效 AAD 帳戶的屬性。
     2.  按一下 [ **儲存**。
@@ -176,3 +176,4 @@ Mimecast Admin Consol 需以手動的方式佈建。
     ![是](./media/active-directory-saas-mimecast-admin-console-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

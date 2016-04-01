@@ -88,7 +88,7 @@
 
 >這項 Web 服務是使用 Azure Machine Learning 所建立。 免費的試用版，以及有關建立實驗的簡介影片和 [發佈 web 服務](machine-learning-publish-a-machine-learning-web-service.md), ，請參閱 [azure.com /ml](http://azure.com/ml)。 以下是建立 Web 服務之實驗的螢幕擷取畫面，以及實驗內每個模組的範例程式碼。
 
-Azure Machine Learning 中已建立新的空白實驗， 並已使用預先定義的資料結構描述上傳範例輸入資料。 連結至資料結構描述是 [Execute R Script] [執行-r-指令碼] 模組，使用 'ets' 和 'forecast' 函數來產生 ETS 預測模型 
+Azure Machine Learning 中已建立新的空白實驗， 並已使用預先定義的資料結構描述上傳範例輸入資料。 連結至資料結構描述是 [執行 R 指令碼][execute-r-script] 模組來產生 ETS 預測模型使用的 'ets' 和 'forecast' 函數。 
 
 
 ![實驗流程][2]
@@ -100,7 +100,7 @@ Azure Machine Learning 中已建立新的空白實驗， 並已使用預先定�
 
 ####模組 2：
     # 資料輸入
-    資料 <-maml.mapinputport (1) # 類別: data.frame
+    資料 <-maml.mapinputport （1） # 類別 ︰ data.frame
     library(forecast)
     
     # Preprocessing
@@ -141,4 +141,5 @@ Web 服務或發佈至 Azure Marketplace 的耗用量常見問題集解答，請
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
  
+
 

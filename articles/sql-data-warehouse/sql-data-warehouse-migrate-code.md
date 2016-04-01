@@ -24,13 +24,13 @@
 
 下列清單摘要說明 Azure SQL 資料倉儲中不支援的主要功能。 此連結會帶您前往不支援功能的因應措施：
 
-- [ANSI 聯結 [更新][]
+- [更新時的 ANSI 聯結][]
 - [刪除時的 ANSI 聯結][]
 - [merge 陳述式][]
 - 跨資料庫聯結
 - [資料指標][]
 - [SELECT..INTO][]
-- [INSERT...EXEC]]
+- [INSERT..EXEC][]
 - output 子句
 - 內嵌使用者定義函數
 - 多重陳述式函式
@@ -56,22 +56,22 @@
 目前在 SQL 資料倉儲內實作的通用資料表運算式 (CTE) 具有下列功能和限制：
 
 **CTE 功能**
-+ CTE 可以指定 SELECT 陳述式中。
-+ CTE 可以在 CREATE VIEW 陳述式中指定。
-+ CTE 可以在建立資料表 AS SELECT (CTAS) 陳述式中指定。
-+ CTE 可以在建立遠端資料表 AS 選取 (CRTAS) 陳述式中指定。
-+ CTE 可以建立外部資料表成為選取 (CETAS) 陳述式中指定。
-+ 從 CTE 可以參考遠端資料表。
-+ 從 CTE 可以參考外部資料表。
-+ 在 CTE 中，可以定義多個 CTE 查詢定義。
++ CTE 可以指定於 SELECT 陳述式中。
++ CTE 可以指定於 CREATE VIEW 陳述式中。
++ CTE 可以指定於 CREATE TABLE AS SELECT (CTAS) 陳述式中。
++ CTE 可以指定於 CREATE REMOTE TABLE AS SELECT (CRTAS) 陳述式中。
++ CTE 可以指定於 CREATE EXTERNAL TABLE AS SELECT (CETAS) 陳述式中。
++ 遠端資料表可以參考自 CTE。
++ 外部資料表可以參考自 CTE。
++ CTE 中可以定義多個 CTE 查詢定義。
 
-**CTE 的限制**
-+ CTE 之後必須由單一 SELECT 陳述式。 INSERT、 UPDATE、 DELETE 和 MERGE 陳述式不支援。
-+ 不支援通用資料表運算式，其中包含參考本身 (遞迴通用資料表運算式) (請參閱下一節)。
-+ 不允許在 CTE 中指定一個以上的 WITH 子句。 例如，如果 CTE_query_definition 包含子查詢，這個子查詢不能包含巢狀 WITH 子句定義另一個 CTE。
-+ ORDER BY 子句不能在 CTE_query_definition，除了指定 TOP 子句時。
-+ 屬於批次陳述式中使用 CTE 時，它之前的陳述式後面必須接著是分號。
-+ Sp_prepare 備妥的陳述式中使用時，Cte 將相同的行為與 PDW 中其他 SELECT 陳述式。 不過，如果 CTE 是做為 sp_prepare 所準備之 CETAS 中的一部分時，就會因為針對 sp_prepare 實作繫結的方式而導致其行為與 SQL Server 和其他 PDW 陳述式不同。 如果參考 CTE 的 SELECT 使用不存在於 CTE 的錯誤資料行，sp_prepare 將會通過而不會偵測到錯誤，但在 sp_execute 期間則會擲回錯誤。
+**CTE 限制**
++ CTE 後面必須接著單一 SELECT 陳述式。 INSERT、UPDATE、DELETE 和 MERGE 陳述式不受支援。
++ 包含自身參考 (遞迴通用資料表運算式) 的通用資料表運算式不受支援 (請參閱下一節)。
++ 不允許在 CTE 中指定多個 WITH 子句。 例如，如果 CTE_query_definition 包含子查詢，這個子查詢就不能包含定義另一個 CTE 的巢狀 WITH 子句。
++ ORDER BY 子句不能用於 CTE_query_definition 中，除非有指定 TOP 子句。
++ 當某批次中的陳述式使用 CTE 時，它前面的陳述式後面必須接著分號。
++ 在用於 sp_prepare 所準備的陳述式時，CTE 的行為會與 PDW 中的其他 SELECT 陳述式相同。 不過，如果 CTE 是做為 sp_prepare 所準備之 CETAS 中的一部分時，就會因為針對 sp_prepare 實作繫結的方式而導致其行為與 SQL Server 和其他 PDW 陳述式不同。 如果參考 CTE 的 SELECT 使用不存在於 CTE 的錯誤資料行，sp_prepare 將會通過而不會偵測到錯誤，但在 sp_execute 期間則會擲回錯誤。
 
 ### 遞迴通用資料表運算式 (CTE)
 
@@ -129,4 +129,5 @@ AND     request_id IN
 <!--MSDN references-->
 
 <!--Other Web references-->
+
 

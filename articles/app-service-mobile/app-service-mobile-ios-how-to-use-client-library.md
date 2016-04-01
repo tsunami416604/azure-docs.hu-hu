@@ -23,17 +23,17 @@
  
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
-本指南說明如何使用最新版執行一般案例 [Azure 行動應用程式 iOS SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409)。 如果您不熟悉 Azure 行動應用程式，第一個完成 [Azure 行動應用程式快速入門] 來建立後端，建立資料表，並下載預先建置的 iOS Xcode 專案。 在本指南中，我們會著重於用戶端 iOS SDK。 若要深入了解.NET 伺服器端 SDK 後端，請參閱 [使用.NET 後端](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)
+本指南說明如何使用最新版執行一般案例 [Azure 行動應用程式 iOS SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409)。 如果您不熟悉 Azure 行動應用程式，先完成 [Azure Mobile Apps Quick Start] 建立後端，建立資料表，並下載預先建置的 iOS Xcode 專案。 在本指南中，我們會著重於用戶端 iOS SDK。 若要深入了解.NET 伺服器端 SDK 後端，請參閱 [使用.NET 後端](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)
 
 ## 參考文件
 
-IOS 用戶端 SDK 參考文件位於此處: [Azure 行動應用程式 iOS 用戶端參考](http://azure.github.io/azure-mobile-services/iOS/v3/)。
+IOS 用戶端 SDK 參考文件位於此處 ︰ [Azure 行動應用程式 iOS 用戶端參考](http://azure.github.io/azure-mobile-services/iOS/v3/)。
 
 ##<a name="Setup"></a>設定和必要條件
 
 本指南假設您已建立包含資料表的後端。 本指南假設資料表的結構描述與這些教學課程中的資料表相同。 本指南也假設您在程式碼中，參考了 `WindowsAzureMobileServices.framework` 並匯入了 `WindowsAzureMobileServices/WindowsAzureMobileServices.h`。
 
-##<a name="create-client"></a>如何: 建立用戶端
+##<a name="create-client"></a>作法：建立用戶端
 
 若要在專案中存取 Azure Mobile Apps 後端，請建立 `MSClient`。 以應用程式 URL 取代 `AppUrl`。 您可以將 `gatewayURLString` 和 `applicationKey` 留白。 如果您設定驗證的閘道器，請將 `gatewayURLString` 填入閘道器 URL。
 
@@ -41,7 +41,7 @@ IOS 用戶端 SDK 參考文件位於此處: [Azure 行動應用程式 iOS 用戶
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" gatewayURLString:@"" applicationKey:@""];
 ```
 
-##<a name="table-reference"></a>如何: 建立資料表參考
+##<a name="table-reference"></a>作法：建立資料表參考
 
 若要存取或更新資料，請建立後端資料表的參考。 將 `TodoItem` 取代為您的資料表名稱。
 
@@ -49,7 +49,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" gatewayURL
     MSTable *table = [client tableWithName:@"TodoItem"];
 ```
 
-##<a name="querying"></a>如何: 查詢資料
+##<a name="querying"></a>作法：查詢資料
 
 若要建立資料庫查詢，請查詢 `MSTable` 物件。 下列查詢會取得 `TodoItem` 中的所有項目並記錄每個項目的文字。
 
@@ -65,7 +65,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" gatewayURL
 }];
 ```
 
-##<a name="filtering"></a>如何: 篩選傳回的資料
+##<a name="filtering"></a>作法：篩選傳回的資料
 
 若要篩選結果，有許多可用的選項。
 
@@ -86,7 +86,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 }];
 ```
 
-##<a name="query-object"></a>如何: 使用 MSQuery
+##<a name="query-object"></a>作法：使用 MSQuery
 
 若要執行複雜的查詢 (包括排序和分頁)，請使用述詞直接建立 `MSQuery` 物件：
 
@@ -98,13 +98,13 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 `MSQuery` 可讓您控制下列幾種查詢行為。 執行 `MSQuery` 查詢藉由呼叫 `readWithCompletion` 它下, 一個範例所示。
 * 指定結果的順序
 * 限制要傳回的欄位
-* 限制傳回的記錄數目
+* 限制要傳回的記錄數
 * 指定回應中的總計數
 * 在要求中指定自訂查詢字串參數
-* 套用額外函數
+* 套用其他函式
 
 
-## <a name="sorting"></a>如何: 使用 MSQuery 排序資料
+## <a name="sorting"></a>做法：使用 MSQuery 排序資料
 
 我們來看一下範例如何排序結果。 若要先按照 `text` 欄位遞增排序，然後按照 `completion` 欄位遞減排序，請如下叫用 `MSQuery`：
 
@@ -123,7 +123,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 ```
 
 
-## <a name="selecting"></a><a name="parameters"></a>如何: 限制欄位和展開查詢字串參數，使用 MSQuery
+## <a name="selecting"></a><a name="parameters"></a>作法：使用 MSQuery 限制欄位和展開查詢字串參數
 
 若要限制查詢中傳回的欄位，指定在欄位名稱 **selectFields** 屬性。 這僅會傳回文字和已完成欄位：
 
@@ -140,7 +140,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
     };
 ```
 
-##<a name="inserting"></a>如何: 插入資料
+##<a name="inserting"></a>作法：插入資料
 
 若要插入新的資料表資料列，請建立新的 `NSDictionary` 並叫用 `table insert`。 行動服務會自動產生新資料行是根據 `NSDictionary` 如果 [Dynamic Schema] 未停用。
 
@@ -160,7 +160,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
     }];
 ```
 
-##<a name="modifying"></a>如何: 修改資料
+##<a name="modifying"></a>作法：修改資料
 
 若要更新現有的資料列，請修改項目並呼叫 `update`：
 
@@ -182,7 +182,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 進行更新時，至少必須設定 `id` 屬性。
 
-##<a name="deleting"></a>如何: 刪除資料
+##<a name="deleting"></a>作法：刪除資料
 
 若要刪除項目，請叫用 `delete` 搭配項目：
 
@@ -202,7 +202,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 進行刪除時，至少必須設定 `id` 屬性。
 
-##<a name="templates"></a>作法：註冊發送範本以傳送跨平台通知
+##<a name="templates"></a>作法：註冊推送範本以傳送跨平台通知
 
 若要註冊的範本，只要傳遞範本與您 **client.push registerDeviceToken** 用戶端應用程式中的方法。
 
@@ -218,7 +218,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 若要傳送通知，利用這些註冊的範本，使用 [通知中樞 Api](https://msdn.microsoft.com/library/azure/dn495101.aspx)
 
-##<a name="errors"></a>如何: 處理錯誤
+##<a name="errors"></a>作法：處理錯誤
 
 呼叫行動服務時，completion 區塊會包含 `NSError *error` 參數。 發生錯誤時，此參數便會傳回非 Nil。 您應檢查程式碼中的此參數，並視需要處理錯誤。
 
@@ -274,4 +274,5 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
+
 

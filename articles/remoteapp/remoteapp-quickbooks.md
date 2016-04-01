@@ -43,3 +43,4 @@
 ## 部署架構
 
 ![QuickBooks + Azure RemoteApp 部署](./media/remoteapp-quickbooks/ra-quickbooks.png)
+

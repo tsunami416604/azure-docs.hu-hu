@@ -24,7 +24,7 @@
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概觀
-在本教學課程中，您將推播通知加入 [iOS 快速入門] 專案，以便每次插入記錄時，要傳送推播通知。 本教學課程為基礎的 [iOS 快速入門] 教學課程，您必須先完成。 如果您不要使用下載的快速入門伺服器專案，必須將推播通知擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
+在本教學課程中，您可以新增推播通知給 [iOS quick start] 專案，所以每次插入記錄時，會傳送推播通知。 本教學課程根據 [iOS quick start] 教學課程，您必須先完成。 如果您不要使用下載的快速入門伺服器專案，必須將推播通知擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
 
  [IOS 模擬器不支援推播通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html), ，因此在本教學課程中，您需要在實體 iOS 裝置和 [Apple Developer Program 成員資格](https://developer.apple.com/programs/ios/)。 
 
@@ -32,7 +32,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
-## <a id="register"></a>針對推播通知註冊應用程式
+## <a id="register"></a>註冊應用程式以取得推播通知
 
 [AZURE.INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
@@ -40,7 +40,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-##<a id="update-server"></a>更新伺服器專案，以傳送推播通知
+##<a id="update-server"></a>更新伺服器專案以傳送推播通知
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
@@ -75,4 +75,5 @@
 
 <!-- URLs. -->
 [iOS quick start]: app-service-mobile-ios-get-started.md
+
 

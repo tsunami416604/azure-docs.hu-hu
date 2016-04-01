@@ -27,13 +27,13 @@
 
 了解如何使用 Azure 入口網站建立 Azure 資料湖存放區帳戶並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需詳細資料湖存放區的詳細資訊，請參閱 [概觀的 Azure 資料湖市集](data-lake-store-overview.md)。
 
-## 先決條件
+## 必要條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="signup"></a>啟用資料湖存放區公用預覽您的 Azure 訂閱
+## <a name="signup"></a>啟用您的 Azure 訂用帳戶以使用資料湖存放區公開預覽版
 
 您必須先要求啟用您的 Azure 訂用帳戶以使用資料湖存放區公開預覽版。 依照下列步驟執行。
 
@@ -49,13 +49,13 @@
 
 2. 按一下 [ **新增**, ，按一下 [ **資料 + 儲存體**, ，然後按一下 [ **Azure 資料湖市集**。 閱讀資訊 **Azure 資料湖存放區** 刀鋒視窗中，然後再按一下 **建立** 在刀鋒視窗的左下角。
 
-3. 在 **新資料湖商店** 刀鋒視窗中，提供值，如螢幕擷取畫面下方所示:
+3. 在 **新資料湖商店** 刀鋒視窗中，提供值，如螢幕擷取畫面下方所示 ︰
 
     ![建立新的 Azure 資料湖存放區帳戶](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Create a new Azure Data Lake account")
 
     - **訂閱**。 選取您想要建立新資料湖存放區帳戶所在的訂用帳戶。
     - **資源群組**。 選取現有的資源群組，或按一下 **建立資源群組** 建立一個。 資源群組是保留應用程式相關資源的容器。 如需詳細資訊，請參閱 [Azure 中的資源群組](resource-group-overview.md#resource-groups)。
-    - **位置**: 選取您要建立資料湖存放區帳戶的位置。
+    - **位置**︰ 選取您要建立資料湖存放區帳戶的位置。
 
 4. 選取 **釘選到開始面板** 如果您希望可以從儀表板存取資料湖存放區帳戶。
 
@@ -84,7 +84,7 @@
     ![在資料湖帳戶中建立資料夾](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Create folders in Data Lake account")
 
 
-## <a name="uploaddata"></a>將資料上傳至 Azure 資料湖市集帳戶
+## <a name="uploaddata"></a>將資料上傳至 Azure 資料湖存放區帳戶
 
 您可以直接在根層級將資料上傳至 Azure 資料湖存放區帳戶，或上傳至您在帳戶內建立的資料夾。 在下列螢幕擷取畫面，請依照下列檔案上傳至子資料夾中的步驟 **資料總管** 刀鋒視窗。 在這個螢幕擷取畫面中，檔案會上傳到階層連結所示的子資料夾 (以紅色方塊標示)。
 
@@ -93,7 +93,7 @@
 ![上傳資料](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Upload data")
 
 
-## <a name="properties"></a>屬性和可儲存的資料上執行的動作
+## <a name="properties"></a>儲存資料的屬性和可用的動作
 
 按一下新加入的檔案，以開啟 **屬性** 刀鋒視窗。 此刀鋒視窗提供檔案相關聯的屬性，以及您可以對檔案執行的動作。 您也可以在 Azure 資料湖存放區帳戶中複製檔案的完整路徑，如以下的螢幕擷取畫面中紅色方塊的反白顯示。
 
@@ -121,7 +121,7 @@
 
 ![刪除資料湖帳戶](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Delete Data Lake account")
 
-## 建立資料湖存放區帳戶的其他方式
+## 其他建立資料湖存放區帳戶的方法
 
 - [使用 PowerShell 開始使用資料湖存放區](data-lake-store-get-started-powershell.md)
 - [使用 .NET SDK 開始使用資料湖存放區](data-lake-store-get-started-net-sdk.md)
@@ -131,6 +131,7 @@
 ## 後續步驟
 
 - [保護資料湖存放區中的資料](data-lake-store-secure-data.md)
-- [搭配資料湖存放區使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)
+- [搭配 Data Lake 存放區使用 Azure Data Lake 分析](data-lake-analytics-get-started-portal.md)
 - [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
+
 

@@ -3,7 +3,7 @@
 ### <a name="dotnet"></a>.NET 後端專案
 1. 在 Visual Studio 中，以滑鼠右鍵按一下伺服器專案中，按一下 [ **管理 NuGet 封裝**, ，搜尋 `Microsoft.Azure.NotificationHubs`, ，然後按一下 [ **安裝**。 這會安裝通知中樞程式庫，以便從後端傳送通知。
 
-3. 在伺服器專案中，開啟 **控制器** > **TodoItemController.cs**, ，並新增下列 using 陳述式:
+3. 在伺服器專案中，開啟 **控制器** > **TodoItemController.cs**, ，並新增下列 using 陳述式 ︰
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
@@ -96,3 +96,4 @@
     插入新的 todo 項目時，這會傳送包含 item.text 的範本通知。
 
 2. 在本機電腦中編輯檔案時，重新發布伺服器專案。
+

@@ -38,7 +38,7 @@
 - **改善可用性**。 跨多個伺服器分格資料可避免單一失敗點。 如果伺服器失敗，或正在進行規劃的維護，只有該資料分割中的資料無法使用。 在其他分割區上的作業可以繼續進行。 增加分割區的數目可減少無法使用的資料百分比，藉以減少單一伺服器失敗的相對影響。 複寫每個分割區可以進一步減少單一分割區失敗影響作業的機會。 它也可以分離必須持續高度可用的重要資料和具有較低可用性需求的低價值資料 (例如記錄檔)。
 - **改善安全性**。 依據資料的性質及其分割方式，就可以將機密和非機密資料分離到不同的分割區，並因此分離到不同的伺服器或資料存放區。 如此便可以為機密資料進行安全性的特別最佳化。
 - **提供做業彈性**。 資料分割提供許多微調作業、最大化系統管理效率和最小化成本的機會。 有些範例會根據資料在每個分割區中的重要性，定義不同的策略，例如管理、監視、備份和還原以及其他系統管理工作。
-- **比對資料存放區和使用模式**。 資料分割可根據資料存放區所提供的成本和內建功能，讓每個分割區部署在不同類型的資料存放區上。 例如，大型二進位資料會儲存在 blob 資料存放區，而更結構化的資料可能存放在文件資料庫。 如需詳細資訊，請參閱 [建置 Polyglot 解決方案](https://msdn.microsoft.com/library/dn313279.aspx) 典範與實例指南 [高度可延展解決方案的資料存取: 使用 SQL、 NoSQL 和 Polyglot 持續性](https://msdn.microsoft.com/library/dn271399.aspx) Microsoft 網站上。
+- **比對資料存放區和使用模式**。 資料分割可根據資料存放區所提供的成本和內建功能，讓每個分割區部署在不同類型的資料存放區上。 例如，大型二進位資料會儲存在 blob 資料存放區，而更結構化的資料可能存放在文件資料庫。 如需詳細資訊，請參閱 [建置 Polyglot 解決方案](https://msdn.microsoft.com/library/dn313279.aspx) 典範與實例指南 [高度可延展解決方案的資料存取 ︰ 使用 SQL、 NoSQL 和 Polyglot 持續性](https://msdn.microsoft.com/library/dn271399.aspx) Microsoft 網站上。
 
 有些系統不會實作資料分割，因為它會被視為額外負荷，而不是一項優點。 這個基本原理的常見原因包括：
 
@@ -70,7 +70,7 @@
 
 ![](media/best-practices-data-partitioning/DataPartitioning01.png)
 
-_圖 1. -水平資料分割 (分區化) 資料是根據資料分割索引鍵_
+_圖 1. -水平資料分割 （分區化） 資料是根據資料分割索引鍵_
 
 分區化可讓您將負載分散到多部電腦；減少爭用並改善效能。 藉由新增在其他伺服器執行的進一步分區，您可以向外延展系統。
 
@@ -373,9 +373,9 @@ Search 服務會將可搜尋的內容儲存為資料庫中的 JSON 文件。 您
 
 每個分割區可以包含最多 1500 萬個文件或佔用 300GB 的儲存空間 (取兩者中較低者，視文件和索引的大小而定)。 您最多可以建立 50 個索引。 服務的效能會因文件的複雜性、可用的索引，以及網路延遲的影響而有所不同。 雖然您應該利用自己的資料執行效能評比，以取得更精確的輸送量量值，但是平均而言，單一複本 (1SU) 的處理速度應該是每秒 15 筆查詢 (QPS)。 如需詳細資訊，請參閱 [限制和條件約束 (Azure 搜尋服務 API)]( https://msdn.microsoft.com/library/azure/dn798934.aspx) Microsoft 網站上的頁面。
 
-> [AZURE.NOTE] 您可以儲存一組有限的資料型別中可搜尋的文件。字串、 布林、 數字資料、 日期時間資料和一些地理資料。 如需詳細資訊，請參閱 [支援的資料類型 (Azure 搜尋服務)]( https://msdn.microsoft.com/library/azure/dn798938.aspx) Microsoft 網站上的頁面。
+> [AZURE.NOTE] 您可以儲存一組有限的資料型別中可搜尋的文件。字串、 布林、 數字資料、 日期時間資料和一些地理資料。 如需詳細資訊，請參閱 [支援的資料類型 （Azure 搜尋服務）]( https://msdn.microsoft.com/library/azure/dn798938.aspx) Microsoft 網站上的頁面。
 
-針對 Azure 搜尋服務如何分割每個服務執行個體的資料，您具有有限的控制權。 不過，在全域環境中您可能可以改善效能並減少延遲和競爭進一步分割服務本身使用下列策略之一:
+針對 Azure 搜尋服務如何分割每個服務執行個體的資料，您具有有限的控制權。 不過，在全域環境中您可能可以改善效能並減少延遲和競爭進一步分割服務本身使用下列策略之一 ︰
 
 - 在每個地理區域中，建立 Search 服務的執行個體，並確定用戶端應用程式會導向至最接近的可用執行個體。 此策略需要可搜尋內容的任何更新，可跨服務的所有執行個體即時複寫。
 - 建立兩層的 Search 服務；一層是每個區域中的本機服務，包含使用者在該區域中最常存取的資料，一層是全域服務，包含所有資料。 使用者可以將要求導向至本機服務 (適用於快速而有限的結果) 或全域服務 (適用於較慢，但更完整的結果)。 當搜尋的資料中有重大的區域性變化時，最適用這個方法。
@@ -390,7 +390,7 @@ Azure Redis Cache 在雲端中提供以 Redis 索引鍵/值資料存放區為基
 
 > [AZURE.IMPORTANT] Azure Redis 快取目前不支援 Redis 叢集。 如果您想要利用 Azure 實作這個方法，您必須將 Redis 安裝在一組 Azure 虛擬機器上並且手動設定它們，以實作您自己的 Redis 伺服器。 頁面 [在 Azure 的 CentOS Linux VM 上執行 Redis](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx) microsoft 網站逐步解說範例，示範如何建立和設定做為 Azure VM 執行的 Redis 節點。
 
-頁面 [資料分割: 如何在多個 Redis 執行個體的資料分割](http://redis.io/topics/partitioning) Redis 網站提供關於使用 Redis 實作資料分割的進一步資訊。 本節的其餘部分假設您正在實作用戶端或 proxy 輔助資料分割。
+頁面 [資料分割 ︰ 如何在多個 Redis 執行個體的資料分割](http://redis.io/topics/partitioning) Redis 網站提供關於使用 Redis 實作資料分割的進一步資訊。 本節的其餘部分假設您正在實作用戶端或 proxy 輔助資料分割。
 
 決定如何利用 Azure Redis Cache 分割資料時，您應該考慮下列幾點：
 
@@ -401,12 +401,12 @@ Azure Redis Cache 在雲端中提供以 Redis 索引鍵/值資料存放區為基
 
 _圖 10. -建議的結構，在記錄客戶訂單與其詳細資料的 Redis 儲存體_
 
-> [AZURE.NOTE] 在 Redis 中，所有索引鍵 (例如 Redis 字串) 的二進位資料值，而且可以包含最多 512 MB 的資料，所以理論上的索引鍵可以包含幾乎所有資訊。 不過，您應該採用一致的索引鍵命名慣例，可描述資料類型並識別實體，但該慣例不可過長。 常見的方法是使用 "entity_type:ID" 形式的索引鍵，例如 "customer:99" 指出客戶識別碼 99 的索引鍵。
+> [AZURE.NOTE] 在 Redis 中，所有索引鍵 （例如 Redis 字串） 的二進位資料值，而且可以包含最多 512 MB 的資料，所以理論上的索引鍵可以包含幾乎所有資訊。 不過，您應該採用一致的索引鍵命名慣例，可描述資料類型並識別實體，但該慣例不可過長。 常見的方法是使用 "entity_type:ID" 形式的索引鍵，例如 "customer:99" 指出客戶識別碼 99 的索引鍵。
 
-- 您可以將相關的資訊儲存在相同資料庫中的不同彙總以實作垂直資料分割。 例如，在電子商務應用程式中，您無法將常存取的產品相關資訊儲存在 Redis 雜湊中，並將較少使用的詳細資訊儲存在另一個 Redis 雜湊中。 這兩個雜湊可以使用相同的產品識別碼當做部分索引鍵，例如 「 產品:_nn_"其中 _nn_ 是產品資訊的產品識別碼和"product_details: _nn_」 詳細資料。 此策略可以協助減少大多數查詢可能會擷取的資料量。
+- 您可以將相關的資訊儲存在相同資料庫中的不同彙總以實作垂直資料分割。 例如，在電子商務應用程式中，您無法將常存取的產品相關資訊儲存在 Redis 雜湊中，並將較少使用的詳細資訊儲存在另一個 Redis 雜湊中。 這兩個雜湊可以使用相同的產品識別碼當做部分索引鍵，例如 「 產品 ︰_nn_"其中 _nn_ 是產品資訊的產品識別碼和"product_details: _nn_」 詳細資料。 此策略可以協助減少大多數查詢可能會擷取的資料量。
 - 重新分割 Redis 資料存放區是複雜和耗時的工作。 Redis 叢集可以自動重新分割資料，但是這項工具無法供 Azure Redis Cache 使用。 因此，當您設計資料分割配置時，您應該儘量在每個分割區保留足夠的可用空間，以允許一段時間後預期的資料成長。 不過，請記住 Azure Redis Cache 的目的是暫時快取資料，而且保留在快取中的資料具有有限的存留期，指定為存留時間 (TTL) 值。 對於相當易變的資料而言，TTL 應該短一點，但對於靜態資料而言，TTL 可能會更長。 如果資料量可能會填滿快取，您應該避免在快取中儲存大量長時間留存的資料。 如果空間價格不斐，您可以指定會讓 Azure Redis Cache 移除資料的收回原則。
 
-    > [AZURE.NOTE] Azure Redis 快取可讓您指定的大小上限 (從 250 MB 到 53 GB) 的快取選取適當的定價層。 不過，一旦建立 Azure Redis Cache，您就無法增加 (或減少) 其大小。
+    > [AZURE.NOTE] Azure Redis 快取可讓您指定的大小上限 （從 250 MB 到 53 GB) 的快取選取適當的定價層。 不過，一旦建立 Azure Redis Cache，您就無法增加 (或減少) 其大小。
 
 - Redis 批次與交易無法跨越多個連接，因此受批次或交易影響的所有資料應都保留在相同的資料庫 (分區)。
 
@@ -471,9 +471,10 @@ _圖 10. -建議的結構，在記錄客戶訂單與其詳細資料的 Redis 儲
 - 頁面 [管理 DocumentDB 容量和效能](documentdb-manage.md) microsoft 網站包含 Azure DocumentDB 如何將資料庫的資源配置的相關資訊。
 -  [Azure 搜尋服務概觀](https://msdn.microsoft.com/library/azure/dn798933.aspx) Microsoft 網站上的頁面會提供可使用 Azure 搜尋服務功能的完整描述。
 -  [限制和條件約束 (Azure 搜尋服務 API)](https://msdn.microsoft.com/library/azure/dn798934.aspx) Microsoft 網站上的頁面包含 Azure 搜尋服務的每個執行個體的容量資訊。
--  [支援的資料類型 (Azure 搜尋服務)](https://msdn.microsoft.com/library/azure/dn798938.aspx) Microsoft 網站上的頁面摘要列出您可以使用可搜尋文件和索引中的資料型別。
+-  [支援的資料類型 （Azure 搜尋服務）](https://msdn.microsoft.com/library/azure/dn798938.aspx) Microsoft 網站上的頁面摘要列出您可以使用可搜尋文件和索引中的資料型別。
 -  [Microsoft Azure 快取](http://azure.microsoft.com/services/cache.md) Microsoft 網站上的頁面提供 Azure Redis 快取的簡介。
-- 頁面 [資料分割: 如何在多個 Redis 執行個體的資料分割](http://redis.io/topics/partitioning) Redis 網站提供使用 Redis 實作資料分割的資訊。
+- 頁面 [資料分割 ︰ 如何在多個 Redis 執行個體的資料分割](http://redis.io/topics/partitioning) Redis 網站提供使用 Redis 實作資料分割的資訊。
 - 頁面 [在 Azure 的 CentOS Linux VM 上執行 Redis](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx) microsoft 網站逐步解說範例，示範如何建立和設定做為 Azure VM 執行的 Redis 節點。
 -  [資料型別](http://redis.io/topics/data-types) Redis 網站上的頁面描述 Redis 和 Azure Redis Cache 皆可使用的資料類型。
+
 

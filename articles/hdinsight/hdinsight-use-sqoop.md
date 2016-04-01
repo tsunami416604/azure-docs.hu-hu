@@ -33,13 +33,13 @@
 
 [Sqoop][sqoop-user-guide-1.4.4] 是專門在 Hadoop 之間傳送資料的工具 
 叢集和關聯式資料庫。 您可以使用它從關聯式資料匯入 
-資料庫管理系統 (RDBMS) (例如 SQL Server、 MySQL 或 Oracle 到 Hadoop 
+資料庫管理系統 (RDBMS) （例如 SQL Server、 MySQL 或 Oracle 到 Hadoop 
 分散式的檔案系統 (HDFS)，轉換 Hadoop 中使用 MapReduce 或 Hive 中的資料， 
 然後將資料匯出回到 RDBMS。 在本教學課程中，您使用 SQL Server 
 做為關聯式資料庫的資料庫。
 
 如需 HDInsight 叢集支援的 Sqoop 版本 
-請參閱 [的 HDInsight 所提供叢集版本的新功能?][hdinsight-versions]。
+請參閱 [的 HDInsight 所提供叢集版本的新功能？][hdinsight-versions]。
 
 ###必要條件
 
@@ -49,11 +49,11 @@
 
 如果您選擇使用現有的 Azure SQL Database 或 Microsoft SQL Server
 
-- **Azure SQL database**: 您必須設定防火牆規則以允許從您的工作站存取 Azure SQL 資料庫伺服器。 如需建立 Azure SQL database 和設定防火牆的指示，請參閱 [開始使用 Azure SQL database][sqldatabase-get-started]。 
+- **Azure SQL database**︰ 您必須設定防火牆規則以允許從您的工作站存取 Azure SQL 資料庫伺服器。 如需建立 Azure SQL database 和設定防火牆的指示，請參閱 [開始使用 Azure SQL database][sqldatabase-get-started]。 
 
     > [AZURE.NOTE] 依預設 Azure SQL database 會接受來自 Azure 服務，例如 Azure HDInsight 的連線。 如果此防火牆設定為停用，您必須在 Azure Preview 入口網站中加以啟用。 如需關於建立 Azure SQL database 和設定防火牆規則的指示，請參閱 [建立和設定 SQL Database][sqldatabase-create-configue]。
 
-- **SQL Server**: 如果您的 HDInsight 叢集位於相同 Azure 虛擬網路與 SQL Server，您可以使用這篇文章的步驟匯入和匯出資料至 SQL Server 資料庫。
+- **SQL Server**︰ 如果您的 HDInsight 叢集位於相同 Azure 虛擬網路與 SQL Server，您可以使用這篇文章的步驟匯入和匯出資料至 SQL Server 資料庫。
 
     > [AZURE.NOTE] HDInsight 僅支援以位置為基礎虛擬網路，以及它目前無法使用以同質群組為基礎的虛擬網路。
 
@@ -84,7 +84,7 @@ HDInsight 叢集附有某些範例資料。 您將用到以下兩個範例：
 
 您會先將匯出 *sample.log* 和 *hivesampletable* azure 
 SQL 資料庫或 SQL Server，然後匯入資料表，其中包含 
-行動裝置資料回 HDInsight 所使用的下列路徑:
+行動裝置資料回 HDInsight 所使用的下列路徑 ︰
 
     /tutorials/usesqoop/importeddata
 
@@ -143,9 +143,9 @@ SQL 資料庫或 SQL Server，然後匯入資料表，其中包含
     
     > [AZURE.NOTE] 以外的連接字串資訊，本節中的步驟應該運用 Azure SQL database 或 SQL Server。 這些步驟已使用下列組態進行測試：
     >
-    > * **Azure 虛擬網路點對站組態**: 虛擬網路將 HDInsight 叢集連接到 SQL Server 在私人資料中心。 請參閱 [管理入口網站中設定點對站 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 如需詳細資訊。
-    > * **Azure HDInsight 3.1**: 請參閱 [佈建 Hadoop 叢集使用自訂選項在 HDInsight](hdinsight-provision-clusters.md) 虛擬網路上建立叢集的相關資訊。
-    > * **SQL Server 2014**: 已設定成允許驗證，以及執行 VPN 用戶端組態套件以安全地連線到虛擬網路。
+    > * **Azure 虛擬網路點對站組態**︰ 虛擬網路將 HDInsight 叢集連接到 SQL Server 在私人資料中心。 請參閱 [管理入口網站中設定點對站 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 如需詳細資訊。
+    > * **Azure HDInsight 3.1**︰ 請參閱 [佈建 Hadoop 叢集使用自訂選項在 HDInsight](hdinsight-provision-clusters.md) 虛擬網路上建立叢集的相關資訊。
+    > * **SQL Server 2014**︰ 已設定成允許驗證，以及執行 VPN 用戶端組態套件以安全地連線到虛擬網路。
 
 7. 將 Hive 資料表匯出至 Azure SQL Database。
 
@@ -614,9 +614,9 @@ SQL 資料庫或 SQL Server，然後匯入資料表，其中包含
 
 現在，您已了解如何使用 Sqoop。 若要深入了解，請參閱：
 
-- [搭配 HDInsight 使用 Oozie][hdinsight-use-oozie]: 在 Oozie 工作流程中的使用 Sqoop 動作。
-- [分析航班延誤資料使用 HDInsight][hdinsight-analyze-flight-data]: 使用 Hive 分析航班誤點資料，，然後使用 Sqoop 將資料匯出至 Azure SQL database。
-- [將資料上傳至 HDInsight][hdinsight-upload-data]: 尋找可將資料上傳至 HDInsight/Azure Blob 儲存體的其他方法。
+- [搭配 HDInsight 使用 Oozie][hdinsight-use-oozie]︰ 在 Oozie 工作流程中的使用 Sqoop 動作。
+- [分析航班延誤資料使用 HDInsight][hdinsight-analyze-flight-data]︰ 使用 Hive 分析航班誤點資料，，然後使用 Sqoop 將資料匯出至 Azure SQL database。
+- [將資料上傳至 HDInsight][hdinsight-upload-data]︰ 尋找可將資料上傳至 HDInsight/Azure Blob 儲存體的其他方法。
 
 [azure-management-portal]: https://portal.azure.com/
 
@@ -637,4 +637,5 @@ SQL 資料庫或 SQL Server，然後匯入資料表，其中包含
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
+
 

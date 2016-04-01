@@ -35,7 +35,7 @@ Azure BizTalk 服務使用服務匯流排簽發者名稱和簽發者金鑰，以
 下列項目會使用存取控制簽發者名稱和簽發者金鑰：
 
 - 在 Visual Studio 中建立的 Azure BizTalk 服務應用程式：若要在 Visual Studio 中成功將您的 BizTalk 服務應用程式部署至 Azure，請輸入存取控制簽發者名稱和簽發者金鑰。 
-- Azure BizTalk 服務入口網站: 當您建立 BizTalk 服務，並開啟 BizTalk 服務入口網站時，您的存取控制簽發者名稱和簽發者金鑰會自動註冊您的部署使用相同的存取控制值。
+- Azure BizTalk 服務入口網站 ︰ 當您建立 BizTalk 服務，並開啟 BizTalk 服務入口網站時，您的存取控制簽發者名稱和簽發者金鑰會自動註冊您的部署使用相同的存取控制值。
 
 ### 複製與貼上存取控制簽發者名稱和簽發者金鑰
 
@@ -49,7 +49,7 @@ Azure BizTalk 服務使用服務匯流排簽發者名稱和簽發者金鑰，以
 簽發者金鑰 = 預設金鑰
 
 
-您也可以選取 **Open ACS Management Portal** 取得存取控制值:
+您也可以選取 **Open ACS Management Portal** 取得存取控制值 ︰
 
 1. 登入 [Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
 2. 在左的導覽窗格中，選取 **BizTalk 服務**。
@@ -64,8 +64,8 @@ Azure BizTalk 服務使用服務匯流排簽發者名稱和簽發者金鑰，以
 
 在左的導覽窗格中，您也可以選取 **Active Directory** 來擷取存取控制值。 
 
-> [AZURE.IMPORTANT] 使用建立存取控制命名空間時 **Active Directory**, ，服務身分識別是 **不** 自動建立。 佈建 BizTalk 服務時，會自動建立存取控制命名空間、服務身分識別 「owner」(簽發者名稱)、密碼 (簽發者金鑰) 和對稱金鑰。<br /> 
-[如何: 使用 ACS 管理服務來設定服務身分識別](http://go.microsoft.com/fwlink/p/?LinkID=303942) 提供存取控制服務身分識別的詳細資訊。
+> [AZURE.IMPORTANT] 使用建立存取控制命名空間時 **Active Directory**, ，服務身分識別是 **不** 自動建立。 佈建 BizTalk 服務時，會自動建立存取控制命名空間、服務身分識別 "owner" (簽發者名稱)、密碼 (簽發者金鑰) 和對稱金鑰。<br /> 
+[如何 ︰ 使用 ACS 管理服務來設定服務身分識別](http://go.microsoft.com/fwlink/p/?LinkID=303942) 提供存取控制服務身分識別的詳細資訊。
 
 
 ## 服務匯流排簽發者名稱和簽發者金鑰
@@ -75,7 +75,7 @@ BizTalk 配接器服務會使用服務匯流排簽發者名稱和簽發者金鑰
 
 1. 登入 [Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
 2. 在左的導覽窗格中，選取 **服務匯流排**。
-3. 選取您的命名空間。 在工作列上，選取 **連接資訊**。 這會顯示 **預設簽發者** (簽發者名稱) 和 **預設金鑰** (簽發者金鑰)。 您可以複製這些值。  
+3. 選取您的命名空間。 在工作列上，選取 **連接資訊**。 這會顯示 **預設簽發者** （簽發者名稱） 和 **預設金鑰** （簽發者金鑰）。 您可以複製這些值。  
 
 總結：  
 簽發者名稱 = 預設簽發者  
@@ -85,18 +85,19 @@ BizTalk 配接器服務會使用服務匯流排簽發者名稱和簽發者金鑰
 其他 Azure BizTalk 服務主題：
 
 -  [安裝 Azure BizTalk 服務 SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
--  [教學課程: Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+-  [教學課程 ︰ Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
 -  [如何開始使用 Azure BizTalk 服務 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 -  [Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 
 ## 另請參閱
--  [如何: 使用 ACS 管理服務來設定服務身分識別](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
-- [BizTalk 服務: 開發人員、 基本、 標準和高級版本圖表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk 服務: 佈建使用 Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk 服務: 佈建狀態圖](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-- [BizTalk 服務: 儀表板、 監視和調整索引標籤](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-- [BizTalk 服務: 備份與還原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-- [BizTalk 服務: 節流](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+-  [如何 ︰ 使用 ACS 管理服務來設定服務身分識別](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+- [BizTalk 服務：開發人員、基本、標準和高級版本圖表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+- [BizTalk 服務：使用 Azure 傳統入口網站進行佈建](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk 服務：佈建狀態圖](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [BizTalk 服務：儀表板、監視和調整索引標籤](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+- [BizTalk 服務：備份與還原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+- [BizTalk 服務：節流](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
  
+
 

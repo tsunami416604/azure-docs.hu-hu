@@ -74,13 +74,13 @@ Site Recovery 可以保護在所支援之 VM 上執行的任何工作負載。
 
 ### 我可以保護哪些實體伺服器？
 
-您可以將執行 Windows 或 Linux 的實體伺服器複寫至 Azure 或次要站台來進行保護。 如需作業系統需求讀取 [我需要什麼?](site-recovery-vmware-to-azure.md/#what-do-i-need)。 不論是將實體伺服器複寫至 Azure 還是次要站台，都適用相同的限制。
+您可以將執行 Windows 或 Linux 的實體伺服器複寫至 Azure 或次要站台來進行保護。 如需作業系統需求讀取 [我需要什麼？](site-recovery-vmware-to-azure.md/#what-do-i-need)。 不論是將實體伺服器複寫至 Azure 還是次要站台，都適用相同的限制。
 
 請注意，如果您的內部部署伺服器當機，實體伺服器將會在 Azure 中以 VM 的身分執行。 容錯回復目前並不能以內部部署的實體伺服器作為目標，但您仍可將 Hyper-V 或 VMware 上所執行的虛擬機器作為目的地。
 
 ### 我可以保護哪些 VMware VM？
 
-此案例中，您將需要 VMware vCenter server、 vSphere hypervisor 和虛擬機器執行 VMware 工具。 如實際需求，請參閱 [我需要什麼?](site-recovery-vmware-to-azure.md/#what-do-i-need)。 不論是將實體伺服器複寫至 Azure 還是次要站台，都適用相同的限制。
+針對此案例，您將需要一部 VMware vCenter 伺服器、一個 vSphere Hypervisor 以及幾個執行 VMware 工具的虛擬機器。 如實際需求，請參閱 [我需要什麼？](site-recovery-vmware-to-azure.md/#what-do-i-need)。 不論是將實體伺服器複寫至 Azure 還是次要站台，都適用相同的限制。
 
 ### 將虛擬機器複寫至 Azure 有任何先決條件嗎？
 
@@ -133,7 +133,7 @@ Site Recovery 已經過 ISO 27001:2005 認證，並且正在完成其 HIPAA、DP
 
 ### 我可以多久複寫一次資料？
 - **Hyper-v:** HYPER-V Vm 可以複寫每隔 30 秒，5 分鐘或 15 分鐘。 如果您已設定 SAN 複寫，則複寫將會是同步的。
-- **VMware 和實體伺服器:** 此處不相關的複寫頻率。 複寫將會是連續的。 
+- **VMware 和實體伺服器 ︰** 此處不相關的複寫頻率。 複寫將會是連續的。 
 
 ### 我可以將複寫從現有的復原網站延伸到另一個第三網站嗎？
 不支援延伸的或鏈結的複寫。 傳送有關這項功能的意見反應 [意見反應論壇](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication)。
@@ -148,7 +148,7 @@ Site Recovery 已經過 ISO 27001:2005 認證，並且正在完成其 HIPAA、DP
 
 不支援此做法。 傳送有關這項功能的意見反應 [意見反應論壇](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6418801-exclude-disks-from-replication)。
 
-### 與動態磁碟的虛擬機器可以複寫嗎?
+### 與動態磁碟的虛擬機器可以複寫嗎？
 
 複寫 Hyper-V 虛擬機器時，支援使用動態磁碟。 複寫 VMware 虛擬機器或實體伺服器時，則不支援。 傳送有關這項功能的意見反應 [意見反應論壇](http://feedback.azure.com/forums/256299-site-recovery)。
 
@@ -222,4 +222,5 @@ Azure 是針對服務復原能力而設計的。 Site Recovery 已經設計成�
 - 深入了解 [站台復原架構](site-recovery-components.md)  
 
  
+
 

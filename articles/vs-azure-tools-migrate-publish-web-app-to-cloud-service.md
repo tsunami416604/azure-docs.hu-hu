@@ -28,7 +28,7 @@
 ![將 Web 應用程式發佈至 Microsft Azure](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC748917.png)
 
 >[AZURE.NOTE]  **轉換**, ，**轉換成 Azure 雲端服務專案** 命令才會顯示您的方案中的 web 專案。 例如，方案中的 Silverlight 專案就不會顯示此命令。
-當您建立服務封裝或將應用程式發佈至 Azure 時，可能會出現警告或錯誤。 這些警告和錯誤可以幫助您在部署至 Azure 之前先修正問題。 例如，您可能會收到遺失組件的警告。 如需如何將所有警告視為錯誤的詳細資訊，請參閱 [使用 Visual Studio 設定 Azure 雲端服務專案](vs-azure-tools-configuring-an-azure-project.md)。 如果您建置應用程式、 使用計算模擬器在本機加以執行，或發行至 Azure，您可能會看到下列錯誤 **錯誤清單** 視窗: **指定的路徑、 檔案名稱，或是兩者都太長**。 如果完整的 Azure 專案名稱長度太長，就會發生此錯誤。 包括完整路徑在內的專案名稱長度不能超過 146 個字元。 例如，以下是包括針對 Silverlight 應用程式所建立之 Azure 專案的檔案路徑在內的完整專案名稱：`c:\users\<user name>\documents\visual studio 2015\Projects\SilverlightApplication4\SilverlightApplication4.Web.Azure.ccproj`。 您可能必須將方案移到其他具有較短路徑的目錄，以縮減完整專案名稱的長度。
+當您建立服務封裝或將應用程式發佈至 Azure 時，可能會出現警告或錯誤。 這些警告和錯誤可以幫助您在部署至 Azure 之前先修正問題。 例如，您可能會收到遺失組件的警告。 如需如何將所有警告視為錯誤的詳細資訊，請參閱 [使用 Visual Studio 設定 Azure 雲端服務專案](vs-azure-tools-configuring-an-azure-project.md)。 如果您建置應用程式、 使用計算模擬器在本機加以執行，或發行至 Azure，您可能會看到下列錯誤 **錯誤清單** 視窗 ︰ **指定的路徑、 檔案名稱，或是兩者都太長**。 如果完整的 Azure 專案名稱長度太長，就會發生此錯誤。 包括完整路徑在內的專案名稱長度不能超過 146 個字元。 例如，以下是包括針對 Silverlight 應用程式所建立之 Azure 專案的檔案路徑在內的完整專案名稱：`c:\users\<user name>\documents\visual studio 2015\Projects\SilverlightApplication4\SilverlightApplication4.Web.Azure.ccproj`。 您可能必須將方案移到其他具有較短路徑的目錄，以縮減完整專案名稱的長度。
 
 若要從 Visual Studio 將 Web 應用程式移轉並發佈至 Azure，請遵循下列步驟。
 
@@ -60,11 +60,11 @@
 
 ### 對連接字串使用 Web 角色中的 SQL Database 執行個體
 
-1. 若要在 Azure 管理入口網站中建立的 SQL 資料庫執行個體，請遵循下列文章中的步驟: [建立 SQL 資料庫伺服器](http://go.microsoft.com/fwlink/?LinkId=225109)。
+1. 若要在 Azure 管理入口網站中建立的 SQL 資料庫執行個體，請遵循下列文章中的步驟 ︰ [建立 SQL 資料庫伺服器](http://go.microsoft.com/fwlink/?LinkId=225109)。
 
     >[AZURE.NOTE] 當您的 SQL 資料庫的執行個體設定防火牆規則時，您必須選取 **允許其他 Azure 服務存取這部伺服器** 核取方塊。
 
-1. 若要建立 SQL 資料庫的連接字串使用的執行個體，請遵循下列文章中的下一節中的步驟: [建立 SQL 資料庫](http://go.microsoft.com/fwlink/?LinkId=225110)。
+1. 若要建立 SQL 資料庫的連接字串使用的執行個體，請遵循下列文章中的下一節中的步驟 ︰ [建立 SQL 資料庫](http://go.microsoft.com/fwlink/?LinkId=225110)。
 
 1. 若要複製 ADO.NET 連接字串以用於您的連接字串，請在 Azure 管理入口網站中執行下列步驟。  
 
@@ -118,11 +118,11 @@
 
 ### 將 Web 應用程式發佈至 Azure
 
-1. 若要測試應用程式的本機開發環境中使用 Azure 計算模擬器，開啟 web 角色的 Azure 專案的捷徑功能表並選擇 **設定為啟始專案**。 然後選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: **F5**)。
+1. 若要測試應用程式的本機開發環境中使用 Azure 計算模擬器，開啟 web 角色的 Azure 專案的捷徑功能表並選擇 **設定為啟始專案**。 然後選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ **F5**)。
 
      **啟動 Azure 偵錯環境** 對話方塊隨即開啟，並在瀏覽器中啟動應用程式。 如需關於如何在計算模擬器中啟動每一種 Web 應用程式的特定詳細資訊，請參閱本節資料表。
 
-1. 若要設定您的應用程式要發佈至 Azure 的服務，您必須擁有 Microsoft 帳戶和 Azure 訂用帳戶。 使用下列主題中的步驟來設定您的服務: [準備發行或部署 Azure 應用程式從 Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)。
+1. 若要設定您的應用程式要發佈至 Azure 的服務，您必須擁有 Microsoft 帳戶和 Azure 訂用帳戶。 使用下列主題中的步驟來設定您的服務 ︰ [準備發行或部署 Azure 應用程式從 Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)。
 
 1. 若要發佈至 Azure 的 web 應用程式，請開啟 web 專案的捷徑功能表並選擇 **Publish to Azure**。
 
@@ -134,13 +134,13 @@
 
     ![VST_AzureActivityLog](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744149.png)
 
-1. (選擇性)若要取消部署程序，開啟活動記錄檔中的明細項目捷徑功能表，然後選擇 **取消並移除**。 這會停止部署程序，並從 Azure 中刪除部署環境。
+1. （選擇性）若要取消部署程序，開啟活動記錄檔中的明細項目捷徑功能表，然後選擇 **取消並移除**。 這會停止部署程序，並從 Azure 中刪除部署環境。
 
     >[AZURE.NOTE] 若要完成部署後，請移除這個部署環境，您必須使用 Azure 管理入口網站。
 
-1. (選擇性)您的角色執行個體啟動之後，Visual Studio 會自動顯示部署環境中的 **Azure 計算** 節點 **雲端總管** 或 **伺服器總管**。 您可以從這裡檢視個別角色執行個體的狀態。
+1. （選擇性）您的角色執行個體啟動之後，Visual Studio 會自動顯示部署環境中的 **Azure 計算** 節點 **雲端總管** 或 **伺服器總管**。 您可以從這裡檢視個別角色執行個體的狀態。
 
-    下圖顯示中的角色執行個體 **伺服器總管** 時仍處於初始化狀態:
+    下圖顯示中的角色執行個體 **伺服器總管** 時仍處於初始化狀態 ︰
 
     ![VST_DeployComputeNode](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744134.png)
 
@@ -148,20 +148,20 @@
 
     下表所列內容詳述如何從 Azure 啟動特定 Web 應用程式，或如何使用 Azure 計算模擬器在本機執行或偵錯 Web 應用程式：
 
-    |Web 應用程式類型|使用計算模擬器在本機執行/偵錯|在 Azure 中執行|
-    |---|---|---|
-    |ASP.NET Web 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|選擇顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 起始頁，在瀏覽器中載入。|
-    |ASP.NET MVC 2 Web 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|選擇顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 起始頁，在瀏覽器中載入。|
-    |ASP.NET MVC 3 Web 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|選擇顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 起始頁，在瀏覽器中載入。|
-    |ASP.NET MVC 4 Web 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|選擇顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 起始頁，在瀏覽器中載入。|
-    |ASP.NET 空白 Web 應用程式|您必須在應用程式中加入設定做為 Web 專案起始頁的 .aspx 網頁。 然後在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|如果您有預設的.aspx 網頁應用程式中，選擇 [顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 和瀏覽器中載入此頁面。 如果您有不同的 .aspx 網頁，則必須使用下列格式的 URL 來瀏覽到此特定網頁：`<url for deployment>/<name of page>.aspx`|
-    |Silverlight 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
-    |Silverlight 商務應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
-    |Silverlight 瀏覽應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
-    |WCF 服務應用程式|您必須將 .svc 檔案設定做為 WCF 服務專案的起始頁。 然後在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的 svc 檔案：`<url for deployment>/<name of service file>.svc`|
-    |WCF 工作流程服務應用程式|您必須將 .svc 檔案設定做為 WCF 服務專案的起始頁。 然後在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的 svc 檔案：`<url for deployment>/<name of service file>.svc`|
-    |ASP.NET 動態實體|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|您必須更新連接字串 (請參閱下一節)。 您還必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
-    |ASP.NET 動態資料 Linq to SQL|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤: 選擇 **F5** 索引鍵。)。|您必須遵循以下程序中的步驟：將 SQL Azure 資料庫用於應用程式 (請參閱本主題前面的章節)。 您還必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
+  	|Web 應用程式類型|使用計算模擬器在本機執行/偵錯|在 Azure 中執行|
+  	|---|---|---|
+  	|ASP.NET Web 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|選擇顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 起始頁，在瀏覽器中載入。|
+  	|ASP.NET MVC 2 Web 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|選擇顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 起始頁，在瀏覽器中載入。|
+  	|ASP.NET MVC 3 Web 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|選擇顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 起始頁，在瀏覽器中載入。|
+  	|ASP.NET MVC 4 Web 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|選擇顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 起始頁，在瀏覽器中載入。|
+  	|ASP.NET 空白 Web 應用程式|您必須在應用程式中加入設定做為 Web 專案起始頁的 .aspx 網頁。 然後在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|如果您有預設的.aspx 網頁應用程式中，選擇 [顯示的 URL 超連結 **部署** ] 索引標籤 **Azure 活動記錄** 和瀏覽器中載入此頁面。 如果您有不同的 .aspx 網頁，則必須使用下列格式的 URL 來瀏覽到此特定網頁：`<url for deployment>/<name of page>.aspx`|
+  	|Silverlight 應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
+  	|Silverlight 商務應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
+  	|Silverlight 瀏覽應用程式|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
+  	|WCF 服務應用程式|您必須將 .svc 檔案設定做為 WCF 服務專案的起始頁。 然後在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的 svc 檔案：`<url for deployment>/<name of service file>.svc`|
+  	|WCF 工作流程服務應用程式|您必須將 .svc 檔案設定做為 WCF 服務專案的起始頁。 然後在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|您必須使用下列格式的 URL 來瀏覽到應用程式的 svc 檔案：`<url for deployment>/<name of service file>.svc`|
+  	|ASP.NET 動態實體|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|您必須更新連接字串 (請參閱下一節)。 您還必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
+  	|ASP.NET 動態資料 Linq to SQL|在功能表列上選擇 [ **偵錯**, ，**開始偵錯** (鍵盤 ︰ 選擇 **F5** 索引鍵。)。|您必須遵循以下程序中的步驟：將 SQL Azure 資料庫用於應用程式 (請參閱本主題前面的章節)。 您還必須使用下列格式的 URL 來瀏覽到應用程式的特定網頁：`<url for deployment>/<name of page>.aspx`|
 
 ## 更新 ASP.NET 動態實體的連接字串
 
@@ -177,7 +177,7 @@
     <addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=<server name>\SQLEXPRESS;initial catalog=<database name>;integrated security=True;multipleactiveresultsets=True;App=EntityFramework&quot;"providerName="System.Data.EntityClient"/>
     ```
 
-    更新 *connectionString* 值與 SQL Azure 資料庫的 ADO.NET 連接字串，如下所示:
+    更新 *connectionString* 值與 SQL Azure 資料庫的 ADO.NET 連接字串，如下所示 ︰
 
     ```
     XMLCopy<addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;Server=tcp:<SQL Azure server name>.database.windows.net,1433;Database=<database name>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;multipleactiveresultsets=True;App=EntityFramework&quot;"providerName="System.Data.EntityClient"/>
@@ -209,4 +209,5 @@
 ## 後續步驟
 如需有關發行的詳細資訊，請參閱 [準備發行或部署 Azure 應用程式從 Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)。 也請參閱
 [設定具名驗證認證](vs-azure-tools-setting-up-named-authentication-credentials.md)。
+
 

@@ -102,7 +102,7 @@ Azure 儲存體作業可能會傳回大於 299 的 HTTP 狀態碼為其正常功
 
 若要開始使用 azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)。
 
-1. 使用 [Add-azureaccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) cmdlet 將您的 Azure 使用者帳戶新增至 PowerShell 視窗:
+1. 使用 [Add-azureaccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) cmdlet 將您的 Azure 使用者帳戶新增至 PowerShell 視窗 ︰
 
     ```
     Add-AzureAccount
@@ -170,7 +170,7 @@ Azure 儲存體作業可能會傳回大於 299 的 HTTP 狀態碼為其正常功
 
 ## 在 Azure 傳統入口網站中檢閱度量資料
 
-一旦您的應用程式已執行了一段時間，您即可檢閱 Azure 傳統入口網站中顯示的度量圖表，以觀察您服務的執行狀況。 首先，我們將新增 **成功百分比** 至 [監控] 頁面的度量:
+一旦您的應用程式已執行了一段時間，您即可檢閱 Azure 傳統入口網站中顯示的度量圖表，以觀察您服務的執行狀況。 首先，我們將新增 **成功百分比** 至 [監控] 頁面的度量 ︰
 
 1. 瀏覽至您的儲存體帳戶中的儀表板 [Azure 傳統入口網站](manage.windowsazure.com), ，然後選取 **監視** 檢視監控頁面。
 2. 按一下 [ **加入度量** 顯示 **選擇度量** ] 對話方塊。
@@ -178,11 +178,11 @@ Azure 儲存體作業可能會傳回大於 299 的 HTTP 狀態碼為其正常功
 
 ![選擇度量](./media/storage-e2e-troubleshooting-classic-portal/choose-metrics-portal-1.png)
 
-在 Azure 傳統入口網站，您會立即看到 **成功百分比** 在監控圖表，以及任何其他度量您所新增 (最多六個可以顯示在圖表上一次)。 在下圖中，您可以看到百分比成功率稍微低於 100%，這就是我們接下來將透過在 Message Analyzer 分析中記錄檔來調查的案例：
+在 Azure 傳統入口網站，您會立即看到 **成功百分比** 在監控圖表，以及任何其他度量您所新增 （最多六個可以顯示在圖表上一次）。 在下圖中，您可以看到百分比成功率稍微低於 100%，這就是我們接下來將透過在 Message Analyzer 分析中記錄檔來調查的案例：
 
 ![入口網站中的度量圖表](./media/storage-e2e-troubleshooting-classic-portal/portal-metrics-chart-1.png)
 
-如需將度量新增至 [監控] 頁面的詳細資訊，請參閱 [How to: 將度量新增至度量表](storage-monitor-storage-account.md#addmonitoringmetrics)。
+如需將度量新增至 [監控] 頁面的詳細資訊，請參閱 [How to ︰ 將度量新增至度量表](storage-monitor-storage-account.md#addmonitoringmetrics)。
 
 > [AZURE.NOTE] 它可能需要一些時間才會出現在 Azure 傳統入口網站啟用儲存體度量之後，度量資料。 這是因為過了這個小時，前一個小時的每小時度量才會顯示在 Azure 傳統入口網站中。 此外，分鐘度量不會顯示在 Azure 傳統入口網站中。 因此視您啟用度量的時間而定，有可能需要兩個小時才看得見度量資料。
 
@@ -210,11 +210,11 @@ Message Analyzer 包含 Azure 儲存體資產，可協助您分析伺服器、�
 2. 啟動 Message Analyzer。
 3. 在 **啟動** 頁面上，瀏覽至 **下載**, ，接著篩選 **Azure 儲存體**。 您會看到 Azure 儲存體資產，如下圖所示。
 4. 按一下 [ **同步處理所有顯示的項目** 安裝 Azure 儲存體資產。 可用的資產包括： 
-    - **Azure 儲存體色彩規則:** Azure 儲存體色彩規則可讓您定義特殊篩選條件，使用色彩、 文字和字型樣式來反白顯示包含在追蹤中的特定資訊的訊息。
-    - **Azure 儲存體圖表:** Azure 儲存體圖表是圖形伺服器記錄資料的預先定義的圖表。 請注意，若要在此時使用 Azure 儲存體圖表，您可能只要將伺服器記錄檔載入到 [分析方格]。
-    - **Azure 儲存體剖析器:** Azure 儲存體剖析器剖析 Azure 儲存體用戶端、 伺服器和 HTTP 記錄檔以便在分析方格中顯示。
-    - **Azure 儲存體篩選條件:** Azure 儲存體篩選條件是預先定義的準則，您可以使用查詢分析方格中的資料。
-    - **Azure 儲存體檢:** Azure 儲存體檢視版面配置是預先定義的資料行版本配置和分析方格中的群組。
+    - **Azure 儲存體色彩規則 ︰** Azure 儲存體色彩規則可讓您定義特殊篩選條件，使用色彩、 文字和字型樣式來反白顯示包含在追蹤中的特定資訊的訊息。
+    - **Azure 儲存體圖表 ︰** Azure 儲存體圖表是圖形伺服器記錄資料的預先定義的圖表。 請注意，若要在此時使用 Azure 儲存體圖表，您可能只要將伺服器記錄檔載入到 [分析方格]。
+    - **Azure 儲存體剖析器 ︰** Azure 儲存體剖析器剖析 Azure 儲存體用戶端、 伺服器和 HTTP 記錄檔以便在分析方格中顯示。
+    - **Azure 儲存體篩選條件 ︰** Azure 儲存體篩選條件是預先定義的準則，您可以使用查詢分析方格中的資料。
+    - **Azure 儲存體檢 ︰** Azure 儲存體檢視版面配置是預先定義的資料行版本配置和分析方格中的群組。
 4. 在您安裝資產之後，請重新啟動 Message Analyzer。
 
 ![Message Analyzer 起始頁](./media/storage-e2e-troubleshooting-classic-portal/mma-start-page-1.png)
@@ -297,7 +297,7 @@ Azure 儲存體用戶端程式庫會自動為每一項要求產生唯一的用�
 
 >[AZURE.NOTE] 您可以篩選 **StatusCode** 資料行，仍然繼續顯示來自所有三個記錄檔，包括用戶端記錄檔中，如果您將運算式加入篩選，其中包含記錄項目，其中的狀態碼為 null 的資料。 若要建構此篩選運算式，請使用：
 >
-> <code>& #42。StatusCode > = 400 或! & #42。StatusCode</code> 
+> <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code> 
 >
 > 此篩選條件會傳回用戶端記錄檔的所有資料列，以及僅限狀態碼大於 400 之伺服器記錄檔和 HTTP 記錄檔的資料列。 如果您將此篩選條件套用到依用戶端要求識別碼和模組分組的檢視版面配置，即可搜尋或捲視所有記錄檔項目，以尋找所有三個記錄檔表示的地方。   
 
@@ -306,7 +306,7 @@ Azure 儲存體用戶端程式庫會自動為每一項要求產生唯一的用�
 儲存體資產包括預先定義的篩選條件，您可用來縮小記錄檔資料的範圍，以尋找您所尋找的錯誤或趨勢。 接下來，我們將會套用兩個預先定義的篩選條件：一個篩選 404 錯誤的伺服器和網路追蹤記錄檔，一個篩選指定時間範圍內的資料。
 
 1. 如果 [檢視篩選條件] 工具視窗尚未顯示，請予以顯示 。 在工具列功能區中，選取 **工具視窗**, ，然後 **檢視篩選條件**。
-2. 在 [檢視篩選器] 視窗中，選取 **程式庫**, ，然後搜尋 `Azure Storage` 以尋找 Azure 儲存體篩條件。 選取篩選器 **所有記錄檔中的 404 (找不到) 訊息**。
+2. 在 [檢視篩選器] 視窗中，選取 **程式庫**, ，然後搜尋 `Azure Storage` 以尋找 Azure 儲存體篩條件。 選取篩選器 **所有記錄檔中的 404 （找不到） 訊息**。
 3. 顯示 **程式庫** 功能表，然後找出並選取 **全域時間篩選條件**。
 4. 將篩選條件中顯示的時間戳記編輯成您想要檢視的範圍。 這有助於縮小要分析的資料範圍。
 5. 您的篩選條件看起來應類似下列範例。 按一下 [ **套用** 篩選條件套用至分析方格。
@@ -352,12 +352,12 @@ Message Analyzer 會找出並選取搜尋準則符合用戶端要求識別碼的
 |    PercentTimeoutError 增加                                                                               |    HTTP。Response.StatusCode = = 500                                                                                                                                                                                                                             |    網路                                                       |
 |    PercentTimeoutError 增加 (全部)                                                                         |    * StatusCode = = 500                                                                                                                                                                                                                                          |    全部                                                           |
 |    Percentnetworkerror 增加                                                                               |    AzureStorageClientDotNetV4.EventLogEntry.Level < 2                                                                                                                                                                                                          |    用戶端                                                        |
-|    HTTP 403 (禁止) 訊息                                                                                 |    HTTP。Response.StatusCode = = 403                                                                                                                                                                                                                             |    網路                                                       |
-|    HTTP 404 (找不到) 訊息                                                                                 |    HTTP。Response.StatusCode = = 404                                                                                                                                                                                                                             |    網路                                                       |
-|    404 (全部)                                                                                                     |    * StatusCode = = 404                                                                                                                                                                                                                                          |    全部                                                           |
+|    HTTP 403 （禁止） 訊息                                                                                 |    HTTP。Response.StatusCode = = 403                                                                                                                                                                                                                             |    網路                                                       |
+|    HTTP 404 （找不到） 訊息                                                                                 |    HTTP。Response.StatusCode = = 404                                                                                                                                                                                                                             |    網路                                                       |
+|    404 （全部）                                                                                                     |    * StatusCode = = 404                                                                                                                                                                                                                                          |    全部                                                           |
 |    共用存取簽章 (SAS) 授權問題                                                             |    作業 AzureStorageLog.RequestStatus = ="SASAuthorizationError"                                                                                                                                                                                                     |    網路                                                       |
 |    HTTP 409 (衝突) 訊息                                                                                  |    HTTP。Response.StatusCode = = 409                                                                                                                                                                                                                             |    網路                                                       |
-|    409 (全部)                                                                                                     |    * StatusCode = = 409                                                                                                                                                                                                                                          |    全部                                                           |
+|    409 （全部）                                                                                                     |    * StatusCode = = 409                                                                                                                                                                                                                                          |    全部                                                           |
 |    低 PercentSuccess 或分析記錄項目內含具有 ClientOtherErrors 的交易狀態作業    |    作業 AzureStorageLog.RequestStatus = ="ClientOtherError"                                                                                                                                                                                                         |    伺服器                                                        |
 |    Nagle 警告                                                                                               |    ((AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) 和 (AzureStorageLog.RequestPacketSize < 1460年) 和 (AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS > = 200)        |    伺服器                                                        |
 |    在伺服器和網路中的時間範圍內的記錄                                                                    |    #時間戳記 > = 2014年-10-20T16:36:38 和 #Timestamp < = 2014年-10-20T16:36:39                                                                                                                                                                                     |    伺服器、網路                                               |
@@ -375,4 +375,5 @@ Message Analyzer 會找出並選取搜尋準則符合用戶端要求識別碼的
 - [Microsoft Message Analyzer 操作指南](http://technet.microsoft.com/library/jj649776.aspx)
  
  
+
 

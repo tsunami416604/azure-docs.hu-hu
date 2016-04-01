@@ -38,7 +38,7 @@
 4. 將工作 (U-SQL 指令碼) 提交至資料湖分析帳戶。 作業會讀取來源資料，處理資料的指示 
 U SQL 指令碼，然後再儲存輸出資料湖存放區帳戶或 Blob 儲存體帳戶。
 
-##先決條件
+##必要條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -258,4 +258,5 @@ U SQL 指令碼，然後再儲存輸出資料湖存放區帳戶或 Blob 儲存�
 - 若要了解 U SQL，請參閱 [開始使用 Azure 資料湖分析 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
 - 管理工作，請參閱 [管理 Azure 資料湖分析使用 Azure 入口網站](data-lake-analytics-manage-use-portal.md)。
 - 若要取得資料湖分析的概觀，請參閱 [Azure 資料湖分析概觀](data-lake-analytics-overview.md)。
+
 

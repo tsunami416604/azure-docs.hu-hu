@@ -28,7 +28,7 @@
 
 本教學課程以應用程式服務行動應用程式快速入門為基礎。 在開始本教學課程之前，您必須先完成快速入門教學課程 [建立 Windows 應用程式](../app-service-mobile-windows-store-dotnet-get-started.md)。 如果您不要使用下載的快速入門伺服器專案，必須將推播通知擴充套件新增至您的專案。 如需伺服器擴充功能套件的詳細資訊，請參閱 [Azure 行動應用程式使用.NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。 
 
-##先決條件
+##必要條件
 
 若要完成此教學課程，您需要下列項目：
 
@@ -61,7 +61,7 @@
 
 1. 在 Visual Studio 中，以滑鼠右鍵按一下伺服器專案中，按一下 [ **管理 NuGet 封裝**, 、 搜尋 Microsoft.Azure.NotificationHubs，然後按一下 [ **安裝**。 這會安裝通知中樞用戶端程式庫。
 
-2. 展開 **控制器**, 、 開啟 TodoItemController.cs，並新增下列 using 陳述式:
+2. 展開 **控制器**, 、 開啟 TodoItemController.cs，並新增下列 using 陳述式 ︰
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
@@ -159,12 +159,12 @@
 
 ##<a id="update-service"></a>將推播通知新增至應用程式
 
-1. 開啟共用 **App.xaml.cs** 專案檔案，並新增下列 `using` 陳述式:
+1. 開啟共用 **App.xaml.cs** 專案檔案，並新增下列 `using` 陳述式 ︰
 
         using System.Threading.Tasks;  
         using Windows.Networking.PushNotifications;       
 
-2. 在相同檔案中，新增下列 **InitNotificationsAsync** 方法定義以 **應用程式** 類別:
+2. 在相同檔案中，新增下列 **InitNotificationsAsync** 方法定義以 **應用程式** 類別 ︰
     
         private async Task InitNotificationsAsync()
         {
@@ -178,7 +178,7 @@
     
     此程式碼會從 WNS 中擷取應用程式的 ChannelURI，然後向您的應用程式服務行動應用程式註冊該 ChannelURI。
     
-3. 頂端 **OnLaunched** 中的事件處理常式 **App.xaml.cs**, ，加入 **非同步** 修飾詞新增至方法定義，並新增下列呼叫新 **InitNotificationsAsync** 方法，如下列範例所示:
+3. 頂端 **OnLaunched** 中的事件處理常式 **App.xaml.cs**, ，加入 **非同步** 修飾詞新增至方法定義，並新增下列呼叫新 **InitNotificationsAsync** 方法，如下列範例所示 ︰
 
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
@@ -213,3 +213,4 @@
 [Azure Portal]: https://portal.azure.com/
 
 <!-- Images. -->
+

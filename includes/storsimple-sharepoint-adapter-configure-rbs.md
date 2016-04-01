@@ -10,7 +10,7 @@
 
     ![設定 StorSimple Adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
 
-3. 在 **設定 StorSimple Adapter** 頁面:
+3. 在 **設定 StorSimple Adapter** 頁面 ︰
 
     1. 請確定 **啟用編輯路徑** 核取方塊。
 
@@ -93,14 +93,15 @@
 
 8. (選擇性) 設定 RBS 並將所有 BLOB 內容都移至 StorSimple 裝置之後，您可以將內容資料庫移至裝置。 如果您選擇移動內容資料庫，建議您在裝置上將內容資料庫儲存體設定為主要磁碟區。 然後使用以建立的 SQL Server 最佳作法，將內容資料庫移轉至 StorSimple 裝置。 
 
-     >[AZURE.NOTE] StorSimple 8000 系列 (它不支援 5000 或 7000 系列) 只支援將內容資料庫移至裝置。
+     >[AZURE.NOTE] StorSimple 8000 系列 （它不支援 5000 或 7000 系列） 只支援將內容資料庫移至裝置。
  
      如果您在 StorSimple 裝置上的個別磁碟區中儲存 BLOB 和內容資料庫，建議您在相同的磁碟區容器中設定它們。 這樣可確保它們將一起進行備份。
 
-       >[AZURE.WARNING] If you have not enabled RBS, we do not recommend moving the content database to the StorSimple device. This is an untested configuration.
+       >[AZURE.WARNING] 如果您尚未啟用 RBS，我們不建議將內容資料庫移至 StorSimple 裝置。 這是未經過測試的設定。
  
-9. 移至下一個步驟: [設定記憶體回收](#configure-garbage-collection)。
+9. 移至下一個步驟 ︰ [設定記憶體回收](#configure-garbage-collection)。
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx
+
 

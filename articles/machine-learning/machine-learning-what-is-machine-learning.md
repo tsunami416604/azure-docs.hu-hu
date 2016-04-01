@@ -1,5 +1,5 @@
 <properties
-    pageTitle="什麼是 Machine Learning? | Microsoft Azure"
+    pageTitle="什麼是 Machine Learning？ | Microsoft Azure"
     description="說明完全受管理之機器學習服務的基本概念，這項雲端技術可讓您建立、操作及銷售解決方案。"
     keywords="what is machine learning,cloud technology,predictive,what is predictive analytics,operationalize"
     services="machine-learning"
@@ -96,18 +96,18 @@ Azure Machine Learning 具備在雲端上建立預測性分析解決方案所需
 
 ### 其他常見的機器學習服務詞彙
 
-* **演算法**: 一組獨立的規則用來解決問題，透過資料處理、 計算或自動推論。
-* **分類資料**: 資料，依照分類進行組織，以及可以分割成群組。 例如，汽車的類別資料集可指定年份、廠牌、車型和價格。
-* **分類**: 資料點組織成類別目錄的模型為基礎的哪個類別群組為已知的資料集。
-* **特性工程設計**: 擷取或選取功能的程序相關的資料集，以便增強資料集，並改善結果。 例如，飛機票價資料可透過星期幾和假日來增強。 請參閱 [特徵選取和 Azure Machine Learning 中的設計](machine-learning-feature-selection-and-engineering.md)。
-* **模組**: 在 Machine Learning Studio 模型中，例如輸入資料模組可輸入及編輯小型資料集的功能項目。 演算法也是 Machine Learning Studio 的一種模組類型。
-* **模型**: 監督式學習中，模型是機器學習實驗訓練資料集、 演算法模組和功能的模組，例如 [評分模型] 模組所組成的乘積。
-* **數值資料**: 代表度量 (連續資料) 或計數 (離散資料) 的資料。 也稱為 *量化資料*。
+* **演算法**︰ 一組獨立的規則用來解決問題，透過資料處理、 計算或自動推論。
+* **分類資料**︰ 資料，依照分類進行組織，以及可以分割成群組。 例如，汽車的類別資料集可指定年份、廠牌、車型和價格。
+* **分類**︰ 資料點組織成類別目錄的模型為基礎的哪個類別群組為已知的資料集。
+* **特性工程設計**︰ 擷取或選取功能的程序相關的資料集，以便增強資料集，並改善結果。 例如，飛機票價資料可透過星期幾和假日來增強。 請參閱 [特徵選取和 Azure Machine Learning 中的設計](machine-learning-feature-selection-and-engineering.md)。
+* **模組**︰ 在 Machine Learning Studio 模型中，例如輸入資料模組可輸入及編輯小型資料集的功能項目。 演算法也是 Machine Learning Studio 的一種模組類型。
+* **模型**︰ 監督式學習中，模型是機器學習實驗訓練資料集、 演算法模組和功能的模組，例如 [評分模型] 模組所組成的乘積。
+* **數值資料**︰ 代表度量 （連續資料） 或計數 （離散資料） 的資料。 也稱為 *量化資料*。
 * **資料分割**:，您必須將資料分成範例的方法。 請參閱 [資料分割和取樣](https://msdn.microsoft.com/library/azure/dn905960.aspx) 如需詳細資訊。
-* **預測**: 預測是一個值或值從機器學習模型的預測。 您也可能會看到「預測的分數」一詞；不過，預測的分數不是模型的最終輸出。 計分之後還會評估模型。
-* **迴歸**: 模型來預測連續值根據獨立變數，預測汽車的價格，例如根據汽車的年份和廠牌。
-* **分數**: 產生從定型的分類或迴歸模型的預測的值使用 [評分模型] 模組](https://msdn.microsoft.com/library/azure/dn905995.aspx) Machine Learning Studio 中。 分類模型也會傳回預測值的機率分數。 一旦您已經從模型產生分數，您可以評估模型的精確度使用 [評估模型] 模組](https://msdn.microsoft.com/library/azure/dn905915.aspx)。
-* **範例**: 資料集的一部分是要代表整體。 您可以隨機取樣，或根據資料集的特定特徵進行取樣。
+* **預測**︰ 預測是一個值或值從機器學習模型的預測。 您也可能會看到「預測的分數」一詞；不過，預測的分數不是模型的最終輸出。 計分之後還會評估模型。
+* **迴歸**︰ 模型來預測連續值根據獨立變數，預測汽車的價格，例如根據汽車的年份和廠牌。
+* **分數**︰ 產生從定型的分類或迴歸模型的預測的值使用 [評分模型] 模組](https://msdn.microsoft.com/library/azure/dn905995.aspx) Machine Learning Studio 中。 分類模型也會傳回預測值的機率分數。 一旦您已經從模型產生分數，您可以評估模型的精確度使用 [評估模型] 模組](https://msdn.microsoft.com/library/azure/dn905915.aspx)。
+* **範例**︰ 資料集的一部分是要代表整體。 您可以隨機取樣，或根據資料集的特定特徵進行取樣。
 
 
 
@@ -117,4 +117,5 @@ Azure Machine Learning 具備在雲端上建立預測性分析解決方案所需
 
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
+
 

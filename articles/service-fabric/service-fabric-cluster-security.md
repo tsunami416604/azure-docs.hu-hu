@@ -26,19 +26,19 @@ Service Fabric 會提供下列案例的安全性：
 
 1. **節點間安全性**  或保護的叢集節點通訊。保護叢集中的 Vm/電腦之間的通訊。 這可確保只有獲得授權加入叢集的電腦可以參與裝載應用程式和叢集中的服務
 
-    ![節點對節點][節點對節點]
+    ![節點對節點][Node-to-Node]
 
 2. **用戶端端對端安全性** 或安全性網狀架構用戶端進行通訊與叢集中的特定節點。 驗證並保護用戶端通訊，可確保只有獲得授權的使用者可以存取叢集與 Windows Fabric 叢集上部署的應用程式。 用戶端是透過其 Windows 安全性認證或其憑證安全性認證唯一識別。
 
-    ![用戶端-節點][用戶端-節點]
+    ![用戶端對節點][Client-to-Node]
 
-    對於任一種通訊案例 (節點到節點) 或用戶端節點中，Service Fabric 提供支援使用 [憑證安全性](https://msdn.microsoft.com/library/ff649801.aspx) 或 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。 節點對節點或用戶端對節點安全性的選擇是彼此獨立，可以相同或不同。
+    對於任一種通訊案例 （節點到節點） 或用戶端節點中，Service Fabric 提供支援使用 [憑證安全性](https://msdn.microsoft.com/library/ff649801.aspx) 或 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。 節點對節點或用戶端對節點安全性的選擇是彼此獨立，可以相同或不同。
 
     當您建立叢集時，Azure Service Fabric 會使用您指定為節點類型組態一部分的 x509 伺服器憑證。 如需這些憑證是什麼以及如何才能取得/建立憑證的快速概觀，請向下捲動至此頁面底部。
 
-3. **角色型存取控制 (RBAC)** : 限制一組憑證的唯一的讀取作業，在叢集上從系統管理作業能力。 
+3. **角色型存取控制 (RBAC)** ︰ 限制一組憑證的唯一的讀取作業，在叢集上從系統管理作業能力。 
 
-4. **服務帳戶和 RunAs** : 服務網狀架構本身會執行以 Windows 服務處理程序 (Fabric.exe)，且 Fabric.exe 處理程序所執行的安全性帳戶設定。 可以保護 Fabric.exe 在叢集中的每個節點執行的處理程序帳戶，以及為每個服務啟動的服務主機處理程序。 請參閱 [應用程式的安全性和 Runas](service-fabric-application-runas-security.md) 文件以取得詳細資料
+4. **服務帳戶和 RunAs** ︰ 服務網狀架構本身會執行以 Windows 服務處理程序 (Fabric.exe)，且 Fabric.exe 處理程序所執行的安全性帳戶設定。 可以保護 Fabric.exe 在叢集中的每個節點執行的處理程序帳戶，以及為每個服務啟動的服務主機處理程序。 請參閱 [應用程式的安全性和 Runas](service-fabric-application-runas-security.md) 文件以取得詳細資料
   
 
 ## 如何使用憑證保護 Service Fabric 叢集。
@@ -62,11 +62,11 @@ Service Fabric 會提供下列案例的安全性：
 
 這是複雜的程序，因此我們將 powershell 模組上傳至 Git Repp，它會為您完成此程序。 
 
-**步驟 2.1**: 複製此資料夾，向您的電腦從這個 [Git 儲存機制](https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers)。
+**步驟 2.1**︰ 複製此資料夾，向您的電腦從這個 [Git 儲存機制](https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers)。
 
-**步驟 2.2**: 請確定 Azure SDK 1.0 + 安裝在您的電腦上。
+**步驟 2.2**︰ 請確定 Azure SDK 1.0 + 安裝在您的電腦上。
 
-**步驟 2.3**: 開啟 Powershell 視窗並匯入 ServiceFabricRPHelpers.psm
+**步驟 2.3**︰ 開啟 Powershell 視窗並匯入 ServiceFabricRPHelpers.psm
 
 ```
 Remove-Module ServiceFabricRPHelpers
@@ -79,7 +79,7 @@ Import-Module "C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\Service
 ```
   
 
-**步驟 2.4**: 如果您使用的憑證，您已經取得，則請遵循下列步驟，否則請跳至步驟 2.5。
+**步驟 2.4**︰ 如果您使用的憑證，您已經取得，則請遵循下列步驟，否則請跳至步驟 2.5。
 
 
 登入您的 Azure 帳戶
@@ -102,13 +102,13 @@ Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -R
 指令碼順利完成時，您會看到類似下面的輸出，您需要這些項目以進行步驟 #3。
 
 1. **憑證指紋** : 2118C3BCE6541A54A0236E14ED2CCDD77EA4567A
-2. **SourceVault** /Resource 金鑰保存庫識別碼: /subscriptions/35389201-c0b3-405e-8a23-9f1450994307/resourceGroups/chackdankeyvault4doc/providers/Microsoft.KeyVault/vaults/chackdankeyvault4doc
-3. **憑證 URL** /URL 至金鑰保存庫中的憑證位置: https://chackdankeyvalut4doc.vault.azure.net:443/密碼/chackdantestcertificate3/ebc8df6300834326a95d05d90e0701ea 
+2. **SourceVault** /Resource 金鑰保存庫識別碼 ︰ /subscriptions/35389201-c0b3-405e-8a23-9f1450994307/resourceGroups/chackdankeyvault4doc/providers/Microsoft.KeyVault/vaults/chackdankeyvault4doc
+3. **憑證 URL** /URL 至金鑰保存庫中的憑證位置 ︰ https://chackdankeyvalut4doc.vault.azure.net:443/密碼/chackdantestcertificate3/ebc8df6300834326a95d05d90e0701ea 
 
 您會有您設定安全叢集所需的資訊。 移至 [步驟 3]
 
 
-**步驟 2.5**: 如果想要建立新的自我簽署憑證，並將它上載至金鑰保存庫。 
+**步驟 2.5**︰ 如果想要建立新的自我簽署憑證，並將它上載至金鑰保存庫。 
 
 登入您的 Azure 帳戶
 
@@ -144,8 +144,8 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 指令碼順利完成時，您會看到類似下面的輸出，您需要這些項目以進行步驟 #3。
 
 1. **憑證指紋** : 64881409F4D86498C88EEC3697310C15F8F1540F
-2. **SourceVault** /Resource 金鑰保存庫識別碼: /subscriptions/35389201-c0b3-405e-8a23-9f1450994307/resourceGroups/chackdankeyvault4doc/providers/Microsoft.KeyVault/vaults/chackdankeyvault4doc
-3. **憑證 URL** /URL 至金鑰保存庫中的憑證位置: https://chackdankeyvalut4doc.vault.azure.net:443/密碼/chackdantestcertificate3/fvc8df6300834326a95d05d90e0720ea 
+2. **SourceVault** /Resource 金鑰保存庫識別碼 ︰ /subscriptions/35389201-c0b3-405e-8a23-9f1450994307/resourceGroups/chackdankeyvault4doc/providers/Microsoft.KeyVault/vaults/chackdankeyvault4doc
+3. **憑證 URL** /URL 至金鑰保存庫中的憑證位置 ︰ https://chackdankeyvalut4doc.vault.azure.net:443/密碼/chackdantestcertificate3/fvc8df6300834326a95d05d90e0720ea 
 
 ##步驟 3：設定安全的叢集 
 
@@ -153,7 +153,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 
 需要使用的憑證會指定於 [安全性組態] 下的 NodeType 層級。 您必須為您的叢集中的每個節點類型指定此項目。 雖然這份文件會逐步解說如何使用入口網站執行這項作業，但您可以使用 ARM 範本執行相同的作業。
 
-![] SecurityConfigurations_01[] SecurityConfigurations_01
+![SecurityConfigurations_01][SecurityConfigurations_01]
 
 必要參數
 
@@ -202,7 +202,7 @@ Service Fabric 允許您指定兩個憑證 (主要和次要)。 您在建立時�
 
 程序如下：在入口網站上，瀏覽至您想要加入此憑證的叢集資源，按一下憑證設定，輸入次要憑證指紋並且按 [儲存]。 將會開始進行部署，而在成功完成該部署時，您目前可以使用主要或次要憑證在叢集上執行管理作業。
 
-![] SecurityConfigurations_02[] SecurityConfigurations_02
+![SecurityConfigurations_02][SecurityConfigurations_02]
 
 如果您現在想要移除其中一個憑證，您可以這麼做。 請務必先按下 [儲存後移除它，這樣就會開始進行新的部署。 該部署完成之後，您所移除的憑證不再可用來連接到叢集。 對於安全的叢集，您一律需要至少部署一個有效 (未撤銷或過期) 的憑證，否則您將無法存取叢集。 
 
@@ -230,7 +230,7 @@ X509 數位憑證通常用來驗證用戶端與伺服器、加密及數位簽署
 下列文件說明如何產生具有主體別名 (SAN) 的憑證。
 [http://support.microsoft.com/kb/931351](http://support.microsoft.com/kb/931351)
  
-**注意:** 的 [主旨] 欄位可以包含幾個值，每一個加上代表該值的初始化。 最常見的起首字母是 "CN" 代表一般名稱，例如 "CN = www.contoso.com"。 [主體] 欄位也可能空白。 也請注意選擇性 [主體別名] 欄位；若已填入資料，此欄位必須包含憑證的一般名稱，以及每個主體別名的一個項目。 這些會被輸入為 DNS 名稱值。
+**注意 ︰** 的 [主旨] 欄位可以包含幾個值，每一個加上代表該值的初始化。 最常見的起首字母是 "CN" 代表一般名稱，例如 "CN = www.contoso.com"。 [主體] 欄位也可能空白。 也請注意選擇性 [主體別名] 欄位；若已填入資料，此欄位必須包含憑證的一般名稱，以及每個主體別名的一個項目。 這些會被輸入為 DNS 名稱值。
 
 也請注意憑證的 [預定目的] 欄位值應包含適當的值，例如「伺服器驗證」或「用戶端驗證」。
 
@@ -242,13 +242,14 @@ Service Fabric 叢集上的所有管理作業都需要伺服器憑證。 不應�
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
-- [Service Fabric Cluster upgrade process and expectations from you](service-fabric-cluster-upgrade.md)
-- [Managing your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
-- [Service Fabric Health model introduction](service-fabric-health-introduction.md)
+- [Service Fabric 叢集升級程序與您的期望](service-fabric-cluster-upgrade.md)
+- [管理 Service Fabric 應用程式在 Visual Studio](service-fabric-manage-application-in-visual-studio.md)。
+- [Service Fabric 健康情況模型簡介](service-fabric-health-introduction.md)
 
 <!--Image references-->
 [SecurityConfigurations_01]: ./media/service-fabric-cluster-security/SecurityConfigurations_01.png
 [SecurityConfigurations_02]: ./media/service-fabric-cluster-security/SecurityConfigurations_02.png
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
+
 

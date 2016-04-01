@@ -29,7 +29,7 @@
 
 ## 設定應用程式以使用服務匯流排
 
-請確定您已安裝 [Azure SDK for Java][] 再建置此範例。 如果您使用 Eclipse，您可以安裝 [Azure Toolkit for Eclipse][] 包含 Azure SDK for Java。 您可以加入 **Microsoft Azure Libraries for Java** 至您的專案:
+請確定您已安裝 [Azure SDK for Java][] 再建置此範例。 如果您使用 Eclipse，您可以安裝 [Azure Toolkit for Eclipse][] 包含 Azure SDK for Java。 您可以加入 **Microsoft Azure Libraries for Java** 至您的專案 ︰
 
 ![](media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
@@ -53,7 +53,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 
  **ServiceBusService** 類別提供方法來建立、 列舉
 和刪除佇列。 下列範例將說明如何 **ServiceBusService** 物件
-可用來建立名為 「 HowToSample 」 的命名空間名稱為 「 TestQueue 」 的佇列:
+可用來建立名為 「 HowToSample 」 的命名空間名稱為 「 TestQueue 」 的佇列 ︰
 
         Configuration config =
             ServiceBusConfiguration.configureWithSASAuthentication(
@@ -77,9 +77,9 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
     }
 
 有方法 **QueueInfo** 與佇列的屬性
-調整 (例如: 若要設定的預設存留時間 (TTL) 值是
-套用至訊息傳送至佇列。) 下列範例將示範如何
-若要建立名為的佇列 `TestQueue` 5 GB 的大小上限:
+調整 (例如 ︰ 若要設定的預設存留時間 (TTL) 值是
+套用至訊息傳送至佇列。） 下列範例將示範如何
+若要建立名為的佇列 `TestQueue` 5 GB 的大小上限 ︰
 
     long maxSizeInMegabytes = 5120;
     QueueInfo queueInfo = new QueueInfo("TestQueue");
@@ -94,7 +94,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 
 若要傳送訊息至服務匯流排佇列，您的應用程式會取得
 **ServiceBusContract** 物件。 下列程式碼說明如何傳送
-訊息 `TestQueue` 中先前建立的佇列 `HowToSample` 命名空間:
+訊息 `TestQueue` 中先前建立的佇列 `HowToSample` 命名空間 ︰
 
     try
     {
@@ -112,7 +112,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 用來保存自訂應用程式特定的屬性，以及一堆任意的應用程式資料。 應用程式可以設定訊息本文，任何可序列化物件傳遞給建構函式的 [BrokeredMessage][], ，以及適當的序列化程式將會再用來序列化物件。 或者，您可以提供 **java。IO。InputStream** 物件。
 
 下列範例說明如何將五個測試訊息傳送至上述程式碼片段中所取得的
-`TestQueue` **MessageSender** 我們在上述程式碼片段中取得:
+`TestQueue` **MessageSender** 我們在上述程式碼片段中取得 ︰
 
     for (int i=0; i<5; i++)
     {
@@ -135,13 +135,13 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 
 從佇列接收訊息的主要方式是使用
 **ServiceBusContract** 物件。 接收的訊息可在兩種不同的
-不同的模式: **ReceiveAndDelete** 和 **PeekLock**。
+不同的模式 ︰ **ReceiveAndDelete** 和 **PeekLock**。
 
 當使用 **ReceiveAndDelete** 模式中，接收是一次性
 作業；也就是說，當服務匯流排收到訊息的讀取要求時，
 訊息在佇列中，它將訊息標示為已取用，並傳回
-該應用程式。 **ReceiveAndDelete** 模式 (此為預設值
-模式) 是最簡單的模型，最適合的案例
+該應用程式。 **ReceiveAndDelete** 模式 （此為預設值
+模式） 是最簡單的模型，最適合的案例
 應用程式容許不處理訊息中的事件
 發生失敗。 若要了解，請考慮案例取用者
 發出接收要求，然後在處理之前當機。
@@ -160,7 +160,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 會將標示為已取用的訊息，並從佇列中移除。
 
 下列範例示範可以收到訊息的方式，
-使用處理 **PeekLock** 模式 (不是預設模式)。 下列範例
+使用處理 **PeekLock** 模式 （不是預設模式）。 下列範例
 下面一個無限迴圈，並處理訊息抵達
 ""TestQueue:
 
@@ -254,4 +254,5 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
   [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
   [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
+
 

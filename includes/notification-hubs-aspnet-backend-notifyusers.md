@@ -2,14 +2,14 @@
 
 新的 ASP.NET WebAPI 後端將會在後續各節中建立，而且有三個主要用途：
 
-1. **驗證用戶端**: 將稍後加入訊息處理常式，以驗證用戶端要求，並將使用者與要求產生關聯。
-2. **用戶端通知註冊**: 之後，您將加入一個控制器來處理新的註冊，用戶端裝置接收通知。 已驗證的使用者名稱會自動加入至註冊作為 [標記](https://msdn.microsoft.com/library/azure/dn530749.aspx)。
-3. **將通知傳送至用戶端**: 之後，您也會加入一個控制器來提供方法讓使用者觸發安全推送至裝置與標記相關聯的用戶端。 
+1. **驗證用戶端**︰ 將稍後加入訊息處理常式，以驗證用戶端要求，並將使用者與要求產生關聯。
+2. **用戶端通知註冊**︰ 之後，您將加入一個控制器來處理新的註冊，用戶端裝置接收通知。 已驗證的使用者名稱會自動加入至註冊作為 [標記](https://msdn.microsoft.com/library/azure/dn530749.aspx)。
+3. **將通知傳送至用戶端**︰ 之後，您也會加入一個控制器來提供方法讓使用者觸發安全推送至裝置與標記相關聯的用戶端。 
 
 下列步驟說明如何建立新的 ASP.NET WebAPI 後端： 
 
 
-> [AZURE.NOTE] **重要**: 之前開始本教學課程，請確定您已安裝最新版本的 NuGet 封裝管理員。 若要檢查版本，請啟動 Visual Studio。 從 **工具** ] 功能表上，按一下 [ **擴充功能和更新**。 搜尋 **NuGet Package Manager for Visual Studio 2013**, ，並確定您已安裝 2.8.50313.46 版或更新版本。 否則的話，請解除安裝，然後重新安裝 NuGet Package Manager。
+> [AZURE.NOTE] **重要**︰ 之前開始本教學課程，請確定您已安裝最新版本的 NuGet 封裝管理員。 若要檢查版本，請啟動 Visual Studio。 從 **工具** ] 功能表上，按一下 [ **擴充功能和更新**。 搜尋 **NuGet Package Manager for Visual Studio 2013**, ，並確定您已安裝 2.8.50313.46 版或更新版本。 否則的話，請解除安裝，然後重新安裝 NuGet Package Manager。
 > 
 > ![][B4]
 
@@ -48,7 +48,7 @@
 
 3. 在 AuthenticationTestHandler.cs 中，以下列程式碼取代 `AuthenticationTestHandler` 類別定義。 
 
-    下列三個條件都成立時，這個處理常式將授權要求:
+    下列三個條件都成立時，這個處理常式將授權要求 ︰
     * 包含要求 *授權* 標頭。 
     * 要求使用 *基本* 驗證。 
     * 使用者名稱字串和密碼字串都是相同的字串。
@@ -106,7 +106,7 @@
 
     > [AZURE.NOTE] **安全性注意事項**: `AuthenticationTestHandler` 類別不提供真正的驗證。 它僅可用於模仿基本驗證而且並不安全。 您必須在生產應用程式和服務中實作安全的驗證機制。               
 
-4. 在結尾處新增下列程式碼 `Register` 方法中的 **app_start/webapiconfig.cs** 類別，以註冊訊息處理常式:
+4. 在結尾處新增下列程式碼 `Register` 方法中的 **app_start/webapiconfig.cs** 類別，以註冊訊息處理常式 ︰
 
         config.MessageHandlers.Add(new AuthenticationTestHandler());
 
@@ -125,7 +125,7 @@
 
 3. 在 [結果] 清單中，按一下 [ **Microsoft Azure 通知中樞**, ，然後按一下 [ **安裝**。 請完成安裝，然後關閉 [NuGet Package Manager] 視窗。
 
-    這會加入到使用 Azure 通知中心 SDK 參考 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification 中樞 NuGet 封裝</a>.
+    這會使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 封裝</a>加入對 Azure 通知中樞 SDK 的參考。
 
 4. 我們現在會建立新的類別檔案，表示即將傳送的不同安全通知。 在完整的實作中，通知會儲存在資料庫中。 為了簡單起見，本教學課程會將它們儲存在記憶體中。 在 [方案總管] 中，以滑鼠右鍵按一下 **模型** 資料夾中，按一下 [ **新增**, ，然後按一下 [ **類別**。 將新類別 **Notifications.cs**, ，然後按一下 [ **新增** 以產生類別。 
 
@@ -135,7 +135,7 @@
 
         using Microsoft.Azure.NotificationHubs;
 
-6. 取代 `Notifications` 類別具有下列定義，並確定使用的連接字串 (含完整存取權) 您的通知中心和中樞名稱來取代兩個預留位置 (可在 [Azure 傳統入口網站](http://manage.windowsazure.com)):
+6. 取代 `Notifications` 類別具有下列定義，並確定使用的連接字串 （含完整存取權） 您的通知中心和中樞名稱來取代兩個預留位置 (可在 [Azure 傳統入口網站](http://manage.windowsazure.com)):
 
         public class Notifications
         {
@@ -366,4 +366,5 @@
 [B15]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users15.PNG
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
+
 

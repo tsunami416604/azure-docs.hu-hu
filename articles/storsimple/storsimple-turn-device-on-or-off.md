@@ -25,11 +25,11 @@
 
 |案例|參考主題|
 |:-------|:---------------|
-|開啟新的裝置|[開啟新的裝置](#turn-on-a-new-device)<ul><li>[新裝置主要機箱](#new-device-with-primary-enclosure-only)</li><li>[新裝置與 EBOD 機箱](#new-device-with-ebod-enclosure)</li></ul>|
-|在關機後開啟裝置|[在關機後開啟裝置](#turn-on-a-device-after-shutdown)<ul><li>[裝置主要機箱](#device-with-primary-enclosure-only)</li><li>[裝置與 EBOD 機箱](#device-with-ebod-enclosure)</li></ul>|
-|在電源中斷後開啟裝置|[在斷電後開啟裝置](#turn-on-a-device-after-a-power-loss)<ul><li>[裝置主要機箱](#8100)</li><li>[裝置與 EBOD 機箱](#8600)</li></ul>|
+|開啟新的裝置|[開啟新的裝置](#turn-on-a-new-device)<ul><li>[只有主要機箱的新裝置](#new-device-with-primary-enclosure-only)</li><li>[具有 EBOD 機箱的新裝置](#new-device-with-ebod-enclosure)</li></ul>|
+|在關機後開啟裝置|[在關機後開啟裝置](#turn-on-a-device-after-shutdown)<ul><li>[只有主要機箱的裝置](#device-with-primary-enclosure-only)</li><li>[具有 EBOD 機箱的裝置](#device-with-ebod-enclosure)</li></ul>|
+|在電源中斷後開啟裝置|[在電源中斷後開啟裝置](#turn-on-a-device-after-a-power-loss)<ul><li>[只有主要機箱的裝置](#8100)</li><li>[具有 EBOD 機箱的裝置](#8600)</li></ul>|
 |在主要機箱和 EBOD 連線中斷後開啟裝置|[在主要機箱和 EBOD 機箱連線中斷後開啟裝置](#turn-on-a-device-after-the-primary-and-EBOD-enclosure-connection-is-lost)|
-|關閉執行中的裝置|[關閉執行中的裝置](#turn-off-a-running-device)<ul><li>[裝置主要機箱](#8100a)</li><li>[裝置與 EBOD 機箱](#8600a)</li></ul>|
+|關閉執行中的裝置|[關閉執行中的裝置](#turn-off-a-running-device)<ul><li>[只有主要機箱的裝置](#8100a)</li><li>[具有 EBOD 機箱的裝置](#8600a)</li></ul>|
 
 ## 開啟新的裝置
 
@@ -113,13 +113,13 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 
 - [具有 EBOD 機箱的裝置](#8600)
 
-### 只有主要機箱的裝置 <a name="8100">
+### 只有主要機箱的裝置<a name="8100">
 
 如果其中一個電源供應器的電源中斷，系統還是可以繼續正常作業。 不過，為確保裝置的高可用性，請儘速恢復電源供應器的電源。
 
 如果同時在兩個電源供應器上發生電源中斷，系統會以有條理的方式關閉。 當電源恢復時，系統將會自動開啟。
 
-### 具有 EBOD 機箱的裝置 <a name="8600">
+### 具有 EBOD 機箱的裝置<a name="8600">
 
 #### 單一電源供應器電源中斷
 
@@ -193,7 +193,7 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 
 >[AZURE.IMPORTANT] 請勿關閉執行中的裝置所使用的裝置背面的電源按鈕。
 >
->關閉裝置之前，請確定所有的裝置元件狀態良好。 在 Azure 傳統入口網站，瀏覽至 **裝置** > **維護** > **硬體狀態**, ，並確認所有元件的狀態為綠色。 這只適用於狀態良好的系統。 如果系統要關閉以更換故障的元件，您會看到故障 (紅色) 或降級 (黃色) 狀態中的個別元件 **硬體狀態**。
+>關閉裝置之前，請確定所有的裝置元件狀態良好。 在 Azure 傳統入口網站，瀏覽至 **裝置** > **維護** > **硬體狀態**, ，並確認所有元件的狀態為綠色。 這只適用於狀態良好的系統。 如果系統要關閉以更換故障的元件，您會看到故障 （紅色） 或降級 （黃色） 狀態中的個別元件 **硬體狀態**。
 
 透過裝置序列主控台或 Windows PowerShell 遠端處理，您可以連線至 Windows PowerShell for StorSimple。 在您進入 Windows PowerShell for StorSimple 之後，執行下列步驟以關閉執行中的裝置。
 
@@ -223,7 +223,7 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 
 9. 若要確認該裝置已完全關閉，請檢查裝置背面的所有燈號都已關閉。
 
-### 具有 EBOD 機箱的裝置 <a name="8600a">
+### 具有 EBOD 機箱的裝置<a name="8600a">
 
 >[AZURE.IMPORTANT] 在關閉之前的主要機箱和 EBOD 機箱，請確定所有裝置元件都的狀況良好。 在 Azure 傳統入口網站，瀏覽至 **裝置** > **維護** > **硬體狀態**, ，並確認所有元件都均狀況良好。
 
@@ -240,5 +240,6 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 ## 後續步驟
 
 [請連絡 Microsoft 支援](storsimple-contact-microsoft-support.md) 如果您遇到問題時開啟或關閉 StorSimple 裝置。
+
 
 

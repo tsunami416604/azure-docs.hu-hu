@@ -2,16 +2,16 @@
 <!--
 includes/sql-database-include-ip-address-22-v12portal.md
 
-最新的有效性檢查: 2015年-09-04，GeneMi。
+Latest Freshness check:  2015-09-04 , GeneMi.
 
-做為的 2015年-09-04 約下列主題可能包含包括:
+As of circa 2015-09-04, the following topics might include this include:
 articles/sql-database/sql-database-configure-firewall-settings.md
 articles/sql-database/sql-database-connect-query.md
 
 
-## 伺服器層級防火牆規則
+## Server-level firewall rules
 
-### 透過新 Azure 入口網站管理伺服器層級防火牆規則
+### Manage server-level firewall rules through the new Azure portal
 -->
 
 
@@ -62,4 +62,5 @@ These includes/ files are a sequenced set, but you can pick and choose:
 includes/sql-database-include-ip-address-22-v12portal.md
 ? includes/sql-database-include-ip-address-*.md
 -->
+
 

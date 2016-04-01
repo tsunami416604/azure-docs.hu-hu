@@ -29,7 +29,7 @@
 本文件假設：
 
 1. 您知道如何使用 Docker，並具備要儲存的 Docker 映像。 (您不知道嗎？ [了解 Docker](https://www.docker.com))
-2. 您具有已安裝 Docker 引擎的伺服器。 (您不知道嗎？ [在 Azure 上快速地執行。](http://azure.microsoft.com/documentation/templates/docker-simple-on-ubuntu/))
+2. 您具有已安裝 Docker 引擎的伺服器。 (您沒有嗎？ [在 Azure 上快速地執行。](http://azure.microsoft.com/documentation/templates/docker-simple-on-ubuntu/))
 
 
 ## 什麼是私用 Docker Registry？
@@ -54,43 +54,43 @@ Docker 提供集中式的服務呼叫 [Docker 中樞][docker-hub] 儲存
 ## 為什麼應該在 Azure 上裝載 Docker Registry？
 
 裝載在 Microsoft Azure 上的 Docker Registry 執行個體，並將儲存程式
-Azure Blob 儲存體上的映像，您可以有數個優點:
+Azure Blob 儲存體上的映像，您可以有數個優點 ︰
 
-**安全性:** Docker 映像不會離開 Azure 資料中心，因此它們
+**安全性 ︰** Docker 映像不會離開 Azure 資料中心，因此它們
   如果您使用 Docker Hub 如同不會跨越公用網際網路。
   
-**效能:** Docker 影像會儲存在相同
+**效能 ︰** Docker 影像會儲存在相同
 資料中心或與您的應用程式的區域。 這表示會將映像
 提取更快速且更可靠地相較於 Docker 中樞。
 
-**可靠性:** 藉由使用 Microsoft Azure Blob 儲存體，您可使用
+**可靠性 ︰** 藉由使用 Microsoft Azure Blob 儲存體，您可使用
 許多儲存體屬性，例如高可用性、 備援、 進階
 儲存體 (Ssd) 等等。
 
 ## 將 Docker Registry 設定為使用 Azure Blob 儲存體
 
 (建議您先閱讀 [Docker Registry 2.0 文件][registry-docs]
-再繼續進行。)
+再繼續進行。）
 
 您可以 [設定][registry-config] Docker Registry 兩個不同的方式。
 您可以：
 
 1. 使用 `config.yml` 檔案。 在此情況下，您將需要建立
   個別的 Docker 映像的上方 `registry` 映像。
-2. 覆寫預設組態檔，透過環境變數:
+2. 覆寫預設組態檔，透過環境變數 ︰
   取得完成工作，而不需要建立和維護個別的 Docker 映像。
 
-為了簡單起見，本主題會遵循選項 2: 使用
+為了簡單起見，本主題會遵循選項 2 ︰ 使用
 環境變數中。
 
-若要執行 Docker Registry 執行個體:
+若要執行 Docker Registry 執行個體 ︰
 * 使用您的 Azure 儲存體帳戶儲存映像
 * 在虛擬機器的連接埠 5000 上接聽
-* 未設定驗證 (不建議，請參閱下列附註)
+* 未設定驗證 （不建議，請參閱下列附註）
 
 您必須執行下列 Docker 命令在您 bash
 終端機 (取代 `<storage-account>` 和 `<storage-key>` 
-使用您的認證):
+使用您的認證） ︰
 
 ```sh
 $ docker run -d -p 5000:5000 \
@@ -104,7 +104,7 @@ $ docker run -d -p 5000:5000 \
 
 一旦命令結束，您可以看到容器裝載
 執行您私用 Docker Registry 執行個體 `docker ps`
-您的主機上的命令:
+您的主機上的命令 ︰
 
 ```sh
 $ docker ps
@@ -131,4 +131,5 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 [registry-docs]: http://docs.docker.com/registry/
 [registry-config]: http://docs.docker.com/registry/configuration/
  
+
 

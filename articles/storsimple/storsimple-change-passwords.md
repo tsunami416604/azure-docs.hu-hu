@@ -26,7 +26,7 @@ Azure 傳統入口網站 **設定** 頁面包含您可以重新設定 StorSimple
 
 StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓系統管理員以本機和雲端快照的形式管理 StorSimple 裝置的備份。
 
-當您在 StorSimple Snapshot Manager 中設定裝置時，系統將提示您提供裝置 IP 位址和密碼來驗證您的儲存裝置。 此密碼最初是透過 Windows PowerShell 介面來設定。 如需詳細資訊，請參閱 [步驟 3: 設定和註冊裝置，透過 Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。
+當您在 StorSimple Snapshot Manager 中設定裝置時，系統將提示您提供裝置 IP 位址和密碼來驗證您的儲存裝置。 此密碼最初是透過 Windows PowerShell 介面來設定。 如需詳細資訊，請參閱 [步驟 3 ︰ 設定和註冊裝置，透過 Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。
 
 然後可以透過傳統入口網站，變更在註冊期間先透過 Windows PowerShell 介面設定的密碼。 執行下列步驟來變更 StorSimple Snapshot Manager 密碼。
 
@@ -44,7 +44,7 @@ StorSimple Snapshot Manager 密碼現在應該已更新。
  
 ## 變更裝置系統管理員密碼
 
-當您使用 Windows PowerShell 介面來存取 StorSimple 裝置時，需要輸入裝置系統管理員密碼。 第一個 StorSimple 裝置與服務註冊時，此介面的預設密碼是 *Password1*。 為了確保資料的安全性，您必須在註冊程序結束時變更此密碼。 若未變更此密碼，您就無法結束註冊程序。 如需詳細資訊，請參閱 [步驟 3: 設定和註冊裝置，透過 Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。
+當您使用 Windows PowerShell 介面來存取 StorSimple 裝置時，需要輸入裝置系統管理員密碼。 第一個 StorSimple 裝置與服務註冊時，此介面的預設密碼是 *Password1*。 為了確保資料的安全性，您必須在註冊程序結束時變更此密碼。 若未變更此密碼，您就無法結束註冊程序。 如需詳細資訊，請參閱 [步驟 3 ︰ 設定和註冊裝置，透過 Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。
 
 然後可以透過 Azure 傳統入口網站，變更在註冊期間先透過 Windows PowerShell 介面設定的密碼。 執行下列步驟來變更裝置系統管理員密碼。
 
@@ -67,3 +67,4 @@ StorSimple Snapshot Manager 密碼現在應該已更新。
 - 深入了解 [修改裝置組態](storsimple-modify-device-config.md)。
 
 - 深入了解 [使用 StorSimple Manager 服務管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+

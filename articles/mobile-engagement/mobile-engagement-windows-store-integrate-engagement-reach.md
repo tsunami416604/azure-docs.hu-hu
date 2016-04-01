@@ -24,13 +24,13 @@
 
 您沒有加入任何項目。 `EngagementReach` 參考資料和資源已在您的專案。
 
-> [AZURE.TIP] 您可以自訂映像位於 `Resources` 資料夾的專案，尤其是品牌圖示 (預設為 Engagement 的圖示)。 在跨平台 app 上，您也可以移動共用專案上的 `Resources` 資料夾，以便在應用程式間共用其內容；但因為 `Resources\EngagementConfiguration.xml` 檔案和平台相依，所以您必須將它保留在預設位置。
+> [AZURE.TIP] 您可以自訂映像位於 `Resources` 資料夾的專案，尤其是品牌圖示 （預設為 Engagement 的圖示）。 在跨平台 app 上，您也可以移動共用專案上的 `Resources` 資料夾，以便在應用程式間共用其內容；但因為 `Resources\EngagementConfiguration.xml` 檔案和平台相依，所以您必須將它保留在預設位置。
 
 ## 啟用 Windows 通知服務
 
 ### 僅 Windows 8.x 和 Windows Phone 8.1
 
-若要使用 **Windows 通知服務** (簡稱 WNS) 中您 `Package.appxmanifest` 檔案 `Application UI` 按一下 `All Image Assets` 左邊的 bot 方塊中。 請在 `Notifications` 中方塊的右邊，將 `toast capable` 從 `(not set)` 變更為 `(Yes)`。
+若要使用 **Windows 通知服務** （簡稱 WNS） 中您 `Package.appxmanifest` 檔案 `Application UI` 按一下 `All Image Assets` 左邊的 bot 方塊中。 請在 `Notifications` 中方塊的右邊，將 `toast capable` 從 `(not set)` 變更為 `(Yes)`。
 
 ### 所有平台
 
@@ -425,7 +425,7 @@ NotfificationHTML 是 `ms-appx-web:///Resources/EngagementNotification.html`。 
 
 - 或者，如果您只是想在 Reach 初始化之後使用推播通道，那麼您可以在 Engagement Reach 上設定回呼，以在 SDK 建立推播通到之後立即取得它。
 
-在任何地方設定回呼 **之後** 觸達初始化:
+在任何地方設定回呼 **之後** 觸達初始化 ︰
 
     /* Set action on the SDK push channel. */
     EngagementReach.Instance.SetActionOnPushChannel((PushNotificationChannel channel) => 
@@ -469,3 +469,4 @@ NotfificationHTML 是 `ms-appx-web:///Resources/EngagementNotification.html`。 
               }
               #endregion
  
+

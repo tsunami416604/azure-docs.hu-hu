@@ -25,11 +25,11 @@
 
 > [AZURE.SELECTOR]
 - [.NET 後端](mobile-services-dotnet-backend-store-code-source-control.md)
-- [Javascript 後端](mobile-services-store-scripts-source-control.md)
+- [JavaScript 後端](mobile-services-store-scripts-source-control.md)
 
 本主題將示範如何使用 Azure 行動服務所提供的原始檔控制來儲存您的 .NET 後端服務專案。 您可直接從本機 Git 儲存機制上傳專案至生產行動服務以發佈專案。
 
-若要完成本教學課程，您必須已經建立行動服務方法是完成 [開始使用行動服務] 教學課程。
+若要完成本教學課程，您必須已經建立行動服務方法是完成 [Get started with Mobile Services] 教學課程。
 
 ##<a name="enable-source-control"></a>在行動服務中啟用原始檔控制
 
@@ -39,7 +39,7 @@
 
 1. 在您的本機電腦上安裝 Git。
 
-    安裝 Git 所需的步驟會因作業系統而有所不同。 如需作業系統特定的發佈和安裝指引，請參閱 [安裝 Git]。
+    安裝 Git 所需的步驟會因作業系統而有所不同。 請參閱 [Installing Git] 如需作業系統特定的發佈和安裝指引。
 
     > [AZURE.NOTE]
     > 在某些作業系統上，會同時提供例 Git 的命令列和 GUI 兩種版本。 本文提供的指示將使用命令列版本。
@@ -91,7 +91,7 @@
 
     ![行動服務啟動頁面](./media/mobile-services-dotnet-backend-store-code-source-control/mobile-service-startup.png)
 
-現在，您的行動服務專案會保存在原始檔控制中，您可以直接從本機儲存機制發送更新以發佈服務更新。 如需在.NET 後端行動服務使用 SQL 資料庫中進行資料模型變更，請參閱 [如何對.NET 後端行動服務進行資料模型變更]。
+現在，您的行動服務專案會保存在原始檔控制中，您可以直接從本機儲存機制發送更新以發佈服務更新。 如需在.NET 後端行動服務使用 SQL 資料庫中進行資料模型變更，請參閱 [How to make data model changes to a .NET backend mobile service]。
 
 <!-- Anchors. -->
 
@@ -103,4 +103,5 @@
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [Get started with Mobile Services]: mobile-services-dotnet-backend-ios-get-started.md
 [How to make data model changes to a .NET backend mobile service]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
+
 

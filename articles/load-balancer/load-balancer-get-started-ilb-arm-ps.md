@@ -91,7 +91,7 @@
 
     PS C:\> New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
-Azure 資源管理員需要所有的資源群組指定一個位置。 這用來作為該資源群組中資源的預設位置。 請確定所有建立負載平衡器的命令都是使用同一個資源群組。
+Azure Resource Manager 需要所有的資源群組指定一個位置。 這用來作為該資源群組中資源的預設位置。 請確定所有建立負載平衡器的命令都是使用同一個資源群組。
 
 在上述範例中，我們已建立名為 "NRP-RG" 的資源群組，且位置為「美國西部」。 
 
@@ -283,4 +283,5 @@ PS C:\ > $ backendnic1
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
  
+
 

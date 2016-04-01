@@ -50,3 +50,4 @@ Azure 資料湖存放區可以與其他 Azure 服務一起使用，以啟用更�
 - [使用入口網站開始使用資料湖存放區](data-lake-store-get-started-portal.md)
 - [使用 PowerShell 開始使用資料湖存放區](data-lake-store-get-started-powershell.md)  
 
+

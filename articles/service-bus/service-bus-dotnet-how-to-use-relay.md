@@ -243,7 +243,7 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-您現在可以建置用戶端和服務、 執行它們 (先執行服務)，然後用戶端將呼叫服務並列印 **9**。 您可以在不同機器上 (即使是在不同網路上) 執行用戶端和伺服器，通訊仍然可以運作。 您也可以在雲端或在本機上執行用戶端程式碼。
+您現在可以建置用戶端和服務、 執行它們 （先執行服務），然後用戶端將呼叫服務並列印 **9**。 您可以在不同機器上 (即使是在不同網路上) 執行用戶端和伺服器，通訊仍然可以運作。 您也可以在雲端或在本機上執行用戶端程式碼。
 
 #### 在 App.config 檔案中設定用戶端
 
@@ -296,3 +296,4 @@ using (var ch = cf.CreateChannel())
   [Shared Access Signature Authentication with Service Bus]: service-bus-shared-access-signature-authentication.md
   [Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [overview of Service Bus samples]: service-bus-samples.md
+

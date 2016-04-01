@@ -89,3 +89,4 @@ Azure 資料中心的伺服器分割成叢集。 在多個叢集中嘗試新的�
 如果這份文件沒有幫助解決您的 Azure 問題，瀏覽 Azure 論壇上 [MSDN 和堆疊溢位](http://azure.microsoft.com/support/forums/)。
 也可以就您的問題提出 Azure 支援事件。 移至 [Azure 支援](http://azure.microsoft.com/support/options/) 網站，按一下 [取得支援。 使用 Azure 支援的相關資訊，請參閱[ Microsoft Azure 支援常見問題集](http://azure.microsoft.com/support/faq/)。
 
+

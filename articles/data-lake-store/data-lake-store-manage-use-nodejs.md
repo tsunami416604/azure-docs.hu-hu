@@ -31,7 +31,7 @@ Node.js 的 Azure ADK 可用於管理 Azure 資料湖存放區帳戶，以及檔
 - 帳戶管理：建立、取得、列出、更新及刪除。
 - 檔案系統管理：建立、取得、上傳、附加、下載、讀取、刪除、列出。
 
-**先決條件**
+**必要條件**
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -111,5 +111,6 @@ Node.js 的 Azure ADK 可用於管理 Azure 資料湖存放區帳戶，以及檔
 
 - [Azure SDK for Node.js](http://azure.github.io/azure-sdk-for-node/)
 - [使用 Node.js 管理 Azure 資料湖分析](data-lake-analytics-use-nodejs.md)
+
 
 

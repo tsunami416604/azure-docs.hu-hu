@@ -28,7 +28,7 @@
 
 >[AZURE.TIP] 如果您是使用 Microsoft Azure 的行動應用程式開發新手 [開始使用 Azure 行動應用程式](app-service-mobile-dotnet-backend-ios-get-started-preview.md) 而不是 Azure 行動服務。行動應用程式可讓您 [其他優點](app-service-mobile-value-prop-migration-from-mobile-services-preview.md)。
 
-本教學課程說明如何使用 Azure 行動服務在 iOS 應用程式中新增雲端型後端服務。 在本教學課程中，您將建立新的行動服務，並建立可在新的行動服務中儲存應用程式資料的簡單_待辦事項清單_應用程式。 行動服務會使用 .NET 和 Visual Studio 於伺服器端商務邏輯。 若要在 JavaScript 伺服器端商務邏輯建立行動服務，請參閱 [JavaScript 後端版本] 本主題。
+本教學課程說明如何使用 Azure 行動服務在 iOS 應用程式中新增雲端型後端服務。 在本教學課程中，您將建立新的行動服務，並建立可在新的行動服務中儲存應用程式資料的簡單_待辦事項清單_應用程式。 行動服務會使用 .NET 和 Visual Studio 於伺服器端商務邏輯。 若要在 JavaScript 伺服器端商務邏輯建立行動服務，請參閱 [JavaScript backend version] 本主題。
 
 > [AZURE.NOTE] 若要完成本教學課程，您需要 Azure 帳戶。 如果您沒有帳戶，您可以註冊 Azure 試用版並取得 [免費的行動服務，即使在試用期結束之後可繼續使用](http://azure.microsoft.com/pricing/details/mobile-services/)。  如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-ios-get-started%2F)。
 
@@ -66,16 +66,16 @@
 
 了解如何在行動服務中執行其他重要工作：
 
-* [開始使用離線資料同步]
+* [Get started with offline data sync]
   <br/>了解如何使用離線資料同步處理，建立可快速回應和功能強大的應用程式。
 
-* [將驗證新增至現有的應用程式]
+* [Add authentication to an existing app]
   <br/>了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
-* [將推播通知新增至現有的應用程式]
+* [Add push notifications to an existing app]
   <br/>了解如何將非常基本的推播通知傳送至您的應用程式。
 
-* [行動服務.NET 後端的疑難排解]
+* [Troubleshoot Mobile Services .NET backend]
   <br/> 了解如何診斷和修正行動服務 .NET 後端可能發生的問題。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
@@ -107,4 +107,5 @@
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [JavaScript backend version]: mobile-services-ios-get-started.md
+
 

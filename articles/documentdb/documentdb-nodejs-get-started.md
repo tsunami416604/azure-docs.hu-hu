@@ -54,7 +54,7 @@
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-##<a id="SetupNode"></a> 步驟 2: 安裝 Node.js 應用程式
+##<a id="SetupNode"></a> 步驟 2：設定您的 Node.js 應用程式
 
 1. 開啟您偏好的終端機。
 2. 找出您想儲存 Node.js 應用程式的資料夾或目錄位置。
@@ -70,7 +70,7 @@
 
 太棒了！ 現在已完成安裝程式，讓我們開始撰寫一些程式碼。
 
-##<a id="Config"></a> 步驟 3: 設定您的應用程式組態
+##<a id="Config"></a> 步驟 3：設定您的應用程式組態
 
 開啟 *config.js* 慣用的文字編輯器中。 
 
@@ -169,7 +169,7 @@
 
     module.exports = config;
 
-##<a id="Connect"></a> 步驟 4: 連線到 DocumentDB 帳戶
+##<a id="Connect"></a> 步驟 4：連接到 DocumentDB 帳戶
 
 開啟您的空白 *app.js* 在文字編輯器中的檔案。 匯入 *documentdb* 模組，您新建 *config* 模組。
 
@@ -210,7 +210,7 @@ A [資料庫](documentdb-resources.md#databases) 可以藉由建立 [createDatab
         });
     };
 
-##<a id="CreateColl"></a>步驟 6: 建立集合  
+##<a id="CreateColl"></a>步驟 6：建立集合  
 
 > [AZURE.WARNING] **CreateDocumentCollectionAsync** 會建立具有定價含意的新 S1 集合。 如需詳細資訊，請造訪我們 [定價頁面](https://azure.microsoft.com/pricing/details/documentdb/)。
 
@@ -278,7 +278,7 @@ A [文件](documentdb-resources.md#documents) 可以藉由建立 [createDocument
 
 ![說明帳戶、資料庫、集合和文件之間階層式關聯性的圖表](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
 
-##<a id="Query"></a>步驟 8: 查詢 DocumentDB 資源
+##<a id="Query"></a>步驟 8：查詢 DocumentDB 資源
 
 DocumentDB 支援 [豐富的查詢](documentdb-sql-query.md) 對每個集合中儲存的 JSON 文件。 下列範例程式碼示範您可以針對集合中之文件執行的查詢。 加入下列函式 *app.js* 檔案。 DocumentDB 支援類 SQL 查詢，如下所示。 如需有關如何建立複雜的查詢的詳細資訊，請參閱 [查詢遊樂場](https://www.documentdb.com/sql/demo) 和 [查詢文件](documentdb-sql-query.md)。
 
@@ -306,7 +306,7 @@ DocumentDB 支援 [豐富的查詢](documentdb-sql-query.md) 對每個集合中�
 
  [FROM](documentdb-sql-query.md/#from-clause) 關鍵字是選擇性的查詢中，因為 DocumentDB 查詢已侷限於單一集合。 因此，"FROM Families f" 可以換成 "FROM root r"，或您選擇的任何其他變數名稱。 依預設，DocumentDB 會推斷該系列、根或您選擇的變數名稱來參考目前的集合。
 
-##<a id="DeleteDatabase"></a>步驟 9: 刪除節點的資料庫
+##<a id="DeleteDatabase"></a>步驟 9：刪除節點資料庫
 
 刪除已建立的資料庫將會移除資料庫和所有子系資源 (集合、文件等)。 您可以加入下列程式碼片段來刪除資料庫。
 
@@ -319,7 +319,7 @@ DocumentDB 支援 [豐富的查詢](documentdb-sql-query.md) 對每個集合中�
         });
     }
 
-##<a id="Build"></a>步驟 10: 將它放在一起
+##<a id="Build"></a>步驟 10：組合在一起
 
 既然您已經將應用程式所有必要的功能設定好，來呼叫它們吧！
 
@@ -363,11 +363,11 @@ DocumentDB 支援 [豐富的查詢](documentdb-sql-query.md) 對每個集合中�
         });
     });
 
-##<a id="Run"></a>步驟 11: 執行您的 Node.js 應用程式!
+##<a id="Run"></a>步驟 11：執行您的 Node.js 應用程式！
 
 您現在可以開始執行您的 Node.js 應用程式！
 
-在終端機中，找出您 *app.js* 檔，然後執行命令: **節點 app.js**
+在終端機中，找出您 *app.js* 檔，然後執行命令 ︰ **節點 app.js**
 
 您應該可以看到入門應用程式的輸出。 輸出應該會與下列範例文字相符。
 
@@ -425,7 +425,7 @@ DocumentDB 支援 [豐富的查詢](documentdb-sql-query.md) 對每個集合中�
 
 恭喜！ 您已完成 Node.js 教學課程，和擁有您的第一個 DocumentDB 主控台應用程式！ 
 
-##<a id="GetSolution"></a> 取得完整的方案
+##<a id="GetSolution"></a>取得完整的方案
 若要建置包含本文中所有範例的 GetStarted 方案，您將需要下列項目：
 
 -   [DocumentDB 帳戶][documentdb-create-account]。
@@ -434,7 +434,7 @@ DocumentDB 支援 [豐富的查詢](documentdb-sql-query.md) 對每個集合中�
 安裝 **documentdb** 透過 npm 模組。 使用下列命令：
 * **npm install documentdb --save**
 
-接下來，在 *config.js* 檔案中，更新 config.endpoint 和 config.authKey 值中所述 [步驟 3: 設定您的應用程式組態](#Config)。
+接下來，在 *config.js* 檔案中，更新 config.endpoint 和 config.authKey 值中所述 [步驟 3 ︰ 設定您的應用程式組態](#Config)。
 
 ## 後續步驟
 
@@ -448,4 +448,5 @@ DocumentDB 支援 [豐富的查詢](documentdb-sql-query.md) 對每個集合中�
 [documentdb-manage]: documentdb-manage.md
 
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
+
 

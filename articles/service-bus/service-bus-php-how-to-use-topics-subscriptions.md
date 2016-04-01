@@ -46,7 +46,7 @@
 
 下列範例顯示如何納入自動換片器檔案及參考 **ServiceBusService** 類別。
 
-> [AZURE.NOTE] 此範例 (和本文中的其他範例) 假設您已安裝 PHP Client Libraries for Azure 透過編輯器。 如果您在手動或以 PEAR 封裝安裝程式庫，您必須參考 **WindowsAzure.php** 自動換片器檔案。
+> [AZURE.NOTE] 此範例 （和本文中的其他範例） 假設您已安裝 PHP Client Libraries for Azure 透過編輯器。 如果您在手動或以 PEAR 封裝安裝程式庫，您必須參考 **WindowsAzure.php** 自動換片器檔案。
 
 ```
 require_once 'vendor\autoload.php';
@@ -68,7 +68,7 @@ Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[D
 若要建立任何 Azure 服務用戶端，您必須使用 **ServicesBuilder** 類別。 您可以：
 
 * 直接將連接字串傳遞給它。
-* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串:
+* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串 ︰
     * 預設已支援一種外部來源，即環境變數。
     * 您可以擴充，以加入新來源 **ConnectionStringSource** 類別。
 
@@ -88,7 +88,7 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 
 您可以執行管理作業，透過服務匯流排主題的 **ServiceBusRestProxy** 類別。 A **ServiceBusRestProxy** 物件透過建構 **Createservicebusservice** factory 方法，使用封裝了權杖權限加以管理的適當連接字串。
 
-下列範例示範如何具現化 **ServiceBusRestProxy** 呼叫 **servicebusrestproxy->createtopic** 來建立名為 `mytopic` 內 `MySBNamespace` 命名空間:
+下列範例示範如何具現化 **ServiceBusRestProxy** 呼叫 **servicebusrestproxy->createtopic** 來建立名為 `mytopic` 內 `MySBNamespace` 命名空間 ︰
 
 ```
 require_once 'vendor\autoload.php';
@@ -117,11 +117,11 @@ catch(ServiceException $e){
 
 > [AZURE.NOTE] 您可以使用 `listTopics` 方法 `ServiceBusRestProxy` 物件來檢查服務命名空間內是否已存在具有指定名稱的主題。
 
-## 建立訂用帳戶
+## 建立訂閱
 
 也會建立主題訂閱 **servicebusrestproxy->createsubscription** 方法。 為訂閱命名，且能包含選擇性篩選器，以用來限制傳遞至訂閱的虛擬佇列的訊息集合。
 
-### 使用預設 (MatchAll) 篩選器建立訂用帳戶
+### 使用預設 (MatchAll) 篩選器建立訂閱
 
  **MatchAll** 篩選器是預設篩選器，如果沒有指定篩選時建立新的訂閱。 當 **MatchAll** 篩選器時，發佈至主題的所有訊息都會被都置於訂閱的虛擬佇列。 下列範例會建立名為 'mysubscription' 的訂閱，並使用預設 **MatchAll** 篩選器。
 
@@ -239,14 +239,14 @@ for($i = 0; $i < 5; $i++){
 
 ## 自訂閱接收訊息
 
-自訂閱接收訊息的最佳方式是使用 **servicebusrestproxy->receivesubscriptionmessage** 方法。 已接收的訊息可在兩種不同模式運作: **ReceiveAndDelete** (預設值) 和 **PeekLock**。
+自訂閱接收訊息的最佳方式是使用 **servicebusrestproxy->receivesubscriptionmessage** 方法。 已接收的訊息可在兩種不同模式運作 ︰ **ReceiveAndDelete** （預設值） 和 **PeekLock**。
 
 當使用 **ReceiveAndDelete** 模式中，接收是一次性作業; 也就是當服務匯流排在訂閱中收到訊息的讀取的要求，它會標示為已取用的訊息並傳回應用程式。 **ReceiveAndDelete** 模式是最簡單的模型，是最適合的案例
 不處理訊息的應用程式案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-在 **PeekLock** 模式中，接收訊息會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由傳遞至接收的訊息應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 **servicebusrestproxy->deletemessage**。 當服務匯流排看到 **deleteMessage** 呼叫時，它會將標示為已取用的訊息並從佇列中移除。
+在 **PeekLock** 模式中，接收訊息會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由傳遞至接收的訊息應用程式完成處理訊息 （或可靠地儲存供未來處理） 之後，完成接收程序的第二個階段 **servicebusrestproxy->deletemessage**。 當服務匯流排看到 **deleteMessage** 呼叫時，它會將標示為已取用的訊息並從佇列中移除。
 
-下列範例示範如何接收和處理訊息使用 **PeekLock** 模式 (不是預設模式)。 
+下列範例示範如何接收和處理訊息使用 **PeekLock** 模式 （不是預設模式）。 
 
 ```
 require_once 'vendor\autoload.php';
@@ -325,7 +325,7 @@ catch(ServiceException $e){
 }
 ```
 
-使用 **deleteSubscription** 方法中，您可以個別刪除某個訂閱:
+使用 **deleteSubscription** 方法中，您可以個別刪除某個訂閱 ︰
 
 ```
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
@@ -339,4 +339,5 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 [sqlfilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [require-once]: http://php.net/require_once
 [Azure Queues and Service Bus queues]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
+
 

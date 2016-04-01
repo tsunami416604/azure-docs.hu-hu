@@ -20,7 +20,7 @@
 
 ## 為什麼要使用 Azure 自動化 DSC 管理機器？
 
-像 [PowerShell 期望狀態組態](https://technet.microsoft.com/library/dn249912.aspx), ，Azure 自動化期望狀態組態是簡單但強大的功能，設定管理服務 (實體和虛擬機器) 的 DSC 節點的任何雲端或內部部署資料中心內。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。 Azure 自動化 DSC 管理層之於 DSC 如同 Azure 自動化管理層之於 PowerShell 指令碼。 換句話說，在 Azure 自動化可協助您管理 Powershell 指令碼的相同方式，它也可協助您管理 DSC 組態，以深入了解使用 Azure 自動化 DSC 的優點，請參閱 [Azure 自動化 DSC 概觀](automation-dsc-overview/)。 
+像 [PowerShell 期望狀態組態](https://technet.microsoft.com/library/dn249912.aspx), ，Azure 自動化期望狀態組態是簡單但強大的功能，設定管理服務 （實體和虛擬機器） 的 DSC 節點的任何雲端或內部部署資料中心內。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。 Azure 自動化 DSC 管理層之於 DSC 如同 Azure 自動化管理層之於 PowerShell 指令碼。 換句話說，在 Azure 自動化可協助您管理 Powershell 指令碼的相同方式，它也可協助您管理 DSC 組態，以深入了解使用 Azure 自動化 DSC 的優點，請參閱 [Azure 自動化 DSC 概觀](automation-dsc-overview/)。 
 
 Azure 自動化 DSC 可以用來管理各種不同的機器：
 
@@ -38,7 +38,7 @@ Azure 自動化 DSC 可以用來管理各種不同的機器：
 
 ### Azure 入口網站
 
-在 [Azure 預覽入口網站](http://portal.azure.com/), ，按一下 [ **瀏覽** ]-> [ **虛擬機器 (傳統)**。 選取您要上架的 Windows VM。 在虛擬機器的儀表板] 分頁中，按一下 [ **所有設定** ]-> [ **延伸** ]-> [ **新增** ]-> [ **Azure 自動化 DSC** ]-> [ **建立**。 輸入 [PowerShell DSC 本機組態管理員值](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396) 指派給 VM 所需使用案例中，您的自動化帳戶註冊金鑰和註冊 URL，並選擇性節點組態。
+在 [Azure 預覽入口網站](http://portal.azure.com/), ，按一下 [ **瀏覽** ]-> [ **虛擬機器 （傳統）**。 選取您要上架的 Windows VM。 在虛擬機器的儀表板] 分頁中，按一下 [ **所有設定** ]-> [ **延伸** ]-> [ **新增** ]-> [ **Azure 自動化 DSC** ]-> [ **建立**。 輸入 [PowerShell DSC 本機組態管理員值](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396) 指派給 VM 所需使用案例中，您的自動化帳戶註冊金鑰和註冊 URL，並選擇性節點組態。
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
 
@@ -149,7 +149,7 @@ Azure 自動化 DSC 可讓您輕鬆上架 Azure 虛擬機器以進行組態管�
 
     `Get-AzureRmAutomationDscOnboardingMetaconfig -ResourceGroupName MyResourceGroup -AutomationAccountName             MyAutomationAccount -ComputerName MyServer1, MyServer2 -OutputFolder C:\Users\joe\Desktop`
 
-5. (選擇性) 檢視和更新的輸出資料夾中 metaconfigurations，配合 [PowerShell DSC 本機組態管理員欄位和值](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396) 想，如果預設值不符合您的使用案例。
+5. （選擇性） 檢視和更新的輸出資料夾中 metaconfigurations，配合 [PowerShell DSC 本機組態管理員欄位和值](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396) 想，如果預設值不符合您的使用案例。
 
 6. 從遠端將 PowerShell DSC metaconfiguration 套用至您想要上架的電腦：
 
@@ -165,7 +165,7 @@ Azure 自動化 DSC 可讓您輕鬆上架 Azure 虛擬機器以進行組態管�
 
 1. 請確定最新版本的 [DSC Linux 代理程式](http://www.microsoft.com/en-us/download/details.aspx?id=49150) 要上架到 Azure 自動化 DSC 的機器上安裝。
 
-2. 如果 [PowerShell DSC 本機組態管理員的預設值](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396) 符合您的使用案例:
+2. 如果 [PowerShell DSC 本機組態管理員的預設值](https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396) 符合您的使用案例 ︰
 
     *    在要上架到 Azure 自動化 DSC 的每部 Linux 電腦上，使用 Register.py 來使用 PowerShell DSC 本機組態管理員預設值上架：
 
@@ -185,7 +185,7 @@ Azure 自動化 DSC 可讓您輕鬆上架 Azure 虛擬機器以進行組態管�
     
     `Get-AzureRmAutomationDscOnboardingMetaconfig -ResourceGroupName MyResourceGroup -AutomationAccountName MyAutomationAccount -ComputerName MyServer1, MyServer2 -OutputFolder C:\Users\joe\Desktop_`
 
-6.  (選擇性) 檢視和更新的輸出資料夾中 metaconfigurations，配合 [PowerShell DSC 本機組態管理員欄位和值](http://https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396) 想，如果預設值不符合您的使用案例。
+6.  （選擇性） 檢視和更新的輸出資料夾中 metaconfigurations，配合 [PowerShell DSC 本機組態管理員欄位和值](http://https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396) 想，如果預設值不符合您的使用案例。
 
 7.  從遠端將 PowerShell DSC metaconfiguration 套用至您想要上架的電腦：
         
@@ -236,6 +236,7 @@ Azure Automation DSC 可讓您輕鬆地將 Azure Windows VM 上架以進行組�
 * [Azure 自動化 DSC 概觀](automation-dsc-overview.md)
 * [Azure 自動化 DSC Cmdlet](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure 自動化 DSC 價格](http://azure.microsoft.com/pricing/details/automation/)
+
 
 
 

@@ -31,7 +31,7 @@
 
     ![Azure Preview 入口網站的開始工作按鈕](./media/stream-analytics-run-a-job/4-stream-analytics-run-a-job.png)  
 
-2.  指定 **開始輸出** 值，以判斷當此工作會開始產生輸出。 針對先前尚未啟動的工作預設值是 **工作開始時間**, ，這表示工作將會立即開始處理資料。 您也可以指定 **自訂** (適用於使用歷程記錄資料) 過去或未來 (延遲處理，直到未來的時間) 時間。 當工作具有先前啟動和停止，此選項時 **上次停止時間** 可用才能從上次輸出時間繼續進行工作並避免資料遺失。  
+2.  指定 **開始輸出** 值，以判斷當此工作會開始產生輸出。 針對先前尚未啟動的工作預設值是 **工作開始時間**, ，這表示工作將會立即開始處理資料。 您也可以指定 **自訂** （適用於使用歷程記錄資料） 過去或未來 （延遲處理，直到未來的時間） 時間。 當工作具有先前啟動和停止，此選項時 **上次停止時間** 可用才能從上次輸出時間繼續進行工作並避免資料遺失。  
 
     ![啟動串流工作的時間](./media/stream-analytics-run-a-job/2-stream-analytics-run-a-job.png)  
 
@@ -53,4 +53,5 @@
 - [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
 - [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+
 

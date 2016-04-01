@@ -72,7 +72,7 @@ Microsoft SQL Server 中 [事件檔案目標](http://msdn.microsoft.com/library/
 
 2. 以系統管理員身分啟動 PowerShell ISE。
 
-3. 在提示中輸入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>然後按 Enter 鍵。
+3. 在提示中輸入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>然後按 Enter。
 
 4. 在 PowerShell ISE 中，開啟您 **.ps1** 檔案。 執行指令碼。
 
@@ -505,7 +505,7 @@ GO
 
 TRANSACT-SQL 指令碼完成時，按一下下方的儲存格 **event_data_XML** 資料行標頭。 一個 **<event>** 項目隨即會顯示一個 UPDATE 陳述式。
 
-以下是一個 **<event>** 在測試期間所產生的項目:
+以下是一個 **<event>** 在測試期間所產生的項目 ︰
 
 
 &nbsp;
@@ -597,5 +597,6 @@ Image references.
 -->
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
+
 
 

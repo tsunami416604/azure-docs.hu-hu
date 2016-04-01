@@ -24,7 +24,7 @@
 
 截至 2015 年 11 月 20 日當週的下列功能已加入至 **Azure 資料目錄**:
 
-- 檢視及複製連接字串內的能力 **Azure 資料目錄** 入口網站 (包括 Azure SQL Database) 的 SQL Server 和 Oracle 資料來源。 使用者可以在適用於 SQL Server 或 Oracle 資料表、檢視或資料庫的連接資訊中按一下 [檢視連接字串] 連結，查看用來連接到資料來源的連接字串。 已針對 SQL Server 資料來源提供 ADO.NET、ODBC、OLEDB 及 JDBC 連接字串。 已針對 Oracle 資料來源提供 ODBC 與 OLEDB 連接字串。
+- 檢視及複製連接字串內的能力 **Azure 資料目錄** 入口網站 （包括 Azure SQL Database） 的 SQL Server 和 Oracle 資料來源。 使用者可以在適用於 SQL Server 或 Oracle 資料表、檢視或資料庫的連接資訊中按一下 [檢視連接字串] 連結，查看用來連接到資料來源的連接字串。 已針對 SQL Server 資料來源提供 ADO.NET、ODBC、OLEDB 及 JDBC 連接字串。 已針對 Oracle 資料來源提供 ODBC 與 OLEDB 連接字串。
 - 支援在註冊 Teradata 資料表和檢視時納入資料設定檔。
 - 針對 SQL Server (包含 Azure SQL DB 和 Azure SQL 資料倉儲)、SQL Server Analysis Services、Azure 儲存體，以及 HDFS 來源支援「在 Power BI Desktop 中開啟」。  
 
@@ -45,7 +45,7 @@
 - 支援預覽 Teradata 資料來源。 註冊 Teradata 資料表和檢視時，使用者可以選擇包含快照記錄和從資料來源擷取的中繼資料。
 - 「Azure SQL 資料倉儲」資料來源支援「在 Excel 中開啟」。
 - 手動註冊的資料資產支援定義和編輯資料行層級的結構描述。 手動建立使用資料資產之後 **Azure 資料目錄** 入口網站，使用者可以加入資料行中定義的資料資產的屬性。
-- 支援 「 有 」 查詢搜尋時 **Azure 資料目錄**, ，若要啟用的已註冊的資料資產擁有特定的中繼資料探索。 **Azure 資料目錄** 現在包含查詢語法:
+- 支援 「 有 」 查詢搜尋時 **Azure 資料目錄**, ，若要啟用的已註冊的資料資產擁有特定的中繼資料探索。 **Azure 資料目錄** 現在包含查詢語法 ︰
 
 | 查詢語法            | 目的 |
 |-------------------------|---------|
@@ -114,7 +114,7 @@
 
 截至 2015 年 9 月 11 日的第幾週的下列功能已加入至 **Azure 資料目錄**:
 
-- 支援透過 HTTP/HTTPS 註冊和探索 SQL Server Analysis Servics 物件。 使用者現在可以連線到 SSAS 伺服器而不伺服器名稱時，使用 URL (例如 https://servername/olap/msmdpump.dll)，而且可以使用基本驗證和匿名連線，除了 Windows 驗證。 如需有關 HTTP/HTTPS 連接到 SSAS 的詳細資訊，請參閱 [設定 HTTP 存取 Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx)。
+- 支援透過 HTTP/HTTPS 註冊和探索 SQL Server Analysis Servics 物件。 使用者現在可以連線到 SSAS 伺服器而不伺服器名稱時，使用 URL （例如 https://servername/olap/msmdpump.dll)，而且可以使用基本驗證和匿名連線，除了 Windows 驗證。 如需有關 HTTP/HTTPS 連接到 SSAS 的詳細資訊，請參閱 [設定 HTTP 存取 Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx)。
 - 針對 HDInsight 提供 Hive 資料來源支援。 使用者現可在 HDInsight 資料來源的 Hadoop 中，註冊並探索適用於 Apache Hive 的 Hive 資料表。 如需有關在 HDInsight 上的 Hive 的詳細資訊，請參閱 [HDInsight 文件中心](../hdinsight-use-hive/)。
 - 支援註冊與探索 Oracle 資料庫及 HDFS 叢集以做為容器。 當註冊 Oracle 資料表和檢視表或 HDFS、 **Azure 資料目錄** 會建立資料庫以及與資料表和檢視表的項目。 資料庫可以探索和註解使用 **Azure 資料目錄** 入口網站。 除了搜尋和篩選目錄內容之外，使用者亦可搜尋和篩選資料庫或叢集的內容。
 
@@ -144,6 +144,7 @@
 - 支援針對註冊的資料來源提供存取要求資訊。 使用者現在可以針對任何已註冊的資料資產，提供要求存取權的指令 (包括電子郵件連結或 URL)，以輕鬆整合現有工具和程序。
 - 標籤和專家的工具提示，讓您可以更輕鬆探索哪些使用者已為註冊的資料資產提供何種中繼資料。
 - 我們已將新的「使用者」按鈕和功能表加入我們的上方導覽列中。 此功能表可讓使用者看到用來登入的帳戶 **Azure 資料目錄**, ，並視需要登出。 這個功能表也會顯示目錄名稱，也就是使用開發人員非常有用 **Azure 資料目錄** REST API。
-- 只有標準版: 當新增資料資產擁有者 **Azure 資料目錄** 現在支援使用者帳戶和安全性群組做為擁有者。 若要將安全性群組加入並使其成為所選資料資產的擁有者，您可以輸入群組的顯示名稱或群組的 UPN 電子郵件地址 (如果有的話)。
+- 只有標準版 ︰ 當新增資料資產擁有者 **Azure 資料目錄** 現在支援使用者帳戶和安全性群組做為擁有者。 若要將安全性群組加入並使其成為所選資料資產的擁有者，您可以輸入群組的顯示名稱或群組的 UPN 電子郵件地址 (如果有的話)。
 - 支援 Azure Blob 儲存體的資料來源。 使用者現在可以註冊並探索 Azure 儲存體 Blob 和目錄。
+
 

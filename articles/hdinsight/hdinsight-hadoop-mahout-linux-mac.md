@@ -25,7 +25,7 @@
 
 Mahout 是 [機器學習][ml] Apache hadoop 文件庫。 Mahout 包含可處理資料的演算法，例如篩選、分類和叢集化。 在本文中，您將使用推薦引擎，其將根據朋友看過的電影來產生電影推薦。
 
-> [AZURE.NOTE] 這份文件中的步驟需要 linux 上的 Hadoop HDInsight 叢集 (預覽)。 如需搭配使用 Mahout 與 Windows 叢集的資訊，請參閱 [Windows 為基礎的 Hadoop，在 HDInsight 中搭配使用 Apache Mahout 產生電影推薦](hdinsight-mahout.md)
+> [AZURE.NOTE] 這份文件中的步驟需要 linux 上的 Hadoop HDInsight 叢集 （預覽）。 如需搭配使用 Mahout 與 Windows 叢集的資訊，請參閱 [Windows 為基礎的 Hadoop，在 HDInsight 中搭配使用 Apache Mahout 產生電影推薦](hdinsight-mahout.md)
 
 ##必要條件
 
@@ -37,11 +37,11 @@ Mahout 是 [機器學習][ml] Apache hadoop 文件庫。 Mahout 包含可處理�
 
 > [AZURE.WARNING] 雖然您可以上傳至 HDInsight 叢集的不同版本的 Mahout，隨附於 HDInsight 叢集的元件受到完整支援，並以隔離並解決這些元件的相關問題協助 Microsoft 支援服務。
 >
-> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可以使用，像是: [適用於 HDInsight 的 MSDN 論壇](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), ，[http://stackoverflow.com](http://stackoverflow.com)。 Apache 專案也有專案網站 [http://apache.org](http://apache.org), ，例如: [Hadoop](http://hadoop.apache.org/), ，[Spark](http://spark.apache.org/)。
+> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可以使用，像是 ︰ [適用於 HDInsight 的 MSDN 論壇](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), ，[http://stackoverflow.com](http://stackoverflow.com)。 Apache 專案也有專案網站 [http://apache.org](http://apache.org), ，例如 ︰ [Hadoop](http://hadoop.apache.org/), ，[Spark](http://spark.apache.org/)。
 
 ##<a name="recommendations"></a>了解推薦
 
-Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID``itemId` 和 `prefValue` (使用者偏好的項目) 格式的資料。 Mahout 接著可以執行共生分析判斷出: _具有喜好設定項目的使用者也喜歡這些其他項目_。 接著 Mahout 會以偏好的類似項目判斷使用者，並以此做出推薦。
+Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID``itemId` 和 `prefValue` (使用者偏好的項目) 格式的資料。 Mahout 接著可以執行共生分析判斷出 ︰ _具有喜好設定項目的使用者也喜歡這些其他項目_。 接著 Mahout 會以偏好的類似項目判斷使用者，並以此做出推薦。
 
 以下使用電影做一個很簡單的範例：
 
@@ -49,7 +49,7 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
 * __共生__: Bob 和 Alice 也喜歡 _威脅潛伏 》_, ，_進攻_, ，和 _大帝的復仇 》_。 Mahout 將判斷喜歡前三部電影的使用者，也會喜歡這三部電影。
 
-* __相似性推薦__: 因為 Joe 喜歡前三部電影，Mahout 會查看所電影的其他使用者具有相似偏好喜歡但 Joe 還沒看過 (喜歡/評價)。 在此情況下，Mahout 將會推薦 _威脅潛伏 》_, ，_進攻_, ，和 _大帝的復仇 》_。
+* __相似性推薦__︰ 因為 Joe 喜歡前三部電影，Mahout 會查看所電影的其他使用者具有相似偏好喜歡但 Joe 還沒看過 （喜歡/評價）。 在此情況下，Mahout 將會推薦 _威脅潛伏 》_, ，_進攻_, ，和 _大帝的復仇 》_。
 
 ##載入資料
 
@@ -59,9 +59,9 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
     如需有關使用 SSH 連線至 HDInsight 的詳細資訊，請參閱下列文件：
 
-    * **Linux、 Unix 或 OS X 用戶端**: 請參閱 [從 Linux、 OS X 或 Unix 連接至以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)
+    * **Linux、 Unix 或 OS X 用戶端**︰ 請參閱 [從 Linux、 OS X 或 Unix 連接至以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)
 
-    * **Windows 用戶端**: 請參閱 [從 Windows 連接至以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)
+    * **Windows 用戶端**︰ 請參閱 [從 Windows 連接至以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)
 
 2. 下載 MovieLens 100k 封存檔，其中包含 1000 位使用者針對 1700 部電影的 100,000 個評價。
 
@@ -109,7 +109,7 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
         3   [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
         4   [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-    第一欄是`userID`。 '[' 和 ']' 內含的值是 `movieId`:`recommendationScore`
+    第一欄是`userID`。 中包含的值 '[' 和']' 是 `movieId`:`recommendationScore`。
 
 2. 部分中包含的其他資料 **ml-100k** 目錄可用來讓資料更方便使用者。 首先，使用下列命令下載資料：
 
@@ -266,3 +266,4 @@ Mahout 工作不會移除處理工作時所建立的暫存資料。 範例工作
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
+

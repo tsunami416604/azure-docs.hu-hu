@@ -30,3 +30,4 @@
 
 有人給您意見嗎？ 張貼問題到 [討論區論壇](http://feedback.azure.com/forums/247748-azure-remoteapp)。 如果您有 [Azure 支援方案](http://azure.microsoft.com/support/plans/), ，您可以提交支援案例。 每個人都可以在送出意見我們 [意見反應論壇](http://feedback.azure.com/forums/247748-azure-remoteapp)。  
 
+

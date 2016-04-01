@@ -234,7 +234,7 @@
 
 ## 使用入口網站部署
 
-您知道嗎？  您透過建立每個應用程式 [入口網站](https://portal.azure.com/) 受到 Azure 資源管理員範本!  只要透過入口網站建立虛擬機器、虛擬網路、儲存體帳戶、App Service 或資料庫，您就已經充分利用 Azure 資源管理員的優點，不多費心力。 
+您知道嗎？  您透過建立每個應用程式 [入口網站](https://portal.azure.com/) 受到 Azure 資源管理員範本 ！  只要透過入口網站建立虛擬機器、虛擬網路、儲存體帳戶、App Service 或資料庫，您就已經充分利用 Azure 資源管理員的優點，不多費心力。 
 只要選取 **新增** 圖示，您就會進入部署應用程式透過 Azure 資源管理員。
 
 ![新增](./media/resource-group-template-deploy/new.png)
@@ -272,4 +272,5 @@
 - 如需您可以使用 Azure 資源管理員範本中的函式的清單，請參閱 [樣板函式](resource-group-template-functions.md)
 
  
+
 

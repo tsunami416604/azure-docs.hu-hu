@@ -165,3 +165,4 @@
 - 若要深入了解授與存取權的服務主體，請參閱 [驗證服務主體與 Azure 資源管理員](resource-group-authenticate-service-principal.md)。
 - 若要了解如何為所有使用者資源上的動作，請參閱 [鎖定的資源與 Azure 資源管理員](resource-group-lock-resources.md)。
 
+

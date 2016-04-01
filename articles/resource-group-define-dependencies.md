@@ -78,3 +78,4 @@ reference 函式可讓運算式從其他 JSON 名稱和值組或執行階段資�
 - 如需在範本中可用的功能，請參閱 [樣板函式](resource-group-template-functions.md)。
 
 
+

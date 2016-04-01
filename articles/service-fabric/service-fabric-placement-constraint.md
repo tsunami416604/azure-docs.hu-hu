@@ -36,6 +36,7 @@ NodeProperty-使用者或系統定義對應從字串的值會隨著每個節點�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
-如需詳細資訊: [應用程式案例](../service-fabric-application-scenarios)。
+如需詳細資訊 ︰ [應用程式案例](../service-fabric-application-scenarios)。
  
+
 

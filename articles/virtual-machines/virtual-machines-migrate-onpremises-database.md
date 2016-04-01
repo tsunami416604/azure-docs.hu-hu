@@ -168,3 +168,4 @@
 
 如需 Azure 虛擬機器上執行 SQL Server 的詳細資訊，請參閱 [SQL Server 的 Azure 虛擬機器總覽](virtual-machines-sql-server-infrastructure-services.md)。
 
+

@@ -19,10 +19,10 @@ Blob 服務包含下列元件：
 
 ![Blob 1][Blob1]
 
--   **儲存體帳戶:** 已完成所有存取 Azure 儲存體
+-   **儲存體帳戶 ︰** 已完成所有存取 Azure 儲存體
     。 請參閱 [Azure 儲存體延展性和效能目標](storage-scalability-targets.md) 儲存體帳戶容量的詳細資料。
 
--   **容器:** 容器提供一組 blob 的群組。
+-   **容器 ︰** 容器提供一組 blob 的群組。
     所有 Blob 都必須放在容器中。 一個帳戶可以包含
     無限個容器。 一個容器可以儲存
     無限個 Blob。
@@ -75,5 +75,6 @@ Blob 服務是以一般儲存體配置為根據。 您可以透過在 Blob 名�
 
 
 [Blob1]: ./media/storage-blob-concepts-include/blob1.jpg
+
 
 

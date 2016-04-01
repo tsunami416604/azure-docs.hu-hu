@@ -26,7 +26,7 @@
 
 在 Visual Studio 中建立解決方案後，應用程式資訊清單、服務資訊清單和 Settings.xml 組態檔將包含在動作項目服務專案。 如以下螢幕擷取畫面所示。
 
-!透過 Visual Studio 所建立的 [專案][] 1
+![透過 Visual Studio 建立專案][1]
 
 您可以藉由查看包含在動作項目服務專案中的應用程式資訊清單，找到動作項目所封裝的應用程式類型及其版本。 下列程式碼片段便是來自應用程式資訊清單的範例。
 
@@ -97,7 +97,7 @@
 
 上述清單中顯示實作 VoicemailBox 動作項目的組件，其包含在應用程式封裝之服務封裝內的程式碼封裝中。  
 
-後續的管理 (也就是 升級和最終刪除) 透過 Service Fabric 應用程式管理機制也會執行的應用程式。 如需詳細資訊，請參閱主題 [應用程式模型](service-fabric-application-model.md), ，[應用程式部署和移除](service-fabric-deploy-remove-applications.md), ，和 [應用程式升級](service-fabric-application-upgrade.md)。
+後續的管理 （也就是 升級和最終刪除） 透過 Service Fabric 應用程式管理機制也會執行的應用程式。 如需詳細資訊，請參閱主題 [應用程式模型](service-fabric-application-model.md), ，[應用程式部署和移除](service-fabric-deploy-remove-applications.md), ，和 [應用程式升級](service-fabric-application-upgrade.md)。
 
 ## 動作項目服務的可調整性
 叢集系統管理員可以在叢集中為每個服務類型建立一個或多個動作項目服務。 每個動作項目服務可以有一個或多個資料分割 (類似任何其他 Service Fabric 服務)。 為多個服務建立服務類型的能力 (這會對應到動作項目類型) 和為服務建立多個資料分割的能力，可讓動作項目應用程式進行調整。 請參閱 [延展性](service-fabric-concepts-scalability.md) 如需詳細資訊。
@@ -147,7 +147,7 @@
 
 資料分割識別碼可用來取得資料分割的其他資訊。 例如， [Service Fabric 總管](service-fabric-visualizing-your-cluster.md) 工具可以用來檢視資料分割以及服務和其所屬的應用程式的相關資訊。 以下螢幕擷取畫面顯示資料分割的相關資訊 `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a`，其中包含有識別碼 `-4952641569324299627` 的動作項目，如上述範例中所示。  
 
-![Service Fabric 總管中的分割區資訊][] 3
+![Service Fabric 總管中資料分割的相關資訊][3]
 
 動作項目可以由程式設計方式取得資料分割識別碼、服務名稱、應用程式名稱和其他 Service Fabric 的平台特定資訊，透過 `Host.ActivationContext` 和 `Host.StatelessServiceInitialization` 或 `Host.StatefulServiceInitializationParameters` 動作項目類型衍生自基底類別的成員。 下列程式碼片段將顯示一個範例。
 
@@ -206,7 +206,7 @@ public void ActorMessage(StatefulActorBase actor, string message, params object[
 
 您還記得，在 [稍早所呈現的 VoiceMailBoxActor 範例](#service-fabric-partition-concepts-for-actors), ，動作項目識別碼 `-4952641569324299627` 磁碟分割內建立 `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a`。 該範例的 EventSource 事件也指出動作項目建立在該資料分割的複本 `130745418574851853`。 這是建立動作項目的時候，該資料分割的主要複本。 下列 Service Fabric Explore 螢幕擷取畫面進一步確認這一點。
 
-![Service Fabric 總管中的主要複本][] 4
+![Service Fabric 總管中的主要複本][4]
 
 ## 動作項目狀態提供者選項
 動作項目執行階段中包含一些預設的動作項目狀態提供者。 若要為動作項目服務選擇適當的狀態提供者，就必須了解狀態提供者如何使用基礎服務網狀架構平台功能，讓動作項目狀態高度可用。
@@ -242,4 +242,5 @@ public class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
 [2]: ./media/service-fabric-reliable-actors-platform/app-deployment-scripts.png
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
+
 

@@ -121,7 +121,7 @@
 
 如果您指定 –Force 參數，並指定現有的輸入名稱，則不經過確認就會取代輸入。
 
-如需 JSON 檔案結構與內容的詳細資訊，請參閱 [建立輸入 (Azure 資料流分析)][msdn-rest-api-create-stream-analytics-input] 區段 [資料流分析管理 REST API 參考程式庫][stream.analytics.rest.api.reference]。
+如需 JSON 檔案結構與內容的詳細資訊，請參閱 [建立輸入 （Azure 資料流分析）][msdn-rest-api-create-stream-analytics-input] 區段 [資料流分析管理 REST API 參考程式庫][stream.analytics.rest.api.reference]。
 
 **範例 1**
 
@@ -168,7 +168,7 @@
 
 如果您指定 –Force 參數，並指定現有的輸出名稱，則不經過確認就會取代輸出。
 
-如需 JSON 檔案結構與內容的詳細資訊，請參閱 [建立輸出 (Azure 資料流分析)][msdn-rest-api-create-stream-analytics-output] 區段 [資料流分析管理 REST API 參考程式庫][stream.analytics.rest.api.reference]。
+如需 JSON 檔案結構與內容的詳細資訊，請參閱 [建立輸出 （Azure 資料流分析）][msdn-rest-api-create-stream-analytics-output] 區段 [資料流分析管理 REST API 參考程式庫][stream.analytics.rest.api.reference]。
 
 **範例 1**
 
@@ -189,7 +189,7 @@
 
 如果您指定 –Force 參數，並指定現有的轉換名稱，則不經過確認就會取代轉換。
 
-如需 JSON 檔案結構與內容的詳細資訊，請參閱 [建立轉換 (Azure 資料流分析)][msdn-rest-api-create-stream-analytics-transformation] 區段 [資料流分析管理 REST API 參考程式庫][stream.analytics.rest.api.reference]。
+如需 JSON 檔案結構與內容的詳細資訊，請參閱 [建立轉換 （Azure 資料流分析）][msdn-rest-api-create-stream-analytics-transformation] 區段 [資料流分析管理 REST API 參考程式庫][stream.analytics.rest.api.reference]。
 
 **範例 1**
 
@@ -291,4 +291,5 @@
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
+
 

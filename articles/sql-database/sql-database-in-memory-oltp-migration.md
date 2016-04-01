@@ -67,7 +67,7 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 SSMS 包含 **交易效能分析概觀** 針對資料庫使用中的工作負載，您可以執行的報表。 此報告會識別要移轉至 In-Memory OLTP 的候選資料表和預存程序。
 
-在 SSMS 中，以產生報表:
+在 SSMS 中，以產生報表 ︰
 - 在 **物件總管] 中**, ，以滑鼠右鍵按一下資料庫節點。
 - 按一下 [ **報表** > **標準報表** > **交易效能分析概觀**。
 
@@ -84,7 +84,7 @@ SSMS 包含 **交易效能分析概觀** 針對資料庫使用中的工作負載
 
 1. 使用 SSMS 連接到測試資料庫。
 
-2. 若要避免需要在查詢中的 WITH (SNAPSHOT) 選項，設定資料庫選項，如下列 T-SQL 陳述式中所示:
+2. 若要避免需要在查詢中的 WITH (SNAPSHOT) 選項，設定資料庫選項，如下列 T-SQL 陳述式中所示 ︰
 ```
 ALTER DATABASE CURRENT
     SET
@@ -177,7 +177,7 @@ CREATE PROCEDURE schemaname.procedurename
         END;
 ```
 
-- 就 TRANSACTION_ISOLATION_LEVEL 而言，SNAPSHOT 是原生編譯預存程序最常用的值。 不過，也支援其他值的子集:
+- 就 TRANSACTION_ISOLATION_LEVEL 而言，SNAPSHOT 是原生編譯預存程序最常用的值。 不過，也支援其他值的子集 ︰
  - REPEATABLE READ
  - SERIALIZABLE
 
@@ -235,5 +235,6 @@ CREATE PROCEDURE schemaname.procedurename
 - [原生編譯預存程序簡介](http://msdn.microsoft.com/library/dn133184.aspx)
 
 - [記憶體最佳化建議程式](http://msdn.microsoft.com/library/dn284308.aspx)
+
 
 

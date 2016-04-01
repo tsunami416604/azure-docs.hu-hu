@@ -35,7 +35,7 @@
 
 - 中的 C#.NET 範例 [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) 專案 [azure azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) GitHub 上的儲存機制。
 - Azure 入口網站中所述 [建立 DocumentDB 資料庫，使用 Azure 入口網站](documentdb-create-database.md)。
-- 全部包含的教學課程: [.NET](documentdb-get-started.md), ，[.NET MVC](documentdb-dotnet-application.md), ，[Java](documentdb-java-application.md), ，[Node.js](documentdb-nodejs-application.md), ，或 [Python](documentdb-python-application.md)。
+- 全部包含的教學課程 ︰ [.NET](documentdb-get-started.md), ，[.NET MVC](documentdb-dotnet-application.md), ，[Java](documentdb-java-application.md), ，[Node.js](documentdb-nodejs-application.md), ，或 [Python](documentdb-python-application.md)。
 -  [DocumentDB Sdk](documentdb-sdk-dotnet.md)。 DocumentDB 有.NET、Java、Python、Node.js 和 JavaScript API SDK。 
 
 
@@ -49,4 +49,5 @@
 -   [DocumentDB 資源模型和概念](documentdb-resources.md)
 
  
+
 

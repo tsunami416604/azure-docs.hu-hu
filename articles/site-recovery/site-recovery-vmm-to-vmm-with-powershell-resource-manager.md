@@ -48,7 +48,7 @@ Azure PowerShell 是個模組，其提供了各種 Cmdlet 來透過 Windows Powe
 
         - [新功能使用 System Center 2012 R2 VMM 的私人雲端](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/MDC-B357#fbid=dfgvHAmYryA) 和 [VMM 2012 和雲端](http://www.server-log.com/blog/2011/8/26/vmm-2012-and-the-clouds.html)。
         - [設定 VMM 雲端網狀架構](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)
-        - [在 VMM 中建立私人雲端](https://technet.microsoft.com/library/jj860425.aspx) 和 [逐步解說: 使用 System Center 2012 SP1 VMM 建立私人雲端](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)。
+        - [在 VMM 中建立私人雲端](https://technet.microsoft.com/library/jj860425.aspx) 和 [逐步解說 ︰ 使用 System Center 2012 SP1 VMM 建立私人雲端](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)。
 - 一或多部 Hyper-V 伺服器至少執行具有 Hyper-V 角色的 Windows Server 2012，並且已安裝最新更新。 VMM 雲端中必須包含伺服器或叢集。
 - 如果您在叢集中執行 Hyper-V，請注意，如果您具有靜態 IP 位址叢集，並不會自動建立叢集代理。 您必須手動設定叢集代理。 如需指示，請參閱 [設定 HYPER-V 複本代理人](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)。
 
@@ -80,7 +80,7 @@ Azure PowerShell 是個模組，其提供了各種 Cmdlet 來透過 Windows Powe
 
 ## 步驟 2：設定 Site Recovery 保存庫
 
-1. 如果您目前還沒有站台復原保存庫必須執行 [新增 AzureSiteRecoveryVault](https://msdn.microsoft.com/library/azure/dn954225.aspx) 指令程式:
+1. 如果您目前還沒有站台復原保存庫必須執行 [新增 AzureSiteRecoveryVault](https://msdn.microsoft.com/library/azure/dn954225.aspx) 指令程式 ︰
 
     `New-AzureSiteRecoveryVault -Location $VaultGeo -Name $VaultName;
     $vault = Get-AzureSiteRecoveryVault -Name $VaultName;`
@@ -185,4 +185,5 @@ Azure PowerShell 是個模組，其提供了各種 Cmdlet 來透過 Windows Powe
 ## 後續步驟
 
 如提出問題或意見，在這種情況下，請造訪 [站台復原論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr/)
+
 

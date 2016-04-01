@@ -27,16 +27,16 @@
 
 ##概觀
 
-本主題說明如何使用 Azure 行動服務傳送推播通知至 Xamarin.Android 應用程式。 在本教學課程中，您新增推播通知使用 Google 雲端通訊 (GCM) 服務，以開始使用行動服務] 專案。 完成後，行動服務就會在每次插入記錄時傳送推播通知。
+本主題說明如何使用 Azure 行動服務傳送推播通知至 Xamarin.Android 應用程式。 在本教學課程中，您新增使用 Google 雲端通訊 (GCM) 服務的推播通知 [Get started with Mobile Services] 專案。 完成後，行動服務就會在每次插入記錄時傳送推播通知。
 
 本教學課程需要下列各項：
 
 + 有效的 Google 帳戶。
 + [Google Cloud Messaging Client Component]. 您在教學課程中會新增此元件。
 
-您應該已經有 [Xamarin.Android] 和 [Azure 行動服務][Azure Mobile Services Component] 元件安裝在您的專案，當您完成從 [開始使用行動服務]。
+您應該已經有 [Xamarin.Android] 和 [Azure 行動服務][Azure Mobile Services Component] 元件安裝在您的專案，當您完成從 [Get started with Mobile Services]。
 
-##<a id="register"></a>啟用 Google 雲端通訊
+##<a id="register"></a>啟用 Google Cloud Messaging
 
 [AZURE.INCLUDE [Enable GCM](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
@@ -60,7 +60,7 @@
 
 您可以使用 USB 纜線直接連接 Android 手機，或使用模擬器中的虛擬裝置，對應用程式進行測試。
 
-###<a id="local-testing"></a> 啟用推播通知以進行本機測試
+###<a id="local-testing"></a>啟用推播通知以進行本機測試
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-configure-local-push](../../includes/mobile-services-dotnet-backend-configure-local-push.md)]
 
@@ -73,4 +73,5 @@
 [Google Cloud Messaging Client Component]: http://components.xamarin.com/view/GCMClient/
 [Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
+
 

@@ -76,7 +76,7 @@ script | 指定 Hive 指令碼內嵌 | 否
     1809,2014-05-04 05:24:22.2100000,23,192.84.66.141,KingHill
     .....
 
- **Hive 指令碼** 這項資料看起來像這樣的程序:
+ **Hive 指令碼** 這項資料看起來像這樣的程序 ︰
 
     DROP TABLE IF EXISTS HiveSampleIn; 
     CREATE EXTERNAL TABLE HiveSampleIn 
@@ -213,6 +213,7 @@ script | 指定 Hive 指令碼內嵌 | 否
             ProfileID,
             SUM(Duration)
         FROM HiveSampleIn Group by ProfileID
+
 
 
 

@@ -97,3 +97,4 @@
 
 ## 後續步驟
 如需有關地理區域複寫和其他商務持續性功能的 SQL 資料庫的詳細資訊，請參閱 [業務持續性概觀](sql-database-business-continuity.md)。
+

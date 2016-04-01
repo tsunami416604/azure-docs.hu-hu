@@ -46,9 +46,9 @@ Azure Batch 允許每個節點的最大化工作設定為多達節點核心數�
 
 在集區內的運算節點能夠同時執行工作時，務必指定您要如何跨集區內的節點分佈您的工作。
 
-使用 [CloudPool.TaskSchedulingPolicy][task_schedule] 屬性，您可以指定，工作應該平均指派給集區 (「 散佈 」) 的所有節點或，盡可能多的工作應該指派給每個節點的工作指派給集區 (「 封裝 」) 中的另一個節點之前。
+使用 [CloudPool.TaskSchedulingPolicy][task_schedule] 屬性，您可以指定，工作應該平均指派給集區 （「 散佈 」） 的所有節點或，盡可能多的工作應該指派給每個節點的工作指派給集區 （「 封裝 」） 中的另一個節點之前。
 
-做為範例的情況下，這項功能是非常有用的方式，請考慮 Standard\_D14 節點，在上述範例中的集區設定 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 16 的值。 如果 [CloudPool.TaskSchedulingPolicy][task_schedule] 設有 [ComputeNodeFillType][fill_type] 的 *套件*, ，它會最大化所有 16 個核心的每個節點的使用方式，允許 [自動調整集區](./batch-automatic-scaling.md) 剪除未使用的節點從集區 (而不指派任何工作的節點)，因而降至最低的資源使用量和儲存成本。
+做為範例的情況下，這項功能是非常有用的方式，請考慮 Standard\_D14 節點，在上述範例中的集區設定 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 16 的值。 如果 [CloudPool.TaskSchedulingPolicy][task_schedule] 設有 [ComputeNodeFillType][fill_type] 的 *套件*, ，它會最大化所有 16 個核心的每個節點的使用方式，允許 [自動調整集區](./batch-automatic-scaling.md) 剪除未使用的節點從集區 （而不指派任何工作的節點），因而降至最低的資源使用量和儲存成本。
 
 ## Batch .NET 範例
 
@@ -126,4 +126,5 @@ Duration: 00:08:48.2423500
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
+
 

@@ -26,9 +26,9 @@
 ## 概觀
 本主題說明如何簽發您自己的行動服務驗證權杖，以在 Azure 行動服務 .NET 後端中驗證使用者。 在本教學課程中，您會使用應用程式的自訂使用者名稱和密碼，將驗證新增至快速入門專案。
 
->[AZURE.NOTE] 本教學課程示範如何驗證自訂認證與行動服務的進階的方法。 有許多應用程式應改用內建社交身分識別提供者最為適當，以讓使用者能夠透過 Facebook、Twitter、Google、Microsoft 帳戶和 Azure Active Directory 進行登入。 如果這是您第一次使用行動服務中的驗證，請參閱 [將驗證新增至您的應用程式] 教學課程。
+>[AZURE.NOTE] 本教學課程示範如何驗證自訂認證與行動服務的進階的方法。 有許多應用程式應改用內建社交身分識別提供者最為適當，以讓使用者能夠透過 Facebook、Twitter、Google、Microsoft 帳戶和 Azure Active Directory 進行登入。 如果這是您第一次使用行動服務中的驗證，請參閱 [Add authentication to your app] 教學課程。
 
-本教學課程會以行動服務快速入門為基礎。 您也必須先完成 [開始使用行動服務] 教學課程。
+本教學課程會以行動服務快速入門為基礎。 您還必須先完成本教學課程 [Get started with Mobile Services]。
 
 >[AZURE.IMPORTANT] 本教學課程的目的是要說明如何簽發行動服務驗證權杖。 請不要將其視為安全性指引。 在開發應用程式時，您必須留意密碼儲存的安全性問題，且必須要有管理暴力密碼破解攻擊的策略。
 
@@ -112,7 +112,7 @@
 
     如果必須收集和儲存註冊期間的其他資訊，您應該在此處進行。
 
-2. 在行動服務後端專案中，以滑鼠右鍵按一下 **控制器**, ，按一下 [ **新增** 和 **控制器**, ，建立新 **Microsoft Azure 行動服務自訂控制器** 名為 `CustomRegistrationController`, ，然後新增下列 `using` 陳述式:
+2. 在行動服務後端專案中，以滑鼠右鍵按一下 **控制器**, ，按一下 [ **新增** 和 **控制器**, ，建立新 **Microsoft Azure 行動服務自訂控制器** 名為 `CustomRegistrationController`, ，然後新增下列 `using` 陳述式 ︰
 
         using Microsoft.WindowsAzure.Mobile.Service.Security;
         using System.Text.RegularExpressions;
@@ -174,7 +174,7 @@
 行動服務驗證管線中的基礎建構之一是 **LoginProvider**。 在本節中，您將建立自己的 `CustomLoginProvider`。 它並不會像內建提供者一樣插入管線中，但會為您提供方便的功能。
 如果您使用 Visual Studio 2013，您可能需要安裝 `WindowsAzure.MobileServices.Backend.Security` Nuget 封裝，以便將參考新增至 `LoginProvider` 類別。
 
-1. 建立新的類別， `CustomLoginProvider`, ，衍生自 **LoginProvider**, ，並新增下列 `using` 陳述式:
+1. 建立新的類別， `CustomLoginProvider`, ，衍生自 **LoginProvider**, ，並新增下列 `using` 陳述式 ︰
 
         using Microsoft.WindowsAzure.Mobile.Service;
         using Microsoft.WindowsAzure.Mobile.Service.Security;
@@ -182,7 +182,7 @@
         using Owin;
         using System.Security.Claims;
 
-3. 取代 **CustomLoginProvider** 類別定義以下列程式碼:
+3. 取代 **CustomLoginProvider** 類別定義以下列程式碼 ︰
 
         public class CustomLoginProvider : LoginProvider
         {
@@ -259,7 +259,7 @@
 
     這個方法會轉譯 [ClaimsIdentity] 到 [ProviderCredentials] 驗證權杖發行階段使用的物件。 此時，您可以再次以此方法擷取任何其他宣告。
 
-6. 開啟 WebApiConfig.cs 專案檔案中 [App_Start] 資料夾及下列程式碼之後 **ConfigOptions** 建立:
+6. 開啟 WebApiConfig.cs 專案檔案中 [App_Start] 資料夾及下列程式碼之後 **ConfigOptions** 建立 ︰
 
         options.LoginProviders.Add(typeof(CustomLoginProvider));
 
@@ -290,14 +290,14 @@
 
     此類別代表以使用者識別碼和驗證權杖成功登入。 請注意，此類別和用戶端的 MobileServiceUser 類別具有相同形式，所以此類別能夠輕易地將登入回應傳給強型別用戶端。
 
-2. 以滑鼠右鍵按一下 **控制器**, ，按一下 [ **新增** 和 **控制器**, ，建立新 **Microsoft Azure 行動服務自訂控制器** 名為 `CustomLoginController`, ，然後新增下列 `using` 陳述式:
+2. 以滑鼠右鍵按一下 **控制器**, ，按一下 [ **新增** 和 **控制器**, ，建立新 **Microsoft Azure 行動服務自訂控制器** 名為 `CustomLoginController`, ，然後新增下列 `using` 陳述式 ︰
 
         using Microsoft.WindowsAzure.Mobile.Service.Security;
         using System.Security.Claims;
         using <my_project_namespace>.DataObjects;
         using <my_project_namespace>.Models;
 
-3. 取代 **CustomLoginController** 類別定義以下列程式碼:
+3. 取代 **CustomLoginController** 類別定義以下列程式碼 ︰
 
         [AuthorizeLevel(AuthorizationLevel.Anonymous)]
         public class CustomLoginController : ApiController
@@ -426,4 +426,5 @@
 
 [ClaimsIdentity]: https://msdn.microsoft.com/library/system.security.claims.claimsidentity(v=vs.110).aspx
 [ProviderCredentials]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
+
 

@@ -49,7 +49,7 @@ ASP.NET 5 是輕量型、跨平台的 Web 開發架構，能夠建立新式 Web 
 
 1. 在 Visual Studio 按 F5 以進行應用程式偵錯。
 
-2. 部署完成時，Visual Studio 會啟動瀏覽器以 ASP.NET Web API 服務，如下所示 http://localhost:33003 (連接埠號碼會隨機指派和可能與您的電腦不同) 的根目錄。 ASP.NET 5 Web API 範本不根提供根目錄的預設行為，因此您將在瀏覽器中收到錯誤。
+2. 部署完成時，Visual Studio 會啟動瀏覽器以 ASP.NET Web API 服務，如下所示 http://localhost:33003 （連接埠號碼會隨機指派和可能與您的電腦不同） 的根目錄。 ASP.NET 5 Web API 範本不根提供根目錄的預設行為，因此您將在瀏覽器中收到錯誤。
 
 3. 將 `/api/values` 新增至瀏覽器中的位置。 這會對 Web API 範本中的 ValuesController 叫用 `Get` 方法，並傳回範本所提供的預設回應，即包含兩個字串的 JSON 陣列：
 
@@ -220,4 +220,5 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-add-class-library-reference]: ./media/service-fabric-add-a-web-frontend/vs-add-class-library-reference.png
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
+
 

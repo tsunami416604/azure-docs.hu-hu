@@ -27,7 +27,7 @@
 
 本主題說明如何使用 Azure 行動服務，透過 Google 雲端通訊 ("GCM") 將推播通知傳送至 Android 應用程式。 您會將推播通知新增至快速入門專案 (本教學課程的先決條件)。 使用您的行動服務中內含的 Azure 通知中樞來啟用推播通知。 完成後，行動服務就會在每次插入記錄時傳送推播通知。
 
-## 先決條件
+## 必要條件
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
@@ -48,7 +48,7 @@
 
 下一個步驟是安裝 Google Play 服務。 Google Cloud Messaging 具有某些 API 的最低層級需求進行開發和測試方面 **minSdkVersion** 資訊清單中的屬性所必須遵守。
 
-如果您要以較舊的裝置進行測試，請參考 [設定 Google Play 服務 SDK]，以確認此值可以設得多低，並加以適當設定。
+如果您要以較舊的裝置進行測試，請參考 [Set Up Google Play Services SDK] 判斷低您可以設定此值，並加以適當設定。
 
 ###新增 Google Play 服務至專案
 
@@ -106,24 +106,24 @@
 <!---This tutorial demonstrated the basics of enabling an Android app to use Mobile Services and Notification Hubs to send push notifications. Next, consider completing the next tutorial, [Send push notifications to authenticated users], which shows how to use tags to send push notifications from a Mobile Service to only an authenticated user.
 
 + [Send broadcast notifications to subscribers]
-    <br/>了解使用者如何註冊和接收他們感興趣的推播通知的類別。
+    <br/>Learn how users can register and receive push notifications for categories they're interested in.
 
 + [Send template-based notifications to subscribers]
-    <br/>了解如何使用範本從行動服務時，傳送推播通知，而不必在後端製作平台特定裝載。
+    <br/>Learn how to use templates to send push notifications from a Mobile Service, without having to craft platform-specific payloads in your back-end.
 -->
 
 在下列主題中深入了解行動服務和通知中心：
 
-* [開始使用驗證]
+* [Get started with authentication]
   <br/>了解如何使用行動服務以不同帳戶類型驗證應用程式的使用者。
 
 * [What are Notification Hubs?]
-  <br/>進一步了解通知中心將通知傳遞到您的應用程式跨所有主要用平台的運作方式。
+  <br/>深入了解通知中樞如何跨所有主要用戶端平台將通知傳遞到您的應用程式。
 
 * [偵錯通知中樞應用程式](http://go.microsoft.com/fwlink/p/?linkid=386630)
-  </br>取得指引疑難排解和偵錯通知中樞解決方案。
+  </br>取得通知中樞解決方案的疑難排解和偵錯指引。
 
-* [如何使用行動服務 Android 用戶端程式庫]
+* [How to use the Android client library for Mobile Services]
   <br/>深入了解如何搭配使用行動服務與 Android。
 
 * [Mobile Services server script reference]
@@ -160,4 +160,5 @@
 [What are Notification Hubs?]: ../notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: ../notification-hubs-android-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
+
 

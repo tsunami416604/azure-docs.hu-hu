@@ -31,7 +31,7 @@
 
 - 如需使用 Azure CLI 管理 HDInsight 的詳細資訊，請參閱 [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)。
 
-##先決條件
+##必要條件
 
 開始閱讀本文之前，您必須符合下列必要條件：
 
@@ -58,7 +58,7 @@ HDInsight 可以與很多 Hadoop 元件搭配使用。 如需已驗證和支援�
 - 您可以使用 JAR 檔案形式在叢集上執行一些原生 Java 元件 (例如 Mahout 和 Cascading)。 這些 JAR 檔案可以配送至 Azure Blob 儲存體，並透過 Hadoop 工作提交機制提交至 HDInsight 叢集。 如需詳細資訊，請參閱 [以程式設計方式提交 Hadoop 工作](hdinsight-submit-hadoop-jobs-programmatically.md)。
 
 
-    >[AZURE.NOTE] If you have issues deploying JAR files to HDInsight clusters or calling JAR files on HDInsight clusters, contact [Microsoft Support](http://azure.microsoft.com/support/options/).
+    >[AZURE.NOTE] 如果您有 JAR 檔案部署至 HDInsight 叢集的問題，或呼叫 JAR 檔案上的 HDInsight 叢集，請連絡 [Microsoft 支援服務](http://azure.microsoft.com/support/options/)。
 
     > Cascading is not supported by HDInsight, and is not eligible for Microsoft Support. For lists of supported components, see [What's new in the cluster versions provided by HDInsight?](hdinsight-component-versioning.md).
 
@@ -77,7 +77,7 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
 5. 按一下 [ **OFF** 旁 **HADOOP 服務**。
 6. 按一下 [ **儲存** 底部的頁面上，並等待停用完成。
 7. 停用服務之後，請按一下 **ON** 旁 **HADOOP 服務**。
-8. 如 **使用者名稱** 和 **新密碼**, ，輸入新的使用者名稱和密碼 (分別) 叢集。
+8. 如 **使用者名稱** 和 **新密碼**, ，輸入新的使用者名稱和密碼 （分別） 叢集。
 8. 按一下 [ **儲存**。
 
 
@@ -97,7 +97,7 @@ HDInsight 叢集可以有兩個使用者帳戶。 HDInsight 叢集使用者帳�
     ![HDI.CreateRDPUser][image-hdi-create-rpd-user]
 
 
-> [AZURE.NOTE] 您也可以使用 HDInsight.NET SDK 在叢集上啟用遠端桌面。 使用 **EnableRdp** 以下列方式在 HDInsight 用戶端物件上的方法: **用戶端。EnableRdp (clustername，location，"rdpuser"，"rdppassword"，DateTime.Now.AddDays(6))**。 同樣地，若要在叢集上，停用遠端桌面，您可以使用 **用戶端。DisableRdp (clustername，location)**。 如需有關這些方法的詳細資訊，請參閱 [HDInsight.NET SDK 參考](http://go.microsoft.com/fwlink/?LinkId=529017)。 這僅適用於在 Windows 上執行的 HDInsight 叢集。
+> [AZURE.NOTE] 您也可以使用 HDInsight.NET SDK 在叢集上啟用遠端桌面。 使用 **EnableRdp** 以下列方式在 HDInsight 用戶端物件上的方法 ︰ **用戶端。EnableRdp (clustername，location，"rdpuser"，"rdppassword"，DateTime.Now.AddDays(6))**。 同樣地，若要在叢集上，停用遠端桌面，您可以使用 **用戶端。DisableRdp （clustername，location）**。 如需有關這些方法的詳細資訊，請參閱 [HDInsight.NET SDK 參考](http://go.microsoft.com/fwlink/?LinkId=529017)。 這僅適用於在 Windows 上執行的 HDInsight 叢集。
 
 
 
@@ -147,7 +147,7 @@ HDInsight 叢集具有下列 HTTP Web 服務 (所有這些服務都有 RESTful �
 3. 按一下想要設定的 HDInsight 叢集。
 4. 從頁面頂端，按一下 [ **組態**。
 5. 按一下 [ **ON** 或 **OFF** 旁 **HADOOP 服務**。
-6. 如 **使用者名稱** 和 **新密碼**, ，輸入新的使用者名稱和密碼 (分別) 叢集。
+6. 如 **使用者名稱** 和 **新密碼**, ，輸入新的使用者名稱和密碼 （分別） 叢集。
 7. 按一下 [ **儲存**。
 
 請參閱 [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)。
@@ -197,4 +197,5 @@ HDInsight 叢集具有下列 HTTP Web 服務 (所有這些服務都有 RESTful �
 [image-hdi-create-rpd-user]: ./media/hdinsight-administer-use-management-portal-v1/hdi.createrdpuser.png
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal-v1/hdinsight-hadoop-command-line.png "Hadoop command line"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal-v1/hdi.clustercreate.uploadcert.png
+
 

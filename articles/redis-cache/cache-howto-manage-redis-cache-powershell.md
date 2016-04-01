@@ -26,7 +26,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [傳統部署模型](#classic) 本文稍後所述。
 
-## 先決條件
+## 必要條件
 
 >[AZURE.IMPORTANT] 第一次您在訂閱中使用 Azure 入口網站中，建立 Redis 快取入口網站註冊 `Microsoft.Cache` 該訂用帳戶的命名空間。 如果您嘗試使用 PowerShell 在訂用帳戶中建立第一個 Redis 快取，您必須先使用下列命令註冊該命名空間；否則 Cmdlet (例如 `New-AzureRmRedisCache` 和 `Get-AzureRmRedisCache`) 將會失敗。
 >
@@ -172,7 +172,7 @@
 
     New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
-若要指定 `RedisConfiuration` 參數的值，以索引鍵/值組的方式將值括在 `{}` 內，例如 `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`。 下列範例會建立標準 1 GB 快取，具有 `allkeys-random` maxmemory 原則，且 keyspace 通知設為 `KEA`。 如需詳細資訊，請參閱 [Keyspace 通知 (進階設定)](cache-configure.md#keyspace-notifications-advanced-settings) 和 [maxmemory-policy 和 maxmemory-reserved](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)。
+若要指定 `RedisConfiuration` 參數的值，以索引鍵/值組的方式將值括在 `{}` 內，例如 `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`。 下列範例會建立標準 1 GB 快取，具有 `allkeys-random` maxmemory 原則，且 keyspace 通知設為 `KEA`。 如需詳細資訊，請參閱 [Keyspace 通知 （進階設定）](cache-configure.md#keyspace-notifications-advanced-settings) 和 [maxmemory-policy 和 maxmemory-reserved](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)。
 
     New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
 
@@ -562,9 +562,10 @@ Azure Redis 快取執行個體都會更新使用 [組 AzureRmRedisCache](https:/
 若要深入了解如何將 Windows PowerShell 與 Azure 搭配使用，請參閱下列資源：
 
 - [MSDN 上的 Azure Redis 快取 Cmdlet 文件](https://msdn.microsoft.com/library/azure/mt634513.aspx)
-- [Azure 資源管理員 Cmdlet](http://go.microsoft.com/fwlink/?LinkID=394765): 了解如何使用 AzureResourceManager 模組中的 cmdlet。
-- [使用資源群組來管理您的 Azure 資源](../azure-portal/resource-group-portal.md): 了解如何建立和管理 Azure 入口網站中的資源群組。
-- [Azure 部落格](http://blogs.msdn.com/windowsazure): 了解在 Azure 中的新功能。
-- [Windows PowerShell 部落格](http://blogs.msdn.com/powershell): 了解 Windows PowerShell 中的新功能。
+- [Azure 資源管理員 Cmdlet](http://go.microsoft.com/fwlink/?LinkID=394765)︰ 了解如何使用 AzureResourceManager 模組中的 cmdlet。
+- [使用資源群組來管理您的 Azure 資源](../azure-portal/resource-group-portal.md)︰ 了解如何建立和管理 Azure 入口網站中的資源群組。
+- [Azure 部落格](http://blogs.msdn.com/windowsazure)︰ 了解在 Azure 中的新功能。
+- [Windows PowerShell 部落格](http://blogs.msdn.com/powershell)︰ 了解 Windows PowerShell 中的新功能。
 - ["Hey, Scripting Guy!"部落格](http://blogs.technet.com/b/heyscriptingguy/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
+
 

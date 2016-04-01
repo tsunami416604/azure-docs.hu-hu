@@ -10,7 +10,7 @@
 
 4. 按一下 [ **completeall** API 資料表中。
 
-5. 按一下 [ **指令碼** ] 索引標籤上，使用下列程式碼，取代現有的程式碼，然後按一下 [ **儲存**。    此程式碼會使用 [mssql 物件] 來存取 **todoitem** 資料表，直接以設定 `complete` 旗標上的所有項目。 因為 **exports.post** 函式時，用戶端傳送 POST 要求來執行作業。 系統會以整數值將變更的列數傳回給用戶端。
+5. 按一下 [ **指令碼** ] 索引標籤上，使用下列程式碼，取代現有的程式碼，然後按一下 [ **儲存**。    此程式碼使用 [mssql object] 存取 **todoitem** 資料表，直接以設定 `complete` 旗標上的所有項目。 因為 **exports.post** 函式時，用戶端傳送 POST 要求來執行作業。 系統會以整數值將變更的列數傳回給用戶端。
 
 
         exports.post = function(request, response) {
@@ -34,4 +34,5 @@
 
 <!-- URLs. -->
 [mssql object]: http://msdn.microsoft.com/library/windowsazure/jj554212.aspx
+
 

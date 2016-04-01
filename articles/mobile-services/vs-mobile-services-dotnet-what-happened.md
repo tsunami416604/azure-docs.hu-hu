@@ -48,3 +48,4 @@ Azure 行動服務 NuGet 封裝加入至專案。 因此，下列 .NET 參考已
 
 [深入了解行動服務](http://azure.microsoft.com/documentation/services/mobile-services/)
 
+

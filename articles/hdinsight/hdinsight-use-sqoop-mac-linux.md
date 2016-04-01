@@ -31,22 +31,22 @@
 
 [Sqoop][sqoop-user-guide-1.4.4] 是專門在 Hadoop 叢集和關聯式資料庫之間傳送資料的工具。 此工具可讓您從 SQL Server、MySQL 或 Oracle 等關聯式資料庫管理系統 (RDBMS)，將資料匯入 Hadoop 分散式檔案系統 (HDFS)，使用 MapReduce 或 Hive 轉換 Hadoop 中的資料，然後將資料匯回 RDBMS。 在本教學課程中，您將使用 SQL Server Database 做為關聯式資料庫。
 
-如需 HDInsight 叢集支援的 Sqoop 版本，請參閱 [的 HDInsight 所提供叢集版本的新功能?][hdinsight-versions]。
+如需 HDInsight 叢集支援的 Sqoop 版本，請參閱 [的 HDInsight 所提供叢集版本的新功能？][hdinsight-versions]。
 
 
-##先決條件
+##必要條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
-- **工作站**: 具有 SSH 用戶端的電腦。
+- **工作站**︰ 具有 SSH 用戶端的電腦。
 
-- **Azure CLI**: 如需詳細資訊，請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md)
+- **Azure CLI**︰ 如需詳細資訊，請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md)
 
-- **以 Linux 為基礎的 HDInsight 叢集**: 如需叢集佈建的指示，請參閱 [開始使用 HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md) 或 [佈建 HDInsight 叢集][hdinsight-provision]。
+- **以 Linux 為基礎的 HDInsight 叢集**︰ 如需叢集佈建的指示，請參閱 [開始使用 HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md) 或 [佈建 HDInsight 叢集][hdinsight-provision]。
 
-- **Azure SQL database**: 本文件說明如何建立 SQL 資料庫範例。 如需有關 SQL 資料庫的詳細資訊，請參閱 [開始使用 Azure SQL database][sqldatabase-get-started]。
+- **Azure SQL database**︰ 本文件說明如何建立 SQL 資料庫範例。 如需有關 SQL 資料庫的詳細資訊，請參閱 [開始使用 Azure SQL database][sqldatabase-get-started]。
 
-* **SQL Server**: 這份文件中的步驟也可使用，做一些修改，SQL Server，不過，HDInsight 叢集和 SQL Server 都必須是相同的 Azure 虛擬網路上。 若要使用這份文件搭配 SQL Server 的特定需求的詳細資訊，請參閱 [使用 SQL Server](#using-sql-server) 一節。
+* **SQL Server**︰ 這份文件中的步驟也可使用，做一些修改，SQL Server，不過，HDInsight 叢集和 SQL Server 都必須是相同的 Azure 虛擬網路上。 若要使用這份文件搭配 SQL Server 的特定需求的詳細資訊，請參閱 [使用 SQL Server](#using-sql-server) 一節。
 
 ##了解案例
 
@@ -83,15 +83,15 @@ HDInsight 叢集附有一些範例資料。 您將使用名為的 Hive 資料表
         data:    Server Name i1qwc540ts
         info:    sql server create command OK
 
-    > [AZURE.IMPORTANT] 請注意此命令傳回的伺服器名稱。 這是所建立的 SQL Database 伺服器的簡短名稱。 完整的網域名稱 (FQDN) 是 **& lt; 簡短名稱 (& s) gt;。.database.windows.net**。
+    > [AZURE.IMPORTANT] 請注意此命令傳回的伺服器名稱。 這是所建立的 SQL Database 伺服器的簡短名稱。 完整的網域名稱 (FQDN) 是 **& lt; 簡短名稱 （& s) gt;。.database.windows.net**。
 
-2. 使用下列命令來建立名為 **sqooptest** SQL 資料庫伺服器上:
+2. 使用下列命令來建立名為 **sqooptest** SQL 資料庫伺服器上 ︰
 
         sql db create [options] <serverName> sqooptest <adminLogin> <adminPassword>
 
     完成時會傳回 [確定] 訊息。
 
-    > [AZURE.NOTE] 如果您收到錯誤訊息指出您沒有存取權，您可能需要將用戶端工作站的 IP 位址加入至 SQL Database 防火牆，使用下列命令:
+    > [AZURE.NOTE] 如果您收到錯誤訊息指出您沒有存取權，您可能需要將用戶端工作站的 IP 位址加入至 SQL Database 防火牆，使用下列命令 ︰
     >
     > `sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
 
@@ -103,9 +103,9 @@ HDInsight 叢集附有一些範例資料。 您將使用名為的 Hive 資料表
 
     如需有關使用 SSH 連線至 HDInsight 的詳細資訊，請參閱下列文件：
 
-    * **Linux、 Unix 或 OS X 用戶端**: 請參閱 [從 Linux、 OS X 或 Unix 連接至以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)
+    * **Linux、 Unix 或 OS X 用戶端**︰ 請參閱 [從 Linux、 OS X 或 Unix 連接至以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)
 
-    * **Windows 用戶端**: 請參閱 [從 Windows 連接至以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)
+    * **Windows 用戶端**︰ 請參閱 [從 Windows 連接至以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)
 
 3. 使用下列命令來安裝 FreeTDS：
 
@@ -141,7 +141,7 @@ HDInsight 叢集附有一些範例資料。 您將使用名為的 Hive 資料表
         CREATE CLUSTERED INDEX mobiledata_clustered_index on mobiledata(clientid)
         GO
 
-    輸入 `GO` 陳述式後，將評估先前的陳述式。 首先， **mobiledata** 建立資料表時，則叢集的索引加入至它 (SQL Database 所需)。
+    輸入 `GO` 陳述式後，將評估先前的陳述式。 首先， **mobiledata** 建立資料表時，則叢集的索引加入至它 （SQL Database 所需）。
 
     使用下列命令來確認已建立資料表：
 
@@ -167,7 +167,7 @@ HDInsight 叢集附有一些範例資料。 您將使用名為的 Hive 資料表
 
     這應該會傳回一份資料庫清單，其中 **sqooptest** 您稍早建立的資料庫。
 
-4. 使用下列命令，將資料從匯出 **hivesampletable** 至 **mobiledata** 資料表:
+4. 使用下列命令，將資料從匯出 **hivesampletable** 至 **mobiledata** 資料表 ︰
 
         sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
 
@@ -177,7 +177,7 @@ HDInsight 叢集附有一些範例資料。 您將使用名為的 Hive 資料表
 
         TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
 
-    連線之後，請使用下列陳述式來確認資料已匯出到 **mobiledata** 資料表:
+    連線之後，請使用下列陳述式來確認資料已匯出到 **mobiledata** 資料表 ︰
 
         SELECT * FROM mobiledata
         GO
@@ -186,7 +186,7 @@ HDInsight 叢集附有一些範例資料。 您將使用名為的 Hive 資料表
 
 ##Sqoop import
 
-1. 使用以下命令匯入 **mobiledata** 至 SQL 資料庫中資料表 **wasb: / 教學課程//tutorials/usesqoop/importeddata** HDInsight 上的目錄:
+1. 使用以下命令匯入 **mobiledata** 至 SQL 資料庫中資料表 **wasb: / 教學課程//tutorials/usesqoop/importeddata** HDInsight 上的目錄 ︰
 
         sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
 
@@ -239,9 +239,9 @@ HDInsight 叢集附有一些範例資料。 您將使用名為的 Hive 資料表
 
 現在，您已了解如何使用 Sqoop。 若要深入了解，請參閱：
 
-- [搭配 HDInsight 使用 Oozie][hdinsight-use-oozie]: 在 Oozie 工作流程中的使用 Sqoop 動作。
-- [分析航班延誤資料使用 HDInsight][hdinsight-analyze-flight-data]: 使用 Hive 分析航班誤點資料，，然後使用 Sqoop 將資料匯出至 Azure SQL database。
-- [將資料上傳至 HDInsight][hdinsight-upload-data]: 尋找可將資料上傳至 HDInsight/Azure Blob 儲存體的其他方法。
+- [搭配 HDInsight 使用 Oozie][hdinsight-use-oozie]︰ 在 Oozie 工作流程中的使用 Sqoop 動作。
+- [分析航班延誤資料使用 HDInsight][hdinsight-analyze-flight-data]︰ 使用 Hive 分析航班誤點資料，，然後使用 Sqoop 將資料匯出至 Azure SQL database。
+- [將資料上傳至 HDInsight][hdinsight-upload-data]︰ 尋找可將資料上傳至 HDInsight/Azure Blob 儲存體的其他方法。
 
 
 
@@ -262,4 +262,5 @@ HDInsight 叢集附有一些範例資料。 您將使用名為的 Hive 資料表
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
+
 

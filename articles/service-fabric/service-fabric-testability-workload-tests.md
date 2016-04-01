@@ -24,10 +24,10 @@ Testability 隨附的案例可讓開發人員在處理個別錯誤時不必擔�
 這項測試顯示的案例，與商務工作負載交錯 [非失誤性和失誤性失敗](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)。 為了獲得最佳結果，應該在服務作業或計算過程中引發錯誤。
 
 我們來逐一解說某個服務範例，此範例公開四個工作負載 A、B、C 和 D。每個均對應至一組工作流程，且可能是計算、儲存體或混合。 為了簡單起見，我們會在範例中擷取出工作負載。 會執行在此範例中的不同錯誤。
-  + RestartNode: 模擬機器重新啟動的失誤性錯誤
-  + RestartDeployedCodePackage: 模擬服務主機處理序當機
-  + RemoveReplica: 模擬複本移除的非失誤性錯誤
-  + MovePrimary: 非失誤性錯誤，模擬 Service Fabric 負載平衡器所觸發的複本移動
+  + RestartNode ︰ 模擬機器重新啟動的失誤性錯誤
+  + RestartDeployedCodePackage ︰ 模擬服務主機處理序當機
+  + RemoveReplica ︰ 模擬複本移除的非失誤性錯誤
+  + MovePrimary ︰ 非失誤性錯誤，模擬 Service Fabric 負載平衡器所觸發的複本移動
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
@@ -156,4 +156,5 @@ class Test
 }
 ```
  
+
 

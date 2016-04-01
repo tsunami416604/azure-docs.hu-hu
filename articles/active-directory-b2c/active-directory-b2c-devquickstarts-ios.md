@@ -1,10 +1,10 @@
 <properties
-    pageTitle ="Azure AD B2C 預覽: 從 iOS 應用程式呼叫 Web API |Microsoft Azure 「
-    描述 = 「 本文將示範如何建立可呼叫使用 OAuth 2.0 持有人權杖 node.js web API 的 iOS 「 待辦事項清單 」 應用程式。 這兩個 iOS 應用程式與 web api 使用管理使用者身分識別與驗證使用者的 Azure AD B2C。 」
-    服務 = 「 使用中-目錄-b2c 」
-    documentationCenter ="ios 」
-    作者 ="brandwe"
-    管理員 ="mbaldwin"
+    pageTitle="Azure AD B2C 預覽 ︰ 從 iOS 應用程式呼叫 Web API |Microsoft Azure"
+    description="本文將說明如何建立 iOS "To-Do List" app that calls a node.js web API using OAuth 2.0 bearer tokens. Both the iOS app and web api use Azure AD B2C to manage user identities and authenticate users."
+    services="active-directory-b2c"
+    documentationCenter="ios"
+    authors="brandwe"
+    manager="mbaldwin"
     editor=""/>
 
 <tags
@@ -71,13 +71,13 @@
 ## 4.下載程式碼
 
 本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS)。  當您建置範例，您可以 
-[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/skeleton.zip) 或再製基本架構:
+[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS.git
 ```
 
-> [AZURE.NOTE] **下載基本架構，才能完成本教學課程。**由於在 iOS 上，實作完整的應用程式的複雜度 **基本架構** 具有 UX 當您完成下列教學課程將執行的程式碼。 如此將能節省開發人員的時間。 UX 程式碼與加入 B2C 至 iOS 應用程式的主題無關。
+> [AZURE.NOTE] **下載基本架構，才能完成本教學課程。** 由於在 iOS 上，實作完整的應用程式的複雜度 **基本架構** 具有 UX 當您完成下列教學課程將執行的程式碼。 如此將能節省開發人員的時間。 UX 程式碼與加入 B2C 至 iOS 應用程式的主題無關。
 
 完成應用程式也是 [成為.zip](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip) 或
 `complete` 相同的儲存機制分支。
@@ -173,7 +173,7 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 
 您也會看到還有另外兩個標頭檔需要定義，其中將保存我們的「工作項目」和「原則資料」。 讓我們馬上建立它們：
 
-建立檔案，稱為 `samplesTaskItem.h` 為下列程式碼:
+建立檔案，稱為 `samplesTaskItem.h` 為下列程式碼 ︰
 
 ```
 #import <Foundation/Foundation.h>
@@ -206,7 +206,7 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 
 既然我們已經有了標頭檔，我們需要撰寫一些程式碼，以儲存我們將用於範例的資料。
 
-建立檔案，稱為 `samplesPolicyData.m` 為下列程式碼:
+建立檔案，稱為 `samplesPolicyData.m` 為下列程式碼 ︰
 
 ```
 #import <Foundation/Foundation.h>
@@ -633,7 +633,7 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
 請注意每位使用者的工作如何儲存於 API，因為 API 會從它收到的存取權杖中擷取使用者的身分識別。
 
 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip),，
-或者，您可以從 GitHub 複製它:
+或者，您可以從 GitHub 複製它 ︰
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS```
 
@@ -644,4 +644,5 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
 [從 node.js Web 應用程式呼叫 node.js Web API >>]()
 
 [自訂 B2C 應用程式的 UX >>]()
+
 

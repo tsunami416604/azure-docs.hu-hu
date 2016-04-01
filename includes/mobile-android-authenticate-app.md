@@ -11,7 +11,7 @@
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
 
-2. 將下列方法加入 **ToDoActivity** 類別: 
+2. 將下列方法加入 **ToDoActivity** 類別 ︰ 
     
         private void authenticate() {
             // Login using the Google provider.
@@ -36,7 +36,7 @@
 
     這會建立新的方法來處理驗證程序。 使用者透過 Google 登入來驗證。 將出現對話方塊來顯示已驗證的使用者的識別碼。 必須通過驗證才能繼續。
 
-    > [AZURE.NOTE] 如果您使用 Google 以外的識別提供者，變更值傳遞至 **登入** 上述方法有下列幾種: _MicrosoftAccount_, ，_Facebook_, ，_Twitter_, ，或 _windowsazureactivedirectory_。
+    > [AZURE.NOTE] 如果您使用 Google 以外的識別提供者，變更值傳遞至 **登入** 上述方法有下列幾種 ︰ _MicrosoftAccount_, ，_Facebook_, ，_Twitter_, ，或 _windowsazureactivedirectory_。
 
 3. 在 **onCreate** 方法，會具現化的程式碼後面加入下列程式碼行 `MobileServiceClient` 物件。
 
@@ -44,7 +44,7 @@
 
     此呼叫會啟動驗證程序。
 
-4. 移動之後的其餘程式碼 `authenticate();` 中 **onCreate** 至新 **createTable** 方法，如下:
+4. 移動之後的其餘程式碼 `authenticate();` 中 **onCreate** 至新 **createTable** 方法，如下 ︰
 
         private void createTable() {
     
@@ -65,3 +65,4 @@
 9. 從 **執行** ] 功能表上，然後按一下 [ **執行應用程式** 來啟動應用程式，並以您選擇的身分識別提供者登入。 
 
     成功登入後，應用程式應會正確無誤地執行，而且您應能夠查詢後端服務並更新資料。
+

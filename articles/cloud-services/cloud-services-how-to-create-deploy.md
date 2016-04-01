@@ -25,7 +25,7 @@
 - [Azure 傳統入口網站](cloud-services-how-to-create-deploy.md)
 - [Azure 入口網站](cloud-services-how-to-create-deploy-portal.md)
 
-Azure 傳統入口網站提供兩種方法讓您建立和部署雲端服務: **快速建立** 和 **自訂建立**。
+Azure 傳統入口網站提供兩種方法讓您建立和部署雲端服務 ︰ **快速建立** 和 **自訂建立**。
 
 本主題說明如何使用 「 快速建立 」 方法建立新的雲端服務，然後使用 **上載** 上傳並部署在 Azure 中的雲端服務封裝。 當您使用這個方法時，Azure 傳統入口網站會在過程中提供便利的連結，讓您完成所有要求。 如果您準備好部署您的雲端服務，當您在建立時，您可以同時在相同的時候使用 **自訂建立**。
 
@@ -34,7 +34,7 @@ Azure 傳統入口網站提供兩種方法讓您建立和部署雲端服務: **�
 ## 概念
 需要三個元件才能部署應用程式成為 Azure 中的雲端服務：
 
-- **服務定義**  
+- **Service Definition**  
   雲端服務定義檔 (.csdef) 定義服務模型，包括角色數目。
 
 - **服務組態**  
@@ -54,7 +54,7 @@ Azure 傳統入口網站提供兩種方法讓您建立和部署雲端服務: **�
 
 - 如果您想要設定遠端桌面連線至角色執行個體， [設定角色](cloud-services-role-enable-remote-desktop.md) 遠端桌面。
 
-- 如果您要設定雲端服務的詳細資訊監視，請啟用雲端服務的 Azure 診斷。 *最小監視* (預設監視層級) 使用從角色執行個體 (虛擬機器) 的主機作業系統收集效能計數器。 「詳細資訊監視」會按照角色執行個體內的效能資料收集其他度量，以便進一步分析應用程式處理期間發生的問題。 若要了解如何啟用 Azure 診斷，請參閱 [啟用 Azure 診斷](cloud-services-dotnet-diagnostics.md)。
+- 如果您要設定雲端服務的詳細資訊監視，請啟用雲端服務的 Azure 診斷。 *最小監視* （預設監視層級） 使用從角色執行個體 （虛擬機器） 的主機作業系統收集效能計數器。 「詳細資訊監視」會按照角色執行個體內的效能資料收集其他度量，以便進一步分析應用程式處理期間發生的問題。 若要了解如何啟用 Azure 診斷，請參閱 [啟用 Azure 診斷](cloud-services-dotnet-diagnostics.md)。
 
 若要使用 web 角色或背景工作角色的部署建立雲端服務，您必須 [建立服務封裝](cloud-services-model-and-package.md#servicepackagecspkg)。
 
@@ -73,7 +73,7 @@ Azure 傳統入口網站提供兩種方法讓您建立和部署雲端服務: **�
 
     ![CloudServices_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png)
 
-2. 在 **URL**, ，輸入要存取生產部署中的雲端服務在公用 URI 中使用的子網域名稱。 對於實際執行部署的 URL 格式是: http://*myURL*。 cloudapp.net。
+2. 在 **URL**, ，輸入要存取生產部署中的雲端服務在公用 URI 中使用的子網域名稱。 對於實際執行部署的 URL 格式是 ︰ http://*myURL*。 cloudapp.net。
 
 3. 在 **區域或同質群組**, ，選取地理區域或同質群組來部署雲端服務。 如果您要將雲端服務部署到區域中其他 Azure 服務所在的同一個位置，請選取同質群組。
 
@@ -97,11 +97,11 @@ Azure 傳統入口網站提供兩種方法讓您建立和部署雲端服務: **�
 
 2. 按一下 [ **上傳憑證** 或 **上載**。
 
-3. 在 **檔案**, ，使用 **瀏覽** 選取憑證 (.pfx 檔案)。
+3. 在 **檔案**, ，使用 **瀏覽** 選取憑證 （.pfx 檔案）。
 
 4. 在 **密碼**, ，輸入憑證的私密金鑰。
 
-5. 按一下 [ **確定** (勾選記號)。
+5. 按一下 [ **確定** （勾選記號）。
 
     ![CloudServices_AddaCertificate](./media/cloud-services-how-to-create-deploy/CloudServices_AddaCertificate.png)
 
@@ -125,7 +125,7 @@ Azure 傳統入口網站提供兩種方法讓您建立和部署雲端服務: **�
 
     如果每個角色至少有兩個執行個體，Azure 只能保證在維護和服務更新期間存取雲端服務的成功率為 99.95%。 如有需要您可以新增其他角色執行個體上 **延展** 部署雲端服務之後，頁面上。 如需詳細資訊，請參閱 [服務等級協定](http://azure.microsoft.com/support/legal/sla/)。
 
-6. 按一下 [ **確定** (勾選記號) 開始雲端服務部署。
+6. 按一下 [ **確定** （勾選記號） 開始雲端服務部署。
 
     ![CloudServices_UploadaPackage](./media/cloud-services-how-to-create-deploy/CloudServices_UploadaPackage.png)
 
@@ -152,3 +152,4 @@ Azure 傳統入口網站提供兩種方法讓您建立和部署雲端服務: **�
 * 設定 [自訂網域名稱](cloud-services-custom-domain-name.md)。
 * [管理您的雲端服務](cloud-services-how-to-manage.md)。
 * 設定 [ssl 憑證](cloud-services-configure-ssl-certificate.md)。
+

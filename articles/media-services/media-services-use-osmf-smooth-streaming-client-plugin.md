@@ -412,3 +412,4 @@ Smooth Streaming for OSMF 動態外掛程式適用於 [Strobe Media Playback (SM
 
 [OSMF 的 Microsoft 彈性資料流外掛程式更新 (英文)](http://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
 
+

@@ -23,7 +23,7 @@
 
 > [AZURE.IMPORTANT]  此文件索引頁面為已部署至目前的 Azure 傳統入口網站解決方案的客戶。
 >
-> Microsoft 建議使用 **Azure 入口網站** 新的 HDInsight 叢集:
+> Microsoft 建議使用 **Azure 入口網站** 新的 HDInsight 叢集 ︰
 >
 > * [移至 HDInsight 入口網站文件](/documentation/services/hdinsight/)
 > * [移至 Azure 入口網站](https://portal.azure.com/)
@@ -132,4 +132,5 @@
 * [存取應用程式記錄檔](hdinsight-hadoop-access-yarn-app-logs.md)
 * [解譯錯誤訊息](hdinsight-debug-jobs.md)
 * [在論壇上取得協助](https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight)
+
 

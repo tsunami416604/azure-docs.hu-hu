@@ -83,7 +83,7 @@ Visual Studio Application Insights 會監視應用程式的可用性、效能和
 
 如果您預期有更多資料，請在幾秒之後按一下 [重新整理]。
 
-從 [概觀] 分頁中，按一下 [ **流量分析** 可查看使用者、 工作階段和頁面檢視的圖表:
+從 [概觀] 分頁中，按一下 [ **流量分析** 可查看使用者、 工作階段和頁面檢視的圖表 ︰
 
 ![](./media/app-insights-sharepoint/06-usage.png)
 
@@ -110,3 +110,4 @@ Visual Studio Application Insights 會監視應用程式的可用性、效能和
 
 
  
+

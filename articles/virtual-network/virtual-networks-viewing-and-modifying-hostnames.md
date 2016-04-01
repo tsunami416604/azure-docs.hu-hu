@@ -21,7 +21,7 @@
 
 ## 檢視主機名稱
 
-您也可以使用各種工具的雲端服務中檢視虛擬機器和角色執行個體的主機名稱: Azure 入口網站、 服務組態檔中，遠端桌面和 [Azure 服務管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx)。
+您也可以使用各種工具的雲端服務中檢視虛擬機器和角色執行個體的主機名稱 ︰ Azure 入口網站、 服務組態檔中，遠端桌面和 [Azure 服務管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx)。
 
 ### Azure 入口網站
 
@@ -47,11 +47,11 @@
 
 從 REST 用戶端，請遵循下列指示：
 
-1. 確定您有連線到 Azure 入口網站的用戶端憑證 若要取得用戶端憑證，請依照下列中的步驟 [How to: 下載和匯入發佈設定及訂閱資訊](https://msdn.microsoft.com/library/dn385850.aspx)。 
+1. 確定您有連線到 Azure 入口網站的用戶端憑證 若要取得用戶端憑證，請依照下列中的步驟 [How to ︰ 下載和匯入發佈設定及訂閱資訊](https://msdn.microsoft.com/library/dn385850.aspx)。 
 
 1. 設定名稱為 x-ms-version，值為 2013-11-01 的標頭項目。
 
-1. 傳送要求以下列格式: https://management.core.windows.net/ \<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
+1. 傳送要求以下列格式 ︰ https://management.core.windows.net/ \<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
 
 1. 尋找 **HostName** 每個項目 **RoleInstance** 項目。
 
@@ -70,4 +70,5 @@
 [Azure 虛擬網路組態結構描述](http://go.microsoft.com/fwlink/?LinkId=248093)
 
 [使用網路組態檔指定 DNS 設定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
+
 

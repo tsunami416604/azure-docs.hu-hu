@@ -118,3 +118,4 @@ Azure 命令列介面 (Azure CLI) 有兩種部署模式- **AzureServiceManagemen
 
 一組完整的入門範本，請參閱 [Azure 資源管理員快速入門範本](http://azure.microsoft.com/documentation/templates/)。
 
+

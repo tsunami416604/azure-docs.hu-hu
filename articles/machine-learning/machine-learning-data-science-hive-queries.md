@@ -16,7 +16,7 @@
     ms.date="10/18/2015" 
     ms.author="hangzh;bradsev" /> 
 
-#<a name="heading"></a> 將 Hive 查詢提交至 HDInsight Hadoop 叢集 Cortana 分析程序中
+#<a name="heading"></a>在 Cortana 分析程序中將 Hive 查詢提交至 HDInsight Hadoop 叢集
 
 本文件說明在 Azure 中，將 Hive 查詢提交至 HDInsight 服務所管理的 Hadoop 叢集的各種方式。 您可以使用下列方法來提交 Hive 查詢： 
 
@@ -46,7 +46,7 @@
 2. [利用 Hive 編輯器提交 Hive 查詢](#hive-editor)
 3. [利用 Azure PowerShell 命令提交 Hive 查詢](#ps)
  
-###<a name="headnode"></a> 1.透過 Hadoop 叢集前端節點中的 Hadoop 命令列提交 Hive 查詢
+###<a name="headnode"></a> 1. 透過 Hadoop 叢集前端節點中的 Hadoop 命令列提交 Hive 查詢
 
 如果 Hive 查詢相當複雜，在 Hadoop 叢集的前端節點中直接提交 Hive 查詢，通常會導致整備速度比使用 Hive 編輯器或 Azure PowerShell 指令碼進行提交還快。 
 
@@ -112,11 +112,11 @@
 
 ![建立工作區][14]
 
-###<a name="hive-editor"></a> 2.利用 Hive 編輯器提交 Hive 查詢
+###<a name="hive-editor"></a> 2. 利用 Hive 編輯器提交 Hive 查詢
 
 使用者也可以在 Web 瀏覽器 `https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor` 中輸入 URL 來使用查詢主控台 (Hive 編輯器) (系統將要求您輸入 Hadoop 叢集認證以登入)，
 
-###<a name="ps"></a> 3.利用 Azure PowerShell 命令提交 Hive 查詢
+###<a name="ps"></a> 3. 利用 Azure PowerShell 命令提交 Hive 查詢
 
 使用者也可以使用 PowerShell 提交 Hive 查詢。 如需指示，請參閱 [使用 PowerShell 提交 Hive 工作](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)。 
 
@@ -201,7 +201,7 @@
         order by frequency desc;
     
 
-####<a name="hive-riskfeature"></a> 二進位分類中類別變數的風險
+####<a name="hive-riskfeature"></a> 二元分類中類別變數的風險
 
 在二進位分類中，有時我們需要使用數值風險來取代非數值層級 (因為某些模型可能只會採用數值功能)，將非數值類別變數轉換成數值功能。 本節將示範一些計算類別變數風險值 (記錄機率) 的泛型 Hive 查詢。 
 
@@ -289,7 +289,7 @@ Hive 內嵌的 Udf 可以在中找到的完整清單 [UDF 語言手動](https://
 
 Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處理的資料。 本節將討論一些使用者可以微調的參數，如此便可提升 Hive 查詢的效能。 使用者需要在處理資料的查詢之前新增參數微調查詢。 
 
-1. Java 堆積空間: 對於涉及聯結大型資料集，或處理長記錄的查詢，常見的錯誤是 **堆積空間不足**。 這可以藉由將參數 `mapreduce.map.java.opts` 和 `mapreduce.task.io.sort.mb` 設定為所需的值來微調。 下列是一個範例：
+1. Java 堆積空間 ︰ 對於涉及聯結大型資料集，或處理長記錄的查詢，常見的錯誤是 **堆積空間不足**。 這可以藉由將參數 `mapreduce.map.java.opts` 和 `mapreduce.task.io.sort.mb` 設定為所需的值來微調。 下列是一個範例：
 
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -329,3 +329,4 @@ Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處
 
 
  
+

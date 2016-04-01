@@ -63,3 +63,4 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 若要在 Azure Vm 中執行 SQL Server 相關之其他主題，請參閱 [SQL Server 的 Azure 虛擬機器總覽](virtual-machines-sql-server-infrastructure-services.md)。
 
 
+

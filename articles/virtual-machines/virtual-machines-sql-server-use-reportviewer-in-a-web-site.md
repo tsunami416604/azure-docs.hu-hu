@@ -33,7 +33,7 @@
 
 - **發行** ASP.NET Web 應用程式至 Azure
 
-## 先決條件
+## 必要條件
 
 檢閱中的 < 一般建議和最佳作法 > 一節 [Azure 虛擬機器中 SQL Server Business Intelligence](virtual-machines-sql-server-business-intelligence.md)。
 
@@ -49,9 +49,9 @@
 
 在遠端處理模式中，ReportViewer 控制項會使用下列組件：
 
-- **Microsoft.ReportViewer.WebForms.dll**: 包含 ReportViewer 程式碼，您必須在網頁中使用 ReportViewer。 將 ReportViewer 控制項拖曳至專案的 ASP.NET 頁面中後，此組件的參考便會加入專案之中。
+- **Microsoft.ReportViewer.WebForms.dll**︰ 包含 ReportViewer 程式碼，您必須在網頁中使用 ReportViewer。 將 ReportViewer 控制項拖曳至專案的 ASP.NET 頁面中後，此組件的參考便會加入專案之中。
 
-- **Microsoft.ReportViewer.Common.dll**: 包含 ReportViewer 控制項在執行階段使用的類別。 此組件不會自動加入至您的專案。
+- **Microsoft.ReportViewer.Common.dll**︰ 包含 ReportViewer 控制項在執行階段使用的類別。 此組件不會自動加入至您的專案。
 
 ### 加入 Microsoft.ReportViewer.Common 的參考
 
@@ -83,9 +83,9 @@
 
 1. 依照上述的指示，下載並安裝 Microsoft Report Viewer 2012 Runtime 可轉散發套件。
 
-1. 在專案中建立 <language> 資料夾，並複製該資料夾中的相關聯資源組件檔案。 要複製的資源組件檔案為: **{1>microsoft.reportviewer.webforms.resources.dll** 和 **Microsoft.ReportViewer.Common.Resources.dll**。選取資源組件檔案，然後在 [屬性] 窗格中，設定 **複製到輸出目錄** 至 「**永遠複製**」。
+1. 建立 <language> 資料夾中複製與專案相關聯的資源組件檔案。 要複製的資源組件檔案為 ︰ **{1>microsoft.reportviewer.webforms.resources.dll** 和 **Microsoft.ReportViewer.Common.Resources.dll**。選取資源組件檔案，然後在 [屬性] 窗格中，設定 **複製到輸出目錄** 至 「**永遠複製**」。
 
-1. 設定 Web 專案的文化特性和 UI 文化特性。 如需如何設定 ASP.NET 網頁的文化特性和 UI 文化特性的詳細資訊，請參閱 [How to: 設定 ASP.NET Web 網頁全球化的文化特性和 UI 文化特性](http://go.microsoft.com/fwlink/?LinkId=237461)。
+1. 設定 Web 專案的文化特性和 UI 文化特性。 如需如何設定 ASP.NET 網頁的文化特性和 UI 文化特性的詳細資訊，請參閱 [How to ︰ 設定 ASP.NET Web 網頁全球化的文化特性和 UI 文化特性](http://go.microsoft.com/fwlink/?LinkId=237461)。
 
 ## 設定驗證和授權
 
@@ -93,7 +93,7 @@ ReportViewer 必須使用正確的認證對報表伺服器進行驗證，而且�
 
 ## 將 ASP.NET Web 應用程式發佈至 Azure
 
-在發行至 Azure 的 ASP.NET Web 應用程式上的指示，請參閱 [How to: 移轉並發行 Azure Web 應用程式從 Visual Studio](../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) 和 [開始使用 Web 應用程式和 ASP.NET](../app-service-web/web-sites-dotnet-get-started.md)。
+在發行至 Azure 的 ASP.NET Web 應用程式上的指示，請參閱 [How to ︰ 移轉並發行 Azure Web 應用程式從 Visual Studio](../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) 和 [開始使用 Web 應用程式和 ASP.NET](../app-service-web/web-sites-dotnet-get-started.md)。
 
 >[AZURE.IMPORTANT] 如果新增 Azure 部署專案或加入 Azure 雲端服務專案命令不會出現在 [方案總管] 中的捷徑功能表，您可能需要將專案目標 framework 變更為.NET Framework 4。
 >
@@ -108,4 +108,5 @@ ReportViewer 必須使用正確的認證對報表伺服器進行驗證，而且�
 [使用 PowerShell 建立具有原生模式報表伺服器的 Azure VM](virtual-machines-sql-server-create-native-mode-report-server-powershell.md)
 
 [Reporting Services 報告檢視器控制項和 Microsoft Azure 虛擬機器型報表伺服器](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
+
 

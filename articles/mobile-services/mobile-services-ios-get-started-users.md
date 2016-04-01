@@ -25,15 +25,15 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
-在本教學課程中，您將驗證新增至 [行動服務快速入門教學課程] 使用支援的身分識別提供者。
+在本教學課程中，您將驗證加入至 [Mobile Services Quick Start tutorial] 使用支援的身分識別提供者。
 
-我們建議您先完成 [行動服務快速入門教學課程]。 或者，下載快速入門的 iOS 專案從 [Azure classic portal] 按一下  **行動電話服務** > 您的行動服務 > 左上方定域機組登 > **iOS** > **建立新的 iOS 應用程式** > **下載並執行應用程式** > **OBJECTIVE-C** > **下載**。 請記得按一下 [ **Create TodoItem Table** 然後按 **下載**, ，如果您尚未建立資料表。
+我們建議您先完成 [Mobile Services Quick Start tutorial] 第一次。 或者，下載快速入門的 iOS 專案從 [Azure classic portal] 按一下  **行動電話服務** > 您的行動服務 > 左上方定域機組登 > **iOS** > **建立新的 iOS 應用程式** > **下載並執行應用程式** > **OBJECTIVE-C** > **下載**。 請記得按一下 [ **Create TodoItem Table** 然後按 **下載**, ，如果您尚未建立資料表。
 
 ##<a name="register"></a>註冊應用程式以進行驗證
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
-##<a name="permissions"></a>限制已驗證的使用者資料的權限
+##<a name="permissions"></a>限制已驗證使用者的資料權限
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
@@ -41,7 +41,7 @@
 
 [AZURE.INCLUDE [mobile-services-ios-authenticate-app](../../includes/mobile-services-ios-authenticate-app.md)]
 
-##<a name="store-authentication"></a>將驗證權杖儲存在應用程式
+##<a name="store-authentication"></a>將驗證權杖儲存在應用程式中
 
 [AZURE.INCLUDE [mobile-services-ios-authenticate-app-with-token](../../includes/mobile-services-ios-authenticate-app-with-token.md)]
 
@@ -88,4 +88,5 @@
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 
 [Azure classic portal]: https://manage.windowsazure.com/
+
 

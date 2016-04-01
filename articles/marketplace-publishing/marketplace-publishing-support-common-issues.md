@@ -37,7 +37,7 @@
   ![2_RequestRefund][2]
 
 5. 提供連絡資訊。
-6. 在 **是什麼問題?** 方塊中，輸入下列資訊:
+6. 在 **是什麼問題？** 方塊中，輸入下列資訊 ︰
 
     - 受影響客戶的訂用帳戶 ID
     - 客戶名稱
@@ -96,7 +96,7 @@
 4. 新增您想要新增或移除之共同管理員的電子郵件地址。
 5. 選取 **儲存**。
 
-## 後續步驟: 其他支援查詢
+## 後續步驟 ︰ 其他支援查詢
 
 針對下列的問題，請記錄在問題 [https://portal.azure.com](https://portal.azure.com):
 
@@ -119,4 +119,5 @@
 [6]: ./media/marketplace-publishing-support-common-issues/protectacct.png
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
+
 

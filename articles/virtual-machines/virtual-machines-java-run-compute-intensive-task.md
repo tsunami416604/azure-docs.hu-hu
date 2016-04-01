@@ -64,7 +64,7 @@ Azure 可讓您利用虛擬機器處理大量運算工作。 例如，虛擬機�
     2. 值 **雲端服務 DNS 名稱** 必須是唯一的 cloudapp.net。 必要時請修改此值，使 Azure 指出該值是唯一的。
     2. 指定區域、同質群組或虛擬網路。 基於本教學課程中，指定區域例如 **美國西部**。
     2. 如 **儲存體帳戶**, ，請選取 **使用自動產生的儲存體帳戶**。
-    3. 如 **可用性設定組**, ，請選取 **(無)**。
+    3. 如 **可用性設定組**, ，請選取 **（無）**。
     4. 按一下 [ **下一步**。
 5. 在最終的 [**虛擬機器組態**] 對話方塊中：
     1. 接受預設的端點項目。
@@ -78,7 +78,7 @@ Azure 可讓您利用虛擬機器處理大量運算工作。 例如，虛擬機�
 4. 按一下 [ **連接**。
 5. 視需要回應提示以連接虛擬機器。 當要求提供系統管理員名稱和密碼的提示出現時，請使用在建立虛擬機器時提供的值。
 
-請注意，Azure 服務匯流排功能，需要 Baltimore CyberTrust 根憑證做為您 JRE 的一部分安裝 **cacerts** 儲存。 這個憑證會自動包含在本教學課程所使用的 Java Runtime Environment (JRE) 中。 如果您沒有此憑證在您的 JRE **cacerts** 存放區，請參閱 [新增憑證至 Java CA 憑證存放區][add_ca_cert] 如需將它 (以及檢視您 cacerts 存放區中憑證的詳細資訊)。
+請注意，Azure 服務匯流排功能，需要 Baltimore CyberTrust 根憑證做為您 JRE 的一部分安裝 **cacerts** 儲存。 這個憑證會自動包含在本教學課程所使用的 Java Runtime Environment (JRE) 中。 如果您沒有此憑證在您的 JRE **cacerts** 存放區，請參閱 [新增憑證至 Java CA 憑證存放區][add_ca_cert] 如需將它 （以及檢視您 cacerts 存放區中憑證的詳細資訊）。
 
 ## 如何建立服務匯流排命名空間
 
@@ -126,7 +126,7 @@ Azure 可讓您利用虛擬機器處理大量運算工作。 例如，虛擬機�
 
 ## 如何建立執行大量運算工作的 Java 應用程式
 
-1. 在您開發電腦 (不一定要是您所建立的虛擬機器)，下載 [Azure SDK for Java](http://azure.microsoft.com/develop/java/)。
+1. 在您開發電腦 （不一定要是您所建立的虛擬機器），下載 [Azure SDK for Java](http://azure.microsoft.com/develop/java/)。
 2. 使用本節結尾的範例程式碼建立一個 Java 主控台應用程式。 在本教學課程中，我們將使用 **TSPSolver.java** 做為 Java 檔案名稱。 修改 **your\_service\_bus\_namespace**, ，**your\_service\_bus\_owner**, ，和 **your\_service\_bus\_key** 預留位置以使用服務匯流排 **命名空間**, ，**預設簽發者** 和 **預設金鑰** 分別值。
 3. 編碼完成之後，將應用程式匯出至可執行的 Java 存檔 (JAR)，並將所需的程式庫封裝至產生的 JAR 中。 在本教學課程中，我們將使用 **TSPSolver.jar** 做為產生的 JAR 名稱。
 
@@ -541,4 +541,5 @@ Azure 可讓您利用虛擬機器處理大量運算工作。 例如，虛擬機�
 [properties_pane]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_06_PropertiesPane.jpg
 [default_key]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../java-add-certificate-ca-store.md
+
 

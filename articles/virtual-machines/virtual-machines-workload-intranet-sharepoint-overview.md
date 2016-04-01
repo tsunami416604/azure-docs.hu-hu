@@ -37,11 +37,11 @@
 
 您可以在下列階段中部署這個設定：
 
-- [第 1 階段: 設定 Azure](virtual-machines-workload-intranet-sharepoint-phase1.md)。 建立儲存體帳戶、可用性設定組及跨單位虛擬網路。
-- [第 2 階段: 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md)。 建立和設定複本 Active Directory 網域服務 (AD DS) 網域控制站。
-- [第 3 階段: 設定 SQL Server 基礎結構](virtual-machines-workload-intranet-sharepoint-phase3.md)。 建立和設定 SQL Server 虛擬機器、準備將它們與 SharePoint 搭配使用，然後建立叢集。
-- [第 4 階段: 設定 SharePoint 伺服器](virtual-machines-workload-intranet-sharepoint-phase4.md)。 建立和設定四部 SharePoint 虛擬機器。
-- [第 5 階段: 建立可用性群組並新增 SharePoint 資料庫](virtual-machines-workload-intranet-sharepoint-phase5.md)。 準備資料庫並建立 SQL Server AlwaysOn 可用性群組。
+- [第 1 階段 ︰ 設定 Azure](virtual-machines-workload-intranet-sharepoint-phase1.md)。 建立儲存體帳戶、可用性設定組及跨單位虛擬網路。
+- [第 2 階段 ︰ 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md)。 建立和設定複本 Active Directory 網域服務 (AD DS) 網域控制站。
+- [第 3 階段 ︰ 設定 SQL Server 基礎結構](virtual-machines-workload-intranet-sharepoint-phase3.md)。 建立和設定 SQL Server 虛擬機器、準備將它們與 SharePoint 搭配使用，然後建立叢集。
+- [第 4 階段 ︰ 設定 SharePoint 伺服器](virtual-machines-workload-intranet-sharepoint-phase4.md)。 建立和設定四部 SharePoint 虛擬機器。
+- [第 5 階段 ︰ 建立可用性群組並新增 SharePoint 資料庫](virtual-machines-workload-intranet-sharepoint-phase5.md)。 準備資料庫並建立 SQL Server AlwaysOn 可用性群組。
 
 此部署的 SQL Server Alwayson 設計來搭配 [SharePoint 與 SQL Server AlwaysOn 的 sharepoint 資訊圖](http://go.microsoft.com/fwlink/?LinkId=394788) 並包含最新的建議。
 
@@ -62,5 +62,6 @@
 ## 後續步驟
 
 - 開始使用此工作負載設定 [第 1 階段](virtual-machines-workload-intranet-sharepoint-phase1.md)。
+
 
 

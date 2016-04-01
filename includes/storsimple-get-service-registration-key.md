@@ -21,3 +21,4 @@
 ![可用的視訊](./media/storsimple-get-service-registration-key/Video_icon.png) **可用的視訊**
 
 若要看影片，示範如何取得服務註冊金鑰，按一下 [ [這裡](http://azure.microsoft.com/documentation/videos/get-the-service-registration-key/)。
+

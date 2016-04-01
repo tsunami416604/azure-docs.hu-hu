@@ -70,7 +70,7 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 
 ![輸入函式執行中](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
- **引動過程詳細資料** 頁面會報告函式的進度 (寫入的實體數目) 時它正在執行，並讓您有機會將它中止。
+ **引動過程詳細資料** 頁面會報告函式的進度 （寫入的實體數目） 時它正在執行，並讓您有機會將它中止。
 
 ![輸入函式執行中](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
@@ -82,7 +82,7 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 
 若要讀取資料表，使用 **資料表** 屬性搭配 **IQueryable<T>** 參數型別 **T** 衍生自 **TableEntity** 或實作 **ITableEntity**。
 
-下列程式碼範例會讀取並記錄所有的資料列 **輸入** 資料表:
+下列程式碼範例會讀取並記錄所有的資料列 **輸入** 資料表 ︰
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -100,7 +100,7 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 
 沒有 **資料表** 屬性建構函式搭配兩個額外的參數可讓您指定的資料分割索引鍵和資料列索引鍵，當您想要繫結到單一資料表實體。
 
-下列程式碼範例會讀取的資料表列 **人** 根據資料分割索引鍵與列索引鍵值在佇列訊息中收到的實體:  
+下列程式碼範例會讀取的資料表列 **人** 根據資料分割索引鍵與列索引鍵值在佇列訊息中收到的實體 ︰  
 
         public static void ReadTableEntity(
             [QueueTrigger("inputqueue")] Person personInQueue,
@@ -153,4 +153,5 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 ## 後續步驟
 
 本文提供的程式碼範例示範如何處理使用 Azure 資料表的常見案例。 如需如何使用 Azure WebJobs 和 WebJobs SDK 的詳細資訊，請參閱 [Azure WebJobs 建議資源](http://go.microsoft.com/fwlink/?linkid=390226)。
+
 

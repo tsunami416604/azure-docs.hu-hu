@@ -20,7 +20,7 @@
 
 您在乎您的 Azure 訂用帳戶每個月花費多少錢嗎？ 如果您是 Azure 訂用帳戶的帳戶管理員，您可以使用「Azure 計費警示服務」來建立自訂計費警示，以協助您監視和管理您 Azure 帳戶的計費活動。
 
-這項服務是預覽服務，因此首先您必須做的就是註冊來使用它 - 請瀏覽 Azure 帳戶管理入口網站中的 <a href="https://account.windowsazure.com/PreviewFeatures">預覽功能頁面 </a> 來進行註冊。
+這項服務是預覽服務，因此您需要做的第一件事就是註冊，請瀏覽 Azure 帳戶管理入口網站中的<a href="https://account.windowsazure.com/PreviewFeatures">預覽功能頁面</a>來執行此動作。
 
 ## 設定警示閾值與電子郵件收件者
 
@@ -45,4 +45,5 @@ Azure 支援任何電子郵件地址，但不會驗證電子郵件地址是否�
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png
+
 

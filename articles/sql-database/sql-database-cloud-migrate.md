@@ -30,14 +30,14 @@
 
 ## 判斷您的資料庫是否相容
 有兩種主要的方法，可用來判斷您的來源資料庫是否相容。
-- 匯出資料層應用程式: 這個方法在 Management Studio 中使用精靈，來分析您的資料庫，並顯示資料庫的相容性問題，如果有的話，在主控台上。
-- SQLPackage: 這個方法會使用 SQLPackage.exe [sqlpackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) 命令列公用程式來分析您的資料庫及產生報告。 SQLPackage 隨附於 Visual Studio 和 SQL Server。
+- 匯出資料層應用程式 ︰ 這個方法在 Management Studio 中使用精靈，來分析您的資料庫，並顯示資料庫的相容性問題，如果有的話，在主控台上。
+- SQLPackage ︰ 這個方法會使用 SQLPackage.exe [sqlpackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) 命令列公用程式來分析您的資料庫及產生報告。 SQLPackage 隨附於 Visual Studio 和 SQL Server。
 
 > [AZURE.NOTE] 沒有將使用追蹤檔案做為其他來源的資訊來測試應用程式層級，以及在資料庫層級的相容性的第三個方法。 這是 [SQL Azure 移轉精靈](http://sqlazuremw.codeplex.com/), ，Codeplex 上的免費工具。 不過，此工具目前可能會發現相容性錯誤，對 Azure SQL Database V11 會構成問題，但是對 Azure SQL Database V12 不會構成問題。
 
 如果偵測到資料庫不相容，您必須先修正這些不相容，才能將資料庫移轉至 Azure SQL Database。 如需有關如何修正資料庫相容性問題的指引，請移至 [修正資料庫相容性問題](#fix-database-compatibility-issues)。
 
-> [AZURE.IMPORTANT] 這些選項不會攔截所有相容性問題之間的 SQL Server 資料庫的不同層級 (也就是層級 90、 100 和 110)。 如果您從較舊的資料庫 (等級 80、90、100 和 110) 進行移轉，您應先完成升級程序 (至少在開發環境中)，並在 SQL Server 2014 或更新版本完成一次，然後移轉到 Azure SQL Database。
+> [AZURE.IMPORTANT] 這些選項不會攔截所有相容性問題之間的 SQL Server 資料庫的不同層級 （也就是層級 90、 100 和 110）。 如果您從較舊的資料庫 (等級 80、90、100 和 110) 進行移轉，您應先完成升級程序 (至少在開發環境中)，並在 SQL Server 2014 或更新版本完成一次，然後移轉到 Azure SQL Database。
 
 ## 使用 sqlpackage.exe 判斷您的資料庫是否相容
 
@@ -46,13 +46,13 @@
 
     ' sqlpackage.exe /Action:Export /ssn: < 伺服器名稱 > /sdn: < database_name > /tf: < target_file > /p: tabledata = < schema_name.table_name >>< 輸出檔案 > 2 > & 1'
 
-    | 引數  | 說明  |
-    |---|---|
-    | < 伺服器名稱 >  | 來源伺服器名稱  |
-    | < > database_name  | 來源資料庫名稱  |
-    | < > target_file  | BACPAC 檔案的檔案名稱和位置  |
-    | < > schema_name.table_name  | 其資料將會輸出到目標檔案的資料表  |
-    | < 輸出檔案 >  | 具有錯誤的輸出檔案的檔案名稱和位置 (若有的話)  |
+  	| 引數  | 說明  |
+  	|---|---|
+  	| < 伺服器名稱 >  | 來源伺服器名稱  |
+  	| < > database_name  | 來源資料庫名稱  |
+  	| < > target_file  | BACPAC 檔案的檔案名稱和位置  |
+  	| < > schema_name.table_name  | 其資料將會輸出到目標檔案的資料表  |
+  	| < 輸出檔案 >  | 具有錯誤的輸出檔案的檔案名稱和位置 (若有的話)  |
 
     使用 /P:TableName 引數的原因是我們只想要測試資料庫相容性以匯出至 Azure SQL DB V12，而不是從所有資料表匯出資料。 不幸的是，sqlpackage.exe 的匯出引數不支援不擷取任何資料表，因此您必須指定單一的小型資料表。 < 輸出檔案 > 將包含報表的任何錯誤。 "> 2>&1" 字串會將從命令執行產生的標準輸出和標準錯誤輸送到指定的輸出檔。
 
@@ -100,8 +100,8 @@
 
 > [AZURE.WARNING] 之前使用任何一種方法將資料庫移轉，請確定以確保交易一致性，在移轉期間發生的任何使用中交易。 有許多方法來停止資料庫，無法停用用戶端連線到建立 [資料庫快照集](https://msdn.microsoft.com/library/ms175876.aspx)。
 
-- 適用於小型到中型的資料庫，移轉 [相容](#determine-if-your-database-is-compatible) SQL Server 2005 或更新版本的資料庫很簡單，只要執行 [將資料庫部署到 Microsoft Azure 資料庫精靈](#use-deploy-database-to-microsoft-azure-database-wizard) 在 SQL Server Management Studio。 如果您有連線挑戰 (沒有連線能力、 低頻寬或逾時問題)，您可以 [移轉使用 BACPAC](#use-a-bacpac-to-migrate-a-sql-server-database-to-azure-sql-database) 到 Azure SQL Database 的 SQL Server 資料庫。
-- 中型至大型資料庫，或當您擁有連線挑戰 [移轉使用 BACPAC](#use-a-bacpac-to-migrate-a-sql-server-database-to-azure-sql-database) 到 Azure SQL Database 的 SQL Server 資料庫。 使用此方法，您可以使用 SQL Server Management Studio 匯出的資料和結構描述以 [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) 檔案 (儲存在本機或 Azure blob)，然後匯入 BACPAC 檔案到您的 Azure SQL 執行個體。 如果您在 Azure blob 儲存 BACPAC，您也可以匯入 BACPAC 檔案從 [Azure 入口網站](sql-database-import.md) 或 [使用 PowerShell](sql-database-import-powershell.md)。
+- 適用於小型到中型的資料庫，移轉 [相容](#determine-if-your-database-is-compatible) SQL Server 2005 或更新版本的資料庫很簡單，只要執行 [將資料庫部署到 Microsoft Azure 資料庫精靈](#use-deploy-database-to-microsoft-azure-database-wizard) 在 SQL Server Management Studio。 如果您有連線挑戰 （沒有連線能力、 低頻寬或逾時問題），您可以 [移轉使用 BACPAC](#use-a-bacpac-to-migrate-a-sql-server-database-to-azure-sql-database) 到 Azure SQL Database 的 SQL Server 資料庫。
+- 中型至大型資料庫，或當您擁有連線挑戰 [移轉使用 BACPAC](#use-a-bacpac-to-migrate-a-sql-server-database-to-azure-sql-database) 到 Azure SQL Database 的 SQL Server 資料庫。 使用此方法，您可以使用 SQL Server Management Studio 匯出的資料和結構描述以 [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) 檔案 （儲存在本機或 Azure blob），然後匯入 BACPAC 檔案到您的 Azure SQL 執行個體。 如果您在 Azure blob 儲存 BACPAC，您也可以匯入 BACPAC 檔案從 [Azure 入口網站](sql-database-import.md) 或 [使用 PowerShell](sql-database-import-powershell.md)。
 - 對於較大的資料庫，您可以分別移轉結構描述和資料，以達到最佳效能。 使用此方法，建立 [BACPAC 檔案，但不含資料](#use-a-bacpac-to-migrate-a-sql-server-database-to-azure-sql-database) 這個 BACPAC 匯入 Azure SQL Database。 已匯入到 Azure SQL 資料庫的結構描述之後，就使用 [BCP](https://msdn.microsoft.com/library/ms162802.aspx) 成一般檔案擷取資料，然後將這些檔案匯入 Azure SQL Database。
 
      ![SSMS 移轉圖表](./media/sql-database-cloud-migrate/01SSMSDiagram_new.png)
@@ -146,7 +146,7 @@
 
     ![從 [工作] 功能表部署至 Azure](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard00.png)
 
-5.  提供 **新的資料庫名稱** Azure SQL DB 上的資料庫，設定 **版本的 Microsoft Azure SQL Database** (服務層) **最大資料庫大小**, ，**服務目標** (效能層級) 和 **暫存檔名稱** 此精靈會在移轉程序期間建立的 BACPAC 檔案。 請參閱 [Azure SQL Database 服務層](sql-database-service-tiers.md) 如需有關服務層和效能層級。
+5.  提供 **新的資料庫名稱** Azure SQL DB 上的資料庫，設定 **版本的 Microsoft Azure SQL Database** （服務層） **最大資料庫大小**, ，**服務目標** （效能層級） 和 **暫存檔名稱** 此精靈會在移轉程序期間建立的 BACPAC 檔案。 請參閱 [Azure SQL Database 服務層](sql-database-service-tiers.md) 如需有關服務層和效能層級。
 
     ![匯出設定](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard02.png)
 
@@ -199,11 +199,11 @@
 
     ' sqlpackage.exe /Action:Export /ssn: < 伺服器名稱 > /sdn: < database_name > /tf: < target_file >
 
-    | 引數  | 說明  |
-    |---|---|
-    | < 伺服器名稱 >  | 來源伺服器名稱  |
-    | < > database_name  | 來源資料庫名稱  |
-    | < > target_file  | BACPAC 檔案的檔案名稱和位置  |
+  	| 引數  | 說明  |
+  	|---|---|
+  	| < 伺服器名稱 >  | 來源伺服器名稱  |
+  	| < > database_name  | 來源資料庫名稱  |
+  	| < > target_file  | BACPAC 檔案的檔案名稱和位置  |
 
     ![從 [工作] 功能表匯出資料層應用程式](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01b.png)
 
@@ -229,7 +229,7 @@
 
     ![匯入設定](./media/sql-database-cloud-migrate/MigrateUsingBACPAC04.png)
 
-5.  提供 **新的資料庫名稱** Azure SQL DB 上的資料庫，設定 **版本的 Microsoft Azure SQL Database** (服務層) **最大資料庫大小** 和 **服務目標** (效能層級)。
+5.  提供 **新的資料庫名稱** Azure SQL DB 上的資料庫，設定 **版本的 Microsoft Azure SQL Database** （服務層） **最大資料庫大小** 和 **服務目標** （效能層級）。
 
     ![資料庫設定](./media/sql-database-cloud-migrate/MigrateUsingBACPAC05.png)
 
@@ -241,7 +241,7 @@
 
 ## 使用 SqlPackage 從 BACPAC 檔案匯入至 Azure SQL Database
 
-使用下列步驟來使用 [SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) 命令列公用程式從 BACPAC 檔案匯入相容的 SQL Server 資料庫 (或 Azure SQL database)。
+使用下列步驟來使用 [SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) 命令列公用程式從 BACPAC 檔案匯入相容的 SQL Server 資料庫 （或 Azure SQL database）。
 
 > [AZURE.NOTE] 下列步驟假設您已佈建 Azure SQL Database 伺服器和手邊的連接資訊。
 
@@ -250,13 +250,13 @@
 
     ' sqlpackage.exe /Action:Import /tsn: < 伺服器名稱 > /tdn: < database_name > /tu: < s e _ > /tp: < 密碼 > /sf: < source_file >
 
-    | 引數  | 說明  |
-    |---|---|
-    | < 伺服器名稱 >  | 目標伺服器名稱  |
-    | < > database_name  | 目標資料庫名稱  |
-    | < s e _ >  | 目標伺服器中的使用者名稱 |
-    | < 密碼 >  | 使用者的密碼  |
-    | < > source_file  | 匯入的 BACPAC 檔案的檔案名稱和位置  |
+  	| 引數  | 說明  |
+  	|---|---|
+  	| < 伺服器名稱 >  | 目標伺服器名稱  |
+  	| < > database_name  | 目標資料庫名稱  |
+  	| < s e _ >  | 目標伺服器中的使用者名稱 |
+  	| < 密碼 >  | 使用者的密碼  |
+  	| < > source_file  | 匯入的 BACPAC 檔案的檔案名稱和位置  |
 
     ![從 [工作] 功能表匯出資料層應用程式](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
 
@@ -278,4 +278,5 @@
  > [AZURE.NOTE] 如果需要僅限結構描述的移轉，則結構描述可以直接從 Visual Studio 直接發行至 Azure SQL Database。 當資料庫結構描述需要的變更超過移轉精靈單獨可處理的數量時，使用這個方法。
 
 - SQL Server Management Studio。 您可以修正問題在 Management Studio 中使用各種 TRANSACT-SQL 命令，例如 **ALTER DATABASE**。
+
 

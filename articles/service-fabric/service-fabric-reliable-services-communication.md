@@ -156,7 +156,7 @@ Task<ResolvedServicePartition> ResolveAsync(ResolvedServicePartition previousRsp
 通常用戶端程式碼不需要直接搭配 `ServicePartitionResolver`。 其在可靠服務 API中建立並傳遞給其他協助程式類別，並在內部使用解析程式及協助用戶端與服務進行通訊。
 
 ### CommunicationClientFactory
-`ICommunicationClientFactory` 定義通訊用戶端處理站所實作的基底介面，並產生可以與 ServiceFabric 服務通訊的用戶端。 CommunicationClientFactory 的實作將取決於用戶端想要通訊的 Service Fabric 服務所使用的通訊堆疊。 可靠的服務 API 提供 CommunicationClientFactoryBase<TCommunicationClient>，而其提供這個 `ICommunicationClientFactory` 的基底實作介面，並執行常見的所有通訊堆疊作業 (就像使用 `ServicePartitionResolver` 決定服務端點)。 用戶端通常會實作 CommunicationClientFactoryBase 抽象類別來處理通訊堆疊的特定邏輯。
+`ICommunicationClientFactory` 定義通訊用戶端處理站所實作的基底介面，並產生可以與 ServiceFabric 服務通訊的用戶端。 CommunicationClientFactory 的實作將取決於用戶端想要通訊的 Service Fabric 服務所使用的通訊堆疊。 可靠服務 API 提供 CommunicationClientFactoryBase<TCommunicationClient> 會提供這個基底實作 `ICommunicationClientFactory` 介面，並執行常見的所有通訊堆疊的工作。 (就像使用 `ServicePartitionResolver` 來判斷服務端點)。 用戶端通常會實作 CommunicationClientFactoryBase 抽象類別來處理通訊堆疊的特定邏輯。
 
 ```csharp
 
@@ -255,4 +255,5 @@ var result = await myServicePartitionClient.InvokeWithRetryAsync(
 * [使用 Reliable Services 的 WCF 通訊](service-fabric-reliable-services-communication-wcf.md)
 
  
+
 

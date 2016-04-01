@@ -22,7 +22,7 @@
 
 在下列各節中，我們細分初始原型的一般工作流程，以協助您評估 Azure 搜尋符合您應用程式的搜尋需求的程度。 本文的第二個部分涵蓋歸入更嚴重應用程式開發工作的重要設計決策。
 
-開始建立原型之前，我們建議您在使用其中一個快速入門 」 教學課程或這個增加總 [一小時深入探討簡報影片](http://azure.microsoft.com/documentation/videos/tech-ed-europe-2014-azure-search-deep-dive/)。 開始使用教學課程會提供下列語言: [.NET](search-get-started-dotnet.md), ，[Java](search-get-started-java.md), ，[Node.JS](search-get-started-nodejs.md)。
+開始建立原型之前，我們建議您在使用其中一個快速入門 」 教學課程或這個增加總 [一小時深入探討簡報影片](http://azure.microsoft.com/documentation/videos/tech-ed-europe-2014-azure-search-deep-dive/)。 開始使用教學課程會提供下列語言 ︰ [.NET](search-get-started-dotnet.md), ，[Java](search-get-started-java.md), ，[Node.JS](search-get-started-nodejs.md)。
 
 ## 原型開發
 
@@ -50,7 +50,7 @@ Azure 搜尋是可透過 Azure 訂用帳戶取得的完全管理線上服務。 
 >
 > *索引結構描述* 依名稱、 資料型別，以及指定欄位是否可搜尋、 篩選、 可多面向等的屬性會定義所有文件中的欄位。
 >
-> 除了文件結構之外，索引結構描述也會指定評分設定檔，以提供提升搜尋分數的準則，以及啟用自動完成查詢 (建議工具) 和跨網域查詢要求之 CORS 的組態設定。 *對於原型，我們建議您只指定欄位的文件中只要開始*, ，然後以累加方式加入其他功能 (如稍後新增其他功能的清單，請參閱步驟 5)。  
+> 除了文件結構之外，索引結構描述也會指定評分設定檔，以提供提升搜尋分數的準則，以及啟用自動完成查詢 (建議工具) 和跨網域查詢要求之 CORS 的組態設定。 *對於原型，我們建議您只指定欄位的文件中只要開始*, ，然後以累加方式加入其他功能 （如稍後新增其他功能的清單，請參閱步驟 5）。  
 >
 > 套用至真實世界範例之後，請考慮使用電子商務應用程式。 搜尋索引將包含可在應用程式中搜尋的所有產品或服務 (搜尋結果中出現的任何項目)。 一個 SKU 會有一份文件。 每份文件都會包括產品名稱、品牌、大小、價格、色彩，甚至是影像或其他您想要在搜尋結果內傳回之資源檔的參考。
 
@@ -66,7 +66,7 @@ Azure 搜尋是可透過 Azure 訂用帳戶取得的完全管理線上服務。 
 
 #### 如何將資料載入索引
 
-其中一種方法是使用索引子。 您可以使用 Azure DocumentDB 或 SQL Server 關聯式資料來源 (尤其是 Azure SQL Database 或 Azure VM 中 SQL Server)， [索引子](https://msdn.microsoft.com/library/dn946891.aspx) 從支援的資料來源擷取文件。 用於載入文件的其中任何在開始使用索引子的程式碼範例會啟動教學課程: [.NET](search-get-started-dotnet.md), ，[Java](search-get-started-java.md), ，[Node.JS](search-get-started-nodejs.md)。
+其中一種方法是使用索引子。 您可以使用 Azure DocumentDB 或 SQL Server 關聯式資料來源 （尤其是 Azure SQL Database 或 Azure VM 中 SQL Server）， [索引子](https://msdn.microsoft.com/library/dn946891.aspx) 從支援的資料來源擷取文件。 用於載入文件的其中任何在開始使用索引子的程式碼範例會啟動教學課程 ︰ [.NET](search-get-started-dotnet.md), ，[Java](search-get-started-java.md), ，[Node.JS](search-get-started-nodejs.md)。
 
 第二個選項是使用 REST API 或載入文件的 .NET 程式庫來撰寫一個簡單的程式：
 
@@ -154,7 +154,7 @@ Azure 搜尋提供兩種程式設計模型：Managed 程式碼的 .NET 程式庫
 
 在實作推送模型的 Azure 搜尋中，沒有任何特定機制。 應用程式程式碼，在資料層中，必須處理的文件更新作業使用 [REST API](https://msdn.microsoft.com/library/dn798935.aspx) 或 [.NET 程式庫](https://msdn.microsoft.com/library/dn951165.aspx) 來更新集合中的文件。 做為實作詳細資料，使用文件索引鍵的產品 SKU 可以協助進行這項工作。
 
-提取模型通常是從外部資料來源擷取資料的已排定作業。 在 Azure 搜尋服務，提取模型是透過 [索引子](https://msdn.microsoft.com/library/azure/dn946891.aspx), ，接著可用於特定資料來源: Azure DocumentDB 或 Azure SQL Database (以及 Azure Vm 上的 SQL Server)。
+提取模型通常是從外部資料來源擷取資料的已排定作業。 在 Azure 搜尋服務，提取模型是透過 [索引子](https://msdn.microsoft.com/library/azure/dn946891.aspx), ，接著可用於特定資料來源 ︰ Azure DocumentDB 或 Azure SQL Database （以及 Azure Vm 上的 SQL Server）。
 
 ### 以批次方式載入文件
 
@@ -189,4 +189,5 @@ Azure 搜尋中其中一個較吸引人的功能是可以輕鬆地放大或縮�
 
 <!--Image references-->
 [1]: ./media/search-workflow/AzSearch-Workflow.png
+
 

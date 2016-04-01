@@ -41,7 +41,7 @@ SQL 資料倉儲最多支援 8 個巢狀層級。 這與 SQL Server 稍有不同
 ```
 EXEC prc_nesting
 ``` 
-如果預存程序也進行另一個 EXEC 呼叫然後這會增加巢狀層級 2
+如果預存程序也會進行另一個 EXEC 呼叫，則這會將巢狀層級提高到 2
 ```
 CREATE PROCEDURE prc_nesting
 AS
@@ -49,7 +49,7 @@ EXEC prc_nesting_2  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```
-如果第二個程序接著執行動態 sql，則這會增加巢狀層級 3
+如果第二個程序接著會執行一些動態 SQL，則這會將巢狀層級提高到 3
 ```
 CREATE PROCEDURE prc_nesting_2
 AS
@@ -63,7 +63,7 @@ EXEC prc_nesting
 ## INSERT..EXECUTE
 SQL 資料倉儲不允許您透過 INSERT 陳述式取用預存程序的結果集。 不過，您可以使用另一個方法。
 
-請參閱下列文件 [暫存資料表] 如需有關如何執行這項操作的範例。
+請參閱下列文件上 [temporary tables] 如需有關如何執行這項操作的範例。
 
 ## 限制
 
@@ -84,7 +84,7 @@ SQL 資料倉儲不允許您透過 INSERT 陳述式取用預存程序的結果�
 - return 陳述式
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
@@ -96,5 +96,6 @@ SQL 資料倉儲不允許您透過 INSERT 陳述式取用預存程序的結果�
 [nest level]: https://msdn.microsoft.com/library/ms187371.aspx
 
 <!--Other Web references-->
+
 
 

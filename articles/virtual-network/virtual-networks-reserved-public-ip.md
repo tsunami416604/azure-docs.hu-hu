@@ -39,7 +39,7 @@ Azure 中的 IP 位址分為兩個類別：動態和保留。 依預設由 Azure
 
 ## 如何管理保留的 VIP
 
-您必須將保留的 IP 新增至訂用帳戶才能使用。 若要從中可用的公用 IP 位址集區建立保留的 IP *中部* 位置，執行下列 PowerShell 命令:
+您必須將保留的 IP 新增至訂用帳戶才能使用。 若要從中可用的公用 IP 位址集區建立保留的 IP *中部* 位置，執行下列 PowerShell 命令 ︰
 
     New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
 
@@ -70,8 +70,8 @@ Azure 中的 IP 位址分為兩個類別：動態和保留。 依預設由 Azure
     New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
     New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
-    | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
-    | New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
+  	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
+  	| New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 
 >[AZURE.NOTE] 當您建立保留的 IP 至雲端服務中使用時，您仍然需要參照此 VM 使用 *VIP: & lt; 連接埠號碼 >* 針對輸入通訊。 保留 IP 並不表示您可以直接連接至 VM。 保留的 IP 會指派給已部署 VM 的雲端服務。 如果您想要透過 IP 直接連接到 VM，您必須設定執行個體層級公用 IP。 執行個體層級公用 IP 是一種公用 IP 類型 (稱為 ILPIP)，其會直接指派給您的 VM。 此類型 IP 無法保留。 請參閱 [執行個體層級公用 IP (ILPIP)](../virtual-networks-instance-level-public-ip) 如需詳細資訊。
 
@@ -87,8 +87,8 @@ Azure 中的 IP 位址分為兩個類別：動態和保留。 依預設由 Azure
 
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
     New-AzureVMConfig -Name TestVM2 -InstanceSize Small -ImageName $image.ImageName `
-    | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
-    | New-AzureVM -ServiceName TestService2 -Location "Central US"
+  	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
+  	| New-AzureVM -ServiceName TestService2 -Location "Central US"
     Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestService2
 
 ## 如何使用服務組態檔建立保留的 IP 至雲端服務的關聯
@@ -118,4 +118,5 @@ Azure 中的 IP 位址分為兩個類別：動態和保留。 依預設由 Azure
 - 深入了解 [執行個體層級公用 IP (ILPIP) 位址](../virtual-networks-instance-level-public-ip)。
 
 - 檢查 [保留的 IP REST Api](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
+
 

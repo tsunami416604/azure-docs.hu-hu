@@ -57,10 +57,10 @@
 
 您現在已預備匯出變更至 Azure AD 和內部部署 AD (如果您正在使用 Exchange 混合部署)。 接下來的步驟可讓您在實際開始匯出至目錄之前，檢查將要變更的項目。
 
-**Verify**
+**驗證**
 
 1. 啟動 CMD 命令提示字元並移至 `%Program Files%\Microsoft Azure AD Sync\bin`
-2. 執行: `csexport "Name of Connector" %temp%\export.xml /f:x`<BR/>
+2. 執行：`csexport "Name of Connector" %temp%\export.xml /f:x`<BR/>
 同步處理服務中找連接器的名稱。 它的名稱類似 Azure AD 的 "contoso.com – AAD"。
 3. 執行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`
 4. 現在您在 %temp% 中已經有名稱為 export.csv 的檔案，可在 Microsoft Excel 中加以檢查。 此檔案包含將要匯出的所有變更。
@@ -117,4 +117,5 @@
 深入了解 [Azure AD Connect 同步處理](active-directory-aadconnectsync-whatis.md) 組態。
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
+
 

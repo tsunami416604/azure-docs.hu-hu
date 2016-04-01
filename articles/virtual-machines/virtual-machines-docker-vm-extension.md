@@ -25,21 +25,21 @@
 本主題說明：
 
 + [Docker 及 Linux 容器]
-+ [如何搭配使用 Docker VM 延伸模組與 Azure]
-+ [適用於 Linux 和 Windows 的虛擬機器延伸模組]
++ [如何搭配使用 Docker VM 擴充程式與 Azure]
++ [Linux 及 Windows 的虛擬機器擴充程式]
 
 若要立刻建立具有 Docker 功能的 VM，請參閱：
 
-+ [如何使用 Docker VM 擴充程式從 Azure 命令列介面 (Azure CLI)]
-+ [如何使用 Azure 傳統入口網站使用 Docker VM 擴充程式]
-+ [如何快速開始使用 Azure Marketplace 中的 Docker]
++ [如何透過 Azure 命令列介面 (Azure CL) 使用 Docker VM 延伸模組]
++ [如何搭配使用 Docker VM 擴充程式與 Azure 傳統入口網站]
++ [如何快速地開始使用 Azure Marketplace 中的 Docker]
 
 若要深入了解延伸模組及其運作方式，請參閱 [Docker 延伸模組使用者指南](https://github.com/Azure/azure-docker-extension/blob/master/README.md)。
 
 ## Docker 及 Linux 容器
 [Docker](https://www.docker.com/) 是其中一個最常用的虛擬化方式使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC) 而不是虛擬機器上的獨立資料和運算的方式共用資源，並提供其他服務，可讓您建置或組合應用程式快速並分散到其他 Docker 容器之間。
 
-Docker 及 Linux 容器並不是 [Hypervisor](http://en.wikipedia.org/wiki/Hypervisor) 等 Windows HYPER-V 和 [KVM](http://www.linux-kvm.org/page/Main_Page) Linux (還有許多其他例子) 上。 Hypervisor 虛擬化讓整個作業系統基礎作業系統 (稱為 *虛擬機器*) 來執行在 hypervisor 內運作，如同它們是應用程式。
+Docker 及 Linux 容器並不是 [Hypervisor](http://en.wikipedia.org/wiki/Hypervisor) 等 Windows HYPER-V 和 [KVM](http://www.linux-kvm.org/page/Main_Page) Linux （還有許多其他例子） 上。 Hypervisor 虛擬化讓整個作業系統基礎作業系統 (稱為 *虛擬機器*) 來執行在 hypervisor 內運作，如同它們是應用程式。
 
 Docker 及其他 *容器* 方法大幅降低的啟動時間的消耗以及處理和儲存額外負荷時所使用的程序和檔案系統獨立功能的核心功能，其他獨立的容器只將 Linux kernel。
 
@@ -54,7 +54,7 @@ Docker 及其他 *容器* 方法大幅降低的啟動時間的消耗以及處理
 
 若要查看容器及其優點的高層級討論，請參閱 [Docker 高層級白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
 
-如需了解 Docker 實際運作方式的詳細資訊，請參閱 [什麼是 Docker?](https://www.docker.com/whatisdocker/)
+如需了解 Docker 實際運作方式的詳細資訊，請參閱 [什麼是 Docker？](https://www.docker.com/whatisdocker/)
 
 #### Docker 及 Linux 容器的安全性最佳做法
 
@@ -68,8 +68,8 @@ Docker VM 擴充程式是個元件，它會安裝在您所建立的 VM 執行個
 
 若要立刻建立具有 Docker 功能的 VM，請參閱：
 
-+ [如何使用 Docker VM 擴充程式從 Azure 命令列介面 (Azure CLI)]
-+ [如何使用 Azure 傳統入口網站使用 Docker VM 擴充程式]
++ [如何透過 Azure 命令列介面 (Azure CL) 使用 Docker VM 延伸模組]
++ [如何搭配使用 Docker VM 擴充程式與 Azure 傳統入口網站]
 
 ## Linux 及 Windows 的虛擬機器擴充程式
  [Azure Docker VM 擴充程式](https://github.com/Azure/azure-docker-extension/blob/master/README.md) 只是眾多提供特殊行為，數個 VM 延伸模組還有許多正在開發中。 例如，許多 [Linux VM 代理程式延伸模組](virtual-machines-linux-agent-user-guide.md) 功能可讓您修改和管理虛擬機器，包括安全性功能、 核心和網路功能等。 例如，VMAccess 延伸模組可讓您重設管理員密碼或 SSH 金鑰。
@@ -83,4 +83,5 @@ Docker VM 擴充程式是個元件，它會安裝在您所建立的 VM 執行個
 [Docker and Linux Containers]: #Docker-and-Linux-Containers
 [How to use the Docker VM Extension with Azure]: #How-to-use-the-Docker-VM-Extension-with-Azure
 [Virtual Machine Extensions for Linux and Windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows
+
 

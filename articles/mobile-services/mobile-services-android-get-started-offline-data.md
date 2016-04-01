@@ -43,7 +43,7 @@
 
 若要推送和提取裝置與 Azure 行動服務之間的變更，您使用 *同步處理內容* (*MobileServiceClient.SyncContext*)，這是您初始化您用來在本機儲存資料的本機資料庫。
 
-1. 新增檢查網路連線的加入到此程式碼的權限 *AndroidManifest.xml* 檔案:
+1. 新增檢查網路連線的加入到此程式碼的權限 *AndroidManifest.xml* 檔案 ︰
 
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -174,14 +174,14 @@
 
 <!-- Now if you run the app and tap the refresh button, you should see all the items from the server. At that point you should be able to turn off the networking from the device by placing it in *Airplane Mode*, and continue making changes – the app will work just fine. When it’s time to sync the changes to the server, turn the network back on, and tap the **Refresh** button again.
 
-這是必須指出一件事: 如果有暫止的變更本機存放區中，提取作業會先推送這些變更到伺服器 (以便有相同的資料列中的變更，如果推入作業將會失敗，而且應用程式適當地處理衝突的機會)。 這表示，發送呼叫上述程式碼中的不一定是必要項目，但我認為永遠是最好的作法是明確的相關程式碼的動作。
+One thing which is important to point out: if there are pending changes in the local store, a pull operation will first push those changes to the server (so that if there are changes in the same row, the push operation will fail and the application has an opportunity to handle the conflicts appropriately). That means that the push call in the code above isn’t necessarily required, but I think it’s always a good practice to be explicit about what the code is doing.
 -->
 
 1. 讓裝置或模擬器處於 *飛航模式*。 這會建立離線案例。
 
 2. 新增一些 *ToDo* 項目或某些項目標記為完成的標記。 結束裝置或模擬器 (或強制關閉應用程式)，然後重新啟動。 請確認您的變更已保存在裝置上，因為它們會保留在本機 SQL Light 存放區中。
 
-3. 檢視 Azure 的內容 *TodoItem* 資料表。 請確認新的項目有 _不_ 已同步處理到伺服器:
+3. 檢視 Azure 的內容 *TodoItem* 資料表。 請確認新的項目有 _不_ 已同步處理到伺服器 ︰
 
    - 若為 JavaScript 後端，請移至 Azure 傳統入口網站，然後按一下 [資料] 索引標籤以檢視 `TodoItem` 資料表的內容。
    - .NET 後端中，檢視資料表內容，使用 SQL 工具例如 *SQL Server Management Studio*, ，或 REST 用戶端，例如 *Fiddler* 或 *Postman*。
@@ -199,7 +199,7 @@
 
 * [雲端報導：Azure 行動服務中的離線同步處理]
 
-* [Azure Friday: Offline-enabled apps in Azure Mobile Services] \ (附註: 示範適用於 Windows，但功能討論適用於所有平台)
+* [Azure Friday: Offline-enabled apps in Azure Mobile Services] \ (附註 ︰ 示範適用於 Windows，但功能討論適用於所有平台)
 
 
 <!-- URLs. -->
@@ -222,4 +222,5 @@
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 [Mobile Services Quick Start tutorial]: mobile-services-android-get-started.md
+
 

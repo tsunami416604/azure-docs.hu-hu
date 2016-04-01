@@ -22,7 +22,7 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 
 ###別名記錄 (CNAME 記錄)
 
-CNAME 記錄會對應 *特定* DNS 名稱，例如 **mail.contoso.com** 或 **www.contoso.com**, ，到其他 (正式) 網域名稱。 在應用程式服務 Web 應用程式，正式網域名稱是 **& lt; yourwebappname >。 azurewebsites.net** web 應用程式的網域名稱。 CNAME 建立之後，建立一個別名 **& l t; yourwebappname >。 azurewebsites.net** 網域名稱。 CNAME 項目會解析為 IP 位址的您 **& l t; yourwebappname >。 azurewebsites.net** 網域名稱，如果 web 應用程式的 IP 位址變更，您不需要採取任何動作。
+CNAME 記錄會對應 *特定* DNS 名稱，例如 **mail.contoso.com** 或 **www.contoso.com**, ，到其他 （正式） 網域名稱。 在應用程式服務 Web 應用程式，正式網域名稱是 **& lt; yourwebappname >。 azurewebsites.net** web 應用程式的網域名稱。 CNAME 建立之後，建立一個別名 **& l t; yourwebappname >。 azurewebsites.net** 網域名稱。 CNAME 項目會解析為 IP 位址的您 **& l t; yourwebappname >。 azurewebsites.net** 網域名稱，如果 web 應用程式的 IP 位址變更，您不需要採取任何動作。
 
 > [AZURE.NOTE] 某些網域註冊機構只允許您對應子網域，當使用 CNAME 記錄，例如 **www.contoso.com**, ，而不是根名稱，例如 **contoso.com**。 如需 CNAME 記錄的詳細資訊，請參閱註冊機構提供的文件、<a href="http://en.wikipedia.org/wiki/CNAME_record">維基百科 CNAME 記錄條目</a>，或 <a href="http://tools.ietf.org/html/rfc1035">IETF 網域名稱 - 實作與規格</a>文件。
 
@@ -36,7 +36,7 @@ CNAME 記錄會對應 *特定* DNS 名稱，例如 **mail.contoso.com** 或 **ww
 
 此 CNAME 記錄可用來驗證您擁有正在嘗試使用的網域。 這是建立指向 Web 應用程式之虛擬 IP 位址的 A 記錄以外的動作。
 
-您可以找到的 IP 位址，並將 **awverify** 名稱和 **。 azurewebsites.net** 名稱 web 應用程式執行下列步驟:
+您可以找到的 IP 位址，並將 **awverify** 名稱和 **。 azurewebsites.net** 名稱 web 應用程式執行下列步驟 ︰
 
 1. 在瀏覽器中開啟 [Azure 入口網站](https://portal.azure.com)。
 
@@ -53,4 +53,5 @@ CNAME 記錄會對應 *特定* DNS 名稱，例如 **mail.contoso.com** 或 **ww
 6. 在 **讓外部網域** 刀鋒視窗中，您會看到 **awverify** 資訊、 目前指派 **。 azurewebsites.net** 網域名稱，以及虛擬 IP 位址。 儲存此資訊，在建立 DNS 記錄時會用得到。
 
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
+
 

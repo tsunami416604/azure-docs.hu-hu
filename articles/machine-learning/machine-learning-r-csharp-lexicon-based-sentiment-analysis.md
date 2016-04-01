@@ -76,7 +76,7 @@
 >這項 Web 服務是使用 Azure Machine Learning 所建立。 免費的試用版，以及有關建立實驗的簡介影片和 [發佈 web 服務](machine-learning-publish-a-machine-learning-web-service.md), ，請參閱 [azure.com /ml](http://azure.com/ml)。 以下是建立 Web 服務之實驗的螢幕擷取畫面，以及實驗內每個模組的範例程式碼。
 
 
-Azure Machine Learning 中已建立新的空白實驗。 下圖說明語彙型情感分析的實驗流程。 "Sent_dict.csv"檔案是 MPQA 主觀性詞典，並設定為其中一個 [Execute R script] [執行-r-指令碼] 輸入。 另一個輸入是來自 Amazon 評論測試資料集的取樣評論，我們在這個資料集中執行範圍選取、資料行名稱修改和分割作業。 我們使用雜湊封裝將主觀性詞典儲存在記憶體中，以加快計分程序的速度。 “tm” 封裝會將整個文字語彙基元化，並與情感字典中的單字進行比較。 最後，分數的計算方式是在文字中加上每個主觀字的加權。 
+Azure Machine Learning 中已建立新的空白實驗。 下圖說明語彙型情感分析的實驗流程。 "Sent_dict.csv"檔案是 MPQA 主觀性詞典，並設定為其中一個的輸入 [執行 R 指令碼][execute-r-script]。 另一個輸入是來自 Amazon 評論測試資料集的取樣評論，我們在這個資料集中執行範圍選取、資料行名稱修改和分割作業。 我們使用雜湊封裝將主觀性詞典儲存在記憶體中，以加快計分程序的速度。 “tm” 封裝會將整個文字語彙基元化，並與情感字典中的單字進行比較。 最後，分數的計算方式是在文字中加上每個主觀字的加權。 
 
 ###實驗流程：
 
@@ -156,4 +156,5 @@ Web 服務或發佈至 Azure Marketplace 的耗用量常見問題集解答，請
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
  
+
 

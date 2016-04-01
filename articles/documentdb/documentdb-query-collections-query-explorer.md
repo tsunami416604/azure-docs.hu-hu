@@ -26,7 +26,7 @@
 -   如何透過網頁瀏覽器輕鬆地瀏覽 DocumentDB 查詢結果頁面？
 -   如何疑難排解 DocumentDB 查詢的語法錯誤？ 
 
-##<a id="Launch"></a>啟動並瀏覽 查詢總管##
+##<a id="Launch"></a>啟動與瀏覽 [查詢總管]##
 
 您可以從任何 DocumentDB 帳戶、資料庫和集合分頁啟動 [查詢總管] 。
   
@@ -44,7 +44,7 @@
 
     ![[查詢總管] 的螢幕擷取畫面](./media/documentdb-query-collections-query-explorer/queryexplorerinitial.png)
 
-##<a id="Create"></a>使用查詢總管來建立、編輯和執行查詢##
+##<a id="Create"></a>使用查詢總管建立、編輯和執行查詢##
 
 [查詢總管] 可讓您輕鬆地針對 DocumentDB 集合建立、編輯和執行查詢，並包含醒目提示的基本關鍵字和值以改善查詢撰寫經驗。  
 
@@ -72,9 +72,10 @@
 
     ![[查詢總管] 查詢錯誤的螢幕擷取畫面](./media/documentdb-query-collections-query-explorer/queryerror.png)
 
-##<a name="NextSteps"></a>後續步驟
+##<a name="NextSteps"></a>接續步驟
 
 - 若要深入了解 DocumentDB，請按一下 [這裡](http://azure.com/docdb)。
 - 若要深入了解 DocumentDB SQL 文法支援查詢總管] 中，按一下 [ [這裡](documentdb-sql-query.md)。
  
+
 

@@ -20,11 +20,11 @@
 
 本主題示範如何針對可做為資料科學環境一部分的進階分析，佈建及設定 Azure 虛擬機器。 Windows 虛擬機器是使用支援工具 (例如 IPython Notebook、Azure 儲存體總管、AzCopy)，以及其他對於進階分析專案非常實用的公用程式來設定。 例如，Azure 儲存體總管和 AzCopy 會提供便利的方法，將資料從本機電腦上傳至 Azure Blob 儲存體，或者從 Blob 儲存體將資料下載到本機電腦。
 
-## <a name="create-vm"></a>步驟 1: 建立一般用途的 Azure 虛擬機器
+## <a name="create-vm"></a>步驟 1：建立一般用途的 Azure 虛擬機器
 
-如果您已經在 Azure 虛擬機器，而只想要在其上的 IPython Notebook 伺服器設定，您可以略過此步驟，並繼續進行 [步驟 2: 將 IPython Notebook 的端點新增至現有的虛擬機器](#add-endpoint)。
+如果您已經在 Azure 虛擬機器，而只想要在其上的 IPython Notebook 伺服器設定，您可以略過此步驟，並繼續進行 [步驟 2 ︰ 將 IPython Notebook 的端點新增至現有的虛擬機器](#add-endpoint)。
 
-在 Azure 上建立虛擬機器的程序開始之前，您必須決定處理適用於其專案之資料所需的機器大小。 比起較大型的機器，較小型的機器配備較少的記憶體和較少的 CPU 核心數目，但價格也較便宜。 如需機器類型和價格的清單，請參閱 <a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">虛擬機器定價 </a> 頁面
+在 Azure 上建立虛擬機器的程序開始之前，您必須決定處理適用於其專案之資料所需的機器大小。 比起較大型的機器，較小型的機器配備較少的記憶體和較少的 CPU 核心數目，但價格也較便宜。 如需機器類型和價格清單，請參閱<a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">虛擬機器定價</a>頁面
 
 1. 登入 <a href="https://manage.windowsazure.com" target="_blank">Azure 傳統入口網站</a>, ，然後按一下 **新增** 左上角。 隨即會快顯一個視窗。 選取 **計算** ]-> [ **虛擬機器** ]-> [ **從組件庫**。
 
@@ -56,7 +56,7 @@
 
 ![建立工作區][29]
 
-## <a name="add-endpoint"></a>步驟 2: IPython notebook 端點新增至現有的虛擬機器
+## <a name="add-endpoint"></a>步驟 2：將 IPython Notebook 的端點新增到現有的虛擬機器
 
 如果您已遵循步驟 1 中的指示建立虛擬機器，則已經新增適用於 IPython Notebook 的端點，可略過此步驟。
 
@@ -64,7 +64,7 @@
 
 ![建立工作區][17]
 
-## <a name="run-commands"></a>步驟 3: 安裝 IPython Notebook 和其他支援工具
+## <a name="run-commands"></a>步驟 3：安裝 IPython Notebook 和其他支援工具
 
 建立虛擬機器之後，請使用遠端桌面通訊協定 (RDP) 登入 Windows 虛擬機器。 如需指示，請參閱 [如何登入虛擬機器執行 Windows Server 的](../virtual-machines-log-on-windows-server.md)。 開啟 **命令提示字元** (**不是 Powershell 命令視窗**) 做為 **管理員** ，然後執行下列命令。
 
@@ -76,14 +76,14 @@
 
 出現提示時，請輸入 IPython Notebook 的密碼，以及機器系統管理員的密碼。 這讓 IPython Notebook 能夠做為機器上的服務來執行 。
 
-## <a name="access"></a>從網頁瀏覽器的步驟 4: 存取 IPython Notebook
+## <a name="access"></a>步驟 4：從網頁瀏覽器存取 IPython Notebook
 若要存取 IPython Notebook 伺服器，請開啟網頁瀏覽器，然後輸入 *https://&#60;virtual 機器 DNS 名稱 >: & #60; 公用連接埠號碼 >* URL] 文字方塊中。 在這裡， *& #60; 公用連接埠號碼 >* 應該是您在加入 IPython Notebook 端點時指定的連接埠號碼。 
 
- *& #60，虛擬機器 DNS 名稱 >* 位於傳統的 Azure 網站。 登入傳統入口網站之後, 按一下 **虛擬機器**, ，選取您建立的機器，然後選取 **儀表板**, ，DNS 名稱會顯示，如下所示:
+ *& #60，虛擬機器 DNS 名稱 >* 位於傳統的 Azure 網站。 登入傳統入口網站之後, 按一下 **虛擬機器**, ，選取您建立的機器，然後選取 **儀表板**, ，DNS 名稱會顯示，如下所示 ︰
 
 ![建立工作區][19]
 
-您會收到警告，指出 _此網站的安全性憑證問題_ (Internet Explorer) 或 _您的連線不是私用_ (Chrome)，如下所示的數字。 按一下 [ **繼續瀏覽此網站 (不建議)** (Internet Explorer) 或 **進階** 然後 **前往 & #60;*DNS 名稱*> (不安全) * * (Chrome)，以便繼續進行。 接著，輸入您先前指定的密碼來存取 IPython Notebook。
+您會收到警告，指出 _此網站的安全性憑證問題_ (Internet Explorer) 或 _您的連線不是私用_ (Chrome)，如下所示的數字。 按一下 [ **繼續瀏覽此網站 （不建議）** (Internet Explorer) 或 **進階** 然後 **前往 & #60;*DNS 名稱*> （不安全） * * (Chrome)，以便繼續進行。 接著，輸入您先前指定的密碼來存取 IPython Notebook。
 
 Internet Explorer：
 ![建立工作區][20]
@@ -94,7 +94,7 @@ Chrome：
 登入 IPython Notebook 目錄之後 *DataScienceSamples* 會顯示在瀏覽器上。 此目錄包含由 Microsoft 共用的 IPython Notebook 範例，可協助使用者進行資料科學工作。 這些 IPython Notebook 範例從簽出 [**Github 儲存機制**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) IPython Notebook 伺服器設定程序期間的虛擬機器。 Microsoft 會經常維護並更新此儲存機制。 使用者可以瀏覽 Github 儲存機制，以取得最近更新的 IPython Notebook 範例。
 ![建立工作區][18]
 
-## <a name="upload"></a>步驟 5: 上傳至 IPython Notebook 伺服器從本機電腦現有 IPython Notebook
+## <a name="upload"></a>步驟 5：從本機電腦將現有的 IPython Notebook 上傳至 IPython Notebook 伺服器
 
 IPython Notebook 提供一種簡單的方式，讓使用者可將其本機電腦上現有的 IPython Notebook 上傳至虛擬機器上的 IPython Notebook 伺服器。 使用者登入 IPython Notebook 中的網頁瀏覽器之後，按一下以進入 **目錄** 將上傳至 IPython Notebook。 然後，選取要從本機電腦中上傳的 IPython Notebook.ipynb 檔案 **檔案總管**, ，與拖放到網頁瀏覽器上的 IPython Notebook 目錄。 按一下 [ **上載** ] 按鈕，將.ipynb 檔案上傳至 IPython Notebook 伺服器。 其他使用者接著就可以從 Web 瀏覽器開始使用它。
 
@@ -105,9 +105,9 @@ IPython Notebook 提供一種簡單的方式，讓使用者可將其本機電腦
 
 ##<a name="shutdown"></a>關閉並取消配置未使用的虛擬機器
 
-Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您不會被計費不使用虛擬機器時，它必須為 **已停止 (取消配置)** 非使用中狀態。
+Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您不會被計費不使用虛擬機器時，它必須為 **已停止 （取消配置）** 非使用中狀態。
 
-> [AZURE.NOTE] 如果您關閉與虛擬機器中的虛擬機器 (使用 Windows 電源選項)，VM 已停止，但仍然已配置。 若要確保您不會繼續被計費，一律停止虛擬機器從 [Azure 傳統入口網站](http://manage.windowsazure.com/)。 您也可以藉由呼叫停止 VM，透過 Powershell **ShutdownRoleOperation** 的"PostShutdownAction"等於"StoppedDeallocated"。
+> [AZURE.NOTE] 如果您關閉與虛擬機器中的虛擬機器 （使用 Windows 電源選項），VM 已停止，但仍然已配置。 若要確保您不會繼續被計費，一律停止虛擬機器從 [Azure 傳統入口網站](http://manage.windowsazure.com/)。 您也可以藉由呼叫停止 VM，透過 Powershell **ShutdownRoleOperation** 的"PostShutdownAction"等於"StoppedDeallocated"。
 
 關閉及取消配置虛擬機器：
 
@@ -127,7 +127,7 @@ Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您�
 
 您的虛擬機器已經準備好在資料科學練習中使用。 虛擬機器也已經準備好用來做為 IPython Notebook 伺服器，以用於進行資料探索和處理，以及其他可與 Azure Machine Learning 和 Cortana 分析程序 (CAP) 一起使用的工作。
 
-進階分析程序和技術的下一個步驟中的對應 [學習指南: 進階資料處理，在 Azure 中](machine-learning-data-science-advanced-data-processing.md) ，而且可能包括將資料移至 HDInsight，程序並進行取樣，並在與 Azure Machine Learning 從資料學習的準備步驟。
+進階分析程序和技術的下一個步驟中的對應 [學習指南 ︰ 進階資料處理，在 Azure 中](machine-learning-data-science-advanced-data-processing.md) ，而且可能包括將資料移至 HDInsight，程序並進行取樣，並在與 Azure Machine Learning 從資料學習的準備步驟。
 
 
 [15]: ./media/machine-learning-data-science-setup-virtual-machine/vmshutdown.png
@@ -145,4 +145,5 @@ Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您�
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
  
+
 

@@ -77,7 +77,7 @@
   * 防止同一個用戶端有多個執行個體，或不同用戶端有多個執行個體同時傳送重試。 如果這可能發生，請在重試間隔導入隨機策略。
 * **測試重試策略與實作：**
   * 請確定在儘可能最多的狀況下完整測試您的重試策略，尤其是當其使用的應用程式與目標資源是在極端負載下時。 若要檢查測試期間的行為，您可以：
-      * 將暫時性與非暫時性錯誤插入服務中。 例如，傳送無效要求，或新增程式碼來偵測不同錯誤類型的測試要求與回應。 例如使用 TestApi，請參閱 [TestApi 的錯誤插入測試](http://msdn.microsoft.com/magazine/ff898404.aspx) 和 [簡介 TestApi – 第 5 部分: Managed 程式碼錯誤插入 Api](http://blogs.msdn.com/b/ivo_manolov/archive/2009/11/25/9928447.aspx)。
+      * 將暫時性與非暫時性錯誤插入服務中。 例如，傳送無效要求，或新增程式碼來偵測不同錯誤類型的測試要求與回應。 例如使用 TestApi，請參閱 [TestApi 的錯誤插入測試](http://msdn.microsoft.com/magazine/ff898404.aspx) 和 [簡介 TestApi – 第 5 部分 ︰ Managed 程式碼錯誤插入 Api](http://blogs.msdn.com/b/ivo_manolov/archive/2009/11/25/9928447.aspx)。
       * 建立資源或服務模型，以傳回實際服務可能傳回的錯誤範圍。 請確定您涵蓋了重試策略其設計要偵測的所有錯誤類型。
       * 如果服務是您建立及部署的自訂服務，則透過暫時停用或超載該服務，來強制暫時性錯誤發生 (當然，您不應該嘗試超載 Azure 內的任何共用資源或共用服務)。
       * 對於以 HTTP 為基礎的 API，請考慮在您的自動化測試中使用 FiddlerCore 程式庫來變更 HTTP 要求的結果，方法是新增額外的往返次數或變更回應 (例如 HTTP 狀態碼、標頭、內文或其他因素)。 這會允許決定性測試錯誤狀況的子集，無論是暫時性錯誤或其他類型的錯誤。 如需詳細資訊，請參閱 [FiddlerCore](http://www.telerik.com/fiddler/fiddlercore)。 如需範例，說明如何使用程式庫，尤其是 **HttpMangler** 類別，請檢查 [Azure 儲存體 sdk 的原始程式碼](https://github.com/Azure/azure-storage-net/tree/master/Test)。
@@ -114,4 +114,5 @@
 * [斷路器模式](http://msdn.microsoft.com/library/dn589784.aspx)
 * [補償交易模式 (英文)](http://msdn.microsoft.com/library/dn589804.aspx)
 * [等冪性模式](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/)
+
 

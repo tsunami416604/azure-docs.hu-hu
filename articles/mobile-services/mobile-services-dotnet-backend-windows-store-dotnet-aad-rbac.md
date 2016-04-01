@@ -29,17 +29,17 @@
 
 角色型存取控制 (RBAC) 是針對使用者可擔任的角色指派權限的作法。 它可妥善定義特定類別的使用者能夠與無法執行哪些動作的界線。 本教學課程將逐步解說如何將基本 RBAC 新增至 Azure 行動服務。
 
-本教學課程將說明角色型存取控制，檢查每個使用者在 Azure Active Directory (AAD) 中定義之「銷售」群組的成員資格。 存取檢查將在.NET 行動服務後端使用 Azure Active directory 的 [圖形 REST API]。 只有屬於「銷售」群組的使用者能夠查詢資料。
+本教學課程將說明角色型存取控制，檢查每個使用者在 Azure Active Directory (AAD) 中定義之「銷售」群組的成員資格。 存取檢查將在.NET 行動服務後端使用 [Graph REST API] Azure Active directory。 只有屬於「銷售」群組的使用者能夠查詢資料。
 
 
->[AZURE.NOTE] 本教學課程的目的是要擴充您驗證知識以加入授權實務作法。 必須先完成 [新增至您的應用程式的驗證] 教學課程使用 Azure Active Directory 驗證提供者。 本教學課程接著將更新 [將驗證新增至您的應用程式] 教學課程中使用的 TodoItem 應用程式。
+>[AZURE.NOTE] 本教學課程的目的是要擴充您驗證知識以加入授權實務作法。 必須先完成 [Add Authentication to your app] 教學課程中使用 Azure Active Directory 驗證提供者。 本教學課程接著將更新的 TodoItem 應用程式中使用 [Add Authentication to your app] 教學課程。
 
-##先決條件
+##必要條件
 
 本教學課程需要下列各項：
 
 * 執行於 Windows 8.1 的 Visual Studio 2013。
-* 完成 [新增至您的應用程式的驗證] 教學課程使用 Azure Active Directory 驗證提供者。
+* 完成 [Add Authentication to your app] 教學課程中使用 Azure Active Directory 驗證提供者。
 
 
 
@@ -47,7 +47,7 @@
 ##為整合的應用程式產生金鑰
 
 
-在 [將驗證新增至您的應用程式] 教學課程中，建立註冊整合的應用程式時完成 [註冊使用 Azure Active Directory 登入] 步驟。 在本節中，您將產生在使用該整合的應用程式用戶端識別碼讀取目錄資訊時所將使用的金鑰。
+在 [Add Authentication to your app] 教學課程中，建立註冊整合的應用程式完成 [Register to use an Azure Active Directory Login] 步驟。 在本節中，您將產生在使用該整合的應用程式用戶端識別碼讀取目錄資訊時所將使用的金鑰。
 
 [AZURE.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../../includes/mobile-services-generate-aad-app-registration-access-key.md)]
 
@@ -179,7 +179,7 @@
 
 9. 在 AuthorizeAadRole.cs 中，更新 `AuthorizeAadRole` 類別中的 `GetAADToken` 方法。 此方法會使用儲存在行動服務中的應用程式設定，以取得從 ADAL 存取 AAD 的權杖。
 
-    >[AZURE.NOTE] .NET 適用的 ADAL 包含記憶體中的權杖快取，協助減輕對您 Active Directory 的額外網路流量。 但是，您可以寫入自己的快取實作或完全停用快取。 如需詳細資訊，請參閱 [適用於.NET 的 ADAL]。
+    >[AZURE.NOTE] .NET 適用的 ADAL 包含記憶體中的權杖快取，協助減輕對您 Active Directory 的額外網路流量。 但是，您可以寫入自己的快取實作或完全停用快取。 如需詳細資訊，請參閱 [ADAL for .NET]。
 
         // Use ADAL and the authentication app settings from the Mobile Service to get an AAD access token
         private async Task<string> GetAADToken()
@@ -392,4 +392,5 @@
 [Graph REST API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [ADAL for .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
+
 

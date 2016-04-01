@@ -25,7 +25,7 @@ Azure 資源管理員會完全稽核在 Azure 資源上執行的所有作業，�
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 按一下 [ **瀏覽** ，然後選取 **稽核記錄檔**。  
     ![瀏覽中樞](./media/insights-debugging-with-events/Insights_Browse.png)
-3. 這將會開啟一個刀鋒視窗，顯示過去 7 天影響任何訂用帳戶的所有事件。 頂端是圖表，顯示資料的層級下, 面是記錄檔的完整清單:
+3. 這將會開啟一個刀鋒視窗，顯示過去 7 天影響任何訂用帳戶的所有事件。 頂端是圖表，顯示資料的層級下, 面是記錄檔的完整清單 ︰
     ![所有事件](./media/insights-debugging-with-events/Insights_AllEvents.png)
 
 >[AZURE.NOTE] 您只能在 Azure 入口網站檢視給定訂閱 500 個最新的事件。 
@@ -74,3 +74,4 @@ Azure 資源管理員會完全稽核在 Azure 資源上執行的所有作業，�
 * [接收警示通知](insights-receive-alert-notifications.md) 每當事件發生時。
 * [監視服務計量](insights-how-to-customize-monitoring.md) 並確認您的服務可用且可回應。
 * [追蹤服務健康狀況](insights-service-health.md) 找出 Azure 何時遭遇效能降低或服務中斷。  
+

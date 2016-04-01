@@ -22,7 +22,7 @@
 
 ## 叢集連線類型
 
-Azure Service Fabric 叢集所支援的連線兩種類型: **不安全** 連線和 **x509 憑證為基礎** 安全連線。 (如 Service Fabric 叢集裝載在內部， **Windows** 和 **dSTS** 也支援驗證。)建立叢集時，您必須設定叢集連線類型。 建立之後，即無法變更連線類型。
+Azure Service Fabric 叢集所支援的連線兩種類型 ︰ **不安全** 連線和 **x509 憑證為基礎** 安全連線。 (如 Service Fabric 叢集裝載在內部， **Windows** 和 **dSTS** 也支援驗證。)建立叢集時，您必須設定叢集連線類型。 建立之後，即無法變更連線類型。
 
 「Visual Studio Service Fabric 工具」支援所有用於連線到叢集來進行發行的驗證類型。 請參閱 [從 Azure 入口網站設定 Service Fabric 叢集](service-fabric-cluster-creation-via-portal.md) 如需如何設定安全的 Service Fabric 叢集的指示。
 
@@ -30,11 +30,11 @@ Azure Service Fabric 叢集所支援的連線兩種類型: **不安全** 連線�
 
 如果您要發行從 Visual Studio 中，Service Fabric 專案 **發行** 對話方塊可讓您選擇的 Azure Service Fabric 叢集，方法是按一下 **選取** 按鈕 **連接端點** 一節。 您可以登入您的 Azure 帳戶，然後選取您訂用帳戶底下現有的叢集。
 
-![發行] 對話方塊可讓使用者設定 Service Fabric 連線][] publishdialog
+![[發行] 對話方塊可讓使用者設定 Service Fabric 連線][publishdialog]
 
  **選取 Service Fabric 叢集** 對話方塊會自動驗證叢集的連線。 如果通過驗證，即表示您的系統已安裝正確的憑證，可安全地連線到叢集，否則即表示您的叢集不安全。 驗證失敗的原因可能是網路問題，或是您的系統尚未正確設定來連線到安全的叢集。
 
-![選取 Service Fabric 叢集] 對話方塊可讓使用者設定連接選擇現有或建立新的 service fabric 叢集連線][] selectsfcluster
+![[選取 Service Fabric 叢集] 對話方塊可讓使用者選擇現有的或建立新的 Service Fabric 叢集連線來設定連線][selectsfcluster]
 
 ### 連線到安全的叢集
 
@@ -46,7 +46,7 @@ Azure Service Fabric 叢集所支援的連線兩種類型: **不安全** 連線�
 
 4.  [選擇性]：您可以編輯發行設定檔以指定安全的叢集連線。
 
-    由於您正手動編輯「發行設定檔」XML 檔案以指定憑證資訊，因此請務必記下憑證存放區名稱、存放區位置，以及憑證指紋。 您將必須為憑證的存放區名稱和存放區位置提供這些值。 請參閱 [How to: 擷取憑證的指紋](https://msdn.microsoft.com/library/ms734695(v=vs.110).aspx) 如需詳細資訊。
+    由於您正手動編輯「發行設定檔」XML 檔案以指定憑證資訊，因此請務必記下憑證存放區名稱、存放區位置，以及憑證指紋。 您將必須為憑證的存放區名稱和存放區位置提供這些值。 請參閱 [How to ︰ 擷取憑證的指紋](https://msdn.microsoft.com/library/ms734695(v=vs.110).aspx) 如需詳細資訊。
 
      *ClusterConnectionParameters* 參數可讓您指定連接至 Service Fabric 叢集時要使用的 PowerShell 參數。 有效的參數是 Connect-ServiceFabricCluster Cmdlet 所接受的任何參數。 請參閱 [Connect-servicefabriccluster](https://msdn.microsoft.com/library/mt125938.aspx) 可用參數的清單。
 
@@ -75,3 +75,4 @@ Azure Service Fabric 叢集所支援的連線兩種類型: **不安全** 連線�
 <!--Image references-->
 [publishdialog]:./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png
 [selectsfcluster]:./media/service-fabric-visualstudio-configure-secure-connections/selectsfcluster.png
+

@@ -88,11 +88,11 @@ Apache Spark|1.3.1|1.3.1|||
 
 - **高可用性 (HA)** -已新增第二個前端節點，以提升服務的可用性 HDInsight 所部署的 Hadoop 叢集中。 Hadoop 叢集的標準實作通常包含單一前端節點。 HDInsight 會透過新增次要前端節點，來將這個單一失敗點移除。 除非客戶使用超大型前端節點 (而不是預設的大型節點) 來建立叢集，否則新的 HA 叢集組態開關並不會變更叢集價格。
 
-- **Hive 效能** -訂單量級改善 Hive 查詢回應時間 (最多 40 個 x) 和資料壓縮 (最多 80%) 使用 **最佳化資料列單欄式** (ORC) 格式。
+- **Hive 效能** -訂單量級改善 Hive 查詢回應時間 (最多 40 個 x) 和資料壓縮 （最多 80%） 使用 **最佳化資料列單欄式** (ORC) 格式。
 
 - **Pig、 Sqoop、 Oozie、 Ambari** -元件版本 HDInsight 叢集 3.0 版升級 (HDP 2.0/h 2.2) 與 HDInsight 叢集 2.1 版 (HDP 1.3/h 1.2) 的地位。 詳情請參閱下列版本表格。
 
-- **Mahout** -這個可調整的機器學習演算法的程式庫已預先安裝，在 HDInsight 3.1 (和更新版本) Hadoop 叢集。 以便您在無需任何其他叢集組態需求的情況下執行 Mahout 工作。
+- **Mahout** -這個可調整的機器學習演算法的程式庫已預先安裝，在 HDInsight 3.1 （和更新版本） Hadoop 叢集。 以便您在無需任何其他叢集組態需求的情況下執行 Mahout 工作。
 
 - **虛擬網路支援** -HDInsight 叢集可以與 Azure 虛擬網路一起使用，來支援隔離雲端資源或與您的資料中心裡的那些雲端資源連結的混合式案例。
 
@@ -166,4 +166,5 @@ SLA 是根據「支援期間」來定義。 「支援期間」是指 Microsoft �
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
 [zookeeper]: http://zookeeper.apache.org/
+
 

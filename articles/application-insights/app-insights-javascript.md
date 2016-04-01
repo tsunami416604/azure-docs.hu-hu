@@ -44,7 +44,7 @@ Application Insights 資源是您的頁面的效能和使用量相關資料顯�
 ![選擇 [新增]、[開發人員服務]、[Application Insights]。](./media/app-insights-javascript/01-create.png)
 
 
-*已經有問題嗎?*[建立資源的詳細資訊](app-insights-create-new-resource.md)。
+*已經有問題了嗎？* [建立資源的詳細資訊](app-insights-create-new-resource.md)。
 
 
 ## 將 SDK 指令碼加入至您的應用程式或網頁
@@ -62,7 +62,7 @@ Application Insights 資源是您的頁面的效能和使用量相關資料顯�
 
 ([的指令碼。 深入說明](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
 
-*(如果您使用的是已知網頁架構，請尋找 Application Insights 配接器。 例如，沒有 [AngularJS 模組](http://ngmodules.org/modules/angular-appinsights)。)*
+*（如果您使用的是已知網頁架構，請尋找 Application Insights 配接器。 例如，沒有 [AngularJS 模組](http://ngmodules.org/modules/angular-appinsights)。)*
 
 
 ## <a name="run"></a>執行您的應用程式
@@ -109,9 +109,9 @@ Application Insights 資源是您的頁面的效能和使用量相關資料顯�
 
 ![](./media/app-insights-javascript/14-usage.png)
 
-* **使用者:** 圖表的時間範圍內的不同使用者的計數。 (Cookie 是用來識別傳回的使用者。)
-* **工作階段:** 會計算為工作階段，當使用者未進行任何要求達 30 分鐘。
-* **頁面檢視** 計算對 trackpageview ()，通常在每個網頁中呼叫一次呼叫的數目。
+* **使用者 ︰** 圖表的時間範圍內的不同使用者的計數。 (Cookie 是用來識別傳回的使用者。)
+* **工作階段 ︰** 會計算為工作階段，當使用者未進行任何要求達 30 分鐘。
+* **頁面檢視** 計算對 trackpageview （），通常在每個網頁中呼叫一次呼叫的數目。
 
 
 ### 逐一點選以獲得詳細資料
@@ -177,7 +177,7 @@ Application Insights 資源是您的頁面的效能和使用量相關資料顯�
 * [監視即時 ASP.NET 應用程式](app-insights-monitor-performance-live-website-now.md)
 * [監視即時 Java 應用程式](app-insights-java-live.md)
 
-## <a name="video"></a> 影片: 追蹤使用量
+## <a name="video"></a>影片：追蹤使用量
 
 > [AZURE.VIDEO tracking-usage-with-application-insights]
 
@@ -186,6 +186,7 @@ Application Insights 資源是您的頁面的效能和使用量相關資料顯�
 * [追蹤流量](app-insights-web-track-usage.md)
 * [自訂事件和計量](app-insights-api-custom-events-metrics.md)
 * [Build-measure-learn](app-insights-overview-usage.md)
+
 
 
 

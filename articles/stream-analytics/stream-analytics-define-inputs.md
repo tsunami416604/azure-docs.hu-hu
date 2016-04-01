@@ -146,7 +146,7 @@ Azure IoT 中樞是已針對 IoT 案例最佳化的高延展性發佈/訂閱事�
 <tr>
 <td>路徑前置詞模式 [選用]</td>
 <td>用來在指定容器中找出 Blob 的檔案路徑。
-在該路徑內，您也可以指定下列 3 個變數的一個或多個執行個體：<BR>{date}、{time}、<BR>{partition}<BR>範例 1：cluster1/logs/{date}/{time}/{partition}<BR>範例 2：cluster1/logs/{date}<P>請注意，"*"不是路徑前置詞允許的值。 唯一有效 <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob 的字元</a> 允許的。</td>
+在該路徑內，您也可以指定下列 3 個變數的一個或多個執行個體：<BR>{date}、{time}、<BR>{partition}<BR>範例 1：cluster1/logs/{date}/{time}/{partition}<BR>範例 2：cluster1/logs/{date}<P>請注意，"*"不是路徑前置詞允許的值。 唯一有效 <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob 字元</a> 允許。</td>
 </tr>
 <tr>
 <td>日期格式 [選用]</td>
@@ -209,4 +209,5 @@ FROM Input
 [stream.analytics.get.started]: stream-analytics-get-started.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+
 

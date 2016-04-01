@@ -60,7 +60,7 @@
 
 +   [Log4Net、NLog 或 System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 +   [Java、Log4J 或 Logback](app-insights-java-trace-logs.md)
-+   [語意記錄 (平板)](https://github.com/fidmor89/SLAB_AppInsights)& #151; 整合 [語意記錄應用程式區塊](https://msdn.microsoft.com/library/dn440729.aspx)
++   [語意記錄 （平板）](https://github.com/fidmor89/SLAB_AppInsights)& #151; 整合 [語意記錄應用程式區塊](https://msdn.microsoft.com/library/dn440729.aspx)
 +   [雲端式負載測試](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 
 
@@ -82,5 +82,6 @@
 ## <a name="projects"></a> 建置您自己的 SDK
 
 如果您的語言或平台中還沒有 SDK，您會想要建置一個嗎？ 看看程式碼中列出的現有 sdk [GitHub 上的 Application Insights SDK 專案](https://github.com/Microsoft/AppInsights-Home)。
+
 
 

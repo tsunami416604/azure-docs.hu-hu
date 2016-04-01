@@ -28,9 +28,9 @@
 
 ![](./media/app-service-api-dotnet-consume-internal/tryitout.png)
 
-如需如何呼叫 API 應用程式設定為 **公用 (匿名)** 或 **公用 (驗證)** 存取層級，請參閱 [Azure App Service 中的.NET 用戶端的 API 應用程式](app-service-api-dotnet-consume.md)。
+如需如何呼叫 API 應用程式設定為 **公用 （匿名）** 或 **公用 （驗證）** 存取層級，請參閱 [Azure App Service 中的.NET 用戶端的 API 應用程式](app-service-api-dotnet-consume.md)。
 
-## 先決條件
+## 必要條件
 
 此教學課程假設您已熟悉如何建立專案，並在 Visual Studio 中，其中加入程式碼，以及如何 [管理 API 應用程式在 Azure 預覽入口網站中的](../app-service-api-apps-manage-in-portal.md)。
 
@@ -61,7 +61,7 @@
 
 下列步驟會更詳細地說明 [Azure App Service 中的.NET 用戶端的 API 應用程式](app-service-api-dotnet-consume.md)。 
 
-3. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 (而非方案)，然後選取 **加入 > Azure API 應用程式用戶端**。 
+3. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 （而非方案），然後選取 **加入 > Azure API 應用程式用戶端**。 
 
 3. 在 **加入的 Azure API 應用程式用戶端** ] 對話方塊中，按一下 [ **從 Azure API 應用程式下載**。 
 
@@ -94,7 +94,7 @@
 若要呼叫 API 應用程式的存取層級設定為受保護 **內部**, ，您必須加入 
 HTTP 要求的內部驗證標頭。 這些標頭會通知目標 API 應用程式，而其呼叫來源是從相同資源群組內呼叫的對等 API 應用程式。 
 
-App Service SDK 會產生用戶端類別，以簡化您撰寫來呼叫 API 應用程式的程式碼。 若要呼叫 **公用 (匿名)** API 應用程式，您只需要建立用戶端物件，然後呼叫方法，如此範例所示:
+App Service SDK 會產生用戶端類別，以簡化您撰寫來呼叫 API 應用程式的程式碼。 若要呼叫 **公用 （匿名）** API 應用程式，您只需要建立用戶端物件，然後呼叫方法，如此範例所示 ︰
 
         var client = new ContactsList();
         var contacts = await client.Contacts.GetAsync();
@@ -168,7 +168,7 @@ App Service SDK 會產生用戶端類別，以簡化您撰寫來呼叫 API 應�
 
 1. 建立 ContactNames API 應用程式。
 
-    * 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 (而非方案)，然後按一下 **發行**。 
+    * 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 （而非方案），然後按一下 **發行**。 
 
     * 按一下 [ **設定檔** 索引標籤，然後再按一下 **Microsoft Azure API 應用程式**。 
 
@@ -208,7 +208,7 @@ App Service SDK 會產生用戶端類別，以簡化您撰寫來呼叫 API 應�
 
         https://microsoft-apiapp214f26e673e5449a214f26e673e5449a.azurewebsites.net/swagger
 
-1. 在 [Swagger UI 頁面上，按一下 [ **ContactNames > 取得 > 試試看!**
+1. 在 [Swagger UI 頁面上，按一下 [ **ContactNames > 取得 > 試試看 ！**
 
     ![](./media/app-service-api-dotnet-consume-internal/tryitout.png)
   
@@ -251,7 +251,7 @@ App Service SDK 取決於 Swagger API 定義來產生用戶端類別。 如果�
 
 1. 請遵循您先前使用的相同程序來部署 API 應用程式程式碼。
 
-    **提示:** 可以略過 **發行 Web** 對話方塊，然後按一下工具列中的單一按鈕即可重新部署。  在 Visual Studio 中，按一下 [ **檢視 > 工具列**, ，並啟用 **Web 單鍵發行** 工具列。  
+    **提示 ︰** 可以略過 **發行 Web** 對話方塊，然後按一下工具列中的單一按鈕即可重新部署。  在 Visual Studio 中，按一下 [ **檢視 > 工具列**, ，並啟用 **Web 單鍵發行** 工具列。  
  
 2. 請遵循您先前的程序來使用 Swagger UI。
 
@@ -261,10 +261,11 @@ App Service SDK 取決於 Swagger API 定義來產生用戶端類別。 如果�
   
 ## 後續步驟
 
-本文說明如何從 .NET 用戶端取用內部 API 應用程式。 如需如何使用 API 應用程式設定為 **公用 (驗證)** 和 **公用 (匿名)** 存取層級，請參閱 [Azure App Service 中的.NET 用戶端的 API 應用程式](app-service-api-dotnet-consume.md)。  
+本文說明如何從 .NET 用戶端取用內部 API 應用程式。 如需如何使用 API 應用程式設定為 **公用 （驗證）** 和 **公用 （匿名）** 存取層級，請參閱 [Azure App Service 中的.NET 用戶端的 API 應用程式](app-service-api-dotnet-consume.md)。  
 
 如需其他從.NET 用戶端呼叫 API 應用程式的程式碼範例，請下載 [Azure Cards](https://github.com/Azure-Samples/API-Apps-DotNet-AzureCards-Sample) 範例應用程式。
 
 應用程式服務中驗證的相關資訊，請參閱 [API 應用程式和行動應用程式驗證](../app-service/app-service-authentication-overview.md)。
  
+
 

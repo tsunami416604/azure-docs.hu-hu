@@ -44,3 +44,4 @@
 
 [Event Hubs tutorial]: event-hubs-csharp-ephcs-getstarted.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+

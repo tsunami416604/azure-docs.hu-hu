@@ -28,7 +28,7 @@ Azure 儲存體帳戶可讓您存取 Azure 儲存體中的 Azure Blob、佇列�
 儲存體帳戶分為兩種類型：
 
 - 標準儲存體帳戶包含 Blob、資料表、佇列和檔案儲存體。 
-- 進階儲存體帳戶目前僅支援 Azure 虛擬機器磁碟。 請參閱 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md) 的高階儲存體的深入概觀。
+- 進階儲存體帳戶目前僅支援 Azure 虛擬機器磁碟。 請參閱 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md) 的高階儲存體的深入概觀。
 
 ## 儲存體帳戶計費
 
@@ -85,19 +85,19 @@ Azure 儲存體帳戶可讓您存取 Azure 儲存體中的 Azure Blob、佇列�
 
 每個儲存在 Azure 儲存體中的物件都有一個唯一 URL 位址。 儲存體帳戶名稱會構成該位址的子網域。 子網域和網域名稱，即每個服務的特定組合形成 *端點* 儲存體帳戶。
 
-例如，如果您儲存體帳戶的名稱為 *mystorageaccount*, ，然後儲存體帳戶的預設端點包括:
+例如，如果您儲存體帳戶的名稱為 *mystorageaccount*, ，然後儲存體帳戶的預設端點包括 ︰
 
-- Blob 服務: http://*mystorageaccount*。 windows.net
+- Blob 服務 ︰ http://*mystorageaccount*。 windows.net
 
-- 表格服務: http://*mystorageaccount*。.table.core.windows.net
+- 表格服務 ︰ http://*mystorageaccount*。.table.core.windows.net
 
-- 佇列服務: http://*mystorageaccount*。 queue.core.windows.net
+- 佇列服務 ︰ http://*mystorageaccount*。 queue.core.windows.net
 
-- 檔案服務: http://*mystorageaccount*。 windows.net
+- 檔案服務 ︰ http://*mystorageaccount*。 windows.net
 
 您可以檢視的端點中的儲存體儀表板上的儲存體帳戶 [Azure 傳統入口網站](manage.windowsazure.com) 之後已建立的帳戶。
 
-用以存取儲存體帳戶中某物件的 URL，可藉由在端點後附加該物件在儲存體帳戶中的位置來建置。 例如，blob 位址格式可能如下: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*。
+用以存取儲存體帳戶中某物件的 URL，可藉由在端點後附加該物件在儲存體帳戶中的位置來建置。 例如，blob 位址格式可能如下 ︰ http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*。
 
 您也可以設定與儲存體帳戶搭配使用的自訂網域名稱。 請參閱 [Azure 儲存體帳戶中設定自訂網域名稱的 blob 資料](storage-custom-domain-name.md) 如需詳細資訊。
 
@@ -172,3 +172,4 @@ Azure 儲存體帳戶可讓您存取 Azure 儲存體中的 Azure Blob、佇列�
 - 若要深入了解 Azure 儲存體，請參閱 Azure 儲存體文件 [Azure.com](http://azure.microsoft.com/documentation/services/storage/)。
 - 請瀏覽 [Azure 儲存體團隊部落格](http://blogs.msdn.com/b/windowsazurestorage/)。
 - [使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy)
+

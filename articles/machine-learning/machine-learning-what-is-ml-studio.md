@@ -41,7 +41,7 @@ Machine Learning Studio 讓資料科學、預測分析、雲端資源和您的�
 
 當您第一次進入 [Machine Learning Studio](https://studio.azureml.net) 看 **首頁** 頁面。 您可以從這裡檢視文件、影片、網路研討會，以及尋找其他重要資源。
 
-有三個索引標籤的上方: **首頁** (在您啟動)， **Studio**, ，和 **圖庫**。
+有三個索引標籤的上方 ︰ **首頁** （在您啟動）， **Studio**, ，和 **圖庫**。
 
 ### Studio
 
@@ -92,10 +92,10 @@ Machine Learning Studio 讓資料科學、預測分析、雲端資源和您的�
 
 模組是指您在資料上可執行的演算法。 Machine Learning Studio 有許多模組，從資料輸入函數到訓練、評分和驗證程序都有。 以下是隨附模組的一些例子：
 
-- [轉換成 ARFF][轉換-至-arff]-將.NET 序列化資料集轉換為屬性關聯檔案格式 (ARFF)。
-- [基本統計資料][基本-統計資料]-計算基本統計資料，例如平均值、 標準差等。
-- [線性迴歸][線性-迴歸]-建立線上梯度下降線性迴歸模型。
-- [評分模型][評分模型-] 給訓練的分類或迴歸模型。
+- [轉換成 ARFF][convert-to-arff] -將.NET 序列化資料集轉換為屬性關聯檔案格式 (ARFF)。
+- [基本統計資料，][elementary-statistics] -計算基本統計資料，例如平均值、 標準差等。
+- [線性迴歸][linear-regression] -建立線上梯度下降線性迴歸模型。
+- [評分模型][score-model] -給訓練的分類或迴歸模型。
 
 當您建置實驗時，可以從畫布左邊的模組清單選擇。  
 
@@ -114,4 +114,5 @@ Machine Learning Studio 讓資料科學、預測分析、雲端資源和您的�
 [elementary-statistics]: https://msdn.microsoft.com/library/azure/3086b8d4-c895-45ba-8aa9-34f0c944d4d3/
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
+
 

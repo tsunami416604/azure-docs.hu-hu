@@ -139,7 +139,7 @@ Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。  在大多數情況下�
     2011/architecture/description.txt
     2011/photo7.jpg
 
-當您呼叫 **ListBlobs** 'photos' 容器 (如上例所示)，傳回的集合
+當您呼叫 **ListBlobs** 'photos' 容器 （如上例所示），傳回的集合
 將包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 物件
 其分別代表最上層所包含的目錄和 Blob。 下列範例顯示產生的輸出。
 
@@ -254,4 +254,5 @@ Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。  在大多數情況下�
 ## 後續步驟
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
+
 

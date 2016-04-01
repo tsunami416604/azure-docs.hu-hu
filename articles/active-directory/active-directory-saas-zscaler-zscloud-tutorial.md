@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 ZScaler ZSCloud 單一登入的訂用帳戶
   
-完成本教學課程之後, 您已指派給 ZScaler ZSCloud 的 Azure AD 使用者將能夠登入您的 ZScaler ZSCloud 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)
+完成本教學課程之後, 您已指派給 ZScaler ZSCloud 的 Azure AD 使用者將能夠登入您的 ZScaler ZSCloud 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -102,7 +102,7 @@
 
     ![管理使用者和驗證](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800207.png "Manage Users & Authentication")
 
-8.  在 **選擇您的組織的驗證選項** 區段中，執行下列步驟:
+8.  在 **選擇您的組織的驗證選項** 區段中，執行下列步驟 ︰
 
     ![驗證](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800208.png "Authentication")
 
@@ -118,7 +118,7 @@
     3.  若要上傳您下載的憑證，請按一下 [ **Zscaler pem**。
     4.  選取 **啟用 SAML 自動佈建**。
 
-10. 在 **設定使用者驗證** 對話方塊頁面上，執行下列步驟:
+10. 在 **設定使用者驗證** 對話方塊頁面上，執行下列步驟 ︰
 
     ![系統管理](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800210.png "Administration")
 
@@ -204,3 +204,4 @@ ZScaler ZSCloud 需以手動的方式佈建。
     ![是](./media/active-directory-saas-zscaler-zscloud-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

@@ -47,7 +47,7 @@
 
 下列範例顯示如何納入自動換片器檔案及參考 **ServicesBuilder** 類別。
 
-> [AZURE.NOTE] 此範例 (和本文中的其他範例) 假設您已安裝 PHP Client Libraries for Azure 透過編輯器。 如果您手動或透過 PEAR 封裝安裝程式庫，則必須參考 `WindowsAzure.php` 自動換片器檔案。
+> [AZURE.NOTE] 此範例 （和本文中的其他範例） 假設您已安裝 PHP Client Libraries for Azure 透過編輯器。 如果您手動或透過 PEAR 封裝安裝程式庫，則必須參考 `WindowsAzure.php` 自動換片器檔案。
 
     require_once 'vendor\autoload.php';
     use WindowsAzure\Common\ServicesBuilder;
@@ -71,7 +71,7 @@
 若要建立任何 Azure 服務用戶端，您必須使用 **ServicesBuilder** 類別。 您可以：
 
 * 直接將連接字串傳遞給它，或
-* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串:
+* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串 ︰
     * 預設已支援一種外部來源，即環境變數
     * 您可以擴充，以加入新來源 **ConnectionStringSource** 類別。
 
@@ -305,4 +305,5 @@ A **BlobRestProxy** 物件可讓您建立的 blob 容器 **createContainer** 方
 [require_once]: http://php.net/require_once
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
+
 

@@ -19,3 +19,4 @@
 *使用者限制無法增加到超過上面所列的最大限制。 使用者數目取決於用於集合的 VM 數目。 對於基本層，每個 VM 有 16 個使用者。對於標準，每個 VM 則為 10 個使用者。
 
 若要要求增加付費的集合或並行連接數目，傳送電子郵件給 [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com) 的詳細資料所需，包括您的訂閱識別碼。 
+

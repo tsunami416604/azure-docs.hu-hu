@@ -55,7 +55,7 @@ Service Fabric 保證特定類型的狀態序列化程式，僅用於該類型�
 自訂序列化程式需要實作 IStateSerializer<T> 介面。
 這個介面中的兩個核心方法
 * T; Read(BinaryReader binaryReader)
-* void 寫入 (T 值、 BinaryWriter binaryWriter);
+* void 寫入 （T 值、 BinaryWriter binaryWriter）;
 
 第一個為 ReliableObject 所用，使用 BinaryReader 從串流讀取序列化的物件。
 第二個用於反向作業：使用 Binary Writer 將物件寫入串流。
@@ -149,4 +149,5 @@ Service Fabric 期望序列化程式能與新版和舊版完全相容。
 
 ## 後續步驟
  * [可靠服務程式設計模型的進階用法](service-fabric-reliable-services-advanced-usage.md)
+
 

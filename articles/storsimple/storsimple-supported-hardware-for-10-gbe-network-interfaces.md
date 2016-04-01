@@ -111,3 +111,4 @@ Mellanox 已經測試下列小型尺寸隨插即用 (SFP) 收發器、纜線以�
 ## 後續步驟
 
 [深入了解 StorSimple 硬體元件和狀態](storsimple-monitor-hardware-status.md)。
+

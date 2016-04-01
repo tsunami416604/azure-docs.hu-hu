@@ -28,7 +28,7 @@
 
 2.  按一下 [ **Marketplace**, ，按一下 [ **計算**, ，然後輸入 **Oracle** 在搜尋方塊。
 
-3.  選取 **Oracle Database 12c 與 WebLogic Server 12c Standard Edition，在 Windows Server 2012** 或 **Oracle Database 12c 與 WebLogic Server 12c Enterprise Edition Windows Server 2012 上** 映像。 檢閱的資訊 (例如建議的大小)，此映像，然後按一下 **下一步**。
+3.  選取 **Oracle Database 12c 與 WebLogic Server 12c Standard Edition，在 Windows Server 2012** 或 **Oracle Database 12c 與 WebLogic Server 12c Enterprise Edition Windows Server 2012 上** 映像。 檢閱的資訊 （例如建議的大小），此映像，然後按一下 **下一步**。
 
 4.  指定 **主機名稱** 虛擬機器。
 
@@ -70,4 +70,5 @@
 [Microsoft Azure 上使用 Linux 的 Oracle WebLogic Server 12c (英文)](http://www.oracle.com/technetwork/middleware/weblogic/learnmore/oracle-weblogic-on-azure-wp-2020930.pdf)
 
 [Oracle Database 2 Day DBA 12c Release 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
+
 

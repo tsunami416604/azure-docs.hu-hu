@@ -97,7 +97,7 @@ map 和 reduce 處理序會稍有不同，因為它們是 MapReduce 服務的子
 
     ![篩選的清單](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
 
-4. 尋找 **\*\_OPTS** 服務項目要啟用堆積傾印，並新增您想要啟用的選項。 在下圖中，我新增了 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 至 **HADOOP\_NAMENODE\_OPTS** 項目:
+4. 尋找 **\*\_OPTS** 服務項目要啟用堆積傾印，並新增您想要啟用的選項。 在下圖中，我新增了 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 至 **HADOOP\_NAMENODE\_OPTS** 項目 ︰
 
     ![含有 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/ 的 HADOOP_NAMENODE_OPTS](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
@@ -120,4 +120,5 @@ map 和 reduce 處理序會稍有不同，因為它們是 MapReduce 服務的子
     > [AZURE.NOTE] 項目 **重新啟動** 按鈕可能會因的其他服務。
 
 8. 一旦重新啟動服務，使用 **服務動作** 按鈕 **關閉維護模式**。 這麼做可讓 Ambari 繼續監視服務是否有警示。
+
 

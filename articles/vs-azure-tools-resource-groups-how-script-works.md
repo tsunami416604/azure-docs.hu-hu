@@ -55,19 +55,19 @@ Deploy-AzureResourceGroup.ps1 指令碼會執行兩個動作，對於部署工�
     )
     ```
 
-    |參數|說明|
-    |---|---|
-    |$ResourceGroupLocation|區域或資料中心位置的資源群組，例如 **美國西部** 或 **東亞**。|
-    |$ResourceGroupName|Azure 資源群組的名稱。|
-    |$UploadArtifacts|二進位值，指出是否需要從您的系統將構件上傳至 Azure。|
-    |$StorageAccountName|您的構件上傳所在的 Azure 儲存體帳戶的名稱。|
-    |$StorageAccountResourceGroupName|包含儲存體帳戶的 Azure 資源群組的名稱。|
-    |$StorageContainerName|用來上傳構件的儲存體容器名稱。|
-    |$TemplateFile|Azure 資源群組專案中部署檔案 (`<app name>.json`) 的路徑。|
-    |$TemplateParametersFile|Azure 資源群組專案中參數檔案 (`<app name>.parameters.json`) 的路徑。|
-    |$ArtifactStagingDirectory|您的系統上構件本機上傳的路徑，包括 PowerShell 指令碼根資料夾。 這個路徑可以是指令碼位置的絕對或相對路徑。|
-    |$AzCopyPath|AzCopy.exe 工具複製其 .zip 檔案的路徑，包括 PowerShell 指令碼根資料夾。 這個路徑可以是指令碼位置的絕對或相對路徑。|
-    |$DSCSourceFolder|DSC (期望狀態設定) 來源資料夾的路徑，包括 PowerShell 指令碼根資料夾。 這個路徑可以是指令碼位置的絕對或相對路徑。 請參閱 [簡介 Azure PowerShell DSC (Desired State Configuration) 擴充](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx), (如果適用)，如需詳細資訊。|
+  	|參數|說明|
+  	|---|---|
+  	|$ResourceGroupLocation|區域或資料中心位置的資源群組，例如 **美國西部** 或 **東亞**。|
+  	|$ResourceGroupName|Azure 資源群組的名稱。|
+  	|$UploadArtifacts|二進位值，指出是否需要從您的系統將構件上傳至 Azure。|
+  	|$StorageAccountName|您的構件上傳所在的 Azure 儲存體帳戶的名稱。|
+  	|$StorageAccountResourceGroupName|包含儲存體帳戶的 Azure 資源群組的名稱。|
+  	|$StorageContainerName|用來上傳構件的儲存體容器名稱。|
+  	|$TemplateFile|Azure 資源群組專案中部署檔案 (`<app name>.json`) 的路徑。|
+  	|$TemplateParametersFile|Azure 資源群組專案中參數檔案 (`<app name>.parameters.json`) 的路徑。|
+  	|$ArtifactStagingDirectory|您的系統上構件本機上傳的路徑，包括 PowerShell 指令碼根資料夾。 這個路徑可以是指令碼位置的絕對或相對路徑。|
+  	|$AzCopyPath|AzCopy.exe 工具複製其 .zip 檔案的路徑，包括 PowerShell 指令碼根資料夾。 這個路徑可以是指令碼位置的絕對或相對路徑。|
+  	|$DSCSourceFolder|DSC (期望狀態設定) 來源資料夾的路徑，包括 PowerShell 指令碼根資料夾。 這個路徑可以是指令碼位置的絕對或相對路徑。 請參閱 [簡介 Azure PowerShell DSC (Desired State Configuration) 擴充](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx), (如果適用），如需詳細資訊。|
 
 1.  查看構件是否需要上傳至 Azure。 如果不需要，則跳到步驟 11。 否則，執行下列步驟。
 
@@ -75,10 +75,10 @@ Deploy-AzureResourceGroup.ps1 指令碼會執行兩個動作，對於部署工�
 
     Azure 工具使用的參數值 *_artifactsLocation* 和 *_artifactsLocationSasToken* 範本，以管理成品。 如果 PowerShell 指令碼找到具有這些名稱的參數，但是未提供參數值，則指令碼會上傳構件，並且針對這些參數傳回適當的值。 接著，透過 `@OptionsParameters` 將它們傳遞至 Cmdlet。
 
-    |變數|說明|
-    |---|---|
-    |ArtifactsLocationName|Azure 構件所在的路徑。|
-    |ArtifactsLocationSasTokenName|指令碼用來驗證服務匯流排的 SAS (共用存取簽章) 權杖名稱。 請參閱 [使用服務匯流排的共用存取簽章驗證](service-bus-shared-access-signature-authentication.md) 如需詳細資訊。|
+  	|變數|說明|
+  	|---|---|
+  	|ArtifactsLocationName|Azure 構件所在的路徑。|
+  	|ArtifactsLocationSasTokenName|指令碼用來驗證服務匯流排的 SAS (共用存取簽章) 權杖名稱。 請參閱 [使用服務匯流排的共用存取簽章驗證](service-bus-shared-access-signature-authentication.md) 如需詳細資訊。|
 
     ```
     if ($UploadArtifacts) {
@@ -94,7 +94,7 @@ Deploy-AzureResourceGroup.ps1 指令碼會執行兩個動作，對於部署工�
     $OptionalParameters.Add($ArtifactsLocationSasTokenName, $null)
     ```
 
-1.  這一節檢查是否 <app name>。 parameters.json 檔案 (稱為 「 參數檔案 」) 擁有名為的父節點 **參數** (在 `else` 區塊)。 否則，它沒有父節點。 可以接受任一格式。
+1.  這一節檢查是否 <app name>。 parameters.json 檔案 （稱為 「 參數檔案 」） 擁有名為的父節點 **參數** (在 `else` 區塊)。 否則，它沒有父節點。 可以接受任一格式。
     
     ```
     if ($JsonParameters -eq $null) {
@@ -263,3 +263,4 @@ $(Build.StagingDirectory)/AzureResourceGroup1/Scripts/Deploy-AzureResourceGroup.
 [3]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy4bc.png
 [4]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy5c.png
 [5]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy6c.png
+

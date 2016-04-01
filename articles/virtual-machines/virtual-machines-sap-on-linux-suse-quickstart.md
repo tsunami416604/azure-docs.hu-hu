@@ -39,7 +39,7 @@ Azure 映像庫中找到:"SLES 11 SP3 for SAP CAL 」
 
 在 Azure 上的所有新測試都應使用 Azure 資源管理員進行。 尋找 SUSE SLES 映像 
 並使用下列命令，使用 Azure Powershell 或 CLI 版本。 然後可以使用輸出
-例如在部署新的 SUSE Linux VM 的 json 範本中定義之作業系統映像:
+例如在部署新的 SUSE Linux VM 的 json 範本中定義之作業系統映像 ︰
 
 * 尋找現有的發行者，包括 SUSE：
 
@@ -72,7 +72,7 @@ Azure 映像庫中找到:"SLES 11 SP3 for SAP CAL 」
 ## 在 SUSE VM 中安裝 WALinuxAgent 
  
 此代理程式是 Azure 資源庫中的 SLES 映像的一部分。 以下是一個可以在哪裡找到的地方
-手動安裝它的相關資訊 (例如當上傳 SLES OS vhd 從內部部署):
+手動安裝它的相關資訊 （例如當上傳 SLES OS vhd 從內部部署） ︰
 
 <http://software.opensuse.org/package/WALinuxAgent>
 
@@ -95,12 +95,12 @@ Azure 映像庫中找到:"SLES 11 SP3 for SAP CAL 」
 <https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-vhd-suse/>
 
 如果您想要上傳保留例如現有的 SAP 的 VM 沒有在結束取消佈建步驟
-安裝，以及主機名稱就必須檢查下列項目:
+安裝，以及主機名稱就必須檢查下列項目 ︰
 
 * 確定作業系統磁碟是透過 UUID 掛接，而不是透過裝置識別碼。 只在 /etc/fstab 變更 UUID 對作業系統磁碟而言並不夠。 不要忘了也要調整開機載入器，例如透過 yast 或編輯 /boot/grub/menu.lst
 * 萬一使用者的 SUSE 作業系統磁碟使用 vhdx 格式，為了上傳至 Azure 而將它轉換為 vhd，很有可能網路裝置已從 eth0 變更為 eth1。
 若要在 Azure 上稍後應該變更回 eth0 像開機時避免問題描述
-這裡: <https://dartron.wordpress.com/2013/09/27/fixing-eth1-in-cloned-sles-11-vmware/>
+這裡 ︰ <https://dartron.wordpress.com/2013/09/27/fixing-eth1-in-cloned-sles-11-vmware/>
 
 除了文章中說明的以外，建議您一併移除 
 
@@ -114,7 +114,7 @@ Azure 映像庫中找到:"SLES 11 SP3 for SAP CAL 」
 SAP 硬體金鑰用於 SAP 授權。 SAP 核心每次都要調整為請使用 
 這個項目。 
 Linux 目前的 SAP 核心版本不包括此程式碼變更。 因此它可能會發生此問題 
-在某些情況下 (例如 Azure VM 調整大小)，SAP 硬體金鑰變更 」 和 「 SAP 授權
+在某些情況下 （例如 Azure VM 調整大小），SAP 硬體金鑰變更 」 和 「 SAP 授權
 已不再有效
 
 ## 分散式 SAP 安裝中的 NFS 共用
@@ -128,8 +128,8 @@ Linux 目前的 SAP 核心版本不包括此程式碼變更。 因此它可能�
 ## 邏輯磁碟區
 
 LVM 在 Azure 上並未經過徹底的驗證。 如果需要大量的邏輯磁碟區跨多個 Azure 
-應該使用資料 (例如 SAP 資料庫) 的磁碟 mdadm。 以下是不錯的部落格的
-描述如何使用 mdadm，在 Azure 上的 Linux RAID 設定:
+應該使用資料 （例如 SAP 資料庫） 的磁碟 mdadm。 以下是不錯的部落格的
+描述如何使用 mdadm，在 Azure 上的 Linux RAID 設定 ︰
 
 <https://azure.microsoft.com/documentation/articles/virtual-machines-linux-configure-raid/>
 
@@ -149,7 +149,7 @@ LVM 在 Azure 上並未經過徹底的驗證。 如果需要大量的邏輯磁�
 
 如果有人想要安裝完整的 SAP 示範系統內使用如桌面
 一個單一的 VM，包括 SAP GUI、 瀏覽器、 SAP 管理主控台等這裡有一個小提示 
-安裝 Azure SLES 映像:
+安裝 Azure SLES 映像 ︰
 
    SLES 11
 
@@ -170,6 +170,7 @@ LVM 在 Azure 上並未經過徹底的驗證。 如果需要大量的邏輯磁�
 這表示結尾，SAP 不支援 Oracle SUSE 或 RedHat 公用定域機組中
 例如 Azure。 
 客戶應直接連絡 Oracle 來討論這個主題。
+
 
 
 

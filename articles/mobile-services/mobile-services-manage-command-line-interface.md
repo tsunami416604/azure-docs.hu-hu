@@ -35,11 +35,11 @@
 
 下列清單包含安裝命令列工具的相關資訊，視作業系統而定：
 
-* **Windows**: 下載 [Azure 命令列工具安裝程式][windows-installer]。 開啟已下載的 .msi 檔案，並依照提示完成安裝步驟。
+* **Windows**︰ 下載 [Azure 命令列工具安裝程式][windows-installer]。 開啟已下載的 .msi 檔案，並依照提示完成安裝步驟。
 
-* **Mac**: 下載 [Azure SDK 安裝程式][mac-installer]。 開啟已下載的 .pkg 檔案，並依照提示完成安裝步驟。
+* **Mac**︰ 下載 [Azure SDK 安裝程式][mac-installer]。 開啟已下載的 .pkg 檔案，並依照提示完成安裝步驟。
 
-* **Linux**: 安裝最新版 [Node.js][nodejs-org] (請參閱 [透過封裝管理員來安裝 Node.js][install-node-linux])，然後執行下列命令:
+* **Linux**︰ 安裝最新版 [Node.js][nodejs-org] (請參閱 [透過封裝管理員來安裝 Node.js][install-node-linux])，然後執行下列命令 ︰
 
     npm install azure-cli -g
 
@@ -57,7 +57,7 @@
 
     azure account import <path-to-settings-file>
 
-若要移除所有透過 <code>import</code> 命令儲存的資訊，請使用 <code>account clear</code> 命令：
+您可以移除所有儲存的資訊 <code>import</code> 命令，以使用 <code>account clear</code> 命令 ︰
 
     azure account clear
 
@@ -95,7 +95,7 @@
 
 如果加入 `-a` 和 `-q` 參數，這個命令也會直接刪除行動服務使用的 SQL Database 和伺服器，而不會顯示提示。
 
-> [AZURE.NOTE] 如果您未指定 <code>-q</code> 參數以及 <code>-</code> 或 <code>-d</code>, ，暫停執行，而且系統會提示您對 SQL Database 選取刪除選項。 請只在沒有其他服務使用該資料庫或伺服器的情況下使用 <code>-a</code> 參數；否則請使用 <code>-d</code> 參數僅刪除屬於所要刪除行動服務的資料。
+> [AZURE.NOTE] 如果您未指定 <code>-q</code> 參數以及 <code>-a</code> 或 <code>-d</code>, ，暫停執行，而且系統會提示您對 SQL Database 選取刪除選項。 只使用 <code>-a</code> 在沒有其他服務使用資料庫或伺服器的參數; 否則請使用 <code>-d</code> 參數僅刪除屬於所要刪除行動服務的資料。
 
 ##如何在行動服務中建立資料表
 
@@ -114,7 +114,7 @@
 |指令碼值 |入口網站值 |
 |========|========|
 |`public`|Everyone|
-|`application`(預設值) |應用程式 key| 具有的任何人
+|`application`（預設值） |應用程式 key| 具有的任何人
 |`user`|只有已驗證的使用者 |
 |`admin`|僅指令碼和管理員 |
 
@@ -152,7 +152,7 @@
         ...
     }
 
-如需關於註冊指令碼的詳細資訊，請參閱 [行動服務伺服器指令碼參考]。
+如需關於註冊指令碼的詳細資訊，請參閱 [Mobile Services server script reference]。
 
 <!-- Anchors. -->
 [Download and install the command-line tools]: #install
@@ -191,5 +191,6 @@
 [windows-installer]: http://go.microsoft.com/fwlink/p?LinkID=275464
 [reference-docs]: http://azure.microsoft.com/documentation/articles/virtual-machines-command-line-tools/#Commands_to_manage_mobile_services
 [How to install the Azure Command-Line Tools for Mac and Linux]: http://go.microsoft.com/fwlink/p/?LinkId=275795
+
 
 

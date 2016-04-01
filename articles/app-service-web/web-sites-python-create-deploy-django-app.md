@@ -26,7 +26,7 @@
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 
 ## 必要條件
@@ -35,17 +35,17 @@
 - Python 2.7 或 3.4
 - setuptools、pip、virtualenv (僅 Python 2.7)
 - Git
-- [Python Tools for Visual Studio][] (PTVS)-注意: 這是選擇性的
+- [Python Tools for Visual Studio][] (PTVS)-請注意 ︰ 這是選擇性的
 
 **請注意**: Python 專案目前不支援 TFS 發佈。
 
 ### Windows
 
-如果您還沒有 Python 安裝 2.7 或 3.4 (32 位元)，我們建議您安裝 [Azure SDK for Python 2.7] 或 [Azure SDK for Python 3.4] 使用 Web Platform Installer。 這會安裝 32 位元版本的 Python、setuptools、pip、virtualenv 等 (32 位元 Python 安裝於 Azure 主機電腦上)。 或者，您可以從 [python.org] 取得 Python。
+如果您還沒有 Python 安裝 2.7 或 3.4 （32 位元），我們建議您安裝 [Azure SDK for Python 2.7] 或 [Azure SDK for Python 3.4] 使用 Web Platform Installer。 這會安裝 32 位元版本的 Python、setuptools、pip、virtualenv 等 (32 位元 Python 安裝於 Azure 主機電腦上)。 或者，您可以取得從 Python [python.org]。
 
-針對 Git，我們建議 [Git for Windows] 或 [GitHub for Windows]。 如果您使用 Visual Studio，您可以使用整合式的 Git 支援。
+針對 Git，我們建議您 [Git for Windows] 或 [GitHub for Windows]。 如果您使用 Visual Studio，您可以使用整合式的 Git 支援。
 
-我們也建議您安裝 [Visual Studio 的 Python 工具 2.2]。 這是選擇性的但如果您有 [Visual Studio]，包括免費的 Visual Studio Community 2013 或 Visual Studio Express 2013 Web，則這會提供您絕佳的 Python IDE。
+我們也建議您安裝 [Python Tools 2.2 for Visual Studio]。 這是選擇性的但如果您有 [Visual Studio], ，包含免費的 Visual Studio Community 2013 或 Visual Studio Express 2013 for Web，然後它會提供您絕佳的 Python IDE。
 
 ### Mac/Linux
 
@@ -101,7 +101,7 @@
     \DjangoWebProject.pyproj
     \DjangoWebProject.sln
 
-專案 [Visual Studio 的 Python 工具] 的檔案以供使用。
+專案檔，以搭配 [Python Tools for Visual Studio]。
 
     \ptvs_virtualenv_proxy.py
 
@@ -183,7 +183,7 @@ Python 虛擬環境。 如果 Web 應用程式上不存在相容的虛擬環境�
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-browser-django.png)
 
-您可以在來源中設定中斷點、使用監看式視窗等等。上的各種功能，請參閱 [Python Tools for Visual Studio 文件] 如需詳細資訊。
+您可以在來源中設定中斷點、使用監看式視窗等等。請參閱 [Python Tools for Visual Studio Documentation] 如需有關各項功能。
 
 ### 進行變更
 
@@ -484,19 +484,19 @@ Azure 提供了資料庫服務，可從 Django 應用程式輕鬆使用。 教�
 
 請遵循下列連結以深入了解 Django 和 Python Tools for Visual Studio：
 
-- [Django 文件]
-- [Python Tools for Visual Studio 文件]
+- [Django 說明文件]
+- [Python Tools for Visual Studio 說明文件]
 
 如需使用 SQL Database 和 MySQL 的資訊：
 
-- [Django 和 MySQL Azure 上採用 Python Tools for Visual Studio]
-- [Django 和 SQL Database，Azure 上採用 Python Tools for Visual Studio]
+- [Azure 上使用 Python Tools for Visual Studio 的 Django 和 MySQL]
+- [Azure 上使用 Python Tools for Visual Studio 的 Django 和 SQL Database]
 
 如需詳細資訊，請參閱 [Python 開發人員中心](/develop/python/)。
 
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 
 <!--Link references-->
@@ -516,4 +516,5 @@ Azure 提供了資料庫服務，可從 Django 應用程式輕鬆使用。 教�
 [Visual Studio]: http://www.visualstudio.com/
 [Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
 [Django Documentation]: https://www.djangoproject.com/
+
 

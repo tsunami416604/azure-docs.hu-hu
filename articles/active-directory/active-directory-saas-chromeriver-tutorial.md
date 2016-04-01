@@ -23,7 +23,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Chromeriver 單一登入的訂用帳戶
 
-完成本教學課程之後, 您已指派給 Chromeriver 的 Azure AD 使用者將能夠登入 Chromeriver 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Chromeriver 的 Azure AD 使用者將能夠登入 Chromeriver 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -76,11 +76,11 @@
 
     ![設定單一登入](./media/active-directory-saas-chromeriver-tutorial/IC802758.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式設定** 頁面上，執行下列步驟:
+3.  在 **設定應用程式設定** 頁面上，執行下列步驟 ︰
 
     ![設定 App 設定](./media/active-directory-saas-chromeriver-tutorial/IC802759.png "Configure App Settings")
 
-    1.  在 **回覆 URL** 文字方塊中，輸入您 Chromeriver **AssertionConsumerService URL** (例如: *https://qa-app.chromeriver.com/login/sso/saml/consume?customerId=911*)。  
+    1.  在 **回覆 URL** 文字方塊中，輸入您 Chromeriver **AssertionConsumerService URL** (例如 ︰ *https://qa-app.chromeriver.com/login/sso/saml/consume?customerId=911*)。  
 
         >[AZURE.NOTE] 您可以從 Chromeriver 支援小組取得此值。
 
@@ -122,4 +122,5 @@ Chromeriver 的使用者帳戶必須由 Chromeriver 支援小組建立。
     ![是](./media/active-directory-saas-chromeriver-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

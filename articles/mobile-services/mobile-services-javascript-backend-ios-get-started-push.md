@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
-本主題說明如何新增推播通知給 [快速入門專案](mobile-services-ios-get-started.md), ，以便您的行動服務推播通知，每次一筆記錄插入時傳送。 您必須完成 [開始使用行動服務] 第一次。
+本主題說明如何新增推播通知給 [快速入門專案](mobile-services-ios-get-started.md), ，以便您的行動服務推播通知，每次一筆記錄插入時傳送。 您必須先完成 [Get Started with Mobile Services] 第一次。
 
 > [AZURE.NOTE]  [IOS 模擬器不支援推播通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html), ，所以您必須使用實體 iOS 裝置。 您也需要付費註冊 [Apple Developer Program 成員資格](https://developer.apple.com/programs/ios/)。
 
@@ -33,9 +33,9 @@
 
 ## <a id="update-scripts"></a>更新後端指令碼以傳送推播通知
 
-* 在 [Azure 傳統入口網站]，按一下 [ **資料** 標籤，然後按一下 **TodoItem**。 在 **TodoItem**, ，按一下 [ **指令碼** 索引標籤並選取 **插入**。 這會顯示函式中發生插入時所叫用 **TodoItem** 資料表。
+* 在 [Azure classic portal], ，按一下 [ **資料** 標籤，然後按一下 **TodoItem**。 在 **TodoItem**, ，按一下 [ **指令碼** 索引標籤並選取 **插入**。 這會顯示函式中發生插入時所叫用 **TodoItem** 資料表。
 
-* 下列程式碼，來取代 insert 函數，然後按一下 [ **儲存**。  This registers a new insert script, which uses the [apns object] to send a push notification (the inserted text) to the device provided in the insert request. 此指令碼會延遲通知的傳送，讓您有時間關閉應用程式來接收推播通知。
+* 下列程式碼，來取代 insert 函數，然後按一下 [ **儲存**。  這會註冊新的 insert 指令碼，並使用 [apns object] 推播通知 （插入的文字） 傳送給插入要求中提供的裝置。 此指令碼會延遲通知的傳送，讓您有時間關閉應用程式來接收推播通知。
 
 
 ```
@@ -116,4 +116,5 @@
 [Send broadcast notifications to subscribers]: ../notification-hubs-ios-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-ios-send-localized-breaking-news.md
 [Mobile Services Objective-C how-to conceptual reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
+
 

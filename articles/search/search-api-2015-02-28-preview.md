@@ -18,7 +18,7 @@
 
 # Azure 搜尋服務 REST API：版本 2015-02-28-Preview
 
-Azure 搜尋服務是 Microsoft Azure 上之託管的雲端搜尋服務。 本文是 `api-version=2015-02-28-Preview` 的參考文件。 這個預覽擴充目前的公開上市版本 [api 版本 = 2015年-02-28](https://msdn.microsoft.com/library/dn798935.aspx), ，藉由提供下列實驗性功能:
+Azure 搜尋服務是 Microsoft Azure 上之託管的雲端搜尋服務。 本文是 `api-version=2015-02-28-Preview` 的參考文件。 這個預覽擴充目前的公開上市版本 [api 版本 = 2015年-02-28](https://msdn.microsoft.com/library/dn798935.aspx), ，藉由提供下列實驗性功能 ︰
 
 - [Lucene 的查詢語法](https://msdn.microsoft.com/library/azure/mt589323.aspx) 是實作 [Lucene 查詢剖析器](https://lucene.apache.org/core/4_10_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), ，而您可以使用 queryType 參數中的指定 [搜尋作業](#SearchDocs)。
 - `moreLikeThis` 是用於查詢 queparameter [搜尋作業](#SearchDocs) 尋找其他文件會與另一個特定的文件相關。
@@ -32,7 +32,7 @@ Azure 搜尋服務可以在多個版本中使用。 請參閱 [搜尋服務版�
 
 ##本文件中的 API
 
-Azure 搜尋服務 API 支援之 API 作業的兩個 URL 的語法: 簡單和 OData (請參閱 [支援 OData (Azure 搜尋服務 API)](http://msdn.microsoft.com/library/azure/dn798932.aspx) 如需詳細資訊)。 下列清單顯示簡單語法。
+Azure 搜尋服務 API 支援之 API 作業的兩個 URL 的語法 ︰ 簡單和 OData (請參閱 [支援 OData (Azure 搜尋服務 API)](http://msdn.microsoft.com/library/azure/dn798932.aspx) 如需詳細資訊)。 下列清單顯示簡單語法。
 
 [建立索引](#CreateIndex)
 
@@ -133,9 +133,9 @@ ________________________________________
 
     PUT https://[search service url]/indexes/[index name]?api-version=[api-version]
 
-建立索引會決定要在搜尋操作中儲存和使用的文件結構。 填入索引是一個獨立的操作。 此步驟中，您可以使用 [索引子](https://msdn.microsoft.com/library/azure/mt183328.aspx) (適用於支援的資料來源) 或 [新增、 更新或刪除文件](https://msdn.microsoft.com/library/azure/dn798930.aspx) 作業。 張貼文件時，即會產生反向索引。
+建立索引會決定要在搜尋操作中儲存和使用的文件結構。 填入索引是一個獨立的操作。 此步驟中，您可以使用 [索引子](https://msdn.microsoft.com/library/azure/mt183328.aspx) （適用於支援的資料來源） 或 [新增、 更新或刪除文件](https://msdn.microsoft.com/library/azure/dn798930.aspx) 作業。 張貼文件時，即會產生反向索引。
 
-**請注意**: 允許的索引數目上限依定價層而有所不同。 免費服務允許最多 3 個索引。 標準服務允許每個服務有 50 個索引。 請參閱 [限制和條件約束](http://msdn.microsoft.com/library/azure/dn798934.aspx) 如需詳細資訊。
+**請注意**︰ 允許的索引數目上限依定價層而有所不同。 免費服務允許最多 3 個索引。 標準服務允許每個服務有 50 個索引。 請參閱 [限制和條件約束](http://msdn.microsoft.com/library/azure/dn798934.aspx) 如需詳細資訊。
 
 **要求**
 
@@ -151,7 +151,7 @@ ________________________________________
 
 - `Content-Type`：必要。 請設為 `application/json`
 - `api-key`：必要。 `api-key` 可用來
-- 驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **Create Index** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 (相對於查詢金鑰)。
+- 驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **Create Index** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 （相對於查詢金鑰）。
 
 您也必須提供服務名稱才能建構要求 URL。 您可以透過 Azure 傳統入口網站的服務儀表板取得服務名稱和 `api-key`。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需頁面導覽說明。
 
@@ -258,9 +258,9 @@ ________________________________________
 
 `facetable` - 通常用於搜尋結果的呈現方式，其中包括依類別排序的點閱數 (例如，搜尋數位相機，然後依照品牌、百萬像素、價格等項目來查看點閱數)。 此選項無法與類型 `Edm.GeographyPoint` 的欄位搭配使用。 所有的其他欄位都會預設為 `facetable`。
 
-  - **請注意**: 類型的欄位 `Edm.String` 的 `filterable`, ，`sortable`, ，或 `facetable` 長度上限為最多 32 KB。 這是因為這類欄位會被視為單一搜尋字詞，而在 Azure 搜尋服務中，字詞的長度上限為 32 KB。 如果您需要在單一字串欄位中儲存比此長度上限更多的文字，就需要在索引定義中明確地將 `filterable`、`sortable` 及 `facetable` 設為 `false`。
+  - **請注意**︰ 類型的欄位 `Edm.String` 的 `filterable`, ，`sortable`, ，或 `facetable` 長度上限為最多 32 KB。 這是因為這類欄位會被視為單一搜尋字詞，而在 Azure 搜尋服務中，字詞的長度上限為 32 KB。 如果您需要在單一字串欄位中儲存比此長度上限更多的文字，就需要在索引定義中明確地將 `filterable`、`sortable` 及 `facetable` 設為 `false`。
 
-  - **請注意**: 如果某個欄位未將上述屬性設為 `true` (`searchable`, ，`filterable`, ，`sortable`,  ，或`facetable`) 會從反向索引中有效地排除該欄位。 針對查詢中未使用，但需要在搜尋結果中使用的欄位來說，此選項非常實用。 從索引中排除這類欄位有助於提高效能。
+  - **請注意**︰ 如果某個欄位未將上述屬性設為 `true` (`searchable`, ，`filterable`, ，`sortable`,  ，或`facetable`) 會從反向索引中有效地排除該欄位。 針對查詢中未使用，但需要在搜尋結果中使用的欄位來說，此選項非常實用。 從索引中排除這類欄位有助於提高效能。
 
 `suggestions` - 舊版的 API 包含 `suggestions` 屬性。 這個布林值屬性現已淘汰，無法在 `2015-02-28` 或 `2015-02-28-Preview` 中使用。 請使用 [建議工具 API](#Suggesters) 改。 在 `2014-07-31` 版本中，使用 `suggestions` 屬性來指定欄位是否可針對類型 `Edm.String` 或 `Collection(Edm.String)` 的欄位用來執行自動完成自動提示。  `suggestions` 已 `false` 預設因為需要額外的空間索引，但如果您已啟用，請參閱 [從預覽轉換為在 Azure 搜尋服務的一般版本](search-transition-from-preview.md) 如需如何轉換為新的 API。
 
@@ -287,20 +287,20 @@ Azure 搜尋支援多種語言。 每一種語言都需要非標準的文字分�
 
 一些開發人員可能偏好使用更熟悉、簡單且開放原始碼的 Lucene 解決方案。 Lucene 分析器速度較快，但 Microsoft 分析器具備進階功能，例如詞形歸併還原、複合字詞拆分 (如德文、丹麥文、荷蘭文、瑞典文、挪威文、愛沙尼亞文、芬蘭文、匈牙利文、斯洛伐克文等語言) 和實體辨識 (URL、電子郵件、日期、數字)。 如果可以，您應該進行 Microsoft 和 Lucene 分析器的比較，以決定哪一個比較適合。
 
-***undefined***
+***如何比較***
 
-適用於英文的 Lucene 分析器可擴充標準分析器。 它會從文字中移除所有格 (結尾的)、 為每個 [Porter 詞幹演算法](http://tartarus.org/~martin/PorterStemmer/), ，然後移除英文 [停用字詞](http://en.wikipedia.org/wiki/Stop_words)。
+適用於英文的 Lucene 分析器可擴充標準分析器。 它會從文字中移除所有格 （結尾的）、 為每個 [Porter 詞幹演算法](http://tartarus.org/~martin/PorterStemmer/), ，然後移除英文 [停用字詞](http://en.wikipedia.org/wiki/Stop_words)。
 
 相較之下，Microsoft 分析器執行詞形的歸併還原而不是詞幹還原。 這表示它可以處理更好的屈折變化和不定期的文字形式相關的搜尋結果中的結果 (監看式] 模組 7 [Azure 搜尋 MVA 簡報](http://www.microsoftvirtualacademy.com/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps) 如需詳細資訊)。
 
 使用 Microsoft 分析器編製索引，平均速度約比其 Lucene 對等項目慢兩到三倍，視語言而定。 平均大小的查詢應不至大幅影響搜尋效能。
 
-***undefined***
+***組態***
 
 針對索引定義中的每一個欄位，您可以將 `analyzer` 屬性設為分析器名稱，以指定語言和廠商。 搜尋與編制該欄位索引時會套用相同的分析器。
 例如，您可以有個別適用於英文、法文及西班牙文旅館說明的欄位，這些欄位會以相同的索引並列存在。 使用 ['searchFields' 查詢參數](#SearchQueryParameters) 來指定您的查詢中要搜尋的語言特定的欄位。 您可以檢閱查詢範例，包括 `analyzer` 屬性 [搜尋文件](#SearchDocs)。 
 
-***undefined***
+***分析器清單***
 
 以下是支援的語言清單與 Lucene 和 Microsoft 的分析器名稱。
 
@@ -624,7 +624,7 @@ Azure 搜尋支援多種語言。 每一種語言都需要非標準的文字分�
 用戶端的 Javascript 預設無法呼叫任何 API，因為瀏覽器將阻止所有跨原始來源的要求。 設定 `corsOptions` 屬性來啟用 CORS (跨原始資源共用)，以允許對您的索引進行跨原始來源查詢。 請注意，基於安全緣故，只有查詢 API 支援 CORS。 您可以為 CORS 設定下列選項：
 
 - `allowedOrigins` (必要)：這是將授與您索引存取權限的原始來源清單。 這表示，將允許從這些原始來源提供的所有 Javascript 程式碼查詢您的索引 (假設它提供正確的 API 金鑰)。 每個原始來源的形式通常是 `protocol://fully-qualified-domain-name:port` (儘管經常會忽略連接埠)。 請參閱 [這篇文章](http://go.microsoft.com/fwlink/?LinkId=330822) 如需詳細資訊。
- - 如果您想要允許存取所有原始來源，可在 `allowedOrigins` 陣列中包含 `*` 做為單一項目。 請注意， **這不建議針對生產搜尋服務的做法。**但是，如果是基於開發或偵錯目的，它就非常實用。
+ - 如果您想要允許存取所有原始來源，可在 `allowedOrigins` 陣列中包含 `*` 做為單一項目。 請注意， **這不建議針對生產搜尋服務的做法。** 但是，如果是基於開發或偵錯目的，它就非常實用。
 - `maxAgeInSeconds` (選用)：瀏覽器會使用這個值，來判斷快取 CORS 預檢回應的持續期間 (以秒為單位)。 這必須是非負數的整數。 這個值越大，效能就越好，但是讓 CORS 原則變更生效的時間也就越長。 若未設定，即會使用預設持續期間 5 分鐘。
 
 <a name="CreateUpdateIndexExample"></a>
@@ -707,7 +707,7 @@ Azure 搜尋中的建議功能是自動完成或自動完成查詢的功能，�
           ]
         }
 
-> [AZURE.NOTE]  如果您使用 Azure 搜尋公用預覽版本 `suggesters` 會取代較舊的布林值屬性 (`"suggestions": false`)，僅支援前置詞建議適用於簡短字串 (3-25 個字元)。 它的替代項目 `suggesters` 支援中置比對，可在欄位內容的開頭或中間尋找相符的項目，而且對搜尋字串內的錯誤有更好的容錯能力。 從公開上市版本開始，這現在是建議 API 的唯一實作。 在 `api-version=2014-07-31-Preview` 中引進的較舊 `suggestions` 屬性仍會在該版本中繼續運作，但無法在 `2015-02-28` 或更新版本的 Azure 搜尋服務中運作。
+> [AZURE.NOTE]  如果您使用 Azure 搜尋公用預覽版本 `suggesters` 會取代較舊的布林值屬性 (`"suggestions": false`)，僅支援前置詞建議適用於簡短字串 （3-25 個字元）。 它的替代項目 `suggesters` 支援中置比對，可在欄位內容的開頭或中間尋找相符的項目，而且對搜尋字串內的錯誤有更好的容錯能力。 從公開上市版本開始，這現在是建議 API 的唯一實作。 在 `api-version=2014-07-31-Preview` 中引進的較舊 `suggestions` 屬性仍會在該版本中繼續運作，但無法在 `2015-02-28` 或更新版本的 Azure 搜尋服務中運作。
 
 <a name="UpdateIndex"></a>
 ## 更新索引
@@ -718,7 +718,7 @@ Azure 搜尋中的建議功能是自動完成或自動完成查詢的功能，�
     Content-Type: application/json
     api-key: [admin key]
 
-**重要事項:** 索引結構描述更新的支援會限制為不需重建搜尋索引的作業。 目前不支援任何需要重新編製索引的結構描述更新 (例如，變更欄位類型)。 儘管無法變更或刪除現有欄位，但可隨時新增欄位。 這同樣適用於 `suggesters`。 新欄位可能會在新增欄位時新增到建議工具，但是您無法從 `suggesters` 中移除欄位，也無法將現有欄位新增到 `suggesters`。
+**重要事項 ︰** 索引結構描述更新的支援會限制為不需重建搜尋索引的作業。 目前不支援任何需要重新編製索引的結構描述更新 (例如，變更欄位類型)。 儘管無法變更或刪除現有欄位，但可隨時新增欄位。 這同樣適用於 `suggesters`。 新欄位可能會在新增欄位時新增到建議工具，但是您無法從 `suggesters` 中移除欄位，也無法將現有欄位新增到 `suggesters`。
 
 將新欄位新增至索引時，索引中的所有現有文件會自動在該欄位中設定 Null 值。 在將新文件新增至索引之前，將不會佔用任何額外的儲存空間。
 
@@ -735,7 +735,7 @@ Azure 搜尋中的建議功能是自動完成或自動完成查詢的功能，�
 下列清單說明必要及選用的要求標頭。
 
 - `Content-Type`：必要。 請設為 `application/json`
-- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **更新索引** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 (相對於查詢金鑰)。
+- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **更新索引** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 （相對於查詢金鑰）。
 
 您也必須提供服務名稱才能建構要求 URL。 您可以透過 Azure 傳統入口網站的服務儀表板取得服務名稱和 `api-key`。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需頁面導覽說明。
 
@@ -835,7 +835,7 @@ Azure 搜尋中的建議功能是自動完成或自動完成查詢的功能，�
 
 下列清單說明必要及選用的要求標頭。
 
-- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **列出索引** 要求必須包含 `api-key` 設為管理員金鑰 (相對於查詢金鑰)。
+- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **列出索引** 要求必須包含 `api-key` 設為管理員金鑰 （相對於查詢金鑰）。
 
 您也必須提供服務名稱才能建構要求 URL。 您可以透過 Azure 傳統入口網站的服務儀表板取得服務名稱和 `api-key`。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需頁面導覽說明。
 
@@ -902,7 +902,7 @@ Azure 搜尋中的建議功能是自動完成或自動完成查詢的功能，�
 
 下列清單說明必要及選用的要求標頭。
 
-- `api-key`：`api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **取得索引** 要求必須包含 `api-key` 設為管理員金鑰 (相對於查詢金鑰)。
+- `api-key`：`api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **取得索引** 要求必須包含 `api-key` 設為管理員金鑰 （相對於查詢金鑰）。
 
 您也必須提供服務名稱才能建構要求 URL。 您可以透過 Azure 傳統入口網站的服務儀表板取得服務名稱和 `api-key`。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需頁面導覽說明。
 
@@ -936,7 +936,7 @@ Azure 搜尋中的建議功能是自動完成或自動完成查詢的功能，�
 
 下列清單說明必要及選用的要求標頭。
 
-- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務 URL 專屬的唯一字串值。  **刪除索引** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 (相對於查詢金鑰)。
+- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務 URL 專屬的唯一字串值。  **刪除索引** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 （相對於查詢金鑰）。
 
 您也必須提供服務名稱才能建構要求 URL。 您可以透過 Azure 傳統入口網站的服務儀表板取得服務名稱和 `api-key`。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需頁面導覽說明。
 
@@ -969,7 +969,7 @@ Azure 搜尋中的建議功能是自動完成或自動完成查詢的功能，�
 
 下列清單說明必要及選用的要求標頭。
 
-- `api-key`：`api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **取得索引統計資料** 要求必須包含 `api-key` 設為管理員金鑰 (相對於查詢金鑰)。
+- `api-key`：`api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **取得索引統計資料** 要求必須包含 `api-key` 設為管理員金鑰 （相對於查詢金鑰）。
 
 您也必須提供服務名稱才能建構要求 URL。 您可以透過 Azure 傳統入口網站的服務儀表板取得服務名稱和 `api-key`。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需頁面導覽說明。
 
@@ -1024,7 +1024,7 @@ ________________________________________
 下列清單說明必要及選用的要求標頭。
 
 - `Content-Type`：必要。 請設為 `application/json`
-- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **新增文件** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 (相對於查詢金鑰)。
+- `api-key`：必要。 `api-key` 可用來驗證搜尋服務的要求。 它是服務專屬的唯一字串值。  **新增文件** 要求必須包含 `api-key` 標頭設定為您的系統管理金鑰 （相對於查詢金鑰）。
 
 您也必須提供服務名稱才能建構要求 URL。 您可以透過 Azure 傳統入口網站的服務儀表板取得服務名稱和 `api-key`。 請參閱 [入口網站中建立 Azure 搜尋服務](.search-create-service-portal.md) 如需頁面導覽說明。
 
@@ -1079,7 +1079,7 @@ ________________________________________
 
 `errorMessage` 屬性將指出發生編製索引錯誤的原因 (如果可能)。
 
-**請注意**: 如果您的用戶端程式碼經常遇到 207 回應，一個可能的原因是系統負載不足。 您可以檢查 `errorMessage` 屬性來確認這一點。 如果這是這樣，我們建議您 ***編製索引要求設定節流***。 否則，如果編製索引流量並未減緩，系統可能會開始拒絕所有要求並產生 503 錯誤。
+**請注意**︰ 如果您的用戶端程式碼經常遇到 207 回應，一個可能的原因是系統負載不足。 您可以檢查 `errorMessage` 屬性來確認這一點。 如果這是這樣，我們建議您 ***編製索引要求設定節流***。 否則，如果編製索引流量並未減緩，系統可能會開始拒絕所有要求並產生 503 錯誤。
 
 「狀態碼：429」表示每個索引的文件數量上已經超過您的配額。 您必須建立新的索引，或進行升級以取得更高的容量限制。
 
@@ -1153,7 +1153,7 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 要求 URI 會針對所有符合參數的文件，指定要查詢哪一個索引。 如果是 GET 要求，參數是在查詢字串中指定，而如果是 POST 要求，則是在要求主體中指定。
 
-建立 GET 要求的最佳作法，請記得 [進行 URL 編碼](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx) 直接呼叫 REST API 時，特定的查詢參數。 如 **搜尋** 作業，這包括:
+建立 GET 要求的最佳作法，請記得 [進行 URL 編碼](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx) 直接呼叫 REST API 時，特定的查詢參數。 如 **搜尋** 作業，這包括 ︰
 
 - `$filter`
 - `facet`
@@ -1183,7 +1183,7 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
  
 > [AZURE.NOTE] Lucene 有利於 $filter 提供類似的功能不支援查詢語言中搜尋的範圍。
 
-`moreLikeThis=[key]` (選擇性) **重要事項:** 這項功能僅供以 `2015-02-28-Preview`。 此選項無法在包含文字搜尋參數 `search=[string]` 的查詢中使用。 `moreLikeThis` 參數所尋找的文件類似文件索引鍵所指定的文件。 使用 `moreLikeThis` 提出搜尋要求時，即會根據來源文件中字詞的出現頻率和稀有程度來產生搜尋字詞清單。 這些字詞接著可用來提出要求。 除非使用 `searchFields` 來限制要搜尋的欄位，否則所有 `searchable` 欄位的內容預設都會納入考慮。  
+`moreLikeThis=[key]` （選擇性） **重要事項 ︰** 這項功能僅供以 `2015-02-28-Preview`。 此選項無法在包含文字搜尋參數 `search=[string]` 的查詢中使用。 `moreLikeThis` 參數所尋找的文件類似文件索引鍵所指定的文件。 使用 `moreLikeThis` 提出搜尋要求時，即會根據來源文件中字詞的出現頻率和稀有程度來產生搜尋字詞清單。 這些字詞接著可用來提出要求。 除非使用 `searchFields` 來限制要搜尋的欄位，否則所有 `searchable` 欄位的內容預設都會納入考慮。  
 
 `$skip=#` (選用) - 要略過的搜尋結果數目；不能大於 100,000。 如果您需要循序掃描文件，但因此限制而無法使用 `$skip`，請考慮改為在完全排序的索引鍵上使用 `$orderby`，以及含有查詢範圍的 `$filter`。
 
@@ -1211,7 +1211,7 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 - `count` (Facet 字詞的最大數目；預設值為 10)。 沒有最大值，但較高的值會導致相對應的效能損失，尤其是在多面向欄位包含大量的唯一字詞時。
   - 例如：`facet=category,count:5` 會取得多面向結果中的前五個類別。  
-  - **請注意**: 如果 `count` 參數小於唯一字詞數目，結果可能不正確。 這是因為多面向查詢的方式會散佈於各個分區中。 提高 `count` 通常會增加字詞計數的準確性，但需要付出效能代價。
+  - **請注意**︰ 如果 `count` 參數小於唯一字詞數目，結果可能不正確。 這是因為多面向查詢的方式會散佈於各個分區中。 提高 `count` 通常會增加字詞計數的準確性，但需要付出效能代價。
 - `sort` (其中 `count` 排序 *遞減* 依計數 `-count` 排序 *遞增* 依計數 `value` 排序 *遞增* 傳值方式，或 `-value` 排序 *遞減* 值)
   - 例如，`facet=category,count:3,sort:count` 會在多面向結果中，依照含有每個城市名稱的文件數目的遞減排序方式，來取得前三個類別。 例如，如果前三個類別是 Budget、Motel 及 Luxury，且 Budget 有 5 個點閱數、Motel 有 6 個點閱數，而 Luxury 有 4 個點閱數，則值區依序為 Motel、Budget、Luxury。
   - 例如：`facet=rating,sort:-value` 會以依值的遞減排序方式，針對所有可能的評等來產生值區。 舉例來說，如果評等是從 1 到 5，則值區的排序方式可能是 5、4、3、2、1，而不考慮有多少份文件符合每一個評等。
@@ -1233,11 +1233,11 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 `highlightPreTag=[string]` (選用，預設值為 `<em>`) - 附加到檢閱數醒目提示之前的字串標記。 必須使用 `highlightPostTag` 來設定。
 
-> [AZURE.NOTE] 當呼叫 **搜尋** 使用 GET，URL 中的保留的字元必須以百分比進行編碼 (例如，%23 而不是 #)。
+> [AZURE.NOTE] 當呼叫 **搜尋** 使用 GET，URL 中的保留的字元必須以百分比進行編碼 （例如，%23 而不是 #）。
 
 `highlightPostTag=[string]` (選用，預設值為 `</em>`) - 附加到檢閱數醒目提示之後的字串標記。 必須使用 `highlightPreTag` 來設定。
 
-> [AZURE.NOTE] 當呼叫 **搜尋** 使用 GET，URL 中的保留的字元必須以百分比進行編碼 (例如，%23 而不是 #)。
+> [AZURE.NOTE] 當呼叫 **搜尋** 使用 GET，URL 中的保留的字元必須以百分比進行編碼 （例如，%23 而不是 #）。
 
 `scoringProfile=[string]` (選用) - 評分設定檔的名稱，可用來評估比對文件的相符分數以排序結果。
 
@@ -1251,7 +1251,7 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 `api-version=[string]` (必要)。 預覽版本為 `api-version=2015-02-28-Preview`。 請參閱 [搜尋服務版本設定](http://msdn.microsoft.com/library/azure/dn864560.aspx) 如需詳細資訊和替代版本。
 
-注意: 針對這項作業， `api-version` 指定為查詢參數中的 URL，不論是否呼叫 **搜尋** 使用 GET 或 POST。
+注意 ︰ 針對這項作業， `api-version` 指定為查詢參數中的 URL，不論是否呼叫 **搜尋** 使用 GET 或 POST。
 
 **要求標頭**
 
@@ -1288,7 +1288,7 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
     }
 
 <a name="SearchResponse"></a>
-**回應**
+**Response**
 
 回應成功時會傳回「狀態碼：200 確定」。
 
@@ -1347,50 +1347,50 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 1)  依日期遞減排序索引搜尋。
 
-    GET /indexes/hotels/docs? 搜尋 = * & $orderby = lastRenovationDate desc api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = * & $orderby = lastRenovationDate desc api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 * 」，
       "orderby": ["lastRenovationDate desc"]
     }
 
-2)  在多面向搜尋中，搜尋索引，並擷取 facet 類別、 評等、 標記以及含有 baseRate 特定範圍中的項目:
+2)  在多面向搜尋中，搜尋索引，並擷取 facet 類別、 評等、 標記以及含有 baseRate 特定範圍中的項目 ︰
 
-    GET /indexes/hotels/docs? 搜尋 = 測試 facet = 分類和 facet = 分級 facet = 標記和 facet = baseRate、 值: 80|150|220 api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = 測試 facet = 分類和 facet = 分級 facet = 標記和 facet = baseRate、 值 ︰ 80|150|220 api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 測試 」
-      「 facet": [「 類別目錄 」，「 評等 」，「 標記 」、 「 baseRate，值: 80|150|220"]
+      「 facet": [「 類別目錄 」，「 評等 」，「 標記 」、 「 baseRate，值 ︰ 80|150|220"]
     }
 
 3)  使用者按一下之後，使用篩選器，縮小先前多面向查詢結果評等 3 和分類"Motel":
 
-    GET /indexes/hotels/docs? 搜尋 = 測試 facet = 標記和 facet = baseRate、 值: 80|150|220 $filter = 分級 eq 3 和分類 eq 'Motel' api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = 測試 facet = 標記和 facet = baseRate、 值 ︰ 80|150|220 $filter = 分級 eq 3 和分類 eq 'Motel' api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 測試 」
-      「 facet": ["tags"、"baseRate，值: 80|150|220"]，
+      「 facet": ["tags"、"baseRate，值 ︰ 80|150|220"]，
       「 篩選 」: 「 分級 eq 3 和分類 eq 'Motel' 」
     }
 
 4) 在多面向搜尋中，設定在查詢中傳回的唯一字詞上限。 預設值為 10，但您可以使用 `facet` 屬性上的 `count` 參數來增加或減少此值：
 
-    GET /indexes/hotels/docs? 搜尋 = 測試 facet = 縣 (市)、 計數: 5 與 api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = 測試 facet = 縣 （市）、 計數 ︰ 5 與 api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 測試 」
-      「 facet": ["城市，計數: 5"]
+      「 facet": ["城市，計數 ︰ 5"]
     }
 
-5)  搜尋索引中特定欄位。例如，語言特定的欄位:
+5)  搜尋索引中特定欄位。例如，語言特定的欄位 ︰
 
-    GET /indexes/hotels/docs? 搜尋 = hôtel searchFields = description_fr api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = hôtel searchFields = description_fr api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 hôtel 」，
       "searchFields": ["description_fr"]
@@ -1398,9 +1398,9 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 6) 跨多個欄位搜尋索引。 例如，您可以使用多種語言來儲存和查詢可搜尋的欄位，全部都使用相同的索引。  如果英文和法文說明同時存在於同一份文件中，您就可以在查詢結果中傳回任一個或兩者：
 
-    GET /indexes/hotels/docs? 搜尋 = 旅館 searchFields = 描述、 description_fr api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = 旅館 searchFields = 描述、 description_fr api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 旅館 」，
       "searchFields": ["description"，"description_fr"]
@@ -1408,33 +1408,33 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 請注意，您一次只能查詢一個索引。 除非您打算一次查詢一個，否則請勿為每個語言建立多個索引。
 
-7)  分頁-取得第 1 頁的項目 (頁面大小為 10):
+7)  分頁-取得第 1 頁的項目 （頁面大小為 10） ︰
 
-    GET /indexes/hotels/docs? 搜尋 = * & $skip = 0 到 $top = 10 api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = * & $skip = 0 到 $top = 10 api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 * 」，
       「 略過 」: 0、
       "top": 10
     }
 
-8)  分頁-取得第 2 頁的項目 (頁面大小為 10):
+8)  分頁-取得第 2 頁的項目 （頁面大小為 10） ︰
 
-    GET /indexes/hotels/docs? 搜尋 = * & $skip = 10 $top = 10 api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = * & $skip = 10 $top = 10 api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 * 」，
       「 略過 」: 10 個，
       "top": 10
     }
 
-9)  擷取一組特定的欄位:
+9)  擷取一組特定的欄位 ︰
 
-    GET /indexes/hotels/docs? 搜尋 = * & $select = hotelName、 描述和 api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = * & $select = hotelName、 描述和 api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 * 」，
       [選取]: ["hotelName"，"description"]
@@ -1451,9 +1451,9 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 11) 搜尋索引並傳回含有點閱數醒目提示的片段
 
-    GET /indexes/hotels/docs? 搜尋 = 項目和反白顯示 = 描述 api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = 項目和反白顯示 = 描述 api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 東西 」，
       「 反白顯示 」: 「 說明 」
@@ -1461,9 +1461,9 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 12) 搜尋索引並傳回排序到最遠距參考位置的文件
 
-    GET /indexes/hotels/docs? 搜尋 = 項目 (& s) $orderby=geo.distance (位置，geography'POINT(-122.12315 47.88121)') (& s) api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = 項目 （& s) $orderby=geo.distance (位置，geography'POINT(-122.12315 47.88121)') （& s) api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 東西 」，
       "orderby": ["geo.distance (位置，geography'POINT(-122.12315 47.88121)')"]
@@ -1471,9 +1471,9 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 13) 假設名為"geo"的評分設定檔的索引搜尋兩個距離評分函式，一個定義的參數呼叫 「 但 」，另一個定義名"為 lastLocation"的參數
 
-    GET /indexes/hotels/docs? 搜尋 = 項目 (& s) scoringProfile = 地理 c = 但:-122.123,44.77233 & c = 為 lastLocation:-121.499,44.2113 和 api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = 項目 （& s) scoringProfile = 地理 c = 但:-122.123,44.77233 & c = 為 lastLocation:-121.499,44.2113 和 api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 東西 」，
       "scoringProfile":"geo"，
@@ -1482,9 +1482,9 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 14) 使用的索引中尋找的文件 [簡單查詢語法](https://msdn.microsoft.com/library/dn798920.aspx)。 此查詢會傳回可搜尋欄位包含字詞 "comfort" 和 "location"，但未包含 "motel" 的旅館：
 
-    GET /indexes/hotels/docs? 搜尋 = 舒適 + 位置-motel 和 searchMode = all (& s) api 版本 = 2015年-02-28 預覽
+    GET /indexes/hotels/docs？ 搜尋 = 舒適 + 位置-motel 和 searchMode = all （& s) api 版本 = 2015年-02-28 預覽
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
       「 搜尋 」: 「 舒適 + 位置-motel 」，
       「 searchMode 」: 「 全部 」
@@ -1494,11 +1494,11 @@ A **搜尋** 操作當成 GET 或 POST 要求來發出，可指定選取相符�
 
 15) 使用的索引中尋找的文件 [lucene 的查詢語法](http://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#Overview)。 此查詢會傳回類別欄位包含「預算」一詞以及所有可搜尋欄位包含「最近翻新」詞組的旅館。 包含「最近翻新」詞組的文件會因為詞彙提升值 (3) 而排在比較前面
 
-    GET /indexes/hotels/docs? 搜尋 = 類別: 預算 AND \"recently renovated\"^3 和 searchMode = all (& s) api 版本 = 2015年-02-28 預覽 (& s) querytype = full
+    GET /indexes/hotels/docs？ 搜尋 = 類別 ︰ 預算 AND \"recently renovated\"^3 和 searchMode = all （& s) api 版本 = 2015年-02-28 預覽 （& s) querytype = full
 
-    POST /indexes/hotels/docs/search? api 版本 = 2015年-02-28 預覽
+    POST /indexes/hotels/docs/search？ api 版本 = 2015年-02-28 預覽
     {
-      「 搜尋 」: 「 類別目錄: 預算及 \"recently renovated\"^3"
+      「 搜尋 」: 「 類別目錄 ︰ 預算及 \"recently renovated\"^3"
       「 queryType 」: 「 完整 」，
       「 searchMode 」: 「 全部 」
     }
@@ -1623,7 +1623,7 @@ A **建議** 操作當成 GET 或 POST 要求來發出。
 
 要求 URI 會指定要查詢的索引名稱。 如果是 GET 要求，參數 (例如部分輸入搜尋詞彙) 是在查詢字串中指定，而如果是 POST 要求，則是在要求主體中指定。
 
-建立 GET 要求的最佳作法，請記得 [進行 URL 編碼](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx) 直接呼叫 REST API 時，特定的查詢參數。 如 **建議** 作業，這包括:
+建立 GET 要求的最佳作法，請記得 [進行 URL 編碼](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx) 直接呼叫 REST API 時，特定的查詢參數。 如 **建議** 作業，這包括 ︰
 
 - `$filter`
 - `highlightPreTag`
@@ -1642,11 +1642,11 @@ A **建議** 操作當成 GET 或 POST 要求來發出。
 
 `highlightPreTag=[string]` (選用) - 附加到搜尋檢閱數之前的字串標記。 必須使用 `highlightPostTag` 來設定。
 
-> [AZURE.NOTE] 當呼叫 **建議** 使用 GET，URL 中的保留的字元必須以百分比進行編碼 (例如，%23 而不是 #)。
+> [AZURE.NOTE] 當呼叫 **建議** 使用 GET，URL 中的保留的字元必須以百分比進行編碼 （例如，%23 而不是 #）。
 
 `highlightPostTag=[string]` (選用) - 附加到搜尋檢閱數之後的字串標記。 必須使用 `highlightPreTag` 來設定。
 
-> [AZURE.NOTE] 當呼叫 **建議** 使用 GET，URL 中的保留的字元必須以百分比進行編碼 (例如，%23 而不是 #)。
+> [AZURE.NOTE] 當呼叫 **建議** 使用 GET，URL 中的保留的字元必須以百分比進行編碼 （例如，%23 而不是 #）。
 
 `suggesterName=[string]` - `suggesters` 集合中當成索引定義一部分來指定的建議工具名稱。 `suggester` 會判斷要針對建議的查詢字詞掃描哪些欄位。 請參閱 [建議工具](#Suggesters) 如需詳細資訊。
 
@@ -1676,7 +1676,7 @@ A **建議** 操作當成 GET 或 POST 要求來發出。
 
 `api-version=[string]` (必要)。 預覽版本為 `api-version=2015-02-28-Preview`。 請參閱 [搜尋服務版本設定](http://msdn.microsoft.com/library/azure/dn864560.aspx) 如需詳細資訊和替代版本。
 
-注意: 針對這項作業， `api-version` 指定為查詢參數中的 URL，不論是否呼叫 **建議** 使用 GET 或 POST。
+注意 ︰ 針對這項作業， `api-version` 指定為查詢參數中的 URL，不論是否呼叫 **建議** 使用 GET 或 POST。
 
 **要求標頭**
 
@@ -1747,4 +1747,5 @@ A **建議** 操作當成 GET 或 POST 要求來發出。
       "top": 5,
       "suggesterName": "sg"
     }
+
 

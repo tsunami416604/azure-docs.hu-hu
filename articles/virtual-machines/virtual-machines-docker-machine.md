@@ -35,7 +35,7 @@
 
 ## 取得 docker-machine -- 或建置它
 
-若要開始使用最快的方式 **docker-machine-** 是下載適當的版本，直接從 [版本共用](https://github.com/docker/machine/releases)。 本教學課程中的用戶端電腦執行 Ubuntu 在 x64 電腦，所以 **docker-machine_linux-amd64** 映像會用。
+若要開始使用最快的方式 **docker-machine-** 是下載適當的版本，直接從 [版本共用](https://github.com/docker/machine/releases)。 本教學課程中的用戶端電腦上的 x64 執行 Ubuntu 的電腦，所以 **docker-machine_linux-amd64** 映像會用。
 
 您也可以建置您 **docker-machine-** 自己所遵循的步驟 [參與機器](https://github.com/docker/machine#contributing)。 您應該已準備好下載最多可達 1 GB 或以上來執行組建，不過這樣做，您就可以精確自訂所需的方式。
 
@@ -62,15 +62,15 @@
 
         openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-2. 將憑證的 .cer 檔案上傳至 Azure。 在 [Azure 傳統入口網站](https://manage.windowsazure.com), ，按一下 [ **設定** 在左下角的 [服務] 區域 (如下所示)
+2. 將憑證的 .cer 檔案上傳至 Azure。 在 [Azure 傳統入口網站](https://manage.windowsazure.com), ，按一下 [ **設定** 在左下角的 [服務] 區域 （如下所示）
 
-    ![] [portalsettingsitem]
+    ![][portalsettingsitem]
 
     然後按一下 [ **管理憑證**:
 
-    ![] [managementcertificatesitem]
+    ![][managementcertificatesitem]
 
-    然後 **上載** (位於頁面底部)!][uploaditem，以上] 傳 **mycert.cer** 您在上一個步驟中建立的檔案。
+    然後 **上載** （位於頁面底部） ![][uploaditem] 上載 **mycert.cer** 您在上一個步驟中建立的檔案。
 
 3. 在同一個 **設定** ] 窗格，在網站中，按一下 [ **訂閱** 和擷取訂閱 ID，使用您建立 VM 時，因為您將在下一個步驟中使用它。 (您也可以在命令列上，使用 Azure CLI 命令 `azure account list` 來尋找訂用帳戶識別碼，其會顯示該帳戶中您所擁有之每個訂用帳戶的訂用帳戶識別碼)。
 
@@ -197,11 +197,11 @@
 
 開啟您最愛的瀏覽器，過目一下。
 
-![] [nginx]
+![][nginx]
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
-移至 [Docker user guide](https://docs.docker.com/userguide/) 和 Microsoft Azure 上建立一些應用程式。 或者，您也可以使用 [**docker** 和 swarm](https://github.com/docker/swarm) (virtual-machines-docker-swarm)，看看可以使用 swarm 使用 docker 和 Azure 上。
+移至 [Docker 使用者指南](https://docs.docker.com/userguide/) 和 Microsoft Azure 上建立一些應用程式。 或者，您也可以使用 [**docker** 和 swarm](https://github.com/docker/swarm) （virtual-machines-docker-swarm），看看可以使用 swarm 使用 docker 和 Azure 上。
 
 <!--Image references-->
 [nginx]: ./media/virtual-machines-docker-machine/nginxondocker.png
@@ -213,4 +213,5 @@
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
+
 

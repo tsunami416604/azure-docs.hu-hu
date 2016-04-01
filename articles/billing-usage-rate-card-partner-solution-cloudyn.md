@@ -24,7 +24,7 @@ Cloudyn (Microsoft 開發夥伴和雲端管理功能的領導提供者) 是為�
 
 使用情況 API 的資料和 RateCard API 的資料之間所謂的「乘法」(使用情況 [單位] 價格 [$unit] = 詳細使用情況和成本) 會建立最細微、精確且可靠的計費資訊，可供目前的 Azure 使用。
 
-![ITFM 概觀][] 1
+![ITFM 概觀][1]
 
 使用這些 API 可提供與客戶的使用情況和成本相關的重要資訊，讓 Cloudyn 可利用簡單的程式設計方式分析客戶帳戶，並為其客戶執行各種 ITFM 工作。 
 
@@ -33,34 +33,34 @@ RateCard API 需要數個輸入參數 -- 例如區域資訊、貨幣及區域設
 
 在註冊 [Cloudyn for Azure](https://www.cloudyn.com/microsoft-azure/) 服務時，客戶可以加入其 OfferDurableID 程式碼，讓 Cloudyn 透過 RateCard API 其相關定價資訊的提取。  提供不同類型的詳細資訊，請參閱 [Microsoft Azure 優惠詳細資料](http://azure.microsoft.com/en-gb/support/legal/offer-details/) 頁面。
 
-![Cloudyn ITFM 引擎概觀][] 2
+![Cloudyn ITFM 引擎概觀][2]
 
 除了 Azure 效能 API 之外，Cloudyn 還使用了使用情況和 RateCard API，建立其他層的視覺化、分析、警示、報告、成本管理和可行的建議，提供可靠的企業雲端 ITFM 工具給 Azure 客戶。
 
 ## Cloudyn ITFM 使用由使用情況和 RateCard API 整合啟用的案例 
 一般 Cloudyn ITFM 所使用的案例都由使用情況和 RateCard API 啟用，包括：
 
-+ **成本分析** -可讓雲端成本細分成任何原生識別維度 (提供者、 服務、 帳戶、 區域等)。 藉由提供每個帳戶最細微的使用情況和成本資料分解，然後由 Cloudyn 將其分組和篩選，並以圖型或表格的形式呈現給使用者，Azure 使用情況和 RateCard API 可讓這個工作變簡單。
++ **成本分析** -可讓雲端成本細分成任何原生識別維度 （提供者、 服務、 帳戶、 區域等）。 藉由提供每個帳戶最細微的使用情況和成本資料分解，然後由 Cloudyn 將其分組和篩選，並以圖型或表格的形式呈現給使用者，Azure 使用情況和 RateCard API 可讓這個工作變簡單。
 
-![成本分析圓形圖][] 3
+![成本分析圓形圖][3]
 
 + **成本配置 360** -可讓財務與 IT 管理者發現實際成本分解、 驅動程式和其雲端部署的趨勢。 它還可以進一步讓管理者輕鬆地建立部署費用與商務單位、部門、區域之間的關聯、針對雲端成本提供前所未有的見解，並且促進企業計費和回報。 Azure 使用情況和 RateCard API 可做為 Cloudyn 成本配置引擎的輸入，藉由定義方法和商務邏輯以配置未標記或無法標記的資源，進而輔助 API。
 
-![成本的配置 360 圖表][] 4
+![成本配置 360 圖表][4]
 
 + **符合成本效益的調整大小** -提供正確大小建議給使用量過低的虛擬機器，進而減少客戶的費用，過大或過度佈建的電腦上。 它是藉由檢查虛擬機器 CPU 和 RAM 計量 (透過效能 API)、執行階段的時數 (透過使用情況 API) 和成本 (透過 RateCard API) 來達成效果。 然後 Cloudyn 會根據使用量過低的 CPU 或 RAM 資源 (效能) 提供正確大小的建議，並且將 VM 之間的價格差異 (RateCard) 乘以使用量過低機器的實際使用時間 (使用情況)，以計算出預估的節約效益。 
 
-![符合成本效益的大小][] 5
+![符合成本效益的大小][5]
 
 + **雲端移植建議** -財務建議提供雲端移植。 它會檢查使用者目前部署在主要雲端廠商的雲端資源成本，並且和其在 Azure 上對等的部署成本進行比較。 然後它會提供細微的、每個資源的、財務型的移植建議給 Azure。 評估 Azure 上所需之對等部署 (根據效能計量和使用者喜好設定) 之後，Cloudyn 會使用 RateCard API 評估 Azure 上對等部署的成本。
 
 + **效能報告** -由 Azure 的效能 API 啟用，這些報告提供 CPU 和 RAM 使用量的功能給最佳化建議的陣列。 以下是執行個體使用量報告的範例，根據平均 CPU 使用量來呈現執行個體分解。
 
-![效能報告][] 6
+![效能報告][6]
 
 + **類別管理員** -強大 Cloudyn 帶來秩序的雲端資源的功能。 它可讓使用者自由建立自己的唯一類別 (標記) 以進行符合商業實務的有效測量和報告。 此外，使用者可以輕鬆地管理和分類不一致的標記 (也就是錯字和其他不一致)，並且自動偵測未標記的資源以達成精確的成本屬性。
 
-![類別目錄管理員][] 7
+![類別管理員][7]
 
 ## 影片 
 
@@ -89,3 +89,4 @@ RateCard API 需要數個輸入參數 -- 例如區域資訊、貨幣及區域設
 [5]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Cost-Effective-Sizing.png
 [6]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Performance-Reports.png
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Category-Manager.png
+

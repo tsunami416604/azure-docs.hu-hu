@@ -26,13 +26,13 @@
 
 以 Linux 為基礎的 HDInsight 叢集提供一組 MapReduce 範例，讓您可以用來了解如何執行 Hadoop MapReduce 工作。 在本文件中，您將了解可用的範例，並逐步執行幾個範例。
 
-##先決條件
+##必要條件
 
-- **Azure 訂用帳戶**: 請參閱 [取得 Azure 免費試用版](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)
+- **Azure 訂用帳戶**︰ 請參閱 [取得 Azure 免費試用版](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)
 
-- **以 Linux 為基礎的 HDInsight 叢集**: 請參閱 [開始在 Linux 上的 HDInsight 中搭配 Hive 使用 Hadoop](hdinsight-hadoop-linux-tutorial-get-started.md)
+- **以 Linux 為基礎的 HDInsight 叢集**︰ 請參閱 [開始在 Linux 上的 HDInsight 中搭配 Hive 使用 Hadoop](hdinsight-hadoop-linux-tutorial-get-started.md)
 
-- **SSH 用戶端**: 使用 SSH 與 HDInsight 上的資訊，請參閱下列文章:
+- **SSH 用戶端**︰ 使用 SSH 與 HDInsight 上的資訊，請參閱下列文章 ︰
 
     - [從 Linux、Unix 或 OS X 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -40,34 +40,34 @@
 
 ## 範例 ##
 
-**位置**: 範例位於 HDInsight 叢集上  **/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar**
+**位置**︰ 範例位於 HDInsight 叢集上  **/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar**
 
-**內容**: 下列的範例都包含在此封存中:
+**內容**︰ 下列的範例都包含在此封存中 ︰
 
-- **aggregatewordcount**: 以彙總為基礎的 map/reduce 程式可計算輸入檔中的字數
-- **aggregatewordhist**: 以彙總基礎 map/reduce 程式，會計算輸入檔中的字數長條圖
+- **aggregatewordcount**︰ 以彙總為基礎的 map/reduce 程式可計算輸入檔中的字數
+- **aggregatewordhist**︰ 以彙總基礎 map/reduce 程式，會計算輸入檔中的字數長條圖
 - **bbp**: map/reduce 程式，使用 Bailey-溫-Plouffe 計算 Pi 的確切位數
-- **dbcount**: 計算 pageview 範例工作就會從資料庫計數
+- **dbcount**︰ 計算 pageview 範例工作就會從資料庫計數
 - **distbbp**: map/reduce 程式，使用 BBP 類型的公式來計算 Pi 的確切的位元
 - **grep**: map/reduce 程式，以計算輸入中 regex 的相符項目
-- **聯結**: 工作，可影響聯結已排序且平均分割資料集
+- **聯結**︰ 工作，可影響聯結已排序且平均分割資料集
 - **multifilewc**: 從數個檔案的工作
-- **pentomino**: map/reduce 磚配置程式，可尋找 (pentomino) 問題的解決方案
+- **pentomino**: map/reduce 磚配置程式，可尋找 （pentomino） 問題的解決方案
 - **pi**: map/reduce 程式，以估計 Pi 使用擬蒙特 Carlo 方法
 - **randomtextwriter**: map/reduce 程式，寫入 10 GB 的隨機文字資料，每個節點
 - **randomwriter**: map/reduce 程式，寫入 10 GB 的隨機資料，每個節點
-- **secondarysort**: 定義歸納次要排序範例
+- **secondarysort**︰ 定義歸納次要排序範例
 - **排序**: map/reduce 程式，可排序隨機寫入器所寫入的資料
-- **數獨**: 數獨解答程式
-- **teragen**: 產生用於 terasort 的資料
-- **terasort**: 執行 terasort
-- **teravalidate**: 檢查 terasort 的結果
+- **數獨**︰ 數獨解答程式
+- **teragen**︰ 產生用於 terasort 的資料
+- **terasort**︰ 執行 terasort
+- **teravalidate**︰ 檢查 terasort 的結果
 - **wordcount**: map/reduce 程式，可計算輸入檔中的字數
 - **wordmean**: map/reduce 程式，以計算輸入檔中字詞的平均長度
 - **wordmedian**: map/reduce 程式，以計算輸入檔中字詞的中位數長度
 - **wordstandarddeviation**: map/reduce 程式，以計算輸入檔中字詞長度的標準差
 
-**原始碼**: 這些範例的原始程式碼包含 HDInsight 叢集上 **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples**
+**原始碼**︰ 這些範例的原始程式碼包含 HDInsight 叢集上 **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples**
 
 > [AZURE.NOTE]  `2.2.4.9-1` 路徑中的版本的 Hortonworks Data Platform HDInsight 叢集，且可能會隨著 HDInsight 更新而變更。
 
@@ -85,7 +85,7 @@
 
     這麼做會產生本文件上一節中的範例清單。
 
-3. 使用下列命令可取得特定範例的說明。 在此情況下， **wordcount** 範例:
+3. 使用下列命令可取得特定範例的說明。 在此情況下， **wordcount** 範例 ︰
 
         hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
 
@@ -132,7 +132,7 @@ Sudoku 範例的使用指示似乎有點不實用：「在命令列中包含謎�
 
 - 格子之間以空格分隔
 
-現在，必須以特定的方法建立數獨謎題，那就是您不能在某個資料行或資料列中使用重複的數字。 幸好 HDInsight 叢集上已經有一個正確建立的範例。 它位於 **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta** 且包含下列:
+現在，必須以特定的方法建立數獨謎題，那就是您不能在某個資料行或資料列中使用重複的數字。 幸好 HDInsight 叢集上已經有一個正確建立的範例。 它位於 **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta** 且包含下列 ︰
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -184,13 +184,13 @@ GraySort 是一種效能評定排序，其度量為排序極大資料量時 (通
 
 本範例使用三組 MapReduce 程式：
 
-- **TeraGen**: 產生要排序的資料列的 MapReduce 程式
+- **TeraGen**︰ 產生要排序的資料列的 MapReduce 程式
 
-- **TeraSort**: 範例輸入的資料，並利用 MapReduce 排列排序資料
+- **TeraSort**︰ 範例輸入的資料，並利用 MapReduce 排列排序資料
 
     TeraSort 是 MapReduce 函數的標準排序，但自訂分割器除外，它使用 N-1 個樣本索引鍵的排序清單來定義每次歸納的索引鍵範圍。 尤其是，會傳送使得 sample[i-1] <= key < sample[i] 的所有索引鍵給歸納 i。 這保證歸納 i 的輸出全都小於歸納 i+1 的輸出。
 
-- **TeraValidate**: 可驗證全域排序輸出的 MapReduce 程式
+- **TeraValidate**︰ 可驗證全域排序輸出的 MapReduce 程式
 
     它會在輸出目錄中為每一個檔案建立一個對應，而每個對應可確保每一個索引鍵一定小於或等於前一個對應。 對應函數也會產生每個檔案的第一個和最後一個索引鍵的記錄，而歸納函數可確保檔案 i 的第一個索引鍵大於檔案 i-1 的最後一個索引鍵。 任何問題皆會回報為具錯誤索引鍵的歸納輸出。
 
@@ -235,4 +235,5 @@ GraySort 是一種效能評定排序，其度量為排序極大資料量時 (通
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
+
 

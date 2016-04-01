@@ -48,27 +48,27 @@ App Service 平台提供適用於 Web 應用程式設定的彈性和控制。 �
 
 如需其他範例，請參閱 [https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)。
 
-**附註**<br />
+**注意**<br />
 從之下模組清單的項目 `system.webServer` 無法移除或重新排列，但新增至清單。
 
 
 ##<a id="extend"></a> 擴充 Web 應用程式
 
-###<a id="overview"></a> 私用 Web 應用程式擴充功能的概觀
+###<a id="overview"></a> 私人 Web 應用程式擴充功能的概觀
 
 App Service 支援使用 Web 應用程式擴充功能做為系統管理動作的擴充點。 事實上，有些 App Service 平台功能已當作預先安裝的擴充功能來實作。 雖然您無法修改預先安裝的平台擴充功能，但可建立和設定自己 Web 應用程式的私人擴充功能。 這項功能也會依賴 XDT 宣告。 建立私人 Web 應用程式擴充功能的主要步驟如下：
 
-1. Web 應用程式擴充功能 **內容**: 建立應用程式服務支援的任何 web 應用程式
-2. Web 應用程式擴充功能 **宣告**: 建立 ApplicationHost.xdt 檔案
-3. Web 應用程式擴充功能 **部署**: 將內容放在下方的 SiteExtensions 資料夾中 `root`
+1. Web 應用程式擴充功能 **內容**︰ 建立應用程式服務支援的任何 web 應用程式
+2. Web 應用程式擴充功能 **宣告**︰ 建立 ApplicationHost.xdt 檔案
+3. Web 應用程式擴充功能 **部署**︰ 將內容放在下方的 SiteExtensions 資料夾中 `root`
 
 Web 應用程式的內部連結應指向在 ApplicationHost.xdt 檔案中指定之應用程式路徑的相對路徑。 對 ApplicationHost.xdt 檔案所做的任何變更都需要回收 Web 應用程式。
 
-**請注意**: 這些主要元素的其他資訊將會位於 [https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)。
+**請注意**︰ 這些主要元素的其他資訊將會位於 [https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)。
 
 其中包含一個詳細的範例，可說明建立和啟用私人 Web 應用程式擴充功能的步驟。 接下來的 PHP Manager 範例的原始程式碼可以從下載 [https://github.com/projectkudu/PHPManager](https://github.com/projectkudu/PHPManager)。
 
-###<a id="SiteSample"></a> Web 應用程式擴充功能範例: PHP Manager
+###<a id="SiteSample"></a> Web 應用程式擴充功能範例：PHP Manager
 
 PHP Manager 是一個 Web 應用程式擴充功能，讓 Web 應用程式系統管理員可以使用 Web 介面輕鬆檢視及設定其 PHP 設定，而不需直接修改 PHP .ini 檔案。 PHP 的常見設定檔包括位於 Program Files 之下的 php.ini 檔案，以及位於 Web 應用程式根資料夾的 .user.ini 檔案。 因為無法在 App Service 平台上直接編輯 php.ini 檔案，所以 PHP Manager 擴充功能會使用 .user.ini 檔案來套用設定變更。
 
@@ -76,13 +76,13 @@ PHP Manager 是一個 Web 應用程式擴充功能，讓 Web 應用程式系統�
 
 以下是 PHP Manager 部署的首頁：
 
-![] TransformSitePHPUI[] TransformSitePHPUI
+![TransformSitePHPUI][TransformSitePHPUI]
 
 如您所見，Web 應用程式擴充功能就像是一般的 Web 應用程式，但該 Web 應用程式的根資料夾中有額外的 ApplicationHost.xdt 檔案 (本文的下一節會提供更多有關 ApplicationHost.xdt 檔案的詳細資料)。
 
 PHP Manager 擴充功能是使用 Visual Studio ASP.NET MVC 4 Web 應用程式範本建立的。 下列的 [方案總管] 檢視顯示 PHP Manager 擴充功能的結構。
 
-![] TransformSiteSolEx[] TransformSiteSolEx
+![TransformSiteSolEx][TransformSiteSolEx]
 
 檔案 I/O 所需的唯一特殊邏輯就是指出 Web 應用程式的 wwwroot 目錄位於何處。 如下列程式碼範例所示，環境變數 "HOME" 表示 Web 應用程式的根路徑，而附加 "site\wwwroot" 即可建構 wwwroot 路徑：
 
@@ -172,13 +172,14 @@ Web 應用程式擴充功能的程式碼會在 %home%\siteextensions\[your-exten
 
 在開發和調查期間，您可以藉由新增索引鍵為 `WEBSITE_PRIVATE_EXTENSIONS` 且值為 `0` 的應用程式，來停用 Web 應用程式的所有私人 (非預先安裝) 擴充功能。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- IMAGES -->
 [TransformSitePHPUI]: ./media/web-sites-transform-extend/TransformSitePHPUI.png
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
  
+
 

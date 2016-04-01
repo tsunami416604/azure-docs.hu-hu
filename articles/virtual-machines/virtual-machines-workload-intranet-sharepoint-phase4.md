@@ -41,7 +41,7 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
 - 資料表 ST，適用於儲存體帳戶
 - 資料表 A，適用於可用性設定組
 
-還記得您定義中的資料表 M [第 2 階段: 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md) 和資料表 V、 S、 ST 和在 [第 1 階段: 設定 Azure](virtual-machines-workload-intranet-sharepoint-phase1.md)。
+還記得您定義中的資料表 M [第 2 階段 ︰ 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md) 和資料表 V、 S、 ST 和在 [第 1 階段 ︰ 設定 Azure](virtual-machines-workload-intranet-sharepoint-phase1.md)。
 
 當您提供所有適當值後，在 Azure PowerShell 命令提示字元中執行結果區塊。
 
@@ -153,7 +153,7 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
 
 請注意，您必須提供網域帳戶認證輸入之後 **Add-computer** 命令。
 
-重新啟動之後，請使用 [登入虛擬機器使用遠端桌面連線程序](virtual-machines-workload-intranet-sharepoint-phase2.md#logon) 四次，一次針對每個 SharePoint 伺服器，以使用 [網域] \sp_farm_db 帳戶登入認證。 建立中的這些認證 [第 2 階段: 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md)。
+重新啟動之後，請使用 [登入虛擬機器使用遠端桌面連線程序](virtual-machines-workload-intranet-sharepoint-phase2.md#logon) 四次，一次針對每個 SharePoint 伺服器，以使用 [網域] \sp_farm_db 帳戶登入認證。 建立中的這些認證 [第 2 階段 ︰ 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md)。
 
 使用 [來測試連線能力程序](virtual-machines-workload-intranet-sharepoint-phase2.md#testconn) 四次，每個 SharePoint server 測試組織網路位置的連線。
 
@@ -165,11 +165,11 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
 
 1.  在第一部 SharePoint 應用程式伺服器桌面上，按兩下 **SharePoint 2013 產品組態精靈**。 當您詢問是否允許程式變更電腦中，按一下 **是**。
 2.  在 **歡迎使用 SharePoint 產品** 頁面上，按一下 **下一步**。
-3.  A **SharePoint 產品組態精靈** ] 對話方塊隨即出現，警告將重新啟動或重設服務 (例如 IIS)。 按一下 [ **是**。
+3.  A **SharePoint 產品組態精靈** ] 對話方塊隨即出現，警告將重新啟動或重設服務 （例如 IIS)。 按一下 [ **是**。
 4.  在 **連線至伺服器陣列** 頁面上，選取 **建立新的伺服器陣列**, ，然後按一下 [ **下一步**。
-5.  在 **指定組態資料庫設定** 頁面:
+5.  在 **指定組態資料庫設定** 頁面 ︰
  - 在 **資料庫伺服器**, ，輸入主要資料庫伺服器的名稱。
- - 在 **Username**, ，輸入 [網域]**\sp_farm_db** (在建立 [第 2 階段: 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md))。 還記得 sp_farm_db 帳戶具有資料庫伺服器的系統管理員權限。
+ - 在 **Username**, ，輸入 [網域]**\sp_farm_db** (在建立 [第 2 階段 ︰ 設定網域控制站](virtual-machines-workload-intranet-sharepoint-phase2.md))。 還記得 sp_farm_db 帳戶具有資料庫伺服器的系統管理員權限。
  - 在 **密碼**, ，輸入 sp_farm_db 帳戶密碼。
 6.  按一下 [ **下一步**。
 7.  在 **指定伺服器陣列安全性設定** 頁面上，輸入複雜密碼兩次。 記下複雜密碼並儲存在安全的位置，以供日後參考。 按一下 [ **下一步**。
@@ -183,7 +183,7 @@ SharePoint Server 虛擬機器共有四部。 其中兩個 SharePoint Server 虛
 
 1.  從桌面上，按兩下 **SharePoint 2013 產品組態精靈**。 當您詢問是否允許程式變更電腦中，按一下 **是**。
 2.  在 **歡迎使用 SharePoint 產品** 頁面上，按一下 **下一步**。
-3.  A **SharePoint 產品組態精靈** ] 對話方塊隨即出現，警告將重新啟動或重設服務 (例如 IIS)。 按一下 [ **是**。
+3.  A **SharePoint 產品組態精靈** ] 對話方塊隨即出現，警告將重新啟動或重設服務 （例如 IIS)。 按一下 [ **是**。
 4.  在 **連線至伺服器陣列** 頁面上，按一下 **連線至現有的伺服器陣列**, ，然後按一下 [ **下一步**。
 5.  在 **指定組態資料庫設定** 頁面上，輸入中的主要資料庫伺服器名稱 **資料庫伺服器**, ，然後按一下 [ **擷取資料庫名稱**。
 6.  按一下 [ **SharePoint_Config** 中資料庫名稱清單中，然後按一下 **下一步**。
@@ -204,4 +204,5 @@ SharePoint 建立伺服器陣列後，會在主要 SQL Server 虛擬機器中設
 ## 後續步驟
 
 - 使用 [第 5 階段](virtual-machines-workload-intranet-sharepoint-phase5.md) 繼續設定此工作負載。
+
 

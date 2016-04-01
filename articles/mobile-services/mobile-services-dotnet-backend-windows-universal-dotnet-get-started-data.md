@@ -35,7 +35,7 @@
 
 > 如果您無法升級至 Visual Studio Professional 2013 Update 3 或是您偏好手動將您的行動服務專案新增至 Windows 市集應用程式解決方案，請參閱 [這一版](../mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md) 的主題。
 
-##先決條件
+##必要條件
 
 若要完成此教學課程，您需要下列項目：
 
@@ -50,7 +50,7 @@
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service-vs2013](../../includes/mobile-services-dotnet-backend-create-new-service-vs2013.md)]
 
-&nbsp;&nbsp;7. 在 [方案總管] 中，[getstartedwithdata.shared] 專案資料夾中，開啟 App.xaml.cs 程式碼檔案，並注意已加入的全新靜態欄位 **應用程式** 類別在 Windows 市集應用程式條件式編譯區塊，如下列範例所示:
+&nbsp;&nbsp;7. 在 [方案總管] 中，[getstartedwithdata.shared] 專案資料夾中，開啟 App.xaml.cs 程式碼檔案，並注意已加入的全新靜態欄位 **應用程式** 類別在 Windows 市集應用程式條件式編譯區塊，如下列範例所示 ︰
 
     public static Microsoft.WindowsAzure.MobileServices.MobileServiceClient
         todolistClient = new Microsoft.WindowsAzure.MobileServices.MobileServiceClient(
@@ -58,7 +58,7 @@
             "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
 
-(& s) nbsp; & nbsp;此程式碼提供存取您的應用程式中新的行動服務所使用的執行個體 [MobileServiceClient](http://go.microsoft.com/fwlink/p/?LinkId=302030) 類別。 用戶端是利用提供新行動服務的 URI 和應用程式金鑰來建立。 應用程式中的所有頁面都可以使用此靜態資料行。
+（& s) nbsp; & nbsp;此程式碼提供存取您的應用程式中新的行動服務所使用的執行個體 [MobileServiceClient](http://go.microsoft.com/fwlink/p/?LinkId=302030) 類別。 用戶端是利用提供新行動服務的 URI 和應用程式金鑰來建立。 應用程式中的所有頁面都可以使用此靜態資料行。
 
 &nbsp;&nbsp;8. 以滑鼠右鍵按一下 Windows Phone 應用程式專案中，按一下 **新增**, ，按一下 [ **已連接服務]**, ，選取的行動服務，您剛建立，然後按一下 **確定**。 相同的程式碼會新增到共用 App.xaml.cs 檔案，但是這次是新增到 Windows Phone 應用程式條件式編譯區塊。
 
@@ -98,14 +98,14 @@
 
 本教學課程示範讓通用 Windows 應用程式專案能夠在行動服務中處理資料的基本概念。 接著，請考慮閱讀下列其他主題：
 
-* [開始使用驗證]
+* [Get started with authentication]
   <br/>了解如何驗證應用程式的使用者。
 
-* [開始使用推播通知]
+* [Get started with push notifications]
   <br/>了解如何將非常基本的推播通知傳送至您的應用程式。
 
 * [行動服務 C# 做法概念性參考](mobile-services-windows-dotnet-how-to-use-client-library.md)
-  <br/>進一步了解如何使用搭配.NET 的行動服務。
+  <br/>深入了解如何搭配使用行動服務與 .NET。
 
 
 <!-- Images. -->
@@ -125,4 +125,5 @@
 [Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkID=510826
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
+
 

@@ -20,11 +20,11 @@
 
 您必須先加入作業，才能夠使用 API 管理中的 API。 本指南示範如何在 API 管理中對 API 加入和設定不同類型的作業。
 
-## <a name="add-operation"> </a>加入作業
+## <a name="add-operation"> </a>新增作業
 
 請在發行者入口網站新增和設定 API 的作業。 若要存取發行者入口網站，按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 >如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
@@ -57,7 +57,7 @@
 
 作業描述可以指定為純文字或 HTML 中的 **描述** 文字方塊。
 
-## <a name="operation-caching"> </a>操作快取
+## <a name="operation-caching"> </a>作業快取
 
 回應快取可縮短 API 取用者所感受的延遲、降低頻寬耗用量，以及減少實作 API 的 HTTP Web 服務的負載。 
 
@@ -67,26 +67,26 @@
 
 **持續時間** 指定操作回應保留在快取期間的時間週期。 預設值為 3600 秒或 1 小時。
 
-快取索引鍵用來區分回應，以便讓對應至每一個不同快取索引鍵的回應取得各自的快取值。 (選擇性) 輸入特定的查詢字串參數及/或 HTTP 標頭用來計算快取中的索引鍵值 **依查詢字串參數改變** 和 **Vary 標頭所** 文字方塊分別。 當未指定，則完整要求 URL 和下列 HTTP 標頭值會用於產生快取索引鍵: **接受** 和 **Accept-charset**。
+快取索引鍵用來區分回應，以便讓對應至每一個不同快取索引鍵的回應取得各自的快取值。 （選擇性） 輸入特定的查詢字串參數及/或 HTTP 標頭用來計算快取中的索引鍵值 **依查詢字串參數改變** 和 **Vary 標頭所** 文字方塊分別。 當未指定，則完整要求 URL 和下列 HTTP 標頭值會用於產生快取索引鍵 ︰ **接受** 和 **Accept-charset**。
 
 >如需有關快取和快取原則的詳細資訊，請參閱 [如何快取操作結果，在 Azure API 管理][]。
 
 
-## <a name="request-parameters"> </a>Request parameters
+## <a name="request-parameters"> </a>要求參數
 
 操作參數是在 [參數] 索引標籤上管理。 參數中指定 **URL 範本** 上 **簽章** ] 索引標籤會自動加入，而且可以變更只能透過編輯 URL 範本。 可手動輸入其他參數。
 
-若要加入新的查詢參數，請按一下 [ **加入查詢參數** 並輸入下列資訊:
+若要加入新的查詢參數，請按一下 [ **加入查詢參數** 並輸入下列資訊 ︰
 
 -   **名稱** -參數名稱。
--   **描述** -(選擇性) 參數的簡短描述。
+-   **描述** -（選擇性） 參數的簡短描述。
 -   **型別** -參數類型，下拉式清單中選取。
 -   **值** -可指派給此參數的值。 其中一個值可標示為預設值 (選擇性)。
 -   **需要** -選取核取方塊，讓參數成為強制。 
 
 ![Request parameters][api-management-request-parameters]
 
-## <a name="request-body"> </a>Request body
+## <a name="request-body"> </a>要求本文
 
 如果操作允許 (例如 PUT、POST) 且需要本文，您可以使用所有支援的表示法格式 (例如 json、XML) 來提供其範例。 
 
@@ -163,3 +163,4 @@
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to cache operation results in Azure API Management]: api-management-howto-cache.md
+

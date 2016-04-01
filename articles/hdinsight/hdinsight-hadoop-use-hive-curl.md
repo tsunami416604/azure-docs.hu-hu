@@ -27,7 +27,7 @@
 
 > [AZURE.NOTE] 如果您已熟悉使用以 Linux 為基礎的 Hadoop 伺服器，但剛接觸 HDInsight，請參閱 [想要知道有關 Linux 型 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-information.md)。
 
-##<a id="prereq"></a>先決條件
+##<a id="prereq"></a>必要條件
 
 若要完成本文中的步驟，您需要下列項目：
 
@@ -80,7 +80,7 @@
 
         * **statusdir** -這項工作的狀態寫入的目錄。
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
     * **DROP TABLE** -刪除資料表和資料檔中，如果資料表已存在。
 
@@ -92,7 +92,7 @@
 
     * **ROW FORMAT** -告訴 Hive 如何格式化資料。 在此情況下，每個記錄中的欄位會以空格隔開。
 
-    * **STORED AS TEXTFILE LOCATION** -告訴 Hive 資料的儲存 (example/data 目錄)，且儲存為文字。
+    * **STORED AS TEXTFILE LOCATION** -告訴 Hive 資料的儲存 （example/data 目錄），且儲存為文字。
 
     * **選取** -選擇的所有資料列計數，資料行 **t4** 包含值 **[錯誤]**。 這應該會傳回值為 **3** 因為有三個資料列包含此值。
 
@@ -116,7 +116,7 @@
 
 4. 一旦工作狀態變更為 **成功**, ，您可以從 Azure Blob 儲存體擷取工作結果。  `statusdir` 隨查詢一起傳送的參數包含輸出檔案的; 在此案例中，位置 **wasb: / 範例/curl**。 此位址會將儲存在工作的輸出 **範例/curl** 目錄 HDInsight 叢集所使用之預設儲存體容器。
 
-    您可以列出並下載這些檔案使用 [適用於 Mac、 Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。 例如，若要列出檔案中 **範例/curl**, ，使用下列命令:
+    您可以列出並下載這些檔案使用 [適用於 Mac、 Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。 例如，若要列出檔案中 **範例/curl**, ，使用下列命令 ︰
 
         azure storage blob list <container-name> example/curl
 
@@ -130,7 +130,7 @@
 
         curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="CREATE+TABLE+IF+NOT+EXISTS+errorLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+STORED+AS+ORC;INSERT+OVERWRITE+TABLE+errorLogs+SELECT+t1,t2,t3,t4,t5,t6,t7+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log';SELECT+*+from+errorLogs;" -d statusdir="wasb:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
     * **CREATE TABLE IF NOT EXISTS** -建立資料表，如果不存在。 由於 **外部** 未使用關鍵字，這是內部資料表，會儲存在 Hive 資料倉儲並完全透過 Hive 所管理。
 
@@ -147,9 +147,9 @@
 
 如這份文件所示，您可以使用原始 HTTP 要求來執行、監視和檢視 HDInsight 叢集上的 Hive 工作結果。
 
-如需本文中使用的 REST 介面的詳細資訊，請參閱 <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference" target="_blank">WebHCat 參考</a>.
+如需本文中使用的 REST 介面的詳細資訊，請參閱 <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference" target="_blank">WebHCat 參照</a>。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 Hive 與 HDInsight 搭配使用的一般資訊：
 
@@ -186,6 +186,7 @@ Hive 與 HDInsight 搭配使用的一般資訊：
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+
 
 
 

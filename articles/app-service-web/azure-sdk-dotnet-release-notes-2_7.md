@@ -74,7 +74,7 @@ Azure SDK 2.7 隨附的登入增強功能只有在 Visual Studio 2015 中才能�
 伺服器總管的 [位置] 節點下方沒有出現 Web App 部署位置節點，而雲端總管下方沒有載入 Web App 部署位置的子節點。 這個問題已經解決，下一個 SDK 版本將不再發生。 
 
 
-###<a id="cloud_explorer"></a>Visual Studio 2015 雲端總管
+###<a id="cloud_explorer"></a>適用 Visual Studio 2015 的雲端總管
 
 Azure SDK 2.7 包含適用 Visual Studio 2015 的雲端總管，可讓您從 Visual Studio 中檢視您的 Azure 資源、檢查其屬性，以及執行重要的開發人員動作。 
 
@@ -106,12 +106,12 @@ Azure 資源管理員工具已更新為使用角色型存取控制 (RBAC) 和新
 
 簡介 **Azure Data Factory 工具** for Visual Studio。 以下是啟用的功能。 請參閱 [這篇部落格](http://go.microsoft.com/fwlink/?LinkId=617530) 如需詳細資訊。
 
-- **範本基礎撰寫**: 選取使用案例基礎範本、 資料移動範本或部署端對端資料整合解決方案，並開始使用 Data Factory 快速實際操作的資料處理範本。 
-- **方案總管] 中撰寫與部署 Data Factory 實體與整合**: 建立和部署管線與相關的實體做為 Visual Studio 專案。 
-- **整合圖表檢視進行視覺互動時撰寫**: 以視覺化方式撰寫管線與資料集在圖表檢視中的輔助工具。 
-- **整合伺服器總管，瀏覽和已部署的實體互動**: 利用伺服器總管瀏覽已部署的資料處理站和對應的實體。 將已部署的資料處理站或任何實體 (管線、連結的服務、資料集) 匯入您的專案。 
-- **使用結構描述驗證與豐富的 intellisense 進行 JSON 編輯**: 有效率地設定和編輯豐富的 intellisense 和結構描述驗證的 Data Factory 實體的 JSON 文件 
-- **多重環境發佈**: 發行藉由建立不同的組態檔，為每個環境中撰寫開發、 測試或生產環境的管線。
+- **範本基礎撰寫**︰ 選取使用案例基礎範本、 資料移動範本或部署端對端資料整合解決方案，並開始使用 Data Factory 快速實際操作的資料處理範本。 
+- **方案總管] 中撰寫與部署 Data Factory 實體與整合**︰ 建立和部署管線與相關的實體做為 Visual Studio 專案。 
+- **整合圖表檢視進行視覺互動時撰寫**︰ 以視覺化方式撰寫管線與資料集在圖表檢視中的輔助工具。 
+- **整合伺服器總管，瀏覽和已部署的實體互動**︰ 利用伺服器總管瀏覽已部署的資料處理站和對應的實體。 將已部署的資料處理站或任何實體 (管線、連結的服務、資料集) 匯入您的專案。 
+- **使用結構描述驗證與豐富的 intellisense 進行 JSON 編輯**︰ 有效率地設定和編輯豐富的 intellisense 和結構描述驗證的 Data Factory 實體的 JSON 文件 
+- **多重環境發佈**︰ 發行藉由建立不同的組態檔，為每個環境中撰寫開發、 測試或生產環境的管線。
 - **Pig、 Hive 和.Net 基礎資料處理支援**: Pig 和 Hive Data Factory 專案中的指令碼的支援。 支援參考 C# 專案來管理 .Net 活動。
 
 ##Azure SDK for .NET 2.7.1
@@ -158,4 +158,5 @@ LightSwitch 專案與這個版本不相容。 這個問題將在下個 SDK 版�
 [Azure SDK 2.7 公告文章](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)
 
 [Azure SDK for .NET 和 API 的支援和停用資訊](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
+
 

@@ -157,10 +157,11 @@ DocumentDB 權限資源會與 DocumentDB 使用者相關聯。  每位使用者�
 
 > [AZURE.TIP] 資源權杖有 1 小時的預設有效時間範圍。  不過，您可以明確指定權杖存留期，最多 5 個小時。
 
-##<a name="NextSteps"></a>後續步驟
+##<a name="NextSteps"></a>接續步驟
 
 - 若要深入了解 DocumentDB，請按一下 [這裡](http://azure.com/docdb)。
 - 若要了解如何管理主要和唯讀金鑰，按一下 [ [這裡](documentdb-manage-account.md)。
 - 若要了解如何建構 DocumentDB 授權權杖，按一下 [ [這裡](https://msdn.microsoft.com/library/azure/dn783368.aspx)
  
+
 

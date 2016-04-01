@@ -32,7 +32,7 @@ Azure AD Connect 同步處理是基於宣告式佈建而建立，Forefront Ident
 - 函式名稱後面接著以括弧括住的引數：FunctionName(argument 1,argument N)。
 - 屬性以方括弧識別：[attributeName]
 - 參數以百分比符號識別：%ParameterName%
-- 字串常數以引號括住：例如 「 Contoso 」 (注意: 必須使用雙引號"」 不智慧引號"")
+- 字串常數以引號括住：例如 「 Contoso 」 (注意 ︰ 必須使用雙引號"」 不智慧引號"")
 - 數值不加引號，而且必須是十進位。 十六進位值前面會加上 &H。 例如 98052, &HFF
 - 布林值以兩個常數表示：True、False。
 - 內建常數只以其名稱表示：NULL、CRLF、IgnoreThisFlow
@@ -73,11 +73,11 @@ Active Directory 連接器對於輸入同步處理規則提供下列參數：
 
 - **比較**: <、 < =、 <>、 =、 > > =
 - **數學**: +、-、 *、-
-- **字串**: & (串連)
-- **邏輯**: & & (且)、 | |(或者)
-- **評估順序**:)
+- **字串**: & （串連）
+- **邏輯**: & & （且）、 | |（或者）
+- **評估順序**: （)
 
-運算子會由左至右進行評估，且具有相同的評估優先順序。 亦即 \ * (乘法運算器) 不會評估之前-(減號)。 2\*(5+3) 不同時 2 * 5 + 3。 若由左至右的評估順序不適當，則可使用括弧 () 來變更評估順序。
+運算子會由左至右進行評估，且具有相同的評估優先順序。 亦即 \ * （乘法運算器） 不會評估之前-（減號）。 2\*(5+3) 不同時 2 * 5 + 3。 若由左至右的評估順序不適當，則可使用括弧 () 來變更評估順序。
 
 ## 常見案例
 
@@ -121,7 +121,7 @@ Active Directory 中的某些屬性在結構描述中是多重值，但是在 [A
 
 `proxyAddresses <- RemoveDuplicates(Trim(ImportedValues("proxyAddresses")))`
 
-如需函式的完整清單，請參閱 [Azure AD Connect 同步處理: 函式參考](active-directory-aadconnectsync-functions-reference.md)
+如需函式的完整清單，請參閱 [Azure AD Connect 同步處理 ︰ 函式參考](active-directory-aadconnectsync-functions-reference.md)
 
 
 ## 其他資源
@@ -130,4 +130,5 @@ Active Directory 中的某些屬性在結構描述中是多重值，但是在 [A
 * [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)
 
 <!--Image references-->
+
 

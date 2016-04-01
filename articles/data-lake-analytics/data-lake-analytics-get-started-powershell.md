@@ -62,8 +62,8 @@ U SQL 指令碼，然後再儲存輸出資料湖存放區帳戶或 Blob 儲存�
             -Location "<Azure Data Center>" # For example, "East US 2"
 
 - **資料湖分析帳戶名稱**
-- **位置**: 支援資料湖分析的 Azure 資料中心的其中一個。
-- **預設資料湖帳戶**: 每個資料湖分析帳戶具有預設資料湖帳戶。
+- **位置**︰ 支援資料湖分析的 Azure 資料中心的其中一個。
+- **預設資料湖帳戶**︰ 每個資料湖分析帳戶具有預設資料湖帳戶。
 
     若要建立新的資料湖帳戶：
 
@@ -220,5 +220,6 @@ U SQL 指令碼，然後再儲存輸出資料湖存放區帳戶或 Blob 儲存�
 - 若要了解 U SQL，請參閱 [開始使用 Azure 資料湖分析 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
 - 管理工作，請參閱 [管理 Azure 資料湖分析使用 Azure 入口網站](data-lake-analytics-manage-use-portal.md)。
 - 若要取得資料湖分析的概觀，請參閱 [Azure 資料湖分析概觀](data-lake-analytics-overview.md)。
+
 
 

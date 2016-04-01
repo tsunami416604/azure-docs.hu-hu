@@ -26,7 +26,7 @@
 
 本文件將說明如何瀏覽儲存在 Azure blob 容器使用的資料 [Pandas](http://pandas.pydata.org/) Python 封裝。
 
-## 先決條件
+## 必要條件
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱 [建立 Azure 儲存體帳戶](../hdinsight-get-started.md#storage)
@@ -61,7 +61,7 @@
 
 現在您已經準備好探索資料並在此資料集上產生功能。
 
-##<a name="blob-dataexploration"></a>使用 Pandas 資料瀏覽的範例
+##<a name="blob-dataexploration"></a>使用 Pandas 的資料探索範例
 
 以下是數個可使用 Pandas 探索資料的範例方式：
 
@@ -69,7 +69,7 @@
 
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 
-2. **檢查** 第一個或最後幾 **列** 中的資料集，如下所示:
+2. **檢查** 第一個或最後幾 **列** 中的資料集，如下所示 ︰
 
         dataframe_blobdata.head(10)
         
@@ -93,7 +93,7 @@
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
      
-7.  如果您有 **遺漏值** 資料中的特定資料行，您可以卸除它們，如下所示:
+7.  如果您有 **遺漏值** 資料中的特定資料行，您可以卸除它們，如下所示 ︰
 
         dataframe_blobdata_noNA = dataframe_blobdata.dropna()
         dataframe_blobdata_noNA.shape
@@ -115,4 +115,5 @@
         
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
+
 

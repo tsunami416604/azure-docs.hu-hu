@@ -46,8 +46,8 @@ VM 擴充功能實作了您想要使用在 VM 使用的大部分重要功能，�
 |VM 擴充功能名稱|功能描述|相關資訊|
 |---|---|---|
 |**MSEnterpriseApplication**|實作 Windows System Center 支援的功能。|[System Center 2012 R2 虛擬機器角色](http://social.technet.microsoft.com/wiki/contents/articles/18274.system-center-2012-r2-virtual-machine-role-authoring-guide-resource-extension-package.aspx)|
-|**Octopus 部署** (DSC 延伸模組為基礎)|支援自動化將 ASP.NET Web 應用程式和 Windows 服務部署至開發、測試和生產環境。|[開始使用 Octopus Deploy](http://docs.octopusdeploy.com/display/OD/Getting%20started)|
-|**Visual Studio 發行管理員** (DSC 延伸模組為基礎)|支援使用 Visual Studio 的持續部署。|[使用版本管理自動化部署](https://msdn.microsoft.com/Library/vs/alm/Release/overview)|
+|**Octopus 部署** （DSC 延伸模組為基礎）|支援自動化將 ASP.NET Web 應用程式和 Windows 服務部署至開發、測試和生產環境。|[開始使用 Octopus Deploy](http://docs.octopusdeploy.com/display/OD/Getting%20started)|
+|**Visual Studio 發行管理員** （DSC 延伸模組為基礎）|支援使用 Visual Studio 的持續部署。|[使用版本管理自動化部署](https://msdn.microsoft.com/Library/vs/alm/Release/overview)|
 |**CentosChefClient**|||
 |**ChefClient**|在 Windows 上建立 Chef 用戶端。 (也可以使用下面的 DSC 擴充功能。)|[Chef 和 Microsoft Azure](https://www.getchef.com/solutions/azure/)|
 |**LinuxChefClient**|||
@@ -76,7 +76,7 @@ VM 擴充功能實作了您想要使用在 VM 使用的大部分重要功能，�
 
 |**VM 擴充功能名稱**|功能描述|相關資訊|
 |---|---|---|
-|**AzureVmLogCollector**|您可以使用 **AzureVMLogCollector** 延伸隨執行 distinct 單次收集記錄檔從一或多個雲端服務 Vm (從 web 角色和背景工作角色) 和傳輸所收集的檔案到 Azure 儲存體帳戶 – 完全不需要從遠端登入任何 Vm。 |[AzureLogCollector 擴充功能](virtual-machines-extensions-log-collector.md)|
+|**AzureVmLogCollector**|您可以使用 **AzureVMLogCollector** 延伸隨執行 distinct 單次收集記錄檔從一或多個雲端服務 Vm （從 web 角色和背景工作角色） 和傳輸所收集的檔案到 Azure 儲存體帳戶 – 完全不需要從遠端登入任何 Vm。 |[AzureLogCollector 擴充功能](virtual-machines-extensions-log-collector.md)|
 |**IaaSDiagnostics**|可讓會停用，並設定 Azure 診斷，也會使用 **AzureCATExtensionHandler** 來支援 SAP 監控。|[使用 Azure 診斷擴充功能監視 Microsoft Azure 虛擬機器](http://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)|
 |**OSPatchingForLinux**|可讓 Azure VM 管理員，使用自訂的組態進行自動化 VM 作業系統更新。 您可以使用 OSPatching 擴充功能來設定虛擬機器的作業系統更新，包括：指定安裝作業系統修補程式的頻率和時機、指定安裝哪些修補程式，以及設定更新之後的重新開機行為|[OS 修補延伸部落格文章](http://azure.microsoft.com/blog/2014/10/23/automate-linux-vm-os-updates-using-ospatching-extension/)。 另請參閱 「 讀我檔案和來源 Github 上的 [OS 修補延伸模組](https://github.com/Azure/azure-linux-extensions)。|
 
@@ -102,4 +102,5 @@ VM 擴充功能實作了您想要使用在 VM 使用的大部分重要功能，�
 |---|---|---|
 |**BGInfo**|呈現使用 RDP 時，桌面上實用伺服器資訊的整合圖形。|[BGInfo 擴充功能](https://msdn.microsoft.com/library/dn606289.aspx)|
 |**HpcVmDrivers**|在執行 Windows Server 2012 R2 或 Windows Server 2012，且大小為 A8 或 A9 的 VM 上安裝、設定及維護遠端直接記憶體存取 (RDMA) 網路裝置驅動程式。 啟用安裝叢集的 A8 或 A9 VM，以便在執行平行 MPI 應用程式時使用 RDMA 網路。|[關於 A8、A9、A10 和 A11 密集運算執行個體](virtual-machines-a8-a9-a10-a11-specs.md)
+
 

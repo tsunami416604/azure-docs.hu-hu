@@ -73,7 +73,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 5. 按一下 [ **身分識別提供者** ，然後選取 「 電子郵件地址 」。 (選擇性) 您也可以選取社交身分識別提供者 (如果已經設定)。 按一下 [ **確定**。
 
     > [AZURE.NOTE]
-    對於本機帳戶，Azure AD B2C 的註冊原則會使用「強式」密碼 (它們設定為「永久有效」)。 請參閱 [Azure AD 密碼原則](https://msdn.microsoft.com/library/azure/jj943764.aspx) 的其他設定 (目前未使用的 Azure AD B2C)。
+    對於本機帳戶，Azure AD B2C 的註冊原則會使用「強式」密碼 (它們設定為「永久有效」)。 請參閱 [Azure AD 密碼原則](https://msdn.microsoft.com/library/azure/jj943764.aspx) 的其他設定 （目前未使用的 Azure AD B2C）。
 
 6. 按一下 [ **註冊屬性**。 您可以在這裡選擇註冊期間要向取用者收集的屬性。 例如，選取 [國家/區域]、[顯示名稱] 和 [郵遞區號]。 按一下 [ **確定**。
 7. 按一下 [ **應用程式宣告**。 您在這裡選擇成功註冊之後，您要在權杖中傳回給應用程式的宣告。 例如，選取 [顯示名稱]、[身分識別提供者]、[郵遞區號]、[使用者是新的] 和 [使用者的物件識別碼]。
@@ -118,4 +118,5 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
     > [AZURE.NOTE]
     建立和更新原則後，需要經過一分鐘才會生效。
+
 

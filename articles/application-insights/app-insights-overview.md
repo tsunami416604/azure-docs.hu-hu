@@ -107,7 +107,7 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 
 [範例和逐步解說](app-insights-code-samples.md)
 
-[SDK 實驗室](https://www.myget.org/gallery/applicationinsights-sdk-labs) -NuGet 封裝安裝 (及解除安裝) 做為 Application Insights SDK 的新增項目。 親身體驗並提供意見反應！
+[SDK 實驗室](https://www.myget.org/gallery/applicationinsights-sdk-labs) -NuGet 封裝安裝 （及解除安裝） 做為 Application Insights SDK 的新增項目。 親身體驗並提供意見反應！
 
 
 ## 支援與意見反應
@@ -150,3 +150,4 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 [windows]: app-insights-windows-get-started.md
 
  
+

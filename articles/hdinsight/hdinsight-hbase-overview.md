@@ -1,5 +1,5 @@
 <properties
-    pageTitle="什麼是 HDInsight 中的 HBase? | Microsoft Azure"
+    pageTitle="什麼是 HDInsight 中的 HBase？ | Microsoft Azure"
     description="HDInsight 中的 Apache HBase (建置在 Hadoop 的 NoSQL 資料庫) 簡介。 了解使用案例，並將 HBase 與其他 Hadoop 叢集進行比較。"
     keywords="bigtable,nosql,what is hbase"
     services="hdinsight"
@@ -58,7 +58,7 @@ HDInsight 實作運用 HBase 的向外延展架構，提供資料表自動分區
     應用程式可以將 HBase 做為資料存放區，並在此基礎上執行。 範例包括 Phoenix、OpenTSDB、Kiji 及 Titan。 應用程式也可與 HBase 整合。 範例包括 Hive、Pig、Solr、Storm、Flume、Impala、Spark、Ganglia 及 Drill。
 
 
-##<a name="next-steps"></a>後續步驟
+##<a name="next-steps"></a>接續步驟
 
 - [開始在 HDInsight 中搭配使用 HBase 與 Hadoop (英文)][hbase-get-started]
 - [在 Azure 虛擬網路上佈建 HDInsight 叢集 (英文)] [hbase-provision-vnet]
@@ -93,4 +93,5 @@ HDInsight 實作運用 HBase 的向外延展架構，提供資料表自動分區
 [azure-create-storageaccount]: ../storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
+
 

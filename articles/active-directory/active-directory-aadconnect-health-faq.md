@@ -25,7 +25,7 @@
 
 
 
-**問: 我管理多個 Azure AD 目錄。 如何切換到包含 Azure Active Directory Premium?**
+**問 ︰ 我管理多個 Azure AD 目錄。 如何切換到包含 Azure Active Directory Premium？**
 
 您可以切換不同的 Azure AD 目錄，方法為在右上角選取目前登入的使用者名稱，然後選擇適當的帳戶。 如果此處未列出帳戶，請選取 [登出]，然後使用已啟用 Azure Active Directory Premium 之目錄的全域系統管理員認證登入。
 
@@ -102,4 +102,5 @@ Azure AD Connect Health 警示會在成功情況下獲得解決。 Azure AD Conn
 * [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)
 * [使用 Azure AD Connect Health 搭配 AD FS](active-directory-aadconnect-health-adfs.md)
 * [使用適用於同步處理的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
+
 

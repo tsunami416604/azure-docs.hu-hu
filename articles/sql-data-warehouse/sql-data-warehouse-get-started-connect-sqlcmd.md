@@ -28,7 +28,7 @@
 + 連接到包含 AdventureWorksDW 範例資料庫的資料庫
 + 針對範例資料庫執行查詢  
 
-## 先決條件
+## 必要條件
 
 + [sqlcmd.exe](https://msdn.microsoft.com/library/azure/ms162773.aspx) -若要下載 sqlcmd.exe，請參閱 [Microsoft Command Line Utilities 11 for SQL Server](http://go.microsoft.com/fwlink/?LinkId=321501)。
 
@@ -82,4 +82,5 @@ C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Pas
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
+
 

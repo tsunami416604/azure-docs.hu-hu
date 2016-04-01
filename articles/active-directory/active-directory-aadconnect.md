@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Azure AD Connect: 整合內部部署身分識別與 Azure Active Directory。 | Microsoft Azure"
+    pageTitle="Azure AD Connect ︰ 整合內部部署身分識別與 Azure Active Directory。 | Microsoft Azure"
     description="這就是 Azure AD Connect，說明它是什麼及使用的理由。"
     services="active-directory"
     documentationCenter=""
@@ -49,9 +49,9 @@ Azure Active Directory Connect 由三個主要部分組成。  它們是同步�
 
 | 方案 | 案例 |
 | ----- | ----- |
-| 開始之前 | <li>[Azure AD Connect: 硬體和必要條件](active-directory-aadconnect-prerequisites.md)</li> |
+| 開始之前 | <li>[Azure AD Connect：硬體和必要條件](active-directory-aadconnect-prerequisites.md)</li> |
 | [快速設定](active-directory-aadconnect-get-started-express.md) | <li>預設選項，如果您有單一樹系 AD 和建議。</li> <li>使用相同的密碼使用密碼同步處理的使用者登入。</li>
-| [自訂設定](active-directory-aadconnect-get-started-custom.md) | <li>有多個樹系時使用。 支援內部許多 [拓撲](active-directory-aadconnect-topologies.md)。</li><li>自訂您登入的選項，例如同盟的 ADFS 或使用協力廠商身分識別提供者。</li><li>自訂同步處理功能，例如篩選和回寫。</li>
+| [自訂設定](active-directory-aadconnect-get-started-custom.md) | <li>您有多個樹系時使用。 支援內部許多 [拓撲](active-directory-aadconnect-topologies.md)。</li> <li>自訂您登入選項，例如同盟或使用 ADFS 第 3 方身分識別提供者。</li> <li>自訂同步處理功能，例如篩選和回寫。</li>
 | [從 DirSync 升級](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>如果您有現有的 DirSync 伺服器已在執行中。</li>
 | 從 Azure AD Sync 升級 | <li>這是完美的就地升級。</li>
 
@@ -140,4 +140,5 @@ Azure AD Connect 同步處理隨附一個適用於大部分客戶和拓撲的預
 關於擴充您的內部部署目錄至雲端的 Ignite 2015 簡報。
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
+
 

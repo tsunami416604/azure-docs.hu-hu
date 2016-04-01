@@ -35,7 +35,7 @@
             
  - 如果您已選取 **Openstack** 雲端服務提供者，提供 **Hostname**, ，**便捷鍵**, ，和 **秘密金鑰**。
 
-        > [AZURE.NOTE] For all the cloud service providers, excluding Azure, a friendly name is allowed. You can use different friendly names and create more than one storage account with the same set of credentials.
+        > [AZURE.NOTE] 所有雲端服務提供者，不包括 Azure、 都允許的易記名稱。 您可以使用不同的易記名稱，並使用相同認證集合建立一個以上的儲存體帳戶。
 
         ![Add Openstack storage account](./media/storsimple-configure-new-storage-account-u1/AddOpenstackStorageaccount-include.png)
 
@@ -46,4 +46,5 @@
 6. 按一下核取圖示 ![核取圖示](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). 成功建立儲存體帳戶之後，系統將會通知您。
 
 7. 新建立的儲存體帳戶將會顯示在 **設定** 頁面下 **儲存體帳戶**。 按一下 [ **儲存** 以儲存新的儲存體帳戶。 按一下 [ **確定** 當系統提示您確認。
+
 

@@ -42,14 +42,14 @@
 
 但首先，我們需要更精簡這項實驗。 我們的實驗目前有兩個不同的模型，但現在需要選取一個要部署的模型。  
 
-假設我們已判斷出推進式樹狀模型是較適合使用的模型。 所以要第一件事是移除 [二級支援向量機器] [兩個類別的支援-向量-電腦] 模組，訓練它所用的模組。 您可能要先建立一份實驗，依序按一下 **另存新檔** 實驗畫布底部。
+假設我們已判斷出推進式樹狀模型是較適合使用的模型。 因此首先来移除 [二級支援向量機器][two-class-support-vector-machine] 模組，訓練它所用的模組。 您可能要先建立一份實驗，依序按一下 **另存新檔** 實驗畫布底部。
 
 我們必須刪除下列模組：  
 
-1.  [Two-class Support Vector Machine][兩個類別的支援-向量-電腦]
-2.  [訓練模型][訓練模型] 和 [評分模型] [評分模型] 模組連接到它
-3.  [標準化資料][標準化資料](兩者)
-4.  [評估模型][評估模型]
+1.  [二元支援向量機器][two-class-support-vector-machine]
+2.  [定型模型][train-model] 和 [評分模型][score-model] 連接到它的模組
+3.  [將資料正規化][normalize-data] （兩者）
+4.  [評估模型][evaluate-model]
 
 現在我們已經準備好要部署這個模型。
 
@@ -63,22 +63,22 @@
 
 所幸，完成所有三個步驟，只需按一下 **部署 Web 服務** 在實驗畫布底端 (選取 **預測 Web 服務** 選項)。
 
-當您按一下 **部署 Web 服務**, ，會發生幾件事:
+當您按一下 **部署 Web 服務**, ，會發生幾件事 ︰
 
 - 我們所定型的模型會另存為 **定型模型** 實驗畫布左側的模組調色盤中的模組 (您可以在調色盤中找到它 **定型模型**)。
 - 用於定型的模組會遭到移除。 具體而言：
-  - [雙類別促進式的決策樹][兩個-類別-強化的決策樹]
-  - [訓練模型][訓練模型]
-  - [分割][分割]
-  - 第二個 [Execute R Script] [執行-r-指令碼] 模組用來測試資料
+  - [二元促進式決策樹][two-class-boosted-decision-tree]
+  - [訓練模型][train-model]
+  - [分割][split]
+  - 第二個 [執行 R 指令碼][execute-r-script] 用於測試資料的模組
 - 儲存的定型模型會加入實驗。
 - **Web 服務輸入** 和 **Web 服務輸出** 加入模組。
 
-> [AZURE.NOTE] 實驗就已經儲存在兩個部分: 原始定型實驗和新做預測分析。 您可以使用實驗畫布頂端的索引標籤，存取其中一項實驗。
+> [AZURE.NOTE] 實驗就已經儲存在兩個部分 ︰ 原始定型實驗和新做預測分析。 您可以使用實驗畫布頂端的索引標籤，存取其中一項實驗。
 
 我們還必須對實驗執行額外的步驟。
-Machine Learning Studio 移除其中一個 [執行 R 指令碼] [執行-r-指令碼] 模組，當它移除 [分割] [分割] 模組，但從另一個 [執行 R 指令碼] [執行-r-指令碼] 模組。
-由於該模組只用於定型和測試 (它將提供的範例資料的加權函數)，我們現在可以將它移除，並連接到 [評分模型] [評分模型] 的 [中繼資料編輯器] 和 [中繼資料編輯器]。    
+Machine Learning Studio 移除其中一個 [執行 R 指令碼][execute-r-script] 模組時，會移除 [分割][split] 模組，但留下另 [執行 R 指令碼][execute-r-script] 模組。
+由於該模組只用於定型和測試 （它將提供的範例資料的加權函數），我們現在可以將它移除，連接 [中繼資料編輯器][metadata-editor] 至 [評分模型][score-model]。    
 
 實驗現在看起來如下：  
 
@@ -89,7 +89,7 @@ Machine Learning Studio 移除其中一個 [執行 R 指令碼] [執行-r-指令
 
 服務的確不需要原始信用卡資料。 但卻需要該資料的結構描述，例如，有多少個資料行及哪些資料行是數值等資訊。 需要此結構描述資訊才能解譯使用者的資料。 我們保持連接這些元件，以便服務執行時，評分模型才會有資料集結構描述。 不會使用資料，只是使用結構描述。  
 
-執行一次的實驗 (按一下 **執行**)。 如果您想要驗證模型仍然有效，請按一下 [評分模型] [評分模型] 模組的輸出，然後選取 **檢視結果**。 您會看到原始資料出現，也會看到信用風險值 ("Scored Labels") 和評分機率值 ("Scored Probabilities").  
+執行一次的實驗 (按一下 **執行**)。 如果您想要驗證模型仍然有效，按一下 [輸出 [評分模型][score-model] 模組，然後選取 **檢視結果**。 您會看到原始資料出現，也會看到信用風險值 ("Scored Labels") 和評分機率值 ("Scored Probabilities").  
 
 ## 部署 Web 服務
 
@@ -113,7 +113,7 @@ Web 服務產生的結果會顯示在儀表板底部。 我們如何設定服務
 
 ----------
 
-**下一步: [存取 web 服務](machine-learning-walkthrough-6-access-web-service.md)**
+**下一步 ︰ [存取 web 服務](machine-learning-walkthrough-6-access-web-service.md)**
 
 [1]: ./media/machine-learning-walkthrough-5-publish-web-service/publish1.png
 [2]: ./media/machine-learning-walkthrough-5-publish-web-service/publish2.png
@@ -133,4 +133,5 @@ Web 服務產生的結果會顯示在儀表板底部。 我們如何設定服務
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
+
 

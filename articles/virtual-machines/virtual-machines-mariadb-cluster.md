@@ -37,7 +37,7 @@
 
 ![架構](./media/virtual-machines-mariadb-cluster/Setup.png)
 
-> [AZURE.NOTE]  本主題會使用 [Azure CLI] 工具，因此請務必下載，並將它們連接至您的 Azure 訂閱，根據指示。 如果您需要 Azure CLI 中可用命令的參考，請造訪此連結以取得 [Azure CLI 命令參考]。 您也必須在 [建立 SSH 金鑰進行驗證]，接著記 **.pem 檔案位置**。
+> [AZURE.NOTE]  本主題使用 [Azure CLI] 工具，因此請務必下載，並將它們連接至您的 Azure 訂閱，根據指示。 如果您需要 Azure CLI 中可用命令的參考，請參閱此連結以取得 [Azure CLI command reference]。 您也必須 [create an SSH key for authentication] 並記下 **.pem 檔案位置**。
 
 
 ## 建立範本
@@ -146,7 +146,7 @@
 
             ln -s /mnt/data/mysql /var/lib/mysql
 
-5. 因為 [SELinux 會干擾叢集操作](http://galeracluster.com/documentation-webpages/configuration.html#selinux), ，就必須停用它 (直到相容的版本出現)，目前工作階段。 編輯 `/etc/selinux/config`，以便後續重新啟動時停用它：
+5. 因為 [SELinux 會干擾叢集操作](http://galeracluster.com/documentation-webpages/configuration.html#selinux), ，就必須停用它 （直到相容的版本出現），目前工作階段。 編輯 `/etc/selinux/config`，以便後續重新啟動時停用它：
 
             setenforce 0
 
@@ -203,7 +203,7 @@
     - RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
     - 重新載入防火牆：`firewall-cmd --reload`
 
-9.  將系統效能最佳化。 如需詳細資訊，請參閱這份文件的 [效能微調策略]
+9.  將系統效能最佳化。 請參閱這篇文章有關 [performance tuning strategy] 如需詳細資訊
 
     - 再次編輯 MySQL 設定檔
 
@@ -227,7 +227,7 @@
         chkconfig mysql off
         waagent -deprovision
 
-11. 透過入口網站擷取 VM。 (目前，[Azure CLI 中的問題 # 1268年] 工具說明的 Azure CLI 工具所擷取的映像不會擷取連接的資料磁碟)。
+11. 透過入口網站擷取 VM。 (目前， [issue #1268 in the Azure CLI] 描述 Azure CLI 工具所擷取的映像不會擷取連接的資料磁碟。）
 
     - 透過入口網站將這部電腦關機
     - 按一下 [擷取，並將映像名稱指定為 **mariadb galera 映像** 並提供描述，然後核取 [我已經執行 waagent]。
@@ -238,7 +238,7 @@
 
 從您剛才建立的範本建立 3 個 VM，然後設定並啟動叢集。
 
-1. 建立第一個 CentOS 7 VM，從 **mariadb galera 映像** 映像中的建立，提供虛擬網路名稱 **mariadbvnet** 和子網路 **mariadb**, ，機器大小 **媒體**, ，並傳入要的雲端服務名稱 **mariadbha** (或您想要透過 mariadbha.cloudapp.net 存取任何名稱)，設定為這部電腦的名稱 **mariadb1**  和為使用者名稱 **azureuser**,  ，及啟用的 SSH 存取和傳遞 SSH 憑證.pem 檔案，並取代 **/path/to/key.pem** 的路徑，您儲存產生的.pem SSH 金鑰。
+1. 建立第一個 CentOS 7 VM，從 **mariadb galera 映像** 映像中的建立，提供虛擬網路名稱 **mariadbvnet** 和子網路 **mariadb**, ，機器大小 **媒體**, ，並傳入要的雲端服務名稱 **mariadbha** （或您想要透過 mariadbha.cloudapp.net 存取任何名稱），設定為這部電腦的名稱 **mariadb1**  和為使用者名稱 **azureuser**,  ，及啟用的 SSH 存取和傳遞 SSH 憑證.pem 檔案，並取代 **/path/to/key.pem** 的路徑，您儲存產生的.pem SSH 金鑰。
 
     > [AZURE.NOTE] 下列命令會分成多行程式碼，為了清楚起見，但您應該輸入每個以一行。
 
@@ -311,7 +311,7 @@
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb3 3306:3306:tcp:false:MySQL:tcp:3306
 
-最後，由於 CLI 設定負載平衡器探查間隔為 15 秒 (這可能有點太長)，在變更入口網站的 [ **端點** 任一個 Vm 的
+最後，由於 CLI 設定負載平衡器探查間隔為 15 秒 （這可能有點太長），在變更入口網站的 [ **端點** 任一個 Vm 的
 
 ![編輯端點](./media/virtual-machines-mariadb-cluster/Endpoint.PNG)
 
@@ -343,10 +343,10 @@
 將會產生下表
 
     +----+--------+
-    | id | value  |
+  	| id | value  |
     +----+--------+
-    |  1 | Value1 |
-    |  4 | Value2 |
+  	|  1 | Value1 |
+  	|  4 | Value2 |
     +----+--------+
     2 rows in set (0.00 sec)
 
@@ -355,7 +355,7 @@
 
 在本文中，您在執行 CentOS 7 的 Azure 虛擬機器上建立了 3 個節點的 MariaDB + Galera 高可用性叢集。 VM 透過 Azure 負載平衡器進行負載平衡處理。
 
-若要查看 [Linux 上叢集 MySQL 的另一種方式] 和 [最佳化和測試 Azure Linux Vm 上的 MySQL 效能]。
+您可能想要看一下 [another way to cluster MySQL on Linux] 以及方式 [optimize and test MySQL performance on Azure Linux VMs]。
 
 <!--Anchors-->
 [Architecture overview]: #architecture-overview
@@ -377,4 +377,5 @@
 [optimize and test MySQL performance on Azure Linux VMs]:http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
 [issue #1268 in the Azure CLI]:https://github.com/Azure/azure-xplat-cli/issues/1268
 [another way to cluster MySQL on Linux]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
+
 

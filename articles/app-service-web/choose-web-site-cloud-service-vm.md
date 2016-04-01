@@ -20,7 +20,7 @@
 
 ## 概觀
 
-Azure 提供多種方式來裝載網站: [Azure App Service][], ，[雲端服務][], ，和 [虛擬機器][]。 本文協助您了解這些選項，為您的 Web 應用程式做出正確的選擇。
+Azure 提供多種方式來裝載網站 ︰ [Azure App Service][], ，[雲端服務][], ，和 [虛擬機器][]。 本文協助您了解這些選項，為您的 Web 應用程式做出正確的選擇。
 
 Azure App Service 是大多數 Web 應用程式的最佳選擇。 部署和管理都已整合到平台，網站可以迅速調整規模以因應過高的流量負載，而內建的負載平衡和流量管理員提供高可用性。 您可以將現有網站移至 Azure App Service，輕鬆地與 [線上移轉工具](https://www.migratetoazure.net/), 、 從 Web 應用程式組件庫中，使用開放原始碼應用程式，或建立新的網站使用的架構和您選擇的工具。  [WebJobs][] 功能可讓您輕鬆地將背景工作處理加入至您的應用程式服務 web 應用程式。
 
@@ -48,7 +48,7 @@ Azure App Service 是大多數 Web 應用程式的最佳選擇。 部署和管�
 - [我想要裝載 REST API 或 Web 服務供行動用戶端使用。](#mobile)
 
 
-### <a id="onprem"></a> 我需要一個具有背景處理和資料庫後端的 Web 前端，以執行與內部部署資源整合的商業應用程式。
+### <a id="onprem"></a>我需要一個具有背景處理和資料庫後端的 Web 前端，以執行與內部部署資源整合的商業應用程式。
 
 Azure App Service 是複雜商業應用程式的絕佳解決方案。 您開發的應用程式將能夠在負載平衡平台上自動調整、採用 Active Directory 來保護，以及連接到內部部署資源。 它可讓您透過世界級的入口網站和 API 來輕鬆管理應用程式，並利用應用程式洞察工具來深入了解客戶如何使用應用程式。  [Webjobs][] 功能可讓您執行背景處理程序和工作在您的 web 層，而混合式連線和 [VNET 功能](../fundamentals-introduction-to-azure.md#networking/) 讓您輕鬆地連回到內部資源。 Azure App Service 為 Web 應用程式提供三個 9 的 SLA，可讓您：
 
@@ -58,7 +58,7 @@ Azure App Service 是複雜商業應用程式的絕佳解決方案。 您開發�
 * 符合 ISO、SOC2 和 PCI。
 * 與 Active Directory 整合
 
-### <a id="corp"></a> 我需要可靠的方法來裝載可靈活調整且可供全球存取的公司網站。
+### <a id="corp"></a>我需要可靠的方法來裝載可靈活調整且可供全球存取的公司網站。
 
 Azure App Service 是裝載公司網站的絕佳解決方案。 它可讓 Web 應用程式快速調整，輕鬆符合全球資料中心網路的需求。 它提供本機存取、容錯和智慧型流量管理。 一切盡在一個提供世界級管理工具的平台上，可讓您快速又輕鬆地深入了解網站健康情況和網路流量。 Azure App Service 為 Web 應用程式提供三個 9 的 SLA，可讓您：
 
@@ -77,7 +77,7 @@ Azure App Service 可讓您輕鬆地省去移轉舊版 IIS6 應用程式時相�
 * 選擇將連接的 SQL 資料庫留在內部部署，以建立混合式應用程式。
 * 自動隨著舊式應用程式一起移動 SQL 資料庫。
 
-### <a id="smallbusiness"></a>我是小型企業業主，需要有便宜的方式來裝載網站，但又想顧及網站未來成長的可能性
+### <a id="smallbusiness"></a>我是小型企業業主，需要有便宜的方式來裝載網站，但又想顧及網站未來成長的可能性。
 
 Azure App Service 是此案例的絕佳解決方案，因為您可先免費使用它，等到需要更多功能時再新增功能即可。 每個免費的 web 應用程式都隨附 Azure 提供的網域 (*your_company*。 azurewebsites.net)，以及平台包含整合式的部署和管理工具，以及應用程式庫，輕鬆地開始使用。 另外還有其他許多服務與調整選項，可讓網站隨使用者需求的增加來發展。 使用 Azure App Service，您可以：
 
@@ -111,7 +111,7 @@ Azure App Service 是此案例的絕佳解決方案，因為您可先免費使�
 - 使用虛擬機器庫來得到初步的作業系統，例如 Windows 或 Linux，然後根據自己的應用程式需求加以自訂。
 - 建立並上傳現有內部部署伺服器的自訂映像，使其執行於 Azure 中的虛擬機器上。
 
-### <a id="oss"></a>我的網站使用開放原始碼軟體，我想要將該軟體裝載在 Azure 上
+### <a id="oss"></a>我的網站使用開放原始碼軟體，我想要將該軟體裝載在 Azure 上。
 
 如果 App Service 上支援您的開放原始碼架構，則會自動設定您的應用程式所需的語言和架構。 App Service 可讓您：
 
@@ -121,7 +121,7 @@ Azure App Service 是此案例的絕佳解決方案，因為您可先免費使�
 
 如果 App Service 上不支援您的開放原始碼架構，您可以在其他兩個 Azure Web 裝載選項上執行它。 「雲端服務」需要您使用啟動工作，以安裝並設定任何在 Windows 上執行的必要開放原始碼軟體。 「虛擬機器」則需要您在機器映像 (可以是 Windows 或 Linux 型) 上安裝並設定軟體。
 
-### <a id="lob"></a>我有個主要商務應用程式需要連線至公司網路
+### <a id="lob"></a>我有個主要商務應用程式需要連線至公司網路。
 
 若要建立企業營運系統應用程式，您的網站可能需要直接存取公司網路上的服務或資料。 這是可行的應用程式服務、 雲端服務和虛擬機器上使用 [Azure 虛擬網路服務](/services/virtual-network/)。 您可以使用應用程式服務 [VNET 整合功能](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/), ，可讓您的 Azure 應用程式執行，如同它們是在公司網路。
 
@@ -134,7 +134,7 @@ HTTP 型 Web 服務可讓您支援各種用戶端，包括行動用戶端。 ASP
 - 以單一執行個體達到可用性 SLA，或向外延展至多部專用機器。
 - 使用已發佈的網站來提供 REST API 給任何 HTTP 用戶端，包括行動用戶端。
 
-此外，Azure App Service 有 REST api 的新的預覽功能: API 應用程式。  如需 API 應用程式的詳細資訊，請參閱 [什麼是 API 應用程式](../app-service-api/app-service-api-apps-why-best-platform.md)。
+此外，Azure App Service 有 REST api 的新的預覽功能 ︰ API 應用程式。  如需 API 應用程式的詳細資訊，請參閱 [什麼是 API 應用程式](../app-service-api/app-service-api-apps-why-best-platform.md)。
 
 ##<a name="features"></a>功能比較
 
@@ -204,4 +204,5 @@ Web 伺服器執行個體會共用內容和組態，這表示您在調整規模�
   [sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
   [Storage]: http://www.windowsazure.com/documentation/services/storage/
  
+
 

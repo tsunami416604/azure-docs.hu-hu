@@ -43,8 +43,8 @@
 
 **若要完成本文，您需要下列項目：**
 
-- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
-- Azure SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟: [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
+- Azure 訂閱。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
+- Azure SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟 ︰ [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
 - Azure PowerShell。
 
 
@@ -131,3 +131,4 @@
 - [業務續航力概觀](sql-database-business-continuity.md)
 - [SQL Database 文件](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure SQL Database Cmdlet](https://msdn.microsoft.com/library/azure/mt163521.aspx)
+

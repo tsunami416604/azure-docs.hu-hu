@@ -25,7 +25,7 @@
 
     所有記錄訊息會被都導向至 *F:\MongoLogs\mongolog.log* mongod.exe 伺服器啟動和預先配置日誌檔案時的檔案。 MongoDB 可能需要花費數分鐘來預先配置日誌檔案，並開始接聽連線。
 
-8. 若要啟動 MongoDB 管理殼層，請開啟 [從另一個命令視窗 **啟動** 並輸入下列命令:
+8. 若要啟動 MongoDB 管理殼層，請開啟 [從另一個命令視窗 **啟動** 並輸入下列命令 ︰
 
         C:\> cd \my_mongo_dir\bin  
         C:\my_mongo_dir\bin> mongo  
@@ -62,7 +62,7 @@
 
     ![Windows 防火牆][Image2]
 
-    選取 **TCP** 然後 **特定本機連接埠**。  指定連接埠為"27017"(MongoDB 接聽的預設連接埠)，然後按一下 **下一步**。
+    選取 **TCP** 然後 **特定本機連接埠**。  指定連接埠為"27017"（MongoDB 接聽的預設連接埠），然後按一下 **下一步**。
 
     ![Windows 防火牆][Image3]
 
@@ -107,4 +107,5 @@
 [Image7]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint.png
 [Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
+
 

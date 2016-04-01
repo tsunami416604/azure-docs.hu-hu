@@ -25,7 +25,7 @@
 
 ## 下載
 
-若要開始，您必須下載並安裝 [node.js](https://nodejs.org)。  然後您可以複製或 [下載](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip) 基本架構應用程式:
+若要開始，您必須下載並安裝 [node.js](https://nodejs.org)。  然後您可以複製或 [下載](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip) 基本架構應用程式 ︰
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarst/AppModelv2-SinglePageApp-AngularJS-NodeJS.git
@@ -230,10 +230,11 @@ return $http.get('/api/tasks');
 node server.js
 ```
 
-在瀏覽器中，瀏覽至 `http://localhost:8080`。  使用個人 Microsoft 帳戶或工作/學校帳戶登入。  將工作新增至使用者待辦事項清單，然後登出。  嘗試使用其他類型的帳戶登入。 如果您需要建立工作/學校使用者的 Azure AD 租用戶 [了解如何取得租用這裡](active-directory-howto-tenant.md) (它是免費的)。
+在瀏覽器中，瀏覽至 `http://localhost:8080`。  使用個人 Microsoft 帳戶或工作/學校帳戶登入。  將工作新增至使用者待辦事項清單，然後登出。  嘗試使用其他類型的帳戶登入。 如果您需要建立工作/學校使用者的 Azure AD 租用戶 [了解如何取得租用這裡](active-directory-howto-tenant.md) （它是免費的）。
 
 若要繼續了解應用程式模型 v2.0 預覽，head 回我們 [v2.0 開發人員指南](active-directory-appmodel-v2-overview.md)。  如需其他資源，請參閱：
 
 - [GitHub 上的 Azure 範例 >>](https://github.com/Azure-Samples)
 - [堆疊溢位上的 Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - 在 azure AD 文件 [Azure.com >>](http://azure.microsoft.com/documentation/services/active-directory/)
+

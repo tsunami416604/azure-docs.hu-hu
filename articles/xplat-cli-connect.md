@@ -72,7 +72,7 @@ CLI 0.9.9 版和更新版本支援多重要素驗證。
     azure login -u ahmet@contoso.onmicrosoft.com
     info:    Executing command login
     Password: *********
-    |info:    Added subscription Visual Studio Ultimate with MSDN
+  	|info:    Added subscription Visual Studio Ultimate with MSDN
     +
     info:    login command OK
 
@@ -80,7 +80,7 @@ CLI 0.9.9 版和更新版本支援多重要素驗證。
 
     If this is your first time logging in with these credentials, you are asked to verify that you wish to cache an authentication token. This prompt also occurs if you have previously used the `azure logout` command (described below). To bypass this prompt for automation scenarios, run `azure login` with the `-q` parameter.
 
-* **若要登出**, ，使用下列命令:
+* **若要登出**, ，使用下列命令 ︰
 
         azure logout -u <username>
 
@@ -90,17 +90,17 @@ CLI 0.9.9 版和更新版本支援多重要素驗證。
 
 如果您只需要使用傳統 (服務管理) CLI 命令，您可以使用發佈設定檔連線。
 
-* **若要下載發行設定檔** 為您的帳戶，請使用下列命令:
+* **若要下載發行設定檔** 為您的帳戶，請使用下列命令 ︰
 
         azure account download
 
 這樣會開啟預設瀏覽器，並提示您登入 [Azure 傳統入口網站][portal]。 登入後便會下載 `.publishsettings` 檔案。 請記下此檔案的儲存位置。
 
-    > [AZURE.NOTE] If your account is associated with multiple Azure Active Directory tenants, you may be prompted to select which Active Directory you wish to download a publish settings file for.
+    > [AZURE.NOTE] 如果您的帳戶與多個 Azure Active Directory 租用戶相關聯，您可能會提示您選取您想要下載發行設定檔的 Active Directory。
     >
-    > Once selected using the download page, or by visiting the Azure classic portal, the selected Active Directory becomes the default used by the classic portal and download page. Once a default has been established, you will see the text '__click here to return to the selection page__' at the top of the download page. Use the provided link to return to the selection page.
+    > 在使用下載頁面或是造訪 Azure 傳統入口網站選定之後，所選的 Active Directory 會成為傳統入口網站與下載頁面使用的預設值。 一旦建立預設值，您會看到文字 '__以返回 [選擇] 頁面，請按一下這裡__' 頂端的 [下載] 頁面。 請使用提供的連結，返回選取頁面。
 
-* **若要匯入發行設定檔**, ，執行下列命令:
+* **若要匯入發行設定檔**, ，執行下列命令 ︰
 
         azure account import <path to your .publishsettings file>
 
@@ -157,4 +157,5 @@ CLI 0.9.9 版和更新版本支援多重要素驗證。
 [signuporg]: http://azure.microsoft.com/en-us/documentation/articles/sign-up-organization/
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: xplat-cli-azure-resource-manager.md
+
 

@@ -28,17 +28,17 @@
 
 本主題顯示如何在 Azure 行動服務中從應用程式驗證使用者。  在本教學課程中，您將使用行動服務支援的身分識別提供者，將驗證加入至快速入門專案。 由行動服務成功驗證並授權之後，就會顯示使用者識別碼值。
 
-本教學課程將引導您逐步完成以下在您的應用程式中啟用驗證的基本步驟：
+本教學課程帶領您執行下列基本步驟，在您的應用程式中啟用驗證：
 
-1. [註冊應用程式進行驗證，並設定行動服務]
-2. [限制只有經驗證的使用者具有資料表的權限]
-3. [新增驗證至應用程式]
+1. [註冊您的應用程式以驗證與設定行動服務]
+2. [對通過驗證的使用者限制資料表權限]
+3. [將驗證新增至應用程式]
 
 本教學課程會以行動服務快速入門為基礎。 您還必須先完成本教學課程 [Get started with Mobile Services]。
 
 完成本教學課程，您需要 [Xamarin.iOS], 、 XCode 6.0 及 iOS 7.0 或更新版本。
 
-##<a name="register"></a>註冊您的應用程式以驗證與設定行動服務
+##<a name="register"></a>註冊應用程式進行驗證，並設定行動服務
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
@@ -50,7 +50,7 @@
 
 3. 在 Xcode 中，開啟您完成教學課程時所建立的專案 [Get started with Mobile Services]。
 
-4. 按下 **執行** ] 按鈕以建置專案並在 iPhone 模擬器中啟動應用程式; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 (未經授權)。
+4. 按下 **執行** ] 按鈕以建置專案並在 iPhone 模擬器中啟動應用程式; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 （未經授權）。
 
     這是因為應用程式會嘗試驗證的使用者身分存取行動服務，但 _TodoItem_ 資料表現在需要驗證。
 
@@ -64,7 +64,7 @@
         private MobileServiceUser user;
         public MobileServiceUser User { get { return user; } }
 
-2. 然後，新增新方法，名為 **驗證** 至 **ToDoService** 定義為:
+2. 然後，新增新方法，名為 **驗證** 至 **ToDoService** 定義為 ︰
 
         private async Task Authenticate(MonoTouch.UIKit.UIViewController view)
         {
@@ -78,7 +78,7 @@
             }
         }
 
-    > [AZURE.NOTE] 如果您使用 Microsoft 帳戶以外的識別提供者，變更值傳遞至 **LoginAsync** 上方的下列其中一個: _Facebook_, ，_Twitter_, ，_Google_, ，或 _WindowsAzureActiveDirectory_。
+    > [AZURE.NOTE] 如果您使用 Microsoft 帳戶以外的識別提供者，變更值傳遞至 **LoginAsync** 上方的下列其中一個 ︰ _Facebook_, ，_Twitter_, ，_Google_, ，或 _WindowsAzureActiveDirectory_。
 
 3. 移動要求 **ToDoItem** 從 **ToDoService** 到名為的新方法的建構函式 **CreateTable**:
 
@@ -88,7 +88,7 @@
             todoTable = client.GetSyncTable<ToDoItem>();
         }
 
-4. 建立名為的新非同步公用方法 **LoginAndGetData** 定義為:
+4. 建立名為的新非同步公用方法 **LoginAndGetData** 定義為 ︰
 
         public async Task LoginAndGetData(MonoTouch.UIKit.UIViewController view)
         {
@@ -96,7 +96,7 @@
             await CreateTable();
         }
 
-5. 在 **TodoListViewController** 覆寫 **ViewDidAppear** 方法並定義該下方。 使用者登入如果 **ToDoService** 使用者上還沒有控點:
+5. 在 **TodoListViewController** 覆寫 **ViewDidAppear** 方法並定義該下方。 使用者登入如果 **ToDoService** 使用者上還沒有控點 ︰
 
         public override async void ViewDidAppear(bool animated)
         {
@@ -125,7 +125,7 @@
 ## 取得完成的範例
 下載 [completed example project]。 請務必更新 **applicationURL** 和 **applicationKey** 變數，以您自己的 Azure 設定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接續步驟
 
 在下一個教學課程中， [Authorize users with scripts], ，您將行動服務根據經驗證的使用者所提供的使用者識別碼值，並用來篩選行動服務所傳回的資料。
 
@@ -154,4 +154,5 @@
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 [Xamarin.iOS]: http://xamarin.com/download
+
 

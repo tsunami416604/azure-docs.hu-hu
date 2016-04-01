@@ -39,7 +39,7 @@ Microsoft Azure 虛擬機器資源庫涵蓋數個包含 Microsoft SQL Server 的
 
 ![Azure VM 資源庫中的 SQL 映像](./media/virtual-machines-sql-server-business-intelligence/IC741367.png)
 
-![PowerShell](./media/virtual-machines-sql-server-business-intelligence/IC660119.gif) 下列 PowerShell 指令碼會傳回包含"Sql-server"，其中的 ImageName Azure 映像的清單:
+![PowerShell](./media/virtual-machines-sql-server-business-intelligence/IC660119.gif) 下列 PowerShell 指令碼會傳回包含"Sql-server"，其中的 ImageName Azure 映像的清單 ︰
 
     # assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Azure classic portal.
     
@@ -96,11 +96,11 @@ Microsoft Azure 虛擬機器資源庫涵蓋數個包含 Microsoft SQL Server 的
 
     如需目前 VM 大小，請參閱 [Azure 的虛擬機器大小](virtual-machines-size-specs.md)。
 
-- 磁碟管理的最佳作法是儲存資料、 記錄及磁碟機上的備份檔案以外的其他 **C**: 和 **D**:。 例如，建立資料磁碟 **E**: 和 **F**:。
+- 磁碟管理的最佳作法是儲存資料、 記錄及磁碟機上的備份檔案以外的其他 **C**︰ 和 **D**:。 例如，建立資料磁碟 **E**︰ 和 **F**:。
 
-    - 快取原則的預設磁碟機的磁碟機 **C**: 不是最適合使用的資料。
+    - 快取原則的預設磁碟機的磁碟機 **C**︰ 不是最適合使用的資料。
     
-    -  **D**: 磁碟機是主要用於分頁檔的暫存磁碟機。  **D**: 磁碟機不會保存，並不會儲存在 blob 儲存體。 管理工作，例如變更虛擬機器大小重設 **D**: 磁碟機。 建議您 **不** 使用 **D**: 資料庫檔案，包括 tempdb 磁碟機。
+    -  **D**︰ 磁碟機是主要用於分頁檔的暫存磁碟機。  **D**︰ 磁碟機不會保存，並不會儲存在 blob 儲存體。 管理工作，例如變更虛擬機器大小重設 **D**︰ 磁碟機。 建議您 **不** 使用 **D**︰ 資料庫檔案，包括 tempdb 磁碟機。
 
     如需有關建立及連接磁碟的詳細資訊，請參閱 [如何將資料磁碟連接至虛擬機器](storage-windows-attach-disk.md)。
 
@@ -110,7 +110,7 @@ Microsoft Azure 虛擬機器資源庫涵蓋數個包含 Microsoft SQL Server 的
 
     >[AZURE.NOTE] 支援的 BI 案例需要 SQL Server 資料庫引擎。 在單一伺服器 VM 拓撲中，需要資料庫引擎才能在相同的 VM 上執行。
 
-    如需詳細資訊，請參閱下列: [解除安裝 Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) 和 [解除安裝 Analysis Services 的執行個體](https://msdn.microsoft.com/library/ms143687.aspx)。
+    如需詳細資訊，請參閱下列 ︰ [解除安裝 Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) 和 [解除安裝 Analysis Services 的執行個體](https://msdn.microsoft.com/library/ms143687.aspx)。
 
 - 檢查 **Windows Update** 的新 「 重要更新 」。 Microsoft Azure 虛擬機器映像經常在重新整理。不過，重要的更新無法成為可從 **Windows Update** 上次重新整理 VM 映像之後。
 
@@ -170,7 +170,7 @@ SQL Server 的虛擬機器資源庫映像包含 Reporting Services 原生模式�
         
         Myservice.cloudapp.net:63133
         
-        如需詳細資訊，請參閱 [什麼是雲端服務?](http://www.windowsazure.com/manage/services/cloud-services/what-is-a-cloud-service/)。
+        如需詳細資訊，請參閱 [什麼是雲端服務？](http://www.windowsazure.com/manage/services/cloud-services/what-is-a-cloud-service/)。
 
 **啟動 Reporting Services 組態管理員。**
 
@@ -279,7 +279,7 @@ SQL Server 的虛擬機器資源庫映像包含 Reporting Services 原生模式�
 
 下表摘要列出一些選項，可將現有報表從內部部署電腦發佈至 Microsoft Azure 虛擬機器上託管的報表伺服器：
 
-- **報表產生器**: 虛擬機器包含-click-once 版本的 Microsoft SQL Server 報表產生器。 若要在虛擬機器上首次啟動報表產生器：
+- **報表產生器**︰ 虛擬機器包含-click-once 版本的 Microsoft SQL Server 報表產生器。 若要在虛擬機器上首次啟動報表產生器：
                                             
     1. 以管理權限啟動瀏覽器。
     
@@ -289,7 +289,7 @@ SQL Server 的虛擬機器資源庫映像包含 Reporting Services 原生模式�
 
 - **SQL Server Data Tools**: VM: SQL Server 資料工具安裝在虛擬機器上，而且可用來建立 **報表伺服器專案** 和虛擬機器上的報表。 SQL Server Data Tools 可將報表發佈至虛擬機器上的報表伺服器。
 
-- **SQL Server Data Tools: 遠端**: 您本機電腦上，建立 Reporting Services 專案包含 Reporting Services 報告的 SQL Server 資料工具中。 設定專案以連接至 Web 服務 URL。
+- **SQL Server Data Tools ︰ 遠端**︰ 您本機電腦上，建立 Reporting Services 專案包含 Reporting Services 報告的 SQL Server 資料工具中。 設定專案以連接至 Web 服務 URL。
 
     ![SSRS 專案的 SSDT 專案屬性](./media/virtual-machines-sql-server-business-intelligence/IC650114.gif)
 
@@ -387,7 +387,7 @@ A **預設執行個體** Analysis services 會接聽 TCP 連接埠 **2383年**�
 
 - 如果虛擬機器是使用 VPN 通道 (例如 Azure 虛擬網路) 加入網域，那麼並不需要端點。 不過，請在 VM 上的防火牆中開啟連接埠。
 
-    |Port|Type|Description|
+  	|Port|Type|Description|
 |---|---|---|
 |**80**|TCP|報表伺服器的遠端存取 (*)。 |
 |**1433**|TCP|SQL Server Management Studio (*)。 |
@@ -398,9 +398,9 @@ A **預設執行個體** Analysis services 會接聽 TCP 連接埠 **2383年**�
 
 如需有關如何建立端點的詳細資訊，請參閱下列各項：
 
-- 建立端點:[如何設定虛擬機器的端點](virtual-machines-set-up-endpoints.md)。
+- 建立端點 ︰[如何設定虛擬機器的端點](virtual-machines-set-up-endpoints.md)。
 
-- SQL Server: 請參閱 「 完整的設定步驟來連接到虛擬機器使用 SQL Server Management Studio 」 一節 [佈建 Azure 上的 SQL Server 虛擬機器](virtual-machines-provision-sql-server.md)。
+- SQL Server ︰ 請參閱 「 完整的設定步驟來連接到虛擬機器使用 SQL Server Management Studio 」 一節 [佈建 Azure 上的 SQL Server 虛擬機器](virtual-machines-provision-sql-server.md)。
 
 下圖說明要在 VM 防火牆中開啟，以允許遠端存取 VM 上的功能和元件的連接埠。
 
@@ -433,4 +433,5 @@ A **預設執行個體** Analysis services 會接聽 TCP 連接埠 **2383年**�
 ### 社群內容
 
 - [使用 PowerShell 管理 Azure SQL Database](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
+
 

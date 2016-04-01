@@ -25,12 +25,12 @@ TPM API 應用程式是 AS2 連接器、X12 API 應用程式和 EDIFACT API 應�
 - 空白的 SQL Azure 資料庫 - 您首先必須建立空白的 SQL Azure 資料庫，接著再建立新的 TPM API 應用程式。
 
 ## 了解夥伴、合約以及設定檔
-若要深入了解交易夥伴協議中，按一下 [這裡] [1]。
+若要深入了解交易夥伴協議中，按一下 [ [這裡][1]。
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -38,4 +38,5 @@ TPM API 應用程式是 AS2 連接器、X12 API 應用程式和 EDIFACT API 應�
 
 <!--References-->
 [1]: app-service-logic-create-a-trading-partner-agreement.md
+
 

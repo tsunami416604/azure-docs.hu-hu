@@ -18,7 +18,7 @@
 # 打開包裝、掛接機架和佈線 StorSimple 8600 裝置
 
 ## 概觀
-您的 Microsoft Azure StorSimple 8600 是雙重機箱裝置，包含主要及 EBOD 機箱。 本教學課程說明如何在您設定 StorSimple 軟體之前{b>，<b}打開包裝、利用機架掛接和配接 StorSimple 8600 裝置硬體纜線。
+您的 Microsoft Azure StorSimple 8600 是雙重機箱裝置，包含主要及 EBOD 機箱。 本教學課程說明如何在您設定 StorSimple 軟體之前，打開包裝、利用機架掛接和配接 StorSimple 8600 裝置硬體纜線。
 
 ## 打開您的 StorSimple 8600 裝置包裝
 
@@ -29,7 +29,7 @@
 打開裝置包裝之前，請檢閱下列資訊。
 
 
-![警告圖示](./media/storsimple-safety/IC740879.png)![重量圖示](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png)![重量圖示](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告 ！**
 
 1. 如果您手動處理它，請確定您有兩名人員可以應付裝置的重量。 完全設定的機箱可以重達 32 公斤 (70 磅)。
 1. 將箱子放置在平坦的表面上。
@@ -90,7 +90,7 @@
 
 3. 請確定您要掛接機箱的機架上有一個 4U (2 X 2U) 插槽可用。 
 
-![警告圖示](./media/storsimple-safety/IC740879.png)![重量圖示](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png)![重量圖示](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告 ！**
 
  如果您手動處理裝置安裝，請確定您有兩名人員可以應付裝置的重量。 完全設定的機箱可以重達 32 公斤 (70 磅)。
 
@@ -289,7 +289,7 @@ H,I  | 主機 (例如，檔案伺服器)
 
 6. 藉由在主控台上按下 Enter 鍵，驗證連線是否正在運作。 序列主控台功能表應該會出現。
 
-> [AZURE.NOTE] **熄燈管理:** 當裝置安裝在遠端資料中心或在具有限制存取的電腦室時，請確定這兩個控制器的序列連接一律連線至序列主控台交換器或類似的設備。 如此可以在網路中斷或非預期失敗時允許頻外遠端控制和支援作業。
+> [AZURE.NOTE] **熄燈管理 ︰** 當裝置安裝在遠端資料中心或在具有限制存取的電腦室時，請確定這兩個控制器的序列連接一律連線至序列主控台交換器或類似的設備。 如此可以在網路中斷或非預期失敗時允許頻外遠端控制和支援作業。
 
 您已經完成您的裝置的電源、網路存取及序列連線的佈線。下一步是設定您的裝置上的軟體。
 
@@ -297,4 +297,5 @@ H,I  | 主機 (例如，檔案伺服器)
 
 您現在已準備好 [部署和設定您的內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md) 
  
+
 

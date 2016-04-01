@@ -30,3 +30,4 @@
     如此能傳送 GET 要求給本機行動服務，以傳回 TodoItem 資料表中的所有資料列。 由於初始設定式已植入資料表，因此系統會在回應訊息的本文中傳回兩個 TodoItem 物件。 如需初始設定式的詳細資訊，請參閱 [如何對.NET 後端行動服務進行資料模型變更](../articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)。
 
     ![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-response.png)
+

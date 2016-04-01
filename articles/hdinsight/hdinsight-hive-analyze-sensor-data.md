@@ -32,9 +32,9 @@
 
 ![A diagram of the solution architecture](./media/hdinsight-hive-analyze-sensor-data/hvac-architecture.png)
 
-##先決條件
+##必要條件
 
-* HDInsight (Hadoop) 叢集: 請參閱 [在 HDInsight 中佈建 Hadoop 叢集](hdinsight-provision-clusters.md) 建立叢集的相關資訊。
+* HDInsight (Hadoop) 叢集 ︰ 請參閱 [在 HDInsight 中佈建 Hadoop 叢集](hdinsight-provision-clusters.md) 建立叢集的相關資訊。
 
 * Microsoft Excel 2013
 
@@ -53,4 +53,5 @@
 2. 從開啟的網頁中，按一下 [ **Getting Started Gallery** ] 索引標籤，然後在 **使用範例資料的解決方案** 類別中，按一下 [ **感應器資料分析** 範例。
 
 3. 依照網頁上提供的指示完成範例。
+
 

@@ -15,7 +15,7 @@
 
     ![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png)
 
-    儲存體帳戶存取金鑰會以加密方式儲存在應用程式設定中。 您可以在執行期間從任何伺服器指令碼存取此金鑰。 如需詳細資訊，請參閱 [應用程式設定]。
+    儲存體帳戶存取金鑰會以加密方式儲存在應用程式設定中。 您可以在執行期間從任何伺服器指令碼存取此金鑰。 如需詳細資訊，請參閱 [App settings]。
 
 4. 在 [設定] 索引標籤，確定 [動態結構描述](http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7) 已啟用。 您需要啟用動態結構描述，才能將新資料行加入 TodoItem 資料表。 請避免在任何實際執行服務中啟用動態結構描述。
 
@@ -78,7 +78,7 @@
 
     這會以新指令碼取代 TodoItem 資料表發生插入時所叫用的函數。 這個新指令碼會對插入產生新的 SAS (有效期間為 5 分鐘)，以及將產生的 SAS 值指派給所傳回項目的 `sasQueryString` 屬性。 `imageUri` 屬性也會設定為新 BLOB 的資源路徑，以便於繫結期間在用戶端 UI 中顯示映像。
 
-    >[AZURE.NOTE] 此程式碼會為個別 blob 建立 SAS。 如果您需要將多個 blob 上傳至容器，使用相同的 SAS，可以改為呼叫 [method<](http://go.microsoft.com/fwlink/?LinkId=390455)</a> 空白的 blob 資源名稱，就像這樣: 
+    >[AZURE.NOTE] 此程式碼會為個別 blob 建立 SAS。 如果您需要將多個 blob 上傳至容器，使用相同的 SAS，可以改為呼叫 [method<](http://go.microsoft.com/fwlink/?LinkId=390455)</a> 空白的 blob 資源名稱，就像這樣 ︰ 
     >                 
     >     blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);
 
@@ -90,4 +90,5 @@
 
 <!-- URLs. -->
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+
 

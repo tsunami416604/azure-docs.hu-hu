@@ -20,7 +20,7 @@
 
 使用下列步驟以利用 SQL Server Management Studio (SSMS) 連接和查詢您的 SQL Database。
 
-## 先決條件
+## 必要條件
 
 * SQL Server Management Studio (SSMS)-若要下載最新版的 SSMS，請參閱 [下載 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
 * AdventureWorks 範例資料庫中所述 [開始使用 Microsoft Azure SQL Database](sql-database-get-started.md)。
@@ -56,7 +56,7 @@
 
 
 ### 如果連接失敗
-確定您建立之邏輯伺服器的防火牆允許來自本機電腦的連線。 如需詳細資訊，請參閱 [How to: 在 SQL 資料庫上設定防火牆設定](sql-database-configure-firewall-settings.md)。
+確定您建立之邏輯伺服器的防火牆允許來自本機電腦的連線。 如需詳細資訊，請參閱 [How to ︰ 在 SQL 資料庫上設定防火牆設定](sql-database-configure-firewall-settings.md)。
 
 ## 執行範例查詢
 
@@ -94,4 +94,5 @@
 [5]:./media/sql-database-connect-to-database/5-success.png
 [6]:./media/sql-database-connect-to-database/server-name.png
 [7]:./media/sql-database-connect-to-database/connect-dbengine.png
+
 

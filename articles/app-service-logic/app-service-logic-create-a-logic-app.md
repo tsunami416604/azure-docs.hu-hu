@@ -36,7 +36,7 @@
 
 ## 取得連接器
 
-首先，您必須建立兩個連接器，您將使用: [Dropbox 連接器](app-service-logic-connector-dropbox.md) 和 [Twitter 連接器](app-service-logic-connector-twitter.md)。 由於 Twitter API 的限制，我們也需要向 Twitter 註冊免費應用程式。 若要建立這些項目：
+首先，您必須建立兩個連接器，您將使用 ︰ [Dropbox 連接器](app-service-logic-connector-dropbox.md) 和 [Twitter 連接器](app-service-logic-connector-twitter.md)。 由於 Twitter API 的限制，我們也需要向 Twitter 註冊免費應用程式。 若要建立這些項目：
 
 1. 登入 Azure 入口網站。
 
@@ -106,7 +106,7 @@
 
     ![週期性](./media/app-service-logic-create-a-logic-app/recurrence.png)
 
-4.  選擇週期性 **頻率** 和 **間隔** (例如每 1 小時)，然後按一下綠色的核取記號。
+4.  選擇週期性 **頻率** 和 **間隔** （例如每 1 小時），然後按一下綠色的核取記號。
 
 現在，您將把動作加入流程。
 
@@ -163,7 +163,7 @@ Twitter 連接器現在便是工作流程的一部分。
 
 5. 按一下綠色核取符號來儲存連接器設定。
 
-5. 現在設計已完成，請按一下 **程式碼檢視** 左上角的設計工具中，並請注意，這是 JSON 程式碼定義的工作流程，您只是建立在設計工具中。 我們將討論此主題中的 [下一步] 更多的程式碼 [使用邏輯應用程式功能]。
+5. 現在設計已完成，請按一下 **程式碼檢視** 左上角的設計工具中，並請注意，這是 JSON 程式碼定義的工作流程，您只是建立在設計工具中。 我們將討論這段程式碼中 [下一個主題][Use logic app features]。
 
 6. 按一下 [ **確定** 按鈕位於螢幕底部，然後按一下 [ **建立** ] 按鈕。
 
@@ -181,9 +181,10 @@ Twitter 連接器現在便是工作流程的一部分。
 
 5. 若要關閉應用程式，請按一下 [ **停用** 命令列中。
 
-不到 5 分鐘的時間，您便能夠設定在雲端中執行的簡單邏輯應用程式。 若要深入了解如何使用邏輯應用程式功能，請參閱 [使用邏輯應用程式功能]。 若要了解邏輯應用程式定義本身，請參閱 [撰寫邏輯應用程式定義](app-service-logic-author-definitions.md)。
+不到 5 分鐘的時間，您便能夠設定在雲端中執行的簡單邏輯應用程式。 若要深入了解如何使用邏輯應用程式功能，請參閱 [Use logic app features]。 若要了解邏輯應用程式定義本身，請參閱 [撰寫邏輯應用程式定義](app-service-logic-author-definitions.md)。
 
 <!-- Shared links -->
 [Azure portal]: https://portal.azure.com
 [Use logic app features]: app-service-logic-use-logic-app-features.md
+
 

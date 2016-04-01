@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Picturepark 租用戶
   
-完成本教學課程之後, 您已指派給 Picturepark 的 Azure AD 使用者將能夠登入位於您 Picturepark 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Picturepark 的 Azure AD 使用者將能夠登入位於您 Picturepark 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -97,7 +97,7 @@
 
     ![驗證](./media/active-directory-saas-picturepark-tutorial/IC795063.png "Authentication")
 
-8.  在 **身分識別提供者組態** 區段中，執行下列步驟:
+8.  在 **身分識別提供者組態** 區段中，執行下列步驟 ︰
 
     ![識別提供者組態](./media/active-directory-saas-picturepark-tutorial/IC795064.png "Identity provider configuration")
 
@@ -135,7 +135,7 @@ Picturepark 需以手動的方式佈建。
 
     ![使用者管理](./media/active-directory-saas-picturepark-tutorial/IC795068.png "User management")
 
-4.  在 **Create User** ] 對話方塊中，執行下列步驟:
+4.  在 **Create User** ] 對話方塊中，執行下列步驟 ︰
 
     ![建立使用者](./media/active-directory-saas-picturepark-tutorial/IC795069.png "Create User")
 
@@ -162,3 +162,4 @@ Picturepark 需以手動的方式佈建。
     ![是](./media/active-directory-saas-picturepark-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

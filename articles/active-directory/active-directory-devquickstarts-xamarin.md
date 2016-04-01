@@ -41,12 +41,12 @@ Xamarin 允許您以 C# 撰寫可在數個不同平台 (包括行動裝置和電
 若要開始， [下載基本架構專案](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip) 或 [下載完整的範例](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)。  每一個都是 Visual Studio 2013 解決方案。  您還需要一個可以建立使用者並註冊應用程式的 Azure AD 租用戶。  如果您還沒有租用戶， [了解如何取得租用](active-directory-howto-tenant.md)。
 
 ## *0.設定您的 Xamarin 開發環境*
-設定 Xamarin 有幾種不同的方式，視您想要鎖定的特定平台而定。  因為本教學課程包括 iOS、 Android 和 Windows 的專案，我們將選擇使用 Visual Studio 2013 和 [Xamarin.iOS 建置主機](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/), ，而這將需要:
+設定 Xamarin 有幾種不同的方式，視您想要鎖定的特定平台而定。  因為本教學課程包括 iOS、 Android 和 Windows 的專案，我們將選擇使用 Visual Studio 2013 和 [Xamarin.iOS 建置主機](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/), ，而這將需要 ︰
 - 若要執行 Visual Studio 和 Windows 應用程式的 windows 機器
-- OSX 機器 (如果您想要能夠執行的 iOS 應用程式)
+- OSX 機器 （如果您想要能夠執行的 iOS 應用程式）
 - Xamarin 商務訂閱 ( [免費試用版](http://developer.xamarin.com/guides/cross-platform/getting_started/beginning_a_xamarin_trial/) 已足夠)
-- [Windows 的 Xamarin](https://xamarin.com/download), ，其中包括 Xamarin.iOS、 Xamarin.Android，以及 Visual Studio 整合 (建議使用此範例)。
-- [適用於 OS X 的 Xamarin](https://xamarin.com/download), 、 Xamarin.iOS (及 Xamarin.iOS 建置主應用程式)，Xamarin.Android、 Xamarin.Mac 和 Xamarin Studio。
+- [Windows 的 Xamarin](https://xamarin.com/download), ，其中包括 Xamarin.iOS、 Xamarin.Android，以及 Visual Studio 整合 （建議使用此範例）。
+- [適用於 OS X 的 Xamarin](https://xamarin.com/download), 、 Xamarin.iOS （及 Xamarin.iOS 建置主應用程式），Xamarin.Android、 Xamarin.Mac 和 Xamarin Studio。
 
 我們建議您開始 [Xamarin 下載頁面](https://xamarin.com/download), ，在您的 Mac 和 PC 上安裝 Xamarin。  如果您沒有兩部可以使用的 Mac 和 PC 電腦，您仍然可以執行此範例，但可能必須略過某些專案。  請依照下列 [詳細安裝指南](http://developer.xamarin.com/guides/cross-platform/getting_started/installation/) 適用於 iOS 和 Android，而且如果您想要了解開發可用選項的詳細資訊，可以看一下 [建置跨平台應用程式](http://developer.xamarin.com/guides/cross-platform/application_fundamentals/building_cross_platform_applications/part_1_-_understanding_the_xamarin_mobile_platform/) 指南。  您不需要在此階段中設定開發裝置，您也不需要 Apple 開發人員計劃訂用帳戶 (當然，除非您想要在裝置上執行 iOS 應用程式)。
 
@@ -201,10 +201,11 @@ await UnivDirectoryHelper.Search(
 
 ADAL 可讓您輕鬆地將常見的身分識別功能納入您的應用程式。  它會為您處理一切麻煩的事，包括快取管理、OAuth 通訊協定支援、向使用者顯示登入 UI、重新整理過期權杖等等。  您唯一需要知道的就是單一 API 呼叫，`authContext.AcquireToken*(…)`。
 
-提供完整的範例 (不含您的設定值) 是供您參考 [這裡](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)。  您現在可以繼續其他身分識別案例。  您可以嘗試：
+提供完整的範例 （不含您的設定值） 是供您參考 [這裡](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)。  您現在可以繼續其他身分識別案例。  您可以嘗試：
 
 [使用 Azure AD 保護 .NET Web API >>](active-directory-devquickstarts-webapi-dotnet.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
  
+

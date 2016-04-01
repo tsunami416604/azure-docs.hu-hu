@@ -26,7 +26,7 @@
 
 此外，所有在本主題中的程式碼片段的複製來源 [FileWatcher API 應用程式程式碼範例](http://go.microsoft.com/fwlink/?LinkId=534802)。 
 
-請注意，您將需要下載下列 nuget 封裝，以建置並執行本文中的程式碼: [http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/)。
+請注意，您將需要下載下列 nuget 封裝，以建置並執行本文中的程式碼 ︰ [http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/)。
 
 ## 何謂 API 應用程式觸發程序？
 
@@ -211,7 +211,7 @@ API 應用程式常會需要引發事件，以讓 API 應用程式用戶端採�
 
 ![API 定義刀鋒視窗](./media/app-service-api-dotnet-triggers/apidefinitionblade.PNG)
 
-如果您按一下 **下載 Swagger** ] 按鈕並開啟 JSON 檔案，您會看到類似下面的結果:
+如果您按一下 **下載 Swagger** ] 按鈕並開啟 JSON 檔案，您會看到類似下面的結果 ︰
 
     "/api/files/poll/TouchedFiles": {
       "get": {
@@ -259,7 +259,7 @@ API 應用程式常會需要引發事件，以讓 API 應用程式用戶端採�
 
     @coalesce(triggers()?.outputs?.body?['triggerState'], '')
 
-注意: 如需上述運算式中使用的函式的說明，請參閱文件上 [邏輯應用程式工作流程定義語言](https://msdn.microsoft.com/library/azure/dn948512.aspx)。
+注意 ︰ 如需上述運算式中使用的函式的說明，請參閱文件上 [邏輯應用程式工作流程定義語言](https://msdn.microsoft.com/library/azure/dn948512.aspx)。
 
 邏輯應用程式使用者必須提供上述運算式，如 **triggerState** 同時使用觸發程序的參數。 您可透過延伸模組屬性的邏輯應用程式設計工具預先設定此值 **x ms 排程器-建議**。   **x ms 可見度** 延伸模組屬性可以設定的值 *內部* 如此參數本身不會顯示在設計工具上。  請見下列程式碼片段說明。
 
@@ -300,7 +300,7 @@ API 應用程式常會需要引發事件，以讓 API 應用程式用戶端採�
 
 ### 在 API 定義中加入延伸模組屬性
 
-其他中繼資料資訊-例如延伸模組屬性 **x ms 排程器-建議** 和 **x ms 可見度** -可以加入 API 定義中有兩種: 靜態或動態。
+其他中繼資料資訊-例如延伸模組屬性 **x ms 排程器-建議** 和 **x ms 可見度** -可以加入 API 定義中有兩種 ︰ 靜態或動態。
 
 對於靜態的中繼資料，您可以直接編輯 */metadata/apiDefinition.swagger.json* 檔案位於您的專案，並手動加入屬性。
 
@@ -345,4 +345,5 @@ API 應用程式常會需要引發事件，以讓 API 應用程式用戶端採�
         }
     }
  
+
 

@@ -19,7 +19,7 @@
 
 ## 如何 [WhatToPedia.com](http://whattopedia.com/) 在 Microsoft Azure 建置資訊媒體入口網站
 
- ![] [6] & nbsp; & nbsp; nbsp;  <font size="9">好主意</font> 
+ ![][6]  （& s) nbsp; & nbsp; & nbsp;  <font size="9">好主意</font> 
 
 
 我們的想法是建置資訊入口網站，藉由高相關、範圍內搜尋的體驗幫助購物者聯繫零售商，就像遊客在未知的領域時，旅遊入口網站幫忙匹配飯店、餐廳和娛樂項目一樣。 
@@ -103,7 +103,7 @@ Azure 搜尋服務為我們的專案帶來重大突破。 在 Azure 搜尋服務
 - 提升結果
 - 透過 AJAX 分頁
 
-在網際網路上搜尋下列影片，讓我們試試 Azure 搜尋服務啟發並帶給我們: [深入了解 TechEd Europe](http://channel9.msdn.com/events/TechEd/Europe/2014/DBI-B410) 
+在網際網路上搜尋下列影片，讓我們試試 Azure 搜尋服務啟發並帶給我們 ︰ [深入了解 TechEd Europe](http://channel9.msdn.com/events/TechEd/Europe/2014/DBI-B410) 
 
 觀看這部影片之後，我們準備好依據所見來建置原型。 由於我們在 MVC 中早已有資料模型，所以建立原型會相當直接，因為這些資料包含可搜尋的詞彙，而且我們早已制定想要如何排序、使用 Facet 和篩選資料的需求。 
 
@@ -118,15 +118,15 @@ Azure 搜尋服務為我們的專案帶來重大突破。 在 Azure 搜尋服務
 **開發搜尋索引子工作 – Windows 主控台**
 
 1. 從資料庫讀取所有轉銷商。
-2. 呼叫 Azure 搜尋服務 API 來上傳轉銷商逐一 (請參閱: http://msdn.microsoft.com/library/azure/dn798930.aspx)。
+2. 呼叫 Azure 搜尋服務 API 來上傳轉銷商逐一 (請參閱 ︰ http://msdn.microsoft.com/library/azure/dn798930.aspx)。
 3. 在編製索引轉銷商以增量索引的資料庫中設定屬性。 我們加入「索引子」欄位，這會儲存每個設定檔的索引狀態 (無論是否已編製索引)，來完成這動作。 
 
 請參閱建置索引子工作之程式碼片段的附錄。
 
 **開發搜尋網路入口網站 – MVC**
 
-1. 呼叫 Azure 搜尋服務，以從搜尋取得所有文件 (請參閱: http://msdn.microsoft.com/library/azure/dn798927.aspx)
-2. 擷取下列從搜尋服務回應項目 (透過使用 json.net http://james.newtonking.com/json)
+1. 呼叫 Azure 搜尋服務，以從搜尋取得所有文件 (請參閱 ︰ http://msdn.microsoft.com/library/azure/dn798927.aspx)
+2. 擷取下列從搜尋服務回應項目 （透過使用 json.net http://james.newtonking.com/json）
    - 結果
    - Facet
    - 結果計數
@@ -208,7 +208,7 @@ Azure 搜尋服務並不是唯一的驚喜。 與我們先前的方式相比，�
 
 ###用於更新影像的 Azure Blob 儲存體總管
 
-我們發現使用 [Azure BLOB 儲存體總管](https://azurestorageexplorer.codeplex.com/) (codeplex 提供) 中管理站台的更新影像和影片相當有幫助。 我們把它當成開發人員工具來手動更新主要網站中的影像和影片。 我們發現這比起部署變更到入口網站還更有彈性，每當我們需要更新影像時，可免除完整測試逐一查看。 
+我們發現使用 [Azure BLOB 儲存體總管](https://azurestorageexplorer.codeplex.com/) （codeplex 提供） 中管理站台的更新影像和影片相當有幫助。 我們把它當成開發人員工具來手動更新主要網站中的影像和影片。 我們發現這比起部署變更到入口網站還更有彈性，每當我們需要更新影像時，可免除完整測試逐一查看。 
 
 ##最後幾句話
 
@@ -421,4 +421,5 @@ Azure 搜尋服務並不是唯一的驚喜。 與我們先前的方式相比，�
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
+
 

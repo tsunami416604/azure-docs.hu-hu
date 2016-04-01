@@ -26,7 +26,7 @@
 
 > [AZURE.NOTE] 這份文件中的資訊僅適用於 Windows 為基礎的 HDInsight 叢集。 如需存取 YARN 記錄以 Linux 為基礎的 HDInsight 叢集上，請參閱 [存取 YARN 應用程式登入 Linux 型 HDInsight 上的 Hadoop](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
-## 先決條件
+## 必要條件
 
 若要在 .NET Framework 應用程式中使用本主題提供的程式碼，必須有 Azure HDInsight SDK。 最新發佈的 sdk 組建位於 [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started)。
 
@@ -39,7 +39,7 @@
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
-Auch die Eigenschaften <a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a> 透過兩個不同的介面提供已完成之應用程式的相關泛型資訊，以及架構特定應用程式資訊。 具體而言：
+<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a> 透過兩個不同的介面提供已完成之應用程式的相關泛型資訊，以及架構特定應用程式資訊。 具體而言：
 
 * 儲存及擷取 HDInsight 叢集上泛型應用程式資訊的功能已在版本 3.1.1.374 或更新版本上啟用。
 * Timeline Server 的架構特定應用程式資訊元件目前在 HDInsight 叢集上並未提供。
@@ -77,7 +77,7 @@ YARN 藉由將資源管理從應用程式排程/監視分離，支援多種程�
 
 下一節說明如何以程式設計方式存取應用程式特定或容器特定記錄檔，而不需使用 RDP 連線到您的 HDInsight 叢集。
 
-## <a name="enumerate-and-download"></a>列舉應用程式，及以程式設計方式下載記錄檔
+## <a name="enumerate-and-download"></a>以程式設計方式列舉應用程式及下載記錄檔
 
 若要使用下列程式碼範例，您必須下載最新版的 HDInsight .NET SDK，以滿足上述必要條件。 請參閱此處提供的指示。
 
@@ -173,4 +173,5 @@ YARN 藉由將資源管理從應用程式排程/監視分離，支援多種程�
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]:http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
+
 

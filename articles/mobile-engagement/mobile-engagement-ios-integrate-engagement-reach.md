@@ -49,7 +49,7 @@
         }
 
 -   修改 **'icon.png'** 要做為通知圖示的影像名稱的字串。
--   如果您想要使用的選項 *更新徽章值* 觸達活動，或如果您想要使用原生推送 \ </SaaS/觸達 API/活動格式/原生型推播 > 活動，您必須讓觸達模組管理徽章圖示本身 (它會自動清除應用程式徽章，並且也會重設每次應用程式已啟動或於前景執行時，由 Engagement 所儲存的值)。 做法是在觸達模組初始化之後加入以下這一行：
+-   如果您想要使用的選項 *更新徽章值* 觸達活動，或如果您想要使用原生推送 \ </SaaS/觸達 API/活動格式/原生型推播 > 活動，您必須讓觸達模組管理徽章圖示本身 （它會自動清除應用程式徽章，並且也會重設每次應用程式已啟動或於前景執行時，由 Engagement 所儲存的值）。 做法是在觸達模組初始化之後加入以下這一行：
 
         [reach setAutoBadgeEnabled:YES];
 
@@ -254,7 +254,7 @@
 
     -   開啟 *介面產生器*
     -   放置您想要在其中顯示通知的 `UIView` (大小為 320x60，如果在 iPad 上則為 768x60) 
-    -   設定這個檢視的標記值: **36822491**
+    -   設定這個檢視的標記值 ︰ **36822491**
 
 2.  以程式設計方式新增通知檢視。 在您已經將檢視初始化時加入以下程式碼：
 
@@ -276,9 +276,9 @@
 
 ##### 替代版面配置
 
-類似於通知，活動類別可以用來做為宣告和輪詢的替代版片配置。
+類似通知，活動類別可以用來做為宣告和輪詢的替代版片配置。
 
-若要建立宣告的類別，您必須擴充 **AEAnnouncementViewController** 並將它註冊在初始化觸達模組後:
+若要建立宣告的類別，您必須擴充 **AEAnnouncementViewController** 並將它註冊在初始化觸達模組後 ︰
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:@"my_category"];
@@ -322,7 +322,7 @@
 
 在此實作中，是從外部 xib 檔案載入自訂宣告檢視。
 
-就像對進階通知自訂一樣，也建議您查看標準實作的原始程式碼。
+就像進階通知的自訂一樣，也建議您查看標準實作的原始程式碼。
 
 `CustomAnnouncementViewController.h`
 
@@ -415,4 +415,5 @@
     }
 
     @end
+
 

@@ -1,6 +1,6 @@
 <properties
     pageTitle="開始使用 Android 上的驗證 (JavaScript 後端) | Microsoft Azure"
-    description="了解如何使用行動服務來驗證使用者的 Android 應用程式透過眾多識別提供者，包括 Google、 Facebook、 Twitter 和 Microsoft (JavaScript 後端)。"
+    description="了解如何使用行動服務來驗證使用者的 Android 應用程式透過眾多識別提供者，包括 Google、 Facebook、 Twitter 和 Microsoft （JavaScript 後端）。"
     services="mobile-services"
     documentationCenter="android"
     authors="RickSaling"
@@ -33,7 +33,7 @@
 本教學課程帶領您執行下列基本步驟，在您的應用程式中啟用驗證：
 
 
-##先決條件
+##必要條件
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
@@ -47,7 +47,7 @@
 
 1. 在 Android Studio 中，開啟您完成教學課程時所建立的專案 [Get started with Mobile Services]。
 
-2. 從 **執行** ] 功能表上，然後按一下 [ **執行應用程式**; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 (未經授權)。
+2. 從 **執行** ] 功能表上，然後按一下 [ **執行應用程式**; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 （未經授權）。
 
      這是因為應用程式會嘗試驗證的使用者身分存取行動服務，但 _TodoItem_ 資料表現在需要驗證。
 
@@ -67,7 +67,7 @@
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接續步驟
 
 在下一個教學課程中， [Authorize users with scripts], ，您將行動服務根據經驗證的使用者所提供的使用者識別碼值，並用來篩選行動服務所傳回的資料。
 
@@ -105,4 +105,5 @@
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: mobile-services-android-get-started.md
 [Authorize users with scripts]: mobile-services-javascript-backend-service-side-authorization.md
+
 

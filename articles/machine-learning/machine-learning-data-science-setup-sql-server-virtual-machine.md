@@ -28,7 +28,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
  > [AZURE.NOTE] SQL Server 2012 SP2 Enterprise 映像 **不包含資料磁碟**。 您必須新增和 (或) 連接一或多個虛擬硬碟來儲存資料。 當您建立 Azure 虛擬機器時，它會有一個作業系統的磁碟對應至 C 磁碟機，還有一個暫存磁碟對應至 D 磁碟機。 請勿使用 D 磁碟機來儲存資料。 顧名思義，它只提供暫存儲存空間。 它並不提供備援或備份，因為它不在 Azure 儲存體內。
 
 
-##<a name="Provision"></a>連接到 Azure 傳統入口網站並佈建 SQL Server 虛擬機器
+##<a name="Provision"></a>連線到 Azure 傳統入口網站並佈建 SQL Server 虛擬機器
 
 1.  登入 [Azure 傳統入口網站](http://manage.windowsazure.com/) 使用您的帳戶。
     如果您沒有 Azure 帳戶，請造訪 [免費的 Azure
@@ -46,7 +46,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
     ![選取 SQL Server VM][1]
 
 4.  在第一個 **虛擬機器組態** 頁面上，提供
-    下列資訊:
+    下列資訊 ︰
 
     -   提供 **虛擬機器名稱**。
     -   在 **新的使用者名稱** 方塊中，輸入唯一的使用者名稱的 vm
@@ -56,7 +56,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
     -   在 **確認密碼** 方塊中，重新輸入密碼。
     -   選取適當 **大小** 從下拉式清單。
 
-     > [AZURE.NOTE] 在佈建期間指定虛擬機器的大小: A2
+     > [AZURE.NOTE] 在佈建期間指定虛擬機器的大小 ︰ A2
     建議用於生產工作負載的最小大小。 Auch die Eigenschaften
     使用 SQL 時，虛擬機器的最小建議的大小為 A3
     Server 企業版。 選取 A3 或更高版本，當使用 SQL Server
@@ -75,7 +75,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
     ![VM 組態][2]
 
 5.  第二個 **虛擬機器組態** 頁面上，設定
-    網路、 儲存體和可用性的資源:
+    網路、 儲存體和可用性的資源 ︰
 
     -   在 **雲端服務** 方塊中，選擇 [ **建立新的雲端
         服務**。
@@ -86,7 +86,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
         裝載這個虛擬映像的區域。
     -   在 **儲存體帳戶**, ，選取現有的儲存體帳戶
         或選取自動產生。
-    -   在 **可用性設定組** 方塊中，選取 **(無)**。
+    -   在 **可用性設定組** 方塊中，選取 **（無）**。
     -   閱讀並接受定價資訊。
 
 6.  在 **端點** 區段中，按一下 [空白] 底下的下拉式清單 **名稱**, ，並
@@ -106,7 +106,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
     `![VM 的最後選項][4]
 
 9.  等待 Azure 準備好您的虛擬機器。 預期的虛擬
-    若要繼續執行的機器狀態:
+    若要繼續執行的機器狀態 ︰
 
     -   啟動中 (佈建中)
     -   已停止
@@ -114,7 +114,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
     -   執行中 (佈建中)
     -   執行中
 
-##<a name="RemoteDesktop"></a>使用遠端桌面開啟虛擬機器及完成設定
+##<a name="RemoteDesktop"></a>使用遠端桌面開啟虛擬機器並完成設定
 
 1.  佈建完成時，按一下您的虛擬名稱
     請移至 [儀表板] 頁面上的電腦。 在頁面底部
@@ -125,8 +125,8 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
 
 3.  在 **Windows 安全性** 對話方塊方塊中，提供的密碼
     您在先前步驟中指定的本機系統管理員帳戶。
-    (可能會要求您確認虛擬認證
-    電腦上。)
+    （可能會要求您確認虛擬認證
+    電腦上。）
 
 4.  第一次登入這個虛擬機器時，數個程序
     若要完成，包括設定桌面，Windows 可能需要
@@ -140,7 +140,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
 您一次連接至虛擬機器與 Windows 遠端
 桌面、 虛擬機器的作用很像任何其他電腦。 連線
 若要使用 SQL Server Management Studio 的 SQL Server 的預設執行個體
-(虛擬機器上執行) 以一般方式。
+（虛擬機器上執行） 以一般方式。
 
 ##<a name="InstallIPython"></a>安裝 IPython Notebook 和其他支援工具
 
@@ -148,7 +148,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
 這類 AzCopy、 Azure 儲存體總管、 實用的資料科學 Python 封裝和其他支援工具
 特殊的自訂指令碼會提供給您。 若要安裝：
 
-- 以滑鼠右鍵按一下 Windows [開始] 圖示，然後按一下 [ **命令提示字元 (系統管理員)**
+- 以滑鼠右鍵按一下 Windows [開始] 圖示，然後按一下 [ **命令提示字元 （系統管理員）**
 - 複製下列命令並貼至命令提示字元。
 
         set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
@@ -173,7 +173,7 @@ Azure 虛擬機器組件庫涵蓋數個包含 Microsoft SQL Server 的映像。 
 
  > [AZURE.NOTE] 請勿使用 D 磁碟機來儲存資料。 顧名思義，它只提供暫存儲存空間。 它並不提供備援或備份，因為它不在 Azure 儲存體內。
 
-若要連接其他資料磁碟，請依照所述的步驟 [如何將資料磁碟連接至 Windows 虛擬機器](storage-windows-attach-disk.md), ，這將會引導您完成:
+若要連接其他資料磁碟，請依照所述的步驟 [如何將資料磁碟連接至 Windows 虛擬機器](storage-windows-attach-disk.md), ，這將會引導您完成 ︰
 
 1. 將空磁碟連接至先前步驟中佈建的虛擬機器
 2. 在虛擬機器中將新磁碟初始化
@@ -209,7 +209,7 @@ SQL Server 資料庫引擎無法使用 Windows 驗證，而不需要
 
     <br>
 
-     > [AZURE.TIP] 您可以變更使用 Windows 登錄機碼變更，或使用 SQL Server Management Studio 的 SQL Server 驗證模式。 若要變更驗證模式使用登錄機碼變更，請啟動 **新查詢** 並執行下列指令碼:
+     > [AZURE.TIP] 您可以變更使用 Windows 登錄機碼變更，或使用 SQL Server Management Studio 的 SQL Server 驗證模式。 若要變更驗證模式使用登錄機碼變更，請啟動 **新查詢** 並執行下列指令碼 ︰
 
         USE master
         go
@@ -221,7 +221,7 @@ SQL Server 資料庫引擎無法使用 Windows 驗證，而不需要
     若要使用 SQL Server management Studio 變更驗證模式：
 
 3.  在 SQL Server Management Studio 物件總管中，以滑鼠右鍵按一下
-    SQL Server (虛擬機器名稱) 的執行個體的名稱和
+    SQL Server （虛擬機器名稱） 的執行個體的名稱和
     然後按一下 [ **屬性**。
 
     ![伺服器屬性][7]
@@ -236,8 +236,8 @@ SQL Server 資料庫引擎無法使用 Windows 驗證，而不需要
     確認重新啟動 SQL Server 的需求。
 
 6.  在物件總管] 中，您的伺服器，以滑鼠右鍵按一下，然後按一下
-    **重新啟動**。 (如果 SQL Server 代理程式正在執行，也必須是
-    重新啟動。)
+    **重新啟動**。 （如果 SQL Server 代理程式正在執行，也必須是
+    重新啟動。）
 
     ![重新啟動][9]
 
@@ -279,17 +279,17 @@ SQL Server 資料庫引擎無法使用 Windows 驗證，而不需要
     該密碼一次 **確認密碼** 方塊。
 
 6.  若要強制執行複雜性和強制性密碼原則選項
-    選取 **強制執行密碼原則** (建議選項)。 這是預設值
+    選取 **強制執行密碼原則** （建議選項）。 這是預設值
     選取 SQL Server 驗證時的選項。
 
 7.  若要強制執行逾期密碼原則選項，請選取 **強制執行
-    密碼到期** (建議選項)。 強制執行密碼原則必須
+    密碼到期** （建議選項）。 強制執行密碼原則必須
     選取要啟用此核取方塊。 這是預設選項時 SQL
     已選取伺服器驗證。
 
 8.  若要強制使用者在第一次建立新的密碼
     登入，則選取 **使用者必須變更密碼，在下次登入時**
-    (建議使用此登入是否為其他人使用。 如果登入
+    （建議使用此登入是否為其他人使用。 如果登入
     是供自己使用，請勿選取此選項。)強制執行密碼
     若要啟用此核取方塊，必須選取到期日。 這是
     選取 SQL Server 驗證時的預設選項。
@@ -306,7 +306,7 @@ SQL Server 資料庫引擎無法使用 Windows 驗證，而不需要
     將此登入指定為 SQL Server 系統管理員。 如果是的話，請在
     **伺服器角色** ] 頁面上，核取 **sysadmin**。
 
-    **安全性注意事項:** sysadmin 固定的伺服器角色的成員擁有
+    **安全性注意事項 ︰** sysadmin 固定的伺服器角色的成員擁有
     Database Engine 的完整控制權限。 您應該仔細
     限制此角色的成員資格。
 
@@ -321,24 +321,24 @@ SQL Server 資料庫引擎無法使用 Windows 驗證，而不需要
 (這是網際網路用來識別虛擬機器的名稱。 您
 可以使用 IP 位址，但是當 Azure 移動時，可能會變更 IP 位址
 冗餘或維護的資源。 DNS 名稱是穩定的
-因為它可以重新導向至新的 IP 位址。)
+因為它可以重新導向至新的 IP 位址。）
 
-1.  在 Azure 傳統入口網站 (或上一個步驟)，請選取
+1.  在 Azure 傳統入口網站 （或上一個步驟），請選取
     **虛擬機器**。
 
 2.  在 **虛擬機器執行個體** 頁面上，於 **DNS 名稱**
     資料行中，尋找並複製的 DNS 名稱的虛擬機器的
-    前方加上 **http://**。 (使用者介面可能無法
+    前方加上 **http://**。 （使用者介面可能無法
     顯示完整名稱，但您可以以滑鼠右鍵按一下它，然後選取
-    複製。)
+    複製。）
 
-##<a name="cde"></a>從另一部電腦連接 Database Engine
+##<a name="cde"></a>從另一台電腦連接到 Database Engine
 
 1.  在連接網際網路的電腦上開啟 SQL Server Management Studio。
 
 2.  在 **連接到伺服器** 或 **連接到 Database Engine**
     對話方塊中，於 **伺服器名稱** 方塊中，輸入的 DNS 名稱
-    (於上一個工作中決定) 的虛擬機器和公用
+    （於上一個工作中決定） 的虛擬機器和公用
     端點連接埠號碼，格式為 *DNSName，portnumber* 例如
     **tutorialtestVM.cloudapp.net,57500**。
 
@@ -352,9 +352,9 @@ SQL Server 資料庫引擎無法使用 Windows 驗證，而不需要
 
 6.  按一下 [ **連接**。
 
-##<a name="amlconnect"></a>從 Azure Machine Learning 連接到 Database Engine
+##<a name="amlconnect"></a>從 Azure Machine Learning 連接 Database Engine
 
-在進階分析程序和技術的後期階段，您將使用 [Azure Machine Learning Studio](https://studio.azureml.net) 建置和部署機器學習模型。 若要直接在 Azure Machine Learning 供訓練或評分擷取 SQL Server VM 資料庫中的資料，使用讀取器模組在新 [Azure Machine Learning Studio](https://studio.azureml.net) 實驗。 《進階分析程序和技術》指南中的連結提供更多與本主題相關的詳細資訊。 如需簡介，請參閱 [什麼是 Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md)。
+在進階分析程序和技術的後期階段，您將使用 [Azure Machine Learning Studio](https://studio.azureml.net) 建置和部署機器學習模型。 若要直接在 Azure Machine Learning 供訓練或評分擷取 SQL Server VM 資料庫中的資料，使用讀取器模組在新 [Azure Machine Learning Studio](https://studio.azureml.net) 實驗。 《進階分析程序和技術》指南中的連結提供更多與本主題相關的詳細資訊。 如需簡介，請參閱 [什麼是 Azure Machine Learning Studio？](machine-learning-what-is-ml-studio.md)。
 
 2.  在 **屬性** 窗格 [讀取器模組](https://msdn.microsoft.com/library/azure/dn905997.aspx), ，請選取 **Azure SQL Database** 從 **資料來源**   下拉式清單中。
 
@@ -366,11 +366,11 @@ SQL Server 資料庫引擎無法使用 Windows 驗證，而不需要
 
     ![Azure ML 讀取器][13]
 
-##<a name="shutdown"></a>關閉並取消配置未使用的虛擬機器
+##<a name="shutdown"></a>關閉並解除配置非使用中的虛擬機器
 
-Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您不會被計費不使用虛擬機器時，它必須為 **已停止 (取消配置)** 狀態。
+Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您不會被計費不使用虛擬機器時，它必須為 **已停止 （取消配置）** 狀態。
 
-> [AZURE.NOTE] 關閉虛擬機器從內部 (使用 Windows 電源選項)，雖然 VM 已停止，但仍然處於已配置。 若要確保您不會被計費，一律停止虛擬機器從 [Azure 傳統入口網站](http://manage.windowsazure.com/)。 您也可以藉由呼叫 ShutdownRoleOperation 搭配相當於 "StoppedDeallocated" 的 "PostShutdownAction"，透過 Powershell 來停止 VM。
+> [AZURE.NOTE] 關閉虛擬機器從內部 （使用 Windows 電源選項），雖然 VM 已停止，但仍然處於已配置。 若要確保您不會被計費，一律停止虛擬機器從 [Azure 傳統入口網站](http://manage.windowsazure.com/)。 您也可以藉由呼叫 ShutdownRoleOperation 搭配相當於 "StoppedDeallocated" 的 "PostShutdownAction"，透過 Powershell 來停止 VM。
 
 關閉及取消配置虛擬機器：
 
@@ -391,7 +391,7 @@ Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您�
 
 您的虛擬機器已經準備好在資料科學練習中使用。 虛擬機器也已經準備好用來做為 IPython Notebook 伺服器，以用於進行資料探索和處理，以及其他可與 Azure Machine Learning 和 Cortana 分析程序 (CAP) 一起使用的工作。
 
-資料科學程序的下一個步驟中的對應 [學習指南: 進階資料處理，在 Azure 中](machine-learning-data-science-advanced-data-processing.md) ，而且可能包括將資料移至 HDInsight，程序並進行取樣，並在與 Azure Machine Learning 從資料學習的準備步驟。
+資料科學程序的下一個步驟中的對應 [學習指南 ︰ 進階資料處理，在 Azure 中](machine-learning-data-science-advanced-data-processing.md) ，而且可能包括將資料移至 HDInsight，程序並進行取樣，並在與 Azure Machine Learning 從資料學習的準備步驟。
 
 
 [1]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/selectsqlvmimg.png
@@ -409,3 +409,4 @@ Azure 虛擬機器的定價為 **只支付您所使用**。 若要確定，您�
 [13]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/amlreader.png
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
+

@@ -36,7 +36,7 @@ Standard 資料庫可以有一個不可讀取次要複本，並且必須使用�
 
 若要設定異地複寫，您需要下列項目：
 
-- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
+- Azure 訂閱。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
 - Azure SQL Database - 您想要複寫到不同地理區域的主要資料庫。
 - Azure PowerShell 1.0 或更新版本。 您可以下載並安裝 Azure PowerShell 模組 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
 
@@ -70,7 +70,7 @@ Standard 資料庫可以有一個不可讀取次要複本，並且必須使用�
   
 若要啟用次要複本，您必須是訂用帳戶擁有者或共同擁有者。 
 
-您可以使用 **新增 AzureRmSqlDatabaseSecondary** 指令程式可新增夥伴伺服器上的次要資料庫，您會在伺服器上的本機資料庫連接 (主要資料庫)。 
+您可以使用 **新增 AzureRmSqlDatabaseSecondary** 指令程式可新增夥伴伺服器上的次要資料庫，您會在伺服器上的本機資料庫連接 （主要資料庫）。 
 
 此指令程式取代 **Start-azuresqldatabasecopy** 與 **– IsContinuous** 參數。  它會輸出 **AzureRmSqlDatabaseSecondary** 可以使用其他指令程式，以清楚地識別特定的複寫連結的物件。 建立次要資料庫並將其完全植入時，這個 Cmdlet 會傳回。 視資料庫的大小而定，可能需要從數分鐘到數小時的時間。
 
@@ -215,4 +215,5 @@ Standard 資料庫可以有一個不可讀取次要複本，並且必須使用�
 - [使用異地複寫設計業務持續性的雲端應用程式](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [業務續航力概觀](sql-database-business-continuity.md)
 - [SQL Database 文件](https://azure.microsoft.com/documentation/services/sql-database/)
+
 

@@ -28,7 +28,7 @@
 
 本主題說明如何使用 Azure 行動服務，將推播通知傳送至 Xamarin.Forms 方案的 iOS、Android 和 Windows Phone 應用程式。 由建立行動服務開始。 然後，您將下載入門範例、利用適當的推播通知服務註冊，以及將程式碼加入至要從這些服務接收通知的方案。
 
-完成本教學課程時，您的行動服務會在每次使用者於其中一個應用程式中新增工作時傳送推播通知。 您可以找到完整的範例: [Completed Xamarin.Forms Azure Push Notification Sample]。
+完成本教學課程時，您的行動服務會在每次使用者於其中一個應用程式中新增工作時傳送推播通知。 您可以找到完整的範例 ︰ [Completed Xamarin.Forms Azure Push Notification Sample]。
 
 本教學課程需要下列各項：
 
@@ -83,17 +83,17 @@
 ## <a name="download-starter-sample"></a>下載並設定入門範例
 我們會將推播通知新增至現有範例。
 
-1. 下載下列的範例: [Xamarin.Forms Azure Push Notification Starter Sample]。
+1. 下載下列的範例 ︰ [Xamarin.Forms Azure Push Notification Starter Sample]。
 
 2. 在 [Azure classic portal], ，按一下 [ **行動電話服務**, ，然後按一下 [行動服務。 按一下 [ **儀表板** 索引標籤並記下 **網站 URL**。 然後按一下 [ **管理金鑰** 並記下的 **應用程式金鑰**。 當您從應用程式程式碼存取行動服務時，您將會用到這些值。
 
-3. 在  **todoazure (portable)** 專案的方案中，開啟 **Constants.cs** 檔案中，將 `ApplicationURL` 和 `ApplicationKey` 的網站 URL 和應用程式您在上一個步驟中取得金鑰。
+3. 在  **todoazure （portable)** 專案的方案中，開啟 **Constants.cs** 檔案中，將 `ApplicationURL` 和 `ApplicationKey` 的網站 URL 和應用程式您在上一個步驟中取得金鑰。
 
 ## <a name="iOS"></a>將推播通知新增至 Xamarin.Forms.iOS 應用程式
 
 您將使用 Apple Push Notification 服務 (APNS)，將推播通知加入至 iOS 應用程式。 您將需要有效的 Google 帳戶，而 [Google Cloud Messaging Client Component]。
 
->[AZURE.IMPORTANT] 基於 Apple 推播通知服務 (APNS) 需求，您必須部署，並在模擬器中測試推播通知在 iOS 功能裝置 (iPhone 或 iPad) 而不是。
+>[AZURE.IMPORTANT] 基於 Apple 推播通知服務 (APNS) 需求，您必須部署，並在模擬器中測試推播通知在 iOS 功能裝置 （iPhone 或 iPad） 而不是。
 
 APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要的憑證，並將憑證上傳至您的行動服務。 正式的 APNS 功能文件，請參閱 [Apple Push Notification Service]。
 
@@ -167,7 +167,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     ![][9]
 
-    注意: 根據預設，下載的檔案開發憑證名為 <strong>aps_development.cer</strong>.
+    注意：根據預設，下載的檔案 (開發憑證) 的名稱會是 <strong>aps_development.cer</strong>。
 
 7. 按兩下下載的推播憑證 **aps_development.cer**。
 
@@ -175,7 +175,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     ![][10]
 
-    注意: 憑證中的名稱可能會不同，但將會加 <strong>Apple Development iOS Push Notification Services:</strong>.
+    注意：憑證中的名稱可能會不同，不過字首會加上 <strong>Apple Development iOS Push Notification Services:</strong> 前置詞。
 
 之後，您會使用該憑證來產生 .p12 檔案，並將該檔案上傳到行動服務以啟用 APNS 驗證。
 
@@ -209,7 +209,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
 7. 在 Xcode 中開啟 organizer 並選取 Devices 檢視，選取 **佈建設定檔** 中 **程式庫** 在左窗格中，區段，然後按一下 **重新整理** 在中間窗格底部的按鈕。
 
-### <a name="configure-mobileServices"></a>設定行動服務傳送推播要求
+### <a name="configure-mobileServices"></a>設定行動服務以傳送推播要求
 
 在向 APNS 註冊應用程式及設定專案後，接下來您必須設定行動服務以整合 APNS。
 
@@ -255,7 +255,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
 ### <a name="add-push"></a>將推播通知新增至應用程式
 
-1. 在 Xamarin.Studio 或 Visual Studio 中，依序展開 **ToDoAzure.iOS** 專案中，開啟 **AppDelegate** 類別，然後再取代 **FinishedLaunching** 事件，以下列程式碼:
+1. 在 Xamarin.Studio 或 Visual Studio 中，依序展開 **ToDoAzure.iOS** 專案中，開啟 **AppDelegate** 類別，然後再取代 **FinishedLaunching** 事件，以下列程式碼 ︰
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
@@ -281,7 +281,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
             return base.FinishedLaunching(app, options);
         }
 
-6. 在 **AppDelegate**, ，覆寫 **RegisteredForRemoteNotifications** 事件:
+6. 在 **AppDelegate**, ，覆寫 **RegisteredForRemoteNotifications** 事件 ︰
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
@@ -305,7 +305,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
             push.RegisterTemplateAsync(_deviceToken, template, expiryDate, "myTemplate", tag)
         }
 
-7. 在 **AppDelegate**, ，覆寫 **ReceivedRemoteNotification** 事件:
+7. 在 **AppDelegate**, ，覆寫 **ReceivedRemoteNotification** 事件 ︰
 
         public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
         {
@@ -382,7 +382,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
 您會使用 Google Cloud Messaging (GCM) 服務將推播通知新增至 Android 應用程式。 您將需要有效的 Google 帳戶，而 [Google Cloud Messaging Client Component]。
 
-###<a id="register"></a>啟用 Google 雲端通訊
+###<a id="register"></a>啟用 Google Cloud Messaging
 
 [AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
@@ -448,7 +448,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
         using Gcm.Client;
 
 
-4.  在 **MainActivity** 類別中，新增下列程式碼 **OnCreate** 方法呼叫後面 **Oncreate** 方法:
+4.  在 **MainActivity** 類別中，新增下列程式碼 **OnCreate** 方法呼叫後面 **Oncreate** 方法 ︰
 
             try
             {
@@ -475,12 +475,12 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
 5. 在 ToDoAzure.Droid 專案中，建立名為 `GcmService` 的新類別。
 
-5. 新增下列 using 陳述式 **GcmService** 類別:
+5. 新增下列 using 陳述式 **GcmService** 類別 ︰
 
         using Gcm.Client;
         using Microsoft.WindowsAzure.MobileServices;
 
-6. 新增下列權限要求之間 **使用** 陳述式和 **命名空間** 宣告:
+6. 新增下列權限要求之間 **使用** 陳述式和 **命名空間** 宣告 ︰
 
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -491,7 +491,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 
-7. 在 **GcmService.cs** 專案檔案，新增下列類別:
+7. 在 **GcmService.cs** 專案檔案，新增下列類別 ︰
 
         [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
@@ -507,7 +507,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     在上述程式碼中，您必須將 _`<PROJECT_NUMBER>`_ 在佈建您的應用程式在 Google 開發人員入口網站時由 Google 指派的專案編號。
 
-8. 在 GcmService.cs 專案檔案中，新增下列程式碼定義 **GcmService** 類別:
+8. 在 GcmService.cs 專案檔案中，新增下列程式碼定義 **GcmService** 類別 ︰
 
          [Service]
          public class GcmService : GcmServiceBase
@@ -521,7 +521,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     請注意，此類別衍生自 **GcmServiceBase** ， **服務** 屬性必須套用至這個類別。
 
-    >[AZURE.NOTE] **GcmServiceBase** 類別會實作 **onregistered ()**, ，**onunregistered ()**, ，**onmessage ()** 和 **onerror ()** 方法。 您必須覆寫這些方法在 **GcmService** 類別。
+    >[AZURE.NOTE] **GcmServiceBase** 類別會實作 **onregistered （)**, ，**onunregistered （)**, ，**onmessage （)** 和 **onerror （)** 方法。 您必須覆寫這些方法在 **GcmService** 類別。
 
 5. 加入下列程式碼以 **GcmService** 類別會覆寫 **OnRegistered** 事件處理常式。
 
@@ -556,7 +556,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     此方法使用傳回的 GCM 註冊識別碼，向 Azure 註冊以取得推送通知。
 
-10. 覆寫 **OnMessage** 方法中的 **GcmService** 為下列程式碼:
+10. 覆寫 **OnMessage** 方法中的 **GcmService** 為下列程式碼 ︰
 
         protected override void OnMessage(Context context, Intent intent)
         {
@@ -616,7 +616,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
             notificationManager.Notify(1, notification);
         }
 
-12. 加入下列方法覆寫 **onunregistered ()** 和 **onerror ()**, ，所需的編譯專案。
+12. 加入下列方法覆寫 **onunregistered （)** 和 **onerror （)**, ，所需的編譯專案。
 
         protected override void OnError(Context context, string errorId)
         {
@@ -653,7 +653,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
 本節說明如何使用 Azure 行動服務，將推播通知傳送至 Xamarin.Forms 方案中包含的 Windows Phone Silverlight 應用程式。
 
-###<a id="update-app"></a> 更新應用程式以註冊通知
+###<a id="update-app"></a>更新應用程式以註冊通知
 
 您必須先註冊通知通道，您的應用程式才能接收推播通知。
 
@@ -694,7 +694,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     >[AZURE.NOTE]在本教學課程中，行動服務會傳送快顯通知給裝置。 當您傳送磚通知時，您必須改為呼叫 **BindToShellTile** 通道上的方法。
 
-4. 在頂端 **Application_Launching** 事件處理常式，在 App.xaml.cs 中，新增下列呼叫新 **AcquirePushChannel** 方法:
+4. 在頂端 **Application_Launching** 事件處理常式，在 App.xaml.cs 中，新增下列呼叫新 **AcquirePushChannel** 方法 ︰
 
         AcquirePushChannel();
 
@@ -708,7 +708,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     如此可確定您的應用程式可以提出快顯通知。
 
-###<a id="update-scripts"></a> 更新伺服器指令碼以傳送推播通知
+###<a id="update-scripts"></a>更新伺服器指令碼以傳送推播通知
 
 最後，您必須在 TodoItem 資料表上更新對插入作業註冊的指令碼，以傳送通知。
 
@@ -758,7 +758,7 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 
     >[AZURE.NOTE]本教學課程使用未經驗證的模式的 MPNS。 在此模式中，MPNS 會限制可傳送至裝置通道的通知數。 若要移除此限制，您必須產生憑證，然後按一下 [上傳]**** 並選取憑證，以上傳憑證。 如需產生憑證的詳細資訊，請參閱 [設定已驗證的 Web 服務以傳送 Windows Phone 的推播通知]。
 
-###<a id="test"></a> 在應用程式中測試推播通知
+###<a id="test"></a>在應用程式中測試推播通知
 
 1. 在 Visual Studio 中，按 F5 鍵以執行此應用程式。
 
@@ -849,4 +849,5 @@ APNS 使用憑證來驗證您的行動服務。 遵循這些指示建立必要�
 [Google Cloud Messaging Client Component]: http://components.xamarin.com/view/GCMClient/
 [Xamarin.Forms Azure Push Notification Starter Sample]: https://github.com/Azure/mobile-services-samples/tree/master/TodoListXamarinForms
 [Completed Xamarin.Forms Azure Push Notification Sample]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
+
 

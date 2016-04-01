@@ -88,7 +88,7 @@
 
 若要設定原則，登入 [Azure 傳統入口網站](https://manage.windowsazure.com), ，瀏覽您的 API 管理服務，並按一下 [ **發行者入口網站** 或 **管理** 存取發行者入口網站。
 
-![發佈者入口網站][publisher-portal]
+![發行者入口網站][publisher-portal]
 
 按一下 [ **原則** 左側 [API 管理] 功能表中選取所需的產品和 API，然後按一下 [ **新增原則**。 在此範例中，我們要新增一項原則 **Echo API** 中 **Unlimited** 產品。
 
@@ -132,6 +132,7 @@
 [sending-policy]: ./media/api-management-howto-log-event-hubs/sending-policy.png
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
+
 
 
 

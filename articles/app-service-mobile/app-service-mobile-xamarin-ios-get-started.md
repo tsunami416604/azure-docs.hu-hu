@@ -68,7 +68,7 @@
 
 ## 下載並執行 Xamarin.iOS 應用程式
 
-1. 在 Mac 上，開啟瀏覽器視窗中的 [Azure 入口網站]。
+1. 在 Mac 上，開啟 [Azure portal] 瀏覽器視窗中。
 
     >[AZURE.NOTE] 在 mac 上執行您的 Xamarin.iOS 應用程式變得更容易 如果想要，您可以在 Windows 電腦上使用 Visual Studio 來執行 Xamarin.iOS 應用程式，但這樣會比較複雜，因為您必須連線到已加入網路的 Mac。 如果您想這麼做，請參閱 [Installing Xamarin.iOS on Windows]。
 
@@ -94,10 +94,10 @@
 
 ##後續步驟
 
-* [將驗證新增至您的應用程式 ](app-service-mobile-xamarin-ios-get-started-users.md)
+* [將驗證加入您的應用程式 ](app-service-mobile-xamarin-ios-get-started-users.md)
   <br/>了解如何使用身分識別提供者驗證應用程式的使用者。
 
-* [將推播通知新增至您的應用程式](app-service-mobile-xamarin-ios-get-started-push.md)
+* [將推播通知新增至應用程式](app-service-mobile-xamarin-ios-get-started-push.md)
   <br/>了解如何將非常基本的推播通知傳送至您的應用程式。
 
 <!-- Anchors. -->
@@ -122,4 +122,5 @@
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
 [Installing Xamarin.iOS on Windows]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
+
 

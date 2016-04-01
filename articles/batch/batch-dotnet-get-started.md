@@ -20,7 +20,7 @@
 
 透過建立設定支援檔案的主控台應用程式，以及在 Azure Batch 集區中數個運算節點上執行的程式，來著手使用 Azure Batch .NET 程式庫。 本教學課程中建立的工作會評估上傳到 Azure 儲存體的檔案，並傳回這些檔案中最常出現的單字。 範例均以 C# 和使用 [Azure 批次.NET 程式庫](https://msdn.microsoft.com/library/azure/mt348682.aspx)。
 
-## 先決條件
+## 必要條件
 
 - 帳戶：
 
@@ -50,7 +50,7 @@
 
 ### 設定儲存體連接字串
 
-1. 開啟 GettingStarted 專案的 App.config 檔案，然後新增 *(& s) lt; appSettings & gt;* 項目 *(& s) lt; 組態 & gt;*。
+1. 開啟 GettingStarted 專案的 App.config 檔案，然後新增 *（& s) lt; appSettings & gt;* 項目 *（& s) lt; 組態 & gt;*。
 
         <?xml version="1.0" encoding="utf-8" ?>
         <configuration>
@@ -161,7 +161,7 @@
 
 ### 將檔案上傳至儲存體容器
 
-1. 開啟 Program.cs 檔案的 **GettingStarted** 專案，然後再將檔案上傳這個方法:
+1. 開啟 Program.cs 檔案的 **GettingStarted** 專案，然後再將檔案上傳這個方法 ︰
 
         static void CreateFiles()
         {
@@ -208,7 +208,7 @@
             BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials("[account-url]", "[account-name]", "[account-key]");
             BatchClient client = BatchClient.Open(cred);
 
-    括號括住的值取代為您的批次帳戶，其中每個可在與相關聯 [Azure 入口網站](https://portal.azure.com)。 若要尋找這些值，請登入 [Azure 入口網站](https://portal.azure.com) 和:
+    括號括住的值取代為您的批次帳戶，其中每個可在與相關聯 [Azure 入口網站](https://portal.azure.com)。 若要尋找這些值，請登入 [Azure 入口網站](https://portal.azure.com) 和 ︰
 
     - **[帳戶名稱]** -按一下 **批次帳戶**, ，選取您稍早建立的批次帳戶
     - **[帳戶 url]** -在批次帳戶] 分頁中，按一下 [ **屬性** > **URL**
@@ -494,4 +494,5 @@
 1. 既然您已經了解執行中工作的基本概念，您可以了解如何在應用程式的需求變更時，自動調整運算節點。 若要這樣做，請參閱 [自動調整 Azure 批次集區中的運算節點](batch-automatic-scaling.md)
 
 2. 有些應用程式會產生可能難以處理的大量資料。 其中一種解決這是透過 [有效率的清單查詢](batch-efficient-list-queries.md)。
+
 

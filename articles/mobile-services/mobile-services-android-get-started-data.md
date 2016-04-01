@@ -1,6 +1,6 @@
 <properties
-    pageTitle="開始使用資料 android (JavaScript 後端) |Microsoft Azure"
-    description="了解如何開始使用行動服務使用 Android 應用程式 (JavaScript 後端) 中的資料。"
+    pageTitle="開始使用資料 android （JavaScript 後端） |Microsoft Azure"
+    description="了解如何開始使用行動服務使用 Android 應用程式 （JavaScript 後端） 中的資料。"
     services="mobile-services"
     documentationCenter="android"
     authors="RickSaling"
@@ -35,21 +35,21 @@
 </div>
 
 
-<p>本教學課程可協助您更詳細了解 Azure 行動服務從 Android 應用程式存放和擷取資料的方式。 因此會逐步說明已在行動服務快速入門教學課程中完成的許多步驟。 如果這是您第一次接觸行動服務，請考慮先完成教學課程 <a href="/en-us/develop/mobile/tutorials/get-started-android">開始使用行動服務</a>.</p>
+<p>本教學課程可協助您更詳細了解 Azure 行動服務從 Android 應用程式存放和擷取資料的方式。 因此會逐步說明已在行動服務快速入門教學課程中完成的許多步驟。 如果這是您第一次接觸行動服務，請考慮首先完成教學課程 <a href="/en-us/develop/mobile/tutorials/get-started-android">開始使用行動服務</a>。</p>
 
 ## 必要條件
 
 若要完成此教學課程，您需要下列項目：
 
-- 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AED8DE357" target="_blank">Azure 免費試用</a>.
+- 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AED8DE357" target="_blank">Azure 免費試用</a>。
 
 
 - the [Azure Mobile Services Android SDK];
-- the <a  href="https://developer.android.com/sdk/index.html" target="_blank">Android Studio 整合式開發環境</a>，其中包括 Android SDK；和 Android 4.2 或更新版本。 下載的 GetStartedWithData 專案需要 Android 4.2 或更新版本。 不過，Mobile Services SDK 只需要 Android 2.2 或更新版本。
+- <a  href="https://developer.android.com/sdk/index.html" target="_blank">Android Studio 整合式開發環境</a>，其中包括 Android SDK 以及 Android 4.2 或更新版本。 下載的 GetStartedWithData 專案需要 Android 4.2 或更新版本。 不過，Mobile Services SDK 只需要 Android 2.2 或更新版本。
 
 ## 範例程式碼
 
-若要檢視已完成的原始程式碼，請 <a href="https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithData/AndroidStudio">開始</a>.
+若要檢視已完成的原始程式碼，請前往<a href="https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithData/AndroidStudio">這裡</a>。
 
 ## 下載 GetStartedWithData 專案
 
@@ -110,18 +110,18 @@
 
 接下來，可考慮進入下列其中一個教學課程，這些教學課程都是以您在本教學課程中建立的 GetStartedWithData 應用程式為基礎：
 
-* [驗證與修改資料的指令碼]
+* [Validate and modify data with scripts]
   <br/>進一步了解在行動服務中使用伺服器指令碼驗證並變更從您的應用程式傳送的資料。
 
-* [使用分頁縮小查詢]
+* [Refine queries with paging]
   <br/>了解如何在查詢中使用分頁，來控制單一要求中的處理資料量。
 
 完成資料系列後，可試著閱讀這些另外的 Android 教學課程：
 
-* [開始使用驗證]
+* [Get started with authentication]
     <br/>了解如何驗證應用程式的使用者。
 
-* [開始使用推播通知]
+* [Get started with push notifications]
   <br/>了解如何使用行動服務，將非常基本的推播通知傳送至您的應用程式。
 
 <!-- Anchors. -->
@@ -153,4 +153,5 @@
 [Azure Mobile Services Android SDK]: http://aka.ms/Iajk6q
 [GitHub]:  http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
+
 

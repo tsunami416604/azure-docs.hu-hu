@@ -61,7 +61,7 @@ SQL Server 名稱 | 可讓您指定 SQL Server 名稱和執行個體名稱。  �
 ------------- | ------------- |
 密碼同步處理 |使用者將能夠使用與登入內部部署網路時所用的相同密碼登入 Microsoft 雲端服務 (如 Office 365、Dynamics CRM 和 Windows InTune)。  使用者密碼會透過密碼雜湊同步至 Azure，並在雲端中進行驗證。 請參閱 [密碼同步化](active-directory-aadconnectsync-implement-password-synchronization.md) 如需詳細資訊。
 與 AD FS 同盟|使用者將能夠使用與登入內部部署網路時所用的相同密碼登入 Microsoft 雲端服務 (如 Office 365、Dynamics CRM 和 Windows InTune)。  系統會將使用者重新導向至他們的內部部署 AD FS 執行個體以進行登入，並在內部部署中完成驗證。
-請勿設定| 不會安裝和設定任何功能。  如果您已經有協力廠商的同盟伺服器或另一個現有的適當方案，請選擇此選項。
+請勿設定| 不會安裝和設定任何功能。  如果您已經有第三方的同盟伺服器或另一個現有的適當方案，請選擇此選項。
 
 
 
@@ -93,7 +93,7 @@ SQL Server 名稱 | 可讓您指定 SQL Server 名稱和執行個體名稱。  �
 [郵件屬性](active-directory-aadconnect-topologies.md#multiple-forests-full-mesh-with-optional-galsync) | 如果郵件屬性在不同樹系中具有相同的值，則此選項就會聯結使用者和連絡人。 如果已透過 GALSync 建立了您的連絡人，則建議使用此選項。
 [ObjectSID 與 msExchangeMasterAccountSID](active-directory-aadconnect-topologies.md#multiple-forests-account-resource-forest)|此選項會在帳戶樹系中聯結啟用的使用者，在 Exchange 資源樹系中聯結停用的使用者。 這在 Exchange 中也稱為連結的信箱。 如果您只使用 Lync 而 Exchange 不存在資源樹系中，也可以使用此選項。
 sAMAccountName 與 MailNickName|此選項會在預期可以找到使用者登入 ID 的屬性中聯結。
-我自己的屬性|此選項可讓您選取您的屬性。  **限制:** 務必挑選已存在於 metaverse 中的屬性。 如果您選擇自訂屬性，精靈將無法完成。
+我自己的屬性|此選項可讓您選取您的屬性。  **限制 ︰** 務必挑選已存在於 metaverse 中的屬性。 如果您選擇自訂屬性，精靈將無法完成。
 
 - **來源錨點** -屬性 sourceAnchor 是使用者物件的存留期是不可變的屬性。 它是連結內部部署使用者與 Azure AD 中使用者的主要金鑰。 因為無法改變屬性，所以您必須規劃並使用好的屬性。 objectGUID 就是不錯的選項。 只要使用者帳戶沒有在樹系/網域之間移動，此屬性就不會改變。 若在多樹系環境中，您會在樹系間移動帳戶時，就必須使用另一個屬性，例如 employeeID 屬性。 要避免如果某人結婚或變更指派時會改變的屬性。 因為不可以使用帶有 @ 符號的屬性，所以無法使用 email 和 userPrincipalName。 屬性也有區分大小寫，因此在樹系間移動物件時，請務必保留大寫/小寫。 對二進位屬性而言值是 Base64 編碼，但對其他屬性類型而言仍會保持其未編碼的狀態。 在同盟情況以及部分 Azure AD 介面中，此屬性也稱為 immutableID。 來源錨點的詳細資訊可在 [設計概念](active-directory-aadconnect-design-concepts.md#sourceAnchor)。
 
@@ -157,7 +157,7 @@ Azure AD 應用程式和屬性篩選|透過啟用 Azure AD 應用程式和屬性
 
 ![AD FS 伺服器陣列](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
-**注意:** 如果您選擇使用現有的 AD FS 伺服器陣列，您將會略過幾個頁面，並直接跳到設定 AD FS 與 Azure AD 的螢幕之間的信任關係。
+**注意 ︰** 如果您選擇使用現有的 AD FS 伺服器陣列，您將會略過幾個頁面，並直接跳到設定 AD FS 與 Azure AD 的螢幕之間的信任關係。
 
 ### 指定 AD FS 伺服器
 
@@ -175,9 +175,9 @@ Azure AD 應用程式和屬性篩選|透過啟用 Azure AD 應用程式和屬性
 
 
 > [AZURE.NOTE]
-- 如果您用來安裝 Azure AD Connect 的帳戶不是 AD FS 伺服器上的本機系統管理員將會提示您提供具有足夠的權限的帳戶的認證。
-- 確定 Azure AD Connect 伺服器與 Web 應用程式 Proxy 伺服器，再設定此步驟之間的 HTTP/HTTPS 連線。
-- 此外，請確認已允許流入驗證要求的 Web 應用程式伺服器和 AD FS 伺服器之間的 HTTP/HTTPS 連線。
+- 如果您用來安裝 Azure AD Connect 的帳戶不是 AD FS 伺服器上的本機系統管理員，則系統會提示您提供具有足夠權限的帳戶認證。
+- 設定此步驟之前，請確認 Azure AD Connect 伺服器和 Web 應用程式 Proxy 伺服器之間有 HTTP/HTTPS 連線。
+- 此外，亦請確認 Web 應用程式伺服器和 AD FS 伺服器之間的 HTTP/HTTPS 連線是否允許流入驗證要求。
 
 
 ![Web 應用程式](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
@@ -241,9 +241,9 @@ AD FS 服務需要網域服務帳戶來驗證使用者，以及在 Active Direct
 
 此外，請執行下列驗證步驟：
 
-- 驗證來自加入網域電腦從 Internet Explorer 內部網路瀏覽器登入: 連接到 https://myapps.microsoft.com，並確認您已登入的帳戶登入。
-- 驗證來自外部網路裝置的瀏覽器登入: 在家用電腦或行動裝置上，連接至 https://myapps.microsoft.com 並提供登入識別碼和密碼認證。
-- 驗證豐富型用戶端登入: 連接到 https://testconnectivity.microsoft.com，選擇 [Office 365] 索引標籤上，選擇 [Office 365 單一登入測試]。
+- 驗證來自加入網域電腦從 Internet Explorer 內部網路瀏覽器登入 ︰ 連接到 https://myapps.microsoft.com，並確認您已登入的帳戶登入。
+- 驗證來自外部網路裝置的瀏覽器登入 ︰ 在家用電腦或行動裝置上，連接至 https://myapps.microsoft.com 並提供登入識別碼和密碼認證。
+- 驗證豐富型用戶端登入 ︰ 連接到 https://testconnectivity.microsoft.com，選擇 [Office 365] 索引標籤上，選擇 [Office 365 單一登入測試]。
 
 
 ## 後續步驟
@@ -252,4 +252,5 @@ AD FS 服務需要網域服務帳戶來驗證使用者，以及在 Active Direct
 既然您已安裝 Azure AD Connect 可以 [驗證安裝，並指派授權](active-directory-aadconnect-whats-next.md)。
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
+
 

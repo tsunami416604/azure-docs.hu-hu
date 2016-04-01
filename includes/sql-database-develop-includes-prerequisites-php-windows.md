@@ -24,9 +24,10 @@ sql-database-develop-php-simple-windows.md
 sql-database-develop-php-retry-windows.md
 
 MightyPen = genemi
-符合 bhagdev
-DateOfLatestFreshnessVerification = 2015年-07-10
-DateOfLatestContentUpdate = 2015年-07-10
+meet-bhagdev
+DateOfLatestFreshnessVerification = 2015-07-10
+DateOfLatestContentUpdate = 2015-07-10
 -->
+
 
 

@@ -71,3 +71,4 @@
 [4]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [5]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 
+

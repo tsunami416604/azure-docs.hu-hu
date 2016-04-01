@@ -54,26 +54,26 @@
 
 ## 後續步驟
 ### 將 Web 前端新增至應用程式
-Service Fabric 提供與 ASP.NET 5 的整合，可建置您應用程式的 Web 型進入點。 請參閱 [將 web 前端加入您的應用程式] [新增-web-前端] 以了解如何建立 REST 介面根據 ASP.NET WebAPI。
+Service Fabric 提供與 ASP.NET 5 的整合，可建置您應用程式的 Web 型進入點。 請參閱 [加入您的應用程式的 web 前端][add-web-frontend] 以了解如何建立 ASP.NET WebAPI 為基礎的 REST 介面。
 
 ### 建立 Azure 叢集
-Service Fabric SDK 提供一個用於開發和測試的本機叢集。 若要在 Azure 中建立叢集，請參閱 [Service Fabric 叢集，從 Azure 入口網站設定] [建立叢集-中-入口網站]
+Service Fabric SDK 提供一個用於開發和測試的本機叢集。 若要在 Azure 中建立叢集，請參閱 [設定 Service Fabric 叢集，從 Azure 入口網站][create-cluster-in-portal]
 
 ### 嘗試使用派對叢集部署到免費的 Azure
 
 如果您想要嘗試使用 Azure 中的部署和管理應用程式沒有自己的叢集設定，您可以使用免費 [合作對象叢集服務](http://aka.ms/tryservicefabric)。
 
 ### 將應用程式發行至 Azure
-您可以直接從 Visual Studio 將應用程式發行至 Azure 叢集。 若要了解作法，請參閱 [應用程式發行至 Azure] [發行應用程式-至 azure]。
+您可以直接從 Visual Studio 將應用程式發行至 Azure 叢集。 若要了解做法，請參閱 [應用程式發行至 Azure][publish-app-to-azure]。
 
 ### 使用 Service Fabric 總管將叢集視覺化
-「Service Fabric 總管」提供一個將叢集 (包括已部署的應用程式和實體配置) 視覺化的簡單方法。 若要深入了解，請參閱 [視覺化使用 Service Fabric 總管叢集] [視覺化-與-sfx]。
+「Service Fabric 總管」提供一個將叢集 (包括已部署的應用程式和實體配置) 視覺化的簡單方法。 若要深入了解，請參閱 [使用 Service Fabric 總管視覺化叢集][visualize-with-sfx]。
 
 ### 進行服務版本設定和升級
-Service Fabric 可讓您為應用程式中的獨立服務進行獨立的版本設定和升級。 若要深入了解，請參閱 [版本控制和升級您的服務] [應用程式升級-教學課程]。
+Service Fabric 可讓您為應用程式中的獨立服務進行獨立的版本設定和升級。 若要深入了解，請參閱 [版本控制和升級您的服務][app-upgrade-tutorial]。
 
 ### 使用 Visual Studio Team Services 設定持續整合
-若要了解如何設定連續整合程序設定 Service Fabric 應用程式，請參閱 [使用與 Visual Studio Team Services 設定連續整合] [ci 使用 vso]。
+若要了解如何設定連續整合程序設定 Service Fabric 應用程式，請參閱 [設定持續整合與 Visual Studio Team Services][ci-with-vso]。
 
 
 <!-- Links -->
@@ -84,4 +84,5 @@ Service Fabric 可讓您為應用程式中的獨立服務進行獨立的版本�
 [ci-with-vso]: ./service-fabric-configure-continuous-integration-with-vso.md
 [reliable-services-webapi]: ./service-fabric-reliable-services-communication-webapi.md
 [app-upgrade-tutorial]: ./service-fabric-application-upgrade-tutorial.md
+
 

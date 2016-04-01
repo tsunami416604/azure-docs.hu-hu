@@ -31,7 +31,7 @@
 
 您必須需要有系統管理員權限，才能完成安裝和設定程序。 建議您在開始之前，檢閱設定檢查清單。 部署與設定程序可能需要一些時間才能完成。
 
-> [AZURE.NOTE] 在 Microsoft Azure 網站上發行的 StorSimple 部署資訊適用於僅適用於 StorSimple 8000 系列裝置。 如需 7000 系列裝置的完整資訊，請移至: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列部署資訊，請參閱 [StorSimple 系統快速入門指南](http://onlinehelp.storsimple.com/111_Appliance/)。
+> [AZURE.NOTE] 在 Microsoft Azure 網站上發行的 StorSimple 部署資訊適用於僅適用於 StorSimple 8000 系列裝置。 如需 7000 系列裝置的完整資訊，請移至 ︰ [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列部署資訊，請參閱 [StorSimple 系統快速入門指南](http://onlinehelp.storsimple.com/111_Appliance/)。
 
 ## 部署步驟
 
@@ -48,10 +48,10 @@
 | 步驟 1：建立新的服務。                                                         | 設定雲端管理和 StorSimple 裝置的儲存體。 如果您現在已經有針對其他 StorSimple 裝置的服務，請略過此步驟。                |
 | 步驟 2：取得服務註冊金鑰。                                               | 使用此金鑰註冊並將 StorSimple 裝置與管理服務連接。                                                                         |
 | 步驟 3：透過 Windows PowerShell for StorSimple 設定和註冊裝置    | 將裝置連接到您的網路，並向 Azure 使用管理服務安裝程式。                                            |
-| 步驟 4：完成最小量裝置設定</br>選擇性: 更新您的 StorSimple 裝置。      | 使用管理服務來完成裝置設定並啟用裝置以提供儲存體。                                                                      |
+| 步驟 4：完成最小量裝置設定</br>選擇性 ︰ 更新您的 StorSimple 裝置。      | 使用管理服務來完成裝置設定並啟用裝置以提供儲存體。                                                                      |
 | 步驟 5：建立磁碟區容器。                                                      | 建立容器以佈建磁碟區。 磁碟區容器的儲存體帳戶、 頻寬和內含的所有磁碟區的加密設定。    |
 | 步驟 6：建立磁碟區。                                                                | 在您伺服器的 StorSimple 裝置上佈建儲存體磁碟區。                                                                                        |
-| 步驟 7: 掛接、 初始化及格式化磁碟區。</br>選用: 設定 MPIO。            | 將您的伺服器連接至裝置提供的 iSCSI 儲存體。 選擇性地設定 MPIO 確保您的伺服器可以容許連結、網路和介面失敗。                                                                                                                                                              |
+| 步驟 7 ︰ 掛接、 初始化及格式化磁碟區。</br>選用 ︰ 設定 MPIO。            | 將您的伺服器連接至裝置提供的 iSCSI 儲存體。 選擇性地設定 MPIO 確保您的伺服器可以容許連結、網路和介面失敗。                                                                                                                                                              |
 | 步驟 8：進行備份。                                                                  | 設定備份原則以保護您的資料                                                                                                                 |
 |                                                                                        |                                                                                                                                                               |
 | **其他程序**                                                                   | 在您部署解決方案時可能需要參考這些程序。                                                                                        |
@@ -69,7 +69,7 @@
 |----------------------------------------|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
 | **將裝置接上纜線**                      | 序列存取                                     | 初始裝置組態                                                                  | 是/否 |
 |   |   |  |  |
-| **設定和註冊裝置**          | Data 0 網路設定                           | Data 0 IP 位址:</br>子網路遮罩:</br>閘道:</br>主要 DNS 伺服器:</br>主要 NTP 伺服器:</br>Web proxy 伺服器 IP/FQDN (選用):</br>Web proxy 連接埠:|        |
+| **設定和註冊裝置**          | Data 0 網路設定                           | Data 0 IP 位址 ︰</br>子網路遮罩 ︰</br>閘道 ︰</br>主要 DNS 伺服器 ︰</br>主要 NTP 伺服器 ︰</br>Web proxy 伺服器 IP/FQDN （選用） ︰</br>Web proxy 連接埠 ︰|        |
 |                                        | 裝置系統管理員密碼                     | 密碼必須介於 8 到 15 個字元之間，包含小寫字母、大寫字母、數字和特殊字元。 |        |
 |                                        | StorSimple Snapshot Manager 密碼              | 密碼必須是 14 或 15 個字元，包含小寫字母、大寫字母、數字和特殊字元。|        |
 |                                        | 服務註冊金鑰                          | 此金鑰是從 Azure 傳統入口網站產生。    |        |
@@ -78,13 +78,13 @@
 | **完成最小裝置設定**          | 裝置的易記名稱                     | 這是裝置的描述性名稱。 |        |
 |                                        | 時區                                          | 裝置將針對所有排程的操作使用這個時區。  |        |
 |                                        | 次要 DNS 伺服器                              | 這是必要設定。                                  |        |
-|                                        | 網路介面：Data 0 控制器固定 IP                                     | 這些 IP 必須可路由傳送到網際網路。</br>控制器 0 固定 IP 位址:</br>控制器 1 固定 IP 位址:|
+|                                        | 網路介面：Data 0 控制器固定 IP                                     | 這些 IP 必須可路由傳送到網際網路。</br>控制器 0 固定 IP 位址 ︰</br>控制器 1 固定 IP 位址 ︰|
 |   |   |  |  |
-| **其他的網路介面設定**  | 網路介面: Data 1</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途: 定域機組/iSCSI 無法使用</br>IP 位址:</br>子網路遮罩:</br>閘道:|
-|                                        | 網路介面: Data 2</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途: 定域機組/iSCSI 無法使用</br>IP 位址:</br>子網路遮罩:</br>閘道:|
-|                                        | 網路介面: 資料 3</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途: 定域機組/iSCSI 無法使用</br>IP 位址:</br>子網路遮罩:</br>閘道:|
-|                                        | 網路介面: Data 4</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途: 定域機組/iSCSI 無法使用</br>IP 位址:</br>子網路遮罩:</br>閘道:|
-|                                        | 網路介面: 資料 5</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途: 定域機組/iSCSI 無法使用</br>IP 位址:</br>子網路遮罩:</br>閘道:|
+| **其他的網路介面設定**  | 網路介面 ︰ Data 1</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途 ︰ 定域機組/iSCSI 無法使用</br>IP 位址 ︰</br>子網路遮罩 ︰</br>閘道 ︰|
+|                                        | 網路介面 ︰ Data 2</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途 ︰ 定域機組/iSCSI 無法使用</br>IP 位址 ︰</br>子網路遮罩 ︰</br>閘道 ︰|
+|                                        | 網路介面 ︰ 資料 3</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途 ︰ 定域機組/iSCSI 無法使用</br>IP 位址 ︰</br>子網路遮罩 ︰</br>閘道 ︰|
+|                                        | 網路介面 ︰ Data 4</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途 ︰ 定域機組/iSCSI 無法使用</br>IP 位址 ︰</br>子網路遮罩 ︰</br>閘道 ︰|
+|                                        | 網路介面 ︰ 資料 5</br>如果已啟用 iSCSI，請勿設定閘道。      | 用途 ︰ 定域機組/iSCSI 無法使用</br>IP 位址 ︰</br>子網路遮罩 ︰</br>閘道 ︰|
 |   |   |  |  |
 | **建立磁碟區容器**                      | 磁碟區容器名稱：                            | 容器名稱                                                                                                                                                 |        |
 |                                        | Azure 儲存體帳戶：                            | 與此磁碟區容器相關的儲存體帳戶名稱和存取金鑰                                                                                              |        |
@@ -132,18 +132,18 @@
 在您開始前，請確定：
 
 - 資料中心防火牆中的連接埠已開放，以允許 iSCSI 和雲端流量中所述 [StorSimple 裝置的網路需求](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)。
-- 資料中心內的裝置可以連線到外部網路。 執行下列命令 [Windows PowerShell 4.0](http://www.microsoft.com/download/details.aspx?id=40855) cmdlet (下表顯示) 來驗證外部網路的連線。 在可連線至 Azure 和您將部署 StorSimple 裝置的電腦上 (於資料中心網路內) 執行此驗證。  
+- 資料中心內的裝置可以連線到外部網路。 執行下列命令 [Windows PowerShell 4.0](http://www.microsoft.com/download/details.aspx?id=40855) cmdlet （下表顯示） 來驗證外部網路的連線。 在可連線至 Azure 和您將部署 StorSimple 裝置的電腦上 (於資料中心網路內) 執行此驗證。  
 
 | 針對此參數…       | 檢查有效性...                                                                                                                                                                                | 執行這些命令/Cmdlet。                                                                                                                                                             |
 |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **IP**</br>**子網路**</br>**閘道** | 這是有效的 IPv4 或 IPv6 位址?</br>這是有效的子網路嗎?</br>這是有效的閘道嗎?</br>這是重複的 IP 網路上?                                                                          | `ping ip`</br>`arp -a`</br>`ping` 和 `arp` 命令應該會失敗，這指出在資料中心的網路中沒有裝置使用此 IP。
+| **IP**</br>**子網路**</br>**閘道器** | 這是有效的 IPv4 或 IPv6 位址？</br>這是有效的子網路嗎？</br>這是有效的閘道嗎？</br>這是重複的 IP 網路上？                                                                          | `ping ip`</br>`arp -a`</br> `ping` 和 `arp` 命令應該會失敗，表示正在使用此 IP 資料中心網路中沒有任何裝置。
 |                           |                                                                                                                                                                    |                                                                                                                                                                                         |
-| **DNS**                       | 這是有效的 DNS 且可以解析 Azure URL 嗎？                                                                                                                    | `Resolve-DnsName -Name www.bing.com -Server <DNS server IP address>` </br>可使用的替代命令是：</br>`nslookup --dns-ip=<DNS server IP address> www.bing.com`      |
+| **DNS**                       | 這是有效的 DNS 且可以解析 Azure URL 嗎？                                                                                                                    | `Resolve-DnsName -Name www.bing.com -Server <DNS server IP address>` </br>可以使用替代命令為 ︰</br>`nslookup --dns-ip=<DNS server IP address> www.bing.com`      |
 |                           | 檢查連接埠 53 是否開啟。 只有在您為裝置使用外部 DNS 時才適用。 內部 DNS 應該會自動解析外部 URL。  | `Test-Port -comp dc1 -port 53 -udp -UDPtimeout 10000`  </br>[此 cmdlet 的詳細資訊](http://learn-powershell.net/2011/02/21/querying-udp-ports-with-powershell/)|
 |                           |                                                                                                                                                                    |                                                                                                                                                                                         |
 | **NTP**                       | 我們會在 NTP 伺服器輸入時觸發時間同步處理。 請在您輸入 `time.windows.com` 或公用時間伺服器時檢查 UDP 連接埠 123 是否開啟)。 | [下載並使用這個指令碼](https://gallery.technet.microsoft.com/scriptcenter/Get-Network-NTP-Time-with-07b216ca)。                                                                                                                                                           |
 |                           |                                                                                                                                                                    |                                                                                                                                                                                         |
-| **Proxy (選用)**          | 這是有效的 Proxy URI 和連接埠嗎？ </br> 是正確的驗證模式?                                                                                                                                | <code>wget http://bing.com & #124;% {$_.} StatusCode</code></br>設定 web proxy 之後立即執行此命令。 如果傳回狀態碼 200，則表示連接成功。                                                                                                                                 |
+| **Proxy (選用)**          | 這是有效的 Proxy URI 和連接埠嗎？ </br> 是正確的驗證模式？                                                                                                                                | <code>wget http://bing.com &#124; % {$_.StatusCode}</code></br>設定 web proxy 之後立即執行此命令。 如果傳回狀態碼 200，則表示連接成功。                                                                                                                                 |
 |                           | 流量是否可透過 Proxy 路由？                                                                                                                                 | 在裝置上設定 Proxy 之後，請執行 DNS 驗證、NTP 檢查 或 HTTP 檢查。 這會清楚的反映流量是否在 Proxy 或其他地方遭到封鎖。                                                                                                                      |
 |                           |                                                                                                                                                                    |                                                                                                                                                                                         |
 | **註冊**              | 檢查輸出 TCP 連接埠 443、80、9354 是否開啟。                                                                                                                |  `Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[測試 NetConnection 指令程式的詳細資訊](https://technet.microsoft.com/library/dn372891.aspx)                                                                           |
@@ -165,7 +165,7 @@ StorSimple Manager 服務可以管理多個 StorSimple 裝置。 針對第一次
 > [AZURE.IMPORTANT] 如果您未啟用自動建立儲存體帳戶與您的服務，您必須建立至少一個儲存體帳戶之後您已成功建立服務。 當您建立磁碟區容器時，將會使用此儲存體帳戶。
 >
 > 如果您未自動建立儲存體帳戶，請移至 [設定新的儲存體帳戶服務](#configure-a-new-storage-account-for-the-service) 如需詳細指示。
-> 如果您啟用自動建立儲存體帳戶，請移至 [步驟 2: 取得服務註冊金鑰](#step-2:-get-the-service-registration-key)。
+> 如果您啟用自動建立儲存體帳戶，請移至 [步驟 2 ︰ 取得服務註冊金鑰](#step-2:-get-the-service-registration-key)。
 
 ## 步驟 2：取得服務註冊金鑰
 
@@ -178,7 +178,7 @@ StorSimple Manager 服務可以管理多個 StorSimple 裝置。 針對第一次
 
 ## 步驟 3：透過 Windows PowerShell for StorSimple 設定和註冊裝置
 
-> [AZURE.IMPORTANT] 之前執行這項設定，請拔除所有網路介面 DATA 0 以外 (主動和被動) 控制器。
+> [AZURE.IMPORTANT] 之前執行這項設定，請拔除所有網路介面 DATA 0 以外 （主動和被動） 控制器。
 
 您可以使用 Windows PowerShell for StorSimple 來完成 StorSimple 裝置的初始安裝，如下列程序所述。 您必須使用終端機模擬軟體來完成這個步驟。 如需詳細資訊，請參閱 [使用 PuTTY 來連接至裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console)。
 
@@ -290,4 +290,5 @@ StorSimple Manager 服務可以管理多個 StorSimple 裝置。 針對第一次
 - 設定 [虛擬裝置](storsimple-virtual-device.md)。
 
 - 使用 [StorSimple Manager 服務](https://msdn.microsoft.com/library/azure/dn772396.aspx) 來管理您的 StorSimple 裝置。
+
 

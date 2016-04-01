@@ -21,7 +21,7 @@
         using Microsoft.WindowsAzure.MobileServices;
 
 
-4. 註解化或刪除定義現有的項目集合，然後取消註解或新增下列幾行取代 _& lt; 資料 (& s) gt;_ 與 `MobileServiceClient` 時將專案連線至行動服務新增到 App.xaml.cs 檔案: 
+4. 註解化或刪除定義現有的項目集合，然後取消註解或新增下列幾行取代 _& lt; 資料 （& s) gt;_ 與 `MobileServiceClient` 時將專案連線至行動服務新增到 App.xaml.cs 檔案 ︰ 
 
         private MobileServiceCollection<TodoItem, TodoItem> items;
         private IMobileServiceTable<TodoItem> todoTable = 
@@ -30,14 +30,14 @@
     此程式碼會建立行動服務感知繫結集合 (項目)，和資料庫資料表 (todoTable) 的 Proxy 類別。 
 
 
-4. 在 **InsertTodoItem** 方法中，移除設定的程式碼行 **TodoItem.Id** 屬性中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行: 
+4. 在 **InsertTodoItem** 方法中，移除設定的程式碼行 **TodoItem.Id** 屬性中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行 ︰ 
 
         await todoTable.InsertAsync(todoItem);
 
 
     此程式碼會將新的項目插入資料表中。 
 
-5. 取代 **RefreshTodoItems** 方法取代下列程式碼: 
+5. 取代 **RefreshTodoItems** 方法取代下列程式碼 ︰ 
 
         private async void RefreshTodoItems()
         {
@@ -64,10 +64,11 @@
 
     此設定的繫結至集合中的項目 `todoTable`, ，其中包含的所有 **TodoItem** 從行動服務傳回的物件。 如果您在執行查詢時發生問題，系統會引發訊息方塊來顯示錯誤。 
 
-6. 在 **UpdateCheckedTodoItem** 方法中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行: 
+6. 在 **UpdateCheckedTodoItem** 方法中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行 ︰ 
 
         await todoTable.UpdateAsync(item);
 
     這會將項目更新傳送到行動服務。 
 
 應用程式現已更新為使用行動服務進行後端儲存，我們可以開始在行動服務中測試應用程式。
+

@@ -116,3 +116,4 @@ StorSimple Manager 服務 **備份類別目錄** 頁面會顯示產生手動或�
 - 了解如何 [使用備份類別目錄將裝置還原備份集](storsimple-restore-from-backup-set.md)。
 
 - 了解如何 [使用 StorSimple Manager 服務來管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+

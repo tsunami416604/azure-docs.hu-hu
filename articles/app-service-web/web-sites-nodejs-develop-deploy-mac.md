@@ -22,8 +22,8 @@
 - [.Net](web-sites-dotnet-get-started.md)
 - [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
-- [PHP-Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP-FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
 本教學課程示範如何建立簡單的 [Node.js](http://nodejs.org) 應用程式並部署至 [web 應用程式](app-service-web-overview.md) 中 [Azure App Service](../app-service/app-service-value-prop-what-is.md) 使用 [Git](http://git-scm.com)。 本教學課程中的指示可運用在任何足以執行 Node.js 應用程式的作業系統上。
@@ -116,7 +116,7 @@
 
 2. 使用文字編輯器來建立新的檔名為 **server.js** 中 *helloworld* 目錄。
 
-2. 下列程式碼複製到 **server.js** 檔案，並儲存檔案:
+2. 下列程式碼複製到 **server.js** 檔案，並儲存檔案 ︰
 
         var http = require('http')
         var port = process.env.PORT || 1337;
@@ -187,7 +187,7 @@
 
 2. 儲存檔案。
 
-2. 從命令列中，將目錄變更至 **helloworld** 目錄，然後執行下列命令:
+2. 從命令列中，將目錄變更至 **helloworld** 目錄，然後執行下列命令 ︰
 
         git add .
         git commit -m "changing to hello azure"
@@ -224,4 +224,5 @@ Node.js 提供您豐富的模組生態系統，可供您的應用程式使用。
 [deployment-part]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-part.png
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
+
 

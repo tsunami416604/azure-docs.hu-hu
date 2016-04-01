@@ -23,9 +23,9 @@
 
 ## 建立新的資料庫和一組檔案群組
 
-- [建立新的資料庫](https://technet.microsoft.com/library/ms176061.aspx) (如果不存在)
+- [建立新的資料庫](https://technet.microsoft.com/library/ms176061.aspx) （如果不存在）
 - 將資料庫檔案群組新增至將用來保留資料分割實體檔案的資料庫
-- 注意: 這可以使用 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) 如果是新或 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) 如果資料庫已經存在
+- 注意 ︰ 這可以使用 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) 如果是新或 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) 如果資料庫已經存在
 
 - 將一或多個檔案 (視需要) 新增至每個資料庫檔案群組
 
@@ -58,7 +58,7 @@
 
 **若要建立資料分割資料表，您需要：**
 
-- [建立資料分割函數](https://msdn.microsoft.com/library/ms187802.aspx) 以定義的值/界限包含在每個個別資料分割資料表，例如，2013 年 some\_datetime\_field 限制資料分割範圍:
+- [建立資料分割函數](https://msdn.microsoft.com/library/ms187802.aspx) 以定義的值/界限包含在每個個別資料分割資料表，例如，2013 年 some\_datetime\_field 限制資料分割範圍 ︰
 
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
@@ -66,7 +66,7 @@
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-- [建立資料分割配置](https://msdn.microsoft.com/library/ms179854.aspx) ，將對應的資料分割函數中的每個資料分割範圍到實體檔案群組，例如:
+- [建立資料分割配置](https://msdn.microsoft.com/library/ms179854.aspx) ，將對應的資料分割函數中的每個資料分割範圍到實體檔案群組，例如 ︰
 
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -84,7 +84,7 @@
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-- [建立資料分割的資料表](https://msdn.microsoft.com/library/ms174979.aspx)(s) 根據您的資料結構描述，並指定資料分割配置和條件約束欄位用來分割資料表，例如:
+- [建立資料分割的資料表](https://msdn.microsoft.com/library/ms174979.aspx)(s) 根據您的資料結構描述，並指定資料分割配置和條件約束欄位用來分割資料表，例如 ︰
 
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
@@ -95,7 +95,7 @@
 
 - 您可以使用 BCP、 BULK INSERT 或其他方法例如 [SQL Server 移轉精靈](http://sqlazuremw.codeplex.com/)。 所提供的範例會使用 BCP 方法。
 
-- [改變資料庫](https://msdn.microsoft.com/library/bb522682.aspx) 交易記錄配置變更為 BULK_LOGGED，以便記錄，例如額外負荷降至最低:
+- [改變資料庫](https://msdn.microsoft.com/library/bb522682.aspx) 交易記錄配置變更為 BULK_LOGGED，以便記錄，例如額外負荷降至最低 ︰
 
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
 
@@ -168,7 +168,7 @@
 
 - 如果您會從多個資料表擷取資料來進行模型化，請在聯結索引鍵上建立索引來提升聯結效能。
 
-- [建立索引](https://technet.microsoft.com/library/ms188783.aspx) (叢集或非叢集) 的目標設定相同的檔案群組，每個資料分割，例如:
+- [建立索引](https://technet.microsoft.com/library/ms188783.aspx) （叢集或非叢集） 的目標設定相同的檔案群組，每個資料分割，例如 ︰
 
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
@@ -181,5 +181,6 @@
 
 ## 進階分析程序和技術實務範例
 
-如需 Cortana 分析程序使用公用資料集的端對端逐步解說範例，請參閱 [作用中的 Cortana 分析程序: 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
+如需 Cortana 分析程序使用公用資料集的端對端逐步解說範例，請參閱 [作用中的 Cortana 分析程序 ︰ 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
  
+

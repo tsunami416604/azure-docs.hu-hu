@@ -81,7 +81,7 @@ Benefitsolver 應用程式需要特定的格式，會要求您新增自訂屬性
 
     ![設定單一登入](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式設定** 頁面上，執行下列步驟:
+3.  在 **設定應用程式設定** 頁面上，執行下列步驟 ︰
 
     ![設定 App 設定](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
 
@@ -113,12 +113,12 @@ Benefitsolver 應用程式需要特定的格式，會要求您新增自訂屬性
 
     ![屬性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "Attributes")
 
-    |屬性名稱|屬性值|
-    |---|---|
-    |ClientID|您需要向 Benefitsolver 支援小組取得這個值。|
-    |ClientKey|您需要向 Benefitsolver 支援小組取得這個值。|
-    |LogoutURL|您需要向 Benefitsolver 支援小組取得這個值。|
-    |EmployeeID|您需要向 Benefitsolver 支援小組取得這個值。|
+  	|屬性名稱|屬性值|
+  	|---|---|
+  	|ClientID|您需要向 Benefitsolver 支援小組取得這個值。|
+  	|ClientKey|您需要向 Benefitsolver 支援小組取得這個值。|
+  	|LogoutURL|您需要向 Benefitsolver 支援小組取得這個值。|
+  	|EmployeeID|您需要向 Benefitsolver 支援小組取得這個值。|
 
     1.  每個資料列上表中，按一下 [ **新增使用者屬性**。
     2.  在 **屬性名稱** 文字方塊中，輸入該資料列所顯示的屬性名稱。
@@ -150,4 +150,5 @@ Benefitsolver 的使用者必須由 Benefitsolver 支援小組以手動建立。
     ![是](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

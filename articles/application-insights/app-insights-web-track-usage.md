@@ -33,13 +33,13 @@ Visual Studio Application Insights 提供兩種使用情況追蹤層級：
 
 ## 我的 Web 應用程式的熱門程度為何？
 
-登入 [Azure 入口網站][portal], 、 瀏覽至您的應用程式的資源，並按一下 [使用情況:
+登入 [Azure 入口網站][portal], 、 瀏覽至您的應用程式的資源，並按一下 [使用情況 ︰
 
 ![](./media/app-insights-web-track-usage/14-usage.png)
 
-* **使用者:** 圖表的時間範圍內不同作用中使用者的計數。 
-* **工作階段:** 的作用中工作階段計數
-* **頁面檢視** 計算對 trackpageview ()，通常在每個網頁中呼叫一次呼叫的數目。
+* **使用者 ︰** 圖表的時間範圍內不同作用中使用者的計數。 
+* **工作階段 ︰** 的作用中工作階段計數
+* **頁面檢視** 計算對 trackpageview （），通常在每個網頁中呼叫一次呼叫的數目。
 
 逐一點選任何圖表以查看詳細資料。 請注意，您可以變更圖表的時間範圍。
 
@@ -376,4 +376,5 @@ Application Insights 會努力試著自動判斷和分類綜合流量並適當�
 [windows]: app-insights-windows-get-started.md
 
  
+
 

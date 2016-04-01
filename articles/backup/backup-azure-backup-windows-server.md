@@ -9,13 +9,13 @@
    keywords="windows server backup; backup windows server"/>
 
 <tags
-   ms.service="backup 」
-   ms.workload= 「 儲存體的備份復原的 」
+   ms.service="backup"
+   ms.workload="storage-backup-recovery"
      ms.tgt_pltfrm="na"
      ms.devlang="na"
      ms.topic="article"
-     ms.date="11/17/2015 」
-     ms.author="jimpark 」。「 aashishr 」 / >
+     ms.date="11/17/2015"
+     ms.author="jimpark"; "aashishr"/>
 
 # 將 Windows Server 或 Windows 用戶端檔案和資料夾備份至 Azure
 使用這個簡單程序即可將 Windows 檔案與資料夾備份至 Azure。 如果您尚未這樣做，請完成 [必要條件](backup-configure-vault.md#before-you-start) 備妥環境來備份您的 Windows 電腦，再繼續進行。
@@ -29,7 +29,7 @@
 
     ![Windows Server 備份排程](./media/backup-azure-backup-windows-server/schedulebackup.png)
 
-3. 選取您想要備份的項目。 在 Windows Server/Windows 用戶端 (也就是 azure 備份 不含 System Center Data Protection Manager) 可讓您保護檔案和資料夾。
+3. 選取您想要備份的項目。 在 Windows Server/Windows 用戶端 （也就是 azure 備份 不含 System Center Data Protection Manager) 可讓您保護檔案和資料夾。
 
     ![Windows Server 備份項目](./media/backup-azure-backup-windows-server/items.png)
 
@@ -51,4 +51,5 @@
 - [管理 Windows Server 或 Windows 用戶端](backup-azure-manage-windows-server.md)
 - [從 Azure 還原 Windows Server 或 Windows 用戶端](backup-azure-restore-windows-server.md)
 - [Azure 備份常見問題集](backup-azure-backup-faq.md)
+
 

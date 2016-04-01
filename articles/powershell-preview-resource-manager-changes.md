@@ -103,3 +103,4 @@ Get AzureRmResourceProvider 指令程式。
 我們已新增對於 Azure 資源管理員的原則支援。 這個版本中已新增可用來管理原則的 PowerShell Cmdlet。 如需原則的詳細資訊，請參閱 
 [使用原則來管理資源，並控制存取](resource-manager-policy.md)。 
 
+

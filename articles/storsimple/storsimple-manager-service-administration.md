@@ -100,8 +100,8 @@ StorSimple Manager 服務 UI 的瀏覽階層顯示於下表。
 |設定警示設定|StorSimple Manager 服務 → 裝置 → 設定|[檢視和管理 StorSimple 警示](storsimple-manage-alerts.md)|
 |為 StorSimple 裝置設定 CHAP|StorSimple Manager 服務 → 裝置 → 設定|[為 StorSimple 裝置設定 CHAP](storsimple-configure-chap.md)|
 |新增備份原則</br>新增或修改排程</br>刪除備份原則</br>進行手動備份</br>建立具有多個磁碟區和排程的自訂備份原則|StorSimple Manager 服務 → 裝置 → 備份原則|[管理備份原則](storsimple-manage-backup-policies.md)|
-|停止裝置控制器</br>重新啟動裝置控制器</br>關閉裝置控制器</br>將裝置重設為原廠預設</br>(上述項目僅適用於內部部署裝置)|StorSimple Manager 服務 → 裝置 → 維護|[管理 StorSimple 裝置控制器](storsimple-manage-device-controller.md)|
-|深入了解 StorSimple 硬體元件</br>監視硬體狀態</br>(上述項目僅適用於內部部署裝置)|StorSimple Manager 服務 → 裝置 → 維護|[監視硬體元件](storsimple-monitor-hardware-status.md)|
+|停止裝置控制器</br>重新啟動裝置控制器</br>關閉裝置控制器</br>將裝置重設為原廠預設</br>（上述項目僅適用於內部部署裝置）|StorSimple Manager 服務 → 裝置 → 維護|[管理 StorSimple 裝置控制器](storsimple-manage-device-controller.md)|
+|深入了解 StorSimple 硬體元件</br>監視硬體狀態</br>（上述項目僅適用於內部部署裝置）|StorSimple Manager 服務 → 裝置 → 維護|[監視硬體元件](storsimple-monitor-hardware-status.md)|
 |建立支援封裝|StorSimple Manager 服務 → 裝置 → 維護|[建立及管理支援封裝](storsimple-create-manage-support-package.md)|
 |安裝軟體更新|StorSimple Manager 服務 → 裝置 → 維護|[更新您的裝置](storsimple-update-device.md)|
 
@@ -115,4 +115,5 @@ StorSimple Manager 服務 UI 的瀏覽階層顯示於下表。
 如果您不能解決問題，且您必須建立服務要求，請參閱：
 
 -  [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md)
+
 

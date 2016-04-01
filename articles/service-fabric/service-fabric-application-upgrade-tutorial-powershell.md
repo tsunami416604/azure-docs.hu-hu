@@ -52,7 +52,7 @@ Service Fabric 監視輪流升級可以讓應用程式系統管理員設定 Serv
 <CodePackageName="Code"Version="2.0">
 ```
 
-現在，我們需要更新 *ApplicationManifest.xml* 檔案 (下找到 **VisualObjects** 專案底下 **VisualObjects** 方案) 使用 2.0 版 **VisualObjects.ActorService** 專案，並從 1.0.0.0 也更新為 2.0.0.0 的應用程式版本。 現在，對應中的程式行會 *ApplicationManifest.xml* 應該如下所示:
+現在，我們需要更新 *ApplicationManifest.xml* 檔案 (下找到 **VisualObjects** 專案底下 **VisualObjects** 方案) 使用 2.0 版 **VisualObjects.ActorService** 專案，並從 1.0.0.0 也更新為 2.0.0.0 的應用程式版本。 現在，對應中的程式行會 *ApplicationManifest.xml* 應該如下所示 ︰
 
 ```xml
 <ApplicationManifestxmlns:xsd="http://www.w3.org/2001/XMLSchema"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"ApplicationTypeName="VisualObjects"ApplicationTypeVersion="2.0.0.0"xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -64,9 +64,9 @@ Service Fabric 監視輪流升級可以讓應用程式系統管理員設定 Serv
 現在建置專案，選取只 **ActorService** 專案並以滑鼠右鍵按一下並選取 Visual Studio 中的組建 (如果您選取所有重建時，您可能必須更新的版本為其他專案也在其 *ServiceManifest.xml* 和 *ApplicationManifest.xml*, ，因為程式碼已變更)。 現在讓我們封裝更新的應用程式，以滑鼠右鍵按一下 *VisualObjectsApplication*, 、 選取 Service Fabric] 功能表，然後選擇 [封裝。 這應該會建立可部署的應用程式封裝。  更新的應用程式已準備好進行部署。
 
 
-## 步驟 3: 決定健康原則，並升級參數
+## 步驟 3 ︰ 決定健康原則，並升級參數
 
-請讓您熟悉 [應用程式升級參數](service-fabric-application-upgrade-parameters.md) 和 [升級程序](service-fabric-application-upgrade.md) 以充分了解各種升級參數、 逾時和健康狀態準則套用。 此逐步解說中，我們會讓服務健康狀態評估準則的預設值 (和建議值) 應該是所有服務和執行個體，這表示 _良好_ 在升級之後。  讓我們不過增加 *HealthCheckStableDuration* 為 60 秒 (如此服務至少 20 秒之前升級繼續至下一個升級網域是狀況良好)。  我們也要將 *UpgradeDomainTimeout* 設為 1200 秒， *UpgradeTimeout* 設為 3000 秒。 最後，我們也將 *UpgradeFailureAction* 回復在升級期間遇到任何問題時，以要求 Service Fabric 回復為舊版應用程式。 因此，開始升級時我們指定的升級參數 (在步驟 4) 如下所示：
+請讓您熟悉 [應用程式升級參數](service-fabric-application-upgrade-parameters.md) 和 [升級程序](service-fabric-application-upgrade.md) 以充分了解各種升級參數、 逾時和健康狀態準則套用。 此逐步解說中，我們會讓服務健康狀態評估準則的預設值 （和建議值） 應該是所有服務和執行個體，這表示 _良好_ 在升級之後。  讓我們不過增加 *HealthCheckStableDuration* 為 60 秒 （如此服務至少 20 秒之前升級繼續至下一個升級網域是狀況良好）。  我們也要將 *UpgradeDomainTimeout* 設為 1200 秒， *UpgradeTimeout* 設為 3000 秒。 最後，我們也將 *UpgradeFailureAction* 回復在升級期間遇到任何問題時，以要求 Service Fabric 回復為舊版應用程式。 因此，開始升級時我們指定的升級參數 (在步驟 4) 如下所示：
 
 FailureAction = Rollback
 
@@ -81,7 +81,7 @@ UpgradeTimeout = 3000
 
 現在，應用程式已建置並且準備好進行升級。 如果您開啟 PowerShell 視窗，系統管理員，並輸入 **Get-servicefabricapplication**, ，它應該會讓您知道它是應用程式類型 1.0.0.0 **VisualObjects** 已部署。  應用程式封裝儲存在下列的相對路徑，您已經解壓縮 Service Fabric SDK- *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*。 您應該會在該目錄中找到 "Package" 資料夾 - 這是應用程式封裝儲存的位置。 請檢查時間戳記以確保它是最新組建 (您也可能需要適當地修改路徑)。
 
-現在讓我們將更新的應用程式封裝複製到 Service Fabric ImageStore (Service Fabric 在其中儲存應用程式封裝)。 參數 *ApplicationPackagePathInImageStore* 會通知 Service Fabric 可以在哪裡找到應用程式封裝。 我們有使用下列命令 (您可能需要再次適當地修改路徑)，以將更新的應用程式放在 「 VisualObjects\_V2 」。
+現在讓我們將更新的應用程式封裝複製到 Service Fabric ImageStore (Service Fabric 在其中儲存應用程式封裝)。 參數 *ApplicationPackagePathInImageStore* 會通知 Service Fabric 可以在哪裡找到應用程式封裝。 我們有使用下列命令 （您可能需要再次適當地修改路徑），以將更新的應用程式放在 「 VisualObjects\_V2 」。
 
 ```powershell
 Copy-ServiceFabricApplicationPackage  -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package
@@ -107,7 +107,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 請注意，應用程式名稱中所述的 *ApplicationManifest.xml* 檔案。 Service Fabric 會使用這個名稱來識別要升級哪一個應用程式。 如果您設定的逾時太短，您可能會遇到失敗訊息，指出此問題。 請參閱疑難排解章節，或增加逾時。
 
-現在，應用程式升級會繼續進行，您可以監視其使用 Service Fabric 總管或使用下列 PowerShell 命令: **Get-servicefabricapplicationupgrade fabric: / VisualObjects**。
+現在，應用程式升級會繼續進行，您可以監視其使用 Service Fabric 總管或使用下列 PowerShell 命令 ︰ **Get-servicefabricapplicationupgrade fabric: / VisualObjects**。
 
 幾分鐘後，使用上述 PowerShell 命令的狀態應該會顯示已升級所有升級網域 (完成)。 而且，您應該會在瀏覽器視窗中發現該視覺物件現在已經開始旋轉！
 
@@ -125,5 +125,6 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 了解如何使用進階的功能，同時升級您的應用程式藉由參考 [進階主題](service-fabric-application-upgrade-advanced.md)。
 
 藉由參考中的步驟修正應用程式升級的一般問題 [疑難排解應用程式升級 ](service-fabric-application-upgrade-troubleshooting.md)。
+
 
 

@@ -25,7 +25,7 @@
 
 > [AZURE.SELECTOR]
 - [.NET 後端](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [Javascript 後端](mobile-services-schedule-recurring-tasks.md)
+- [JavaScript 後端](mobile-services-schedule-recurring-tasks.md)
 
 本主題將示範如何在 Azure 傳統入口網站中使用作業排程器功能，以根據您所定義的排程來定義要執行的伺服器指令碼。 在此情況下，指令碼會定期向遠端服務 (在此案例中為 Twitter) 查詢，並將結果儲存在新資料表中。 可排定的其他一些定期工作包括：
 
@@ -43,7 +43,7 @@
 
 接下來，您必須建立要儲存推文的新資料表。
 
-2. 在 [Azure 傳統入口網站]，按一下 [ **資料** 您的行動服務] 索引標籤，然後按一下 [ **+ 建立**。
+2. 在 [Azure classic portal], ，按一下 [ **資料** 您的行動服務] 索引標籤，然後按一下 [ **+ 建立**。
 
 3. 在 **資料表名稱** 類型 _更新_, ，然後按一下核取按鈕。
 
@@ -59,7 +59,7 @@
 
     這會建立名為的新工作 **getUpdates**。
 
-4. 按一下您剛才建立的新工作中，按一下 **指令碼** ] 索引標籤上，並將預留位置函數 **getUpdates** 為下列程式碼:
+4. 按一下您剛才建立的新工作中，按一下 **指令碼** ] 索引標籤上，並將預留位置函數 **getUpdates** 為下列程式碼 ︰
 
         var updatesTable = tables.getTable('Updates');
         var request = require('request');
@@ -153,7 +153,7 @@
 
 ## <a name="nextsteps"> </a>另請參閱
 
-* [行動服務伺服器指令碼參考]
+* [Mobile Services server script reference]
   <br/>進一步了解註冊和使用伺服器指令碼。
 
 <!-- Anchors. -->
@@ -171,4 +171,5 @@
 [Register your apps for Twitter login with Mobile Services]: /develop/mobile/how-to-guides/register-for-twitter-authentication
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+
 

@@ -262,7 +262,7 @@ git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 }
 ```
 
->[AZURE.NOTE] 參數 `storageAccountName` 必須不存在的唯一儲存體帳戶名稱符合 Microsoft Azure 儲存體帳戶 (小寫字母和數字只) 的命名需求。  這個儲存體帳戶將建立來做為部署程序的一部分。
+>[AZURE.NOTE] 參數 `storageAccountName` 必須不存在的唯一儲存體帳戶名稱符合 Microsoft Azure 儲存體帳戶 （小寫字母和數字只） 的命名需求。  這個儲存體帳戶將建立來做為部署程序的一部分。
 
 填寫 Azure 部署名稱、資源群組名稱、Azure 位置，以及儲存 JSON 檔案的資料夾。 然後執行以下命令：
 
@@ -348,7 +348,7 @@ New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -T
 
 部署期間以及部署結束之後，您可以檢查所有佈建期間所進行的要求，包括任何發生的錯誤。
 
-若要這樣做，請移至 [Azure 入口網站](https://portal.azure.com), ，並執行下列動作:
+若要這樣做，請移至 [Azure 入口網站](https://portal.azure.com), ，並執行下列動作 ︰
 
 - 在左側導覽列中，按一下 [ **瀏覽**, ，然後向下捲動並按一下 **資源群組**。
 - 選取剛建立的資源群組，會顯示 [資源群組] 刀鋒視窗。
@@ -489,7 +489,7 @@ $webclient.DownloadFile($url,$filePath)
 },
 ```
 
-注意: `totalMemberCountExcludingLast` 和 `totalMemberCount` 屬性必要的因為範本語言目前不含 「 數學 」 運算。
+注意 ︰ `totalMemberCountExcludingLast` 和 `totalMemberCount` 屬性必要的因為範本語言目前不含 「 數學 」 運算。
 
 關於範本語言的詳細資訊可以在 MSDN 中找到 [Azure 資源管理員範本語言](../resource-group-authoring-templates.md)。
 
@@ -527,13 +527,13 @@ $webclient.DownloadFile($url,$filePath)
 
 特別是，下列連結的範本將用於此部署：
 
-- **shared-resource.json**: 包含定義的整個部署中共用的所有資源。 例如，用來儲存 VM 的 OS 磁碟、虛擬網路及可用性設定組的儲存體帳戶。
-- **jumpbox-resources.json**: 部署 「 跳躍箱 」 VM 及所有相關的資源，例如網路介面、 公用 IP 位址，以及輸入的端點用來 SSH 到環境。
-- **node-resources.json**: 部署所有 Redis 叢集節點 Vm 和連接的資源 (網路介面卡、 私人 Ip 等。)。 此範本也會部署 VM 延伸模組 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼，在每一個節點上實際安裝並設定 Redis。  要叫用的指令碼會以 `commandToExecute` 屬性的 `machineSettings` 參數傳遞給這個範本。  所有的 Redis 叢集節點都可平行部署和執行指令碼，但有一個節點例外。  有一個節點在結束之前都需要加以儲存，因為 Redis 叢集設定只能在一個節點上執行，而它必須在所有節點都執行 Redis 伺服器之後完成：  這就是為什麼要執行的指令碼會傳遞給此範本的原因；最後一個節點需要執行些微不同的指令碼，該指令碼不只會安裝 Redis 伺服器，而且還會設定 Redis 叢集。
+- **shared-resource.json**︰ 包含定義的整個部署中共用的所有資源。 例如，用來儲存 VM 的 OS 磁碟、虛擬網路及可用性設定組的儲存體帳戶。
+- **jumpbox-resources.json**︰ 部署 「 跳躍箱 」 VM 及所有相關的資源，例如網路介面、 公用 IP 位址，以及輸入的端點用來 SSH 到環境。
+- **node-resources.json**︰ 部署所有 Redis 叢集節點 Vm 和連接的資源 (網路介面卡、 私人 Ip 等。)。 此範本也會部署 VM 延伸模組 (適用於 Linux 的自訂指令碼)，並叫用 bash 指令碼，在每一個節點上實際安裝並設定 Redis。  要叫用的指令碼會以 `commandToExecute` 屬性的 `machineSettings` 參數傳遞給這個範本。  所有的 Redis 叢集節點都可平行部署和執行指令碼，但有一個節點例外。  有一個節點在結束之前都需要加以儲存，因為 Redis 叢集設定只能在一個節點上執行，而它必須在所有節點都執行 Redis 伺服器之後完成：  這就是為什麼要執行的指令碼會傳遞給此範本的原因；最後一個節點需要執行些微不同的指令碼，該指令碼不只會安裝 Redis 伺服器，而且還會設定 Redis 叢集。
 
 讓我們深入 *如何* 這個最後一個範本，node-resources.json，使用，因為它是從範本開發角度來看最有趣。 要強調一個重要概念是單一範本檔案如何能夠部署單一資源類型的多個複本，而且每一個執行個體都能為必要設定指定唯一值。 這個概念稱為 **資源迴圈**。
 
-從主要的 azuredeploy.json 檔案叫用 node-resources.json 時，會從使用 `copy` 元素建立排序迴圈的資源內叫用該範本。 使用 `copy` 元素的資源會以 `copy` 元素的 `count` 參數中指定的次數來「複製」它自己。 對於需要在部署的資源，不同執行個體之間指定唯一值的所有設定 **copyindex ()** 函式可用來取得數值，指出目前的索引，在這個特定資源迴圈的建立。 在下列來自 azuredeploy.json 的片段中，您可以在為 Redis 叢集節點建立的多個 VM 上看見這個概念的運用：
+從主要的 azuredeploy.json 檔案叫用 node-resources.json 時，會從使用 `copy` 元素建立排序迴圈的資源內叫用該範本。 使用 `copy` 元素的資源會以 `copy` 元素的 `count` 參數中指定的次數來「複製」它自己。 對於需要在部署的資源，不同執行個體之間指定唯一值的所有設定 **copyindex （)** 函式可用來取得數值，指出目前的索引，在這個特定資源迴圈的建立。 在下列來自 azuredeploy.json 的片段中，您可以在為 Redis 叢集節點建立的多個 VM 上看見這個概念的運用：
 
 ```json
 {
@@ -654,7 +654,7 @@ $webclient.DownloadFile($url,$filePath)
 }
 ```
 
-您可以看見這個資源相依於資源已部署的 VM (`Microsoft.Compute/virtualMachines/vmMember<X>`, ，其中 `<X>` 是參數 `machineSettings.machineIndex`, ，這是傳遞給此指令碼使用的 VM 索引 **copyindex ()** 函式)。
+您可以看見這個資源相依於資源已部署的 VM (`Microsoft.Compute/virtualMachines/vmMember<X>`, ，其中 `<X>` 是參數 `machineSettings.machineIndex`, ，這是傳遞給此指令碼使用的 VM 索引 **copyindex （)** 函式)。
 
 讓您自己熟悉此部署內所含的其他檔案，就能了解如何利用 Azure 資源管理員範本，根據任何技術來組織和協調適用於多節點解決方案的複雜部署策略所需的所有詳細資料和最佳做法。 在此建議一種範本檔案建構方法，請自行決定是否採用，如下圖重點標示的部分：
 
@@ -669,4 +669,5 @@ $webclient.DownloadFile($url,$filePath)
 - 所有的後續部署工作 (產品安裝、設定等) 都會利用指令碼部署擴充功能以及建立每一種技術獨有的指令碼。
 
 如需詳細資訊，請參閱 [Azure 資源管理員範本語言](../resource-group-authoring-templates.md)。
+
 

@@ -26,7 +26,7 @@
 > [AZURE.NOTE] 只有在 Windows 為基礎的 HDInsight 叢集上，您可以使用查詢主控台。
 
 
-##<a id="prereq"></a>先決條件
+##<a id="prereq"></a>必要條件
 
 若要完成這篇文章中的步驟，您需要下列項目。
 
@@ -34,7 +34,7 @@
 
 * 現代網頁瀏覽器
 
-##<a id="run"></a> 使用查詢主控台執行 Hive 查詢
+##<a id="run"></a>使用查詢主控台執行 Hive 查詢
 
 1. 開啟網頁瀏覽器並瀏覽至 __https://CLUSTERNAME.azurehdinsight.net__, ，其中 __CLUSTERNAME__ 是您的 HDInsight 叢集名稱。 出現提示時，輸入您建立叢集時所使用的使用者名稱和密碼。
 
@@ -51,18 +51,18 @@
         STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    這些陳述式會執行下列動作：
+    這些陳述式將執行下列動作：
 
-    * **DROP TABLE**: 刪除資料表和資料檔，如果資料表已存在。
-    * **建立外部資料表**: 在 Hive 中建立新的 「 外部 」 資料表。 外部資料表只會在 Hive 中儲存資料表定義；資料會保留在原始位置。
+    * **DROP TABLE**︰ 刪除資料表和資料檔，如果資料表已存在。
+    * **建立外部資料表**︰ 在 Hive 中建立新的 「 外部 」 資料表。 外部資料表只會在 Hive 中儲存資料表定義；資料會保留在原始位置。
 
-    > [AZURE.NOTE] 當您預期以外部來源 (例如自動化的資料上傳程序)，或以其他 MapReduce 作業，更新基礎資料時，應該使用外部資料表，但您希望 Hive 查詢一律使用最新的資料。
+    > [AZURE.NOTE] 當您預期以外部來源 （例如自動化的資料上傳程序），或以其他 MapReduce 作業，更新基礎資料時，應該使用外部資料表，但您希望 Hive 查詢一律使用最新的資料。
     >
     > 捨棄外部資料表並 **不** 刪除資料，資料表定義。
 
-    * **ROW FORMAT**: 告訴的 Hive 如何格式化資料。 在此情況下，每個記錄中的欄位會以空格隔開。
-    * **STORED AS TEXTFILE LOCATION**: 告訴 Hive 資料的儲存 (example/data 目錄)，並儲存為文字
-    * **選取**: 選取的所有資料列計數，資料行 **t4** 包含值 **[錯誤]**。 這應該會傳回值為 **3** 因為有三個資料列包含此值。
+    * **ROW FORMAT**︰ 告訴的 Hive 如何格式化資料。 在此情況下，每個記錄中的欄位會以空格隔開。
+    * **STORED AS TEXTFILE LOCATION**︰ 告訴 Hive 資料的儲存 （example/data 目錄），並儲存為文字
+    * **選取**︰ 選取的所有資料列計數，資料行 **t4** 包含值 **[錯誤]**。 這應該會傳回值為 **3** 因為有三個資料列包含此值。
     * **像是 '%.log' INPUT__FILE__NAME** -告訴 Hive，我們應該只傳回從檔案中的資料。 記錄檔。 這將限制包含此資料的 sample.log 檔案搜尋，對於不符合我們所定義結構描述的其他範例資料檔案，會防止其傳回資料。
 
 2. 按一下 [ **提交**。  **作業工作階段** 在頁面底部應該會顯示工作詳細資料。
@@ -76,7 +76,7 @@
 
 若要瞭解有關使用 Hive 查詢主控台執行 Hive 工作的詳細資訊，請選取 **開始** 頂端的 [查詢主控台，然後使用所提供的範例。 每個範例都會逐步進行使用 Hive 分析資料的程序 (包括範例中所用之 HiveQL 陳述式的說明)。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 Hive 的一般資訊：
 
@@ -120,4 +120,5 @@
 
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
+
 

@@ -28,7 +28,7 @@
 
 若要開始使用，請按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。 這會帶您前往 API 管理發行者入口網站。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 >如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
@@ -110,7 +110,7 @@
 
 指定所需的組態之後, 按一下 **儲存**。
 
-![儲存][api-management-client-allowed-tenants-save]
+![Save][api-management-client-allowed-tenants-save]
 
 一旦儲存變更，在指定的 Azure Active Directory 中的使用者可以登入開發人員入口網站中的步驟 [開發人員入口網站使用 Azure Active Directory 帳戶登入][]。
 
@@ -227,5 +227,6 @@
 [Next steps]: #next-steps
 
 [Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
+
 
 

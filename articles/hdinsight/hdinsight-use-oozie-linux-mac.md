@@ -28,17 +28,17 @@ Apache Oozie 是可管理 Hadoop 工作的工作流程/協調系統。 它可與
 
 > [AZURE.NOTE] 另一個選項，以定義工作流程與 HDInsight 是 Azure Data Factory。 若要深入了解 Azure Data Factory，請參閱 [使用 Pig 和 Hive 搭配 Data Factory][azure-data-factory-pig-hive]。
 
-##先決條件
+##必要條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
-- **Azure 訂用帳戶**: 請參閱 [取得 Azure 免費試用](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)。
+- **Azure 訂用帳戶**︰ 請參閱 [取得 Azure 免費試用](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)。
 
-- **Azure CLI**: 請參閱 [安裝和設定 Azure CLI](xplat-cli-install.md)
+- **Azure CLI**︰ 請參閱 [安裝和設定 Azure CLI](xplat-cli-install.md)
 
-- **HDInsight 叢集**: 請參閱 [開始在 Linux 上使用 HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
+- **HDInsight 叢集**︰ 請參閱 [開始在 Linux 上使用 HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 
-- **Azure SQL database**: 這會建立使用這份文件中的步驟
+- **Azure SQL database**︰ 這會建立使用這份文件中的步驟
 
 ##範例工作流程
 
@@ -58,7 +58,7 @@ Apache Oozie 是可管理 Hadoop 工作的工作流程/協調系統。 它可與
 
 2.  Sqoop 動作會將新的 Hive 資料表內容匯出至 Azure SQL Database 中的資料表。 如需 Sqoop 的詳細資訊，請參閱 [搭配 HDInsight 使用 Hadoop Sqoop][hdinsight-use-sqoop]。
 
-> [AZURE.NOTE] 支援在 HDInsight 叢集上的 Oozie 版本，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能?][hdinsight-versions]。
+> [AZURE.NOTE] 支援在 HDInsight 叢集上的 Oozie 版本，請參閱 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能？][hdinsight-versions]。
 
 ##建立工作目錄
 
@@ -68,7 +68,7 @@ Oozie 的工作所需資源必須儲存在同一個目錄中。 這個範例會�
 
 > [AZURE.NOTE]  `-p` 參數使建立已經存在，如果路徑中的所有目錄。  **資料** 目錄會用來保存資料所使用 **useooziewf.hql** 指令碼。
 
-此外，也請執行以下命令，確保 Oozie 在執行 Hive 和 Sqoop 工作時可以模擬您的使用者帳戶。 取代 **USERNAME** 您登入名稱:
+此外，也請執行以下命令，確保 Oozie 在執行 Hive 和 Sqoop 工作時可以模擬您的使用者帳戶。 取代 **USERNAME** 您登入名稱 ︰
 
     sudo adduser USERNAME users
 
@@ -88,9 +88,9 @@ Oozie 的工作所需資源必須儲存在同一個目錄中。 這個範例會�
 
 1. 使用 SSH 連接至以 Linux 為基礎的 HDInsight 叢集：
 
-    * **Linux、 Unix 或 OS X 用戶端**: 請參閱 [使用 SSH 與以 Linux 為基礎從 Linux、 Unix 或 OS X 在 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * **Linux、 Unix 或 OS X 用戶端**︰ 請參閱 [使用 SSH 與以 Linux 為基礎從 Linux、 Unix 或 OS X 在 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-    * **Windows 用戶端**: 請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * **Windows 用戶端**︰ 請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 2. 使用以下命令建立新的檔案：
 
@@ -105,8 +105,8 @@ Oozie 的工作所需資源必須儲存在同一個目錄中。 這個範例會�
 
     指令碼中使用了兩個變數：
 
-    - **${hiveTableName}**: 將包含要建立的資料表名稱
-    - **${hiveDataFolder}**: 將包含儲存資料表的資料檔案的位置
+    - **${hiveTableName}**︰ 將包含要建立的資料表名稱
+    - **${hiveDataFolder}**︰ 將包含儲存資料表的資料檔案的位置
 
     工作流程定義檔 (在本教學課程中為 workflow.xml) 會在執行階段將這些值傳遞至此 HiveQL 指令碼。
 
@@ -181,11 +181,11 @@ Oozie 工作流程定義會以 hPDL 撰寫 (一種 XML 程序定義語言)。 �
 
     此工作流程中定義了兩個動作：
 
-    - **RunHiveScript**: 這是起始動作，並執行 **useooziewf.hql** Hive 指令碼
+    - **RunHiveScript**︰ 這是起始動作，並執行 **useooziewf.hql** Hive 指令碼
 
-    - **RunSqoopExport**: 這將匯出的資料從 Hive 指令碼建立到 SQL Database 搭配使用。 這將會執行的才 **RunHiveScript** 動作是否成功。
+    - **RunSqoopExport**︰ 這將匯出的資料從 Hive 指令碼建立到 SQL Database 搭配使用。 這將會執行的才 **RunHiveScript** 動作是否成功。
 
-        > [AZURE.NOTE] 如需 Oozie 工作流程和使用工作流程動作的詳細資訊，請參閱 [Apache Oozie 4.0 文件][apache-oozie-400] (適用於 HDInsight 3.0 版) 或 [Apache Oozie 3.3.2 文件][apache-oozie-332] (適用於 HDInsight 2.1 版)。
+        > [AZURE.NOTE] 如需 Oozie 工作流程和使用工作流程動作的詳細資訊，請參閱 [Apache Oozie 4.0 文件][apache-oozie-400] （適用於 HDInsight 3.0 版) 或 [Apache Oozie 3.3.2 文件][apache-oozie-332] （適用於 HDInsight 2.1 版)。
 
     請注意，工作流程有數個項目，例如 `${jobTracker}` 會替換為您在本文件稍後的工作定義中所使用的值。
 
@@ -216,15 +216,15 @@ Oozie 工作流程定義會以 hPDL 撰寫 (一種 XML 程序定義語言)。 �
         data:    Server Name i1qwc540ts
         info:    sql server create command OK
 
-    > [AZURE.IMPORTANT] 請注意此命令傳回的伺服器名稱 (**i1qwc540ts** 在上述範例中。)這是所建立的 SQL Database 伺服器的簡短名稱。 完整的網域名稱 (FQDN) 是 **& lt; 簡短名稱 (& s) gt;。.database.windows.net**。 上述範例中，FQDN 會是 **i1qwc540ts.database.windows.net**。
+    > [AZURE.IMPORTANT] 請注意此命令傳回的伺服器名稱 (**i1qwc540ts** 在上述範例中。)這是所建立的 SQL Database 伺服器的簡短名稱。 完整的網域名稱 (FQDN) 是 **& lt; 簡短名稱 （& s) gt;。.database.windows.net**。 上述範例中，FQDN 會是 **i1qwc540ts.database.windows.net**。
 
-2. 使用下列命令來建立名為 **oozietest** SQL 資料庫伺服器上:
+2. 使用下列命令來建立名為 **oozietest** SQL 資料庫伺服器上 ︰
 
         azure sql db create [options] <serverName> oozietest <adminLogin> <adminPassword>
 
     完成時會傳回 [確定] 訊息。
 
-    > [AZURE.NOTE] 如果您收到錯誤訊息指出您沒有存取權，您可能需要將系統的 IP 位址加入至 SQL Database 防火牆，使用下列命令:
+    > [AZURE.NOTE] 如果您收到錯誤訊息指出您沒有存取權，您可能需要將系統的 IP 位址加入至 SQL Database 防火牆，使用下列命令 ︰
     >
     > `sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
 
@@ -463,9 +463,9 @@ Oozie 工作流程定義會以 hPDL 撰寫 (一種 XML 程序定義語言)。 �
 
 Oozie REST API 可讓您建置自己的工具來搭配 Oozie 使用。 以下為使用 Oozie REST API 時 HDInsight 的特定資訊：
 
-* **URI**: 可以從存取 REST API，在叢集以外的地方 `https://CLUSTERNAME.azurehdinsight.net/oozie`
+* **URI**︰ 可以從存取 REST API，在叢集以外的地方 `https://CLUSTERNAME.azurehdinsight.net/oozie`
 
-* **驗證**: 您必須驗證叢集的 HTTP 帳戶 (admin) 和密碼使用的 api。 例如：
+* **驗證**︰ 您必須驗證叢集的 HTTP 帳戶 (admin) 和密碼使用的 api。 例如：
 
         curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
 
@@ -495,7 +495,7 @@ Oozie Web UI 可讓您用網頁檢視叢集上 Oozie 工作的狀態。 它可�
 
 6. 您可以在 [Job Info] (工作資訊) 索引標籤中看到基本的工作資訊，以及工作內的個別動作。 使用上方的索引標籤，即可檢視 Job Definition (工作定義)、Job Configuration (工作組態)，以及存取 Job Log (工作記錄)，或檢視工作的定向非循環圖 (DAG)。
 
-    * **作業記錄**: 選取 **GetLogs** 按鈕，以取得所有記錄作業，或使用 **輸入搜尋篩選** 欄位來篩選記錄
+    * **作業記錄**︰ 選取 **GetLogs** 按鈕，以取得所有記錄作業，或使用 **輸入搜尋篩選** 欄位來篩選記錄
 
         ![工作記錄](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
@@ -531,10 +531,10 @@ Oozie Web UI 可讓您用網頁檢視叢集上 Oozie 工作的狀態。 它可�
 
     請注意，其中使用的 `${...}` 變數將替換為工作定義中的值。 這些變數分為別：
 
-    * **${coordFrequency}**: 執行工作的執行個體之間的時間
+    * **${coordFrequency}**︰ 執行工作的執行個體之間的時間
     * **${coordStart}**: 工作開始時間
-    * **${coordEnd}**: 工作結束時間
-    * **${coordTimezone}**: 協調器工作位在固定時區，不受日光節約時間 (通常使用 UTC 表示)。 此時區稱為「Oozie 處理時區」
+    * **${coordEnd}**︰ 工作結束時間
+    * **${coordTimezone}**︰ 協調器工作位在固定時區，不受日光節約時間 （通常使用 UTC 表示）。 此時區稱為「Oozie 處理時區」
     * **${wfPath}**: workflow.xml 的路徑
 
 2. 使用 Ctrl X，則 **Y** 和 **Enter** 儲存檔案。
@@ -543,7 +543,7 @@ Oozie Web UI 可讓您用網頁檢視叢集上 Oozie 工作的狀態。 它可�
 
         hadoop fs -copyFromLocal coordinator.xml /tutorials/useoozie/coordinator.xml
 
-4. 使用以下命令修改 **job.xml** 檔案:
+4. 使用以下命令修改 **job.xml** 檔案 ︰
 
         nano job.xml
 
@@ -592,7 +592,7 @@ Oozie Web UI 可讓您用網頁檢視叢集上 Oozie 工作的狀態。 它可�
 
     這麼做會提交並啟動工作。
 
-7. 如果您造訪 Oozie Web UI，並選取 **協調器工作** 索引標籤上，您應會類似下列資訊:
+7. 如果您造訪 Oozie Web UI，並選取 **協調器工作** 索引標籤上，您應會類似下列資訊 ︰
 
     ![協調器工作索引標籤](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
 
@@ -620,23 +620,23 @@ Oozie UI 對於疑難排解 Oozie 工作的問題很有幫助，因為它可讓�
 
 ###JA009：無法初始化叢集
 
-**徵兆**: 工作狀態會變更為 **SUSPENDED**。 詳細資料的作業會將 RunHiveScript 狀態顯示為 **START_MANUAL**。 選取該動作會顯示下列錯誤訊息：
+**徵兆**︰ 工作狀態會變更為 **SUSPENDED**。 詳細資料的作業會將 RunHiveScript 狀態顯示為 **START_MANUAL**。 選取該動作會顯示下列錯誤訊息：
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**原因**: 中使用的 WASB 位址 **job.xml** 檔案不包含儲存體容器或儲存體帳戶名稱。 WASB 位址格式必須是 `wasb://containername@storageaccountname.blob.core.windows.net`。
+**原因**︰ 中使用的 WASB 位址 **job.xml** 檔案不包含儲存體容器或儲存體帳戶名稱。 WASB 位址格式必須是 `wasb://containername@storageaccountname.blob.core.windows.net`。
 
-**解析**: 變更工作所使用的 WASB 位址。
+**解析**︰ 變更工作所使用的 WASB 位址。
 
 ###JA002：不允許 Oozie 模擬 &lt;USER>
 
-**徵兆**: 工作狀態會變更為 **SUSPENDED**。 詳細資料的作業會將 RunHiveScript 狀態顯示為 **START_MANUAL**。 選取該動作會顯示下列錯誤訊息：
+**徵兆**︰ 工作狀態會變更為 **SUSPENDED**。 詳細資料的作業會將 RunHiveScript 狀態顯示為 **START_MANUAL**。 選取該動作會顯示下列錯誤訊息：
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
-**原因**: 目前的權限設定不允許 Oozie 模擬指定的使用者帳戶。
+**原因**︰ 目前的權限設定不允許 Oozie 模擬指定的使用者帳戶。
 
-**解析**: Oozie 可以模擬使用者在 **使用者** 群組。 使用 `groups USERNAME` 查看使用者帳戶所屬的群組。 如果使用者不屬於 **使用者** 群組中，將使用者新增至群組中使用下列命令:
+**解析**: Oozie 可以模擬使用者在 **使用者** 群組。 使用 `groups USERNAME` 查看使用者帳戶所屬的群組。 如果使用者不屬於 **使用者** 群組中，將使用者新增至群組中使用下列命令 ︰
 
     sudo adduser USERNAME users
 
@@ -644,13 +644,13 @@ Oozie UI 對於疑難排解 Oozie 工作的問題很有幫助，因為它可讓�
 
 ###啟動器錯誤 (Sqoop)
 
-**徵兆**: 工作狀態會變更為 **KILLED**。 詳細資料的作業會將 RunSqoopExport 狀態顯示為 **錯誤**。 選取該動作會顯示下列錯誤訊息：
+**徵兆**︰ 工作狀態會變更為 **KILLED**。 詳細資料的作業會將 RunSqoopExport 狀態顯示為 **錯誤**。 選取該動作會顯示下列錯誤訊息：
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
 **原因**: Sqoop 是無法載入存取資料庫所需的資料庫驅動程式。
 
-**解析**: 從 Oozie 工作使用 Sqoop，當您必須包含作業所使用的其他資源 (例如 workflow.xml) 與資料庫驅動程式。
+**解析**︰ 從 Oozie 工作使用 Sqoop，當您必須包含作業所使用的其他資源 （例如 workflow.xml) 與資料庫驅動程式。
 
 您還必須從 workflow.xml 的 `<sqoop>...</sqoop>` 區段，參考含有資料庫驅動程式的封存。
 
@@ -720,4 +720,5 @@ Oozie UI 對於疑難排解 Oozie 工作的問題很有幫助，因為它可讓�
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+
 

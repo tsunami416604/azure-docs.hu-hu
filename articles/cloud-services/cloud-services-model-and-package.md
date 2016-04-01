@@ -86,7 +86,7 @@
 
 您可以參考 [服務定義結構描述][]，進一步了解此處所使用的 XML 結構描述，不過，以下是某些元素的簡短說明：
 
->**站台**  
+>**[網站]**  
 >包含 IIS7 中所裝載的網站或 web 應用程式的定義。
 >
 >**InputEndpoints**  
@@ -136,7 +136,7 @@
 </ServiceConfiguration>
 ```
 
-您可以參考 [服務組態結構描述](https://msdn.microsoft.com/library/azure/ee758710.aspx) ，進一步了解此處所使用的 XML 結構描述，不過，以下是簡短說明的項目:
+您可以參考 [服務組態結構描述](https://msdn.microsoft.com/library/azure/ee758710.aspx) ，進一步了解此處所使用的 XML 結構描述，不過，以下是簡短說明的項目 ︰
 
 >**執行個體**  
 >設定執行中角色執行個體的數目。 為防止您的雲端服務在升級期間可能變成無法使用，建議您部署多個 Web 對向角色的執行個體。 如此一來，您符合中的指導方針 [Azure 計算服務等級協定 (SLA)](http://azure.microsoft.com/support/legal/sla/), ，這可以保證兩個網際網路對向角色 99.95%外部連接，或服務上部署多個角色執行個體。
@@ -204,7 +204,7 @@ Azure 對於 Web 角色，僅允許一個進入點。 這表示所有流量都�
 角色執行個體離線時，您只可以更新憑證。 如果在角色執行個體上線時加入、刪除或變更憑證，Azure 會讓執行個體正常離線以更新憑證，並在變更完成後讓它再次上線。
 
 ### 使用服務執行階段事件處理組態變更
- [Azure 執行階段程式庫](https://msdn.microsoft.com/library/azure/dn511024.aspx) 包含 [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) 命名空間，提供與角色的執行個體中執行的程式碼從 Azure 環境互動的類別。  [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) 類別會定義組態變更之前和之後會引發下列事件:
+ [Azure 執行階段程式庫](https://msdn.microsoft.com/library/azure/dn511024.aspx) 包含 [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) 命名空間，提供與角色的執行個體中執行的程式碼從 Azure 環境互動的類別。  [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) 類別會定義組態變更之前和之後會引發下列事件 ︰
 
 - **[變更](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx) 事件**  
 發生這種情況的組態變更套用至指定的執行個體的角色，讓您有機會，必要時，才會關閉角色執行個體之前。
@@ -226,7 +226,7 @@ Azure 對於 Web 角色，僅允許一個進入點。 這表示所有流量都�
 | &lt;1.6        | C:\\Program Files\\Azure SDK\\\ [sdk 版本] \\bin\\ |
 
 >[AZURE.NOTE]
-CSPack.exe (在 windows 上)，就可以使用執行 **Microsoft Azure 命令提示字元** 隨著 SDK 一起安裝的捷徑。  
+CSPack.exe （在 windows 上)，就可以使用執行 **Microsoft Azure 命令提示字元** 隨著 SDK 一起安裝的捷徑。  
 >  
 >執行 CSPack.exe 程式本身，以查看所有可能的參數和命令的相關文件。
 
@@ -287,4 +287,5 @@ CSPack.exe (在 windows 上)，就可以使用執行 **Microsoft Azure 命令提
 [vs_deploy]: https://msdn.microsoft.com/library/ee460772.aspx
 [vs_reconfigure]: https://msdn.microsoft.com/library/ee405486.aspx
 [vs_create]: https://msdn.microsoft.com/library/ee405487.aspx
+
 

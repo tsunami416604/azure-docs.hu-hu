@@ -29,8 +29,8 @@
         data:
         info:    group create command OK
 
-    - **-n (或--名稱)**。 新資源群組的名稱。 我們的案例， *TestRG*。
-    - **-l (或--location)**。 將會在當中建立新資源群組的 Azure 區域。 我們的案例， *centralus*。
+    - **-n （或--名稱）**。 新資源群組的名稱。 我們的案例， *TestRG*。
+    - **-l （或--location）**。 將會在當中建立新資源群組的 Azure 區域。 我們的案例， *centralus*。
 
 4. 執行 **azure 網路 vnet 建立** 命令來建立 VNet 和子網路，如下所示。 
 
@@ -51,10 +51,10 @@
         data:      192.168.0.0/16
         info:    network vnet create command OK
 
-    - **-g (或--資源群組)**。 將會在當中建立 VNet 之資源群組的名稱。 我們的案例， *TestRG*。
-    - **-n (或--名稱)**。 即將建立的 VNet 名稱。 我們的案例， *TestVNet*
-    - **-a (或-位址首碼)**。 用於 VNet 位址空間的 CIDR 區塊清單。 我們的案例， *192.168.0.0/16*
-    - **-l (或--location)**。 將要建立 VNet 的 Azure 區域。 我們的案例， *centralus*。
+    - **-g （或--資源群組）**。 將會在當中建立 VNet 之資源群組的名稱。 我們的案例， *TestRG*。
+    - **-n （或--名稱）**。 即將建立的 VNet 名稱。 我們的案例， *TestVNet*
+    - **-a （或-位址首碼）**。 用於 VNet 位址空間的 CIDR 區塊清單。 我們的案例， *192.168.0.0/16*
+    - **-l （或--location）**。 將要建立 VNet 的 Azure 區域。 我們的案例， *centralus*。
 
 5. 執行 **azure 網路的 vnet 子網路建立** 命令來建立子網路，如下所示。 請查看命令的輸出內容。 輸出後顯示的清單可說明所使用的參數。
 
@@ -75,8 +75,8 @@
         info:    network vnet subnet create command OK
 
     - **-e (或-vnet 名稱**。 將會建立子網路的 VNet 名稱。 我們的案例， *TestVNet*。
-    - **-n (或--名稱)**。 新子網路的名稱。 我們的案例， *前端*。
-    - **-a (或-位址首碼)**。 子網路 CIDR 區塊。 四個案例中， *192.168.1.0/24*。
+    - **-n （或--名稱）**。 新子網路的名稱。 我們的案例， *前端*。
+    - **-a （或-位址首碼）**。 子網路 CIDR 區塊。 四個案例中， *192.168.1.0/24*。
 
 6. 如有必要，請重複上述的步驟 5，以建立其他子網路。 我們的案例中，執行下列命令來建立 *後端* 子網路。
 
@@ -105,4 +105,5 @@
         data:      Address prefix                : 192.168.2.0/24
         data:
         info:    network vnet show command OK
+
 

@@ -29,7 +29,7 @@ A *相依性* 由您的應用程式呼叫的外部元件。 這通常是使用 H
 
 對於其他類型，例如裝置應用程式，您可以撰寫自己的監視器使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency)。
 
-方塊外相依性監視目前會回報這些相依性類型的呼叫:
+方塊外相依性監視目前會回報這些相依性類型的呼叫 ︰
 
 * ASP.NET
  * SQL DATABASE
@@ -131,3 +131,4 @@ IIS 伺服器的狀態監視器不需要您使用 Application Insights SDK 重�
 
 
  
+

@@ -43,7 +43,7 @@
 2.  按一下組態以開啟其刀鋒視窗。
 3.  按一下 [ **編譯**。
 4.  如果組態沒有參數，系統會提示您確認是否要加以編譯。 如果組態中有參數， **編譯組態** 會開啟分頁，因此您可以提供參數值。 請參閱 <a href="#basic-parameters">**基本參數**</a> 下面章節以取得參數的詳細資料。
-5.   **編譯工作** ] 分頁隨即開啟，讓您可以追蹤編譯作業的狀態，以及節點組態 (MOF 組態文件)，則要放在 Azure 自動化 DSC 提取伺服器上造成問題。
+5.   **編譯工作** ] 分頁隨即開啟，讓您可以追蹤編譯作業的狀態，以及節點組態 （MOF 組態文件），則要放在 Azure 自動化 DSC 提取伺服器上造成問題。
 
 ##使用 Windows PowerShell 編譯 DSC 組態##
 
@@ -51,7 +51,7 @@
 
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig" 
  
-`Start-AzureRmAutomationDscCompilationJob` 會傳回可用來追蹤工作狀態的編譯工作物件。 然後，您可以使用此編譯作業物件搭配 [`Get-AzureRmAutomationDscCompilationJob`](https://msdn.microsoft.com/library/mt244120.aspx) 判斷編譯作業的狀態和 [`Get-AzureRmAutomationDscCompilationJobOutput`](https://msdn.microsoft.com/library/mt244103.aspx) 若要檢視其資料流 (輸出)。 下列範例程式碼會啟動編譯 **SampleConfig** 組態中，等待它完成，並接著會顯示其資料流。
+`Start-AzureRmAutomationDscCompilationJob` 會傳回可用來追蹤工作狀態的編譯工作物件。 然後，您可以使用此編譯作業物件搭配 [`Get-AzureRmAutomationDscCompilationJob`](https://msdn.microsoft.com/library/mt244120.aspx) 判斷編譯作業的狀態和 [`Get-AzureRmAutomationDscCompilationJobOutput`](https://msdn.microsoft.com/library/mt244103.aspx) 若要檢視其資料流 （輸出）。 下列範例程式碼會啟動編譯 **SampleConfig** 組態中，等待它完成，並接著會顯示其資料流。
     
     $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
     
@@ -125,7 +125,7 @@ PowerShell 需要參數 [雜湊表](http://technet.microsoft.com/library/hh84778
 
 >[AZURE.NOTE] 您可以使用 **ConfigurationData** 編譯中使用 Azure PowerShell 的 Azure 自動化 DSC，但不是在 Azure 入口網站時。
 
-下列範例 DSC 組態使用 **ConfigurationData** 透過 **$ConfigurationData** 和 **$AllNodes** 關鍵字。 您也需要 [**xWebAdministration** 模組](https://www.powershellgallery.com/packages/xWebAdministration/) 此範例中:
+下列範例 DSC 組態使用 **ConfigurationData** 透過 **$ConfigurationData** 和 **$AllNodes** 關鍵字。 您也需要 [**xWebAdministration** 模組](https://www.powershellgallery.com/packages/xWebAdministration/) 此範例中 ︰
 
      Configuration ConfigurationDataSample {
         Import-DscResource -ModuleName xWebAdministration -Name MSFT_xWebsite
@@ -147,7 +147,7 @@ PowerShell 需要參數 [雜湊表](http://technet.microsoft.com/library/hh84778
  
     }
 
-您可以編譯 DSC 組態上面使用 PowerShell，在 Azure 自動化 DSC 提取伺服器會將兩個節點組態: **ConfigurationDataSample.MyVM1** 和 **ConfigurationDataSample.MyVM3**:
+您可以編譯 DSC 組態上面使用 PowerShell，在 Azure 自動化 DSC 提取伺服器會將兩個節點組態 ︰ **ConfigurationDataSample.MyVM1** 和 **ConfigurationDataSample.MyVM3**:
 
     $ConfigData = @{
         AllNodes = @(
@@ -212,7 +212,7 @@ Azure 自動化 DSC 組態和 Runbook 中的資產參考是相同的。 如需�
     
     }
 
-您可以編譯 DSC 組態上面使用 PowerShell，在 Azure 自動化 DSC 提取伺服器會將兩個節點組態:  **CredentialSample.MyVM1** 和 **CredentialSample.MyVM2**。
+您可以編譯 DSC 組態上面使用 PowerShell，在 Azure 自動化 DSC 提取伺服器會將兩個節點組態 ︰  **CredentialSample.MyVM1** 和 **CredentialSample.MyVM2**。
 
 
     $ConfigData = @{
@@ -235,4 +235,5 @@ Azure 自動化 DSC 組態和 Runbook 中的資產參考是相同的。 如需�
     
     
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
+
 

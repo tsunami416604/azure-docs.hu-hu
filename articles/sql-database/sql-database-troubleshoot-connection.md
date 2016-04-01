@@ -17,7 +17,7 @@
     ms.author="daleche"/>
 
 # 疑難排解「目前無法使用伺服器上的資料庫。 請重試之後的連接。 」 和其他連線錯誤
-「 資料庫 <dbname> 伺服器上 <servername> 不存在...」 Azure SQL database 是最常見的暫時性連接錯誤。 暫時性連接錯誤通常是因為平台重新設定而造成，例如，容錯移轉至新的伺服器或暫存系統故障，而且時間很短。 如果您要取得不同的錯誤，評估 [錯誤訊息](sql-database-develop-error-messages.md) 原因的線索，判斷問題是否為暫時性或永久性，以及使用本主題中的指南。
+「 資料庫 <dbname> 在伺服器上 <servername> 目前不提供...」 Azure SQL database 是最常見的暫時性連接錯誤。 暫時性連接錯誤通常是因為平台重新設定而造成，例如，容錯移轉至新的伺服器或暫存系統故障，而且時間很短。 如果您要取得不同的錯誤，評估 [錯誤訊息](sql-database-develop-error-messages.md) 原因的線索，判斷問題是否為暫時性或永久性，以及使用本主題中的指南。
 
 ## 解決暫時性連線問題的步驟
 1.  請確定您的應用程式使用重試邏輯。 請參閱 [連線問題](sql-database-connectivity-issues.md) 和 [設計指導方針和最佳作法](sql-database-connect-central-recommendations.md) 一般重試策略。 然後請參閱 [程式碼範例](sql-database-develop-quick-start-client-code-samples.md) 如需詳細資訊。
@@ -32,4 +32,5 @@
 3.  請確認您的連接字串和其他連線設定。 請參閱中的連接字串 [連線問題主題](sql-database-connectivity-issues.md)。
 4.  檢查儀表板中的服務健全狀況。 如果您認為沒有區域性停電時，請參閱 [從中斷復原](sql-database-disaster-recovery.md) 的步驟來復原到新的區域。
 5.  如果連線持續發生問題，請連絡支援人員開啟支援案例。
+
 

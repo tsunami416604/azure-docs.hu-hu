@@ -70,3 +70,4 @@ Visual Studio 可讓您針對資源群組編輯資源管理員範本。 您可�
 [Channel 9 影片：Azure 資源管理員](http://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B224#fbid=)
 
 
+

@@ -19,11 +19,11 @@
 # 如何開始使用 Azure AD
 
 ###本主題的其他文章
-[什麼是 Azure AD?](active-directory-whatis.md)<br>
-[如何運作?](active-directory-works.md)<br>
+[什麼是 Azure AD？](active-directory-whatis.md)<br>
+[運作方式](active-directory-works.md)<br>
 [開始使用](active-directory-get-started.md)<br>
 [後續步驟](active-directory-next-steps.md)<br>
-[了解更多](active-directory-learn-map.md)
+[詳細資訊](active-directory-learn-map.md)
 
 
 準備好開始了嗎？ 建議您試用一些隨 Azure Active Directory 發表的超棒功能。 使用這些功能來為您組織的身分識別與存取管理帶來更多價值。 閱讀文件以了解如何設定這些功能。 接著查看如何開始著手和指派試用版授權給系統管理員和使用者，以開始測試這些功能。
@@ -47,4 +47,5 @@ Azure AD 為系統管理員提供了幾種報告。 在 Azure AD 的付費版本
 
 * [以組織方式註冊 Azure](sign-up-organization.md)
 * [Azure 身分識別](fundamentals-identity.md)
+
 

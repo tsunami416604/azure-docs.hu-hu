@@ -83,7 +83,8 @@ Azure 資料目錄中的資料設定檔是資料表層級的快照集和及資�
 
 ## 另請參閱
 
-- [什麼是 Azure 資料目錄?](data-catalog-what-is-data-catalog.md) -這篇文章提供 Azure 資料目錄服務、 提供的價值和所支援之案例的概觀。
+- [什麼是 Azure 資料目錄？](data-catalog-what-is-data-catalog.md) -這篇文章提供 Azure 資料目錄服務、 提供的價值和所支援之案例的概觀。
 
 - [開始使用 Azure 資料目錄](data-catalog-get-started.md) -這篇文章提供端對端教學課程，說明如何使用 Azure 資料目錄來探索資料來源。  
+
 

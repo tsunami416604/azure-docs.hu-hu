@@ -10,7 +10,7 @@
 
     ![StorSimple 快速啟動頁面](./media/storsimple-complete-minimum-device-setup/Device_Quick_Start_page_1M.png)
 
-2. 在 **基本設定** 頁面上，執行下列動作:
+2. 在 **基本設定** 頁面上，執行下列動作 ︰
   1. 提供 **易記名稱** 為您的裝置。 預設的裝置名稱會反映裝置型號及序號等資訊。 您最多可為易記名稱指定 64 個字元來管理您的裝置。
   2. 設定 **時區** 根據部署裝置的地理位置。 裝置將針對所有排程的操作使用這個時區。
   3. 在 **DNS 設定**, ，提供的地址您 **次要 DNS 伺服器**。 如果您使用的是 IPv6，將根據 Windows PowerShell 介面中提供的 IPv6 首碼來填入欄位。 
@@ -26,8 +26,8 @@
 
     > [AZURE.NOTE] 
     > 
-    > - The controller fixed IP addresses need to be free IPs within the subnet accessible by the device IP address.
-    > - The fixed IP addresses for the controller are used for servicing the updates to the device, and therefore the fixed IPs must be routable and able to connect to the Internet.
+    > - 控制站的固定 IP 位址必須是裝置 IP 位址可存取的子網路內的可用 IP。
+    > - 適用於控制站的固定 IP 位址可用來為裝置提供更新，因此，固定的 IP 必須可路由傳送，而且能夠連線到網際網路。
 
     ![StorSimple minimum device setup network interfaces](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
 
@@ -39,3 +39,4 @@
 ![可用的視訊](./media/storsimple-complete-minimum-device-setup/Video_icon.png) **可用的視訊**
 
 若要看影片，示範如何完成最小量裝置設定，按一下 [ [這裡](http://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/)。
+

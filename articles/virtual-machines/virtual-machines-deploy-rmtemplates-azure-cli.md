@@ -106,7 +106,7 @@
 
 深入了解 Azure 資源群組，以及如何為您在多個 [Azure 資源管理員概觀](../resource-group-overview.md)。 如果您是了解如何設計範本，請參閱 [撰寫 Azure 資源管理員範本](../resource-group-authoring-templates.md)。
 
-## <a id="quick-create-a-vm-in-azure"></a>工作: 快速建立在 Azure VM
+## <a id="quick-create-a-vm-in-azure"></a>工作：在 Azure 中快速建立 VM
 
 有時候您知道需要何種映像，而且您現在需要該映像的 VM，並且不太在意基礎結構 -- 或許您必須在全新的 VM 上進行某些測試。 當您想要使用 `azure vm quick-create` 命令，然後傳遞必要引數來建立 VM 和基礎結構的時候。
 
@@ -235,7 +235,7 @@
 
 無論身在何處，新的 VM 就在您身邊。
 
-## <a id="deploy-a-vm-in-azure-from-a-template"></a>工作: 部署在 Azure 的 VM 範本
+## <a id="deploy-a-vm-in-azure-from-a-template"></a>工作：在 Azure 中利用範本部署 VM
 
 請按照以下各節描述的操作方法，使用 Azure CLI 搭配範本來部署新的 Azure VM。 這個範本會在只有單一子網路的新虛擬網路中建立單一虛擬機器，而不同於 `azure vm quick-create`，它可以讓您精確描述想要的內容，而且重複使用時也不會發生任何錯誤。 以下是這個範本建立的內容：
 
@@ -245,7 +245,7 @@
 
 以下是範本的 JSON 檔案內容。 (這個範本也位於 [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json)。)
 
-範本可彈性運用，所以這位設計人員可能已經決定提供很多的參數給您，或者決定建立一個更固定的範本，而只提供幾個參數給您。 為了收集的資訊，您需要做為參數傳遞的範本，開啟範本檔案 (這個主題內嵌一個範本如下)，並檢查 **參數** 值。
+範本可彈性運用，所以這位設計人員可能已經決定提供很多的參數給您，或者決定建立一個更固定的範本，而只提供幾個參數給您。 為了收集的資訊，您需要做為參數傳遞的範本，開啟範本檔案 （這個主題內嵌一個範本如下），並檢查 **參數** 值。
 
 在這個案例中，系統會要求您提供下列範本：
 
@@ -500,7 +500,7 @@
 
 
 
-## <a id="create-a-custom-vm-image"></a>工作: 建立自訂的 VM 映像
+## <a id="create-a-custom-vm-image"></a>工作：建立自訂的 VM 映像
 
 您已基本了解上述範本的用法，那麼現在我們可以使用類似的操作方法，透過 Azure CLI 使用範本從 Azure 中的特定 .vhd 檔案建立自訂 VM。 其中的差別就是這個範本會從指定的虛擬硬碟 (VHD) 建立單一虛擬機器。
 
@@ -765,7 +765,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
     info:    group deployment create command OK
 
 
-## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>工作: 部署虛擬網路和外部負載平衡器會使用一個多重 VM 應用程式
+## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>工作：部署含多部 VM 的應用程式，它會使用虛擬網路和外部負載平衡器
 
 您可以利用這個範本，在一個負載平衡器上建立兩個虛擬機器，然後在連接埠 80 設定負載平衡規則。 這個範本也會部署儲存體帳戶、虛擬網路、公用 IP 位址、可用性集合以及網路介面。
 
@@ -1177,7 +1177,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 
 請注意，這個範本會部署 Windows Server 映像。不過，任何 Linux 映像都可以輕易取代它。 想要建立一個具備多個 swarm 管理員的 Docker 叢集嗎？ [您可以進行](http://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
 
-## <a id="remove-a-resource-group"></a>工作: 移除資源群組
+## <a id="remove-a-resource-group"></a>工作：移除資源群組
 
 請記住，您可以重新部署至資源群組，但若其中有一個不再使用，則可使用 `azure group delete <group name>` 加以刪除。
 
@@ -1187,7 +1187,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
     + Deleting resource group myResourceGroup
     info:    group delete command OK
 
-## <a id="show-the-log-for-a-resource-group-deployment"></a>工作: 顯示資源群組部署記錄檔
+## <a id="show-the-log-for-a-resource-group-deployment"></a>工作：顯示資源群組部署記錄檔
 
 建立或使用範本時，此種情況很常見。 您可以使用 `azure group log show <groupname>` 呼叫來顯示群組的部署記錄檔，它會顯示相當多的實用資訊，協助您了解發生某些狀況的原因，或是未發生某些狀況的原因 (如需有關如何疑難排解您的部署，以及其他問題的相關資訊的詳細資訊，請參閱 [在 Azure 中的資源群組部署疑難排解](resource-group-deploy-debug.md)。)
 
@@ -1203,7 +1203,7 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
     }
 
 
-## <a id="display-information-about-a-virtual-machine"></a>工作: 顯示虛擬機器的相關資訊
+## <a id="display-information-about-a-virtual-machine"></a>工作：顯示虛擬機器的相關資訊
 
 您可以使用 `azure vm show <groupname> <vmname> command` 來了解資源群組中特定 VM 的相關資訊。 如果您的群組中有多個 VM，可能需要先使用 `azure vm list <groupname>` 來列出群組中的 VM。
 
@@ -1270,25 +1270,25 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 
 > [AZURE.NOTE] 如果您想要以程式設計方式儲存和操作主控台命令的輸出，您可能想要使用 JSON 剖析工具，例如 **[jq](https://github.com/stedolan/jq)** 或 **[jsawk](https://github.com/micha/jsawk)**, ，或工作適合的語言程式庫。
 
-## <a id="log-on-to-a-linux-based-virtual-machine"></a>工作: 登入 Linux 型虛擬機器
+## <a id="log-on-to-a-linux-based-virtual-machine"></a>工作：登入 Linux 架構的虛擬機器
 
 通常 Linux 機器是透過 SSH 連接的。 如需詳細資訊，請參閱 [如何在 Azure 上的 Linux 使用 SSH](virtual-machines-linux-use-ssh-key.md)。
 
-## <a id="stop-a-virtual-machine"></a>工作: 停止 VM
+## <a id="stop-a-virtual-machine"></a>工作：停止 VM
 
 請執行這個命令：
 
     azure vm stop <group name> <virtual machine name>
 
->[AZURE.IMPORTANT] 使用此參數来保留虛擬 IP (VIP) 的 vnet，以便在該 vnet 中的最後一個 VM。 <br><br>如果您使用 `StayProvisioned` 參數，仍需支付 VM 的費用。
+>[AZURE.IMPORTANT] 使用此參數来保留虛擬 IP (VIP) 的 vnet，以便在該 vnet 中的最後一個 VM。 <br><br> 如果您使用 `StayProvisioned` 參數，您還是要支付 VM。
 
-## <a id="start-a-virtual-machine"></a>工作: 啟動 VM
+## <a id="start-a-virtual-machine"></a>工作：啟動 VM
 
 請執行這個命令：
 
     azure vm start <group name> <virtual machine name>
 
-## <a id="attach-a-data-disk"></a>工作: 連接資料磁碟
+## <a id="attach-a-data-disk"></a>工作：連接資料磁碟
 
 您也需要決定是否要附加新的磁碟或附加已經包含資料的磁碟。 如果是新的磁碟，這個命令會建立 .vhd 檔案，然後將它附加在同一個命令中。
 
@@ -1308,4 +1308,5 @@ Windows 型虛擬機器，請參閱 [建立並上傳 Windows Server VHD 到 Azur
 更多有關使用 Azure CLI 使用 **arm** 模式中，請參閱 [使用適用於 Mac、 Linux 和 Windows 搭配 Azure 資源管理員的 Azure CLI](xplat-cli-azure-resource-manager.md)。 若要深入了解 Azure 資源和概念，請參閱 [Azure 資源管理員概觀](../resource-group-overview.md)。
 
 您可以使用更多的範本，請參閱 [Azure 快速入門範本](http://azure.microsoft.com/documentation/templates/) 和 [使用範本的應用程式架構](virtual-machines-app-frameworks.md)。
+
 

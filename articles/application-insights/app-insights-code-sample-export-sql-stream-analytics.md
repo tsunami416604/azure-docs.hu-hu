@@ -36,7 +36,7 @@
 開始進行之前：
 
 1. 取得 [Microsoft Azure 帳戶](http://azure.microsoft.com/pricing/)。
-2. 在 [Azure 入口網站][portal], ，加入新的 Application Insights 資源，您的應用程式:
+2. 在 [Azure 入口網站][portal], ，加入新的 Application Insights 資源，您的應用程式 ︰
 
     ![依序選擇 [新增]、[開發人員服務]、[Application Insights]，然後選擇應用程式類型](./media/app-insights-code-sample-export-sql-stream-analytics/010-new-asp.png)
 
@@ -169,7 +169,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ## 建立 Azure 串流分析執行個體
 
-從 [傳統 Azure 入口網站](https://manage.windowsazure.com/), ，選取 Azure 串流分析服務，然後建立新的資料流分析工作:
+從 [傳統 Azure 入口網站](https://manage.windowsazure.com/), ，選取 Azure 串流分析服務，然後建立新的資料流分析工作 ︰
 
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/37-create-stream-analytics.png)
@@ -314,3 +314,4 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 [start]: app-insights-overview.md
 
  
+

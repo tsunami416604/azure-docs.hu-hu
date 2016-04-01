@@ -17,9 +17,9 @@
 
 # 如何將使用者加入至彈性資料庫集區
 
- **彈性資料庫工作** 功能 (預覽) 可讓您執行 TRANSACT-SQL 指令碼一整組資料庫包括自訂集合的資料庫， **彈性資料庫集區** 或 **彈性資料庫分區集** Azure SQL 資料庫中。 若要執行指令碼，您必須將具有適當權限的使用者加入執行工作所在的每個資料庫。 如需詳細資訊，請參閱 [管理資料庫和 Azure SQL Database 中的登入](sql-database-manage-logins.md) 或 [將使用者加入您的 SQL Azure 資料庫](http://azure.microsoft.com/blog/2010/06/21/adding-users-to-your-sql-azure-database/)
+ **彈性資料庫工作** 功能 （預覽） 可讓您執行 TRANSACT-SQL 指令碼一整組資料庫包括自訂集合的資料庫， **彈性資料庫集區** 或 **彈性資料庫分區集** Azure SQL 資料庫中。 若要執行指令碼，您必須將具有適當權限的使用者加入執行工作所在的每個資料庫。 如需詳細資訊，請參閱 [管理資料庫和 Azure SQL Database 中的登入](sql-database-manage-logins.md) 或 [將使用者加入您的 SQL Azure 資料庫](http://azure.microsoft.com/blog/2010/06/21/adding-users-to-your-sql-azure-database/)
 
-## 先決條件
+## 必要條件
 * 安裝 [彈性工作元件](sql-database-elastic-jobs-service-installation.md)。 
 
 ## 如何將使用者加入資料庫
@@ -36,7 +36,7 @@
 
 ## 後續步驟
 
-若要建立及管理 Azure 入口網站中的工作，請參閱 [建立和管理彈性資料庫工作](sql-database-elastic-jobs-create-and-manage.md)。 若要使用 PowerShell 建立工作，請參閱 [建立和管理 SQL Database 彈性資料庫工作使用 PowerShell (預覽)](sql-database-elastic-jobs-powershell.md)
+若要建立及管理 Azure 入口網站中的工作，請參閱 [建立和管理彈性資料庫工作](sql-database-elastic-jobs-create-and-manage.md)。 若要使用 PowerShell 建立工作，請參閱 [建立和管理 SQL Database 彈性資料庫工作使用 PowerShell （預覽）](sql-database-elastic-jobs-powershell.md)
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -45,3 +45,4 @@
 <!--anchors-->
 
  
+

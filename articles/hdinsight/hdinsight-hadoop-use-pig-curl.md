@@ -55,8 +55,8 @@
 
     此命令中使用的參數如下：
 
-    * **-u**: 使用者名稱和密碼可用來驗證要求
-    * **-G**: 指出這是 GET 要求
+    * **-u**︰ 使用者名稱和密碼可用來驗證要求
+    * **-G**︰ 指出這是 GET 要求
 
     URL 開頭 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ，將會是相同的所有要求。 路徑， **/status**, ，指出伺服器的要求是要傳回 WebHCat (也稱為 Templeton) 的狀態。
 
@@ -66,11 +66,11 @@
 
     此命令中使用的參數如下：
 
-    * **-d**: 因為 `-G` 不是，要求會依預設使用 POST 方法。 `-d` 指定傳送的資料值與要求。
+    * **-d**︰ 因為 `-G` 不是，要求會依預設使用 POST 方法。 `-d` 指定傳送的資料值與要求。
 
-        * **user.name**: 執行命令的使用者
-        * **執行**: 要執行的 Pig Latin 陳述式
-        * **statusdir**: 這項工作的狀態寫入的目錄
+        * **user.name**︰ 執行命令的使用者
+        * **執行**︰ 要執行的 Pig Latin 陳述式
+        * **statusdir**︰ 這項工作的狀態寫入的目錄
 
     > [AZURE.NOTE] 請注意，Pig Latin 陳述式中的空格取代 `+` 字元搭配 Curl 使用時。
 
@@ -90,7 +90,7 @@
 
 當工作的狀態已變更為 **成功**, ，您可以從 Azure Blob 儲存體擷取工作結果。  `statusdir` 隨查詢一起傳送的參數包含輸出檔案的; 在此案例中，位置 **wasb: / 範例/pigcurl**。 此位址會將儲存在工作的輸出 **範例/pigcurl** 目錄中的 HDInsight 叢集所使用的預設儲存體容器。
 
-您可以列出並下載這些檔案使用 [適用於 Mac、 Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。 例如，若要列出檔案中 **範例/pigcurl**, ，使用下列命令:
+您可以列出並下載這些檔案使用 [適用於 Mac、 Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。 例如，若要列出檔案中 **範例/pigcurl**, ，使用下列命令 ︰
 
     azure storage blob list <container-name> example/pigcurl
 
@@ -106,7 +106,7 @@
 
 如需本文中使用的 REST 介面的詳細資訊，請參閱 [WebHCat 參照](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 上 Pig 的一般資訊：
 
@@ -117,4 +117,5 @@
 * [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 MapReduce 與 HDInsight 上的 Hadoop](hdinsight-use-mapreduce.md)
+
 

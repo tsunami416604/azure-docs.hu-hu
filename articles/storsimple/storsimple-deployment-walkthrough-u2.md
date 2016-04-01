@@ -18,7 +18,7 @@
 # 部署您的內部部署 StorSimple 裝置 (Update 2)
 
 > [AZURE.SELECTOR]
-- [更新 2](../articles/storsimple/storsimple-deployment-walkthrough-u2.md)
+- [Update 2](../articles/storsimple/storsimple-deployment-walkthrough-u2.md)
 - [Update 1](../articles/storsimple/storsimple-deployment-walkthrough-u1.md)
 - [GA 版本](../articles/storsimple/storsimple-deployment-walkthrough.md)
 
@@ -33,7 +33,7 @@
 
 您必須需要有系統管理員權限，才能完成安裝和設定程序。 建議您在開始之前，檢閱設定檢查清單。 部署與設定程序可能需要一些時間才能完成。
 
-> [AZURE.NOTE] 在 Microsoft Azure 網站上發行的 StorSimple 部署資訊適用於僅適用於 StorSimple 8000 系列裝置。 如需 7000 系列裝置的完整資訊，請移至: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列部署資訊，請參閱 [StorSimple 系統快速入門指南](http://onlinehelp.storsimple.com/111_Appliance/)。
+> [AZURE.NOTE] 在 Microsoft Azure 網站上發行的 StorSimple 部署資訊適用於僅適用於 StorSimple 8000 系列裝置。 如需 7000 系列裝置的完整資訊，請移至 ︰ [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列部署資訊，請參閱 [StorSimple 系統快速入門指南](http://onlinehelp.storsimple.com/111_Appliance/)。
 
 ## 部署步驟
 
@@ -50,10 +50,10 @@
 | [步驟 1：建立新的服務](#step-1-create-a-new-service)                                                         | 設定雲端管理和 StorSimple 裝置的儲存體。 *如果您有其他 StorSimple 裝置現有的服務，請略過此步驟*。                |
 | [步驟 2：取得服務註冊金鑰](#step-2-get-the-service-registration-key)                                               | 使用此金鑰註冊並將 StorSimple 裝置與管理服務連接。                                                                         |
 | [步驟 3：透過 Windows PowerShell for StorSimple 設定和註冊裝置](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)    | 將裝置連接到您的網路，並向 Azure 使用管理服務安裝程式。                                            |
-| [步驟 4: 完成最小量裝置設定](#step-4-complete-minimum-device-setupd)</br>[選擇性: 更新您的 StorSimple 裝置](#scan-for-and-apply-updates)      | 使用管理服務來完成裝置設定並啟用裝置以提供儲存體。                                                                      |
+| [步驟 4：完成最小量裝置設定](#step-4-complete-minimum-device-setupd)</br>[選擇性 ︰ 更新您的 StorSimple 裝置](#scan-for-and-apply-updates)      | 使用管理服務來完成裝置設定並啟用裝置以提供儲存體。                                                                      |
 | [步驟 5：建立磁碟區容器](#step-5-create-a-volume-container)                                                      | 建立容器以佈建磁碟區。 磁碟區容器的儲存體帳戶、 頻寬和內含的所有磁碟區的加密設定。    |
 | [步驟 6：建立磁碟區](#step-6-create-a-volume)                                                                | 在您伺服器的 StorSimple 裝置上佈建儲存體磁碟區。                                                                                        |
-| [步驟 7: 掛接、 初始化及格式化磁碟區](#step-7-mount-initialize-and-format-a-volume)</br>[選用: 設定 MPIO](storsimple-configure-mpio-windows-server.md)            | 將您的伺服器連接至裝置提供的 iSCSI 儲存體。 選擇性地設定 MPIO 確保您的伺服器可以容許連結、網路和介面失敗。                                                                                                                                                              |
+| [步驟 7：掛接、初始化及格式化磁碟區](#step-7-mount-initialize-and-format-a-volume)</br>[選用 ︰ 設定 MPIO](storsimple-configure-mpio-windows-server.md)            | 將您的伺服器連接至裝置提供的 iSCSI 儲存體。 選擇性地設定 MPIO 確保您的伺服器可以容許連結、網路和介面失敗。                                                                                                                                                              |
 | [步驟 8：進行備份](#step-8-take-a-backup)                                                                  | 設定備份原則以保護您的資料                                                                                                                 |
 |                                                                                        |                                                                                                                                                               |
 | **其他程序**                                                                   | 在您部署解決方案時可能需要參考這些程序。                                                                                        |
@@ -114,7 +114,7 @@ StorSimple Manager 服務可以管理多個 StorSimple 裝置。 請執行下列
 > [AZURE.IMPORTANT] 如果您未啟用自動建立儲存體帳戶與您的服務，您必須建立至少一個儲存體帳戶之後您已成功建立服務。 當您建立磁碟區容器時，將會使用此儲存體帳戶。 
 >
 > * 如果您未自動建立儲存體帳戶，請移至 [設定新的儲存體帳戶服務](#configure-a-new-storage-account-for-the-service) 如需詳細指示。 
-> * 如果您啟用自動建立儲存體帳戶，請移至 [步驟 2: 取得服務註冊金鑰](#step-2-get-the-service-registration-key)。
+> * 如果您啟用自動建立儲存體帳戶，請移至 [步驟 2 ︰ 取得服務註冊金鑰](#step-2-get-the-service-registration-key)。
 
 ## 步驟 2：取得服務註冊金鑰
 
@@ -244,4 +244,5 @@ StorSimple Manager 服務可以管理多個 StorSimple 裝置。 請執行下列
 
 使用 [StorSimple Manager 服務](storsimple-manager-service-administration.md) 來管理您的 StorSimple 裝置。
  
+
 

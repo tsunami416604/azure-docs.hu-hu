@@ -8,13 +8,13 @@
     editor=""/>
 
 <tags
-    ms.service="backup 」
-    ms.workload= 「 儲存體的備份復原的 」
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="11/26/2015 」
-    ms.author="jimpark 」。「 aashishr 」。「 sammehta 」。「 anuragm 」 / >
+    ms.date="11/26/2015"
+    ms.author="jimpark"; "aashishr"; "sammehta"; "anuragm"/>
 
 
 # 使用 PowerShell 部署和管理 Data Protection Manager (DPM) 伺服器的 Azure 備份
@@ -39,8 +39,8 @@ Sample DPM scripts: Get-DPMSampleScript
 ## 設定和註冊
 開始：
 
-1. [下載最新的 PowerShell](https://github.com/Azure/azure-powershell/releases) (所需的最低版本是: 1.0.0)
-2. 啟用 Azure 備份指令程式，藉由切換至 *AzureResourceManager* 模式使用 **Switch-azuremode** 指令程式:
+1. [下載最新的 PowerShell](https://github.com/Azure/azure-powershell/releases) (所需的最低版本是 ︰ 1.0.0)
+2. 啟用 Azure 備份指令程式，藉由切換至 *AzureResourceManager* 模式使用 **Switch-azuremode** 指令程式 ︰
 
 ```
 PS C:\> Switch-AzureMode AzureResourceManager
@@ -120,7 +120,7 @@ PS C:\> $credsfilename
 f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
 ```
 
-向保存庫註冊電腦是使用 [Start-dpmcloudregistration](https://technet.microsoft.com/library/jj612787) 指令程式:
+向保存庫註冊電腦是使用 [Start-dpmcloudregistration](https://technet.microsoft.com/library/jj612787) 指令程式 ︰
 
 ```
 PS C:\> $cred = $credspath + $credsfilename
@@ -132,7 +132,7 @@ PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredenti
 > [AZURE.IMPORTANT] 請勿使用相對路徑來指定保存庫認證檔。 您必須提供絕對路徑做為 Cmdlet 的輸入。
 
 ### 初始組態設定
-一旦向 Azure 備份保存庫註冊 DPM 伺服器，就會使用預設的訂用帳戶設定開始。 這些訂閱設定包括網路、加密和臨時區域。 若要開始變更訂用帳戶設定，您需要先取得現有 (預設) 設定使用的控制代碼 [Get-dpmcloudsubscriptionsetting](https://technet.microsoft.com/library/jj612793) 指令程式:
+一旦向 Azure 備份保存庫註冊 DPM 伺服器，就會使用預設的訂用帳戶設定開始。 這些訂閱設定包括網路、加密和臨時區域。 若要開始變更訂用帳戶設定，您需要先取得現有 （預設） 設定使用的控制代碼 [Get-dpmcloudsubscriptionsetting](https://technet.microsoft.com/library/jj612793) 指令程式 ︰
 
 ```
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
@@ -248,7 +248,7 @@ PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Onl
 PS C:\> Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-移至 Azure 的備份 (DPM 參照這些稱為線上備份)，保留範圍可設定為 [長期使用祖父位父親的兒子配置 (GFS) 保留](backup-azure-backup-cloud-as-tape.md)。 也就是說，您可以定義結合的保留原則，包含每日、每週、每月和每年保留原則。 在此範例中，我們建立陣列，表示我們所需的複雜保留配置，然後設定 [保留範圍使用 [Set-dpmpolicyobjective](https://technet.microsoft.com/library/hh881762) 指令程式。
+移至 Azure 的備份 （DPM 參照這些稱為線上備份），保留範圍可設定為 [長期使用祖父位父親的兒子配置 (GFS) 保留](backup-azure-backup-cloud-as-tape.md)。 也就是說，您可以定義結合的保留原則，包含每日、每週、每月和每年保留原則。 在此範例中，我們建立陣列，表示我們所需的複雜保留配置，然後設定 [保留範圍使用 [Set-dpmpolicyobjective](https://technet.microsoft.com/library/hh881762) 指令程式。
 
 ```
 PS C:\> $RRlist = @()
@@ -287,7 +287,7 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
 ### 變更 DPM 複本和復原點磁碟區的大小
-您也可以變更 DPM 複本磁碟區，以及陰影複製磁碟區使用的大小 [組 DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) 指令程式，如以下範例:
+您也可以變更 DPM 複本磁碟區，以及陰影複製磁碟區使用的大小 [組 DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) 指令程式，如以下範例 ︰
 Get-datasourcediskallocation Datasource $DS
 Set-datasourcediskallocation Get-datasource $DS Get-protectiongroup $MPG-手動 ReplicaArea (2 gb) ShadowCopyArea (2 gb)
 
@@ -298,7 +298,7 @@ Set-datasourcediskallocation Get-datasource $DS Get-protectiongroup $MPG-手動 
 PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 ## 檢視備份點
-您可以使用 [Get-dpmrecoverypoint](https://technet.microsoft.com/library/hh881746) cmdlet 來取得資料來源所有復原點的清單。 在此範例中，我們將:
+您可以使用 [Get-dpmrecoverypoint](https://technet.microsoft.com/library/hh881746) cmdlet 來取得資料來源所有復原點的清單。 在此範例中，我們將 ︰
 - 這會儲存在陣列中的 DPM 伺服器上擷取所有的 Pg ```$PG```
 - 取得對應至資料來源 ```$PG[0]```
 - 取得資料來源所有復原點。
@@ -333,4 +333,5 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 ## 後續步驟
 
 - 關於 Azure 備份 dpm 的詳細資訊請參閱 [DPM 備份簡介](backup-azure-dpm-introduction.md)
+
 

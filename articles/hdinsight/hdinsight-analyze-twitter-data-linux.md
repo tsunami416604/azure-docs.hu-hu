@@ -21,7 +21,7 @@
 
 在本文件中，您將會使用 Twitter 串流 API 取得推文，然後在以 Linux 為基礎的 HDInsight 叢集上使用 Apache Hive 處理 JSON 格式化的資料。 結果會是傳送最多包含特定文字推文的 Twitter 使用者清單。
 
-> [AZURE.NOTE] 雖然您可以使用這份文件的個別項目以 Windows 為基礎的 HDInsight 叢集 (Python 與 Hive 範例)，許多步驟根據使用以 Linux 為基礎的 HDInsight 叢集。 如需特定步驟以 Windows 為基礎的叢集，請參閱 [在 HDInsight 中使用 Hive 分析 Twitter 資料](hdinsight-analyze-twitter-data.md)。
+> [AZURE.NOTE] 雖然您可以使用這份文件的個別項目以 Windows 為基礎的 HDInsight 叢集 （Python 與 Hive 範例），許多步驟根據使用以 Linux 為基礎的 HDInsight 叢集。 如需特定步驟以 Windows 為基礎的叢集，請參閱 [在 HDInsight 中使用 Hive 分析 Twitter 資料](hdinsight-analyze-twitter-data.md)。
 
 ###必要條件
 
@@ -49,11 +49,11 @@ Twitter 可讓您擷取 [每則推文資料](https://dev.twitter.com/docs/platfo
 2. 按一下 [ **建立新的應用程式**。
 3. 輸入 **名稱**, ，**描述**, ，**網站**。 您可以自行設定 URL **網站** 欄位。 下表列出部分要使用的範例值：
 
-    | 欄位 | 值 |
-    |:----- |:----- |
-    | 名稱  | MyHDInsightApp |
-    | 說明 | MyHDInsightApp |
-    | 網站 | http://www.myhdinsightapp.com |
+  	| 欄位 | 值 |
+  	|:----- |:----- |
+  	| 名稱  | MyHDInsightApp |
+  	| 說明 | MyHDInsightApp |
+  	| 網站 | http://www.myhdinsightapp.com |
     
 4. 檢查 **我同意**, ，然後按一下 [ **建立 Twitter 應用程式**。
 5. 按一下 [ **權限** ] 索引標籤。 預設權限是 **唯讀**。 本教學課程使用預設值即可。
@@ -294,7 +294,7 @@ Twitter 可讓您擷取 [每則推文資料](https://dev.twitter.com/docs/platfo
         
     這會載入 Hive 殼層，請執行 HiveQL __twitter.hql__ 檔案，並將最後傳回 `hive >` 提示字元。
     
-5. 從 `hive >` 提示字元中，使用下列命令以確認您可以選取從資料 __推文__ hiveql 中建立資料表 __twitter.hql__ 檔案:
+5. 從 `hive >` 提示字元中，使用下列命令以確認您可以選取從資料 __推文__ hiveql 中建立資料表 __twitter.hql__ 檔案 ︰
         
         SELECT name, screen_name, count(1) as cc
             FROM tweets
@@ -318,4 +318,5 @@ Twitter 可讓您擷取 [每則推文資料](https://dev.twitter.com/docs/platfo
 
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
+
 

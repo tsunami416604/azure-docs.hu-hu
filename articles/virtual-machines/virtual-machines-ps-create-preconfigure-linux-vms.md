@@ -74,13 +74,13 @@ Windows 型虛擬機器系列主題，請參閱 [使用 Azure PowerShell 建立 
 
 選擇兩個命令區塊的其中一個，啟動命令集 (必要)。
 
-**選項 1**: 指定虛擬機器名稱和大小。
+**選項 1**︰ 指定虛擬機器名稱和大小。
 
     $vmname="<machine name>"
     $vmsize="<Specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
     $vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
 
-**選項 2**: 指定名稱、 大小和可用性設定組名稱。
+**選項 2**︰ 指定名稱、 大小和可用性設定組名稱。
 
     $vmname="<machine name>"
     $vmsize="<Specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
@@ -92,18 +92,18 @@ D、 DS 或 G 系列虛擬機器的 InstanceSize 值，請參閱 [虛擬機器�
 
 ## 設定使用者存取安全性選項
 
-**選項 1**: 指定初始的 Linux 使用者名稱和密碼 (必要)。 選擇強式密碼。 若要檢查其強度，請參閱 [密碼檢查程式: 使用強式密碼](https://www.microsoft.com/security/pc-security/password-checker.aspx)。
+**選項 1**︰ 指定初始的 Linux 使用者名稱和密碼 （必要）。 選擇強式密碼。 若要檢查其強度，請參閱 [密碼檢查程式 ︰ 使用強式密碼](https://www.microsoft.com/security/pc-security/password-checker.aspx)。
 
     $cred=Get-Credential -Message "Type the name and password of the initial Linux account."
     $vm1 | Add-AzureProvisioningConfig -Linux -LinuxUser $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 
-**選項 2**: 指定在訂閱中的已部署的 SSH 金鑰組。
+**選項 2**︰ 指定在訂閱中的已部署的 SSH 金鑰組。
 
     $vm1 | Add-AzureProvisioningConfig -Linux -SSHKeyPairs "<SSH key pairs>"
 
 如需詳細資訊，請參閱 [如何在 Azure 上的 Linux 使用 SSH](virtual-machines-linux-use-ssh-key.md)。
 
-**選項 3**: 在訂閱中指定的已部署的 SSH 公開金鑰清單。
+**選項 3**︰ 在訂閱中指定的已部署的 SSH 公開金鑰清單。
 
     $vm1 | Add-AzureProvisioningConfig -Linux - SSHPublicKeys "<SSH public keys>"
 
@@ -155,13 +155,13 @@ Linux 型虛擬機器的其他預先組態選項，請參閱的語法 **Linux** 
 
 選擇下列其中一個命令區塊，以新增區塊至命令集來啟動虛擬機器建立程序。
 
-**選項 1**: 在現有的雲端服務中建立虛擬機器。
+**選項 1**︰ 在現有的雲端服務中建立虛擬機器。
 
     New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
 雲端服務的簡短名稱出現於 Azure 傳統入口網站內的 Azure 雲端服務清單，或出現於 Azure 入口網站的資源群組清單中。
 
-**選項 2**: 在現有的雲端服務和虛擬網路中建立虛擬機器。
+**選項 2**︰ 在現有的雲端服務和虛擬網路中建立虛擬機器。
 
     $svcname="<short name of the cloud service>"
     $vnetname="<name of the virtual network>"
@@ -279,4 +279,5 @@ Linux 型虛擬機器的其他預先組態選項，請參閱的語法 **Linux** 
 [如何登入執行 Linux 的虛擬機器](virtual-machines-linux-how-to-log-on.md)
 
 [使用 Azure PowerShell 建立和預先設定以 Windows 為基礎的虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)
+
 

@@ -65,3 +65,4 @@ properties 元素包含第二個資源的識別碼。
 - 您也可以使用標記來組織您的資源。 若要深入了解標記資源，請參閱 [使用標記來組織您的資源](resource-group-using-tags.md)。
 - 如需如何建立範本，並定義要部署資源的說明，請參閱 [編寫範本](resource-group-authoring-templates.md)。
 
+

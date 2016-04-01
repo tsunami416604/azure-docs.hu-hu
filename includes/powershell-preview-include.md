@@ -4,3 +4,4 @@
 >
 > 新功能只會加入到 1.0 發行版本。 如需 1.0 版，包括如何安裝和解除安裝版本，請參閱 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
 
+

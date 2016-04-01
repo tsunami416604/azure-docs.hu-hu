@@ -1,12 +1,12 @@
 <properties 
-    pageTitle ="Python web 應用程式 Linux 上搭配 Django |Microsoft Azure 「 
-    描述 = 「 了解如何裝載 Django 型 web 應用程式上使用 Linux 虛擬機器 」。 
-    服務 = 「 虛擬機器 」 
+    pageTitle="在 Linux 上搭配 Django 的 Python Web 應用程式 | Microsoft Azure" 
+    description="了解如何使用 Linux 虛擬機器，在 Azure 上裝載 Django 型 Web 應用程式。" 
+    services="virtual-machines" 
     documentationCenter="python" 
     authors="huguesv" 
     manager="wpickett" 
-    編輯器 =""
-    標記 ="azure-服務管理的 「 / >
+    editor=""
+    tags=“azure-service-management"/>
 
 <tags 
     ms.service="virtual-machines" 
@@ -55,7 +55,7 @@ Azure 裝載 Django 型網站。 本教學課程假設您先前沒有使用 Azur
 
 ## <a id="setup"> </a>設定開發環境
 
-**注意:** 如果您需要安裝 Python 或想要使用用戶端程式庫，請參閱 [Python 安裝指南](../python-how-to-install.md)。
+**注意 ︰** 如果您需要安裝 Python 或想要使用用戶端程式庫，請參閱 [Python 安裝指南](../python-how-to-install.md)。
 
 Ubuntu Linux VM 已經預先安裝 Python 2.7，但是並未安裝 Apache 或 Django。  請按照下列步驟連線至您的 VM 以安裝 Apache 和 Django。
 
@@ -84,7 +84,7 @@ Ubuntu Linux VM 已經預先安裝 Python 2.7，但是並未安裝 Apache 或 Dj
         $ cd /var/www
         $ sudo django-admin.py startproject helloworld
 
-     **Django-admin.py** 指令碼會產生 Django 型網站的基本結構:
+     **Django-admin.py** 指令碼會產生 Django 型網站的基本結構 ︰
     -   **helloworld/manage.py** 可協助您開始裝載及停止裝載 Django 型網站
     -   **helloworld/helloworld/settings.py** 包含您的應用程式的 Django 設定。
     -   **helloworld/helloworld/urls.py** 包含每個 url 與其檢視之間的對應碼。
@@ -96,7 +96,7 @@ Ubuntu Linux VM 已經預先安裝 Python 2.7，但是並未安裝 Apache 或 Dj
             html = "<html><body>Hello World!</body></html>"
             return HttpResponse(html)
 
-1.  現在的內容取代 **urls.py** 取代為下列檔案:
+1.  現在的內容取代 **urls.py** 取代為下列檔案 ︰
 
         from django.conf.urls import patterns, url
         urlpatterns = patterns('',
@@ -130,4 +130,5 @@ Ubuntu Linux VM 已經預先安裝 Python 2.7，但是並未安裝 Apache 或 Dj
 ## 關閉 Azure 虛擬機器
 
 完成本教學課程時，請關閉並/或移除新建立的 Azure 虛擬機器釋出資源供其他教學課程使用，並避免產生 Azure 使用的費用。
+
 

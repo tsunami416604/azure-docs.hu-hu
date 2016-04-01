@@ -81,8 +81,8 @@ A **CloudQueueClient** 物件可讓您取得佇列的參照物件。
 
 若要將訊息插入現有佇列，請先建立新的
 **CloudQueueMessage**。 接下來，呼叫 **AddMessage** 方法。 A
-**CloudQueueMessage** 可以從其中建立字串 (採用 utf-8 格式
-格式) 或 **位元組** 陣列。 以下是建立佇列 (如果
+**CloudQueueMessage** 可以從其中建立字串 （採用 utf-8 格式
+格式） 或 **位元組** 陣列。 以下是建立佇列 (如果
 佇列不存在) 並插入訊息 'Hello, World' 的程式碼：
 
     // Retrieve storage account from connection string.
@@ -186,7 +186,7 @@ A **CloudQueueClient** 物件可讓您取得佇列的參照物件。
 
 ## 搭配通用佇列儲存體 API 使用 Async-Await 模式
 
-這個範例示範如何搭配通用佇列儲存體 API 使用 Async-Await 模式。 此範例會呼叫每個指定方法的非同步版本由 *非同步* 後置字元的每個方法。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [Async 和 Await (C# 和 Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
+這個範例示範如何搭配通用佇列儲存體 API 使用 Async-Await 模式。 此範例會呼叫每個指定方法的非同步版本由 *非同步* 後置字元的每個方法。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [Async 和 Await （C# 和 Visual Basic）](https://msdn.microsoft.com/library/hh191443.aspx)
 
     // Create the queue if it doesn't already exist
     if(await queue.CreateIfNotExistsAsync())
@@ -311,4 +311,5 @@ A **CloudQueueClient** 物件可讓您取得佇列的參照物件。
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
  
+
 

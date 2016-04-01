@@ -36,7 +36,7 @@
 + [Azure 儲存體帳戶](../storage-create-storage-account.md)
 + 連接到電腦的相機或其他影像擷取裝置。
 
-本教學課程會以行動服務快速入門為基礎。 在開始本教學課程之前，您必須先完成 [開始使用行動服務]。 
+本教學課程會以行動服務快速入門為基礎。 在開始本教學課程之前，您必須先完成 [Get started with Mobile Services]。 
 
 ##在 Azure 傳統入口網站中更新已註冊的插入指令碼
 
@@ -48,7 +48,7 @@
 
 您現在已藉由整合行動服務與 Blob 服務，而能夠安全地上傳影像，請參閱其他後端服務和整合主題：
 
-+ [行動服務中排程後端工作]
++ [在行動服務中排程後端工作]
 
     了解如何使用行動服務工作排程器功能，定義可依您定義的排程執行的伺服器指令碼。
 
@@ -56,7 +56,7 @@
 
     參考使用伺服器指令碼來執行伺服器端工作以及與其他 Azure 元件和外部資源整合的主題。
  
-+ [行動服務.NET 作法概念參考資料]
++ [行動服務 .NET 作法概念性參考]
 
     深入了解如何搭配使用行動服務與 .NET
   
@@ -84,3 +84,4 @@
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
  
+

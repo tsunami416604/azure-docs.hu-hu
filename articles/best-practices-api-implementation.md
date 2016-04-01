@@ -46,11 +46,11 @@
     );
     ```
 
-    路由可以是泛型，例如包含常值 _api_ 和變數，例如 _{控制器}_ 和 _{id}_。 以慣例為基礎的路由可讓路由的一些項目成為選擇性項目。 Web API 架構會比對要求中的 HTTP 方法與 API 中方法名稱的初始部分，然後比對任何選擇性參數，以決定要在控制器中叫用的方法。 例如，如果控制站命名 _訂單_ 包含方法 _getallorders ()_ 或 _GetOrderByInt (int id)_ 然後 GET 要求 _http://www.adventure-works.com/api/orders/_ 會導向至 _getalllorders ()_ 和 GET 要求 _http://www.adventure-works.com/api/orders/99_ 會路由傳送至方法 _GetOrderByInt (int id)_。 如果控制器中沒有以前置詞 Get 開頭的相符方法，則 Web API 架構會以 HTTP 405 (不允許的方法) 訊息回覆。 此外，路由表中指定的參數 (id) 名稱必須是相同的參數名稱 _GetOrderById_ 方法，否則 Web API 架構會以 HTTP 404 (找不到) 回應回覆。
+    路由可以是泛型，例如包含常值 _api_ 和變數，例如 _{控制器}_ 和 _{id}_。 以慣例為基礎的路由可讓路由的一些項目成為選擇性項目。 Web API 架構會比對要求中的 HTTP 方法與 API 中方法名稱的初始部分，然後比對任何選擇性參數，以決定要在控制器中叫用的方法。 例如，如果控制站命名 _訂單_ 包含方法 _getallorders （)_ 或 _GetOrderByInt (int id)_ 然後 GET 要求 _http://www.adventure-works.com/api/orders/_ 會導向至 _getalllorders （)_ 和 GET 要求 _http://www.adventure-works.com/api/orders/99_ 會路由傳送至方法 _GetOrderByInt (int id)_。 如果控制器中沒有以前置詞 Get 開頭的相符方法，則 Web API 架構會以 HTTP 405 (不允許的方法) 訊息回覆。 此外，路由表中指定的參數 (id) 名稱必須是相同的參數名稱 _GetOrderById_ 方法，否則 Web API 架構會以 HTTP 404 （找不到） 回應回覆。
 
     相同的規則適用於 POST、 PUT 和 DELETE HTTP 要求。更新訂單 101 詳細資料的 PUT 要求會導向至 URI _http://www.adventure-works.com/api/orders/101_, 訊息的本文會包含新順序的詳細資料，這項資訊將做為參數傳遞至 orders 控制器，以名稱開頭為具有前置詞中的方法 _放_, ，例如 _PutOrder_。
 
-    預設路由表不會比對參考 RESTful web API 中的子資源，例如要求 _http://www.adventure-works.com/api/customers/1/orders_ (尋找由客戶 1 所下的所有訂單的詳細資料)。 若要處理這些情況，您可以將自訂路由加入至路由資料表：
+    預設路由表不會比對參考 RESTful web API 中的子資源，例如要求 _http://www.adventure-works.com/api/customers/1/orders_ （尋找由客戶 1 所下的所有訂單的詳細資料）。 若要處理這些情況，您可以將自訂路由加入至路由資料表：
 
     ```C#
     config.Routes.MapHttpRoute(
@@ -76,7 +76,7 @@
     }
     ```
 
-    > [AZURE.TIP] 利用預設路由可能的話，應避免定義許多複雜的自訂路由，因為這可能會導致損毀 (它是很容易就能將方法加入至導致模稜兩可路由的控制器) 和 (路由表越大，Web API 架構必須找出哪個路由符合指定的 URI 執行更多工作) 的效能降低。 簡化 API 和路由。 如需詳細資訊，請參閱＜API 設計指引＞中的＜組織以資源為主的 Web API＞一節。 如果您必須定義自訂路由，比較理想的方法是使用以屬性為基礎的路由 (本節稍後說明)。
+    > [AZURE.TIP] 利用預設路由可能的話，應避免定義許多複雜的自訂路由，因為這可能會導致損毀 （它是很容易就能將方法加入至導致模稜兩可路由的控制器） 和 （路由表越大，Web API 架構必須找出哪個路由符合指定的 URI 執行更多工作） 的效能降低。 簡化 API 和路由。 如需詳細資訊，請參閱＜API 設計指引＞中的＜組織以資源為主的 Web API＞一節。 如果您必須定義自訂路由，比較理想的方法是使用以屬性為基礎的路由 (本節稍後說明)。
 
     如需以慣例為基礎的路由的詳細資訊，請參閱頁面 [ASP.NET Web API 中路由](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api) Microsoft 網站上。
 
@@ -302,7 +302,7 @@
 
     範例 HTTP 回應中所示的 HATEOAS 連結表示用戶端應用程式可以執行下列作業：
 
-    - URI 的 HTTP GET 要求 _http://adventure-works.com/customers/2_ 擷取的客戶 (再次) 的詳細資料。 此資料可以 XML 或 JSON 格式傳回。
+    - URI 的 HTTP GET 要求 _http://adventure-works.com/customers/2_ 擷取的客戶 （再次） 的詳細資料。 此資料可以 XML 或 JSON 格式傳回。
 
     - URI 的 HTTP PUT 要求 _http://adventure-works.com/customers/2_ 用以修改客戶的詳細資料。 新資料必須在要求訊息中以 x-www-form-urlencoded 格式提供。
 
@@ -477,7 +477,7 @@
 
 - **提供 Etag 來最佳化查詢處理**。
 
-    當用戶端應用程式擷取物件時，也可以包含回應訊息 _ETag_ (實體標記)。 ETag 是不透明的字串，可指出資源的版本；每次資源變更時，也會修改 Etag。 用戶端應用程式應將此 ETag 當作資料的一部分快取。 下列程式碼範例示範如何加入 ETag 作為 HTTP GET 要求之回應的一部分。 此程式碼使用物件的 `GetHashCode` 方法來產生數值，以識別此物件 (您可以視需要覆寫此方法，並使用諸如 MD5 的演算法來產生自己的雜湊)：
+    當用戶端應用程式擷取物件時，也可以包含回應訊息 _ETag_ （實體標記）。 ETag 是不透明的字串，可指出資源的版本；每次資源變更時，也會修改 Etag。 用戶端應用程式應將此 ETag 當作資料的一部分快取。 下列程式碼範例示範如何加入 ETag 作為 HTTP GET 要求之回應的一部分。 此程式碼使用物件的 `GetHashCode` 方法來產生數值，以識別此物件 (您可以視需要覆寫此方法，並使用諸如 MD5 的演算法來產生自己的雜湊)：
 
     ```C#
     public class OrdersController : ApiController
@@ -781,7 +781,7 @@
     }
     ```
 
-    在此範例中， `ConnectBlobToContainer` 是 Azure Blob 儲存體中的 helper 方法，連接到指定的容器 (未顯示的名稱)。 `BlobExists` 是另一個 helper 方法會傳回布林值，指出具有指定名稱的 blob 是否存在於 blob 儲存體容器。
+    在此範例中， `ConnectBlobToContainer` 是 Azure Blob 儲存體中的 helper 方法，連接到指定的容器 （未顯示的名稱）。 `BlobExists` 是另一個 helper 方法會傳回布林值，指出具有指定名稱的 blob 是否存在於 blob 儲存體容器。
 
     每個產品都有自己的映像保留在 blob 儲存體中。 `FileDownloadResult` 類別是自訂 `IHttpActionResult` 類別，可使用 `PushStreamContent` 物件從適當的 Blob 讀取映像資料，並以非同步方式傳輸為回應訊息的內容：
 
@@ -955,7 +955,7 @@
 
     6. 當工作正在執行時，用戶端可以繼續執行自己的處理。 它可以定期將要求傳送至 URI _/polling/{guid} {guid}_ 其中 _{guid}_ 傳回的 GUID 202 回應訊息中的 web API。
 
-    7. 在 web API _輪詢 {guid} /_ URI 查詢資料表中對應工作的狀態，並傳回回應訊息的 HTTP 狀態碼 200 (確定)，其中包含此狀態 (_執行_, ，_完成_, ，或 _失敗_)。 如果工作已完成或失敗，回應訊息也可以包含處理的結果或任何有關失敗原因的可用資訊。
+    7. 在 web API _輪詢 {guid} /_ URI 查詢資料表中對應工作的狀態，並傳回回應訊息的 HTTP 狀態碼 200 （確定），其中包含此狀態 (_執行_, ，_完成_, ，或 _失敗_)。 如果工作已完成或失敗，回應訊息也可以包含處理的結果或任何有關失敗原因的可用資訊。
 
     如果您偏向實作通知，可用的選項包括：
 
@@ -1009,7 +1009,7 @@ Web API 的本質帶來自己額外的需求，以便確認運作正常。 您�
 
 - 測試所有路由以確認它們叫用正確的作業。 請特別留意意外傳回的 HTTP 狀態碼 405 (不允許的方法)，因為這可能表示路由與可分派到該路由的 HTTP 方法 (GET、POST、PUT、DELETE) 不相符。
 
-    將 HTTP 要求傳送到不提供支援的路由，例如將 POST 要求提交至特定資源 (POST 要求只能傳送至資源集合)。 在這些情況下，唯一有效的回應 _應該_ 是狀態碼 405 (不允許)。
+    將 HTTP 要求傳送到不提供支援的路由，例如將 POST 要求提交至特定資源 (POST 要求只能傳送至資源集合)。 在這些情況下，唯一有效的回應 _應該_ 是狀態碼 405 （不允許）。
 
 - 確認所有路由都得到適當保護，而且都遵守適當的驗證和授權檢查。
 
@@ -1151,4 +1151,5 @@ Azure 管理入口網站可讓您自訂開發人員入口網站來變更樣式�
 -  [Application Insights-開始監控應用程式的健全狀況和使用量](app-insights-start-monitoring-app-health-usage.md) Microsoft 網站上的頁面提供有關安裝和設定 Application Insights 中 ASP.NET Web API 專案的詳細的資訊。
 - 頁面 [使用單元測試驗證程式碼](https://msdn.microsoft.com/library/dd264975.aspx) Microsoft 網站提供建立和管理使用 Visual Studio 單元測試的詳細的資訊。
 - 頁面 [發行前先對應用程式執行效能測試](https://msdn.microsoft.com/library/dn250793.aspx) microsoft 網站將告訴您如何使用 Visual Studio Ultimate 建立 web 效能和負載測試專案。
+
 

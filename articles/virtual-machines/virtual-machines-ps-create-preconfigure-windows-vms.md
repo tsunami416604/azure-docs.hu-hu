@@ -105,7 +105,7 @@ D、 DS 或 G 系列虛擬機器的 InstanceSize 值，請參閱 [虛擬機器�
     $cred=Get-Credential -Message "Type the name and password of the local administrator account."
     $vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 
- 選擇強式密碼。 若要檢查其強度，請參閱 [密碼檢查程式: 使用強式密碼](https://www.microsoft.com/security/pc-security/password-checker.aspx)。
+ 選擇強式密碼。 若要檢查其強度，請參閱 [密碼檢查程式 ︰ 使用強式密碼](https://www.microsoft.com/security/pc-security/password-checker.aspx)。
 
 (選擇性) 若要將 Windows 電腦加入現有的 Active Directory 網域，請指定本機系統管理員帳戶和密碼、網域，以及網域帳戶的名稱和密碼。
 
@@ -264,6 +264,7 @@ Windows 型虛擬機器的其他預先組態選項，請參閱的語法 **Window
 [Azure 虛擬機器的概觀](http://msdn.microsoft.com/library/azure/jj156143.aspx)
 
 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)
+
 
 
 

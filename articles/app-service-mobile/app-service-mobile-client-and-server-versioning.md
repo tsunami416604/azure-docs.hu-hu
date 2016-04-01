@@ -25,7 +25,7 @@ Azure 行動服務的最新版本是 **行動應用程式** Azure 應用程式�
 
 行動應用程式的用戶端與伺服器 Sdk 會原本基礎行動服務中，但它們是 *不* 彼此相容。 也就是說，您必須使用 *行動應用程式* 用戶端 SDK 與 *行動應用程式* 伺服器 SDK，同樣地， *行動電話服務*。 您可以透過用戶端和伺服器 SDK 所使用的特殊標頭值 `ZUMO-API-VERSION` 來強制執行。
 
-注意: 當本文件是指 *行動電話服務* 後端，它不一定需要行動服務代管。 您就可以移轉不變更任何程式碼的情況下執行應用程式服務的行動服務，但服務仍會使用 *行動電話服務*  SDK 版本。
+注意 ︰ 當本文件是指 *行動電話服務* 後端，它不一定需要行動服務代管。 您就可以移轉不變更任何程式碼的情況下執行應用程式服務的行動服務，但服務仍會使用 *行動電話服務*  SDK 版本。
 
 若要深入了解移轉至應用程式服務不需要變更任何程式碼，請參閱文章 [Migrate a Mobile Service to Azure App Service]。
 
@@ -67,7 +67,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 下表中的用戶端 Sdk 會相容於 **行動電話服務**。
 
-注意: 行動服務用戶端 Sdk *不* 傳送標頭值 `ZUMO-API-VERSION`。 如果服務收到此標頭或查詢字串值，將會傳回錯誤，除非您如上面所述明確選擇不要進行檢查。
+注意 ︰ 行動服務用戶端 Sdk *不* 傳送標頭值 `ZUMO-API-VERSION`。 如果服務收到此標頭或查詢字串值，將會傳回錯誤，除非您如上面所述明確選擇不要進行檢查。
 
 ### <a name="MobileServicesClients"></a> 行動 *服務* 用戶端 Sdk
 
@@ -83,7 +83,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 | 伺服器平台  | 版本                                                                                                        | 接受的版本標頭 |
 | ---------------- | ------------------------------------------------------------                                                   | ----------------------- |
 | .NET             | [WindowsAzure.MobileServices.Backend.* 版本 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) | * * 沒有版本標頭 * * |
-| Node.js          | (即將推出)                        | **任何版本標頭** |
+| Node.js          | （即將推出）                        | **任何版本標頭** |
 
 <!-- TODO: add Node npm version -->
 
@@ -95,7 +95,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 | 任何值        | True                         | 200 - 確定 |
 | 任何值        | False/未指定          | 400 - 不正確的要求 | 
 
-## <a name="2.0.0"></a>Azure 行動應用程式用戶端和伺服器
+## <a name="2.0.0"></a>Azure Mobile Apps 用戶端和伺服器
 
 ### <a name="MobileAppsClients"></a> 行動 *應用程式* 用戶端 Sdk
 
@@ -140,5 +140,6 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Migrate a Mobile Service to Azure App Service]: app-service-mobile-migrating-from-mobile-services.md
+
 
 

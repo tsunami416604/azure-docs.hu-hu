@@ -11,7 +11,7 @@
     }
     ```
 
-2. 加入下列程式碼以 **ShowIoTHubKeys** 方法，以列印到主控台的驗證金鑰:
+2. 加入下列程式碼以 **ShowIoTHubKeys** 方法，以列印到主控台的驗證金鑰 ︰
 
     ```
     client.HttpClient.DefaultRequestHeaders.Authorization = 
@@ -24,3 +24,4 @@
     Console.WriteLine("Keys: {0}, 
         httpsRepsonse.Content.ReadAsStringAsync().Result);
     ```
+

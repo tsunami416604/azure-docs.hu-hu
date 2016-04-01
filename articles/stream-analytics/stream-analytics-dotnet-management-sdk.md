@@ -61,7 +61,7 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
         Install-Package Microsoft.Azure.Management.StreamAnalytics
         Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-4. 新增下列 **appSettings** 區段加入 App.config 檔案:
+4. 新增下列 **appSettings** 區段加入 App.config 檔案 ︰
 
         <appSettings>
           <!--CSM Prod related values-->
@@ -79,7 +79,7 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
 
         Get-AzureAccount
 
-5. 新增下列 **使用** 原始程式檔 (Program.cs) 專案中的陳述式:
+5. 新增下列 **使用** 原始程式檔 (Program.cs) 專案中的陳述式 ︰
 
         using System;
         using System.Configuration;
@@ -132,7 +132,7 @@ Azure 資料流分析是完全受管理的服務，可用來對雲端中的串�
 
 A **StreamAnalyticsManagementClient** 物件可讓您管理工作和工作元件，例如輸入、 輸出和轉換。
 
-將下列程式碼加入至開頭 **Main** 方法:
+將下列程式碼加入至開頭 **Main** 方法 ︰
 
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
@@ -363,4 +363,5 @@ A **StreamAnalyticsManagementClient** 物件可讓您管理工作和工作元件
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+
 

@@ -34,9 +34,9 @@
 
 1. 安裝 .NET Framework 4 或更新版本 (包含 MSBuild)。
 
-1. 安裝 [Azure 製作工具](http://go.microsoft.com/fwlink/?LinkId=394615) (尋找 microsoftazureauthoringtools-x64.msi 或 microsoftazureauthoringtools-x86.msi。
+1. 安裝 [Azure 製作工具](http://go.microsoft.com/fwlink/?LinkId=394615) （尋找 microsoftazureauthoringtools-x64.msi 或 microsoftazureauthoringtools-x86.msi。
 
-1. 安裝 [Azure Libraries for.NET](http://go.microsoft.com/fwlink/?LinkId=394616) (尋找 microsoftazurelibsfornet-x64.msi 或 MicrosoftAzureLibs x86.msi。
+1. 安裝 [Azure Libraries for.NET](http://go.microsoft.com/fwlink/?LinkId=394616) （尋找 microsoftazurelibsfornet-x64.msi 或 MicrosoftAzureLibs x86.msi。
 
 1. 複製另一部電腦上 Visual Studio 安裝的 Microsoft.WebApplication.targets 檔案。
 
@@ -61,4 +61,5 @@
 ## Deployment
 
 建立封裝之後，您可以將它部署至 Azure。 如需示範該程序的教學課程，請參閱 Azure 網站。 如需有關如何自動化這個程序的資訊，請參閱 [Azure 中雲端服務的連續傳遞](../cloud-services/cloud-services-dotnet-continuous-delivery)。
+
 

@@ -73,7 +73,7 @@
 
 | 內容管理選項                                                               | 優點                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 缺點                                                                                                                                                                                                                               |
 |------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 集中式的內部部署 (Active Directory Rights Management Server)                      | 負責將資料分類的伺服器基礎結構的完整控制權 <br> 在 Windows Server 中，不需要額外的授權或訂閱的內建功能 <br> 可以與混合式案例中的 Azure AD 整合 <br> Microsoft 線上服務，例如 Exchange Online 和 SharePoint Online 以及 Office 365 中支援的資訊版權管理 (IRM) 功能 <br> 支援內部部署 Microsoft 伺服器產品，例如 Exchange Server、 SharePoint Server 以及執行 Windows Server 和檔案分類基礎結構 (FCI) 的檔案伺服器。 | 更高版本，維護 (保留安裝的更新、 設定與升級)，因為 IT 擁有該伺服器 <br> 需要伺服器基礎結構內部部署<br> Doesn'tleverage 的 Azure 功能原生                                     |
+| 集中式的內部部署 (Active Directory Rights Management Server)                      | 負責將資料分類的伺服器基礎結構的完整控制權 <br> 在 Windows Server 中，不需要額外的授權或訂閱的內建功能 <br> 可以與混合式案例中的 Azure AD 整合 <br> Microsoft 線上服務，例如 Exchange Online 和 SharePoint Online 以及 Office 365 中支援的資訊版權管理 (IRM) 功能 <br> 支援內部部署 Microsoft 伺服器產品，例如 Exchange Server、 SharePoint Server 以及執行 Windows Server 和檔案分類基礎結構 (FCI) 的檔案伺服器。 | 更高版本，維護 （保留安裝的更新、 設定與升級），因為 IT 擁有該伺服器 <br> 需要伺服器基礎結構內部部署<br> Doesn'tleverage 的 Azure 功能原生                                     |
 | 集中於雲端 (Azure RMS)                                                     | 更輕鬆地管理相較於內部部署解決方案 <br> 可以與混合式案例中的 AD DS 整合 <br>  完全與 Azure AD 整合 <br> 不需要伺服器的內部部署服務 <br> 支援內部部署 Microsoft 伺服器產品，例如 Exchange Server、 SharePoint、 伺服器和執行 Windows Server 和檔案分類基礎結構 (FCI) 的檔案伺服器 <br> IT 可以擁有其租用戶金鑰 BYOK 功能的完整控制權。                                                                                    | 您的組織必須具有支援 RMS 的雲端訂閱 <br> 您的組織必須具備 Azure AD 目錄才能支援 RMS 的使用者驗證                                                                                  |
 | 混合式 (Azure RMS 與內部部署 Active Directory Rights Management Server 整合) | 這種情況下結合了集中式內部部署和雲端兩者的優點。                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | 您的組織必須具有支援 RMS 的雲端訂閱 <br> 您的組織必須具備 Azure AD 目錄才能支援 RMS，使用者驗證 <br> 需要 Azure 雲端服務之間的連接和內部基礎結構 |
 
@@ -84,7 +84,7 @@
 
 集中式管理以及與其他目錄的完全整合
 
-Azure Active Directory 可為數千個 SaaS 應用程式和內部部署 Web 應用程式提供單一登入。 請閱讀 [Azure Active Directory 同盟相容性清單: 可用來實作單一登入的協力廠商身分識別提供者](https://msdn.microsoft.com/library/azure/jj679342.aspx) 如需詳細資訊 SSO 協力廠商都經過 microsoft 測試文件。 這項功能可讓組織實作各種 B2B 案例，同時得以控制身分識別和存取管理。 不過，在 B2B 期間，要了解合作夥伴所將使用的驗證方法驗證，並驗證 Azure 是否支援此方法，設計程序是很重要的。 以下是 Azure AD 目前支援的方法：
+Azure Active Directory 可為數千個 SaaS 應用程式和內部部署 Web 應用程式提供單一登入。 請閱讀 [Azure Active Directory 同盟相容性清單 ︰ 可用來實作單一登入的協力廠商身分識別提供者](https://msdn.microsoft.com/library/azure/jj679342.aspx) 如需詳細資訊 SSO 協力廠商都經過 microsoft 測試文件。 這項功能可讓組織實作各種 B2B 案例，同時得以控制身分識別和存取管理。 不過，在 B2B 期間，要了解合作夥伴所將使用的驗證方法驗證，並驗證 Azure 是否支援此方法，設計程序是很重要的。 以下是 Azure AD 目前支援的方法：
 
 - 安全性判斷提示標記語言 (SAML)
 - OAuth
@@ -108,38 +108,38 @@ Azure Active Directory 可為數千個 SaaS 應用程式和內部部署 Web 應�
 圖 X 中顯示的每個互動，分別代表 Azure AD 可以涵蓋的一個存取控制案例。 每個案例的說明如下：
 
 1. 內部部署裝載之應用程式的條件式存取：您可以使用已註冊的裝置搭配適用於已設定為使用 AD FS with Windows Server 2012 R2 之應用程式的存取原則。 如需條件式存取的內部部署上設定的詳細資訊，請參閱 [設定內部部署條件式存取使用 Azure Active Directory 裝置註冊](active-directory-conditional-access-on-premises-setup.md)。 
-2. 存取控制以 Azure 管理入口網站: Azure 也能夠使用 RBAC (角色型存取控制)，以控制能夠存取管理入口網站。 此方法可讓公司限制個人存取 Azure 管理入口網站之後可執行的作業數量。 使用 RBAC 來控制存取入口網站時，IT 系統管理員可以利用下列存取管理方法來委派存取：
+2. 存取控制以 Azure 管理入口網站 ︰ Azure 也能夠使用 RBAC （角色型存取控制），以控制能夠存取管理入口網站。 此方法可讓公司限制個人存取 Azure 管理入口網站之後可執行的作業數量。 使用 RBAC 來控制存取入口網站時，IT 系統管理員可以利用下列存取管理方法來委派存取：
 
  - 群組型角色指派：您可以指派存取權給可從本機 Active Directory 同步處理的 Azure AD 群組。 這可讓您運用組織目前在群組管理工具和程序方面所做的投資。 您也可以使用 Azure AD Premium 的委派群組管理功能。
  - 運用 Azure 中內建的角色：您可以使用三個角色 — 擁有者、參與者和讀者，以確保使用者和群組只擁有他們執行工作所需的權限。 
- - 資源細微存取權: 您可以將角色指派給使用者和群組特定的訂用帳戶、 資源群組或個別的 Azure 資源，例如網站或資料庫。 如此一來，您可以確保使用者能夠存取他們需要的資源，但不能存取他們不需要管理的資源。
+ - 資源細微存取權 ︰ 您可以將角色指派給使用者和群組特定的訂用帳戶、 資源群組或個別的 Azure 資源，例如網站或資料庫。 如此一來，您可以確保使用者能夠存取他們需要的資源，但不能存取他們不需要管理的資源。
 
  >[AZURE.NOTE]
   讀取 [Azure 預覽入口網站中的角色型存取控制](http://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/) 知道這項功能的詳細。 如果是建置應用程式並想要自訂其存取控制的開發人員，可以使用 Azure AD 應用程式角色來進行授權。 檢閱這 [研究 RoleClaims WebApp DotNet 範例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) 如何建置應用程式來使用這項功能。
 
-3. Office 365 應用程式使用 Microsoft Intune 的條件式存取: IT 系統管理員可以佈建條件式存取裝置原則來保護公司資源，而同時讓資訊工作者存取服務的相容裝置上。 如需詳細資訊，請參閱 [Office 365 服務的條件式存取裝置原則](active-directory-conditional-access-device-policies.md)。
+3. Office 365 應用程式使用 Microsoft Intune 的條件式存取 ︰ IT 系統管理員可以佈建條件式存取裝置原則來保護公司資源，而同時讓資訊工作者存取服務的相容裝置上。 如需詳細資訊，請參閱 [Office 365 服務的條件式存取裝置原則](active-directory-conditional-access-device-policies.md)。
 
-4. Saas 應用程式的條件式存取: [這項功能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) 可讓您設定每個應用程式多因素驗證存取規則與封鎖不受信任的網路上的使用者存取權限。 您可以將多因素驗證規則套用至所有已指派給應用程式的使用者，或只套用至指定的安全性群組內的使用者。 如果使用者是從組織網路內的 IP 位址存取應用程式，則可從多因素驗證需求中排除這些使用者。
+4. Saas 應用程式的條件式存取 ︰ [這項功能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) 可讓您設定每個應用程式多因素驗證存取規則與封鎖不受信任的網路上的使用者存取權限。 您可以將多因素驗證規則套用至所有已指派給應用程式的使用者，或只套用至指定的安全性群組內的使用者。 如果使用者是從組織網路內的 IP 位址存取應用程式，則可從多因素驗證需求中排除這些使用者。
 
 由於存取控制的選項採用多層式方法，因此在執行這項工作時無法比較這些選項。 請確實針對每個要求您控制資源存取權的案例，使用所有適用的選項。
 
 ## 定義事件回應選項
-Azure AD 可藉由監視使用者活動，協助 IT 人員識別環境中潛在的安全性風險；IT 人員可利用 Azure AD 存取和使用量報告深入了解組織目錄的完整性與安全性。 利用此資訊，IT 管理員更能夠判斷可能發生安全性風險的位置，以便適當地規劃來減輕這些風險。  [Azure AD Premium 訂用帳戶](articles/active-directory-get-started-premium.md) 都有一組安全性報告，可以讓 IT 能夠取得這項資訊。 [Azure AD 報告](active-directory-view-access-usage-reports.md) 分為，如下所示:
+Azure AD 可藉由監視使用者活動，協助 IT 人員識別環境中潛在的安全性風險；IT 人員可利用 Azure AD 存取和使用量報告深入了解組織目錄的完整性與安全性。 利用此資訊，IT 管理員更能夠判斷可能發生安全性風險的位置，以便適當地規劃來減輕這些風險。  [Azure AD Premium 訂用帳戶](articles/active-directory-get-started-premium.md) 都有一組安全性報告，可以讓 IT 能夠取得這項資訊。 [Azure AD 報告](active-directory-view-access-usage-reports.md) 分為，如下所示 ︰
 
-- **異常報告**: 包含登入我們發現異常的事件。 我們的目標在於使您注意這類活動，並讓您能夠判斷事件是否可疑。 
-- **整合應用程式報告**: 提供深入的雲端應用程式在組織中的使用方式。 Azure Active Directory 提供與數千個雲端應用程式的整合。 
-- **錯誤報告**: 指出帳戶佈建至外部應用程式時可能發生的錯誤。
-- **特定使用者報告**: 顯示裝置/登入特定的使用者活動資料。
-- **活動記錄檔**: 包含過去 24 小時、 過去 7 天或過去 30 天，以及群組活動變更，以及密碼重設和註冊活動內所有稽核事件的記錄。
+- **異常報告**︰ 包含登入我們發現異常的事件。 我們的目標在於使您注意這類活動，並讓您能夠判斷事件是否可疑。 
+- **整合應用程式報告**︰ 提供深入的雲端應用程式在組織中的使用方式。 Azure Active Directory 提供與數千個雲端應用程式的整合。 
+- **錯誤報告**︰ 指出帳戶佈建至外部應用程式時可能發生的錯誤。
+- **特定使用者報告**︰ 顯示裝置/登入特定的使用者活動資料。
+- **活動記錄檔**︰ 包含過去 24 小時、 過去 7 天或過去 30 天，以及群組活動變更，以及密碼重設和註冊活動內所有稽核事件的記錄。
 
 >[AZURE.TIP]
 也可以協助處理案例事件回應小組的另一份報表是 [認證外洩的使用者](http://blogs.technet.com/b/ad/archive/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials.aspx) 報表。  此報告會呈現這些外洩的認證清單與您的租用戶之間的任何相符項目。
 
 Azure AD 中還有其他可在事件回應調查期間使用的重要內建報告，包括：
 
-- **密碼重設活動**: 深入了解如何重設密碼是在組織中正在使用您提供系統管理員。
-- **密碼重設註冊活動**: 提供的使用者已註冊密碼重設，其方法的深入資訊，而且已選取的方法。
-- **群組活動**: 提供變更記錄到群組 (ex: 新增或移除的使用者)，而在存取面板中啟動。
+- **密碼重設活動**︰ 深入了解如何重設密碼是在組織中正在使用您提供系統管理員。
+- **密碼重設註冊活動**︰ 提供的使用者已註冊密碼重設，其方法的深入資訊，而且已選取的方法。
+- **群組活動**︰ 提供變更記錄到群組 (ex ︰ 新增或移除的使用者)，而在存取面板中啟動。
 
 除了 Azure AD Premium 中可在事件回應調查程序期間使用的核心報告功能以外，IT 人員也可使用稽核報告取得資訊，例如：
 
@@ -158,5 +158,6 @@ Azure AD 中還有其他可在事件回應調查期間使用的重要內建報�
 
 ## 另請參閱
 [設計考量概觀](active-directory-hybrid-identity-design-considerations-overview.md)
+
 
 

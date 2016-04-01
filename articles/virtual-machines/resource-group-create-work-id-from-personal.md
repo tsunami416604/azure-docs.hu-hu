@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-如果您建立個人的 Azure 帳戶，或有個人的 MSDN 訂用帳戶並建立 Azure 帳戶來運用 MSDN Azure 點數--您已使用 *Microsoft 帳戶* 身分識別建立。 Azure 有許多絕佳功能 [資源群組範本](../resource-group-overview.md) 是一個範例-需要工作或學校帳戶 (由 Azure Active Directory 管理的身分識別) 才能運作。 幸運的是，預設的 Azure Active Directory 網域會提供您個人的 Azure 帳戶，讓您可以用來建立新的工作或學校帳戶，以搭配需要這類帳戶使用的 Azure 功能，因此您可以遵循下列指示來建立新的工作或學校帳戶。
+如果您建立個人的 Azure 帳戶，或有個人的 MSDN 訂用帳戶並建立 Azure 帳戶來運用 MSDN Azure 點數--您已使用 *Microsoft 帳戶* 身分識別建立。 Azure 有許多絕佳功能 [資源群組範本](../resource-group-overview.md) 是一個範例-需要工作或學校帳戶 （由 Azure Active Directory 管理的身分識別） 才能運作。 幸運的是，預設的 Azure Active Directory 網域會提供您個人的 Azure 帳戶，讓您可以用來建立新的工作或學校帳戶，以搭配需要這類帳戶使用的 Azure 功能，因此您可以遵循下列指示來建立新的工作或學校帳戶。
 
 不過，最近的變更讓您管理您的 Azure 帳戶使用任何類型的訂閱 `azure login` 所述的互動式登入方法 [這裡](../xplat-cli-connect.md)。 您可以使用同樣的機制，或者可以遵循接下來的指示。
 
@@ -142,4 +142,5 @@ Ahmet，新增更多詳細資料，但請務必選取適當 **角色** 值。 �
     data:    Tags:
     data:
     info:    group create command OK
+
 

@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   RunMyProcess 租用戶
   
-完成本教學課程之後, 您已指派給 RunMyProcess 的 Azure AD 使用者將能夠登入位於您 RunMyProcess 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 RunMyProcess 的 Azure AD 使用者將能夠登入位於您 RunMyProcess 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -95,14 +95,14 @@
 
 7.  按一下 [ **驗證方法** ] 索引標籤。
 
-8.  在 **驗證方法** 區段中，執行下列步驟:
+8.  在 **驗證方法** 區段中，執行下列步驟 ︰
 
     ![SSO](./media/active-directory-saas-runmyprocess-tutorial/IC789626.png "SSO")
 
     1.  做為 **方法**, ，請選取 **SSO 與 Samlv2**。
     2.  在 Azure 網站中，在 **RunMyProcess 在設定單一登入** 對話方塊頁面中，複製 **SAML SSO URL** 值，並接著將它貼入 **SSO 重新導向** 文字方塊。
     3.  在 Azure 網站中，在 **RunMyProcess 在設定單一登入** 對話方塊頁面中，複製 **單一登出服務 URL** 值，並接著將它貼入 **登出重新導向** 文字方塊。
-    4.  在 **名稱識別碼格式** 文字方塊中，輸入 **urn: oasis: 名稱: tc: SAML:1.1:nameid-格式: emailAddress**。
+    4.  在 **名稱識別碼格式** 文字方塊中，輸入 **urn: oasis ︰ 名稱 ︰ tc: SAML:1.1:nameid-格式 ︰ emailAddress**。
     5.  建立 **base 64 編碼** 檔案下載的憑證。  
 
         >[AZURE.TIP] 如需詳細資訊，請參閱 [如何轉換的文字檔案中的二進位檔案的憑證](http://youtu.be/PlgrzUZ-Y1o)
@@ -126,7 +126,7 @@ RunMyProcess 需以手動的方式佈建。
 
     ![新使用者](./media/active-directory-saas-runmyprocess-tutorial/IC789631.png "New User")
 
-3.  在 **使用者設定** 區段中，執行下列步驟:
+3.  在 **使用者設定** 區段中，執行下列步驟 ︰
 
     ![設定檔](./media/active-directory-saas-runmyprocess-tutorial/IC789632.png "Profile")
 
@@ -154,3 +154,4 @@ RunMyProcess 需以手動的方式佈建。
     ![是](./media/active-directory-saas-runmyprocess-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

@@ -40,8 +40,8 @@ Azure AD 報告 API 透過一組以 REST 為基礎的 API (可從各種程式設
 - 瀏覽至應用程式。
 - 按一下底列上的 [新增]。
     - 按一下 [加入我的組織正在開發的應用程式]。
-    - **名稱**: 任何名稱均可。 建議類似「報告 API 應用程式」。
-    - **型別**: 選取 [Web 應用程式和/或 Web API]。
+    - **名稱**︰ 任何名稱均可。 建議類似「報告 API 應用程式」。
+    - **型別**︰ 選取 [Web 應用程式和/或 Web API]。
     - 按一下箭號以移至下一頁。
     - **登入 URL**: ```http://localhost```。
     - **應用程式識別碼 URI**: ```http://localhost```。
@@ -155,5 +155,6 @@ Azure AD 報告 API 透過一組以 REST 為基礎的 API (可從各種程式設
 ## 後續步驟
 - 想知道有哪些安全性、稽核及活動報告可用嗎？ 簽出 [Azure AD 安全性、 稽核及活動報告](active-directory-view-access-usage-reports.md)
 - 請參閱 [Azure AD 稽核報告事件](active-directory-reporting-audit-events.md) 如需有關稽核報告
-- 請參閱 [Azure AD 報告和事件 (預覽)](https://msdn.microsoft.com/library/azure/mt126081.aspx) 如需有關圖形 API REST 服務
+- 請參閱 [Azure AD 報告和事件 （預覽）](https://msdn.microsoft.com/library/azure/mt126081.aspx) 如需有關圖形 API REST 服務
+
 

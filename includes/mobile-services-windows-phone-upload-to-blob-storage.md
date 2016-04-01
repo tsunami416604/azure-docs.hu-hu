@@ -9,7 +9,7 @@
 
     如此能確保您的應用程式可以使用連接至電腦的相機。 Users will be requested to allow camera access the first time that the app is run.
 
-2. 開啟 MainPage.xaml 檔案，並取代 **方格** 名 **ContentPanel** 為下列程式碼:
+2. 開啟 MainPage.xaml 檔案，並取代 **方格** 名 **ContentPanel** 為下列程式碼 ︰
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
@@ -46,7 +46,7 @@
 
     這會新增一個按鈕來啟動 [CameraCaptureTask] 並新增一個影像 **ItemTemplate** 並將其繫結來源設為 Blob 儲存體服務中已上傳影像的 URI。
 
-3. 開啟 MainPage.xaml.cs 專案檔案並新增下列 **使用** 陳述式:
+3. 開啟 MainPage.xaml.cs 專案檔案並新增下列 **使用** 陳述式 ︰
     
         using Microsoft.Phone.Tasks;
         using System.IO;
@@ -67,7 +67,7 @@
         [JsonProperty(PropertyName = "imageUri")]
         public string ImageUri { get; set; } 
 
-5. 在 MainPage.xaml.cs 專案檔案中更新 MainPage 類別。 加入下列程式碼以宣告 [CameraCaptureTask] 以及將參照擷取的映像的串流物件:
+5. 在 MainPage.xaml.cs 專案檔案中更新 MainPage 類別。 加入下列程式碼以宣告 [CameraCaptureTask] 以及將參照擷取的映像的串流物件 ︰
 
         // Using the CameraCaptureTask to allow the user to capture a todo item image //
         CameraCaptureTask cameraCaptureTask;
@@ -91,7 +91,7 @@
             imageStream = e.ChosenPhoto;
         }
 
-7. 在 MainPage.xaml.cs 專案檔案中更新 MainPage 類別。 加入下列程式碼顯示相機 UI，讓使用者擷取映像時 **擷取映像** 按鈕:
+7. 在 MainPage.xaml.cs 專案檔案中更新 MainPage 類別。 加入下列程式碼顯示相機 UI，讓使用者擷取映像時 **擷取映像** 按鈕 ︰
 
         private void ButtonCaptureImage_Click(object sender, RoutedEventArgs e)
         {
@@ -182,4 +182,5 @@
 [Get started with Mobile Services]: ../articles/mobile-services-windows-phone-get-started.md
 [CameraCaptureTask]: http://msdn.microsoft.com/library/windowsphone/develop/microsoft.phone.tasks.cameracapturetask(v=vs.105).aspx
 [PhotoCamera]: http://msdn.microsoft.com/library/windowsphone/develop/microsoft.devices.photocamera(v=vs.105).aspx
+
 

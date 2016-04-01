@@ -54,15 +54,15 @@
 
 ### 若要啟用 DocuSign 的應用程式整合，請執行下列步驟：
 
-1. 在 [Azure 管理上 「 入口 」，左邊的瀏覽] 窗格中，按一下 [ **Active Directory**。
+1. 在 Azure 管理入口網站中，在左的導覽窗格中，按一下 [ **Active Directory**。
 <br><br>![設定單一登入 ][1]<br>
 
 2. 從 [目錄] 清單中，選取要啟用目錄整合的目錄。
 
-3. 若要開啟應用程式檢視，在 [目錄] 檢視中，按一下 [ **應用程式** 在最上層的功能表。
+3. 若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
 <br><br>![設定單一登入 ][2]<br>
 
-4. 按一下 [ **新增** 在頁面底部。
+4. 按一下 [ **新增** 頁面的底部。
 <br><br>![應用程式][3]<br>
 
 5. 在項目是否要執行] 對話方塊中，按一下 **從資源庫新增應用程式**。
@@ -92,11 +92,11 @@
 <br><br>![設定單一登入 ][8]<br>
 
 3. 在 **設定應用程式 URL** 頁面上，於 **Docusign 登入 URL** 文字方塊中，輸入您的 Docusign 租用戶的 URL，然後按一下 **下一步**。 
-URL 具有下列結構描述: *https://<yourcompanyname>.docusign.net/Member/MemberLogin.aspx?ssoname=<yourSSOInstanceName>*
+URL 具有下列結構描述 ︰ *https://<yourcompanyname>.docusign.net/Member/MemberLogin.aspx?ssoname=<yourSSOInstanceName>*
 <br><br>![設定單一登入 ][9]<br>
 
 
-    > [AZURE.TIP] If you don’t know what your app URL for your tenant is, try contacting Docusign via SSOSetup@Docusign.com to get the SP Initiated SSO URL for your tenant.
+    > [AZURE.TIP] 如果您不知道您的應用程式 URL，租用戶是什麼，請連絡 Docusign 透過 SSOSetup@Docusign.com 取得租用戶的 SP 起始 SSO URL。
  
 
 4. 在 **設定單一登入 Docusign 在** 頁面上，按一下 **下載憑證**, ，然後將儲存在本機電腦上的憑證檔案。
@@ -113,7 +113,7 @@ URL 具有下列結構描述: *https://<yourcompanyname>.docusign.net/Member/Mem
 
 
 
-8. 在 **SAML 2.0 設定** 區段中，執行下列步驟:
+8. 在 **SAML 2.0 設定** 區段中，執行下列步驟 ︰
 <br><br>![設定單一登入 ][13]<br>
 
 
@@ -172,7 +172,7 @@ URL 具有下列結構描述: *https://<yourcompanyname>.docusign.net/Member/Mem
 <br><br>![將使用者指派][40]<br>
  
 
-3. 選取您的測試使用者，請按一下 [ **指派**, ，然後按一下 [ **是** 以確認您的工作分派。
+3. 選取測試使用者，請按一下 **指派**, ，然後按一下 [ **是** 以確認您的作業。
 
 <br><br>![指派使用者][41]<br>
 
@@ -229,3 +229,4 @@ URL 具有下列結構描述: *https://<yourcompanyname>.docusign.net/Member/Mem
 [41]: ./media/active-directory-saas-docussign-tutorial/tutorial_docusign_16.png
 [42]: ./media/active-directory-saas-docussign-tutorial/tutorial_docusign_17.png
 [43]: ./media/active-directory-saas-docussign-tutorial/tutorial_docusign_18.png
+

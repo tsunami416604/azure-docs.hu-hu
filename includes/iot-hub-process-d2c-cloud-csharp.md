@@ -19,7 +19,7 @@
 ### 佈建 Azure 儲存體帳戶和服務匯流排佇列
 若要使用 [EventProcessorHost], ，您必須擁有 Azure 儲存體帳戶。 您可以使用現有的語言，或依照 [About Azure Storage] 來建立新的。 記下儲存體帳戶連接字串。
 
-您也需要服務匯流排佇列以啟用可靠的互動式訊息處理。 您可以建立佇列以程式設計方式使用 1 小時重複資料刪除視窗中所述 [如何使用服務匯流排佇列][Service Bus Queue], ，或使用 [Azure portal], ，遵循下列步驟:
+您也需要服務匯流排佇列以啟用可靠的互動式訊息處理。 您可以建立佇列以程式設計方式使用 1 小時重複資料刪除視窗中所述 [如何使用服務匯流排佇列][Service Bus Queue], ，或使用 [Azure portal], ，遵循下列步驟 ︰
 
 1. 按一下 [ **新增** 左上角，然後在 **應用程式服務**, ，然後 **服務匯流排**, ，然後 **佇列**, ，然後 **自訂**, ，選取名稱 **d2ctutorial**, ，然後選取 [1 小時內的重複資料刪除視窗。
 
@@ -196,7 +196,7 @@
         }
 
     這個類別會呼叫 **EventProcessorHost** 處理裝置對雲端訊息來自 [IoT 中心，而且會實作可靠地儲存主要的邏輯中的 blob 容器轉送互動式訊息至服務匯流排佇列的訊息。
-     `OpenAsync()` 方法，初始化  `currentBlockInitOffset` 變數會追蹤目前正在讀取此事件處理器的第一個訊息的位移 (請記住，每個處理器會負責單一磁碟分割)。
+     `OpenAsync()` 方法，初始化  `currentBlockInitOffset` 變數會追蹤目前正在讀取此事件處理器的第一個訊息的位移 （請記住，每個處理器會負責單一磁碟分割）。
 
     `ProcessEventsAsync()` 方法會從以下列方式處理的 IoT 中心接收一批次的訊息。 互動式訊息會傳送至服務匯流排佇列，而資料點訊息會附加至稱為 `toAppend` 的 memoryBuffer。 萬一記憶體緩衝區達到區塊限制 (也就是 4 MB)，或者距離上一個檢查點的時間已超過服務匯流排重複資料刪除時間視窗 (在本教學課程為 1 小時)，都會觸發檢查點。
 
@@ -204,7 +204,7 @@
 
 > [AZURE.NOTE] 若要簡化的程式碼，此教學課程會使用每個資料分割的單一 blob 檔案儲存的訊息。 實際的解決方案會實作檔案復原，使用的方法是在檔案到達特定大小時 (請注意，Azure blob 大小上限為 195 GB)，或在某段時間之後 (例如 `fileName_{partitionId}_{date-time}`) 建立其他檔案。
 
-7. 在 **程式** 類別中，新增下列 `using` 上方的陳述式:
+7. 在 **程式** 類別中，新增下列 `using` 上方的陳述式 ︰
 
         using Microsoft.ServiceBus.Messaging;
 
@@ -242,7 +242,7 @@
 
     這會下載、 安裝，並將參考加入 [Azure 服務匯流排](https://www.nuget.org/packages/WindowsAzure.ServiceBus), ，與其所有相依性。
 
-4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案:
+4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案 ︰
 
         using System.IO;
         using Microsoft.ServiceBus.Messaging;
@@ -324,4 +324,5 @@
 [30]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue2.png
 [31]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue3.png
 [32]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue4.png
+
 

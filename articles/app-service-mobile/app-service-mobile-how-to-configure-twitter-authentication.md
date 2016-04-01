@@ -25,7 +25,7 @@
 
 本主題說明如何設定 Azure App Service，以使用 Twitter 作為驗證提供者。
 
-若要完成本主題的程序，您必須具有已通過電子郵件地址驗證的 Twitter 帳戶。 若要建立新的 Twitter 帳戶，請前往 <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>.
+若要完成本主題的程序，您必須具有已通過電子郵件地址驗證的 Twitter 帳戶。 若要建立新的 Twitter 帳戶，請前往 <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>。
 
 
 > [AZURE.NOTE]
@@ -48,12 +48,12 @@
 
 4. 按一下 [ **設定** ] 索引標籤，核取 **允許此應用程式用來以 Twitter 登入**, ，然後按一下 [ **更新設定**。
 
-5. 選取 **金鑰和存取權杖** ] 索引標籤。 請記下的值 **消費者金鑰 (API)** 和 **消費者密鑰 (API 密鑰)**。
+5. 選取 **金鑰和存取權杖** ] 索引標籤。 請記下的值 **消費者金鑰 （API）** 和 **消費者密鑰 （API 密鑰）**。
 
     > [AZURE.NOTE] 消費者密碼是重要的安全性認證。 請勿將這個密鑰與任何人分享，或與您的應用程式一起散發。
 
 
-## <a name="secrets"> </a>將 Twitter 資訊新增至您的應用程式
+## <a name="secrets"> </a>將 Twitter 資訊新增至應用程式
 
 > [AZURE.NOTE]
 如果您使用 App Service 閘道器，請忽略此章節，並改為在入口網站中瀏覽至您的閘道器。 選取 **設定**, ，**識別**, ，然後 **Twitter**。 貼入您稍早取得的值，然後按一下 [ **儲存**。
@@ -69,7 +69,7 @@
 
     App Service 預設會提供驗證，但不會限制對您網站內容和 API 的已授權存取。 您必須在應用程式程式碼中授權使用者。 
 
-17. (選擇性)若要限制存取您的網站，由 Twitter 驗證的使用者，請設定 **不會驗證要求時要採取的動作** 至 **Twitter**。 這會要求所有要求都需經過驗證，且所有未經驗證的要求都會重新導向至 Twitter 以進行驗證。
+17. （選擇性）若要限制存取您的網站，由 Twitter 驗證的使用者，請設定 **不會驗證要求時要採取的動作** 至 **Twitter**。 這會要求所有要求都需經過驗證，且所有未經驗證的要求都會重新導向至 Twitter 以進行驗證。
 
 17. 按一下 [ **儲存**。 
 
@@ -91,3 +91,4 @@
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [Azure portal]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
+

@@ -80,10 +80,10 @@
 
 3.  在 **設定應用程式 URL** 頁面上，執行下列步驟，然後按 **下一步**: 
 
-    -   在 **中央桌面登入 URL** 文字方塊中，輸入您的 Central Desktop 租用戶 URL (例如: *http://contoso.centraldesktop.com*)。
-    -   在 Central Desktop 回覆 URL] 文字方塊中輸入您的 Central Desktop AssertionConsumerService URL (例如: https://contoso.centraldesktop.com/saml2-assertion.php)。
+    -   在 **中央桌面登入 URL** 文字方塊中，輸入您的 Central Desktop 租用戶 URL (例如 ︰ *http://contoso.centraldesktop.com*)。
+    -   在 Central Desktop 回覆 URL] 文字方塊中輸入您的 Central Desktop AssertionConsumerService URL (例如 ︰ https://contoso.centraldesktop.com/saml2-assertion.php)。
 
-    >[AZURE.NOTE] 您可以向 central desktop 中繼資料中的值 (例如: *http://contoso.centraldesktop.com*)。
+    >[AZURE.NOTE] 您可以向 central desktop 中繼資料中的值 (例如 ︰ *http://contoso.centraldesktop.com*)。
 
     ![設定應用程式 URL](./media/active-directory-saas-central-desktop-tutorial/IC769561.png "Configure app URL")
 
@@ -97,7 +97,7 @@
 
     ![設定 - 進階](./media/active-directory-saas-central-desktop-tutorial/IC769563.png "Setup - Advanced")
 
-7.  在 **單一登入設定** 頁面上，執行下列步驟:
+7.  在 **單一登入設定** 頁面上，執行下列步驟 ︰
 
     ![單一登入設定](./media/active-directory-saas-central-desktop-tutorial/IC769564.png "Single Sign On Settings")
 
@@ -106,7 +106,7 @@
     3.  在 Azure AD 入口網站上 **在 Central Desktop 設定單一登入** 頁面中，複製 **遠端登入 URL** 值，並接著將它貼入 **SSO 登入 URL** 文字方塊。
     4.  在 Azure AD 入口網站上 **在 Central Desktop 設定單一登入** 頁面中，複製 **單一登出服務 URL** 值，並接著將它貼入 **SSO 登出 URL** 文字方塊。
 
-8.  在 **訊息簽章驗證方法** 區段中，執行下列步驟:
+8.  在 **訊息簽章驗證方法** 區段中，執行下列步驟 ︰
 
     ![訊息簽章驗證方法](./media/active-directory-saas-central-desktop-tutorial/IC769565.png "Message Signature Verification Method")
 
@@ -166,4 +166,5 @@ AAD 使用者必須先佈建到 Central Desktop 應用程式，才可以登入�
     ![是](./media/active-directory-saas-central-desktop-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

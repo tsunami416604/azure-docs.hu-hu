@@ -88,7 +88,7 @@
 
 5.  在不同的瀏覽器視窗中，登入您 Citrix 組織中心 ([https://account.citrixonline.com/organization/administration/](https://account.citrixonline.com/organization/administration/))。
 
-6. 按一下 [ **身分識別提供者** 索引標籤，然後再執行下列步驟:  <br><br> ![SAML 設定](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC6892321.png "SAML setup")
+6. 按一下 [ **身分識別提供者** 索引標籤，然後再執行下列步驟 ︰  <br><br> ![SAML 設定](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC6892321.png "SAML setup")
 
      6.1. 選取 **手冊**
 
@@ -107,7 +107,7 @@
     ![設定單一登入](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769000.png "Configure single sign-on")
 
 
-7. 在 **單一登入確認** 頁面上，按一下 **完成**。<br><br>![SAML 設定](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689982.png "SAML setup")
+7. 在 **單一登入確認** 頁面上，按一下 **完成**。<br><br> ![SAML 設定](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689982.png "SAML setup")
 
 
 
@@ -123,7 +123,7 @@
 
     ![設定使用者佈建](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769001.png "Configure user provisioning")
 
-2.  在 **設定和管理員認證** 頁面上，執行下列步驟:
+2.  在 **設定和管理員認證** 頁面上，執行下列步驟 ︰
 
     ![設定使用者佈建](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769002.png "Configure user provisioning")
 
@@ -165,4 +165,5 @@
 如果要測試您的單一登入設定，請開啟存取面板。
 
 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](https://msdn.microsoft.com/library/dn308586)。
+
 

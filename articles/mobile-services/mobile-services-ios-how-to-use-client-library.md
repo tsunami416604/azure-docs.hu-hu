@@ -25,7 +25,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
-本指南說明如何使用 Azure 行動服務 [iOS SDK] 執行一般案例。 如果您不熟悉行動服務中，第一個完成 [行動服務快速入門] 來設定您的帳戶，來建立資料表，並建立的行動服務。
+本指南說明如何使用 Azure 行動服務執行一般案例 [iOS SDK]。 如果您不熟悉行動服務，先完成 [Mobile Services Quick Start] 來設定您的帳戶、 建立資料表，並建立的行動服務。
 
 > [AZURE.NOTE] 本指南使用最新 [iOS 行動服務 SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409)。 如果您的專案使用舊版的 SDK，請先升級 Xcode 中的架構。
 
@@ -33,9 +33,9 @@
 
 ##<a name="Setup"></a>設定和必要條件
 
-本指南假設您已建立包含資料表的行動服務。 如需詳細資訊，請參閱 [Create a table], ，或是重複使用 `TodoItem` [行動服務快速入門] 中建立資料表。 本指南假設資料表的結構描述與這些教學課程中的資料表相同。 本指南也假設您的 Xcode 參考 `WindowsAzureMobileServices.framework` 並匯入 `WindowsAzureMobileServices/WindowsAzureMobileServices.h`。
+本指南假設您已建立包含資料表的行動服務。 如需詳細資訊，請參閱 [Create a table], ，或是重複使用 `TodoItem` 中建立資料表 [Mobile Services Quick Start]。 本指南假設資料表的結構描述與這些教學課程中的資料表相同。 本指南也假設您的 Xcode 參考 `WindowsAzureMobileServices.framework` 並匯入 `WindowsAzureMobileServices/WindowsAzureMobileServices.h`。
 
-##<a name="create-client"></a>如何: 建立行動服務用戶端
+##<a name="create-client"></a>作法：建立行動服務用戶端
 
 若要在專案中存取 Azure 行動服務，請建立 `MSClient` 用戶端物件。 將 `AppUrl` 和 `AppKey` 分別取代為行動服務 URL 和應用程式金鑰儀表板值。
 
@@ -43,7 +43,7 @@
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicationKey:@"AppKey"];
 ```
 
-##<a name="table-reference"></a>如何: 建立資料表參考
+##<a name="table-reference"></a>作法：建立資料表參考
 
 若要存取或更新 Azure 行動服務的資料，請建立資料表的參考。 將 `TodoItem` 取代為您的資料表名稱。
 
@@ -51,7 +51,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
     MSTable *table = [client tableWithName:@"TodoItem"];
 ```
 
-##<a name="querying"></a>如何: 查詢資料
+##<a name="querying"></a>作法：查詢資料
 
 若要建立資料庫查詢，請查詢 `MSTable` 物件。 下列查詢會取得 `TodoItem` 中的所有項目並記錄每個項目的文字。
 
@@ -67,7 +67,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
 }];
 ```
 
-##<a name="filtering"></a>如何: 篩選傳回的資料
+##<a name="filtering"></a>作法：篩選傳回的資料
 
 若要篩選結果，有許多可用的選項。
 
@@ -88,7 +88,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 }];
 ```
 
-##<a name="query-object"></a>如何: 使用 MSQuery
+##<a name="query-object"></a>作法：使用 MSQuery
 
 若要執行複雜的查詢 (包括排序和分頁)，請使用述詞直接建立 `MSQuery` 物件：
 
@@ -100,13 +100,13 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 `MSQuery` 可讓您控制下列幾種查詢行為。 執行 `MSQuery` 查詢藉由呼叫 `readWithCompletion` 它下, 一個範例所示。
 * 指定結果的順序
 * 限制要傳回的欄位
-* 限制傳回的記錄數目
+* 限制要傳回的記錄數
 * 指定回應中的總計數
 * 在要求中指定自訂查詢字串參數
-* 套用額外函數
+* 套用其他函式
 
 
-## <a name="sorting"></a>如何: 使用 MSQuery 排序資料
+## <a name="sorting"></a>做法：使用 MSQuery 排序資料
 
 我們來看一下範例如何排序結果。 若要先按照 `text` 欄位遞增排序，然後按照 `completion` 欄位遞減排序，請如下叫用 `MSQuery`：
 
@@ -124,9 +124,9 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 }];
 ```
 
-## <a name="paging"></a>如何: 使用 MSQuery 以分頁方式傳回資料
+## <a name="paging"></a>作法：使用 MSQuery 以分頁方式傳回資料
 
-行動服務會限制單一回應中可傳回的記錄數。 若要控制顯示給使用者的記錄數，您必須實作分頁系統。  使用下列三個屬性來執行分頁 **MSQuery** 物件:
+行動服務會限制單一回應中可傳回的記錄數。 若要控制顯示給使用者的記錄數，您必須實作分頁系統。  使用下列三個屬性來執行分頁 **MSQuery** 物件 ︰
 
 ```
 +   `BOOL includeTotalCount`
@@ -165,7 +165,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>如何: 限制欄位和展開查詢字串參數，使用 MSQuery
+## <a name="selecting"></a><a name="parameters"></a>作法：使用 MSQuery 限制欄位和展開查詢字串參數
 
 若要限制查詢中傳回的欄位，指定在欄位名稱 **selectFields** 屬性。 這僅會傳回文字和已完成欄位：
 
@@ -182,7 +182,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
     };
 ```
 
-##<a name="inserting"></a>如何: 插入資料
+##<a name="inserting"></a>作法：插入資料
 
 若要插入新的資料表資料列，請建立新的 `NSDictionary` 並叫用 `table insert`。 行動服務會自動產生新資料行是根據 `NSDictionary` 如果 [Dynamic Schema] 未停用。
 
@@ -202,7 +202,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
     }];
 ```
 
-##<a name="modifying"></a>如何: 修改資料
+##<a name="modifying"></a>作法：修改資料
 
 若要更新現有的資料列，請修改項目並呼叫 `update`：
 
@@ -224,7 +224,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 進行更新時，至少必須設定 `id` 屬性。
 
-##<a name="deleting"></a>如何: 刪除資料
+##<a name="deleting"></a>作法：刪除資料
 
 若要刪除項目，請叫用 `delete` 搭配項目：
 
@@ -244,16 +244,16 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 進行刪除時，至少必須設定 `id` 屬性。
 
-##<a name="#custom-api"></a>如何: 呼叫自訂 API
+##<a name="#custom-api"></a>作法：呼叫自訂 API
 
-自訂 API 可讓您定義自訂端點，並用來公開無法對應插入、更新、刪除或讀取等操作的伺服器功能。 透過使用自訂 API，您可以進一步控制訊息，包括讀取與設定 HTTP 訊息標頭，並定義除了 JSON 以外的訊息內文格式。 如需如何在您的行動服務中建立自訂 API 的範例，請參閱 [How to: 定義自訂 API 端點](mobile-services-dotnet-backend-define-custom-api.md)。
+自訂 API 可讓您定義自訂端點，並用來公開無法對應插入、更新、刪除或讀取等操作的伺服器功能。 透過使用自訂 API，您可以進一步控制訊息，包括讀取與設定 HTTP 訊息標頭，並定義除了 JSON 以外的訊息內文格式。 如需如何在您的行動服務中建立自訂 API 的範例，請參閱 [How to ︰ 定義自訂 API 端點](mobile-services-dotnet-backend-define-custom-api.md)。
 
 [AZURE.INCLUDE [mobile-services-ios-call-custom-api](../../includes/mobile-services-ios-call-custom-api.md)]
 
 
-##<a name="authentication"></a>如何: 驗證使用者
+##<a name="authentication"></a>作法：驗證使用者
 
-Azure 行動服務支援各種識別提供者。 如需基本教學課程，請參閱 [驗證]。
+Azure 行動服務支援各種識別提供者。 如需基本教學課程，請參閱 [Authentication]。
 
 Azure 行動服務支援兩個驗證工作流程：
 
@@ -265,7 +265,7 @@ Azure 行動服務支援兩個驗證工作流程：
 
 ### 伺服器管理的登入
 
-以下是如何將伺服器管理的登入加入至 [行動服務快速入門] 的專案。您可以為其他專案使用類似的程式碼。 如需詳細資訊，以及查看有作用的端對端範例，請參閱 [驗證]。
+以下是如何新增伺服器管理的登入 [Mobile Services Quick Start] 專案; 您可以為其他專案使用類似的程式碼。 如需詳細資訊，以及查看有作用的端對端範例，請參閱 [Authentication]。
 
 [AZURE.INCLUDE [mobile-services-ios-authenticate-app](../../includes/mobile-services-ios-authenticate-app.md)]
 
@@ -283,11 +283,11 @@ Azure 行動服務支援兩個驗證工作流程：
     }];
 ```
 
-##<a name="caching-tokens"></a>如何: 快取驗證權杖
+##<a name="caching-tokens"></a>作法：快取驗證權杖
 
-讓我們來看看如何快取語彙基元中的 [行動服務快速入門] 的專案。您可能會對任何專案套用類似的步驟。 [AZURE.INCLUDE [mobile-services-ios-authenticate-app-with-token](../../includes/mobile-services-ios-authenticate-app-with-token.md)]
+讓我們來看看如何快取中的權杖 [Mobile Services Quick Start] 專案; 您可以對任何專案套用類似的步驟。 [AZURE.INCLUDE [mobile-services-ios-authenticate-app-with-token](../../includes/mobile-services-ios-authenticate-app-with-token.md)]
 
-##<a name="errors"></a>如何: 處理錯誤
+##<a name="errors"></a>作法：處理錯誤
 
 呼叫行動服務時，completion 區塊會包含 `NSError *error` 參數。 發生錯誤時，此參數便會傳回非 Nil。 您應檢查程式碼中的此參數，並視需要處理錯誤。
 
@@ -339,4 +339,5 @@ mobile-services-javascript-backend-service-side-authorization.md
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
+
 

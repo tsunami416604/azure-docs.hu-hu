@@ -20,7 +20,7 @@
 
 本教學課程將示範如何將 Salesforce 環境與 Azure Active Directory 連接。 您將學習如何設定單一登入 Salesforce、如何啟用自動的使用者佈建，以及如何指派使用者存取 Salesforce。
 
-##先決條件
+##必要條件
 
 1. 若要存取 Azure Active Directory 透過 [Azure 管理入口網站](https://manage.windowsazure.com), ，您必須先具備有效的 Azure 訂用帳戶。
 
@@ -116,7 +116,7 @@
 
     ![選取 [啟用 SAML]][13]
 
-11. 在 **SAML 單一登入設定編輯** 頁面上，進行下列設定:
+11. 在 **SAML 單一登入設定編輯** 頁面上，進行下列設定 ︰
 
     ![您應進行的組態的螢幕擷取畫面][14]
 
@@ -124,7 +124,7 @@
 
  - 在 Azure AD 中，複製 **簽發者 URL** 值，並接著將它貼入 **簽發者** 在 Salesforce 中的欄位。
 
- - 在 **實體識別碼文字方塊**, ，輸入您的 Salesforce 網域名稱使用以下模式:
+ - 在 **實體識別碼文字方塊**, ，輸入您的 Salesforce 網域名稱使用以下模式 ︰
      - 企業帳戶：`https://<domain>.my.salesforce.com`
      - 開發人員帳戶：`https://<domain>-dev-ed.my.salesforce.com`
 
@@ -206,7 +206,7 @@
 
     ![按一下 [指派使用者]][27]
 
-3. 選取測試使用者，然後按一下 [ **指派** 在畫面底部的按鈕:
+3. 選取測試使用者，然後按一下 [ **指派** 在畫面底部的按鈕 ︰
 
  - 如果還沒有啟用自動的使用者佈建，您會看到下列確認提示：
 
@@ -252,3 +252,4 @@
 [27]: ./media/active-directory-saas-salesforce-tutorial/assign-users.png
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
+

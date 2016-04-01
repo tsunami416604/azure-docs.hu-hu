@@ -1,6 +1,6 @@
 您的行動服務已準備就緒，現在可以更新應用程式以便在行動服務 (而非本機收集) 中儲存項目。 
 
-1. 請確定您有下列幾行 **相依性** 標記中 *build.gradle (模組應用程式)* 檔案，以及如果不將它們加入。 這會將參考新增至行動服務 Android 用戶端 SDK。
+1. 請確定您有下列幾行 **相依性** 標記中 *build.gradle （模組應用程式）* 檔案，以及如果不將它們加入。 這會將參考新增至行動服務 Android 用戶端 SDK。
 
         compile 'com.android.support:support-v4:21.0.3'
         compile 'com.google.code.gson:gson:2.2.2'
@@ -15,7 +15,7 @@
         <uses-permission android:name="android.permission.INTERNET" />
 
 
-4. 在專案總管] 中，開啟 TodoActivity.java 檔案位於 **GetStartedWithData = > app = > src = > java** 資料夾，並取消註解下列程式碼行: 
+4. 在專案總管] 中，開啟 TodoActivity.java 檔案位於 **GetStartedWithData = > app = > src = > java** 資料夾，並取消註解下列程式碼行 ︰ 
 
 
 
@@ -60,7 +60,7 @@
 
     從應用程式程式碼存取行動服務時，您將會用到這些值。
 
-12. 在 **onCreate** 方法中，取消註解下列幾行程式碼定義 **MobileServiceClient** 變數:
+12. 在 **onCreate** 方法中，取消註解下列幾行程式碼定義 **MobileServiceClient** 變數 ︰
 
         try {
         // Create the Mobile Service Client instance, using the provided
@@ -82,7 +82,7 @@
 
 
 
-14. 取消註解的這幾行 **checkItem** 方法:
+14. 取消註解的這幾行 **checkItem** 方法 ︰
 
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -106,7 +106,7 @@
 
     這會將項目更新傳送至行動服務，並從配接器中移除已核取的項目。
     
-15. 取消註解的這幾行 **addItem** 方法:
+15. 取消註解的這幾行 **addItem** 方法 ︰
     
         // Insert the new item
         new AsyncTask<Void, Void, Void>() {
@@ -131,7 +131,7 @@
 
     此程式碼會建立新的項目，並將此項目插入至遠端行動服務中的資料表。
 
-16. 取消註解的這幾行 **refreshItemsFromTable** 方法:
+16. 取消註解的這幾行 **refreshItemsFromTable** 方法 ︰
 
         // Get the items that weren't marked as completed and add them in the adapter
         new AsyncTask<Void, Void, Void>() {
@@ -161,3 +161,4 @@
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: http://aka.ms/Iajk6q
+

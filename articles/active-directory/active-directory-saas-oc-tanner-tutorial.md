@@ -1,6 +1,6 @@
 <properties
     pageTitle="教學課程：Azure Active Directory 與 O.C. Tanner - AppreciateHub 整合 |Microsoft Azure"
-    description="了解如何設定 Azure Active Directory 與 O.C. Tanner - AppreciateHub 中建立名為 Britta Simon 的使用者。"
+    description="了解如何設定 Azure Active Directory 與 O.C. Tanner - AppreciateHub 之間的單一登入。"
     services="active-directory"
     documentationCenter=""
     authors="markusvi"
@@ -27,7 +27,7 @@
 
 如果您想要知道更多詳細與 Azure AD 的 SaaS 應用程式整合，請參閱 [什麼是應用程式存取和單一登入與 Azure Active Directory](active-directory-appssoaccess-whatis.md)。
 
-## 先決條件 
+## 必要條件 
 
 若要設定 Azure AD 與 O.C. Tanner - AppreciateHub 整合，您需要下列項目：
 
@@ -46,7 +46,7 @@
  
 ## 案例描述
 此教學課程的目標是讓您在測試環境中測試 Azure AD 單一登入。 <br>
-本教學課程中說明的案例包含三個主要建置區塊:
+本教學課程中說明的案例包含三個主要建置區塊 ︰
 
 1. 從組件庫新增 O.C. Tanner - AppreciateHub 
 2. 設定並測試 Azure AD 單一登入
@@ -55,27 +55,27 @@
 ## 從組件庫新增 O.C. Tanner - AppreciateHub
 若要設定將 O.C. Tanner - AppreciateHub 整合到 Azure AD，您需要從組件庫將 O.C. Tanner - AppreciateHub 新增至受管理的 SaaS 應用程式清單。
 
-**若要新增 O.C. Tanner-AppreciateHub 從組件庫，請執行下列步驟:**
+**若要新增 O.C. Tanner-AppreciateHub 從組件庫，請執行下列步驟 ︰**
 
 1. 在 **Azure 管理入口網站**, ，在左的導覽窗格中，按一下 [ **Active Directory**。 
-<br><br> ![Active] Directory[] 1 <br>
+<br><br> ![Active Directory][1] <br>
 
 2. 從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
 3. 若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
-<br><br> ![應用程式][] 2 <br>
+<br><br> ![應用程式][2] <br>
 
 4. 按一下 [ **新增** 頁面的底部。
-<br><br> ![應用程式][] 3 <br>
+<br><br> ![應用程式][3] <br>
 
 5. 在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。
-<br><br> ![應用程式][] 4 <br>
+<br><br> ![應用程式][4] <br>
 
 6. 在搜尋方塊中，輸入 **O.C.Tanner-AppreciateHub**。
-<br><br> ![應用程式][] 5 <br>
+<br><br> ![應用程式][5] <br>
 
 7. 在 [結果] 窗格中選取 **[O.C.Tanner-AppreciateHub**, ，然後按一下 [ **完成** 加入應用程式。
-<br><br> ![應用程式][] 25 <br>
+<br><br> ![應用程式][25] <br>
 
 
 
@@ -83,8 +83,8 @@
 ##  設定並測試 Azure AD 單一登入
 本節目標說明如何以名為 "Britta Simon" 的測試使用者來設定及測試 Azure AD 單一登入與 O.C. Tanner - AppreciateHub。
 
-為使單一登入運作，Azure AD 必須知道 O.C. Tanner - AppreciateHub 與 Azure AD 中互相對應的使用者。 換句話說，必須在 Azure AD 使用者和 O.C.  Tanner - AppreciateHub 中的相關使用者之間建立連結關聯性 。<br>
-藉由指定的值建立此連結關聯性 **使用者名稱** 在 Azure AD 中的值為 **Username** O.C.中 Tanner - AppreciateHub 中建立名為 Britta Simon 的使用者。
+為使單一登入運作，Azure AD 必須知道 O.C. Tanner - AppreciateHub 與 Azure AD 中互相對應的使用者。 換句話說，必須在 Azure AD 使用者和 O.C.  Tanner - AppreciateHub 中的相關使用者之間建立連結關聯性 Tanner-AppreciateHub 必須建立。<br>
+藉由指定的值建立此連結關聯性 **使用者名稱** 在 Azure AD 中的值為 **Username** O.C.中 Tanner - AppreciateHub 之間的單一登入。
  
 若要設定和測試 Azure AD 單一登入與 O.C. Tanner - AppreciateHub，您必須完成下列建置組塊：
 
@@ -98,7 +98,7 @@
 
 本節目標是在 Azure AD 入口網站啟用 Azure AD 單一登入，並在您的 O.C. Tanner - AppreciateHub 應用程式。<br>
 
-**若要設定 Azure AD 單一登入與 O.C. Tanner-AppreciateHub，執行下列步驟:**
+**若要設定 Azure AD 單一登入與 O.C. Tanner-AppreciateHub，執行下列步驟 ︰**
 
 1. 在 Azure AD 入口網站上，於 **[O.C.Tanner-AppreciateHub** 應用程式整合頁面上，按一下 [ **設定單一登入** 開啟 **設定單一登入**  ] 對話方塊。<br><br>
 ![設定單一登入][6]
@@ -106,10 +106,10 @@
 2. 在 ** [您希望使用者如何登入 O.C.Tanner-AppreciateHub** 頁面上，選取 **Azure AD 單一登入**, ，然後按一下 [ **下一步**。<br><br>
 ![Azure AD 單一登入][7]
 
-3. 在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟:
+3. 在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![設定應用程式設定][8]
  
-     a. 開啟中繼資料檔案使用下列連結: [https://fed.appreciatehub.com/fed/sp/metadata](https://fed.appreciatehub.com/fed/sp/metadata)。
+     a. 開啟中繼資料檔案使用下列連結 ︰ [https://fed.appreciatehub.com/fed/sp/metadata](https://fed.appreciatehub.com/fed/sp/metadata)。
 
      b. 找出 **md:AssertionConsumerService** 節點。 
 
@@ -135,7 +135,7 @@
 
 
 ### 建立 Azure AD 測試使用者
-本節的目標是要在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。<br>
+本節的目標是在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。<br>
 在 [使用者] 清單中選取 **Britta Simon**。<br><br>![建立 Azure AD 使用者][20]<br>
 
 **若要在 Azure AD 中建立測試使用者，請執行下列步驟：**
@@ -149,7 +149,7 @@
  
 4. 若要開啟 **新增使用者** ] 對話方塊的底部工具列上，按一下 [ **新增使用者**。 <br>![建立 Azure AD 測試使用者](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_04.png) 
 
-5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟: <br>![建立 Azure AD 測試使用者](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_05.png) 
+5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟 ︰ <br>![建立 Azure AD 測試使用者](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_05.png) 
 
     a. 針對 [使用者類型]，選取 [您組織中的新使用者]。
 
@@ -157,7 +157,7 @@
 
     c. 按一下 [ **下一步**。
 
-6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟: <br>![建立 Azure AD 測試使用者](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_06.png)
+6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟 ︰ <br>![建立 Azure AD 測試使用者](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_06.png)
  
     a. 在 **名字** 文字方塊中，輸入 **Britta**。  
 
@@ -170,7 +170,7 @@
 
 7. 在 **取得暫時密碼** 對話方塊頁面上，按一下 [ **建立**。<br>![建立 Azure AD 測試使用者](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_07.png) 
  
-8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟:<br>![建立 Azure AD 測試使用者](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_08.png) 
+8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟 ︰<br>![建立 Azure AD 測試使用者](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_08.png) 
   
     a. 請記下的值 **新密碼**。
 
@@ -182,17 +182,17 @@
 
 本節目標是在 O.C. Tanner - AppreciateHub 之間的單一登入。
 
-**若要建立名為 Britta Simon O.C.中的使用者 Tanner-AppreciateHub，執行下列步驟:**
+**若要建立名為 Britta Simon O.C.中的使用者 Tanner-AppreciateHub，執行下列步驟 ︰**
 
 1. 要求您的 OC Tanner 支援小組建立一個 nameID 屬性與 Azure AD 中 Britta Simon 使用者名稱的值相同的使用者。
 
 
 ### 指派 Azure AD 測試使用者
 
-本節目標是授與 Britta Simon 對 O.C. Tanner - AppreciateHub 的存取權，讓她能夠使用 Azure 單一登入 。
+本節目標是授與 Britta Simon 對 O.C. Tanner - AppreciateHub 的存取權，讓她能夠使用 Azure 單一登入 Tanner - AppreciateHub 之間的單一登入。
 <br><br>![指派使用者][200]
 
-**若要指派 Britta Simon 到 O.C. Tanner-AppreciateHub，執行下列步驟:**
+**若要指派 Britta Simon 到 O.C. Tanner-AppreciateHub，執行下列步驟 ︰**
 
 1. 在 Azure 入口網站中，若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。<br>
 <br><br>![指派給使用者][201]
@@ -243,6 +243,7 @@
 [203]: ./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_205.png
+
 
 
 

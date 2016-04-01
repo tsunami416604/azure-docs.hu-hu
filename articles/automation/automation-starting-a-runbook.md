@@ -156,7 +156,7 @@ Azure 自動化 Web 服務會為特定資料型別的參數提供特殊功能，
 
 ### 具名的值
 
-如果參數是資料型別 [object]，則您可以使用下列 JSON 格式來傳送具名值的清單: *{"Name1": Value1，"Name2": Value2，"Name3": Value3}*。 這些值必須是簡單型別。 Runbook 將會收到參數 [PSCustomObject](http://msdn.microsoft.com/library/azure/system.management.automation.pscustomobject(v=vs.85).aspx) 與每個具名值相對應的屬性。
+如果參數是資料型別 [object]，則您可以使用下列 JSON 格式來傳送具名值的清單 ︰ *{"Name1": Value1，"Name2": Value2，"Name3": Value3}*。 這些值必須是簡單型別。 Runbook 將會收到參數 [PSCustomObject](http://msdn.microsoft.com/library/azure/system.management.automation.pscustomobject(v=vs.85).aspx) 與每個具名值相對應的屬性。
 
 請考慮可接受稱為 user 的參數的下列測試 Runbook。
 
@@ -186,7 +186,7 @@ Azure 自動化 Web 服務會為特定資料型別的參數提供特殊功能，
 
 ### 陣列
 
-如果參數是陣列，例如 [array] 或 [string []]，您可以使用下列 JSON 格式來傳送值的清單: *[Value1，Value2，Value3]*。 這些值必須是簡單型別。
+如果參數是陣列，例如 [array] 或 [string []]，您可以使用下列 JSON 格式來傳送值的清單 ︰ *[Value1，Value2，Value3]*。 這些值必須是簡單型別。
 
 請考慮可接受參數，呼叫下列測試 runbook *使用者*。
 
@@ -239,3 +239,4 @@ Azure 自動化 Web 服務會為特定資料型別的參數提供特殊功能，
 ## 相關文章
 
 - [Azure 自動化中的子 Runbook](automation-child-runbooks.md) 
+

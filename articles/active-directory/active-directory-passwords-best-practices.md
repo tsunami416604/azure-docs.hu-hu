@@ -27,31 +27,31 @@
   * [針對您的使用者建立您自己的自訂密碼管理入口網站](#creating-your-own-password-portal)
   * [如何使用強制註冊來強制使用者在登入時註冊](#using-enforced-registration)
   * [如何上傳使用者帳戶的驗證資料](#uploading-data-yourself)
-* [**範例使用者和支援訓練教材 (即將推出!)**](#sample-training-materials)
+* [**範例使用者和支援訓練教材 （即將推出 ！）**](#sample-training-materials)
 
 ## 如何針對密碼重設設定使用者
 本節說明各種您可以使用的方法，以確保組織中的每位使用者均能在忘記密碼時，有效地使用自助密碼重設。
 
 ### 如何設定帳戶
-使用者可以使用密碼重設之前, **所有** 必須符合下列條件:
+使用者可以使用密碼重設之前, **所有** 必須符合下列條件 ︰
 
 1.  必須在目錄中啟用密碼重設。  了解如何啟用密碼重設，讀取 [讓使用者重設其 Azure AD 密碼](active-directory-passwords-getting-started.md#enable-users-to-reset-their-azure-ad-passwords) 或 [讓使用者重設或變更其 AD 密碼](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords)
 2.  使用者必須獲得授權。
  - 雲端使用者，使用者必須擁有 **任何付費的 Office 365 授權**, ，或 **AAD Basic** 或 **AAD Premium 授權** 指派。
- - 在內部部署使用者 (同盟或雜湊同步處理)，使用者 **必須具有指派的 AAD Premium 授權**。
+ - 在內部部署使用者 （同盟或雜湊同步處理），使用者 **必須具有指派的 AAD Premium 授權**。
 3.  使用者必須具有 **的驗證資料定義的最小集合** 符合目前的密碼重設原則。
  - 如果目錄中的對應欄位含有格式正確的資料，就會將驗證資料視為已定義。
  - 驗證資料的最小集合定義在 **至少有一個** 已啟用的驗證選項，如果設定一個閘道原則，或在 **至少其中兩** 啟用驗證的設定選項，如果兩個閘道原則。
 4.  如果使用者使用內部部署帳戶，然後 [密碼回寫](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) 必須啟用並開啟
 
 ### 填入驗證資料的方式
-您有幾個選項可供您選擇如何指定組織中的使用者資料，以用於密碼重設。
+您有幾個選項可用於指定要用於密碼重設的組織中使用者資料。
 
 - 編輯中的使用者 [Azure 管理入口網站](https://manage.windowsazure.com) 或 [Office 365 系統管理入口網站](https://portal.microsoftonline.com)
 - 使用 Azure AD Sync 從內部部署 Active Directory 網域將使用者屬性同步處理至 Azure AD
 - 若要編輯的使用者內容中使用 Windows PowerShell [遵循以下步驟](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users)。
 - 允許使用者註冊自己的資料引導至註冊入口網站在 [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
-- 要求使用者註冊密碼重設他們登入其 Azure AD 帳戶設定  [**要求使用者在登入時註冊嗎?**](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) 組態選項，以 **是**。
+- 要求使用者註冊密碼重設他們登入其 Azure AD 帳戶設定  [**要求使用者在登入時註冊嗎？**](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) 設定選項，以 **是**。
 
 使用者不需要註冊密碼重設，系統也能運作。  舉例來說，如果您在本機目錄中有現有的行動電話號碼或辦公室電話號碼，就可以在 Azure AD 中同步處理這些號碼，然後我們會自動將這些號碼用於密碼重設。
 
@@ -62,8 +62,8 @@
 
 1.  啟用密碼重設您的目錄中，移至 **設定** 索引標籤中 [Azure 管理入口網站](https://manage.windowsazure.com) ，然後選取 **是** 的 **使用者已啟用密碼重設** 選項。
 2.  適當的授權指派給您想要提供密碼重設給每位使用者，請前往 **授權** 索引標籤中 [Azure 管理入口網站](https://manage.windowsazure.com)。
-3.  選擇性地將密碼重設為一群使用者漸進此功能藉由設定限制 **限制對密碼重設的存取** 切換至 **是** ，然後選取 [啟用密碼重設 (請注意這些使用者必須都具有指派的授權) 的安全性群組。
-4.  指示使用者使用密碼重設，包括: 傳送電子郵件指示使用者註冊、 啟用強制的註冊在存取面板中，或自行上傳這些使用者的適當驗證資料透過 DirSync、 PowerShell 或 [Azure 管理入口網站](https://manage.windowsazure.com)。  下方提供此作業的詳細說明。
+3.  選擇性地將密碼重設為一群使用者漸進此功能藉由設定限制 **限制對密碼重設的存取** 切換至 **是** ，然後選取 [啟用密碼重設 （請注意這些使用者必須都具有指派的授權） 的安全性群組。
+4.  指示使用者使用密碼重設，包括 ︰ 傳送電子郵件指示使用者註冊、 啟用強制的註冊在存取面板中，或自行上傳這些使用者的適當驗證資料透過 DirSync、 PowerShell 或 [Azure 管理入口網站](https://manage.windowsazure.com)。  下方提供此作業的詳細說明。
 5.  經過一段時間，查看 [使用者的瀏覽到 [報表] 索引標籤，然後檢視註冊 [**密碼重設註冊活動**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) 報表。
 6.  許多使用者註冊之後，觀察他們使用密碼重設瀏覽到 [報表] 索引標籤，然後檢視 [**密碼重設活動**](active-directory-passwords-get-insights.md#view-password-reset-activity) 報表。
 
@@ -107,7 +107,7 @@
 
 若要了解您可以透過 AAD Connect 或 Windows PowerShell 設定哪些屬性，請參閱 [密碼重設使用哪些資料](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)。
 
-您可以上傳驗證資料透過 [Azure 管理入口網站](https://manage.windowsazure.com) 依照下列步驟:
+您可以上傳驗證資料透過 [Azure 管理入口網站](https://manage.windowsazure.com) 依照下列步驟 ︰
 
 1.  瀏覽至您的目錄中 **Active Directory 延伸模組** 中 [Azure 管理入口網站](https://manage.windowsazure.com)。
 2.  按一下 [ **使用者** ] 索引標籤。
@@ -154,4 +154,5 @@
 [005]: ./media/active-directory-passwords-best-practices/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
+
 

@@ -70,11 +70,11 @@ Hadoop 為 MapReduce 提供一個串流 API，可讓您以 Java 以外的語言�
 6. 若要將檔案重新命名 **WordCountMapper.cs**, ，然後按下 **ENTER**。
 7. 按一下 [ **是** 以確認重新命名所有參考。
 8. 按兩下 **WordCountMapper.cs** 以開啟它。
-9. 新增下列 **使用** 陳述式:
+9. 新增下列 **使用** 陳述式 ︰
 
         using System.IO;
 
-10. 取代 **main ()** 函式取代為下列:
+10. 取代 **main （)** 函式取代為下列 ︰
 
         static void Main(string[] args)
         {
@@ -114,11 +114,11 @@ Hadoop 為 MapReduce 提供一個串流 API，可讓您以 Java 以外的語言�
 5. 若要將檔案重新命名 **WordCountReducer.cs**, ，然後按下 **ENTER**。
 7. 按一下 [ **是** 以確認重新命名所有參考。
 8. 按兩下 **WordCountReducer.cs** 以開啟它。
-9. 新增下列 **使用** 陳述式:
+9. 新增下列 **使用** 陳述式 ︰
 
         using System.IO;
 
-10. 取代 **main ()** 函式取代為下列:
+10. 取代 **main （)** 函式取代為下列 ︰
 
         static void Main(string[] args)
         {
@@ -554,4 +554,5 @@ Azure HDInsight 使用 Azure Blob 儲存體做為預設檔案系統。 您可以
 [powershell-install]: ../powershell-install-configure.md
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-hadoop-develop-deploy-streaming-jobs/HDI.WordCountDiagram.gif "MapReduce wordcount application flow"
+
 

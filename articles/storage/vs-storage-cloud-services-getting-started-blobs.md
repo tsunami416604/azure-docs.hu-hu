@@ -64,7 +64,7 @@ Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量�
 
 > [AZURE.NOTE] 在 ASP.NET 中執行對外呼叫 Azure 儲存體的一些 Api 是非同步的。 請參閱 [使用 Async 和 Await 進行非同步程式設計](http://msdn.microsoft.com/library/hh191443.aspx) 如需詳細資訊。 以下範例中的程式碼假設使用非同步程式設計方法。
 
-若要建立儲存體帳戶中的容器，您只需要為新增呼叫至 **CreateIfNotExistsAsync** 如下列程式碼所示:
+若要建立儲存體帳戶中的容器，您只需要為新增呼叫至 **CreateIfNotExistsAsync** 如下列程式碼所示 ︰
 
     // Get a reference to a CloudBlobContainer with the variable name 'container'
     // as described in the "Access blob containers in code" section.
@@ -104,7 +104,7 @@ Azure 儲存體支援區塊 Blob 和頁面 Blob。 在大多數情況下，建�
 
 ## 列出容器中的 Blob
 
-若要列出容器中的 Blob，請先取得容器參照。 然後，您可以使用容器的 **ListBlobs** 方法來擷取 blob 和/或目錄。 若要存取一組豐富的屬性和方法傳回 **IListBlobItem**, ，您必須進行轉換， **CloudBlockBlob**, ，**CloudPageBlob**, ，或 **CloudBlobDirectory** 物件。 如果不清楚類型，可使用類型檢查來決定要將其轉換至何種類型。 下列程式碼示範如何擷取和輸出中各個項目的 URI **相片** 容器:
+若要列出容器中的 Blob，請先取得容器參照。 然後，您可以使用容器的 **ListBlobs** 方法來擷取 blob 和/或目錄。 若要存取一組豐富的屬性和方法傳回 **IListBlobItem**, ，您必須進行轉換， **CloudBlockBlob**, ，**CloudPageBlob**, ，或 **CloudBlobDirectory** 物件。 如果不清楚類型，可使用類型檢查來決定要將其轉換至何種類型。 下列程式碼示範如何擷取和輸出中各個項目的 URI **相片** 容器 ︰
 
     // Get a reference to a CloudBlobContainer with the variable name 'container' as described in
     // the "Access blob containers in code" section.
@@ -144,7 +144,7 @@ Azure 儲存體支援區塊 Blob 和頁面 Blob。 在大多數情況下，建�
     2011/architecture/description.txt
     2011/photo7.jpg
 
-當您呼叫 **ListBlobs** 傳回集合上的容器 (如所示的上一個範例)
+當您呼叫 **ListBlobs** 傳回集合上的容器 （如所示的上一個範例）
 包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 代表的目錄和 blob 的最上層所包含的物件。 以下是輸出結果：
 
     Directory: https://<accountname>.blob.core.windows.net/photos/2010/
@@ -262,4 +262,5 @@ Azure 儲存體支援區塊 Blob 和頁面 Blob。 在大多數情況下，建�
 ## 後續步驟
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
+
 

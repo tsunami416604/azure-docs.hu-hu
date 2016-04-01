@@ -24,7 +24,7 @@
 
 本主題討論建立和設定資產傳遞原則的原因與方法。 
 
->[AZURE.NOTE]若要能夠使用動態封裝和動態加密，您必須確定至少一個縮放單元 (也稱為串流單位)。 如需詳細資訊，請參閱 [如何調整媒體服務](media-services-manage-origins.md#scale_streaming_endpoints)。 
+>[AZURE.NOTE]若要能夠使用動態封裝和動態加密，您必須確定至少一個縮放單元 （也稱為串流單位）。 如需詳細資訊，請參閱 [如何調整媒體服務](media-services-manage-origins.md#scale_streaming_endpoints)。 
 >
 >此外，您的資產必須包含一組調適性位元速率 MP4 或調適性位元速率 Smooth Streaming 檔案。  
 
@@ -54,7 +54,7 @@ HDS
 
 如需有關如何發行資產，並建置串流 URL 的指示，請參閱 [建置串流 URL](media-services-deliver-streaming-content.md)。
 
->[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量:
+>[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量 ︰
 >
 >在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
@@ -64,7 +64,7 @@ HDS
 ##清除資產傳遞原則 
 
 ###<a id="create_asset_delivery_policy"></a>建立資產傳遞原則
-下列 HTTP 要求會建立資產傳遞原則，指定不要套用動態加密，以及傳送任何下列通訊協定資料流: MPEG DASH、 HLS 和 Smooth Streaming 通訊協定。 
+下列 HTTP 要求會建立資產傳遞原則，指定不要套用動態加密，以及傳送任何下列通訊協定資料流 ︰ MPEG DASH、 HLS 和 Smooth Streaming 通訊協定。 
 
 如需哪些值建立 AssetDeliveryPolicy 時可以指定，請參閱 [定義 AssetDeliveryPolicy 時使用的型別](#types) 一節。   
 
@@ -141,7 +141,7 @@ HDS
 
 ###建立 EnvelopeEncryption 類型的內容金鑰，並將它連結到資產
 
-當指定 DynamicEnvelopeEncryption 傳遞原則時，您必須將資產連結到 EnvelopeEncryption 類型的內容金鑰。 如需詳細資訊，請參閱: [建立內容金鑰](media-services-rest-create-contentkey.md))。
+當指定 DynamicEnvelopeEncryption 傳遞原則時，您必須將資產連結到 EnvelopeEncryption 類型的內容金鑰。 如需詳細資訊，請參閱 ︰ [建立內容金鑰](media-services-rest-create-contentkey.md))。
 
 
 ###<a id="get_delivery_url"></a>取得傳遞 URL
@@ -185,7 +185,7 @@ HDS
 
 ###建立資產傳遞原則
 
-下列 HTTP 要求會建立 **AssetDeliveryPolicy** ，它會設定為套用動態信封加密 (**DynamicEnvelopeEncryption**) 至 **HLS** 通訊協定 (在此範例中，其他通訊協定將會封鎖無法串流)。 
+下列 HTTP 要求會建立 **AssetDeliveryPolicy** ，它會設定為套用動態信封加密 (**DynamicEnvelopeEncryption**) 至 **HLS** 通訊協定 （在此範例中，其他通訊協定將會封鎖無法串流）。 
 
 
 如需哪些值建立 AssetDeliveryPolicy 時可以指定，請參閱 [定義 AssetDeliveryPolicy 時使用的型別](#types) 一節。   
@@ -234,7 +234,7 @@ HDS
 
 ###建立 CommonEncryption 類型的內容金鑰，並將它連結到資產
 
-當指定 DynamicCommonEncryption 傳遞原則時，您必須將資產連結到 CommonEncryption 類型的內容金鑰。 如需詳細資訊，請參閱: [建立內容金鑰](media-services-rest-create-contentkey.md))。
+當指定 DynamicCommonEncryption 傳遞原則時，您必須將資產連結到 CommonEncryption 類型的內容金鑰。 如需詳細資訊，請參閱 ︰ [建立內容金鑰](media-services-rest-create-contentkey.md))。
 
 
 ###取得傳遞 URL
@@ -243,7 +243,7 @@ HDS
 
 ###建立資產傳遞原則
 
-下列 HTTP 要求會建立 **AssetDeliveryPolicy** ，它會設定為套用動態一般加密 (**DynamicCommonEncryption**) 至 **Smooth Streaming** 通訊協定 (在此範例中，其他通訊協定將會封鎖無法串流)。 
+下列 HTTP 要求會建立 **AssetDeliveryPolicy** ，它會設定為套用動態一般加密 (**DynamicCommonEncryption**) 至 **Smooth Streaming** 通訊協定 （在此範例中，其他通訊協定將會封鎖無法串流）。 
 
 如需哪些值建立 AssetDeliveryPolicy 時可以指定，請參閱 [定義 AssetDeliveryPolicy 時使用的型別](#types) 一節。   
 
@@ -265,7 +265,7 @@ HDS
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-如果您想要使用 Widevine DRM 保護內容，請將 AssetDeliveryConfiguration 值更新為使用 WidevineLicenseAcquisitionUrl (其值為 7) 和指定授權傳遞服務的 URL。 您可以使用下列 AMS 合作夥伴可協助您提供 Widevine 授權: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), ，[EZDRM](http://ezdrm.com/), ，[castLabs](http://castlabs.com/company/partners/azure/)。
+如果您想要使用 Widevine DRM 保護內容，請將 AssetDeliveryConfiguration 值更新為使用 WidevineLicenseAcquisitionUrl (其值為 7) 和指定授權傳遞服務的 URL。 您可以使用下列 AMS 合作夥伴可協助您提供 Widevine 授權 ︰ [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), ，[EZDRM](http://ezdrm.com/), ，[castLabs](http://castlabs.com/company/partners/azure/)。
 
 例如： 
  
@@ -447,4 +447,5 @@ HDS
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

@@ -44,7 +44,7 @@ Azure Data Factory 是許多服務之一，可用來實作解決方案加速器�
 
 ![使用案例圖](./media/data-factory-product-reco-usecase/diagram-1.png)
 
-線上零售商網站每天都會產生數 GB 的未經處理 web 記錄檔，做為半結構化的檔案。 未經處理的 web 記錄檔和客戶及產品目錄資訊會定期擷取到 Azure Blob 儲存體帳戶，使用 Data Factory 的全域部署資料移動做為服務。 一天的未經處理記錄檔會在 Blob 儲存體中分割 (根據年和月) 以進行長期儲存。  [Azure HDInsight](http://azure.microsoft.com/services/hdinsight/) (Hadoop 做為服務) 用來分割 blob 存放區中的原始記錄檔 (適用於較佳管理性、 可用性和效能)，並處理擷取的記錄檔中大規模使用 Hive 和 Pig 指令碼資料分割的 web 記錄資料過處理以擷取需要的輸入進行機器學習建議系統產生個人化的產品建議。
+線上零售商網站每天都會產生數 GB 的未經處理 web 記錄檔，做為半結構化的檔案。 未經處理的 web 記錄檔和客戶及產品目錄資訊會定期擷取到 Azure Blob 儲存體帳戶，使用 Data Factory 的全域部署資料移動做為服務。 一天的未經處理記錄檔會在 Blob 儲存體中分割 (根據年和月) 以進行長期儲存。  [Azure HDInsight](http://azure.microsoft.com/services/hdinsight/) (Hadoop 做為服務) 用來分割 blob 存放區中的原始記錄檔 （適用於較佳管理性、 可用性和效能），並處理擷取的記錄檔中大規模使用 Hive 和 Pig 指令碼資料分割的 web 記錄資料過處理以擷取需要的輸入進行機器學習建議系統產生個人化的產品建議。
 
 用於機器學習在此範例中，建議系統是開放原始碼的機器學習建議平台從 [Apache Mahout](http://mahout.apache.org/)。  請注意，任何 [Azure Machine Learning](http://azure.microsoft.com/services/machine-learning/) 或自訂的模型可以套用。  Mahout 模型可用來根據整體使用模式預測零售商網站上項目之間的相似性，並根據個別使用者產生個人化的建議。
 
@@ -59,3 +59,4 @@ Azure Data Factory 是許多服務之一，可用來實作解決方案加速器�
 
 
   
+

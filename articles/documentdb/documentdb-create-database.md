@@ -49,3 +49,4 @@
 
 集合中有文件之後，您可以使用 [DocumentDB SQL](documentdb-sql-query.md) 到 [執行查詢](documentdb-sql-query.md#executing-queries) 針對文件使用 [查詢總管](documentdb-query-collections-query-explorer.md) 入口網站中，在 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx), ，或其中一個 [Sdk](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 
 
+

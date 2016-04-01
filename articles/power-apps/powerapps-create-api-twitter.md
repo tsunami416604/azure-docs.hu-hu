@@ -23,7 +23,7 @@
 
 1. 在 [Azure 入口網站](https://portal.azure.com/), 、 使用工作帳戶登入。 例如，使用登入 */users/yourusername*@*YourCompany*。 com。 當您這樣做時，將會自動登入您的公司訂用帳戶。 
 
-2. 選取 **瀏覽** 在工作列上:  
+2. 選取 **瀏覽** 在工作列上 ︰  
 ![][14]  
 
 3. 在清單中，您可以捲動以尋找 PowerApps 或輸入 *powerapps*:  
@@ -63,11 +63,11 @@
 
 3. 在 **建立應用程式**:  
    
-    a)，請輸入 **名稱**。  
-    b)，請輸入 **描述**。  
-    c) 輸入的值 **網站**。  
-    d) 組 **回呼 url** 您加入新的 Twitter API 在 Azure 入口網站 (在本主題中) 時收到的重新導向 url。  
-    e) 同意開發人員合約，然後選取 **建立 Twitter 應用程式**。  
+    a），請輸入 **名稱**。  
+    b），請輸入 **描述**。  
+    c） 輸入的值 **網站**。  
+    d） 組 **回呼 url** 您加入新的 Twitter API 在 Azure 入口網站 （在本主題中） 時收到的重新導向 url。  
+    e） 同意開發人員合約，然後選取 **建立 Twitter 應用程式**。  
 
     ![Twitter 應用程式建立][7]
 
@@ -91,3 +91,4 @@ Twitter 應用程式便建立好了。 您可以在 Azure 入口網站的 Twitte
 [7]: ./media/powerapps-create-api-twitter/twitter-app-create.PNG
 [14]: ./media/powerapps-create-api-sqlserver/browseall.png
 [15]: ./media/powerapps-create-api-sqlserver/allresources.png
+

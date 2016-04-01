@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Zoom 租用戶
   
-完成本教學課程之後, 您指派給縮放 Azure 的 AD 使用者都能夠單一的登入該應用程式在您的縮放公司網站 (服務提供者初始化登入)，或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)
+完成本教學課程之後, 您已指派給 Zoom 的 Azure AD 使用者將能夠登入位於您 Zoom 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -39,29 +39,29 @@
 
 ###若要啟用 Zoom 的應用程式整合，請執行下列步驟：
 
-1.  在 [Azure 管理上 「 入口 」，左邊的瀏覽] 窗格中，按一下 [ **Active Directory**。
+1.  在 Azure 管理入口網站中，在左的導覽窗格中，按一下 [ **Active Directory**。
 
     ![Active Directory](./media/active-directory-saas-zoom-tutorial/IC700993.png "Active Directory")
 
 2.  從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
-3.  若要開啟應用程式檢視，在 [目錄] 檢視中，按一下 [ **應用程式** 在最上層的功能表。
+3.  若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
 
     ![應用程式](./media/active-directory-saas-zoom-tutorial/IC700994.png "Applications")
 
-4.  按一下 [ **新增** 在頁面底部。
+4.  按一下 [ **新增** 頁面的底部。
 
     ![新增應用程式](./media/active-directory-saas-zoom-tutorial/IC749321.png "Add application")
 
-5.  在 **您想要** ] 對話方塊中，按一下 [ **從圖庫中新增應用程式**。
+5.  在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。
 
     ![從組件庫新增應用程式](./media/active-directory-saas-zoom-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  在 **搜尋] 方塊中**, ，型別 **拉**。
+6.  在 **搜尋方塊**, ，型別 **縮放**。
 
     ![應用程式庫](./media/active-directory-saas-zoom-tutorial/IC784694.png "Application Gallery")
 
-7.  在 [結果] 窗格中，選取 [ **拉**, ，然後按一下 [ **完成** 新增應用程式。
+7.  在 [結果] 窗格中，選取 **縮放**, ，然後按一下 [ **完成** 加入應用程式。
 
     ![Zoom](./media/active-directory-saas-zoom-tutorial/IC784695.png "Zoom")
 
@@ -69,23 +69,23 @@
   
 本節的目的是要說明如何依據 SAML 通訊協定來使用同盟，讓使用者能夠用自己的 Azure AD 帳戶在 Zoom 中進行驗證。  
 在此程序中，您必須建立 base-64 編碼的憑證檔案。  
-如果您不熟悉此程序，請參閱 [如何將二進位檔案的憑證轉換成文字檔案](http://youtu.be/PlgrzUZ-Y1o)。
+如果您不熟悉此程序，請參閱 [如何將二進位檔案憑證轉換成文字檔](http://youtu.be/PlgrzUZ-Y1o)。
 
 ###若要設定單一登入，請執行下列步驟：
 
-1.  在 Azure 的 AD 入口網站，在 **拉** 應用程式整合] 頁面上，按一下 [ **設定單一登入** 開啟 * * 設定單一登入 * * 對話方塊。
+1.  在 Azure AD 入口網站上 **縮放** 應用程式整合頁面上，按一下 [ **設定單一登入** 開啟 * * 設定單一登入 * * 對話方塊。
 
     ![設定單一登入](./media/active-directory-saas-zoom-tutorial/IC784696.png "Configure single sign-on")
 
-2.  在 **您要如何才能進行縮放登入的使用者** ] 頁面上，選取 **Microsoft Azure AD 單一登入**, ，然後按一下 [ **下一步**。
+2.  在 **您希望使用者如何登入縮放** 頁面上，選取 **Microsoft Azure AD 單一登入**, ，然後按一下 [ **下一步**。
 
     ![設定單一登入](./media/active-directory-saas-zoom-tutorial/IC784697.png "Configure single sign-on")
 
-3.  上 **設定應用程式 URL** 頁，在 **中 URL 縮放符號** ] 文字方塊中，輸入您使用下列模式的 URL"*http://company.zoom.us*"，，然後按一下 [ **下一步**。
+3.  在 **設定應用程式 URL** 頁面上，於 **縮放登入 URL** 文字方塊中，輸入您的 URL 使用下列模式 」*http://company.zoom.us*」，然後按一下 [ **下一步**。
 
     ![設定應用程式 URL](./media/active-directory-saas-zoom-tutorial/IC784698.png "Configure App URL")
 
-4.  在 **在縮放設定單一登入** 頁面上，按一下 **下載憑證**, ，然後儲存您的電腦上的憑證檔案。
+4.  在 **縮放在設定單一登入** 頁面上，按一下 **下載憑證**, ，然後儲存您的電腦上的憑證檔案。
 
     ![設定單一登入](./media/active-directory-saas-zoom-tutorial/IC784699.png "Configure single sign-on")
 
@@ -95,23 +95,23 @@
 
     ![單一登入](./media/active-directory-saas-zoom-tutorial/IC784700.png "Single sign-on")
 
-7.  按一下 [ **安全性控制** 索引標籤，然後再移至 **單一登入** 設定。
+7.  按一下 [ **安全性控制** 索引標籤，然後移至 **單一登入** 設定。
 
 8.  在 [單一登入] 區段中，執行下列步驟：
 
     ![單一登入](./media/active-directory-saas-zoom-tutorial/IC784701.png "Single sign-on")
 
-    1.  在 Azure 的入口網站，在 **在縮放設定單一登入** 對話方塊的頁、 複製 **單一登入服務 URL** 值，而且再將其貼入 **登入頁面 URL** 文字方塊。
-    2.  在 Azure 的入口網站，在 **在縮放設定單一登入** 對話方塊的頁、 複製 **單一的 Sign-Out 服務 URL** 值，而且再將其貼入 **教具借出的網頁 URL** 文字方塊。
-    3.  建立 **base 64 編碼** 檔案從您下載的憑證。  
+    1.  在 Azure 網站中，在 **縮放在設定單一登入** 對話方塊頁面中，複製 **單一登入服務 URL** 值，並接著將它貼入 **登入頁面 URL** 文字方塊。
+    2.  在 Azure 網站中，在 **縮放在設定單一登入** 對話方塊頁面中，複製 **單一登出服務 URL** 值，並接著將它貼入 **登出頁面 URL** 文字方塊。
+    3.  建立 **base 64 編碼** 檔案下載的憑證。  
 
-        >[AZURE.TIP] 如需詳細資訊，請參閱 [如何將二進位檔案的憑證轉換成文字檔案](http://youtu.be/PlgrzUZ-Y1o)
+        >[AZURE.TIP] 如需詳細資訊，請參閱 [如何轉換的文字檔案中的二進位檔案的憑證](http://youtu.be/PlgrzUZ-Y1o)
 
-    4.  在記事本中開啟您 base 64 編碼的憑證，將它的內容複製到剪貼簿，然後貼至 **識別提供者憑證** 文字方塊
-    5.  在 Azure 的入口網站，在 **在縮放設定單一登入** 對話方塊的頁、 複製 **發照者 URL** 值，而且再將它貼到 **發照者** 文字方塊。
+    4.  在記事本中開啟 base-64 編碼的憑證，將它的內容複製到剪貼簿，然後將它貼到 **身分識別提供者憑證** 文字方塊
+    5.  在 Azure 網站中，在 **縮放在設定單一登入** 對話方塊頁面中，複製 **簽發者 URL** 值，並接著將它貼入 **簽發者** 文字方塊。
     6.  按一下 [ **儲存**。
 
-9.  在 Azure 的 AD 入口網站中，選取單一的登入設定確認，然後按一下 [ **完成** 關閉 **設定單一登入** 對話方塊。
+9.  在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。
 
     ![設定單一登入](./media/active-directory-saas-zoom-tutorial/IC784702.png "Configure single sign-on")
 
@@ -122,23 +122,23 @@ Zoom 需以手動的方式佈建。
 
 ###若要佈建使用者帳戶，請執行下列步驟：
 
-1.  登入您 **拉** 公司網站系統管理員的身分。
+1.  登入您 **縮放** 系統管理員身分的公司網站。
 
-2.  按一下 [ **帳戶管理** 索引標籤，然後再按一下 [ **使用者管理**。
+2.  按一下 [ **帳戶管理** 索引標籤，然後再按一下 **使用者管理**。
 
 3.  在 [使用者管理] 區段中，按一下 [ **將使用者新增**。
 
     ![使用者管理](./media/active-directory-saas-zoom-tutorial/IC784703.png "User management")
 
-4.  在 **將使用者加入** 頁面上，執行下列步驟:
+4.  在 **將使用者新增** 頁面上，執行下列步驟 ︰
 
     ![新增使用者](./media/active-directory-saas-zoom-tutorial/IC784704.png "Add users")
 
-    1.  為 **使用者型別**, ，請選取 **基本**。
-    2.  在 **電子郵件** ] 文字方塊中，輸入您想要佈建一個有效的 AAD 帳戶的電子郵件地址。
+    1.  做為 **使用者類型**, ，請選取 **基本**。
+    2.  在 **電子郵件** 文字方塊中，輸入您想要佈建之有效 AAD 帳戶電子郵件地址。
     3.  按一下 [ **新增**。
 
->[AZURE.NOTE] 您可以使用任何其他縮放使用者帳戶建立工具或 Api 提供以加快佈建 AAD 的縮放使用者帳戶。
+>[AZURE.NOTE] 您可以使用任何其他縮放使用者帳戶建立工具或 Api Zoom 所提供的佈建 AAD 使用者帳戶。
 
 ##指派使用者
   
@@ -148,12 +148,13 @@ Zoom 需以手動的方式佈建。
 
 1.  在 Azure AD 入口網站中建立測試帳戶。
 
-2.  在 * * 縮放 * * 應用程式整合] 頁面上，按一下 [ **將使用者指派**。
+2.  在 * * 縮放 * * 應用程式整合頁面上，按一下 [ **指派使用者**。
 
     ![指派使用者](./media/active-directory-saas-zoom-tutorial/IC784705.png "Assign users")
 
-3.  選取您的測試使用者，請按一下 [ **指派**, ，然後按一下 [ **是** 以確認您的工作分派。
+3.  選取測試使用者，請按一下 **指派**, ，然後按一下 [ **是** 以確認您的作業。
 
     ![是](./media/active-directory-saas-zoom-tutorial/IC767830.png "Yes")
   
-如果要測試您的單一登入設定，請開啟存取面板。 如需存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

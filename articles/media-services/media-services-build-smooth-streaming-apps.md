@@ -40,7 +40,7 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 
 - [單元 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) -簡單的 Windows 8 Smooth Streaming Media Player 
 - [第 2 課](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) -簡單的 Windows 8 Smooth Streaming Media Player 滑桿控制項， 
-- [第 3 課:](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) -Windows 8 Smooth Streaming Media Player 與資料流的選取項目，  
+- [第 3 課 ︰](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) -Windows 8 Smooth Streaming Media Player 與資料流的選取項目，  
 - [第 4 課](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907)  -Windows 8 Smooth Streaming Media Player 具有追蹤選取。
 
 ##課程 1：建立基本的 Smooth Streaming 市集應用程式
@@ -61,7 +61,7 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 
 1.  執行 Visual Studio 2012 或更新版本。
 2.  從 **檔案** ] 功能表上，按一下 [ **新增**, ，然後按一下 [ **專案**。
-3.  從 [新增專案] 對話方塊中，輸入或選取下列值:
+3.  從 [新增專案] 對話方塊中，輸入或選取下列值 ︰
 
 名稱|值
 ---|---
@@ -91,7 +91,7 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 **設計播放程式使用者介面**
 
 1.  從 [方案總管] 中，按兩下 [ **MainPage.xaml** 在 [設計] 檢視中開啟它。
-2.  找出 **& l t;方格 & gt;** 和 **& l t; / 方格 & gt;**  標記的 XAML 檔案和貼上下列程式碼的兩個標記之間:
+2.  找出 **& l t;方格 & gt;** 和 **& l t; / 方格 & gt;**  標記的 XAML 檔案和貼上下列程式碼的兩個標記之間 ︰
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>    <!-- spacer -->
@@ -150,16 +150,16 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
 
         using Windows.Media;
 
-3.  在開始 **MainPage** 類別中，新增下列資料成員:
+3.  在開始 **MainPage** 類別中，新增下列資料成員 ︰
 
         private MediaExtensionManager extensions = new MediaExtensionManager();
 
-4.  在結尾處 **MainPage** 建構函式，新增下列兩行:
+4.  在結尾處 **MainPage** 建構函式，新增下列兩行 ︰
 
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
         
-5.  在結尾處 **MainPage** 類別中的，貼上下列程式碼:
+5.  在結尾處 **MainPage** 類別中的，貼上下列程式碼 ︰
 
         #region UI Button Click Events
         private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -249,7 +249,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
         private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
         private IAdaptiveSourceManager adaptiveSourceManager;
     
-4.  內部 **MainPage** 建構函式，新增下列程式碼之後 **這。初始化 components ();** 行，以 [上一課的註冊程式碼行:
+4.  內部 **MainPage** 建構函式，新增下列程式碼之後 **這。初始化 components （）;** 行，以 [上一課的註冊程式碼行 ︰
     
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
         //Streaming media sources.
@@ -258,7 +258,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
         // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
         propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
     
-5.  內部 **MainPage** 建構函式，修改兩個 RegisterByteStreamHandler 方法以新增 forth 參數:
+5.  內部 **MainPage** 建構函式，修改兩個 RegisterByteStreamHandler 方法以新增 forth 參數 ︰
 
         // Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
         // "text/xml" and "application/vnd.ms-ss" mime-types and pass the propertyset. 
@@ -279,11 +279,11 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
 **新增調適性來源管理員層級事件處理常式**
 
 1.  從 [方案總管] 中，以滑鼠右鍵按一下 **MainPage.xaml**, ，然後按一下 [ **檢視程式碼**。
-2.  內部 **MainPage** 類別中，新增下列資料成員:
+2.  內部 **MainPage** 類別中，新增下列資料成員 ︰
 
         private AdaptiveSource adaptiveSource = null;
 
-3.  在結尾處 **MainPage** 類別中，新增下列事件處理常式:
+3.  在結尾處 **MainPage** 類別中，新增下列事件處理常式 ︰
     
         #region Adaptive Source Manager Level Events
         private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)
@@ -292,7 +292,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
         }
         #endregion Adaptive Source Manager Level Events
 
-4.  在結尾處 **MainPage** 建構函式，新增下行以訂閱調適性來源開放事件:
+4.  在結尾處 **MainPage** 建構函式，新增下行以訂閱調適性來源開放事件 ︰
     
     adaptiveSourceManager.AdaptiveSourceOpenedEvent + = 
         新 AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
@@ -302,12 +302,12 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
 **新增調適性來源層級事件處理常式**
 
 1.  從 [方案總管] 中，以滑鼠右鍵按一下 **MainPage.xaml**, ，然後按一下 [ **檢視程式碼**。
-2.  內部 **MainPage** 類別中，新增下列資料成員:
+2.  內部 **MainPage** 類別中，新增下列資料成員 ︰
     
         private AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate; 
         private Manifest manifestObject;
     
-3.  在結尾處 **MainPage** 類別中，新增下列事件處理常式:
+3.  在結尾處 **MainPage** 類別中，新增下列事件處理常式 ︰
 
         #region Adaptive Source Level Events
         private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)
@@ -343,7 +343,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
 **新增媒體元素事件處理常式**
 
 1.  從 [方案總管] 中，以滑鼠右鍵按一下 **MainPage.xaml**, ，然後按一下 [ **檢視程式碼**。
-2.  在結尾處 **MainPage** 類別中，新增下列事件處理常式:
+2.  在結尾處 **MainPage** 類別中，新增下列事件處理常式 ︰
     
         #region Media Element Event Handlers 
         private void MediaOpened(object sender, RoutedEventArgs e)
@@ -362,7 +362,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
         }
         #endregion Media Element Event Handlers
 
-3.  在結尾處 **MainPage** 建構函式，將下列程式碼新增至訂閱事件:
+3.  在結尾處 **MainPage** 建構函式，將下列程式碼新增至訂閱事件 ︰
     
         mediaElement.MediaOpened += MediaOpened;
         mediaElement.MediaEnded += MediaEnded;
@@ -377,18 +377,18 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
     
         using Windows.UI.Core;
 
-3.  內部 **MainPage** 類別中，新增下列資料成員:
+3.  內部 **MainPage** 類別中，新增下列資料成員 ︰
     
         public static CoreDispatcher _dispatcher;
         private DispatcherTimer sliderPositionUpdateDispatcher;
     
-4.  在結尾處 **MainPage** 建構函式，加入下列程式碼:
+4.  在結尾處 **MainPage** 建構函式，加入下列程式碼 ︰
 
         _dispatcher = Window.Current.Dispatcher;
         PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
         sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
     
-5.  在結尾處 **MainPage** 類別中，新增下列程式碼:
+5.  在結尾處 **MainPage** 類別中，新增下列程式碼 ︰
     
         #region sliderMediaPlayer
         private double SliderFrequency(TimeSpan timevalue)
@@ -465,7 +465,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
         }
         #endregion sliderMediaPlayer
 
-    **注意:** CoreDispatcher 用來從非 UI 執行緒對 UI 執行緒的變更。 如果發送器執行緒發生瓶頸，開發人員可以選擇使用自己想要更新之 UI-element 所提供的發送器。  例如：
+    **注意 ︰** CoreDispatcher 用來從非 UI 執行緒對 UI 執行緒的變更。 如果發送器執行緒發生瓶頸，開發人員可以選擇使用自己想要更新之 UI-element 所提供的發送器。  例如：
     
         await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
           timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime); 
@@ -473,12 +473,12 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
           sliderProgress.Maximum = absvalue; }); 
         
 
-6.  在結尾處 **mediaElement_AdaptiveSourceStatusUpdated** 方法中，新增下列程式碼:
+6.  在結尾處 **mediaElement_AdaptiveSourceStatusUpdated** 方法中，新增下列程式碼 ︰
     
         setSliderStartTime(args.StartTime);
         setSliderEndTime(args.EndTime);
 
-7.  在結尾處 **MediaOpened** 方法中，新增下列程式碼:
+7.  在結尾處 **MediaOpened** 方法中，新增下列程式碼 ︰
     
     sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
     sliderProgress.Width = mediaElement.Width;
@@ -780,7 +780,7 @@ Smooth Streaming 簡報可以包含多個以不同品質等級 (位元速率) �
 **修改 XAML 檔案**
 
 1. 從 [方案總管] 中，以滑鼠右鍵按一下 **MainPage.xaml**, ，然後按一下 [ **檢視表設計工具**。
-2. 找出 & l t;方格 & gt;標記名稱 **gridStreamAndBitrateSelection**, ，附加下列程式碼結尾的標記:
+2. 找出 & l t;方格 & gt;標記名稱 **gridStreamAndBitrateSelection**, ，附加下列程式碼結尾的標記 ︰
 
         <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
@@ -990,4 +990,5 @@ Smooth Streaming 簡報可以包含多個以不同品質等級 (位元速率) �
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
  
+
 

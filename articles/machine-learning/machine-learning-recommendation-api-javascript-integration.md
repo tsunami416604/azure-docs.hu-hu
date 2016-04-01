@@ -88,11 +88,11 @@
 每當使用者點選項目時，都應該會使用這個事件。 當使用者點選項目時，通常會開啟含有該項目詳細資料的新頁面。在這個頁面中，應該會觸發此事件。
 
 參數：
-- event (字串，強制) –"click"
-- item (字串，強制) – 項目的唯一識別碼
-- itemName (字串，選擇性) – 項目的名稱
-- itemDescription (字串，選擇性) – 項目的描述
-- itemCategory (字串，選擇性) – 項目的類別
+- event （字串，強制） –"click"
+- item （字串，強制） – 項目的唯一識別碼
+- itemName （字串，選擇性） – 項目的名稱
+- itemDescription （字串，選擇性） – 項目的描述
+- itemCategory （字串，選擇性） – 項目的類別
         
         <script>
             if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
@@ -111,13 +111,13 @@
 每當使用者點選項目 (從 Azure ML Recommendations 接收當成建議的項目) 時，都應該會使用這個事件。 當使用者點選項目時，通常會開啟含有該項目詳細資料的新頁面。在這個頁面中，應該會觸發此事件。
 
 參數：
-- event (字串，強制) –"recommendationclick"
-- item (字串，強制) – 項目的唯一識別碼
-- itemName (字串，選擇性) – 項目的名稱
-- itemDescription (字串，選擇性) – 項目的描述
-- itemCategory (字串，選擇性) – 項目的類別
-- 植入 (字串陣列，選擇性) – 產生建議查詢的根源。
-- recoList (字串陣列，選擇性) – 產生已按下此項目的建議要求的結果。
+- event （字串，強制） –"recommendationclick"
+- item （字串，強制） – 項目的唯一識別碼
+- itemName （字串，選擇性） – 項目的名稱
+- itemDescription （字串，選擇性） – 項目的描述
+- itemCategory （字串，選擇性） – 項目的類別
+- 植入 （字串陣列，選擇性） – 產生建議查詢的根源。
+- recoList （字串陣列，選擇性） – 產生已按下此項目的建議要求的結果。
         
         <script>
             if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
@@ -135,11 +135,11 @@
 ####3.2.3. 加入購物車事件
 當使用者將項目加入購物車時，應該會使用這個事件。
 參數：
-* event (字串，強制) –"addshopcart"
-* item (字串，強制) – 項目的唯一識別碼
-* itemName (字串，選擇性) – 項目的名稱
-* itemDescription (字串，選擇性) – 項目的描述
-* itemCategory (字串，選擇性) – 項目的類別
+* event （字串，強制） –"addshopcart"
+* item （字串，強制） – 項目的唯一識別碼
+* itemName （字串，選擇性） – 項目的名稱
+* itemDescription （字串，選擇性） – 項目的描述
+* itemCategory （字串，選擇性） – 項目的類別
         
         <script>
             if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
@@ -150,11 +150,11 @@
 當使用者移除購物車中的項目時，應該會使用這個事件。
 
 參數：
-* event (字串，強制) –"removeshopcart"
-* item (字串，強制) – 項目的唯一識別碼
-* itemName (字串，選擇性) – 項目的名稱
-* itemDescription (字串，選擇性) – 項目的描述
-* itemCategory (字串，選擇性) – 項目的類別
+* event （字串，強制） –"removeshopcart"
+* item （字串，強制） – 項目的唯一識別碼
+* itemName （字串，選擇性） – 項目的名稱
+* itemDescription （字串，選擇性） – 項目的描述
+* itemCategory （字串，選擇性） – 項目的類別
         
         <script>
             if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
@@ -165,12 +165,12 @@
 當使用者購買購物車中的項目時，應該會使用這個事件。
 
 參數：
-* event (字串) –"purchase"
-* (購買 []) 的項目 – 陣列項目購買的每個保留的項目。<br><br>
-已購買的格式:
-    * item (字串) – 項目的唯一識別碼。
-    * 計數 (int 或 string) – 已購買的項目。
-    * price (浮點數或字串) – 選擇性欄位 – 項目的價格。
+* event （字串） –"purchase"
+* （購買 []） 的項目 – 陣列項目購買的每個保留的項目。<br><br>
+已購買的格式 ︰
+    * item （字串） – 項目的唯一識別碼。
+    * 計數 （int 或 string） – 已購買的項目。
+    * price （浮點數或字串） – 選擇性欄位 – 項目的價格。
 
 以下範例顯示總共購買 3 個項目 (33, 34, 35)，已填入其中兩個的所有欄位 (item, count, price)，還有一個 (item 34) 沒有價格。
 
@@ -185,8 +185,8 @@ Azure ML Recommendations 事件程式庫會建立並使用 Cookie，以識別來
 在使用者登入您的網站後，應該會使用這個事件。
 
 參數：
-* 事件 (字串) –"userlogin"
-* user (字串) – 使用者的唯一識別。
+* 事件 （字串） –"userlogin"
+* user （字串） – 使用者的唯一識別。
         <script>
             如果 (typeof AzureMLRecommendationsEvent = ="undefined") {AzureMLRecommendationsEvent = [];}
             AzureMLRecommendationsEvent.push ({事件:"userlogin"，使用者:"ABCD10AA"})。
@@ -201,10 +201,10 @@ Azure ML Recommendations 事件程式庫會建立並使用 Cookie，以識別來
 若要取用一或多個項目的建議，您必須呼叫以下方法： AzureMLRecommendationsGetI2IRecommendation。
 
 參數：
-* 項目 (陣列的字串) – 要取得建議的一或多個項目。 如果您取用 Fbt 組建，則您可以在這裡設定只有一個項目。
+* 項目 （陣列的字串） – 要取得建議的一或多個項目。 如果您取用 Fbt 組建，則您可以在這裡設定只有一個項目。
 * numberOfResults (int) – 必要結果的數目。
-* includeMetadata (布林值，選擇性) – 如果設為 'true' 表示中繼資料欄位，必須填入的結果。
-* 處理函式，將處理傳回建議的函式。 資料會傳回的陣列:
+* includeMetadata （布林值，選擇性） – 如果設為 'true' 表示中繼資料欄位，必須填入的結果。
+* 處理函式，將處理傳回建議的函式。 資料會傳回的陣列 ︰
     * 項目 – 項目唯一識別碼
     * 名稱-項目名稱 (如果存在目錄中)
     * 分級 – 建議評等
@@ -227,4 +227,5 @@ Azure ML Recommendations 事件程式庫會建立並使用 Cookie，以識別來
 [2]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing2.png
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
+
 

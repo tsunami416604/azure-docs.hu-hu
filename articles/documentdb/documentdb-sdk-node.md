@@ -31,7 +31,7 @@
 <tr><td>**參與**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
 <tr><td>**文件**</td><td>[Node.js SDK Reference Documentation](http://azure.github.io/azure-documentdb-node/)</td></tr>
 <tr><td>**範例**</td><td>[Node.js Code Samples](https://github.com/Azure/azure-documentdb-node/tree/master/samples)</td></tr>
-<tr><td>**開始**</td><td>[Get started with the Node.js SDK](documentdb-nodejs-get-started.md)</td></tr>
+<tr><td>**開始使用**</td><td>[Get started with the Node.js SDK](documentdb-nodejs-get-started.md)</td></tr>
 <tr><td>**目前支援的平台**</td><td>[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/)<br/>[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)</td></tr>
 </table></br>
 
@@ -53,7 +53,7 @@
 ### <a name="1.2.1"/>1.2.1</a>
 
 - 實作以識別碼為基礎的路由
-- 修正問題 [#49](https://github.com/Azure/azure-documentdb-node/issues/49) -目前的屬性與方法 formatnumber () 發生衝突
+- 修正問題 [#49](https://github.com/Azure/azure-documentdb-node/issues/49) -目前的屬性與方法 formatnumber （） 發生衝突
 
 ### <a name="1.2.0"/>1.2.0</a>
 
@@ -120,4 +120,5 @@ Microsoft 提供通知的最少 **12 個月** 之前淘汰 SDK 從容地轉換�
 ## 另請參閱
 
 若要深入了解 DocumentDB，請參閱 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服務頁面。 
+
 

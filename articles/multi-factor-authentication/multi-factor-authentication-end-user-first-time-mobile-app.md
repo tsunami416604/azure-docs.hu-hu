@@ -73,3 +73,4 @@ Azure Authenticator 應用程式可供 [Windows Phone](http://www.windowsphone.c
 >[AZURE.NOTE]如果您看到 「 新增工作帳戶 」，這是工作地點加入，不能用於多因素驗證。  您可以忽略此項目。
  
 
+

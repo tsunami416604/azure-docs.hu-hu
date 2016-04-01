@@ -27,7 +27,7 @@
   ![繪圖](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
 
 2. 如果發佈入口網站通知您任何錯誤，修正它們。
-3.  在 **誰可以存取您預備的優惠?** 對話方塊方塊中，輸入將用於預覽中的提供的 Azure 訂用帳戶清單 [Azure 預覽入口網站](https://portal.azure.com)。
+3.  在 **誰可以存取您預備的優惠？** 對話方塊中，輸入將用於預覽中的提供的 Azure 訂用帳戶清單 [Azure 預覽入口網站](https://portal.azure.com)。
 4. 登入 [Azure 預覽入口網站](http://portal.azure.com) 前一個步驟中所列所使用的其中一個 Azure 訂閱。
 5. 尋找您的供應項目，並驗證您的 VM 映像點：
   1. 請確定該行銷內容可在 MarketPlace 中正確顯示。
@@ -45,4 +45,5 @@
 
 ## 另請參閱
 - [使用者入門：如何將供應項目發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
+
 

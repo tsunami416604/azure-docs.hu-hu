@@ -24,11 +24,11 @@
 
 ##整合程序
 
-1. 從這裡開始: [如何在 Windows Phone Silverlight 應用程式中整合 Mobile Engagement](mobile-engagement-windows-phone-integrate-engagement.md)
+1. 從這裡開始 ︰ [如何在 Windows Phone Silverlight 應用程式中整合 Mobile Engagement](mobile-engagement-windows-phone-integrate-engagement.md)
 
-2. 通知: [如何在 Windows Phone Silverlight 應用程式中整合 Reach (通知)](mobile-engagement-windows-phone-integrate-engagement-reach.md)
+2. 通知 ︰ [如何在 Windows Phone Silverlight 應用程式中整合 Reach （通知）](mobile-engagement-windows-phone-integrate-engagement-reach.md)
 
-3. 標記計劃實作: [如何使用進階的 Mobile Engagement 標記 API 在 Windows Phone Silverlight 應用程式](mobile-engagement-windows-phone-use-engagement-api.md)
+3. 標記計劃實作 ︰ [如何使用進階的 Mobile Engagement 標記 API 在 Windows Phone Silverlight 應用程式](mobile-engagement-windows-phone-use-engagement-api.md)
 
 ##版本資訊
 
@@ -54,4 +54,5 @@
 
 請參閱 [升級程序](mobile-engagement-windows-phone-upgrade-procedure/)
  
+
 

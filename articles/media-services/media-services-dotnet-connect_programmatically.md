@@ -64,13 +64,13 @@ CloudMediaContext 有五個建構函式多載。 建議使用使用建構函式 
 本節顯示如何使用採用 MediaServicesCredentials 做為參數的 CloudMediaContext 建構函式，來重複使用存取控制服務權杖。
 
 
-[Azure Active Directory 存取控制](https://msdn.microsoft.com/library/hh147631.aspx) (也稱為存取控制服務或 ACS) 是提供簡單的方式來驗證和授權使用者才能存取其 web 應用程式的雲端服務。 Microsoft Azure 媒體服務會透過需要 ACS 權杖的 OAuth 通訊協定來控制其服務的存取。 媒體服務會收到來自授權伺服器的 ACS 權杖。
+[Azure Active Directory 存取控制](https://msdn.microsoft.com/library/hh147631.aspx) （也稱為存取控制服務或 ACS） 是提供簡單的方式來驗證和授權使用者才能存取其 web 應用程式的雲端服務。 Microsoft Azure 媒體服務會透過需要 ACS 權杖的 OAuth 通訊協定來控制其服務的存取。 媒體服務會收到來自授權伺服器的 ACS 權杖。
 
 使用 Media Services SDK 進行開發時，您可以選擇不處理權杖，因為 SDK 程式碼會進行管理。 不過，讓 SDK 全權管理 ACS 權杖會導致不必要的權杖要求。 要求權杖十分耗時，並且會耗用用戶端和伺服器資源。 此外，如果速率太高，則 ACS 伺服器會節流處理要求。 限制是每秒 30 個要求，請參閱 [ACS 服務限制](https://msdn.microsoft.com/library/gg185909.aspx) 如需詳細資訊。
 
 從 Media Services SDK 3.0.0.0 版開始，您可以重複使用 ACS 權杖。  **CloudMediaContext** 使用建構函式 **MediaServicesCredentials** 做為參數啟用多個內容之間的 ACS 權杖共用。 MediaServicesCredentials 類別會封裝媒體服務認證。 如果有 ACS 權杖可用，並且知道其到期時間，則可以使用權杖建立新的 MediaServicesCredentials 執行個體，並將它傳遞給 CloudMediaContext 的建構函式。 請注意，Media Services SDK 會在權杖到期時自動重新整理權杖。 如下列範例所示，有兩種方式可以重複使用 ACS 權杖。
 
-- 您可以快取 **MediaServicesCredentials** (例如，在靜態類別變數) 的記憶體中的物件。 然後，將快取的物件傳遞至 CloudMediaContext 建構函式。 MediaServicesCredentials 物件包含可重複使用的 ACS 權杖 (如果仍然有效)。 如果權杖無效，則 Media Services SDK 會使用提供給 MediaServicesCredentials 建構函式的認證來重新整理權杖。
+- 您可以快取 **MediaServicesCredentials** （例如，在靜態類別變數） 的記憶體中的物件。 然後，將快取的物件傳遞至 CloudMediaContext 建構函式。 MediaServicesCredentials 物件包含可重複使用的 ACS 權杖 (如果仍然有效)。 如果權杖無效，則 Media Services SDK 會使用提供給 MediaServicesCredentials 建構函式的認證來重新整理權杖。
 
     請注意， **MediaServicesCredentials** 呼叫 RefreshToken 之後，物件會取得有效的語彙基元。  **CloudMediaContext** 呼叫 **RefreshToken** 建構函式中的方法。 如果您想要將權杖值儲存到外接式儲存裝置，請一定要先檢查 TokenExpiration 值是否有效，再儲存權杖資料。 如果無效，則請在快取前呼叫 RefreshToken。
 
@@ -181,7 +181,7 @@ CloudMediaContext 有五個建構函式多載。 建議使用使用建構函式 
     </configuration>
 
 
-若要從組態擷取連線值，您可以使用 **ConfigurationManager** 類別，然後將值指派給您的程式碼中的欄位:
+若要從組態擷取連線值，您可以使用 **ConfigurationManager** 類別，然後將值指派給您的程式碼中的欄位 ︰
     
     private static readonly string _accountName = ConfigurationManager.AppSettings["MediaServicesAccountName"];
     private static readonly string _accountKey = ConfigurationManager.AppSettings["MediaServicesAccountKey"];
@@ -195,4 +195,5 @@ CloudMediaContext 有五個建構函式多載。 建議使用使用建構函式 
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

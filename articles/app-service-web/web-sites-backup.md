@@ -52,17 +52,17 @@ Web Apps 可以備份下列資訊：
 1. 在 Azure 入口網站中，從 Web Apps 刀鋒視窗中選擇您的 Web 應用程式。 這將會在新的刀鋒視窗中顯示您的 Web 應用程式詳細資料。
 2. 在您的應用程式分頁中選取 **設定**, ，然後 **備份**。  **備份** ] 刀鋒視窗會顯示。
     
-    ![備份] 頁面上][] ChooseBackupsPage
+    ![Backups page][ChooseBackupsPage]
 
-3. 在 **備份** 刀鋒視窗中，按一下 [ **儲存體: 未設定** 設定儲存體帳戶。
+3. 在 **備份** 刀鋒視窗中，按一下 [ **儲存體 ︰ 未設定** 設定儲存體帳戶。
 
-    ![選擇儲存體帳戶][] ChooseStorageAccount
+    ![Choose storage account][ChooseStorageAccount]
     
 4. 選取 [選擇備份目的地 **儲存體帳戶** 和 **容器**。 此儲存體帳戶必須與您即將備份的 Web 應用程式隸屬於相同的訂用帳戶。 如果您希望的話，也可以在個別的刀鋒視窗中，建立新的儲存體帳戶或新的容器。 當您完成時，按一下 [ **選取**。
     
     ![Choose storage account](./media/web-sites-backup/02ChooseStorageAccount1.png)
     
-5. 在 **設定備份設定** 刀鋒視窗中，仍處於開啟狀態，按一下 **資料庫設定**, ，然後選取您想要包含在備份 (SQL database 或 MySQL) 中，然後按一下 [的資料庫 **確定**。  
+5. 在 **設定備份設定** 刀鋒視窗中，仍處於開啟狀態，按一下 **資料庫設定**, ，然後選取您想要包含在備份 （SQL database 或 MySQL） 中，然後按一下 [的資料庫 **確定**。  
 
     ![Choose storage account](./media/web-sites-backup/03ConfigureDatabase.png)
 
@@ -72,7 +72,7 @@ Web Apps 可以備份下列資訊：
 6. 在 **備份** 分頁中，選取 **備份目的地**。 您必須選擇現有的儲存體帳戶和容器。
 7. 在命令列中的 **備份** 刀鋒視窗中，按一下 [ **立即備份**。
     
-    ![] 按鈕 BackUpNow][] BackUpNow
+    ![BackUpNow button][BackUpNow]
     
     在備份過程中，您將會看見進度訊息。
     
@@ -82,19 +82,19 @@ Web Apps 可以備份下列資訊：
 <a name="automatedbackups"></a>
 ## 設定自動備份
 
-1. 在 **備份** 刀鋒視窗中，按一下 [ **排程: 未設定**。 
+1. 在 **備份** 刀鋒視窗中，按一下 [ **排程 ︰ 未設定**。 
 
     ![Choose storage account](./media/web-sites-backup/05ScheduleBackup.png)
     
 1. 上 **備份排程設定** ] 分頁中，將 **排定備份** 到 **上**, ，然後視需要設定備份排程，再按一下 **確定**。
     
-    ![啟用自動的備份][] SetAutomatedBackupOn
+    ![Enable automated backups][SetAutomatedBackupOn]
     
 4. 在 **設定備份設定** 刀鋒視窗中，仍處於開啟狀態，按一下 **儲存設定**, ，然後選取 [選擇備份目的地 **儲存體帳戶** 和 **容器**。 此儲存體帳戶必須與您即將備份的 Web 應用程式隸屬於相同的訂用帳戶。 如果您希望的話，也可以在個別的刀鋒視窗中，建立新的儲存體帳戶或新的容器。 當您完成時，按一下 [ **選取**。
     
     ![Choose storage account](./media/web-sites-backup/02ChooseStorageAccount1.png)
     
-5. 在 **設定備份設定** 刀鋒視窗中，按一下 [ **資料庫設定**, ，然後選取您想要包含在備份 (SQL database 或 MySQL) 中，然後按一下 [的資料庫 **確定**。  
+5. 在 **設定備份設定** 刀鋒視窗中，按一下 [ **資料庫設定**, ，然後選取您想要包含在備份 （SQL database 或 MySQL） 中，然後按一下 [的資料庫 **確定**。  
 
     ![Choose storage account](./media/web-sites-backup/03ConfigureDatabase.png)
 
@@ -107,7 +107,7 @@ Web Apps 可以備份下列資訊：
 
 * 請確定您設定的連接字串的每個資料庫上，適當地 **Web 應用程式設定** 刀鋒視窗內 **設定** 的 web 應用程式，使備份和還原功能可納入您的資料庫。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 <a name="partialbackups"></a>
 ## 只備份您 Web 應用程式的一部分
@@ -126,8 +126,8 @@ Web Apps 可以備份下列資訊：
 
 假設您有一個 Web 應用程式，其中包含過去幾年的記錄檔和靜態影像，且以後不再變更。 您已完整備份 Web 應用程式，包括舊的影像。 現在您想要每天備份 Web 應用程式，但不想付費儲存從未變更的記錄檔或靜態影像檔案。
 
-![記錄檔資料夾][] LogsFolder
-![映像資料夾][] ImagesFolder
+![Logs 資料夾][LogsFolder]
+![Images 資料夾][ImagesFolder]
     
 下列步驟顯示如何從備份中排除這些檔案。
 
@@ -176,7 +176,7 @@ Web 應用程式的資料庫備份則儲存在 .zip 檔案的根目錄中。 若
 若要開始使用 Azure，請參閱 [Microsoft Azure 免費試用](/pricing/free-trial/)。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- IMAGES -->
 [ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage.png
@@ -193,3 +193,4 @@ Web 應用程式的資料庫備份則儲存在 .zip 檔案的根目錄中。 若
 [LogsFolder]: ./media/web-sites-backup/12Logs.png
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
+

@@ -69,7 +69,7 @@
 
 不過，Azure API 應用程式的新專案範本會停用 API 測試頁面。 使用 API 應用程式專案範本建立 API 應用程式專案時，請執行下列步驟來啟用測試頁面。
 
-**注意:** 部署為 API 應用程式如果 *公用匿名* 且啟用 Swagger ui，任何人都能夠使用 Swagger UI 探索及呼叫您的 Api。 
+**注意 ︰** 部署為 API 應用程式如果 *公用匿名* 且啟用 Swagger ui，任何人都能夠使用 Swagger UI 探索及呼叫您的 Api。 
 
 1. 開啟 *app_start/swaggerconfig.cs* 檔案，並搜尋 **EnableSwaggerUI**:
 
@@ -102,4 +102,5 @@
     ![](./media/app-service-api-define-api-app/swaggertry.png)
 
 3. 在 Visual Studio 按一下 **偵錯 > 停止偵錯**。
+
 

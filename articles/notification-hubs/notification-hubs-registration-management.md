@@ -36,7 +36,7 @@
 以下是使用安裝的一些主要優點：
 
 * 建立或更新安裝是完全等冪的。 因此您可以重試它，而不需顧慮重複註冊的情況。
-* 安裝模型可讓您更容易進行個別推播 (以特定裝置為目標)。 系統標記 **"$InstallationId: [安裝 Id] 」** 會自動加入每個安裝基礎的註冊。 因此，您不需編寫任何額外的程式碼，即可對此標記進行傳送呼叫來以特定裝置做為目標。
+* 安裝模型可讓您更容易進行個別推播 (以特定裝置為目標)。 系統標記 **"$InstallationId ︰ [安裝 Id] 」** 會自動加入每個安裝基礎的註冊。 因此，您不需編寫任何額外的程式碼，即可對此標記進行傳送呼叫來以特定裝置做為目標。
 * 使用安裝也可讓您進行部分註冊更新。 部分安裝的更新要求的修補程式的方法使用 [JSON Patch 標準](https://tools.ietf.org/html/rfc6902)。 當您想要更新註冊的相關標記時，這會特別有用。 您不需要移除整個註冊，然後再次重新傳送所有先前的標記。
 
 正在安裝才支援 [後端作業的通知中樞 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。 請參閱 [安裝類別](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation.aspx) 如需詳細資訊。 若要註冊用戶端裝置的安裝識別碼，而不需要後端，您將需要使用 [通知中樞 REST API](https://msdn.microsoft.com/library/mt621153.aspx) 這一次。
@@ -85,7 +85,7 @@
 
 #### 範本
 
-如果您想要使用 [範本](notification-hubs-templates.md), ，裝置安裝也會保存在 JSON 中該裝置與相關聯的所有範本格式 (請參閱上述範例)。 範本名稱可協助將目標指向相同裝置的不同範本。
+如果您想要使用 [範本](notification-hubs-templates.md), ，裝置安裝也會保存在 JSON 中該裝置與相關聯的所有範本格式 （請參閱上述範例）。 範本名稱可協助將目標指向相同裝置的不同範本。
 
 請注意，每個範本名稱皆對應到一個範本主體和一組選擇性的標記。 此外，每個平台可以有額外的範本屬性。 就 Windows 市集 (使用 WNS) 和 Windows Phone 8 (使用 MPNS) 而言，一組額外的標頭可以是範本的一部分。 如果是 APN，您可以將到期屬性設定為常數或範本運算式。 如需完整的安裝內容，請參閱清單 [建立或覆寫與其餘的安裝](https://msdn.microsoft.com/library/azure/mt621153.aspx) 主題。
 
@@ -335,3 +335,4 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
 
 
 後端必須處理註冊更新之間的並行存取。 「服務匯流排」可提供開放式並行存取控制來管理註冊。 在 HTTP 層級，這是藉由在註冊管理作業上使用 ETag 來進行實作。 Microsoft SDK 會在背景使用這項功能，如果因並行存取而導致更新被拒，將會擲回例外狀況。 App 後端會負責處理這些例外狀況，並視需要重試更新。
+

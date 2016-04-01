@@ -42,7 +42,7 @@ Azure Redis 快取提供 Redis 叢集做為 [Redis 中實作](http://redis.io/to
 
 若要設定叢集，請先選取其中一個 **高階** 會在快取 **選擇價格層** 刀鋒視窗。
 
-![選擇定價層][redis-cache-premium-pricing-tier]
+![選擇價格層][redis-cache-premium-pricing-tier]
 
 叢集上設定 **Redis 叢集** 刀鋒視窗。
 
@@ -80,7 +80,7 @@ Azure Redis 快取提供 Redis 叢集做為 [Redis 中實作](http://redis.io/to
 
 ## 從執行中的高階快取新增或移除分區
 
-若要新增或移除分區執行高階的快取叢集已啟用，按一下 [ **Redis 叢集大小 (預覽)** 從 **設定** 刀鋒視窗。
+若要新增或移除分區執行高階的快取叢集已啟用，按一下 [ **Redis 叢集大小 （預覽）** 從 **設定** 刀鋒視窗。
 
 >[AZURE.NOTE] 請注意，雖然 Azure Redis 快取進階層已經發行上市，Redis 叢集大小功能目前為預覽狀態。
 
@@ -96,13 +96,13 @@ Azure Redis 快取提供 Redis 叢集做為 [Redis 中實作](http://redis.io/to
 
 -   啟用叢集時，只可以使用資料庫 0。 如果用戶端應用程式使用多個資料庫，它會嘗試讀取或寫入至 0 以外的資料庫，則會擲回下列例外狀況。 `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
 -   如果您使用 [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 您必須使用 1.0.481 或更新版本。 您連接到使用相同的快取 [端點、 連接埠和索引鍵](cache-configure.md#properties) 連接沒有啟用叢集的快取時，所使用。 唯一的差別在於必須在資料庫 0 上完成所有的讀取和寫入。
-    -   其他用戶端可能有不同的需求。 請參閱 [執行所有的 Redis 用戶端支援叢集?](#do-all-redis-clients-support-clustering)。
--   如果您的應用程式使用分成單一命令的多個索引鍵作業，則所有索引鍵都必須位於相同的分區。 若要這麼做，請參閱 [金鑰散發在叢集中的方式?](#how-are-keys-distributed-in-a-cluster)。
--   如果您使用 Redis ASP.NET 工作階段狀態提供者，則必須使用 2.0.0 或更高版本。 請參閱 [使用群集的 Redis ASP.NET 工作階段狀態與輸出快取提供者與?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)。
+    -   其他用戶端可能有不同的需求。 請參閱 [執行所有的 Redis 用戶端支援叢集？](#do-all-redis-clients-support-clustering)。
+-   如果您的應用程式使用分成單一命令的多個索引鍵作業，則所有索引鍵都必須位於相同的分區。 若要這麼做，請參閱 [金鑰散發在叢集中的方式？](#how-are-keys-distributed-in-a-cluster)。
+-   如果您使用 Redis ASP.NET 工作階段狀態提供者，則必須使用 2.0.0 或更高版本。 請參閱 [使用群集的 Redis ASP.NET 工作階段狀態與輸出快取提供者與？](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)。
 
 ## 如何在叢集中散發索引鍵？
 
-每個 Redis [金鑰發佈模型](http://redis.io/topics/cluster-spec#keys-distribution-model) 文件: 主要空間分割成 16384 的位置。 每個索引鍵都會雜湊並指派給上述的其中一個位置，而這些位置散發於叢集的各個節點。 您可以設定哪個部分的索引鍵會雜湊，以確保多個索引鍵位於使用雜湊標記的相同分區中。
+每個 Redis [金鑰發佈模型](http://redis.io/topics/cluster-spec#keys-distribution-model) 文件 ︰ 主要空間分割成 16384 的位置。 每個索引鍵都會雜湊並指派給上述的其中一個位置，而這些位置散發於叢集的各個節點。 您可以設定哪個部分的索引鍵會雜湊，以確保多個索引鍵位於使用雜湊標記的相同分區中。
 
 -   具有雜湊標記的金鑰 - 如果金鑰的任何部分被括在 `{` 和 `}` 中，則只有該部分的金鑰會為了判斷金鑰的雜湊位置而進行雜湊。 例如，下列 3 個金鑰會位於相同的分區︰`{key}1`、`{key}2` 和 `{key}3`，因為只會雜湊名稱的 `key` 部分。 索引鍵雜湊標記規格的完整清單，請參閱 [金鑰雜湊標記](http://redis.io/topics/cluster-spec#keys-hash-tags)。
 -   沒有雜湊標記的索引鍵 - 整個索引鍵名稱都用於雜湊。 這會導致以統計方式平均散發於快取的各個分區。
@@ -177,3 +177,4 @@ Azure Redis 快取提供 Redis 叢集做為 [Redis 中實作](http://redis.io/to
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
+

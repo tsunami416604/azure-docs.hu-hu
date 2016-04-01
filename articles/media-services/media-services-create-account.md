@@ -42,8 +42,8 @@ Azure 傳統入口網站提供能讓您快速建立 Azure 媒體服務帳戶的�
     
     AMS 現在也適用於下列資料中心：巴西南部、印度西部、印度南部和印度中部。 您現在可以使用 Azure 傳統入口網站來 [建立媒體服務帳戶](media-services-create-account.md#create-a-media-services-account-using-quick-create) 並執行各種工作所述 [這裡](https://azure.microsoft.com/documentation/services/media-services/)。 不過，這些資料中心不會啟用即時編碼。 此外，並非所有類型的編碼保留單元都可用於這些資料中心。
     
-    - 巴西南部: 只提供標準和基本的編碼保留單元
-    - 印度西部、 印度南部和印度中央: 只有基本編碼保留單位都可以使用
+    - 巴西南部 ︰ 只提供標準和基本的編碼保留單元
+    - 印度西部、 印度南部和印度中央 ︰ 只有基本編碼保留單位都可以使用
 
 
 -   **相關聯的儲存體帳戶**。 您的儲存體帳戶就是與媒體服務帳戶相關聯的 Azure 儲存體帳戶。 儲存體帳戶提供媒體檔案的 Blob 儲存體，而且必須與媒體服務帳戶位於相同的地理區域中。 建立媒體服務帳戶時，可以選擇相同區域中的現有儲存體帳戶，也可以在相同區域中建立新的儲存體帳戶。 如果您刪除媒體服務帳戶，並不會刪除相關儲存體帳戶中的 Blob。
@@ -105,4 +105,5 @@ Azure 傳統入口網站提供能讓您快速建立 Azure 媒體服務帳戶的�
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
 
   [Azure Classic Portal]: http://manage.windowsazure.com/
+
 

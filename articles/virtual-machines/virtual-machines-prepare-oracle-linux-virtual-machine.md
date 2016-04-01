@@ -57,12 +57,12 @@ ms.author="bbenz" />
 
     >[AZURE.NOTE]如果尚未安裝封裝，此命令將會失敗，並出現錯誤訊息。 這是預期行為。
 
-4. 建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字:
+4. 建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字 ︰
 
     `NETWORKING=yes`  
     `HOSTNAME=localhost.localdomain`
 
-5.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字:
+5.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -92,7 +92,7 @@ ms.author="bbenz" />
 
     這也將確保所有主控台訊息都會傳送給第一個序列埠，以協助 Azure 支援團隊進行問題偵錯程序。 因為 Oracle Red Hat 相容核心的一個錯誤，這將會停用 NUMA。
 
-    除了上述說明，我們建議您 *移除* 下列參數:
+    除了上述說明，我們建議您 *移除* 下列參數 ︰
 
         rhgb quiet crashkernel=auto
 
@@ -149,12 +149,12 @@ ms.author="bbenz" />
 
 2.  按一下 [ **連接** 開啟虛擬機器的主控台視窗。
 
-3.  建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字:
+3.  建立名為 **網路** 在 /etc/sysconfig/ 目錄，其中包含下列文字 ︰
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-4.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字:
+4.  建立名為 **ifcfg-eth0** 在 /etc/sysconfig/network-scripts/ / 目錄，其中包含下列文字 ︰
 
         DEVICE=eth0
         ONBOOT=yes
@@ -183,11 +183,11 @@ ms.author="bbenz" />
         # sudo yum clean all
         # sudo yum -y update
 
-9.  修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做，請開啟"/ 等/預設/grub"中的文字編輯器，編輯 GRUB\_CMDLINE\_LINUX 參數，例如:
+9.  修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做，請開啟"/ 等/預設/grub"中的文字編輯器，編輯 GRUB\_CMDLINE\_LINUX 參數，例如 ︰
 
         GRUB\_CMDLINE\_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述說明，我們建議您 *移除* 下列參數:
+    這也將確保所有主控台訊息都會傳送給第一個序列埠，有助於 Azure 支援團隊進行問題偵錯程序。 除了上述說明，我們建議您 *移除* 下列參數 ︰
 
         rhgb quiet crashkernel=auto
 
@@ -222,4 +222,5 @@ ms.author="bbenz" />
         # logout
 
 15.  按一下 [ **動作-\ > 關閉** HYPER-V 管理員中。 您現在可以將 Linux VHD 上傳至 Azure。
+
 

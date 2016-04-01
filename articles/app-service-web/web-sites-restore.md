@@ -29,7 +29,7 @@ App Service「還原」功能可讓您依需求，將應用程式及其連結的
 
 1. 在 **設定** Azure 入口網站中的應用程式的刀鋒視窗中按一下 **備份** 顯示 **備份** ] 刀鋒視窗。 然後按一下 [ **立即還原** 命令列中。 
     
-    ![選擇立即還原][] ChooseRestoreNow
+    ![選擇立即還原][ChooseRestoreNow]
 
 3. 在 **還原** 刀鋒視窗中，先選取備份的來源。 
 
@@ -67,7 +67,7 @@ App Service「還原」功能可讓您依需求，將應用程式及其連結的
     
     隨即會顯示容器清單。 這份清單也會顯示 URL 以及上次修改此容器的日期。
     
-    ![檢視容器][] ViewContainers
+    ![檢視容器][ViewContainers]
 
 4. 在清單中，選取容器以顯示刀鋒視窗，其中會顯示檔案名稱清單，以及每個檔案的大小。
     
@@ -85,10 +85,10 @@ App Service「還原」功能可讓您依需求，將應用程式及其連結的
     
 [詳細資料] 刀鋒視窗將會顯示與該作業有關的可用資訊。
     
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
     
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- IMAGES -->
 [ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow.png
@@ -106,3 +106,4 @@ App Service「還原」功能可讓您依需求，將應用程式及其連結的
 [DetailsButton]: ./media/web-sites-restore/12DetailsButton.png
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
+

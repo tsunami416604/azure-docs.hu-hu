@@ -21,7 +21,7 @@
 
 資料處理站支援使用資料管理閘道器連接至內部部署 DB2 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 文章來了解資料管理閘道器和設定閘道器的逐步指示。 
 
-**注意:** 您需要運用閘道器連接至 DB2，即使裝載於 Azure IaaS Vm 中。 如果您正嘗試連接到裝載於雲端中的 DB2 執行個體，您也可以在 IaaS VM 中安裝閘道器執行個體。
+**注意 ︰** 您需要運用閘道器連接至 DB2，即使裝載於 Azure IaaS Vm 中。 如果您正嘗試連接到裝載於雲端中的 DB2 執行個體，您也可以在 IaaS VM 中安裝閘道器執行個體。
 
 資料處理站目前只支援將資料從 DB2 移至其他資料存放區，而不支援從其他資料存放區移至 DB2 
 
@@ -215,7 +215,7 @@ IBM 回報了在 Windows 8 上安裝 IBM DB2 Data Server Driver 的相關已知�
 
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- | 
-| 類型 | Type 屬性必須設定為: **OnPremisesDB2** | 是 |
+| 類型 | Type 屬性必須設定為 ︰ **OnPremisesDB2** | 是 |
 | 伺服器 | DB2 伺服器的名稱。 | 是 |
 | 資料庫 | DB2 資料庫的名稱。 | 是 |
 | 結構描述 | 在資料庫中的結構描述名稱。 | 否 |
@@ -243,7 +243,7 @@ IBM 回報了在 Windows 8 上安裝 IBM DB2 Data Server Driver 的相關已知�
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
-在複製活動類型的來源時 **RelationalSource** (包含 DB2) 在 typeProperties 區段中會提供下列屬性:
+在複製活動類型的來源時 **RelationalSource** （包含 DB2） 在 typeProperties 區段中會提供下列屬性 ︰
 
 
 | 屬性 | 說明 | 允許的值 | 必要 |
@@ -253,7 +253,7 @@ IBM 回報了在 Windows 8 上安裝 IBM DB2 Data Server Driver 的相關已知�
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## DB2 的類型對應
-中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章中，複製活動會執行自動類型轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換:
+中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章中，複製活動會執行自動類型轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換 ︰
 
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
@@ -308,6 +308,7 @@ Char | String
 
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+
 
 
 

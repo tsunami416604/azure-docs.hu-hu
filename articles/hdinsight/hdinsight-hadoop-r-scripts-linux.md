@@ -24,7 +24,7 @@
 
 ## 什麼是 R？
 
-Auch die Eigenschaften <a href="http://www.r-project.org/" target="_blank">R Project for Statistical Computing</a> 是一個用於統計計算的開放原始碼語言和環境。 R 提供數百個內建的統計函式及它自己的程式設計語言，此語言結合了函式型和物件導向程式設計的層面。 它也提供廣泛的圖形功能。 R 是廣泛各種不同領域中，大多數專業統計人員和科學家慣用的程式設計環境。
+<a href="http://www.r-project.org/" target="_blank">R Project for Statistical Computing</a> 是一個用於統計計算的開放原始碼語言和環境。 R 提供數百個內建的統計函式及它自己的程式設計語言，此語言結合了函式型和物件導向程式設計的層面。 它也提供廣泛的圖形功能。 R 是廣泛各種不同領域中，大多數專業統計人員和科學家慣用的程式設計環境。
 
 R 指令碼可以在 HDInsight 中的 Hadoop 叢集上執行，這些叢集是在建立時已藉由使用「指令碼動作」來自訂安裝 R 環境的叢集。 R 與 Azure Blob 儲存體 (WASB) 相容，因此便可在 HDInsight 上使用 R 來處理儲存在該處的資料。
 
@@ -32,13 +32,13 @@ R 指令碼可以在 HDInsight 中的 Hadoop 叢集上執行，這些叢集是�
 
 用來在您的 HDInsight 叢集上安裝 R 的指令碼動作會安裝下列提供基本 R 安裝的 Ubuntu 封裝：
 
-* [r 基底](http://packages.ubuntu.com/precise/r-base): 基底 GNU R 封裝
+* [r 基底](http://packages.ubuntu.com/precise/r-base)︰ 基底 GNU R 封裝
 * [開發人員基底 r](http://packages.ubuntu.com/precise/r-base-dev): Auxilliary GNU R 封裝
 
 下列 RHadoop 封裝也已安裝，以提供 MapReduce 和 HDFS 的整合：
 
-* [rmr2](https://github.com/RevolutionAnalytics/rmr2): 允許 R 開發人員使用 Hadoop MapReduce
-* [rhdfs](https://github.com/RevolutionAnalytics/rhdfs): 允許 R 開發人員使用 Hadoop HDFS (WASB hdinsight)
+* [rmr2](https://github.com/RevolutionAnalytics/rmr2)︰ 允許 R 開發人員使用 Hadoop MapReduce
+* [rhdfs](https://github.com/RevolutionAnalytics/rhdfs)︰ 允許 R 開發人員使用 Hadoop HDFS (WASB hdinsight)
 
 此外，也會安裝下列 R 封裝：
 
@@ -64,14 +64,14 @@ R 指令碼可以在 HDInsight 中的 Hadoop 叢集上執行，這些叢集是�
 
 1. 開始使用中的步驟來佈建叢集 [佈建以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md#portal), ，但不是會完成佈建。
 
-2. 在 **選擇性組態** 分頁中，選取 **指令碼動作**, ，並提供下列資訊:
+2. 在 **選擇性組態** 分頁中，選取 **指令碼動作**, ，並提供下列資訊 ︰
 
-    * __名稱__: 輸入指令碼動作的易記名稱。
+    * __名稱__︰ 輸入指令碼動作的易記名稱。
     * __指令碼 URI__: https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
-    * __HEAD__: 勾選此選項
-    * __背景工作__: 勾選此選項
-    * __ZOOKEEPER__: 勾選此選項可在 Zookeeper 節點上安裝。
-    * __參數__: 將此欄位保留空白
+    * __HEAD__︰ 勾選此選項
+    * __背景工作__︰ 勾選此選項
+    * __ZOOKEEPER__︰ 勾選此選項可在 Zookeeper 節點上安裝。
+    * __參數__︰ 將此欄位保留空白
 
 3. 在底部 **指令碼動作**, ，使用 **選取** ] 按鈕以儲存設定。 最後，使用 **選取** 底部的按鈕 **選擇性組態** ] 以儲存的選擇性組態資訊。
 
@@ -145,4 +145,5 @@ R 指令碼可以在 HDInsight 中的 Hadoop 叢集上執行，這些叢集是�
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
+
 

@@ -20,7 +20,7 @@
 
 ##概觀
 
-在 Azure Media Services **通道** 代表處理即時串流內容的管線。 A **通道** 以下列方式接收即時輸入的串流:
+在 Azure Media Services **通道** 代表處理即時串流內容的管線。 A **通道** 以下列方式接收即時輸入的串流 ︰
 
 - 內部部署即時編碼器會傳送多位元速率 **RTMP** 或 **Smooth Streaming** (分散的 MP4) 到通道。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：Elemental、Envivio、Cisco。  下列即時編碼器會輸出 RTMP：Adobe Flash Live、Telestream Wirecast 和 Tricaster 轉錄器。 內嵌的串流會通過 **通道** 而不需任何進一步處理。 您的即時編碼器也會傳送單一位元速率串流，但是不建議。 接到要求時，媒體服務會傳遞串流給客戶。
 
@@ -33,11 +33,11 @@
 
 - [常見即時串流案例](media-services-manage-channels-overview.md#scenario)
 - [通道和其相關元件的說明](media-services-manage-channels-overview.md#channel)
-- [注意事項](media-services-manage-channels-overview.md#considerations)
+- [考量](media-services-manage-channels-overview.md#considerations)
 - [與即時串流相關的工作](media-services-manage-channels-overview.md#tasks)
 
 ##<a id="scenario"></a>常見即時串流案例
-下列步驟說明建立常見即時串流應用程式所包含的工作。
+下列步驟描述當我們建立一般即時資料流應用程式時，會涉及到的各種工作。
 
 1. 將攝影機連接到電腦。 啟動並設定內部部署即時編碼器，讓它輸出多位元速率 RTMP 或 Fragmented MP4 (Smooth Streaming) 資料流。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](http://go.microsoft.com/fwlink/?LinkId=532824)。
     
@@ -70,7 +70,7 @@
 
 ###<a id="channel_input"></a>頻道輸入 (內嵌) 組態
 
-####<a id="ingest_protocols"></a>內嵌資料流通訊協定
+####<a id="ingest_protocols"></a>嵌入串流通訊協定
 
 媒體服務支援各種採用下列資料流通訊協定的內嵌即時訊息來源： 
 
@@ -78,11 +78,11 @@
  
 - **多位元速率 RTMP** 
 
-    當 **RTMP** 內嵌串流通訊協定已選取，兩個 ingest (input) 端點建立通道: 
+    當 **RTMP** 內嵌串流通訊協定已選取，兩個 ingest （input） 端點建立通道 ︰ 
     
-    **主要 URL**: 指定完整的 URL 的通道主要 RTMP 內嵌端點。
+    **主要 URL**︰ 指定完整的 URL 的通道主要 RTMP 內嵌端點。
 
-    **次要 URL** (選用): 指定完整的 URL 的通道次要 RTMP 內嵌端點。 
+    **次要 URL** （選用） ︰ 指定完整的 URL 的通道次要 RTMP 內嵌端點。 
 
 
     Use the secondary URL if you want to improve the durability and fault tolerance of your ingest stream as well as encoder failover and fault-tolerance, especially for the following scenarios.
@@ -201,11 +201,11 @@
 
 下表顯示通道狀態如何對應至計費模式。 
  
-通道 state|入口網站 UI Indicators|計費?
+通道 state|入口網站 UI Indicators|計費？
 ---|---|---|---
-Starting|Starting|無 (暫時性狀態)
-Running|就緒 (沒有執行的程式)<p>或<p>串流 (至少一個執行計畫) |[是]
-Stopping|Stopping|無 (暫時性狀態)
+Starting|Starting|無 （暫時性狀態）
+Running|就緒 （沒有執行的程式）<p>或<p>串流 （至少一個執行計畫） |[是]
+Stopping|Stopping|無 （暫時性狀態）
 Stopped|Stopped|否
 
 ##<a id="cc_and_ads"></a>隱藏式字幕和廣告插入 
@@ -219,7 +219,7 @@ CEA-708 和 EIA-608 (708/608)|CEA-708 和 EIA-608 是美國和加拿大的隱藏
 SCTE-35|數位訊號系統，用來提示廣告插入。 下游接收端會使用信號並根據分配的時間，將廣告切割成資料流。 SCTE 35 必須以鬆散播放軌的形式傳送至輸入資料流中。<p><p>請注意，目前唯一支援附帶廣告訊號的輸入資料流格式是 Fragmented MP4 (Smooth Streaming)。 唯一支援的輸出格式也是 Smooth Streaming。
 
 
-##<a id="Considerations"></a>注意事項
+##<a id="Considerations"></a>考量
 
 使用內部部署即時編碼器並將多位元速率資料流傳送到通道時，請注意以下限制：
 
@@ -268,4 +268,5 @@ SCTE-35|數位訊號系統，用來提示廣告插入。 下游接收端會使�
 
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
+
 

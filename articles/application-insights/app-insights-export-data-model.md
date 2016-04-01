@@ -23,7 +23,7 @@
 
 有好幾種 [範例](app-insights-export-telemetry.md#code-samples) ，說明如何使用它們。
 
-"& Lt; telemetryType (& s) gt; 」 的第一個區段是任何遙測的預留位置類型名稱:
+"& Lt; telemetryType （& s) gt; 」 的第一個區段是任何遙測的預留位置類型名稱 ︰
 檢視、 要求，並以此類推。
 
 
@@ -35,9 +35,9 @@
 * 
      金鑰值組 (KVP) 屬性包，提供 AppInsights 遙測項目上的擴充性以加入自訂度量。 
 
-    *衍生:* 度量名稱的最大大小為 100 
+    *衍生 ︰* 度量名稱的最大大小為 100 
 
-    *預設值:* 如果現有的索引鍵、 遺漏值然後計數 = 1，值 = 0，最小/最大 = 0 
+    *預設值 ︰* 如果現有的索引鍵、 遺漏值然後計數 = 1，值 = 0，最小/最大 = 0 
 
 **<property>**
 
@@ -45,17 +45,17 @@
 * 
      金鑰值組 (KVP) 屬性包，提供 AppInsights 遙測項目上的擴充性以加入自訂屬性。  開發人員可提供與遙測項目相關聯的 KVP 清單。  每個 AppInsights ikey (應用程式) 會追蹤每個金鑰並且最多可以提供 200 個唯一金鑰。  金鑰的長度上限為 100 個字元。  所有的值會被視為字串，且最多可提供 1000 個字元。  每個屬性一開始都會分類為維度，可根據每個屬性的設定值啟用分割功能。    每個屬性金鑰會追蹤每個設定值以取得其基數。  當金鑰的基數超過 100 個唯一值時，會將屬性 (property) 分類為屬性 (attribute)。  屬性可以搜尋，但不能是分割的目標 (彙總或分組依據)。 
 
-    *衍生:* 屬性名稱都是最大大小為 100，屬性的值為 1024年的最大大小 
+    *衍生 ︰* 屬性名稱都是最大大小為 100，屬性的值為 1024年的最大大小 
 
-    *預設值:* 如果現有的索引鍵，遺漏值，則值為 null 
+    *預設值 ︰* 如果現有的索引鍵，遺漏值，則值為 null 
 
-**計數**
+**count**
 
     long <telemetryType>.count      
 * 
      遙測項目的計數。   
 
-    *衍生:* 如果是 null，計數 = 1 
+    *衍生 ︰* 如果是 null，計數 = 1 
 
 **duration**
 
@@ -63,7 +63,7 @@
 * 
      遙測項目的持續時間。  若為要求，此為要求的執行時間。 
 
-    *預設值:* R1: 檢視，這是選填欄位 
+    *預設值 ︰* R1 ︰ 檢視，這是選填欄位 
 
 **訊息**
 
@@ -77,7 +77,7 @@
 * 
      遙測項目的名稱。  這個名稱在所有執行個體間是非唯一的，代表遙測類型的群組。  若為檢視，則預設為 URLData.base。  若為事件，則為開發人員提供的標籤。  若為要求，則為要求的可讀取形式，例如 controller\action。 
 
-    *範例*<br/> 檢視名稱:<br/>70 486 測驗問題 1<br/>關於-My ASP.NET Application<br/><br/>範例要求名稱:<br/>POST /Components/WebHandlers/ItemCompare.ashx<br/>GET/signalr/輪詢<br/>GET/signalr/交涉 
+    *範例*<br/> 檢視名稱 ︰<br/>70 486 測驗問題 1<br/>關於-我的 ASP.NET 應用程式<br/><br/>範例要求名稱 ︰<br/>POST /Components/WebHandlers/ItemCompare.ashx<br/>取得 /signalr/poll<br/>取得 /signalr/negotiate 
 
 **嚴重性**
 
@@ -91,7 +91,7 @@
 * 
      Pageview、事件、要求或 RDD 的 URL。  完整的 URL，且在全文檢索搜尋及匯出中受支援。 此欄位可以有很高的基數且為屬性。  它會剖析成一組 urlData 資料項目，可在計量瀏覽器中用於彙總。 
 
-    *預設值:* R2: 上 remotedepencyType，如果 dependencyType = 這是必要欄位<br/>        上 clientperformanceType，這是必要欄位 
+    *預設值 ︰* R2 ︰ 上 remotedepencyType，如果 dependencyType = 這是必要欄位<br/>        在 clientperformanceType，這個欄位是必要項 
 
     *範例*<br/> https://icecream.contoso.com/main.aspx?etc=3&extraqs=%3fetc%3d3%26formid%3dc40d07a7-1cf1-4e1d-b00e-e61876d1284e&pagemode=iframe&pagetype=entityrecord<br/>http://fabrikam-oats.azurewebsites.net/index.htm 
 
@@ -101,9 +101,9 @@
 * 
      URL 資料項目的一部分，不包括主機、查詢 parms。  它是根 URI。  這個值可以用於分割/彙總。 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
-    *範例*<br/> /main.aspx?etc=3 & extraqs = %3fetc %3 d 3%26formid %3dc40d07a7-1cf1-4e1d-b00e-e61876d1284e & pagemode = iframe pagetype = entityrecord<br/>/default.aspx<br/>/Patients/搜尋 /<br/> 
+    *範例*<br/> /main.aspx?etc=3 和 extraqs = %3fetc %3 d 3%26formid %3dc40d07a7-1cf1-4e1d-b00e-e61876d1284e & pagemode = iframe pagetype = entityrecord<br/>/default.aspx<br/>/Patients/搜尋 /<br/> 
 
 **urldata.hashTag**
 
@@ -111,7 +111,7 @@
 * 
      URL 資料項目的雜湊標記文字 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
 **urlData.host**
 
@@ -119,7 +119,7 @@
 * 
      URL 資料項目的主機。  如果 URL 資料項目是本機的 URI，則以空白表示 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
     *範例*<br/> www.fabrikam.com<br/>www.contoso.com<br/>bretwpc711.azurewebsites.net<br/> 
 
@@ -221,7 +221,7 @@
 
     string basicexception.problemid      Max: 100
 * 
-    *衍生:* 剖析呼叫堆疊，請參閱附錄 
+    *衍生 ︰* 剖析呼叫堆疊，請參閱附錄 
 
 **Exceptions.Assembly**
 
@@ -333,7 +333,7 @@
 * 
      遙測項目的唯一識別碼。  在資料集合端點指派。 
 
-    *衍生:* 產生 UUID4 
+    *衍生 ︰* 產生 UUID4 
 
     *範例*<br/> edc6eaf3-3459-46a0-bb81-bedc24913864 
 
@@ -343,7 +343,7 @@
 * 
      記錄在 UTC 的遙測事件時間。  這通常會在用戶端填入。  如果此欄位遺漏，它會在資料集合端點填入。  此欄位的格式為 YYYY-MM-DDTHH:MM:SS.sssZ。    
 
-    *範例*<br/> 2015年-05-20T04:00:46.8338283Z 
+    *範例*<br/> 2015-05-20T04:00:46.8338283Z 
 
 **samplingRate**
 
@@ -357,9 +357,9 @@
 * 
      用戶端的瀏覽器 
 
-    *預設值:* 如果 null，這會根據設定使用者代理程式處理。  請參閱使用者代理程式剖析的附錄 
+    *預設值 ︰* 如果 null，這會根據設定使用者代理程式處理。  請參閱使用者代理程式剖析的附錄 
 
-    *範例*<br/> Opera<br/>行動 Safari<br/>Ovi 瀏覽器<br/>Chrome<br/>Firefox<br/>Internet Explorer 
+    *範例*<br/> [作業<br/>行動 Safari<br/>Ovi 瀏覽器<br/>Chrome<br/>Firefox<br/>Internet Explorer 
 
 **browserVersion**
 
@@ -367,9 +367,9 @@
 * 
      用戶端的瀏覽器版本 
 
-    *預設值:* 如果 null，這會根據設定使用者代理程式處理。  請參閱使用者代理程式剖析的附錄 
+    *預設值 ︰* 如果 null，這會根據設定使用者代理程式處理。  請參閱使用者代理程式剖析的附錄 
 
-    *範例*<br/> Opera 12.17<br/>行動 Safari 8.0<br/>Ovi 瀏覽器 5.5<br/>Chrome 37.0<br/>Firefox 21.0<br/>Internet Explorer 7.0 
+    *範例*<br/> 12.17 opera<br/>行動 Safari 8.0<br/>Ovi 瀏覽器 5.5<br/>37.0 chrome<br/>Firefox 21.0<br/>Internet 7.0 Explorer 
 
 **deploymentId**
 
@@ -390,7 +390,7 @@
 * 
      用戶端上的應用程式本機。  如果遙測項目上未明確提供，則以使用者代理程式欄位做為其來源。 
 
-    *範例*<br/> ru<br/>EN-US<br/>DE-DE<br/>未知 
+    *範例*<br/> ru<br/>EN-US<br/>de DE<br/>無法辨識 
 
 **machineName**
 
@@ -405,7 +405,7 @@
 * 
      用戶端的作業系統 
 
-    *預設值:* 如果 null，這會根據設定使用者代理程式處理。  請參閱使用者代理程式剖析的附錄 
+    *預設值 ︰* 如果 null，這會根據設定使用者代理程式處理。  請參閱使用者代理程式剖析的附錄 
 
     *範例*<br/> Windows<br/>iOS iPad<br/>Nokia 
 
@@ -415,9 +415,9 @@
 * 
      用戶端的作業系統版本 
 
-    *預設值:* 如果 null，這會根據設定使用者代理程式處理。  請參閱使用者代理程式剖析的附錄 
+    *預設值 ︰* 如果 null，這會根據設定使用者代理程式處理。  請參閱使用者代理程式剖析的附錄 
 
-    *範例*<br/> Windows XP<br/>iOS 8.3<br/>Nokia 系列 40<br/>Windows 7<br/>Windows 8 
+    *範例*<br/> Windows XP<br/>8.3 iOS<br/>Nokia 系列 40<br/>Windows 7<br/>Windows 8 
 
 **roleInstance**
 
@@ -437,9 +437,9 @@
 * 
      記錄遙測項目時用戶端硬體上應用程式的螢幕高度。  如果未明確提供，則以 screenresolution 資料項目的轉換做為其來源。 
 
-    *衍生:* 如果有的話，從 context.device.screenresolution 剖析 
+    *衍生 ︰* 如果有的話，從 context.device.screenresolution 剖析 
 
-    *範例*<br/> 360<br/>1280年<br/>1920年 
+    *範例*<br/> 360<br/>1280<br/>1920 
 
 **screenResolution**
 
@@ -455,9 +455,9 @@
 * 
      記錄遙測項目時用戶端硬體上應用程式的螢幕寬度。  如果未明確提供，則以 screenresolution 資料項目的轉換做為其來源。 
 
-    *衍生:* 如果有的話，從 context.device.screenresolution 剖析 
+    *衍生 ︰* 如果有的話，從 context.device.screenresolution 剖析 
 
-    *範例*<br/> 640<br/>800<br/>1080年 
+    *範例*<br/> 640<br/>800<br/>1080 
 
 
 **aiAgentVersion**
@@ -480,7 +480,7 @@
 * 
      xxx.xxx.xxx.xxx 格式中的用戶端 IPv4 位址。   
 
-    *預設值:* 如果是 null，則設定為所擷取的資料集合端點的 HTTP IP 
+    *預設值 ︰* 如果是 null，則設定為所擷取的資料集合端點的 HTTP IP 
 
     *範例*<br/> 0.123.63.143<br/>123.203.131.197 
 
@@ -490,7 +490,7 @@
 * 
      應用程式工作階段的洲。  它可以直接在遙測項目上提供。  如果不存在，會根據遙測項目上的 IPv4 填入。  如果未提供任何 IPv4，此欄位保留空白。 
 
-    *範例*<br/> 歐洲<br/>北美地區 
+    *範例*<br/> 歐洲<br/>北美洲 
 
 **country**
 
@@ -533,7 +533,7 @@
 * 
      如果 issynthetic=true，此資料項目代表綜合資料的來源。 
 
-    *預設值:* 如果 null 時，使用者代理程式會檢查已知的模擬來源 (webcrawlers 等)，並根據這個來源可能會設定。 
+    *預設值 ︰* 如果 null 時，使用者代理程式會檢查已知的模擬來源 （webcrawlers 等），並根據這個來源可能會設定。 
 
 **syntheticTransaction**
 
@@ -541,7 +541,7 @@
 * 
      遙測項目因為綜合測試 (而非真正的使用者活動) 而產生的指標。 
 
-    *預設值:* 如果 null 時，使用者代理程式會檢查會針對已知綜合代理程式的清單。  如果找到符合項目，此值設為 true。<br/>如果使用者代理程式為 null，則設為 false 
+    *預設值 ︰* 如果 null 時，使用者代理程式會檢查會針對已知綜合代理程式的清單。  如果找到相符項目，值會設為 true。<br/>如果使用者代理程式為 null，則設定為 false 
 
 **session.Id**
 
@@ -549,7 +549,7 @@
 * 
      與應用程式的真實使用者互動的唯一識別碼。  這種互動是「工作階段」。  在相同的 iKey 之下由應用程式所產生的所有遙測應該都包含這個唯一識別碼。  <br/><br/>工作階段定義內相同的使用者互動的連續事件。  超過 30 分鐘沒有遙測事件的一段時間代表工作階段結束。   
 
-    *預設值:* MetricType，BillingType 上不正確 
+    *預設值 ︰* MetricType，BillingType 上不正確 
 
     *範例*<br/> CFFC8B21-9828-4F56-AD7C-B6B5AC26B133 
 
@@ -630,7 +630,7 @@
 * 
      遠端相依性的名稱 
 
-    *衍生:* 標準來 lt;telemetryType.name & gt; 
+    *衍生 ︰* 標準來 lt;telemetryType.name & gt; 
 
 **remoteDependencyType**
 
@@ -677,7 +677,7 @@
 * 
      要求是否成功的指標。  200 中的回應碼會視為成功。 
 
-    *預設值:* 如果是 null，則設定為 true 
+    *預設值 ︰* 如果是 null，則設定為 true 
 
 
 ## sessionmetric
@@ -736,7 +736,7 @@
 * 
      工作階段的第一個事件。  源自事件名稱並且可供 sessionMetric 度量做為分割/彙總使用 
 
-    *衍生:* 來自 event.name 
+    *衍生 ︰* 來自 event.name 
 
 **entryUrl**
 
@@ -744,7 +744,7 @@
 * 
      工作階段的第一個 URL。  源自 urlData.base 並且可供 sessionMetric 度量做為分割/彙總使用 
 
-    *衍生:* Sourced 從 lt; telemetryType & gt;。Url 
+    *衍生 ︰* Sourced 從 lt; telemetryType & gt;。Url 
 
 **eventCount**
 
@@ -764,7 +764,7 @@
 * 
      工作階段的最後一個事件。  源自事件名稱並且可供 sessionMetric 度量做為分割/彙總使用 
 
-    *衍生:* 來自 event.name 
+    *衍生 ︰* 來自 event.name 
 
 **exitUrl**
 
@@ -772,7 +772,7 @@
 * 
      工作階段的最後一個 URL。  源自 urlData.base 並且可供 sessionMetric 度量做為分割/彙總使用 
 
-    *衍生:* Sourced 從 lt; telemetryType & gt;。Url 
+    *衍生 ︰* Sourced 從 lt; telemetryType & gt;。Url 
 
 **pageBounceCount**
 
@@ -780,7 +780,7 @@
 * 
      此 sessionMetric 遙測項目代表之退回工作階段的計數。  退回工作階段是根據單一檢視遙測項目建立的工作階段。 
 
-    *衍生:* 如果 sessionMetric.viewCount + sessionMetric.requestCount = 1，則 1 else 0 
+    *衍生 ︰* 如果 sessionMetric.viewCount + sessionMetric.requestCount = 1，則 1 else 0 
 
 **pageCount**
 
@@ -932,7 +932,7 @@
 * 
      參考 URL 的一部分，不包括主機、查詢 parms。  它是根 URI。  這個值可以用於分割/彙總。 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
 **referrerData.hashTag**
 
@@ -940,7 +940,7 @@
 * 
      參考 URL 的雜湊標記文字 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
 **referrerData.host**
 
@@ -948,7 +948,7 @@
 * 
      參考 URL 的主機。  如果 URL 是本機的 URI，則以空白表示 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
 **referrerData.port**
 
@@ -956,7 +956,7 @@
 * 
      如果在完整 URL 上表示則為參考 URL 的連接埠。  否則為空白。 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
 **referrerData.protocol**
 
@@ -964,7 +964,7 @@
 * 
      參考 URL 的通訊協定 (HTTP、FTP 等) 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
     *範例*<br/> http<br/>https 
 
@@ -974,7 +974,7 @@
 * 
      參考 URL 的查詢參數名稱陣列 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
 **referrerData.queryParameters.value**
 
@@ -982,7 +982,7 @@
 * 
      從 referringData URL 剖析的查詢參數值陣列。 
 
-    *衍生:* URL 轉換，請參閱附錄 
+    *衍生 ︰* URL 轉換，請參閱附錄 
 
 
 
@@ -991,6 +991,7 @@
 * [Application Insights](app-insights-overview.md) 
 * [連續匯出](app-insights-export-telemetry.md)
 * [程式碼範例](app-insights-export-telemetry.md#code-samples)
+
 
 
 

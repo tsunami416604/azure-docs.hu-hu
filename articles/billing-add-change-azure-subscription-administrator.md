@@ -39,7 +39,7 @@ Microsoft Azure 中的管理員角色有三種：
 * **Microsoft 帳戶** (先前稱為 Windows Live ID) </br>
  您可以使用 Microsoft 帳戶登入所有消費者導向的 Microsoft 產品和雲端服務，例如 Outlook (Hotmail)、 Skype (MSN)、 OneDrive、 Windows Phone 和 Xbox LIVE。
 * **組織帳戶**</br>
- 組織帳戶是建立在 Azure Active Directory 的帳戶。 組織帳戶地址如下所示:
+ 組織帳戶是建立在 Azure Active Directory 的帳戶。 組織帳戶地址如下所示 ︰
     @ 使用者<your domain>。 onmicrosoft.com
 
 **注意**
@@ -66,4 +66,5 @@ Microsoft Azure 中的管理員角色有三種：
 ## 變更帳戶管理員
 
 若要將 Azure 帳戶的擁有權轉移給其他帳戶，請參閱 [傳輸 Azure 訂用帳戶](../billing-subscription-transfer.md)。
+
 

@@ -35,7 +35,7 @@
 
 本教學課程中，下載 [從 Github 更新的 Xcode 專案](https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS)。 我們會使用 Xcode 專案，從結尾 [Get Started with Offline Data] 作為起點的教學課程點，並再更新它允許您編輯的項目。 我們也已加入支援類別和方法，以便在下一節中新增衝突處理常式。
 
-在本教學課程結尾處如果您執行此應用程式兩個電話變更這兩種行動電話在本機上的對相同項目和變更推送回伺服器，您將允許使用者選擇要保存哪個版本每支電話:
+在本教學課程結束時，如果您在兩台行動電話上執行此應用程式，並在本機上變更這兩台行動電話的相同項目，然後將變更推送回伺服器，即可允許每台行動電話的使用者選擇要保存下列哪個版本︰
   * 保留用戶端版本 (這會覆寫伺服器上的版本)、
   * 保留伺服器版本 (這會更新用戶端本機資料表)，或
   * 兩個版本都不保留 (取消發送並擱置作業)。
@@ -44,7 +44,7 @@
 
 ## <a name="add-conflict-handling"></a>將衝突處理常式新增至待辦事項清單檢視控制器
 
-1. 在 **QSTodoListViewController.m**, ，編輯 **viewDidLoad**。 取代的呼叫 **defaultService** 呼叫 **defaultServiceWithDelegate** 改為:
+1. 在 **QSTodoListViewController.m**, ，編輯 **viewDidLoad**。 取代的呼叫 **defaultService** 呼叫 **defaultServiceWithDelegate** 改為 ︰
 
         self.todoService = [QSTodoService defaultServiceWithDelegate:self];
 
@@ -146,4 +146,5 @@
 [Getting Started Offline iOS Sample]: https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS/blog20140611
 [Get Started with Offline Data]: mobile-services-ios-get-started-offline-data.md
 [Get started with Mobile Services]: mobile-services-ios-get-started.md
+
 

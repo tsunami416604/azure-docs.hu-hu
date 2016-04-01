@@ -29,7 +29,7 @@
 
 因為在這個時間點，在同一個雲端服務中不能有配備單一 NIC 的 VM 和配備多個 NIC 的 VM，所以在案例中，您要在和所有其他元件都不同的雲端服務中實作後端伺服器。 下列步驟使用的雲端服務 *IaaSStory* 的主要資源，以及 *IaaSStory 後端* 後端伺服器。
 
-## 先決條件
+## 必要條件
 
 在這個案例中，主要雲端服務必須先部署所有必要的資源，然後才可以部署後端伺服器。 至少，您需要以後端的子網路建立虛擬網路。 請瀏覽 [建立虛擬網路使用 Azure CLI](virtual-networks-create-vnet-classic-cli.md) 以了解如何部署虛擬網路。
 
@@ -173,4 +173,5 @@
         info:    Getting virtual machines
         info:    Adding Data-Disk
         info:    vm disk attach-new command OK
+
 

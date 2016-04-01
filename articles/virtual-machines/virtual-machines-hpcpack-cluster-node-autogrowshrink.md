@@ -37,7 +37,7 @@ Pack IaaS 部署指令碼](virtual-machines-hpcpack-cluster-powershell-script.md
 -Eigenschaft. 請參閱 [的 Microsoft HPC Pack 2012 R2 更新新功能
 2](https://technet.microsoft.com/library/mt269417.aspx).
 
-## 先決條件
+## 必要條件
 
 * **HPC Pack 2012 R2 Update 1 或更新版本的叢集** - **AzureAutoGrowShrink.ps1** 指令碼安裝在 %ccp_home%bin 資料夾中。 叢集前端節點可以部署在內部部署或在 Azure VM 中。 請參閱 [設定混合式 HPC pack 叢集](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md) 若要開始使用內部部署前端節點和 Azure 「 高載 」 節點。 請參閱 [HPC Pack IaaS 部署指令碼](virtual-machines-hpcpack-cluster-powershell-script.md)) 來快速部署 Azure Vm 中的 HPC Pack 叢集。
 
@@ -63,13 +63,13 @@ AzureAutoGrowShrink.ps1
 ```
 ## 參數
 
- * **NodeTemplates** -節點範本的名稱，以定義要擴增和縮減之節點的範圍。 如果未指定 (預設值是 @())，在所有節點 **AzureNodes** 節點群組在範圍時 **NodeType** 的值為 AzureNodes，並在所有節點 **ComputeNodes** 節點群組在範圍時 **NodeType** 都會納入範圍內的值。
+ * **NodeTemplates** -節點範本的名稱，以定義要擴增和縮減之節點的範圍。 如果未指定 (預設值是 @ （)），在所有節點 **AzureNodes** 節點群組在範圍時 **NodeType** 的值為 AzureNodes，並在所有節點 **ComputeNodes** 節點群組在範圍時 **NodeType** 都會納入範圍內的值。
 
  * **Jobtemplate** -工作範本的名稱，以定義要擴增之節點的範圍。
 
  * **NodeType** -放大和縮小節點的類型。 支援的值包括：
 
-     * **AzureNodes** – Azure PaaS (高載) 節點，在內部或 Azure IaaS 叢集。
+     * **AzureNodes** – Azure PaaS （高載） 節點，在內部或 Azure IaaS 叢集。
 
      * **ComputeNodes** -只有在 Azure IaaS 叢集中的運算節點 Vm。
 
@@ -81,7 +81,7 @@ AzureAutoGrowShrink.ps1
 
 * **NumOfActiveQueuedTasksToGrowThreshold**-的作用中佇列工作來啟動擴增程序的臨界值數目。
 
-* **NumOfInitialNodesToGrow** -初始最小數目時範圍內的所有節點都都會持續成長的節點 **未部署** 或 **已停止 (取消配置)**。
+* **NumOfInitialNodesToGrow** -初始最小數目時範圍內的所有節點都都會持續成長的節點 **未部署** 或 **已停止 （取消配置）**。
 
 * **GrowCheckIntervalMins** -間隔擴增檢查之間的分鐘數。
 
@@ -126,4 +126,5 @@ AzureAutoGrowShrink.ps1
 ```
 .\AzureAutoGrowShrink.ps1 -NodeTemplates 'Default ComputeNode Template' -JobTemplates 'Default' -NodeType ComputeNodes -NumOfActiveQueuedTasksPerNodeToGrow 10 -NumOfActiveQueuedTasksToGrowThreshold 15 -NumOfInitialNodesToGrow 5 -GrowCheckIntervalMins 1 -ShrinkCheckIntervalMins 1 -ShrinkCheckIdleTimes 10 -ArgFile 'IaaSVMComputeNodes_Arg.xml' -LogFilePrefix 'IaaSVMComputeNodes_log'
 ```
+
 

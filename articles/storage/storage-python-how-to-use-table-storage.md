@@ -159,7 +159,7 @@
 ## 後續步驟
 
 既然您已了解資料表儲存體的基礎概念之後，請參考下列連結
-若要了解有關更複雜的儲存體工作:
+若要了解有關更複雜的儲存體工作 ︰
 
 -   請參閱 MSDN 參考資料 [Azure 儲存體][]。
 -   請瀏覽 [Azure 儲存體團隊部落格][]。
@@ -169,4 +169,5 @@
 [Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure package]: https://pypi.python.org/pypi/azure
 [Python Azure Storage package]: https://pypi.python.org/pypi/azure-storage
+
 

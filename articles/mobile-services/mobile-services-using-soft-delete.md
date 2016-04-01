@@ -25,7 +25,7 @@
 
 ##概觀
 
-以 JavaScript 或 .NET 後端建立的資料表，可以選擇性地啟用虛刪除功能。 使用虛刪除時，新的資料行稱為 *\__deleted* [SQL 位元類型] 加入至資料庫。 啟用虛刪除時，刪除作業將不會從資料庫中實際刪除資料列，而會將已刪除資料行的值設為 TRUE。
+以 JavaScript 或 .NET 後端建立的資料表，可以選擇性地啟用虛刪除功能。 使用虛刪除時，新的資料行稱為 *\__deleted* 的 [SQL bit type] 加入至資料庫。 啟用虛刪除時，刪除作業將不會從資料庫中實際刪除資料列，而會將已刪除資料行的值設為 TRUE。
 
 在對已啟用虛刪除的資料表查詢記錄時，依預設將不會在查詢中傳回刪除的資料列。 若要要求這些資料列，您必須傳入查詢參數 *\__includeDeleted=true* 中您 [REST 查詢作業](http://msdn.microsoft.com/library/azure/jj677199.aspx)。 在 .NET 用戶端 SDK 中，您也可以使用協助程式方法 `IMobileServiceTable.IncludeDeleted()`。
 
@@ -34,7 +34,7 @@
 
 使用虛刪除可能有下列好處：
 
-* 使用 [離線資料同步處理行動服務] 功能時，用戶端 SDK 會自動查詢已刪除的記錄並從本機資料庫中移除。 在未啟用虛刪除的情況下，您必須在後端另行撰寫程式碼，讓用戶端 SDK 得知要從本機存放區中移除哪些記錄。 否則，用戶端本機存放區和後端的這些已刪除的記錄將會不一致，而必須呼叫用戶端方法 `PurgeAsync()` 來清理本機存放區。
+* 當使用 [Offline data Sync for Mobile Services] 功能，用戶端 SDK 會自動查詢已刪除記錄，並會從本機資料庫中移除。 在未啟用虛刪除的情況下，您必須在後端另行撰寫程式碼，讓用戶端 SDK 得知要從本機存放區中移除哪些記錄。 否則，用戶端本機存放區和後端的這些已刪除的記錄將會不一致，而必須呼叫用戶端方法 `PurgeAsync()` 來清理本機存放區。
 * 有些應用程式會有一律不實體刪除資料、或僅在稽核後刪除資料的商業需求。 在此情況下，虛刪除功能就可派上用場。
 * 虛刪除可用來實作「取消刪除」功能，讓意外刪除的資料可以復原。
 不過，虛刪除的記錄會佔用資料庫中的空間，因此您應考慮建立排程的作業來定期實刪除已虛刪除的記錄。 如需相關範例，請參閱 [對 .NET 後端使用虛刪除] 和 [對 JavaScript 後端使用虛刪除]。 您的用戶端程式碼也應定期呼叫 `PurgeAsync()`，使這些實刪除的記錄不會保留在裝置的本機資料存放區中。
@@ -71,7 +71,7 @@
 
 若要在 JavaScript 後端中的現有資料表上啟用虛刪除：
 
-1. 在 [Azure 傳統入口網站]，按一下您的行動服務。 然後按一下 [資料] 索引標籤。
+1. 在 [Azure classic portal], ，按一下您的行動服務。 然後按一下 [資料] 索引標籤。
 2. 在資料頁面上，點選所需的資料表。 然後按一下 [ **啟用虛刪除** 命令列中的按鈕。 如果資料表已啟用虛刪除時，此按鈕將不會出現，但您將能夠看到 *\__deleted* 資料行時按一下 **瀏覽** 或 **資料行** 的資料表索引標籤。
 
     ![][0]
@@ -109,7 +109,7 @@
         }
     }
 
-若要深入了解.NET 後端行動服務中排程工作，請參閱: [使用 JavaScript 後端行動服務排程週期性工作](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+若要深入了解.NET 後端行動服務中排程工作，請參閱 ︰ [使用 JavaScript 後端行動服務排程週期性工作](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
 
 
 
@@ -150,7 +150,7 @@
         }});
     }
 
-若要深入了解 JavaScript 後端行動服務的排程工作，請參閱: [使用 JavaScript 後端行動服務排程週期性工作](mobile-services-schedule-recurring-tasks.md)。
+若要深入了解 JavaScript 後端行動服務的排程工作，請參閱 ︰ [使用 JavaScript 後端行動服務排程週期性工作](mobile-services-schedule-recurring-tasks.md)。
 
 
 
@@ -165,6 +165,7 @@
 [SQL bit type]: http://msdn.microsoft.com/library/ms177603.aspx
 [Offline data Sync for Mobile Services]: mobile-services-windows-store-dotnet-get-started-offline-data.md
 [Azure classic portal]: https://manage.windowsazure.com/
+
 
 
 

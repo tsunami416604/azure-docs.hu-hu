@@ -70,7 +70,7 @@ SRE 是一項資源套件工具，會隨 Azure AD Connect Sync 一起安裝。 �
 
 ### 範圍篩選器
 
-範圍篩選器區段是用來設定同步處理規則套用的時機。 設定該範圍，因為我們查看的同步處理規則的名稱表示只應該套用已啟用使用者的因此 AD 屬性 **userAccountControl** 不得設定位元 2。 在 AD 中找到使用者時，我們就會套用此同步處理規則，如果 **userAccountControl** 設為十進位值 512 (已啟用標準使用者)，但如果發現使用者，將不會套用它 **userAccountControl** 設為 514 (停用一般使用者)。
+範圍篩選器區段是用來設定同步處理規則套用的時機。 設定該範圍，因為我們查看的同步處理規則的名稱表示只應該套用已啟用使用者的因此 AD 屬性 **userAccountControl** 不得設定位元 2。 在 AD 中找到使用者時，我們就會套用此同步處理規則，如果 **userAccountControl** 設為十進位值 512 （已啟用標準使用者），但如果發現使用者，將不會套用它 **userAccountControl** 設為 514 （停用一般使用者）。
 
 ![編輯輸入同步處理規則 ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulescopingfilter.png)
 
@@ -96,7 +96,7 @@ SRE 是一項資源套件工具，會隨 Azure AD Connect Sync 一起安裝。 �
 
 ### 轉換
 
-轉換區段會定義所有屬性流程，且當物件呈現聯結狀態並滿足範圍篩選器時，該流程就會套用至目標物件。 回到我們 **中 from AD – User AccountEnabled** 同步處理規則，我們將會看見下列轉換:
+轉換區段會定義所有屬性流程，且當物件呈現聯結狀態並滿足範圍篩選器時，該流程就會套用至目標物件。 回到我們 **中 from AD – User AccountEnabled** 同步處理規則，我們將會看見下列轉換 ︰
 
 ![編輯輸入同步處理規則 ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruletransformations.png)
 
@@ -149,4 +149,5 @@ NULL
 
 * [Azure AD Connect 同步處理：自訂同步處理選項](active-directory-aadconnectsync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)
+
 

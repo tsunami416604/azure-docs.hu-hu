@@ -27,7 +27,7 @@
 > [AZURE.NOTE] 本文適用於裝載成 Azure 雲端服務的 Node.js 應用程式。
 
 
-## 先決條件
+## 必要條件
 
 - 安裝和設定 [Powershell](../install-configure-powershell.md)。
 - 將 Node.js 應用程式部署到 Azure 雲端服務。 如需詳細資訊，請參閱 [建置和部署 Node.js 應用程式至 Azure 雲端服務](cloud-services-nodejs-develop-deploy-app.md)。
@@ -83,7 +83,7 @@
 
 4.  按一下 [ **連接**, ，並會出現安全性提示，要求輸入
     認證以存取執行個體。 輸入您
-    在 [步驟 1] [步驟 1: 將服務設定為使用 Azure PowerShell 的遠端桌面存取]，然後按一下 [ **確定**。
+    在 [步驟 1] [步驟 1 ︰ 將服務設定為使用 Azure PowerShell 的遠端桌面存取]，然後按一下 [ **確定**。
 
     ![username/password prompt][6]
 
@@ -126,3 +126,4 @@ Azure 中執行個體的桌面。
   [Remotely Accessing Role Instances in Azure]: http://msdn.microsoft.com/library/windowsazure/hh124107.aspx
   [Using Remote Desktop with Azure Roles]: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx
  
+

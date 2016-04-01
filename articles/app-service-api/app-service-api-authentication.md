@@ -27,7 +27,7 @@
 下圖說明 App Service 驗證的幾個重要特性：
 
 * 它會前置處理傳入的 API 要求，提供您幾個選項讓您決定要在自有程式碼中進行多少驗證工作。 
-* 它支援五個驗證提供者: Azure Active Directory、 Facebook、 Google、 Twitter 和 Microsoft 帳戶。
+* 它支援五個驗證提供者 ︰ Azure Active Directory、 Facebook、 Google、 Twitter 和 Microsoft 帳戶。
 * 它適用於使用者與服務主體的驗證。 
 * 它在 API Apps、Web Apps 和 Mobile Apps 的作用都相同。
 
@@ -57,7 +57,7 @@ App Service 可以防止匿名 HTTP 要求進入 API 應用程式，或在具有
 
 ![](./media/app-service-api-authentication/authblade.png)
 
-使用選項 1 和 2，請開啟 **應用程式服務驗證**, ，然後在 **時要採取的動作要求的驗證不** 下拉式清單中，選擇 **登入** 或 **允許要求 (無動作)**。  如果您選擇 **登入**, ，您必須選擇驗證提供者，並設定該提供者。
+使用選項 1 和 2，請開啟 **應用程式服務驗證**, ，然後在 **時要採取的動作要求的驗證不** 下拉式清單中，選擇 **登入** 或 **允許要求 （無動作）**。  如果您選擇 **登入**, ，您必須選擇驗證提供者，並設定該提供者。
 
 ![](./media/app-service-api-authentication/actiontotake.png)
  
@@ -95,4 +95,5 @@ App Service 會在 HTTP 要求的授權標頭中傳遞 JWT 權杖，以任何語
 如果您要遵照入門教學課程系列適用於 ASP.NET 和 API 應用程式，這些功能會在下一個教學課程中，試用 [應用程式服務 API 應用程式中的使用者驗證](app-service-api-dotnet-user-principal-auth.md)。
 
 如需使用 Azure App Service 中的節點和 Java 的詳細資訊，請參閱 [Node.js 開發人員中心](/develop/nodejs/) 和 [Java 開發人員中心](/develop/java/)。
+
 

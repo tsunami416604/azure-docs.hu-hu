@@ -29,17 +29,17 @@
 
 應用程式類型是應用程式的分類，由服務類型的組合所組成。 服務類型是一項服務分類。 分類可以有不同的設定和組態，但是核心功能保持不變。 服務的執行個體是相同服務類型的不同服務組態變形。  
 
-應用程式和服務的類別 (或「類型」) 是透過 XML 檔案 (應用程式資訊清單和服務資訊清單) 來加以說明，該檔案是應用程式可以針對它具現化的範本。 不同應用程式執行個體的程式碼會執行為個別的程序，即使是由相同的 Service Fabric 節點所裝載。 此外，可以 (也就是受管理的每個應用程式執行個體生命週期 獨立升級)。 下圖顯示應用程式類型如何由服務類型組成，依序分別為程式碼、組態和封裝的組成。
+應用程式和服務的類別 (或「類型」) 是透過 XML 檔案 (應用程式資訊清單和服務資訊清單) 來加以說明，該檔案是應用程式可以針對它具現化的範本。 不同應用程式執行個體的程式碼會執行為個別的程序，即使是由相同的 Service Fabric 節點所裝載。 此外，可以 （也就是受管理的每個應用程式執行個體生命週期 獨立升級）。 下圖顯示應用程式類型如何由服務類型組成，依序分別為程式碼、組態和封裝的組成。
 
-![Service Fabric 應用程式類型和服務類型][] Image1
+![Service Fabric 應用程式類型和服務類型][Image1]
 
 兩個用來說明應用程式和服務的不同資訊清單檔案：服務資訊清單和應用程式資訊清單。 後續章節將詳細說明這些先決條件。
 
-叢集中可以有一或多個使用中的服務類型執行個體。 例如，可設定狀態的服務執行個體或複本，藉由複寫叢集中不同節點上複本之間的狀態達到高可靠性。 即使叢集中有一個節點失敗，這個複寫基本上會提供備援讓服務可供使用。 A [分割服務](service-fabric-concepts-partitioning.md) 進一步分割其狀態 (與該狀態的存取模式)，在叢集中的節點。
+叢集中可以有一或多個使用中的服務類型執行個體。 例如，可設定狀態的服務執行個體或複本，藉由複寫叢集中不同節點上複本之間的狀態達到高可靠性。 即使叢集中有一個節點失敗，這個複寫基本上會提供備援讓服務可供使用。 A [分割服務](service-fabric-concepts-partitioning.md) 進一步分割其狀態 （與該狀態的存取模式），在叢集中的節點。
 
 下圖顯示應用程式和服務執行個體、分割和複本之間的關聯性。
 
-![資料分割和服務中的複本][] Image2
+![服務內的分割和複本][Image2]
 
 
 ## 描述服務
@@ -78,7 +78,7 @@
 
 **DataPackage** 宣告所命名的資料夾 **名稱** 屬性，其中包含可供執行階段的程序的任意靜態資料。
 
-**ConfigPackage** 宣告所命名的資料夾 **名稱** 屬性，其中包含 *Settings.xml* 檔案。 此檔案包含程序可以在執行階段讀回的使用者定義、成對的索引鍵/值設定等區段。 在升級期間，如果只有 **ConfigPackage** **版本** 已變更，則不會重新啟動執行中處理序。 相反地，回呼會通知程序組態設定已變更，因此它們可以動態方式重新載入。 以下是範例 *Settings.xml*  檔案:
+**ConfigPackage** 宣告所命名的資料夾 **名稱** 屬性，其中包含 *Settings.xml* 檔案。 此檔案包含程序可以在執行階段讀回的使用者定義、成對的索引鍵/值設定等區段。 在升級期間，如果只有 **ConfigPackage** **版本** 已變更，則不會重新啟動執行中處理序。 相反地，回呼會通知程序組態設定已變更，因此它們可以動態方式重新載入。 以下是範例 *Settings.xml*  檔案 ︰
 
 ~~~
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -94,11 +94,11 @@
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
 
-* TODO: LoadMetrics，PlacementConstraints，ServicePlacementPolicies
-* TODO: 資源
-* TODO: 健全狀況內容
-* TODO: 追蹤篩選器
-* TODO: 設定會覆寫
+*TODO: LoadMetrics, PlacementConstraints, ServicePlacementPolicies
+*TODO: Resources
+*TODO: Health properties
+*TODO: Trace filters
+*TODO: Configuration overrides
 -->
 
 ## 描述應用程式
@@ -141,9 +141,9 @@ For more information about other features supported by service manifests, refer 
 <!--
 For more information about other features supported by application manifests, refer to the following articles:
 
-* TODO: 應用程式參數
-* TODO: 安全性主體，RunAs SecurityAccessPolicy
-* TODO: 服務範本
+*TODO: Application parameters
+*TODO: Security, Principals, RunAs, SecurityAccessPolicy
+*TODO: Service Templates
 -->
 
 ## 封裝應用程式
@@ -232,11 +232,11 @@ PS D:\temp>
 
 ## 後續步驟
 
-[部署和移除應用程式][] 10
+[部署與移除應用程式][10]
 
-[管理多個環境的應用程式參數][] 11
+[管理多個環境的應用程式參數][11]
 
-[RunAs: 以不同的安全性權限執行 Service Fabric 應用程式][] 12
+[RunAs：使用不同的安全性權限執行 Service Fabric 應用程式][12]
 
 <!--Image references-->
 [1]: ./media/service-fabric-application-model/application-model.jpg
@@ -248,4 +248,5 @@ PS D:\temp>
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
+
 

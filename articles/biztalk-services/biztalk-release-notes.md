@@ -28,16 +28,16 @@ Microsoft Azure BizTalk 服務的版本資訊包含此版本已知的問題。
 ### 10 月更新
 
 * 支援組織帳戶：  
- * **案例**: 您註冊使用 Microsoft 帳戶 (如 user@live.com) 的 BizTalk 服務部署。 在此案例中，只有 Microsoft 帳戶使用者可以使用 BizTalk 服務入口網站來管理 BizTalk 服務。 無法使用組織帳戶。  
- * **案例**: 您註冊 BizTalk 服務部署在 Azure Active Directory (如 user@fabrikam.com 或 user@contoso.com) 中使用組織帳戶。 在此案例中，只有相同組織內的 Azure Active Directory 使用者可以使用 BizTalk 服務入口網站來管理 BizTalk 服務。 無法使用 Microsoft 帳戶。  
+ * **案例**︰ 您註冊使用 Microsoft 帳戶 （如 user@live.com) 的 BizTalk 服務部署。 在此案例中，只有 Microsoft 帳戶使用者可以使用 BizTalk 服務入口網站來管理 BizTalk 服務。 無法使用組織帳戶。  
+ * **案例**︰ 您註冊 BizTalk 服務部署在 Azure Active Directory （如 user@fabrikam.com 或 user@contoso.com） 中使用組織帳戶。 在此案例中，只有相同組織內的 Azure Active Directory 使用者可以使用 BizTalk 服務入口網站來管理 BizTalk 服務。 無法使用 Microsoft 帳戶。  
 * 當您在 Azure 傳統入口網站建立 BizTalk 服務時，您會自動在 BizTalk 服務入口網站中註冊。
- * **案例**: 登入 Azure 傳統入口網站建立 BizTalk 服務，然後選取 **管理** 第一次。 BizTalk 服務入口網站開啟時，BizTalk 服務自會動註冊，並且可用於您的部署。  
+ * **案例**︰ 登入 Azure 傳統入口網站建立 BizTalk 服務，然後選取 **管理** 第一次。 BizTalk 服務入口網站開啟時，BizTalk 服務自會動註冊，並且可用於您的部署。  
  請參閱 [登錄及更新 BizTalk 服務部署在 BizTalk 服務入口網站](https://msdn.microsoft.com/library/azure/hh689837.aspx)。  
 
 ### 8 月 14 日更新
-* 合約與橋接器分離 – 現在，交易夥伴合約和橋接器在 BizTalk 服務入口網站中會分離。 您現在分開建立合約和橋接器，而在執行階段，橋接器會根據 EDI 訊息中的值解析為合約。 請參閱 [Azure BizTalk 服務中建立的協議](https://msdn.microsoft.com/library/azure/hh689908.aspx), ，[建立使用 BizTalk 服務入口網站是 EDI 橋接器](https://msdn.microsoft.com/library/azure/dn793986.aspx), ，[建立 AS2 橋接器使用 BizTalk 服務入口網站](https://msdn.microsoft.com/library/azure/dn793993.aspx), ，和 [橋接器如何解析協議，在執行階段?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+* 合約與橋接器分離 – 現在，交易夥伴合約和橋接器在 BizTalk 服務入口網站中會分離。 您現在分開建立合約和橋接器，而在執行階段，橋接器會根據 EDI 訊息中的值解析為合約。 請參閱 [Azure BizTalk 服務中建立的協議](https://msdn.microsoft.com/library/azure/hh689908.aspx), ，[建立使用 BizTalk 服務入口網站是 EDI 橋接器](https://msdn.microsoft.com/library/azure/dn793986.aspx), ，[建立 AS2 橋接器使用 BizTalk 服務入口網站](https://msdn.microsoft.com/library/azure/dn793993.aspx), ，和 [橋接器如何解析協議，在執行階段？](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
 * 用於建立合約範本的選項已終止。  
-* 對於傳送端合約，您現在可以為每個結構描述指定不同的分隔符號集。 此設定是在傳送端合約的通訊協定設定下指定。 如需詳細資訊，請參閱 [建立 x12 協議中 Azure BizTalk 服務](https://msdn.microsoft.com/library/azure/hh689847.aspx) 和 [Azure BizTalk 服務中建立 EDIFACT 協議](https://msdn.microsoft.com/library/azure/dn606267.aspx)。 兩個新的實體也為了相同目的而新增至 TPM OM API。 請參閱 [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) 和 [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx)。  
+* 對於傳送端合約，您現在可以為每個結構描述指定不同的分隔符號集。 此設定是在傳送端合約的通訊協定設定下指定。 如需詳細資訊，請參閱 [建立 X12 協議中 Azure BizTalk 服務](https://msdn.microsoft.com/library/azure/hh689847.aspx) 和 [Azure BizTalk 服務中建立 EDIFACT 協議](https://msdn.microsoft.com/library/azure/dn606267.aspx)。 兩個新的實體也為了相同目的而新增至 TPM OM API。 請參閱 [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) 和 [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx)。  
 * 現在支援標準 XSD 建構，包括衍生類型。 請參閱 [使用標準 XSD 建構您的對應中](https://msdn.microsoft.com/library/azure/dn793987.aspx) 和 [使用衍生類型中對應的案例和範例](https://msdn.microsoft.com/library/azure/dn793997.aspx)。  
 * AS2 支援用於訊息簽署的新 MIC 演算法，以及新的加密演算法。 [請參閱在 Azure BizTalk 服務中建立 AS2 協議](https://msdn.microsoft.com/library/azure/hh689890.aspx)。  
 ## 已知問題
@@ -51,15 +51,15 @@ Microsoft Azure BizTalk 服務的版本資訊包含此版本已知的問題。
 安裝 Visual Studio 2012 Update 3 RC 1 來修正問題。  
 
 ### 自訂繫結專案參考
-請考慮下列情況下，BizTalk 服務專案在 Visual Studio 方案:  
-* 在相同的 Visual Studio 方案，則 BizTalk 服務專案和自訂繫結專案。 BizTalk 服務專案已參考此自訂繫結專案檔。 
-* BizTalk 服務專案具有自訂繫結/行為 DLL 的參考。
+假設 Visual Studio 方案中的 BizTalk 服務專案有下列情形：  
+* 在相同的 Visual Studio 方案中，有一個 BizTalk 服務專案和一個自訂繫結專案。 BizTalk 服務專案參考此自訂繫結專案檔。 
+* BizTalk 服務專案參考自訂繫結/行為 DLL。
 
-您在 Visual Studio 中成功「建置」方案。 然後，您「重建」或「清除」方案。 之後，當您再次重建或清除，就會發生下列錯誤:  
+您在 Visual Studio 中成功「建置」方案。 然後，您「重建」或「清除」方案。 之後，當您再次重建或清除，就會發生下列錯誤 ︰  
   無法複製檔案 <Path to DLL> 以 「 bin\Debug\FileName.dll 」。 由於已有另一個處理序正在使用該檔案，所以無法存取該檔案。  
 
 #### 因應措施
-* 如果 [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) 是安裝，您可以使用下列兩個選項:
+* 如果 [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) 是安裝，您可以使用下列兩個選項 ︰
 
   * 重新啟動 Visual Studio，或
 
@@ -79,7 +79,7 @@ Microsoft Azure BizTalk 服務的版本資訊包含此版本已知的問題。
 如果有超出 IEA 區段的空格，解譯器會將此情形視為目前交換結束，並查看下一組空白字元當做下一個訊息。 因為這不是有效的交換，您可能會發現一個成功的訊息傳送至路由目的地，還有一個空的訊息傳送至暫停端點。  
 ### 在 BizTalk 服務入口網站中追蹤  
 擷取的追蹤事件以 EDI 訊息處理和任何相互關聯為範圍。 如果訊息在通訊協定階段之外失敗，追蹤會顯示為成功。 在此情況下，請參閱底下的 [記錄] 區段 **詳細資料** 中的資料行 **追蹤** 的錯誤詳細資料。
-X12 接收和傳送設定 ([建立 x12 協議中 Azure BizTalk 服務](https://msdn.microsoft.com/library/azure/hh689847.aspx)) 提供的通訊協定階段的相關資訊。  
+X12 接收和傳送設定 ([建立 X12 協議中 Azure BizTalk 服務](https://msdn.microsoft.com/library/azure/hh689847.aspx)) 提供的通訊協定階段的相關資訊。  
 
 ### 更新合約  
 BizTalk 服務入口網站可讓您在設定合約時修改身分識別的辨識符號。 這會導致屬性不一致。 比方說，合約使用 ZZ:1234567，而辨識符號為 ZZ:7654321。 在 BizTalk 服務入口網站設定檔設定中，您將 ZZ:1234567 變更為 01:ChangedValue。 您開啟合約，顯示的是 01:ChangedValue 而非 ZZ:1234567。
@@ -91,7 +91,7 @@ BizTalk 服務入口網站可讓您在設定合約時修改身分識別的辨識
 ### 資源：記住路徑  
 當加入 **資源**, ，對話視窗可能不記得先前用來新增資源的路徑。 若要記得先前用過的路徑，請嘗試新增至 BizTalk 服務入口網站的網站 **受信任的網站** Internet Explorer 中。  
 ### 如果您重新命名橋接器的實體名稱，然後關閉專案而不儲存變更，則重新開啟實體會導致錯誤
-請考慮下列順序的案例:  
+依序假設有下列情況：  
 * 將橋接器 (例如 XML 單向橋接器) 新增至 BizTalk 服務專案  
 
 * 指定 [實體名稱] 屬性的值來重新命名橋接器。 這會以您指定的名稱來重新命名相關聯的 .bridgeconfig 檔案。  
@@ -99,7 +99,7 @@ BizTalk 服務入口網站可讓您在設定合約時修改身分識別的辨識
 * 關閉 .bcs 檔案 (藉由關閉 Visual Studio 中的索引標籤)，而不儲存變更。  
 
 * 從 [方案總管] 再次開啟 .bcs 檔案。  
-您會注意到相關聯的 .bridgeconfig 檔案具有您指定的新名稱，而在設計介面上的實體名稱還是舊名稱。 如果您嘗試按兩下橋接器元件，以開啟橋接器組態，您會收到下列錯誤:  
+您會注意到相關聯的 .bridgeconfig 檔案具有您指定的新名稱，而在設計介面上的實體名稱還是舊名稱。 如果您嘗試按兩下橋接器元件，以開啟橋接器組態，您會收到下列錯誤 ︰  
   ‘<old name>' 實體的相關聯的檔案 '<old name>.bridgeconfig' 不存在  
 若要避免發生這種情況下的，確定 BizTalk 服務專案中的實體重新命名之後，儲存變更。  
 ### 即使已經從 Visual Studio 專案中排除構件，BizTalk 服務專案仍會成功建置
@@ -110,7 +110,7 @@ BizTalk 服務入口網站可讓您在設定合約時修改身分識別的辨識
 此版本中，來自 XML 要求-回覆橋接器的回應訊息的字元集永遠設定為 UTF-8。
 ### 使用者定義的資料類型
 BizTalk Adapter Service 功能內的 BizTalk Adapter Pack 配接器可以在配接器作業中利用使用者定義的資料類型。
-當利用使用者定義的資料類型時，請將檔案 (.dll) 複製到 drive:\Program Files\Microsoft BizTalk Adapter Service\BAServiceRuntime\bin\，或裝載 BizTalk Adapter Service 服務的伺服器上的全域組件快取 (GAC)。 否則，可能會在用戶端上會發生下列錯誤:  
+當利用使用者定義的資料類型時，請將檔案 (.dll) 複製到 drive:\Program Files\Microsoft BizTalk Adapter Service\BAServiceRuntime\bin\，或裝載 BizTalk Adapter Service 服務的伺服器上的全域組件快取 (GAC)。 否則，用戶端可能會發生下列錯誤：  
 ```<s:Fault xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <faultcode>s:Client</faultcode>
   <faultstring xml:lang="en-US">The UDT with FullName "File, FileUDT, Version=Value, Culture=Value, PublicKeyToken=Value" could not be loaded. Try placing the assembly containing the UDT definition in the Global Assembly Cache.</faultstring>
@@ -197,6 +197,7 @@ Throughout this document, the term ‘pipelines’ and ‘bridges’ are used in
 ### Concepts  
 
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
+
 
 
 

@@ -109,7 +109,7 @@
 
 您可以在圖表上顯示一個以上的度量，不過，可以一起顯示的組合有一些限制。 只要您選取一個度量，便會停用某些其他度量。 
 
-如果您編寫 [自訂度量][track] 到您的應用程式 (對 TrackMetric 和 TrackEvent 呼叫)，將這裡予以列出。
+如果您編寫 [自訂度量][track] 到您的應用程式 （對 TrackMetric 和 TrackEvent 呼叫），將這裡予以列出。
 
 ## 分段資料
 
@@ -213,3 +213,4 @@
 [track]: app-insights-api-custom-events-metrics.md
 
  
+

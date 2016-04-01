@@ -29,13 +29,13 @@
 
 推送到 ADM 裝載的 SDK 一律包含 `azme` 資料物件中的金鑰。 因此，如果您在應用程式中因為其他目的使用 ADM，可以根據該金鑰篩選推送。
 
-> [AZURE.IMPORTANT] 只有 Amazon Kindle 裝置執行 Android 4.0.3 (含) 以上支援 Amazon Device messaging; 或不過，您可以整合此程式碼安全地在其他裝置上。
+> [AZURE.IMPORTANT] 只有 Amazon Kindle 裝置執行 Android 4.0.3 （含） 以上支援 Amazon Device messaging; 或不過，您可以整合此程式碼安全地在其他裝置上。
 
 ##註冊 ADM
 
 如果尚未這麼做，您必須在 Amazon 帳戶上啟用 ADM。
 
-詳細程序: [<https://developer.amazon.com/sdk/adm/credentials.html>]。
+詳細程序 ︰ [<https://developer.amazon.com/sdk/adm/credentials.html>]。
 
 完成此程序後，您會得到：
 
@@ -111,4 +111,5 @@
 [ADM client library]:https://developer.amazon.com/sdk/adm/setup.html
 [integrated ADM]:https://developer.amazon.com/sdk/adm/integrating-app.html
 [this procedure]:https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
+
 

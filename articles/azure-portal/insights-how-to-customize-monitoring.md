@@ -55,7 +55,7 @@ documentationCenter=""/>
 
 1. 在 **...** 刀鋒視窗中按一下頂端功能表 **新增磚**:  
     ![新增功能表](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
-2. 然後，您可以選取圖表從 **圖庫** 螢幕右邊:
+2. 然後，您可以選取圖表從 **圖庫** 螢幕右邊 ︰
     ![組件庫](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
 3. 如果您沒有看到度量需要，您可以隨時新增其中一個預設計量，以及 **編輯** 圖表以顯示您所需要的度量。 
 
@@ -78,3 +78,4 @@ documentationCenter=""/>
 * 使用 [JavaScript 應用程式和網頁適用的 Application Insights](../app-insights-web-track-usage.md) 以取得有關造訪網頁瀏覽器的用戶端分析。
 * [監視可用性和回應性的任何網頁](../app-insights-monitor-web-app-availability.md) 使用 Application Insights，因此您可以找出您的頁面是否關閉。
  
+

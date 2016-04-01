@@ -43,7 +43,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
 本安全推播教學課程說明如何以安全的方式傳送推播通知。 本教學課程是根據 [通知使用者](notification-hubs-aspnet-backend-windows-dotnet-notify-users.md) 教學課程中，因此您應先完成該教學課程中的步驟第一次。
 
-> [AZURE.NOTE] 本教學課程假設您已建立並設定通知中心中所述 [開始使用通知中心 (Windows 市集)](notification-hubs-windows-store-dotnet-get-started.md)。
+> [AZURE.NOTE] 本教學課程假設您已建立並設定通知中心中所述 [開始使用通知中心 （Windows 市集）](notification-hubs-windows-store-dotnet-get-started.md)。
 另請注意，Windows Phone 8.1 需要 Windows (不是 Windows Phone) 認證，且無法在 Windows Phone 8.0 或 Silverlight 8.1 上使用背景工作。 若是 Windows 市集應用程式，只有當應用程式已啟用鎖定畫面 (按一下 Appmanifest 中的核取方塊) 時，您才可以透過背景工作接收通知。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
@@ -89,7 +89,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
 3. 在 [方案總管] 中，以滑鼠右鍵按一下 **PushBackgroundComponent (Windows Phone 8.1)** 專案，然後按一下 **新增**, ，然後按一下 [ **類別**。 將新類別 **PushBackgroundTask.cs**。 按一下 [ **新增** 以產生類別。
 
-4. 整個內容取代 **PushBackgroundComponent** 命名空間定義取代下列程式碼取代預留位置 `{back-end endpoint}` 部署後端時所取得的後端端點:
+4. 整個內容取代 **PushBackgroundComponent** 命名空間定義取代下列程式碼取代預留位置 `{back-end endpoint}` 部署後端時所取得的後端端點 ︰
 
         public sealed class Notification
             {
@@ -144,7 +144,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
 9. 在 [NuGet **搜尋** 方塊中，輸入 **Json.net**。 安裝 **Json.NET** 套件，然後關閉 [NuGet Package Manager] 視窗。
 
-10. 新增下列 `using` 上方的陳述式 **PushBackgroundTask.cs** 檔案:
+10. 新增下列 `using` 上方的陳述式 **PushBackgroundTask.cs** 檔案 ︰
 
         using Windows.ApplicationModel.Background;
         using Windows.Networking.PushNotifications;
@@ -186,4 +186,5 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
+
 

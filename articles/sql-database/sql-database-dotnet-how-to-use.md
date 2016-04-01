@@ -128,7 +128,7 @@ ALTER DATABASE 變更。 MAXSIZE 可
 連接到 SQL Database 執行個體。 如需有關連接到 SQL Databse 伺服器與資料庫的重要建議，請參閱：
 
 
-- [連接至 SQL Database: 重要的建議](../sql-database-connect-central-recommendations.md)。
+- [連接至 SQL Database ︰ 重要的建議](../sql-database-connect-central-recommendations.md)。
 
 
 如果您選擇使用 Visual Studio 和您的設定不會
@@ -157,7 +157,7 @@ SQL Server 提供者。
     Encrypt=True;
 
 您可以使用 **SQLConnectionStringBuilder** 類別建置
-連接字串，如下列程式碼範例所示:
+連接字串，如下列程式碼範例所示 ︰
 
     SqlConnectionStringBuilder csBuilder;
     csBuilder = new SqlConnectionStringBuilder();
@@ -179,7 +179,7 @@ SQL Server 提供者。
     </connectionStrings>
 
 若要擷取組態檔案中的連接字串，請使用
-**ConfigurationManager** 類別:
+**ConfigurationManager** 類別 ︰
 
     SqlConnectionStringBuilder csBuilder;
     csBuilder = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -241,6 +241,7 @@ Entity Framework 是建置基礎儲存體專用的 ADO.NET 資料
 
 ## 後續步驟
 
-現在您已了解連接到 SQL Database 的基本概念，請參閱 [開發: 作法主題 (SQL Database)](http://msdn.microsoft.com/library/windowsazure/ee621787.aspx)
+現在您已了解連接到 SQL Database 的基本概念，請參閱 [開發 ︰ 作法主題 (SQL Database)](http://msdn.microsoft.com/library/windowsazure/ee621787.aspx)
  
+
 

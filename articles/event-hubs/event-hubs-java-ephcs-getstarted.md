@@ -24,9 +24,9 @@
 
 事件中心是可高度擴充的擷取系統，每秒可以吸收數以百萬計的事件，讓應用程式能處理和分析已連線裝置和應用程式所產生的大量資料。 收集到事件中樞後，您可以使用任何即時分析提供者或儲存體叢集轉換和儲存資料。
 
-如需詳細資訊，請參閱 [事件中樞概觀] []。
+如需詳細資訊，請參閱 [事件中樞概觀][]。
 
-本教學課程示範如何將訊息擷取到事件中心使用主控台應用程式在 Java 中，以及使用 C# [事件處理器主機] [] 程式庫平行擷取它們。
+本教學課程示範如何將訊息擷取到事件中心使用主控台應用程式在 Java 中，以及使用 C# 的平行擷取它們 [事件處理器主機][] 程式庫。
 
 若要完成本教學課程，您需要下列項目：
 
@@ -34,11 +34,11 @@
 
 + Microsoft Visual Studio Express for Windows
 
-+ 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>.
++ 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
 
 ## 建立事件中心
 
-1. 登入 [Azure 傳統入口網站] []，然後按一下 [ **新增** 螢幕的底部。
+1. 登入 [Azure 傳統入口網站][], ，然後按一下 **新增** 螢幕的底部。
 
 2. 按一下 [ **應用程式服務**, ，然後 **服務匯流排**, ，然後 **事件中心**, ，然後 **快速建立**。
 
@@ -62,7 +62,7 @@
 
 7. 在相同頁面上，記下個產生的金鑰，如 **SendRule**。
 
-    ![] [6b]
+    ![][6b]
 
 8. 按一下 [ **儀表板** 在頁面頂端的標籤，然後按一下 **連接資訊**。 記下這兩個連接字串。
 
@@ -91,9 +91,9 @@
 
 您已經建置工作應用程式，可建立「事件中樞」和傳送及接收資料，接下來可進行下列案例：
 
-- A 完成 [範例應用程式，使用事件中樞] []。
-- [相應放大事件處理與事件中樞] [] 範例。
-- [佇列訊息解決方案] [] 使用服務匯流排佇列。
+- 完整 [範例會使用事件中心的應用程式][]。
+-  [相應放大事件處理與事件中樞][] 範例。
+- A [佇列訊息解決方案][] 使用服務匯流排佇列。
 
 如需詳細資訊，請參閱 [Java 開發人員中心](/develop/java/)。
 
@@ -118,3 +118,4 @@
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [queued messaging solution]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
+

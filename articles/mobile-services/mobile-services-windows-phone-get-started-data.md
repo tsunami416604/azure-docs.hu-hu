@@ -37,7 +37,7 @@
 
 + Visual Studio 2012 Express for Windows Phone 8 和 [Windows Phone 8 SDK] Windows 8 上執行。 若要完成本教學課程，以建立新的 Windows Phone 8.1 應用程式，您必須使用 Visual Studio 2013 Update 2 或更新版本。
 
-+ 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Farticles%2Fdocumentation%2Fmobile-services-windows-phone-get-started-data%2F)。
++ 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Farticles%2Fdocumentation%2Fmobile-services-windows-phone-get-started-data%2F)。
 
 ##<a name="download-app"></a>下載 GetStartedWithData 專案
 
@@ -105,7 +105,7 @@
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json;
 
-7. 在此資料模型資料夾時，將 **TodoItem** 類別定義以下列程式碼:
+7. 在此資料模型資料夾時，將 **TodoItem** 類別定義以下列程式碼 ︰
 
         public class TodoItem
         {
@@ -118,7 +118,7 @@
             public bool Complete { get; set; }
         }
 
-7. 定義現有一行變成註解 **項目** 集合，然後取消註解下列程式碼行:
+7. 定義現有一行變成註解 **項目** 集合，然後取消註解下列程式碼行 ︰
 
         private MobileServiceCollection<TodoItem, TodoItem> items;
         private IMobileServiceTable<TodoItem> todoTable =
@@ -126,19 +126,19 @@
 
     此程式碼會建立行動服務感知繫結集合 (**項目**) 和 SQL 資料庫資料表的 proxy 類別 **TodoItem** (**todoTable**)。
 
-7. 在 **InsertTodoItem** 方法中，移除設定的程式碼行 **TodoItem**。**識別碼** 屬性中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行:
+7. 在 **InsertTodoItem** 方法中，移除設定的程式碼行 **TodoItem**。**識別碼** 屬性中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行 ︰
 
         await todoTable.InsertAsync(todoItem);
 
     此程式碼會將新的項目插入資料表中。
 
-8. 在 **RefreshTodoItems** 方法中，加入 **非同步** 修飾詞新增至方法，然後取消註解下列程式碼行:
+8. 在 **RefreshTodoItems** 方法中，加入 **非同步** 修飾詞新增至方法，然後取消註解下列程式碼行 ︰
 
         items = await todoTable.ToCollectionAsync();
 
     這會對 todoTable 中的項目集合設定繫結，其中包含從行動服務傳回的所有 TodoItem 物件。
 
-9. 在 **UpdateCheckedTodoItem** 方法中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行:
+9. 在 **UpdateCheckedTodoItem** 方法中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行 ︰
 
          await todoTable.UpdateAsync(item);
 
@@ -168,14 +168,14 @@
 
 本教學課程將示範啟用 Windows Phone 8 應用程式，進而使用行動服務資料的基本概念。 接著，請考慮閱讀下列其他主題：
 
-* [將驗證新增至您的應用程式](mobile-services-windows-phone-get-started-users.md)
+* [將驗證加入您的應用程式](mobile-services-windows-phone-get-started-users.md)
   <br/>了解如何驗證應用程式的使用者。
 
-* [將推播通知新增至您的應用程式](mobile-services-javascript-backend-windows-phone-get-started-push.md)
-  <br/>了解如何將非常基本的推播通知傳送至您的應用程式使用行動服務。
+* [將推播通知新增至應用程式](mobile-services-javascript-backend-windows-phone-get-started-push.md)
+  <br/>了解如何使用行動服務，將非常基本的推播通知傳送至您的應用程式。
 
 * [行動服務 C# 做法概念性參考](mobile-services-windows-dotnet-how-to-use-client-library.md)
-  <br/>進一步了解如何使用搭配.NET 的行動服務。
+  <br/>深入了解如何搭配使用行動服務與 .NET。
 
 <!-- Anchors. -->
 [Download the Windows Phone 8 app project]: #download-app
@@ -197,5 +197,6 @@
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
 [Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
+
 
 

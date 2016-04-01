@@ -28,13 +28,13 @@
 
 推送到 GCM 裝載的 SDK 一律包含資料物件中的 `azme` 金鑰。 因此，如果您在應用程式中因為其他目的使用 GCM，可以根據該金鑰篩選推送。
 
-> [AZURE.IMPORTANT] 裝置執行 Android 2.2 或以上所述，有安裝而 Google Play 啟用背景連線可以推送使用 GCM;不過，您可以整合這段程式碼安全地不支援的裝置 (只使用對應方式)。
+> [AZURE.IMPORTANT] 裝置執行 Android 2.2 或以上所述，有安裝而 Google Play 啟用背景連線可以推送使用 GCM;不過，您可以整合這段程式碼安全地不支援的裝置 （只使用對應方式）。
 
 ##註冊 GCM 並啟用 GCM 服務
 
 如果尚未這麼做，請在您的 Google 帳戶上啟用 GCM 服務。
 
-在撰寫這份文件 (2014 年 2 月 5 日) 的時候您可以依照下列程序進行: [<http://developer.android.com/guide/google/gcm/gs.html>]。
+在撰寫這份文件 (2014 年 2 月 5 日) 的時候您可以依照下列程序進行 ︰ [<http://developer.android.com/guide/google/gcm/gs.html>]。
 
 請只進行該程序中在您的帳戶上啟用 GCM 的部分。 確定您已到達 **取得 API 金鑰** 區段中，不閱讀並返回此頁面，而不遵循任何進一步的 Google 程序。
 
@@ -96,7 +96,7 @@
 -   選取在程序與之前相同的專案 (具有 **專案編號** 中整合 `AndroidManifest.xml`)。
 -   移至 [API 與驗證 -\> 認證]，在 [公用 API 存取] 區段中按一下 [建立新金鑰]。
 -   選取 [伺服器金鑰]。
--   在下一個畫面上，保留為空白 **(沒有 IP 限制)**, ，然後按一下 [建立。
+-   在下一個畫面上，保留為空白 **（沒有 IP 限制）**, ，然後按一下 [建立。
 -   複製所產生 **API 金鑰**。
 -   移至 $/\#application/YOUR\_ENGAGEMENT\_APPID/native-push。
 -   在 GCM 區段中，以您剛剛產生並複製的 API 金鑰進行編輯。
@@ -114,4 +114,5 @@
 [Google Developers Console]:https://cloud.google.com/console
 [GCM client library]:http://developer.android.com/guide/google/gcm/gs.html#libs
 [Google Developers Console]:https://cloud.google.com/console
+
 

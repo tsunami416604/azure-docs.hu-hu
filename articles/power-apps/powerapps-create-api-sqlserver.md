@@ -24,7 +24,7 @@
 ## 在 Azure 入口網站中建立 API
 
 1. 在 [Azure 入口網站](https://portal.azure.com/), 、 使用工作帳戶登入。 例如，使用登入 */users/yourusername*@*YourCompany*。 com。 當您這樣做時，將會自動登入您的公司訂用帳戶。 
-2. 選取 **瀏覽** 在工作列上:  
+2. 選取 **瀏覽** 在工作列上 ︰  
 ![][14]  
 3. 在清單中，您可以捲動以尋找 PowerApps 或輸入 *powerapps*:  
 ![][15]  
@@ -51,21 +51,21 @@
     
 下列範例示範如何建立混合式連接：  
 
-1. 選取剛剛建立的 SQL Server API，並選取資源群組。 在此範例中，選取 [API 呼叫 *sqlconnectordemo*, ，然後選取 *DedicatedAses* 資源群組:  
+1. 選取剛剛建立的 SQL Server API，並選取資源群組。 在此範例中，選取 [API 呼叫 *sqlconnectordemo*, ，然後選取 *DedicatedAses* 資源群組 ︰  
 ![資源群組](./media/powerapps-create-api-sqlserver/sqlapi.png)
 
 2.  選取 **資源** 磚，然後具有相同名稱的 web 應用程式為您的 SQL Server API。 在此範例中，選取 *sqlconnectordemo*:  
 ![Sql Web 應用程式](./media/powerapps-create-api-sqlserver/sqlwebapp.png)
 
-3.  在 **設定**, ，請選取 **網路**。 選取 **設定混合式連接端點**, ，然後依照 [這些指示](../web-sites-hybrid-connection-get-started.md) 建立混合式連線:  
+3.  在 **設定**, ，請選取 **網路**。 選取 **設定混合式連接端點**, ，然後依照 [這些指示](../web-sites-hybrid-connection-get-started.md) 建立混合式連線 ︰  
 ![網路功能](./media/powerapps-create-api-sqlserver/network.png)
 
-只要建立並連上混合式連接，就已連接到內部部署伺服器。 接下來，建立您的資料連接，並讓使用者存取:  
+只要建立並連上混合式連接，就已連接到內部部署伺服器。 接下來，建立您的資料連接，並讓使用者存取 ︰  
 ![混合式連接](./media/powerapps-create-api-sqlserver/hybridconn.png)
 
 ## 建立 SQL Server API 連接
 
-1. 在 Azure 入口網站中，開啟 PowerApps，然後選取 **管理 Api**。 設定 Api 的清單會顯示:  
+1. 在 Azure 入口網站中，開啟 PowerApps，然後選取 **管理 Api**。 設定 Api 的清單會顯示 ︰  
   ![](./media/powerapps-create-api-sqlserver/apilist.png)
 
 2. 選取想要的 API。 在此範例中，選取 **SQLServerDemo**, ，然後選取 **連線**。 
@@ -85,3 +85,4 @@
 
 [14]: ./media/powerapps-create-api-sqlserver/browseall.png
 [15]: ./media/powerapps-create-api-sqlserver/allresources.png
+

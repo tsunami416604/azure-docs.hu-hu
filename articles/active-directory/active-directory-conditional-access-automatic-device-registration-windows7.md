@@ -46,7 +46,7 @@ Windows 7 的裝置註冊可做為 [下載 MSI 套件](https://connect.microsoft
 
 ## 取消註冊加入網域的 Windows 7 裝置
 
-您可以選擇取消註冊已加入網域的 Windows 7 裝置執行下列步驟:
+您可以選擇取消註冊已加入網域的 Windows 7 裝置執行下列步驟 ︰
 從 Windows 7 加入網域裝置使用軟體發佈系統如 System Center Configuration Manager 中解除安裝工作地點加入軟體套件。
 
 然後在 Windows 7 電腦上開啟命令提示字元，執行下列命令來取消註冊裝置：
@@ -66,3 +66,4 @@ Windows 7 電腦上的 Windows 事件記錄檔會顯示與「加入工作場所�
 - [為加入網域的 Windows 8.1 裝置設定自動註冊裝置](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
 
  
+

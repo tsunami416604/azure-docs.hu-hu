@@ -30,7 +30,7 @@
 <tr><td>**下載**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
 <tr><td>**參與**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
 <tr><td>**文件**</td><td>[Python SDK Reference Documentation](http://azure.github.io/azure-documentdb-python/)</td></tr>
-<tr><td>**開始**</td><td>[Get started with the Python SDK](documentdb-python-application.md)</td></tr>
+<tr><td>**開始使用**</td><td>[Get started with the Python SDK](documentdb-python-application.md)</td></tr>
 <tr><td>**目前支援的平台**</td><td>[Python 2.7](https://www.python.org/download/releases/2.7/)</td></tr>
 </table></br>
 
@@ -86,4 +86,5 @@ Microsoft 提供通知的最少 **12 個月** 之前淘汰 SDK 從容地轉換�
 ## 另請參閱
 
 若要深入了解 DocumentDB，請參閱 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服務頁面。 
+
 

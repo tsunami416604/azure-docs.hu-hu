@@ -20,15 +20,15 @@
 
 這些文章包含 SQL 資料倉儲的參考資訊。
 
-[TRANSACT-SQL 語言項目][]
-[TRANSACT-SQL 陳述式][]
-[TRANSACT-SQL 系統檢視表][]
-[PowerShell 指令程式][]
+[Transact-SQL 語言元素][]
+[Transact-SQL 陳述式][]
+[Transact-SQL 系統檢視][]
+[PowerShell Cmdlet][]
 
 
 
 ## 後續步驟
-如需開發資訊，請參閱 [開發概觀] []。
+如需開發資訊，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
@@ -41,3 +41,4 @@
 
 
 <!--MSDN references-->
+

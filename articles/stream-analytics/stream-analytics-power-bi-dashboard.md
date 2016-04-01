@@ -164,7 +164,7 @@ Azure 串流分析可讓您使用其中一種業界頂尖智慧型工具 Microso
 如需進一步設定 Power BI 輸出，並利用 Power BI 群組，請檢閱 [Power BI 區段](stream-analytics-define-outputs.md#power-bi) 的 [了解串流分析輸出](stream-analytics-define-outputs.md "了解串流分析輸出")。 若要深入了解如何利用 Power BI 建立儀表板的另一個實用資源 [Power BI 預覽中的儀表板](http://support.powerbi.com/knowledgebase/articles/424868-dashboards-in-power-bi-preview)。
 
 ## 限制和最佳作法 ##
-Power BI 採用並行處理和輸送量的條件約束，如下所示: [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI 定價")
+Power BI 採用並行處理和輸送量的條件約束，如下所示 ︰ [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI 定價")
 
 由於這些 Power BI 本身以最自然的方式符合案例需求，其中 Azure 串流分析會大量降低資料載入的作業。
 我們建議使用 TumblingWindow 或 HoppingWindow 來確保資料推送最多為每秒推送 1 次，並且您的查詢會符合輸送量的要求範圍 – 您可以使用下列方程式，以秒為單位計算要提供給視窗的值： ![equation1](./media/stream-analytics-power-bi-dashboard/equation1.png).
@@ -222,4 +222,5 @@ Power BI 採用並行處理和輸送量的條件約束，如下所示: [https://
 [graphic11]: ./media/stream-analytics-power-bi-dashboard/11-stream-analytics-power-bi-dashboard.png
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
+
 

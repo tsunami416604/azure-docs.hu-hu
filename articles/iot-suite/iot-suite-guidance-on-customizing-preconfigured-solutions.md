@@ -24,7 +24,7 @@ Azure IoT Suite 提供的預先設定解決方案能夠示範套件中共同運�
 
 預先設定解決方案的原始程式碼可在以下 GitHub 的儲存機制取得：
 
-- 遠端監視: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
+- 遠端監視 ︰ [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
 
 此來源是用來示範使用 Azure IoT Suite 實作遠端監視的核心功能。
 
@@ -61,11 +61,12 @@ Azure IoT Suite 提供的預先設定解決方案能夠示範套件中共同運�
 
 ### 建置並使用自己的 (實體) 裝置
 
- [Azure IoT Sdk](https://github.com/Azure/azure-iot-sdks) IoT 解決方案，提供用於連接許多裝置類型 (語言和作業系統) 的程式庫。
+ [Azure IoT Sdk](https://github.com/Azure/azure-iot-sdks) IoT 解決方案，提供用於連接許多裝置類型 （語言和作業系統） 的程式庫。
 
 ## 後續步驟
 
 如需 IoT 裝置的詳細資訊，請參閱 [Azure IoT 開發人員網站](http://azure.microsoft.com/develop/iot) 尋找連結和文件。
 
 [IoT Device SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
+
 

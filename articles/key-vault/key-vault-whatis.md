@@ -51,7 +51,7 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 
 此系統管理員接著可以為開發人員提供可從其應用程式進行呼叫的 URI，並為其安全性系統管理員提供金鑰使用方法記錄資訊。 請注意，是目前的使用量記錄 [預覽](http://blogs.technet.com/b/kv/archive/2015/11/10/keyvault_2d00_logging_2d00_preview.aspx)。
 
-   ![Azure 金鑰保存庫的概觀][] 1
+   ![Azure 金鑰保存庫概觀][1]
 
 開發人員也可以管理金鑰，直接使用 Api。 如需詳細資訊，請參閱 [金鑰保存庫開發人員手冊 》](key-vault-developers-guide.md)。
 
@@ -64,4 +64,5 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
+
 

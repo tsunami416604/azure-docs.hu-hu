@@ -37,7 +37,7 @@
 4. 將工作 (U-SQL 指令碼) 提交至資料湖分析帳戶。 作業會讀取來源資料，處理資料的指示 
 U SQL 指令碼，然後再儲存輸出資料湖存放區帳戶或 Blob 儲存體帳戶。
 
-**先決條件**
+**必要條件**
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -60,9 +60,9 @@ U SQL 指令碼，然後再儲存輸出資料湖存放區帳戶或 Blob 儲存�
 
     ![Azure 資料湖分析入口網站刀鋒視窗](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
 
-    - **名稱**: 分析帳戶的名稱。
-    - **資料湖存放區**: 每個資料湖分析帳戶有相依的資料湖存放區帳戶。 資料湖分析帳戶和相依的資料湖存放區帳戶必須位於同一個 Azure 資料中心。 請依照指示來建立新的資料湖存放區帳戶，或選取現有的帳戶。
-    - **訂閱**: 選擇用於分析帳戶的 Azure 訂閱。
+    - **名稱**︰ 分析帳戶的名稱。
+    - **資料湖存放區**︰ 每個資料湖分析帳戶有相依的資料湖存放區帳戶。 資料湖分析帳戶和相依的資料湖存放區帳戶必須位於同一個 Azure 資料中心。 請依照指示來建立新的資料湖存放區帳戶，或選取現有的帳戶。
+    - **訂閱**︰ 選擇用於分析帳戶的 Azure 訂閱。
     - **資源群組**。 選取現有的 Azure 資源群組，或建立一個新的群組。 Azure 資源管理員 (ARM) 可讓您將應用程式中的資源作為群組使用。 如需詳細資訊，請參閱 [Azure 資源管理員概觀](resource-group-overview.md)。 
     - **位置**。 為資料湖分析帳戶選取 Azure 資料中心。 
 7. 選取 **釘選到開始面板**。 這是遵循本教學課程的必要步驟。
@@ -120,7 +120,7 @@ Azure 入口網站會提供使用者介面，可將範例資料檔案複製到�
     ![Azure 資料湖分析新工作按鈕](./media/data-lake-analytics-get-started-portal/data-lake-analytics-new-job-button.png)
 
     如果您沒有看到 [] 分頁中，請參閱 [從入口網站中開啟資料湖分析帳戶](data-lake-analytics-manage-use-portal.md#access-adla-account)。
-4. 輸入 **工作名稱**, ，和下列 U SQL 指令碼:
+4. 輸入 **工作名稱**, ，和下列 U SQL 指令碼 ︰
 
     ![建立 Azure 資料湖分析 U-SQL 工作](./media/data-lake-analytics-get-started-portal/data-lake-analytics-new-job.png)
 
@@ -174,4 +174,5 @@ Azure 入口網站會提供使用者介面，可將範例資料檔案複製到�
 - 管理工作，請參閱 [管理 Azure 資料湖分析使用 Azure 入口網站](data-lake-analytics-manage-use-portal.md)。
 - 若要取得資料湖分析的概觀，請參閱 [Azure 資料湖分析概觀](data-lake-analytics-overview.md)。
 - 若要使用其他工具檢視同一個教學課程，請按一下頁面最上方的索引標籤選取器。
+
 

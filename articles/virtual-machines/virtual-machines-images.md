@@ -29,9 +29,9 @@ Azure 會使用映像透過作業系統提供新的虛擬機器。 一個映像�
 
 ## 關於 VM 映像和 OS 映像
 
-在 Azure 中可用的映像的兩種類型: *VM 映像* 和 *OS 映像*。 VM 映像包含作業系統和建立映像時所有連接至虛擬機器的磁碟。 這是較新的映像類型。 導入 VM 映像前，Azure 中的映像可能只會有一般化的作業系統，而沒有其他磁碟。 僅包含一般化作業系統的 VM 映像基本上與映像的原始類型相同，即 OS 映像。
+在 Azure 中可用的映像的兩種類型 ︰ *VM 映像* 和 *OS 映像*。 VM 映像包含作業系統和建立映像時所有連接至虛擬機器的磁碟。 這是較新的映像類型。 導入 VM 映像前，Azure 中的映像可能只會有一般化的作業系統，而沒有其他磁碟。 僅包含一般化作業系統的 VM 映像基本上與映像的原始類型相同，即 OS 映像。
 
-您可以根據 Azure 上的虛擬機器，或您複製及上傳並正在其他地方執行的虛擬機器，來建立自己的映像。 如果您想要使用一個映像來建立多個虛擬機器，您必須先將映像一般化，以便準備作為映像使用。 若要建立 Windows Server 映像，請在上傳.vhd 檔案前，先在伺服器上執行 Sysprep 命令進行一般化。 如需有關 Sysprep 的詳細資訊，請參閱 [如何使用 Sysprep: 簡介](http://go.microsoft.com/fwlink/p/?LinkId=392030)。 若要建立 Linux 映像，取決於該軟體發佈，您需要執行一組特定用於該發佈的命令，並執行 Azure Linux 代理程式。
+您可以根據 Azure 上的虛擬機器，或您複製及上傳並正在其他地方執行的虛擬機器，來建立自己的映像。 如果您想要使用一個映像來建立多個虛擬機器，您必須先將映像一般化，以便準備作為映像使用。 若要建立 Windows Server 映像，請在上傳.vhd 檔案前，先在伺服器上執行 Sysprep 命令進行一般化。 如需有關 Sysprep 的詳細資訊，請參閱 [如何使用 Sysprep ︰ 簡介](http://go.microsoft.com/fwlink/p/?LinkId=392030)。 若要建立 Linux 映像，取決於該軟體發佈，您需要執行一組特定用於該發佈的命令，並執行 Azure Linux 代理程式。
 
 ## 使用映像
 
@@ -44,7 +44,7 @@ Azure 會使用映像透過作業系統提供新的虛擬機器。 一個映像�
 - CLI，請參閱 < 命令來管理您的 Azure 虛擬機器映像 >，在 [使用 Azure CLI for Mac、 Linux 和 Windows 搭配 Azure 服務管理](virtual-machines-command-line-tools.md)
 - 針對 Azure PowerShell，請參閱下列命令清單。 尋找建立的 VM 映像的範例，請參閱 「 步驟 3:: 決定 ImageFamily 」，在 [使用 Azure PowerShell 建立和預先設定以 Windows 為基礎的虛擬機器](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
--   **取得所有影像**:`Get-AzureVMImage`會傳回一份所有目前訂閱中可用的映像: 您的映像，以及 Azure 或協力廠商所提供。 這表示您可能會收到龐大的清單。 下面的範例示範如何取得較短的清單。
+-   **取得所有影像**:`Get-AzureVMImage`會傳回一份所有目前訂閱中可用的映像 ︰ 您的映像，以及 Azure 或協力廠商所提供。 這表示您可能會收到龐大的清單。 下面的範例示範如何取得較短的清單。
 -   **取得映像系列**:`Get-AzureVMImage | select ImageFamily` 顯示字串所取得的映像系列清單 **ImageFamily** 屬性。
 -   **取得特定系列中的所有映像**: `Get-AzureVMImage | Where-Object {$_.ImageFamily -eq $family}`
 -   **尋找 VM 映像**: `Get-AzureVMImage | where {(gm –InputObject $_ -Name DataDiskConfigurations) -ne $null} | Select -Property Label, ImageName` 運作的方式是篩選 DataDiskConfiguration 屬性僅適用於 VM 映像。 此範例也會篩選輸出並僅列出標籤和映像名稱。
@@ -58,4 +58,5 @@ Azure 會使用映像透過作業系統提供新的虛擬機器。 一個映像�
 [建立 Linux 虛擬機器的不同方式](virtual-machines-linux-choices-create-vm.md)
 
 [建立 Windows 虛擬機器的不同方式](virtual-machines-windows-choices-create-vm.md)
+
 

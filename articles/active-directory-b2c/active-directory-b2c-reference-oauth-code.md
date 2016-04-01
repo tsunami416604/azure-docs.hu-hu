@@ -38,7 +38,7 @@ Azure AD B2C 擴充標準的 OAuth 2.0 流程，功能更強大，而不僅止�
 
 ## 1.取得授權碼
 授權碼流程始於用戶端將使用者導向 `/authorize` 端點。  這是流程的互動部分，使用者將會實際地採取動作。  
-在這項要求中，用戶端會在 `scope` 參數中指出它需要向使用者要求的權限，並在 `p` 參數中指出要執行的原則。  以下提供三個範例 (具有分行符號的可讀性)，
+在這項要求中，用戶端會在 `scope` 參數中指出它需要向使用者要求的權限，並在 `p` 參數中指出要執行的原則。  以下提供三個範例 （具有分行符號的可讀性），
 每個使用不同的原則。
 
 #### 使用登入原則
@@ -85,7 +85,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id | 必要 | 應用程式識別碼， [Azure 入口網站](https://portal.azure.com) 指派您的應用程式。 |
 | response_type | 必要 | 授權碼流程必須包含 `code`。 |
 | redirect_uri | 必要 | 您的應用程式可在應用程式的 redirect_uri 傳送及接收驗證回應。  其必須完全符合您在入口網站中註冊的其中一個 redirect_uris，不然就必須得是編碼的 url。 |
-| scope | 必要 | 範圍的空格分隔清單。  單一範圍值向 Azure AD 表示同時要求的兩個權限。   `openid` 範圍表示與的權限登入的使用者，並取得使用者的相關資料的形式 **id_tokens** (敬請期待此)。   `offline_access` 範圍表示您的應用程式將需要 **refresh_token** 的長時間執行資源的存取權。  |
+| scope | 必要 | 範圍的空格分隔清單。  單一範圍值向 Azure AD 表示同時要求的兩個權限。   `openid` 範圍表示與的權限登入的使用者，並取得使用者的相關資料的形式 **id_tokens** （敬請期待此）。   `offline_access` 範圍表示您的應用程式將需要 **refresh_token** 的長時間執行資源的存取權。  |
 | response_mode | 建議使用 | 指定將產生的 authorization_code 傳回到應用程式所應該使用的方法。  可以是 'query'、'form_post' 或 'fragment' 其中一種。
 | state | 建議使用 | 同樣會隨權杖回應傳回之要求中所包含的值。  其可以是您想要之任何內容的字串。  隨機產生的唯一值通常用於防止跨站台要求偽造攻擊。  驗證要求出現前，也會先使用此狀態為使用者在應用程式中的狀態資訊編碼，例如他們先前所在的網頁或正在執行的原則。 |
 | p | 必要 | 指出要執行的原則。  它是 B2C 目錄中建立的原則名稱，值應該以 "b2c_1_" 開頭。  深入了解原則 [這裡](active-directory-b2c-reference-policies.md)。 |
@@ -269,9 +269,9 @@ Content-Type: application/json
 
 <!-- 
 
-以下是整個流程的原生應用程式。下列各節詳細說明每個要求:
+Here is the entire flow for a native  app; each request is detailed in the sections below:
 
-![OAuth 授權碼流程](./media/active-directory-b2c-reference-oauth-code/convergence_scenarios_native.png) 
+![OAuth Auth Code Flow](./media/active-directory-b2c-reference-oauth-code/convergence_scenarios_native.png) 
 
 -->
 
@@ -282,3 +282,4 @@ Content-Type: application/json
 - [建立 B2C 目錄](active-directory-b2c-get-started.md), ，並在要求中使用您目錄的名稱。
 - [建立應用程式](active-directory-b2c-app-registration.md) 來取得應用程式識別碼和 redirect_uri。  您會想要包含 **原生用戶端** 應用程式中。
 - [建立您的原則](active-directory-b2c-reference-policies.md) 取得原則名稱。
+

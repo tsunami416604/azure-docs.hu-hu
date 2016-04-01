@@ -22,8 +22,9 @@
 
 [AZURE.INCLUDE [AAD-service-limits](../../includes/active-directory-service-limits-include.md)]
 
-## 接下來
+## 後續步驟
 - [以組織方式註冊 Azure](sign-up-organization.md)
 - [Azure 訂閱如何與 Azure AD 產生關聯](active-directory-how-subscriptions-associated-directory.md)
 - [Azure AD 術語](active-directory-terminology.md)
+
 

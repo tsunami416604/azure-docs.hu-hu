@@ -36,27 +36,27 @@
 
 ###若要啟用 Rally Software 的應用程式整合，請執行下列步驟：
 
-1.  在 [Azure 管理上 「 入口 」，左邊的瀏覽] 窗格中，按一下 [ **Active Directory**。
+1.  在 Azure 管理入口網站中，在左的導覽窗格中，按一下 [ **Active Directory**。
 
     ![Active Directory](./media/active-directory-saas-rally-software-tutorial/IC700993.png "Active Directory")
 
 2.  從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
-3.  若要開啟應用程式檢視，在 [目錄] 檢視中，按一下 [ **應用程式** 在最上層的功能表。
+3.  若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
 
     ![應用程式](./media/active-directory-saas-rally-software-tutorial/IC700994.png "Applications")
 
-4.  按一下 [ **新增** 在頁面底部。
+4.  按一下 [ **新增** 頁面的底部。
 
     ![新增應用程式](./media/active-directory-saas-rally-software-tutorial/IC749321.png "Add application")
 
-5.  在 **您想要** ] 對話方塊中，按一下 [ **從圖庫中新增應用程式**。
+5.  在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。
 
     ![從組件庫新增應用程式](./media/active-directory-saas-rally-software-tutorial/IC749322.png "Add an application from gallerry")
 
 6.  在 **搜尋方塊**, ，型別 **集結**。
 
-    ![應用程式資源庫](./media/active-directory-saas-rally-software-tutorial/IC769526.png "Application gallery")
+    ![應用程式庫](./media/active-directory-saas-rally-software-tutorial/IC769526.png "Application gallery")
 
 7.  在 [結果] 窗格中，選取 **Rally Software**, ，然後按一下 [ **完成** 加入應用程式。
 
@@ -88,7 +88,7 @@
 
 6.  在頂端工具列中，按一下 [ **安裝**, ，然後選取 **訂閱**。
 
-    ![訂用帳戶](./media/active-directory-saas-rally-software-tutorial/IC769531.png "Subscription")
+    ![訂閱](./media/active-directory-saas-rally-software-tutorial/IC769531.png "Subscription")
 
 7.  按一下 [ **動作** 右側頂端的工具列按鈕，然後選取 **編輯訂閱**。
 
@@ -100,7 +100,7 @@
     2.  在 Azure 網站中，在 **在 Rally Software 設定單一登入** 對話方塊頁面中，複製 **身分識別提供者識別碼** 值，並接著將它貼入 **身分識別提供者 URL** 文字方塊
     3.  在 Azure 網站中，在 **在 Rally Software 設定單一登入** 對話方塊頁面中，複製 **遠端登出 URL** 值。
 
-9.  在 Azure 的 AD 入口網站中，選取單一的登入設定確認，然後按一下 [ **完成** 關閉 **設定單一登入** 對話方塊。
+9.  在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。
 
     ![設定單一登入](./media/active-directory-saas-rally-software-tutorial/IC769547.png "Configure single sign-on")
 ##設定使用者佈建
@@ -117,7 +117,7 @@
 
 3.  在新的使用者] 文字方塊中輸入名稱，然後按一下 **的詳細資料加入**。
 
-4.  在 **Create User** 區段中，執行下列步驟:
+4.  在 **Create User** 區段中，執行下列步驟 ︰
 
     ![建立使用者](./media/active-directory-saas-rally-software-tutorial/IC781040.png "Create User")
 
@@ -139,11 +139,12 @@
 
     ![指派使用者](./media/active-directory-saas-rally-software-tutorial/IC769548.png "Assign users")
 
-3.  選取您的測試使用者，請按一下 [ **指派**, ，然後按一下 [ **是** 以確認您的工作分派。
+3.  選取測試使用者，請按一下 **指派**, ，然後按一下 [ **是** 以確認您的作業。
 
     ![是](./media/active-directory-saas-rally-software-tutorial/IC767830.png "Yes")
   
-如果要測試您的單一登入設定，請開啟存取面板。 如需存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 
 
 

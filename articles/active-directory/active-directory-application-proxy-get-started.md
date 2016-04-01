@@ -40,7 +40,7 @@ Azure AD 應用程式 Proxy 針對使用整合式 Windows 驗證 (IWA)，或宣�
 ### 開始為內部部署應用程式啟用遠端存取
 設定應用程式 Proxy 是以兩個步驟完成：
 
-1. [啟用應用程式 Proxy，並設定連接器](active-directory-application-proxy-enable.md)<br>
+1. [啟用應用程式 Proxy 並設定連接器](active-directory-application-proxy-enable.md)<br>
 2. [發行應用程式](active-directory-application-proxy-publish.md) -已發佈且可存取遠端取得您的內部部署應用程式使用快速且簡單的精靈。
 
 ## 後續步驟
@@ -61,4 +61,5 @@ Azure AD 應用程式 Proxy 針對使用整合式 Windows 驗證 (IWA)，或宣�
 ## 其他資源
 * [以組織方式註冊 Azure](../sign-up-organization.md)
 * [Azure 身分識別](../fundamentals-identity.md)
+
 

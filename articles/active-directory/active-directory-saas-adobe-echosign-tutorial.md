@@ -21,7 +21,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Adobe EchoSign 單一登入的訂用帳戶
 
-完成本教學課程之後, 您已指派給 Adobe EchoSign 的 Azure AD 使用者將能夠登入位於您 Adobe EchoSign 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Adobe EchoSign 的 Azure AD 使用者將能夠登入位於您 Adobe EchoSign 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -129,7 +129,7 @@ Adobe EchoSign 需以手動方式佈建。
 
     ![帳戶](./media/active-directory-saas-adobe-echosign-tutorial/IC789524.png "Account")
 
-3.  在 **建立新的使用者** 區段中，執行下列步驟:
+3.  在 **建立新的使用者** 區段中，執行下列步驟 ︰
 
     ![建立使用者](./media/active-directory-saas-adobe-echosign-tutorial/IC789525.png "Create User")
 
@@ -157,4 +157,5 @@ Adobe EchoSign 需以手動方式佈建。
     ![是](./media/active-directory-saas-adobe-echosign-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

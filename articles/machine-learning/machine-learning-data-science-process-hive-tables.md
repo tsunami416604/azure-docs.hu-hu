@@ -16,7 +16,7 @@
     ms.date="12/11/2015"
     ms.author="hangzh;bradsev" />
 
-#<a name="heading"></a> 將 Hive 查詢提交至 HDInsight Hadoop 叢集的進階分析程序和技術 
+#<a name="heading"></a> 在進階分析程序和技術中將 Hive 查詢提交至 HDInsight Hadoop 叢集 
 
 本文件說明在 Azure 中，將 Hive 查詢提交至 HDInsight 服務所管理的 Hadoop 叢集的各種方式。 此工作是 Cortana 分析程序 (CAP) 中的一部分。 我們將討論數個資料有爭議的工作：資料探索和功能產生。 即會顯示泛型 Hive 查詢，示範如何探索資料，或是在 Azure HDInsight Hadoop 叢集中使用 Hive 來產生功能。 這些 Hive 查詢會使用所提供的內嵌 Hive 使用者定義函式 (UDF)。
 
@@ -41,7 +41,7 @@ Hive 查詢可以使用下列應用程式來提交：
 * **Hive 編輯器**
 * **PowerShell** 指令碼
 
-Hive 查詢類似 SQL。 熟悉 SQL 的使用者可能會發現 <a href="http://hortonworks.com/wp-content/uploads/downloads/2013/08/Hortonworks.CheatSheet.SQLtoHive.pdf" target="_blank">SQL 若要 Hive 小祕技</a> 很有用。
+Hive 查詢類似 SQL。 熟悉 SQL 的使用者可能會發現 <a href="http://hortonworks.com/wp-content/uploads/downloads/2013/08/Hortonworks.CheatSheet.SQLtoHive.pdf" target="_blank">SQL-Hive 小抄</a>很有用。
 
 提交 Hive 查詢時，您也可以控制 Hive 查詢輸出的目的地，它是否會出現在螢幕上，或是輸出到前端節點上的本機檔案或 Azure Blob。
 
@@ -197,7 +197,7 @@ Hive 查詢的輸出會顯示於 Blob 儲存體中，方法是使用 Azure 儲�
         order by frequency desc;
 
 
-###<a name="hive-riskfeature"></a>二進位分類中類別變數的風險
+###<a name="hive-riskfeature"></a> 二元分類中類別變數的風險
 
 在二進位分類中，若使用的模型只會採用數值功能，我們就需要將非數值類別變數轉換成數值功能。 您可以使用數值風險來取代每個非數值層級，藉以完成這個動作。 在本節中，我們將說明一些計算類別變數風險值 (記錄機率) 的泛型 Hive 查詢。
 
@@ -224,7 +224,7 @@ Hive 查詢的輸出會顯示於 Blob 儲存體中，方法是使用 Azure 儲�
 
 計算出風險資料表之後，使用者就可以藉由將資料表聯結至風險資料表，來將風險值指派給該資料表。 Hive 聯結查詢已在上一節中提供。
 
-###<a name="hive-datefeatures"></a>從日期時間欄位擷取功能
+###<a name="hive-datefeatures"></a> 從日期時間欄位擷取功能
 
 Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 中，預設的日期時間格式是 'yyyy-MM-dd 00:00:00' (例如 '1970-01-01 12:21:32')。 本節會顯示擷取月份日期和來自日期時間欄位的月份範例，以及其他可將預設格式以外格式的日期時間字串轉換為預設格式的日期時間字串範例。
 
@@ -238,7 +238,7 @@ Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-在此查詢中，如果 *(& s) #60，則為日期時間欄位 >* 具有類似模式 *03/26/2015年 12:04:39*, 、 *' & #60，則為日期時間欄位的模式 >'* 應該 `'MM/dd/yyyy HH:mm:ss'`。 若要進行測試，使用者可以執行
+在此查詢中，如果 *（& s) #60，則為日期時間欄位 >* 具有類似模式 *03/26/2015年 12:04:39*, 、 *' & #60，則為日期時間欄位的模式 >'* 應該 `'MM/dd/yyyy HH:mm:ss'`。 若要進行測試，使用者可以執行
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -246,7 +246,7 @@ Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 
  *Hivesampletable* 這個查詢中預先安裝於所有 Azure HDInsight Hadoop 叢集預設會佈建叢集時。
 
 
-###<a name="hive-textfeatures"></a>從文字欄位擷取功能
+###<a name="hive-textfeatures"></a> 從文字欄位擷取功能
 
 當 Hive 資料表具有一個文字欄位且其中包含以空格分隔的文字字串時，下列查詢便會擷取字串長度，以及字串中的字數。
 
@@ -285,7 +285,7 @@ Hive 內嵌的 Udf 可以在中找到的完整清單 **內建函式** 區段 <a 
 
 Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處理的資料。 本節將討論一些使用者可以微調的參數，來提升 Hive 查詢的效能。 使用者需要在處理資料的查詢之前新增參數微調查詢。
 
-1. **Java 堆積空間**: 對於涉及聯結大型資料集，或處理長記錄的查詢 **堆積空間不足** 是其中一個常見的錯誤。 這可以藉由設定參數微調 *mapreduce.map.java.opts* 和 *mapreduce.task.io.sort.mb* 為需要的值。 下列是一個範例：
+1. **Java 堆積空間**︰ 對於涉及聯結大型資料集，或處理長記錄的查詢 **堆積空間不足** 是其中一個常見的錯誤。 這可以藉由設定參數微調 *mapreduce.map.java.opts* 和 *mapreduce.task.io.sort.mb* 為需要的值。 下列是一個範例：
 
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -293,15 +293,15 @@ Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處
 
     這個參數會配置 4 GB 記憶體給 Java 堆積空間，也會藉由配置更多記憶體來使排序更有效率。 如果發生任何與堆積空間相關的工作失敗錯誤，那麼使用這些配置會是個好主意。
 
-2. **DFS 區塊大小** : 這個參數會設定檔案系統所儲存資料的最小單位。 例如，如果 DFS 區塊大小為 128 MB，則任何大小小於等於 128 MB 的資料都會儲存於單一區塊中，而大於 128 MB 的資料則會配置額外的區塊。 選擇非常小的區塊大小會在 Hadoop 中造成極大的負荷，因為名稱節點必須處理更多要求，以尋找與檔案有關的相關區塊。 在處理 GB (或更大型) 資料時，建議的設定如下：
+2. **DFS 區塊大小** ︰ 這個參數會設定檔案系統所儲存資料的最小單位。 例如，如果 DFS 區塊大小為 128 MB，則任何大小小於等於 128 MB 的資料都會儲存於單一區塊中，而大於 128 MB 的資料則會配置額外的區塊。 選擇非常小的區塊大小會在 Hadoop 中造成極大的負荷，因為名稱節點必須處理更多要求，以尋找與檔案有關的相關區塊。 在處理 GB (或更大型) 資料時，建議的設定如下：
 
         set dfs.block.size=128m;
 
-3. **將 Hive 中的聯結作業最佳化** : 儘管 map/reduce 架構中的聯結作業通常是在縮減階段，某些情況下，極可以改善由排程聯結 (也稱為"mapjoin") 在對應階段中。 若要在適當時機引導 Hive 執行這個動作，我們可以設定：
+3. **將 Hive 中的聯結作業最佳化** ︰ 儘管 map/reduce 架構中的聯結作業通常是在縮減階段，某些情況下，極可以改善由排程聯結 （也稱為"mapjoin"） 在對應階段中。 若要在適當時機引導 Hive 執行這個動作，我們可以設定：
 
         set hive.auto.convert.join=true;
 
-4. **指定 Hive 的對應程式數目** : 儘管 Hadoop 允許使用者設定縮減程式的對應程式數目通常是由使用者設定。 可讓某種程度控制對此數目的技巧是選擇 Hadoop 變數 *mapred.min.split.size* 和 *mapred.max.split.size* 大小，每個對應的工作取決於:
+4. **指定 Hive 的對應程式數目** ︰ 儘管 Hadoop 允許使用者設定縮減程式的對應程式數目通常是由使用者設定。 可讓某種程度控制對此數目的技巧是選擇 Hadoop 變數 *mapred.min.split.size* 和 *mapred.max.split.size* 大小，每個對應的工作取決於 ︰
 
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
 
@@ -318,4 +318,5 @@ Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處
 
 
  
+
 

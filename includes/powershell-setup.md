@@ -76,5 +76,6 @@
     $subscr="<SubscriptionName from the display of Get-AzureSubscription>"
     Select-AzureSubscription -SubscriptionName $subscr -Current 
 
-如需 Azure 訂用帳戶和帳戶的詳細資訊，請參閱 [How to: 連線到您的訂閱](powershell-install-configure.md#Connect)。
+如需 Azure 訂用帳戶和帳戶的詳細資訊，請參閱 [How to ︰ 連線到您的訂閱](powershell-install-configure.md#Connect)。
+
 

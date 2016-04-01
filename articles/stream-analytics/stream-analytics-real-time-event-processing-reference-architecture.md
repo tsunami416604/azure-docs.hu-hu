@@ -41,13 +41,13 @@ Microsoft Azure 提供分析技術的全面目錄，可以支援一系列不同�
     - 展示/使用層
 - 結論
 
-**作者:** Charles Feddersen，Solution Architect，Data Insights Center of Excellence，Microsoft Corporation
+**作者 ︰** Charles Feddersen，Solution Architect，Data Insights Center of Excellence，Microsoft Corporation
 
-**發行日期:** 2015 年 1 月
+**發行日期 ︰** 2015 年 1 月
 
-**修訂版本:** 1.0
+**修訂版本 ︰** 1.0
 
-**下載:** [使用 Microsoft Azure 串流分析即時事件處理](http://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
+**下載 ︰** [使用 Microsoft Azure 串流分析即時事件處理](http://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
 
 ## 取得說明
@@ -62,3 +62,4 @@ Microsoft Azure 提供分析技術的全面目錄，可以支援一系列不同�
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
  
+

@@ -36,7 +36,7 @@
     
     您將可以利用某些關鍵字來查詢推文，藉此感知推文中表達的意見是肯定、否定或中性。
 
-可以在 GitHub 上找到完整的 Visual Studio 方案範例: [即時社交情緒分析應用程式](https://github.com/maxluk/tweet-sentiment)。
+可以在 GitHub 上找到完整的 Visual Studio 方案範例 ︰ [即時社交情緒分析應用程式](https://github.com/maxluk/tweet-sentiment)。
 
 
 
@@ -68,7 +68,7 @@
 
 
 
-##<a id="prerequisites"></a>先決條件
+##<a id="prerequisites"></a>必要條件
 開始進行本教學課程之前，您必須具備下列條件：
 
 - **HDInsight 中的 HBase 叢集**。 如需叢集佈建的指示，請參閱  [開始搭配使用 HBase 與 HDInsight 中 Hadoop] [hbase-get-started]。 進行教學課程時，您將需要下列資料：
@@ -87,7 +87,7 @@
 
 
 
-##<a id="twitter"></a>建立 Twitter 應用程式 ID 和密碼
+##<a id="twitter"></a>建立 Twitter 應用程式識別碼和密碼
 
 Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 OAuth 的第一個步驟，是在 Twitter 開發人員網站上建立新的應用程式。
 
@@ -161,10 +161,10 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 2. 從 **檔案** 功能表上，指向 **新增**, ，然後按一下 [ **專案**。
 3. 輸入或選取下列值：
 
-    - 範本: **Visual C# / Windows 桌面 / 主控台應用程式**
-    - 名稱: **TweetSentimentStreaming** 
-    - 位置: **C:\Tutorials**
-    - 方案名稱: **TweetSentimentStreaming**
+    - 範本 ︰ **Visual C# / Windows 桌面 / 主控台應用程式**
+    - 名稱 ︰ **TweetSentimentStreaming** 
+    - 位置 ︰ **C:\Tutorials**
+    - 方案名稱 ︰ **TweetSentimentStreaming**
 
 4. 按一下 [ **確定** 以繼續。
  
@@ -188,7 +188,7 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 
 1. 從 **方案總管] 中**, ，以滑鼠右鍵按一下 **TweetSentimentStreaming**, ，指向 [ **新增**, ，然後按一下 [ **類別**。
 2. 在 **名稱** 欄位中，輸入 **HBaseWriter**, ，然後按一下 [ **新增**。
-3. 在 **HBaseWriter.cs**, ，新增下列 **使用** 陳述式，在檔案頂端:
+3. 在 **HBaseWriter.cs**, ，新增下列 **使用** 陳述式，在檔案頂端 ︰
 
         using System.IO;        
         using System.Threading;
@@ -211,7 +211,7 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 
     此類別結構可用來剖析情緒字典檔案。 資料可用來計算每則推文的情緒分數。
 
-5. 內部 **HBaseWriter** 類別中，定義以下常數和變數:
+5. 內部 **HBaseWriter** 類別中，定義以下常數和變數 ︰
 
         // HDinsight HBase cluster and HBase table information
         const string CLUSTERNAME = "https://<HBaseClusterName>.azurehdinsight.net/";
@@ -240,7 +240,7 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 
     在本教學課程稍後的內容中，您將需要下載 dictionary.tsv 檔案並將其移動到特定資料夾。
 
-7. 定義的以下函數 **HBaseWriter** 類別:
+7. 定義的以下函數 **HBaseWriter** 類別 ︰
 
         // This function connects to HBase, loads the sentiment dictionary, and starts the thread for writting.
         public HBaseWriter()
@@ -414,20 +414,20 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 
     此程式碼提供以下功能：
 
-    - **連接到 Hbase [hbasewriter ()]**: 使用 HBase SDK 來建立 *ClusterCredentials* 物件含有叢集 URL 和 Hadoop 使用者認證，然後再建立 *HBaseClient* 使用 ClusterCredentials 物件的物件。
-    - **建立 HBase 資料表 [hbasewriter ()]**: 方法呼叫是 *hbaseclient.createtable ()*。
-    - **寫入 HBase 資料表 [writerthreadfunction ()]**: 方法呼叫是 *hbaseclient.storecells ()*。
+    - **連接到 Hbase [hbasewriter （)]**︰ 使用 HBase SDK 來建立 *ClusterCredentials* 物件含有叢集 URL 和 Hadoop 使用者認證，然後再建立 *HBaseClient* 使用 ClusterCredentials 物件的物件。
+    - **建立 HBase 資料表 [hbasewriter （）]**︰ 方法呼叫是 *hbaseclient.createtable （)*。
+    - **寫入 HBase 資料表 [writerthreadfunction （）]**︰ 方法呼叫是 *hbaseclient.storecells （)*。
 
 **完成 Program.cs**
 
 1. 從 **方案總管] 中**, ，連按兩下 **Program.cs** 以開啟它。
-2. 在檔案開頭，新增下列 **使用** 陳述式:
+2. 在檔案開頭，新增下列 **使用** 陳述式 ︰
 
         using System.Configuration;
         using System.Diagnostics;
         using Tweetinvi;
 
-3. 內部 **程式** 類別中定義下列常數:
+3. 內部 **程式** 類別中定義下列常數 ︰
 
         const string TWITTERAPPACCESSTOKEN = "<TwitterApplicationAccessToken";
         const string TWITTERAPPACCESSTOKENSECRET = "TwitterApplicationAccessTokenSecret";
@@ -436,7 +436,7 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 
 4. 設定與 Twitter 應用程式值相符的常數值。
 
-3. 修改 **main ()** 函數，使它看起來像這樣:
+3. 修改 **main （)** 函數，使它看起來像這樣 ︰
 
         static void Main(string[] args)
         {
@@ -528,7 +528,7 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 
 
 
-##<a id="web"></a> 建立網站時使用 Azure 網站，以將 Twitter 情緒視覺化
+##<a id="web"></a> 使用 Azure 網站建立網站以將 Twitter 情緒視覺化
 
 在本節中，您將建立 ASP.NET MVC Web 應用程式，以便從 HBase 讀取即時情緒資料，並將資料繪製在 Bing 地圖上。
 
@@ -538,10 +538,10 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 2. 按一下 [ **檔案**, ，按一下 [ **新增**, ，然後按一下 [ **專案**。
 3. 輸入以下資訊：
 
-    - 範本類別: **Visual C# web**
-    - 範本: **ASP.NET Web 應用程式**
-    - 名稱: **TweetSentimentWeb**
-    - 位置: **C:\Tutorials** 
+    - 範本類別 ︰ **Visual C# web**
+    - 範本 ︰ **ASP.NET Web 應用程式**
+    - 名稱 ︰ **TweetSentimentWeb**
+    - 位置 ︰ **C:\Tutorials** 
 4. 按一下 [ **確定**。
 5. 在 **選取範本**, ，按一下 [ **MVC**。 
 6. 在 **Microsoft Azure**, ，按一下 [ **管理訂閱**。
@@ -555,7 +555,7 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 **安裝 NuGet 套件**
 
 1. 從 **工具** ] 功能表上，按一下 [ **Nuget 封裝管理員**, ，然後按一下 [ **Package Manager Console**。 主控台面板會在頁面底部開啟。
-2. 使用下列命令來安裝 [HBase.NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) 封裝，以存取 HBase 叢集的用戶端程式庫:
+2. 使用下列命令來安裝 [HBase.NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) 封裝，以存取 HBase 叢集的用戶端程式庫 ︰
 
         Install-Package Microsoft.HBase.Client 
 
@@ -673,7 +673,7 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
             }
         }
 
-4. 內部 **HBaseReader** 類別中變更常數值，如下所示:
+4. 內部 **HBaseReader** 類別中變更常數值，如下所示 ︰
 
     - **CLUSTERNAME**: HBase 叢集名稱，例如 *https://<HBaseClusterName>.azurehdinsight.net/*。 
     - **HADOOPUSERNAME**: HBase 叢集 Hadoop 使用者使用者名稱。 預設名稱是 *admin*。
@@ -1279,11 +1279,11 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 **修改 global.asax 檔案**
 
 1. 從 **方案總管] 中**, ，依序展開 **TweetSentimentWeb**, ，然後按兩下 **Global.asax**。
-2. 新增下列 **使用** 陳述式:
+2. 新增下列 **使用** 陳述式 ︰
 
         using System.Web.Http;
 
-2. 新增下列幾行內 **application_start ()** 函式:
+2. 新增下列幾行內 **application_start （)** 函式 ︰
 
         // Register API routes
         GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -1293,7 +1293,7 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 **執行 Web 應用程式**
 
 1. 驗證串流服務主控台應用程式仍在執行中，以便您可以看到即時變更。
-2. 按下 **F5** 執行 web 應用程式:
+2. 按下 **F5** 執行 web 應用程式 ︰
 
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
 2. 在文字方塊中，輸入關鍵字，然後再按一下 **移**。  您不一定能找到所有關鍵字，須視 HBase 資料表內收集到的資料而定。 請嘗試一些常用的關鍵字，例如 "love"、"xbox" 和 "playstation"。 
@@ -1356,3 +1356,4 @@ Twitter 串流 Api 使用 [OAuth](http://oauth.net/) 來授權要求。 使用 O
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
  
+

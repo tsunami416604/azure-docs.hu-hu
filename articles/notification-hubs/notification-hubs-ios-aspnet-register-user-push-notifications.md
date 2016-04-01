@@ -26,7 +26,7 @@
 
 ##概觀
 
-本主題將說明以 ASP.NET Web API 執行註冊時，應如何向 Azure 通知中心要求推播通知註冊。 本主題會延伸教學課程 [使用通知中心來通知使用者]。 您必須已完成該教學課程中的必要步驟，才能建立已驗證的行動服務。 如需通知使用者案例的詳細資訊，請參閱 [使用通知中心來通知使用者]。
+本主題將說明以 ASP.NET Web API 執行註冊時，應如何向 Azure 通知中心要求推播通知註冊。 本主題會延伸教學課程 [Notify users with Notification Hubs]。 您必須已完成該教學課程中的必要步驟，才能建立已驗證的行動服務。 如需通知使用者案例的詳細資訊，請參閱 [Notify users with Notification Hubs]。
 
 ##更新應用程式  
 
@@ -44,7 +44,7 @@
 
     ![][0]
 
-2. 在輔助編輯器中，為所有切換的控制項建立出口並加以呼叫、 使用檢視控制器 (委派) 連接文字欄位和建立 **動作** 的 **登入** ] 按鈕。
+2. 在輔助編輯器中，為所有切換的控制項建立出口並加以呼叫、 使用檢視控制器 （委派） 連接文字欄位和建立 **動作** 的 **登入** ] 按鈕。
 
     ![][1]
 
@@ -56,7 +56,7 @@
 
         - (IBAction)login:(id)sender;
 
-5. 建立一個名為 **DeviceInfo**, ，並將下列程式碼複製到 DeviceInfo.h 檔案的介面區段:
+5. 建立一個名為 **DeviceInfo**, ，並將下列程式碼複製到 DeviceInfo.h 檔案的介面區段 ︰
 
         @property (readonly, nonatomic) NSString* installationId;
         @property (nonatomic) NSData* deviceToken;
@@ -97,7 +97,7 @@
 
         @property (strong, nonatomic) DeviceInfo* deviceInfo;
 
-8. 在 **didFinishLaunchingWithOptions** 方法在 PushToUserAppDelegate.m 中，新增下列程式碼:
+8. 在 **didFinishLaunchingWithOptions** 方法在 PushToUserAppDelegate.m 中，新增下列程式碼 ︰
 
         self.deviceInfo = [[DeviceInfo alloc] init];
 
@@ -105,7 +105,7 @@
 
     第一行會初始化 **DeviceInfo** 單一物件。 第二行會啟動推播通知的註冊已存在您已完成 [Get Started with Notification Hubs] 教學課程。
 
-9. 在 PushToUserAppDelegate.m 中，實作方法 **didRegisterForRemoteNotificationsWithDeviceToken** 您的 AppDelegate 中，加入下列程式碼:
+9. 在 PushToUserAppDelegate.m 中，實作方法 **didRegisterForRemoteNotificationsWithDeviceToken** 您的 AppDelegate 中，加入下列程式碼 ︰
 
         self.deviceInfo.deviceToken = deviceToken;
 
@@ -134,7 +134,7 @@
             return YES;
         }
 
-9. 在 **viewDidLoad** PushToUserViewController.m 檔案，方法中的初始化安裝 Id 標籤，如下所示:
+9. 在 **viewDidLoad** PushToUserViewController.m 檔案，方法中的初始化安裝 Id 標籤，如下所示 ︰
 
         DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
         Self.installationId.text = deviceInfo.installationId;
@@ -189,7 +189,7 @@
             }
 
 
-12. 下列程式碼複製到 **登入** XCode 所建立的處理常式方法:
+12. 下列程式碼複製到 **登入** XCode 所建立的處理常式方法 ︰
 
             DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
 
@@ -222,9 +222,9 @@
                 }
             }];
 
-    This method gets both an installation ID and channel for push notifications and sends it, along with the device type, to the authenticated Web API method that creates a registration in Notification Hubs. 此 Web API 被定義在 [使用通知中心來通知使用者]。
+    This method gets both an installation ID and channel for push notifications and sends it, along with the device type, to the authenticated Web API method that creates a registration in Notification Hubs. 此 Web API 定義於 [Notify users with Notification Hubs]。
 
-現在，用戶端應用程式已更新，返回 [使用通知中心通知使用者]，並更新行動服務，以使用通知中心傳送通知。
+現在，用戶端應用程式已更新，回到 [Notify users with Notification Hubs] 並更新行動服務，以使用通知中心傳送通知。
 
 <!-- Anchors. -->
 
@@ -236,4 +236,5 @@
 [Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users-aspnet
 
 [Get Started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+
 

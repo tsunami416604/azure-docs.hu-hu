@@ -91,7 +91,7 @@
 
     ![設定單一登入](./media/active-directory-saas-coupa-tutorial/IC791903.png "Configure Single Sign-On")
 
-7.  在 **設定應用程式 URL** 頁面上，執行下列步驟:
+7.  在 **設定應用程式 URL** 頁面上，執行下列步驟 ︰
 
     ![設定應用程式 URL](./media/active-directory-saas-coupa-tutorial/IC791904.png "Configure App URL")
 
@@ -108,7 +108,7 @@
 
     ![安全性控制項](./media/active-directory-saas-coupa-tutorial/IC791900.png "Security Controls")
 
-10. 在 **使用 Coupa 認證登入** 區段中，執行下列步驟:
+10. 在 **使用 Coupa 認證登入** 區段中，執行下列步驟 ︰
 
     ![使用 Coupa 認證登入](./media/active-directory-saas-coupa-tutorial/IC791906.png "Log in using Coupa credentials")
 
@@ -136,7 +136,7 @@ Coupa 需以手動的方式佈建。
 
     ![建立使用者](./media/active-directory-saas-coupa-tutorial/IC791909.png "Create Users")
 
-4.  在 **使用者建立** 區段中，執行下列步驟:
+4.  在 **使用者建立** 區段中，執行下列步驟 ︰
 
     ![使用者詳細資料](./media/active-directory-saas-coupa-tutorial/IC791910.png "User Details")
 
@@ -164,4 +164,5 @@ Coupa 需以手動的方式佈建。
     ![是](./media/active-directory-saas-coupa-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

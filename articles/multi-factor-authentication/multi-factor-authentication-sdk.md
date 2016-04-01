@@ -72,8 +72,8 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
 - **原始程式檔** 多因素驗證
 - **用戶端憑證** 您用來與 Multi-factor Authentication 服務通訊
 - **私密金鑰** 憑證
-- **呼叫結果。**呼叫結果碼的清單。 若要開啟此檔案，請使用可設定文字格式的應用程式，例如 WordPad。 使用呼叫結果碼來測試及疑難排解您在應用程式中的 Multi-Factor Authentication 實作。 它們不是驗證狀態碼。
-- **範例。**Multi-Factor Authentication 基本工作實作的範例程式碼。
+- **呼叫結果。** 呼叫結果碼的清單。 若要開啟此檔案，請使用可設定文字格式的應用程式，例如 WordPad。 使用呼叫結果碼來測試及疑難排解您在應用程式中的 Multi-Factor Authentication 實作。 它們不是驗證狀態碼。
+- **範例。** Multi-Factor Authentication 基本工作實作的範例程式碼。
 
 
 >[AZURE.WARNING]用戶端憑證是特別為您產生的唯一私人憑證。 請勿分享或遺失此檔案。 它是您與 Multi-Factor Authentication 通訊時確保安全性的關鍵。
@@ -192,5 +192,6 @@ Multi-Factor Authentication SDK 中的 API 結構相當簡單。 您可以使用
     
         }
     }
+
 
 

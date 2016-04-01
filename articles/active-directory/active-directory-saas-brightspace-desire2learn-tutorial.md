@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Brightspace by Desire2Learn 單一登入的訂用帳戶
 
-完成本教學課程之後, 您已指派給 Brightspace by Desire2Learn 的 Azure AD 使用者將能夠登入您的 Brightspace by Desire2Learn 公司網站 (服務提供者起始登入)，或使用應用程式的單一登入 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Brightspace by Desire2Learn 的 Azure AD 使用者將能夠登入您的 Brightspace by Desire2Learn 公司網站 （服務提供者起始登入），或使用應用程式的單一登入 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -77,11 +77,11 @@
 
     ![設定單一登入](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798960.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式 URL** 頁面上，執行下列步驟:
+3.  在 **設定應用程式 URL** 頁面上，執行下列步驟 ︰
 
     ![設定應用程式 URL](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798961.png "Configure App URL")
 
-    1.  在 **登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入您 **Brightspace by Desire2Learn** (例如: *https://partnershowcase.desire2learn.com/Shibboleth.sso/Login?entityID=https://sts.windows-ppe.net/5caf9349-fd93-4a74-b064-0070f65bfb49/&target=https%3A%2F%2Fpartnershowcase.desire2learn.com%2Fd2l%2FshibbolethSSO%2Faspinfo.asp*)。
+    1.  在 **登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入您 **Brightspace by Desire2Learn** (例如 ︰ *https://partnershowcase.desire2learn.com/Shibboleth.sso/Login?entityID=https://sts.windows-ppe.net/5caf9349-fd93-4a74-b064-0070f65bfb49/&target=https%3A%2F%2Fpartnershowcase.desire2learn.com%2Fd2l%2FshibbolethSSO%2Faspinfo.asp*)。
     2.  按一下 [ **下一步**
 
 4.  在 **Brightspace by Desire2Learn 在設定單一登入** ] 頁面上，若要下載中繼資料中，按一下 [ **下載中繼資料**, ，然後儲存您的電腦上的 [中繼資料。
@@ -120,4 +120,5 @@ Brightspace by Desire2Learn 的使用者帳戶必須由您的 Brightspace by Des
     ![是](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

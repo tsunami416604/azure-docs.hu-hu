@@ -6,7 +6,7 @@
 
     ![建立磁碟區容器](./media/storsimple-create-volume-container/HCS_CreateVolumeContainerM-include.png)
 
-2. 在 **建立磁碟區容器** ] 對話方塊中:
+2. 在 **建立磁碟區容器** ] 對話方塊中 ︰
   1. 提供 **名稱** 磁碟區容器。 名稱長度必須是 3 到 32 個字元。
   2. 選取 **儲存體帳戶** 與此磁碟區容器相關聯。 您可以選擇服務建立時所產生的預設帳戶。 您也可以使用 **新增** 選項來指定未連結到此服務訂用帳戶的儲存體帳戶。
   3. 選取 **啟用雲端儲存體加密** 啟用從裝置傳送至雲端的資料加密。
@@ -20,3 +20,4 @@
 ![可用的視訊](./media/storsimple-create-volume-container/Video_icon.png) **可用的視訊**
 
 若要看影片，示範如何在 StorSimple 方案中建立磁碟區容器，按一下 [ [這裡](http://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/)。
+

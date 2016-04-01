@@ -23,3 +23,4 @@
 2. 從螢幕頂端向下撥動將裝置的通知中心開啟，以檢視通知。
 
     ![在通知中心檢視通知](./media/mobile-services-android-push-notifications-test/notification-area-received.png)
+

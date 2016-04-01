@@ -34,7 +34,7 @@ Azure AD B2C 無法與 Office 365 一起使用。 一般而言，它不能用來
 
 在 Azure AD 租用戶中，租用戶的每個使用者 (不包括目前有 Microsoft 帳戶的使用者) 都是以 `<xyz>@<tenant domain>` 格式的電子郵件地址登入，當中的 `<tenant domain>` 是租用戶已驗證的其中一個網域，或初始 `<...>.onmicrosoft.com` 網域。 這種類型的帳戶是「公司帳戶或學校帳戶」，也稱為「組織帳戶」。
 
-在 Azure AD B2C 租用戶中大部分的應用程式想要使用任何任意的電子郵件地址 (例如 joe@comcast.net、 bob@gmail.com、 sarah@contoso.com 或 jim@live.com) 登入的使用者。 這種類型的帳戶就是「本機帳戶」。 現在，我們也支援任意使用者名稱 (僅單純字串) 作為本機帳戶 (例如、joe、bob、sarah 或 jim)。 您在 Azure AD B2C 服務中有這兩個本機帳戶「類型」可選擇。
+在 Azure AD B2C 租用戶中大部分的應用程式想要使用任何任意的電子郵件地址 （例如 joe@comcast.net、 bob@gmail.com、 sarah@contoso.com 或 jim@live.com） 登入的使用者。 這種類型的帳戶就是「本機帳戶」。 現在，我們也支援任意使用者名稱 (僅單純字串) 作為本機帳戶 (例如、joe、bob、sarah 或 jim)。 您在 Azure AD B2C 服務中有這兩個本機帳戶「類型」可選擇。
 
 ### 你們現在支援哪些社交共享身分識別提供者？ 你們打算在未來支援哪些？
 
@@ -104,4 +104,5 @@ Azure AD B2C 無法與 Office 365 一起使用。 一般而言，它不能用來
 ## 相關資訊
 
 您也可能想要檢閱目前 [預覽限制、 限制和條件約束](active-directory-b2c-limitations.md)。
+
 

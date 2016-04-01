@@ -42,7 +42,7 @@ Storm 拓撲中使用的元件如下：
 
 * **DataReferencBolt** -使用 VIN 從 DocumentDB 查閱車輛模型
 
-* **WasbStoreBolt** -HDFS (Azure 儲存體) 的資料儲存
+* **WasbStoreBolt** -HDFS （Azure 儲存體） 的資料儲存
 
 以下是此方案的圖表：
 
@@ -57,4 +57,5 @@ Storm 拓撲中使用的元件如下：
 ## 後續步驟
 
 如需更多範例 Storm 拓撲，請參閱 [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)。
+
 

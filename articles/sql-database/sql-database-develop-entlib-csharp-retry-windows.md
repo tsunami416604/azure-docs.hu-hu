@@ -63,14 +63,14 @@ Enterprise Library 6 (EntLib60) 是最新版本，已經在 2013 年 4 月發行
 您可以安裝 EntLib60 的方式：
 
 
-- 使用 *NuGet* Visual Studio 中的封裝管理員功能:
+- 使用 *NuGet* Visual Studio 中的封裝管理員功能 ︰
  - 在 NuGet 搜尋 **enterpriselibrary**。
 
 
 - 在 [EntLib60 的主要文件主題](http://msdn.microsoft.com/library/dn169621.aspx), ，找出資料列標示為 **下載**, ，然後按一下 [ [Microsoft 企業程式庫 6](http://go.microsoft.com/fwlink/?linkid=290898) 下載二進位檔。DLL 的組件檔案。
 
 
-EntLib60 具有數個。DLL 組件檔的名稱以相同的前置詞 **Microsoft.Practices.EnterpriseLibrary.& #x2a;。dll**, ，但此程式碼範例只想要在下列兩個組件:
+EntLib60 具有數個。DLL 組件檔的名稱以相同的前置詞 **Microsoft.Practices.EnterpriseLibrary.& #x2a;。dll**, ，但此程式碼範例只想要在下列兩個組件 ︰
 
 - Microsoft.Practices.EnterpriseLibrary。**TransientFaultHandling**.dll
 - Microsoft.Practices.EnterpriseLibrary。**TransientFaultHandling.Data**.dll
@@ -302,12 +302,12 @@ SELECT TOP 3
 ## 相關連結
 
 
-- 許多連結的詳細資訊，請提供: 
-[企業程式庫 6 – 4 月 2013](http://msdn.microsoft.com/library/dn169621.aspx)
+- 許多連結的詳細資訊，請提供 ︰ 
+[Enterprise Library 6 – 2013 年 4 月](http://msdn.microsoft.com/library/dn169621.aspx)
  - 本主題提供給其上方有一個按鈕 [下載 EntLib60 來源程式碼](http://go.microsoft.com/fwlink/p/?LinkID=290898), ，如果您好奇，請參閱原始程式碼。
 
 
-- 免費電子書。從 Microsoft 的 PDF 格式: 
+- 免費電子書。從 Microsoft 的 PDF 格式 ︰ 
 [Microsoft 企業程式庫，第 2 版的開發人員指南](http://www.microsoft.com/download/details.aspx?id=41145)。
 
 
@@ -321,5 +321,6 @@ SELECT TOP 3
 
 
 - [SQL Database 的用戶端快速入門程式碼範例](sql-database-develop-quick-start-client-code-samples.md)
+
 
 

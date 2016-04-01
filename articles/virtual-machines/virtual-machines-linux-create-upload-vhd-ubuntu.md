@@ -83,9 +83,9 @@
 
     a) 開啟 /etc/grub.d/00_header 檔案。
 
-    b) 在函數 **make_timeout ()**, ，搜尋 **如果 ["\${recordfail}"= 1]; 然後**
+    b） 在函數 **make_timeout （)**, ，搜尋 **如果 ["\${recordfail}"= 1]; 然後**
 
-    c) 將此行下的陳述式變更 **設定逾時 = 5**。
+    c） 將此行下的陳述式變更 **設定逾時 = 5**。
 
     d) 執行 'sudo update-grub'。
 
@@ -118,4 +118,5 @@ Ubuntu 硬體啟用 (HWE) 核心
 
 - [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
 - [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
+
 

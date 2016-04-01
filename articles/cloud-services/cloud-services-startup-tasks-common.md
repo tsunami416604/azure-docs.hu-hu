@@ -73,7 +73,7 @@ ms.author="adegeo"/>
 
  [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) 命令列工具可用來管理在 Azure 上啟動的 IIS 設定。 *AppCmd.exe* 提供方便、 命令列存取在 Azure 上的啟動工作中使用的組態設定。 使用 *AppCmd.exe*, ，網站設定可以新增、 修改或移除應用程式和網站。
 
-不過，有幾點来注意的使用中 *AppCmd.exe* 做為啟動工作:
+不過，有幾點来注意的使用中 *AppCmd.exe* 做為啟動工作 ︰
 
 - 啟動工作可以在重新開機之間執行多次。 例如，角色回收時就可能會發生這種情形。
 - 某些 *AppCmd.exe* 動作可能產生錯誤，如果您多次執行。 嘗試加入的區段 *Web.config* 兩次就會產生錯誤。
@@ -87,7 +87,7 @@ ms.author="adegeo"/>
 
 本範例的壓縮區段和壓縮項目新增至 json *Web.config* 錯誤處理和記錄檔。
 
-相關章節 [ServiceDefinition.csdef] 檔案如下所示，其中包括設定 [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) 屬性設定為 `elevated` 讓 *AppCmd.exe* 足夠的權限設定中的變更 *Web.config* 檔案:
+相關章節 [ServiceDefinition.csdef] 檔案如下所示，其中包括設定 [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) 屬性設定為 `elevated` 讓 *AppCmd.exe* 足夠的權限設定中的變更 *Web.config* 檔案 ︰
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -188,13 +188,13 @@ Azure 會針對在角色內啟動的處理序建立防火牆規則。 例如，�
 </ServiceDefinition>
 ```
 
-新增此命令可 **startup.cmd** 檔案:
+新增此命令可 **startup.cmd** 檔案 ︰
 
     %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 
 這會導致 **startup.cmd** 每次初始化 web 角色，如此可確保所需執行批次檔 **ip 安全性** 區段會解除鎖定。
 
-最後，修改 [system.webServer 區段](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) 您的 web 角色 **web.config** 檔案以新增一份 IP 位址被授與存取，如下列範例所示:
+最後，修改 [system.webServer 區段](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) 您的 web 角色 **web.config** 檔案以新增一份 IP 位址被授與存取，如下列範例所示 ︰
 
 此範例組態 **允許** 存取以外定義的兩個伺服器的所有 Ip
 
@@ -262,7 +262,7 @@ Windows PowerShell 指令碼不能直接從呼叫 [ServiceDefinition.csdef] 檔�
 
 若要在啟動工作中使用本機儲存體資源，您需要建立環境變數來參考本機儲存體資源的位置。 接著，啟動工作和應用程式就能對本機儲存體資源讀取及寫入檔案。
 
-相關章節 **ServiceDefinition.csdef** 檔案如下所示:
+相關章節 **ServiceDefinition.csdef** 檔案如下所示 ︰
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -397,7 +397,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 
 ### 務必記錄啟動活動
 
-Visual Studio 並未提供可逐步執行批次檔的偵錯工具，因此最好盡可能取得越多批次檔作業上的資料。 記錄的批次檔或輸出兩者 **stdout** 和 **stderr**, ，可以提供重要資訊時嘗試偵錯並修正批次檔。 若要記錄都 **stdout** 和 **stderr** 至 StartupLog.txt 檔案的目錄中所指的 **%TEMP%** 環境變數，將文字加入 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 至您想要記錄的特定一行的結尾。 例如，若要執行 setup.exe **%pathtoapp1install%** 目錄:
+Visual Studio 並未提供可逐步執行批次檔的偵錯工具，因此最好盡可能取得越多批次檔作業上的資料。 記錄的批次檔或輸出兩者 **stdout** 和 **stderr**, ，可以提供重要資訊時嘗試偵錯並修正批次檔。 若要記錄都 **stdout** 和 **stderr** 至 StartupLog.txt 檔案的目錄中所指的 **%TEMP%** 環境變數，將文字加入 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 至您想要記錄的特定一行的結尾。 例如，若要執行 setup.exe **%pathtoapp1install%** 目錄 ︰
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
@@ -460,7 +460,7 @@ Startup2.cmd：
 
 ### 使用正確的 taskType
 
- [TaskType][Task] 屬性會決定將執行的方式啟動工作。 有三種值: **簡單**, ，**背景**, ，和 **前景**。 background 和 foreground 工作會以非同步方式啟動，而 simple 工作會以同步方式執行，一次一個。
+ [TaskType][Task] 屬性會決定將執行的方式啟動工作。 有三種值 ︰ **簡單**, ，**背景**, ，和 **前景**。 background 和 foreground 工作會以非同步方式啟動，而 simple 工作會以同步方式執行，一次一個。
 
 使用 **簡單** 啟動工作，您可以設定工作將會發生的順序，由 ServiceDefinition.csdef 檔案中列出工作的順序。 如果 **簡單** 工作結束非零的結束代碼，然後啟動程序將會停止角色將不會啟動。
 
@@ -468,7 +468,7 @@ Startup2.cmd：
 
 ### 以 EXIT /B 0 結束批次檔
 
-如果角色才會開始 **errorlevel** 從每個您簡單啟動工作是零。 並非所有的程式設定 **errorlevel** (結束代碼) 正確，因此批次檔結尾必須 `EXIT /B 0` 如果所有項目是否正確執行。
+如果角色才會開始 **errorlevel** 從每個您簡單啟動工作是零。 並非所有的程式設定 **errorlevel** （結束代碼） 正確，因此批次檔結尾必須 `EXIT /B 0` 如果所有項目是否正確執行。
 
 啟動批次檔的結尾遺漏 `EXIT /B 0`，是角色無法啟動的常見原因。
 
@@ -502,4 +502,5 @@ Startup2.cmd：
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+
 

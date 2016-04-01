@@ -95,7 +95,7 @@
 
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
 
-     取代 <*device_ip*> 您的裝置的 IP 位址，例如: 
+     取代 <*device_ip*> 您的裝置的 IP 位址，例如 ︰ 
 
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
 
@@ -105,7 +105,7 @@
 
 4. 在出現的對話方塊中：
 
-    1. 輸入使用者名稱格式如下: *device_ip\SSAdmin*。
+    1. 輸入使用者名稱格式如下 ︰ *device_ip\SSAdmin*。
     2. 輸入以安裝精靈設定裝置時設定的裝置管理員密碼。 預設密碼是 *Password1*。
 
 7. 輸入以下命令在裝置上啟動 Windows PowerShell 工作階段：
@@ -186,7 +186,7 @@
 
     ![取得遠端管理憑證](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
 
-5. 從憑證中複製資訊 **---BEGIN CERTIFICATE---** 到 **---END CERTIFICATE---** 到文字編輯器 (例如記事本)，並將它儲存為.cer 檔案。 (在您準備主機時，要將這個檔案複製到您的遠端主機)。
+5. 從憑證中複製資訊 **---BEGIN CERTIFICATE---** 到 **---END CERTIFICATE---** 到文字編輯器 （例如記事本），並將它儲存為.cer 檔案。 (在您準備主機時，要將這個檔案複製到您的遠端主機)。
 
     >[AZURE.NOTE] 若要產生新的憑證，請使用 `Set-HcsRemoteManagementCert` 指令程式。
 
@@ -220,9 +220,9 @@
 
 1. 以管理員的身分啟動 [記事本]，然後開啟位於 \Windows\System32\Drivers\etc 的主機檔案。
 
-2. 將下列三個項目加入至主機檔案: **DATA 0 IP 位址**, ，**控制器 0 固定 IP 位址**, ，和 **控制器 1 固定 IP 位址**。
+2. 將下列三個項目加入至主機檔案 ︰ **DATA 0 IP 位址**, ，**控制器 0 固定 IP 位址**, ，和 **控制器 1 固定 IP 位址**。
 
-3. 輸入您稍早儲存的裝置序號。 對應至 IP 位址，如下圖所示。 對於控制器 0 及控制器 1，將附加 **Controller0** 和 **Controller1** 結尾的序號 (CN 名稱)。
+3. 輸入您稍早儲存的裝置序號。 對應至 IP 位址，如下圖所示。 對於控制器 0 及控制器 1，將附加 **Controller0** 和 **Controller1** 結尾的序號 （CN 名稱）。
 
     ![將 CN 名稱加入至主機檔案](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
 
@@ -242,7 +242,7 @@
 
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
 
-    其中 <*device_ip*> 是您的裝置的 IP 位址，例如: 
+    其中 <*device_ip*> 是您的裝置的 IP 位址，例如 ︰ 
 
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
 
@@ -271,4 +271,5 @@
 - 深入了解 [使用 Windows PowerShell 管理您的 StorSimple 裝置](storsimple-windows-powershell-administration.md)。
 
 - 深入了解 [使用 StorSimple Manager 服務管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+
 

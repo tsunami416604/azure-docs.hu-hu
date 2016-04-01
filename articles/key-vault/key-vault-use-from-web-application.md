@@ -1,11 +1,11 @@
 <properties 
-    pageTitle ="從 Web 應用程式使用 Azure 金鑰保存庫 |Microsoft Azure 「 
-    描述 = 「 使用本教學課程可協助您了解如何使用 Azure 金鑰保存庫的 web 應用程式。 」 
-    服務 = 「 金鑰保存庫 」 
+    pageTitle="使用 Azure 金鑰保存庫，從 Web 應用程式 |Microsoft Azure" 
+    description="使用本教學課程來幫助您了解如何從 Web 應用程式使用 Azure 金鑰保存庫。" 
+    services="key-vault" 
     documentationCenter="" 
-    作者 ="adamhurwitz" 
-    管理員 =""
-    標記 ="azure-資源管理員的 「 / / >
+    authors="adamhurwitz" 
+    manager=""
+    tags="azure-resource-manager"//>
 
 <tags 
     ms.service="key-vault" 
@@ -21,10 +21,10 @@
 ## 簡介  
 使用此教學課程來幫助您了解如何從 Azure 中的 Web 應用程式使用 Azure 金鑰保存庫。 它會引導您完成從 Azure 金鑰保存庫存取密碼的程序，以便在 Web 應用程式中使用該密碼。
 
-**預估完成時間:** 15 分鐘
+**預估完成時間 ︰** 15 分鐘
 
 
-如需 Azure 金鑰保存庫的概觀資訊，請參閱 [什麼是 Azure 金鑰保存庫?](key-vault-whatis.md)
+如需 Azure 金鑰保存庫的概觀資訊，請參閱 [什麼是 Azure 金鑰保存庫？](key-vault-whatis.md)
 
 ## 必要條件 
 
@@ -122,7 +122,7 @@
 ## <a id="portalsettings"></a>(選擇性) 在 Azure 入口網站中新增應用程式設定 ##
 如果您已有 Azure Web Apps，您現在可以在 Azure 入口網站中為 AppSettings 新增實際值。 如此一來，實際值將不會存在於 web.config 中，但會透過您有個別存取控制功能的入口網站受到保護。 這些值會被您在 web.config 中輸入的值取代。 請確定名稱都相同。
 
-![顯示在 Azure 入口網站應用程式設定][] 1
+![Azure 入口網站中顯示的應用程式設定][1]
 
 
 ## 使用憑證 (而非用戶端密碼) 進行驗證。 
@@ -134,7 +134,7 @@
 4. 將憑證加入 Web 應用程式
 
 
-**取得或建立的憑證**
+**取得或建立憑證**
 基於本文的目的，我們將測試憑證。 以下幾個命令可讓您在開發人員命令提示字元中用來建立憑證。 變更您要建立憑證檔案的目錄位置。 
 
     makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2015 -e 07/31/2016 -r
@@ -142,10 +142,10 @@
 
 記下 .pfx 的結束日期和密碼 (在此範例中為：07/31/2016 和 test123)。 您將需要在下面使用這些資訊。 
 
-如需有關如何建立測試憑證的詳細資訊，請參閱 [How to: 建立您自己測試憑證](https://msdn.microsoft.com/en-in/library/ff699202.aspx)
+如需有關如何建立測試憑證的詳細資訊，請參閱 [How to ︰ 建立您自己測試憑證](https://msdn.microsoft.com/en-in/library/ff699202.aspx)
 
 
-**Azure AD 應用程式相關聯的憑證**
+**將憑證與 Azure AD 應用程式產生關聯**
 現在，您擁有的憑證，您需要將它與 Azure AD 應用程式產生關聯。 但是，Azure 管理入口網站目前不支援這項作業。 您必須改用 Powershell。 以下是您需要執行的命令：
 
     $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
@@ -174,7 +174,7 @@
 
 
 
-**將程式碼加入至 Web 應用程式使用的憑證**
+**將程式碼加入 Web 應用程式以使用憑證**
 現在我們將加入程式碼來存取憑證和用來驗證 Web 應用程式。 
 
 首先，使用程式碼存取憑證。 
@@ -232,10 +232,10 @@
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 
 
-**將憑證新增至您的 Web 應用程式**
+**將憑證加入 Web 應用程式**
 將憑證新增至您的 Web 應用程式是簡單的兩個步驟的程序。 首先，請移至 Azure 入口網站並瀏覽至您的 Web 應用程式。 在 Web 應用程式的 [設定] 刀鋒視窗中，按一下 [自訂網域及 SSL] 的項目。 在開啟的刀鋒視窗中，您將能夠上傳先前建立的憑證 KVWebApp.pfx，並請確定您記得 pfx 的密碼。 
 
-![新增憑證至 Azure 入口網站中的 Web 應用程式][] 2
+![在 Azure 入口網站中將憑證加入 Web 應用程式][2]
 
 
 您只需要最後一件事是將應用程式設定新增至 Web 應用程式具有 WEBSITE\_LOAD\_CERTIFICATES 的名稱和值 *。 如此可確保載入所有憑證。 如果您只想載入已上傳的憑證，則可輸入其憑證指紋的逗號分隔清單。 
@@ -244,7 +244,7 @@
 
 
 
-## <a id="next"></a>後續步驟 ##
+## <a id="next"></a>接續步驟 ##
 
 
 如需程式設計參考，請參閱 [Azure 金鑰保存庫 C# 用戶端 API 參考](https://msdn.microsoft.com/library/azure/dn903628.aspx)。
@@ -254,4 +254,5 @@
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
  
+
 

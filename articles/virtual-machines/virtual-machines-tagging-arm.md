@@ -26,13 +26,13 @@
 
 ## 透過範本標記虛擬機器
 
-首先，我們來看一下透過範本進行標記。 [此範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm) 標記置於下列資源: 運算 (虛擬機器)、 儲存體 (儲存體帳戶) 和網路 (公用 IP 位址、 虛擬網路，以及網路介面)。
+首先，我們來看一下透過範本進行標記。 [此範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm) 標記置於下列資源 ︰ 運算 （虛擬機器）、 儲存體 （儲存體帳戶） 和網路 （公用 IP 位址、 虛擬網路，以及網路介面）。
 
 按一下 [ **部署至 Azure** 按鈕 [範本連結](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)。 這會導覽至 [Azure 入口網站](http://portal.azure.com/) 您可以在其中部署此範本。
 
 ![使用標記的簡單部署](./media/virtual-machines-tagging-arm/deploy-to-azure-tags.png)
 
-此範本包含下列標記: *部門*, ，*應用程式*, ，和 *建立者*。 如果您想要不同的標記名稱，您可以直接在範本中新增/編輯這些標記。
+此範本包含下列標記 ︰ *部門*, ，*應用程式*, ，和 *建立者*。 如果您想要不同的標記名稱，您可以直接在範本中新增/編輯這些標記。
 
 ![範本中的 Azure 標記](./media/virtual-machines-tagging-arm/azure-tags-in-a-template.png)
 
@@ -161,11 +161,11 @@
 
 ![Azure 入口網站中的使用量詳細資料](./media/virtual-machines-tagging-arm/azure-portal-tags-usage-details.png)
 
-選取您的計費和 **第 2 版** 使用量詳細資料:
+選取您的計費和 **第 2 版** 使用量詳細資料 ︰
 
 ![Azure 入口網站中的版本 2 預覽使用量詳細資料](./media/virtual-machines-tagging-arm/azure-portal-version2-usage-details.png)
 
-從使用量詳細資料，您可以看到所有的標記中 **標記** 資料行:
+從使用量詳細資料，您可以看到所有的標記中 **標記** 資料行 ︰
 
 ![Azure 入口網站中的標記資料行](./media/virtual-machines-tagging-arm/azure-portal-tags-column.png)
 
@@ -189,4 +189,5 @@
 [Using Tags to organize your Azure Resources]: ../resource-group-using-tags.md
 [Understanding your Azure Bill]: ../billing-understand-your-bill.md
 [Gain insights into your Microsoft Azure resource consumption]: ../billing-usage-rate-card-overview.md
+
 

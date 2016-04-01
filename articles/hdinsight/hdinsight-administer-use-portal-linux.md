@@ -37,7 +37,7 @@
 
 - [管理使用 Azure PowerShell HDInsight](hdinsight-administer-use-powershell.md): Azure PowerShell 提供 PowerShell cmdlet 來管理 Azure 服務
 
-## 先決條件
+## 必要條件
 
 開始閱讀本文之前，您必須符合下列必要條件：
 
@@ -81,17 +81,17 @@
 
     目前您可以選取 Azure 儲存體帳戶做為 HDInsight 叢集資料來源。 了解這些項目上使用下列 __資料來源__ 刀鋒視窗。
 
-    - __選取方法__: 設為 __從所有的訂閱__ 才能瀏覽儲存體帳戶，您的訂閱。 設定為 __便捷鍵__ 如果您想要輸入 __儲存體名稱__ 和 __便捷鍵__ 的現有儲存體帳戶。
+    - __選取方法__︰ 設為 __從所有的訂閱__ 才能瀏覽儲存體帳戶，您的訂閱。 設定為 __便捷鍵__ 如果您想要輸入 __儲存體名稱__ 和 __便捷鍵__ 的現有儲存體帳戶。
 
-    - __建立新__: 使用此選項可建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
+    - __建立新__︰ 使用此選項可建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
 
-    - __選擇預設容器__: 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
+    - __選擇預設容器__︰ 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
 
-    - __位置__: 儲存體帳戶的地理區域中，或將中建立。
+    - __位置__︰ 儲存體帳戶的地理區域中，或將中建立。
 
         > [AZURE.IMPORTANT] 選取的預設資料來源的位置也會設定 HDInsight 叢集的位置。 叢集和預設資料來源必須位於相同區域中。
 
-    - __選取__: 使用此選項可將儲存的資料來源的設定。
+    - __選取__︰ 使用此選項可將儲存的資料來源的設定。
 
     
 8. 選取 __節點定價層__ 顯示將建立此叢集節點的相關資訊。 根據預設，背景工作節點數會設定為 __4__。 
@@ -107,9 +107,9 @@
 
     * __HDInsight 版本__: HDInsight 叢集使用的版本。 如需有關 HDInsight 版本設定的詳細資訊，請參閱 [HDInsight 元件版本設定](hdinsight-component-versioning.md)
 
-    * __外部中繼存放區__: 這可讓您選取 SQL 資料庫，將會用來儲存 Oozie 與 Hive 組態資訊。 這可讓您在刪除並重新建立叢集時重複使用組態，而不必每次都重新建立 Hive 和 Oozie 的組態。
+    * __外部中繼存放區__︰ 這可讓您選取 SQL 資料庫，將會用來儲存 Oozie 與 Hive 組態資訊。 這可讓您在刪除並重新建立叢集時重複使用組態，而不必每次都重新建立 Hive 和 Oozie 的組態。
 
-    * __虛擬網路__: 這可讓您將 HDInsight 叢集放在相同的虛擬網路與其他資源，例如 SQL Database 或 Azure 虛擬機器上。 將資源放在虛擬網路上可讓彼此直接通訊，並略過可處理來自網際網路之連入流量的公用閘道器。 如需有關 HDInsight 如何受惠於 Azure 虛擬網路的詳細資訊，請參閱 [使用 Azure 虛擬網路延伸 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
+    * __虛擬網路__︰ 這可讓您將 HDInsight 叢集放在相同的虛擬網路與其他資源，例如 SQL Database 或 Azure 虛擬機器上。 將資源放在虛擬網路上可讓彼此直接通訊，並略過可處理來自網際網路之連入流量的公用閘道器。 如需有關 HDInsight 如何受惠於 Azure 虛擬網路的詳細資訊，請參閱 [使用 Azure 虛擬網路延伸 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
 
         > [AZURE.IMPORTANT] 因為您無法從 HDInsight 組態來建立新的網路，您必須建立 HDInsight 叢集之前先建立 Azure 虛擬網路。
         >
@@ -119,9 +119,9 @@
         >
         > 如果您有 v1 網路上的資源，而且您想要讓 HDInsight 直接存取這些資源，透過虛擬網路，請參閱 [傳統 Vnet 連接到新的 Vnet](../virtual-network/virtual-networks-arm-asm-s2s.md) 如需如何將 v2 虛擬網路連線至 v1 虛擬網路。 一旦建立此連線之後，您便可以在 v2 虛擬網路中建立 HDInsight 叢集。
 
-    * __編寫指令碼動作__: 這可讓您指定自訂 HDInsight 叢集佈建期間的 Bash 指令碼。 例如，沒有 [安裝色調指令碼](hdinsight-hadoop-hue-linux.md) (圖形用戶端與 Hadoop 搭配使用。)如需有關指令碼動作的詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
+    * __編寫指令碼動作__︰ 這可讓您指定自訂 HDInsight 叢集佈建期間的 Bash 指令碼。 例如，沒有 [安裝色調指令碼](hdinsight-hadoop-hue-linux.md) （圖形用戶端與 Hadoop 搭配使用。）如需有關指令碼動作的詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-    * __Azure 儲存體金鑰__: 這可讓您將其他儲存體帳戶與 HDInsight 伺服器產生關聯。
+    * __Azure 儲存體金鑰__︰ 這可讓您將其他儲存體帳戶與 HDInsight 伺服器產生關聯。
 
         > [AZURE.NOTE] HDInsight 只能存取 Azure 儲存體帳戶做為預設資料存放區新增到這個組態區段，或可公開存取。
 
@@ -129,9 +129,9 @@
 
 10. 請確認 __釘選到開始面板__ 已選取，然後選取 __建立__。 這將會建立叢集，並將該叢集磚加入到您 Azure 入口網站的「開始面板」。 該圖示可表示該叢集正在佈建，並將在佈建完成後變更為 HDInsight 圖示。
 
-    | 佈建期間 | 佈建完成 |
-    | ------------------ | --------------------- |
-    | ![「開始面板」上的佈建指示器](./media/hdinsight-administer-use-portal-linux/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-administer-use-portal-linux/provisioned.png) |
+  	| 佈建期間 | 佈建完成 |
+  	| ------------------ | --------------------- |
+  	| ![「開始面板」上的佈建指示器](./media/hdinsight-administer-use-portal-linux/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-administer-use-portal-linux/provisioned.png) |
 
     > [AZURE.NOTE] 需要花一些時間，叢集才會建立，通常約 15 分鐘的時間。 在開始面板中，使用 [] 磚或 __通知__ 佈建程序檢查頁面左邊的項目。
 
@@ -141,31 +141,31 @@
 
 ![叢集詳細資料](./media/hdinsight-administer-use-portal-linux/clusterdetails.png)
 
-使用下列命令以了解在此刀鋒視窗，並在最上方圖示 __Essentials__ 和 __快速連結__ 區段:
+使用下列命令以了解在此刀鋒視窗，並在最上方圖示 __Essentials__ 和 __快速連結__ 區段 ︰
 
-* __設定__ 和 __所有設定__: 顯示 __設定__ 叢集中，可讓您存取叢集的詳細的組態資訊的分頁。
+* __設定__ 和 __所有設定__︰ 顯示 __設定__ 叢集中，可讓您存取叢集的詳細的組態資訊的分頁。
 
-* __儀表板__, ，__叢集儀表板__, ，和 __URL__: 這些是所有的方式來存取叢集儀表板，其為 Linux 型叢集的 Ambari Web。
+* __儀表板__, ，__叢集儀表板__, ，和 __URL__︰ 這些是所有的方式來存取叢集儀表板，其為 Linux 型叢集的 Ambari Web。
 
-* __安全殼層__: 存取使用 SSH 的叢集所需的資訊。
+* __安全殼層__︰ 存取使用 SSH 的叢集所需的資訊。
 
-* __調整叢集__: 可讓您變更此叢集的背景工作節點數。
+* __調整叢集__︰ 可讓您變更此叢集的背景工作節點數。
 
-* __刪除__: 刪除 HDInsight 叢集。
+* __刪除__︰ 刪除 HDInsight 叢集。
 
-* __快速入門 (![定域機組和雷電圖示 = 快速入門](./media/hdinsight-administer-use-portal-linux/quickstart.png))__: 顯示資訊可協助您開始使用 HDInsight。
+* __快速入門 (![定域機組和雷電圖示 = 快速入門](./media/hdinsight-administer-use-portal-linux/quickstart.png))__︰ 顯示資訊可協助您開始使用 HDInsight。
 
-* __使用者 (![使用者圖示](./media/hdinsight-administer-use-portal-linux/users.png))__: 可讓您設定的權限 _入口網站的管理_ 的其他使用者此叢集上您的 Azure 訂閱。
+* __使用者 (![使用者圖示](./media/hdinsight-administer-use-portal-linux/users.png))__︰ 可讓您設定的權限 _入口網站的管理_ 的其他使用者此叢集上您的 Azure 訂閱。
 
     > [AZURE.IMPORTANT] 這 _只_ 影響存取，以及在 Azure 入口網站中，此叢集的權限，以及誰可以連線到，或將工作提交至 HDInsight 叢集上沒有作用。
 
-* __標記 (![標籤圖示](./media/hdinsight-administer-use-portal-linux/tags.png))__: 標記可讓您設定來定義自訂分類您的雲端服務的索引鍵/值組。 例如，您可以建立名為 __專案__, ，然後使用共通的值與特定專案相關聯的所有服務。
+* __標記 (![標籤圖示](./media/hdinsight-administer-use-portal-linux/tags.png))__︰ 標記可讓您設定來定義自訂分類您的雲端服務的索引鍵/值組。 例如，您可以建立名為 __專案__, ，然後使用共通的值與特定專案相關聯的所有服務。
 
 * __文件__: Azure hdinsight 的文件的連結。
 
 > [AZURE.IMPORTANT] 若要管理的 HDInsight 叢集所提供的服務，您必須使用 Ambari Web 或 Ambari REST API。 如需有關如何使用 Ambari 的詳細資訊，請參閱 [使用 Ambari 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)。
 
-### <a name="scaling"></a>調整大小
+### <a name="scaling"></a>調整
 
 調整叢集使用入口網站，選取您的 HDInsight 叢集，然後選取 __延展叢集__。 輸入 __背景工作節點數__ 您想要設定叢集，然後按一下 [ __儲存__。
 
@@ -192,4 +192,5 @@
 * [Azure HDInsight 提供 Hadoop 的什麼版本？](hdinsight-component-versioning.md)
 
 [preview-portal]: https://portal.azure.com
+
 

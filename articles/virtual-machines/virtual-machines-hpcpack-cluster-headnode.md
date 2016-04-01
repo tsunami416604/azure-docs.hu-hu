@@ -22,10 +22,10 @@ ms.service="virtual-machines"
 
 
 本文將說明如何使用 [Microsoft HPC Pack 虛擬機器映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) Azure Marketplace 中
-在傳統 (服務管理) 部署模型中，在 Azure 中建立 Windows HPC 叢集的前端節點。 前端節點必須加入 Azure 虛擬網路中的 Active Directory 網域。 您可以對 Azure 中的 HPC Pack 的概念證明部署使用此前端節點，並將運算資源加入至叢集以執行 HPC 工作負載。
+在傳統 （服務管理） 部署模型中，在 Azure 中建立 Windows HPC 叢集的前端節點。 前端節點必須加入 Azure 虛擬網路中的 Active Directory 網域。 您可以對 Azure 中的 HPC Pack 的概念證明部署使用此前端節點，並將運算資源加入至叢集以執行 HPC 工作負載。
 
 
-![HPC Pack 前端節點][前端節點]
+![HPC Pack 前端節點][headnode]
 
 >[AZURE.NOTE] 目前 HPC Pack
 VM 映像為基礎 HPC 與 Windows Server 2012 R2 Datacenter
@@ -48,9 +48,9 @@ VM 映像為基礎 HPC 與 Windows Server 2012 R2 Datacenter
 組件的前端節點。 您可以在 Azure 傳統 (服務管理) 部署模型中使用各種 Azure 工具來執行這些步驟。
 
 
-1. 如果您計劃要建立一個前端節點 VM，請參閱 [藉由使用 Azure 入口網站建立虛擬網路 (傳統)](../virtual-networks/virtual-networks-create-vnet-classic-pportal.md)。
+1. 如果您計劃要建立一個前端節點 VM，請參閱 [藉由使用 Azure 入口網站建立虛擬網路 （傳統）](../virtual-networks/virtual-networks-create-vnet-classic-pportal.md)。
 
-    **注意事項**
+    **考量**
 
     * 您可以接受虛擬網路位址空間和子網路的預設組態。
 
@@ -58,7 +58,7 @@ VM 映像為基礎 HPC 與 Windows Server 2012 R2 Datacenter
 
 2. 如果您需要個別 VM 上建立新的 Active Directory 樹系，請參閱 [Azure 虛擬網路上安裝新的 Active Directory 樹系](../active-directory/active-directory-new-forest-virtual-machine.md)。
 
-    **注意事項**
+    **考量**
 
     * 針對許多測試部署，您可以在 Azure 中建立單一網域控制站。 若要確保 Active Directory 網域的高可用性，您可以部署額外的備份onal, backup domain controller 網域控制站。
 
@@ -66,7 +66,7 @@ VM 映像為基礎 HPC 與 Windows Server 2012 R2 Datacenter
 
 3. 在 Azure 傳統入口網站或 Azure 入口網站中，從 [Azure Marketplace] 中選取 HPC Pack 2012 R2 映像來建立傳統 VM。 (請參閱 Azure 傳統入口網站的步驟 [這裡](virtual-machines-windows-tutorial-classic-portal.md)。)
 
-    **注意事項**
+    **考量**
 
     * 選取至少為 A4 的 VM 大小。
 
@@ -76,7 +76,7 @@ VM 映像為基礎 HPC 與 Windows Server 2012 R2 Datacenter
 
 4. 在建立 VM 且 VM 執行之後，請將 VM 加入現有的網域樹系，或是在 VM 上建立新網域樹系。
 
-    **注意事項**
+    **考量**
 
     * 如果您在具有現有網域樹系的 Azure VNet 中建立 VM，請連接到 VM。 然後使用標準的伺服器管理員或 Windows PowerShell 工具將它加入網域樹系。 然後重新啟動。
 
@@ -109,4 +109,5 @@ HPC PowerShell 指令程式。
 
 <!--Image references-->
 [headnode]: ./media/virtual-machines-hpcpack-cluster-headnode/headnode.png
+
 

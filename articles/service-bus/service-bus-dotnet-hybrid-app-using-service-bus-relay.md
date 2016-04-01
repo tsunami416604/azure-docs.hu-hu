@@ -176,7 +176,7 @@ Azure 資料中心內執行的 Web 角色實際上如何呼叫
 1.  使用系統管理員權限，啟動 Microsoft Visual
     Studio 2013 或 Microsoft Visual Studio Express。 收件人
     以系統管理員權限啟動 Visual Studio 中，以滑鼠右鍵按一下
-    **Microsoft Visual Studio 2013 (或 Microsoft Visual Studio Express)** 然後按一下 [ **系統管理員身分執行**。
+    **Microsoft Visual Studio 2013 （或 Microsoft Visual Studio Express）** 然後按一下 [ **系統管理員身分執行**。
 
 2.  在 Visual Studio 中，在 **檔案** ] 功能表上，按一下 [ **新增**, ，然後
     按一下 **專案**。
@@ -318,7 +318,7 @@ Azure 資料中心內執行的 Web 角色實際上如何呼叫
     **& l t; 系統。ServiceModel & gt;** 下列 XML 程式碼中。 請務必
     取代 *yourServiceNamespace* 與您的服務名稱
     命名空間，以及 *yourKey* 與您先前擷取的 SAS 金鑰
-    從 Azure 傳統入口網站:
+    從 Azure 傳統入口網站 ︰
 
         <system.serviceModel>
           <extensions>
@@ -358,7 +358,7 @@ Azure 資料中心內執行的 Web 角色實際上如何呼叫
 
 1.  確定 Visual Studio 是以系統管理員權限來執行。 如果不是，若要
     以系統管理員權限啟動 Visual Studio 中，以滑鼠右鍵按一下
-    **Microsoft Visual Studio 2013 (或 Microsoft Visual Studio Express)** 然後按一下 [ **系統管理員身分執行**。 Microsoft Azure 計算模擬器，稍後在本文中討論過需要
+    **Microsoft Visual Studio 2013 （或 Microsoft Visual Studio Express）** 然後按一下 [ **系統管理員身分執行**。 Microsoft Azure 計算模擬器，稍後在本文中討論過需要
     系統管理員權限啟動 visual Studio。
 
 2.  在 Visual Studio 中，在 **檔案** ] 功能表上，按一下 [ **新增**, ，然後
@@ -702,4 +702,5 @@ Azure 會依耗用的每小時伺服器時間對 Web 角色執行個體計費。
   [sbwacom]: /documentation/services/service-bus/  
   [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
   [executionmodels]: ../cloud-services/fundamentals-application-models.md
+
 

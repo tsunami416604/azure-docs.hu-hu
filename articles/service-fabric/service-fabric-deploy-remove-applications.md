@@ -18,7 +18,7 @@
 
 # 部署應用程式
 
-一次 [已封裝應用程式類型] [10]，就準備好部署至 Azure Service Fabric 叢集。 部署涉及下列三個步驟：
+一次 [已封裝應用程式類型][10], ，就準備好部署至 Azure Service Fabric 叢集。 部署涉及下列三個步驟：
 
 1. 上傳應用程式封裝
 2. 註冊應用程式類型
@@ -88,7 +88,7 @@ PS D:\temp>
 
 ## 建立應用程式
 
-您可以使用具現化應用程式已成功透過註冊任何應用程式類型版本 **New-servicefabricapplication** 命令。 每個應用程式名稱開頭必須 *網狀架構:* 配置，並且是唯一的每個應用程式執行個體。 如果已在目標應用程式類型的應用程式資訊清單中定義預設服務，則這些服務也會一併建立。
+您可以使用具現化應用程式已成功透過註冊任何應用程式類型版本 **New-servicefabricapplication** 命令。 每個應用程式名稱開頭必須 *網狀架構 ︰* 配置，並且是唯一的每個應用程式執行個體。 如果已在目標應用程式類型的應用程式資訊清單中定義預設服務，則這些服務也會一併建立。
 
 ~~~
 PS D:\temp> New-ServiceFabricApplication fabric:/MyApp MyApplicationType AppManifestVersion1
@@ -178,14 +178,14 @@ PS D:\temp>
 <!--
 ## Next steps
 
-TODO [升級應用程式] [11]
+TODO [Upgrade applications][11]
 -->
 
 ## 疑難排解
 
 ### Copy-ServiceFabricApplicationPackage 要求 ImageStoreConnectionString
 
-Service Fabric SDK 環境應已正確設定預設值。 但若有需要，所有命令的 ImageStoreConnectionString都應符合 Service Fabric 叢集正在使用的值。 您可以透過擷取的叢集資訊清單中找到此 **Get-servicefabricclustermanifest** 命令:
+Service Fabric SDK 環境應已正確設定預設值。 但若有需要，所有命令的 ImageStoreConnectionString都應符合 Service Fabric 叢集正在使用的值。 您可以透過擷取的叢集資訊清單中找到此 **Get-servicefabricclustermanifest** 命令 ︰
 
 ~~~
 PS D:\temp> Copy-ServiceFabricApplicationPackage .\MyApplicationType
@@ -224,4 +224,5 @@ PS D:\temp>
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
+
 

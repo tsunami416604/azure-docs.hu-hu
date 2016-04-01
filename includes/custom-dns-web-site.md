@@ -22,7 +22,7 @@ CNAME (或別名記錄) 和 A 記錄都可讓您將網域名稱和網站產生�
 
 ###CNAME 或別名記錄
 
-CNAME 記錄會對應 *特定* 網域，例如 **contoso.com** 或 **www.contoso.com**, ，到正式網域名稱。 在此情況下，正式網域名稱為 **(& s) lt; p >。 azurewebsites.net** 您 Azure 網站的網域名稱或 **(& s) lt; p >。 m** 流量管理員設定檔的網域名稱。 CNAME 建立之後，建立一個別名 **(& s) lt; p >。 azurewebsites.net** 或 **(& s) lt; p >。 m** 網域名稱。 CNAME 項目會解析為 IP 位址的您 **(& s) lt; p >。 azurewebsites.net** 或 **(& s) lt; p >。 m** 網域名稱，網站的 IP 位址變更時，如果您不需要採取任何動作。
+CNAME 記錄會對應 *特定* 網域，例如 **contoso.com** 或 **www.contoso.com**, ，到正式網域名稱。 在此情況下，正式網域名稱為 **（& s) lt; p >。 azurewebsites.net** 您 Azure 網站的網域名稱或 **（& s) lt; p >。 m** 流量管理員設定檔的網域名稱。 CNAME 建立之後，建立一個別名 **（& s) lt; p >。 azurewebsites.net** 或 **（& s) lt; p >。 m** 網域名稱。 CNAME 項目會解析為 IP 位址的您 **（& s) lt; p >。 azurewebsites.net** 或 **（& s) lt; p >。 m** 網域名稱，網站的 IP 位址變更時，如果您不需要採取任何動作。
 
 > [AZURE.NOTE] 某些網域註冊機構只允許您對應子網域時使用的 CNAME 記錄，例如 www.contoso.com，而不是根名稱，例如 contoso.com。 如需 CNAME 記錄的詳細資訊，請參閱註冊機構提供的文件、<a href="http://en.wikipedia.org/wiki/CNAME_record">維基百科 CNAME 記錄條目</a>，或 <a href="http://tools.ietf.org/html/rfc1035">IETF 網域名稱 - 實作與規格</a>文件。
 
@@ -41,25 +41,25 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 1. 在瀏覽器中開啟 [管理入口網站][portal]。
 2. 在 **網站** 索引標籤上，按一下您網站的名稱。
 
-    ![] [standardmode1]
+    ![][standardmode1]
 
 3. 按一下 [ **延展** ] 索引標籤。
 
-    ![] [standardmode2]
+    ![][standardmode2]
 
 
 4. 在 **一般** 區段中，按一下 [設定網站模式 **共用**。
 
-    ![] [standardmode3]
+    ![][standardmode3]
 
     > [AZURE.NOTE] 如果您將此網站使用流量管理員，您必須使用選取標準模式而非共用。
 
 5. 按一下 [ **儲存**。
-6. 系統會將增加成本共用模式 (或標準模式下，如果您選擇 [標準)，按一下 [ **是** 如果貴用戶同意。
+6. 系統會將增加成本共用模式 （或標準模式下，如果您選擇 [標準），按一下 [ **是** 如果貴用戶同意。
 
     <!--![][standardmode4]-->
 
-    **附註**<br />
+    **注意**<br />
     如果發生『設定網站「網站名稱」的規模失敗』錯誤，您可以利用詳細資料按鈕來取得詳細資訊。
 
 <a name="trafficmanager"></a><h2>(選用) 將網站新增至流量管理員</h2>
@@ -80,7 +80,7 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 
 5. 您也必須提供主機名稱，做為此 CNAME 別名的正式網域名稱。 這是 **。 m** 為您的網站名稱。
 
-例如，下列 CNAME 記錄轉送所有流量 **www.contoso.com** 至 **contoso.trafficmgr.com**, ，網站的網域名稱:
+例如，下列 CNAME 記錄轉送所有流量 **www.contoso.com** 至 **contoso.trafficmgr.com**, ，網站的網域名稱 ︰
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tr>
@@ -106,11 +106,11 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 
     * 登入 [Azure 管理入口網站][portal], ，選取您的網站，再選取 **儀表板**, ，然後尋找 **網站 URL** 中的項目 **快速瀏覽** 一節。
 
-    * 安裝和設定 [Powershell](/manage/install-and-configure-windows-powershell/), ，然後使用下列命令:
+    * 安裝和設定 [Powershell](/manage/install-and-configure-windows-powershell/), ，然後使用下列命令 ︰
 
             get-azurewebsite yoursitename | select hostnames
 
-    * 安裝和設定 [Azure 命令列介面](/manage/install-and-configure-cli/), ，然後使用下列命令:
+    * 安裝和設定 [Azure 命令列介面](/manage/install-and-configure-cli/), ，然後使用下列命令 ︰
 
             azure site domain list yoursitename
 
@@ -124,7 +124,7 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 
 5. 您也必須提供主機名稱，做為此 CNAME 別名的正式網域名稱。 這是 **。 azurewebsite.net** 為您的網站名稱。
 
-例如，下列 CNAME 記錄轉送所有流量 **www.contoso.com** 至 **contoso.azurewebsite.net**, ，網站的網域名稱:
+例如，下列 CNAME 記錄轉送所有流量 **www.contoso.com** 至 **contoso.azurewebsite.net**, ，網站的網域名稱 ︰
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tr>
@@ -151,11 +151,11 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 
 **使用命令列工具新增網域名稱**
 
-安裝和設定 [Azure 命令列介面](/manage/install-and-configure-cli/), ，然後使用下列命令:
+安裝和設定 [Azure 命令列介面](/manage/install-and-configure-cli/), ，然後使用下列命令 ︰
 
     azure site domain add customdomain yoursitename
 
-例如，下列會加入自訂網域名稱的 **www.contoso.com** 至 **contoso.azurewebsite.net** 網站:
+例如，下列會加入自訂網域名稱的 **www.contoso.com** 至 **contoso.azurewebsite.net** 網站 ︰
 
     azure site domain add www.contoso.com contoso
 
@@ -207,7 +207,7 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 
     2. 在提供的欄位中，輸入雲端服務的 IP 位址。 這樣會將 A 記錄中使用的網域項目與雲端服務部署的 IP 位址產生關聯。
 
-        例如，下列 A 記錄會將從所有流量都轉送 **contoso.com** 至 **137.135.70.239**, ，我們已部署的應用程式的 IP 位址:
+        例如，下列 A 記錄會將從所有流量都轉送 **contoso.com** 至 **137.135.70.239**, ，我們已部署的應用程式的 IP 位址 ︰
 
         <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
         <tr>
@@ -247,11 +247,11 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 
 **使用 Azure 命令列介面 (Azure CLI) 新增網域名稱**
 
-安裝和設定 [Azure CLI](/manage/install-and-configure-cli/), ，然後使用下列命令:
+安裝和設定 [Azure CLI](/manage/install-and-configure-cli/), ，然後使用下列命令 ︰
 
     azure site domain add customdomain yoursitename
 
-例如，下列會加入自訂網域名稱的 **contoso.com** 至 **contoso.azurewebsite.net** 網站:
+例如，下列會加入自訂網域名稱的 **contoso.com** 至 **contoso.azurewebsite.net** 網站 ︰
 
     azure site domain add contoso.com contoso
 
@@ -318,4 +318,5 @@ A 記錄將網域對應，例如 **contoso.com** 或 **www.contoso.com**, ，*�
 
 [setcname2]: ./media/custom-dns-web-site/dncmntask-cname-6.png
 [setcname3]: ./media/custom-dns-web-site/dncmntask-cname-7.png
+
 

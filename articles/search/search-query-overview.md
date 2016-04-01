@@ -29,3 +29,4 @@
 
 您可以使用 .NET SDK 或 REST API 來撰寫可供執行查詢的方法。 初步測試或探索時，您可以使用 Fiddler 或 Chrome Postman 等工具將查詢傳送至您的服務。
 
+

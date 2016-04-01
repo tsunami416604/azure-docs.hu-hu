@@ -186,3 +186,4 @@
 - 介紹如何使用 Azure CLI 部署資源時，請參閱 [適用於 Mac、 Linux 和 Windows 搭配 Azure 資源管理使用 Azure CLI](./xplat-cli-azure-resource-manager.md)。
 - 如需使用入口網站的簡介，請參閱 [使用 Azure 入口網站來管理您的 Azure 資源](./resource-group-portal.md)  
 
+

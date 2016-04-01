@@ -41,6 +41,7 @@
 
 [從 Visual Studio 發佈至 Azure 雲端服務](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-[如何: 下載和匯入發佈設定及訂閱資訊](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
+[如何 ︰ 下載和匯入發佈設定及訂閱資訊](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
+
 
 

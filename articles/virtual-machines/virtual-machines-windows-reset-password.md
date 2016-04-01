@@ -26,12 +26,12 @@
 
 ## Azure 入口網站
 
-若要重設遠端桌面服務中的 [Azure 入口網站](https://portal.azure.com), ，按一下 [ **全部瀏覽** > **虛擬機器 (傳統)** > *您的 Windows 虛擬機器* > **重設遠端存取**。 下列頁面隨即出現。
+若要重設遠端桌面服務中的 [Azure 入口網站](https://portal.azure.com), ，按一下 [ **全部瀏覽** > **虛擬機器 （傳統）** > *您的 Windows 虛擬機器* > **重設遠端存取**。 下列頁面隨即出現。
 
 
 ![](./media/virtual-machines-windows-reset-password/Portal-RDP-Reset-Windows.png)
 
-若要重設的名稱和密碼的本機系統管理員帳戶，在 [Azure 入口網站](https://portal.azure.com), ，按一下 **全部瀏覽** > **虛擬機器 (傳統)** > *您的 Windows 虛擬機器* > **所有設定** > **密碼重設**。 下列頁面隨即出現。
+若要重設的名稱和密碼的本機系統管理員帳戶，在 [Azure 入口網站](https://portal.azure.com), ，按一下 **全部瀏覽** > **虛擬機器 （傳統）** > *您的 Windows 虛擬機器* > **所有設定** > **密碼重設**。 下列頁面隨即出現。
 
 ![](./media/virtual-machines-windows-reset-password/Portal-PW-Reset-Windows.png)
 
@@ -99,7 +99,7 @@ VMAccess 延伸項目會在虛擬機器上執行這兩個命令：
 如果這樣仍未解決您的遠端桌面存取問題，執行 [Azure IaaS (Windows) 診斷封裝](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)。
 
 1.  在診斷封裝中，按一下 [ **Microsoft Azure IaaS (Windows) 診斷封裝** 建立新的診斷工作階段。
-2.  在 **您遇到您的 Azure VM 的下列問題?** 頁面上，選取 **RDP 連線至 Azure VM (需要重新開機)** 問題。
+2.  在 **您遇到您的 Azure VM 的下列問題？** 頁面上，選取 **RDP 連線至 Azure VM （需要重新開機）** 問題。
 
 如需詳細資訊，請參閱 [Microsoft Azure IaaS (Windows) 診斷封裝](http://support.microsoft.com/kb/2976864) 知識庫文件。
 
@@ -113,4 +113,5 @@ VMAccess 延伸項目會在虛擬機器上執行這兩個命令：
 [透過 RDP 或 SSH 連接到 Azure 虛擬機器](http://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [疑難排解以 Windows 為基礎之 Azure 虛擬機器的遠端桌面連線](virtual-machines-troubleshoot-remote-desktop-connections.md)
+
 

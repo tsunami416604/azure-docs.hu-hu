@@ -97,7 +97,7 @@
 
     ![安全性](./media/active-directory-saas-freshservice-tutorial/IC790815.png "Security")
 
-8.  在 **安全性** 區段中，執行下列步驟:
+8.  在 **安全性** 區段中，執行下列步驟 ︰
 
     ![單一登入](./media/active-directory-saas-freshservice-tutorial/IC790816.png "Single Sign On")
 
@@ -133,7 +133,7 @@ FreshService 需以手動的方式佈建。
 
     ![新要求者](./media/active-directory-saas-freshservice-tutorial/IC790819.png "New Requesters")
 
-5.  在 **新要求者** 區段中，執行下列步驟:
+5.  在 **新要求者** 區段中，執行下列步驟 ︰
 
     ![新要求者](./media/active-directory-saas-freshservice-tutorial/IC790820.png "New Requester")
 
@@ -161,3 +161,4 @@ FreshService 需以手動的方式佈建。
     ![是](./media/active-directory-saas-freshservice-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

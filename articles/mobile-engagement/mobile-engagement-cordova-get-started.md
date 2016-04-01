@@ -21,8 +21,8 @@
 > [AZURE.SELECTOR]
 - [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
-- [iOS |Obj C](mobile-engagement-ios-get-started.md)
-- [iOS |Swift](mobile-engagement-ios-swift-get-started.md)
+- [iOS | Obj C](mobile-engagement-ios-get-started.md)
+- [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
 - [Android](mobile-engagement-android-get-started.md)
 - [Cordova](mobile-engagement-cordova-get-started.md)
 
@@ -35,18 +35,18 @@
 本教學課程需要下列各項：
 
 + XCode，您可以從您的 Mac App Store 安裝 (適用於部署到 iOS)
-+ [Android SDK 和模擬器](http://developer.android.com/sdk/installing/index.html) (適用於部署到 Android)
++ [Android SDK 和模擬器](http://developer.android.com/sdk/installing/index.html) （適用於部署到 Android）
 + 推播通知憑證 (.p12)，您可以在 Apple Dev Center for APNS 取得
 + 您可以從您的 Google Developer Console for GCM 取得的 GCM 專案編號
 + [Mobile Engagement Cordova 外掛程式](https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-engagement)
 
 > [AZURE.NOTE] 您可以找到原始程式碼和 ReadMe for Cordova 外掛程式 [Github](https://github.com/Azure/azure-mobile-engagement-cordova)
 
-##<a id="setup-azme"></a>為您的 Cordova 應用程式設定 Mobile Engagement
+##<a id="setup-azme"></a>為您的 Cordova App 設定 Mobile Engagement
 
 [AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
 
-##<a id="connecting-app"></a>將您的應用程式連線至 Mobile Engagement 後端
+##<a id="connecting-app"></a>將您的應用程式連接至 Mobile Engagement 後端
 
 本教學課程將說明「基本整合」，這是收集資料及傳送推播通知時必要的最低設定。 
 
@@ -59,12 +59,12 @@
         $ cordova create azme-cordova com.mycompany.myapp
         $ cd azme-cordova
 
-2. 執行下列命令來設定您的專案進行 **iOS** 並在 iOS 模擬器中執行它:
+2. 執行下列命令來設定您的專案進行 **iOS** 並在 iOS 模擬器中執行它 ︰
 
         $ cordova platform add ios 
         $ cordova run ios
 
-3. 執行下列命令來設定您的專案進行 **Android** ，並在 Android 模擬器中執行它:
+3. 執行下列命令來設定您的專案進行 **Android** ，並在 Android 模擬器中執行它 ︰
 
         $ cordova platform add android
         $ cordova run android
@@ -86,9 +86,9 @@
             --variable AZME_REDIRECT_URL=... (URL scheme which triggers the app for deep linking)
             --variable AZME_ENABLE_LOG=true|false
 
-*Android 到達圖示* : 必須是不含任何擴充功能，也可繪製的前置詞的資源名稱 (例如: mynotificationicon)，和圖示檔案必須複製到您的 android 專案 (平台/android/res/可繪製)
+*Android 到達圖示* ︰ 必須是不含任何擴充功能，也可繪製的前置詞的資源名稱 (例如 ︰ mynotificationicon)，和圖示檔案必須複製到您的 android 專案 （平台/android/res/可繪製）
 
-*iOS 到達圖示*  : 必須是其副檔名之資源的名稱 (例如: mynotificationicon.png)，和圖示檔案必須新增到您的 iOS 專案，使用 XCode (使用 [新增檔案] 功能表)
+*iOS 到達圖示*  ︰ 必須是其副檔名之資源的名稱 (例如 ︰ mynotificationicon.png)，和圖示檔案必須新增到您的 iOS 專案，使用 XCode （使用 [新增檔案] 功能表）
 
 ##<a id="monitor"></a>啟用即時監視
 
@@ -135,11 +135,11 @@ Mobile Engagement 可讓您使用「推播通知」和「應用程式內傳訊�
 
 若要讓 Mobile Engagement 以您的名義傳送推播通知，您需要授與它對您的 Apple iOS 憑證或 GCM Server API 金鑰的存取權。 
     
-1. 瀏覽至您的 Mobile Engagement 入口網站。 確定您已位於我們用於此專案，然後按一下 [應用程式 **Engage** 底部的按鈕:
+1. 瀏覽至您的 Mobile Engagement 入口網站。 確定您已位於我們用於此專案，然後按一下 [應用程式 **Engage** 底部的按鈕 ︰
     
     ![][1]
     
-2. 您將登陸在 Engagement 入口網站的 [設定] 頁面中。 從該處按一下 **原生推送** 區段:
+2. 您將登陸在 Engagement 入口網站的 [設定] 頁面中。 從該處按一下 **原生推送** 區段 ︰
     
     ![][2]
 
@@ -151,7 +151,7 @@ Mobile Engagement 可讓您使用「推播通知」和「應用程式內傳訊�
     
     ![][3]
 
-    **[] Android**
+    **[Android]**
 
     a. 按一下 [編輯] 圖示的前面 **API 金鑰** GCM 設定] 區段中，這會顯示快顯視窗中，貼上 GCM Server 金鑰，再按一下 **確定**。 
         
@@ -159,7 +159,7 @@ Mobile Engagement 可讓您使用「推播通知」和「應用程式內傳訊�
 
 ###在 Cordova 應用程式中啟用推播通知
 
-編輯 **www/js/index.js** 加入至 Mobile Engagement 以要求推播通知，並宣告處理常式的呼叫:
+編輯 **www/js/index.js** 加入至 Mobile Engagement 以要求推播通知，並宣告處理常式的呼叫 ︰
 
      onDeviceReady: function() {
             app.receivedEvent('deviceready');
@@ -178,13 +178,13 @@ Mobile Engagement 可讓您使用「推播通知」和「應用程式內傳訊�
 
 3. 您會在您的裝置上看到標準 iOS 快顯視窗，上面顯示應用程式要求傳送通知的權限。 授與權限。 
 
-**[] Android**
+**[Android]**
 
 您只能使用模擬器執行 Android 應用程式，因為 GCM 通知只在 Android 模擬器上受到支援。 
 
     cordova run android
 
-##<a id="send"></a>將通知傳送至您的應用程式
+##<a id="send"></a>傳送通知至應用程式
 
 現在，我們將建立簡單的推播通知行銷活動，它會傳送推播到裝置上執行中的應用程式：
 
@@ -228,7 +228,7 @@ Mobile Engagement 可讓您使用「推播通知」和「應用程式內傳訊�
 9. 您現在應該會在裝置或模擬器上看到推播通知，做為此行銷活動的一部分。 
 
 ##<a id="next-steps"></a>後續步驟
-[所有的方法可用於 Cordova Mobile Engagement SDK 的概觀](https://github.com/Azure/azure-mobile-engagement-cordova)
+[可用於 Cordova Mobile Engagement SDK 之所有方法的概觀](https://github.com/Azure/azure-mobile-engagement-cordova)
 
 <!-- URLs. -->
 [Mobile Engagement iOS SDK]: http://aka.ms/qk2rnj
@@ -245,5 +245,6 @@ Mobile Engagement 可讓您使用「推播通知」和「應用程式內傳訊�
 
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
+
 
 

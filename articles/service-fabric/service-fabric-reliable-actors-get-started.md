@@ -37,17 +37,17 @@
 安裝 Visual Studio 專用的 Service Fabric 工具後，您可以建立新的專案類型。 新專案類型位在 [新專案] 對話方塊的 [雲端] 類別下
 
 
-![Service Fabric tools for VS-新增專案][] 1
+![適用於 VS 的 Service Fabric 工具 - 新專案][1]
 
 在下一個對話方塊中，您可選擇您要建立的專案類型。
 
-![Service Fabric 專案範本][] 5
+![Service Fabric 專案範本][5]
 
 讓我們為 HelloWorld 專案使用 Service Fabric 動作項目服務。
 
 建立專案之後，您應該會看到下列結構：
 
-![Service Fabric 專案結構][] 2
+![Service Fabric 專案結構][2]
 
 ## 可靠動作項目基本建置組塊
 
@@ -143,7 +143,7 @@ fabricRuntime.RegisterActor<MyActor>();
 Visual Studio 專用的 Service Fabric 工具支援在本機機器上偵錯。 您可以點擊 F5 開始偵錯工作階段。 Visual Studio 會在本機 Service Fabric 叢集上 (視需要) 建置封裝與部署應用程式，並附加偵錯工具。 會有與偵錯 ASP.NET 應用程式類似的經驗。
 在部署的過程中，您可在 [輸出視窗] 中查看進度
 
-![Service Fabric 偵錯輸出視窗][] 3
+![Service Fabric 偵錯輸出視窗][3]
 
 
 ## 後續步驟
@@ -159,4 +159,5 @@ Visual Studio 專用的 Service Fabric 工具支援在本機機器上偵錯。 �
 [3]: ./media/service-fabric-reliable-actors-get-started/debugging-output.PNG
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
+
 

@@ -268,3 +268,4 @@ ContactsList.Angular.AAD 專案中的程式碼結構與較簡單的 ContactsList
 
 在本教學課程中，您使用 App Service 的驗證和授權功能來限制 API 應用程式存取，讓只有經過驗證的使用者才可以呼叫它。 數列中的下一個教學課程中，您將學習如何 [限制存取服務-案例的 API 應用程式](app-service-api-dotnet-service-principal-auth.md)。
 
+

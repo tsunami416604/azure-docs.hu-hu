@@ -50,7 +50,7 @@ A 記錄可用來將名稱對應到其 IP 位址。 在下列範例中，我們�
 
 ## 新增自訂網域的 CNAME 記錄
 
-假設您的網域已受管理 Azure DNS (請參閱 [DNS 網域委派](../dns-domain-delegation))，您可以使用下列範例，建立 contoso.azurewebsites.net 的 CNAME 記錄:
+假設您的網域已受管理 Azure DNS (請參閱 [DNS 網域委派](../dns-domain-delegation))，您可以使用下列範例，建立 contoso.azurewebsites.net 的 CNAME 記錄 ︰
 
 ### 步驟 1
 
@@ -146,7 +146,7 @@ A 記錄可用來將名稱對應到其 IP 位址。 在下列範例中，我們�
 
 ### 步驟 3
 
-使用此組 AzureRMDnsRecordSet 指令程式將變更認可。 下列命令所示:
+使用此組 AzureRMDnsRecordSet 指令程式將變更認可。 下列命令所示 ︰
 
     PS C:\>Set-AzureRMDnsRecordSet -RecordSet $rs
 
@@ -164,3 +164,4 @@ A 記錄可用來將名稱對應到其 IP 位址。 在下列範例中，我們�
 
 
  
+

@@ -23,7 +23,7 @@
 
 下列路由器組態範例適用於 Azure Public 與 Microsoft 對等互連。 您必須設定 Azure 私人對等互連的 NAT。 檢閱 [ExpressRoute 對等互連](expressroute-circuit-peerings.md) 和 [ExpressRoute NAT 需求](expressroute-nat.md) 如需詳細資訊。
 
-**注意:** 對於連線至網際網路和 ExpressRoute，您必須使用的個別 NAT IP 集區。 在網際網路與 ExpressRoute 中使用相同的 NAT IP 集區，將會導致非對稱路由和連線中斷。
+**注意 ︰** 對於連線至網際網路和 ExpressRoute，您必須使用的個別 NAT IP 集區。 在網際網路與 ExpressRoute 中使用相同的 NAT IP 集區，將會導致非對稱路由和連線中斷。
 
 ## Cisco ASA 防火牆
 
@@ -347,4 +347,5 @@ NAT 命令：
 ## 後續步驟
 
 請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md) 如需詳細資訊。
+
 

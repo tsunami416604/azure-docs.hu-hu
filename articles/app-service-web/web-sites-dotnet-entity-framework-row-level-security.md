@@ -28,7 +28,7 @@
 
 ## 步驟 1：在應用程式中加入「攔截器」類別來設定 SESSION_CONTEXT
 
-我們需要進行一項應用程式變更。 因為所有應用程式使用者使用相同的連接字串 (也就是相同的 SQL 登入) 連線到資料庫，RLS 原則目前無法知道應該篩選哪一個使用者。 這種方法在 Web 應用程式中很常見，因為可讓連接共用更有效率，但這表示我們需要另一種方式來識別資料庫內目前的應用程式使用者。 解決方法是將應用程式設定的索引鍵 / 值組中目前的使用者識別碼 [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806) 它執行查詢之前。 SESSION_CONTEXT 是工作階段範圍的機碼值存放區，RLS 原則會使用其中儲存的 UserId 來識別目前的使用者。 *注意: SESSION_CONTEXT 目前是 Azure SQL Database 的預覽功能。*
+我們需要進行一項應用程式變更。 因為所有應用程式使用者使用相同的連接字串 (也就是相同的 SQL 登入) 連線到資料庫，RLS 原則目前無法知道應該篩選哪一個使用者。 這種方法在 Web 應用程式中很常見，因為可讓連接共用更有效率，但這表示我們需要另一種方式來識別資料庫內目前的應用程式使用者。 解決方法是將應用程式設定的索引鍵 / 值組中目前的使用者識別碼 [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806) 它執行查詢之前。 SESSION_CONTEXT 是工作階段範圍的機碼值存放區，RLS 原則會使用其中儲存的 UserId 來識別目前的使用者。 *注意：SESSION_CONTEXT 目前是 Azure SQL Database 的預覽功能。*
 
 我們將加入 [攔截器](https://msdn.microsoft.com/data/dn469464.aspx), ，在 Entity Framework (EF) 6，以自動在 SESSION_CONTEXT EF 執行每個查詢之前，附加在前面的 T-SQL 陳述式設定目前的使用者識別碼的新功能。
 
@@ -164,7 +164,7 @@ go
 
 ```
 
-此程式碼會執行三個動作。 首先，建立新的結構描述，當作集中管理和限制 RLS 物件存取權的最佳作法。 接著，建立述詞函數，當資料列的 UserId 符合 SESSION_CONTEXT 中的 UserId 時，將傳回 '1'。 最後，建立安全性原則，在 Contacts 資料表上加入此函數作為篩選和封鎖述詞。 篩選述詞可讓查詢只傳回屬於目前使用者的資料列，而封鎖述詞充當保護措施，防止應用程式不慎插入錯誤使用者的資料列。 *注意: 區塊述詞目前的 Azure SQL Database 的預覽功能。*
+此程式碼會執行三個動作。 首先，建立新的結構描述，當作集中管理和限制 RLS 物件存取權的最佳作法。 接著，建立述詞函數，當資料列的 UserId 符合 SESSION_CONTEXT 中的 UserId 時，將傳回 '1'。 最後，建立安全性原則，在 Contacts 資料表上加入此函數作為篩選和封鎖述詞。 篩選述詞可讓查詢只傳回屬於目前使用者的資料列，而封鎖述詞充當保護措施，防止應用程式不慎插入錯誤使用者的資料列。 *注意 ︰ 區塊述詞目前的 Azure SQL Database 的預覽功能。*
 
 現在，執行應用程式，並以 user1@contoso.com 身分登入。 這位使用者現在只會看到我們稍早指派給此 UserId 的連絡人：
 
@@ -179,4 +179,5 @@ go
 本教學課程只是稍微示範一下 RLS 的功能。 比方說，存取邏輯可以更複雜或更精細，而 SESSION_CONTEXT 中也不僅止於只能儲存目前的 UserId 而已。 它也可讓 [整合彈性資料庫工具用戶端程式庫的 RLS](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md) 支援向外擴充資料層中的多租用戶分區。
 
 除了這些可能性，我們也正在努力讓 RLS 更臻完美。 如果您有任何疑問、構想或期望，請留下您的意見。 歡迎提供意見反應！
+
 

@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Cortana 分析程序為何?  | Microsoft Azure" 
+    pageTitle="Cortana 分析程序為何？  | Microsoft Azure" 
     description="Cortana 分析程序 (CAP) 是一種系統化的資料科學方法，可建置運用進分析的智慧型應用程式。" 
     services="machine-learning" 
     documentationCenter="" 
@@ -74,7 +74,7 @@ Cortana 分析程序的分析環境包含數個元件：
 - 驗證資料集 
 - 測試資料集 
 
-使用建立模型 **訓練資料集**。 執行模型，並測量預測錯誤，以選取最佳模型 (與微調的參數) 的組合 **驗證資料集**。 最後 **測試資料集** 用來評估所選的模型上獨立的資料不是用來訓練或驗證模型的效能。  如需程序，請參閱 [如何評估 Azure Machine Learning 中的模型效能](machine-learning-evaluate-model-performance.md)。
+使用建立模型 **訓練資料集**。 執行模型，並測量預測錯誤，以選取最佳模型 （與微調的參數） 的組合 **驗證資料集**。 最後 **測試資料集** 用來評估所選的模型上獨立的資料不是用來訓練或驗證模型的效能。  如需程序，請參閱 [如何評估 Azure Machine Learning 中的模型效能](machine-learning-evaluate-model-performance.md)。
 
 
 ## 5.部署和取用模型 
@@ -87,7 +87,8 @@ Cortana 分析程序的分析環境包含數個元件：
 
 雖然 CAP 並未規定特定類型的 **文件** 成品，最好記錄的資料探索、 模型和評估結果，並將儲存相關的程式碼分析可以逐一查看時所需。 這也可讓您在處理牽涉到類似資料和預測工作的其他應用程式時，能夠重複使用分析工作。
 
-完整的端對端逐步解說會示範的程序中的所有步驟 **特定案例** 也會提供。 請參閱 [作用中的 Cortana 分析程序: 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md) 和 [作用中的 Cortana 分析程序: 使用 HDInsight Hadoop 叢集](machine-learning-data-science-process-hive-walkthrough.md)。
+完整的端對端逐步解說會示範的程序中的所有步驟 **特定案例** 也會提供。 請參閱 [作用中的 Cortana 分析程序 ︰ 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md) 和 [作用中的 Cortana 分析程序 ︰ 使用 HDInsight Hadoop 叢集](machine-learning-data-science-process-hive-walkthrough.md)。
 
  
+
 

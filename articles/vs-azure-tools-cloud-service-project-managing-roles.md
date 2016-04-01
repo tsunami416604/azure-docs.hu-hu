@@ -58,3 +58,4 @@
 
 深入了解如何設定 Visual Studio 中的角色，藉由讀取 [設定 Azure 雲端服務與 Visual Studio 的角色](vs-azure-tools-configure-roles-for-cloud-service.md)。
 
+

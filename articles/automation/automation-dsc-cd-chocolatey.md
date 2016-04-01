@@ -41,7 +41,7 @@ Azure 自動化是 Microsoft Azure 中的受管理服務，可讓您使用 Runbo
 
 DSC 資源是具有特定功能的程式碼模組，例如管理網路、Active Directory 或 SQL Server。  Chocolatey DSC 資源知道如何存取 NuGet 伺服器 (還有其他)、下載封裝、安裝封裝...等等。  有許多其他 DSC 資源在 [PowerShell 組件庫](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)。  這些模組安裝到您的 Azure 自動化 DSC 提取伺服器 (由您安裝)，供您的組態使用。
 
-ARM 範本以宣告方式產生基礎結構，例如網路、子網路、網路安全性和路由、負載平衡器、NIC、VM...等等。  以下是 [文章](../resource-manager-deployment-model.md) ，比較 ARM 部署模型 (宣告式) 與 Azure 服務管理 (ASM 或傳統) 部署模型 (必要)。  和另一個 [文章](../virtual-machines\virtual-machines-azurerm-versus-azuresm.md) 有關核心資源提供者、 計算、 儲存體和網路。
+ARM 範本以宣告方式產生基礎結構，例如網路、子網路、網路安全性和路由、負載平衡器、NIC、VM...等等。  以下是 [文章](../resource-manager-deployment-model.md) ，比較 ARM 部署模型 （宣告式） 與 Azure 服務管理 （ASM 或傳統） 部署模型 （必要）。  和另一個 [文章](../virtual-machines\virtual-machines-azurerm-versus-azuresm.md) 有關核心資源提供者、 計算、 儲存體和網路。
 
 ARM 範本的一項主要功能是能夠在佈建時將 VM 延伸模組安裝至 VM 中。  VM 延伸模組具有特定功能，例如執行自訂指令碼、安裝防毒軟體或執行 DSC 組態指令碼。  有許多其他類型的 VM 延伸模組。
 
@@ -53,21 +53,21 @@ ARM 範本的一項主要功能是能夠在佈建時將 VM 延伸模組安裝至
 
 想必您已在進行頂端的一些或大部分工作。  建立 nuspec、編譯和儲存在 NuGet 伺服器中很簡單。  您已經在管理 VM。  持續部署的下一步需要設定提取伺服器 (一次)、向它註冊節點 (一次)，然後建立組態並儲存到那裡 (初步)。  接著，當封裝升級並部署至儲存機制時，請重新整理提取伺服器中的 [組態] 和 [節點組態] (視需要重複)。
 
-如果不是從 ARM 範本開始，也沒關係。  有一些 PowerShell Cmdlet 可協助您向提取伺服器註冊 VM，以及完成其餘所有工作。 如需詳細資訊，請參閱這篇文章: [Azure 自動化 DSC 所管理的登入機器](automation-dsc-onboarding.md)
+如果不是從 ARM 範本開始，也沒關係。  有一些 PowerShell Cmdlet 可協助您向提取伺服器註冊 VM，以及完成其餘所有工作。 如需詳細資訊，請參閱這篇文章 ︰ [Azure 自動化 DSC 所管理的登入機器](automation-dsc-onboarding.md)
 
 
 ## 步驟 1：設定提取伺服器和自動化帳戶
 
-在已驗證的 (Add-azureaccount) PowerShell 命令列: (可能需要幾分鐘的時間時提取伺服器的設定)
+在已驗證的 (Add-azureaccount) PowerShell 命令列: （可能需要幾分鐘的時間時提取伺服器的設定）
 
     New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
     New-AzureAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 
 
-您可以將您的自動化帳戶放入任何下列區域 (也稱為位置): 日本東部、 美國東部 2、 西歐、 東南亞、 美國中南部。
+您可以將您的自動化帳戶放入任何下列區域 （也稱為位置） ︰ 日本東部、 美國東部 2、 西歐、 東南亞、 美國中南部。
 
 ## 步驟 2：VM 延伸模組根據 ARM 範本而調整
 
-提供詳細資料 (使用 PowerShell DSC VM 延伸模組) 的 VM 註冊在此 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)。  此步驟將新的 VM 註冊到提取伺服器的 DSC 節點清單中。  這項註冊的一部分會指定要套用至節點的節點組態。  此節點組態尚無須存在於提取伺服器中，因此這個動作可以在步驟 4 中首次執行。  但在步驟 2 中，您必須決定節點名稱和組態名稱。  在此使用範例中，節點名稱是 'isvbox'，組態名稱是 'ISVBoxConfig'。  因此，節點組態名稱 (將在 DeploymentTemplate.json 中指定) 是 'ISVBoxConfig.isvbox'。  
+提供詳細資料 （使用 PowerShell DSC VM 延伸模組） 的 VM 註冊在此 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)。  此步驟將新的 VM 註冊到提取伺服器的 DSC 節點清單中。  這項註冊的一部分會指定要套用至節點的節點組態。  此節點組態尚無須存在於提取伺服器中，因此這個動作可以在步驟 4 中首次執行。  但在步驟 2 中，您必須決定節點名稱和組態名稱。  在此使用範例中，節點名稱是 'isvbox'，組態名稱是 'ISVBoxConfig'。  因此，節點組態名稱 (將在 DeploymentTemplate.json 中指定) 是 'ISVBoxConfig.isvbox'。  
 
 ## 步驟 3：將所需的 DSC 資源加入到提取伺服器
 
@@ -75,7 +75,7 @@ PowerShell 資源庫會自動將 DSC 資源安裝到您的 Azure 自動化帳戶
 
 ![PowerShell 資源庫範例](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
 
-還有手動方法。  適用於 Windows 電腦的 PowerShell 整合模組的資料夾結構，與 Azure 自動化所需的資料夾結構稍有不同。  您需要稍微調整一下。  但並不難，每個資源只需要進行一次 (除非您將來想要升級。)如需有關如何撰寫 PowerShell 整合模組的詳細資訊，請參閱這篇文章: [撰寫 Azure 自動化的整合模組](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+還有手動方法。  適用於 Windows 電腦的 PowerShell 整合模組的資料夾結構，與 Azure 自動化所需的資料夾結構稍有不同。  您需要稍微調整一下。  但並不難，每個資源只需要進行一次 (除非您將來想要升級。)如需有關如何撰寫 PowerShell 整合模組的詳細資訊，請參閱這篇文章 ︰ [撰寫 Azure 自動化的整合模組](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 -   將您需要的模組安裝在工作站，如下所示：
     -   安裝 [Windows Management Framework v5](http://aka.ms/wmf5latest) 
@@ -186,4 +186,5 @@ CChoco DSC 資源在 PowerShell 組件庫的版本並不完全掌握其來源。
 - [Azure 自動化 DSC 概觀](自動化-dsc-overview.md)
 - [Azure 自動化 DSC 指令程式]() https://msdn.microsoft.com/library/mt244122.aspx
 - [登入機器以供 Azure 自動化 DSC 管理](自動化-dsc-onboarding.md)
+
 

@@ -35,7 +35,7 @@ API 撰寫。 涵蓋的案例包括 **插入**, ，**查看**,，
 
 ## 建立 Node.js 應用程式
 
-建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [Create and deploy a Node.js application to an Azure Web Site], ，[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或 [Web Site with WebMatrix]。
+建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [Create and deploy a Node.js application to an Azure Web Site], ，[Node.js 雲端服務][Node.js Cloud Service] （使用 Windows PowerShell） 或 [Web Site with WebMatrix]。
 
 ## 設定您的應用程式以存取儲存體
 
@@ -67,7 +67,7 @@ API 撰寫。 涵蓋的案例包括 **插入**, ，**查看**,，
 ### 匯入封裝
 
 使用記事本或其他文字編輯器，將以下內容新增至您要使用儲存體之應用程式的
-**server.js** 您打算使用儲存體的應用程式檔案:
+**server.js** 您打算使用儲存體的應用程式檔案 ︰
 
     var azure = require('azure-storage');
 
@@ -98,7 +98,7 @@ Azure 模組會讀取環境變數 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 
 ### 篩選器
 
-選用的篩選作業可以套用至使用執行的作業 **QueueService**。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
+選用的篩選作業可以套用至使用執行的作業 **QueueService**。 篩選作業可包含記錄、自動重試等。篩選器是使用簽章實作方法的物件：
 
         function handle (requestOptions, next)
 
@@ -349,3 +349,4 @@ ACL 是使用存取原則陣列來實作，每個原則有相關聯的識別碼�
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
   [Web Site with WebMatrix]: ../web-sites-nodejs-use-webmatrix.md
  
+

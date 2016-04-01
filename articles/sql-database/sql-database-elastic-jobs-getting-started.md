@@ -21,7 +21,7 @@ Azure SQL database 的彈性資料庫工作 (預覽) 可讓您跨越多個資料
 
 本主題會延伸此範例中找到 [開始使用彈性資料庫工具](sql-database-elastic-scale-get-started.md)。 完成時，您將會：了解如何建立和管理工作，該工作管理一組相關資料庫。
 
-## 先決條件
+## 必要條件
 
 下載並執行 [開始使用彈性資料庫工具範例](sql-database-elastic-scale-get-started.md)。
 
@@ -31,13 +31,13 @@ Azure SQL database 的彈性資料庫工作 (預覽) 可讓您跨越多個資料
 
 1. 建置並執行 **開始使用彈性資料庫工具** 範例應用程式。 遵循步驟，直到步驟一節中的 7 [下載及執行範例應用程式](sql-database-elastic-scale-get-started.md#Getting-started-with-elastic-database-tools)。 在步驟 7 結束時，您會看到下列的命令提示字元：
 
-    ![命令提示字元][] 1
+    ![命令提示字元][1]
 
 2.  在命令視窗中，輸入"1"，然後按 **Enter**。 這會建立分區對應管理員，並加入兩個分區到伺服器。 接著，輸入"3"，然後按下 **Enter**; 重複此動作四次。 這會在您的分區中插入範例資料列。
 
-3.   [Azure 入口網站](https://portal.azure.com) v12 伺服器中應該會顯示三個新的資料庫:
+3.   [Azure 入口網站](https://portal.azure.com) v12 伺服器中應該會顯示三個新的資料庫 ︰
 
-    ![Visual Studio 確認][] 2
+    ![Visual Studio 確認][2]
 
     目前，我們將建立自訂資料庫集合，反映分區對應中的所有資料庫。 這可讓我們建立和執行工作，跨分區新增新資料表。
 
@@ -245,7 +245,7 @@ JobTaskExecution 物件包括作業生命週期的屬性和訊息屬性。 如�
 
 * 名稱：預設執行原則
 * 工作逾時：1 週
-* 初始重試間隔: 100 毫秒
+* 初始重試間隔 ︰ 100 毫秒
 * 最大重試間隔：30 分鐘
 * 重試間隔係數：2
 * 嘗試上限：2,147,483,647
@@ -421,7 +421,7 @@ JobTaskExecution 物件包括作業生命週期的屬性和訊息屬性。 如�
 2.  瀏覽至 **資料** 功能區。
 3.  按一下 [ **從其他來源** 按一下 **從 SQL Server**。
 
-    ![從其他來源的 Excel 匯入][] 5
+    ![從其他來源的 Excel 匯入][5]
 4.  在 **資料連線精靈** 輸入伺服器名稱和登入認證。 然後按一下 [ **下一步**。
 5.  在對話方塊中 **選取包含您想要的資料的資料庫**, ，請選取 **ElasticDBQuery** 資料庫。
 6.  選取 **客戶** 清單檢視中的資料表，然後按一下 **下一步**。 然後按一下 [ **完成**。
@@ -447,4 +447,5 @@ JobTaskExecution 物件包括作業生命週期的屬性和訊息屬性。 如�
 [4]: ./media/sql-database-elastic-query-getting-started/details.png
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
+
 

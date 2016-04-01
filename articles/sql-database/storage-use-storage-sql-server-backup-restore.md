@@ -34,13 +34,13 @@
 * 目前對於在 Azure 虛擬機器中執行的 SQL Server 執行個體，可以藉由建立連結的磁碟來備份至 Azure Blob 儲存體服務。 不過，您可以連結到 Azure 虛擬機器以進行備份的磁碟數是有限制的。 超大型執行個體的限制為 16 個磁碟，較小的執行個體則更少。 藉由啟用到 Azure Blob 的直接備份，您可以存取幾乎不受限制的儲存體。
 * 存放在 Azure Blob 的備份檔，可以讓內部部署 SQL Server 或在 Azure 虛擬機器中執行的另一個 SQL Server 隨時隨地輕易存取以進行還原，而不需要資料庫連結/中斷連結或下載並連結 VHD。
 * 成本效益：只需為使用的服務付費。 可以作為具成本效益的異地及備份封存選項。 請參閱 [Azure 定價計算機](http://go.microsoft.com/fwlink/?LinkId=277060 "定價計算機"), ，而 [Azure 定價文章](http://go.microsoft.com/fwlink/?LinkId=277059 "定價文章") 如需詳細資訊。
-* 運用儲存體快照集: 當資料庫檔案儲存在 Azure blob，而且您使用 SQL Server 2016 時，您可以使用 [檔案快照集備份](http://msdn.microsoft.com/library/mt169363.aspx) 來執行幾乎即時的備份和還原非常快速。
+* 運用儲存體快照集 ︰ 當資料庫檔案儲存在 Azure blob，而且您使用 SQL Server 2016 時，您可以使用 [檔案快照集備份](http://msdn.microsoft.com/library/mt169363.aspx) 來執行幾乎即時的備份和還原非常快速。
 
 如需詳細資訊，請參閱 [SQL Server 備份及還原與 Azure Blob 儲存體服務](http://go.microsoft.com/fwlink/?LinkId=271617)。
 
 以下兩節介紹 Azure Blob 儲存體服務，以及在與 Azure Blob 儲存體服務之間備份或還原時使用的 SQL Server 元件。 了解元件及其彼此間的互動，對於在與 Azure Blob 儲存體服務之間備份或還原很重要。
 
-此程序的第一步是建立 Azure 帳戶。 建立儲存體帳戶及執行簡單還原使用 SQL Server 2014 的完整逐步解說，請參閱 [開始使用 Azure 儲存體服務進行 SQL Server 備份及還原](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx)。 建立儲存體帳戶及執行簡單還原使用 SQL Server 2014 的完整逐步解說，請參閱 [教學課程: 使用 Microsoft Azure Blob 儲存體服務與 SQL Server 2016 資料庫](https://msdn.microsoft.com/library/dn466438.aspx)。
+此程序的第一步是建立 Azure 帳戶。 建立儲存體帳戶及執行簡單還原使用 SQL Server 2014 的完整逐步解說，請參閱 [開始使用 Azure 儲存體服務進行 SQL Server 備份及還原](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx)。 建立儲存體帳戶及執行簡單還原使用 SQL Server 2014 的完整逐步解說，請參閱 [教學課程 ︰ 使用 Microsoft Azure Blob 儲存體服務與 SQL Server 2016 資料庫](https://msdn.microsoft.com/library/dn466438.aspx)。
 
 ## Azure Blob 儲存體服務元件
 
@@ -48,7 +48,7 @@
 
 * 容器：容器提供一組 Blob 的分組，且可以存放無限數目的 Blob。 若要將 SQL Server 備份寫入 Azure Blob 服務，您必須至少建立根容器。
 
-* Blob：任何類型和大小的檔案。 Blob 會是可利用下列 URL 格式來定址: `https://<storage account>.blob.core.windows.net/<container>/<blob>`
+* Blob：任何類型和大小的檔案。 Blob 會是可利用下列 URL 格式來定址 ︰ `https://<storage account>.blob.core.windows.net/<container>/<blob>`
 如需分頁 Blob 的詳細資訊，請參閱 [了解區塊和分頁 Blob](http://msdn.microsoft.com/library/azure/ee691964.aspx)
 
 ## SQL Server 元件
@@ -57,8 +57,8 @@
 以下是您會在 BACKUP 命令中指定的 URL 範例：
 **`http[s]://ACCOUNTNAME.Blob.core.windows.net/<CONTAINER>/<FILENAME.bak>`
 
-<b>注意：</b> HTTPS 不是必要的，但建議使用。
-<b>重要事項</b>
+<b>注意：</b>HTTPS 不是必要，但建議使用。
+<b>重要</b>
 如果您選擇複製及上傳備份檔到 Azure Blob 儲存體服務，則必須使用分頁 Blob 類型作為儲存體選項 (如果您計劃使用此檔案進行還原作業的話)。 從區塊 Blob 類型進行 RESTORE 會失敗並發生錯誤。
 
 * 認證：連接到 Azure Blob 儲存體服務進行驗證所需的資訊會儲存為認證。  為了讓 SQL Server 將備份寫入 Azure Blob 或從 Azure Blob 還原，必須建立 SQL Server 認證。 如需詳細資訊，請參閱 [SQL Server 認證](https://msdn.microsoft.com/library/ms189522.aspx)。
@@ -76,4 +76,5 @@
 **最佳作法、疑難排解：**
 
 [備份與還原最佳作法 (Azure Blob 儲存體服務)](http://go.microsoft.com/fwlink/?LinkId=272394)
+
 

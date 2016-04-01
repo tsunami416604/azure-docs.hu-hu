@@ -65,7 +65,7 @@ Microsoft 會維護在叢集中執行的 Fabric 程式碼和組態，而我們�
 
 您可以從入口網站或經由在 servicefabric.cluster 資源上發出 PUT 命令，輕鬆更新主要或次要憑證。
 
-![] CertificateUpgrade[] CertificateUpgrade
+![CertificateUpgrade][CertificateUpgrade]
 
 **請注意** 識別您想要使用的叢集資源的憑證之前，您必須完成下列步驟，否則不會使用新的憑證。
 1) 將新的憑證上傳至金鑰保存庫-參考 [服務網狀架構安全性](service-fabric-cluster-security.md) 指示-從開始在該文件中的步驟 2。
@@ -81,14 +81,14 @@ Microsoft 會維護在叢集中執行的 Fabric 程式碼和組態，而我們�
 
     如果您已使用入口網站部署您的叢集，則負載平衡器將命名為 "loadBalancer-0"、"loadBalancer-1" 等 (每個節點類型有一個負載平衡器)。 因為負載平衡器名稱只有在資源群組 (RG) 中是唯一的，所以最好在指定的 RG 下搜尋名稱。
 
-    ![] AddingProbes[] AddingProbes
+    ![AddingProbes][AddingProbes]
 
 
 2. **將新規則加入至負載平衡器**
 
     使用您在上一個步驟中建立的探查，對相同的負載平衡器加入新的規則。
 
-    ![] AddingLBRules[] AddingLBRules
+    ![AddingLBRules][AddingLBRules]
 
 
 ### 放置屬性
@@ -117,4 +117,5 @@ Microsoft 會維護在叢集中執行的 Fabric 程式碼和組態，而我們�
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade.png
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes.png
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
+
 

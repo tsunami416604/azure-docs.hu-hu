@@ -24,7 +24,7 @@
 
 [AZURE.INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
-**注意:** 如果您需要安裝 Python 或 [Python Azure 封裝][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
+**注意 ︰** 如果您需要安裝 Python 或 [Python Azure 封裝][], ，請參閱 [Python 安裝指南](../python-how-to-install.md)。
 
 ## 建立主題
 
@@ -61,11 +61,11 @@ bus_service.create_topic('mytopic', topic_options)
 
 ## 建立訂用帳戶
 
-也會建立主題訂閱 **ServiceBusService** 物件。 訂用帳戶是具名的，它們能擁有選用的篩選器，以限制傳遞至訂用帳戶之虛擬佇列的訊息集合。
+也會建立主題訂閱 **ServiceBusService** 物件。 訂閱是具名的，它們能擁有選用的篩選器，以限制傳遞至訂閱之虛擬佇列的訊息集合。
 
 > [AZURE.NOTE] 訂閱是持續性，將會持續存在，直到本身或它們的訂閱，會被刪除的主題。
 
-### 使用預設 (MatchAll) 篩選器建立訂用帳戶
+### 使用預設 (MatchAll) 篩選器建立訂閱
 
  **MatchAll** 篩選器是預設篩選器，如果沒有指定篩選時建立新的訂閱。 當 **MatchAll** 篩選器時，發佈至主題的所有訊息都會被都置於訂閱的虛擬佇列。 下列範例會建立名為 'AllMessages' 的訂閱，並使用預設 **MatchAll**
 篩選器。
@@ -110,13 +110,13 @@ bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-現在，當訊息傳送到 `mytopic` 它一定會傳遞到已訂閱 **AllMessages** 主題訂用帳戶，並選擇性地傳遞至已訂閱 **HighMessages** 和 **LowMessages** 主題訂閱的接收者 (視訊息內容而定)。
+現在，當訊息傳送到 `mytopic` 它一定會傳遞到已訂閱 **AllMessages** 主題訂用帳戶，並選擇性地傳遞至已訂閱 **HighMessages** 和 **LowMessages** 主題訂閱的接收者 （視訊息內容而定）。
 
 ## 傳送訊息至主題
 
 若要將訊息傳送至服務匯流排主題，您的應用程式必須使用 **send\_topic\_message** 方法 **ServiceBusService** 物件。
 
-下列範例說明如何將五個測試訊息傳送至 `mytopic`。 請注意， **messagenumber** 的每個訊息的屬性值的變化迴圈反覆運算上 (這可判斷哪些訂閱會接收):
+下列範例說明如何將五個測試訊息傳送至 `mytopic`。 請注意， **messagenumber** 的每個訊息的屬性值的變化迴圈反覆運算上 （這可判斷哪些訂閱會接收） ︰
 
 ```
 for i in range(5):
@@ -128,18 +128,18 @@ for i in range(5):
 
 ## 自訂閱接收訊息
 
-從訂閱接收訊息 **receive\_subscription\_message** 方法 **ServiceBusService** 物件:
+從訂閱接收訊息 **receive\_subscription\_message** 方法 **ServiceBusService** 物件 ︰
 
 ```
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
-從訂閱刪除訊息時讀取時參數 **peek\_lock** 設為 **False**。 您可以讀取 (查看) 並鎖定訊息，方法將從佇列刪除 **peek\_lock** 至 **True**。
+從訂閱刪除訊息時讀取時參數 **peek\_lock** 設為 **False**。 您可以讀取 （查看） 並鎖定訊息，方法將從佇列刪除 **peek\_lock** 至 **True**。
 
 隨著接收作業讀取及刪除訊息之行為是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-如果 **peek\_lock** 參數設為 **True**, ，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 **刪除** 方法 **訊息** 物件。  **刪除** 方法將訊息標示為已取用，並將它從訂閱移除。
+如果 **peek\_lock** 參數設為 **True**, ，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 （或可靠地儲存供未來處理） 之後，完成接收程序的第二個階段 **刪除** 方法 **訊息** 物件。  **刪除** 方法將訊息標示為已取用，並將它從訂閱移除。
 
 ```
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
@@ -182,4 +182,5 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure Queues and Service Bus queues]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas 
+
 

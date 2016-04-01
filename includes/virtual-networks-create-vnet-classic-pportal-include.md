@@ -31,6 +31,7 @@
 
     ![在入口網站中建立 VNet](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure6.png)
 
-10. 按一下 [ **子網路** > **新增**, ，然後輸入 **名稱** ，並指定 **位址範圍 (CIDR 區塊)** 適用於您的子網路，然後按一下 **確定**。 下圖顯示我們目前案例的設定。
+10. 按一下 [ **子網路** > **新增**, ，然後輸入 **名稱** ，並指定 **位址範圍 （CIDR 區塊）** 適用於您的子網路，然後按一下 **確定**。 下圖顯示我們目前案例的設定。
 
     ![在 Preview 入口網站中建立 VNet](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
+

@@ -121,7 +121,7 @@ Azure AD 應用程式 Proxy 的 Kerberos 委派流程會在 Azure AD 在雲端�
 此功能可讓具有不同內部部署與雲端身分識別的許多組織，可從雲端單一登入到內部部署應用程式，而不需要使用者輸入不同的使用者名稱與密碼。 這包括下列組織：
 
 
-- 內部有多個網域 (joe@us.contoso.com、 joe@eu.contoso.com) 定域機組 (joe@contoso.com) 中的單一定義域。
+- 內部有多個網域 （joe@us.contoso.com、 joe@eu.contoso.com） 定域機組 (joe@contoso.com) 中的單一定義域。
 
 
 - 內部有非路由傳送的網域名稱 (joe@contoso.usa)，合法的另一個定域機組中。
@@ -133,15 +133,15 @@ Azure AD 應用程式 Proxy 的 Kerberos 委派流程會在 Azure AD 在雲端�
 - 在內部部署和雲端中使用不同別名。 例如 與 joej@contoso.com joe-johns@contoso.com
 它也有助於不接受電子郵件地址形式位址的應用程式，這對於非 Windows 後端伺服器是很常見的案例。
 ### 設定不同雲端和內部部署身分識別的 SSO
-1. 設定 Azure AD Connect 設定，讓主要的身分識別會是電子郵件地址 (郵件)。 這是在自訂程序中完成 (透過變更同步設定中的 [使用者主體名稱] 欄位)。<br>![](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)
+1. 設定 Azure AD Connect 設定，讓主要的身分識別會是電子郵件地址 (郵件)。 這是藉由變更同步設定中 [使用者主要名稱] 欄位的自訂程序的一部分。<br>![](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)
 注意：這些設定也決定使用者如何登入 Office 365、Windows 10 裝置與其他使用 Azure AD 作為其身分識別存放區的應用程式。
-2. 在您想要修改應用程式的應用程式組態設定，選取 **委派登入識別** 用於:
+2. 在您想要修改應用程式的應用程式組態設定，選取 **委派登入識別** 用於 ︰
 
 
-- 使用者主要名稱: joe@contoso.com
+- 使用者主要名稱 ︰ joe@contoso.com
 
 
-- 替代的使用者主要名稱: joed@contoso.local
+- 替代的使用者主要名稱 ︰ joed@contoso.local
 
 
 - 使用者主體名稱的使用者名稱部分：joe
@@ -171,10 +171,11 @@ SSO 程序中發生錯誤時就會出現在連接器電腦事件記錄檔中所�
 - [使用您自己的網域名稱發行應用程式](active-directory-application-proxy-custom-domains.md)
 - [啟用條件式存取](active-directory-application-proxy-conditional-access.md)
 - [使用宣告感知應用程式](active-directory-application-proxy-claims-aware-apps.md)
-- [使用應用程式 Proxy 疑難排解您遇到的問題](active-directory-application-proxy-troubleshoot.md)
+- [您無法使用應用程式 Proxy 的問題進行疑難排解](active-directory-application-proxy-troubleshoot.md)
 
 ## 深入了解應用程式 Proxy
 - [看看我們在這裡的線上說明](active-directory-application-proxy-enable.md)
 - [查閱應用程式 Proxy 部落格](http://blogs.technet.com/b/applicationproxyblog/)
 - [觀看我們在 Channel 9 上的影片！](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
+
 

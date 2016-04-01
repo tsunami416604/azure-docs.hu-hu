@@ -42,7 +42,7 @@ Azure 搜尋服務是完全受管理的平台即服務 [PaaS](https://en.wikiped
 - 大部分的索引都會從單一資料集載入，由您預先準備來包含僅在搜尋作業的內容中才有用的欄位。 
 - 資料可以由索引子 (僅支援 Azure SQL Database 或 Azure DocumentDB) 自動載入或透過其中一個 Azure 搜尋服務 API 推送至搜尋索引。 當您使用 API 時，您可以從任何資料來源推送資料，只要它是 JSON 格式即可。
 
-在 [Azure App Service](https://tryappservice.azure.com/) 選項時，「 ASP.NET + Azure 搜尋網站 」 範本，提供原始程式碼的 Web 應用程式，可修改在 Visual Studio Team Services (可為一小時工作階段的一部分)。 檢視或變更程式碼不需要個別的開發工具。
+在 [Azure App Service](https://tryappservice.azure.com/) 選項時，「 ASP.NET + Azure 搜尋網站 」 範本，提供原始程式碼的 Web 應用程式，可修改在 Visual Studio Team Services （可為一小時工作階段的一部分）。 檢視或變更程式碼不需要個別的開發工具。
 
 在 C# 中撰寫程式碼使用 [Azure 搜尋服務.NET 用戶端程式庫](https://msdn.microsoft.com/library/dn951165.aspx) 針對索引執行查詢，提供多面向導覽，並顯示計數和搜尋結果網頁中。
 
@@ -84,7 +84,7 @@ Azure 搜尋服務是完全受管理的平台即服務 [PaaS](https://en.wikiped
 ## 如何開始
 
 由於搜尋索引可完全運作，良好的第一個步驟就是嘗試幾個查詢。 Azure 
-搜尋服務支援所有標準搜尋運算子 (+、-、 |)，常值的相符項目、 萬用字元 (*) 和優先順序運算子加上引號。 您可以檢閱運算子完整清單的查詢語法參考。
+搜尋服務支援所有標準搜尋運算子 (+、-、 |)，常值的相符項目、 萬用字元 （*） 和優先順序運算子加上引號。 您可以檢閱運算子完整清單的查詢語法參考。
 
 - 加入星號 (`*`) 來開始萬用字元搜尋。 這會告訴您在索引中找到多少文件：2,262,578。
 - 接下來，輸入 "Yellowstone"，然後加入 "+ center"、"+building" 及 "-ND"，逐漸將搜尋結果範圍縮小成只有 Yellowstone 遊客中心，排除那些在 North Dakota 的結果：`Yellowstone +center +building -ND`。  
@@ -135,7 +135,7 @@ Azure 搜尋服務具有可設定 **searchMode** 屬性可讓您控制搜尋運�
 
 一般來說，如果您想要搜尋可用的資料子集，您會在匯入資料時，在資料來源設定篩選器。 基於學習的目的，使用唯讀資料時，我們會在應用程式中設定篩選器，只傳回包含華盛頓州的文件。
 
-1. 開啟 Search.cshtml，尋找 **SearchParameters** 程式碼區塊 (從第 36 行開始)，並加入註解行以及篩選器。
+1. 開啟 Search.cshtml，尋找 **SearchParameters** 程式碼區塊 （從第 36 行開始），並加入註解行以及篩選器。
 
         var sp = new SearchParameters
         {
@@ -528,3 +528,4 @@ Azure 搜尋服務具有可設定 **searchMode** 屬性可讓您控制搜尋運�
 [12]: ./media/search-tryappservice/AzSearch-TryAppService-searchmodeWAState.png
 [13]: ./media/search-tryappservice/AzSearch-TryAppService-Schema.png
 [14]: ./media/search-tryappservice/AzSearch-TryAppService-HitHighlight.png
+

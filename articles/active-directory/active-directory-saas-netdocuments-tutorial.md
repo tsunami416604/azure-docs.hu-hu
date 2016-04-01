@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   NetDocuments 租用戶
   
-完成本教學課程之後, 您已指派給 NetDocuments 的 Azure AD 使用者將能夠登入位於您 NetDocuments 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 NetDocuments 的 Azure AD 使用者將能夠登入位於您 NetDocuments 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -79,14 +79,14 @@
 
     ![設定單一登入](./media/active-directory-saas-netdocuments-tutorial/IC795044.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式 URL** 頁面上，執行下列步驟:
+3.  在 **設定應用程式 URL** 頁面上，執行下列步驟 ︰
 
     ![設定應用程式 URL](./media/active-directory-saas-netdocuments-tutorial/IC795045.png "Configure App URL")
 
     1.  在 **登入 URL** 文字方塊中，輸入您的 URL，讓使用者中用來登入 NetDocuments 應用程式 (例如: 「*https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=CA-JI1BG3H1*」)。
     2.  在 **NetDocuments 回覆 URL** 文字方塊中，輸入您所輸入的相同值 **登入 URL** 文字方塊。  
 
-        >[AZURE.NOTE]您可以找到正確的值的結尾 **同盟識別身分** 對話方塊 (請參閱步驟 9 的螢幕擷取畫面)。
+        >[AZURE.NOTE]您可以找到正確的值的結尾 **同盟識別身分** 對話方塊 （請參閱步驟 9 的螢幕擷取畫面）。
 
     3.  按一下 [ **下一步**
 
@@ -106,7 +106,7 @@
 
     ![設定進階驗證選項](./media/active-directory-saas-netdocuments-tutorial/IC795048.png "Configure advanced authentication options")
 
-9.  在 **同盟識別身分** ] 對話方塊中，執行下列步驟:
+9.  在 **同盟識別身分** ] 對話方塊中，執行下列步驟 ︰
 
     ![同盟識別身分](./media/active-directory-saas-netdocuments-tutorial/IC795049.png "Federated Identitty")
 
@@ -159,3 +159,4 @@
     ![是](./media/active-directory-saas-netdocuments-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

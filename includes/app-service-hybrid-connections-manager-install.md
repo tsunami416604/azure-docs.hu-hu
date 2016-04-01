@@ -24,3 +24,4 @@
     在 **混合式連線** 刀鋒視窗中， **狀態** 欄此時會顯示 **連線**。 
     
     ![Connected Status](./media/app-service-hybrid-connections-manager-install/D10HCStatusConnected.png)
+

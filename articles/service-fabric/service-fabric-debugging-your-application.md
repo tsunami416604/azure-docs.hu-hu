@@ -24,7 +24,7 @@
 
 2. 按下 **F5** ，或按一下 **偵錯** > **開始偵錯**
 
-    ![開始偵錯應用程式][開始偵錯]
+    ![開始偵錯應用程式][startdebugging]
 
 3. 您的程式碼和逐步執行應用程式中設定中斷點，在命令上的 [ **偵錯** 功能表。
 
@@ -32,11 +32,11 @@
 
 4.  **診斷事件** 視窗將自動開啟以即時檢視診斷事件。
 
-    ![使用即時檢視診斷事件][] diagnosticevents
+    ![即時檢視診斷事件][diagnosticevents]
 
 5. 您也可以開啟 **診斷事件** 在伺服器總管] 視窗。  在 **Azure**, ，以滑鼠右鍵按一下 **Service Fabric 叢集** > **檢視診斷事件...**
 
-    ![開啟 [診斷事件] 視窗][] viewdiagnosticevents
+    ![開啟診斷事件視窗][viewdiagnosticevents]
 
 6. 您可以查看診斷事件中自動產生 **ServiceEventSource.cs** 並從應用程式程式碼進行呼叫。
 
@@ -46,11 +46,11 @@
 
 7.  **診斷事件** ] 視窗中支援篩選、 暫停和檢查即時事件。  篩選是事件訊息的簡易字串搜尋，包括其內容。
 
-    ![篩選、 暫停和繼續執行，或檢查即時事件][] diagnosticeventsactions
+    ![篩選、暫停和繼續，或即時檢查事件][diagnosticeventsactions]
 
 8. 偵錯服務類似於偵錯任何其他應用程式。 中斷點通常可以透過 Visual Studio 進行設定以輕鬆偵錯。 即使可靠集合會在多個節點上進行複寫，其仍會實作 IEnumerable，這表示您可以在 Visual Studio 中使用 [結果檢視]，同時進行偵錯以查看已在內部儲存的內容。 您可以在程式碼中的任何位置輕鬆設定中斷點。
 
-    ![開始偵錯應用程式][中斷點]
+    ![開始偵錯應用程式][breakpoint]
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
@@ -64,4 +64,5 @@
 [viewdiagnosticevents]: ./media/service-fabric-debugging-your-application/viewdiagnosticevents.png
 [diagnosticeventsactions]: ./media/service-fabric-debugging-your-application/diagnosticeventsactions.png
 [breakpoint]: ./media/service-fabric-debugging-your-application/breakpoint.png
+
 

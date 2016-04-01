@@ -30,7 +30,7 @@
 
 ##必要條件
 
-本主題是根據您在建立應用程式 [開始使用通知中樞] [入門]。 在開始本教學課程之前, 您必須已完成 [開始使用通知中樞] [入門]。
+本主題會在您建立的應用程式以 [開始使用通知中樞][get-started]。 在開始本教學課程之前, 您必須已完成 [開始使用通知中樞][get-started]。
 
 ##在應用程式中新增類別選項
 
@@ -130,7 +130,7 @@
 
 8. 在 **didFinishLaunchingWithOptions** 方法，在 AppDelegate.m 中，加入程式碼來初始化 notifications 執行個體的開頭的方法。  
  
-    `HUBNAME` 和 `HUBLISTENACCESS` (定義於 hubinfo.h) 應該已經 `<hub name>` 和 `<connection string with listen access>` 的通知中心名稱和連接字串預留位置取代 *DefaultListenSharedAccessSignature* 您稍早取得
+    `HUBNAME` 和 `HUBLISTENACCESS` （定義於 hubinfo.h） 應該已經 `<hub name>` 和 `<connection string with listen access>` 的通知中心名稱和連接字串預留位置取代 *DefaultListenSharedAccessSignature* 您稍早取得
 
         self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
 
@@ -156,7 +156,7 @@
 
     請注意，此時應該會在沒有其他程式碼 **didRegisterForRemoteNotificationsWithDeviceToken** 方法。
 
-10. 下列方法應該已經出現在 AppDelegate.m 中完成 [開始使用通知中樞] [入門] 教學課程。  否則，請予以新增。
+10. 下列方法應該已經出現在 AppDelegate.m 中完成 [開始使用通知中樞][get-started] 教學課程。  否則，請予以新增。
 
         -(void)MessageBox:(NSString *)title message:(NSString *)messageText
         {
@@ -223,14 +223,14 @@
 
 ##(選擇性) 傳送加註標記的通知
 
-如果您無法存取 Visual Studio，可以跳到下一節，並從應用程式本身傳送通知。 您也可以從 [Azure 傳統入口網站] 來傳送適當的範本通知使用通知中心的 [偵錯] 索引標籤。 
+如果您無法存取 Visual Studio，可以跳到下一節，並從應用程式本身傳送通知。 您也可以傳送的適當範本通知 [Azure Classic Portal] 使用通知中心的 [偵錯] 索引標籤。 
 
 [AZURE.INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 
 ##(選擇性) 從裝置傳送通知
 
-通知通常會由後端服務傳送，但您可直接從應用程式傳送即時新聞通知。 若要這樣做，我們會更新 `SendNotificationRESTAPI` 中所定義的方法 [開始使用通知中樞] [入門] 教學課程。
+通知通常會由後端服務傳送，但您可直接從應用程式傳送即時新聞通知。 若要這樣做，我們會更新 `SendNotificationRESTAPI` 中所定義的方法 [開始使用通知中樞][get-started] 教學課程。
 
 
 1. 在 ViewController.m 更新 `SendNotificationRESTAPI` 方法，遵循，使其可接受參數，類別標記，並會傳送適當 [範本](notification-hubs-templates.md) 通知。
@@ -368,4 +368,5 @@
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 [Azure Classic Portal]: https://manage.windowsazure.com
+
 

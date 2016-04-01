@@ -36,7 +36,7 @@
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
-##<a name="register"></a>註冊您的應用程式以驗證與設定行動服務
+##<a name="register"></a>註冊應用程式進行驗證，並設定行動服務
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
@@ -46,9 +46,9 @@
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../../includes/mobile-services-restrict-permissions-dotnet-backend.md)]
 
-3. 開啟您完成教學課程時所建立的專案 [開始使用行動服務]。
+3. 開啟您完成教學課程時所建立的專案 [Get started with Mobile Services]。
 
-4. 從 **執行** ] 功能表上，然後按一下 [ **執行應用程式** 來啟動應用程式; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 (未經授權)。
+4. 從 **執行** ] 功能表上，然後按一下 [ **執行應用程式** 來啟動應用程式; 確認應用程式啟動後，會引發未處理的例外狀況，狀態碼 401 （未經授權）。
 
      這是因為應用程式會嘗試驗證的使用者身分存取行動服務，但 _TodoItem_ 資料表現在需要驗證。
 
@@ -66,9 +66,9 @@
 
 [AZURE.INCLUDE [mobile-android-authenticate-app-refresh-token](../../includes/mobile-android-authenticate-app-refresh-token.md)]
 
-##<a name="next-steps"></a>後續步驟
+##<a name="next-steps"></a>接續步驟
 
-在下一個 [行動服務使用者的伺服器端授權] [以指令碼授權使用者] 教學課程中，您將使用由行動服務根據經驗證的使用者而提供的使用者識別碼值，來篩選行動服務傳回的資料。
+在下一個教學課程中， [的行動服務使用者服務端授權][Authorize users with scripts], ，您將行動服務根據經驗證的使用者所提供的使用者識別碼值，並用來篩選行動服務所傳回的資料。
 
 
 <!-- Anchors. -->
@@ -87,4 +87,5 @@
 
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
+
 

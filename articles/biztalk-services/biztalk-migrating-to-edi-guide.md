@@ -23,7 +23,7 @@
 
 審稿者：Karthik Bharthy
 
-寫入使用: Microsoft Azure BizTalk 服務 – 2014 年 2 月發行。
+寫入使用 ︰ Microsoft Azure BizTalk 服務 – 2014 年 2 月發行。
 
 ## 簡介
 
@@ -96,7 +96,7 @@ BizTalk Server 中的對應在 BizTalk 服務中稱為「轉換」。 從 BizTal
 
 ### 新的轉換作業
 
-雖然可用的轉換對應作業清單似乎與 BizTalk Server 對應程式相當不同，但 BizTalk 服務轉換有新方法來完成相同工作。 例如，BizTalk 服務轉換有 **清單作業** 可用。 這不是在 BizTalk 對應程式中使用。   **清單作業** 可讓您建立及操作 「 清單 」，清單是一組項目 (也稱為 「 資料列 」)，而且其中每個項目可以有多個成員 (也稱為 「 資料行 」)。  您可以排序清單、根據條件選取項目等等。
+雖然可用的轉換對應作業清單似乎與 BizTalk Server 對應程式相當不同，但 BizTalk 服務轉換有新方法來完成相同工作。 例如，BizTalk 服務轉換有 **清單作業** 可用。 這不是在 BizTalk 對應程式中使用。   **清單作業** 可讓您建立及操作 「 清單 」，清單是一組項目 （也稱為 「 資料列 」），而且其中每個項目可以有多個成員 （也稱為 「 資料行 」）。  您可以排序清單、根據條件選取項目等等。
 
 BizTalk 服務轉換中的新功能的另一個範例是 **迴圈作業**。  很難在 BizTalk Server 對應程式中建立巢狀迴圈。  因此，會為 BizTalk 服務轉換加入迴圈對應作業。
 
@@ -141,3 +141,4 @@ Microsoft Azure BizTalk 服務會定期更新以新增更多特性和功能。 �
 [使用 Azure 開發企業應用程式](https://msdn.microsoft.com/library/azure/hh674490.aspx)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png
+

@@ -93,3 +93,4 @@ Azure Redis 快取可讓您存取 Microsoft 所管理的專用 Redis 快取。 �
 [3]: ./media/cache-java-get-started/cache03.png
 [4]: ./media/cache-java-get-started/cache04.png
 
+

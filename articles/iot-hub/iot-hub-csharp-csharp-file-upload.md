@@ -33,7 +33,7 @@ Azure IoT 中心是一項完全受管理的服務，可讓數百萬個 IoT 裝�
 * **SimulatedDevice**, ，應用程式中建立的修改的版本 [Send Cloud-to-Device messages with IoT Hub], ，這會連結至您的 IoT 中心收到定域機組對裝置訊息，其中包含 Azure blob 的 Uri。 針對每個接收到的雲端到裝置訊息，它會觸發將檔案上傳至指定的 Blob URI。
 * **SendCloudToDevice**, ，哪些組建的 Azure blob 的 URI (如所述 [建立並使用與 Blob 服務 SAS](../storage/storage-dotnet-shared-access-signature-part-2.md), 定域機組對裝置訊息中傳送到透過 IoT 中心與模擬裝置，然後接收其傳遞 aknowledgment。
 
-> [AZURE.NOTE] IoT 中心都有支援許多裝置平台和語言 (包括 C、 Java 和 Javascript) 雖然 Azure IoT 裝置 Sdk 的 SDK。 請參閱 [Azure IoT Developer Center] 的逐步指示來連接您的裝置，本教學課程的程式碼，和通常 Azure IoT 中心。 適用於 Java 和 Node 的 Azure IoT 服務 SDK 即將推出。
+> [AZURE.NOTE] IoT 中心都有支援許多裝置平台和語言 （包括 C、 Java 和 Javascript） 雖然 Azure IoT 裝置 Sdk 的 SDK。 請參閱 [Azure IoT Developer Center] 的逐步指示來連接您的裝置，本教學課程的程式碼，和通常 Azure IoT 中心。 適用於 Java 和 Node 的 Azure IoT 服務 SDK 即將推出。
 
 若要完成本教學課程，您需要下列項目：
 
@@ -97,4 +97,5 @@ Azure IoT 中心是一項完全受管理的服務，可讓數百萬個 IoT 裝�
 [Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
+
 

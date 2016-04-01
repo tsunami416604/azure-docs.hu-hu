@@ -102,7 +102,7 @@ Reach SDK 需要 **Android 支援程式庫 (v4)**。
 
     若無此權限，如果您在 Reach 活動管理員中核取了響鈴或震動的選項，Android 會禁止顯示系統通知。
 
--   如果您建置應用程式使用 **ProGuard** 且發生與 Android 支援程式庫或 Engagement jar 相關的錯誤，新增下列幾行，您 `proguard.cfg` 檔案:
+-   如果您建置應用程式使用 **ProGuard** 且發生與 Android 支援程式庫或 Engagement jar 相關的錯誤，新增下列幾行，您 `proguard.cfg` 檔案 ︰
 
             -dontwarn android.**
             -keep class android.support.v4.** { *; }
@@ -113,8 +113,8 @@ Reach SDK 需要 **Android 支援程式庫 (v4)**。
 
 我們在 Android 上支援兩種服務：
 
-  - Google Play 裝置: 使用 [Google Cloud Messaging] 依照 [如何整合 GCM 與 Engagement 指南](mobile-engagement-android-gcm-integrate.md) 指南。
-  - Amazon 裝置: 使用 [Amazon Device Messaging] 依照 [如何整合 ADM 與 Engagement 指南](mobile-engagement-android-adm-integrate.md) 指南。
+  - Google Play 裝置 ︰ 使用 [Google Cloud Messaging] 依照 [如何整合 GCM 與 Engagement 指南](mobile-engagement-android-gcm-integrate.md) 指南。
+  - Amazon 裝置 ︰ 使用 [Amazon Device Messaging] 依照 [如何整合 ADM 與 Engagement 指南](mobile-engagement-android-adm-integrate.md) 指南。
 
 如果您的目標想要同時鎖定 Amazon 和 Google Play 裝置，可以將所有東西放在一個 AndroidManifest.xml/APK 進行開發。 但提交給 Amazon 時，如果他們發現 GCM 程式碼可能會拒絕您的應用程式。
 
@@ -648,3 +648,4 @@ Reach SDK 使用意圖系統來解析特定類別的正確活動，如果解析�
 [Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]:https://developer.amazon.com/sdk/adm.html
  
+

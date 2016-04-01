@@ -95,7 +95,7 @@ Azure BizTalk 服務提供數個版本。 使用本文決定最適合您的案�
 <td>500</td>
 </tr>
 <tr>
-<td><strong>EDI、AS2</strong>
+<td><strong>EDI、 AS2</strong>
 <br/><br/>
 包括 TPM 協議</td>
 <td>未包括</td>
@@ -129,7 +129,7 @@ Azure BizTalk 服務提供數個版本。 使用本文決定最適合您的案�
 <td>25 個連接</td>
 </tr>
 <tr>
-<td align="left"><strong>支援的通訊協定/系統：</strong>
+<td align="left"><strong>支援的通訊協定/系統 ︰</strong>
 <ul>
 <li>HTTP</li>
 <li>HTTPS</li>
@@ -150,7 +150,7 @@ Azure BizTalk 服務提供數個版本。 使用本文決定最適合您的案�
 <tr>
 <td><strong>高可用性</strong>
 <br/><br/>
-針對服務等級協定 (SLA)，請參閱 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk 服務定價</a>.
+針對服務等級協定 (SLA)，請參閱 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk 服務定價</a>。
 </td>
 <td>未包括</td>
 <td>未包括</td>
@@ -216,7 +216,7 @@ BizTalk 服務提供真正的平台即服務 (PaaS) 架構，可在雲端中組�
 - Microsoft 確保了可用性。
 - 您可以根據需求調整，只需透過 Azure 入口網站要求更多或更少容量。
 
-虛擬機器上的 BizTalk 伺服器提供基礎架構即服務 (IaaS) 架構。 建立虛擬機器，並設定它們完全和您的內部部署環境一樣輕易地變更任何程式碼以在雲端中執行現有的應用程式。 使用 IaaS 時，就仍然必須負責設定虛擬機器、 管理虛擬機器 (例如，安裝軟體和修補)，以及架構高可用性的應用程式。
+虛擬機器上的 BizTalk 伺服器提供基礎架構即服務 (IaaS) 架構。 建立虛擬機器，並設定它們完全和您的內部部署環境一樣輕易地變更任何程式碼以在雲端中執行現有的應用程式。 使用 IaaS 時，就仍然必須負責設定虛擬機器、 管理虛擬機器 （例如，安裝軟體和修補），以及架構高可用性的應用程式。
 
 如果您正在查看如何組建新的整合方案，以將您的基礎結構管理努力降至最低，請使用 BizTalk 服務。 如果您正在查看如何快速移轉現有的 BizTalk 方案，或尋找根據需求環境，以開發並測試 BizTalk 伺服器應用程式，請在 Azure 虛擬機器上使用 BizTalk 伺服器。
 
@@ -239,7 +239,7 @@ BizTalk 配接器服務是由 Azure BizTalk 服務使用。 BizTalk 配接器服
 
 免費版本無法移轉或「調高」到另一層，而且無法備份及還原到另一層。 如果您需要另一層，請使用新的服務層建立新的 BizTalk 服務。 必須在新的 BizTalk 服務中重建任何使用免費版本建立的成品 (包括混合式連線)。 
 
-對於其餘的版本，使用備份與還原將您的成品從某一層移轉至另一層。 例如，在標準層中備份成品，然後將它們還原至高階層。 [BizTalk 服務: 備份與還原](biztalk-backup-restore.md) 說明支援的移轉路徑，並列出哪些成品會備份。 請注意，混合式連線無法備份。 備份及還原至新的服務層之後，您會重建混合式連線。  
+對於其餘的版本，使用備份與還原將您的成品從某一層移轉至另一層。 例如，在標準層中備份成品，然後將它們還原至高階層。 [BizTalk 服務 ︰ 備份與還原](biztalk-backup-restore.md) 說明支援的移轉路徑，並列出哪些成品會備份。 請注意，混合式連線無法備份。 備份及還原至新的服務層之後，您會重建混合式連線。  
 
 
 #### 服務中是否包括 BizTalk 介面卡服務？ 如何接收軟體？
@@ -248,14 +248,15 @@ BizTalk 配接器服務是由 Azure BizTalk 服務使用。 BizTalk 配接器服
 
 ## 後續步驟
 
-若要在 Azure 入口網站建立 Azure BizTalk 服務，請移至 [BizTalk 服務: 使用 Azure 入口網站進行佈建](biztalk-provision-services.md)。 若要開始建立應用程式，請移至 [Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
+若要在 Azure 入口網站建立 Azure BizTalk 服務，請移至 [BizTalk 服務 ︰ 使用 Azure 入口網站進行佈建](biztalk-provision-services.md)。 若要開始建立應用程式，請移至 [Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## 其他資源
-- [使用 Azure 入口網站佈建的 BizTalk 服務:](biztalk-provision-services.md)<br/>
-- [BizTalk 服務: 佈建狀態圖](biztalk-service-state-chart.md)<br/>
-- [BizTalk 服務: 儀表板、 監視和調整索引標籤](biztalk-dashboard-monitor-scale-tabs.md)<br/>
-- [BizTalk 服務: 備份與還原](biztalk-backup-restore.md)<br/>
-- [BizTalk 服務: 節流](biztalk-throttling-thresholds.md)<br/>
-- [BizTalk 服務: 簽發者名稱和簽發者金鑰](biztalk-issuer-name-issuer-key.md)<br/>
+- [使用 Azure 入口網站佈建的 BizTalk 服務 ︰](biztalk-provision-services.md)<br/>
+- [BizTalk 服務：佈建狀態圖](biztalk-service-state-chart.md)<br/>
+- [BizTalk 服務：儀表板、監視和調整索引標籤](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+- [BizTalk 服務 ︰ 備份與還原](biztalk-backup-restore.md)<br/>
+- [BizTalk 服務：節流](biztalk-throttling-thresholds.md)<br/>
+- [BizTalk 服務：簽發者名稱和簽發者金鑰](biztalk-issuer-name-issuer-key.md)<br/>
 - [如何開始使用 Azure BizTalk 服務 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+
 

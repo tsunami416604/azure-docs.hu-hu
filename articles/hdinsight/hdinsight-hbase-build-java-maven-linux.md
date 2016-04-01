@@ -32,9 +32,9 @@
 
 * **熟悉 SSH 和 SCP**。 如需搭配 HDInsight 使用 SSH 和 SCP 的詳細資訊，請參閱下列文章：
 
-    * **Linux、 Unix 或 OS X 用戶端**: 請參閱 [使用 SSH 與以 Linux 為基礎從 Linux、 Unix 或 OS X 在 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * **Linux、 Unix 或 OS X 用戶端**︰ 請參閱 [使用 SSH 與以 Linux 為基礎從 Linux、 Unix 或 OS X 在 HDInsight 上的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-    * **Windows 用戶端**: 請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * **Windows 用戶端**︰ 請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ##建立專案
 
@@ -46,15 +46,15 @@
 
     這在目前目錄中，建立新目錄所指定的名稱與 __artifactID__ 參數 (**hbaseapp** 在此範例中。)此目錄將包含下列項目：
 
-    * __pom.xml__: 專案物件模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) 包含用來建置專案的資訊和組態詳細資料。
+    * __pom.xml__︰ 專案物件模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) 包含用來建置專案的資訊和組態詳細資料。
 
-    * __src__: 所在的目錄 __main/java/com/microsoft/examples__ 目錄中，您將在此撰寫應用程式。
+    * __src__︰ 所在的目錄 __main/java/com/microsoft/examples__ 目錄中，您將在此撰寫應用程式。
 
 3. 刪除 __src/test/java/com/microsoft/examples/apptest.java__ 檔案，因為它不會用在此範例中。
 
 ##更新專案物件模型
 
-1. 編輯 __pom.xml__ 檔案，並加入下列程式碼 `<dependencies>` 區段:
+1. 編輯 __pom.xml__ 檔案，並加入下列程式碼 `<dependencies>` 區段 ︰
 
         <dependency>
           <groupId>org.apache.hbase</groupId>
@@ -121,7 +121,7 @@
 
 4. 建立新目錄 __conf__ 中 __hbaseapp__ 目錄。 這會用來保存連接至 HBase 的組態資訊。
 
-5. 使用下列命令從 HDInsight 伺服器，以便複製的 HBase 組態 __conf__ 目錄。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱:
+5. 使用下列命令從 HDInsight 伺服器，以便複製的 HBase 組態 __conf__ 目錄。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱 ︰
 
         scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
 
@@ -133,7 +133,7 @@
 
 1. 移至 __hbaseapp/src/main/java/com/microsoft/examples__ 目錄，並將 app.java 檔案至 __CreateTable.java__。
 
-2. 開啟 __CreateTable.java__ 檔案，並將現有的內容取代為下列:
+2. 開啟 __CreateTable.java__ 檔案，並將現有的內容取代為下列 ︰
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -309,7 +309,7 @@
 
 ##建置和封裝應用程式
 
-2. 從 __hbaseapp__ 目錄中，使用下列命令來建立包含應用程式的 JAR 檔案:
+2. 從 __hbaseapp__ 目錄中，使用下列命令來建立包含應用程式的 JAR 檔案 ︰
 
         mvn clean package
 
@@ -317,11 +317,11 @@
 
 3. 命令完成時， __hbaseapp/目標__ 目錄將包含名為 __hbaseapp-1.0-SNAPSHOT.jar__。
 
-    > [AZURE.NOTE]  __Hbaseapp-1.0-SNAPSHOT.jar__ 檔案是一個 uber jar (有時稱為 fat jar)，內含執行應用程式所需的所有相依性。
+    > [AZURE.NOTE]  __Hbaseapp-1.0-SNAPSHOT.jar__ 檔案是一個 uber jar （有時稱為 fat jar），內含執行應用程式所需的所有相依性。
 
 ##上傳 JAR 檔案並執行工作
 
-1. 使用以下命令將 jar 上傳至 HDInsight 叢集。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱:
+1. 使用以下命令將 jar 上傳至 HDInsight 叢集。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱 ︰
 
         scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
 
@@ -331,7 +331,7 @@
     >
     > `scp -i ~/.ssh/id_rsa ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
 
-2. 使用 SSH 連接到 HDInsight 叢集。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱:
+2. 使用 SSH 連接到 HDInsight 叢集。 取代 **USERNAME** 您的 SSH 登入名稱。 取代 **CLUSTERNAME** 與您的 HDInsight 叢集名稱 ︰
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
@@ -360,8 +360,9 @@
 
 ##刪除資料表
 
-當您完成範例時，使用下列命令，從 Azure PowerShell 工作階段刪除 __人__ 此範例中使用的資料表:
+當您完成範例時，使用下列命令，從 Azure PowerShell 工作階段刪除 __人__ 此範例中使用的資料表 ︰
 
     hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
+
 
 

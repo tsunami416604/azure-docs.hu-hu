@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 EmpCenter 單一登入的訂用帳戶
   
-完成本教學課程之後, 您已指派給 EmpCenter 的 Azure AD 使用者將能夠登入您 EmpCenter 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 EmpCenter 的 Azure AD 使用者將能夠登入您 EmpCenter 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -38,21 +38,21 @@
 
 ###若要啟用 EmpCenter 的應用程式整合，請執行下列步驟：
 
-1.  在 [Azure 管理上 「 入口 」，左邊的瀏覽] 窗格中，按一下 [ **Active Directory**。
+1.  在 Azure 管理入口網站中，在左的導覽窗格中，按一下 [ **Active Directory**。
 
     ![Active Directory](./media/active-directory-saas-empcenter-tutorial/IC700993.png "Active Directory")
 
 2.  從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
-3.  若要開啟應用程式檢視，在 [目錄] 檢視中，按一下 [ **應用程式** 在最上層的功能表。
+3.  若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
 
     ![應用程式](./media/active-directory-saas-empcenter-tutorial/IC700994.png "Applications")
 
-4.  按一下 [ **新增** 在頁面底部。
+4.  按一下 [ **新增** 頁面的底部。
 
     ![新增應用程式](./media/active-directory-saas-empcenter-tutorial/IC749321.png "Add application")
 
-5.  在 **您想要** ] 對話方塊中，按一下 [ **從圖庫中新增應用程式**。
+5.  在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。
 
     ![從組件庫新增應用程式](./media/active-directory-saas-empcenter-tutorial/IC749322.png "Add an application from gallerry")
 
@@ -77,11 +77,11 @@
 
     ![設定單一登入](./media/active-directory-saas-empcenter-tutorial/IC802920.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式設定** 頁面上，執行下列步驟:
+3.  在 **設定應用程式設定** 頁面上，執行下列步驟 ︰
 
     ![設定 App 設定](./media/active-directory-saas-empcenter-tutorial/IC802921.png "Configure App Settings")
 
-    1.  在 **登入 URL** 文字方塊中，輸入您的使用者用於登入 EmpCenter 應用程式使用的 URL (例如: *https://partner-authenticati.empcenter.com/workforce/SSO.do*)。
+    1.  在 **登入 URL** 文字方塊中，輸入您的使用者用於登入 EmpCenter 應用程式使用的 URL (例如 ︰ *https://partner-authenticati.empcenter.com/workforce/SSO.do*)。
     2.  按一下 [ **下一步**
 
 4.  在 **EmpCenter 在設定單一登入** ] 頁面上，若要下載中繼資料中，按一下 [ **下載中繼資料**, ，然後儲存您的電腦上的中繼資料檔案。
@@ -93,7 +93,7 @@
     >[AZURE.NOTE] 您 EmpCenter 支援小組必須執行實際的 SSO 設定。
     當您的訂用帳戶啟用 SSO 之後，您會收到通知。
 
-6.  在 Azure 的 AD 入口網站中，選取單一的登入設定確認，然後按一下 [ **完成** 關閉 **設定單一登入** 對話方塊。
+6.  在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。
 
     ![設定單一登入](./media/active-directory-saas-empcenter-tutorial/IC802923.png "Configure Single Sign-On")
 ##設定使用者佈建
@@ -115,8 +115,9 @@
 
     ![指派使用者](./media/active-directory-saas-empcenter-tutorial/IC802924.png "Assign Users")
 
-3.  選取您的測試使用者，請按一下 [ **指派**, ，然後按一下 [ **是** 以確認您的工作分派。
+3.  選取測試使用者，請按一下 **指派**, ，然後按一下 [ **是** 以確認您的作業。
 
     ![是](./media/active-directory-saas-empcenter-tutorial/IC767830.png "Yes")
   
-如果要測試您的單一登入設定，請開啟存取面板。 如需存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

@@ -100,10 +100,11 @@ NuGet 封裝會下載並加入需要的組件參考，並將下列區段加入�
 
 - 分散式記憶體中工作階段狀態提供者，例如 Redis 快取工作階段狀態提供者 – 此提供者可讓您同時兼顧兩方面。 您的 Web 應用程式可擁有簡單、快速而可調整的工作階段狀態提供者。 不過，您必須考量到，此提供者會將工作階段狀態儲存在快取中，且您的應用程式必須考量與分散式記憶體中快取 (例如暫時性網路失敗) 通訊時的所有相關特性。 如需使用快取的最佳作法，請參閱 [快取指引](https://github.com/mspnp/azure-guidance/blob/master/Caching.md) 來自 Microsoft 模式和作法 [Azure 雲端應用程式設計和實作指引](https://github.com/mspnp/azure-guidance)。
 
-如需工作階段狀態和其他最佳作法的詳細資訊，請參閱 [Web 開發最佳作法 (建置真實世界雲端應用程式與 Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)。
+如需工作階段狀態和其他最佳作法的詳細資訊，請參閱 [Web 開發最佳作法 （建置真實世界雲端應用程式與 Azure）](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)。
 
 ## 後續步驟
 
 簽出 [Azure Redis 快取的 ASP.NET 輸出快取提供者](cache-asp.net-output-cache-provider.md)。
+
 
 

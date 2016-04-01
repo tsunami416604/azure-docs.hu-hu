@@ -92,3 +92,4 @@
 - 了解如何 [管理 StorSimple 備份原則](storsimple-manage-backup-policies.md)。
 
 - 了解如何 [使用 StorSimple Manager 服務來管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+

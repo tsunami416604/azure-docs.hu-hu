@@ -31,7 +31,7 @@ Azure 入口網站中的 WebJob 儀表板提供強大的管理功能，讓您能
 ##<a name="getstarted"></a>開始使用 WebJob 和 WebJobs SDK
 
 * [Azure WebJobs 簡介 (英文)](http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx)
-* [Azure WebJobs 太感人了您應該使用，現在!](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html)(取自 Troy Hunt 的部落格文章，英文。)
+* [Azure WebJobs 太酷了，趕快使用，不要猶豫！](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) (取自 Troy Hunt 的部落格文章，英文。)
 * [Azure WebJobs 功能 (英文)](/blog/2014/10/22/webjobs-goes-into-full-production/)
 * [什麼是 Azure WebJobs SDK (英文)](websites-dotnet-webjobs-sdk.md)
 * [Microsoft Patterns and Practices 提供的背景工作指引 (英文)](https://github.com/mspnp/azure-guidance/blob/master/Background-Jobs.md)
@@ -87,7 +87,7 @@ Azure 入口網站中的 WebJob 儀表板提供強大的管理功能，讓您能
 ##<a name="scale"></a>調整 WebJob 的規模
 
 * [利用 Azure 網站調整 Web 應用程式 (英文)](http://msdn.microsoft.com/magazine/dn786914.aspx)
-* [Azure App Service: 架構大規模商務已備妥 Web 應用程式](https://channel9.msdn.com/Events/Build/2014/3-626)。 涵蓋使用 WebJobs (包括 WebJobs SDK) 調整 Web 應用程式的規模。
+* [Azure App Service ︰ 架構大規模商務已備妥 Web 應用程式](https://channel9.msdn.com/Events/Build/2014/3-626)。 涵蓋使用 WebJobs (包括 WebJobs SDK) 調整 Web 應用程式的規模。
 * 影片
     * [向外擴充 WebJobs (英文)](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 
@@ -138,7 +138,8 @@ Azure 入口網站中的 WebJob 儀表板提供強大的管理功能，讓您能
 * [報告 WebJobs 錯誤或問題](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 如需舊入口網站變更為新入口網站的指南，請參閱: [瀏覽預覽入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需舊入口網站變更為新入口網站的指南，請參閱 ︰ [瀏覽預覽入口網站的參考](http://go.microsoft.com/fwlink/?LinkId=529715)
  
+
 

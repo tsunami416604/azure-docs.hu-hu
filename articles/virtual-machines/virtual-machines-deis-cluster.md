@@ -42,7 +42,7 @@
 
 在本節中，您將使用 [Azure 資源管理員](../resource-group-overview.md) 開放原始碼儲存機制中的範本 [azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates)。 首先，您會複製範本。 然後，您會建立用於驗證的新 SSH 金鑰組。 接下來，您會為叢集設定新的識別碼。 最後，您會使用 Shell 指令碼或 PowerShell 指令碼佈建叢集。
 
-1. 複製儲存機制: [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates)。
+1. 複製儲存機制 ︰ [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates)。
 
         git clone https://github.com/Azure/azure-quickstart-templates
 
@@ -58,13 +58,13 @@
 
         openssl req -x509 -days 365 -new -key [your private key file] -out [cert file to be generated]
 
-5. 移至 [https://discovery.etcd.io/new](https://discovery.etcd.io/new) 來產生新的叢集權杖，看起來像是:
+5. 移至 [https://discovery.etcd.io/new](https://discovery.etcd.io/new) 來產生新的叢集權杖，看起來像是 ︰
 
         https://discovery.etcd.io/6a28e078895c5ec737174db2419bb2f3
 <br />
 每個 CoreOS 叢集必須有唯一的語彙基元從這項免費服務。 請參閱 [CoreOS 文件](https://coreos.com/docs/cluster-management/setup/cluster-discovery/) 如需詳細資訊。
 
-6. 修改 **cloud-config.yaml** 檔案取代現有  **探索** 新語彙基元的語彙基元:
+6. 修改 **cloud-config.yaml** 檔案取代現有  **探索** 新語彙基元的語彙基元 ︰
 
         #cloud-config
         ---
@@ -75,7 +75,7 @@
             discovery: https://discovery.etcd.io/3973057f670770a7628f917d58c2208a
         ...
 
-7. 修改 **azuredeploy-parameters.json** 檔案: 開啟您在文字編輯器中的步驟 4 中建立的憑證。 複製之間的所有文字 `----BEGIN CERTIFICATE-----` 和 `-----END CERTIFICATE-----` 到 **sshKeyData** 參數 (您必須移除所有的新行字元)。
+7. 修改 **azuredeploy-parameters.json** 檔案 ︰ 開啟您在文字編輯器中的步驟 4 中建立的憑證。 複製之間的所有文字 `----BEGIN CERTIFICATE-----` 和 `-----END CERTIFICATE-----` 到 **sshKeyData** 參數 （您必須移除所有的新行字元）。
 
 8. 修改 **newStorageAccountName** 參數。 這是 VM OS 磁碟的儲存體帳戶。 此帳戶名稱必須是全域唯一的。
 
@@ -129,7 +129,7 @@
     deisctl install platform
     deisctl start platform
 
-> [AZURE.NOTE] 啟動平台需要一段時間 (最多可達 10 分鐘)。 尤其啟動建立器服務需要較長的時間。 而且有時要嘗試幾次才會成功：如果作業似乎無回應，請嘗試輸入 `ctrl+c` 來中斷命令的執行，然後再試一次。
+> [AZURE.NOTE] 啟動平台需要一段時間 （最多可達 10 分鐘）。 尤其啟動建立器服務需要較長的時間。 而且有時要嘗試幾次才會成功：如果作業似乎無回應，請嘗試輸入 `ctrl+c` 來中斷命令的執行，然後再試一次。
 
 您可以使用 `deisctl list` 確認是否所有服務都在執行：
 
@@ -204,7 +204,7 @@
         deis create
         git push deis master
 <p />
-8. Git push 會觸發 Docker 映像來建置和部署，將需要花幾分鐘的時間。 根據我的經驗，第 10 步驟 (將映像推送到私用儲存機制) 通常會無回應。 當發生這種情況時，您可以停止程序，移除應用程式使用 ' deis 應用程式: 摧毀 – <application name>` to remove the application and try again. You can use `deis apps:list' 若要找出應用程式的名稱。 如果一切都正常運作，您會在命令輸出的結尾看到訊息如下：
+8. Git push 會觸發 Docker 映像來建置和部署，將需要花幾分鐘的時間。 根據我的經驗，第 10 步驟 (將映像推送到私用儲存機制) 通常會無回應。 當發生這種情況時，您可以停止程序，移除應用程式使用 ' deis 應用程式 ︰ 摧毀 – <application name>` to remove the application and try again. You can use `deis apps:list' 若要找出應用程式的名稱。 如果一切都正常運作，您會在命令輸出的結尾看到訊息如下：
 
         -----> Launching...
                done, lambda-underdog:v2 deployed to Deis
@@ -255,11 +255,12 @@
 
 本文章會引導您使用 Azure 資源管理員範本，完成所有佈建新 Deis 叢集的步驟。 範本支援工具連線的備援，以及已部署應用程式的負載平衡。 該範本也避免在成員節點使用公用 IP，這可以節省寶貴的公用 IP 資源，並提供主機應用程式更安全的環境。 若要深入了解，請參閱下列文章：
 
-[Azure 資源管理員概觀] [resource-group-overview]  
+[Azure Resource Manager 概觀] [resource-group-overview]  
 [如何使用 Azure CLI] [azure-command-line-tools]  
-[使用 Azure PowerShell 與 Azure 資源管理員] [powershell-azure-resource-manager]  
+[搭配使用 Azure PowerShell 與 Azure 資源管理員] [powershell-azure-resource-manager]  
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 [resource-group-overview]: ../resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
+
 

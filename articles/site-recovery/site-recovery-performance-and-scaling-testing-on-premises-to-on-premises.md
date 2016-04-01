@@ -125,7 +125,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 |伺服器|RAM|模型|處理器|處理器數目|NIC|軟體|
 |---|---|---|---|---|---|---|
-|在叢集中的 HYPER-V 伺服器: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25|128ESTLAB-HOST25 具備 256|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|4|I Gbps x 4|Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
+|在叢集中的 HYPER-V 伺服器 ︰ <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25|128ESTLAB-HOST25 具備 256|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|4|I Gbps x 4|Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
 |VMM 伺服器|2|||2|1 Gbps|Windows Server Database 2012 R2 (x64) + VMM 2012 R2|
 
 ### 次要 (復原) 站台
@@ -138,7 +138,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 |伺服器|RAM|模型|處理器|處理器數目|NIC|軟體|
 |---|---|---|---|---|---|---|
-|在叢集中的 HYPER-V 伺服器: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10|96|Dell ™ PowerEdge ™ R720|Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz|2|I Gbps x 4|Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
+|在叢集中的 HYPER-V 伺服器 ︰ <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10|96|Dell ™ PowerEdge ™ R720|Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz|2|I Gbps x 4|Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
 |ESTLAB-HOST17|128|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|4||Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
 |ESTLAB-HOST24|256|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|2||Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色|
 |VMM 伺服器|2|||2|1 Gbps|Windows Server Database 2012 R2 (x64) + VMM 2012 R2|
@@ -206,7 +206,8 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ## 後續步驟
 
-- [設定兩個內部部署 VMM 網站之間的保護](site-recovery-vmm-to-vmm.md)
+- [設定兩個內部部署 VMM 站台之間的保護](site-recovery-vmm-to-vmm.md)
 
  
+
 

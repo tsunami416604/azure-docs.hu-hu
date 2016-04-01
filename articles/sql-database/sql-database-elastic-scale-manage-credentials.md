@@ -20,9 +20,9 @@
 
  [彈性資料庫用戶端程式庫](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) 會使用三種不同的認證。 認證會用來存取 [分區對應管理員](sql-database-elastic-scale-shard-map-management.md)。 根據需求，使用與存取權可能的最低層級的認證。
 
-* **管理認證**: 建立或操作分區對應管理員。 (請參閱 [詞彙](sql-database-elastic-scale-glossary.md)。) 
-* **存取認證**: 存取現有分區對應管理員以取得分區的相關資訊。
-* **連接認證**: 連接到分區。 
+* **管理認證**︰ 建立或操作分區對應管理員。 (請參閱 [詞彙](sql-database-elastic-scale-glossary.md)。) 
+* **存取認證**︰ 存取現有分區對應管理員以取得分區的相關資訊。
+* **連接認證**︰ 連接到分區。 
 
 另請參閱 [管理資料庫和登入 Azure SQL Database 中的](sql-database-manage-logins.md)。 
  
@@ -44,7 +44,7 @@
 
 ## 存取認證
   
-在不管理分區對應的應用程式中建立分區對應管理員時，請使用在全域分區對應上具有唯讀權限的認證。 從全域分區對應，這些認證下所擷取的資訊會用於 [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md) 以及填入用戶端的分區對應快取。 認證透過相同呼叫模式來提供 **GetSqlShardMapManager** 如上所示: 
+在不管理分區對應的應用程式中建立分區對應管理員時，請使用在全域分區對應上具有唯讀權限的認證。 從全域分區對應，這些認證下所擷取的資訊會用於 [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md) 以及填入用戶端的分區對應快取。 認證透過相同呼叫模式來提供 **GetSqlShardMapManager** 如上所示 ︰ 
 
     // Obtain shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -52,7 +52,7 @@
             ShardMapManagerLoadPolicy.Lazy
     );  
 
-請注意使用 **smmReadOnlyConnectionString** 以反映不同的認證以進行此存取代表 **非系統管理員** 使用者: 這些認證不應提供全域分區對應上的寫入權限。 
+請注意使用 **smmReadOnlyConnectionString** 以反映不同的認證以進行此存取代表 **非系統管理員** 使用者 ︰ 這些認證不應提供全域分區對應上的寫入權限。 
 
 ## 連接認證 
 
@@ -76,3 +76,4 @@
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
+

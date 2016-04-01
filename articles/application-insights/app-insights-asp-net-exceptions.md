@@ -41,7 +41,7 @@
 
 ![鑽研](./media/app-insights-asp-net-exceptions/040-exception-drill.png)
 
-*未顯示例外狀況? 請參閱 [擷取例外狀況](#exceptions)。*
+*未顯示例外狀況？ 請參閱 [擷取例外狀況](#exceptions)。*
 
 您可以從那裡查看堆疊追蹤和每個例外狀況的詳細屬性，並且找到相關的記錄追蹤或其他事件。
 
@@ -58,7 +58,7 @@ A *相依性* 是您的應用程式呼叫時，通常透過 REST API 或資料�
 
 失敗的相依性呼叫列在 [失敗] 刀鋒視窗，您也可以在要求詳細資料和例外狀況詳細資料中的 [相關項目] 底下找到它們。
 
-*沒有相依性失敗? 非常好。 但是，若要確認您取得相依性資料，開啟 [效能] 刀鋒視窗，並查看相依性持續時間的圖表。*
+*沒有相依性失敗？ 非常好。 但是，若要確認您取得相依性資料，開啟 [效能] 刀鋒視窗，並查看相依性持續時間的圖表。*
 
  
 
@@ -68,9 +68,9 @@ A *相依性* 是您的應用程式呼叫時，通常透過 REST API 或資料�
 
 您有幾種選項：
 
-* [Trackevent ()](app-insights-api-custom-events-metrics.md#track-event) 通常用來監視使用模式，但它也會傳送的資料自訂事件] 底下會出現在診斷搜尋中。 事件會被命名，並且可以承載字串屬性和數字的度量，您可以對其 [篩選診斷搜尋][diagnostic]。
-* [Tracktrace ()](app-insights-api-custom-events-metrics.md#track-trace) 可讓您傳送較長的資料，例如 POST 資訊。
-* [Trackexception ()](#exceptions) 會傳送堆疊追蹤。 [深入了解例外狀況](#exceptions)。
+* [Trackevent （)](app-insights-api-custom-events-metrics.md#track-event) 通常用來監視使用模式，但它也會傳送的資料自訂事件] 底下會出現在診斷搜尋中。 事件會被命名，並且可以承載字串屬性和數字的度量，您可以對其 [篩選診斷搜尋][diagnostic]。
+* [Tracktrace （)](app-insights-api-custom-events-metrics.md#track-trace) 可讓您傳送較長的資料，例如 POST 資訊。
+* [Trackexception （)](#exceptions) 會傳送堆疊追蹤。 [深入了解例外狀況](#exceptions)。
 * 如果您已經使用 Log4Net 或 NLog 之類的記錄架構，您可以 [擷取這些記錄檔][netlogs] 並了解其診斷搜尋中隨著要求和例外狀況資料。
 
 若要查看這些事件，請開啟 [搜尋][diagnostic], ，開啟 [篩選]，然後選擇 [自訂事件、 追蹤或例外狀況。
@@ -79,14 +79,14 @@ A *相依性* 是您的應用程式呼叫時，通常透過 REST API 或資料�
 ![鑽研](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
 
 
-> [AZURE.NOTE] 如果您的應用程式會產生大量遙測，調適性取樣模組會自動縮減傳送代表分數的事件傳送至入口網站的磁碟區。 為相同作業之一部分的事件會選取或取消選取為群組，讓您可以在相關事件之間瀏覽。 [深入了解取樣。](app-insights-sampling.md)
+> [AZURE.NOTE] 如果您的應用程式會產生大量遙測，調適性取樣模組會自動縮減傳送代表分數的事件傳送至入口網站的磁碟區。 為相同作業之一部分的事件會選取或取消選取為群組，讓您可以在相關事件之間瀏覽。 [了解取樣。](app-insights-sampling.md)
 
 ### 如何查看要求 POST 資料
 
 要求詳細資料不包括在 POST 呼叫中傳送至您的應用程式的資料。 若要報告此資料：
 
 * [安裝 SDK][greenbrown] 應用程式專案中。
-* 將程式碼插入您的應用程式呼叫 [microsoft.applicationinsights.tracktrace ()][api]。 在訊息參數中傳送 POST 資料。 允許的大小有限制，所以您應該嘗試只傳送基本的資料。
+* 將程式碼插入您的應用程式呼叫 [microsoft.applicationinsights.tracktrace （)][api]。 在訊息參數中傳送 POST 資料。 允許的大小有限制，所以您應該嘗試只傳送基本的資料。
 * 當您調查失敗的要求時，會發現相關聯的追蹤。  
 
 ![鑽研](./media/app-insights-asp-net-exceptions/060-req-related.png)
@@ -454,3 +454,4 @@ VB
 [start]: app-insights-overview.md
 
  
+

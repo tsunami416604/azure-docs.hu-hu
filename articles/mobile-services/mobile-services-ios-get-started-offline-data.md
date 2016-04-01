@@ -128,46 +128,46 @@ Azure 行動服務離線同步處理可讓使用者在無法存取網路時，�
 
     #### MS_TableOperations
 
-    | 屬性     |    類型     |
-    |-------------- |   ------    |
-    | 識別碼 (必要) | 整數 64  |
-    | itemId        | String      |
-    | properties    | 二進位資料 |
-    | 資料表         | String      |
-    | tableKind     | 整數 16  |
+  	| 屬性     |    類型     |
+  	|-------------- |   ------    |
+  	| 識別碼 (必要) | 整數 64  |
+  	| itemId        | String      |
+  	| properties    | 二進位資料 |
+  	| 資料表         | String      |
+  	| tableKind     | 整數 16  |
 
     #### MS_TableOperationErrors
 
-    | 屬性     |    類型     |
-    |-------------- | ----------  |
-    | 識別碼 (必要) | String      |
-    | operationId   | 整數 64  |
-    | properties    | 二進位資料 |
-    | tableKind     | 整數 16  |
+  	| 屬性     |    類型     |
+  	|-------------- | ----------  |
+  	| 識別碼 (必要) | String      |
+  	| operationId   | 整數 64  |
+  	| properties    | 二進位資料 |
+  	| tableKind     | 整數 16  |
 
     #### MS_TableConfig
 
 
-    | Attribute     |    Type     |
-    |-------------- | ----------  |
-    | id (required) | String      |
-    | key           | String      |
-    | keyType       | Integer 64  |
-    | table         | String      |
-    | value         | String      |
+  	| Attribute     |    Type     |
+  	|-------------- | ----------  |
+  	| id (required) | String      |
+  	| key           | String      |
+  	| keyType       | Integer 64  |
+  	| table         | String      |
+  	| value         | String      |
 
     ### Data Table
 
     #### TodoItem
 
-    | Attribute     |  Type   | Note                                                   |
-    |-------------- |  ------ | -------------------------------------------------------|
-    | id (required) | String  | primary key in remote store (required)                 |
-    | complete      | Boolean | todo item field                                        |
-    | text          | String  | todo item field                                        |
-    | ms_createdAt  | Date    | (optional) maps to __createdAt system property         |
-    | ms_updatedAt  | Date    | (optional) maps to __updatedAt system property         |
-    | ms_version    | String  | (optional) used to detect conflicts, maps to __version |
+  	| Attribute     |  Type   | Note                                                   |
+  	|-------------- |  ------ | -------------------------------------------------------|
+  	| id (required) | String  | primary key in remote store (required)                 |
+  	| complete      | Boolean | todo item field                                        |
+  	| text          | String  | todo item field                                        |
+  	| ms_createdAt  | Date    | (optional) maps to __createdAt system property         |
+  	| ms_updatedAt  | Date    | (optional) maps to __updatedAt system property         |
+  	| ms_version    | String  | (optional) used to detect conflicts, maps to __version |
 
 
 
@@ -185,7 +185,7 @@ Azure 行動服務離線同步處理可讓使用者在無法存取網路時，�
         }
 ```
 
-* 同樣地，再次在 **QSTodoService.m**, 中 `completeItem`, ，移除的區塊 `self syncData` 並取代為下列:
+* 同樣地，再次在 **QSTodoService.m**, 中 `completeItem`, ，移除的區塊 `self syncData` 並取代為下列 ︰
 
 ```
         if (completion != nil) {
@@ -232,7 +232,7 @@ Azure 行動服務離線同步處理可讓使用者在無法存取網路時，�
 
 * [雲端報導：Azure 行動服務中的離線同步處理]
 
-* [Azure Friday: Offline-enabled apps in Azure Mobile Services] \ (附註: 示範適用於 Windows，但功能討論適用於所有平台)
+* [Azure Friday: Offline-enabled apps in Azure Mobile Services] \ (附註 ︰ 示範適用於 Windows，但功能討論適用於所有平台)
 
 <!-- URLs. -->
 
@@ -275,4 +275,5 @@ Azure 行動服務離線同步處理可讓使用者在無法存取網路時，�
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 [Mobile Services Quick Start tutorial]: mobile-services-ios-get-started.md
+
 

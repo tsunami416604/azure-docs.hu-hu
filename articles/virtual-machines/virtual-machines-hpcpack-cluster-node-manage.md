@@ -22,9 +22,9 @@ ms.service="virtual-machines"
 
 
 如果您在 Azure Vm 中建立的 HPC Pack 叢集，您可以輕鬆地新增、 移除方法
-啟動 (佈建) 或停止 (解除佈建) 數目計算節點 Vm
+啟動 （佈建） 或停止 （解除佈建） 數目計算節點 Vm
 帳戶。 若要執行這些工作，執行 PowerShell 指令碼
-安裝在前端節點 VM (從 HPC Pack 2012 R2 Update 1 開始)。 這些指令碼可協助您控制數目
+安裝在前端節點 VM （從 HPC Pack 2012 R2 Update 1 開始）。 這些指令碼可協助您控制數目
 並讓您能夠控制成本 HPC Pack 叢集資源的可用性。
 
 >[AZURE.NOTE] 這些指令碼位於前端節點上的 %CCP\_HOME%bin 資料夾。 您必須
@@ -32,9 +32,9 @@ ms.service="virtual-machines"
 
 ## 必要條件
 
-* **在 Azure Vm 中的 HPC Pack 叢集** -在傳統 (服務管理) 部署模型中建立的 HPC Pack 叢集，至少使用 HPC Pack 2012 R2 Update 1。 例如，您可以使用 Azure Marketplace 中的 HPC Pack VM 映像和 Azure PowerShell 指令碼，將部署自動化。 資訊和必要條件，請參閱 [使用 HPC Pack IaaS 部署指令碼建立 HPC 叢集](virtual-machines-hpcpack-cluster-powershell-script.md)。
+* **在 Azure Vm 中的 HPC Pack 叢集** -在傳統 （服務管理） 部署模型中建立的 HPC Pack 叢集，至少使用 HPC Pack 2012 R2 Update 1。 例如，您可以使用 Azure Marketplace 中的 HPC Pack VM 映像和 Azure PowerShell 指令碼，將部署自動化。 資訊和必要條件，請參閱 [使用 HPC Pack IaaS 部署指令碼建立 HPC 叢集](virtual-machines-hpcpack-cluster-powershell-script.md)。
 
-* **Azure 發行設定檔] 或 [管理憑證** -您需要執行的前端節點上的下列其中一項:
+* **Azure 發行設定檔] 或 [管理憑證** -您需要執行的前端節點上的下列其中一項 ︰
 
     * **匯入 Azure 發行設定檔**。 若要這麼做，請在前端節點上執行下列 Azure PowerShell Cmdlet：
 
@@ -81,7 +81,7 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 
 * **DomainUserPassword*** 網域使用者的密碼
 
-* **NodeNameSeries** (選擇性) 0 的運算節點的命名模式。 格式必須是 & l t;*Root\_Name*& gt; & l t;*Start\_Number*& gt; %。 例如，MyCN%10% 表示從 MyCN11 開始的一系列運算節點名稱。 如果未指定，指令碼會使用 HPC 叢集中已設定的節點命名序列。
+* **NodeNameSeries** （選擇性） 0 的運算節點的命名模式。 格式必須是 & l t;*Root\_Name*& gt; & l t;*Start\_Number*& gt; %。 例如，MyCN%10% 表示從 MyCN11 開始的一系列運算節點名稱。 如果未指定，指令碼會使用 HPC 叢集中已設定的節點命名序列。
 
 ### 範例
 
@@ -113,11 +113,11 @@ Remove-HPCIaaSNode.ps1 -Node <Object> [-DeleteVHD] [-Force] [-Confirm] [<CommonP
 
 * **節點** * HpcNode 物件，可透過 HPC PowerShell cmdlet 取得要移除節點 [Get-hpcnode](https://technet.microsoft.com/library/dn887927.aspx)。 參數集名稱是 Node。 您無法同時指定 **名稱** 和 **節點** 參數。
 
-* **DeleteVHD** (選用)-若要移除的 vm 刪除相關聯的磁碟設定。
+* **DeleteVHD** （選用）-若要移除的 vm 刪除相關聯的磁碟設定。
 
-* **強制** (選用)-設為 [強制移除之前，先 HPC 節點離線。
+* **強制** （選用）-設為 [強制移除之前，先 HPC 節點離線。
 
-* **確認** (選用)-執行命令之前確認提示。
+* **確認** （選用）-執行命令之前確認提示。
 
 * **WhatIf** -設定，以說明當您執行此命令沒有實際執行命令，會發生什麼情況。
 
@@ -174,7 +174,7 @@ Stop-HPCIaaSNode.ps1 -Node <Object> [-Force] [<CommonParameters>]
 
 * **節點** -HpcNode 物件，會停止運作，可透過 HPC PowerShell cmdlet Get-hpcnode 取得的節點。 參數集名稱是 Node。 您無法同時指定 **名稱** 和 **節點** 參數。
 
-* **強制** (選用)-設為 [HPC 節點強制離線之前加以停止。
+* **強制** （選用）-設為 [HPC 節點強制離線之前加以停止。
 
 ### 範例
 
@@ -188,4 +188,5 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 * 如果您想要的方式
 自動成長或壓縮根據 Azure 運算資源
 目前的工作負載的作業和工作，在叢集上，請參閱 [漲大及縮小 Azure 計算資源中的 HPC Pack 叢集](virtual-machines-hpcpack-cluster-node-autogrowshrink.md)。
+
 

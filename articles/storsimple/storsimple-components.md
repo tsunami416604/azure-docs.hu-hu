@@ -25,7 +25,7 @@
 
 下列章節將描述 Microsoft Azure StorSimple 元件，並說明解決方案如何排列資料、配置儲存體、加快儲存體管理速度以及資料保護。 最後一節提供一些與 StorSimple 元件和其管理相關之重要術語的定義。
 
-> [AZURE.NOTE] 在 Microsoft Azure 網站上發行的 StorSimple 部署資訊適用於僅適用於 StorSimple 8000 系列裝置。 如需 7000 序列裝置資訊，請移至: [StorSimple 說明](http://onlinehelp.storsimple.com/)。
+> [AZURE.NOTE] 在 Microsoft Azure 網站上發行的 StorSimple 部署資訊適用於僅適用於 StorSimple 8000 系列裝置。 如需 7000 序列裝置資訊，請移至 ︰ [StorSimple 說明](http://onlinehelp.storsimple.com/)。
 
 ## StorSimple 裝置
 
@@ -90,7 +90,7 @@ StorSimple 會隨著使用模式變更而調整並重新排列資料和儲存體
 
 ### 精簡佈建
 
-精簡佈建是一項虛擬化技術，讓可用的儲存空間超過實體資源。 與其預先保留足夠的儲存空間，StorSimple 會使用精簡佈建來配置剛好足夠的空間，以符合目前的需求。 雲端儲存體的彈性本質正好支援這種方法，因為 StorSimple 可以增加或減少雲端儲存體，以符合不斷變更的需求。 
+精簡佈建是一種虛擬化技術，精簡佈建中的可用儲存體會顯示超過實體資源。 與其預先保留足夠的儲存空間，StorSimple 會使用精簡佈建來配置剛好足夠的空間，以符合目前的需求。 雲端儲存體的彈性本質正好支援這種方法，因為 StorSimple 可以增加或減少雲端儲存體，以符合不斷變更的需求。 
 
 ### 重複資料刪除和壓縮
 
@@ -146,7 +146,7 @@ StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管�
 
 如果發生損毀，或如果因為其他原因而必須還原資料，StorSimple Snapshot Manager 會在需要時將它以累加方式還原。 當您還原檔案、更換設備或將作業移到另一個站台時，資料還原不需要您將整個系統關閉。
 
-如需詳細資訊，請參閱 [什麼是 StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+如需詳細資訊，請參閱 [什麼是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)
 
 ## StorSimple Adapter for SharePoint
 
@@ -225,4 +225,5 @@ Microsoft Azure StorSimple 包括 StorSimple Adapter for SharePoint，其為可�
 
 
  
+
 

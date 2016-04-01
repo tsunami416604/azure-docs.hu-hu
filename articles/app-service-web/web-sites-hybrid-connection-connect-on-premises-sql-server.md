@@ -22,7 +22,7 @@
 
 在本教學課程中，您將學習如何建立 App Service web 應用程式中的 [Azure 預覽](http://go.microsoft.com/fwlink/?LinkId=529715), 、 web 應用程式連接到您使用新的 「 混合式連線 」 功能的本機內部 SQL Server 資料庫、 建立簡單的 ASP.NET 應用程式會使用混合式連線，並部署至 App Service web 應用程式的應用程式。 Azure 上已完成的 Web 應用程式會將使用者認證儲存在內部部署的成員資格資料庫中。 本教學課程假設您沒有使用 Azure 或 ASP.NET 的經驗。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 >
 >混合式連線功能的 Web 應用程式部分是僅適用於 [Azure 入口網站](https://portal.azure.com)。 若要在 BizTalk 服務中建立的連線，請參閱 [混合式連線](http://go.microsoft.com/fwlink/p/?LinkID=397274)。  
 
@@ -61,7 +61,7 @@
 如果您已在組態和符合前述條件的環境中安裝 SQL Server，您可以跳過並開始 [建立 SQL Server 資料庫內部](#CreateSQLDB)。
 
 <a name="InstallSQL"></a>
-## A. 在內部部署中安裝 SQL Server Express、啟用 TCP/IP 及建立 SQL Server 資料庫 ##
+## 答： 在內部部署中安裝 SQL Server Express、啟用 TCP/IP 及建立 SQL Server 資料庫 ##
 
 本節說明如何安裝 SQL Server Express、啟用 TCP/IP 及建立資料庫，讓您的 Web 應用程式可在 Azure 預覽環境中運作。
 
@@ -69,21 +69,21 @@
 
 1. 若要安裝 SQL Server Express，執行 **SQLEXPRWT_x64_ENU.exe** 或 **SQLEXPR_x86_ENU.exe** 您所下載的檔案。 [SQL Server 安裝中心] 精靈會隨即出現。
 
-    ![SQL Server 安裝][] SQLServerInstall
+    ![SQL Server Install][SQLServerInstall]
 
 2. 選擇 **新的 SQL Server 獨立安裝或將功能加入到現有安裝**。 請遵循指示接受預設選項和設定，直到您進入 **執行個體組態** 頁面。
 
 3. 在 **執行個體組態** 頁面上，選擇 **預設執行個體**。
 
-    ![選擇預設執行個體][] ChooseDefaultInstance
+    ![Choose Default Instance][ChooseDefaultInstance]
 
     根據預設，SQL Server 的預設執行個體會在靜態連接埠 1433 上接聽來自 SQL Server 用戶端的要求，而這正是混合式連線功能的需求。 指定的執行個體會使用動態連接埠和 UDP，而混合式連線並不加以支援。
 
 4. 接受預設值在 **伺服器組態** 頁面。
 
-5. 在 **資料庫引擎組態** ] 頁面的 [ **驗證模式**, ，選擇 [ **混合模式 (SQL Server 驗證和 Windows 驗證)**, ，並提供密碼。
+5. 在 **資料庫引擎組態** ] 頁面的 [ **驗證模式**, ，選擇 [ **混合模式 （SQL Server 驗證和 Windows 驗證）**, ，並提供密碼。
 
-    ![選擇混合的模式][] ChooseMixedMode
+    ![Choose Mixed Mode][ChooseMixedMode]
 
     在本教學課程中，您將使用 SQL Server 驗證。 請務必記住您提供的密碼，因為後續將會用到。
 
@@ -98,23 +98,23 @@
 您的 Visual Studio Web 應用程式需要可由 Azure 存取的成員資格資料庫。 這必須要有 SQL Server 或 SQL Server Express 資料庫 (不是 MVC 範本依預設使用的 LocalDB 資料庫)，因此您接下來將會建立成員資格資料庫。
 
 1. 在 SQL Server Management Studio 中，連接到您剛剛安裝的 SQL Server。 (如果 **連接到伺服器** 對話方塊未自動出現，瀏覽至 **物件總管] 中** 在左窗格中，按一下 [ **連接**, ，然後按一下 [ **Database Engine**。)
-    ![連線到伺服器][] SSMSConnectToServer
+    ![連接到伺服器][SSMSConnectToServer]
 
     如 **伺服器類型**, ，選擇 [ **Database Engine**。 如 **伺服器名稱**, ，您可以使用 **localhost** 或您使用的電腦名稱。 選擇 **SQL Server 驗證**, ，然後登入的 sa 使用者名稱和您稍早建立的密碼。
 
 2. 若要使用 SQL Server Management Studio 建立新的資料庫，以滑鼠右鍵按一下 **資料庫** 在物件總管]，然後按一下 [ **新的資料庫**。
 
-    ![建立新的資料庫][] SSMScreateNewDB
+    ![Create new database][SSMScreateNewDB]
 
 3. 在 **新的資料庫** ] 對話方塊中，輸入 membershipdb 做為資料庫名稱，然後按一下 [ **確定**。
 
-    ![提供資料庫名稱][] SSMSprovideDBname
+    ![Provide database name][SSMSprovideDBname]
 
     請注意，到目前為止您並未對資料庫做任何變更。 成員資格資訊後續會在您執行 Web 應用程式時由該應用程式自動新增。
 
 4. 在 [物件總管] 中，如果您展開 **資料庫**, ，您會看到已建立的成員資格資料庫。
 
-    ![建立 MembershipDB][] SSMSMembershipDBCreated
+    ![MembershipDB created][SSMSMembershipDBCreated]
 
 <a name="CreateSite"></a>
 ## B. 在 Azure 入口網站中建立 Web 應用程式 ##
@@ -123,15 +123,15 @@
 
 1. 在 [Azure 入口網站](https://portal.azure.com), ，按一下 [ **新增** > **Web + 行動** > **Web 應用程式**。
 
-    ![新增] 按鈕][新增]
+    ![New button][New]
 
 2. 設定 web 應用程式，然後按一下 **建立**。
 
-    ![網站名稱][] WebsiteCreationBlade
+    ![Website name][WebsiteCreationBlade]
 
 3. 經過一段時間之後，Web 應用程式會建立，並顯示它的 Web 應用程式分頁。 此分頁是垂直捲動的儀表板，可供您管理 Web 應用程式。
 
-    !執行 [網站][] WebSiteRunningBlade
+    ![Website running][WebSiteRunningBlade]
 
     若要確認 web 應用程式是否已上線啟用，您可以按一下 **瀏覽** 圖示以顯示預設頁面。
 
@@ -142,23 +142,23 @@
 
 1. 傳回在網站中，請設定並按一下 [ **網路** > **設定混合式連接端點**。
 
-    ![混合式連線][] CreateHCHCIcon
+    ![Hybrid connections][CreateHCHCIcon]
 
 2. 在 [混合式連線] 分頁中，按一下 [ **新增** > **新增混合式連線**。
 
-3. 在 **建立混合式連線** 刀鋒視窗中:
+3. 在 **建立混合式連線** 刀鋒視窗中 ︰
     - 如 **名稱**, ，提供連線的名稱。
     - 如 **Hostname**, ，輸入您的 SQL Server 主機電腦的電腦名稱。
-    - 如 **連接埠**, ，輸入 1433 (SQL Server 的預設連接埠)。
+    - 如 **連接埠**, ，輸入 1433 （SQL Server 的預設連接埠）。
     - 按一下 [ **BizTalk 服務** > **新的 BizTalk 服務** 並輸入 BizTalk 服務的名稱。
 
-    ![建立混合式連線][] TwinCreateHCBlades
+    ![Create a hybrid connection][TwinCreateHCBlades]
 
 5. 按一下 [ **確定** 兩次。
 
     完成的處理序 **通知** 區域會閃爍綠色 **成功** 和 **混合式連線** 刀鋒視窗會顯示新的混合式連線，且狀態為 **未連接**。
 
-    ![建立一個混合式連線][] CreateHCOneConnectionCreated
+    ![One hybrid connection created][CreateHCOneConnectionCreated]
 
 至此，您已完成雲端混合式連線基礎結構的重要部分。 接下來，您將建立對應的內部部署部分。
 
@@ -173,21 +173,21 @@
 ## E. 建立基本 ASP.NET Web 專案、編輯資料庫連接字串，和在本機執行專案 ##
 
 ### 建立基本 ASP.NET 專案 ###
-1. 在 Visual Studio 中，在 **檔案** ] 功能表上，建立新的專案:
+1. 在 Visual Studio 中，在 **檔案** ] 功能表上，建立新的專案 ︰
 
-    ![新的 Visual Studio 專案][] HCVSNewProject
+    ![New Visual Studio project][HCVSNewProject]
 
 2. 中 **範本** 區段 **新的專案** 對話方塊中，選取 **Web** 選擇 **ASP.NET Web 應用程式**, ，然後按一下 [ **確定**。
 
-    ![選擇 ASP.NET Web 應用程式][] HCVSChooseASPNET
+    ![Choose ASP.NET Web Application][HCVSChooseASPNET]
 
 3. 在 **新增 ASP.NET 專案** ] 對話方塊中，選擇 [ **MVC**, ，然後按一下 [ **確定**。
 
-    ![選擇 [MVC][] HCVSChooseMVC
+    ![Choose MVC][HCVSChooseMVC]
 
 4. 建立專案之後，會出現應用程式 Readme 頁面。 請還不要執行 Web 專案。
 
-    ![讀我檔案 page][] HCVSReadmePage
+    ![Readme page][HCVSReadmePage]
 
 ### 編輯應用程式的資料庫連接字串 ###
 
@@ -197,11 +197,11 @@
 
 1. 在 [方案總管] 中，按兩下 Web.config 檔案。
 
-    ![] Web.config[] HCVSChooseWebConfig
+    ![Web.config][HCVSChooseWebConfig]
 
-2. 編輯 **connectionStrings** 區段指向 SQL Server 資料庫，在您本機電腦，在下列範例中的語法:
+2. 編輯 **connectionStrings** 區段指向 SQL Server 資料庫，在您本機電腦，在下列範例中的語法 ︰
 
-    ![連接字串][] HCVSConnectionString
+    ![Connection string][HCVSConnectionString]
 
     編譯連接字串時，請留意下列事項：
 
@@ -217,15 +217,15 @@
 
 1. 現在，請按一下 [偵錯] 下的瀏覽按鈕，在本機執行您新的 Web 專案。 此範例使用 Internet Explorer。
 
-    ![執行專案][] HCVSRunProject
+    ![Run project][HCVSRunProject]
 
-2. 在右上方預設 web 網頁中，選擇 [ **註冊** 以註冊新帳戶:
+2. 在右上方預設 web 網頁中，選擇 [ **註冊** 以註冊新帳戶 ︰
 
-    ![註冊新帳戶][] HCVSRegisterLocally
+    ![Register a new account][HCVSRegisterLocally]
 
 3. 輸入使用者名稱和密碼：
 
-    ![請輸入使用者名稱和密碼][] HCVSCreateNewAccount
+    ![Enter user name and password][HCVSCreateNewAccount]
 
     這會在您的本機 SQL Server 上自動建立一個資料庫，存放您應用程式的成員資格資訊。 其中一個資料表 (**dbo。AspNetUsers**) 包含 web 應用程式使用者認證，如同您剛剛輸入的。 稍後在教學課程中會看見此資料表。
 
@@ -242,25 +242,25 @@
 
 1. 您可以在 Azure 入口網站中下載 App Service Web 應用程式的發行設定檔。 在 web 應用程式的刀鋒視窗中，按一下 [ **取得發行設定檔**, ，然後將檔案儲存到您的電腦。
 
-    ![下載發行設定檔][] PortalDownloadPublishProfile
+    ![Download publish profile][PortalDownloadPublishProfile]
 
     接著，您會將此檔案匯入 Visual Studio Web 應用程式中。
 
 2. 在 Visual Studio 中，以滑鼠右鍵按一下 [方案總管] 中的專案名稱，然後選取 **發行**。
 
-    ![選取 [發佈][] HCVSRightClickProjectSelectPublish
+    ![Select publish][HCVSRightClickProjectSelectPublish]
 
 3. 在 **發行 Web** ] 對話方塊，請在 **設定檔** 索引標籤上，選擇 [ **匯入**。
 
-    ![匯入][] HCVSPublishWebDialogImport
+    ![Import][HCVSPublishWebDialogImport]
 
 4. 瀏覽至您下載的發行設定檔，加以選取，然後按 **確定**。
 
-    ![瀏覽至設定檔][] HCVSBrowseToImportPubProfile
+    ![Browse to profile][HCVSBrowseToImportPubProfile]
 
 5. 您的發行資訊會匯入並顯示上 **連接** 對話方塊索引標籤。
 
-    ![發行][] HCVSClickPublish
+    ![Click Publish][HCVSClickPublish]
 
     按一下 [ **發行**。
 
@@ -272,23 +272,23 @@
 
 1. 右上角的 [在 Azure 上到網頁上，選擇 [ **登入**。
 
-    ![測試登入][] HCTestLogIn
+    ![Test log in][HCTestLogIn]
 
 2. 您的 App Service Web 應用程式現在已連接到您本機電腦上的 Web 應用程式成員資格資料庫。 若要驗證這一點，請以您先前在本機資料庫中輸入的相同認證登入。
 
-    ![Hello 問候語][] HCTestHelloContoso
+    ![Hello greeting][HCTestHelloContoso]
 
 3. 若要進一步測試新的混合式連線，請登出您的 Azure Web 應用程式，再以另一名使用者的身分註冊。 提供新的使用者名稱和密碼，然後再按一下 **註冊**。
 
-    ![測試註冊另一位使用者][] HCTestRegisterRelecloud
+    ![Test register another user][HCTestRegisterRelecloud]
 
 4. 若要驗證新使用者的認證已透過混合式連線儲存在您的本機資料庫中，請在本機電腦上開啟 SQL Management Studio。 在 [物件總管] 中，展開 **MembershipDB** 資料庫，然後再展開 **資料表**。 以滑鼠右鍵按一下 **dbo。AspNetUsers** 成員資格資料表，然後選擇 **Select Top 1000 Rows** 以檢視結果。
 
-    ![檢視結果][] HCTestSSMSTree
+    ![View the results][HCTestSSMSTree]
 
 5. 您的本機成員資格資料表此時會將兩個帳戶都顯示出來 - 您在本機建立的帳戶，以及您在 Azure 雲端中建立的帳戶。 您在雲端中建立的帳戶已透過 Azure 的混合式連線功能儲存到您的內部部署資料庫。
 
-    ![在內部資料庫中註冊的使用者][] HCTestShowMemberDb
+    ![Registered users in on-premises database][HCTestShowMemberDb]
 
 現在，您已在 Azure 雲端中的 Web 應用程式與內部部署 SQL Server 資料庫之間，建立並部署使用混合式連線的 ASP.NET Web 應用程式。 恭喜！
 
@@ -363,4 +363,5 @@
 [HCTestRegisterRelecloud]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F09HCTestRegisterRelecloud.png
 [HCTestSSMSTree]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F10HCTestSSMSTree.png
 [HCTestShowMemberDb]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F11HCTestShowMemberDb.png
+
 

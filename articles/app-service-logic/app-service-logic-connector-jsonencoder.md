@@ -25,21 +25,21 @@ BizTalk JSON 編碼器解碼器連接器協助您的應用程式在 JSON 和 XML
 若要使用 BizTalk JSON 一般檔案編碼器，您必須先建立 BizTalk JSON 一般檔案編碼器 API 應用程式的執行個體。 在建立邏輯應用程式時進行內嵌，或從 Azure Marketplace 選取 BizTalk JSON 編碼器 API 應用程式，即可完成此作業。
 
 ## 在 Logic Apps 的設計工具介面中使用 BizTalk JSON 編碼器
-遵循 [建立邏輯應用程式] 步驟。 BizTalk JSON 編碼器可用來作為動作。 它並沒有任何觸發程序。
+請依照下列步驟 [Creating a Logic App]。 BizTalk JSON 編碼器可用來作為動作。 它並沒有任何觸發程序。
 
 ### 動作
 - 從右窗格中按一下 [BizTalk JSON 編碼器]
 
-    ![動作設定][] 3
+    ![動作設定][3]
 - 按一下 ->
 
-    !動作清單[] 4
+    ![動作清單][4]
 - BizTalk JSON 編碼器支援兩個動作。 選取 *Xml 對 JSON*
 
-    ![JSON 輸入的 Xml][] 5
+    ![Xml 對 JSON 輸入][5]
 - 提供動作的輸入，並進行設定
 
-    ![編碼和傳送設定][] 6
+    ![編碼和傳送已設定][6]
 
 參數|類型|參數說明
 ---|---|---
@@ -49,9 +49,9 @@ BizTalk JSON 編碼器解碼器連接器協助您的應用程式在 JSON 和 XML
 動作傳回輸入內容的 json 表示法。
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以使用邏輯應用程式將它加入商務流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以使用邏輯應用程式將它加入商務流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -67,4 +67,5 @@ BizTalk JSON 編碼器解碼器連接器協助您的應用程式在 JSON 和 XML
 
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
+
 

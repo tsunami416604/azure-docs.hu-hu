@@ -42,13 +42,13 @@
 5. 移除 ServiceDefinition.csdef 和 ServiceConfiguration.csfg 中的所有 Microsoft.AppInsights 設定名稱和值
 
     ![](./media/app-insights-upgrade-vso-azure/csdef.png)
-4. SDK: 以滑鼠右鍵按一下專案並 [選擇 [加入 Application Insights][greenbrown]。 如此會將 SDK 加入到您的專案，同時在 Azure 中建立新 Application Insights 資源。
+4. SDK ︰ 以滑鼠右鍵按一下專案並 [選擇 [加入 Application Insights][greenbrown]。 如此會將 SDK 加入到您的專案，同時在 Azure 中建立新 Application Insights 資源。
 5. 記錄：如果您的程式碼包含對舊 API 的呼叫(例如 LogEvent())，在嘗試建置方案時將會發現它們。 它們更新為 [使用新的 API][track]。
-6. 網頁：如果您的專案包含網頁，請取代 <head> 區段中的指令碼。 通常會有一個複本 Views\Shared\_Layout.cshtml 例如主版頁面中。 [從 Azure 中的 Application Insights 資源的快速入門] 分頁取得新的指令碼][usage]。 
+6. 網頁 ︰ 如果您的專案包含網頁，請取代中的指令碼 <head> 區段。 通常會有一個複本 Views\Shared\_Layout.cshtml 例如主版頁面中。 [從 Azure 中的 Application Insights 資源的快速入門] 分頁取得新的指令碼][usage]。 
 如果您的網頁 logEvent 或 logPage，等主體中包括遙測呼叫 [它們更新為使用新的 API][api]。
-7. 伺服器監視: 如果您的應用程式是在 IIS 上執行的服務，Microsoft 監視代理程式從伺服器解除安裝，然後 [安裝 Application Insights 狀態監視器][redfield]。
-8. Web 測試: 如果您使用 web 可用性測試， [新入口網站上重新建立它們][availability], ，以及其警示。
-9. 警示: 設定 [度量的警示][alerts] Azure 入口網站中。
+7. 伺服器監視 ︰ 如果您的應用程式是在 IIS 上執行的服務，Microsoft 監視代理程式從伺服器解除安裝，然後 [安裝 Application Insights 狀態監視器][redfield]。
+8. Web 測試 ︰ 如果您使用 web 可用性測試， [新入口網站上重新建立它們][availability], ，以及其警示。
+9. 警示 ︰ 設定 [度量的警示][alerts] Azure 入口網站中。
 
 
 ## 如果您具有 Java Web 服務...
@@ -56,10 +56,10 @@
 1. 在您的伺服器機器中，透過從 Web 服務啟動檔中移除 APM 代理程式的參考來停用舊的代理程式。 在 TomCat 伺服器上，編輯 Catalina.bat。 在 JBoss 伺服器上，編輯 Run.bat。 
 2. 重新啟動 Web 服務。
 3. 在 Microsoft Azure 網站中， [加入新的 Application Insights 資源][java]。 在您的開發電腦將加入 [Java SDK][java] 至 web 專案。
-4. 取代網頁 <head> 區段中的指令碼。 (伺服器端 Include 中可能只有一份。)[從 Azure 中新的 Application Insights 資源的快速入門] 分頁取得新的指令碼][usage]。 
+4. 中的指令碼來取代 <head> 您的 web 網頁的區段。 (伺服器端 Include 中可能只有一份。)[從 Azure 中新的 Application Insights 資源的快速入門] 分頁取得新的指令碼][usage]。 
 如果您的網頁 logEvent 或 logPage，等主體中包括遙測呼叫 [它們更新為使用新的 API][track]。
-8. Web 測試: 如果您使用 web 可用性測試， [新入口網站上重新建立它們][availability], ，以及其警示。
-9. 警示: 設定 [度量的警示][alerts] Azure 入口網站中。
+8. Web 測試 ︰ 如果您使用 web 可用性測試， [新入口網站上重新建立它們][availability], ，以及其警示。
+9. 警示 ︰ 設定 [度量的警示][alerts] Azure 入口網站中。
 
 
 
@@ -75,3 +75,4 @@
 [usage]: app-insights-web-track-usage.md
 
  
+

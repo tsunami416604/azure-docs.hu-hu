@@ -3,7 +3,7 @@
 
 >[AZURE.NOTE]您可以快取無論您使用用戶端管理或服務管理驗證行動服務所簽發的權杖。 本教學課程使用服務管理驗證。
 
-1. 在 default.js 專案檔案中，將現有的 **登入** 函式，以下列程式碼:
+1. 在 default.js 專案檔案中，將現有的 **登入** 函式，以下列程式碼 ︰
 
         var credential = null;
         var vault = new Windows.Security.Credentials.PasswordVault();
@@ -31,7 +31,7 @@
             });
         }
 
-2. 取代現有 **驗證** 函式，以下列程式碼:
+2. 取代現有 **驗證** 函式，以下列程式碼 ︰
 
         var authenticate = function () {
             // Try to get a stored credential from the PasswordVault.                
@@ -81,3 +81,4 @@
 3. 重新啟動應用程式兩次。
 
     請注意，第一次啟動時，需要再次使用該提供者登入。 不過，在第二次重新啟動時，可以使用快取的認證，並略過登入。 
+

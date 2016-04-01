@@ -27,12 +27,12 @@
 
 它僅支援使用安裝精靈來安裝 Azure AD Connect。 不支援自動和無訊息安裝。
 
-**問: 我有無法連線到網域的樹系。 如何安裝 Azure AD Connect?**
+**問 ︰ 我有無法連線到網域的樹系。 如何安裝 Azure AD Connect？**
 
 我們已聽過這個意見反應，未來的版本中將會支援。
 
 ## 網路
-**問: 我有防火牆中的網路裝置或其他項目，以限制的最長時間連線可維持開啟我的網路上。 多久我用戶端逾時閾值時，應該使用 Azure AD Connect?**
+**問 ︰ 我有防火牆中的網路裝置或其他項目，以限制的最長時間連線可維持開啟我的網路上。 多久我用戶端逾時閾值時，應該使用 Azure AD Connect？**
 
 所有網路軟體、實體裝置或其他軟硬體限制連線開啟時間上限的閥值應該至少為 5 分鐘 (300 秒)，以便讓安裝 Azure AD Connect 用戶端的伺服器與 Azure Active Directory 連線。 這也適用於所有先前發行的  Microsoft Identity 同步處理工具。
 
@@ -89,4 +89,5 @@
 [Azure AD Connect 客戶支援](https://manage.windowsazure.com/?getsupport=true)
 
 - 使用此連結透過 Azure 入口網站取得支援。
+
 

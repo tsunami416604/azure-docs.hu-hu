@@ -47,10 +47,10 @@
     > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl= {來源] 頁面的 URL} & salt = {string} & sig = {string}*
 
     登入/註冊案例的查詢參數：
-    - **作業**: 識別委派要求的只能是何種 **SignIn** 在此情況下
-    - **returnUrl**: 使用者按下登入或註冊連結時所在頁面的 URL
-    - **salt**: 用來計算安全性雜湊的特殊 salt 字串
-    - **sig**: 要用於比較您自己來計算的安全性雜湊計算的雜湊
+    - **作業**︰ 識別委派要求的只能是何種 **SignIn** 在此情況下
+    - **returnUrl**︰ 使用者按下登入或註冊連結時所在頁面的 URL
+    - **salt**︰ 用來計算安全性雜湊的特殊 salt 字串
+    - **sig**︰ 要用於比較您自己來計算的安全性雜湊計算的雜湊
 
 2. 確認要求來自 Azure API 管理 (選擇性，但基於安全性理由，強烈建議這麼做)
 
@@ -59,7 +59,7 @@
          
     * 比較以上計算的雜湊值 **sig** 查詢參數。 如果兩個雜湊相符，則繼續下一步，否則拒絕要求。
 
-2. 確認您收到登-入/註冊要求: **作業** 查詢參數會設為 「**SignIn**」。
+2. 確認您收到登-入/註冊要求 ︰ **作業** 查詢參數會設為 「**SignIn**」。
 
 3. 顯示 UI 讓使用者登入或註冊
 
@@ -82,10 +82,10 @@
 
 您必須傳遞下列查詢參數，供帳戶管理作業使用。
 
--   **作業**: 識別委派要求 (ChangePassword、 ChangeProfile 或 CloseAccount) 的類型
--   **使用者識別碼**: 要管理之帳戶的使用者識別碼
--   **salt**: 用來計算安全性雜湊的特殊 salt 字串
--   **sig**: 要用於比較您自己來計算的安全性雜湊計算的雜湊
+-   **作業**︰ 識別委派要求 （ChangePassword、 ChangeProfile 或 CloseAccount） 的類型
+-   **使用者識別碼**︰ 要管理之帳戶的使用者識別碼
+-   **salt**︰ 用來計算安全性雜湊的特殊 salt 字串
+-   **sig**︰ 要用於比較您自己來計算的安全性雜湊計算的雜湊
 
 ## <a name="delegate-product-subscription"> </a>委派產品訂閱
 
@@ -103,22 +103,22 @@
 
 1. 接收下列形式的要求：
 
-    > *http://www.yourwebsite.com/apimdelegation?operation= {作業} (& s) productId = {來訂閱產品} (& s) userId = {的使用者提出要求} 和 salt = {string} & sig = {string}*
+    > *http://www.yourwebsite.com/apimdelegation?operation= {作業} （& s) productId = {來訂閱產品} （& s) userId = {的使用者提出要求} 和 salt = {string} & sig = {string}*
 
     產品訂閱案例的查詢參數：
-    - **作業**: 識別委派要求的類型。 對於產品訂閱要求，有效的選項包括：
-        - 「 訂閱 」: 要求訂閱給定的產品使用者提供的識別碼 (請參閱下文)
-        - 「 取消 」: 要求取消訂閱產品的使用者
-        - 「 續訂 」: 要求更新訂閱 (例如，可能過期)
-    - **productId**: 使用者要求訂閱之產品識別碼
-    - **使用者識別碼**: 要求對象的使用者識別碼
-    - **salt**: 用來計算安全性雜湊的特殊 salt 字串
-    - **sig**: 要用於比較您自己來計算的安全性雜湊計算的雜湊
+    - **作業**︰ 識別委派要求的類型。 對於產品訂閱要求，有效的選項包括：
+        - "Subscribe"：為使用者訂閱具有提供之識別碼的 (請參閱下面) 指定產品的要求
+        - "Unsubscribe"：將為使用者取消訂閱產品的要求
+        - "Renew"：續約訂閱的要求 (例如，可能過期)
+    - **productId**︰ 使用者要求訂閱之產品識別碼
+    - **使用者識別碼**︰ 要求對象的使用者識別碼
+    - **salt**︰ 用來計算安全性雜湊的特殊 salt 字串
+    - **sig**︰ 要用於比較您自己來計算的安全性雜湊計算的雜湊
 
 
 2. 確認要求來自 Azure API 管理 (選擇性，但基於安全性理由，強烈建議這麼做)
 
-    * 計算依據字串的 hmac-sha512 **productId**, ，**userId** 和 **salt** 查詢參數:
+    * 計算依據字串的 hmac-sha512 **productId**, ，**userId** 和 **salt** 查詢參數 ︰
         > HMAC (**salt** + '\n' + **productId** + '\n' + **userId**)
          
     * 比較以上計算的雜湊值 **sig** 查詢參數。 如果兩個雜湊相符，則繼續下一步，否則拒絕要求。
@@ -177,3 +177,4 @@
 [example code provided below]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 
+

@@ -29,7 +29,7 @@ Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的�
 
 使用佇列在訊息產生者與取用者之間居中協調，可提供元件之間的固有鬆散結合。 因為產生者和取用者不知道彼此的存在，所以取用者可以升級，而不會對產生者造成任何影響。
 
-建立佇列是一個多步驟的程序。 您透過執行服務匯流排訊息實體 (佇列和主題) 的管理作業 [Microsoft.ServiceBus.NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別的建構方式提供服務匯流排命名空間和使用者認證的基底位址。 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 提供方法來建立、 列舉及刪除訊息實體。 在建立之後 [Microsoft.ServiceBus.TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 物件自 SAS 名稱和金鑰，與服務命名空間管理的物件，您可以使用 [Microsoft.ServiceBus.NamespaceManager.CreateQueue](https://msdn.microsoft.com/library/azure/hh293157.aspx) 方法來建立佇列。 例如：
+建立佇列是一個多步驟的程序。 您透過執行服務匯流排訊息實體 （佇列和主題） 的管理作業 [Microsoft.ServiceBus.NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 類別的建構方式提供服務匯流排命名空間和使用者認證的基底位址。 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 提供方法來建立、 列舉及刪除訊息實體。 在建立之後 [Microsoft.ServiceBus.TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 物件自 SAS 名稱和金鑰，與服務命名空間管理的物件，您可以使用 [Microsoft.ServiceBus.NamespaceManager.CreateQueue](https://msdn.microsoft.com/library/azure/hh293157.aspx) 方法來建立佇列。 例如：
 
 ```
 // Create management credentials
@@ -73,7 +73,7 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
 
 在 [ReceiveAndDelete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 模式中，接收作業是單發式; 也就是服務匯流排收到要求時，它會標示為已取用的訊息並傳回應用程式。 [ReceiveAndDelete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 模式是最簡單的模型，且最適用於應用程式容許在不處理訊息發生失敗時的案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-在 [PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 模式中，接收作業會變成兩階段，因而可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 所接收訊息。 當服務匯流排看到 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 呼叫時，它會將標示為已取用的訊息。
+在 [PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 模式中，接收作業會變成兩階段，因而可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 （或可靠地儲存供未來處理） 之後，完成接收程序的第二個階段 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 所接收訊息。 當服務匯流排看到 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 呼叫時，它會將標示為已取用的訊息。
 
 如果應用程式無法處理訊息，因為某些原因，它可以呼叫 [放棄](https://msdn.microsoft.com/library/azure/hh181837.aspx) 所接收訊息的方法 (而不是 [完成](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx))。 這可讓服務匯流排將訊息解除鎖定，讓此訊息可被相同的取用者或其他競爭取用取再次接收。 其次，鎖定有相關聯的逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會將訊息解除鎖定並且讓訊息可以被重新接收。
 
@@ -118,7 +118,7 @@ foreach (BrokeredMessage message in messageList)
 }
 ```
 
-與佇列類似，訊息接收來自訂用帳戶使用 [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 物件而非 [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) 物件。 建立訂用帳戶用戶端，並將主題名稱、訂用帳戶名稱及 (選擇性) 接收模式當作參數傳遞。 例如，使用 **清查** 訂用帳戶:
+與佇列類似，訊息接收來自訂用帳戶使用 [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 物件而非 [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) 物件。 建立訂用帳戶用戶端，並將主題名稱、訂用帳戶名稱及 (選擇性) 接收模式當作參數傳遞。 例如，使用 **清查** 訂用帳戶 ︰
 
 ```
 // Create the subscription client
@@ -146,7 +146,7 @@ while ((message = auditSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != n
 
 在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要這麼做，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可達成。 這類修改可稱為 *篩選器動作*。 建立訂閱時，您可以提供訊息，這兩個系統屬性的屬性運作的篩選條件運算式 (例如， **標籤**) 和自訂應用程式屬性 (例如， **StoreName**。)在此情況下，SQL 篩選運算式是選擇性的；若沒有 SQL 篩選運算式，將會對訂用帳戶的所有訊息執行在該訂用帳戶上定義的所有篩選動作。
 
-使用上述範例中的，只有來自篩選訊息 **Store1**, ，您會建立儀表板訂用帳戶，如下所示:
+使用上述範例中的，只有來自篩選訊息 **Store1**, ，您會建立儀表板訂用帳戶，如下所示 ︰
 
 ```
 namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFilter("StoreName = 'Store1'"));
@@ -154,7 +154,7 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 
 採用此訂用帳戶篩選器，只有 `StoreName` 屬性設定為 `Store1` 的訊息會複製到 `Dashboard` 訂用帳戶的虛擬佇列。
 
-如需可能篩選值的詳細資訊，請參閱文件 [SqlFilter](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) 和 [SqlRuleAction](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlruleaction.aspx) 類別。 此外，請參閱 [代理傳訊: 進階篩選](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) 範例。
+如需可能篩選值的詳細資訊，請參閱文件 [SqlFilter](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) 和 [SqlRuleAction](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlruleaction.aspx) 類別。 此外，請參閱 [代理傳訊 ︰ 進階篩選](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) 範例。
 
 ## 事件中樞
 
@@ -171,5 +171,6 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 - [服務匯流排代理傳訊 REST 教學課程](service-bus-brokered-tutorial-rest.md)
 - [事件中心開發人員指南](../event-hubs/event-hubs-programming-guide.md)
 - [代理傳訊︰進階篩選器](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
+
 
 

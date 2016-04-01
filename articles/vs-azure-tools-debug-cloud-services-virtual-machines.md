@@ -39,7 +39,7 @@ Visual Studio 提供您偵錯 Azure 雲端服務和虛擬機器的不同選項�
 
 1. 逐步執行應用程式的命令，即可 **偵錯** 功能表，並在您的程式碼中設定中斷點。 在偵錯工具中逐步執行應用程式時，窗格會隨著應用程式的目前狀態而更新。 停止偵錯時，即會刪除應用程式部署。如果您的應用程式包含 Web 角色，並且已經將 [啟動] 動作屬性設定為啟動 Web 瀏覽器，Visual Studio 會在瀏覽器中啟動 Web 應用程式。如果您變更服務組態中角色執行個體的數目，您必須停止雲端服務，然後重新啟動偵錯，以便您可以偵錯角色的這些新執行個體。
 
-    **注意:** 當您停止執行或偵錯您的服務時，不停止本機計算模擬器和儲存體模擬器。 您必須從通知區域明確停止它們。
+    **注意 ︰** 當您停止執行或偵錯您的服務時，不停止本機計算模擬器和儲存體模擬器。 您必須從通知區域明確停止它們。
 
 
 ## 在 Azure 中偵錯雲端服務
@@ -168,7 +168,7 @@ Visual Studio ASP.NET 專案提供選項，讓您建立可用於測試應用程�
 
     ![Azure 活動記錄檔](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
 
-1. 發佈您的專案中所述 [How to: 部署 Web 專案使用單鍵發行 Visual Studio 中](https://msdn.microsoft.com/library/dd465337.aspx)。 因為您想要在虛擬機器上進行偵錯 **設定** 頁面 **發行 Web** 精靈中，選取 **偵錯** 做為組態。 這樣可確保程式碼符號在偵錯時可供使用。
+1. 發佈您的專案中所述 [How to ︰ 部署 Web 專案使用單鍵發行 Visual Studio 中](https://msdn.microsoft.com/library/dd465337.aspx)。 因為您想要在虛擬機器上進行偵錯 **設定** 頁面 **發行 Web** 精靈中，選取 **偵錯** 做為組態。 這樣可確保程式碼符號在偵錯時可供使用。
 
     ![發佈設定](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718349.png)
 
@@ -190,4 +190,5 @@ Visual Studio ASP.NET 專案提供選項，讓您建立可用於測試應用程�
 
 - 使用 **Intellitrace** 從發行伺服器收集的呼叫和事件記錄檔。 請參閱 [使用 IntelliTrace 和 Visual Studio 發行的雲端服務進行偵錯](http://go.microsoft.com/fwlink/?LinkID=623016)。
 - 使用 **Azure 診斷** 若要從角色內的程式碼執行記錄的詳細的資訊，是否在開發環境中，或在 Azure 中執行的角色。 請參閱 [使用 Azure 診斷收集記錄資料](http://go.microsoft.com/fwlink/p/?LinkId=400450)。
+
 

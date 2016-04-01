@@ -23,7 +23,7 @@
 
 > [AZURE.NOTE] 這份文件中的資訊是以 Linux 為基礎的 HDInsight 叢集的特定項目。 Windows 叢集上的資訊，請參閱 [存取 YARN 應用程式登入 Windows 為基礎的 HDInsight](hdinsight-hadoop-access-yarn-app-logs.md)
 
-## 先決條件
+## 必要條件
 
 * 以 Linux 為基礎的 HDInsight 叢集。
 
@@ -95,4 +95,5 @@ YARN ResourceManager UI 叢集前端節點上執行，而且可以存取透過 A
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]:http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
+
 

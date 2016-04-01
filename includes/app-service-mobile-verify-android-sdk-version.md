@@ -11,7 +11,7 @@
 
 1. 在 Android Studio 中，按一下 [ **工具** = > **Android** = > **SDK Manager**。 若尚未安裝最新版的 SDK 平台，則按一下以安裝它。 記下版本號碼。
 
-2. 在 [專案總管] 索引標籤中，在 **Gradle 指令碼**, ，開啟檔案 **build.gradle (modeule: 應用程式)**。 請確認 **compileSdkVersion** 和 **buildToolsVersion** 設定最新安裝的 SDK 版本。 標記外觀如下：
+2. 在 [專案總管] 索引標籤中，在 **Gradle 指令碼**, ，開啟檔案 **build.gradle (modeule ︰ 應用程式)**。 請確認 **compileSdkVersion** 和 **buildToolsVersion** 設定最新安裝的 SDK 版本。 標記外觀如下：
  
             compileSdkVersion 'Google Inc.:Google APIs:23'
             buildToolsVersion "23.0.0"
@@ -19,4 +19,5 @@
 3. 在 Android Studio 專案總管] 中以滑鼠右鍵按一下專案節點，選擇 [ **屬性**, ，然後在左欄中選擇 **Android**。 請確認 **專案建置目標** 設為相同的 SDK 版本 **targetSdkVersion**。
 
 4. 與 Eclipse 的情況不同，在 Android Studio 中，不再使用資訊清單檔案來指定目標 SDK 和最低的 SDK 版本。
+
 

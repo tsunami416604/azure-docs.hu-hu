@@ -36,3 +36,4 @@
  
     ![](./media/mobile-services-generate-aad-app-registration-access-key-rbac/aad-app-settings.png)
   
+

@@ -5,7 +5,7 @@
 
 如果您想要使用 Java 或 PHP，請參閱 [如何從 Java/PHP 使用通知中樞](../articles/notification-hubs/notification-hubs-java-backend-how-to.md)。 您可以從任何後端使用傳送通知 [通知中樞 REST 介面](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)。
 
-略過步驟 1-3，如果您建立主控台應用程式傳送通知，當您完成 [開始使用通知中樞] [入門]。
+如果您建立主控台應用程式傳送通知，您在完成時，請略過步驟 1-3 [開始使用通知中樞][get-started]。
 
 1. 在 Visual Studio 中建立新的 Visual C# 主控台應用程式： 
 
@@ -15,7 +15,7 @@
 
         Install-Package Microsoft.Azure.NotificationHubs
     
-    這會加入到使用 Azure 通知中心 SDK 參考 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification 中樞 NuGet 封裝</a>. 
+    這會使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 封裝</a> 加入對 Azure 通知中樞 SDK 的參考。 
 
 3. 開啟 Program.cs 檔案，並新增下列 `using` 陳述式：
 
@@ -51,7 +51,7 @@
 
 6. 在上述程式碼，取代 `<hub name>` 和 `<connection string with full access>` 與通知中樞名稱和連接字串預留位置 *DefaultFullSharedAccessSignature* 從您的通知中心的儀表板。
 
-7. 新增以下幾行，在 **Main** 方法:
+7. 新增以下幾行，在 **Main** 方法 ︰
 
          SendTemplateNotificationAsync();
          Console.ReadLine();
@@ -77,4 +77,5 @@
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
+
 

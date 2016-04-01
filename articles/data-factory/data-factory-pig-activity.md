@@ -83,7 +83,7 @@ script | 指定 Pig 指令碼內嵌 | 否
     1809,2014-05-04 05:24:22.2100000,23,192.84.66.141,KingHill
     .....
 
- **Pig 的指令碼** 這項資料看起來像這樣的程序:
+ **Pig 的指令碼** 這項資料看起來像這樣的程序 ︰
 
     PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
     
@@ -179,12 +179,13 @@ script | 指定 Pig 指令碼內嵌 | 否
           }
         }  
       
-- 在 Pig 指令碼中參考使用的參數 '**$parameterName**' 如下列範例所示:
+- 在 Pig 指令碼中參考使用的參數 '**$parameterName**' 如下列範例所示 ︰
 
         PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);   
         GroupProfile = Group PigSampleIn all;       
         PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);      
         Store PigSampleOut into '$Output' USING PigStorage (','); 
+
 
 
 

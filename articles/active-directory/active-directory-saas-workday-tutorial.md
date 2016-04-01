@@ -78,10 +78,10 @@
 
     ![設定應用程式 URL](./media/active-directory-saas-workday-tutorial/IC782957.png "Configure App URL")
 
-    1.  在 **登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入 Workday (例如: *https://impl.workday.com/ \<tenant\>/login-saml2.htmld*)
-    2.  在 **Workday 回覆 URL** 文字方塊中，輸入 Workday 回覆 URL (例如: *https://impl.workday.com/ \<tenant\>/login-saml.htmld*)。
+    1.  在 **登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入 Workday (例如 ︰ *https://impl.workday.com/ \<tenant\>/login-saml2.htmld*)
+    2.  在 **Workday 回覆 URL** 文字方塊中，輸入 Workday 回覆 URL (例如 ︰ *https://impl.workday.com/ \<tenant\>/login-saml.htmld*)。
 
-        >[AZURE.NOTE] 回覆 URL 必須有子網域 (例如: www，wd2，wd3，wd3 impl、 wd5、 wd5 impl)。 
+        >[AZURE.NOTE] 回覆 URL 必須有子網域 (例如 ︰ www，wd2，wd3，wd3 impl、 wd5、 wd5 impl)。 
         >使用像是 「*http://www.myworkday.com*」 的運作方式，但"*http://myworkday.com*」 並不會。 
  
 4.  在 **在工作日設定單一登入** ] 頁面上，下載您的憑證，按一下 [ **下載憑證**, ，然後儲存您的電腦上的憑證檔案。
@@ -102,7 +102,7 @@
 
     ![編輯租用戶安全性](./media/active-directory-saas-workday-tutorial/IC782925.png "Edit Tenant Security")
 
-9.  在 **重新導向 Url** 區段中，執行下列步驟:
+9.  在 **重新導向 Url** 區段中，執行下列步驟 ︰
 
     ![重新導向 URL](./media/active-directory-saas-workday-tutorial/IC7829581.png "Redirection URLs")
 
@@ -115,12 +115,12 @@
      9.4.  在 **環境** 文字方塊中，輸入環境名稱。  
 
 
-       >[AZURE.NOTE] The value of the Environment attribute is tied to the value of the tenant URL:
+       >[AZURE.NOTE] 環境屬性的值會繫結至租用戶 URL 的值 ︰
         >
-        >-   If the domain name of the Workday tenant URL starts with impl (e.g.: *https://impl.workday.com/\<tenant\>/login-saml2.htmld*), the **Environment** attribute must be set to Implementation.
-        >-   If the domain name starts with something else, you need to contact Workday to get the matching **Environment** value.
+        >-   如果 Workday 租用戶的網域名稱 URL 開頭為 impl (例如 ︰ *https://impl.workday.com/ \<tenant\>/login-saml2.htmld*)、 **環境** 屬性必須設定為實作。
+        >-   如果網域名稱的其他項目，您必須連絡 Workday 以取得相符的 **環境** 值。
 
-10. 在 **SAML 設定** 區段中，執行下列步驟:
+10. 在 **SAML 設定** 區段中，執行下列步驟 ︰
 
     ![SAML 設定](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML Setup")
 
@@ -132,7 +132,7 @@
 
     ![SAML 身分識別提供者](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML Identity Providers")
 
-     11.1.  在 [身分識別提供者名稱] 文字方塊中，輸入提供者名稱 (例如: *SPInitiatedSSO*)。
+     11.1.  在 [身分識別提供者名稱] 文字方塊中，輸入提供者名稱 (例如 ︰ *SPInitiatedSSO*)。
 
      11.2.  在 Azure 網站中，在 **在工作日設定單一登入** 對話方塊頁面中，複製 **身分識別提供者 ID** 值，並接著將它貼入 **簽發者** 文字方塊。
 
@@ -215,3 +215,4 @@ Workday 支援小組會為您建立此使用者。
     ![是](./media/active-directory-saas-workday-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

@@ -389,3 +389,4 @@ This tutorial demonstrated how to enable a Windows Store app to handle write con
 [Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
 [System Properties]: http://go.microsoft.com/fwlink/?LinkId=331143
 
+

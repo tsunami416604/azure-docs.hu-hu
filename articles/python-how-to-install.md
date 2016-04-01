@@ -51,7 +51,7 @@ Azure SDK for Python 內含的元件可讓您開發、部署及管理適用於 A
 
 如果您已經安裝 Python，您可以使用 PIP 在現有的 Python 2.7 或 Python 3.3+ 環境中，安裝所有用戶端程式的組合。 這會下載的封裝 [Python 套件索引][] (PyPI)。
 
-請注意，您可能需要使用 `sudo` ie 命令在 Linux 和 MacOS 上。 `sudo pip install azure`。
+請注意，您可能需要在 Linux 和 MacOS IE 上使用 `sudo` 命令。`sudo pip install azure`。
 
     pip install azure
 
@@ -81,7 +81,7 @@ Azure SDK for Python 內含的元件可讓您開發、部署及管理適用於 A
 * [Microsoft Azure SDK for Python 2.7][]
 * [Microsoft Azure SDK for Python 3.4][]
 
-**注意:** 在 Windows Server 為了下載 WebPI 安裝程式您可能需要設定 IE ESC 設定 (開始/系統管理工具] / [伺服器管理員] / [本機伺服器，然後按一下 [ **IE 增強式安全性設定**, ，將其設為 Off)
+**注意 ︰** 在 Windows Server 為了下載 WebPI 安裝程式您可能需要設定 IE ESC 設定 (開始/系統管理工具] / [伺服器管理員] / [本機伺服器，然後按一下 [ **IE 增強式安全性設定**, ，將其設為 Off)
 
 ### Python 2.7
 
@@ -116,7 +116,7 @@ WebPI 安裝程式提供開發 Python Azure 應用程式所需的任何項目。
 
  **Azure SDK for Python** WebPI 產品並不是傳統上來說，但實際上不同產品 32 位元 Python 2.7/3.4，例如 Azure 用戶端程式庫的 Python 等一起搭售的集合中的應用程式。  這樣的做法導致 WebPI 本身沒有傳統的解除安裝程式，因此您需要從 Windows 控制台分別移除 WebPI 安裝的程式。  
 
-如果您想要重新安裝 **Azure SDK for Python**, ，只要開啟 PowerShell 命令提示字元，以系統管理員身分然後再執行下列命令:
+如果您想要重新安裝 **Azure SDK for Python**, ，只要開啟 PowerShell 命令提示字元，以系統管理員身分然後再執行下列命令 ︰
 
     rm -force "HKLM:\SOFTWARE\Microsoft\Python Tools for Azure"
 
@@ -129,7 +129,7 @@ WebPI 安裝程式提供開發 Python Azure 應用程式所需的任何項目。
 
 ## Python Tools for Visual Studio
 
-[Python Tools for Visual Studio][] (PTVS) 是 Microsoft 將 VS 轉變為成熟的 Python IDE 的免費 /OSS 外掛程式:
+[Python Tools for Visual Studio][] (PTVS) 是 Microsoft 將 VS 轉變為成熟的 Python IDE 的免費 /OSS 外掛程式 ︰
 
 ![how-to-install-python-ptvs](./media/python-how-to-install/how-to-install-python-ptvs.png)
 
@@ -203,4 +203,5 @@ PTVS 可以和您現有的 Visual Studio 2013 或 2015 安裝一同運作。  �
 [table storage]: storage-python-how-to-use-table-storage.md
 [queue storage]: storage-python-how-to-use-queue-storage.md
 [blob storage]: storage-python-how-to-use-blob-storage.md
+
 

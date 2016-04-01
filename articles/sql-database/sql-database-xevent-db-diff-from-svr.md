@@ -38,7 +38,7 @@
 > Azure [服務更新](http://azure.microsoft.com/updates/?service=sql-database) GA 公告時，頁面會有貼文。
 
 
-## 先決條件
+## 必要條件
 
 
 本主題假設您已經有一些下列項目的知識：
@@ -123,7 +123,7 @@ Azure SQL Database 擁有 [動態管理檢視 (Dmv)](http://msdn.microsoft.com/l
 | **sys.dm_xe_database_sessions** | 針對範圍為目前資料庫的每個事件工作階段傳回資料列。 |
 
 
-在 Microsoft SQL Server，類似目錄檢視名稱不含 *\_database* 部分名稱，例如:
+在 Microsoft SQL Server，類似目錄檢視名稱不含 *\_database* 部分名稱，例如 ︰
 
 
 - **sys.dm_xe_sessions**, ，而不是名稱<br/>**sys.dm_xe_database_sessions，以查看**。
@@ -265,7 +265,8 @@ SAS 權杖您產生的 Azure 儲存體容器必須指定 **rwl** 的權限。 �
 <!--
 ('lock_acquired' event.)
 
-- SQL Server 的程式碼範例: [判斷的查詢會持有鎖定](http://msdn.microsoft.com/library/bb677357.aspx)
-- SQL Server 的程式碼範例: [發現物件具有最鎖定採取上面](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
+
 

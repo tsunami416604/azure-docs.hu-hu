@@ -72,49 +72,49 @@ Microsoft HPC Pack 提供功能來執行各種大規模 HPC 和平行應用程�
     </IaaSClusterConfig>
 ```
 
-    **Additional things to know**
+    **其他應該知道的事項**
 
-    *   Deploy all the Linux compute nodes within one cloud service to use the RDMA network connection between the nodes.
+    *   將所有 Linux 計算節點部署在一個雲端服務內，以在節點之間使用 RDMA 網路連線。
 
-    *   After deploying the Linux nodes, if you need to connect by SSH to perform any additional administrative tasks, find the SSH connection details for each Linux VM in the Azure portal.  
+    *   部署 Linux 節點之後，如果您需要以 SSH 連線以執行任何其他系統管理工作，請在 Azure 入口網站中參考每個 Linux VM 的 SSH 連線詳細資料。  
         
-*   **Intel MPI** - To run OpenFOAM on Linux compute nodes in Azure, you need the Intel MPI Library 5 runtime from the [Intel.com site](https://software.intel.com/en-us/intel-mpi-library/). In a later step, you'll install Intel MPI on your Linux compute nodes. To prepare for this, after you register with Intel, follow the link in the confirmation email to the related web page and copy the download link for the .tgz file for the appropriate version of Intel MPI. This article is based on Intel MPI version 5.0.3.048.
+*   **Intel MPI** -若要在 Azure 中，Linux 運算節點上執行 OpenFOAM 需要 Intel MPI Library 5 執行階段從 [Intel.com 網站](https://software.intel.com/en-us/intel-mpi-library/)。 在後續步驟中，您將在 Linux 計算節點上安裝 Intel MPI。 若要為此做準備，註冊 Intel 之後，請遵循確認電子郵件中相關網頁的連結，並針對適當版本的 Intel MPI 複製 .tgz 檔案的下載連結。 這篇文章根據 Intel MPI 5.0.3.048 版。
 
-*   **OpenFOAM Source Pack** - Download the OpenFOAM Source Pack software for Linux from the [OpenFOAM Foundation site](http://www.openfoam.org/download/source.php). This article is based on Source Pack version 2.3.1, available for download as OpenFOAM-2.3.1.tgz. Follow the instructions later in this article to unpack and compile OpenFOAM on the Linux compute nodes.
+*   **OpenFOAM 來源組件** -OpenFOAM 來源組件軟體下載適用於從 Linux [OpenFOAM Foundation 網站](http://www.openfoam.org/download/source.php)。 本文是依據 Source Pack 2.3.1 版 (可透過 OpenFOAM-2.3.1.tgz 的形式下載) 而撰寫的。 請依照本文稍後的指示，在 Linux 計算節點上解壓縮並編譯 OpenFOAM。
 
-*   **EnSight** (optional) - To see the results of your OpenFOAM simulation, download and install the Windows version of the [EnSight](https://www.ceisoftware.com/download/) visualization and analysis program on the head node of the HPC Pack cluster. Licensing and download information are at the EnSight site.
+*   **EnSight** （選用）-請參閱 OpenFOAM 模擬的結果、 下載及安裝的 Windows 版本 [EnSight](https://www.ceisoftware.com/download/) HPC Pack 叢集的前端節點上的視覺效果與分析程式。 授權和下載資訊請見 EnSight 網站。
 
 
-## Set up mutual trust between compute nodes
+## 設定運算節點之間的相互信任
 
-Running a cross-node job on multiple Linux nodes requires the nodes to trust each other (by **rsh** or **ssh**). When you create the HPC Pack cluster with the Microsoft HPC Pack IaaS deployment script, the script automatically sets up permanent mutual trust for the administrator account you specify. For non-administrator users you create in the cluster's domain, you have to set up temporary mutual trust among the nodes when a job is allocated to them, and destroy the relationship after the job is complete. To do this for each user, provide an RSA key pair to the cluster which HPC Pack uses to establish the trust relationship.
+多個 Linux 節點上執行跨節點的作業需要相互信任的節點 (由 **rsh** 或 **ssh**)。 當您使用 Microsoft HPC Pack IaaS 部署指令碼建立 HPC Pack 叢集時，指令碼會自動為您指定的系統管理員帳戶設定永久相互信任。 針對您在叢集的網域中建立的非系統管理員使用者，您必須在將工作配置給他們時，設定節點間的暫時相互信任，並且在工作完成之後終結關聯性。 若要為每個使用者執行此動作，提供 HPC Pack 用來建立信任關係的 RSA 金鑰組給叢集。
 
-### Generate an RSA key pair
+### 產生 RSA 金鑰組
 
-It's easy to generate an RSA key pair, which contains a public key and a private key, by running the Linux **ssh-keygen** command.
+很容易產生 RSA 金鑰組，其中包含公開金鑰和私密金鑰，藉由執行 Linux **ssh-keygen** 命令。
 
-1.  Log on to a Linux computer.
+1.  登入 Linux 電腦。
 
-2.  Run the following command.
+2.  執行下列命令。
 
     ```
     ssh-keygen -t rsa
     ```
 
-    >[AZURE.NOTE] Press **Enter** to use the default settings until the command is completed. Do not enter a passphrase here; when prompted for a password, just press **Enter**.
+    >[AZURE.NOTE] 按下 **Enter** 使用預設設定，直到命令完成為止。 請勿輸入複雜密碼。當系統提示您輸入密碼，只需按 **Enter**。
 
-    ![Generate an RSA key pair][keygen]
+    ![產生 RSA 金鑰組][keygen]
 
-3.  Change directory to the ~/.ssh directory. The private key is stored in id_rsa and the public key in id_rsa.pub.
+3.  將目錄變更為 ~/.ssh 目錄。 私密金鑰會儲存在 id_rsa，而公開金鑰會儲存在 id_rsa.pub。
 
-    ![Private and public keys][keys]
+    ![私密和公開金鑰][keys]
 
-### Add the key pair to the HPC Pack cluster
-1.  Make a Remote Desktop connection to your head node with your HPC Pack administrator account (the administrator account you set up when you ran the deployment script).
+### 將金鑰組新增至 HPC Pack 叢集
+1.  使用您的 HPC Pack 系統管理員帳戶與您的前端節點進行遠端桌面連線 (當您執行部署指令碼時設定的系統管理員帳戶)。
 
-2. Use standard Windows Server procedures to create a domain user account in the cluster's Active Directory domain. For example, use the Active Directory User and Computers tool on the head node. The examples in this article assume you create a domain user named hpclab\hpcuser.
+2. 您可以使用標準的 Windows Server 程序在叢集的 Active Directory 網域中建立網域使用者帳戶。 例如，在前端節點上使用 Active Directory 使用者和電腦工具。 本文中的範例假設您建立名為 hpclab\hpcuser 的網域使用者。
 
-3.  Create a file named C:\cred.xml and copy the RSA key data into it. You can find an example of this file in the sample files at the end of this article.
+3.  建立名為 C:\cred.xml 的檔案，並且將 RSA 金鑰資料複製到其中。 您可以在本文結尾處的範例檔案中找到此檔案的範例。
 
     ```
     <ExtendedData>
@@ -123,25 +123,25 @@ It's easy to generate an RSA key pair, which contains a public key and a private
     </ExtendedData>
     ```
 
-4.  Open a Command Prompt and enter the following command to set the credentials data for the hpclab\hpcuser account. You use the **extendeddata** parameter to pass the name of C:\cred.xml file you created for the key data.
+4.  開啟命令提示字元並輸入下列命令，以設定 hpclab\hpcuser 帳戶的認證資料。 您使用 **x** C:\cred.xml 您建立的檔案的索引鍵資料的名稱傳遞的參數。
 
     ```
     hpccred setcreds /extendeddata:c:\cred.xml /user:hpclab\hpcuser /password:<UserPassword>
     ```
 
-    This command completes successfully without output. After setting the credentials for the user accounts you need to run jobs, store the cred.xml file in a secure location, or delete it.
+    這個命令會成功完成而沒有輸出。 為您執行工作所需的使用者帳戶設定認證之後，將 cred.xml 檔案儲存在安全的位置，或將它刪除。
 
-5.  If you generated the RSA key pair on one of your Linux nodes, remember to delete the keys after you finish using them. HPC Pack does not set up mutual trust if it finds an existing id_rsa file or id_rsa.pub file.
+5.  如果您在其中一個 Linux 節點上產生 RSA 金鑰組，請記得在您完成使用後刪除金鑰。 如果 HPC Pack 找到現有的 id_rsa 檔案或 id_rsa.pub 檔案，則它不會設定相互信任。
 
->[AZURE.IMPORTANT] We don’t recommend running a Linux job as a cluster administrator on a shared cluster, because a job submitted by an administrator runs under the root account on the Linux nodes. A job submitted by a non-administrator user runs under a local Linux user account with the same name as the job user, and HPC Pack sets up mutual trust for this Linux user across all the nodes allocated to the job. You can set up the Linux user manually on the Linux nodes before running the job, or HPC Pack creates the user automatically when the job is submitted. If HPC Pack creates the user, HPC Pack deletes it after the job completes. The keys are removed after job completion on the nodes to reduce security threats.
+>[AZURE.IMPORTANT] 我們不建議叢集系統管理員身分執行 Linux 工作上共用的叢集，因為在 Linux 節點上系統管理員所提交的工作是根帳號底下執行。 非系統管理員使用者所提交的工作會在具有與工作使用者相同名稱的本機 Linux 使用者帳戶下執行，HPC Pack 會跨配置給工作的所有節點，為此 Linux 使用者設定相互信任。 您可以在執行工作之前，手動在 Linux 節點上設定 Linux 使用者，否則 HPC Pack 會在工作提交時自動建立使用者。 如果 HPC Pack 建立使用者，HPC Pack 會在工作完成之後刪除它。 金鑰會在工作完成之後於節點上移除，以降低安全性威脅。
 
-## Set up a file share for Linux nodes
+## 為 Linux 節點設定檔案共用
 
-Now set up a standard SMB share on a folder on the head node, and mount the shared folder on all Linux nodes to allow the Linux nodes to access application files with a common path. If you want, you can use another file sharing option, such as an Azure Files share - recommended for many scenarios - or an NFS share. See the file sharing information and detailed steps in [Get started with Linux compute nodes in an HPC Pack Cluster in Azure](virtual-machines-linux-cluster-hpcpack.md).
+現在在前端節點上的資料夾設定標準 SMB 共用，並且在所有 Linux 節點上掛接共用資料夾，以允許 Linux 節點存取具有共用路徑的應用程式檔案。 如果您想，您可以使用其他檔案共用選項 (例如 Azure 檔案共用，在許多案例中皆建議使用此選項) 或 NFS 共用。 請參閱的檔案共用資訊和詳細的步驟，在 [開始使用 Linux 運算節點，在 Azure 中的 HPC Pack 叢集](virtual-machines-linux-cluster-hpcpack.md)。
 
-1.  Create a folder on the head node, and share it to everyone by setting Read/Write privileges. For example, share C:\OpenFOAM on the head node as \\\\SUSE12RDMA-HN\OpenFOAM. Here, *SUSE12RDMA-HN* is the host name of the head node.
+1.  在前端節點上建立資料夾，並藉由設定讀取/寫入權限與每個人共用。 例如，共用 C:\OpenFOAM 前端節點上做為 \\\SUSE12RDMA-HN\OpenFOAM。 在這裡， *SUSE12RDMA HN* 是前端節點的主機名稱。
 
-2.  Open a Windows PowerShell window and run the following commands to mount the shared folder.
+2.  開啟 Windows PowerShell 視窗並執行下列命令來裝載共用資料夾。
 
     ```
     clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
@@ -149,24 +149,24 @@ Now set up a standard SMB share on a folder on the head node, and mount the shar
     clusrun /nodegroup:LinuxNodes mount -t cifs //SUSE12RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>`,password='<password>’`,dir_mode=0777`,file_mode=0777
     ```
 
-The first command creates a folder named /openfoam on all nodes in the LinuxNodes group. The second command mounts the shared folder //SUSE12RDMA-HN/OpenFOAM onto the Linux nodes with dir_mode and file_mode bits set to 777. The *username* and *password* in the command should be the credentials of a user on the head node.
+第一個命令會在 LinuxNodes 群組中的所有節點上建立名為 /openfoam 的資料夾。 第二個命令會將共用資料夾 //SUSE12RDMA-HN/OpenFOAM 掛接至 Linux 節點上，且 dir_mode 和 file_mode 位元會設為 777。  *Username* 和 *密碼* 命令中應該是前端節點上的使用者的認證。
 
->[AZURE.NOTE]The “\`” symbol in the second command is an escape symbol for PowerShell. “\`,” means the “,” (comma character) is a part of the command.
+>[AZURE.NOTE]「 \ 」 「 第二個命令中的符號是 powershell 的逸出符號。 「 \'，"表示"，"（逗號） 是命令的一部分。
 
-## Install MPI and OpenFOAM
+## 安裝 MPI 和 OpenFOAM
 
-To run OpenFOAM as an MPI job on the RDMA network, you need to compile OpenFOAM with the Intel MPI libraries. 
+若要在 RDMA 網路上以 MPI 工作的形式執行 OpenFOAM，您必須使用 Intel MPI Library 編譯 OpenFOAM。 
 
-You'll first run several **clusrun** commands to install Intel MPI libraries and OpenFOAM on all of your Linux nodes. Use the head node share configured previously to share the installation files among the Linux nodes.
+您將會先執行數個 **clusrun** 命令來安裝 Intel MPI 程式庫和 OpenFOAM 所有 Linux 節點上。 請使用先前設定的前端節點共用，在 Linux 節點之間共用安裝檔案。
 
->[AZURE.IMPORTANT]These installation and compiling steps are examples and require some knowledge of Linux system administration, particularly to ensure that dependent compilers and libraries are installed correctly. You might need to modify certain environment variables or other settings needed for your versions of Intel MPI and OpenFOAM. For details see [Intel MPI Library for Linux Installation Guide](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html) and [OpenFOAM Source Pack Installation](http://www.openfoam.org/download/source.php).
+>[AZURE.IMPORTANT]這些安裝與編譯步驟為範例，需要一些 Linux 系統管理，尤其是為了確保已正確安裝相依的編譯器和程式庫的知識。 您可能需要修改您的 Intel MPI 和 OpenFOAM 版本所需的特定環境變數或其他設定。 如需詳細資訊，請參閱 [Linux 安裝指南的 Intel MPI Library](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html) 和 [OpenFOAM 來源組件安裝](http://www.openfoam.org/download/source.php)。
 
 
-### Install Intel MPI
+### 安裝 Intel MPI
 
-Save the downloaded installation package for Intel MPI (l_mpi_p_5.0.3.048.tgz in this example) in C:\OpenFoam on the head node so that the Linux nodes can access this file from /openfoam. Then run **clusrun** to install Intel MPI library on all of the Linux nodes.
+將下載的 Intel MPI 安裝套件 (在此範例中為 l_mpi_p_5.0.3.048.tgz) 儲存在前端節點的 C:\OpenFoam 中，使 Linux 節點能夠從 /openfoam 存取此檔案。 然後執行 **clusrun** 所有 Linux 節點上安裝 Intel MPI 程式庫。
 
-1.  The following commands copy the installation package and extract it to /opt/intel on each node.
+1.  下列命令會複製安裝套件，並將其解壓縮到每個節點的 /opt/intel 上。
 
     ```
     clusrun /nodegroup:LinuxNodes mkdir -p /opt/intel
@@ -176,39 +176,39 @@ Save the downloaded installation package for Intel MPI (l_mpi_p_5.0.3.048.tgz in
     clusrun /nodegroup:LinuxNodes tar -xzf /opt/intel/l_mpi_p_5.0.3.048.tgz -C /opt/intel/
     ```
 
-2.  To install Intel MPI Library silently, use a silent.cfg file. You can find an example in the sample files at the end of this article. Place this file in the shared folder /openfoam. For details about the silent.cfg file, see [Intel MPI Library for Linux Installation Guide - Silent Installation](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html#silentinstall).
+2.  若要以無訊息方式安裝 Intel MPI Library，請使用 silent.cfg 檔案。 您可以在本文結尾處的範例檔案中找到範例。 將此檔案放在共用資料夾 /openfoam 中。 如需 silent.cfg 檔案的詳細資訊，請參閱 [Linux 安裝指南-無訊息安裝的 Intel MPI Library](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html#silentinstall)。
 
-    >[AZURE.TIP]Make sure that you save your silent.cfg file as a text file with Linux line endings (LF only, not CR LF). This ensures that it runs properly on the Linux nodes.
+    >[AZURE.TIP]請確定您您 silent.cfg 將檔案儲存為文字檔，Linux 的行尾結束符號 （只有 LF、 CR LF 不）。 這可確保它在 Linux 節點上正常運作。
 
-3.  Install Intel MPI Library in silent mode.
+3.  以無訊息模式安裝 Intel MPI Library。
  
     ```
     clusrun /nodegroup:LinuxNodes bash /opt/intel/l_mpi_p_5.0.3.048/install.sh --silent /openfoam/silent.cfg
     ```
     
-### Configure MPI
+### 設定 MPI
 
-For testing, you should add the following lines to the /etc/security/limits.conf on each of the Linux nodes:
+若要進行測試，您應在每個 Linux 節點的 /etc/security/limits.conf 中加入以下幾行：
 
 ```
 *               hard    memlock         unlimited
 *               soft    memlock         unlimited
 ```
 
-Restart the Linux nodes after you update the limits.conf file. For example, use the following **clusrun** command.
+更新 limits.conf 檔案之後，請重新啟動 Linux 節點。 例如，使用下列 **clusrun** 命令。
 
 ```
-clusrun /nodegroup:LinuxNodes systemctl 重新開機
+clusrun /nodegroup:LinuxNodes systemctl reboot
 ```
 
-After restarting, ensure that the shared folder is mounted as /openfoam.
+重新啟動之後，請確定共用資料夾已掛接為 /openfoam。
 
-### Compile and install OpenFOAM
+### 編譯和安裝 OpenFOAM
 
-Save the downloaded installation package for the OpenFOAM Source Pack (OpenFOAM-2.3.1.tgz in this example) to C:\OpenFoam on the head node so that the Linux nodes can access this file from /openfoam. Then run **clusrun** to compile OpenFOAM on all of the Linux nodes.
+將下載的 OpenFOAM Source Pack 安裝套件 (在此範例中為 OpenFOAM-2.3.1.tgz) 儲存至前端節點的 C:\OpenFoam，使 Linux 節點能夠從 /openfoam 存取此檔案。 然後執行 **clusrun** 編譯 OpenFOAM 所有 Linux 節點上的。
 
 
-1.  Create a folder /opt/OpenFOAM on each Linux node, copy the source package to this folder, and extract it there.
+1.  在每個 Linux 節點上建立資料夾 /opt/OpenFOAM、將來源封裝複製到此資料夾，並在該處加以解壓縮。
 
     ```
     clusrun /nodegroup:LinuxNodes mkdir -p /opt/OpenFOAM
@@ -218,9 +218,9 @@ Save the downloaded installation package for the OpenFOAM Source Pack (OpenFOAM-
     clusrun /nodegroup:LinuxNodes tar -xzf /opt/OpenFOAM/OpenFOAM-2.3.1.tgz -C /opt/OpenFOAM/
     ```
 
-2.  To compile OpenFOAM with the Intel MPI Library, first set up some environment variables for both Intel MPI and OpenFOAM. Use a bash script called settings.sh to do this. You can find an example in the sample files at the end of this article. Place this file (saved with Linux line endings) in the shared folder /openfoam. This file also contains settings for the MPI and OpenFOAM runtimes that you use later to run an OpenFOAM job.
+2.  若要使用 Intel MPI Library 編譯 OpenFOAM，請先設定 Intel MPI 和 OpenFOAM 的某些環境變數。 請使用名為 settings.sh 的 Bash 指令碼來執行此動作。 您可以在本文結尾處的範例檔案中找到範例。 將此檔案 (使用 Linux 行尾結束符號儲存的) 放在共用資料夾 /openfoam 中。 此檔案也包含您後續用來執行 OpenFOAM 工作的 MPI 和 OpenFOAM 執行階段的設定。
 
-3. Install dependent packages needed to compile OpenFOAM. Depending on your Linux distribution, you might first need to add a repository. Run **clusrun** commands similar to the following:
+3. 安裝編譯 OpenFOAM 所需的相依封裝。 根據您的 Linux 散發套件，您可能需要先新增儲存機制。 執行 **clusrun** 類似下列的命令 ︰
 
     ```
     clusrun /nodegroup:LinuxNodes zypper ar http://download.opensuse.org/distribution/13.2/repo/oss/suse/ opensuse
@@ -228,41 +228,41 @@ Save the downloaded installation package for the OpenFOAM Source Pack (OpenFOAM-
     clusrun /nodegroup:LinuxNodes zypper -n --gpg-auto-import-keys install --repo opensuse --force-resolution -t pattern devel_C_C++
     ```
     
-    If necessary, ssh to each Linux node to run the commands to confirm that they run properly.
+    如有需要，ssh 連接到每個 Linux 節點，以執行命令確認它們可正常執行。
 
-4.  Run the following command to compile OpenFOAM. The compilation process will take some time to complete and will generate a large amount of log information to standard output, so use the **/interleaved** option to display the output interleaved.
+4.  執行下列命令以編譯 OpenFOAM。 編譯程序會花費一些時間才能完成，並會產生大量的記錄資訊至標準輸出，因此，使用 **/ 交錯** 選項，以顯示交錯的輸出。
 
     ```
     clusrun /nodegroup:LinuxNodes /interleaved source /openfoam/settings.sh `&`& /opt/OpenFOAM/OpenFOAM-2.3.1/Allwmake
     ```
     
-    >[AZURE.NOTE]The “\`” symbol in the command is an escape symbol for PowerShell. “\`&” means the “&” is a part of the command.
+    >[AZURE.NOTE]「 \' 」 命令中的符號是 powershell 的逸出符號。 「 \' （& s) 」 表示"&"是命令的一部分。
 
-## Prepare to run an OpenFOAM job
+## 準備執行 OpenFOAM 工作
 
-Now get ready to run an MPI job called sloshingTank3D, which is one of the OpenFoam samples, on 2 Linux nodes. 
+現在，請準備執行名為 sloshingTank3D 的 MPI 工作，這是 2 個 Linux 節點上的 OpenFoam 範例之一。 
 
-### Set up the runtime environment
+### 設定執行階段環境
 
-Run the following command in a Windows PowerShell window on the head node to set up the runtime environments for MPI and OpenFOAM on all Linux nodes. (This command is valid for SUSE Linux only.)
+在前端節點上的 Windows PowerShell 視窗中執行下列命令，以在所有 Linux 節點上設定 MPI 和 OpenFOAM 的執行階段環境。 (此命令僅適用於 SUSE Linux。)
 
 ```
 clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 ```
 
-### Prepare sample data
+### 準備範例資料
 
-Use the head node share you configured previously to share files among the Linux nodes (mounted as /openfoam).
+請使用您先前設定的前端節點共用，在 Linux 節點之間共用檔案 (掛接為 /openfoam)。
 
-1.  SSH to one of your Linux compute nodes.
+1.  透過 SSH 連接到您其中一個 Linux 計算節點。
 
-2.  Run the following command to set up the OpenFOAM runtime environment, if you haven’t already done this.
+2.  執行下列命令以設定 OpenFOAM 執行階段環境 (如果您尚未執行此作業)。
 
     ```
     $ source /openfoam/settings.sh
     ```
     
-3.  Copy the sloshingTank3D sample to the shared folder and navigate to it.
+3.  將 sloshingTank3D 範例複製到共用資料夾，並瀏覽到該資料夾。
 
     ```
     $ cp -r $FOAM_TUTORIALS/multiphase/interDyMFoam/ras/sloshingTank3D /openfoam/
@@ -270,15 +270,15 @@ Use the head node share you configured previously to share files among the Linux
     $ cd /openfoam/sloshingTank3D
     ```
 
-4.  When you use the default parameters of this sample, it can take tens of minutes or longer to run, so you might want to modify some parameters to make it run faster. One simple choice is to modify the time step variables deltaT and writeInterval in the system/controlDict file, which stores all input data relating to the control of time and reading and writing solution data. For example, you could change the value of deltaT from 0.05 to 0.5 and the value of writeInterval from 0.05 to 0.5.
+4.  如果您使用此範例的預設參數，其執行時間可能需要十分鐘或更久，因此您可以修改某些參數，讓它執行得更快。 一個簡單的選擇是修改 system/controlDict 檔案中的時間步階變數 deltaT 和 writeInterval；此檔案儲存了所有與控制時間以及讀取和寫入解決方案資料有關的輸入資料。 例如，您可以將 deltaT 的值從 0.05 變更為 0.5，以及將 writeInterval 的值從 0.05 變更為 0.5。
 
-    ![Modify step variables][step_variables]
+    ![修改步階變數][step_variables]
 
-5.  Specify desired values for the variables in the system/decomposeParDict file. This example uses 2 Linux nodes each with 8 cores, so set numberOfSubdomains to 16 and n of hierarchicalCoeffs to (1 1 16), which means run OpenFOAM in parallel with 16 processes. For more about how to run OpenFOAM in parallel, see [OpenFOAM User Guide: 3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4).
+5.  在 system/decomposeParDict 檔案中指定所要的變數值。 此範例使用 2 個分別具有 8 個核心的 Linux 節點，因此，請將 numberOfSubdomains 設為 16 和，並將 hierarchicalCoeffs 的 n 設為 (1 1 16)，這表示會與 16 程序平行執行 OpenFOAM。 如需有關如何以平行方式執行 OpenFOAM 的詳細資訊，請參閱 [OpenFOAM 使用者指南 ︰ 3.4 執行的應用程式，以平行方式](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4)。
 
-    ![Decompose processes][decompose]
+    ![分解程序][decompose]
 
-6.  Run the following commands from the sloshingTank3D directory to prepare the sample data.
+6.  從 sloshingTank3D 目錄執行下列命令，以準備範例資料。
 
     ```
     $ . $WM_PROJECT_DIR/bin/tools/RunFunctions
@@ -292,327 +292,327 @@ Use the head node share you configured previously to share files among the Linux
     $ runApplication setFields  
     ```
     
-7.  On the head node, you should see the sample data files are copied into C:\OpenFoam\sloshingTank3D. (C:\OpenFoam is the shared folder on the head node.)
+7.  在前端節點上，您應該會看到範例資料檔案複製到 C:\OpenFoam\sloshingTank3D 中。 (C:\OpenFoam 是前端節點上的共用資料夾。)
 
-    ![Data files on the head node][data_files]
+    ![前端節點上的資料檔案][data_files]
 
-### Host file for mpirun
+### mpirun 的主機檔案
 
-In this step you create a host file (a list of compute nodes) which the **mpirun** command will use.
+您可以在此步驟中建立主應用程式檔案 （運算節點的清單） 的 **mpirun** 命令會使用。
 
-1.  On one of the Linux nodes, create a new file named hostfile under /openfoam, so this file can be reached at /openfoam/hostfile on all Linux nodes.
+1.  其中一個 Linux 節點上的 /openfoam 下，建立名為 hostfile 的新檔案，讓此檔案可從所有 Linux 節點上的 /openfoam/hostfile 來存取。
 
-2.  Write your Linux node names into this file. In this example, the file looks like this:
+2.  將您的 Linux 節點名稱寫入此檔案中。 在此範例中，檔案如下所示：
     
     ```       
     SUSE12RDMA-LN1
     SUSE12RDMA-LN2
     ```
     
-    >[AZURE.TIP]You can also create this file at C:\OpenFoam\hostfile on the head node. If you do this, save it as a text file with Linux line endings (LF only, not CR LF). This ensures that it runs properly on the Linux nodes.
+    >[AZURE.TIP]您也可以在 C:\OpenFoam\hostfile 建立此檔案，在前端節點上。 如果您這麼做，請將其儲存為具有 Linux 行尾結束符號 (只有 LF，不是 CR LF) 的文字檔。 這可確保它在 Linux 節點上正常運作。
 
-    **Bash script wrapper**
+    **Bash 指令碼包裝函式**
 
-    If you have many Linux nodes and your job will only run on some of them, it’s not a good idea to use a fixed host file, because you don’t know which nodes will be allocated to your job. In this case, write a bash script wrapper for **mpirun** to create the host file automatically. You can find an example bash script wrapper called hpcimpirun.sh in the sample files at the end of this article and save it as /openfoam/hpcimpirun.sh. This example script does the following:
+    如果您有許多 Linux 節點，而您的工作只會在其中一些節點執行，則不應使用固定的主機檔案，因為您不知道哪些節點會配置給您的工作。 在此情況下，撰寫的 bash 指令碼包裝函式 **mpirun** 自動建立的主機檔案。 您可以在本文結尾的範例檔案中找到名為 hpcimpirun.sh 的範例 Bash 指令碼包裝函式，並將其儲存為 /openfoam/hpcimpirun.sh。 此範例指令碼會執行下列動作：
 
-    1.  Sets up the environment variables for **mpirun**, and some addition command parameters to run the MPI job through the RDMA network. In this case, it sets the following:
+    1.  設定環境變數的 **mpirun**, ，與透過 rdma 執行 MPI 工作某些加法命令參數。 在此範例中，它會設定下列項目：
 
         *   I_MPI_FABRICS=shm:dapl
         *   I_MPI_DAPL_PROVIDER=ofa-v2-ib0
         *   I_MPI_DYNAMIC_CONNECTION=0
 
-    2.  Creates a host file according to the environment variable $CCP_NODES_CORES, which is set by the HPC head node when the job is activated.
+    2.  根據環境變數 $CCP_NODES_CORES 建立主機檔案，該變數會在工作啟動時由 HPC 前端節點設定。
 
-        The format of $CCP_NODES_CORES follows this pattern:
+        $CCP_NODES_CORES 的格式會遵循下列模式：
 
         ```
         <Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>...`
         ```
 
-        where
+        其中
 
-        * `<Number of nodes>`: the number of nodes allocated to this job.  
+        * `<Number of nodes>`：配置給此工作的節點數目。  
         
-        * `<Name of node_n_...>`: the name of each node allocated to this job.
+        * `<Name of node_n_...>`：配置給此工作的各節點名稱。
         
-        * `<Cores of node_n_...>`: the number of cores on the node allocated to this job.
+        * `<Cores of node_n_...>`：配置給此工作的節點核心數目。
 
-        For example, if the job needs 2 nodes to run, $CCP_NODES_CORES will be similar to
+        例如，如果工作需要 2 個核心來執行，則 $CCP_NODES_CORES 會類似於：
         
         ```
         2 SUSE12RDMA-LN1 8 SUSE12RDMA-LN2 8
         ```
         
-    3.  Calls the **mpirun** command and appends 2 parameters to the command line.
+    3.  呼叫 **mpirun** 命令，並將 2 個參數附加到命令列。
 
-        * `--hostfile <hostfilepath>: <hostfilepath>` - the path of the host file the script creates
+        * `--hostfile <hostfilepath>: <hostfilepath>` - 指令碼所建立的主機檔案路徑
 
-        * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}` - an environment variable set by the HPC Pack head node, which stores the number of total cores allocated to this job. In this case it specifies the number of processes for **mpirun**.
+        * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}` - HPC Pack 前端節點所設定的環境變數，會儲存配置給此工作的總核心數目。 在此情況下它會指定處理序的數目 **mpirun**。
 
 
-## Submit an OpenFOAM job
+## 提交 OpenFOAM 工作
 
-Now you can submit a job in HPC Cluster Manager. You'll need to pass the script hpcimpirun.sh in the command lines for some of the job tasks.
+現在，您可以在 HPC 叢集管理員中提交工作。 對於某些工作作業，您必須將指令碼 hpcimpirun.sh 傳遞到命令列中。
 
-1. Connect to your cluster head node and start HPC Cluster Manager.
+1. 連接至您的叢集前端節點並且啟動 HPC 叢集管理員。
 
-2. **In Resource Management**, ensure that the Linux compute nodes are in the **Online** state. If they are not, select them and click **Bring Online**.
+2. **在 [資源管理**, ，確保 Linux 運算節點處於 **線上** 狀態。 如果沒有，請選取它們，然後按一下 [ **上線**。
 
-3.  In **Job Management**, click **New Job**.
+3.  在 **作業管理**, ，按一下 [ **新工作**。
 
-4.  Enter a name for job such as _sloshingTank3D_.
+4.  輸入工作的名稱，例如 _sloshingTank3D_。
 
-    ![Job details][job_details]
+    ![工作詳細資料][job_details]
 
-5.  In **Job resources**, choose the type of resource as “Node” and set the Minimum to 2. This will run the job on 2 Linux nodes each of which has 8 cores in this example.
+5.  在 **作業資源**, 、 選擇的資源為 「 節點 」 類型，以及設定最小值為 2。 在此範例中，這會在 2 個分別有 8 個核心的 Linux 節點上執行工作。
 
-    ![Job resources][job_resources]
+    ![工作資源][job_resources]
 
-6.  Add 4 tasks to the job with the following command lines and settings for the tasks.
+6.  使用下列命令列和作業設定，將 4 個作業新增至工作。
 
-    >[AZURE.NOTE]Running `source /openfoam/settings.sh` sets up the OpenFOAM and MPI runtime environments, so each of the following tasks calls it before the OpenFOAM command.
+    >[AZURE.NOTE]執行 `source /openfoam/settings.sh` 設定 OpenFOAM 和 MPI 執行階段環境中，因此每項工作 OpenFOAM 命令之前呼叫它。
 
-    *   **Task 1**. Run **decomposePar** to generate data files for running **interDyMFoam** in parallel.
+    *   **工作 1**。 執行 **decomposePar** 來產生資料檔案執行 **interDyMFoam** 以平行方式。
     
-        *   Assign 1 node to the task
+        *   將 1 個節點指派給作業
 
-        *   **Command line** - `source /openfoam/settings.sh && decomposePar -force > /openfoam/decomposePar${CCP_JOBID}.log`
+        *   **命令列** - `source /openfoam/settings.sh && decomposePar -force > /openfoam/decomposePar${CCP_JOBID}.log`
     
-        *   **Working directory** - /openfoam/sloshingTank3D
+        *   **工作目錄** -openfoam/sloshingTank3D
         
-        See the following figure. You configure the remaining tasks similarly.
+        請參閱下圖。 以同樣的方式設定其餘的工作。
 
-        ![Task 1 details][task_details1]
+        ![作業 1 詳細資料][task_details1]
 
-    *   **Task 2**. Run **interDyMFoam** in parallel to compute the sample.
+    *   **工作 2**。 執行 **interDyMFoam** 以平行方式來計算範例。
 
-        *   Assign 2 nodes to the task
+        *   將 2 個節點指派給作業
 
-        *   **Command line** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh interDyMFoam -parallel > /openfoam/interDyMFoam${CCP_JOBID}.log`
+        *   **命令列** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh interDyMFoam -parallel > /openfoam/interDyMFoam${CCP_JOBID}.log`
 
-        *   **Working directory** - /openfoam/sloshingTank3D
+        *   **工作目錄** -openfoam/sloshingTank3D
 
-    *   **Task 3**. Run **reconstructPar** to merge the sets of time directories from each processor_N_ directory into a single set of time directories.
+    *   **工作 3**。 執行 **reconstructPar** 合併成單一集合的時間目錄的時間從每個 processor_N_ 目錄的目錄集。
 
-        *   Assign 1 node to the task
+        *   將 1 個節點指派給作業
 
-        *   **Command line** - `source /openfoam/settings.sh && reconstructPar > /openfoam/reconstructPar${CCP_JOBID}.log`
+        *   **命令列** - `source /openfoam/settings.sh && reconstructPar > /openfoam/reconstructPar${CCP_JOBID}.log`
 
-        *   **Working directory** - /openfoam/sloshingTank3D
+        *   **工作目錄** -openfoam/sloshingTank3D
 
-    *   **Task 4**. Run **foamToEnsight** in parallel to convert the OpenFOAM result files into EnSight format and place the EnSight files in a directory named Ensight in the case directory.
+    *   **工作 4**。 執行 **foamToEnsight** 以平行方式將 OpenFOAM 結果轉換成 EnSight 檔案格式化和 EnSight 檔案放在案例的目錄中名為 Ensight 的目錄。
 
-        *   Assign 2 nodes to the task
+        *   將 2 個節點指派給作業
 
-        *   **Command line** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh foamToEnsight -parallel > /openfoam/foamToEnsight${CCP_JOBID}.log`
+        *   **命令列** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh foamToEnsight -parallel > /openfoam/foamToEnsight${CCP_JOBID}.log`
 
-        *   **Working directory** - /openfoam/sloshingTank3D
+        *   **工作目錄** -openfoam/sloshingTank3D
 
-6.  Add dependencies to these tasks in ascending task order.
+6.  以遞增作業順序，將相依性新增至這些作業。
 
-    ![Task dependencies][task_dependencies]
+    ![作業相依性][task_dependencies]
 
-7.  Click **Submit** to run this job.
+7.  按一下 [ **提交** 即可執行此作業。
 
-    By default, HPC Pack submits the job as your current logged-on user account. After you click **Submit**, you might see a dialog box prompting you to enter the user name and password.
+    根據預設，HPC Pack 會以您目前登入的使用者帳戶提交工作。 按一下之後 **提交**, ，您可能會看到對話方塊，提示您輸入使用者名稱和密碼。
 
-    ![Job credentials][creds]
+    ![工作認證][creds]
 
-    Under some conditions HPC Pack remembers the user information you input before and won’t show this dialog box. To make HPC Pack show it again, enter the following in a Command Prompt window and then submit the job.
+    在某些情況下 HPC Pack 會記住您以前輸入的使用者資訊，所以不會顯示此對話方塊。 若要讓 HPC Pack 再次顯示該對話方塊，請在命令提示字元視窗中輸入下列命令，然後提交工作。
 
     ```
     hpccred delcreds
     ```
 
-8.  The job takes from tens of minutes to several hours according to the parameters you have set for the sample. In the heat map you will see the job running on 2 Linux nodes. 
+8.  執行工作可能需要數十分鐘到數小時不等，視您為範例設定的參數而定。 在熱圖中，您會看到工作在 2 個 Linux 節點上執行。 
 
-    ![Heat map][heat_map]
+    ![熱圖][heat_map]
 
-    On each node 8 processes are started.
+    每個節點會啟動 8 個程序。
 
-    ![Linux processes][linux_processes]
+    ![Linux 程序][linux_processes]
 
-9.  When the job finishes, find the job results in folders under C:\OpenFoam\sloshingTank3D, and the log files at C:\OpenFoam.
-
-
-## View results in EnSight
-
-Optionally use [EnSight](https://www.ceisoftware.com/) to visualize and analyze the results of the OpenFOAM job. For more about visualization and animation in EnSight, see this [video guide](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html).
-
-1.  After you install EnSight on the head node, start it.
-
-2.  Open C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
-
-    You will see a tank in the viewer.
-
-    ![Tank in EnSight][tank]
-
-3.  Create an **Isosurface** from **internalMesh** and then choose the variable **alpha_water**.
-
-    ![Create an isosurface][isosurface]
-
-4.  Set the color for **Isosurface_part** created in the previous step. For example, set it to water blue.
-
-    ![Edit isosurface color][isosurface_color]
-
-5.  Create an **Iso-volume** from **walls** by selecting **walls** in the **Parts** panel and click the **Isosurfaces** button in the toolbar.
-
-6.  In the dialog box, select **Type** as **Isovolume** and set the Min of **Isovolume range** to 0.5. Click **Create with selected parts** to create the isovolume.
-
-7.  Set the color for **Iso_volume_part** created in the previous step. For example, set it to deep water blue.
-
-8.  Set the color for **walls**. For example, set it to transparent white.
-
-9. Now click **Play** to see the results of the simulation.
-
-    ![Tank result][tank_result]
-
-## Sample files
+9.  工作完成時，請 C:\OpenFoam\sloshingTank3D 下的資料夾中找出工作結果，記錄檔則位於 C:\OpenFoam 上。
 
 
-### Sample cred.xml file
+## 在 EnSight 中檢視結果
+
+選擇性地使用 [EnSight](https://www.ceisoftware.com/) 視覺化和分析 OpenFOAM 工作的結果。 如需詳細資訊視覺效果和 EnSight 中的動畫，請參閱此 [視訊指南](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html)。
+
+1.  在前端節點上安裝 EnSight 之後，請加以啟動。
+
+2.  開啟 C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case。
+
+    您會在檢視器中看見一個儲存槽。
+
+    ![EnSight 中的儲存槽][tank]
+
+3.  建立 **Isosurface** 從 **internalMesh** ，然後選擇 [變數 **alpha_water**。
+
+    ![建立 isosurface][isosurface]
+
+4.  設定色彩 **Isosurface_part** 先前步驟中建立。 例如，將它設為水藍色。
+
+    ![編輯 isosurface 色彩][isosurface_color]
+
+5.  建立 **Iso 磁碟區** 從 **牆** 選取 **牆** 中 **部分** ] 面板中，按一下 [ **Isosurfaces** 工具列按鈕。
+
+6.  在對話方塊中，選取 **類型** 為 **Isovolume** 設定的最小值和 **Isovolume 範圍** 為 0.5。 按一下 [ **建立與所選部分** 建立 isovolume。
+
+7.  設定色彩 **Iso_volume_part** 先前步驟中建立。 例如，將它設為深藍色。
+
+8.  設定色彩 **牆**。 例如，將它設為透明的白色。
+
+9. 現在按一下 [ **播放** 查看模擬的結果。
+
+    ![儲存槽結果][tank_result]
+
+## 範例檔案
+
+
+### 範例 cred.xml 檔案
 
 ```
 <ExtendedData>
-  <PrivateKey>---BEGIN RSA 私用金鑰--
+  <PrivateKey>-----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEAxJKBABhnOsE9eneGHvsjdoXKooHUxpTHI1JVunAJkVmFy8JC
 qFt1pV98QCtKEHTC6kQ7tj1UT2N6nx1EY9BBHpZacnXmknpKdX4Nu0cNlSphLpru
 lscKPR3XVzkTwEF00OMiNJVknq8qXJF1T3lYx3rW5EnItn6C3nQm3gQPXP0ckYCF
 Jdtu/6SSgzV9kaapctLGPNp1Vjf9KeDQMrJXsQNHxnQcfiICp21NiUCiXosDqJrR
-AfzePdl0XwsNngouy8t0fPlNSngZvsx + kPGh/AKakKIYS0cO9W3FmdYNW8Xehzkc
+AfzePdl0XwsNngouy8t0fPlNSngZvsx+kPGh/AKakKIYS0cO9W3FmdYNW8Xehzkc
 VzrtJhU8x21hXGfSC7V0ZeD7dMeTL3tQCVxCmwIDAQABAoIBAQCve8Jh3Wc6koxZ
 qh43xicwhdwSGyliZisoozYZDC/ebDb/Ydq0BYIPMiDwADVMX5AqJuPPmwyLGtm6
-9hu5p46aycrQ5 + QA299g6DlF + PZtNbowKuvX + rRvPxagrTmupkCswjglDUEYUHPW
+9hu5p46aycrQ5+QA299g6DlF+PZtNbowKuvX+rRvPxagrTmupkCswjglDUEYUHPW
 05wQaNoSqtzwS9Y85M/b24FfLeyxK0n8zjKFErJaHdhVxI6cxw7RdVlSmM9UHmah
-wTkW8HkblbOArilAHi6SlRTNZG4gTGeDzPb7fYZo3hzJyLbcaNfJscUuqnAJ 6pT +
+wTkW8HkblbOArilAHi6SlRTNZG4gTGeDzPb7fYZo3hzJyLbcaNfJscUuqnAJ+6pT
 iY6NNp1E8PQgjvHe21yv3DRoVRM4egqQvNZgUbYAMUgr30T1UoxnUXwk2vqJMfg2
-Nzw0ESGRAoGBAPkfXjjGfc4HryqPkdx0kjXs0bXC3js2g4IXItK9YUFeZzf 476y +
+Nzw0ESGRAoGBAPkfXjjGfc4HryqPkdx0kjXs0bXC3js2g4IXItK9YUFeZzf+476y
 OTMQg/8DUbqd5rLv7PITIAqpGs39pkfnyohPjOe2zZzeoyaXurYIPV98hhH880uH
-ZUhOxJYnlqHGxGT7p2PmmnAlmY4TSJrp12VnuiQVVVsXWOGPqHx4S4f9AoGBAMn /
+ZUhOxJYnlqHGxGT7p2PmmnAlmY4TSJrp12VnuiQVVVsXWOGPqHx4S4f9AoGBAMn/
 vuea7hsCgwIE25MJJ55FYCJodLkioQy6aGP4NgB89Azzg527WsQ6H5xhgVMKHWyu
-Q1snp q8LyzD0i1veEvWb8EYifsMyTIPXOUTwZgzaTTCeJNHdc4gw1U22vd7OBYy +
-nZCU7Tn8Pe6eIMNztnVduiv + 2QHuiNPgN7M73/x3AoGBAOL0IcmFgy0EsR8MBq0Z
+Q1snp+q8LyzD0i1veEvWb8EYifsMyTIPXOUTwZgzaTTCeJNHdc4gw1U22vd7OBYy
+nZCU7Tn8Pe6eIMNztnVduiv+2QHuiNPgN7M73/x3AoGBAOL0IcmFgy0EsR8MBq0Z
 ge4gnniBXCYDptEINNBaeVStJUnNKzwab6PGwwm6w2VI3thbXbi3lbRAlMve7fKK
 B2ghWNPsJOtppKbPCek2Hnt0HUwb7qX7Zlj2cX/99uvRAjChVsDbYA0VJAxcIwQG
 TxXx5pFi4g0HexCa6LrkeKMdAoGAcvRIACX7OwPC6nM5QgQDt95jRzGKu5EpdcTf
 g4TNtplliblLPYhRrzokoyoaHteyxxak3ktDFCLj9eW6xoCZRQ9Tqd/9JhGwrfxw
 MS19DtCzHoNNewM/135tqyD8m7pTwM4tPQqDtmwGErWKj7BaNZARUlhFxwOoemsv
-R6DbZyECgYEAhjL2N3Pc + WW + 8x2bbIBN3rJcMjBBIivB62AwgYZnA2D5wk5o0DKD
-eesGSKS5l22ZMXJNShgzPKmv3HpH22CSVpO0sNZ6R iG8a3oq4QkU61MT1CfGoMI +
-a8lxTKnZCsRXU1HexqZs + DSc + 30tz50bNqLdido/l5B4EJnQP03ciO0 =
----結束 RSA 私用金鑰--</PrivateKey>
-  <PublicKey>ssh rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEkoEAGGc6wT16d4Ye + + IgKnbU2JQKJeiwOomtEB / N492XRfCw2eCi7Ly3R8 + U1KeBm + zH6Q8aH8ApqQohhLRw71bcWZ1g1bxd6HORxXOu0mFTzHbWFcZ9ILtXRl4Pt0x5Mve1AJXEKb username@servername;</PublicKey>
+R6DbZyECgYEAhjL2N3Pc+WW+8x2bbIBN3rJcMjBBIivB62AwgYZnA2D5wk5o0DKD
+eesGSKS5l22ZMXJNShgzPKmv3HpH22CSVpO0sNZ6R+iG8a3oq4QkU61MT1CfGoMI
+a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
+-----END RSA PRIVATE KEY-----</PrivateKey>
+  <PublicKey>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEkoEAGGc6wT16d4Ye+yN2hcqigdTGlMcjUlW6cAmRWYXLwkKoW3WlX3xAK0oQdMLqRDu2PVRPY3qfHURj0EEellpydeaSekp1fg27Rw2VKmEumu6Wxwo9HddXORPAQXTQ4yI0lWSerypckXVPeVjHetbkSci2foLedCbeBA9c/RyRgIUl227/pJKDNX2Rpqly0sY82nVWN/0p4NAyslexA0fGdBx+IgKnbU2JQKJeiwOomtEB/N492XRfCw2eCi7Ly3R8+U1KeBm+zH6Q8aH8ApqQohhLRw71bcWZ1g1bxd6HORxXOu0mFTzHbWFcZ9ILtXRl4Pt0x5Mve1AJXEKb username@servername;</PublicKey>
 </ExtendedData>
 ```
-### Sample silent.cfg file
+### 範例 silent.cfg 檔案
 
 ```
-# 用來檢查無訊息組態檔模式
+# Patterns used to check silent configuration file
 #
-# anythingpat-任何字串
-# filepat-檔案位置模式 (/ file/location/to/license.lic)
-# lspat-授權伺服器的位址模式 (0123@hostname)
-# snpat-序號模式 (ABCD 01234567)
+# anythingpat - any string
+# filepat     - the file location pattern (/file/location/to/license.lic)
+# lspat       - the license server address pattern (0123@hostname)
+# snpat       - the serial number pattern (ABCD-01234567)
 
-# 接受 EULA，有效值為: {接受、 拒絕}
-ACCEPT_EULA = 接受
+# accept EULA, valid values are: {accept, decline}
+ACCEPT_EULA=accept
 
-# 選擇性的錯誤行為，有效值為: {是、 否}
-CONTINUE_WITH_OPTIONAL_ERROR = [是]
+# optional error behavior, valid values are: {yes, no}
+CONTINUE_WITH_OPTIONAL_ERROR=yes
 
-# 安裝位置，有效值為: {/ 選擇/intel filepat}
-PSET_INSTALL_DIR = / 選擇/intel
+# install location, valid values are: {/opt/intel, filepat}
+PSET_INSTALL_DIR=/opt/intel
 
-# 繼續進行覆寫現有的安裝目錄的有效值為: {是、 否}
-CONTINUE_WITH_INSTALLDIR_OVERWRITE = [是]
+# continue with overwrite of existing installation directory, valid values are: {yes, no}
+CONTINUE_WITH_INSTALLDIR_OVERWRITE=yes
 
-# 若要安裝的元件清單中，有效值為: {所有，預設值，anythingpat}
-元件 = 預設值
+# list of components to install, valid values are: {ALL, DEFAULTS, anythingpat}
+COMPONENTS=DEFAULTS
 
-# 安裝模式，有效值為: {安裝、 修改、 修復、 解除安裝。
-PSET_MODE = 安裝
+# installation mode, valid values are: {install, modify, repair, uninstall}
+PSET_MODE=install
 
-# 非 RPM 資料庫目錄，有效值為: {filepat}
-#NONRPM_DB_DIR = filepat
+# directory for non-RPM database, valid values are: {filepat}
+#NONRPM_DB_DIR=filepat
 
-# 序號，有效值為: {snpat}
-#ACTIVATION_SERIAL_NUMBER = snpat
+# Serial number, valid values are: {snpat}
+#ACTIVATION_SERIAL_NUMBER=snpat
 
-# 授權檔或授權伺服器上，有效值為: {lspat filepat}
-#ACTIVATION_LICENSE_FILE =
+# License file or license server, valid values are: {lspat, filepat}
+#ACTIVATION_LICENSE_FILE=
 
-# 啟動型別，有效值為: {exist_lic，license_server，license_file，trial_lic，serial_number}
-ACTIVATION_TYPE = trial_lic
+# Activation type, valid values are: {exist_lic, license_server, license_file, trial_lic, serial_number}
+ACTIVATION_TYPE=trial_lic
 
-# 叢集描述檔案的路徑，有效值為: {filepat}
-#CLUSTER_INSTALL_MACHINES_FILE = filepat
+# Path to the cluster description file, valid values are: {filepat}
+#CLUSTER_INSTALL_MACHINES_FILE=filepat
 
-# Intel () 軟體改進計畫選擇加入的有效值為: {是、 否}
-PHONEHOME_SEND_USAGE_DATA = 否
+# Intel(R) Software Improvement Program opt-in, valid values are: {yes, no}
+PHONEHOME_SEND_USAGE_DATA=no
 
-# 執行 RPM 檔案的數位簽章驗證，有效值為: {是、 否}
-SIGNING_ENABLED = [是]
+# Perform validation of digital signatures of RPM files, valid values are: {yes, no}
+SIGNING_ENABLED=yes
 
-# 選取 [是] 啟用 mpi 選取器整合，有效值為: {是、 否}
-ENVIRONMENT_REG_MPI_ENV = 否
+# Select yes to enable mpi-selector integration, valid values are: {yes, no}
+ENVIRONMENT_REG_MPI_ENV=no
 
-# 選取 [是]，以更新 ld.so.conf，有效值為: {是、 否}
-ENVIRONMENT_LD_SO_CONF = 否
-
-```
-
-### Sample settings.sh script
+# Select yes to update ld.so.conf, valid values are: {yes, no}
+ENVIRONMENT_LD_SO_CONF=no
 
 ```
-#! / bin/bash
+
+### 範例 settings.sh 指令碼
+
+```
+#!/bin/bash
 
 # impi
-來源 /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
-匯出 MPI_ROOT = $I_MPI_ROOT
-匯出 I_MPI_FABRICS = shm:dapl
-匯出 I_MPI_DAPL_PROVIDER = ofa-v2-ib0
-匯出 I_MPI_DYNAMIC_CONNECTION = 0
+source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
+export MPI_ROOT=$I_MPI_ROOT
+export I_MPI_FABRICS=shm:dapl
+export I_MPI_DAPL_PROVIDER=ofa-v2-ib0
+export I_MPI_DYNAMIC_CONNECTION=0
 
 # openfoam
-匯出 FOAM_INST_DIR = / 選擇/OpenFOAM
-來源 /opt/OpenFOAM/OpenFOAM-2.3.1/etc/bashrc
-匯出 WM_MPLIB = INTELMPI
+export FOAM_INST_DIR=/opt/OpenFOAM
+source /opt/OpenFOAM/OpenFOAM-2.3.1/etc/bashrc
+export WM_MPLIB=INTELMPI
 ```
 
 
-###Sample hpcimpirun.sh script
+###範例 hpcimpirun.sh 指令碼
 
 ```
-#! / bin/bash
+#!/bin/bash
 
-# 此指令碼的路徑
-SCRIPT_PATH ="$(dirname"${BASH_SOURCE [0]}")"
+# The path of this script
+SCRIPT_PATH="$( dirname "${BASH_SOURCE[0]}" )"
 
-# 設定 mpirun 執行階段環境
-來源 /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
-匯出 MPI_ROOT = $I_MPI_ROOT
-匯出 I_MPI_FABRICS = shm:dapl
-匯出 I_MPI_DAPL_PROVIDER = ofa-v2-ib0
-匯出 I_MPI_DYNAMIC_CONNECTION = 0
+# Set mpirun runtime evironment
+source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
+export MPI_ROOT=$I_MPI_ROOT
+export I_MPI_FABRICS=shm:dapl
+export I_MPI_DAPL_PROVIDER=ofa-v2-ib0
+export I_MPI_DYNAMIC_CONNECTION=0
 
-# mpirun 命令
-MPIRUN = mpirun
-# 引數 」-hostfile 」
-NODELIST_OPT ="-hostfile 」
-# 引數 」-np"
-NUMPROCESS_OPT ="-np"
+# mpirun command
+MPIRUN=mpirun
+# Argument of "--hostfile"
+NODELIST_OPT="--hostfile"
+# Argument of "-np"
+NUMPROCESS_OPT="-np"
 
-# 從 ENVs 取得節點的資訊
+# Get node information from ENVs
 NODESCORES=(${CCP_NODES_CORES})
-計數 = ${#NODESCORES [@]}
+COUNT=${#NODESCORES[@]}
 
-如果 [${COUNT}-eq 0]
+if [ ${COUNT} -eq 0 ]
 then
-    # CCP_NODES_CORES 找不到，或者是空的只要執行不含 hostfile arg mpirun
+    # CCP_NODES_CORES is not found or is empty, just run the mpirun without hostfile arg.
     ${MPIRUN} $*
 else
-    # 建立 hostfile 檔案
-    NODELIST_PATH = ${SCRIPT_PATH} / $$ hostfile_
+    # Create the hostfile file
+    NODELIST_PATH=${SCRIPT_PATH}/hostfile_$$
 
     # Get every node name and write into the hostfile file
     I=1
@@ -627,9 +627,9 @@ else
 
     RTNSTS=$?
     rm -f ${NODELIST_PATH}
-wi-fi
+fi
 
-結束 ${RTNSTS}
+exit ${RTNSTS}
 
 ```
 
@@ -654,4 +654,5 @@ wi-fi
 [isosurface]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/isosurface.png
 [isosurface_color]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/isosurface_color.png
 [linux_processes]: ./media/virtual-machines-linux-cluster-hpcpack-openfoam/linux_processes.png
+
 

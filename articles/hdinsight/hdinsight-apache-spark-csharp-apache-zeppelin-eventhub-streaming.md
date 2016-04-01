@@ -30,7 +30,7 @@ Spark Streaming 能擴充核心的 Spark API，建置可調整、高輸送量、
 
 您必須滿足以下條件：
 
-- Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- Azure 訂閱。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 - Apache Spark 叢集。 如需指示，請參閱 [佈建 Apache Spark 叢集的 Azure HDInsight](hdinsight-apache-spark-provision-clusters.md)。
 -  [Azure 事件中樞](service-bus-event-hubs-csharp-ephcs-getstarted.md)。
 - 安裝 Microsoft Visual Studio 2013 的工作站。 如需指示，請參閱 [安裝 Visual Studio](https://msdn.microsoft.com/library/e2h7fzkw.aspx)。
@@ -92,11 +92,11 @@ Spark Streaming 能擴充核心的 Spark API，建置可調整、高輸送量、
 
 ### 使用 Zeppelin 建立串流處理應用程式
 
-1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 (如果固定至開始面板)。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
+1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 （如果固定至開始面板）。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
 
 2. 從 Spark 叢集刀鋒視窗中，按一下 [ **快速連結**, ，然後從 **叢集儀表板** 刀鋒視窗中，按一下 [ **Zeppelin Notebook**。 出現提示時，輸入叢集的系統管理員認證。
 
-    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Zeppelin Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱:
+    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Zeppelin Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱 ︰
     >
     > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
@@ -180,7 +180,7 @@ Spark Streaming 能擴充核心的 Spark API，建置可調整、高輸送量、
 * [概觀：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 * [快速入門：在 HDInsight 上佈建 Apache Spark 並使用 Spark SQL 執行互動式查詢](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)
 * [在 HDInsight 中使用 Spark 建置機器學習應用程式](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
+* [執行 HDInsight 中使用 Spark 與 BI 工具的互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](hdinsight-apache-spark-resource-manager.md)
 
 
@@ -193,4 +193,5 @@ Spark Streaming 能擴充核心的 Spark API，建置可調整、高輸送量、
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/ 
+
 

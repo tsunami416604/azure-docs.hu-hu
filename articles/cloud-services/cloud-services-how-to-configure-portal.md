@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="如何設定定域機組服務 |Microsoft Azure" 
+    pageTitle="如何設定雲端服務 |Microsoft Azure" 
     description="了解如何在 Azure 中設定雲端服務。 了解更新雲端服務組態和設定角色執行個體的遠端存取。 這些範例使用 Azure 入口網站。" 
     services="cloud-services" 
     documentationCenter="" 
@@ -33,19 +33,19 @@
 
 ## 變更雲端服務
 
-1. 在 [Azure 入口網站](http://portal.azure.com/), ，瀏覽至您定域機組的服務。
+1. 在 [Azure 入口網站](http://portal.azure.com/), ，瀏覽至您的雲端服務。
 
-2. 按一下 [上 **設定** 圖示或 **基本資訊/所有設定** 連結以開啟 **設定** 刀。
+2. 按一下 [ **設定** 圖示或 **基本功能/所有設定** 連結，開啟 **設定** 刀鋒視窗。
 
     ![設定頁面](./media/cloud-services-how-to-configure-portal/cloud-service.png)
     
-    從這裡您可以檢視 **內容**, ，變更 **組態**, ，管理 **憑證**, ，並管理 **使用者** 誰可以存取此定域機組的服務。
+    您可以從這裡檢視 **屬性**, ，變更 **組態**, ，管理 **憑證**, ，並管理 **使用者** 能夠存取此雲端服務。
 
-2. 下 **監視** 一節，您可以按一下 [設定警示的任何牌。 
+2. 在 **監視** 區段，您可以按一下任何磚來設定警示。 
 
     ![雲端服務監視](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
     
-3. 下 **角色和執行個體** 一節，您可以按一下任何的定域機組服務角色，才能管理執行個體。
+3. 在 **角色和執行個體** 區段，您可以按一下任何雲端服務角色，來管理執行個體。
 
     ![雲端服務執行個體](./media/cloud-services-how-to-configure-portal/cs-instance.png)
     
@@ -54,43 +54,44 @@
     ![雲端服務執行個體按鈕](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
 
 >[AZURE.NOTE]
->無法變更定域機組服務所使用的作業系統，使用 **Azure 入口網站**, ，您只能變更此設定，透過 [Azure 傳統的入口網站](http://manage.windowsazure.com/)。 這將有詳細說明 [這裡](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file)。
+>無法變更雲端服務所使用的作業系統，使用 **Azure 入口網站**, ，您只能變更此設定，透過 [Azure 傳統入口網站](http://manage.windowsazure.com/)。 這詳細 [這裡](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file)。
 
 ## 更新雲端服務組態檔
 
 1. 首先，下載現有的雲端服務組態檔 (.cscfg)。
 
-    1. 在 [Azure 入口網站](http://portal.azure.com/), ，瀏覽至您定域機組的服務。
+    1. 在 [Azure 入口網站](http://portal.azure.com/), ，瀏覽至您的雲端服務。
 
-    2. 按一下 [上 **設定** 圖示或 **基本資訊/所有設定** 連結以開啟 **設定** 刀。
+    2. 按一下 [ **設定** 圖示或 **基本功能/所有設定** 連結，開啟 **設定** 刀鋒視窗。
 
         ![設定頁面](./media/cloud-services-how-to-configure-portal/cloud-service.png)
     
-    3. 按一下 [上 **組態** 項目。
+    3. 按一下 [ **組態** 項目。
 
         ![設定刀鋒視窗](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
     
-    4. 按一下 [上 **下載** ] 按鈕。
+    4. 按一下 [ **下載** ] 按鈕。
 
         ![下載](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 
 2. 在您更新服務組態檔之後，請上傳和套用組態更新：
 
-    1. 遵循先 3 從上述打開 **組態** 刀定域機組服務。
+    1. 遵循上述的前 3 個步驟，以開放 **組態** 雲端服務] 分頁。
     
-    2. 按一下 [上 **上載** ] 按鈕。
+    2. 按一下 [ **上載** ] 按鈕。
 
         ![上傳](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png) 
     
-    3. 選取的.cscfg 檔案，按一下 [ **確定**。
+    3. 選取.cscfg 檔案，然後按一下 **確定**。
 
 ## 設定對角色執行個體的遠端存取
 
-無法設定遠端存取，使用 **Azure 入口網站**, ，您只能變更此設定，透過 [Azure 傳統的入口網站](http://manage.windowsazure.com/)。 這會說明 [這裡](cloud-services-role-enable-remote-desktop.md)。
+無法使用設定遠端存取 **Azure 入口網站**, ，您只能變更此設定，透過 [Azure 傳統入口網站](http://manage.windowsazure.com/)。 這描述 [這裡](cloud-services-role-enable-remote-desktop.md)。
             
 ## 後續步驟
 
-* 了解如何 [部署定域機組服務](cloud-services-how-to-create-deploy-portal.md)。
+* 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
 * 設定 [自訂網域名稱](cloud-services-custom-domain-name-portal.md)。
-* [管理您的定域機組服務](cloud-services-how-to-manage-portal.md)。
+* [管理您的雲端服務](cloud-services-how-to-manage-portal.md)。
 * 設定 [ssl 憑證](cloud-services-configure-ssl-certificate-portal.md)。
+

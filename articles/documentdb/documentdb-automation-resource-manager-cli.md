@@ -55,7 +55,7 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 這會產生下列輸出： 
 
     info:    Executing command login
-    |info:    To sign in, use a web browser to open the page https://aka.ms/devicelogin. 
+  	|info:    To sign in, use a web browser to open the page https://aka.ms/devicelogin. 
     Enter the code E1A2B3C4D to authenticate. If you're signing in as an Azure
     AD application, use the --username and --password parameters.
 
@@ -93,7 +93,7 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
 要切換回預設的命令，可以輸入 `azure config mode asm`。
 
-## <a id="quick-create-documentdb-account"></a>工作: 建立 DocumentDB 帳戶，使用 Azure CLI
+## <a id="quick-create-documentdb-account"></a>工作：使用 Azure CLI 建立 DocumentDB 帳戶
 
 利用本節中的指示，使用 Azure CLI 來建立 DocumentDB 帳戶。 
 
@@ -132,7 +132,7 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
 如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。 
 
-### <a id="create-documentdb-account-cli"></a> 步驟 2: 建立 DocumentDB 帳戶，使用 CLI
+### <a id="create-documentdb-account-cli"></a>步驟 2：使用 CLI 建立 DocumentDB 帳戶
 
 在命令提示字元中輸入下列命令，於新的或現有的資源群組中建立 DocumentDB 帳戶：
 
@@ -168,7 +168,7 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
 此命令會傳回之後，帳戶將會在 **建立** 狀態幾分鐘，變更為之前 **線上** 狀態中可供使用。 您可以檢查中的帳戶狀態 [Azure 入口網站](https://portal.azure.com), 上 **DocumentDB 帳戶** 刀鋒視窗。
 
-## <a id="deploy-documentdb-from-a-template"></a>工作: 建立 DocumentDB 帳戶，使用 ARM 範本
+## <a id="deploy-documentdb-from-a-template"></a>工作：使用 ARM 範本建立 DocumentDB 帳戶
 
 使用本節中的指示，利用 Azure 資源管理員 (ARM) 範本和選擇性參數檔案 (這兩者都是 JSON 檔案) 來建立 DocumentDB 帳戶。 使用範本可讓您確實說明所需的資訊，並可重複使用而不會出現任何錯誤。 
 
@@ -260,7 +260,7 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 
 如果您遇到錯誤，請參閱 [疑難排解](#troubleshooting)。 
 
-### <a id="create-account-from-template"></a>步驟 3: 使用 ARM 範本所建立的 DocumentDB 帳戶
+### <a id="create-account-from-template"></a>步驟 3：使用 ARM 範本建立 DocumentDB 帳戶
 
 若要在資源群組中建立 DocumentDB 帳戶，請執行下列命令，並提供範本檔案的路徑、參數檔案的路徑或參數值、要部署於其中的資源群組名稱，以及部署名稱 (-n 是選擇性的)。 
 
@@ -350,3 +350,4 @@ DocumentDB 資料庫帳戶是目前唯一可以使用 ARM 範本和 Azure CLI �
 -   [DocumentDB 資源模型和概念](documentdb-resources.md)
 
 您可以使用更多的範本，請參閱 [Azure 快速入門範本](http://azure.microsoft.com/documentation/templates/)。
+

@@ -17,7 +17,7 @@
 
 # 使用服務匯流排的共用存取簽章驗證
 
-[共用存取簽章 (SAS)](service-bus-sas-overview.md) 驗證可讓應用程式使用命名空間，或訊息實體 (佇列或主題) 上設定的存取金鑰的特定權限相關聯的服務匯流排驗證。 您可以接著使用此金鑰來產生 SAS 權杖，以便用戶端用來向服務匯流排進行驗證。
+[共用存取簽章 (SAS)](service-bus-sas-overview.md) 驗證可讓應用程式使用命名空間，或訊息實體 （佇列或主題） 上設定的存取金鑰的特定權限相關聯的服務匯流排驗證。 您可以接著使用此金鑰來產生 SAS 權杖，以便用戶端用來向服務匯流排進行驗證。
 
 SAS 驗證支援包含在 Azure SDK 2.0 版或更新版本中。 如需服務匯流排驗證的詳細資訊，請參閱 [服務匯流排驗證與授權](service-bus-authentication-and-authorization.md)。
 
@@ -31,7 +31,7 @@ SAS 驗證會使用下列元素︰
 
 - [共用的存取授權規則](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx): 256 位元 Base64 表示法中的主要密碼編譯金鑰、 選用的次要金鑰，以及索引鍵的名稱和相關聯的權限 (一堆 *接聽*, ，*傳送*, ，或 *管理* 權限)。
 
-- [共用存取簽章](https://msdn.microsoft.com/library/azure/microsoft.servicebus.sharedaccesssignaturetokenprovider.sharedaccesssignature.aspx) 語彙基元: 使用 hmac-sha256 的資源字串，包含存取資源的 URI、 過期以及加密編譯金鑰產生。 簽章和以下各節說明其他項目會被格式化成一個字串加入表單 [SharedAccessSignature](https://msdn.microsoft.com/library/azure/microsoft.servicebus.sharedaccesssignaturetokenprovider.sharedaccesssignature.aspx) 語彙基元。
+- [共用存取簽章](https://msdn.microsoft.com/library/azure/microsoft.servicebus.sharedaccesssignaturetokenprovider.sharedaccesssignature.aspx) 語彙基元 ︰ 使用 hmac-sha256 的資源字串，包含存取資源的 URI、 過期以及加密編譯金鑰產生。 簽章和以下各節說明其他項目會被格式化成一個字串加入表單 [SharedAccessSignature](https://msdn.microsoft.com/library/azure/microsoft.servicebus.sharedaccesssignaturetokenprovider.sharedaccesssignature.aspx) 語彙基元。
 
 ## 共用存取簽章驗證的設定
 
@@ -43,7 +43,7 @@ SAS 驗證會使用下列元素︰
 
 在此圖中， *{1>managerulens*, ，*sendRuleNS*, ，和 *listenRuleNS* 驗證規則套用到佇列 Q1 和主題 T1，而 *listenRuleQ* 和 *sendRuleQ* 只會套用到佇列 Q1 和 *sendRuleT* 僅套用到主題 T1。
 
-主要參數 [Keyname](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 如下:
+主要參數 [Keyname](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 如下 ︰
 
 |參數|說明|
 |---|---|
@@ -52,7 +52,7 @@ SAS 驗證會使用下列元素︰
 |*SecondaryKey*|用來簽署和驗證 SAS 權杖的 Base64 編碼 256 位元次要金鑰。|
 |*AccessRights*|授權規則所授與的存取權限清單。 這些權限可以是任何接聽、傳送和管理權限的集合。|
 
-佈建服務匯流排命名空間時， [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx), ，與 [KeyName](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.keyname.aspx) 設 **RootManageSharedAccessKey**, ，預設會建立。 兩個預設 [Keyname](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 物件也會設定為通知中心: 一個接聽、 傳送和管理權限，另一個具有唯一的接聽權限。
+佈建服務匯流排命名空間時， [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx), ，與 [KeyName](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.keyname.aspx) 設 **RootManageSharedAccessKey**, ，預設會建立。 兩個預設 [Keyname](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 物件也會設定為通知中心 ︰ 一個接聽、 傳送和管理權限，另一個具有唯一的接聽權限。
 
 ## 重新產生並撤銷共用存取授權規則的金鑰
 
@@ -90,7 +90,7 @@ SAS 權杖適用於 string-to-sign 中所用 `<resourceURI>` 底下的所有資�
 
 下列案例包括授權規則的設定、SAS 權杖的產生以及用戶端授權。
 
-如需完整的說明設定，並使用 SAS 授權的服務匯流排應用程式的工作範例，請參閱 [使用服務匯流排的共用存取簽章驗證](http://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)。 相關的範例，說明如何使用命名空間或主題，以保護服務匯流排訂用帳戶上設定 SAS 授權規則位於這裡: [使用共用存取簽章 (SAS) 驗證服務匯流排訂閱](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)。
+如需完整的說明設定，並使用 SAS 授權的服務匯流排應用程式的工作範例，請參閱 [使用服務匯流排的共用存取簽章驗證](http://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)。 相關的範例，說明如何使用命名空間或主題，以保護服務匯流排訂用帳戶上設定 SAS 授權規則位於這裡 ︰ [使用共用存取簽章 (SAS) 驗證服務匯流排訂閱](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)。
 
 ## 存取命名空間上的共用存取授權規則
 
@@ -230,8 +230,8 @@ sendClient.Send(helloMessage);
 |取得主題描述|管理或傳送|任何有效的主題位址|
 |設定主題的授權規則|管理|任何有效的主題位址|
 |傳送至主題|傳送|任何有效的主題位址|
-|**訂用帳戶**|||
-|建立訂用帳戶|管理|任何命名空間位址|
+|**訂閱**|||
+|建立訂閱|管理|任何命名空間位址|
 |刪除訂用帳戶|管理|../myTopic/Subscriptions/mySubscription|
 |列舉訂用帳戶|管理|../myTopic/Subscriptions|
 |取得訂用帳戶描述|管理或接聽|../myTopic/Subscriptions/mySubscription|
@@ -257,3 +257,4 @@ sendClient.Send(helloMessage);
 請參閱 [服務匯流排驗證與授權](service-bus-authentication-and-authorization.md) 如需有關服務匯流排驗證的詳細背景。
 
 [Azure classic portal]: http://manage.windowsazure.com
+

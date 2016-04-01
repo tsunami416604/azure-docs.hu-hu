@@ -53,7 +53,7 @@ Testability 動作分為兩個主要貯體：
 
 ## 使用 Powershell 執行 Testability 動作
 
-本教學課程會示範如何使用 PowerShell 執行 Testability 動作。 您將了解如何針對本機中 (也稱為執行 Testability 動作 一整體) 叢集或 Azure 叢集。 當您安裝 Microsoft Service Fabric MSI 時，Microsoft.Fabric.Testability.Powershell.dll (Testability PowerShell 模組) 就會自動安裝；接著當您開啟 PowerShell 提示字元時，模組就會自動載入。
+本教學課程會示範如何使用 PowerShell 執行 Testability 動作。 您將了解如何針對本機中 （也稱為執行 Testability 動作 一整體) 叢集或 Azure 叢集。 當您安裝 Microsoft Service Fabric MSI 時，Microsoft.Fabric.Testability.Powershell.dll (Testability PowerShell 模組) 就會自動安裝；接著當您開啟 PowerShell 提示字元時，模組就會自動載入。
 
 教學課程區段：
 
@@ -89,7 +89,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 ![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-第一個輸出 *Get-servicefabricnode* (ServiceFabric PowerShell 模組的 cmdlet) 會顯示本機叢集擁有五個節點: Node.1 至 Node.5; 接著執行 Testability 動作 (cmdlet) 之後 **Restart-servicefabricnode** 的節點，名為 Node.4，我們看到節點的運作時間已重設。
+第一個輸出 *Get-servicefabricnode* (ServiceFabric PowerShell 模組的 cmdlet) 會顯示本機叢集擁有五個節點 ︰ Node.1 至 Node.5; 接著執行 Testability 動作 (cmdlet) 之後 **Restart-servicefabricnode** 的節點，名為 Node.4，我們看到節點的運作時間已重設。
 
 ### 針對 Azure 叢集執行動作
 
@@ -213,7 +213,7 @@ PartitionSelector 是 Testability 中公開的協助程式，可用來協助選�
 若要使用 ReplicaSelector，請建立 ReplicatorSelector 物件，並設定您想選取複本和分割區的方式。 接著可以將其傳遞至有需求的 API。 如果不選取任何選項，它會預設為隨機複本和隨機分割區。
 
 Guid partitionIdGuid = 新 8fb7ebcc-56ee-4862-9cc0-7c6421e68829;
-PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf serviceName (Servicenamepartitionidguid);
+PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf serviceName (Servicenamepartitionidguid）;
 long replicaId = 130559876481875498;
 
 
@@ -237,3 +237,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
 - 如何測試您的服務
    - [模擬服務工作負載期間的失敗案例](service-fabric-testability-workload-tests.md)
    - [服務對服務間通訊的失敗案例](service-fabric-testability-scenarios-service-communication.md)
+

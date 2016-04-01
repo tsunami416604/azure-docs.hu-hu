@@ -36,7 +36,7 @@
 
 
 
-##先決條件
+##必要條件
 
 本教學課程需要下列各項：
 
@@ -94,7 +94,7 @@
 
 3. 選擇性地設定 **Minimum Android version** 到另一個 API 層級。
 
-4. 選擇性地設定 **Target Android version** 至另一個做為目標的 API 版本 (必須是 API 層級 8 或更高版本)。
+4. 選擇性地設定 **Target Android version** 至另一個做為目標的 API 版本 （必須是 API 層級 8 或更高版本）。
 
 按一下 [ **確定** 並關閉 [專案選項] 對話方塊。
 
@@ -114,9 +114,9 @@
 
 1. 收集您的 Android 應用程式和通知中樞的下列資訊：
 
-    - **GoogleProjectNumber**: 從 Google 開發人員入口網站上的應用程式的概觀取得此專案編號值。 當您在入口網站上建立應用程式時，您可以提早記下這個值。
-    - **接聽連接字串**: 在儀表板 [Azure Classic Portal], ，按一下 [ **檢視連接字串**。 複製 *DefaultListenSharedAccessSignature* 連接字串，這個值。
-    - **中樞名稱**: 這是您的中樞名稱 [Azure Classic Portal]。 例如， *mynotificationhub2*。
+    - **GoogleProjectNumber**︰ 從 Google 開發人員入口網站上的應用程式的概觀取得此專案編號值。 當您在入口網站上建立應用程式時，您可以提早記下這個值。
+    - **接聽連接字串**︰ 在儀表板 [Azure Classic Portal], ，按一下 [ **檢視連接字串**。 複製 *DefaultListenSharedAccessSignature* 連接字串，這個值。
+    - **中樞名稱**︰ 這是您的中樞名稱 [Azure Classic Portal]。 例如， *mynotificationhub2*。
 
     建立 **Constants.cs** 類別為您的 Xamarin 專案，並在類別中定義下列常數值。 以您的值取代預留位置。
 
@@ -137,7 +137,7 @@
         public static MainActivity instance;
 
 
-3. 建立中的下列方法 **MainActivity** 類別:
+3. 建立中的下列方法 **MainActivity** 類別 ︰
 
         private void RegisterWithGCM()
         {
@@ -173,7 +173,7 @@
 
     > [AZURE.NOTE] 我們將逐步建立 **BroadcastReceiver** 從頭類別。 不過，若要手動建立一個快速替代方式 **MyBroadcastReceiver.cs** 是參考 **GcmService.cs** 隨附之範例 Xamarin.Android 專案中的檔案 [NotificationHubs 範例][GitHub]。 複製 **GcmService.cs** 再變更類別名稱可以是很好的開始。
 
-5. 新增下列 using 陳述式 **MyBroadcastReceiver.cs** (請參閱元件和您先前加入的組件):
+5. 新增下列 using 陳述式 **MyBroadcastReceiver.cs** （請參閱元件和您先前加入的組件） ︰
 
         using System.Collections.Generic;
         using System.Text;
@@ -183,7 +183,7 @@
         using Gcm.Client;
         using WindowsAzure.Messaging;
 
-5. 在 **MyBroadcastReceiver.cs**, ，新增下列權限要求之間 **使用** 陳述式和 **命名空間** 宣告:
+5. 在 **MyBroadcastReceiver.cs**, ，新增下列權限要求之間 **使用** 陳述式和 **命名空間** 宣告 ︰
 
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -194,7 +194,7 @@
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 
-6. 在 **MyBroadcastReceiver.cs**, ，變更 **MyBroadcastReceiver** 以符合下列類別:
+6. 在 **MyBroadcastReceiver.cs**, ，變更 **MyBroadcastReceiver** 以符合下列類別 ︰
 
         [BroadcastReceiver(Permission=Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE },
@@ -210,7 +210,7 @@
             public const string TAG = "MyBroadcastReceiver-GCM";
         }
 
-7. 新增另一個類別中的 **MyBroadcastReceiver.cs** 名為 **PushHandlerService**, ，衍生自 **GcmServiceBase**。 請務必套用 **服務** 屬性至類別:
+7. 新增另一個類別中的 **MyBroadcastReceiver.cs** 名為 **PushHandlerService**, ，衍生自 **GcmServiceBase**。 請務必套用 **服務** 屬性至類別 ︰
 
         [Service] // Must use the service tag
         public class PushHandlerService : GcmServiceBase
@@ -225,10 +225,10 @@
         }
 
 
-8. **GcmServiceBase** 實作方法 **onregistered ()**, ，**onunregistered ()**, ，**onmessage ()**, ，**onrecoverableerror ()**, ，和 **onerror ()**。 我們 **PushHandlerService** 實作類別必須覆寫這些方法，以及這些方法會引發以回應與通知中樞進行互動。
+8. **GcmServiceBase** 實作方法 **onregistered （)**, ，**onunregistered （)**, ，**onmessage （)**, ，**onrecoverableerror （)**, ，和 **onerror （)**。 我們 **PushHandlerService** 實作類別必須覆寫這些方法，以及這些方法會引發以回應與通知中樞進行互動。
 
 
-9. 覆寫 **onregistered ()** 方法中的 **PushHandlerService** 使用下列程式碼:
+9. 覆寫 **onregistered （)** 方法中的 **PushHandlerService** 使用下列程式碼 ︰
 
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -262,9 +262,9 @@
             }
         }
 
-    > [AZURE.NOTE] 在 **onregistered ()** 上述程式碼應該發現能夠指定標籤來註冊特定傳訊通道。
+    > [AZURE.NOTE] 在 **onregistered （)** 上述程式碼應該發現能夠指定標籤來註冊特定傳訊通道。
 
-10. 覆寫 **OnMessage** 方法中的 **PushHandlerService** 使用下列程式碼:
+10. 覆寫 **OnMessage** 方法中的 **PushHandlerService** 使用下列程式碼 ︰
 
         protected override void OnMessage(Context context, Intent intent)
         {
@@ -333,7 +333,7 @@
         }
 
 
-12. 覆寫抽象成員 **onunregistered ()**, ，**onrecoverableerror ()**, ，和 **onerror ()** 以便的程式碼進行編譯:
+12. 覆寫抽象成員 **onunregistered （)**, ，**onrecoverableerror （)**, ，和 **onerror （)** 以便的程式碼進行編譯 ︰
 
         protected override void OnUnRegistered(Context context, string registrationId)
         {
@@ -388,9 +388,9 @@
 
 以下是可供您檢閱，用於傳送通知的一些其他教學課程清單：
 
-- ASP.NET: 請參閱 [Use Notification Hubs to push notifications to users]。
-- Azure 通知中樞 Java SDK: 請參閱 [如何從 Java 使用通知中樞](notification-hubs-java-backend-how-to.md) 從 Java 傳送通知。 這已在 Eclipse for Android Development 中測試。
-- PHP: 請參閱 [如何從 PHP 使用通知中樞](notification-hubs-php-backend-how-to.md)。
+- ASP.NET ︰ 請參閱 [Use Notification Hubs to push notifications to users]。
+- Azure 通知中樞 Java SDK ︰ 請參閱 [如何從 Java 使用通知中樞](notification-hubs-java-backend-how-to.md) 從 Java 傳送通知。 這已在 Eclipse for Android Development 中測試。
+- PHP ︰ 請參閱 [如何從 PHP 使用通知中樞](notification-hubs-php-backend-how-to.md)。
 
 
 在本教學課程接下來的小節中，您會使用 .NET 主控台應用程式以及透過節點指令碼使用行動服務來傳送通知。
@@ -407,11 +407,11 @@
 
     這會在 Visual Studio 中顯示 [封裝管理員主控台]。
 
-3. 在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令:
+3. 在封裝管理員主控台] 視窗中，設定 **預設專案** 新的主控台應用程式專案，然後在主控台視窗中，執行下列命令 ︰
 
         Install-Package Microsoft.Azure.NotificationHubs
 
-    這會加入到使用 Azure 通知中心 SDK 參考 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification 中樞 NuGet 封裝</a>.
+    這會使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 封裝</a> 加入對 Azure 通知中樞 SDK 的參考。
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -427,7 +427,7 @@
             await hub.SendGcmNativeNotificationAsync("{ \"data\" : {\"message\":\"Hello from Azure!\"}}");
         }
 
-6. 新增以下幾行，在您 **Main** 方法:
+6. 新增以下幾行，在您 **Main** 方法 ︰
 
          SendNotificationAsync();
          Console.ReadLine();
@@ -438,7 +438,7 @@
 
 ####(選用) 使用行動服務傳送通知
 
-1. 遵循 [開始使用行動服務]。
+1. 請依照下列 [Get started with Mobile Services]。
 
 1. 登入 [Azure Classic Portal], ，然後選取您的行動服務。
 
@@ -522,4 +522,5 @@
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 [Google Cloud Messaging Client Component]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging Component]: http://components.xamarin.com/view/azure-messaging
+
 

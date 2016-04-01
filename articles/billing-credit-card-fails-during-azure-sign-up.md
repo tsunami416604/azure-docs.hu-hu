@@ -31,9 +31,9 @@ Azure 的付款選項包括：
 - 根據您的國家/地區而定，接受的信用卡/轉帳卡提供者有所不同。
 
 建議：
-- 請勿使用虛擬或預付借貸卡。
-- 嘗試使用替代有效且支援信用卡付款或啟動失敗時。
-- 請務必付款方法為作用中且您的銀行不會封鎖任何線上交易的安全性原則。
+- 請勿使用虛擬或預付的轉帳卡/信用卡。
+- 付款或啟動失敗時，請改用其他有效且支援的信用卡。
+- 請確認付款方法為使用中，而且您的銀行不因安全性原則封鎖任何線上交易。
 
 ## 信用卡資訊正確且完整嗎？
 - 信用卡的詳細資料必須正確且符合信用卡發卡銀行帳單資訊。
@@ -43,7 +43,7 @@ Azure 的付款選項包括：
 - 請洽詢您的銀行，根據您卡片上的資訊更正任何拼字或其他問題。
 
 建議：
-- 一律在提供的正確資訊註冊，因為設定檔詳細資料也會用來產生計費陳述式。
+- 註冊時一律提供正確資訊，因為個人檔案詳細資料也會用來產生帳單。
 
 ## 帳戶個人檔案資訊正確且完整嗎？
 - 帳戶擁有者必須插入註冊期間要求的所有相關資訊，以識別擁有帳戶的人員，也才能夠在需要時產生正確的帳單。
@@ -51,7 +51,7 @@ Azure 的付款選項包括：
 
 建議：
 - 檢查每個欄位，在您的設定檔在註冊或 [設定檔設定]( https://account.windowsazure.com/Profile/) 如果您已經建立 Azure 帳戶。
-- 設定檔詳細資料也會用來產生計費陳述式，提供精確的資訊。
+- 提供正確的資訊，因為個人檔案詳細資料也會用來產生帳單。
 
 ## 您嘗試啟用 MSDN、BizSpark 或 MPN 之類的 Azure 權益方案嗎？  
 請透過您的權益方案頻道驗證，來確認您是否符合所選方案的資格：
@@ -61,7 +61,7 @@ Azure 的付款選項包括：
 - MPN
   - 登入 [MPN 網站](https://mspartner.microsoft.com/en/us/Pages/Locale.aspx) ，並確認您是否符合資格的狀態。 您可能有資格獲得額外的好處有適當 [雲端平台能力](https://mspartner.microsoft.com/en/us/pages/membership/cloud-platform-competency.aspx)。
   - 如果您不能驗證您的狀態，請連絡 [MPN 支援](https://mspartner.microsoft.com/en/us/Pages/Support/Premium/contact-support.aspx)。
-- Bizpark:
+- Bizpark：
   - 登入 [BizSpark 入口網站](https://www.microsoft.com/bizspark/default.aspx#start-two) 和 BizSpark 和 BizSpark Plus 確認您是否符合資格的狀態。
   如果您不能驗證您的狀態，請連絡傳送電子郵件給 BizSpark 支援 [連絡 BizSpark 小組](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)
 
@@ -78,4 +78,5 @@ Azure 免費試用優惠僅限於啟用免費試用一次。
 
 ## 連絡 Azure 支援
 如果您繼續遵循下列疑難排解步驟之後已註冊的問題，請連絡 [Azure 支援](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)。
+
 

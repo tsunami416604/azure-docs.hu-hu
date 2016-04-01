@@ -32,14 +32,14 @@
 下表可以協助您為方案決定最佳的連線選項。
 
 
-|  -                            | **點對站台**                                                                            | **站台對站台**                                                                                        | **ExpressRoute**                                                                                                                     |
+|  -                            | **點對站**                                                                            | **網站間**                                                                                        | **ExpressRoute**                                                                                                                     |
 |------------------------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| **Azure 支援的服務** | 雲端服務和虛擬機器                                                          | 雲端服務和虛擬機器                                                                     | [服務清單](../expressroute/expressroute-faqs.md#supported-services)                                                       |
-| **典型的頻寬**       | 通常是 < 100 Mbps 彙總                                                               | 通常是 < 100 Mbps 彙總                                                                          | 50 Mbps、 100 Mbps、 200 Mbps、 500 Mbps、 1 Gbps、 2 Gbps、 5 Gbps、 10 Gbps                                                               |
-| **支援的通訊協定**      | 安全通訊端通道通訊協定 (SSTP)                                                     | IPsec                                                | 透過 NSP 的 VPN 技術 (MPLS、 VPLS...) 的 Vlan，直接連線                                                                                                    |
-| **路由**                  | 路由式的 (動態)                                                                        | 我們支援以原則為基礎 (靜態路由)，並以路由為基礎 (動態路由 VPN)                 | BGP                                                                                                                                  |
-| **連線恢復**    | 主動-被動                                                                               | 主動-被動                                                                                          | 主動-主動                                                                                                                        |
-| **典型的使用案例**         | 原型設計、 開發人員 / 測試 / 雲端服務和虛擬機器的實驗室案例              | 開發 / 測試實驗室案例和小小數位數的雲端服務和虛擬機器的生產工作負載 | 所有 Azure 服務 (已驗證的清單) 的企業層級與關鍵任務工作負載，備份、 巨量資料、 Azure 做為 DR 站台存取權 |
+| **Azure 支援的服務** | 雲端服務及虛擬機器                                                          | 雲端服務及虛擬機器                                                                     | [服務清單](../expressroute/expressroute-faqs.md#supported-services)                                                       |
+| **典型的頻寬**       | 彙總通常 < 100 Mbps                                                               | 彙總通常 < 100 Mbps                                                                          | 50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps                                                               |
+| **支援的通訊協定**      | 安全通訊端通道通訊協定 (SSTP)                                                     | IPsec                                                | 透過 VLAN、NSP 的 VPN 技術 (MPLS、VPLS、...) 的直接連接                                                                                                    |
+| **路由**                  | 路由式 (動態)                                                                        | 我們支援原則式 (靜態路由) 和路由式 (動態路由 VPN)                 | BGP                                                                                                                                  |
+| **連接恢復功能**    | 主動-被動                                                                               | 主動-被動                                                                                          | 主動-主動                                                                                                                        |
+| **典型的使用案例**         | 原型設計、雲端服務和虛擬機器的開發人員/測試/實驗室案例              | 雲端服務和虛擬機器的開發/測試/實驗室案例和小規模生產工作負載 | 所有 Azure 服務 (已驗證的清單)、企業層級與關鍵性工作負載、備份、巨量資料、Azure 做為 DR 網站的存取 |
 | **SLA**                      | [SLA](https://azure.microsoft.com/support/legal/sla/)                                        | [SLA](https://azure.microsoft.com/support/legal/sla/)                                                   | [SLA](https://azure.microsoft.com/support/legal/sla/)                                                                                |
 | **定價**                  | [定價](http://azure.microsoft.com/pricing/details/vpn-gateway/)                           | [定價](http://azure.microsoft.com/pricing/details/vpn-gateway/)                                      | [定價](http://azure.microsoft.com/pricing/details/expressroute/)                                                                   |
 | **技術文件**  | [VPN 閘道文件](https://azure.microsoft.com/documentation/services/vpn-gateway/) | [VPN 閘道文件](https://azure.microsoft.com/documentation/services/vpn-gateway/)            | [ExpressRoute 文件](https://azure.microsoft.com/documentation/services/expressroute/)                                        |
@@ -98,6 +98,7 @@ Azure ExpressRoute 可讓您在 Azure 資料中心和內部部署或共置環境
 ## 後續步驟
 
 請參閱 [ExpressRoute 常見問題集](../expressroute/expressroute-faqs.md) 和 [VPN 閘道常見問題集](vpn-gateway-vpn-faq.md) 如需詳細資訊。
+
 
 
 

@@ -34,10 +34,10 @@ Lotus Domino 連接器可讓您整合同步處理服務與 IBM 的 Lotus Domino 
 
 | 功能 | 支援 |
 | --- | --- |
-| 連接的資料來源 | 伺服器： <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>用戶端:<li>Lotus Notes 8.5.x</li><li>Lotus Notes 9.x</li> |
+| 連接的資料來源 | 伺服器： <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>用戶端 ︰<li>Lotus Notes 8.5.x</li><li>Lotus Notes 9.x</li> |
 | 案例 | <li>物件生命週期管理</li><li>群組管理</li><li>密碼管理</li> |
 | 作業 | <li>完整和差異匯入</li><li>匯出</li><li>設定及變更密碼 HTTP 密碼</li> |
-| 結構描述 | <li>人員 (漫遊使用者、 連絡人 (沒有憑證的人員))</li><li>群組</li><li>資源 (資源的空間，線上會議)</li><li>郵件中的資料庫</li><li>支援的物件之屬性的動態探索</li> |
+| 結構描述 | <li>人員 （漫遊使用者、 連絡人 （沒有憑證的人員））</li><li>群組</li><li>資源 （資源的空間，線上會議）</li><li>郵件中的資料庫</li><li>支援的物件之屬性的動態探索</li> |
 
 Lotus Domino 連接器利用 Lotus Notes 用戶端與 Lotus Domino 伺服器進行通訊。 因此，同步處理伺服器上必須安裝支援的 Lotus Notes 用戶端。 用戶端與伺服器之間的通訊是透過 Lotus Notes .NET Interop (Interop.domino.dll) 介面來實作。 此介面可協助 Microsoft.NET 平台和 Lotus Notes 用戶端之間的通訊，並支援 Lotus Domino 文件和檢視的存取。 在執行差異匯入時，也可以使用 C++ 原生介面 (取決於所選的差異匯入方法)。
 
@@ -61,8 +61,8 @@ Lotus Domino 連接器利用 Lotus Notes 用戶端與 Lotus Domino 伺服器進�
 
 | 作業 | 存取權限 |
 | --- | --- |
-| Import | <li>讀取公用文件</li><li> 完整存取 」 系統管理員 (完整存取權的系統管理員群組的成員時，您將自動需要有效的存取權 ACL 中)。</li> |
-| 匯出和設定密碼 | 有效的存取權: <li>建立文件</li><li>刪除文件</li><li>讀取公用文件</li><li>撰寫公用文件</li><li>複寫或複製文件</li>除了上述的存取，必須指派下列角色的匯出作業: <li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li> |
+| Import | <li>讀取公用文件</li><li> 完整存取 」 系統管理員 （完整存取權的系統管理員群組的成員時，您將自動需要有效的存取權 ACL 中）。</li> |
+| 匯出和設定密碼 | 有效的存取權 ︰ <li>建立文件</li><li>刪除文件</li><li>讀取公用文件</li><li>撰寫公用文件</li><li>複寫或複製文件</li>除了上述的存取，必須指派下列角色的匯出作業 ︰ <li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li> |
 
 ### 直接作業和 AdminP
 
@@ -112,7 +112,7 @@ IBM Lotus Notes 用戶端和 Domino 伺服器使用 Notes Remote Procedure Call 
 
 ![Notes2](./media/active-directory-aadconnectsync-connector-domino/notes2.png)
 
-**注意:** 與使用者帳戶相同的伺服器上使用做為連接器的服務帳戶之後，您必須啟動 Lotus Notes。
+**注意 ︰** 與使用者帳戶相同的伺服器上使用做為連接器的服務帳戶之後，您必須啟動 Lotus Notes。
 
 ### 建立連接器
 
@@ -137,13 +137,13 @@ Domino 伺服器屬性支援兩種伺服器名稱格式：
 
 提供使用者識別碼的檔案會儲存在組態資料庫的同步處理服務。
 
-如 **差異匯入** 有下列選項:
+如 **差異匯入** 有下列選項 ︰
 
 - **無**。 連接器不會執行任何差異匯入。
 - **新增/更新**。 連接器會差異匯入新增和更新作業。 刪除 **完整匯入** 是必要的作業。 這項作業會使用 Notes 的 .Net Interop。
 - **加入/更新/刪除**。 連接器會差異匯入新增、更新和刪除作業。 這項作業會使用 Notes 的原生 C++ 介面。
 
-在 **結構描述選項** 有下列選項:
+在 **結構描述選項** 有下列選項 ︰
 
 - **預設結構描述**。 此為預設選項，連接器將會偵測 Domino 伺服器中的結構描述。
 - **DSML 結構描述**。 只在 Domino 伺服器不公開結構描述時使用。 然後，您可以使用此結構描述建立 DSML 檔案，並匯入此檔案。 如需 DSML 詳細資訊，請參閱 [OASIS](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dsml)。
@@ -162,7 +162,7 @@ Domino 伺服器屬性支援兩種伺服器名稱格式：
 
 #### 匯入設定、方法
 
- **執行完整匯入的** 會出現這些選項:
+ **執行完整匯入的** 會出現這些選項 ︰
 
 - 搜尋
 - 檢視 (建議選項)
@@ -173,7 +173,7 @@ Domino 伺服器屬性支援兩種伺服器名稱格式：
 
 #### 建立虛擬連絡人物件
 
- **啟用 \_Contact 物件建立** 會出現這些選項:
+ **啟用 \_Contact 物件建立** 會出現這些選項 ︰
 
 - None
 - 非參考值
@@ -228,7 +228,7 @@ person 物件的 Assistant 屬性具有下列值：
 - CN=Greg Winston/OU= Contoso /O=Americas,NAB=names.nsf
 - CN=John Smith/OU= Contoso /O=Americas,NAB=names.nsf
 
-如果新的小幫手，名為 **David 亞歷山大** 指派至此 person 物件，則結果會是:
+如果新的小幫手，名為 **David 亞歷山大** 指派至此 person 物件，則結果會是 ︰
 
 - CN=David Alexander/OU= Contoso /O=Americas,NAB=names.nsf
 
@@ -240,7 +240,7 @@ person 物件的 Assistant 屬性具有下列值：
 - CN=Greg Winston/OU= Contoso /O=Americas,NAB=names.nsf
 - CN=John Smith/OU= Contoso /O=Americas,NAB=names.nsf
 
-如果新的小幫手，名為 **David 亞歷山大** 指派至此 person 物件，則結果會是:
+如果新的小幫手，名為 **David 亞歷山大** 指派至此 person 物件，則結果會是 ︰
 
 - CN=David Alexander/OU= Contoso /O=Americas,NAB=names.nsf
 - CN=Greg Winston/OU= Contoso /O=Americas,NAB=names.nsf
@@ -316,7 +316,7 @@ Person 物件代表組織和組織單位中的使用者。 除了預設屬性，
     2. 漫遊使用者 (包含所有漫遊資料庫檔案的一般使用者)
     3. 連絡人 (沒有識別碼檔案的使用者)
 
-(除了連絡人) 的人員進一步分組到美國的使用者和國際使用者，\_MMS\_IDRegType 屬性的值所定義。 這些人是使用 Notes 用戶端來存取 Lotus Domino 伺服器和資料庫、擁有 Notes Id 和 Person 文件的人員。 如果這些人使用 Notes 郵件，那麼他們也會有郵件檔案。 使用者必須經過註冊才能生效。 如需詳細資訊，請參閱：
+（除了連絡人） 的人員進一步分組到美國的使用者和國際使用者，\_MMS\_IDRegType 屬性的值所定義。 這些人是使用 Notes 用戶端來存取 Lotus Domino 伺服器和資料庫、擁有 Notes Id 和 Person 文件的人員。 如果這些人使用 Notes 郵件，那麼他們也會有郵件檔案。 使用者必須經過註冊才能生效。 如需詳細資訊，請參閱：
 
 - [設定 Notes 使用者](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_SETTING_UP_NOTES_USERS.html)
 - [使用者註冊](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_REGISTERING_USERS.html)
@@ -360,7 +360,7 @@ Lotus Domino 連接器會在資源保留資料庫中執行建立、更新和刪�
 
 郵寄資料庫是設計來接收郵件的資料庫。 此資料庫是未與任何特定 Lotus Domino 使用者帳戶相關聯 (也就是沒有自己的識別碼檔案和密碼) 的 Lotus Domino 信箱 (以郵件範本為基礎的 Notes 資料庫)。 郵寄資料庫具有相關聯的唯一 UserID (「簡短名稱」)，並有自己的電子郵件地址。
 
-每個使用者只需要一個 Lotus Domino 帳戶。 是否需要個別信箱自己可以在不同的使用者之間共用的電子郵件地址 (例如: group@contoso.com)，而非其他的備忘稿帳戶建立郵件中資料庫。 此信箱是透過其存取控制清單 (ACL) 來控制存取，此清單中包含允許其使用自己的識別碼檔案和密碼開啟信箱之 Notes 使用者的名稱。 這些使用者不需要另外的密碼就能存取郵寄資料庫。
+每個使用者只需要一個 Lotus Domino 帳戶。 是否需要個別信箱自己可以在不同的使用者之間共用的電子郵件地址 (例如 ︰ group@contoso.com)，而非其他的備忘稿帳戶建立郵件中資料庫。 此信箱是透過其存取控制清單 (ACL) 來控制存取，此清單中包含允許其使用自己的識別碼檔案和密碼開啟信箱之 Notes 使用者的名稱。 這些使用者不需要另外的密碼就能存取郵寄資料庫。
 
 必要屬性的清單，請參閱稱為區段 [強制屬性](#mandatory-attributes) 在本文稍後。
 
@@ -418,8 +418,8 @@ Lotus Domino 連接器支援下列關於網際網路密碼的作業：
 | \_MMS_CertDaysToExpire | 從當日起算的憑證到期前天數。 若未指定，則預設日期是當日起算兩年後。 |
 | \_MMS_Certifier | 包含認證者組織階層名稱的屬性。 例如：OU=OrganizationUnit,O=Org,C=Country。 |
 | \_MMS_IDPath | 如果屬性是空的，則不會在同步處理伺服器本機上建立使用者識別碼檔案。 如果屬性包含檔案名稱，則會在 madata 資料夾中建立使用者識別碼檔案。 屬性也可以包含使用者識別碼檔案建立所在位置的完整路徑。 |
-| \_MMS_IDRegType | 人員可以分類為連絡人。 美國使用者和國際使用者。 下表列出可能的值:<li>0-連絡人</li><li>1-美國 user</li><li>2-國際使用者</li> |
-| \_MMS_IDStoreType | 美國的必要的屬性 和國際使用者。 此屬性包含整數值，可指定要將使用者識別碼儲存為 Notes 通訊錄中的附件，還是儲存在人員的郵件檔案中。 如果使用者識別碼檔案通訊錄中的附件，它可以選擇性地建立為 \_MMS_IDPath 的檔案。<li>空的識別碼 (用於 「 連絡人 」) 沒有識別檔案保存庫中的存放區識別碼檔案。</li><li> 1 - Notes 通訊錄中的附件。 \_MMS_Password 屬性必須為使用者識別檔案附件</li><li>2-識別碼儲存人員的郵件檔案中。 \_MMS_UseAdminP 必須設定為 false，可讓使用者註冊期間建立的郵件檔案。\_MMS_Password 屬性必須為使用者識別檔案。</li>
+| \_MMS_IDRegType | 人員可以分類為連絡人。 美國使用者和國際使用者。 下表列出可能的值 ︰<li>0-連絡人</li><li>1-美國 user</li><li>2-國際使用者</li> |
+| \_MMS_IDStoreType | 美國的必要的屬性 和國際使用者。 此屬性包含整數值，可指定要將使用者識別碼儲存為 Notes 通訊錄中的附件，還是儲存在人員的郵件檔案中。 如果使用者識別碼檔案通訊錄中的附件，它可以選擇性地建立為 \_MMS_IDPath 的檔案。<li>空的識別碼 （用於 「 連絡人 」） 沒有識別檔案保存庫中的存放區識別碼檔案。</li><li> 1 - Notes 通訊錄中的附件。 \_MMS_Password 屬性必須為使用者識別檔案附件</li><li>2-識別碼儲存人員的郵件檔案中。 \_MMS_UseAdminP 必須設定為 false，可讓使用者註冊期間建立的郵件檔案。\_MMS_Password 屬性必須為使用者識別檔案。</li>
 | \_MMS_MailQuotaSizeLimit | 電子郵件檔案資料庫允許使用的 MB 數。 |
 | \_MMS_MailQuotaWarningThreshold | 電子郵件檔案資料庫允許使用的 MB 數，超過之後就會發出警告。 |
 | \_MMS_MailTemplateName | 用來建立使用者的電子郵件檔案的電子郵件範本檔案。 如果有指定範本，則會使用指定的範本建立郵件檔案。 如果未指定範本，則會使用預設範本檔案來建立檔案。 |
@@ -437,7 +437,7 @@ Lotus Domino 連接器支援下列關於網際網路密碼的作業：
 
 若要存取不具備郵件功能的 Domino 伺服器，HTTPPassword 屬性必須包含值，且 MailFile 屬性和 MailServer 屬性可以是空的。
 
-使用 \_MMS_ IDStoreType = 2 (存放區識別碼郵件檔案中)，NotesRegistrationclass MailSystem 屬性會設定為 REG_MAILSYSTEM_INOTES (3)。
+使用 \_MMS_ IDStoreType = 2 （存放區識別碼郵件檔案中），NotesRegistrationclass MailSystem 屬性會設定為 REG_MAILSYSTEM_INOTES (3)。
 
 ### 必要屬性
 
@@ -479,8 +479,8 @@ Domino 中有數種方式可延伸結構描述，使其顯示為連接器可使�
 
 **方法 1：延伸 Lotus Domino 結構描述**
 
-1. 建立一份 Domino 目錄範本 < PUBNAMES。NTF > 依照 [依照](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) (您不應該自訂範本的預設 IBM Lotus Domino 目錄):
-2. 開啟複製的 Domino 目錄範本 < CONTOSO。NTF > 範本只是範例中會建立 Domino 設計工具，然後遵循下列步驟:
+1. 建立一份 Domino 目錄範本 < PUBNAMES。NTF > 依照 [依照](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) （您不應該自訂範本的預設 IBM Lotus Domino 目錄） ︰
+2. 開啟複製的 Domino 目錄範本 < CONTOSO。NTF > 範本只是範例中會建立 Domino 設計工具，然後遵循下列步驟 ︰
     - 按一下 [共用項目]，然後展開子表單
     - 按兩下 [$[ObjectName]InheritableSchema] 子表單 (其中 [ObjectName] 是預設結構化物件類別的名稱，例如 Person)。
     - Name 的屬性，您想要新增到 [MyPersonAtrribute] 結構描述和對應的建立欄位選取 [建立] 功能表，然後從功能表選取 'Field'。
@@ -496,7 +496,7 @@ Domino 中有數種方式可延伸結構描述，使其顯示為連接器可使�
 
 **方法 2：以自訂屬性建立 auxClass 並與物件類別關聯**
 
-1. 建立一份 Domino 目錄範本 [PUBNAMES。NTF] 依照 [依照]()http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html (永遠不會自訂範本的預設 IBM Lotus Domino 目錄):
+1. 建立一份 Domino 目錄範本 [PUBNAMES。NTF] 依照 [依照]()http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html （永遠不會自訂範本的預設 IBM Lotus Domino 目錄） ︰
 2. 在 Domino Designer 中開啟剛才建立的 Domino 目錄範本 [CONTOSO.NTF]。
 3. 在左窗格中，依序選取 [共用程式碼] 和 [子表單]。
 4. 按一下 [新增子表單]
@@ -529,7 +529,7 @@ Domino 中有數種方式可延伸結構描述，使其顯示為連接器可使�
 **方法 3：將自訂屬性新增至 ExtensibleObject 類別**
 
 1. 開啟放在根目錄的 [Schema.nsf] 檔案
-2. 從下的左功能表中選取 [LDAP 物件類別 **所有結構描述文件** ，然後按一下 **加入的物件類別** 按鈕:
+2. 從下的左功能表中選取 [LDAP 物件類別 **所有結構描述文件** ，然後按一下 **加入的物件類別** 按鈕 ︰
 3. 以 [###ExtensibleSchema] 形式提供有關想要為其延伸結構描述之物件的 LDAP 名稱 (其中 ### 是預設結構化物件類別的名稱，例如 Person)。 例如，若要延伸 Person 物件類別的結構描述，請提供 LDAP 名稱 [PersonExtensibleSchema]。
 4. 提供想要為其延伸結構描述的上層物件類別名稱。 例如，若要延伸 Person 物件類別的結構描述，請提供上層物件類別名稱 [dominoPerson]：
 5. 指出對應到物件類別的有效 OID。
@@ -540,4 +540,5 @@ Domino 中有數種方式可延伸結構描述，使其顯示為連接器可使�
 ## 疑難排解
 
 -   如需如何啟用記錄來疑難排解連接器資訊，請參閱 [如何啟用 ETW 追蹤連接器](http://go.microsoft.com/fwlink/?LinkId=335731)。
+
 

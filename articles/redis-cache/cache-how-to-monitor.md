@@ -26,7 +26,7 @@ Azure Redis 快取提供數個選項來監視您的快取執行個體。 您可�
 
 若要檢視快取度量 [瀏覽](cache-configure.md) 到快取執行個體中 [Azure 入口網站](https://portal.azure.com)。 在存取 Azure Redis 快取執行個體的度量 **Redis 快取** 刀鋒視窗。
 
-![監視][redis-快取-監視-概觀]
+![監視][redis-cache-monitor-overview]
 
 >[AZURE.IMPORTANT] 如果出現下列訊息會顯示在 Azure 入口網站，請依照下列中的步驟 [啟用快取診斷](#enable-cache-diagnostics) 區段以啟用快取診斷。
 >
@@ -258,6 +258,7 @@ Azure Redis 快取可讓您將診斷資料儲存在儲存體帳戶中，因此�
 [redis-cache-premium-point-summary]: ./media/cache-how-to-monitor/redis-cache-premium-point-summary.png
 
 [redis-cache-premium-point-shard]: ./media/cache-how-to-monitor/redis-cache-premium-point-shard.png
+
 
 
 

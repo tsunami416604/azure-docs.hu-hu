@@ -24,7 +24,7 @@
 
 1. 按一下 [ **Active Directory**, ，然後按一下您的組織目錄的名稱。
 2. 在 **使用者** 頁面上，按一下 **新增使用者**。
-3. 在 **告訴我們這位使用者** ] 頁面上，針對 **使用者類型**, ，選取:
+3. 在 **告訴我們這位使用者** ] 頁面上，針對 **使用者類型**, ，選取 ︰
     1. **您的組織中的新使用者** – 表示您想要建立和管理在目錄中新的使用者帳戶。
     2. **使用現有的 Microsoft 帳戶使用者** – 表示您想將現有的 Microsoft 帳戶新增至您的目錄，才能使用 Microsoft 帳戶存取 Azure 的共同管理員的 Azure 資源上共同作業。
     3. **其他 Azure AD 目錄中的使用者** – 表示您想要將使用者帳戶新增至您來自另一個 Azure AD 目錄的目錄。 您必須是其他目錄的成員，才能選取其中的使用者。
@@ -103,7 +103,7 @@ A **來賓** 是您的使用者類型] 設為 [來賓] 目錄中的使用者。 
 
 來賓得以查看使用者或群組有限之詳細資料的能力，可方便他們邀請其他人並查看與他們協同合作的人員詳細資料。  
 
-## 接下來
+## 後續步驟
 
 - [管理 Azure AD](active-directory-administer.md)
 - [在 Azure AD 中管理密碼](active-directory-manage-passwords.md)
@@ -112,4 +112,5 @@ A **來賓** 是您的使用者類型] 設為 [來賓] 目錄中的使用者。 
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
+
 

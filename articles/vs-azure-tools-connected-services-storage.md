@@ -78,7 +78,7 @@
 
  - 針對 ASP.NET 專案，請參閱 [發生了什麼事 – ASP.NET 專案](http://go.microsoft.com/fwlink/p/?LinkId=513126)。 
  - ASP.NET 5 專案，請參閱 [發生了什麼事 – ASP.NET 5 專案](http://go.microsoft.com/fwlink/p/?LinkId=513124)。 
- - 雲端服務專案 (web 角色和背景工作角色)，請參閱 [發生了什麼事 – 雲端服務專案](http://go.microsoft.com/fwlink/p/?LinkId=516965)。 
+ - 雲端服務專案 （web 角色和背景工作角色），請參閱 [發生了什麼事 – 雲端服務專案](http://go.microsoft.com/fwlink/p/?LinkId=516965)。 
  - WebJob 專案，請參閱 [什麼
 發生-WebJob 專案](vs-storage-webjobs-what-happened/)。
 
@@ -94,5 +94,6 @@
      - [azure.microsoft.com 上的儲存體](http://azure.microsoft.com/services/storage)
 
      - [azure.microsoft.com 上的儲存體文件](http://azure.microsoft.com/documentation/services/storage/)
+
 
 

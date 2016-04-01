@@ -47,9 +47,9 @@
 
     ![Azure 資料湖分析入口網站刀鋒視窗](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
 
-    - **名稱**: 分析帳戶的名稱。
-    - **資料湖存放區**: 每個資料湖分析帳戶有相依的 Azure 資料湖存放區帳戶。 資料湖分析帳戶和相依的資料湖存放區帳戶必須位於同一個 Azure 資料中心。 請依照指示來建立新的資料湖存放區帳戶，或選取現有的帳戶。
-    - **訂閱**: 選擇用於分析帳戶的 Azure 訂閱。
+    - **名稱**︰ 分析帳戶的名稱。
+    - **資料湖存放區**︰ 每個資料湖分析帳戶有相依的 Azure 資料湖存放區帳戶。 資料湖分析帳戶和相依的資料湖存放區帳戶必須位於同一個 Azure 資料中心。 請依照指示來建立新的資料湖存放區帳戶，或選取現有的帳戶。
+    - **訂閱**︰ 選擇用於分析帳戶的 Azure 訂閱。
     - **資源群組**。 選取現有的 Azure 資源群組，或建立一個新的群組。 Azure 資源管理員 (ARM) 可讓您將應用程式中的資源作為群組使用。 如需詳細資訊，請參閱 [Azure 資源管理員概觀](resource-group-overview.md)。 
     - **位置**。 為資料湖分析帳戶選取 Azure 資料中心。 
 
@@ -143,12 +143,12 @@
     
     針對每一個資料湖儲存區帳戶，您可以：
     
-    - **新的資料夾**: 加入新的資料夾。
-    - **上傳**: 將檔案上傳至儲存體帳戶從您的工作站。
-    - **存取**: 設定存取權限。
-    - **重新命名資料夾**: 重新命名資料夾。
-    - **資料夾屬性**: 顯示檔案或資料夾的內容，例如 WASB 路徑，WEBHDFS 路徑上次修改時間，依此類推。
-    - **刪除資料夾**: 刪除資料夾。
+    - **新的資料夾**︰ 加入新的資料夾。
+    - **上傳**︰ 將檔案上傳至儲存體帳戶從您的工作站。
+    - **存取**︰ 設定存取權限。
+    - **重新命名資料夾**︰ 重新命名資料夾。
+    - **資料夾屬性**︰ 顯示檔案或資料夾的內容，例如 WASB 路徑，WEBHDFS 路徑上次修改時間，依此類推。
+    - **刪除資料夾**︰ 刪除資料夾。
 
 <a name="upload-data-to-adls"></a> **檔案上傳至資料湖市集帳戶**
 
@@ -168,7 +168,7 @@
 
 資料湖分析會運用 Azure Active Directory 執行角色存取控制。 當您建立資料湖分析 
 帳戶的 「 訂閱管理員 」 角色加入至帳戶。 您可以新增其他的使用者和安全性群組與 
-下列角色:
+下列角色 ︰
 
 |角色|說明|
 |----|-----------|
@@ -184,13 +184,13 @@
 **新增使用者或安全性群組至分析帳戶**
 
 1. 開啟您要管理的分析帳戶。 如需指示，請參閱 [存取資料湖分析帳戶](#access-adla-account)。
-2. 按一下 [ **設定**, ，然後按一下 [ **使用者**。 您也可以按一下 **存取** 上 **Essentials** 標題列，如下列螢幕擷取畫面所示:
+2. 按一下 [ **設定**, ，然後按一下 [ **使用者**。 您也可以按一下 **存取** 上 **Essentials** 標題列，如下列螢幕擷取畫面所示 ︰
 
     ![Azure 資料湖分析帳戶新增使用者](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-access-button.png)
 3. 從 **使用者** 刀鋒視窗中，按一下 [ **新增**。
 4. 選取角色並新增使用者，然後按一下 [ **確定**。
 
-**附註: 如果此使用者或安全性群組必須提交工作，他們必須在資料湖市集上授予權限。 如需詳細資訊，請參閱 [資料湖存放區中儲存資料的安全性](data-lake-store-secure-data.md)。**
+**附註 ︰ 如果此使用者或安全性群組必須提交工作，他們必須在資料湖市集上授予權限。 如需詳細資訊，請參閱 [資料湖存放區中儲存資料的安全性](data-lake-store-secure-data.md)。**
 
 
 
@@ -216,12 +216,12 @@
     針對每一作業，您可以設定：
 
 
-    |Name|Description|
-    |----|-----------|
-    |Job Name|Enter the name of the job.|
-    |Priority|Lower number is higher priority. If two jobs are both queued, the one with lower priority will be run first|
-    |Parallelism |Max number of compute processes that can happen at the same time. Increasing this number can improve performance but can also increase cost.|
-    |Script|Enter the U-SQL script for the job.|
+  	|Name|Description|
+  	|----|-----------|
+  	|Job Name|Enter the name of the job.|
+  	|Priority|Lower number is higher priority. If two jobs are both queued, the one with lower priority will be run first|
+  	|Parallelism |Max number of compute processes that can happen at the same time. Increasing this number can improve performance but can also increase cost.|
+  	|Script|Enter the U-SQL script for the job.|
 
     Using the same interface, you can also explore the link data sources, and add addtional files to the linked data sources. 
 3. 按一下 [ **提交工作** 如果您想要提交工作。
@@ -234,7 +234,7 @@
 
 1. 開啟您要管理的分析帳戶。 如需指示，請參閱 
 [存取資料湖分析帳戶](#access-adla-account)。 工作管理] 面板會顯示基本工作 
-資訊:
+資訊 ︰
 
     ![管理 Azure 資料湖分析 U-SQL 工作](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-manage-jobs.png)
 
@@ -242,7 +242,7 @@
 
     ![管理 Azure 資料湖分析 U-SQL 工作](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-manage-jobs-details.png)
 
-4. 按一下清單中的工作。 或按一下 **篩選** 可協助您找出工作:
+4. 按一下清單中的工作。 或按一下 **篩選** 可協助您找出工作 ︰
 
     ![篩選 Azure 資料湖分析 U-SQL 作業](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-filter-jobs.png)
 
@@ -314,5 +314,6 @@
 - [使用 Azure 入口網站開始使用資料湖分析](data-lake-analytics-get-started-portal.md)
 - [使用 Azure PowerShell 管理 Azure 資料湖分析](data-lake-analytics-use-powershell.md)
 - [使用 Azure 入口網站監視和疑難排解 Azure 資料湖分析作業](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
 
 

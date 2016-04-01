@@ -56,13 +56,13 @@
 
 ## 資料庫設定：建立資源群組、伺服器和防火牆規則
 
-現在您有權在您選取的 Azure 訂用帳戶下執行 Cmdlet，因此下一步是建立含有伺服器的資源群組，以在伺服器中建立資料庫。 為了使用您選擇的任何有效位置，您可以編輯下一個命令。 執行 **(Get AzureRmLocation | where-object {$_。名稱-eq"Microsoft.Sql/servers"})。位置** 以取得有效位置清單。
+現在您有權在您選取的 Azure 訂用帳戶下執行 Cmdlet，因此下一步是建立含有伺服器的資源群組，以在伺服器中建立資料庫。 為了使用您選擇的任何有效位置，您可以編輯下一個命令。 執行 **(Get AzureRmLocation | where-object {$_。名稱-eq"Microsoft.Sql/servers"}）。位置** 以取得有效位置清單。
 
 執行下列命令以建立新的資源群組：
 
     New-AzureRmResourceGroup -Name "resourcegroupsqlgsps" -Location "West US"
 
-已成功建立新的資源群組之後您看到螢幕上包含的資訊 **ProvisioningState: 成功**。
+已成功建立新的資源群組之後您看到螢幕上包含的資訊 **ProvisioningState ︰ 成功**。
 
 
 ### 建立伺服器 
@@ -141,3 +141,4 @@ SQL Database 會建立在 Azure SQL Database 伺服器內。 執行 **新增 Azu
 ## 其他資源
 
 - [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
+

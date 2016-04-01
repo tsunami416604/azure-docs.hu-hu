@@ -7,3 +7,4 @@
 - [Azure 入口網站](https://feedback.azure.com/forums/169396-media-services/category/144432-portal)
 - [REST API 和平台](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform)
 - [VoD 串流](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming)
+

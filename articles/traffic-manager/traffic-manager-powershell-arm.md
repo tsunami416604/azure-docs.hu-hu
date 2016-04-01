@@ -142,22 +142,22 @@ Cmdlet 在 Azure 流量管理員中建立流量管理員設定檔，並傳回對
     PS C:\> Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
 
 ## 加入流量管理員端點 [](#adding-traffic-manager-endpoints)
-有三種類型的流量管理員端點:
+流量管理員端點有三種類型：
 1. Azure 端點：這些端點代表在 Azure 中託管的服務。
 2. 外部端點：這些端點代表在 Azure 之外託管的服務。
 3. 巢狀端點：這些端點可用來建構巢狀的流量管理員設定檔階層，以針對更複雜的應用程式進行進階流量路由設定。  目前還不支援透過 ARM API 使用這些端點。
 
-在所有三種情況下，可以在兩種方式新增端點:
-1. 使用 3 個步驟程序類似於述 [更新流量管理員設定檔](#update-traffic-manager-profile): 取得設定檔物件，使用 Get AzureRmTrafficManagerProfile 更新離線加入端點，使用新增 AzureRmTrafficManagerEndpointConfig; 將變更上傳至 Azure 流量管理員使用 Set AzureRmTrafficManagerProfile。  這個方法的優點是單一更新就可以變更許多端點。
+在所有三種情況下，可以在兩種方式新增端點 ︰
+1. 使用 3 個步驟程序類似於述 [更新流量管理員設定檔](#update-traffic-manager-profile)︰ 取得設定檔物件，使用 Get AzureRmTrafficManagerProfile 更新離線加入端點，使用新增 AzureRmTrafficManagerEndpointConfig; 將變更上傳至 Azure 流量管理員使用 Set AzureRmTrafficManagerProfile。  這個方法的優點是單一更新就可以變更許多端點。
 2. 使用 New-AzureRmTrafficManagerEndpoint Cmdlet。  這會在單一作業中將端點新增至現有流量管理員設定檔。
 
 ### 新增 Azure 端點
-Azure 端點會參考在 Azure 中託管的其他服務。  目前支援的 Azure 端點 3 種類型:
+Azure 端點會參考在 Azure 中託管的其他服務。  目前支援的 Azure 端點 3 種類型 ︰
 1. Azure Web Apps
-2. 傳統' 的雲端服務 (其中可以包含一項 PaaS 服務或 IaaS 虛擬機器)
+2. 傳統' 的雲端服務 （其中可以包含一項 PaaS 服務或 IaaS 虛擬機器）
 3. ARM Microsoft.Network/publicIpAddress 資源 (可附加至負載平衡器或虛擬機器 NIC)。  要注意的是，publicIpAddress 必須已獲指派 DNS 名稱，才能在流量管理員中使用。
 
-在每個案例:
+在每個案例 ︰
  - 使用新增 AzureRmTrafficManagerEndpointConfig 或新增 AzureRmTrafficManagerEndpoint 'targetResourceId' 參數來指定服務。
  - 'Target' 和 'EndpointLocation'，不應指定，它們上面所指定的 TargetResourceId 所隱含
  - 指定 「 權數 」 是選擇性的。  只有在設定檔已設定為使用「加權」流量路由方法時才會使用 Weight，否則會予以忽略。  如果有指定，其值必須介於 1 到 1000 的範圍內。  預設值是 '1'。
@@ -188,7 +188,7 @@ Azure 端點會參考在 Azure 中託管的其他服務。  目前支援的 Azur
 ### 新增外部端點
 流量管理員使用外部端點將流量導向至在 Azure 之外所託管的服務。  和 Azure 端點一樣，使用 Add-AzureRmTrafficManagerEndpointConfig 並後接 Set-AzureRmTrafficManagerProfile 或使用 New-AzureRMTrafficManagerEndpoint 即可新增外部端點。
 
-當指定外部端點:
+當指定外部端點 ︰
  - 必須使用 'Target' 參數指定之端點網域名稱
  - 如果使用的 「 效能 」 流量路由方法，則需要 'EndpointLocation'，否則就是選擇性。  此值必須是 [有效的 Azure 區域名稱](http://azure.microsoft.com/regions/)。
  - 「 權數 」 和 「 優先 」 是選擇性的與 Azure 端點。
@@ -207,7 +207,7 @@ Azure 端點會參考在 Azure 中託管的其他服務。  目前支援的 Azur
     PS C:\> New-AzureRmTrafficManagerEndpoint –Name eu-endpoint –ProfileName MyProfile -ResourceGroupName MyRG –Type ExternalEndpoints -Target app-eu.contoso.com –EndpointStatus Enabled
 
 ## 更新流量管理員端點
-有兩種方式來更新現有的流量管理員端點:
+有兩種方式來更新現有的流量管理員端點 ︰
 1. 使用 Get-AzureRmTrafficManagerProfile 取得流量管理員設定檔、更新設定檔內的端點屬性，並使用 Set-AzureRmTrafficManagerProfile 認可變更。  這個方法的優點是能夠在單一作業中更新多個端點。
 2. 使用 Get-AzureRmTrafficManagerEndpoint 取得流量管理員端點、更新端點屬性，並使用 Set-AzureRmTrafficManagerEndpoint 認可變更。  由於不需要在設定檔中編製索引為端點陣列，這個方法會比較簡單。
 
@@ -282,4 +282,5 @@ Disable-AzureRmTrafficManagerProfile Cmdlet 會顯示確認提示，但使用 '-
 
 [流量管理員的效能考量](traffic-manager-performance-considerations.md)
  
+
 

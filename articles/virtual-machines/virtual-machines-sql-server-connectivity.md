@@ -42,7 +42,7 @@
 
 首先，請依照下列 [設定連線的這篇文章中的步驟](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)。 請注意，如果您要連接相同雲端服務中的機器，則不需要設定公用端點。 
 
-您可以使用 VM **hostname** 用戶端連接字串中。 主機名稱是您在建立期間給予 VM 的名稱。 例如，如果您的 SQL VM 名為 **mysqlvm** 與雲端服務 DNS 名稱的 **mycloudservice.cloudapp.net**, ，相同的雲端服務中的用戶端 VM 可以使用下列連接字串來連接:
+您可以使用 VM **hostname** 用戶端連接字串中。 主機名稱是您在建立期間給予 VM 的名稱。 例如，如果您的 SQL VM 名為 **mysqlvm** 與雲端服務 DNS 名稱的 **mycloudservice.cloudapp.net**, ，相同的雲端服務中的用戶端 VM 可以使用下列連接字串來連接 ︰
 
     "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
@@ -85,4 +85,5 @@
 請務必檢閱在 Azure 虛擬機器上執行之 SQL Server 的所有安全性最佳做法。 如需詳細資訊，請參閱 [Azure 虛擬機器中 SQL Server 的安全性考量](virtual-machines-sql-server-security-considerations.md)。
 
 若要在 Azure Vm 中執行 SQL Server 相關之其他主題，請參閱 [Azure 虛擬機器上的 SQL Server](virtual-machines-sql-server-infrastructure-services.md)。 
+
 

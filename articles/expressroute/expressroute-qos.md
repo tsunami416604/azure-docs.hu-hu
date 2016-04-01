@@ -21,7 +21,7 @@
 
 ![](./media/expressroute-qos/expressroute-qos.png)
 
-**注意:** QoS 需求適用於 Microsoft 只對等互連。
+**注意 ︰** QoS 需求適用於 Microsoft 只對等互連。
 
 下表提供一份商務用 Skype 所使用的 DSCP 標示清單。 請參閱 [管理商務用 Skype 的 QoS](https://technet.microsoft.com/library/gg405409.aspx) 如需詳細資訊。
 
@@ -48,5 +48,6 @@
 
     - [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)
     - [設定路由](expressroute-howto-routing-classic.md)
-    - [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)
+    - [將 VNet 連結到 ExpressRoute 循環](expressroute-howto-linkvnet-classic.md)
+
 

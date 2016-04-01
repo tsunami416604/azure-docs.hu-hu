@@ -28,13 +28,13 @@
 
 下列各節均提供一個範例案例。 在每個案例中，都會列出可能的資料科學或進階分析流程，以及支援的 Azure 資源。
 
->[AZURE.NOTE] **對於所有下列案例中，您需要:**
+>[AZURE.NOTE] **對於所有下列案例中，您需要 ︰**
 
 *   [建立儲存體帳戶](storage-whatis-account.md)
 *   [建立 Azure ML 工作區](machine-learning/machine-learning-create-workspace.md)
 
 
-## <a name="smalllocal"></a>案例 \#1: 小型本機檔案中的中小型表格式資料集
+## <a name="smalllocal"></a>案例 \#1 ︰ 小型本機檔案中的中小型表格式資料集
 
 ![中小型本機檔案][1]
 
@@ -46,7 +46,7 @@
 
 3.  建置從上傳的資料集開始的 Azure 機器學習實驗流程。
 
-## <a name="smalllocalprocess"></a>案例 \#2: 小型本機檔案中需要處理的中小型資料集
+## <a name="smalllocalprocess"></a>案例 \#2 ︰ 小型本機檔案中需要處理的中小型資料集
 
 ![需要處理的中小型本機檔案][2]
 
@@ -65,11 +65,11 @@
 
 6.  登入 [Azure Machine Learning Studio](https://studio.azureml.net/)。
 
-7.  從 Azure blob，使用 [讀取器] [讀取器] 模組中讀取資料。
+7.  從使用 Azure blob 讀取資料 [讀取器][reader] 模組。
 
 8. 建置從內嵌的資料集開始的 Azure 機器學習實驗流程。
 
-## <a name="largelocal"></a>案例 \#3: 本機檔案，以 Azure Blob 為目標的大型資料集
+## <a name="largelocal"></a>案例 \#3 ︰ 本機檔案，以 Azure Blob 為目標的大型資料集
 
 ![大型本機檔案][3]
 
@@ -91,12 +91,12 @@
 
 8. 登入 [Azure Machine Learning Studio](https://studio.azureml.net/)。
 
-9. 從 Azure blob，使用 [讀取器] [讀取器] 模組中讀取資料。
+9. 從使用 Azure blob 讀取資料 [讀取器][reader] 模組。
 
 10. 建置從內嵌的資料集開始的 Azure ML 實驗流程。
 
 
-## <a name="smalllocaltodb"></a>案例 \#4: 小型目標 Azure 虛擬機器中的 SQL Server 的本機檔案的中小型資料集
+## <a name="smalllocaltodb"></a>案例 \#4 ︰ 小型目標 Azure 虛擬機器中的 SQL Server 的本機檔案的中小型資料集
 
 ![中小型本機檔案至 Azure 中的 SQL DB][4]
 
@@ -114,14 +114,14 @@
 
 6.  將資料載入執行於 Azure VM 的 SQL Server 資料庫。
 
-    a.  選項 \#1: 使用 SQL Server Management Studio。
+    a.  選項 \#1 ︰ 使用 SQL Server Management Studio。
 
         i.  Login to SQL Server VM
         ii. Run SQL Server Management Studio.
         iii. Create database and target tables.
         iv. Use one of the bulk import methods to load the data from VM-local files.
 
-    b.  選項 \#2: 使用 IPython Notebook – 不建議用於中型和大型
+    b.  選項 \#2 ︰ 使用 IPython Notebook – 不建議用於中型和大型
         datasets
 
         i.  Use ODBC connection string to access SQL Server on VM.
@@ -134,11 +134,11 @@
 
 9. 登入 [Azure Machine Learning Studio](https://studio.azureml.net/)。
 
-10. 直接從 SQL Server 中，使用 [讀取器] [讀取器] 模組中讀取資料。 貼上可擷取欄位、 建立功能和取樣資料，如果直接在 [讀取器] [讀者] 查詢中所需的必要查詢。
+10. 讀取資料直接從 SQL Server 使用 [讀取器][reader] 模組。 貼上可擷取欄位、 建立功能和取樣資料，直接在必要時的必要查詢 [讀取器][reader] 查詢。
 
 11. 建置從內嵌的資料集開始的 Azure ML 實驗流程。
 
-## <a name="largelocaltodb"></a>案例 \#5: 在本機檔案中，大型資料集的目標 Azure VM 中的 SQL Server
+## <a name="largelocaltodb"></a>案例 \#5 ︰ 在本機檔案中，大型資料集的目標 Azure VM 中的 SQL Server
 
 ![大型本機檔案至 Azure 中的 SQL DB][5]
 
@@ -180,7 +180,7 @@
 
 7.  登入 [Azure Machine Learning Studio](https://studio.azureml.net/)。
 
-8. 直接從 SQL Server 中，使用 [讀取器] [讀取器] 模組中讀取資料。 貼上可擷取欄位、 建立功能和取樣資料，如果直接在 [讀取器] [讀者] 查詢中所需的必要查詢。
+8. 讀取資料直接從 SQL Server 使用 [讀取器][reader] 模組。 貼上可擷取欄位、 建立功能和取樣資料，直接在必要時的必要查詢 [讀取器][reader] 查詢。
 
 9. 從上傳的資料集開始的簡易 Azure ML 實驗流程
 
@@ -194,8 +194,8 @@
 
 2.  使用其中一個資料匯出方法來將資料從 SQL Server 匯出成傾印檔案。
 
-    a.  注意: 如果您決定將所有資料從內部資料庫，
-        移至完整的資料庫的替代 (較快) 方法
+    a.  注意 ︰ 如果您決定將所有資料從內部資料庫，
+        移至完整的資料庫的替代 （較快） 方法
         在 Azure 中的 SQL Server 執行個體。 略過步驟匯出資料，
         建立資料庫，並載入/匯入到目標資料庫的資料，
         請依照下列替代方法。
@@ -224,7 +224,7 @@
 
 7.  登入 [Azure Machine Learning Studio](https://studio.azureml.net/)。
 
-8. 直接從 SQL Server 中，使用 [讀取器] [讀取器] 模組中讀取資料。 貼上可擷取欄位、 建立功能和取樣資料，如果直接在 [讀取器] [讀者] 查詢中所需的必要查詢。
+8. 讀取資料直接從 SQL Server 使用 [讀取器][reader] 模組。 貼上可擷取欄位、 建立功能和取樣資料，直接在必要時的必要查詢 [讀取器][reader] 查詢。
 
 9. 從上傳的資料集開始的簡易 Azure ML 實驗流程。
 
@@ -242,7 +242,7 @@
 
 [移動資料庫，使用卸離和附加 (TRANSACT-SQL)](https://technet.microsoft.com/library/ms187858(v=sql.110).aspx)
 
-## <a name="largedbtohive"></a>案例 \#7: 在本機檔案中的巨量資料目標 Azure HDInsight Hadoop 叢集中的 Hive 資料庫
+## <a name="largedbtohive"></a>案例 \#7 ︰ 在本機檔案中的巨量資料目標 Azure HDInsight Hadoop 叢集中的 Hive 資料庫
 
 ![本機目標 Hive 中的巨量資料][9]
 
@@ -289,7 +289,7 @@
 
 8.  登入 [Azure Machine Learning Studio](https://studio.azureml.net/)。
 
-9. 讀取的資料直接從 `Hive Queries` 使用 [讀取器] [讀取器] 模組。 貼上可擷取欄位、 建立功能和取樣資料，如果直接在 [讀取器] [讀者] 查詢中所需的必要查詢。
+9. 讀取的資料直接從 `Hive Queries` 使用 [讀取器][reader] 模組。 貼上可擷取欄位、 建立功能和取樣資料，直接在必要時的必要查詢 [讀取器][reader] 查詢。
 
 10. 從上傳的資料集開始的簡易 Azure ML 實驗流程。
 
@@ -305,8 +305,8 @@
 如需透過公用資料集運用進階分析程序和技術的端對端 Azure Machine Learning 逐步解說，請參閱：
 
 
-* [作用中的 Cortana 分析程序: 使用 SQL Server](machine-learning/machine-learning-data-science-process-sql-walkthrough.md)。
-* [作用中的 Cortana 分析程序: 使用 HDInsight Hadoop 叢集](machine-learning/machine-learning-data-science-process-hive-walkthrough.md)。
+* [作用中的 Cortana 分析程序 ︰ 使用 SQL Server](machine-learning/machine-learning-data-science-process-sql-walkthrough.md)。
+* [作用中的 Cortana 分析程序 ︰ 使用 HDInsight Hadoop 叢集](machine-learning/machine-learning-data-science-process-hive-walkthrough.md)。
 
 
 [1]: ./media/machine-learning-data-science-plan-sample-scenarios/dsp-plan-small-in-aml.png
@@ -322,4 +322,5 @@
 
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+
 

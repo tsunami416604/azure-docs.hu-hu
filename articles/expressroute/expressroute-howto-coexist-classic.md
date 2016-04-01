@@ -20,19 +20,19 @@
 
 能夠設定站對站 VPN 和 ExpressRoute 有諸多好處。 您可以將站對站 VPN 設定為 ExressRoute 的安全容錯移轉路徑，或使用站對站 VPN 來連線至不在您網路中但透過 ExpressRoute 連接的網站。 本文中將說明設定這兩個案例的步驟。 本文適用於使用傳統部署模型所建立的連線。 
 
->[AZURE.IMPORTANT] 請務必了解 Azure 目前使用兩種部署模型: 資源管理員，以及傳統。 開始您的組態之前，請確定您瞭解部署模型和工具。 部署模型的相關資訊，請參閱 [Azure 部署模型](../azure-classic-rm.md)
+>[AZURE.IMPORTANT] 請務必了解 Azure 目前使用兩種部署模型 ︰ 資源管理員，以及傳統。 開始您的組態之前，請確定您瞭解部署模型和工具。 部署模型的相關資訊，請參閱 [Azure 部署模型](../azure-classic-rm.md)
 
 
 在執行下列指示之前，必須事先設定 ExpressRoute 線路。 請確定您已遵循指南 [建立的 ExpressRoute 電路](expressroute-howto-circuit-classic.md) 和 [設定路由](expressroute-howto-routing-classic.md) 遵循下列步驟之前。
 
 ## 限制
 
-- **不支援傳輸路由:** 您無法透過 ExpressRoute 連線區域網路，以及您透過站台對站 VPN 連線的區域網路之間路由傳送 (透過 Azure)。
-- **點對站台不支援:** 您無法啟用點對站台連結到 ExpressRoute 之相同 vnet 的 VPN 連線。 點對站 VPN 和 ExpressRoute 不能並存在相同的 VNet。
-- **無法啟用強制通道上的站台對站 VPN 閘道:** 您可以只 「 強制 」 所有網際網路繫結流量回到您的內部部署網路透過 ExpressRoute。 
-- **只有 standard 或更高的效能閘道:** 您必須使用標準或高的效能閘道 ExpressRoute 閘道和站台對站 VPN 閘道。 請參閱 [閘道 Sku](../vpn-gateway/vpn-gateway-about-vpngateways.md) 的閘道器 Sku 的相關資訊。
-- **靜態路由需求:** 如果您的區域網路連線到 ExpressRoute 和站台對站台 VPN，您必須將站台對站台 VPN 連接路由傳送至公用網際網路區域網路設定靜態路由。
-- **ExpressRoute 閘道器必須先設定:** 之前必須先建立 ExpressRoute 閘道器先新增站台對站 VPN 閘道。
+- **不支援傳輸路由 ︰** 您無法透過 ExpressRoute 連線區域網路，以及您透過站台對站 VPN 連線的區域網路之間路由傳送 （透過 Azure)。
+- **點對站台不支援 ︰** 您無法啟用點對站台連結到 ExpressRoute 之相同 vnet 的 VPN 連線。 點對站 VPN 和 ExpressRoute 不能並存在相同的 VNet。
+- **無法啟用強制通道上的站台對站 VPN 閘道 ︰** 您可以只 「 強制 」 所有網際網路繫結流量回到您的內部部署網路透過 ExpressRoute。 
+- **只有 standard 或更高的效能閘道 ︰** 您必須使用標準或高的效能閘道 ExpressRoute 閘道和站台對站 VPN 閘道。 請參閱 [閘道 Sku](../vpn-gateway/vpn-gateway-about-vpngateways.md) 的閘道器 Sku 的相關資訊。
+- **靜態路由需求 ︰** 如果您的區域網路連線到 ExpressRoute 和站台對站台 VPN，您必須將站台對站台 VPN 連接路由傳送至公用網際網路區域網路設定靜態路由。
+- **ExpressRoute 閘道器必須先設定 ︰** 之前必須先建立 ExpressRoute 閘道器先新增站台對站 VPN 閘道。
 
 ## 設定站對站 VPN 作為 ExpressRoute 的容錯移轉路徑
 
@@ -177,7 +177,7 @@
 
 如果您現有的虛擬網路已透過 ExpressRoute 或站對站 VPN 連線進行連線，則為了啟用這兩個連線以連接到現有虛擬網路，您必須先刪除現有閘道器。 這表示當您進行此設定時，本機設備將會與使用該閘道器的虛擬網路中斷連線。
 
-**開始設定之前:** 確認您擁有足夠的 IP 位址在虛擬網路中，因此能夠增加閘道子網路的大小。
+**開始設定之前 ︰** 確認您擁有足夠的 IP 位址在虛擬網路中，因此能夠增加閘道子網路的大小。
 
 1. 下載最新版的 PowerShell Cmdlet。 您可以從下載並安裝最新的 PowerShell cmdlet 的 PowerShell 區段 [下載頁面](http://azure.microsoft.com/downloads/)。
 
@@ -210,4 +210,5 @@
 ## 後續步驟
 
 如需有關 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)
+
 

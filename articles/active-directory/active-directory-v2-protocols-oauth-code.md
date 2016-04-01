@@ -230,3 +230,4 @@ Content-Type: application/json
 概括而言，原生/行動應用程式的整個驗證流程看起來像是這樣：
 
 ![OAuth 授權碼流程](../media/active-directory-v2-flows/convergence_scenarios_native.png)
+

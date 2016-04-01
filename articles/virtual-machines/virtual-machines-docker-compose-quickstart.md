@@ -56,7 +56,7 @@ $ docker-compose --version
 
 接下來，請建立 `docker-compose.yml` 檔案，這只是一個文字組態檔，用來定義要在此 VM 上執行的 Docker 容器。  此檔案會指定要在每個容器上執行的映像 (或可能是來自 Dockerfile 的組建)、所需的環境變數和相依性、連接埠，容器之間的連結等等。 如需有關 yml 檔案語法的詳細資訊，請參閱 [docker compose.yml 參考](http://docs.docker.com/compose/yml/)。
 
-在 VM 上建立工作目錄，並使用您慣用的文字編輯器建立 `docker-compose.yml`。 若要嘗試簡單的範例，請將下列文字複製到檔案。 這項設定使用的映像 [DockerHub 登錄](https://registry.hub.docker.com/_/wordpress/) 安裝 WordPress (開放原始碼部落格和內容管理系統) 和連結的後端 MariaDB 資料庫。
+在 VM 上建立工作目錄，並使用您慣用的文字編輯器建立 `docker-compose.yml`。 若要嘗試簡單的範例，請將下列文字複製到檔案。 這項設定使用的映像 [DockerHub 登錄](https://registry.hub.docker.com/_/wordpress/) 安裝 WordPress （開放原始碼部落格和內容管理系統） 和連結的後端 MariaDB 資料庫。
 
  ```
  wordpress:
@@ -73,7 +73,7 @@ db:
 
 ```
 
-## 步驟 4: 開始撰寫容器
+## 步驟 4 ︰ 開始撰寫容器
 
 在您 VM 的工作目錄中，執行以下命令。
 
@@ -125,4 +125,5 @@ $ azure vm endpoint create <machine-name> 80 8080
 <!--Image references-->
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
+
 

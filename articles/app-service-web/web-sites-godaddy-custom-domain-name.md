@@ -56,13 +56,13 @@
 
     ![選取記錄類型](./media/web-sites-godaddy-custom-domain-name/godaddy-selectrecordtype.png)
 
-    接下來，您必須提供 **主機** (自訂網域或子網域) 及其 **指向**。
+    接下來，您必須提供 **主機** （自訂網域或子網域） 及其 **指向**。
 
     ![新增區域記錄](./media/web-sites-godaddy-custom-domain-name/godaddy-addzonerecord.png)
 
-    * 加入時 **(主機) 記錄** -您必須設定 **主機** 欄位 **@** (這代表根網域名稱，例如 **contoso.com**,，) * (符合多個子網域的萬用字元) 或您想要使用的子網域 (例如， **www**。)您必須設定 **指向** Azure web 應用程式的 IP 位址的欄位。
+    * 加入時 **（主機） 記錄** -您必須設定 **主機** 欄位 **@** (這代表根網域名稱，例如 **contoso.com**,，) * （符合多個子網域的萬用字元） 或您想要使用的子網域 (例如， **www**。)您必須設定 **指向** Azure web 應用程式的 IP 位址的欄位。
 
-    * 當加入 **CNAME (別名) 記錄** -您必須設定 **主機** 欄位設為您想要使用的子網域。 例如， **www**。 您必須設定 **指向** 欄位 **。 azurewebsites.net** Azure web 應用程式的網域名稱。 例如， **contoso.azurwebsites.net**。
+    * 當加入 **CNAME （別名） 記錄** -您必須設定 **主機** 欄位設為您想要使用的子網域。 例如， **www**。 您必須設定 **指向** 欄位 **。 azurewebsites.net** Azure web 應用程式的網域名稱。 例如， **contoso.azurwebsites.net**。
 
 5. 按一下 [ **加入另一個**。
 6. 選取 **CNAME** 做為記錄類型，然後指定 **主機** 值 **awverify** 和 **指向** 值 **awverify.lt; yourwebappname & gt;。azurewebsites.net**。
@@ -76,8 +76,9 @@
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+
 

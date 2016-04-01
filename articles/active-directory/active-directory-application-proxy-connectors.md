@@ -36,7 +36,7 @@
 若要群組的連接器，您必須確定您 [安裝多個連接器](active-directory-application-proxy-enable.md), ，和它們的名稱，然後將它們分組。 最後，您必須將它們指派給特定的應用程式。
 
 ## 步驟 1：建立連接器群組
-您可以建立任意數量的連接器群組。 連接器群組的建立是在 Azure 入口網站中完成。 選取您的目錄，然後按一下 **設定**。 然後按一下 [應用程式 Proxy 下 **管理連接器群組** 並為該群組指定的名稱來建立新的連接器群組:
+您可以建立任意數量的連接器群組。 連接器群組的建立是在 Azure 入口網站中完成。 選取您的目錄，然後按一下 **設定**。 然後按一下 [應用程式 Proxy 下 **管理連接器群組** 並為該群組指定的名稱來建立新的連接器群組 ︰
     ![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_creategroup.png)
     ![](./media/active-directory-application-proxy-connectors/app_proxy_connectors_namegroup.png)
 ## 步驟 2：將連接器指派給您的群組
@@ -53,7 +53,7 @@
 - [啟用單一登入](active-directory-application-proxy-sso-using-kcd.md)
 - [啟用條件式存取](active-directory-application-proxy-conditional-access.md)
 - [使用宣告感知應用程式](active-directory-application-proxy-claims-aware-apps.md)
-- [使用應用程式 Proxy 疑難排解您遇到的問題](active-directory-application-proxy-troubleshoot.md)
+- [您無法使用應用程式 Proxy 的問題進行疑難排解](active-directory-application-proxy-troubleshoot.md)
 
 ## 深入了解應用程式 Proxy
 - [看看我們在這裡的線上說明](active-directory-application-proxy-enable.md)
@@ -63,4 +63,5 @@
 ## 其他資源
 
 * [關於 Kerberos 限制委派](http://technet.microsoft.com/library/cc995228.aspx)
+
 

@@ -43,7 +43,7 @@
 
 ![HDInsight HBase 複寫虛擬網路圖表][img-vnet-diagram]
 
-## <a id="prerequisites"></a>先決條件
+## <a id="prerequisites"></a>必要條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -173,12 +173,12 @@ Azure 傳統入口網站不支援使用自訂組態選項佈建 HDInsight 叢集
 4.  在左窗格中，展開 **DSN**, ，**Contoso DNS-U.S.-EU**。
 5.  以滑鼠右鍵按一下 **條件轉寄站**, ，然後按一下 [ **新的條件轉寄站**。 
 5.  輸入以下資訊：
-    - **DNS 網域**: 輸入 Contoso HBase 美國的 DNS 尾碼。 例如：Contoso-HBase-US.f5.internal.cloudapp.net。
-    - **主要伺服器的 IP 位址**: 輸入 10.2.0.4，也就是-CONTOSO-DNS-US 的 IP 位址。 請確認 IP。 您的 DNS 伺服器可以有不同的 IP 位址。
+    - **DNS 網域**︰ 輸入 Contoso HBase 美國的 DNS 尾碼。 例如：Contoso-HBase-US.f5.internal.cloudapp.net。
+    - **主要伺服器的 IP 位址**︰ 輸入 10.2.0.4，也就是-CONTOSO-DNS-US 的 IP 位址。 請確認 IP。 您的 DNS 伺服器可以有不同的 IP 位址。
 6.  按下 **ENTER**, ，然後按一下 [ **確定**。  現在您可以從 Contoso-DNS-EU 解析 Contoso-DNS-US 的 IP 位址。
 7.  重複這些步驟，以將 DNS 條件轉寄站新增至附帶下列值之 Contoso-DNS-US 上的虛擬機器：
-    - **DNS 網域**: 輸入 Contoso HBase 歐盟的 DNS 尾碼。 
-    - **主要伺服器的 IP 位址**: 輸入 10.2.0.4，也就是 Contoso-DNS-歐盟的 IP 位址。
+    - **DNS 網域**︰ 輸入 Contoso HBase 歐盟的 DNS 尾碼。 
+    - **主要伺服器的 IP 位址**︰ 輸入 10.2.0.4，也就是 Contoso-DNS-歐盟的 IP 位址。
 
 **測試網域名稱解析**
 
@@ -234,7 +234,7 @@ Azure 傳統入口網站不支援使用自訂組態選項佈建 HDInsight 叢集
 
 **在來源叢集上設定複寫每個資料行系列**
 
-1. 從 HBase shell] 視窗的 **Contso HBase-U.S.-EU** RDP 工作階段，設定複寫每個資料行系列:
+1. 從 HBase shell] 視窗的 **Contso HBase-U.S.-EU** RDP 工作階段，設定複寫每個資料行系列 ︰
 
         disable 'Contacts'
         alter 'Contacts', {NAME => 'Personal', REPLICATION_SCOPE => '1'}
@@ -311,3 +311,4 @@ Azure 傳統入口網站不支援使用自訂組態選項佈建 HDInsight 叢集
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md 
+

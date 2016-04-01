@@ -49,9 +49,9 @@
 我們遵循下列步驟在 Azure ML 中建立我們的實驗：  
 
 1.  將資料集以 csv 檔案 (非常小的檔案) 的形式上傳到 Azure ML
-2.  建立新的實驗，並使用 [Project Columns] 和 [專案資料行] 模組來選取 Excel 中所使用的相同資料功能   
-3.  使用 [分割] [分割] 模組 (使用 *相對運算式* 模式) 來將資料分成完全相同的訓練集，因為已經在 Excel 中已完成  
-4.  實驗的 [線性迴歸] [線性迴歸] 模組 (預設選項)、 記載，並將結果與我們 Excel 迴歸模型比較
+2.  建立新的實驗，並使用 [專案資料行][project-columns] 模組來選取 Excel 中所使用的相同資料功能   
+3.  使用 [分割][split] 模組 (使用 *相對運算式* 模式) 來將資料分成完全相同的訓練集，因為已經在 Excel 中已完成  
+4.  實驗 [線性迴歸][linear-regression] 模組 （只有預設選項）、 記載，並將結果與我們 Excel 迴歸模型比較
 
 ### 檢閱初步結果
 最初，Excel 模型效能明顯勝過 Azure ML 模型：  
@@ -60,13 +60,13 @@
 |---|:---:|:---:|
 |效能|   |  |
 |<ul style="list-style-type: none;"><li>調整 R 平方</li></ul>| 0.96 |N/A|
-|<ul style="list-style-type: none;"><li>決定係數 <br />判斷</li></ul>|N/A|   0.78<br />(低精確度)|
+|<ul style="list-style-type: none;"><li>決定係數 <br />判斷</li></ul>|N/A|   0.78<br />（低精確度）|
 |平均絕對誤差 |  $9.5M|  $ 19.4M|
 |平均絕對誤差 (%)|   6.03%|  12.2%
 
 當我們向 Azure ML 小組的開發人員和資料科學家執行我們的程序和結果時，他們快速提供一些實用的秘訣。  
 
-* 當您在 Azure ML 中使用 [線性迴歸] [線性迴歸] 模組時，提供兩種方法:
+* 當您使用 [線性迴歸][linear-regression] Azure ML 中的模組，會提供兩種方法 ︰
     *  線上梯度下降：可能比較適合較大規模的問題
     *  一般最小平方：這是大多數人聽到線性迴歸時會想到的方法。 對於小型資料集，一般最小平方是較佳的選擇。
 *  考慮調整 L2 正規化加權參數，以改善效能。 它預設設定為 0.001，而對我們的小型資料集，將它設定為 0.005 以改善效能。    
@@ -74,14 +74,14 @@
 ### 謎題解開了！
 當我們套用建議時，我們在 Azure ML 中達成與 Excel 的相同基準效能：   
 
-|| Excel|Azure ML (初始)|Azure ML 以最小平方|
+|| Excel|Azure ML (初始)|Azure ML (最小平方法)|
 |---|:---:|:---:|:---:|
 |加上標籤的值  |實際值 (數值)|相同|相同|
-|學習模組  |Excel-> [資料分析-> 迴歸|線性迴歸。|線性迴歸|
+|學習模組  |Excel -> 資料分析 -> 迴歸|線性迴歸。|線性迴歸|
 |學習模組選項|N/A|預設值|普通最小平方<br />L2 = 0.005|
-|資料集|26 個資料列，3 個功能，1 的標籤。   所有的數字。|相同|相同|
-|分割: 訓練|Excel 訓練 18 第一次的資料列、 最後 8 個資料列進行測試。|相同|相同|
-|分割: 測試|Excel 迴歸公式套用至最後 8 個資料列|相同|相同|
+|資料集|26 個資料列，3 個功能，1 個標籤。   全部數值。|相同|相同|
+|分割：訓練|Excel 會在前 18 個資料列上訓練，在最後 8 個資料列上測試。|相同|相同|
+|分割：測試|Excel 迴歸公式會套用至最後 8 個資料列|相同|相同|
 |**效能**||||
 |調整 R 平方|0.96|N/A||
 |決定係數|N/A|0.78|0.952049|
@@ -115,9 +115,9 @@
 ![][2]
  
 ### 最佳化及進一步實驗
-現在我們已具備 Excel 模型的基準，我們可以進行最佳化 Azure ML 線性迴歸模型。  我們使用模組的 [篩選器為基礎的特徵選取] [-基礎-功能-選取範圍篩選] 來改善我們選取初始資料元素，它會幫助我們達到 4.6%的效能提升平均絕對誤差。   針對未來的專案，我們將使用這項功能，它可以為逐一查看資料屬性，以找出正確的功能，用於模型化組合上，可為我們節省數週的時間。  
+現在我們已具備 Excel 模型的基準，我們可以進行最佳化 Azure ML 線性迴歸模型。  我們使用模組 [篩選為基礎的特徵選取][filter-based-feature-selection] 來改善我們的初始資料的選取項目和它幫助我們達到 4.6%的效能提升平均絕對誤差。   針對未來的專案，我們將使用這項功能，它可以為逐一查看資料屬性，以找出正確的功能，用於模型化組合上，可為我們節省數週的時間。  
 
-接下來我們計劃來比較效能實驗中納入其他演算法，例如 [貝氏] [貝氏的線性-迴歸] 或 [推進式決策樹] [推進式-決策-樹狀目錄中的迴歸]。    
+接下來我們計劃要納入其他演算法，例如 [貝氏][bayesian-linear-regression] 或 [推進式決策樹][boosted-decision-tree-regression] 在我們的實驗來比較效能。    
 
 如果您想要實驗迴歸，「能量效益迴歸」範例資料集即是可用來嘗試的良好的資料集，其中包含多個數值屬性。 資料集是在 ML Studio 中的範例資料集的一部分提供。  您可以使用各種不同的學習模組，來預測加熱負載或冷卻負載。  下列圖表是針對目標變數冷卻負載預測的能源效率資料集所學習不同的迴歸的效能比較： 
 
@@ -130,9 +130,9 @@
 
 ## 重要心得 
 
-我們從並行執行 Excel 迴歸和 Azure Machine Learning 實驗中學到很多。 Excel 中建立基準模型並使用 Azure ML [線性迴歸] 的模型比較 [線性迴歸] 幫助我們了解 Azure ML，並且我們探索了改善資料選取範圍和模型效能的機會。         
+我們從並行執行 Excel 迴歸和 Azure Machine Learning 實驗中學到很多。 Excel 中建立基準模型並使用 Azure ML 模型比較 [線性迴歸][linear-regression] 幫助我們了解 Azure ML，並且我們探索了改善資料的選項和模型效能的機會。         
 
-我們也發現，最好使用 [篩選器為基礎的特徵選取] [-基礎的功能-選取範圍篩選] 來加速未來的預測專案。  藉由將功能選取套用到您的資料，您可以在 Azure ML 中建立改良的模型，以獲得更好的整體效能。 
+我們也發現，最好使用 [篩選為基礎的特徵選取][filter-based-feature-selection] 來加速未來的預測專案。  藉由將功能選取套用到您的資料，您可以在 Azure ML 中建立改良的模型，以獲得更好的整體效能。 
 
 能夠從 Azure ML 傳送預測性的分析預測至 Excel 可大幅增加成功將結果提供給廣泛的商業使用者對象的能力。     
 
@@ -140,9 +140,9 @@
 ## 資源
 以下列出一些可幫助您處理迴歸的資源：  
 
-* Excel 中的迴歸。  如果您未曾在 Excel 中的迴歸，本教學課程可讓您輕鬆: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Excel 中的迴歸。  如果您未曾在 Excel 中的迴歸，本教學課程可讓您輕鬆 ︰ [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
 * 迴歸與預測。  Tyler Chessman 撰寫部落格文章，說明如何執行時間序列預測在 Excel 中，其中包含良好初級開發人員的線性迴歸的描述。 [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts)  
-*   一般最小平方線性迴歸：缺點、問題和陷阱。  簡介和討論的迴歸:   [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/
+*   一般最小平方線性迴歸：缺點、問題和陷阱。  簡介和討論的迴歸 ︰   [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/
 ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ )
 
 [1]: ./media/machine-learning-linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
@@ -157,4 +157,5 @@
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
+
 

@@ -291,7 +291,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
 </tr>
 <tr>
 <td>位元</td>    
-<td>|, &, ^, <<, >>>>> (填滿零的向右移位) </td>
+<td>|, &, ^, <<, >>>>> （填滿零的向右移位） </td>
 </tr>
 <tr>
 <td>邏輯</td>
@@ -299,7 +299,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
 </tr>
 <tr>
 <td>比較</td> 
-<td>=、! =、 (& s) lt;，(& s) gt;，(& s) lt; =、 & gt; =、 <></td>
+<td>=、 ！ =、 （& s) lt;，（& s) gt;，（& s) lt; =、 & gt; =、 <></td>
 </tr>
 <tr>
 <td>String</td> 
@@ -345,30 +345,30 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
             <strong>Op</strong>
          </td>
          <td valign="top">
-            <strong>Undefined</strong>
+            <strong>未定義</strong>
          </td>
          <td valign="top">
             <strong>Null</strong>
          </td>
          <td valign="top">
-            <strong>Boolean</strong>
+            <strong>布林值</strong>
          </td>
          <td valign="top">
-            <strong>Number</strong>
+            <strong>數字</strong>
          </td>
          <td valign="top">
-            <strong>String</strong>
+            <strong>字串</strong>
          </td>
          <td valign="top">
-            <strong>Object</strong>
+            <strong>物件</strong>
          </td>
          <td valign="top">
-            <strong>Array</strong>
+            <strong>陣列</strong>
          </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Undefined<strong>
+            <strong>未定義<strong>
          </td>
          <td valign="top">
             Undefined
@@ -400,7 +400,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
             Undefined
          </td>
          <td valign="top">
-            <strong>OK</strong>
+            <strong>[確定]</strong>
          </td>
          <td valign="top">
             Undefined
@@ -420,7 +420,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
       </tr>
       <tr>
          <td valign="top">
-            <strong>Boolean<strong>
+            <strong>布林值<strong>
          </td>
          <td valign="top">
             Undefined
@@ -429,7 +429,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
             Undefined
          </td>
          <td valign="top">
-            <strong>OK</strong>
+            <strong>[確定]</strong>
          </td>
          <td valign="top">
             Undefined
@@ -446,7 +446,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
       </tr>
       <tr>
          <td valign="top">
-            <strong>Number<strong>
+            <strong>數字<strong>
          </td>
          <td valign="top">
             Undefined
@@ -458,7 +458,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
             Undefined
          </td>
          <td valign="top">
-            <strong>OK</strong>
+            <strong>[確定]</strong>
          </td>
          <td valign="top">
             Undefined
@@ -472,7 +472,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
       </tr>
       <tr>
          <td valign="top">
-            <strong>String<strong>
+            <strong>字串<strong>
          </td>
          <td valign="top">
             Undefined
@@ -487,7 +487,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
             Undefined
          </td>
          <td valign="top">
-            <strong>OK</strong>
+            <strong>[確定]</strong>
          </td>
          <td valign="top">
             Undefined
@@ -498,7 +498,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
       </tr>
       <tr>
          <td valign="top">
-            <strong>Object<strong>
+            <strong>物件<strong>
          </td>
          <td valign="top">
             Undefined
@@ -516,7 +516,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
             Undefined
          </td>
          <td valign="top">
-            <strong>OK</strong>
+            <strong>[確定]</strong>
          </td>
          <td valign="top">
             Undefined
@@ -524,7 +524,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
       </tr>
       <tr>
          <td valign="top">
-            <strong>Array<strong>
+            <strong>陣列<strong>
          </td>
          <td valign="top">
             Undefined
@@ -545,7 +545,7 @@ WHERE 子句 (**`WHERE <filter_condition>`**) 是選擇性的。 它會指定條
             Undefined
          </td>
          <td valign="top">
-            <strong>OK</strong>
+            <strong>[確定]</strong>
          </td>
       </tr>
    </tbody>
@@ -627,7 +627,7 @@ IN 就相當於鏈結多個 OR 子句，不過可提供使用單一索引，因�
 
 和其他查詢運算子一樣，如果任何文件中的條件運算式遺漏了參考屬性，或如果要比較的類型不同，則查詢結果會將這些文件排除在外。
 
-Coalesce (?) 運算子可用來有效率地 (也稱為檢查有屬性 定義) 文件中。 針對半結構化或混合類型的資料執行查詢時，這非常有用。 例如，此查詢會傳回 "lastName" (如果存在) 或 "surname" (如果不存在)。
+Coalesce （？） 運算子可用來有效率地 （也稱為檢查有屬性 定義） 文件中。 針對半結構化或混合類型的資料執行查詢時，這非常有用。 例如，此查詢會傳回 "lastName" (如果存在) 或 "surname" (如果不存在)。
 
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
@@ -1233,7 +1233,7 @@ DocumentDB SQL 語法已延伸，可支援使用這些使用者定義函式的�
 
 我們現在可以在投射的查詢中使用此 UDF。 必須限定 Udf，以區分大小寫的前置詞"udf 」。 當從查詢中呼叫。 
 
->[AZURE.NOTE] 3/17/2015 年以前，DocumentDB 支援無需 UDF 「 udf 」。 前置詞，例如 SELECT regex_match ()。 這種呼叫模式已被取代。  
+>[AZURE.NOTE] 3/17/2015 年以前，DocumentDB 支援無需 UDF 「 udf 」。 前置詞，例如 SELECT regex_match （）。 這種呼叫模式已被取代。  
 
 **查詢**
 
@@ -1251,7 +1251,7 @@ DocumentDB SQL 語法已延伸，可支援使用這些使用者定義函式的�
       }
     ]
 
-UDF 也可用篩選內所示在下列範例中，也限定 「 udf 」。 前置詞:
+UDF 也可用篩選內所示在下列範例中，也限定 「 udf 」。 前置詞 ︰
 
 **查詢**
 
@@ -1884,18 +1884,18 @@ DocumentDB 查詢提供者執行從 LINQ 查詢到 DocumentDB SQL 查詢的最�
 ### 支援的 LINQ 運算子清單
 以下是隨附於 DocumentDB.NET SDK 之 LINQ 提供者中支援的 LINQ 運算子清單。
 
--   **選取**: 投影轉譯成 SQL SELECT 包括物件建構
--   **其中**: 篩選轉譯成 SQL WHERE，並支援之間轉譯 & &、 | | 和! 以 SQL 運算子
--   **SelectMany**: 可讓復原的 SQL JOIN 子句的陣列。 可用來鏈結/巢串運算式來篩選陣列元素
--   **OrderBy 和 OrderByDescending**: 將資料轉譯為 ORDER BY 遞增/遞減:
--   **CompareTo**: 將資料轉譯為範圍比較。 通常用於字串，因為字串在 .NET 中是無法比較的
--   **採取**: 將資料轉譯為 SQL TOP 來限制從查詢結果
--   **數學函式**: 支援從轉譯。NET 的 Abs、 Acos、 Asin、 Atan、 Ceiling Cos、 Exp、 Floor、 記錄、 Log10、 Pow、 循、 號、 Sin、 Sqrt、 Tan、 對等 SQL 的內建函式的截斷。
--   **字串函式**: 支援從轉譯。NET 的 Concat、 Contains、 EndsWith、 IndexOf、 計數、 ToLower、 TrimStart、 取代、 反向、 TrimEnd、 StartsWith、 子字串、 對等 SQL 的內建函式的 ToUpper。
--   **陣列函數**: 支援從轉譯。NET 的 Concat、 Contains 和對等 SQL 的內建函式的計數。
--   **地理空間擴充程式函式**: 支援虛設常式方法 IsValid 和 IsValidDetailed 內的距離，對等 SQL 的內建函式的轉譯。
--   **使用者定義函式擴充函式**: 從虛設常式方法 UserDefinedFunctionProvider.Invoke 支援轉譯對應使用者定義函式。
--   **其他**: 支援聯合和條件式運算子的轉譯。 可根據內容將 Contains 轉譯為字串 CONTAINS、ARRAY_CONTAINS 或 SQL IN。
+-   **選取**︰ 投影轉譯成 SQL SELECT 包括物件建構
+-   **其中**︰ 篩選轉譯成 SQL WHERE，並支援之間轉譯 & &、 | | 和 ！ 以 SQL 運算子
+-   **SelectMany**︰ 可讓復原的 SQL JOIN 子句的陣列。 可用來鏈結/巢串運算式來篩選陣列元素
+-   **OrderBy 和 OrderByDescending**︰ 將資料轉譯為 ORDER BY 遞增/遞減 ︰
+-   **CompareTo**︰ 將資料轉譯為範圍比較。 通常用於字串，因為字串在 .NET 中是無法比較的
+-   **採取**︰ 將資料轉譯為 SQL TOP 來限制從查詢結果
+-   **數學函式**︰ 支援從轉譯。NET 的 Abs、 Acos、 Asin、 Atan、 Ceiling Cos、 Exp、 Floor、 記錄、 Log10、 Pow、 循、 號、 Sin、 Sqrt、 Tan、 對等 SQL 的內建函式的截斷。
+-   **字串函式**︰ 支援從轉譯。NET 的 Concat、 Contains、 EndsWith、 IndexOf、 計數、 ToLower、 TrimStart、 取代、 反向、 TrimEnd、 StartsWith、 子字串、 對等 SQL 的內建函式的 ToUpper。
+-   **陣列函數**︰ 支援從轉譯。NET 的 Concat、 Contains 和對等 SQL 的內建函式的計數。
+-   **地理空間擴充程式函式**︰ 支援虛設常式方法 IsValid 和 IsValidDetailed 內的距離，對等 SQL 的內建函式的轉譯。
+-   **使用者定義函式擴充函式**︰ 從虛設常式方法 UserDefinedFunctionProvider.Invoke 支援轉譯對應使用者定義函式。
+-   **其他**︰ 支援聯合和條件式運算子的轉譯。 可根據內容將 Contains 轉譯為字串 CONTAINS、ARRAY_CONTAINS 或 SQL IN。
 
 ### SQL 查詢運算子
 以下一些範例說明如何將一些標準 LINQ 查詢運算子往下轉譯為 DocumentDB 查詢。
@@ -2374,11 +2374,12 @@ DocumentDB 提供一個程式設計模型，以使用預存程序和觸發程序
 10. 平行關聯式資料庫系統中的查詢處理 (IEEE Computer Society Press，1994 年)
 11. Lu, Ooi, Tan, 平行關聯式資料庫系統中的查詢處理 (IEEE Computer Society Press，1994 年)。
 12. Christopher Olston、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar、Andrew Tomkins：Pig Latin：資料處理的 Not-So-Foreign 語言，SIGMOD 2008。
-13.     G. Graefe. The Cascades framework for query optimization. IEEE Data Eng. Bull., 18(3): 1995.
+13.     G. Graefe。 The Cascades framework for query optimization. IEEE Data Eng. Bull., 18(3): 1995.
 
 
 [1]: ./media/documentdb-sql-query/sql-query1.png
 [introduction]: documentdb-introduction.md
 [consistency-levels]: documentdb-consistency-levels.md
  
+
 

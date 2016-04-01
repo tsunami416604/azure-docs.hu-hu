@@ -38,7 +38,7 @@
 * 顯示不再包含 WordCount 的應用程式類型清單。
 
 
-## 先決條件
+## 必要條件
 
 這個範例會使用 [字數範例](http://aka.ms/servicefabricsamples) (位於 **開始** 範例)。 必須先建置 WordCount 範例，再兩個應用程式封裝複製到映像存放區。
 
@@ -708,4 +708,5 @@ namespace ServiceFabricRestCaller
 ## 後續步驟
 
 [Service Fabric 應用程式生命週期](service-fabric-application-lifecycle.md)
+
 

@@ -19,7 +19,7 @@
 
 *Application Insights 目前僅供預覽。*
 
-當您想要監視新的應用程式-或新版的應用程式-使用 [Visual Studio 應用程式了解](https://azure.microsoft.com/services/application-insights/), ，您可以設定 Microsoft Azure 將新資源。 此資源是分析和顯示應用程式之遙測資料的位置。 
+當您想要監視新的應用程式或新版的應用程式-使用 [Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/), ，您可以設定 Microsoft Azure 中新的資源。 此資源是分析和顯示應用程式之遙測資料的位置。 
 
 您可以使用 PowerShell 將建立新資源的過程自動化。
 
@@ -29,7 +29,7 @@
 
 *輸出*
 
-* 應用程式的見解名稱 = mytestapp
+* Application Insights 名稱 = mytestapp
 * IKey = 00000000-0000-0000-0000-000000000000
 
 *PowerShell 指令碼*  
@@ -85,7 +85,7 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
   
 * 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md): 
  * `<instrumentationkey>`*ikey*`</instrumentationkey>`
-* 或在 [初始化程式碼](app-insights-api-custom-events-metrics.md): 
+* 或是在 [初始化程式碼](app-insights-api-custom-events-metrics.md): 
  * `Microsoft.ApplicationInsights.Extensibility.
     TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
@@ -98,3 +98,4 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 * [使用 PowerShell 設定警示](app-insights-alerts.md#set-alerts-by-using-powershell)
 
  
+

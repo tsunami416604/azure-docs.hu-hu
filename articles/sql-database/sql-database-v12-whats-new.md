@@ -31,7 +31,7 @@
 - 篩選正式 [(GA) 公告](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) SQL 資料庫功能。
 
 
-SQL database 資源限制的相關最新資訊記載於:<br/>[Azure SQL Database 資源限制](sql-database-resource-limits.md)。
+SQL database 資源限制的相關最新資訊記載於 ︰<br/>[Azure SQL Database 資源限制](sql-database-resource-limits.md)。
 
 
 ## 提升與 SQL Server 的應用程式相容性
@@ -97,7 +97,7 @@ SQL Database V12 的一個主要目標就是要提高與 Microsoft SQL Server 20
 - [透明資料加密](http://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) (TDE)
 - [使用 Azure Active Directory 驗證連接到 SQL Database](sql-database-aad-authentication.md)
  - SQL Database 現在支援 Azure Active Directory 驗證，這是 Azure Active Directory (Azure AD) 中使用身分識別連線到 SQL Database 的機制。 您可以使用 Azure Active Directory 驗證，在單一中央位置集中管理資料庫使用者和其他 Microsoft 服務的身分識別。
-- [一律加密](https://msdn.microsoft.com/library/mt163865.aspx) (預覽版) 可以讓加密的應用程式，並允許用戶端應用程式內的機密資料加密而不需共用與 SQL 資料庫的加密金鑰的用戶端。
+- [一律加密](https://msdn.microsoft.com/library/mt163865.aspx) （預覽版） 可以讓加密的應用程式，並允許用戶端應用程式內的機密資料加密而不需共用與 SQL 資料庫的加密金鑰的用戶端。
 
 
 ## 當需要復原時提升業務持續性
@@ -144,8 +144,8 @@ V12 提供大幅改進的復原點目標 (RPO) 與預估復原時間 (ERT)：
 確定版本的另一個方法是在資料庫中執行 `SELECT @@version;` 陳述式，並檢視類似於下面所示的結果：
 
 
-- **12**.0.2000.10 & nbsp; *(版本 V12)*
-- **11**.0.9228.18 & nbsp; *(版本 V11)*
+- **12**.0.2000.10 & nbsp; *（版本 V12）*
+- **11**.0.9228.18 & nbsp; *（版本 V11）*
 
 
 V12 資料庫只能裝載在 V12 邏輯伺服器上。 而 V12 只可以裝載 V12 資料庫。
@@ -154,11 +154,12 @@ V12 資料庫只能裝載在 V12 邏輯伺服器上。 而 V12 只可以裝載 V
 如果您尚未執行 v12，您可以升級您的邏輯伺服器中的步驟 [升級至 SQL Database V12 就地](sql-database-v12-upgrade.md)。
 
 
-## <a name="V12AzureSqlDbPreviewGaTable"></a> 一般可用性區域
+## <a name="V12AzureSqlDbPreviewGaTable"></a>公開上市區域
 
 
 - 2015 年 7 月 31，所有區域都已升級至公開上市 (GA)。
 - V12 已於 2014 年 12 月發行，但是僅以預覽狀態提供。
 
 [Microsoft Azure 預覽專用的使用補充條款](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 

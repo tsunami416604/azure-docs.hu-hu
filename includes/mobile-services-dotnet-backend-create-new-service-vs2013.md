@@ -8,7 +8,7 @@
 
     ![create service manage subscriptions](./media/mobile-services-dotnet-backend-create-new-service-vs2013/mobile-create-service-from-vs2013.png)
 
-3. 管理 Microsoft Azure 訂用帳戶中，按一下 [ **登入** 登入您的 Azure 帳戶 (如有必要)，選取可用的訂閱，然後按一下 [ **關閉**。
+3. 管理 Microsoft Azure 訂用帳戶中，按一下 [ **登入** 登入您的 Azure 帳戶 （如有必要），選取可用的訂閱，然後按一下 [ **關閉**。
 
     當訂閱已經有一或多個現有的行動服務時，便會顯示這些服務名稱。 
 
@@ -26,5 +26,6 @@
 7. 建立行動服務後，從 Service Manager 中的清單中選取新建立的行動服務，然後按一下 **確定**。
  
     待精靈完成後，系統便會將行動服務專案新增至方案中、安裝必要的 NuGet 套件、將行動服務用戶端程式庫的參考新增至專案中，以及更新專案原始程式碼。
+
 
 

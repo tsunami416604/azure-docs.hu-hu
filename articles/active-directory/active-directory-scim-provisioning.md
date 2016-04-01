@@ -23,7 +23,7 @@
 Azure Active Directory 自動佈建使用者和群組 fronted 介面使用的 Web 服務的任何應用程式或身分識別存放區中定義 [SCIM 2.0 通訊協定規格](https://tools.ietf.org/html/draft-ietf-scim-api-19)。 Azure Active Directory 可以傳送要求給此 Web 服務來建立、修改和刪除指派的使用者與群組，Web 服務接著可將這些要求轉譯為目標身分識別存放區的作業。 
 
 ![][1]
-*圖: Azure Active directory 佈建到透過 Web 服務的身分識別存放區*
+*圖 ︰ Azure Active directory 佈建到透過 Web 服務的身分識別存放區*
 
 這項功能可以用於搭配 「[讓自己的應用程式](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)」 Azure AD 中啟用單一登入和使用者自動佈建的應用程式，提供或受到 SCIM web 服務的功能。
 
@@ -110,7 +110,7 @@ Azure Active Directory 可以設定為自動指派的佈建使用者和群組，
 1.  下載程式碼範例套件 [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 2.  將封裝解壓縮，並將它放在的位置，例如 C:\AzureAD-BYOA-Provisioning-Samples\ Windows 電腦。
 3.  在此資料夾中，於 Visual Studio 中啟動 FileProvisioningAgent 方案。
-4.  選取 **工具 > 程式庫套件管理員 > Package Manager Console**, ，並執行以下命令來解析解決方案參考 FileProvisioningAgent 專案:
+4.  選取 **工具 > 程式庫套件管理員 > Package Manager Console**, ，並執行以下命令來解析解決方案參考 FileProvisioningAgent 專案 ︰
 
     安裝封裝 Microsoft.SystemForCrossDomainIdentityManagement
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -118,7 +118,7 @@ Azure Active Directory 可以設定為自動指派的佈建使用者和群組，
     Install-Package Microsoft.Owin.Host.SystemWeb
 
 5.  建置 FileProvisioningAgent 專案。
-6.  啟動 Windows 的命令提示字元應用程式 (以系統管理員)，並使用 **cd** 命令，將目錄切換至您 **\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug** 資料夾。
+6.  啟動 Windows 的命令提示字元應用程式 （以系統管理員），並使用 **cd** 命令，將目錄切換至您 **\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug** 資料夾。
 7.  執行下面以 Windows 電腦的 IP 或網域名稱取代 < 位址 > 命令。
 
     FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
@@ -156,11 +156,11 @@ Azure Active Directory 可以設定為自動指派的佈建使用者和群組，
 
 ![][3]
 
-**2:**  [express 路由處理常式](http://expressjs.com/guide/routing.html) 可供剖析 node.js 要求物件，代表呼叫 (如 SCIM 規格所定義)，對 Web 服務的 node.js。     
+**2:**  [express 路由處理常式](http://expressjs.com/guide/routing.html) 可供剖析 node.js 要求物件，代表呼叫 （如 SCIM 規格所定義），對 Web 服務的 node.js。     
 
 ###建置自訂 SCIM 端點
 
-使用上述的程式庫，使用這些程式庫的開發人員可以將其服務託管在任何可執行的通用語言基礎結構組件內，或在網際網路資訊服務內。  以下是範例程式碼裝載在位址 http://localhost:9000 可執行組件內的服務: 
+使用上述的程式庫，使用這些程式庫的開發人員可以將其服務託管在任何可執行的通用語言基礎結構組件內，或在網際網路資訊服務內。  以下是範例程式碼裝載在位址 http://localhost:9000 可執行組件內的服務 ︰ 
 
     private static void Main(string[] arguments)
     {
@@ -285,7 +285,7 @@ Azure Active Directory 可以設定為自動指派的佈建使用者和群組，
 
 開發人員若使用 Microsoft 所提供的通用語言基礎結構程式庫來建置 SCIM 服務，可以依照下列步驟使用 Microsoft.Owin.Security.ActiveDirectory 封裝以驗證來自 Azure Active Directory 的要求： 
 
-**1:**  提供者，來實作 Microsoft.SystemForCrossDomainIdentityManagement.IProvider.StartupBehavior 屬性使其傳回每次啟動服務時要呼叫的方法: 
+**1:**  提供者，來實作 Microsoft.SystemForCrossDomainIdentityManagement.IProvider.StartupBehavior 屬性使其傳回每次啟動服務時要呼叫的方法 ︰ 
 
     public override Action\<Owin.IAppBuilder, System.Web.Http.HttpConfiguration.HttpConfiguration\> StartupBehavior
     {
@@ -301,7 +301,7 @@ Azure Active Directory 可以設定為自動指派的佈建使用者和群組，
     {
     }
 
-**2:**  加入下列程式碼，該方法，讓任何任何服務端點為具有指定的租用戶，以存取 Azure Active Directory 的圖形 Web 服務代表的 Azure Active Directory 所發出的權杖進行驗證的要求: 
+**2:**  加入下列程式碼，該方法，讓任何任何服務端點為具有指定的租用戶，以存取 Azure Active Directory 的圖形 Web 服務代表的 Azure Active Directory 所發出的權杖進行驗證的要求 ︰ 
 
     private void OnServiceStartup(
       Owin.IAppBuilder applicationBuilder IAppBuilder applicationBuilder, 
@@ -336,7 +336,7 @@ Azure Active Directory 可以設定為自動指派的佈建使用者和群組，
 
 Azure Active Directory 可以佈建兩種類型的資源至 SCIM Web 服務。  這些類型的資源是使用者和群組。  
 
-使用者的資源由結構描述識別項，urn: ietf:params:scim:schemas:extension:enterprise:2.0:User，其中包含此通訊協定 」 規格中所識別: http://tools.ietf.org/html/draft-ietf-scim-core-schema。  以下的表 1 提供相對於urn:ietf:params:scim:schemas:extension:enterprise:2.0:User 資源的屬性，Azure Active Directory 中使用者屬性的預設對應。  
+使用者的資源由結構描述識別項，urn: ietf:params:scim:schemas:extension:enterprise:2.0:User，其中包含此通訊協定 」 規格中所識別 ︰ http://tools.ietf.org/html/draft-ietf-scim-core-schema。  以下的表 1 提供相對於urn:ietf:params:scim:schemas:extension:enterprise:2.0:User 資源的屬性，Azure Active Directory 中使用者屬性的預設對應。  
 
 群組資源的結構描述識別項，藉以 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group。  表 2] 所示的 Azure Active Directory 中屬性的群組 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group 資源屬性的預設對應。  
 
@@ -380,7 +380,7 @@ Azure Active Directory 可以佈建兩種類型的資源至 SCIM Web 服務。  
 下圖顯示 Azure Active Directory 會傳送至 SCIM 服務的訊息，以管理使用者在其他身分識別存放區中的生命週期。  圖表也會示範使用 Microsoft 提供、用於建置此類服務的通用語言基礎結構程式庫所實作之 SCIM 服務如何將這些要求轉譯為對提供者的方法呼叫。  
 
 ![][4]
-*圖: 使用者佈建和解除佈建順序*
+*圖 ︰ 使用者佈建和解除佈建順序*
 
 **1:**  azure Active Directory 會查詢服務的使用者具有 externalId 屬性值比對 Azure Active Directory 中使用者的郵件別名屬性值。  查詢會以類似於此的超文字傳輸通訊協定要求表示，其中，jyoung 是 Azure Active Directory 中使用者的 mailNickname 範例： 
 
@@ -486,7 +486,7 @@ Microsoft 所提供、用於實作 SCIM 服務的通用語言基礎結構程式�
 
 如果是佈建使用者的要求，資源引數的值將會是 Microsoft.SystemForCrossDomainIdentityManagement 的執行個體。 Microsoft.SystemForCrossDomainIdentityManagement.Schemas 程式庫中定義的 Core2EnterpriseUser 類別。  如果佈建使用者的要求成功，則方法的實作應該會傳回 Microsoft.SystemForCrossDomainIdentityManagement 的執行個體。 Core2EnterpriseUser 類別，且其識別碼屬性值設定為新佈建使用者的唯一識別碼。  
 
-**3:**  更新存在於 fronted SCIM 的身分識別存放區中的使用者，Azure Active Directory 將會繼續藉由從服務要求該使用者的目前狀態，與此類似的要求: 
+**3:**  更新存在於 fronted SCIM 的身分識別存放區中的使用者，Azure Active Directory 將會繼續藉由從服務要求該使用者的目前狀態，與此類似的要求 ︰ 
 
     GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
@@ -545,7 +545,7 @@ Microsoft 所提供、用於實作 SCIM 服務的通用語言基礎結構程式�
 
 在此處，索引 x 的值可能會是 0，而索引 y 的值可能是 1，或 x 值可能是 1 而 y 的值可能是 0，視篩選查詢參數運算式的順序而定。   
 
-**5:**  以下是要求的範例從 Azure Active Directory SCIM 服務更新的使用者: 
+**5:**  以下是要求的範例從 Azure Active Directory SCIM 服務更新的使用者 ︰ 
 
     PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
@@ -656,10 +656,10 @@ Microsoft 所提供、用於實作 SCIM 服務的通用語言基礎結構程式�
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName: OperationName.Add
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count: 1
-* (為 PatchRequest2 PatchRequest)。Operations.ElementAt(0)。Value.ElementAt(0)。參考: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
+* (為 PatchRequest2 PatchRequest)。Operations.ElementAt(0)。Value.ElementAt(0)。參考 ︰ http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value: 2819c223-7f76-453a-919d-413861904646
 
-**6:**  來解除佈建 fronted SCIM 服務身分識別存放區的使用者，Azure Active Directory 將會傳送要求像這樣: 
+**6:**  來解除佈建 fronted SCIM 服務身分識別存放區的使用者，Azure Active Directory 將會傳送要求像這樣 ︰ 
 
     DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
     Authorization: Bearer ...
@@ -688,7 +688,7 @@ Microsoft 所提供、用於實作 SCIM 服務的通用語言基礎結構程式�
 * 要求判斷參考屬性是否具有特定值，將會是有關成員屬性的要求。  
 
 ![][5]
-*圖: 群組佈建和解除佈建順序*
+*圖 ︰ 群組佈建和解除佈建順序*
 
     
 <!--Image references-->
@@ -697,4 +697,5 @@ Microsoft 所提供、用於實作 SCIM 服務的通用語言基礎結構程式�
 [3]: ./media/active-directory-scim-provisioning/scim-figure-3.PNG
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
+
 

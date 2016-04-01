@@ -31,7 +31,7 @@
 開啟您的終端機，並安裝下列：
 
 **1) ruby:** 如果您的電腦沒有 Ruby，請安裝它。 若是新的 Ruby 使用者，我們建議您使用 Ruby 2.1.X 安裝程式。 這些安裝程式提供相容且更新的穩定語言和廣泛封裝清單 (gem)。 [前往 Ruby 下載頁面](http://rubyinstaller.org/downloads/) 並且下載適當的 2.1.x 安裝程式。 如範例中，如果您在 64 位元電腦上下載 **(x64) 的 Ruby 2.1.6** 安裝程式。
-<br/><br/>一旦下載安裝程式之後，請執行下列動作：
+<br/><br/>安裝程式下載後，執行下列作業 ︰
 
 
 - 按兩下檔案以啟動安裝程式。
@@ -75,7 +75,7 @@
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## 步驟 2: 連接
+## 步驟 2 ︰ 連接
 
  [Tinytds:: Client](https://github.com/rails-sqlserver/tiny_tds) 函式用來連接到 SQL 資料庫。
 
@@ -84,7 +84,7 @@
     host: 'yourserver.database.windows.net', port: 1433,
     database: 'AdventureWorks', azure:true
 
-## 步驟 3: 執行查詢
+## 步驟 3 ︰ 執行查詢
 
 複製以下程式碼並貼到空白檔案中。 稱它為 test.rb。 然後執行它，方法是從命令提示字元輸入下列命令：
 
@@ -102,7 +102,7 @@
     puts row
     end
 
-## 步驟 4: 插入資料列
+## 步驟 4 ︰ 插入資料列
 
 在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。  
 
@@ -130,4 +130,5 @@
     results.each do |row|
     puts row
     end
+
 

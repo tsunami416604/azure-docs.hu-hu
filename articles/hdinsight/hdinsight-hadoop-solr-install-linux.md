@@ -38,7 +38,7 @@
 * 設定 __solruser__ 的擁有者 `/usr/hdp/current/solr`
 * 新增 [崛起](http://upstart.ubuntu.com/) 會啟動 Solr，如果重新啟動叢集節點的組態。 Solr 也會在安裝之後於叢集節點上自動啟動
 
-## <a name="install"></a>安裝 Solr 使用指令碼動作
+## <a name="install"></a>使用指令碼動作安裝 Solr
 
 在 HDInsight 叢集上安裝 Solr 的範例指令碼是可以從唯讀的 Azure 儲存體 blob 位於 [https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh)。 本節提供有關如何在使用 Azure 入口網站佈建叢集時使用範例指令碼的指示。
 
@@ -46,20 +46,20 @@
 
 1. 開始使用中的步驟來佈建叢集 [佈建以 Linux 為基礎的 HDInsight 叢集](hdinsight-provision-linux-clusters.md#portal), ，但不是會完成佈建。
 
-2. 在 **選擇性組態** 分頁中，選取 **指令碼動作**, ，並提供下列資訊:
+2. 在 **選擇性組態** 分頁中，選取 **指令碼動作**, ，並提供下列資訊 ︰
 
-    * __名稱__: 輸入指令碼動作的易記名稱。
+    * __名稱__︰ 輸入指令碼動作的易記名稱。
     * __指令碼 URI__: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
-    * __HEAD__: 勾選此選項
-    * __背景工作__: 勾選此選項
-    * __ZOOKEEPER__: 勾選此選項可在 Zookeeper 節點上安裝
-    * __參數__: 將此欄位保留空白
+    * __HEAD__︰ 勾選此選項
+    * __背景工作__︰ 勾選此選項
+    * __ZOOKEEPER__︰ 勾選此選項可在 Zookeeper 節點上安裝
+    * __參數__︰ 將此欄位保留空白
 
 3. 在底部 **指令碼動作**, ，使用 **選取** ] 按鈕以儲存設定。 最後，使用 **選取** 底部的按鈕 **選擇性組態** ] 以儲存的選擇性組態資訊。
 
 4. 繼續中所述，佈建叢集 [佈建以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
-## <a name="usesolr"></a>如何在 HDInsight 中使用 Solr?
+## <a name="usesolr"></a>如何在 HDInsight 中使用 Solr？
 
 ### 索引資料
 
@@ -98,7 +98,7 @@
 
         curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
 
-    這會發出查詢 __collection1__ 比對任何文件 __\ *: \ *__ (編碼成 \*%3A\* 在查詢字串) 和回應應該傳回為 JSON。 回應看起來應該如下所示：
+    這會發出查詢 __collection1__ 比對任何文件 __\ *: \ *__ （編碼成 \*%3A\* 在查詢字串） 和回應應該傳回為 JSON。 回應看起來應該如下所示：
 
             "response": {
                 "numFound": 2,
@@ -254,7 +254,7 @@ Solr 儀表板是 Web UI，可讓您透過網頁瀏覽器使用 Solr。 Solr 儀
 
         hostname -f
         
-2. 使用下列命令來建立已編製索引之資料的快照。 取代 __HOSTNAME__ 與前一個命令所傳回的名稱:
+2. 使用下列命令來建立已編製索引之資料的快照。 取代 __HOSTNAME__ 與前一個命令所傳回的名稱 ︰
 
         curl http://HOSTNAME:8983/solr/replication?command=backup
 
@@ -305,4 +305,5 @@ Solr 儀表板是 Web UI，可讓您透過網頁瀏覽器使用 Solr。 Solr 儀
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
+
 

@@ -33,11 +33,11 @@
 
 ![][1]  
 
-2) 按一下 [ **新標記 (應用程式資訊)** 並提供名稱為 *user_name* 和做為型別 *字串* 按一下 **提交**。 
+2) 按一下 [ **新標記 （應用程式資訊）** 並提供名稱為 *user_name* 和做為型別 *字串* 按一下 **提交**。 
 
 ![][2]
 
-3) 最後，您會看到類似下列的登錄此應用程式資訊:
+3) 最後，您會看到類似下列的登錄此應用程式資訊 ︰
 
 ![][3]
 
@@ -72,5 +72,6 @@
 [3]: ./media/mobile-engagement-send-personalized-notifications/app-info-user-name.png
 [4]: ./media/mobile-engagement-send-personalized-notifications/personal-notification.png
 [5]: ./media/mobile-engagement-send-personalized-notifications/notification.png
+
 
 

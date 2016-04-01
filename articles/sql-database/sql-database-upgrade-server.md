@@ -25,7 +25,7 @@
 
 
 SQL Database V12 是最新的版本，因此建議升級至 SQL Database V12。
-SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) 包括:
+SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) 包括 ︰
 
 - 提升與 SQL Server 的相容性。
 - 提供改進的高階效能和新的效能等級。
@@ -35,7 +35,7 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 
 在升級至 V12 的過程中，您將會把所有 Web 和商務資料庫都升級至新的服務層級，因此本文也包含了升級 Web 和商務資料庫的說明。 
 
-此外，移轉至 [彈性資料庫集區](sql-database-elastic-pool.md) 更符合成本效益比單一資料庫的升級 (定價層) 的個別效能層級。 集區也可以簡化資料庫管理，因為您只需要管理集區的效能設定，而不需分開管理個別資料庫的效能等級。 如果您的資料庫位於多部伺服器上，請考慮將它們移到相同的伺服器，並利用將它們放入集區所帶來的優點。
+此外，移轉至 [彈性資料庫集區](sql-database-elastic-pool.md) 更符合成本效益比單一資料庫的升級 （定價層） 的個別效能層級。 集區也可以簡化資料庫管理，因為您只需要管理集區的效能設定，而不需分開管理個別資料庫的效能等級。 如果您的資料庫位於多部伺服器上，請考慮將它們移到相同的伺服器，並利用將它們放入集區所帶來的優點。
 
 只要遵循本文的步驟，您就可以輕鬆地將資料庫從 V11 伺服器直接自動移轉至彈性資料庫集區。 
 
@@ -47,12 +47,12 @@ SQL Database V12 新增了許多 [優於舊版](sql-database-v12-whats-new.md) �
 
 ## 準備升級
 
-- **將所有的 Web 和 Business 資料庫升級**: 請參閱 [將所有的 Web 和 Business 資料庫升級](sql-database-v12-upgrade.md#upgrade-all-web-and-business-databases) 下面章節，或使用 [來升級資料庫和伺服器的 PowerShell](sql-database-upgrade-server-powershell.md)。
-- **檢閱並暫停異地複寫**: 如果您的 Azure SQL database 設定異地複寫，您應該記錄其目前的設定和 [停止地理複寫](sql-database-geo-replication-portal.md#remove-secondary-database)。 在升級完成之後，請重新設定資料庫的異地複寫。
-- **如果您在 Azure VM 上的用戶端開啟這些連接埠**: 如果您的用戶端執行 Azure 的虛擬機器 (VM) 上時，用戶端程式會連接到 SQL Database V12，您必須開啟連接埠範圍 11000-11999 和 VM 上的 14000 14999。 如需詳細資訊，請參閱 [連接埠的 SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)。
+- **將所有的 Web 和 Business 資料庫升級**︰ 請參閱 [將所有的 Web 和 Business 資料庫升級](sql-database-v12-upgrade.md#upgrade-all-web-and-business-databases) 下面章節，或使用 [來升級資料庫和伺服器的 PowerShell](sql-database-upgrade-server-powershell.md)。
+- **檢閱並暫停異地複寫**︰ 如果您的 Azure SQL database 設定異地複寫，您應該記錄其目前的設定和 [停止地理複寫](sql-database-geo-replication-portal.md#remove-secondary-database)。 在升級完成之後，請重新設定資料庫的異地複寫。
+- **如果您在 Azure VM 上的用戶端開啟這些連接埠**︰ 如果您的用戶端執行 Azure 的虛擬機器 (VM) 上時，用戶端程式會連接到 SQL Database V12，您必須開啟連接埠範圍 11000-11999 和 VM 上的 14000 14999。 如需詳細資訊，請參閱 [連接埠的 SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
 
-## 先決條件 
+## 必要條件 
 
 若要將伺服器升級至 V12 的 PowerShell，您必須已安裝並執行 Azure PowerShell，並視版本而定，您可能需要切換為資源管理員模式，才能存取 Azure 資源管理員 PowerShell Cmdlet。 
 
@@ -166,7 +166,7 @@ ElasticPoolCollection 和 DatabaseCollection 參數都是選擇性項目：
 除了監視個別資料庫中，您可以監視彈性資料庫集區 [使用入口網站](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool) 或 [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) 
 
 
-**資源耗用量資料:** 若是基本、 標準和高階資料庫資源耗用資料是透過 [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV 使用者資料庫中的。 此 DMV 以 15 秒的間隔提供幾乎即時的前一小時作業資源耗用量資訊。 某一間隔的 DTU 百分比耗用量會以 CPU、IO 及記錄檔方面的最大百分比耗用量來計算。 下列是計算前一小時之平均 DTU 百分比耗用量的查詢：
+**資源耗用量資料 ︰** 若是基本、 標準和高階資料庫資源耗用資料是透過 [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV 使用者資料庫中的。 此 DMV 以 15 秒的間隔提供幾乎即時的前一小時作業資源耗用量資訊。 某一間隔的 DTU 百分比耗用量會以 CPU、IO 及記錄檔方面的最大百分比耗用量來計算。 下列是計算前一小時之平均 DTU 百分比耗用量的查詢：
 
     SELECT end_time
          , (SELECT Max(v)
@@ -185,7 +185,7 @@ ElasticPoolCollection 和 DatabaseCollection 參數都是選擇性項目：
 
 
 
-**警示:** 設定 「 警示 」 Azure 入口網站中已升級之資料庫的 DTU 耗用量接近特定的高層級時通知您。 您可以在「Azure 入口網站」中為各種效能計量 (例如 DTU、CPU、IO 及記錄檔) 設定資料庫警示。 瀏覽至您的資料庫，然後選取 **警示規則** 中 **設定** 刀鋒視窗。
+**警示 ︰** 設定 「 警示 」 Azure 入口網站中已升級之資料庫的 DTU 耗用量接近特定的高層級時通知您。 您可以在「Azure 入口網站」中為各種效能計量 (例如 DTU、CPU、IO 及記錄檔) 設定資料庫警示。 瀏覽至您的資料庫，然後選取 **警示規則** 中 **設定** 刀鋒視窗。
 
 例如，您可以設定若過去 5 分鐘的平均 DTU 百分比值超出 75% 則發出「 DTU 百分比 」電子郵件警示。 請參閱 [接收警示通知](insights-receive-alert-notifications.md) 若要深入了解如何設定警示通知。
 
@@ -203,5 +203,6 @@ ElasticPoolCollection 和 DatabaseCollection 參數都是選擇性項目：
 - [Get-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603582.aspx)
 - [Start-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt619403.aspx)
 - [Stop-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
+
 
 

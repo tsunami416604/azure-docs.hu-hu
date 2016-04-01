@@ -81,7 +81,7 @@ Microsoft Azure 備份伺服器可以部署為：
 ## 下載 Microsoft Azure 備份伺服器
 類似於保存庫認證，您可以下載 Microsoft Azure 備份應用程式的工作負載 **快速入門] 頁面** 備份保存庫。
 
-1. 按一下 [ **應用程式工作負載 (磁碟到磁碟到定域機組)**。
+1. 按一下 [ **應用程式工作負載 （磁碟到磁碟到定域機組）**。
 
     ![Microsoft Azure 備份歡迎使用畫面](./media/backup-azure-microsoft-azure-backup/dpm-venus1.png)
 
@@ -213,7 +213,7 @@ Microsoft Azure 備份伺服器可以部署為：
 
 ## 疑難排解
 
-如果發生錯誤的 Microsoft Azure 備份的伺服器是在安裝階段 (或備份或還原) 失敗，請參閱這 [文件時發生錯誤代碼](https://support.microsoft.com/kb/3041338)  如需詳細資訊。
+如果發生錯誤的 Microsoft Azure 備份的伺服器是在安裝階段 （或備份或還原） 失敗，請參閱這 [文件時發生錯誤代碼](https://support.microsoft.com/kb/3041338)  如需詳細資訊。
 您也可以參考 [Azure 備份相關的常見問題集](backup-azure-backup-faq.md)
 
 ## 常見問題集
@@ -221,16 +221,16 @@ Microsoft Azure 備份伺服器可以部署為：
 ### 安裝和部署
 
 問：用於磁碟備份的 Microsoft Azure 備份伺服器磁碟/磁碟區是否支援 NTFS 壓縮？
-<br>答: NTFS 是 **不** 支援連接到 Microsoft Azure 備份伺服器的磁碟/磁碟區上。
+<br>答 ︰ NTFS 是 **不** 支援連接到 Microsoft Azure 備份伺服器的磁碟/磁碟區上。
 
 問：部署後是否可以將 Microsoft Azure 備份伺服器移到新的網域？
-<br>答: 否，移動到新的網域部署後的 Microsoft Azure 備份伺服器 **不** 支援。
+<br>答 ︰ 否，移動到新的網域部署後的 Microsoft Azure 備份伺服器 **不** 支援。
 
 問：如果 Microsoft Azure 備份伺服器安裝在網域控制站，它可以保護哪些資源？
-<br>答: Microsoft Azure 備份伺服器只能保護本機資料來源如果同時安裝相同的伺服器做為網域控制站上。 若要讓 Microsoft Azure 備份伺服器保護其他伺服器上的工作負載，請不要將它與網域控制站安裝在同一部電腦上。
+<br>答 ︰ Microsoft Azure 備份伺服器只能保護本機資料來源如果同時安裝相同的伺服器做為網域控制站上。 若要讓 Microsoft Azure 備份伺服器保護其他伺服器上的工作負載，請不要將它與網域控制站安裝在同一部電腦上。
 
 問：Microsoft Azure 備份伺服器可以使用遠端 SQL Server 執行個體嗎？
-<br>答: 否，Microsoft Azure 備份伺服器只能使用本機的 SQL Server 執行個體。
+<br>答 ︰ 否，Microsoft Azure 備份伺服器只能使用本機的 SQL Server 執行個體。
 
 ### Microsoft Azure 備份伺服器存放集區
 
@@ -238,15 +238,15 @@ Microsoft Azure 備份伺服器可以部署為：
 <br>答： 會。
 
 問：是否可以在 Microsoft Azure 備份伺服器存放集區使用重複資料刪除功能？
-<br>答：是，Microsoft Azure 備份伺服器存放集區支援重複資料刪除功能。 使用者經驗是完全相同的 Microsoft Azure 備份伺服器中詳細說明這 [DPM 部落格文章](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx)。
+<br>答 ︰ 可以，重複資料刪除提供的是 Microsoft Azure 備份伺服器存放集區。 使用者經驗是完全相同的 Microsoft Azure 備份伺服器中詳細說明這 [DPM 部落格文章](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx)。
 
 問：是否可以在 Microsoft Azure 備份伺服器存放集區使用 USB 或卸除式磁碟機？
-<br>答: 不行。
+<br>答 ︰ 不行。
 
 ### Microsoft Azure 備份伺服器至 Azure 服務的連線
 
 問：Microsoft Azure 備份伺服器至 Azure 服務的連線和 Azure 訂用帳戶狀態會影響備份和還原嗎？
-<br>答: Microsoft Azure 備份伺服器需要連線到 Azure 服務順利運作的產品。 同時，Azure 訂用帳戶也必須處於狀況良好狀態。
+<br>答 ︰ Microsoft Azure 備份伺服器需要連線到 Azure 服務順利運作的產品。 同時，Azure 訂用帳戶也必須處於狀況良好狀態。
 
 下表說明 Microsoft Azure 備份伺服器在不同連線能力和 Azure 訂用帳戶狀態下的功能。
 
@@ -259,20 +259,20 @@ Microsoft Azure 備份伺服器可以部署為：
 | 連線中斷 > 15 天 | 已過期 | 已停止 | 已停止 | 允許 | 允許 |
 | 連線中斷 > 15 天 | 已取消佈建 | 已停止 | 已停止 |  已停止且已刪除 Azure 復原點 | 已停止 |
 
-問: 假設訂閱狀態仍可繼續 *Active* 如果還原 Microsoft Azure 備份伺服器連線，會發生什麼事?
-<br>答: 一旦 Microsoft Azure 服務的 Azure 備份伺服器連線恢復正常以及訂閱狀態 *Active*, ，允許 Microsoft Azure 備份伺服器的所有作業。 將正常備份至這兩個磁碟及 Azure。
+問 ︰ 假設訂閱狀態仍可繼續 *Active* 如果還原 Microsoft Azure 備份伺服器連線，會發生什麼事？
+<br>答 ︰ 一旦 Microsoft Azure 服務的 Azure 備份伺服器連線恢復正常以及訂閱狀態 *Active*, ，允許 Microsoft Azure 備份伺服器的所有作業。 將正常備份至這兩個磁碟及 Azure。
 
-問: 當訂閱狀態從還原 *已過期* 狀態 *Active* 狀態?
-<br>答: 假設 Microsoft Azure 備份伺服器連線至 Azure 的服務是正常的一旦 Microsoft Azure 備份伺服器訂閱狀態還原至 *Active*, ，允許 Microsoft Azure 備份伺服器的所有作業。 現在可正常備份至這兩個磁碟及 Azure。
+問 ︰ 當訂閱狀態從還原 *已過期* 狀態 *Active* 狀態？
+<br>答 ︰ 假設 Microsoft Azure 備份伺服器連線至 Azure 的服務是正常的一旦 Microsoft Azure 備份伺服器訂閱狀態還原至 *Active*, ，允許 Microsoft Azure 備份伺服器的所有作業。 現在可正常備份至這兩個磁碟及 Azure。
 
-問: 當訂閱狀態從還原 *Deprovisioned* 狀態 *Active* 狀態?
-<br>答: 假設 Microsoft Azure 備份伺服器連線至 Azure 的服務是正常的一旦 Microsoft Azure 備份伺服器訂閱狀態還原至 *Active*, ，允許 Microsoft Azure 備份伺服器的所有作業。 不過，Azure 復原點會刪除且無法還原。 如果磁碟備份在有效的保留範圍內，就可以還原磁碟復原點。
+問 ︰ 當訂閱狀態從還原 *Deprovisioned* 狀態 *Active* 狀態？
+<br>答 ︰ 假設 Microsoft Azure 備份伺服器連線至 Azure 的服務是正常的一旦 Microsoft Azure 備份伺服器訂閱狀態還原至 *Active*, ，允許 Microsoft Azure 備份伺服器的所有作業。 不過，Azure 復原點會刪除且無法還原。 如果磁碟備份在有效的保留範圍內，就可以還原磁碟復原點。
 
 問：我需要建立哪些例外，才能允許 Microsoft Azure 備份伺服器連線至公用 Azure 服務？
-<br>答: 您需要在防火牆設定檔-允許下列網域位址 www.msftncsi.com，\ *。Microsoft.com \ *。WindowsAzure.com、 \*.microsoftonline.com、 \*.windows.net。
+<br>答 ︰ 您需要在防火牆設定檔-允許下列網域位址 www.msftncsi.com，\ *。Microsoft.com \ *。WindowsAzure.com、 \*.microsoftonline.com、 \*.windows.net。
 
 問：如何驗證 Microsoft Azure 備份伺服器是否能夠連線至 Azure 服務？
-<br>答: Microsoft Azure 備份伺服器主控台中，執行下列 PowerShell cmdlet:
+<br>答 ︰ Microsoft Azure 備份伺服器主控台中，執行下列 PowerShell cmdlet:
 
 ```
 Get-DPMCloudConnection
@@ -281,25 +281,25 @@ TRUE - Connected to Azure service
 FALSE - Not connected to Azure service
 ```
 
-問: 為何我的訂閱狀態無法 *Active*嗎? 如何變更其 *Active*?
-<br>答: 登入 [訂閱入口網站]( https://account.windowsazure.com/Subscriptions) 和管理您的訂閱。
+問 ︰ 為何我的訂閱狀態無法 *Active*嗎？ 如何變更其 *Active*？
+<br>答 ︰ 登入 [訂閱入口網站]( https://account.windowsazure.com/Subscriptions) 和管理您的訂閱。
 
 ### 計費
 
 問：什麼是 Microsoft Azure 備份伺服器的計費模型？
-<br>答：將會透過受保護執行個體模型對使用者計費。 如需詳細資訊，請參閱常見問題集上 [定價](http://azure.microsoft.com/pricing/details/backup/) 頁面。
+<br>答 ︰ 使用者會透過受保護的執行個體模型收取任何費用。 如需詳細資訊，請參閱常見問題集上 [定價](http://azure.microsoft.com/pricing/details/backup/) 頁面。
 
 問：如果我只保護磁碟上的資料，則是使用什麼計費模型？
-<br>答：計費模型與受保護執行個體模型相同。 由於是在內部部署儲存體上保護這項資料，僅磁碟型備份不收取 Azure 儲存體費用。 在此情況下，只會對客戶收取受保護執行個體費用。 如需詳細資訊，該怎麼辦會定義執行個體多少負責每個執行個體，請參閱常見問題集有關 [定價 ](http://azure.microsoft.com/pricing/details/backup/) 頁面。
+<br>答 ︰ 計費模型是受保護的執行個體模型相同。 由於是在內部部署儲存體上保護這項資料，僅磁碟型備份不收取 Azure 儲存體費用。 在此情況下，只會對客戶收取受保護執行個體費用。 如需詳細資訊，該怎麼辦會定義執行個體多少負責每個執行個體，請參閱常見問題集有關 [定價 ](http://azure.microsoft.com/pricing/details/backup/) 頁面。
 
 問：每個受保護執行個體收費多少？
-<br>答: 請參閱 [定價 ](http://azure.microsoft.com/pricing/details/backup/) 頁面。
+<br>答 ︰ 請參閱 [定價 ](http://azure.microsoft.com/pricing/details/backup/) 頁面。
 
 問：哪裡可以找到強調不同應用程式工作負載及其受保護執行個體費用的範例？
-<br>答: 請參閱 「 範例 」 一節 「 有關 [定價 ](http://azure.microsoft.com/pricing/details/backup/) 頁面。
+<br>答 ︰ 請參閱 「 範例 」 一節 「 有關 [定價 ](http://azure.microsoft.com/pricing/details/backup/) 頁面。
 
 問：Microsoft Azure 備份伺服器如何對磁碟和雲端上保護的資料來源計費？
-<br>答: 不管的資料是否備份至磁碟或定域機組，Microsoft Azure 計費備份伺服器會根據受保護的執行個體。 受保護執行個體大小是根據資料來源的前端大小計算。 對於 Azure 儲存體中的備份資料，也需要支付 Azure 儲存體成本。
+<br>答 ︰ 不管的資料是否備份至磁碟或定域機組，Microsoft Azure 計費備份伺服器會根據受保護的執行個體。 受保護執行個體大小是根據資料來源的前端大小計算。 對於 Azure 儲存體中的備份資料，也需要支付 Azure 儲存體成本。
 
 ## 後續步驟
 
@@ -308,4 +308,5 @@ FALSE - Not connected to Azure service
 - [SQL Server 備份](backup-azure-backup-sql.md)
 - [SharePoint 伺服器備份](backup-azure-backup-sharepoint.md)
 - [替代伺服器備份](backup-azure-alternate-dpm-server.md)
+
 

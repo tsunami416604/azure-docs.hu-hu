@@ -18,7 +18,7 @@
 
 ### 升級 StorSimple Adapter for SharePoint
 
->[AZURE.IMPORTANT] 您應該將此升級排程計劃的維護期間發生，原因如下:
+>[AZURE.IMPORTANT] 您應該將此升級排程計劃的維護期間發生，原因如下 ︰
 >
 >- 在重新安裝配接器之前，先前已外部化的內容將無法使用。
 >
@@ -32,4 +32,5 @@
     >[AZURE.NOTE] 這會自動將內容資料庫上停用 RBS。 不過，現有的 BLOB 會保留在 StorSimple 裝置上。 因為已停用 RBS 且 BLOB 尚未移轉回內容資料庫，對這些 BLOB 的任何要求都會失敗。 
  
 2. 安裝新的 StorSimple Adapter for SharePoint。 新的配接器會自動辨識先前已為 RBS 啟用或停用的內容資料庫，並使用先前的設定。
+
 

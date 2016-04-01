@@ -65,7 +65,7 @@ IT 管理員可以管理由公司內的商務使用者所建立的應用程式�
 3.  選取 **預設目錄** 中可用的目錄清單。
 4.  選取 **使用者** 頂端的索引標籤。 在 [源自] 資料行中只有一個以 [Microsoft 帳戶] 列出的使用者。
 5.  選取 **新增使用者** 底部。 
-6.  在 **新增使用者表單**, ，輸入下列詳細資料:  
+6.  在 **新增使用者表單**, ，輸入下列詳細資料 ︰  
     
     屬性 |描述
 --- | ---
@@ -137,7 +137,7 @@ App Service 環境是隔離和專用的環境，可安全地執行您的所有�
 
 1. 在 [Azure 入口網站](https://portal.azure.com/), 、 使用工作帳戶登入。 例如，使用登入 */users/yourusername*@*YourCompany*。 com。 當您這樣做時，將會自動登入您的公司訂用帳戶。
  
-2. 選取 **瀏覽** 在工作列上:  
+2. 選取 **瀏覽** 在工作列上 ︰  
 ![瀏覽 PowerApps][1]
   
 3. 在清單中，您可以捲動以尋找 PowerApps 或輸入 *powerapps*:  
@@ -148,7 +148,7 @@ App Service 環境是隔離和專用的環境，可安全地執行您的所有�
 
     > [AZURE.NOTE] 如果您按一下 **若要開始建立 App Service 環境**, ，您會看到一個額外的分頁，App Service 環境的相關詳細資料。 直接按一下該刀鋒視窗上的 [建立] 連結，以開啟 [建立] 刀鋒視窗。 
 
-5. 接下來，輸入名稱，選取您想要使用的訂用帳戶，選取或建立新的資源群組，然後選取虛擬網路。 **請注意** ，選擇虛擬網路之後，它就無法變更:  
+5. 接下來，輸入名稱，選取您想要使用的訂用帳戶，選取或建立新的資源群組，然後選取虛擬網路。 **請注意** ，選擇虛擬網路之後，它就無法變更 ︰  
 ![][6]  
 如需如何使用 app service 環境的虛擬網路，請參閱 [如何建立 App Service 環境](../app-service-web-how-to-create-an-app-service-environment.md)。 
 
@@ -163,9 +163,9 @@ App Service 環境是隔離和專用的環境，可安全地執行您的所有�
 若要存取 App Service 環境、建立 API、連接和其他資源，加入的使用者必須具有「擁有者」角色。
 
 1. 選取您剛才建立的 App Service 環境。
-2. 在 Essentials 中，選取 **資源群組** 屬性。 這樣會開啟包含 app service 環境的資源群組:  
+2. 在 Essentials 中，選取 **資源群組** 屬性。 這樣會開啟包含 app service 環境的資源群組 ︰  
 ![][7]
-3. 選取要管理的權限的 RBAC 圖示:  
+3. 選取要管理的權限的 RBAC 圖示 ︰  
 ![][8]  
     新增使用者及指派角色就像使用 [角色型存取控制](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure) Azure 內。
 
@@ -188,5 +188,6 @@ App Service 環境是隔離和專用的環境，可安全地執行您的所有�
 [6]: ./media/powerapps-get-started-azure-portal/aseproperties.png
 [7]: ./media/powerapps-get-started-azure-portal/aseessentials.png
 [8]: ./media/powerapps-get-started-azure-portal/resourcegrouprbac.png
+
 
 

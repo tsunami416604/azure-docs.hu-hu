@@ -155,3 +155,4 @@
 - 如果您有興趣學習和了解特定節點和其參數，請閱讀這篇文章 [資料服務 OData 對應節點](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) 的定義和說明、 範例和使用案例的內容。
 - 若要返回發佈至 Azure Marketplace 資料服務的指定路徑，請閱讀本文 [資料服務的發行指導](marketplace-publishing-data-service-creation.md)。
 
+

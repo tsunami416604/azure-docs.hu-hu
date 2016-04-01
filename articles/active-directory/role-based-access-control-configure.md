@@ -41,7 +41,7 @@ Azure RBAC 有適用於所有資源類型的三個基本角色：擁有者、參
 ### Azure RBAC 與傳統訂用帳戶系統管理員和共同管理員
 傳統訂用帳戶系統管理員和共同管理員具有 Azure 訂用帳戶的完整存取權。 他們可以管理使用 Azure 傳統入口網站 (https://manage.windowsazure.com)，以及 Azure 服務管理員 Api，以及 Azure 入口網站 (https://portal.azure.com) 和新的 Azure 資源管理員 Api 的資源。 在 RBAC 模型中，傳統系統管理員會獲指派訂用帳戶範圍的擁有者角色。
 
-只能由 Azure 入口網站 (https://portal.azure.com) 與 Azure 資源管理員 Api 支援更精細的授權模型 (Azure RBAC)。 使用者和應用程式 (在訂用帳戶/資源/資源群組的範圍) 的 RBAC 角色指派，無法使用傳統的管理入口網站 (http://manage.windowsazure.com) 和 Azure 服務管理 Api。
+只能由 Azure 入口網站 (https://portal.azure.com) 與 Azure 資源管理員 Api 支援更精細的授權模型 (Azure RBAC)。 使用者和應用程式 （在訂用帳戶/資源/資源群組的範圍） 的 RBAC 角色指派，無法使用傳統的管理入口網站 (http://manage.windowsazure.com) 和 Azure 服務管理 Api。
 
 ### 管理授權與資料作業
 更細緻的授權模型 (Azure RBAC) 僅支援對 Azure 入口網站的 Azure 資源與 Azure 資源管理員 API 進行管理作業。 並非所有 Azure 資源的資料作業都可以透過 RBAC 授權。 舉例來說，儲存體帳戶的建立/讀取/更新/刪除作業可以透過 RBAC 控制，但是儲存體帳戶內的 Blob 或資料表的建立/讀取/更新/刪除作業，卻還無法透過 RBAC 來控制。 同理，SQL DB 的建立/讀取/更新/刪除作業可以透過 RBAC 來控制，但是 DB 內的 SQL 資料表之建立/讀取/更新/刪除作業卻還無法透過 RBAC 來控制。
@@ -112,7 +112,7 @@ Azure RBAC 有適用於所有資源類型的三個基本角色：擁有者、參
 
     `azure authorization changelog`
 
-> [AZURE.NOTE] 您可以查詢過去 90 天 (在 15 天批次) 存取變更。
+> [AZURE.NOTE] 您可以查詢過去 90 天 （在 15 天批次） 存取變更。
 
 以下列出過去 7 天訂用帳戶中的所有存取權變更。
 
@@ -176,7 +176,7 @@ Azure RBAC 有適用於所有資源類型的三個基本角色：擁有者、參
 請注意，如果使用者指派的角色中的作業中排除， **NotActions** 並指派存取權授與相同的作業 – 允許使用者執行這項操作的第二個角色。 **NotActions** 不拒絕規則 – 只是方便時要排除的特定作業需要建立一組允許的作業。
 
 ### AssignableScopes
- **AssignableScopes** 自訂角色的屬性會指定自訂的角色是指派給使用者、 群組和應用程式的範圍 (訂用帳戶，或資源群組或資源)。 使用 **AssignableScopes** 您可以提供自訂的角色指派只訂用帳戶或資源群組中需要它，並不會干擾其餘的訂用帳戶或資源群組的使用者經驗。 **AssignableScopes** 的自訂角色也控制可以檢視、 更新和刪除角色。 以下是一些有效的可指派範圍：
+ **AssignableScopes** 自訂角色的屬性會指定自訂的角色是指派給使用者、 群組和應用程式的範圍 （訂用帳戶，或資源群組或資源）。 使用 **AssignableScopes** 您可以提供自訂的角色指派只訂用帳戶或資源群組中需要它，並不會干擾其餘的訂用帳戶或資源群組的使用者經驗。 **AssignableScopes** 的自訂角色也控制可以檢視、 更新和刪除角色。 以下是一些有效的可指派範圍：
 
 -   “/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e”, “/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624”：讓角色可用於兩個訂用帳戶中的指派。
 -   “/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e”：讓角色可用於單一訂用帳戶中的指派。
@@ -185,12 +185,13 @@ Azure RBAC 有適用於所有資源類型的三個基本角色：擁有者、參
 ### 自訂角色存取控制
  **AssignableScopes** 自訂角色的內容指定誰可以檢視、 修改和刪除角色。
 
-**誰可以建立自訂角色?**
+**誰可以建立自訂角色？**
 若要建立自訂的角色，所有指定的允許使用者建立角色時，才會成功建立自訂角色 **AssignableScopes**。 建立角色的使用者可以執行時，才會成功建立自訂角色 `Microsoft.Authorization/roleDefinition/write operation` 所有 **AssignableScopes** 的角色。 因此，訂用帳戶、資源群組和資源的擁有者 (和使用者存取管理員) 可以建立自訂角色以在這些範圍中使用。
 
-**誰可以修改自訂的角色?**
-更新所有的自訂角色允許使用者 **AssignableScopes** 的角色可以修改該自訂角色。 使用者可以執行 `Microsoft.Authorization/roleDefinition/write` 上所有作業 **AssignableScopes** 的自訂角色可以修改該自訂角色。 比方說，如果自訂的角色指派兩個 Azure 訂用帳戶中 (也就是它有兩個訂閱其 **AssignableScopes** 屬性) 的使用者必須是擁有者 (或使用者存取系統管理員) 的兩個訂閱，無法修改自訂的角色。
+**誰可以修改自訂角色？**
+更新所有的自訂角色允許使用者 **AssignableScopes** 的角色可以修改該自訂角色。 使用者可以執行 `Microsoft.Authorization/roleDefinition/write` 上所有作業 **AssignableScopes** 的自訂角色可以修改該自訂角色。 比方說，如果自訂的角色指派兩個 Azure 訂用帳戶中 (也就是它有兩個訂閱其 **AssignableScopes** 屬性) 的使用者必須是擁有者 （或使用者存取系統管理員） 的兩個訂閱，無法修改自訂的角色。
 
-**誰可以檢視指派範圍內的可用的自訂角色?**
+**誰可以檢視可用於在範圍中指派的自訂角色？**
 可以在範圍中執行 `Microsoft.Authorization/roleDefinition/read` 作業的使用者，可以檢視可用於在該範圍中指派的 RBAC 角色。 Azure RBAC 中的所有內建角色允許檢視可用於指派的角色。
+
 

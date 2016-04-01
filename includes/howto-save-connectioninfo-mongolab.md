@@ -18,10 +18,11 @@ Web 應用程式儀表板隨即顯示。
 1. 按一下 [ **儲存** 工具列上。  
 ![SaveWebApp][button-website-save]
 
-**注意:** Azure 會將 **CUSTOMCONNSTR\_** 前置詞加入至此變數，這就是為什麼參考上述程式碼 **customconnstr\_mongolab_uri 的原因。**
+**注意 ︰** Azure 會將 **CUSTOMCONNSTR\_** 前置詞加入至此變數，這就是為什麼參考上述程式碼 **customconnstr\_mongolab_uri 的原因。**
 
 [entry-website]: ./media/howto-save-connectioninfo-mongolab/entry-website.png
 [focus-mongolab-websitedashboard-config]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websitedashboard-config.png
 [focus-mongolab-websiteconnectionstring]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websiteconnectionstring.png
 [button-website-save]: ./media/howto-save-connectioninfo-mongolab/button-website-save.png
+
 

@@ -33,11 +33,11 @@ Nick Harris 也在下列這段影片中示範了本教學課程：
 
 > [AZURE.VIDEO mobile-authorize-users-in-scripts-windows-phone]
 
-本教學課程會以行動服務快速入門為基礎。 您還必須先完成教學課程 [將行動服務新增至現有的應用程式]。
+本教學課程會以行動服務快速入門為基礎。 您還必須先完成本教學課程 [Add Mobile Services to an existing app]。
 
->[AZURE.NOTE]本教學課程示範行動服務透過眾多識別提供者來管理的驗證流程。 此方法設定起來很簡單，而且可支援多個提供者。 藉由使用用戶端管理的驗證，您的應用程式即可存取身分識別提供者保留的其他使用者資料。 您可以在行動服務中取得相同的使用者資料，藉由呼叫 **user.getidentities ()** 伺服器指令碼中的函式。 如需詳細資訊，請參閱 [這篇文章](http://go.microsoft.com/fwlink/p/?LinkId=506605)。
+>[AZURE.NOTE]本教學課程示範行動服務透過眾多識別提供者來管理的驗證流程。 此方法設定起來很簡單，而且可支援多個提供者。 藉由使用用戶端管理的驗證，您的應用程式即可存取身分識別提供者保留的其他使用者資料。 您可以在行動服務中取得相同的使用者資料，藉由呼叫 **user.getidentities （)** 伺服器指令碼中的函式。 如需詳細資訊，請參閱 [這篇文章](http://go.microsoft.com/fwlink/p/?LinkId=506605)。
 
-##<a name="register"></a>註冊您的應用程式以驗證與設定行動服務
+##<a name="register"></a>註冊應用程式進行驗證，並設定行動服務
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
@@ -81,4 +81,5 @@ Nick Harris 也在下列這段影片中示範了本教學課程：
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [Add Mobile Services to an existing app]: mobile-services-windows-phone-get-started-data.md
 [Authorize users with scripts]: ../mobile-services-windows-phone-authorize-users-in-scripts.md
+
 

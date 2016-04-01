@@ -27,18 +27,19 @@
 
 若要增加並行處理，請參閱 [調整 API 端點](machine-learning-scaling-endpoints.md)。
 
-   ![機器學習中，調整端點。][] 1
+   ![機器學習服務，調整端點。][1]
 
 ## 在相同 Web 服務新增新的端點
 
-調整 Web 服務的規模大小是常見的工作，目的是支援 200 個以上的並行要求、透過多個端點提高可用性、或是為不同 Web 服務的取用者提供不同端點。 使用者為同一 Web 服務新增額外的端點，即可增加其規模大小。 使用者可以新增其他端點，透過 [Azure 傳統入口網站](https://manage.windowsazure.com/) 如下圖所示:
+調整 Web 服務的規模大小是常見的工作，目的是支援 200 個以上的並行要求、透過多個端點提高可用性、或是為不同 Web 服務的取用者提供不同端點。 使用者為同一 Web 服務新增額外的端點，即可增加其規模大小。 使用者可以新增其他端點，透過 [Azure 傳統入口網站](https://manage.windowsazure.com/) 如下圖所示 ︰
 
 移至 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下左邊的 [機器學習] 圖示，選取用於發佈 web 服務的工作空間中，按一下所需的 web 服務，按一下 **新增端點** 底部面板，然後再提供新的端點名稱、 描述和所需的並行存取。
 
 若要加入新端點，請參閱 [建立端點的](machine-learning-create-endpoint.md)。
 
-   ![機器學習，加入新端點]。[] 2
+   ![機器學習服務，新增端點。][2]
 
 <!--Image references-->
 [1]: ./media/machine-learning-scaling-webservice/machlearn-1.png
 [2]: ./media/machine-learning-scaling-webservice/machlearn-2.png
+

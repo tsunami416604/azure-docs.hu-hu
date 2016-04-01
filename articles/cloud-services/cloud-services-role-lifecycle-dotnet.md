@@ -23,7 +23,7 @@ ms.author="adegeo"/>
 
  [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) 類別包含 Azure 呼叫的方法時它 **啟動**, ，**執行**, ，或 **停止** web 或背景工作角色。 您可以選擇性地覆寫這些方法來管理角色初始化、角色關機順序或角色的執行緒。 
 
-在擴充 **RoleEntryPoint**, ，您應該注意下列問題的方法:
+在擴充 **RoleEntryPoint**, ，您應該注意下列問題的方法 ︰
 
 -    [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) 和 [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) 方法會傳回布林值，因此很可能會傳回 **false** 從這些方法。
 
@@ -79,3 +79,4 @@ public override bool OnStart()
 
 ## 後續步驟
 了解如何 [建立雲端服務封裝](cloud-services-model-and-package.md)。
+

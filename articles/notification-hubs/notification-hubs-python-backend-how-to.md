@@ -38,7 +38,7 @@
 ## 用戶端介面
 主要用戶端介面可提供的相同方法，可用於 [.NET 通知中心 SDK](http://msdn.microsoft.com/library/jj933431.aspx)。 這可讓您直接轉換目前此網站上和網際網路社群所貢獻的所有教學課程和範例。
 
-您可以找到所有可用的 [Python REST 包裝函式範例] 中的程式碼。
+您可以找到所有可用的程式碼 [Python REST wrapper sample]。
 
 例如，若要建立用戶端：
 
@@ -51,7 +51,7 @@
     hub.send_windows_notification(wns_payload)
     
 ## 實作
-如果您還沒有這麼做，請遵循我們 [開始使用教學課程] 最多，您必須實作後端的最後一節。
+如果您還沒有這麼做，請遵循我們 [Get started tutorial] 進行到最後一節，您必須實作後端。
 
 所有實作完整 REST 包裝函式的詳細資料位於 [MSDN](http://msdn.microsoft.com/library/dn530746.aspx)。 在本節中，我們將針對存取通知中樞 REST 端點和傳送通知所需之主要步驟的 Python 實作進行說明：
 
@@ -263,7 +263,7 @@
 ##<a name="complete-tutorial"></a>完成教學課程
 現在您可以透過從 Python 後端傳送通知，來完成開始使用教學課程。
 
-初始化您的通知中心用戶端 (替代為 instructed [開始使用教學課程] 中連接字串和中心名稱):
+初始化您的通知中心用戶端 (中的指示替換連接字串和中心名稱 [Get started tutorial]):
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
@@ -378,9 +378,9 @@
 ## 後續步驟
 在本主題中，我們會說明如何為通知中樞建立簡單的 Python REST 用戶端。 您可以在這裡執行下列動作：
 
-* 下載完整 [Python REST 包裝函式範例]，其中包含上述所有程式碼。
-* 繼續了解 [即時新聞教學課程] 中的通知中心標記功能
-* 繼續了解通知中樞範本功能，在 [當地語系化新聞教學課程]
+* 下載完整 [Python REST wrapper sample], ，其中包含上述所有程式碼。
+* 繼續了解通知中心標記功能 [Breaking News tutorial]
+* 繼續了解通知中樞範本功能 [Localizing News tutorial]
 
 <!-- URLs -->
 [Python REST wrapper sample]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
@@ -395,4 +395,5 @@
 [4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
+
 

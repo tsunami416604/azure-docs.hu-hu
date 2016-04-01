@@ -28,6 +28,7 @@
  - 選擇一致性選項，以符合您的應用程式的可靠性和效能需求。
  - 根據您的輸送量需求選取價格選項。
 
-**PDF 下載:** [DocumentDB 簡介-適用於 Microsoft Azure 的 NoSQL 資料庫](http://go.microsoft.com/fwlink/?LinkId=511318)
+**PDF 下載 ︰** [DocumentDB 簡介-適用於 Microsoft Azure 的 NoSQL 資料庫](http://go.microsoft.com/fwlink/?LinkId=511318)
  
+
 

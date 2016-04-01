@@ -21,9 +21,9 @@
 
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web 應用程式都有您需要建立.COM 網站全域網站空間的所有功能。 無論組織的規模大小，您都需要強固、安全且可擴充的平台，以促進您的業務、品牌認知以及客戶通訊。 App Service Web Apps 藉由 Microsoft 支援的營運持續性，協助維持企業的品牌與識別。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
-以下是在 App Service Web Apps 上執行的.COM 網站範例。 此範例示範不需要使用複雜的技術，只要組合 Web Apps 和其他服務便能完成的工作。 **若要進一步了解拓樸中的項目上按一下而已。** 
+以下是在 App Service Web Apps 上執行的.COM 網站範例。 此範例示範不需要使用複雜的技術，只要組合 Web Apps 和其他服務便能完成的工作。 **按一下拓樸中的項目以讀取詳細資訊。** 
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/corp-website-visio.svg" width="100%" height="100%"></object>
 
@@ -137,4 +137,5 @@ App Service Web Apps 的能力 [scale up and out] 都能符合您.COM 網站，�
 [SendGrid service in Azure Marketplace]:sendgrid-dotnet-how-to-send-email.md
 
  
+
 

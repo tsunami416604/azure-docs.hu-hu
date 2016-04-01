@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) 是 Microsoft 的「身分識別即服務 (IDa
 Azure AD 服務功能的概觀，請參閱 [什麼是 Azure AD](active-directory-whatis.md)。
 [深入了解 Azure AD 服務等級](http://azure.microsoft.com/support/legal/sla/)
 
-> [AZURE.NOTE]  Azure 付費訂閱都不同: 雖然也表示您的目錄中，這些訂閱啟用建立 Azure 資源，並將它們對應到您的付款方法。 在這種情況下，訂用帳戶「沒有」相關聯的授權計數。 使用者與訂用帳戶的關聯就是使用者管理訂用帳戶資源的存取權，是透過授與使用者權限來達成，讓他們能夠操作與訂用帳戶對應的 Azure 資源。
+> [AZURE.NOTE]  Azure 付費訂閱都不同 ︰ 雖然也表示您的目錄中，這些訂閱啟用建立 Azure 資源，並將它們對應到您的付款方法。 在這種情況下，訂用帳戶「沒有」相關聯的授權計數。 使用者與訂用帳戶的關聯就是使用者管理訂用帳戶資源的存取權，是透過授與使用者權限來達成，讓他們能夠操作與訂用帳戶對應的 Azure 資源。
 
 
 ##Azure AD 授權如何運作？
@@ -63,9 +63,9 @@ Azure AD 服務功能的概觀，請參閱 [什麼是 Azure AD](active-directory
 
 要開始使用 Azure AD 很簡單。您註冊免費的 Azure 試用版之後，就可以建立您的目錄。 [深入了解以組織身分註冊](sign-up-organization.md)。 以下可協助您確定您的目錄最適合您可能會使用或打算使用的其他 Microsoft 服務，以及您取得服務的目標。
 
-以下是幾種最佳作法:
+以下是幾種最佳作法 ︰
 - 如果您已經在使用任何 Microsoft 的組織服務，您已經有 Azure AD 目錄。 在此情況下，您應該為其他服務繼續使用相同的目錄，以便可以跨服務使用核心身分識別管理 (包括佈建和混合式 SSO)。 您的使用者將會擁有單一登入經驗，而且將從跨服務更豐富的功能受益。 如此一來，如果您決定購買 Azure AD 的付費服務，您的工作人員，我們建議您若要這樣做，使用相同的目錄。
-- 如果您打算使用 Azure AD 的一組不同的使用者 (夥伴、 客戶等等)，或如果您想要評估 Azure AD 服務，而且想要在隔離的生產服務，或如果您想要設定服務的沙箱環境，我們建議您先建立 Azure Azure 傳統入口網站透過新的目錄。 [了解如何建立新的 Azure 傳統入口網站中的 Azure AD 目錄](active-directory-licensing-directory-independence.md)。 您的帳戶將會建立新的目錄，成為具有全域系統管理員權限的外部使用者。 當您使用此帳戶登入 Azure 傳統入口網站時，您將會看到這個目錄，並且能夠存取所有的目錄管理工作。 我們建議您建立一個具有適當權限的本機帳戶，來管理其他 Microsoft 服務 (即無法透過 Azure 傳統入口網站存取的服務)。 [深入了解 Azure AD 中建立使用者帳戶](active-directory-create-users.md)。
+- 如果您打算使用 Azure AD 的一組不同的使用者 （夥伴、 客戶等等），或如果您想要評估 Azure AD 服務，而且想要在隔離的生產服務，或如果您想要設定服務的沙箱環境，我們建議您先建立 Azure Azure 傳統入口網站透過新的目錄。 [了解如何建立新的 Azure 傳統入口網站中的 Azure AD 目錄](active-directory-licensing-directory-independence.md)。 您的帳戶將會建立新的目錄，成為具有全域系統管理員權限的外部使用者。 當您使用此帳戶登入 Azure 傳統入口網站時，您將會看到這個目錄，並且能夠存取所有的目錄管理工作。 我們建議您建立一個具有適當權限的本機帳戶，來管理其他 Microsoft 服務 (即無法透過 Azure 傳統入口網站存取的服務)。 [深入了解 Azure AD 中建立使用者帳戶](active-directory-create-users.md)。
 
 > [AZURE.NOTE] Azure AD 支援 「 外部使用者 」，是使用 Microsoft 帳戶 (MSA) 或 Azure AD 身分識別從另一個目錄所建立的 Azure AD 的執行個體中的使用者帳戶。 雖然我們忙著將此功能擴充到所有 Microsoft 的組織服務，但是目前在某些服務體驗中不支援這些帳戶。例如，Office 365 系統管理入口網站目前不支援這些使用者。 因此，使用 Microsoft 帳戶的外部使用者將無法存取 Office 365 系統管理入口網站，而來自其他 Azure AD 目錄的外部使用者將會被忽略。 在後者的情況中，只有使用者的本機帳戶，最初建立使用者的 Azure AD 或 Office 365 目錄，才能透過這些體驗存取。
 
@@ -104,7 +104,7 @@ Azure AD 服務功能的概觀，請參閱 [什麼是 Azure AD](active-directory
 
 當群組被指派時，其成員會在 30 分鐘內繼承授權，但通常會在 1-2 分鐘內。
 
-在 Azure AD 授權指派期間，可能會發生指派錯誤，但通常很少見。 可能的指派錯誤僅限於:
+在 Azure AD 授權指派期間，可能會發生指派錯誤，但通常很少見。 可能的指派錯誤僅限於 ︰
 - 指派衝突-當使用者先前已指派給目前的授權與不相容的授權。 在此情況下，指派新的授權，必須先移除前一個。
 - 超過可用的授權-時指派的群組中的使用者數目超過可用的授權使用者的指派狀態會反映因缺少授權失敗。
 
@@ -122,11 +122,11 @@ Azure AD 服務功能的概觀，請參閱 [什麼是 Azure AD](active-directory
 
 ###延長試用期
 
-透過 Office 365 入口網站可以自助延長客戶的試用期。 客戶系統管理員可以瀏覽至 [Office 入口網站](https://portal.office.com/#Billing) (取決於 Office 入口網站的權限的存取)，然後選取您的 Azure AD Premium 試用版。 按一下 [ **擴充試用** 連結，並遵循指示進行。 您必須輸入信用卡，但不會被收費。
+透過 Office 365 入口網站可以自助延長客戶的試用期。 客戶系統管理員可以瀏覽至 [Office 入口網站](https://portal.office.com/#Billing) （取決於 Office 入口網站的權限的存取），然後選取您的 Azure AD Premium 試用版。 按一下 [ **擴充試用** 連結，並遵循指示進行。 您必須輸入信用卡，但不會被收費。
 
 ![在 Office 入口網站中延長授權試用期](./media/active-directory-licensing-what-is/extend_license_trial.png)
 
-客戶也可以提交支援要求來要求延長試用期。 客戶系統管理員可以瀏覽至 Office 365 入口網站 [支援頁面](http://aka.ms/extendAADtrial) (取決於 Office 支援頁面的權限的存取)。 在此頁面上的 [功能] 下方選取 [訂用帳戶和試用版]，以及在 [徵兆] 下方選取 [試用版問題]。 最後，視情況輸入資訊
+客戶也可以提交支援要求來要求延長試用期。 客戶系統管理員可以瀏覽至 Office 365 入口網站 [支援頁面](http://aka.ms/extendAADtrial) （取決於 Office 支援頁面的權限的存取）。 在此頁面上的 [功能] 下方選取 [訂用帳戶和試用版]，以及在 [徵兆] 下方選取 [試用版問題]。 最後，視情況輸入資訊
 
 ![使用支援要求延長授權試用期](./media/active-directory-licensing-what-is/alternate_office_aad_trial_extension.png)
 
@@ -140,4 +140,5 @@ Azure AD 服務功能的概觀，請參閱 [什麼是 Azure AD](active-directory
 - [群組指派給應用程式](active-directory-manage-groups.md)
 - [Azure Multi-Factor Authentication](multi-factor-authentication.md)
 - [直接購買 Azure AD Premium 授權](http://aka.ms/buyaadp)
+
 

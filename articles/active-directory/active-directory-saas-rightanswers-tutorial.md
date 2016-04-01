@@ -73,7 +73,7 @@
 
     ![設定單一登入](./media/active-directory-saas-rightanswers-tutorial/IC802928.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式設定** 頁面上，於 **登入 URL** 文字方塊中，輸入您的使用者用於登入 RightAnswers 應用程式使用的 URL (例如: *https://fortify.rightanswers.com/portal/ss/*)，然後按一下 [ **下一步**。
+3.  在 **設定應用程式設定** 頁面上，於 **登入 URL** 文字方塊中，輸入您的使用者用於登入 RightAnswers 應用程式使用的 URL (例如 ︰ *https://fortify.rightanswers.com/portal/ss/*)，然後按一下 [ **下一步**。
 
     ![設定 App 設定](./media/active-directory-saas-rightanswers-tutorial/IC802929.png "Configure App Settings")
 
@@ -116,3 +116,4 @@
     ![是](./media/active-directory-saas-rightanswers-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

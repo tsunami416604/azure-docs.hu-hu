@@ -27,7 +27,7 @@
             </bindings>
         </site>
 
-5. 開啟 Windows 防火牆主控台，然後建立新的連接埠規則，以允許對連接埠的連線。 如需有關如何建立新的 Windows 防火牆連接埠規則的詳細資訊，請參閱 [如何加入新的 Windows 防火牆連接埠規則]。
+5. 開啟 Windows 防火牆主控台，然後建立新的連接埠規則，以允許對連接埠的連線。 如需有關如何建立新的 Windows 防火牆連接埠規則的詳細資訊，請參閱 [How to add a new Windows Firewall port rule]。
 
     >[AZURE.NOTE] 如果您的測試機器已加入網域，可能會受到網域原則控制防火牆例外。 在此情況下，您必須與網域管理員連絡，以了解機器連接埠的例外。
 
@@ -38,4 +38,5 @@
 
 <!-- URLs. -->
 [How to add a new Windows Firewall port rule]:  http://go.microsoft.com/fwlink/?LinkId=392240
+
 

@@ -19,7 +19,7 @@
 
 # 如何在 Azure 上使用 CoreOS
 
-本主題說明 [CoreOS]，並示範如何在 Azure 上建立三部 CoreOS 虛擬機器的叢集，作為了解此作業系統的快速入門。 它會使用 CoreOS 部署的 [Azure 上的 CoreOS]，從範例非常基本的項目 [Tim Park 的 CoreOS 教學課程，] 和 [Patrick Chanezon 的 CoreOS 教學課程] 示範了解 CoreOS 部署的基本結構和順利執行三部虛擬機器之叢集的絕對最低需求。
+本主題描述 [CoreOS] 並示範如何在 Azure 上建立三部 CoreOS 虛擬機器的叢集，作為了解此作業系統的快速入門。 它會使用 CoreOS 部署的範例非常基本的項目 [CoreOS with Azure], ，[Tim Park's CoreOS Tutorial], ，和 [Patrick Chanezon's CoreOS Tutorial] 示範了解 CoreOS 部署的基本結構和順利執行三部虛擬機器之叢集的絕對最低需求。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [資源管理員部署模型](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)。
 
@@ -36,20 +36,20 @@ CoreOS 是精簡版的 Linux 旨在支援快速建立可能的大型 Vm 叢集�
 
 1. 單一封裝系統：CoreOS 只會執行可在 Linux 容器中執行，以取得部署速度、一致性和方便性的 Linux 容器映像
 2. 系統會自動執行作業系統更新，因此作業系統會以單一實體的方式進行更新，並可輕易地回復成已知狀態
-3. 內建 [etcd](https://github.com/coreos/etcd) 和 [fleet](https://github.com/coreos/fleet) 動態 VM 和叢集通訊與管理精靈 (服務)
+3. 內建 [etcd](https://github.com/coreos/etcd) 和 [fleet](https://github.com/coreos/fleet) 動態 VM 和叢集通訊與管理精靈 （服務）
 
-這是 CoreOS 及其功能的非常一般說明。 如需更完整 CoreOS 的詳細資訊，請參閱 [CoreOS 概觀]。
+這是 CoreOS 及其功能的非常一般說明。 如需 CoreOS 的更完整資訊，請參閱 [CoreOS Overview]。
 
 ## 安全性考量
 目前來說，CoreOS 假設可以 SSH 進入叢集的使用者便會有管理叢集的權限。 這樣的結果是，在沒有修改的情況下，CoreOS 叢集在測試和開發環境中表現十分出色，但您應在任何實際執行環境中套用另外的安全措施。
 
 ## 如何在 Azure 上使用 CoreOS
 
-本節說明如何使用三部 CoreOS 虛擬機器才能使用 [Azure 命令列介面 (Azure CLI)] 建立的 Azure 雲端服務。 基本步驟如下：
+本節說明如何使用三部 CoreOS 虛擬機器以建立 Azure 雲端服務 [Azure Command-line Interface (Azure CLI)]。 基本步驟如下：
 
 1. 建立 SSH 憑證和金鑰，來保護與 CoreOS 虛擬機器的通訊安全
 2. 取得叢集的 etcd 識別碼以便互相通訊
-3. 建立 [YAML] 格式的 cloud-config 檔案
+3. 建立 cloud-config 檔案中的 [YAML] 格式
 4. 使用 Azure CLI 建立新的 Azure 雲端服務和三部 CoreOS VM
 5. 在 Azure VM 中測試您的 CoreOS 叢集
 6. 在 localhost 中測試您的 CoreOS 叢集
@@ -103,39 +103,39 @@ coreos:
 ### 使用 Azure CLI 建立新的 CoreOS VM
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-1. 安裝 [Azure 命令列介面 (Azure CLI)]，如果您沒有已完成，並登入使用的是工作或學校識別碼，或下載.publishsettings 檔案，並匯入您的帳戶的。
+1. 安裝 [Azure Command-line Interface (Azure CLI)] 如果沒有已經完成此動作，並登入使用的是工作或學校識別碼，或下載.publishsettings 檔案，並匯入您的帳戶的。
 2. 尋找您的 CoreOS 映像。 鍵入 `azure vm image list | grep CoreOS` 可隨時找到可用的映像，應會顯示類似下面的結果清單：
 
-    資料: 2b171e93f07c4903bcad35bda10acf22__CoreOS-穩定-522.6.0 公用 Linux
+    資料 ︰ 2b171e93f07c4903bcad35bda10acf22__CoreOS-穩定-522.6.0 公用 Linux
 
 3. 輸入建立基本叢集的雲端服務
 `azure service create <cloud-service-name>` 其中 <*雲端服務名稱*> 是您的 CoreOS 雲端服務的名稱。 這個範例會使用名稱 **`coreos-cluster`**; 您必須重複使用您選擇建立您的 CoreOS VM 雲端服務內的執行個體的名稱。
 
-    附註: 如果您發現您的工作到目前為止在 [預覽入口網站](https://portal.azure.com), ，您會看到您的雲端服務名稱在資源群組和網域，如下圖所示:
+    附註 ︰ 如果您發現您的工作到目前為止在 [預覽入口網站](https://portal.azure.com), ，您會看到您的雲端服務名稱在資源群組和網域，如下圖所示 ︰
 
-    ![] [CloudServiceInNewPortal]
+    ![][CloudServiceInNewPortal]
 
-4. 連接到您的雲端服務，並建立新的 CoreOS VM 內使用 **azure vm 建立** 命令。 您會傳遞 X.509 憑證中的位置 **--ssh-cert** 選項。 輸入下列命令，建立您的第一個 VM 映像來取代記住 **coreos 叢集** 您所建立的雲端服務名稱:
+4. 連接到您的雲端服務，並建立新的 CoreOS VM 內使用 **azure vm 建立** 命令。 您會傳遞 X.509 憑證中的位置 **--ssh-cert** 選項。 輸入下列命令，建立您的第一個 VM 映像來取代記住 **coreos 叢集** 您所建立的雲端服務名稱 ︰
 
     ```
-建立 azure vm-自訂資料 = cloud-config.yaml-ssh = 22--ssh-cert=./myCert.pem-否-ssh-密碼---名稱 = 節點 1--連接 = coreos 叢集-位置 ="West US"522.6.0-穩定 2b171e93f07c4903bcad35bda10acf22__CoreOS-核心
+azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem --no-ssh-password --vm-name=node-1 --connect=coreos-cluster --location="West US" 2b171e93f07c4903bcad35bda10acf22__CoreOS-Stable-522.6.0 core
 ```
 
-5. Create the second node by repeating the command in step 4, replacing the **--vm-name** value with **node-2** and the **--ssh** port value with 2022.
+5. 重複步驟 4 中的命令，以建立第二個節點 **--** 值與 **節點 2** 和 **-ssh** 連接埠使用 2022 來取代值。
 
-6. Create the third node by repeating the command in step 4, replacing the **--vm-name** value with **node-3** and the **--ssh** port value with 3022.
+6. 重複步驟 4 中的命令，以建立第三個節點 **--** 值與 **node 3** 和 **-ssh** 連接埠使用 3022 來取代值。
 
-You can see from the shot below how the CoreOS cluster appears in the portal.
+從下面的照片中，您可以看到 CoreOS 叢集顯示在入口網站的樣子。
 
 ![][EmptyCoreOSCluster]
 
-### Test your CoreOS cluster from an Azure VM
+### 在 Azure VM 中測試您的 CoreOS 叢集
 
-To test your cluster, make sure you are in your working directory and then connect to **node-1** using **ssh**, passing the private key by typing:
+若要測試您的叢集，請確定您是在您的工作目錄，然後連接到 **節點 1** 使用 **ssh**, ，只要傳遞私密金鑰 ︰
 
     ssh core@coreos-cluster.cloudapp.net -p 22 -i ./myPrivateKey.key
 
-Once connected, type `sudo fleetctl list-machines` to see whether the cluster has already identified all VMs in the cluster. You should receive a response similar to the following:
+連接後，請鍵入 `sudo fleetctl list-machines` 以查看叢集是否已識別出叢集中的所有 VM。 您應該會收到如下所示的回應：
 
 
     core@node-1 ~ $ sudo fleetctl list-machines
@@ -145,35 +145,35 @@ Once connected, type `sudo fleetctl list-machines` to see whether the cluster ha
     f7de6717... 100.71.188.96   -
 
 
-### Test your CoreOS cluster from localhost
+### 在 localhost 中測試您的 CoreOS 叢集
 
-Finally, let's test your CoreOS cluster from your local Linux client. You might be able to install **fleetctl** by using **npm**, or you might want to install **fleet** and build **fleetctl** yourself on your local client. **fleet** requires **golang**, so you may need to install that first by typing:
+最後，請從您本機的 Linux 用戶端測試您的 CoreOS 叢集。 您可以安裝 **fleetctl** 使用 **npm**, ，或者您可能想要安裝 **fleet** 和建置 **fleetctl** 自行在本機用戶端。 **fleet** 需要 **golang**, ，因此您可能需要安裝的第一次鍵入 ︰
 
 `sudo apt-get install golang`
 
-Then clone the **fleet** repository from github by typing:
+然後複製 **fleet** 從輸入的 github 儲存機制 ︰
 
 `git clone https://github.com/coreos/fleet.git`
 
-Build **fleet** by changing to the `fleet` directory and type
+建置 **fleet** 變更為 `fleet` 目錄及檔案類型
 
 `./build`
 
-And finally place **fleet** for easy use (depending upon your configuration you may or may not need to **sudo**):
+最後加 **fleet** 方便使用 (視您的組態，您可能需要或不需要以 **sudo**):
 
 `cp bin/fleetctl /usr/local/bin`
 
-Make sure **fleet** has access to your `myPrivateKey.key` in the working directory by typing:
+請確定 **fleet** 有權存取您 `myPrivateKey.key` 輸入的工作目錄中 ︰
 
 `ssh-add ./myPrivateKey.key`
 
-> [AZURE.NOTE] If you are already using the `~/.ssh/id_rsa` key, then add that with `ssh-add ~/.ssh/id_rsa`.
+> [AZURE.NOTE] 如果您已使用 `~/.ssh/id_rsa` 索引鍵，然後將它與 `ssh-add ~/.ssh/id_rsa`。
 
-Now you are ready to test remotely using the same **fleetctl** command you used from **node-1**, but passing some remote arguments:
+現在您已經準備好可以測試從遠端使用同一個 **fleetctl** 命令使用 **節點 1**, ，但傳遞部分遠端引數 ︰
 
 `fleetctl --tunnel coreos-cluster.cloudapp.net:22 list-machines`
 
-The results should be exactly the same:
+應會有相同的結果：
 
 
     MACHINE     IP      METADATA
@@ -181,9 +181,9 @@ The results should be exactly the same:
     a05e2d7c... 100.71.168.87   -
     f7de6717... 100.71.188.96   -
 
-## Next steps
+## 後續步驟
 
-You should now have a running three-node CoreOS cluster on Azure. From here, you can explore how to create more complex clusters and use Docker and create more interesting applications. To try a couple of quick examples, see [Get Started with Fleet on CoreOS on Azure].
+在 Azure 上，您現在應該會有執行三節點 CoreOS 叢集。 此後，您可以探索如何建立更複雜的叢集，並使用 Docker 建立更有趣的應用程式。 若要嘗試幾個簡短的範例，請參閱 [Get Started with Fleet on CoreOS on Azure]。
 
 <!--Anchors-->
 [CoreOS, Clusters, and Linux Containers]: #intro
@@ -209,4 +209,5 @@ You should now have a running three-node CoreOS cluster on Azure. From here, you
 [Docker]: http://docker.io
 [YAML]: http://yaml.org/
 [Get Started with Fleet on CoreOS on Azure]: virtual-machines-linux-coreos-fleet-get-started.md
+
 

@@ -80,7 +80,7 @@
 
 3.  在 **設定應用程式 URL** 頁面上，於 **Syncplicity 登入 URL** 文字方塊中，URL 的使用者用來登入 Syncplicity 應用程式的類型，請按一下 **下一步**。 
 
-    應用程式 URL 是您 Syncplicity 租用戶 URL (例如: *http://company.Syncplicity.com*):
+    應用程式 URL 是您 Syncplicity 租用戶 URL (例如 ︰ *http://company.Syncplicity.com*):
 
     ![設定應用程式 URL](./media/active-directory-saas-syncplicity-tutorial/IC769536.png "Configure app URL")
 
@@ -94,7 +94,7 @@
 
     ![Syncplicity](./media/active-directory-saas-syncplicity-tutorial/IC769545.png "Syncplicity")
 
-7.  在 **單一登入 (SSO)** 對話方塊頁面上，執行下列步驟:
+7.  在 **單一登入 (SSO)** 對話方塊頁面上，執行下列步驟 ︰
 
     ![單一登入 \(SSO\)](./media/active-directory-saas-syncplicity-tutorial/IC769550.png "Single Sign-On \(SSO\)")
 
@@ -116,7 +116,7 @@ AAD 使用者必須先佈建到 Syncplicity 應用程式，才可以登入。 �
 
 ###若要佈建使用者帳戶到 Syncplicity，請執行下列步驟：
 
-1.  登入您 **Syncplicity** 租用戶 (例如: *https://company.Syncplicity.com*)。
+1.  登入您 **Syncplicity** 租用戶 (例如 ︰ *https://company.Syncplicity.com*)。
 
 2.  按一下 [ **管理員** ，然後選取 **使用者帳戶**。
 
@@ -159,5 +159,6 @@ AAD 使用者必須先佈建到 Syncplicity 應用程式，才可以登入。 �
     ![是](./media/active-directory-saas-syncplicity-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 
 

@@ -35,7 +35,7 @@
 - 使用混合式連線的應用程式只存取透過混合式連線發佈的特定內部部署資源。
 - 可以連接到任何使用靜態 TCP 連接埠的內部部署資源，例如 SQL Server、MySQL、HTTP Web API 和大部分的自訂 Web 服務。
 
-    > [AZURE.NOTE] 目前不支援使用動態通訊埠 (例如 FTP 被動模式或延伸被動模式) 的 TCP 架構服務。
+    > [AZURE.NOTE] 目前不支援使用動態通訊埠 （例如 FTP 被動模式或延伸被動模式） 的 TCP 架構服務。
 
 - 可以與 Web Apps (.NET、PHP、Java、Python、Node.js) 和 Mobile Apps (Node.js、.NET) 支援的所有架構搭配使用。
 - Web Apps 和 Mobile Apps 能夠以完全相同的方式存取內部部署資源，就像是該 Web 或 Mobile Apps 位於本機網路一樣。 例如，內部部署使用的相同連接字串也可以在 Azure 上使用。
@@ -99,13 +99,14 @@
 
 ## 另請參閱
 
-[用於管理 Microsoft Azure 上的 BizTalk 服務 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)
-[BizTalk 服務: 版本圖表](biztalk-editions-feature-chart.md)<br/>
-[建立 BizTalk 服務: 使用 Azure 入口網站](biztalk-provision-services.md)<br/>
-[BizTalk 服務: 儀表板、 監視和調整索引標籤](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+[用於管理 Azure 上之 BizTalk 服務的 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)
+[BizTalk 服務：版本圖表](biztalk-editions-feature-chart.md)<br/>
+[建立 BizTalk 服務 ︰ 使用 Azure 入口網站](biztalk-provision-services.md)<br/>
+[BizTalk 服務：儀表板、監視和調整索引標籤](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
 [HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
+
 

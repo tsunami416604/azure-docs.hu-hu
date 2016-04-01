@@ -41,13 +41,13 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
 
     ![][1]
 
-    + **使用者名稱**: 含有預留位置文字的 UITextField 的 *輸入使用者名稱*, 、 傳送結果標籤和左右邊界限制並位於傳送結果標籤正下方。
-    + **密碼**: 含有預留位置文字的 UITextField 的 *輸入密碼*, ，下方的 [使用者名稱文字欄位和左右邊界限制並位於使用者名稱文字欄位正下方。 檢查 **Secure Text Entry** 底下屬性偵測器中選項 *傳回金鑰*。
-    + **登入**: 密碼文字欄位正下方標記的 UIButton，並取消選取 **啟用** 底下屬性偵測器中，選項 *控制項內容*
-    + **WNS**: 標籤與開關來啟用傳送通知 Windows 通知服務，如果已安裝的中心。 請參閱 [Windows 入門](notification-hubs-windows-store-dotnet-get-started.md) 教學課程。
-    + **GCM**: 若要啟用 Google Cloud messaging 傳送通知，如果已設定集線器上的標籤與開關。 請參閱 [Android 入門](notification-hubs-android-get-started.md) 教學課程。
-    + **APNS**: 啟用傳送通知給 Apple 平台通知服務的標籤與開關。
-    + **Recipent Username**: 的預留位置文字的 UITextField *收件者使用者名稱標記*, 、 立即下方 GCM 標籤，以及限制左、 右邊界及下 GCM 標籤。
+    + **使用者名稱**︰ 含有預留位置文字的 UITextField 的 *輸入使用者名稱*, 、 傳送結果標籤和左右邊界限制並位於傳送結果標籤正下方。
+    + **密碼**︰ 含有預留位置文字的 UITextField 的 *輸入密碼*, ，下方的 [使用者名稱文字欄位和左右邊界限制並位於使用者名稱文字欄位正下方。 檢查 **Secure Text Entry** 底下屬性偵測器中選項 *傳回金鑰*。
+    + **登入**︰ 密碼文字欄位正下方標記的 UIButton，並取消選取 **啟用** 底下屬性偵測器中，選項 *控制項內容*
+    + **WNS**︰ 標籤與開關來啟用傳送通知 Windows 通知服務，如果已安裝的中心。 請參閱 [Windows 入門](notification-hubs-windows-store-dotnet-get-started.md) 教學課程。
+    + **GCM**︰ 若要啟用 Google Cloud messaging 傳送通知，如果已設定集線器上的標籤與開關。 請參閱 [Android 入門](notification-hubs-android-get-started.md) 教學課程。
+    + **APNS**︰ 啟用傳送通知給 Apple 平台通知服務的標籤與開關。
+    + **Recipent Username**︰ 的預留位置文字的 UITextField *收件者使用者名稱標記*, 、 立即下方 GCM 標籤，以及限制左、 右邊界及下 GCM 標籤。
 
 
     Some components were added in the [Getting Started with Notification Hubs (iOS)](notification-hubs-ios-get-started.md) tutorial.
@@ -423,7 +423,7 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
         self.RecipientField.delegate = self;
         self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
 
-12. 現在在 **AppDelegate.m**, ，方法的所有內容都移除 **application: didRegisterForPushNotificationWithDeviceToken:** 換成下列內容以確定檢視控制器包含從 Apn 擷取的最新裝置權杖:
+12. 現在在 **AppDelegate.m**, ，方法的所有內容都移除 **application: didRegisterForPushNotificationWithDeviceToken:** 換成下列內容以確定檢視控制器包含從 Apn 擷取的最新裝置權杖 ︰
 
         // Add import to the top of the file
         #import "ViewController.h"
@@ -435,7 +435,7 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
             rvc.deviceToken = deviceToken;
         }
 
-13. 最後在 **AppDelegate.m**, ，請確定您有下列方法:
+13. 最後在 **AppDelegate.m**, ，請確定您有下列方法 ︰
 
         - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
             NSLog(@"%@", userInfo);
@@ -465,4 +465,5 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
 [2]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-user-pwd.png
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
+
 

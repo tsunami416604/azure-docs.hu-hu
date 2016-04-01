@@ -84,7 +84,7 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-> [AZURE.NOTE] Azure SQL 資料倉儲會尚未支援自動建立，或自動更新統計資料。  為了獲得查詢的最佳效能，在首次載入資料，或是資料中發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  統計資料的詳細說明，請參閱主題開發群組中的 [統計資料] [] 主題。
+> [AZURE.NOTE] Azure SQL 資料倉儲會尚未支援自動建立，或自動更新統計資料。  為了獲得查詢的最佳效能，在首次載入資料，或是資料中發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  如需統計資料的詳細說明，請參閱 [統計資料][] 開發一組主題中的主題。
 
 ## 使用 CTAS 解決不支援的功能
 
@@ -335,8 +335,8 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
 請注意：
-- CAST 或 CONVERT 可能已經使用
-- 使用 ISNULL，強制執行非 COALESCE 的 null 屬性
+- 可能已經使用 CAST 或 CONVERT
+- ISNULL 是用來強制 NULLability，而非 COALESCE
 - ISNULL 是最外層的函式
 - ISNULL 的第二個部分是常數，也就是 0
 
@@ -416,10 +416,10 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 因此，您可以查看類型一致性，且維護 CTAS 上的可為 null 屬性是很好的工程最佳作法。 它有助於維護計算的完整性，並且也可確保資料分割切換的可能性。
 
-請參閱 msdn 上使用 [CTAS] [] 的詳細資訊。 它是 Azure SQL 資料倉儲中最重要的陳述式之一。 請確定您已徹底了解。
+如需使用的詳細資訊請參閱 MSDN [CTAS][]。 它是 Azure SQL 資料倉儲中最重要的陳述式之一。 請確定您已徹底了解。
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-ctas/ctas-results.png
@@ -432,4 +432,5 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 [CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
 
 <!--Other Web references-->
+
 

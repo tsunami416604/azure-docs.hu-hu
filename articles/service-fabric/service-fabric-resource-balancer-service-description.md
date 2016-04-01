@@ -224,10 +224,11 @@ Task t = fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
-如需詳細資訊: [資源平衡器架構](service-fabric-resource-balancer-architecture.md), ，[放置條件約束](service-fabric-placement-constraint.md)
+如需詳細資訊 ︰ [資源平衡器架構](service-fabric-resource-balancer-architecture.md), ，[放置條件約束](service-fabric-placement-constraint.md)
 
 [Image1]: media/service-fabric-resource-balancer-service-description/PC.png
 [Image2]: media/service-fabric-resource-balancer-service-description/DM.png
 [Image3]: media/service-fabric-resource-balancer-service-description/MW.png
  
+
 

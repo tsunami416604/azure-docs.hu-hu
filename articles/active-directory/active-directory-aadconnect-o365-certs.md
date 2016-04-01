@@ -45,7 +45,7 @@ https:// (your_FS_name) /federationmetadata/2007-06/federationmetadata.xml
 
 將其中的 `(your_FS_name) ` 取代為您的組織使用的同盟服務主機名稱，例如 fs.contoso.com。  如果您能夠成功確認上述兩個設定，您就不必執行任何動作。  
 
-範例: https://fs.contos.com/federationmetadata/2007-06/federationmetadata.xml
+範例 ︰ https://fs.contos.com/federationmetadata/2007-06/federationmetadata.xml
 
 ## 如果 AutoCertificateRollover 屬性設定為 False
 
@@ -64,13 +64,13 @@ https:// (your_FS_name) /federationmetadata/2007-06/federationmetadata.xml
 (請注意，如果您使用 AD FS 2.0，您必須先執行 Add-Pssnapin Microsoft.Adfs.Powershell)
 
 
-- 查看命令輸出中所列的任何憑證。  如果 AD FS 已產生新的憑證，您應該會看到兩個輸出中的憑證: 一個 IsPrimary 值是 True，而 NotAfter 日期是 5 天內，有一個 IsPrimary 是 False，而 NotAfter 即將在未來一年。
+- 查看命令輸出中所列的任何憑證。  如果 AD FS 已產生新的憑證，您應該會看到兩個輸出中的憑證 ︰ 一個 IsPrimary 值是 True，而 NotAfter 日期是 5 天內，有一個 IsPrimary 是 False，而 NotAfter 即將在未來一年。
 
 - 如果您只看到一個憑證，而 NotAfter 日期為 5 天內，則您必須執行下列步驟產生新的憑證。
 
 - 若要產生新憑證，請在 PowerShell 命令提示字元中執行下列命令：`PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
 
-- 再次執行下列命令驗證更新: PS C:\ > C:>get-adfscertificate – CertificateType 權杖簽署
+- 再次執行下列命令驗證更新 ︰ PS C:\ > C:>get-adfscertificate – CertificateType 權杖簽署
 - 接下來，若要手動更新 Office 365 同盟信任內容，請依照下列步驟。
 
 現在應該會列出兩個憑證，一個的 NotAfter 日期大約在未來一年，且 IsPrimary 值是 False。
@@ -86,4 +86,5 @@ https:// (your_FS_name) /federationmetadata/2007-06/federationmetadata.xml
 
 >[AZURE.NOTE] 如果您需要支援多個頂層網域的詳細資訊，例如 contoso.com 和 fabrikam.com，您必須使用 SupportMultipleDomain 參數搭配任何指令程式。 如需詳細資訊，請參閱〈支援多個頂層網域〉。
 最後，請確定所有的 Web 應用程式 Proxy 伺服器會更新 [Windows Server 2014](http://support.microsoft.com/kb/2955164) 彙總套件，否則 proxy 可能無法自行更新使用新的憑證，導致服務中斷。
+
 

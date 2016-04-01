@@ -65,7 +65,7 @@ Microsoft Azure 儲存體資料移動程式庫預覽現已開放下載，透過 
     <th>適用於表格儲存體 (Y/N)</th>
   </tr>
   <tr>
-    <td><b>/ 來源: & l t; 來源 & gt;</b></td>
+    <td><b>/ 來源 ︰ & l t; 來源 & gt;</b></td>
     <td>指定要複製的來源資料。 來源可以是檔案系統目錄、Blob 容器、Blob 虛擬目錄、儲存體檔案共用、儲存體檔案目錄或 Azure 資料表。</td>
     <td>Y</td>
     <td>Y<br /></td>
@@ -170,7 +170,7 @@ Microsoft Azure 儲存體資料移動程式庫預覽現已開放下載，透過 
   <tr>
     <td><b>/V:[verbose log-file]</b></td>
     <td>將詳細資訊狀態訊息輸出至記錄檔。
-    <br /><br />依預設，在 %LocalAppData%\Microsoft\Azure\AzCopy 中詳細資訊記錄檔會被 <code>命名為</code> 了嗎 <code>log</code>. 如果您在此選項中指定現有檔案位置，則詳細資訊記錄將會被附加到該檔案。</td>
+    <br /><br />依預設，在 %LocalAppData%\Microsoft\Azure\AzCopy 中詳細資訊記錄檔會被 <code>AzCopyVerbose.log</code> 了嗎 <code>%LocalAppData%\Microsoft\Azure\AzCopy</code>. 如果您在此選項中指定現有檔案位置，則詳細資訊記錄將會被附加到該檔案。</td>
     <td>Y</td>
     <td>Y<br /></td>
     <td>Y<br /></td>
@@ -179,7 +179,7 @@ Microsoft Azure 儲存體資料移動程式庫預覽現已開放下載，透過 
     <td><b>/Z:[journal-file-folder]</b></td>
     <td>指定用於繼續作業的日誌檔案資料夾。<br />
         AzCopy always supports resuming if an operation has been interrupted.<br />
-        If this option is not specified, or it is specified without a folder path, then AzCopy will create the journal file in the default location, which is <code>log</code>.<br />
+        If this option is not specified, or it is specified without a folder path, then AzCopy will create the journal file in the default location, which is <code>%LocalAppData%\Microsoft\Azure\AzCopy</code>.<br />
         Each time you issue a command to AzCopy, it checks whether a journal file exists in the default folder, or whether it exists in a folder that you specified via this option. If the journal file does not exist in either place, AzCopy treats the operation as new and generates a new journal file.
         <br /><br />
         If the journal file does exist, AzCopy will check whether the command line that you input matches the command line in the journal file. If the two command lines match, AzCopy resumes the incomplete operation. If they do not match, you will be prompted to either overwrite the journal file to start a new operation, or to cancel the current operation. 
@@ -308,7 +308,7 @@ Microsoft Azure 儲存體資料移動程式庫預覽現已開放下載，透過 
     <td>N</td>
   </tr>
   <tr>
-    <td><b>/ 分隔符號: & l t; 分隔符號 & gt;</b></td>
+    <td><b>/ 分隔符號 ︰ & l t; 分隔符號 & gt;</b></td>
     <td>指出在 Blob 名稱中，用來分隔虛擬目錄的分隔符號字元。<br /><br />
         By default, AzCopy uses / as the delimiter character. However, AzCopy supports using any common character (such as @, #, or %) as a delimiter. If you need to include one of these special characters on the command line, enclose the file name with double quotes. 
         <br /><br />
@@ -330,14 +330,14 @@ Microsoft Azure 儲存體資料移動程式庫預覽現已開放下載，透過 
   </tr>
   <tr>
     <td><b>/SourceType:Blob|Table</b></td>
-    <td>指定 <code>來源</code> 資源是可在本機開發環境中使用，並在儲存體模擬器中執行的 Blob。</td>
+    <td>指定 <code>source</code> 資源是可在本機開發環境中使用，並在儲存體模擬器中執行的 Blob。</td>
     <td>Y</td>
     <td>N</td>
     <td>Y<br /></td>
   </tr>
   <tr>
     <td><b>/DestType:Blob|Table</b></td>
-    <td>指定 <code>目的地</code> 資源是可在本機開發環境中使用，並在儲存體模擬器中執行的 Blob。</td>
+    <td>指定 <code>destination</code> 資源是可在本機開發環境中使用，並在儲存體模擬器中執行的 Blob。</td>
     <td>Y</td>
     <td>N</td>
     <td>Y<br /></td>
@@ -409,7 +409,7 @@ Microsoft Azure 儲存體資料移動程式庫預覽現已開放下載，透過 
   <tr>
     <td><b>/ SetContentType: & l t; 內容類型和 gt;</b></td>
     <td>指定目的地 blob 或檔案的 MIME 內容類型。 <br /><br />
-        AzCopy sets the content type for a blob or file to <code>應用程式/八位元組資料流</code> 根據預設值。 您可以明確指定這個選項的值來設定所有 blob 或檔案的內容類型。 
+        AzCopy sets the content type for a blob or file to <code>application/octet-stream</code> 根據預設值。 您可以明確指定這個選項的值來設定所有 blob 或檔案的內容類型。 
         <br /><br />
         If you specify this option without a value, then AzCopy will set each blob or file's content type according to its file extension.</td>
     <td>Y</td>
@@ -877,7 +877,7 @@ AzCopy 將會使用下列命令慣例，在本機資料夾或 Blob 容器中產�
 
 產生的 JSON 資料檔案會遵循基本中繼資料的裝載格式。 如需此裝載格式的詳細資訊，請參閱 [表格服務作業的裝載格式](http://msdn.microsoft.com/library/azure/dn535600.aspx)。
 
-請注意，在儲存體資料表實體匯出至儲存體 Blob 時，AzCopy 會首先將資料表實體匯出到本機暫存資料檔，並再上傳至 Blob，這些暫存資料檔會放入日誌檔案資料夾，使用預設路徑"<code>log</code>」，您可以指定 /z: [日誌檔案的資料夾] 來變更日誌檔案資料夾位置，並因此變更暫存資料檔案位置的選項。 暫存資料檔大小取決於資料表實體大小和您使用 /SplitSize 選項所指定的大小，雖然本機磁碟中的暫存資料檔在上傳至 Blob 之後就立即刪除，但請確定您有足夠的本機磁碟空間，可儲存這些尚未刪除的暫存資料檔。 
+請注意，在儲存體資料表實體匯出至儲存體 Blob 時，AzCopy 會首先將資料表實體匯出到本機暫存資料檔，並再上傳至 Blob，這些暫存資料檔會放入日誌檔案資料夾，使用預設路徑"<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>」，您可以指定選項/z: [日誌檔案的資料夾] 來變更日誌檔案資料夾位置，並因此變更暫存資料檔案位置。 暫存資料檔大小取決於資料表實體大小和您使用 /SplitSize 選項所指定的大小，雖然本機磁碟中的暫存資料檔在上傳至 Blob 之後就立即刪除，但請確定您有足夠的本機磁碟空間，可儲存這些尚未刪除的暫存資料檔。 
 
 ### 分割匯出檔案
 
@@ -976,8 +976,8 @@ AzCopy 設計為充分利用電腦資源來加速資料傳輸，建議您在一�
 - [使用匯入/匯出服務將資料移轉至 Blob 儲存體](storage-import-export-service.md)
 
 ### Azure 儲存體部落格文章：
-- [DML: 介紹 azure 儲存體資料移動程式庫預覽]() https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/
-- [AzCopy: 簡介同步複製和自訂內容類型]() http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx
+- [DML ︰ 介紹 azure 儲存體資料移動程式庫預覽]() https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/
+- [AzCopy ︰ 簡介同步複製和自訂內容類型]() http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx
 - [AzCopy: 宣布正式發行 AzCopy 3.0 和具有資料表和檔案支援的 AzCopy 4.0 預覽版本](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
 - [AzCopy: 針對大規模複製案例最佳化](http://go.microsoft.com/fwlink/?LinkId=507682)
 - [Microsoft Azure 檔案服務簡介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
@@ -985,4 +985,5 @@ AzCopy 設計為充分利用電腦資源來加速資料傳輸，建議您在一�
 - [AzCopy: 使用可重新啟動模式和 SAS 權杖傳輸資料](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 - [AzCopy: 使用跨帳戶複製 Blob](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy: 上傳/下載 Azure Blob 的檔案](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+
 

@@ -47,7 +47,7 @@
 
 ##查詢
 
-一旦建立連接之後，您可以針對 Hive 執行查詢。 例如，下列 Java 程式碼會執行 __選取__ 從資料表中，只有三個資料列，將結果限制然後顯示結果:
+一旦建立連接之後，您可以針對 Hive 執行查詢。 例如，下列 Java 程式碼會執行 __選取__ 從資料表中，只有三個資料列，將結果限制然後顯示結果 ︰
 
     sql = "SELECT querytime, market, deviceplatform, devicemodel, state, country from " + tableName + " LIMIT 3";
     stmt2 = conn.createStatement();
@@ -71,4 +71,5 @@
 * [在 HDInsight 上使用 Hive](hdinsight-use-hive.md)
 * [搭配 HDInsight 使用 Pig](hdinsight-use-pig.md)
 * [搭配 HDInsight 使用 MapReduce 工作](hdinsight-use-mapreduce.md)
+
 

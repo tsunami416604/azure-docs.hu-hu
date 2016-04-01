@@ -28,7 +28,7 @@
 
 本教學課程示範如何使用 Azure 媒體服務總管 (AMSE) 工具管理 Azure 媒體服務 (AMS)。 此工具只會在 Windows 電腦上執行。 如果您是 Mac 或 Linux 上，使用 Azure 傳統入口網站建立 [通道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) 和 [程式](media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program)。
 
-##先決條件
+##必要條件
 
 - [建立 Azure 媒體服務帳戶](media-services-create-account.md)
 - 請確定執行的串流端點至少有一個配置的串流單位。 如需詳細資訊，請參閱 [管理串流端點在媒體服務帳戶](media-services-manage-origins.md)
@@ -43,11 +43,11 @@
 
 ## 建立通道
 
-1.  在 [AMSE] 工具中，瀏覽至 **Live** 索引標籤，然後以滑鼠右鍵按一下 [通道] 區域中。 選取 **...建立通道** 從功能表。
+1.  在 [AMSE] 工具中，瀏覽至 **Live** 索引標籤，然後以滑鼠右鍵按一下 [通道] 區域中。 選取 **建立通道...** 從功能表中。
 
 ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
-2. 指定通道名稱，描述欄位是選擇性的。 在 [通道設定] 下選取 **標準** 即時編碼選項時，輸入通訊協定設為 **RTMP**。 您可以將所有其他設定保留現狀。
+2. 指定通道名稱，描述欄位為選填。 在 [通道設定] 下選取 **標準** 即時編碼選項時，輸入通訊協定設為 **RTMP**。 您可以將所有其他設定保留現狀。
 
 
 請確定 **立即開始新的通道** 已選取。
@@ -64,7 +64,7 @@
 
 ##<a id=configure_tricaster_rtmp></a>設定 NewTek TriCaster 編碼器
 
-在本教學課程中會使用下列輸出設定。 本章節的其餘部分將詳細說明組態步驟。 
+在本教學課程中，我們會使用下列輸出設定。 本章節的其餘部分將詳細說明組態步驟。 
 
 **視訊**:
  
@@ -104,7 +104,7 @@
 
 6. 取得通道的輸入 URL，以便將它指派給 Tricaster **RTMP 端點**。
     
-    瀏覽回到 AMSE 工具，並檢查通道的完成狀態。 一旦狀態變更從 **起始** 到 **執行**, ，您可以取得輸入的 URL。
+    瀏覽回 AMSE 工具，並檢查通道的完成狀態。 一旦狀態變更從 **起始** 到 **執行**, ，您可以取得輸入的 URL。
       
     當執行通道時，通道名稱上按一下滑鼠右鍵，透過瀏覽到動態顯示 **複製到剪貼簿的輸入 URL** ，然後選取 **主要輸入
    URL**。  
@@ -140,7 +140,7 @@
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
 
-2. 命名程式，並有需要則調整 **封存時間長度** (預設為 4 小時)。 您也可以指定儲存體位置，或保留為預設值。  
+2. 命名程式，並有需要則調整 **封存時間長度** （預設為 4 小時）。 您也可以指定儲存體位置，或保留為預設值。  
 3. 檢查 **現在啟動程式** 方塊。
 4. 按一下 [ **建立程式**。  
   
@@ -164,4 +164,5 @@
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

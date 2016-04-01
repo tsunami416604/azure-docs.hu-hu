@@ -17,7 +17,7 @@
 
 # 彈性資料庫工作概觀
 
- **彈性資料庫工作** 功能 (預覽) 可讓您可靠地執行 TRANSACT-SQL (T-SQL) 指令碼，或將 DACPAC 套用 ([資料層應用程式](https://msdn.microsoft.com/library/ee210546.aspx)) 一整組資料庫，包括:
+ **彈性資料庫工作** 功能 （預覽） 可讓您可靠地執行 TRANSACT-SQL (T-SQL) 指令碼，或將 DACPAC 套用 ([資料層應用程式](https://msdn.microsoft.com/library/ee210546.aspx)) 一整組資料庫，包括 ︰
 
 * 自訂的資料庫集合 (如下所述)
 * 中的所有資料庫 [彈性資料庫集區](sql-database-elastic-pool.md)
@@ -27,7 +27,7 @@
 
 **彈性資料庫工作** 是目前客戶主控 Azure 雲端服務，可讓您執行臨機操作和排程的管理工作，稱為 **工作**。 利用工作，您可以執行 Transact-SQL 指令碼來執行管理作業，進而輕鬆又可靠地管理大量 Azure SQL Database 群組。 
 
-![彈性資料庫工作服務][] 1
+![彈性資料庫工作服務][1]
 
 ## 優點
 * 輕鬆地管理結構描述變更、認證管理、參考資料更新、效能資料收集，或租用戶 (客戶) 遙測收集。
@@ -53,10 +53,10 @@
 ## 彈性資料庫工作：端對端 
 1.  安裝 **彈性資料庫工作** 元件。 如需詳細資訊，請參閱 [安裝彈性資料庫工作](sql-database-elastic-jobs-service-installation.md)。 如果安裝失敗，請參閱 [如何解除安裝](sql-database-elastic-jobs-uninstall.md)。
 2.  使用 PowerShell API 來存取更多功能，例如建立自訂定義資料庫集合、新增排程及/或收集結果集。 使用入口網站的簡易安裝，並建立/監視作業限制為對執行 **彈性資料庫集區**。 
-3.  建立加密的認證執行工作和 [加入群組中的每個資料庫的使用者 (或角色)](sql-database-elastic-jobs-add-logins-to-dbs.md)。
+3.  建立加密的認證執行工作和 [加入群組中的每個資料庫的使用者 （或角色）](sql-database-elastic-jobs-add-logins-to-dbs.md)。
 4.  建立能夠針對群組中的每個資料庫執行的等冪 T-SQL 指令碼。 
-5.  請遵循下列步驟來建立使用 Azure 入口網站的作業: [建立和管理彈性資料庫工作](sql-database-elastic-jobs-create-and-manage.md)。 
-6.  或使用 PowerShell 指令碼: [建立和管理使用 PowerShell (預覽) 的 SQL Database 彈性資料庫工作](sql-database-elastic-jobs-powershell.md)。
+5.  請遵循下列步驟來建立使用 Azure 入口網站的作業 ︰ [建立和管理彈性資料庫工作](sql-database-elastic-jobs-create-and-manage.md)。 
+6.  或使用 PowerShell 指令碼 ︰ [建立和管理使用 PowerShell （預覽） 的 SQL Database 彈性資料庫工作](sql-database-elastic-jobs-powershell.md)。
 
 ## 等冪指令碼的重要性
 指令碼必須是 [等冪](https://en.wikipedia.org/wiki/Idempotence)。 簡單地說，「等冪」表示如果指令碼成功，而且再次執行，就會出現相同的結果。 指令碼可能會因為暫時性網路問題而失敗。 在此情況下，工作會自動重新執行指令碼，達到預設的次數才會停止。 即使等冪指令碼已成功執行兩次，仍會有相同的結果。 
@@ -88,8 +88,8 @@
 ## 元件和價格 
 下列元件共同建立允許臨機執行管理工作的 Azure 雲端服務。 這些元件會於安裝期間在您的訂用帳戶中自動安裝和設定。 您可以識別服務，因為這些服務都有自動產生的相同名稱。 這個名稱是唯一的，包含前置詞 "edj"，後面接著隨機產生的 21 個字元。
 
-* **Azure 雲端服務**: 彈性資料庫工作 (預覽) 會傳遞以客戶主控 Azure 雲端服務，以執行所要求的工作。 您可以從入口網站，在 Microsoft Azure 訂用帳戶中部署及託管服務。 預設至少會使用兩個背景工作角色來執行已部署的服務，以取得高可用性。 每個背景工作角色 (ElasticDatabaseJobWorker) 都會以預設大小在 A0 執行個體上執行。 如需定價，請參閱 [雲端服務定價](http://azure.microsoft.com/pricing/details/cloud-services/)。 
-* **Azure SQL Database**: 服務會使用 Azure SQL 資料庫稱為 **控制資料庫** 來儲存所有的工作中繼資料。 預設服務層為 S0。 如需定價，請參閱 [SQL Database 定價](http://azure.microsoft.com/pricing/details/sql-database/)。
+* **Azure 雲端服務**︰ 彈性資料庫工作 （預覽） 會傳遞以客戶主控 Azure 雲端服務，以執行所要求的工作。 您可以從入口網站，在 Microsoft Azure 訂用帳戶中部署及託管服務。 預設至少會使用兩個背景工作角色來執行已部署的服務，以取得高可用性。 每個背景工作角色 (ElasticDatabaseJobWorker) 都會以預設大小在 A0 執行個體上執行。 如需定價，請參閱 [雲端服務定價](http://azure.microsoft.com/pricing/details/cloud-services/)。 
+* **Azure SQL Database**︰ 服務會使用 Azure SQL 資料庫稱為 **控制資料庫** 來儲存所有的工作中繼資料。 預設服務層為 S0。 如需定價，請參閱 [SQL Database 定價](http://azure.microsoft.com/pricing/details/sql-database/)。
 * **Azure 服務匯流排**: Azure 服務匯流排可協調 Azure 雲端服務內的工作。 請參閱 [服務匯流排定價](http://azure.microsoft.com/pricing/details/service-bus/)。
 * **Azure 儲存體**: Azure 儲存體帳戶用來儲存，需要進一步偵錯問題的診斷輸出記錄 (的常見作法 [Azure 診斷](cloud-services-dotnet-diagnostics.md))。 如需定價，請參閱 [Azure 儲存體定價](http://azure.microsoft.com/pricing/details/storage/)。
 
@@ -126,4 +126,5 @@
 <!--anchors-->
 
  
+
 

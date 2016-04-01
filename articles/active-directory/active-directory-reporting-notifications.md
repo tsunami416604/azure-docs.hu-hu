@@ -45,8 +45,9 @@
 
 是，若要關閉通知相關的異常登入 Azure 管理入口網站中，按一下 **設定**, ，然後選取 **已停用** 下 **通知** 一節。
 
-## 接下來
+## 後續步驟
 - 想知道有哪些安全性、稽核及活動報告可用嗎？ 簽出 [Azure AD 安全性、 稽核及活動報告](active-directory-view-access-usage-reports.md)
 - [開始使用 Azure Active Directory Premium](active-directory-get-started-premium.md)
 - [將公司商標新增至登入和存取面板頁面](active-directory-add-company-branding.md)
+
 

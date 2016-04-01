@@ -26,7 +26,7 @@
 
 您必須滿足以下條件：
 
-- Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- Azure 訂閱。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 - Apache Spark 叢集。 如需指示，請參閱 [佈建 Apache Spark 叢集的 Azure HDInsight](hdinsight-apache-spark-provision-clusters.md)。 
 
 ##<a name="data"></a>顯示資料
@@ -41,13 +41,13 @@
 
 在指定系統識別碼和系統年期的情況下，我們可以使用這些資料來預測建築物的溫度會比目標溫度高或低。
 
-##<a name="app"></a>撰寫使用 Spark MLlib 的機器學習應用程式
+##<a name="app"></a>使用 Spark MLlib 編寫機器學習應用程式
 
-1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 (如果固定至開始面板)。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
+1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 （如果固定至開始面板）。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
 
 2. 從 Spark 叢集刀鋒視窗中，按一下 [ **快速連結**, ，然後從 **叢集儀表板** 刀鋒視窗中，按一下 [ **Jupyter Notebook**。 出現提示時，輸入叢集的系統管理員認證。
 
-    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Jupyter Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱:
+    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Jupyter Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱 ︰
     >
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
@@ -133,7 +133,7 @@
         training = documents.toDF()
 
 
-5. 設定包含三個階段的 Spark 機器學習管線：tokenizer、hashingTF 及 lr。 如需有關什麼是管線及其運作方式請參閱 <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機器學習管線</a>.
+5. 設定包含三個階段的 Spark 機器學習管線：tokenizer、hashingTF 及 lr。 如需了解什麼是管線，以及管線的運作方式，請參閱 <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機器學習管線</a>。
 
     下列程式碼片段貼入空白儲存格，然後按下 **SHIFT + ENTER**。
 
@@ -180,7 +180,7 @@
 
     請注意，實際溫度比目標溫度低的情況代表建築物處於低溫狀態。 因此在訓練輸出的值 **標籤** 在第一個資料列是 **0.0**, ，表示建築物並非處於高溫狀態。
 
-8.  準備要做為定型模型之執行依據的資料集。 若要這樣做，我們會傳送系統識別碼和系統存留期 (表示為 **簡明** 訓練輸出中)，和模型會預測該系統識別碼且年期建置是否會有更高 (以 1.0 表示) 或更冷色 (以 0.0 表示)。
+8.  準備要做為定型模型之執行依據的資料集。 若要這樣做，我們會傳送系統識別碼和系統存留期 (表示為 **簡明** 訓練輸出中)，和模型會預測該系統識別碼且年期建置是否會有更高 （以 1.0 表示） 或更冷色 （以 0.0 表示）。
 
     下列程式碼片段貼入空白儲存格，然後按下 **SHIFT + ENTER**。
         
@@ -218,7 +218,7 @@
     ![重新啟動 Jupyter 核心](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Jupyter.Restart.Kernel.png "Restart the Jupyter Kernel")
            
 
-##<a name="anaconda"></a>使用 Anaconda scikit-learn-Machine Learning 的學習程式庫
+##<a name="anaconda"></a>使用適用於機器學習的 Anaconda scikit-learn 程式庫
 
 HDInsight 上的 Apache Spark 叢集包含 Anaconda 程式庫。 這也包括 **scikit-learn-了解** 機器學習程式庫。 此程式庫另包含用來直接從 Jupyter Notebook 建置範例應用程式的各種資料集。 如需使用 scikit-learn 範例-學習程式庫，請參閱 [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html)。
 
@@ -226,7 +226,7 @@ HDInsight 上的 Apache Spark 叢集包含 Anaconda 程式庫。 這也包括 **
 
 * [概觀：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 * [在 HDInsight 叢集上佈建 Spark](hdinsight-apache-spark-provision-clusters.md)
-* [在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
+* [執行 HDInsight 中使用 Spark 與 BI 工具的互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
 * [在 HDInsight 中使用 Spark 建置即時串流應用程式](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](hdinsight-apache-spark-resource-manager.md)
 
@@ -246,4 +246,5 @@ HDInsight 上的 Apache Spark 叢集包含 Anaconda 程式庫。 這也包括 **
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
+
 

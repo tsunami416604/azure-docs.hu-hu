@@ -31,7 +31,7 @@ Microsoft Azure 訂用帳戶的費用會因費率方案而異。 某些費率方
 - [服務詳細資料清單 (csv1)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx)
 - [服務詳細資料清單 (csv2)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx)
 
-*注意: **csv1** 連結是指 csv 第 1 版中的資料行的標頭名稱和 **csv2** 連結是指 csv 第 2 版的新資料行標題名稱。  每月更新這些檔案。*
+*注意 ︰ **csv1** 連結是指 csv 第 1 版中的資料行的標頭名稱和 **csv2** 連結是指 csv 第 2 版的新資料行標題名稱。  每月更新這些檔案。*
 
 
 ## 內容：
@@ -153,7 +153,7 @@ Microsoft Azure 付款位址。
 ![其他資訊](./media/billing-understand-your-bill/AdditionalInformation.png)
 
 ### 詳細的使用量
-在 [詳細的使用量] 描述中的連結會將您引導至 Azure 使用量和計費入口網站，您可以在此檢視此訂用帳戶的詳細使用量。  現在有兩個版本可供下載:  **.csv 第 1 版** 包含舊的命名慣例和使用方式欄位和 **.csv 第 2 版** 包含針對每個類別加上其他欄位的可協助您了解哪些服務正在使用 Microsoft Azure 的客戶易記名稱。
+在 [詳細的使用量] 描述中的連結會將您引導至 Azure 使用量和計費入口網站，您可以在此檢視此訂用帳戶的詳細使用量。  現在有兩個版本可供下載 ︰  **.csv 第 1 版** 包含舊的命名慣例和使用方式欄位和 **.csv 第 2 版** 包含針對每個類別加上其他欄位的可協助您了解哪些服務正在使用 Microsoft Azure 的客戶易記名稱。
 
 ### 其他資訊和有用資源
 此區段包含關於計算執行個體大小、SQL DB 費用等簡單問題的連結，以及可幫助您進一步回答問題的有用連結。
@@ -166,7 +166,7 @@ Microsoft Azure 付款位址。
 
 ## 了解詳細的使用費用
 
-我們持續致力於協助客戶輕鬆管理其 Azure 使用情況，已增強可報告 Azure 服務使用情況和成本的下載使用情況檔案。  下載連結包含兩個版本的使用情況檔案: **第 1 版** 使用預先存在的格式; **第 2 版** 包含其他資訊和更新的每日使用量區段中的資料行名稱。  
+我們持續致力於協助客戶輕鬆管理其 Azure 使用情況，已增強可報告 Azure 服務使用情況和成本的下載使用情況檔案。  下載連結包含兩個版本的使用情況檔案 ︰ **第 1 版** 使用預先存在的格式; **第 2 版** 包含其他資訊和更新的每日使用量區段中的資料行名稱。  
 
 使用費用是總 **每月** 費用扣除任何信用額度或折扣的訂閱。 我們會根據您過去一個月的使用量事後向您收取費用。  檔案的上方區段會顯示您在上個月的計費週期中需支付的服務詳細資料。  下表列出每個 .csv 版本檔案的資料行名稱。
 
@@ -221,24 +221,24 @@ SKU | SKU | 識別每個 Azure 資源的唯一系統識別碼。
 已耗用 | 已耗用的數量 | 包含當日已耗用的資源量。
 子區域 | 資源位置 | 識別正在執行資源的資料中心。
 服務 | 已耗用的服務 | 您可以利用這個資料行來追蹤可能無法在名稱資料行中特別識別的個別 Azure 平台服務。 此服務資料行會指出與使用有關的特定服務。
-N/A | 資源群組 | _**新增資料行。**_部署的資源正在其中執行的資源群組。 請參閱 http://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/
+N/A | 資源群組 | _**新增資料行。**_ 部署的資源正在其中執行的資源群組。 請參閱 http://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/
 元件 | 執行個體識別碼 | 執行中資源的識別碼。 識別碼包含在建立時為資源指定的名稱。
-N/A | 標記 | _**新增資料行。**_Azure 中的新資源類型可讓您標記資源。 請參閱 http://azure.microsoft.com/en-us/updates/organize-your-azure-resources-with-tags/
+N/A | 標記 | _**新增資料行。**_ Azure 中的新資源類型可讓您標記資源。 請參閱 http://azure.microsoft.com/en-us/updates/organize-your-azure-resources-with-tags/
 其他資訊 | 其他資訊 | 關於服務的其他中繼資料。
 服務資訊 1 | 服務資訊 1 | 此資料行會提供服務在訂用帳戶上所屬的專案名稱。
 服務資訊 2 | 服務資訊 2 | 這是舊版欄位，可擷取選擇性服務的特定中繼資料。
 
 除了一些新欄位和 csv 第 2 版的名稱變更之外，下列欄位中還有標準化的資料格式化：
 
-- **執行個體識別碼**: 執行個體識別碼欄位表示使用者已指定佈建服務的識別項。 目前，有兩種格式可呈現執行個體識別碼：就是資源的名稱或完整的資源識別碼。 Microsoft Azure 服務正在轉換，以代表標準化完整資源識別碼格式的執行個體識別碼 _**(/subscriptions/<subscription id>/resourcegroups/<resourcegroupname>/providers/<providername>/<resourcename>)**_。 當服務轉換成新的格式，您會看到執行個體識別碼資料欄位從只有資源名稱變更為資源識別碼。 資源識別碼是所使用的格式 [Azure 資源管理員 API](https://msdn.microsoft.com/library/azure/dn790567.aspx) 來識別資源中的的訂閱。
+- **執行個體識別碼**︰ 執行個體識別碼欄位表示使用者已指定佈建服務的識別項。 目前，有兩種格式可呈現執行個體識別碼：就是資源的名稱或完整的資源識別碼。 Microsoft Azure 服務正在轉換，以代表標準化完整資源識別碼格式的執行個體識別碼 _**(/subscriptions/<subscription id>/resourcegroups/<resourcegroupname>/providers/<providername>/<resourcename>)**_。 當服務轉換成新的格式，您會看到執行個體識別碼資料欄位從只有資源名稱變更為資源識別碼。 資源識別碼是所使用的格式 [Azure 資源管理員 API](https://msdn.microsoft.com/library/azure/dn790567.aspx) 來識別資源中的的訂閱。
 
 ![instanceid](./media/billing-understand-your-bill/instanceid.png)
 
-- **其他資訊**: 使用情況.csv 中的 Additional Info 資料行會指定服務特定的中繼資料。 例如，VM 的影像類型。 目前，服務會在多個資料行中發出服務特定的中繼資料：Additional Info、Service Info1 和 Service Info 2 等欄位。 Microsoft Azure 服務只會標準化 Additional Info 資料行中的發出服務特定中繼資料。  請參閱下方的標準化格式快照集：
+- **其他資訊**︰ 使用情況.csv 中的 Additional Info 資料行會指定服務特定的中繼資料。 例如，VM 的影像類型。 目前，服務會在多個資料行中發出服務特定的中繼資料：Additional Info、Service Info1 和 Service Info 2 等欄位。 Microsoft Azure 服務只會標準化 Additional Info 資料行中的發出服務特定中繼資料。  請參閱下方的標準化格式快照集：
 
 ![additionalinfo_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
-- **標記**: 這個資料行包含使用者指定資源標記。 標記可用來分組計費記錄。 例如，您可以使用標記，根據使用服務的部門散發成本。 深入了解 [使用標記來組織 Azure 資源](./resource-group-using-tags.md)。 支援發出標記的服務如下：  
+- **標記**︰ 這個資料行包含使用者指定資源標記。 標記可用來分組計費記錄。 例如，您可以使用標記，根據使用服務的部門散發成本。 深入了解 [使用標記來組織 Azure 資源](./resource-group-using-tags.md)。 支援發出標記的服務如下：  
     - 虛擬機器
     - 儲存體和
     - 使用佈建的網路服務 [Azure 資源管理員 API](https://msdn.microsoft.com/library/azure/dn790567.aspx)
@@ -247,7 +247,7 @@ N/A | 標記 | _**新增資料行。**_Azure 中的新資源類型可讓您標�
 
 
 ## 其他資源
-瀏覽至區段中， **管理帳戶、 訂閱和系統管理員角色**, 下 [管理您的服務](https://msdn.microsoft.com/library/azure/dn578292.aspx) 取得一些非常有用的連結:
+瀏覽至區段中， **管理帳戶、 訂閱和系統管理員角色**, 下 [管理您的服務](https://msdn.microsoft.com/library/azure/dn578292.aspx) 取得一些非常有用的連結 ︰
 
 - [管理您的付款方法](https://msdn.microsoft.com/library/azure/dn736054.aspx)
 
@@ -262,4 +262,5 @@ N/A | 標記 | _**新增資料行。**_Azure 中的新資源類型可讓您標�
 
 
 <!--Image references-->
+
 

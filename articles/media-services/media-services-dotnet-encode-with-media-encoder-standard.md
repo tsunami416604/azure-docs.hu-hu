@@ -144,4 +144,5 @@ Media Encoder Standard 已使用其中一個所述的編碼器預設 [這裡](ht
 ##另請參閱 
 
 [如何產生 Media Encoder Standard 使用.NET 的縮圖](media-services-dotnet-generate-thumbnail-with-mes.md)
-[媒體服務編碼的概觀](media-services-encode-asset.md)
+[媒體服務編碼概觀](media-services-encode-asset.md)
+

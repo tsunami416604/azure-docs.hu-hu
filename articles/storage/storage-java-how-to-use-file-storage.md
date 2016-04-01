@@ -221,3 +221,4 @@ Azure 檔案儲存體共用至少包含根目錄，檔案可以放置其中。 �
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
  
+

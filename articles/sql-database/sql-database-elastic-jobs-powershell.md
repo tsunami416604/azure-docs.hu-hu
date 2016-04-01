@@ -22,13 +22,13 @@
 
 
 
-PowerShell Api 以 **彈性資料庫工作** (處於預覽) 可讓您定義一組指令碼可執行的資料庫。 本文將說明如何建立和管理 **彈性資料庫工作** 使用 PowerShell cmdlet。 請參閱 [彈性工作概觀](sql-database-elastic-jobs-overview.md)。 
+PowerShell Api 以 **彈性資料庫工作** （處於預覽） 可讓您定義一組指令碼可執行的資料庫。 本文將說明如何建立和管理 **彈性資料庫工作** 使用 PowerShell cmdlet。 請參閱 [彈性工作概觀](sql-database-elastic-jobs-overview.md)。 
 
-## 先決條件
-* Azure 訂用帳戶。 如需免費試用版，請參閱 [免費試用一個月](http://azure.microsoft.com/pricing/free-trial/)。
+## 必要條件
+* Azure 訂閱。 如需免費試用版，請參閱 [免費試用一個月](http://azure.microsoft.com/pricing/free-trial/)。
 * 一組使用彈性資料庫工具所建立的資料庫。 請參閱 [開始使用彈性資料庫工具](sql-database-elastic-scale-get-started.md)。
 * Azure PowerShell。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
-* **彈性資料庫工作** PowerShell 套件: 請參閱 [安裝彈性資料庫工作](sql-database-elastic-jobs-service-installation.md)
+* **彈性資料庫工作** PowerShell 套件 ︰ 請參閱 [安裝彈性資料庫工作](sql-database-elastic-jobs-service-installation.md)
 
 ### 選取您的 Azure 訂用帳戶
 
@@ -69,7 +69,7 @@ PowerShell Api 以 **彈性資料庫工作** (處於預覽) 可讓您定義一�
 
   <tr>
     <td>DACPAC</td>
-    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">資料層應用程式 </a> 要套用到資料庫的封裝。
+    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">資料層應用程式 </a> 套用跨資料庫的封裝。
 
     </td>
     <td>
@@ -194,7 +194,7 @@ PowerShell Api 以 **彈性資料庫工作** (處於預覽) 可讓您定義一�
  
 您可以建立兩種群組： 
 
-* [分區對應](sql-database-elastic-scale-shard-map-management.md) 群組: 當工作提交至目標分區對應時，作業會查詢來判斷其分區的目前資料集的分區對應，並且接著會建立子工作的每個分區的分區對應中。
+* [分區對應](sql-database-elastic-scale-shard-map-management.md) 群組 ︰ 當工作提交至目標分區對應時，作業會查詢來判斷其分區的目前資料集的分區對應，並且接著會建立子工作的每個分區的分區對應中。
 * 自訂集合群組：一組自訂定義的資料庫。 當工作以自訂集合為目標時，它會為目前在自訂集合中的每個資料庫建立子工作。
 
 ## 設定彈性資料庫工作連接
@@ -244,13 +244,13 @@ PowerShell Api 以 **彈性資料庫工作** (處於預覽) 可讓您定義一�
 
 1. 建置並執行 **開始使用彈性資料庫工具** 範例應用程式。 遵循步驟，直到步驟一節中的 7 [下載及執行範例應用程式](sql-database-elastic-scale-get-started.md#Getting-started-with-elastic-database-tools)。 在步驟 7 結束時，您會看到下列的命令提示字元：
 
-    ![命令提示字元][] 1
+    ![命令提示字元][1]
 
 2.  在命令視窗中，輸入"1"，然後按 **Enter**。 這會建立分區對應管理員，並加入兩個分區到伺服器。 接著，輸入"3"，然後按下 **Enter**; 四次重複的動作。 這會在您的分區中插入範例資料列。
   
-3.   [Azure 入口網站](https://portal.azure.com) v12 伺服器中應該會顯示三個新的資料庫:
+3.   [Azure 入口網站](https://portal.azure.com) v12 伺服器中應該會顯示三個新的資料庫 ︰
 
-    ![Visual Studio 確認][] 2
+    ![Visual Studio 確認][2]
 
 建立分區對應目標使用 [**新增 AzureSqlJobCredential cmdlet**](https://msdn.microsoft.com/library/mt346063.aspx)。 您必須將分區對應管理員資料庫設為資料庫目標，然後將特定分區對應指定為目標。
 
@@ -455,7 +455,7 @@ PowerShell Api 以 **彈性資料庫工作** (處於預覽) 可讓您定義一�
 
 * 名稱：預設執行原則
 * 工作逾時：1 週
-* 初始重試間隔: 100 毫秒
+* 初始重試間隔 ︰ 100 毫秒
 * 最大重試間隔：30 分鐘
 * 重試間隔係數：2
 * 嘗試上限：2,147,483,647
@@ -618,7 +618,7 @@ PowerShell Api 以 **彈性資料庫工作** (處於預覽) 可讓您定義一�
 
 可以定義工作觸發程序，讓工作根據時間排程執行。 下列 PowerShell 指令碼可以用來建立工作觸發程序。
 
-使用 [新增 AzureSqlJobTrigger](https://msdn.microsoft.com/library/mt346069.aspx) ，並設定下列變數來對應至所需的工作和排程:
+使用 [新增 AzureSqlJobTrigger](https://msdn.microsoft.com/library/mt346069.aspx) ，並設定下列變數來對應至所需的工作和排程 ︰
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -694,4 +694,5 @@ PowerShell Api 以 **彈性資料庫工作** (處於預覽) 可讓您定義一�
 [1]: ./media/sql-database-elastic-jobs-powershell/cmd-prompt.png
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
+
 

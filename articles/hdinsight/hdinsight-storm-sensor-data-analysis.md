@@ -24,11 +24,11 @@
 
 ## 必要條件
 
-* Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* Azure 訂閱。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * [Apache Storm on HDInsight 叢集](../hdinsight-storm-getting-started.md)
 
-* [Node.js](http://nodejs.org/): 用於 web 儀表板，並將傳送至事件中樞的感應器資料。
+* [Node.js](http://nodejs.org/)︰ 用於 web 儀表板，並將傳送至事件中樞的感應器資料。
 
 * [Java 和 JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
@@ -44,15 +44,15 @@
 
 此範例由下列元件組成：
 
-* **Azure 事件中樞**: 提供收集自感應器的資料。 在此範例中，我們提供的是應用程式產生的假資料。
+* **Azure 事件中樞**︰ 提供收集自感應器的資料。 在此範例中，我們提供的是應用程式產生的假資料。
 
-* **Storm on HDInsight**: 從事件中心提供即時處理資料。
+* **Storm on HDInsight**︰ 從事件中心提供即時處理資料。
 
-* **在 HDInsight 上的 HBase** (選用): 提供持續的 NoSQL 資料存放區。
+* **在 HDInsight 上的 HBase** （選用） ︰ 提供持續的 NoSQL 資料存放區。
 
 * **Azure 虛擬網路服務** (選擇性，如果使用 HBase 所需): Storm on HDInsight 及 HBase on HDInsight 叢集之間能夠安全通訊。
 
-* **儀表板網站**: 建立即時資料圖表的範例儀表板。
+* **儀表板網站**︰ 建立即時資料圖表的範例儀表板。
 
     * 此網站採用 Node.js，因此可在任何用戶端作業系統上測試，或者也能部署至 Azure 網站。
 
@@ -64,7 +64,7 @@
 
 拓撲從事件中心讀取資料，使用 **com.microsoft.eventhubs.spout.EventHubSpout** Storm on HDInsight 叢集所提供的類別。 此網站的通訊透過使用 [socket.io-client.java](https://github.com/nkzawa/socket.io-client.java)。
 
-(選擇性) 與 HBase 通訊透過使用 [org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/javadoc/apidocs/org/apache/storm/hbase/bolt/class-use/HBaseBolt.html) 類別，提供 Storm 的一部分。
+（選擇性） 與 HBase 通訊透過使用 [org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/javadoc/apidocs/org/apache/storm/hbase/bolt/class-use/HBaseBolt.html) 類別，提供 Storm 的一部分。
 
 此拓撲的圖表如下。
 
@@ -77,11 +77,11 @@
 
 ### 元件
 
-* **事件中樞 Spout**: 一部分提供的 spout [HDInsight Storm 範例](https://github.com/hdinsight/hdinsight-storm-examples) GitHub 上。
+* **事件中樞 Spout**︰ 一部分提供的 spout [HDInsight Storm 範例](https://github.com/hdinsight/hdinsight-storm-examples) GitHub 上。
 
 * **ParserBolt.java**: spout 所發出的資料為原始 JSON，並偶爾多個事件，就會發出一次。 此 Bolt 示範如何讀取 Spout 發出的資料，並將其以包含多個欄位之 Tuple 的形式發至新的串流。
 
-* **DashboardBolt.java**: 這會示範如何使用 Socket.io 用戶端程式庫 java 將資料即時傳送至 web 儀表板。
+* **DashboardBolt.java**︰ 這會示範如何使用 Socket.io 用戶端程式庫 java 將資料即時傳送至 web 儀表板。
 
 ## 準備您的環境
 
@@ -184,7 +184,7 @@
 
 ### 啟動 Web 應用程式
 
-1. 開啟新的命令提示字元或終端機，並將目錄變更至 **hdinsight-hdinsight-eventhub-example/dashboard**, ，然後使用下列命令安裝 web 應用程式所需的相依性:
+1. 開啟新的命令提示字元或終端機，並將目錄變更至 **hdinsight-hdinsight-eventhub-example/dashboard**, ，然後使用下列命令安裝 web 應用程式所需的相依性 ︰
 
         npm install
 
@@ -207,11 +207,11 @@
 > [AZURE.NOTE] 本章節中的步驟使用 Node.js，讓他們可以在任何平台上執行。 如需其他語言的範例，請參閱 **SendEvents** 目錄。
 
 
-1. 開啟新的命令提示字元或終端機，並將目錄變更至 **hdinsight-hdinsight-eventhub-example/SendEvents/nodejs**, ，然後使用下列命令來安裝應用程式需要的相依性:
+1. 開啟新的命令提示字元或終端機，並將目錄變更至 **hdinsight-hdinsight-eventhub-example/SendEvents/nodejs**, ，然後使用下列命令來安裝應用程式需要的相依性 ︰
 
         npm install
 
-2. 開啟 **app.js** 檔案在文字編輯器中，並新增您稍早取得的事件中樞資訊:
+2. 開啟 **app.js** 檔案在文字編輯器中，並新增您稍早取得的事件中樞資訊 ︰
 
         // ServiceBus Namespace
         var namespace = 'servicebusnamespace';
@@ -296,15 +296,15 @@
 
 3. 輸入或選取下列值：
 
-    - **名稱**: 虛擬網路的名稱。
+    - **名稱**︰ 虛擬網路的名稱。
 
-    - **位址空間**: 選擇夠大，無法在叢集中所有節點提供位址的虛擬網路的位址空間。 否則，佈建作業將會失敗。
+    - **位址空間**︰ 選擇夠大，無法在叢集中所有節點提供位址的虛擬網路的位址空間。 否則，佈建作業將會失敗。
 
-    - **最大 VM 計數**: 選擇其中一個最大的虛擬機器計數。
+    - **最大 VM 計數**︰ 選擇其中一個最大的虛擬機器計數。
 
-    - **位置**: 此位置必須與您將建立的 HBase 叢集相同。
+    - **位置**︰ 此位置必須與您將建立的 HBase 叢集相同。
 
-    - **DNS 伺服器**: 本文使用 Azure 所提供的內部 DNS 伺服器，因此，您可以選擇 **無**。 同時也支援更多自訂 DNS 伺服器的進階網路功能設定。 如需詳細的指引，請參閱 [名稱解析 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
+    - **DNS 伺服器**︰ 本文使用 Azure 所提供的內部 DNS 伺服器，因此，您可以選擇 **無**。 同時也支援更多自訂 DNS 伺服器的進階網路設定。 如需詳細的指引，請參閱 [名稱解析 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
 4. 按一下 [ **建立虛擬網路**。 新的虛擬網路名稱隨即會出現在清單中。 等到 [狀態] 欄顯示 **建立**。
 
@@ -318,7 +318,7 @@
 
 9. 預設子網路名稱是在頁面底部， **子網路 1**。 使用 **新增子網路** 按鈕來加入 **subnet-2**。 這些子網路中將存放 Storm 和 HBase 叢集。
 
-    > [AZURE.NOTE] 在本文中，我們將使用叢集只有一個節點。 如果您要建立多節點叢集，您必須確認 **CIDR (位址計數)** 將用於叢集之子網路。 位址計數必須大於背景工作節點數量加上 7 的數目 (閘道器：2、前端節點：2、Zookeeper：3)。 例如，如果您需要 10 個節點的 HBase 叢集，那麼子網路的位址計數必須大於 17 (10 + 7)。 否則，部署作業將會失敗。
+    > [AZURE.NOTE] 在本文中，我們將使用叢集只有一個節點。 如果您要建立多節點叢集，您必須確認 **CIDR （位址計數）** 將用於叢集之子網路。 位址計數必須大於背景工作節點數量加上 7 的數目 (閘道器：2、前端節點：2、Zookeeper：3)。 例如，如果您需要 10 個節點的 HBase 叢集，那麼子網路的位址計數必須大於 17 (10 + 7)。 否則，部署作業將會失敗。
     >
     > 強烈建議您一個叢集只指定一個子網路。
 
@@ -344,11 +344,11 @@
 
 5. 重複上述步驟來建立新的 **HBase** 叢集。 主要差異如下：
 
-    * **叢集類型**: 選取 **HBase**
+    * **叢集類型**︰ 選取 **HBase**
 
-    * **虛擬網路子網路**: 選取 **子網路 2**
+    * **虛擬網路子網路**︰ 選取 **子網路 2**
 
-    * **儲存體帳戶**: 您應該使用一個 Storm 叢集使用的容器不同。
+    * **儲存體帳戶**︰ 您應該使用一個 Storm 叢集使用的容器不同。
 
 ### 探索 HBase DNS 尾碼
 
@@ -424,4 +424,5 @@
 * 以.NET 建立拓撲的相關資訊，請參閱 [Apache Storm on HDInsight 使用 Visual Studio 開發 C# 拓撲](hdinsight-storm-develop-csharp-visual-studio-topology.md)。
 
 [azure-portal]: https://manage.windowsazure.com/
+
 

@@ -88,4 +88,5 @@ ExpressRoute 線路有多個相關聯的路由網域：Azure 公用、Azure 私�
 - 設定 ExpressRoute 連線。
     - [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)
     - [設定路由 (線路對等)](expressroute-howto-routing-classic.md)
-    - [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)
+    - [將 VNet 連結到 ExpressRoute 循環](expressroute-howto-linkvnet-classic.md)
+

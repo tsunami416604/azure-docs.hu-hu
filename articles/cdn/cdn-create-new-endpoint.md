@@ -100,3 +100,4 @@ CDN 設定檔就是 CDN 端點的集合。  每個設定檔皆包含一或多個
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png 
  
+

@@ -23,7 +23,7 @@
 
 本主題說明如何使用 Azure Data Factory (ADF)，透過 Azure Blob 儲存體從內部部署的 SQL Server 資料庫移動資料至 SQL Azure Database。
 
-## <a name="intro"></a>簡介: 何謂 ADF，當它應移轉資料?
+## <a name="intro"></a>簡介：什麼是 ADF ，以及其應該用來移轉資料的時機？
 
 Azure Data Factory 是完全受管理的雲端架構資料整合服務，用來協調及自動化資料的移動和轉換。 ADF 模型中的重要概念是管線。 管線是活動的邏輯群組，各個群組都會定義包含在資料集中的資料上要執行的動作。 連結的服務是用來定義 Data Factory 所需的資訊，以便連接到資料資源。
 
@@ -38,10 +38,10 @@ Azure Data Factory 是完全受管理的雲端架構資料整合服務，用來�
 * 將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體帳戶
 * 將資料從 Azure Blob 儲存體帳戶複製至 Azure SQL Database
 
-**參考**: 顯示這裡已經過修改的更詳細的教學課程的步驟 [啟用管線以使用內部部署資料](data-factory-use-onpremises-datasources.md) 提供 ADF 小組和參考該主題的相關章節會提供適當的時候。
+**參考**︰ 顯示這裡已經過修改的更詳細的教學課程的步驟 [啟用管線以使用內部部署資料](data-factory-use-onpremises-datasources.md) 提供 ADF 小組和參考該主題的相關章節會提供適當的時候。
 
 
-## <a name="prereqs"></a>先決條件
+## <a name="prereqs"></a>必要條件
 本教學課程假設您有：
 
 *  **Azure 訂用帳戶**。 如果您沒有訂閱，您可以註冊 [免費試用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -51,7 +51,7 @@ Azure Data Factory 是完全受管理的雲端架構資料整合服務，用來�
 
 > [AZURE.NOTE] 此程序使用 [Azure 入口網站](https://ms.portal.azure.com/)。
 
-##<a name="upload-data"></a> 將資料上傳到您在內部部署 SQL Server
+##<a name="upload-data"></a>將資料上傳至您的內部部署 SQL Server
 
 我們使用 [NYC 計程車資料集](http://chriswhong.com/open-data/foil_nyc_taxi/) 示範移轉程序。 NYC 計程車資料集，便可以，另有說明，請在那篇文章，在 Azure blob 儲存體 [NYC 計程車資料](http://www.andresmh.com/nyctaxitrips/)。 資料會有兩個檔案、 trip_data.csv 檔案包含車程詳細資訊和 trip_far.csv 檔案，其中包含針對每趟車程支付的費用的詳細資料。 範例及這些檔案的說明 [NYC 計程車車程資料集說明](machine-learning-data-science-process-sql-walkthrough.md#dataset)。
 
@@ -69,7 +69,7 @@ Azure Data Factory 是完全受管理的雲端架構資料整合服務，用來�
 安裝指示和資料管理閘道器的詳細資訊，請參閱 [啟用管線以使用內部部署資料](data-factory-use-onpremises-datasources.md)
 
 
-## <a name="adflinkedservices"></a>建立連接到資料資源的連結的服務
+## <a name="adflinkedservices"></a>建立連結服務以連接至資料資源
 
 連結服務定義會定義 Azure Data Factory 所需的資訊，以便連接到資料資源。 建立連結的服務的逐步程序中提供 [建立連結的服務](data-factory-use-onpremises-datasources.md#step-2-create-linked-services)。
 
@@ -90,7 +90,7 @@ Azure Data Factory 是完全受管理的雲端架構資料整合服務，用來�
 若要建立 Azure SQL Database 的連結的服務，請按一下 **資料存放區** 在 Azure 傳統入口網站上 ADF 登陸頁面上，選取 *Azure SQL* 輸入的認證和 *username* 和 *密碼* Azure SQL database。  *Username* 必須指定為 *user@servername*。   
 
 
-##<a name="adf-tables"></a>定義及建立資料表來指定如何存取資料集
+##<a name="adf-tables"></a>定義和建立資料表以指定存取資料集的方式
 
 使用下列指令碼型程序，建立指定資料集結構、位置及可用性的資料表。 JSON 檔案可用來定義資料表。 如需有關這些檔案的結構的詳細資訊，請參閱 [資料集](data-factory-create-datasets.md)。
 
@@ -300,4 +300,5 @@ SQL Azure 輸出的資料表定義如下 (此結構描述會對應來自 Blob �
 當管線執行時，您應該可以看到資料在選取用於 Blob 的容器中顯示 (每天一個檔案)。
 
 請注意，我們尚未運用 ADF 提供的功能，以遞增方式輸送資料。 如需有關如何執行這和 ADF 所提供的其他功能的詳細資訊，請參閱 [ADF 文件](http://azure.microsoft.com/services/data-factory/)。
+
 

@@ -109,3 +109,4 @@ Azure 診斷延伸模組 1.5 介紹 **<SinksConfig>** 公用組態中的項目�
 
 - 使用 [PowerShell](cloud-services-diagnostics-powershell.md) 來啟用您的應用程式的 Azure 診斷擴充功能。 
 - 使用 [Visual Studio](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) 來啟用您的應用程式的 Azure 診斷擴充功能 
+

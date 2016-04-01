@@ -76,7 +76,7 @@
 
 如果您在發行組態中建置，則事件會先儲存在裝置中，等到應用程式恢復時才傳送。 第一次使用應用程式時也會傳送資料。 如果剛啟動時沒有網際網路連線，先前的遙測及目前生命週期的遙測會先儲存，等到下次恢復時才傳送。
 
-## <a name="next"></a>後續步驟
+## <a name="next"></a>接續步驟
 
 [使用 Application Insights 刪除、分級和診斷][detect]
 
@@ -101,3 +101,4 @@
 [windows]: app-insights-windows-get-started.md
 
  
+

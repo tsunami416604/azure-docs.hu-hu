@@ -17,14 +17,14 @@
    ms.author="piyushjo"/>
 
 # 如何瀏覽使用者介面
-UI 前端入口網站位於: https://YourApp.portal.mobileengagementwindows.net/ 包含下列的導覽項目: 頁首、 頁尾、 提要欄位、 cookie 連結瀏覽和應用程式專屬功能區。
+UI 前端入口網站位於 ︰ https://YourApp.portal.mobileengagementwindows.net/ 包含下列的導覽項目 ︰ 頁首、 頁尾、 提要欄位、 cookie 連結瀏覽和應用程式專屬功能區。
  
-![] Navigation1[] 1 
+![Navigation1][1] 
 
 ## 標頭
-- **Azure Mobile Engagement (標誌)** -Azure Mobile Engagement 應用程式的首頁
+- **Azure Mobile Engagement （標誌）** -Azure Mobile Engagement 應用程式的首頁
 - **您的姓名** – 我的帳戶設定檔
-- **文件** – [Azure Mobile Engagement 文件] [連結 10]
+- **文件** – [Azure Mobile Engagement 文件][Link 10]
 - **登出** -登出 Azure Mobile Engagement
  
 ## 頁尾
@@ -35,13 +35,13 @@ UI 前端入口網站位於: https://YourApp.portal.mobileengagementwindows.net/
 - 快速瀏覽到通往您目前位置的先前頁面。
  
 ## 功能區
-- [分析][連結 15]
-- [監視][連結 16]
-- [連接][連結 17]
-- [區段][連結 18]
-- [儀表板][連結 19]
+- [Analytics][Link 15]
+- [監視][Link 16]
+- [觸達][Link 17]
+- [使用者分佈][Link 18]
+- [儀表板][Link 19]
     - + (新增儀表板)
-- [設定][連結 20]
+- [設定][Link 20]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -141,3 +141,4 @@ UI 前端入口網站位於: https://YourApp.portal.mobileengagementwindows.net/
 
  
  
+

@@ -35,7 +35,7 @@
 
 ### ODBC 支援
 
-當使用資料來源名稱 (DSN) 精靈來定義資料來源的 Azure SQL Database 中，按一下 **與使用 SQL Server 驗證登入識別碼和密碼的使用者輸入** 選項，並選取 **連線到 SQL Server 以獲得其他設定選項的預設設定**。 輸入您的使用者名稱和密碼來連線到 Azure SQL Database 伺服器做為 **登入識別碼** 和 **密碼**。 清除 **連線到 SQL Server，以取得預設的設定...** 核取方塊。 按一下 [ **變更預設資料庫為:** ，即使它不會顯示在清單中，輸入 Azure SQL 資料庫的名稱。 請注意，精靈會列出數種語言中的 **變更 SQL Server 系統訊息的語言:** 清單。
+當使用資料來源名稱 (DSN) 精靈來定義資料來源的 Azure SQL Database 中，按一下 **與使用 SQL Server 驗證登入識別碼和密碼的使用者輸入** 選項，並選取 **連線到 SQL Server 以獲得其他設定選項的預設設定**。 輸入您的使用者名稱和密碼來連線到 Azure SQL Database 伺服器做為 **登入識別碼** 和 **密碼**。 清除 **連線到 SQL Server，以取得預設的設定...** 核取方塊。 按一下 [ **變更預設資料庫為 ︰** ，即使它不會顯示在清單中，輸入 Azure SQL 資料庫的名稱。 請注意，精靈會列出數種語言中的 **變更 SQL Server 系統訊息的語言 ︰** 清單。
 
 在此版本中，Microsoft Azure SQL Database 僅支援英文，因此選取英文做為語言。 Microsoft Azure SQL Database 不支援 **鏡像伺服器** 或 **附加資料庫**, ，所以將這些項目保留空白。 按一下 [ **測試連接**。
 
@@ -68,4 +68,5 @@ Microsoft OLE DB Provider for DB2 Version 5.0 (資料提供者) 可讓您建立�
 <!--
 https://en.wikipedia.org/wiki/Draft:Microsoft_SQL_Server_Libraries/Drivers
 -->
+
 

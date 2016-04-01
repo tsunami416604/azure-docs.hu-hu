@@ -109,13 +109,13 @@
 
     ![API 應用程式主機針對本機偵錯的應用程式設定](./media/app-service-api-dotnet-debug/ld-debug-settings.png)
 
-    **注意:**  *EMA_* 值加入至您 *web.config* 本節中的檔案包含機密的授權資訊。 因此，建議您避免在公開原始檔控制儲存機制中儲存這些值。 如需詳細資訊，請參閱 [的密碼和其他機密資料部署至 ASP.NET 和 Azure App Service 最佳作法](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)。   
+    **注意 ︰**  *EMA_* 值加入至您 *web.config* 本節中的檔案包含機密的授權資訊。 因此，建議您避免在公開原始檔控制儲存機制中儲存這些值。 如需詳細資訊，請參閱 [的密碼和其他機密資料部署至 ASP.NET 和 Azure App Service 最佳作法](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)。   
 
 10. 將 API 應用程式的控制器程式碼中的一個中斷點，放到 `Get` 方法中。
 
 11. 按 F5 啟動 Visual Studio 偵錯工作階段。
  
-13.  若要將 API 應用程式的存取等級設為 **公用 (匿名)**, ，您可以使用 Swagger UI 頁面來測試。
+13.  若要將 API 應用程式的存取等級設為 **公用 （匿名）**, ，您可以使用 Swagger UI 頁面來測試。
 
     * When the browser loads the page, you see an HTTP 403 error page. Add */swagger* to the end of the URL in your browser's address bar and press Enter.
 
@@ -123,18 +123,19 @@
 
         Visual Studio stops program execution on your breakpoint, and you can debug your controller's logic. 
 
-14. 如果 API 應用程式的存取層級設定為 **公用 (驗證)**, ，您需要驗證，並使用下列程序中所示的瀏覽器工具 [保護 API 應用程式](app-service-api-dotnet-add-authentication.md#use-postman-to-send-a-post-request) 對於 Post 要求，這是:
+14. 如果 API 應用程式的存取層級設定為 **公用 （驗證）**, ，您需要驗證，並使用下列程序中所示的瀏覽器工具 [保護 API 應用程式](app-service-api-dotnet-add-authentication.md#use-postman-to-send-a-post-request) 對於 Post 要求，這是 ︰
 
     * 移至閘道器登入 URL，並輸入認證進行登入。
     * 從 x-zumo-auth Cookie 取得 Zumo Token 值。
     * 將 x-zumo-auth 標頭加入您的要求，並將其值設定為 x-zumo-auth Cookie 值。
     * 提交要求。
 
-    **注意:** 當您在本機執行時，Azure 無法控制的存取權的 API 應用程式，以確保只有已驗證的使用者可以執行其方法。 當您在 Azure 中執行時，適用於 API 應用程式的所有流量都會透過閘道器路由，而且閘道器不會傳遞未經驗證的要求。 當您在本機執行時，不會進行任何重新導向，這表示會禁止未驗證的要求存取 API 應用程式。  如上所述驗證的值是您可以在 API 應用程式中成功執行驗證相關程式碼 (例如，擷取已登入使用者相關資訊的程式碼)。 如需閘道如何處理驗證的 API 應用程式的詳細資訊，請參閱 [API 應用程式和行動應用程式驗證](../app-service/app-service-authentication-overview.md#azure-app-service-gateway)。
+    **注意 ︰** 當您在本機執行時，Azure 無法控制的存取權的 API 應用程式，以確保只有已驗證的使用者可以執行其方法。 當您在 Azure 中執行時，適用於 API 應用程式的所有流量都會透過閘道器路由，而且閘道器不會傳遞未經驗證的要求。 當您在本機執行時，不會進行任何重新導向，這表示會禁止未驗證的要求存取 API 應用程式。  如上所述驗證的值是您可以在 API 應用程式中成功執行驗證相關程式碼 (例如，擷取已登入使用者相關資訊的程式碼)。 如需閘道如何處理驗證的 API 應用程式的詳細資訊，請參閱 [API 應用程式和行動應用程式驗證](../app-service/app-service-authentication-overview.md#azure-app-service-gateway)。
 
 ## 後續步驟
 
 在本教學課程中，您已了解如何偵錯 API Apps。 
 
 如需詳細的疑難排解資訊，請參閱 [疑難排解 Azure App Service 使用 Visual Studio 中的 web 應用程式](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)。 因為 API 應用程式是具有額外功能 (用於裝載 Web 服務) 的 Web 應用程式，所以您可對 API 應用程式使用您對 Web 應用程式使用的相同偵錯和疑難排解工具。    
+
 

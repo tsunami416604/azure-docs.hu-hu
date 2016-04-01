@@ -395,3 +395,4 @@ $NicName 字串必須是資源群組中獨特的字串。 最佳作法是將虛�
 
 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)
 
+

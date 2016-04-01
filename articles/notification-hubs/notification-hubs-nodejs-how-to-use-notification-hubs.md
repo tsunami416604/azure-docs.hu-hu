@@ -30,7 +30,7 @@ Azure 通知中樞提供易用、多平台、可擴充的基礎結構，用以�
 
 ##建立 Node.js 應用程式
 
-建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [建立並部署 Node.js 應用程式至 Azure 網站][nodejswebsite], ，[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或 [Web Site with WebMatrix]。
+建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [建立並部署 Node.js 應用程式至 Azure 網站][nodejswebsite], ，[Node.js 雲端服務][Node.js Cloud Service] （使用 Windows PowerShell） 或 [Web Site with WebMatrix]。
 
 ##將應用程式設為使用通知中心
 
@@ -65,7 +65,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 ### 匯入模組
 
 使用文字編輯器，將下列內容新增至
- **server.js** 應用程式檔案:
+ **server.js** 應用程式檔案 ︰
 
     var azure = require('azure');
 
@@ -78,7 +78,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-連接 **connectionstring** 值可以取自 [Azure Classic Portal] 藉由執行下列步驟:
+連接 **connectionstring** 值可以取自 [Azure Classic Portal] 藉由執行下列步驟 ︰
 
 1. 從 [Azure Classic Portal], ，請選取 **服務匯流排**, ，然後選取包含通知中心的命名空間。
 
@@ -92,7 +92,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
 ##如何傳送通知
 
- **NotificationHubService** 物件會公開下列物件執行個體，將通知傳送至特定裝置和應用程式:
+ **NotificationHubService** 物件會公開下列物件執行個體，將通知傳送至特定裝置和應用程式 ︰
 
 * **Android** -使用 **GcmService** 物件，可在 **notificationHubService.gcm**
 * **iOS** -使用 **ApnsService** 物件，可從 **notificationHubService.apns**
@@ -101,7 +101,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
 ### 如何傳送 Android 應用程式通知
 
- **GcmService** 物件提供 **傳送** 可用來將通知傳送至 Android 應用程式的方法。  **傳送** 方法可接受下列參數:
+ **GcmService** 物件提供 **傳送** 可用來將通知傳送至 Android 應用程式的方法。  **傳送** 方法可接受下列參數 ︰
 
 * Tags - 標籤識別碼。 若未提供標籤，通知將會傳送至所有用戶端
 * Payload - 訊息的 JSON 或字串裝載
@@ -124,7 +124,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
 ### 如何傳送 iOS 應用程式通知
 
- **ApnsService** 物件提供 **傳送** 可用來將通知傳送至 iOS 應用程式的方法。  **傳送** 方法可接受下列參數:
+ **ApnsService** 物件提供 **傳送** 可用來將通知傳送至 iOS 應用程式的方法。  **傳送** 方法可接受下列參數 ︰
 
 * Tags - 標籤識別碼。 若未提供標籤，通知將會傳送至所有用戶端
 * Payload - 訊息的 JSON 或字串裝載
@@ -132,7 +132,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
 裝載格式的詳細資訊，請參閱通知裝載 」 一節 [本機和推播通知程式設計指南](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)。
 
-下列程式碼會使用 **ApnsService** 所公開的執行個體 **NotificationHubService** 警示訊息傳送至所有用戶端:
+下列程式碼會使用 **ApnsService** 所公開的執行個體 **NotificationHubService** 警示訊息傳送至所有用戶端 ︰
 
     var payload={
         alert: 'Hello!'
@@ -145,7 +145,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
 ### 如何傳送 Windows Phone 通知
 
- **MpnsService** 物件提供 **傳送** 可用來將通知傳送至 Windows Phone 應用程式的方法。  **傳送** 方法可接受下列參數:
+ **MpnsService** 物件提供 **傳送** 可用來將通知傳送至 Windows Phone 應用程式的方法。  **傳送** 方法可接受下列參數 ︰
 
 * Tags - 標籤識別碼。 若未提供標籤，通知將會傳送至所有用戶端
 * Payload - 訊息的 XML 裝載
@@ -156,7 +156,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
 如需有效 TargetName、 NotificationClass 和標頭選項的清單，請參閱 [從伺服器推播通知](http://msdn.microsoft.com/library/hh221551.aspx)。
 
-下列程式碼會使用 **MpnsService** 所公開的執行個體 **NotificationHubService** 來傳送快顯通知警示:
+下列程式碼會使用 **MpnsService** 所公開的執行個體 **NotificationHubService** 來傳送快顯通知警示 ︰
 
     var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
     notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
@@ -167,7 +167,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
 ### 如何傳送 Windows 市集應用程式通知
 
- **WnsService** 物件提供 **傳送** 可用來將通知傳送給 Windows 市集應用程式的方法。   **傳送** 方法可接受下列參數:
+ **WnsService** 物件提供 **傳送** 可用來將通知傳送給 Windows 市集應用程式的方法。   **傳送** 方法可接受下列參數 ︰
 
 * Tags - 標籤識別碼。 若未提供標籤，通知將會傳送至所有用戶端
 * Payload - XML 訊息裝載
@@ -177,7 +177,7 @@ Node.js azure 套件。 這包含一組便利的程式庫，
 
 如需有效類型和要求標頭的清單，請參閱 [推播通知服務要求和回應標頭](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
 
-下列程式碼會使用 **WnsService** 所公開的執行個體 **NotificationHubService** 來傳送快顯通知警示:
+下列程式碼會使用 **WnsService** 所公開的執行個體 **NotificationHubService** 來傳送快顯通知警示 ︰
 
     var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
     notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
@@ -224,4 +224,5 @@ Node.js azure 套件。 這包含一組便利的程式庫，
   [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
+
 

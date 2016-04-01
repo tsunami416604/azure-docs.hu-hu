@@ -25,7 +25,7 @@
 應用程式將影像上傳到 Azure 然後建立
 HTML 檔案在瀏覽器中顯示影像。
 
-## 先決條件
+## 必要條件
 
 - 已安裝 Java Developer Kit (JDK) 1.6 版或更新版本。
 - 已安裝 Azure SDK。
@@ -87,13 +87,13 @@ HTML 檔案在瀏覽器中顯示影像。
 宣告下列類型的變數 (該描述說明如何
 用於此範例)：
 
--   **CloudStorageAccount**: 用來初始化帳戶物件，
+-   **CloudStorageAccount**︰ 用來初始化帳戶物件，
     您的 Azure 儲存體帳戶名稱和金鑰，並建立
     blob 用戶端物件。
--   **CloudBlobClient**: 用來存取 blob 服務。
--   **CloudBlobContainer**: 用來建立 blob 容器，清單
+-   **CloudBlobClient**︰ 用來存取 blob 服務。
+-   **CloudBlobContainer**︰ 用來建立 blob 容器，清單
     容器和刪除容器中的 blob。
--   **CloudBlockBlob**: 用來上傳至本機影像檔案
+-   **CloudBlockBlob**︰ 用來上傳至本機影像檔案
     。
 
 <!-- -->
@@ -120,7 +120,7 @@ HTML 檔案在瀏覽器中顯示影像。
 // 建立容器。 如果不是，這個方法會建立容器
 存在 (並傳回 **true**)。 如果容器存在，則會傳回
 **false**。 除了 **createIfNotExists** 是 **建立**
-方法 (如果容器已存在，則會傳回錯誤)。
+方法 （如果容器已存在，則會傳回錯誤）。
 
     container.createIfNotExists();
 
@@ -163,17 +163,17 @@ Azure 儲存體中的 Blob。
     System.out.println("Processing complete.");
     System.out.println("Open index.html to see the images stored in your storage account.");
 
-關閉 **嘗試** 區塊透過插入右括號: **}**
+關閉 **嘗試** 區塊透過插入右括號 ︰ **}**
 
 處理下列例外狀況：
 
--   **FileNotFoundException**: 可能擲回 **FileInputStream**
+-   **FileNotFoundException**︰ 可能擲回 **FileInputStream**
     或 **FileOutputStream** 建構函式。
 -   **StorageException**: Azure 用戶端可以擲回
     儲存體程式庫。
--   **URISyntaxException**: 可能擲回 **ListBlobItem.getUri**
+-   **URISyntaxException**︰ 可能擲回 **ListBlobItem.getUri**
     方法將程式碼部署至服務。
--   **例外狀況**: 一般例外狀況處理。
+-   **例外狀況**︰ 一般例外狀況處理。
 
 <!-- -->
 
@@ -202,7 +202,7 @@ Azure 儲存體中的 Blob。
         System.exit(-1);
     }
 
-關閉 **主要** 透過插入右括號: **}**
+關閉 **主要** 透過插入右括號 ︰ **}**
 
 建立一個名為方法 **MakeHTMLPage** 建立基本的 HTML 頁面。 此
 方法包含參數的型別 **CloudBlobContainer**, ，而這將是
@@ -228,7 +228,7 @@ Azure 儲存體中的 Blob。
     stream.println("<body>");
 
 逐一取得已上傳的 Blob 清單。 為每個 blob，在 HTML
-頁面上建立 **& lt; i m g (& s) gt;** 具有項目，其 **src** 屬性傳送至
+頁面上建立 **& lt; i m g （& s) gt;** 具有項目，其 **src** 屬性傳送至
 Azure 儲存體帳戶存在於與 blob 的 URI。
 雖然您加入只有一個映像在此範例中，如果您加入的詳細資訊，
 此程式碼會重複列舉全部影像。
@@ -243,7 +243,7 @@ blob，視需要調整程式碼。
     stream.println("<img src='" + blobItem.getUri() + "'/><br/>");
     }
 
-關閉 **& lt; 本文 & gt;** 項目和 **(& s) lt; html 和 gt;** 項目。
+關閉 **& lt; 本文 & gt;** 項目和 **（& s) lt; html 和 gt;** 項目。
 
     stream.println("</body>");
     stream.println("</html>");
@@ -252,9 +252,9 @@ blob，視需要調整程式碼。
 
     stream.close();
 
-關閉 **MakeHTMLPage** 透過插入右括號: **}**
+關閉 **MakeHTMLPage** 透過插入右括號 ︰ **}**
 
-關閉 **StorageSample** 透過插入右括號: **}**
+關閉 **StorageSample** 透過插入右括號 ︰ **}**
 
 下列是此範例的完整程式碼。 請記得修改
 預留位置值 **your\_account\_name** 和
@@ -436,4 +436,5 @@ blob，視需要調整程式碼。
   [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
   [Azure Storage Client SDK Reference]: http://dl.windowsazure.com/storage/javadoc/
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+
 

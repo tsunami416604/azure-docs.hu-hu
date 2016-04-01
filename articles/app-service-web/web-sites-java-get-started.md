@@ -21,13 +21,13 @@
 - [.Net](web-sites-dotnet-get-started.md)
 - [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
-- [PHP-Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP-FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
 本教學課程示範如何建立 Java [Azure App Service 中的 web 應用程式](http://go.microsoft.com/fwlink/?LinkId=529714) 使用 [Azure 入口網站](https://portal.azure.com/)。 Azure 入口網站是可用來管理 Azure 資源的 Web 介面。
 
-> [AZURE.NOTE] 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 如果您沒有帳戶，您可以 [啟動 Visual Studio 的訂閱者優惠] [] 或 [註冊免費試用] []。
+> [AZURE.NOTE] 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 如果您沒有這類帳戶，可以[啟用自己的 Visual Studio 訂閱者權益][]，或是[申請免費試用][]。
 >
 > 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service][]。 您可以於該處，在 App Service 中立即建立短期的入門 Web app - 不需信用卡，不需任何承諾。
 
@@ -54,7 +54,7 @@
 
     對於這種案例來說，您可以使用 Azure 入口網站建立應用程式，然後以手動提供適當的執行階段檔案。 在此情況下，會針對您的 App Service 計畫的儲存空間配額計算檔案。 如需詳細資訊，請參閱 [將自訂 Java web 應用程式上傳至 Azure](https://acom-sandbox.azurewebsites.net/en-us/documentation/articles/web-sites-java-custom-upload/)。
 
-## <a name="marketplace"></a> 從 Azure Marketplace 使用 Java 範本
+## <a name="marketplace"></a>使用來自 Azure Marketplace 的 Java 範本
 
 本節說明如何使用 Azure Marketplace 來建立 Java Web 應用程式。  相同的一般流程也可以用來建立 Java 型行動或 API 應用程式。  
 
@@ -112,7 +112,7 @@
 
 現在，您已建立 web 應用程式與應用程式容器，請參閱 [後續步驟](#next-steps) 區段，如需有關如何上傳至 web 應用程式的應用程式資訊。
 
-## <a name="portal"></a> 建立及設定 Java web 應用程式
+## <a name="portal"></a>建立及設定 Java Web 應用程式
 
 本節說明如何建立 web 應用程式，並將它設定為使用 Java **應用程式設定** 的入口網站] 分頁。
 
@@ -175,4 +175,5 @@
 [sign up for a free trial]: http://go.microsoft.com/fwlink/?LinkId=623901
 
 [Try App Service]: http://go.microsoft.com/fwlink/?LinkId=523751
+
 

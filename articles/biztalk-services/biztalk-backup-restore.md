@@ -27,7 +27,7 @@ Azure BizTalk 服務包含備份與還原功能。 本主題說明如何使用 A
 
 ## 開始之前
 
-- 備份與還原可能不適用於部分版本。 請參閱 [BizTalk 服務: 版本圖表](biztalk-editions-feature-chart.md)。
+- 備份與還原可能不適用於部分版本。 請參閱 [BizTalk 服務 ︰ 版本圖表](biztalk-editions-feature-chart.md)。
 
 - 使用 Azure 傳統入口網站可建立隨選備份或排定備份。 
 
@@ -80,11 +80,11 @@ Azure BizTalk 服務包含備份與還原功能。 本主題說明如何使用 A
 
 排定的備份工作執行時，會在您輸入的儲存體帳戶中建立容器 (以儲存備份資料)。 容器的名稱名為 *BizTalk 服務名稱、 日期、 時間*。 
 
-如果 BizTalk 服務儀表板顯示 **失敗** 狀態:
+如果 BizTalk 服務儀表板顯示 **失敗** 狀態 ︰
 
 ![上次排定的備份狀態][BackupStatus] 
 
-該連結可開啟 [管理服務作業記錄] 以協助進行疑難排解。 請參閱 [BizTalk 服務: 使用作業記錄進行疑難排解](http://go.microsoft.com/fwlink/p/?LinkId=391211)。
+該連結可開啟 [管理服務作業記錄] 以協助進行疑難排解。 請參閱 [BizTalk 服務 ︰ 使用作業記錄進行疑難排解](http://go.microsoft.com/fwlink/p/?LinkId=391211)。
 
 ## 還原
 
@@ -106,7 +106,7 @@ Azure BizTalk 服務包含備份與還原功能。 本主題說明如何使用 A
 <br/><br/>
 選取 **開啟**。
 
-3. 在 **還原 BizTalk 服務** 頁面上，輸入 **BizTalk 服務名稱** ，並確認 **網域 URL**, ，**Edition**, ，和 **區域** 還原的 BizTalk 服務。 **建立新的 SQL 資料庫執行個體** 為追蹤資料庫:
+3. 在 **還原 BizTalk 服務** 頁面上，輸入 **BizTalk 服務名稱** ，並確認 **網域 URL**, ，**Edition**, ，和 **區域** 還原的 BizTalk 服務。 **建立新的 SQL 資料庫執行個體** 為追蹤資料庫 ︰
 
     ![][RestoreBizTalkService]
 
@@ -211,14 +211,14 @@ BizTalk 服務永遠還原 **Suspended** 狀態。 在此狀態下，您可以�
 <td>追蹤資料庫</td> 
 <td>建立 BizTalk 服務時需要輸入追蹤資料庫詳細資料，包括 Azure SQL Database 伺服器和追蹤資料庫名稱。 不會自動備份追蹤資料庫。
 <br/><br/>
-<strong>重要事項</strong><br/>
+<strong>重要</strong><br/>
 如果刪除了追蹤資料庫，且需要復原資料庫，先前的備份必須存在。 如果備份不存在，則無法復原追蹤資料庫及其資料。 在此情況下，請以相同的資料庫名稱建立新的追蹤資料庫。 建議採用地理複寫。</td>
 </tr> 
 </table>
 
 ## 下一步
 
-若要在 Azure 傳統入口網站建立 Azure BizTalk 服務，請移至 [BizTalk 服務: 佈建使用 Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=302280)。 若要開始建立應用程式，請移至 [Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
+若要在 Azure 傳統入口網站建立 Azure BizTalk 服務，請移至 [BizTalk 服務 ︰ 佈建使用 Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=302280)。 若要開始建立應用程式，請移至 [Azure BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## 另請參閱
 - [備份 BizTalk 服務](http://go.microsoft.com/fwlink/p/?LinkID=325584)
@@ -236,4 +236,5 @@ BizTalk 服務永遠還原 **Suspended** 狀態。 在此狀態下，您可以�
 [AutomaticBU]: ./media/biztalk-backup-restore/AutomaticBU.png
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
  
+
 

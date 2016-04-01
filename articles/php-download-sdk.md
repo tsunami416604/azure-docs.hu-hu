@@ -46,9 +46,9 @@ Azure SDK for PHP 內含的元件可讓您開發、部署及管理適用於 Azur
 
 
     > [AZURE.NOTE]
-    > On Windows, you will also need to add the Git executable to your PATH environment variable.
+    > 在 Windows 中，您也需要將 Git 可執行檔新增至 PATH 環境變數。
 
-2. 建立名為 **composer.json** 根目錄中的專案並加入下列程式碼:
+2. 建立名為 **composer.json** 根目錄中的專案並加入下列程式碼 ︰
 
         {
             "repositories": [
@@ -132,4 +132,5 @@ Azure CLI 是一組命令，可用於部署和管理 Azure 服務，例如 Azure
 [powershell-tools]: http://go.microsoft.com/fwlink/?LinkId=252718
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+
 

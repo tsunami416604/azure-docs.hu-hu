@@ -19,7 +19,7 @@
 
 # 使用者和系統管理員的 Azure AD 密碼重設
 
-  >[AZURE.IMPORTANT] 您是否這裡因為您想要重設您的 Azure 或 O365 密碼?  如果是的話，請 [略過本節](#users-how-to-manage-your-own-password)。
+  >[AZURE.IMPORTANT] 您是否這裡因為您想要重設您的 Azure 或 O365 密碼？  如果是的話，請 [略過本節](#users-how-to-manage-your-own-password)。
   
 利用自助管理方式來降低成本和節省人力，一直以來都是世界各地 IT 部門追求的主要目標。  因此，市場中充斥著各式產品，讓您能夠從雲端或內部部署管理內部部署群組、密碼或使用者設定檔。 而獨樹一格的 Azure AD，可提供您一些現今市場上最容易使用且最強大的自助管理功能。
 
@@ -136,8 +136,8 @@ Azure AD 密碼重設有 3 個可用層級，視您擁有的訂用帳戶而定�
 ##管理您的使用者密碼
 | 主題 |  |
 | --------- | --------- |
-| 如何從 O365 管理入口網站重設使用者的密碼？ | [在 Office 365 中重設使用者的密碼](https://support.office.com/article/Reset-a-user-s-password-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C) |
-| 如何使用 PowerShell 重設使用者的密碼？ | [使用 Set-MsolUserPassword 重設使用者的密碼](https://msdn.microsoft.com/library/azure/dn194140.aspx) |
+| 如何從 O365 管理入口網站重設使用者的密碼？ | [重設在 Office 365 中的使用者的密碼](https://support.office.com/article/Reset-a-user-s-password-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C) |
+| 如何使用 PowerShell 重設使用者的密碼？ | [重設使用者的密碼與 Set-msoluserpassword](https://msdn.microsoft.com/library/azure/dn194140.aspx) |
 
 
 ##設定密碼原則
@@ -145,7 +145,7 @@ Azure AD 密碼重設有 3 個可用層級，視您擁有的訂用帳戶而定�
 | --------- | --------- |
 | 如何從 Office 365 設定組織的密碼到期原則？ | [設定密碼到期原則](https://support.office.com/article/Set-a-user-s-password-expiration-policy-0f54736f-eb22-414c-8273-498a0918678f) |
 | 如何使用 PowerShell 將特定使用者的密碼設定為永不過期？ | [使用 PowerShell 將個別使用者的密碼設定為永不過期](https://support.office.com/article/Set-an-individual-user-s-password-to-never-expire-f493e3af-e1d8-4668-9211-230c245a0466) |
-| 如何使用 PowerShell 確認使用者的密碼是否設定為永不過期 | [使用 PowerShell 確認個別使用者的密碼到期狀態](https://support.office.com/article/Set-an-individual-user-s-password-to-never-expire-f493e3af-e1d8-4668-9211-230c245a0466#__toc378845827) |
+| 如何使用 PowerShell 確認使用者的密碼是否設定為永不過期 | [檢查個別使用者的密碼到期狀態，其中使用 PowerShell](https://support.office.com/article/Set-an-individual-user-s-password-to-never-expire-f493e3af-e1d8-4668-9211-230c245a0466#__toc378845827) |
 
 
 ##疑難排解問題
@@ -189,7 +189,7 @@ Azure AD 密碼重設有 3 個可用層級，視您擁有的訂用帳戶而定�
 
 ####支援解除鎖定 Active Directory 帳戶而不必重設密碼 - 2015 年 11 月
 
-- 僅解除鎖定而不重設，是近來客服中心龐大的業務之一。  事實上，許多組織有高達 70% 的密碼重設預算都花在解除鎖定帳戶上。  為了因應此需求，現在您可以利用 Azure AD 密碼重設啟用特定功能，讓您的使用者直接解除鎖定 AD 帳戶，而不需重設密碼。  看看如何開啟這裡: [設定: 讓使用者不需要重設密碼解除鎖定其 AD 帳戶](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password)。
+- 僅解除鎖定而不重設，是近來客服中心龐大的業務之一。  事實上，許多組織有高達 70% 的密碼重設預算都花在解除鎖定帳戶上。  為了因應此需求，現在您可以利用 Azure AD 密碼重設啟用特定功能，讓您的使用者直接解除鎖定 AD 帳戶，而不需重設密碼。  看看如何開啟這裡 ︰ [設定 ︰ 讓使用者不需要重設密碼解除鎖定其 AD 帳戶](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password)。
 
 ####對註冊頁面的可用性更新 - 2015 年 10 月
 
@@ -251,3 +251,4 @@ Azure AD 密碼重設有 3 個可用層級，視您擁有的訂用帳戶而定�
 * [**常見問題集**](active-directory-passwords-faq.md) -取得常見問題的解答
 * [**疑難排解**](active-directory-passwords-troubleshoot.md) -了解如何快速移難排解服務的問題
 * [**了解詳細**](active-directory-passwords-learn-more.md) -深入的技術詳細資料的服務的運作方式
+

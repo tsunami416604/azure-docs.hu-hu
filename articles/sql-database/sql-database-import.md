@@ -38,9 +38,9 @@ BACPAC 是一種包含資料庫結構描述和資料的 .bacpac 檔案。 如需
 
 若要從 .bacpac 匯入 SQL Database，您需要下列項目：
 
-- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
-- Azure SQL Database V12 伺服器。 如果沒有 V12 伺服器，建立一個遵循本文中的步驟: [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
-- 您想要匯入資料庫的.bacpac 檔案 [Azure 儲存體帳戶 (傳統)](storage-create-storage-account.md) blob 容器。
+- Azure 訂閱。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
+- Azure SQL Database V12 伺服器。 如果沒有 V12 伺服器，建立一個遵循本文中的步驟 ︰ [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
+- 您想要匯入資料庫的.bacpac 檔案 [Azure 儲存體帳戶 （傳統）](storage-create-storage-account.md) blob 容器。
 
 
 ## 選取將包含資料庫的伺服器
@@ -51,23 +51,23 @@ BACPAC 是一種包含資料庫結構描述和資料的 .bacpac 檔案。 如需
 2.  按一下 [ **全部瀏覽**。
 3.  按一下 [ **SQL 伺服器**。
 2.  按一下伺服器，以將資料庫還原至該伺服器。
-3.  在 [SQL Server] 刀鋒視窗中按一下 [ **匯入資料庫** 開啟 **匯入資料庫** 刀鋒視窗中:
+3.  在 [SQL Server] 刀鋒視窗中按一下 [ **匯入資料庫** 開啟 **匯入資料庫** 刀鋒視窗中 ︰
 
-    ![匯入資料庫][] 1
+    ![匯入資料庫][1]
 
 1.  按一下 [ **儲存體** 並選取您的儲存體帳戶、 blob 容器和.bacpac 檔案，然後按一下 **確定**。
 
-    ![設定儲存選項][] 2
+    ![設定儲存體選項][2]
 
 1.  選取新的資料庫的定價層，然後按一下 **選取**。
 
-    ![選取的定價層][] 3
+    ![選取定價層][3]
 
 1.  輸入 **資料庫名稱**。
 2.  輸入 **伺服器管理員登入** 和 **密碼** Azure SQL server 匯入至資料庫。
 1.  按一下 [ **建立** BACPAC 從建立資料庫。
 
-    ![建立資料庫][] 4
+    ![建立資料庫][4]
 
 按一下 **建立** 送出至服務匯入資料庫要求。 視資料庫大小而定，匯入作業可能需要一些時間才能完成。
 
@@ -78,8 +78,8 @@ BACPAC 是一種包含資料庫結構描述和資料的 .bacpac 檔案。 如需
 2.  按一下您要還原的目的地伺服器。
 3.  在 [SQL server] 刀鋒視窗中按一下 [ **匯入/匯出記錄**:
 
-    ![匯入匯出記錄][] 5
-    ![匯入匯出記錄][] 6
+    ![匯入匯出記錄][5]
+    ![匯入匯出記錄][6]
 
 
 
@@ -110,4 +110,5 @@ BACPAC 是一種包含資料庫結構描述和資料的 .bacpac 檔案。 如需
 [4]: ./media/sql-database-import/create.png
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
+
 

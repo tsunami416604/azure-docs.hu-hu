@@ -164,13 +164,13 @@
 
 ### 步驟 2
 
-建立名為 NIC *lb nic1 是*, ，以及關聯的第一個 NAT 規則，以及第一個 (且唯一) 後端位址集區。
+建立名為 NIC *lb nic1 是*, ，以及關聯的第一個 NAT 規則，以及第一個 （且唯一） 後端位址集區。
     
     $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-be -Location "West US" -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
 
 ### 步驟 3
 
-建立名為 NIC *lb nic2 是*, ，並將它與第二個 NAT 規則，第一個 (且唯一) 後端位址集區產生關聯。 
+建立名為 NIC *lb nic2 是*, ，並將它與第二個 NAT 規則，第一個 （且唯一） 後端位址集區產生關聯。 
 
     $backendnic2= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-be -Location "West US" -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
 
@@ -270,3 +270,4 @@
 [設定負載平衡器分配模式](load-balancer-distribution-mode.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)
+

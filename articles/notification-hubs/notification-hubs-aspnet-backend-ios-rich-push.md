@@ -21,7 +21,7 @@
 
 ##概觀
 
-為了與使用者進行即時豐富內容交流，應用程式可能會想要推播純文字以外的內容。 這些通知可提高使用者互動，並呈現如 url、 音效、 影像/優待券，及其他等內容。 本教學課程以 [通知使用者](notification-hubs-aspnet-backend-ios-notify-users.md) 主題，並示範如何傳送包含裝載 (例如影像) 的推播通知。
+為了與使用者進行即時豐富內容交流，應用程式可能會想要推播純文字以外的內容。 這些通知可提高使用者互動，並呈現如 url、 音效、 影像/優待券，及其他等內容。 本教學課程以 [通知使用者](notification-hubs-aspnet-backend-ios-notify-users.md) 主題，並示範如何傳送包含裝載 （例如影像） 的推播通知。
 
 
 本教學課程適用於 iOS 7 和 8。
@@ -47,7 +47,7 @@
 
     ![][IOS2]
 
-5. 在 **Notifications.cs**, ，新增下列 using 陳述式:
+5. 在 **Notifications.cs**, ，新增下列 using 陳述式 ︰
 
         using System.Reflection;
 
@@ -96,7 +96,7 @@
             }
         }
 
-> [AZURE.NOTE]  (選擇性)請參閱 [如何內嵌和存取資源，使用 Visual C#](http://support.microsoft.com/kb/319292) 如需有關如何新增和取得專案資源。
+> [AZURE.NOTE]  （選擇性）請參閱 [如何內嵌和存取資源，使用 Visual C#](http://support.microsoft.com/kb/319292) 如需有關如何新增和取得專案資源。
 
 7. 在 **NotificationsController.cs**, ，重新定義 **NotificationsController**  使用下列程式碼片段。 這會將初始無訊息豐富內容通知識別碼傳送到裝置，並可讓用戶端擷取影像：
 
@@ -142,7 +142,7 @@
 
     ![][IOS3]
 
-3. 移至 **Main.storyboard**, ，並確定您有檢視控制器 (在稱為首頁檢視控制器在本教學課程) 從 [通知使用者](notification-hubs-aspnet-backend-ios-notify-users.md) 教學課程。
+3. 移至 **Main.storyboard**, ，並確定您有檢視控制器 （在稱為首頁檢視控制器在本教學課程） 從 [通知使用者](notification-hubs-aspnet-backend-ios-notify-users.md) 教學課程。
 
 4. 新增 **導覽控制器** 腳本及控制項拖曳到 [首頁檢視控制器設 **根檢視** 的導覽。 請確定 **是初始檢視控制器** 在屬性偵測器選取只針對 [導覽控制器。
 
@@ -166,7 +166,7 @@
         // Display the UI Image in UI Image View
         [self.myImage setImage:self.imagePayload];
 
-11. 在 **AppDelegate.m**, ，匯入您所建立的影像控制器:
+11. 在 **AppDelegate.m**, ，匯入您所建立的影像控制器 ︰
 
         #import "imageViewController.h"
 
@@ -229,7 +229,7 @@
 
         return YES;
 
-14. 替代的下列實作中，以反映 **application: didRegisterForRemoteNotificationsWithDeviceToken** 以反應的腳本 UI 的變更:
+14. 替代的下列實作中，以反映 **application: didRegisterForRemoteNotificationsWithDeviceToken** 以反應的腳本 UI 的變更 ︰
 
         // Access navigation controller which is at the root of window
         UINavigationController *nc = (UINavigationController *)self.window.rootViewController;
@@ -317,7 +317,7 @@
             // Add "else if" here to handle more types of rich content such as url, sound files, etc.
         }
 
-16. 藉由開啟中的影像檢視控制器處理上述本機通知 **AppDelegate.m** 使用下列方法:
+16. 藉由開啟中的影像檢視控制器處理上述本機通知 **AppDelegate.m** 使用下列方法 ︰
 
         // Helper: redirect users to image view controller
         - (void)redirectToImageViewWithImage: (UIImage *)img {
@@ -380,4 +380,5 @@
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
+
 

@@ -25,9 +25,9 @@
 
 了解如何使用 Azure 入口網站設定 HDInsight 叢集 (Hadoop、HBase 或 Storm) 以使用 Azure 資料湖存放區。 此版本的一些重要考量：
 
-* **(Windows 和 Linux) 的 Hadoop 和 Storm 叢集**, ，資料湖存放區只可以當做其他儲存體帳戶。 這類叢集的預設儲存體帳戶仍是 Azure 儲存體 Blob (WASB)。
+* **（Windows 和 Linux） 的 Hadoop 和 Storm 叢集**, ，資料湖存放區只可以當做其他儲存體帳戶。 這類叢集的預設儲存體帳戶仍是 Azure 儲存體 Blob (WASB)。
 
-* **至於 HBase 叢集 (Windows 和 Linux)**, ，資料湖存放區可用來當做預設儲存體或其他儲存體。
+* **至於 HBase 叢集 （Windows 和 Linux）**, ，資料湖存放區可用來當做預設儲存體或其他儲存體。
 
 
 在本文中，我們佈建 Hadoop 叢集與資料湖存放區做為額外的儲存體。 使用 Azure 入口網站以設定 HDInsight 來搭配資料湖存放區使用，包含下列步驟：
@@ -81,7 +81,7 @@
 
     ![將服務主體新增至 HDInsight 叢集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "Add service principal to HDInsight cluster")
 
-## <a name="acl"></a>設定服務主體來存取資料湖存放區檔案系統
+## <a name="acl"></a>設定服務主體以存取資料湖存放區檔案系統
 
 1. 登入新 [Azure 入口網站](https://portal.azure.com)。
 
@@ -118,7 +118,7 @@
 
 8. 在 **加入自訂存取** 刀鋒視窗中，按一下 [ **確定**。 新加入的群組，有相關聯的權限，現在會列示在 **存取** 刀鋒視窗。
 
-    ![將權限指派至群組](./media/data-lake-store-hdinsight-hadoop-use-portal/adl.acl.5.png "Assign permissions to group")
+    ![指派權限給群組](./media/data-lake-store-hdinsight-hadoop-use-portal/adl.acl.5.png "Assign permissions to group")
 
 7. 如果需要，您也可以在新增服務主體之後修改存取權限。 根據您想要移除或指派該權限，清除或選取每個權限類型的核取方塊 (讀取、寫入、執行)。 按一下 [ **儲存** 以儲存變更，或 **捨棄** 復原所做的變更。
 
@@ -206,4 +206,5 @@
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
+
 

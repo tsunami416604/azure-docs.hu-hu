@@ -36,7 +36,7 @@
 
 在 Azure AD 中，應用程式會透過 2 種物件呈現：應用程式物件和服務主體物件。  在「家用」/「擁有者」或「發佈」目錄下註冊的一個應用程式物件，和在其運作的每個目錄中代表應用程式的一個或多個服務主體物件。  
 
-應用程式物件會描述應用程式與 Azure AD (多租用戶服務)，而且可能包括下列: (*注意*: 這不是詳盡的清單。)
+應用程式物件會描述應用程式與 Azure AD （多租用戶服務），而且可能包括下列: (*注意*︰ 這不是詳盡的清單。)
 
 * 名稱、標誌和發行者
 * 密碼 (用來驗證應用程式的對稱和/或非對稱金鑰)
@@ -62,7 +62,7 @@
 
 ### 目錄間的應用程式物件和服務主體圖表
 
-![說明如何應用程式物件和服務主體與 Azure AD 執行個體現有圖表。][] apps_service_principals_directory
+![說明應用程式物件和服務主體如何與現有 Azure AD 執行個體共存的圖表。][apps_service_principals_directory]
 
 從以上圖表可以清楚得知。  Microsoft 會在內部 (左側) 維護兩個它用來發佈應用程式的目錄。
 
@@ -83,7 +83,7 @@
 * 並非所有上述資訊目前都處於以程式設計方式公開的狀態。  以下功能僅適用於 UI：
     * 宣告轉換規則
     * 屬性對應 (使用者佈建)
-* 如需服務主體與應用程式物件的詳細資訊，請參閱 Azure AD Graph REST API 參考文件。  *提示*: 目前可用的 Azure AD，Azure AD Graph API 文件是最有用的結構描述參考。  
+* 如需服務主體與應用程式物件的詳細資訊，請參閱 Azure AD Graph REST API 參考文件。  *提示*︰ 目前可用的 Azure AD，Azure AD Graph API 文件是最有用的結構描述參考。  
     * [應用程式](https://msdn.microsoft.com/library/azure/dn151677.aspx)
     * [服務主體](https://msdn.microsoft.com/library/azure/dn194452.aspx)
 
@@ -92,12 +92,12 @@
 有很多方式可以將應用程式加入 Azure AD：
 
 * 新增應用程式從 [Azure Active Directory 應用程式庫](http://azure.microsoft.com/updates/azure-active-directory-over-1000-apps/)
-* 註冊/登入第 3 與 Azure Active Directory 整合的合作對象應用程式 (例如: [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx))
+* 註冊/登入第 3 與 Azure Active Directory 整合的合作對象應用程式 (例如 ︰ [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx))
     * 註冊/登入期間，系統會要求使用者提供應用程式的存取權限，才能存取其設定檔及其他權限。  做出同意動作的第一個人會造成代表應用程式的服務主體被新增至目錄。
 * 登入 Microsoft 線上服務/喜歡 [Office 365](http://products.office.com/)
     * 訂閱或開始試用 Office 365 時，目錄中會建立一或多個服務主體，代表用來傳遞所有 Office 365 相關功能的各種服務。
     * 某些 Office 365 服務(如 SharePoint) 會持續建立服務主體，以允許元件之間的安全通訊，包括工作流程。
-* 新增您正在開發的應用程式在 Azure 管理入口網站，請參閱: https://msdn.microsoft.com/library/azure/dn132599.aspx
+* 新增您正在開發的應用程式在 Azure 管理入口網站，請參閱 ︰ https://msdn.microsoft.com/library/azure/dn132599.aspx
 * 新增您使用 Visual Studio 開發的應用程式，請參閱：
     * [ASP.Net 驗證方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
     * [連接的服務](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
@@ -112,7 +112,7 @@
 * 從 Azure AD 應用程式庫 (預先整合的協力廠商應用程式) 新增應用程式
 * 使用 Azure AD 應用程式 Proxy 來發佈應用程式
 
-您目錄中的所有使用者都有權新增其所開發的應用程式，並自行決定要共用哪些應用程式，以及提供哪些應用程式存取其組織資料的權限。  *請記得使用者登入向上/應用程式，並授與權限可能會導致系統建立服務主體。*
+您目錄中的所有使用者都有權新增其所開發的應用程式，並自行決定要共用哪些應用程式，以及提供哪些應用程式存取其組織資料的權限。  *請記住，使用者註冊/登入應用程式和授與權限可能會導致系統建立服務主體。*
 
 剛聽到時您可能會有些疑慮，但請記住下列要點：
 
@@ -123,11 +123,11 @@
 * 使用 Azure AD for oAuth 的應用程式可確切決定使用者可以授與應用程式哪些權限，以及哪些權限需要系統管理員的同意。  不言而喻，唯有系統管理員可以同意較大範圍且更重要的權限。
 * 新增使用者和允許應用程式存取其資料屬於稽核事件，可讓您在 Azure 管理入口網站中檢視稽核報告，進而決定將應用程式加入目錄的方式。
 
-**注意:** *Microsoft 本身運作已使用了幾個月現在的預設組態。*
+**注意 ︰** *Microsoft 本身運作已使用了幾個月現在的預設組態。*
 
 說了這麼多，您可能可以防止使用者在目錄中新增應用程式，以及在對與應用程式共用哪些資訊上行使同意權，方法是修改 Azure 管理入口網站中的目錄組態。  在 Azure 管理入口網站中，您可以在目錄的 [設定] 索引標籤上存取下列組態。
 
-![整合式應用程式設定的使用者介面螢幕擷取畫面][] app_settings
+![進行整合式應用程式設定的 UI 螢幕擷取畫面][app_settings]
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -135,14 +135,15 @@
 
 深入了解如何將應用程式加入 Azure AD，以及如何設定應用程式的服務。
 
-* 開發人員: [了解如何與 AAD 整合應用程式](https://msdn.microsoft.com/library/azure/dn151122.aspx)
-* 開發人員: [檢閱與 Github 上的 Azure Active Directory 整合的應用程式的範例程式碼](https://github.com/AzureADSamples)
-* 開發人員和 IT 專業人員: [檢閱 Azure Active Directory Graph API 的 REST API 文件](https://msdn.microsoft.com/library/azure/hh974478.aspx)
-* IT 專業人員: [了解如何使用 Azure Active Directory 預先整合應用程式從應用程式庫](https://msdn.microsoft.com/library/azure/dn308590.aspx)
-* IT 專業人員: [尋找設定特定預先整合應用程式的教學課程](https://msdn.microsoft.com/library/azure/dn893637.aspx)
-* IT 專業人員: [了解如何發佈應用程式使用 Azure Active Directory 應用程式 Proxy](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* 開發人員 ︰ [了解如何與 AAD 整合應用程式](https://msdn.microsoft.com/library/azure/dn151122.aspx)
+* 開發人員 ︰ [檢閱與 Github 上的 Azure Active Directory 整合的應用程式的範例程式碼](https://github.com/AzureADSamples)
+* 開發人員和 IT 專業人員 ︰ [檢閱 Azure Active Directory Graph API 的 REST API 文件](https://msdn.microsoft.com/library/azure/hh974478.aspx)
+* IT 專業人員 ︰ [了解如何使用 Azure Active Directory 預先整合應用程式從應用程式庫](https://msdn.microsoft.com/library/azure/dn308590.aspx)
+* IT 專業人員 ︰ [尋找設定特定預先整合應用程式的教學課程](https://msdn.microsoft.com/library/azure/dn893637.aspx)
+* IT 專業人員 ︰ [了解如何發佈應用程式使用 Azure Active Directory 應用程式 Proxy](https://msdn.microsoft.com/library/azure/dn768219.aspx)
 
 <!--Image references-->
 [apps_service_principals_directory]:media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
 [app_settings]:media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
+
 

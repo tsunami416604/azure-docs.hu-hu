@@ -19,9 +19,9 @@
 
 #透過 R 擴展您的經驗
 
-您可以使用 [執行 R 指令碼] 的 [執行-r-指令碼] 模組來擴充 ML Studio 的功能，透過 R 語言。
+您可以使用擴充 ML Studio 的功能，透過 R 語言 [執行 R 指令碼][execute-r-script] 模組。
 
-此模組接受多個輸入資料集，並產生單一資料集作為輸出。 您可以輸入 R 指令碼到 **R 指令碼** [執行 R 指令碼] [執行-r-指令碼] 模組的參數。
+此模組接受多個輸入資料集，並產生單一資料集作為輸出。 您可以輸入 R 指令碼到 **R 指令碼** 參數 [執行 R 指令碼][execute-r-script] 模組。
 
 您可使用類似下面的程式碼，存取模組的每個輸入連接埠：
 
@@ -31,16 +31,16 @@
 
 ##列出所有目前安裝的封裝
 
-可以變更已安裝的封裝清單。 若要取得完整清單，請將清單傳送至輸出資料集之 [執行 R 指令碼] [執行-r-指令碼] 模組中包括下列幾行:
+可以變更已安裝的封裝清單。 若要取得完整清單，包括下列幾行在 [執行 R 指令碼][execute-r-script] 模組傳送至輸出資料集的清單 ︰
 
     out <- data.frame(installed.packages())
     maml.mapOutputPort("out")
 
-若要檢視封裝清單，連線將轉換模組，例如 [轉換為 CSV] [轉換為 csv] 到 [執行 R 指令碼] [執行-r-指令碼] 模組的輸出，執行實驗，然後按一下轉換模組的輸出，然後選取 **下載**。
+若要檢視封裝清單，連接將轉換模組例如 [轉換成 CSV][convert-to-csv] 的輸出 [執行 R 指令碼][execute-r-script] 模組，執行實驗，然後按一下轉換模組，然後選取輸出 **下載**。
 
 ##匯入封裝
 
-您也可以匯入套件，尚未安裝從分段 ML Studio 儲存機制 [執行 R 指令碼] 的 [執行-r-指令碼] 模組中使用下列命令壓縮封裝封存檔:
+您也可以匯入套件尚未安裝從分段 ML Studio 儲存機制使用下列命令來使用 [執行 R 指令碼][execute-r-script] 模組和封存壓縮的封裝 ︰
 
     install.packages("src/my_favorite_package.zip", lib = ".", repos = NULL, verbose = TRUE)
     success <- library("my_favorite_package", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
@@ -501,4 +501,5 @@
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
+
 

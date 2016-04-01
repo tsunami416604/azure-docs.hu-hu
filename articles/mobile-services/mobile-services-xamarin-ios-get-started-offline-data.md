@@ -36,7 +36,7 @@
 
 >[AZURE.NOTE] 若要完成本教學課程，您需要 Azure 帳戶。 如果您沒有帳戶，您可以註冊 Azure 試用版並取得高達 10 項的免費行動服務。此外，在試用期間結束後您仍可繼續使用這些服務。 如需詳細資料，請參閱 <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure 免費試用</a>。
 >
-> 如果這是您第一次接觸行動服務，您應該先完成 [開始使用行動服務]。
+> 如果這是您第一次接觸行動服務，您應該先完成 [Get started with Mobile Services]。
 
 本教學課程將逐步引導您完成下列基本步驟：
 
@@ -48,14 +48,14 @@
 
 * Visual Studio with [Xamarin extension] **或** [Xamarin Studio] 在 OS X 上
 * XCode 4.5 和 iOS 6.0 (或更新版本)
-* 完成 [開始使用行動服務] 教學課程
+* 完成 [Get started with Mobile Services] 教學課程
 
 ## <a name="review-offline"></a>檢閱行動服務同步處理程式碼
 
 Azure 行動服務離線同步處理可讓使用者在無法存取網路時，仍可與本機資料庫互動。 若要在您的應用程式中使用這些功能，您必須將 `MobileServiceClient.SyncContext` 初始化至本機存放區。 接著，請透過 `IMobileServiceSyncTable` 介面參考您的資料表。
 本節將逐步解說 `QSTodoService.cs` 中的離線同步處理相關程式碼。
 
-1. 在 Visual Studio 中，開啟您在完成專案 [開始使用行動服務] 教學課程。 開啟檔案 `QSTodoService.cs`。
+1. 在 Visual Studio 中，開啟您在完成專案 [Get started with Mobile Services] 教學課程。 開啟檔案 `QSTodoService.cs`。
 
 2. 請注意，`todoTable` 成員的類型為 `IMobileServiceSyncTable`。 離線同步處理會使用此同步處理資料表介面，而不是 `IMobileServiceTable`。 使用同步處理資料表時，所有作業都會移至本機存放區，而且只與具有明確推送和提取作業的遠端服務同步處理。
 
@@ -76,7 +76,7 @@ Azure 行動服務離線同步處理可讓使用者在無法存取網路時，�
 
     `DefineTable` 方法會在本機存放區中建立與給定類型中的欄位相符的資料表，在此案例中為 `ToDoItem`。 此類型不一定要包含遠端資料庫中的所有資料行 -- 可以只儲存資料行的子集。
 
-    此 `InitializeAsync` 多載會使用預設衝突處理常式 (每當發生衝突時，就會失敗)。 若要提供自訂衝突處理常式，請參閱本教學課程 [處理行動服務的離線支援衝突]。
+    此 `InitializeAsync` 多載會使用預設衝突處理常式 (每當發生衝突時，就會失敗)。 若要提供自訂衝突處理常式，請參閱本教學課程 [Handling conflicts with offline support for Mobile Services]。
 
 4. `SyncAsync` 方法會觸發實際的同步處理作業：
 
@@ -100,9 +100,9 @@ Azure 行動服務離線同步處理可讓使用者在無法存取網路時，�
 
     在此範例中，我們擷取遠端 `TodoItem` 資料表中的所有記錄，但也可以藉由傳遞查詢來篩選記錄。 `PullAsync()` 的第一個參數是用於增量同步處理的查詢識別碼，會使用 `UpdatedAt` 時間戳記取得自從上次同步後修改過的記錄。 對您應用程式中的每個邏輯查詢而言，查詢識別碼應該是唯一的描述性字串。 若選擇不要增量同步處理，請傳遞 `null` 做為查詢識別碼。 這會擷取每個提取作業的所有記錄，而可能降低效能。
 
-    >[AZURE.NOTE] 若要移除記錄裝置本機存放區中已刪除的行動服務資料庫中，您應該啟用 [虛刪除]。 否則，您的應用程式應定期呼叫 `IMobileServiceSyncTable.PurgeAsync()` 才能清除本機存放區。
+    >[AZURE.NOTE] 若要移除記錄從裝置本機存放區，刪除您的行動服務資料庫中，您應該啟用 [Soft Delete]。 否則，您的應用程式應定期呼叫 `IMobileServiceSyncTable.PurgeAsync()` 才能清除本機存放區。
 
-    請注意，推送和提取作業可能會發生 `MobileServicePushFailedException`。 下一個教學課程，[處理行動服務的離線支援衝突]，將說明如何處理這些同步處理相關的例外狀況。
+    請注意，推送和提取作業可能會發生 `MobileServicePushFailedException`。 下一個教學課程中， [Handling conflicts with offline support for Mobile Services], ，示範如何處理這些同步處理相關的例外狀況。
 
 5. 在 `QSTodoService` 類別中，`SyncAsync()` 方法會在修改資料的作業 (`InsertTodoItemAsync()` 和 `CompleteItemAsync`) 之後呼叫。 此方法也會從 `RefreshDataAsync()` 呼叫，以便使用者每次執行重新整理動作時都能取得最新的資料。 應用程式也會在啟動時執行同步處理，因為 `QSTodoListViewController.ViewDidLoad()` 會呼叫 `RefreshDataAsync()`。
 
@@ -169,7 +169,7 @@ Azure 行動服務離線同步處理可讓使用者在無法存取網路時，�
 
 * [處理行動服務的離線支援衝突]
 
-* [如何使用 Azure 行動服務的 Xamarin 元件用戶端]
+* [如何使用適用於 Azure 行動服務的 Xamarin 元件用戶端]
 
 <!-- Anchors. -->
 [Review the Mobile Services sync code]: #review-offline
@@ -187,4 +187,5 @@ Azure 行動服務離線同步處理可讓使用者在無法存取網路時，�
 [Xamarin Studio]: http://xamarin.com/download
 [Xamarin extension]: http://xamarin.com/visual-studio
 [Azure classic portal]: https://manage.windowsazure.com
+
 

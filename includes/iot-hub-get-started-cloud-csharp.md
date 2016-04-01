@@ -14,17 +14,17 @@
 
 4. 這會下載、 安裝，並將參考加入 [Microsoft Azure 裝置 SDK][lnk-nuget-device-sdk] NuGet 封裝。
 
-4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案:
+4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案 ︰
 
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Common.Exceptions;
 
-5. 加入下列欄位來 **程式** 類別中，使用您在上一節中建立 IoT 中心的連接字串值取代預留位置:
+5. 加入下列欄位來 **程式** 類別中，使用您在上一節中建立 IoT 中心的連接字串值取代預留位置 ︰
 
         static RegistryManager registryManager;
         static string connectionString = "{iothub connection string}";
 
-6. 將下列方法加入 **程式** 類別:
+6. 將下列方法加入 **程式** 類別 ︰
 
         private async static Task AddDeviceAsync()
         {
@@ -41,9 +41,9 @@
             Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
         }
 
-    這個方法會建立新的裝置識別識別碼 **myFirstDevice** (如果該裝置識別碼已經存在登錄中，程式碼只會擷取現有的裝置資訊)。 接著，應用程式會顯示該身分識別的主要金鑰。 您將在此模擬裝置中使用此金鑰，連線到您的 IoT 中樞。
+    這個方法會建立新的裝置識別識別碼 **myFirstDevice** （如果該裝置識別碼已經存在登錄中，程式碼只會擷取現有的裝置資訊）。 接著，應用程式會顯示該身分識別的主要金鑰。 您將在此模擬裝置中使用此金鑰，連線到您的 IoT 中樞。
 
-7. 最後，加入下列幾行以 **Main** 方法:
+7. 最後，加入下列幾行以 **Main** 方法 ︰
 
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         AddDeviceAsync().Wait();
@@ -69,17 +69,17 @@
 
     這會下載、 安裝，並將參考加入 [Azure 服務匯流排][lnk-servicebus-nuget], ，與其所有相依性。
 
-4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案:
+4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案 ︰
 
         using Microsoft.ServiceBus.Messaging;
 
-5. 加入下列欄位來 **程式** 類別中，使用您在建立 IoT 中心的連接字串值取代預留位置 *建立 IoT 中心* 區段:
+5. 加入下列欄位來 **程式** 類別中，使用您在建立 IoT 中心的連接字串值取代預留位置 *建立 IoT 中心* 區段 ︰
 
         static string connectionString = "{iothub connection string}";
         static string iotHubD2cEndpoint = "messages/events";
         static EventHubClient eventHubClient;
 
-6. 將下列方法加入 **程式** 類別:
+6. 將下列方法加入 **程式** 類別 ︰
 
         private async static Task ReceiveMessagesFromDeviceAsync(string partition)
         {
@@ -96,7 +96,7 @@
 
     這個方法會使用 **EventHubReceiver** 所有 IoT 中心裝置對雲端中接收訊息的執行個體接收的資料分割。 請注意如何傳遞 `DateTime.Now` 參數，當您建立 **EventHubReceiver** 物件，使它只會收到它啟動後傳送的訊息。
 
-7. 最後，加入下列幾行以 **Main** 方法:
+7. 最後，加入下列幾行以 **Main** 方法 ︰
 
         Console.WriteLine("Receive messages\n");
         eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, iotHubD2cEndpoint);
@@ -124,4 +124,5 @@
 [10]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp1.png
 [11]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp2.png
 [12]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp3.png
+
 

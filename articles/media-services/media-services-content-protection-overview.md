@@ -19,7 +19,7 @@
 #保護內容概觀
 
 
-Microsoft Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存、處理和傳遞時的安全。 媒體服務可讓您傳遞利用進階加密標準 (AES) (使用 128 位元加密金鑰) 動態加密和使用 PlayReady 和/或 Widevine DRM 的一般加密 (CENC) 的內容。 媒體服務也提供服務，傳遞 AES 金鑰和 PlayReady 授權給授權用戶端。 Azure 媒體服務所提供的 Widevine 授權傳遞服務為預覽狀態。 您也可以使用下列 AMS 合作夥伴可協助您提供 Widevine 授權: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), ，[EZDRM](http://ezdrm.com/), ，[castLabs](http://castlabs.com/company/partners/azure/)。
+Microsoft Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存、處理和傳遞時的安全。 媒體服務可讓您傳遞利用進階加密標準 (AES) (使用 128 位元加密金鑰) 動態加密和使用 PlayReady 和/或 Widevine DRM 的一般加密 (CENC) 的內容。 媒體服務也提供服務，傳遞 AES 金鑰和 PlayReady 授權給授權用戶端。 Azure 媒體服務所提供的 Widevine 授權傳遞服務為預覽狀態。 您也可以使用下列 AMS 合作夥伴可協助您提供 Widevine 授權 ︰ [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), ，[EZDRM](http://ezdrm.com/), ，[castLabs](http://castlabs.com/company/partners/azure/)。
 
 - 下圖示範「PlayReady 和/或 Widevine DRM 動態一般加密」工作流程。 如需詳細資訊，請參閱 [使用 PlayReady 和/或 Widevine DRM 動態一般加密](media-services-protect-with-drm.md)。
 
@@ -46,15 +46,15 @@ Microsoft Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存�
 
 若要傳遞儲存體加密資產，您必須設定資產的傳遞原則，讓媒體服務知道您的內容傳遞方式。 串流處理資產之前，串流伺服器會移除儲存體加密，並使用指定的傳遞原則來串流處理您的內容 (例如，AES、一般加密或不加密)。
 
-**CommonEncryptionProtected** -使用此選項，如果您想要加密 (或上傳已加密) 內容使用一般加密。 PlayReady 和 Widewine 是依照一般加密 (CENC) 規格，並且受 AMS 支援。
+**CommonEncryptionProtected** -使用此選項，如果您想要加密 （或上傳已加密） 內容使用一般加密。 PlayReady 和 Widewine 是依照一般加密 (CENC) 規格，並且受 AMS 支援。
 
-**EnvelopeEncryptionProtected** – 使用此選項，如果您想要保護 (或上傳已受到保護) HTTP 即時資料流 (HLS) 透過進階加密標準 (AES) 加密。 請注意，如果您正在上傳已利用 AES 所加密的 HLS，則必須已由 Transform Manager 進行加密。
+**EnvelopeEncryptionProtected** – 使用此選項，如果您想要保護 （或上傳已受到保護） HTTP 即時資料流 (HLS) 透過進階加密標準 (AES) 加密。 請注意，如果您上傳已透過 AES 加密的 HLS，它必須是由 Transform Manager 加密。
 
 
 
 ###動態加密
 
-Microsoft Azure 媒體服務可讓您傳遞利用進階加密標準 (AES) (使用 128 位元加密金鑰) 和 PlayReady 和/或 Widevine DRM 動態加密的內容。
+Microsoft Azure 媒體服務可讓您傳遞利用進階加密標準 (AES) （使用 128 位元加密金鑰） 和 PlayReady 和/或 Widevine DRM 動態加密的內容。
 
 目前，您可以加密下列串流格式：HLS、MPEG DASH 和 Smooth Streaming。 無法加密 HDS 串流格式，或漸進式下載。
 
@@ -86,9 +86,9 @@ Microsoft Azure 媒體服務可讓您傳遞利用進階加密標準 (AES) (使�
 
 ###Widevine
 
-AMS 也可讓您傳遞使用 Widevine DRM 加密的 MPEG DASH。 PlayReady 和 Widewine 是依照一般加密 (CENC) 規格加密。 您可以使用 [AMS.NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (從版本 3.5.1 開始) 或 REST API 來設定您要使用 Widevine AssetDeliveryConfiguration。
+AMS 也可讓您傳遞使用 Widevine DRM 加密的 MPEG DASH。 PlayReady 和 Widewine 是依照一般加密 (CENC) 規格加密。 您可以使用 [AMS.NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) （從版本 3.5.1 開始） 或 REST API 來設定您要使用 Widevine AssetDeliveryConfiguration。
 
-從媒體服務 .NET SDK 版本 3.5.2 開始，媒體服務讓您可設定 Widevine 授權範本並取得 Widevine 授權。 您也可以使用下列 AMS 合作夥伴可協助您提供 Widevine 授權: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), ，[EZDRM](http://ezdrm.com/), ，[castLabs](http://castlabs.com/company/partners/azure/)。
+從媒體服務 .NET SDK 版本 3.5.2 開始，媒體服務讓您可設定 Widevine 授權範本並取得 Widevine 授權。 您也可以使用下列 AMS 合作夥伴可協助您提供 Widevine 授權 ︰ [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), ，[EZDRM](http://ezdrm.com/), ，[castLabs](http://castlabs.com/company/partners/azure/)。
 
 ##常見案例
 
@@ -137,4 +137,5 @@ AMS 也可讓您傳遞使用 Widevine DRM 加密的 MPEG DASH。 PlayReady 和 W
 [使用 Azure ACS 發行權杖](http://mingfeiy.com/acs-with-key-services)。
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
+
 

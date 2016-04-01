@@ -39,7 +39,7 @@ Visual Studio 中的 Azure 資源群組部署專案使用 Azure PowerShell 指�
 - 您可以對部署專案的 PowerShell 指令碼進行進行特定、針對性變更來解決問題，然後在 PowerShell 命令視窗中手動執行該指令碼。 您將無法執行指令碼從 **部署** Visual Studio 中的功能表項目。 本文稍後會列出用於更新 PowerShell 指令碼的步驟，以及一份完整更新的指令碼。
 
 ## 更新 Azure PowerShell 指令碼
-這些指示參考行號。 若要啟用 Visual Studio 中的行號，請參閱 [How to: 在編輯器中顯示行號](https://msdn.microsoft.com/library/ms165340.aspx)。
+這些指示參考行號。 若要啟用 Visual Studio 中的行號，請參閱 [How to ︰ 在編輯器中顯示行號](https://msdn.microsoft.com/library/ms165340.aspx)。
 
 1. 在第 61 行，將下列程式碼：
 
@@ -228,3 +228,4 @@ New-AzureRMResourceGroupDeployment `
     -Verbose -Force
 
 ```
+

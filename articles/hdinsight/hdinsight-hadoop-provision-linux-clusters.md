@@ -56,14 +56,14 @@ HDInsight 的 Hadoop 叢集有兩種節點：
 
 ![HDInsight HBase 叢集節點](./media/hdinsight-provision-clusters/HDInsight.HBase.roles.png)
 
-Hdinsight HBase 叢集有三種類型的節點:
+Hdinsight HBase 叢集有三種類型的節點 ︰
 - 前端伺服器 (2 個節點)
 - 區域伺服器 (至少 1 個節點)
 - 主要/Zookeeper 節點 (3 個節點)
 
 ![HDInsight Storm 叢集節點](./media/hdinsight-provision-clusters/HDInsight.Storm.roles.png)
 
-Hdinsight storm 叢集有三個節點型別:
+Hdinsight storm 叢集有三個節點型別 ︰
 - Nimbus 節點 (2 個節點)
 - 監督員伺服器 (至少 1 個節點)
 - Zookeeper 節點 (3 個節點)
@@ -71,10 +71,10 @@ Hdinsight storm 叢集有三個節點型別:
 
 ![HDInsight Spark 叢集節點](./media/hdinsight-provision-clusters/HDInsight.Spark.roles.png)
 
-HDInsight 的 Spark 叢集有三種類型的節點:
+HDInsight 的 Spark 叢集有三種類型的節點 ︰
 - 前端節點 (2 個節點)
-- 背景工作節點 (至少 1 個節點)
-- Zookeeper 節點 (3 個節點) (Free A1 Zookeeper VM 大小)
+- 背景工作角色節點 (至少 1 個節點)
+- Zookeeper 節點 （3 個節點） (Free A1 Zookeeper VM 大小)
 
 ###HDInsight 的 Azure 儲存體
 
@@ -110,9 +110,9 @@ HDInsight 的 Spark 叢集有三種類型的節點:
 
 您可以將 HDInsight 叢集佈建在下列兩個作業系統上：
 
-- **Windows (Windows Server 2012 R2 Datacenter) 上的 HDInsight**: 選取此選項，如果您需要整合 Windows 為基礎的服務和技術，將會在叢集上執行 hadoop，或如果您打算移轉現有的 Windows 為基礎的 Hadoop 散發。
+- **Windows (Windows Server 2012 R2 Datacenter) 上的 HDInsight**︰ 選取此選項，如果您需要整合 Windows 為基礎的服務和技術，將會在叢集上執行 hadoop，或如果您打算移轉現有的 Windows 為基礎的 Hadoop 散發。
 
-- **Linux (Ubuntu 12.04 LTS 適用於 Linux) 上的 HDInsight**: 選取此選項，如果您熟悉 Linux 或 Unix、 要從現有的 Linux Hadoop 方案進行移轉，或想輕鬆整合針對 Linux 所建置的 Hadoop 生態系統元件。 如需詳細資訊，請參閱 [開始在 HDInsight 中的 Linux 上使用 Hadoop](hdinsight-hadoop-linux-get-started.md)。
+- **Linux (Ubuntu 12.04 LTS 適用於 Linux) 上的 HDInsight**︰ 選取此選項，如果您熟悉 Linux 或 Unix、 要從現有的 Linux Hadoop 方案進行移轉，或想輕鬆整合針對 Linux 所建置的 Hadoop 生態系統元件。 如需詳細資訊，請參閱 [開始在 HDInsight 中的 Linux 上使用 Hadoop](hdinsight-hadoop-linux-get-started.md)。
 
 > [AZURE.NOTE] 本文件中的資訊假設您使用以 Linux 為基礎的 HDInsight 叢集。 屬於 windows 叢集的資訊，請參閱 [建立 Windows 架構的 Hadoop 叢集的 HDInsight](hdinsight-provision-clusters.md)。
 
@@ -128,7 +128,7 @@ HDInsight 的 Spark 叢集有三種類型的節點:
 
 有兩種驗證可用於 HDInsight 叢集：
 
-* __系統管理員__ 或 __HTTPs__ 使用者: 存取 web 或 REST 服務公開叢集時，主要使用叢集系統管理員帳戶。 它不能用來直接登入叢集。
+* __系統管理員__ 或 __HTTPs__ 使用者 ︰ 存取 web 或 REST 服務公開叢集時，主要使用叢集系統管理員帳戶。 它不能用來直接登入叢集。
 
 * __SSH 使用者名稱__: SSH 使用者帳戶用來從遠端存取叢集使用 [安全殼層](https://en.wikipedia.org/wiki/Secure_Shell) 用戶端。 這最常用來支援透過遠端命令列存取叢集前端節點。
 
@@ -171,7 +171,7 @@ HDInsight 也會建立 _預設儲存體容器_ 上的儲存體帳戶。 這是 H
 
 > [AZURE.IMPORTANT] 叢集建立，且只會停止時刪除叢集之後，會啟動計費。 如需有關定價的詳細資訊，請參閱 [HDInsight 定價詳細資料](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-##<a id="optionalconfiguration"></a>選擇性設定
+##<a id="optionalconfiguration"></a>選擇性組態
 
 下列各節說明選擇性組態選項，以及需要使用這些組態的案例。
 
@@ -189,9 +189,9 @@ HDInsight 也會建立 _預設儲存體容器_ 上的儲存體帳戶。 這是 H
 
 * 使用虛擬私人網路 (VPN) 將雲端資源連接到本機資料中心網路 (站對站，或點對站)。
 
-    | 站對站組態 | 點對站組態 |
-    | -------------------------- | --------------------------- |
-    | 站對站組態可讓您使用硬體 VPN 或路由及遠端存取服務，從資料中心將多項資源連接至 Azure 虛擬網路。<br />![diagram of site-to-site configuration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-site-to-site.png) | 點對站組態可讓您使用軟體 VPN，將特定資源連接到 Azure 虛擬網路。<br />![diagram of point-to-site configuration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-point-to-site.png) |
+  	| 站對站組態 | 點對站組態 |
+  	| -------------------------- | --------------------------- |
+  	| 站對站組態可讓您使用硬體 VPN 或路由及遠端存取服務，從資料中心將多項資源連接至 Azure 虛擬網路。<br />![diagram of site-to-site configuration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-site-to-site.png) | 點對站組態可讓您使用軟體 VPN，將特定資源連接到 Azure 虛擬網路。<br />![diagram of point-to-site configuration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-point-to-site.png) |
 
 如需有關虛擬網路功能、 優點和功能的詳細資訊，請參閱 [虛擬網路概觀](http://msdn.microsoft.com/library/azure/jj156007.aspx)。
 
@@ -290,4 +290,5 @@ HDInsight 也會建立 _預設儲存體容器_ 上的儲存體帳戶。 這是 H
 [img-hdi-cluster]: ./media/hdinsight-hadoop-provision-linux-clusters/HDI.Cluster.png
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "Use Sqoop with HDInsight"
+
 

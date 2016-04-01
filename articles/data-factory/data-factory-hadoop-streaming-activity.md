@@ -74,8 +74,8 @@ HDInsight 叢集會使用範例程式 (wc.exe 和 cat.exe) 和資料 (將 davinc
 2. 設定活動的型別 **HDInsightStreaming**。
 3. 如 **對應** 屬性，指定對應工具可執行檔的名稱。 在上述範例中，cat.exe 是對應程式可執行檔。
 4. 如 **減壓器** 屬性，指定減壓器可執行檔的名稱。 在上述範例中，cat.exe 是減壓器可執行檔。
-5. 如 **輸入** 輸入屬性，指定對應工具 (包括位置) 的輸入的檔。 在 "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt" 範例中：adfsample 是 blob 容器，example/data/Gutenberg 是資料夾，而 davinci.txt 是 blob。
-6. 如 **輸出** 輸入屬性，指定減壓器的輸出檔 (包括位置)。 Hadoop 串流工作的輸出會寫入針對這個屬性指定的位置。
+5. 如 **輸入** 輸入屬性，指定對應工具 （包括位置） 的輸入的檔。 在範例中: 「 wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt 」: adfsample 是 blob 容器、 範例/data/Gutenberg 是資料夾和 davinci.txt 是 blob。
+6. 如 **輸出** 輸入屬性，指定減壓器的輸出檔 （包括位置）。 Hadoop 串流工作的輸出會寫入針對這個屬性指定的位置。
 7. 在 **filePaths** 區段中，指定對應器和歸納器可執行檔的路徑。 在 "adfsample/example/apps/wc.exe" 範例中，adfsample 是 blob 容器，example/apps 是資料夾，而 wc.exe 是可執行檔。
 8. 如 **{1>filelinkedservice** 屬性，指定代表 filePaths 區段中指定的檔案所在的 Azure 儲存體的 Azure 儲存體連結服務。
 9. 如 **引數** 屬性，指定資料流工作的引數。
@@ -145,7 +145,7 @@ HDInsight 叢集會使用範例程式 (wc.exe 和 cat.exe) 和資料 (將 davinc
 
 ### 管線
 
-在此範例管線有只有一個活動的型別: **HDInsightStreaming**。 
+在此範例管線有只有一個活動的型別 ︰ **HDInsightStreaming**。 
 
 HDInsight 叢集會使用範例程式 (wc.exe 和 cat.exe) 和資料 (將 davinci.txt) 自動填入。 根據預設，HDInsight 叢集所使用的容器名稱是叢集本身的名稱。 例如，如果您的叢集名稱是 myhdicluster，相關聯的 Blob 容器名稱為 myhdicluster。  
 
@@ -191,4 +191,5 @@ HDInsight 叢集會使用範例程式 (wc.exe 和 cat.exe) 和資料 (將 davinc
             "end": "2014-01-05T00:00:00Z"
         }
     }
+
 

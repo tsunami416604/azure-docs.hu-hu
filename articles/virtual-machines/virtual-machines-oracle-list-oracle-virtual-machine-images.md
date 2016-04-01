@@ -1,12 +1,12 @@
-< 屬性 」
-pageTitle ="title ="清單 Oracle VM 映像 |Microsoft Azure 「
-描述 ="Azure 組件庫中取得 Oracle 映像清單，並了解如何建立根據其中一個 Oracle 虛擬機器 」。
-服務 = 「 虛擬機器 」
+<properties"
+pageTitle="標題 ="List of Oracle VM images | Microsoft Azure"
+description="在 Azure 資源庫中取得 Oracle 映像清單，並了解如何以其中一個映像為基礎建立 Oracle 虛擬機器。"
+services="virtual-machines"
 documentationCenter=""
-作者 ="bbenz"
-管理員 =""
-編輯器 =""
-標記 ="azure 服務-管理 azure 資源管理員 」 / >
+authors="bbenz"
+manager=""
+editor=""
+tags="azure-service-management, azure-resource-manager"/>
 
 <tags
 ms.service="virtual-machines"
@@ -70,4 +70,5 @@ ms.author="bbenz" />
 [Azure Marketplace 中新的全方位 Oracle 映像](https://msopentech.com/blog/2015/02/19/new-one-oracle-images-azure-marketplace/)
 
 [Oracle 虛擬機器映像 - 其他考量](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
+
 

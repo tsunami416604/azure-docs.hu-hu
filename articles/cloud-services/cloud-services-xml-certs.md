@@ -46,7 +46,7 @@
 
 | 權限值  | 說明 |
 | ----------------  | ----------- |
-| limitedOrElevated | **(預設)** 所有角色處理序可以都存取私密金鑰。 |
+| limitedOrElevated | **（預設）** 所有角色處理序可以都存取私密金鑰。 |
 | elevated          | 只有較高權限的處理序可以存取私密金鑰。|
 
 ## 服務組態範例
@@ -69,3 +69,4 @@
 
 ## 後續步驟
 檢閱 [服務定義 XML](https://msdn.microsoft.com/library/azure/ee758711.aspx) 結構描述和 [服務組態 XML](https://msdn.microsoft.com/library/azure/ee758710.aspx) 結構描述。
+

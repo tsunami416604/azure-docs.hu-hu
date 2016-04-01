@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 FM: Systems 單一登入的訂用帳戶
   
-完成本教學課程之後, 您已指派給 fm: systems 的 Azure AD 使用者將能夠登入您的 fm: systems 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 fm: systems 的 Azure AD 使用者將能夠登入您的 fm: systems 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -77,11 +77,11 @@
 
     ![設定單一登入](./media/active-directory-saas-fm-systems-tutorial/IC795901.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式 URL** 頁面上，執行下列步驟:
+3.  在 **設定應用程式 URL** 頁面上，執行下列步驟 ︰
 
     ![設定應用程式 URL](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "Configure App URL")
 
-    1.  在 **fm: systems 登入 URL** 文字方塊中，輸入您的 fm: systems **回覆 URL** (例如: *https://dpr.fmshosted.com/fminteract/ConsumerService2.aspx*)。  
+    1.  在 **fm: systems 登入 URL** 文字方塊中，輸入您的 fm: systems **回覆 URL** (例如 ︰ *https://dpr.fmshosted.com/fminteract/ConsumerService2.aspx*)。  
 
         >[AZURE.WARNING] 您可以取得此值從您的 FM: Systems 支援小組。
 
@@ -116,7 +116,7 @@ FM: Systems 需以手動的方式佈建。
 
     ![建立新的使用者](./media/active-directory-saas-fm-systems-tutorial/IC795906.png "Create New User")
 
-4.  在 **Create User** 區段中，執行下列步驟:
+4.  在 **Create User** 區段中，執行下列步驟 ︰
 
     ![建立使用者](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "Create User")
 
@@ -142,3 +142,4 @@ FM: Systems 需以手動的方式佈建。
     ![是](./media/active-directory-saas-fm-systems-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

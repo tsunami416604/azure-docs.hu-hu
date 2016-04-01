@@ -7,19 +7,19 @@
    manager="jwhit"
    editor=""/>
 <tags
-   ms.service="backup 」
+   ms.service="backup"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload= 「 儲存體的備份復原的 」
-   ms.date="12/15/2015 」
-   ms.author="jimpark 」。「 aashishr 」。「 sammehta 」 / >
+   ms.workload="storage-backup-recovery"
+   ms.date="12/15/2015"
+   ms.author="jimpark"; "aashishr"; "sammehta"/>
 
 # 使用 Azure 備份來取代您的磁帶基礎結構
 使用 Azure 備份和 System Center Data Protection Manager 的客戶可以進行下列操作：
-- 備份最適合自身組織需求的排程中的資料
+- 依照最適合自身組織需求的排程備份資料
 - 長期保留備份資料
-- 讓的 Azure 一部分長期保留需求 (而不是磁帶)。
+- 讓 Azure (而非磁帶) 成為長期保留需求的一部分。
 
 此文章說明客戶如何啟用備份和保留原則。 使用磁帶處理長期保留需求的客戶，透過此功能的可用性現在擁有功能強大且可行的替代方案。 在最新版本的 Azure 備份功能 (可 [這裡](http://aka.ms/azurebackup_agent))。 SCDPM 客戶需要移至 UR5 才能使用這項功能。
 
@@ -43,10 +43,10 @@
 
 ![範例畫面](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **每日的保留原則**: 每日備份會儲存 7 天。
-2. **每週的保留原則**: 備份每天午夜和星期六下午 6: 將會保留 4 週
-3. **每月的保留原則**: 午夜和下午 6:，每個月的最後一個星期六的備份會保留 12 個月
-4. **每年的保留原則**: 每年三月最後一個星期六午夜所進行的備份會保留 10 年
+1. **每日的保留原則**︰ 每日備份會儲存 7 天。
+2. **每週的保留原則**︰ 備份每天午夜和星期六下午 6 ︰ 將會保留 4 週
+3. **每月的保留原則**︰ 午夜和下午 6:，每個月的最後一個星期六的備份會保留 12 個月
+4. **每年的保留原則**︰ 每年三月最後一個星期六午夜所進行的備份會保留 10 年
 
 上圖中計算「保留點」總數 (客戶可從該保留點還原資料) 的方式如下：
 
@@ -69,4 +69,5 @@
 
 - [Azure 備份的簡介](backup-introduction-to-azure-backup.md)
 - [試用 Azure 備份](backup-try-azure-backup-in-10-mins)
+
 

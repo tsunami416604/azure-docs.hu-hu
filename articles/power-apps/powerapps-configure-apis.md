@@ -44,9 +44,9 @@
 設定 | 說明
 --- | ---
 顯示名稱 | 列出時，會使用此名稱 *可用連線* PowerApps 中。 預設會使用 API 的資源名稱，但對於您的 PowerApps 使用者而言，可能不是最好的名稱。 您可以輸入的使用者易記的顯示名稱。 例如，您可以將它命名 **新的客戶訂單** 或 **檢視銷售記錄**。  
-圖示 URL | 您可以為您的 API 新增自訂圖示。 列出時，會使用的圖示 *可用連線* 和 *連線* PowerApps 中。 預設會使用下列圖示：<br/><br/>![][12] <br/><br/>當使用自訂圖示時：<br/><ul><li>圖示 URL 必須可供大眾存取。</li><li>其可以是 .png 或 .svg 檔案。 若是使用 png 檔案，其大小為 40 x 40 像素。</li></ul>
-URL 配置 | 選擇配置，或您希望 API 加以支援的配置。 您可以選擇 **HTTP**, ，**HTTPS**, ，或 **HTTP 和 HTTPS**。 預設會啟用 [HTTP 和 HTTPS]。 <br/><br/>App Service 環境會依據後端設定自動設定配置。 因此，若沒有其他配置需要設定，可以開發或變更您的後端服務。 
-向後端服務驗證身分 | 在 App Service 環境中註冊您的後端服務之後，建議設定後端的安全性，讓用戶端只能使用您的 API 呼叫該後端服務。 根據您的後端的部署位置，可以使用下列選項:<br/><br/><ul><li><strong>只存取透過此 API</strong>: app service 環境中部署您的後端時，才可以使用此選項。 如有選取，將會停用您的後端上的任何主機名稱。 因為 API Proxy 也在同一個 App Service 環境中執行，所以其仍可存取您的後端。</li><li><strong>HTTP 基本驗證</strong>：無論您後端的部署在何處，皆可使用此選項。 如有選取，必須輸入使用者名稱和密碼。 當 Proxy 呼叫您的後端時，會使用 HTTP 基本驗證，在 HTTP 授權標頭中傳遞使用者名稱和密碼。 最後，必須確認後端服務 (驗證) 的使用者名稱和密碼。<br/><br/>若要深入了解 ASP.NET Web API 2 中實作 HTTP 基本驗證，請參閱 [ASP.NET Web API 2 中的驗證篩選](http://www.asp.net/web-api/overview/security/authentication-filters)。</li></ul>
+圖示 URL | 您可以為您的 API 新增自訂圖示。 列出時，會使用的圖示 *可用連線* 和 *連線* PowerApps 中。 根據預設，會使用下列圖示 ︰ <br/><br/>![][12] <br/><br/>當使用自訂圖示 ︰<br/><ul><li>圖示的 URL 必須是可公開存取。</li><li>它可以是.png 或.svg 檔案。 使用 png 檔案時，40 x 40 像素是慣用的。</li></ul>
+URL 配置 | 選擇配置，或您希望 API 加以支援的配置。 您可以選擇 **HTTP**, ，**HTTPS**, ，或 **HTTP 和 HTTPS**。 預設會啟用 [HTTP 和 HTTPS]。 <br/><br/>App service 環境會自動設定的後端組態為基礎的配置。 因此，若沒有其他配置需要設定，可以開發或變更您的後端服務。 
+向後端服務驗證身分 | 在 App Service 環境中註冊您的後端服務之後，建議設定後端的安全性，讓用戶端只能使用您的 API 呼叫該後端服務。 根據您的後端的部署位置，有下列選項 ︰<br/><br/><ul><li><strong>僅可透過此 API 存取</strong>: app service 環境中部署您的後端時，才可以使用此選項。 如有選取，將會停用您的後端上的任何主機名稱。 API proxy 也相同的應用程式服務環境中執行，因為它仍然可以存取您的後端。</li><li><strong>HTTP 基本驗證</strong>︰ 不論您的後端的部署位置可用時，此選項。 如有選取，必須輸入使用者名稱和密碼。 當 Proxy 呼叫您的後端時，會使用 HTTP 基本驗證，在 HTTP 授權標頭中傳遞使用者名稱和密碼。 最後，必須確認後端服務 （驗證） 的使用者名稱和密碼。<br/><br/>若要深入了解 ASP.NET Web API 2 中實作 HTTP 基本驗證，請參閱 [ASP.NET Web API 2 中的驗證篩選](http://www.asp.net/web-api/overview/security/authentication-filters)。</li></ul>
 
 
 ## 更新您 API 的 Swagger
@@ -90,4 +90,5 @@ URL 配置 | 選擇配置，或您希望 API 加以支援的配置。 您可以�
 [12]: ./media/powerapps-configure-apis/api-default-icon.png
 [13]: ./media/powerapps-configure-apis/api-settings-api-definition.png
 [14]: ./media/powerapps-configure-apis/api-settings-policy.png
+
 

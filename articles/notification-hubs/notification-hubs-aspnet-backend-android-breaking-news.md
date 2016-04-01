@@ -28,9 +28,9 @@
 包含一或多個來啟用廣播的案例 _標記_ 時在通知中樞建立註冊。 當標籤收到通知時，所有已註冊此標籤的裝置都會收到通知。 由於標籤只是簡單的字串而已，您無需預先佈建標籤。 如需標記的詳細資訊，請參閱 [通知中樞路由和標記運算式](notification-hubs-routing-tag-expressions.md)。
 
 
-##先決條件
+##必要條件
 
-本主題是根據您在建立應用程式 [開始使用通知中樞] [入門]。 在開始本教學課程之前, 您必須已完成 [開始使用通知中樞] [入門]。
+本主題會在您建立的應用程式以 [開始使用通知中樞][get-started]。 在開始本教學課程之前, 您必須已完成 [開始使用通知中樞][get-started]。
 
 ##在應用程式中新增類別選項
 
@@ -98,7 +98,7 @@
 
     您的 main_activity.xml 圖形配置看起來應該如下所示：
 
-    ![] [A1]
+    ![][A1]
 
 3. 現在，建立類別 **通知** 相同封裝中您 **MainActivity** 類別。
 
@@ -243,7 +243,7 @@
 > [AZURE.NOTE] 由於所 Google 雲端通訊 (GCM) 指派的 registrationId 可以隨時變更，您應該註冊經常以避免通知失敗的通知。 此範例會在應用程式每次啟動時註冊通知。 若是經常執行 (一天多次) 的應用程式，如果距離上次註冊的時間不到一天，則您可能可以略過註冊以保留頻寬。
 
 
-1. 在結尾處新增下列程式碼 **onCreate** 方法中的 **MainActivity** 類別:
+1. 在結尾處新增下列程式碼 **onCreate** 方法中的 **MainActivity** 類別 ︰
 
         notifications.subscribeToCategories(notifications.retrieveCategories());
 
@@ -252,7 +252,7 @@
 2. 然後如下所示，更新 `MainActivity` 類別的 `onStart()` 方法：
 
     @Override
-    受保護的 void onstart () {
+    受保護的 void onstart （） {
         super.onStart()
         isVisible = true;
 
@@ -290,7 +290,7 @@
 
     應用程式會將選取的類別轉換成標籤，並在通知中心內為選取的標籤要求新裝置註冊。 隨即會傳回已註冊的類別，且會顯示在快顯通知中。
 
-4. 執行 .NET 主控台應用程式以傳送新的通知。  或者，您可以傳送已加上標籤的範本通知使用通知中心的 [偵錯] 索引標籤，在 [Azure 傳統入口網站]。
+4. 執行 .NET 主控台應用程式以傳送新的通知。  或者，您可以將範本標記的通知使用通知中心中的 [偵錯] 索引標籤傳送 [Azure Classic Portal]。
 
     選取的類別通知會以快顯通知方式出現。
 
@@ -321,4 +321,5 @@
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [Azure Classic Portal]: https://manage.windowsazure.com
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+
 

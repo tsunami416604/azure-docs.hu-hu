@@ -24,9 +24,9 @@
 
 **我會收到什麼？**
 
-- **歡迎使用電子郵件:** 為新的發行者，您會收到歡迎電子郵件通知您，您將會開始接收賣方 insights 每月報表。
+- **歡迎使用電子郵件 ︰** 為新的發行者，您會收到歡迎電子郵件通知您，您將會開始接收賣方 insights 每月報表。
 
-- **每月銷售報表:**  如果您有使用，您會收到第二個的電子郵件，其中包含您的報表和指示如何存取您的密碼:
+- **每月銷售報表 ︰**  如果您有使用，您會收到第二個的電子郵件，其中包含您的報表和指示如何存取您的密碼 ︰
 
     - 如果您有 VM 或基於使用量計費的開發人員服務 SKU 產生使用量，您的每月報告將會顯示有關訂單、使用量、市場的詳細資料，以及非 BYOL (自備授權) 供應項目的客戶詳細資料。
     - 為了保護您的客戶資料，報告會使用密碼鎖住，只有您和 Microsoft 才知道密碼。
@@ -35,7 +35,7 @@
 ## 了解賣方 Insights 報告
 
 
-**SKU 和授權類型的訂單: 服務商場訂單] 索引標籤**
+**SKU 和授權類型的訂單 ︰ 服務商場訂單] 索引標籤**
 
 ![readingreportbyorders][2]
 
@@ -47,7 +47,7 @@
 - 有資料表可顯示依 Marketplace 授權類型、每月總計和所有月份累計總計分類的每月訂單總計。
 
 
-**SKU 和授權類型的訂單: 使用服務商場] 索引標籤**
+**SKU 和授權類型的訂單 ︰ 使用服務商場] 索引標籤**
 
 ![readingreportbyusage][3]
 
@@ -70,7 +70,7 @@
 
 
 
-**SKU 和授權類型的使用方式: 客戶] 索引標籤**
+**SKU 和授權類型的使用方式 ︰ 客戶] 索引標籤**
 
 ![customerstab][6]
 
@@ -94,7 +94,7 @@
 ![selectpublisherstab][8]
 
 
-在 URL 中找到的發行者識別碼:
+在 URL 中找到的發行者識別碼 ︰
 - 使用此 ID 做為密碼，若要開啟 [賣方 insights Excel 檔案。
 這是您的密碼，否則在進一步通知。
 - 我們建議使用 Windows 使用 Microsoft Office 2013，為您的活頁簿讀取器所選擇。  有些使用者回報使用 Microsoft Office for Mac 有問題。
@@ -123,4 +123,5 @@
 [8]: ./media/marketplace-publishing-report-seller-insights/selectpublisherstab.png
 [9]: ./media/marketplace-publishing-report-seller-insights/publisherid.png
 [10]: ./media/marketplace-publishing-report-seller-insights/sellerinsightsquestions.png
+
 

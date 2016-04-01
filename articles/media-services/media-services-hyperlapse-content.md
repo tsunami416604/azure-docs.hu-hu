@@ -34,7 +34,7 @@ Azure Media Hyperlapse 的最新更新，請參閱 [媒體服務部落格](http:
 
 首先您需要上傳要輸入 Azure 媒體服務的檔案。  若要瞭解有關上傳及管理內容的相關概念的詳細資訊，請參閱 [內容管理文章](media-services-manage-content.md#upload)。
 
-###  <a id="configuration"></a>Hyperlapse 組態預設值
+###  <a id="configuration"></a>Hyperlapse 的預設組態
 
 一旦內容在媒體服務帳戶中，您將需要建構預設組態。  下表說明使用者指定的欄位：
 
@@ -74,7 +74,7 @@ NumFrames|要處理的畫面數目。
         }
     }
 
-###  <a id="sample_code"></a> Microsoft Hyperlapse AMS.NET sdk
+###  <a id="sample_code"></a> 包含 AMS .NET SDK 的 Microsoft Hyperlapse
 
 下列方法會將媒體檔案上傳為資產，並使用 Azure 媒體 Hyperlapse 媒體處理器建立工作。  
 
@@ -220,4 +220,5 @@ NumFrames|要處理的畫面數目。
 <!-- Images. -->
 
 <!-- URLs. -->
+
 

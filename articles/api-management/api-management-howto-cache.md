@@ -24,11 +24,11 @@
 
 >[AZURE.NOTE] 如需使用原則運算式的索引鍵的快取項目，請參閱 [自訂 Azure API 管理中的快取](api-management-sample-cache-by-key.md)。
 
-## 先決條件
+## 必要條件
 
 遵循本指南中的步驟之前，您必須擁有已設定 API 和產品的 API 管理服務執行個體。 如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
-## <a name="configure-caching"> </a>設定要快取的操作
+## <a name="configure-caching"> </a>設定要快取的作業
 
 在此步驟中，您將檢閱的快取設定 **GET Resource (cached)** 範例 Echo API 的作業。
 
@@ -36,7 +36,7 @@
 
 若要開始使用，請按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。 這會帶您前往 API 管理發行者入口網站。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 按一下 [ **Api** 從 **API 管理** 左邊的功能表，然後按一下 **Echo API**。
 
@@ -91,7 +91,7 @@
 
 >[AZURE.NOTE] 在原則編輯器中的快取原則所做的變更會反映在 **快取** ] 索引標籤的作業，並且反之亦然。
 
-## <a name="test-operation"> </a>呼叫操作和測試快取
+## <a name="test-operation"> </a>呼叫作業和測試快取
 
 為了瞭解快取的運作方式，我們可以從開發人員入口網站呼叫操作。 按一下 [ **開發人員入口網站** 右上方功能表中。
 
@@ -162,4 +162,5 @@
 [Review the caching policies]: #caching-policies
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
+
 

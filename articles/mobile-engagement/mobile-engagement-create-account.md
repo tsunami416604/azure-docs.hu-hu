@@ -46,4 +46,5 @@
 
 [定義 Mobile Engagement 策略](mobile-engagement-define-your-mobile-engagement-strategy.md)
 
-[開始使用 Azure Mobile Engagement](mobile-engagement-windows-store-dotnet-get-started.md) (您可以選取其他行動平台，在頁面頂端)。
+[開始使用 Azure Mobile Engagement](mobile-engagement-windows-store-dotnet-get-started.md) （您可以選取其他行動平台，在頁面頂端）。
+

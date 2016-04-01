@@ -81,7 +81,7 @@
 
     ![設定單一登入](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790797.png "Configure Single Sign-On")
 
-3.  在不同的網頁瀏覽器視窗中，登入 SAP HANA Cloud Platform Cockpit，在 https://account.\<landscape host\ >.ondemand.com/cockpit (例如: *https://account.hanatrial.ondemand.com/cockpit*)。
+3.  在不同的網頁瀏覽器視窗中，登入 SAP HANA Cloud Platform Cockpit，在 https://account.\<landscape host\ >.ondemand.com/cockpit (例如 ︰ *https://account.hanatrial.ondemand.com/cockpit*)。
 
 4.  按一下 [ **信任** ] 索引標籤。
 
@@ -98,7 +98,7 @@
 
     ![設定應用程式 URL](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "Configure App URL")
 
-    1.  在 **登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入您 **SAP HANA Cloud Platform** 應用程式。 這是您的 SAP HANA 雲端平台應用程式中受保護資源的帳戶特定 URL。 URL 根據下列模式: *https://\<applicationName\>\<accountName\>.\<landscape 主機 >.ondemand.com/\ < path\_to\_protected\_resource\ >* (例如: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
+    1.  在 **登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入您 **SAP HANA Cloud Platform** 應用程式。 這是您的 SAP HANA 雲端平台應用程式中受保護資源的帳戶特定 URL。 URL 根據下列模式 ︰ *https://\<applicationName\>\<accountName\>.\<landscape 主機 >.ondemand.com/\ < path\_to\_protected\_resource\ >* (例如 ︰ *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
 
         >[AZURE.NOTE]這是您需要使用者驗證的 SAP HANA Cloud Platform 應用程式中的 URL。
 
@@ -109,7 +109,7 @@
 
     ![設定單一登入](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790799.png "Configure Single Sign-On")
 
-8.  在 SAP HANA Cloud Platform Cockpit 中 **本機服務提供者** 區段中，執行下列步驟:
+8.  在 SAP HANA Cloud Platform Cockpit 中 **本機服務提供者** 區段中，執行下列步驟 ︰
 
     ![信任管理](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793931.png "Trust Management")
 
@@ -135,11 +135,11 @@
 
 11. 按一下 [ **屬性** ] 索引標籤。
 
-12. 在 **屬性** 索引標籤上，執行下列步驟:
+12. 在 **屬性** 索引標籤上，執行下列步驟 ︰
 
     ![屬性](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790804.png "Attributes")
 
-    1.  依序按一下 **新增屬性**, ，加入下列判斷提示型屬性:
+    1.  依序按一下 **新增屬性**, ，加入下列判斷提示型屬性 ︰
 
         |判斷提示屬性| 主體屬性|
         |-------------------|--------------------|
@@ -147,7 +147,7 @@
         |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname|        lastname|-----------|
         |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|電子郵件|
 
-    >[AZURE.NOTE]屬性的組態取決於如何在 HCP 上的應用程式開發，也就是哪些屬性，預期在 SAML 回應中，而且在哪個名稱 (主體屬性)，他們存取這個程式碼中的屬性。
+    >[AZURE.NOTE]屬性的組態取決於如何在 HCP 上的應用程式開發，也就是哪些屬性，預期在 SAML 回應中，而且在哪個名稱 （主體屬性），他們存取這個程式碼中的屬性。
     >  
     >a.   **預設屬性** 螢幕擷取畫面是只供說明之用。 其並不是案例進行所必須的要素。  
     >
@@ -198,3 +198,4 @@
     ![是](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

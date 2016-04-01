@@ -86,7 +86,7 @@
         Console.WriteLine();
     }
 
-程式碼會輸出:
+程式碼會輸出 ︰
     
     URL to manifest for client streaming using Smooth Streaming protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
@@ -169,3 +169,4 @@
 ##另請參閱
 
 [下載資產](media-services-deliver-asset-download.md)
+

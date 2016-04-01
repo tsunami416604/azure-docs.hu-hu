@@ -137,7 +137,7 @@
 
 如果您無法或不想多載 `Activity` 類別，可以改用直接呼叫 `EngagementAgent` 的方式來開始及結束您的活動。
 
-> [AZURE.IMPORTANT] Android SDK 絕不會呼叫 `endActivity()` 方法，即使在關閉應用程式 (在 Android 上，應用程式其實永遠不會關閉)。 因此，它是 *高* 建議您呼叫 `startActivity()` 方法中的 `onResume` 回呼的 *所有* 您的活動和 `endActivity()` 方法中的 `onPause()` 回呼的 *所有* 您的活動。 這是確保不會遺漏工作階段的唯一方法。 如果遺漏了工作階段，Engagement 服務將永遠不會從 Engagement 後端中斷連線 (因為只要工作階段處於暫止狀態，服務就會保持連線)。
+> [AZURE.IMPORTANT] Android SDK 絕不會呼叫 `endActivity()` 方法，即使在關閉應用程式 （在 Android 上，應用程式其實永遠不會關閉）。 因此，它是 *高* 建議您呼叫 `startActivity()` 方法中的 `onResume` 回呼的 *所有* 您的活動和 `endActivity()` 方法中的 `onPause()` 回呼的 *所有* 您的活動。 這是確保不會遺漏工作階段的唯一方法。 如果遺漏了工作階段，Engagement 服務將永遠不會從 Engagement 後端中斷連線 (因為只要工作階段處於暫止狀態，服務就會保持連線)。
 
 下列是一個範例：
 
@@ -384,4 +384,5 @@ Engagement 在喜好設定檔案內會一律使用 `engagement:key` 布林值機
 
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094
+
 

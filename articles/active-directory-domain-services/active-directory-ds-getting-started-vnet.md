@@ -16,7 +16,7 @@
     ms.date="11/09/2015"
     ms.author="maheshu"/>
 
-# Azure AD 網域服務 *(預覽)* -快速入門
+# Azure AD 網域服務 *（預覽）* -快速入門
 
 ## 選取 Azure 虛擬網路的指導方針
 選取要與 Azure AD 網域服務搭配使用的虛擬網路時，請記住下列指導方針：
@@ -55,4 +55,5 @@
 
 ---
 [**下一個步驟-啟用 Azure AD 網域服務。**](active-directory-ds-getting-started-enableaadds.md)
+
 

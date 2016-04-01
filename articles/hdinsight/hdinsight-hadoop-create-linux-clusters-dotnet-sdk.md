@@ -27,7 +27,7 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您能夠輕鬆地從 .NE
 >
 > 如需有關在節點大小和相關聯的成本的詳細資訊，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-##先決條件
+##必要條件
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
@@ -39,10 +39,10 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您能夠輕鬆地從 .NE
 
 2. 使用下列設定建立新的 Visual Studio 專案
 
-    |屬性|值|
-    |--------|-----|
-    |範本|Templates/Visual C#/Windows/Console Application|
-    |名稱|CreateHDICluster|
+  	|屬性|值|
+  	|--------|-----|
+  	|範本|Templates/Visual C#/Windows/Console Application|
+  	|名稱|CreateHDICluster|
 
 5. 從 **工具** ] 功能表上，按一下 [ **Nuget 封裝管理員**, ，然後按一下 [ **Package Manager Console**。
 
@@ -53,7 +53,7 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您能夠輕鬆地從 .NE
 
     這些命令會將 .NET 程式庫及其參考新增至目前的 Visual Studio 專案。
 
-6. 從 [方案總管] 中，按兩下 **Program.cs** 來開啟它，請貼上下列程式碼，並提供變數的值:
+6. 從 [方案總管] 中，按兩下 **Program.cs** 來開啟它，請貼上下列程式碼，並提供變數的值 ︰
 
         using System;
         using System.Security;
@@ -202,3 +202,4 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您能夠輕鬆地從 .NE
 * [在 HDInsight 上開發適用於 Storm 的 Java 拓撲](hdinsight-storm-develop-java-topology.md)
 * [在 HDInsight 上的 Storm 中使用 Python 元件](hdinsight-storm-develop-python.md)
 * [在 HDInsight 上使用 Storm 部署和監視拓撲](hdinsight-storm-deploy-monitor-topology-linux.md)
+

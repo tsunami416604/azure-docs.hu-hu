@@ -150,3 +150,4 @@
 5. 按一下 [確認刪除 **是**。
 6. 一旦被刪除的應用程式密碼，您可以按一下 **關閉**。
 ![關閉](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
+

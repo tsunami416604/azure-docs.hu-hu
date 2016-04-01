@@ -23,7 +23,7 @@
 
 指令碼動作可用來安裝其他在 Hadoop 叢集上執行的軟體，或變更叢集上所安裝應用程式的組態。 指令碼動作是在部署 HDInsight 叢集時，在叢集節點上執行的指令碼，一旦叢集中的節點完成 HDInsight 組態之後，就會執行這些指令碼動作。 指令碼動作是依據系統管理員帳戶的權限來執行，並具有叢集節點的完整存取權限。 您可對每個叢集提供一份依其指定順序來執行的指令碼動作清單。 
 
-> [AZURE.NOTE] 如果您遇到下列錯誤訊息: 
+> [AZURE.NOTE] 如果您遇到下列錯誤訊息 ︰ 
 > 
 >     System.Management.Automation.CommandNotFoundException; ExceptionMessage : The term 'Save-HDIFile' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 > 這是因為您沒有包括協助程式方法。  請參閱 [Helper 方法的自訂指令碼](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts)。
@@ -102,7 +102,7 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝其他元件：
 
 ## 自訂指令碼的協助程式方法
 
-指令碼動作協助程式方法是您在撰寫字訂指令碼時可以使用的公用程式。 定義在 [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1), ，而且可以包含在指令碼，使用下列命令:
+指令碼動作協助程式方法是您在撰寫字訂指令碼時可以使用的公用程式。 定義在 [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1), ，而且可以包含在指令碼，使用下列命令 ︰
 
     # Download config action module from a well-known directory.
     $CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
@@ -156,7 +156,7 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝其他元件：
 - 提供穩定的指令碼資源連結
 
     使用者應該確定在叢集的整個存留期間，於叢集自訂中使用的所有指令碼及其他成品都保持可用，並且這些檔案的版本在此持續時間內不會變更。 如需為叢集中的節點重新製作映像，就必須有這些資源。 最佳做法是下載並封存使用者所控制之儲存體帳戶中的所有項目。 這可以是預設的儲存體帳戶，或是在部署時為自訂叢集指定的任何其他儲存體帳戶。
-    Spark 和 R 叢集範例中所提供自訂文件，比方說，我們有資源的本機複本中此儲存體帳戶: https://hdiconfigactions.blob.core.windows.net/。
+    Spark 和 R 叢集範例中所提供自訂文件，比方說，我們有資源的本機複本中此儲存體帳戶 ︰ https://hdiconfigactions.blob.core.windows.net/。
 
 
 - 確保叢集自訂指令碼具有等冪性
@@ -191,7 +191,7 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝其他元件：
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-此陳述式會設定環境變數 **MDS_RUNNER_CUSTOM_CLUSTER** 的值 'true' 並將這個變數來為整個機器的範圍。 有時候您必須將環境變數設定在適當範圍 – 機器或使用者。 如需有關設定環境變數參考 [這裡] [1]。
+此陳述式會設定環境變數 **MDS_RUNNER_CUSTOM_CLUSTER** 的值 'true' 並將這個變數來為整個機器的範圍。 有時候您必須將環境變數設定在適當範圍 – 機器或使用者。 請參閱 [這裡][1] 如需有關設定環境變數。
 
 ### 存取自訂指令碼儲存所在位置
 
@@ -255,7 +255,7 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝其他元件：
 
 **安裝 HDInsight Emulator** -若要執行指令碼動作在本機，您必須安裝 HDInsight Emulator。 如需如何安裝指示，請參閱 [開始使用 HDInsight Emulator](../hdinsight-get-started-emulator/)。
 
-**設定 Azure PowerShell 執行原則** -開啟 Azure PowerShell 並 (以系統管理員) 執行下列命令，將執行原則設為 *LocalMachine* 以及 *不受限制*:
+**設定 Azure PowerShell 執行原則** -開啟 Azure PowerShell 並 （以系統管理員） 執行下列命令，將執行原則設為 *LocalMachine* 以及 *不受限制*:
 
     Set-ExecutionPolicy Unrestricted –Scope LocalMachine
 
@@ -353,4 +353,5 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝其他元件：
 
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
+
 

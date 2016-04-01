@@ -81,7 +81,7 @@ Azure App Service 有三個功能特別適合用來開發和裝載 API：
 * **ContactsList.MVC** -ContactsList API 的 ASP.NET MVC 用戶端。
 * **ContactsList.Angular** -ContactsList API 的簡單 AngularJS UI 用戶端。 示範如何呼叫未受保護 (不需驗證) 的 API 應用程式。
 * **ContactsList.Angular.AAD** -AngularJS 用戶端來了解如何使用 Azure Active Directory 來驗證使用者。
-* **CompanyContacts.API** -ASP.NET Web API 專案，以回應 Get 要求會傳回硬式編碼的連絡人清單。 由呼叫 **ContactsList.API** Get 方法來示範如何使用服務對服務 (服務主體) 驗證呼叫 API。
+* **CompanyContacts.API** -ASP.NET Web API 專案，以回應 Get 要求會傳回硬式編碼的連絡人清單。 由呼叫 **ContactsList.API** Get 方法來示範如何使用服務對服務 （服務主體） 驗證呼叫 API。
  
 ## 下載範例應用程式 
 
@@ -209,7 +209,7 @@ Swashbuckle 可搭配任何 ASP.NET Web API 專案使用。 如果您要將 Swag
 
 此範本會建立已安裝 Swashbuckle 的 Web API 專案。
 
-**注意:** 根據預設，Swashbuckle 可能會產生控制器方法重複的 Swagger 作業識別碼。 如果控制器有多載的 HTTP 方法，例如 `Get()` 和 `Get(id)`，就會發生此情況。 如需如何處理多載的資訊，請參閱 [自訂 Swashbuckle 產生的 API 定義](app-service-api-dotnet-swashbuckle-customize.md)。 如果您建立的 Web API 專案，您可以在 Visual Studio 中使用 Azure API 應用程式範本，會產生唯一的作業識別碼的程式碼會自動加入至 *SwaggerConfig.cs* 檔案。  
+**注意 ︰** 根據預設，Swashbuckle 可能會產生控制器方法重複的 Swagger 作業識別碼。 如果控制器有多載的 HTTP 方法，例如 `Get()` 和 `Get(id)`，就會發生此情況。 如需如何處理多載的資訊，請參閱 [自訂 Swashbuckle 產生的 API 定義](app-service-api-dotnet-swashbuckle-customize.md)。 如果您建立的 Web API 專案，您可以在 Visual Studio 中使用 Azure API 應用程式範本，會產生唯一的作業識別碼的程式碼會自動加入至 *SwaggerConfig.cs* 檔案。  
 
 ## 在 Azure 中建立 API 應用程式並將 ContactsList.API 專案部署至該應用程式
 
@@ -269,7 +269,7 @@ Swashbuckle 可搭配任何 ASP.NET Web API 專案使用。 如果您要將 Swag
 
     Visual Studio 會建立 API 應用程式，並建立發佈設定檔，其中包含新的 API 應用程式所需要的所有設定。 在下列步驟中，您可以使用新的發佈設定檔來部署專案。 
  
-    **注意:** 還有其他方法可以在 Azure App Service 中建立 API 應用程式。 在 Visual Studio 中，當您建立新專案時可使用相同的對話方塊。 您也可以建立 API 應用程式使用 Azure 入口網站， [適用於 Windows PowerShell 的 Azure cmdlet](../powershell-install-configure.md), ，或 [跨平台命令列介面](../xplat-cli.md)。
+    **注意 ︰** 還有其他方法可以在 Azure App Service 中建立 API 應用程式。 在 Visual Studio 中，當您建立新專案時可使用相同的對話方塊。 您也可以建立 API 應用程式使用 Azure 入口網站， [適用於 Windows PowerShell 的 Azure cmdlet](../powershell-install-configure.md), ，或 [跨平台命令列介面](../xplat-cli.md)。
 
 8. 在 **連接** ] 索引標籤的 **發行 Web** 精靈] 中，按一下 [ **發行**。
 
@@ -303,13 +303,13 @@ Swashbuckle 可搭配任何 ASP.NET Web API 專案使用。 如果您要將 Swag
 
 您也可以使用 Azure 資源管理員，例如 Azure PowerShell、 CLI 工具，設定為 API 應用程式的 API 定義 URL 或 [資源總管](https://resources.azure.com/)。 
 
-在您的 <site name>/web 資源的 Microsoft.Web/sites/config 資源類型上設定 `apiDefinition` 屬性。 例如，在 **資源總管**, ，請移至 **訂閱 > {您的訂閱} > resourceGroups > {您的資源群組} > 提供者 > Microsoft.Web > 站台 > {網站} > 組態 > web**, ，您會看到 cors 屬性:
+設定 `apiDefinition` 屬性 Microsoft.Web/sites/config 資源類型的程式 <site name>/web 資源。 例如，在 **資源總管**, ，請移至 **訂閱 > {您的訂閱} > resourceGroups > {您的資源群組} > 提供者 > Microsoft.Web > 站台 > {網站} > 組態 > web**, ，您會看到 cors 屬性 ︰
 
         "apiDefinition": {
           "url": "https://contactslistapi.azurewebsites.net/swagger/docs/v1"
         }
 
-## <a id="codegen"></a> 使用產生的用戶端程式碼使用的.NET 用戶端 
+## <a id="codegen"></a> 使用所產生的用戶端程式碼從 .NET 用戶端取用 
 
 將 Swagger 整合到 Azure API 應用程式的優點之一，就是自動產生程式碼。 產生的用戶端類別讓您能更容易地撰寫會呼叫 API 應用程式的程式碼。
 
@@ -449,3 +449,4 @@ MVC 專案的控制器和檢視看起來類似針對 Entity Framework 所建構�
 ## 後續步驟
 
 在本教學課程中，您已了解如何建立 API 應用程式、將程式碼部署到它們，以及從 .NET 用戶端加以取用。 下一個教學課程，在 API 應用程式取得如何啟動系列的節目以 [取用 API 應用程式，從 JavaScript 用戶端，使用 CORS](app-service-api-cors-consume-javascript.md)。
+

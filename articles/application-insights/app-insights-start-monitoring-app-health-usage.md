@@ -91,7 +91,7 @@ A [資源][roles] 在 Azure 中是服務的執行個體。 此資源是來自您
 
 ## <a name="run"></a> 3.執行專案
 
-使用 **F5** 來執行應用程式並立即試用: 開啟不同的頁面來產生一些遙測。
+使用 **F5** 來執行應用程式並立即試用 ︰ 開啟不同的頁面來產生一些遙測。
 
 在 Visual Studio 中，您可以看見已傳送到的事件計數。
 
@@ -106,7 +106,7 @@ A [資源][roles] 在 Azure 中是服務的執行個體。 此資源是來自您
 
 ![Click through to more data](./media/app-insights-start-monitoring-app-health-usage/12-first-perf.png)
 
-按一下任何圖表以查看詳細度量。 [進一步了解度量。][perf]
+按一下任何圖表以查看詳細度量。 [深入了解度量。][perf]
 
 #### 沒有資料？
 
@@ -203,7 +203,7 @@ SDK 需要一些協助，才能取得某些資料的存取權。 特別是，您
 * [擷取記錄追蹤][netlogs] 從您最喜愛的記錄架構
 * [追蹤自訂事件和度量][api] 用戶端或伺服器或兩者，若要深入了解如何使用您的應用程式。
 
-## <a name="ide"></a> 自動化的方式
+## <a name="ide"></a> 自動化方式
 
 我們在這份文件的開頭提過，我們會告訴您如何以手動方式建立 Application Insights 資源，然後再安裝 SDK。 我們相信這可以協助您了解該程序的兩個部分。 但對於 ASP.NET 應用程式 (以及其他許多應用程式) 而言，還有更快速的自動化方式。
 
@@ -269,4 +269,5 @@ Visual Studio 會在 Application Insights 中建立資源，將 SDK 加入至專
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-overview.md
+
 

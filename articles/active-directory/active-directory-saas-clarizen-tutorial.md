@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Clarizen 單一登入的訂用帳戶
 
-完成本教學課程之後, 您已指派給 Clarizen 的 Azure AD 使用者將能夠登入位於您 Clarizen 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Clarizen 的 Azure AD 使用者將能夠登入位於您 Clarizen 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -38,21 +38,21 @@
 
 ###若要啟用 Clarizen 的應用程式整合，請執行下列步驟：
 
-1.  在 [Azure 管理上 「 入口 」，左邊的瀏覽] 窗格中，按一下 [ **Active Directory**。
+1.  在 Azure 管理入口網站中，在左的導覽窗格中，按一下 [ **Active Directory**。
 
     ![Active Directory](./media/active-directory-saas-clarizen-tutorial/IC700993.png "Active Directory")
 
 2.  從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
-3.  若要開啟應用程式檢視，在 [目錄] 檢視中，按一下 [ **應用程式** 在最上層的功能表。
+3.  若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
 
     ![應用程式](./media/active-directory-saas-clarizen-tutorial/IC700994.png "Applications")
 
-4.  按一下 [ **新增** 在頁面底部。
+4.  按一下 [ **新增** 頁面的底部。
 
     ![新增應用程式](./media/active-directory-saas-clarizen-tutorial/IC749321.png "Add application")
 
-5.  在 **您想要** ] 對話方塊中，按一下 [ **從圖庫中新增應用程式**。
+5.  在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。
 
     ![從組件庫新增應用程式](./media/active-directory-saas-clarizen-tutorial/IC749322.png "Add an application from gallerry")
 
@@ -81,7 +81,7 @@
 
     ![設定單一登入](./media/active-directory-saas-clarizen-tutorial/IC784684.png "Configure Single Sign-On")
 
-4.  在不同的網頁瀏覽器視窗中，登入您 **Clarizen** 公司網站，以系統管理員身分 (例如: *https://app2.clarizen.com/Clarizen/Pages/Service/Login.aspx*)。
+4.  在不同的網頁瀏覽器視窗中，登入您 **Clarizen** 公司網站，以系統管理員身分 (例如 ︰ *https://app2.clarizen.com/Clarizen/Pages/Service/Login.aspx*)。
 
 5.  按一下您的使用者名稱，然後按一下 **設定**。
 
@@ -91,7 +91,7 @@
 
     ![全域設定](./media/active-directory-saas-clarizen-tutorial/IC786906.png "Global Settings")
 
-7.  在 **同盟驗證** ] 對話方塊中，執行下列步驟:
+7.  在 **同盟驗證** ] 對話方塊中，執行下列步驟 ︰
 
     ![同盟驗證](./media/active-directory-saas-clarizen-tutorial/IC785892.png "Federated Authentication")
 
@@ -101,7 +101,7 @@
     4.  選取 **使用 POST**。
     5.  按一下 [ **儲存**。
 
-8.  在 Azure 的 AD 入口網站中，選取單一的登入設定確認，然後按一下 [ **完成** 關閉 **設定單一登入** 對話方塊。
+8.  在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。
 
     ![設定單一登入](./media/active-directory-saas-clarizen-tutorial/IC784688.png "Configure Single Sign-On")
 ##設定使用者佈建
@@ -142,9 +142,10 @@ Clarizen 需以手動方式佈建。
 
     ![指派使用者](./media/active-directory-saas-clarizen-tutorial/IC784692.png "Assign Users")
 
-3.  選取您的測試使用者，請按一下 [ **指派**, ，然後按一下 [ **是** 以確認您的工作分派。
+3.  選取測試使用者，請按一下 **指派**, ，然後按一下 [ **是** 以確認您的作業。
 
     ![是](./media/active-directory-saas-clarizen-tutorial/IC767830.png "Yes")
 
-如果要測試您的單一登入設定，請開啟存取面板。 如需存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

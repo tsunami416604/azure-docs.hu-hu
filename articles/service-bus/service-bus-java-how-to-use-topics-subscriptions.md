@@ -27,7 +27,7 @@
 
 ## 設定應用程式以使用服務匯流排
 
-請確定您已安裝 [Azure SDK for Java][] 再建置此範例。 如果您使用 Eclipse，您可以安裝 [Azure Toolkit for Eclipse][] 包含 Azure SDK for Java。 您可以加入 **Microsoft Azure Libraries for Java** 至您的專案:
+請確定您已安裝 [Azure SDK for Java][] 再建置此範例。 如果您使用 Eclipse，您可以安裝 [Azure Toolkit for Eclipse][] 包含 Azure SDK for Java。 您可以加入 **Microsoft Azure Libraries for Java** 至您的專案 ︰
 
 ![](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 
@@ -74,9 +74,9 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
     }
 
 有方法 **TopicInfo** 可讓主題中的屬性
-微調 (例如: 若要設定的預設存留時間 (TTL) 值是
+微調 (例如 ︰ 若要設定的預設存留時間 (TTL) 值是
 [存留時間] 設定預設值)。 下列範例將示範如何
-若要建立名為 `TestTopic` 5 GB 的大小上限:
+若要建立名為 `TestTopic` 5 GB 的大小上限 ︰
 
     long maxSizeInMegabytes = 5120;  
     TopicInfo topicInfo = new TopicInfo("TestTopic");  
@@ -94,7 +94,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 以用來限制傳遞至訂閱的虛擬佇列的訊息
 集合。
 
-### 使用預設 (MatchAll) 篩選器建立訂用帳戶
+### 使用預設 (MatchAll) 篩選器建立訂閱
 
  **MatchAll** 篩選器是預設篩選器，如果任何篩選條件
 沒有指定篩選器，便會使用此篩選器。 當 **MatchAll**
@@ -155,7 +155,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 
 若要傳送訊息至服務匯流排主題，應用程式會取得
 **ServiceBusContract** 物件。 下列程式碼示範如何傳送
-訊息 `TestTopic` 內先前建立的主題 `HowToSample` 命名空間:
+訊息 `TestTopic` 內先前建立的主題 `HowToSample` 命名空間 ︰
 
     BrokeredMessage message = new BrokeredMessage("MyMessage");
     service.sendTopicMessage("TestTopic", message);
@@ -196,7 +196,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 
 從訂閱接收訊息的主要方式是使用
 **ServiceBusContract** 物件。 接收的訊息可在兩種不同的
-不同的模式: **ReceiveAndDelete** 和 **PeekLock**。
+不同的模式 ︰ **ReceiveAndDelete** 和 **PeekLock**。
 
 當使用 **ReceiveAndDelete** 模式中，接收是一次性
 作業；也就是說，當服務匯流排收到訊息的讀取要求時，
@@ -221,7 +221,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 它會將訊息標示為已取用，並將它從主題中移除。
 
 下列範例將示範如何
-使用處理 **PeekLock** 模式 (不是預設模式)。 下列範例
+使用處理 **PeekLock** 模式 （不是預設模式）。 下列範例
 將執行迴圈，並處理 "HighMessages" 訂閱中的訊息，然後在沒有任何訊息時結束 (您也可以將其設為等待新訊息)。
 
     try
@@ -307,7 +307,7 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
 
 刪除主題和訂閱的主要方式是使用
 **ServiceBusContract** 物件。 刪除主題也將會刪除對主題註冊的
-任何訂閱。 您也可以個別刪除訂閱。
+任何訂閱。 您也可以個別刪除訂用帳戶。
 
     // Delete subscriptions
     service.deleteSubscription("TestTopic", "AllMessages");
@@ -328,3 +328,4 @@ SAS 權杖具有權限加以管理，而 **ServiceBusContract** 類別
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx 
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
+

@@ -246,7 +246,7 @@ Dataset | RelationTableLocation | RelationalTable
  
 
 ## BlobSink 的新 copyBehavior 屬性
- **BlobSink** 支援名為的新屬性: **copyBehavior**。 這個屬性會定義複製行為，當來源 **BlobSource** 或 **FileSystem**。 有三種可能值 **copyBehavior** 屬性。 
+ **BlobSink** 支援名為的新屬性 ︰ **copyBehavior**。 這個屬性會定義複製行為，當來源 **BlobSource** 或 **FileSystem**。 有三種可能值 **copyBehavior** 屬性。 
 
 **PreserveHierarchy**:: 保留目標資料夾，亦即，來源資料夾的原始程式檔的相對路徑中的檔案階層完全相同的目標資料夾的目標檔案相對路徑。 
 
@@ -254,10 +254,10 @@ Dataset | RelationTableLocation | RelationalTable
 **FlattenHierarchy**:: 從來源資料夾的所有檔案會都出現在第一層的目標資料夾。 目標檔案會有自動產生的名稱。 
 
 
-**MergeFiles**: 會合併到一個檔案的來源資料夾的所有檔案。 如果已指定檔案/Blob 名稱，合併檔案名稱會是指定的名稱；否則，就會是自動產生的檔案名稱。 
+**MergeFiles**︰ 會合併到一個檔案的來源資料夾的所有檔案。 如果已指定檔案/Blob 名稱，合併檔案名稱會是指定的名稱；否則，就會是自動產生的檔案名稱。 
  
 ## 所有 HDInsight 活動的新 getDebugInfo 屬性
-HDInsight 活動 (Hive、 Pig、 MapReduce、 Hadoop 串流) 支援新的屬性:  **getDebugInfo** 屬性。  **GetDebugInfo** 屬性是選擇性項目。 當設定為 **失敗**, ，下載記錄檔只能在執行失敗。 當設定為 **所有**, ，無論執行狀態為何，一律下載記錄檔。 當設定為 **無**, ，會下載任何記錄檔。
+HDInsight 活動 （Hive、 Pig、 MapReduce、 Hadoop 串流） 支援新的屬性 ︰  **getDebugInfo** 屬性。  **GetDebugInfo** 屬性是選擇性項目。 當設定為 **失敗**, ，下載記錄檔只能在執行失敗。 當設定為 **所有**, ，無論執行狀態為何，一律下載記錄檔。 當設定為 **無**, ，會下載任何記錄檔。
 
   
      
@@ -265,12 +265,12 @@ HDInsight 活動 (Hive、 Pig、 MapReduce、 Hadoop 串流) 支援新的屬性:
 ## Data Factory 2015/04/10 版本的注意事項
 您會看到 **最近更新的配量** 和 **最近失敗的配量** 上列出 **資料表** 現在刀鋒視窗。 這些清單會依配量的更新時間排序。 在下列情況中，配量的更新時間會變更。    
 
--  您的配量狀態以手動方式更新，例如，使用 **組 AzureRmDataFactorySliceStatus** (或) 依序按一下 **執行** 上 **配量** 配量的分頁。
+-  您的配量狀態以手動方式更新，例如，使用 **組 AzureRmDataFactorySliceStatus** （或） 依序按一下 **執行** 上 **配量** 配量的分頁。
 -  配量因為執行而變更狀態 (例如，開始執行、執行結束但失敗、執行結束且成功等)。
 
-按一下清單的標題或 **...(省略符號)** 若要查看更長的配量清單。 按一下 [ **篩選** 篩選配量] 工具列上。
+按一下清單的標題或 **...（省略符號）** 若要查看更長的配量清單。 按一下 [ **篩選** 篩選配量] 工具列上。
  
-您仍然可以檢視配量時間排序的配量，即可 **資料配量 (依配量時間)** 並排顯示。 這些集合中的配量會依配量時間排序。 例如，如果它是每小時的排程，配量會:
+您仍然可以檢視配量時間排序的配量，即可 **資料配量 （依配量時間）** 並排顯示。 這些集合中的配量會依配量時間排序。 例如，如果它是每小時的排程，配量會 ︰
 - 2015 年 4 月 4 日下午 5 點，在進行中 
 - 2015 年 4 月 4 日下午 4 成功
 - 2015 年 4 月 4 日下午 3 點失敗
@@ -290,7 +290,7 @@ HDInsight 活動 (Hive、 Pig、 MapReduce、 Hadoop 串流) 支援新的屬性:
 -  您可以對 Azure Blob 中的文字檔案指定編碼。 請參閱新 [encodingName 屬性](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob)。 
 - 複製到 SQL 接收器時，您可以搭配其他參數來叫用預存程序。    
 
-請參閱 blob 文章: [Azure Data Factory 更新-新的資料存放區](http://azure.microsoft.com/blog/2015/03/30/azure-data-factory-update-new-data-stores/) 如需詳細資訊，包括範例。  
+請參閱 blob 文章 ︰ [Azure Data Factory 更新-新的資料存放區](http://azure.microsoft.com/blog/2015/03/30/azure-data-factory-update-new-data-stores/) 如需詳細資訊，包括範例。  
 
 ## Data Factory 2015/2/27 版本的注意事項
 
@@ -304,7 +304,7 @@ HDInsight 活動 (Hive、 Pig、 MapReduce、 Hadoop 串流) 支援新的屬性:
 ### 變更
 - 更新 **資料管理閘道器** 安裝套件已公佈 [Microsoft 下載中心][adf-gateway-download]。 從這個版本開始，您可以在此下載位置找到搭配 Azure Data Factory 使用的最新「資料管理閘道器」。 此安裝套件支援 Azure Data Factory 和 Power BI for Office 365 服務。 如果您同時使用這兩種服務，請注意，Data Factory 和 Power BI 的閘道器必須安裝在不同電腦上，並根據 Data Factory 或 Power BI 文件的指導方針，以不同方式加以設定。
 -  **複製活動** 現在支援內部部署 SQL Server 和 Azure SQL database 之間複製資料。 
-- **SqlSink** 支援新的屬性: **WriteBatchTimeout**。 這個屬性可讓您彈性地設定在批次插入作業逾時之前，要等候多久讓作業完成。 若要執行混合式複製 (複製作業涉及內部部署資料來源和雲端資料來源)，您必須有 1.4 版或更新版本的閘道器，才能使用這個屬性。 
+- **SqlSink** 支援新的屬性 ︰ **WriteBatchTimeout**。 這個屬性可讓您彈性地設定在批次插入作業逾時之前，要等候多久讓作業完成。 若要執行混合式複製 (複製作業涉及內部部署資料來源和雲端資料來源)，您必須有 1.4 版或更新版本的閘道器，才能使用這個屬性。 
 - **SQL Server 連結服務** 現在支援 **Windows 驗證**。 
     - 現在使用入口網站建立 SQL Server 連結服務時，可以選擇使用 Windows 驗證，並設定適當的認證。 您需要具有 1.4 版或更新版本的閘道器。 
     - 建立 SQL Server 連結服務時使用 Azure PowerShell，您可以指定連接資訊以純文字或加密連接資訊，使用更新 [新增 AzureRmDataFactoryEncryptValue cmdlet](https://msdn.microsoft.com/library/mt603802.aspx) 中連結的服務 JSON 承載的 Connection String 屬性然後使用加密的字串。 New-AzureRmDataFactoryEncryptValue Cmdlet 尚不支援加密功能。 
@@ -356,4 +356,5 @@ HDInsight 活動 (Hive、 Pig、 MapReduce、 Hadoop 串流) 支援新的屬性:
 
 
  
+
 

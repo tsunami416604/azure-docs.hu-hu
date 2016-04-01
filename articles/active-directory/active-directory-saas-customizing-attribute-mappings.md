@@ -30,7 +30,7 @@ Microsoft Azure AD 支援使用者佈建到例如 Salesforce、Google Apps 等�
 > [AZURE.NOTE]  **屬性** 連結，才可以使用，如果您有個 SaaS 應用程式啟用使用者佈建。 
 
 
-![] Salesforce[] 1 
+![Salesforce][1] 
 
 
 當您按一下工具列的 [屬性] 時，就會出現目前為 SaaS 應用程式設定的對應清單。
@@ -39,7 +39,7 @@ Microsoft Azure AD 支援使用者佈建到例如 Salesforce、Google Apps 等�
 
 
 
-![] Salesforce[] 2  
+![Salesforce][2]  
 
 
 在上述範例中，您可以看到， **firstName** 在 Salesforce 中的受管理物件的屬性會填入 **givenName** de Azure AD 物件。
@@ -47,7 +47,7 @@ Microsoft Azure AD 支援使用者佈建到例如 Salesforce、Google Apps 等�
 如果您想要自訂屬性對應，或如果您想要將自訂設定還原為預設組態，可以依序按一下應用程式底部工具列中的相關按鈕。
 
 
-![] Salesforce[] 3  
+![Salesforce][3]  
 
 
 SaaS 應用程式需要有幾個屬性對應才能正確運作。 
@@ -56,7 +56,7 @@ SaaS 應用程式需要有幾個屬性對應才能正確運作。
 若要修改現有的屬性對應，只要選取對應，以及 [ **編輯**。 此時會顯示一個對話方塊頁面，讓您修改選取的屬性對應。
 
 
-![編輯屬性對應][] 4  
+![編輯屬性對應][4]  
 
 
 
@@ -97,4 +97,5 @@ Microsoft Azure AD 提供非常有效率的同步處理程序實作。
 [2]: ./media/active-directory-saas-customizing-attribute-mappings/ic775419.png
 [3]: ./media/active-directory-saas-customizing-attribute-mappings/ic775420.png
 [4]: ./media/active-directory-saas-customizing-attribute-mappings/ic775421.png
+
 

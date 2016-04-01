@@ -51,16 +51,16 @@ Twilio 動詞是指示 Twilio 如何的 XML 標記 **執行**。 例如， **& l
 
 以下是 Twilio 動詞清單。
 
-* **& l t; 撥 & gt;**: 接通另一支電話。
-* **& l t;收集 & gt;**: 收集電話按鍵上輸入的數字。
-* **& l t;掛斷 & gt;**: 結束通話。
-* **& l t;播放 & gt;**: 播放音訊檔案。
-* **& l t;暫停 & gt;**: 靜候指定的秒數。
-* **& l t;記錄和 gt;**: 錄製來電者的語音並傳回含有錄音的檔案 URL。
-* **& l t;重新導向 & gt;**: 將通話或簡訊的控制權移轉至 TwiML 不同的 URL。
-* **& l t;拒絕 & gt;**: 拒絕 Twilio 號碼的來電而不計費
-* **& l t;Y & gt;**: 將文字轉換成語音的呼叫。
-* **& l t;Sms & gt;**: 傳送簡訊。
+* **& l t; 撥 & gt;**︰ 接通另一支電話。
+* **& l t;收集 & gt;**︰ 收集電話按鍵上輸入的數字。
+* **& l t;掛斷 & gt;**︰ 結束通話。
+* **& l t;播放 & gt;**︰ 播放音訊檔案。
+* **& l t;暫停 & gt;**︰ 靜候指定的秒數。
+* **& l t;記錄和 gt;**︰ 錄製來電者的語音並傳回含有錄音的檔案 URL。
+* **& l t;重新導向 & gt;**︰ 將通話或簡訊的控制權移轉至 TwiML 不同的 URL。
+* **& l t;拒絕 & gt;**︰ 拒絕 Twilio 號碼的來電而不計費
+* **& l t;Y & gt;**︰ 將文字轉換成語音的呼叫。
+* **& l t;Sms & gt;**︰ 傳送簡訊。
 
 如需 Twilio 動詞命令、 其屬性和 TwiML 的詳細資訊，請參閱 [TwiML] [twiml]。 如需 Twilio API 的詳細資訊，請參閱 [Twilio API] [twilio_api]。
 
@@ -108,7 +108,7 @@ Twilio 動詞是指示 Twilio 如何的 XML 標記 **執行**。 例如， **& l
 
 至此一切皆已就緒，您可以在 Web 應用程式中使用適用於 Ruby 的 Twilio 協助程式程式庫。
 
-## <a id="howto_make_call"></a>如何: 撥出電話
+## <a id="howto_make_call"></a>作法：撥出電話
 下列程式碼將說明如何向外撥打電話。 主要的概念包括使用適用於 Ruby 的 Twilio 協助程式程式庫，來撥打 REST API 電話以及轉譯 TwiML。 換成您的值 **從** 和 **至** 電話號碼，並確保您確認 **從** 電話號碼 Twilio 帳戶執行程式碼之前。
 
 將此函數新增至 `web.md`：
@@ -145,7 +145,7 @@ Twilio 動詞是指示 Twilio 如何的 XML 標記 **執行**。 例如， **& l
 
 第三個參數 (`url`) 是 Twilio 要求取得相關指示以得知在電話接通時應執行何種動作的 URL。 在此案例中，我們設定的 URL (`http://yourdomain.cloudapp.net`) 會傳回簡易的 TwiML 文件，並使用 `<Say>` 動詞來執行文字轉換成語音的動作，對接聽電話的人說出 "Hello Monkey"。
 
-## <a id="howto_recieve_sms"></a>如何: SMS 簡訊
+## <a id="howto_recieve_sms"></a>如何：接收 SMS 簡訊
 在上述範例中，我們撥打 **傳出** 撥打電話。 這次，我們將使用 Twilio 期間提供給我們的電話號碼註冊程序 **傳入** SMS 訊息。
 
 首先，請登入您 [Twilio 儀表板][twilio_account]。 在頂端的導覽區中按一下「號碼」，然後按一下 Twilio 提供給您的號碼。 您會看見兩個可以設定的 URL。 語音要求 URL 和簡訊要求 URL。 這是在撥打電話或傳送簡訊至您的號碼時，Twilio 所將呼叫的 URL。 這些 URL 也稱為 "Web hook"。
@@ -160,7 +160,7 @@ Twilio 動詞是指示 Twilio 如何的 XML 標記 **執行**。 例如， **& l
 
 進行變更後，請確實重新啟動 Web 應用程式。 現在，請拿起電話，傳送簡訊至您的 Twilio 號碼。 您應會立即收到簡訊回應，顯示 "Hey, thanks for the ping! Twilio and Azure rock!"。
 
-## <a id="additional_services"></a>如何: 使用其他 Twilio 服務
+## <a id="additional_services"></a>如何：使用其他 Twilio 服務
 除了此處所示的範例以外，Twilio 還提供網頁式 API，方便您從 Azure 應用程式中充份利用其他 Twilio 功能。 完整的詳細資訊，請參閱 [Twilio API 文件] [twilio_api_documentation]。
 
 ### <a id="NextSteps"></a>後續步驟
@@ -194,4 +194,5 @@ Twilio 動詞是指示 Twilio 如何的 XML 標記 **執行**。 例如， **& l
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
 [azure_vm_setup]: http://www.windowsazure.com/develop/ruby/tutorials/web-app-with-linux-vm/
+
 

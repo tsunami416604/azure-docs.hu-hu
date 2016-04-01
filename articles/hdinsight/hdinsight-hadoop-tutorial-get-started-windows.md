@@ -74,24 +74,24 @@ HDInsight 版本相關的 Sla，請參閱
 
     ![輸入叢集名稱和類型](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.2.png "Enter cluster name and type")
     
-    |欄位名稱| 值|
-    |----------|------|
-    |叢集名稱| 用來識別叢集的唯一名稱|
-    |叢集類型| 選取 **Hadoop** 本教學課程。 |
-    |叢集作業系統| 選取 **Windows Server 2012 R2 Datacenter** 本教學課程。|
-    |HDInsight 版本| 請為本教學課程選取最新的版本。|
-    |訂閱| 請選取將用於此叢集的 Azure 訂用帳戶。|
-    |資源群組 | 請選取現有的 Azure 資源群組，或建立新的資源群組。 基本的 HDInsight 叢集包含一個叢集，以及它的預設儲存體帳戶。  您可以把兩個叢集組成一個資源群組來方便管理。|
-    |認證| 請輸入叢集登入使用者名稱和密碼。 以 Windows 為基礎的叢集可以有 2 個使用者帳戶。  系統會利用叢集使用者 (或 HTTP 使用者) 來管理叢集及提交工作。  (選用) 您可以建立遠端桌面 (RDP) 使用者帳戶，以便遠端連線到叢集。 如果您選擇啟用遠端桌面，您將建立 RDP 使用者帳戶。|
-    |資料來源| 請按一下 [建立新項目] 來建立新的預設 Azure 儲存體帳戶。 請把叢集名稱當做預設的容器名稱。 每個 HDinsight 叢集在 Azure 儲存體帳戶中都有一個預設的 Blob 容器。  而預設 Azure 儲存體帳戶的位置，會決定 HDInsight 叢集的位置。|
-    |節點定價層| 請為本教學課程搭配預設背景工作角色節點和前端節點訂價層來使用 1 或 2 個背景工作節點。|
-    |選用組態| 請略過這部分。|
+  	|欄位名稱| 值|
+  	|----------|------|
+  	|叢集名稱| 用來識別叢集的唯一名稱|
+  	|叢集類型| 選取 **Hadoop** 本教學課程。 |
+  	|叢集作業系統| 選取 **Windows Server 2012 R2 Datacenter** 本教學課程。|
+  	|HDInsight 版本| 請為本教學課程選取最新的版本。|
+  	|訂閱| 請選取將用於此叢集的 Azure 訂用帳戶。|
+  	|資源群組 | 請選取現有的 Azure 資源群組，或建立新的資源群組。 基本的 HDInsight 叢集包含一個叢集，以及它的預設儲存體帳戶。  您可以把兩個叢集組成一個資源群組來方便管理。|
+  	|認證| 請輸入叢集登入使用者名稱和密碼。 以 Windows 為基礎的叢集可以有 2 個使用者帳戶。  系統會利用叢集使用者 (或 HTTP 使用者) 來管理叢集及提交工作。  (選用) 您可以建立遠端桌面 (RDP) 使用者帳戶，以便遠端連線到叢集。 如果您選擇啟用遠端桌面，您將建立 RDP 使用者帳戶。|
+  	|資料來源| 請按一下 [建立新項目] 來建立新的預設 Azure 儲存體帳戶。 請把叢集名稱當做預設的容器名稱。 每個 HDinsight 叢集在 Azure 儲存體帳戶中都有一個預設的 Blob 容器。  而預設 Azure 儲存體帳戶的位置，會決定 HDInsight 叢集的位置。|
+  	|節點定價層| 請為本教學課程搭配預設背景工作角色節點和前端節點訂價層來使用 1 或 2 個背景工作節點。|
+  	|選用組態| 請略過這部分。|
 
 9. 在 **新的 HDInsight 叢集** 刀鋒視窗中，確定 **釘選到開始面板** 已選取，然後按一下 [ **建立**。 這將會建立叢集，並將該叢集磚加入到您 Azure 入口網站的「開始面板」。 該圖示會顯示叢集正在建立中，並會在叢集建立完成時變更為 HDInsight 圖示。
 
-    | 在建立期間 | 建立完成 |
-    | ------------------ | --------------------- |
-    | ![「開始面板」上的建立指示器](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioning.png) | ![已建立叢集磚](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioned.png) |
+  	| 在建立期間 | 建立完成 |
+  	| ------------------ | --------------------- |
+  	| ![「開始面板」上的建立指示器](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioning.png) | ![已建立叢集磚](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioned.png) |
 
     > [AZURE.NOTE] 需要花一些時間，叢集才會建立，通常約 15 分鐘的時間。 在開始面板中，使用 [] 磚或 **通知** 左邊頁面，檢視建立程序上的項目。
 
@@ -135,8 +135,8 @@ HDInsight 版本相關的 Sla，請參閱
 **瀏覽至輸出檔案**
 
 1. 在叢集儀表板中，按一下 [ **檔案瀏覽器**。
-2. 按一下 [儲存體帳戶名稱，按一下 [容器名稱 (這是您的叢集名稱相同)，然後按一下 [ **使用者**。
-3. 按一下 [ **管理員** 然後按一下其上次修改時間 (有點晚於工作開始的時間稍早所述) 的 GUID。 複製此 GUID。 您在下一節將會用到此號碼。
+2. 按一下 [儲存體帳戶名稱，按一下 [容器名稱 （這是您的叢集名稱相同），然後按一下 [ **使用者**。
+3. 按一下 [ **管理員** 然後按一下其上次修改時間 （有點晚於工作開始的時間稍早所述） 的 GUID。 複製此 GUID。 您在下一節將會用到此號碼。
 
 
     ![The Hive query output file GUID listed in the File Browser tab.][img-hdi-dashboard-query-browse-output]
@@ -262,3 +262,4 @@ HDInsight 叢集會提供查詢主控台，其中包括快速入門組件庫，�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
+

@@ -43,15 +43,15 @@
     OperationStatus      : Succeeded
 
 ## 建立 VM 時如何指定靜態私人 IP 位址
-下列 PowerShell 指令碼會建立新的雲端服務，名為 *TestService*, ，然後從 Azure 擷取映像，建立名為 VM *DNS01* 新的雲端服務中使用擷取的映像設定名為子網路中的 VM *前端*, ，並設定 *從 192.168.1.7* VM 的靜態私人 IP 位址為:
+下列 PowerShell 指令碼會建立新的雲端服務，名為 *TestService*, ，然後從 Azure 擷取映像，建立名為 VM *DNS01* 新的雲端服務中使用擷取的映像設定名為子網路中的 VM *前端*, ，並設定 *從 192.168.1.7* VM 的靜態私人 IP 位址為 ︰
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
     New-AzureVMConfig -Name DNS01 -InstanceSize Small -ImageName $image.ImageName `
-    | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
-    | Set-AzureSubnet –SubnetNames FrontEnd `
-    | Set-AzureStaticVNetIP -IPAddress 192.168.1.7 `
-    | New-AzureVM -ServiceName "TestService" –VNetName TestVNet
+  	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
+  	| Set-AzureSubnet –SubnetNames FrontEnd `
+  	| Set-AzureStaticVNetIP -IPAddress 192.168.1.7 `
+  	| New-AzureVM -ServiceName "TestService" –VNetName TestVNet
 
 預期的輸出：
 
@@ -99,8 +99,8 @@
 若要移除上述指令碼中新增至 VM 的靜態私人 IP 位址，請執行下列 PowerShell 命令：
     
     Get-AzureVM -ServiceName TestService -Name DNS01 `
-    | Remove-AzureStaticVNetIP `
-    | Update-AzureVM
+  	| Remove-AzureStaticVNetIP `
+  	| Update-AzureVM
 
 預期的輸出：
 
@@ -112,8 +112,8 @@
 若要將靜態私人 IP 位址新增至使用上述指令碼建立之 VM，請執行下列命令：
 
     Get-AzureVM -ServiceName TestService -Name DNS01 `
-    | Set-AzureStaticVNetIP -IPAddress 192.168.1.7 `
-    | Update-AzureVM
+  	| Set-AzureStaticVNetIP -IPAddress 192.168.1.7 `
+  	| Update-AzureVM
 
 預期的輸出：
 
@@ -126,3 +126,4 @@
 - 深入了解 [保留公用 IP](../virtual-networks-reserved-public-ip) 位址。
 - 深入了解 [執行個體層級公用 IP (ILPIP)](../virtual-networks-instance-level-public-ip) 位址。
 - 請參閱 [保留的 IP REST Api](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
+

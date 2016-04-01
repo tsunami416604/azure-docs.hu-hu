@@ -24,7 +24,7 @@ Azure DNS 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構提
 
 Azure DNS 中的 DNS 網域裝載於 Azure 的 DNS 名稱伺服器全球網路。  我們使用「任一傳播」網路，所以每個 DNS 查詢是由最接近的可用 DNS 伺服器回答。 這為您的網域提供快速的效能與高可用性。
 
-此服務是以 Azure 資源管理員 (ARM) 為基礎。  您可以透過 Azure 資源管理員 REST API、.NET SDK、PowerShell Cmdlet 和命令列介面，以管理您的網域和記錄。  Azure DNS 目前為預覽狀態，在 Azure 管理入口網站中尚不支援。<BR><BR>
+此服務是以 Azure 資源管理員 (ARM) 為基礎。  您可以透過 Azure 資源管理員 REST API、.NET SDK、PowerShell Cmdlet 和命令列介面，以管理您的網域和記錄。  Azure DNS 目前為預覽狀態，並尚不支援在 Azure 管理入口網站。<BR><BR>
 Azure DNS 目前不支援購買網域名稱。  若要購買網域，您洽詢第三方網域名稱註冊機構，通常會收取些微年費。  這些網域可以再裝載在 Azure DNS 來管理 DNS 記錄，請參閱 [將網域委派給 Azure DNS](dns-domain-delegation.md) 如需詳細資訊。
 
 
@@ -40,3 +40,4 @@ Azure DNS 目前不支援購買網域名稱。  若要購買網域，您洽詢�
 
 
  
+

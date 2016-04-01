@@ -49,7 +49,7 @@
 - 服務提供者佈建狀態
 - Status
 
-Status 代表 Microsoft 的佈建狀態。 這個屬性可以是下列狀態之一: *啟用*, ，*啟用*, ，或 *停用*。 ExpressRoute 線路必須處於 Enabled 狀態，才可供您使用。
+Status 代表 Microsoft 的佈建狀態。 這個屬性可以是下列狀態之一 ︰ *啟用*, ，*啟用*, ，或 *停用*。 ExpressRoute 線路必須處於 Enabled 狀態，才可供您使用。
 
 連線提供者佈建狀態代表連線提供者那端的狀態。 它可以是 *NotProvisioned*, ，*佈建*, ，或 *已佈建*。 ExpressRoute 線路必須處於 Provisioned 狀態，才可供您使用。
 
@@ -89,7 +89,7 @@ Status 代表 Microsoft 的佈建狀態。 這個屬性可以是下列狀態之�
     ServiceProviderProvisioningState : Provisioned
     Status                           : Disabling
 
-您必須連線連線提供者來取消佈建 ExpressRoute 線路。 **重要事項:** Microsoft 將繼續進行收費循環，直到您執行 PowerShell cmdlet，以取消佈建電路。
+您必須連線連線提供者來取消佈建 ExpressRoute 線路。 **重要事項 ︰** Microsoft 將繼續進行收費循環，直到您執行 PowerShell cmdlet，以取消佈建電路。
 
 #### 如果在服務提供者那端起始取消佈建
 
@@ -99,7 +99,7 @@ Status 代表 Microsoft 的佈建狀態。 這個屬性可以是下列狀態之�
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
-如有需要，您可以選擇重新啟用線路，或執行 PowerShell Cmdlet 刪除線路。 **重要事項:** Microsoft 將繼續進行收費循環，直到您執行 PowerShell cmdlet，以取消佈建電路。
+如有需要，您可以選擇重新啟用線路，或執行 PowerShell Cmdlet 刪除線路。 **重要事項 ︰** Microsoft 將繼續進行收費循環，直到您執行 PowerShell cmdlet，以取消佈建電路。
 
 
 ## 路由工作階段組態狀態
@@ -119,4 +119,5 @@ BGP 佈建狀態可讓您知道 Microsoft 邊緣是否已啟用 BGP 工作階段
 
     - [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)
     - [設定路由](expressroute-howto-routing-classic.md)
-    - [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)
+    - [將 VNet 連結到 ExpressRoute 循環](expressroute-howto-linkvnet-classic.md)
+

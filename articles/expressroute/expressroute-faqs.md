@@ -28,7 +28,7 @@ ExpressRoute 連線不會經過公用網際網路，相較於網際網路一般�
 ExpressRoute 目前支援大多數的 Microsoft Azure 服務，包括 Office 365。  搜尋近期是否有公開上市的更新。
 
 ### 哪裡可以使用此服務？
-請參閱本頁以取得服務位置和可用性: [ExpressRoute 合作夥伴和位置](expressroute-locations.md)。
+請參閱本頁以取得服務位置和可用性 ︰ [ExpressRoute 合作夥伴和位置](expressroute-locations.md)。
 
 ### 如果我和其中一個 ExpressRoute 載波合作夥伴沒有合作關係，我要如何使用 ExpressRoute 來與 Microsoft 連線？
 您可以在區域載波和陸地乙太網路連線中選取其中一個支援的 Exchange 提供者位置。 您接著可以在提供者位置上與 Microsoft 對等互連。 檢查的最後一個區段 [ExpressRoute 合作夥伴和位置](expressroute-locations.md) 服務提供者是否存在於任何 Exchange 位置中。 您接著可以訂購一個 ExpressRoute 電路，透過服務提供者連線至 Azure。
@@ -178,7 +178,7 @@ ExpressRoute Premium 是下面所列功能的集合。
 
  - 將公用對等互連和私人對等互連的路由表限制，從 4000 個路由提高到 10,000 個路由。
  - 提高可連線到 ExpressRoute 電路的 VNet 數目 (預設值為 10)。 如需詳細資訊，請參閱下表。
- - 透過 Microsoft 核心網路的全球連線。 您現在能夠將某一個地緣政治區域中的 VNet 與另一個區域中的 ExpressRoute 電路連結。 **範例:** 您可以將在歐洲西部建立至在矽谷建立的 ExpressRoute 電路的 VNet 連結。
+ - 透過 Microsoft 核心網路的全球連線。 您現在能夠將某一個地緣政治區域中的 VNet 與另一個區域中的 ExpressRoute 電路連結。 **範例 ︰** 您可以將在歐洲西部建立至在矽谷建立的 ExpressRoute 電路的 VNet 連結。
 
 ### 如果已啟用 ExpressRoute Premium，我可以將多少個 VNet 連結至 ExpressRoute 電路？
 下表提供針對可連結至 ExpressRoute 電路的 VNet 數目所提高的限制。 預設限制為 10
@@ -258,4 +258,5 @@ ExpressRoute Premium 是下面所列功能的集合。
 ### 即使 ExpressRoute 已設定供我的組織使用，我是否可以透過網際網路存取 Office 365？
 是。 即使 ExpressRoute 已設定供我的組織使用，您仍可以透過網際網路存取 Office 365 服務端點。 如果所處位置已設定透過 ExpressRoute 連線到 Office 365 服務，您將會透過 ExpressRoute 進行連線。
  
+
 

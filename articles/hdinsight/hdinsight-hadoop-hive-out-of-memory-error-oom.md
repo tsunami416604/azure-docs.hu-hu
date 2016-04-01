@@ -88,7 +88,7 @@
 
     When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesnt take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
 
-我們確認 **hive.auto.convert.join.noconditionaltask** 確實設定為 **true** 下方 hive-site.xml 檔案:
+我們確認 **hive.auto.convert.join.noconditionaltask** 確實設定為 **true** 下方 hive-site.xml 檔案 ︰
 
     <property>
         <name>hive.auto.convert.join.noconditionaltask</name>
@@ -104,10 +104,10 @@
 
 部落格文章中所述 [在 HDInsight 中的 Hadoop Yarn 記憶體設定](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), 、 Tez 執行引擎會使用堆積時使用的空間確實是屬於 Tez 容器。 請參閱下表，其中會說明 Tez 容器記憶體。
 
-![Tez 容器記憶體圖表: 記憶體不足的錯誤 OOM hive 控制檔](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![Tez 容器記憶體圖表 ︰ 記憶體不足的錯誤 OOM hive 控制檔](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
 
-如部落格文章所示，下列兩個記憶體設定會定義容器記憶體堆積: **hive.tez.container.size** 和 **hive.tez.java.opts**。 從我們的經驗來看，OOM 例外狀況不表示容器大小太小。 它表示 Java 堆積大小 (hive.tez.java.opts) 太小。 每當您看到 OOM，您可嘗試增加 **hive.tez.java.opts**。 必要時您可能需要增加 **hive.tez.container.size**。  **Java.opts** 設定應該大約 80%的 **container.size**。
+如部落格文章所示，下列兩個記憶體設定會定義容器記憶體堆積 ︰ **hive.tez.container.size** 和 **hive.tez.java.opts**。 從我們的經驗來看，OOM 例外狀況不表示容器大小太小。 它表示 Java 堆積大小 (hive.tez.java.opts) 太小。 每當您看到 OOM，您可嘗試增加 **hive.tez.java.opts**。 必要時您可能需要增加 **hive.tez.container.size**。  **Java.opts** 設定應該大約 80%的 **container.size**。
 
 > [AZURE.NOTE]  設定 **hive.tez.java.opts** 必須一律小於 **hive.tez.container.size**。
 
@@ -121,4 +121,5 @@
 ## 結論：OOM 錯誤和容器大小
 
 遇到 OOM 錯誤不一定表示容器大小太小。 相反地，您應該設定記憶體設定，如此一來即可增加堆積大小，至少是容器記憶體大小的 80%。
+
 

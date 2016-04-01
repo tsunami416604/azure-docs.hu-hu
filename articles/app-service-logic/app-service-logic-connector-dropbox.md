@@ -49,16 +49,16 @@ None | <ul><li>刪除檔案</li><li>取得檔案</li><li>上傳檔案</li><li>�
 ## 在邏輯應用程式中使用 Dropbox 連接器
 建立 API 應用程式之後，您現在可以使用 Dropbox 連接器做為邏輯應用程式的動作。 作法：
 
-1.  邏輯應用程式中開啟 **觸發程序和動作** 以開啟邏輯應用程式設計工具並設定您的流程:  
+1.  邏輯應用程式中開啟 **觸發程序和動作** 以開啟邏輯應用程式設計工具並設定您的流程 ︰  
     ![][3]
-2.  Dropbox 連接器會列在組件庫:  
+2.  Dropbox 連接器會列在組件庫 ︰  
     ![][4]
 3.  選取 Dropbox 連接器以自動加入至設計工具。 選取 **授權**, 、 輸入您的認證，然後選取 **允許**:  
     ![][5]
     ![][6]
     ![][7]
 
-您現在便可以在流程中使用 Dropbox 連接器。 您可以使用 Dropbox 動作 [上傳檔案] 檔案上傳至您的 Dropbox 帳戶:  
+您現在便可以在流程中使用 Dropbox 連接器。 您可以使用 Dropbox 動作 [上傳檔案] 檔案上傳至您的 Dropbox 帳戶 ︰  
     ![][8]
     ![][9]
 
@@ -70,9 +70,9 @@ None | <ul><li>刪除檔案</li><li>取得檔案</li><li>上傳檔案</li><li>�
 - **覆寫** -指定 [true] 覆寫已存在的檔案。
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -88,4 +88,5 @@ None | <ul><li>刪除檔案</li><li>取得檔案</li><li>上傳檔案</li><li>�
 [7]: ./media/app-service-logic-connector-dropbox/img7.PNG
 [8]: ./media/app-service-logic-connector-dropbox/img8.PNG
 [9]: ./media/app-service-logic-connector-dropbox/img9.PNG
+
 

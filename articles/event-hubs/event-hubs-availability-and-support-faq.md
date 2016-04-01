@@ -73,7 +73,7 @@
 
 ## 代理連線費用適用於事件中樞嗎？
 
-對傳送者來說，只有在使用 AMQP 通訊協定時才需要支付連線費用。 不論傳送系統或裝置的數目多寡，使用 HTTP 來傳送事件不需要支付連線費用。 如果您打算使用 AMQP (例如，以達到更有效率的事件串流，或啟用雙向通訊物聯網命令和控制案例)，請參閱 [服務匯流排定價資訊](http://azure.microsoft.com/pricing/details/service-bus/) 頁面以取得構成代理的連線，和其計量方式的相關資訊。
+對傳送者來說，只有在使用 AMQP 通訊協定時才需要支付連線費用。 不論傳送系統或裝置的數目多寡，使用 HTTP 來傳送事件不需要支付連線費用。 如果您打算使用 AMQP （例如，以達到更有效率的事件串流，或啟用雙向通訊物聯網命令和控制案例），請參閱 [服務匯流排定價資訊](http://azure.microsoft.com/pricing/details/service-bus/) 頁面以取得構成代理的連線，和其計量方式的相關資訊。
 
 ## 事件中樞基本層和標準層之間的差異為何？
 
@@ -109,4 +109,5 @@
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [queued messaging solution]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+
 

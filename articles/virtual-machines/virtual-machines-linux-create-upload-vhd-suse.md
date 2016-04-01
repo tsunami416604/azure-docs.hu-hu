@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-##先決條件##
+##必要條件##
 
 本文假設您已將 SUSE 或 openSUSE Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 HYPER-V 角色和設定虛擬機器](http://technet.microsoft.com/library/hh846766.aspx)。
 
@@ -31,7 +31,7 @@
   - [SUSE Studio 程式庫上的 openSUSE 13.1 for Azure (英文)](https://susestudio.com/a/02kbT4/opensuse-13-1-for-windows-azure)
 
 
-- 除了建置您自己的 VHD，SUSE 也發佈 BYOS (將您自己的訂閱) 映像在 sles [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007)。
+- 除了建置您自己的 VHD，SUSE 也發佈 BYOS （將您自己的訂閱） 映像在 sles [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007)。
 
 
 **SLES / openSUSE 安裝注意事項**
@@ -150,7 +150,7 @@
 
         DHCLIENT_SET_HOSTNAME="no"
 
-8.  **重要事項:** 在"/etc/sudoers"，註解化或移除下列幾行，如果有:
+8.  **重要事項 ︰** 在"/etc/sudoers"，註解化或移除下列幾行，如果有 ︰
 
         Defaults targetpw   # ask for the password of the target user i.e. root
         ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
@@ -178,4 +178,5 @@
         # sudo systemctl enable waagent.service
 
 13. 按一下 [ **動作]-> [關閉下** HYPER-V 管理員中。 您現在可以將 Linux VHD 上傳至 Azure。
+
 

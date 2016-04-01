@@ -24,7 +24,7 @@
 
 下列範例顯示：
 
-1.  連結的服務型別的 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) (用於資料表和 blob)。
+1.  連結的服務型別的 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) （用於資料表和 blob）。
 2.  輸入 [資料集](data-factory-create-datasets.md) 型別的 [AzureTable](#azure-table-dataset-type-properties)。
 3.  輸出 [資料集](data-factory-create-datasets.md) 型別的 [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)。 
 3.   [管線](data-factory-create-pipelines.md) 具有複製活動使用 [AzureTableSource](#azure-table-copy-activity-type-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties)。 
@@ -183,7 +183,7 @@
 
 下列範例顯示：
 
-1.  連結的服務型別的 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) (用於資料表和 blob)
+1.  連結的服務型別的 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) （用於資料表和 blob）
 3.  輸入 [資料集](data-factory-create-datasets.md) 型別的 [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)。
 4.  輸出 [資料集](data-factory-create-datasets.md) 型別的 [AzureTable](#azure-table-dataset-type-properties)。 
 4.   [管線](data-factory-create-pipelines.md) 具有複製活動使用 [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) 和 [AzureTableSink](#azure-table-copy-activity-type-properties)。 
@@ -365,14 +365,14 @@
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
-**AzureTableSource** typeProperties 區段中支援下列屬性:
+**AzureTableSource** typeProperties 區段中支援下列屬性 ︰
 
 屬性 | 說明 | 允許的值 | 必要
 -------- | ----------- | -------------- | -------- 
-azureTableSourceQuery | 使用自訂查詢來讀取資料。 | <p>Azure 資料表查詢字串。</p>**範例:**<br/> "azureTableSourceQuery":"PartitionKey eq 'DefaultPartitionKey'" <br/><br/>"azureTableSourceQuery":"$$Text.Format ('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\ '和 PartitionKey le \\'{0:yyyyMMddHH00_9999}\\')', SliceStart) 」 | 否
+azureTableSourceQuery | 使用自訂查詢來讀取資料。 | <p>Azure 資料表查詢字串。</p>**範例：**<br/> "azureTableSourceQuery":"PartitionKey eq 'DefaultPartitionKey' 」 <br/><br/>「 azureTableSourceQuery 」: 「 $$Text.Format ('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\ '和 PartitionKey le \\'{0:yyyyMMddHH00_9999}\\')', SliceStart) 」 | 否
 azureTableSourceIgnoreTableNotFound | 指出是否忍受資料表不存在的例外狀況。 | TRUE<br/>FALSE | 否 |
 
-**AzureTableSink** typeProperties 區段中支援下列屬性:
+**AzureTableSink** typeProperties 區段中支援下列屬性 ︰
 
 
 屬性 | 說明 | 允許的值 | 必要  
@@ -503,6 +503,7 @@ lastlogindate | Edm.DateTime
 
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+
 
 
 

@@ -368,7 +368,7 @@
 
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
-| 類型 | Type 屬性必須設定為: **AzureStorage** | 是 |
+| 類型 | Type 屬性必須設定為 ︰ **AzureStorage** | 是 |
 | connectionString | 針對 connectionString 屬性指定連接到 Azure 儲存體所需的資訊。 您可以從 Azure 傳統入口網站取得 Azure 儲存體的 connectionString。 | 是 |
 
 ## Azure Blob 資料集類型屬性
@@ -380,13 +380,13 @@
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- | 
 | folderPath | Blob 儲存體中容器和資料夾的路徑。 範例：myblobcontainer\myblobfolder\ | 是 |
-| fileName | <p>Blob 的名稱。 檔案名稱是選擇性的。 </p><p>如果您指定檔案名稱，活動 (包括複製) 適用於特定的 Blob。</p><p>未指定 fileName 時，複本會將輸入資料集的 folderPath 包含所有 Blob。</p><p>檔案名稱未指定輸出資料集，所產生檔案的名稱會在下列這種格式: 資料。<Guid>.txt (例如:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p> | 否 |
+| fileName | <p>Blob 的名稱。 檔案名稱是選擇性的。 </p><p>如果您指定檔案名稱，活動 （包括複製） 適用於特定的 Blob。</p><p>未指定 fileName 時，複本會將輸入資料集的 folderPath 包含所有 Blob。</p><p>檔案名稱未指定輸出資料集，所產生檔案的名稱會在下列這種格式 ︰ 資料。<Guid>.txt (例如:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p> | 否 |
 | partitionedBy | partitionedBy 是選擇性的屬性。 您可以用來指定時間序列資料的動態 folderPath 和 filename。 例如，folderPath 可針對每小時的資料進行參數化。 請參閱 [運用 partitionedBy 屬性區段](#Leveraging-partitionedBy-property) 如下如需詳細資訊。 | 否
-| format | 支援兩種格式類型: **TextFormat**, ，**AvroFormat**。 您需要將格式底下的 type 屬性設定為這些值。 如果格式為 TextFormat，您可以指定格式的其他選擇性屬性。 請參閱 [指定 TextFormat](#specifying-textformat) 下面章節以取得詳細資料。 | 否
+| format | 支援兩種格式類型 ︰ **TextFormat**, ，**AvroFormat**。 您需要將格式底下的 type 屬性設定為這些值。 如果格式為 TextFormat，您可以指定格式的其他選擇性屬性。 請參閱 [指定 TextFormat](#specifying-textformat) 下面章節以取得詳細資料。 | 否
 | compression | 指定此資料的壓縮類型和層級。 支援的類型為：GZip、Deflate 和 BZip2，而支援的層級為：最佳和最快。 請參閱 [壓縮支援](#compression-support) 一節以取得詳細資料。  | 否 |
 
 ### 運用 partitionedBy 屬性
-如上所述，您可以指定的動態 folderPath 和 filename 時間序列資料 **partitionedBy** 區段、 Data Factory 巨集和系統變數: SliceStart 和 SliceEnd，表示指定的資料配量的開始和結束時間。
+如上所述，您可以指定的動態 folderPath 和 filename 時間序列資料 **partitionedBy** 區段、 Data Factory 巨集和系統變數 ︰ SliceStart 和 SliceEnd，表示指定的資料配量的開始和結束時間。
 
 請參閱 [Data Factory 系統變數](data-factory-scheduling-and-execution.md#data-factory-system-variables) 和 [Data Factory 函式參考](data-factory-scheduling-and-execution.md#data-factory-functions-reference) 來了解 Data Factory 系統變數和函式，您可以使用 partitionedBy 一節。   
 
@@ -424,10 +424,10 @@
 | -------- | ----------- | -------- |
 | columnDelimiter | 在檔案中做為資料行分隔符號的字元。此標記是選擇性的。 預設值是逗號 (,)。 | 否 |
 | rowDelimiter | 在檔案中做為資料列分隔符號的字元。 此標記是選擇性的。 預設值是下列任一項：[“\r\n”, “\r”,” \n”]。 | 否 |
-| escapeChar | <p>用來逸出內容中顯示之資料行分隔符號的特殊字元。 此標記是選擇性的。 沒有預設值。 您必須指定這個屬性不能超過一個字元。</p><p>比方說，如果您以逗號 (，) 做為資料行分隔符號，但您想要有逗號字元的文字 (範例:"Hello，world")，您可以定義 '$' 做為逸出字元，並使用字串"Hello$，world"中的來源。</p><p>請注意，您無法指定 escapeChar 和 quoteChar 資料表。</p> | 否 | 
-| quoteChar | <p>用來引用字串值的特殊字元。 引號字元內的資料行和資料列分隔符號會被視為字串值的一部分。 此標記是選擇性的。 沒有預設值。 您必須指定這個屬性不能超過一個字元。</p><p>比方說，如果您以逗號 (，) 做為資料行分隔符號，但您想要有逗號字元的文字 (範例: < Hello，world >)，您可以定義 '"' 做為引用字元並在來源中使用字串 <"Hello，world">。 這個屬性不適用於輸入和輸出資料表。</p><p>請注意，您無法指定 escapeChar 和 quoteChar 資料表。</p> | 否 |
+| escapeChar | <p>用來逸出內容中顯示之資料行分隔符號的特殊字元。 此標記是選擇性的。 沒有預設值。 您必須指定這個屬性不能超過一個字元。</p><p>比方說，如果您以逗號 （，） 做為資料行分隔符號，但您想要有逗號字元的文字 (範例:"Hello，world")，您可以定義 '$' 做為逸出字元，並使用字串"Hello$，world"中的來源。</p><p>請注意，您無法指定 escapeChar 和 quoteChar 資料表。</p> | 否 | 
+| quoteChar | <p>用來引用字串值的特殊字元。 引號字元內的資料行和資料列分隔符號會被視為字串值的一部分。 此標記是選擇性的。 沒有預設值。 您必須指定這個屬性不能超過一個字元。</p><p>比方說，如果您以逗號 （，） 做為資料行分隔符號，但您想要有逗號字元的文字 (範例 ︰ < Hello，world >)，您可以定義 '"' 做為引用字元並在來源中使用字串 <"Hello，world">。 這個屬性不適用於輸入和輸出資料表。</p><p>請注意，您無法指定 escapeChar 和 quoteChar 資料表。</p> | 否 |
 | nullValue | <p>用來代表 Blob 檔案內容中 null 值的字元。 此標記是選擇性的。 預設值為"\N"。</p><p>例如，根據上述範例，blob 中的"NaN"會轉換成 null 值複製到 SQL Server 時。</p> | 否 |
-| encodingName | 指定編碼名稱。 如需有效編碼名稱的清單，請參閱: [Encoding.EncodingName 屬性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 預設值為 UTF-8。 | 否 | 
+| encodingName | 指定編碼名稱。 如需有效編碼名稱的清單，請參閱 ︰ [Encoding.EncodingName 屬性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 預設值為 UTF-8。 | 否 | 
 
 #### 範例
 下列範例顯示 TextFormat 的一些格式屬性。
@@ -468,7 +468,7 @@
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
-**BlobSource** 支援中的下列屬性 **typeProperties** 區段:
+**BlobSource** 支援中的下列屬性 **typeProperties** 區段 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- | 
@@ -477,24 +477,24 @@
 | 遞迴 | 表示是否從子資料夾，或只有從指定的資料夾，以遞迴方式讀取資料。 | True (預設值)、False | 否 | 
 
 
-**BlobSink** 支援下列屬性 **typeProperties** 區段:
+**BlobSink** 支援下列屬性 **typeProperties** 區段 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
-| blobWriterAddHeader | 指定是否要加入資料行定義的標頭。 | TRUE<br/>FALSE (預設值) | 否 |
-| copyBehavior | 當來源為 BlobSource 或 FileSystem 時，定義複製行為。 | <p>有三種可能的值為 copyBehavior 屬性。 </p><ul><li>**PreserveHierarchy:** : 保留目標資料夾，亦即，來源資料夾的原始程式檔的相對路徑中的檔案階層完全相同的目標資料夾的目標檔案相對路徑。</li><li>**FlattenHierarchy:** 從來源資料夾的所有檔案會都出現在第一層的目標資料夾。 目標檔案會有自動產生的名稱。 </li><li>**MergeFiles: (預設值)** 合併到一個檔案的來源資料夾的所有檔案。 如果已指定檔案/Blob 名稱，合併檔案的名稱就會是指定的名稱；否則，就會是自動產生的檔案名稱。</li></ul> | 否 |
+| blobWriterAddHeader | 指定是否要加入資料行定義的標頭。 | TRUE<br/>FALSE （預設值） | 否 |
+| copyBehavior | 當來源為 BlobSource 或 FileSystem 時，定義複製行為。 | <p>有三種可能的值為 copyBehavior 屬性。 </p><ul><li>**PreserveHierarchy:** ︰ 保留目標資料夾，亦即，來源資料夾的原始程式檔的相對路徑中的檔案階層完全相同的目標資料夾的目標檔案相對路徑。</li><li>**FlattenHierarchy:** 從來源資料夾的所有檔案會都出現在第一層的目標資料夾。 目標檔案會有自動產生的名稱。 </li><li>**MergeFiles: （預設值）** 合併到一個檔案的來源資料夾的所有檔案。 如果已指定檔案/Blob 名稱，合併檔案名稱會是指定的名稱；否則，就會是自動產生的檔案名稱。</li></ul> | 否 |
 
 ### 遞迴和 copyBehavior 範例
 本節說明遞迴和 copyBehavior 值在不同組合的情況下，複製作業所產生的行為。 
 
 遞迴 | copyBehavior | 產生的行為
 --------- | ------------ | --------
-true | preserveHierarchy | <p>來源資料夾 Folder1 具有下列結構:</p> <p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;File1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;2<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;Subfolder1<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File3<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File4<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File5</p>目標資料夾 Folder1 會有相同的結構做為來源<p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;File1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;2<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;Subfolder1<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File3<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File4<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File5</p>.  
-true | flattenHierarchy | <p>來源資料夾 Folder1 具有下列結構:</p> <p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;File1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;2<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;Subfolder1<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File3<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File4<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File5</p>目標資料夾 1 將會有下列結構: <p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp; 自動產生名稱 File1<br/>(& s) nbsp; (& s) nbsp; (& s) nbsp; & nbsp; File2 如自動產生的名稱<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp; File3 自動產生名稱<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp; File4 自動產生名稱<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp; File5 自動產生名稱</p>
-true | mergeFiles | <p>來源資料夾 Folder1 具有下列結構:</p> <p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;File1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;2<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;Subfolder1<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File3<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File4<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File5</p>目標資料夾 1 將會有下列結構: <p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;1 + 2 + File3 + File4 + 5 檔案內容會合併成一個檔案，以自動產生的檔案名稱</p>
-false | preserveHierarchy | <p>來源資料夾 Folder1 具有下列結構:</p> <p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;File1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;2<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;Subfolder1<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File3<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File4<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File5</p>目標資料夾 Folder1 會有下列結構<p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;File1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;2<br/></p><p>Subfolder1 File3、 File4，與 File5 不會收取。</p>.
-false | flattenHierarchy | <p>來源資料夾 Folder1 具有下列結構:</p> <p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;File1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;2<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;Subfolder1<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File3<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File4<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File5</p>目標資料夾 Folder1 會有下列結構<p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp; 自動產生名稱 File1<br/>(& s) nbsp; (& s) nbsp; (& s) nbsp; & nbsp; File2 如自動產生的名稱<br/></p><p>Subfolder1 File3、 File4，與 File5 不會收取。</p>.
-false | mergeFiles | <p>來源資料夾 Folder1 具有下列結構:</p> <p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;File1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;2<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;Subfolder1<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File3<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File4<br/>(& s) nbsp; (& s) nbsp; & nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp; (& s) nbsp;File5</p>目標資料夾 Folder1 會有下列結構<p>Folder1<br/>(& s) nbsp; & nbsp; & nbsp; (& s) nbsp;1 + 2 的內容會合併成一個檔案，以自動產生的檔案名稱。 自動產生名稱 File1</p><p>Subfolder1 File3、 File4，與 File5 不會收取。</p>.
+true | preserveHierarchy | <p>來源資料夾 Folder1 具有下列結構 ︰</p> <p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;File1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;2<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;Subfolder1<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File3<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File4<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File5</p>目標資料夾 Folder1 會有相同的結構做為來源<p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;File1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;2<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;Subfolder1<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File3<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File4<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File5</p>.  
+true | flattenHierarchy | <p>來源資料夾 Folder1 具有下列結構 ︰</p> <p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;File1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;2<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;Subfolder1<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File3<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File4<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File5</p>目標資料夾 1 將會有下列結構 ︰ <p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp; 自動產生名稱 File1<br/>（& s) nbsp; （& s) nbsp; （& s) nbsp; & nbsp; File2 如自動產生的名稱<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp; File3 自動產生名稱<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp; File4 自動產生名稱<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp; File5 自動產生名稱</p>
+true | mergeFiles | <p>來源資料夾 Folder1 具有下列結構 ︰</p> <p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;File1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;2<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;Subfolder1<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File3<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File4<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File5</p>目標資料夾 1 將會有下列結構 ︰ <p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;1 + 2 + File3 + File4 + 5 檔案內容會合併成一個檔案，以自動產生的檔案名稱</p>
+false | preserveHierarchy | <p>來源資料夾 Folder1 具有下列結構 ︰</p> <p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;File1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;2<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;Subfolder1<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File3<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File4<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File5</p>目標資料夾 Folder1 會有下列結構<p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;File1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;2<br/></p><p>Subfolder1 File3、 File4，與 File5 不會收取。</p>.
+false | flattenHierarchy | <p>來源資料夾 Folder1 具有下列結構 ︰</p> <p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;File1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;2<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;Subfolder1<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File3<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File4<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File5</p>目標資料夾 Folder1 會有下列結構<p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp; 自動產生名稱 File1<br/>（& s) nbsp; （& s) nbsp; （& s) nbsp; & nbsp; File2 如自動產生的名稱<br/></p><p>Subfolder1 File3、 File4，與 File5 不會收取。</p>.
+false | mergeFiles | <p>來源資料夾 Folder1 具有下列結構 ︰</p> <p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;File1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;2<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;Subfolder1<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File3<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File4<br/>（& s) nbsp; （& s) nbsp; & nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp; （& s) nbsp;File5</p>目標資料夾 Folder1 會有下列結構<p>Folder1<br/>（& s) nbsp; & nbsp; & nbsp; （& s) nbsp;1 + 2 的內容會合併成一個檔案，以自動產生的檔案名稱。 自動產生名稱 File1</p><p>Subfolder1 File3、 File4，與 File5 不會收取。</p>.
 
   
 
@@ -504,6 +504,7 @@ false | mergeFiles | <p>來源資料夾 Folder1 具有下列結構:</p> <p>Folde
 [AZURE.INCLUDE [data-factory-type-conversion-sample](../../includes/data-factory-type-conversion-sample.md)]
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+
 
 
 

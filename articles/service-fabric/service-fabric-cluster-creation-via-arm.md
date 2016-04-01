@@ -20,9 +20,9 @@
 
 本頁面可協助您使用 ARM 範本來設定「Service Fabric 叢集」。 這會假設您的訂用帳戶有足夠的核心來部署將構成此叢集的 IaaS VM。
 
-## 先決條件
+## 必要條件
 
-- 如果您想要設定安全的叢集，請確定已上傳的 x509 憑證金鑰保存庫。 您必須是來源保存庫 URL、 憑證 URL 和憑證指紋。
+- 如果您想要設定安全的叢集，請確定已上傳的 X509 憑證金鑰保存庫。 您必須是來源保存庫 URL、 憑證 URL 和憑證指紋。
 -  請參閱 [Service Fabric 叢集安全性](service-fabric-cluster-security.md) 如需有關如何。
 
 ## 取得範例 ARM 範本
@@ -42,7 +42,7 @@
 3. 登入 Azure 入口網站 [http://aka.ms/servicefabricportal](http://aka.ms/servicefabricportal)。
 2. 中所述，建立叢集的程序進行 [透過入口網站中建立 Service Fabric 叢集](service-fabric-cluster-creation-via-portal.md) , ，但請不要按 ***建立**, 改為摘要，請下載範本。
 
- ![] DownloadTemplate[] DownloadTemplate
+ ![DownloadTemplate][DownloadTemplate]
 
 ## 使用 Azure PS 將 ARM 範本部署到 Azure
 
@@ -50,11 +50,12 @@
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
-- [Service Fabric Cluster security](service-fabric-cluster-security.md) 
-- [Managing your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
-- [Service Fabric Health model introduction](service-fabric-health-introduction.md)
+- [Service Fabric 叢集安全性](service-fabric-cluster-security.md) 
+- [管理 Service Fabric 應用程式在 Visual Studio](service-fabric-manage-application-in-visual-studio.md)。
+- [Service Fabric 健康情況模型簡介](service-fabric-health-introduction.md)
 
 <!--Image references-->
 [DownloadTemplate]: ./media/service-fabric-cluster-creation-via-arm/DownloadTemplate.png
+
 
 

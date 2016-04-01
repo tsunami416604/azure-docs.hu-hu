@@ -47,7 +47,7 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 - 深入了解設定 VMM 雲端：
     - 深入了解私人 VMM 雲端 [的新功能使用 System Center 2012 R2 VMM 的私人雲端](http://go.microsoft.com/fwlink/?LinkId=324952) 和 [VMM 2012 和雲端](http://go.microsoft.com/fwlink/?LinkId=324956)。
     - 深入了解 [設定 VMM 雲端網狀架構](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)
-    - 深入了解建立私人雲端中的您的雲端網狀架構元素之後  [在 VMM 中建立私人雲端](http://go.microsoft.com/fwlink/?LinkId=324953) 和 [逐步解說: 使用 System Center 2012 SP1 VMM 建立私人雲端](http://go.microsoft.com/fwlink/?LinkId=324954)。
+    - 深入了解建立私人雲端中的您的雲端網狀架構元素之後  [在 VMM 中建立私人雲端](http://go.microsoft.com/fwlink/?LinkId=324953) 和 [逐步解說 ︰ 使用 System Center 2012 SP1 VMM 建立私人雲端](http://go.microsoft.com/fwlink/?LinkId=324954)。
 
 ### Hyper-V 的必要條件
 
@@ -94,7 +94,7 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 
     ![新增保存庫](./media/site-recovery-vmm-to-azure/ASRE2AVMM_HvVault.png)
 
-<P>檢查狀態列，以確認是否順利建立保存庫。 保存庫在主要 [復原服務] 頁面上會列為 [使用中]**。</P>
+<P>檢查狀態列，以確認是否順利建立保存庫。 保存庫會被列為 *Active* 在主要復原服務頁面上。</P>
 
 
 ## 步驟 2：產生保存庫註冊金鑰
@@ -184,13 +184,13 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
   
 #### 命令列安裝參數清單
 
- - **/ 認證** : 指定註冊金鑰檔所在的位置的必要參數  
- - **/Friendlyname** : 必要參數，會出現在 Azure Site Recovery 入口網站中的 HYPER-V 主機伺服器的名稱。
- - **/ EncryptionEnabled** : 選擇性的參數，您需要使用只能在 VMM 至 Azure 案例中，如果您需要的虛擬機器在 Azure 中的靜止的加密。 請確認您提供的檔案名稱具有 **.pfx** 延伸模組。
- - **/proxyAddress** : 選擇性參數，指定 proxy 伺服器的位址。
- - **/proxyport** : 指定的連接埠的 proxy 伺服器的選擇性參數。
- - **/proxyUsername** : 指定的 Proxy 使用者名稱 (如果 proxy 需要驗證) 的選擇性參數。
- - **/proxyPassword** : 指定的密碼來驗證 proxy 伺服器 (如果 proxy 需要驗證) 的選擇性參數。  
+ - **/ 認證** ︰ 指定註冊金鑰檔所在的位置的必要參數  
+ - **/Friendlyname** ︰ 必要參數，會出現在 Azure Site Recovery 入口網站中的 HYPER-V 主機伺服器的名稱。
+ - **/ EncryptionEnabled** ︰ 選擇性的參數，您需要使用只能在 VMM 至 Azure 案例中，如果您需要的虛擬機器在 Azure 中的靜止的加密。 請確認您提供的檔案名稱具有 **.pfx** 延伸模組。
+ - **/proxyAddress** ︰ 選擇性參數，指定 proxy 伺服器的位址。
+ - **/proxyport** ︰ 指定的連接埠的 proxy 伺服器的選擇性參數。
+ - **/proxyUsername** ︰ 指定的 Proxy 使用者名稱 （如果 proxy 需要驗證） 的選擇性參數。
+ - **/proxyPassword** ︰ 指定的密碼來驗證 proxy 伺服器 （如果 proxy 需要驗證） 的選擇性參數。  
 
 
 ## 步驟 4：建立 Azure 儲存體帳戶
@@ -204,7 +204,7 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 
 在 VMM 雲端中您要保護的每一個 Hyper-V 主機伺服器上，安裝 Azure 復原服務代理程式。
 
-1. 在 [快速入門] 頁面上，按一下 <b>下載 Azure 站台復原服務代理程式，並在主機上安裝</b> 若要取得最新版的代理程式安裝檔案。
+1. 在 [快速啟動] 頁面上，按一下 [下載 Azure Site Recovery 服務代理程式並安裝在主機上]<b></b>，以取得最新版的代理程式安裝檔案。
 
     ![Install Recovery Services Agent](./media/site-recovery-vmm-to-azure/ASRE2AVMM_InstallHyperVAgent.png)
 
@@ -224,19 +224,19 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 
 1. 在 [快速入門] 頁面中，按一下 [ **設定 VMM 雲端的保護**。
 2. 在 **受保護項目** ] 索引標籤上，按一下您想要設定，並移至的雲端 **組態** ] 索引標籤。
-3. 在 <b>目標</b>選取 <b>Microsoft Azure</b>.
-4. 在 <b>儲存體帳戶</b>選取您想要用來複寫您的虛擬機器的 Azure 儲存體帳戶。
-5. 設定 <b>加密儲存的資料</b> to <b>關閉</b>. 此設定指定應該將內部部署與 Azure 之間複寫的資料加密。
-6. 在 <b>複製頻率</b> 保留預設設定。 這個值指定應在來源與目標位置之間同步處理資料的頻率。
-7. 在 <b>保留復原的點</b>保留預設設定。 使用預設值 0 時，只會在複本主機伺服器上儲存主要虛擬機器的最新復原點。
-8. 在 <b>應用程式一致快照的頻率</b>保留預設設定。 這個值指定建立快照的頻率。 快照會使用「磁碟區陰影複製服務」(VSS) 來確保建立快照時，應用程式是處於一致狀態。  如果您設定一個值，請確定此值小於您設定的其他復原點數目。
-9. 在 <b>複寫開始時間</b>指定初始資料複寫到 Azure 的開始。 將會使用 Hyper-V 主機伺服器的時區。 建議您將初次複寫排定在離峰時段進行。
+3. 在 [目標]<b></b> 中，選取 [Microsoft Azure]<b></b>。
+4. 在 [儲存體帳戶]<b></b> 中，選取您想要用來複寫虛擬機器的 Azure 儲存體帳戶。
+5. 將 [加密儲存的資料]<b></b> 設為 [關閉]<b></b>。 此設定指定應該將內部部署與 Azure 之間複寫的資料加密。
+6. 在 [複製頻率]<b></b> 中保留預設設定。 這個值指定應在來源與目標位置之間同步處理資料的頻率。
+7. 在 [保留復原點的時間]<b></b> 中，保留預設設定。 使用預設值 0 時，只會在複本主機伺服器上儲存主要虛擬機器的最新復原點。
+8. 在 [應用程式一致快照的頻率]<b></b> 中，保留預設設定。 這個值指定建立快照的頻率。 快照會使用「磁碟區陰影複製服務」(VSS) 來確保建立快照時，應用程式是處於一致狀態。  如果您設定一個值，請確定此值小於您設定的其他復原點數目。
+9. 在 [複寫開始時間]<b></b> 中，指定初次將資料複寫至 Azure 的開始時間。 將會使用 Hyper-V 主機伺服器的時區。 建議您將初次複寫排定在離峰時段進行。
 
     ![Cloud replication settings](./media/site-recovery-vmm-to-azure/ASRE2AVMM_CloudSettings.png)
 
-儲存設定之後會建立工作，並可監視 <b>作業</b> 索引標籤。 VMM 來源雲端中的所有 Hyper-V 主機伺服器會設定進行複寫。
+儲存設定之後，即會建立一個工作，並且可在 [工作]<b></b> 索引標籤上進行監視。 VMM 來源雲端中的所有 Hyper-V 主機伺服器會設定進行複寫。
 
-儲存之後，可以修改雲端設定上 <b>設定</b> 索引標籤。 若要修改目標位置或目標儲存體帳戶，您需要移除雲端組態，然後重新設定雲端。 請注意，如果您變更儲存體帳戶，則只會對修改儲存體帳戶之後才啟用保護的虛擬機器套用變更。 現有的虛擬機器不會移轉至新的儲存體帳戶。</p>
+儲存之後，可在 [設定]<b></b> 索引標籤上修改雲端設定。 若要修改目標位置或目標儲存體帳戶，您需要移除雲端組態，然後重新設定雲端。 請注意，如果您變更儲存體帳戶，則只會對修改儲存體帳戶之後才啟用保護的虛擬機器套用變更。 現有的虛擬機器不會移轉至新的儲存體帳戶。</p>
 
 ## 步驟 7：設定網路對應
 開始網路對應之前，請確認來源 VMM 伺服器上的虛擬機器已連線到 VM 網路。 此外，請建立一或多個 Azure 虛擬網路。 請注意，多個 VM 網路可對應至單一 Azure 網路。
@@ -258,7 +258,7 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 
 正確設定伺服器、雲端和網路後，您就可以對雲端中的虛擬機器啟用保護。 請注意：
 
-- 虛擬機器必須符合 Azure 需求。 這些簽入 <a href="http://go.microsoft.com/fwlink/?LinkId=402602">必要條件和支援</a> 規劃指南 》。
+- 虛擬機器必須符合 Azure 需求。 請在《規劃指南》的<a href="http://go.microsoft.com/fwlink/?LinkId=402602">必要條件和支援</a>中查看這些需求。
 - 若要啟用保護功能，您必須為虛擬機器設定作業系統和作業系統磁碟屬性。 當您使用虛擬機器範本在 VMM 中建立虛擬機器時，您可以設定屬性。 您也可以設定這些屬性的現有虛擬機器上 **一般** 和 **硬體組態** 虛擬機器屬性的索引標籤。 若未在 VMM 中設定這些屬性，您將可在 Azure 站台復原入口網站中加以設定。
 
 ![Create virtual machine](./media/site-recovery-vmm-to-azure/ASRE2AVMM_EnableNew.png)
@@ -266,7 +266,7 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
 ![Modify virtual machine properties](./media/site-recovery-vmm-to-azure/ASRE2AVMM_EnableExisting.png)
 
 
-1. 若要啟用保護，請在 <b>虛擬機器</b> 在虛擬機器所在的雲端中的索引標籤上按一下 <b>啟用保護。</b> 然後選取 <b>新增虛擬機器</b>
+1. 若要啟用保護，請在虛擬機器所在雲端中的 [虛擬機器]<b></b> 索引標籤上，按一下 [啟用保護]<b></b>，然後選取 [加入虛擬機器]<b></b>。
 2. 從雲端中所有虛擬機器的清單，選取您要保護的虛擬機器。
 
     ![啟用虛擬機器保護](./media/site-recovery-vmm-to-azure/ASRE2AVMM_SelectVM.png)
@@ -358,19 +358,20 @@ Azure Site Recovery 可在一些部署案例中協調虛擬機器的複寫、容
     - 按一下 [ **備忘稿** 記錄並儲存關於測試容錯移轉相關聯的任何觀察。
 
 ## <a id="runtest" name="runtest" href="#runtest"></a>監視活動
-<p>您可以使用 *工作* ] 索引標籤和 *儀表板* 來檢視和監視的主要工作由 Azure Site Recovery 保存庫，包括設定雲端、 啟用和停用虛擬機器的保護、 執行容錯移轉 (計劃性、 非計劃性或測試)，以及認可非計劃性容錯移轉保護。</p>
+<p>您可以使用 *工作* ] 索引標籤和 *儀表板* 來檢視和監視的主要工作由 Azure Site Recovery 保存庫，包括設定雲端、 啟用和停用虛擬機器的保護、 執行容錯移轉 （計劃性、 非計劃性或測試），以及認可非計劃性容錯移轉保護。</p>
 
 <p>從 *工作* 索引標籤檢視工作、 向下鑽研工作詳細資料和錯誤、 執行工作查詢以擷取符合特定準則，工作將工作匯出至 Excel，以及重新啟動失敗的工作。</p>
 
 <p>從 *儀表板* 可以下載最新版的提供者和代理程式安裝檔案、 取得保存庫的組態資訊、 查看由保存庫的保護、 查看最近的工作、 管理保存庫憑證中，虛擬機器的數目和重新同步虛擬機器。</p>
 
-<p>如需有關與工作和儀表板互動的詳細資訊，請參閱 <a href="http://go.microsoft.com/fwlink/?LinkId=398534">作業和監視指南</a>.</p>
+<p>如需有關與工作和儀表板互動的詳細資訊，請參閱 <a href="http://go.microsoft.com/fwlink/?LinkId=398534">作業和監視指南</a>。</p>
 
-##<a id="next" name="next" href="#next"></a>後續步驟
+##<a id="next" name="next" href="#next"></a>接續步驟
 <UL>
-<LI>若要規劃及部署 Azure 站台復原完整的生產環境中，請參閱 <a href="http://go.microsoft.com/fwlink/?LinkId=321294">Azure Site Recovery 的規劃指南</a> 和 <a href="http://go.microsoft.com/fwlink/?LinkId=321295">Azure Site Recovery 的部署指南</a>.</LI>
+<LI>若要規劃及部署 Azure 站台復原完整的生產環境中，請參閱 <a href="http://go.microsoft.com/fwlink/?LinkId=321294">Azure Site Recovery 的規劃指南</a> 和 <a href="http://go.microsoft.com/fwlink/?LinkId=321295">Azure Site Recovery 的部署指南</a>。</LI>
 
 
-<LI>如有問題，請瀏覽 <a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure 復原服務論壇</a>.</LI>
+<LI>如有任何問題，請瀏覽 <a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure 復原服務論壇</a>。</LI>
 </UL>
+
 

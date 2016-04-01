@@ -1,4 +1,4 @@
-Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些 25000 封的免費每月電子郵件可讓您存取進階報告與分析和 [所有 Api][] (Web、 SMTP、 事件、 剖析等等)。 SendGrid 所提供的其他服務的相關資訊，請參閱 [SendGrid 功能][] 頁面。
+Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些 25000 封的免費每月電子郵件可讓您存取進階報告與分析和 [所有 Api][] （Web、 SMTP、 事件、 剖析等等）。 SendGrid 所提供的其他服務的相關資訊，請參閱 [SendGrid 功能][] 頁面。
 
 ### 註冊 SendGrid 帳戶
 
@@ -38,7 +38,7 @@ Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些 2500
 
     ![sendgrid-add-on-dashboard][sendgrid-add-on-dashboard]
 
-    若要傳送電子郵件使用 SendGrid，您必須提供帳戶認證 (使用者名稱和密碼)。
+    若要傳送電子郵件使用 SendGrid，您必須提供帳戶認證 （使用者名稱和密碼）。
 
 ### 尋找您的 SendGrid 認證 ###
 
@@ -75,5 +75,6 @@ Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些 2500
 [SendGrid Getting Started]: http://sendgrid.com/docs
 [SendGrid Provisioning Process]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [all APIs]: https://sendgrid.com/docs/API_Reference/index.html
+
 
 

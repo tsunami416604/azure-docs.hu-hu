@@ -39,7 +39,7 @@
     --tls -H tcp://contoso.cloudapp.net:2376 info
     ```
 
-    若要將用戶端憑證和金鑰檔案複製到.docker 資料夾或者，您可以變更 **Auth** 選項來加入下列參數:
+    若要將用戶端憑證和金鑰檔案複製到.docker 資料夾或者，您可以變更 **Auth** 選項來加入下列參數 ︰
 
     ```
     --tls --tlscert=C:\mycert\cert.pem --tlskey=C:\mycert\key.pem
@@ -48,7 +48,7 @@
 
 ## 在 Docker 資料夾中使用您自己的憑證而沒有用戶端憑證時的逾時錯誤
 
-如果您選擇在 Visual Studio 中建立 Docker 主機時，使用您自己的憑證 (也就是您清除 **自動產生 Docker 憑證** 中核取方塊 **Microsoft Azure 上建立虛擬機器** 對話方塊)，您必須將用戶端憑證和金鑰檔案 (cert.pem 和 key.pem) 複製到 Docker 資料夾 (`<%userprofile%>\.docker`)。 否則，發佈您的專案時，會在一小時內收到逾時錯誤，並且發佈作業會失敗。
+如果您選擇在 Visual Studio 中建立 Docker 主機時，使用您自己的憑證 (也就是您清除 **自動產生 Docker 憑證** 中核取方塊 **Microsoft Azure 上建立虛擬機器** 對話方塊)，您必須將用戶端憑證和金鑰檔案 （cert.pem 和 key.pem） 複製到 Docker 資料夾 (`<%userprofile%>\.docker`)。 否則，發佈您的專案時，會在一小時內收到逾時錯誤，並且發佈作業會失敗。
 
 ## 需要 PowerShell 3.0 才能發佈至 Docker 容器
 
@@ -64,11 +64,11 @@
 
 問：如何在 Azure 中使用 Visual Studio 工具建立新的啟用 Docker 的 Linux 機器？
 
-答: 請參閱 [在 Docker 中裝載 Web 應用程式](vs-azure-tools-docker-hosting-web-apps-in-docker.md) 如需如何執行這項操作。
+答 ︰ 請參閱 [在 Docker 中裝載 Web 應用程式](vs-azure-tools-docker-hosting-web-apps-in-docker.md) 如需如何執行這項操作。
 
-問: 哪些 Visual Studio 專案範本都支援發行至 Linux Docker 容器?
+問 ︰ 哪些 Visual Studio 專案範本都支援發行至 Linux Docker 容器？
 
-答: visual Studio 目前支援的 C# 主控台應用程式 (封裝) 和 C# ASP.NET 5 Preview 網站範本，包括:
+答 ︰ visual Studio 目前支援的 C# 主控台應用程式 （封裝） 和 C# ASP.NET 5 Preview 網站範本，包括 ︰
 
 - 空白
 
@@ -76,27 +76,28 @@
 
 - Web 應用程式
 
-問: 如何將我的 ASP.NET 5 web 或主控台專案發行至 Docker 從命令列使用 MSBUILD?
+問 ︰ 如何將我的 ASP.NET 5 web 或主控台專案發行至 Docker 從命令列使用 MSBUILD？
 
-答: 請使用下列 MSBuild 命令:
+答 ︰ 請使用下列 MSBuild 命令 ︰
 
     `msbuild <projectname.xproj> /p:deployOnBuild=true;publishProfile=<profilename>`
 
-問: 如何將我的 ASP.NET 5 web 或主控台專案發行至 Docker 從命令列使用 PowerShell?
+問 ︰ 如何將我的 ASP.NET 5 web 或主控台專案發行至 Docker 從命令列使用 PowerShell？
 
-答: 請使用下列 PowerShell 命令:
+答 ︰ 請使用下列 PowerShell 命令 ︰
 
 ```
 .\contoso-Docker-publish.ps1 -packOutput $env:USERPROFILE\AppData\Local\Temp\PublishTemp -pubxmlFile .\contoso-Docker.pubxml
 ```
 
-問: 我已安裝 docker 有自己的 Linux 伺服器，如何指定在 **Web 發行** 對話方塊?
+問 ︰ 我已安裝 docker 有自己的 Linux 伺服器，如何指定在 **Web 發行** 對話方塊？
 
-答: 請參閱章節 **提供自訂的 Docker 主機** 主題中的 [在 Docker 中裝載 Web 應用程式](vs-azure-tools-docker-hosting-web-apps-in-docker.md)。
+答 ︰ 請參閱章節 **提供自訂的 Docker 主機** 主題中的 [在 Docker 中裝載 Web 應用程式](vs-azure-tools-docker-hosting-web-apps-in-docker.md)。
 
-問: 我使用我自己的 Linux 伺服器已安裝 docker。 如何產生金鑰和憑證以設定使用 TLS 的驗證？
+問 ︰ 我使用我自己的 Linux 伺服器已安裝 docker。 如何產生金鑰和憑證以設定使用 TLS 的驗證？
 
-答: 一種方法是在伺服器上使用 OpenSSL 來為 CA、 伺服器和用戶端產生必要的憑證和金鑰。 然後您可以使用協力廠商軟體建立 SSH/SFTP 連接，然後將憑證複製到本機的 Windows 開發電腦。 根據預設，Docker (CLI) 會嘗試使用位於 `<userprofile>\.docker` 資料夾的憑證。
+答 ︰ 一種方法是在伺服器上使用 OpenSSL 來為 CA、 伺服器和用戶端產生必要的憑證和金鑰。 然後您可以使用協力廠商軟體建立 SSH/SFTP 連接，然後將憑證複製到本機的 Windows 開發電腦。 根據預設，Docker (CLI) 會嘗試使用位於 `<userprofile>\.docker` 資料夾的憑證。
 
 另一個選項是下載 OpenSSL for Windows 並產生需要的憑證和金鑰，然後上傳 CA、伺服器憑證和金鑰到 Linux 機器。 如需有關建立 Docker 的安全連線的詳細資訊，請參閱 [保護 Docker 精靈使用 HTTPS 通訊端](https://docs.docker.com/articles/https/)。
+
 

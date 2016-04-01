@@ -180,7 +180,7 @@ return response;
 
 API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入口網站存取此入口網站。 若要存取發行者入口網站，按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。 如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [管理您的第一個 API][] 教學課程。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 作業可能會 [手動加入 Api](api-management-howto-add-operations.md), ，或可匯入。 在這段視訊中從 6:40 開始，運算會以 Swagger 格式匯入。
 
@@ -190,7 +190,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
 "swagger": "2.0",
 "info": {
 "title":"Calculator"，
-「 說明 」: 「 Arithmetics 透過 HTTP! 」，
+「 說明 」: 「 Arithmetics 透過 HTTP ！ 」，
 「 版本 」: 「 1.0 」
 },
 「 主機 」: 「 apimaaddemo.azurewebsites.net 」，
@@ -199,7 +199,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
 ""http
 ],
 "paths": {
-「 新增 /? = {} & b = {b}": {
+「 新增 /？ = {} & b = {b}": {
           "get": {
             「 說明 」: 「 回應兩個數字的總和。 」，
             「 operationId 」: 「 新增兩個整數 」
@@ -207,7 +207,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
               {
                 "name":"a"，
                 「 中 」: 「 查詢 」，
-                「 說明 」: 「 第一個運算元。 預設值是 <code>51</code>.",
+                「 說明 」: 「 第一個運算元。 預設值是 <code>51</code>。"，
                 "required": true,
                 「 預設 」: 「 51 」，
                 「 列舉 」: [
@@ -217,7 +217,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
               {
                 "name":"b"，
                 「 中 」: 「 查詢 」，
-                「 說明 」: 「 第二個運算元。 預設值是 <code>49</code>.",
+                「 說明 」: 「 第二個運算元。 預設值是 <code>49</code>。"，
                 "required": true,
                 「 預設 」: 「 49 」，
                 「 列舉 」: [
@@ -228,7 +228,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
             「 回應 」: {}
           }
         },
-        "/ sub? = {} & b = {b}": {
+        "/ sub？ = {} & b = {b}": {
           "get": {
             「 說明 」: 「 回應兩個數字之間的差異。 」，
             「 operationId 」: 「 減去兩個整數 」
@@ -236,7 +236,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
               {
                 "name":"a"，
                 「 中 」: 「 查詢 」，
-                「 說明 」: 「 第一個運算元。 預設值是 <code>100</code>.",
+                「 說明 」: 「 第一個運算元。 預設值是 <code>100</code>。"，
                 "required": true,
                 "default":"100"，
                 「 列舉 」: [
@@ -246,7 +246,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
               {
                 "name":"b"，
                 「 中 」: 「 查詢 」，
-                「 說明 」: 「 第二個運算元。 預設值是 <code>50</code>.",
+                「 說明 」: 「 第二個運算元。 預設值是 <code>50</code>。"，
                 "required": true,
                 "default":"50"
                 「 列舉 」: [
@@ -257,7 +257,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
             「 回應 」: {}
           }
         },
-        "/ div? = {} & b = {b}": {
+        "/ div？ = {} & b = {b}": {
           "get": {
             「 說明 」: 「 回應兩個數字的商數。 」，
             「 operationId 」: 「 除號兩個整數 」，
@@ -265,7 +265,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
               {
                 "name":"a"，
                 「 中 」: 「 查詢 」，
-                「 說明 」: 「 第一個運算元。 預設值是 <code>100</code>.",
+                「 說明 」: 「 第一個運算元。 預設值是 <code>100</code>。"，
                 "required": true,
                 "default":"100"，
                 「 列舉 」: [
@@ -275,7 +275,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
               {
                 "name":"b"，
                 「 中 」: 「 查詢 」，
-                「 說明 」: 「 第二個運算元。 預設值是 <code>20</code>.",
+                「 說明 」: 「 第二個運算元。 預設值是 <code>20</code>。"，
                 "required": true,
                 "default":"20"，
                 「 列舉 」: [
@@ -286,7 +286,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
             「 回應 」: {}
           }
         },
-        "/ mul? = {} & b = {b}": {
+        "/ mul？ = {} & b = {b}": {
           "get": {
             「 說明 」: 「 回應兩個數字的乘積。 」，
             「 operationId 」: 「 乘以兩個整數 」
@@ -294,7 +294,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
               {
                 "name":"a"，
                 「 中 」: 「 查詢 」，
-                「 說明 」: 「 第一個運算元。 預設值是 <code>20</code>.",
+                「 說明 」: 「 第一個運算元。 預設值是 <code>20</code>。"，
                 "required": true,
                 "default":"20"，
                 「 列舉 」: [
@@ -304,7 +304,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
               {
                 "name":"b"，
                 「 中 」: 「 查詢 」，
-                「 說明 」: 「 第二個運算元。 預設值是 <code>5</code>.",
+                「 說明 」: 「 第二個運算元。 預設值是 <code>5</code>。"，
                 "required": true,
                 "default":"5"
                 「 列舉 」: [
@@ -326,7 +326,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
 
 1. 按一下 [ **檔案從**, ，瀏覽至 `calculator.json` 檔案儲存，並按一下 [ **Swagger** 選項按鈕。
 2. 型別 **calc** 到 **Web API URL 尾碼** 文字方塊。
-3. 按一下 [在 **產品 (選擇性)** 方塊，然後選擇 **入門**。
+3. 按一下 [在 **產品 （選擇性）** 方塊，然後選擇 **入門**。
 4. 按一下 [ **儲存** 匯入 API。
 
 ![Add new API][api-management-import-new-api]
@@ -492,7 +492,7 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
         </required-claims>
     </validate-jwt>
 
-如需設定和使用此原則的另一個示範，請參閱 [Cloud Cover 第 177 集: 更多 API 管理功能](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 並向前快轉到 13:50。 向前快轉到 15:00 可看到在原則編輯器中設定的原則，再到 18:50 可以看到一個示範，從開發人員入口網站 (使用和不使用必要的授權權杖) 呼叫運算。
+如需設定和使用此原則的另一個示範，請參閱 [Cloud Cover 第 177 集 ︰ 更多 API 管理功能](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 並向前快轉到 13:50。 向前快轉到 15:00 可看到在原則編輯器中設定的原則，再到 18:50 可以看到一個示範，從開發人員入口網站 (使用和不使用必要的授權權杖) 呼叫運算。
 
 ## 後續步驟
 -   查看更多 [影片](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 解 API 管理。
@@ -546,4 +546,5 @@ API 是從 API 發佈者入口網站所設定，您可以透過 Azure 傳統入�
 
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Manage your first API]: api-management-get-started.md
+
 

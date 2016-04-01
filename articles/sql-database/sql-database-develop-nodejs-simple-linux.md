@@ -27,7 +27,7 @@
 本主題提供可在 Ubuntu Linux 上執行的 Node.js 程式碼範例。 這個範例使用 Tedious 驅動程式連接到 Azure SQL Database。
 
 
-## 先決條件
+## 必要條件
 
 
 開啟您的終端機並安裝 **節點** 和 **npm**, ，除非您已經安裝在電腦上。
@@ -74,10 +74,10 @@
     });
 
 
-## 步驟 3: 執行查詢
+## 步驟 3 ︰ 執行查詢
 
 
-所有 SQL 陳述式會都執行使用 [new request ()](http://pekim.github.io/tedious/api-request.html) 函式。 如果陳述式會傳回資料列，例如 select 陳述式，您可以擷取這些使用 [request.on ()](http://pekim.github.io/tedious/api-request.html) 函式。 如果沒有資料列， [request.on ()](http://pekim.github.io/tedious/api-request.html) 函式會傳回空白清單。
+所有 SQL 陳述式會都執行使用 [new request （)](http://pekim.github.io/tedious/api-request.html) 函式。 如果陳述式會傳回資料列，例如 select 陳述式，您可以擷取這些使用 [request.on （)](http://pekim.github.io/tedious/api-request.html) 函式。 如果沒有資料列， [request.on （)](http://pekim.github.io/tedious/api-request.html) 函式會傳回空白清單。
 
 
     var Connection = require('tedious').Connection;
@@ -171,4 +171,5 @@
 ## 後續步驟
 
 如需詳細資訊，請參閱 [Node.js 開發人員中心](/develop/nodejs/)。
+
 

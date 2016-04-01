@@ -26,7 +26,7 @@
 
 ## 混合式雲端基本設定
 
- [混合式雲端基本設定](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md) 所組成:
+ [混合式雲端基本設定](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md) 所組成 ︰
 
 - 簡化的內部部署網路與 4 個虛擬機器 (網域控制器、應用程式伺服器、用戶端電腦以及執行 Windows Server 和「路由及遠端存取」的 VPN 裝置)
 - Azure 虛擬網路與複本網域控制站
@@ -58,4 +58,5 @@
 [在 Microsoft Azure 中部署 Office 365 Directory 同步處理 (DirSync)](https://technet.microsoft.com/library/dn635310.aspx)
 
 [Azure 基礎結構服務實作指導方針](virtual-machines-infrastructure-services-implementation-guidelines.md)
+
 

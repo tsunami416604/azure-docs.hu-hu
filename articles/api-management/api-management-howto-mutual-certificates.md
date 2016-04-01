@@ -22,7 +22,7 @@ API 管理提供以用戶端憑證保護 API 後端服務之存取的功能。 �
 
 如需使用 API 管理 REST API 來管理憑證資訊，請參閱 [Azure API 管理 REST API 憑證實體][]。
 
-## <a name="prerequisites"> </a>先決條件
+## <a name="prerequisites"> </a>必要條件
 
 本指南將示範如何設定 API 管理服務執行個體，以使用用戶端憑證驗證來存取 API 的後端服務。 在遵循本主題中的步驟之前，請先設定後端服務以進行用戶端憑證驗證，以及取得憑證的存取權限和憑證密碼，以在 API 管理發行者入口網站內上傳。
 
@@ -70,7 +70,7 @@ API 管理提供以用戶端憑證保護 API 後端服務之存取的功能。 �
 
 ![Confirm delete][api-management-confirm-delete-policy]
 
-## <a name="step2"> </a>設定 API 以使用閘道驗證用戶端憑證
+## <a name="step2"> </a>設定 API 以使用用戶端憑證來驗證閘道
 
 按一下 [ **Api** 從 **API 管理** 功能表的左側，按一下所需之 API 的名稱，然後按一下 [ **安全性** ] 索引標籤。
 
@@ -140,3 +140,4 @@ API 管理提供以用戶端憑證保護 API 後端服務之存取的功能。 �
 
 
  
+

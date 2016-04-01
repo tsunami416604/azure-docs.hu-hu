@@ -3,7 +3,7 @@
 
 * 建議在 iOS 用戶端上用來加密和儲存驗證權杖的方法是使用 iOS Keychain。 我們將使用 [SSKeychain](https://github.com/soffes/sskeychain) -iOS Keychain 的簡單包裝函式。 依照 [SSKeychain] 頁面上的指示，將該包裝函式加入至您的專案。 確認 **啟用模組** 在專案的啟用設定 **建置設定** (區段 **Apple LLVM-語言-模組**。)
 
-* 開啟 **QSTodoListViewController.m** 並新增下列程式碼:
+* 開啟 **QSTodoListViewController.m** 並新增下列程式碼 ︰
 
 ```
         - (void) saveAuthInfo {
@@ -33,4 +33,5 @@
 ```
                 [self loadAuthInfo];
 ```
+
 

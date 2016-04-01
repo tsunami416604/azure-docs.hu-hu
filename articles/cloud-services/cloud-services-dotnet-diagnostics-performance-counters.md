@@ -21,9 +21,9 @@
 
 適用於 Windows Server、IIS 和 ASP.NET 的效能計數器也可用來收集資料，以判斷 Azure Web 角色、背景工作角色和虛擬機器的健康情況。 您也可以建立和使用自訂效能計數器。  
 
-您可以檢查效能計數器資料
-1. 直接在應用程式主機，以使用遠端桌面存取效能監視器工具上
-2. System Center Operations Manager 與使用 Azure 管理組件
+您可以採取下列方法來檢查效能計數器資料：
+1. 直接在應用程式主機上，使用透過遠端桌面存取的效能監視器工具
+2. 透過使用 Azure Management Pack 的 System Center Operations Manager
 3. 透過其他監視工具，存取已傳輸至 Azure 儲存體的診斷資料。 請參閱 [存放區並檢視診斷資料儲存在 Azure 儲存體](https://msdn.microsoft.com/library/azure/hh411534.aspx) 如需詳細資訊。  
 
 如需有關監視的應用程式中效能 [Azure 傳統入口網站](http://manage.azure.com/), ，請參閱 [如何監視雲端服務](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/)。
@@ -63,15 +63,15 @@ Azure 為 Windows Server、IIS 和 ASP.NET 堆疊提供了一小組可用的效�
 |TCPv4                        |區段數/秒       |TCP 物件|
 |網路 Interface(*)         |接收位元組數/秒      |網路介面物件|
 |網路 Interface(*)         |傳送的位元組/秒          |網路介面物件|
-|網路介面 (Microsoft 虛擬機器匯流排網路介面卡 _2)|接收位元組數/秒|網路介面物件|
-|網路介面 (Microsoft 虛擬機器匯流排網路介面卡 _2)|傳送的位元組/秒|網路介面物件|
-|網路介面 (Microsoft 虛擬機器匯流排網路介面卡 _2)|位元組總數/秒|網路介面物件|
+|網路介面 （Microsoft 虛擬機器匯流排網路介面卡 _2）|接收位元組數/秒|網路介面物件|
+|網路介面 （Microsoft 虛擬機器匯流排網路介面卡 _2）|傳送的位元組/秒|網路介面物件|
+|網路介面 （Microsoft 虛擬機器匯流排網路介面卡 _2）|位元組總數/秒|網路介面物件|
 
 ## 建立自訂效能計數器並加入您的應用程式中
 
 Azure 支援建立和修改 Web 角色和背景工作角色的自訂效能計數器。 計數器可用來追蹤和監視應用程式特有的行為。 您可以用更高權限，建立和刪除啟動工作、Web 角色或背景工作角色的自訂效能計數器類別和規範。
 
->[AZURE.NOTE] 自訂效能計數器會進行變更的程式碼必須已提升權限來執行。 如果程式碼屬於 Web 角色或背景工作角色，角色必須在 ServiceDefinition.csdef 檔案中包含標記 <Runtime executionContext="elevated" />，才能正確地初始化角色。
+>[AZURE.NOTE] 自訂效能計數器會進行變更的程式碼必須已提升權限來執行。 如果您的程式碼位於 web 角色或背景工作角色，角色必須包含標記 <Runtime executionContext="elevated" /> 在 ServiceDefinition.csdef 檔案中正確地初始化角色。
 
 您可以使用診斷代理程式，將自訂效能計數器資料傳送到 Azure 儲存體。
 
@@ -324,4 +324,5 @@ Azure 診斷監視器現在即會收集自訂效能計數器資料。
 [開發 Azure 應用程式的疑難排解最佳作法](https://msdn.microsoft.com/library/azure/hh771389.aspx)
 
 [如何監視雲端服務](./how-to-monitor-a-cloud-service.md)
+
 

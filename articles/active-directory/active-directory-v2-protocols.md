@@ -31,7 +31,7 @@ v2.0 應用程式模型透過支援業界標準通訊協定、OpenID Connect 和
 - A **重新導向 URI** 或 **封裝識別碼** ，可用來直接回應給您的應用程式
 - 其他幾個狀況特定的值。  如需詳細資訊，了解如何 [註冊應用程式](active-directory-v2-app-registration.md)。
 
-註冊之後，應用程式與 Azure AD 我傳送會將要求傳送至 v2.0 端點:
+註冊之後，應用程式與 Azure AD 我傳送會將要求傳送至 v2.0 端點 ︰
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -66,3 +66,4 @@ OAuth 2.0 和 OpenID Connect 的 v2.0 應用程式模型實作廣泛運用持有
 
 <!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
 <!-- [Call the Azure AD Graph API using the OAuth 2.0 Client Credentials Flow](active-directory-reference-graph.md) -->
+

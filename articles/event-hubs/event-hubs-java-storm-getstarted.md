@@ -24,7 +24,7 @@
 
 事件中心是可高度擴充的擷取系統，每秒可以吸收數以百萬計的事件，讓應用程式能處理和分析已連線裝置和應用程式所產生的大量資料。 收集到事件中樞後，您可以使用任何即時分析提供者或儲存體叢集轉換和儲存資料。
 
-如需詳細資訊，請參閱 [事件中心概觀] []。
+如需詳細資訊，請參閱 [事件中心概觀][]。
 
 本教學課程說明如何使用以 Java 撰寫的主控台應用程式將訊息收集到事件中心，以及如何使用 Apache Storm 平行擷取它們。
 
@@ -32,11 +32,11 @@
 
 + 設定要執行的 Java 開發環境 [Maven](http://maven.apache.org/)。 本教學課程中，我們假設 [Eclipse](https://www.eclipse.org/)。
 
-+ 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>.
++ 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
 
 ## 建立事件中心
 
-1. 登入 [Azure 傳統入口網站] []，然後按一下 [ **新增** 螢幕的底部。
+1. 登入 [Azure 傳統入口網站][], ，然後按一下 **新增** 螢幕的底部。
 
 2. 按一下 [ **應用程式服務**, ，然後 **服務匯流排**, ，然後 **事件中心**, ，然後 **快速建立**。
 
@@ -60,7 +60,7 @@
 
 7. 在相同頁面上，記下個產生的金鑰，如 **SendRule** 和 **ReceiveRule**。
 
-    ![] [6 c]
+    ![][6c]
 
 現已建立事件中心，並具有傳送與接收事件所需的連接字串。
 
@@ -109,3 +109,4 @@
 [Analyzing sensor data with Storm and HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 [Develop streaming data processing applications with SCP.NET and C# on Storm and HDInsight]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
+

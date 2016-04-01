@@ -20,7 +20,7 @@
 
 本教學課程示範如何撰寫簡單的多層式 ASP.NET MVC 5 應用程式使用的程式碼 [WebJobs SDK](websites-dotnet-webjobs-sdk.md)。
 
-目的 [WebJobs SDK](websites-webjobs-resources.md) 是為了簡化您撰寫的一般工作的可執行的 web 工作，例如映像處理、 佇列處理、 RSS 彙總檔案維護的程式碼，並傳送電子郵件。 WebJobs SDK 具有內建功能，用於處理 Azure 儲存體和服務匯流排、工作排程和處理錯誤，以及許多其他常見案例。 此外，它是設計為具有擴充性，而且沒有 [擴充功能的開放原始碼儲存機制](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。
+目的 [WebJobs SDK](websites-webjobs-resources.md) 是為了簡化您撰寫的一般工作的可執行的 web 工作，例如映像處理、 佇列處理、 RSS 彙總檔案維護的程式碼，並傳送電子郵件。 WebJobs SDK 具有內建的功能，可與「Azure 儲存體」和「服務匯流排」搭配運作、用來排定工作和處理錯誤，以及處理許多其他常見的案例。 此外，它是設計為具有擴充性，而且沒有 [擴充功能的開放原始碼儲存機制](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。
 
 此範例應用程式是廣告看板。 使用者可以上傳廣告的影像，然後後端程序會將影像轉換成縮圖。 廣告清單頁面會顯示縮圖，而廣告詳細資料頁面則會顯示完整大小的影像。 以下為螢幕擷取畫面：
 
@@ -28,7 +28,7 @@
 
 此範例應用程式的運作方式與 [Azure 佇列](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 和 [Azure blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)。 本教學課程示範如何部署應用程式以 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) 和 [Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279)。
 
-## <a id="prerequisites"></a>先決條件
+## <a id="prerequisites"></a>必要條件
 
 此教學課程假設您知道如何使用 [ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) Visual Studio 中的專案。
 
@@ -149,9 +149,9 @@ Azure 儲存體帳戶可提供在雲端中儲存佇列和 Blob 資料的資源�
     此檔案有兩個儲存體連接字串，一個供應用程式使用，另一個供記錄使用。 您可以使用不同的儲存體帳戶的應用程式資料和記錄，以及您可以使用 [資料的多個儲存體帳戶](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)。 在本教學課程中，您將使用單一儲存體帳戶。 連接字串具有儲存體帳戶金鑰的預留位置。 
     <pre class="prettyprint">& l t; 組態 & gt;
     & l t; connectionStrings & gt;
-        & l t; 新增名稱 ="AzureWebJobsDashboard"connectionString ="DefaultEndpointsProtocol = https;AccountName =<mark>[accountname]</mark>;AccountKey =<mark>[accesskey]</mark>"/ & gt;
-        & l t; 新增名稱 ="AzureWebJobsStorage"connectionString ="DefaultEndpointsProtocol = https;AccountName =<mark>[accountname]</mark>;AccountKey =<mark>[accesskey]</mark>"/ & gt;
-        & lt; 新增名稱 ="ContosoAdsContext"connectionString ="資料來源 = (localdb) \v11.0;Initial Catalog = ContosoAds;整合式安全性 = True;MultipleActiveResultSets = True;"/ (& s) gt;
+        & l t; 新增名稱 ="AzureWebJobsDashboard"connectionString ="DefaultEndpointsProtocol = https;AccountName =<mark>[] accountname</mark>;AccountKey =<mark>[] accesskey</mark>"/ & gt;
+        & l t; 新增名稱 ="AzureWebJobsStorage"connectionString ="DefaultEndpointsProtocol = https;AccountName =<mark>[] accountname</mark>;AccountKey =<mark>[] accesskey</mark>"/ & gt;
+        & lt; 新增名稱 ="ContosoAdsContext"connectionString ="資料來源 = (localdb) \v11.0;Initial Catalog = ContosoAds;整合式安全性 = True;MultipleActiveResultSets = True;"/ （& s) gt;
     & l t; / connectionStrings & gt;
         & l t; 啟動 & gt;
             & l t; U 版本 ="v4.0"sku ="。NETFramework，Version = 為 4.5 版 」 / & gt;
@@ -373,9 +373,9 @@ Azure 儲存體帳戶可提供在雲端中儲存佇列和 Blob 資料的資源�
 
 2. 在 **新的專案** ] 對話方塊中，選擇 [ **Visual C#** > **Web** > **ASP.NET Web 應用程式**。
 
-3. 將專案命名為 ContosoAdsWeb，將方案命名為 ContosoAdsWebJobsSDK (變更方案名稱，如果您要將它所下載方案相同的資料夾中)，然後按一下 **確定**。
+3. 將專案命名為 ContosoAdsWeb，將方案命名為 ContosoAdsWebJobsSDK （變更方案名稱，如果您要將它所下載方案相同的資料夾中），然後按一下 **確定**。
 
-    ![New Project](./media/websites-dotnet-webjobs-sdk-get-started/newproject.png)
+    ![新增專案](./media/websites-dotnet-webjobs-sdk-get-started/newproject.png)
 
 5. 在 **新增 ASP.NET 專案** ] 對話方塊中，選擇 MVC 範本，並清除 **定域機組中的主機** 底下的核取方塊 **Microsoft Azure**。
 
@@ -393,7 +393,7 @@ Azure 儲存體帳戶可提供在雲端中儲存佇列和 Blob 資料的資源�
 
     Visual Studio 便會建立方案和 Web 專案。
 
-9. 在 **方案總管] 中**, ，以滑鼠右鍵按一下方案 (不是專案)，然後選擇 [ **新增** > **新的專案**。
+9. 在 **方案總管] 中**, ，以滑鼠右鍵按一下方案 （不是專案），然後選擇 [ **新增** > **新的專案**。
 
 11. 在 **加入新的專案** ] 對話方塊中，選擇 [ **Visual C#** > **Windows 桌面** > **類別庫** 範本。  
 
@@ -403,7 +403,7 @@ Azure 儲存體帳戶可提供在雲端中儲存佇列和 Blob 資料的資源�
 
 ### 新增已啟用 WebJobs 部署的主控台應用程式專案
 
-1. 以滑鼠右鍵按一下 web 專案 (不方案或類別庫專案)，然後按一下 **新增** > **New Azure WebJob Project**。
+1. 以滑鼠右鍵按一下 web 專案 （不方案或類別庫專案），然後按一下 **新增** > **New Azure WebJob Project**。
 
     ![New Azure WebJob Project menu selection](./media/websites-dotnet-webjobs-sdk-get-started/newawjp.png)
 
@@ -468,10 +468,10 @@ Web 和 WebJob 專案都將使用 SQL Database，因此兩者都會需要 Contos
 
     - *Web.config*
     - *Global.asax.cs*  
-    - 在 *控制器* 資料夾: *AdController.cs*
-    - 在 *Views\Shared* 資料夾: *_Layout.cshtml* 檔案
-    - 在 *Views\Home* 資料夾: *Index.cshtml*
-    - 在 *Views\Ad* 資料夾 (先建立資料夾): 五個 *.cshtml* 檔案<br/><br/>
+    - 在 *控制器* 資料夾 ︰ *AdController.cs*
+    - 在 *Views\Shared* 資料夾 ︰ *_Layout.cshtml* 檔案
+    - 在 *Views\Home* 資料夾 ︰ *Index.cshtml*
+    - 在 *Views\Ad* 資料夾 （先建立資料夾） ︰ 五個 *.cshtml* 檔案<br/><br/>
 
 3. 在 ContosoAdsWebJob 專案中，從所下載的專案加入下列檔案。
 
@@ -481,7 +481,7 @@ Web 和 WebJob 專案都將使用 SQL Database，因此兩者都會需要 Contos
 
 您現在可以如本教學課程中稍早所指示般建置、執行及部署應用程式。 不過，在您開始執行此動作之前，請先將仍在您部署的第一個 Web 應用程式中執行的 WebJob 停止。 否則，WebJob 將會處理在本機建立或由在新 Web 應用程式中執行之應用程式所建立的佇列訊息，因為它們全都使用相同的儲存體帳戶。
 
-## <a id="code"></a>審查應用程式程式碼
+## <a id="code"></a>檢閱應用程式程式碼
 
 以下小節將說明 WebJobs SDK、Azure 儲存體 Blob 和佇列相關的程式碼。
 
@@ -699,11 +699,11 @@ HttpPost `Edit` 方法的程式碼也是類似的，例外情況是如果使用�
 
 ### ContosoAdsWeb - Views\Ad\Index.cshtml 和 Details.cshtml
 
- *Index.cshtml* 檔案會顯示縮圖與其他廣告資料:
+ *Index.cshtml* 檔案會顯示縮圖與其他廣告資料 ︰
 
         <img  src="@Html.Raw(item.ThumbnailURL)" />
 
- *Details.cshtml* 檔案會顯示完整大小的影像:
+ *Details.cshtml* 檔案會顯示完整大小的影像 ︰
 
         <img src="@Html.Raw(Model.ImageURL)" />
 
@@ -727,7 +727,7 @@ HttpPost `Edit` 方法的程式碼也是類似的，例外情況是如果使用�
             host.RunAndBlock();
         }
 
-### <a id="generatethumbnail"></a>ContosoAdsWebJob - Functions.cs - GenerateThumbnail method
+### <a id="generatethumbnail"></a>ContosoAdsWebJob - Functions.cs - GenerateThumbnail 方法
 
 WebJobs SDK 會在收到佇列訊息時呼叫此方法。 此方法會建立縮圖，並將縮圖 URL 放入資料庫。
 
@@ -770,7 +770,7 @@ WebJobs SDK 會在收到佇列訊息時呼叫此方法。 此方法會建立縮�
 
     Blob 名稱取自佇列訊息 (`BlobName` 和 `BlobNameWithoutExtension`) 中所收到 `BlobInformation` 物件的屬性。 若要取得儲存體用戶端程式庫的完整功能，您可以利用 `CloudBlockBlob` 類別來使用 Blob。 如果您想要重複使用為使用 `Stream` 物件所撰寫的程式碼，您可以使用 `Stream` 類別。
 
-如需有關如何撰寫使用 WebJobs SDK 屬性的函式的詳細資訊，請參閱下列資源:
+如需有關如何撰寫使用 WebJobs SDK 屬性的函式的詳細資訊，請參閱下列資源 ︰
 
 * [如何透過 WebJobs SDK 使用 Azure 佇列儲存體](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
 * [如何透過 WebJobs SDK 使用 Azure Blob 儲存體](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
@@ -816,4 +816,5 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 ### 其他 WebJobs 文件
 
 如需詳細資訊，請參閱 [Azure WebJobs 文件資源](http://go.microsoft.com/fwlink/?LinkId=390226)。
+
 

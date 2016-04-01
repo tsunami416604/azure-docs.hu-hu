@@ -215,14 +215,14 @@ MySQL 是高並行存取資料庫。 Linux 的並行控制代碼預設數目為 
 
 下列組態項目是影響 MySQL 效能的主要因素：  
 
--   **innodb_buffer_pool_size**: 緩衝集區包含經過緩衝處理的資料和索引。 這通常設定為 70% 的實體記憶體。
--   **innodb_log_file_size**: 這是重做記錄檔大小。 您可以使用重做記錄檔來確保寫入作業快速、可靠並可在當機後復原。 這會設定為 512 MB，將提供大量空間給您記錄寫入作業。
--   **max_connections**: 有時應用程式不會關閉連線正常。 較大的值讓伺服器有更多的時間來回收閒置的連線。 連線數目上限為 10000，但建議的上限為 5000。
--   **Innodb_file_per_table**: 此設定可啟用或停用 InnoDB 在個別檔案中儲存資料表功能。 開啟此選項將確保可有效地套用數個進階管理作業。 從效能觀點來看，它可以加速資料表空間傳輸，並將 debris 管理效能最佳化。 因此這個選項的建議設定為 ON。</br>
+-   **innodb_buffer_pool_size**︰ 緩衝集區包含經過緩衝處理的資料和索引。 這通常設定為 70% 的實體記憶體。
+-   **innodb_log_file_size**︰ 這是重做記錄檔大小。 您可以使用重做記錄檔來確保寫入作業快速、可靠並可在當機後復原。 這會設定為 512 MB，將提供大量空間給您記錄寫入作業。
+-   **max_connections**︰ 有時應用程式不會關閉連線正常。 較大的值讓伺服器有更多的時間來回收閒置的連線。 連線數目上限為 10000，但建議的上限為 5000。
+-   **Innodb_file_per_table**︰ 此設定可啟用或停用 InnoDB 在個別檔案中儲存資料表功能。 開啟此選項將確保可有效地套用數個進階管理作業。 從效能觀點來看，它可以加速資料表空間傳輸，並將 debris 管理效能最佳化。 因此這個選項的建議設定為 ON。</br>
     從 MySQL 5.6 開始，預設設定為 ON。 因此，不需要採取任何動作。 若為其他版本，也就是 5.6 以前的版本，預設設定為 OFF。 必須將此選項設為 ON。 而且應在載入資料之前套用，因為只有新建的資料表會受影響。
--   **innodb_flush_log_at_trx_commit**: 預設值為 1，其範圍設為 0 ~ 2。 對獨立 MySQL DB 而言，預設值是最適合的選項。 設定為 2 可達到最大資料完整性，適合於 MySQL 叢集中的主機。 設定為 0 會讓資料遺失，這可能會影響可靠性，在某些情況下，效能會更佳，適合於 MySQL 叢集中的從屬。
--   **Innodb_log_buffer_size**: 記錄緩衝區允許交易執行，而不需要記錄檔排清至磁碟之前認可的交易。 不過，如果有大型二進位物件或文字欄位，將會非常快速地耗用快取，並將觸發頻繁的磁碟 I/O。 如果 Innodb_log_waits 狀態變數不是 0，最好能增加緩衝區大小。
--   **query_cache_size**: 最佳選項是從一開始就將它停用。 將 query_cache_size 設為 0 (這現在是 MySQL 5.6 中的預設值)，並使用其他方法來加速查詢。  
+-   **innodb_flush_log_at_trx_commit**︰ 預設值為 1，其範圍設為 0 ~ 2。 對獨立 MySQL DB 而言，預設值是最適合的選項。 設定為 2 可達到最大資料完整性，適合於 MySQL 叢集中的主機。 設定為 0 會讓資料遺失，這可能會影響可靠性，在某些情況下，效能會更佳，適合於 MySQL 叢集中的從屬。
+-   **Innodb_log_buffer_size**︰ 記錄緩衝區允許交易執行，而不需要記錄檔排清至磁碟之前認可的交易。 不過，如果有大型二進位物件或文字欄位，將會非常快速地耗用快取，並將觸發頻繁的磁碟 I/O。 如果 Innodb_log_waits 狀態變數不是 0，最好能增加緩衝區大小。
+-   **query_cache_size**︰ 最佳選項是從一開始就將它停用。 將 query_cache_size 設為 0 (這現在是 MySQL 5.6 中的預設值)，並使用其他方法來加速查詢。  
 
 請參閱 [附錄 D](#AppendixD) 來比較最佳化之後的效能。
 
@@ -270,7 +270,7 @@ MySQL 緩慢查詢記錄檔可協助您識別 MySQL 的較慢查詢。 啟用 My
 >AZURE.NOTE：這項測試的工作負載會使用 64 個執行緒，並嘗試達到 RAID 的上限。
 
 <a name="AppendixB"></a>附錄 b:  
-**不同 RAID 層級的 MySQL 效能 (輸送量) 比較**   
+**不同 RAID 層級的 MySQL 效能 （輸送量） 比較**   
 (XFS 檔案系統)
 
 
@@ -358,4 +358,5 @@ MySQL 緩慢查詢記錄檔可協助您識別 MySQL 的較慢查詢。 啟用 My
 [12]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-12.png
 [13]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-14.png
+
 

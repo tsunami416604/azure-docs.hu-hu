@@ -26,18 +26,19 @@
 --------------------------------------------------------------------------------
 <ol>
 <li>登入 [https://myapps.microsoft.com](https://myapps.microsoft.com)</li>    
-<li>的頂端，選取 [設定檔。</li>
+<li>在頂端，選取 [設定檔]。</li>
 
 <center>![雲端](./media/multi-factor-authentication-end-user-app-passwords-create-myapps/myapp.png)</center>
 
-<li>按一下您的使用者名稱，然後選取 [其他安全性驗證。</li>
-<li>在 proofup 頁面的頂端，選取 [應用程式密碼</li>
-<li>按一下 **建立**</li>
+<li>按一下您的使用者名稱並選取 [其他安全性驗證]。</li>
+<li>在 proofup 頁面的頂端，選取應用程式密碼</li>
+<li>按一下 [ **建立**</li>
 
 ![雲端](./media/multi-factor-authentication-end-user-app-passwords-create-myapps/apppassword.png)
 
 <li>輸入應用程式密碼的名稱，然後按一下 **下一步**</li>
-<li>應用程式密碼複製到剪貼簿，並將它貼到您的應用程式。</li>
+<li>將應用程式密碼複製到剪貼簿，並將它貼到您的應用程式。</li>
 
 
  
+

@@ -44,7 +44,7 @@
 ![佇列概念](./media/service-bus-ruby-how-to-use-queues/sb-queues-08.png)
 
 服務匯流排佇列是一項通用技術，適用於
-各種不同的案例:
+各種不同的案例 ︰
 
 -   在 web 和背景工作角色之間通訊 [多層式
     Azure 應用程式](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)。
@@ -112,7 +112,7 @@ require "azure"
 ## 設定 Azure 服務匯流排連接
 
 Azure 模組會讀取環境變數 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_SERVICEBUS\_ACCESS_KEY**
-連接到您的服務匯流排命名空間所需的資訊。 如果未設定這些環境變數，您必須指定命名空間資訊之前使用 **azure:: servicebusservice** 為下列程式碼:
+連接到您的服務匯流排命名空間所需的資訊。 如果未設定這些環境變數，您必須指定命名空間資訊之前使用 **azure:: servicebusservice** 為下列程式碼 ︰
 
 ```
 Azure.config.sb_namespace = "<your azure service bus namespace>"
@@ -123,7 +123,7 @@ Azure.config.sb_access_key = "<your azure service bus access key>"
 
 ## 如何建立佇列
 
- **Azure:: servicebusservice** 物件可讓您能夠使用佇列。 若要建立佇列時，使用 **create_queue ()** 方法。 下列範例會建立佇列，或列印出任何錯誤。
+ **Azure:: servicebusservice** 物件可讓您能夠使用佇列。 若要建立佇列時，使用 **create_queue （)** 方法。 下列範例會建立佇列，或列印出任何錯誤。
 
 ```
 azure_service_bus_service = Azure::ServiceBusService.new
@@ -146,9 +146,9 @@ queue = azure_service_bus_service.create_queue(queue)
 
 ## 如何傳送訊息至佇列
 
-若要將訊息傳送至服務匯流排佇列，您的應用程式呼叫 **send\_queue\_message ()** 方法 **azure:: servicebusservice** 物件。 傳送至 (和接收自) 服務匯流排佇列是 **brokeredmessage** 物件，而且具有一組標準屬性 (例如 **標籤** 和 **time\_to\_live**)、 用來保存自訂應用程式特定屬性的字典和一堆任意的應用程式資料。 應用程式可用訊息的形式傳遞字串值以設定訊息內文，任何必要的標準屬性都將以預設值填入。
+若要將訊息傳送至服務匯流排佇列，您的應用程式呼叫 **send\_queue\_message （)** 方法 **azure:: servicebusservice** 物件。 傳送至 （和接收自） 服務匯流排佇列是 **brokeredmessage** 物件，而且具有一組標準屬性 (例如 **標籤** 和 **time\_to\_live**)、 用來保存自訂應用程式特定屬性的字典和一堆任意的應用程式資料。 應用程式可用訊息的形式傳遞字串值以設定訊息內文，任何必要的標準屬性都將以預設值填入。
 
-下列範例示範如何將測試訊息傳送至名為 「 測試佇列 」 使用佇列 **send\_queue\_message ()**:
+下列範例示範如何將測試訊息傳送至名為 「 測試佇列 」 使用佇列 **send\_queue\_message （)**:
 
 ```
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
@@ -160,13 +160,13 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 
 ## 如何從佇列接收訊息
 
-接收來自佇列使用的訊息 **receive\_queue\_message ()** 方法 **azure:: servicebusservice** 物件。 根據預設，在讀取及鎖定訊息後並不會將其從佇列中刪除。 不過，您可以刪除訊息從佇列讀取時藉由設定 **: peek_lock** 選項 **false**。
+接收來自佇列使用的訊息 **receive\_queue\_message （)** 方法 **azure:: servicebusservice** 物件。 根據預設，在讀取及鎖定訊息後並不會將其從佇列中刪除。 不過，您可以刪除訊息從佇列讀取時藉由設定 **: peek_lock** 選項 **false**。
 
-預設行為會使讀取和刪除變成兩階段作業，因此也可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 **delete\_queue\_message ()** 方法，並提供要刪除做為參數的訊息。  **Delete\_queue\_message ()** 方法會標示為已取用的訊息，並將它從佇列移除。
+預設行為會使讀取和刪除變成兩階段作業，因此也可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 （或可靠地儲存供未來處理） 之後，完成接收程序的第二個階段 **delete\_queue\_message （)** 方法，並提供要刪除做為參數的訊息。  **Delete\_queue\_message （)** 方法會標示為已取用的訊息，並將它從佇列移除。
 
 如果 **: peek\_lock** 參數設為 **false**, ，讀取和刪除訊息將會變成最簡單的模型，且最適用於應用程式容許在不處理訊息發生失敗時的案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-下列範例示範如何接收和處理訊息使用 **receive\_queue\_message ()**。 範例首先接收並刪除訊息使用 **: peek\_lock** 設 **false**, ，然後再接收另一個訊息，然後刪除訊息使用 **delete\_queue\_message ()**:
+下列範例示範如何接收和處理訊息使用 **receive\_queue\_message （)**。 範例首先接收並刪除訊息使用 **: peek\_lock** 設 **false**, ，然後再接收另一個訊息，然後刪除訊息使用 **delete\_queue\_message （)**:
 
 ```
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -177,11 +177,11 @@ azure_service_bus_service.delete_queue_message(message)
 
 ## 如何處理應用程式當機與無法讀取的訊息
 
-服務匯流排提供一種功能，可協助您從應用程式的錯誤或處理訊息的問題中順利復原。 如果接收者應用程式無法處理訊息，因為某種原因，則它可以呼叫 **unlock\_queue\_message ()** 方法 **azure:: servicebusservice** 物件。 這將導致服務匯流排將佇列中的訊息解除鎖定，讓此訊息可以被相同取用應用程式或其他取用應用程式重新接收。
+服務匯流排提供一種功能，可協助您從應用程式的錯誤或處理訊息的問題中順利復原。 如果接收者應用程式無法處理訊息，因為某種原因，則它可以呼叫 **unlock\_queue\_message （)** 方法 **azure:: servicebusservice** 物件。 這將導致服務匯流排將佇列中的訊息解除鎖定，讓此訊息可以被相同取用應用程式或其他取用應用程式重新接收。
 
 與在佇列內鎖定訊息相關的還有逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會自動解除鎖定訊息，並讓訊息可以被重新接收。
 
-該應用程式當機之前處理訊息之後 **delete\_queue\_message ()** 呼叫方法，然後將訊息傳遞給應用程式重新啟動時。 這通常稱為 **至少處理一次**; 也就是說，每個訊息會至少處理一次，但在某些情況下可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 這通常您可使用 **message\_id** 訊息，各個傳遞嘗試保持不變的屬性。
+該應用程式當機之前處理訊息之後 **delete\_queue\_message （)** 呼叫方法，然後將訊息傳遞給應用程式重新啟動時。 這通常稱為 **至少處理一次**; 也就是說，每個訊息會至少處理一次，但在某些情況下可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 這通常您可使用 **message\_id** 訊息，各個傳遞嘗試保持不變的屬性。
 
 ## 後續步驟
 
@@ -192,4 +192,5 @@ azure_service_bus_service.delete_queue_message(message)
 
 要比較本文所討論的 Azure 服務匯流排佇列和 Azure 佇列 [如何使用 Azure 佇列服務](/develop/ruby/how-to-guides/queue-service/) 文件，請參閱 [Azure 佇列和 Azure 服務匯流排佇列-比較和對照](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
  
+
 

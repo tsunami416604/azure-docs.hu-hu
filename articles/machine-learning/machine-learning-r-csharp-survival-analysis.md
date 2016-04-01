@@ -19,12 +19,12 @@
 
 #存活分析 
 
-在許多情況下，主要評估結果會是感興趣事件的時間。 換句話說，詢問 「 何時會發生此事件? 」 系統會要求。 例如，請考慮資料描述感興趣的事件 (疾病復發、取得博士學位、煞車來令片故障) 發生前所經過之時間 (天、年、里程數等) 的案例。 資料中的每個執行個體代表特定物件 (病患、學生、汽車等)。
+在許多情況下，主要評估結果會是感興趣事件的時間。 換句話說，詢問 「 何時會發生此事件？ 」 系統會要求。 例如，請考慮資料描述感興趣的事件 (疾病復發、取得博士學位、煞車來令片故障) 發生前所經過之時間 (天、年、里程數等) 的案例。 資料中的每個執行個體代表特定物件 (病患、學生、汽車等)。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-這 [web 服務]( https://datamarket.azure.com/dataset/aml_labs/survivalanalysis) 「 物件 x 在時間 n 感興趣的事件會發生的機率為何? 」 這個問題的答案 藉由提供存活分析模型，這項 Web 服務可讓使用者提供資料來定型模型並加以測試。 此實驗的主旨是要在感興趣的事件發生之前建立經過時間長度的模型。 
+這 [web 服務]( https://datamarket.azure.com/dataset/aml_labs/survivalanalysis) 「 物件 x 在時間 n 感興趣的事件會發生的機率為何？ 」 這個問題的答案 藉由提供存活分析模型，這項 Web 服務可讓使用者提供資料來定型模型並加以測試。 此實驗的主旨是要在感興趣的事件發生之前建立經過時間長度的模型。 
 
 >使用者可透過行動裝置應用程式、網站，甚至是本機電腦，來取用這項 Web 服務。 不過，該 Web 服務也可用來示範如何使用 Azure Machine Learning，來建立採用 R 程式碼的 Web 服務。 只需幾行 R 程式碼並在 Azure Machine Learning Studio 中的按鈕上按幾下，就可以建立採用 R 程式碼的實驗，並將其發佈為 Web 服務。 接著可將 Web 服務發佈至 Azure Marketplace，以供世界各地的使用者和裝置取用，而不需要 Web 服務的作者設定基礎結構。  
 
@@ -87,7 +87,7 @@
 
 >這項 Web 服務是使用 Azure Machine Learning 所建立。 免費的試用版，以及有關建立實驗的簡介影片和 [發佈 web 服務](machine-learning-publish-a-machine-learning-web-service.md), ，請參閱 [azure.com /ml](http://azure.com/ml)。 以下是建立 Web 服務之實驗的螢幕擷取畫面，以及實驗內每個模組的範例程式碼。
 
-Azure Machine Learning 中新的空白實驗建立的這兩個 [Execute R Script] 的 [執行-r-指令碼] 模組提取到工作區。 資料結構描述是以簡單的 [執行 R 指令碼] [執行-r-指令碼]，它會定義 web 服務的輸入的資料結構描述建立。 此模組會接著連結至執行主要工作的第二個 [Execute R Script] [執行-r-指令碼] 模組中。 此模組會進行資料前處理、模型建立和預測。 在資料前處理步驟中，長字串所表示的輸入資料會轉換成資料框架。 在模型建立步驟中，首次安裝外部 R 套件 "survival_2.37-7.zip" 以進行存活分析。 然後會在序列資料處理工作之後執行 "coxph" 函數。 在 R 文件中可以讀取存活分析的 "coxph" 函數詳細資料。 在預測步驟中，會利用 "surfit" 函數在定型模型中提供測試執行個體，而且此測試執行個體的存活曲線會產生成為 “curve” 變數。 最後會取得感興趣時間的機率。 
+從 Azure Machine Learning 中新的空白實驗建立並將兩個 [執行 R 指令碼][execute-r-script] 模組提取到工作區。 使用簡單的資料結構描述建立 [執行 R 指令碼][execute-r-script], ，其定義 web 服務的輸入的資料結構描述。 此模組會接著連結至第二個 [執行 R 指令碼][execute-r-script] 模組，以執行主要工作。 此模組會進行資料前處理、模型建立和預測。 在資料前處理步驟中，長字串所表示的輸入資料會轉換成資料框架。 在模型建立步驟中，首次安裝外部 R 套件 "survival_2.37-7.zip" 以進行存活分析。 然後會在序列資料處理工作之後執行 "coxph" 函數。 在 R 文件中可以讀取存活分析的 "coxph" 函數詳細資料。 在預測步驟中，會利用 "surfit" 函數在定型模型中提供測試執行個體，而且此測試執行個體的存活曲線會產生成為 “curve” 變數。 最後會取得感興趣時間的機率。 
 
 ###實驗流程：
 
@@ -206,4 +206,5 @@ Web 服務或發佈至 Azure Marketplace 的耗用量常見問題集解答，請
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
  
+
 

@@ -33,19 +33,19 @@
 + 適用於 Windows 市集、Windows Phone 8.1 市集和通用 Windows 應用程式的 Windows 通知服務 (WNS)
 + 適用於 Windows Phone Silverlight 應用程式的 Microsoft 推播通知服務 (MPNS)
 
-如需詳細資訊，請參閱 [Azure 通知中心]。
+如需詳細資訊，請參閱 [Azure Notification Hubs]。
 
 您可以使用平台特定行動服務用戶端程式庫中的註冊功能，或是使用行動服務 REST API 來建立用戶端註冊。 通知中心支援兩種裝置註冊：
 
 + **原生註冊**<br/>原生註冊會依平台特定的推播通知服務而調整。 將通知傳送至使用原生註冊來註冊的裝置時，您必須在行動服務中呼叫平台特定的 API。 若要將通知傳送至多重平台上的裝置，則需要多重平台特定的呼叫。
 
-+ **範本註冊**<br/>通知中心也支援平台特定的範本註冊。 藉由使用範本註冊，您可以使用單一 API 呼叫將通知傳送至執行於任何已註冊平台上的應用程式。 如需詳細資訊，請參閱 [傳送跨平台通知給使用者]。
++ **範本註冊**<br/>通知中心也支援平台特定的範本註冊。 藉由使用範本註冊，您可以使用單一 API 呼叫將通知傳送至執行於任何已註冊平台上的應用程式。 如需詳細資訊，請參閱 [Send cross-platform notifications to users]。
 
 下列區段中的資料表會連結至用戶端特定的教學課程，為您示範如何從 .NET 和 JavaScript 後端行動服務來實作推播通知。
 
 ###.NET 後端
 
-在.NET 後端行動服務，您傳送通知，藉由呼叫 [SendAsync] 方法上 [PushClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.notifications.pushclient.aspx) 物件取自 [ApiServices.Push](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.apiservices.push.aspx) 屬性。 將推播通知傳送 (原生或範本) 取決於特定 [IPushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.notifications.ipushmessage.aspx)-衍生的物件傳遞給 [SendAsync] 方法，如下表所示:
+在.NET 後端行動服務，您傳送通知，藉由呼叫 [SendAsync] 方法 [PushClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.notifications.pushclient.aspx) 物件取自 [ApiServices.Push](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.apiservices.push.aspx) 屬性。 將推播通知傳送 （原生或範本） 取決於特定 [IPushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.notifications.ipushmessage.aspx)-衍生物件，傳遞至 [SendAsync] 方法，如下列表格所示 ︰
 
 |平台 |[APNS](mobile-services-dotnet-backend-ios-get-started-push.md)|[GCM](mobile-services-dotnet-backend-android-get-started-push.md) |[WNS](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md) | MPNS
 |-----|-----|----|----|-----|
@@ -69,7 +69,7 @@
 
 如需如何將推播通知傳送至其他原生用戶端平台的範例，請按一下上表標頭中的平台連結。
 
-當您使用範本用戶端註冊，而非原生用戶端註冊時，您可以傳送相同通知，只呼叫一次 [SendAsync]，提供 [TemplatePushMessage] 物件，如下:
+當您使用範本用戶端註冊，而非原生用戶端註冊時，您可以傳送相同通知，只呼叫一次 [SendAsync], ，提供 [TemplatePushMessage] 物件，如下所示 ︰
 
     // Create a new template message and add the 'message' parameter.
     var templatePayload = new TemplatePushMessage();
@@ -80,7 +80,7 @@
 
 ###JavaScript 後端
 
-在 JavaScript 後端行動服務，您傳送通知，藉由呼叫 **傳送** 的平台特定物件上的方法取得從全域 [push 物件] 下表所示:
+在 JavaScript 後端行動服務，您傳送通知，藉由呼叫 **傳送** 的平台特定物件上的方法取得從全域 [push object], ，如下表所示 ︰
 
 |平台 |[APNS](mobile-services-javascript-backend-ios-get-started-push.md)|[GCM](mobile-services-javascript-backend-android-get-started-push.md) |[WNS](mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) |[MPNS](mobile-services-javascript-backend-windows-phone-get-started-push.md)|
 |-----|-----|----|----|-----|
@@ -118,7 +118,7 @@
 
 如需如何將推播通知傳送至其他原生用戶端平台的範例，請按一下上表標頭中的平台連結。
 
-當您使用範本用戶端註冊，而非原生用戶端註冊時，您可以傳送相同通知，只需要單一呼叫 **傳送** 函式上的全域 [push 物件]，提供範本訊息裝載，如下:
+當您使用範本用戶端註冊，而非原生用戶端註冊時，您可以傳送相同通知，只需要單一呼叫 **傳送** 上全域函式 [push object], ，提供範本訊息裝載，如下 ︰
 
     // Create a new template message with the 'message' parameter.
     var templatePayload = { "message": item.text };
@@ -140,13 +140,13 @@
 
 + [**Appcelerator**](http://go.microsoft.com/fwlink/p/?LinkId=509987)<br/>Appcelerator 可讓您使用 JavaScript 來開發單一應用程式，且所有行動裝置平台上執行的原生編譯。 如此可提供在 UI 中的豐富使用者經驗、對所有原生裝置資源的存取權，以及原生應用程式效能。 如需詳細資訊，請參閱 [Appcelerator 教學課程][Appcelerator]。
 
-+ [**PhoneGap**](https://go.microsoft.com/fwLink/p/?LinkID=390707)**/**[**Cordova**](http://cordova.apache.org/)<br/>PhoneGap (Apache Cordova 專案的散發) 是免費的開放原始碼架構，可讓您使用標準化的 web Api、 HTML 和 JavaScript 來開發在 Android、 iOS 和 Windows 裝置執行的單一應用程式。 PhoneGap 提供 Web 檢視形式的 UI，但能夠存取推播通知、加速計、相機、儲存體、地理位置和應用程式內部瀏覽器等裝置上的原生資源，因而增強了使用者經驗。 如需詳細資訊，請參閱 [PhoneGap 快速入門教學課程] [PhoneGap]。
++ [**PhoneGap**](https://go.microsoft.com/fwLink/p/?LinkID=390707)**/**[**Cordova**](http://cordova.apache.org/)<br/>PhoneGap (Apache Cordova 專案的散發套件) 是免費的開放原始碼架構，可讓您使用標準化的 Web API、HTML 和 JavaScript 來開發在 Android、iOS 和 Windows 裝置上執行的單一應用程式。 PhoneGap 提供 Web 檢視形式的 UI，但能夠存取推播通知、加速計、相機、儲存體、地理位置和應用程式內部瀏覽器等裝置上的原生資源，因而增強了使用者經驗。 如需詳細資訊，請參閱 [PhoneGap 快速入門教學課程][PhoneGap]。
 
     Visual Studio 現在也可以讓您使用 Visual Studio 的多重裝置混合式應用程式擴充功能 (發行前軟體) 來建置跨平台 Cordova 應用程式。 如需詳細資訊，請參閱 [多重裝置混合式應用程式使用 HTML 和 JavaScript 入門](http://msdn.microsoft.com/library/dn771545.aspx)。
 
-+ [**Sencha Touch**](http://go.microsoft.com/fwlink/p/?LinkId=509988)<br/>Sencha Touch 提供一組控制項，針對各種行動裝置從單一 HTML 和 JavaScript 程式碼基底提供類原生使用經驗的觸控螢幕最佳化。 Sencha Touch 可與 PhoneGap 或 Cordova 程式庫搭配使用，讓使用者能夠存取原生裝置資源。 如需詳細資訊，請參閱 [Sencha Touch 快速入門教學課程] [Sencha]。
++ [**Sencha Touch**](http://go.microsoft.com/fwlink/p/?LinkId=509988)<br/>Sencha Touch 提供一組針對觸控螢幕最佳化的控制項，從單一 HTML 和 JavaScript 程式碼基底，在各種行動裝置上提供類原生經驗。 Sencha Touch 可與 PhoneGap 或 Cordova 程式庫搭配使用，讓使用者能夠存取原生裝置資源。 如需詳細資訊，請參閱 [Sencha Touch 快速入門教學課程][Sencha]。
 
-+ [**Xamarin**](https://go.microsoft.com/fwLink/p/?LinkID=330242)<br/>Xamarin 可讓您建立具有完全原生 UI，並能夠存取所有裝置資源的 iOS 和 Android 的裝置的完全原生應用程式。 Xamarin 應用程式是以 C# 編碼，而不是以 Objective-C 和 Java 編碼。 如此可讓 .NET 開發人員將應用程式發佈至 iOS 和 Android，以及從 Windows 專案共用程式碼。 Xamarin 從 C# 程式碼提供 iOS 和 Android 裝置的完全原生使用者經驗。 這可讓您在 iOS 和 Android 裝置上，從 Windows 應用程式重複使用部分行動服務程式碼。 如需詳細資訊，請參閱 [Xamarin 開發](#xamarin) 下方。
++ [**Xamarin**](https://go.microsoft.com/fwLink/p/?LinkID=330242)<br/>Xamarin 可讓您建立 iOS 與 Android 裝置皆適用的完全原生應用程式，具有完全原生 UI，並可存取所有裝置資源。 Xamarin 應用程式是以 C# 編碼，而不是以 Objective-C 和 Java 編碼。 如此可讓 .NET 開發人員將應用程式發佈至 iOS 和 Android，以及從 Windows 專案共用程式碼。 Xamarin 從 C# 程式碼提供 iOS 和 Android 裝置的完全原生使用者經驗。 這可讓您在 iOS 和 Android 裝置上，從 Windows 應用程式重複使用部分行動服務程式碼。 如需詳細資訊，請參閱 [Xamarin 開發](#xamarin) 下方。
 
 
 <!-- URLs -->
@@ -172,4 +172,5 @@
 [What's next for Windows Phone 8 developers]: http://msdn.microsoft.com/library/windows/apps/dn655121(v=vs.105).aspx
 [Building universal Windows apps for all Windows devices]: http://go.microsoft.com/fwlink/p/?LinkId=509905
 [Universal Windows app project for Azure Mobile Services using MVVM]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
+
 

@@ -98,7 +98,7 @@ Veracode 應用程式需要特定的格式，會要求您新增自訂屬性對�
 
 7.  按一下 [ **SAML** ] 索引標籤。
 
-8.  在 **組織 SAML 設定** 區段中，執行下列步驟:
+8.  在 **組織 SAML 設定** 區段中，執行下列步驟 ︰
 
     ![系統管理](./media/active-directory-saas-veracode-tutorial/IC802912.png "Administration")
 
@@ -112,7 +112,7 @@ Veracode 應用程式需要特定的格式，會要求您新增自訂屬性對�
 
     1.  做為 **新的使用者啟動**, ，請選取 **不啟用需要**。
     2.  做為 **使用者資料更新**, ，請選取 **喜好設定 Veracode 使用者資料**。
-    3.  如 **SAML 屬性的詳細資料**, ，選取下列:
+    3.  如 **SAML 屬性的詳細資料**, ，選取下列 ︰
         -   **[使用者角色]**
         -   **[原則系統管理員]**
         -   **[檢閱者]**
@@ -136,11 +136,11 @@ Veracode 應用程式需要特定的格式，會要求您新增自訂屬性對�
 
     ![屬性](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
 
-    | 屬性名稱 | 屬性值 |
-    |:---------------|:----------------|
-    | firstname      | User.givenname  |
-    | lastname       | User.surname    |
-    | 電子郵件          | User.mail       |
+  	| 屬性名稱 | 屬性值 |
+  	|:---------------|:----------------|
+  	| firstname      | User.givenname  |
+  	| lastname       | User.surname    |
+  	| 電子郵件          | User.mail       |
 
     1.  每個資料列上表中，按一下 [ **新增使用者屬性**。
     
@@ -179,3 +179,4 @@ Veracode 應用程式需要特定的格式，會要求您新增自訂屬性對�
     ![是](./media/active-directory-saas-veracode-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

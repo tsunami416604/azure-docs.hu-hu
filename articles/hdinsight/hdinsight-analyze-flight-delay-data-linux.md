@@ -21,7 +21,7 @@
 
 了解如何在以 Linux 為基礎的 HDInsight 上使用 Hive 分析航班延誤資料，然後使用 Sqoop 將資料匯出到 Azure SQL Database。
 
-> [AZURE.NOTE] 雖然您可以使用這份文件的個別項目以 Windows 為基礎的 HDInsight 叢集 (Python 與 Hive 範例)，許多的步驟僅適用於 linux 叢集。 將會使用 Windows 叢集的步驟，請參閱 [分析航班延誤資料在 HDInsight 中使用 Hive](hdinsight-analyze-flight-delay-data.md)
+> [AZURE.NOTE] 雖然您可以使用這份文件的個別項目以 Windows 為基礎的 HDInsight 叢集 （Python 與 Hive 範例），許多的步驟僅適用於 linux 叢集。 將會使用 Windows 叢集的步驟，請參閱 [分析航班延誤資料在 HDInsight 中使用 Hive](hdinsight-analyze-flight-delay-data.md)
 
 ###必要條件
 
@@ -41,10 +41,10 @@
 1. 瀏覽至 [研發創新技術管理部運輸統計處][rita-website]。
 2. 在此頁面上選取下列值：
 
-    |名稱 |值 |
-    |篩選年份 |2013 |
-    |篩選期間 |1 月 |
-    |欄位 |Year、 FlightDate、 UniqueCarrier、 電信業者、 FlightNum、 OriginAirportID、 來源、 OriginCityName、 OriginState、 DestAirportID、 Dest、 DestCityName、 DestState、 DepDelayMinutes、 ArrDelay、 ArrDelayMinutes、 CarrierDelay、 WeatherDelay、 NASDelay、 SecurityDelay、 LateAircraftDelay。 清除所有其他欄位 |
+  	|名稱 |值 |
+  	|篩選年份 |2013 |
+  	|篩選期間 |1 月 |
+  	|欄位 |Year、 FlightDate、 UniqueCarrier、 電信業者、 FlightNum、 OriginAirportID、 來源、 OriginCityName、 OriginState、 DestAirportID、 Dest、 DestCityName、 DestState、 DepDelayMinutes、 ArrDelay、 ArrDelayMinutes、 CarrierDelay、 WeatherDelay、 NASDelay、 SecurityDelay、 LateAircraftDelay。 清除所有其他欄位 |
 
 3. 按一下 [ **下載**。 
 
@@ -149,7 +149,7 @@
         
 2. 使用 __Ctrl + X__, ，然後 __Y__ 儲存檔案。
 
-3. 使用下列命令啟動 Hive 並執行 __flightdelays.hql__ 檔案:
+3. 使用下列命令啟動 Hive 並執行 __flightdelays.hql__ 檔案 ︰
 
         hive -i flightdelays.hql
         
@@ -185,13 +185,13 @@
 
 > [AZURE.IMPORTANT] 請注意此命令傳回的伺服器名稱。 這是所建立的 SQL Database 伺服器的簡短名稱。 完整網域名稱 (FQDN) 為 `<shortname>.database.windows.net`。
 
-2. 使用下列命令來建立名為 **sqooptest** SQL 資料庫伺服器上:
+2. 使用下列命令來建立名為 **sqooptest** SQL 資料庫伺服器上 ︰
 
         azure sql db create [options] <serverName> sqooptest <adminLogin> <adminPassword>
 
     完成時會傳回 [確定] 訊息。
 
-    > [AZURE.NOTE] 如果您收到錯誤訊息指出您沒有存取權，您可能需要將用戶端工作站的 IP 位址加入至 SQL Database 防火牆，使用下列命令:
+    > [AZURE.NOTE] 如果您收到錯誤訊息指出您沒有存取權，您可能需要將用戶端工作站的 IP 位址加入至 SQL Database 防火牆，使用下列命令 ︰
     >
     > `sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
 
@@ -226,7 +226,7 @@
         ([origin_city_name] ASC))
         GO
 
-    輸入 `GO` 陳述式後，將評估先前的陳述式。 這會建立名為的新資料表 __延遲__, ，具有叢集索引 (SQL Database 所需)。
+    輸入 `GO` 陳述式後，將評估先前的陳述式。 這會建立名為的新資料表 __延遲__, ，具有叢集索引 （SQL Database 所需）。
 
     使用下列命令來確認已建立資料表：
 
@@ -256,7 +256,7 @@
 
         sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir 'wasb:///tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
 
-    這會指示 Sqoop 連接到 SQL Database、 sqooptest 資料庫，並將資料匯出從 wasb: / / 教學課程/flightdelays/output (我們儲存更早版本，hive 查詢的輸出) 到延誤資料表。
+    這會指示 Sqoop 連接到 SQL Database、 sqooptest 資料庫，並將資料匯出從 wasb: / / 教學課程/flightdelays/output （我們儲存更早版本，hive 查詢的輸出） 到延誤資料表。
 
 4. 在命令完成後，使用下列程式碼連接至使用 TSQL 的資料庫：
 
@@ -307,4 +307,5 @@
 
 
  
+
 

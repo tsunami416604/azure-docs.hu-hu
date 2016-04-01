@@ -31,7 +31,7 @@ In-Memory 功能大幅提升適當情況下交易和分析工作負載的效能�
 
 #### In-Memory OLTP
 
-記憶體中的功能 [OLTP](#install_oltp_manuallink) (線上交易處理) 會:
+記憶體中的功能 [OLTP](#install_oltp_manuallink) （線上交易處理） 會 ︰
 
 - 記憶體最佳化資料表。
 - 原生編譯預存程序。
@@ -47,7 +47,7 @@ In-Memory 功能大幅提升適當情況下交易和分析工作負載的效能�
 
 #### In-Memory Analytics 
 
-記憶體中的功能 [分析](#install_analytics_manuallink) 是:
+記憶體中的功能 [分析](#install_analytics_manuallink) 是 ︰
 
 - 資料行存放區索引
 
@@ -59,7 +59,7 @@ In-Memory 功能大幅提升適當情況下交易和分析工作負載的效能�
 
 #### 即時分析
 
-如 [即時分析](http://msdn.microsoft.com/library/dn817827.aspx) 您結合記憶體中 OLTP 和分析取得:
+如 [即時分析](http://msdn.microsoft.com/library/dn817827.aspx) 您結合記憶體中 OLTP 和分析取得 ︰
 
 - 以作業資料為基礎的即時商務深入解析。
 
@@ -139,7 +139,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 
 #### 關於已建立的記憶體最佳化項目
 
-**資料表**: 此範例包含下列的記憶體最佳化資料表:
+**資料表**︰ 此範例包含下列的記憶體最佳化資料表 ︰
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -148,7 +148,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo.DemoSalesOrderDetailSeed
 
 
-您可以檢查記憶體最佳化的資料表，透過 **物件總管] 中** 的 SSMS 中:
+您可以檢查記憶體最佳化的資料表，透過 **物件總管] 中** 的 SSMS 中 ︰
 
 - 以滑鼠右鍵按一下 **資料表** > **篩選** > **篩選器設定** > **是記憶體最佳化** 等於 1。
 
@@ -163,7 +163,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**原生編譯的預存程序**: 檢查 SalesLT.usp_InsertSalesOrder_inmem 可以透過目錄檢視查詢:
+**原生編譯的預存程序**︰ 檢查 SalesLT.usp_InsertSalesOrder_inmem 可以透過目錄檢視查詢 ︰
 
 
 ```
@@ -177,7 +177,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 ## 執行範例 OLTP 工作負載
 
-下面兩個唯一的差別 *預存程序* 是第一個程序會使用記憶體最佳化資料表的版本，第二個程序會使用一般的磁碟上的資料表:
+下面兩個唯一的差別 *預存程序* 是第一個程序會使用記憶體最佳化資料表的版本，第二個程序會使用一般的磁碟上的資料表 ︰
 
 - SalesLT**。**usp_InsertSalesOrder**_inmem**
 - SalesLT**。**usp_InsertSalesOrder**_ondisk**
@@ -252,9 +252,9 @@ dn511655.aspx is for SQL 2014,
 [Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
 (http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
 
-而針對 SQL 2016 +
-[記憶體中 OLTP 範例資料庫]
-() http://msdn.microsoft.com/library/mt465764.aspx
+whereas for SQL 2016+
+[Sample Database for In-Memory OLTP]
+(http://msdn.microsoft.com/library/mt465764.aspx)
 -->
 
 
@@ -276,7 +276,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 若要執行上述的 ostress.exe 命令列：
 
 
-1. 在 SSMS 中，刪除任何先前執行時所插入的所有資料，執行下列命令來重設資料庫的資料內容:
+1. 在 SSMS 中，刪除任何先前執行時所插入的所有資料，執行下列命令來重設資料庫的資料內容 ︰
 ```
 EXECUTE Demo.usp_DemoReset;
 ```
@@ -302,7 +302,7 @@ EXECUTE Demo.usp_DemoReset;
 在獲得 _inmem 執行的結果之後，請針對 _ondisk 執行回合執行下列步驟：
 
 
-1. 重設資料庫，執行下列命令在 SSMS 中，若要刪除上一次執行插入的所有資料:
+1. 重設資料庫，執行下列命令在 SSMS 中，若要刪除上一次執行插入的所有資料 ︰
 ```
 EXECUTE Demo.usp_DemoReset;
 ```
@@ -348,9 +348,9 @@ EXECUTE Demo.usp_DemoReset;
  - 此指令碼可能需要 15 分鐘才能完成。
 
 3. 將 T-SQL 指令碼貼到 SSMS，然後執行此指令碼。
- - 重要的是 **資料行存放區** 關鍵字 **CREATE INDEX** 陳述式，如下所示:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+ - 重要的是 **資料行存放區** 關鍵字 **CREATE INDEX** 陳述式，如下所示 ︰<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
-4. 將 AdventureWorksLT 設為相容性層級 130：<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
+4. 設定相容性層級 130 AdventureWorksLT:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
  - 層級 130 並未與 In-Memory 功能直接相關。 但層級 130 通常會提供比層級 120 更快的查詢效能。
 
 
@@ -526,5 +526,6 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 - [SQL Server 的 Replay Markup Language (RML) 公用程式說明](http://support.microsoft.com/en-us/kb/944837)
 
 - [監視記憶體中儲存](sql-database-in-memory-oltp-monitoring.md) 記憶體中 oltp。
+
 
 

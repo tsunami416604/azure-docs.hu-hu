@@ -35,21 +35,21 @@
 這些基本步驟可協助解決使用傳統部署模型所建立之虛擬機器中最常見的遠端桌面連線失敗。 在執行每個步驟之後，請嘗試重新連接至 VM。
 
 - 重設遠端桌面服務從 [Azure 入口網站](https://portal.azure.com) 與 RDP 伺服器修復啟動問題。<br>
-    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > **重設遠端存取**。
+    按一下 [瀏覽所有 > 虛擬機器 （傳統） > 您的 Windows 虛擬機器 > **重設遠端存取**。
 
     ![顯示重設 RDP 設定的螢幕擷取畫面](./media/virtual-machines-troubleshoot-remote-desktop-connections/Portal-RDP-Reset-Windows.png)
 
-- 重新啟動虛擬機器以處理其他啟動問題。<br>
-    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > **重新啟動**。
+- 重新啟動虛擬機器其他的啟動問題。<br>
+    按一下 [瀏覽所有 > 虛擬機器 （傳統） > 您的 Windows 虛擬機器 > **重新啟動**。
 
-- 調整 VM 大小以修正任何主機問題。<br>
-    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > 設定 > **大小**。 如需詳細步驟，請參閱 [調整虛擬機器的大小](https://msdn.microsoft.com/library/dn168976.aspx)。
+- 調整大小的 VM，以修正任何主機的問題。<br>
+    按一下 [瀏覽所有 > 虛擬機器 （傳統） > 您的 Windows 虛擬機器 > 設定 > **大小**。 如需詳細步驟，請參閱 [調整虛擬機器的大小](https://msdn.microsoft.com/library/dn168976.aspx)。
 
 - 檢閱您的 VM 主控台記錄檔或螢幕擷取畫面以修正開機問題。
-    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > **開機診斷**
+    按一下 [瀏覽所有 > 虛擬機器 （傳統） > 您的 Windows 虛擬機器 > **開機診斷**
 
 - 檢查 VM 的資源健康情況是否有任何平台問題。 
-    按一下 [瀏覽所有 > 虛擬機器 (傳統) > 您的 Windows 虛擬機器 > **檢查健全狀況**
+    按一下 [瀏覽所有 > 虛擬機器 （傳統） > 您的 Windows 虛擬機器 > **檢查健全狀況**
 
 ## 修正 [資源管理員] 部署模型中常見遠端桌面錯誤的步驟
 
@@ -69,10 +69,10 @@
     Set-AzureVMExtension -ResourceGroupName "myRG" -VMName "myVM" -Name "myVMAccessExtension" -ExtensionType "VMAccessAgent" -Publisher "Microsoft.Compute" -typeHandlerVersion "2.0" -Location Westus
     ```
 
-- 重新啟動虛擬機器以處理其他啟動問題。<br>
+- 重新啟動虛擬機器其他的啟動問題。<br>
     按一下 [瀏覽所有 > 虛擬機器 > 您的 Windows 虛擬機器 > **重新啟動**。
 
-- 調整 VM 大小以修正任何主機問題。<br>
+- 調整大小的 VM，以修正任何主機的問題。<br>
     按一下 [瀏覽所有 > 虛擬機器 > 您的 Windows 虛擬機器 > 設定 > **大小**。
 
 - 檢閱 VM 的主控台記錄檔或螢幕擷取畫面，以修正開機問題。
@@ -83,15 +83,15 @@
 
 以下是您嘗試連線 Azure 虛擬機器和遠端桌面時可能最常遇到的錯誤：
 
-1. [遠端桌面連線錯誤: 遠端工作階段已中斷連線，因為沒有可用的遠端桌面授權伺服器來提供授權](#rdplicense)。
+1. [遠端桌面連線錯誤 ︰ 遠端工作階段已中斷連線，因為沒有可用的遠端桌面授權伺服器來提供授權](#rdplicense)。
 
-2. [遠端桌面連線錯誤: 遠端桌面無法找到電腦 「 名稱 」](#rdpname)。
+2. [遠端桌面連線錯誤 ︰ 遠端桌面無法找到電腦 「 名稱 」](#rdpname)。
 
 3. [遠端桌面連線錯誤：發生驗證錯誤。無法連絡本機安全性授權](#rdpauth)。
 
-4. [Windows 安全性錯誤: 您的認證無法運作](#wincred)。
+4. [Windows 安全性錯誤 ︰ 您的認證無法運作](#wincred)。
 
-5. [遠端桌面連線錯誤: 這部電腦無法連線到遠端電腦](#rdpconnect)。
+5. [遠端桌面連線錯誤 ︰ 這部電腦無法連線到遠端電腦](#rdpconnect)。
 
 <a id="rdplicense"></a>
 ### 遠端桌面連線錯誤：遠端工作階段已中斷連線，因為沒有可用的遠端桌面授權伺服器來提供授權。
@@ -128,7 +128,7 @@ RDP 檔案中的位址部分有雲端服務的完整網域名稱，包含 VM (�
 
 原因：目標 VM 在認證的使用者名稱部分找不到安全性授權。
 
-當您的使用者名稱是表單 *SecurityAuthority*\\*UserName* (範例: CORP\User1)， *SecurityAuthority* 部分是 (適用於本機安全性授權) 的虛擬機器的電腦名稱或 Active Directory 網域名稱。
+當您的使用者名稱是表單 *SecurityAuthority*\\*UserName* (範例 ︰ CORP\User1)， *SecurityAuthority* 部分是 （適用於本機安全性授權） 的虛擬機器的電腦名稱或 Active Directory 網域名稱。
 
 可能的解決方案：
 
@@ -143,8 +143,8 @@ RDP 檔案中的位址部分有雲端服務的完整網域名稱，包含 VM (�
 
 以 Windows 為基礎的電腦可以驗證本機帳戶或網域帳戶之認證。
 
-- 本機帳戶，請使用 *ComputerName*\\*UserName* 語法 (範例: SQL1\Admin4798)。
-- 網域帳戶，請使用 *DomainName*\\*UserName* 語法 (範例: CONTOSO\johndoe)。
+- 本機帳戶，請使用 *ComputerName*\\*UserName* 語法 (範例 ︰ SQL1\Admin4798)。
+- 網域帳戶，請使用 *DomainName*\\*UserName* 語法 (範例 ︰ CONTOSO\johndoe)。
 
 如果您在新的 Active Directory 樹系將虛擬機器提升為網域控制器，您用來登入的本機系統管理員帳戶也會轉換為對等的帳戶，在新樹系和網域中使用相同的密碼。 本機系統管理員帳戶隨即刪除。 例如，如果您以本機系統管理員帳戶 DC1\DCAdmin 登入，並提升此虛擬機器為 corp.contoso.com 網域中新樹系的網域控制器，則會刪除 DC1\DCAdmin 本機帳戶，並且以相同密碼建立一個新的網域帳戶 (CORP\DCAdmin)。
 
@@ -177,4 +177,5 @@ RDP 檔案中的位址部分有雲端服務的完整網域名稱，包含 VM (�
 [疑難排解以 Linux 為基礎之 Azure 虛擬機器的安全殼層 (SSH) 連線](virtual-machines-troubleshoot-ssh-connections.md)
 
 [疑難排解存取在 Azure 虛擬機器上執行的應用程式](virtual-machines-troubleshoot-access-application.md)
+
 

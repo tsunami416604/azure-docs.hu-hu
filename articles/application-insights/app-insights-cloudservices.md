@@ -51,7 +51,7 @@ Application Insights 資源是您在其中分析和顯示遙測資料的位置�
 
 或者，您可以從所有角色的資料傳送至一個資源，但是設定 [預設屬性][apidefaults] ，讓您可以篩選或群組的每個角色的結果。
 
-## <a name="sdk"></a>每個專案中安裝 SDK
+## <a name="sdk"></a>在每個專案中安裝 SDK
 
 
 1. 在 Visual Studio 中，編輯雲端應用程式專案的 NuGet 封裝。
@@ -121,7 +121,7 @@ Application Insights 資源是您在其中分析和顯示遙測資料的位置�
 
 您可以藉由與追蹤 HTTP 要求相同的方式追蹤背景工作角色，來擷取背景工作角色呼叫的效能。 在 Application Insights 中，要求遙測類型會測量一個單位的具名伺服器端工作，可以進行計時，而且可以獨立成功或失敗。 由 SDK 會自動擷取 HTTP 要求時，您可以插入自己的程式碼，來追蹤對背景工作角色的要求。
 
-請參閱檢測，以報告要求的兩個範例背景工作角色: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) 和 [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+請參閱檢測，以報告要求的兩個範例背景工作角色 ︰ [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) 和 [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## Azure 診斷
 
@@ -129,7 +129,7 @@ Application Insights 資源是您在其中分析和顯示遙測資料的位置�
 
 如果角色意外失敗或無法啟動，Azure 診斷特別有用。
 
-1. 以滑鼠右鍵按一下角色 (不是專案!) 以開啟其屬性，並選取 **啟用診斷**, ，**將診斷傳送至 Application Insights**。
+1. 以滑鼠右鍵按一下角色 （不是專案 ！） 以開啟其屬性，並選取 **啟用診斷**, ，**將診斷傳送至 Application Insights**。
 
     ![搜尋「Application Insights」](./media/app-insights-cloudservices/21-wad.png)
 
@@ -139,7 +139,7 @@ Application Insights 資源是您在其中分析和顯示遙測資料的位置�
 
     如果您想要，可以在不同的服務組態 (雲端、本機) 設定不同的資源，以便分隔開發資料和即時資料。
 
-3. (選擇性) [排除某些 Azure 診斷](app-insights-azure-diagnostics.md) 您想要轉送至 Application Insights。 預設值為所有項目。
+3. （選擇性） [排除某些 Azure 診斷](app-insights-azure-diagnostics.md) 您想要轉送至 Application Insights。 預設值為所有項目。
 
 ### 檢視 Azure 診斷事件
 
@@ -149,7 +149,7 @@ Application Insights 資源是您在其中分析和顯示遙測資料的位置�
 * Windows 事件記錄檔顯示為追蹤和自訂事件。
 * 應用程式記錄檔、ETW 記錄檔和任何診斷基礎結構記錄檔顯示為追蹤。
 
-若要查看效能計數器和事件計數，請開啟 [計量瀏覽器](app-insights-metrics-explorer.md) ，然後加入新的圖表:
+若要查看效能計數器和事件計數，請開啟 [計量瀏覽器](app-insights-metrics-explorer.md) ，然後加入新的圖表 ︰
 
 
 ![](./media/app-insights-cloudservices/23-wad.png)
@@ -177,7 +177,7 @@ Application Insights SDK 可以報告應用程式對外部相依性的呼叫，�
 
 * 新增 [AppInsightsAgent](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent) 資料夾和兩個檔案到 web/背景工作角色專案。 請務必設定其建置屬性，使它們一律複製到輸出目錄。 這些檔案將安裝代理程式。
 * 新增啟動工作到 CSDEF 檔案所示 [這裡](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L18)。
-* 注意: *背景工作角色* 需要三個環境變數 [這裡](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L44)。 Web 角色則不需要這個設定。
+* 注意 ︰ *背景工作角色* 需要三個環境變數 [這裡](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L44)。 Web 角色則不需要這個設定。
 
 以下是您在 Application Insights 入口網站中所看到的範例：
 
@@ -237,7 +237,7 @@ Application Insights SDK 可以報告應用程式對外部相依性的呼叫，�
 方式如下：
 
 * 所示設定相互關聯識別碼到 CallContext [這裡](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)。 在此案例中，我們使用「要求 ID」做為相互關聯識別碼
-* 新增自訂的 TelemetryInitializer 實作，其會將 Operation.Id 設定到前面所設定的 correlationId。 如下所示: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
+* 新增自訂的 TelemetryInitializer 實作，其會將 Operation.Id 設定到前面所設定的 correlationId。 如下所示 ︰ [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
 * 新增自訂的遙測初始設定式。 您可以在 ApplicationInsights.config 檔案中，或在執行，程式碼所示 [這裡](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)
 
 就這麼簡單！ 入口網站體驗已經準備好協助您一覽所有相關聯的遙測：
@@ -280,3 +280,4 @@ Application Insights SDK 可以報告應用程式對外部相依性的呼叫，�
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md 
+

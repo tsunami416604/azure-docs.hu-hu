@@ -49,7 +49,7 @@ Twitter 連接器提供下列觸發程序和動作：
     * 註冊應用程式時，您可以放入網站的任何 URL。  指定任何回呼 URL (不要保留為空白)，您稍後可以更新它。
 2. 在 Azure 開始面板中，選取 **Marketplace**。
 3. 搜尋 「 Twitter 連接器 」，選取它，並選取 **建立**。
-4. [選用] 按一下 [封裝設定]，並從 Twitter 應用程式將 [取用者金鑰] 複製到 [clientId] 欄位中。  從您 Twitter 應用程式消費者密碼貼入 'clientSecret' 欄位:  
+4. [選用] 按一下 [封裝設定]，並從 Twitter 應用程式將 [取用者金鑰] 複製到 [clientId] 欄位中。  從您 Twitter 應用程式消費者密碼貼入 'clientSecret' 欄位 ︰  
 ![][10]
 5. 輸入有關連接器名稱、App Service 和 資源群組的其他必要設定。
 6.  按一下 [ **建立**。
@@ -62,7 +62,7 @@ Twitter 連接器提供下列觸發程序和動作：
 
 1.  建立新的邏輯應用程式，或開啟現有邏輯應用程式：  
 ![][2]
-2.  開啟 **觸發程序和動作** 開啟邏輯應用程式的設計工具:  
+2.  開啟 **觸發程序和動作** 開啟邏輯應用程式的設計工具 ︰  
 ![][3]
 3.  Twitter 連接器會列在右邊。 選取它，以自動將其加入邏輯應用程式：  
 ![][4]
@@ -78,9 +78,9 @@ Twitter 連接器提供下列觸發程序和動作：
 ![][8]
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -97,4 +97,5 @@ Twitter 連接器提供下列觸發程序和動作：
 [8]: ./media/app-service-logic-connector-twitter/actions.png
 [9]: ./media/app-service-logic-connector-twitter/settings.PNG
 [10]: ./media/app-service-logic-connector-twitter/TwitterAPISettings.png
+
 

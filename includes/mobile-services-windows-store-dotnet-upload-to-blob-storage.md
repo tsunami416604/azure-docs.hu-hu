@@ -6,7 +6,7 @@
  
     如此能確保您的應用程式可以使用連接至電腦的相機。 Users will be requested to allow camera access the first time that the app is run.
 
-1. 開啟 MainPage.xaml 檔案，並取代 **StackPanel** 緊接第一個項目 **工作** 為下列程式碼項目:
+1. 開啟 MainPage.xaml 檔案，並取代 **StackPanel** 緊接第一個項目 **工作** 為下列程式碼項目 ︰
 
         <StackPanel Orientation="Horizontal" Margin="72,0,0,0">
             <TextBox Name="TextInput" Margin="5" MaxHeight="40" MinWidth="300"></TextBox>
@@ -16,7 +16,7 @@
                     Click="ButtonSave_Click"/>
         </StackPanel>
 
-2. 取代 **StackPanel** 中的項目 **DataTemplate** 為下列程式碼:
+2. 取代 **StackPanel** 中的項目 **DataTemplate** 為下列程式碼 ︰
 
         <StackPanel Orientation="Vertical">
             <CheckBox Name="CheckBoxComplete" IsChecked="{Binding Complete, Mode=TwoWay}" 
@@ -28,7 +28,7 @@
 
     這會新增至映像 **ItemTemplate** 並將其繫結來源設為 Blob 儲存體服務中已上傳影像的 URI。
 
-3. 開啟 MainPage.xaml.cs 專案檔案並新增下列 **使用** 陳述式:
+3. 開啟 MainPage.xaml.cs 專案檔案並新增下列 **使用** 陳述式 ︰
     
         using Windows.Media.Capture;
         using Windows.Storage;
@@ -141,5 +141,6 @@
     ![](./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-ie.png)
 
     >[AZURE.NOTE]從 Blob 儲存體自動下載影像服務 <code>imageUri</code> 新項目的屬性繫結至 <strong>映像</strong> 控制項。
+
 
 

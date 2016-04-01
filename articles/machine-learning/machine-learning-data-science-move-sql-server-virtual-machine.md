@@ -24,7 +24,7 @@
 
 
 ## 簡介
-**這份文件** 概述移動資料從一般檔案 (CSV 或 TSV 格式) 或從內部部署 SQL Server 到 SQL Server 的 Azure 虛擬機器上的選項。 這些用於將資料移至雲端的工作是 Azure 所提供 Cortana 分析程序的一部分。
+**這份文件** 概述移動資料從一般檔案 （CSV 或 TSV 格式） 或從內部部署 SQL Server 到 SQL Server 的 Azure 虛擬機器上的選項。 這些用於將資料移至雲端的工作是 Azure 所提供 Cortana 分析程序的一部分。
 
 主題會概述機器學習時，將資料移到 Azure SQL Database 的選項，請參閱 [將資料移至 Azure SQL Database，Azure Machine Learning 的](machine-learning-data-science-move-sql-azure.md)。
 
@@ -32,15 +32,15 @@
 
 <b>來源</b> |<b>目的地：Azure VM 上的 SQL Server</b> |
 ------------------ |-------------------- |
-<b>一般檔案</b> |1. <a href="#insert-tables-bcp">命令列大量複製公用程式 (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">大量插入 SQL 查詢 </a><br> 3. <a href="#sql-builtin-utilities">SQL Server 中的圖形化內建公用程式</a>
-<b>內部部署 SQL Server</b> | 1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">將 SQL Server Database 部署到 Microsoft Azure VM 精靈</a><br> 2. <a href="#export-flat-file">匯出至一般檔案 </a><br> 3. <a href="#sql-migration">SQL Database 移轉精靈 </a> <br> 4. <a href="#sql-backup">資料庫備份和還原 </a><br>
+<b>一般檔案</b> |1.<a href="#insert-tables-bcp">命令列大量複製公用程式 (BCP) </a><br> 2.<a href="#insert-tables-bulkquery">大量插入 SQL 查詢 </a><br> 3.<a href="#sql-builtin-utilities">SQL Server 中的圖形化內建公用程式</a>
+<b>內部部署的 SQL Server</b> | 1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">將 SQL Server 資料庫部署到 Microsoft Azure VM 精靈</a><br> 2.<a href="#export-flat-file">匯出至一般檔案 </a><br> 3.<a href="#sql-migration">SQL Database 移轉精靈 </a> <br> 4.<a href="#sql-backup">資料庫備份和還原 </a><br>
 
 請注意，本文件假設 SQL 命令是從 SQL Server Management Studio 或 Visual Studio 資料庫總管中執行。
 
-> [AZURE.TIP] 或者，您可以使用 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) 來建立和排程管線，以將資料移至 SQL Server VM 在 Azure 上。 如需詳細資訊，請參閱 [將使用 Azure Data Factory (複製活動) 的資料複製](../data-factory/data-factory-copy-activity.md)。
+> [AZURE.TIP] 或者，您可以使用 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) 來建立和排程管線，以將資料移至 SQL Server VM 在 Azure 上。 如需詳細資訊，請參閱 [將使用 Azure Data Factory （複製活動） 的資料複製](../data-factory/data-factory-copy-activity.md)。
 
 
-## <a name="prereqs"></a>先決條件
+## <a name="prereqs"></a>必要條件
 本教學課程假設您有：
 
 *  **Azure 訂用帳戶**。 如果您沒有訂閱，您可以註冊 [免費試用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -49,7 +49,7 @@
 * 安裝並設定 **PowerShell** 在本機。 如需指示，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
 
 
-## <a name="filesource_to_sqlonazurevm"></a> Azure VM 上的 SQL Server 從一般檔案來源移動資料
+## <a name="filesource_to_sqlonazurevm"></a>從一般檔案來源移動資料至 Azure VM 上的 SQL Server
 
 如果您的資料位於一般檔案 (使用資料列或資料行格式排列) 中，可透過下列方法，將它移到 Azure 上的 SQL Server VM：
 
@@ -62,7 +62,7 @@
 
 BCP 是與 SQL Server 一起安裝的命令列公用程式，是最快速移動資料的其中一種方式。 它的運作方式可跨越這三個 SQL Server 版本 (內部部署的 SQL Server、SQL Azure，以及 Azure 上的 SQL Server VM)。 
 
-> [AZURE.NOTE] **我的資料應該儲存的 BCP?**  
+> [AZURE.NOTE] **我的資料應該儲存的 BCP？**  
 > 雖然並非必要，但是，擁有包含與目標 SQL Server 位於相同電腦上之來源資料的檔案可讓傳輸速度 (網路速度與本機磁碟 IO 速度) 變得更快。 您可以移動包含機器資料的一般檔案安裝 SQL Server 使用各種檔案複製工具例如 [AZCopy](../storage-use-azcopy.md), ，[Azure 儲存體總管](https://azurestorageexplorer.codeplex.com/) 或 windows 複製/貼上透過遠端桌面通訊協定 (RDP)。
 
 1. 確定已在目標 SQL Server 資料庫上建立資料庫和資料表。 以下是如何使用 `Create Database` 和 `Create Table` 命令來執行此作業的範例：
@@ -162,7 +162,7 @@ SSIS 適用於兩種 Studio 環境。 如需詳細資訊，請參閱 [Integratio
 - 如需 SQL Server Data Tools 的詳細資訊，請參閱 [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx)  
 - 如需匯入/匯出精靈的詳細資訊，請參閱 [SQL Server 匯入和匯出精靈](https://msdn.microsoft.com/library/ms141209.aspx)
 
-## <a name="sqlonprem_to_sqlonazurevm"></a>將資料從內部部署 SQL Server 移至 SQL Server，在 Azure VM 上
+## <a name="sqlonprem_to_sqlonazurevm"></a>從內部部署的 SQL Server 移動資料至 Azure VM 上的 SQL Server
 
 您也可以使用下列移轉策略：
 
@@ -210,7 +210,7 @@ SSIS 適用於兩種 Studio 環境。 如需詳細資訊，請參閱 [Integratio
 
 SQL Server 支援： 
 
-1. [資料庫備份和還原功能](https://msdn.microsoft.com/library/ms187048.aspx) (兩者皆可為本機檔案或以 bacpac 匯出至 blob) 和 [資料層應用程式](https://msdn.microsoft.com/library/ee210546.aspx) (使用 bacpac)。 
+1. [資料庫備份和還原功能](https://msdn.microsoft.com/library/ms187048.aspx) （兩者皆可為本機檔案或以 bacpac 匯出至 blob） 和 [資料層應用程式](https://msdn.microsoft.com/library/ee210546.aspx) （使用 bacpac）。 
 2. 使用複製的資料庫直接在 Azure 上建立 SQL Server VM，或者複製到現有 SQL Azure 資料庫的能力。 如需詳細資訊，請參閱 [使用複製資料庫精靈 」](https://msdn.microsoft.com/library/ms188664.aspx)。 
 
 SQL Server Management Studio 的資料庫備份/還原選項的螢幕擷取畫面如下所示。
@@ -225,4 +225,5 @@ SQL Server Management Studio 的資料庫備份/還原選項的螢幕擷取畫�
 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
+
 

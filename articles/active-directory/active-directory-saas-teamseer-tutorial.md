@@ -21,7 +21,7 @@
 -   有效的 Azure 訂閱
 -   TeamSeer 租用戶
   
-完成本教學課程之後, 您已指派給 TeamSeer 的 Azure AD 使用者將能夠登入位於您 TeamSeer 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 TeamSeer 的 Azure AD 使用者將能夠登入位於您 TeamSeer 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -141,11 +141,11 @@ TeamSeer 需以手動的方式佈建。
     1.  移至 **HR 管理 \ > 使用者**。
     2.  按一下 [ **執行新增使用者精靈**。
 
-3.  在 **使用者詳細資料** 區段中，執行下列步驟:
+3.  在 **使用者詳細資料** 區段中，執行下列步驟 ︰
 
     ![使用者詳細資料](./media/active-directory-saas-teamseer-tutorial/IC789641.png "User Details")
 
-    1.  型別 **名字**, ，**姓氏**, ，**使用者名稱 (電子郵件地址)** 您想要佈建到相關文字方塊之有效 AAD 帳戶。
+    1.  型別 **名字**, ，**姓氏**, ，**使用者名稱 （電子郵件地址）** 您想要佈建到相關文字方塊之有效 AAD 帳戶。
     2.  按一下 [ **下一步**。
 
 4.  請依照畫面指示來加入新的使用者，並按 **完成**。
@@ -169,3 +169,4 @@ TeamSeer 需以手動的方式佈建。
     ![是](./media/active-directory-saas-teamseer-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

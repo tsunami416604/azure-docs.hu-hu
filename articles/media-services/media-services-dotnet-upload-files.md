@@ -22,7 +22,7 @@
 
 [AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
-在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。  **資產** 實體可以包含視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式輔助字幕檔案 (和這些檔案的相關中繼資料。)上傳檔案之後，您的內容會安全地儲存在雲端，以進一步進行處理和串流處理。
+在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。  **資產** 實體可以包含視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式輔助字幕檔案 （和這些檔案的相關中繼資料。）上傳檔案之後，您的內容會安全地儲存在雲端，以進一步進行處理和串流處理。
 
 資產中的檔案稱為 **資產檔案**。  **AssetFile** 執行個體和實際的媒體檔案是兩個不同的物件。 AssetFile 執行個體包含媒體檔案的相關中繼資料，而媒體檔案包含實際的媒體內容。
 
@@ -42,7 +42,7 @@
 
 如果您指定要以加密的資產 **StorageEncrypted** 選項，Media Services SDK for.NET 會建立 **StorateEncrypted** **ContentKey** 資產。
 
->[AZURE.NOTE]媒體服務在建置串流內容 (例如，http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。) 的 Url 時使用 IAssetFile.Name 屬性的值基於這個理由，不允許 percent-encoding。 值 **名稱** 屬性不能有下列任何一個 [%-保留字元](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $，/? %# []"。 此外，只能有一個 '。 ' 副檔名。
+>[AZURE.NOTE]媒體服務在建置串流內容 (例如，http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。) 的 Url 時使用 IAssetFile.Name 屬性的值基於這個理由，不允許 percent-encoding。 值 **名稱** 屬性不能有下列任何一個 [%-保留字元](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): ！ *' （);: @& = + $，/？ %# []"。 此外，只能有一個 '。 ' 副檔名。
 
 本主題顯示如何使用 Media Services .NET SDK 以及 Media Services .NET SDK 延伸模組，以將檔案上傳到媒體服務資產。
 
@@ -178,7 +178,7 @@
  
 - 將 ParallelTransferThreadCount 保持為預設值 10。
  
-##<a id="ingest_in_bulk"></a>使用媒體服務.NET SDK 大量擷取資產 
+##<a id="ingest_in_bulk"></a>使用媒體服務 .NET SDK 大量擷取資產 
 
 上傳大型資產檔案可能會在建立資產期間造成瓶頸。 大量內嵌資產或「大量內嵌」包含透過上傳程序來解除結合資產建立。 若要使用大量內嵌方式，請建立可描述資產及其相關檔案的資訊清單 (IngestManifest)。 然後使用您選擇的上傳方法，將相關的檔案上傳至資訊清單的 Blob 容器。 Microsoft Azure 媒體服務會監看與資訊清單相關聯的 Blob 容器。 將檔案上傳至 Blob 容器之後，Microsoft Azure 媒體服務會根據資訊清單 (IngestManifestAsset) 中的資產組態來完成資產建立。
 
@@ -316,4 +316,5 @@ IngestManifestAsset 會建立資產與大量 IngestManifest 的關聯，以進�
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
+
 

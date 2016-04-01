@@ -27,8 +27,8 @@
 若要完成本教學課程，您需要下列項目：
 
 - Microsoft Visual Studio 2015。
-- 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 [Azure 免費試用] [任務任務連結-免費試用]。
-- [Microsoft Azure PowerShell 1.0][任務任務連結-powershell 安裝的] 或更新版本。
+- 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用][lnk-free-trial]。
+- [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 或更新版本。
 
 [AZURE.INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -44,7 +44,7 @@
 
 5. 在 [NuGet 封裝管理員] 中，搜尋 **Microsoft.Azure.Common**。 選取版本 **2.1.0**。 按一下 [ **安裝**, 中 **檢閱變更** 按一下 **確定**, ，然後按一下 [ **我接受** 以接受授權。
 
-6. 在 Program.cs 中，取代現有 **使用** 取代為下列陳述式:
+6. 在 Program.cs 中，取代現有 **使用** 取代為下列陳述式 ︰
 
     ```
     using System;
@@ -80,7 +80,7 @@
 
 2. 在 [方案總管] 中，選取 [ **template.json**, ，然後在 **屬性** 設定 **複製到輸出目錄** 至 **永遠複製**。
 
-3. 內容取代 **template.json** 使用下列資源定義加入至新的標準 IoT 中心 **美國東部** 區域:
+3. 內容取代 **template.json** 使用下列資源定義加入至新的標準 IoT 中心 **美國東部** 區域 ︰
 
     ```
     {
@@ -115,7 +115,7 @@
     }
     ```
 
-5. 加入下列程式碼以 **CreateIoTHub** 方法來載入範本檔案，新增的 IoT 中心名稱，然後送出至 Azure 資源管理員範本:
+5. 加入下列程式碼以 **CreateIoTHub** 方法來載入範本檔案，新增的 IoT 中心名稱，然後送出至 Azure 資源管理員範本 ︰
 
     ```
     string template = File.ReadAllText("template.json");
@@ -133,7 +133,7 @@
       }).Result;
     ```
 
-6. 加入下列程式碼以 **CreateIoTHub** 會等到部署順利完成的方法:
+6. 加入下列程式碼以 **CreateIoTHub** 會等到部署順利完成的方法 ︰
 
     ```
     string state = createResponse.Deployment.Properties.ProvisioningState;
@@ -161,7 +161,7 @@
 
 您現在可以完成應用程式藉由呼叫 **CreateIoTHub** 和 **ShowIoTHubKeys** 方法才能建置及執行它。
 
-1. 下列程式碼新增至結尾 **Main** 方法:
+1. 下列程式碼新增至結尾 **Main** 方法 ︰
 
     ```
     if (CreateIoTHub(client))
@@ -173,14 +173,14 @@
 
 3. 按一下 [ **偵錯** 然後 **開始偵錯** 執行應用程式。 可能需要數分鐘的時間，部署才會開始執行。
 
-4. 您可以驗證您的應用程式會新增新的 IoT 中心，瀏覽 [網站] [任務任務連結 azure-入口網站]，並檢視清單中的資源，或使用 **Get AzureRmResource** PowerShell cmdlet。
+4. 您可以確認您的應用程式加入新的 IoT 中心，請造訪 [入口網站][lnk-azure-portal] 及檢視您的資源，或使用的清單 **Get AzureRmResource** PowerShell cmdlet。
 
-> [AZURE.NOTE] 此範例應用程式加入的計費 S1 標準的 IoT 中心。 您可以刪除 IoT 中心透過 [網站] [任務任務連結 azure-入口網站] 或使用 **移除 AzureRmResource** PowerShell 指令程式完成時。
+> [AZURE.NOTE] 此範例應用程式加入的計費 S1 標準的 IoT 中心。 您可以刪除透過 IoT 中心 [入口網站][lnk-azure-portal] 或使用 **移除 AzureRmResource** PowerShell 指令程式完成時。
 
 ## 後續步驟
 
-- 瀏覽 [IoT 中心資源提供者 REST API] [任務任務連結-rest api 的] 的功能。
-- 閱讀 [Azure 資源管理員概觀] [任務任務連結-azure-rm-概觀] 若要進一步了解 Azure 資源管理員的功能。
+- 瀏覽的功能 [IoT 中心資源提供者 REST API][lnk-rest-api]。
+- 讀取 [Azure 資源管理員概觀][lnk-azure-rm-overview] 若要進一步了解 Azure 資源管理員的功能。
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -188,4 +188,5 @@
 [lnk-powershell-install]: https://azure.microsoft.com/en-us/blog/azps-1-0-pre/
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: https://azure.microsoft.com/documentation/articles/resource-group-overview/
+
 

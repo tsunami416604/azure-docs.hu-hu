@@ -29,7 +29,7 @@
 
 您必須滿足以下條件：
 
-- Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- Azure 訂閱。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 - Apache Spark 叢集。 如需指示，請參閱 [佈建 Apache Spark 叢集的 Azure HDInsight](hdinsight-apache-spark-provision-clusters.md)。
 - 一台已安裝 Microsoft Spark ODBC 驅動程式的電腦 (HDInsight 上的 Spark 需要此電腦才能使用 Tableau)。 您可以安裝驅動程式從 [這裡](http://go.microsoft.com/fwlink/?LinkId=616229)。
 - BI 工具，例如 [Power BI](http://www.powerbi.com/) 或 [Tableau Desktop](http://www.tableau.com/products/desktop)。 您可以取得免費預覽版本的訂閱從 Power BI [http://www.powerbi.com/](http://www.powerbi.com/)。
@@ -40,11 +40,11 @@
 
 一旦將資料儲存成 Hive 資料表之後，下一節我們將使用 Power BI 和 Tableau 等 BI 工具連接 Hive 資料表。
 
-1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 (如果固定至開始面板)。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
+1. 從 [Azure 入口網站](https://portal.azure.com/), ，從 [開始面板] 中，按一下 [Spark 叢集的磚 （如果固定至開始面板）。 您也可以導覽至您的叢集下 **全部瀏覽** > **HDInsight 叢集**。   
 
 2. 從 Spark 叢集刀鋒視窗中，按一下 [ **快速連結**, ，然後從 **叢集儀表板** 刀鋒視窗中，按一下 [ **Jupyter Notebook**。 出現提示時，輸入叢集的系統管理員認證。
 
-    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Jupyter Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱:
+    > [AZURE.NOTE] 您也可能在您的瀏覽器中開啟下列 URL，為您的叢集到達 Jupyter Notebook。 取代 __CLUSTERNAME__ 與您的叢集名稱 ︰
     >
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
@@ -66,7 +66,7 @@
         sc = SparkContext('spark://headnodehost:7077', 'pyspark')
         hiveCtx = HiveContext(sc)
 
-    每當您執行工作時在 Jupyter 中，網頁瀏覽器視窗標題將會顯示 **(忙碌)** notebook 標題和狀態。 您也會旁看到實心圓 **Python 2** 右上角中的文字。 工作完成後，實心圓將會變成空心圓。
+    每當您執行工作時在 Jupyter 中，網頁瀏覽器視窗標題將會顯示 **（忙碌）** notebook 標題和狀態。 您也會旁看到實心圓 **Python 2** 右上角中的文字。 工作完成後，實心圓將會變成空心圓。
 
      ![Jupyter Notebook 工作的狀態](./media/hdinsight-apache-spark-use-bi-tools/HDI.Spark.Jupyter.Job.Status.png "Status of a Jupyter notebook job")
 
@@ -138,7 +138,7 @@
 
     ![建立視覺效果](./media/hdinsight-apache-spark-use-bi-tools/HDI.Spark.PowerBI.Visual.1.png "Create visualizations")
 
-    此外，請選取 **區域對應** (顯示為紅色) 以視覺化方式檢視您的資料。
+    此外，請選取 **區域對應** （顯示為紅色） 以視覺化方式檢視您的資料。
 
 8. 根據預設，視覺效果顯示的總和 **ActualTemp** 和 **TargetTemp**。 對於這兩個欄位，從下拉式清單中，選取 **平均** 平均實際和目標溫度取得這兩個建築物。
 
@@ -152,7 +152,7 @@
 
     您可以針對同一個資料集加入滿足需求數量的視覺效果，並將它們釘選在儀表板上以取得資料快照。 此外，HDInsight 上的 Spark 叢集已透過直接連線連接 Power BI。 這表示 Power BI 隨時能取得叢集的最新資訊，因此您不需要排程資料集重新整理。
 
-##<a name="tableau"></a>使用 Tableau Desktop 分析 Hive 資料表中的資料
+##<a name="tableau"></a>使用 Tableau Desktop 來分析 Hive 資料表中的資料
     
 1. 啟動 Tableau Desktop。 在左窗格中，從要連接的伺服器清單中按一下 [ **Spark SQL**。
 
@@ -211,4 +211,5 @@
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/ 
+
 

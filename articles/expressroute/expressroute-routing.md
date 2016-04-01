@@ -22,7 +22,7 @@
 
 請參閱 [電路和路由網域](expressroute-circuit-peerings.md) 發行項必須為安裝程式來提供連線的路由工作階段的說明。
 
-**注意:** Microsoft 不支援任何路由器備援通訊協定 (例如 HSRP、 VRRP) 的高可用性組態。 我們依賴每個對等互連的一組備援 BGP 工作階段來取得高可用性。
+**注意 ︰** Microsoft 不支援任何路由器備援通訊協定 （例如 HSRP、 VRRP） 的高可用性組態。 我們依賴每個對等互連的一組備援 BGP 工作階段來取得高可用性。
 
 ## 對等互連的 IP 位址
 
@@ -102,7 +102,7 @@ ExpressRoute 不能設定為傳輸路由器。 您必須依賴連線提供者的
  - 啟用 Azure 公用對等互連以將流量路由傳送至公用端點
  - 您可使用使用者定義的路由，讓需要網際網路連線的每個子網路進行網際網路連線。
 
-**注意:** 通告預設路由會中斷 Windows 和其他 VM 啟動授權。 請依照下列指示 [這裡](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) 來解決這個問題。
+**注意 ︰** 通告預設路由會中斷 Windows 和其他 VM 啟動授權。 請依照下列指示 [這裡](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) 來解決這個問題。
 
 ## BGP 社群支援
 
@@ -171,7 +171,8 @@ Microsoft 不接受任何您所設定的 BGP 社群值。 您必須設定一組 
 
     - [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)
     - [設定路由](expressroute-howto-routing-classic.md)
-    - [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)
+    - [將 VNet 連結到 ExpressRoute 循環](expressroute-howto-linkvnet-classic.md)
+
 
 
 

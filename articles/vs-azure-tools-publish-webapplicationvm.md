@@ -56,7 +56,7 @@ Publish-WebApplicationVM
 
 ### WebDeployPackage
 
-要發佈至虛擬機器的 Web 部署封裝路徑。 您可以使用 Visual Studio 的 [發佈 Web] 精靈來建立此封裝。 請參閱 [How to: 在 Visual Studio 中建立 Web 部署套件](https://msdn.microsoft.com/library/dd465323.aspx)。
+要發佈至虛擬機器的 Web 部署封裝路徑。 您可以使用 Visual Studio 的 [發佈 Web] 精靈來建立此封裝。 請參閱 [How to ︰ 在 Visual Studio 中建立 Web 部署套件](https://msdn.microsoft.com/library/dd465323.aspx)。
 
 |別名|無|
 |---|---|
@@ -188,4 +188,5 @@ JSON 組態檔會指定待部署項目的詳細資料。 它包含您在建立�
 ```
 
 您可以編輯 JSON 組態檔來變更佈建項目。 虛擬機器和雲端服務是必要的，但資料庫區段是選擇性的。
+
 

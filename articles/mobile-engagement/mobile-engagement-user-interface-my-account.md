@@ -24,30 +24,30 @@
 
 您可以在 UI 的 [我的帳戶] 區段檢視和變更與您帳戶相關聯的設定，包括您的設定檔設定和測試裝置識別碼。 這些設定所包含的項目，也可以透過裝置 API 存取。
 
-![] MyAccount1[] 7  
+![MyAccount1][7]  
 
 ## 設定檔：
 您可以檢視或變更下列任何帳戶設定，如下所示。 您也可以授與其他使用者權限來使用您的應用程式根據使用者的電子郵件地址，從 [首頁](mobile-engagement-interface-home.md)。
 
-![] MyAccount2[] 8  
+![MyAccount2][8]  
 
 ## 裝置：
 您可以檢視、 新增或移除測試可用來測試之測試裝置的裝置識別碼您 **到達** 或 **推播** 活動。 當您按一下 [新裝置] 時，會顯示如何針對每個平台 (iOS、Android、Windows Phone 等) 尋找裝置之裝置識別碼的內容說明。 
  
-![] MyAccount3[] 9  
+![MyAccount3][9]  
  
 若要使用「推送 API」或「裝置 API」，您需要知道使用者的唯一裝置識別碼 (deviceid 參數)。 有幾種方法可以取得此識別碼：
  
 1. 從您的後端，可以使用裝置 API 的 "Get" 功能來取得裝置識別碼的完整清單。
 2. 從您的應用程式，可以使用 SDK 取得 (在 Android 上，呼叫 Agent 類別的 getDeviceID() 函數；在 iOS 上，讀取 Agent 類別的 deviceid 屬性)。
 3. 從觸達通知，如果與通知相關聯的動作 URL 包含 {deviceid} 模式，它將會自動取代為觸發動作的裝置識別碼。
-http://<example>.com/registeruser? deviceid = {deviceid} & xxxxxxxxxxxxxxxx&otherparam = myparamdata 
+http://<example>.com/registeruser？ deviceid = {deviceid} & xxxxxxxxxxxxxxxx&otherparam = myparamdata 
 將會取代為：
-http://<example>.com/registeruser? deviceid = XXXXXXXXXXXXXXXX xxxxxxxxxxxxxxxx&otherparam = myparamdata 
+http://<example>.com/registeruser？ deviceid = XXXXXXXXXXXXXXXX xxxxxxxxxxxxxxxx&otherparam = myparamdata 
 4. 從觸達 Web 宣告，如果宣告的 HTML 程式碼包含 {deviceid} 模式，則會自動替換為顯示 Web 通知的裝置識別碼。
 以下是我的裝置識別碼: {deviceid}
 將會取代為：
-以下是我的裝置識別碼: XXXXXXXXXXXXXXXX
+以下是我的裝置識別碼 ︰ XXXXXXXXXXXXXXXX
 5.  在您的裝置上開啟您的應用程式，然後執行應用程式中已被標記的事件。
 依序從 UI - 您的應用程式 - [監視] - [事件] - [詳細資料]，在清單中尋找執行的事件。
 在 [監視] 中按一下此事件。
@@ -56,10 +56,10 @@ http://<example>.com/registeruser? deviceid = XXXXXXXXXXXXXXXX xxxxxxxxxxxxxxxx&
 >(請注意，當 iOS 停用 IDFA 時，如果您解除安裝後又重新安裝您的應用程式，裝置識別碼可能會隨時間而變更)。
 
 ##疑難排解指南
--  [疑難排解指南-服務][連結 24]
+-  [疑難排解指南 - 服務][Link 24]
 
 ## 另請參閱
--  [UI 文件-首頁][連結 13]
+-  [UI 文件 - 首頁][Link 13]
 
 
 <!--Image references-->
@@ -160,3 +160,4 @@ http://<example>.com/registeruser? deviceid = XXXXXXXXXXXXXXXX xxxxxxxxxxxxxxxx&
 
  
  
+

@@ -20,14 +20,14 @@
 
 **彈性資料庫** 功能可讓您使用的虛擬無限制的資料庫資源 **Azure SQL Database** 建立的交易式工作負載，尤其是軟體即服務 (SaaS) 應用程式的解決方案。 彈性資料庫功能的組成如下：
 
-* 彈性資料庫工具：這兩個工具簡化分區化資料庫解決方案的開發與管理。 這些工具是: [彈性資料庫用戶端程式庫](sql-database-elastic-database-client-library.md) 和 [彈性資料庫分割合併工具](sql-database-elastic-scale-overview-split-and-merge.md)。 
-* [彈性資料庫集區](sql-database-elastic-pool-guidance.md) (預覽): 集區是的資料庫，您可以新增或移除資料庫在任何時間的集合。 集區中的資料庫共用固定數量的資源 (稱為資料庫輸送量單位，簡稱 DTU)。 您對資源支付固定費用，在管理效能時很容易計算成本。 
-* [彈性資料庫工作](sql-database-elastic-jobs-overview.md) (預覽): 使用工作來管理大量的 Azure SQL 資料庫。 輕鬆執行系統管理作業，例如結構描述變更、認證管理、參考資料更新、效能資料收集，或使用工作的租用戶 (客戶) 遙測收集。
-* [彈性資料庫查詢](sql-database-elastic-query-overview.md) (預覽): 可讓您執行跨越多個資料庫的 TRANSACT-SQL 查詢。 這可讓您連接至報告工具，例如 Excel、PowerBI、Tableau 等等。
+* 彈性資料庫工具：這兩個工具簡化分區化資料庫解決方案的開發與管理。 這些工具是 ︰ [彈性資料庫用戶端程式庫](sql-database-elastic-database-client-library.md) 和 [彈性資料庫分割合併工具](sql-database-elastic-scale-overview-split-and-merge.md)。 
+* [彈性資料庫集區](sql-database-elastic-pool-guidance.md) （預覽） ︰ 集區是的資料庫，您可以新增或移除資料庫在任何時間的集合。 集區中的資料庫共用固定數量的資源 (稱為資料庫輸送量單位，簡稱 DTU)。 您對資源支付固定費用，在管理效能時很容易計算成本。 
+* [彈性資料庫工作](sql-database-elastic-jobs-overview.md) （預覽） ︰ 使用工作來管理大量的 Azure SQL 資料庫。 輕鬆執行系統管理作業，例如結構描述變更、認證管理、參考資料更新、效能資料收集，或使用工作的租用戶 (客戶) 遙測收集。
+* [彈性資料庫查詢](sql-database-elastic-query-overview.md) （預覽） ︰ 可讓您執行跨越多個資料庫的 TRANSACT-SQL 查詢。 這可讓您連接至報告工具，例如 Excel、PowerBI、Tableau 等等。
 
 下圖顯示的架構包含 **彈性資料庫功能** 與資料庫集合有關。 
 
-![彈性資料庫工具][] 1
+![彈性資料庫工具][1]
 
 如需此圖形可列印版本，請移至 [彈性資料庫概觀下載](http://aka.ms/axmybc)。
 
@@ -53,7 +53,7 @@
 
 下圖顯示縮放的水平和垂直面向，也是彈性資料庫的基本縮放方法。
 
-![水平與垂直相應放大][] 2
+![水平與垂直相應放大][2]
 
 水平縮放是指加入或移除資料庫來調整容量或整體效能。 這也稱為「相應放大」。 分區化是常用的水平縮放實作方法，主要是將資料分割到結構相同的一組資料庫上。  
 
@@ -80,7 +80,7 @@
 
 有些應用程式採用最簡單的方法，為每個租用戶建立個別的資料庫。 這是 **單一租用戶分區化模式** 提供隔離、 備份/還原能力和資源縮放的租用戶的資料粒度。 使用單一租用戶分區化時，每個資料庫與特定的租用戶識別碼值 (或客戶索引鍵值) 相關聯，但該索引鍵不一定出現在資料本身。 應用程式必須負責將每個要求遞送至適當的資料庫 - 用戶端程式庫可以簡化此工作。
 
-![單一租用戶與多租用戶][] 4
+![單一租用戶與多租用戶][4]
 
 其他案例將多個租用戶一起放入資料庫中，而不是將它們隔離至個別的資料庫。 這就是一般 **多租用戶分區化模式** – 可能是因為應用程式管理大量非常小的租用戶。 在多租用戶分區化中，資料庫資料表中的資料列都設計成具有索引鍵 (識別租用戶識別碼) 或分區化索引鍵。 同樣地，應用程式層負責將租用戶的要求遞送至適當的資料庫，而彈性資料庫用戶端程式庫支援此功能。 此外，資料列層級安全性可用來篩選資料列的每個租用戶可以存取 – 如需詳細資訊，請參閱 [多租用戶應用程式使用彈性資料庫工具和資料列層級安全性](sql-database-elastic-tools-multi-tenant-row-level-security.md)。 多租用戶分區化模式可能需要在資料庫之間重新分配資料，而彈性資料庫分割合併工具可協助達成此工作。
 
@@ -107,4 +107,5 @@
 [2]:./media/sql-database-elastic-scale-introduction/h_versus_vert.png
 [3]:./media/sql-database-elastic-scale-introduction/overview.png
 [4]:./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
+
 

@@ -30,7 +30,7 @@ Azure Machine Learning 建議 API 可分成下列邏輯群組：
 
 - <ins>限制</ins> -建議 API 的限制。
 - <ins>一般資訊</ins> 驗證、 服務 URI 和版本設定資訊。
-- <ins>模型基本操作</ins> – 可讓您執行基本操作模型 Api (例如建立、 更新和刪除模型)。
+- <ins>模型基本操作</ins> – 可讓您執行基本操作模型 Api （例如建立、 更新和刪除模型）。
 - <ins>模型進階操作</ins> – 可讓您取得資料深入了解進階模型的 Api。
 - <ins>模型商務規則</ins> – 可讓您管理模型建議結果相關商業規則的 Api。
 - <ins>目錄</ins> – 可讓您執行基本操作模型目錄 Api。 目錄包含使用狀況資料項目的相關中繼資料資訊。
@@ -79,7 +79,7 @@ Azure Machine Learning 建議 API 可分成下列邏輯群組：
 
 ###4.3. 建議推論
 
-建議推論是功能使用方式的另一個層面。 的確，Azure Machine Learning 建議引擎可以使用功能來提供建議說明 (也稱為 推理)，導致讓建議取用者對建議項目時更具信心。
+建議推論是功能使用方式的另一個層面。 的確，Azure Machine Learning 建議引擎可以使用功能來提供建議說明 （也稱為 推理），導致讓建議取用者對建議項目時更具信心。
 若要啟用推論，應在要求建議組建之前設定 `AllowFeatureCorrelation` 和 `ReasoningFeatureList` 參數。
 
 
@@ -94,7 +94,7 @@ Azure Machine Learning 建議 API 可分成下列邏輯群組：
 
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-|   modelName   |   字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 20 |
+|   modelName   |   字母 （A-Z、 a-z） 的數字 (0-9)、 連字號 （-），並允許底線 (_)。<br>最大長度 ︰ 20 |
 |   apiVersion      | 1.0 |
 |||
 | 要求本文 | 無 |
@@ -105,7 +105,7 @@ Azure Machine Learning 建議 API 可分成下列邏輯群組：
 HTTP 狀態碼：200
 
 - `feed/entry/content/properties/id` – 包含模型識別碼。
-**請注意**: 模型識別碼會區分大小寫。
+**請注意**︰ 模型識別碼會區分大小寫。
 
 OData XML
 
@@ -574,7 +574,7 @@ OData XML
 
 | HTTP 方法 | URI |
 |:--------|:--------|
-|GET     |具有作用中組建識別碼：<br>`<rootURI>/GetModelInsight?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetModelInsight?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`<br><br>具有特定組建識別碼：<br>`<rootURI>/GetModelInsight?modelId=%27<model_id>%27&buildId=%27<build_id>%27&apiVersion=%271.0%27`|
+|GET     |具有作用中組建識別碼 ︰<br>`<rootURI>/GetModelInsight?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>範例：<br>`<rootURI>/GetModelInsight?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`<br><br>具有特定組建識別碼 ︰<br>`<rootURI>/GetModelInsight?modelId=%27<model_id>%27&buildId=%27<build_id>%27&apiVersion=%271.0%27`|
 
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
@@ -655,7 +655,7 @@ OData XML
 
 | HTTP 方法 | URI |
 |:--------|:--------|
-|GET     |`<rootURI>/GetModelSample?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetModelSample?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`<br><br>具有特定組建識別碼：<br>`<rootURI>/GetModelSample?modelId=%27<model_id>%27&buildId=%27<build_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetModelSample?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&buildId=%271500068%27&apiVersion=%271.0%27`|
+|GET     |`<rootURI>/GetModelSample?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetModelSample?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27`<br><br>具有特定組建識別碼 ︰<br>`<rootURI>/GetModelSample?modelId=%27<model_id>%27&buildId=%27<build_id>%27&apiVersion=%271.0%27`<br>範例：<br>`<rootURI>/GetModelSample?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&buildId=%271500068%27&apiVersion=%271.0%27`|
 
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
@@ -805,13 +805,13 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 
 
 ##7. 模型商務規則
-以下是支援的規則類型:
-- <strong>封鎖清單</strong> -BlockList 可讓您提供您不想在建議結果中傳回的項目清單。
+以下是支援的規則類型：
+- <strong>BlockList</strong> -BlockList 可讓您提供您不想在建議結果中傳回的項目清單。
 - <strong>FeatureBlockList</strong> -功能 BlockList 可讓您封鎖項目根據其特徵的值。
-- <strong>Upsale</strong> -Upsale 可讓您強制在建議結果中傳回的項目。
+- <strong>Upsale</strong> - Upsale 可讓您強制在建議結果中傳回項目。
 - <strong>白名單</strong> -白名單可讓您僅建議的項目清單的建議。
 - <strong>FeatureWhiteList</strong> -功能白名單可讓您只建議特定的功能值的項目。
-- <strong>PerSeedBlockList</strong> -每個種子區塊清單可讓您提供每個項目不能做為建議結果傳回的項目清單。
+- <strong>PerSeedBlockList</strong> - PerSeedBlockList 可讓您提供無法做為建議結果傳回的項目清單給每個項目。
 
 
 ###7.1. 取得模型規則
@@ -884,18 +884,18 @@ OData XML
 |   apiVersion      | 1.0 |
 |||
 | 要求本文 | 
-<ins>每當商務規則的提供項目 Id，請務必使用 (您在類別目錄檔案中使用相同識別碼) 的項目外部識別碼</ins><br>
-<ins>若要新增 BlockList 規則:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>若要新增 FeatureBlockList 規則:</ins><br>
+<ins>每當商務規則的提供項目 Id，請務必使用 （您在類別目錄檔案中使用相同識別碼） 的項目外部識別碼</ins><br>
+<ins>若要新增 BlockList 規則 ︰</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
+<ins>若要新增 FeatureBlockList 規則 ︰</ins><br>
 <br>
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>
-若要新增 Upsale 規則:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br>
-<ins>若要新增 WhiteList 規則:</ins><br>
+若要新增 Upsale 規則 ︰</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br>
+<ins>若要新增 WhiteList 規則 ︰</ins><br>
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>若要新增 FeatureWhiteList 規則:</ins><br>
+<ins>若要新增 FeatureWhiteList 規則 ︰</ins><br>
 <br>
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>
-若要新增 PerSeedBlockList 規則:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+若要新增 PerSeedBlockList 規則 ︰</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **回應**:
@@ -985,11 +985,11 @@ HTTP 狀態碼：200
 
 | 名稱 | 強制 | 類型 |  說明 |
 |:---|:---|:---|:---|
-| 項目識別碼 |是 | [A-z]、 [a-z]、 [0-9]、 [_] (& s) #40。底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 50 | 項目的唯一識別碼。 |
-| 項目名稱 | 是 | 任何英數字元<br> 最大長度: 255 | 項目名稱。 | 
-| 項目類別 | 是 | 任何英數字元 <br> 最大長度: 255 | 此項目所屬類別 (例如烹飪書籍、劇本...) 可以是空的。 |
-| 說明 | 否，除非顯示功能 (但可能是空的) | 任何英數字元 <br> 最大長度: 4000 | 此項目的說明。 |
-| 功能清單 | 否 | 任何英數字元 <br> 最大長度: 4000。功能: 20 的最大數目 | 以逗號分隔的功能名稱清單 = 功能值，可用來增強模型建議;請參閱 [進階主題](#2-advanced-topics) 一節。 |
+| 項目識別碼 |是 | [A-z]、 [a-z]、 [0-9]、 [_] （& s) #40。底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度 ︰ 50 | 項目的唯一識別碼。 |
+| 項目名稱 | 是 | 任何英數字元<br> 最大長度 ︰ 255 | 項目名稱。 | 
+| 項目類別 | 是 | 任何英數字元 <br> 最大長度 ︰ 255 | 此項目所屬類別 (例如烹飪書籍、劇本...) 可以是空的。 |
+| 說明 | 否，除非顯示功能 (但可能是空的) | 任何英數字元 <br> 最大長度 ︰ 4000 | 此項目的說明。 |
+| 功能清單 | 否 | 任何英數字元 <br> 最大長度 ︰ 4000。功能 ︰ 20 的最大數目 | 以逗號分隔的功能名稱清單 = 功能值，可用來增強模型建議;請參閱 [進階主題](#2-advanced-topics) 一節。 |
 
 
 | HTTP 方法 | URI |
@@ -1000,17 +1000,17 @@ HTTP 狀態碼：200
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
 |   modelId |   模型的唯一識別碼  |
-| 檔名 | 目錄的文字識別碼。<br>字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 50 |
+| 檔名 | 目錄的文字識別碼。<br>字母 （A-Z、 a-z） 的數字 (0-9)、 連字號 （-），並允許底線 (_)。<br>最大長度 ︰ 50 |
 |   apiVersion      | 1.0 |
 |||
-| 要求本文 | 範例 (包含功能):<br/>2406e770-769 c-4189-89de-1c9283f93a96，克拉拉 Callan，活頁簿，本書說明中，撰寫 = Richard Wright，publisher = Harper Flamingo Canada，year = 2001年<br>21bf8088-b6c0-4509-870 c-e1c7ac78304a，忘記空間: 小說 (拜占庭書籍)、 書籍、 作者 = Nick Bantock，publisher = Harpercollins，year = 1997年<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23，Spadework、 書籍、 作者 = Timothy Findley，publisher = HarperFlamingo Canada，year = 2001年<br>552a1940-21e4-4399-82bb-594b46d7ed54，本例的傢伙，活頁簿，本書說明中，撰寫 = Magnus Mills，publisher = Arcade Publishing，year = 1998年</pre> |
+| 要求本文 | 範例 （包含功能） ︰<br/>2406e770-769 c-4189-89de-1c9283f93a96，克拉拉 Callan，活頁簿，本書說明中，撰寫 = Richard Wright，publisher = Harper Flamingo Canada，year = 2001年<br>21bf8088-b6c0-4509-870 c-e1c7ac78304a，忘記空間 ︰ 小說 （拜占庭書籍）、 書籍、 作者 = Nick Bantock，publisher = Harpercollins，year = 1997年<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23，Spadework、 書籍、 作者 = Timothy Findley，publisher = HarperFlamingo Canada，year = 2001年<br>552a1940-21e4-4399-82bb-594b46d7ed54，本例的傢伙，活頁簿，本書說明中，撰寫 = Magnus Mills，publisher = Arcade Publishing，year = 1998年</pre> |
 
 
 **回應**:
 
 HTTP 狀態碼：200
 
-API 會傳回匯入的報表。
+API 傳回匯入的報告。
 - `feed\entry\content\properties\LineCount` – 已接受的行數。
 - `feed\entry\content\properties\ErrorCount` – 因錯誤而未插入的行數。
 
@@ -1206,10 +1206,10 @@ OData XML
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
 |   modelId |   模型的唯一識別碼  |
-| 檔名 | 目錄的文字識別碼。<br>字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 50 |
+| 檔名 | 目錄的文字識別碼。<br>字母 （A-Z、 a-z） 的數字 (0-9)、 連字號 （-），並允許底線 (_)。<br>最大長度 ︰ 50 |
 |   apiVersion      | 1.0 |
 |||
-| 要求本文 | 使用量資料。 格式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名稱</th><th>強制</th><th>類型</th><th>描述</th></tr><tr><td>使用者識別碼</td><td>是</td><td>[a-z]、 [a-z]、 [0-9]、 [_] (& s) #40;底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 255 </td><td>使用者的唯一識別碼。</td></tr><tr><td>項目識別碼</td><td>是</td><td>[a-z]、 [a-z]、 [0-9] [& #95;] (& s) #40;底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度: 50</td><td>項目的唯一識別碼。</td></tr><tr><td>時間</td><td>否</td><td>日期格式: YYYY/MM/ddthh (例如 2013年/06/20T10:00:00)</td><td>資料的時間。</td></tr><tr><td>事件</td><td>否; 如果提供，也必須提供日期</td><td>有下列幾種:<br>• 按一下<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• 購買</td><td></td></tr></table><br>檔案大小上限: 200 MB<br><br>範例:<br><pre>149452，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>6360，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>50321，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>71285，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>224450，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>236645，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>107951，1b3d95e2-84e4-414 c-bb38-be9cf461c347</pre> |
+| 要求本文 | 使用量資料。 格式：<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名稱</th><th>強制</th><th>類型</th><th>說明</th></tr><tr><td>使用者識別碼</td><td>是</td><td>[A-z]、 [a-z]、 [0-9]、 [_] （& s) #40。底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度 ︰ 255 </td><td>使用者的唯一識別碼。</td></tr><tr><td>項目識別碼</td><td>是</td><td>[A-z]、 [a-z]、 [0-9] [& #95;] & #40;底線 & #41;、 [-] & #40; 破折號 & #41;<br> 最大長度 ︰ 50</td><td>項目的唯一識別碼。</td></tr><tr><td>時間</td><td>否</td><td>日期格式 ︰ YYYY/MM/ddthh (例如 2013年/06/20T10:00:00)</td><td>資料的時間。</td></tr><tr><td>事件</td><td>否。如果提供，也必須提供日期</td><td>下列其中之一：<br>• Click<br>• RecommendationClick<br>AddShopCart •<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>檔案大小上限 ︰ 200 MB<br><br>範例：<br><pre>149452，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951，1b3d95e2-84e4-414 c-bb38-be9cf461c347</pre> |
 
 **回應**:
 
@@ -1530,21 +1530,21 @@ HTTP 狀態碼：200
 
 以原始文字格式傳回的回應：
 <pre>
-85526，2406E770-769 C-4189-89DE-1C9283F93A96，2014年/11/02T13:40:15，True，1
-210926，2406E770-769 C-4189-89DE-1C9283F93A96，2014年/11/02T13:40:15，True，1
-116866，2406E770-769 C-4189-89DE-1C9283F93A96，2014年/11/02T13:40:15，True，1
-177458，2406E770-769 C-4189-89DE-1C9283F93A96，2014年/11/02T13:40:15，True，1
-274004，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-123883，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-37712，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-152249，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-250948，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-235588，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-158254，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-271195，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-141157，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-171118，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-225087，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
+85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
 </pre>
 
 
@@ -1570,39 +1570,39 @@ HTTP 狀態碼：200
 
 以原始文字格式傳回的回應：
 <pre>
-85526，2406E770-769 C-4189-89DE-1C9283F93A96，2014年/11/02T13:40:15，True，1
-210926，2406E770-769 C-4189-89DE-1C9283F93A96，2014年/11/02T13:40:15，True，1
-116866，2406E770-769 C-4189-89DE-1C9283F93A96，2014年/11/02T13:40:15，True，1
-177458，2406E770-769 C-4189-89DE-1C9283F93A96，2014年/11/02T13:40:15，True，1
-274004，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-123883，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-37712，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-152249，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-250948，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-235588，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-158254，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-271195，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-141157，21BF8088-B6C0-4509-870 C-E1C7AC78304A，2014年/11/02T13:40:15，True，1
-171118，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-225087，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-244881，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-50547，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-213090，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-260655，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-72214，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-189334，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-36326，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-189336，3BB5CB44-D143-4BDD-A55C-443964BF4B23，2014年/11/02T13:40:15，True，1
-189334，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-260655，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-162100，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-54946，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-260965，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-102758，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-112602，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-163925，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-262998，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
-144717，552A1940-21E4-4399-82BB-594B46D7ED54，2014年/11/02T13:40:15，True，1
+85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1
+274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1
+171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+244881,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+50547,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+213090,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+260655,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+72214,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189334,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+36326,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189336,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1
+189334,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+260655,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+162100,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+54946,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+260965,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+102758,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+112602,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+163925,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+262998,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
+144717,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
 </pre>
 
 ###9.6. 刪除使用方式檔案
@@ -1646,7 +1646,7 @@ HTTP 狀態碼：200
 ##10. 特性
 本節示範如何擷取功能資訊，例如匯入的功能和其值、其排名，以及此排名的配置時機。 匯入功能做為目錄資料的一部分，然後在排名組建完成時建立和其排名的關聯。
 功能排名可根據使用狀況資料和項目類型而變更。 但是對於一致的使用量/項目，排名只能有小幅的起伏。
-功能的排名為非負數的數字。 編號 0 表示未排名功能 (如果您叫用這個 API 的第一個排名組建完成之前發生)。 配置排名的日期稱為分數有效時間。
+功能的排名為非負數的數字。 編號 0 表示未排名功能 （如果您叫用這個 API 的第一個排名組建完成之前發生）。 配置排名的日期稱為分數有效時間。
 
 ###10.1. 取得功能資訊 (適用於上一個排名組建)
 擷取最後一次成功排名組建的功能資訊，包括排名。
@@ -1816,19 +1816,19 @@ OData
 
   本節說明和組建相關的不同 API。 有 3 個類型的組建：建議組建、排名組建和 FBT (通常會一起購買) 組建。
 
-建議組建的用途是產生用於預測的建議模型。 預測 (適用於這種組建) 有兩種:
-* I2I-又稱為 項目對項目的建議-指定此選項會預測可能高度感興趣的項目清單的項目清單或的項目。
-* U2I-又稱為 使用者對項目的建議 - 這個選項會根據指定的使用者識別碼 (及選擇性的項目清單)，來預測指定使用者 (及針對額外選擇的項目) 可能高度感興趣的項目清單。 U2I 建議是根據使用者在建置模型前感興趣之項目的歷程記錄。
+建議組建的用途是產生用於預測的建議模型。 這種組建類型的預測可分為兩種類別：
+* I2I - 又稱為 項目對項目的建議 - 這個選項會根據指定的一個項目或項目清單，來預測可能高度感興趣的項目清單。
+* U2I - 又稱為 使用者對項目的建議 - 這個選項會根據指定的使用者識別碼 (及選擇性的項目清單)，來預測指定使用者 (及針對額外選擇的項目) 可能高度感興趣的項目清單。 U2I 建議是根據使用者在建置模型前感興趣之項目的歷程記錄。
 
-排名組建為技術組建，可讓您了解功能的效益。 通常，若要取得最佳結果的建議模型牽涉到的功能，您應該採取下列步驟:
-- 觸發排名組建 (除非您功能的分數是穩定的)，並等候覺特徵分數。
+排名組建為技術組建，可讓您了解功能的效益。 通常，若要取得包含功能之建議模型的最佳結果，您應該採取下列步驟：
+- 觸發排名組建 (除非功能的分數很穩定) 並等待直到取得功能分數。
 - 呼叫以擷取您的功能等級 [取得功能資訊](#101-get-features-info-for-last-rank-build) API。
-- 設定的建議組建，並指定下列參數:
+- 以下列參數設定建議組建：
     - `useFeatureInModel` -設定為 True。
-    - `ModelingFeatureList` -設為以逗號分隔清單的分數 2.0 或更 (根據您在上一個步驟中所擷取的排名) 的功能。
+    - `ModelingFeatureList` -設為以逗號分隔清單的分數 2.0 或更 （根據您在上一個步驟中所擷取的排名） 的功能。
     - `AllowColdItemPlacement` -設定為 True。
-    - 您可以選擇設定 `EnableFeatureCorrelation` 設為 True 和 `ReasoningFeatureList` 的功能清單中您要使用的說明 (通常是在製作模型或子清單中使用的功能相同清單)。
-- 觸發建議組建已設定的參數。
+    - 您可以選擇設定 `EnableFeatureCorrelation` 設為 True 和 `ReasoningFeatureList` 的功能清單中您要使用的說明 （通常是在製作模型或子清單中使用的功能相同清單）。
+- 以設定的參數觸發建議組建。
 
 注意：如果您未設定任何參數 (例如叫用不含參數的建議組建) 或您沒有明確停用功能的使用方式 (例如 `UseFeatureInModel` 設為 False)，系統將會在排名組建存在時，將與功能相關的參數設定為上述的說明值。
 
@@ -1892,7 +1892,7 @@ FBT (通常會一起購買) 組建也是另一種建議運算法，有時稱為�
 
 ###11.2. 觸發建議組建
 
-  根據預設，此 API 會觸發建議模型組建。 若要觸發排名組建 (以評分功能)，應使用附帶組建類型參數的組建 API 變數。
+  根據預設，此 API 會觸發建議模型組建。 若要觸發排名組建 （以評分功能），應使用附帶組建類型參數的組建 API 變數。
 
 
 | HTTP 方法 | URI |
@@ -1903,10 +1903,10 @@ FBT (通常會一起購買) 組建也是另一種建議運算法，有時稱為�
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
 | modelId | 模型的唯一識別碼  |
-| userDescription | 目錄的文字識別碼。 請注意，如果您使用空格，必須將其編碼改成 %20。 請參閱上面的範例。<br>最大長度: 50 |
+| userDescription | 目錄的文字識別碼。 請注意，如果您使用空格，必須將其編碼改成 %20。 請參閱上面的範例。<br>最大長度 ︰ 50 |
 | apiVersion | 1.0 |
 |||
-| 要求本文 | 如果保留空白，則就會使用預設值來執行組建的組建參數。<br><br>如果您想要設定組建參數，請以 XML 傳送參數至本文，如下列範例所示。 (請參閱 < 組建參數 > 一節，取得參數的說明)。`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+| 要求本文 | 如果保留空白，就會使用預設組建參數執行組建。<br><br>如果您想要設定組建參數，請以 XML 傳送參數至本文，如下列範例所示。 （請參閱 < 組建參數 > 一節，取得參數的說明）。`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **回應**:
 
@@ -1978,11 +1978,11 @@ OData XML
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
 | modelId | 模型的唯一識別碼  |
-| userDescription | 目錄的文字識別碼。 請注意，如果您使用空格，必須將其編碼改成 %20。 請參閱上面的範例。<br>最大長度: 50 |
-| buildType | 要叫用的組建類型: <br/> -'Recommendation' 為建議組建 <br> -'排序' 為排名組建 <br/> -'Fbt' 為 FBT 組建
+| userDescription | 目錄的文字識別碼。 請注意，如果您使用空格，必須將其編碼改成 %20。 請參閱上面的範例。<br>最大長度 ︰ 50 |
+| buildType | 要叫用的組建類型 ︰ <br/> -'Recommendation' 為建議組建 <br> -'排序' 為排名組建 <br/> -'Fbt' 為 FBT 組建
 | apiVersion | 1.0 |
 |||
-| 要求本文 | 如果保留空白，則就會使用預設值來執行組建的組建參數。<br><br>如果您想要設定組建參數，它們以傳送 XML 到本文在下列範例所示。 (請參閱 < 組建參數 > 一節的說明和參數的完整清單)。`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
+| 要求本文 | 如果保留空白，就會使用預設組建參數執行組建。<br><br>如果您想要設定組建參數，它們以傳送 XML 到本文在下列範例所示。 （請參閱 < 組建參數 > 一節的說明和參數的完整清單）。`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
 **回應**:
 
@@ -2070,7 +2070,7 @@ HTTP 狀態碼：200
 - `feed/entry/content/properties/UserName` – 使用者的名稱。
 - `feed/entry/content/properties/ModelName` – 模型的名稱。
 - `feed/entry/content/properties/ModelId` – 模型的唯一識別碼。
-- `feed/entry/content/properties/IsDeployed` – 組建是否已部署 (又稱為 作用中組建)。
+- `feed/entry/content/properties/IsDeployed` – 組建是否已部署 （又稱為 作用中組建）。
 - `feed/entry/content/properties/BuildId` – 組建的唯一識別碼。
 - `feed/entry/content/properties/BuildType` - 組建類型。
 - `feed/entry/content/properties/Status` – 組建狀態。 可以是下列其中之一：錯誤、建置中、已排入佇列、取消中、已取消、成功。
@@ -2082,17 +2082,17 @@ HTTP 狀態碼：200
 - `feed/entry/content/properties/ProgressStep` – 正在進行中組建的目前階段相關詳細資料。
 
 有效的組建狀態：
-- 建立 – 已建立組建要求項目。
-- 排入佇列-組建要求已觸發，並已排入佇列。
-- 建置中-建置進行中。
+- 建立 - 組建要求項目已建立。
+- 已排入佇列 - 組建要求已觸發並排入佇列。
+- 建置中 - 建置進行中。
 - 成功 – 組建已成功結束。
 - 錯誤 – 組建已結束但發生失敗。
 - 已取消 – 組建已取消。
 - 取消中 – 正在取消組建。
 
-有效的組建類型的值:
-- Rank-排名組建。
-- 建議事項-建議組建。
+組建類型的有效值：
+- 排名 - 排名組建。
+- 建議 - 建議組建。
 
 
 OData XML
@@ -2166,18 +2166,18 @@ HTTP 狀態碼：200
 - `feed/entry/content/properties/ProgressStep` – 正在進行中組建的目前階段相關詳細資料。
 
 有效的組建狀態：
-- 建立 – 已建立組建要求項目。
-- 排入佇列-組建要求已觸發，並已排入佇列。
-- 建置中-建置進行中。
+- 建立 - 組建要求項目已建立。
+- 已排入佇列 - 組建要求已觸發並排入佇列。
+- 建置中 - 建置進行中。
 - 成功 – 組建已成功結束。
 - 錯誤 – 組建已結束但發生失敗。
 - 已取消 – 組建已取消。
 - 取消中 – 正在取消組建。
 
 
-有效的組建類型的值:
-- Rank-排名組建。
-- 建議事項-建議組建。
+組建類型的有效值：
+- 排名 - 排名組建。
+- 建議 - 建議組建。
 
 
 OData XML
@@ -2219,7 +2219,7 @@ OData XML
 ###11.6. 刪除組建
 刪除組建。
 
-注意： <br>您無法刪除作用中組建。 在刪除之前，應該模型更新至不同的作用中組建。<br>您無法刪除進行中組建。 您應該先取消組建，方式是呼叫 <strong>取消組建</strong>.
+注意： <br>您無法刪除作用中組建。 在刪除之前，應該模型更新至不同的作用中組建。<br>您無法刪除進行中組建。 您應該先藉由呼叫 <strong>取消組建</strong> 來取消組建。
 
 | HTTP 方法 | URI |
 |:--------|:--------|
@@ -2266,7 +2266,7 @@ HTTP 狀態碼：200
 
 HTTP 狀態碼：200
 
-此 API 會傳回索引鍵/值項目的集合。 每個項目都代表參數和它的值:
+此 API 會傳回索引鍵/值項目的集合。 每個元素都代表參數和它的值：
 - `feed/entry/content/properties/Key` – 組建參數名稱。
 - `feed/entry/content/properties/Value` – 組建參數值。
 
@@ -2482,7 +2482,7 @@ HTTP 狀態碼：200
 - `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
 - `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
-- `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
+- `Feed\entry\content\properties\Reasoning` – 建議推論 （例如建議說明）。
 
 以下範例回應包含 10 個建議項目。
 
@@ -2663,7 +2663,7 @@ HTTP 狀態碼：200
 - `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
 - `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
-- `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
+- `Feed\entry\content\properties\Reasoning` – 建議推論 （例如建議說明）。
 
 請參閱 12.1 中的回應範例
 
@@ -2692,10 +2692,10 @@ HTTP 狀態碼：200
 回應會包含每個建議項目集 (通常會與種子/輸入項目一起購買的一組項目) 的一個項目。 每個項目都有下列資料：
 - `Feed\entry\content\properties\Id1` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name1` – 項目的名稱。
-- `Feed\entry\content\properties\Id2` (選擇性) – 第 2 個建議項目識別碼。
-- `Feed\entry\content\properties\Name2` – (選擇性) 第 2 個項目的名稱。
+- `Feed\entry\content\properties\Id2` （選擇性） – 第 2 個建議項目識別碼。
+- `Feed\entry\content\properties\Name2` – （選擇性） 第 2 個項目的名稱。
 - `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
-- `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
+- `Feed\entry\content\properties\Reasoning` – 建議推論 （例如建議說明）。
 
 以下範例回應包含 3 個建議項目集。
 
@@ -2784,10 +2784,10 @@ HTTP 狀態碼：200
 回應會包含每個建議項目集 (通常會與種子/輸入項目一起購買的一組項目) 的一個項目。 每個項目都有下列資料：
 - `Feed\entry\content\properties\Id1` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name1` – 項目的名稱。
-- `Feed\entry\content\properties\Id2` (選擇性) – 第 2 個建議項目識別碼。
-- `Feed\entry\content\properties\Name2` – (選擇性) 第 2 個項目的名稱。
+- `Feed\entry\content\properties\Id2` （選擇性） – 第 2 個建議項目識別碼。
+- `Feed\entry\content\properties\Name2` – （選擇性） 第 2 個項目的名稱。
 - `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
-- `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
+- `Feed\entry\content\properties\Reasoning` – 建議推論 （例如建議說明）。
 
 請參閱 12.3 中的回應範例
 
@@ -2822,7 +2822,7 @@ HTTP 狀態碼：200
 - `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
 - `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
-- `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
+- `Feed\entry\content\properties\Reasoning` – 建議推論 （例如建議說明）。
 
 請參閱 12.1 中的回應範例
 
@@ -2859,11 +2859,11 @@ HTTP 狀態碼：200
 - `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
 - `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
-- `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
+- `Feed\entry\content\properties\Reasoning` – 建議推論 （例如建議說明）。
 
 請參閱 12.1 中的回應範例
 
-###12.7. 取得使用者建議 (屬於特定組建)
+###12.7. 取得使用者建議 （屬於特定組建）
 
 取得 "Recommendation" 類型之特定組建的使用者建議。
 
@@ -2894,7 +2894,7 @@ HTTP 狀態碼：200
 - `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
 - `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
-- `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
+- `Feed\entry\content\properties\Reasoning` – 建議推論 （例如建議說明）。
 
 請參閱 12.1 中的回應範例
 
@@ -2932,7 +2932,7 @@ HTTP 狀態碼：200
 - `Feed\entry\content\properties\Id` – 建議項目識別碼。
 - `Feed\entry\content\properties\Name` – 項目的名稱。
 - `Feed\entry\content\properties\Rating` -建議的評等數字越高表示信賴度越高。
-- `Feed\entry\content\properties\Reasoning` – 建議推論 (例如建議說明)。
+- `Feed\entry\content\properties\Reasoning` – 建議推論 （例如建議說明）。
 
 請參閱 12.1 中的回應範例
 
@@ -2996,7 +2996,7 @@ OData XML
 </feed>
 
 ##14. 通知
-Azure Machine Learning 建議會在系統中持續發生錯誤時建立通知。 有 3 種通知類型:
+Azure Machine Learning 建議會在系統中持續發生錯誤時建立通知。 有 3 種類型的通知：
 1.  組建失敗 – 每個組建失敗都會觸發此通知。
 2.  資料擷取處理失敗 - 當我們在處理每一模型的使用事件時，如果最後 5 分鐘有超過 100 個錯誤，就會觸發此通知。
 3.  建議取用失敗 - 當我們在處理每一模型的建議要求時，如果最後 5 分鐘有超過 100 個錯誤，就會觸發此通知。
@@ -3007,12 +3007,12 @@ Azure Machine Learning 建議會在系統中持續發生錯誤時建立通知。
 
 | HTTP 方法 | URI |
 |:--------|:--------|
-|GET     |`<rootURI>/GetNotifications?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>取得所有模型的所有通知：<br>`<rootURI>/GetNotifications?apiVersion=%271.0%27`<br><br>取得特定模型通知的範例：<br>`<rootURI>/GetNotifications?modelId=%27967136e8-f868-4258-9331-10d567f87fae%27&apiVersion=%271.0%277`|
+|GET     |`<rootURI>/GetNotifications?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>取得所有模型的所有通知：<br>`<rootURI>/GetNotifications?apiVersion=%271.0%27`<br><br>取得特定模型之通知的範例：<br>`<rootURI>/GetNotifications?modelId=%27967136e8-f868-4258-9331-10d567f87fae%27&apiVersion=%271.0%277`|
 
 
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-| modelId | 選擇性參數。 如果省略此參數，您將會取得所有模型的所有通知。 <br>有效值: 模型的唯一識別碼。|
+| modelId | 選擇性參數。 如果省略此參數，您將會取得所有模型的所有通知。 <br>有效值 ︰ 模型的唯一識別碼。|
 | apiVersion | 1.0 |
 |||
 | 要求本文 | 無 |
@@ -3100,4 +3100,5 @@ HTTP 狀態碼：200
 本文件未提供給您任何 Microsoft 產品中任何智慧財產的任何法定權利。 您可以複製並使用這份文件，供內部參考之用。<br><br>
 © 2015 Microsoft。 著作權所有，並保留一切權利。
  
+
 

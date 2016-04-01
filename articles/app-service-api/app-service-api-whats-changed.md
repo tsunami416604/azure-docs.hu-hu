@@ -18,10 +18,10 @@
 
 # App Service API Apps - 變更的項目
 
-在 2015 年 11 月 connect () 事件，有不少改進功能至 Azure App Service 所 [宣布](https://azure.microsoft.com/blog/azure-app-service-updates-november-2015/)。 這些改進功能包括 API Apps 的基礎變更，以進一步配合行動和 Web Apps、減少概念計數以及改善部署和執行階段效能。 從 2015 年 11 月 30 日起，您使用 Azure 管理入口網站或最新的工具建立的新的 API 應用程式將會反映這些變更。 本文說明這些變更，以及如何重新部署現有的應用程式，以充分利用功能。
+在 2015 年 11 月 connect （） 事件，有不少改進功能至 Azure App Service 所 [宣布](https://azure.microsoft.com/blog/azure-app-service-updates-november-2015/)。 這些改進功能包括 API Apps 的基礎變更，以進一步配合行動和 Web Apps、減少概念計數以及改善部署和執行階段效能。 從 2015 年 11 月 30 日起，您使用 Azure 管理入口網站或最新的工具建立的新的 API 應用程式將會反映這些變更。 本文說明這些變更，以及如何重新部署現有的應用程式，以充分利用功能。
 
 
-> [AZURE.NOTE] API 應用程式的初始預覽支援兩種主要案例: 1) 自訂 Api，以用於在邏輯應用程式中使用邏輯應用程式或您自己的用戶端和 2) Marketplace API (通常 SaaS 連接器)。 本文說明第一個案例，自訂 API。 對於 Marketplace API，改進的 Logic Apps 設計工具體驗和基本連線基礎將會在 2016 年初引入。 現有的 Marketplace API 仍然可以在 Logic Apps 設計工具中使用。
+> [AZURE.NOTE] API 應用程式的初始預覽支援兩種主要案例 ︰ 1） 自訂 Api，以用於在邏輯應用程式中使用邏輯應用程式或您自己的用戶端和 2) Marketplace API （通常 SaaS 連接器）。 本文說明第一個案例，自訂 API。 對於 Marketplace API，改進的 Logic Apps 設計工具體驗和基本連線基礎將會在 2016 年初引入。 現有的 Marketplace API 仍然可以在 Logic Apps 設計工具中使用。
 
 ## 功能變更
 API Apps 的主要功能 – 驗證、CORS 和 API 中繼資料 – 已直接移至 App Service。 透過這項變更，功能可以跨 Web、行動及 API Apps 使用。 事實上，這三個共用相同 **microsoft.web/sites** 資源管理員] 中的資源類型。 不再需要 API Apps 閘道或隨著 API Apps 提供。 這也讓您可以更輕鬆地使用 Azure API 管理，因為只有單一 API 管理閘道。
@@ -37,9 +37,9 @@ API Apps 更新的主要設計原則是讓您可以使用您選擇的語言，�
 
 對於 API 案例，有一些相關的新功能：
 
-- **支援直接使用 Azure Active Directory**, ，而不需要交換工作階段權杖的 AAD 語彙基元的用戶端程式碼: 您的用戶端可以只包含 AAD 語彙基元的 Authorization 標頭，根據持有人權杖規格。 這也表示用戶端或伺服器端上不需要有任何 App Service 專用 SDK。 
-- **服務對服務或 「 內部 」 存取**: 如果您有背景程式處理序或某些其他用戶端必須不能存取 api 介面，可以要求使用 AAD 服務主體的憑證並將它傳遞至應用程式服務來驗證您的應用程式。
-- **延後授權**: 許多應用程式有各種不同部分的應用程式的存取限制。 也許您想要讓某些 API 可供公開使用，而有些則需要登入。 原始的驗證/授權功能是孤注一擲，整個網站都需要登入。 此選項仍然存在，但是您也可以選擇允許您的應用程式程式碼在 App Service 驗證使用者之後，呈現存取決策。
+- **支援直接使用 Azure Active Directory**, ，而不需要交換工作階段權杖的 AAD 語彙基元的用戶端程式碼 ︰ 您的用戶端可以只包含 AAD 語彙基元的 Authorization 標頭，根據持有人權杖規格。 這也表示用戶端或伺服器端上不需要有任何 App Service 專用 SDK。 
+- **服務對服務或 「 內部 」 存取**︰ 如果您有背景程式處理序或某些其他用戶端必須不能存取 api 介面，可以要求使用 AAD 服務主體的憑證並將它傳遞至應用程式服務來驗證您的應用程式。
+- **延後授權**︰ 許多應用程式有各種不同部分的應用程式的存取限制。 也許您想要讓某些 API 可供公開使用，而有些則需要登入。 原始的驗證/授權功能是孤注一擲，整個網站都需要登入。 此選項仍然存在，但是您也可以選擇允許您的應用程式程式碼在 App Service 驗證使用者之後，呈現存取決策。
  
 如需新的驗證功能的詳細資訊，請參閱 [Azure App Service 中 API 應用程式的驗證和授權](app-service-api-authentication.md)。 如需如何從先前的 API 應用程式模型的現有 API 應用程式移轉到新的資訊，請參閱 [移轉現有的 API 應用程式](#migrating-existing-api-apps) 在本文稍後。
  
@@ -69,7 +69,7 @@ API 定義刀鋒視窗可以透過 Web、行動及 API Apps 使用。 在管理�
 ## 管理入口網站
 選取 **新增 > Web + 行動 > API 應用程式** 入口網站中將會建立 API 應用程式，以反映新文件所述的功能。 **瀏覽 > API 應用程式** 將只顯示這些新的 API 應用程式。 一旦您瀏覽至 API 應用程式，刀鋒視窗會共用與 Web Apps 和 Mobile Apps 的刀鋒視窗相同的配置和功能。 唯一差異是快速入門內容和設定順序。
 
-現有的 API 應用程式 (或從 Logic Apps 建立的 Marketplace API 應用程式) 與先前的預覽功能仍會在 Logic Apps 設計工具中以及於瀏覽資源群組中的所有資源時顯示。 如果您需要建立 API 應用程式與先前的預覽功能，封裝就可用且可搜尋做為 Azure Marketplace 中 **Web + 行動 > API 應用程式 (預覽)**。
+現有的 API 應用程式 (或從 Logic Apps 建立的 Marketplace API 應用程式) 與先前的預覽功能仍會在 Logic Apps 設計工具中以及於瀏覽資源群組中的所有資源時顯示。 如果您需要建立 API 應用程式與先前的預覽功能，封裝就可用且可搜尋做為 Azure Marketplace 中 **Web + 行動 > API 應用程式 （預覽）**。
 
 ## Visual Studio
 
@@ -83,7 +83,7 @@ API 定義刀鋒視窗可以透過 Web、行動及 API Apps 使用。 在管理�
 
 或者，您可以從管理入口網站手動匯入發佈設定檔以啟用發佈。 不過，雲端總管、程式碼產生和 API 應用程式選取/建立需要 SDK 2.8.1 或更高版本。
 
-發佈至具有先前預覽的現有 API 應用程式的功能，在 SDK 2.8.1 中仍然可以使用。 如果您已發佈專案，則不需要任何進一步的動作。 若要設定發行，選擇 [ **API 應用程式 (傳統)** 從 **更多選項** 發行] 對話方塊中的下拉式清單。
+發佈至具有先前預覽的現有 API 應用程式的功能，在 SDK 2.8.1 中仍然可以使用。 如果您已發佈專案，則不需要任何進一步的動作。 若要設定發行，選擇 [ **API 應用程式 （傳統）** 從 **更多選項** 發行] 對話方塊中的下拉式清單。
 
 ## 移轉現有的 API 應用程式
 如果您的自訂 API 部署至先前預覽版本的 API Apps，我們要求您在 2015 年 12 月 31 日之前移轉至新的 API Apps 模型。 因為舊的和新的模型都是根據 App Service 中裝載的 Web API，所以大部分現有的程式碼都可以重複使用。
@@ -97,13 +97,13 @@ API 定義刀鋒視窗可以透過 Web、行動及 API Apps 使用。 在管理�
 ### 驗證
 App Service 驗證服務支援相同的功能，這些功能可用於先前的 API 應用程式模型。 如果您使用工作階段權杖並且需要 SDK，請使用下列用戶端與伺服器 SDK：
 
-- 用戶端: [Azure 的行動用戶端 SDK](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)
-- 伺服器: [Microsoft Azure 行動應用程式.NET 驗證延伸模組](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/) 
+- 用戶端 ︰ [Azure 的行動用戶端 SDK](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)
+- 伺服器 ︰ [Microsoft Azure 行動應用程式.NET 驗證延伸模組](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/) 
 
 如果您改為使用 App Service  alpha SDK，這些項目目前已被取代：
 
-- 用戶端: [Microsoft Azure 應用程式服務 SDK](http://www.nuget.org/packages/Microsoft.Azure.AppService)
-- 伺服器: [Microsoft.Azure.AppService.ApiApps.Service](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service)
+- 用戶端 ︰ [Microsoft Azure 應用程式服務 SDK](http://www.nuget.org/packages/Microsoft.Azure.AppService)
+- 伺服器 ︰ [Microsoft.Azure.AppService.ApiApps.Service](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service)
 
 但是，特別是使用 Azure Active Directory，如果您直接使用 AAD 權杖，則不需要任何 App Service 特定項目。
 
@@ -121,7 +121,7 @@ App Service 驗證服務支援相同的功能，這些功能可用於先前的 A
 ### Logic Apps
 Logic Apps 設計工具將會在 2016 年初新增與新的 API Apps 模型的特別緊密整合。 內建至 Logic Apps 的 HTTP 連接器可以叫用任何 HTTP 端點，並且支援服務主體驗證，這也受到 App Service 驗證服務的原生支援。 了解如何使用的應用程式服務主控的 API 中的邏輯應用程式 [使用您的自訂 API 與邏輯應用程式的應用程式服務上主控](../app-service-logic/app-service-logic-custom-hosted-api.md)。
 
-### <a id="documentation"></a> 先前的 API 應用程式模型的文件
+### <a id="documentation"></a> 先前的 API Apps 模型的文件
 某些 [azure.microsoft.com](https://azure.microsoft.com) 為舊的 API 應用程式模型撰寫的文章不再套用至新的模型，並會從站台。 其 Url 將會被重新導向至最接近的對等用法，可以使用新的模型，但您仍然可以看到舊的文章中 [azure.microsoft.com 的 GitHub 文件儲存機制](https://github.com/Azure/azure-content)。 大部分的發行項，您可能會想將位於 [文章/應用程式服務-api](https://github.com/Azure/azure-content/tree/master/articles/app-service-api) 資料夾。 如果您要支援較舊的 API 應用程式，或如果您從 Marketplace 建立新的連接器 API 應用程式，以下是其中一些最可能有幫助的直接連結。
 
 * [驗證概觀](https://github.com/Azure/azure-content/tree/master/articles/app-service/app-service-authentication-overview.md)
@@ -140,4 +140,5 @@ Logic Apps 設計工具將會在 2016 年初新增與新的 API Apps 模型的�
 
 - [MSDN 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAPIApps)
 - [堆疊溢位](http://stackoverflow.com/questions/tagged/azure-api-apps)
+
 

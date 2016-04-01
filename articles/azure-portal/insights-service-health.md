@@ -46,7 +46,7 @@
 
 6. 按一下 [ **更新**。
 
-7. 您現在會看到所有影響您的訂閱服務健全狀況事件:
+7. 您現在會看到所有影響您的訂閱服務健全狀況事件 ︰
     ![資源群組](./media/insights-service-health/Insights_HealthEvent.png)
 
 8. 您可以從這裡移至 [詳細資料] 刀鋒視窗，以查看事件的細節。
@@ -57,3 +57,4 @@
 * [監視服務計量](insights-how-to-customize-monitoring.md) 並確認您的服務可用且可回應。
 * [監視可用性和回應性的任何網頁](../app-insights-monitor-web-app-availability.md) 使用 Application Insights，因此您可以找出您的頁面是否關閉。
  
+

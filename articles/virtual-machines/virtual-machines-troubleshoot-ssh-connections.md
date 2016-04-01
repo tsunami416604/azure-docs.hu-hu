@@ -37,22 +37,22 @@
 
 若要解決使用傳統部署模型所建立之虛擬機器中較常見的 SSH 連線失敗，請嘗試下列步驟：
 
-1. **重設遠端存取** 從 [Azure 入口網站](https://portal.azure.com)。 按一下 [ **全部瀏覽** > **虛擬機器 (傳統)** > 您的 Windows 虛擬機器 > **重設遠端存取**。
+1. **重設遠端存取** 從 [Azure 入口網站](https://portal.azure.com)。 按一下 [ **全部瀏覽** > **虛擬機器 （傳統）** > 您的 Windows 虛擬機器 > **重設遠端存取**。
 
     ![顯示重設 SSH 設定的螢幕擷取畫面](./media/virtual-machines-troubleshoot-ssh-connections/Portal-SSH-Reset-Windows.png)  
 
-2. **重新啟動** 虛擬機器。 從 [Azure 入口網站](https://portal.azure.com), ，按一下 [ **全部瀏覽** > **虛擬機器 (傳統)** > 您的 Windows 虛擬機器 > **重新啟動**。 從 [Azure 傳統入口網站](https://manage.windowsazure.com), ，開啟 **虛擬機器** > **執行個體** 按一下 **重新啟動**。
+2. **重新啟動** 虛擬機器。 從 [Azure 入口網站](https://portal.azure.com), ，按一下 [ **全部瀏覽** > **虛擬機器 （傳統）** > 您的 Windows 虛擬機器 > **重新啟動**。 從 [Azure 傳統入口網站](https://manage.windowsazure.com), ，開啟 **虛擬機器** > **執行個體** 按一下 **重新啟動**。
 
 3. [**調整大小** 虛擬機器](https://msdn.microsoft.com/library/dn168976.aspx)。
 
-4. 依照 [如何為 Linux 型虛擬機器重設密碼或 SSH](virtual-machines-linux-use-vmaccess-reset-password-or-ssh.md) 虛擬機器上，以:
+4. 依照 [如何為 Linux 型虛擬機器重設密碼或 SSH](virtual-machines-linux-use-vmaccess-reset-password-or-ssh.md) 虛擬機器上，以 ︰
 
     - 重設密碼或 SSH 金鑰。
     - 建立新的 sudo 使用者帳戶。
     - 重設 SSH 組態。
 
 5. 檢查 VM 的資源健康情況是否有任何平台問題。 
-    按一下 [瀏覽所有 > 虛擬機器 (傳統) > Linux 虛擬機器 > **檢查健全狀況**
+    按一下 [瀏覽所有 > 虛擬機器 （傳統） > Linux 虛擬機器 > **檢查健全狀況**
 
 
 ## 修正資源管理員部署模型中常見 SSH 錯誤的步驟
@@ -178,7 +178,7 @@
 
 首先，在入口網站中檢查虛擬機器的狀態。
 
-在 [Azure 傳統入口網站](https://manage.windowsazure.com), ，傳統部署模型中的虛擬機器:
+在 [Azure 傳統入口網站](https://manage.windowsazure.com), ，傳統部署模型中的虛擬機器 ︰
 
 1. 按一下 [ **虛擬機器** > *VM 名稱*。
 2. 按一下 [VM **儀表板** 檢查其狀態。
@@ -187,7 +187,7 @@
 
 在 [Azure 入口網站](https://portal.azure.com):
 
-1. 在傳統部署模型中建立虛擬機器，按一下 [ **瀏覽** > **虛擬機器 (傳統)** > *VM 名稱*。 使用資源管理員建立虛擬機器，按一下 [ **瀏覽** > **虛擬機器** > *VM 名稱*。 虛擬機器的狀態窗格應該會顯示 **執行**。 向下捲動以顯示計算、儲存體和網路資源的近期活動。
+1. 在傳統部署模型中建立虛擬機器，按一下 [ **瀏覽** > **虛擬機器 （傳統）** > *VM 名稱*。 使用資源管理員建立虛擬機器，按一下 [ **瀏覽** > **虛擬機器** > *VM 名稱*。 虛擬機器的狀態窗格應該會顯示 **執行**。 向下捲動以顯示計算、儲存體和網路資源的近期活動。
 2. 按一下 [ **設定** 以檢查端點、 IP 位址和其他設定。 若要找出建立與資源管理員的虛擬機器中的端點，請檢查如果 [網路安全性群組](../traffic-manager/virtual-networks-nsg.md) 會定義規則套用到它，而如果參考這些子網路中。
 
 若要確認網路連線，請檢查設定的端點，並判斷您是否可以透過另一個通訊協定 (例如 HTTP 或另一個服務) 連接到 VM。
@@ -229,7 +229,7 @@
 
 #### 來源 2：組織邊緣裝置
 
-若要排除組織邊緣裝置為失敗來源之可能性，請確認直接連接到網際網路的電腦能 SSH 連線到您的 Azure VM。 如果您要透過站台對站 VPN 或 ExpressRoute 連線存取 VM，請跳至 [來源 4: 網路安全性群組](#nsg)。
+若要排除組織邊緣裝置為失敗來源之可能性，請確認直接連接到網際網路的電腦能 SSH 連線到您的 Azure VM。 如果您要透過站台對站 VPN 或 ExpressRoute 連線存取 VM，請跳至 [來源 4 ︰ 網路安全性群組](#nsg)。
 
 ![強調組織邊緣裝置的圖表](./media/virtual-machines-troubleshoot-ssh-connections/ssh-tshoot3.png)
 
@@ -245,7 +245,7 @@
 
 #### 來源 3：雲端服務端點和 ACL
 
-> [AZURE.NOTE] 此來源只適用於使用傳統部署模型所建立的虛擬機器。 使用資源管理員所建立的虛擬機器，請跳到 [來源 4: 網路安全性群組](#nsg)。
+> [AZURE.NOTE] 此來源只適用於使用傳統部署模型所建立的虛擬機器。 使用資源管理員所建立的虛擬機器，請跳到 [來源 4 ︰ 網路安全性群組](#nsg)。
 
 若要排除雲端服務端點和 ACL 為失敗的來源使用建立 Vm 的 [傳統部署模型](../resource-manager-deployment-model.md), ，檢查相同的虛擬網路中的另一個 Azure VM，可以建立 SSH 連線至虛擬機器。
 
@@ -258,7 +258,7 @@
 - 目標 VM 上的 SSH 流量端點組態。 此端點的私用 TCP 連接埠應符合 VM 上 SSH 服務正在接聽的 TCP 連接埠，預設為 22。 使用範本的資源管理員部署模型中所建立的 Vm，請在 Azure 入口網站上的 SSH TCP 連接埠號碼 **瀏覽** > **虛擬機器 (v2)** > *VM 名稱* > **設定** > **端點**。
 - 目標虛擬機器上的 SSH 流量端點 ACL。 ACL 讓您可指定要根據來源 IP 位址允許或拒絕來自網際網路的連入流量。 設定錯誤的 ACL 會阻止送至端點的連入 SSH 流量。 檢查您的 ACL，以確保允許來自您的 Proxy 或其他邊緣伺服器的公用 IP 位址之連入流量。 如需詳細資訊，請參閱 [關於網路存取控制清單 (Acl)](../virtual-network/virtual-networks-acl.md)。
 
-若要排除端點為問題的來源，請移除目前的端點和建立新的端點並指定 **SSH** 名稱 (TCP 連接埠 22 公用和私用連接埠號碼)。 如需詳細資訊，請參閱 [Azure 中的虛擬機器上設定端點](virtual-machines-set-up-endpoints.md)。
+若要排除端點為問題的來源，請移除目前的端點和建立新的端點並指定 **SSH** 名稱 （TCP 連接埠 22 公用和私用連接埠號碼）。 如需詳細資訊，請參閱 [Azure 中的虛擬機器上設定端點](virtual-machines-set-up-endpoints.md)。
 
 <a id="nsg"></a>
 #### 來源 4：網路安全性群組
@@ -289,4 +289,5 @@
 [疑難排解以 Windows 為基礎之 Azure 虛擬機器的 Windows 遠端桌面連線](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
 [疑難排解存取在 Azure 虛擬機器上執行的應用程式](virtual-machines-troubleshoot-access-application.md)
+
 

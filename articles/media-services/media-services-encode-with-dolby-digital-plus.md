@@ -18,7 +18,7 @@
 
 #使用 Dolby Digital Plus 將您的媒體編碼
 
-Azure Media Encoder 支援 **Dolby ® Digital Plus** 編碼方式。 Dolby® Digital Plus (或稱為增強式 AC-3，E-AC-3) 是專為不斷演進的媒體而設計的先進環繞聲音訊轉碼器。 從家用劇院、電腦到行動電話和線上串流，Dolby Digital Plus 代表了高逼真度音效。 您可以從所有娛樂項目體驗到著名的杜比劇院效果。 Dolby Digital Plus 以核心杜比數位技術為基礎，這是電影院、廣播和家庭劇院環繞聲的確立標準。 隨著行動裝置日漸普及，Dolby Digital Plus 也逐漸成為行動娛樂的標準。 其先進的音訊增強新技術可提供更佳的音效品質，外帶節省頻寬。 即使在頻寬受限的情況下，您仍可獲得優質內容，同時減少中斷。
+Azure Media Encoder 支援 **Dolby® Digital Plus** 編碼方式。 Dolby® Digital Plus (或稱為增強式 AC-3，E-AC-3) 是專為不斷演進的媒體而設計的先進環繞聲音訊轉碼器。 從家用劇院、電腦到行動電話和線上串流，Dolby Digital Plus 代表了高逼真度音效。 您可以從所有娛樂項目體驗到著名的杜比劇院效果。 Dolby Digital Plus 以核心杜比數位技術為基礎，這是電影院、廣播和家庭劇院環繞聲的確立標準。 隨著行動裝置日漸普及，Dolby Digital Plus 也逐漸成為行動娛樂的標準。 其先進的音訊增強新技術可提供更佳的音效品質，外帶節省頻寬。 即使在頻寬受限的情況下，您仍可獲得優質內容，同時減少中斷。
 
 
 ##設定 Azure Media Encoder 以 Dolby Digital Plus 進行編碼
@@ -38,7 +38,7 @@ Azure Media Encoder 支援 Dolby Digital Plus。 若要取得參考 **Azure Medi
         configuration,
         _clearConfig);
 
-本主題說明配置編碼器設定的數個 XML 預設範例。 用來設定 Dolby Digital Plus 編碼的項目是 [<DolbyDigitalPlusAudioProfile>](https://msdn.microsoft.com/library/azure/dn296500.aspx) 此時會顯示為子節點的 <AudioProfile> Azure Media Encoder XML 預設中的項目。 此 XML 元素包含多個屬性，可以控制編碼的各種元素。
+本主題說明配置編碼器設定的數個 XML 預設範例。 用來設定 Dolby Digital Plus 編碼的項目是 [<DolbyDigitalPlusAudioProfile>](https://msdn.microsoft.com/library/azure/dn296500.aspx) 此時會顯示為子節點 <AudioProfile> Azure Media Encoder XML 預設中的項目。 此 XML 元素包含多個屬性，可以控制編碼的各種元素。
 
 ##編碼為 Dolby Digital Plus 5.1 Multichannel
 
@@ -592,19 +592,19 @@ Auch die Eigenschaften <LoudnessMetering> 只能在指定項目 <DolbyDigitalPlu
 此屬性決定音量計量模式。 允許的值包括：
 
  
-**ITU_R_BS_1770_2_DI** (預設)-表示 ITU-R BS.1770-2 plus Dialogue Intelligence
+**ITU_R_BS_1770_2_DI** （預設）-表示 ITU-R BS.1770-2 plus Dialogue Intelligence
 
 **ITU_R_BS_1770_1_DI** -表示 ITU-R BS.1770-1 plus Dialogue Intelligence
 
 **ITU_R_BS_1770_2** -表示 ITU-R BS.1770-2
 
-**LEQA_DI** -表示 leq (a) plus Dialogue Intelligence
+**LEQA_DI** -表示 leq （a) plus Dialogue Intelligence
 
 **注意：**
 
 * * EBU R128 * * 模式可透過 **ITU_R_BS_1770_2_DI**
 
- **Leq (a)** 純粹為考量舊版，並只能用於特定的舊版工作流程
+ **Leq （a)** 純粹為考量舊版，並只能用於特定的舊版工作流程
 
  **ITU** 最近發行了名為 BS.1770-3，這相當於同時將 TruePeakDCBlock 及 TruePeakEmphasis 設為 false 的 BS.1770-2 更新
 
@@ -640,9 +640,9 @@ Auch die Eigenschaften <LoudnessMetering> 只能在指定項目 <DolbyDigitalPlu
 
 **DialogNormalization** -DialNorm 的值，以分貝為單位，以測量輸入音訊，會嵌入至輸出 DD + 串流，範圍從 {-31，-30，…，-1} dB。
 
-**IntegratedLoudness** -整合音量由 DPLM 測量，範圍從-70 到 + 10 LKFS/dBFS (僅為使用模式設為 LEQA_DI 時才)。
+**IntegratedLoudness** -整合音量由 DPLM 測量，範圍從-70 到 + 10 LKFS/dBFS （僅為使用模式設為 LEQA_DI 時才）。
 
-**IntegratedLoudnessGatingMethod** -有效值為: 0 – 無 / 閘; 1 – 語音閘; 2 – 使用等級閘。
+**IntegratedLoudnessGatingMethod** -有效值為 ︰ 0 – 無 / 閘; 1 – 語音閘; 2 – 使用等級閘。
 
 **IntegratedLoudnessSpeechPercentage** -此結果包含偵測到語音之輸入的媒體時間軸的百分比。 值的範圍從 0% 到 100%。
 
@@ -658,4 +658,5 @@ Auch die Eigenschaften <LoudnessMetering> 只能在指定項目 <DolbyDigitalPlu
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

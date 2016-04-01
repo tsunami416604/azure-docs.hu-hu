@@ -23,7 +23,7 @@
 
 Azure HDInsight 在 Azure Blob 儲存體上提供了全功能的 Hadoop 分散式檔案系統 (HDFS)。 此儲存體是設計為 HDFS 的延伸，以便為使用者提供流暢的體驗。 此儲存體可讓 Hadoop 生態系統中的完整元件集直接在它管理的資料上運作。 Azure Blob 儲存體和 HDFS 是不同的檔案系統，但經過最佳化後，都非常適合儲存資料以及計算儲存的資料。 使用 Azure Blob 儲存體的優點的相關資訊，請參閱 [搭配 HDInsight 使用 Azure Blob 儲存體][hdinsight-storage]。
 
-**先決條件**
+**必要條件**
 
 開始進行之前，請注意下列需求：
 
@@ -94,11 +94,11 @@ Azure CLI 是可讓您管理 Azure 服務的跨平台工具。 使用以下步�
 
             azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
 
-> [AZURE.NOTE] 如果您將一律使用相同的儲存體帳戶，您可以設定下列環境變數，而不是指定之帳戶與金鑰]，為每個命令:
+> [AZURE.NOTE] 如果您將一律使用相同的儲存體帳戶，您可以設定下列環境變數，而不是指定之帳戶與金鑰]，為每個命令 ︰
 >
-> * **AZURE\_STORAGE\_ACCOUNT**: 儲存體帳戶名稱
+> * **AZURE\_STORAGE\_ACCOUNT**︰ 儲存體帳戶名稱
 >
-> * **AZURE\_STORAGE\_ACCESS\_KEY**: 儲存體帳戶金鑰
+> * **AZURE\_STORAGE\_ACCESS\_KEY**︰ 儲存體帳戶金鑰
 
 ###<a id="powershell"></a>Azure PowerShell
 
@@ -154,7 +154,7 @@ Hadoop 命令列僅適用於當資料已存在於叢集前端節點時，將資�
 
 * **Windows 型 HDInsight**: [使用遠端桌面連線](hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp)
 
-* **Linux 型 HDInsight**: 使用 SSH 進行連線 ([SSH 命令](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster) 或 [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster))
+* **Linux 型 HDInsight**︰ 使用 SSH 進行連線 ([SSH 命令](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster) 或 [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster))
 
 連線之後，您就可以使用下列語法來將檔案上傳到儲存體。
 
@@ -189,7 +189,7 @@ Hadoop 命令列僅適用於當資料已存在於叢集前端節點時，將資�
 
 *Azure 儲存體總管* 是有用的工具，以檢查及更改 blob 中的資料。 它是免費、 開放原始碼工具，您可以從下載 [http://storageexplorer.com/](http://storageexplorer.com/)。 原始碼亦可從此連結取得。
 
-使用此工具之前，必須先知道您的 Azure 儲存體帳戶名稱和帳戶金鑰。 如需關於取得此資訊的指示，請參閱 「 如何: 檢視、 複製和重新產生儲存體存取金鑰 」 一節 [建立、 管理或刪除儲存體帳戶][azure-create-storage-account]。  
+使用此工具之前，必須先知道您的 Azure 儲存體帳戶名稱和帳戶金鑰。 如需關於取得此資訊的指示，請參閱 「 如何 ︰ 檢視、 複製和重新產生儲存體存取金鑰 」 一節 [建立、 管理或刪除儲存體帳戶][azure-create-storage-account]。  
 
 1. 執行 Azure 儲存體總管。 如果這是您有第一次執行儲存體總管，系統會提示您 ___儲存體帳戶名稱__ 和 __儲存體帳戶金鑰__。 如果您有執行它之前，使用 __新增__ 按鈕來加入新的儲存體帳戶名稱和金鑰。
 
@@ -284,4 +284,5 @@ Azure Blob 儲存體也可以使用 Azure SDK，透過下列程式設計語言�
 [image-azure-storage-explorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
+
 

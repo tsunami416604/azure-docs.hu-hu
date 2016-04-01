@@ -63,11 +63,11 @@
                  switch off the mode (command 'c') and change display units to
                  sectors (command 'u').
 
-- 按 'n' 出現提示時建立 **n**磁碟分割:
+- 按 'n' 出現提示時建立 **n**磁碟分割 ︰
 
         Command (m for help): n
 
-- 接著，請按 'p' 以建立 **p**磁碟分割:
+- 接著，請按 'p' 以建立 **p**磁碟分割 ︰
 
         Command action
             e   extended
@@ -130,7 +130,7 @@
 
 ## 將新的檔案系統新增至 /etc/fstab
 
-**注意:** 不當編輯 / /etc/fstab 檔案會導致系統無法開機。 如果不確定，請參閱散發套件的文件，以取得如何適當編輯此檔案的相關資訊。 在編輯之前，也建議先備份 /etc/fstab 檔案。
+**注意 ︰** 不當編輯 / /etc/fstab 檔案會導致系統無法開機。 如果不確定，請參閱散發套件的文件，以取得如何適當編輯此檔案的相關資訊。 在編輯之前，也建議先備份 /etc/fstab 檔案。
 
 1. 建立新檔案系統所需的掛接點，例如：
 
@@ -181,3 +181,4 @@
     請參閱散發套件的文件，以取得如何正確編輯核心參數的相關資訊。 例如，在許多散發套件 (CentOS、Oracle Linux、SLES 11) 中，可手動將這些參數加入至 "`/boot/grub/menu.lst`" 檔案。  在 Ubuntu 上，可將此參數加入至 "/etc/default/grub" 上的 `GRUB_CMDLINE_LINUX_DEFAULT` 變數。
 
  
+

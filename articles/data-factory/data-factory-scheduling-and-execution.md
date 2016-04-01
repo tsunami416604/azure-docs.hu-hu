@@ -18,7 +18,7 @@
 
 # 使用 Data Factory 進行排程和執行
   
-本文說明 Azure Data Factory 應用程式模型的排程和執行層面。 這篇文章是根據 [建立管線](data-factory-create-pipelines.md) 和 [建立資料集](data-factory-create-datasets.md) 文件，並假設您已了解基本的資料處理站應用程式模型概念: 活動、 管線、 連結的服務和資料集。
+本文說明 Azure Data Factory 應用程式模型的排程和執行層面。 這篇文章是根據 [建立管線](data-factory-create-pipelines.md) 和 [建立資料集](data-factory-create-datasets.md) 文件，並假設您已了解基本的資料處理站應用程式模型概念 ︰ 活動、 管線、 連結的服務和資料集。
 
 ## 排程活動
 
@@ -41,7 +41,7 @@
 
 時間序列資料是連續順序的資料點，通常包含一段時間間隔的後續度量。 時間序列資料的常見範例包括感應器資料、應用程式遙測資料等。
 
-使用 Azure Data Factory，您可以批次方式使用活動執行處理時間序列資料。 通常有週期性節奏，在該節奏下，輸入資料抵達以及產生需要的輸出資料。 這個節奏由指定模型化 **可用性** 區段的資料集，如下所示:
+使用 Azure Data Factory，您可以批次方式使用活動執行處理時間序列資料。 通常有週期性節奏，在該節奏下，輸入資料抵達以及產生需要的輸出資料。 這個節奏由指定模型化 **可用性** 區段的資料集，如下所示 ︰
 
     "availability": {
       "frequency": "Hour",
@@ -205,7 +205,7 @@
         10002345,347,15,2015-01-01 08:24:00.6570000
         10991568,2,7,2015-01-01 08:56:34.5300000
 
-    **注意:** <Guid> 會取代實際的 guid。 範例檔案名稱：Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
+    **注意：** <Guid> 將會取代實際的 guid。 範例檔案名稱：Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
 2.  檔案 mypath/2015年/1/1/9/Data。<Guid>使用資料.txt:
 
         10002345,334,1,2015-01-01 09:13:00.3900000
@@ -518,7 +518,7 @@ Hive 活動接受 2 個輸入，並且每日產生輸出配量。 您可以針�
 
 變數名稱 | 說明 | 物件範圍 | JSON 範圍和使用案例
 ------------- | ----------- | ------------ | ------------------------
-WindowStart | 目前活動執行時段的時間間隔開始 | 活動 | <ol><li>指定資料選取範圍查詢。 請參閱所參照的連接器文章 [資料移動活動](data-factory-data-movement-activities.md) 文章。</li><li>傳遞參數給 Hive 指令碼 (如上所示的範例)。</li>
+WindowStart | 目前活動執行時段的時間間隔開始 | 活動 | <ol><li>指定資料選取範圍查詢。 請參閱所參照的連接器文章 [資料移動活動](data-factory-data-movement-activities.md) 文件。</li><li>傳遞參數給 Hive 指令碼 （如上所示的範例）。</li>
 WindowEnd | 目前活動執行時段的時間間隔結束 | 活動 | 同上
 SliceStart | 產生資料配量的時間間隔開始的 | 活動<br/>資料集 | <ol><li>指定動態資料夾路徑和檔案名稱時使用 [Azure Blob](data-factory-azure-blob-connector.md) 和 [檔案系統資料集](data-factory-onprem-file-system-connector.md)。</li><li>使用 data factory 函式在活動輸入集合中指定輸入相依性。</li></ol>
 SliceEnd | 所產生之目前資料配量的時間間隔結束 | 活動<br/>資料集 | 同上。 
@@ -531,7 +531,7 @@ SliceEnd | 所產生之目前資料配量的時間間隔結束 | 活動<br/>資�
 
 1.  指定資料選取範圍查詢 (請參閱參考的連接器文章 [資料移動活動](data-factory-data-movement-activities.md) 文件。
 
-    叫用 data factory 函式的語法是: **$$<function>** 資料選取範圍查詢和其他屬性中的活動和資料集。  
+    叫用 data factory 函式的語法是 ︰ **$$<function>** 資料選取範圍查詢和其他屬性中的活動和資料集。  
 2. 使用 Data Factory 函式在活動輸入集合中指定輸入相依性 (請參閱上述範例)。
 
     指定輸入相依性運算式不需要 $$。   
@@ -543,27 +543,27 @@ SliceEnd | 所產生之目前資料配量的時間間隔結束 | 活動<br/>資�
         "sqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartTime = \\'{0:yyyyMMdd-HH}\\'', WindowStart)"
     }
 
-### 函式
+### Functions
 
 下表列出 Azure Data Factory 中的所有函式：
 
 類別 | 函式 | 參數 | 說明
 -------- | -------- | ---------- | ----------- 
-時間 | AddHours(X,Y) | X：DateTime <p>Y:int</p> | 將 Y 小時加入至指定的時間 X。 <p>範例: 9/5/2013年 12:00:00 PM + 2 小時 = 9/5/2013年 2:00:00 PM</p>
-時間 | AddMinutes(X,Y) | X：DateTime <p>Y:int</p> | 將 Y 分鐘加入至 X。<p>範例: 9/15/2013年 12: 00:00 PM + 15 分鐘 = 9/15/2013年 12: 15:00 PM</p>
-時間 | StartOfHour(X) | X：Datetime | 取得 X 的小時元件所代表之小時的開始時間。 <p>範例: StartOfHour 9/15/2013年 05: 10:23 PM 是 9/15/2013年 05: 00:00 PM</p>
-Date | AddDays(X,Y) | X：DateTime<p>Y:int</p> | 將 Y 天加入至 X。<p>範例: 9/15/2013年 12:00:00 PM + 2 天 = 9/17/2013年 12:00:00 PM</p>
-Date | AddMonths(X,Y) | X：DateTime<p>Y:int</p> | 將 Y 月數加入至 X。<p>範例: 9/15/2013年 12:00:00 PM + 1 個月 = 10/15/2013年 12:00:00 PM</p> 
-Date | AddQuarters(X,Y) | X：DateTime <p>Y:int</p> | 將 Y * 3 個月的時間 X。<p>範例: 9/15/2013年 12:00:00 PM + 1 季 = 12/15/2013年 12:00:00 PM</p>
-Date | AddWeeks(X,Y) | X：DateTime<p>Y:int</p> | 將 Y * 7 天，為 X<p>範例: 9/15/2013年 12:00:00 PM + 1 週 = 9/22/2013年 12:00:00 PM</p>
-Date | AddYears(X,Y) | X：DateTime<p>Y:int</p> | 將 Y 年加入至 X。<p>範例: 9/15/2013年 12:00:00 PM + 1 年 = 9/15/2014年 12:00:00 PM</p>
-Date | Day(X) | X：DateTime | 取得 X 的日元件。<p>範例: 一天的 9/15/2013年 12:00:00 PM 是 9。 </p>
-Date | DayOfWeek(X) | X：DateTime | 取得 X 的星期幾元件的日期。<p>範例: DayOfWeek 9/15/2013年 12:00:00 PM 是星期日。</p>
-Date | DayOfYear(X) | X：DateTime | 取得由 X 的年元件代表年中的日期。<p>範例：<br/>2015 年 12 月 1 日: 2015年的第 335 天<br/>2015 年 12 月 31 日: 2015年的第 365 天<br/>12/31/2016年: 2016 年 (閏年) 的第 366 天</p>
-Date | DaysInMonth(X) | X：DateTime | 取得參數 X 的月份元件所代表的當月天數。<p>範例: 9/15/2013年的 DaysInMonth 是 30，因為 9 月份有 30 天。</p>
-Date | EndOfDay(X) | X：DateTime | 取得代表 X 的日期 (日期元件) 結束的日期時間。<p>範例: EndOfDay 9/15/2013年 05:10:23 PM 是 9/15/2013年 11:59:59 PM。</p>
-Date | EndOfMonth(X) | X：DateTime | 取得參數 X 的月份元件所代表的當月結尾。 <p>範例: EndOfMonth 9/15/2013年 05:10:23 PM 是 9/30/2013年 11:59:59 PM (代表 9 月份的結束日期時間)</p>
-Date | StartOfDay(X) | X：DateTime | 取得參數 X 的日期元件所代表的當天開頭。<p>範例: StartOfDay 9/15/2013年 05:10:23 PM 是 9/15/2013年 12:00:00 AM。</p>
+時間 | AddHours(X,Y) | X：DateTime <p>Y:int</p> | 將 Y 小時加入至指定的時間 X。 <p>範例 ︰ 9/5/2013年 12:00:00 PM + 2 小時 = 9/5/2013年 2:00:00 PM</p>
+時間 | AddMinutes(X,Y) | X：DateTime <p>Y:int</p> | 將 Y 分鐘加入至 X。<p>範例 ︰ 9/15/2013年 12: 00:00 PM + 15 分鐘 = 9/15/2013年 12: 15:00 PM</p>
+時間 | StartOfHour(X) | X：Datetime | 取得 X 的小時元件所代表之小時的開始時間。 <p>範例 ︰ StartOfHour 9/15/2013年 05: 10:23 PM 是 9/15/2013年 05: 00:00 PM</p>
+Date | AddDays(X,Y) | X：DateTime<p>Y:int</p> | 將 Y 天加入至 X。<p>範例 ︰ 9/15/2013年 12:00:00 PM + 2 天 = 9/17/2013年 12:00:00 PM</p>
+Date | AddMonths(X,Y) | X：DateTime<p>Y:int</p> | 將 Y 月數加入至 X。<p>範例 ︰ 9/15/2013年 12:00:00 PM + 1 個月 = 10/15/2013年 12:00:00 PM</p> 
+Date | AddQuarters(X,Y) | X：DateTime <p>Y:int</p> | 將 Y * 3 個月的時間 X。<p>範例 ︰ 9/15/2013年 12:00:00 PM + 1 季 = 12/15/2013年 12:00:00 PM</p>
+Date | AddWeeks(X,Y) | X：DateTime<p>Y:int</p> | 將 Y * 7 天，為 X<p>範例 ︰ 9/15/2013年 12:00:00 PM + 1 週 = 9/22/2013年 12:00:00 PM</p>
+Date | AddYears(X,Y) | X：DateTime<p>Y:int</p> | 將 Y 年加入至 X。<p>範例 ︰ 9/15/2013年 12:00:00 PM + 1 年 = 9/15/2014年 12:00:00 PM</p>
+Date | Day(X) | X：DateTime | 取得 X 的日元件。<p>範例 ︰ 一天的 9/15/2013年 12:00:00 PM 是 9。 </p>
+Date | DayOfWeek(X) | X：DateTime | 取得 X 的星期幾元件的日期。<p>範例 ︰ DayOfWeek 9/15/2013年 12:00:00 PM 是星期日。</p>
+Date | DayOfYear(X) | X：DateTime | 取得由 X 的年元件代表年中的日期。<p>範例：<br/>2015 年 12 月 1 日 ︰ 2015年的第 335 天<br/>2015 年 12 月 31 日 ︰ 2015年的第 365 天<br/>12/31/2016年: 2016 年 （閏年） 的第 366 天</p>
+Date | DaysInMonth(X) | X：DateTime | 取得參數 X 的月份元件所代表的當月天數。<p>範例 ︰ 9/15/2013年的 DaysInMonth 是 30，因為 9 月份有 30 天。</p>
+Date | EndOfDay(X) | X：DateTime | 取得代表 X 的日期 （日期元件） 結束的日期時間。<p>範例 ︰ EndOfDay 9/15/2013年 05:10:23 PM 是 9/15/2013年 11:59:59 PM。</p>
+Date | EndOfMonth(X) | X：DateTime | 取得參數 X 的月份元件所代表的當月結尾。 <p>範例 ︰ EndOfMonth 9/15/2013年 05:10:23 PM 是 9/30/2013年 11:59:59 PM （代表 9 月份的結束日期時間）</p>
+Date | StartOfDay(X) | X：DateTime | 取得參數 X 的日期元件所代表的當天開頭。<p>範例 ︰ StartOfDay 9/15/2013年 05:10:23 PM 是 9/15/2013年 12:00:00 AM。</p>
 DateTime | From(X) | X：字串 | 將字串 X 剖析為日期時間。
 DateTime | Ticks(X) | X：DateTime | 取得參數 X 的刻度屬性。一個刻度等於 100 奈秒。 這個屬性的值代表從 0001 年 1 月 1 日午夜 12:00:00 經過的刻度數。 
 文字 | Format(X) | X：字串變數 | 格式化文字。
@@ -577,7 +577,7 @@ DateTime | Ticks(X) | X：DateTime | 取得參數 X 的刻度屬性。一個刻�
         "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
     }
 
-> [AZURE.NOTE] 使用另一個函式內的函數時，您不需要使用 **$$** 內部函式的前置詞。 例如: $$Text.Format (PartitionKey eq \\'my_pkey_filter_value\\'，RowKey ge \\'{0:yyyy-MM-dd hh: mm:} \\ '，Time.AddHours (SliceStart，-6))。 在此範例中，請注意， **$$** 前置詞不能用於 **Time.AddHours** 函式。 
+> [AZURE.NOTE] 使用另一個函式內的函數時，您不需要使用 **$$** 內部函式的前置詞。 例如 ︰ $$Text.Format (PartitionKey eq \\'my_pkey_filter_value\\'，RowKey ge \\'{0:yyyy-MM-dd hh: mm:} \\ '，Time.AddHours (SliceStart，-6))。 在此範例中，請注意， **$$** 前置詞不能用於 **Time.AddHours** 函式。 
   
 
 ## 資料相依性的深入探討
@@ -677,6 +677,7 @@ Data factory 中的資料配量的各種狀態涵蓋 [監視和管理這些管�
       
 
   
+
 
 
 

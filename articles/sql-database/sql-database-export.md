@@ -36,8 +36,8 @@ BACPAC 會匯出至 Azure 儲存體 Blob 容器，以供您在作業順利完成
 
 若要完成本文，您需要下列項目：
 
-- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
-- Azure SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟: [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
+- Azure 訂閱。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
+- Azure SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟 ︰ [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
 -  [Azure 儲存體帳戶](storage-create-storage-account.md) 與 blob 容器來儲存 BACPAC。 目前的儲存體帳戶必須使用傳統部署模型選擇這樣做的話 **傳統** 時建立儲存體帳戶。 
 
 
@@ -51,13 +51,13 @@ BACPAC 會匯出至 Azure 儲存體 Blob 容器，以供您在作業順利完成
 2.  按一下 [ **全部瀏覽**。
 3.  按一下 [ **SQL 資料庫**。
 2.  按一下您想要匯出為 BACPAC 的資料庫。
-3.  在 [SQL Database] 分頁中按一下 [ **匯出** 開啟 **匯出資料庫** 刀鋒視窗中:
+3.  在 [SQL Database] 分頁中按一下 [ **匯出** 開啟 **匯出資料庫** 刀鋒視窗中 ︰
 
-    ![匯出] 按鈕][] 1
+    ![匯出按鈕][1]
 
-1.  按一下 [ **儲存體** ，然後選取要儲存 BACPAC 儲存體帳戶和 blob 容器:
+1.  按一下 [ **儲存體** ，然後選取要儲存 BACPAC 儲存體帳戶和 blob 容器 ︰
 
-    ![匯出資料庫][] 2
+    ![匯出資料庫][2]
 
 1.  輸入 **伺服器管理員登入** 和 **密碼** 包含您要匯出之資料庫的 Azure SQL server。
 1.  按一下 [ **建立** 匯出資料庫。
@@ -71,17 +71,17 @@ BACPAC 會匯出至 Azure 儲存體 Blob 容器，以供您在作業順利完成
 2.  按一下包含您剛才匯出的原始 (來源) 資料庫的伺服器。
 3.  在 [SQL server] 刀鋒視窗中按一下 [ **匯入/匯出記錄**:
 
-    ![匯入匯出記錄][] 3
-    ![匯入匯出記錄][] 4
+    ![匯入匯出記錄][3]
+    ![匯入匯出記錄][4]
 
 ## 確認 BACPAC 位於儲存體容器中
 
 2.  按一下 [ **全部瀏覽**。
-3.  按一下 [ **儲存體帳戶 (傳統)**。
+3.  按一下 [ **儲存體帳戶 （傳統）**。
 2.  按一下您用來儲存 BACPAC 的儲存體帳戶。
-3.  按一下 [ **容器** ，然後選取 [匯出到資料庫，如需詳細資訊 (您可以下載並儲存從這裡 BACPAC) 的容器。
+3.  按一下 [ **容器** ，然後選取 [匯出到資料庫，如需詳細資訊 （您可以下載並儲存從這裡 BACPAC） 的容器。
 
-    ![.bacpac 檔案詳細資料][] 5  
+    ![.bacpac 檔案詳細資料][5]  
 
 
 ## 後續步驟
@@ -103,4 +103,5 @@ BACPAC 會匯出至 Azure 儲存體 Blob 容器，以供您在作業順利完成
 [3]: ./media/sql-database-export/export-history.png
 [4]: ./media/sql-database-export/export-status.png
 [5]: ./media/sql-database-export/bacpac-details.png
+
 

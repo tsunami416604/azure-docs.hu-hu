@@ -27,9 +27,9 @@
 
 藉由新增應用程式雲端服務中的實作追蹤 [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) ，應用程式設定，並且在應用程式程式碼進行將 System.Diagnostics.Trace 或 System.Diagnostics.Debug 的呼叫。 使用組態檔 *app.config* 背景工作角色和 *web.config* web 角色。 使用 Visual Studio 範本建立新的託管服務時，Azure 診斷會自動加入至專案，並且 DiagnosticMonitorTraceListener 會加入至您所加入角色的適當組態檔。
 
-如需放置追蹤陳述式，請參閱 [How to: 將追蹤陳述式加入應用程式程式碼](https://msdn.microsoft.com/library/zd83saa2.aspx)。
+如需放置追蹤陳述式，請參閱 [How to ︰ 將追蹤陳述式加入應用程式程式碼](https://msdn.microsoft.com/library/zd83saa2.aspx)。
 
-藉由放置 [追蹤參數](https://msdn.microsoft.com/library/3at424ac.aspx) 在您的程式碼中，您可以控制是否進行追蹤，而且廣泛程度。 這可讓您監視您的應用程式在生產環境中的狀態。 對於在多部電腦上執行多個元件的商務應用程式來說，這特別重要。 如需詳細資訊，請參閱 [How to: 設定追蹤參數](https://msdn.microsoft.com/library/t06xyy08.aspx)。
+藉由放置 [追蹤參數](https://msdn.microsoft.com/library/3at424ac.aspx) 在您的程式碼中，您可以控制是否進行追蹤，而且廣泛程度。 這可讓您監視您的應用程式在生產環境中的狀態。 對於在多部電腦上執行多個元件的商務應用程式來說，這特別重要。 如需詳細資訊，請參閱 [How to ︰ 設定追蹤參數](https://msdn.microsoft.com/library/t06xyy08.aspx)。
 
 ## 在 Azure 應用程式中設定追蹤接聽程式
 
@@ -73,10 +73,11 @@ Trace、Debug 和 TraceSource，需要您設定「接聽程式」來收集和記
 ### 將追蹤陳述式加入至您的程式碼
 
 1. 開啟您的應用程式的原始程式檔。 例如， <RoleName>背景工作角色或 web 角色的.cs 檔案。
-2. 新增下列 using 陳述式，如果它已經尚未加入:
+2. 加入下列 using 陳述式 (如果尚未加入)：
     ```
         using System.Diagnostics;
     ```
-3. 在您想要用來擷取應用程式狀態資訊的位置加入 Trace 陳述式。 您可以使用各種方法來格式化 Trace 陳述式的輸出。 如需詳細資訊，請參閱 [How to: 將追蹤陳述式加入應用程式程式碼](https://msdn.microsoft.com/library/zd83saa2.aspx)。
+3. 在您想要用來擷取應用程式狀態資訊的位置加入 Trace 陳述式。 您可以使用各種方法來格式化 Trace 陳述式的輸出。 如需詳細資訊，請參閱 [How to ︰ 將追蹤陳述式加入應用程式程式碼](https://msdn.microsoft.com/library/zd83saa2.aspx)。
 4. 儲存原始程式檔。
+
 

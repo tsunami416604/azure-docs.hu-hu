@@ -50,11 +50,11 @@ Ambari 中有數個功能表在沒有 SSH 通道的情況下，會不完整填�
 
 * 可以設定為使用 SOCKS Proxy 的網頁瀏覽器。
 
-* __(選擇性)__: 提供的外掛程式，例如 [FoxyProxy](http://getfoxyproxy.org/,) ，其適用的規則，只將特定的要求，透過通道路由傳送。
+* __（選擇性）__︰ 提供的外掛程式，例如 [FoxyProxy](http://getfoxyproxy.org/,) ，其適用的規則，只將特定的要求，透過通道路由傳送。
 
     > [AZURE.WARNING] 而不需要例如 FoxyProxy 外掛程式，透過瀏覽器所做的所有要求可能會透過通道路由都傳送。 這會導致瀏覽器中的網頁載入速度較慢。
 
-##<a name="usessh"></a>建立通道，使用 SSH 命令
+##<a name="usessh"></a>使用 SSH 命令建立通道
 
 使用下列命令，利用 `ssh` 命令建立 SSH 通道。 取代 __USERNAME__ 取代為您的 HDInsight 叢集和取代為 SSH 使用者 __CLUSTERNAME__ 與您的 HDInsight 叢集名稱
 
@@ -68,7 +68,7 @@ Ambari 中有數個功能表在沒有 SSH 通道的情況下，會不完整填�
 
 * **2** -強制 SSH 通訊協定第 2 版只嘗試。
 
-* **問:** -無訊息模式。
+* **問 ︰** -無訊息模式。
 
 * **T** -停用虛擬 tty 配置，因為我們只轉送連接埠。
 
@@ -82,7 +82,7 @@ Ambari 中有數個功能表在沒有 SSH 通道的情況下，會不完整填�
 
 在命令完成後，傳送至本機電腦上連接埠 9876 的流量將透過安全通訊端層 (SSL) 路由傳送至叢集前端節點，看起來就像是在該處產生。
 
-##<a name="useputty"></a>建立通道，使用 PuTTY
+##<a name="useputty"></a>使用 PuTTY 建立通道
 
 使用下列步驟，利用 PuTTY 建立 SSH 通道。
 
@@ -90,7 +90,7 @@ Ambari 中有數個功能表在沒有 SSH 通道的情況下，會不完整填�
 
 2. 在 **類別** 對話方塊左側的區段中，展開 **連接**, ，展開 **SSH**, ，然後選取 **通道**。
 
-3. 提供下列資訊 **選項控制 SSH 連接埠轉送** 表單:
+3. 提供下列資訊 **選項控制 SSH 連接埠轉送** 表單 ︰
 
     * **來源連接埠** -您想要轉送的用戶端上的連接埠。 例如， **9876**。
 
@@ -98,7 +98,7 @@ Ambari 中有數個功能表在沒有 SSH 通道的情況下，會不完整填�
 
     * **動態** -啟用動態 SOCKS proxy 路由。
 
-    ![通道選項的映像](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
+    ![通道處理選項的影像](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
 
 4. 按一下 [ **新增** 以新增設定，然後按一下 **開啟** 開啟 SSH 連線。
 
@@ -130,7 +130,7 @@ Ambari 中有數個功能表在沒有 SSH 通道的情況下，會不完整填�
 
     ![foxyproxy 一般](./media/hdinsight-linux-ambari-ssh-tunnel/foxygeneral.png)
 
-3. 選取 **Proxy 詳細資料** ] 索引標籤上，並填入下列欄位:
+3. 選取 **Proxy 詳細資料** ] 索引標籤上，並填入下列欄位 ︰
 
     * **主機或 IP 位址** -這是 localhost，因為我們使用的 SSH 通道的本機電腦上。
 
@@ -177,7 +177,7 @@ Ambari 中有數個功能表在沒有 SSH 通道的情況下，會不完整填�
     > [AZURE.NOTE] 如果您有慢速的網際網路連線，或前端節點是非常忙碌，當您選取時，您可能會收到等候指標，而不是功能表 __快速連結__。 若是如此，請等待一兩分鐘，讓系統從伺服器接收資料，然後再次嘗試列出清單。
 
 
-    > [AZURE.TIP] If you have a lower resolution monitor, or your browser window is not maximized, some entries in the __Quick Links__ menu may be cut off by the right side of the screen. If so, expand the menu using your mouse, then use the right arrow key to scroll the screen to the right to see the rest of the menu.
+    > [AZURE.TIP] 如果您有較低解析度的監視器，或瀏覽器視窗不會最大化，在某些項目 __快速連結__ 功能表可能會切掉螢幕右側的。 若是如此，請使用滑鼠展開功能表，然後使用向右鍵來將畫面捲動到右邊，以便看到功能表的其餘部分。
 
 4. 您應該會看到類似如下的頁面：
 
@@ -196,4 +196,5 @@ Ambari 中有數個功能表在沒有 SSH 通道的情況下，會不完整填�
 * [從 Linux、Unix 或 OS X 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 * [從 Windows 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](hdinsight-hadoop-linux-use-ssh-windows.md)
+
 

@@ -22,7 +22,7 @@
 
 若要建立 DevTest 實驗室，您必須：
 
-- Azure 訂用帳戶。 若要深入了解 Azure 購買選項，請參閱 [如何購買 Azure](http://azure.microsoft.com/pricing/purchase-options/) 或 [免費試用一個月](https://azure.microsoft.com/pricing/free-trial/)。 您必須是訂用帳戶的擁有者才能建立實驗室。
+- Azure 訂閱。 若要深入了解 Azure 購買選項，請參閱 [如何購買 Azure](http://azure.microsoft.com/pricing/purchase-options/) 或 [免費試用一個月](https://azure.microsoft.com/pricing/free-trial/)。 您必須是訂用帳戶的擁有者才能建立實驗室。
 - 實驗室的 Azure 資源群組。 請參閱 [Azure 資源管理員概觀](resource-group-overview.md) 和 [管理和稽核資源存取權](./azure-portal/resource-group-rbac.md)。
 
 
@@ -38,7 +38,7 @@
 
     ![加入 DevTest 實驗室](./media/devtest-lab-create-lab/add-lab-button.png)
 
-1. 在 **建立 DevTest 實驗室** 刀鋒視窗中:
+1. 在 **建立 DevTest 實驗室** 刀鋒視窗中 ︰
 
     1. 輸入 **實驗室名稱** 新實驗室。
     1. 選取 **訂閱** 實驗室與相關聯。
@@ -60,4 +60,5 @@
 - [建立自訂的成品，您的 Vm](devtest-lab-artifact-author.md)。
 
 - [將成品 VM 加入 Azure DevTest 實驗室](devtest-lab-add-vm-with-artifacts.md)。
+
 

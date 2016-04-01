@@ -74,10 +74,10 @@
 
 ##後續步驟
 
-* [將驗證新增至您的應用程式 ](app-service-mobile-windows-store-dotnet-get-started-users.md)
-  <br/>了解如何驗證應用程式的身分識別提供者的使用者。
+* [將驗證加入您的應用程式 ](app-service-mobile-windows-store-dotnet-get-started-users.md)
+  <br/>了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
-* [將推播通知新增至您的應用程式](app-service-mobile-windows-store-dotnet-get-started-push.md)
+* [將推播通知新增至應用程式](app-service-mobile-windows-store-dotnet-get-started-push.md)
   <br/>了解如何將非常基本的推播通知傳送至您的應用程式。
 
 <!-- Anchors. -->
@@ -86,4 +86,5 @@
 [Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+
 

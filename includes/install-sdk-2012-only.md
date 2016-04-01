@@ -6,7 +6,7 @@
 
     - [Azure SDK for Visual Studio 2012][]
 
-    **注意:** 根據其中有多少 SDK 相依性，您已經在您的電腦，安裝 SDK 可能需要較長的時間，從數分鐘到半小時以上。
+    **注意 ︰** 根據其中有多少 SDK 相依性，您已經在您的電腦，安裝 SDK 可能需要較長的時間，從數分鐘到半小時以上。
 
 2. 當系統會提示您執行或儲存安裝可執行檔，按一下 [ **執行**。
 
@@ -18,4 +18,5 @@
 
 [Azure SDK for Visual Studio 2012]: http://go.microsoft.com/fwlink/?LinkID=324323
 [WebPIAzureSdk]: ./media/install-sdk-2012-only/WebPI46-2012.png
+
 

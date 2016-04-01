@@ -5,7 +5,7 @@
    <th align="left" valign="middle">上限 </th>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="../virtual-network/virtual-networks-overview.md">虛擬網路</a><sup>1</sup> (每一訂用帳戶)</p></td>
+   <td valign="middle"><p><a href="../virtual-network/virtual-networks-overview.md">虛擬網路</a><sup>1</sup> 每個訂閱</p></td>
    <td valign="middle"><p>每個區域 50 個</td>
    <td valign="middle"><p>每個區域的 500<sup>1</sup></p></td>
 
@@ -59,9 +59,10 @@
 <tr>
    <td valign="middle"><p>每一訂用帳戶的網路介面</p></td>
    <td valign="middle"><p>每個區域 300 個</p></td>
-   <td valign="middle"><p>每個區域的 1000<sup>1</sup></p></td>
+   <td valign="middle"><p>每個區域的 1000年<sup>1</sup></p></td>
 </tr>
 </table>
 
-<sup>1</sup>可以透過聯絡支援人員來提高限制。
+<sup>1</sup>您可以連絡支援人員來提高限制。
+
 

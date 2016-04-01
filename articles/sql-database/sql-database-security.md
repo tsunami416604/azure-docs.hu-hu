@@ -29,7 +29,7 @@
 
 伺服器和資料庫兩者都可使用防火牆規則，拒絕來自未明確設為允許清單的 IP 位址的連線嘗試。 若要允許應用程式或用戶端機器的公用 IP 位址，嘗試連線至新的資料庫，您必須先使用 Azure 傳統入口網站、REST API 或 PowerShell 建立伺服器層級的防火牆規則。 最好的作法是，您應該盡可能限制允許穿透您伺服器防火牆的 IP 位址範圍。 如需詳細資訊，請參閱 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/ee621782)。
 
-Azure SQL Database 的所有連線，也就是任何時候只要資料需要「傳輸」進出資料庫時，都需要加密 (SSL/TLS)。 在您的應用程式連接字串中，您必須指定參數來加密連接和 *不* 信任伺服器憑證 (這為了如果您將連接字串複製出去 Azure 傳統入口網站)，否則連線將不會驗證伺服器的身分識別，也可能會遭受到 「--攔截 」 攻擊。 例如對於 ADO.NET 驅動程式，這些連接字串參數是 **Encrypt = True** 和 **TrustServerCertificate = False**。 如需詳細資訊，請參閱 [Azure SQL Database 連線加密和憑證驗證](https://msdn.microsoft.com/library/azure/ff394108#encryption)。
+Azure SQL Database 的所有連線，也就是任何時候只要資料需要「傳輸」進出資料庫時，都需要加密 (SSL/TLS)。 在您的應用程式連接字串中，您必須指定參數來加密連接和 *不* 信任伺服器憑證 （這為了如果您將連接字串複製出去 Azure 傳統入口網站），否則連線將不會驗證伺服器的身分識別，也可能會遭受到 「--攔截 」 攻擊。 例如對於 ADO.NET 驅動程式，這些連接字串參數是 **Encrypt = True** 和 **TrustServerCertificate = False**。 如需詳細資訊，請參閱 [Azure SQL Database 連線加密和憑證驗證](https://msdn.microsoft.com/library/azure/ff394108#encryption)。
 
 
 ## 驗證
@@ -96,7 +96,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 * [資料格層級加密](https://msdn.microsoft.com/library/ms179331.aspx) 若要使用不同的加密金鑰加密特定的資料行或甚至是資料格的資料。
 * 如果您需要硬體安全性模組或集中管理您的加密金鑰階層，請考慮使用 [與 Azure VM 中的 SQL Server 的 Azure 金鑰保存庫](http://blogs.technet.com/b/kv/archive/2015/01/12/using-the-key-vault-for-sql-server-encryption.aspx)。
-* [一律加密](https://msdn.microsoft.com/library/mt163865.aspx) (預覽版) 可以讓加密的應用程式，並允許用戶端應用程式內的機密資料加密而不需共用與 SQL 資料庫的加密金鑰的用戶端。
+* [一律加密](https://msdn.microsoft.com/library/mt163865.aspx) （預覽版） 可以讓加密的應用程式，並允許用戶端應用程式內的機密資料加密而不需共用與 SQL 資料庫的加密金鑰的用戶端。
 
 ## 稽核
 
@@ -105,4 +105,5 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ## 法規遵循
 
 除了上述可協助您的應用程式符合各種安全法規需求的特色和功能之外，Azure SQL Database 也定期參與稽核，並且經過認證符合許多法規標準。 如需詳細資訊，請參閱 [Microsoft Azure 信任中心](http://azure.microsoft.com/support/trust-center/), ，您可以找到最新的清單，其中 [SQL Database 法規認證](http://azure.microsoft.com/support/trust-center/services/)。
+
 

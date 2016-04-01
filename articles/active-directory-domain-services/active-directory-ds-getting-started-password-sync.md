@@ -16,7 +16,7 @@
     ms.date="11/09/2015"
     ms.author="maheshu"/>
 
-# Azure AD 網域服務 *(預覽)* -快速入門
+# Azure AD 網域服務 *（預覽）* -快速入門
 
 ## 步驟 5：啟用密碼同步處理
 一旦您已針對 Azure AD 租用戶啟用 Azure AD 網域服務之後，下一個步驟就是啟用密碼的同步處理。 這讓使用者能夠使用他們的公司認證來登入網域。
@@ -50,9 +50,9 @@
 
 **[下載 Azure AD Connect](http://www.microsoft.com/download/details.aspx?id=47594)**
 
-最低的建議版本: **1.0.9125** -2015 年 11 月 3 日發行。
+最低的建議版本 ︰ **1.0.9125** -2015 年 11 月 3 日發行。
 
-  > [AZURE.WARNING] 若要讓舊的密碼認證 (NTLM 和 Kerberos 驗證所需) 同步處理至 Azure AD 租用戶，您必須安裝最新的 Azure AD Connect 建議的版本。 此功能無法在舊版的 Azure AD Connect 中使用，或與舊版 DirSync 工具搭配使用。
+  > [AZURE.WARNING] 若要讓舊的密碼認證 （NTLM 和 Kerberos 驗證所需） 同步處理至 Azure AD 租用戶，您必須安裝最新的 Azure AD Connect 建議的版本。 此功能無法在舊版的 Azure AD Connect 中使用，或與舊版 DirSync 工具搭配使用。
 
 注意：您不再需要利用最新的 Azure AD Connect 版本 (亦即 1.0.9125 和更新版本) 來建立 'EnableWindowsLegacyCredentialsSync' 登錄機碼。
 
@@ -78,4 +78,5 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 ```
 
 視目錄的大小而定 (使用者的數目、群組等)，將認證同步處理到 Azure AD 需要花一點時間。 將認證雜湊同步處理到 Azure AD 之後，密碼短時間內就能在 Azure AD 網域服務管理的網域上使用。
+
 

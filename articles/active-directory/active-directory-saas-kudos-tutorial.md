@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Kudos 租用戶
   
-完成本教學課程之後, 您已指派給 Kudos 的 Azure AD 使用者將能夠登入您的 Kudos 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Kudos 的 Azure AD 使用者將能夠登入您的 Kudos 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -95,7 +95,7 @@
 
 7.  按一下 [ **整合 \ > SSO**。
 
-8.  在 **SSO** 區段中，執行下列步驟:
+8.  在 **SSO** 區段中，執行下列步驟 ︰
 
     ![SSO](./media/active-directory-saas-kudos-tutorial/IC787807.png "SSO")
 
@@ -132,7 +132,7 @@ Kudos 需以手動的方式佈建。
 
     ![使用者管理](./media/active-directory-saas-kudos-tutorial/IC787809.png "User Admin")
 
-5.  在 **將使用者新增** 區段中，執行下列步驟:
+5.  在 **將使用者新增** 區段中，執行下列步驟 ︰
 
     ![加入使用者](./media/active-directory-saas-kudos-tutorial/IC787810.png "Add a User")
 
@@ -158,3 +158,4 @@ Kudos 需以手動的方式佈建。
     ![是](./media/active-directory-saas-kudos-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

@@ -23,11 +23,11 @@
 按一下以查看 [SDK 內容](mobile-engagement-ios-sdk-content.md)
 
 ##整合程序
-1. 從這裡開始: [如何在 iOS 應用程式中整合 Mobile Engagement](mobile-engagement-ios-integrate-engagement.md)
+1. 從這裡開始 ︰ [如何在 iOS 應用程式中整合 Mobile Engagement](mobile-engagement-ios-integrate-engagement.md)
 
-2. 通知: [如何在 iOS 應用程式中整合 Reach (通知)](mobile-engagement-ios-integrate-engagement-reach.md)
+2. 通知 ︰ [如何在 iOS 應用程式中整合 Reach （通知）](mobile-engagement-ios-integrate-engagement-reach.md)
 
-3. 標記計劃實作: [如何使用進階的 Mobile Engagement 標記 API 在 iOS 應用程式](mobile-engagement-ios-use-engagement-api.md)
+3. 標記計劃實作 ︰ [如何使用進階的 Mobile Engagement 標記 API 在 iOS 應用程式](mobile-engagement-ios-use-engagement-api.md)
 
 
 ##版本資訊
@@ -58,4 +58,5 @@
     -(void)willRetrieveLaunchMessage;
     -(void)didFailToRetrieveLaunchMessage;
     -(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
+
 

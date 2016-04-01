@@ -49,7 +49,7 @@ appilication 呼叫 Graph API 做為本身，而不任何特定使用者。
 
 既然您已經有 B2C 租用戶，您需要使用 Azure AD Powershell Cmdlet 建立服務應用程式。
 首先，下載並安裝 [Microsoft Online Services 登入小幫手](http://go.microsoft.com/fwlink/?LinkID=286152)。  然後您可以下載
-(& s) 安裝 [64 位元 Azure Active Directory 的 Windows Powershell 模組](http://go.microsoft.com/fwlink/p/?linkid=236297)。
+（& s) 安裝 [64 位元 Azure Active Directory 的 Windows Powershell 模組](http://go.microsoft.com/fwlink/p/?linkid=236297)。
 
 > [AZURE.NOTE]
 若要使用圖形 API 搭配 B2C 租用戶，您必須使用 Powershell 註冊專用的應用程式，並遵循下列指示。  您不能重複使用已經在 Azure 入口網站中註冊的現有 B2C 應用程式。  這是 Azure AD B2C 預覽的一項限制，將在不久的將來移除，屆時我們將會更新本文章。 
@@ -75,7 +75,7 @@ AD，並取得存取權杖。  您可以在 Powershell 中產生有效的密碼�
 ``` 
 
 上述最後一個命令應該會印出新的用戶端密碼。  將它複製到某個安全的地方，稍後需要用到。 現在您可以建立程式 
-應用程式，提供新的用戶端密碼做為認證的應用程式:
+應用程式，提供新的用戶端密碼做為認證的應用程式 ︰
 
 ```
 > New-MsolServicePrincipal -DisplayName "My New B2C Graph API App" -Type password -Value $newClientSecret
@@ -98,8 +98,8 @@ Usage                 : Verify
  `AppPrincipalId`, ，因此也向下複製這些值。
 
 既然您已經在 B2C 租用戶中建立應用程式，您需要將執行使用者 CRUD 作業所需的權限指派給它。  您必須
-若要將應用程式的三個不同角色指派: 目錄讀取器 (如讀取使用者)、 (適用於建立和更新使用者，) 目錄寫入器和使用者帳戶
-管理員 (適用於刪除使用者)。  這些角色會有已知的識別項，因此您可以執行下列命令，取代 `-RoleMemberObjectId`
+若要將應用程式的三個不同角色指派 ︰ 目錄讀取器 （如讀取使用者）、 （適用於建立和更新使用者，） 目錄寫入器和使用者帳戶
+管理員 （適用於刪除使用者）。  這些角色會有已知的識別項，因此您可以執行下列命令，取代 `-RoleMemberObjectId`
 參數與 `ObjectId` 上述。  若要查看所有目錄角色的清單，請嘗試執行 `Get-MsolRole`。
 
 ```
@@ -114,14 +114,14 @@ Usage                 : Verify
 
 首先，下載範例程式碼並開始執行。  然後，我們可以看看幕後運作情形。  您可以 
 [下載為.zip 的範例程式碼](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) 或將它複製
-到您所選擇的目錄:
+到您所選擇的目錄 ︰
 
 ```
 git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
 ```
 
 在 Visual Studio 中開啟 `B2CGraphClient\B2CGraphClient.sln` Visual Studio 方案。  在 `B2CGraphClient` 專案中，開啟 `App.config` 檔案。  將
-三個應用程式設定為您自己的值，就像這樣:
+三個應用程式設定為您自己的值，就像這樣 ︰
 
 ```
 <appSettings>
@@ -178,7 +178,7 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 
 讓我們以 `B2C Get-User` 命令為例。  叫用 `Get-User` 而沒有任何其他輸入時，CLI 會呼叫 `B2CGraphClient.GetAllUsers(...)` 方法。
 這個方法會呼叫 `B2CGraphClient.SendGraphGetRequest(...)`，後者會送出 HTTP GET 要求給圖形 API。  在傳送之前的 GET 要求，它第一次取得存取權
-使用 ADAL 的權杖:
+使用 ADAL 的權杖 ︰
 
 ```C#
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -197,7 +197,7 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 ### 讀取使用者
 
 當您想要從圖形 API 取得使用者清單或取得特定的使用者時，您可以傳送 HTTP GET 要求給 `/users` 端點。 租用戶中的所有使用者的要求
-應該像這樣:
+應該像這樣 ︰
 
 ```
 GET https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=beta
@@ -375,7 +375,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 ```
 
 您可以使用完整名稱作為使用者物件的屬性，例如 `extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_Number`。  只會更新您 `.json` 與新的檔案
-屬性的值屬性，然後執行:
+屬性的值屬性，然後執行 ︰
 
 ```
 > B2C Update-User <object-id-of-user> <path-to-json-file>
@@ -383,7 +383,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 
 就這麼簡單！  透過 B2CGraphClient，您現在有一個服務應用程式可以用程式設計方式管理 B2C 租用戶使用者。  它會使用它自己的應用程式識別 
 驗證 Azure AD Graph API，並取得使用 client_secret 語彙基元。 當您將這項功能合併至自己的應用程式時，請記住您的幾個重點
-B2C 應用程式:
+B2C 應用程式 ︰
 
 - 您需要將租用戶中的適當權限授與應用程式
 - 現在，您需要使用 ADAL v2 取得存取權杖 (也可以直接傳送通訊協定訊息，而不使用程式庫)
@@ -395,4 +395,5 @@ B2C 應用程式:
 
 對於您想要使用圖形 API 在 B2C 租用戶上執行的動作，如果您有任何問題或要求，我們洗耳恭聽！  請在發行項上留下註解
 或檔案的程式碼範例 GitHub 儲存機制中的問題。
+
 

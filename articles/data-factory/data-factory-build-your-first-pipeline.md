@@ -31,7 +31,7 @@
 ## 教學課程概觀
 本教學課程將帶您進行使用管線建置您的第一個 Data Factory 所需的步驟。 您將會建立管線，並從頭開始指定所有需要的資源。
 
-如果您想快速地探索 Data Factory 的各種功能，但不想從頭開始建立資料處理站，您可以使用我們在 Azure 入口網站中提供的範例。 請參閱 [Azure Data Factory 更新: 簡化的範例部署](http://azure.microsoft.com/blog/2015/04/24/azure-data-factory-update-simplified-sample-deployment/) 如何部署使用 Azure 入口網站的使用案例根據的範例。
+如果您想快速地探索 Data Factory 的各種功能，但不想從頭開始建立資料處理站，您可以使用我們在 Azure 入口網站中提供的範例。 請參閱 [Azure Data Factory 更新 ︰ 簡化的範例部署](http://azure.microsoft.com/blog/2015/04/24/azure-data-factory-update-simplified-sample-deployment/) 如何部署使用 Azure 入口網站的使用案例根據的範例。
 
 ## 必要條件
 開始進行本教學課程之前，您必須具備下列條件：
@@ -56,14 +56,14 @@ Azure Data Factory 可讓您以資料驅動型工作流程的方式，撰寫資�
 
 ![圖表檢視](./media/data-factory-build-your-first-pipeline/diagram-view.png)
 
-Hive 指令碼執行後，結果將會儲存在 Azure blob 儲存體容器: **資料/partitioneddata**。
+Hive 指令碼執行後，結果將會儲存在 Azure blob 儲存體容器 ︰ **資料/partitioneddata**。
 
 定義上的可用性 **AzureBlobOutput** Hive 活動的執行頻率會決定資料集。 在本教學課程中，此項目設定為每個月一次。
 
 ## 準備用於教學課程的 Azure 儲存體
 開始教學課程之前，您必須準備內含教學課程所需檔案的 Azure 儲存體。
 
-1. 啟動 **記事本** 並貼上下列 HQL 指令碼。 此 Hive 指令碼會建立兩個外部資料表: **WebLogsRaw** 和 **WebLogsPartitioned**。 按一下 [ **檔案** 功能表，然後選取 **另存新檔**。 切換至 **C:\adfgettingstarted** 硬碟機上的資料夾。 選取 **所有檔案 (*。*)* * 的 **檔案類型** 欄位。 輸入 **partitionweblogs.hql** 的 **檔案名稱**。 確認 **編碼** 對話方塊底部的欄位會設為 **ANSI**。 如果沒有，請將它設定為 **ANSI**。  
+1. 啟動 **記事本** 並貼上下列 HQL 指令碼。 此 Hive 指令碼會建立兩個外部資料表 ︰ **WebLogsRaw** 和 **WebLogsPartitioned**。 按一下 [ **檔案** 功能表，然後選取 **另存新檔**。 切換至 **C:\adfgettingstarted** 硬碟機上的資料夾。 選取 **所有檔案 (*。*)* * 的 **檔案類型** 欄位。 輸入 **partitionweblogs.hql** 的 **檔案名稱**。 確認 **編碼** 對話方塊底部的欄位會設為 **ANSI**。 如果沒有，請將它設定為 **ANSI**。  
     
         set hive.exec.dynamic.partition.mode=nonstrict;
         
@@ -172,5 +172,6 @@ Hive 指令碼執行後，結果將會儲存在 Azure blob 儲存體容器: **�
 - 按一下 [ [使用 Data Factory 編輯器](data-factory-build-your-first-pipeline-using-editor.md) 頂端使用 Data Factory 編輯器是 Azure 傳統入口網站的一部分來執行本教學課程的連結。
 - 按一下 [ [使用 PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) 頂端使用 Azure PowerShell 執行教學課程連結。
 - 按一下 [ [使用 Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) 頂端使用 Visual Studio 執行教學課程連結。 
+
 
 

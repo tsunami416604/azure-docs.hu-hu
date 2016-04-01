@@ -220,3 +220,4 @@ Microsoft Azure 媒體服務的 ISO 分散 MP4 即時內嵌使用標準的長時
 [image7]: ./media/media-services-fmp4-live-ingest-overview/media-services-image7.png
 
  
+

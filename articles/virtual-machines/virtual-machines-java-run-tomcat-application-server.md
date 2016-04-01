@@ -56,7 +56,7 @@ Azure 可讓您利用虛擬機器來提供伺服器功能。 例如，於 Azure 
     2. 值 **雲端服務 DNS 名稱** 必須是唯一的 cloudapp.net。 必要時請修改此值，使 Azure 指出該值是唯一的。
     2. 指定區域、同質群組或虛擬網路。 基於本教學課程的目的，指定區域例如 **美國西部**。
     2. 如 **儲存體帳戶**, ，請選取 **使用自動產生的儲存體帳戶**。
-    3. 如 **可用性設定組**, ，請選取 **(無)**。
+    3. 如 **可用性設定組**, ，請選取 **（無）**。
     4. 按一下 [ **下一步**。
 7. 在最終的 [**虛擬機器組態**] 對話方塊中：
     1. 接受預設的端點項目。
@@ -118,7 +118,7 @@ Azure 可讓您利用虛擬機器來提供伺服器功能。 例如，於 Azure 
  ![新增輸入的規則動作][NewRuleAction]
 9. 在 **設定檔** 畫面上，確定 **網域**, ，**私人**, ，和 **公用** 已選取，然後按一下 [ **下一步**。
  ![新增輸入的規則設定檔][NewRuleProfile]
-10. 在 **名稱** 畫面上，指定規則的名稱，例如 **HttpIn** (規則名稱不一定要符合的端點名稱，不過)，然後按一下 [ **完成**。  
+10. 在 **名稱** 畫面上，指定規則的名稱，例如 **HttpIn** （規則名稱不一定要符合的端點名稱，不過），然後按一下 [ **完成**。  
  ![新增輸入的規則名稱][NewRuleName]
 
 此時，Tomcat 網站應該會從外部瀏覽器檢視使用下列形式的 URL **http://*your\_DNS\_name*。 cloudapp.net * *，其中 ***your\_DNS\_name*** 是您在建立虛擬機器時指定的 DNS 名稱。
@@ -132,7 +132,7 @@ Azure 可讓您利用虛擬機器來提供伺服器功能。 例如，於 Azure 
     使 Tomcat 自動啟動的優點在於，當虛擬機器重新開機時 (例如安裝需要重新開機的軟體更新後) 其將會啟動。
 
 ## 後續步驟
-了解其他服務 (例如 Azure 儲存體、 服務匯流排和 SQL 資料庫)，您可能想要納入 Java 應用程式藉由檢視提供的資訊 [Java 開發人員中心](http://azure.microsoft.com/develop/java/)。
+了解其他服務 （例如 Azure 儲存體、 服務匯流排和 SQL 資料庫），您可能想要納入 Java 應用程式藉由檢視提供的資訊 [Java 開發人員中心](http://azure.microsoft.com/develop/java/)。
 
 [virtual_machine_tomcat]: ./media/virtual-machines-java-run-tomcat-application-server/WA_VirtualMachineRunningApacheTomcat.png
 
@@ -152,4 +152,5 @@ Azure 可讓您利用虛擬機器來提供伺服器功能。 例如，於 Azure 
 [NewRuleAction]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleAction.png
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
+
 

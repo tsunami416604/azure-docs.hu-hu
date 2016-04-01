@@ -36,7 +36,7 @@ Service Fabric 會管理服務的存留期間，從佈建和部署一直到升�
 
 2. 執行您自己的程式碼的簡單模型，看起來就像您習慣的程式設計模型：您的程式碼具有定義完善的進入點和容易管理的生命週期。
 
-3. 可外掛式通訊模型: 使用您的選擇，例如使用 HTTP 傳輸 [Web API](service-fabric-reliable-services-communication-webapi.md), 、 WebSockets、 自訂 TCP 通訊協定等。可靠的服務提供一些很棒的現成選項供您使用，或允許您提供您自己的選項。
+3. 可外掛式通訊模型 ︰ 使用您的選擇，例如使用 HTTP 傳輸 [Web API](service-fabric-reliable-services-communication-webapi.md), 、 WebSockets、 自訂 TCP 通訊協定等。可靠的服務提供一些很棒的現成選項供您使用，或允許您提供您自己的選項。
 
 ## 可靠的服務有什麼不同之處？
 Service Fabric 中的可靠的服務與您之前撰寫的服務不同。 Service Fabric 提供可靠性、可用性、一致性和延展性。  
@@ -47,12 +47,12 @@ Service Fabric 中的可靠的服務與您之前撰寫的服務不同。 Service
 
 + <u>延展性</u> – 服務與特定硬體分離，可以放大或縮小視需要透過加入或移除硬體或虛擬資源。 服務可以輕鬆分割 (特別是在具狀態的情況下)，以確保服務的獨立部分可以獨立調整和回應失敗。 最後，Service Fabric 鼓勵輕量服務，它允許在單一處理序內佈建數千個服務，而不需要或讓整個作業系統執行個體專屬於特定工作負載的單一執行個體。
 
-+ <u>一致性</u> -這表示，此服務中儲存任何資訊可以保證是一致 (這只適用於具狀態服務有更詳細的更新版本)
++ <u>一致性</u> -這表示，此服務中儲存任何資訊可以保證是一致 （這只適用於具狀態服務有更詳細的更新版本）
 
 ## 服務生命週期
 無論您的服務是具狀態還是無狀態，可靠的服務會提供簡單的生命週期，可讓您快速插入您的程式碼，並開始著手。  您真正只有需要實作一個或兩個方法，即可讓您的服務啟動並執行。
 
-+ CreateServiceReplicaListeners/CreateServiceInstanceListeners：這是服務定義它要使用之通訊堆疊的地方。 通訊堆疊，例如 [Web API](service-fabric-reliable-services-communication-webapi.md), ，以及如何顯示這些訊息最後的服務程式碼的其餘部分互動定義 (如何用戶端連線)，服務接聽的端點。
++ CreateServiceReplicaListeners/CreateServiceInstanceListeners：這是服務定義它要使用之通訊堆疊的地方。 通訊堆疊，例如 [Web API](service-fabric-reliable-services-communication-webapi.md), ，以及如何顯示這些訊息最後的服務程式碼的其餘部分互動定義 （如何用戶端連線），服務接聽的端點。
 
 + RunAsync：這是您的服務執行其商務邏輯的地方。 所提供的取消語彙基元是針對該工作何時應該停止的訊號。 比方說，如果您的服務需要不斷從 ReliableQueue 提取訊息並加以處理，這會是該工作會發生的位置。
 
@@ -129,4 +129,5 @@ Service Fabric 中常見的無狀態服務使用範例是做為前端，其公�
 + [查看可靠的服務的進階用法](service-fabric-reliable-services-advanced-usage.md)
 + [閱讀可靠執行者程式設計模型](service-fabric-reliable-actors-introduction.md)
  
+
 

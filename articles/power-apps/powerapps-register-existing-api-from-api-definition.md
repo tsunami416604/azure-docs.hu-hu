@@ -40,20 +40,20 @@
     - ``host`` 屬性應指向您現有 API 的實際端點。 請勿使用配置或任何子路徑。 例如，輸入 ``api.contoso.com``。  <br/><br/>
     - ``basePath`` 屬性應列出您現有 API 端點 (若有的話) 的子路徑。 以正斜線開頭 ``/``。 例如，輸入 ``/purchaseorderapi``。
 
-2. 請確定您現有的 API 是安全地存取您的 app service 環境:  <br/><br/>
-    a) 您是否想要讓使用網際網路來存取您的 API，您可以設定 HTTP 基本存取驗證 app service 環境之間現有的 API。 Go [這裡](powerapps-configure-apis.md) 若要查看如何。  <br/><br/>
-    b) 如果您想要保留您的 API，您的組織網路內，您可以安全地存取您組織的網路設定虛擬網路的 app service 環境。 Go [這裡](../app-service-app-service-environment-intro.md) 若要查看如何。
+2. 確定您的 App Service 環境能安全地存取現有的 API：  <br/><br/>
+    a） 您是否想要讓使用網際網路來存取您的 API，您可以設定 HTTP 基本存取驗證 app service 環境之間現有的 API。 Go [這裡](powerapps-configure-apis.md) 若要查看如何。  <br/><br/>
+    b） 如果您想要保留您的 API，您的組織網路內，您可以安全地存取您組織的網路設定虛擬網路的 app service 環境。 Go [這裡](../app-service-app-service-environment-intro.md) 若要查看如何。
 
 3. 在 [Azure 入口網站](https://portal.azure.com/), ，請選取 **PowerApps**, ，然後選取 **管理 Api**:  
 ![][11]
 4. 在 Api 管理中，選取 **新增**:  
 ![][12]
-5. 在 **加入 API**, ，輸入 API 的內容:  
+5. 在 **加入 API**, ，輸入 API 的內容 ︰  
 
-    - 在 **名稱**, ，輸入您的 API 的名稱。 請注意，您輸入的名稱會包含在 API 的執行階段 URL 中。 請設定有意義且在組織中獨一無二的名稱。
+    - 在 **名稱**, ，輸入您的 API 的名稱。 請注意，您輸入的名稱會包含在 API 的執行階段 URL 中。 設定有意義且在組織中獨一無二的名稱。
     - 在 **來源**, ，請選取 **Swagger 2.0 從匯入**。
 
-6. 在 **API 定義 (Swagger 2.0)**, 上, 傳 Swagger 2.0 API 定義檔案:  
+6. 在 **API 定義 (Swagger 2.0)**, 上, 傳 Swagger 2.0 API 定義檔案 ︰  
  ![][13]
 7. 選取 **新增** 來完成這些步驟。
 
@@ -71,4 +71,5 @@
 [11]: ./media/powerapps-register-existing-api-from-api-definition/registered-apis-part.png
 [12]: ./media/powerapps-register-existing-api-from-api-definition/add-api-button.png
 [13]: ./media/powerapps-register-existing-api-from-api-definition/add-api-blade.png
+
 

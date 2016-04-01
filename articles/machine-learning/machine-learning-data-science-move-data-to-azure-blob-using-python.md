@@ -38,7 +38,7 @@
 
 > [AZURE.NOTE] 如需 Azure blob 儲存體的完整介紹，請參閱 [Azure Blob 基本概念](../storage-dotnet-how-to-use-blobs.md) 和  [Azure Blob 服務](https://msdn.microsoft.com/library/azure/dd179376.aspx)。 
 
-## 先決條件
+## 必要條件
 
 本文件假設您擁有 Azure 訂用帳戶、儲存體帳戶和該帳戶的對應儲存體金鑰。 上傳/下載資料之前，您必須知道 Azure 儲存體帳戶名稱和帳戶金鑰。 
 
@@ -126,5 +126,6 @@
             blob_service.get_blob_to_path(CONTAINER_NAME, blob.name, local_file)
         except:
             print "something wrong happened when downloading the data %s"%blob.name
+
 
 

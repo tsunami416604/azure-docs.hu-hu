@@ -70,7 +70,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
     `POST https://management.azure.com/subscriptions/[subscriptionId]/resourceGroups/[resourceGroupName]/providers/Microsoft.Search/searchServices/[serviceName]/listAdminKeys?api-version=2015-02-28`
 
-- <a name="RegenAdminKey">重新產生管理金鑰</a>
+- <a name="RegenAdminKey">重新產生系統管理金鑰</a>
 
     `POST https://management.azure.com/subscriptions/[subscriptionId]/resourceGroups/[resourceGroupName]/providers/Microsoft.Search/searchServices/[serviceName]/regenerateAdminKey/[keyKind]?api-version=2015-02-28`
 
@@ -115,7 +115,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
 `resourceGroupName`：必要。 使用者訂用帳戶內的資源群組名稱。 您可以從 Azure 資源管理員 API 或入口網站取得這個值。
 
-`serviceName`：必要。 指定資源群組內的搜尋服務名稱。 服務名稱只能包含小寫字母、數字或連字號，但不能將連字號用在前兩個或最後一個字元，也不能包含連續的連字號，而且長度必須介於 2 到 15 個字元。 由於所有名稱最後都會變成 <name>.search.windows.net，所以服務名稱必須是全域唯一的。 訂用帳戶和資源群組之內或之間的任兩個服務名稱都不能相同。 服務名稱建立後就不能再變更。
+`serviceName`：必要。 指定資源群組內的搜尋服務名稱。 服務名稱只能包含小寫字母、數字或連字號，但不能將連字號用在前兩個或最後一個字元，也不能包含連續的連字號，而且長度必須介於 2 到 15 個字元。 因為進行的所有名稱結尾 <name>。.search.windows.net，所以服務名稱必須是全域唯一。 訂用帳戶和資源群組之內或之間的任兩個服務名稱都不能相同。 服務名稱建立後就不能再變更。
 
 `api-version`：必要。 指定用於此要求的通訊協定版本。 目前版本為 `2015-02-28`。
 
@@ -124,7 +124,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
 `Content-Type`：必要。 設定此標頭為 application/json。  
 
-`x-ms-client-request-id`: 選擇性。 用戶端產生之可識別此要求的 GUID 值。 如果指定，這會包含於回應資訊做為對應要求的方式。  
+`x-ms-client-request-id`︰ 選擇性。 用戶端產生之可識別此要求的 GUID 值。 如果指定，這會包含於回應資訊做為對應要求的方式。  
 
 
 #### 要求本文
@@ -225,7 +225,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 - `disabled`：搜尋服務已停用。 在此狀態下，此服務將拒絕所有 API 要求。
 - `error`：搜尋服務處於錯誤狀態。 
 
-**請注意**: 如果您的服務處於 `degraded`, ，`disabled`, ，或 `error` 狀態，這代表 Azure 搜尋服務團隊正主動調查潛在問題。 根據已佈建的搜尋單位數目，在這些狀態下的專用服務仍需收費。
+**請注意**︰ 如果您的服務處於 `degraded`, ，`disabled`, ，或 `error` 狀態，這代表 Azure 搜尋服務團隊正主動調查潛在問題。 根據已佈建的搜尋單位數目，在這些狀態下的專用服務仍需收費。
 
 `statusDetails`：狀態的詳細資料。 
 
@@ -235,7 +235,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 - `provisioning`：正在佈建本服務。
 - `failed`：本服務無法佈建。 
 
-佈建是一種過渡狀態，當服務容量正在建立時發生。 設定容量後，`provisioningState` 變更為「成功」或「失敗」。 用戶端應用程式可以輪詢佈建狀態 (建議使用輪詢間隔為 30 秒，最多一分鐘) 使用 **取得搜尋服務** 作業查看作業何時完成。 如果您正在使用免費服務，這個值通常會做為「成功」而直接在呼叫中返回，以建立服務。 這是因為免費服務使用早已設定的容量。
+佈建是一種過渡狀態，當服務容量正在建立時發生。 設定容量後，`provisioningState` 變更為「成功」或「失敗」。 用戶端應用程式可以輪詢佈建狀態 （建議使用輪詢間隔為 30 秒，最多一分鐘） 使用 **取得搜尋服務** 作業查看作業何時完成。 如果您正在使用免費服務，這個值通常會做為「成功」而直接在呼叫中返回，以建立服務。 這是因為免費服務使用早已設定的容量。
 
 <a name="GetService"></a>
 ### 取得搜尋服務
@@ -250,7 +250,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
 `resourceGroupName`：必要。 使用者訂用帳戶內的資源群組名稱。 您可以從 Azure 資源管理員 API 或入口網站取得這個值。
 
-`serviceName`: 必要項。 指定資源群組內的搜尋服務名稱。 如果您不知道服務名稱，則您可以使用列出搜尋服務 (Azure 搜尋服務 API) 取得清單。 
+`serviceName`︰ 必要項。 指定資源群組內的搜尋服務名稱。 如果您不知道服務名稱，則您可以使用列出搜尋服務 (Azure 搜尋服務 API) 取得清單。 
 
 `api-version`：必要。 指定用於此要求的通訊協定版本。 目前版本為 `2015-02-28`。
 
@@ -301,7 +301,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
 #### 回應本文項目
 
-`id`: 此 id 為這項搜尋服務的 URL (不含主機名稱和配置)。
+`id`︰ 此 id 為這項搜尋服務的 URL （不含主機名稱和配置）。
 
 `name`：搜尋服務的名稱。 
 
@@ -319,7 +319,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
 `partitionCount`：表示該服務有多少分割區。 有效值包含 1、2、3、4、6 或 12。
 
-`status`: 呼叫作業搜尋服務時的狀態。 有效值包含：
+`status`︰ 呼叫作業搜尋服務時的狀態。 有效值包含：
 
 - `running`：搜尋服務已建立。
 - `provisioning`：正在佈建搜尋服務。
@@ -328,7 +328,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 - `disabled`：搜尋服務已停用。 在此狀態下，此服務將拒絕所有 API 要求。
 - `error`：搜尋服務處於錯誤狀態。 
  
-**請注意**: 如果您的服務處於 `degraded`, ，`disabled`, ，或 `error` 狀態，這代表 Azure 搜尋服務團隊正主動調查潛在問題。 根據已佈建的搜尋單位數目，在這些狀態下的專用服務仍需收費。
+**請注意**︰ 如果您的服務處於 `degraded`, ，`disabled`, ，或 `error` 狀態，這代表 Azure 搜尋服務團隊正主動調查潛在問題。 根據已佈建的搜尋單位數目，在這些狀態下的專用服務仍需收費。
  
 `statusDetails`：狀態的詳細資料。
 
@@ -433,7 +433,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
     
     DELETE https://management.azure.com/subscriptions/[subscriptionId]/resourceGroups/[resourceGroupName]/providers/Microsoft.Search/searchServices/[serviceName]?api-version=2015-02-28
 
-**注意:** 管理員和開發人員慣用的備份應用程式資料，然後再刪除從生產伺服器。 在 Azure 搜尋服務中並沒有備份作業。 如果您正使用索引當做應用程式的主要儲存體，您會需要使用搜尋作業來傳回索引中可外部儲存的所有資料。
+**注意 ︰** 管理員和開發人員慣用的備份應用程式資料，然後再刪除從生產伺服器。 在 Azure 搜尋服務中並沒有備份作業。 如果您正使用索引當做應用程式的主要儲存體，您會需要使用搜尋作業來傳回索引中可外部儲存的所有資料。
 
 ###要求 URI 參數###
 
@@ -441,7 +441,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
 `resourceGroupName`：必要。 使用者訂用帳戶內的資源群組名稱。 您可以從 Azure 資源管理員 API 或入口網站取得這個值。
 
-`serviceName`: 必要項。 指定資源群組內的搜尋服務名稱。 如果您不知道服務名稱，則您可以使用列出搜尋服務 (Azure 搜尋服務 API) 取得清單。 
+`serviceName`︰ 必要項。 指定資源群組內的搜尋服務名稱。 如果您不知道服務名稱，則您可以使用列出搜尋服務 (Azure 搜尋服務 API) 取得清單。 
 
 `api-version`：必要。 指定用於此要求的通訊協定版本。 目前版本為 `2015-02-28`。
 
@@ -486,7 +486,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
 `resourceGroupName`：必要。 使用者訂用帳戶內的資源群組名稱。 您可以從 Azure 資源管理員 API 或入口網站取得這個值。
 
-`serviceName`: 必要項。 指定資源群組內的搜尋服務名稱。 如果您不知道服務名稱，則您可以使用列出搜尋服務 (Azure 搜尋服務 API) 取得清單。 
+`serviceName`︰ 必要項。 指定資源群組內的搜尋服務名稱。 如果您不知道服務名稱，則您可以使用列出搜尋服務 (Azure 搜尋服務 API) 取得清單。 
 
 `api-version`：必要。 指定用於此要求的通訊協定版本。 目前版本為 `2015-02-28`。
 
@@ -554,7 +554,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 金鑰相關作業包含下列 API：
 
 - <a name="ListAdminKey">列出系統管理金鑰</a>
-- <a name="RegenAdminKey">重新產生管理金鑰</a>
+- <a name="RegenAdminKey">重新產生系統管理金鑰</a>
 - <a name="CreateQueryKey">建立查詢金鑰</a>
 - <a name="ListQueryKey">列出查詢金鑰</a>
 - <a name="DeleteQueryKey">刪除查詢金鑰</a>
@@ -575,7 +575,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 
 `resourceGroupName`：必要。 使用者訂用帳戶內的資源群組名稱。 您可以從 Azure 資源管理員 API 或入口網站取得這個值。
 
-`serviceName`: 必要項。 指定資源群組內的搜尋服務名稱。 如果您不知道服務名稱，則您可以使用列出搜尋服務 (Azure 搜尋服務 API) 取得清單。 
+`serviceName`︰ 必要項。 指定資源群組內的搜尋服務名稱。 如果您不知道服務名稱，則您可以使用列出搜尋服務 (Azure 搜尋服務 API) 取得清單。 
 
 `api-version`：必要。 指定用於此要求的通訊協定版本。 目前版本為 `2015-02-28`。
 
@@ -660,7 +660,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
     
 ###回應本文項目###
 
-`primaryKey`: 如果已重新產生主要系統管理金鑰。
+`primaryKey`︰ 如果已重新產生主要系統管理金鑰。
 
 `secondaryKey`：次要系統管理金鑰 (若已重新產生)。
 
@@ -824,6 +824,7 @@ Azure 資源管理員的存取控制會使用內建擁有者、參與者和讀�
 ###回應本文###
 
 無。
+
 
 
 

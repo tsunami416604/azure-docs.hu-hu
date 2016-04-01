@@ -23,21 +23,21 @@
 適合行動的並將它部署至 Azure App Service 的 web 應用程式。 在本教學課程中，您需要 
 [Visual Studio Express 2013 for Web][Visual Studio Express 2013]
 或 Visual Studio Professional Edition (如果您已經
-有該版本)。 您可以使用 [Visual Studio 2015] 但螢幕擷取畫面將會不同，您必須使用 ASP.NET 4.x 範本。
+有該版本)。 您可以使用 [Visual Studio 2015] 但螢幕擷取畫面將會不同，而且您必須使用 ASP.NET 4.x 範本。
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## 您要建置的內容
 
 本教學課程中，將把行動功能新增於簡單
-在 [起始專案] 中提供的會議清單應用程式 [StarterProject]。 下列螢幕擷取畫面顯示的 ASP.NET 工作階段中已完成
+會議清單應用程式中提供 [起始專案][StarterProject]。 下列螢幕擷取畫面顯示的 ASP.NET 工作階段中已完成
 應用程式，在 Internet Explorer 11 F12 的瀏覽器模擬器中所示
 開發人員工具。
 
-![] [FixedSessionsByTag]
+![][FixedSessionsByTag]
 
 您可以使用 Internet Explorer 11 F12 開發人員工具和 [Fiddler
-工具] Fiddler，以協助偵錯程式
+工具][Fiddler] 協助偵錯程式
 重新接收。 
 
 ## 您要學習的技術
@@ -49,33 +49,33 @@
     改善行動裝置顯示的畫面
 -   如何建立行動專用的檢視至目標特定行動裝置
     瀏覽器中，例如 iPhone 和 Android。
--   如何建立回應靈敏的檢視 (可回應不同的檢視
-    在裝置上的瀏覽器)
+-   如何建立回應靈敏的檢視 （可回應不同的檢視
+    在裝置上的瀏覽器）
 
 ## 設定開發環境
 
 安裝 Azure SDK for .NET 2.5.1 或更新版本，以設定您的開發環境。  
 
-1. 若要安裝 Azure SDK for .NET，請按一下底下連結： 如果您尚未安裝 Visual Studio 2013，按下該連結會進行安裝。 本教學課程需要 Visual Studio 2013。 [Azure SDK for Visual Studio 2013][] AzureSDKVs2013
+1. 若要安裝 Azure SDK for .NET，請按一下底下連結： 如果您尚未安裝 Visual Studio 2013，按下該連結會進行安裝。 本教學課程需要 Visual Studio 2013。 [Azure SDK for Visual Studio 2013][AzureSDKVs2013]
 1. 在 Web Platform Installer] 視窗中，按一下 [ **安裝** 並繼續進行安裝。
 
 您還需要一個行動瀏覽器模擬器。 下列任一項目都可使用
 使用：
 
--   在 [Internet Explorer 11 F12 開發人員工具] 中的瀏覽器模擬器 [EmulatorIE11] (用於所有行動
+-   在瀏覽器模擬器 [Internet Explorer 11 F12 開發人員工具][EmulatorIE11] （用於所有行動
     瀏覽器螢幕擷取畫面中)。 它具有 Windows Phone 8、Windows Phone 7 和 Apple iPad 的使用者代理程式字串預設項目。
--   [Google Chrome DevTools] 中的瀏覽器模擬器 [EmulatorChrome]。 它包含許多 Android 裝置，以及 Apple iPhone、Apple iPad 和 Amazon Kindle Fire 的預設項目。 它也會模擬觸控事件。
--   [Opera Mobile 模擬器][] EmulatorOpera
+-   在瀏覽器模擬器 [Google Chrome DevTools][EmulatorChrome]。 它包含許多 Android 裝置，以及 Apple iPhone、Apple iPad 和 Amazon Kindle Fire 的預設項目。 它也會模擬觸控事件。
+-   [Opera Mobile 模擬器][EmulatorOpera]
 
 使用 C# 原始程式碼的 visual Studio 專案可幫助您完成
 此主題：
 
--   [入門專案下載][] StarterProject
--   [已完成專案下載][] CompletedProject
+-   [入門專案下載][StarterProject]
+-   [完成專案下載][CompletedProject]
 
 ##<a name="bkmk_DeployStarterProject"></a>將入門專案部署至 Azure Web 應用程式
 
-1.  下載會議清單應用程式 [起始專案] [StarterProject]。
+1.  下載會議清單應用程式 [起始專案][StarterProject]。
 
 2.  接著在 Windows 檔案總管] 中，以滑鼠右鍵按一下 Mvc5Mobile.zip 檔案並選擇 *屬性*。
 
@@ -91,29 +91,29 @@
 
 6.  在 [方案總管] 中，以滑鼠右鍵按一下專案，然後按一下 **發行**。
 
-    ![] [DeployClickPublish]
+    ![][DeployClickPublish]
 
 7.  發佈 Web] 中按一下 [ **Microsoft Azure Web 應用程式**。
 
-    ![] [DeployClickWebSites]
+    ![][DeployClickWebSites]
 
 8.  按一下 [ **登入**。
 
-    ![] [DeploySignIn]
+    ![][DeploySignIn]
 
 9.  依照提示來登入您的 Azure 帳戶。
 
 11. [選取現有的 Web 應用程式] 對話方塊此時應顯示為已登入。 按一下 [ **新**。
 
-    ![] [DeployNewWebsite]  
+    ![][DeployNewWebsite]  
 
 12. 在 **Web 應用程式名稱** 欄位中，指定唯一的 app 名稱前置詞。 您的完整 web 應用程式名稱會是 *& lt; 前置詞 >*。 azurewebsites.net。 此外，設定 **應用程式服務方案**, ，**資源群組**, ，和 **區域** 欄位。 然後按一下 [ **建立**。
 
-    ![] [DeploySiteSettings]
+    ![][DeploySiteSettings]
 
 13. 隨即會將新 Web 應用程式的設定填入 [發行 Web] 對話方塊中。 按一下 [ **發行**。
 
-    ![] [DeployPublishSite]
+    ![][DeployPublishSite]
 
     當 Visual Studio 完成將入門專案發行至 Azure Web 應用程式之後，隨即會開啟桌面瀏覽器以顯示作用中的 Web 應用程式。
 
@@ -122,10 +122,10 @@
 右上角的按鈕，並選取 **依標籤瀏覽**。 若您使用 Internet
 Explorer 11 做為預設瀏覽器，您只需輸入 `F12`, ，然後
 `Ctrl+8`, 然後變更瀏覽器設定檔 **Windows Phone**。 Auch die Eigenschaften
-下的圖顯示 *AllTags* (透過選擇直向模式的檢視
+下的圖顯示 *AllTags* （透過選擇直向模式的檢視
 **依標籤瀏覽**)。
 
-    ![] 的 [AllTags]
+    ![][AllTags]
 
 >[AZURE.NOTE] 雖然您可以偵錯 MVC 5 應用程式從 Visual Studio 中的，您可以發佈您的 web 應用程式至 Azure，一次，以確認作用中的 web 應用程式直接從行動瀏覽器或瀏覽器模擬器。
 
@@ -133,7 +133,7 @@ Explorer 11 做為預設瀏覽器，您只需輸入 `F12`, ，然後
 看到一些 Bootstrap CSS 架構所套用的視覺效果。
 按一下 [ **ASP.NET** 連結。
 
-![] [SessionsByTagASP.NET]
+![][SessionsByTagASP.NET]
 
 ASP.NET 標籤檢視會縮放至適合大小畫面中，而這是 bootstrap
 為您自動。 不過，您可以改善此檢視，使其更適合
@@ -154,7 +154,7 @@ Bootstrap 中回應靈敏的 Web 設計。
 若要查看 Web 應用程式未啟動載入時的外觀，請開啟
 *App\_Start\\BundleConfig.cs* 和註解化包含
 *bootstrap.js* 和 *bootstrap.css*。 下列程式碼會顯示 `RegisterBundles` 方法變更之後的最後
-兩個陳述式 `RegisterBundles` 之後變更的方法:
+兩個陳述式 `RegisterBundles` 之後變更的方法 ︰
 
      bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
               //"~/Scripts/bootstrap.js",
@@ -172,7 +172,7 @@ Bootstrap 中回應靈敏的 Web 設計。
 縮放至適合大小 [] 畫面中，您必須橫向捲動才能看到
 右邊的表格。
 
-![] [SessionsByTagASP.NETNoBootstrap]
+![][SessionsByTagASP.NETNoBootstrap]
 
 復原您的變更並重新整理行動瀏覽器
 若要確認適合行動的顯示畫面已還原。
@@ -183,14 +183,14 @@ ASP.NET MVC 5 專案範本，所以 MVC 5 Web 應用程式可以使用
 利用啟動安裝程式預設。
 
 如需 Bootstrap 的詳細資訊，請移至
-[啟動安裝程式][BootstrapSite] 站台。
+[啟動程序][BootstrapSite] 站台。
 
 您將在下一節看到如何提供行動瀏覽器專用的
 檢視。
 
 ##<a name="bkmk_overrideviews"></a> 覆寫檢視、配置與部分檢視
 
-您可以覆寫任何檢視 (包括配置與部分檢視)
+您可以覆寫任何檢視 （包括配置與部分檢視）
 一般情況下，針對個別行動瀏覽器或行動的瀏覽器
 特定瀏覽器。 若要提供行動裝置專屬的檢視，您可以複製檢視
 檔案，並加入 *。行動* 的檔案名稱。 例如，若要建立行動
@@ -225,12 +225,12 @@ ASP.NET MVC 5 專案範本，所以 MVC 5 Web 應用程式可以使用
 (從標題 *\_Layout.Mobile.cshtml* 的標題及
 *AllTags.Mobile.cshtml*)。
 
-![] [AllTagsMobile_LayoutMobile]
+![][AllTagsMobile_LayoutMobile]
 
 相較之下，桌面顯示則沒有變更 (\_layout.cshtml *\_Layout.cshtml* 和 
 *AllTags.cshtml*)。
 
-![] [AllTagsMobile_LayoutMobileDesktop]
+![][AllTagsMobile_LayoutMobileDesktop]
 
 ##<a name="bkmk_browserviews"></a> 建立瀏覽器專用的檢視
 
@@ -251,18 +251,18 @@ ASP.NET MVC 5 專案範本，所以 MVC 5 Web 應用程式可以使用
 
 此程式碼會定義名為 「 iPhone 」，將會比對的新顯示模式
 對每個連入要求。 如果傳入要求符合
-您定義 (也就是如果使用者代理程式包含字串條件
+您定義 （也就是如果使用者代理程式包含字串條件
 "iPhone")，則 ASP.NET MVC 會尋找名稱包含
 "iPhone" 後置詞的檢視。
 
->[AZURE.NOTE] 新增行動瀏覽器專用的顯示模式時，例如 iPhone 和 Android，請務必將第一個引數設定為 `0` (插入於清單的頂端) 以確定該瀏覽器的專用模式會優先於行動範本 (*。.Mobile.cshtml)。 若位於清單頂端的是行動範本，則會優先選取該行動範本，而不是您想要的顯示模式 (第一個相符的會成功，而行動範本符合所有行動瀏覽器)。 
+>[AZURE.NOTE] 新增行動瀏覽器專用的顯示模式時，例如 iPhone 和 Android，請務必將第一個引數設定為 `0` （插入於清單的頂端） 以確定該瀏覽器的專用模式會優先於行動範本 (*。.Mobile.cshtml)。 若位於清單頂端的是行動範本，則會優先選取該行動範本，而不是您想要的顯示模式 (第一個相符的會成功，而行動範本符合所有行動瀏覽器)。 
 
 在程式碼，以滑鼠右鍵按一下 `DefaultDisplayMode`, ，選擇 [ **解決**, ，並
 然後選擇 [ `using System.Web.WebPages;`。 這會新增對
 `System.Web.WebPages` 命名空間，而這是定義
 `DisplayModeProvider` 和 `DefaultDisplayMode` 型別定義。
 
-![] [ResolveDefaultDisplayMode]
+![][ResolveDefaultDisplayMode]
 
 或者，您可以只透過手動方式將下列程式碼行新增至
 `using` 檔案的區段。
@@ -282,16 +282,16 @@ ASP.NET MVC 5 專案範本，所以 MVC 5 Web 應用程式可以使用
 執行應用程式。 執行行動瀏覽器模擬器，請確定它的使用者
 代理程式設定為 「 iPhone 」，並瀏覽至 *AllTags* 檢視。 如果您是
 使用 Internet Explorer 11 F12 開發人員工具] 中的模擬器
-設定下列模擬:
+設定下列模擬 ︰
 
 -   瀏覽器設定檔 = **Windows Phone**
 -   使用者代理程式字串 =  **自訂**
 -   自訂字串 = **Apple-iphone5c1/1001.525**
 
 下列螢幕擷取畫面顯示 *AllTags* 中呈現的檢視
-(此為 iPhone 5c 使用者代理程式字串) 的自訂使用者代理字串的 Internet Explorer 11 F12 開發人員工具中的模擬器。
+（此為 iPhone 5c 使用者代理程式字串） 的自訂使用者代理字串的 Internet Explorer 11 F12 開發人員工具中的模擬器。
 
-![] [AllTagsIPhone_LayoutIPhone]
+![][AllTagsIPhone_LayoutIPhone]
 
 在行動瀏覽器中，選取 **喇叭** 連結。 因為沒有
 行動檢視 (*AllSpeakers.Mobile.cshtml*)，預設的演講者檢視
@@ -299,11 +299,11 @@ ASP.NET MVC 5 專案範本，所以 MVC 5 Web 應用程式可以使用
 (*\_Layout.Mobile.cshtml*)。 如下所示，標題 **MVC5 應用程式
 (Mobile)** 定義於 *\_Layout.Mobile.cshtml*。
 
-![] [AllSpeakers_LayoutMobile]
+![][AllSpeakers_LayoutMobile]
 
-您可以全域停用預設 (非行動) 檢視呈現
+您可以全域停用預設 （非行動） 檢視呈現
 設定行動配置內 `RequireConsistentDisplayMode` 至
-`true` 在 *Views\\\_ViewStart.cshtml* 檔案，像這樣:
+`true` 在 *Views\\\_ViewStart.cshtml* 檔案，像這樣 ︰
 
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";
@@ -316,9 +316,9 @@ ASP.NET MVC 5 專案範本，所以 MVC 5 Web 應用程式可以使用
 若要設定 `RequireConsistentDisplayMode` 至 `true` 若行動配置
 不適用於您的非行動檢視。 以下螢幕擷取畫面顯示
 如何 *喇叭* 頁面呈現時 `RequireConsistentDisplayMode` 是
-設定為 `true` (不含字串 「 (Mobile) 」 在上方導覽列中)。
+設定為 `true` （不含字串 「 (Mobile) 」 在上方導覽列中）。
 
-![] [AllSpeakers_LayoutMobileOverridden]
+![][AllSpeakers_LayoutMobileOverridden]
 
 您可以在檢視檔案中將
 `RequireConsistentDisplayMode` 若要 `false` 檢視檔案中。 Auch die Eigenschaften
@@ -348,7 +348,7 @@ ASP.NET MVC 5 專案範本，所以 MVC 5 Web 應用程式可以使用
 大型、 容易點選連結，並包含可快速找到的搜尋方塊
 喇叭。
 
-您可以使用 Bootstrap 連結的清單群組] [] 樣式
+您可以使用 Bootstrap [連結的清單群組][] 樣式
 改善 *喇叭* 檢視。 在 *Views\\Home\\AllSpeakers.cshtml*,，
 下列程式碼取代 Razor 檔案的內容。
 
@@ -373,20 +373,20 @@ Bootstrap 清單樣式，而 `class="input-group-item"` 屬性
 
 重新整理行動瀏覽器。 更新的檢視如下所示：
 
-![] [AllSpeakersFixed]
+![][AllSpeakersFixed]
 
-Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
+啟動安裝程式 [連結的清單群組][] 樣式讓每個的整個方塊
 連結都可以點選，這是更好的使用者體驗。 切換至
 桌面檢視，並觀察一致的外觀及操作。
 
-![] [AllSpeakersFixedDesktop]
+![][AllSpeakersFixedDesktop]
 
 雖然已經改善行動瀏覽器檢視，很難
 瀏覽一長串的喇叭。 啟動安裝程式並不提供
 搜尋篩選功能--現成的但您可以將它與
 幾行程式碼。 您要先將搜尋方塊加入檢視然後
 與連結，以取得篩選功能的 JavaScript 程式碼。 在
-*Views\\Home\\AllSpeakers.cshtml*, ，新增 \ < 標籤 > 標籤後面 \ < h2\ > 標記，如下所示:
+*Views\\Home\\AllSpeakers.cshtml*, ，新增 \ < 標籤 > 標籤後面 \ < h2\ > 標記，如下所示 ︰
 
     @model IEnumerable<string>
 
@@ -413,11 +413,11 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
 
 請注意， `<form>` 和 `<input>` 標籤都已啟動安裝程式
 套用樣式。  `<span>` 元素會將 Bootstrap
-[] glyphicon[]
+[glyphicon][] 至
 。
 
 在 *指令碼* 資料夾中，加入名為的 JavaScript 檔案 *filter.js*。 開啟
-檔案並貼上下列程式碼到檔案中:
+檔案並貼上下列程式碼到檔案中 ︰
 
     $(function () {
 
@@ -448,7 +448,7 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
 您也需要在註冊的套件中包含 filter.js。 開啟
 *App\_Start\\BundleConfig.cs* 並變更第一組套件。 變更
 第一個 `bundles.Add` 陳述式 (如 **jquery** bundle) 包含
-*Scripts\\filter.js*, 、，如下所示:
+*Scripts\\filter.js*, 、，如下所示 ︰
 
      bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js",
@@ -462,7 +462,7 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
 搜尋方塊中，輸入"sc"。 應該現在會篩選出演講者清單
 根據您的搜尋字串。
 
-![] [AllSpeakersFixedSearchBySC]
+![][AllSpeakersFixedSearchBySC]
 
 ##<a name="bkmk_improvetags"></a> 改善標籤清單
 
@@ -476,11 +476,11 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
 
 重新整理後的桌面瀏覽器外觀如下：
 
-![] [AllTagsFixedDesktop]
+![][AllTagsFixedDesktop]
 
 而重新整理後的行動瀏覽器外觀如下： 
 
-![] [AllTagsFixed]
+![][AllTagsFixed]
 
 >[AZURE.NOTE] 如果您注意到，原始的清單格式仍有行動瀏覽器中，並不知道好的 Bootstrap 樣式發生了什麼事，這其實是您先前建立行動專用檢視的動作。 然而，既然您使用 Bootstrap CSS 架構建立回應靈敏的 Web 設計，請移除這些行動專用的檢視和行動專用的配置檢視。 完成移除後，再重新整理行動瀏覽器，就會顯示 Bootstrap 樣式。
 
@@ -496,7 +496,7 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
 
 重新整理後，您會獲得如下的行動瀏覽器檢視：
 
-![] [AllDatesFixed]
+![][AllDatesFixed]
 
 您可以進一步改善 *日期* 檢視按日期組織日期時間
 值。 這可以透過 Bootstrap
@@ -531,15 +531,15 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
     }
 
 此程式碼會建立個別 `<div class="panel panel-primary">` 標記
-在清單中，每個不同的日期，並使用的連結的清單群組] []
+每個不同的日期清單中，並使用 [連結的清單群組][] 的
 。 以下是執行此程式碼時的行動瀏覽器外觀
 ：
 
-![] [AllDatesFixed2]
+![][AllDatesFixed2]
 
 切換成桌面瀏覽器。 然後會再次發現有一致的外觀。
 
-![] [AllDatesFixed2Desktop]
+![][AllDatesFixed2Desktop]
 
 ##<a name="bkmk_improvesessionstable"></a> 改善 SessionsTable 檢視
 
@@ -549,17 +549,17 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
 在行動瀏覽器中，點選 **標記** ] 按鈕，然後輸入 `asp` 中
 。
 
-![] [AllTagsFixedSearchByASP]
+![][AllTagsFixedSearchByASP]
 
 點選 **ASP.NET** 連結。
 
-![] [SessionsTableTagASP.NET]
+![][SessionsTableTagASP.NET]
 
 如您所見，顯示畫面會格式化為表格，目前這是
 設計成在桌面瀏覽器中檢視。 不過，它會稍微
 難以閱讀行動瀏覽器上。 若要修正此問題，請開啟
 *Views\\Home\\SessionsTable.cshtml* ，然後取代的內容
-下列程式碼檔案:
+下列程式碼檔案 ︰
 
     @model IEnumerable<Mvc5Mobile.Models.Session>
 
@@ -594,25 +594,25 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
 
 此程式碼會執行 3 個動作：
 
--   使用 Bootstrap 自訂連結的清單群組]]
+-   使用 Bootstrap [自訂連結的清單群組][]
     以垂直方式，格式化工作階段資訊，讓所有這些
-    (使用類別，例如清單群組的項目文字) 的行動瀏覽器上閱讀的資訊
--   適用於 [格線 system] []
+    （使用類別，例如清單群組的項目文字） 的行動瀏覽器上閱讀的資訊
+-   適用於 [方格系統][] 至
     版面配置，使工作階段項目水平流動，在桌面上
-    瀏覽器以垂直方式在行動瀏覽器中 (使用欄-md-4 類別)
--   使用 [回應靈敏的公用程式]]
-    時，隱藏工作階段標籤 (使用 hidden-xs 類別) 的行動瀏覽器中檢視
+    瀏覽器以垂直方式在行動瀏覽器中 （使用欄-md-4 類別）
+-   使用 [回應靈敏的公用程式][] 至
+    時，隱藏工作階段標籤 （使用 hidden-xs 類別） 的行動瀏覽器中檢視
 
 您也可以點選標題連結，以進入個別工作階段。 映像
 下面會反映的程式碼變更。
 
-![] [FixedSessionsByTag]
+![][FixedSessionsByTag]
 
 排列您自動套用的 Bootstrap 方格系統
 在行動瀏覽器中垂直的工作階段。 此外，請注意，標記
 不會顯示。 切換成桌面瀏覽器。
 
-![] [SessionsTableFixedTagASP.NETDesktop]
+![][SessionsTableFixedTagASP.NETDesktop]
 
 在桌面瀏覽器，您會發現有顯示標籤。 此外，您也會看見您所套用的 Bootstrap 方格系統
 將工作階段項目排列於兩欄中。 如果您放大
@@ -625,16 +625,16 @@ Bootstrap 連結的清單群組] [] 樣式讓每個的整個方塊
 在行動瀏覽器中，點選 **標記** ] 按鈕，然後輸入 `asp` 中
 。
 
-![] [AllTagsFixedSearchByASP]
+![][AllTagsFixedSearchByASP]
 
 點選 **ASP.NET** 連結。 隨即會顯示 ASP.NET 標籤的工作階段。
 
-![] [FixedSessionsByTag]
+![][FixedSessionsByTag]
 
 選擇 **建置單一頁面應用程式使用 ASP.NET 和
 AngularJS** 連結。
 
-![SessionByCode3 644]]
+![][SessionByCode3-644]
 
 預設的桌面檢視雖然不錯，但您可以使用一些 Bootstrap GUI 元件輕鬆地改善它的外觀。
 
@@ -684,7 +684,7 @@ AngularJS** 連結。
 重新整理行動瀏覽器。 下圖反映了您剛才所做的
 程式碼變更：
 
-![SessionByCodeFixed3 644]]
+![][SessionByCodeFixed3-644]
 
 ## 總結與複習
 
@@ -705,15 +705,15 @@ AngularJS** 連結。
 ## 另請參閱
 
 -   [回應性 Web 設計的 9 個基本原則](http://blog.froont.com/9-basic-principles-of-responsive-web-design/)
--   [啟動安裝程式][] BootstrapSite
+-   [Bootstrap][BootstrapSite]
 -   [官方 Bootstrap 部落格][]
--   [Tutorial republic 的 twitter Bootstrap 教學課程][]
+-   [Tutorial Republic 的 Twitter Bootstrap 教學課程][]
 -   [Bootstrap 練習場][]
--   [W3C 建議事項行動 Web 應用程式最佳做法][]
--   [W3C 針對媒體查詢的候選建議][]
+-   [W3C 推薦的行動 Web 應用程式最佳做法][]
+-   [W3C 針對媒體查詢的候選推薦做法][]
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- Internal Links -->
 [Deploy the starter project to an Azure web app]: #bkmk_DeployStarterProject
@@ -784,4 +784,5 @@ AngularJS** 連結。
 [SessionByCode3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-3-644.png
 [SessionByCodeFixed3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-Fixed-3-644.png
  
+
 

@@ -31,3 +31,4 @@ Azure RemoteApp 使用映像保留與使用者共用的應用程式。 若要建
 
 不論在何處取得映像或建立它，請確定您了解 [應用程式需求](remoteapp-appreqs.md) ，確保您的應用程式在 RemoteApp 中順暢運作。 然後下, 一個步驟是建立 [定域機組](remoteapp-create-cloud-deployment.md) 或 [混合式](remoteapp-create-hybrid-deployment.md) 集合。
 
+

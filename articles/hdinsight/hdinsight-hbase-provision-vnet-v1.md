@@ -61,14 +61,14 @@
     - **位址空間** -選擇夠大，無法在叢集中所有節點提供位址的虛擬網路的位址空間。 否則，佈建將會失敗。 要逐步解說此教學課程，您可以挑選三個選項的任一者。
     - **最大 VM 計數** -選擇最大的虛擬機器 (VM) 計數之一。 此值決定可在位址空間下建立的可能主機 (VM) 數目。 逐步解說此教學課程中， **4096 [CIDR: / 20]** 已足夠。
     - **位置** -此位置必須與您將建立的 HBase 叢集相同。
-    - **DNS 伺服器** -本教學課程使用 Azure 所提供的因此您可以選擇的內部網域名稱系統 (DNS) 伺服器 **無**。 同時也支援更多自訂 DNS 伺服器的進階網路功能設定。 如需詳細指引，請參閱 [名稱解析 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
+    - **DNS 伺服器** -本教學課程使用 Azure 所提供的因此您可以選擇的內部網域名稱系統 (DNS) 伺服器 **無**。 同時也支援更多自訂 DNS 伺服器的進階網路設定。 如需詳細指引，請參閱 [名稱解析 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 4. 按一下 [ **建立虛擬網路** 右下角。 新的虛擬網路名稱隨即會出現在清單中。 等到 [狀態] 欄顯示 **建立**。
 5. 在主要窗格上，按一下您剛建立的虛擬網路。
 6. 按一下 [ **儀表板** 頁面頂端。
 7. 在 **快速瀏覽**, ，記下的虛擬網路識別碼。 佈建 HBase 叢集時需要使用它。
 8. 按一下 [ **設定** 頁面頂端。
 9. 預設子網路名稱是在頁面底部， **子網路 1**。 您可以選擇性地重新命名子網路，或針對 HBase 叢集加入新的子網路。 記下子網路名稱，佈建叢集時將需要使用它。
-10. 確認 **CIDR (位址計數)** 將用於叢集之子網路。 位址計數必須大於背景工作節點數量加上七 (閘道器：2、前端節點：2、Zookeeper：3)。 例如，如果您需要 10 個節點的 HBase 叢集，那麼子網路的位址計數必須大於 17 (10+7)。 否則，部署將會失敗。
+10. 確認 **CIDR （位址計數）** 將用於叢集之子網路。 位址計數必須大於背景工作節點數量加上七 (閘道器：2、前端節點：2、Zookeeper：3)。 例如，如果您需要 10 個節點的 HBase 叢集，那麼子網路的位址計數必須大於 17 (10+7)。 否則，部署將會失敗。
 11. 按一下 [ **儲存** 底部的頁面上，如果您已更新子網路值。
 
 
@@ -120,16 +120,16 @@ DNS 伺服器是選擇性的，但在某些案例中為必要。  此程序已�
     ![提供 HBase 叢集的詳細資料][img-provision-cluster-page1]
 
 
-    > [AZURE.NOTE] For an HBase cluster, Windows Server is the only available OS option.
+    > [AZURE.NOTE] HBase 叢集，Windows Server 是唯一可用的作業系統選項。
 
-4. 在 **設定叢集** 頁面上，輸入或選取下列:
+4. 在 **設定叢集** 頁面上，輸入或選取下列 ︰
 
     ![提供 HBase 叢集的詳細資料](./media/hdinsight-hbase-provision-vnet/hbasewizard2.png)
 
     <table border='1'>
         <tr><th>屬性</th><th>值</th></tr>
         <tr><td>資料節點</td><td>選取您要部署的資料節點數。 請建立單一節點叢集，以供測試之用。 <br />叢集大小限制會隨著 Azure 訂用帳戶而不同。 若要提高限制，請與 Azure 帳務支援人員連絡。</td></tr>
-        <tr><td>區域/虛擬網路</td><td><p>如果您已建立區域或 Azure 虛擬網路，請選取其一。 針對本教學課程，請選取您先前建立的網路，接著選取對應的子網路。 預設名稱是 <b>子網路 1</b>.</p></td></tr>
+        <tr><td>區域/虛擬網路</td><td><p>如果您已建立區域或 Azure 虛擬網路，請選取其一。 針對本教學課程，請選取您先前建立的網路，接著選取對應的子網路。 預設名稱是 <b>子網路 1</b>。</p></td></tr>
         <tr><td>前端節點大小</td><td><p>選取前端節點的 VM 大小。</p></td></tr>
         <tr><td>資料節點大小</td><td><p>選取資料節點的 VM 大小。</p></td></tr>
         <tr><td>Zookeeper 大小</td><td><p>選取 Zookeeper 節點的 VM 大小。</p></td></tr>
@@ -150,10 +150,10 @@ DNS 伺服器是選擇性的，但在某些案例中為必要。  此程序已�
         <tr><td>HTTP 密碼/確認密碼</td>
             <td>指定 HDInsight 叢集使用者密碼。</td></tr>
         <tr><td>為叢集啟用遠端桌面</td>
-            <td>選取此核取方塊，以指定遠端桌面使用者的使用者名稱、密碼和到期日期，使其在佈建之後可以遠端進入叢集節點。 您也可以稍後在叢集佈建後啟用遠端桌面。 如需相關指示，請參閱 <a href="hdinsight-administer-use-management-portal/#rdp" target="_blank">使用 RDP 連線到 HDInsight 叢集</a>.</td></tr>
+            <td>選取此核取方塊，以指定遠端桌面使用者的使用者名稱、密碼和到期日期，使其在佈建之後可以遠端進入叢集節點。 您也可以稍後在叢集佈建後啟用遠端桌面。 如需指示，請參閱<a href="hdinsight-administer-use-management-portal/#rdp" target="_blank">使用 RDP 連線到 HDInsight 叢集</a>。</td></tr>
     </table>
 
-6. 在 **儲存體帳戶** 頁面上，提供下列值:
+6. 在 **儲存體帳戶** 頁面上，提供下列值 ︰
 
     ![提供 Hadoop HDInsight 叢集的儲存體帳戶](./media/hdinsight-hbase-provision-vnet/hbasewizard4.png)
 
@@ -169,17 +169,17 @@ DNS 伺服器是選擇性的，但在某些案例中為必要。  此程序已�
             </td></tr>
         <tr><td>帳戶名稱</td>
             <td><ul>
-                <li>如果您選擇使用現有儲存體，請對 <strong>帳戶名稱</strong>選取現有的儲存體帳戶。 下拉式清單列出的儲存體帳戶僅限位於與您選擇佈建叢集相同的資料中心。</li>
-                <li>如果選取 <strong>建立新的儲存體</strong> 或 <strong>使用其他訂用帳戶的儲存體</strong> 選項，您必須提供儲存體帳戶名稱。</li>
+                <li>如果您選擇使用現有的儲存體， <strong>帳戶名稱</strong>, ，選取現有的儲存體帳戶。 下拉式清單列出的儲存體帳戶僅限位於與您選擇佈建叢集相同的資料中心。</li>
+                <li>如果您選擇 <strong>建立新的儲存體</strong> 或 <strong>其他訂閱中使用儲存體</strong> 選項，您必須提供儲存體帳戶名稱。</li>
             </ul></td></tr>
         <tr><td>帳戶金鑰</td>
-            <td>如果選取 <strong>使用其他訂閱的儲存體</strong> 選項，請指定該儲存體帳戶的帳戶金鑰。</td></tr>
+            <td>如果您選擇 <strong>其他訂閱中使用儲存體</strong> 選項，請指定該儲存體帳戶的帳戶金鑰。</td></tr>
         <tr><td>預設容器</td>
-            <td><p>指定儲存體帳戶上的預設容器做為 HDInsight 叢集的預設檔案系統。 如果選取 <strong>使用現有儲存體</strong> 值以重複使用認證，藉此呼叫 <strong>儲存體帳戶</strong> 欄位，而且會與叢集名稱同名的預設會建立該帳戶中，容器中的沒有現有容器。 如果已有使用叢集名稱的容器存在，則會為容器名稱加上序號。 例如 mycontainer1、mycontainer2，依此類推。 然而，如果現有儲存體帳戶已有容器存在，且其名稱與您指定的叢集名稱不同，您仍可以使用該容器。</p>
+            <td><p>指定儲存體帳戶上的預設容器做為 HDInsight 叢集的預設檔案系統。 如果您選擇 <strong>使用現有儲存體</strong> 的 <strong>儲存體帳戶</strong> 欄位，而且會與叢集名稱同名的預設會建立該帳戶中，容器中的沒有現有容器。 如果已有使用叢集名稱的容器存在，則會為容器名稱加上序號。 例如 mycontainer1、mycontainer2，依此類推。 然而，如果現有儲存體帳戶已有容器存在，且其名稱與您指定的叢集名稱不同，您仍可以使用該容器。</p>
             <p>如果選擇建立新儲存體或從另一個 Azure 訂用帳戶使用儲存體，則必須指定預設容器名稱。</p>
         </td></tr>
         <tr><td>其他儲存體帳戶</td>
-            <td>視需要指定叢集的其他儲存體帳戶。 HDInsight 支援多個儲存體帳戶。 叢集可使用的其他儲存體帳戶沒有數量上的限制。 但如果您使用 Azure 傳統入口網站建立叢集，則會因為 UI 的限制而只能使用最多七個儲存體帳戶。 您指定每個其他儲存體帳戶另外加入一個 <strong>儲存體帳戶</strong> 您可以在此指定帳戶資訊的精靈頁面。 以上面的螢幕擷取畫面為例，其未選取其他儲存體帳戶，因此沒有在精靈上加入額外頁面。</td></tr>
+            <td>視需要指定叢集的其他儲存體帳戶。 HDInsight 支援多個儲存體帳戶。 叢集可使用的其他儲存體帳戶沒有數量上的限制。 但如果您使用 Azure 傳統入口網站建立叢集，則會因為 UI 的限制而只能使用最多七個儲存體帳戶。 您指定每個其他儲存體帳戶另外加入一個 <strong>儲存體帳戶</strong> 頁面精靈，您可以在此指定帳戶資訊。 以上面的螢幕擷取畫面為例，其未選取其他儲存體帳戶，因此沒有在精靈上加入額外頁面。</td></tr>
     </table>
 
     按一下向右箭頭。
@@ -198,7 +198,7 @@ DNS 伺服器是選擇性的，但在某些案例中為必要。  此程序已�
 
 2.  使用 Java 應用程式從遠端連接到 HBase 時，您必須使用完整網域名稱 (FQDN)。 若要決定此名稱，您必須取得 HBase 叢集的連線特定 DNS 尾碼。 請使用 Curl 以查詢 Ambari，或使用遠端桌面連接到叢集。
 
-    * **Curl** -使用下列命令:
+    * **Curl** -使用下列命令 ︰
 
             curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
 
@@ -210,7 +210,7 @@ DNS 伺服器是選擇性的，但在某些案例中為必要。  此程序已�
 
         以叢集名稱開頭的網域名稱部分就是 DNS 尾碼。 例如，mycluster.b1.cloudapp.net。
 
-    * **Azure PowerShell** -使用下列 PowerShell 指令碼註冊 **Get-clusterdetail** 函式，可以用來傳回 DNS 尾碼:
+    * **Azure PowerShell** -使用下列 PowerShell 指令碼註冊 **Get-clusterdetail** 函式，可以用來傳回 DNS 尾碼 ︰
 
             function Get-ClusterDetail(
                 [String]
@@ -308,7 +308,7 @@ DNS 伺服器是選擇性的，但在某些案例中為必要。  此程序已�
 
         這會傳回 DNS 尾碼。 例如， **yourclustername.b4.internal.cloudapp.net**。
 
-    > [AZURE.NOTE] 您也可以使用遠端桌面連接到 HBase 叢集 (您將連接至前端節點) 和執行 **ipconfig** 從命令提示字元來取得 DNS 尾碼。 如需啟用遠端桌面通訊協定 (RDP) 和使用 RDP 連接到叢集的指示，請參閱 [HDInsight 使用 Azure 傳統入口網站中的管理 Hadoop 叢集][hdinsight-admin-portal]。
+    > [AZURE.NOTE] 您也可以使用遠端桌面連接到 HBase 叢集 （您將連接至前端節點） 和執行 **ipconfig** 從命令提示字元來取得 DNS 尾碼。 如需啟用遠端桌面通訊協定 (RDP) 和使用 RDP 連接到叢集的指示，請參閱 [HDInsight 使用 Azure 傳統入口網站中的管理 Hadoop 叢集][hdinsight-admin-portal]。
     >
     > ![hdinsight.hbase.dns.surffix][img-dns-surffix]
 
@@ -433,4 +433,5 @@ DNS 伺服器是選擇性的，但在某些案例中為必要。  此程序已�
 [img-primary-dns-suffix]: ./media/hdinsight-hbase-provision-vnet/PrimaryDNSSuffix.png
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Provision details for the new HBase cluster"
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Use Script Action to customize an HBase cluster"
+
 

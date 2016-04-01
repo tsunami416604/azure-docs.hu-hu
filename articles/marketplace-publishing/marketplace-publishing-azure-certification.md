@@ -21,7 +21,7 @@
 
 本文提供如何成為 Microsoft Azure 認證合作夥伴的指示。 如需 Microsoft Azure 認證程式和它的優點的詳細概觀，請瀏覽 [http://azure.com/certified](http://azure.com/certified)。
 
-> [AZURE.NOTE] Azure 憑證是您要建立虛擬機器、 方案範本和 Azure Marketplace 的開發人員服務時，才適用。 如果您沒有建立任何這些成品，請略過此步驟並移至 [Microsoft 賣方帳戶: 建立和註冊](marketplace-publishing-accounts-creation-registration.md)。
+> [AZURE.NOTE] Azure 憑證是您要建立虛擬機器、 方案範本和 Azure Marketplace 的開發人員服務時，才適用。 如果您沒有建立任何這些成品，請略過此步驟並移至 [Microsoft 賣方帳戶 ︰ 建立和註冊](marketplace-publishing-accounts-creation-registration.md)。
 
 ## 開始使用
 1. 您的應用程式或服務認證與上的架到 Azure Marketplace 取得路徑上的第一個步驟是完成應用程式表單上 [Microsoft Azure 認證](https://azure.microsoft.com/marketplace/partner-program/) 網頁。
@@ -35,8 +35,9 @@
 > [AZURE.WARNING] 若要賣出您在 Microsoft Azure Marketplace 上的服務，您已註冊的實體必須包含 1 的已核准 」 銷售的 「 國家/地區。 這項限制是基於付款和稅務理由。 我們正積極在不久的將來擴充這份國家/地區清單，所以請密切注意。 如需完整的清單，請參閱區段 1b 的 [Marketplace</參與原則](http://go.microsoft.com/fwlink/?LinkID=526833)。
 
 ## 後續步驟
-一旦您從 Microsoft Azure 認證程式收到核准前，您可以繼續到 [Microsoft 賣方帳戶: 建立和註冊](marketplace-publishing-accounts-creation-registration.md)。
+一旦您從 Microsoft Azure 認證程式收到核准前，您可以繼續到 [Microsoft 賣方帳戶 ︰ 建立和註冊](marketplace-publishing-accounts-creation-registration.md)。
 
 ## 另請參閱
-- [使用者入門：如何將供應項目發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
+- [使用者入門：如何將優惠發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
+
 

@@ -49,17 +49,17 @@ Azure Toolkit for Eclipse 提供範本和功能，可讓您輕鬆地使用 Eclip
 1. 啟動 Eclipse。
 2. 在 Eclipse 內，於功能表上按一下 <strong>協助</strong>, ，然後按一下 [ <strong>安裝新軟體</strong>, ，如下圖所示。
     ![][ic590123]
-3. 在 <strong>可用的軟體</strong> 對話方塊，在 <strong>使用</strong> 文字方塊中輸入 <strong>http://dl.msopentech.com/eclipse</strong> 後面接著 <strong>Enter</strong> 索引鍵。
-4. 在 [名稱]<strong></strong> 窗格中，核取 [Azure Toolkit for Eclipse]<strong></strong>，然後取消核取 [在安裝期間連絡所有更新網站來尋找必要軟體]<strong></strong>。 您的畫面看起來應類似下列:
+3. 在 <strong>可用的軟體</strong> ] 對話方塊，在 <strong>使用</strong> 文字方塊中，輸入 <strong>http://dl.msopentech.com/eclipse</strong> 後面 <strong>Enter</strong> 索引鍵。
+4. 在 [名稱]<strong></strong> 窗格中，核取 [Azure Toolkit for Eclipse]<strong></strong>，然後取消核取 [在安裝期間連絡所有更新網站來尋找必要軟體]<strong></strong>。 您的畫面看起來應類似下列 ︰
     ![][ic719482]
-5. 如果您展開 <strong>適用於 Eclipse 的 Azure 工具組</strong>您會看到下列項目:
-    * **Azure Access Control Services Filter**: 此元件來驗證應用程式使用者使用 Azure ACS 提供支援。
-    * **Common Plugin**: 此元件包含共用功能依賴由其他元件。
-    * **Azure Toolkit for Eclipse**: 此元件含有專案組態邏輯、 發行至雲端精靈] 中，與使用者介面。
-    * **Microsoft JDBC Driver 4.0 for SQL Server**: 此元件可簡化應用程式開發使用 SQL 資料庫。
-    * **Apache Qpid Client Libraries for JMS 套件**: 此元件提供從 Apache Qpid 專案，以啟用應用程式使用進階訊息佇列通訊協定 AMQP 為基礎的傳訊在 Azure 中的 JMS 用戶端程式庫
-    * **Azure libraries for Java 封裝**: 此元件可讓您建置 Azure 應用程式在 Java 中，可讓您充分利用 Azure 可擴充的雲端運算資源。
-    * **Java 的 application Insights 外掛程式**: 此元件可讓您使用 Azure 的遙測記錄和分析服務用於您的應用程式和伺服器執行個體。
+5. 如果您展開 [Azure Toolkit for Eclipse]<strong></strong>，則會看到下列項目：
+    * **Azure Access Control Services Filter**︰ 此元件來驗證應用程式使用者使用 Azure ACS 提供支援。
+    * **Common Plugin**︰ 此元件包含共用功能依賴由其他元件。
+    * **Azure Toolkit for Eclipse**︰ 此元件含有專案組態邏輯、 發行至雲端精靈] 中，與使用者介面。
+    * **Microsoft JDBC Driver 4.0 for SQL Server**︰ 此元件可簡化應用程式開發使用 SQL 資料庫。
+    * **Apache Qpid Client Libraries for JMS 套件**︰ 此元件提供從 Apache Qpid 專案，以啟用應用程式使用進階訊息佇列通訊協定 AMQP 為基礎的傳訊在 Azure 中的 JMS 用戶端程式庫
+    * **Azure libraries for Java 封裝**︰ 此元件可讓您建置 Azure 應用程式在 Java 中，可讓您充分利用 Azure 可擴充的雲端運算資源。
+    * **Java 的 application Insights 外掛程式**︰ 此元件可讓您使用 Azure 的遙測記錄和分析服務用於您的應用程式和伺服器執行個體。
 6. 按一下 [ **下一步**。 (如果您在安裝此工具組時遇到不尋常的延遲，請確認 **若要尋找必要的軟體在安裝期間連絡所有更新網站** 未核取。)
 7. 在 **安裝詳細資料** ] 對話方塊中，按一下 [ **下一步**。
 8. 在 **檢閱授權** ] 對話方塊中，檢閱授權合約的條款。 如果您接受授權合約的條款，請按一下 [ **我接受授權合約的條款** 然後按一下 [ **完成**。 (其餘的步驟假設您接受授權合約的條款。 如果您不接受授權合約的條款，請結束安裝程序。)
@@ -88,4 +88,5 @@ Azure Toolkit for Eclipse 提供範本和功能，可讓您輕鬆地使用 Eclip
 
 [ic590123]: ./media/azure-toolkit-for-eclipse-installation/ic590123.png
 [ic719482]: ./media/azure-toolkit-for-eclipse-installation/ic719482.png
+
 

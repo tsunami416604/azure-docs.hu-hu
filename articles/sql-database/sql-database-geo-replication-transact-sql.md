@@ -49,7 +49,7 @@ Standard 資料庫可以有一個不可讀取次要複本，並且必須使用�
 您可以使用 **ALTER DATABASE** 陳述式來建立夥伴伺服器的地理區域複寫的次要資料庫。 您在包含要複寫的資料庫伺服器的 master 資料庫上執行此陳述式。 異地複寫資料庫 (「主要資料庫」) 會具備與要複寫的資料庫相同的名稱，並且預設與主要資料庫具有相同的服務層級。 次要資料庫可以是可讀取或不可讀取，並且可以是單一資料庫或彈性資料庫。 如需詳細資訊，請參閱 [ALTER DATABASE (TRANSACT-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) 和 [服務層](https://azure.microsoft.com/documentation/articles/sql-database-service-tiers/)。
 建立次要資料庫並植入之後，資料就會開始以非同步方式從主要資料庫複寫。 下列步驟說明如何使用 Management Studio 設定異地複寫。 提供使用單一資料庫或彈性資料庫建立不可讀取和可讀取次要複本的步驟。
 
-> [AZURE.NOTE] 如果次要資料庫存在指定的夥伴伺服器上 (例如，因為目前存在的地理區域複寫關聯性或先前已存在，則命令會失敗。
+> [AZURE.NOTE] 如果次要資料庫存在指定的夥伴伺服器上 （例如，因為目前存在的地理區域複寫關聯性或先前已存在，則命令會失敗。
 
 
 ### 加入不可讀取次要複本 (單一資料庫)
@@ -63,7 +63,7 @@ Standard 資料庫可以有一個不可讀取次要複本，並且必須使用�
 
 2. 開啟 [資料庫] 資料夾中，展開 **系統資料庫** 資料夾中，以滑鼠右鍵按一下 **主要**, ，然後按一下 [ **新查詢**。
 
-3. 使用下列 **ALTER DATABASE** 陳述式，讓地理區域複寫到本機資料庫上的非可讀取次要資料庫與主要 <MySecondaryServer1>。
+3. 使用下列 **ALTER DATABASE** 陳述式加上不可讀取的次要資料庫與主要地理區域複寫到本機資料庫 <MySecondaryServer1>.
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer1> WITH (ALLOW_CONNECTIONS = NO);
@@ -160,7 +160,7 @@ Standard 資料庫可以有一個不可讀取次要複本，並且必須使用�
 
 2. 開啟 [資料庫] 資料夾中，展開 **系統資料庫** 資料夾中，以滑鼠右鍵按一下 **主要**, ，然後按一下 [ **新查詢**。
 
-3. 使用下列 **ALTER DATABASE** 陳述式加到異地複寫的地理區域複寫的資料庫與可讀取的次要資料庫上主要 <MySecondaryServer4> 中 <ElasticPool2>。
+3. 使用下列 **ALTER DATABASE** 陳述式，讓地理區域複寫的資料庫地理區域複寫到主要上的可讀取次要資料庫 <MySecondaryServer4> 了嗎 <ElasticPool2>.
 
         ALTER DATABASE <MyDB> FAILOVER;
 
@@ -187,7 +187,7 @@ Standard 資料庫可以有一個不可讀取次要複本，並且必須使用�
 
 2. 開啟 [資料庫] 資料夾中，展開 **系統資料庫** 資料夾中，以滑鼠右鍵按一下 **主要**, ，然後按一下 [ **新查詢**。
 
-3. 使用下列 **ALTER DATABASE** 陳述式，讓 <MyLocalDB> 成與可讀取的次要資料庫上的地理區域複寫主要 <MySecondaryServer4> 中 <ElasticPool2>。
+3. 使用下列 **ALTER DATABASE** 陳述式 <MyLocalDB> 有一個可讀取的次要資料庫上的地理區域複寫主要到 <MySecondaryServer4> 了嗎 <ElasticPool2>.
 
         ALTER DATABASE <MyDB>   FORCE_FAILOVER_ALLOW_DATA_LOSS;
 
@@ -233,4 +233,5 @@ Standard 資料庫可以有一個不可讀取次要複本，並且必須使用�
 - [使用異地複寫設計業務持續性的雲端應用程式](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [業務續航力概觀](sql-database-business-continuity.md)
 - [SQL Database 文件](https://azure.microsoft.com/documentation/services/sql-database/)
+
 

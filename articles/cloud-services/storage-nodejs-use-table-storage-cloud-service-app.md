@@ -63,7 +63,7 @@ Azure Node.js 來搭配資料管理服務的用戶端程式庫。 您
 將使用儲存體模擬器。
 
 執行下列步驟，以擷取儲存體帳戶認證
-並將其新增至 web.config 設定:
+並將其新增至 web.config 設定 ︰
 
 1.  如果它尚未開啟，開始使用 Azure PowerShell 從 **開始** ] 功能表上，依序展開 **所有程式]、 [Azure**, ，以滑鼠右鍵按一下 **PowerShell**, ，然後選取 **系統管理員身分執行**。
 
@@ -77,11 +77,11 @@ Azure Node.js 來搭配資料管理服務的用戶端程式庫。 您
 
     > [AZURE.NOTE] Azure SDK 會建立儲存體帳戶，當您部署服務，從上一個說明中的應用程式的部署中已存在儲存體帳戶。
 
-4.  開啟 **ServiceDefinition.csdef** 包含環境設定應用程式部署至 Azure 時所使用的檔案:
+4.  開啟 **ServiceDefinition.csdef** 包含環境設定應用程式部署至 Azure 時所使用的檔案 ︰
 
         PS C:\node\tasklist> notepad ServiceDefinition.csdef
 
-5.  將下列區塊下方插入 **環境** 項目，取代 {STORAGE ACCOUNT} 和 {STORAGE ACCESS KEY} 帳戶名稱與您想要用於部署的儲存體帳戶的主索引鍵:
+5.  將下列區塊下方插入 **環境** 項目，取代 {STORAGE ACCOUNT} 和 {STORAGE ACCESS KEY} 帳戶名稱與您想要用於部署的儲存體帳戶的主索引鍵 ︰
 
         <Variable name="AZURE_STORAGE_ACCOUNT" value="{STORAGE ACCOUNT}" />
         <Variable name="AZURE_STORAGE_ACCESS_KEY" value="{STORAGE ACCESS KEY}" />
@@ -92,7 +92,7 @@ Azure Node.js 來搭配資料管理服務的用戶端程式庫。 您
 
 ### 安裝其他模組
 
-2. 使用下列命令來安裝 [azure]、 [node-uuid]、 [nconf] 及 [async] 模組，在本機儲存其項目，才能 **package.json** 檔案:
+2. 使用下列命令來安裝 [azure]、 [node-uuid]、 [nconf] 及 [async] 模組，在本機儲存其項目，才能 **package.json** 檔案 ︰
 
         PS C:\node\tasklist\WebRole1> npm install azure-storage node-uuid async nconf --save
 
@@ -125,7 +125,7 @@ Azure Node.js 來搭配資料管理服務的用戶端程式庫。 您
 
 2. 在 **模型** 目錄中，建立新的檔名為 **task.js**。 此檔案將包含您的應用程式建立之工作的模型。
 
-3. 在開始 **task.js** 檔案中，新增下列程式碼以參考所需的程式庫:
+3. 在開始 **task.js** 檔案中，新增下列程式碼以參考所需的程式庫 ︰
 
         var azure = require('azure-storage');
         var uuid = require('node-uuid');
@@ -204,7 +204,7 @@ Azure Node.js 來搭配資料管理服務的用戶端程式庫。 您
 
 1. 在 **WebRole1/routes** 目錄中，建立新的檔名為 **tasklist.js** 和文字編輯器中開啟。
 
-2. 加入下列程式碼以 **tasklist.js**。 這會載入 azure 和 async 模組，可供 **tasklist.js**。 這也會定義 **TaskList** 函式，傳遞的執行個體 **工作** 我們稍早定義的物件:
+2. 加入下列程式碼以 **tasklist.js**。 這會載入 azure 和 async 模組，可供 **tasklist.js**。 這也會定義 **TaskList** 函式，傳遞的執行個體 **工作** 我們稍早定義的物件 ︰
 
         var azure = require('azure-storage');
         var async = require('async');
@@ -276,7 +276,7 @@ Azure Node.js 來搭配資料管理服務的用戶端程式庫。 您
         app.use('/', routes);
         app.use('/users', users);
 
-    將以上幾行取代為以下顯示的程式碼。 這會使用儲存體帳戶的連線初始化 <strong>工作</strong> 的執行個體。 此項目會傳至 <strong>TaskList</strong>，供其用來與資料表服務通訊：
+    將以上幾行取代為以下顯示的程式碼。 這會初始化 <strong>Task</strong> 的執行個體，並連接到您的儲存體帳戶。 這會傳遞給 <strong>TaskList</strong>，它將用來與表格服務通訊：
 
         var TaskList = require('./routes/tasklist');
         var Task = require('./models/task');
@@ -340,7 +340,7 @@ Azure Node.js 來搭配資料管理服務的用戶端程式庫。 您
 
 1. 下載並解壓縮的檔案 [Twitter Bootstrap](http://getbootstrap.com/)。 複製 **bootstrap.min.css** 檔案從 **bootstrap\\dist\\css** 資料夾 **public\\stylesheets** tasklist 應用程式的目錄。
 
-2. 從 **檢視** 資料夾中，開啟 **layout.jade** 在文字編輯器中，將取代為下列內容:
+2. 從 **檢視** 資料夾中，開啟 **layout.jade** 在文字編輯器中，將取代為下列內容 ︰
 
         doctype html
         html
@@ -402,7 +402,7 @@ Azure Node.js 來搭配資料管理服務的用戶端程式庫。 您
 避免成本，或建置並部署其他應用程式內使用免費試用版
 一段時間。
 
-Azure 會對於 Web 角色執行個體的伺服器使用時間時數計費。
+Azure 會就每小時伺服器時間所使用的 Web 角色執行個體數進行收費。
 您的應用程式部署之後，都會耗用伺服器時間即使
 執行個體未執行並處於停止狀態。
 
@@ -428,4 +428,5 @@ Azure 會對於 Web 角色執行個體的伺服器使用時間時數計費。
   [Node.js Web Application]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
  
  
+
 

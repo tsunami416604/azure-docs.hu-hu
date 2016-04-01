@@ -42,3 +42,4 @@ API 說明頁面包含 R、C# 和 Python 程式設計語言的範例。
 
 如需如何存取和使用 web 服務的詳細資訊，請參閱 [如何使用 Azure Machine Learning web 服務已從機器學習實驗發佈](machine-learning-consume-web-services.md)。
 
+

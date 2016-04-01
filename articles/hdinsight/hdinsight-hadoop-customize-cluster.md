@@ -29,7 +29,7 @@
 
 HDInsight 叢集可以在各種不同的其他方式，例如包括自訂 
 其他的 Azure 儲存體帳戶、 變更 Hadoop 組態檔 (core-site.xml， 
-hive-site.xml 等)，或將共用程式庫 (例如 Hive、 Oozie) 加入至一般位置 
+hive-site.xml 等），或將共用程式庫 （例如 Hive、 Oozie） 加入至一般位置 
 在叢集中。 這些自訂可以透過 Azure PowerShell，Azure 
 HDInsight.NET SDK 或 Azure 入口網站。 如需詳細資訊，請參閱 
 [在 HDInsight 中建立 Hadoop 叢集][hdinsight-provision-cluster]。
@@ -37,7 +37,7 @@ HDInsight.NET SDK 或 Azure 入口網站。 如需詳細資訊，請參閱
 ## 叢集建立程序中的指令碼動作
 
 只有正在建立叢集時，才會使用指令碼動作。 下列 
-圖說明當建立程序期間執行指令碼動作:
+圖說明當建立程序期間執行指令碼動作 ︰
 
 ![HDInsight 叢集自訂和叢集建立期間的階段][img-hdi-cluster-states]
 
@@ -57,7 +57,7 @@ helper 函式的詳細資訊請參閱 [hdinsight 開發指令碼動作指令碼]
 輸出和錯誤記錄檔指令碼會儲存在預設儲存體帳戶 
 指定給叢集。 記錄會儲存在資料表名稱 
 **u < \cluster-name-fragment >< \time-stamp > u<\cluster-name-fragment><\time-stamp>setuplog**。 這些是來自指令碼彙總的記錄檔 
-在所有節點 (前端節點和背景工作節點) 在叢集上執行。
+在所有節點 （前端節點和背景工作節點） 在叢集上執行。
 
 每個叢集可接受多個指令碼動作叫用的順序，它們 
 所指定。 指令碼可在前端節點、背景工作節點或同時在兩者執行。
@@ -78,7 +78,7 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝下列元件：
 **從 Azure 入口網站**
 
 1. 開始建立叢集述 [建立 Hadoop 叢集的 HDInsight](hdinsight-provision-clusters.md#portal)。
-2. 選用設定] 下的 **指令碼動作** 刀鋒視窗中，按一下 [ **加入指令碼動作** 提供有關指令碼動作，詳細資料，如下所示:
+2. 選用設定] 下的 **指令碼動作** 刀鋒視窗中，按一下 [ **加入指令碼動作** 提供有關指令碼動作，詳細資料，如下所示 ︰
 
     ![使用指令碼動作以自訂叢集](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Use Script Action to customize a cluster")
 
@@ -87,11 +87,11 @@ HDInsight 提供數個指令碼在 HDInsight 叢集上安裝下列元件：
         <tr><td>名稱</td>
             <td>指定指令碼動作的名稱。</td></tr>
         <tr><td>指令碼 URI</td>
-            <td>指定為了自訂叢集所叫用的指令碼的 URI。 s</td></tr>
-        <tr><td>標頭/背景工作</td>
+            <td>對自訂叢集所叫用的指令碼指定 URI。 s</td></tr>
+        <tr><td>Head/Worker</td>
             <td>指定的節點 (**Head** 或 **工作者**) 上執行自訂指令碼。</b>。
         <tr><td>參數</td>
-            <td>如果所需的指令碼，請指定參數。</td></tr>
+            <td>如果指令碼要求，請指定參數。</td></tr>
     </table>
 
     請按 ENTER 加入一個以上的指令碼動作，以在叢集上安裝多個元件。
@@ -291,14 +291,14 @@ Microsoft Azure HDInsight 服務是彈性的平台，可讓您使用以 Hadoop �
 
 HDInsight 服務中有兩種類型的開放原始碼元件可用：
 
-- **內建元件** -這些元件預先安裝在 HDInsight 叢集上，並且提供叢集的核心功能。 例如，YARN ResourceManager、Hive 查詢語言 (HiveQL) 及 Mahout 程式庫都屬於這個類別。 叢集元件的完整清單位於 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能?](hdinsight-component-versioning.md)</a>。
+- **內建元件** -這些元件預先安裝在 HDInsight 叢集上，並且提供叢集的核心功能。 例如，YARN ResourceManager、Hive 查詢語言 (HiveQL) 及 Mahout 程式庫都屬於這個類別。 叢集元件的完整清單位於 [的 HDInsight 所提供的 Hadoop 叢集版本的新功能？](hdinsight-component-versioning.md)</a>。
 - **自訂元件** -您為叢集中，使用者可以安裝或使用您的工作負載在社群中可用或是您建立的任何元件。
 
 內建元件受到完整支援，且 Microsoft 支援服務將會協助釐清與解決這些元件的相關問題。
 
 > [AZURE.WARNING] 隨附於 HDInsight 叢集的元件受到完整支援，並以隔離並解決這些元件的相關問題協助 Microsoft 支援服務。
 >
-> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可以使用，像是: [適用於 HDInsight 的 MSDN 論壇](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), ，[http://stackoverflow.com](http://stackoverflow.com)。 Apache 專案也有專案網站 [http://apache.org](http://apache.org), ，例如: [Hadoop](http://hadoop.apache.org/), ，[Spark](http://spark.apache.org/)。
+> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可以使用，像是 ︰ [適用於 HDInsight 的 MSDN 論壇](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), ，[http://stackoverflow.com](http://stackoverflow.com)。 Apache 專案也有專案網站 [http://apache.org](http://apache.org), ，例如 ︰ [Hadoop](http://hadoop.apache.org/), ，[Spark](http://spark.apache.org/)。
 
 HDInsight 服務提供數種方式以使用自訂元件。 無論元件如何使用或如何安裝在叢集上，都適用相同層級的支援。 以下是自訂元件可用於 HDInsight 叢集之最常見方式的清單：
 
@@ -328,4 +328,5 @@ HDInsight 服務提供數種方式以使用自訂元件。 無論元件如何使
 
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Stages during cluster creation"
+
 

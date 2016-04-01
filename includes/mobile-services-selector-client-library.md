@@ -2,7 +2,8 @@
 - [Android](../articles/mobile-services-android-how-to-use-client-library.md)
 - [HTML/JavaScript](../articles/mobile-services-html-how-to-use-client-library.md)
 - [iOS](../articles/mobile-services-ios-how-to-use-client-library.md)
-- [受管理 (Windows/Xamarin)](../articles/mobile-services-dotnet-how-to-use-client-library.md)
+- [受管理的 (Windows/Xamarin)](../articles/mobile-services-dotnet-how-to-use-client-library.md)
+
 
 
 

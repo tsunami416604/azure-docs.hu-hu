@@ -24,7 +24,7 @@
 
 <hr/>
 
-讓我們推銷您的專案！ 讓我們看看您使用 DocumentDB 進行的絕佳專案，我們很樂意與全世界分享您的才華。 要提交您的專案，請寄電子郵件在: [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com)。
+讓我們推銷您的專案！ 讓我們看看您使用 DocumentDB 進行的絕佳專案，我們很樂意與全世界分享您的才華。 要提交您的專案，請寄電子郵件在 ︰ [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com)。
 
 
 ### documentdb-lumenize
@@ -93,7 +93,7 @@ DoQmentDB 是一個以 Node.js Promise 為基礎的用戶端，可在 DocumentDB
 
 <br/><br/>
 
-*您有部落格文章、 程式碼範例中或您想要共用的案例研究嗎? [讓我們知道](mailto:askdocdb@microsoft.com)!*
+*您有部落格文章、 程式碼範例中或您想要共用的案例研究嗎？ [讓我們知道](mailto:askdocdb@microsoft.com)！*
 
 <br/><br/>
 
@@ -109,7 +109,7 @@ DoQmentDB 是一個以 Node.js Promise 為基礎的用戶端，可在 DocumentDB
 | ------------------------------------------------------------------------------- | -------------------- | ------------------- | ------- |
 | [Meetup: msdevmtl](http://www.meetup.com/msdevmtl/events/223839818/)            | 加拿大魁北克省蒙特婁 | 2015 年 12 月 1 日    | [#msdevmtl](https://twitter.com/hashtag/msdevmtl) |
 
-*您要裝載的事件嗎? [讓我們知道](mailto:askdocdb@microsoft.com) 我們可以協助!*
+*您要裝載的事件嗎？ [讓我們知道](mailto:askdocdb@microsoft.com) 我們可以協助 ！*
 
 ### 先前的活動和記錄
 
@@ -120,7 +120,7 @@ DoQmentDB 是一個以 Node.js Promise 為基礎的用戶端，可在 DocumentDB
 | [CloudDevelop 2015](http://www.clouddevelop.org/)                                                                          | 美國俄亥俄州哥倫布         | 2015 年 10 月 23 日       | n/a |
 | [SQL Saturday #430 - Sofia 2015](http://www.sqlsaturday.com/430/eventhome.aspx)                                            | 保加利亞索菲亞      | 2015 年 10 月 10 日       | n/a |
 | [SQL Saturday #429 - Oporto 2015](http://www.sqlsaturday.com/429/eventhome.aspx)                                           | 葡萄牙奧波圖     | 2015 年 10 月 3 日        | n/a |
-| [AzureCon](https://azure.microsoft.com/azurecon/)                                                                          | 虛擬活動        | 2015 年 9 月 29 日     | [Azure 的資料與分析資料平台](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)<br/>[使用 NoSQL DocumentDB 中的資料](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
+| [AzureCon](https://azure.microsoft.com/azurecon/)                                                                          | 虛擬活動        | 2015 年 9 月 29 日     | [Azure 的資料與分析資料平台](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)<br/>[在 DocumentDB 中使用 NoSQL 資料](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
 | [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/eventhome.aspx)                                          | 荷蘭烏特勒支 | 2015 年 9 月 26 日     | [Azure DocumentDB 簡介](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
 | [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/)                        | 美國加州舊金山    | 2015 年 9 月 15 日     | n/a |
 | [白俄羅斯 Azure 使用者群組見面會](https://www.facebook.com/events/786540124800276/)                                       | 明斯克，白俄羅斯       | 2015 年 9 月 9 日      | [DocumentDB 概念概觀簡介、一致性層級、分區化策略](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
@@ -129,7 +129,7 @@ DoQmentDB 是一個以 Node.js Promise 為基礎的用戶端，可在 DocumentDB
 | [Tech Refresh 2015](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015)                                         | 葡萄牙里斯本     | 2015 年 6 月 15 日          | [DocumentDB 101](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015/DPDEV01) |
 | [Database Month](http://www.databasemonth.com/database/azure-documentdb)                                                   | 美國紐約         | 2015 年 5 月 19 日           | [Azure DocumentDB︰大規模可調整、多租用戶文件資料庫服務](https://www.youtube.com/watch?v=iZsqBc3Dkbk) |
 | [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/)               | 倫敦英國           | 2015 年 5 月 19 日           | n/a |
-| [Ignite](http://ignite.microsoft.com/)                                                                                     | 美國伊利諾州芝加哥          | 2015 年 5 月 4-8 日          | [選取最新的 DocumentDB 視訊](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)<br/>[DocumentDB 和 Azure HDInsight: 搭配成效更佳的視訊](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
+| [Ignite](http://ignite.microsoft.com/)                                                                                     | 美國伊利諾州芝加哥          | 2015 年 5 月 4-8 日          | [選取最新的 DocumentDB 視訊](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)<br/>[DocumentDB 和 Azure HDInsight ︰ 搭配成效更佳的視訊](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
 | [Build 2015](http://www.buildwindows.com/)                                                                                 | 美國加州舊金山    | 2015 年 4 月 29 日至 5 月 1 日 | [使用 Azure 的 NoSQL 服務成就下一件大事︰DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
 | [Global Azure Bootcamp 2015 - Spain](http://azurebootcamp.es/)                                                             | 馬德里西班牙        | 2015 年 4 月 25 日         | [#DEAN DocumentDB + Express + AngularJS + NodeJS 在 Azure 上執行](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
 | [Meetup: Charlotte Microsoft Cloud](http://www.meetup.com/Charlotte-Microsoft-Cloud/events/221503519/)                     | 美國北卡羅來納州夏洛特        | 2015 年 4 月 8 日          | n/a |
@@ -165,7 +165,7 @@ DoQmentDB 是一個以 Node.js Promise 為基礎的用戶端，可在 DocumentDB
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/en-us/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/en-us/training-courses/developing-solutions-with-azure-documentdb-10554)<br/><br/>Microsoft Virtual Academy 提供您訓練協助您建立 Azure DocumentDB 的人。 |
 | [![P] luralsight(./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction)                                                      | [**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction)<br/><br/>Pluralsight 是主要的 Microsoft 合作夥伴提供 Azure 訓練。 如果您是 MSDN 訂閱者，請善用您存取 Microsoft Azure 訓練課程的權益。 |
-| [![O] psGility(./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb)                                                 | [**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb)<br/><br/>OpsGility 在 Microsoft Azure 上提供深入的技術訓練。 由導師現場授課，或由業界的專家指導員透過遠距教學授課。 |
+| [![O] psGility(./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb)                                                 | [**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb)<br/><br/>OpsGility Microsoft Azure 上提供深入的技術訓練。 由導師現場授課，或由業界的專家指導員透過遠距教學授課。 |
 
 <br/><br/>
 
@@ -186,7 +186,7 @@ Twitter 上追隨我們 [@DocumentDB](https://twitter.com/DocumentDB) 並保持�
 
 | 論壇提供者                                                                                                                  | 說明 |
 | ------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| [![S] tackOverflow(./media/documentdb-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-documentdb) | 適用於程式設計人員的共同編輯問題和答案網站 (與語言無關)。 請遵循我們標記: [azure documentdb](http://stackoverflow.com/questions/tagged/azure-documentdb) |
+| [![S] tackOverflow(./media/documentdb-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-documentdb) | 適用於程式設計人員的共同編輯問題和答案網站 (與語言無關)。 請遵循我們標記 ︰ [azure documentdb](http://stackoverflow.com/questions/tagged/azure-documentdb) |
 | [![MSDN](./media/documentdb-community/msdn.png)](http://go.microsoft.com/fwlink/?LinkId=631655 )                                | 提供 Microsoft Azure 功能和服務 (例如網站、DocumentDB 等) 支援和意見反應的好地方。 |
 
 <br/><br/>
@@ -205,7 +205,7 @@ Twitter 上追隨我們 [@DocumentDB](https://twitter.com/DocumentDB) 並保持�
 
 |                                                          |     |
 | -------------------------------------------------------- | --- |
-|![小組](./media/documentdb-community/documentdb-team.png) | 您需要技術協助嗎？ 有任何疑問嗎？ 想知道 NoSQL 是否適合您?<br/><br/>您可以 [排程 1:1 直接與 DocumentDB 工程小組聊天室](http://www.askdocdb.com/)。<br/><br/>您也可以限定我們 [電子郵件](mailto:askdocdb@microsoft.com) 或推文給我們在 [@DocumentDB](https://twitter.com/DocumentDB)。 |
+|![小組](./media/documentdb-community/documentdb-team.png) | 您需要技術協助嗎？ 有任何疑問嗎？ 想知道 NoSQL 是否適合您嗎？<br/><br/>您可以 [排程 1:1 直接與 DocumentDB 工程小組聊天室](http://www.askdocdb.com/)。<br/><br/>您也可以限定我們 [電子郵件](mailto:askdocdb@microsoft.com) 或推文給我們在 [@DocumentDB](https://twitter.com/DocumentDB)。 |
 
 
 <br/><br/>
@@ -247,4 +247,5 @@ DocumentDB 精靈是社群領導者，他們是在協助其他人充分利用他
 | [![Allan Mitchell](./media/documentdb-community/wizard-allan-mitchell.jpg)](https://twitter.com/allansqlis) <br/> [Allan Mitchell](https://twitter.com/allansqlis) | [![Jen Stirrup](./media/documentdb-community/wizard-jen-stirrup.jpg)](https://twitter.com/jenstirrup) <br/> [Jen Stirrup](https://twitter.com/jenstirrup)          | [![Lenni Lobel](./media/documentdb-community/wizard-lenni-lobel.jpg)](https://twitter.com/lennilobel) <br/> [Lenni Lobel](https://twitter.com/lennilobel)          | [![Mihail Mateev](./media/documentdb-community/wizard-mihail-mateev.jpg)](https://twitter.com/mihailmateev) <br/> [Mihail Mateev](https://twitter.com/mihailmateev)|
 
 想要成為 DocumentDB 精靈？ 由於是否能成為 DocumentDB 精靈並沒有任何評斷基準，因此我們會針對部分條件來評估，包括被提名人在線上論壇 (例如 StackOverflow 和 MSDN；Wiki 和線上內容；會議和使用者群組；播客；網站；部落格和社群媒體；以及文章與書籍) 中提供之貢獻所產生的影響。 您可以將自己或別人的提名 [電子郵件傳送給我們](mailto:askdocdb@microsoft.com)。
+
 

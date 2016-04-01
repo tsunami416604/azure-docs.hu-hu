@@ -17,3 +17,4 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空間參照，
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString);
 
+

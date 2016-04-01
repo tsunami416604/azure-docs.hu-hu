@@ -37,7 +37,7 @@ Azure SQL Database 索引顧問會建議新的索引給現有 SQL Database 來�
 - 只能對 V12 伺服器自動建立和驗證索引建議 (針對 V12 伺服器提供建議和索引建立指令碼)。
 - 建議和管理僅適用於非叢集索引。
 
-## 先決條件
+## 必要條件
 
 若要檢視及建立索引建議，您必須正確 [角色型存取控制](role-based-access-control-configure.md) 在 Azure 中的權限。 
 
@@ -69,7 +69,7 @@ Azure SQL Database 索引顧問會建議新的索引給現有 SQL Database 來�
 
 > [AZURE.NOTE] 若要取得索引建議資料庫必須有一週的使用方式，和該週內需要有一些活動。 也需要有一些一致的活動。 相較於隨機蹦出的零星活動，一致的查詢模式更有利於索引建議程式最佳化。
 
-![建議的索引][] 3
+![建議的索引][3]
 
 依照可能帶來的效能影響排序，建議分成下列 4 個類別：
 
@@ -94,7 +94,7 @@ Azure SQL Database 索引顧問會建議新的索引給現有 SQL Database 來�
 
 1. 在 **索引建議** 刀鋒視窗中按一下 **檢視捨棄索引建議**。
 1. 從清單中選取捨棄的索引以檢視其詳細資料。
-1. (選擇性) 按一下 **復原捨棄** ，將索引加回到主要清單 **索引建議**。
+1. （選擇性） 按一下 **復原捨棄** ，將索引加回到主要清單 **索引建議**。
 
 
 
@@ -104,7 +104,7 @@ Azure SQL Database 索引顧問會建議新的索引給現有 SQL Database 來�
 
 索引建議適用於所有的 Azure SQL Database 伺服器，但只有 V12 伺服器提供自動化索引建立。 非 V12 伺服器仍然可以受益於索引顧問，但是您必須以手動方式建立索引，如下所述。
 
-自動和手動建立索引選取建議的索引，從 **索引建議** 分頁，然後執行下列動作:
+自動和手動建立索引選取建議的索引，從 **索引建議** 分頁，然後執行下列動作 ︰
 
 ### 自動建立索引 (僅限 V12 伺服器)
 
@@ -141,7 +141,7 @@ Azure SQL Database 索引顧問會建議新的索引給現有 SQL Database 來�
 
 
 
-![建議的索引][] 4
+![建議的索引][4]
 
 
 
@@ -170,6 +170,7 @@ Azure SQL Database 索引顧問會建議新的索引給現有 SQL Database 來�
 [2]: ./media/sql-database-index-advisor/index-details.png
 [3]: ./media/sql-database-index-advisor/recommended-indexes.png
 [4]: ./media/sql-database-index-advisor/index-operations.png
+
 
 
 

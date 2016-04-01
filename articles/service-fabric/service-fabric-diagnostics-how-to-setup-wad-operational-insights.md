@@ -17,17 +17,17 @@
    ms.author="kunalds"/>
 
 
-# 從 Service Fabric 叢集在 Azure 中使用 WAD (Windows Azure 診斷) 和 Operational Insights 收集記錄檔
+# 從 Service Fabric 叢集在 Azure 中使用 WAD （Windows Azure 診斷） 和 Operational Insights 收集記錄檔
 
-在 Azure 中執行 Service Fabric 叢集時，您可以將所有節點的記錄檔收集到中央位置。 將記錄檔集中在中央位置，可輕鬆分析和疑難排解您的叢集或該叢集中執行的應用程式與服務可能發生的任何問題。 上傳和收集記錄檔的方式是使用 WAD (Windows Azure 診斷) 延伸將記錄檔上傳至 Azure 資料表儲存體。 Operational Insights (屬於 Microsoft Operations Management Suite 的一部分) 是可輕鬆分析和搜尋記錄檔的 SaaS 解決方案。 下列步驟說明如何在叢集的 VM 上設定 WAD，以便將記錄檔上傳至集中存放區，然後設定 Operational Insights 來提取記錄，讓您可以在 Operational Insights 入口網站中檢視記錄。 Operational Insights 會依儲存記錄檔的 Azure 儲存體資料表的名稱，識別從 Service Fabric 叢集上傳的各種記錄檔的來源，所以 WAD 必須設定為將記錄檔上傳至名稱與 Operational Insights 搜尋目標相符的 Azure 儲存體資料表，這份文件中的組態設定範例將示範儲存體資料表的名稱。
+在 Azure 中執行 Service Fabric 叢集時，您可以將所有節點的記錄檔收集到中央位置。 將記錄檔集中在中央位置，可輕鬆分析和疑難排解您的叢集或該叢集中執行的應用程式與服務可能發生的任何問題。 上傳和收集記錄檔的方式是使用 WAD （Windows Azure 診斷） 延伸將記錄檔上傳至 Azure 資料表儲存體。 Operational Insights (屬於 Microsoft Operations Management Suite 的一部分) 是可輕鬆分析和搜尋記錄檔的 SaaS 解決方案。 下列步驟說明如何在叢集的 VM 上設定 WAD，以便將記錄檔上傳至集中存放區，然後設定 Operational Insights 來提取記錄，讓您可以在 Operational Insights 入口網站中檢視記錄。 Operational Insights 會依儲存記錄檔的 Azure 儲存體資料表的名稱，識別從 Service Fabric 叢集上傳的各種記錄檔的來源，所以 WAD 必須設定為將記錄檔上傳至名稱與 Operational Insights 搜尋目標相符的 Azure 儲存體資料表，這份文件中的組態設定範例將示範儲存體資料表的名稱。
 
 ## 建議閱讀資料
-* [Windows Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md) (雲端服務相關，但可提供您一些良好的資訊和範例)
+* [Windows Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md) （雲端服務相關，但可提供您一些良好的資訊和範例）
 * [Operational Insights](https://azure.microsoft.com/services/operational-insights/)
 * [Azure 資源管理員](https://azure.microsoft.com/documentation/articles/resource-group-overview/)
 
-## 先決條件
-這些工具會用來執行某些作業的這份文件:
+## 必要條件
+這些工具將用來執行這份文件中的某些作業：
 * [Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
 * [ARM 用戶端](https://github.com/projectkudu/ARMClient)
 
@@ -39,7 +39,7 @@
 2. 應用程式事件：這些是從您的服務程式碼發出且使用 Visual Studio 範本所提供的 EventSource 協助程式類別所寫出的事件。 如需有關如何撰寫從您的應用程式記錄檔，請參閱此 [文章](https://azure.microsoft.com/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/)。
 
 
-## 部署 Service Fabric 叢集收集和記錄檔上傳到 WAD (Windows Azure 診斷)
+## 部署 Service Fabric 叢集收集和記錄檔上傳到 WAD （Windows Azure 診斷）
 收集記錄檔的第一個步驟是將 WAD 延伸部署在 Service Fabric 叢集的每個 WM 上。 WAD 會收集每個 VM 上的記錄檔，並將它們上傳至您指定的儲存體帳戶。 根據您是使用入口網站或 ARM，以及是在建立叢集時或針對已存在的叢集來部署而定，步驟會稍微不同。 讓我們看看每個案例的步驟。
 
 ### 透過入口網站建立叢集時部署 WAD
@@ -47,7 +47,7 @@
 ![入口網站中用於建立叢集的 WAD 設定](./media/service-fabric-diagnostics-how-to-setup-wad-operational-insights/portal-cluster-creation-diagnostics-setting.png)
 
 ### 使用 ARM 建立叢集時部署 WAD
-若要使用 ARM 建立叢集，您需要在建立叢集之前將 WAD 組態 JSON 加入至完整的叢集 ARM 範本。 我們提供範例 5 VM 叢集 ARM 範本 WAD 組態加入至我們的 ARM 範本範例的一部分，您可以查看 Azure 範例庫中的這個位置: [WAD ARM 範本 」 範例使用五個節點叢集](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-cluster-5-node-1-nodetype-wad)。 
+若要使用 ARM 建立叢集，您需要在建立叢集之前將 WAD 組態 JSON 加入至完整的叢集 ARM 範本。 我們提供範例 5 VM 叢集 ARM 範本 WAD 組態加入至我們的 ARM 範本範例的一部分，您可以查看 Azure 範例庫中的這個位置 ︰ [WAD ARM 範本 」 範例使用五個節點叢集](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-cluster-5-node-1-nodetype-wad)。 
 
 若要查看 ARM 範本中的 WAD 設定，請搜尋 "WadCfg"。 若要使用這個範本建立叢集，只要按上面連結所提供的 [部署到 Azure] 按鈕即可。
 或者，您也可以下載 ARM 範例，加以變更，然後在 Azure Powershell 視窗中使用 `New-AzureResourceGroupDeployment` 命令，使用修改過的範本建立叢集。 您需要傳給命令的參數如下。 此外，在呼叫此部署命令之前，您可能需要進行一些設定，包括加入 Azure 帳戶 (`Add-AzureAccount`)、選擇訂用帳戶 (`Select-AzureSubscription`)、切換到 ARM 模式 (`Switch-AzureMode AzureResourceManager`)，以及建立資源群組 (如果尚未建立) (`New-AzureResourceGroup`)。
@@ -56,7 +56,7 @@
 New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
 ```
 
-### <a name="deploywadarm"></a>WAD 部署至現有的叢集
+### <a name="deploywadarm"></a>將 WAD 部署到現有的叢集
 如果現有的叢集上未部署 WAD，您可以使用下列步驟加入 WAD。
 使用下列 JSON 建立兩個檔案：WadConfigUpdate.json 和 WadConfigUpdateParams.json。
 
@@ -272,7 +272,7 @@ if ($existingConfig) {
     New-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -StorageAccountResourceId $storageAccount.ResourceId -StorageAccountKey $key -Tables $validTables -Containers $validContainers
 }
 ```
-一旦您已設定 Operational Insights 工作區，以從 Azure 資料表儲存體帳戶中讀取，您應該登入 Azure 入口網站中，且查詢 Operational Insights 資源的 [儲存體] 索引標籤。 它應該會顯示如下:
+一旦您已設定 Operational Insights 工作區，以從 Azure 資料表儲存體帳戶中讀取，您應該登入 Azure 入口網站中，且查詢 Operational Insights 資源的 [儲存體] 索引標籤。 它應該會顯示如下 ︰
 ![Azure 入口網站中的 Operational Insights 儲存體設定](./media/service-fabric-diagnostics-how-to-setup-wad-operational-insights/oi-connected-tables-list.png)
 
 ### 在 Operational Insights 中搜尋和檢視記錄檔
@@ -311,4 +311,5 @@ if ($existingConfig) {
 
 ## 後續步驟
 請查看診斷事件發出 [可靠動作項目](service-fabric-reliable-actors-diagnostics.md) 和 [可靠的服務](service-fabric-reliable-services-diagnostics.md) 若要更深入瞭解哪些事件則應該考慮問題疑難排解。
+
 

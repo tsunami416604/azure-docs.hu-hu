@@ -21,7 +21,7 @@
 
 Azure 有兩個選項可在雲端主控 SQL Server 工作負載：
 
-* [Azure SQL Database](https://azure.microsoft.com/services/sql-database/): 定域機組，也就是平台即服務 (PaaS) 資料庫或資料庫即服務 (DBaaS) 軟體做為服務 (SaaS) 應用程式開發是適合的原生的 SQL 資料庫。 它提供與大部分 SQL Server 功能的相容性。
+* [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)︰ 定域機組，也就是平台即服務 (PaaS) 資料庫或資料庫即服務 (DBaaS) 軟體做為服務 (SaaS) 應用程式開發是適合的原生的 SQL 資料庫。 它提供與大部分 SQL Server 功能的相容性。
 * [SQL Server Azure 虛擬機器上](https://azure.microsoft.com/services/virtual-machines/sql-server/): SQL Server 安裝和裝載在雲端上 Windows Server 虛擬機器 (Vm) 在 Azure 中，也就是基礎結構即服務 (IaaS) 上執行。
 
 瞭解每個選項如何搭配 Microsoft 資料平台一起運作，並在比對適合您的商業需求的選項時獲得協助。 無論您是以節省成本為優先考量，或將精簡管理視為首要條件，本文可依據您最重視的商務需求進行比較，以協助您決定要提供的方法。
@@ -65,23 +65,23 @@ Azure 有兩個選項可在雲端主控 SQL Server 工作負載：
 
 </tr>
 <tr>
-   <td valign="middle"><p><b>最適合</b></p></td>
+   <td valign="middle"><p><b>適用於</b></p></td>
    <td valign="middle">
           <ul>
-          <li type=round>的新雲端式設計應用程式有時間限制，在開發與行銷。
-          <li type=round>需有內建的高可用性、 嚴重損壞修復及升級機制的應用程式。
-          <li type=round>不想管理基礎作業系統和組態設定的團隊。
+          <li type=round>開發與行銷階段有時間限制的新雲端式設計應用程式。
+          <li type=round>需有內建高可用性、災害復原及升級機制的應用程式。
+          <li type=round>不想要管理基礎作業系統和組態設定的團隊。
          <li type=round>使用向外延展模式的應用程式。
-         <li type=round>1 TB 的資料庫。
-         <li type=round>建置軟體-做為服務 (SaaS) 應用程式。
+         <li type=round>大小高達 1 TB 的資料庫。
+         <li type=round>建置軟體即服務 (SaaS) 應用程式。
   </ul>
 </td>
    <td valign="middle">
       <ul>
-      <li type=round>需要快速移轉至最少變更定域機組的現有應用程式。
-      <li type=round>透過安全通道從 Azure 需要存取內部資源 (例如 Active Directory) 的 SQL Server 應用程式。
-      <li type=round>如果您需要以完整系統管理權限的自訂的 IT 環境。
-      <li type=round>快速開發和測試案例時您不想購買內部部署 SQL Server 非生產的硬體。
+      <li type=round>需要幾乎無需進行任何變更即可快速移轉至雲端的現有應用程式。
+      <li type=round>需要透過安全通道，從 Azure 存取內部部署資源 (例如 Active Directory) 的 SQL Server 應用程式。
+      <li type=round>如果您需要包含完整系統管理權限的自訂 IT 環境。
+      <li type=round>當您不想購買內部部署 SQL Server 非生產硬體時的快速開發和測試案例。
       <li type=round>內部部署 SQL Server 使用的應用程式的嚴重損壞修復 [backup to Azure Storage](http://msdn.microsoft.com/library/jj919148.aspx) 或 [AlwaysOn replicas with Azure VMs](../virtual-machines/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)。
       <li type=round>大於 1 TB 的大型資料庫。
       </ul></td>
@@ -90,10 +90,10 @@ Azure 有兩個選項可在雲端主控 SQL Server 工作負載：
    <td valign="middle"><p><b>資源</b></p></td>
    <td valign="middle">
        <ul>
-       <li type=round>不想要運用 IT 資源來支援和維護的基礎結構。
-       <li type=round>您想要專注於應用程式層級。
+       <li type=round>您不想要運用 IT 資源來支援和維護基礎結構。
+       <li type=round>您想要將焦點放在應用程式層上。
        </ul></td>
-   <td valign="middle"><ul><li type=round>您擁有支援和維護的 IT 資源。</ul></td>
+   <td valign="middle"><ul><li type=round>您擁有可支援和維護的 IT 資源。</ul></td>
 
 </tr>
 <tr>
@@ -104,15 +104,15 @@ Azure 有兩個選項可在雲端主控 SQL Server 工作負載：
 </tr>
 <tr>
    <td valign="middle"><p><b>業務持續性</b></p></td>
-   <td valign="middle"><ul><li type=round>除了內建的容錯基礎結構功能，Azure SQL Database 提供功能，例如時間點還原時間、 地理還原和地理複寫可增加業務持續性。 如需詳細資訊，請參閱 [SQL Database business continuity overview](sql-database-business-continuity.md)。</ul></td>
-   <td valign="middle"><ul><li type=round>Azure Vm 上的 SQL Server 可讓您設定高可用性和災害復原解決方案，以滿足您的資料庫特定需求。 因此，您可以有已針對您的應用程式進行高度最佳化的系統。 您可以視需要自我測試並執行容錯移轉。 如需詳細資訊，請參閱 [高可用性和嚴重損壞修復的 SQL Server 在 Azure 虛擬機器] ((.../ virtual-machines/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)。</ul></td>
+   <td valign="middle"><ul><li type=round>除了內建的容錯基礎結構功能以外，Azure SQL Database 還提供可增加業務持續性的功能，例如時間點還原時間、地理還原和地理複寫。 如需詳細資訊，請參閱 [SQL Database business continuity overview](sql-database-business-continuity.md)。</ul></td>
+   <td valign="middle"><ul><li type=round>Azure VM 上的 SQL Server 可讓您設定高可用性和災害復原解決方案，以滿足您的資料庫特定需求。 因此，您可以有已針對您的應用程式進行高度最佳化的系統。 您可以視需要自我測試並執行容錯移轉。 如需詳細資訊，請參閱 [Azure 虛擬機器上 SQL Sever 的高可用性和災害復原]((../virtual-machines/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)。</ul></td>
 
 </tr>
 <tr>
    <td valign="middle"><p><b>混合式雲端</b></p></td>
-   <td valign="middle"><ul><li type=round>內部部署應用程式存取 Azure SQL 資料庫中的資料。</ul></td>
+   <td valign="middle"><ul><li type=round>您的內部部署應用程式可以存取 Azure SQL Database 中的資料。</ul></td>
    <td valign="middle"><ul>
-      <li type=round>使用 Azure Vm 上的 SQL Server，您可以有部分在雲端中執行和部分在內部的應用程式。 比方說，您可以擴充您的內部網路和 Active Directory 網域透過 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)。 此外，您可以在內部資料檔案儲存在 Azure 儲存體使用 [SQL Server Data Files in Azure](http://msdn.microsoft.com/library/dn385720.aspx)。 如需詳細資訊，請參閱 [Introduction to SQL Server 2014 Hybrid Cloud](http://msdn.microsoft.com/library/dn606154.aspx)。
+      <li type=round>有了 Azure VN 上的 SQL Server，您的應用程式可以部分在雲端中執行和部分在內部部署中執行。 比方說，您可以擴充您的內部網路和 Active Directory 網域透過 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)。 此外，您可以在內部資料檔案儲存在 Azure 儲存體使用 [SQL Server Data Files in Azure](http://msdn.microsoft.com/library/dn385720.aspx)。 如需詳細資訊，請參閱 [Introduction to SQL Server 2014 Hybrid Cloud](http://msdn.microsoft.com/library/dn606154.aspx)。
       <li type=round>支援內部部署 SQL Server 使用的應用程式的嚴重損壞修復 [SQL Server Backup and Restore with Azure Blob Storage](http://msdn.microsoft.com/library/jj919148.aspx) 或 [AlwaysOn replicas in Azure VMs](../virtual-machines/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)。
       </ul></td>
 
@@ -181,7 +181,7 @@ Azure 有兩個選項可在雲端主控 SQL Server 工作負載：
 
 本文探討了 SQL Database 和 Azure 虛擬機器 (VM) 上的 SQL Server，並討論可能會影響您的決策的常見商業動因。 下列是建議摘要，可用來考慮：
 
-選擇 **Azure SQL Database** 如果:
+選擇 **Azure SQL Database** 如果 ︰
 
 - 您正在建置新的雲端應用程式或您想要移轉現有的 SQL Server 解決方案，以善用雲端服務所提供的成本節省和效能最佳化。 此方法提供全面管理雲端服務的優點，有助於減少產品上市時間，並可提供長期的成本最佳化。
 
@@ -189,7 +189,7 @@ Azure 有兩個選項可在雲端主控 SQL Server 工作負載：
 
 請參閱 [建立您的第一個 Azure SQL database](sql-database-get-started.md) 以便開始使用。
 
-選擇 **Azure Vm 上的 SQL Server** 如果:
+選擇 **Azure Vm 上的 SQL Server** 如果 ︰
 
 - 您有現有的內部部署應用程式，而且想要停止維護自己的硬體，或考慮混合式解決方案。 這種方法可讓您更快速地存取高資料庫容量，並透過安全通道連接內部部署應用程式。
 
@@ -197,4 +197,5 @@ Azure 有兩個選項可在雲端主控 SQL Server 工作負載：
 
 請參閱 [佈建 Azure 中的 SQL Server 虛擬機器](virtual-machines-provision-sql-server.md) 以便開始使用。
 
-> [AZURE.NOTE] 想要嘗試 SQL Server 2016 CTP2 嗎? 註冊 Microsoft Azure，然後移 [這裡](http://aka.ms/sql2016vm "這裡") 建立已安裝的 SQL Server 2016 ctp2 的虛擬機器。
+> [AZURE.NOTE] 想要嘗試 SQL Server 2016 CTP2 嗎？ 註冊 Microsoft Azure，然後移 [這裡](http://aka.ms/sql2016vm "這裡") 建立已安裝的 SQL Server 2016 ctp2 的虛擬機器。
+

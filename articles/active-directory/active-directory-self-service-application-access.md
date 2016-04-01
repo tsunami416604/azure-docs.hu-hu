@@ -20,7 +20,7 @@
 
 為使用者啟用自助式功能是常見的企業 IT 案例。 許多使用者、許多應用程式，以及最有把握做出存取權授與決策的人員可能都不是目錄管理員。 通常決定誰可以存取應用程式的最佳人選是小組負責人或其他委派的系統管理員。 但是在一天結束時，這就是使用應用程式的使用者，而使用者知道他們需要什麼才能進行其作業。
 
-自助服務應用程式的存取是一項功能 [Azure Active Directory Premium](http://azure.microsoft.com/trial/get-started-active-directory/) ，讓目錄系統管理員:
+自助服務應用程式的存取是一項功能 [Azure Active Directory Premium](http://azure.microsoft.com/trial/get-started-active-directory/) ，讓目錄系統管理員 ︰
 
 * 讓使用者要求存取應用程式使用中的 [取得更多應用程式] 磚 [Azure AD 存取面板](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
 * 設定使用者可以要求存取哪些應用程式
@@ -50,7 +50,7 @@
 
 ![][1]
 
-**6:** (選擇性) 設定的存取要求的核准工作流程，設定 **授與存取權之前需要核准** 至 **是**。 然後可以使用選取一或多個核准者 **核准者** ] 按鈕。
+**6:** （選擇性） 設定的存取要求的核准工作流程，設定 **授與存取權之前需要核准** 至 **是**。 然後可以使用選取一或多個核准者 **核准者** ] 按鈕。
 
 核准者可以是組織中具有 Azure AD 帳戶的任何使用者，而且可能負責帳戶佈建、授權或您的組織在授與應用程式存取權前所需的任何其他商務程序。 核准者甚至可以是一個或多個共用帳戶群組的群組擁有者，而且可以將使用者指派給其中一個群組，讓它們能透過共用帳戶進行存取。 
 
@@ -68,7 +68,7 @@
 
 **12:** 要求程序就會啟動的應用程式上按一下。 如果不核准程序是必要項目，則應用程式會立即新增下 **應用程式** 簡短的確認訊息之後的索引標籤。 如果需要核准，則您會看到一個對話方塊如此表示，而且會傳送電子郵件給核准者。 (快速提示：您必須以非核准者身分登入存取面板，才能查看此要求程序)。
 
-**13:** 電子郵件指示登入 Azure AD 存取面板並核准要求的核准者。 一旦核准要求 (並執行任何特殊的程序，您定義了核准者)，使用者會看到應用程式出現在其 **應用程式** 他們可以登入] 索引標籤。
+**13:** 電子郵件指示登入 Azure AD 存取面板並核准要求的核准者。 一旦核准要求 （並執行任何特殊的程序，您定義了核准者），使用者會看到應用程式出現在其 **應用程式** 他們可以登入] 索引標籤。
 
 ##委派的應用程式存取管理
 
@@ -106,4 +106,5 @@
 [1]: ./media/active-directory-self-service-application-access/ssaa_admin.PNG
 [2]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app.PNG
 [3]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app_config.PNG
+
 

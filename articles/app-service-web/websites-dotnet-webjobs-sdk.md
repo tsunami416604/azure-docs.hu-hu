@@ -22,7 +22,7 @@
 
 本文說明 WebJobs SDK 是什麼、檢閱部分適用的典型案例，以及提供在程式碼中的使用方式概觀。
 
-[WebJobs](websites-webjobs-resources.md) 是一項功能可讓您為 web 應用程式、 API 應用程式或行動裝置應用程式的同一內容中執行程式或指令碼的 Azure 應用程式服務。 目的 [WebJobs SDK](websites-webjobs-resources.md) 是為了簡化您撰寫的一般工作的可執行的 web 工作，例如映像處理、 佇列處理、 RSS 彙總檔案維護的程式碼，並傳送電子郵件。 WebJobs SDK 具有內建功能，用於處理 Azure 儲存體和服務匯流排、工作排程和處理錯誤，以及許多其他常見案例。 此外，它是設計為具有擴充性，而且沒有 [擴充功能的開放原始碼儲存機制](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。
+[WebJobs](websites-webjobs-resources.md) 是一項功能可讓您為 web 應用程式、 API 應用程式或行動裝置應用程式的同一內容中執行程式或指令碼的 Azure 應用程式服務。 目的 [WebJobs SDK](websites-webjobs-resources.md) 是為了簡化您撰寫的一般工作的可執行的 web 工作，例如映像處理、 佇列處理、 RSS 彙總檔案維護的程式碼，並傳送電子郵件。 WebJobs SDK 具有內建的功能，可與「Azure 儲存體」和「服務匯流排」搭配運作、用來排定工作和處理錯誤，以及處理許多其他常見的案例。 此外，它是設計為具有擴充性，而且沒有 [擴充功能的開放原始碼儲存機制](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。
 
 WebJobs SDK 包含下列元件：
 
@@ -173,10 +173,11 @@ public class Functions
 
 如需詳細資訊，請參閱 [如何手動叫用函式](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual) 和 [如何寫入記錄檔](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs) 
 
-## <a id="nextsteps"></a>後續步驟
+## <a id="nextsteps"></a>接續步驟
 
 如需 WebJobs SDK 的詳細資訊，請參閱 [Azure WebJobs 建議資源](http://go.microsoft.com/fwlink/?linkid=390226)。
 
 WebJobs SDK 的最新增強功能的相關資訊，請參閱 [版本資訊](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)。
  
+
 

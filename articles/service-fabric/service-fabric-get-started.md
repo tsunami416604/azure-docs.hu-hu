@@ -19,7 +19,7 @@
 # 準備您的開發環境
  若要建置並執行 [Service Fabric 應用程式][1] 在開發電腦，您需要安裝執行階段、 SDK、 工具和設定本機叢集。
 
-## 先決條件
+## 必要條件
 ### 支援的作業系統版本
 下列為支援的作業系統版本：
 
@@ -65,4 +65,5 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "Service Fabric campaign page"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI link"
+
 

@@ -1,12 +1,12 @@
 <properties
-    pageTitle ="在 VM 上執行運算密集的.NET 應用程式 |Microsoft Azure 「
-    描述 = 「 了解如何部署與 Azure 虛擬機器上執行運算密集的.NET 應用程式並使用 Azure 服務匯流排佇列來遠端監控進度 」。
-    服務 = 「 虛擬機器 」
+    pageTitle="在 VM 上執行需密集運算的 .NET 應用程式 | Microsoft Azure"
+    description="了解如何在 Azure 虛擬機器上部署與執行需密集運算的 .NET 應用程式，並使用 Azure 服務匯流排佇列來遠端監控進度。"
+    services="virtual-machines"
     documentationCenter=".net"
-    作者 ="wadepickett"
+    authors="wadepickett"
     manager="wpickett"
-    編輯器 ="mollybos"
-    標記 ="azure-服務管理的 「 / >
+    editor="mollybos"
+    tags=“azure-service-management"/>
 
 <tags
     ms.service="virtual-machines"
@@ -111,8 +111,8 @@ Azure 可讓您利用虛擬機器處理大量運算工作。 例如，虛擬機�
 
 ## 如何建立 .NET 應用程式以便執行需密集運算的工作
 
-1. 在您開發電腦 (不一定要是您所建立的虛擬機器)，下載 [Azure SDK for.NET](http://azure.microsoft.com/develop/net/)。
-2. 利用名為 TSPSolver 的專案建立 .NET 主控台應用程式。 請確定設定已目標 framework。**NET Framework 4** 或更新版本 (不 **.NET Framework 4 Client Profile**)。 設定目標 framework 是建立專案後由下列: 在 Visual Studio 的功能表中，按一下 **專案**, ，按一下 **屬性**, ，按一下 [ **應用程式** 索引標籤，然後再設定的值 **目標 framework**。
+1. 在您開發電腦 （不一定要是您所建立的虛擬機器），下載 [Azure SDK for.NET](http://azure.microsoft.com/develop/net/)。
+2. 利用名為 TSPSolver 的專案建立 .NET 主控台應用程式。 請確定設定已目標 framework。**NET Framework 4** 或更新版本 (不 **.NET Framework 4 Client Profile**)。 設定目標 framework 是建立專案後由下列 ︰ 在 Visual Studio 的功能表中，按一下 **專案**, ，按一下 **屬性**, ，按一下 [ **應用程式** 索引標籤，然後再設定的值 **目標 framework**。
 3. 加入 Microsoft ServiceBus 程式庫。 在 Visual Studio 方案總管] 中以滑鼠右鍵按一下 **TSPSolver**, ，按一下 [ **加入參考**, ，按一下 [ **瀏覽** ] 索引標籤上，瀏覽至 Azure.NET SDK (例如，C:\Program Files\Microsoft SDKs\Azure\.NET SDK\v2.5\ToolsRef)，然後選取 **Microsoft.ServiceBus.dll** 做為參考。
 4. 加入 System Runtime Serialization 程式庫。 在 Visual Studio 方案總管] 中以滑鼠右鍵按一下 **TSPSolver**, ，按一下 [ **加入參考**, ，按一下 [ **.NET** 索引標籤，然後選取 **System.Runtime.Serialization** 做為參考。
 5. 將這一節結尾的範例程式碼使用於 Program.cs 的內容。
@@ -337,7 +337,7 @@ Azure 可讓您利用虛擬機器處理大量運算工作。 例如，虛擬機�
 
 ## 如何建立 .NET 應用程式以便監控需密集運算之工作的進度
 
-1. 在開發電腦上，以 TSPClient 作為專案名稱來建立 .NET 主控台應用程式。 確定設定目標 framework。**NET Framework 4** 或更新版本 (不 **.NET Framework 4 Client Profile**)。 使用下列建立專案之後，就可以設定目標 framework: 在 Visual Studio 的功能表中，按一下 **專案**, ，按一下 **屬性**, ，按一下 [ **應用程式** 索引標籤，然後再設定的值 **目標 framework**。
+1. 在開發電腦上，以 TSPClient 作為專案名稱來建立 .NET 主控台應用程式。 確定設定目標 framework。**NET Framework 4** 或更新版本 (不 **.NET Framework 4 Client Profile**)。 使用下列建立專案之後，就可以設定目標 framework ︰ 在 Visual Studio 的功能表中，按一下 **專案**, ，按一下 **屬性**, ，按一下 [ **應用程式** 索引標籤，然後再設定的值 **目標 framework**。
 2. 加入 Microsoft ServiceBus 程式庫中。 在 Visual Studio 方案總管] 中以滑鼠右鍵按一下 **TSPClient**, ，按一下 [ **加入參考**, ，按一下 [ **瀏覽** ] 索引標籤上，瀏覽至 Azure.NET SDK (例如，C:\Program Files\Microsoft SDKs\Azure\.NET SDK\v2.5\ToolsRef)，然後選取 **Microsoft.ServiceBus.dll** 做為參考。
 3. 加入 System Runtime Serialization 程式庫。 在 Visual Studio 方案總管] 中以滑鼠右鍵按一下 **TSPClient**, ，按一下 [ **加入參考**, ，按一下 [ **.NET** 索引標籤，然後選取 **System.Runtime.Serialization** 做為參考。
 4. 將這一節結尾的範例程式碼使用於 Program.cs 的內容。
@@ -558,4 +558,5 @@ Azure 可讓您利用虛擬機器處理大量運算工作。 例如，虛擬機�
 [click_create]: ./media/virtual-machines-dotnet-run-compute-intensive-task/ClickCreate.png
 [namespace_list]: ./media/virtual-machines-dotnet-run-compute-intensive-task/NamespaceList.png
 [access_key_button]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
+
 

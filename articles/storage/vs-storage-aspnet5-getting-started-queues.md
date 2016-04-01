@@ -26,7 +26,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
 
 若要開始，首先您必須在儲存體帳戶中建立 Azure 佇列。 我們將會示範如何在程式碼中建立佇列。 我們也將顯示如何執行基本的佇列作業，例如新增、修改、讀取和移除佇列訊息。 這些範例均以 C\# 程式碼撰寫，並使用 Azure Storage Client Library for .NET。 如需 ASP.NET 的詳細資訊，請參閱 [ASP.NET](http://www.asp.net)。
 
-**注意:** 一些 Azure 儲存體向 ASP.NET 5 中執行呼叫的 Api 是非同步。 請參閱 [使用 Async 和 Await 進行非同步程式設計](http://msdn.microsoft.com/library/hh191443.aspx) 如需詳細資訊。 以下程式碼假設使用非同步程式設計方法。
+**注意 ︰** 一些 Azure 儲存體向 ASP.NET 5 中執行呼叫的 Api 是非同步。 請參閱 [使用 Async 和 Await 進行非同步程式設計](http://msdn.microsoft.com/library/hh191443.aspx) 如需詳細資訊。 以下程式碼假設使用非同步程式設計方法。
 
 - 請參閱 [如何使用佇列儲存體.NET](storage-dotnet-how-to-use-queues.md) 如需有關以程式設計方式操作佇列。
 - 請參閱 [儲存體文件](https://azure.microsoft.com/documentation/services/storage/) 的 Azure 儲存體的一般資訊。
@@ -65,7 +65,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
         CloudTable messageQueue = queueClient.GetQueueReference("messageQueue");
 
 
-**注意:** 在下列範例使用上述程式碼中的程式碼開頭。
+**注意 ︰** 在下列範例使用上述程式碼中的程式碼開頭。
 
 ###在程式碼中建立佇列
 
@@ -78,7 +78,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
 
 若要將訊息插入現有佇列，建立新 **CloudQueueMessage** 物件，然後呼叫 **AddMessageAsync** 方法。
 
-A **CloudQueueMessage** 可以從字串 (採用 utf-8 格式) 或位元組陣列建立物件。
+A **CloudQueueMessage** 可以從字串 （採用 utf-8 格式） 或位元組陣列建立物件。
 
 以下是插入訊息 'Hello, World' 的範例。
 
@@ -158,7 +158,7 @@ A **CloudQueueMessage** 可以從字串 (採用 utf-8 格式) 或位元組陣列
 
 ## 搭配使用 Async-Await 模式和通用佇列 API
 
-這個範例示範如何搭配使用 Async-Await 模式和通用佇列 API。 此範例會呼叫每個特定方法的非同步版本。 這可以透過每個方法的非同步 Postfix 看到。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需有關如何在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [Async 和 Await (C# 和 Visual Basic)] (https://msdn.microsoft.com/library/hh191443.aspx)
+這個範例示範如何搭配使用 Async-Await 模式和通用佇列 API。 此範例會呼叫每個特定方法的非同步版本。 這可以透過每個方法的非同步 Postfix 看到。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需有關如何在.NET 中使用 Async-await 模式的詳細資訊，請參閱 [Async 和 Await （C# 和 Visual Basic）] (https://msdn.microsoft.com/library/hh191443.aspx)
 
     // Get a reference to the CloudQueue object named 'messageQueue' as described in "Access a queue in code".
 
@@ -191,4 +191,5 @@ A **CloudQueueMessage** 可以從字串 (採用 utf-8 格式) 或位元組陣列
 ##後續步驟
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
+
 

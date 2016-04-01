@@ -24,7 +24,7 @@ GSM 和 LSM 會追蹤分區化環境中每個資料庫的對應。 但偶爾 GSM
 RecoveryManager 類別是一部分 [彈性資料庫用戶端程式庫](sql-database-elastic-database-client-library)。 
 
 
-![分區對應][] 1
+![分區對應][1]
 
 
 關於詞彙定義，請參閱 [彈性資料庫工具字彙](sql-database-elastic-scale-glossary.md)。 若要了解如何 **ShardMapManager** 用來管理分區化解決方案中的資料，請參閱 [分區對應管理](sql-database-elastic-scale-shard-map-management.md)。
@@ -68,7 +68,7 @@ RecoveryManager 類別是一部分 [彈性資料庫用戶端程式庫](sql-datab
 * location 參數是分區位置，特別是要卸離的分區的伺服器名稱和資料庫名稱。 
 * shardMapName 參數是分區對應名稱。 只有在多個分區對應是由相同的分區對應管理員管理時才為必要。 選用。 
 
-**重要**: 使用這項技術僅更新的對應如果您確定的範圍是空的。 上述方法並不會檢查要移動的資料範圍，因此您最好在程式碼中納入檢查。
+**重要**︰ 使用這項技術僅更新的對應如果您確定的範圍是空的。 上述方法並不會檢查要移動的資料範圍，因此您最好在程式碼中納入檢查。
 
 下列範例將使用 RecoveryManager 移除分區從分區對應。分區對應會反映在分區的刪除前 GSM 中的分區位置。 因為已刪除分區，會假設這是特意的，而且分區化索引鍵範圍已不再使用中。 如果不是如此，您可以執行還原時間點，以從較早的時間點復原分區。 (在此情況下，請檢閱下一節來偵測分區不一致的情形。)由於假設刪除資料庫是在預期中，最終的系統管理清除動作是刪除分區對應管理員中分區的項目。 這可避免應用程式不小心將資訊寫入至未預期的範圍。
     
@@ -76,7 +76,7 @@ RecoveryManager 類別是一部分 [彈性資料庫用戶端程式庫](sql-datab
 
 ## 偵測對應的差異 
 
- [DetectMappingDifferences 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) 選取並傳回其中一個分區對應 (本機或全域) 的真實來源為調解這兩個分區對應 (GSM 和 LSM) 上的對應。
+ [DetectMappingDifferences 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) 選取並傳回其中一個分區對應 （本機或全域） 的真實來源為調解這兩個分區對應 （GSM 和 LSM） 上的對應。
 
     rm.DetectMappingDifferences(location, shardMapName);
 
@@ -85,7 +85,7 @@ RecoveryManager 類別是一部分 [彈性資料庫用戶端程式庫](sql-datab
 
 ## 解決對應的差異
 
- [ResolveMappingDifferences 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) 選取其中一個分區對應 (本機或全域) 作為事實來源，並調解這兩個分區對應 (GSM 和 LSM) 上的對應。
+ [ResolveMappingDifferences 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) 選取其中一個分區對應 （本機或全域） 作為事實來源，並調解這兩個分區對應 （GSM 和 LSM） 上的對應。
 
     ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution);
    
@@ -126,18 +126,18 @@ RecoveryManager 類別是一部分 [彈性資料庫用戶端程式庫](sql-datab
 4. 在 GSM 和 LSM 之間的對應中偵測到不一致。 
 5. 解決 GSM 和 LSM 之間的差異，信任 LSM。 
 
-此範例會執行下列步驟:
+此範例會執行下列步驟 ︰
 1. 從分區對應移除分區，其反映分區在容錯移轉事件之前的位置。
 2. 將分區附加至分區對應會反映新分區位置 (參數 "Configuration.SecondaryServer" 是是新伺服器名稱，但是相同的資料庫名稱)。
 3. 透過偵測每個分區的 GSM 與 LSM 之間的對應差異來擷取復原權杖。 
 4. 透過信任來自每個分區 LSM 的對應，即可解決不一致情形。 
 
     var 分區 = smm。GetShards() 
-    foreach (分區的分區中) 
+    foreach （分區的分區中） 
     { 
      如果 (s.Location.Server Configuration.PrimaryServer = =) 
          { 
-          ShardLocation slNew = 新 ShardLocation Configuration.SecondaryServer (s.Location.Database); 
+          ShardLocation slNew = 新 ShardLocation Configuration.SecondaryServer (s.Location.Database）; 
         
           rm.DetachShard(s.Location); 
         
@@ -160,3 +160,4 @@ RecoveryManager 類別是一部分 [彈性資料庫用戶端程式庫](sql-datab
 <!--Image references-->
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
  
+

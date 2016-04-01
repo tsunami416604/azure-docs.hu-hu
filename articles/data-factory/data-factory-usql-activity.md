@@ -49,7 +49,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
-類型 | Type 屬性應該設定為: **AzureDataLakeAnalytics**。 | 是
+類型 | Type 屬性應該設定為 ︰ **AzureDataLakeAnalytics**。 | 是
 accountName | Azure 資料湖分析帳戶名稱。 | 是
 dataLakeAnalyticsUri | Azure 資料湖分析 URI。 |  否 
 authorization | 按一下之後，就會自動擷取授權碼 **授權** 按鈕在 Data Factory 編輯器中，並完成 OAuth 登入。 | 是 
@@ -187,4 +187,5 @@ degreeOfParallelism | 同時用來執行工作的節點數目上限。 | 否
     }
 
 請參閱 [從 Azure 資料湖存放區來回移動資料](data-factory-azure-datalake-connector.md) 如上述的 Azure 資料湖存放區中的 JSON 屬性的說明連結服務和資料集 JSON 程式碼片段。 
+
 

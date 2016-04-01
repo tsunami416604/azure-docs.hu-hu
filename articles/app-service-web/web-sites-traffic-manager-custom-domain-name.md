@@ -1,9 +1,9 @@
 <properties 
-    pageTitle = 「 使用流量管理員的 Azure App Service 中設定 web 應用程式的自訂網域名稱 」 wpickett 」 使用的自訂網域名稱中包含的流量管理員負載平衡的 Azure App Service web 應用程式。 」 
-    描述 = 「 使用的自訂網域名稱中包含的流量管理員負載平衡的 Azure App Service web 應用程式。 」 
+    pageTitle="在使用流量管理員的 Azure App Service 中設定 Web 應用程式的自訂網域名稱"wpickett"Use a custom domain name for an a web app in Azure App Service that includes Traffic Manager for load balancing." 
+    description="在包含負載平衡的流量管理員的 Azure App Service 中使用 Web 應用程式的自訂網域名稱。" 
     services="app-service\web" 
     documentationCenter="" 
-    作者 ="rmcmurray" 
+    authors="rmcmurray" 
     manager="wpickett" 
     editor=""/>
 
@@ -67,4 +67,5 @@
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
  
+
 

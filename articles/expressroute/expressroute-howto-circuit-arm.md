@@ -19,8 +19,8 @@
 # 使用 Azure 資源管理員及 PowerShell 建立和修改 ExpressRoute 線路
 
 > [AZURE.SELECTOR]
-[PowerShell-傳統](expressroute-howto-circuit-classic.md)
-[PowerShell-資源管理員](expressroute-howto-circuit-arm.md)
+[PowerShell - 傳統](expressroute-howto-circuit-classic.md)
+[PowerShell - 資源管理員](expressroute-howto-circuit-arm.md)
 
 本文將逐步引導您使用 PowerShell Cmdlet 和 Azure 資源管理員部署模型建立 ExpressRoute 線路。 下列步驟也會示範如何檢查狀態、更新或刪除和取消佈建 ExpressRoute 線路。 
 
@@ -89,7 +89,7 @@
     請確定您指定正確的 SKU 層和 SKU 系列。
  
      - SKU 層會判斷 ExpressRoute 標準或 ExpressRoute 高階附加元件是否啟用。 您可以指定 *標準* 取得標準 SKU 或 *高階* premium 附加元件
-     - SKU 系列決定計費類型。 您可以選取 *metereddata* 計量的資料計劃和 * unlimiteddata 「 無限制的資料計劃。 **注意:** 不能建立循環之後變更付款類型。 
+     - SKU 系列決定計費類型。 您可以選取 *metereddata* 計量的資料計劃和 * unlimiteddata 「 無限制的資料計劃。 **注意 ︰** 不能建立循環之後變更付款類型。 
 
     
     The response will contain the service key. You can get detailed descriptions of all the parameters by running the following:
@@ -216,7 +216,7 @@
 
 6. **建立路由設定。**
     
-    請參閱 [ExpressRoute 電路的路由組態 (建立及修改電路對等互連)](expressroute-howto-routing-arm.md) 畫面來取得逐步指示。 
+    請參閱 [ExpressRoute 電路的路由組態 （建立及修改電路對等互連）](expressroute-howto-routing-arm.md) 畫面來取得逐步指示。 
 
 7. **將 VNet 連結到 ExpressRoute 線路。** 
 
@@ -330,7 +330,7 @@
 
 ### 如何更新 ExpressRoute 線路頻寬
 
-檢查 [ExpressRoute 常見問題集](expressroute-faqs.md) 頁面，以您的提供者支援的頻寬選項。 您可以挑選任何比現有電路規模還大的大小。 一旦決定需要的大小後，您可以使用下列命令來調整線路大小。
+檢查 [ExpressRoute 常見問題集](expressroute-faqs.md) 頁面，以您的提供者支援的頻寬選項。 您可以挑選任何比現有線路規模還大的大小。 一旦決定需要的大小後，您可以使用下列命令來調整線路大小。
 
         $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
@@ -357,5 +357,6 @@
 ## 後續步驟
 
 - [設定路由](expressroute-howto-routing-arm.md)
+
 
 

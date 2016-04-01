@@ -73,3 +73,4 @@ Microsoft Azure StorSimple 裝置有 6 個網路介面，從 DATA 0 至 DATA 5�
 - 如果您遇到任何問題，設定您的網路介面時，請參閱 [部署問題進行疑難排解](storsimple-troubleshoot-deployment.md)。
 
 
+

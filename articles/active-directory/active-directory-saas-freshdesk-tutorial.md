@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Freshdesk 租用戶
   
-完成本教學課程之後, 您已指派給 Freshdesk 的 Azure AD 使用者將能夠登入位於您 Freshdesk 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Freshdesk 的 Azure AD 使用者將能夠登入位於您 Freshdesk 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -58,7 +58,7 @@
 
 6.  在 **搜尋方塊**, ，型別 **Freshdesk**。
 
-    ![應用程式資源庫](./media/active-directory-saas-freshdesk-tutorial/IC776762.png "Application gallery")
+    ![應用程式庫](./media/active-directory-saas-freshdesk-tutorial/IC776762.png "Application gallery")
 
 7.  在 [結果] 窗格中，選取 **Freshdesk**, ，然後按一下 [ **完成** 加入應用程式。
 
@@ -97,7 +97,7 @@
 
     ![安全性](./media/active-directory-saas-freshdesk-tutorial/IC776769.png "Security")
 
-8.  在 **安全性** 區段中，執行下列步驟:
+8.  在 **安全性** 區段中，執行下列步驟 ︰
 
     ![單一登入](./media/active-directory-saas-freshdesk-tutorial/IC776770.png "Single Sign On")
 
@@ -166,3 +166,4 @@ Freshdesk 需以手動的方式佈建。
     ![是](./media/active-directory-saas-freshdesk-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

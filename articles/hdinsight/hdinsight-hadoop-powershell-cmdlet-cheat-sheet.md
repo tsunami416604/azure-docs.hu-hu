@@ -23,9 +23,9 @@ Microsoft Azure HDInsight 提供 PowerShell Cmdlet，對叢集執行 Hadoop 工�
 
 ## HDInsight 小祕技：服務管理模型
 
-**下載小祕技: [Microsoft Azure HDInsight PowerShell Cmdlet 小祕技](http://download.microsoft.com/download/B/7/D/B7DBB509-164D-4343-9894-12D1FB053776/HDI_PowerShell_Cmdlet_CheatSheet.pdf)**
+**下載小祕技 ︰ [Microsoft Azure HDInsight PowerShell Cmdlet 小祕技](http://download.microsoft.com/download/B/7/D/B7DBB509-164D-4343-9894-12D1FB053776/HDI_PowerShell_Cmdlet_CheatSheet.pdf)**
 
-**查看 Microsoft Azure HDInsight PowerShell 參考文件: [Azure HDInsight PowerShell 參考](https://msdn.microsoft.com/library/azure/dn858087.aspx)**
+**查看 Microsoft Azure HDInsight PowerShell 參考文件 ︰ [Azure HDInsight PowerShell 參考](https://msdn.microsoft.com/library/azure/dn858087.aspx)**
 
 ![執行常見 Hadoop 工作的 HDInsight PowerShell Cmdlet 小祕技](./media/hdinsight-hadoop-powershell-cmdlet-cheat-sheet/HDI.PowerShell.Cmdlet.CheatSheet.png)
 
@@ -33,4 +33,5 @@ Microsoft Azure HDInsight 提供 PowerShell Cmdlet，對叢集執行 Hadoop 工�
 ## 另請參閱
 
 * [HDInsight 的學習途徑](http://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+
 

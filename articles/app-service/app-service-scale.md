@@ -24,18 +24,18 @@
 
 除了相應增加定價層以外，也可以增加您的服務具有的執行個體數目。 這指 *向外延展* 或 *中的縮放比例*。 請參閱 [手動或自動調整執行個體計數](../insights-how-to-scale.md) 若要深入了解 *向外延展* 和 *縮放*。
 
-如需 App Service 方案的相關資訊，請參閱 [什麼是 App Service 方案?](../web-sites-web-hosting-plan-overview.md) 和 [Azure App Service 方案深入概觀](azure-web-sites-web-hosting-plans-in-depth-overview.md)。 定價資訊及個別應用程式服務方案的功能，請參閱 [App Service 定價詳細資料](/pricing/details/app-service/)。
+如需 App Service 方案的相關資訊，請參閱 [什麼是 App Service 方案？](../web-sites-web-hosting-plan-overview.md) 和 [Azure App Service 方案深入概觀](azure-web-sites-web-hosting-plans-in-depth-overview.md)。 定價資訊及個別應用程式服務方案的功能，請參閱 [App Service 定價詳細資料](/pricing/details/app-service/)。
 
 最後，調整的運作方式不同如果您想要使用的專用 [App Service 環境](app-service-app-service-environment-intro.md)。 請參閱 [App Service 環境中調整 web 應用程式](app-service-web-scale-a-web-app-in-an-app-service-environment.md) 如需詳細資訊。
 
-> [AZURE.NOTE] 從切換之前 **免費** 模式 **基本**, ，**標準**, ，或 **高階** 模式中，您必須先移除的支出上限就地 Azure App Service 訂用帳戶。 若要檢視或變更 Microsoft Azure 應用程式服務訂閱的選項，請參閱 [Microsoft Azure 訂閱] [azuresubscriptions]。
+> [AZURE.NOTE] 從切換之前 **免費** 模式 **基本**, ，**標準**, ，或 **高階** 模式中，您必須先移除的支出上限就地 Azure App Service 訂用帳戶。 若要檢視或變更 Microsoft Azure 應用程式服務訂閱的選項，請參閱 [Microsoft Azure 訂閱][azuresubscriptions]。
 
 <a name="scalingsharedorbasic"></a>
 <a name="scalingstandard"></a>
 
 ## 調整定價層
 
-1. 在瀏覽器中開啟 [Azure 網站] [網站] 並瀏覽至您想要調整應用程式。
+1. 在瀏覽器中開啟 [Azure 入口網站][portal] 並瀏覽至您想要調整的應用程式。
     
 2. 在 **Essentials** 應用程式，然後按一下 [ **App Service 方案/定價層** 連結。
 
@@ -55,7 +55,7 @@
 
 1. 在 **Essentials**, ，按一下 [ **資源群組** 連結。
 
-2. 然後，在 **摘要** 的資源群組分頁中，按一下其中一個資料庫 (或任何其他您想要調整的資源) 的一部分。
+2. 然後，在 **摘要** 的資源群組分頁中，按一下其中一個資料庫 （或任何其他您想要調整的資源） 的一部分。
 
     ![連結的資料庫](./media/app-service-scale/ResourceGroup.png)
     
@@ -84,9 +84,9 @@
 <a name="OtherFeatures"></a>
 ## 其他功能
 
-- 所有應用程式服務中的其餘功能的詳細資訊的方案，包括定價和功能適用於所有使用者 (包括開發人員)，請參閱 [App Service 定價詳細資料](/pricing/details/web-sites/)。
+- 所有應用程式服務中的其餘功能的詳細資訊的方案，包括定價和功能適用於所有使用者 （包括開發人員），請參閱 [App Service 定價詳細資料](/pricing/details/web-sites/)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 <a name="Next Steps"></a>   
 ## 後續步驟
@@ -102,13 +102,13 @@
     
     [SQL Database 定價詳細資料](/pricing/details/sql-database/)
     
-    [虛擬機器和雲端服務大小適用於 Microsoft Azure][] vmsizes
+    [Microsoft Azure 的虛擬機器和雲端服務大小][vmsizes]
     
     [應用程式服務定價詳細資料](/pricing/details/app-service/)
     
     [應用程式服務定價詳細資料 - SSL 連線](/pricing/details/web-sites/#ssl-connections)
 
-- 如需 Azure App Service 最佳作法，包括建置可調整且具彈性的架構，請參閱 [最佳作法: Azure App Service Web Apps](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)。
+- 如需 Azure App Service 最佳作法，包括建置可調整且具彈性的架構，請參閱 [最佳作法 ︰ Azure App Service Web Apps](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)。
 
 - 調整 Web Apps 規模的相關影片：
     
@@ -117,7 +117,7 @@
     - [如何調整 Azure 網站，與 Stefan Schackow](/documentation/videos/how-azure-web-sites-scale/)
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- LINKS -->
 [vmsizes]:http://go.microsoft.com/fwlink/?LinkId=309169
@@ -130,3 +130,4 @@
 [ScaleDatabase]: ./media/web-sites-scale/scale11SQLScale.png
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
+

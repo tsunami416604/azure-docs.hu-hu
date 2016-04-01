@@ -123,19 +123,19 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 網狀架構控制器會等待 30 分鐘，讓每個角色執行個體達到啟動狀態。 當逾時期間過去後，網狀架構控制器會繼續前進到下一個角色執行個體。 
 
 ## 復原更新
-Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服務上起始其他作業，以提供在更新期間管理服務的彈性。 更新 (組態變更) 時，可以只執行回復，或升級處於 **進行** 部署狀態。 只要服務有至少一個執行個體尚未更新為新版本，更新或升級就會被視為進行中。 若要測試是否允許回復，請檢查 RollbackAllowed 旗標，所傳回的值 [取得部署](https://msdn.microsoft.com/library/azure/ee460804.aspx) 和 [取得雲端服務屬性](https://msdn.microsoft.com/library/azure/ee460806.aspx) 作業，會設定為 true。
+Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服務上起始其他作業，以提供在更新期間管理服務的彈性。 更新 （組態變更） 時，可以只執行回復，或升級處於 **進行** 部署狀態。 只要服務有至少一個執行個體尚未更新為新版本，更新或升級就會被視為進行中。 若要測試是否允許回復，請檢查 RollbackAllowed 旗標，所傳回的值 [取得部署](https://msdn.microsoft.com/library/azure/ee460804.aspx) 和 [取得雲端服務屬性](https://msdn.microsoft.com/library/azure/ee460806.aspx) 作業，會設定為 true。
 
 > [AZURE.NOTE] 僅有意義上呼叫 Rollback **就地** 更新或升級，因為 VIP 交換升級牽涉到取代另一個整個執行執行個體的服務。
 
 復原進行中的更新會對部署造成下列影響：
 
 -   不會更新或升級尚未更新或升級為新版本的所有角色執行個體，因為這些執行個體已在執行服務的目標版本。
--   已被更新或升級到新版的服務封裝 (\*.cspkg) 檔或服務組態 (\*.cscfg) 檔 (或兩個檔案) 的任何角色執行個體都會還原成這些檔案的升級前的版本。
+-   已被更新或升級到新版的服務封裝 (\*.cspkg) 檔或服務組態 (\*.cscfg) 檔 （或兩個檔案） 的任何角色執行個體都會還原成這些檔案的升級前的版本。
 
 此作用是由下列功能提供：
 
 -    [回復更新或升級](https://msdn.microsoft.com/library/azure/hh403977.aspx) 作業，因為它可以呼叫上設定更新 (藉由呼叫觸發 [變更部署組態](https://msdn.microsoft.com/library/azure/ee460809.aspx)) 或升級 (藉由呼叫觸發 [升級部署](https://msdn.microsoft.com/library/azure/ee460793.aspx))，只要尚未更新為新版本的服務中沒有至少一個執行個體。
--   鎖定項目及 RollbackAllowed 元素之後，回應主體中傳回 [取得部署](https://msdn.microsoft.com/library/azure/ee460804.aspx) 和 [取得雲端服務屬性](https://msdn.microsoft.com/library/azure/ee460806.aspx) 作業:
+-   鎖定項目及 RollbackAllowed 元素之後，回應主體中傳回 [取得部署](https://msdn.microsoft.com/library/azure/ee460804.aspx) 和 [取得雲端服務屬性](https://msdn.microsoft.com/library/azure/ee460806.aspx) 作業 ︰
     1.  Locked 元素可讓您偵測何時可對指定的部署叫用變更作業。
     2.  RollbackAllowed 元素可讓您偵測何時 [回復更新或升級](https://msdn.microsoft.com/library/azure/hh403977.aspx) 可以針對給定的部署呼叫作業。
 
@@ -158,7 +158,7 @@ Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服�
 
 在第一個更新正在進行時起始第二個更新作業，將類似於執行復原作業。 如果第二個更新處於自動模式，則第一個升級網域將會立即升級，這可能會導致多個升級網域中的執行個體在同一時間離線。
 
-變更作業如下: [變更部署組態](https://msdn.microsoft.com/library/azure/ee460809.aspx), ，[升級部署](https://msdn.microsoft.com/library/azure/ee460793.aspx), ，[更新部署狀態](https://msdn.microsoft.com/library/azure/ee460808.aspx), ，[刪除部署](https://msdn.microsoft.com/library/azure/ee460815.aspx), ，和 [回復更新或升級](https://msdn.microsoft.com/library/azure/hh403977.aspx)。
+變更作業如下 ︰ [變更部署組態](https://msdn.microsoft.com/library/azure/ee460809.aspx), ，[升級部署](https://msdn.microsoft.com/library/azure/ee460793.aspx), ，[更新部署狀態](https://msdn.microsoft.com/library/azure/ee460808.aspx), ，[刪除部署](https://msdn.microsoft.com/library/azure/ee460815.aspx), ，和 [回復更新或升級](https://msdn.microsoft.com/library/azure/hh403977.aspx)。
 
 兩項作業， [取得部署](https://msdn.microsoft.com/library/azure/ee460804.aspx) 和 [取得雲端服務屬性](https://msdn.microsoft.com/library/azure/ee460806.aspx), ，傳回可進行檢查以判斷是否可以針對給定的部署叫用變更作業的鎖定旗標。
 
@@ -181,4 +181,5 @@ Azure 會將角色的執行個體平均分散於一組升級網域，而升級�
 [如何管理雲端服務](cloud-services-how-to-manage.md)<br>
 [如何監視雲端服務](cloud-services-how-to-monitor.md)<br>
 [如何設定雲端服務](cloud-services-how-to-cofigure.md)<br>
+
 

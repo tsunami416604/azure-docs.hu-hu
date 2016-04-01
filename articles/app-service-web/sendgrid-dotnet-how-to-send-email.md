@@ -144,7 +144,7 @@ SendGrid Api。
 網頁 SendGrid 所提供的 API。 或者，您也可以 [使用。NET 的內建程式庫](https://sendgrid.com/docs/Code_Examples/csharp.html)。
 
 傳送電子郵件需要您提供
-SendGrid 帳戶認證 (使用者名稱和密碼) 或 SendGrid API 金鑰。 API 金鑰為慣用方法。 如果您需要有關如何設定 API 金鑰的詳細資訊，請造訪我們 [文件](https://sendgrid.com/docs/Classroom/Send/api_keys.html)
+SendGrid 帳戶認證 （使用者名稱和密碼） 或 SendGrid API 金鑰。 API 金鑰為慣用方法。 如果您需要有關如何設定 API 金鑰的詳細資訊，請造訪我們 [文件](https://sendgrid.com/docs/Classroom/Send/api_keys.html)
 
 您可能會儲存這些認證，透過 Azure 入口網站
 按一下 [設定並新增 [應用程式設定] 下的索引鍵/值組。
@@ -201,7 +201,7 @@ SendGrid 帳戶認證 (使用者名稱和密碼) 或 SendGrid API 金鑰。 API 
 方法，並指定您想要附加的檔案路徑與名稱。
 您可以藉由呼叫這個方法一次包含多個附件
 每個您想要附加的檔案。 下列範例示範如何將
-郵件的附件:
+郵件的附件 ︰
 
     SendGridMessage myMessage = new SendGridMessage();
     myMessage.AddTo("anna@example.com");
@@ -276,9 +276,9 @@ SendGrid 功能。 如需完整的
 了解 SendGrid 電子郵件服務的基本概念後，請參考
 下列連結以取得更多資訊。
 
-*   SendGrid C\ # 程式庫儲存機制: [sendgrid csharp][]
-*   SendGrid API 文件: <https://sendgrid.com/docs>
-*   Azure 客戶的 SendGrid 特別優惠: [https://sendgrid.com](https://sendgrid.com)
+*   SendGrid C\ # 程式庫儲存機制 ︰ [sendgrid csharp][]
+*   SendGrid API 文件 ︰ <https://sendgrid.com/docs>
+*   Azure 客戶的 SendGrid 特別優惠 ︰ [https://sendgrid.com](https://sendgrid.com)
 
   [Next steps]: #next-steps
   [What is the SendGrid Email Service?]: #whatis
@@ -304,4 +304,5 @@ SendGrid 功能。 如需完整的
   [cloud-based email service]: https://sendgrid.com/email-solutions
   [transactional email delivery]: https://sendgrid.com/transactional-email
  
+
 

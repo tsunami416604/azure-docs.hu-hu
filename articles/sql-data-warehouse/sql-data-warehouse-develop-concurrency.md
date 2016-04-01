@@ -134,7 +134,7 @@ SQL 資料倉儲已透過使用資料庫角色來實作資源類別。 若要成
 
 更高資源類別的成員資格有時不會改變指派給查詢或作業的資源。 這通常發生於執行動作所需的資源不足。 在這些情況下，一律會使用預設或小型資源類別 (smallrc)，而不考慮指派給使用者的資源類別。 例如，`CREATE LOGIN` 一律會在 smallrc 中執行。 執行此作業所需的資源非常少，因此沒必要將查詢納入並行存取插槽模型中。 預先配置大量記憶體給這個動作太浪費。 從並行存取插槽模型中排除 `CREATE LOGIN`，SQL 資料倉儲會更有效率。  
 
-以下是陳述式和作業的清單， **是** 受到資源類別:
+以下是陳述式和作業的清單， **是** 受到資源類別 ︰
 
 - INSERT-SELECT
 - UPDATE
@@ -149,7 +149,7 @@ SQL 資料倉儲已透過使用資料庫角色來實作資源類別。 若要成
 - 載入資料 
 - 資料移動服務 (DMS) 進行的資料移動作業
 
-下列陳述式 **不** 接受資源類別:
+下列陳述式 **不** 接受資源類別 ︰
 
 - CREATE TABLE
 - ALTER TABLE ...SWITCH PARTITION 
@@ -286,7 +286,7 @@ CREATE LOGIN newperson WITH PASSWORD = 'mypassword'
 CREATE USER newperson for LOGIN newperson
 ```
 
-[AZURE.NOTE] 最好的 master 資料庫中建立您的登入的使用者，使用 Azure SQL database 和 SQL 資料倉儲時。 此層級有兩個可用的伺服器角色，需要登入才能在主要資料庫中擁有使用者以授與成員資格。 這些角色為 `Loginmanager` 和 `dbmanager`。 在 Azure SQL Database 和 SQL 資料倉儲中，這些角色會授與管理登入以及建立資料庫的權限。 這與 SQL Server 有所不同。 如需詳細資訊，請參閱 [管理資料庫和 Azure SQL Database 中的登入] 以取得詳細資料的發行項。
+[AZURE.NOTE] 最好的 master 資料庫中建立您的登入的使用者，使用 Azure SQL database 和 SQL 資料倉儲時。 此層級有兩個可用的伺服器角色，需要登入才能在主要資料庫中擁有使用者以授與成員資格。 這些角色為 `Loginmanager` 和 `dbmanager`。 在 Azure SQL Database 和 SQL 資料倉儲中，這些角色會授與管理登入以及建立資料庫的權限。 這與 SQL Server 有所不同。 如需詳細資訊，請參閱 [Managing Databases and Logins in Azure SQL Database] 文章以取得詳細資料。
 
 一旦已建立登入，現在必須新增使用者帳戶。
 
@@ -441,7 +441,7 @@ FROM    sys.dm_pdw_wait_stats w
 ```
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
@@ -452,6 +452,7 @@ FROM    sys.dm_pdw_wait_stats w
 [Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
+
 
 
 

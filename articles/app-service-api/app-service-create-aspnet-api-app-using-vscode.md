@@ -22,7 +22,7 @@
 
 ## 概觀
 
-本教學課程會示範如何建立 ASP.NET 5 API 應用程式使用 [Visual Studio 程式碼](http://code.visualstudio.com//Docs/whyvscode)。 ASP.NET 5 是大幅重新設計的 ASP.NET。 ASP.NET 5 是新的開放原始碼和跨平台架構，用於使用 .NET 建置現代雲端 Web 應用程式。 如需詳細資訊，請參閱 [ASP.NET 5 簡介](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)。 API 應用程式的相關資訊，請參閱 [什麼是 API 應用程式?](app-service-api-apps-why-best-platform.md)
+本教學課程會示範如何建立 ASP.NET 5 API 應用程式使用 [Visual Studio 程式碼](http://code.visualstudio.com//Docs/whyvscode)。 ASP.NET 5 是大幅重新設計的 ASP.NET。 ASP.NET 5 是新的開放原始碼和跨平台架構，用於使用 .NET 建置現代雲端 Web 應用程式。 如需詳細資訊，請參閱 [ASP.NET 5 簡介](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)。 API 應用程式的相關資訊，請參閱 [什麼是 API 應用程式？](app-service-api-apps-why-best-platform.md)
 
 > [AZURE.NOTE] 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 如果您沒有帳戶，您可以 [申請免費試用版](/pricing/free-trial/) 或 [啟用 MSDN 訂戶的權益](/pricing/member-offers/msdn-benefits-details/)。 您也可以免費試用 [應用程式服務應用程式範例](http://tryappservice.azure.com)。
 
@@ -30,12 +30,12 @@
 
 * 安裝和設定 [Visual Studio 程式碼](http://code.visualstudio.com/Docs/setup)。
 * 安裝 [Node.js](http://nodejs.org/download/)。 < 因此 >
-    [節點](http://nodejs.org/) 是建置快速和可擴充的伺服器應用程式使用 JavaScript 的平台。 節點是執行階段 (節點) 和 [npm](http://www.npmjs.com/) 是 Node 模組的封裝管理員。 您將使用 npm，在本教學課程中建立 ASP.NET 5 API 應用程式的結構。
+    [節點](http://nodejs.org/) 是建置快速和可擴充的伺服器應用程式使用 JavaScript 的平台。 節點是執行階段 （節點） 和 [npm](http://www.npmjs.com/) 是 Node 模組的封裝管理員。 您將使用 npm，在本教學課程中建立 ASP.NET 5 API 應用程式的結構。
 
 ## 安裝 ASP.NET 5 和 DNX
 ASP.NET 5/DNX 是精簡的 .NET 堆疊，可建置 OS X、Linux 和 Windows 上執行的現代雲端和 Web 應用程式。 它已從頭建置，以將最佳化的開發架構提供給已部署至雲端或執行內部部署的應用程式。 其由額外負荷最低的模組化元件組成，以便您可以在建構解決方案時保留彈性。
 
-> [AZURE.NOTE] ASP.NET 5 和 DNX (.NET 執行環境) 在 OS X 及 Linux 上的處於早期 Beta/預覽狀態。 
+> [AZURE.NOTE] ASP.NET 5 和 DNX （.NET 執行環境） 在 OS X 及 Linux 上的處於早期 Beta/預覽狀態。 
 
 本教學課程的設計旨在讓您使用最新開發版本的 ASP.NET 5 和 DNX 開始建置應用程式。 如果您想要更穩定的發行，經驗，請移至 [http://www.asp.net/vnext](http://www.asp.net/vnext)。 下列是 Windows 特有的指示。 如需詳細的 OS X、 Linux 和 Windows 的安裝指示，請參閱 [安裝 ASP.NET 5 和 DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)。 
 
@@ -110,7 +110,7 @@ ASP.NET 5/DNX 是精簡的 .NET 堆疊，可建置 OS X、Linux 和 Windows 上�
     ![顯示 Contact 專案的 VSCode](./media/app-service-create-aspnet-api-app-using-vscode/03-vscode-contacts-project.png)
 
 8. 在 **VSCode**, ，從 **檢視** 功能表上，選取 **命令調色盤**。
-9. 在 **命令調色盤** 輸入下列命令:
+9. 在 **命令調色盤** 輸入下列命令 ︰
 
     <pre class="prettyprint">
     dnx:dnu restore - (ContactsList)
@@ -130,7 +130,7 @@ ASP.NET 5/DNX 是精簡的 .NET 堆疊，可建置 OS X、Linux 和 Windows 上�
 
     ![新 Models 資料夾](./media/app-service-create-aspnet-api-app-using-vscode/07-new-folder.png)
 
-2. 以滑鼠右鍵按一下 **模型** 資料夾，以加入新的類別檔案命名為 *Contact.cs* 為下列程式碼:
+2. 以滑鼠右鍵按一下 **模型** 資料夾，以加入新的類別檔案命名為 *Contact.cs* 為下列程式碼 ︰
 
     <pre class="prettyprint">
     namespace ContactsList.Models
@@ -144,7 +144,7 @@ ASP.NET 5/DNX 是精簡的 .NET 堆疊，可建置 OS X、Linux 和 Windows 上�
     }
     </pre>
 
-3. 以滑鼠右鍵按一下 **控制器** 資料夾，並新增 *ContactsController.cs* 檔案使其看起來，如下所示:
+3. 以滑鼠右鍵按一下 **控制器** 資料夾，並新增 *ContactsController.cs* 檔案使其看起來，如下所示 ︰
 
     <pre class="prettyprint">
     using System.Collections.Generic;
@@ -171,7 +171,7 @@ ASP.NET 5/DNX 是精簡的 .NET 堆疊，可建置 OS X、Linux 和 Windows 上�
     </pre>
 
 4. 請確定您的檔案會儲存所選取 **檔案** > **全部儲存**。
-5. 從 **命令調色盤**, ，輸入下列命令以在本機執行應用程式:
+5. 從 **命令調色盤**, ，輸入下列命令以在本機執行應用程式 ︰
 
     <pre class="prettyprint">
     dnx: kestrel - (ContactsList, Microsoft.AspNet.Hosting --server Kestrel --server.urls http://localhost:5001
@@ -193,7 +193,7 @@ ASP.NET 5/DNX 是精簡的 .NET 堆疊，可建置 OS X、Linux 和 Windows 上�
 1. 在 VSCode 中，以滑鼠右鍵按一下 *wwwroot* 資料夾，然後選取 **新檔案** 選項。
 2. 新檔案命名為 *apiapp.json*。 < 因此 >
     請確定 *apiapp.json* 處於 *wwwroot* 資料夾。
-3. 將下列內容加入 *apiapp.json* 檔案:
+3. 將下列內容加入 *apiapp.json* 檔案 ︰
 
     <pre class="prettyprint">
     {
@@ -348,7 +348,7 @@ ASP.NET 5/DNX 是精簡的 .NET 堆疊，可建置 OS X、Linux 和 Windows 上�
 
 7. 按一下 [ **設定 > 應用程式設定**。
 
-8. 將存取等級設 **公用 (匿名)**。
+8. 將存取等級設 **公用 （匿名）**。
 
 9. 按一下 [ **儲存**。
 
@@ -432,7 +432,7 @@ Git 是一個您可用來部署 Azure 網站的分散式版本控制系統。 �
     git push azure master
     </pre>
 
-    系統會提示您輸入先前建立的密碼。 **注意: 您的密碼不會顯示的狀態。**
+    系統會提示您輸入先前建立的密碼。 **注意：將看不到您的密碼。**
 
     上述命令的輸出結尾會出現部署成功的訊息：
 
@@ -458,6 +458,7 @@ Git 是一個您可用來部署 Azure 網站的分散式版本控制系統。 �
 
 
 ## 結論
-在本教學課程中，您學到如何在 Visual Studio 程式碼中建立 API 應用程式。 如需 Visual Studio 程式碼的詳細資訊，請參閱 [Visual Studio 程式碼](https://code.visualstudio.com/Docs/)。 API 應用程式的相關資訊，請參閱 [什麼是 API 應用程式?](app-service-api-apps-why-best-platform.md)
+在本教學課程中，您學到如何在 Visual Studio 程式碼中建立 API 應用程式。 如需 Visual Studio 程式碼的詳細資訊，請參閱 [Visual Studio 程式碼](https://code.visualstudio.com/Docs/)。 API 應用程式的相關資訊，請參閱 [什麼是 API 應用程式？](app-service-api-apps-why-best-platform.md)
  
+
 

@@ -33,10 +33,10 @@
 
 
 <a id="sub-1"></a>
-## 先決條件
+## 必要條件
 
 +    [Azure 訂用帳戶](../includes/free-trial-note.md)。 如果您不準備要註冊試用訂閱，您可以略過本教學課程中，選擇 [Try Azure App Service](https://tryappservice.azure.com/) 改。 這個替代選項免費提供您 Azure 搜尋服務與 ASP.NET Web 應用程式 - 每個工作階段一小時 - 不需有訂用帳戶。
-+   Visual Studio 2012 或更高版本，並安裝 ASP.NET MVC 4 與 SQL Server。 如果您還沒有安裝的軟體，您可以下載免費的 Express 版: [Visual Studio 2013 Express](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) 和 [Microsoft SQL Server 2014 Express](http://msdn.microsoft.com/evalcenter/dn434042.aspx)。
++   Visual Studio 2012 或更高版本，並安裝 ASP.NET MVC 4 與 SQL Server。 如果您還沒有安裝的軟體，您可以下載免費的 Express 版 ︰ [Visual Studio 2013 Express](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) 和 [Microsoft SQL Server 2014 Express](http://msdn.microsoft.com/evalcenter/dn434042.aspx)。
 +   Azure 搜尋服務。 您需要搜尋服務名稱，以及系統管理金鑰。 請參閱 [入口網站中建立 Azure 搜尋服務](search-create-service-portal.md) 如需詳細資訊。
 +   [CodePlex 上的 adventure Works Azure Search 示範專案](http://go.microsoft.com/fwlink/p/?LinkID=510972)。 在 [來源] 索引標籤中，按一下 [ **下載** 以取得解決方案的壓縮檔。 
 
@@ -140,11 +140,11 @@
 
     這是 MVC 控制器，可管理從 [索引] 檢視進行的互動。  在此控制器的頂端，您會看見 `CatalogSearch _catalogSearch` 的參考，此參考可建立對 Azure Search 服務的 HttpClient 連線物件。 這個程式碼 `CatalogSearch` 位於 **CatalogSeach.cs**
 
-2. 內 **HomeController.cs**, ，有兩個主要函數:
+2. 內 **HomeController.cs**, ，有兩個主要函數 ︰
 
-    **搜尋**: 當使用者按一下 [搜尋] 按鈕或選擇 facet 時，會呼叫此函數來擷取結果，並將其傳回至要顯示的 [索引] 檢視。
+    **搜尋**︰ 當使用者按一下 [搜尋] 按鈕或選擇 facet 時，會呼叫此函數來擷取結果，並將其傳回至要顯示的 [索引] 檢視。
 
-    **建議**: 當使用者在搜尋方塊中輸入時，呼叫此函式會傳回 Azure 搜尋索引中的內容為基礎的建議清單。
+    **建議**︰ 當使用者在搜尋方塊中輸入時，呼叫此函式會傳回 Azure 搜尋索引中的內容為基礎的建議清單。
 
 我們將深入詳細探索這兩個函數。  
 
@@ -174,7 +174,7 @@
 
 在打造 AdventureWorksWeb 時，如果出現「無法載入檔案或是組件 'System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 或其中一項相依性」的訊息時，請嘗試以下步驟來解決這個錯誤。
 
-1. 開啟 [封裝管理員主控台: **工具** | **NuGet 封裝管理員** | **封裝管理員主控台**
+1. 開啟 [封裝管理員主控台 ︰ **工具** | **NuGet 封裝管理員** | **封裝管理員主控台**
 2. 在 PM> 提示字元底下，輸入「Update-package -reinstall Microsoft.AspNet.Mvc」
 3. 當系統要求您重新載入檔案，選擇 [ **全部**。
 4. 重建方案，然後再試 **F5** 一次。
@@ -185,9 +185,9 @@
 
 如需其他自我學習，請考慮新增會在使用按一下其中一項搜尋結果時開啟的 [詳細資料] 頁面。 您可以執行下列動作加以準備：
 
-+   閱讀有關 [查閱 API](http://msdn.microsoft.com/library/azure/dn798929.aspx) ，可讓您對 Azure 搜尋服務會傳回特定文件 (例如您可以傳送 productID) 進行查詢。
++   閱讀有關 [查閱 API](http://msdn.microsoft.com/library/azure/dn798929.aspx) ，可讓您對 Azure 搜尋服務會傳回特定文件 （例如您可以傳送 productID） 進行查詢。
 +   請嘗試在加入新的函式中 **HomeController.cs** 呼叫詳細資料的檔案。 新增對應 **Details.cshtml** 接收此查詢的結果，並顯示結果的檢視。
-+   請查看下列額外的程式碼範例和視訊有關地理空間搜尋: [第 9 頻道-Azure Search 和地理空間資料](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) 和 [CodePlex: Azure 搜尋 GeoSearch 範例](http://azuresearchgeospatial.codeplex.com)
++   請查看下列額外的程式碼範例和視訊有關地理空間搜尋 ︰ [第 9 頻道-Azure Search 和地理空間資料](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) 和 [CodePlex: Azure 搜尋 GeoSearch 範例](http://azuresearchgeospatial.codeplex.com)
 
 您也可以檢閱 [Azure 搜尋服務 REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx) MSDN 上。
 
@@ -208,3 +208,4 @@
 [10]: ./media/search-create-first-solution/AzureSearch_Create1_WebAppEmpty.PNG
 [11]: ./media/search-create-first-solution/AzureSearch_Create1_Suggestions.PNG
 [12]: ./media/search-create-first-solution/AzureSearch_Create1_CodeplexDownload.PNG
+

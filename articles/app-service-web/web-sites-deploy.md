@@ -106,7 +106,7 @@
 
 * [建置和部署 Node.js 網站至 Azure 使用 WebMatrix](web-sites-nodejs-use-webmatrix.md)。
 * [建立並部署 Php-mysql web 應用程式使用 WebMatrix](web-sites-php-mysql-use-webmatrix.md)。
-* [WebMatrix 3: 整合 Git 並部署至 Azure](http://www.codeproject.com/Articles/577581/Webmatrixplus3-3aplusIntegratedplusGitplusandplusD)。 說明如何使用 WebMatrix 從 Git 原始檔控制儲存機制進行部署。
+* [WebMatrix 3 ︰ 整合 Git 並部署至 Azure](http://www.codeproject.com/Articles/577581/Webmatrixplus3-3aplusIntegratedplusGitplusandplusD)。 說明如何使用 WebMatrix 從 Git 原始檔控制儲存機制進行部署。
 
 如需詳細資訊，請參閱下列資源：
 
@@ -137,8 +137,8 @@ Team Foundation Server 是 Microsoft 針對原始檔控制和團隊共同作業�
 
 如需使用 MSBuild 進行命令列部署的詳細資訊，請參閱下列資源：
 
-* [使用 Visual Studio 的 ASP.NET Web 部署: 命令列部署](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment)。 這是系列中的第十個教學課程，討論如何使用 Visual Studio 部署至 Azure。 此課程說明在 Visual Studio 中設定發佈設定檔後，如何使用命令列進行部署。
-* [深入了解 Microsoft Build Engine: 使用 MSBuild 和 Team Foundation Build](http://msbuildbook.com/)。 這是實體書籍，其中有幾章會說明如何使用 MSBuild 進行部署。
+* [使用 Visual Studio 的 ASP.NET Web 部署 ︰ 命令列部署](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment)。 這是系列中的第十個教學課程，討論如何使用 Visual Studio 部署至 Azure。 此課程說明在 Visual Studio 中設定發佈設定檔後，如何使用命令列進行部署。
+* [深入了解 Microsoft Build Engine ︰ 使用 MSBuild 和 Team Foundation Build](http://msbuildbook.com/)。 這是實體書籍，其中有幾章會說明如何使用 MSBuild 進行部署。
 
 ##<a name="ftp"></a>使用 FTP 工具和指令碼複製檔案
 
@@ -184,11 +184,11 @@ Team Foundation Server 是 Microsoft 針對原始檔控制和團隊共同作業�
 
 如需詳細資訊，請參閱下列資源：
 
-* [簡單的 Web 應用程式: 部署](http://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/)。 David Ebbo 所撰寫使 Web Deploy 更容易使用之工具的部落格。
+* [簡單的 Web 應用程式 ︰ 部署](http://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/)。 David Ebbo 所撰寫使 Web Deploy 更容易使用之工具的部落格。
 * [Web 部署工具](http://technet.microsoft.com/library/dd568996)。 這是 Microsoft TechNet 網站上的正式文件。 雖已過時，但仍適合入門使用。
 * [使用 Web Deploy](http://www.iis.net/learn/publish/using-web-deploy)。 這是 Microsoft IIS.NET 網站上的正式文件。 同樣也已過時，但仍適合入門使用。
 * [StackOverflow](http://www.stackoverflow.com)。 如果您需要如何從命令列使用 Web Deploy 的最新相關資訊，這將是您的最佳選擇。
-* [使用 Visual Studio 的 ASP.NET Web 部署: 命令列部署](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment)。 MSBuild 是 Visual Studio 所使用的建置引擎，您也可以從命令列加以使用，來將 Web 應用程式部署至 Web Apps。 這是系列中的教學課程之一，主要與 Visual Studio 部署有關。
+* [使用 Visual Studio 的 ASP.NET Web 部署 ︰ 命令列部署](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment)。 MSBuild 是 Visual Studio 所使用的建置引擎，您也可以從命令列加以使用，來將 Web 應用程式部署至 Web Apps。 這是系列中的教學課程之一，主要與 Visual Studio 部署有關。
 
 ##<a name="nextsteps"></a>後續步驟
 
@@ -201,6 +201,7 @@ Team Foundation Server 是 Microsoft 針對原始檔控制和團隊共同作業�
 如需其他部署主題的詳細資訊，請參閱 < 部署 > 一節中的 [Web Apps 文件](/documentation/services/web-sites/)。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
  
+
 

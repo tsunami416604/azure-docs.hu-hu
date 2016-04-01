@@ -86,10 +86,10 @@
 
 <ol>
 <li>登入 [http://azure.microsoft.com](http://azure.microsoft.com)</li>
-<li>的左側，選取 [Active Directory。</li>
-<li>在頂端選取多因素驗證提供者。 這會顯示您的多因素驗證提供者的清單。</li>
-<li>如果您有一個以上的多因素驗證提供者，選取您想要建立一次性略過，然後按一下頁面底部的 [管理使用者的目錄與相關聯。 如果您只有一個，只要按一下 [管理] 即可。 這會開啟 Azure Multi-factor Authentication 管理入口網站。</li>
-<li>Azure 多因素驗證管理入口網站，在左邊，在使用者管理] 中，按一下 [設定]。</li>
+<li>在左側選取 [Active Directory]。</li>
+<li>在頂端選取 [Multi-Factor Auth Provider]。 這會顯示您的 Multi-Factor Auth Provider 清單。</li>
+<li>如果您有一個以上的 Multi-Factor Auth Provider，請針對要建立一次性略過的使用者選取與目錄相關的提供者，然後按一下頁面底部的 [管理]。 如果您只有一個，只要按一下 [管理] 即可。 這會開啟 Azure Multi-factor Authentication 管理入口網站。</li>
+<li>在 Azure Multi-factor Authentication 管理入口網站的左側，按一下 [使用者管理] 下方的 [設定]。</li>
 
 <center>![雲端](./media/multi-factor-authentication-whats-next/create1.png)</center>
 
@@ -126,12 +126,12 @@
 
 ### 在 Azure Multi-factor Authentication 中設定自訂語音訊息
 <ol>
-<li>建立自訂語音訊息，使用其中一種支援的檔案格式。 請參閱下列自訂語音訊息建議。</li>
+<li>使用其中一種支援的檔案格式建立自訂語音訊息。 請參閱下列自訂語音訊息建議。</li>
 <li>登入 [http://azure.microsoft.com](http://azure.microsoft.com)</li>
-<li>的左側，選取 [Active Directory。</li>
-<li>在頂端選取多因素驗證提供者。 這會顯示您的多因素驗證提供者的清單。</li>
-<li>如果您有一個以上的多因素驗證提供者，選取您想要設定自訂語音訊息，並按一下 [管理] 頁面的底部。 如果您只有一個，只要按一下 [管理] 即可。 這會開啟 Azure Multi-factor Authentication 管理入口網站。</li>
-<li>在 Azure Multi-factor Authentication 管理入口網站的左側，按一下 [語音訊息。</li>
+<li>在左側選取 [Active Directory]。</li>
+<li>在頂端選取 [Multi-Factor Auth Provider]。 這會顯示您的 Multi-Factor Auth Provider 清單。</li>
+<li>如果您有一個以上的 Multi-Factor Auth Provider，請選取要設定自訂語音訊息的提供者，然後按一下頁面底部的 [管理]。 如果您只有一個，只要按一下 [管理] 即可。 這會開啟 Azure Multi-factor Authentication 管理入口網站。</li>
+<li>在 Azure Multi-factor Authentication 管理入口網站的左側，按一下 [語音訊息]。</li>
 
 <center>![雲端](./media/multi-factor-authentication-whats-next/custom1.png)</center>
 
@@ -312,7 +312,7 @@ Azure AD 支援與內部部署 Windows Server Active Directory 網域服務 (AD 
 
 1. 登入 Office 365 入口網站
 2. 在右上角選取設定 Widget
-3. 在左側選取 \[其他安全性驗證\]
+3. 在左側選取 [其他安全性驗證]
 4. 在右側，選取 **更新用於帳戶安全性的電話號碼**
 5. 在 proofup 頁面的頂端，選取應用程式密碼
 6. 按一下 [ **建立**
@@ -361,15 +361,16 @@ Azure AD 支援與內部部署 Windows Server Active Directory 網域服務 (AD 
 
 <ol>
 <li>登入 Azure 管理入口網站。</li>
-<li>在左側，按一下 [Active Directory。</li>
-<li>在 Active Directory 中，按一下您要設定的暫止多重要素驗證目錄已記住之裝置上。</li>
-<li>在您選取的目錄，按一下 [設定。</li>
-<li>在多因素驗證] 區段中，按一下 [管理服務設定。</li>
+<li>在左側按一下 [Active Directory]。</li>
+<li>在 Active Directory 下方，按一下要設定暫停對已記住之裝置進行 Multi-Factor Authentication 的目錄。</li>
+<li>在您選取的目錄上，按一下 [設定]。</li>
+<li>在 Multi-Factor Authentication 區段中，按一下 [管理服務設定]。</li>
 <li>在服務設定] 頁面中，在管理使用者裝置設定中，選取/取消選取 **允許使用者記住其裝置暫停 multi-factor authentication**。</li>
 ![Suspend devices](./media/multi-factor-authentication-manage-users-and-devices/suspend.png)
-<li>設定您想要允許暫停的天數。 預設為 14 天。</li>
+<li>設定要允許暫停的天數。 預設值為 14 天。</li>
 <li>按一下 [儲存]。</li>
 <li>按一下 [關閉]。</li>
+
 
 
 

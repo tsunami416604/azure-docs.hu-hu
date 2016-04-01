@@ -28,7 +28,7 @@
 
 > [AZURE.NOTE] 這份文件中的資訊是以 Linux 為基礎的 HDInsight 叢集的特定項目。 Windows 叢集上的資訊，請參閱 [開始搭配 HDInsight (Windows) 中的 Hadoop 使用 Apache HBase](hdinsight-hbase-tutorial-get-started.md)。
 
-###先決條件
+###必要條件
 
 開始進行本 HBase 教學課程之前，您必須具備下列條件：
 
@@ -87,7 +87,7 @@
 
 **使用 HBase Shell**
 
->[AZURE.NOTE] 以下是從 Windows 電腦提供的步驟。  指示，連接到以 Linux 為基礎的 HDInsight 叢集從 Linux、 Unix 或 OS X，請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop 上從 Linux、 Unix 或 OS X (預覽)](hdinsight-hadoop-linux-use-ssh-unix.md)
+>[AZURE.NOTE] 以下是從 Windows 電腦提供的步驟。  指示，連接到以 Linux 為基礎的 HDInsight 叢集從 Linux、 Unix 或 OS X，請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop 上從 Linux、 Unix 或 OS X （預覽）](hdinsight-hadoop-linux-use-ssh-unix.md)
 1. 開啟 **PuTTY**。  請參閱文章開頭所列的必要條件。
 2. 如果您在建立期間，於建立使用者帳戶時提供 SSH 金鑰，您就必須執行下列步驟來選取要在驗證叢集時使用的私密金鑰：
 
@@ -97,7 +97,7 @@
 4. 從您 PuTTY 工作階段螢幕的基本選項，輸入下列值：
 
     - 主機名稱：在 [主機名稱 (或 IP 位址)] 欄位中輸入您 HDInsight 伺服器的 SSH 位址。 SSH 位址是叢集名稱，然後 **-ssh.azurehdinsight.net**。 例如， *mycluster-ssh.azurehdinsight.net*。
-    - 連接埠：22。 前端節點 0 上的 ssh 連接埠為 22。  請參閱 [(預覽) 在 Linux 上使用 HDInsight 的相關資訊](hdinsight-hadoop-linux-information.md#remote-access-to-services)。
+    - 連接埠：22。 前端節點 0 上的 ssh 連接埠為 22。  請參閱 [（預覽） 在 Linux 上使用 HDInsight 的相關資訊](hdinsight-hadoop-linux-information.md#remote-access-to-services)。
 4. 按一下 [ **開啟** 連線到叢集。
 5. 出現提示時，輸入您建立叢集時所輸入的使用者。 如果您對使用者提供密碼，系統會提示您一併輸入密碼。
 6. 執行以下命令：
@@ -158,7 +158,7 @@ HBase 包含數個將資料載入資料表的方法。  如需詳細資訊，請
 
         hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
 
-4. 執行下列命令，以將資料從 /example/data/storedatafileoutput 上傳至 HBase 資料表:
+4. 執行下列命令，以將資料從 /example/data/storedatafileoutput 上傳至 HBase 資料表 ︰
 
         hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
 
@@ -229,7 +229,7 @@ HBase 包含數個將資料載入資料表的方法。  如需詳細資訊，請
 
 HDInsight 中的 HBase 隨附於 Web UI，以供監視叢集。 使用 Web UI，您可要求關於區域的統計資料或資訊。
 
-SSH 也可用來建立通道以將本機要求 (例如 Web 要求) 傳送到 HDInsight 叢集。 要求便會路由至要求的資源，彷彿要求是在 HDInsight 叢集前端節點上產生。 如需詳細資訊，請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows (預覽) 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)。
+SSH 也可用來建立通道以將本機要求 (例如 Web 要求) 傳送到 HDInsight 叢集。 要求便會路由至要求的資源，彷彿要求是在 HDInsight 叢集前端節點上產生。 如需詳細資訊，請參閱 [使用 SSH 與以 Linux 為基礎的 Hadoop，從 Windows （預覽） 在 HDInsight 上](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)。
 
 **建立 SSH 通道工作階段**
 
@@ -241,7 +241,7 @@ SSH 也可用來建立通道以將本機要求 (例如 Web 要求) 傳送到 HDI
 3. 在 **類別**, ，按一下 [ **工作階段**。
 4. 從您 PuTTY 工作階段螢幕的基本選項，輸入下列值：
 
-    - **主機名稱**: 您的 HDInsight 伺服器的主機名稱 (或 IP 位址) 欄位的 SSH 位址。 SSH 位址是叢集名稱，然後 **-ssh.azurehdinsight.net**。 例如， *mycluster-ssh.azurehdinsight.net*。
+    - **主機名稱**︰ 您的 HDInsight 伺服器的主機名稱 （或 IP 位址） 欄位的 SSH 位址。 SSH 位址是叢集名稱，然後 **-ssh.azurehdinsight.net**。 例如， *mycluster-ssh.azurehdinsight.net*。
     - **連接埠**: 22。 前端節點 0 上的 ssh 連接埠為 22。  
 5. 在 **類別** 對話方塊左側的區段中，展開 **連接**, ，依序展開 **SSH**, ，然後按一下 [ **通道**。
 6. 在 [控制 SSH 連接埠轉送的選項] 表單中提供下列資訊：
@@ -270,9 +270,9 @@ SSH 也可用來建立通道以將本機要求 (例如 Web 要求) 傳送到 HDI
 6. 輸入下列值：
 
     - **Socks 主機**: localhost
-    - **連接埠**: 使用 Putty SSH 進行通道中設定的相同連接埠。  例如 9876。
-    - **SOCKS v5**: (選取)
-    - **遠端 DNS**: (選取)
+    - **連接埠**︰ 使用 Putty SSH 進行通道中設定的相同連接埠。  例如 9876。
+    - **SOCKS v5**: （選取）
+    - **遠端 DNS**: （選取）
 7. 按一下 [ **確定** 以儲存變更。
 8. 瀏覽至 http://<TheFQDN of a ZooKeeper>: 60010/主機狀態
 
@@ -315,4 +315,5 @@ HBase 是建置於 Hadoop 上的 Apache 開放原始碼 NoSQL 資料庫，可針
 [img-hbase-shell]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
+
 

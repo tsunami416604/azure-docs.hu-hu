@@ -27,7 +27,7 @@
 
 您可以在服務匯流排命名空間上設定 SAS 的金鑰。 金鑰套用至該命名空間中的所有訊息實體。 您也可以在服務匯流排佇列和主題上設定金鑰。 服務匯流排轉送也支援 SAS。
 
-若要使用 SAS，您可以設定 [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 上命名空間、 佇列或主題，包含下列物件:
+若要使用 SAS，您可以設定 [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 上命名空間、 佇列或主題，包含下列物件 ︰
 
 - *KeyName* 識別規則。
 
@@ -71,7 +71,8 @@ New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
 
 在服務匯流排 SAS 的高階概觀，請參閱 [共用存取簽章](service-bus-sas-overview.md)。
 
-您可以找到 ACS 權杖中的詳細資訊 [How to: 從透過 OAuth WRAP 通訊協定的 ACS 要求權杖](https://msdn.microsoft.com/library/hh674475.aspx)。
+您可以找到 ACS 權杖中的詳細資訊 [How to ︰ 從透過 OAuth WRAP 通訊協定的 ACS 要求權杖](https://msdn.microsoft.com/library/hh674475.aspx)。
+
 
 
 

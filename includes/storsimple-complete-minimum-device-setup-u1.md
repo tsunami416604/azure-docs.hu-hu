@@ -4,7 +4,7 @@
 
 1. 選取裝置，然後按一下 [ **快速入門**。 按一下 [ **完成裝置設定** 啟動設定裝置精靈。
 
-2. 在設定裝置精靈 **基本設定** 對話方塊方塊中，執行下列動作:
+2. 在設定裝置精靈 **基本設定** 對話方塊方塊中，執行下列動作 ︰
   1. 提供 **易記名稱** 為您的裝置。 預設的裝置名稱會反映裝置型號及序號等資訊。 您最多可為易記名稱指定 64 個字元來管理您的裝置。
   2. 設定 **時區** 根據部署裝置的地理位置。 裝置將針對所有排程的操作使用這個時區。
   3. 在 **DNS 設定**, ，提供的地址您 **次要 DNS 伺服器**。 如果您使用的是 IPv6，將根據 Windows PowerShell 介面中提供的 IPv6 首碼來填入欄位。 
@@ -15,7 +15,7 @@
 
 3. 按一下箭頭圖示。 ![StorSimple 箭頭圖示](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
 
-4. 在 **網路介面** 對話方塊方塊中，提供控制器 0 及控制器 1 固定的 IP 位址。 **控制器固定 IP 位址必須是可存取裝置的 IP 位址子網路內的可用 Ip。**如果 DATA 0 介面是針對 IPv4 所設定，就必須以 IPv4 格式提供固定的 IP 位址。 如果您提供適用於 IPv6 設定的首碼，則固定的 IP 位址將自動填入這些欄位中。
+4. 在 **網路介面** 對話方塊方塊中，提供控制器 0 及控制器 1 固定的 IP 位址。 **控制站的固定 IP 位址必須是裝置 IP 位址可存取的子網路內的可用 IP。** 如果 DATA 0 介面是針對 IPv4 所設定，就必須以 IPv4 格式提供固定的 IP 位址。 如果您提供適用於 IPv6 設定的首碼，則固定的 IP 位址將自動填入這些欄位中。
 
 
     ![StorSimple minimum device setup network interfaces](./media/storsimple-complete-minimum-device-setup-u1/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
@@ -31,3 +31,4 @@
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx
+

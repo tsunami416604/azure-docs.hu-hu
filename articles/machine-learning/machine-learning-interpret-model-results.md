@@ -33,9 +33,9 @@ Azure Machine Learning 中有四個主要的機器學習類型：
 
 用來在這些模組上層進行預測的模組，稱為為其「評分」，指定一些測試資料，如下所示：
 
-* [評分模型][評分模型] 模組，用於分類和迴歸， 
-* [指派給叢集][指派至叢集] 模組，用於叢集 
-* [評分 Matchbox 推薦][評分-matchbox-推薦] 用於推薦系統 
+* [評分模型][score-model] 模組，用於分類和迴歸， 
+* [指派給叢集][assign-to-clusters] 模組，用於叢集 
+* [評分 Matchbox 推薦][score-matchbox-recommender] 用於推薦系統 
  
 本文件說明如何針對每個模組解譯預測結果。 如需這些種類的模型的概觀，請參閱 [如何選擇參數來最佳化 Azure Machine Learning 中的演算法](machine-learning-algorithm-parameters-optimize.md)。
 
@@ -54,13 +54,13 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 ###雙類別分類
 **範例實驗**
 
-雙類別分類問題的範例是鳶尾花的分類：根據其特徵分類鳶尾花。 請注意，在 Azure Machine Learning 中提供的鳶尾花資料集是熱門子集 [光圈資料集](http://en.wikipedia.org/wiki/Iris_flower_data_set) 包含只有 2 個花卉物種 (類別 0 和 1) 的執行個體。 每個花卉有四個特徵 (萼片長度、萼片寬度、花瓣長度及花瓣寬度)。
+雙類別分類問題的範例是鳶尾花的分類：根據其特徵分類鳶尾花。 請注意，在 Azure Machine Learning 中提供的鳶尾花資料集是熱門子集 [光圈資料集](http://en.wikipedia.org/wiki/Iris_flower_data_set) 包含只有 2 個花卉物種 （類別 0 和 1） 的執行個體。 每個花卉有四個特徵 (萼片長度、萼片寬度、花瓣長度及花瓣寬度)。
 
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/1.png)
 
 圖 1 鳶尾花雙類別分類問題的實驗
 
-已執行實驗以解決此問題，如「圖 1」所示。 已訓練及評分雙類別促進式決策樹模型。 現在我們可以視覺化按一下 [評分模型] [評分模型] 模組的輸出連接埠，然後按一下 [評分模型] [評分模型] 模組的預測結果 **視覺化** 功能表中。 這樣會帶出評分結果，如「圖 2」所示。
+已執行實驗以解決此問題，如「圖 1」所示。 已訓練及評分雙類別促進式決策樹模型。 現在我們可以視覺化預測結果從 [評分模型][score-model] 模組的輸出連接埠上的 [ [評分模型][score-model] 模組，然後按一下 **視覺化** 功能表中。 這樣會帶出評分結果，如「圖 2」所示。
 
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/1_1.png)
 
@@ -80,7 +80,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 圖 3 鳶尾花雙類別分類問題的評分實驗
 
-現在我們必須設定 Web 服務的輸入和輸出。 很明顯地，輸入為的右側輸入的埠 [評分模型] [評分模型]] 這是鳶尾花功能輸入。 輸出的選擇取決於我們是對於預測類別 (評分標籤)、評分機率或兩者感到興趣。 在這裡，假設我們有興趣兩者。 若要選取想要的輸出資料行，我們需要使用 [Project Columns] 和 [專案資料行] 模組。 我們按一下 [Project Columns] 和 [專案資料行] 模組，請按一下 **啟動資料行選取器** 右窗格中，然後選取 **評分標籤** 和 **評分機率 」**。 設定 [Project Columns] 和 [專案資料行] 模組的輸出連接埠，並執行一次之後, 我們應該已準備好評分實驗發佈為 web 服務，按一下 **發佈 WEB 服務** 底部的按鈕。 最終實驗如「圖 4」所示。
+現在我們必須設定 Web 服務的輸入和輸出。 很明顯地，輸入是右側輸入的埠 [評分模型][score-model], ，這是鳶尾花的特徵輸入。 輸出的選擇取決於我們是對於預測類別 (評分標籤)、評分機率或兩者感到興趣。 在這裡，假設我們有興趣兩者。 若要選取想要的輸出資料行，我們需要使用 [專案資料行][project-columns] 模組。 我們按一下 [專案資料行][project-columns] 模組中，按一下 [ **啟動資料行選取器** 右窗格中，然後選取 **評分標籤** 和 **評分機率 」**。 設定輸出連接埠之後 [專案資料行][project-columns] 模組，然後重新執行，我們應該已準備好評分實驗發佈為 web 服務，按一下 **發佈 WEB 服務** 底部的按鈕。 最終實驗如「圖 4」所示。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/4.png)
 
@@ -105,7 +105,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 圖 6 字母辨識多類別分類問題的實驗
 
-視覺化由 [評分模型] [評分模型] 模組的結果右/左鍵按一下 [評分模型] [評分模型] 模組的輸出連接埠，然後按一下 **視覺化**, ，您應該會看到如 [圖 7 所示的視窗。
+視覺化從結果 [評分模型][score-model] 模組的輸出連接埠上，按一下右/向左 [評分模型][score-model] 模組，然後按一下 [ **視覺化**, ，您應該會看到如 [圖 7 所示的視窗。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/7.png)
 
@@ -117,7 +117,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 **Web 服務發佈**
 
-這次，而不是使用 [專案資料行] [專案資料行] 以選取一些資料行做為 web 服務的輸出，我們想要取得評分的標籤為每個項目和評分標籤的機率。 基本邏輯是尋找所有評分機率當中最大的機率。 若要這樣做，我們需要使用 [執行 R 指令碼] 的 [執行-r-指令碼] 模組。 R 程式碼如「圖 8」所示，實驗如「圖 9」所示。
+這次，而不是使用 [專案資料行][project-columns] 若要選取的某些資料行做為 web 服務的輸出，我們想要取得評分的標籤為每個項目和評分標籤的機率。 基本邏輯是尋找所有評分機率當中最大的機率。 若要這樣做，我們需要使用 [執行 R 指令碼][execute-r-script] 模組。 R 程式碼如「圖 8」所示，實驗如「圖 9」所示。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/8.png)
 
@@ -147,7 +147,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 圖 11 汽車價格迴歸問題的實驗
 
-視覺化 [評分模型] [評分模型] 模組，結果看起來像 [圖 12 中。
+視覺化 [評分模型][score-model] 模組，結果如 [圖 12 所示。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/12.png)
 
@@ -185,7 +185,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 叢集與分類的不同之處在於訓練資料集本身沒有地面實況標籤。 我們對於如何將訓練資料集執行個體群組至不同的叢集更感興趣。 在訓練處理期間，模型會為項目加上標籤，方法是學習其特徵之間的差異。 之後，可以進一步使用已訓練的模型以分類未來的項目。 在叢集問題當中，我們感興趣的結果有兩個部分。 第一個部分是如何為訓練資料集加上標籤，第二個部分是如何使用已訓練的模型分類新的資料集。
 
-才能視覺化結果的第一個部分，請按一下 [定型群集模型] [訓練-叢集-模型] 模組，然後按一下左邊的輸出連接埠 **視覺化** 之後。 視覺化視窗如「圖 16」所示。
+結果的第一個部分可以視覺化的左側的輸出連接埠上的 [ [訓練叢集模型][train-clustering-model] 模組，然後按一下 [ **視覺化** 之後。 視覺化視窗如「圖 16」所示。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/16.png)
 
@@ -226,14 +226,14 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 * 客戶特色資料 
 * 餐廳特色資料 
 
-有幾件事，我們可以使用 Azure Machine Learning 的內建的 [定型 Matchbox 推薦] [定型的 matchbox 推薦的] 模組: 
+我們可以使用 Azure Machine Learning 的內建的幾件事 [訓練 Matchbox 推薦][train-matchbox-recommender] 模組 ︰ 
 
 - 為指定使用者和項目預測評等
 - 對指定使用者推薦項目
 - 尋找指定使用者相關的使用者
 - 尋找指定項目相關的項目
 
-我們可以選擇我們想要從四個選項中選取 **推薦預測類型** 右面板上的功能表。 我們會在這裡逐步完成全部四個案例。 典型的推薦系統 Azure Machine Learning 實驗如「圖 20」所示。 如需有關如何使用這些推薦系統模組，請參閱說明頁面的 [定型 Matchbox 推薦] [定型的 matchbox 推薦的] 和 [評分 Matchbox 推薦] [評分-matchbox 推薦的]。
+我們可以選擇我們想要從四個選項中選取 **推薦預測類型** 右面板上的功能表。 我們會在這裡逐步完成全部四個案例。 典型的推薦系統 Azure Machine Learning 實驗如「圖 20」所示。 如需有關如何使用這些推薦系統模組，請參閱說明頁的 [訓練 Matchbox 推薦][train-matchbox-recommender] 和 [評分 Matchbox 推薦][score-matchbox-recommender]。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/19_1.png)
 
@@ -245,7 +245,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 *為指定使用者和項目預測評等*
 
-選取 [評等預測中 **推薦預測類型** ] 功能表中，我們會要求推薦系統預測指定的使用者和項目評等。 [評分 Matchbox 推薦] [評分-matchbox 推薦的] 輸出的視覺效果看起來像圖 21。
+選取 [評等預測中 **推薦預測類型** ] 功能表中，我們會要求推薦系統預測指定的使用者和項目評等。 視覺化 [評分 Matchbox 推薦][score-matchbox-recommender] 輸出看起來像圖 21。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/21.png)
 
@@ -255,7 +255,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 *對指定使用者推薦項目*
 
-藉由選取 **項目建議** 中 **推薦預測類型** ] 功能表中，我們會要求推薦系統對指定使用者推薦項目。 此案例中還有一個需要選擇的參數，推薦項目選取。 選擇 **從評等項目 (針對模型評估)** 主要適用於訓練處理期間的模型評估。 對於此預測階段，我們將選擇 **從所有項目**。 [評分 Matchbox 推薦] [評分-matchbox 推薦的] 輸出的視覺化如 [圖 22 所示。
+藉由選取 **項目建議** 中 **推薦預測類型** ] 功能表中，我們會要求推薦系統對指定使用者推薦項目。 此案例中還有一個需要選擇的參數，推薦項目選取。 選擇 **從評等項目 （針對模型評估）** 主要適用於訓練處理期間的模型評估。 對於此預測階段，我們將選擇 **從所有項目**。 視覺化 [評分 Matchbox 推薦][score-matchbox-recommender] 輸出看起來像圖 22。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/22.png)
 
@@ -265,7 +265,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 *尋找指定使用者相關的使用者*
 
-藉由在 [推薦預測類型] 功能表中選取 [相關使用者]，我們會要求推薦系統尋找指定使用者的相關使用者。 相關使用者是具有類似偏好的使用者。 此案例中還有一個需要選擇的參數，相關使用者選取。 選項 [從評等項目的使用者 (針對模型評估)] 主要適用於訓練處理期間的模型評估。 對於此預測階段，我們選擇 [從所有使用者]。 [評分 Matchbox 推薦] [評分-matchbox 推薦的] 輸出的視覺化如 [圖 23 所示。
+藉由在 [推薦預測類型] 功能表中選取 [相關使用者]，我們會要求推薦系統尋找指定使用者的相關使用者。 相關使用者是具有類似偏好的使用者。 此案例中還有一個需要選擇的參數，相關使用者選取。 選項 [從評等項目的使用者 (針對模型評估)] 主要適用於訓練處理期間的模型評估。 對於此預測階段，我們選擇 [從所有使用者]。 視覺化 [評分 Matchbox 推薦][score-matchbox-recommender] 輸出看起來像圖 23。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/23.png)
 
@@ -275,7 +275,7 @@ Azure Machine Learning 有不同的模組可以處理各種類型的分類。 �
 
 **尋找指定項目相關的項目**
 
-藉由選取 **相關項目** 中 **推薦預測類型** ] 功能表上，我們會要求推薦系統尋找指定項目的相關項目。 相關項目是相同使用者最有可能喜歡的項目。 此案例中還有一個需要選擇的參數，相關項目選取。 選擇 **從評等項目 (針對模型評估)** 主要適用於訓練處理期間的模型評估。 我們選擇 **從所有項目** 對於此預測階段。 [評分 Matchbox 推薦] [評分-matchbox 推薦的] 輸出的視覺化如 [圖 24 所示。
+藉由選取 **相關項目** 中 **推薦預測類型** ] 功能表上，我們會要求推薦系統尋找指定項目的相關項目。 相關項目是相同使用者最有可能喜歡的項目。 此案例中還有一個需要選擇的參數，相關項目選取。 選擇 **從評等項目 （針對模型評估）** 主要適用於訓練處理期間的模型評估。 我們選擇 **從所有項目** 對於此預測階段。 視覺化 [評分 Matchbox 推薦][score-matchbox-recommender] 輸出看起來像圖 24。
  
 ![screenshot_of_experiment](./media/machine-learning-interpret-model-results/24.png)
 
@@ -310,3 +310,4 @@ Web 服務發佈
 [train-clustering-model]: https://msdn.microsoft.com/library/azure/bb43c744-f7fa-41d0-ae67-74ae75da3ffd/
 [train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
  
+

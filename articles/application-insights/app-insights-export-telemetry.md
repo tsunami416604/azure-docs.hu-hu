@@ -36,13 +36,13 @@
 
     ![在新的儲存體中，選取 [容器]，按一下容器磚，然後按一下 [新增]](./media/app-insights-export-telemetry/040.png)
 
-## <a name="setup"></a> 設定連續匯出
+## <a name="setup"> </a> 設定連續匯出
 
 在 Application Insights 入口網站中應用程式的 [概觀] 刀鋒視窗上，開啟 [連續匯出]： 
 
 ![向下捲動並按一下 [連續匯出]](./media/app-insights-export-telemetry/01-export.png)
 
-加入匯出，然後選擇 [ [Azure 儲存體帳戶](../storage-introduction.md) 您想要放置資料的位置:
+加入匯出，然後選擇 [ [Azure 儲存體帳戶](../storage-introduction.md) 您想要放置資料的位置 ︰
 
 ![按一下 [加入]、[匯出目的地]、[儲存體帳戶]，然後建立新儲存區或選擇現有儲存區](./media/app-insights-export-telemetry/02-add.png)
 
@@ -67,7 +67,7 @@
 
 * 若要加入或變更匯出，您需要擁有者、參與者或 Application Insights 參與者存取權。 [了解角色][roles]。
 
-## <a name="analyze"></a> 您取得什麼事件?
+## <a name="analyze"></a> 您取得什麼事件？
 
 匯出的資料是我們從您的應用程式接收的原始遙測，只不過我們加入了從用戶端 IP 位址計算的位置資料。 
 
@@ -75,13 +75,13 @@
 
 資料也包含結果的任何 [可用性 web 測試](app-insights-monitor-web-app-availability.md) 已設定。 
 
-> [AZURE.NOTE] **取樣。**如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [進一步了解取樣。](app-insights-sampling.md)
+> [AZURE.NOTE] **取樣。** 如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](app-insights-sampling.md)
 
 ## <a name="get"></a> 檢查資料
 
 您可以直接在入口網站中檢查儲存體。 按一下 [ **瀏覽**, 、 選取儲存體帳戶，然後再開啟 **容器**。
 
-若要檢查 Visual Studio 中的 Azure 儲存體，請開啟 **檢視**, ，**雲端總管**。 (如果您沒有該功能表命令，您需要安裝 Azure SDK: 開啟 **新的專案** ] 對話方塊中，展開 [Visual C# / 雲端，然後選擇 **取得 Microsoft Azure SDK for.NET**。)
+若要檢查 Visual Studio 中的 Azure 儲存體，請開啟 **檢視**, ，**雲端總管**。 (如果您沒有該功能表命令，您需要安裝 Azure SDK ︰ 開啟 **新的專案** ] 對話方塊中，展開 [Visual C# / 雲端，然後選擇 **取得 Microsoft Azure SDK for.NET**。)
 
 當您開啟 Blob 存放區時，您會看到含有一組 Blob 檔案的容器。 衍生自您 Application Insights 的資源名稱、其檢測金鑰、遙測-類型/日期/時間之每個檔案的 URI。 (資源名稱全部小寫，而檢測金鑰會省略連字號。)
 
@@ -209,4 +209,5 @@
 [roles]: app-insights-resources-roles-access-control.md
 
  
+
 

@@ -48,7 +48,7 @@
 
 |Technology|範例架構|
 |---|---|
-|**AlwaysOn 可用性群組**|為了相同區域內的高可用性，所有可用性複本都會在 Azure VM 中執行。 由於 Windows Server 容錯移轉叢集 (WSFC) 需使用 Active Directory 網域，因此除了 SQL Server 虛擬機器以外，您還需要設定網域控制站。<br/>![AlwaysOn 可用性群組](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_ha_always_on.gif)<br/>如需詳細資訊，請參閱 [設定 AlwaysOn 可用性群組在 Azure (GUI)](virtual-machines-sql-server-alwayson-availability-groups-gui.md)。|
+|**AlwaysOn 可用性群組**|為了相同區域內的高可用性，所有可用性複本都會在 Azure VM 中執行。 您要設定網域控制站和 SQL Server 虛擬機器，因為 Windows Server 容錯移轉叢集 (WSFC) 需要 Active Directory 網域。<br/> ![AlwaysOn 可用性群組](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_ha_always_on.gif)<br/>如需詳細資訊，請參閱 [設定 AlwaysOn 可用性群組在 Azure (GUI)](virtual-machines-sql-server-alwayson-availability-groups-gui.md)。|
 |**資料庫鏡像**|為了高可用性，所有主體、鏡像和見證伺服器都會在相同的 Azure 資料中心執行。 您可以使用網域控制站進行部署。<br/>![資料庫鏡像](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_ha_dbmirroring1.gif)<br/>您也可以部署相同的資料庫鏡像沒有網域控制站的組態，而是使用伺服器憑證。<br/>![資料庫鏡像](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_ha_dbmirroring2.gif)|
 
 ## 僅限 Azure：嚴重損壞修復解決方案
@@ -67,7 +67,7 @@
 
 |Technology|範例架構|
 |---|---|
-|**AlwaysOn 可用性群組**|為了進行跨網站的嚴重損壞修復，部分可用性複本會在 Azure VM 中執行，而其他複本會在內部部署執行。 生產網站可以是在內部或在 Azure 資料中心。<br/>![AlwaysOn 可用性群組](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_alwayson.gif)<br/>由於所有可用性複本必須位於相同 WSFC 叢集中，WSFC 叢集必須跨越兩個網路 (多重子網路 WSFC 叢集)。 此設定需要 Azure 與內部網路之間的 VPN 連線。<br/><br/>成功的災害復原的資料庫，您也應該安裝複本網域控制站在災害復原站台。<br/><br/>很可能要加入複本精靈] 在 SSMS 中用來將 Azure 複本加入至現有的 AlwaysOn 可用性群組。 如需詳細資訊，請參閱教學課程：將您的 AlwaysOn 可用性群組延伸至 Azure。|
+|**AlwaysOn 可用性群組**|為了進行跨網站的嚴重損壞修復，部分可用性複本會在 Azure VM 中執行，而其他複本會在內部部署執行。 生產網站可以是在內部或在 Azure 資料中心。<br/>![AlwaysOn 可用性群組](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_alwayson.gif)<br/>由於所有可用性複本必須位於相同 WSFC 叢集中，WSFC 叢集必須跨越兩個網路 （多重子網路 WSFC 叢集）。 此設定需要 Azure 與內部網路之間的 VPN 連線。<br/><br/>成功的災害復原的資料庫，您也應該安裝複本網域控制站在災害復原站台。<br/><br/>很可能要加入複本精靈] 在 SSMS 中用來將 Azure 複本加入至現有的 AlwaysOn 可用性群組。 如需詳細資訊，請參閱教學課程：將您的 AlwaysOn 可用性群組延伸至 Azure。|
 |**資料庫鏡像**|為了使用伺服器憑證進行跨網站嚴重損壞修復，一個合作夥伴會在 Azure VM 中執行，而其他合作夥伴會在內部部署中執行。 夥伴不需要在相同的 Active Directory 網域，而且需要 VPN 連線。<br/>![資料庫鏡像](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_dbmirroring.gif)<br/>另一個資料庫鏡像 sceanario 牽涉到一個夥伴執行於 Azure VM 和其他執行內部部署中相同的 Active Directory 網域，提供跨網站災害復原。 A [Azure 虛擬網路與內部網路之間的 VPN 連線](../vpn-gateway/vpn-gateway-site-to-site-create.md) 需要。<br/><br/>成功的災害復原的資料庫，您也應該安裝複本網域控制站在災害復原站台。|
 |**記錄傳送**|為了進行跨網站嚴重損壞修復，一個合作夥伴會在 Azure VM 中執行，而其他合作夥伴會在內部部署中執行。 記錄傳送依賴 Windows 檔案共用，因此需要 Azure 虛擬網路和內部網路之間的 VPN 連線。<br/>![記錄傳送](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_log_shipping.gif)<br/>成功的災害復原的資料庫，您也應該安裝複本網域控制站在災害復原站台。|
 |**備份及還原與 Azure Blob 儲存體服務**|內部部署生產資料庫直接備份到 Azure blob 儲存體的嚴重損壞修復。<br/>![備份與還原](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_backup_restore.gif)<br/>如需詳細資訊，請參閱 [備份和還原 SQL Server Azure 虛擬機器中的](virtual-machines-sql-server-backup-and-restore.md)。|
@@ -108,7 +108,7 @@ Azure 中的可用性設定組可讓您將高可用性節點分別放入容錯�
 
 設定接聽程式有主要兩個選項：外部 (公用) 或內部。 外部 (公用) 接聽程式與可透過網際網路存取的公用虛擬 IP (VIP) 相關聯。 使用外部的接聽程式時，您必須啟用伺服器直接回傳，意即您必須從和 AlwaysOn 可用性群組節點位處不同雲端服務的電腦連接至接聽程式。 另一個選項是使用內部負載平衡器 (ILB) 的內部接聽程式。 內部接聽程式只支援位於相同虛擬網路的用戶端。
 
-如果可用性群組跨越多個 Azure 子網路，(如跨越 Azure 區域部署)，用戶端連接字串必須包含 「**MultisubnetFailover = True**」。 這會導致對於不同子網路中的複本進行平行連接嘗試。 如需有關設定接聽程式的指示，請參閱 
+如果可用性群組跨越多個 Azure 子網路，（如跨越 Azure 區域部署），用戶端連接字串必須包含 「**MultisubnetFailover = True**」。 這會導致對於不同子網路中的複本進行平行連接嘗試。 如需有關設定接聽程式的指示，請參閱 
 
 - [在 Azure 中設定 AlwaysOn 可用性群組的 ILB 接聽](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)。
 - [在 Azure 中設定 AlwaysOn 可用性群組的外部接聽程式](virtual-machines-sql-server-configure-public-alwayson-availability-group-listener.md)。
@@ -151,4 +151,5 @@ Azure 磁碟中的異地複寫不支援將相同資料庫的資料檔與記錄�
 
 - [在 Azure 中安裝新的 Active Directory 樹系](../active-directory/active-directory-new-forest-virtual-machine.md)
 - [在 Azure VM 中建立 AlwaysOn 可用性群組的 WSFC 叢集](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
+
 

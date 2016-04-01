@@ -24,11 +24,11 @@ API 管理支援多區域部署，可讓 API 發行者跨所需的任意數量 A
 
 > [AZURE.IMPORTANT] 多重區域部署僅供以 **[Premium][]** 層。
 
-## <a name="add-region"> </a>API 管理服務執行個體部署到新的區域
+## <a name="add-region"> </a>部署 API 管理服務執行個體到新區域
 
 若要開始使用，請按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。 這會帶您前往 API 管理發行者入口網站。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 >如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
@@ -74,5 +74,6 @@ API 管理支援多區域部署，可讓 API 發行者跨所需的任意數量 A
 
 [unit]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
+
 
 

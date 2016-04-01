@@ -34,7 +34,7 @@
 
 ##HDInsight Tools for Visual Studio 更新
 
-- **IntelliSense 的增強功能**: 遠端中繼資料建議
+- **IntelliSense 的增強功能**︰ 遠端中繼資料建議
 
     HDInsight Tools for Visual Studio 現在支援在編輯 Hive 指令碼時取得遠端中繼資料。 例如，您可以輸入 **選取 * FROM** ，並且會顯示所有的資料表名稱。 此外，資料行名稱會在指定資料表之後顯示。
 
@@ -44,7 +44,7 @@
 
     如需詳細資訊，請參閱 [本手冊](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409)。
 
-- **HDInsight Tools for Visual Studio 支援一般的 Hadoop 叢集** (預覽)
+- **HDInsight Tools for Visual Studio 支援一般的 Hadoop 叢集** （預覽）
 
     HDInsight Tools for Visual Studio 現在支援一般的 Hadoop 叢集，因此您可以使用 HDInsight Tools for Visual Studio 來執行下列動作：
 
@@ -60,9 +60,9 @@
 
     使用 Azure SDK 2.5 或更低版本的客戶應該更新到 Azure SDK 2.6，並移至新的 Azure 儲存體 SDK 版本。 
 
-    目前 Azure 儲存體版本 2011-08-18 己預計於 2016 年 8 月 1 日移除。 任何將 In-Role Cache 從 Azure SDK 2.5 或較低版本移轉到 Azure SDK 2.6 的作業都必須在這個時間前完成。 淘汰的 Azure 儲存體 2011年-08-18 版的詳細資訊，請參閱 [Microsoft Azure 儲存體服務版本移除更新: 延伸至 2016年](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)。
+    目前 Azure 儲存體版本 2011-08-18 己預計於 2016 年 8 月 1 日移除。 任何將 In-Role Cache 從 Azure SDK 2.5 或較低版本移轉到 Azure SDK 2.6 的作業都必須在這個時間前完成。 淘汰的 Azure 儲存體 2011年-08-18 版的詳細資訊，請參閱 [Microsoft Azure 儲存體服務版本移除更新 ︰ 延伸至 2016年](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)。
 
->[AZURE.IMPORTANT]我們正在宣佈 Azure 受管理快取服務與 Azure 角色中快取 2016 年 11 月 30 日淘汰。 我們建議您移轉至 Azure Redis 快取以為這次淘汰做準備。 如需有關日期和移轉指導方針的詳細資訊，請參閱 [哪個 Azure 快取服務是最適合我?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
+>[AZURE.IMPORTANT]我們正在宣佈 Azure 受管理快取服務與 Azure 角色中快取 2016 年 11 月 30 日淘汰。 我們建議您移轉至 Azure Redis 快取以為這次淘汰做準備。 如需有關日期和移轉指導方針的詳細資訊，請參閱 [哪個 Azure 快取服務是最適合我？](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
 
 ##Azure App Service 工具
 
@@ -107,4 +107,5 @@ Azure SDK 2.6 重新提供針對收集 Azure 計算模擬器中的診斷記錄�
 ##另請參閱
 
 [Azure SDK for .NET 和 API 的支援和停用資訊](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
+
 

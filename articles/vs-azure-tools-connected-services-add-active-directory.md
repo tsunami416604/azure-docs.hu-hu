@@ -7,13 +7,13 @@
    manager="douge"
    editor="tlee" />
 <tags 
-   「 visual studio-線上"ms.service="
-   ms.devlang="multiple 」
+   ms.service="visual-studio-online""
+   ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   「 visual studio-線上"ms.workload=
-   ms.date="08/12/2015 」
-   ms.author="tarcher"/ >
+   ms.workload="visual-studio-online"
+   ms.date="08/12/2015"
+   ms.author="tarcher" />
 
 # 在 Visual Studio 中使用已連接服務加入 Azure Active Directory 
 
@@ -78,5 +78,6 @@
  - [Azure AD 文件](http://azure.microsoft.com/documentation/services/active-directory/)
 
  - [部落格文章：Azure AD 簡介](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
+
 
 

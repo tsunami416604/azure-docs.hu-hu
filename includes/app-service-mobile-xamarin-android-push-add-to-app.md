@@ -1,13 +1,13 @@
 
 4. 在名為 `ToDoBroadcastReceiver` 的專案中建立新類別。
 
-5. 新增下列 using 陳述式 **ToDoBroadcastReceiver** 類別:
+5. 新增下列 using 陳述式 **ToDoBroadcastReceiver** 類別 ︰
 
         using Gcm.Client;
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
 
-6. 新增下列權限要求之間 **使用** 陳述式和 **命名空間** 宣告:
+6. 新增下列權限要求之間 **使用** 陳述式和 **命名空間** 宣告 ︰
 
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -18,7 +18,7 @@
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 
-7. 取代現有 **ToDoBroadcastReceiver** 類別具有下列定義:
+7. 取代現有 **ToDoBroadcastReceiver** 類別具有下列定義 ︰
  
         [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, 
@@ -35,7 +35,7 @@
 
     在上述程式碼中，您必須將 _`<PROJECT_NUMBER>`_ 在佈建您的應用程式在 Google 開發人員入口網站時由 Google 指派的專案編號。 
 
-8. 在 ToDoBroadcastReceiver.cs 專案檔案中，新增下列程式碼定義 **PushHandlerService** 類別:
+8. 在 ToDoBroadcastReceiver.cs 專案檔案中，新增下列程式碼定義 **PushHandlerService** 類別 ︰
  
         // The ServiceAttribute must be applied to the class.
         [Service] 
@@ -48,7 +48,7 @@
 
     請注意，此類別衍生自 **GcmServiceBase** ， **服務** 屬性必須套用至這個類別。
 
-    >[AZURE.NOTE] **GcmServiceBase** 類別會實作 **onregistered ()**, ，**onunregistered ()**, ，**onmessage ()** 和 **onerror ()** 方法。 您必須覆寫這些方法在 **PushHandlerService** 類別。
+    >[AZURE.NOTE] **GcmServiceBase** 類別會實作 **onregistered （)**, ，**onunregistered （)**, ，**onmessage （)** 和 **onerror （)** 方法。 您必須覆寫這些方法在 **PushHandlerService** 類別。
 
 5. 加入下列程式碼以 **PushHandlerService** 類別會覆寫 **OnRegistered** 事件處理常式。 
 
@@ -89,9 +89,9 @@
             }
         }
 
-    此方法使用傳回的 GCM 註冊識別碼，向 Azure 註冊以取得推送通知。 只能在建立註冊之後加入標記。 如需詳細資訊，請參閱 [How to: 將標記加入至裝置的安裝，以啟用推播至標記](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)。
+    此方法使用傳回的 GCM 註冊識別碼，向 Azure 註冊以取得推送通知。 只能在建立註冊之後加入標記。 如需詳細資訊，請參閱 [How to ︰ 將標記加入至裝置的安裝，以啟用推播至標記](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)。
 
-10. 覆寫 **OnMessage** 方法中的 **PushHandlerService** 為下列程式碼:
+10. 覆寫 **OnMessage** 方法中的 **PushHandlerService** 為下列程式碼 ︰
 
         protected override void OnMessage(Context context, Intent intent)
         {          
@@ -127,7 +127,7 @@
             }
         }
 
-12. 覆寫 **onunregistered ()** 和 **onerror ()** 為下列程式碼的方法。
+12. 覆寫 **onunregistered （)** 和 **onerror （)** 為下列程式碼的方法。
 
         protected override void OnUnRegistered(Context context, string registrationId)
         {
@@ -139,3 +139,4 @@
             System.Diagnostics.Debug.WriteLine(
                 string.Format("Error occurred in the notification: {0}.", errorId));
         }
+

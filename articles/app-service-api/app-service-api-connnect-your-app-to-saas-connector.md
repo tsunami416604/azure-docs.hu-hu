@@ -83,7 +83,7 @@
 
 若要讓 API 能夠存取您的 Dropbox 帳戶，您必須在 Dropbox 開發人員網站上建立 Dropbox 應用程式。 然後，將用戶端識別碼和用戶端密碼值從該 Dropbox 應用程式複製到您的 Dropbox 連接器，並將連接器設為只接受已驗證的要求。
 
-### <a id="createdbapp"></a>建立一個 Dropbox 應用程式
+### <a id="createdbapp"></a>建立 Dropbox 應用程式
 
 [AZURE.INCLUDE [app-service-api-create-dropbox-app](../../includes/app-service-api-create-dropbox-app.md)]
 
@@ -97,7 +97,7 @@
 
 1. 返回至 **設定** 刀鋒視窗中，然後按一下 [ **應用程式設定**。
 
-2. 在 **應用程式設定** ] 分頁中，將 **存取層級** 至 **公用 (驗證)**, ，然後按一下 [ **儲存**。 
+2. 在 **應用程式設定** ] 分頁中，將 **存取層級** 至 **公用 （驗證）**, ，然後按一下 [ **儲存**。 
     
     ![設為公用 (已驗證)](./media/app-service-api-connnect-your-app-to-saas-connector/pubauth.png)
 
@@ -189,7 +189,7 @@
 
     對此 URL 的回應，會將瀏覽器重新導向到 Dropbox 網站，在其中使用者會登入並將對使用者帳戶的存取權授與應用程式。
     
-    登入和同意程序完成時，Dropbox 瀏覽器重新導向至您指定的重新導向 URL (例如，Azure 預覽入口網站，如果您遵循範例並使用 https://portal.azure.com)。 如果您是從 Web 應用程式呼叫，則會是 Web 應用程式中下一個要顯示的頁面。  應用程式應該檢查 URL，因為如果在登入或同意程序中有錯誤，重新導向 URL 可能會包含 `error` querystring 變數。
+    登入和同意程序完成時，Dropbox 瀏覽器重新導向至您指定的重新導向 URL （例如，Azure 預覽入口網站，如果您遵循範例並使用 https://portal.azure.com）。 如果您是從 Web 應用程式呼叫，則會是 Web 應用程式中下一個要顯示的頁面。  應用程式應該檢查 URL，因為如果在登入或同意程序中有錯誤，重新導向 URL 可能會包含 `error` querystring 變數。
 
 3. 將此瀏覽器保持開啟狀態，因為您將在下一節中使用它。
 
@@ -219,7 +219,7 @@ Azure 現在正為您管理三個驗證權杖：
 
         [connectorurl]/folder/[foldername]
    
-3. 例如，如果您的連接器 URL https://dropboxrg784237ad3e7.azurewebsites.net，而且您想要查看 blog 資料夾中的檔案，URL 會是:
+3. 例如，如果您的連接器 URL https://dropboxrg784237ad3e7.azurewebsites.net，而且您想要查看 blog 資料夾中的檔案，URL 會是 ︰
 
         https://dropboxrg784237ad3e7.azurewebsites.net/folder/blog
 
@@ -237,4 +237,5 @@ Azure 現在正為您管理三個驗證權杖：
 [Azure preview portal]: https://portal.azure.com/
 [Azure portal]: https://manage.windowsazure.com/
  
+
 

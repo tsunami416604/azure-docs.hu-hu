@@ -22,7 +22,7 @@ Scalding 是可讓您輕鬆建立 Hadoop MapReduce 工作的 Scala 程式庫。 
 
 在本文件中，您將了解如何使用 Maven 來建立基本字數統計 MapReduce 工作 (以 Scalding 撰寫)。 接著，您將學習如何在 HDInsight 叢集上部署與執行此工作。
 
-## 先決條件
+## 必要條件
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **HDInsight 叢集上 Windows 或 Linux 架構 Hadoop**。 請參閱 [HDInsight 上佈建以 Linux 為基礎的 Hadoop](hdinsight-hadoop-provision-linux-clusters.md) 或 [HDInsight 上佈建 Windows 架構的 Hadoop](hdinsight-provision-clusters.md) 如需詳細資訊。
@@ -39,7 +39,7 @@ Scalding 是可讓您輕鬆建立 Hadoop MapReduce 工作的 Scala 程式庫。 
 
     此命令會建立新目錄 **scaldingwordcount**, ，並建立 Scala 應用程式的樣板。
 
-2. 在 **scaldingwordcount** 目錄中，開啟 **pom.xml** 檔案，並取代為下列內容:
+2. 在 **scaldingwordcount** 目錄中，開啟 **pom.xml** 檔案，並取代為下列內容 ︰
 
         <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
           <modelVersion>4.0.0</modelVersion>
@@ -135,23 +135,23 @@ Scalding 是可讓您輕鬆建立 Hadoop MapReduce 工作的 Scala 程式庫。 
 
     此檔案說明專案、相依性和增益集。 以下是重要項目：
 
-    * **maven.compiler.source** 和 **maven.compiler.target**: 設定此專案的 Java 版本
+    * **maven.compiler.source** 和 **maven.compiler.target**︰ 設定此專案的 Java 版本
 
-    * **儲存機制**: 包含此專案所使用之相依性檔案的儲存機制
+    * **儲存機制**︰ 包含此專案所使用之相依性檔案的儲存機制
 
-    * **scalding-core_2.11** 和 **hadoop 核心**: 此專案仰賴於 Scalding 和 Hadoop 核心封裝
+    * **scalding-core_2.11** 和 **hadoop 核心**︰ 此專案仰賴於 Scalding 和 Hadoop 核心封裝
 
-    * **maven scala 外掛程式**: 編譯 scala 應用程式的外掛程式
+    * **maven scala 外掛程式**︰ 編譯 scala 應用程式的外掛程式
 
-    * **maven shade 外掛程式**: 陰影 (fat) jar 的外掛程式來建立。 此外掛程式適用於篩選和轉換；尤其是：
+    * **maven shade 外掛程式**︰ 陰影 (fat) jar 的外掛程式來建立。 此外掛程式適用於篩選和轉換；尤其是：
 
-        * **篩選器**: 套用的篩選會修改 jar 檔案中包含的中繼資訊。 若要防止在執行階段發生簽章例外狀況，這不包含各種可能隨附於相依性的簽名檔。
+        * **篩選器**︰ 套用的篩選會修改 jar 檔案中包含的中繼資訊。 若要防止在執行階段發生簽章例外狀況，這不包含各種可能隨附於相依性的簽名檔。
 
-        * **執行**: 套件階段執行設定指定 **com.twitter.scalding.Tool** 類別作為封裝的主要類別。 如果沒有指定，在使用 Hadoop 命令執行工作時，您需要指定 com.twitter.scalding.Tool，以及包含應用程式邏輯的類別。
+        * **執行**︰ 套件階段執行設定指定 **com.twitter.scalding.Tool** 類別作為封裝的主要類別。 如果沒有指定，在使用 Hadoop 命令執行工作時，您需要指定 com.twitter.scalding.Tool，以及包含應用程式邏輯的類別。
 
 3. 刪除 **src/test** 目錄，因為您將不會建立測試此範例。
 
-4. 開啟 **src/main/scala/com/microsoft/example/app.scala** 檔案，並取代為下列內容:
+4. 開啟 **src/main/scala/com/microsoft/example/app.scala** 檔案，並取代為下列內容 ︰
 
         package com.microsoft.example
 
@@ -177,7 +177,7 @@ Scalding 是可讓您輕鬆建立 Hadoop MapReduce 工作的 Scala 程式庫。 
 
 5. 儲存並關閉檔案。
 
-6. 使用下列命令從 **scaldingwordcount** 來建置和封裝應用程式的目錄:
+6. 使用下列命令從 **scaldingwordcount** 來建置和封裝應用程式的目錄 ︰
 
         mvn package
 
@@ -343,4 +343,5 @@ Scalding 是可讓您輕鬆建立 Hadoop MapReduce 工作的 Scala 程式庫。 
 * [搭配 HDInsight 使用 Pig](hdinsight-use-pig.md)
 
 * [搭配 HDInsight 使用 MapReduce 工作](hdinsight-use-mapreduce.md)
+
 

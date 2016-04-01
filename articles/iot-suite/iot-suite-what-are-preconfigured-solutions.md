@@ -68,7 +68,7 @@ IoT 中樞會透過取用者群組端點讓收到的遙測可供使用。
 
 ## Azure 串流分析
 
-預先設定的解決方案會使用三個 [Azure 串流分析][lnk-asa] (ASA) 來篩選從散熱器裝置遙測資料流的作業:
+預先設定的解決方案會使用三個 [Azure 串流分析][lnk-asa] (ASA) 來篩選從散熱器裝置遙測資料流的作業 ︰
 
 - 作業 #1 會將冷儲存體的所有遙測傳送至 Azure Blob 儲存體
 - 作業 #2 會篩選遙測串流以識別來自裝置的命令回應訊息和裝置狀態更新訊息，並將這些特定訊息傳送至 Azure 事件中樞端點。
@@ -114,3 +114,4 @@ IoT 中樞會透過取用者群組端點讓收到的遙測可供使用。
 [lnk-suite-overview]: iot-suite-overview.md
 [lnk-preconf-get-started]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
+

@@ -1,6 +1,6 @@
 
 
-1. 如果您尚未註冊您的應用程式，請瀏覽 [提交應用程式頁面]，Windows 市集應用程式之開發人員中心，使用您的 Microsoft 帳戶登入，然後按一下 **應用程式名稱**。
+1. 如果您尚未註冊您的應用程式，瀏覽至 [Submit an app page] ，Windows 市集應用程式之開發人員中心，使用您的 Microsoft 帳戶登入，然後按一下 **應用程式名稱**。
 
     ![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-submit-win8-app.png)
 
@@ -54,4 +54,5 @@
 
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+
 

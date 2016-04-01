@@ -124,3 +124,4 @@ REST API 文件，請參閱 [MSDN](https://msdn.microsoft.com/library/azure/dn79
 [5]: ./media/search-chrome-postman/upload_documents.png
 [6]: ./media/search-chrome-postman/query.png
 
+

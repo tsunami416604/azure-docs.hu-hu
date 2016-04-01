@@ -35,7 +35,7 @@
 
 系統是由下列元件所組成：
 
-*  **API 閘道** 是端點的:
+*  **API 閘道** 是端點的 ︰
   * 接受 API 呼叫，並將這些呼叫路由傳送到您的後端。
   * 驗證 API 金鑰、JWT 權杖、憑證和其他認證。
   * 強制採用使用量配額和頻率限制。
@@ -50,7 +50,7 @@
     * 從分析中取得見解。
     * 管理使用者。
 
-*  **開發人員入口網站** 做為主要網站空間，供開發人員，可以:
+*  **開發人員入口網站** 做為主要網站空間，供開發人員，可以 ︰
     * 閱讀 API 文件。
     * 透過互動式主控台試用 API。
     * 建立帳戶，並訂閱以取得 API 金鑰。
@@ -71,7 +71,7 @@
 
 ![New API Management service][api-management-create-instance-step1]
 
-輸入 **Contoso Ltd.** 的 **組織名稱**, ，並輸入您的電子郵件地址中 **系統管理員電子郵件** 欄位。
+輸入 **Contoso Ltd.** 如 **組織名稱**, ，並輸入您的電子郵件地址中 **系統管理員電子郵件** 欄位。
 
 >[AZURE.NOTE] 此電子郵件地址用於自 API 管理系統的通知。 如需詳細資訊，請參閱 [如何設定通知和電子郵件範本，在 Azure API 管理][]。
 
@@ -97,7 +97,7 @@ API 包含可自用戶端應用程式叫用的一組作業。 API 作業會代�
 
 API 是從發佈者入口網站所設定，您可以透過 Azure 傳統入口網站存取此入口網站。 若要存取發行者入口網站，按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 若要匯入計算機 API，請按一下 [ **Api** 從 **API 管理** 左邊的功能表，然後按一下 **匯入 API**。
 
@@ -107,7 +107,7 @@ API 是從發佈者入口網站所設定，您可以透過 Azure 傳統入口網
 
 1. 按一下 [ **從 URL**, ，輸入 **http://calcapi.cloudapp.net/calcapi.json** 到 **規格文件 URL** 文字方塊，然後按一下 [ **Swagger** 選項按鈕。
 2. 型別 **calc** 到 **Web API URL 尾碼** 文字方塊。
-3. 按一下 [在 **產品 (選擇性)** 方塊，然後選擇 **入門**。
+3. 按一下 [在 **產品 （選擇性）** 方塊，然後選擇 **入門**。
 4. 按一下 [ **儲存** 匯入 API。
 
 ![Add new API][api-management-import-new-api]
@@ -175,7 +175,7 @@ API 區段有一些索引標籤。  **摘要** 索引標籤會顯示基本度量
 
 ![概觀][api-management-analytics-overview]
 
- **分析** 區段有下列四個索引標籤:
+ **分析** 區段有下列四個索引標籤 ︰
 
 -   **一眼** 提供整體的使用量和健康情況度量，以及頂尖開發人員、 產品、 最上層 Api 和作業。
 -   **使用** 提供深入了解 API 呼叫和頻寬，包括地理區域的呈現。
@@ -242,4 +242,5 @@ API 區段有一些索引標籤。  **摘要** 索引標籤會顯示基本度量
 [api-management-analytics-usage]: ./media/api-management-get-started/api-management-analytics-usage.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
+
 

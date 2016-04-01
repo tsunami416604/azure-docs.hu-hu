@@ -37,9 +37,9 @@ Microsoft Azure ExpressRoute 可讓您透過連線提供者所提供的專用私
 
 有三種方法可以在內部部署網路與 Microsoft 雲端之間建立連線。
 
-1. **共置雲端 exchange。**如果您共置於具有雲端交換的設施中，您可以訂購虛擬交叉連接，透過共置提供者的乙太網路交換而連接至 Microsoft 雲端。 共置提供者可以在您於共置設施中的基礎結構與 Microsoft 雲端之間，提供第 2 層交叉連接或受管理的第 3 層交叉連接。
-2.  **點對點乙太網路連線。**您可以透過點對點乙太網路連結，將內部部署資料中心/辦公室連接到 Microsoft 雲端。 點對點乙太網路提供者可以在您的網路與 Microsoft 雲端之間，提供第 2 層連線或受管理的第 3 層連線。
-3.  **任何對任意 (IPVPN) 網路。**您可以整合 WAN 與 Microsoft 雲端。 IPVPN 提供者 (通常是 MPLS VPN) 在您的分公司與資料中心之間提供任意點對任意點連線。 Microsoft 雲端可以相互連接到您的 WAN，看起來就像任何其他分公司一樣。 WAN 提供者通常會提供受管理的第 3 層連線能力。
+1. **共置於雲端交換。** 如果您共置於具有雲端交換的設施中，您可以訂購虛擬交叉連接，透過共置提供者的乙太網路交換而連接至 Microsoft 雲端。 共置提供者可以在您於共置設施中的基礎結構與 Microsoft 雲端之間，提供第 2 層交叉連接或受管理的第 3 層交叉連接。
+2.  **點對點乙太網路連線。** 您可以透過點對點乙太網路連結，將內部部署資料中心/辦公室連接到 Microsoft 雲端。 點對點乙太網路提供者可以在您的網路與 Microsoft 雲端之間，提供第 2 層連線或受管理的第 3 層連線。
+3.  **任意點對任意點 (IPVPN) 網路。** 您可以整合 WAN 與 Microsoft 雲端。 IPVPN 提供者 (通常是 MPLS VPN) 在您的分公司與資料中心之間提供任意點對任意點連線。 Microsoft 雲端可以相互連接到您的 WAN，看起來就像任何其他分公司一樣。 WAN 提供者通常會提供受管理的第 3 層連線能力。
 
 ![](./media/expressroute-introduction/expressroute-connectivitymodels.png)
 
@@ -122,5 +122,6 @@ Microsoft 為特殊的地理政治地區和客戶群提供隔離的雲端環境�
 - 設定 ExpressRoute 連線。
     - [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)
     - [設定路由](expressroute-howto-routing-classic.md)
-    - [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)
+    - [將 VNet 連結到 ExpressRoute 循環](expressroute-howto-linkvnet-classic.md)
+
 

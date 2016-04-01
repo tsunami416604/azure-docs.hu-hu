@@ -20,7 +20,7 @@
 
 本文涵蓋各種與 Azure Active Directory 建立憑證，以對 SaaS 應用程式建立同盟單一登入 (SSO) 相關的常見問題。
 
-這篇文章只是設定為使用的應用程式有關 **Azure AD 單一登入**, ，如下列範例所示:
+這篇文章只是設定為使用的應用程式有關 **Azure AD 單一登入**, ，如下列範例所示 ︰
 
 ![Azure AD 單一登入](./media/active-directory-sso-certs/fed-sso.PNG)
 
@@ -77,4 +77,5 @@
     ![下載，然後上傳憑證](./media/active-directory-sso-certs/renew-config-app.PNG)
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+
 

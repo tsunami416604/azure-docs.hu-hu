@@ -52,3 +52,4 @@
 ## 另請參閱
 
 [使用通道來以 Azure 媒體服務執行即時編碼啟用之](media-services-manage-live-encoder-enabled-channels.md)。
+

@@ -29,11 +29,11 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-如果字串為簡短您可以使用 [sp_executesql] [] 做為一般。
+如果字串為簡短您可以使用 [sp_executesql][] 正常。
 
 
 ## 後續步驟
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
@@ -44,4 +44,5 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 [sp_executesql]: https://msdn.microsoft.com/library/ms188001.aspx
 
 <!--Other Web references-->
+
 

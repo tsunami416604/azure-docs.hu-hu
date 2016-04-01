@@ -29,15 +29,15 @@ HDInsight Tools 的 Storm Dashboard 和 Storm 功能依賴 Storm REST API，此 
 
 * **Apache Storm on HDInsight** -請參閱 <a href="../hdinsight-storm-getting-started/" target="_blank">開始使用 Apache Storm on HDInsight</a> 如需建立叢集的步驟
 
-* 如 **Storm 儀表板**: 支援 HTML5 的新式網頁瀏覽器
+* 如 **Storm 儀表板**︰ 支援 HTML5 的新式網頁瀏覽器
 
 * 如 **Visual Studio** -Azure SDK 2.5.1 或更新版本以及 HDInsight Tools for Visual Studio。 請參閱<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">開始使用 HDInsight Tools for Visual Studio</a> 以安裝及設定 HDInsight Tools for Visual Studio。
 
     下列其中一個 Visual Studio 版本：
 
-    * Visual Studio 2012，含 <a href="http://www.microsoft.com/download/details.aspx?id=39305" target="_blank">Update 4</a>
+    * Visual Studio 2012 <a href="http://www.microsoft.com/download/details.aspx?id=39305" target="_blank">(含 Update 4)</a>
 
-    * Visual Studio 2013 <a href="http://www.microsoft.com/download/details.aspx?id=44921" target="_blank">Update 4</a> 或 <a href="http://go.microsoft.com/fwlink/?LinkId=517284" target="_blank">Visual Studio 2013 Community</a>
+    * Visual Studio 2013 <a href="http://www.microsoft.com/download/details.aspx?id=44921" target="_blank">(含 Update 4)</a> 或 <a href="http://go.microsoft.com/fwlink/?LinkId=517284" target="_blank">Visual Studio 2013 Community</a>
 
     * <a href="http://visualstudio.com/downloads/visual-studio-2015-ctp-vs" target="_blank">Visual Studio 2015 CTP6</a>
 
@@ -65,41 +65,41 @@ Storm UI 的主頁面會提供下列資訊：
 
 * **叢集摘要**: Storm 叢集的基本資訊。
 
-* **拓撲摘要**: 執行中拓撲的清單。 使用本節中的連結來檢視特定拓撲的詳細資訊。
+* **拓撲摘要**︰ 執行中拓撲的清單。 使用本節中的連結來檢視特定拓撲的詳細資訊。
 
 * **監督員摘要**: Storm 監督員的資訊。
 
-* **Nimbus 組態**: 叢集的 Nimbus 組態。
+* **Nimbus 組態**︰ 叢集的 Nimbus 組態。
 
 ####拓撲摘要
 
-選取的連結從 **拓樸摘要** 區段會顯示拓撲的下列資訊:
+選取的連結從 **拓樸摘要** 區段會顯示拓撲的下列資訊 ︰
 
-* **拓撲摘要**: 拓撲的基本資訊。
+* **拓撲摘要**︰ 拓撲的基本資訊。
 
-* **拓撲動作**: 您可以針對拓撲執行的管理動作。
+* **拓撲動作**︰ 您可以針對拓撲執行的管理動作。
 
-    * **啟用**: 繼續處理的已停用的拓撲。
+    * **啟用**︰ 繼續處理的已停用的拓撲。
 
-    * **停用**: 暫停執行中拓撲。
+    * **停用**︰ 暫停執行中拓撲。
 
-    * **重新平衡**: 調整拓撲的平行處理原則。 變更叢集中的節點數目之後，您應該重新平衡執行中拓撲。 這可讓拓撲調整平行處理原則，以彌補叢集中增加或減少的節點數目。
+    * **重新平衡**︰ 調整拓撲的平行處理原則。 變更叢集中的節點數目之後，您應該重新平衡執行中拓撲。 這可讓拓撲調整平行處理原則，以彌補叢集中增加或減少的節點數目。
 
-        如需詳細資訊，請參閱 <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Storm 拓撲的平行處理原則</a>.
+        如需詳細資訊，請參閱<a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Storm 拓撲的平行處理原則</a>。
 
-    * **Kill**: 指定的逾時之後終止 Storm 拓撲。
+    * **Kill**︰ 指定的逾時之後終止 Storm 拓撲。
 
-* **拓撲統計資料**: 拓撲的統計資料。 使用中的連結 **視窗** 設定頁面上其餘項目的時間範圍內的資料行。
+* **拓撲統計資料**︰ 拓撲的統計資料。 使用中的連結 **視窗** 設定頁面上其餘項目的時間範圍內的資料行。
 
-* **Spout**: 拓撲所使用的 spout。 使用本節中的連結檢視特定 Spout 的詳細資訊。
+* **Spout**︰ 拓撲所使用的 spout。 使用本節中的連結檢視特定 Spout 的詳細資訊。
 
-* **Bolt**: 拓撲所使用的 bolt。 使用本節中的連結檢視特定 Bolt 的詳細資訊。
+* **Bolt**︰ 拓撲所使用的 bolt。 使用本節中的連結檢視特定 Bolt 的詳細資訊。
 
-* **拓撲組態**: 所選取拓撲的組態。
+* **拓撲組態**︰ 所選取拓撲的組態。
 
 ####Spout 和 Bolt 摘要
 
-選取從 spout **Spout** 或 **Bolt** 區段會顯示所選取項目的下列資訊:
+選取從 spout **Spout** 或 **Bolt** 區段會顯示所選取項目的下列資訊 ︰
 
 * **元件摘要**: spout 或 bolt 的基本資訊。
 
@@ -111,7 +111,7 @@ Storm UI 的主頁面會提供下列資訊：
 
 * **執行程式**: spout 或 bolt 的執行個體的相關資訊。 選取 **連接埠** 針對這個執行個體所產生的特定執行程式，以檢視診斷資訊的記錄項目。
 
-* **錯誤**: 任何錯誤資訊，此 spout 或 bolt。
+* **錯誤**︰ 任何錯誤資訊，此 spout 或 bolt。
 
 ##HDInsight Tools for Visual Studio
 
@@ -119,7 +119,7 @@ HDInsight Tools 可以用來將 C# 或混合式拓撲提交至 Storm 叢集。 �
 
 使用下列步驟，將範例部署至 Storm on HDInsight 叢集，然後檢視和管理拓撲。
 
-1. 如果您尚未安裝最新版本的 HDInsight Tools for Visual Studio，請參閱 <a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">開始使用 HDInsight Tools for Visual Studio</a>.
+1. 如果您尚未安裝最新版本的 HDInsight Tools for Visual Studio，請參閱<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">開始使用 HDInsight Tools for Visual Studio</a>。
 
 2. 開啟 Visual Studio 中，選取 **檔案** > **新增** > **專案**。
 
@@ -178,4 +178,5 @@ REST API 的要求必須使用 **基本驗證**, ，所以您使用的 HDInsight
 [hdinsight-dashboard]: ./media/hdinsight-storm-deploy-monitor-topology/dashboard-link.png
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
+
 

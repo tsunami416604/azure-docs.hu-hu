@@ -22,7 +22,7 @@
 
 資料處理站支援透過資料管理閘道器連接至內部部署 Teradata 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 文章來了解資料管理閘道器和設定閘道器的逐步指示。 
 
-**注意:** 您需要運用閘道器連接到 Teradata，即使裝載於 Azure IaaS Vm 中。 如果您正嘗試連接到裝載於雲端中的 Teradata 執行個體，您也可以在 IaaS VM 中安裝閘道器執行個體。
+**注意 ︰** 您需要運用閘道器連接到 Teradata，即使裝載於 Azure IaaS Vm 中。 如果您正嘗試連接到裝載於雲端中的 Teradata 執行個體，您也可以在 IaaS VM 中安裝閘道器執行個體。
 
 資料處理站只支援將資料從 Teradata 移至其他資料存放區，而不支援從其他資料存放區移至 Teradata。
 
@@ -222,7 +222,7 @@
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
-類型 | Type 屬性必須設定為: **OnPremisesTeradata** | 是
+類型 | Type 屬性必須設定為 ︰ **OnPremisesTeradata** | 是
 伺服器 | Teradata 伺服器的名稱。 | 是
 資料庫 | Teradata 資料庫的名稱。 | 是 
 結構描述  | 在資料庫中的結構描述名稱。 | 否
@@ -237,7 +237,7 @@ gatewayName | Data Factory 服務應該用來連接到內部部署 Teradata 資�
 
 如需區段和屬性可用來定義資料集的完整清單，請參閱 [建立資料集](data-factory-create-datasets) 文件。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
 
-每個資料集類型的 typeProperties 區段都不同，可提供資料存放區中資料的位置相關資訊。  **TypeProperties** 類型資料集區段 **RelationalTable** (包含 Teradata 資料集) 具有下列屬性。
+每個資料集類型的 typeProperties 區段都不同，可提供資料存放區中資料的位置相關資訊。  **TypeProperties** 類型資料集區段 **RelationalTable** （包含 Teradata 資料集） 具有下列屬性。
 
 屬性 | 說明 | 必要
 -------- | ----------- | --------
@@ -249,7 +249,7 @@ tableName | Teradata 資料庫執行個體中連結服務所參照的資料表�
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
-在複製活動類型的來源時 **RelationalSource** (包含 Teradata) 中的下列屬性有 **typeProperties** 區段:
+在複製活動類型的來源時 **RelationalSource** （包含 Teradata） 中的下列屬性有 **typeProperties** 區段 ︰
 
 屬性 | 說明 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
@@ -259,7 +259,7 @@ query | 使用自訂查詢來讀取資料。 | SQL 查詢字串。 例如：sele
 
 ## Teradata 的類型對應
 
-中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章中，複製活動會執行自動類型轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換:
+中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章中，複製活動會執行自動類型轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換 ︰
 
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
@@ -311,3 +311,4 @@ Xml | String
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+

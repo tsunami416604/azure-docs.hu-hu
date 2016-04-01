@@ -41,11 +41,11 @@
 - [步驟 3：以使用者的身分重設您的密碼](#step-3-reset-your-azure-ad-password-as-a-user)
 
 
-###  先決條件
+###  必要條件
 在您可以啟用及使用自助式密碼重設之前，您必須完成下列先決條件：
 
 - 建立 AAD 租用戶。 如需詳細資訊，請參閱 [開始使用 Azure AD](https://azure.microsoft.com/trial/get-started-active-directory/)
-- 取得 Azure 訂用帳戶。 如需詳細資訊，請參閱 [Azure AD 租用戶是什麼?](active-directory-administer.md#what-is-an-azure-ad-tenant)。
+- 取得 Azure 訂用帳戶。 如需詳細資訊，請參閱 [Azure AD 租用戶是什麼？](active-directory-administer.md#what-is-an-azure-ad-tenant)。
 - 將 AAD 租用戶與 Azure 訂用帳戶產生關聯。 如需詳細資訊，請參閱 [如何在 Azure 訂閱與 Azure AD 的關聯](https://msdn.microsoft.com/library/azure/dn629581.aspx)。
 - 升級至 Azure AD Premium 或 Basic。 如需詳細資訊，請參閱 [Azure Active Directory 版本](http://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -76,7 +76,7 @@
 
     ![][004]
 
-6.  若要設定使用者密碼重設原則，滑動 **使用者啟用密碼重設** 切換至 **是** 設定。  這會顯示更多控制項，讓您設定這項功能如何在您的目錄中運作。  放心地自訂您覺得適合的密碼重設。  如果您想要深入了解各項密碼重設原則控制項執行，請參閱 [自訂: Azure AD 密碼管理](active-directory-passwords-customize)。
+6.  若要設定使用者密碼重設原則，滑動 **使用者啟用密碼重設** 切換至 **是** 設定。  這會顯示更多控制項，讓您設定這項功能如何在您的目錄中運作。  放心地自訂您覺得適合的密碼重設。  如果您想要深入了解各項密碼重設原則控制項執行，請參閱 [自訂 ︰ Azure AD 密碼管理](active-directory-passwords-customize)。
 
     ![][005]
 
@@ -87,7 +87,7 @@
   ![][006]
 
 ### 步驟 2：為您的測試使用者加入連絡人資料
-您有幾個選項可供您選擇如何指定組織中的使用者資料，以用於密碼重設。
+您有幾個選項可用於指定要用於密碼重設的組織中使用者資料。
 
 -   編輯中的使用者 [Azure 管理入口網站](https://manage.windowsazure.com) 或 [Office 365 系統管理入口網站](https://portal.microsoftonline.com)
 -   使用 AAD Connect 從內部部署 Active Directory 網域將使用者屬性同步處理至 Azure AD
@@ -95,7 +95,7 @@
 -   允許使用者註冊自己的資料引導至註冊入口網站在 [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
 -   要求使用者註冊密碼重設登入存取面板] [http://myapps.microsoft.com](http://myapps.microsoft.com) 藉由設定 **要求使用者在登入存取面板時註冊** SSPR 組態選項，以 **是**。
 
-如果您想要深入了解密碼重設，以及任何格式需求對這項資料，請參閱 [密碼重設使用哪些資料?](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)。
+如果您想要深入了解密碼重設，以及任何格式需求對這項資料，請參閱 [密碼重設使用哪些資料？](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)。
 
 #### 透過使用者註冊入口網站加入使用者連絡人資料
 1.  若要使用密碼重設註冊入口網站，您必須提供使用者在您的組織使用此頁面的連結 ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup))，或開啟選項要求使用者自動註冊。  一旦使用者按一下此連結，系統會要求他們使用其組織帳戶登入。  完成後，他們會看到下列頁面：
@@ -118,11 +118,11 @@
 您已經設定使用者重設原則，並指定使用者的連絡人詳細資料，這位使用者可以執行自助式密碼重設。
 
 #### 執行自助式密碼重設
-1.  如果您移至站台像是 [**portal.microsoftonline.com**](http://portal.microsoftonline.com), ，您會看到如下的登入畫面下方。  按一下 [ **無法存取您的帳戶?** 連結，以測試密碼重設 UI。
+1.  如果您移至站台像是 [**portal.microsoftonline.com**](http://portal.microsoftonline.com), ，您會看到如下的登入畫面下方。  按一下 [ **無法存取您的帳戶嗎？** 連結，以測試密碼重設 UI。
 
     ![][011]
 
-2.  按一下後 **無法存取您的帳戶?**, ，您會被帶到新的頁面，詢問 **使用者識別碼** 您要重設密碼。  輸入您的測試 **使用者識別碼** ，通過 captcha，然後按 [ **下一步**。
+2.  按一下後 **無法存取您的帳戶？**, ，您會被帶到新的頁面，詢問 **使用者識別碼** 您要重設密碼。  輸入您的測試 **使用者識別碼** ，通過 captcha，然後按 [ **下一步**。
 
     ![][012]
 
@@ -188,7 +188,7 @@
 
   > [AZURE.NOTE] 測試密碼回寫之前，請確定您先完成完整匯入和從 AD 和 Azure AD connect 的 Azure AD 的完整同步處理。
 
-- 如果您使用 Azure AD Sync 或 Azure AD Connect  **TCP 443** 輸出 (在某些情況下 **TCP 9350-9354**) 必須開啟。  請參閱 [步驟 3: 設定您的防火牆](#step-3-configure-your-firewall) 如需詳細資訊。 這個案例不再支援使用 DirSync。  如果您仍要使用 DirSync，請升級至最新版的 Azure AD Connect，再部署密碼回寫。
+- 如果您使用 Azure AD Sync 或 Azure AD Connect  **TCP 443** 輸出 (在某些情況下 **TCP 9350-9354**) 必須開啟。  請參閱 [步驟 3 ︰ 設定您的防火牆](#step-3-configure-your-firewall) 如需詳細資訊。 這個案例不再支援使用 DirSync。  如果您仍要使用 DirSync，請升級至最新版的 Azure AD Connect，再部署密碼回寫。
 
   > [AZURE.NOTE] 我們強烈建議使用 Azure AD Sync 或 DirSync 工具升級至最新版的 Azure AD Connect 以確保擁有最佳使用經驗和新功能，發行時的任何人。
   
@@ -205,7 +205,7 @@
 
     ![][021]
 
-此版本的數字是否大於或等於 **1.0.0419.0911**, ，或您要安裝 Azure AD Connect，您可以跳到 [步驟 2: 啟用密碼回寫，在 Azure AD Connect 中透過 UI 或 powershell，並確認](#step-2-enable-password-writeback-in-azure-ad-connect)。 
+此版本的數字是否大於或等於 **1.0.0419.0911**, ，或您要安裝 Azure AD Connect，您可以跳到 [步驟 2 ︰ 啟用密碼回寫，在 Azure AD Connect 中透過 UI 或 powershell，並確認](#step-2-enable-password-writeback-in-azure-ad-connect)。 
 
  > [AZURE.NOTE] 如果這是您第一次安裝 Azure AD Connect 工具，建議您依照一些最佳作法，來準備環境以使用目錄同步作業。  安裝 Azure AD Connect 工具之前，您必須啟用目錄同步作業在 [Office 365 系統管理入口網站](https://portal.microsoftonline.com) 或 [Azure 管理入口網站](https://manage.windowsazure.com)。  如需詳細資訊，請參閱 [管理 Azure AD Connect](active-directory-aadconnect-whats-next.md)。
 
@@ -222,7 +222,7 @@
 
 4.  完成精靈，最後一頁將會摘要說明變更，並且會包含密碼回寫組態變更。
 
-> [AZURE.NOTE] 您可以在停用密碼回寫隨時重新執行此精靈並取消選取該功能，或藉由設定 **密碼回寫至內部部署目錄** 設為 [ **否** 中 **使用者密碼重設原則** 目錄的區段 **設定** 索引標籤中 [Azure 管理入口網站](https://manage.windowsazure.com)。  如需有關自訂您的密碼重設體驗，請參閱 [自訂: Azure AD 密碼管理](active-directory-passwords-customize.md)。
+> [AZURE.NOTE] 您可以在停用密碼回寫隨時重新執行此精靈並取消選取該功能，或藉由設定 **密碼回寫至內部部署目錄** 設為 [ **否** 中 **使用者密碼重設原則** 目錄的區段 **設定** 索引標籤中 [Azure 管理入口網站](https://manage.windowsazure.com)。  如需有關自訂您的密碼重設體驗，請參閱 [自訂 ︰ Azure AD 密碼管理](active-directory-passwords-customize.md)。
 
 #### 使用 Windows PowerShell 啟用密碼回寫
 1.  在您 **目錄同步作業電腦**, ，開啟新 **提升權限的 Windows PowerShell 視窗**。
@@ -231,7 +231,7 @@
 4.  若要取得目前連接器的回寫的目前狀態，請執行下列 Cmdlet：`Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName`
 5.  執行下列 Cmdlet，以啟用密碼回寫：`Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName –Enable $true`
 
-> [AZURE.NOTE] 如果系統提示輸入認證，請確定您為 AzureADCredential 指定的系統管理員帳戶是 **雲端系統管理員帳戶 (在 Azure AD 中建立)**, ，不是同盟的帳戶 (在建立內部部署 AD 和同步處理至 Azure AD。
+> [AZURE.NOTE] 如果系統提示輸入認證，請確定您為 AzureADCredential 指定的系統管理員帳戶是 **雲端系統管理員帳戶 （在 Azure AD 中建立）**, ，不是同盟的帳戶 (在建立內部部署 AD 和同步處理至 Azure AD。
 > [AZURE.NOTE] 您可以將密碼回寫，透過 PowerShell 停用重複相同的指示，以上所述，但傳遞 `$false` 步驟中，或藉由設定 **密碼回寫至內部部署目錄** 設為 [ **否** 中 **使用者密碼重設原則區段** 目錄的 **設定** 索引標籤中 [Azure 管理入口網站](https://manage.windowsazure.com)。
 
 #### 確認組態是否成功
@@ -250,7 +250,7 @@
    - 當使用 Proxy 或有一般連線問題時，允許透過連接埠 9350-9354 TCP 的輸出連線
 
 ### 步驟 4：設定適當的 Active Directory 權限
-每個樹系，其中包含使用者的密碼會重設，如果 X 為 (初始設定期間)，為該樹系組態精靈中指定的帳戶，則必須提供 X **重設密碼**, ，**變更密碼**, ，**的寫入權限** 上 `lockoutTime`, ，和 **的寫入權限** 上 `pwdLastSet`, ，延伸該樹系中每個網域的根物件上的權限。 權限應該標示為由所有使用者物件繼承。  
+每個樹系，其中包含使用者的密碼會重設，如果 X 為 （初始設定期間），為該樹系組態精靈中指定的帳戶，則必須提供 X **重設密碼**, ，**變更密碼**, ，**的寫入權限** 上 `lockoutTime`, ，和 **的寫入權限** 上 `pwdLastSet`, ，延伸該樹系中每個網域的根物件上的權限。 權限應該標示為由所有使用者物件繼承。  
 
 如果您不確定帳戶上述指的是，開啟 Azure Active Directory Connect 組態 UI，並按一下 [ **檢閱您的方案** 選項。  您需要新增權限的帳戶會有紅色底線，如下列螢幕擷取畫面所示。
 
@@ -258,7 +258,7 @@
 
   ![][032]
 
-  設定這些權限將會允許每個樹系的 MA 服務帳戶代表該樹系內的使用者帳戶管理密碼。 如果您沒有指定這些權限，則即使回寫看起來設定正確，使用者在嘗試從雲端管理其內部部署密碼時還是會遇到錯誤。 以下是詳細的步驟，您可以如何使用此 **Active Directory 使用者和電腦** 管理嵌入式管理單元:
+  設定這些權限將會允許每個樹系的 MA 服務帳戶代表該樹系內的使用者帳戶管理密碼。 如果您沒有指定這些權限，則即使回寫看起來設定正確，使用者在嘗試從雲端管理其內部部署密碼時還是會遇到錯誤。 以下是詳細的步驟，您可以如何使用此 **Active Directory 使用者和電腦** 管理嵌入式管理單元 ︰
 
 >[AZURE.NOTE] 它最多可能需要一小時複寫到您的目錄中的所有物件的這些權限。
 
@@ -290,7 +290,7 @@
 現在已啟用密碼回寫，您可以測試它是否正常運作，方法是對已同步處理至您的雲端租用戶的使用者帳戶重設密碼。
  
 #### 確認密碼回寫是否正常運作
-1.  瀏覽至 [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com) 或前往任何組織識別碼登入畫面，然後按一下 **無法存取您的帳戶?** 連結。
+1.  瀏覽至 [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com) 或前往任何組織識別碼登入畫面，然後按一下 **無法存取您的帳戶嗎？** 連結。
 
     ![][029]
 
@@ -354,4 +354,5 @@
 [030]: ./media/active-directory-passwords-getting-started/030.jpg "Image_030.jpg"
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
+
 

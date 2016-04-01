@@ -20,3 +20,4 @@
 > [AZURE.NOTE] 服務註冊金鑰用來註冊必須向 StorSimple Manager 服務的所有裝置。
 
  
+

@@ -90,7 +90,7 @@ Runbook 轉換器實作成為 PowerShell 模組 cmdlet 呼叫 **ConvertFrom SCOR
 
 ### 使用 Runbook Converter
 
-語法 **ConvertFrom SCORunbook** 如下:
+語法 **ConvertFrom SCORunbook** 如下 ︰
 
     ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string> 
 
@@ -159,4 +159,5 @@ Orchestrator 的 Runbook 啟動其他 runbook 與 **叫用 Runbook** 活動。 �
 - [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
 - [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
  
+
 

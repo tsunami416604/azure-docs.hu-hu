@@ -60,7 +60,7 @@
 ## 4.下載程式碼
 
 本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet)。  當您建置範例，您可以 
-[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet/archive/skeleton.zip) 或再製基本架構:
+[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet.git
@@ -70,13 +70,13 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Dot
 `complete` 相同的儲存機制分支。
 
 下載範例程式碼後，請開啟 Visual Studio `.sln` 檔案開始進行。  您會看到方案中有兩個專案：`TaskWebApp` 專案和 `TaskService` 專案。   `TaskWebApp` 是 MVC 
-與使用者互動的 web 應用程式。  `TaskService` 是應用程式的後端 Web API，儲存每個使用者的待辦事項清單。 
+與使用者互動的 web 應用程式。   `TaskService` 是應用程式的後端 web API 儲存每個使用者的待辦事項清單。 
 
 ## 5.設定工作 Web 應用程式
 
 使用者與 `TaskWebApp` 互動時，用戶端會傳送要求給 Azure AD，然後收到可用於呼叫 `TaskService` Web API 的權杖。
 為了讓使用者登入並取得權杖，您必須提供應用程式的部分資訊給 `TaskWebApp`。  在 `TaskWebApp` 專案中，開啟 `web.config` 根目錄中的檔案 
-在專案中的值取代和 `<appSettings>` 區段:
+在專案中的值取代和 `<appSettings>` 區段 ︰
 
 ```
 <appSettings>
@@ -217,7 +217,7 @@ public class TasksController : ApiController
 ```
 
 #### 從權杖取得使用者資訊
-`TaskController` 會將工作儲存在資料庫中，而每一項工作都有一個「擁有」此工作的相關聯使用者。  擁有者由使用者的 **物件識別碼** (其中
+`TaskController` 會將工作儲存在資料庫中，而每一項工作都有一個「擁有」此工作的相關聯使用者。  擁有者由使用者的 **物件識別碼** （其中
 就是為什麼您在為應用程式中加入的物件識別碼在所有的原則中的宣告):
 
 ```C#
@@ -244,13 +244,14 @@ to the policies, allowing you users to sign into the Task Client using social ac
 
 <!--
 
-## 後續步驟
+## Next Steps
 
-您現在可以進入更進階的 B2C 主題。  您可以嘗試：
+You can now move onto more advanced B2C topics.  You may want to try:
 
-[從 Web 應用程式呼叫 Web API >>]()
+[Calling a Web API from a Web App >>]()
 
-[自訂 B2C 應用程式的 UX >>]()
+[Customizing the your B2C App's UX >>]()
 
 -->
+
 

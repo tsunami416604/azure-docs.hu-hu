@@ -30,3 +30,4 @@
 4. 選取 **是，取消我的訂閱**。 </br> ![cancelbox](.\media\billing-how-to-cancel-azure-subscription\cancelbox.png)
 5. 按一下 ![checkbutton](.\media\billing-how-to-cancel-azure-subscription\checkbutton.png) 若要關閉對話方塊視窗，並回到 [訂閱] 頁面。
 
+

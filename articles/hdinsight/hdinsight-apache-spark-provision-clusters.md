@@ -28,7 +28,7 @@
 
 開始執行本文中的指示之前，您必須擁有 Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-##<a id="configuration"></a>不同的組態選項有哪些?
+##<a id="configuration"></a>有哪些相異的組態選項？
 
 ###其他儲存體
 
@@ -106,13 +106,13 @@ HDInsight 上的 Spark 叢集會使用 Azure Blob 儲存容器作為預設檔案
 
     目前您可以選取 Azure 儲存體帳戶做為 HDInsight 叢集資料來源。 了解這些項目上使用下列 **資料來源** 刀鋒視窗。
 
-    - **選取方法**: 設為 **從所有的訂閱** 才能瀏覽儲存體帳戶從您的訂閱。 請設為 **便捷鍵** 如果您想要輸入 **儲存體名稱** 和 **便捷鍵** 現有的儲存體帳戶。
+    - **選取方法**︰ 設為 **從所有的訂閱** 才能瀏覽儲存體帳戶從您的訂閱。 請設為 **便捷鍵** 如果您想要輸入 **儲存體名稱** 和 **便捷鍵** 現有的儲存體帳戶。
 
-    - **選取儲存體帳戶建立新的 /**: 按一下 **選取儲存體帳戶** 瀏覽並選取您要與叢集相關聯的現有儲存體帳戶。 或者，按一下 [ **新建** 來建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
+    - **選取儲存體帳戶建立新的 /**︰ 按一下 **選取儲存體帳戶** 瀏覽並選取您要與叢集相關聯的現有儲存體帳戶。 或者，按一下 [ **新建** 來建立新的儲存體帳戶。 使用出現的欄位輸入儲存體帳戶名稱。 如果該名稱可用，將會出現綠色核取記號。
 
-    - **選擇預設容器**: 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
+    - **選擇預設容器**︰ 使用此選項可輸入要用於叢集的預設容器名稱。 雖然您可以輸入任何名稱，但我們建議您使用與叢集相同的名稱，以便輕易辨識用於這個特定叢集的容器。
 
-    - **位置**: 儲存體帳戶，或將中建立的地理區域。
+    - **位置**︰ 儲存體帳戶，或將中建立的地理區域。
 
         > [AZURE.IMPORTANT] 選取的預設資料來源的位置也會設定 HDInsight 叢集的位置。 叢集和預設資料來源必須位於相同區域中。
 
@@ -154,9 +154,9 @@ HDInsight 上的 Spark 叢集會使用 Azure Blob 儲存容器作為預設檔案
 
 10. 在 **新的 HDInsight 叢集** 刀鋒視窗中，確定 **釘選到開始面板** 已選取，然後按一下 [ **建立**。 這會建立叢集，並將該叢集磚加入您 Azure 傳統入口網站的「開始面板」中。 該圖示可表示該叢集正在佈建，並將在佈建完成後變更為 HDInsight 圖示。
 
-    | 佈建期間 | 佈建完成 |
-    | ------------------ | --------------------- |
-    | ![「開始面板」上的佈建指示器](./media/hdinsight-apache-spark-provision-clusters/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-apache-spark-provision-clusters/provisioned.png) |
+  	| 佈建期間 | 佈建完成 |
+  	| ------------------ | --------------------- |
+  	| ![「開始面板」上的佈建指示器](./media/hdinsight-apache-spark-provision-clusters/provisioning.png) | ![佈建的叢集磚](./media/hdinsight-apache-spark-provision-clusters/provisioned.png) |
 
     > [AZURE.NOTE] 需要花一些時間，叢集才會建立，通常約 15 分鐘的時間。 在開始面板中，使用 [] 磚或 **通知** 佈建程序檢查頁面左邊的項目。
 
@@ -164,17 +164,17 @@ HDInsight 上的 Spark 叢集會使用 Azure Blob 儲存容器作為預設檔案
 
     ![叢集刀鋒視窗](./media/hdinsight-apache-spark-provision-clusters/HDI.Cluster.Blade.png "Cluster properties")
 
-    使用下列命令以了解在此刀鋒視窗，並在最上方圖示 **Essentials** 和 **快速連結** 區段:
+    使用下列命令以了解在此刀鋒視窗，並在最上方圖示 **Essentials** 和 **快速連結** 區段 ︰
 
-    * **設定** 和 **所有設定**: 顯示 **設定** 叢集中，可讓您存取叢集的詳細的組態資訊的分頁。
+    * **設定** 和 **所有設定**︰ 顯示 **設定** 叢集中，可讓您存取叢集的詳細的組態資訊的分頁。
 
-    * **儀表板** 和 **URL**: 這些是所有的方式來存取叢集儀表板，這是入口網站，以在叢集上執行工作。
+    * **儀表板** 和 **URL**︰ 這些是所有的方式來存取叢集儀表板，這是入口網站，以在叢集上執行工作。
 
-    * **遠端桌面**: 可讓您在叢集節點上啟用/停用遠端桌面。
+    * **遠端桌面**︰ 可讓您在叢集節點上啟用/停用遠端桌面。
 
-    * **調整叢集**: 可讓您變更此叢集的背景工作節點數。
+    * **調整叢集**︰ 可讓您變更此叢集的背景工作節點數。
 
-    * **刪除**: 刪除 HDInsight 叢集。
+    * **刪除**︰ 刪除 HDInsight 叢集。
 
     * **快速入門** (![定域機組和雷電圖示 = 快速入門](./media/hdinsight-apache-spark-provision-clusters/quickstart.png)): 顯示資訊可協助您開始使用 HDInsight。
 
@@ -184,7 +184,7 @@ HDInsight 上的 Spark 叢集會使用 Azure Blob 儲存容器作為預設檔案
 
     * **標記** (![標籤圖示](./media/hdinsight-apache-spark-provision-clusters/tags.png)): 標記可讓您設定來定義自訂分類您的雲端服務的索引鍵/值組。 例如，您可以建立名為 __專案__, ，然後使用共通的值與特定專案相關聯的所有服務。
 
-    * **叢集儀表板**: 啟動 [叢集儀表板] 分頁中，您可以啟動叢集儀表板本身，或啟動 Zeppelin 和 Jupyter notebook。
+    * **叢集儀表板**︰ 啟動 [叢集儀表板] 分頁中，您可以啟動叢集儀表板本身，或啟動 Zeppelin 和 Jupyter notebook。
 
 
 ## 使用 Azure PowerShell
@@ -244,4 +244,5 @@ HDInsight 上的 Spark 叢集會使用 Azure Blob 儲存容器作為預設檔案
 [azure-preview-portal]: https://portal.azure.com
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "Use Sqoop with HDInsight"
+
 

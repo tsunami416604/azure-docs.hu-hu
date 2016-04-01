@@ -31,7 +31,7 @@
 2. 設定您的 App 來使用 Passport 的 azure-ad-passport 外掛程式。
 3. 設定用戶端應用程式呼叫待辦事項清單 Web API
 
-本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs)。  若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/skeleton.zip) 或再製基本架構:
+本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs)。  若要跟著做，您可以 [下載為.zip 的應用程式的基本架構](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```
 
@@ -57,7 +57,7 @@
 
 安裝從 MongoDB [http://mongodb.org](http://www.mongodb.org)。
 
-> [AZURE.NOTE] 本逐步解說假設您使用 MongoDB，這在撰寫本文時是預設安裝和伺服器端點: mongodb://localhost
+> [AZURE.NOTE] 本逐步解說假設您使用 MongoDB，這在撰寫本文時是預設安裝和伺服器端點 ︰ mongodb://localhost
 
 ## 4：在您的 Web API 上安裝 Restify 模組
 
@@ -77,7 +77,7 @@
 
 #### 您有收到錯誤訊息嗎？
 
-當使用 npm，在某些作業系統上，您可能會收到錯誤的錯誤: EPERM，chmod ' / usr/本機/bin /..' 並要求您以系統管理員身分執行該帳戶。 若發生這個情況，使用 sudo 命令以更高的權限層級執行 npm。
+當使用 npm，在某些作業系統上，您可能會收到錯誤的錯誤 ︰ EPERM，chmod ' / usr/本機/bin /..' 並要求您以系統管理員身分執行該帳戶。 若發生這個情況，使用 sudo 命令以更高的權限層級執行 npm。
 
 #### 您有收到有關 DTRACE 的錯誤訊息嗎？
 
@@ -187,7 +187,7 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 接下來，我們將會安裝其餘所需的模組。
 
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -219,7 +219,7 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 
 server.js 檔案可提供我們 Web API 伺服器的大部分功能。 我們將在此檔案中加入大部分的程式碼。 基於生產目的，您會將功能重整成較小的檔案，例如單獨分開的路徑和控制器。 基於此示範的目的，我們將在這項功能中使用 server.js。
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -247,7 +247,7 @@ var OIDCBearerStrategy = require('passport-azure-ad').OIDCStrategy;
 這個程式碼檔會將設定參數從您的 Azure Active Directory 入口網站傳遞到 Passport.js。 您會在將 Web API 加入入口網站 (本逐步解說的第一個部分) 時建立這些設定值。 在您完成複製程式碼之後，我們將說明要放入這些參數值的內容。
 
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -268,9 +268,9 @@ identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-c
 
 ### 必要值
 
-*IdentityMetadata*: 這是 passport azure ad 將在其中尋找 IdP 的金鑰來驗證 JWT 權杖將組態資料。 如果使用 Azure Active Directory，您可能不想變更此項目。
+*IdentityMetadata*︰ 這是 passport azure ad 將在其中尋找 IdP 的金鑰來驗證 JWT 權杖將組態資料。 如果使用 Azure Active Directory，您可能不想變更此項目。
 
-*對象*: 您的重新導向 URI 從入口網站。
+*對象*︰ 您的重新導向 URI 從入口網站。
 
 > [AZURE.NOTE]
 我們會經常變更金鑰。 請確定您總是從 "openid_keys" URL 中進行提取，而且應用程式可以存取網際網路。
@@ -280,7 +280,7 @@ identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-c
 
 我們必須從您剛才跨應用程式建立的組態檔中讀取這些值。 若要這樣做，我們只需在應用程式中將 .config 檔案作為必要資源加入，然後將全域變數設定為 config.js 文件中的那些值即可
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -333,7 +333,7 @@ name: 'Microsoft Azure Active Directory Sample'
 #### 在程式碼中建立結構描述
 
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -397,7 +397,7 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
 
 我們現在可以新增建立、擷取、更新和刪除的基本 CRUD 路由。
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -700,7 +700,7 @@ Hello
 
 既然我們已經擁有執行中的 REST API (順道恭喜您！)，我們可以開始讓它在 Azure AD 中發揮其價值。
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -848,7 +848,7 @@ Transfer-Encoding: chunked
 
 ## 後續步驟
 
-(不含您的設定值) 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip), ，或您可以從 GitHub 複製它:
+（不含您的設定值） 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip), ，或您可以從 GitHub 複製它 ︰
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```
 
@@ -859,4 +859,5 @@ Transfer-Encoding: chunked
 如需其他資源，請參閱：
 - [應用程式模型 v2.0 預覽 >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow [azure-active directory 的 「 標記 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+
 

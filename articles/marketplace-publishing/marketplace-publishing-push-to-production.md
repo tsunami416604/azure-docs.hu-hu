@@ -17,7 +17,7 @@
    ms.author="hascipio" />
 
 # 將您的供應項目部署至 Azure Marketplace
-當您滿意您的產品 (也就是您已測試的客戶案例行銷等內容)，您即可啟動，請要求 **推送至生產環境** 上 **發行** ] 索引標籤。  
+當您滿意您的產品 （也就是您已測試的客戶案例行銷等內容），您即可啟動，請要求 **推送至生產環境** 上 **發行** ] 索引標籤。  
 
 1.  逐步解說頁面上的 4 個步驟應已完成並呈現綠色。
 
@@ -39,9 +39,10 @@
 一旦供應項目上線，請測試客戶案例，如同在預備環境中進行測試和驗證一樣，驗證在生產環境中的所有合約和功能都運作正常。
 
 ## 另請參閱
-- [使用者入門：如何將供應項目發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
+- [使用者入門：如何將優惠發佈至 Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
 [img-pubportal-menu-publish]:media/marketplace-publishing-push-to-production/pubportal-menu-publish.png
 [img-pubportal-publish-pushproduction]:media/marketplace-publishing-push-to-production/pubportal-publish-pushproduction.png
+
 

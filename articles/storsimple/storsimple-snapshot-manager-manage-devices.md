@@ -37,13 +37,13 @@
 | 上次同步處理     | 上次同步處理裝置的日期和時間時 |
 | 序號      | 裝置的序號 |
  
-如果您以滑鼠右鍵按一下 **裝置** 節點 **範圍** ] 窗格中，您可以選取下列動作:
+如果您以滑鼠右鍵按一下 **裝置** 節點 **範圍** ] 窗格中，您可以選取下列動作 ︰
 
 - 新增或更換裝置 
 - 連接裝置並確認匯入 
 - 重新整理已連接的裝置 
 
-如果您按一下 **裝置** 中的節點，然後以滑鼠右鍵按一下裝置名稱 **結果** ] 窗格中，您可以選取下列動作:
+如果您按一下 **裝置** 中的節點，然後以滑鼠右鍵按一下裝置名稱 **結果** ] 窗格中，您可以選取下列動作 ︰
 
 - 驗證裝置 
 - 檢視裝置詳細資料 
@@ -222,7 +222,7 @@
 
 #### 若要在容錯移轉之後連接至新裝置
 
-1. 重新設定新裝置的 iSCSI 連接。 如需相關指示，請移至 「 步驟 7: 掛接、 初始化和格式磁碟區 」 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。 
+1. 重新設定新裝置的 iSCSI 連接。 如需相關指示，請移至 「 步驟 7 ︰ 掛接、 初始化和格式磁碟區 」 中 [部署在內部部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。 
 
 >[AZURE.NOTE] 如果新的 StorSimple 裝置有相同的 IP 位址，與舊，可能無法連接至舊組態。 
 
@@ -252,7 +252,7 @@
 
 5. 啟動 StorSimple Snapshot Manager。 
 
-6. 若要設定新的 StorSimple 裝置，完成步驟 2 中的步驟: 連接 StorSimple 裝置中的 [部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。 
+6. 若要設定新的 StorSimple 裝置，完成步驟 2 中的步驟 ︰ 連接 StorSimple 裝置中的 [部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。 
 
 7. 以滑鼠右鍵按一下最上層的節點中 **範圍** 窗格 (StorSimple Snapshot Manager 時在範例中)，然後再按一下 **切換匯入顯示**。 
 
@@ -262,5 +262,6 @@
 
 - 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 - 了解如何 [使用 StorSimple Snapshot Manager 來檢視和管理磁碟區](storsimple-snapshot-manager-manage-volumes.md)。
+
 
 

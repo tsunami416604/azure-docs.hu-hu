@@ -70,7 +70,7 @@ Azure AD 經悉心設計，不但支援多租用戶、地理分布周全，更�
 
 ## 如何開始使用？
 -   如果您是 IT 管理員：
- - [試試看!](https://azure.microsoft.com/trial/get-started-active-directory/) -您可以免費 30 天的試用立即註冊，並在使用此連結的 5 分鐘內部署您的第一個雲端解決方案
+ - [立即試用！](https://azure.microsoft.com/trial/get-started-active-directory/) -您可以免費 30 天的試用立即註冊，並在使用此連結的 5 分鐘內部署您的第一個雲端解決方案
  - 閱讀我們的〈開始使用 Azure AD〉了解秘訣和訣竅，獲得 Azure AD 租用戶並快速執行
 -   如果您是開發人員：
  - 請查看我們 [開發人員指南](active-directory-developers-guide.md) 到 Azure Active Directory 
@@ -104,4 +104,5 @@ Azure AD 經悉心設計，不但支援多租用戶、地理分布周全，更�
 - [什麼是 Microsoft Azure Active Directory 授權？](active-directory-licensing-what-is.md)
 
 - [如何探索組織內使用未經批准的雲端應用程式](active-directory-cloudappdiscovery-whatis.md)
+
 

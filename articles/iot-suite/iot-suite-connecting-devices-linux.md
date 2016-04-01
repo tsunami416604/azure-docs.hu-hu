@@ -38,7 +38,7 @@
 
 4. 取代 **[裝置識別碼]** 和 **[裝置 Key]** 以您的裝置遠端監視方案儀表板中的值。
 
-5. 使用 **IoT 中心 Hostname** 儀表板中取代 **IoTHub 姓名** 和 **[IoTHub 後置字元，也就是 azure devices.net]**。 例如，如果您 **IoT 中心主機名稱** 是 **contoso.azure devices.net**, ，取代 **IoTHub 姓名** 與 **contoso** 並取代 **[IoTHub 後置字元，也就是 azure devices.net]** 與 **azure devices.net** ，如下所示:
+5. 使用 **IoT 中心 Hostname** 儀表板中取代 **IoTHub 姓名** 和 **[IoTHub 後置字元，也就是 azure devices.net]**。 例如，如果您 **IoT 中心主機名稱** 是 **contoso.azure devices.net**, ，取代 **IoTHub 姓名** 與 **contoso** 並取代 **[IoTHub 後置字元，也就是 azure devices.net]** 與 **azure devices.net** ，如下所示 ︰
 
     ```
     static const char* deviceId = "mydevice";
@@ -54,5 +54,6 @@
 [AZURE.INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
 [lnk-setup-linux]: https://github.com/azure/azure-iot-sdks/blob/develop/c/doc/devbox_setup.md#linux
+
 
 

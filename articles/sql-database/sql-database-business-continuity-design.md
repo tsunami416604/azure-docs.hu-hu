@@ -98,3 +98,4 @@ SQL Database 預設提供每個資料庫的內建基本保護功能。 其作法
 
 設計應用程式的業務續航力時，您應該考慮幾個組態選項。 您的選擇會視應用程式部署拓撲，以及應用程式的哪些部分最容易受到中斷的影響而定。 請參閱 [設計的嚴重損壞修復使用異地複寫的雲端解決方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md) 指導方針。
 
+

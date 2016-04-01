@@ -24,13 +24,13 @@
 
 >[AZURE.NOTE] 如果您已經安裝產品設定，想要用於本教學課程，您可以跳至 [設定呼叫頻率限制和配額原則][] ，並從該處使用您的產品來免費試用產品取代遵循本教學課程。
 
-## <a name="create-product"> </a>若要建立產品
+## <a name="create-product"> </a>建立產品
 
 在本步驟中，您將建立不需核准訂閱的免費試用產品。
 
 若要開始使用，請按一下 [ **管理** 在 Azure 傳統 API 管理服務。 這會帶您前往 API 管理發行者入口網站。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 >如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
@@ -44,7 +44,7 @@
 
 在 **標題** 方塊中，輸入 **免費試用版**。
 
-在 **描述** 方塊中，輸入下列文字:
+在 **描述** 方塊中，輸入下列文字 ︰
  **訂閱者可以執行 10 個呼叫每分鐘最多 200 呼叫週之後存取被拒。**
 
 API 管理中的產品可以是受保護或開放的。 受保護的產品必須先訂閱才能使用。 開放產品不需要訂用帳戶即可使用。 請確認 **需要訂閱** 選取要建立需要訂用帳戶的受保護的產品。 這是預設設定。
@@ -65,7 +65,7 @@ API 管理中的產品可以是受保護或開放的。 受保護的產品必須
 
 選取 **開發人員** 核取方塊，，然後按一下 [ **儲存**。
 
-## <a name="add-api"> </a>若要將 API 加入產品
+## <a name="add-api"> </a>將 API 加入至產品
 
 在教學課程的這個步驟中，我們會將 Echo API 加入至新的「免費試用」產品。
 
@@ -83,7 +83,7 @@ API 管理中的產品可以是受保護或開放的。 受保護的產品必須
 
 ![Add Echo API][api-management-add-echo-api]
 
-## <a name="policies"> </a>若要設定呼叫費率限制和配額原則
+## <a name="policies"> </a>設定呼叫頻率限制和配額原則
 
 費率限制和配額是在原則編輯器中設定。 按一下 [ **原則** 下 **API 管理** 左邊功能表。 在 **產品** 清單中，按一下 **免費試用版**。
 
@@ -166,7 +166,7 @@ API 管理中的產品可以是受保護或開放的。 受保護的產品必須
 
 ![Save policy][api-management-policy-save]
 
-## <a name="publish-product"> </a> 若要發行產品
+## <a name="publish-product"> </a> 發佈產品
 
 現在已加入 API，也已設定原則，產品必須發佈才能供開發人員使用。 按一下 [ **產品** 從 **API 管理** 左邊的功能表，然後按一下 **免費試用版** 來設定產品。
 
@@ -176,7 +176,7 @@ API 管理中的產品可以是受保護或開放的。 受保護的產品必須
 
 ![Publish product][api-management-publish-product]
 
-## <a name="subscribe-account"> </a>若要訂閱產品的開發人員帳戶
+## <a name="subscribe-account"> </a>為開發人員帳戶訂閱產品
 
 現在已發佈產品，產品即可供開發人員訂閱和使用。
 
@@ -202,7 +202,7 @@ API 管理中的產品可以是受保護或開放的。 受保護的產品必須
 
 ![Subscription added][api-management-subscription-added]
 
-## <a name="test-rate-limit"> </a>若要呼叫作業並測試費率限制
+## <a name="test-rate-limit"> </a>呼叫作業並測試頻率限制
 
 現在免費試用產品已設定和發佈，我們可以呼叫一些作業並測試費率限制原則。
 切換到開發人員入口網站中，依序按一下 **開發人員入口網站** 右上方功能表中。
@@ -292,4 +292,5 @@ API 管理中的產品可以是受保護或開放的。 受保護的產品必須
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+
 

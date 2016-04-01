@@ -29,13 +29,13 @@ select 子句內部是型別系統和運算式語言，在這裡面述詞等項�
 
 如需詳細資訊，請參閱 [U SQL 參考](http://go.microsoft.com/fwlink/p/?LinkId=691348)。
 
-**先決條件**
+**必要條件**
 
 - **已安裝 Visual Studio 2015、Visual Studio 2013 更新 4，或具有 Visual C++ 的 Visual Studio 2012** 
 - **Microsoft Azure SDK for.NET 2.7 版或以上**。  請使用 [Web platform installer](http://www.microsoft.com/web/downloads/platform.aspx)。
 - **[資料湖 Tools for Visual Studio](http://aka.ms/adltoolsvs)**。 
     
-    資料湖 Tools for Visual Studio 安裝之後，您會看到 **資料湖** Visual Studio 中的功能表:
+    資料湖 Tools for Visual Studio 安裝之後，您會看到 **資料湖** Visual Studio 中的功能表 ︰
     
     ![U-SQL Visual Studio 功能表](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
 
@@ -104,7 +104,7 @@ select 子句內部是型別系統和運算式語言，在這裡面述詞等項�
 8. 您可以按一下 **重新整理** ] 按鈕，查看最新的工作狀態，並重新整理螢幕。 請等待工作成功完成。  如果工作失敗，很可能是因為遺漏了原始檔。  您可以使用工具中的 [錯誤] 索引標籤來查看服務所傳回的錯誤。 請參閱本教學課程的＜必要條件＞一節。 如需疑難排解的詳細資訊，請參閱 [監視和疑難排解 Azure 資料湖分析工作](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)。
 
     
-**查看作業輸出**
+**查看工作輸出**
 
 1. 從 **伺服器總管**, ，依序展開 **Azure**, ，展開 **資料湖分析**, 、 依序展開您的資料湖分析帳戶、 **儲存體帳戶**, ，以滑鼠右鍵按一下預設的資料湖儲存體帳戶，然後按一下 **總管**。 
 2.  按兩下 **輸出** 開啟資料夾
@@ -136,7 +136,7 @@ select 子句內部是型別系統和運算式語言，在這裡面述詞等項�
 
 以下是指令碼中的一些概念和關鍵字：
 
-- **資料列集變數**: 每個查詢運算式來產生資料列集可以指派給變數。 U SQL 遵循 T-SQL 變數命名模式，例如 **@searchlog** 指令碼中。 
+- **資料列集變數**︰ 每個查詢運算式來產生資料列集可以指派給變數。 U SQL 遵循 T-SQL 變數命名模式，例如 **@searchlog** 指令碼中。 
     請注意，U-SQL 不會強制執行指派工作。 它只是命名運算式，並讓您能夠建置更複雜的運算式。
 - **擷取** 可讓您在讀取時定義的結構描述。 結構描述是透過每個資料行的資料行名稱和 C# 型別名稱配對來加以指定。 它會使用所謂 **抽選程式**, ，例如 **Extractors.Tsv()** tsv 檔案解壓縮。 您可以開發自訂擷取器。
 - **輸出** 會採用資料列集，並將其序列化。 Outputters.Csv() 會將逗號分隔檔輸出到指定的位置。 您也可以開發自訂輸出器。
@@ -174,7 +174,7 @@ select 子句內部是型別系統和運算式語言，在這裡面述詞等項�
       
 ##轉換資料列集
 
-使用 **選取** 來轉換資料列集: 
+使用 **選取** 來轉換資料列集 ︰ 
 
     @searchlog =
         EXTRACT UserId          int,
@@ -340,7 +340,7 @@ U-SQL 可讓您在資料庫和結構描述的內容中使用資料。 因此您�
 
 在先前的 U-SQL 指令碼中，您重複使用會從相同原始程式檔進行讀取的 EXTRACT。 U-SQL 資料表值函式可讓您封裝資料以供日後重複使用。   
 
-下列指令碼會建立名為 TVF *Searchlog()* 預設資料庫和結構描述中:
+下列指令碼會建立名為 TVF *Searchlog()* 預設資料庫和結構描述中 ︰
 
     DROP FUNCTION IF EXISTS Searchlog;
     
@@ -388,7 +388,7 @@ U-SQL 可讓您在資料庫和結構描述的內容中使用資料。 因此您�
 
 如果您只有一個想要抽取但不要予以參數化的查詢運算式，您可以建立檢視而不是資料表值函式。 
 
-下列指令碼會建立一個名為檢視 *SearchlogView* 預設資料庫和結構描述中:
+下列指令碼會建立一個名為檢視 *SearchlogView* 預設資料庫和結構描述中 ︰
 
     DROP VIEW IF EXISTS SearchlogView;
     
@@ -504,6 +504,7 @@ U-SQL 與關聯式資料庫資料表類似，可讓您使用預先定義的結�
 - [提交要求功能](http://aka.ms/adlafeedback)
 - [在論壇上取得協助](http://aka.ms/adlaforums)
 - [提供關於 U-SQL 的意見反應](http://aka.ms/usqldiscuss)
+
 
 
 

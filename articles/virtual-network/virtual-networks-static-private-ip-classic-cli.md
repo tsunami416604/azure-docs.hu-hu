@@ -28,7 +28,7 @@
 下列範例 Azure CLI 命令會預期已經建立簡單的環境。 如果您想要執行命令，因為它們會顯示在這份文件，先建立測試環境中所述 [建立 vnet](virtual-networks-create-vnet-classic-cli.md)。
 
 ## 建立 VM 時如何指定靜態私人 IP 位址
-若要建立新的 VM，名為 *DNS01* 新的雲端服務中名為 *TestService* 根據上述情況，請遵循下列步驟:
+若要建立新的 VM，名為 *DNS01* 新的雲端服務中名為 *TestService* 根據上述情況，請遵循下列步驟 ︰
 
 1. 如果您從未使用 Azure CLI，請參閱 [安裝和設定 Azure CLI](xplat-cli-install.md) 並遵循指示，選取您的 Azure 帳戶和訂閱為止。
 1. 執行 **azure 服務建立** 命令建立雲端服務。
@@ -61,10 +61,10 @@
         info:    OK
         info:    vm create command OK
 
-    - **-l (或--location)**。 將要建立 VM 的 Azure 區域。 我們的案例， *centralus*。
-    - **-n (或--)**。 要建立之 VM 的名稱。
-    - **-w (或--虛擬網路名稱)**。 將建立 VM 之 VNet 的名稱。 
-    - **-S (或--靜態 ip)**。 VM 的靜態私人 IP 位址
+    - **-l （或--location）**。 將要建立 VM 的 Azure 區域。 我們的案例， *centralus*。
+    - **-n （或--）**。 要建立之 VM 的名稱。
+    - **-w （或--虛擬網路名稱）**。 將建立 VM 之 VNet 的名稱。 
+    - **-S （或--靜態 ip）**。 VM 的靜態私人 IP 位址
     - **TestService**。 將建立 VM 之雲端服務的名稱。
     - **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**。 用來建立 VM 的映像。
     - **adminuser**。 Windows VM 的本機系統管理員。
@@ -114,4 +114,5 @@
 - 深入了解 [保留公用 IP](../virtual-networks-reserved-public-ip) 位址。
 - 深入了解 [執行個體層級公用 IP (ILPIP)](../virtual-networks-instance-level-public-ip) 位址。
 - 請參閱 [保留的 IP REST Api](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
+
 

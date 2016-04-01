@@ -18,9 +18,9 @@
 
 # 適用於 C 的 Microsoft Azure IoT 裝置 SDK - 深入了解 IoTHubClient
 
- [先文章](iot-hub-device-sdk-c-intro.md) 中導入這一系列 **C 的 Microsoft Azure IoT 裝置 SDK**。 該文章已說明 SDK 中有兩個架構層。 基底是 **IoTHubClient** 程式庫直接管理 [IoT 中心之間的通訊。 另外還有 **序列化程式** 組建，除此之外，以提供序列化服務的程式庫。 在本文中我們將提供其他詳細資料上 **IoTHubClient** 程式庫。
+ [先文章](iot-hub-device-sdk-c-intro.md) 中導入這一系列 **C 的 Microsoft Azure IoT 裝置 SDK**。該文章已說明 SDK 中有兩個架構層。 基底是 **IoTHubClient** 程式庫直接管理 [IoT 中心之間的通訊。 另外還有 **序列化程式** 組建，除此之外，以提供序列化服務的程式庫。 在本文中我們將提供其他詳細資料上 **IoTHubClient** 程式庫。
 
-前一篇文章說明如何使用 **IoTHubClient** 將事件傳送到 IoT 中心和接收訊息的程式庫。 這篇文章解釋如何更精確地管理延伸討論 *時* 您傳送和接收資料，引入您 **較低層級 Api**。 我們也將說明如何將屬性附加至事件 (和擷取訊息) 使用內容處理功能 **IoTHubClient** 程式庫。 最後，我們將提供其他說明，以不同的方式來處理從 IoT 中樞接收的訊息。
+前一篇文章說明如何使用 **IoTHubClient** 將事件傳送到 IoT 中心和接收訊息的程式庫。 這篇文章解釋如何更精確地管理延伸討論 *時* 您傳送和接收資料，引入您 **較低層級 Api**。 我們也將說明如何將屬性附加至事件 （和擷取訊息） 使用內容處理功能 **IoTHubClient** 程式庫。 最後，我們將提供其他說明，以不同的方式來處理從 IoT 中樞接收的訊息。
 
 文件結束時，會涵蓋幾個其他的主題，包括更相關的裝置認證，以及如何變更的行為 **IoTHubClient** 透過組態選項。
 
@@ -87,7 +87,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-前三行會建立訊息，而最後一行會傳送事件。 不過，如先前所述，「傳送」事件表示只是將資料放置於緩衝區中。 不會在網路上傳輸當我們呼叫 **IoTHubClient\_LL\_SendEventAsync**。 為了實際輸入 IoT 中心的資料，您必須呼叫 **IoTHubClient\_LL\_DoWork**, ，如這個範例所示:
+前三行會建立訊息，而最後一行會傳送事件。 不過，如先前所述，「傳送」事件表示只是將資料放置於緩衝區中。 不會在網路上傳輸當我們呼叫 **IoTHubClient\_LL\_SendEventAsync**。 為了實際輸入 IoT 中心的資料，您必須呼叫 **IoTHubClient\_LL\_DoWork**, ，如這個範例所示 ︰
 
 ```
 while (1)
@@ -125,7 +125,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 基本上，只有一組 API 會利用背景執行緒來傳送和接收資料，另一組 API 不會利用背景執行緒來執行相同的動作。 許多開發人員可能會偏好非 LL API，但是當開發人員想要明確控制網路傳輸時，較低層級 API 會很實用。 例如，有些裝置會隨時間收集資料，並且只在指定的時間間隔輸入事件 (例如，每小時一次或一天一次)。 較低層級 API 可在您與 IoT 中樞之間傳送和接收資料時，提供您明確控制的功能。 其他人純粹偏好較低層級 API 提供的簡單性 一切動作都發生在主執行緒上，而不是有些工作會在背景中發生。
 
-無論您選擇哪種模型，請務必與您使用的 API 一致。 如果您透過呼叫啟動 **IoTHubClient\_LL\_CreateFromConnectionString**, ，請務必只使用對應的較低層級 Api 任何待處理的工作:
+無論您選擇哪種模型，請務必與您使用的 API 一致。 如果您透過呼叫啟動 **IoTHubClient\_LL\_CreateFromConnectionString**, ，請務必只使用對應的較低層級 Api 任何待處理的工作 ︰
 
 -   IoTHubClient\_LL\_SendEventAsync
 
@@ -194,13 +194,13 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-若要呼叫 **IoTHubMessage\_Properties** 傳回 **MAP\_HANDLE** 參考。 然後我們將傳遞至該參考 **Map\_GetInternals** 來取得陣列的名稱/值組 (以及屬性的計數) 的參考。 此時就可以很容易地列舉屬性來取得我們想要的值。
+若要呼叫 **IoTHubMessage\_Properties** 傳回 **MAP\_HANDLE** 參考。 然後我們將傳遞至該參考 **Map\_GetInternals** 來取得陣列的名稱/值組 （以及屬性的計數） 的參考。 此時就可以很容易地列舉屬性來取得我們想要的值。
 
 您不必在應用程式中使用屬性。 不過，如果您需要在事件上設定或擷取訊息， **IoTHubClient** 程式庫可讓您輕鬆。
 
 ## 訊息處理
 
-如先前所述，當訊息從送達 IoT 中心 **IoTHubClient** 回應叫用註冊的回呼函式的程式庫。 此函式有一個傳回參數值得額外說明。 以下是中的回呼函式的摘錄， **iothub\_client\_sample\_http** 範例應用程式:
+如先前所述，當訊息從送達 IoT 中心 **IoTHubClient** 回應叫用註冊的回呼函式的程式庫。 此函式有一個傳回參數值得額外說明。 以下是中的回呼函式的摘錄， **iothub\_client\_sample\_http** 範例應用程式 ︰
 
 ```
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -226,7 +226,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 ## 替代裝置認證
 
-如前所述，首先来使用 **IoTHubClient** 程式庫，是取得 **IOTHUB\_CLIENT\_HANDLE** 的呼叫如下所示:
+如前所述，首先来使用 **IoTHubClient** 程式庫，是取得 **IOTHUB\_CLIENT\_HANDLE** 的呼叫如下所示 ︰
 
 ```
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
@@ -272,9 +272,10 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 -   **逾時** (不帶正負號的 int) – 此值會表示以毫秒為單位。 如果傳送 HTTP 要求或接收回應所花費的時間超過這個時間，即表示連接逾時。
 
-此批次處理選項極為重要。 根據預設，程式庫 ingresses 事件個別 (單一事件是您傳遞給任何 **IoTHubClient\_LL\_SendEventAsync**)。 如果批次的選項是 **true**, ，程式庫會收集它可以從緩衝區 (最多的 IoT 中心將會接受的最大訊息大小) 的事件數目。  事件批次會在單一 HTTP 呼叫中傳送到 IoT 中樞 (個別事件已統合至 JSON 陣列中)。 啟用批次處理通常會導致效能大幅提升，因為網路來回行程正在減少。 它也會大幅減少頻寬，因為您正利用事件批次傳送一組 HTTP 標頭，而不是針對每個個別事件傳送一組標頭。 除非您有使用其他方式的特定理由，否則通常會想要啟用批次處理。
+此批次處理選項極為重要。 根據預設，程式庫 ingresses 事件個別 (單一事件是您傳遞給任何 **IoTHubClient\_LL\_SendEventAsync**)。 如果批次的選項是 **true**, ，程式庫會收集它可以從緩衝區 （最多的 IoT 中心將會接受的最大訊息大小） 的事件數目。  事件批次會在單一 HTTP 呼叫中傳送到 IoT 中樞 (個別事件已統合至 JSON 陣列中)。 啟用批次處理通常會導致效能大幅提升，因為網路來回行程正在減少。 它也會大幅減少頻寬，因為您正利用事件批次傳送一組 HTTP 標頭，而不是針對每個個別事件傳送一組標頭。 除非您有使用其他方式的特定理由，否則通常會想要啟用批次處理。
 
 ## 後續步驟
 
-這篇文章描述詳細的行為 **IoTHubClient** 程式庫中找到 **Azure IoT 裝置 SDK c**。 利用此資訊，您應該充分了解功能的 **IoTHubClient** 程式庫。  [下一篇文章](iot-hub-device-sdk-c-serializer.md) 提供類似的詳細資料 **序列化程式** 程式庫。
+這篇文章描述詳細的行為 **IoTHubClient** 程式庫中找到 **Azure IoT 裝置 SDK c**。利用此資訊，您應該充分了解功能的 **IoTHubClient** 程式庫。  [下一篇文章](iot-hub-device-sdk-c-serializer.md) 提供類似的詳細資料 **序列化程式** 程式庫。
+
 

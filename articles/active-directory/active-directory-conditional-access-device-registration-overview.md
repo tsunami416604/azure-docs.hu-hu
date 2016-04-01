@@ -24,14 +24,14 @@ Azure Active Directory 裝置註冊可用於您的 Azure Active Directory。 此
 
 ## Azure Active Directory 裝置註冊所啟用的案例
 
-Azure AD 裝置註冊可以視為各種案例的基礎。 一般而言，此服務包含 iOS、Android 和 Windows 裝置的支援。 利用 Azure AD 裝置註冊的個別案例可能會有更明確的需求和平台支援。 這些案例如下所示:
+Azure AD 裝置註冊可以視為各種案例的基礎。 一般而言，此服務包含 iOS、Android 和 Windows 裝置的支援。 利用 Azure AD 裝置註冊的個別案例可能會有更明確的需求和平台支援。 這些案例如下所示 ︰
 內部部署裝載之應用程式的條件式存取：您可以使用已註冊的裝置搭配適用於已設定為使用 AD FS with Windows Server 2012 R2 之應用程式的存取原則。 如需有關設定內部部署之條件式存取的詳細資訊，請參閱使用 Azure Active Directory 裝置註冊設定內部部署條件式存取。 
 
 適用於包含 Microsoft Intune 之 Office 365 應用程式的條件式存取︰IT 管理員可以佈建條件式存取裝置原則來保護公司資源，同時允許相容裝置上的資訊工作者存取服務。 如需詳細資訊，請參閱 Office 365 服務的條件式存取裝置原則
 
 ##設定 Azure Active Directory 裝置註冊
 
-適用於 Azure Active Directory 裝置註冊服務的設定如下:
+適用於 Azure Active Directory 裝置註冊服務的設定如下 ︰
 啟用 Azure AD 裝置註冊在 Azure 入口網站。
 
 Windows 裝置會藉由尋找知名 DNS 記錄來探索服務。 您必須設定公司 DNS，讓 Windows 7 和 Windows 8.1 裝置才可以探索和使用服務。
@@ -88,5 +88,6 @@ Windows 7 和 Windows 8.1 裝置會藉由結合使用者帳戶名稱與知名裝
 - [自動向 Azure Active Directory 註冊加入網域的 Windows 裝置](active-directory-conditional-access-automatic-device-registration.md) 
 - [為加入網域的 Windows 7 裝置設定自動註冊裝置](active-directory-conditional-access-automatic-device-registration-windows7.md)
 - [為加入網域的 Windows 8.1 裝置設定自動註冊裝置](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+
 
 

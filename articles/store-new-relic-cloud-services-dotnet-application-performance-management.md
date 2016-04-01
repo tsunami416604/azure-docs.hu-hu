@@ -102,7 +102,7 @@ New Relic 與 Azure Web 角色和背景工作角色緊密整合。
 
     ![enter license key](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget07.png)
 
-6. 選擇性: 在應用程式名稱提示中，輸入您的應用程式名稱，它將
+6. 選擇性 ︰ 在應用程式名稱提示中，輸入您的應用程式名稱，它將
    顯示的應用程式名稱。 或者，使用方案名稱做為預設值。
 
     ![enter application name](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget08.png)
@@ -112,7 +112,7 @@ New Relic 與 Azure Web 角色和背景工作角色緊密整合。
     ![public the cloud project](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget09.png)
 
 
-**注意:** 如果這是您第一次將此應用程式部署至 Azure，系統會提示您輸入您 
+**注意 ︰** 如果這是您第一次將此應用程式部署至 Azure，系統會提示您輸入您 
 Azure 認證。 如需詳細資訊，請參閱 [ASP.NET Web 應用程式部署至 Azure 網站](app-service-web\web-sites-dotnet-get-started.md)
 
 ![publish settings](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget10.png)
@@ -123,7 +123,7 @@ Azure 認證。 如需詳細資訊，請參閱 [ASP.NET Web 應用程式部署�
 
 1. 從 Azure 入口網站中，按一下 [ **管理** ] 按鈕。
 2. 以您的 New Relic 帳戶電子郵件和密碼登入。
-3. 從 New Relic 功能表列中，選取 **應用程式 > (應用程式的名稱)**。
+3. 從 New Relic 功能表列中，選取 **應用程式 > （應用程式的名稱）**。
 
      **監視 > 概觀** 儀表板] 會自動出現。
 
@@ -140,10 +140,10 @@ Azure 認證。 如需詳細資訊，請參閱 [ASP.NET Web 應用程式部署�
 | 如果您想要... | 執行此動作... |
 | ----------------- | ---------- |
 | 顯示所選取應用程式的伺服器或瀏覽器的儀表板資訊。 | 按一下 [ **應用程式伺服器** 或 **瀏覽器** ] 按鈕。 |
-| 檢視您的應用程式的臨界值層級 [Apdex](https://newrelic.com/docs/site/apdex) 分數。 | 指向 Apdex 分數 **?** 圖示。 |
-| 檢視全球 Apdex 詳細資料。 | 從 [Overview] 的 **瀏覽器** 檢視中，指向 Global Apdex 地圖上。 **提示:** ，直接移至選取的應用程式 [Geography](https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard") 儀表板，按一下 [ **Global Apdex** 標題，或按一下 Global Apdex 地圖的任意處。 |
+| 檢視您的應用程式的臨界值層級 [Apdex](https://newrelic.com/docs/site/apdex) 分數。 | 指向 Apdex 分數 **嗎？** 圖示。 |
+| 檢視全球 Apdex 詳細資料。 | 從 [Overview] 的 **瀏覽器** 檢視中，指向 Global Apdex 地圖上。 **提示 ︰** ，直接移至選取的應用程式 [Geography](https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard") 儀表板，按一下 [ **Global Apdex** 標題，或按一下 Global Apdex 地圖的任意處。 |
 | 檢視 [Web 交易](https://newrelic.com/docs/applications-dashboards/web-transactions) 儀表板。 | 按一下 [Applications Overview] 儀表板的 [Web Transactions] 資料表。 或者，若要檢視特定 web 交易的詳細資料 (包括 [Key Transactions](https://newrelic.com/docs/site/key-transactions"), ，按一下其名稱。 |
-| 檢視 [錯誤](https://newrelic.com/docs/site/errors) 儀表板。 | 按一下 [Applications Overview] 儀表板的 [Error rate] 圖表標題。 **提示:** 您也可以檢視從 **應用程式** > (您的應用程式) > 事件 > 錯誤。 |
+| 檢視 [錯誤](https://newrelic.com/docs/site/errors) 儀表板。 | 按一下 [Applications Overview] 儀表板的 [Error rate] 圖表標題。 **提示 ︰** 您也可以檢視從 **應用程式** > （您的應用程式） > 事件 > 錯誤。 |
 
 
 此外，如果您想要檢視應用程式的伺服器詳細資料，請執行下列任何動作：
@@ -164,9 +164,10 @@ Azure 認證。 如需詳細資訊，請參閱 [ASP.NET Web 應用程式部署�
  * [在 Azure 上安裝.NET 代理程式](https://newrelic.com/docs/dotnet/installing-the-net-agent-on-azure): New Relic.NET 代理程式安裝程序 
  * [New Relic 使用者介面](https://newrelic.com/docs/site/the-new-relic-ui): 
 New Relic UI,、設定使用者權限和設定檔，以及使用標準功能和儀表板向下鑽研詳細資料的概觀
- * [應用程式概觀](https://newrelic.com/docs/site/applications-overview): 特性及功能時使用 New Relic 的應用程式概觀儀表板
+ * [應用程式概觀](https://newrelic.com/docs/site/applications-overview)︰ 特性及功能時使用 New Relic 的應用程式概觀儀表板
  * [Apdex](https://newrelic.com/docs/site/apdex): Apdex 如何衡量應用程式的使用者滿意度的概觀
- * [實際使用者監控](https://newrelic.com/docs/features/real-user-monitoring): 概觀 RUM 如何詳細資料時所需為您的使用者 
+ * [實際使用者監控](https://newrelic.com/docs/features/real-user-monitoring)︰ 概觀 RUM 如何詳細資料時所需為您的使用者 
 使用者來自何處，和使用者使用什麼瀏覽器的概觀
  * [尋找說明](https://newrelic.com/docs/site/finding-help): New Relic 線上說明中心提供的資源
+
 

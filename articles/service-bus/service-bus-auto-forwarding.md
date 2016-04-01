@@ -68,3 +68,4 @@ namespaceManager.CreateSubscription(srcSubscription));
   [0]: ./media/service-bus-auto-forwarding/IC628631.gif
   [1]: ./media/service-bus-auto-forwarding/IC628632.gif
   [Partitioning Messaging Entities]: service-bus-partitioning.md
+

@@ -27,8 +27,8 @@
 ##本教學課程內容
 在本教學課程中，您會使用 Visual Studio 2013 執行下列作業：
 
-1. 建立兩個連結的服務: **AzureStorageLinkedService1** 和 **AzureSqlinkedService1**。 AzureStorageLinkedService1 連結 Azure 儲存體而 AzureSqlLinkedService1 連結 Azure SQL database 至 data factory: **ADFTutorialDataFactoryVS**。 管線的輸入資料位於 Azure Blob 儲存體的 Blob 容器中，輸出資料則儲存在 Azure SQL Database 的資料表中。 因此，您可以將這兩個資料存放區以連結服務的形式新增至 Data Factory。
-2. 建立兩個 data factory 資料表: **EmpTableFromBlob** 和 **EmpSQLTable**, ，代表資料存放區中的輸入/輸出資料。 您將針對 EmpTableFromBlob，指定所含 Blob 具有來源資料的 Blob 容器，而針對 EmpSQLTable 指定可儲存輸出資料的 SQL 資料表。 您也將指定其他屬性 (例如資料結構、資料可用性等)。
+1. 建立兩個連結的服務 ︰ **AzureStorageLinkedService1** 和 **AzureSqlinkedService1**。 AzureStorageLinkedService1 連結 Azure 儲存體而 AzureSqlLinkedService1 連結 Azure SQL database 至 data factory: **ADFTutorialDataFactoryVS**。 管線的輸入資料位於 Azure Blob 儲存體的 Blob 容器中，輸出資料則儲存在 Azure SQL Database 的資料表中。 因此，您可以將這兩個資料存放區以連結服務的形式新增至 Data Factory。
+2. 建立兩個 data factory 資料表 ︰ **EmpTableFromBlob** 和 **EmpSQLTable**, ，代表資料存放區中的輸入/輸出資料。 您將針對 EmpTableFromBlob，指定所含 Blob 具有來源資料的 Blob 容器，而針對 EmpSQLTable 指定可儲存輸出資料的 SQL 資料表。 您也將指定其他屬性 (例如資料結構、資料可用性等)。
 3. 建立名為管線 **ADFTutorialPipeline** 在 ADFTutorialDataFactoryVS 中。 管線會有 **複製活動** ，將輸入資料從 Azure blob 複製到輸出 Azure SQL 資料表。
 4. 建立 Data Factory，以及部署連結的服務、資料表和管線。    
 
@@ -54,7 +54,7 @@
 #### 建立連結服務
 連結服務會將資料存放區或計算服務連結至 Azure Data Factory。 資料存放區可以是 Azure 儲存體、Azure SQL Database 或在內部部署 SQL Server 資料庫。
 
-在此步驟中，您將建立兩個連結的服務: **AzureStorageLinkedService1** 和 **AzureSqlLinkedService1**。 AzureStorageLinkedService1 連結服務會連結 Azure 儲存體帳戶，而 AzureSqlLinkedService 會連結 Azure SQL database 至 data factory: **ADFTutorialDataFactory**。 
+在此步驟中，您將建立兩個連結的服務 ︰ **AzureStorageLinkedService1** 和 **AzureSqlLinkedService1**。 AzureStorageLinkedService1 連結服務會連結 Azure 儲存體帳戶，而 AzureSqlLinkedService 會連結 Azure SQL database 至 data factory: **ADFTutorialDataFactory**。 
 
 ##### 建立 Azure 儲存體連結服務
 
@@ -78,7 +78,7 @@
 
 
 ### 建立輸入和輸出資料表
-在上一個步驟中，您已建立連結的服務 **AzureStorageLinkedService1** 和 **AzureSqlLinkedService1** ，將 Azure 儲存體帳戶和 Azure SQL database 連結至 data factory: **ADFTutorialDataFactory**。 在此步驟中，您將定義兩個 data factory 資料表: **EmpTableFromBlob** 和 **EmpSQLTable** -代表分別 AzureStorageLinkedService1 和 AzureSqlLinkedService1 所參照資料存放區中的輸入/輸出資料。 針對 EmpTableFromBlob 指定所含 blob 具有來源資料，而針對 EmpSQLTable 的 blob 容器，您會指定儲存輸出資料的 SQL 資料表。
+在上一個步驟中，您已建立連結的服務 **AzureStorageLinkedService1** 和 **AzureSqlLinkedService1** ，將 Azure 儲存體帳戶和 Azure SQL database 連結至 data factory: **ADFTutorialDataFactory**。 在此步驟中，您將定義兩個 data factory 資料表 ︰ **EmpTableFromBlob** 和 **EmpSQLTable** -代表分別 AzureStorageLinkedService1 和 AzureSqlLinkedService1 所參照資料存放區中的輸入/輸出資料。 針對 EmpTableFromBlob 指定所含 blob 具有來源資料，而針對 EmpSQLTable 的 blob 容器，您會指定儲存輸出資料的 SQL 資料表。
 
 #### 建立輸入資料表
 
@@ -240,6 +240,7 @@
 4. 選取 **Visual Studio 的 Azure Data Factory 工具** 按一下 **更新**。 如果您看不到此項目，代表您已經有最新版本的工具。 
 
 請參閱 [監視資料集和管線](data-factory-get-started-using-editor.md#MonitorDataSetsAndPipeline) 如需如何使用 Azure 入口網站來監視管線和資料集的指示您在本教學課程中建立。
+
 
 
 

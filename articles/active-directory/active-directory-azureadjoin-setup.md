@@ -32,10 +32,10 @@
 3. 在 **目錄** 索引標籤上，選取您的目錄。
 4. 選取 **設定** ] 索引標籤。
 5. 捲動至區段稱為 **裝置**。
-6. 在 **裝置** 索引標籤上，進行下列設定:  
-   * **每個使用者的裝置數目上限**: 選取的使用者可以擁有 Azure AD 中的裝置數目上限。  如果使用者達到此配額限制，則在移除一或多個現有的裝置之前，將無法新增其他裝置。
-   * **需要 multi-factor auth 才能聯結裝置**: 使用者應該提供第二因素驗證他們的裝置加入 Azure AD 時啟用。 如需有關多因素驗證的詳細資訊，請參閱 [開始使用 Azure 雲端中的多重要素驗證](multi-factor-authentication-get-started-cloud/)
-   * **使用者可以將裝置加入 Azure AD**: 選取的使用者和群組可將裝置加入 Azure AD。
+6. 在 **裝置** 索引標籤上，進行下列設定 ︰  
+   * **每個使用者的裝置數目上限**︰ 選取的使用者可以擁有 Azure AD 中的裝置數目上限。  如果使用者達到此配額限制，則在移除一或多個現有的裝置之前，將無法新增其他裝置。
+   * **需要 multi-factor auth 才能聯結裝置**︰ 使用者應該提供第二因素驗證他們的裝置加入 Azure AD 時啟用。 如需有關多因素驗證的詳細資訊，請參閱 [開始使用 Azure 雲端中的多重要素驗證](multi-factor-authentication-get-started-cloud/)
+   * **使用者可以將裝置加入 Azure AD**︰ 選取的使用者和群組可將裝置加入 Azure AD。
    * **加入 Azure AD 之裝置上的其他系統管理員**: Azure AD Premium 或 Enterprise Mobility Suite (EMS)，您可以選擇哪些使用者獲得裝置的本機系統管理員權限。 全域系統管理員和裝置擁有者預設會授與本機系統管理員權限。
 
 <center>![](./media/active-directory-azureadjoin/active-directory-aadjoin-configure-devices.png) </center>
@@ -54,6 +54,7 @@
 * [了解適用於 Azure AD Join 的使用案例](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [將已加入網域的裝置連接到 Azure AD 以體驗 Windows 10](active-directory-azureadjoin-devices-group-policy.md)
 * [設定 Azure AD Join](active-directory-azureadjoin-setup.md)
+
 
 
 

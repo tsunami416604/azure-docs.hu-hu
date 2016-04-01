@@ -8,13 +8,13 @@
     editor=""/>
 
 <tags
-    ms.service="backup 」
-    ms.workload= 「 儲存體的備份復原的 」
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/01/2015 」
-    ";"ms.author="aashishrtrinadhk"/ >
+    ms.date="10/01/2015"
+    ms.author="aashishr";"trinadhk" />
 
 
 # 使用 PowerShell 部署和管理 Azure VM 的備份
@@ -35,7 +35,7 @@
 ## 設定和註冊
 開始：
 
-1. [下載最新的 PowerShell](https://github.com/Azure/azure-powershell/releases) (所需的最低版本是: 1.0.0)
+1. [下載最新的 PowerShell](https://github.com/Azure/azure-powershell/releases) (所需的最低版本是 ︰ 1.0.0)
 
 2. 輸入下列命令，找到可用的 Azure 備份 PowerShell Cmdlet：
 
@@ -103,7 +103,7 @@ PS C:\> $registerjob = Register-AzureRMBackupContainer -Vault $backupvault -Name
 ## 備份 Azure VM
 
 ### 建立保護原則
-啟動 VM 的備份並不一定要建立新的保護原則。 保存庫隨附「預設原則」，可用來快速啟用保護，稍後再編輯正確的細節。 您可以取得一份保存庫中可用的原則使用 **Get AzureRMBackupProtectionPolicy** 指令程式:
+啟動 VM 的備份並不一定要建立新的保護原則。 保存庫隨附「預設原則」，可用來快速啟用保護，稍後再編輯正確的細節。 您可以取得一份保存庫中可用的原則使用 **Get AzureRMBackupProtectionPolicy** 指令程式 ︰
 
 ```
 PS C:\> Get-AzureRMBackupProtectionPolicy -Vault $backupvault
@@ -136,7 +136,7 @@ PS C:\> Get-AzureRMBackupContainer -Type AzureVM -Status Registered -Vault $back
 ```
 
 ### 初始備份
-備份排程會負責執行項目的完整初始複製，以及後續備份的增量複製。 不過，如果您想要強制初始備份發生在特定時間或甚至是立即然後使用 **備份 AzureRMBackupItem** 指令程式:
+備份排程會負責執行項目的完整初始複製，以及後續備份的增量複製。 不過，如果您想要強制初始備份發生在特定時間或甚至是立即然後使用 **備份 AzureRMBackupItem** 指令程式 ︰
 
 ```
 PS C:\> $container = Get-AzureRMBackupContainer -Vault $backupvault -type AzureVM -name "testvm"
@@ -275,7 +275,7 @@ New-AzureVM -ServiceName "panbhasample" -Location "SouthEast Asia" -VM $vm
 
 ### 1.取得作業子工作的完成狀態
 
-若要追蹤個別的子工作的完成狀態，您可以使用 **Get AzureRMBackupJobDetails** 指令程式:
+若要追蹤個別的子工作的完成狀態，您可以使用 **Get AzureRMBackupJobDetails** 指令程式 ︰
 
 ```
 PS C:\> $details = Get-AzureRMBackupJobDetails -JobId $backupjob.InstanceId -Vault $backupvault
@@ -333,4 +333,5 @@ $DAILYBACKUPSTATS | Out-GridView
 ```
 
 如果您想要加入此報表輸出的圖表製作功能，了解從 TechNet 部落格上 [使用 PowerShell 製作圖表](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)
+
 

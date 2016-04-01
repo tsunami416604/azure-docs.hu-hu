@@ -33,3 +33,4 @@ Azure 將會決定您的應用程式使用 Python **如果這些條件都成立*
 
 [Azure command-line interface]: http://azure.microsoft.com/downloads/
 
+

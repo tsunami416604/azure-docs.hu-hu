@@ -12,8 +12,9 @@
 
 1. 執行 **Get-azurepublishsettingsfile**。 這個 Cmdlet 會將您導向瀏覽器，以便將發佈設定檔案下載至本機目錄。 系統可能會提示您輸入 Azure 訂用帳戶的登入認證。
 
-1. 執行 **Import-azurepublishsettingsfile** 命令與您所下載的發行設定檔的路徑:
+1. 執行 **Import-azurepublishsettingsfile** 命令與您所下載的發行設定檔的路徑 ︰
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
     一旦匯入發佈設定檔案，您便可以在 PowerShell 工作階段中管理 Azure 訂用帳戶。
+

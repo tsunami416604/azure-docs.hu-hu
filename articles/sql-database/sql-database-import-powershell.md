@@ -36,8 +36,8 @@ BACPAC 是一種包含資料庫結構描述和資料的 .bacpac 檔案。 如需
 
 若要匯入 SQL Database，您需要下列項目：
 
-- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
-- 您要還原之資料庫的 .bacpac 檔案 (BACPAC)。 BACPAC 必須處於 [Azure 儲存體帳戶 (傳統)](storage-create-storage-account.md) blob 容器。
+- Azure 訂閱。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
+- 您要還原之資料庫的 .bacpac 檔案 (BACPAC)。 BACPAC 必須處於 [Azure 儲存體帳戶 （傳統）](storage-create-storage-account.md) blob 容器。
 
 
 > [AZURE.IMPORTANT] 這份文件版本的 Azure PowerShell 命令最多包含 *但不是包括* 版本 1.0 和更新版本。 您可以檢查您的 Azure PowerShell 與版本 **Get-module azure | 格式化表格版本** 命令。
@@ -105,7 +105,7 @@ Blob 名稱是您想要用來建立資料庫之現有的 .bacpac 檔案名稱。
 
 執行之後 **開始 AzureSqlDatabaseImport** 您可以檢查要求的狀態。 
 
-在要求之後立即檢查狀態通常會傳回狀態 **暫止**, ，或 **執行** 會提供完成目前的百分比，因此您可以執行這個項目多次，直到您看到 **狀態: 完成** 輸出中。 
+在要求之後立即檢查狀態通常會傳回狀態 **暫止**, ，或 **執行** 會提供完成目前的百分比，因此您可以執行這個項目多次，直到您看到 **狀態 ︰ 完成** 輸出中。 
 
 執行此命令時，會提示您輸入密碼。 請輸入您的 SQL Server 系統管理員登入和密碼。
 
@@ -151,4 +151,5 @@ Blob 名稱是您想要用來建立資料庫之現有的 .bacpac 檔案名稱。
 - [業務續航力概觀](sql-database-business-continuity.md)
 - [災害復原詳細資訊](sql-database-disaster-recovery-drills.md)
 - [SQL Database 文件](https://azure.microsoft.com/documentation/services/sql-database/)
+
 

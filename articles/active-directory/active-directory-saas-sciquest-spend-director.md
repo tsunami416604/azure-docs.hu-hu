@@ -19,7 +19,7 @@
 
 # 教學課程：Azure Active Directory 與 SciQuest Spend Director 整合
 
-本教學課程的目標在於說明如何整合 SciQuest Spend Director 與 Azure Active Directory (Azure AD)。<br>整合 SciQuest Spend Director 與 Azure AD 讓您獲得下列優勢: 
+本教學課程的目標在於說明如何整合 SciQuest Spend Director 與 Azure Active Directory (Azure AD)。<br>整合 SciQuest Spend Director 與 Azure AD 讓您獲得下列優勢 ︰ 
 
 - 您可以在 Azure AD 中控制可存取 SciQuest Spend Director 的人員。 
 - 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 SciQuest Spend Director (單一登入)
@@ -27,7 +27,7 @@
 
 如果您想要知道更多詳細與 Azure AD 的 SaaS 應用程式整合，請參閱 [什麼是應用程式存取和單一登入與 Azure Active Directory](active-directory-appssoaccess-whatis.md)。
 
-## 先決條件 
+## 必要條件 
 
 若要使用 SciQuest Spend Director 設定 Azure AD 整合，您需要以下項目：
 
@@ -46,7 +46,7 @@
  
 ## 案例描述
 此教學課程的目標是讓您在測試環境中測試 Azure AD 單一登入。 <br>
-本教學課程中說明的案例包含兩個主要建置區塊:
+本教學課程中說明的案例包含兩個主要建置區塊 ︰
 
 1. 從資源庫加入 SciQuest Spend Director 
 2. 設定並測試 Azure AD 單一登入
@@ -58,26 +58,26 @@
 **若要從資源庫新增 SciQuest Spend Director，請執行下列步驟：**
 
 1. 在 **Azure 管理入口網站**, ，在左的導覽窗格中，按一下 [ **Active Directory**。 <br><br>
-![Active] Directory[] 1
+![Active Directory][1]
 
 2. 從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
 
 3. 若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。<br><br>
-![應用程式][] 2
+![應用程式][2]
 4. 按一下 [ **新增** 頁面的底部。<br><br>
-![應用程式][] 3
+![應用程式][3]
 5. 在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。<br><br>
-![應用程式][] 4
+![應用程式][4]
 6. 在 [搜尋] 方塊中，輸入 **sciQuest spend director**。<br>
-![應用程式][] 5
+![應用程式][5]
 7. 在 [結果] 窗格中，選取 **SciQuest Spend Director**, ，然後按一下 [ **完成** 加入應用程式。<br>
-![應用程式][] 6
+![應用程式][6]
 
 
 ##  設定並測試 Azure AD 單一登入
 本節的目標是說明如何以名為 "Britta Simon" 的測試使用者為基礎，使用 SciQuest Spend Director 來設定及測試 Azure AD 單一登入。
 
-單一登入若要運作，Azure AD 必須知道 SciQuest Spend Director 與 Azure AD 中互相對應的使用者。 換句話說，Azure AD 使用者和 SciQuest Spend Director 中的相關使用者之間必須建立連結關聯性。<br>
+單一登入若要運作，Azure AD 必須知道 SciQuest Spend Director 與 Azure AD 中互相對應的使用者。 換句話說，必須建立 Azure AD 使用者和 SciQuest Spend Director 中的相關的使用者之間的連結關聯性。<br>
 藉由指定的值建立此連結關聯性 **使用者名稱** 在 Azure AD 中的值為 **Username** SciQuest Spend Director 中。
  
 若要使用 SciQuest Spend Director 設定並測試 Azure AD 單一登入，您需要完成下列建置組塊：
@@ -95,24 +95,24 @@
 **若要使用 SciQuest Spend Director 設定 Azure AD 單一登入，請執行下列步驟：**
 
 1. 在 Azure AD 入口網站上 **SciQuest Spend Director** 應用程式整合頁面上，按一下 [ **設定單一登入** 開啟 **設定單一登入**  ] 對話方塊。<br><br>
-![設定單一登入][] 8
+![設定單一登入][8]
 
 2. 在 **您希望使用者如何登入 SciQuest Spend Director** 頁面上，選取 **Azure AD 單一登入**, ，然後按一下 [ **下一步**。<br><br>
-![Azure AD 單一登入][] 9
+![Azure AD 單一登入][9]
 
-3. 在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟: <br><br>! [設定應用程式設定] [10]
+3. 在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟 ︰ <br><br>![設定應用程式設定][10]
  
-     3.1. 在 **登入 URL** 文字方塊中，輸入您的 URL，讓使用者中用來登入您的 SciQuest Spend Director 應用程式中使用下列模式: *https://。*sciquest.com/.**
+     3.1. 在 **登入 URL** 文字方塊中，輸入您的 URL，讓使用者中用來登入您的 SciQuest Spend Director 應用程式中使用下列模式 ︰ *https://。*sciquest.com/.**
 
      3.2. 在 **回覆 URL** 文字方塊中，輸入您所輸入的相同值 **登入 URL** 文字方塊。 
 
      3.3. 按一下 [ **下一步**。
  
-4. 在 **在 SciQuest Spend Director 設定單一登入** 頁面上，按一下 **下載中繼資料**, ，然後將儲存在本機電腦上的中繼資料檔案。<br><br>![何謂 Azure AD Connect][] 11
+4. 在 **在 SciQuest Spend Director 設定單一登入** 頁面上，按一下 **下載中繼資料**, ，然後將儲存在本機電腦上的中繼資料檔案。<br><br>![什麼是 Azure AD Connect][11]
 
 5. 連絡 SciQuest 支援來啟用使用上述下載的中繼資料進行驗證的方法。
 
-6. 在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。 <br><br>![何謂 Azure AD Connect][] 15
+6. 在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。 <br><br>![什麼是 Azure AD Connect][15]
 10. 在 **單一登入確認** 頁面上，按一下 **完成**。  <br><br>![何謂 Azure AD Connect][] 16
 
 
@@ -130,12 +130,12 @@
 <br><br>![什麼是 Azure AD Connect][101] 
 4. 若要開啟 **新增使用者** ] 對話方塊的底部工具列上，按一下 [ **新增使用者**。 
 <br><br>![什麼是 Azure AD Connect][102] 
-5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟:
+5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![什麼是 Azure AD Connect][103] 
   1. 做為 **使用者類型**, ，請選取 **貴組織中的新使用者**。
   2. 在 [使用者名稱 **文字方塊**, ，型別 **britta Simon**。
   3. 按 [下一步]。
-6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟: 
+6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟 ︰ 
 <br><br>![什麼是 Azure AD Connect][104] 
   1. 在 **名字** 文字方塊中，輸入 **Britta**。  
   2. 在 **姓氏** 文字方塊中輸入 **Simon**。
@@ -144,7 +144,7 @@
   5. 按一下 [ **下一步**。
 7. 在 **取得暫時密碼** 對話方塊頁面上，按一下 [ **建立**。
 <br><br>![什麼是 Azure AD Connect][105]  
-8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟:
+8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![什麼是 Azure AD Connect][106]   
   1. 請記下的值 **新密碼**。
   2. 按一下 [ **完整**。   
@@ -219,5 +219,6 @@
 [203]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_18.png
 [204]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_19.png
 [205]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_20.png
+
 
 

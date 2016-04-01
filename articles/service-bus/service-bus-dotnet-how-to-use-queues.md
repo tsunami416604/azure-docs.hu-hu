@@ -127,7 +127,7 @@ if (!namespaceManager.QueueExists("TestQueue"))
 ```
 
 有的多載 [CreateQueue](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createqueue.aspx) 方法可讓您調整屬性
-(例如，若要設定預設存留時間 (TTL) 值套用至傳送至佇列的訊息) 的佇列。 這些設定會套用使用 [QueueDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.aspx) 類別。 下列範例將說明如何使用大小上限為 5 GB 和預設訊息 TTL 為 1 分鐘的設定，來建立名為 `TestQueue` 的佇列。
+（例如，若要設定預設存留時間 (TTL) 值套用至傳送至佇列的訊息） 的佇列。 這些設定會套用使用 [QueueDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.aspx) 類別。 下列範例將說明如何使用大小上限為 5 GB 和預設訊息 TTL 為 1 分鐘的設定，來建立名為 `TestQueue` 的佇列。
 
 ```
 // Configure queue settings.
@@ -187,17 +187,17 @@ for (int i=0; i<5; i++)
 }
 ```
 
-服務匯流排佇列支援 [256 Kb 的訊息大小上限](service-bus-quotas.md) (包含標準和自訂應用程式屬性標頭可以容納 64 KB 的大小上限)。 佇列中所保存的訊息數目沒有限制，但佇列所保存的訊息大小總計會有最高限制。 此佇列大小會在建立時定義，上限是 5 GB。 如果啟用分割，上限會更高。 如需詳細資訊，請參閱 [分割訊息實體](service-bus-partitioning.md)。
+服務匯流排佇列支援 [256 Kb 的訊息大小上限](service-bus-quotas.md) （包含標準和自訂應用程式屬性標頭可以容納 64 KB 的大小上限）。 佇列中所保存的訊息數目沒有限制，但佇列所保存的訊息大小總計會有最高限制。 此佇列大小會在建立時定義，上限是 5 GB。 如果啟用分割，上限會更高。 如需詳細資訊，請參閱 [分割訊息實體](service-bus-partitioning.md)。
 
 ## 如何從佇列接收訊息
 
-從佇列接收訊息的建議的方式是使用 [QueueClient][] 物件。 [QueueClient][] 物件可以在兩個不同的模式下運作: [ReceiveAndDelete 和 PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx)。
+從佇列接收訊息的建議的方式是使用 [QueueClient][] 物件。 [QueueClient][] 物件可以在兩個不同的模式下運作 ︰ [ReceiveAndDelete 和 PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx)。
 
 當使用 **ReceiveAndDelete** 模式中，接收是一次性作業; 也就是說，當服務匯流排佇列中收到訊息的讀取的要求，它將訊息標示為已取用，並傳回應用程式。 **ReceiveAndDelete** 是簡單的模型，且最適用於應用程式容許在不處理訊息發生失敗時的案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會標示
 訊息為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-在 **PeekLock** 模式 (此為預設模式)，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，
-它會尋找要取用的下一個訊息、 其鎖定以防止其他取用者接收該訊息，並將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 [完成][] 所接收訊息。 當服務匯流排看到 [完成][] 呼叫時，它會將標示為已取用，訊息，並將它從佇列移除。
+在 **PeekLock** 模式 （此為預設模式），接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，
+它會尋找要取用的下一個訊息、 其鎖定以防止其他取用者接收該訊息，並將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 （或可靠地儲存供未來處理） 之後，完成接收程序的第二個階段 [完成][] 所接收訊息。 當服務匯流排看到 [完成][] 呼叫時，它會將標示為已取用，訊息，並將它從佇列移除。
 
 下列範例示範如何可以接收與處理訊息使用預設 **PeekLock** 模式。 若要指定不同 [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 值，您可以使用另一個多載
 [CreateFromConnectionString](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.createfromconnectionstring.aspx)。 這個範例會使用 [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.onmessage.aspx) 回呼
@@ -267,3 +267,4 @@ Client.OnMessage((message) =>
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
+

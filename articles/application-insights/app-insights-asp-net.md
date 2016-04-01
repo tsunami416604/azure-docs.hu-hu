@@ -34,7 +34,7 @@ Application Insights SDK 會從 Web 應用程式傳送遙測至 Azure 入口網�
 * 若要訂閱 [Microsoft Azure](http://azure.com)。 如果您的小組或組織擁有 Azure 訂用帳戶，擁有者可以將您加入它，使用您 [Microsoft 帳戶](http://live.com)。
 * Visual Studio 2013 Update 3 或更新版本。
 
-## <a name="ide"></a> 在 Visual Studio 中將 Application Insights 加入至專案
+## <a name="ide"></a> 在 Visual Studio 中將 Application Insights 加入專案
 
 #### 對於新專案
 
@@ -61,7 +61,7 @@ Application Insights SDK 會從 Web 應用程式傳送遙測至 Azure 入口網�
 如果此應用程式是更大的應用程式的一部分，您可能想要使用 **設定** 將它放在與其他元件相同的資源群組。 
 
 
-####<a name="land"></a> 加入 Application Insights 做了什麼?
+####<a name="land"></a>「加入 Application Insights」執行了哪些動作？
 
 命令執行了下列步驟 (您可能會改為 [手動進行](app-insights-start-monitoring-app-health-usage.md) 如果您偏好):
 
@@ -70,7 +70,7 @@ Application Insights SDK 會從 Web 應用程式傳送遙測至 Azure 入口網�
 * 將檢測金鑰放在 `ApplicationInsights.config` 中。
 
 
-## <a name="run"></a> 執行專案
+## <a name="run"></a>執行專案
 
 利用 F5 執行應用程式並立即試用：開啟不同的頁面來產生一些遙測。
 
@@ -90,9 +90,9 @@ Application Insights SDK 會從 Web 應用程式傳送遙測至 Azure 入口網�
 
 ![Click through to more data](./media/app-insights-asp-net/12-first-perf.png)
 
-按一下任何圖表以查看詳細度量。 [進一步了解度量。][perf]
+按一下任何圖表以查看詳細度量。 [深入了解度量。][perf]
 
-* *任何使用者或頁面的資料?* - [新增使用者和頁面的資料](../article/application-insights/app-insights-asp-net-client.md)
+* *沒有使用者或頁面的資料？* - [新增使用者和頁面的資料](../article/application-insights/app-insights-asp-net-client.md)
 
 ### 搜尋：個別事件
 
@@ -102,7 +102,7 @@ Application Insights SDK 會從 Web 應用程式傳送遙測至 Azure 入口網�
 
 [深入了解搜尋](app-insights-diagnostic-search.md)
 
-* *沒有相關聯的事件嗎?*設定 [伺服器例外狀況](../article/application-insights/app-insights-asp-net-exception-mvc.md) 和 [相依性](../article/application-insights/app-insights-asp-net-dependencies.md)。
+* *沒有相關聯的事件嗎？* 設定 [伺服器例外狀況](../article/application-insights/app-insights-asp-net-exception-mvc.md) 和 [相依性](../article/application-insights/app-insights-asp-net-dependencies.md)。
 
 ### 沒有資料？
 
@@ -170,3 +170,4 @@ Application Insights SDK 會從 Web 應用程式傳送遙測至 Azure 入口網�
 [start]: app-insights-overview.md
 
  
+

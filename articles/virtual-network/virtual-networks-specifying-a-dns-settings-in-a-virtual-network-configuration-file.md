@@ -17,7 +17,7 @@
 
 # 指定虛擬網路組態檔中的 DNS 設定
 
-網路組態檔有兩個項目可讓您指定網域名稱系統 (DNS) 設定: **DnsServers** 和 **DnsServerRef**。 您可以藉由指定其 IP 位址加入 DNS 伺服器清單，並參考名稱加入 **DnsServers** 項目。 然後您可以使用 **DnsServerRef** 項目來指定用於虛擬網路內的不同網站的 DNS 伺服器項目，從 DnsServers 項目。
+網路組態檔有兩個項目可讓您指定網域名稱系統 (DNS) 設定 ︰ **DnsServers** 和 **DnsServerRef**。 您可以藉由指定其 IP 位址加入 DNS 伺服器清單，並參考名稱加入 **DnsServers** 項目。 然後您可以使用 **DnsServerRef** 項目來指定用於虛擬網路內的不同網站的 DNS 伺服器項目，從 DnsServers 項目。
 
 >[AZURE.IMPORTANT] 如需如何設定網路設定檔資訊，請參閱 [虛擬網路使用網路組態檔設定](virtual-networks-using-network-configuration-file.md)。 如需網路組態檔中包含每個項目資訊，請參閱 [Azure 虛擬網路組態結構描述](https://msdn.microsoft.com/library/azure/jj157100.aspx)。
 
@@ -52,4 +52,5 @@
 [Azure 虛擬網路組態結構描述](http://go.microsoft.com/fwlink/?LinkId=248093)
 
 [Azure 服務組態結構描述](https://msdn.microsoft.com/library/windowsazure/ee758710)
+
 

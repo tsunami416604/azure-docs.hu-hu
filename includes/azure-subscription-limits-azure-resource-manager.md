@@ -1,6 +1,6 @@
 資源|預設限制|上限
 ---|---|---
-每個 Vm [訂用帳戶](billing-buy-sign-up-azure-subscription.md)|20<sup>1</sup> 每個區域|每個區域的 10,000 個
+每個 Vm [訂用帳戶](billing-buy-sign-up-azure-subscription.md)|每個區域 20<sup>1</sup> 個|每個區域的 10,000 個
 [共同管理員](billing-add-change-azure-subscription-administrator.md) 每個訂閱|無限|無限
 [儲存體帳戶](storage-create-storage-account.md) 每個訂閱|100|100<sup>2</sup>
 [資源群組](resource-group-overview.md) 每個訂閱|800|800
@@ -13,7 +13,8 @@
 
 <sup>1</sup>預設限制會因優惠類別類型，例如免費試用、 隨收隨付等。
 
-<sup>2</sup>可以透過聯絡支援人員來提高限制。
+<sup>2</sup>您可以連絡支援人員來提高限制。
 
-<sup>3</sup>這些功能不再需要使用 Azure 資源群組和 Azure 資源管理員。 
+<sup>3</sup>Azure 資源群組和 Azure 資源管理員已不再需要這些功能。 
+
 

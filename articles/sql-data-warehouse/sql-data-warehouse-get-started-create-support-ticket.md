@@ -37,7 +37,7 @@
 
 5. 選取 **訂閱** 裝載的資料庫，您所回報的問題。 
 
-    ![訂用帳戶](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
+    ![訂閱](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
 
 6. 選取 **SQL 資料倉儲** 做為資源。
 
@@ -83,6 +83,7 @@
 [Microsoft Premier online portal]:https://premier.microsoft.com/
 [Stack Overflow]:http://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN forum]:https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
+
 
 
 

@@ -20,10 +20,10 @@
 
 ##概觀
 
-在 Azure Media Services **通道** 代表處理即時串流內容的管線。 A **通道** 接收即時輸入的串流中有兩種:
+在 Azure Media Services **通道** 代表處理即時串流內容的管線。 A **通道** 接收即時輸入的串流中有兩種 ︰
 
 - 內部部署即時編碼器會傳送多位元速率 **RTMP** 或 **Smooth Streaming** (分散的 MP4) 到通道。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：Elemental、Envivio、Cisco。  下列即時編碼器會輸出 RTMP：Adobe Flash Live、Telestream Wirecast 和 Tricaster 轉錄器。 內嵌的串流會通過 **通道**而不需任何進一步處理。 接到要求時，媒體服務會傳遞串流給客戶。
-- 單一位元速率串流 (下列格式之一: **RTP** (MPEG-TS))， **RTMP**, ，或 **Smooth Streaming** (分散的 MP4)) 會傳送至 **通道** 啟用來執行即時編碼的媒體服務。  **通道** 接著會執行內送的即時編碼成多位元速率 (自動調整) 視訊串流的單一位元速率資料流。 接到要求時，媒體服務會傳遞串流給客戶。
+- 單一位元速率串流 (下列格式之一 ︰ **RTP** (MPEG-TS))， **RTMP**, ，或 **Smooth Streaming** (分散的 MP4)) 會傳送至 **通道** 啟用來執行即時編碼的媒體服務。  **通道** 接著會執行內送的即時編碼成多位元速率 （自動調整） 視訊串流的單一位元速率資料流。 接到要求時，媒體服務會傳遞串流給客戶。
 
 自媒體服務 2.10 版起，當您建立通道時，您可以指定您希望通道接收輸入串流的方式，以及您是否想要通道執行串流的即時編碼。 您有兩個選擇：
 
@@ -42,7 +42,7 @@
 若要停止通道進一步向您計費，您必須停止透過 API 或在 Azure 傳統入口網站中的通道。
 您必須負責在完成即時編碼通道時停止您的通道。  無法停止編碼通道將會導致持續計費。
 
-###<a id="states"></a>通道狀態，以及它們如何對應至計費模式 
+###<a id="states"></a>通道狀態和狀態如何對應至計費模式 
 
 通道的目前狀態。 可能的值包括：
 
@@ -71,7 +71,7 @@
 
 - 概觀 [常見即時串流案例](media-services-manage-live-encoder-enabled-channels.md#scenario)
 - [通道和其相關元件的說明](media-services-manage-live-encoder-enabled-channels.md#channel)
-- [注意事項](media-services-manage-live-encoder-enabled-channels.md#Considerations)
+- [考量](media-services-manage-live-encoder-enabled-channels.md#Considerations)
 
 
 ##<a id="scenario"></a>常見即時串流案例
@@ -80,7 +80,7 @@
 
 >[AZURE.NOTE] 目前，即時事件的最大建議執行時間是 8 小時。 如果您需要執行通道更久的時間，請連絡 amslived@Microsoft.com。請注意即時編碼有計費影響，而且您應該記住將即時編碼通道保持在「執行中」狀態會產生每小時的計費。  建議您在即時串流事件完成之後立即停止執行的通道，以避免額外的每小時費用。 
 
-1. 將攝影機連接到電腦。 啟動和設定的內部部署即時編碼器可以輸出 **單一** 中下列通訊協定的其中一個位元速率串流: RTMP、 Smooth Streaming 或 RTP (MPEG-TS)。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](http://go.microsoft.com/fwlink/?LinkId=532824)。
+1. 將攝影機連接到電腦。 啟動和設定的內部部署即時編碼器可以輸出 **單一** 中下列通訊協定的其中一個位元速率串流 ︰ RTMP、 Smooth Streaming 或 RTP (MPEG-TS)。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](http://go.microsoft.com/fwlink/?LinkId=532824)。
     
     此步驟也可以在您建立通道之後執行。
 
@@ -114,9 +114,9 @@
 
 ##<a id="channel"></a>通道的輸入 (嵌入) 組態
 
-###<a id="Ingest_Protocols"></a>內嵌資料流通訊協定
+###<a id="Ingest_Protocols"></a>嵌入串流通訊協定
 
-如果 **編碼器類型** 設為 **標準**, ，有效的選項如下:
+如果 **編碼器類型** 設為 **標準**, ，有效的選項如下 ︰
 
 - **RTP** (MPEG-TS): 透過 RTP 的 mpeg-2 傳輸串流。  
 - 單一位元速率 **RTMP**
@@ -260,7 +260,7 @@
 
 您可以指定 ad 標記信號的來源。 預設值是 **Api**, ，表示通道內的即時編碼器應該接聽非同步 **Ad 標記 API**。 
 
-有效的選項是 **Scte35** (允許只有內嵌串流通訊協定如果設為 RTP (MPEG-TS)。 指定 Scte35 時，即時編碼器將會剖析來自輸入 RTP (MPEG-TS) 串流的 SCTE 35 信號。 
+有效的選項是 **Scte35** （允許只有內嵌串流通訊協定如果設為 RTP (MPEG-TS)。 指定 Scte35 時，即時編碼器將會剖析來自輸入 RTP (MPEG-TS) 串流的 SCTE 35 信號。 
 
 ###CEA 708 隱藏式輔助字幕
 
@@ -290,9 +290,9 @@
 
 如果通道的輸入是透過 RTP 的 MPEG-2，則可指定高達 8 個音訊串流集。 不過，不會有具備相同索引值的兩個項目。
 
-###<a id="preset"></a>系統預設值
+###<a id="preset"></a>系統預設
 
-指定由此通道內之即時編碼器所使用的預設內容。 目前，唯一允許的值是 **Default720p** (預設值)。
+指定由此通道內之即時編碼器所使用的預設內容。 目前，唯一允許的值是 **Default720p** （預設值）。
 
 請注意如果您需要自訂的預設設定，您應該在 Microsoft.com 上連絡 amslived。
 
@@ -357,11 +357,11 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 
 設為 true 時，此設定會將即時編碼器設為在廣告插播期間插入 slate 映像。 預設值為 true。 
 
-###<a id="default_slate"></a>預設 slate 資產識別碼
+###<a id="default_slate"></a>預設靜態圖像資產識別碼
 
 選用。 指定包含 slate 映像之媒體服務資產的資產識別碼。 預設值為 null。 
 
-**請注意**: 建立通道之前, 具有下列限制的 slate 映像應上傳做為專用的資產 (此資產應該沒有其他檔案)。 
+**請注意**︰ 建立通道之前, 具有下列限制的 slate 映像應上傳做為專用的資產 （此資產應該沒有其他檔案）。 
 
 - 最多 1920 x 1080 的解析度。
 - 最多 3 Mb 的大小。
@@ -419,7 +419,7 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 >[AZURE.NOTE] 目前的通道開始平均大約 2 分鐘，但有時候可能需要多達 20 分鐘以上。 重設通道可能需要最多 5 分鐘。
 
 
-##<a id="Considerations"></a>注意事項
+##<a id="Considerations"></a>考量
 
 - 當通道 **標準** 編碼類型發生的輸入的來源/投稿文章摘要中斷，它會補償取代來源視訊/音訊錯誤著手，無回應。 通道將會繼續發出靜態圖像，直到輸入/發佈補償恢復為止。 我們建議不要讓即時通道停留在此狀態超過 2 個小時。 超過該時間點，就無法保證通道在輸入重新連線時的行為，也無法保證其回應重設命令的行為。 您將必須停止通道、將它刪除，以及建立新的通道。
 - 通道或其相關聯程式正在執行時，您無法變更輸入通訊協定。 如果您需要不同的通訊協定，則應該為每個輸入通訊協定建立個別的通道。 
@@ -468,4 +468,5 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
  
+
 

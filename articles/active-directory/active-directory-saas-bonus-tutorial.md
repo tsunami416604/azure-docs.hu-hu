@@ -92,7 +92,7 @@
 
 7.  在 **單一登入**, ，請選取 **SAML**。
 
-8.  在 **SAML** 對話方塊頁面上，執行下列步驟:
+8.  在 **SAML** 對話方塊頁面上，執行下列步驟 ︰
 
     ![Bonusly](./media/active-directory-saas-bonus-tutorial/IC773687.png "Bonusly")
 
@@ -133,7 +133,7 @@ Bonus.ly 需以手動方式佈建。
 
     ![新增使用者](./media/active-directory-saas-bonus-tutorial/IC781044.png "Add User")
 
-6.  在 **新增使用者** ] 對話方塊中，執行下列步驟:
+6.  在 **新增使用者** ] 對話方塊中，執行下列步驟 ︰
 
     ![新增使用者](./media/active-directory-saas-bonus-tutorial/IC781045.png "Add User")
 
@@ -161,4 +161,5 @@ Bonus.ly 需以手動方式佈建。
     ![是](./media/active-directory-saas-bonus-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

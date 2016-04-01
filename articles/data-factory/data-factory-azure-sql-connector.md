@@ -202,7 +202,7 @@
 
 > [AZURE.NOTE] 在上述範例中， **sqlReaderQuery** SqlSource 指定。 複製活動會針對 Azure SQL Database 來源執行這項查詢以取得資料。
 >  
-> 或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** (如果預存程序不接受參數)。
+> 或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** （如果預存程序不接受參數）。
 >  
 > 如果您未指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，就會使用資料集 JSON 的結構區段中定義的資料行來建立一個查詢，以對 Azure SQL Database 執行 (從 mytable 選取 column1、column2)。 如果資料集定義沒有結構，則會從資料表中選取所有資料行。 
 
@@ -402,7 +402,7 @@
 | 類型 | type 屬性必須設為：AzureSqlDatabase | 是 |
 | connectionString | 針對 connectionString 屬性指定連接到 Azure SQL Database 執行個體所需的資訊。 | 是 |
 
-**注意:** 您需要設定 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 您需要將資料庫伺服器設定成 [允許 Azure 服務存取伺服器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果您要從 Azure 外部 (包括從具有 Fata Factory 閘道器的內部部署資料來源) 將資料複製到 Azure SQL，則必須為傳送資料到 Azure SQL 的機器設定適當的 IP 位址範圍。 
+**注意 ︰** 您需要設定 [Azure SQL Database 防火牆](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 您需要將資料庫伺服器設定成 [允許 Azure 服務存取伺服器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果您要從 Azure 外部 (包括從具有 Fata Factory 閘道器的內部部署資料來源) 將資料複製到 Azure SQL，則必須為傳送資料到 Azure SQL 的機器設定適當的 IP 位址範圍。 
 
 ## Azure SQL 資料集類型屬性
 
@@ -424,7 +424,7 @@
 
 ### SqlSource
 
-在複製活動類型的來源時 **SqlSource** 下列屬性可用於 **typeProperties** 區段:
+在複製活動類型的來源時 **SqlSource** 下列屬性可用於 **typeProperties** 區段 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
@@ -434,7 +434,7 @@
 
 如果 **sqlReaderQuery** 指定 SqlSource，複製活動會針對 Azure SQL 資料庫的來源取得的資料來執行此查詢。 
 
-或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** (如果預存程序不接受參數)。 
+或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** （如果預存程序不接受參數）。 
 
 如果您未指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，就會使用資料集 JSON 的結構區段中定義的資料行來建立一個查詢，以對 Azure SQL Database 執行 (從 mytable 選取 column1、column2)。 如果資料集定義沒有結構，則會從資料表中選取所有資料行。 
 
@@ -469,7 +469,7 @@
 
 ### SqlSink 
 
-**SqlSink** 支援下列屬性:
+**SqlSink** 支援下列屬性 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
@@ -506,7 +506,7 @@
 
 ### SQL Server 和 Azure SQL 的類型對應
 
-中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章複製活動會執行轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換的自動類型轉換:
+中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章複製活動會執行轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換的自動類型轉換 ︰
 
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
@@ -541,7 +541,7 @@
 | smallint | Int16 |
 | smallmoney | 十進位 | 
 | sql_variant | 物件 * |
-| text | 字串，Char] |
+| 文字 | 字串，Char] |
 | 分析 | TimeSpan |
 | timestamp | Byte] |
 | tinyint | 位元組 |
@@ -559,6 +559,7 @@
 
 
      
+
 
 
 

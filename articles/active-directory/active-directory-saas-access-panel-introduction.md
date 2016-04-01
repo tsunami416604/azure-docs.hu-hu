@@ -24,7 +24,7 @@
 存取面板獨立於 Azure 管理入口網站，並不需要有 Azure 訂用帳戶的使用者。 
 
 
-![存取面板][] 1 
+![存取面板][1] 
 
 
 存取面板可讓使用者編輯某些設定檔設定，包括以下功能：
@@ -47,16 +47,16 @@
 ## 存取存取面板
 
 
-使用者瀏覽以下 URL 以網頁瀏覽器存取存取面板: <br> 
+使用者瀏覽以下 URL 以網頁瀏覽器存取存取面板 ︰ <br> 
 **http://myapps.microsoft.com**
 
-如果您有為您的登入頁面設定自訂商標，您可以載入此商標依預設將組織的網域附加到 URL 結尾: <br> 
+如果您有為您的登入頁面設定自訂商標，您可以載入此商標依預設將組織的網域附加到 URL 結尾 ︰ <br> 
 **http://myapps.microsoft.com/contosobuild.com**
 
 在此情況下，可能會使用已經在 Azure 管理入口網站中您目錄的 [網域] 索引標籤底下設定的任何作用中網域名稱或已驗證的網域名稱，如以下螢幕擷取畫面所示。
 
 
-![Wingtip] toys[] 2  
+![Wingtip Toys][2]  
 
 
 此 URL 必須散佈給要登入與 Azure AD 整合的應用程式的所有使用者。
@@ -75,7 +75,7 @@
 如果組織已設定同盟，則輸入使用者名稱已經足夠。
 
 驗證之後，使用者將能夠與系統管理員已經整合到目錄中的應用程式互動。 
- 若要了解如何使用 Azure AD 整合的應用程式，請參閱 [應用程式存取和單一登入與 Azure Active Directory 是什麼?](active-directory-appssoaccess-whatis.md)。
+ 若要了解如何使用 Azure AD 整合的應用程式，請參閱 [應用程式存取和單一登入與 Azure Active Directory 是什麼？](active-directory-appssoaccess-whatis.md)。
  
 
 
@@ -105,7 +105,7 @@
 My Apps for Android 的任何 Android 裝置執行 Android 4.1 版和更新，都支援，而且是可供使用 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.myapps)。
 
 
-![我的應用程式][] 3   
+![My Apps][3]   
 
 
 
@@ -118,12 +118,12 @@ My Apps for Android 的任何 Android 裝置執行 Android 4.1 版和更新，�
 執行 iOS 7 版和更新版本的任何 iPhone 或 iPad 都支援 My Apps for iOS，而且現在在 Apple App Store 中有提供。
 
 
-![應用程式設定檔][] 4    
+![應用程式設定檔][4]    
 
 
 
 
-> [AZURE.NOTE] 支援同盟與 Azure AD (包括 Salesforce、 Google Apps、 Dropbox、 Box、 Concur、 Workday、 Office 365 及其他 70) 的應用程式可以登入，在任何裝置上的任何 web 瀏覽器而不需要外掛程式或行動裝置應用程式。 其餘的存取面板經驗 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 也不需要 My Apps 行動應用程式在行動裝置上使用。
+> [AZURE.NOTE] 支援同盟與 Azure AD （包括 Salesforce、 Google Apps、 Dropbox、 Box、 Concur、 Workday、 Office 365 及其他 70） 的應用程式可以登入，在任何裝置上的任何 web 瀏覽器而不需要外掛程式或行動裝置應用程式。 其餘的存取面板經驗 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 也不需要 My Apps 行動應用程式在行動裝置上使用。
  
 
 
@@ -189,4 +189,5 @@ My Apps for Android 的任何 Android 裝置執行 Android 4.1 版和更新，�
 [2]: ./media/active-directory-saas-access-panel-introduction/ic767167.png
 [3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
 [4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
+
 

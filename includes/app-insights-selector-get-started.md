@@ -5,3 +5,4 @@
 - [Windows](../article/application-insights/app-insights-windows-desktop.md)
 - [其他](../article/application-insights/app-insights-platforms.md)
 
+

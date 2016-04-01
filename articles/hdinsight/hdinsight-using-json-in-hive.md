@@ -97,7 +97,7 @@ SELECT 陳述式應該只會傳回 1 個資料列。
 
 Hive 提供三種不同的機制，可在 JSON 文件上執行查詢：
 
-- 使用 GET\_JSON\_OBJECT UDF (使用者定義函式)
+- 使用 GET\_JSON\_OBJECT UDF （使用者定義函式）
 - 使用 JSON_TUPLE UDF
 - 使用自訂 SerDe
 - 使用 Python 或其他語言撰寫您自己的 UDF。 請參閱 [這篇文章][hdinsight-python] 使用 Hive 執行您自己的 Python 程式碼。 
@@ -168,7 +168,7 @@ SerDe 是用來剖析巢狀 JSON 文件的最佳選擇，它可讓您定義 JSON
 
     ![複製專案][image-hdi-hivejson-serde]
 
-4: 移至您已下載此套件及類型 「 mvn 封裝 」 的資料夾。 這樣應該會建立您稍後會複製到叢集的必要 jar 檔案。 
+4 ︰ 移至您已下載此套件及類型 「 mvn 封裝 」 的資料夾。 這樣應該會建立您稍後會複製到叢集的必要 jar 檔案。 
 
 5：移至根資料夾 (您已將封裝下載至其中) 下的目標資料夾。 上傳 json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar 檔案到叢集的前端節點。 我通常會將它放在 hive 二進位資料夾底下：C:\apps\dist\hive-0.13.0.2.1.11.0-2316\bin 或類似位置。
  
@@ -233,7 +233,7 @@ SerDe 是用來剖析巢狀 JSON 文件的最佳選擇，它可讓您定義 JSON
 
 ![SerDe 查詢 3][image-hdi-hivejson-serde_query3]
 
-如果您想要刪除格式不正確的 JSON，然後依照 [wiki 頁面](https://github.com/sheetaldolas/Hive-JSON-Serde/tree/master) 此 SerDe 的一種，輸入下列程式碼:  
+如果您想要刪除格式不正確的 JSON，然後依照 [wiki 頁面](https://github.com/sheetaldolas/Hive-JSON-Serde/tree/master) 此 SerDe 的一種，輸入下列程式碼 ︰  
 
     ALTER TABLE json_table SET SERDEPROPERTIES ( "ignore.malformed.json" = "true");
 
@@ -264,3 +264,4 @@ SerDe 是用來剖析巢狀 JSON 文件的最佳選擇，它可讓您定義 JSON
 [image-hdi-hivejson-serde_query3]: ./media/hdinsight-using-json-in-hive/serde_query3.png
 [image-hdi-hivejson-serde_result]: ./media/hdinsight-using-json-in-hive/serde_result.png
  
+

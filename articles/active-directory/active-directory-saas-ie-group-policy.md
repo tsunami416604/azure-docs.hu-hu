@@ -19,11 +19,11 @@
 
 本教學課程示範如何使用群組原則，在您的使用者電腦上遠端安裝 Internet Explorer 的存取面板延伸模組。 此延伸模組都需要 Internet Explorer 使用者登入已設定使用的應用程式需要 [密碼型單一登入](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)。
 
-我們建議系統管理員自動化部署這個延伸模組。 否則，使用者必須自行下載並安裝延伸模組，這樣很容易發生使用者錯誤，而且需要系統管理員權限。 本教學課程涵蓋使用群組原則自動化軟體部署的一種方法。 [進一步了解群組原則。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
+我們建議系統管理員自動化部署這個延伸模組。 否則，使用者必須自行下載並安裝延伸模組，這樣很容易發生使用者錯誤，而且需要系統管理員權限。 本教學課程涵蓋使用群組原則自動化軟體部署的一種方法。 [深入了解群組原則。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
 存取面板延伸模組也會提供如 [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) 和 [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), ，這兩者需要系統管理員權限，才能安裝。
 
-##先決條件
+##必要條件
 
 - 您已設定 [Active Directory 網域服務](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), ，和使用者的電腦加入網域。
 - 您必須擁有 [編輯設定] 權限，才能編輯群組原則物件 (GPO)。 根據預設，下列安全性群組的成員擁有此權限：網域系統管理員、企業系統管理員及群組原則建立者擁有者。 [深入了解。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
@@ -42,9 +42,9 @@
 
     ![開啟檔案和存放服務](./media/active-directory-saas-ie-group-policy/shares.png)
 
-4. 完成 **新增共用精靈** 及設定權限，以確保它可以在從使用者的機器進行存取。 [進一步了解共用。](https://technet.microsoft.com/library/cc753175.aspx)
+4. 完成 **新增共用精靈** 及設定權限，以確保它可以在從使用者的機器進行存取。 [深入了解共用。](https://technet.microsoft.com/library/cc753175.aspx)
 
-5. 下載下列 Microsoft Windows Installer 套件 (.msi 檔案): [存取面板 Extension.msi] (https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access 面板 Extension.msi)
+5. 下載下列 Microsoft Windows Installer 套件 （.msi 檔案）: [存取面板 Extension.msi] (https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access 面板 Extension.msi)
 
 6. 將安裝程式套件複製到共用上想要的位置。
 
@@ -80,7 +80,7 @@
 
 1. 決定您想要部署為基礎的延伸 **電腦設定** 或 **使用者設定**。 當使用 [電腦設定](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), ，不論哪一個使用者登入電腦上，將會安裝延伸模組。 相反地，與 [使用者設定](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), ，使用者必須安裝，無論哪一台電腦在其登入的延伸模組。
 
-2. 在左窗格中 **群組原則管理編輯器** ] 視窗中，移至下列資料夾路徑，視哪種類型的組態選擇其中一項:
+2. 在左窗格中 **群組原則管理編輯器** ] 視窗中，移至下列資料夾路徑，視哪種類型的組態選擇其中一項 ︰
     - `Computer Configuration/Policies/Software Settings/`
     - `User Configuration/Policies/Software Settings/`
 
@@ -88,7 +88,7 @@
 
     ![建立新的軟體安裝套件](./media/active-directory-saas-ie-group-policy/new-package.png)
 
-4. 移至共用資料夾，其中包含從安裝程式套件 [步驟 1: 建立發佈點](#step-1-create-the-distribution-point), ，選取.msi 檔案，然後按一下 **開啟**。
+4. 移至共用資料夾，其中包含從安裝程式套件 [步驟 1 ︰ 建立發佈點](#step-1-create-the-distribution-point), ，選取.msi 檔案，然後按一下 **開啟**。
 
     > [AZURE.IMPORTANT] 如果共用位於相同的伺服器上，確認您要透過網路檔案路徑，而不是本機檔案路徑存取此.msi。
 
@@ -98,13 +98,13 @@
 
     ![選取 [已指派]，然後按一下 [確定]。](./media/active-directory-saas-ie-group-policy/deployment-method.png)
 
-延伸模組現在已部署至您所選取的 OU。 [進一步了解群組原則軟體安裝。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
+延伸模組現在已部署至您所選取的 OU。 [深入了解群組原則軟體安裝。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
 ##步驟 4：自動啟用 Internet Explorer 的延伸模組 
 
 除了執行安裝程式之外，Internet Explorer 的每個延伸模組必須明確啟用才能使用。 遵循下列步驟以使用群組原則啟用存取面板延伸模組：
 
-1. 在 **群組原則管理編輯器** ] 視窗中，移至下列路徑，視哪種類型的組態中選擇其中一項 [步驟 3: 指定安裝套件](#step-3-assign-the-installation-package):
+1. 在 **群組原則管理編輯器** ] 視窗中，移至下列路徑，視哪種類型的組態中選擇其中一項 [步驟 3 ︰ 指定安裝套件](#step-3-assign-the-installation-package):
     - `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
     - `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
 
@@ -115,11 +115,11 @@
 
     ![按一下 [啟用]，然後按一下 [顯示...]](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
 
-4. 在 **顯示內容** ] 視窗中，執行下列步驟:
+4. 在 **顯示內容** ] 視窗中，執行下列步驟 ︰
 
-    1. 第一個資料行 ( **值名稱** 欄位)、 複製及貼上下列類別識別碼: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+    1. 第一個資料行 ( **值名稱** 欄位)、 複製及貼上下列類別識別碼 ︰ `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
 
-    2. 第二個資料行 ( **值** 欄位)，輸入下列值: `1`
+    2. 第二個資料行 ( **值** 欄位)，輸入下列值 ︰ `1`
 
     3. 按一下 [ **確定** 關閉 **顯示內容** 視窗。
 
@@ -127,7 +127,7 @@
 
 5. 按一下 [ **確定** 以套用變更並關閉 **附加元件清單** 視窗。
 
-延伸模組現在應該已在所選 OU 中的機器啟用。 [進一步瞭解使用群組原則來啟用或停用 Internet Explorer 附加元件。](https://technet.microsoft.com/library/dn454941.aspx)
+延伸模組現在應該已在所選 OU 中的機器啟用。 [深入了解使用群組原則啟用或停用 Internet Explorer 附加元件。](https://technet.microsoft.com/library/dn454941.aspx)
 
 ##步驟 5 (選用)：停用 [記住密碼] 提示
 
@@ -162,13 +162,13 @@
 
 請遵循下列步驟以確認延伸模組是否成功部署：
 
-1. 如果您部署使用 **電腦設定**, ，登入用戶端電腦所屬的組織單位，您在選取登入 [步驟 2: 建立群組原則物件](#step-2-create-the-group-policy-object)。 如果您部署使用 **使用者設定**, ，請確定屬於該 OU 的使用者身分登入。
+1. 如果您部署使用 **電腦設定**, ，登入用戶端電腦所屬的組織單位，您在選取登入 [步驟 2 ︰ 建立群組原則物件](#step-2-create-the-group-policy-object)。 如果您部署使用 **使用者設定**, ，請確定屬於該 OU 的使用者身分登入。
 
-2. 可能要登入好幾次才能讓群組原則變更完全更新至此電腦。 若要強制更新，請開啟 **命令提示字元** 視窗，然後執行下列命令: `gpupdate /force`
+2. 可能要登入好幾次才能讓群組原則變更完全更新至此電腦。 若要強制更新，請開啟 **命令提示字元** 視窗，然後執行下列命令 ︰ `gpupdate /force`
 
 3. 您必須重新啟動電腦才能進行安裝。 安裝延伸模組時，開機可能需要比平常更多的時間。
 
-4. 重新啟動之後，開啟 **Internet Explorer**。 在視窗的右上角，按一下 [ **工具** (齒輪圖示)，然後選取 **管理附加元件**。
+4. 重新啟動之後，開啟 **Internet Explorer**。 在視窗的右上角，按一下 [ **工具** （齒輪圖示），然後選取 **管理附加元件**。
 
     ![移至工具 > 管理附加元件](./media/active-directory-saas-ie-group-policy/manage-add-ons.png)
 
@@ -177,3 +177,4 @@
     ![確認存取面板延伸模組已安裝並啟用。](./media/active-directory-saas-ie-group-policy/verify-install.png)
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+

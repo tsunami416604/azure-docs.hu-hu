@@ -71,7 +71,7 @@
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension –Uninstall | Update-AzureVM
 
-您也可以解除安裝延伸模組使用 **Remove-azurevmsqlserverextension** 命令:
+您也可以解除安裝延伸模組使用 **Remove-azurevmsqlserverextension** 命令 ︰
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Remove-AzureVMSqlServerExtension | Update-AzureVM
 
@@ -92,4 +92,5 @@
 在 Azure 中的 SQL Server Vm 的相關的功能是 [Azure 虛擬機器中 SQL Server 的自動化備份](virtual-machines-sql-server-automated-backup.md)。
 
 檢閱其他 [的 Azure 虛擬機器中執行 SQL Server 資源](virtual-machines-sql-server-infrastructure-services.md)。
+
 

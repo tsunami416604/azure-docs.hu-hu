@@ -25,7 +25,7 @@
 ## 開始使用
 若要傳送 REST 要求，您必須知道您的 web 應用程式 **名稱**, ，**資源群組**, ，和 **訂用帳戶 id**。 按一下 web 應用程式中可以找到這項資訊 **Web 應用程式** 分頁 [Azure 預覽入口網站](https://portal.azure.com)。 在本文的範例中，我們將會設定 `backuprestoreapiexamples.azurewebsites.net` 網站。 它儲存在 Default-Web-WestUS 資源群組中，並在識別碼為 00001111-2222-3333-4444-555566667777 的訂用帳戶上執行。
 
-![範例網站資訊][] SampleWebsiteInformation
+![範例網站資訊][SampleWebsiteInformation]
 
 <a name="backup-restore-rest-api"></a>
 ## 備份和還原 REST API
@@ -229,4 +229,5 @@ Azure Web Apps 會嘗試使用建立備份時所提供的 SAS URL 來刪除 Azur
 
 <!-- IMAGES -->
 [SampleWebsiteInformation]: ./media/websites-csm-backup/01siteconfig.png
+
 

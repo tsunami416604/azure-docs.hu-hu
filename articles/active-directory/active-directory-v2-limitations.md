@@ -35,7 +35,7 @@ v2.0 應用程式模型公開預覽目前不支援下列類型的應用程式。
 如果您想要取得 SPA 使用 2.0 版應用程式模型，您可以實作驗證使用 [web 應用程式流程](active-directory-v2-flows.md#web-apps)。  但這不是建議的方法，而這個案例的相關文件也有所限制。  如果您想要的感覺 SPA 案例，您可以簽出 [正式推出的 Azure AD SPA 程式碼範例](active-directory-devquickstarts-angular.md)。
 
 ##### 精靈/伺服器端應用程式
-包含長時執行處理序或不需要使用者操作的應用程式，也需他法存取受保護的資源，例如 Web API。  這些應用程式可以驗證並取得使用應用程式的身分識別 (而非使用者的委派的識別) 使用的權杖 [OAuth 2.0 用戶端認證流程](active-directory-v2-protocols.md#oauth2-client-credentials-grant-flow)。  
+包含長時執行處理序或不需要使用者操作的應用程式，也需他法存取受保護的資源，例如 Web API。  這些應用程式可以驗證並取得使用應用程式的身分識別 （而非使用者的委派的識別） 使用的權杖 [OAuth 2.0 用戶端認證流程](active-directory-v2-protocols.md#oauth2-client-credentials-grant-flow)。  
 
 v2.0 應用程式模型目前不支援此流程，也就是說應用程式只能在互動式使用者登入流程之後取得權杖。  近期內即會加入用戶端認證流程。  如果您想要查看用戶端認證流程中正式推出 Azure AD 應用程式模型，看看 [GitHub 上的服務精靈範例](https://github.com/AzureADSamples/Daemon-DotNet)。
 
@@ -85,4 +85,5 @@ v2.0 應用程式模型支援 Open ID Connect 和 OAuth 2.0。  不過，並非�
 - OpenID Connect `end_sesssion_endpoint`
 
 若要進一步了解 v2.0 應用程式模型中支援的通訊協定功能的範圍，閱讀我們 [OpenID Connect 和 OAuth 2.0 通訊協定參照](active-directory-v2-protocols.md)。
+
 

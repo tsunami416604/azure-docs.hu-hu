@@ -46,10 +46,10 @@
 - 加入應用程式之後，尋找 **用戶端識別碼**  上 **設定** ] 索引標籤。 
     ![Azure Active Directory 用戶端識別碼](./media/virtual-machines-sql-server-azure-key-vault-integration/aad-client-id.png)
     
-    稍後可指派給用戶端識別碼 **$spName** (服務主體名稱) 若要啟用 Azure 金鑰保存庫整合的 PowerShell 指令碼中的參數。 
-- 另外，當您建立您的金鑰時在這些步驟中，複製您的金鑰的密碼，如下列螢幕擷取畫面所示。 此金鑰的密碼會指派至稍後 **$spSecret** PowerShell 指令碼 (服務主體密碼) 參數。  
+    稍後可指派給用戶端識別碼 **$spName** （服務主體名稱） 若要啟用 Azure 金鑰保存庫整合的 PowerShell 指令碼中的參數。 
+- 另外，當您建立您的金鑰時在這些步驟中，複製您的金鑰的密碼，如下列螢幕擷取畫面所示。 此金鑰的密碼會指派至稍後 **$spSecret** PowerShell 指令碼 （服務主體密碼） 參數。  
     ![Azure Active Directory 密碼](./media/virtual-machines-sql-server-azure-key-vault-integration/aad-sp-secret.png)
-- 您必須授權這個新的用戶端識別碼，以具有下列存取權限: **加密**, ，**解密**, ，**wrapKey**, ，**unwrapKey**, ，**登**, ，和 **確認**。 做法是使用 [Set-azurekeyvaultaccesspolicy](https://msdn.microsoft.com/library/azure/dn903607%28v=azure.98%29.aspx) 指令程式。 如需詳細資訊，請參閱 [授權應用程式使用金鑰或密碼](../key-vault/key-vault-get-started.md#authorize)。
+- 您必須授權這個新的用戶端識別碼，以具有下列存取權限 ︰ **加密**, ，**解密**, ，**wrapKey**, ，**unwrapKey**, ，**登**, ，和 **確認**。 做法是使用 [Set-azurekeyvaultaccesspolicy](https://msdn.microsoft.com/library/azure/dn903607%28v=azure.98%29.aspx) 指令程式。 如需詳細資訊，請參閱 [授權應用程式使用金鑰或密碼](../key-vault/key-vault-get-started.md#authorize)。
 
 ### 建立金鑰保存庫
 若要使用 Azure 金鑰保存庫來儲存您在 VM 中用於加密的金鑰，您需要金鑰保存庫的存取權。 如果已設定金鑰保存庫，建立一個執行中的步驟 [開始使用 Azure 金鑰保存庫](../key-vault/key-vault-get-started.md) 主題。 在完成這些步驟之前，請注意有一些資訊您需要在此安裝期間收集，稍後當您在 SQL VM 上啟用 Azure 金鑰保存庫整合時需要該資訊。
@@ -72,7 +72,7 @@
 |**$spName**|**服務主體名稱**|"fde2b411-33d5-4e11-af04eb07b669ccf2"|
 |**$spSecret**|**服務主體密碼**|"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="|
 |**$credName**|**認證名稱**: AKV 整合建立 SQL Server，允許存取金鑰保存庫 VM 內的認證。 選擇此認證的名稱。|"mycred1"|
-|**$vmName**|**虛擬機器名稱**: 先前建立的 SQL VM 的名稱。|"myvmname"|
+|**$vmName**|**虛擬機器名稱**︰ 先前建立的 SQL VM 的名稱。|"myvmname"|
 |**$serviceName**|**服務名稱**: SQL VM 相關聯的雲端服務名稱。|"mycloudservicename"|
 
 ### 使用 PowerShell 啟用 AKV 整合
@@ -105,7 +105,7 @@ SQL IaaS 代理程式延伸會使用這個新的組態更新 SQL VM。
 
 下列 Transact-SQL 指令碼為每個區域提供範例。
 
->[AZURE.NOTE] 每個範例根據兩個先決條件: 從金鑰保存庫的非對稱金鑰稱為 **CONTOSO_KEY** AKV 整合功能所建立的認證呼叫 **Azure_EKM_TDE_cred**。
+>[AZURE.NOTE] 每個範例根據兩個先決條件 ︰ 從金鑰保存庫的非對稱金鑰稱為 **CONTOSO_KEY** AKV 整合功能所建立的認證呼叫 **Azure_EKM_TDE_cred**。
 
 ### 透明資料加密 (TDE)
 1. 建立 SQL Server 登入，讓資料庫引擎用於 TDE，然後新增認證。
@@ -190,4 +190,5 @@ SQL IaaS 代理程式延伸會使用這個新的組態更新 SQL VM。
 如需有關如何使用這些加密功能的詳細資訊，請參閱 [與 SQL Server 加密功能的使用 EKM](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)。
 
 請注意，本文中的步驟假設您已在 Azure 虛擬機器上執行 SQL Server。 如果沒有，請參閱 [佈建 Azure 中的 SQL Server 虛擬機器](virtual-machines-provision-sql-server.md)。 如需 Azure Vm 上執行 SQL Server 的其他指導，請參閱 [SQL Server 的 Azure 虛擬機器總覽](virtual-machines-sql-server-infrastructure-services.md)。
+
 

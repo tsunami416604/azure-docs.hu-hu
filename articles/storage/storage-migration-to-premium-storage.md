@@ -31,7 +31,7 @@ Azure VM 支援連接數個「進階儲存體」磁碟，讓您應用程式的�
 
 要完整地完成移轉程序，可能需要在本指南中提供的步驟之前和之後執行其他動作。 例如，設定虛擬網路或端點，或是在應用程式本身中進行程式碼，都是如此。 這些動作會隨著每個應用程式而不同，您應完成這些動作以及本指南中所提供的步驟，才能盡可能順暢地完整轉換至進階儲存體。
 
-您可以找到高階儲存體中的功能概觀 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
+您可以找到高階儲存體中的功能概觀 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
 
 本指南分為兩個部分，涵蓋下列兩種移轉案例：
 
@@ -47,7 +47,7 @@ Azure VM 支援連接數個「進階儲存體」磁碟，讓您應用程式的�
 - 若要執行 PowerShell Cmdlet，您將需要 Microsoft Azure PowerShell 模組。 請參閱 [Microsoft Azure 下載](http://azure.microsoft.com/downloads/) 若要下載此模組。
 - 當您計劃使用在進階儲存體上執行的 Azure VM 時，您需要使用 DS 系列或 GS 系列的 VM。 DS 系列的 VM 可同時搭配標準和進階儲存體磁碟使用。 未來進階儲存體磁碟將可搭配更多 VM 類型使用。 如需可用 Azure VM 磁碟類型和大小的詳細資訊，請參閱 [虛擬機器和雲端服務大小](http://msdn.microsoft.com/library/azure/dn197896.aspx)。
 
-### 注意事項
+### 考量
 
 #### VM 大小
 Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtual-machines-size-specs.md)。 請檢閱使用於進階儲存體的虛擬機器效能特性，然後選擇最適合您的工作負載的 VM 大小。 確定 VM 上有足夠的磁碟流量頻寬。
@@ -68,7 +68,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
 |總帳戶容量|本機備援儲存體帳戶總頻寬|
 |:--|:---|
-|磁碟容量: 35 TB<br />快照容量：10 TB|每秒最多 50 Gbps (輸入 + 輸出)|
+|磁碟容量 ︰ 35 TB<br />快照容量：10 TB|每秒最多 50 Gbps (輸入 + 輸出)|
 
 如需進階儲存體規格的詳細資訊，請參閱 [延展性和效能目標時使用高階儲存體](storage-premium-storage-preview-portal.md#scalability-and-performance-targets-when-using-premium-storage)。
 
@@ -182,7 +182,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
 您可以使用 AzCopy，透過網際網路輕易地上傳 VHD。 根據 VHD 的大小，這可能需要一些時間。 使用這個選項時，請記得檢查儲存體帳戶輸入/輸出限制。 請參閱 [Azure 儲存體延展性和效能目標](storage-scalability-targets.md) 如需詳細資訊。
 
-1. 下載並安裝 AzCopy 從這裡: [最新版本的 AzCopy](http://aka.ms/downloadazcopy)
+1. 下載並安裝 AzCopy 從這裡 ︰ [最新版本的 AzCopy](http://aka.ms/downloadazcopy)
 2. 開啟 Azure PowerShell，並移至安裝 AzCopy 所在的資料夾。
 3. 使用下列命令，將 VHD 檔案從「來源」複製到「目的地」。
 
@@ -190,12 +190,12 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
     以下是有關用於 AzCopy 命令中之參數的描述：
 
- - **/ 來源: *& l t; 來源 & gt;:*** 資料夾的位置或包含 VHD 的儲存體容器 URL。
+ - **/ 來源 ︰ *& l t; 來源 & gt;:*** 資料夾的位置或包含 VHD 的儲存體容器 URL。
  - **/Sourcekey: *& l t; 來源帳戶金鑰 & gt;:*** 來源儲存體帳戶的儲存體帳戶金鑰。
- - **/Dest: *(& s) lt; 目的地 & gt;:*** 複製 VHD 的儲存體容器 URL。
+ - **/Dest: *（& s) lt; 目的地 & gt;:*** 複製 VHD 的儲存體容器 URL。
  - **/Destkey: *& l t; 目的地帳戶金鑰 & gt;:*** 的目的地儲存體帳戶的儲存體帳戶金鑰。
- - **/Blobtype: 頁面:** 指定目的地是分頁 blob。
- - **/ 模式: *& l t; 檔案名稱 & gt;:*** 指定要複製的 vhd 檔案名稱。
+ - **/Blobtype ︰ 頁面 ︰** 指定目的地是分頁 blob。
+ - **/ 模式 ︰ *& l t; 檔案名稱 & gt;:*** 指定要複製的 vhd 檔案名稱。
 
 如需有關使用 AzCopy 工具，請參閱 [開始使用 AzCopy 命令列公用程式](storage-use-azcopy.md)。
 
@@ -312,7 +312,7 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 
 ## 將現有的 Azure VM 移轉至 Azure 進階儲存體
 
-如果您目前有使用標準儲存體磁碟的 Azure VM，請依照下列程序將其移轉至進階儲存體。 高層級移轉牽涉到兩個階段:
+如果您目前有使用標準儲存體磁碟的 Azure VM，請依照下列程序將其移轉至進階儲存體。 高層級移轉牽涉到兩個階段 ︰
 -   將磁碟從標準儲存體帳戶移轉到高階儲存體帳戶
 -   DS 或使用高階儲存體磁碟所需的 GS A/D/G 從轉換的 VM 大小。
 
@@ -340,11 +340,11 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 3.  確認複製是否完成。 請等候所有磁碟都完成複製。 所有磁碟都複製完成後，您即可進行後續步驟，以建立新的 VM。
 4.  請使用您在進階儲存體帳戶中複製的 OS 磁碟 VHD Blob，建立新的 OS 磁碟。 您可以使用 “Add-AzureDisk” PowerShell Cmdlet 來執行此作業。
 
-    範例指令碼:
+    範例指令碼 ︰
           Add-azuredisk-DiskName"NewOSDisk1"-MediaLocation"https://newpremiumstorageaccount.blob.core.windows.net/vhds/MyOSDisk.vhd"OS"Windows"
 5. 接下來，請建立使用上述的 OS 磁碟和資料磁碟建立您的 DS 系列 VM (或 GS 系列)
 
-    若要建立新的雲端服務和新的 VM，該服務中的範例指令碼:
+    若要建立新的雲端服務和新的 VM，該服務中的範例指令碼 ︰
         New-azureservice-ServiceName"NewServiceName"-位置 「 美國東部 2"
 
         New-AzureVMConfig -Name "NewDSVMName" -InstanceSize "Standard_DS2" -DiskName "NewOSDisk1" | Add-AzureProvisioningConfig -Windows | Add-AzureDataDisk -LUN 0 -DiskLabel "DataDisk1" -ImportFrom -MediaLocation "https://newpremiumstorageaccount.blob.core.windows.net/vhds/Disk1.vhd" | Add-AzureDataDisk -LUN 1 -DiskLabel "DataDisk2" -ImportFrom -MediaLocation https://newpremiumstorageaccount.blob.core.windows.net/vhds/Disk2.vhd | New-AzureVM -ServiceName "NewServiceName" –Location “East US 2”
@@ -682,4 +682,5 @@ Azure VM 大小規格中所列 [虛擬機器的大小](../virtual-machines/virtu
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
+
 

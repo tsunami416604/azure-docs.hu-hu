@@ -107,11 +107,11 @@ Azure WebJobs 在網站沙箱中執行，這表示它們可以存取環境變數
 Azure WebJobs 具有下列特性：
 
 - **安全性**: WebJobs 受網站的部署認證保護。
-- **支援的檔案類型**: WebJobs 可以使用指令檔 (.cmd)、 批次檔 (.bat)、 PowerShell 指令碼 (.ps1) 來定義、 bash 殼層指令碼 (.sh)、 PHP 指令碼 (.php)、 Python 指令碼 (.py)、 JavaScript 程式碼 (.js) 和可執行程式 (.exe、.jar 等等)。
-- **部署**: 指令碼和可執行檔可能會使用 Azure 入口網站，建立和部署使用 [WebJobsVs](https://visualstudiogallery.msdn.microsoft.com/f4824551-2660-4afa-aba1-1fcc1673c3d0) 適用於 Visual Studio 增益集或 [Visual Studio 2013 Update 4](http://www.visualstudio.com/news/vs2013-update4-rc-vs), ，使用 [Azure WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md), ，或將它們複製至下列位置直接:
+- **支援的檔案類型**: WebJobs 可以使用指令檔 (.cmd)、 批次檔 (.bat)、 PowerShell 指令碼 (.ps1) 來定義、 bash 殼層指令碼 (.sh)、 PHP 指令碼 (.php)、 Python 指令碼 (.py)、 JavaScript 程式碼 (.js) 和可執行程式 （.exe、.jar 等等）。
+- **部署**︰ 指令碼和可執行檔可能會使用 Azure 入口網站，建立和部署使用 [WebJobsVs](https://visualstudiogallery.msdn.microsoft.com/f4824551-2660-4afa-aba1-1fcc1673c3d0) 適用於 Visual Studio 增益集或 [Visual Studio 2013 Update 4](http://www.visualstudio.com/news/vs2013-update4-rc-vs), ，使用 [Azure WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md), ，或將它們複製至下列位置直接 ︰
   - 針對觸發執行：site/wwwroot/app_data/jobs/triggered/{job name}
   - 針對連續執行：site/wwwroot/app_data/jobs/continuous/{job name}
-- **記錄**: Console.Out 會被視為 (標示為) INFO，Console.Error 為錯誤。 可使用 Azure 入口網站存取監視和診斷資訊，並可從網站直接下載記錄檔。 這些資訊會儲存在下列位置：
+- **記錄**: Console.Out 會被視為 （標示為） INFO，Console.Error 為錯誤。 可使用 Azure 入口網站存取監視和診斷資訊，並可從網站直接下載記錄檔。 這些資訊會儲存在下列位置：
   - 針對觸發執行：Vfs/data/jobs/continuous/jobName
   - 針對連續執行：Vfs/data/jobs/triggered/jobName
 - **設定**: WebJobs 可以使用入口網站、 REST API 和 PowerShell 進行設定。 與工作指令碼位於相同根目錄的組態檔 (名為 settings.job) 可用來提供工作的組態資訊。 例如：
@@ -133,8 +133,8 @@ Azure WebJobs 具有下列特性：
 
 有數種方式來實作雲端服務角色中的背景工作：
 
-- 建立實作 **RoleEntryPoint** 角色中的類別，並使用其方法來執行背景工作。 工作在 WaIISHost.exe，內容中執行，而且可以使用 **GetSetting** 方法 **CloudConfigurationManager** 類別來載入組態設定。 如需詳細資訊，請參閱 [生命週期 (雲端服務)](#lifecycle-cloud-services-)。
-- 應用程式啟動時，使用啟動工作來執行背景工作。 若要強制工作繼續在背景中執行 **taskType** 屬性 **背景** (如果不這麼做，應用程式啟動程序將會中止並等待工作完成)。 如需詳細資訊，請參閱 [在 Azure 中執行啟動工作](http://msdn.microsoft.com/library/azure/hh180155.aspx)。
+- 建立實作 **RoleEntryPoint** 角色中的類別，並使用其方法來執行背景工作。 工作在 WaIISHost.exe，內容中執行，而且可以使用 **GetSetting** 方法 **CloudConfigurationManager** 類別來載入組態設定。 如需詳細資訊，請參閱 [生命週期 （雲端服務）](#lifecycle-cloud-services-)。
+- 應用程式啟動時，使用啟動工作來執行背景工作。 若要強制工作繼續在背景中執行 **taskType** 屬性 **背景** （如果不這麼做，應用程式啟動程序將會中止並等待工作完成）。 如需詳細資訊，請參閱 [在 Azure 中執行啟動工作](http://msdn.microsoft.com/library/azure/hh180155.aspx)。
 - 您可以使用 WebJobs SDK，將背景工作做為初始為啟動工作的 WebJobs 加以實作。 如需詳細資訊，請參閱 [開始使用 Azure WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)。
 - 您可以使用啟動工作，安裝執行一或多個背景工作的 Windows 服務。 您必須設定 **taskType** 屬性 **背景** 以便在背景中執行的服務。 如需詳細資訊，請參閱 [在 Azure 中執行啟動工作](http://msdn.microsoft.com/library/azure/hh180155.aspx)。
 
@@ -151,7 +151,7 @@ Azure WebJobs 具有下列特性：
 - 它可讓您實作關注的分離動作。 每種角色類型可以實作一組明確定義和相關的特定工作。 這使得設計和維護程式碼更容易，因為每個角色之間的程式碼和功能會有較少的相依關係。
 - 它有助於隔離機密的程序和資料。 比方說，實作 UI 的 Web 角色不需要存取背景工作角色所管理和控制的資料。 這可以用來加強安全性，特別是當您使用下列模式 [閘道管理員模式](http://msdn.microsoft.com/library/dn589793.aspx)。  
 
-### 注意事項
+### 考量
 
 如果使用雲端服務 Web 和背景工作角色，在選擇部署背景工作的方式和位置時，請考量下列重點：
 
@@ -182,7 +182,7 @@ Azure WebJobs 具有下列特性：
 
 請參閱先前的章節 [觸發程序](#triggers) 如需有關如何啟動背景工作。  
 
-### 注意事項
+### 考量
 
 決定是否要在 Azure 虛擬機器中部署背景工作時，請考慮下列幾點：
 
@@ -203,13 +203,13 @@ Azure WebJobs 具有下列特性：
 
 如果您決定在現有的計算執行個體 (例如網站、Web 角色、現有背景工作角色或虛擬機器) 內包含背景工作，您必須考慮這會如何影響計算執行個體和背景工作本身的品質屬性。 這些因素會幫助您決定是否要共置工作與現有的計算執行個體，或將它們分成不同的計算執行個體：
 
-- **可用性**: 背景工作可能不需要特別的是具有相同的應用程式時，其他部分的可用性層級，UI 和其他部分，直接參與使用者互動的。 由於可將作業排入佇列，背景工作可能更容許延遲、重試的連線失敗，及影響可用性的其他因素。 不過，必須有足夠的容量，防止備份可能會封鎖佇列及影響整個應用程式的要求。
-- **延展性**: 背景工作很有可能會有不同的延展性需求，對 UI 和應用程式的互動部分。 調整 UI 可能需要符合要求的尖峰期，而未完成的背景工作可在較空閒的時間，由較少的計算執行個體數目完成。
-- **恢復功能**: 僅裝載背景工作的計算執行個體失敗可能不會嚴重影響整個應用程式如果這些工作的要求可以排入佇列或延遲，直到工作再次可用為止。 如果計算執行個體和 (或) 工作可以在適當的間隔內重新啟動，可能不會影響應用程式的使用者。
-- **安全性**: 背景工作可能有不同的安全性需求或限制於 UI 或應用程式的其他部分。 藉由使用不同的計算執行個體，您可以為工作指定不同的安全性環境。 您也可以使用模式 (例如閘道管理員)，將背景計算執行個體與 UI 隔離，以提供最大的安全性和區隔。
-- **效能**: 您可以選擇工作的效能需求特別相符項目背景工作計算執行個體的類型。 這可能表示當工作不需要與 UI 具有相同的處理能力，可使用較便宜的計算選項；或如果他們需要額外的容量和資源，則需要更大的執行個體。
-- **管理能力**: 背景工作可能會有不同的開發和部署節奏從主應用程式程式碼或 UI。 將它們部署到不同的計算執行個體可簡化更新與版本控制。
-- **成本**: 加入計算執行個體來執行背景工作會增加裝載成本。 您應該仔細考量額外的容量與這些額外的成本之間的取捨。
+- **可用性**︰ 背景工作可能不需要特別的是具有相同的應用程式時，其他部分的可用性層級，UI 和其他部分，直接參與使用者互動的。 由於可將作業排入佇列，背景工作可能更容許延遲、重試的連線失敗，及影響可用性的其他因素。 不過，必須有足夠的容量，防止備份可能會封鎖佇列及影響整個應用程式的要求。
+- **延展性**︰ 背景工作很有可能會有不同的延展性需求，對 UI 和應用程式的互動部分。 調整 UI 可能需要符合要求的尖峰期，而未完成的背景工作可在較空閒的時間，由較少的計算執行個體數目完成。
+- **恢復功能**︰ 僅裝載背景工作的計算執行個體失敗可能不會嚴重影響整個應用程式如果這些工作的要求可以排入佇列或延遲，直到工作再次可用為止。 如果計算執行個體和 (或) 工作可以在適當的間隔內重新啟動，可能不會影響應用程式的使用者。
+- **安全性**︰ 背景工作可能有不同的安全性需求或限制於 UI 或應用程式的其他部分。 藉由使用不同的計算執行個體，您可以為工作指定不同的安全性環境。 您也可以使用模式 (例如閘道管理員)，將背景計算執行個體與 UI 隔離，以提供最大的安全性和區隔。
+- **效能**︰ 您可以選擇工作的效能需求特別相符項目背景工作計算執行個體的類型。 這可能表示當工作不需要與 UI 具有相同的處理能力，可使用較便宜的計算選項；或如果他們需要額外的容量和資源，則需要更大的執行個體。
+- **管理能力**︰ 背景工作可能會有不同的開發和部署節奏從主應用程式程式碼或 UI。 將它們部署到不同的計算執行個體可簡化更新與版本控制。
+- **成本**︰ 加入計算執行個體來執行背景工作會增加裝載成本。 您應該仔細考量額外的容量與這些額外的成本之間的取捨。
 
 如需詳細資訊，請參閱 [前置選擇模式](http://msdn.microsoft.com/library/dn568104.aspx) 和 [競爭取用者模式](http://msdn.microsoft.com/library/dn568101.aspx)。
 
@@ -236,26 +236,26 @@ Azure WebJobs 具有下列特性：
 Web 和背景工作角色在啟動、執行和停止時會經歷一組不同的階段。  **RoleEntryPoint** 類別會公開一系列的事件，以指出發生這些階段時。 您使用這些來初始化、執行並停止您的自訂背景工作。 完整的週期是：
 
 - Azure 會載入角色組件，並搜尋類別衍生自 **RoleEntryPoint**。
-- 如果找到此類別，則會呼叫 **roleentrypoint.onstart ()**。 您覆寫此方法以初始化背景工作。
-- 之後 **OnStart** 方法完成時，Azure 呼叫 **application_start ()** 若存在 (例如，在執行 ASP.NET web 角色中的 Global.asax) 應用程式的通用檔案中。
-- Azure 呼叫 **onstart ()** 與平行執行的新前景執行緒上 **onstart ()**。 您覆寫此方法以啟動背景工作。
-- 執行方法結束時，Azure 會先呼叫 **application_end ()** 應用程式的全域檔案若存在，然後再呼叫 **roleentrypoint.onstop ()**。 您覆寫 **OnStop** 方法停止您的背景工作、 清除資源、 處置物件，並關閉工作可能已經使用的連接。
+- 如果找到此類別，則會呼叫 **roleentrypoint.onstart （)**。 您覆寫此方法以初始化背景工作。
+- 之後 **OnStart** 方法完成時，Azure 呼叫 **application_start （)** 若存在 （例如，在執行 ASP.NET web 角色中的 Global.asax） 應用程式的通用檔案中。
+- Azure 呼叫 **onstart （)** 與平行執行的新前景執行緒上 **onstart （)**。 您覆寫此方法以啟動背景工作。
+- 執行方法結束時，Azure 會先呼叫 **application_end （)** 應用程式的全域檔案若存在，然後再呼叫 **roleentrypoint.onstop （)**。 您覆寫 **OnStop** 方法停止您的背景工作、 清除資源、 處置物件，並關閉工作可能已經使用的連接。
 - Azure 背景工作角色主機程序已停止。 此時，角色會被回收並將重新啟動。
 
 如需詳細資訊和的使用方法的範例 **RoleEntryPoint** 類別，請參閱 [計算資源彙總模式](http://msdn.microsoft.com/library/dn589778.aspx)。
 
-## 注意事項
+## 考量
 
 規劃您將如何在 Web 或背景工作角色中執行背景工作時，請考慮下列幾點：
 
-- 預設 **執行** 中的方法實作 **RoleEntryPoint** 類別包含呼叫 **thread.sleep (timeout.infinite)** ，可保持角色運作無限期。 如果您覆寫 **執行** 方法 (通常需要執行背景工作項目)，則不得允許程式碼從方法結束，除非您想要回收角色執行個體。
+- 預設 **執行** 中的方法實作 **RoleEntryPoint** 類別包含呼叫 **thread.sleep （timeout.infinite)** ，可保持角色運作無限期。 如果您覆寫 **執行** 方法 （通常需要執行背景工作項目），則不得允許程式碼從方法結束，除非您想要回收角色執行個體。
 - 典型實作 **執行** 方法包含程式碼來啟動每一個背景工作和迴圈建構定期檢查所有背景工作的狀態。 它可以重新啟動任何失敗，或監視指出已完成工作的取消語彙基元。
 - 如果背景工作擲回未處理的例外狀況，應該回收該工作，同時允許角色中的任何其他背景工作繼續執行。 不過，如果例外狀況的工作，例如共用的儲存體的外部物件損毀所造成的例外狀況的程式來處理您 **RoleEntryPoint** 類別，應該取消所有工作，而 **執行** 結束允許的方法。 Azure 接著會重新啟動角色。
 - 使用 **OnStop** 方法來暫停或終止背景工作並清除資源。 這可能會停止長時間執行或多步驟的工作，且務必考量如何完成此工作以避免資料不一致。 如果基於任何理由使用者起始關機以外執行的程式碼就會停止角色執行個體 **OnStop** 方法必須強制終止之前的五分鐘內完成。 請確定您的程式碼可以在這段期間內完成，或可容忍不執行到完成。  
 - Azure 負載平衡器會開始將流量導向至角色執行個體時 **RoleEntryPoint.OnStart** 方法會傳回 true。 因此，請考慮將所有初始化程式碼置於 **OnStart** 方法，讓未成功初始化會的角色執行個體不會收到任何流量。
 - 您可以使用啟動工作的方法除了 **RoleEntryPoint** 類別。 您應該使用啟動工作來初始化需要在 Azure 負載平衡器變更的任何設定，因為在角色接收任何要求前會執行這些工作。 如需詳細資訊，請參閱 [在 Azure 中執行啟動工作](http://msdn.microsoft.com/library/azure/hh180155.aspx)。
 - 如果啟動工作發生錯誤，它可能會強制角色持續地重新啟動。 這可能會防止您執行 VIP 交換回到先前預備的版本，因為交換需要角色的獨佔存取權，而且這無法在角色重新啟動時取得。 若要解決這個問題：
-    -  將下列程式碼加入至開頭 **OnStart** 和 **執行** 方法，在您的角色:
+    -  將下列程式碼加入至開頭 **OnStart** 和 **執行** 方法，在您的角色 ︰
 
     ```C#
     var freeze = CloudConfigurationManager.GetSetting("Freeze");
@@ -312,9 +312,10 @@ Web 和背景工作角色在啟動、執行和停止時會經歷一組不同的�
 
 - [調整使用背景工作角色的 Azure 應用程式 (英文)](http://msdn.microsoft.com/library/hh534484.aspx#sec8)
 - [執行背景工作 (英文)](http://msdn.microsoft.com/library/ff803365.aspx)
-- [Azure 角色啟動生命週期](http://blog.syntaxc4.net/post/2011/04/13/windows-azure-role-startup-life-cycle.aspx) (部落格文章)
-- [Azure 雲端服務角色生命週期](http://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle) (影片)
+- [Azure 角色啟動生命週期](http://blog.syntaxc4.net/post/2011/04/13/windows-azure-role-startup-life-cycle.aspx) （部落格文章）
+- [Azure 雲端服務角色生命週期](http://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle) （影片）
 - [開始使用 Azure WebJobs SDK](websites-dotnet-webjobs-sdk-get-started/)
 - [Azure 佇列和服務匯流排佇列 - 異同比較](http://msdn.microsoft.com/library/hh767287.aspx)
 - [如何在雲端服務中啟用診斷 (英文)](http://msdn.microsoft.com/library/dn482131.aspx)
+
 

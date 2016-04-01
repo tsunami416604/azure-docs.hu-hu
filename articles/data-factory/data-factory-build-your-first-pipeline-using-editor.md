@@ -37,7 +37,7 @@
 
 ## 步驟 1：建立 Data Factory
 
-1.  登入後 [Azure 入口網站](http://portal.azure.com/), ，執行下列動作:
+1.  登入後 [Azure 入口網站](http://portal.azure.com/), ，執行下列動作 ︰
     1.  按一下 [ **新增** 左側功能表。 
     2.  按一下 [ **資料分析** 中 **建立** 刀鋒視窗。
     3.  按一下 [ **Data Factory** 上 **資料分析** 刀鋒視窗。
@@ -48,7 +48,7 @@
 
     ![新增 Data Factory 刀鋒視窗](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
-    > [AZURE.IMPORTANT] Azure data factory 的名稱必須是全域唯一的。 如果您收到錯誤: **Data factory 名稱"DataFactoryMyFirstPipeline"沒有**, 、 變更 data factory (比方說，yournameDataFactoryMyFirstPipeline) 的名稱，然後嘗試重新建立。 請參閱 [Data Factory-命名規則](data-factory-naming-rules.md) Data Factory 成品的命名規則的主題。
+    > [AZURE.IMPORTANT] Azure data factory 的名稱必須是全域唯一的。 如果您收到錯誤 ︰ **Data factory 名稱"DataFactoryMyFirstPipeline"沒有**, 、 變更 data factory (比方說，yournameDataFactoryMyFirstPipeline) 的名稱，然後嘗試重新建立。 請參閱 [Data Factory-命名規則](data-factory-naming-rules.md) Data Factory 成品的命名規則的主題。
     >  
     > Data Factory 的名稱未來可能會註冊為 DNS 名稱，因此會變成公開可見的名稱。
 
@@ -61,7 +61,7 @@
         ![建立資源群組](./media/data-factory-build-your-first-pipeline-using-editor/create-resource-group.png)
 4.  選取資源群組之後，請確認您使用的是要在其中建立 Data Factory 的正確訂用帳戶。
 5.  按一下 [ **建立** 上 **新增 data factory** 刀鋒視窗。
-6.  您會看到 data factory 中建立 **儀表板** 的 Azure 入口網站，如下所示:   
+6.  您會看到 data factory 中建立 **儀表板** 的 Azure 入口網站，如下所示 ︰   
 
     ![建立 Data Factory 狀態](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 7. 恭喜！ 您已成功建立您的第一個 Data Factroy。 在 Data Factory 成功建立後，您會看到 Data Factory 頁面，顯示 Data Factory 的內容。  
@@ -76,7 +76,7 @@
 ### 建立 Azure 儲存體連結服務
 1.  按一下 [ **作者和部署** 上 **DATA FACTORY** 分頁 **DataFactoryFirstPipeline**。 這會啟動 Data Factory 編輯器。 
      
-    ![[製作和部署] 磚](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
+    ![[製作和部署] 圖格](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 2.  按一下 [ **新增資料存放區** 選擇 **Azure 儲存體**
     
     ![Azure 儲存體連結服務](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
@@ -156,7 +156,7 @@
 ## 步驟 3：建立您的第一個管線
 在此步驟中，您將建立您的第一個管線。
 
-1. 在 **Data Factory 編輯器**, ，按一下 [ **省略符號 (...)** 然後按一下 [ **新增管線**。
+1. 在 **Data Factory 編輯器**, ，按一下 [ **省略符號 （...）** 然後按一下 [ **新增管線**。
     
     ![新增管線按鈕](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 2. 複製下列程式碼片段並貼到 Draft-1 視窗。
@@ -203,7 +203,7 @@
     
     Hive 指令碼檔案中， **partitionweblogs.hql**, ，會儲存在 Azure 儲存體帳戶 (透過 scriptLinkedService，呼叫指定 **StorageLinkedService**)，且在容器中名為 **指令碼**。
 
-     **定義** 區段用來指定將會傳遞到 hive 指令碼作為 Hive 設定值 (例如 ${hiveconf: partitioneddata}) 的執行階段設定。
+     **定義** 區段用來指定將會傳遞到 hive 指令碼作為 Hive 設定值 （例如 ${hiveconf: partitioneddata}） 的執行階段設定。
 
      **啟動** 和 **結束** 管線屬性會指定管線作用期間。
 
@@ -231,7 +231,8 @@
  
 
 ## 後續步驟
-在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用 「 複製活動將資料從 Azure Blob 複製到 Azure SQL，請參閱 [教學課程: 複製資料，從 Azure blob 至 SQL Azure](./data-factory-get-started.md)。
+在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用 「 複製活動將資料從 Azure Blob 複製到 Azure SQL，請參閱 [教學課程 ︰ 複製資料，從 Azure blob 至 SQL Azure](./data-factory-get-started.md)。
   
+
 
 

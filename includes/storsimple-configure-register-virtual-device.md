@@ -19,3 +19,4 @@
 設定和註冊完成之後，裝置將會上線。 (裝置上線可能需要幾分鐘的時間。)
 
 ![StorSimple 虛擬裝置上線階段](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
+

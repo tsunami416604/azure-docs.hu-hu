@@ -3,7 +3,7 @@
 
 #### 設定和註冊裝置
 
-1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 請參閱 [使用 PuTTY 來連接至裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console) 如需相關指示。 **請務必確實依照此程序，或無法存取主控台。**
+1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 請參閱 [使用 PuTTY 來連接至裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console) 如需相關指示。 **請務必確實依照此程序，否則將無法存取主控台。**
 
 2. 在開啟的工作階段中，按 Enter 鍵一次以取得命令提示字元。 
 
@@ -15,7 +15,7 @@
 
     ![StorSimple 註冊裝置 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
   
-     完成步驟 5-12，為裝置設定最小的必要網路設定。 **這些設定步驟必須在裝置的主動控制器上執行。**序列主控台功能表會在橫幅訊息中指出控制站狀態。 如果您未連接到主動控制器，請中斷連線，然後連接到主動控制器。
+     完成步驟 5-12，為裝置設定最小的必要網路設定。 **這些設定步驟必須在裝置的主動控制器上執行。** 序列主控台功能表會在橫幅訊息中指出控制站狀態。 如果您未連接到主動控制器，請中斷連線，然後連接到主動控制器。
 
 5. 在命令提示字元中，輸入您的密碼。 預設裝置密碼是 **Password1**。
 
@@ -35,7 +35,7 @@
 8. (選用) 設定 Web Proxy 伺服器。 雖然 web proxy 設定是選擇性的 **請注意，如果您使用 web proxy，您可以只設定它這裡**。 如需詳細資訊，請移至 [設定裝置的 web proxy](storsimple-configure-web-proxy.md)。 如果您在此步驟中遇到任何問題，請參閱的疑難排解指導 [web proxy 設定期間發生錯誤](storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings)。
  
 
-      > [AZURE.NOTE] You can press Ctrl + C at any time to exit the setup wizard. Any settings that you applied before you issued this command will be retained.
+      > [AZURE.NOTE] 您可以按 Ctrl + C 以結束安裝精靈的任何時候。 您在發出此命令之前套用的所有設定都將保留。
 
 9. 基於安全性理由，裝置系統管理員密碼會在第一個工作階段之後過期，您必須變更該密碼，才能進行後續工作階段。 出現提示時，請提供裝置系統管理員密碼。 有效的裝置系統管理員密碼長度必須介於 8 到 15 個字元。 密碼必須包含小寫字元、大寫字元、數字和特殊字元的組合。
 
@@ -75,3 +75,4 @@
 ![可用的視訊](./media/storsimple-configure-and-register-device/Video_icon.png) **可用的視訊**
 
 若要看影片，示範如何設定和註冊您的裝置，透過 Windows PowerShell for StorSimple，按一下 [ [這裡](http://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)。
+

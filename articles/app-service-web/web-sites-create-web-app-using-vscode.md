@@ -27,8 +27,8 @@
 ## 必要條件  
 
 * 安裝 [VS Code](http://code.visualstudio.com/Docs/setup)。
-* 安裝 [Node.js](http://nodejs.org) -Node.js 是建置快速和可擴充的伺服器應用程式使用 JavaScript 的平台。 節點是執行階段 (節點)，和 [npm](http://www.npmjs.com/) 是 Node 模組的封裝管理員。 您將使用 npm，在本教學課程中建立 ASP.NET 5 Web 應用程式的結構。
-* 安裝 Git-您可以從下列位置安裝它: [Chocolatey](https://chocolatey.org/packages/git) 或 [git-scm.com](http://git-scm.com/downloads)。 如果您不熟悉 Git，請選擇 [git-scm.com](http://git-scm.com/downloads) 然後選取選項來 **使用 Git 從 Windows 命令提示字元**。 一旦您安裝 Git，也需要設定 Git 使用者名稱和電子郵件，因為稍後教學課程將需要用到 (從 VS Code 執行認可時)。  
+* 安裝 [Node.js](http://nodejs.org) -Node.js 是建置快速和可擴充的伺服器應用程式使用 JavaScript 的平台。 節點是執行階段 （節點），和 [npm](http://www.npmjs.com/) 是 Node 模組的封裝管理員。 您將使用 npm，在本教學課程中建立 ASP.NET 5 Web 應用程式的結構。
+* 安裝 Git-您可以從下列位置安裝它 ︰ [Chocolatey](https://chocolatey.org/packages/git) 或 [git-scm.com](http://git-scm.com/downloads)。 如果您不熟悉 Git，請選擇 [git-scm.com](http://git-scm.com/downloads) 然後選取選項來 **使用 Git 從 Windows 命令提示字元**。 一旦您安裝 Git，也需要設定 Git 使用者名稱和電子郵件，因為稍後教學課程將需要用到 (從 VS Code 執行認可時)。  
 
 ## 安裝 ASP.NET 5 和 DNX
 ASP.NET 5/DNX (.NET 執行環境) 是精簡的 .NET 堆疊，可建置在 OS X、Linux 及 Windows 上執行的新式雲端和 Web 應用程式。 它已從頭建置，以將最佳化的開發架構提供給已部署至雲端或執行內部部署的應用程式。 其由額外負荷最低的模組化元件組成，以便您可以在建構解決方案時保留彈性。
@@ -63,7 +63,7 @@ ASP.NET 5/DNX (.NET 執行環境) 是精簡的 .NET 堆疊，可建置在 OS X�
 
     ![DNVM 位置](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
 
-    如果列出的 DNX 執行階段有多個，您可以選擇在命令提示字元輸入下列命令 (或使用更新的版本) 來設定使用中的 DNX 執行階段。 請將它設定成您在本教學課程中稍後建立 Web 應用程式時 ASP.NET 5 產生器所使用的相同版本。 *您可能不需要變更使用中的執行階段，如果它設定為最新可用。*
+    如果列出的 DNX 執行階段有多個，您可以選擇在命令提示字元輸入下列命令 (或使用更新的版本) 來設定使用中的 DNX 執行階段。 請將它設定成您在本教學課程中稍後建立 Web 應用程式時 ASP.NET 5 產生器所使用的相同版本。 *您可能不需要變更作用中的執行階段，如果它設定為最新可用的話。*
 
         dnvm use 1.0.0-update1 –p
 
@@ -71,7 +71,7 @@ ASP.NET 5/DNX (.NET 執行環境) 是精簡的 .NET 堆疊，可建置在 OS X�
 
 ## 建立 Web 應用程式 
 
-本節說明如何建立新的應用程式 ASP.NET Web 應用程式的結構。 您將使用 node package manager (npm) 安裝 [Yeoman](http://yeoman.io/) (應用程式建立結構工具-VS 程式碼相當於 Visual Studio **檔案 > 新增專案** 作業)， [Grunt](http://gruntjs.com/) (JavaScript 工作執行程式) 和 [Bower](http://bower.io/) (用戶端封裝管理員)。 
+本節說明如何建立新的應用程式 ASP.NET Web 應用程式的結構。 您將使用 node package manager (npm) 安裝 [Yeoman](http://yeoman.io/) (應用程式建立結構工具-VS 程式碼相當於 Visual Studio **檔案 > 新增專案** 作業)， [Grunt](http://gruntjs.com/) （JavaScript 工作執行程式） 和 [Bower](http://bower.io/) （用戶端封裝管理員）。 
 
 1. 以系統管理員權限開啟命令提示字元，並瀏覽至您想要用來建立 ASP.NET 專案的位置。 例如，建立 *vscodeprojects* C:\ 根目錄的目錄。
 
@@ -107,7 +107,7 @@ ASP.NET 5/DNX (.NET 執行環境) 是精簡的 .NET 堆疊，可建置在 OS X�
 
 既然您已建立 Web 應用程式，並擷取應用程式的所有 NuGet 封裝，就可以在本機執行 Web 應用程式。
 
-1. 從 **命令調色盤** 在 VS Code 中，輸入下列命令以顯示可用的執行命令的選項:
+1. 從 **命令調色盤** 在 VS Code 中，輸入下列命令以顯示可用的執行命令的選項 ︰
 
         dnx: Run Command
 
@@ -229,7 +229,7 @@ Git 是一個您可用來部署 Azure App Service Web 應用程式的分散式�
 
         git push -u azure master
 
-    系統會提示您輸入先前在 Azure 建立的密碼。 **注意: 您的密碼不會顯示的狀態。**
+    系統會提示您輸入先前在 Azure 建立的密碼。 **注意：將看不到您的密碼。**
 
     上述命令的輸出結尾會出現部署成功的訊息。
 
@@ -256,4 +256,5 @@ Git 是一個您可用來部署 Azure App Service Web 應用程式的分散式�
 ![Azure Web 應用程式](./media/web-sites-create-web-app-using-vscode/21-azurewebapp.png)
 
 ## 摘要
-在本教學課程中，您學到如何在 VS Code 建立 Web 應用程式，並將其部署至 Azure。 如需 VS Code 的詳細資訊，請參閱文章 [什選擇 Visual Studio Code?](https://code.visualstudio.com/Docs/)應用程式服務 web 應用程式的相關資訊，請參閱 [Web 應用程式概觀](app-service-web-overview.md)。 
+在本教學課程中，您學到如何在 VS Code 建立 Web 應用程式，並將其部署至 Azure。 如需 VS Code 的詳細資訊，請參閱文章 [什選擇 Visual Studio Code？](https://code.visualstudio.com/Docs/) 應用程式服務 web 應用程式的相關資訊，請參閱 [Web 應用程式概觀](app-service-web-overview.md)。 
+

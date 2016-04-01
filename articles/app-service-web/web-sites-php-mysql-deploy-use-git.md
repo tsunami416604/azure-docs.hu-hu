@@ -23,8 +23,8 @@
 - [.Net](web-sites-dotnet-get-started.md)
 - [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
-- [PHP-Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP-FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
 本教學課程說明如何建立 Php-mysql web 應用程式以及如何將它部署到 [應用程式服務](http://go.microsoft.com/fwlink/?LinkId=529714) 使用 Git。 您將使用 [PHP][install-php], 、 MySQL 命令列工具 (屬於 [MySQL][install-mysql])，和 [Git][install-git] 安裝在電腦上。 在本教學課程的指示可運用在任何作業系統，包括 Windows、 Mac 和 Linux 上。 看完本指南後，您將擁有可在 Azure 上執行的 PHP/MySQL Web 應用程式。
@@ -43,7 +43,7 @@
 本教學課程假設您有 [PHP][install-php], 、 MySQL 命令列工具 (屬於 [MySQL][install-mysql])，和 [Git][install-git] 安裝在電腦上。
 
 
-##<a id="create-web-site-and-set-up-git"></a>建立 Web 應用程式並設定 Git 發行
+##<a id="create-web-site-and-set-up-git"></a>建立 Web 應用程式並設定 Git 發佈
 
 請遵循以下步驟來建立 Web 應用程式與 MySQL 資料庫：
 
@@ -104,9 +104,9 @@
 
 註冊應用程式是一項簡單的 PHP 應用程式，您只需提供名稱與電子郵件地址就能註冊活動。 先前的註冊者相關資訊會顯示在資料表中。 註冊資訊會存放在 MySQL 資料庫。 該應用程式包含一個檔案 (複製/貼上以下提供的程式碼)：
 
-* **index.php**: 顯示註冊和註冊資訊的資料表的表單。
+* **index.php**︰ 顯示註冊和註冊資訊的資料表的表單。
 
-若要在本機建置與執行應用程式，請遵循下列步驟。 請注意，這些步驟假設您具有 PHP 和 MySQL 命令列工具 (MySQL 的一部分) 在您的本機電腦上設定，且您已啟用 [MySQL 的 PDO 延伸功能][pdo-mysql]。
+若要在本機建置與執行應用程式，請遵循下列步驟。 請注意，這些步驟假設您具有 PHP 和 MySQL 命令列工具 （MySQL 的一部分） 在您的本機電腦上設定，且您已啟用 [MySQL 的 PDO 延伸功能][pdo-mysql]。
 
 1. 使用您先前擷取的 `Data Source`、`User Id`、`Password` 和 `Database` 值，連線到遠端 MySQL 伺服器：
 
@@ -223,7 +223,7 @@
 > [AZURE.NOTE]
 > 這些步驟與上述「建立 Web 應用程式並設定 Git 發行」小節結尾處的 Azure 入口網站中所示的步驟相同。
 
-1. (選擇性) 如果您忘記或是錯置了 Git 遠端儲存機制 URL，瀏覽至 Azure 入口網站上的 web 應用程式內容。
+1. （選擇性） 如果您忘記或是錯置了 Git 遠端儲存機制 URL，瀏覽至 Azure 入口網站上的 web 應用程式內容。
 
 1. 開啟 GitBash (如果 Git 位於您的 `PATH`，則為終端機)，將目錄變更為應用程式的根目錄，並執行下列命令：
 
@@ -237,7 +237,7 @@
 
     ![透過 Git 初始發送至 Azure][git-initial-push]
 
-2. 瀏覽至 **http://[site name].azurewebsites.net/index.php** 若要開始使用應用程式 (這項資訊會存放在您的帳戶儀表板):
+2. 瀏覽至 **http://[site name].azurewebsites.net/index.php** 若要開始使用應用程式 （這項資訊會存放在您的帳戶儀表板） ︰
 
     ![Azure PHP web site][running-app]
 
@@ -258,18 +258,18 @@
 
     ![透過 Git 將網站變更發送至 Azure][git-change-push]
 
-3. 瀏覽至 **http://[site name].azurewebsites.net/index.php** 以查看您的應用程式以及您所做的變更:
+3. 瀏覽至 **http://[site name].azurewebsites.net/index.php** 以查看您的應用程式以及您所做的變更 ︰
 
     ![Azure PHP web site][running-app]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 後續步驟
 
 如需詳細資訊，請參閱 [PHP 開發人員中心](/develop/php/)。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [install-php]: http://www.php.net/manual/en/install.php
 [install-SQLExpress]: http://www.microsoft.com/download/details.aspx?id=29062
@@ -302,4 +302,5 @@
 [management-portal]: https://portal.azure.com
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
+
 

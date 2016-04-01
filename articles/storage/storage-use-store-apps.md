@@ -33,13 +33,13 @@
 
 ![store-apps-storage-vs-project][store-apps-storage-vs-project]
 
-接下來，新增 Azure 儲存體用戶端程式庫的參考，以滑鼠右鍵按一下 **參考**, 、 **加入參考**, ，然後瀏覽至儲存體用戶端程式庫的 Windows 執行階段您下載:
+接下來，新增 Azure 儲存體用戶端程式庫的參考，以滑鼠右鍵按一下 **參考**, 、 **加入參考**, ，然後瀏覽至儲存體用戶端程式庫的 Windows 執行階段您下載 ︰
 
 ![store-apps-storage-choose-library][store-apps-storage-choose-library]
 
 ### 使用搭配 Blob 和佇列服務的程式庫
 
-此時您的應用程式已準備好可呼叫 Azure Blob 和佇列服務。 新增下列 **使用** 陳述式，以便可以直接參考 Azure 儲存體類型:
+此時您的應用程式已準備好可呼叫 Azure Blob 和佇列服務。 新增下列 **使用** 陳述式，以便可以直接參考 Azure 儲存體類型 ︰
 
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
@@ -68,7 +68,7 @@
 
 此命令會自動將所有所需的參考加入您的專案。 若不想使用封裝管理員主控台，您可以將 WCF Data Services NuGet 資料夾在本機電腦新增至套件來源清單，然後再新增透過 UI，參考中, 所述 [使用對話方塊管理 NuGet 封裝](http://docs.nuget.org/docs/start-here/Managing-NuGet-Packages-Using-The-Dialog)。
 
-當您參考 WCF 資料服務 NuGet 封裝時，請變更您的按鈕中的程式碼 **按一下** 事件:
+當您參考 WCF 資料服務 NuGet 封裝時，請變更您的按鈕中的程式碼 **按一下** 事件 ︰
 
     var credentials = new StorageCredentials(accountName, accountKey);
     var account = new CloudStorageAccount(credentials, true);
@@ -85,4 +85,5 @@
 [store-apps-storage-vs-project]: ./media/storage-use-store-apps/store-apps-storage-vs-project.png
 [store-apps-storage-choose-library]: ./media/storage-use-store-apps/store-apps-storage-choose-library.png
 [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
+
 

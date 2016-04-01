@@ -24,7 +24,7 @@
 
 
 > [AZURE.NOTE] 
-> 最簡單的方式來檢查版本號碼是在 [新增/移除程式] 中查看的項目 **Microsoft HDInsight Emulator for Azure** (1.0.0.0 或更新版本) 或 **Microsoft HDInsight Developer Preview** (針對 1.0.0.0 之前版本)。 
+> 最簡單的方式來檢查版本號碼是在 [新增/移除程式] 中查看的項目 **Microsoft HDInsight Emulator for Azure** (1.0.0.0 或更新版本) 或 **Microsoft HDInsight Developer Preview** （針對 1.0.0.0 之前版本）。 
 
 ## 2.0.0.0 版，2014 年 8 月 29 日發行
 
@@ -107,7 +107,7 @@
     Templeton-http://localhost:50111/templeton/v1/狀態 
     ODBC-在 DSN 組態或連接字串中使用連接埠 10000 
 
-    HDInsight 服務: 
+    HDInsight 服務 ︰ 
     Oozie-http://ServerFQDN:563/oozie/v1/系統管理/狀態 
     Templeton-http://ServerFQDN:563/templeton/v1/狀態 
     ODBC-在 DSN 組態或連接字串中使用連接埠 563 
@@ -158,7 +158,7 @@
      
             %HADOOP_NODE%\stop-onebox.cmd && %HADOOP_NODE%\start-onebox.cmd
 
-    3. 使用完整 URI 存取該帳戶上的任何檔案: asv://{container}@{account}/{path} (或 asvs://: / / 如果您想要使用 HTTPS 來存取資料)。 範例：
+    3. 使用完整 URI 存取該帳戶上的任何檔案 ︰ asv://{container}@{account}/{path} (或 asvs://: / / 如果您想要使用 HTTPS 來存取資料)。 範例：
      
             hadoop fs -lsr 
             asvs://MyHadoopOnAzureContainerName@MyHadoopOnAzureAccountName/example/data/
@@ -282,3 +282,4 @@
 [hdinsight-hadoop-emulator-get-started]: ../hdinsight-get-started-emulator.md
 
  
+

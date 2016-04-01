@@ -15,3 +15,4 @@
 - [Availability](../article/application-insights/app-insights-monitor-web-app-availability.md#selector1)
 
 
+

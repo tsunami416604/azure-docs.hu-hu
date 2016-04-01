@@ -60,28 +60,28 @@ queue.QUEUE = queue1
 
 #### 設定 ConnectionFactory
 
-用來定義的項目 **ConnectionFactory** 在 Qpid 內容檔案 JNDI 提供者是下列格式:
+用來定義的項目 **ConnectionFactory** 在 Qpid 內容檔案 JNDI 提供者是下列格式 ︰
 
 ```
 connectionfactory.[jndi_name] = [ConnectionURL]
 ```
 
-其中 **[jndi_name]** 和 **[ConnectionURL]** 具有下列意義:
+其中 **[jndi_name]** 和 **[ConnectionURL]** 具有下列意義 ︰
 
 - **[jndi_name]**: ConnectionFactory 的邏輯名稱。 這是使用 JNDI IntialContext.lookup() 方法在 Java 應用程式中解析的名稱。
-- **[ConnectionURL]**: 將包含所需資訊的 JMS 程式庫提供給 AMQP 代理人的 URL。
+- **[ConnectionURL]**︰ 將包含所需資訊的 JMS 程式庫提供給 AMQP 代理人的 URL。
 
-格式 **ConnectionURL** 如下:
+格式 **ConnectionURL** 如下 ︰
 
 ```
 amqps://[username]:[password]@[namespace].servicebus.windows.net
 ```
 
-其中 **[namespace]**, ，**[username]** 和 **[密碼]** 具有下列意義:
+其中 **[namespace]**, ，**[username]** 和 **[密碼]** 具有下列意義 ︰
 
-- **[namespace]**: 服務匯流排命名空間。
-- **[username]**: 服務匯流排簽發者名稱。
-- **[密碼]**: 服務匯流排發行者金鑰 URL 編碼形式。
+- **[namespace]**︰ 服務匯流排命名空間。
+- **[username]**︰ 服務匯流排簽發者名稱。
+- **[密碼]**︰ 服務匯流排發行者金鑰 URL 編碼形式。
 
 > [AZURE.NOTE] 您必須進行 URL 編碼手動密碼。 實用的 URL 編碼公用程式將會位於 [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp)。
 
@@ -98,10 +98,10 @@ queue.[jndi_name] = [physical_name]
 topic.[jndi_name] = [physical_name]
 ```
 
-其中 **[jndi\_name]** 和 **[physical\_name]** 具有下列意義:
+其中 **[jndi\_name]** 和 **[physical\_name]** 具有下列意義 ︰
 
-- **[jndi_name]**: 目的地的邏輯名稱。 這是使用 JNDI IntialContext.lookup() 方法在 Java 應用程式中解析的名稱。
-- **[physical_name]**: 應用程式傳送或接收訊息的服務匯流排實體的名稱。
+- **[jndi_name]**︰ 目的地的邏輯名稱。 這是使用 JNDI IntialContext.lookup() 方法在 Java 應用程式中解析的名稱。
+- **[physical_name]**︰ 應用程式傳送或接收訊息的服務匯流排實體的名稱。
 
 > [AZURE.NOTE] 從服務匯流排主題訂閱收到時，在 JNDI 中指定的實體名稱應該是主題的名稱。 以 JMS 應用程式程式碼建立持續性訂用帳戶時，將建立訂用帳戶名稱。  [服務匯流排 AMQP 1.0 開發人員手冊 》](service-bus-amqp-dotnet.md) 提供處理 JMS 服務匯流排主題訂閱的詳細資訊。
 
@@ -331,4 +331,5 @@ exit
 * [服務匯流排 AMQP 1.0 開發人員指南](service-bus-amqp-dotnet.md)
 * [如何使用服務匯流排佇列](service-bus-dotnet-how-to-use-queues.md)
  
+
 

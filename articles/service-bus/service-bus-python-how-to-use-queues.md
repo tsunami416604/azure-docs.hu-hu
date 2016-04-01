@@ -44,7 +44,7 @@ bus_service = ServiceBusService(
     shared_access_key_value='sharedaccesskey')
 ```
 
-SAS 金鑰名稱和值的值位於 [Azure 傳統入口網站][] 連接資訊，或在 Visual Studio **屬性** 窗格時 (如前一節所示)，伺服器總管] 中選取服務匯流排命名空間。
+SAS 金鑰名稱和值的值位於 [Azure 傳統入口網站][] 連接資訊，或在 Visual Studio **屬性** 窗格時 （如前一節所示），伺服器總管] 中選取服務匯流排命名空間。
 
 ```
 bus_service.create_queue('taskqueue')
@@ -75,18 +75,18 @@ bus_service.send_queue_message('taskqueue', msg)
 
 ## 從佇列接收訊息
 
-接收來自佇列使用的訊息 **receive\_queue\_message** 方法 **ServiceBusService** 物件:
+接收來自佇列使用的訊息 **receive\_queue\_message** 方法 **ServiceBusService** 物件 ︰
 
 ```
 msg = bus_service.receive_queue_message('taskqueue', peek_lock=False)
 print(msg.body)
 ```
 
-從佇列刪除訊息時讀取時參數 **peek\_lock** 設為 **False**。 您可以讀取 (查看) 並鎖定訊息，方法將從佇列刪除 **peek\_lock** 至 **True**。
+從佇列刪除訊息時讀取時參數 **peek\_lock** 設為 **False**。 您可以讀取 （查看） 並鎖定訊息，方法將從佇列刪除 **peek\_lock** 至 **True**。
 
 隨著接收作業讀取及刪除訊息之行為是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-如果 **peek\_lock** 參數設為 **True**, ，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 **刪除** 方法 **訊息** 物件。  **刪除** 方法會標示為已取用的訊息，並將它從佇列移除。
+如果 **peek\_lock** 參數設為 **True**, ，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 （或可靠地儲存供未來處理） 之後，完成接收程序的第二個階段 **刪除** 方法 **訊息** 物件。  **刪除** 方法會標示為已取用的訊息，並將它從佇列移除。
 
 ```
 msg = bus_service.receive_queue_message('taskqueue', peek_lock=True)
@@ -114,4 +114,5 @@ msg.delete()
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Azure Queues and Service Bus queues]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
  
+
 

@@ -30,11 +30,11 @@
 
 本節示範如何使用 `BlobTrigger` 屬性。 
 
-> **注意:** WebJobs SDK 會掃描要監看新的或已變更 blob 的記錄檔。 此程序的速度原本就很慢；可能直到建立 Blob 之後數分鐘或更久，才會觸發函數。  如果您的應用程式需要立即處理 blob，建議的方法是建立佇列訊息，當您建立 blob，並使用 [QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 屬性而不是 `BlobTrigger` 處理 blob 的函數上的屬性。
+> **注意 ︰** WebJobs SDK 會掃描要監看新的或已變更 blob 的記錄檔。 此程序的速度原本就很慢；可能直到建立 Blob 之後數分鐘或更久，才會觸發函數。  如果您的應用程式需要立即處理 blob，建議的方法是建立佇列訊息，當您建立 blob，並使用 [QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 屬性而不是 `BlobTrigger` 處理 blob 的函數上的屬性。
 
 ### 適用於含有副檔名之 Blob 名稱的單一預留位置  
 
-下列程式碼範例複製中出現的文字 blob *輸入* 容器 *輸出* 容器:
+下列程式碼範例複製中出現的文字 blob *輸入* 容器 *輸出* 容器 ︰
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("output/{name}")] out string output)
@@ -54,7 +54,7 @@
 
 此程式碼只會複製以 "original-" 做為名稱開頭的 Blob。 例如， *原始 Blob1.txt* 中 *輸入* 容器複製到 *複製 Blob1.txt* 中 *輸出* 容器。
 
-如果您需要針對名稱中包含大括號的 Blob 名稱指定名稱模式，請按兩下大括號。 例如，如果您想要尋找中的 blob *映像* 具備如下名稱的容器:
+如果您需要針對名稱中包含大括號的 Blob 名稱指定名稱模式，請按兩下大括號。 例如，如果您想要尋找中的 blob *映像* 具備如下名稱的容器 ︰
 
         {20140101}-soundfile.mp3
 
@@ -79,7 +79,7 @@
             output = input.ReadToEnd();
         }
 
-## <a id="types"></a> 您可以繫結至 Blob 的類型
+## <a id="types"></a> 您可以繫結至 Blob 的型別
 
 您可將 `BlobTrigger` 屬性用於下列型別：
 
@@ -152,7 +152,7 @@
 
 適用於有害 Blob 的佇列訊息是一個 JSON 物件，其中包含下列屬性：
 
-* FunctionId (格式 *{WebJob name}*。函式。*{Function name}*, ，例如: WebJob1.Functions.CopyBlob)
+* FunctionId (格式 *{WebJob name}*。函式。*{Function name}*, ，例如 ︰ WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" 或 "PageBlob")
 * ContainerName
 * BlobName
@@ -201,7 +201,7 @@ WebJobs SDK 會在應用程式啟動時，掃描 `BlobTrigger` 屬性所指定�
 
 WebJobs SDK 可確保不會有任何 `BlobTrigger` 函數會針對相同的新或更新的 Blob 呼叫一次以上。 做法是維護 *blob 回條* 以判斷指定的 blob 版本是否已處理過。
 
-Blob 回條會儲存在名為的容器 *azure webjobs 託管* AzureWebJobsStorage 連接字串所指定的 Azure 儲存體帳戶中。 Blob 回條具有下列資訊:
+Blob 回條會儲存在名為的容器 *azure webjobs 託管* AzureWebJobsStorage 連接字串所指定的 Azure 儲存體帳戶中。 Blob 回條具有下列資訊 ︰
 
 * Blob 已呼叫的函式 (「*{WebJob name}*。函式。*{Function name}*」，例如:"WebJob1.Functions.CopyBlob")
 * 容器名稱
@@ -231,4 +231,5 @@ Blob 回條會儲存在名為的容器 *azure webjobs 託管* AzureWebJobsStorag
 
 本指南提供了程式碼範例，示範如何處理使用 Azure Blob 的常見案例。 如需如何使用 Azure WebJobs 和 WebJobs SDK 的詳細資訊，請參閱 [Azure WebJobs 建議資源](http://go.microsoft.com/fwlink/?linkid=390226)。
  
+
 

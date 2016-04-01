@@ -43,7 +43,7 @@ Windows Azure 媒體編碼程式|可讓您使用 PlayReady Protection 為媒體�
 
 ##取得 MediaProcessor
 
->[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量:
+>[AZURE.NOTE] 當使用媒體服務 REST API，適用下列考量 ︰
 >
 >在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱 [媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
 
@@ -102,4 +102,5 @@ Windows Azure 媒體編碼程式|可讓您使用 PlayReady Protection 為媒體�
 [How to Encode an Asset]: media-services-rest-encode-asset.md
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
 [How to: Connect to Media Services Programmatically]: ../media-services-rest-connect_programmatically/ 
+
 

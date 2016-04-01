@@ -109,7 +109,7 @@ API 應用程式閘道可設定為使用 Azure Preview 入口網站啟用 CORS�
 
 1. 啟用 CORS 的最後一個步驟是區分您要啟用的個別動作方法。 新增 **EnableCors** 方法或整個控制器上每個屬性，如下列程式碼所示。 
 
-    > **請注意**: 將萬用字元的所有參數用於具有 EnableCors 屬性僅供示範之用，並將您的 API 開啟至所有來源和所有 HTTP 要求。 請謹慎使用這個屬性，並了解相關暗示。
+    > **請注意**︰ 將萬用字元的所有參數用於具有 EnableCors 屬性僅供示範之用，並將您的 API 開啟至所有來源和所有 HTTP 要求。 請謹慎使用這個屬性，並了解相關暗示。
 
         using ContactList.Models;
         using System.Collections.Generic;
@@ -328,7 +328,7 @@ API 應用程式閘道可設定為使用 Azure Preview 入口網站啟用 CORS�
 
 在本節中，您會將 HTML/JavaScript 用戶端部署為 App Service Web 應用程式。 部署完成之後，您要變更 JavaScript 用來取用部署的 API 應用程式的 URL。 
 
-> 注意: 本節假設您已閱讀並完成 [部署 API 應用程式](app-service-dotnet-deploy-api-app.md) 文章，或您先前已部署 API 應用程式。 
+> 注意 ︰ 本節假設您已閱讀並完成 [部署 API 應用程式](app-service-dotnet-deploy-api-app.md) 文章，或您先前已部署 API 應用程式。 
 
 1. 在 Azure 預覽入口網站中開啟 API 應用程式的刀鋒視窗。 按一下刀鋒視窗中的 URL 以在瀏覽器中開啟。 開啟之後，從瀏覽器網址列複製 API 應用程式的 URL。 
 
@@ -354,7 +354,7 @@ API 應用程式閘道可設定為使用 Azure Preview 入口網站啟用 CORS�
 
 1. 選取您的 API 應用程式已在其中執行的相同應用程式主控方案和資源群組。
 
-    > **請注意**: 這並非必要條件，但是為了示範它輕鬆地清除您的 Azure 資源稍後如果所有項目包含在一個資源群組。
+    > **請注意**︰ 這並非必要條件，但是為了示範它輕鬆地清除您的 Azure 資源稍後如果所有項目包含在一個資源群組。
 
     ![方案總管中的 apiapp.json 和中繼資料](./media/app-service-api-javascript-client/16-new-web-app-creation-dialog.png)
 
@@ -372,4 +372,5 @@ API 應用程式閘道可設定為使用 Azure Preview 入口網站啟用 CORS�
 此範例示範如何使用 AngularJS 做為 JavaScript 平台，以供存取 API 應用程式後端。 您可以將 REST 存取功能變更為使用任何其他 JavaScript 架構。 
 
 此範例顯示對 API 應用程式的未經驗證存取權。 應用程式服務中驗證的相關資訊，請參閱 [API 應用程式和行動應用程式驗證](../app-service/app-service-authentication-overview.md)。
+
 

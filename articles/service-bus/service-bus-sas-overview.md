@@ -18,17 +18,17 @@
 
 # 共用存取簽章
 
-*共用存取簽章* (SAS) 是主要的安全性機制，包括事件中樞的服務匯流排代理傳訊 (佇列和主題)，並轉送訊息。 這篇文章討論共用存取簽章、其運作方式以及如何以平台無關的方式使用它們。
+*共用存取簽章* (SAS) 是主要的安全性機制，包括事件中樞的服務匯流排代理傳訊 （佇列和主題），並轉送訊息。 這篇文章討論共用存取簽章、其運作方式以及如何以平台無關的方式使用它們。
 
 ## SAS 的概觀
 
-共用存取簽章是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 SAS 是所有服務匯流排服務使用的非常強大的機制。 在實際使用時，SAS 有兩個元件: *共用存取原則* 和 *共用存取簽章* (通常稱為 *語彙基元*)。
+共用存取簽章是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 SAS 是所有服務匯流排服務使用的非常強大的機制。 在實際使用時，SAS 有兩個元件 ︰ *共用存取原則* 和 *共用存取簽章* (通常稱為 *語彙基元*)。
 
 您可以找到更多有關使用服務匯流排的共用存取簽章資訊 [使用服務匯流排的共用存取簽章驗證](service-bus-shared-access-signature-authentication.md)。
 
 ## 共用的存取原則
 
-對 SAS 應了解的一項重點是，一切都從原則開始。 針對每個原則，您決定三段資訊: **名稱**, ，**範圍**, ，和 **權限**。  **名稱** 只是該範圍內的唯一名稱。 範圍也很簡單：它是發生問題之資源的 URI。 服務匯流排命名空間範圍是完整的網域名稱 (FQDN)，例如 **`https://<yournamespace>.servicebus.windows.net/`**。
+對 SAS 應了解的一項重點是，一切都從原則開始。 針對每個原則，您決定三段資訊 ︰ **名稱**, ，**範圍**, ，和 **權限**。  **名稱** 只是該範圍內的唯一名稱。 範圍也很簡單：它是發生問題之資源的 URI。 服務匯流排命名空間範圍是完整的網域名稱 (FQDN)，例如 **`https://<yournamespace>.servicebus.windows.net/`**。
 
 原則的可用權限大部分都易於理解：
 
@@ -48,7 +48,7 @@
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-其中 `signature-string` 是權杖範圍的 sha-256 雜湊 (**範圍** 上一節中所述) 與附加 CRLF 與到期時間 (以秒為單位，自: `00:00:00 UTC` 1970 年 1 月)。
+其中 `signature-string` 是權杖範圍的 sha-256 雜湊 (**範圍** 上一節中所述) 與附加 CRLF 與到期時間 (以秒為單位，自 ︰ `00:00:00 UTC` 1970 年 1 月)。
 
 雜湊看起來類似下列虛擬程式碼，並傳回 32 個位元組。
 
@@ -184,9 +184,9 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 在前一節中，說明了如何使用 SAS 權杖搭配 HTTP POST 要求傳送資料到服務匯流排。 如您所了解，您可以使用 AMQP (進階訊息佇列通訊協定) 通訊協定來存取服務匯流排，AMQP 通訊協定在許多的案例中，都是基於效能考量而做為主要及慣用的通訊協定。 下列文件中描述搭配 AMQP 的 SAS 權杖用法 [amqp 安全性 1.0 版](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) 位於工作草稿自 2013年，但是它也支援 Azure 今天。
 
-開始之前將資料傳送至服務匯流排，發行者需要傳送 SAS 權杖，AMQP 訊息內部定義完善的 AMQP 節點，名為 **"$cbs"** (您可以看到它類似 「 特殊 」 的佇列服務用來取得並驗證所有的 SAS 權杖)。 「 發行者 」，必須先指定 **"ReplyTo"** AMQP 訊息內部欄位; 這就是，服務將回覆權杖驗證 (發行者與服務之間的簡單要求/回覆模式) 的結果與 「 發行者 」 的節點。 此回覆節點是「動態」建立，如 AMQP 1.0 規格中所述的「動態建立遠端節點」。 檢查 SAS 權杖有效之後，發行者可以繼續並開始將資料傳送至服務。
+開始之前將資料傳送至服務匯流排，發行者需要傳送 SAS 權杖，AMQP 訊息內部定義完善的 AMQP 節點，名為 **"$cbs"** （您可以看到它類似 「 特殊 」 的佇列服務用來取得並驗證所有的 SAS 權杖）。 「 發行者 」，必須先指定 **"ReplyTo"** AMQP 訊息內部欄位; 這就是，服務將回覆權杖驗證 （發行者與服務之間的簡單要求/回覆模式） 的結果與 「 發行者 」 的節點。 此回覆節點是「動態」建立，如 AMQP 1.0 規格中所述的「動態建立遠端節點」。 檢查 SAS 權杖有效之後，發行者可以繼續並開始將資料傳送至服務。
 
-下列步驟將說明如何傳送 SAS 權杖搭配 AMQP 通訊協定使用 [AMQP.Net Lite](http://amqpnetlite.codeplex.com) 很有用，如果您無法使用官方服務匯流排 SDK 的程式庫 (例如在 WinRT、.Net Compact Framework、.Net Micro Framework 和 Mono) 開發 & #35;。 當然，此函式庫對於了解宣告型安全性如何在 AMQP 層級運作而言非常有用，如同您了解他如何在 HTTP 層級運作一樣 (使用 HTTP POST 要求以及在標頭 "Authorization" 內部傳送的 SAS 權杖)。 不過，不用擔心！ 如果您不需要這類深入了解有關 AMQP，您可以使用官方服務匯流排 SDK 搭配.Net Framework 會替您的應用程式或 [Azure SB Lite](http://azuresblite.codeplex.com) 程式庫的所有其他平台 (如上述)。
+下列步驟將說明如何傳送 SAS 權杖搭配 AMQP 通訊協定使用 [AMQP.Net Lite](http://amqpnetlite.codeplex.com) 很有用，如果您無法使用官方服務匯流排 SDK 的程式庫 (例如在 WinRT、.Net Compact Framework、.Net Micro Framework 和 Mono) 開發 & #35;。 當然，此函式庫對於了解宣告型安全性如何在 AMQP 層級運作而言非常有用，如同您了解他如何在 HTTP 層級運作一樣 (使用 HTTP POST 要求以及在標頭 "Authorization" 內部傳送的 SAS 權杖)。 不過，不用擔心！ 如果您不需要這類深入了解有關 AMQP，您可以使用官方服務匯流排 SDK 搭配.Net Framework 會替您的應用程式或 [Azure SB Lite](http://azuresblite.codeplex.com) 程式庫的所有其他平台 （如上述）。
 
 ### C&#35;
 
@@ -239,12 +239,12 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-上述 *putcbstoken ()* 方法會接收 *連接* (AMQP Connection 類別執行個體 AMQP.Net Lite 程式庫所提供)，代表服務的 TCP 連線和 *sasToken* 參數之 sas 權杖，來傳送。 
-注意: 很重要的連接，以建立 **SASL 驗證機制設定為外部** (和不使用使用者名稱和密碼，您不需要傳送 SAS 權杖時使用的預設 PLAIN)。
+上述 *putcbstoken （)* 方法會接收 *連接* (AMQP Connection 類別執行個體 AMQP.Net Lite 程式庫所提供），代表服務的 TCP 連線和 *sasToken* 參數之 sas 權杖，來傳送。 
+注意 ︰ 很重要的連接，以建立 **SASL 驗證機制設定為外部** （和不使用使用者名稱和密碼，您不需要傳送 SAS 權杖時使用的預設 PLAIN）。
 
 接下來，發行者會建立兩個 AMQP 連結來傳送 SAS 權杖並接受來自服務的回覆 (權杖驗證結果)。
 
-AMQP 訊息因為具有眾多屬性而有點複雜，且含有比簡單訊息更多的資訊。 SAS 權杖會放在訊息內文中 (使用其建構函式)。  **"ReplyTo"** 屬性設定為接受驗證結果 (您可以變更其名稱而且它將會自動建立服務) 在接收者連結上的節點名稱。 最後三個 application/custom 屬性是由服務使用，以了解它必須執行什麼類型的作業。 它們必須 CBS 草稿規格所述的 **作業名稱** (因此 「 put-語彙基元 」)， **權杖的型別** 放 (因此"put-token")，最後 **的對象的 「 名稱 」** 的權杖套用至 (整個實體)。
+AMQP 訊息因為具有眾多屬性而有點複雜，且含有比簡單訊息更多的資訊。 SAS 權杖會放在訊息內文中 (使用其建構函式)。  **"ReplyTo"** 屬性設定為接受驗證結果 （您可以變更其名稱而且它將會自動建立服務） 在接收者連結上的節點名稱。 最後三個 application/custom 屬性是由服務使用，以了解它必須執行什麼類型的作業。 它們必須 CBS 草稿規格所述的 **作業名稱** （因此 「 put-語彙基元 」）， **權杖的型別** 放 (因此"put-token")，最後 **的對象的 「 名稱 」** 的權杖套用至 （整個實體）。
 
 在寄件者連結上傳送 SAS 權杖之後，發行者需要在接收者連結上讀取回覆。 回覆是名為應用程式屬性的簡單 AMQP 訊息 **」 狀態碼 「** 可包含 HTTP 狀態碼相同的值。 
 
@@ -257,3 +257,4 @@ AMQP 訊息因為具有眾多屬性而有點複雜，且含有比簡單訊息更
 SAS 在 C# 和 Java 指令碼的更多範例位於 [此部落格文章](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)。
 
 [Azure classic portal]: http://manage.windowsazure.com
+

@@ -23,8 +23,8 @@
 
 Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直接，只需幾行的程式碼便可提供單一登入和登出。  在 Java Web 應用程式中，您可以使用 Microsoft 的 ADAL4J 社群導向實作來完成這項作業。
 
-  這裡我們將使用 ADAL4J 來:
-- 使用者登入應用程式使用 Azure AD 作為身分識別提供者。
+  我們將在此處使用 ADAL4J 來執行下列動作：
+- 使用 Azure AD 做為身分識別提供者，將使用者登入應用程式。
 - 顯示使用者的一些相關資訊。
 - 讓使用者登出 App。
 
@@ -1746,8 +1746,9 @@ public class BasicFilter implements Filter {
 
 恭喜！ 您現在有一個可運作的 Java 應用程式，能夠驗證使用者、使用 OAuth 2.0 安全地呼叫 Web API，以及取得使用者的基本資訊。  如果您還沒有這麼做，現在是將一些使用者植入租用戶的時候。
 
-(不含您的設定值) 已完成的範例供您參考 [依現狀的.zip](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip), ，或您可以從 GitHub 複製它:
+（不含您的設定值） 已完成的範例供您參考 [依現狀的.zip](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip), ，或您可以從 GitHub 複製它 ︰
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
+
 
 

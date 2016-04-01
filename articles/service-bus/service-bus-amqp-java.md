@@ -39,7 +39,7 @@ Java 訊息服務 (JMS) 是在 Java 平台上搭配訊息導向中介軟體一�
 
 ### Java 命名及目錄介面 (JNDI)
 
-JMS 使用 Java 命名及目錄介面 (JNDI) 建立邏輯名稱與實際名稱之間的區別。 使用 JNDI 可以解析兩種 JMS 物件: **ConnectionFactory** 和 **目的地**。 JNDI 使用提供者模型，您可以在其中插入不同的目錄服務處理名稱解析作業。 Apache Qpid JMS AMQP 1.0 程式庫隨附一個簡單的屬性檔 JNDI 提供者，可使用文字檔來設定。
+JMS 使用 Java 命名及目錄介面 (JNDI) 建立邏輯名稱與實際名稱之間的區別。 使用 JNDI 可以解析兩種 JMS 物件 ︰ **ConnectionFactory** 和 **目的地**。 JNDI 使用提供者模型，您可以在其中插入不同的目錄服務處理名稱解析作業。 Apache Qpid JMS AMQP 1.0 程式庫隨附一個簡單的屬性檔 JNDI 提供者，可使用文字檔來設定。
 
 Qpid 屬性檔 JNDI 提供者是透過下列格式的屬性檔來設定：
 
@@ -59,7 +59,7 @@ queue.QUEUE = queue1
 
 #### 設定連接工廠
 
-用來定義的項目 **ConnectionFactory** 在 Qpid 內容檔案 JNDI 提供者是下列格式:
+用來定義的項目 **ConnectionFactory** 在 Qpid 內容檔案 JNDI 提供者是下列格式 ︰
 
 ```
 connectionfactory.[jndi_name] = [ConnectionURL]
@@ -95,7 +95,7 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 | 發行者名稱： | owner                                        |
 | 發行者金鑰：  | abcdefg |
 
-然後，為了定義 **ConnectionFactory** 物件名為 `SBCONNECTIONFACTORY`, ，組態字串應如下:
+然後，為了定義 **ConnectionFactory** 物件名為 `SBCONNECTIONFACTORY`, ，組態字串應如下 ︰
 
 ```
 connectionfactory.SBCONNECTIONFACTORY = amqps://owner:abcdefg@test.servicebus.windows.net
@@ -186,7 +186,7 @@ JMS 規格定義如何撰寫 API 方法和應用程式碼的例外狀況合約�
 
 ### 訊息主體
 
-JMS 定義五種不同的訊息類型: **BytesMessage**, ，**MapMessage**, ，**ObjectMessage**, ，**StreamMessage**, ，和 **TextMessage**。 服務匯流排.NET API 有一個單一訊息類型， [BrokeredMessage][]。
+JMS 定義五種不同的訊息類型 ︰ **BytesMessage**, ，**MapMessage**, ，**ObjectMessage**, ，**StreamMessage**, ，和 **TextMessage**。 服務匯流排.NET API 有一個單一訊息類型， [BrokeredMessage][]。
 
 #### JMS 至服務匯流排 .NET API
 
@@ -286,7 +286,7 @@ message = new BrokeredMessage("this is a text string");
 
 ####JMS 至服務匯流排 .NET API
 
-JMS 訊息支援下列類型的應用程式屬性: **布林**, ，**位元組**, ，**簡短**, ，**int**, ，**長**, ，**float**, ，**double**, ，和 **字串**。 下列 Java 程式碼使用以上每一種屬性類型示範如何設定訊息的屬性。
+JMS 訊息支援下列類型的應用程式屬性 ︰ **布林**, ，**位元組**, ，**簡短**, ，**int**, ，**長**, ，**float**, ，**double**, ，和 **字串**。 下列 Java 程式碼使用以上每一種屬性類型示範如何設定訊息的屬性。
 
 ```
 message.setBooleanProperty("TestBoolean", true); 
@@ -322,7 +322,7 @@ if (message.Properties.Keys.Count > 0)
 | Boolean           | 布林               |
 | String            | 字串             |
 
- [BrokeredMessage][] 型別支援下列類型的應用程式屬性: **位元組**, ，**sbyte**, ，**char**, ，**簡短**, ，**ushort**, ，**int**, ，**uint**, ，**長**, ，**ulong**, ，**float**, ，**double**, ，**十進位**, ，**bool**, ，**Guid**, ，**字串**, ，**Uri**, ，**DateTime**, ，**DateTimeOffset**, ，和 **TimeSpan**。 下列.NET 程式碼示範如何設定屬性 [BrokeredMessage][] 物件使用這些屬性的型別。
+ [BrokeredMessage][] 型別支援下列類型的應用程式屬性 ︰ **位元組**, ，**sbyte**, ，**char**, ，**簡短**, ，**ushort**, ，**int**, ，**uint**, ，**長**, ，**ulong**, ，**float**, ，**double**, ，**十進位**, ，**bool**, ，**Guid**, ，**字串**, ，**Uri**, ，**DateTime**, ，**DateTimeOffset**, ，和 **TimeSpan**。 下列.NET 程式碼示範如何設定屬性 [BrokeredMessage][] 物件使用這些屬性的型別。
 
 ```
 message.Properties["TestByte"] = (byte)128;
@@ -378,9 +378,9 @@ while (propertyNames.hasMoreElements())
 | Guid               | UUID              | -                                                                                                                                                                     |
 | 字串             | String            | -                                                                                                                                                                     |
 | DateTime           | Date              | -                                                                                                                                                                     |
-| DateTimeOffset     | DescribedType     | Datetimeoffset.utcticks 會對應至 AMQP 類型:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
-| TimeSpan           | DescribedType     | Timespan.ticks 會對應至 AMQP 類型:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>                        |
-| Uri                | DescribedType     | Uri.absoluteuri 會對應至 AMQP 類型:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>                               |
+| DateTimeOffset     | DescribedType     | Datetimeoffset.utcticks 會對應至 AMQP 類型 ︰<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan           | DescribedType     | Timespan.ticks 會對應至 AMQP 類型 ︰<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>                        |
+| Uri                | DescribedType     | Uri.absoluteuri 會對應至 AMQP 類型 ︰<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>                               |
 
 ### 標準標頭
 
@@ -394,7 +394,7 @@ while (propertyNames.hasMoreElements())
 | JMSDeliveryMode  | 目前無法使用        | 服務匯流排僅支援長期訊息;例如，DeliveryMode.PERSISTENT，不論指定的內容。                                                                                                                                                                                                                                                                                                                                                         |
 | JMSDestination   | Message.To                     | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | JMSExpiration    | 訊息。 TimeToLive            | 轉換                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| JMSMessageID     | Message.MessageID              | 根據預設，JMSMessageID 在 AMQP 訊息中的二進位格式編碼。 收到二進位訊息識別碼時，.NET 用戶端程式庫會根據位元組的 unicode 值，將它轉換為字串表示法。 若要將 JMS 程式庫切換為使用字串訊息識別碼，請將 “binary-messageid=false” 字串附加至 JNDI ConnectionURL 的查詢參數。 例如: 「 amqps://[username]:[password]@[namespace].servicebus.windows.net 嗎? 二進位訊息識別碼 = false"。 |
+| JMSMessageID     | Message.MessageID              | 根據預設，JMSMessageID 在 AMQP 訊息中的二進位格式編碼。 收到二進位訊息識別碼時，.NET 用戶端程式庫會根據位元組的 unicode 值，將它轉換為字串表示法。 若要將 JMS 程式庫切換為使用字串訊息識別碼，請將 “binary-messageid=false” 字串附加至 JNDI ConnectionURL 的查詢參數。 例如: 「 amqps://[username]:[password]@[namespace].servicebus.windows.net 嗎？ 二進位訊息識別碼 = false"。 |
 | JMSPriority      | 目前無法使用        | 服務匯流排不支援訊息優先順序。                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | JMSRedelivered   | 目前無法使用        | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | JMSReplyTo       | 訊息。 ReplyTo               | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -445,4 +445,5 @@ JMS over AMQP 1.0 和服務匯流排一起使用時有下列限制：
 
 [Service Bus AMQP overview]: service-bus-amqp-overview.md
 [Azure classic portal]: http://manage.windowsazure.com
+
 

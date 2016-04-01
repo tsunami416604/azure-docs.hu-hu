@@ -65,7 +65,7 @@ Microsoft Azure 儲存體模擬器提供了模擬 Azure Blob、佇列和資料�
 
 使用此範例建立的共用存取簽章的效期為一天。 簽章會將完整存取權限 (也就是讀取、寫入、刪除和列出) 授與容器內的 Blob。
 
-如需有關共用的存取簽章的詳細資訊，請參閱 [共用存取簽章: 了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md)。
+如需有關共用的存取簽章的詳細資訊，請參閱 [共用存取簽章 ︰ 了解 SAS 模型](storage-dotnet-shared-access-signature-part-1.md)。
 
 
 ## 啟動及初始化儲存體模擬器
@@ -151,11 +151,11 @@ Microsoft Azure 儲存體模擬器提供了模擬 Azure Blob、佇列和資料�
 
 | 選項 | 說明                                                    | 命令                                                                                                 | 引數                                                                                                         |
 |--------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| **Start**  | 啟動儲存體模擬器。                                | `AzureStorageEmulator start [-inprocess]`                                                                    | *-inprocess*: 目前的處理序，而不是建立新的處理序中啟動模擬器。                          |
+| **啟動**  | 啟動儲存體模擬器。                                | `AzureStorageEmulator start [-inprocess]`                                                                    | *-inprocess*︰ 目前的處理序，而不是建立新的處理序中啟動模擬器。                          |
 | **停止**   | 停止儲存體模擬器。                                    | `AzureStorageEmulator stop`                                                                                  |                                                                                                                   |
 | **狀態** | 列印儲存體模擬器的狀態。                     | `AzureStorageEmulator status`                                                                                |                                                                                                                   |
-| **Clear**  | 清除命令列上指定的所有服務中的資料。 | `AzureStorageEmulator clear [blob] [table] [queue] [all]                                                    `| *blob*: 清除 blob 資料。 <br/>*佇列*: 清除佇列資料。 <br/>*資料表*: 清除資料表資料。 <br/>*所有*: 清除所有服務中的所有資料。 |
-| **Init**   | 執行一次初始化以設定模擬器。       | `AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate] [-inprocess]` | *-server serverName\instanceName*: 指定裝載 SQL 執行個體的伺服器。 <br/>*-sqlinstance instanceName*: 指定使用預設伺服器執行個體中的 SQL 執行個體的名稱。 <br/>*-forcecreate*: 強制建立 SQL 資料庫，即使它已經存在。 <br/>*-inprocess*: 目前的處理序，而不是繁衍新的處理序中執行初始化。 您必須以更高權限啟動目前的處理序，才能執行初始化。          |
+| **Clear**  | 清除命令列上指定的所有服務中的資料。 | `AzureStorageEmulator clear [blob] [table] [queue] [all]                                                    `| *blob*︰ 清除 blob 資料。 <br/>*佇列*︰ 清除佇列資料。 <br/>*資料表*︰ 清除資料表資料。 <br/>*所有*︰ 清除所有服務中的所有資料。 |
+| **Init**   | 執行一次初始化以設定模擬器。       | `AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate] [-inprocess]` | *-server serverName\instanceName*︰ 指定裝載 SQL 執行個體的伺服器。 <br/>*-sqlinstance instanceName*︰ 指定使用預設伺服器執行個體中的 SQL 執行個體的名稱。 <br/>*-forcecreate*︰ 強制建立 SQL 資料庫，即使它已經存在。 <br/>*-inprocess*︰ 目前的處理序，而不是繁衍新的處理序中執行初始化。 您必須以更高權限啟動目前的處理序，才能執行初始化。          |
                                                                                                                   
 ## 儲存體模擬器和 Azure 儲存體之間的差異
 
@@ -231,4 +231,5 @@ Microsoft Azure 儲存體模擬器提供了模擬 Azure Blob、佇列和資料�
 - 儲存體模擬器圖形化使用者介面已由可編寫指令碼的命令列介面取代。 如需有關命令列介面的詳細資訊，請參閱儲存體模擬器命令列工具參考。 3.0 版仍將提供圖形化介面，除非在系統匣圖示按一下滑鼠右鍵並選取 [顯示儲存體模擬器 UI] 的方式安裝計算模擬器，否則無法存取圖形化介面。
 
 - 現在完全支援 2013-08-15 版的 Azure 儲存體服務。 (先前只有儲存體模擬器 2.2.1 版預覽才支援此版本)。
+
 

@@ -102,7 +102,7 @@ Description:
     - 移至 **連接到 Active Directory 樹系**。 確認網域和使用者名稱指定在此畫面相符項目上提供的指令碼的帳戶。
 ![連接器帳戶](./media/active-directory-aadconnect-get-started-custom-device-writeback/connectoraccount.png)
 
-確認 Active Directory 中的組態:
+確認 Active Directory 中的組態 ︰
 - 確認 [裝置註冊服務位於以下位置 (CN = DeviceRegistrationService，CN = 裝置註冊服務，CN = 裝置註冊設定，CN = Services，CN = Configuration) 下設定命名內容。
 
 ![Troubleshoot1](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot1.png)
@@ -131,4 +131,5 @@ Description:
 
 ## 後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
+
 

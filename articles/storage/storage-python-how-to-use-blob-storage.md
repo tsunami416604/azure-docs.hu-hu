@@ -64,7 +64,7 @@
 
 若要將資料上傳至 blob，使用 **put\_block\_blob\_from\_path**, ，**put\_block\_blob\_from\_file**, ，**put\_block\_blob\_from\_bytes** 或 **put\_block\_blob\_from\_text** 方法。 這些是高階方法，可在資料大小超過 64 MB 時執行必要的區塊化動作。
 
-**put\_block\_blob\_from\_path** 上傳的檔案之指定的路徑、 內容和 **put\_block\_blob\_from\_file** 上傳已開啟的檔案/資料流中的內容。 **put\_block\_blob\_from\_bytes** 會上傳位元組陣列和 **put\_block\_blob\_from\_text** 會上傳指定的文字值，使用指定的編碼 (預設為 utf-8 格式)。
+**put\_block\_blob\_from\_path** 上傳的檔案之指定的路徑、 內容和 **put\_block\_blob\_from\_file** 上傳已開啟的檔案/資料流中的內容。 **put\_block\_blob\_from\_bytes** 會上傳位元組陣列和 **put\_block\_blob\_from\_text** 會上傳指定的文字值，使用指定的編碼 （預設為 utf-8 格式）。
 
 下列範例會將上傳的內容 **sunset.png** 檔案 **myblob** blob。
 
@@ -125,4 +125,5 @@
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure package]: https://pypi.python.org/pypi/azure
 [Python Azure Storage package]: https://pypi.python.org/pypi/azure-storage  
+
 

@@ -21,9 +21,9 @@
 
 您可以在 Azure 中使用不同類型的記錄檔來管理和疑難排解 NSG。 透過入口網站可以存取其中一些記錄檔，而從 Azure Blob 儲存體可以擷取所有記錄檔並且在不同的工具中進行檢視，例如 Excel 和 PowerBI。 您可以從下列清單進一步了解不同類型的記錄檔。
 
-- **稽核記錄檔:** 您可以使用 [Azure 稽核記錄檔](insights-debugging-with-events.md) (之前稱為操作記錄檔) 若要檢視所有作業提交給您的 Azure 訂閱和其狀態。 預設會啟用稽核記錄檔，並可在 Azure Preview 入口網站中進行檢視。
-- **事件記錄檔:** 您可以使用此記錄檔，以檢視哪些 NSG 規則會套用至 Vm 和 MAC 位址為基礎的執行個體角色。 每隔 60 秒會收集一次這些規則的狀態。 
-- **計數器記錄檔:** 您可以使用此記錄檔來檢視每個 NSG 規則套用到拒絕或允許流量的次數。
+- **稽核記錄檔 ︰** 您可以使用 [Azure 稽核記錄檔](insights-debugging-with-events.md) （之前稱為操作記錄檔） 若要檢視所有作業提交給您的 Azure 訂閱和其狀態。 預設會啟用稽核記錄檔，並可在 Azure Preview 入口網站中進行檢視。
+- **事件記錄檔 ︰** 您可以使用此記錄檔，以檢視哪些 NSG 規則會套用至 Vm 和 MAC 位址為基礎的執行個體角色。 每隔 60 秒會收集一次這些規則的狀態。 
+- **計數器記錄檔 ︰** 您可以使用此記錄檔來檢視每個 NSG 規則套用到拒絕或允許流量的次數。
 
 >[AZURE.WARNING] 記錄檔只可供部署在資源管理員部署模型中的資源。 您無法將記錄檔使用於傳統部署模型中的資源。 進一步了解的兩個模型，參考 [瞭解資源管理員部署和傳統部署](resource-manager-deployment-model.md) 文件。
 
@@ -101,7 +101,7 @@
 ##檢視和分析稽核記錄檔
 您可以使用下列任何方法，檢視和分析稽核記錄檔資料：
 
-- **Azure 工具:** 透過 Azure PowerShell、 Azure 命令列介面 (CLI)、 Azure REST API 或 Azure 預覽入口網站的稽核記錄檔中擷取資訊。  每個方法的逐步指示所述 [稽核作業與資源管理員](resource-group-audit.md) 文件。
+- **Azure 工具 ︰** 透過 Azure PowerShell、 Azure 命令列介面 (CLI)、 Azure REST API 或 Azure 預覽入口網站的稽核記錄檔中擷取資訊。  每個方法的逐步指示所述 [稽核作業與資源管理員](resource-group-audit.md) 文件。
 - **Power BI:** 如果還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，您可以免費試用。 使用 [Azure 稽核記錄檔內容組件的 Power BI](https://support.powerbi.com/knowledgebase/articles/742695) 可以分析您的資料，您可以使用做為預先設定的儀表板-，或自訂。
 
 ##檢視和分析計數器和事件記錄檔 
@@ -113,4 +113,5 @@
 
 - [以視覺化方式檢視您的 Azure 稽核記錄檔與 Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) 部落格文章。
 - [檢視及分析 Power BI 與多個 Azure 稽核記錄檔](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) 部落格文章。
+
 

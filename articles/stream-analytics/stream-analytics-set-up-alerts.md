@@ -24,7 +24,7 @@
 
 您可以設定會在計量達到您指定的條件時觸發的警示。
 
-例如，「 是否在最近 15 分鐘的輸出事件 < 100，將電子郵件通知傳送到電子郵件識別碼: xyz@company.com 」。
+例如，「 是否在最近 15 分鐘的輸出事件 < 100，將電子郵件通知傳送到電子郵件識別碼 ︰ xyz@company.com 」。
 
 規則可以透過入口網站中，度量上設定，或者也可以設定 [以程式設計方式](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) 作業記錄檔資料。
 
@@ -84,4 +84,5 @@
 - [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
 - [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+
 

@@ -53,17 +53,17 @@ AP1000
 
 ### 說明
 
-建立非同步方法 (例如 [await](https://msdn.microsoft.com/library/hh156528.aspx)) 之外的 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，然後呼叫非同步方法，從 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)。 宣告 [[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 為非同步方法會進入重新啟動迴圈的背景工作角色。
+建立非同步方法 (例如 [await](https://msdn.microsoft.com/library/hh156528.aspx)) 之外的 [run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，然後呼叫非同步方法，從 [run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)。 宣告 [[run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 為非同步方法會進入重新啟動迴圈的背景工作角色。
 
 請共用您的想法和意見， [Azure 程式碼分析意見反應](http://go.microsoft.com/fwlink/?LinkId=403771)。
 
 ### 原因
 
-呼叫非同步方法內 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會導致雲端服務執行階段回收背景工作角色。 所有程式執行背景工作角色啟動時，都會在 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法。 結束 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會導致重新啟動背景工作角色。 當背景工作角色執行階段叫用非同步方法時，它會在非同步方法之後分派所有作業，然後返回。 這會使背景工作角色來結束 [[[[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，並重新啟動。 在下一輪執行時，背景工作角色會再次叫用非同步方法並重新啟動，導致背景工作角色又再次回收。
+呼叫非同步方法內 [run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會導致雲端服務執行階段回收背景工作角色。 所有程式執行背景工作角色啟動時，都會在 [run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法。 結束 [run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法會導致重新啟動背景工作角色。 當背景工作角色執行階段叫用非同步方法時，它會在非同步方法之後分派所有作業，然後返回。 這會使背景工作角色來結束 [[[[run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，並重新啟動。 在下一輪執行時，背景工作角色會再次叫用非同步方法並重新啟動，導致背景工作角色又再次回收。
 
 ### 方案
 
-將所有的非同步作業的外部 [run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法。 然後，呼叫內的重構的非同步方法 [[run ()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，例如 RunAsync ().wait。 Azure Code Analysis 工具可協助您修正此問題。
+將所有的非同步作業的外部 [run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法。 然後，呼叫內的重構的非同步方法 [[run （)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) 方法，例如 RunAsync （).wait。 Azure Code Analysis 工具可協助您修正此問題。
 
 下列程式碼片段示範此問題的程式碼修正程式：
 
@@ -305,7 +305,7 @@ AP3001
 
 時鐘同步處理會讓資料中心彼此間產生些微時差。 例如，您會理所當然地認為，使用 DateTime.Now 或類似方法將儲存體 SAS 原則的開始時間設定為目前時間，會讓 SAS 原則立即生效。 不過，資料中心彼此間的些微時差會讓此一假設產生問題，因為某些資料中心的時間可能稍晚於開始時間，有些則是稍早。 如此一來，如果原則的存留期設得太短，SAS 原則可能會快速 (甚至立即) 到期。
 
-在 Azure 儲存體上使用共用存取簽章的詳細指引，請參閱 [簡介資料表 SAS (共用存取簽章)、 佇列 SAS 及 Blob SAS-Microsoft Azure 儲存體團隊部落格-更新網站首頁-MSDN 部落格](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)。
+在 Azure 儲存體上使用共用存取簽章的詳細指引，請參閱 [簡介資料表 SAS （共用存取簽章）、 佇列 SAS 及 Blob SAS-Microsoft Azure 儲存體團隊部落格-更新網站首頁-MSDN 部落格](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)。
 
 ### 方案
 
@@ -342,7 +342,7 @@ AP3002
 
 分處世界各地不同位置的資料中心是以時脈訊號來同步。 時脈訊號需要時間來傳遞到不同位置，因此雖然理論上各地的時間皆同步，但不同地理位置的資料中心之間還是會有時間差。 此一時間差可能會影響共用存取原則的開始時間和到期間隔。 因此，為了確保共用存取原則能立即生效，請勿指定開始時間。 此外，請確定到期時間超過 5 分鐘，以防止提早逾時。
 
-如需使用 Azure 儲存體上的共用存取簽章的詳細資訊，請參閱 [簡介資料表 SAS (共用存取簽章)、 佇列 SAS 及 Blob SAS-Microsoft Azure 儲存體團隊部落格-更新網站首頁-MSDN 部落格](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)。
+如需使用 Azure 儲存體上的共用存取簽章的詳細資訊，請參閱 [簡介資料表 SAS （共用存取簽章）、 佇列 SAS 及 Blob SAS-Microsoft Azure 儲存體團隊部落格-更新網站首頁-MSDN 部落格](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)。
 
 ### 方案
 
@@ -449,7 +449,7 @@ AP4001
 
 - 若是 ASP.NET vNext 應用程式，請使用 configuration.json 來儲存連接字串。
 
-如需使用組態檔，例如 web.config 或 app.config 資訊，請參閱 [ASP.NET Web 組態方針](https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx)。 如需如何在 Azure 環境變數的工作資訊，請參閱 [Azure 網站: 應用程式字串與連接字串運作](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。 在原始檔控制中儲存連接字串資訊，請參閱 [避免將敏感資訊，例如連接字串放在檔案儲存於原始程式碼儲存機制中](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)。
+如需使用組態檔，例如 web.config 或 app.config 資訊，請參閱 [ASP.NET Web 組態方針](https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx)。 如需如何在 Azure 環境變數的工作資訊，請參閱 [Azure 網站 ︰ 應用程式字串與連接字串運作](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。 在原始檔控制中儲存連接字串資訊，請參閱 [避免將敏感資訊，例如連接字串放在檔案儲存於原始程式碼儲存機制中](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)。
 
 ## 使用診斷組態檔
 
@@ -531,4 +531,5 @@ public class BlogsController : Controller
 ## 後續步驟
 
 若要深入了解 optimzing 和疑難排解 Azure 應用程式，請參閱 [疑難排解 Azure App Service 使用 Visual Studio 中的 web 應用程式](web-sites-dotnet-troubleshoot-visual-studio.md)。
+
 

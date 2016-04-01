@@ -14,7 +14,7 @@
 
 如果封裝因為需要編譯器而無法安裝，您可以在本機電腦上安裝編譯器，並建置封裝的 Wheel，然後將其包含在您的儲存機制中。
 
-Mac/Linux 使用者: 如果您沒有 Windows 電腦的存取權，請參閱 [建立執行 Windows 的虛擬機器][] 如何在 Azure 上建立 VM。  您可以使用該虛擬機器建置 Wheel、將它們加入至儲存機制，以及在您想要捨棄虛擬機器時捨棄。 
+Mac/Linux 使用者 ︰ 如果您沒有 Windows 電腦的存取權，請參閱 [建立執行 Windows 的虛擬機器][] 如何在 Azure 上建立 VM。  您可以使用該虛擬機器建置 Wheel、將它們加入至儲存機制，以及在您想要捨棄虛擬機器時捨棄。 
 
 對於 Python 2.7，您可以安裝 [Microsoft Visual c + + Compiler for Python 2.7][]。
 
@@ -67,4 +67,5 @@ Mac/Linux 使用者: 如果您沒有 Windows 電腦的存取權，請參閱 [建
 [Create a Virtual Machine Running Windows]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/
 [Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
+
 

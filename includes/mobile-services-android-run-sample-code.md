@@ -13,9 +13,9 @@
 
 
 
-    > [AZURE.NOTE] You can run this project using an Android phone, or using the Android emulator. Running with an Android phone  requires you to download a phone-specific USB driver.
+    > [AZURE.NOTE] 您可以執行此專案使用 Android 手機，或使用 Android 模擬器。 使用 Android 手機來執行需要先下載手機專用的 USB 驅動程式。
     >
-    > To run the project in the Android emulator, you must define a least one Android Virtual Device (AVD). Use the AVD Manager to create and manage these devices.
+    > 若要在 Android 模擬器中執行專案，您至少必須定義一個 Android 虛擬裝置 (AVD)。 請使用 AVD 管理員來建立和管理這些裝置。
 
 4. 選擇連接的裝置，或 *啟動模擬器*。
 
@@ -24,3 +24,4 @@
     ![](./media/download-android-sample-code/mobile-quickstart-startup-android.png)
 
     請注意，已儲存的文字會存放在 記憶體內部集合，並顯示在以下列表中。
+

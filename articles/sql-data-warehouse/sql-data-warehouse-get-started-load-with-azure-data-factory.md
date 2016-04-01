@@ -35,9 +35,9 @@
 
 對於本教學課程，您將需要下列資源：
 
-   + **Azure 儲存體 Blob**: 您的 Azure 儲存體 Blob 將會為管線的資料來源。  您可以使用現有的 blob 或 [佈建一個新](../storage/storage-create-storage-account/)。
+   + **Azure 儲存體 Blob**︰ 您的 Azure 儲存體 Blob 將會為管線的資料來源。  您可以使用現有的 blob 或 [佈建一個新](../storage/storage-create-storage-account/)。
 
-   + **SQL 資料倉儲**: 在本教學課程中您將會將資料移到 SQL 資料倉儲。  如果您還沒有執行個體安裝，您可以了解如何  [這裡](sql-data-warehouse-get-started-provision.md)。  此外，也將需要搭配我們的 AdventureWorks DW 資料集設定您的執行個體。  如果您未佈建您的資料倉儲使用範例資料，您可以 [手動載入](sql-data-warehouse-get-started-manually-load-samples.md)。
+   + **SQL 資料倉儲**︰ 在本教學課程中您將會將資料移到 SQL 資料倉儲。  如果您還沒有執行個體安裝，您可以了解如何  [這裡](sql-data-warehouse-get-started-provision.md)。  此外，也將需要搭配我們的 AdventureWorks DW 資料集設定您的執行個體。  如果您未佈建您的資料倉儲使用範例資料，您可以 [手動載入](sql-data-warehouse-get-started-manually-load-samples.md)。
 
    + **Azure Data Factory**: Azure Data Factory 會完成實際負載，而且如果您需要設定 Azure Data Factory，或建立管線的詳細資訊然後您可以看到 [這裡](../data-factory/data-factory-build-your-first-pipeline-using-editor/)。
 
@@ -205,4 +205,5 @@
     }
     }
     
+
 

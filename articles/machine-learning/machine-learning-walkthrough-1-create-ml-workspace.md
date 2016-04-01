@@ -52,7 +52,8 @@
 
 ----------
 
-**下一步: [上傳現有資料](machine-learning-walkthrough-2-upload-data.md)**
+**下一步 ︰ [上傳現有資料](machine-learning-walkthrough-2-upload-data.md)**
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
+
 

@@ -54,20 +54,20 @@ None | 傳送電子郵件
 
 6. 選取 **建立**。
 
-> [AZURE.IMPORTANT] 某些 SMTP 伺服器可能有問題 (SendGrid 和 Gmail)，此連接器的運作方式。  如果您想要傳送郵件的 SendGrid 我們 [GitHub 儲存機制](https://github.com/logicappsio/SendGridAPI) 具有自訂 API 將溝通直接搭配 SendGrid Api。
+> [AZURE.IMPORTANT] 某些 SMTP 伺服器可能有問題 （SendGrid 和 Gmail），此連接器的運作方式。  如果您想要傳送郵件的 SendGrid 我們 [GitHub 儲存機制](https://github.com/logicappsio/SendGridAPI) 具有自訂 API 將溝通直接搭配 SendGrid Api。
 
 ## 在邏輯應用程式中使用 SMTP 連接器
 建立連接器之後，即可使用 SMTP 連接器做為邏輯應用程式的動作。 作法：
 
 1.  建立新的邏輯應用程式：  
 ![][2]
-2.  開啟 **觸發程序和動作** 以開啟邏輯應用程式設計工具並設定您的工作流程:  
+2.  開啟 **觸發程序和動作** 以開啟邏輯應用程式設計工具並設定您的工作流程 ︰  
 ![][3]
 3.  SMTP 連接器會列在右側資源庫中的 [此資源群組中的 API 應用程式] 區段。 請選取它：  
 ![][4]
 4.  選取 [SMTP 連接器]，自動將它加入工作流程設計工具。
 
-您現在可以設定要在工作流程中使用的 SMTP 連接器。 選取 **傳送電子郵件** 動作並設定輸入的屬性:
+您現在可以設定要在工作流程中使用的 SMTP 連接器。 選取 **傳送電子郵件** 動作並設定輸入的屬性 ︰
 
     Property | Description
     --- | ---
@@ -84,9 +84,9 @@ None | 傳送電子郵件
 ![][6]
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -99,4 +99,5 @@ None | 傳送電子郵件
 [4]: ./media/app-service-logic-connector-smtp/img4.PNG
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
+
 

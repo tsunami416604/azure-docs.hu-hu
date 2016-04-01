@@ -24,7 +24,7 @@
 
  App Service 驗證 / 授權是一項功能，可讓您的應用程式登入使用者，而不需在 app 後端進行任何程式碼變更。 它提供簡單的方法來保護您的應用程式，以及使用每位使用者的資料。
 
-App Service 中使用同盟識別身分，第 3 方 **身分識別提供者** (「 IDP 」) 會儲存帳戶和驗證使用者，以及應用程式使用這個身分識別，而非其本身。 應用程式服務支援五個現成的身分識別提供者: _Azure Active Directory_, ，_Facebook_, ，_Google_, ，_Microsoft 帳戶_, ，和 _Twitter_。 您也可以藉由整合其他身分識別提供者或您自己自訂的身分識別解決方案，針對您的 app 延伸此支援。
+App Service 中使用同盟識別身分，第 3 方 **身分識別提供者** (「 IDP 」) 會儲存帳戶和驗證使用者，以及應用程式使用這個身分識別，而非其本身。 應用程式服務支援五個現成的身分識別提供者 ︰ _Azure Active Directory_, ，_Facebook_, ，_Google_, ，_Microsoft 帳戶_, ，和 _Twitter_。 您也可以藉由整合其他身分識別提供者或您自己自訂的身分識別解決方案，針對您的 app 延伸此支援。
 
 您的 app 可以利用任意數目的這類身分識別提供者，因此可為您的使用者提供登入選項。
 
@@ -105,3 +105,4 @@ App Service 中使用同盟識別身分，第 3 方 **身分識別提供者** (�
 [How to configure your app to use Google login]: app-service-mobile-how-to-configure-google-authentication.md
 [How to configure your app to use Microsoft Account login]: app-service-mobile-how-to-configure-microsoft-authentication.md
 [How to configure your app to use Twitter login]: app-service-mobile-how-to-configure-twitter-authentication.md
+

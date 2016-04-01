@@ -83,7 +83,7 @@ Microsoft Management Agent 可將電腦連線至 Operations Management Suite。 
     Import-Module HybridRegistration.psd1
 
 
-然後執行 **Add-hybridrunbookworker** cmdlet 使用下列語法:
+然後執行 **Add-hybridrunbookworker** cmdlet 使用下列語法 ︰
 
     Add-HybridRunbookWorker –Name <String> -EndPoint <Url> -Token <String>
 
@@ -167,4 +167,5 @@ Runbook 將在混合式 Runbook 背景工作上的本機系統帳戶內容中執
 - [在 Azure 自動化中啟動 Runbook](automation-starting-a-runbook.md)
 - [在 Azure 自動化中編輯 Runbook](https://msdn.microsoft.com/library/dn879137.aspx)
  
+
 

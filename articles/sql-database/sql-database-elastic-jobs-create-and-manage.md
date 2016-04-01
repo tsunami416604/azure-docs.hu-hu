@@ -23,11 +23,11 @@
 - [PowerShell](sql-database-elastic-jobs-powershell.md)
 
 
-**彈性資料庫工作** 可輕鬆地和可靠的管理群組的資料庫，透過簡化的管理作業，例如結構描述變更、 認證管理、 參考資料更新、 效能資料集合或租用戶 (客戶) 遙測集合執行。 彈性資料庫工作目前可透過 Azure 入口網站和 PowerShell Cmdlet 使用。 不過，Azure 入口網站介面降低功能僅限於執行中的所有資料庫 [彈性資料庫集區 (預覽)](sql-database-elastic-pool.md)。 若要存取其他功能和指令碼執行的一整組資料庫包括自訂的集合或分區設定 (使用建立 [彈性資料庫用戶端程式庫](sql-database-elastic-scale-introduction.md))，請參閱 [建立和管理工作使用 PowerShell](sql-database-elastic-jobs-powershell.md)。 如需工作的詳細資訊，請參閱 [彈性資料庫工作概觀](sql-database-elastic-jobs-overview.md)。 
+**彈性資料庫工作** 可輕鬆地和可靠的管理群組的資料庫，透過簡化的管理作業，例如結構描述變更、 認證管理、 參考資料更新、 效能資料集合或租用戶 （客戶） 遙測集合執行。 彈性資料庫工作目前可透過 Azure 入口網站和 PowerShell Cmdlet 使用。 不過，Azure 入口網站介面降低功能僅限於執行中的所有資料庫 [彈性資料庫集區 （預覽）](sql-database-elastic-pool.md)。 若要存取其他功能和指令碼執行的一整組資料庫包括自訂的集合或分區設定 (使用建立 [彈性資料庫用戶端程式庫](sql-database-elastic-scale-introduction.md))，請參閱 [建立和管理工作使用 PowerShell](sql-database-elastic-jobs-powershell.md)。 如需工作的詳細資訊，請參閱 [彈性資料庫工作概觀](sql-database-elastic-jobs-overview.md)。 
 
 ## 必要條件
 
-* Azure 訂用帳戶。 如需免費試用版，請參閱 [免費試用一個月](http://azure.microsoft.com/pricing/free-trial/)。
+* Azure 訂閱。 如需免費試用版，請參閱 [免費試用一個月](http://azure.microsoft.com/pricing/free-trial/)。
 * 彈性資料庫集區。 請參閱 [關於彈性資料庫集區](sql-database-elastic-pool.md)
 * 安裝彈性資料庫工作服務元件。 請參閱 [安裝彈性資料庫工作服務](sql-database-elastic-jobs-service-installation.md)。
 
@@ -36,13 +36,13 @@
 1. 使用 [Azure 入口網站](https://portal.azure.com), ，從現有的彈性資料庫工作集區，按一下 [ **建立工作**。
 2. 輸入工作控制資料庫 (工作的中繼資料儲存體) 之資料庫系統管理員 (在安裝工作時建立) 的使用者名稱與密碼。
 
-    ![此工作，輸入或貼上程式碼，然後按一下 [執行][] 1
+    ![為工作命名，輸入或貼上程式碼，然後按一下 [執行]][1]
 2. 在 **建立工作** 刀鋒視窗中，輸入工作名稱。
 3. 輸入使用者名稱與密碼來連線至目標資料庫，以取得足夠權限來成功執行指令碼。
 4. 貼上或輸入 T-SQL 指令碼。
 5. 按一下 [ **儲存** 然後按一下 [ **執行**。
 
-    ![建立工作和執行][] 5
+    ![建立工作並執行][5]
 
 ## 執行等冪工作
 
@@ -90,18 +90,18 @@
 
 1. 從彈性資料庫集區] 頁面上，按一下 [ **管理工作**。
 
-    ![按一下 [管理工作]][] 2
+    ![按一下 [管理工作]][2]
 
 2. 按一下工作的名稱 (a)。  **狀態** 可以是 「 已完成 」 或 「 失敗 」。 工作的詳細資料隨即出現 (b)，並提供建立和執行的日期和時間。 其下方的清單 (c) 顯示對集區中每個資料庫執行指令碼的進度，並提供其日期和時間詳細資料。
 
-    ![檢查完成的工作][] 3
+    ![檢查完成的工作][3]
 
 
 ## 檢查失敗的工作
 
 如果工作失敗，您可以找到其執行記錄檔。 按一下失敗工作的名稱，以查看其詳細資料。
 
-![檢查失敗的工作][] 4
+![查看失敗的工作][4]
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -114,3 +114,4 @@
 [5]: ./media/sql-database-elastic-jobs-create-and-manage/screen-2.png
 
  
+

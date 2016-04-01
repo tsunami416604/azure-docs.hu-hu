@@ -2,7 +2,7 @@
 <!--
 includes/sql-database-include-connection-string-40-config.md
 
-最新的有效性檢查: 2015年-09-04，GeneMi。
+Latest Freshness check:  2015-09-04 , GeneMi.
 
 ## Connection string
 -->
@@ -65,4 +65,5 @@ includes/sql-database-include-connection-string-20-portalshots.md
 includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
+
 

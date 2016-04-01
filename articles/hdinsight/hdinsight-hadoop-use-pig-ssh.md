@@ -27,7 +27,7 @@ Pig Latin 程式設計語言可讓您描述套用至輸入資料來產生想要�
 
 > [AZURE.NOTE] 如果您已熟悉使用以 Linux 為基礎的 Hadoop 伺服器，但剛接觸 HDInsight，請參閱 [以 Linux 為基礎的 HDInsight 秘訣](hdinsight-hadoop-linux-information.md)。
 
-##<a id="prereq"></a>先決條件
+##<a id="prereq"></a>必要條件
 
 若要完成這篇文章中的步驟，您需要下列項目。
 
@@ -142,7 +142,7 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 
 如您所見，Pig 命令可讓您使用 Pig Latin 以互動方式執行 MapReduce 作業，以及執行批次檔中所儲存的陳述式。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 Pig 的一般資訊。
 
@@ -153,4 +153,5 @@ Windows 未提供內建 SSH 用戶端。 我們建議使用 **PuTTY**, ，這可
 * [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 MapReduce 與 HDInsight 上的 Hadoop](hdinsight-use-mapreduce.md)
+
 

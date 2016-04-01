@@ -109,7 +109,7 @@
 |[轉送傳訊繫結：網路事件](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-c0176977)|示範如何使用 **NetEventRelayBinding** Microsoft Azure 服務匯流排上的繫結。|1.8|Microsoft Azure 服務匯流排|
 |[轉送傳訊繫結：WS2007Http 工作階段](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-ef1f1fcb)|示範如何使用 **WS2007HttpRelayBinding** 繫結啟用可靠工作階段。 它也會示範如何在組態檔中 (而不是以程式設計方式) 指定服務匯流排認證。|1.8|Microsoft Azure 服務匯流排|
 |[轉送傳訊繫結：WS2007Http MsgSecCertificate](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-f29c9da5)|示範如何使用 **WS2007HttpRelayBinding** 繫結搭配訊息安全性來保護端對端訊息，同時仍要求用戶端驗證服務匯流排。|1.8|Microsoft Azure 服務匯流排|
-|[轉送傳訊：中繼資料交換](http://code.msdn.microsoft.com/Relayed-Messaging-Metadata-f122312e)|示範如何公開使用轉送繫結的中繼資料端點。 **MetadataExchange** 支援下列轉送繫結: **NetTcpRelayBinding**, ，**NetOnewayRelayBinding**, ，**BasicHttpRelayBinding**, ，和 **WS2007HttpRelayBinding**。|1.8|Microsoft Azure 服務匯流排|
+|[轉送傳訊：中繼資料交換](http://code.msdn.microsoft.com/Relayed-Messaging-Metadata-f122312e)|示範如何公開使用轉送繫結的中繼資料端點。 **MetadataExchange** 支援下列轉送繫結 ︰ **NetTcpRelayBinding**, ，**NetOnewayRelayBinding**, ，**BasicHttpRelayBinding**, ，和 **WS2007HttpRelayBinding**。|1.8|Microsoft Azure 服務匯流排|
 |[轉送傳訊繫結：NetTcp Direct](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-ca039161)|示範如何設定 **NetTcpRelayBinding** 繫結來支援 **混合式** 連線模式會先建立轉送的連線，並可能的話，自動切換到用戶端和服務之間的直接連線。|1.8|Microsoft Azure 服務匯流排|
 |[轉送傳訊繫結：NetTcp MsgSec UserName](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-30542392)|示範如何使用 **NetTcpRelayBinding** 繫結搭配訊息安全性。|1.8|Microsoft Azure 服務匯流排|
 |[轉送傳訊繫結：Net Oneway](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-bb5b813a)|示範如何公開及取用服務的端點使用 **NetOnewayRelayBinding** 繫結。|1.8|Microsoft Azure 服務匯流排|
@@ -131,4 +131,5 @@
 - [服務匯流排訊息概觀](service-bus-messaging-overview.md)
 - [服務匯流排架構](service-bus-architecture.md)
 - [服務匯流排基本概念](service-bus-fundamentals-hybrid-solutions.md)
+
 

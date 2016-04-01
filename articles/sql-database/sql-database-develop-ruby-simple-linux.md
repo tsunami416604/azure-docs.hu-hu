@@ -73,7 +73,7 @@
     host: 'yourserver.database.windows.net', port: 1433,
     database: 'AdventureWorks', azure:true
 
-## 步驟 3: 執行查詢
+## 步驟 3 ︰ 執行查詢
 
  [Tinytds:: Result](https://github.com/rails-sqlserver/tiny_tds) 函數用來擷取對 SQL Database 設定從查詢的結果。 此函數會接受查詢，並傳回結果集。 結果集可使用 [result.each do |row|](https://github.com/rails-sqlserver/tiny_tds)。
 
@@ -87,7 +87,7 @@
     puts row
     end
 
-## 步驟 4: 插入資料列
+## 步驟 4 ︰ 插入資料列
 
 在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。  
 
@@ -115,4 +115,5 @@
     results.each do |row|
     puts row
     end
+
 

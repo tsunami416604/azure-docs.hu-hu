@@ -34,7 +34,7 @@
 
 您應該從 Hadoop 叢集前端節點上的 Hadoop 命令列主控台提交 Hive 查詢。 若要執行這個動作，請登入 Hadoop 叢集的前端節點、開啟 Hadoop 命令列主控台，然後從該處提交 Hive 查詢。 如需 Hadoop 命令列主控台中提交 Hive 查詢的指示，請參閱 [如何提交 Hive 查詢](machine-learning-data-science-process-hive-tables.md#submit)。
 
-## <a name="uniform"></a> 統一隨機取樣 ##
+## <a name="uniform"></a>統一隨機取樣 ##
 統一隨機取樣表示資料集中的每個資料列都具有相等的取樣機率。 這可藉由在內部 "select" 查詢中，以及在外部 "select" 查詢 (在該隨機欄位中設定條件) 中，將額外的欄位 rand() 新增至資料集中來實作。
 
 查詢範例如下：
@@ -52,7 +52,7 @@
 
 在此處，`<sample rate, 0-1>` 會指定使用者想要取樣的記錄比例。
 
-## <a name="group"></a> 依群組隨機取樣 ##
+## <a name="group"></a>依群組隨機取樣 ##
 
 對類別資料進行取樣時，您可能想要包含或排除類別變數中某些特殊值的所有執行個體。 這就是「依群組取樣」的意思。
 例如，如果您有一個類別變數 "State"，其擁有 NY、MA、CA、NJ、PA 等值，則您會想要讓相同狀態的記錄一律在一起，而不論是否要對它們進行取樣。
@@ -105,3 +105,4 @@
 
 如需更進階取樣方法，可在 Hive 中的資訊，請參閱 [LanguageManual 取樣](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)。
  
+

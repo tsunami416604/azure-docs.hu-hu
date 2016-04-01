@@ -30,8 +30,8 @@
 
 在此屬性頁面中，您可以變更下列項目： 
 
-* **服務名稱:** Azure 專案的名稱。
-* **每個組建:** 是否設定專案建置到計算模擬器或部署至 Azure。
+* **服務名稱 ︰** Azure 專案的名稱。
+* **每個組建 ︰** 是否設定專案建置到計算模擬器或部署至 Azure。
 * **目標 OS:** 專案部署至 Azure 時所要使用的作業系統。
 
 ## 另請參閱 ##
@@ -60,4 +60,5 @@
 <!-- IMG List -->
 
 [ic719480]: ./media/azure-toolkit-for-eclipse-azure-project-properties/ic719480.png
+
 

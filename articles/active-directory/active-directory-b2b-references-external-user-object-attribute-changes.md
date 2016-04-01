@@ -34,3 +34,4 @@ Azure AD 目錄中的每個使用者都以使用者物件形式呈現。 Azure A
 - [外部使用者權杖格式](active-directory-b2b-references-external-user-token-format.md)
 - [目前的預覽版本限制](active-directory-b2b-current-preview-limitations.md)
 
+

@@ -13,7 +13,7 @@
 
     這會下載、 安裝，並將參考加入 [Microsoft Azure 儲存體 SDK](https://www.nuget.org/packages/WindowsAzure.Storage/)。
 
-3. 在 **Program.cs** 檔案中，在檔案頂端新增下列陳述式:
+3. 在 **Program.cs** 檔案中，在檔案頂端新增下列陳述式 ︰
 
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
@@ -45,7 +45,7 @@
 
     這個方法會建立新的 blob 參考，並產生共用的存取簽章 URI 中所述 [建立並使用與 Blob 服務 SAS](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-2/)。 請注意，上述方法產生的簽章 URI 的有效時間為 24 小時。 如果目標裝置需要更多時間來上傳檔案 (例如裝置不常連接，或上傳大型檔案的連線品質不可靠)，建議您考慮使用到期時間更長的簽章。
 
-5. 修改 **SendCloudToDeviceMessageAsync** 方式如下:
+5. 修改 **SendCloudToDeviceMessageAsync** 方式如下 ︰
 
         private async static Task SendCloudToDeviceMessageAsync()
         {
@@ -69,6 +69,7 @@
 [Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 
 <!-- Images -->
+
 
 
 

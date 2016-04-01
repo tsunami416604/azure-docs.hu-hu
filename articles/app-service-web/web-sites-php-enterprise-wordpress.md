@@ -49,7 +49,7 @@ Azure 應用程式服務提供可擴充、 安全又容易使用的環境，以�
 
 在每個區域內，您仍然可以在多個 Web 應用程式執行個體中調整 WordPress 網站，但此調整會是區域特定；高流量區域和低流量區域的調整可能會有所不同。
 
-複寫和路由傳送至多個 MySQL 資料庫也可以透過使用 ClearDB 的 [CDBR 高可用性路由器][cleardbscale] (如左側所示，) 或 [MySQL 叢集 CGE][cge]。
+複寫和路由傳送至多個 MySQL 資料庫也可以透過使用 ClearDB 的 [CDBR 高可用性路由器][cleardbscale] （如左側所示，） 或 [MySQL 叢集 CGE][cge]。
 
 ###包含媒體儲存體和快取的多重區域部署
 
@@ -69,7 +69,7 @@ Azure 應用程式服務提供可擴充、 安全又容易使用的環境，以�
 **傳送電子郵件** | [SendGrid][storesendgrid] 和 [使用 SendGrid 的 WordPress 外掛程式][sendgridplugin]
 **自訂網域名稱** | [在 Azure App Service 中設定自訂網域名稱][customdomain]
 **HTTPS** | [針對 Azure App Service 中的 Web 應用程式啟用 HTTPS][httpscustomdomain]
-**生產前驗證** | [設定預備環境的 web 應用程式在 Azure App Service 中][staging] <p>請注意，web 應用程式切換從接移到生產環境也會跟著移動 WordPress 組態。 您應確定所有設定會更新到生產應用程式的需求，才能將預備應用程式切換成生產應用程式。</p>
+**生產前驗證** | [針對 Azure App Service 中的 Web 應用程式設定預備環境][staging] <p>請注意，從預備Web 應用程式切換成生產Web 應用程式時也會跟著移動 WordPress 組態。 您應確定所有設定會更新到生產應用程式的需求，才能將預備應用程式切換成生產應用程式。</p>
 **監視與疑難排解** | [啟用診斷記錄功能，在 Azure App Service web 應用程式的][log] 和 [Azure App Service 中監視 Web 應用程式][monitor]
 **部署網站** | [在 Azure App Service 中部署 Web 應用程式][deploy]
 
@@ -184,10 +184,10 @@ Azure 應用程式服務提供可擴充、 安全又容易使用的環境，以�
 作法... | 目的...
 ------------- | -----------
 **設定 App Service 計劃模式、大小，以及啟用調整規模** | [在 Azure App Service 中調整 Web 應用程式規模][websitescale]
-**啟用持續資料庫連線** <p>根據預設，WordPress 不會使用持續資料庫連線，可能會造成連線進入流速在多個連線後的資料庫。</p>  | <ol><li><p>編輯 <strong>wp-包含 wp-includes/wp-db.php</strong> 檔案。</p></li><li><p>尋找下列程式碼行。</p><code>$this->dbh = mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags );</code></li><li><p>使用下列程式碼來取代先前的程式碼行。</p><code>$這]-> [dbh = mysql_pconnect (這-> dbhost，這]-> [dbuser，這]-> [的 $ $ $ $client_flags，dbpassword); <br/>如果 (false! = = $error_reporting) {/br/ > & nbsp; & nbsp; error_reporting ($error_reporting); <br/>} </code></li><li><p>尋找下列程式碼行。</p><code>$this->dbh = @mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags ); </code></li><li><p>使用下列程式碼來取代上面的程式碼行。</p><code>$這]-> [dbh = @mysql_pconnect (這-> dbhost，這]-> [dbuser，這]-> [的 $ $ $ $client_flags，dbpassword); </code></li><li><p>儲存檔案 <strong>wp-包含 wp-includes/wp-db.php</strong> 檔案，並重新部署網站。</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><p>更新 WordPress 時有可能會覆寫這些變更。</p><p>WordPress 預設會自動更新，您可透過編輯 <strong>wp-config.php</strong> 檔案，並新增下列程式碼來停用自動更新： <code>define ( 'WP_AUTO_UPDATE_CORE', false );</code></p><p>另一種處理更新的方法會是使用 WebJob，以在每次檔案更新時監視 <strong>wp-db.php</strong> 檔案和執行上述修改。 請參閱 [] <a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">WebJobs 簡介</a> 以獲得詳細資訊。</p></div>
-**提升效能** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">停用 ARR cookie</a> -在多個 Web 應用程式執行個體上執行 WordPress 時可提升效能</p></li><li><p>啟用快取。 <a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis 快取</a> (預覽) 可搭配 <a href="https://wordpress.org/plugins/redis-object-cache/">Redis 快取物件 WordPress 外掛程式使用</a>，或使用來自下列的其他快取項目： <a href="/gallery/store/">Azure 市集</a></p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">如果利用 Wincache 讓 WordPress 變得更快</a> -預設會啟用 Wincache Web 應用程式</p></li><li><p><a href="../web-sites-scale/">在 Azure App Service 中調整 Web 應用程式規模</a> 並使用 <a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB 高可用性路由</a> 或 <a href="http://www.mysql.com/products/cluster/">MySQL 叢集 CGE</a></p></li></ul>
-**使用 Blob 進行儲存** | <ol><li><p><a href="../storage-create-storage-account/">建立 Azure 儲存體帳戶</a></p></li><li><p>了解如何 <a href="../cdn-how-to-use/">使用內容發佈網路 (CDN)</a> 在異地發佈 Blob 中儲存的資料。</p></li><li><p>安裝及設定 <a href="https://wordpress.org/plugins/windows-azure-storage/">Azure Storage for WordPress 外掛程式</a>.</p><p>如需此外掛程式的詳細安裝和設定資訊，請參閱 <a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">使用者指南</a>.</p> </li></ol>
-**啟用電子郵件** | <ol><li><p><a href="/gallery/store/sendgrid/sendgrid-azure/">使用 Azure 市集啟用 SendGrid</a></p></li><li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">安裝 WordPress 的 SendGrid 外掛程式</a></p></li></ol>
+**啟用持續資料庫連線** <p>依預設，WordPress 不會使用持續資料庫連線，因為在多個連線後，此選項會造成資料庫連線進入流速控制狀態。</p>  | <ol><li><p>編輯 <strong>wp-包含 wp-includes/wp-db.php</strong> 檔案。</p></li><li><p>尋找下列程式碼行。</p><code>$this->dbh = mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags );</code></li><li><p>使用下列程式碼來取代先前的程式碼行。</p><code>$this->dbh = mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword,  $client_flags ); <br/>if ( false !== $error_reporting ) { /br/>&nbsp;&nbsp;error_reporting( $error_reporting ); <br/>} </code></li><li><p>尋找下列程式碼行。</p><code>$this->dbh = @mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags ); </code></li><li><p>使用下列程式碼來取代上面的程式碼行。</p><code>$this->dbh = @mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword,  $client_flags ); </code></li><li><p>將檔案儲存 <strong>wp-包含 wp-includes/wp-db.php</strong> 檔案，並重新部署網站。</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><p>更新 WordPress 時有可能會覆寫這些變更。</p><p>WordPress 預設會自動更新，您可以編輯停用 <strong>wp-config.php</strong> 檔案，並新增 <code>define ( 'WP_AUTO_UPDATE_CORE', false );</code></p><p>處理更新的另一種方式就是使用 WebJob 來監視 <strong>wp-db.php</strong> 檔案，並在每次更新檔案時執行上述修改。 請參閱 <a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">WebJobs 簡介</a> 如需詳細資訊。</p></div>
+**提升效能** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">停用 ARR cookie</a> -在多個 Web 應用程式執行個體上執行 WordPress 時可提升效能</p></li><li><p>啟用快取。 <a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis 快取</a> （預覽） 可以搭配 <a href="https://wordpress.org/plugins/redis-object-cache/">Redis 物件快取 WordPress 外掛程式</a>, ，或使用其中一個其他快取提供項目從 <a href="/gallery/store/">Azure 存放區</a></p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">如何加快 WordPress 的速度透過 Wincache</a> -預設會啟用 Wincache 的 Web 應用程式</p></li><li><p><a href="../web-sites-scale/">在 Azure App Service 中調整 web 應用程式</a> 並用 <a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB 高可用性路由</a> 或 <a href="http://www.mysql.com/products/cluster/">MySQL 叢集 CGE</a></p></li></ul>
+**使用 Blob 進行儲存** | <ol><li><p><a href="../storage-create-storage-account/">建立 Azure 儲存體帳戶</a></p></li><li><p>了解如何 <a href="../cdn-how-to-use/">使用內容發佈網路 (CDN)</a> 異地-發佈儲存在 blob 中的資料。</p></li><li><p>安裝和設定 <a href="https://wordpress.org/plugins/windows-azure-storage/">Azure Storage for WordPress 外掛程式</a>。</p><p>詳細的安裝及設定外掛程式的資訊，請參閱 <a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">使用者指南</a>。</p> </li></ol>
+**啟用電子郵件** | <ol><li><p><a href="/gallery/store/sendgrid/sendgrid-azure/">使用 Azure 市集啟用 SendGrid</a></p></li><li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">安裝適用於 WordPress 的 SendGrid 外掛程式</a></p></li></ol>
 **設定自訂網域名稱** | [在 Azure App Service 中設定自訂網域名稱][customdomain]
 **啟用自訂網域名稱的 HTTPS** | [針對 Azure App Service 中的 Web 應用程式啟用 HTTPS][httpscustomdomain]
 **負載平衡或異地發佈您的網站** | [使用 Azure 流量管理員路由傳送流量][trafficmanager]。 如果您使用自訂網域，請參閱 [Azure App Service 中設定自訂網域名稱][customdomain] 如需使用流量管理員搭配自訂網域名稱
@@ -232,10 +232,10 @@ Azure 應用程式服務提供可擴充、 安全又容易使用的環境，以�
 
 * [在 Azure 上的 WordPress 秘訣](http://www.johnpapa.net/azurecleardbmysql/)
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [performance-diagram]: ./media/web-sites-php-enterprise-wordpress/performance-diagram.png
 [basic-diagram]: ./media/web-sites-php-enterprise-wordpress/basic-diagram.png
@@ -281,4 +281,5 @@ Azure 應用程式服務提供可擴充、 安全又容易使用的環境，以�
 [storesendgrid]: https://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/
 [cdn]: ../cdn-how-to-use.md
  
+
 

@@ -21,8 +21,8 @@
 > [AZURE.SELECTOR]
 - [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
-- [iOS |Obj C](mobile-engagement-ios-get-started.md)
-- [iOS |Swift](mobile-engagement-ios-swift-get-started.md)
+- [iOS | Obj C](mobile-engagement-ios-get-started.md)
+- [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
 - [Android](mobile-engagement-android-get-started.md)
 - [Cordova](mobile-engagement-cordova-get-started.md)
 
@@ -31,12 +31,12 @@
 
 本教學課程需要下列各項：
 
-+ Android SDK (假設您將使用 Android Studio)，您可以下載 [這裡](http://go.microsoft.com/fwlink/?LinkId=389797)
-+ [Mobile Engagement Android SDK]
++ Android SDK （假設您將使用 Android Studio），您可以下載 [這裡](http://go.microsoft.com/fwlink/?LinkId=389797)
++ 的 [Mobile Engagement Android SDK]
 
-> [AZURE.IMPORTANT] 完成本教學課程是 Android 應用程式，所有其他 Mobile Engagement 教學課程的先決條件，若要完成此作業，您必須具有有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
+> [AZURE.IMPORTANT] 完成本教學課程是 Android 應用程式，所有其他 Mobile Engagement 教學課程的先決條件，若要完成此作業，您必須具有有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
 
-##<a id="setup-azme"></a>為 Android 應用程式設定 Mobile Engagement
+##<a id="setup-azme"></a>為您的 Android 應用程式設定 Mobile Engagement
 
 [AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -82,7 +82,7 @@ Android Studio 現在將建立要用於整合 Mobile Engagement 的示範應用�
 
       ![][6]
 
-4. 瀏覽至 **專案** 區段 (1) 和.jar 貼到 libs 資料夾 (2)。
+4. 瀏覽至 **專案** 區段 （1） 和.jar 貼到 libs 資料夾 (2)。
 
       ![][7]
 
@@ -144,13 +144,13 @@ Android Studio 現在將建立要用於整合 Mobile Engagement 的示範應用�
 
     // setSupportActionBar(toolbar);
 
-如果您想要保留這周圍，您應該檢查出 「 基本報告 」 中的案例我們 [進階 Android 整合]
+如果您想要保留這周圍，則您應該查看 < 基本報告 > 案例中我們 [Advanced Android Integration]
 
 ##<a id="monitor"></a>將應用程式與即時監視連接
 
 [AZURE.INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-##<a id="integrate-push"></a>啟用推播通知與應用程式內傳訊
+##<a id="integrate-push"></a>啟用推播通知與 App 內傳訊
 
 Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊」，於活動進行時與使用者互動和「觸達」。 此模組在 Mobile Engagement 入口網站中稱為觸達 (REACH)。
 以下各節將設定您的應用程式來接收它們。
@@ -237,7 +237,7 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 
         <meta-data android:name="engagement:gcm:sender" android:value="************\n" />
 
-2. 將下列程式碼貼到 Manifest.xml 的 `<application>` 和 `</application>` 標記之間。 請別忘了取代封裝名稱 <Your package name>。
+2. 將下列程式碼貼到 Manifest.xml 的 `<application>` 和 `</application>` 標記之間。 取代封裝名稱 <Your package name>.
 
         <receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
         android:exported="false">
@@ -266,15 +266,15 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 
 1. 瀏覽至您的 Mobile Engagement 入口網站
 
-    在 Azure 傳統入口網站，確定您已在我們的應用程式使用此專案，然後按一下 [ **Engage** 底部的按鈕:
+    在 Azure 傳統入口網站，確定您已在我們的應用程式使用此專案，然後按一下 [ **Engage** 底部的按鈕 ︰
 
     ![][15]
 
-2. 然後按一下 [ **設定** ]-> [ **原生推送** 區段以輸入 GCM 金鑰:
+2. 然後按一下 [ **設定** ]-> [ **原生推送** 區段以輸入 GCM 金鑰 ︰
 
     ![][16]
 
-3. 按一下 [ **編輯** 前面圖示 **API 金鑰** 中 **GCM 設定** 區段如下所示:
+3. 按一下 [ **編輯** 前面圖示 **API 金鑰** 中 **GCM 設定** 區段如下所示 ︰
 
     ![][17]
 
@@ -282,7 +282,7 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 
     ![][18]
 
-##<a id="send"></a>將通知傳送至您的應用程式
+##<a id="send"></a>傳送通知至應用程式
 
 我們將建立一個簡單的推播通知活動，它會將推播通知傳送至我們的應用程式。
 
@@ -298,7 +298,7 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 
     a. 為您的活動命名。
 
-    b. 選取 **傳遞類型** 為 *系統通知]-> [簡單*: 這是 Android 簡易推播通知類型，具備一個標題和一小行文字。
+    b. 選取 **傳遞類型** 為 *系統通知]-> [簡單*︰ 這是 Android 簡易推播通知類型，具備一個標題和一小行文字。
 
     c. 選取 **傳遞時間** 為 *隨時* 以允許應用程式以應用程式啟動或不能接收通知。
 
@@ -312,7 +312,7 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 
 5. 您已完成能做的最基本活動設定。 現在向下捲動並按一下 **建立** ] 按鈕以儲存您的活動。
 
-6. 最後一個步驟: 按一下 **啟動** 啟動您的活動以傳送推播通知。
+6. 最後一個步驟 ︰ 按一下 **啟動** 啟動您的活動以傳送推播通知。
 
     ![][24]
 
@@ -341,4 +341,5 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 [21]: ./media/mobile-engagement-android-get-started/campaign-first-params.png
 [22]: ./media/mobile-engagement-android-get-started/campaign-content.png
 [24]: ./media/mobile-engagement-android-get-started/campaign-activate.png
+
 

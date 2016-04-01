@@ -47,3 +47,4 @@
 
 如果登入的相關提示越幫越忙，或不是您的需要請參閱 [疑難排解遠端桌面連線至 windows Azure 虛擬機器](virtual-machines-troubleshoot-remote-desktop-connections.md)。 本文會逐步帶領您診斷及解決常見的問題。
 
+

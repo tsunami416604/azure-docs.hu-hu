@@ -67,7 +67,7 @@
 
 2. 按一下 [ **大小** ，然後選取適當的 VM 大小以您的需求。 每個大小會指定計算核心、記憶體和其他功能的數目，例如支援將會影響價格的進階儲存體。 Azure 會自動根據您選擇的映像來建議特定大小。 完成時，按一下 [ ![選取] 按鈕](media/virtual-machines-linux-tutorial-portal-rm/selectbutton-size.png)。
 
-    >[AZURE.NOTE] 高階儲存體可供某些區域的 DS 系列虛擬機器。 進階儲存體對於如資料庫這類資料密集的工作負載是最佳的儲存體選項。 如需詳細資訊，請參閱 [高階儲存體: Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
+    >[AZURE.NOTE] 高階儲存體可供某些區域的 DS 系列虛擬機器。 進階儲存體對於如資料庫這類資料密集的工作負載是最佳的儲存體選項。 如需詳細資訊，請參閱 [高階儲存體 ︰ Azure 虛擬機器工作負載的高效能儲存體](storage-premium-storage-preview-portal.md)。
 
 3. 按一下 [ **設定** 以查看新 VM 的儲存體和網路設定。 對於第一個 VM，通常您可以接受預設的設定。 如果您選取支援的 VM 大小，您可以試用進階儲存體選取 **進階 (SSD)** 下 **磁碟類型**。 完成時，按一下 [ ![[確定] 按鈕](media/virtual-machines-linux-tutorial-portal-rm/okbutton.png)。
 
@@ -135,4 +135,5 @@
 - [使用適用於 Linux 的 Azure CustomScript 延伸模組部署 LAMP 應用程式](virtual-machines-linux-script-lamp.md)
 
 - [Azure 上 Linux 的 Docker 虛擬機器擴充程式](virtual-machines-docker-vm-extension.md)
+
 

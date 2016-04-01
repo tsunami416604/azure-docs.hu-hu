@@ -40,7 +40,7 @@
 [Build 2015：使用 Azure 搜尋在行動和 Web 應用程式中建置絕佳的搜尋體驗](http://channel9.msdn.com/Events/Build/2015/2-745)|由 Pablo Castro 於 Microsoft Build 2015 主講。
 [Ignite 2015：使用 Microsoft Azure 搜尋將搜尋功能加入您的商務應用程式中](http://channel9.msdn.com/Events/Ignite/2015/BRK2565)|由 Liam Cavanagh 於 Microsoft Ignite 2015 主講。
 [在 Microsoft 中啟動即時搜尋](https://www.elastic.co/elasticon/2015/sf/powering-real-time-search-at-microsoft)|Pablo Castro 於 Elastic{ON} 2015 的簡報，片長16 分鐘，說明 Azure 搜尋和 Microsoft 其他群組如何使用 ElasticSearch。
-[Azure 搜尋公開上市版及新功能](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-General-Availability-and-Whats-New)|簡介 Azure 搜尋公開上市版本新功能的影片記錄，主講者為 Liam Cavanagh，片長 12 分鐘。
+[Azure 搜尋一般可用性和最新消息](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-General-Availability-and-Whats-New)|簡介 Azure 搜尋公開上市版本新功能的影片記錄，主講者為 Liam Cavanagh，片長 12 分鐘。
 [深入探討](http://channel9.msdn.com/events/TechEd/Europe/2014/DBI-B410)|來自 TechEd Europe 的簡報，由 Pablo Castro 發表，片長 1 小時 15 分鐘。
 [8 分鐘概觀](http://channel9.msdn.com/events/Visual-Studio/Connect-event-2014/421)|來自 Connect Visual Studio 活動的簡短簡報，由 Liam Cavanagh 發表，片長 8 分鐘 58 秒。
 [Azure Search 簡介](http://go.microsoft.com/fwlink/?LinkId=511340)|說明 Azure 搜尋的架構和功能的影片記錄，主講者為 Liam Cavanagh，片長 22 分鐘。
@@ -94,5 +94,6 @@
 - [**GeoSearch 範例**](https://azuresearchgeospatial.codeplex.com/) 是 ASP.NET MVC 4 應用程式。
 - [**SQL Server 以 Azure 搜尋同步範例**](http://sqlserver2azuresearch.codeplex.com/) 內嵌的本機資料庫中載入 SQL Server 的資料列集是 Windows 主控台應用程式。
 - [**評分設定檔示範**](https://azuresearchscoringprofiles.codeplex.com/) 是定義，會執行，並更新評分設定檔進行微調搜尋結果的 Windows 主控台應用程式。
+
 
 

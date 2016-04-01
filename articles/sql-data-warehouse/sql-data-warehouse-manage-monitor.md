@@ -121,7 +121,7 @@ ORDER BY step_index;
 
 儲存長時間執行步驟的 Step Index。
 
-檢查 *operation_type* 長時間執行的查詢步驟的資料行:
+檢查 *operation_type* 長時間執行的查詢步驟的資料行 ︰
 
 - 繼續進行步驟 4a 如 **SQL 作業**: OnOperation，RemoteOperation，ReturnOperation。
 - 繼續進行步驟 4b 的 **資料移動作業**: ShuffleMoveOperation、 BroadcastMoveOperation、 TrimMoveOperation、 PartitionMoveOperation、 MoveOperation、 CopyOperation。
@@ -189,12 +189,12 @@ DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 
 
 此查詢的結果會顯示儲存在您資料庫中，每組 60 個散發內的資料表資料列數目。 為了達到最佳效能，分散式資料表中的資料列應該平均分配在所有散發中。
-若要深入了解，請參閱 [資料表設計] []。
+若要深入了解，請參閱 [表格設計][]。
 
 
 
 ## 後續步驟
-如需有關管理您的 SQL 資料倉儲的秘訣，請參閱 [管理概觀] []。
+如需有關管理您的 SQL 資料倉儲的秘訣，請參閱 [管理概觀][]。
 
 <!--Image references-->
 
@@ -203,6 +203,7 @@ DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 [table design]: sql-data-warehouse-develop-table-design.md
 
 <!--MSDN references-->
+
 
 
 

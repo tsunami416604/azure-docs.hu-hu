@@ -20,7 +20,7 @@
 
 本教學課程將示範如何將 NetSuite 環境與 Azure Active Directory (Azure AD) 連接。 您將學習如何設定單一登入 NetSuite、如何啟用自動的使用者佈建，以及如何指派使用者存取 NetSuite。 
 
-##先決條件
+##必要條件
 
 1. 若要存取 Azure Active Directory 透過 [Azure 管理入口網站](https://manage.windowsazure.com), ，您必須先具備有效的 Azure 訂用帳戶。
 
@@ -66,7 +66,7 @@
 
     > [AZURE.NOTE] 若要深入了解有關不同單一登入的選項， [按一下這裡](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)
 
-3. 在 **設定應用程式設定** ] 頁面上，針對 **回覆 URL** 欄位中，輸入您 NetSuite 租用戶 url 使用下列格式之一:
+3. 在 **設定應用程式設定** ] 頁面上，針對 **回覆 URL** 欄位中，輸入您 NetSuite 租用戶 url 使用下列格式之一 ︰
     - `https://<tenant-name>.netsuite.com/saml2/acs`
     - `https://<tenant-name>.na1.netsuite.com/saml2/acs`
     - `https://<tenant-name>.na2.netsuite.com/saml2/acs`
@@ -94,7 +94,7 @@
 
     ![移至 [SAML 單一登入]][12]
 
-9. 在 **SAML 設定** 頁面上，執行下列步驟:
+9. 在 **SAML 設定** 頁面上，執行下列步驟 ︰
 
     - 在 Azure Active Directory 中，複製 **遠端登入 URL** 值，並將它貼到 **身分識別提供者登入頁面** 在 NetSuite 中的欄位。
 
@@ -210,7 +210,7 @@
 
     ![按一下 [指派使用者]][31]
 
-3. 選取測試使用者，然後按一下 [ **指派** 在畫面底部的按鈕:
+3. 選取測試使用者，然後按一下 [ **指派** 在畫面底部的按鈕 ︰
 
  - 如果還沒有啟用自動的使用者佈建，您會看到下列確認提示：
 
@@ -255,4 +255,5 @@
 [30]: ./media/active-directory-saas-netsuite-tutorial/ns-confirm.png
 [31]: ./media/active-directory-saas-netsuite-tutorial/assign-users.png
 [32]: ./media/active-directory-saas-netsuite-tutorial/assign-confirm.png
+
 

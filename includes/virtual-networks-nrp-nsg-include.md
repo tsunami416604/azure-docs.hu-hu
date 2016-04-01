@@ -75,3 +75,4 @@ JSON 格式的範例 NSG：
 - 取得有關的詳細資訊 [Nsg](virtual-networks-nsg.md)。
 - 讀取 [REST API 參考文件](https://msdn.microsoft.com/library/azure/mt163615.aspx) 的 Nsg。
 - 讀取 [REST API 參考文件](https://msdn.microsoft.com/library/azure/mt163580.aspx) 安全性規則。
+

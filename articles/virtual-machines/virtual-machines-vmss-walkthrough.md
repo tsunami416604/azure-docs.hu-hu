@@ -46,13 +46,13 @@
 
     ```
 {
-        「 $schema 」: 「 http://schema.management.azure.com/schemas/2014-04-01-preview/VM.json 」，
-   "contentVersion":"1.0.0.0"，
+        "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/VM.json",
+   "contentVersion": "1.0.0.0",
  "parameters": {
         }
         "variables": {
         }
-        「 資源 」: [
+        "resources": [
         ]
     }
     ```
@@ -577,7 +577,7 @@
 
 所有資源要順利部署完成約需要 15 分鐘，。
 
->[AZURE.NOTE]您也可以進行部署的資源使用的入口網站的能力。 若要這樣做，請使用此連結:
+>[AZURE.NOTE]您也可以進行部署的資源使用的入口網站的能力。 若要這樣做，請使用此連結 ︰
 https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>
 
 ## 步驟 4：監視資源
@@ -606,4 +606,5 @@ https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JS
 如果您想要保留資源群組，您可以只刪除調整集。
 
     Remove-AzureRmResource -Name vmsstest1 -ResourceGroupName vmss-test1 -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
+
 

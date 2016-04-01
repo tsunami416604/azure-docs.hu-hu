@@ -11,3 +11,4 @@ Azure Toolkit for Eclipse 需要下列軟體元件：
     * [Ubuntu Linux](http://www.ubuntu.com)
 
 >[AZURE.NOTE] 可以找到詳細資訊，在 [Azure Toolkit for Eclipse](http://marketplace.eclipse.org/content/azure-toolkit-eclipse) Eclipse 服務商場] 頁面。
+

@@ -261,3 +261,4 @@ StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器
 [6]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE06.png
 
  
+

@@ -99,3 +99,4 @@ StorSimple 裝置可以在標準、維護和復原模式下運作。 以下簡�
 了解如何 [套用標準和維護模式更新](storsimple-update-device.md) StorSimple 裝置上。
 
 
+

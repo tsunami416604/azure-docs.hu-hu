@@ -56,7 +56,7 @@ Azure RemoteApp 的優點之一是我們不斷地努力改進 RemoteApp。 每�
 
 變更十分多！ 小組在6 月極為忙碌：
 
-- 重新設計 Azure RemoteApp [登陸頁面](https://www.remoteapp.windowsazure.com/) -請查看!
+- 重新設計 Azure RemoteApp [登陸頁面](https://www.remoteapp.windowsazure.com/) -請查看 ！
 - 更新可為您訂用帳戶一部分之所有映像中的軟體。
 - 改善混合式集合，包括強制通道支援，以及先檢查 IP 子網路大小，再嘗試建立集合。
 - 發現 * 萬用字元不適用於網路攝影機。 而是，您需要指定執行個體識別碼或 GUID。 我們將更新重新導向資訊以反映該資訊。
@@ -70,9 +70,9 @@ Azure RemoteApp 的優點之一是我們不斷地努力改進 RemoteApp。 每�
 
 - 自動化各個項目-Azure RemoteApp 現在具有 [Azure PowerShell 模組中的 cmdlet](remoteapp-tutorial-arawithpowershell.md)。
 - [從 Azure 的虛擬機器建立 Azure RemoteApp 映像](remoteapp-image-on-azurevm.md)。 將自訂映像上傳至 Azure 的速度更為快速。
-- 使用 Azure VNET (非 RemoteApp VNET)，以將公司網路資源連線到 Azure。 我們已更新 [混合式集合指示](remoteapp-create-hybrid-deployment.md) 來逐步引導您建立 Azure VNET (它是步驟 1)。
+- 使用 Azure VNET (非 RemoteApp VNET)，以將公司網路資源連線到 Azure。 我們已更新 [混合式集合指示](remoteapp-create-hybrid-deployment.md) 來逐步引導您建立 Azure VNET （它是步驟 1）。
 - 對於 Vnet，請參閱 [新指引](remoteapp-vnetsizing.md) 有關 VNET 大小限制和限制。
-- 而且對於限制，就是什麼是 [服務限制和預設值](remoteapp-servicelimits.md)嗎?
+- 而且對於限制，就是什麼是 [服務限制和預設值](remoteapp-servicelimits.md)嗎？
 
 想要深入了解 Azure RemoteApp 嗎？ RemoteApp 小組在數週之前已致力於 Ignite。 請參閱 Eric 的影片， [的 Microsoft Azure RemoteApp 管理基礎](http://channel9.msdn.com/Events/Ignite/2015/BRK3868)。
 
@@ -83,4 +83,5 @@ Azure RemoteApp 的優點之一是我們不斷地努力改進 RemoteApp。 每�
 
 ### 幫我們來協助您
 您知道除了評比這篇文章以及在下面留言以外，您可以變更文件本身嗎？ 有所遺漏？ 有所錯誤？ 我是否撰寫了令人混淆的內容？ 向上捲動，然後按一下 [ **GitHub 上的編輯** 若要變更-供檢閱，這些會變成給我們，接著，我們登入它們，就會看到您的變更和改進這裡。
+
 

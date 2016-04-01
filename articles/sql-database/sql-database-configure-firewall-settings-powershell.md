@@ -30,7 +30,7 @@
 
 Microsoft Azure SQL Database 使用防火牆規則以允許連接到您的伺服器和資料庫。 您可以在 Azure SQL Database 伺服器中，針對主要或使用者資料庫定義伺服器層級和資料庫層級的防火牆設定，以選擇性地允許存取資料庫。
 
-> [AZURE.IMPORTANT] 若要允許從 Azure 應用程式連接到您的資料庫伺服器，必須啟用 Azure 連線。 如需防火牆規則及啟用來自 Azure 連接的詳細資訊，請參閱 [Azure SQL Database 防火牆](sql-database-firewall-configure.md)。 如果您是在 Azure 雲端界限內建立連接，您可能必須開啟一些其他 TCP 連接埠。 如需詳細資訊，請參閱 **V12 SQL Database: 內部與外部** 區段 [針對 ADO.NET 4.5 及 SQL Database V12 的 1433年以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)
+> [AZURE.IMPORTANT] 若要允許從 Azure 應用程式連接到您的資料庫伺服器，必須啟用 Azure 連線。 如需防火牆規則及啟用來自 Azure 連接的詳細資訊，請參閱 [Azure SQL Database 防火牆](sql-database-firewall-configure.md)。 如果您是在 Azure 雲端界限內建立連接，您可能必須開啟一些其他 TCP 連接埠。 如需詳細資訊，請參閱 **V12 SQL Database ︰ 內部與外部** 區段 [針對 ADO.NET 4.5 及 SQL Database V12 的 1433年以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 
 ## 透過 Azure PowerShell 來管理伺服器層級防火牆規則
@@ -69,4 +69,5 @@ Microsoft Azure SQL Database 使用防火牆規則以允許連接到您的伺服
 <!--anchors-->
 
  
+
 

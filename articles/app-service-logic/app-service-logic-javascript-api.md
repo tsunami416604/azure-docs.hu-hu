@@ -35,7 +35,7 @@ JavaScript API 應用程式可讓您輕鬆執行簡單的 JavaScript 運算式 *
 ###觸發程序
 您可以建立邏輯應用程式服務將 (以您定義的間隔) 輪詢的觸發程序，而且如果它傳回任何內容，邏輯應用程式將會執行，否則會等到下一個輪詢間隔再檢查一次。
 
-觸發程序的輸入包括:
+觸發程序的輸入包括 ︰
 - **JavaScript 運算式**  -將會評估的運算式。 運算式將會在函式內部叫用，而且在您不想要讓邏輯應用程式執行時必須傳回 `false`，並可傳回您想要讓邏輯應用程式執行的任何其他項目。 您就能夠在邏輯應用程式的動作中使用回應的內容。
 - **內容物件** -可傳入觸發程序的選擇性物件。 您可以定義任意數目的屬性，但最上層實體必須是物件，例如 `{ "bar" : 0}`。
 
@@ -49,7 +49,7 @@ var d = new Date(); return (d.getMinutes() > 15) && (d.getMinutes() < 30);
 
 同樣地，您可以提供要執行的動作。 
 
-此動作的輸入包括:
+此動作的輸入包括 ︰
 - **JavaScript 運算式**  -將會評估的運算式。 您必須包含 `return` 陳述式來取得任何內容。 
 - **內容物件** -可傳入觸發程序的選擇性物件。 您可以定義任意數目的屬性，但最上層實體必須是物件，例如 `{ "bar" : 0}`。
 
@@ -87,7 +87,7 @@ return Attachments.map(function(obj){var a = obj.Content; a.FileName = obj.Name;
 動作會傳回從您的函式傳回的 JSON。 因此，在 Yammer API 應用程式，您可以參考 `@body('javascriptapi')` 的 **附件** 屬性。
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以使用邏輯應用程式將它加入商務流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以使用邏輯應用程式將它加入商務流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
 您也可以檢閱連接器的效能統計資料及控制安全性。 請參閱 [管理和監視 API 應用程式和連接器](../app-service-api/app-service-api-manage-in-portal.md)。
 
@@ -95,4 +95,5 @@ return Attachments.map(function(obj){var a = obj.Content; a.FileName = obj.Name;
 
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
+
 

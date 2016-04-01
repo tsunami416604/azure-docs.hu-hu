@@ -28,7 +28,7 @@
 。 儲存體帳戶可存取 
 Azure 儲存體服務。 儲存體帳戶代表命名空間的最高層級，
 可存取每個 Azure 儲存體服務
-元件: Blob 服務、 佇列服務和表格服務。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體簡介](../storage-introduction.md)。
+元件 ︰ Blob 服務、 佇列服務和表格服務。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體簡介](../storage-introduction.md)。
 
 若要建立儲存體帳戶，您必須是服務
 系統管理員或相關聯訂閱的共同管理員。
@@ -54,7 +54,7 @@ Azure 儲存體服務。 儲存體帳戶代表命名空間的最高層級，
 
     http://*& l t;StorageAcountLabel & gt;*.blob.core.windows.net/*& lt; mycontainer & gt;*
 
-    **重要事項:** URL 標籤會形成儲存體的子網域
+    **重要事項 ︰** URL 標籤會形成儲存體的子網域
     而且在 Azure 的所有託管服務中 
     Azure。
 
@@ -165,5 +165,6 @@ http://<*EndpointName*\ >.azureedge.net/ <*myPublicContainer*\ > / <*BlobName*\ 
 [cdn-new-endpoint-button]: ./media/cdn-create-a-storage-account-with-cdn/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-a-storage-account-with-cdn/cdn-endpoint-success.png
+
 
 

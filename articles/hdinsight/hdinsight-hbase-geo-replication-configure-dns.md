@@ -26,7 +26,7 @@
 
 了解如何新增與設定 Azure 虛擬網路的 DNS 伺服器，以處理虛擬網路內部與虛擬網路之間的名稱解析。
 
-本教學課程是第二個部分 [系列][hdinsight-hbase-geo-replication] 上建立 HBase 異地複寫:
+本教學課程是第二個部分 [系列][hdinsight-hbase-geo-replication] 上建立 HBase 異地複寫 ︰
 
 - [設定兩個虛擬網路之間的 VPN 連線][hdinsight-hbase-geo-replication-vnet]
 - 設定虛擬網路的 DNS (本教學課程)
@@ -37,7 +37,7 @@
 
 ![HDInsight HBase 複寫虛擬網路圖表][img-vnet-diagram]
 
-##先決條件
+##必要條件
 開始進行本教學課程之前，您必須具備下列條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
@@ -68,10 +68,10 @@
     - **新的使用者名稱**: 
     - **新密碼**: 
 4.  輸入：
-    - **雲端服務**: 建立新的雲端服務
-    - **區域/同質群組/虛擬網路**: (選取 CONTOSO-VNET-EU 的-)
+    - **雲端服務**︰ 建立新的雲端服務
+    - **區域/同質群組/虛擬網路**: （選取 CONTOSO-VNET-EU 的-）
     - **虛擬網路子網路**: subnet-1
-    - **儲存體帳戶**: 使用自動產生的儲存體帳戶
+    - **儲存體帳戶**︰ 使用自動產生的儲存體帳戶
     
         雲端服務名稱會與虛擬機器名稱相同。 在此例中是 Contoso-DNS-EU。 對於後續的虛擬機器，我可以選擇使用相同的雲端服務。  相同雲端服務下的所有虛擬機器會共用相同的虛擬網路和網域尾碼。
 
@@ -129,7 +129,7 @@ DNS 伺服器需要靜態 IP 位址。  此步驟無法在 Azure 傳統入口網
 4.  按一下 [ **新增角色及功能**。
 5.  按一下 [ **下一步**
 6.  選取 **角色型或功能型安裝**, ，然後按一下 [ **下一步**。
-7.  選取您的 DNS 虛擬機器 (它應該已反白顯示)，然後再按 **下一步**。
+7.  選取您的 DNS 虛擬機器 （它應該已反白顯示），然後再按 **下一步**。
 8.  檢查 **DNS 伺服器**。
 9.  按一下 [ **新增功能**, ，然後按一下 [ **繼續**。
 10. 按一下 [ **下一步** 三次，然後再按一下 **安裝**。 
@@ -193,12 +193,12 @@ DNS 伺服器需要靜態 IP 位址。  此步驟無法在 Azure 傳統入口網
 3.  按一下 [ **DNS**。
 4.  在左窗格中，展開 **DSN**, ，**Contoso DNS-U.S.-EU**。
 5.  輸入以下資訊：
-    - **DNS 網域**: 輸入-CONTOSO-DNS-US 的 DNS 尾碼。 例如：Contoso-DNS-US.b5.internal.cloudapp.net。
-    - **主要伺服器的 IP 位址**: 輸入 10.2.0.4，也就是-CONTOSO-DNS-US 的 IP 位址。
+    - **DNS 網域**︰ 輸入-CONTOSO-DNS-US 的 DNS 尾碼。 例如：Contoso-DNS-US.b5.internal.cloudapp.net。
+    - **主要伺服器的 IP 位址**︰ 輸入 10.2.0.4，也就是-CONTOSO-DNS-US 的 IP 位址。
 6.  按下 **ENTER**, ，然後按一下 [ **確定**。  現在您可以從 Contoso-DNS-EU 解析 Contoso-DNS-US 的 IP 位址。
 7.  重複這些步驟，以將 DNS 轉寄站新增至附帶下列值之 Contoso-DNS-US 虛擬機器上的 DNS 服務：
-    - **DNS 網域**: 輸入 Contoso DNS 歐盟的 DNS 尾碼。 
-    - **主要伺服器的 IP 位址**: 輸入 10.2.0.4，也就是 Contoso-DNS-歐盟的 IP 位址。
+    - **DNS 網域**︰ 輸入 Contoso DNS 歐盟的 DNS 尾碼。 
+    - **主要伺服器的 IP 位址**︰ 輸入 10.2.0.4，也就是 Contoso-DNS-歐盟的 IP 位址。
 
 ##測試虛擬網路之間的名稱解析
 
@@ -219,3 +219,4 @@ DNS 伺服器需要靜態 IP 位址。  此步驟無法在 Azure 傳統入口網
 [powershell-install]: ../install-configure-powershell.md
 
 [img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-DNS/HDInsight.HBase.VPN.diagram.png 
+

@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   SumoLogic 租用戶
   
-完成本教學課程之後, 您已指派給 Sumologic 是能夠使用單一登入位於您 SumoLogic 的應用程式的 Azure AD 使用者和公司網站 (服務提供者起始登入)，或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Sumologic 是能夠使用單一登入位於您 SumoLogic 的應用程式的 Azure AD 使用者和公司網站 （服務提供者起始登入），或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -59,7 +59,7 @@
 
 6.  在 **搜尋方塊**, ，型別 **sumologic**。
 
-    ![應用程式資源庫](./media/active-directory-saas-sumologic-tutorial/IC778550.png "Application gallery")
+    ![應用程式庫](./media/active-directory-saas-sumologic-tutorial/IC778550.png "Application gallery")
 
 7.  在 [結果] 窗格中，選取 **SumoLogic**, ，然後按一下 [ **完成** 加入應用程式。
 
@@ -103,7 +103,7 @@
 
     ![設定 SAML 2.0](./media/active-directory-saas-sumologic-tutorial/IC778558.png "Configure SAML 2.0")
 
-9.  在 **設定 SAML 2.0** ] 對話方塊中，執行下列步驟:
+9.  在 **設定 SAML 2.0** ] 對話方塊中，執行下列步驟 ︰
 
     ![設定 SAML 2.0](./media/active-directory-saas-sumologic-tutorial/IC778559.png "Configure SAML 2.0")
 
@@ -142,7 +142,7 @@ SumoLogic 需以手動方式佈建。
 
     ![使用者](./media/active-directory-saas-sumologic-tutorial/IC778562.png "Users")
 
-4.  在 **新使用者** ] 對話方塊中，執行下列步驟:
+4.  在 **新使用者** ] 對話方塊中，執行下列步驟 ︰
 
     ![新使用者](./media/active-directory-saas-sumologic-tutorial/IC778563.png "New User")
 
@@ -170,3 +170,4 @@ SumoLogic 需以手動方式佈建。
     ![是](./media/active-directory-saas-sumologic-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

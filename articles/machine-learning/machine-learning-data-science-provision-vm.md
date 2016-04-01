@@ -38,13 +38,13 @@ Microsoft 資料科學虛擬機器可快速啟動分析專案。 它能讓您處
 這個資料科學 VM 映像沒有任何軟體費用。 您僅支付 Azure 使用量費用，也就是取決於您將佈建的 VM 映像的虛擬機器的大小。 需計算費用的詳細資訊可以找到 [這裡] (https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)。 
 
 
-## 先決條件
+## 必要條件
 
 您必須先具有下列項目，才可以建立 Microsoft 資料科學虛擬機器：
 
-- **Azure 訂用帳戶**: 若要取得其中一個，請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- **Azure 訂用帳戶**︰ 若要取得其中一個，請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-*   **Azure 儲存體帳戶**: 若要建立一個帳戶，請參閱 [建立 Azure 儲存體帳戶](storage-create-storage-account.md#create-a-storage-account) 或者，若不想使用現有的帳戶建立 VM 的程序的一部分建立儲存體帳戶。
+*   **Azure 儲存體帳戶**︰ 若要建立一個帳戶，請參閱 [建立 Azure 儲存體帳戶](storage-create-storage-account.md#create-a-storage-account) 或者，若不想使用現有的帳戶建立 VM 的程序的一部分建立儲存體帳戶。
 
 
 ## 建立 Microsoft 資料科學虛擬機器
@@ -53,16 +53,16 @@ Microsoft 資料科學虛擬機器可快速啟動分析專案。 它能讓您處
 
 1.  瀏覽至虛擬機器上列出 [Azure 傳統入口網站](https://portal.azure.com/#gallery/microsoft-ads.standard-data-science-vmstandard-data-science-vm)。
 2.   按一下 [ **建立** 必須考慮到精靈下方的按鈕。![設定資料-科學-vm](./media/machine-learning-data-science-provision-vm/configure-data-science-virtual-machine.png)
-3.   下列各節提供 **輸入** 的每個 **5 個步驟** (上圖右側列舉) 用來建立 Microsoft 資料科學虛擬機器精靈中。 以下是設定每個步驟所需的輸入：
+3.   下列各節提供 **輸入** 的每個 **5 個步驟** （上圖右側列舉） 用來建立 Microsoft 資料科學虛擬機器精靈中。 以下是設定每個步驟所需的輸入：
 
   **a.基本**： 
 
-   - **名稱**: 您要建立資料科學伺服器的名稱。
-   - **使用者名稱**: 系統管理員帳戶登入 id
-   - **密碼**: 系統管理員帳戶密碼
-   - **訂閱**: 如果您有一個以上的訂閱，選取的機器將建立和計費
-   - **資源群組**: 您可以建立新的或使用現有的群組
-   - **位置**: 選取最適合的資料中心。 它通常是擁有您大部分的資料或者是最接近您的實際位置以取得最快速度的網路存取的資料中心
+   - **名稱**︰ 您要建立資料科學伺服器的名稱。
+   - **使用者名稱**︰ 系統管理員帳戶登入 id
+   - **密碼**︰ 系統管理員帳戶密碼
+   - **訂閱**︰ 如果您有一個以上的訂閱，選取的機器將建立和計費
+   - **資源群組**︰ 您可以建立新的或使用現有的群組
+   - **位置**︰ 選取最適合的資料中心。 它通常是擁有您大部分的資料或者是最接近您的實際位置以取得最快速度的網路存取的資料中心
 
   **b.大小**： 
 
@@ -70,9 +70,9 @@ Microsoft 資料科學虛擬機器可快速啟動分析專案。 它能讓您處
 
   **c. 設定**
 
-   - **磁碟類型**: 選擇高階，如果您偏好固態硬碟 (SSD)，其他選擇 「 標準 」。
-   - **儲存體帳戶**: 您可以在您的訂閱中建立新的 Azure 儲存體帳戶，或使用現有在同一個 *位置* 的選擇是在精靈的基本步驟。
-   - **其他參數**: 在大多數情況下只會使用預設值。 如果您考慮使用非預設值，您可以將滑鼠停留在特定欄位的資訊連結上以取得說明。
+   - **磁碟類型**︰ 選擇高階，如果您偏好固態硬碟 (SSD)，其他選擇 「 標準 」。
+   - **儲存體帳戶**︰ 您可以在您的訂閱中建立新的 Azure 儲存體帳戶，或使用現有在同一個 *位置* 的選擇是在精靈的基本步驟。
+   - **其他參數**︰ 在大多數情況下只會使用預設值。 如果您考慮使用非預設值，您可以將滑鼠停留在特定欄位的資訊連結上以取得說明。
 
   **d.摘要**： 
 
@@ -100,7 +100,7 @@ Microsoft 資料科學虛擬機器可快速啟動分析專案。 它能讓您處
 若要使用 Python 進行開發，則會安裝 Anaconda Python 散佈 2.7。 這個散佈包含基本的 Python 以及大約 300 個最受歡迎的數學運算、工程設計和資料分析封裝。 您可以使用安裝在 Visual Studio 2015 Community 版本內的 Python Tools for Visual Studio (PTVS)，或隨附於 Anaconda 的其中一個整合式開發環境 (IDE)，像是 IDLE 或 Spyder。 您可以啟動其中一種藉由在 [搜尋] 列搜尋 (**贏得** + **S** 索引鍵)。 
 
 ### IPython Notebook
-Anaconda 散佈也提供 IPython Notebook，這是共用程式碼和分析的環境。 Ipython Notebook 伺服器已預先設定。 有一個桌面圖示可以啟動瀏覽器來存取 Notebook 伺服器。 如果您是透過遠端桌面在 VM 上您也可以造訪 [https://localhost:9999 /](https://localhost:9999/) 來存取 IPython notebook 伺服器 (請注意: 如果您收到的任何憑證警告繼續。) 
+Anaconda 散佈也提供 IPython Notebook，這是共用程式碼和分析的環境。 Ipython Notebook 伺服器已預先設定。 有一個桌面圖示可以啟動瀏覽器來存取 Notebook 伺服器。 如果您是透過遠端桌面在 VM 上您也可以造訪 [https://localhost:9999 /](https://localhost:9999/) 來存取 IPython notebook 伺服器 (請注意 ︰ 如果您收到的任何憑證警告繼續。) 
 
 ### Visual Studio 2015 Community 版本
 VM 上安裝的 Visual Studio Community 版本。 它是 Microsoft 提供的熱門整合式開發環境 (IDE)E 的免費版本，您可以用於評估用途，適合非常小型的團隊。 您可以閱讀授權條款 [這裡](https://www.visualstudio.com/support/legal/mt171547)。  按兩下桌面圖示，開啟 Visual Studio 或 **啟動** 功能表。 您也可以搜尋程式 **贏得** + **S** ，並輸入 [Visual Studio]。 
@@ -111,8 +111,8 @@ VM 上安裝的 Visual Studio Community 版本。 它是 Microsoft 提供的熱�
 受限的 SQL Server 版本也會與 Visual Studio Community 版本 一起封裝。 您可以存取 SQL server 啟動 **SQL Server Management Studio**。 您的 VM 名稱會填入做為伺服器名稱。 在 Windows 上以系統管理員身分登入時，使用 Windows 驗證。 當您在 SQL Server Management Studio 中，可以建立其他使用者、建立資料庫、匯入資料以及執行 SQL 查詢。 
 
 ### Azure 
-VM 上已安裝數個 Azure 工具:
-- 沒有存取 Azure SDK 文件的桌面捷徑。 
+有數個 Azure 工具會安裝於 VM 上：
+- 有一個桌面捷徑可用來存取 Azure SDK 文件。 
 - **AzCopy** 用來將移入和移出您的 Microsoft Azure 儲存體帳戶的資料。 
 - **Azure 儲存體總管** 用來瀏覽儲存在 Azure 儲存體帳戶內的物件。 
 - **Microsoft Azure Powershell** -您的 VM 上也安裝了用來管理您的 Azure 資源指令碼語言的指令碼語言。 
@@ -125,6 +125,7 @@ VM 上已安裝數個 Azure 工具:
 
 ## 其他 Microsoft 開發工具
  [**Microsoft Web Platform Installer**](https://www.microsoft.com/web/downloads/platform.aspx) 可用來探索並下載其他 Microsoft 開發工具。 另外在 Microsoft 資料科學虛擬機器桌面上也有提供工具的捷徑。  
+
 
 
 

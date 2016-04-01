@@ -45,7 +45,7 @@ Azure Site Recovery 使用 Hyper-V 複本，將 Hyper-V 虛擬機器從內部部
 
 5. 在伺服器和叢集上啟用效能監視，如下所示：
 
-  - 開啟 Windows 防火牆與 **進階安全性** 嵌入式管理單元，然後啟用下列輸入規則: **COM + 網路存取 (DCOM IN)** 中的所有規則和 **遠端事件記錄檔管理群組**。
+  - 開啟 Windows 防火牆與 **進階安全性** 嵌入式管理單元，然後啟用下列輸入規則 ︰ **COM + 網路存取 (DCOM IN)** 中的所有規則和 **遠端事件記錄檔管理群組**。
 
 ## 步驟 2：準備複本伺服器 (內部部署至內部部署複寫)
 
@@ -57,7 +57,7 @@ Azure Site Recovery 使用 Hyper-V 複本，將 Hyper-V 虛擬機器從內部部
 
     - 在 **伺服器管理員**, ，開啟 **容錯移轉叢集管理員**。
     - 連接到叢集，叢集名稱反白顯示，按一下 [ **動作** > **設定角色** 若要開啟 [高可用性精靈]。
-    - 在 **選取角色** 按一下 **HYPER-V 複本代理人**。 在精靈中提供 **NetBIOS 名稱** 和 **IP 位址** 可用來做為叢集 (稱為用戶端存取點) 的連接點。  **HYPER-V 複本代理人** 會設定，導致用戶端存取點名稱，請注意。 
+    - 在 **選取角色** 按一下 **HYPER-V 複本代理人**。 在精靈中提供 **NetBIOS 名稱** 和 **IP 位址** 可用來做為叢集 （稱為用戶端存取點） 的連接點。  **HYPER-V 複本代理人** 會設定，導致用戶端存取點名稱，請注意。 
     - 確認 Hyper-V 複本代理人角色順利連線，而且可以進行叢集所有節點之間的容錯移轉。 若要這樣做，請以滑鼠右鍵按一下角色，指向 **移動**, ，然後按一下 [ **選取節點**。 選取節點 > **確定**。 
     - 如果您使用憑證型驗證，請確定每個叢集節點與用戶端存取點都有安裝憑證。
 2.  啟用複本伺服器：
@@ -67,11 +67,11 @@ Azure Site Recovery 使用 Hyper-V 複本，將 Hyper-V 虛擬機器從內部部
 3. 設定驗證：
 
     - 在 **驗證和連接埠** 選取如何驗證主要伺服器及驗證連接埠。 如果您使用憑證按一下 **選取憑證** 選取其中一個。 如果主要和復原 Hyper-V 主機都位於相同網域或信任的網域，則使用 Kerberos。 針對不同的網域或工作群組部署使用憑證。
-    - 在 **授權與存放裝置** 區段中，允許 **任何** 驗證 (主要) 伺服器將複寫資料傳送到這個複本伺服器。 按一下 [ **確定** 或 **套用**。
+    - 在 **授權與存放裝置** 區段中，允許 **任何** 驗證 （主要） 伺服器將複寫資料傳送到這個複本伺服器。 按一下 [ **確定** 或 **套用**。
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
 
-    - 執行 **netsh http show servicestate** 來檢查接聽程式正在執行的通訊協定/連接埠您指定:  
+    - 執行 **netsh http show servicestate** 來檢查接聽程式正在執行的通訊協定/連接埠您指定 ︰  
 4. 設定防火牆： Hyper-V 安裝期間會建立防火牆規則，以允許預設連接埠的流量 (443 上的 HTTPS，80 上的 Kerberos)。 啟用這些規則，如下所示：
     
         - Certificate authentication on cluster (443): **Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}**
@@ -93,7 +93,7 @@ Azure Site Recovery 使用 Hyper-V 複本，將 Hyper-V 虛擬機器從內部部
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image3.png)
 
-5. 在 **複本網站細節** 如果您要複寫至 Azure，或如果您要複寫至次要資料中心，而且您尚未設定複本伺服器，請選取 **跳過測試牽涉到複本站台**。 如果您要複寫到次要資料中心，而且您已經設定好的獨立伺服器或用戶端存取點，在叢集的 FQDN 複本類型 **伺服器名稱 (或) HYPER-V 複本代理人 CAP**。 
+5. 在 **複本網站細節** 如果您要複寫至 Azure，或如果您要複寫至次要資料中心，而且您尚未設定複本伺服器，請選取 **跳過測試牽涉到複本站台**。 如果您要複寫到次要資料中心，而且您已經設定好的獨立伺服器或用戶端存取點，在叢集的 FQDN 複本類型 **伺服器名稱 （或） HYPER-V 複本代理人 CAP**。 
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image4.png)
 
@@ -135,5 +135,6 @@ Azure Site Recovery 使用 Hyper-V 複本，將 Hyper-V 虛擬機器從內部部
 
 - [設定內部部署 VMM 網站和 Azure 之間的保護](site-recovery-vmm-to-azure.md)
 - [設定內部部署 Hyper-V 站台和 Azure 之間的保護](site-recovery-hyper-v-site-to-azure.md)
-- [設定兩個內部部署 VMM 網站之間的保護](site-recovery-vmm-to-vmm.md)
+- [設定兩個內部部署 VMM 站台之間的保護](site-recovery-vmm-to-vmm.md)
+
 

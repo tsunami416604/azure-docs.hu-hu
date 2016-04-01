@@ -1,5 +1,5 @@
 
-1. 如果您尚未註冊您的應用程式，請瀏覽 [提交應用程式頁面]，Windows 市集應用程式之開發人員中心，使用您的 Microsoft 帳戶登入，然後按一下 **應用程式名稱**。
+1. 如果您尚未註冊您的應用程式，瀏覽至 [Submit an app page] ，Windows 市集應用程式之開發人員中心，使用您的 Microsoft 帳戶登入，然後按一下 **應用程式名稱**。
 
     ![](./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png)
 
@@ -9,7 +9,7 @@
 
     This creates a new Windows Store registration for your app.
 
-3. 在 Visual Studio 中，開啟您完成教學課程時所建立的專案 [開始使用行動服務]。
+3. 在 Visual Studio 中，開啟您完成教學課程時所建立的專案 [Get started with Mobile Services]。
 
 4. 在 [方案總管中以滑鼠右鍵按一下 Windows 市集應用程式專案中，按一下 **存放區**, ，然後按一下 [ **將應用程式與存放區 …**。 
 
@@ -61,4 +61,5 @@
 <!-- URLs. -->
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+
 

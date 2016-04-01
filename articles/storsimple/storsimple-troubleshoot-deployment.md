@@ -33,7 +33,7 @@
 - 檢查部署的先決條件。 請確定您有中所述的所有資訊 [部署組態檢查清單](storsimple-deployment-walkthrough.md#deployment-configuration-checklist)。
 - 檢閱 StorSimple 版本資訊，以查看是否提及該問題。 版本資訊會包含已知安裝問題的因應措施。 
 
-在裝置部署期間，使用者最常面臨的問題通常是在執行安裝精靈，以及透過 Windows PowerShell for StorSimple 註冊裝置時發生。 (您會使用 Windows PowerShell for StorSimple 來註冊並設定 StorSimple 裝置。 如需裝置註冊的詳細資訊，請參閱 [步驟 3: 設定和註冊您的裝置，透過 Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple))。
+在裝置部署期間，使用者最常面臨的問題通常是在執行安裝精靈，以及透過 Windows PowerShell for StorSimple 註冊裝置時發生。 (您會使用 Windows PowerShell for StorSimple 來註冊並設定 StorSimple 裝置。 如需裝置註冊的詳細資訊，請參閱 [步驟 3 ︰ 設定和註冊您的裝置，透過 Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple))。
 
 下列各節可協助您解決在第一次設定 StorSimple 裝置時遇到的問題。
 
@@ -80,8 +80,8 @@
 
 | 編號| 錯誤訊息 | 可能的原因 | 建議的動作 |
 | ---| ------------- | --------------- | ------------------ |
-| 1  | Invoke-HcsSetupWizard：無效的參數 (發生例外狀況於 HRESULT：0x80070057) | 針對 Proxy 設定提供的其中一個參數無效。| 未使用正確格式提供 URI。 使用下列格式: http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
-| 2 | Invoke-HcsSetupWizard：RPC 伺服器無法使用 (發生例外狀況於 HRESULT：0x800706ba) | 根本原因是下列其中一項:<ol><li>叢集未啟動。</li><li>被動控制器無法與主動控制器，並從被動控制器執行命令。</li></ol> | 視根本原因而定:<ol><li>[連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 來確定叢集已啟動。</li><li>從主動控制器執行命令。 如果您想要從被動控制器執行命令，就必須確保被動控制器能與主動控制器通訊。 您必須 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 如果此連線已中斷。</li></ol> |
+| 1  | Invoke-HcsSetupWizard：無效的參數 (發生例外狀況於 HRESULT：0x80070057) | 針對 Proxy 設定提供的其中一個參數無效。| 未使用正確格式提供 URI。 使用下列格式 ︰ http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
+| 2 | Invoke-HcsSetupWizard：RPC 伺服器無法使用 (發生例外狀況於 HRESULT：0x800706ba) | 根本原因是下列其中一項 ︰<ol><li>叢集未啟動。</li><li>被動控制器無法與主動控制器，並從被動控制器執行命令。</li></ol> | 視根本原因 ︰<ol><li>[請連絡 Microsoft 支援](storsimple-contact-microsoft-support.md) 以確定叢集已啟動。</li><li>從主動控制器執行命令。 如果您想要從被動控制器執行命令，就必須確保被動控制器能與主動控制器通訊。 您必須 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 如果此連線已中斷。</li></ol> |
 | 3 | Invoke-HcsSetupWizard：RPC 呼叫失敗 (發生例外狀況於 HRESULT：0x800706be) | 叢集已關閉。 | [請連絡 Microsoft 支援](storsimple-contact-microsoft-support.md) 以確定叢集已啟動。|
 | 4 | Invoke-HcsSetupWizard：找不到叢集資源 (發生例外狀況於 HRESULT：0x8007138f) | 找不到叢集資源。 若未正確安裝，即會發生此情況。 | 您可能需要將裝置重設為出廠預設設定。 [請連絡 Microsoft 支援](storsimple-contact-microsoft-support.md) 建立叢集資源。|
 | 5 | Invoke-HcsSetupWizard：叢集資源不在線上 (發生例外狀況於 HRESULT：0x8007138c)| 叢集資源不在線上。 | [請連絡 Microsoft 支援](storsimple-contact-microsoft-support.md) 接下來的步驟。|
@@ -106,10 +106,10 @@
 
 | 編號| 錯誤訊息 | 建議的動作 |
 | ---| ------------- | ------------------ | 
-| 1  | 密碼超過最大長度。 |使用符合這些需求的密碼:<ul><li>裝置系統管理員密碼必須介於 8 到 15 個字元。</li><li>StorSimple Snapshot Manager 密碼必須是 14 或 15 個字元。</li></ul> | 
-| 2 | 密碼不符合所需的長度。 | 使用符合這些需求的密碼:<ul><li>裝置系統管理員密碼必須介於 8 到 15 個字元。</li><li>StorSimple Snapshot Manager 密碼必須是 14 或 15 個字元。</lu></ul> |
+| 1  | 密碼超過最大長度。 |使用符合這些需求的密碼 ︰<ul><li>裝置系統管理員密碼必須介於 8 到 15 個字元。</li><li>StorSimple Snapshot Manager 密碼必須是 14 或 15 個字元。</li></ul> | 
+| 2 | 密碼不符合所需的長度。 | 使用符合這些需求的密碼 ︰<ul><li>裝置系統管理員密碼必須介於 8 到 15 個字元。</li><li>StorSimple Snapshot Manager 密碼必須是 14 或 15 個字元。</lu></ul> |
 | 3 | 密碼必須包含小寫字元。 | 密碼必須包含下列 4 個字元類型的其中 3 個：小寫字母、大寫字母、數字和特殊字元。 請確定您的密碼符合這些需求。 |
-| 4 | 密碼必須包含數字字元。 | 密碼必須包含 3 個下列 4 個字元類型: 小寫字母、 大寫字母、 數字和特殊。 請確定您的密碼符合這些需求。 |
+| 4 | 密碼必須包含數字字元。 | 密碼必須包含 3 個下列 4 個字元類型 ︰ 小寫字母、 大寫字母、 數字和特殊。 請確定您的密碼符合這些需求。 |
 | 5 | 密碼必須包含特殊字元。 | 密碼必須包含下列 4 個字元類型的其中 3 個：小寫字母、大寫字母、數字和特殊字元。 請確定您的密碼符合這些需求。 |
 | 6 | 密碼必須包含下列 4 個字元類型的其中 3 個：大寫字母、小寫字母、數字和特殊字元。 | 您的密碼未包含必要的字元類型。 請確定您的密碼符合這些需求。 |
 | 7 | 參數與確認不相符。 | 請確定您的密碼符合所有需求，且您已正確輸入它。 |
@@ -137,7 +137,7 @@
 | 4 | 錯誤 350049：無法在註冊期間連線服務。 | 對服務進行呼叫時，收到 Web 例外狀況。 在某些情況下，您或許可以藉由稍後重試此操作來修正此錯誤。 | 請檢查您的 IP 位址和 DNS 名稱，然後重試此操作。 如果問題持續發生， [連絡 Microsoft 支援服務。](storsimple-contact-microsoft-support.md) | 
 | 5 | 錯誤 350031：裝置已經註冊。 | | 不需採取任何動作。 |
 | 6 | 錯誤 350016：裝置註冊失敗。 | |請確定註冊金鑰正確。 |
-| 7 | Invoke-HcsSetupWizard：註冊裝置時發生錯誤。這可能是因為 IP 位址或 DNS 名稱不正確所引發。 請檢查您的網路設定，然後再試一次。 如果問題持續發生， [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md)。 (錯誤 350050) | 確定裝置可以 Ping 外部網路。 如果您沒有外部網路的連線能力，註冊可能會失敗並產生這個錯誤。 此錯誤可能是一或多項動作的組合:<ul><li>不正確的 IP</li><li>不正確的子網路</li><li>不正確的閘道</li><li>不正確的 DNS 設定</li></ul> | 請參閱中的步驟 [逐步疑難排解範例](#step-by-step-storsimple-troubleshooting-example)。 |
+| 7 | Invoke-HcsSetupWizard：註冊裝置時發生錯誤。這可能是因為 IP 位址或 DNS 名稱不正確所引發。 請檢查您的網路設定，然後再試一次。 如果問題持續發生， [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md)。 (錯誤 350050) | 確定裝置可以 Ping 外部網路。 如果您沒有外部網路的連線能力，註冊可能會失敗並產生這個錯誤。 此錯誤可能是一或多項動作的組合 ︰<ul><li>不正確的 IP</li><li>不正確的子網路</li><li>不正確的閘道</li><li>不正確的 DNS 設定</li></ul> | 請參閱中的步驟 [逐步疑難排解範例](#step-by-step-storsimple-troubleshooting-example)。 |
 | 8 | Invoke-HcsSetupWizard：由於發生內部服務錯誤 [0x1FBE2]，導致目前的作業失敗。 請稍後再重試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 | 這是從服務或代理程式針對所有使用者看不見的錯誤所擲回的一般錯誤。 最常見的原因可能是 ACS 驗證失敗。 失敗的原因可能是發生 NTP 伺服器設定問題，而且未正確設定裝置上的時間。 | 更正時間 (如果有問題)，然後重試註冊操作。 如果此問題持續發生， [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 接下來的步驟。 |
 | 9 | 警告：無法啟動裝置。 您的設定裝置系統管理員和 StorSimple Snapshot Manager 密碼尚未變更。 | 如果註冊失敗，裝置系統管理員和 StorSimple Snapshot Manager 密碼就不會變更。 |
 
@@ -162,9 +162,9 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 4. 解密的支援封裝記錄格式為 etw/etvx 格式。 您可以執行下列步驟，在 Windows 事件檢視器中檢視這些檔案：
   1. 執行 **eventvwr** Windows 用戶端上的命令。 這將會啟動事件檢視器。
-  2. 在 **動作** ] 窗格中，按一下 [ **開啟已儲存的記錄** 然後指向 etvx/etw 格式 (支援封裝) 中的記錄檔。 您現在可以檢視該檔案。 開啟檔案之後，您可以使用滑鼠右鍵按一下並將該檔案儲存為文字。
+  2. 在 **動作** ] 窗格中，按一下 [ **開啟已儲存的記錄** 然後指向 etvx/etw 格式 （支援封裝） 中的記錄檔。 您現在可以檢視該檔案。 開啟檔案之後，您可以使用滑鼠右鍵按一下並將該檔案儲存為文字。
    
-    > [AZURE.IMPORTANT] You can also use the **Get-WinEvent** cmdlet to open these file in Windows PowerShell. For more information, see [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) in the Windows PowerShell cmdlet reference documentation.
+    > [AZURE.IMPORTANT] 您也可以使用 **Get-winevent** 指令程式可在 Windows PowerShell 中開啟這些檔案。 如需詳細資訊，請參閱 [Get-winevent](https://technet.microsoft.com/library/hh849682.aspx) Windows PowerShell cmdlet 參考文件中。
 
 5. 在事件檢視器中開啟記錄時，尋找下列包含裝置設定相關問題的記錄：
 
@@ -205,7 +205,7 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 2. 使用 `Get-NetAdapter` Cmdlet 的輸出和下列指南來了解網路介面的狀態。
   - 如果介面狀況良好且已啟用， **ifIndex** 狀態顯示為 **總**。
-  - 如果介面狀況良好，但實際上並未連線 (透過網路纜線)， **ifIndex** 就會顯示為 **已停用**。
+  - 如果介面狀況良好，但實際上並未連線 （透過網路纜線）， **ifIndex** 就會顯示為 **已停用**。
   - 如果介面的健康狀態良好但未啟用， **ifIndex** 狀態顯示為 **NotPresent**。
   - 如果介面不存在，它就不會出現在這份清單中。 StorSimple Manager 服務 UI 仍會顯示此介面處於失敗狀態。
 
@@ -309,7 +309,7 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
    - ErrorCode.CiSApplianceGateway - 這表示 HttpStatusCode.BadGateway 例外狀況：名稱解析程式服務無法解析主機名稱。 
    - ErrorCode.CiSApplianceProxy - 這表示 HttpStatusCode.ProxyAuthenticationRequired 例外狀況 (HTTP 狀態碼 407)：用戶端無法向 Proxy 伺服器進行驗證。 
-   - ErrorCode.CiSApplianceDNSError – 這表示 WebExceptionStatus.NameResolutionFailure 例外狀況: 名稱解析程式服務無法解析主機名稱。 .
+   - ErrorCode.CiSApplianceDNSError – 這表示 WebExceptionStatus.NameResolutionFailure 例外狀況 ︰ 名稱解析程式服務無法解析主機名稱。 .
    - ErrorCode.CiSApplianceACSError - 這表示服務傳回驗證錯誤，但有連線能力。
    
     如果服務未擲回 Web 例外狀況，請檢查導致 ErrorCode.CiSApplianceFailure 產生的錯誤。 這表示設備失敗。
@@ -318,7 +318,7 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
   - ErrorCode.CiSApplianceGateway - 這表示 HttpStatusCode.BadGateway 例外狀況：中繼 Proxy 伺服器收到來自其他 Proxy 或來自原始伺服器的不正確要求。
   - ErrorCode.CiSApplianceProxy - 這表示 HttpStatusCode.ProxyAuthenticationRequired 例外狀況 (HTTP 狀態碼 407)：用戶端無法向 Proxy 伺服器進行驗證。 
-  - ErrorCode.CiSApplianceDNSError – 這表示 WebExceptionStatus.NameResolutionFailure 例外狀況: 名稱解析程式服務無法解析主機名稱。 .
+  - ErrorCode.CiSApplianceDNSError – 這表示 WebExceptionStatus.NameResolutionFailure 例外狀況 ︰ 名稱解析程式服務無法解析主機名稱。 .
   - ErrorCode.CiSApplianceACSError - 這表示服務傳回驗證錯誤，但有連線能力。
   
     如果服務未擲回 Web 例外狀況，請檢查導致 ErrorCode.CiSApplianceSaasServiceError 發生的錯誤。 這表示 StorSimple Manager 服務發生問題。
@@ -578,4 +578,5 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx 
+
 

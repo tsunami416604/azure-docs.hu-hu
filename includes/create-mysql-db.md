@@ -4,7 +4,7 @@
 
 ## 做法：從 Azure 市集建立 MySQL 資料庫
 
-若要建立 MySQL 資料庫從 [Azure Store], ，執行下列動作:
+若要建立 MySQL 資料庫從 [Azure Store], ，執行下列動作 ︰
 
 1. 登入 [Azure 管理入口網站][portal]。
 2. 按一下 [ **+ 新增** 在頁面底部，然後選取 **MARKETPLACE**。
@@ -27,14 +27,14 @@
 
     ![在 Azure 入口網站中管理 MySQL 資料庫](./media/create-mysql-db/manage-mysql-add-on.png)
 
-7. 您可以取得資料庫連接資訊即可 **連線資訊** 底部的頁面 (如上所示)。
+7. 您可以取得資料庫連接資訊即可 **連線資訊** 底部的頁面 （如上所示）。
 
     ![MySql 連接資訊](./media/create-mysql-db/mysql-conn-info.png) 
 
 
 ## 如何：為 Azure 網站建立 MySQL 資料庫作為連結的資源
 
-若要建立 MySQL 資料庫作為連結的資源，當您建立 [Azure 網站][waws], ，執行下列動作:
+若要建立 MySQL 資料庫作為連結的資源，當您建立 [Azure 網站][waws], ，執行下列動作 ︰
 
 1. 登入 [Azure 管理入口網站][portal]。
 2. 按一下 [ **+ 新增** 在頁面底部，然後選取 **計算**, ，**網站**, ，和 **和資料庫一起建立**。
@@ -45,7 +45,7 @@
 
     ![提供網站詳細資料](./media/create-mysql-db/provide-website-details.png) 
 
-4. 提供資料庫 **名稱**, ，請選取 **區域** 資料庫 (這應該是您網站的區域相同)，同意 ClearDB 的法律條款，然後按一下框架底部的核取記號。
+4. 提供資料庫 **名稱**, ，請選取 **區域** 資料庫 （這應該是您網站的區域相同），同意 ClearDB 的法律條款，然後按一下框架底部的核取記號。
 
     ![提供 MySQL 詳細資料](./media/create-mysql-db/provide-mysql-details.png)
 
@@ -72,4 +72,5 @@
 [Azure Store]: ../articles/store.md
 [portal]: http://manage.windowsazure.com
 [configure]: ../article/app-service-web/web-sites-configure.md
+
 

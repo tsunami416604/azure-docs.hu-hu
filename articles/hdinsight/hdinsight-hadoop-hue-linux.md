@@ -40,17 +40,17 @@
 
 1. 開始使用中的步驟來佈建叢集 [佈建 HDInsight 叢集在 Linux 上](hdinsight-hadoop-provision-linux-clusters.md#portal), ，但不是會完成佈建。
 
-    > [AZURE.NOTE] 若要安裝在 HDInsight 叢集上的色調，建議的前端節點大小至少為 A4 (8 核心，14GB 記憶體)。
+    > [AZURE.NOTE] 若要安裝在 HDInsight 叢集上的色調，建議的前端節點大小至少為 A4 （8 核心，14GB 記憶體）。
 
-2. 在 **選擇性組態** 分頁中，選取 **指令碼動作**, ，並提供資訊，如下所示:
+2. 在 **選擇性組態** 分頁中，選取 **指令碼動作**, ，並提供資訊，如下所示 ︰
 
     ![提供 Hue 的指令碼動作參數](./media/hdinsight-hadoop-hue-linux/hue_script_action.png "Provide script action parameters for Hue")
 
-    * __名稱__: 輸入指令碼動作的易記名稱。
+    * __名稱__︰ 輸入指令碼動作的易記名稱。
     * __指令碼 URI__: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh
-    * __HEAD__: 勾選此選項
-    * __背景工作__: 讓此處空白。
-    * __ZOOKEEPER__: 讓此處空白。
+    * __HEAD__︰ 勾選此選項
+    * __背景工作__︰ 讓此處空白。
+    * __ZOOKEEPER__︰ 讓此處空白。
     * __參數__: 指令碼需要 **叢集系統管理員密碼** 做為參數。 這是您在佈建叢集時指定的密碼。 同時提供密碼時的重要考量：
         * 如果叢集的使用者名稱是 "admin"，則您只需要在單引號內指定密碼即可。
         * 如果叢集的使用者名稱是 "admin" 以外的任何名稱，您必須將參數指定為 `-u [username] [password in single quotes]`。
@@ -136,4 +136,5 @@
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
+
 

@@ -23,9 +23,9 @@ ms.service="virtual-machines"
 本文將說明如何設定執行 Windows 的內部部署用戶端電腦，使其執行 HPC Pack 工作提交工具，透過 HTTPS 與 Azure 中的 HPC Pack 叢集進行通訊。 這會提供各種叢集使用者提交工作，以雲端為基礎的 HPC Pack 叢集，而不需要直接連接到前端節點 VM 的簡單、 有彈性的方式來
 執行作業提交工具。
 
-![提交工作，以在 Azure 中的叢集][] jobsubmit
+![將工作提交至 Azure 中的叢集][jobsubmit]
 
-## 先決條件
+## 必要條件
 
 * **在 Azure VM 中部署 HPC Pack 前端節點** -您可以使用
 自動化工具，例如 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/) 或 [PowerShell 指令碼](virtual-machines-hpcpack-cluster-powershell-script.md)
@@ -116,7 +116,7 @@ Center](http://go.microsoft.com/fwlink/?LinkId=328024) 用戶端
 
 2. 在主控台樹狀目錄中，依序展開 **憑證-本機電腦**, ，依序展開 **個人**, ，然後按一下 [ **憑證**。
 
-3. 找出您為 HPC Pack 的 web 元件中設定的憑證 [步驟 1: 安裝及設定前端節點上的 web 元件](#step-1:-install-and-configure-the-web-components-on-the-head-node) (如範例中，名為 & l t;HeadNodeDnsName & gt;。cloudapp.net)。
+3. 找出您為 HPC Pack 的 web 元件中設定的憑證 [步驟 1 ︰ 安裝及設定前端節點上的 web 元件](#step-1:-install-and-configure-the-web-components-on-the-head-node) （如範例中，名為 & l t;HeadNodeDnsName & gt;。cloudapp.net)。
 
 4. 以滑鼠右鍵按一下憑證，請按一下 **所有工作**, ，然後按一下 [ **匯出**。
 
@@ -173,7 +173,7 @@ Center](http://go.microsoft.com/fwlink/?LinkId=328024) 用戶端
 
     b. 按一下 [ **Windows 認證**, ，然後按一下 [ **新增一般認證**。
 
-    c. 指定網際網路位址 https://&lt;HeadNodeDnsName (& s) gt;.cloudapp.net/HpcScheduler，並提供使用者名稱 (表單 lt; 網域名稱 & gt; 在 \\ & lt;使用者名稱與 gt;) 和 HPC 叢集管理員或另一個您所設定之叢集使用者的密碼。
+    c. 指定網際網路位址 https://&lt;HeadNodeDnsName （& s) gt;.cloudapp.net/HpcScheduler，並提供使用者名稱 (表單 lt; 網域名稱 & gt; 在 \\ & lt;使用者名稱與 gt;) 和 HPC 叢集管理員或另一個您所設定之叢集使用者的密碼。
 
 2. 在用戶端電腦上，啟動 [HPC 工作管理員]。
 
@@ -209,4 +209,5 @@ Center](http://go.microsoft.com/fwlink/?LinkId=328024) 用戶端
 
 <!--Image references-->
 [jobsubmit]: ./media/virtual-machines-hpcpack-cluster-submit-jobs/jobsubmit.png
+
 

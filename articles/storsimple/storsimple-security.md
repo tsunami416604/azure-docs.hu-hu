@@ -50,7 +50,7 @@ StorSimple 裝置是包含固態硬碟 (SSD) 和硬碟 (HDD) 的內部部署混�
 
 ![服務註冊金鑰](./media/storsimple-security/ServiceRegistrationKey.png)
 
-若要了解如何取得服務註冊金鑰，請移至 [步驟 2: 取得服務註冊金鑰](storsimple-deployment-walkthrough.md#step-2-get-the-service-registration-key)。
+若要了解如何取得服務註冊金鑰，請移至 [步驟 2 ︰ 取得服務註冊金鑰](storsimple-deployment-walkthrough.md#step-2-get-the-service-registration-key)。
 
 服務註冊金鑰是包含 100 個以上字元的長金鑰。 您可以複製金鑰並將它以文字檔方式儲存在安全的位置中，如有必要，您可以使用此金鑰來授權其他裝置。 如果您在註冊完第一個裝置之後遺失服務註冊金鑰，您可以透過 StorSimple Manager 服務產生新的金鑰。 這不會對現有裝置的作業有任何影響。 
 
@@ -107,7 +107,7 @@ StorSimple Snapshot Manager 是一個 Microsoft Management Console (MMC) 嵌入�
 
 StorSimple Snapshot Manager 密碼必須是 14 到 15 個字元，且必須包含 3 個以上的大寫、小寫、數字和特殊字元的組合。 設定 StorSimple Snapshot Manager 密碼之後，您可以加以變更但無法進行擷取。 如果您變更密碼，請務必通知所有遠端使用者。
 
-如需 StorSimple Snapshot Manager 的詳細資訊，請移至 [什麼是 StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+如需 StorSimple Snapshot Manager 的詳細資訊，請移至 [什麼是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)
 
 ### 密碼最佳作法
 
@@ -204,68 +204,69 @@ StorSimple 會使用下列加密演算法，來保護儲存在 StorSimple 解決
 
 下面是一些有關安全性與 Microsoft Azure StorSimple 的問題和解答。
 
-**問:** 我的服務遭到入侵。 我接下來該怎麼做？
+**問 ︰** 我的服務遭到入侵。 我接下來該怎麼做？
 
-**答:** 您應該立即變更服務資料加密金鑰和用於分層資料的儲存體帳戶的儲存體帳戶金鑰。 如需相關指示，請移至： 
+**答 ︰** 您應該立即變更服務資料加密金鑰和用於分層資料的儲存體帳戶的儲存體帳戶金鑰。 如需相關指示，請移至： 
 
 - [變更服務資料加密金鑰](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
 - [替換儲存體帳戶的金鑰](storsimple-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**問:** 我有新的 StorSimple 裝置要求提供服務註冊金鑰。 該如何擷取此金鑰？
+**問 ︰** 我有新的 StorSimple 裝置要求提供服務註冊金鑰。 該如何擷取此金鑰？
 
-**答:** 您最初建立 StorSimple Manager 服務時建立此金鑰。 使用 StorSimple Manager 服務連接至裝置時，您可以透過快速啟動頁面來檢視或重新產生服務註冊金鑰。 產生新的服務註冊金鑰不會影響現有的已註冊裝置。 如需相關指示，請移至：
+**答 ︰** 您最初建立 StorSimple Manager 服務時建立此金鑰。 使用 StorSimple Manager 服務連接至裝置時，您可以透過快速啟動頁面來檢視或重新產生服務註冊金鑰。 產生新的服務註冊金鑰不會影響現有的已註冊裝置。 如需相關指示，請移至：
 
 - [檢視或重新產生服務註冊金鑰](storsimple-service-dashboard.md#view-or-regenerate-the-service-registration-key)
 
-**問:** 我遺失服務資料加密金鑰。 該怎麼辦？
+**問 ︰** 我遺失服務資料加密金鑰。 該怎麼辦？
 
-**答:** 連絡 Microsoft 支援服務。 他們可以登入您裝置上的支援工作階段，協助您擷取金鑰 (假設至少一部裝置在線)。 您取得服務資料加密金鑰之後，請立即變更，以確保只有您自己知道新的金鑰。 如需相關指示，請移至：
+**答 ︰** 連絡 Microsoft 支援服務。 他們可以登入您裝置上的支援工作階段，協助您擷取金鑰 (假設至少一部裝置在線)。 您取得服務資料加密金鑰之後，請立即變更，以確保只有您自己知道新的金鑰。 如需相關指示，請移至：
 
 - [變更服務資料加密金鑰](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
 
-**問:**  我授權某個裝置進行服務資料加密金鑰變更，但未啟動金鑰變更程序。 我該怎麼辦？
+**問 ︰**  我授權某個裝置進行服務資料加密金鑰變更，但未啟動金鑰變更程序。 我該怎麼辦？
 
-**答:** 如果逾時期間已到期，您必須重新授權服務資料加密金鑰變更的裝置並重新啟動程序。
+**答 ︰** 如果逾時期間已到期，您必須重新授權服務資料加密金鑰變更的裝置並重新啟動程序。
 
-**問:**  變更服務資料加密金鑰，但無法在 4 小時內更新其他裝置。 是否必須重新啟動？
+**問 ︰**  變更服務資料加密金鑰，但無法在 4 小時內更新其他裝置。 是否必須重新啟動？
 
-**答:** 4 小時的時間間隔是僅用於起始變更。 在已經授權的 StorSimple 裝置上啟動更新程序之後，在所有裝置更新之前此授權都是有效的。
+**答 ︰** 4 小時的時間間隔是僅用於起始變更。 在已經授權的 StorSimple 裝置上啟動更新程序之後，在所有裝置更新之前此授權都是有效的。
 
-**問:** 我們的 StorSimple 系統管理員已離開公司。 我該怎麼辦？
+**問 ︰** 我們的 StorSimple 系統管理員已離開公司。 我該怎麼辦？
 
-**答:** 變更和重設密碼，允許存取 StorSimple 裝置，並變更服務資料加密金鑰，以確保新的資訊不知道未經授權的人員。 如需相關指示，請移至：
+**答 ︰** 變更和重設密碼，允許存取 StorSimple 裝置，並變更服務資料加密金鑰，以確保新的資訊不知道未經授權的人員。 如需相關指示，請移至：
 
 - [使用 StorSimple Manager 服務變更 StorSimple 密碼](storsimple-change-passwords.md)
 - [變更服務資料加密金鑰](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
 - [為 StorSimple 裝置設定 CHAP](storsimple-configure-chap.md)
 
-**問:** 我想要提供 StorSimple Snapshot Manager 密碼給連接至 StorSimple 裝置的主機，但未提供密碼。 我該怎麼辦？
+**問 ︰** 我想要提供 StorSimple Snapshot Manager 密碼給連接至 StorSimple 裝置的主機，但未提供密碼。 我該怎麼辦？
 
-**答:** 如果您忘了密碼，您應該建立一個新。 然後，請務必通知所有現有的使用者密碼已變更，並要求他們更新其用戶端以使用新密碼。 如需相關指示，請移至：
+**答 ︰** 如果您忘了密碼，您應該建立一個新。 然後，請務必通知所有現有的使用者密碼已變更，並要求他們更新其用戶端以使用新密碼。 如需相關指示，請移至：
 
 - [變更 StorSimple Snapshot Manager 密碼](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)
 - [驗證裝置](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**問:** 遠端存取 Windows PowerShell for StorSimple 的憑證已變更裝置上。 如何更新遠端存取用戶端？
+**問 ︰** 遠端存取 Windows PowerShell for StorSimple 的憑證已變更裝置上。 如何更新遠端存取用戶端？
 
-**答:** 您可以從 StorSimple Manager 服務下載新的憑證，然後提供它安裝在您的遠端存取用戶端的憑證存放區。 如需相關指示，請移至：
+**答 ︰** 您可以從 StorSimple Manager 服務下載新的憑證，然後提供它安裝在您的遠端存取用戶端的憑證存放區。 如需相關指示，請移至：
 
 - [Import-Certificate cmdlet](https://technet.microsoft.com/library/hh848630.aspx)
 
-**問:** 我如果 StorSimple Manager 服務遭到入侵，受保護的資料?
+**問 ︰** 我如果 StorSimple Manager 服務遭到入侵，受保護的資料？
 
-**答:** 網頁瀏覽器中檢視時，與您的公開金鑰一律加密服務組態資料。 因為服務無私密金鑰的存取權，所以無法看到任何資料。 StorSimple Manager 服務遭到入侵也不會有任何影響，因為 StorSimple Manager 服務中不會儲存任何金鑰。
+**答 ︰** 網頁瀏覽器中檢視時，與您的公開金鑰一律加密服務組態資料。 因為服務無私密金鑰的存取權，所以無法看到任何資料。 StorSimple Manager 服務遭到入侵也不會有任何影響，因為 StorSimple Manager 服務中不會儲存任何金鑰。
 
-**問:** 如果有人取得資料加密憑證，將我的資料會降低嗎?
+**問 ︰** 如果有人取得資料加密憑證，將我的資料會降低嗎？
 
-**答:** Microsoft Azure 會以加密格式儲存客戶的資料加密金鑰 (.pfx 檔案)。 因為 .pfx 檔案已加密，且 StorSimple 服務沒有服務資料加密金鑰可解密 .pfx 檔案，所以只是存取 .pfx 檔案並不會曝露任何機密。
+**答 ︰** Microsoft Azure 會以加密格式儲存客戶的資料加密金鑰 （.pfx 檔案）。 因為 .pfx 檔案已加密，且 StorSimple 服務沒有服務資料加密金鑰可解密 .pfx 檔案，所以只是存取 .pfx 檔案並不會曝露任何機密。
 
-**問:** 如果政府機構要求 Microsoft 提供我的資料，會發生什麼事?
+**問 ︰** 如果政府機構要求 Microsoft 提供我的資料，會發生什麼事？
 
-**答:** 因為服務上的所有資料加密，而且私密金鑰隨著裝置一起保存，所以政府機構必須要求客戶提供資料。 
+**答 ︰** 因為服務上的所有資料加密，而且私密金鑰隨著裝置一起保存，所以政府機構必須要求客戶提供資料。 
 
 ## 後續步驟
 
 [部署 StorSimple 裝置](storsimple-deployment-walkthrough.md)。
  
+
 

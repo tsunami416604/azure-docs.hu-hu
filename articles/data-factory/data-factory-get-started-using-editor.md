@@ -31,8 +31,8 @@
 步驟 | 說明
 -----| -----------
 [步驟 1：建立 Azure Data Factory](#CreateDataFactory) | 在此步驟中，您將建立名為 Azure data factory **ADFTutorialDataFactory**。  
-[步驟 2：建立連結服務](#CreateLinkedServices) | 在此步驟中，您將建立兩個連結的服務: **StorageLinkedService** 和 **AzureSqlLinkedService**。 StorageLinkedService 會連結 Azure 儲存體，而 AzureSqlLinkedService 會將 Azure SQL Database 連結至 ADFTutorialDataFactory。 管線的輸入資料位於 Azure Blob 儲存體的 Blob 容器中，輸出資料則儲存在 Azure SQL Database 的資料表中。 因此，您可以將這兩個資料存放區以連結服務的形式新增至 Data Factory。      
-[步驟 3：建立輸入和輸出資料表](#CreateInputAndOutputDataSets) | 在上一個步驟中，您所建立的連結服務參照含有輸入/輸出資料的資料存放區。 在此步驟中，您將定義兩個 data factory 資料表: **EmpTableFromBlob** 和 **EmpSQLTable** -代表資料存放區中的輸入/輸出資料。 您將針對 EmpTableFromBlob，指定所含 Blob 具有來源資料的 Blob 容器，而針對 EmpSQLTable 指定可儲存輸出資料的 SQL 資料表。 您也將指定其他屬性 (例如資料結構、資料可用性等)。 
+[步驟 2：建立連結服務](#CreateLinkedServices) | 在此步驟中，您將建立兩個連結的服務 ︰ **StorageLinkedService** 和 **AzureSqlLinkedService**。 StorageLinkedService 會連結 Azure 儲存體，而 AzureSqlLinkedService 會將 Azure SQL Database 連結至 ADFTutorialDataFactory。 管線的輸入資料位於 Azure Blob 儲存體的 Blob 容器中，輸出資料則儲存在 Azure SQL Database 的資料表中。 因此，您可以將這兩個資料存放區以連結服務的形式新增至 Data Factory。      
+[步驟 3：建立輸入和輸出資料表](#CreateInputAndOutputDataSets) | 在上一個步驟中，您所建立的連結服務參照含有輸入/輸出資料的資料存放區。 在此步驟中，您將定義兩個 data factory 資料表 ︰ **EmpTableFromBlob** 和 **EmpSQLTable** -代表資料存放區中的輸入/輸出資料。 您將針對 EmpTableFromBlob，指定所含 Blob 具有來源資料的 Blob 容器，而針對 EmpSQLTable 指定可儲存輸出資料的 SQL 資料表。 您也將指定其他屬性 (例如資料結構、資料可用性等)。 
 [步驟 4：建立和執行管線](#CreateAndRunAPipeline) | 在此步驟中，您將建立名為管線 **ADFTutorialPipeline** ADFTutorialDataFactory 中。 管線會有 **複製活動** ，將輸入資料從 Azure blob 複製到輸出 Azure SQL 資料表。
 [步驟 5：監視配量和管線](#MonitorDataSetsAndPipeline) | 在此步驟中，您將使用 Azure 入口網站來監視輸入和輸出資料表的配量。
  
@@ -44,21 +44,21 @@
 
     ![新增->DataFactory][image-data-factory-new-datafactory-menu]    
 
-6. 在 **新增 data factory** 刀鋒視窗中:
+6. 在 **新增 data factory** 刀鋒視窗中 ︰
     1. 輸入 **ADFTutorialDataFactory** 的 **名稱**。 
     
         ![新增 Data Factory 刀鋒視窗][image-data-factory-getstarted-new-data-factory-blade]
-    2. 按一下 [ **資源群組名稱** 並執行下列動作:
+    2. 按一下 [ **資源群組名稱** 並執行下列動作 ︰
         1. 按一下 [ **建立新的資源群組**。
         2. 在 **建立資源群組** 刀鋒視窗中，輸入 **ADFTutorialResourceGroup** 的 **名稱** 資源群組，然後按一下 **確定**。 
 
             ![建立資源群組][image-data-factory-create-resource-group]
 
-        在本教學課程步驟假設您使用的名稱: **ADFTutorialResourceGroup** 資源群組。 若要深入了解資源群組，請參閱 [使用資源群組來管理您的 Azure 資源](resource-group-overview.md)。  
+        在本教學課程步驟假設您使用的名稱 ︰ **ADFTutorialResourceGroup** 資源群組。 若要深入了解資源群組，請參閱 [使用資源群組來管理您的 Azure 資源](resource-group-overview.md)。  
 7. 在 **新增 data factory** 刀鋒視窗中，請注意， **新增至開始面板** 已選取。
 8. 按一下 [ **建立** 中 **新增 data factory** 刀鋒視窗。
 
-    Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤: **Data factory 名稱"ADFTutorialDataFactory"沒有**, 、 變更資料處理站 (例如 yournameADFTutorialDataFactory) 的名稱，然後嘗試重新建立。 請參閱 [Data Factory-命名規則](data-factory-naming-rules.md) Data Factory 成品的命名規則的主題。  
+    Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤 ︰ **Data factory 名稱"ADFTutorialDataFactory"沒有**, 、 變更資料處理站 (例如 yournameADFTutorialDataFactory) 的名稱，然後嘗試重新建立。 請參閱 [Data Factory-命名規則](data-factory-naming-rules.md) Data Factory 成品的命名規則的主題。  
      
     ![Data Factory 名稱無法使用][image-data-factory-name-not-available]
     
@@ -72,7 +72,7 @@
 ## <a name="CreateLinkedServices"></a>步驟 2：建立連結服務
 連結服務會將資料存放區或計算服務連結至 Azure Data Factory。 資料存放區可以是 Azure 儲存體、Azure SQL Database 或在內部部署 SQL Server 資料庫。
 
-在此步驟中，您將建立兩個連結的服務: **StorageLinkedService** 和 **AzureSqlLinkedService**。 StorageLinkedService 連結服務會連結 Azure 儲存體帳戶，而 AzureSqlLinkedService 會連結至 Azure SQL database **ADFTutorialDataFactory**。 您稍後將在本教學課程中建立管線，以將資料從 StorageLinkedService 中的 Blob 容器複製到 AzureSqlLinkedService 中的 SQL 資料表。
+在此步驟中，您將建立兩個連結的服務 ︰ **StorageLinkedService** 和 **AzureSqlLinkedService**。 StorageLinkedService 連結服務會連結 Azure 儲存體帳戶，而 AzureSqlLinkedService 會連結至 Azure SQL database **ADFTutorialDataFactory**。 您稍後將在本教學課程中建立管線，以將資料從 StorageLinkedService 中的 Blob 容器複製到 AzureSqlLinkedService 中的 SQL 資料表。
 
 ### 建立 Azure 儲存體帳戶的連結服務
 1.  在 **DATA FACTORY** 刀鋒視窗中，按一下 [ **作者和部署** ] 磚來啟動 **編輯器** 的 data factory。
@@ -105,7 +105,7 @@
    
 
 ## <a name="CreateInputAndOutputDataSets"></a>步驟 3：建立輸入和輸出資料表
-在上一個步驟中，您已建立連結的服務 **StorageLinkedService** 和 **AzureSqlLinkedService** ，將 Azure 儲存體帳戶和 Azure SQL database 連結至 data factory: **ADFTutorialDataFactory**。 在此步驟中，您將定義兩個 data factory 資料表: **EmpTableFromBlob** 和 **EmpSQLTable** -代表分別 StorageLinkedService 和 AzureSqlLinkedService 所參考的資料存放區中的輸入/輸出資料。 針對 EmpTableFromBlob 指定所含 blob 具有來源資料，而針對 EmpSQLTable 的 blob 容器，您會指定儲存輸出資料的 SQL 資料表。 
+在上一個步驟中，您已建立連結的服務 **StorageLinkedService** 和 **AzureSqlLinkedService** ，將 Azure 儲存體帳戶和 Azure SQL database 連結至 data factory: **ADFTutorialDataFactory**。 在此步驟中，您將定義兩個 data factory 資料表 ︰ **EmpTableFromBlob** 和 **EmpSQLTable** -代表分別 StorageLinkedService 和 AzureSqlLinkedService 所參考的資料存放區中的輸入/輸出資料。 針對 EmpTableFromBlob 指定所含 blob 具有來源資料，而針對 EmpSQLTable 的 blob 容器，您會指定儲存輸出資料的 SQL 資料表。 
 
 ### 建立輸入資料表 
 資料表是矩形的資料集，並具有的結構描述。 在此步驟中，您將建立名為的資料表 **Storagelinkedservice** ，它會指向所代表的 Azure 儲存體中的 blob 容器 **StorageLinkedService** 連結服務。
@@ -210,7 +210,7 @@
      請注意： 
     
     * 資料集 **類型** 設為 **AzureSQLTable**。
-    * **linkedServiceName** 設為 **AzureSqlLinkedService** (您已在步驟 2 中建立此連結的服務)。
+    * **linkedServiceName** 設為 **AzureSqlLinkedService** （您已在步驟 2 中建立此連結的服務）。
     * **tablename** 設為 **emp**。
     * 有三個資料行 – **識別碼**, ，**FirstName**, ，和 **LastName** – 的 emp 資料表中的資料庫，但 ID 是身分識別資料行，因此您只需要指定 **FirstName** 和 **LastName** 這裡。
     *  **可用性** 設為 **每小時** (**頻率** 設 **小時** 和 **間隔** 設 **1**)。  Data Factory 服務會產生輸出資料配量中的每小時 **emp** Azure SQL 資料庫資料表中的。
@@ -287,10 +287,10 @@
     請參閱 [JSON 指令碼參考](http://go.microsoft.com/fwlink/?LinkId=516971) 如需 JSON 屬性的詳細資訊。
 
 4. 按一下 [ **部署** 建立和部署] 工具列上 **ADFTutorialPipeline**。 確認您看到 **已成功建立管線** 訊息。
-5. 現在，關閉 **編輯器** 刀鋒視窗中，依序按一下 **X**。 按一下 [ **X** ] 以關閉 [ADFTutorialDataFactory] 刀鋒視窗的工具列和樹狀檢視。 如果您看到 **將捨棄未儲存的編輯** 訊息中，按一下 **確定**。
+5. 現在，關閉 **編輯器** 刀鋒視窗中，依序按一下 **X**。按一下 [ **X** ] 以關閉 [ADFTutorialDataFactory] 刀鋒視窗的工具列和樹狀檢視。 如果您看到 **將捨棄未儲存的編輯** 訊息中，按一下 **確定**。
 6. 您應該會回到 **DATA FACTORY** 分頁 **ADFTutorialDataFactory**。
 
-**恭喜您!**您已成功建立 Azure Data Factory、連結服務、資料表和管線，以及排定的管線。   
+**恭喜！** 您已成功建立 Azure Data Factory、連結服務、資料表和管線，以及排定的管線。   
  
 ### 在圖表檢視中檢視 Data Factory 
 1. 在 **DATA FACTORY** 刀鋒視窗中，按一下 [ **圖表**。
@@ -309,10 +309,10 @@
 4. 按一下 [ **Data factory** 左上角，回到圖表檢視中的階層。 圖表檢視會顯示所有管線。 在此範例中，您只建立了一個管線。   
  
 
-## <a name="MonitorDataSetsAndPipeline"></a>步驟 5: 監視資料集和管線
+## <a name="MonitorDataSetsAndPipeline"></a>步驟 5：監視資料集和管線
 在此步驟中，您將使用 Azure 傳統入口網站來監視 Azure Data Factory 的運作情形。 您也可以使用 PowerShell Cmdlet 來監視資料集和管線。 如需關於使用 cmdlet 進行監視的詳細資訊，請參閱 [監視和管理 Data Factory 使用 PowerShell Cmdlet][monitor-manage-using-powershell]。
 
-1. 瀏覽至 [Azure 傳統入口網站 (預覽)][azure-portal] 如果您沒有開啟它。 
+1. 瀏覽至 [Azure 傳統入口網站 （預覽）][azure-portal] 如果您沒有開啟它。 
 2. 如果分頁 **ADFTutorialDataFactory** 尚未開啟，按一下以開啟 **ADFTutorialDataFactory** 上 **儀表板**。 
 3. 您應該會看到您在此分頁上建立之資料表和管線的計數和名稱。
 
@@ -322,7 +322,7 @@
 5. 在 **資料集** 刀鋒視窗中，按一下 [ **EmpTableFromBlob**。 這是輸入的資料表 **ADFTutorialPipeline**。
 
     ![已選取 EmpTableFromBlob 的資料集][image-data-factory-get-started-datasets-emptable-selected]   
-5. 請注意，截至目前為止的資料配量都已產生，而且它們是 **準備** 因為 **emp.txt** 檔案存在於 blob 容器的所有時間: **adftutorial\input**。 確認任何配量顯示在 **最近失敗的配量** 底部區段。
+5. 請注意，截至目前為止的資料配量都已產生，而且它們是 **準備** 因為 **emp.txt** 檔案存在於 blob 容器的所有時間 ︰ **adftutorial\input**。 確認任何配量顯示在 **最近失敗的配量** 底部區段。
 
     同時 **最近更新的配量** 和 **最近失敗的配量** 清單都依照 **上次更新時間**。 在下列情況中，配量的更新時間會變更。 
     
@@ -343,12 +343,12 @@
 
 
      
-6. 您應該會看到 **EmpSQLTable** 分頁，如下所示:
+6. 您應該會看到 **EmpSQLTable** 分頁，如下所示 ︰
 
     ![資料表刀鋒視窗][image-data-factory-get-started-table-blade]
  
 7. 請注意，截至目前為止的資料配量都已產生，而且它們是 **準備**。 在顯示任何配量 **問題配量** 底部區段。
-8. 按一下 [ **...(省略符號)** 若要查看所有的配量。
+8. 按一下 [ **...（省略符號）** 若要查看所有的配量。
 
     ![資料配量刀鋒視窗][image-data-factory-get-started-dataslices-blade]
 
@@ -364,7 +364,7 @@
 
     
 12. 按一下 [ **X** 關閉所有刀鋒視窗，直到您回到刀鋒 **ADFTutorialDataFactory**。
-14. (選擇性)按一下 [ **管線** 首頁上 **ADFTutorialDataFactory**, ，按一下 [ **ADFTutorialPipeline** 中 **管線** 刀鋒視窗中，然後深入檢視輸入資料表 (**已使用**) 或輸出資料表 (**產生**)。
+14. （選擇性）按一下 [ **管線** 首頁上 **ADFTutorialDataFactory**, ，按一下 [ **ADFTutorialPipeline** 中 **管線** 刀鋒視窗中，然後深入檢視輸入資料表 (**已使用**) 或輸出資料表 (**產生**)。
 15. 啟動 **SQL Server Management Studio**, 、 連接到 Azure SQL 資料庫，並確認資料列已插入 **emp** 資料庫資料表中的。
 
     ![SQL 查詢結果][image-data-factory-get-started-sql-query-results]
@@ -500,3 +500,4 @@ MSDN Library 上的主題。
 
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
+

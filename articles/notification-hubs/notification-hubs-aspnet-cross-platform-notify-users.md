@@ -26,7 +26,7 @@
 
 1. 在 Visual Studio 中的 [方案總管] 中展開 **控制器** 資料夾，然後開啟 RegisterController.cs 檔案。
 
-2. 找出程式碼區塊 **Post** 方法以建立新的登錄取代 `switch` 內容取代為下列程式碼:
+2. 找出程式碼區塊 **Post** 方法以建立新的登錄取代 `switch` 內容取代為下列程式碼 ︰
 
         switch (deviceUpdate.Platform)
         {
@@ -57,7 +57,7 @@
 
     這段程式碼會呼叫平台特有方法來建立範本註冊，而非原生註冊。 不需要修改現有註冊，因為範本註冊源自原生註冊。
 
-3. 在 **通知** 控制站，取代 **sendNotification** 方法取代下列程式碼:
+3. 在 **通知** 控制站，取代 **sendNotification** 方法取代下列程式碼 ︰
 
         public async Task<HttpResponseMessage> Post()
         {
@@ -86,7 +86,7 @@
 
 + **[Use Notification Hubs to send breaking news]** <br/>示範另一個使用範本的案例
 
-+  **[Azure 通知中心概觀][Templates]**<br/>概觀主題包含詳細範本的詳細資訊。
++  **[Azure 通知中心概觀][Templates]**<br/>概觀主題包含範本的詳細資訊。
 
 
 <!-- Anchors. -->
@@ -106,4 +106,5 @@
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
 [Notification Hub How to for Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
+
 

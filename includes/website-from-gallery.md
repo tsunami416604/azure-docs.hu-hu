@@ -11,13 +11,13 @@ Azure Marketplace 提供由 Microsoft、協力廠商公司及開放原始碼軟�
 
 ![Wordpress 部落格][13]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 在入口網站中建立 Web 應用程式
 
 1. 登入 Azure 預覽入口網站。
 
-2. 開啟 Azure Marketplace 按一下 **Marketplace** 圖示:
+2. 開啟 Azure Marketplace 按一下 **Marketplace** 圖示 ︰
 
     ![Marketplace 圖示][marketplace]
 
@@ -87,4 +87,5 @@ Azure Marketplace 提供由 Microsoft、協力廠商公司及開放原始碼軟�
 [browse]: ./media/website-from-gallery/browse-web.png
 [marketplace]: ./media/website-from-gallery/marketplace-icon.png
 [groupname]: ./media/website-from-gallery/set-rg.png
+
 

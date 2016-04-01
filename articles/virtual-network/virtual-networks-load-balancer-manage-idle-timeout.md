@@ -24,7 +24,7 @@
 
 當用戶端-伺服器連線關閉時，用戶端應用程式將收到如下的錯誤訊息：「基礎連接已關閉：應該保持運作的連接卻被伺服器關閉」。
 
-[TCP Keep-alive](http://tools.ietf.org/html/rfc1122#page-101) 是長時間則為非作用中期間保持連線的常見作法 [(MSDN 範例)](http://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 使用 TCP 持續連線時，用戶端會定期傳送簡單的封包 (通常頻率期間會比伺服器的閒置逾時閾值還短)。  伺服器認為即使沒有其他活動發生，這些傳輸還是可做為連線活動的證明 -- 因此，永遠都不會符合閒置逾時值，而且連線可維持一段很長的時間。
+[TCP Keep-alive](http://tools.ietf.org/html/rfc1122#page-101) 是長時間則為非作用中期間保持連線的常見作法 [（MSDN 範例）](http://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 使用 TCP 持續連線時，用戶端會定期傳送簡單的封包 (通常頻率期間會比伺服器的閒置逾時閾值還短)。  伺服器認為即使沒有其他活動發生，這些傳輸還是可做為連線活動的證明 -- 因此，永遠都不會符合閒置逾時值，而且連線可維持一段很長的時間。
 
 儘管 TCP 持續連線可良好運作，但它通常不是行動應用程式的選項，因為它會耗用行動裝置上的有限電源。 使用 TCP 持續連線的行動應用程式將會更快耗盡裝置電池，因為它會為網路使用量而持續消耗電力。
 
@@ -118,7 +118,7 @@ IdleTimeoutInMinutes 是選擇性的。 若未設定，則預設的逾時為 4 �
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
 
-LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、 sourceipprotocol 以用於 3-tuple 同質性或 none (適用於沒有任何關聯性。 也就是 5-tuple)
+LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、 sourceipprotocol 以用於 3-tuple 同質性或 none （適用於沒有任何關聯性。 也就是 5-tuple)
 
 #### Response
 
@@ -151,4 +151,5 @@ LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、
       </InputEndpoint>
     </LoadBalancedEndpointList>
  
+
 

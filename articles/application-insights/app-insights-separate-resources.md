@@ -20,13 +20,13 @@
 
 若要避免混合來自偵錯、 測試和生產版本的應用程式的遙測，建立個別 [Application Insights][start] 資源，以接收來自每個版本的資料。
 
-從您的應用程式收到的資料儲存及處理由 Microsoft Azure 中的 Application Insights *資源*。 每個資源由 *檢測金鑰。*在應用程式中，該金鑰會提供給 Application Insights SDK，使它可以將所收集的資料傳送到正確的資源。 可以在程式碼或在 ApplicationInsights.config 中提供金鑰。 藉由變更 SDK 中的金鑰，您可以將資料導向不同資源。 
+從您的應用程式收到的資料儲存及處理由 Microsoft Azure 中的 Application Insights *資源*。 每個資源由 *檢測金鑰。* 在應用程式中，該金鑰會提供給 Application Insights SDK，使它可以將所收集的資料傳送到正確的資源。 可以在程式碼或在 ApplicationInsights.config 中提供金鑰。 藉由變更 SDK 中的金鑰，您可以將資料導向不同資源。 
 
 
 ## 建立 Application Insights 資源
   
 
-在 [portal.azure.com](https://portal.azure.com), ，加入 Application Insights 資源:
+在 [portal.azure.com](https://portal.azure.com), ，加入 Application Insights 資源 ︰
 
 ![按一下 [新增]，然後按一下 [Application Insights]](./media/app-insights-separate-resources/01-new.png)
 
@@ -51,7 +51,7 @@
 您將需要您的應用程式會將資料傳送至其中的所有資源的檢測金鑰。
 
 
-## <a name="dynamic-ikey"></a> 動態檢測金鑰
+## <a name="dynamic-ikey"></a>動態檢測金鑰
 
 通常 SDK 會從 ApplicationInsights.config 取得 iKey。 相反地，在您的程式碼中設定它，讓它更易於變更。
 
@@ -97,3 +97,4 @@ IKey 也會在您的應用程式網頁中，在 [指令碼，從 [快速入門] 
 [start]: app-insights-overview.md
 
  
+

@@ -18,14 +18,14 @@
     
 # 使用 Logic Apps 功能
 
-在 [上一個主題] [建立新的邏輯應用程式]，建立第一個邏輯應用程式。 現在我們將說明如何使用 App Services Logic Apps，來建立更完整的程序。 本主題將介紹下列新的 Logic Apps 概念：
+在 [上一個主題][Create a new logic app], ，建立第一個邏輯應用程式。 現在我們將說明如何使用 App Services Logic Apps，來建立更完整的程序。 本主題將介紹下列新的 Logic Apps 概念：
 
 - 條件式邏輯，只有在符合特定條件時，才會執行動作。
 - 重複的動作。
 - 用以編輯現有邏輯應用程式的程式碼檢視。
 - 啟動工作流程的選項。
 
-完成本主題之前，您應該完成 [建立新的邏輯應用程式] 中的步驟。 在 [Azure 入口網站]，瀏覽至您的邏輯應用程式並按一下 **觸發程序和動作** 中編輯邏輯應用程式定義的摘要。
+完成本主題之前，您應先完成中的步驟 [Create a new logic app]。 在 [Azure portal], 、 瀏覽至您的邏輯應用程式，然後按一下 **觸發程序和動作** 中編輯邏輯應用程式定義的摘要。
 
 ## 參考資料
 
@@ -55,9 +55,9 @@
 
     到文字方塊中。 此函數會輸出推文清單。 
 
-3. 選取的文字中的所有 **內容** 文字然後加以刪除。 然後按一下 [ `...` ，然後選取 **推文文字**。 這會插入 **repeatitem ()** 函式，傳回清單中的每個項目。 
+3. 選取的文字中的所有 **內容** 文字然後加以刪除。 然後按一下 [ `...` ，然後選取 **推文文字**。 這會插入 **repeatitem （)** 函式，傳回清單中的每個項目。 
 
-最後，請注意重複動作的輸出有其特殊性。 如果您想要參考 Dropbox 作業的結果，例如，您可能 *不* 執行一般 `@actions('dropboxconnector').outputs.body`, ，您必須改為執行: `@actions('dropboxconnector').outputs.repeatItems`。 這會傳回每次執行作業的所有清單，以及每一次的輸出。 例如，`@first(actions('dropboxconnector').outputs.repeatItems).outputs.body.FilePath` 將傳回第一個上傳之檔案的路徑。
+最後，請注意重複動作的輸出有其特殊性。 如果您想要參考 Dropbox 作業的結果，例如，您可能 *不* 執行一般 `@actions('dropboxconnector').outputs.body`, ，您必須改為執行 ︰ `@actions('dropboxconnector').outputs.repeatItems`。 這會傳回每次執行作業的所有清單，以及每一次的輸出。 例如，`@first(actions('dropboxconnector').outputs.repeatItems).outputs.body.FilePath` 將傳回第一個上傳之檔案的路徑。
 
 ### 條件式
 此邏輯應用程式仍會產生很多上傳至 Dropbox 的檔案。 下列步驟中會新增其他邏輯，以確定您只有在推文有特定數量的回推時，才會收到檔案。 
@@ -99,7 +99,7 @@ Logic Apps 的某些功能只能在程式碼檢視中使用。 例如，參數�
         }
     
 2. 捲動至 `twitterconnector` 動作、找出查詢值，並將其取代為 `#@{parameters('topic')}`。
-    您也可以使用  **concat** 函式來結合兩個或多個字串，例如: `@concat('#',parameters('topic'))` 等同於上述程式碼。 
+    您也可以使用  **concat** 函式來結合兩個或多個字串，例如 ︰ `@concat('#',parameters('topic'))` 等同於上述程式碼。 
  
 3. 最後，請移至 `dropboxconnector` 動作，並新增主題參數，如下所示：
 
@@ -112,7 +112,7 @@ Logic Apps 的某些功能只能在程式碼檢視中使用。 例如，參數�
 若要深入了解邏輯應用程式定義，請參閱 [撰寫邏輯應用程式定義](app-service-logic-author-definitions.md)。
 
 ## 啟動邏輯應用程式工作流程
-有數個不同的選項可用來啟動您的邏輯應用程式中定義的工作流程。 工作流程可以永遠啟動隨選 [Azure 入口網站]。
+有數個不同的選項可用來啟動您的邏輯應用程式中定義的工作流程。 工作流程可以永遠啟動隨在 [Azure portal]。
 
 ### 循環觸發程序
 循環觸發程序會依照您指定的間隔執行。 當觸發程序具有條件式邏輯時，觸發程序會判斷工作流程是否需要執行。 觸發程序透過傳回 `200` 狀態碼，表示應執行。 如果不需要執行，則會傳回 `202` 狀態碼。
@@ -142,3 +142,4 @@ Logic Apps 的某些功能只能在程式碼檢視中使用。 例如，參數�
 <!-- Shared links -->
 [Create a new logic app]: app-service-logic-create-a-logic-app.md
 [Azure portal]: https://portal.azure.com 
+

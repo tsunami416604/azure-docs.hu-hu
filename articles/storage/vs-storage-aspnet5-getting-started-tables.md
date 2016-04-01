@@ -104,7 +104,7 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 
 ## 插入實體批次
 
-您可以在單一寫入操作中將多個項目插入至資料表。 下列程式碼範例會建立兩個實體物件 ("Jeff Smith"和"Ben Smith")、 將它們加入至 **TableBatchOperation** 物件使用 **插入** 方法，然後透過呼叫 cloudtable.executebatchasync 開始啟動作業。
+您可以在單一寫入操作中將多個項目插入至資料表。 下列程式碼範例會建立兩個實體物件 （"Jeff Smith"和"Ben Smith"）、 將它們加入至 **TableBatchOperation** 物件使用 **插入** 方法，然後透過呼叫 cloudtable.executebatchasync 開始啟動作業。
 
     // Get a reference to a CloudTable object named 'peopleTable' as described in "Access a table in code"
 
@@ -201,4 +201,5 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 ## 後續步驟
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
+
 

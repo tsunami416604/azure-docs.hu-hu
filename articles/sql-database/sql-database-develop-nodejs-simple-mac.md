@@ -27,7 +27,7 @@
 本主題提供可在 Mac OS X 上執行的 Node.js 程式碼範例。這個範例使用 Tedious 驅動程式連接到 Azure SQL Database。
 
 
-## 先決條件
+## 必要條件
 
 
 安裝 **節點**, ，除非您已經安裝在電腦上。
@@ -55,7 +55,7 @@
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## 步驟 2: 連接
+## 步驟 2 ︰ 連接
 
  [新連線](http://pekim.github.io/tedious/api-connection.html) 函式用來連接到 SQL 資料庫。
 
@@ -74,10 +74,10 @@
     });
 
 
-## 步驟 3: 執行查詢
+## 步驟 3 ︰ 執行查詢
 
 
-所有 SQL 陳述式會都執行使用 [new request ()](http://pekim.github.io/tedious/api-request.html) 函式。 如果陳述式會傳回資料列，例如 select 陳述式，您可以擷取這些使用 [request.on ()](http://pekim.github.io/tedious/api-request.html) 函式。 如果沒有資料列， [request.on ()](http://pekim.github.io/tedious/api-request.html) 函式會傳回空白清單。
+所有 SQL 陳述式會都執行使用 [new request （)](http://pekim.github.io/tedious/api-request.html) 函式。 如果陳述式會傳回資料列，例如 select 陳述式，您可以擷取這些使用 [request.on （)](http://pekim.github.io/tedious/api-request.html) 函式。 如果沒有資料列， [request.on （)](http://pekim.github.io/tedious/api-request.html) 函式會傳回空白清單。
 
 
     var Connection = require('tedious').Connection;
@@ -123,7 +123,7 @@
     }
 
 
-## 步驟 4: 插入資料列
+## 步驟 4 ︰ 插入資料列
 
 在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。  
 
@@ -171,4 +171,5 @@
 ## 後續步驟
 
 如需詳細資訊，請參閱 [Node.js 開發人員中心](/develop/nodejs/)。
+
 

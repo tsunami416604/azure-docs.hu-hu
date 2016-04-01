@@ -31,14 +31,14 @@
 
 1. 啟動登錄編輯程式。 <br> ![執行](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
 
-2. 瀏覽至或建立下列登錄機碼: <br> **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint** 
+2. 瀏覽至或建立下列登錄機碼 ︰ <br> **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint** 
 
 3. 建立新 **多字串** 值呼叫 **連接埠**。 ![新](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)
 
 4. 若要開啟 **編輯多字串** ] 對話方塊中，按兩下連接埠值。
 
 
-5. 在數值資料] 文字方塊中，輸入下列值並新增您的組織所使用的所有自訂連接埠: <br><br>
+5. 在數值資料] 文字方塊中，輸入下列值並新增您的組織所使用的所有自訂連接埠 ︰ <br><br>
 **80** <br>
 **8080** <br>
 **8118** <br>
@@ -61,6 +61,7 @@
 
 
 * [如何探索組織內使用未經批准的雲端應用程式](active-directory-cloudappdiscovery-whatis.md) 
+
 
 
 

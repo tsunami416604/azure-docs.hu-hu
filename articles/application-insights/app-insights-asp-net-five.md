@@ -34,7 +34,7 @@ Visual Studio Application Insights 可讓您監視 Web 應用程式的可用性�
 
 在另一個瀏覽器視窗中，使用您的應用程式一段時間。 您會看到資料出現在 Application Insights 圖表。 (您可能需要按一下 [重新整理])。在您的開發過程只會有少量的資料，但是當您發行應用程式並有許多使用者時，這些圖表就會真正活躍起來。 
 
-[概觀] 頁面會顯示效能圖表您最可能會有興趣: 伺服器回應時間、 頁面載入時間和失敗要求的計數。 按一下任一圖表以查看更多的圖表和資料。
+[概觀] 頁面會顯示效能圖表您最可能會有興趣 ︰ 伺服器回應時間、 頁面載入時間和失敗要求的計數。 按一下任一圖表以查看更多的圖表和資料。
 
 入口網站中的檢視分成兩個主要類別：
 
@@ -77,4 +77,5 @@ Visual Studio Application Insights 可讓您監視 Web 應用程式的可用性�
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md 
+
 

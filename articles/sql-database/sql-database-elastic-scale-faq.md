@@ -35,7 +35,7 @@
 
 #### 每次啟動應用程式，都必須建立分區對應管理員和填入分區嗎？
 
-否，建立分區對應管理員 (比方說， **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) 是一次性作業。  您的應用程式應使用呼叫 **[shardmapmanagerfactory.trygetsqlshardmapmanager ()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** 在應用程式啟動時。  每一應用程式網域應只有一個這類呼叫。
+否，建立分區對應管理員 (比方說， **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) 是一次性作業。  您的應用程式應使用呼叫 **[shardmapmanagerfactory.trygetsqlshardmapmanager （)](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** 在應用程式啟動時。  每一應用程式網域應只有一個這類呼叫。
 
 #### 我有關於使用彈性資料庫工具的疑問，要如何尋求解答？ 
 
@@ -55,3 +55,4 @@
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
+

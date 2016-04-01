@@ -92,7 +92,7 @@ PowerShell Runbook 以 Windows PowerShell 為基礎。  您可以直接使用 Az
 - PowerShell Runbook 中落入迴圈的 Get-Process 大約在 80 次反覆運算之後就會損毀。 
 - 如果 PowerShell Runbook 嘗試一次將非常大量的資料寫入輸出資料流，可能會失敗。   在處理大型物件時，只輸出您所需的資訊，通常就可以解決這個問題。  比方說，而不是輸出類似 *Get-process*, ，您可以輸出只是必要的欄位與 *Get-process |選取 ProcessName，CPU*。
 
-## 注意事項
+## 考量
 
 在決定特定 Runbook 要使用何種類型時，您應該考慮下列其他事項。
 
@@ -107,6 +107,7 @@ PowerShell Runbook 以 Windows PowerShell 為基礎。  您可以直接使用 Az
 - [Azure 自動化中的圖形化編寫](automation-graphical-authoring-intro.md)
 - [了解 Windows PowerShell 工作流程](automation-powershell-workflow.md)
 - [建立或匯入 Runbook](http://msdn.microsoft.com/library/azure/dn643637.aspx)
+
 
 
 

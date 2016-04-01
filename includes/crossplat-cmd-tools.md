@@ -1,6 +1,6 @@
 #如何使用適用於 Mac 和 Linux 的 Azure 命令列工具
 
-本指南說明如何使用適用於 Mac 和 Linux 的 Azure 命令列工具，在 Azure 中建立和管理服務。 涵蓋的案例包括 **安裝工具**, ，**匯入發佈設定**, ，**建立和管理 Azure 網站**, ，和 **建立和管理 Azure 虛擬機器**。 如需完整的參考文件，請參閱 [適用於 Mac 和 Linux 文件的 Azure 命令列工具] [參考文件]。 
+本指南說明如何使用適用於 Mac 和 Linux 的 Azure 命令列工具，在 Azure 中建立和管理服務。 涵蓋的案例包括 **安裝工具**, ，**匯入發佈設定**, ，**建立和管理 Azure 網站**, ，和 **建立和管理 Azure 虛擬機器**。 如需完整的參考文件，請參閱 [Azure 命令列工具，適用於 Mac 和 Linux 文件][reference-docs]。 
 
 ##目錄
 * [什麼是適用於 Mac 和 Linux 的 Azure 命令列工具](#Overview)
@@ -11,7 +11,7 @@
 * [如何建立和管理 Azure 虛擬機器](#VMs)
 
 
-<h2><a id="Overview"></a>什麼是適用於 Mac 和 Linux 的 Azure 命令列工具</h2>
+<h2><a id="Overview"></a>適用於 Mac 和 Linux 的 Azure 命令列工具有哪些？</h2>
 
 適用於 Mac 和 Linux 的 Azure 命令列工具是一組用來部署和管理 Azure 服務的命令列工具。
  
@@ -21,23 +21,23 @@
 * 建立和管理 Azure 網站。
 * 建立和管理 Azure 虛擬機器。
 
-支援的命令的完整清單，輸入 `azure -help` 在命令列安裝工具之後，請參閱 [參考的文件] 或 [參考文件]。
+如需支援的命令的完整清單，輸入 `azure -help` 在命令列安裝工具之後，或參閱 [參考文件][reference-docs]。
 
 <h2><a id="Download">如何安裝適用於 Mac 和 Linux 的 Azure 命令列工具</a></h2>
 
 下列清單包含安裝命令列工具的相關資訊，視作業系統而定：
 
-* **Mac**: 下載 [Azure SDK 安裝程式] [mac 安裝程式]。 開啟已下載的 .pkg 檔案，並依照提示完成安裝步驟。
+* **Mac**︰ 下載 [Azure SDK 安裝程式][mac-installer]。 開啟已下載的 .pkg 檔案，並依照提示完成安裝步驟。
 
-* **Linux**: 安裝最新版的 [Node.js] [nodejs 組織] (請參閱 [透過封裝 Manager][install-node-linux]) 來安裝 Node.js，然後執行下列命令:
+* **Linux**︰ 安裝最新版 [Node.js][nodejs-org] (請參閱 [透過封裝管理員來安裝 Node.js][install-node-linux])，然後執行下列命令 ︰
 
         npm install azure-cli -g
 
-    **請注意**: 您可能需要較高權限執行此命令:
+    **請注意**︰ 您可能需要較高權限執行此命令 ︰
 
         sudo npm install azure-cli -g
 
-* **Windows**: 執行 Winows 安裝程式 (.msi 檔案)，位於此處: [Azure 命令列工具] [windows 安裝程式]。
+* **Windows**︰ 執行 Winows 安裝程式 （.msi 檔案），位於此處 ︰ [Azure 命令列工具][windows-installer]。
 
 
 若要測試安裝，請在命令提示字元中輸入 `azure`。 如果安裝成功，您會看到所有可用的 `azure` 命令的清單。
@@ -46,13 +46,13 @@
 
 您需要 Azure 帳戶，才能使用適用於 Mac 和 Linux 的 Azure 命令列工具。
 
-開啟網頁瀏覽器並瀏覽到 [http://www.windowsazure.com] [windowsazuredotcom] 並按一下 **免費試用版** 右上角。
+開啟網頁瀏覽器並瀏覽至 [http://www.windowsazure.com][windowsazuredotcom] 按一下 **免費試用版** 右上角。
 
-![Azure 網站][Azure 網站]
+![Azure 網站][Azure Web Site]
 
 依照指示來建立帳戶。
 
-<h2><a id="Account"></a>如何下載和匯入發行設定</h2>
+<h2><a id="Account"></a>如何下載和匯入發佈設定</h2>
 
 若要開始進行，您需要先下載並匯入發佈設定。 這可讓您使用工具來建立和管理 Azure 服務。 若要下載發佈設定，請使用 `account download` 命令：
 
@@ -64,7 +64,7 @@
 
     azure account import {path to .publishsettings file}
 
-若要移除所有透過 <code>import</code> 命令儲存的資訊，請使用 <code>account clear</code> 命令：
+您可以移除所有儲存的資訊 <code>import</code> 命令，以使用 <code>account clear</code> 命令 ︰
 
     azure account clear
 
@@ -219,5 +219,6 @@ Azure 虛擬機器是使用您提供的映像或映像庫中的虛擬機器映�
 [windows-installer]: http://go.microsoft.com/fwlink/?LinkID=275464
 [reference-docs]: http://go.microsoft.com/fwlink/?LinkId=252246
 [windowsazuredotcom]: http://www.windowsazure.com
+
 
 

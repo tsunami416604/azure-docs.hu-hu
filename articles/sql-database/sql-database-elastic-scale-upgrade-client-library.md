@@ -26,7 +26,7 @@
 
 ## 升級步驟
 
-**1.升級您的應用程式。**在 Visual Studio 中，將最新的用戶端程式庫版本下載到您所有使用程式庫的開發專案中，並加以參照；然後重新建置及部署。 
+**1.升級您的應用程式。** 在 Visual Studio 中，將最新的用戶端程式庫版本下載到您所有使用程式庫的開發專案中，並加以參照；然後重新建置及部署。 
 
  * 在 Visual Studio 方案中，選取 **工具** --> **NuGet 封裝管理員** -->  **管理方案的 NuGet 封裝**。 
  * (Visual Studio) 2013在左面板中，選取 **更新**, ，然後選取 **更新** 封裝上的按鈕 **Azure SQL Database Elastic Scale 用戶端程式庫** 視窗中顯示的。
@@ -35,13 +35,13 @@
  
  * 建置並部署。 
 
-**2.升級您的指令碼。**如果您使用 **PowerShell** 指令碼來管理分區， [下載新的程式庫版本](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) 並將它複製到您從中執行指令碼的目錄。 
+**2.升級您的指令碼。** 如果您使用 **PowerShell** 指令碼來管理分區， [下載新的程式庫版本](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) 並將它複製到您從中執行指令碼的目錄。 
 
-**3.升級您的分割合併服務。**如果您使用彈性資料庫分割合併工具來重新安排分區資料， [下載和部署工具的最新版本](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)。 可以找到服務的詳細升級步驟 [這裡](sql-database-elastic-scale-overview-split-and-merge.md)。 
+**3.升級您的分割合併服務。** 如果您使用彈性資料庫分割合併工具來重新安排分區資料， [下載和部署工具的最新版本](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)。 可以找到服務的詳細升級步驟 [這裡](sql-database-elastic-scale-overview-split-and-merge.md)。 
 
 **4.升級您的分區對應管理員資料庫。** 升級支援您 Azure SQL Database 中之分區對應的中繼資料。  您可以使用 PowerShell 或 C# 來完成此作業。 下面會說明這兩個選項。
 
-***undefined***
+***選項 1 ︰ 升級使用 PowerShell 的中繼資料***
 
 1. 下載最新的命令列公用程式從 NuGet [這裡](http://nuget.org/nuget.exe) 並儲存到資料夾。 
 
@@ -55,9 +55,9 @@
 
 5. 從該資料夾中，從命令提示字元執行 “PowerShell .\upgrade.ps1”，然後依照提示完成作業。
  
-***undefined***
+***選項 2 ︰ 使用 C 的中繼資料升級。#***
 
-或者，建立 Visual Studio 應用程式會開啟您的 ShardMapManager、 逐一查看所有分區，與執行方式是呼叫方法的中繼資料升級 [UpgradeLocalStore](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore.aspx) 和 [UpgradeGlobalStore](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore.aspx) 如此範例所示: 
+或者，建立 Visual Studio 應用程式會開啟您的 ShardMapManager、 逐一查看所有分區，與執行方式是呼叫方法的中繼資料升級 [UpgradeLocalStore](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore.aspx) 和 [UpgradeGlobalStore](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore.aspx) 如此範例所示 ︰ 
 
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager
@@ -72,7 +72,7 @@
 
 這些中繼資料升級技巧可以套用多次且不會造成損害。 例如，如果較舊的用戶端版本在您已經更新之後意外建立分區，您可以在所有分區上再次執行升級，以確保您的整個基礎結構都擁有最新的中繼資料版本。 
 
-**注意:**  至今發佈的新版本的用戶端程式庫繼續使用的舊版分區對應管理員中繼資料，在 Azure SQL DB，反之亦然。   但是，若要使用最新用戶端中的部分新功能，則必須升級中繼資料。   請注意，中繼資料升級將不會影響任何使用者資料或應用程式特定資料，只會影響分區對應管理員所建立及使用的物件。  而且應用程式會繼續透過上述的升級順序運作。 
+**注意 ︰**  至今發佈的新版本的用戶端程式庫繼續使用的舊版分區對應管理員中繼資料，在 Azure SQL DB，反之亦然。   但是，若要使用最新用戶端中的部分新功能，則必須升級中繼資料。   請注意，中繼資料升級將不會影響任何使用者資料或應用程式特定資料，只會影響分區對應管理員所建立及使用的物件。  而且應用程式會繼續透過上述的升級順序運作。 
 
 ## 彈性資料庫用戶端版本歷程記錄 
 
@@ -98,3 +98,4 @@
 <!--Image references-->
 [1]:./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
  
+

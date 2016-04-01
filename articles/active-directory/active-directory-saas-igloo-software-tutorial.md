@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -    [Igloo Software](http://www.igloosoftware.com/) 單一登入啟用的訂閱
   
-完成本教學課程之後, 您已指派給 Igloo Software 的 Azure AD 使用者將能夠登入位於您 Igloo Software 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Igloo Software 的 Azure AD 使用者將能夠登入位於您 Igloo Software 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -99,9 +99,9 @@
 
 8.  在 [SAML 組態] 區段中，按一下 [ **設定 SAML 驗證**。
 
-    ![SAML 設定](./media/active-directory-saas-igloo-software-tutorial/IC783969.png "SAML Configuration")
+    ![SAML 組態](./media/active-directory-saas-igloo-software-tutorial/IC783969.png "SAML Configuration")
 
-9.  在 **一般組態** 區段中，執行下列步驟:
+9.  在 **一般組態** 區段中，執行下列步驟 ︰
 
     ![一般設定](./media/active-directory-saas-igloo-software-tutorial/IC783970.png "General Configuration")
 
@@ -115,7 +115,7 @@
 
     6.  從您的憑證的文字檔案版本移除的第一行和最後一行，複製剩餘的憑證文字，然後將它貼到 **公開憑證** 文字方塊。
 
-10. 在 **回應和驗證設定**, ，執行下列步驟:
+10. 在 **回應和驗證設定**, ，執行下列步驟 ︰
 
     ![回應與驗證組態](./media/active-directory-saas-igloo-software-tutorial/IC783971.png "Response and Authentication Configuration")
 
@@ -158,3 +158,4 @@
     ![是](./media/active-directory-saas-igloo-software-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

@@ -26,7 +26,7 @@
 
 本文將說明使用 Transact SQL 建立 SQL 資料倉儲的方式。  若要完成這篇文章中的步驟，您需要下列項目︰
 
-- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
+- Azure 訂閱。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
 - 。 一份免費的 Visual Studio，請參閱 [Visual Studio 下載](https://www.visualstudio.com/downloads/download-visual-studio-vs) 頁面。
 - V12 SQL Server。  您將需要 V12 SQL Server 來建立 SQL 資料倉儲。  如果您沒有可用的 V12 SQL Server，則建議您在入口網站中建立，這樣您就可以在新的伺服器上建立您的 SQL 資料倉儲。
 
@@ -75,4 +75,5 @@ SERVICE_OBJECTIVE 會指出您的執行個體起始的 DWU 數量，並接受下
 [load]: ./sql-data-warehouse-overview-load.md
 [load sample data]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [pricing page]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
+
 

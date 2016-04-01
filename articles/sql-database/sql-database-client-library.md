@@ -61,41 +61,41 @@ Azure SQL Database Library for.NET 提供 [Azure 資源管理員](resource-group
 
 1. 捲動尋找左側功能表 **Active Directory** 服務，並將它開啟。
 
-    ![AAD][] 1
+    ![AAD][1]
 
 2. 選取要驗證您的應用程式，然後按一下它的目錄的 **名稱**。
 
-    ![目錄][] 4
+    ![目錄][4]
 
 3. 在 [目錄] 頁面中，按一下 [ **應用程式**。
 
-    ![應用程式][] 5
+    ![應用程式][5]
 
 4. 按一下 [ **新增** 建立新的應用程式。
 
-    ![新增應用程式][] 6
+    ![新增應用程式][6]
 
 5. 選取 **加入我的組織正在開發的應用程式**。
 
 5. 提供 **名稱** 應用程式，並選取 **原生用戶端應用程式**。
 
-    ![新增應用程式][] 7
+    ![新增應用程式][7]
 
 6. 提供 **重新導向 URI**。 它不需要是實際的端點，只要是有效的 URI 即可。
 
-    ![新增應用程式][] 8
+    ![新增應用程式][8]
 
-7. 完成建立應用程式中，按一下 **設定**, ，並複製 **用戶端識別碼** (您將程式碼中需要用戶端識別碼)。
+7. 完成建立應用程式中，按一下 **設定**, ，並複製 **用戶端識別碼** （您將程式碼中需要用戶端識別碼）。
 
-    ![取得用戶端識別碼][] 9
+    ![取得用戶端識別碼][9]
 
 
 1. 在頁面底部按一下 **新增應用程式**。
 1. 選取 **Microsoft 應用程式**。
 1. 選取 **Azure 服務管理 API**, ，然後完成精靈。
-2. 選取 API 之後，您現在必須授與存取這個 API，藉由選取所需的特定權限 **存取 Azure 服務管理 (預覽)**。
+2. 選取 API 之後，您現在必須授與存取這個 API，藉由選取所需的特定權限 **存取 Azure 服務管理 （預覽）**。
 
-    ![權限][] 2
+    ![權限][2]
 
 2. 按一下 [ **儲存**。
 
@@ -108,7 +108,7 @@ Azure SQL Database Library for.NET 提供 [Azure 資源管理員](resource-group
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 將滑鼠停留在右上角的名稱，並記下出現在快顯視窗的網域。
 
-    ![識別網域名稱][] 3
+    ![識別網域名稱][3]
 
 
 
@@ -249,7 +249,7 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
 
 ## 更新資料庫 
 
-若要更新資料庫，在您呼叫 (例如，變更服務層和效能層級) **Databases.CreateOrUpdate** 一樣建立或更新資料庫上述的方法。 設定 **Edition** 和 **RequestedServiceObjectiveName** 所需的服務層和效能層級的屬性。
+若要更新資料庫，在您呼叫 （例如，變更服務層和效能層級） **Databases.CreateOrUpdate** 一樣建立或更新資料庫上述的方法。 設定 **Edition** 和 **RequestedServiceObjectiveName** 所需的服務層和效能層級的屬性。
  請注意，當變更版本，或從 **高階**, ，更新可能需要一些時間，視您的資料庫大小而定。
 
 以下會將 SQL Database 更新至標準 (S0) 層級：
@@ -798,4 +798,5 @@ SQL Database 包含在伺服器中。 伺服器名稱在全域的所有 Azure SQ
 [7]: ./media/sql-database-client-library/add-application.png
 [8]: ./media/sql-database-client-library/add-application2.png
 [9]: ./media/sql-database-client-library/clientid.png
+
 

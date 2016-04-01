@@ -29,7 +29,7 @@
 
 1. 按一下 [ **設定**。
 
-1. 在 **DNS 伺服器**, ，您可以設定下列各項:
+1. 在 **DNS 伺服器**, ，您可以設定下列各項 ︰
 
     - **若要登錄 (add) 新的 DNS 伺服器 –** 只要的方塊中輸入名稱和 IP 位址。 這會將 DNS 伺服器新增至虛擬網路 DNS 伺服器清單，並且也會向 Azure 登錄 DNS 伺服器。
 
@@ -64,4 +64,5 @@
 [如何在虛擬網路中使用公用 IP 位址](../virtual-networks-public-ip-within-vnet)
 
 [如何刪除虛擬網路 (VNet)](../virtual-networks-delete-vnet) 
+
 

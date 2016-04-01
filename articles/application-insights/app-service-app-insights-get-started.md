@@ -88,8 +88,8 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 
 2. 如果您使用 Visual Studio：
 
- * 新的專案: 檢查 **加入 Application Insights** 方塊。
- * 現有的專案: 以滑鼠右鍵按一下您的專案，然後選擇 [ **加入 Application Insights**。
+ * 新的專案 ︰ 檢查 **加入 Application Insights** 方塊。
+ * 現有的專案 ︰ 以滑鼠右鍵按一下您的專案，然後選擇 [ **加入 Application Insights**。
 
 如果您不使用 Visual Studio 中，或如果這些選項不適用於您的專案， [查閱您的平台這裡](app-insights-platforms.md)。
 
@@ -100,7 +100,7 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 
 [範例和逐步解說](app-insights-code-samples.md)
 
-[SDK 實驗室](https://www.myget.org/gallery/applicationinsights-sdk-labs) -NuGet 封裝安裝 (及解除安裝) 做為 Application Insights SDK 的新增項目。 親身體驗並提供意見反應！
+[SDK 實驗室](https://www.myget.org/gallery/applicationinsights-sdk-labs) -NuGet 封裝安裝 （及解除安裝） 做為 Application Insights SDK 的新增項目。 親身體驗並提供意見反應！
 
 
 ## 支援與意見反應
@@ -143,3 +143,4 @@ SDK 有數個模組收集遙測，例如，計算使用者、工作階段和效�
 [windows]: app-insights-windows-get-started.md
 
  
+

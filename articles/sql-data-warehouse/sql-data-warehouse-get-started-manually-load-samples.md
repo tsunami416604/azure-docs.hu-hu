@@ -18,11 +18,11 @@
 
 #將範例資料載入 SQL 資料倉儲
 
-當您 [建立 SQL 資料倉儲資料庫執行個體] [建立 SQL 資料倉儲資料庫執行個體] 的下一個步驟是建立並載入某些資料表。  您可以使用我們為 SQL 資料倉儲建立的 Adventure Works 範例指令碼，建立並載入名為 Adventure Works 之虛構公司的資料表。  這些指令碼使用 sqlcmd 來執行 SQL，並使用 bcp 載入資料。  如果您還沒有安裝這些工具，請遵循下列連結以 [安裝 bcp] [] 和 [安裝 sqlcmd] []。
+一旦您 [建立的 SQL 資料倉儲資料庫執行個體][create a SQL Data Warehouse database instance] 下一個步驟是建立並載入某些資料表。  您可以使用我們為 SQL 資料倉儲建立的 Adventure Works 範例指令碼，建立並載入名為 Adventure Works 之虛構公司的資料表。  這些指令碼使用 sqlcmd 來執行 SQL，並使用 bcp 載入資料。  如果您還沒有安裝這些工具，請遵循下列連結以 [安裝 bcp][] 及 [安裝 sqlcmd][]。
 
 請遵循下列簡單的步驟，將 Adventure Works 範例資料庫載入至 SQL DW...
 
-1. 下載 [Adventure Works 的範例指令碼的 SQL 資料倉儲] []。
+1. 下載 [Adventure Works 的範例指令碼的 SQL 資料倉儲][]。
 
 2. 請從下載的 zip 將檔案解壓縮到本機電腦上的目錄。
 
@@ -44,7 +44,7 @@
 
 ##查詢範例資料
 
-一旦已經將某些範例資料載入您的 SQL 資料倉儲中，就可以快速地執行幾個查詢。  若要執行查詢時，連接到使用 Visual Studio 和 SSDT，Azure SQL DW 中新建立的 Adventure Works 資料庫中所述 [連線] [] 文件。
+一旦已經將某些範例資料載入您的 SQL 資料倉儲中，就可以快速地執行幾個查詢。  若要執行查詢時，連接到使用 Visual Studio 和 SSDT，Azure SQL DW 中新建立的 Adventure Works 資料庫中所述 [連接][] 文件。
 
 可取得員工之所有資訊的簡單 select 陳述式範例：
 
@@ -65,10 +65,10 @@
     GROUP BY OrderDateKey
     ORDER BY OrderDateKey;
 
-SQL 資料倉儲幾乎支援所有 SQL Server 支援的 T-SQL 建構。  所有差異都記錄於我們 [移轉程式碼] [] 文件。
+SQL 資料倉儲幾乎支援所有 SQL Server 支援的 T-SQL 建構。  所有差異都記錄於我們 [移轉程式碼][] 文件。
 
 ## 後續步驟
-既然您已經有機會嘗試一些範例資料的查詢時，看看如何 [開發] []，[載入] []，或到 SQL 資料倉儲 [移轉] []。
+現在您已經有機會嘗試一些範例資料的查詢時，請參閱如何 [開發][], ，[載入][], ，或 [移轉][] 到 SQL 資料倉儲。
 
 <!--Image references-->
 
@@ -84,4 +84,5 @@ SQL 資料倉儲幾乎支援所有 SQL Server 支援的 T-SQL 建構。  所有�
 
 <!--Other Web references-->
 [Adventure Works Sample Scripts for SQL Data Warehouse]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
+
 

@@ -27,15 +27,15 @@
 
 本主題顯示如何在 Azure 行動服務中從應用程式驗證使用者。 在本教學課程中，您將使用行動服務支援的身分識別提供者，將驗證加入至快速入門專案。 由行動服務成功驗證並授權之後，就會顯示使用者識別碼值。
 
-本教學課程將引導您逐步完成以下在您的應用程式中啟用驗證的基本步驟：
+本教學課程帶領您執行下列基本步驟，在您的應用程式中啟用驗證：
 
-1. [註冊應用程式進行驗證，並設定行動服務]
-2. [限制只有經驗證的使用者具有資料表的權限]
-3. [新增驗證至應用程式]
+1. [註冊您的應用程式以驗證與設定行動服務]
+2. [對通過驗證的使用者限制資料表權限]
+3. [將驗證新增至應用程式]
 
-本教學課程是以行動服務快速入門為基礎。 您也必須先完成 [開始使用行動服務] 教學課程。
+本教學課程會以行動服務快速入門為基礎。 您還必須先完成本教學課程 [Get started with Mobile Services]。
 
-##<a name="register"></a>註冊您的應用程式以驗證與設定行動服務
+##<a name="register"></a>註冊應用程式進行驗證，並設定行動服務
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
@@ -63,7 +63,7 @@
         private MobileServiceUser user;
         public MobileServiceUser User { get { return user; } }
 
-2. 新增新方法 **驗證** 至 **QSTodoService** 取代為下列定義:
+2. 新增新方法 **驗證** 至 **QSTodoService** 取代為下列定義 ︰
 
         private async Task Authenticate(UIViewController view)
         {
@@ -77,9 +77,9 @@
             }
         }
 
-> [AZURE.NOTE] 如果您使用的身分識別提供者不是 Facebook，變更值傳遞至 **LoginAsync** 上方的下列其中一個: _MicrosoftAccount_, ，_Twitter_, ，_Google_, ，或 _WindowsAzureActiveDirectory_。
+> [AZURE.NOTE] 如果您使用的身分識別提供者不是 Facebook，變更值傳遞至 **LoginAsync** 上方的下列其中一個 ︰ _MicrosoftAccount_, ，_Twitter_, ，_Google_, ，或 _WindowsAzureActiveDirectory_。
 
-3. 開啟 **QSTodoListViewController.cs**。 修改的方法定義 **ViewDidLoad** 移除呼叫 **refreshasync ()** 結尾附近的:
+3. 開啟 **QSTodoListViewController.cs**。 修改的方法定義 **ViewDidLoad** 移除呼叫 **refreshasync （)** 結尾附近的 ︰
 
         public override async void ViewDidLoad ()
         {
@@ -119,7 +119,7 @@
 
 <!-- ## <a name="next-steps"> </a>Next steps
 
-在下一個 [行動服務使用者的伺服器端授權] [以指令碼授權使用者] 教學課程中，您將使用由行動服務根據經驗證的使用者而提供的使用者識別碼值，來篩選行動服務傳回的資料。
+In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services.
  -->
 
 <!-- Anchors. -->
@@ -138,4 +138,5 @@
 [Get started with push notifications]: mobile-services-dotnet-backend-xamarin-ios-get-started-push.md
 [Authorize users with scripts]: ../mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts.md
 [JavaScript and HTML]: ../mobile-services-dotnet-backend-windows-store-javascript-get-started-users.md
+
 

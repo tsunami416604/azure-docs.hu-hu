@@ -8,7 +8,7 @@ Visual Studio 中的 API 應用程式工具可讓您輕鬆地產生 C# 程式碼
 
     ![新增專案](./media/app-service-dotnet-debug-api-app-gen-api-client/01-add-new-project-v3.png)
 
-3. 在 **加入新的專案** ] 對話方塊中，執行下列步驟:
+3. 在 **加入新的專案** ] 對話方塊中，執行下列步驟 ︰
 
     1. 選取 **Windows 桌面** 類別。
     
@@ -24,7 +24,7 @@ Visual Studio 中的 API 應用程式工具可讓您輕鬆地產生 C# 程式碼
 
     ![新增用戶端](./media/app-service-dotnet-debug-api-app-gen-api-client/03-add-azure-api-client-v3.png)
     
-5. 在 **新增 Microsoft Azure API 應用程式用戶端** ] 對話方塊中，執行下列步驟: 
+5. 在 **新增 Microsoft Azure API 應用程式用戶端** ] 對話方塊中，執行下列步驟 ︰ 
 
     1. 選取 **下載** 選項。 
     
@@ -42,7 +42,7 @@ Visual Studio 中的 API 應用程式工具可讓您輕鬆地產生 C# 程式碼
 
     ![產生完成](./media/app-service-dotnet-debug-api-app-gen-api-client/06-code-gen-output-v3.png)
 
-6. 開啟 **Program.cs** 檔案從專案根目錄，並將 **Main** 方法取代下列程式碼: 
+6. 開啟 **Program.cs** 檔案從專案根目錄，並將 **Main** 方法取代下列程式碼 ︰ 
 
         static void Main(string[] args)
         {
@@ -83,4 +83,5 @@ Visual Studio 中的 API 應用程式工具可讓您輕鬆地產生 C# 程式碼
     ![執行主控台應用程式](./media/app-service-dotnet-debug-api-app-gen-api-client/running-console-app.png)
 
 5. 按下 **Enter** 以關閉主控台視窗。          
+
 

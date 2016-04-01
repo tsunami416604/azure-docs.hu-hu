@@ -22,16 +22,16 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [資源管理員模型](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)。
 
 
-這篇文章可讓您快速使用兩個範例 [fleet](https://github.com/coreos/fleet) 和 [Docker](https://www.docker.com/) [CoreOS] 虛擬機器的叢集上執行應用程式。
+這篇文章可讓您快速使用兩個範例 [fleet](https://github.com/coreos/fleet) 和 [Docker](https://www.docker.com/) 的叢集上執行應用程式 [CoreOS] 虛擬機器。
 
-若要使用這些範例，請先設定三節點 CoreOS 叢集 [如何 Azure 上使用 CoreOS] 中所述。 完成後，您將了解 CoreOS 部署的最基本項目，然後具備工作叢集和用戶端電腦。 我們將使用和這些範例中完全相同的叢集名稱。 此外，這些範例假設您正在使用本機 Linux 主機來執行您 **fleetctl** 命令。 請參閱 [使用用戶端](https://coreos.com/fleet/docs/latest/using-the-client.html) 如需詳細資訊 **fleetctl** 用戶端。
+若要使用這些範例，請先設定三節點 CoreOS 叢集中所述 [How to Use CoreOS on Azure]。 完成後，您將了解 CoreOS 部署的最基本項目，然後具備工作叢集和用戶端電腦。 我們將使用和這些範例中完全相同的叢集名稱。 此外，這些範例假設您正在使用本機 Linux 主機來執行您 **fleetctl** 命令。 請參閱 [使用用戶端](https://coreos.com/fleet/docs/latest/using-the-client.html) 如需詳細資訊 **fleetctl** 用戶端。
 
 
-## <a id='simple'>範例 1: Docker 與 Hello World</a>
+## <a id='simple'>範例 1：Docker 與 Hello World 搭配使用</a>
 
-此為在單一 Docker 容器上執行的簡單 "Hello World" 應用程式。 這會使用 [busybox Docker 中樞映像]。
+此為在單一 Docker 容器上執行的簡單 "Hello World" 應用程式。 這會使用 [busybox Docker Hub image]。
 
-在 Linux 用戶端電腦上使用您偏好的文字編輯器來建立下列 **systemd** 單位檔案，並將它命名 `helloworld.service`。 (如需有關語法的詳細資訊，請參閱 [單位檔案])。
+在 Linux 用戶端電腦上使用您偏好的文字編輯器來建立下列 **systemd** 單位檔案，並將它命名 `helloworld.service`。 (如需有關語法的詳細資訊，請參閱 [Unit Files]。)
 
 ```
 [Unit]
@@ -88,11 +88,11 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload helloworld.service
 ```
 
 
-## <a id='highavail'>範例 2: 高可用性 nginx 伺服器</a>
+## <a id='highavail'>範例 2：高可用性的 Nginx 伺服器</a>
 
-其中一個優點使用 CoreOS、 Docker 和 **fleet** 是很容易以高可用性的方式執行服務。 在此範例中，您將部署一個服務，此服務由執行 Nginx Web 伺服器的三個完全相同的容器所組成。 這些容器將在此叢集的三個 VM 中執行。 此範例類似於在 [以 fleet 啟動容器] 中，並使用 [nginx Docker 中樞映像]。
+其中一個優點使用 CoreOS、 Docker 和 **fleet** 是很容易以高可用性的方式執行服務。 在此範例中，您將部署一個服務，此服務由執行 Nginx Web 伺服器的三個完全相同的容器所組成。 這些容器將在此叢集的三個 VM 中執行。 這個範例是類似於一個 [Launching containers with fleet] ，並使用 [nginx Docker Hub image]。
 
->[AZURE.IMPORTANT] 若要執行高可用性網頁伺服器，您將需要設定負載平衡的 HTTP 端點 (公用連接埠 80、 私用連接埠 80) 的虛擬機器上。 您可以在建立 CoreOS 叢集後使用 Azure 傳統入口網站或 **azure vm 端點** 命令。 如需詳細資訊，請參閱 [設定負載平衡集]。
+>[AZURE.IMPORTANT] 若要執行高可用性網頁伺服器，您將需要設定負載平衡的 HTTP 端點 （公用連接埠 80、 私用連接埠 80） 的虛擬機器上。 您可以在建立 CoreOS 叢集後使用 Azure 傳統入口網站或 **azure vm 端點** 命令。 請參閱 [Configure a load-balanced set] 如需詳細資訊。
 
 用戶端電腦時，使用您偏好的文字編輯器來建立 **systemd** 範本單位檔案，名為 nginx@.service。 您將使用這個簡單的範本來啟動三個不同的執行個體，名為 nginx@1.service、 nginx@2.service 和 nginx@3.service:
 
@@ -112,7 +112,7 @@ ExecStop=/usr/bin/docker stop nginx1
 X-Conflicts=nginx@*.service
 ```
 
->[AZURE.NOTE]  `X-Conflicts` 屬性會告知 CoreOS 只有一個可以在指定的 CoreOS 主機上執行這個容器的執行個體。 如需詳細資訊，請參閱 [單位檔案]。
+>[AZURE.NOTE]  `X-Conflicts` 屬性會告知 CoreOS 只有一個可以在指定的 CoreOS 主機上執行這個容器的執行個體。 如需詳細資訊，請參閱 [Unit Files]。
 
 現在請在 CoreOS 叢集上啟動單位執行個體。 您應該會發現它們在三個不同的機器上執行：
 
@@ -169,11 +169,11 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload nginx@{1,2,3}.service
 
 ## 後續步驟
 
-* 您可以在 Azure 上三個節點的 CoreOS 叢集嘗試更多動作。 探索如何建立更複雜的叢集使用 Docker，以及閱讀 [Tim Park 的 CoreOS 教學課程中]，建立更有趣的應用程式 [Patrick Chanezon 的 CoreOS 教學課程] [Docker] 文件，以及 [CoreOS 概觀]。
+* 您可以在 Azure 上三個節點的 CoreOS 叢集嘗試更多動作。 探索如何建立更複雜的叢集並使用 Docker 建立更有趣的應用程式讀取 [Tim Park's CoreOS Tutorial], ，[Patrick Chanezon's CoreOS Tutorial], ，[Docker] 文件，而 [CoreOS Overview]。
 
 * 若要開始使用 Fleet 和 CoreOS Azure 資源管理員中，請嘗試這 [快速入門範本](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)。
 
-* 如需 Linux Vm 上使用開放原始碼環境的詳細資訊，請參閱 [Linux 和開放原始碼運算在 Azure 上]。
+* 請參閱 [Linux and Open-Source Computing on Azure] 如需詳細資訊上的 Linux Vm 使用開放原始碼環境。
 
 <!--Link references-->
 [Azure Command-Line Interface (Azure)]: ../xplat-cli-install.md
@@ -191,4 +191,5 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload nginx@{1,2,3}.service
 [busybox Docker Hub image]: https://registry.hub.docker.com/_/busybox/
 [nginx Docker Hub image]: https://hub.docker.com/_/nginx/
 [Linux and Open-Source Computing on Azure]: virtual-machines-linux-opensource.md
+
 

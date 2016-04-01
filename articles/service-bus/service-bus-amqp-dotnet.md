@@ -155,13 +155,13 @@
 
 .NET API 會公開數個設定，以控制 AMQP 通訊協定的行為：
 
--   **MessageReceiver.PrefetchCount**: 控制套用至連結的初始信用額度。 預設值為 0。
+-   **MessageReceiver.PrefetchCount**︰ 控制套用至連結的初始信用額度。 預設值為 0。
 
--   **MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize**: 次開啟連接之交涉期間提供的 AMQP 框架大小上限的控制項。 預設值為 65,536 個位元組。
+-   **MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize**︰ 次開啟連接之交涉期間提供的 AMQP 框架大小上限的控制項。 預設值為 65,536 個位元組。
 
--   **MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval**: 如果傳輸可以批次進行，這個值會決定用於傳送處置的延遲上限。 預設由傳送者/接收者繼承。 個別的傳送者/接收者可以覆寫預設值 (20 毫秒)。
+-   **MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval**︰ 如果傳輸可以批次進行，這個值會決定用於傳送處置的延遲上限。 預設由傳送者/接收者繼承。 個別的傳送者/接收者可以覆寫預設值 (20 毫秒)。
 
--   **MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity**: 控制是否透過 SSL 連線建立 AMQP 連線。 預設值是 **true**。
+-   **MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity**︰ 控制是否透過 SSL 連線建立 AMQP 連線。 預設值是 **true**。
 
 ## 後續步驟
 
@@ -203,3 +203,4 @@
 [Service Bus AMQP overview]: service-bus-amqp-overview.md
 [AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [AMQP in Service Bus for Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+

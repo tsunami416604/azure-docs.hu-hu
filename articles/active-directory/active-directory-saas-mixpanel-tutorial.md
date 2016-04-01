@@ -19,7 +19,7 @@
 
 # 教學課程：Azure Active Directory 與 Mixpanel 整合
 
-本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 Mixpanel。<br>與 Azure AD 整合 Mixpanel 可以提供下列優點:
+本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 Mixpanel。<br>與 Azure AD 整合 Mixpanel 可以提供下列優點 ︰
 
 - 您可以在 Azure AD 中控制可存取 Mixpanel 的人員
 - 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Mixpanel (單一登入)
@@ -28,7 +28,7 @@
 
 如果您想要知道更多詳細與 Azure AD 的 SaaS 應用程式整合，請參閱 [什麼是應用程式存取和單一登入與 Azure Active Directory](active-directory-appssoaccess-whatis.md)。
 
-## 先決條件
+## 必要條件
 
 若要設定與 Mixpanel 的 Azure AD 整合，您需要下列項目：
 
@@ -47,7 +47,7 @@
 
 ## 案例描述
 此教學課程的目標是讓您在測試環境中測試 Azure AD 單一登入。 <br>
-本教學課程中說明的案例包含兩個主要建置區塊:
+本教學課程中說明的案例包含兩個主要建置區塊 ︰
 
 1. 從資源庫加入 Mixpanel
 2. 設定並測試 Azure AD 單一登入
@@ -77,7 +77,7 @@
 ##  設定並測試 Azure AD 單一登入
 本節目標是說明如何以名為 "Britta Simon" 的測試使用者為基礎，設定及測試對 Mixpanel 的 Azure AD 單一登入。
 
-若要讓單一登入運作，Azure AD 必須知道 Mixpanel 與 Azure AD 中互相對應的使用者。 換句話說，必須在 Azure AD 使用者和 Mixpanel 中的相關使用者之間建立連結關聯性。<br>
+若要讓單一登入運作，Azure AD 必須知道 Mixpanel 與 Azure AD 中互相對應的使用者。 換句話說，必須建立 Azure AD 使用者和 Mixpanel 中的相關的使用者之間的連結關聯性。<br>
 藉由指定的值建立此連結關聯性 **使用者名稱** 在 Azure AD 中的值為 **Username** Mixpanel 中。
 
 若要設定及測試對 Mixpanel 的 Azure AD 單一登入，您需要完成下列建置組塊：
@@ -102,7 +102,7 @@
 2. 在 **您希望使用者如何登入 Mixpanel** 頁面上，選取 **Azure AD 單一登入**, ，然後按一下 [ **下一步**。
 <br><br> ![設定單一登入](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_03.png) <br>
 
-3. 在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟:
+3. 在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![設定單一登入](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_04.png) <br>
 
 
@@ -114,7 +114,7 @@
 
 
 
-4. 在 **Mixpanel 在設定單一登入** 頁面上，執行下列步驟:
+4. 在 **Mixpanel 在設定單一登入** 頁面上，執行下列步驟 ︰
 <br><br>![設定單一登入](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_05.png) <br>
 
     a. 按一下 [ **下載憑證**, ，然後儲存您的電腦上的檔案。 
@@ -149,7 +149,7 @@
 
 
 ### 建立 Azure AD 測試使用者
-本節目標是在 Azure 傳統入口網站中建立名稱為 Britta Simon 的測試使用者。<br>
+本節目標是在 Azure 傳統入口網站中建立名為 Britta Simon 的測試使用者。<br>
 在 [使用者] 清單中選取 **Britta Simon**。<br><br>![建立 Azure AD 使用者][20]<br>
 
 **若要在 Azure AD 中建立測試使用者，請執行下列步驟：**
@@ -165,7 +165,7 @@
 4. 若要開啟 **新增使用者** ] 對話方塊的底部工具列上，按一下 [ **新增使用者**。
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_04.png) <br>
 
-5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟:
+5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟 ︰
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_05.png) <br>
 
     a. 針對 [使用者類型]，選取 [您組織中的新使用者]。
@@ -174,7 +174,7 @@
 
     c. 按一下 [ **下一步**。
 
-6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟:
+6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_06.png) <br>
 
     a. 在 **名字** 文字方塊中，輸入 **Britta**。  
@@ -190,7 +190,7 @@
 7. 在 **取得暫時密碼** 對話方塊頁面上，按一下 [ **建立**。
 <br><br> ![建立 Azure AD 測試使用者](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_07.png) <br>
 
-8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟:
+8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟 ︰
 <br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_08.png) <br>
 
     a. 請記下的值 **新密碼**。
@@ -225,13 +225,13 @@
 **若要將 Britta Simon 指派到 Mixpanel，請執行下列步驟：**
 
 1. 在 Azure 傳統入口網站中，若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
-<br><br>![將使用者指派][201] <br>
+<br><br>![指派給使用者][201] <br>
 
 2. 在應用程式清單中，選取 **Mixpanel**。
 <br><br>![設定單一登入](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_50.png) <br>
 
 1. 在頂端功能表中，按一下 [ **使用者**。
-<br><br>![將使用者指派][203] <br>
+<br><br>![指派給使用者][203] <br>
 
 1. 在 [使用者] 清單中選取 **Britta Simon**。
 
@@ -269,4 +269,5 @@
 [203]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_205.png
+
 

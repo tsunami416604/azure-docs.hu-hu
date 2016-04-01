@@ -30,7 +30,7 @@ Microsoft Azure 媒體服務是一個可延伸的雲端型平台，供開發人�
 
 - [媒體服務 REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
 - 其中一個可用的用戶端 Sdk: [Azure Media Services SDK for.NET](https://github.com/Azure/azure-sdk-for-media-services), ，[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java), ，[Node.js 的 Azure 媒體服務](https://github.com/fritzy/node-azure-media), ，[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
-- 現有的工具: [Azure 傳統入口網站](http://manage.windowsazure.com/) 或 [Azure 媒體服務-總管](https://github.com/Azure/Azure-Media-Services-Explorer)。
+- 現有的工具 ︰ [Azure 傳統入口網站](http://manage.windowsazure.com/) 或 [Azure 媒體服務-總管](https://github.com/Azure/Azure-Media-Services-Explorer)。
 
 
 ##媒體服務學習路徑
@@ -61,11 +61,11 @@ Microsoft Azure 媒體服務是一個可延伸的雲端型平台，供開發人�
 如需詳細資訊，請參閱 [概念](media-services-concepts.md)。
 
 
-##<a id="vod_scenarios"></a>點播媒體使用 Azure 媒體服務: 常見的案例和工作
+##<a id="vod_scenarios"></a>使用 Azure 媒體服務傳遞點播媒體：常見案例和工作
 
 本節描述常見的案例並提供相關主題的連結。 下圖顯示在傳遞隨選內容中牽涉到的媒體服務平台的主要部分。 
 
-![VoD 工作流程][vod 概觀]
+![VoD 工作流程][vod-overview]
 
 
 ###保護儲存體中的內容並提供不加密的串流媒體
@@ -82,7 +82,7 @@ Microsoft Azure 媒體服務是一個可延伸的雲端型平台，供開發人�
     
     如果您的資產是儲存體加密，您 **必須** 設定資產傳遞原則。 
 
-1. 透過建立 OnDemand 定位器，來發佈資產。
+1. 藉由建立 OnDemand 定位器的方法來發行資產。
 
     確定負責傳送內容的串流端點上，至少有一個串流保留單位。
 
@@ -169,7 +169,7 @@ A **通道** 代表處理即時串流內容的管線。 目前，通道可以接
 
 下圖顯示 AMS 平台的主要部分，與通道可以使用媒體服務執行即時編碼的即時串流工作流程有關。  
 
-![即時工作流程][即時 overview1]
+![即時工作流程][live-overview1]
 
 如需詳細資訊，請參閱 [使用通道來以 Azure 媒體服務執行即時編碼啟用之](media-services-manage-live-encoder-enabled-channels.md)。 
 
@@ -179,7 +179,7 @@ A **通道** 代表處理即時串流內容的管線。 目前，通道可以接
 
 下圖顯示即時串流工作流程中涉及的 AMS 平台主要部分。
 
-![即時工作流程][即時 overview2]
+![即時工作流程][live-overview2]
 
 如需詳細資訊，請參閱 [使用的通道接收多位-從內部部署編碼器的位元速率即時串流
 ](media-services-manage-channels-overview.md)。 
@@ -208,7 +208,7 @@ Azure 媒體服務提供一些工具，供您用來建立適用於大部分平�
 
 ##模式與實例指南
 
-[典範與實例指南](https://wamsg.codeplex.com/)
+[模式與實例指南](https://wamsg.codeplex.com/)
 [線上文件](https://msdn.microsoft.com/library/dn735912.aspx)
 [可下載的電子書](https://www.microsoft.com/download/details.aspx?id=42629)
 
@@ -233,4 +233,5 @@ Azure 媒體服務提供一些工具，供您用來建立適用於大部分平�
 [live-overview1]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
+
 

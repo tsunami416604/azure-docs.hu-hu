@@ -31,7 +31,7 @@
 若要完成此教學課程，您需要下列項目：
 
 * 使用中 [Microsoft 市集帳戶](http://go.microsoft.com/fwlink/p/?LinkId=280045)。
-* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio Community 2013</a>.
+* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio Community 2013</a>。
 
 ##<a id="register"></a>針對推播通知註冊應用程式
 
@@ -53,7 +53,7 @@
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-update-server-push](../../includes/mobile-services-dotnet-backend-update-server-push.md)]
 
-##<a id="local-testing"></a> 啟用推播通知以進行本機測試
+##<a id="local-testing"></a>啟用推播通知以進行本機測試
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-configure-local-push-vs2013](../../includes/mobile-services-dotnet-backend-configure-local-push-vs2013.md)]
 
@@ -71,9 +71,9 @@
         "http://localhost:4584"
     );
 
-(& s) nbsp; & nbsp;使用此 [MobileServiceClient], ，應用程式會連接到本機服務，而不是在 Azure 中代管的版本。 當您想要切換回，並在 Azure 中代管的行動服務上執行應用程式時，將變更回原始 [MobileServiceClient] 定義。
+（& s) nbsp; & nbsp;使用此 [MobileServiceClient], ，應用程式會連接到本機服務，而不是在 Azure 中代管的版本。 當您想要切換回，並在 Azure 中代管的行動服務上執行應用程式時，將變更回原始 [MobileServiceClient] 定義。
 
-##<a id="test"></a> 在應用程式中測試推播通知
+##<a id="test"></a>在應用程式中測試推播通知
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-windows-universal-test-push](../../includes/mobile-services-dotnet-backend-windows-universal-test-push.md)]
 
@@ -83,20 +83,20 @@
 
 在下列主題中深入了解行動服務和通知中心：
 
-* [新增行動服務至現有的應用程式][開始使用資料]
+* [將行動服務新增至現有的應用程式][Get started with data]
   <br/>進一步了解使用行動服務來儲存和查詢資料。
 
-* [將驗證新增至您的應用程式][開始使用驗證]
+* [將驗證加入您的應用程式][Get started with authentication]
   <br/>了解如何使用行動服務以不同帳戶類型驗證應用程式的使用者。
 
 * [What are Notification Hubs?]
-  <br/>進一步了解通知中心將通知傳遞到您的應用程式跨所有主要用平台的運作方式。
+  <br/>深入了解通知中樞如何跨所有主要用戶端平台將通知傳遞到您的應用程式。
 
 * [偵錯通知中樞應用程式](http://go.microsoft.com/fwlink/p/?linkid=386630)
-  </br>取得指引疑難排解和偵錯通知中樞解決方案。
+  </br>取得通知中樞解決方案的疑難排解和偵錯指引。
 
 * [How to use a .NET client for Azure Mobile Services]
-  <br/>進一步了解如何使用 C# Windows 應用程式的行動服務。
+  <br/>進一步了解如何從 C# Windows 應用程式中使用行動服務。
 
 <!-- Anchors. -->
 
@@ -116,3 +116,4 @@
 
 [How to use a .NET client for Azure Mobile Services]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
+

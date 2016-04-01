@@ -130,7 +130,7 @@ PlayerRank 具有 Player 的外部索引鍵。 每個玩家各有零或一個 Pl
 
 ![][7]
 
-在 **加入控制器** 對話方塊:
+在 **加入控制器** 對話方塊 ︰
 
 1.  在 **模型類別**, ，選取 [Player。
 2.  在 **資料內容類別**, ，選取 [mobileservicecontext]。
@@ -144,8 +144,8 @@ PlayerRank 具有 Player 的外部索引鍵。 每個玩家各有零或一個 Pl
 
 此控制器衍生自 **TableController<T>**。 此類別會繼承 **ApiController**, ，但是專門用於 Azure 行動服務。
 
-- 路由: 的預設路由 **TableController** 是 `/tables/{table_name}/{id}`, ，其中 *table_name* 符合實體名稱。 因此，「 玩家 」 控制器路徑為 */ [資料表/播放程式 / {id}*。 此路徑慣例會使 **TableController** 與行動服務一致 [REST API](http://msdn.microsoft.com/library/azure/jj710104.aspx)。
-- 資料存取: 資料庫作業 **TableController** 類別會使用 **IDomainManager** 介面定義的抽象資料存取。  Scaffolding 會使用 **EntityDomainManager**, ，這是具象實作 **IDomainManager** 包裝 EF 內容。
+- 路由 ︰ 的預設路由 **TableController** 是 `/tables/{table_name}/{id}`, ，其中 *table_name* 符合實體名稱。 因此，「 玩家 」 控制器路徑為 */ [資料表/播放程式 / {id}*。 此路徑慣例會使 **TableController** 與行動服務一致 [REST API](http://msdn.microsoft.com/library/azure/jj710104.aspx)。
+- 資料存取 ︰ 資料庫作業 **TableController** 類別會使用 **IDomainManager** 介面定義的抽象資料存取。  Scaffolding 會使用 **EntityDomainManager**, ，這是具象實作 **IDomainManager** 包裝 EF 內容。
 
 現在，請為 PlayerRank 實體新增第二個控制器。 請遵循相同的步驟，但選擇 PlayerRank 作為模型類別。 請使用相同的資料內容類別，不要建立新的。 將控制器命名為 "PlayerRankController"。
 
@@ -319,7 +319,7 @@ DTO 是定義資料如何透過網路傳送的物件。 如果您想讓電傳格
 2.  更新玩家的分數。
 3.  執行分批更新所有玩家排名的 SQL 查詢。
 
- **[Route]** 屬性會定義這個方法的自訂路由:
+ **[Route]** 屬性會定義這個方法的自訂路由 ︰
 
     [Route("api/score")]
 
@@ -765,5 +765,6 @@ Model-View-ViewModel (MVVM) 是 Model-View-Controller (MVC) 的變體。 MVVM �
 [Handle database write conflicts]: mobile-services-windows-store-dotnet-handle-database-conflicts.md
 [Add push notifications]: ../notification-hubs-windows-store-dotnet-get-started.md
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet
+
 
 

@@ -31,7 +31,7 @@
 
 
 
-## <a name="sql-dataexploration"></a>瀏覽 SQL 資料使用 SQL 指令碼
+## <a name="sql-dataexploration"></a>使用 SQL 指令碼瀏覽 SQL 資料
 
 以下是數個 SQL 指令碼範例，可用來探索儲存於 SQL Server 中的資料。
 
@@ -53,7 +53,7 @@
 
 > [AZURE.NOTE] 如需實用範例，您可以使用 [NYC 計程車資料集](http://www.andresmh.com/nyctaxitrips/) ，並參考標題為的 ipnb，以 [使用 IPython Notebook 和 SQL Server 有爭議的 NYC 資料](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) 進行端對端逐步解說。
 
-##<a name="python"></a>瀏覽 SQL 資料與 Python
+##<a name="python"></a>使用 Python 瀏覽 SQL 資料
 
 使用 Python 來探索資料和產生功能，SQL Server 資料時，類似於處理中所述，使用 Python 的 Azure blob 中的資料 [資料科學環境中的處理 Azure Blob 資料](machine-learning-data-science-process-data-blob.md)。 資料必須從資料庫載入 Pandas 資料框架，然後就能進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
 
@@ -72,6 +72,7 @@
 
 ## Cortana 分析程序實務範例
 
-使用公用資料集的 Cortana 分析程序的端對端逐步解說範例，請參閱 [作用中的 Cortana 分析程序: 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
+使用公用資料集的 Cortana 分析程序的端對端逐步解說範例，請參閱 [作用中的 Cortana 分析程序 ︰ 使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)。
 
  
+

@@ -97,7 +97,7 @@ SQL Server (任何版本) | Enterprise 或 Standard | 容錯移轉叢集執行�
 
 ## 設定 AD 保護
 
-您必須在次要復原站台才能正常執行的 SQL server 上的 Active Directory。 有幾個選項:
+您必須在次要復原站台才能正常執行的 SQL server 上的 Active Directory。 有幾個選項 ︰
 
 - **小型企業**— 如果您有少數的應用程式和內部部署站台的單一網域控制站，而您想要容錯移轉整個網站，我們建議使用 Site recovery 複寫的網域控制站複寫到次要資料中心或 Azure。
 
@@ -374,3 +374,4 @@ SQL 可用性群組可以複寫至 Azure 中的一或多個虛擬機器。 當�
 
 
  
+

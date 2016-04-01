@@ -1,10 +1,10 @@
 <properties 
-    pageTitle ="適用於 c + + 應用程式的 Application Insights" 
-    描述 ="分析使用量和 Application Insights c + + 應用程式的效能。 」 
-    服務 = 「 application insights 」 
-    documentationCenter ="cpp 」
-    作者 ="crystk" 
-    管理員 ="douge 」"/ >
+    pageTitle="C++ 應用程式的 Application Insights" 
+    description="分析使用量和 Application Insights c + + 應用程式的效能。" 
+    services="application-insights" 
+    documentationCenter="cpp"
+    authors="crystk" 
+    manager="douge""/>
 
 <tags 
     ms.service="application-insights" 
@@ -72,10 +72,10 @@ Visual Studio Application Insights 可讓您監視行動應用程式的使用量
 初始化 SDK，並開始追蹤遙測。
 
 1. 在 App.xaml.h 中： 
-  - 新增:
+  - 新增 ︰
     `ApplicationInsights::CX::SessionTracking^ m_session;`
 2. 在 App.xaml.cpp 中：
-  - 新增:
+  - 新增 ︰
     `using namespace ApplicationInsights::CX;`
 
   - 在 App:App() 中
@@ -103,7 +103,7 @@ Visual Studio Application Insights 可讓您監視行動應用程式的使用量
 ```
 
 
-## <a name="run"></a> 執行專案
+## <a name="run"></a>執行專案
 
 執行應用程式以產生遙測。 您可以在開發電腦上以偵錯模式執行，或是發佈應用程式，讓使用者自行執行。
 
@@ -148,4 +148,5 @@ Visual Studio Application Insights 可讓您監視行動應用程式的使用量
 [track]: app-insights-api-custom-events-metrics.md
 
  
+
 

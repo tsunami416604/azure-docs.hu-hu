@@ -249,8 +249,8 @@ SendGrid 的 Web API 非常類似於 REST API，不過它
 
 這行程式碼會在
 <span class="auto-style2">Swift\_Message</span> 物件，並使用靜態
-方法 <span class="auto-style2">fromPath</span> 以
-<span class="auto-style2">取得</span> 類別取得檔案
+方法 <span class="auto-style2">Swift_attachment</span> 上
+<span class="auto-style2">Swift\_Attachment</span> 方法來取得和
 並將其附加至訊息。
 
 ### Web API
@@ -319,7 +319,7 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
 下列範例會啟用頁尾篩選器，並指定
 將附加至電子郵件訊息底部的文字訊息。
 此範例中我們將使用 [sendgrid-php library]。
-使用 [Composer] 安裝程式庫:
+使用 [Composer] 安裝程式庫 ︰
     
     php composer.phar require sendgrid/sendgrid 2.1.1
 
@@ -423,9 +423,9 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
 了解 SendGrid 電子郵件服務的基本概念後，請參考
 下列連結以取得更多資訊。
 
--   SendGrid 文件: <https://sendgrid.com/docs>
--   SendGrid PHP 程式庫: <https://github.com/sendgrid/sendgrid-php>
--   Azure 客戶的 SendGrid 特別優惠: <https://sendgrid.com/windowsazure.html>
+-   SendGrid 文件 ︰ <https://sendgrid.com/docs>
+-   SendGrid PHP 程式庫 ︰ <https://github.com/sendgrid/sendgrid-php>
+-   Azure 客戶的 SendGrid 特別優惠 ︰ <https://sendgrid.com/windowsazure.html>
 
 如需詳細資訊，請參閱 [PHP 開發人員中心](/develop/php/)。
 
@@ -440,4 +440,5 @@ SendGrid 提供了運用「篩選器」的其他電子郵件
   [transactional email delivery]: https://sendgrid.com/transactional-email
   [sendgrid-php library]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
   [Composer]: https://getcomposer.org/download/
+
 

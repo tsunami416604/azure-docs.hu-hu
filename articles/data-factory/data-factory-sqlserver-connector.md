@@ -206,7 +206,7 @@
 
 > [AZURE.NOTE] 在上述範例中， **sqlReaderQuery** SqlSource 指定。 複製活動會針對 SQL Server 資料庫來源執行這項查詢以取得資料。
 >  
-> 或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** (如果預存程序不接受參數)。
+> 或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** （如果預存程序不接受參數）。
 >  
 > 如果您未指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，就會使用資料集 JSON 的結構區段中定義的資料行來建立一個查詢，以對 SQL Server 資料庫執行 (從 mytable 選取 column1、column2)。 如果資料集定義沒有結構，則會從資料表中選取所有資料行。
 
@@ -391,7 +391,7 @@
 
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
-| 類型 | Type 屬性應該設定為: **OnPremisesSqlServer**。 | 是 |
+| 類型 | Type 屬性應該設定為 ︰ **OnPremisesSqlServer**。 | 是 |
 | connectionString | 指定使用 SQL 驗證或 Windows 驗證連接至內部部署 SQL Server 資料庫所需的 connectionString 資訊。 | 是 |
 | gatewayName | Data Factory 服務應該用來連接到內部部署 SQL Server 資料庫的閘道器名稱。 | 是 |
 | username | 如果您使用「Windows 驗證」，請指定使用者名稱。 | 否 |
@@ -453,7 +453,7 @@
 
 ### SqlSource
 
-在複製活動類型的來源時 **SqlSource** 下列屬性可用於 **typeProperties** 區段:
+在複製活動類型的來源時 **SqlSource** 下列屬性可用於 **typeProperties** 區段 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
@@ -463,13 +463,13 @@
 
 如果 **sqlReaderQuery** 指定 SqlSource，複製活動會針對 SQL Server 資料庫來源取得的資料執行此查詢。 
 
-或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** (如果預存程序不接受參數)。 
+或者，您可以指定預存程序，藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** （如果預存程序不接受參數）。 
 
 如果您未指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，就會使用資料集 JSON 的結構區段中定義的資料行來建立一個查詢，以對 SQL Server 資料庫執行 (從 mytable 選取 column1、column2)。 如果資料集定義沒有結構，則會從資料表中選取所有資料行。
 
 ### SqlSink
 
-**SqlSink** 支援下列屬性:
+**SqlSink** 支援下列屬性 ︰
 
 
 | 屬性 | 說明 | 允許的值 | 必要 |
@@ -493,7 +493,7 @@
 
 ### SQL Server 和 Azure SQL 的類型對應
 
-中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章中，複製活動會執行自動類型轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換:
+中所述 [資料移動活動](data-factory-data-movement-activities.md) 文章中，複製活動會執行自動類型轉換成接收類型具有下列 2 個步驟的方法的來源類型的自動類型轉換 ︰
 
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
@@ -528,7 +528,7 @@
 | smallint | Int16 |
 | smallmoney | 十進位 | 
 | sql_variant | 物件 * |
-| text | 字串，Char] |
+| 文字 | 字串，Char] |
 | 分析 | TimeSpan |
 | timestamp | Byte] |
 | tinyint | 位元組 |
@@ -542,3 +542,4 @@
 
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+

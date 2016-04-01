@@ -26,7 +26,8 @@
 2. 選取您需要發票和使用資訊的訂用帳戶。
 3. 選取 **帳單記錄**。 </br>![billinghistory](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 4. 您可以查看您的陳述式的最後 6 個計費週期，以及目前未開立帳單期間。 </br>![billingsum](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)</br>
-5. 選取 **檢視目前的陳述式** 查看產生估計時的時間的估計費用。 此資訊每天只會更新，而且可能不包含的所有使用量。 每月帳單，這項估計可能會有所不同。</br>![billingsum2](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)</br>![billingsum3](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)</br>
+5. 選取 **檢視目前的陳述式** 查看產生估計時的時間的估計費用。 此資訊每天只會更新一次，而且可能不會包含您的所有使用量。 您的每月帳單可能會與這項估計有所不同。</br>![billingsum2](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)</br>![billingsum3](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)</br>
 6. 選取 **下載發票** 查看上次帳單的副本。 </br>![DLInvoice](./media/billing-download-azure-invoice-daily-usage-date/DLInvoice1.png)
 7. 選取 **下載使用量** 下載為 CSV 檔案的每日使用量資料。</br>![DLusage](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
+
 

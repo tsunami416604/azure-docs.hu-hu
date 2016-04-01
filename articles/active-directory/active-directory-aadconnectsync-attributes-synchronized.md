@@ -436,3 +436,4 @@ Windows 10 已加入網域的電腦 (裝置) 會將某些屬性同步處理至 A
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
 
+

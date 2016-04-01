@@ -89,3 +89,4 @@ Azure Multi-Factor Authentication 應用程式提供額外的頻外驗證選項�
 
 <center>![設定](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
  
+

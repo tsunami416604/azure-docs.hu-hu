@@ -45,9 +45,9 @@
 
 除了全面供應 Azure HDInsight 之外，Microsoft 還提供 HDInsight Emulator for Azure，先前稱為 *Microsoft HDInsight Developer Preview*。 模擬器非常適合開發人員使用，並只支援單一節點部署。 使用 HDInsight Emulator 的相關資訊，請參閱 [開始使用 HDInsight Emulator][hdinsight-emulator]。
 
-> [AZURE.NOTE] 如需如何佈建 HBase 叢集的指示，請參閱 [HDInsight 中的佈建 HBase 叢集][hdinsight-hbase-custom-provision]。 請參閱〈<a href="http://go.microsoft.com/fwlink/?LinkId=510237">Hadoop 和 HBase 之間的差別？</a>〉，以了解最優先選擇某個資料庫的理由。
+> [AZURE.NOTE] 如需如何佈建 HBase 叢集的指示，請參閱 [HDInsight 中的佈建 HBase 叢集][hdinsight-hbase-custom-provision]。 請參閱 <a href="http://go.microsoft.com/fwlink/?LinkId=510237">Hadoop 和 HBase 之間的差異為何？</a> 若要了解您為什麼優先選擇某個資料庫。
 
-## 先決條件
+## 必要條件
 
 開始進行在 Windows 上的 Hadoop 教學課程之前，您必須具備下列條件：
 
@@ -55,7 +55,7 @@
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 - **工作站電腦** 與 Office 2013 Professional Plus、 Office 365 Pro Plus、 Excel 2013 Standalone 或 Office 2010 Professional Plus。
 
-**估計的時間才能完成本教學課程:** 30 分鐘
+**估計的時間才能完成本教學課程 ︰** 30 分鐘
 
 
 
@@ -76,7 +76,7 @@
 
     ![Azure 傳統入口網站，您可以在此使用「快速建立」來設定新的儲存體帳戶。][image-hdi-storageaccount-quickcreate]
 
->[AZURE.NOTE]  請確定您在支援叢集的位置建立儲存體帳戶。 這些是:  **東亞**, ，**東南亞**, ，**北歐**, ，**西歐**, ，**美國東部**, ，**美國西部**, ，**美國中北部**, ，**中南部**。
+>[AZURE.NOTE]  請確定您在支援叢集的位置建立儲存體帳戶。 這些是 ︰  **東亞**, ，**東南亞**, ，**北歐**, ，**西歐**, ，**美國東部**, ，**美國西部**, ，**美國中北部**, ，**中南部**。
 
 從清單中選取新的儲存體帳戶，然後按一下 **管理存取金鑰** 頁面的底部。 請記下的 **主要存取金鑰** (或 **次要存取金鑰**，任一金鑰皆可)。  稍後在教學課程中需要這些資訊。 如需詳細資訊，請參閱 [如何建立儲存體帳戶][azure-create-storageaccount] 。
 
@@ -97,7 +97,7 @@
 
 <!-- COMMENTED OUT TEXT BEGINS --
 
-4. 輸入或選取下列值：
+4. Enter or select the following values:
 
 
     <table border="1">
@@ -116,11 +116,11 @@
     Keep a copy of the cluster name. You will need it later in the tutorial.
 
 
-5. 按一下 [ **建立 HDInsight 叢集**。 佈建完成時，[狀態] 欄會顯示 **執行**。
+5. Click **Create HDInsight Cluster**. When the provisioning completes, the  status column shows **Running**.
 
--標記為註解文字結束-->
+-- COMMENTED OUT TEXT ENDS -->
 
->[AZURE.NOTE] 這些步驟佈建 HDInsight 叢集 3.1 版。 若要建立叢集與其他版本，請使用 **自訂建立** 方法從入口網站或使用 Azure PowerShell。 如需每個版本之間的差異資訊，請參閱 [的 HDInsight 所提供叢集版本的新功能?][hdinsight-versions]。 如需使用 **自訂建立** 選項，請參閱 [使用自訂選項佈建 HDInsight 叢集][hdinsight-provision]。
+>[AZURE.NOTE] 這些步驟佈建 HDInsight 叢集 3.1 版。 若要建立叢集與其他版本，請使用 **自訂建立** 方法從入口網站或使用 Azure PowerShell。 如需每個版本之間的差異資訊，請參閱 [的 HDInsight 所提供叢集版本的新功能？][hdinsight-versions]。 如需使用 **自訂建立** 選項，請參閱 [使用自訂選項佈建 HDInsight 叢集][hdinsight-provision]。
 
 
 ##<a name="sample"></a>從入口網站中執行範例資料
@@ -173,14 +173,14 @@
 **瀏覽至輸出檔案**
 
 1. 在叢集儀表板中，按一下 [ **檔案瀏覽器**。
-2. 按一下 [儲存體帳戶名稱，按一下 [容器名稱 (這是您的叢集名稱相同)，然後按一下 [ **使用者**。
-3. 按一下 [ **管理員** 然後按一下其上次修改時間 (有點晚於工作開始的時間稍早所述) 的 GUID。 複製此 GUID。 您在下一節將會用到此號碼。
+2. 按一下 [儲存體帳戶名稱，按一下 [容器名稱 （這是您的叢集名稱相同），然後按一下 [ **使用者**。
+3. 按一下 [ **管理員** 然後按一下其上次修改時間 （有點晚於工作開始的時間稍早所述） 的 GUID。 複製此 GUID。 您在下一節將會用到此號碼。
 
 
     ![The Hive query output file GUID listed in the File Browser tab.][img-hdi-dashboard-query-browse-output]
 
 
-##<a name="powerquery"></a>連線到適用於 Excel 的 Microsoft Business Intelligence工具
+##<a name="powerquery"></a>適用於 Excel 的連接到 Microsoft 商業智慧工具
 
 您可以使用適用於 Microsoft Excel 的 Power Query 增益集，將工作輸出從 HDInsight 匯入 Excel，然後使用 Microsoft 商業智慧工具來進一步分析結果。
 
@@ -208,7 +208,7 @@
 9. 按一下 [ **關閉及載入** 左上角匯入 Hive 工作輸出至 Excel。
 
 
-##<a name="nextsteps"></a>後續步驟
+##<a name="nextsteps"></a>接續步驟
 在本 Hardoop 教學課程中，您已經了解如何在 Windows 上使用 HDInsight 佈建叢集、執行 Hive 查詢資料，並且將結果匯入 Excel，並使用商業智慧工具進行後續處理及圖形顯示。 若要深入了解，請參閱下列教學課程：
 
 - [開始使用 HDInsight Hadoop Tools for Visual Studio][1]
@@ -279,3 +279,4 @@
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GettingStarted.PowerQuery.ImportData2.png
  
+

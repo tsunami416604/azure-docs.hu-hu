@@ -43,7 +43,7 @@
 -   Visual Studio 2013 [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) 適用於 blob 管理 GUI
 -   [Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (由 [自動從 ASP.NET 應用程式至 CDN 端點內容上的傳](#upload))
 
-> [AZURE.NOTE] 您需要 Azure 帳戶才能完成此教學課程:
+> [AZURE.NOTE] 您需要 Azure 帳戶才能完成此教學課程 ︰
 > + 您可以 [免費申請 Azure 帳戶](/pricing/free-trial/?WT.mc_id=A261C142F) -取得點數可用來試用付費 Azure 服務，並甚至用後可保留帳戶，並使用免費的 Azure 服務，例如網站。
 > + 您可以 [啟用 MSDN 訂戶權益](/pricing/member-offers/msdn-benefits-details/) -您的 MSDN 訂閱提供您額度，您可以使用 Azure 付費服務的每個月。
 
@@ -95,7 +95,7 @@
 
     ![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2-enablequeryb.PNG)
 
-    >[AZURE.NOTE] 雖然啟用查詢字串並不需要此部分的教學課程，您會想要這樣做越好，但為了方便起見任何變更後這裡是長時間才能傳播至剩餘的節點，您不希望任何非字串-啟用查詢的內容塞滿 CDN 快取 (更新 CDN 內容將會稍後討論)。 您將了解如何利用這個在 [提供最新的內容，透過查詢字串來立即](#query)。
+    >[AZURE.NOTE] 雖然啟用查詢字串並不需要此部分的教學課程，您會想要這樣做越好，但為了方便起見任何變更後這裡是長時間才能傳播至剩餘的節點，您不希望任何非字串-啟用查詢的內容塞滿 CDN 快取 （更新 CDN 內容將會稍後討論）。 您將了解如何利用這個在 [提供最新的內容，透過查詢字串來立即](#query)。
 
 6. 在 Visual Studio 2013，在伺服器總管] 中，按一下 [ **連線到 Microsoft Azure** ] 按鈕。
 
@@ -138,7 +138,7 @@
 
     ![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-11-cdn.PNG)
 
-    請注意的數字 **要求** 時間而定，也就是第一個位元組時間或傳送要求，並從伺服器接收第一個回應所花費的時間。 當我存取 Blob 時 (託管於 [東亞] 區域)，耗時 266 亳秒，因為要求必須橫渡整個太平洋才能到達伺服器。 不過，當我存取 Azure CDN 時，花了 16 毫秒，也就是幾乎 **20-fold 提升的效能**!
+    請注意的數字 **要求** 時間而定，也就是第一個位元組時間或傳送要求，並從伺服器接收第一個回應所花費的時間。 當我存取 Blob 時 (託管於 [東亞] 區域)，耗時 266 亳秒，因為要求必須橫渡整個太平洋才能到達伺服器。 不過，當我存取 Azure CDN 時，花了 16 毫秒，也就是幾乎 **20-fold 提升的效能**！
     
 15. 現在，只要在網頁中使用新的連結即可。 例如，我可以加入下列影像標籤：
 
@@ -193,7 +193,7 @@
 
 ![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-updates-1.PNG)
 
-您也可以在 PowerShell 指令碼中這樣做，可設定所有 Blob 的 Cache-Control 標頭。 在指令碼 [自動從 ASP.NET 應用程式至 CDN 端點內容上的傳](#upload), ，尋找下列程式碼片段:
+您也可以在 PowerShell 指令碼中這樣做，可設定所有 Blob 的 Cache-Control 標頭。 在指令碼 [自動從 ASP.NET 應用程式至 CDN 端點內容上的傳](#upload), ，尋找下列程式碼片段 ︰
 
     Set-AzureStorageBlobContent `
         -Container $StorageContainer `
@@ -252,7 +252,7 @@
 
 Azure App Service 與 Azure CDN 或 Azure 雲端服務與 Azure CDN 整合將帶給您下列好處：
 
-- 將內容部署 (影像、 指令碼和樣式表) 整合 Azure web 應用程式的 [連續部署](../web-sites-publish-source-control.md) 程序
+- 將內容部署 （影像、 指令碼和樣式表） 整合 Azure web 應用程式的 [連續部署](../web-sites-publish-source-control.md) 程序
 - 輕鬆地升級 CDN 提供的 NuGet 套件，例如 jQuery 或 Bootstrap 版本 
 - 從相同的 Visual Studio 介面來管理 Web 應用程式和 CDN 提供的內容
 
@@ -274,4 +274,5 @@ Azure App Service 與 Azure CDN 或 Azure 雲端服務與 Azure CDN 整合將帶
 - [如何將內容傳遞網路 (CDN) 內容對應至自訂網域](http://msdn.microsoft.com/library/azure/gg680307.aspx)
 - [使用 Azure 的 CDN](cdn-how-to-use-cdn.md)
  
+
 

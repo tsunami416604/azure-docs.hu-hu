@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Intacct 租用戶
   
-完成本教學課程之後, 您已指派給 Intacct 的 Azure AD 使用者將能夠登入位於您 Intacct 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Intacct 的 Azure AD 使用者將能夠登入位於您 Intacct 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -97,7 +97,7 @@
 
     ![安全性](./media/active-directory-saas-intacct-tutorial/IC790038.png "Security")
 
-8.  在 **單一登入 (SSO)** 區段中，執行下列步驟:
+8.  在 **單一登入 (SSO)** 區段中，執行下列步驟 ︰
 
     ![單一登入](./media/active-directory-saas-intacct-tutorial/IC790039.png "Single Sign On")
 
@@ -132,7 +132,7 @@
 
     ![新增](./media/active-directory-saas-intacct-tutorial/IC790042.png "Add")
 
-4.  在 **使用者資訊** 區段中，執行下列步驟:
+4.  在 **使用者資訊** 區段中，執行下列步驟 ︰
 
     ![使用者資訊](./media/active-directory-saas-intacct-tutorial/IC790043.png "User Information")
 
@@ -161,3 +161,4 @@
     ![是](./media/active-directory-saas-intacct-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

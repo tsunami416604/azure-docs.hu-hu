@@ -36,7 +36,7 @@
 
 您也可以使用 Azure 資源管理員，例如 Azure PowerShell、 CLI 工具，設定為 API 應用程式的 API 定義 URL 或 [資源總管](https://resources.azure.com/)。 
 
-在您的 <site name>/web 資源的 Microsoft.Web/sites/config 資源類型上設定 `apiDefinition` 屬性。 例如，在 **資源總管**, ，請移至 **訂閱 > {您的訂閱} > resourceGroups > {您的資源群組} > 提供者 > Microsoft.Web > 站台 > {網站} > 組態 > web**, ，您會看到 cors 屬性:
+設定 `apiDefinition` 屬性 Microsoft.Web/sites/config 資源類型的程式 <site name>/web 資源。 例如，在 **資源總管**, ，請移至 **訂閱 > {您的訂閱} > resourceGroups > {您的資源群組} > 提供者 > Microsoft.Web > 站台 > {網站} > 組態 > web**, ，您會看到 cors 屬性 ︰
 
         "apiDefinition": {
           "url": "https://contactslistapi.azurewebsites.net/swagger/docs/v1"
@@ -55,4 +55,5 @@
 ## 後續步驟
 
 逐步解說的教學課程，引導您建立、 部署及取用 API 應用程式，請參閱 [開始使用 Azure App Service 中 API 應用程式](app-service-api-dotnet-get-started.md)。
+
 

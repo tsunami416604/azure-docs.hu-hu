@@ -28,7 +28,7 @@
 -  投注較少的心力在基礎結構的取得和管理上，更專注於應用程式開發上
 -  提供員工和合作夥伴更多的支援，讓他們可以從任何位置使用應用程式。 使用者不須連線到公司網路，即可使用應用程式，而 IT 群組也可避免使用複雜的反向 Proxy 方案。 有數個驗證選項可以確保公司應用程式的存取受到保護。
 
-以下是在 App Service Web 應用程式上執行的企業營運應用程式範例。 此範例示範不需要使用複雜的技術，只要組合 Web Apps 和其他服務便能完成的工作。 **若要進一步了解拓樸中的項目上按一下而已。** 
+以下是在 App Service Web 應用程式上執行的企業營運應用程式範例。 此範例示範不需要使用複雜的技術，只要組合 Web Apps 和其他服務便能完成的工作。 **按一下拓樸中的項目以讀取詳細資訊。** 
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/web-app-notitle.svg" width="100%" height="100%"></object>
 
@@ -83,7 +83,7 @@ App Service Web Apps 的能力 [scale up and out] 都能符合您的業務的應
 - [Azure App Service Web 應用程式的學習規劃](websites-learning-map.md)
 - [Azure Web 部落格](/blog/topics/web/)
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -124,4 +124,5 @@ App Service Web Apps 的能力 [scale up and out] 都能符合您的業務的應
 [How to: Receive Alert Notifications and Manage Alert Rules in Azure]:http://msdn.microsoft.com/library/windowsazure/dn306638.aspx
 
  
+
 

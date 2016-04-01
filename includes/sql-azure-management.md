@@ -31,7 +31,7 @@
  
 5. 按一下 [ **儲存** 頁面的底部。
 
-    **注意:** 最長可能延遲五分鐘的變更
+    **注意 ︰** 最長可能延遲五分鐘的變更
     防火牆設定的變更才會生效。
 
     您現在可以使用 Management Studio 來連線到 SQL Database。
@@ -241,4 +241,5 @@ SQL Database 支援數個動態管理檢視，而您可以使用這些檢視
              CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
         GROUP BY query_stats.query_hash
         ORDER BY 2 DESC;
+
 

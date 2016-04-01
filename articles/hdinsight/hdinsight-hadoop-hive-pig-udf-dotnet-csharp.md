@@ -58,7 +58,7 @@ Hive 與 Pig 很適合在 Azure HDInsight 中處理資料，但您有時需要�
 
 1. 開啟 Visual Studio 並建立新的解決方案。 針對專案類型中，選取 **主控台應用程式**, ，並將新的專案 **HiveCSharp**。
 
-2. 內容取代 **Program.cs** 取代為下列:
+2. 內容取代 **Program.cs** 取代為下列 ︰
 
         using System;
         using System.Security.Cryptography;
@@ -159,7 +159,7 @@ Hive 與 Pig 很適合在 Azure HDInsight 中處理資料，但您有時需要�
 
 1. 開啟 Visual Studio 並建立新的解決方案。 針對專案類型中，選取 **主控台應用程式**, ，並將新的專案 **PigUDF**。
 
-2. 內容取代 **Program.cs** 取代為下列檔案:
+2. 內容取代 **Program.cs** 取代為下列檔案 ︰
 
         using System;
 
@@ -219,7 +219,7 @@ Hive 與 Pig 很適合在 Azure HDInsight 中處理資料，但您有時需要�
 
     `DEFINE` 陳述式會為 pigudf.exe 應用程式建立別名 `streamer`，然後 `SHIP` 會將它分散到叢集中的節點。 稍後，`streamer` 會與 `STREAM` 運算子搭配使用，進而處理 LOG 中所包含的單行，並以一連串資料行的方式傳回資料。
 
-> [AZURE.NOTE] 用於串流處理的應用程式名稱必須以括住 \' (單引號) 字元時，進行別名處理和 ' (單引號) 搭配使用時 `SHIP`。
+> [AZURE.NOTE] 用於串流處理的應用程式名稱必須以括住 \' （單引號） 字元時，進行別名處理和 ' （單引號） 搭配使用時 `SHIP`。
 
 3. 輸入最後一行後，工作應該就會開始。 最後，它會傳回類似如下的輸出：
 
@@ -240,4 +240,5 @@ Hive 與 Pig 很適合在 Azure HDInsight 中處理資料，但您有時需要�
 * [搭配 HDInsight 使用 Pig](hdinsight-use-pig.md)
 
 * [將 HDInsight 與 MapReduce 搭配使用](hdinsight-use-mapreduce.md)
+
 

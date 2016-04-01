@@ -39,9 +39,9 @@
 
 您將需要下列項目：
 
-- Microsoft Azure Linux Agent 2.0.5 版或更新版本。 虛擬機器映像庫中的大多數 Linux 映像均包含 2.0.5 版。 若要找出所安裝的版本，執行 **waagent-版本**。 若要更新代理程式，請依照 [Azure Linux 代理程式使用者指南] 中的指示。
+- Microsoft Azure Linux Agent 2.0.5 版或更新版本。 虛擬機器映像庫中的大多數 Linux 映像均包含 2.0.5 版。 若要找出所安裝的版本，執行 **waagent-版本**。 若要更新代理程式，請依照下列中的指示 [Azure Linux Agent User Guide]。
 - Azure 命令列介面 (CLI)。 如需設定 Azure CLI 的詳細資訊，請參閱 [安裝和設定 Azure 命令列介面](../xplat-cli-install.md)。
-- Azure PowerShell。 您將使用 Set-AzureVMExtension Cmdlet 中的命令，自動載入和設定 VMAccessForLinux 延伸模組。 如需設定 Azure PowerShell 的詳細資訊，請參閱 < 如何安裝和設定 Azure PowerShell]。
+- Azure PowerShell。 您將使用 Set-AzureVMExtension Cmdlet 中的命令，自動載入和設定 VMAccessForLinux 延伸模組。 如需設定 Azure PowerShell 的詳細資訊，請參閱 [How to install and configure Azure PowerShell]。
 - 新的密碼或一組 SSH 金鑰 (如果要重設其中一項)。 如果您想要重設 SSH 組態，則不需要這些。
 
 ### 不需安裝
@@ -50,7 +50,7 @@
 
 ## 使用 Azure CLI
 
-使用 Azure CLI，您將能夠使用 **azure** 命令從命令列介面 (Bash、 終端機、 命令提示字元) 來存取命令。 執行 **azure vm 延伸模組設定 – 協助** 詳細的擴充功能使用方式。
+使用 Azure CLI，您將能夠使用 **azure** 命令從命令列介面 （Bash、 終端機、 命令提示字元） 來存取命令。 執行 **azure vm 延伸模組設定 – 協助** 詳細的擴充功能使用方式。
 
 使用 Azure CLI，您可以執行下列工作：
 
@@ -234,7 +234,7 @@ SSH 組態中的錯誤可導致您無法存取虛擬機器。 您可以將 SSH �
 
 > [AZURE.NOTE] SSH 組態檔位於 /etc/ssh/sshd_config。
 
-### <a name="delete"></a> 刪除使用者
+### <a name="delete"></a>刪除使用者
 
 填入要刪除的 Linux 使用者名稱，然後執行這些命令。
 
@@ -255,9 +255,9 @@ SSH 組態中的錯誤可導致您無法存取虛擬機器。 您可以將 SSH �
 
 ## 其他資源
 
-[Azure VM 延伸模組和功能][]
+[Azure VM 延伸模組與功能] []
 
-[連線到 Azure 虛擬機器透過 RDP 或 SSH][]
+[透過 RDP 或 SSH 連接到 Azure 虛擬機器] []
 
 
 <!--Link references-->
@@ -265,4 +265,5 @@ SSH 組態中的錯誤可導致您無法存取虛擬機器。 您可以將 SSH �
 [How to install and configure Azure PowerShell]: ../install-configure-powershell.md
 [Azure VM Extensions and Features]: virtual-machines-extensions-features.md
 [Connect to an Azure virtual machine with RDP or SSH]: http://msdn.microsoft.com/library/azure/dn535788.aspx
+
 

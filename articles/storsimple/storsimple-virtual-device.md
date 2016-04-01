@@ -74,7 +74,7 @@ StorSimple 虛擬裝置是在 Microsoft Azure 虛擬機器中單一節點上執�
 
 >[AZURE.IMPORTANT] **請確定虛擬網路與您要與虛擬裝置搭配使用的雲端儲存體帳戶相同的區域。**
 
-- 您可以建立 [Azure 虛擬機器](../virtual-machines/virtual-machines-about.md) (主機伺服器) 的虛擬網路中，可以使用虛擬裝置所公開的磁碟區。 這些伺服器必須符合下列需求：
+- 您可以建立 [Azure 虛擬機器](../virtual-machines/virtual-machines-about.md) （主機伺服器） 的虛擬網路中，可以使用虛擬裝置所公開的磁碟區。 這些伺服器必須符合下列需求：
     - 是已安裝 iSCSI 啟動器軟體的 Windows 或 Linux VM。
     - 正在虛擬裝置所在的相同虛擬網路中執行。
     - 能夠透過虛擬裝置的內部 IP 位址連接到虛擬裝置的 iSCSI 目標。
@@ -294,7 +294,7 @@ StorSimple Snapshot Manager 密碼現在已更新，可在驗證 Windows 主機�
 
 - 按一下 [ **新增**。 [新增端點] 對話方塊隨即出現。 按一下箭頭以繼續。
 
-- 如 **名稱**, ，輸入下列名稱的端點: **WinRMHttps**。
+- 如 **名稱**, ，輸入下列名稱的端點 ︰ **WinRMHttps**。
 
 - 如 **通訊協定**, ，指定 **TCP**。
 
@@ -388,4 +388,5 @@ StorSimple Snapshot Manager 密碼現在已更新，可在驗證 Windows 主機�
 ## 後續步驟
 
 若要管理您的虛擬裝置，請參閱詳細的清單中的工作流程 [使用 StorSimple Manager 服務管理 StorSimple 裝置](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)。
+
 

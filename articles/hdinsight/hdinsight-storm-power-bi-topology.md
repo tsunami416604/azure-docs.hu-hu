@@ -25,7 +25,7 @@ Power BI 預覽可讓您以視覺化的方式將資料顯示為報表或儀表�
 
 ## 必要條件
 
-- Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- Azure 訂閱。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * Azure Active Directory 使用者具有 [Power BI](https://powerbi.com) 存取
 
@@ -37,7 +37,7 @@ Power BI 預覽可讓您以視覺化的方式將資料顯示為報表或儀表�
 
     * Visual Studio 2015 [CTP6](http://visualstudio.com/downloads/visual-studio-2015-ctp-vs)
 
-* HDInsight Tools for Visual Studio: 請參閱 [開始使用 HDInsight Tools for Visual Studio](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md) 如需安裝的相關資訊。
+* HDInsight Tools for Visual Studio ︰ 請參閱 [開始使用 HDInsight Tools for Visual Studio](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md) 如需安裝的相關資訊。
 
 ## 運作方式
 
@@ -45,9 +45,9 @@ Power BI 預覽可讓您以視覺化的方式將資料顯示為報表或儀表�
 
 此專案中的下列檔案會實作 Power BI 特定功能：
 
-* **PowerBiBolt.cs**: 實作 Storm bolt，可將資料傳送到 Power BI
+* **PowerBiBolt.cs**︰ 實作 Storm bolt，可將資料傳送到 Power BI
 
-* **Data.cs**: 描述資料物件/列會傳送給 Power BI
+* **Data.cs**︰ 描述資料物件/列會傳送給 Power BI
 
 > [AZURE.WARNING] Power BI 似乎允許建立具有相同名稱的多個資料集。 如果資料集不存在，而且您的拓撲建立了 Power BI Bolt 的多個執行個體，就可能會發生。 若要避免這個問題，請將 bolt 的平行處理原則提示設為 1 (如同此範例)，或在部署拓撲之前建立資料集。
 >
@@ -69,9 +69,9 @@ Power BI 預覽可讓您以視覺化的方式將資料顯示為報表或儀表�
 
 1. 在 Visual Studio 中開啟範例。 從 **方案總管] 中**, ，開啟 **SCPHost.exe.config** 檔案，並尋找 **< OAuth.../ >** 項目。 輸入這個項目下列屬性的值。
 
-    * **用戶端**: 您稍早建立的應用程式註冊的用戶端識別碼。
+    * **用戶端**︰ 您稍早建立的應用程式註冊的用戶端識別碼。
 
-    * **使用者**: 可存取 Power BI 的 Azure Active Directory 帳戶。
+    * **使用者**︰ 可存取 Power BI 的 Azure Active Directory 帳戶。
 
     * **密碼**: Azure Active Directory 帳戶的密碼。
 
@@ -85,13 +85,13 @@ Power BI 預覽可讓您以視覺化的方式將資料顯示為報表或儀表�
 
     > [AZURE.NOTE] 可能需要幾秒鐘的時間 **Storm 叢集** 來填入伺服器名稱的下拉式清單。
     >
-    > 如果出現提示，請輸入您 Azure 訂用帳戶的登入認證。 如果您有多個訂用帳戶，請登入包含 Storm on HDInsight 叢集的訂用帳戶。
+    > 如果出現提示，請輸入您 Azure 訂閱的登入認證。 如果您有多個訂用帳戶，請登入包含 Storm on HDInsight 叢集的訂用帳戶。
 
 2. 順利提交拓撲時，應該會出現叢集的 Storm 拓撲。 從清單中選取 [WordCount] 拓撲，以檢視執行中拓撲的詳細資訊。
 
     ![已選取 WordCount 拓撲的拓撲](./media/hdinsight-storm-power-bi-topology/topologysummary.png)
 
-    > [AZURE.NOTE] 您也可以檢視 Storm 拓撲，從 [伺服器總管: 展開 Azure 和 HDInsight，以滑鼠右鍵按一下 Storm on HDInsight 叢集，然後選取 [檢視 Storm 拓撲。
+    > [AZURE.NOTE] 您也可以檢視 Storm 拓撲，從 [伺服器總管 ︰ 展開 Azure 和 HDInsight，以滑鼠右鍵按一下 Storm on HDInsight 叢集，然後選取 [檢視 Storm 拓撲。
 
 3. 當檢視 **拓樸摘要**, ，捲動直到您看到 **Bolt** 一節。 在本節中，記下 **執行** 欄 **PowerBI** bolt。 使用頁面頂端的 [重新整理] 按鈕，重新整理直到值變更為零以外的數目。 當這個數字開始增加時，表示項目正在寫入至 Power BI。
 
@@ -138,4 +138,5 @@ Power BI 預覽可讓您以視覺化的方式將資料顯示為報表或儀表�
 在本文件中，您已學會如何使用 REST 將資料從 Storm 拓撲傳送到 Power BI。 如需如何使用其他 Azure 技術的資訊，請參閱下列項目：
 
 * [Storm on HDInsight 的範例拓撲](hdinsight-storm-example-topology.md)
+
 

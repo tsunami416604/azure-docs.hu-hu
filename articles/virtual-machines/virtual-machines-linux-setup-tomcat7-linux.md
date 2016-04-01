@@ -32,7 +32,7 @@ Apache Tomcat (或直接稱為 Tomcat，以往也稱為 Jakarta Tomcat) 是 Apac
 -   如何準備 tomcat7 的虛擬機器。
 -   如何安裝 tomcat7。
 
-假設讀者已具備 Azure 訂用帳戶。  如果您可以註冊免費試用版，網址 [http://azure.microsoft.com](http://azure.microsoft.com)。 如果您有 MSDN 訂閱，請參閱 [Microsoft Azure 特價: MSDN、 MPN 及 Bizspark 優惠](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)。 若要深入了解 Azure，請參閱 [什麼是 Azure?](http://azure.microsoft.com/overview/what-is-azure/)。
+假設讀者已具備 Azure 訂用帳戶。  如果您可以註冊免費試用版，網址 [http://azure.microsoft.com](http://azure.microsoft.com)。 如果您有 MSDN 訂閱，請參閱 [Microsoft Azure 特價 ︰ MSDN、 MPN 及 Bizspark 優惠](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)。 若要深入了解 Azure，請參閱 [什麼是 Azure？](http://azure.microsoft.com/overview/what-is-azure/)。
 
 本主題假設您有 tomcat 和 Linux 的基本操作知識。  
 
@@ -50,7 +50,7 @@ SSH 對系統管理員而言是很重要的工具。 不過，依據人為決定
 
 依照下列步驟來產生 SSH 驗證金鑰。
 
-1.  下載並安裝 puttygen 從下列位置: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1.  下載並安裝 puttygen 從下列位置 ︰ [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2.  執行 PUTTYGEN.EXE。
 3.  按一下 [ **產生** 來產生金鑰。 在這個程序中，您可以在視窗中的空白區域移動滑鼠來提高隨機性。  
 ![][1]
@@ -107,7 +107,7 @@ TCP 連接埠 8080 是 tomcat 接聽的預設連接埠號碼。 在 Azure 端點
 下載之後，按一下可執行檔 PUTTY.EXE。 使用來自虛擬機器內容的主機名稱和連接埠號碼設定基本選項。 下列是一個範例：  
 ![][9]
 
-在左窗格中，按一下 [ **連接** ]-> [ **SSH** ]-> [ **Auth** 然後按一下 [ **瀏覽** 指定的位置 **privateKey.ppk** 檔案，其中包含 puttygen 在 「 第 1 階段產生的私密金鑰: 建立映像。 下列是一個範例：  
+在左窗格中，按一下 [ **連接** ]-> [ **SSH** ]-> [ **Auth** 然後按一下 [ **瀏覽** 指定的位置 **privateKey.ppk** 檔案，其中包含 puttygen 在 「 第 1 階段產生的私密金鑰 ︰ 建立映像。 下列是一個範例：  
 ![][10]
 
 按一下 [ **開啟**。 您可能會收到警告訊息方塊。 如果您已設定的 DNS 名稱，並正確連接埠號碼，按一下 [ **是**。
@@ -178,7 +178,7 @@ oracle-jdk
 
 ####測試：
 
-若要檢查是否已成功安裝 tomcat7，請瀏覽至 tomcat 伺服器的 DNS 名稱 (http://tomcatexample.cloudapp.net/ 是這篇文章中的範例 URL)。 如果您看到類似下列的頁面，表示 tomcat7 安裝正確。
+若要檢查是否已成功安裝 tomcat7，請瀏覽至 tomcat 伺服器的 DNS 名稱 （http://tomcatexample.cloudapp.net/ 是這篇文章中的範例 URL）。 如果您看到類似下列的頁面，表示 tomcat7 安裝正確。
 ![][16]
 
 
@@ -327,4 +327,5 @@ Tomcat 正在執行，但是使用瀏覽器無法看到 Tomcat 預設頁面。
 [16]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-16.png
 [17]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-17.png
 [18]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-18.png
+
 

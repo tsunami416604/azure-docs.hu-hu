@@ -25,7 +25,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
-在本教學課程中，您可以使用支援的身分識別提供者，將驗證加入快速入門專案。 本教學課程根據 [行動服務快速入門教學課程]，您必須先完成。
+在本教學課程中，您可以使用支援的身分識別提供者，將驗證加入快速入門專案。 本教學課程根據 [Mobile Services Quick Start tutorial], ，您必須先完成。
 
 ##<a name="register"></a>註冊應用程式進行驗證，並設定行動服務
 
@@ -47,9 +47,9 @@
 
 [AZURE.INCLUDE [mobile-services-ios-authenticate-app-with-token](../../includes/mobile-services-ios-authenticate-app-with-token.md)]
 
-##<a name="next-steps"></a>後續步驟
+##<a name="next-steps"></a>接續步驟
 
-在下一個教學課程中，[行動服務使用者的服務端授權，] 中，您將使用者的使用者識別碼值篩選傳回的資料。
+在下一個教學課程中， [Service-side authorization of Mobile Services users], ，您將使用者識別碼值來篩選傳回的資料。
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register
@@ -66,4 +66,5 @@
 [Authorize users with scripts]: mobile-services-dotnet-backend-service-side-authorization.md
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
+
 

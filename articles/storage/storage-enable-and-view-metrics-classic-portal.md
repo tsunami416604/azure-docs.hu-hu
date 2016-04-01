@@ -59,7 +59,7 @@
 
 `Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob`
 
-如需如何設定 Azure PowerShell 指令程式來使用您的 Azure 訂閱，以及如何選取預設的儲存體帳戶使用，請參閱: [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)。
+如需如何設定 Azure PowerShell 指令程式來使用您的 Azure 訂閱，以及如何選取預設的儲存體帳戶使用，請參閱 ︰ [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)。
 
 ## 如何以程式設計方式啟用儲存體度量
 
@@ -210,3 +210,4 @@
 ## 後續步驟：
 [啟用儲存體分析記錄和存取記錄檔資料](https://msdn.microsoft.com/library/dn782840.aspx)
  
+

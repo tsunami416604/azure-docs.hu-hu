@@ -31,9 +31,9 @@
 在此範例中，我們只需傳遞 "azure" 這個字做為搜尋參數並顯示傳回的 JSON 格式化結果。  以下是一些您可以嘗試的其他查詢範例。
 
 -   `Faceting`：一旦使用者搜尋資料集，能夠篩選資料是幫助他們瀏覽結果的好方法。  若要這樣做，您通常會從顯示給使用者的一組類別 (facet) 著手。  以下是我們可能想利用的一些 facet 範例：
-  - **標記**: 許多問題都有可讓使用者向下切入到特定類別與其相關聯的標記
+  - **標記**︰ 許多問題都有可讓使用者向下切入到特定類別與其相關聯的標記
   - **日期**: 使用者可能只想要查看已要求或回應在特定時間範圍內的問題
-  - **使用者**: 您可能想要查看或限制特定使用者的結果
+  - **使用者**︰ 您可能想要查看或限制特定使用者的結果
 在此範例中我們將會搜尋"azure"，但傳回 facet 計數 tagsCollection 和 acceptedAnswerDisplayName 的使用者名稱。
 
 > <http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=stackexchange&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28%26search=azure%26facet=tagsCollection%26facet=acceptedAnswerDisplayName>
@@ -42,7 +42,7 @@
 
 > <http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=stackexchange&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28%26search=azure%26$ filter = tagsCollection/any(t:+t+eq+'architecture') %26$ orderby = viewCount + desc>
 
--   `Spelling Mistakes`: 我們新的 (預覽) 支援 [Lucene 查詢運算式](https://msdn.microsoft.com/library/mt589323.aspx) 也可讓您執行一些非常複雜的查詢，例如模糊比對的結果，並限制搜尋特定欄位。  此範例會搜尋標題欄位中的 “visualize” 這個字，但是 ~ 表示模糊比對，這表示也會傳回 visualise 和 visualizing 等結果。
+-   `Spelling Mistakes`︰ 我們新的 （預覽） 支援 [Lucene 查詢運算式](https://msdn.microsoft.com/library/mt589323.aspx) 也可讓您執行一些非常複雜的查詢，例如模糊比對的結果，並限制搜尋特定欄位。  此範例會搜尋標題欄位中的 “visualize” 這個字，但是 ~ 表示模糊比對，這表示也會傳回 visualise 和 visualizing 等結果。
 
 > <http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=stackexchange&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28&search%3Dtitle%3Avisualise~percent 26querytype%3dfull%26searchmode%3dall%26%24select %3dtitle>
 
@@ -58,7 +58,7 @@
 
 其他您可能想要使用的項目包括：
 
--   [`Suggestions`](https://msdn.microsoft.com/library/azure/mt131377.aspx): 當使用者輸入在 [搜尋] 方塊時，就會很方便用於自動完成等標題、 標記和使用者名稱的欄位。  
+-   [`Suggestions`](https://msdn.microsoft.com/library/azure/mt131377.aspx)︰ 當使用者輸入在 [搜尋] 方塊時，就會很方便用於自動完成等標題、 標記和使用者名稱的欄位。  
 
 -   `Recommendations`：您通常需要 Apache Mahout 或 Azure 機器學習等工具來協助您建立一些建議，讓您顯示用者可能有興趣檢視的類似問題，但此資料集幸好已經有一些建議。
 
@@ -110,4 +110,5 @@ Brent 已藉由示範如何將資料預備至 SQL Database，進行了很多困�
 
     Server=tcp:azs-playground.database.windows.net,1433;Database=StackExchange;User ID=reader@azs-playground;
     Password=EdrERBt3j6mZDP;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
 

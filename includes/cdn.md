@@ -27,7 +27,7 @@ CDN 節點位置清單，請參閱 [Azure CDN Node Locations]。
 。 儲存體帳戶可存取 
 Azure 儲存體服務。 儲存體帳戶代表命名空間的最高層級，
 可存取每個 Azure 儲存體服務
-元件: Blob 服務、 佇列服務和表格服務。 如需
+元件 ︰ Blob 服務、 佇列服務和表格服務。 如需
 Azure 儲存體服務的相關資訊，請參閱 [使用
 Azure 儲存體服務](http://msdn.microsoft.com/library/azure/gg433040.aspx)。
 
@@ -56,7 +56,7 @@ Azure 服務管理 API，請參閱 [建立儲存體帳戶](http://msdn.microsoft
 
     http://*& l t;StorageAcountLabel & gt;*.blob.core.windows.net/*& lt; mycontainer & gt;*
 
-    **重要事項:** URL 標籤會形成儲存體的子網域
+    **重要事項 ︰** URL 標籤會形成儲存體的子網域
     而且在 Azure 的所有託管服務中 
     Azure。
 
@@ -64,7 +64,7 @@ Azure 服務管理 API，請參閱 [建立儲存體帳戶](http://msdn.microsoft
 
 5.  從 **區域/同質群組** 下拉式清單中，選取儲存體帳戶區域或同質群組。 如果您希望儲存體服務位於與您目前使用的其他 Windows Azure 服務相同的資料中心，請選取同質群組而非區域。 這麼做可改善效能，而且出口流量不會產生任何費用。  
 
-    **注意:** 若要建立同質群組，請開啟 **設定** 區域中的 [管理入口網站中，按一下 **同質群組**, ，然後按一下 [ **新增同質群組** 或 **新增**。 您也可以使用 Windows Azure 服務管理 API 建立和管理同質群組。 如需詳細資訊，請參閱 [同質群組的相關作業]。
+    **注意 ︰** 若要建立同質群組，請開啟 **設定** 區域中的 [管理入口網站中，按一下 **同質群組**, ，然後按一下 [ **新增同質群組** 或 **新增**。 您也可以使用 Windows Azure 服務管理 API 建立和管理同質群組。 如需詳細資訊，請參閱 [同質群組的相關作業]。
 
 6. 從 **訂閱** 下拉式清單中，選取將搭配使用的儲存體帳戶的訂閱。
 7.  按一下 [ **建立儲存體帳戶**。 建立儲存體帳戶的程序可能需要幾分鐘才能完成。
@@ -95,11 +95,11 @@ Azure 服務管理 API，請參閱 [建立儲存體帳戶](http://msdn.microsoft
     。 原始網域可以是儲存體帳戶或雲端服務；就此範例的目的而言，我們使用的是儲存體帳戶。 根據您指定的 cache-control 設定或是根據快取網路的預設啟發學習法，儲存體內容會被快取至 Edge Server。 
 
 
-    > [AZURE.NOTE] The configuration created for the endpoint will not
-    immediately be available; it can take up to 60 minutes for the
-    registration to propagate through the CDN network. Users who try to
-    use the CDN domain name immediately may receive status code 400
-    (Bad Request) until the content is available via the CDN.
+    > [AZURE.NOTE] 不會建立端點的組態
+    無法立即使用；最多需要 60 分鐘
+    進行註冊，才能透過 CDN 網路傳播。 嘗試立即
+    使用 CDN 網域名稱的使用者可能會收到狀態碼 400
+    (不正確的要求)，直到可透過 CDN 使用內容為止。
 
 <a id="Step3"> </a>
 <h2>步驟 3：存取 CDN 內容</h2> 
@@ -149,4 +149,5 @@ Azure 管理入口網站目前不支援立即清除內容的功能。 請連絡 
 
 [create-new-storage-account]: ./media/cdn/CDN_CreateNewStorageAcct.png
 [Previous Management Portal]: ../../Shared/Media/previous-portal.png
+
 

@@ -1,6 +1,6 @@
 <properties 
     pageTitle="常見的 DocumentDB 使用案例 | Microsoft Azure" 
-    description="深入了解的前五個 DocumentDB 使用案例: 使用者產生的內容、 事件記錄、 目錄資料、 使用者喜好設定資料和物聯網 (IoT)。" 
+    description="深入了解的前五個 DocumentDB 使用案例 ︰ 使用者產生的內容、 事件記錄、 目錄資料、 使用者喜好設定資料和物聯網 (IoT)。" 
     services="documentdb" 
     authors="h0n" 
     manager="jhubbard" 
@@ -78,4 +78,5 @@ Azure 事件中樞可以擷取暴增的資料量，因為它提供高輸送量�
 - [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608)。 全球領導者 Telenor 借助雲端之力加快啟動速度。 
 - [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。 未來存放區的運作基礎會是快速搜尋和簡單資料流程。
  
+
 

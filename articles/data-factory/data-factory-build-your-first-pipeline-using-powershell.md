@@ -36,7 +36,7 @@
 > 
 > 這篇文章並未涵蓋所有的 Data Factory Cmdlet。 請參閱 [Data Factory Cmdlet 參考](https://msdn.microsoft.com/library/dn820234.aspx) 如需 Data Factory cmdlet 的完整文件。
 
-## 先決條件
+## 必要條件
 除了「教學課程概觀」主題中所列的必要條件，您還需要安裝下列項目：
 
 - **Azure PowerShell**。 遵循指示 [如何安裝和設定 Azure PowerShell](../powershell-install-configure.md) 文件，以在電腦上安裝最新版的 Azure PowerShell。 
@@ -47,7 +47,7 @@
     1. 執行 **Add-azureaccount** ，然後輸入使用者名稱和密碼用於登入 Azure 入口網站。
     2. 執行 **Get-azuresubscription** 若要檢視此帳戶的所有訂閱。
     3. 執行 **Select-azuresubscription** 來選取您想要使用的訂閱。 此訂用帳戶應該與您在 Azure 入口網站中使用的相同。
-4. Azure Data Factory cmdlet 可在此模式時，切換至 AzureResourceManager 模式: **Switch-azuremode AzureResourceManager**。
+4. Azure Data Factory cmdlet 可在此模式時，切換至 AzureResourceManager 模式 ︰ **Switch-azuremode AzureResourceManager**。
 
 
 ## 步驟 1：建立 Data Factory
@@ -210,9 +210,9 @@
 
     在上述範例中，您會建立一個管線，其中包括在 HDInsight 叢集上使用 Hive 處理資料的單一活動。
 
-    Hive 指令碼檔案、 partitionweblogs.hql，會儲存在 Azure 儲存體帳戶中 (透過 scriptLinkedService，稱為 StorageLinkedService 指定)，且在容器中名為 **指令碼**。
+    Hive 指令碼檔案、 partitionweblogs.hql，會儲存在 Azure 儲存體帳戶中 （透過 scriptLinkedService，稱為 StorageLinkedService 指定），且在容器中名為 **指令碼**。
 
-     **定義** 區段用來指定將會傳遞到 hive 指令碼作為 Hive 設定值 (例如 ${hiveconf: partitioneddata}) 的執行階段設定。
+     **定義** 區段用來指定將會傳遞到 hive 指令碼作為 Hive 設定值 （例如 ${hiveconf: partitioneddata}） 的執行階段設定。
 
      **啟動** 和 **結束** 管線屬性會指定管線作用期間。
 
@@ -222,7 +222,7 @@
         New-AzureRmDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
 5. 恭喜，您已經成功使用 Azure PowerShell 建立您的第一個管線！
 
-### <a name="MonitorDataSetsAndPipeline"></a> 監視資料集和管線
+### <a name="MonitorDataSetsAndPipeline"></a>監視資料集和管線
 在此步驟中，您將使用 Azure PowerShell 來監視 Azure Data Factory 的運作情形。
 
 1.  執行 **Get AzureRmDataFactory** 並指派輸出給 **$df** 變數。
@@ -276,7 +276,8 @@
 
 
 ## 後續步驟
-在本文中，您已經建立可在隨選 Azure HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用 「 複製活動將資料從 Azure Blob 複製到 Azure SQL，請參閱 [教學課程: 將資料從 Azure Blob 複製到 Azure SQL](./data-factory-get-started.md)。
+在本文中，您已經建立可在隨選 Azure HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用 「 複製活動將資料從 Azure Blob 複製到 Azure SQL，請參閱 [教學課程 ︰ 將資料從 Azure Blob 複製到 Azure SQL](./data-factory-get-started.md)。
 
 
 [cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
+

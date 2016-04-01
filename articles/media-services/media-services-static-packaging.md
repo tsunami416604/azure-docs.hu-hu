@@ -240,7 +240,7 @@
 
 ## 搭配 PlayReady 使用靜態加密保護 Smooth 和 MPEG DASH
 
-如果您想要使用 PlayReady 保護內容時，您可以選擇使用 [動態加密](media-services-protect-with-drm.md) (建議的選項) 或靜態加密 (如本節所述)。
+如果您想要使用 PlayReady 保護內容時，您可以選擇使用 [動態加密](media-services-protect-with-drm.md) （建議的選項） 或靜態加密 （如本節所述）。
 
 本節中的範例會將夾層檔案 (本例中為 MP4) 編碼為調適型位元速率 MP4 檔案。 接著，該範例會將 MP4 封裝為 Smooth Streaming，然後使用 PlayReady 將其加密。 如此一來，您就可以串流 Smooth Streaming 或 MPEG DASH。
 
@@ -968,7 +968,7 @@
 
 ## 搭配 PlayReady 使用靜態加密保護 HLSv3
 
-如果您想要使用 PlayReady 保護內容時，您可以選擇使用 [動態加密](media-services-protect-with-drm.md) (建議的選項) 或靜態加密 (如本節所述)。
+如果您想要使用 PlayReady 保護內容時，您可以選擇使用 [動態加密](media-services-protect-with-drm.md) （建議的選項） 或靜態加密 （如本節所述）。
 
 >[AZURE.NOTE] 為了保護使用 PlayReady 內容您必須先轉換/編碼您的內容轉換為 Smooth Streaming 格式。
 
@@ -1448,4 +1448,5 @@
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

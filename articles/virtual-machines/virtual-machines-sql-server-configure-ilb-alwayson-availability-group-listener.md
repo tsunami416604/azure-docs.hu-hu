@@ -58,7 +58,7 @@
 
 1. 請注意 **子網路** 命名子網路的 Vm 所在的主機複本。 這將用於 **$SubnetName** 指令碼中的參數。 
 
-1. 記下 **VirtualNetworkSite** 名稱與開始 **AddressPrefix** 裝載複本的 Vm 所在之子網路。 藉由傳遞兩個值來尋找可用的 IP 位址 **Isavailable** 命令，並檢查 **AvailableAddresses**。 例如，如果 VNet 命名為 *MyVNet* 且必須在啟動的子網路位址範圍 *172.16.0.128*, ，下列命令會列出可用的位址:
+1. 記下 **VirtualNetworkSite** 名稱與開始 **AddressPrefix** 裝載複本的 Vm 所在之子網路。 藉由傳遞兩個值來尋找可用的 IP 位址 **Isavailable** 命令，並檢查 **AvailableAddresses**。 例如，如果 VNet 命名為 *MyVNet* 且必須在啟動的子網路位址範圍 *172.16.0.128*, ，下列命令會列出可用的位址 ︰
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 
@@ -137,6 +137,7 @@
 ## 後續步驟
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
+
 
 
 

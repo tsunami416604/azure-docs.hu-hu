@@ -25,7 +25,7 @@
 
 1. 若要複製 *Microsoft Azure IoT Sdk* GitHub 儲存機制並安裝 *Node.js 的 Microsoft Azure IoT 裝置 SDK* 在桌面環境中，請遵循 [準備開發環境][lnk-github-prepare] 指示。
 
-2. 從您的本機複本 [azure iot sdk][lnk-github-repo] 儲存機制，並複製下列兩個節點/裝置範例資料夾檔案資料夾在裝置上:
+2. 從您的本機複本 [azure iot sdk][lnk-github-repo] 儲存機制，並複製下列兩個節點/裝置範例資料夾檔案資料夾在裝置上 ︰
 
   - packages.json
   - remote_monitoring.js
@@ -42,7 +42,7 @@
     HostName={your IoT Hub hostname};DeviceId={your device id};SharedAccessKey={your device key}
     ```
 
-5. 如果您的 IoT 中心主機名稱是 **contoso** 和您的裝置識別碼是 **mydevice**, ，連接字串看起來像這樣:
+5. 如果您的 IoT 中心主機名稱是 **contoso** 和您的裝置識別碼是 **mydevice**, ，連接字串看起來像這樣 ︰
 
     ```
     var connectionString = "HostName=contoso.azure-devices.net;DeviceId=mydevice;SharedAccessKey=2s ... =="
@@ -60,3 +60,4 @@
 [lnk-github-repo]: https://github.com/azure/azure-iot-sdks
 [lnk-node-installers]: https://nodejs.org/download/
 [lnk-github-prepare]: https://github.com/Azure/azure-iot-sdks/blob/master/node/device/doc/devbox_setup.md
+

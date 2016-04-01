@@ -82,7 +82,7 @@ Task<IActorReminder> reminderRegistration = RegisterReminder(
                                                 ActorReminderAttributes.None);
 ```
 
-在上述範例 `"Pay cell phone bill"` 為該提醒名稱，也就是動作項目用來唯一識別提醒的字串。 `BitConverter.GetBytes(amountInDollars)` 為與提醒相關聯的內容。 它會傳回給動作項目做為引數來提醒回撥，也就是 `IRemindable.ReceiveReminderAsync`。
+在上述範例 `"Pay cell phone bill"` 為該提醒名稱，也就是動作項目用來唯一識別提醒的字串。 `BitConverter.GetBytes(amountInDollars)` 為與提醒相關聯的內容。 其會作為提醒回呼的引數傳回給動作項目，也就是 `IRemindable.ReceiveReminderAsync`。
 
 使用提醒的動作項目必須實作 `IRemindable` 介面，如下列範例所示。
 
@@ -113,4 +113,5 @@ Task reminderUnregistration = UnregisterReminder(reminder);
 ```
 
 如上所示，`UnregisterReminder` 方法會接受 `IActorReminder` 介面。 動作項目基底類別支援 `GetReminder` 方法，在傳遞進提醒名稱時可以用來擷取 `IActorReminder` 介面。 這很方便，因為動作項目不需保存從 `RegisterReminder` 方法呼叫傳回的 `IActorReminder` 介面。
+
 

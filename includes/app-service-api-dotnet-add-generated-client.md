@@ -1,4 +1,4 @@
-3. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 (而非方案)，然後選取 **加入 > Azure API 應用程式用戶端**。 
+3. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案 （而非方案），然後選取 **加入 > Azure API 應用程式用戶端**。 
 
     ![](./media/app-service-api-dotnet-add-generated-client/03-add-azure-api-client-v3.png)
     
@@ -17,4 +17,5 @@
     程式碼產生完成之後，您會看到新的資料夾中 **方案總管] 中**, ，API 應用程式的名稱。 此資料夾包含實作用戶端類別和資料模型的程式碼。 
 
     ![產生完成](./media/app-service-api-dotnet-add-generated-client/06-code-gen-output-v3.png)
+
 

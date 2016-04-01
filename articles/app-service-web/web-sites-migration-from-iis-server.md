@@ -66,7 +66,7 @@
 
     ![](./media/web-sites-migration-from-iis-server/install-page.png)
 
-    >[AZURE.NOTE] 您也可以按一下 **下載進行離線安裝** 下載 ZIP 檔案，以便在未連線到網際網路的伺服器上安裝。 或者，您可以按一下 **上傳現有移轉整備報告**, ，這是一個進階的選項來處理現有移轉整備報告您先前產生的 (稍後說明)。
+    >[AZURE.NOTE] 您也可以按一下 **下載進行離線安裝** 下載 ZIP 檔案，以便在未連線到網際網路的伺服器上安裝。 或者，您可以按一下 **上傳現有移轉整備報告**, ，這是一個進階的選項來處理現有移轉整備報告您先前產生的 （稍後說明）。
 
 5.  在 **應用程式安裝** 畫面上，按一下 **安裝** 在您的電腦上安裝。 必要時也會安裝對應的相依項目，如 Web Deploy、DacFX 和 IIS。 
 
@@ -129,8 +129,9 @@
 
     ![](./media/web-sites-migration-from-iis-server/TimeTrackerMigrated.png)
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
  
+

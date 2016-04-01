@@ -21,8 +21,8 @@
 > [AZURE.SELECTOR]
 - [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
-- [iOS |Obj C](mobile-engagement-ios-get-started.md)
-- [iOS |Swift](mobile-engagement-ios-swift-get-started.md)
+- [iOS | Obj C](mobile-engagement-ios-get-started.md)
+- [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
 - [Android](mobile-engagement-android-get-started.md)
 - [Cordova](mobile-engagement-cordova-get-started.md)
 
@@ -36,9 +36,9 @@
 + Visual Studio 2013
 + [MicrosoftAzure.MobileEngagement] Nuget 封裝
 
-> [AZURE.IMPORTANT] 完成本教學課程是針對 Windows Phone Silverlight 應用程式，所有其他 Mobile Engagement 教學課程的先決條件，若要完成此作業，您必須具有有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
+> [AZURE.IMPORTANT] 完成本教學課程是針對 Windows Phone Silverlight 應用程式，所有其他 Mobile Engagement 教學課程的先決條件，若要完成此作業，您必須具有有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免費試用</a>。
 
-##<a id="setup-azme"></a>設定 Mobile Engagement windows Phone 應用程式
+##<a id="setup-azme"></a>設定 Windows Phone 應用程式的 Mobile Engagement
 
 [AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -64,7 +64,7 @@
 
 ###將您的應用程式連線至 Mobile Engagement 後端
 
-1. 在專案中安裝 [MicrosoftAzure.MobileEngagement] nuget 封裝。
+1. 安裝 [MicrosoftAzure.MobileEngagement] nuget 封裝，在您的專案。
 
 2. 在 Properties 資料夾中開啟 `WMAppManifest.xml`，然後確認 `<Capabilities />` 標記中已宣告下列項目 (如果沒有宣告，請自行新增)：
 
@@ -97,7 +97,7 @@
                EngagementAgent.Instance.OnActivated(e);
             }
 
-##<a id="monitor"></a>若要啟用即時監視
+##<a id="monitor"></a>啟用即時監視
 
 若要開始傳送資料並確定使用者正在使用，您必須至少傳送一個畫面 (活動) 到 Mobile Engagement 後端。
 
@@ -121,7 +121,7 @@
 
 [AZURE.INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-##<a id="integrate-push"></a>啟用推播通知與應用程式內傳訊
+##<a id="integrate-push"></a>啟用推播通知與 App 內傳訊
 
 Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊」，於活動進行時與使用者互動和觸達。 此模組在 Mobile Engagement 入口網站中稱為觸達 (REACH)。
 以下各節將設定您的用程式來接收它們。
@@ -137,7 +137,7 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 
 ###初始化 REACH SDK
 
-1. 在 `App.xaml.cs`, ，呼叫 `EngagementReach.Instance.Init();` 中 **Application_Launching** 函式，代理程式初始化後:
+1. 在 `App.xaml.cs`, ，呼叫 `EngagementReach.Instance.Init();` 中 **Application_Launching** 函式，代理程式初始化後 ︰
 
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
@@ -145,7 +145,7 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
            EngagementReach.Instance.Init();
         }
 
-2. 在 `App.xaml.cs`, ，呼叫 `EngagementReach.Instance.OnActivated(e);` 中 **Application_Activated** 函式，代理程式初始化後:
+2. 在 `App.xaml.cs`, ，呼叫 `EngagementReach.Instance.OnActivated(e);` 中 **Application_Activated** 函式，代理程式初始化後 ︰
 
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
@@ -155,7 +155,7 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 
 您全都準備好了。 現在我們要驗證您已正確完成這項基本整合。
 
-##<a id="send"></a>將通知傳送至您的應用程式
+##<a id="send"></a>傳送通知至應用程式
 
 [AZURE.INCLUDE [Create Windows Push campaign](../../includes/mobile-engagement-windows-push-campaign.md)]
 
@@ -173,4 +173,5 @@ Mobile Engagement 可讓您透過「推播通知」和「應用程式內傳訊�
 [3]: ./media/mobile-engagement-windows-phone-get-started/add-connection-string.png
 [5]: ./media/mobile-engagement-windows-phone-get-started/reach-capabilities.png
 [6]: ./media/mobile-engagement-windows-phone-get-started/push-screenshot.png
+
 

@@ -28,7 +28,7 @@
 
 觸發程序 | 動作
 --- | ---
-None | <ul><li>取得 Blob: 從容器取得特定的 Blob</li><li>上傳 Blob: 上傳新的 Blob 或更新現有的 Blob</li><li>刪除 Blob: 從容器中刪除特定的 Blob</li><li>列出 Blob: 列出目錄中的所有 blob</li><li>快照 Blob: 建立特定 Blob 的唯讀快照集</li><li>複製 Blob: 從另一個 Blob 複製，以建立新的 Blob。  來源 Blob 可能位於相同的帳戶或另一個帳戶中。</li></ul>
+None | <ul><li>取得 Blob ︰ 從容器取得特定的 Blob</li><li>上傳 Blob ︰ 上傳新的 Blob 或更新現有的 Blob</li><li>刪除 Blob ︰ 從容器中刪除特定的 Blob</li><li>列出 Blob ︰ 列出目錄中的所有 blob</li><li>快照 Blob ︰ 建立特定 Blob 的唯讀快照集</li><li>複製 Blob ︰ 從另一個 Blob 複製，以建立新的 Blob。  來源 Blob 可能位於相同的帳戶或另一個帳戶中。</li></ul>
 
 
 ## 建立 Azure 儲存體 Blob 連接器
@@ -37,7 +37,7 @@ None | <ul><li>取得 Blob: 從容器取得特定的 Blob</li><li>上傳 Blob: �
 
 1. 在 Azure 開始面板中，選取 **Marketplace**。
 2. 搜尋"Blob":  
-    ![選取 Azure 儲存體 Blob 連接器][] 2
+    ![選取 Azure 儲存體 Blob 連接器][2]
 
 3. 選取它，然後選取 **建立**。
 4. 輸入名稱、App Service 方案和其他屬性。
@@ -48,7 +48,7 @@ None | <ul><li>取得 Blob: 從容器取得特定的 Blob</li><li>上傳 Blob: �
 容器 /SAS URI |[是 |輸入 Blob 容器的 URI。 URI 也可能包括 SAS 權杖。 例如，輸入 http://*storageaccountname*.blob.core.windows.net/containername 或 http://*storageaccountname*.blob.core.windows.net/containername?sr=c 和 si = mypolicy sig = signatureblah
 存取金鑰 |否 |輸入有效的主要或次要儲存體帳戶存取金鑰。 如果您使用 SAS Token 進行驗證，請保留此欄位空白。
 
-    ![建立 Azure 儲存體 Blob 連接器][] 3
+    ![建立 Azure 儲存體 Blob 連接器][3]
 
 6. 按一下 [ **建立**。
 
@@ -56,16 +56,16 @@ None | <ul><li>取得 Blob: 從容器取得特定的 Blob</li><li>上傳 Blob: �
 建立 Azure 儲存體 Blob 連接器後，即可立即加入工作流程。
 
 1. 建立新的邏輯應用程式：[新增] -> [Web + 行動] -> LogicApp。 輸入邏輯應用程式的屬性：  
-    ![建立邏輯應用程式][] 4
+    ![建立邏輯應用程式][4]
 
 2. 按一下 [ **觸發程序和動作**。 工作流程設計工具隨即開啟：  
-    ![邏輯應用程式空白流程設計工具][] 5
+    ![邏輯應用程式空白流程設計工具][5]
 
 3. 選取右窗格中的 Azure 儲存體 Blob 連接器。 連接器會列出可用的動作：  
-    ![Azure 儲存體 Blob 動作的清單][] 10
+    ![Azure 儲存體 Blob 動作的清單][10]
 
-4. 在此案例中，我們將使用 **上傳 Blob** 動作:  
-    ![上傳 Blob 動作的輸入][] 11
+4. 在此案例中，我們將使用 **上傳 Blob** 動作 ︰  
+    ![上傳 Blob 動作的輸入][11]
 
 5. 輸入輸入值，並選取核取記號以完成設定：
 
@@ -79,7 +79,7 @@ Blob 寫入內容 |輸入要上傳內容和 Blob 的屬性。
 請注意，已設定的 [Azure 儲存體 Blob 上傳 Blob] 動作會顯示輸入參數以及輸出參數。
 
 #### 使用先前動作的輸出做為 Azure 儲存體 Blob 動作的輸入
-在上一個螢幕擷取畫面， **內容** 值可以是運算式:
+在上一個螢幕擷取畫面， **內容** 值可以是運算式 ︰
 
     @triggers().outputs.body.Content
 
@@ -88,9 +88,9 @@ Blob 寫入內容 |輸入要上傳內容和 Blob 的屬性。
     @actions('transformservice').outputs.body.OutputXML
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -108,4 +108,5 @@ Blob 寫入內容 |輸入要上傳內容和 Blob 的屬性。
 [10]: ./media/app-service-logic-connector-azurestorageblob/ListOfAzureStorageBlobActions.PNG
 [11]: ./media/app-service-logic-connector-azurestorageblob/BasicInputsUploadBlob.PNG
  
+
 

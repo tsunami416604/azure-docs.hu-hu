@@ -65,7 +65,7 @@
 4.  按 [下一步] 箭頭。
 5.  在 [DNS 伺服器和 VPN 連線能力] 頁面中 **DNS 伺服器**, ，型別 **DC1** 中 **選取或輸入名稱**, ，型別 **10.0.0.4** 中 **IP 位址**, ，然後按一下 [下一步箭頭。
 6.  在 [虛擬網路位址空間] 頁面中，在 **子網路**, ，按一下 **子網路 1** 並將名稱取代 **公司**。
-7.  在 **CIDR (位址計數)** 公司網路子網路上的資料行按一下 **/24 (256)**。
+7.  在 **CIDR （位址計數）** 公司網路子網路上的資料行按一下 **/24 (256)**。
 8.  按一下 [完成] 圖示。 等候虛擬網路建立後再繼續。
 
 接下來，使用中的指示 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md) 本機電腦上安裝 Azure PowerShell。 開啟 Azure PowerShell 命令提示字元。
@@ -79,7 +79,7 @@
 
 接下來，建立 Azure 雲端服務。 雲端服務可以充當虛擬網路中，各個虛擬機器的安全屏障以及邏輯容器。 雲端服務也可以讓您從遠端連接和管理公司網路子網路上的虛擬機器。
 
-您必須為雲端服務選擇唯一的名稱。 *雲端服務名稱可以包含字母、數字和連字號。欄位中的第一個和最後一個字元，必須是字母或數字。*
+您必須為雲端服務選擇唯一的名稱。 *雲端服務名稱只能包含字母、數字和連字號。 欄位中的第一個和最後一個字元，必須是字母或數字。*
 
 例如，您服務的名稱定域機組 TestLab-*UniqueSequence*, ，在其中 *UniqueSequence* 是貴公司的縮寫。 例如，如果貴公司名稱是 Tailspin Toys，則可以將雲端服務命名為 TestVNET-Tailspin。
 
@@ -94,7 +94,7 @@
 
 記錄雲端服務的實際名稱。。
 
-接下來，您可以設定儲存體帳戶，它將包含虛擬機器的磁碟和以及其他資料磁碟。 *您必須選擇唯一的名稱只包含小寫字母和數字。*您可以使用這個 Azure PowerShell 命令，測試儲存體帳戶名稱是否重複。
+接下來，您可以設定儲存體帳戶，它將包含虛擬機器的磁碟和以及其他資料磁碟。 *您選取的名稱不可以和其他名稱重複而且只能使用小寫字母和數字。* 您可以使用這個 Azure PowerShell 命令，測試儲存體帳戶名稱是否重複。
 
     Test-AzureName -Storage <Proposed storage account name>
 
@@ -131,7 +131,7 @@ DC1 是 corp.contoso.com Active Directory 網域服務 (AD DS) 網域的網域�
 3.  當系統提示開啟 DC1.rdp 時，按一下 [ **開啟**。
 4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用下列：
-- 名稱: **DC1\\**[本機系統管理員帳戶名稱]
+- 名稱 ︰ **DC1\\**[本機系統管理員帳戶名稱]
 - 密碼：[本機系統管理員帳戶密碼]
 6.  顯示憑證相關的遠端桌面連線] 訊息方塊提示，請按一下 **是**。
 
@@ -160,7 +160,7 @@ DC1 重新啟動之後，重新連接到 DC1 的虛擬機器。
 3.  當系統提示開啟 DC1.rdp 時，按一下 [ **開啟**。
 4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用下列：
-- 名稱: **CORP\\**[本機系統管理員帳戶名稱]
+- 名稱 ︰ **CORP\\**[本機系統管理員帳戶名稱]
 - 密碼：[本機系統管理員帳戶密碼]
 6.  顯示憑證相關的遠端桌面連線訊息方塊提示時按一下 **是**。
 
@@ -169,7 +169,7 @@ DC1 重新啟動之後，重新連接到 DC1 的虛擬機器。
     New-ADUser -SamAccountName User1 -AccountPassword (read-host "Set user password" -assecurestring) -name "User1" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
     Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
-請注意，第一個命令會提示使用者輸入 User1 帳戶密碼。 因為這個帳戶會用於所有 CORP 網域成員電腦的遠端桌面連線，所以請選取強式密碼。 若要檢查其強度，請參閱 [密碼檢查程式: 使用強式密碼](https://www.microsoft.com/security/pc-security/password-checker.aspx)。 記錄 User1 帳戶的密碼，然後儲存在安全的位置。
+請注意，第一個命令會提示使用者輸入 User1 帳戶密碼。 因為這個帳戶會用於所有 CORP 網域成員電腦的遠端桌面連線，所以請選取強式密碼。 若要檢查其強度，請參閱 [密碼檢查程式 ︰ 使用強式密碼](https://www.microsoft.com/security/pc-security/password-checker.aspx)。 記錄 User1 帳戶的密碼，然後儲存在安全的位置。
 
 使用 CORP\User1 帳戶，重新連線到 DC1 的虛擬機器。
 
@@ -260,7 +260,7 @@ CLIENT1 充當 Contoso 內部網路上的一般膝上型電腦、平板電腦或
 
 [基本設定測試環境與 Azure 資源管理員](virtual-machines-base-configuration-test-environment-resource-manager.md)
 
-## <a id="costs"></a>在 Azure 中的測試環境虛擬機器的成本降至最低
+## <a id="costs"></a>將 Azure 的測試環境虛擬機器費用降至最低
 
 為了將測試環境虛擬機器的執行成本降到最低，您可以執行下列其中一項：
 
@@ -287,4 +287,5 @@ CLIENT1 充當 Contoso 內部網路上的一般膝上型電腦、平板電腦或
     Start-AzureVM -ServiceName $serviceName -Name "DC1"
     Start-AzureVM -ServiceName $serviceName -Name "APP1"
     Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
+
 

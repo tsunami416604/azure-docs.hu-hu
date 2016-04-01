@@ -54,7 +54,7 @@
 
 ### 程式碼檔案加入至專案
 
-驗證啟動類別， **App_Start/Startup.Auth.cs** 已加入至專案，內含 Azure AD 驗證的啟動邏輯。 此外，其中包含加入控制器類別 controllers/Accountcontroller.cs **signin ()** 和 **signout ()** 方法。 最後，部分檢視 **Views/Shared/_LoginPartial.cshtml** 起，內含 SignIn/signout 的動作連結。
+驗證啟動類別， **App_Start/Startup.Auth.cs** 已加入至專案，內含 Azure AD 驗證的啟動邏輯。 此外，其中包含加入控制器類別 controllers/Accountcontroller.cs **signin （)** 和 **signout （)** 方法。 最後，部分檢視 **Views/Shared/_LoginPartial.cshtml** 起，內含 SignIn/signout 的動作連結。
 
 ### 啟動程式碼已加入至專案
 
@@ -76,7 +76,7 @@
 ### 建立 Azure Active Directory (AD) 應用程式
 已在您於精靈中選取的目錄中建立 Azure AD 應用程式。
 
-##如果我核取 *停用個別使用者帳戶驗證*, ，我的專案已進行哪些其他的變更?
+##如果我核取 *停用個別使用者帳戶驗證*, ，我的專案已進行哪些其他的變更？
 NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您的專案狀態，您可能必須手動移除其他參考或檔案，或修改為適當的程式碼。
 
 ### 移除的 NuGet 封裝參考 (如果存在)
@@ -103,7 +103,7 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 - **Controllers\AccountController.cs**
 - **Views\Shared\_LoginPartial.cshtml**
 
-## 如果我核取 *讀取目錄資料*, ，我的專案已進行哪些其他的變更?
+## 如果我核取 *讀取目錄資料*, ，我的專案已進行哪些其他的變更？
 
 已加入其他參考。
 
@@ -131,7 +131,7 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 
 ###其他程式碼檔案已加入至專案
 
-兩個檔案已加入以支援權杖快取: **Models\ADALTokenCache.cs** 和 **Models\ApplicationDbContext.cs**。  已加入其他控制器和檢視，以說明使用 Azure 圖形 API 存取使用者設定檔資訊。  這些檔案是 **Controllers\UserProfileController.cs** 和 **Views\UserProfile\Index.cshtml**。
+兩個檔案已加入以支援權杖快取 ︰ **Models\ADALTokenCache.cs** 和 **Models\ApplicationDbContext.cs**。  已加入其他控制器和檢視，以說明使用 Azure 圖形 API 存取使用者設定檔資訊。  這些檔案是 **Controllers\UserProfileController.cs** 和 **Views\UserProfile\Index.cshtml**。
 
 ###其他啟動程式碼已加入至專案
 
@@ -170,4 +170,5 @@ NuGet 封裝參考會被移除，檔案也會移除並加以備份。 根據您�
 Azure Active Directory 應用程式已更新為包含 *讀取目錄資料* 使用權限和其他的登錄機碼已建立其再做使用 *ida: ClientSecret* 中 **web.config** 檔案。
 
 [深入了解 Azure Active Directory](http://azure.microsoft.com/services/active-directory/)
+
 

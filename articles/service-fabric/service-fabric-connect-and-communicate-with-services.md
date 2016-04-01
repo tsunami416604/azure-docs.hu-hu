@@ -29,9 +29,9 @@ Service Fabric 通訊 API 代表用戶端-服務類型的互動，甚至包含�
 
 * **解決**: Service Fabric 中的所有服務執行個體都有唯一的 Uri，例如"fabric: / MyApplication/MyService 」 與這些 Uri 不會隨著時間變更。 每個服務執行個體也會公開端點，當服務執行個體移動時您可以變更端點。 這類似於具有常數 URL 的網站，但 IP 位址可能會變更。 並且類似於全球資訊網中的 DNS，可解析連接至 IP 位址的網站 URL，Service Fabric 平台也具有系統服務，可解析連接至端點的 URI。 此步驟涉及解析連接至端點的服務執行個體 URI。
 
-* **連接**: 一旦服務 URI 已解析至端點位址下一步是嘗試與該服務。 若端點位址因為服務移動而已變更，則此連接可能會失敗，例如，可能由電腦失敗或負載平衡所導致。
+* **連接**︰ 一旦服務 URI 已解析至端點位址下一步是嘗試與該服務。 若端點位址因為服務移動而已變更，則此連接可能會失敗，例如，可能由電腦失敗或負載平衡所導致。
 
-* **重試**: 如果連線嘗試失敗，上述解決並連接步驟，就必須重試，而且這個循環會重複進行直到連線成功。
+* **重試**︰ 如果連線嘗試失敗，上述解決並連接步驟，就必須重試，而且這個循環會重複進行直到連線成功。
 
 ## 決定要使用的通訊 API
 作為 Service Fabric 的一部分，我們提供幾個不同的通訊 API 選項，以及最適合您選項的決定，這取決於如何選擇程式設計模型、通訊架構以及用來撰寫您服務的程式語言。
@@ -41,12 +41,12 @@ Service Fabric 通訊 API 代表用戶端-服務類型的互動，甚至包含�
 ### 可靠服務的通訊選項
 若您的服務使用可靠服務 API 寫入，則有幾個不同的選項。 若您選擇通訊協定，系統將會引導您選擇可能使用的 Service Fabric 通訊 API。
 
-* **沒有我需要使用特定的通訊協定，我想要快速啟動並執行**: 如果您不需要特定的通訊架構選擇，則您的理想選項是使用 [預設堆疊](service-fabric-reliable-services-communication-remoting.md) ，可允許類似的模型作為動作項目通訊模型。 若要開始使用服務通訊，這是最簡單且快速的方式。 其提供強型別 RPC 通訊，可擷取多數移出的通訊詳細資料，以便在程式碼中的遠端服務上叫用方法，看起來像在本機物件執行個體上呼叫方法。 這些類別會在設定通訊通道時擷取解析、連接、重試和錯誤處理，並允許基於通訊模型的方法呼叫。 針對此 `ServiceCommunicationListener` 類別是用於伺服器端，而 `ServiceProxy` 類別則用於通訊的用戶端。
+* **沒有我需要使用特定的通訊協定，我想要快速啟動並執行**︰ 如果您不需要特定的通訊架構選擇，則您的理想選項是使用 [預設堆疊](service-fabric-reliable-services-communication-remoting.md) ，可允許類似的模型作為動作項目通訊模型。 若要開始使用服務通訊，這是最簡單且快速的方式。 其提供強型別 RPC 通訊，可擷取多數移出的通訊詳細資料，以便在程式碼中的遠端服務上叫用方法，看起來像在本機物件執行個體上呼叫方法。 這些類別會在設定通訊通道時擷取解析、連接、重試和錯誤處理，並允許基於通訊模型的方法呼叫。 針對此 `ServiceCommunicationListener` 類別是用於伺服器端，而 `ServiceProxy` 類別則用於通訊的用戶端。
 
-* **HTTP**: 若要利用 HTTP 式通訊提供您可以使用 Service Fabric 通訊 Api，讓通訊機制，來定義時解析的彈性，連接和重試邏輯仍從您擷取。 例如您可以使用 Web API，用於指定的通訊機制並利用 [`ICommunicationClient` 和 `ServicePartitionClient` 類別](service-fabric-reliable-services-communication.md) 來設定通訊。
-* **WCF**: 如果您有現有的程式碼使用 WCF 作為通訊架構，則您可以使用 WcfCommunicationListener WcfCommunicationClient 和 ServicePartitionClient 類別與伺服器端的用戶端。 如需詳細資訊，請參閱 [這篇文章](service-fabric-reliable-services-communication-wcf.md)。
+* **HTTP**︰ 若要利用 HTTP 式通訊提供您可以使用 Service Fabric 通訊 Api，讓通訊機制，來定義時解析的彈性，連接和重試邏輯仍從您擷取。 例如您可以使用 Web API，用於指定的通訊機制並利用 [`ICommunicationClient` 和 `ServicePartitionClient` 類別](service-fabric-reliable-services-communication.md) 來設定通訊。
+* **WCF**︰ 如果您有現有的程式碼使用 WCF 作為通訊架構，則您可以使用 WcfCommunicationListener WcfCommunicationClient 和 ServicePartitionClient 類別與伺服器端的用戶端。 如需詳細資訊，請參閱 [這篇文章](service-fabric-reliable-services-communication-wcf.md)。
 
-* **其他包含自訂通訊協定的通訊架構**: 如果您打算使用包含自訂通訊協定 Service Fabric 通訊 Api，您可以的外掛通訊堆疊，同時要探索和連接的所有工作都從您都擷取的任何其他通訊架構。 請參閱 [這篇文章](service-fabric-reliable-services-communication.md) 如需詳細資訊。
+* **其他包含自訂通訊協定的通訊架構**︰ 如果您打算使用包含自訂通訊協定 Service Fabric 通訊 Api，您可以的外掛通訊堆疊，同時要探索和連接的所有工作都從您都擷取的任何其他通訊架構。 請參閱 [這篇文章](service-fabric-reliable-services-communication.md) 如需詳細資訊。
 
 ### 使用不同程式設計語言撰寫之服務之間的通訊
 所有 Service Fabric 通訊 API 目前僅在 C# 中提供使用，因此若服務以其他程式設計語言撰寫，例如 Java 或 Node.JS，則您必須撰寫自己的通訊機制。
@@ -56,4 +56,5 @@ Service Fabric 通訊 API 代表用戶端-服務類型的互動，甚至包含�
 * [可靠服務通訊模型](service-fabric-reliable-services-communication.md)
 * [開始使用 Microsoft Azure Service Fabric Web API 服務與 OWIN 自我裝載](service-fabric-reliable-services-communication-webapi.md)
 * [可靠服務的 WCF 式通訊堆疊](service-fabric-reliable-services-communication-wcf.md)
+
 

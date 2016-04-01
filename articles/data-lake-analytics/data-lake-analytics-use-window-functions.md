@@ -684,7 +684,7 @@ PERCENT_RANK 函式所傳回的值代表查詢在垂直內的延遲排名 (以�
 
 WITHIN GROUP (ORDER BY <identifier> [ASC |DESC])-指定排序，並透過計算百分位數的數字值的清單。 僅允許一個資料行識別碼。 運算式必須評估為數值類型。 不允許其他資料類型。 預設排序順序為遞增。
 
-透過 ([資料分割經由 < 識別碼 >...[n]])-會將輸入資料列集分割成根據百分位數函式套用到資料分割索引鍵的資料分割。 如需詳細資訊，請參閱本文的「排名」一節。
+透過 （[資料分割經由 < 識別碼 >...[n]])-會將輸入資料列集分割成根據百分位數函式套用到資料分割索引鍵的資料分割。 如需詳細資訊，請參閱本文的「排名」一節。
 附註：資料集中的任何 null 值都會被忽略。
 
 **PERCENTILE_CONT** 計算為基礎的資料行值連續分佈百分位數。 其結果會以內插值取代，且可能不會等於資料行中的任何特定值。 
@@ -747,4 +747,5 @@ PERCENTILE_DISC 不會插補值，因此 Web 的中間值是 200 - 也就是在�
 - [使用 Azure 入口網站管理 Azure 資料湖分析](data-lake-analytics-use-portal.md)
 - [使用 Azure PowerShell 管理 Azure 資料湖分析](data-lake-analytics-use-powershell.md)
 - [使用 Azure 入口網站監視和疑難排解 Azure 資料湖分析作業](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
 

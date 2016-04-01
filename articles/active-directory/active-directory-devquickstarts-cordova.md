@@ -38,7 +38,7 @@ Azure AD 可讓您將企業級的驗證功能加入 Cordova 應用程式中。 �
 3. 加入程式碼以使用權杖來查詢 Graph API，並顯示結果。
 4. 使用您想要做為目標的所有平台和 Cordova ADAL 外掛程式，建立 Cordova 部署專案，並在模擬器中測試解決方案。
 
-## *0.先決條件*
+## *0.必要條件*
 
 若要完成本教學課程，您需要：
 
@@ -54,17 +54,17 @@ Azure AD 可讓您將企業級的驗證功能加入 Cordova 應用程式中。 �
 - [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [NodeJS](https://nodejs.org/download/)
 - [Cordova CLI](https://cordova.apache.org/)
-  (可以輕鬆地透過 NPM 封裝管理員來安裝: `npm install -g cordova`)
+  (可以輕鬆地透過 NPM 封裝管理員來安裝 ︰ `npm install -g cordova`)
 
 請注意，這些都應該可以在 PC 和 Mac 上執行。
 
 每個目標平台各有不同的先決條件。
 
 - 建置和執行 Windows Tablet/PC 或 Phone 應用程式版本
-    - [Visual Studio 2013 Update 2 或更新版本的 windows](http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-windows-8) (Express 或另一個版本)。
+    - [Visual Studio 2013 Update 2 或更新版本的 windows](http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-windows-8) （Express 或另一個版本）。
 - 針對 iOS 建置和執行
     -   Xcode 5.x 或更新版本。 下載在 http://developer.apple.com/downloads 或 [Mac App Store](http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-    -   [ios sim](https://www.npmjs.org/package/ios-sim) – 可讓您到 iOS 模擬器從命令列啟動 iOS 應用程式 (可以輕鬆地透過終端機來安裝: `npm install -g ios-sim`)
+    -   [ios sim](https://www.npmjs.org/package/ios-sim) – 可讓您到 iOS 模擬器從命令列啟動 iOS 應用程式 (可以輕鬆地透過終端機來安裝 ︰ `npm install -g ios-sim`)
 
 - 針對 Android 建置和執行應用程式
     - 安裝 [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 或更新版本。 請確定 `JAVA_HOME` (環境變數) 已根據 JDK 安裝路徑 (例如 C:\Program Files\Java\jdk1.7.0_75) 正確設定。
@@ -72,7 +72,7 @@ Azure AD 可讓您將企業級的驗證功能加入 Cordova 應用程式中。 �
     - 開啟 Android SDK Manager (例如，透過終端機：`android`) 並安裝
     - *Android 5.0.1 (API 21)* 平台 SDK
     - *Android SDK 建置工具* 19.1.0 版或更高版本
-    - *Android 支援儲存機制* (額外項目)
+    - *Android 支援儲存機制* （額外項目）
 
   Android sdk 並不提供任何預設模擬器執行個體。 建立一個新的執行 `android avd` 從終端機，然後選取 [ *Create...* 如果您想要在模擬器上執行 Android 應用程式。 建議 *Api 層級* 19 或更高版本，請參閱 [AVD Manager] (http://developer.android.com/tools/help/avd-manager.html) 的 Android 模擬器和建立選項的相關資訊。
 
@@ -195,7 +195,7 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
                 });
             });
 ```
-既然我們已取得權杖，但我們最後會叫用 Graph API，並執行我們想要的搜尋查詢。 在 `authenticate` 定義下方，插入下列程式碼片段。
+既然已取得權杖，我們終於可以叫用圖形 API，並執行我們想要的搜尋查詢。 在 `authenticate` 定義下方，插入下列程式碼片段。
 
 ```javascript
 // Makes Api call to receive user list.
@@ -233,7 +233,7 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
 
    `cordova run windows`
 
-   __請注意__: 在第一次執行可能會要求您登入開發人員授權。 請參閱 [開發人員授權](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx) 如需詳細資訊。
+   __請注意__︰ 在第一次執行可能會要求您登入開發人員授權。 請參閱 [開發人員授權](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx) 如需詳細資訊。
 
 
 ##### 在 Windows Phone 8.1 建置和執行應用程式
@@ -249,7 +249,7 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
 
    在預設模擬器上執行：`cordova emulate android`
 
-   __請注意__: 請確定您已建立模擬器執行個體使用 *AVD Manager* 如在 *必要條件* 一節。
+   __請注意__︰ 請確定您已建立模擬器執行個體使用 *AVD Manager* 如在 *必要條件* 一節。
 
    使用 `cordova run android --list` 若要查看所有可用的目標和 `cordova run android --target=<target_name>` 特定裝置或模擬器上執行應用程式 (例如，  `cordova run android --target="Nexus4_emulator"`)。
 
@@ -259,7 +259,7 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
 
    在預設模擬器上執行：`cordova emulate ios`
 
-   __請注意__: 請確定您有 `ios-sim` 模擬器上執行安裝套件。 請參閱 *必要條件* 一節以取得詳細資料。
+   __請注意__︰ 請確定您有 `ios-sim` 模擬器上執行安裝套件。 請參閱 *必要條件* 一節以取得詳細資料。
 
     Use `cordova run ios --list` to see all available targets and `cordova run ios --target=<target_name>` to run application on specific device or emulator (for example,  `cordova run android --target="iPhone-6"`).
 
@@ -270,4 +270,5 @@ Azure AD 只會發出權杖給已知的應用程式。 您必須先在租用戶�
 [使用 Azure AD 保護 Node.js Web API >>](active-directory-devquickstarts-webapi-nodejs.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
+
 

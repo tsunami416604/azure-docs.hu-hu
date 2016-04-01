@@ -21,7 +21,7 @@
 -   有效的 Azure 訂閱
 -   Replicon 租用戶
   
-完成此教學課程之後, 您已指派給 Replicon 的 Azure AD 使用者將能夠登入您的 Replicon 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成此教學課程之後, 您已指派給 Replicon 的 Azure AD 使用者將能夠登入您的 Replicon 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -57,7 +57,7 @@
 
 6.  在 **搜尋方塊**, ，型別 **Replicon**。
 
-    ![應用程式庫](./media/active-directory-saas-replicon-tutorial/IC777799.png "Application gallery")
+    ![應用程式資源庫](./media/active-directory-saas-replicon-tutorial/IC777799.png "Application gallery")
 
 7.  在 [結果] 窗格中，選取 **Replicon**, ，然後按一下 [ **完成** 加入應用程式。
 
@@ -76,15 +76,15 @@
 
     ![設定單一登入](./media/active-directory-saas-replicon-tutorial/IC777802.png "Configure single sign-on")
 
-3.  在 **設定應用程式 URL** 頁面上，執行下列步驟:
+3.  在 **設定應用程式 URL** 頁面上，執行下列步驟 ︰
 
     ![設定應用程式 URL](./media/active-directory-saas-replicon-tutorial/IC777803.png "Configure app URL")
 
-    1.  在 **Replicon 登入 URL** 文字方塊中，輸入您的 Replicon 租用戶 URL (例如: *https://na2.replicon.com/company/saml2/sp-sso/post*)。
-    2.  在 **Replicon 回覆 URL** 文字方塊中，輸入您的 Replicon **AssertionConsumerService** URL (例如: *https://global.replicon.com/! saml2/公司/sso/post/*)。  
+    1.  在 **Replicon 登入 URL** 文字方塊中，輸入您的 Replicon 租用戶 URL (例如 ︰ *https://na2.replicon.com/company/saml2/sp-sso/post*)。
+    2.  在 **Replicon 回覆 URL** 文字方塊中，輸入您的 Replicon **AssertionConsumerService** URL (例如 ︰ *https://global.replicon.com/ ！ saml2/公司/sso/post/*)。  
 
         >[AZURE.NOTE] 您可以從 Replicon 中繼資料取得 URL:
-        **https://global.replicon.com/! / saml2/\< YourCompanyKey\ >**。
+        **https://global.replicon.com/ ！ / saml2/\< YourCompanyKey\ >**。
 
     3.  按一下 [ **下一步**
 
@@ -98,9 +98,9 @@
 
     ![啟用 SAML 驗證](./media/active-directory-saas-replicon-tutorial/IC777805.png "Enable SAML authentication")
 
-    1.  若要顯示 **EnableSAML Authentication2** ] 對話方塊中，下列附加至您的 URL，公司金鑰:  
+    1.  若要顯示 **EnableSAML Authentication2** ] 對話方塊中，下列附加至您的 URL，公司金鑰 ︰  
         **/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**  
-        下圖顯示完整的 URL 結構描述:  
+        下圖顯示完整的 URL 結構描述 ︰  
         **https://na2.replicon.com/ \<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**
     2.  按一下 [ **+** 展開 **v20Configuration** 一節。
     3.  按一下 [ **+** 展開 **metaDataConfiguration** 一節。
@@ -126,7 +126,7 @@
 
     ![新增使用者](./media/active-directory-saas-replicon-tutorial/IC777807.png "Add User")
 
-4.  在 **使用者設定檔** 區段中，執行下列步驟:
+4.  在 **使用者設定檔** 區段中，執行下列步驟 ︰
 
     ![使用者設定檔](./media/active-directory-saas-replicon-tutorial/IC777808.png "User profile")
 
@@ -155,3 +155,4 @@
     ![是](./media/active-directory-saas-replicon-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

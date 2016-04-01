@@ -12,3 +12,4 @@
     ![](./media/mobile-services-windows-universal-test-app/mobile-quickstart-completed-wp8.png)
     
     請注意，從先前步驟中儲存的資料，會在應用程式啟動後從行動服務載入。
+

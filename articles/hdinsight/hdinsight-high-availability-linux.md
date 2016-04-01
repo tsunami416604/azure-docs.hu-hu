@@ -31,7 +31,7 @@ HDInsight 叢集提供次要的前端節點，在主要節點失敗時，可讓�
 
 > [AZURE.IMPORTANT] 這兩個前端節點會同時為作用中和在叢集內執行。 某些服務，例如 HDFS 或 YARN，在任何給定的時間僅能在其中一個前端節點上為「作用中」(而在其他前端節點上為「待命」)。 HiveServer2 或 Hive MetaStore 等其他服務可同時在這兩個前端節點上作用。
 
-[ZooKeeper](http://zookeeper.apache.org/ ) 節點 (Zk) 用於前置選擇的前端節點上的主要服務，以確保服務、 資料 (背景工作) 節點和閘道器知道哪一個前端節點正執行於主要服務。
+[ZooKeeper](http://zookeeper.apache.org/ ) 節點 (Zk) 用於前置選擇的前端節點上的主要服務，以確保服務、 資料 （背景工作） 節點和閘道器知道哪一個前端節點正執行於主要服務。
 
 ## 存取前端節點
 
@@ -61,13 +61,13 @@ Ambari Web UI 或 Ambari REST API 可用來檢查在前端節點執行的服務�
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-* 取代 **密碼** 與 HTTP 使用者 (管理員) 帳戶的密碼
+* 取代 **密碼** 與 HTTP 使用者 （管理員） 帳戶的密碼
 
 * 取代 **CLUSTERNAME** 與叢集名稱
 
 * 取代 **SERVICENAME** 的服務，以檢查的狀態名稱
 
-例如，若要檢查的狀態 **HDFS** 上名為叢集的服務 **mycluster**, ，密碼為 **密碼**, ，您將使用下列:
+例如，若要檢查的狀態 **HDFS** 上名為叢集的服務 **mycluster**, ，密碼為 **密碼**, ，您將使用下列 ︰
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
@@ -140,13 +140,13 @@ Ambari Web UI 是在 https://CLUSTERNAME.azurehdinsight.net 可檢視。 取代 
 
 建立新的叢集時，您可以指定該節點的大小。 下列資訊提供如何指定大小使用 [Azure 入口網站][preview-portal], ，[PowerShell][azure-powershell], ，而 [Azure CLI][azure-cli]:
 
-* **Azure 入口網站**: 在建立新的叢集時，您可以選擇設定 (定價層]) 的大小標頭和資料 (背景工作) 的叢集節點:
+* **Azure 入口網站**︰ 在建立新的叢集時，您可以選擇設定 （定價層]） 的大小標頭和資料 （背景工作） 的叢集節點 ︰
 
     ![可選取節點大小的 [叢集映像建立精靈]](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure CLI**: 當使用 `azure hdinsight cluster create` 命令時，您可以設定前端節點使用的大小 `--headNodeSize` 參數。
+* **Azure CLI**︰ 當使用 `azure hdinsight cluster create` 命令時，您可以設定前端節點使用的大小 `--headNodeSize` 參數。
 
-* **Azure PowerShell**: 當使用 `New-AzureRmHDInsightCluster` 指令程式，您可以設定前端節點使用的大小 `-HeadNodeVMSize` 參數。
+* **Azure PowerShell**︰ 當使用 `New-AzureRmHDInsightCluster` 指令程式，您可以設定前端節點使用的大小 `-HeadNodeVMSize` 參數。
 
 ##後續步驟
 
@@ -165,4 +165,5 @@ Ambari Web UI 是在 https://CLUSTERNAME.azurehdinsight.net 可檢視。 取代 
 [preview-portal]: https://portal.azure.com/
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
+
 

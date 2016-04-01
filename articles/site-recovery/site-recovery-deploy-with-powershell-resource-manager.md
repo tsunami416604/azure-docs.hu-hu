@@ -261,3 +261,4 @@ Azure PowerShell 是個模組，其提供了各種 Cmdlet 來透過 Windows Powe
 3. 完成測試容錯移轉
 
         $TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
+

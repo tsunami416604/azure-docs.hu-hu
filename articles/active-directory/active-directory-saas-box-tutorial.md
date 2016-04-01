@@ -27,7 +27,7 @@
 -   有效的 Azure 訂閱
 -   Box 中的測試租用戶
   
-完成本教學課程之後, 您已指派給] 方塊中的 Azure AD 使用者將能夠登入方塊公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)
+完成本教學課程之後, 您已指派給] 方塊中的 Azure AD 使用者將能夠登入方塊公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -89,7 +89,7 @@
 
     ![設定單一登入](./media/active-directory-saas-box-tutorial/IC769539.png "Configure single sign-on")
 
-3.  在 **設定應用程式 URL** 頁面上，於 **Box 租用戶 URL** 文字方塊中，輸入您的 Box 租用戶 URL (例如: https://<mydomainname>。 box.com)，然後按一下 [ **下一步**。
+3.  在 **設定應用程式 URL** 頁面上，於 **Box 租用戶 URL** 文字方塊中，輸入您的 Box 租用戶 URL (例如 ︰ https://<mydomainname>。 box.com)，然後按一下 [ **下一步**。
 
     ![設定應用程式 URL](./media/active-directory-saas-box-tutorial/IC669826.png "Configure app URL")
 
@@ -154,3 +154,4 @@
 
 * [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](active-directory-saas-tutorial-list.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](active-directory-appssoaccess-whatis.md)
+

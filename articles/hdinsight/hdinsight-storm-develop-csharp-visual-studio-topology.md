@@ -78,11 +78,11 @@ HDInsight Tools for Visual Studio 提供下列範本::
 
 4.  建立專案之後，您應該會有下列檔案：
 
-    -   **Program.cs**: 這會定義您專案的拓撲。 請注意，預設會建立含有一個 Spout 和一個 Bolt 的預設拓撲。
+    -   **Program.cs**︰ 這會定義您專案的拓撲。 請注意，預設會建立含有一個 Spout 和一個 Bolt 的預設拓撲。
 
-    -   **Spout.cs**: 發出亂數的範例 spout。
+    -   **Spout.cs**︰ 發出亂數的範例 spout。
 
-    -   **Bolt.cs**: 保留 spout 所發出的數字之計數的範例 bolt。
+    -   **Bolt.cs**︰ 保留 spout 所發出的數字之計數的範例 bolt。
 
     在專案建立過程中，會從 NuGet 下載最新的 [SCP.NET 封裝](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/)
 
@@ -92,11 +92,11 @@ HDInsight Tools for Visual Studio 提供下列範本::
 
 1.  開啟 **Spout.cs**。 Spout 是用來讀取來自外部來源之拓撲中的資料。 Spout 的主要元件如下：
 
-    -   **NextTuple**: 允許 spout 發出新的 tuple 時，由 Storm 所呼叫。
+    -   **NextTuple**︰ 允許 spout 發出新的 tuple 時，由 Storm 所呼叫。
 
-    -   **Ack** (僅限交易式拓撲): 處理針對從此 spout 傳送的 tuple 拓撲中其他元件所起始的認可。 認可 Tuple 可讓 Spout 知道下游元件已順利處理 Tuple。
+    -   **Ack** （僅限交易式拓撲） ︰ 處理針對從此 spout 傳送的 tuple 拓撲中其他元件所起始的認可。 認可 Tuple 可讓 Spout 知道下游元件已順利處理 Tuple。
 
-    -   **失敗** (僅限交易式拓撲): 處理無法處理拓撲中的其他元件的 tuple。 這提供機會來重新發出 Tuple，以重新處理 Tuple。
+    -   **失敗** （僅限交易式拓撲） ︰ 處理無法處理拓撲中的其他元件的 tuple。 這提供機會來重新發出 Tuple，以重新處理 Tuple。
 
 2.  內容取代 **Spout** 取代為下列類別。 這會建立將句子隨機發出至拓撲的 Spout。
 
@@ -175,15 +175,15 @@ HDInsight Tools for Visual Studio 提供下列範本::
 
 2.  在 **方案總管] 中**, ，以滑鼠右鍵按一下專案，然後選取 **新增** > **新項目**。 從清單中選取 **Storm Bolt**, ，並輸入 **Splitter.cs** 做為名稱。 重複此動作來建立第二個 bolt 名為 **Counter.cs**。
 
-    -   **Splitter.cs**: 實作 bolt，以將句子分成個別單字並發出一串新文字。
+    -   **Splitter.cs**︰ 實作 bolt，以將句子分成個別單字並發出一串新文字。
 
-    -   **Counter.cs**: 實作 bolt，以計算每個單字並發出一串新文字和每個單字的計數。
+    -   **Counter.cs**︰ 實作 bolt，以計算每個單字並發出一串新文字和每個單字的計數。
 
     > [AZURE.NOTE] 這些 bolt 只會讀取和寫入資料流，但您也可以使用 bolt 與來源，例如資料庫或服務進行通訊。
 
-3.  開啟 **Splitter.cs**。 請注意，它只有一個方法的預設值: **Execute**。 這是在 Bolt 收到要處理的 Tuple 時所呼叫。 此時，您可以讀取和處理內送 Tuple，以及發出輸出 Tuple。
+3.  開啟 **Splitter.cs**。 請注意，它只有一個方法的預設值 ︰ **Execute**。 這是在 Bolt 收到要處理的 Tuple 時所呼叫。 此時，您可以讀取和處理內送 Tuple，以及發出輸出 Tuple。
 
-4.  內容取代 **分隔** 類別取代下列程式碼:
+4.  內容取代 **分隔** 類別取代下列程式碼 ︰
 
     ```
     private Context ctx;
@@ -237,7 +237,7 @@ HDInsight Tools for Visual Studio 提供下列範本::
 
     請用一些時間閱讀註解，以了解此程式碼的作用。
 
-5.  開啟 **Counter.cs** 和類別內容取代為下列:
+5.  開啟 **Counter.cs** 和類別內容取代為下列 ︰
 
     ```
     private Context ctx;
@@ -313,7 +313,7 @@ Spout 和 Bolt 是以圖形方式排列，用以定義資料在元件之間的�
 
 因為字數會本機保留在 Counter 執行個體中，所以我們想要確保特定單字流向相同的 Counter Bolt 執行個體，因此只能有一個執行個體追蹤特定單字。 但是針對 Splitter Bolt，哪個 Bolt 收到哪個句子並不重要，因此我們只想要將句子負載平衡至那些執行個體。
 
-開啟 **Program.cs**。 重要的方法是 **ITopologyBuilder**, ，用來定義拓撲提交至 Storm。 內容取代 **ITopologyBuilder** 以下列程式碼以實作先前所述的拓撲:
+開啟 **Program.cs**。 重要的方法是 **ITopologyBuilder**, ，用來定義拓撲提交至 Storm。 內容取代 **ITopologyBuilder** 以下列程式碼以實作先前所述的拓撲 ︰
 
 ```
     // Create a new topology named 'WordCount'
@@ -384,7 +384,7 @@ Spout 和 Bolt 是以圖形方式排列，用以定義資料在元件之間的�
 
 3.  已順利提交拓撲， **Storm 拓撲** 叢集應該會出現。 選取 **WordCount** 拓樸，以檢視執行中拓撲的相關資訊。
 
-    > [AZURE.NOTE] 您也可以檢視 **Storm 拓撲** 從 **伺服器總管**: 展開 **Azure** > **HDInsight**, ，以滑鼠右鍵按一下 Storm on HDInsight 叢集，然後選取 **檢視 Storm 拓撲**。
+    > [AZURE.NOTE] 您也可以檢視 **Storm 拓撲** 從 **伺服器總管**︰ 展開 **Azure** > **HDInsight**, ，以滑鼠右鍵按一下 Storm on HDInsight 叢集，然後選取 **檢視 Storm 拓撲**。
 
     使用 Spout 或 Bolt 的連結以檢視這些元件的資訊。 將會針對每個選取的項目開啟新的視窗。
 
@@ -400,11 +400,11 @@ Spout 和 Bolt 是以圖形方式排列，用以定義資料在元件之間的�
 
 -   **中繼資料快取**: spout 必須儲存所發出，以便擷取和發生失敗時再次發出資料之資料的相關中繼資料。 此範例所發出的資料太少，因此為了重新執行，每個 Tuple 的原始資料都會儲存在字典中。
 
--   **Ack**: 拓撲中的每個 bolt 都可以呼叫 `this.ctx.Ack(tuple)` 來認可它已順利處理 tuple。 所有 Bolt 都已認可 Tuple 之後，即會叫用 Spout 的 `Ack` 方法。 這可讓 Spout 移除用於重新執行的快取資料，因為已完全處理資料。
+-   **Ack**︰ 拓撲中的每個 bolt 都可以呼叫 `this.ctx.Ack(tuple)` 來認可它已順利處理 tuple。 所有 Bolt 都已認可 Tuple 之後，即會叫用 Spout 的 `Ack` 方法。 這可讓 Spout 移除用於重新執行的快取資料，因為已完全處理資料。
 
--   **失敗**: 每個 bolt 都可以呼叫 `this.ctx.Fail(tuple)` ，表示處理失敗的 tuple。 這項失敗會傳播至 Spout 的 `Fail` 方法，在其中，可以使用快取的中繼資料來重新執行 Tuple。
+-   **失敗**︰ 每個 bolt 都可以呼叫 `this.ctx.Fail(tuple)` ，表示處理失敗的 tuple。 這項失敗會傳播至 Spout 的 `Fail` 方法，在其中，可以使用快取的中繼資料來重新執行 Tuple。
 
--   **序列識別碼**: 發出 tuple 時，可以指定序列識別碼。 這應該是識別用於重新執行 (Ack 和 Fail) 處理之 Tuple 的值。 例如，在 spout **Storm 範例** 發出資料時，專案會使用下列:
+-   **序列識別碼**︰ 發出 tuple 時，可以指定序列識別碼。 這應該是識別用於重新執行 (Ack 和 Fail) 處理之 Tuple 的值。 例如，在 spout **Storm 範例** 發出資料時，專案會使用下列 ︰
 
     ```
     this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);
@@ -420,11 +420,11 @@ HDInsight Tools for Visual Studio 也可以用來建立混合式拓撲，其中�
 
 針對範例混合式拓撲，建立新的專案，然後選取 **Storm 混合式範例**。 這會建立完整加上註解的範例，而此範例包含示範下列項目的數種拓撲：
 
--   **Java spout** 和 **C# bolt**: 定義於 **HybridTopology_javaSpout_csharpBolt**
+-   **Java spout** 和 **C# bolt**︰ 定義於 **HybridTopology_javaSpout_csharpBolt**
 
     -   交易式版本定義於 **HybridTopologyTx_javaSpout_csharpBolt**
 
--   **C# spout** 和 **Java bolt**: 定義於 **HybridTopology_csharpSpout_javaBolt**
+-   **C# spout** 和 **Java bolt**︰ 定義於 **HybridTopology_csharpSpout_javaBolt**
 
     -   交易式版本定義於 **HybridTopologyTx_csharpSpout_javaBolt**
 
@@ -446,9 +446,9 @@ HDInsight Tools for Visual Studio 也可以用來建立混合式拓撲，其中�
 
 SCP.Net 版本 0.9.4.203 引進了專用於事件中樞 Spout (從事件中心讀取的 Java spout) 的新類別和方法。建立採用此 spout 的拓撲時，請使用下列方法：
 
--   **EventHubSpoutConfig** 類別: 建立物件，其中包含 spout 元件的組態
+-   **EventHubSpoutConfig** 類別 ︰ 建立物件，其中包含 spout 元件的組態
 
--   **TopologyBuilder.SetEventHubSpout** 方法: 將事件中樞 Spout 元件加入至拓撲
+-   **TopologyBuilder.SetEventHubSpout** 方法 ︰ 將事件中樞 Spout 元件加入至拓撲
 
 > [AZURE.NOTE] 雖然這些可讓您輕鬆地使用事件中樞 Spout 於其他 Java 元件，您仍然必須使用 CustomizedInteropJSONSerializer 來序列化 spout 所產生的資料。
 
@@ -460,7 +460,7 @@ SCP.Net 版本 0.9.4.203 引進了專用於事件中樞 Spout (從事件中心�
 
 2. 從封裝管理員中選取 **更新**。 如果有可用的更新，它會列出。 按一下 [ **更新** 按鈕套件予以安裝。
 
-> [AZURE.IMPORTANT] 如果您的專案建立的其中一個未使用 NuGet 進行封裝更新的 SCP.NET 舊版，您必須執行下列步驟來更新為新版本:
+> [AZURE.IMPORTANT] 如果您的專案建立的其中一個未使用 NuGet 進行封裝更新的 SCP.NET 舊版，您必須執行下列步驟來更新為新版本 ︰
 >
 > 1. 在 **方案總管] 中**, ，以滑鼠右鍵按一下專案，然後選取 **管理 NuGet 封裝**。
 > 2. 使用 **搜尋** 欄位中搜尋，然後再新增， **Microsoft.SCP.Net.SDK** 至專案。
@@ -481,13 +481,13 @@ SCP.Net 版本 0.9.4.203 引進了專用於事件中樞 Spout (從事件中心�
 
 2.  在 **方案總管] 中**, ，以滑鼠右鍵按一下專案，然後選取 [ **新增** > **新項目**。 選取 **類別** 輸入 **LocalTest.cs** 與類別名稱。 最後，按一下 [ **新增**。
 
-3.  開啟 **LocalTest.cs** ，並新增下列 **使用** 上方的陳述式:
+3.  開啟 **LocalTest.cs** ，並新增下列 **使用** 上方的陳述式 ︰
 
     ```
     using Microsoft.SCP;
     ```
 
-4.  使用下列做為內容 **LocalTest** 類別:
+4.  使用下列做為內容 **LocalTest** 類別 ︰
 
     ```
     // Drives the topology components
@@ -574,7 +574,7 @@ SCP.Net 版本 0.9.4.203 引進了專用於事件中樞 Spout (從事件中心�
 
     請用一些時間閱讀程式碼註解。 此程式碼使用 **LocalContext** 來執行元件中開發環境，以及它保存到本機磁碟機上的文字檔案的元件之間的資料流。
 
-5.  開啟 **Program.cs** 並加入下列內容以 **Main** 方法:
+5.  開啟 **Program.cs** 並加入下列內容以 **Main** 方法 ︰
 
     ```
     Console.WriteLine("Starting tests");
@@ -657,4 +657,5 @@ Context.Logger.Info("Component started");
 **Apache HBase on HDInsight**
 
 -   [開始使用 HBase on HDInsight](hdinsight-hbase-get-started.md)
+
 

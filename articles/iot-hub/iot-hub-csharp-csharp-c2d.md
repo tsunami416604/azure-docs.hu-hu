@@ -31,7 +31,7 @@ Azure IoT 中心是一項完全受管理的服務，可讓數百萬個 IoT 裝�
 * **SimulatedDevice**, ，應用程式中建立的修改的版本 [Get started with IoT Hub], ，這會連線至您的 IoT 中心及接收定域機組對裝置的訊息。
 * **SendCloudToDevice**, ，它將透過 IoT 中心與模擬裝置定域機組對裝置訊息傳送，但收到其傳遞 aknowledgment。
 
-> [AZURE.NOTE] IoT 中心都有支援許多裝置平台和語言 (包括 C、 Java 和 Javascript) 雖然 Azure IoT 裝置 Sdk 的 SDK。 請參閱 [Azure IoT Developer Center] 的逐步指示來連接您的裝置，本教學課程的程式碼，和通常 Azure IoT 中心。 適用於 Java 和 Node 的 Azure IoT 服務 SDK 即將推出。
+> [AZURE.NOTE] IoT 中心都有支援許多裝置平台和語言 （包括 C、 Java 和 Javascript） 雖然 Azure IoT 裝置 Sdk 的 SDK。 請參閱 [Azure IoT Developer Center] 的逐步指示來連接您的裝置，本教學課程的程式碼，和通常 Azure IoT 中心。 適用於 Java 和 Node 的 Azure IoT 服務 SDK 即將推出。
 
 若要完成本教學課程，您需要下列項目：
 
@@ -80,4 +80,5 @@ Azure IoT 中心是一項完全受管理的服務，可讓數百萬個 IoT 裝�
 [Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
+
 

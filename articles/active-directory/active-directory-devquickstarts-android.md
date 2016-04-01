@@ -44,7 +44,7 @@
 
 **我要做什麼？**
 
-*Microsoft Active Directory 支援加入兩種類型的應用程式。 Web API 提供服務給可存取這些 Web API 的使用者和應用程式 (無論是在 Web 或在裝置上執行的應用程式)。 在此步驟中，您要註冊在本機執行且用來測試此範例的 Web API。 這個 Web API 通常是 REST 服務，提供您想要應用程式存取的功能。 Microsoft Azure Active Directory 可以保護任何端點!*
+*Microsoft Active Directory 支援加入兩種類型的應用程式。 Web API 提供服務給可存取這些 Web API 的使用者和應用程式 (無論是在 Web 或在裝置上執行的應用程式)。 在此步驟中，您要註冊在本機執行且用來測試此範例的 Web API。 這個 Web API 通常是 REST 服務，提供您想要應用程式存取的功能。 Microsoft Azure Active Directory 可以保護任何端點 ！*
 
 *在本範例中，我們假設您正要註冊上述的 TODO REST API，但這適用於任何您想要 Azure Active Directory 保護的 Web API。*
 
@@ -262,7 +262,7 @@ dependencies {
 
   Callback 會有一個提供 accesstoken、過期日期和 idtoken 資訊的 AuthenticationResult 物件。
 
-選擇性:  **acquireTokenSilent**
+選擇性 ︰  **acquireTokenSilent**
 
 您可以呼叫 **acquireTokenSilent** 來處理快取和權杖重新整理。 它也提供同步處理版本。 它接受 userid 做為參數。
 
@@ -286,7 +286,7 @@ dependencies {
  ```
  如果帳戶有效，則會傳回 broker 使用者。
 
- 您的應用程式資訊清單應該有使用 AccountManager 帳戶的權限: http://developer.android.com/reference/android/accounts/AccountManager.html
+ 您的應用程式資訊清單應該有使用 AccountManager 帳戶的權限 ︰ http://developer.android.com/reference/android/accounts/AccountManager.html
 
  * GET_ACCOUNTS
  * USE_CREDENTIALS
@@ -309,11 +309,11 @@ Broker 元件隨附於 Microsoft Intune 的公司入口網站應用程式。 帳
 
 ADFS 不視為正式的 STS，因此您需要開啟執行個體探索，並在 AuthenticationContext 建構函式上傳遞 false。
 
-授權單位 url 需要 STS 執行個體和租用戶名稱: https://login.windows.net/yourtenant.onmicrosoft.com
+授權單位 url 需要 STS 執行個體和租用戶名稱 ︰ https://login.windows.net/yourtenant.onmicrosoft.com
 
 ### 查詢快取項目
 
-ADAL 在 SharedPrefrecens 中提供預設快取與一些簡單的快取查詢函式。 您可以從 AuthenticationContext，並取得目前的快取:
+ADAL 在 SharedPrefrecens 中提供預設快取與一些簡單的快取查詢函式。 您可以從 AuthenticationContext，並取得目前的快取 ︰
 ```Java
  ITokenCacheStore cache = mContext.getCache();
 ```
@@ -386,7 +386,7 @@ private syncronized void writeToLogFile(Context ctx, String msg) {
 + Info(參考)
 + Verbose(詳細資料)
 
-您設定記錄層級如下:
+您設定記錄層級如下 ︰
 ```Java
 Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
  ```
@@ -397,7 +397,7 @@ Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
  ```
   adb logcat > "C:\logmsg\logfile.txt"
  ```
- Adb 命令的其他更多的範例: https://developer.android.com/tools/debugging/debugging-log.html#startingLogcat
+ Adb 命令的其他更多的範例 ︰ https://developer.android.com/tools/debugging/debugging-log.html#startingLogcat
 
 #### 網路追蹤
 
@@ -422,7 +422,7 @@ AuthenticationParameters 類別提供從 Oauth2 持有者挑戰取得 authorizat
 
 ### Web 檢視中的工作階段 Cookie
 
-在應用程式關閉後，Android Web 檢視不會清除工作階段 Cookie。 您可以使用下列範例程式碼來處理這:
+在應用程式關閉後，Android Web 檢視不會清除工作階段 Cookie。 您可以使用下列範例程式碼來處理這 ︰
 ```java
 CookieSyncManager.createInstance(getApplicationContext());
 CookieManager cookieManager = CookieManager.getInstance();
@@ -454,3 +454,4 @@ Adal 1.1.0 版支援 NTLM 對話方塊，此對話方塊是透過 WebViewClient 
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
+

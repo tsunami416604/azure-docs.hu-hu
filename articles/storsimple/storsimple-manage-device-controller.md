@@ -65,7 +65,7 @@
 
     >[AZURE.NOTE] 如果您無法看到 **管理控制器**, ，則您需要安裝更新。 如需詳細資訊，請參閱 [更新您的 StorSimple 裝置](storsimple-update-device.md)。
 
-1. 在 **變更控制器設定** 對話方塊方塊中，執行下列動作:
+1. 在 **變更控制器設定** 對話方塊方塊中，執行下列動作 ︰
 
 
     - From the **Select Controller** drop-down list, select the controller that you want to manage. The options are Controller 0 and Controller 1. These controllers are also identified as active or passive.
@@ -87,9 +87,9 @@
 |選取項目 #|如果您選擇...|就會發生這個狀況。|
 |---|---|---|
 |1.|重新啟動被動控制器。|會建立工作以重新啟動控制器，且您會在工作成功建立之後收到通知。 這樣會起始控制器重新啟動。 您可以藉由存取監視重新啟動程序 **服務 > 儀表板 > 檢視作業記錄檔** ，然後以服務的特定參數篩選。|
-|2.|重新啟動主動控制器。|您會看到下列警告：「如果您重新啟動主動控制器，裝置將容錯移轉到被動控制器。 您要繼續嗎？」 </br>如果您選擇繼續進行這項作業，接下來的步驟將會等於重新啟動被動控制器所使用 (請參閱選取項目 1)。|
-|3.|關閉被動控制器。|您會看到下列訊息：「關閉完成之後，您必須按下控制器上的電源按鈕以將其開啟。 您確定要關閉此控制器嗎？」 </br>如果您選擇繼續進行這項作業，接下來的步驟將會等於重新啟動被動控制器所使用 (請參閱選取項目 1)。|
-|4.|關閉主動控制器。|您會看到下列訊息：「關閉完成之後，您必須按下控制器上的電源按鈕以將其開啟。 您確定要關閉此控制器嗎？」 </br>如果您選擇繼續進行這項作業，接下來的步驟將會等於重新啟動被動控制器所使用 (請參閱選取項目 1)。|
+|2.|重新啟動主動控制器。|您會看到下列警告：「如果您重新啟動主動控制器，裝置將容錯移轉到被動控制器。 您要繼續嗎？」 </br>如果您選擇繼續進行這項作業，接下來的步驟將會等於重新啟動被動控制器所使用 （請參閱選取項目 1）。|
+|3.|關閉被動控制器。|您會看到下列訊息：「關閉完成之後，您必須按下控制器上的電源按鈕以將其開啟。 您確定要關閉此控制器嗎？」 </br>如果您選擇繼續進行這項作業，接下來的步驟將會等於重新啟動被動控制器所使用 （請參閱選取項目 1）。|
+|4.|關閉主動控制器。|您會看到下列訊息：「關閉完成之後，您必須按下控制器上的電源按鈕以將其開啟。 您確定要關閉此控制器嗎？」 </br>如果您選擇繼續進行這項作業，接下來的步驟將會等於重新啟動被動控制器所使用 （請參閱選取項目 1）。|
 
 
 #### 重新啟動或關閉 Windows PowerShell for StorSimple 中的控制器
@@ -132,21 +132,21 @@
 
 <!--#### To shut down a StorSimple device in Windows PowerShell for StorSimple
 
-1. 連接至 StorSimple 裝置序列主控台中的步驟 [使用 PuTTY 來連接至裝置序列主控台](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-serial-console)。
+1. Connect to the serial console of the StorSimple device by following the steps in [Use PuTTY to connect to the device serial console](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-serial-console).
 
-1. 在序列主控台功能表中，確認從您所連接的控制器是被動控制器的橫幅訊息。 如果您連接到主動控制器，中斷此控制器，並連接到另一個控制器。
+1. In the serial console menu, verify from the banner message that the controller you are connected to is the passive controller. If you are connected to the active controller, disconnect from this controller and connect to the other controller.
 
-1. 在序列主控台功能表中，選擇選項 1 **完整存取權登入**。
+1. In the serial console menu, choose option 1, **log in with full access**.
 
-1. 在出現提示時輸入：
+1. At the prompt, type:
 
     `Stop-HCSController`
 
-    這應該關閉目前的控制器。 若要確認關機是否已完成，請檢查裝置的背面。 控制器狀態 LED 應該是紅色。
+    This should shut down the current controller. To verify whether the shutdown has finished, check the back of the device. The controller status LED should be solid red.
 
-1. 重複步驟 1 到 4，以連接到主動控制器，然後關閉。
+1. Repeat steps 1 through 4 to connect to the active controller and then shut it down.
 
-1. 兩個控制器都關閉之後，兩者的狀態 Led 應該閃爍的紅燈。 如果您需要將裝置完全關閉這一次，電源開關電源和冷卻模組 (Pcm) 為 OFF 位置。-->
+1. After both the controllers are completely shut down, the status LEDs on both should be blinking red. If you need to turn off the device completely at this time, flip the power switches on both Power and Cooling Modules (PCMs) to the OFF position.-->
 
 ## 將裝置重設為出廠預設設定。
 
@@ -177,25 +177,25 @@
 
 在本節中，我們摘要說明一些有關管理 StorSimple 裝置控制器的常見問題。
 
-**問:。**如果裝置上的兩個控制器都狀況良好且已開啟，而我重新啟動或關閉主動控制器，會發生什麼事？
+**問：** 如果裝置上的兩個控制器都狀況良好且已開啟，而我重新啟動或關閉主動控制器，會發生什麼事？
 
-**答:**如果裝置上的兩個控制器皆狀況良好且已開啟，您會收到確認提示。 您可以選擇：
+**答：** 如果裝置上的兩個控制器皆狀況良好且已開啟，您會收到確認提示。 您可以選擇：
 
 - **重新啟動主動控制器** – 您將會收到通知，重新啟動主動控制器將會導致裝置容錯移轉至被動控制器。 控制器將重新啟動。
 
 - **關閉主動控制器** – 您將會收到通知，關閉主動控制器將導致停機時間。 您也必須在按下裝置上的電源按鈕以開啟控制器。
 
-**問:。**如果裝置上的被動控制器無法使用或已關閉，而我重新啟動或關閉主動控制器，會發生什麼事？
+**問：** 如果裝置上的被動控制器無法使用或已關閉，而我重新啟動或關閉主動控制器，會發生什麼事？
 
-**答:**如果裝置上的被動控制器無法使用或已關閉，而您選擇：
+**答：** 如果裝置上的被動控制器無法使用或已關閉，而您選擇：
 
 - **重新啟動主動控制器** – 將會通知您繼續作業將會導致服務暫時中斷，系統會提示您進行確認。
 
 - **關閉主動控制器** – 您將通知您，繼續作業將導致停機時間，以及您必須按下電源按鈕來開啟裝置的一或兩個控制站上。 系統將提示您進行確認。
 
-**問:。**控制器重新啟動或關閉何時會無法進行？
+**問：** 控制器重新啟動或關閉何時會無法進行？
 
-**答:**重新啟動或關閉控制器可能會在下列情況下失敗：
+**答：** 重新啟動或關閉控制器可能會在下列情況下失敗：
 
 - 裝置更新進行中。
 
@@ -203,20 +203,21 @@
 
 - 控制器關閉已在進行中。
 
-**問:。**您如何判斷控制器已重新啟動或關閉？
+**問：** 您如何判斷控制器已重新啟動或關閉？
 
-**答:**您可以檢查 [維護] 頁面上的控制器狀態。 控制器狀態會指出控制器已重新啟動或關閉。 此外，如果控制器已重新啟動或關閉，[警示] 頁面會包含資訊警示。 控制器重新啟動和關閉作業也會記錄在作業記錄檔中。 如需有關作業記錄檔的詳細資訊，請移至 [檢視作業記錄檔](storsimple-service-dashboard.md#view-the-operations-logs)。
+**答：** 您可以檢查 [維護] 頁面上的控制器狀態。 控制器狀態會指出控制器已重新啟動或關閉。 此外，如果控制器已重新啟動或關閉，[警示] 頁面會包含資訊警示。 控制器重新啟動和關閉作業也會記錄在作業記錄檔中。 如需有關作業記錄檔的詳細資訊，請移至 [檢視作業記錄檔](storsimple-service-dashboard.md#view-the-operations-logs)。
 
-**問:。**控制器容錯移轉會不會對 I/O 造成任何影響？
+**問：** 控制器容錯移轉會不會對 I/O 造成任何影響？
 
-**答:**啟動器和主動控制器之間的 TCP 連接將會因為控制器容錯移轉而重設，但會在被動控制器繼續作業時重新建立。 在這項作業的過程中，啟動器與裝置之間的 I/O 活動中可能會有暫時的 (少於 30 秒) 暫停。
+**答：** 啟動器和主動控制器之間的 TCP 連接將會因為控制器容錯移轉而重設，但會在被動控制器繼續作業時重新建立。 在這項作業的過程中，啟動器與裝置之間的 I/O 活動中可能會有暫時的 (少於 30 秒) 暫停。
 
-**問:。**如何在控制器關閉並遭移除後，將控制器傳回給服務？
+**問：** 如何在控制器關閉並遭移除後，將控制器傳回給服務？
 
-**答:**若要將控制器傳回給服務，您必須將它插入底座中所述 [更換 StorSimple 裝置上的控制器模組](storsimple-controller-replacement.md)。
+**答：** 若要將控制器傳回給服務，您必須將它插入底座中所述 [更換 StorSimple 裝置上的控制器模組](storsimple-controller-replacement.md)。
 
 ## 後續步驟
 
 - 如果您遇到任何問題，您無法使用在本教學課程中，列出的程序來解決 StorSimple 裝置控制器 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md)。
 
 - 若要了解使用 StorSimple Manager 服務的詳細資訊，請移至 [使用 StorSimple Manager 服務來管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
+

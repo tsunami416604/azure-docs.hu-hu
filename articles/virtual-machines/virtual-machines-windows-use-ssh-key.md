@@ -58,17 +58,17 @@ description="了解如何在 Windows 電腦上產生並使用 SSH 金鑰來連�
 
 ### 使用 Msysgit ###
 
-1.  下載並安裝 msysgit 從下列位置: [http://msysgit.github.com/](http://msysgit.github.com/)
+1.  下載並安裝 msysgit 從下列位置 ︰ [http://msysgit.github.com/](http://msysgit.github.com/)
 2.  從安裝目錄執行 `msys` (例如 c:\msysgit\msys.exe)
 3.  輸入 `cd bin` 切換至 `bin` 目錄。
 
 
 ### 使用 GitHub for Windows ###
 
-1.  下載並安裝 GitHub for Windows，請從下列位置: [http://windows.github.com/](http://windows.github.com/)
+1.  下載並安裝 GitHub for Windows，請從下列位置 ︰ [http://windows.github.com/](http://windows.github.com/)
 2.  從 [開始] 功能表 > [所有程式] > [GitHub, Inc] 執行 Git Shell
 
-> [AZURE.NOTE] 執行時，您可能會遇到下列錯誤 `openssl` 上述命令:
+> [AZURE.NOTE] 執行時，您可能會遇到下列錯誤 `openssl` 上述命令 ︰
 
             Unable to load config info from /usr/local/ssl/openssl.cnf
     <!-- -->
@@ -89,7 +89,7 @@ description="了解如何在 Windows 電腦上產生並使用 SSH 金鑰來連�
 
 ###使用 Cygwin###
 
-1.  下載並安裝 Cygwin 從下列位置: [http://cygwin.com/](http://cygwin.com/)
+1.  下載並安裝 Cygwin 從下列位置 ︰ [http://cygwin.com/](http://cygwin.com/)
 2.  確定已安裝 OpenSSL 封裝及其所有的相依性。
 3.  執行 `cygwin`
 
@@ -112,7 +112,7 @@ description="了解如何在 Windows 電腦上產生並使用 SSH 金鑰來連�
 
 ## 建立 Putty 的 PPK ##
 
-1. 下載並安裝 Puttygen 從下列位置: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. 下載並安裝 Puttygen 從下列位置 ︰ [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
 2. Puttygen 可能無法讀取稍早建立的私密金鑰 (`myPrivateKey.key`)。 執行下列命令以將它轉譯成 Puttygen 可認得的 RSA 私密金鑰：
 
@@ -133,7 +133,7 @@ description="了解如何在 Windows 電腦上產生並使用 SSH 金鑰來連�
 
 7. 按一下 [ **[確定]**
 
-8. 按一下 [ **Save Private Key**, ，強調顯示在下面的螢幕擷取畫面:
+8. 按一下 [ **Save Private Key**, ，強調顯示在下面的螢幕擷取畫面 ︰
 
     ![linuxputtyprivatekey](./media/virtual-machines-linux-use-ssh-key/linuxputtygenprivatekey.png)
 
@@ -142,7 +142,7 @@ description="了解如何在 Windows 電腦上產生並使用 SSH 金鑰來連�
 
 ## 使用 Putty 連線到 Linux 機器 ##
 
-1.  下載並安裝 putty 從下列位置: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1.  下載並安裝 putty 從下列位置 ︰ [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2.  執行 putty.exe
 3.  使用管理入口網站的 IP 來填入主機名稱：
 
@@ -154,3 +154,4 @@ description="了解如何在 Windows 電腦上產生並使用 SSH 金鑰來連�
 
 5.  按一下 [ **開啟** 連線至虛擬機器
  
+

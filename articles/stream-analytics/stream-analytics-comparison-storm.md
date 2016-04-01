@@ -34,7 +34,7 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    <strong>Azure 串流分析</strong>
+                    <strong>Azure 資料流分析</strong>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -63,7 +63,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>Microsoft 提供支援</strong>
+                    <strong>Microsoft 支援</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -122,7 +122,7 @@
                     Stream Analytics is priced by volume of data processed and the number of streaming units (per hour the job is running) required.
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/en-us/pricing/details/stream-analytics/">如需進一步的價格資訊，請參閱這裡。</a>
+                    <a href="http://azure.microsoft.com/en-us/pricing/details/stream-analytics/">進一步的價格資訊可以在此找到。</a>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -130,13 +130,13 @@
                     For Apache Storm on HDInsight, the unit of purchase is cluster-based, and is charged based on the time the cluster is running, independent of jobs deployed.
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/en-us/pricing/details/hdinsight/">如需進一步的價格資訊，請參閱這裡。</a>
+                    <a href="http://azure.microsoft.com/en-us/pricing/details/hdinsight/">進一步的價格資訊可以在此找到。</a>
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
-## 每個分析平台的編寫功能 ##
+## 撰寫每個分析平台 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -147,7 +147,7 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    <strong>Azure 串流分析</strong>
+                    <strong>Azure 資料流分析</strong>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -159,7 +159,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>功能：SQL DSL</strong>
+                    <strong>功能 ︰ SQL DSL</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -176,7 +176,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>功能：暫時運算子</strong>
+                    <strong>功能 ︰ 暫時運算子</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -193,7 +193,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>開發體驗</strong>
+                    <strong>開發經驗</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -227,7 +227,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>UDF (使用者定義函數) 支援</strong>
+                    <strong>支援 UDF （使用者定義函數）</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -244,7 +244,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>可延伸 - 自訂程式碼 </strong>
+                    <strong>可延伸-自訂程式碼 </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -271,7 +271,7 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    <strong>Azure 串流分析</strong>
+                    <strong>Azure 資料流分析</strong>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -283,7 +283,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                 <strong>輸入資料來源</strong>
+                 <strong>輸入的資料來源</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -360,7 +360,7 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    <strong>Azure 串流分析</strong>
+                    <strong>Azure 資料流分析</strong>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -398,7 +398,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>監視 (統計資料、計數器等)</strong>
+                    <strong>監視 （統計資料、 計數器等）</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -418,7 +418,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>延展性</strong>
+                    <strong>擴充性</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -489,7 +489,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>透過具有 SLA 保證所保障的高可用性服務提供商務持續性</strong>
+                    <strong>透過具有 SLA 保證所保障的高可用性服務的業務持續性</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -511,7 +511,7 @@
         </tr>
     </tbody>
 </table>
-## 進階功能 ##
+## 進階的功能 ##
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -522,7 +522,7 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    <strong>Azure 串流分析</strong>
+                    <strong>Azure 資料流分析</strong>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -534,7 +534,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>事件延遲和順序錯誤的處理</strong>
+                    <strong>延遲和順序的事件處理</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -576,7 +576,7 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    By configuring published Azure Machine Learning models as functions during ASA job creation <a href="http://blogs.msdn.com/b/streamanalytics/archive/2015/05/24/real-time-scoring-of-streaming-data-using-machine-learning-models.aspx">(私人預覽中)</a>.
+                    By configuring published Azure Machine Learning models as functions during ASA job creation <a href="http://blogs.msdn.com/b/streamanalytics/archive/2015/05/24/real-time-scoring-of-streaming-data-using-machine-learning-models.aspx">（私人預覽中）</a>。
                 </p>
             </td>
             <td width="246" valign="top">
@@ -587,4 +587,5 @@
         </tr>
     </tbody>
 </table>
+
 

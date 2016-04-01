@@ -60,7 +60,7 @@
 ## 4.下載程式碼
 
 本教學課程的程式碼會維護 [GitHub 上](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet)。  當您建置範例，您可以 
-[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip) 或再製基本架構:
+[下載為.zip 的基本架構專案](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip) 或再製基本架構 ︰
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git
@@ -70,14 +70,14 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 `complete` 相同的儲存機制分支。
 
 下載範例程式碼後，請開啟 Visual Studio `.sln` 檔案開始進行。  您會看到方案中有兩個專案：`TaskClient` 專案和 `TaskService` 專案。   `TaskClient` 是 WPF 
-與使用者互動的桌面應用程式。  `TaskService` 是應用程式的後端 Web API，儲存每個使用者的待辦事項清單。  同時 `TaskClient` 和 `TaskService` 會由單一 **應用程式識別碼**
+與使用者互動的桌面應用程式。   `TaskService` 是應用程式的後端 web API 儲存每個使用者的待辦事項清單。  同時 `TaskClient` 和 `TaskService` 會由單一 **應用程式識別碼**
 在此情況下，因為它們都包含一個邏輯應用程式。 
 
 ## 5.設定工作服務
 
 當 `TaskService` 收到 `TaskClient` 的要求時，它會檢查存取權杖是否有效可驗證要求。  若要驗證的存取語彙基元 
 您必須提供 `TaskService` 一些您的應用程式相關資訊。  在 `TaskService` 專案中，開啟 `web.config` 根目錄中的檔案 
-在專案中的值取代和 `<appSettings>` 區段:
+在專案中的值取代和 `<appSettings>` 區段 ︰
 
 ```
 <appSettings>
@@ -295,7 +295,7 @@ private async void GetTodoList()
 ```
 
 當呼叫 `AcquireTokenAsync(...)` 成功和快取中找到權杖，您可以加入要的語彙基元 `Authorization` HTTP 要求標頭，讓 `TaskService` 可以驗證
-要求讀取使用者的待辦事項清單: 
+要求讀取使用者的待辦事項清單 ︰ 
 
 ```C#
     ...
@@ -313,7 +313,7 @@ private async void GetTodoList()
 
 ## 8.登出使用者
 最後，當使用者按一下 [登出] 按鈕時，您可以使用 ADAL 來結束使用者與應用程式之間的工作階段。  有了 ADAL，很簡單，只要清除所有的權杖
-權杖快取中:
+權杖快取中 ︰
 
 ```C#
 private void SignOut(object sender, RoutedEventArgs e)
@@ -360,19 +360,20 @@ private void SignOut(object sender, RoutedEventArgs e)
 試驗到您開始了解原則、驗證要求和 ADAL 如何結合在一起為止。
 
 已完成的範例供您參考 [依現狀的.zip](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip),，
-或者，您可以從 GitHub 複製它:
+或者，您可以從 GitHub 複製它 ︰
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```
 
 <!--
 
-## 後續步驟
+## Next Steps
 
-您現在可以進入更進階的 B2C 主題。  您可以嘗試：
+You can now move onto more advanced B2C topics.  You may want to try:
 
-[從 Web 應用程式呼叫 Web API >>]()
+[Calling a Web API from a Web App >>]()
 
-[自訂 B2C 應用程式的 UX >>]()
+[Customizing the your B2C App's UX >>]()
 
 -->
+
 

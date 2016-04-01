@@ -21,11 +21,11 @@
 
 > [AZURE.SELECTOR]
 - [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-- [Linux、 Unix OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Linux、Unix、OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 [安全殼層 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 可讓您從遠端執行您使用命令列介面的 Liux 為基礎的 HDInsight 叢集上的作業。 本文件提供從 Linux、Unix 或 OS X 用戶端搭配使用 SSH 與 HDInsight 的資訊。
 
-> [AZURE.NOTE] 這篇文章中的步驟假設您使用 Linux、 Unix 或 OS X 用戶端。 雖然可能在 windows 用戶端上執行這些步驟，如果您已安裝的封裝，提供 `ssh` 和 `ssh-keygen` (例如 Git for Windows) 建議 Windows 用戶端遵循的步驟 [使用 SSH 與以 Linux 為基礎的 HDInsight (Hadoop) 從 Windows](hdinsight-hadoop-linux-use-ssh-windows.md)。
+> [AZURE.NOTE] 這篇文章中的步驟假設您使用 Linux、 Unix 或 OS X 用戶端。 雖然可能在 windows 用戶端上執行這些步驟，如果您已安裝的封裝，提供 `ssh` 和 `ssh-keygen` （例如 Git for Windows) 建議 Windows 用戶端遵循的步驟 [使用 SSH 與以 Linux 為基礎的 HDInsight (Hadoop) 從 Windows](hdinsight-hadoop-linux-use-ssh-windows.md)。
 
 ##必要條件
 
@@ -99,9 +99,9 @@ SSH 使用者可以使用密碼或公開金鑰來驗證。 密碼是您自己設
 
 ![要求公開金鑰的表單映像](./media/hdinsight-hadoop-linux-use-ssh-unix/ssh-key.png)
 
-> [AZURE.NOTE] 金鑰檔就只是文字檔案。 內容看起來應類似下列:
+> [AZURE.NOTE] 金鑰檔就只是文字檔案。 其內容類似下面這樣：
 > ```
-ssh rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM + r1LVsTYQ4jAXXGeOAF9Vv/KGz90pgMk3VRJk4PEUSELfXKxP3NtsVwLVPN1l09utI/tKHQ6WL3qy89WVVVLiwzL7tfJ2B08Gmcw8mC/YoieT/YG + 4I4oAgPEmim + 6 / F9S0lU2I2CuFBX9JzauX8n1Y9kWzTARST + ERx2hysyA5ObLv97Xe4C2CQvGE01LGAXkw2ffP9vI + emUM + VeYrf0q3w/b1o/COKbFVZ2IpEcJ8G2SLlNsHWXofWhOKQRi64TMxT7LLoohD61q2aWNKdaE4oQdiuo8TGnt4zWLEPjzjIYIEIZGk00HiQD + KCB5pxoVtp user@system
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KGz90pgMk3VRJk4PEUSELfXKxP3NtsVwLVPN1l09utI/tKHQ6WL3qy89WVVVLiwzL7tfJ2B08Gmcw8mC/YoieT/YG+4I4oAgPEmim+6/F9S0lU2I2CuFBX9JzauX8n1Y9kWzTARST+ERx2hysyA5ObLv97Xe4C2CQvGE01LGAXkw2ffP9vI+emUM+VeYrf0q3w/b1o/COKbFVZ2IpEcJ8G2SLlNsHWXofWhOKQRi64TMxT7LLoohD61q2aWNKdaE4oQdiuo8TGnt4zWLEPjzjIYIEIZGk00HiQD+KCB5pxoVtp user@system
 > ```
 
 這會使用您提供的密碼或公用金鑰建立指定使用者的登入資訊。
@@ -159,7 +159,7 @@ ssh rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM + r1LVsTYQ4jAXXGeOAF9Vv/
 
     如果沒有傳回任何內容，則表示 **ssh** 並未執行。 如需有關安裝及設定的特定步驟請參閱作業系統文件 **ssh**, ，或參閱 [透過 ssh 使用 ssh-agent](http://mah.everybody.org/docs/ssh)。
 
-4. 一旦確認 **ssh** 會將您的 SSH 私密金鑰新增至代理程式執行，請使用下列:
+4. 一旦確認 **ssh** 會將您的 SSH 私密金鑰新增至代理程式執行，請使用下列 ︰
 
         ssh-add ~/.ssh/id_rsa
 
@@ -175,7 +175,7 @@ ssh rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM + r1LVsTYQ4jAXXGeOAF9Vv/
 
         curl --user admin:ADMINPASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/hosts
 
-    這樣會以 JSON 格式傳回叢集中節點的資訊，包括 `host_name`，其中包含每個節點的完整網域名稱 (FQDN)。 以下是範例 `host_name` 所傳回的項目 **curl** 命令:
+    這樣會以 JSON 格式傳回叢集中節點的資訊，包括 `host_name`，其中包含每個節點的完整網域名稱 (FQDN)。 以下是範例 `host_name` 所傳回的項目 **curl** 命令 ︰
 
         "host_name" : "workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net"
 
@@ -238,4 +238,5 @@ SSH 可用來建立通道以將本機要求 (例如 Web 要求) 傳送到 HDInsi
 * [搭配 HDInsight 使用 MapReduce 工作](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
+
 

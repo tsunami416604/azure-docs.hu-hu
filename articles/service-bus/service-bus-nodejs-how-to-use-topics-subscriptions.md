@@ -32,7 +32,7 @@
 
 ## 建立 Node.js 應用程式
 
-建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [Create and deploy a Node.js application to an Azure Web Site], ，[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell)，或使用 WebMatrix 的網站。
+建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的指示，請參閱 [Create and deploy a Node.js application to an Azure Web Site], ，[Node.js 雲端服務][Node.js Cloud Service] （使用 Windows PowerShell），或使用 WebMatrix 的網站。
 
 ## 設定應用程式以使用服務匯流排
 
@@ -68,7 +68,7 @@
 ### 匯入模組
 
 使用 [記事本] 或其他文字編輯器，將下列內容新增至
- **server.js** 應用程式檔案:
+ **server.js** 應用程式檔案 ︰
 
 ```
 var azure = require('azure');
@@ -94,7 +94,7 @@ var serviceBusService = azure.createServiceBusService();
 ```
 
 藉由呼叫 **createTopicIfNotExists** 上 **ServiceBusService**
-(如果存在)，指定的主題將傳回的物件，或建立具有
+（如果存在），指定的主題將傳回的物件，或建立具有
 建立具有指定名稱的主題。 下列程式碼使用
 **createTopicIfNotExists** 來建立或連接名為的主題
 主題：
@@ -127,7 +127,7 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 
 ### 篩選器
 
-選用的篩選作業可以套用至使用執行的作業 **ServiceBusService**。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
+選用的篩選作業可以套用至使用執行的作業 **ServiceBusService**。 篩選作業可包含記錄、自動重試等。篩選器是使用簽章實作方法的物件：
 
 ```
 function handle (requestOptions, next)
@@ -159,7 +159,7 @@ function (returnObject, finalCallback, next)
 使用
 **getSubscription** 方法。
 
-### 使用預設 (MatchAll) 篩選器建立訂用帳戶
+### 使用預設 (MatchAll) 篩選器建立訂閱
 
  **MatchAll** 篩選器是預設篩選器，如果任何篩選條件
 沒有指定篩選器，便會使用此篩選器。 當 **MatchAll**
@@ -273,14 +273,14 @@ var rule={
 現在，當訊息傳送至 `MyTopic`, ，一律會傳遞
 若要訂閱的接收者 `AllMessages` 主題訂閱和
 選擇性地傳遞至已訂閱 `HighMessages` 和
-`LowMessages` 主題訂閱的接收者 (視訊息內容而定)。
+`LowMessages` 主題訂閱的接收者 （視訊息內容而定）。
 
 ## 如何傳送訊息至主題
 
 若要傳送訊息至服務匯流排主題，應用程式必須使用
 **sendTopicMessage** 方法 **ServiceBusService** 物件。
 傳送至服務匯流排主題的訊息是 **BrokeredMessage** 物件。
-**BrokeredMessage** 物件具有一組標準屬性 (例如
+**BrokeredMessage** 物件具有一組標準屬性 （例如
 **加上標籤** 和 **TimeToLive**)，用來保存自訂字典
 應用程式特定屬性，以及一堆字串資料。 「
 應用程式可以藉由傳遞字串值，即可設定訊息內文
@@ -289,8 +289,8 @@ var rule={
 
 下列範例說明如何將五個測試訊息傳送至
 'MyTopic'。 請注意， **messagenumber** 每個屬性值
-訊息變化 (這可判斷其迴圈的反覆項目
-訂閱為何):
+訊息變化 （這可判斷其迴圈的反覆項目
+訂閱為何） ︰
 
 ```
 var message = {
@@ -323,7 +323,7 @@ for (i = 0;i < 5;i++) {
 從訂閱接收訊息
 **receiveSubscriptionMessage** 方法 **ServiceBusService**
 。 根據預設，您會看到訂閱中刪除郵件
-讀取。不過，您可以讀取 (查看) 並鎖定訊息
+讀取。不過，您可以讀取 （查看） 並鎖定訊息
 刪除訂閱中的選擇性參數
 **isPeekLock** 至 **true**。
 
@@ -386,7 +386,7 @@ for (i = 0;i < 5;i++) {
 
 與佇列內鎖定訊息相關的還有逾時，
 訂用帳戶，如果應用程式無法處理訊息之前
-在鎖定逾時到期 (例如，如果應用程式當機) 然後
+在鎖定逾時到期 （例如，如果應用程式當機） 然後
 服務匯流排會自動解除鎖定訊息，並使其可
 重新接收。
 
@@ -414,9 +414,9 @@ for (i = 0;i < 5;i++) {
     });
 
 刪除主題也將會刪除對主題註冊的
-任何訂閱。 您也可以個別刪除訂閱。 Auch die Eigenschaften
+任何訂閱。 您也可以個別刪除訂用帳戶。 Auch die Eigenschaften
 下列範例示範如何刪除名為的訂閱
-`HighMessages` 從 `MyTopic` 主題:
+`HighMessages` 從 `MyTopic` 主題 ︰
 
     serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error) {
         if(error) {
@@ -442,4 +442,5 @@ for (i = 0;i < 5;i++) {
   [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
   [Node.js Web Application with Storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
+
 

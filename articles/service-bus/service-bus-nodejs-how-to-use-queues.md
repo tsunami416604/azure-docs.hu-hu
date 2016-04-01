@@ -26,7 +26,7 @@
 
 ## 建立 Node.js 應用程式
 
-建立空白的 Node.js 應用程式。 如需有關如何建立 Node.js 應用程式的指示，請參閱 [建立並部署 Node.js 應用程式至 Azure 網站][], ，或 [Node.js 雲端服務][] (使用 Windows PowerShell)。
+建立空白的 Node.js 應用程式。 如需有關如何建立 Node.js 應用程式的指示，請參閱 [建立並部署 Node.js 應用程式至 Azure 網站][], ，或 [Node.js 雲端服務][] （使用 Windows PowerShell）。
 
 ## 設定應用程式以使用服務匯流排
 
@@ -36,7 +36,7 @@
 
 1. 使用 **Windows PowerShell for Node.js** 命令視窗瀏覽至 **c:\\node\\sbqueues\\WebRole1** 您建立範例應用程式檔案的資料夾。
 
-2. 型別 **npm 安裝 azure** 在命令視窗中，應能產生類似下列的輸出:
+2. 型別 **npm 安裝 azure** 在命令視窗中，應能產生類似下列的輸出 ︰
 
     ```
     azure@0.7.5 node_modules\azure
@@ -56,7 +56,7 @@
 
 ### 匯入模組
 
-使用記事本或其他文字編輯器，將下列加入至頂端 **server.js** 應用程式檔案:
+使用記事本或其他文字編輯器，將下列加入至頂端 **server.js** 應用程式檔案 ︰
 
 ```
 var azure = require('azure');
@@ -72,13 +72,13 @@ Azure 模組會讀取環境變數 AZURE\_SERVICEBUS\_NAMESPACE 和 AZURE\_SERVIC
 
 ## 建立佇列
 
- **ServiceBusService** 物件可讓您能夠使用服務匯流排佇列。 下列程式碼會建立 **ServiceBusService** 物件。 新增的頂端附近 **server.js** 檔案，匯入 Azure 模組的陳述式後方:
+ **ServiceBusService** 物件可讓您能夠使用服務匯流排佇列。 下列程式碼會建立 **ServiceBusService** 物件。 新增的頂端附近 **server.js** 檔案，匯入 Azure 模組的陳述式後方 ︰
 
 ```
 var serviceBusService = azure.createServiceBusService();
 ```
 
-藉由呼叫 **createQueueIfNotExists** 上 **ServiceBusService** 物件，傳回指定的佇列 (如果有的話)，或建立具有指定名稱的新佇列。 下列程式碼會使用 **createQueueIfNotExists** 來建立或連接至名為的佇列 `myqueue`:
+藉由呼叫 **createQueueIfNotExists** 上 **ServiceBusService** 物件，傳回指定的佇列 （如果有的話），或建立具有指定名稱的新佇列。 下列程式碼會使用 **createQueueIfNotExists** 來建立或連接至名為的佇列 `myqueue`:
 
 ```
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
@@ -105,7 +105,7 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 
 ### 篩選器
 
-選用的篩選作業可以套用至使用執行的作業 **ServiceBusService**。 篩選作業可包括記錄、自動重試等等。篩選器是以簽章實作方法的物件：
+選用的篩選作業可以套用至使用執行的作業 **ServiceBusService**。 篩選作業可包含記錄、自動重試等。篩選器是以簽章實作方法的物件：
 
 ```
 function handle (requestOptions, next)
@@ -117,7 +117,7 @@ function handle (requestOptions, next)
 function (returnObject, finalCallback, next)
 ```
 
-在此回呼中，並處理之後 **returnObject** (回應要求到伺服器)，或是必須叫用回呼 `next` 繼續處理其他篩選，或是直接叫用有 `finalCallback`, ，做為結束服務叫用。
+在此回呼中，並處理之後 **returnObject** （回應要求到伺服器），或是必須叫用回呼 `next` 繼續處理其他篩選，或是直接叫用有 `finalCallback`, ，做為結束服務叫用。
 
 實作重試邏輯的兩個篩選器隨附於 Azure SDK for Node.js **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 下列範例會建立 **ServiceBusService** 物件，使用 **ExponentialRetryPolicyFilter**:
 
@@ -128,7 +128,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 
 ## 傳送訊息至佇列
 
-若要將訊息傳送至服務匯流排佇列，應用程式會呼叫 **sendQueueMessage** 方法 **ServiceBusService** 物件。 傳送至 (和接收自) 服務匯流排佇列是 **BrokeredMessage** 物件，而且具有一組標準屬性 (例如 **標籤** 和 **TimeToLive**)、 用來保存自訂應用程式特定屬性的字典和一堆任意的應用程式資料。 應用程式可將字串做為訊息傳遞來設定訊息的內文。 任何必要的標準屬性都會填入預設值。
+若要將訊息傳送至服務匯流排佇列，應用程式會呼叫 **sendQueueMessage** 方法 **ServiceBusService** 物件。 傳送至 （和接收自） 服務匯流排佇列是 **BrokeredMessage** 物件，而且具有一組標準屬性 (例如 **標籤** 和 **TimeToLive**)、 用來保存自訂應用程式特定屬性的字典和一堆任意的應用程式資料。 應用程式可將字串做為訊息傳遞來設定訊息的內文。 任何必要的標準屬性都會填入預設值。
 
 下列範例示範如何將測試訊息傳送至佇列，名為 `myqueue` 使用 **sendQueueMessage**:
 
@@ -149,11 +149,11 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 
 ## 從佇列接收訊息
 
-接收來自佇列使用的訊息 **receiveQueueMessage** 方法 **ServiceBusService** 物件。 根據預設，訊息會刪除從佇列讀取時;不過，您可以讀取 (查看) 並鎖定訊息，避免系統從佇列刪除選用參數 **isPeekLock** 至 **true**。
+接收來自佇列使用的訊息 **receiveQueueMessage** 方法 **ServiceBusService** 物件。 根據預設，訊息會刪除從佇列讀取時;不過，您可以讀取 （查看） 並鎖定訊息，避免系統從佇列刪除選用參數 **isPeekLock** 至 **true**。
 
 隨著接收作業讀取及刪除訊息之預設行為是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
-如果 **isPeekLock** 參數設為 **true**, ，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 (或可靠地儲存供未來處理) 之後，完成接收程序的第二個階段 **deleteMessage** 方法，並提供要刪除做為參數的訊息。  **DeleteMessage** 方法會標示為已取用的訊息，並將它從佇列移除。
+如果 **isPeekLock** 參數設為 **true**, ，接收會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 藉由呼叫應用程式完成處理訊息 （或可靠地儲存供未來處理） 之後，完成接收程序的第二個階段 **deleteMessage** 方法，並提供要刪除做為參數的訊息。  **DeleteMessage** 方法會標示為已取用的訊息，並將它從佇列移除。
 
 下列範例示範如何接收和處理訊息使用 **receiveQueueMessage**。 此範例首先會接收和訊息，接收及刪除訊息，使用 **isPeekLock** 設 **true**, ，接著刪除訊息使用 **deleteMessage**:
 
@@ -202,4 +202,5 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
   [Node.js Web Application with Storage]: ../storage/storage-nodejs-how-to-use-table-storage.md
   [Azure Queues and Service Bus queues]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
  
+
 

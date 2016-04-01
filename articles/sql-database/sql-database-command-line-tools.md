@@ -115,7 +115,7 @@
 
 ## 後續步驟
 
-結合命令和自動化。 例如，取代引號，包括裡面 < 和 > 字元，使用您建立伺服器、 防火牆規則和資料庫的值:
+結合命令和自動化。 例如，取代引號，包括裡面 < 和 > 字元，使用您建立伺服器、 防火牆規則和資料庫的值 ︰
 
 
     New-AzureRmResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
@@ -126,3 +126,4 @@
 ## 相關資訊
 
 - [Azure SQL Database Cmdlet](https://msdn.microsoft.com/library/azure/mt574084.aspx)
+

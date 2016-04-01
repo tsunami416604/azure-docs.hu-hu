@@ -45,13 +45,13 @@
 
 在嘗試更換元件之前，請考量下列資訊。
 
-![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) ![電擊圖示](./media/storsimple-hardware-component-replacement/Electric.png) **警告!** 
+![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) ![電擊圖示](./media/storsimple-hardware-component-replacement/Electric.png) **警告 ！** 
 
 - 處理 StorSimple 裝置的模組和元件時，請使用靜電防護或防靜電墊，讓您自己適當地接地。
 
 - 請勿觸及任何電路。 在處理可能曝露電路的元件時，請使用提供的把手和導路。
 
-![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) ![請注意圖示](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **注意事項:**
+![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) ![請注意圖示](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **注意事項 ︰**
 
 當您更換模組時， **永遠不會留下空槽中機箱背面**。 在取下問題組件之前，請取得更換或空白模組。
 
@@ -141,4 +141,5 @@ Microsoft Azure StorSimple 裝置由主要和/或 EBOD 機箱的數個外掛程�
 ## 後續步驟
 
 檢閱所有 [安全資訊](storsimple-safety.md) 嘗試更換 StorSimple 硬體元件之前。
+
 

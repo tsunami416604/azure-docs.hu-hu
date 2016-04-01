@@ -30,11 +30,11 @@ ms.author="cristyg"/>
 
 ## 新增本機儲存體資源
 
-若要宣告服務定義檔中的本機儲存體資源，加入 **LocalResources** 項目做為子系 **WebRole** 項目或 **WorkerRole** 項目。 然後新增 **LocalStorage** 代表資源的項目。  **LocalStorage** 項目可接受三個屬性:
+若要宣告服務定義檔中的本機儲存體資源，加入 **LocalResources** 項目做為子系 **WebRole** 項目或 **WorkerRole** 項目。 然後新增 **LocalStorage** 代表資源的項目。  **LocalStorage** 項目可接受三個屬性 ︰
 
 -   *名稱*
--   *sizeInMB*: 指定此本機儲存體資源所需的大小
--   *cleanOnRoleRecycle*: 指定角色執行個體被回收時清除，或是否應保存整個角色生命週期是否應該清除本機儲存體資源。 預設值是 **true**。
+-   *sizeInMB*︰ 指定此本機儲存體資源所需的大小
+-   *cleanOnRoleRecycle*︰ 指定角色執行個體被回收時清除，或是否應保存整個角色生命週期是否應該清除本機儲存體資源。 預設值是 **true**。
 
 下列服務定義檔展示兩個針對 Web 角色宣告的本機儲存體資源：
 
@@ -60,7 +60,7 @@ ms.author="cristyg"/>
 
 ## 以程式設計方式存取本機儲存體資源
 
-若要存取本機儲存體資源，應用程式必須擷取從路徑 [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) 方法。 然後，您可以使用標準檔案讀取和寫入作業，來讀取和寫入本機儲存體資源的內容。 例如，下列範例示範如何讀取名為的檔案內容 **MyTest.txt** 從本機儲存體資源，並顯示 MVC 3 應用程式的首頁上:
+若要存取本機儲存體資源，應用程式必須擷取從路徑 [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) 方法。 然後，您可以使用標準檔案讀取和寫入作業，來讀取和寫入本機儲存體資源的內容。 例如，下列範例示範如何讀取名為的檔案內容 **MyTest.txt** 從本機儲存體資源，並顯示 MVC 3 應用程式的首頁上 ︰
 
     using Microsoft.WindowsAzure.ServiceRuntime;
     using System;
@@ -88,12 +88,12 @@ ms.author="cristyg"/>
 
 Azure 受管理程式庫會提供一些類別，用於從角色執行個體中執行的程式碼內存取本機儲存體資源。  [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) 方法會傳回參考具名 [LocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.localresource.aspx) 物件。
 
-因為 **LocalResource** 物件代表目錄中，您可以讀取和使用標準的.NET 檔案 I/O 類別寫入。 若要判斷本機儲存體資源的目錄路徑，請使用 [LocalResource.RootPath](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.localresource.rootpath.aspx) 屬性。 此屬性會傳回本機儲存體資源的完整路徑，包括具名的資源目錄。 比方說，如果您的服務在開發環境中執行，則本機儲存體資源在本機檔案系統，內定義而 **RootPath** 屬性會傳回值如下:
+因為 **LocalResource** 物件代表目錄中，您可以讀取和使用標準的.NET 檔案 I/O 類別寫入。 若要判斷本機儲存體資源的目錄路徑，請使用 [LocalResource.RootPath](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.localresource.rootpath.aspx) 屬性。 此屬性會傳回本機儲存體資源的完整路徑，包括具名的資源目錄。 比方說，如果您的服務在開發環境中執行，則本機儲存體資源在本機檔案系統，內定義而 **RootPath** 屬性會傳回值如下 ︰
 
 
     C:\Users\myaccount\AppData\Local\dftmp\s0\deployment(1)\res\deployment(1).MyService.MyService_WebRole.0\directory\localStoreOne\
 
-當您的服務部署至 Azure 時，本機儲存體資源的路徑會附上部署 ID，而 **RootPath** 屬性會傳回值如下:
+當您的服務部署至 Azure 時，本機儲存體資源的路徑會附上部署 ID，而 **RootPath** 屬性會傳回值如下 ︰
 
 
     C:\Resources\directory\f335471d5a5845aaa4e66d0359e69066.MyService_WebRole.localStoreOne\
@@ -103,4 +103,5 @@ Azure 受管理程式庫會提供一些類別，用於從角色執行個體中�
 ## 後續步驟
 
 - [設定 Azure 的雲端服務](https://msdn.microsoft.com/library/azure/hh124108.aspx)
+
 

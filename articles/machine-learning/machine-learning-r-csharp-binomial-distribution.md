@@ -66,7 +66,7 @@
 
 >在 Azure Marketplace 上託管的這項服務是一個 OData 服務，可透過 POST 或 GET 方法進行呼叫。 
 
-有幾種以自動化方式取用服務 (範例應用程式如下: [產生器](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionGenerator.aspx),，
+有幾種以自動化方式取用服務 (範例應用程式如下 ︰ [產生器](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionGenerator.aspx),，
 [機率計算機](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionProbabilityCalculator.aspx),，
 [分位數計算機](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionQuantileCalculator))。 
 
@@ -175,7 +175,7 @@
 ![建立工作區][4]
 
 ####模組 1：
-    #(取代 web 服務中的資料) 的範例資料的資料結構描述
+    #（取代 web 服務中的資料） 的範例資料的資料結構描述
     data.set=data.frame(p=0.1,size=10,prob=.5,side='L')
     maml.mapOutputPort("data.set")#send 資料至輸出連接埠
 ####模組 2：
@@ -230,7 +230,7 @@
 
 
 ####模組 2：
-    dataset1 <-maml.mapinputport (1) # 類別: data.frame
+    dataset1 <-maml.mapinputport （1） # 類別 ︰ data.frame
     param = dataset1
     prob = pbinom(param$q,size=param$size,prob=param$prob)
     prob.eq = dbinom(param$q,size=param$size,prob=param$prob)
@@ -266,7 +266,7 @@
     maml.mapOutputPort("data.set"); #send data to output port
 
 ####模組 2：
-    dataset1 <-maml.mapinputport (1) # 類別: data.frame
+    dataset1 <-maml.mapinputport （1） # 類別 ︰ data.frame
     param = dataset1
     dist = rbinom(param$n,param$size,param$p)
 
@@ -294,4 +294,5 @@ Web 服務或發佈至 Azure Marketplace 的耗用量常見問題集解答，請
 
 [6]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_6.png
  
+
 

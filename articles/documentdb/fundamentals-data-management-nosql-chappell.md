@@ -26,9 +26,10 @@
  - 快速檢閱關聯式技術。
  - 各種 Azure NoSQL 技術的簡介：DocumentDB、資料表儲存體、HBase 和 HDInsight。
  - NoSQL 技術和 Azure SQL Database 的比較。 
- - 何時該使用 DocumentDB、表格儲存體、HBase、HDInsight 和 提供認證 (登入和密碼)。
+ - 何時該使用 DocumentDB、表格儲存體、HBase、HDInsight 和 SQL Database。
 
-**PDF 下載:** [了解 Microsoft Azure 上的 NoSQL](http://go.microsoft.com/fwlink/p/?LinkId=330292)
+**PDF 下載 ︰** [了解 Microsoft Azure 上的 NoSQL](http://go.microsoft.com/fwlink/p/?LinkId=330292)
 
  
+
 

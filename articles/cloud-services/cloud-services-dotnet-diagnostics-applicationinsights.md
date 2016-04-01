@@ -26,21 +26,21 @@
 
 1) 在 Visual Studio 方案總管] 中以滑鼠右鍵按一下角色，然後選取 **屬性** 開啟角色設計工具
     
-![方案總管角色內容][] 1
+![方案總管角色屬性][1]
 
 2) 在 [診斷] 下的角色設計工具中的區段中選取核取方塊，以 **傳送至 Application Insights 的診斷資料**
 
-![角色設計師會將診斷資料傳送至 application insights][] 2
+![角色設計工具會將診斷資料傳送至 Application Insights][2]
 
 3) 在快顯的對話方塊中，選取您想要 Azure 診斷資料傳送至 Application Insights 資源。 對話方塊可讓您從您的訂用帳戶中選取現有的 Application Insights 資源，或是為 Application Insights 資源手動指定檢測金鑰。 如果您沒有現有的 Application Insights 資源，則您可以按一下建立 **建立新的資源** 它將會開啟瀏覽器視窗以 Azure 傳統入口網站，您可以在其中建立 Application Insights 資源的連結。 如需建立 Application Insights 資源的詳細資訊，請參閱 [建立新的 Application Insights 資源](app-insights-create-new-resource.md)
 
-![選取 application insights 資源][] 3
+![選取 Application Insights 資源][3]
 
 4) 一旦您加入 Application Insights 資源，該資源的檢測金鑰會儲存為名稱的服務組態設定 **APPINSIGHTS_INSTRUMENTATIONKEY**。 您可以藉由從服務組態下拉式清單中選取不同的組態，並為該組態指定一個新的檢測金鑰，以變更每個服務組態或環境的這項組態設定。
 
-![選取的服務組態][] 4
+![選取服務組態][4]
     
- **APPINSIGHTS_INSTRUMENTATIONKEY** Visual Studio 會使用組態設定來設定診斷延伸模組在發行期間的適當 Application Insights 資源資訊。 組態設定是為不同的服務組態定義不同檢測金鑰的便利方式。 發佈時，Visual Studio 會轉譯該設定，並將它插入診斷延伸模組公用組態。 為簡化使用 PowerShell 設定診斷延伸模組的程序，Visual Studio 中的封裝輸出也包含了公用組態 XML，並且內含適當的 Application Insights 檢測金鑰。 公用設定檔會在延伸模組資料夾中建立並遵循模式 PaaSDiagnostics.<RoleName>.PubConfig.xml。 任何以 PowerShell 為基礎的部署都可以使用此模式將每個組態對應至角色。
+ **APPINSIGHTS_INSTRUMENTATIONKEY** Visual Studio 會使用組態設定來設定診斷延伸模組在發行期間的適當 Application Insights 資源資訊。 組態設定是為不同的服務組態定義不同檢測金鑰的便利方式。 發佈時，Visual Studio 會轉譯該設定，並將它插入診斷延伸模組公用組態。 為簡化使用 PowerShell 設定診斷延伸模組的程序，Visual Studio 中的封裝輸出也包含了公用組態 XML，並且內含適當的 Application Insights 檢測金鑰。 公用設定檔擴充功能資料夾中建立，並遵循 PaaSDiagnostics。<RoleName>.Paasdiagnostics.<rolename>.pubconfig.xml 的模式。 任何以 PowerShell 為基礎的部署都可以使用此模式將每個組態對應至角色。
 
 5) 啟用 **診斷資料傳送至 Application Insights** 會自動設定所有效能計數器和錯誤層級記錄到 Application Insights 收集 Azure 診斷代理程式所傳送的 Azure 診斷。 如果您想要進一步設定傳送至 Application Insights 的資料，則您必須手動編輯 *diagnostics.wadcfgx* 針對每個角色的檔案。 請參閱 [設定 Azure 診斷功能，可將資料傳送至 Application Insights](azure-diagnostics-configure-applicationinsights.md) 若要深入了解手動更新組態。 
 
@@ -59,11 +59,11 @@ Azure 診斷遙測會顯示在為您的雲端服務設定的 Application Insight
 
 - 使用 [計量瀏覽器](../application-insights/app-insights-metrics-explorer.md) 以視覺化方式檢視任何自訂效能計數器或不同類型的 windows 事件記錄檔事件的計數。
 
-![計量瀏覽器中的自訂度量][] 5
+![[計量瀏覽器] 中的自訂計量][5]
 
 - 使用 [搜尋](../application-insights/app-insights-diagnostic-search.md) 在各種 Azure 診斷所傳送的追蹤記錄檔中搜尋。 如果您有未處理的例外狀況而造成損毀並回收該資訊的角色的角色中的範例中會顯示為 *應用程式* 通道 *Windows 事件記錄檔*。 您可以使用搜尋功能來查看 Windows 事件記錄檔錯誤並取得例外狀況的完整堆疊追蹤，讓您尋找問題的根本原因。 
 
-![搜尋追蹤][] 6
+![搜尋追蹤][6]
 
 ## 後續步驟
 
@@ -77,3 +77,4 @@ Azure 診斷遙測會顯示在為您的雲端服務設定的 Application Insight
 [4]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/role-designer-appinsights-serviceconfig.png
 [5]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/metrics-explorer-custom-metrics.png
 [6]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/search-windowseventlog-error.png
+

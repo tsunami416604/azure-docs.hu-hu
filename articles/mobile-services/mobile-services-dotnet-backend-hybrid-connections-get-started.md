@@ -32,7 +32,7 @@
 
 本教學課程要求您具備下列項目：
 
-- **現有的.NET 後端行動服務** <br/>遵循本教學課程 [開始使用行動服務] 來建立和下載新的.NET 後端行動服務，從 [Azure 傳統入口網站]。
+- **現有的.NET 後端行動服務** <br/>在本教學課程 [Get started with Mobile Services] 建立和下載新的.NET 後端行動服務從 [Azure classic portal]。
 
 [AZURE.INCLUDE [hybrid-connections-prerequisites](../../includes/hybrid-connections-prerequisites.md)]
 
@@ -56,7 +56,7 @@
 
     若要了解如何下載.NET 後端專案，請參閱 [開始使用行動服務](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md) 。
 
-2. 在 [方案總管] 中，開啟 Web.config 檔案中，找出 **connectionStrings** 區段中，如下所示，它會指向內部部署 SQL Server 資料庫的新 SqlClient 項目:
+2. 在 [方案總管] 中，開啟 Web.config 檔案中，找出 **connectionStrings** 區段中，如下所示，它會指向內部部署 SQL Server 資料庫的新 SqlClient 項目 ︰
 
         <add name="OnPremisesDBConnection"
          connectionString="Data Source=OnPremisesServer,1433;
@@ -74,7 +74,7 @@
 
 4. 展開 **模型** 資料夾，然後開啟資料模型檔案，以 *Context.cs*。
 
-6. 修改 **DbContext** 執行個體建構函式將值傳遞 `OnPremisesDBConnection` 基底 **DbContext** 建構函式，類似下列的程式碼片段:
+6. 修改 **DbContext** 執行個體建構函式將值傳遞 `OnPremisesDBConnection` 基底 **DbContext** 建構函式，類似下列的程式碼片段 ︰
 
         public class hybridService1Context : DbContext
         {
@@ -96,13 +96,13 @@
 
 您已驗證過資料庫連接，接下來您必須為這個新的連接字串新增應用程式設定，以便能夠從 Azure 使用並將行動服務發佈至 Azure。
 
-1. 在 [Azure 傳統入口網站]，瀏覽至您的行動服務。
+1. 在 [Azure classic portal], ，瀏覽至您的行動服務。
 
 1. 按一下 [ **設定** 索引標籤，然後找出 **連接字串** 一節。
 
     ![Connection string for on-premises database](./media/mobile-services-dotnet-backend-hybrid-connections-get-started/11.png)
 
-2. 加入新的連接 **SQL Server** 名為字串 `OnPremisesDBConnection` 值如下所示:
+2. 加入新的連接 **SQL Server** 名為字串 `OnPremisesDBConnection` 值如下所示 ︰
 
         Server=OnPremisesServer,1433;Database=OnPremisesDB;User ID=HybridConnectionsLogin;Password=<**secure_password**>
 
@@ -117,7 +117,7 @@
 
 4. 使用 **立即試用** 和之前一樣的起始頁] 按鈕，或使用連接到您的行動服務用戶端應用程式，叫用可產生資料庫變更的某些作業。
 
-    >[AZURE.NOTE]當您使用 **立即試用** 按鈕來啟動說明 API 頁面時，請記得提供您的應用程式金鑰為密碼 (使用者名稱空白)。
+    >[AZURE.NOTE]當您使用 **立即試用** 按鈕來啟動說明 API 頁面時，請記得提供您的應用程式金鑰為密碼 （使用者名稱空白）。
 
 4. 在 SQL Server Management Studio，連接到您的 SQL Server 執行個體，開啟 [物件總管] 中，展開 **OnPremisesDB** 資料庫中，展開 **資料表**。
 
@@ -138,3 +138,4 @@
 <!-- Links -->
 [Azure classic portal]: http://manage.windowsazure.com
 [Get started with Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
+

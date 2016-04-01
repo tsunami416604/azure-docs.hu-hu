@@ -31,9 +31,9 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
 
 
-若要了解有關這些擴充功能的詳細資訊請按這裡: [Azure VM 延伸模組的概觀。](virtual-machines-extensions-features.md)
+若要了解有關這些擴充功能的詳細資訊請按這裡 ︰ [Azure VM 延伸模組的概觀。](virtual-machines-extensions-features.md)
 
-若要深入了解撰寫擴充功能的範本按一下這裡: [撰寫擴充範本。](virtual-machines-extensions-authoring-templates.md)
+若要深入了解撰寫擴充功能的範本按一下這裡 ︰ [撰寫擴充範本。](virtual-machines-extensions-authoring-templates.md)
 
 本文列出部分 Linux 延伸模組所需的組態值。
 
@@ -196,4 +196,5 @@
 以下是使用延伸模組建立 Linux VM 的完整 VM 範本：
 
 [Linux VM 上的自訂指令碼延伸模組](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
+
 

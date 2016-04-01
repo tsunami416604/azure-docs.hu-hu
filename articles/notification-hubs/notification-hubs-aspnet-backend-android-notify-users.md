@@ -123,7 +123,7 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
 
 
 
-3. 開啟您 **res/values/strings.xml** 檔案，並將 `send_button` 定義重新定義的字串，如下列程式碼行取代 `send_button` 並新增其他控制項的字串:
+3. 開啟您 **res/values/strings.xml** 檔案，並將 `send_button` 定義重新定義的字串，如下列程式碼行取代 `send_button` 並新增其他控制項的字串 ︰
 
         <string name="usernameHint">Username</string>
         <string name="passwordHint">Password</string>
@@ -372,7 +372,7 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
         }
 
 
-     `login` 處理常式 **登入** 按鈕產生基本驗證權杖使用輸入使用者名稱和密碼 (請注意，這代表驗證結構描述使用的任何權杖)，則它會使用 `RegisterClient` 呼叫後端進行註冊。
+     `login` 處理常式 **登入** 按鈕產生基本驗證權杖使用輸入使用者名稱和密碼 （請注意，這代表驗證結構描述使用的任何權杖），則它會使用 `RegisterClient` 呼叫後端進行註冊。
 
     `sendPush` 方法會呼叫後端，以根據使用者標記觸發使用者的安全通知。 `sendPush` 鎖定目標的平台通知服務取決於傳入的 `pns` 字串。
 
@@ -431,4 +431,5 @@ Azure 中的推播通知支援可讓您存取易於使用、多重平台的大�
 
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png
+
 

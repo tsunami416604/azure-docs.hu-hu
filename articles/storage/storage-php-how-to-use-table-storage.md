@@ -48,7 +48,7 @@
 
 下列範例顯示如何納入自動換片器檔案及參考 **ServicesBuilder** 類別。
 
-> [AZURE.NOTE] 此範例 (和本文中的其他範例) 假設您已安裝 PHP Client Libraries for Azure 透過編輯器。 如果您手動或透過 PEAR 封裝安裝程式庫，則必須參考 <code>WindowsAzure.php</code> 自動載入器檔案。
+> [AZURE.NOTE] 此範例 （和本文中的其他範例） 假設您已安裝 PHP Client Libraries for Azure 透過編輯器。 如果您在手動或以 PEAR 封裝安裝程式庫，您需要參考 <code>WindowsAzure.php</code> 自動換片器檔案。
 
     require_once 'vendor\autoload.php';
     use WindowsAzure\Common\ServicesBuilder;
@@ -72,7 +72,7 @@
 若要建立任何 Azure 服務用戶端，您必須使用 **ServicesBuilder** 類別。 您可以：
 
 * 直接將連接字串傳遞給它，或
-* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串:
+* 使用 **CloudConfigurationManager (CCM)** 檢查多種外部來源的連接字串 ︰
     * 預設已支援一種外部來源，即環境變數
     * 您可以擴充，以加入新來源 **ConnectionStringSource** 類別
 
@@ -147,7 +147,7 @@ A **TableRestProxy** 物件可讓您建立的資料表 **createTable** 方法。
 
 資料表屬性和類型的相關資訊，請參閱 [了解表格服務資料模型][table-data-model]。
 
- **TableRestProxy** 類別提供兩種插入實體的替代方法: **insertOrMergeEntity** 和 **insertOrReplaceEntity**。 若要使用這些方法，建立新 **實體** 並將它做為參數傳遞給其中一個方法。 只要實體不存在，每個方法都會插入實體。 如果實體已經存在， **insertOrMergeEntity** 更新屬性值，如果屬性存在而且會加入新的屬性不存在，而 **insertOrReplaceEntity** 完全取代現有的實體。 下列範例示範如何使用 **insertOrMergeEntity**。 如果 `PartitionKey` 為「tasksSeattle」且 `RowKey` 為「1」的實體尚未存在，便會將之插入。 不過，如果先前已經插入 insertOrMergeEntity (如上述範例所示)，方法便會更新 `DueDate` 屬性並新增 `Status` 屬性。 `Description` 和 `Location` 屬性也會更新，但是所使用的值實際上會讓它們保持不變。 如果如範例中所示並未新增後面兩個屬性，但這兩個屬性存在於目標實體上，它們現有的值就會保持不變。
+ **TableRestProxy** 類別提供兩種插入實體的替代方法 ︰ **insertOrMergeEntity** 和 **insertOrReplaceEntity**。 若要使用這些方法，建立新 **實體** 並將它做為參數傳遞給其中一個方法。 只要實體不存在，每個方法都會插入實體。 如果實體已經存在， **insertOrMergeEntity** 更新屬性值，如果屬性存在而且會加入新的屬性不存在，而 **insertOrReplaceEntity** 完全取代現有的實體。 下列範例示範如何使用 **insertOrMergeEntity**。 如果 `PartitionKey` 為「tasksSeattle」且 `RowKey` 為「1」的實體尚未存在，便會將之插入。 不過，如果先前已經插入 insertOrMergeEntity (如上述範例所示)，方法便會更新 `DueDate` 屬性並新增 `Status` 屬性。 `Description` 和 `Location` 屬性也會更新，但是所使用的值實際上會讓它們保持不變。 如果如範例中所示並未新增後面兩個屬性，但這兩個屬性存在於目標實體上，它們現有的值就會保持不變。
 
     require_once 'vendor\autoload.php';
 
@@ -383,16 +383,16 @@ A **TableRestProxy** 物件可讓您建立的資料表 **createTable** 方法。
 
 ## 批次資料表作業
 
- **Tablerestproxy->batch** 方法可讓您在單一要求中執行多項作業。 這裡的模式涉及將作業新增至 **BatchRequest** 物件，然後將 **BatchRequest** 物件傳遞給 **tablerestproxy->batch** 方法。 若要加入至作業 **BatchRequest** 物件，您可以多次呼叫下列方法:
+ **Tablerestproxy->batch** 方法可讓您在單一要求中執行多項作業。 這裡的模式涉及將作業新增至 **BatchRequest** 物件，然後將 **BatchRequest** 物件傳遞給 **tablerestproxy->batch** 方法。 若要加入至作業 **BatchRequest** 物件，您可以多次呼叫下列方法 ︰
 
-* **addInsertEntity** (新增 insertEntity 作業)
-* **addUpdateEntity** (新增 updateEntity 作業)
-* **addMergeEntity** (新增 mergeEntity 作業)
-* **addInsertOrReplaceEntity** (新增 insertOrReplaceEntity 作業)
-* **addInsertOrMergeEntity** (新增 insertOrMergeEntity 作業)
-* **addDeleteEntity** (新增 deleteEntity 作業)
+* **addInsertEntity** （新增 insertEntity 作業）
+* **addUpdateEntity** （新增 updateEntity 作業）
+* **addMergeEntity** （新增 mergeEntity 作業）
+* **addInsertOrReplaceEntity** （新增 insertOrReplaceEntity 作業）
+* **addInsertOrMergeEntity** （新增 insertOrMergeEntity 作業）
+* **addDeleteEntity** （新增 deleteEntity 作業）
 
-下列範例示範如何執行 **insertEntity** 和 **deleteEntity** 單一要求中的作業:
+下列範例示範如何執行 **insertEntity** 和 **deleteEntity** 單一要求中的作業 ︰
 
     require_once 'vendor\autoload.php';
 
@@ -477,4 +477,5 @@ A **TableRestProxy** 物件可讓您建立的資料表 **createTable** 方法。
 [table-data-model]: http://msdn.microsoft.com/library/azure/dd179338.aspx
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
+
 

@@ -52,7 +52,7 @@
 
 ## 設定 Azure 儲存體連接
 
-Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS\_KEY** 連線到您的 Azure 儲存體帳戶所需的資訊。 如果未設定這些環境變數，您必須指定帳戶資訊，才能使用 **azure:: tableservice** 為下列程式碼:
+Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS\_KEY** 連線到您的 Azure 儲存體帳戶所需的資訊。 如果未設定這些環境變數，您必須指定帳戶資訊，才能使用 **azure:: tableservice** 為下列程式碼 ︰
 
     Azure.config.storage_account_name = "<your azure storage account>"
     Azure.config.storage_access_key = "<your azure storage access key>"
@@ -69,7 +69,7 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 建立資料表
 
- **Azure:: tableservice** 物件可讓您使用資料表和實體。 若要建立資料表時，使用 **create\_table ()** 方法。 下列範例將建立資料表或列印錯誤訊息 (若有的話)。
+ **Azure:: tableservice** 物件可讓您使用資料表和實體。 若要建立資料表時，使用 **create\_table （)** 方法。 下列範例將建立資料表或列印錯誤訊息 (若有的話)。
 
     azure_table_service = Azure::TableService.new
     begin
@@ -90,10 +90,10 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 有多種方法可以用來更新現有的實體：
 
-* **update\_entity ():** 藉由取代來更新現有實體。
-* **merge\_entity ():** 藉由將新的屬性值合併到現有實體來更新現有實體。
-* **insert\_or\_merge\_entity ():** 藉由取代來更新現有實體。 如果實體不存在，將會插入新的實體：
-* **insert\_or\_replace\_entity ():** 藉由將新的屬性值合併到現有實體來更新現有實體。 如果實體不存在，將會插入新的實體。
+* **update\_entity （):** 藉由取代來更新現有實體。
+* **merge\_entity （):** 藉由將新的屬性值合併到現有實體來更新現有實體。
+* **insert\_or\_merge\_entity （):** 藉由取代來更新現有實體。 如果實體不存在，將會插入新的實體：
+* **insert\_or\_replace\_entity （):** 藉由將新的屬性值合併到現有實體來更新現有實體。 如果實體不存在，將會插入新的實體。
 
 下列範例示範如何更新實體使用 **update\_entity**:
 
@@ -101,11 +101,11 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
       :PartitionKey => "test-partition-key", :RowKey => "1" }
     azure_table_service.update_entity("testtable", entity)
 
-使用 **update\_entity** 和 **merge\_entity ()**, ，如果您要更新的實體不存在，則更新操作會失敗。 因此如果您要儲存實體，而不管它是否已存在，您應該改用 **insert\_or\_replace\_entity ()** 或 **insert\_or\_merge\_entity**。
+使用 **update\_entity** 和 **merge\_entity （)**, ，如果您要更新的實體不存在，則更新操作會失敗。 因此如果您要儲存實體，而不管它是否已存在，您應該改用 **insert\_or\_replace\_entity （)** 或 **insert\_or\_merge\_entity**。
 
 ## 使用實體群組
 
-有時候批次提交多個操作是有意義的，可以確保伺服器會進行不可部分完成的處理。 若要達到此目的，您先建立 **批次** 物件，然後使用 **execute\_batch ()** 方法 **TableService**。 下列範例示範在一個批次中，提交具備 RowKey 2 和 3 的兩個實體。 請注意，它僅適用於具備相同 PartitionKey 的實體。
+有時候批次提交多個操作是有意義的，可以確保伺服器會進行不可部分完成的處理。 若要達到此目的，您先建立 **批次** 物件，然後使用 **execute\_batch （)** 方法 **TableService**。 下列範例示範在一個批次中，提交具備 RowKey 2 和 3 的兩個實體。 請注意，它僅適用於具備相同 PartitionKey 的實體。
 
     azure_table_service = Azure::TableService.new
     batch = Azure::Storage::Table::Batch.new("testtable",
@@ -117,14 +117,14 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 查詢實體
 
-若要查詢資料表中的實體，請使用 **get\_entity ()** 方法，傳遞資料表名稱、 **PartitionKey** 和 **RowKey**。
+若要查詢資料表中的實體，請使用 **get\_entity （)** 方法，傳遞資料表名稱、 **PartitionKey** 和 **RowKey**。
 
     result = azure_table_service.get_entity("testtable", "test-partition-key",
       "1")
 
 ## 查詢實體集合
 
-若要查詢資料表中的實體集合，建立查詢雜湊物件並使用 **query\_entities ()** 方法。 下列範例示範取得具有相同的所有實體 **PartitionKey**:
+若要查詢資料表中的實體集合，建立查詢雜湊物件並使用 **query\_entities （)** 方法。 下列範例示範取得具有相同的所有實體 **PartitionKey**:
 
     query = { :filter => "PartitionKey eq 'test-partition-key'" }
     result, token = azure_table_service.query_entities("testtable", query)
@@ -141,13 +141,13 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 刪除實體
 
-若要刪除實體，請使用 **delete\_entity ()** 方法。 您必須傳入資料表名稱，其中包含實體、實體的 PartitionKey 和 RowKey。
+若要刪除實體，請使用 **delete\_entity （)** 方法。 您必須傳入資料表名稱，其中包含實體、實體的 PartitionKey 和 RowKey。
 
         azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 
 ## 刪除資料表
 
-若要刪除資料表，請使用 **delete\_table ()** 方法並傳入要刪除的資料表名稱。
+若要刪除資料表，請使用 **delete\_table （)** 方法並傳入要刪除的資料表名稱。
 
         azure_table_service.delete_table("testtable")
 
@@ -157,4 +157,5 @@ Azure 模組會讀取環境變數 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 - [Azure 儲存體團隊部落格](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) GitHub 上的儲存機制
+
 

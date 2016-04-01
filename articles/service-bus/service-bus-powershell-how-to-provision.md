@@ -27,10 +27,10 @@ Microsoft Azure PowerShell 是一種指令碼環境，可讓您在 Azure 中用�
 開始閱讀本文之前，您必須符合下列必要條件：
 
 - Azure 訂閱。 Azure 是訂閱型平台。 如需
-取得訂閱的相關資訊，請參閱 [購買選項]
-[成員優惠] 或 [免費試用版]。
+取得訂閱的相關資訊，請參閱 [Purchase Options],，
+[Member Offers], or [Free Trial].
 
-- 具備 Azure PowerShell 的電腦。 如需指示，請參閱 [安裝和設定 Azure PowerShell]。
+- 具備 Azure PowerShell 的電腦。 如需指示，請參閱 [Install and configure Azure PowerShell]。
 
 - 大致了解 PowerShell 指令碼、NuGet 封裝和 .NET Framework。
 
@@ -38,7 +38,7 @@ Microsoft Azure PowerShell 是一種指令碼環境，可讓您在 Azure 中用�
 
 可用於管理服務匯流排的 PowerShell Cmdlet 數目有限。 若要佈建
 不透過現有 cmdlet 公開的實體，您可以使用.NET 用戶端
-在 [服務匯流排 NuGet 封裝] 中的服務匯流排。
+服務匯流排中的 [Service Bus NuGet package]。
 
 首先，請確定指令碼可以找到 **Microsoft.ServiceBus.dll** 組件，它會隨 NuGet 封裝。 為了要有使用彈性，指令碼會執行這些步驟：
 
@@ -70,7 +70,7 @@ catch [System.Exception]
 
 ## 佈建服務匯流排命名空間
 
-兩個 PowerShell Cmdlet 支援服務匯流排命名空間作業。 而不是使用.NET SDK Api，您可以使用 [Get-azuresbnamespace] [] 和 [New-azuresbnamespace] []。
+兩個 PowerShell Cmdlet 支援服務匯流排命名空間作業。 而不是使用.NET SDK Api，您可以使用 [Get-azuresbnamespace][] 和 [New-azuresbnamespace][]。
 
 這個範例會在指令碼中建立幾個區域變數：`$Namespace` 和 `$Location`。
 
@@ -108,8 +108,8 @@ catch [System.Exception]
     }
     ```
 
-若要佈建其他服務匯流排實體，請從 SDK 建立 [NamespaceManager] [] 類別的執行個體。
-您可以使用 [Get-azuresbauthorizationrule] [] 指令程式來擷取用來提供連接字串的授權規則。 我們將會在 `$NamespaceManager` 變數中儲存對 `NamespaceManager` 執行個體的參照。 我們稍後將在指令碼中使用 `$NamespaceManager` 來佈建其他實體。
+若要佈建其他服務匯流排實體，建立的執行個體 [NamespaceManager][] SDK 中的類別。
+您可以使用 [Get-azuresbauthorizationrule][] 指令程式來擷取用來提供連接字串的授權規則。 我們將會在 `$NamespaceManager` 變數中儲存對 `NamespaceManager` 執行個體的參照。 我們稍後將在指令碼中使用 `$NamespaceManager` 來佈建其他實體。
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -121,7 +121,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 ## 佈建其他服務匯流排實體
 
-若要佈建其他實體，例如佇列、 主題和事件中心時，使用 [服務匯流排.NET API] []。 本文僅著重於事件中樞，但其他實體的步驟很類似。 此外，在此文章的結尾處會參照更多詳細範例 (包括其他實體)。
+若要佈建其他實體，例如佇列、 主題和事件中樞使用 [服務匯流排.NET API][]。 本文僅著重於事件中樞，但其他實體的步驟很類似。 此外，在此文章的結尾處會參照更多詳細範例 (包括其他實體)。
 
 這部分的指令碼會再建立四個區域變數。 這些變數可用來具現化 `EventHubDescription` 物件。 指令碼會執行下列作業：
 
@@ -184,3 +184,4 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
 [.NET API for Service Bus]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.aspx
 [NamespaceManager]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
+

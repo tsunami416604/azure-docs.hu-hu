@@ -28,7 +28,7 @@
 * [影片：Azure 和 HPC 在雲端的大量運算](http://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
 
 
-## Azure 批次
+## Azure Batch
 
 [批次](http://azure.microsoft.com/services/batch/) 是一種平台服務，輕鬆地啟用您的應用程式的雲端功能，並無需設定和管理叢集及工作排程器執行工作。 使用 SDK 透過各種不同語言、接移資料至 Azure和建立工作執行管線，將用戶端應用程式與 Azure 批次整合。
 
@@ -123,4 +123,5 @@ Azure 提供 [各種大小](../virtual-machines/virtual-machines-size-specs.md),
 
 * 如需最新的公告，請參閱 [Microsoft HPC 和批次的小組部落格](http://blogs.technet.com/b/windowshpc/) 和 [Azure 部落格](http://azure.microsoft.com/blog/tag/hpc/)。
 * 另請參閱 [的批次中的新功能](http://azure.microsoft.com/updates/?service=batch) 或訂閱 [rss 餵送](http://azure.microsoft.com/updates/feed/?service=batch)。
+
 

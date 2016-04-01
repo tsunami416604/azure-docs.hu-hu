@@ -25,7 +25,7 @@
 
 本主題說明如何在 .NET 後端行動服務中使用非關聯式資料存放區。 在本教學課程中，您將修改 Azure 行動服務快速入門專案，以使用 Azure 資料表儲存體而非預設 Azure SQL Database 資料存放區。
 
-本教學課程，必須先完成 [開始使用行動服務] 教學課程。 您還需要一個 Azure 儲存體帳戶。
+本教學課程，必須先完成 [Get started with Mobile Services] 教學課程。 您還需要一個 Azure 儲存體帳戶。
 
 ##在 .NET 後端行動服務中設定 Azure 資料表儲存體
 
@@ -41,7 +41,7 @@
 
 3. 如果您尚未建立儲存體帳戶，請參閱 [如何建立儲存體帳戶](../storage-create-storage-account.md)。
 
-4. 在 [Azure 傳統入口網站]，按一下 [ **儲存體**, 、 儲存體帳戶，然後按一下 [ **管理金鑰**。
+4. 在 [Azure classic portal], ，按一下 [ **儲存體**, 、 儲存體帳戶，然後按一下 [ **管理金鑰**。
 
 5. 請記下的 **儲存體帳戶名稱** 和 **便捷鍵**。
 
@@ -158,4 +158,5 @@
 [Azure classic portal]: https://manage.windowsazure.com/
 [What is the Table Service]: ../storage-dotnet-how-to-use-tables.md#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
+
 

@@ -130,17 +130,17 @@
 6. 按一下第一個 **記錄檔** 清單，以及記錄檔中的項目會在新的刀鋒視窗中開啟顯示供您閱讀完整文字。 按一下每個記錄檔來檢閱其中文字。 文字檢視器刀鋒視窗會開啟。 您可以按一下 **下載** ] 按鈕，下載文字檔供您隨意離線檢視。  
 
 一個 **常見的錯誤** 從自訂活動 
-        封裝執行失敗，結束代碼為 '1'。 如需詳細資訊，請參閱 'wasb://adfjobs@storageaccount.blob.core.windows.net/PackageJobs/<guid>/<jobid>/Status/stderr'。
+        封裝執行失敗，結束代碼為 '1'。 請參閱 ' wasb://adfjobs@storageaccount.blob.core.windows.net/PackageJobs/<guid>/<jobid>/ Status/stderr ' 以取得詳細資料。
 
-若要查看這種錯誤的其他詳細資料，請開啟 **stderr** 檔案。 一個常見錯誤是逾時狀況，例如:
-        資訊 mapreduce。工作: 工作 Id: attempt_1424212573646_0168_m_000000_0，狀態: 失敗 
+若要查看這種錯誤的其他詳細資料，請開啟 **stderr** 檔案。 一個常見錯誤是逾時狀況，例如 ︰
+        資訊 mapreduce。工作 ︰ 工作 Id: attempt_1424212573646_0168_m_000000_0，狀態 ︰ 失敗 
         AttemptID:attempt_1424212573646_0168_m_000000_0 600 秒後逾時
 
 如果工作重試 3 次 (例如超過 30 分鐘或更久)，此相同錯誤可能會出現多次。 
 
 此逾時錯誤指出發生 600 秒 (10 分鐘) 逾時。 通常這表示自訂 .Net 應用程式已有 10 分鐘未發出任何狀態更新。 如果應用程式停滯或等待某事物太久，10 分鐘逾時是一項安全機制，可防止無止境等待與耽擱 Azure Data Factory 管線。 
 
-此逾時源自於自訂活動中連結的 HDInsight 叢集組態。 此設定是 **mapred.task.timeout**, ，預設為 600000 毫秒，如 Apache 預設設定中所述: http://hadoop.apache.org/docs/r2.4.0/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
+此逾時源自於自訂活動中連結的 HDInsight 叢集組態。 此設定是 **mapred.task.timeout**, ，預設為 600000 毫秒，如 Apache 預設設定中所述 ︰ http://hadoop.apache.org/docs/r2.4.0/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
 
 您可以在佈建 HDInsight 佈建叢集時，變更預設值以覆寫這個預設值。 當使用 Azure Data Factory 和 **HDInsight 隨** 連結服務，可以新增此 JSON 屬性於您的 HDInsightOnDemandLinkedService JSON 屬性。 例如，您可以使用此 JSON 屬性將值延長到 20 分鐘。
         
@@ -154,7 +154,7 @@
 
 ## 問題：PowerShell 要求失敗，錯誤為 400 要求錯誤「找不到已註冊的資源提供者...」
 
-自 2015 年 3 月 10 日起，已中止 Azure Data Factory PowerShell 早期私人預覽版本 2014-05-01-preview、2014-07-01-preview 和 2014-08-01-preview。 我們建議您使用最新版的 ADF cmdlet，現在都屬於 Azure PowerShell 下載，從這個 URL http://go.microsoft.com/?linkid=9811175&clcid=0x409 下載: 
+自 2015 年 3 月 10 日起，已中止 Azure Data Factory PowerShell 早期私人預覽版本 2014-05-01-preview、2014-07-01-preview 和 2014-08-01-preview。 我們建議您使用最新版的 ADF cmdlet，現在都屬於 Azure PowerShell 下載，從這個 URL http://go.microsoft.com/?linkid=9811175&clcid=0x409 下載 ︰ 
 
 如果您使用已中止的 Azure PowerShell SDK 版本，可能會收到下列錯誤：
 
@@ -172,7 +172,7 @@
         {"error":{"code":"NoRegisteredProviderFound","message":"No registered resource provider found for location 'west US' and API version '2014-05-01-preview'."}}
 
 
-## <a name="copywalkthrough"></a> 逐步解說: 利用複製資料對錯誤進行疑難排解
+## <a name="copywalkthrough"></a> 逐步解說：對資料複製的錯誤進行疑難排解
 在本逐步解說中，您將從＜開始使用資料處理站＞一文中的教學課程來引用一個錯誤，然後了解如何使用 Azure 傳統入口網站對錯誤進行疑難排解。
 
 ### 必要條件
@@ -190,7 +190,7 @@
 ### 使用 Azure 入口網站對錯誤進行疑難排解
 
 1.  登入 [Azure 入口網站][azure-portal]。 
-2.  按一下 [ **ADFTutorialDataFactory** 從 **儀表板**。 如果您沒有看見 data factory 連結上 **儀表板**, ，按一下 [ **瀏覽** 中樞，然後按一下 **一切**。 按一下 [ **Data factory …** 中 **瀏覽** 刀鋒視窗中，然後按一下 [ **ADFTutorialDataFactory**。
+2.  按一下 [ **ADFTutorialDataFactory** 從 **儀表板**。 如果您沒有看見 data factory 連結上 **儀表板**, ，按一下 [ **瀏覽** 中樞，然後按一下 **一切**。 按一下 [ **Data factory...** 在 **瀏覽** 刀鋒視窗中，然後按一下 [ **ADFTutorialDataFactory**。
 3.  請注意，您會看到 **錯誤** 上 **資料集** 並排顯示。 按一下 [ **錯誤**。 您應該會看到 **發生錯誤的資料集** 刀鋒視窗。
 
     ![發生錯誤的 Data Factory 連結][image-data-factory-troubleshoot-with-error-link]
@@ -203,14 +203,14 @@
 
     ![含有問題配量的資料表刀鋒視窗][image-data-factory-troubleshoot-table-blade-with-problem-slices]
 
-    如果您按一下 **問題配量** (不在特定問題上)，您會看到 **資料配量** ] 刀鋒視窗，然後按一下 [ **特定問題配量** 查看 **資料配量** 投影片所選的資料配量。
+    如果您按一下 **問題配量** （不在特定問題上），您會看到 **資料配量** ] 刀鋒視窗，然後按一下 [ **特定問題配量** 查看 **資料配量** 投影片所選的資料配量。
 
 6. 在 **資料配量** 分頁 **EmpSQLTable**, ，您會看到所有 **活動執行** 底部清單中的配量。 按一下 [ **活動執行** 從失敗的清單。
 
     ![含有作用中執行的資料配量刀鋒視窗][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
 
 
-7. 在 **活動執行詳細資料** 刀鋒視窗中活動執行您已選取，您應該會看到錯誤的詳細資訊。 在此案例中，您會看到: **無效的物件名稱 'emp'**。
+7. 在 **活動執行詳細資料** 刀鋒視窗中活動執行您已選取，您應該會看到錯誤的詳細資訊。 在此案例中，您會看到 ︰ **無效的物件名稱 'emp'**。
 
     ![發生錯誤的活動執行詳細資料][image-data-factory-troubleshoot-activity-run-with-error]
 
@@ -266,7 +266,7 @@
 
  
 
-## <a name="pighivewalkthrough"></a> 逐步解說: 疑難排解 Hive/Pig 處理錯誤
+## <a name="pighivewalkthrough"></a> 逐步解說：疑難排解 Hive/Pig 處理錯誤
 本逐步解說提供搭配 Azure 入口網站和 Azure PowerShell 使用 Hive/Pig 處理對錯誤進行疑難排解。 
 
 
@@ -376,3 +376,4 @@
 
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
+

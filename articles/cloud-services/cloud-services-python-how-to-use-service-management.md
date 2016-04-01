@@ -23,7 +23,7 @@
 > [AZURE.NOTE] 服務管理 API 會以新資源管理 API，目前可用的預覽版本中被取代。  請參閱 [Azure 資源管理文件](http://azure-sdk-for-python.readthedocs.org/) 如需有關使用新的資源管理 API，從 Python。
 
 
-## <a name="WhatIs"> </a>什麼是服務管理
+## <a name="WhatIs"> </a>什麼是服務管理？
 服務管理 API 提供以程式設計方式存取服務管理功能可透過 [Azure 傳統入口網站][management-portal]。 Azure SDK for Python 可讓您管理雲端服務和儲存體帳戶。
 
 若要使用服務管理 API，您必須 [建立 Azure 帳戶](http://azure.microsoft.com/pricing/free-trial/)。
@@ -83,9 +83,9 @@ Azure SDK for Python 含有 [Azure 服務管理 API][svc-mgmt-rest-api], ，這�
 
 在上面的範例， `sms` 是 **ServiceManagementService** 物件。  **ServiceManagementService** 類別是用來管理 Azure 服務的主要類別。
 
-## <a name="ListAvailableLocations"> </a>如何: 列出可用位置
+## <a name="ListAvailableLocations"> </a>作法：列出可用位置
 
-若要列出可用於裝載服務的位置，請使用 **list\_locations** 方法:
+若要列出可用於裝載服務的位置，請使用 **list\_locations** 方法 ︰
 
     from azure import *
     from azure.servicemanagement import *
@@ -115,7 +115,7 @@ Azure SDK for Python 含有 [Azure 服務管理 API][svc-mgmt-rest-api], ，這�
 
 ## <a name="CreateCloudService"> </a>作法：建立雲端服務
 
-當您建立應用程式，並在 Azure 中執行它時，程式碼和組態併稱為 Azure [cloud service] (稱為 *託管服務* 在舊版 Azure 中)。  **Create\_hosted\_service** 方法可讓您藉由提供代管的服務名稱 (必須是在 Azure 中是唯一的)、 標籤 (自動編碼為 base64)、 描述和位置建立新的託管的服務。
+當您建立應用程式，並在 Azure 中執行它時，程式碼和組態併稱為 Azure [cloud service] (稱為 *託管服務* 在舊版 Azure 中)。  **Create\_hosted\_service** 方法可讓您藉由提供代管的服務名稱 （必須是在 Azure 中是唯一的）、 標籤 （自動編碼為 base64）、 描述和位置建立新的託管的服務。
 
     from azure import *
     from azure.servicemanagement import *
@@ -129,7 +129,7 @@ Azure SDK for Python 含有 [Azure 服務管理 API][svc-mgmt-rest-api], ，這�
 
     sms.create_hosted_service(name, label, desc, location)
 
-您可以列出與您訂用帳戶的所有代管的服務 **list\_hosted\_services** 方法:
+您可以列出與您訂用帳戶的所有代管的服務 **list\_hosted\_services** 方法 ︰
 
     result = sms.list_hosted_services()
 
@@ -139,7 +139,7 @@ Azure SDK for Python 含有 [Azure 服務管理 API][svc-mgmt-rest-api], ，這�
         print('Location: ' + hosted_service.hosted_service_properties.location)
         print('')
 
-如果您想要取得特定託管服務的相關資訊，您可以這樣來裝載的服務名稱傳遞 **get\_hosted\_service\_properties** 方法:
+如果您想要取得特定託管服務的相關資訊，您可以這樣來裝載的服務名稱傳遞 **get\_hosted\_service\_properties** 方法 ︰
 
     hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -149,13 +149,13 @@ Azure SDK for Python 含有 [Azure 服務管理 API][svc-mgmt-rest-api], ，這�
 
 建立雲端服務之後，您可以將您的程式碼部署到服務與 **create\_deployment** 方法。
 
-## <a name="DeleteCloudService"> </a>如何: 刪除雲端服務
+## <a name="DeleteCloudService"> </a>作法：刪除雲端服務
 
-您可以將服務名稱，以刪除雲端服務 **delete\_hosted\_service** 方法:
+您可以將服務名稱，以刪除雲端服務 **delete\_hosted\_service** 方法 ︰
 
     sms.delete_hosted_service('myhostedservice')
 
-請注意，必須先刪除服務的所有部署，再刪除服務 (請參閱 [如何: 刪除部署](#DeleteDeployment) 如需詳細資訊。)
+請注意，必須先刪除服務的所有部署，再刪除服務 (請參閱 [如何 ︰ 刪除部署](#DeleteDeployment) 如需詳細資訊。)
 
 ## <a name="DeleteDeployment"> </a>作法：刪除部署
 
@@ -189,7 +189,7 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
 
 請注意，在上述範例中的狀態 **create\_storage\_account** 可以擷取作業所傳回的結果傳遞給 **create\_storage\_account** 至 **get\_operation\_status** 方法。  
 
-您可以列出儲存體帳戶和其屬性與 **list\_storage\_accounts** 方法:
+您可以列出儲存體帳戶和其屬性與 **list\_storage\_accounts** 方法 ︰
 
     from azure import *
     from azure.servicemanagement import *
@@ -213,9 +213,9 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
 
     sms.delete_storage_account('mystorageaccount')
 
-## <a name="ListOperatingSystems"> </a>如何: 列出可用作業系統
+## <a name="ListOperatingSystems"> </a>作法：列出可用作業系統
 
-若要列出可用於裝載服務的作業系統，請使用 **list\_operating\_systems** 方法:
+若要列出可用於裝載服務的作業系統，請使用 **list\_operating\_systems** 方法 ︰
 
     from azure import *
     from azure.servicemanagement import *
@@ -229,7 +229,7 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
         print('Family: ' + os.family_label)
         print('Active: ' + str(os.is_active))
 
-或者，您可以使用 **list\_operating\_system\_families** 方法，以依系列的作業系統:
+或者，您可以使用 **list\_operating\_system\_families** 方法，以依系列的作業系統 ︰
 
     result = sms.list_operating_system_families()
 
@@ -241,9 +241,9 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
                 print('Version: ' + os.version)
         print('')
 
-## <a name="CreateVMImage"> </a>如何: 建立作業系統映像
+## <a name="CreateVMImage"> </a>作法：建立作業系統映像
 
-若要將作業系統映像新增至映像儲存機制，使用 **add\_os\_image** 方法:
+若要將作業系統映像新增至映像儲存機制，使用 **add\_os\_image** 方法 ︰
 
     from azure import *
     from azure.servicemanagement import *
@@ -274,9 +274,9 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
         print('Media link: ' + image.media_link)
         print('')
 
-## <a name="DeleteVMImage"> </a>如何: 刪除作業系統映像
+## <a name="DeleteVMImage"> </a>作法：刪除作業系統映像
 
-若要刪除使用者映像，請使用 **delete\_os\_image** 方法:
+若要刪除使用者映像，請使用 **delete\_os\_image** 方法 ︰
 
     from azure import *
     from azure.servicemanagement import *
@@ -288,9 +288,9 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"> </a>如何: 建立虛擬機器
+## <a name="CreateVM"> </a>作法：建立虛擬機器
 
-若要建立虛擬機器，您首先必須建立 [雲端服務](#CreateCloudService)。  然後建立虛擬機器部署使用 **create\_virtual\_machine\_deployment** 方法:
+若要建立虛擬機器，您首先必須建立 [雲端服務](#CreateCloudService)。  然後建立虛擬機器部署使用 **create\_virtual\_machine\_deployment** 方法 ︰
 
     from azure import *
     from azure.servicemanagement import *
@@ -327,9 +327,9 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
         os_virtual_hard_disk=os_hd,
         role_size='Small')
 
-## <a name="DeleteVM"> </a>如何: 刪除虛擬機器
+## <a name="DeleteVM"> </a>作法：刪除虛擬機器
 
-若要刪除虛擬機器，您先刪除部署使用 **delete\_deployment** 方法:
+若要刪除虛擬機器，您先刪除部署使用 **delete\_deployment** 方法 ︰
 
     from azure import *
     from azure.servicemanagement import *
@@ -339,13 +339,13 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
     sms.delete_deployment(service_name='myvm',
         deployment_name='myvm')
 
-雲端服務可以接著可以使用刪除 **delete\_hosted\_service** 方法:
+雲端服務可以接著可以使用刪除 **delete\_hosted\_service** 方法 ︰
 
     sms.delete_hosted_service(service_name='myvm')
 
 ##作法：從擷取的虛擬機器映像建立虛擬機器
 
-若要擷取 VM 映像，請先呼叫 **capture\_vm\_image** 方法:
+若要擷取 VM 映像，請先呼叫 **capture\_vm\_image** 方法 ︰
 
     from azure import *
     from azure.servicemanagement import *
@@ -372,7 +372,7 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
             image
         )
 
-接下來，若要確定您已成功擷取映像，請使用 **list\_vm\_images** api，並確定您的映像會顯示在結果中:
+接下來，若要確定您已成功擷取映像，請使用 **list\_vm\_images** api，並確定您的映像會顯示在結果中 ︰
 
     images = sms.list_vm_images()
 
@@ -434,5 +434,6 @@ A [儲存體服務](../storage/storage-create-storage-account.md) 可讓您存�
 
 
 [cloud service]:https://azure.microsoft.com/en-us/documentation/services/cloud-services/
+
 
 

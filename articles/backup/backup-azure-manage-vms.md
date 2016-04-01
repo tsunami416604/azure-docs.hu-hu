@@ -9,13 +9,13 @@
     editor=""/>
 
 <tags
-    ms.service="backup 」
-    ms.workload= 「 儲存體的備份復原的 」
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/29/2015 」
-    ms.author="aashishr 」。「 jimpark 」。「 trinadhk 」 / >
+    ms.date="10/29/2015"
+    ms.author="aashishr"; "jimpark"; "trinadhk"/>
 
 # 管理和監視 Azure 虛擬機器備份
 
@@ -46,7 +46,7 @@
 
 若要進行虛擬機器的隨選備份：
 
-1. 瀏覽至 **受保護項目** 頁面，並選取 **Azure 虛擬機器** 為 **類型** (如果尚未選取)，然後按一下 **選取** ] 按鈕。
+1. 瀏覽至 **受保護項目** 頁面，並選取 **Azure 虛擬機器** 為 **類型** （如果尚未選取），然後按一下 **選取** ] 按鈕。
 
     ![VM 類型](./media/backup-azure-manage-vms/vm-type.png)
 
@@ -76,7 +76,7 @@
 
 若要停止虛擬機器的保護：
 
-1. 瀏覽至 **受保護項目** 頁面，並選取 **Azure 虛擬機器** 作為篩選類型 (若尚未選取)，然後按一下 [ **選取** ] 按鈕。
+1. 瀏覽至 **受保護項目** 頁面，並選取 **Azure 虛擬機器** 作為篩選類型 （若尚未選取），然後按一下 [ **選取** ] 按鈕。
 
     ![VM 類型](./media/backup-azure-manage-vms/vm-type.png)
 
@@ -131,7 +131,7 @@
 - 在停止保護作業期間
 - 在虛擬機器上完成停止保護作業之後
 
-若要刪除虛擬機器，也就是在備份資料 *停止保護* 後成功完成狀態 **停止備份** 工作:
+若要刪除虛擬機器，也就是在備份資料 *停止保護* 後成功完成狀態 **停止備份** 工作 ︰
 
 1. 瀏覽至 **受保護項目** 頁面，並選取 **Azure 虛擬機器** 為 *類型* 按一下 **選取** ] 按鈕。
 
@@ -145,7 +145,7 @@
 
     ![刪除備份](./media/backup-azure-manage-vms/delete-backup.png)
 
-4. 在 **刪除備份資料** 精靈] 中，選取刪除備份資料 (高度推薦) 的原因，然後按一下 [ **提交**。
+4. 在 **刪除備份資料** 精靈] 中，選取刪除備份資料 （高度推薦） 的原因，然後按一下 [ **提交**。
 
     ![刪除備份資料](./media/backup-azure-manage-vms/delete-backup-data.png)
 
@@ -212,29 +212,29 @@ PS C:\> Switch-AzureMode AzureResourceManager
 PS C:\> Add-AlertRule -Operator GreaterThanOrEqual -Threshold 1 -ResourceId '/subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/microsoft.backupbvtd2/BackupVault/trinadhVault' -EventName Backup  -EventSource Administrative -Level Error -OperationName 'Microsoft.Backup/backupVault/Backup' -ResourceProvider Microsoft.Backup -Status Failed  -SubStatus Failed -RuleType Event -Location eastus -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -Name Backup-Failed -Description 'Backup failed for one of the VMs in vault trinadhkVault' -CustomEmails 'contoso@microsoft.com' -SendToServiceOwners
 ```
 
-**ResourceId**: 您可以從取得此作業記錄檔的快顯視窗中所述區段上方。 作業之詳細資料快顯視窗中的 ResourceUri 是要套用於此 cmdlet 的 ResourceId。
+**ResourceId**︰ 您可以從取得此作業記錄檔的快顯視窗中所述區段上方。 作業之詳細資料快顯視窗中的 ResourceUri 是要套用於此 cmdlet 的 ResourceId。
 
 **EventName**: IaaS VM 上的備份、 支援的值包括-註冊、 取消註冊、 ConfigureProtection，警示的備份、 還原，StopProtection、 DeleteBackupData、 CreateProtectionPolicy、 DeleteProtectionPolicy、 UpdateProtectionPolicy
 
-**層級**: 支援的值為-資訊、 錯誤。 對於失敗動作的警示請使用「錯誤」，對於成功工作的警示請使用「資訊」。
+**層級**︰ 支援的值為-資訊、 錯誤。 對於失敗動作的警示請使用「錯誤」，對於成功工作的警示請使用「資訊」。
 
-**OperationName**: 這個格式會是"Microsoft.Backup/backupvault/<EventName>」 其中 EventName 是上面所述。
+**OperationName**︰ 這會是格式"Microsoft.Backup/backupvault/<EventName>「 其中 EventName 是上面所述。
 
-**狀態**: 支援成功和失敗的值都已啟動。 建議您保留「資訊」做為「成功」狀態的層級。
+**狀態**︰ 支援成功和失敗的值都已啟動。 建議您保留「資訊」做為「成功」狀態的層級。
 
-**子狀態**: 與備份作業的狀態相同
+**子狀態**︰ 與備份作業的狀態相同
 
-**RuleType**: 保持為 *事件* 備份警示是根據事件。
+**RuleType**︰ 保持為 *事件* 備份警示是根據事件。
 
-**ResourceGroup**: 觸發作業時的資源的資源群組。 您可以從 ResourceId 值加以取得。 值欄位之間 */resourceGroups/* 和 */providers/* 中預設值是資源群組的值。
+**ResourceGroup**︰ 觸發作業時的資源的資源群組。 您可以從 ResourceId 值加以取得。 值欄位之間 */resourceGroups/* 和 */providers/* 中預設值是資源群組的值。
 
-**名稱**: 警示規則的名稱。
+**名稱**︰ 警示規則的名稱。
 
-**描述**: 警示規則的描述。
+**描述**︰ 警示規則的描述。
 
-**CustomEmails**: 指定您要傳送警示通知的自訂電子郵件地址
+**CustomEmails**︰ 指定您要傳送警示通知的自訂電子郵件地址
 
-**SendToServiceOwners**: 這個選項會將警示通知傳送至所有系統管理員和共同管理員的訂用帳戶。
+**SendToServiceOwners**︰ 這個選項會將警示通知傳送至所有系統管理員和共同管理員的訂用帳戶。
 
 範例警示郵件看起來像這樣：
 
@@ -255,4 +255,5 @@ PS C:\> Add-AlertRule -Operator GreaterThanOrEqual -Threshold 1 -ResourceId '/su
 ## 後續步驟
 
 - [還原 Azure VM](backup-azure-restore-vms.md)
+
 

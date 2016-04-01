@@ -107,17 +107,17 @@ OR  y.[is_user_defined] = 1
 - **幾何**, ，使用 varbinary 類型
 - **地理位置**, ，使用 varbinary 類型
 - **hierarchyid**, ，不支援這個 CLR 類型
-- **映像**, ，**文字**, ，**ntext**, ，使用 varchar/nvarchar (越小越好)
-- **nvarchar (max)**, ，使用 nvarchar (4000) 或更小，效能更好
+- **映像**, ，**文字**, ，**ntext**, ，使用 varchar/nvarchar （越小越好）
+- **nvarchar （max)**, ，使用 nvarchar （4000） 或更小，效能更好
 - **數值**, ，使用 decimal
 - **sql_variant**, 、 分割成數行強型別資料行
-- **sysname**, ，使用 nvarchar (128)
+- **sysname**, ，使用 nvarchar （128）
 - **資料表**, ，轉換成暫時資料表
 - **時間戳記**, ，程式碼來使用 datetime2 和 `CURRENT_TIMESTAMP` 函式。 請注意，您不能以 current_timestamp 做為預設條件約束，因為值不會自動更新。 如果您需要從 timestamp 類型資料行移轉 rowversion 值，請對 NOT NULL 或 NULL 資料列版本值使用 binary(8) 或 varbinary(8)。
-- **varchar (max)**, ，使用 varchar (8000) 或更小，效能更好
-- **uniqueidentifier**, ，使用 varbinary (8)
+- **varchar （max)**, ，使用 varchar （8000） 或更小，效能更好
+- **uniqueidentifier**, ，使用 varbinary （8）
 - **使用者定義型別**, ，盡可能轉換回原生型別
-- **xml**, ，使用 varchar (8000) 或更小，效能更好。 必要的話，分割資料行
+- **xml**, ，使用 varchar （8000） 或更小，效能更好。 必要的話，分割資料行
 
 部分支援：
 
@@ -128,10 +128,10 @@ OR  y.[is_user_defined] = 1
 ## 後續步驟
 一旦成功將資料庫結構描述移轉到 SQLDW，您就可以繼續閱讀下列其中一篇文章：
 
-- [移轉您的資料][]
-- [移轉您的程式碼][]
+- [遷移資料][]
+- [移轉程式碼][]
 
-如需更多開發秘訣，請參閱 [開發概觀] []。
+如需更多開發秘訣，請參閱 [開發概觀][]。
 
 <!--Image references-->
 
@@ -144,4 +144,5 @@ OR  y.[is_user_defined] = 1
 
 
 <!--Other Web references-->
+
 

@@ -25,9 +25,9 @@
 
 媒體服務可讓您建立資產及傳遞已加密的資產。 A **ContentKey** 提供安全存取您 **資產**s。 
 
-當您建立新的資產 (例如，您之前 [檔案上傳](media-services-dotnet-upload-files.md))，您可以指定下列加密選項: **StorageEncrypted**, ，**CommonEncryptionProtected**, ，或 **EnvelopeEncryptionProtected**。 
+當您建立新的資產 (例如，您之前 [檔案上傳](media-services-dotnet-upload-files.md))，您可以指定下列加密選項 ︰ **StorageEncrypted**, ，**CommonEncryptionProtected**, ，或 **EnvelopeEncryptionProtected**。 
 
-當您將資產傳遞給用戶端時，您可以 [設定的動態加密資產](media-services-dotnet-configure-asset-delivery-policy.md) 與下列兩個加密的其中一個: **DynamicEnvelopeEncryption** 或 **DynamicCommonEncryption**。
+當您將資產傳遞給用戶端時，您可以 [設定的動態加密資產](media-services-dotnet-configure-asset-delivery-policy.md) 與下列兩個加密的其中一個 ︰ **DynamicEnvelopeEncryption** 或 **DynamicCommonEncryption**。
 
 加密的資產必須與相關聯 **ContentKey**s。 本文說明如何建立內容金鑰。
 
@@ -145,4 +145,5 @@ call
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

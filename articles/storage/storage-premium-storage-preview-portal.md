@@ -35,7 +35,7 @@ Azure VM 支援連接數個「進階儲存體」磁碟，讓您應用程式的�
 
 - 若要使用 Premium 儲存體，您必須有 Premium 儲存體帳戶。 若要了解如何建立高階儲存體帳戶，請參閱 [建立和使用 Premium 儲存體帳戶磁碟](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)。
 
-- 高階儲存體位於 [Azure 入口網站](portal.azure.com) 且可存取透過下列 SDK 程式庫: [儲存體 REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) 2014年-02-14 版或更新版本; [服務管理 REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) 2014年-10-01 版或更新版本，和 [PowerShell](../install-configure-powershell.md) 0.8.10 或更新版本。
+- 高階儲存體位於 [Azure 入口網站](portal.azure.com) 且可存取透過下列 SDK 程式庫 ︰ [儲存體 REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) 2014年-02-14 版或更新版本; [服務管理 REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) 2014年-10-01 版或更新版本，和 [PowerShell](../install-configure-powershell.md) 0.8.10 或更新版本。
 
 - 如需目前支援高階儲存體的區域，請參閱 [依地區的 Azure 服務](http://azure.microsoft.com/regions/#services)。
 
@@ -71,7 +71,7 @@ Azure 使用儲存體帳戶做為作業系統 (OS) 和資料磁碟的容器。 �
 
     請注意，這些限制僅適用於磁碟流量，不包含快取命中數和網路流量。 VM 網路流量有不同的頻寬，與 Premium 儲存體磁碟專用的頻寬不同。 
     
-    最大 IOPS 和輸送量 (頻寬) 在 DS 系列和 GS 系列 Vm 的最新資訊，請參閱 [虛擬機器和雲端服務大小](../virtual-machines/virtual-machines-size-specs.md)。 若要深入了解 Premium 儲存體磁碟及其 IOPs 與輸送量限制，請參閱中的資料表 [延展性和效能目標時使用高階儲存體](#scalability-and-performance-targets-when-using-premium-storage) 〉 一節。
+    最大 IOPS 和輸送量 （頻寬） 在 DS 系列和 GS 系列 Vm 的最新資訊，請參閱 [虛擬機器和雲端服務大小](../virtual-machines/virtual-machines-size-specs.md)。 若要深入了解 Premium 儲存體磁碟及其 IOPs 與輸送量限制，請參閱中的資料表 [延展性和效能目標時使用高階儲存體](#scalability-and-performance-targets-when-using-premium-storage) 〉 一節。
 
 > [AZURE.NOTE] 快取命中數不會受到配置的磁碟 IOPS/輸送量。 也就是說，當您在 DS 系列 VM 或 GS 系列 VM 上使用具 ReadOnly 快取設定的資料磁碟時，來自快取的讀取數不會受到進階儲存體磁碟的限制。 因此，如果工作負載以讀取為主，可以從磁碟獲得極高的輸送量。 請注意，快取會根據 VM 大小，受到 VM 層級個別 IOPS / 輸送量的限制。 DS 系列 VM 大約有 4000 IOPS，快取與本機 SSD IO 是每個核心 33 MB/秒。
 
@@ -198,7 +198,7 @@ DS4 VM 連接了兩個 P30 磁碟。 每個 P30 磁碟有每秒 200 MB 的輸送
 - 對於快取設定為 "ReadOnly" 或 "None" 的所有 Premium 儲存體磁碟，您在掛接檔案系統時必須停用 "barrier" (阻礙)，才能達到 Premium 儲存體的延展性目標。 此案例中您不需要阻礙，因為這些快取設定的 Premium 儲存體磁碟寫入都是持久的。 寫入要求成功完成時，資料就已寫入永久性的存放區。 請根據您的檔案系統，使用下列方法停用 "barrier" (阻礙)：
     - 如果您使用 **reiserFS**, 、 停用阻礙使用掛接選項"屏障 = 無 」 (啟用阻礙，請使用 「 屏障 = flush")
     - 如果您使用 **ext3/ext4**, 、 停用阻礙使用掛接選項"屏障 = 0 」 (若要啟用阻礙，請使用 「 屏障 = 1")
-    - 如果您使用 **XFS**, 、 使用掛接選項"nobarrier"停用阻礙 (若要啟用阻礙，使用"barrier"選項)
+    - 如果您使用 **XFS**, 、 使用掛接選項"nobarrier"停用阻礙 （若要啟用阻礙，使用"barrier"選項）
 
 - 對於快取設定為 "ReadWrite" 的 Premium 儲存體磁碟，則應該啟用阻礙以持續寫入。
 - 對於要在 VM 重新開機後保存的磁碟機標籤，您必須以參考磁碟的 UUID 更新 /etc/fstab。 也請參閱 [如何將資料磁碟連接至 Linux 虛擬機器](../virtual-machines/virtual-machines-linux-how-to-attach-disk)
@@ -210,7 +210,7 @@ DS4 VM 連接了兩個 P30 磁碟。 每個 P30 磁碟有每秒 200 MB 的輸送
     <td><strong>配送映像</strong></td>
     <td><strong>版本</strong></td>
     <td><strong>支援的核心</strong></td>
-    <td><strong>支援的影像</strong></td>
+    <td><strong>支援的映像</strong></td>
 </tr>
 <tr>
     <td rowspan="4"><strong>Ubuntu</strong></td>
@@ -237,17 +237,17 @@ DS4 VM 連接了兩個 P30 磁碟。 每個 P30 磁碟有每秒 200 MB 的輸送
     <td><strong>SUSE</strong></td>
     <td>SLES 12</td>
     <td>3.12.36-38.1</td>
-    <td>suse-sles-12-優先順序-v20150213<br>suse sles 12-v20150213</td>
+    <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td>
 </tr>
 <tr>
     <td><strong>CoreOS</strong></td>
     <td>584.0.0</td>
     <td>3.18.4</td>
-    <td>584.0.0 CoreOS</td>
+    <td>CoreOS 584.0.0</td>
 </tr>
 <tr>
     <td rowspan="2"><strong>CentOS</strong></td>
-    <td>6.5, 6.6, 6.7, 7.0</td>
+    <td>6.5、6.6、6.7、7.0</td>
     <td></td>
     <td>
         <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> 需要 LIS 4.0 </a> </br>
@@ -292,11 +292,11 @@ DS4 VM 連接了兩個 P30 磁碟。 每個 P30 磁碟有每秒 200 MB 的輸送
 ## 使用 Premium 儲存體時的定價和計費資訊
 使用 Premium 儲存體時，需考量下列計費資訊：
 
-- Premium 儲存體磁碟的計費依據是磁碟的佈建大小。 Azure 會對應的表格中指定的磁碟大小 (無條件進位) 至最接近的 Premium 儲存體磁碟選項 [延展性和效能目標時使用高階儲存體](#scalability-and-performance-targets-when-using-premium-storage) 一節。 任何已佈建的磁碟都是按每月的 Premium 儲存體優惠價格以每小時的方式計費。 例如，如果您在佈建完 P10 磁碟的 20 小時後刪除它，則會以 20 小時計算 P10 解決方案的費用。 這與寫入磁碟的實際資料量或使用的 IOPS/輸送量無關。
+- Premium 儲存體磁碟的計費依據是磁碟的佈建大小。 Azure 會對應的表格中指定的磁碟大小 （無條件進位） 至最接近的 Premium 儲存體磁碟選項 [延展性和效能目標時使用高階儲存體](#scalability-and-performance-targets-when-using-premium-storage) 一節。 任何已佈建的磁碟都是按每月的 Premium 儲存體優惠價格以每小時的方式計費。 例如，如果您在佈建完 P10 磁碟的 20 小時後刪除它，則會以 20 小時計算 P10 解決方案的費用。 這與寫入磁碟的實際資料量或使用的 IOPS/輸送量無關。
 - Premium 儲存體上的快照會因為使用的額外容量而產生費用。 快照集的資訊，請參閱 [建立 Blob 的快照集](http://msdn.microsoft.com/library/azure/hh488361.aspx)。
-- [輸出資料傳輸](http://azure.microsoft.com/pricing/details/data-transfers/) (Azure 資料中心送出的資料) 頻寬使用量費用。
+- [輸出資料傳輸](http://azure.microsoft.com/pricing/details/data-transfers/) （Azure 資料中心送出的資料） 頻寬使用量費用。
 
-高階儲存體、 DS 系列 Vm 與 GS 系列 Vm 之定價的詳細資訊，請參閱:
+高階儲存體、 DS 系列 Vm 與 GS 系列 Vm 之定價的詳細資訊，請參閱 ︰
 
 - [Azure 儲存體定價](http://azure.microsoft.com/pricing/details/storage/)
 - [虛擬機器定價](http://azure.microsoft.com/pricing/details/virtual-machines/)
@@ -328,7 +328,7 @@ DS4 VM 連接了兩個 P30 磁碟。 每個 P30 磁碟有每秒 200 MB 的輸送
 這個 PowerShell 範例示範如何建立新的 Premium 儲存體帳戶並將使用該帳戶的資料磁碟連接至新的 Azure 虛擬機器。
 
 1. 提供的步驟設定您的 PowerShell 環境 [如何安裝和設定 Azure PowerShell](../install-configure-powershell.md)。
-2. 啟動 PowerShell 主控台，連接至您的訂閱，並在主控台視窗中執行下列 PowerShell Cmdlet。 如此 PowerShell 陳述式所示，您必須指定 **類型** 參數做為 **Premium_LRS** 當您建立 premium 儲存體帳戶。
+2. 啟動 PowerShell 主控台，連接至您的訂用帳戶，並在主控台視窗中執行下列 PowerShell Cmdlet。 如此 PowerShell 陳述式所示，您必須指定 **類型** 參數做為 **Premium_LRS** 當您建立 premium 儲存體帳戶。
 
         New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "West US" -Type "Premium_LRS"
 
@@ -393,4 +393,5 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
  
+
 

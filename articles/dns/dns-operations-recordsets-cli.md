@@ -91,7 +91,7 @@ Azure DNS 支援 [萬用字元記錄](https://en.wikipedia.org/wiki/Wildcard_DNS
     
     azure network dns record-set create myresourcegroup  contoso.com "test-a"  A --ttl 300
 
->[AZURE.NOTE] 若未定義-ttl 參數，預設值為 4 (以秒為單位)。
+>[AZURE.NOTE] 若未定義-ttl 參數，預設值為 4 （以秒為單位）。
 
 
 建立 A 記錄集之後，使用 `azure network dns record-set add-record` 將 IPv4 位址加入記錄集：
@@ -242,6 +242,7 @@ Azure DNS 支援 [萬用字元記錄](https://en.wikipedia.org/wiki/Wildcard_DNS
 
 [將網域委派給 Azure DNS](dns-domain-delegation.md)<BR>
 [管理 DNS 區域](dns-operations-dnszones-cli.md)<BR>
-[使用.NET SDK 自動化作業](dns-sdk.md)
+[使用 .NET SDK 自動化作業](dns-sdk.md)
  
+
 

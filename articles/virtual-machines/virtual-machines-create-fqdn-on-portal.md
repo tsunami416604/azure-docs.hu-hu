@@ -54,3 +54,4 @@
 
     您可以立即使用這個 DNS 名稱從遠端連線到虛擬機器。 例如，連接到具有完整網域名稱 `testdnslabel.eastus.cloudapp.azure.com` 和使用者名稱 `adminuser` 的 Linux 虛擬機器時使用 `SSH adminuser@testdnslabel.eastus.cloudapp.azure.com`。
 
+

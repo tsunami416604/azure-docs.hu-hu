@@ -35,7 +35,7 @@
 
 ### 另請參閱
  
-- [API 文件][連結 4]
+- [API 文件][Link 4]
 - [XMPP 通訊協定資訊]( http://xmpp.org/extensions/xep-0199.html)
  
 ## 無法使用 API 執行 Azure Mobile Engagement UI 中可用的相同動作
@@ -49,7 +49,7 @@
 
 ### 另請參閱
  
-- [UI 文件][連結 1]
+- [UI 文件][Link 1]
  
 ## 錯誤訊息
 
@@ -82,7 +82,7 @@
 
 ### 另請參閱
 
-- [API 文件-適用於每個特定 API 的詳細錯誤][連結 4]
+- [API 文件 - 適用於每個特定 API 的詳細錯誤][Link 4]
  
 ## 無訊息失敗
 
@@ -96,7 +96,7 @@
 
 ### 另請參閱
 
-- [疑難排解指南-SDK][連結 25]
+- [疑難排解指南 - SDK][Link 25]
  
 <!--Link references-->
 [Link 1]: mobile-engagement-user-interface.md
@@ -129,3 +129,4 @@
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
+

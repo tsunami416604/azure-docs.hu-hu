@@ -39,7 +39,7 @@
 
     輸入 MySQL 根密碼 (您在前一個步驟中變更的密碼)，畫面上將會出現提示，以便您發出 SQL 陳述式來與資料庫互動。
 
-7. 若要建立新的 MySQL 使用者，執行下列命令 **mysql >** 提示字元:
+7. 若要建立新的 MySQL 使用者，執行下列命令 **mysql >** 提示字元 ︰
 
         mysql> CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
@@ -80,4 +80,5 @@
 [AzurePortal]: http://manage.windowsazure.com
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
+
 

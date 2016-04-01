@@ -22,8 +22,8 @@
 - [.Net](web-sites-dotnet-get-started.md)
 - [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
-- [PHP-Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP-FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
 ## 概觀
@@ -85,7 +85,7 @@
 
 5. 按一下 [ **確定**。
 
-    ![[新增專案] 對話方塊](./media/web-sites-dotnet-get-started/GS13newprojdb.png)
+    ![New Project dialog box](./media/web-sites-dotnet-get-started/GS13newprojdb.png)
 
 5. 在 **新增 ASP.NET 專案** 對話方塊中，選取 **MVC** 範本。
 
@@ -199,7 +199,7 @@
 
 13. 將此瀏覽器視窗保持開啟狀態，以便在下一節中使用。
 
-**提示:** 可以啟用 **Web 單鍵發行** 工具列，以快速部署。 按一下 [ **檢視 > 工具列**, ，然後選取 **Web 單鍵發行**。 您可以使用工具列中選取設定檔，按一下按鈕進行發行，或按一下按鈕以開啟 **發行 Web** 精靈。
+**提示 ︰** 可以啟用 **Web 單鍵發行** 工具列，以快速部署。 按一下 [ **檢視 > 工具列**, ，然後選取 **Web 單鍵發行**。 您可以使用工具列中選取設定檔，按一下按鈕進行發行，或按一下按鈕以開啟 **發行 Web** 精靈。
 
 ![Web 單鍵發行工具列](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
 
@@ -273,9 +273,9 @@
 
     若要將 web 專案部署至 web 應用程式，使用 Visual Studio 或其他方式的相關資訊 [自動化部署](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) 從 [原始檔控制系統](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control), ，請參閱 [如何部署 Azure web 應用程式](web-sites-deploy.md)。
 
-    Visual Studio 也可產生您可以用來將部署自動化的 Windows PowerShell 指令碼。 如需詳細資訊，請參閱 [自動化各個項目 (建置真實世界雲端應用程式與 Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。
+    Visual Studio 也可產生您可以用來將部署自動化的 Windows PowerShell 指令碼。 如需詳細資訊，請參閱 [自動化各個項目 （建置真實世界雲端應用程式與 Azure）](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。
 
-* 如何疑難排解 Web 應用程式
+* 如何針對 Web 應用程式進行疑難排解
 
     Visual Studio 提供的功能，讓您能輕鬆檢視即時產生的 Azure 記錄。 您也可以在 Azure 中遠端執行偵錯模式。 如需詳細資訊，請參閱 [Visual Studio 中的疑難排解 Azure web 應用程式](web-sites-dotnet-troubleshoot-visual-studio.md)。
 
@@ -288,11 +288,11 @@
 
 * 如何新增即時功能，例如交談
 
-    如果您的 web 應用程式將包含即時功能 (例如交談服務、 遊戲或股票行情即時看板)，您還可以獲得最佳效能，使用 [ASP.NET SignalR](http://www.asp.net/signalr) 與 [WebSockets](/blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/) 傳輸方法。 如需詳細資訊，請參閱 [Azure web 應用程式中使用 SignalR](http://www.asp.net/signalr/overview/signalr-20/getting-started-with-signalr-20/using-signalr-with-windows-azure-web-sites)。
+    如果您的 web 應用程式將包含即時功能 （例如交談服務、 遊戲或股票行情即時看板），您還可以獲得最佳效能，使用 [ASP.NET SignalR](http://www.asp.net/signalr) 與 [WebSockets](/blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/) 傳輸方法。 如需詳細資訊，請參閱 [Azure web 應用程式中使用 SignalR](http://www.asp.net/signalr/overview/signalr-20/getting-started-with-signalr-20/using-signalr-with-windows-azure-web-sites)。
 
 * 如何在 App Service、Azure 雲端服務和 Web 應用程式的 Azure 虛擬機器之間進行選擇
 
-    在 Azure 中，您可以在 App Service Web Apps 中執行 Web 應用程式 (如本教學課程所示)，或在雲端服務或虛擬機器中執行。 如需詳細資訊，請參閱 [Azure web 應用程式、 雲端服務和 Vm: 使用?](/manage/services/web-sites/choose-web-app-service/)。
+    在 Azure 中，您可以在 App Service Web Apps 中執行 Web 應用程式 (如本教學課程所示)，或在雲端服務或虛擬機器中執行。 如需詳細資訊，請參閱 [Azure web 應用程式、 雲端服務和 Vm ︰ 使用？](/manage/services/web-sites/choose-web-app-service/)。
 
 * [如何選擇或建立 App Service 方案](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
 
@@ -300,4 +300,5 @@
 
 ## 變更的項目
 * 變更從應用程式服務的網站的指南，請參閱 [Azure App Service 和現有 Azure 服務](http://go.microsoft.com/fwlink/?LinkId=529714)。
+
 

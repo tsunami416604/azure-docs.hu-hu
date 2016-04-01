@@ -65,3 +65,4 @@
 
 對於成功的要求，您應該會看到狀態碼「201 已建立」。 如需有關建立索引，透過 REST API 的詳細資訊，請瀏覽 [本頁](https://msdn.microsoft.com/library/azure/dn798941.aspx)。
 
+

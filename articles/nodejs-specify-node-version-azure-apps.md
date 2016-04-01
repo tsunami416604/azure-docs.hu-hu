@@ -24,15 +24,15 @@
 
 Azure 提供的 Node.js 版本會持續進行更新。 除非另有指定，否則會使用最新的版本。
 
-> [AZURE.NOTE] 如果您要裝載您的應用程式在 Azure 雲端服務 (web 或背景工作角色)，而且它是第一次部署應用程式，Azure 就會嘗試使用的 Node.js 版本符合 Azure 上提供的預設版本，您已安裝在開發環境。
+> [AZURE.NOTE] 如果您要裝載您的應用程式在 Azure 雲端服務 （web 或背景工作角色），而且它是第一次部署應用程式，Azure 就會嘗試使用的 Node.js 版本符合 Azure 上提供的預設版本，您已安裝在開發環境。
 
 ##以 package.json 進行版本設定
 
-您可以指定要新增下列內容來使用的 Node.js 版本您 **package.json** 檔案:
+您可以指定要新增下列內容來使用的 Node.js 版本您 **package.json** 檔案 ︰
 
     "engines":{"node":version}
 
-其中 *版本* 是要使用的特定版本號碼。 您可以指定較複雜的條件，如版本，例如:
+其中 *版本* 是要使用的特定版本號碼。 您可以指定較複雜的條件，如版本，例如 ︰
 
     "engines":{"node": "0.6.22 || 0.8.x"}
 
@@ -55,7 +55,7 @@ Azure 提供的 Node.js 版本會持續進行更新。 除非另有指定，否�
 
 雖然 Azure 提供數個預設 Node.js 版本，不過您可能會想要使用預設未提供的版本。 如果您的應用程式裝載為 Azure 網站，您可以完成這項作業使用 **iisnode.yml** 檔案。 下列步驟將逐步引導您對 Azure 網站使用自訂版本的 Node.Js：
 
-1. 建立新的目錄，然後再建立 **server.js** 目錄內的檔案。  **Server.js** 檔案應該包含下列:
+1. 建立新的目錄，然後再建立 **server.js** 目錄內的檔案。  **Server.js** 檔案應該包含下列 ︰
 
         var http = require('http');
         http.createServer(function(req,res) {
@@ -71,13 +71,13 @@ Azure 提供的 Node.js 版本會持續進行更新。 除非另有指定，否�
 
 3. 建立新目錄 **bin** 為目錄的子系 **server.js** 檔案。
 
-4. 下載的特定版本 **node.exe** (Windows 版)，您想要讓應用程式使用。 例如，以下使用 **curl** 下載 0.8.1 版:
+4. 下載的特定版本 **node.exe** （Windows 版），您想要讓應用程式使用。 例如，以下使用 **curl** 下載 0.8.1 版 ︰
 
         curl -O http://nodejs.org/dist/v0.8.1/node.exe
 
     儲存 **node.exe** 檔案 **bin** 先前建立的資料夾。
 
-5. 建立 **iisnode.yml** 與相同的目錄中檔案 **server.js** 檔案，，然後加入下列內容 **iisnode.yml** 檔案:
+5. 建立 **iisnode.yml** 與相同的目錄中檔案 **server.js** 檔案，，然後加入下列內容 **iisnode.yml** 檔案 ︰
 
         nodeProcessCommandLine: "D:\home\site\wwwroot\bin\node.exe"
 
@@ -101,4 +101,5 @@ Azure 提供的 Node.js 版本會持續進行更新。 除非另有指定，否�
 [Azure Command-line tools]: xplat-cli-install.md
 [work with modules]: nodejs-use-node-modules-azure-apps.md
 [build and deploy a Node.js Web Site]: web-sites-nodejs-develop-deploy-mac.md
+
 

@@ -207,3 +207,4 @@ public class Finaliser : StatefulActor<FinalizerState>, IFinaliser
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-computation/distributed-computation-1.png
 
+

@@ -45,7 +45,7 @@
 |  1  | 錯誤 350032：此裝置已經停用。 | 如果您在已停用的裝置上執行安裝精靈，就會看到這個錯誤。 | [請連絡 Microsoft 支援](storsimple-contact-microsoft-support.md) 接下來的步驟。 已停用的裝置無法處於執行狀態。 您可能需要進行原廠重設，裝置才能再次啟用。 |
 |  2  | Invoke-HcsSetupWizard：ERROR_INVALID_FUNCTION (發生例外狀況於 HRESULT：0x80070001) | DNS 伺服器更新失敗。 DNS 設定是全域設定，並會在所有已啟用的網路介面上加以套用。 | 啟用介面並重新套用 DNS 設定。 因為這些設定是全域的，所以這樣做可能會中斷其他已啟用介面的網路。 |
 |  3  | 裝置會在 StorSimple Manager 服務入口網站中顯示為線上，但是當您嘗試完成最小安裝並儲存設定時，操作失敗。 | 在初始安裝期間，並未設定 Web Proxy，即使已有實際的 Proxy 伺服器存在也一樣。 | 使用 [Test-hcsmconnection cmdlet][2] 來尋找錯誤。 [請連絡 Microsoft 支援](storsimple-contact-microsoft-support.md) 如果無法修正問題。 |
-|  4  | Invoke-HcsSetupWizard：值未落在預期的範圍內。 | 這個錯誤是因為不正確的子網路遮罩而引發。 可能的原因如下: <ul><li> 子網路遮罩為遺失或空白。</li><li>Ipv6 首碼格式不正確。</li><li>此介面具備雲端功能，但閘道遺失或不正確。</li></ul>請注意，DATA 0 自動具備雲端功能設定透過安裝精靈。 | 若要判斷問題所在，請使用子網路 0.0.0.0 或 256.256.256.256，然後查看輸出。 視需要針對子網路遮罩、閘道器及 Ipv6 首碼輸入正確的值。 |
+|  4  | Invoke-HcsSetupWizard：值未落在預期的範圍內。 | 這個錯誤是因為不正確的子網路遮罩而引發。 可能的原因如下 ︰ <ul><li> 子網路遮罩為遺失或空白。</li><li>Ipv6 首碼格式不正確。</li><li>此介面具備雲端功能，但閘道遺失或不正確。</li></ul>請注意，DATA 0 自動具備雲端功能設定透過安裝精靈。 | 若要判斷問題所在，請使用子網路 0.0.0.0 或 256.256.256.256，然後查看輸出。 視需要針對子網路遮罩、閘道器及 Ipv6 首碼輸入正確的值。 |
  
 ## 錯誤碼
 
@@ -66,4 +66,5 @@
 
 [1]: https://technet.microsoft.com/en-us/%5Clibrary/Dn688135(v=WPS.630).aspx
 [2]: https://technet.microsoft.com/en-us/%5Clibrary/Dn715782(v=WPS.630).aspx
+
 

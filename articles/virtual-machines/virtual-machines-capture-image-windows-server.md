@@ -48,7 +48,7 @@ Azure 會儲存在映像 **我的映像**。 這個位置與您已上傳映像�
 
 4.   **系統準備工具** ] 對話方塊隨即出現。 執行下列動作：
 
-    - 在 **系統清理動作**, ，請選取 **進入系統的全新體驗 (OOBE)** 並確定 **一般化** 已核取。 如需有關使用 Sysprep 的詳細資訊，請參閱 [如何使用 Sysprep: 簡介][]。
+    - 在 **系統清理動作**, ，請選取 **進入系統的全新體驗 (OOBE)** 並確定 **一般化** 已核取。 如需有關使用 Sysprep 的詳細資訊，請參閱 [如何使用 Sysprep ︰ 簡介][]。
 
     - 在 **關機選項**, ，請選取 **關機**。
 
@@ -89,4 +89,5 @@ Azure 會儲存在映像 **我的映像**。 這個位置與您已上傳映像�
 [Enter the image name]: ./media/virtual-machines-capture-image-windows-server/Capture.png
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
+
 

@@ -36,11 +36,11 @@
 
 您可以在下列階段中部署這個設定：
 
-- [第 1 階段: 設定 Azure](virtual-machines-workload-high-availability-LOB-application-phase1.md)。 建立儲存體帳戶、可用性集合及跨單位虛擬網路。
-- [第 2 階段: 設定網域控制站](virtual-machines-workload-high-availability-LOB-application-phase2.md)。 建立和設定複本 Active Directory 網域服務 (AD DS) 網域控制站。
-- [第 3 階段: 設定 SQL Server 基礎結構](virtual-machines-workload-high-availability-LOB-application-phase3.md)。 建立和設定執行 SQL Server 的虛擬機器、建立叢集，以及啟用 SQL Server AlwaysOn 可用性群組。
-- [第 4 階段: 設定 web 伺服器](virtual-machines-workload-high-availability-LOB-application-phase4.md)。 建立和設定兩部 Web 伺服器虛擬機器。
-- [第 5 階段: 加入 SQL Server AlwaysOn 可用性群組中的應用程式資料庫](virtual-machines-workload-high-availability-LOB-application-phase5.md)。 準備企業營運應用程式資料庫並將其加入至 SQL Server AlwaysOn 可用性群組。
+- [第 1 階段 ︰ 設定 Azure](virtual-machines-workload-high-availability-LOB-application-phase1.md)。 建立儲存體帳戶、可用性集合及跨單位虛擬網路。
+- [第 2 階段 ︰ 設定網域控制站](virtual-machines-workload-high-availability-LOB-application-phase2.md)。 建立和設定複本 Active Directory 網域服務 (AD DS) 網域控制站。
+- [第 3 階段 ︰ 設定 SQL Server 基礎結構](virtual-machines-workload-high-availability-LOB-application-phase3.md)。 建立和設定執行 SQL Server 的虛擬機器、建立叢集，以及啟用 SQL Server AlwaysOn 可用性群組。
+- [第 4 階段 ︰ 設定 web 伺服器](virtual-machines-workload-high-availability-LOB-application-phase4.md)。 建立和設定兩部 Web 伺服器虛擬機器。
+- [第 5 階段 ︰ 加入 SQL Server AlwaysOn 可用性群組中的應用程式資料庫](virtual-machines-workload-high-availability-LOB-application-phase5.md)。 準備企業營運應用程式資料庫並將其加入至 SQL Server AlwaysOn 可用性群組。
 
 此部署設計來搭配 [列的應用程式架構藍圖](http://msdn.microsoft.com/dn630664) 並包含最新的建議。
 
@@ -56,7 +56,7 @@
 
 ## 後續步驟
 
-若要開始設定這個工作負載，請移至 [第 1 階段: 設定 Azure](virtual-machines-workload-high-availability-LOB-application-phase1.md)。
+若要開始設定這個工作負載，請移至 [第 1 階段 ︰ 設定 Azure](virtual-machines-workload-high-availability-LOB-application-phase1.md)。
 
 ## 其他資源
 
@@ -67,4 +67,5 @@
 [Azure 基礎結構服務實作指導方針](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
 [Azure 基礎結構服務工作負載：SharePoint Server 2013 陣列](virtual-machines-workload-intranet-sharepoint-farm.md)
+
 

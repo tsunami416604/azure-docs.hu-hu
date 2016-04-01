@@ -28,7 +28,7 @@ Azure Active Directory B2C 處於預覽版狀態。 我們冀望在此期間能�
 
 若要建置可接受取用者註冊與登入的應用程式，您必須先使用 Azure Active Directory B2C 租用戶註冊該應用程式。 取得使用中所述的步驟您自己租用戶 [文章](active-directory-b2c-get-started.md)。
 
-您可以撰寫您的應用程式對 Azure Active Directory B2C 服務直接傳送通訊協定訊息是選擇使用 [OAuth 2.0](active-directory-b2c-protocols.md#oauth2-authorization-code-flow) 或 [Openid Connect](active-directory-b2c-protocols.md#openid-connect-sign-in-flow) 或使用我們的程式庫為您執行工作 (選擇您最愛的平台下方並開始使用)。
+您可以撰寫您的應用程式對 Azure Active Directory B2C 服務直接傳送通訊協定訊息是選擇使用 [OAuth 2.0](active-directory-b2c-protocols.md#oauth2-authorization-code-flow) 或 [Openid Connect](active-directory-b2c-protocols.md#openid-connect-sign-in-flow) 或使用我們的程式庫為您執行工作 （選擇您最愛的平台下方並開始使用）。
 
 [AZURE.INCLUDE [active-directory-b2c-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
@@ -56,10 +56,11 @@ Azure Active Directory B2C 處於預覽版狀態。 我們冀望在此期間能�
 
 - 請參閱 [Active Directory B2C 定價資訊](https://azure.microsoft.com/pricing/details/active-directory-b2c)
 - 取得有關堆疊溢位使用 [azure active 目錄](http://stackoverflow.com/questions/tagged/azure-active-directory) 或 [adal](http://stackoverflow.com/questions/tagged/adal) 標記。
-- 請不吝提供您的想法預覽使用 [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) -我們想聽聽他們! 請在您的文章標題中使用 "AzureADB2C:" 字詞，以方便我們尋找。
+- 請不吝提供您的想法預覽使用 [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) -我們想聽聽他們 ！ 請在您的文章標題中使用 "AzureADB2C:" 字詞，以方便我們尋找。
 - Azure Active Directory B2C 使用稱為「應用程式模型 v2.0」的應用程式註冊模型，可支援業界標準通訊協定、OpenID Connect 和 OAuth 2.0。
   - [應用程式模型 v2.0 通訊協定參考](active-directory-b2c-reference-protocols.md)
   - [應用程式模型 v2.0 權杖參考](active-directory-b2c-reference-tokens.md)
 - [Azure Active Directory B2C 常見問題集](active-directory-b2c-faqs.md)
 - [針對 Azure Active Directory B2C 的檔案支援要求](active-directory-b2c-support.md)
+
 

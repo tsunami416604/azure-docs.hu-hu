@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Onit 單一登入的訂用帳戶
   
-完成本教學課程之後, 您已指派給 Onit 的 Azure AD 使用者將能夠登入您的 Onit 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Onit 的 Azure AD 使用者將能夠登入您的 Onit 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -83,10 +83,10 @@
 2.  若要加入必要的屬性對應，請執行下列步驟：
 
     
-    |Attribute Name|Attribute Value|
-    |---|---|
-    |name|User.userprincipalname|
-    |email|User.mail|
+  	|Attribute Name|Attribute Value|
+  	|---|---|
+  	|name|User.userprincipalname|
+  	|email|User.mail|
 
     1.  For each data row in the table above, click **add user attribute**.
     2.  In the **Attribute Name** textbox, type the attribute name shown for that row.
@@ -127,7 +127,7 @@
 
     ![編輯公司資訊](./media/active-directory-saas-onit-tutorial/IC791176.png "Edit Company Information")
 
-13. 在 **安全性** 索引標籤上，執行下列步驟:
+13. 在 **安全性** 索引標籤上，執行下列步驟 ︰
 
     ![單一登入](./media/active-directory-saas-onit-tutorial/IC791177.png "Single Sign-On")
 
@@ -140,7 +140,7 @@
 
     5.  做為 **SSO 類型**, ，請選取 **SAML**。
     6.  在 **SSO 登入按鈕文字** 文字方塊中，輸入您喜歡的按鈕文字。
-    7.  選取 **SSO 登入: 所需的下列網域/使用者**, ，在相關的文字方塊中，輸入測試使用者電子郵件地址，然後按一下 **更新**。
+    7.  選取 **SSO 登入 ︰ 所需的下列網域/使用者**, ，在相關的文字方塊中，輸入測試使用者電子郵件地址，然後按一下 **更新**。
         ![編輯公司](./media/active-directory-saas-onit-tutorial/IC791178.png "Edit Corporation")
 
 14. 在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。
@@ -159,7 +159,7 @@
 
     ![系統管理](./media/active-directory-saas-onit-tutorial/IC791180.png "Administration")
 
-3.  在 **新增使用者** 對話方塊頁面上，執行下列步驟:
+3.  在 **新增使用者** 對話方塊頁面上，執行下列步驟 ︰
 
     ![新增使用者](./media/active-directory-saas-onit-tutorial/IC791181.png "Add User")
 
@@ -187,3 +187,4 @@
     ![是](./media/active-directory-saas-onit-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

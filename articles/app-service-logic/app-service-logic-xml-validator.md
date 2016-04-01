@@ -26,27 +26,27 @@
 ### 設定 BizTalk XML 驗證器
 BizTalk XML 驗證器會將結構描述納入其組態中。 直接從 Azure 入口網站啟動 API 應用程式，或按兩下設計工具介面上的 API 應用程式，使用者即可啟動 API 應用程式組態刀鋒視窗：  
 
-![BizTalk XML 驗證器組態][] 1
+![BizTalk XML 驗證器組態][1]
 
 在 [API 應用程式] 分頁中，使用者可以選取設定結構描述 *結構描述*:  
 
-![BizTalk XML 驗證器結構描述組件][] 2
+![BizTalk XML 驗證器結構描述組件][2]
 
 使用者可以從磁碟上傳結構描述，或從一般檔案執行個體或 JSON 執行個體產生一個結構描述：  
 
-![BizTalk XML 驗證器結構描述][] 3
+![BizTalk XML 驗證器結構描述][3]
 
 
 ### 在設計介面中使用 BizTalk 一般檔案編碼器
-一旦設定，使用者可以選取 *]-> [* 從動作清單的動作:  
+一旦設定，使用者可以選取 *]-> [* 從動作清單的動作 ︰  
 
-![BizTalk XML 驗證器的 [動作][] 4
+![BizTalk XML 驗證器組態][4]
 
 #### 驗證 Xml
 
 「驗證 Xml」動作會根據預先設定的結構描述，驗證指定的 xml 輸入。  
 
-![BizTalk XML 驗證器驗證 Xml][] 5
+![BizTalk XML 驗證器驗證 Xml][5]
 
 參數|類型|參數說明
 ---|---|---
@@ -61,4 +61,5 @@ BizTalk XML 驗證器會將結構描述納入其組態中。 直接從 Azure 入
 [3]: ./media/app-service-logic-xml-validator/XmlValidator.SchemaUpload.PNG
 [4]: ./media/app-service-logic-xml-validator/XmlValidator.ListOfActions.PNG
 [5]: ./media/app-service-logic-xml-validator/XmlValidator.ValidateXml.PNG
+
 

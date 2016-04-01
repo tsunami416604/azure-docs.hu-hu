@@ -21,7 +21,7 @@
 
 使用 Docker，您可以在完成所有相依性的輕量級容器中散發應用程式。 它們會在執行 Docker 引擎的任何主機電腦上執行。
 
-當您執行 [Application Insights 映像](https://hub.docker.com/r/microsoft/applicationinsights/) 上 Docker 主機中，您會獲得下列益處:
+當您執行 [Application Insights 映像](https://hub.docker.com/r/microsoft/applicationinsights/) 上 Docker 主機中，您會獲得下列益處 ︰
 
 * 主機上執行之所有容器的相關週期遙測 - 啟動、停止等。
 * 所有容器的效能計數器。 CPU、記憶體、網路使用量等。
@@ -34,13 +34,13 @@
 
 1. 登入 [Microsoft Azure 入口網站](https://azure.com) ，然後開啟您的應用程式，Application Insights 資源或 [建立一個新](app-insights-create-new-resource.md)。 
 
-    *應該使用哪些資源?*如果您在主機執行的應用程式開發的其他人，則您將需要 [建立新的 Application Insights 資源](app-insights-create-new-resource.md)。 這是您檢視及分析遙測的位置 (針對應用程式類型選取 [其他])。
+    *我應該使用哪種資源？* 如果您在主機執行的應用程式開發的其他人，則您將需要 [建立新的 Application Insights 資源](app-insights-create-new-resource.md)。 這是您檢視及分析遙測的位置 (針對應用程式類型選取 [其他])。
 
     但如果您是應用程式，開發人員，那我們希望您 [加入 Application Insights SDK](app-insights-java-live.md) 每一部。 如果這些應用程式其實全部都是單一商務應用程式的元件，則您可能會設定所有應用程式將遙測資料傳送至一個資源，再使用該相同的資源來顯示 Docker 週期和效能資料。 
 
     第三種情況是您已開發大部分應用程式，但想要使用不同的資源來顯示其遙測。 在這種情況下，您可能也需要為 Docker 資料建立不同的資源。 
 
-2.  新增 Docker 磚: 選擇 **新增磚**, ，Docker 磚拖曳圖庫]，然後按一下 **完成**。 
+2.  新增 Docker 磚 ︰ 選擇 **新增磚**, ，Docker 磚拖曳圖庫]，然後按一下 **完成**。 
 
     ![範例](./media/app-insights-docker/03.png)
 
@@ -69,7 +69,7 @@
 
 ## 更新應用程式
 
-如果您的應用程式會使用檢測 [Application Insights SDK for Java](app-insights-java-get-started.md), ，在 ApplicationInsights.xml 檔案，在專案中，加入下列程式行 `<TelemetryInitializers>` 項目:
+如果您的應用程式會使用檢測 [Application Insights SDK for Java](app-insights-java-get-started.md), ，在 ApplicationInsights.xml 檔案，在專案中，加入下列程式行 `<TelemetryInitializers>` 項目 ︰
 
 ```xml
 
@@ -146,5 +146,6 @@
 *如何從應用程式本身取得遙測？*
 
 * 在應用程式中安裝 Application Insights SDK。 
-了解如何針對: [Java web 應用程式](app-insights-java-get-started.md), ，[Windows web 應用程式](app-insights-asp-net.md)。
+了解如何針對 ︰ [Java web 應用程式](app-insights-java-get-started.md), ，[Windows web 應用程式](app-insights-asp-net.md)。
+
 

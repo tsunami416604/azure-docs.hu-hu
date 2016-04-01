@@ -78,3 +78,4 @@ Reliable Actor 架構藉由讓您可以將您在物件導向設計中會使用�
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
 
+

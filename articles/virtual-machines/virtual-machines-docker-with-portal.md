@@ -23,9 +23,9 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
 
 
-[Docker](https://www.docker.com/) 是其中一個最常用的虛擬化方式使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC) 而不是一種獨立資料和執行計算共用資源上部署虛擬機器。 您可以使用由 [Azure Linux 代理程式] 來建立 Docker VM 來託管任何數量的容器應用程式在 Azure 上的 Docker VM 延伸模組。
+[Docker](https://www.docker.com/) 是其中一個最常用的虛擬化方式使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC) 而不是一種獨立資料和執行計算共用資源上部署虛擬機器。 您可以使用所管理的 Docker VM 延伸模組 [Azure Linux Agent] 來建立 Docker VM 來託管任何數量的應用程式在 Azure 上的容器。
 
-> [AZURE.NOTE] 本主題說明如何從 Azure 傳統入口網站建立 Docker VM。 若要了解如何在命令列建立 Docker VM，請參閱 [如何使用 Docker VM 擴充程式從 Azure 命令列介面 (Azure CLI)]。 若要查看容器及其優點的高層級討論，請參閱 [Docker 高層級白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
+> [AZURE.NOTE] 本主題說明如何從 Azure 傳統入口網站建立 Docker VM。 若要了解如何在命令列建立 Docker VM，請參閱 [How to use the Docker VM Extension from the Azure Command-line Interface (Azure CLI)]。 若要查看容器及其優點的高層級討論，請參閱 [Docker 高層級白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
 
 ## 從映像庫建立新的 VM
 第一個步驟需要可支援 Docker VM 擴充程式的 Linux 映像提供 Azure VM，使用映像庫的 Ubuntu 14.04 LTS 映像作為範例伺服器映像，且 Ubuntu 14.04 Desktop 作為用戶端。 在入口網站中，按一下 [ **+ 新增** 中建立新的 VM 執行個體，並選取 Ubuntu 14.04 LTS 映像，從可用選項，或從完整映像庫中，如下所示左下角。
@@ -57,7 +57,7 @@
 
 ## 新增 Docker VM 擴充程式
 若要新增 Docker VM 延伸模組，找出您所建立的 VM 執行個體，並向下捲動至 **延伸** 並按一下以開啟 VM 擴充程式，如下所示。
-> [AZURE.NOTE] 在預覽入口網站只支援這項功能: https://portal.azure.com/
+> [AZURE.NOTE] 在預覽入口網站只支援這項功能 ︰ https://portal.azure.com/
 
 ![](./media/virtual-machines-docker-with-portal/ClickExtensions.png)
 ### 新增擴充程式
@@ -76,7 +76,7 @@
 
 ![](./media/virtual-machines-docker-with-portal/AddExtensionFormFilled.png)
 
-> [AZURE.NOTE] 請注意，(如同前述的映像) 已填入 2376年預設情況下。 您可以在此輸入任何端點，但下一個步驟會是開啟相符的端點。 如果您變更預設值，請確定在下一個步驟中開啟相符的端點。
+> [AZURE.NOTE] 請注意，（如同前述的映像） 已填入 2376年預設情況下。 您可以在此輸入任何端點，但下一個步驟會是開啟相符的端點。 如果您變更預設值，請確定在下一個步驟中開啟相符的端點。
 
 ## 新增 Docker 通訊端點
 當您建立的資源群組中檢視您的 VM，向下捲動按一下 **端點** 以檢視 VM 上的端點，如下所示。
@@ -117,7 +117,7 @@ WARNING: No swap limit support
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
-您已準備好前往 [Docker User Guide] 並使用 Docker VM。 如果您想要自動建立 Docker 主機 Azure Vm 上的透過命令列介面，請參閱 [如何使用 Docker VM 擴充程式從 Azure 命令列介面 (Azure CLI)]
+您已準備好前往 [Docker User Guide] 並使用 Docker VM。 如果您想要自動建立 Docker 主機 Azure Vm 上的透過命令列介面，請參閱 [How to use the Docker VM Extension from the Azure Command-line Interface (Azure CLI)]
 
 <!--Anchors-->
 [Create a new VM from the Image Gallery]: #createvm
@@ -146,4 +146,5 @@ WARNING: No swap limit support
 
 [Running Docker with https]: http://docs.docker.com/articles/https/
 [Docker User Guide]: https://docs.docker.com/userguide/
+
 

@@ -32,3 +32,4 @@
 
     ![設定 VM 代理程式和需擬機器端點](./media/virtual-machines-create-WindowsVM/vmcreated.png)
 
+

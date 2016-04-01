@@ -62,7 +62,7 @@ Azure AD 支援三種不同的方式登入應用程式：
 
 Azure AD 可以對支援 SAML 2.0、WS-同盟或 OpenID Connect 通訊協定的應用程式支援同盟單一登入。
 
-另請參閱: [管理憑證的同盟單一登入](active-directory-sso-certs.md)
+另請參閱 ︰ [管理憑證的同盟單一登入](active-directory-sso-certs.md)
 
 ###密碼單一登入
 
@@ -84,7 +84,7 @@ Azure AD 可以對具有 HTML 登入頁面的任何雲端應用程式支援密�
 - Chrome - 在 Windows 7 或更新版本，和在 MacOS X 或更新版本上
 - Firefox 26.0 或更新版本 - 在 Windows XP SP2 或更新版本，和在 Mac OS X 10.6 或更新版本上
 
-**注意:** 密碼 SSO 擴充功能就可以使用 Windows 10 中的 edge 瀏覽器延伸模組可以支援 Edge 時。
+**注意 ︰** 密碼 SSO 擴充功能就可以使用 Windows 10 中的 edge 瀏覽器延伸模組可以支援 Edge 時。
 
 ###現有單一登入
 
@@ -219,4 +219,5 @@ Azure AD 也支援對支援密碼單一登入、現有單一登入，以及任�
 [4]: ./media/active-directory-appssoaccess-whatis/officeapphub.png
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
+
 

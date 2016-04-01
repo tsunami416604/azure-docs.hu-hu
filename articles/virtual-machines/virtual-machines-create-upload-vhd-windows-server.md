@@ -26,11 +26,11 @@
 
 
 
-## 先決條件
+## 必要條件
 
 本文假設您已經：
 
-1. **Azure 訂用帳戶** -如果您沒有帳戶，您可以 [免費申請 Azure 帳戶](/pricing/free-trial/?WT.mc_id=A261C142F): 取得點數可用來試用付費 Azure 服務，並甚至用後可保留帳戶，並使用免費的 Azure 服務，例如網站。 除非您明確變更您的設定且同意付費，否則我們將不會從您的信用卡收取任何費用。 您也可以 [啟用 MSDN 訂戶權益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): 您的 MSDN 訂閱提供您額度，您可以使用 Azure 付費服務的每個月。
+1. **Azure 訂用帳戶** -如果您沒有帳戶，您可以 [免費申請 Azure 帳戶](/pricing/free-trial/?WT.mc_id=A261C142F)︰ 取得點數可用來試用付費 Azure 服務，並甚至用後可保留帳戶，並使用免費的 Azure 服務，例如網站。 除非您明確變更您的設定且同意付費，否則我們將不會從您的信用卡收取任何費用。 您也可以 [啟用 MSDN 訂戶權益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)︰ 您的 MSDN 訂閱提供您額度，您可以使用 Azure 付費服務的每個月。
 
 2. **Microsoft Azure PowerShell** -您已安裝且設定為使用您的訂閱 Microsoft Azure PowerShell 模組。 若要下載此模組，請參閱 [Microsoft Azure 下載](http://azure.microsoft.com/downloads/)。 若要安裝和設定模組的教學課程 [這裡](../powershell-install-configure.md)。 您將使用 [Add-azurevhd](http://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet 來上傳 VHD。
 
@@ -40,7 +40,7 @@
 
 ## 步驟 1：準備 VHD 
 
-將 VHD 上傳至 Azure 之前，必須使用 Sysprep 工具來一般化。 這要準備 VHD 以做為映像。 如需有關 Sysprep 的詳細資訊，請參閱 [如何使用 Sysprep: 簡介](http://technet.microsoft.com/library/bb457073.aspx)。
+將 VHD 上傳至 Azure 之前，必須使用 Sysprep 工具來一般化。 這要準備 VHD 以做為映像。 如需有關 Sysprep 的詳細資訊，請參閱 [如何使用 Sysprep ︰ 簡介](http://technet.microsoft.com/library/bb457073.aspx)。
 
 從安裝作業系統的虛擬機器，完成下列程序：
 
@@ -177,7 +177,7 @@
 
     ![PowerShell Add-AzureVHD](./media/virtual-machines-create-upload-vhd-windows-server/Create_Image.png)
 
-4. 在 **從 VHD 建立映像** 視窗:
+4. 在 **從 VHD 建立映像** 視窗 ︰
 
     - 指定 **名稱**。
 
@@ -199,7 +199,7 @@
 
     ![從自訂映像建立 VM](./media/virtual-machines-create-upload-vhd-windows-server/create_vm_custom_image.png)
 
-    > [AZURE.TIP] 如果您收到錯誤，當您嘗試建立 VM、 錯誤訊息 「 VHD https://XXXXX...具有不支援的虛擬大小 YYYY 位元組。 大小必須是整數 (以 MB 為單位)」，這表示您的 VHD 不是整數 MB，且必須是固定大小的 VHD。 請嘗試使用 **Add-azurevmimage** PowerShell 指令程式，而不是 Azure 傳統入口網站中加入影像 (請參閱上面的步驟 5)。 Azure Cmdlet 可確保 VHD 會符合 Azure 需求。
+    > [AZURE.TIP] 如果您收到錯誤，當您嘗試建立 VM、 錯誤訊息 「 VHD https://XXXXX...具有不支援的虛擬大小 YYYY 位元組。 大小必須是整數 (以 MB 為單位)」，這表示您的 VHD 不是整數 MB，且必須是固定大小的 VHD。 請嘗試使用 **Add-azurevmimage** PowerShell 指令程式，而不是 Azure 傳統入口網站中加入影像 （請參閱上面的步驟 5）。 Azure Cmdlet 可確保 VHD 會符合 Azure 需求。
 
 ## 後續步驟 ##
 
@@ -209,4 +209,5 @@
 [Step 2: Create a storage account in Azure]: #createstorage
 [Step 3: Prepare the connection to Azure]: #prepAzure
 [Step 4: Upload the .vhd file]: #upload
+
 

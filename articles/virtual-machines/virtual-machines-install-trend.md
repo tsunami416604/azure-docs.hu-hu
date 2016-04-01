@@ -80,10 +80,11 @@
 
 [如何登入執行 Windows Server 的虛擬機器]
 
-[Azure VM 擴充程式和功能]
+[Azure VM 延伸模組與功能]
 
 
 <!--Link references-->
 [How to log on to a virtual machine running Windows Server]: virtual-machines-log-on-windows-server.md
 [Azure VM Extensions and features]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+
 

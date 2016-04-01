@@ -81,7 +81,7 @@ Azure 訂用帳戶和 Batch 之類的個別 Azure 服務均具有預設配額，
 
 在區域中建立 Batch 帳戶之前，您可以檢查您的 Azure 訂用帳戶，以查看您是否能夠將帳戶加入該區域中。
 
-在下列程式碼片段，我們會先使用 [BatchManagementClient.Accounts.ListAsync][net_mgmt_listaccounts] 以取得訂閱內的所有批次帳戶的集合。 在我們已取得此集合後，我們判斷多少帳戶位於目標的區域，然後使用 [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] 取得批次帳戶配額，並判斷該地區中可建立多少個帳戶 (如果有的話)。
+在下列程式碼片段，我們會先使用 [BatchManagementClient.Accounts.ListAsync][net_mgmt_listaccounts] 以取得訂閱內的所有批次帳戶的集合。 在我們已取得此集合後，我們判斷多少帳戶位於目標的區域，然後使用 [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] 取得批次帳戶配額，並判斷該地區中可建立多少個帳戶 （如果有的話）。
 
 ```
 // Get a collection of all Batch accounts within the subscription
@@ -148,7 +148,7 @@ Azure 本身會使用 Azure Active Directory (AAD) 來驗證其客戶、服務�
 3. 建立與選取的訂用帳戶相關聯的新認證物件
 4. 建立 [ResourceManagementClient][resman_client] 使用新的認證
 5. 使用 [ResourceManagementClient][resman_client] 來建立新的資源群組
-6. 使用 [BatchManagementClient][net_mgmt_client] 執行批次帳戶作業的數量:
+6. 使用 [BatchManagementClient][net_mgmt_client] 執行批次帳戶作業的數量 ︰
   - 在新建立的資源群組中建立新 Batch 帳戶
   - 從 Batch 服務取得新建立的帳戶
   - 列印新帳戶的帳戶金鑰
@@ -191,4 +191,5 @@ Azure 本身會使用 Azure Active Directory (AAD) 來驗證其客戶、服務�
 [resman_overview]: ../resource-group-overview.md
 
 [1]: ./media/batch-management-dotnet/portal-01.png
+
 

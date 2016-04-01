@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Sugar CRM 單一登入的訂用帳戶
   
-完成本教學課程之後, 您已指派給 Sugar CRM 的 Azure AD 使用者將能夠登入位於您 Sugar CRM 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Sugar CRM 的 Azure AD 使用者將能夠登入位於您 Sugar CRM 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -103,7 +103,7 @@
 
     ![系統管理](./media/active-directory-saas-sugarcrm-tutorial/IC795890.png "Administration")
 
-9.  在 **SAML 驗證** 區段中，執行下列步驟:
+9.  在 **SAML 驗證** 區段中，執行下列步驟 ︰
 
     ![SAML 驗證](./media/active-directory-saas-sugarcrm-tutorial/IC795891.png "SAML Authentication")
 
@@ -141,7 +141,7 @@ Sugar CRM 需以手動方式佈建。
 
     ![建立新的使用者](./media/active-directory-saas-sugarcrm-tutorial/IC795894.png "Create New User")
 
-5.  在 **使用者設定檔** 索引標籤上，執行下列步驟:
+5.  在 **使用者設定檔** 索引標籤上，執行下列步驟 ︰
 
     ![新使用者](./media/active-directory-saas-sugarcrm-tutorial/IC795895.png "New User")
 
@@ -175,3 +175,4 @@ Sugar CRM 需以手動方式佈建。
     ![是](./media/active-directory-saas-sugarcrm-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

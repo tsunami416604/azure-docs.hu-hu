@@ -33,7 +33,7 @@ Azure SDK 包含「快速啟動」範本，方便從 Microsoft Visual Studio 使
 
 1. 若要編譯及建置應用程式，您需要的版本 [Visual Studio](https://www.visualstudio.com/) 安裝在電腦上。 
 2. 安裝最新版 [Azure SDK for.NET](http://azure.microsoft.com/downloads/)。 SDK 包含 Azure 快速入門範例專案、 Azure 儲存體模擬器中，而 [Azure Storage Client Library for.NET](https://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)。
-3. 請確定您有 [.NET Framework 4.5](http://www.microsoft.com/download/details.aspx?id=30653) 安裝您的電腦上，因為它為我們在本教學課程將使用 Azure 快速入門範例專案所需。 如果您不確定您的電腦中安裝.NET Framework 版本，請參閱 [How to: 判斷安裝的.NET Framework 版本是](https://msdn.microsoft.com/vstudio/hh925568.aspx)。 或者，按 **啟動** 按鈕或 Windows 鍵，輸入 **控制台**。 然後按一下 [ **程式** > **程式和功能**, ，並判斷已安裝的程式之間是否列出.NET Framework 4.5。
+3. 請確定您有 [.NET Framework 4.5](http://www.microsoft.com/download/details.aspx?id=30653) 安裝您的電腦上，因為它為我們在本教學課程將使用 Azure 快速入門範例專案所需。 如果您不確定您的電腦中安裝.NET Framework 版本，請參閱 [How to ︰ 判斷安裝的.NET Framework 版本是](https://msdn.microsoft.com/vstudio/hh925568.aspx)。 或者，按 **啟動** 按鈕或 Windows 鍵，輸入 **控制台**。 然後按一下 [ **程式** > **程式和功能**, ，並判斷已安裝的程式之間是否列出.NET Framework 4.5。
 
 最新版的 Azure 儲存體用戶端程式庫二進位檔位於 [NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/)。
 
@@ -42,7 +42,7 @@ Azure SDK 包含「快速啟動」範本，方便從 Microsoft Visual Studio 使
 
 在開發使用 Azure 儲存體的應用程式時，您可以在對執行 [Azure 儲存體模擬器](storage-use-emulator.md)。 此儲存體模擬器提供了模擬 Azure Blob、佇列和資料表服務的本機環境，以供進行開發。 您可以使用儲存體模擬器在本機測試儲存體應用程式，而不需建立 Azure 訂用帳戶或儲存體帳戶，也不會產生任何費用。
 
-若要試用，讓我們在 Visual Studio 中使用其中一個 Azure 快速啟動範例專案，建立簡單的 Azure 儲存體應用程式。 本教學課程著重於 **Azure Blob 儲存體**, ，**Azure 資料表儲存體**, ，和 **Azure 佇列儲存體** 範例專案:
+若要試用，讓我們在 Visual Studio 中使用其中一個 Azure 快速啟動範例專案，建立簡單的 Azure 儲存體應用程式。 本教學課程著重於 **Azure Blob 儲存體**, ，**Azure 資料表儲存體**, ，和 **Azure 佇列儲存體** 範例專案 ︰
 
 1. 啟動 Visual Studio。
 2. 從 **檔案** ] 功能表上，按一下 [ **新的專案**。
@@ -65,10 +65,10 @@ Azure SDK 包含「快速啟動」範本，方便從 Microsoft Visual Studio 使
 
 若要在雲端中針對 Azure 儲存體執行，您將需要 Azure 訂用帳戶和儲存體帳戶 (如果您還沒有的話)： 
 
-- 若要取得 Azure 訂用帳戶，請參閱 [免費試用版](http://azure.microsoft.com/pricing/free-trial/), ，[購買選項](http://azure.microsoft.com/pricing/purchase-options/), ，和 [會員優惠](http://azure.microsoft.com/pricing/member-offers/) (適用於 MSDN、 Microsoft Partner Network、 BizSpark 和其他 Microsoft 程式的成員)。
+- 若要取得 Azure 訂用帳戶，請參閱 [免費試用版](http://azure.microsoft.com/pricing/free-trial/), ，[購買選項](http://azure.microsoft.com/pricing/purchase-options/), ，和 [會員優惠](http://azure.microsoft.com/pricing/member-offers/) （適用於 MSDN、 Microsoft Partner Network、 BizSpark 和其他 Microsoft 程式的成員）。
 - 若要在 Azure 中建立儲存體帳戶，請參閱 [如何建立、 管理或刪除儲存體帳戶](storage-create-storage-account.md)。
 
-一旦您有了帳戶，您就可以在 Visual Studio 中使用其中一個 Azure 快速入門範例專案，建立簡單的 Azure 儲存體應用程式。 本教學課程著重於 **Azure Blob 儲存體**, ，**Azure 資料表儲存體**, ，和 **Azure 佇列儲存體** 範例專案:
+一旦您有了帳戶，您就可以在 Visual Studio 中使用其中一個 Azure 快速入門範例專案，建立簡單的 Azure 儲存體應用程式。 本教學課程著重於 **Azure Blob 儲存體**, ，**Azure 資料表儲存體**, ，和 **Azure 佇列儲存體** 範例專案 ︰
 
 1. 啟動 Visual Studio。
 2. 從 **檔案** ] 功能表上，按一下 [ **新的專案**。
@@ -110,4 +110,5 @@ Azure SDK 包含「快速啟動」範本，方便從 Microsoft Visual Studio 使
 
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
+
 

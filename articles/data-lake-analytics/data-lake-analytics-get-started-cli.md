@@ -45,11 +45,11 @@ U SQL 指令碼，然後再儲存輸出資料湖存放區帳戶或 Blob 儲存�
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - **Azure CLI**。 請參閱 [安裝和設定 Azure CLI](xplat-cli.md)。
     - 下載並安裝 **發行前版本** [Azure CLI 工具](https://github.com/MicrosoftBigData/AzureDataLake/releases) 才能完成這個示範。
-- **驗證**, ，使用下列命令:
+- **驗證**, ，使用下列命令 ︰
 
         azure login
     如需有關如何使用工作或學校帳戶進行驗證的詳細資訊，請參閱 [從 Azure CLI 連接至 Azure 訂用帳戶](xplat-cli-connect.md)。
-- **切換至 Azure 資源管理員模式**, ，使用下列命令:
+- **切換至 Azure 資源管理員模式**, ，使用下列命令 ︰
 
         azure config mode arm
         
@@ -68,8 +68,8 @@ U SQL 指令碼，然後再儲存輸出資料湖存放區帳戶或 Blob 儲存�
         azure group create -n "<Resource Group Name>" -l "<Azure Location>"
 
 - **資料湖分析帳戶名稱**
-- **位置**: 支援資料湖分析的 Azure 資料中心的其中一個。
-- **預設資料湖帳戶**: 每個資料湖分析帳戶具有預設資料湖帳戶。
+- **位置**︰ 支援資料湖分析的 Azure 資料中心的其中一個。
+- **預設資料湖帳戶**︰ 每個資料湖分析帳戶具有預設資料湖帳戶。
 
     若要列出現有的資料湖帳戶：
     
@@ -172,5 +172,6 @@ Azure 入口網站會提供使用者介面，可將範例資料檔案複製到�
 - 若要了解 U SQL，請參閱 [開始使用 Azure 資料湖分析 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
 - 管理工作，請參閱 [管理 Azure 資料湖分析使用 Azure 入口網站](data-lake-analytics-manage-use-portal.md)。
 - 若要取得資料湖分析的概觀，請參閱 [Azure 資料湖分析概觀](data-lake-analytics-overview.md)。
+
 
 

@@ -23,8 +23,8 @@
 - [.Net](web-sites-dotnet-get-started.md)
 - [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
-- [PHP-Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP-FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
 本教學課程說明如何建立 PHP-MySQL Web 應用程式，以及如何使用 FTP 部署該 Web 應用程式。 本教學課程假設您有 [PHP][install-php], ，[MySQL][install-mysql], ，web 伺服器，以及一個 FTP 用戶端電腦上安裝。 在本教學課程的指示可運用在任何作業系統，包括 Windows、 Mac 和 Linux 上。 看完本指南後，您將擁有可在 Azure 上執行的 PHP/MySQL Web 應用程式。
@@ -82,8 +82,8 @@
 
 註冊應用程式是一項簡單的 PHP 應用程式，您只需提供名稱與電子郵件地址就能註冊活動。 先前的註冊者相關資訊會顯示在資料表中。 註冊資訊會存放在 MySQL 資料庫。 該應用程式包含兩個檔案：
 
-* **index.php**: 顯示註冊和註冊資訊的資料表的表單。
-* **createtable.php**: 建立應用程式的 MySQL 資料表。 只會使用一次此檔案。
+* **index.php**︰ 顯示註冊和註冊資訊的資料表的表單。
+* **createtable.php**︰ 建立應用程式的 MySQL 資料表。 只會使用一次此檔案。
 
 若要在本機建置與執行應用程式，請遵循下列步驟。 請注意，這些步驟假設您具有 PHP、 MySQL 以及 web 伺服器，您的本機電腦上設定，且您已啟用 [MySQL 的 PDO 延伸功能][pdo-mysql]。
 
@@ -119,11 +119,11 @@
         ?>
 
     > [AZURE.NOTE] 
-    > 您需要將 <code>$user</code> 和 <code>$pwd</code> 的值，更新為您的本機 MySQL 使用者名稱和密碼。
+    > 您將需要更新的值 <code>$user</code> 和 <code>$pwd</code> 與您的本機 MySQL 使用者名稱和密碼。
 
 4. 開啟網頁瀏覽器並瀏覽至 [http://localhost/registration/createtable.php][localhost-createtable]。 這會在資料庫中建立 `registration_tbl` 資料表。
 
-5. 開啟 **index.php** 檔案在文字編輯器或 IDE 中，加入頁面 (在稍後步驟中將加入 PHP 程式碼) 的基本 HTML 和 CSS 程式碼。
+5. 開啟 **index.php** 檔案在文字編輯器或 IDE 中，加入頁面 （在稍後步驟中將加入 PHP 程式碼） 的基本 HTML 和 CSS 程式碼。
 
         <html>
         <head>
@@ -173,7 +173,7 @@
         }
 
     > [AZURE.NOTE]
-    > 同樣地，您需要將 <code>$user</code> 和 <code>$pwd</code> 的值，更新為您的本機 MySQL 使用者名稱和密碼。
+    > 同樣地，您必須更新的值 <code>$user</code> 和 <code>$pwd</code> 與您的本機 MySQL 使用者名稱和密碼。
 
 7. 在資料庫連接程式碼後面，加入可將登錄資訊插入至資料庫的程式碼。
 
@@ -236,7 +236,7 @@
 
     ![注意屬性][note-properties]
 
-3. 從 web 應用程式，然後按一下 [ **下載發行設定檔** 右下角的頁面底部的連結:
+3. 從 web 應用程式，然後按一下 [ **下載發行設定檔** 右下角的頁面底部的連結 ︰
 
     ![Download publish profile][download-publish-profile]
 
@@ -252,7 +252,7 @@
 
 ##發佈您的應用程式
 
-當您在本機完成應用程式測試之後，可以使用 FTP 將其發行至您的 Web 應用程式。 不過，您必須先更新應用程式中的資料庫連接資訊。 使用您稍早取得的資料庫連接資訊 (在 **取得 MySQL 與 FTP 連線資訊** 一節)，更新中的下列資訊 **兩者**  `createdatabase.php` 和 `index.php` 檔案，以適當的值:
+當您在本機完成應用程式測試之後，可以使用 FTP 將其發行至您的 Web 應用程式。 不過，您必須先更新應用程式中的資料庫連接資訊。 使用您稍早取得的資料庫連接資訊 (在 **取得 MySQL 與 FTP 連線資訊** 一節)，更新中的下列資訊 **兩者**  `createdatabase.php` 和 `index.php` 檔案，以適當的值 ︰
 
     // DB connection info
     $host = "value of Data Source";
@@ -301,4 +301,5 @@
 [management-portal]: https://portal.azure.com
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
+
 

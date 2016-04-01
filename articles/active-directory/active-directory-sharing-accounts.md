@@ -29,7 +29,7 @@
 傳統共用模型有幾個缺點：
 
 - 您必須將認證散發給需要存取新應用程式的所有人，他們才能進行存取。
-- 每個共用的應用程式可能都需要唯一的一組共用認證，使用者必須記住許多組認證。 當使用者必須記住許多的認證時，風險會增加它們會訴諸於風險的做法。 (例如寫下密碼)。
+- 每個共用的應用程式可能都需要唯一的一組共用認證，使用者必須記住許多組認證。 當使用者必須記住許多的認證時，風險會增加它們會訴諸於風險的做法。 （例如寫下密碼）。
 - 您不知道誰有權存取應用程式。
 - 您無法分辨誰 *存取* 應用程式。
 - 當您需要移除某個應用程式的存取權時，您必須更新認證，並將認證重新散發給需要存取該應用程式的所有人。
@@ -63,7 +63,7 @@ Azure AD 支援的共用帳戶適用於任何Enterprise Mobility Suite (EMS)、�
 - 新增應用程式 [應用程式庫](https://azure.microsoft.com/marketplace/active-directory/) 或 [自訂應用程式](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)
 - 設定應用程式使用密碼單一登入 (SSO)
 - 使用 [群組型指派](active-directory-accessmanagement-group-saasapps.md) 並選取選項來輸入共用的認證
-- 選擇性: 在某些應用程式，例如 Facebook、 Twitter 或 LinkedIn，您可以啟用的選項 [Azure AD 自動密碼變換](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)
+- 選擇性 ︰ 在某些應用程式，例如 Facebook、 Twitter 或 LinkedIn，您可以啟用的選項 [Azure AD 自動密碼變換](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)
 
 您可以也讓您共用的帳戶更安全的多重要素驗證 (MFA) (深入了解 [保護應用程式與 Azure AD](multi-factor-authentication-get-started.md))，您可以委派可以管理誰可以存取應用程式使用 [Azure AD 自助](active-directory-accessmanagement-self-service-group-management.md) 群組管理。
 
@@ -71,4 +71,5 @@ Azure AD 支援的共用帳戶適用於任何Enterprise Mobility Suite (EMS)、�
 
 - [使用條件式存取來保護應用程式](active-directory-conditional-access.md)
 - [自助式群組管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
+
 

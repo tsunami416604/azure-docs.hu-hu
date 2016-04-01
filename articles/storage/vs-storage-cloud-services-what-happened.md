@@ -1,5 +1,5 @@
 <properties
-    pageTitle="我的雲端服務專案發生什麼事? |Microsoft Azure |Visual Studio 已連接服務"
+    pageTitle="我的雲端服務專案發生什麼事？ |Microsoft Azure |Visual Studio 已連接服務"
     description="說明使用 Visual Studio 已連接服務連接至 Azure 儲存體帳戶後，雲端服務專案發生的狀況"
     services="storage"
     documentationCenter=""
@@ -38,4 +38,5 @@ Azure 儲存體 NuGet 封裝已加入至 Visual Studio 專案。
 - **ServiceDefinition.csdef**
 - **ServiceConfiguration.Cloud.cscfg**
 - **ServiceConfiguration.Local.cscfg**
+
 

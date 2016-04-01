@@ -18,7 +18,7 @@
 # 部署和管理 Azure 中的 StorSimple 虛擬裝置 (Update 2)
 
 > [AZURE.SELECTOR]
-- [更新 2](../articles/storsimple/storsimple-virtual-device-u2.md)
+- [Update 2](../articles/storsimple/storsimple-virtual-device-u2.md)
 - [Update 1](../articles/storsimple/storsimple-virtual-device-u1.md)
 - [GA 版本](../articles/storsimple/storsimple-virtual-device.md)
 
@@ -38,7 +38,7 @@ StorSimple 虛擬裝置可以在兩種模型中使用，標準 8010 和進階 80
 | **Azure VM**              | Standard_A3 (4 核心、7 GB 記憶體)                                                                      | Standard_DS3 (4 核心、14 GB 記憶體)                                                                                                                          |
 | **版本相容性** | 執行 Update 2 之前或更新版本的版本                                             | 執行 Update 2 或更新版本的版本                                                                                                  |
 | **區域可用性**   | 所有 Azure 區域                                                         | 支援高階儲存體的 azure 區域<br></br>如需目前支援高階儲存體的區域，請參閱 [依地區的 Azure 服務](https://azure.microsoft.com/regions/#services) |
-| **儲存體類型**          | 使用 Azure 標準儲存體<br></br> 深入了解如何 [建立標準儲存體帳戶]() | 使用 Azure 高階儲存體<br></br>深入了解如何 [建立高階儲存體帳戶](storage-premium-storage-preview-portal.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)                                                               |
+| **儲存體類型**          | 使用標準的 Azure 儲存體<br></br> 了解如何 [建立標準儲存體帳戶]() | 使用 Azure 儲存體帳戶<br></br>了解如何 [建立高階儲存體帳戶](storage-premium-storage-preview-portal.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)                                                               |
 | **工作負載指引**     | 從備份的檔案的項目層級擷取                                              | 雲端開發和測試案例、 低延遲、 較高的效能工作負載 <br></br>第二個裝置的嚴重損壞修復                                                                                            |
  
 <sup>1</sup> *前身為 1100年*, ，<sup>2</sup> *A 代表 Azure 的外型規格*, ，<sup>3</sup> *AP 代表 Azure Premium 外型規格。*
@@ -83,7 +83,7 @@ StorSimple 虛擬裝置是軟體形式的 StorSimple，在 Microsoft Azure 虛�
 - 虛擬裝置，如 [Azure 上設定虛擬網路](../virtual-network/virtual-networks-create-vnet.md)。 如果使用進階儲存體，您必須在支援進階儲存體的 Azure 區域中建立虛擬網路。 更多有關 [目前支援高階儲存體的區域](https://azure.microsoft.com/regions/#services)。
 - 建議您使用 Azure 提供的預設 DNS 伺服器，而非指定您自己的 DNS 伺服器名稱。 如果您的 DNS 伺服器名稱無效，或者如果 DNS 伺服器無法正確解析 IP 位址，則建立虛擬裝置將會失敗。
 - 點對站及站對站都是選用的，但並非必要。 如有需要，您可以針對更進階的案例設定這些選項。 
-- 您可以建立 [Azure 虛擬機器](../virtual-machines/virtual-machines-about.md) (主機伺服器) 的虛擬網路中，可以使用虛擬裝置所公開的磁碟區。 這些伺服器必須符合下列需求：                          
+- 您可以建立 [Azure 虛擬機器](../virtual-machines/virtual-machines-about.md) （主機伺服器） 的虛擬網路中，可以使用虛擬裝置所公開的磁碟區。 這些伺服器必須符合下列需求：                          
     - 是已安裝 iSCSI 啟動器軟體的 Windows 或 Linux VM。
     - 正在虛擬裝置所在的相同虛擬網路中執行。
     - 能夠透過虛擬裝置的內部 IP 位址連接到虛擬裝置的 iSCSI 目標。
@@ -259,5 +259,6 @@ StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓�
 - 了解如何 [使用 StorSimple Manager 服務來管理虛擬裝置](storsimple-manager-service-administration.md)。
  
 - 了解如何 [從備份組還原 StorSimple 磁碟區](storsimple-restore-from-backup-set.md)。 
+
 
 

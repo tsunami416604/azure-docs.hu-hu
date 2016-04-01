@@ -99,7 +99,7 @@
 3.  當系統提示開啟 DS1.rdp 時，按一下 [ **開啟**。
 4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用這些：
-    - 名稱: **CORP\User1**
+    - 名稱 ︰ **CORP\User1**
     - 密碼：[User1 帳戶密碼]
 6.  顯示憑證相關的遠端桌面連線] 訊息方塊提示，請按一下 **是**。
 
@@ -119,7 +119,7 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 1.  在 CLIENT1 上 **Office 365 系統管理中心** ] 頁面上，在左窗格中，按一下 [ **使用者**, ，然後按一下 [ **作用中使用者**。
 2.  如 **Active Directory 同步處理**, ，按一下 [ **設定**。
 3.  在集合上註冊和管理 Active Directory 同步處理] 頁面，在步驟 3 中，按一下 **啟動**。
-4.  出現提示時 **您想要啟動 Active Directory 同步處理?**, ，按一下 [ **啟動**。 這樣做之後, **Active Directory 同步處理已啟動** 在步驟 3 中會出現。
+4.  出現提示時 **您想要啟動 Active Directory 同步處理？**, ，按一下 [ **啟動**。 這樣做之後, **Active Directory 同步處理已啟動** 在步驟 3 中會出現。
 5.  保留 **設定及管理 Active Directory 同步處理** 在 CLIENT1 上開啟網頁。
 
 接著，以 CORP\User1 帳戶登入 DC1，並開啟系統管理員層級 Windows PowerShell 命令提示字元。 逐一執行這些命令，以建立名為 contoso_users 的新組織單位以及 Marci Kaufman 和 Lynda Meyer 兩個新的使用者帳戶。
@@ -154,7 +154,7 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 
 1.  在 CLIENT1 上 **作用中使用者** 頁面上，選取 **Lynda Meyer** 帳戶。
 2.  在 Lynda Meyer 帳戶內容下 **指派的授權**, ，按一下 [ **編輯**。
-3.  在 **指派授權** 索引標籤上，選取的位置 **設定使用者位置** (例如美國)。
+3.  在 **指派授權** 索引標籤上，選取的位置 **設定使用者位置** （例如美國）。
 4.  選取 **Microsoft Office 365 計劃 E3**, ，然後按一下 [ **儲存**。
 5.  關閉 Internet Explorer。
 6.  執行 Internet Explorer 並移至 **http://portal.microsoftonline.com**。 
@@ -184,3 +184,4 @@ Ping 命令應該會收到來自 IP 位址 10.0.0.1 的 4 次成功回覆。
 [Azure 混合式雲端測試環境](../virtual-machines/virtual-machines-hybrid-cloud-test-environments.md)
 
 [Azure 基礎結構服務實作指導方針](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
+

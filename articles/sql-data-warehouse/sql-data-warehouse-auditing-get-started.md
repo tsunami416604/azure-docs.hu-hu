@@ -21,9 +21,9 @@
 
 稽核可以協助您維護法規相符性、 了解資料庫活動，以及深入了解不一致和異常可指出商務考量或疑似安全違規。 
 
-稽核工具啟用及推動遵循法規標準，但不保證符合法規。 如需有關支援標準法規的 Azure 程式詳細資訊，請參閱 <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure 信任中心</a>.
+稽核工具啟用及推動遵循法規標準，但不保證符合法規。 如需有關支援標準法規的 Azure 程式詳細資訊，請參閱 <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure 信任中心</a>。
 
-+ [Database 稽核基本概念] 
++ [資料庫稽核基本概念] 
 + [設定資料庫的稽核]
 + [分析稽核記錄和報告]
 
@@ -48,7 +48,7 @@ SQL 資料倉儲資料庫稽核可讓您：
 
 為每個事件類別目錄的稽核 **成功** 和 **失敗** 作業分別設定。
 
-關於稽核活動和事件的進一步資訊，請參閱 <a href="http://go.microsoft.com/fwlink/?LinkId=506733" target="_blank">稽核記錄格式參照 (doc 檔案下載)</a>. 
+如需已稽核活動和事件的進一步資訊，請參閱<a href="http://go.microsoft.com/fwlink/?LinkId=506733" target="_blank">稽核記錄格式參考 (doc 檔案下載)</a>。 
 
 稽核記錄會儲存在 Azure 儲存體帳戶。 您可以定義稽核記錄保留期間。
 
@@ -59,7 +59,7 @@ SQL 資料倉儲資料庫稽核可讓您：
 
 ##<a id="subheading-2"></a>設定資料庫的稽核
 
-1. 啟動 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>.
+1. 啟動 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>。
 
 2. 瀏覽至您要稽核的 SQL 資料倉儲資料庫 / SQL Server 組態刀鋒視窗。 按一下 [ **設定** 按鈕在最上面，然後在 [設定] 刀鋒視窗，然後選取 **稽核**。
 
@@ -73,7 +73,7 @@ SQL 資料倉儲資料庫稽核可讓您：
 
     ![][3]
 
-5. 在稽核組態分頁中，選取 **儲存體詳細資料** 開啟稽核記錄檔儲存體] 刀鋒視窗。 選取將儲存記錄的 Azure 儲存體帳戶以及保留期間。 **提示:** 充分利用預先設定的報告範本使用相同的儲存體帳戶，所有稽核的資料庫。
+5. 在稽核組態分頁中，選取 **儲存體詳細資料** 開啟稽核記錄檔儲存體] 刀鋒視窗。 選取將儲存記錄的 Azure 儲存體帳戶以及保留期間。 **提示 ︰** 充分利用預先設定的報告範本使用相同的儲存體帳戶，所有稽核的資料庫。
 
     ![][4]
 
@@ -92,17 +92,17 @@ SQL 資料倉儲資料庫稽核可讓您：
 
 稽核記錄檔中使用的存放區資料表的集合彙總 **SQLDBAuditLogs** 您在安裝期間所選擇的 Azure 儲存體帳戶中的前置詞。 您可以使用工具 (例如 <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure 儲存體總管</a>) 來檢視記錄檔。
 
-預先設定的儀表板報告範本為 <a href="http://go.microsoft.com/fwlink/?LinkId=403540" target="_blank">可下載的 Excel 試算表，</a> 能夠讓您快速分析記錄檔資料。 若要在稽核記錄上使用範本，您需要 Excel 2013 (或更新版本) 和 Power Query (您可從 <a href="http://www.microsoft.com/download/details.aspx?id=39379">開始</a>. 
+預先設定的儀表板報告範本會以<a href="http://go.microsoft.com/fwlink/?LinkId=403540" target="_blank">可下載的 Excel 試算表</a>形式提供，以協助您快速分析記錄資料。 若要在稽核記錄上使用範本，您需要 Excel 2013 (或更新版本) 和 Power Query (您可從<a href="http://www.microsoft.com/download/details.aspx?id=39379">此處</a>下載)。 
 
 範本中包含虛構的範例資料，您可以設定 Power Query 直接從 Azure 儲存體帳戶匯入稽核記錄。 
 
-如需有關使用報告範本的詳細指示，請閱讀 <a href="http://go.microsoft.com/fwlink/?LinkId=506731">作法 (doc 下載)</a>.
+如需有關使用報告範本的詳細指示，請閱讀<a href="http://go.microsoft.com/fwlink/?LinkId=506731">如何 (doc 下載)</a>。
 
 ![][5]
 
 
-##<a id="subheading-4">生產環境中的實務使用方式</a>
-本節的說明與以上的畫面截圖有關。 無論是 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a> 或 <a href= "https://manage.windowsazure.com/" target="_bank">傳統的 Azure 傳統入口網站</a> 均可使用。
+##<a id="subheading-4">生產環境中的使用方式作法</a>
+本節的說明與以上的畫面截圖有關。 可以使用 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>或<a href= "https://manage.windowsazure.com/" target="_bank">Azure 傳統入口網站</a>。
  
 
 ##<a id="subheading-5"></a>儲存體金鑰重新產生
@@ -110,13 +110,13 @@ SQL 資料倉儲資料庫稽核可讓您：
 在生產中，您可能會定期重新整理儲存體金鑰。 重新整理金鑰時，您需要重新儲存該原則。 程序如下：
 
 
-1. 在稽核組態分頁中 (如以上所述設定稽核一節) 切換 **儲存體存取金鑰** 從 *主要* 至 *次要* 和 **儲存**。
+1. 在稽核組態分頁中 （如以上所述設定稽核一節） 切換 **儲存體存取金鑰** 從 *主要* 至 *次要* 和 **儲存**。
 ![][4]
 2. 移至儲存體組態分頁和 **重新產生**  *主要存取金鑰*。
 
 3. 返回稽核組態分頁中，切換 **儲存體存取金鑰** 從 *次要* 至 *主要* 按 **儲存**。
 
-4. 返回儲存體 UI 並 **重新產生**  *次要存取金鑰* (為下一個金鑰重新整理週期。
+4. 返回儲存體 UI 並 **重新產生**  *次要存取金鑰* （為下一個金鑰重新整理週期。
   
 ##<a id="subheading-6"></a>自動化
 有數個 PowerShell 指令程式可用來設定 Azure SQL Database 中的稽核。 若要存取稽核 Cmdlet，您必須在 [Azure 資源管理員] 模式中執行 PowerShell。
@@ -144,4 +144,5 @@ SQL 資料倉儲資料庫稽核可讓您：
 
 
  
+
 

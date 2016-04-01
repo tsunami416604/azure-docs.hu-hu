@@ -52,7 +52,7 @@ Application Insights 會深入分析您的 App 遙測，並且可以警告您有
  * [匯出遙測](app-insights-export-telemetry.md) 至 [資料庫](app-insights-code-sample-export-sql-stream-analytics.md) 或 [至 PowerBI](app-insights-export-power-bi.md) 或 [其他](app-insights-code-sample-export-telemetry-sql-database.md) 工具，您可以在此分析它自己。
 * *執行分析的頻率為何？*
  * 我們每天都會根據前一天的遙測執行分析。
-* * 也會增加此取代 [度量警示](app-insights-alerts.md)嗎?
+* * 也會增加此取代 [度量警示](app-insights-alerts.md)嗎？
  * 編號  我們不認可偵測每個您可以考慮異常的行為。
 
 ## 如何調查主動式偵測所引發的問題
@@ -82,7 +82,7 @@ Application Insights 會深入分析您的 App 遙測，並且可以警告您有
 
 使用電子郵件中的影響敘述作為一般指南，但請留意該敘述並不是全部的詳情。 蒐集其他證據進行確認。
 
-請考慮這個問題的參數。 如果是地理位置無關，設定 [可用性測試](app-insights-monitor-web-app-availability.md) 包括該區域: 可能只會發生網路問題區域中。 
+請考慮這個問題的參數。 如果是地理位置無關，設定 [可用性測試](app-insights-monitor-web-app-availability.md) 包括該區域 ︰ 可能只會發生網路問題區域中。 
 
 ### 診斷頁面載入緩慢 
 
@@ -92,7 +92,7 @@ Application Insights 會深入分析您的 App 遙測，並且可以警告您有
 
 * 如果 **傳送要求時間** 是高，該伺服器的回應緩慢，或要求是使用大量資料的文章。 看看 [效能度量](app-insights-web-monitor-performance.md#metrics) 調查回應時間。 
 * 設定 [相依性追蹤](app-insights-dependencies.md) 速度很慢是否因為外部服務或您的資料庫。
-* 如果 **接收回應** ，尤其是，您的頁面和其相依組件-JavaScript、 CSS 等等 (但不是會以非同步方式載入的資料) 的映像很長。 設定 [可用性測試](app-insights-monitor-web-app-availability.md), ，而且一定要設定此選項來載入相依組件。 當您取得一些結果時，請開啟結果的詳細資料並將它展開，以查看不同檔案的載入時間。
+* 如果 **接收回應** ，尤其是，您的頁面和其相依組件-JavaScript、 CSS 等等 （但不是會以非同步方式載入的資料） 的映像很長。 設定 [可用性測試](app-insights-monitor-web-app-availability.md), ，而且一定要設定此選項來載入相依組件。 當您取得一些結果時，請開啟結果的詳細資料並將它展開，以查看不同檔案的載入時間。
 * 高 **用戶端處理時間** 建議指令碼執行速度很慢。 如果原因不明顯，請考慮加入一些時間計時程式碼並在 trackMetric 呼叫中傳送時間。
 
 ### 改善慢速網頁
@@ -116,7 +116,7 @@ Web 上有改善您的伺服器回應和頁面載入時間的完整建議，因�
  * 它們被限制為一天一則訊息。 您不會重複收到任何訊息。
 * *如果我沒有做任何動作，會收到提醒嗎？*
  * 不會，每個問題您只會收到一次訊息。
-* *我遺失電子郵件。 哪裡可以找到通知在入口網站?*
+* *我遺失電子郵件。 哪裡可以找到通知在入口網站？*
  * 在您的應用程式的 Application Insights 概觀中，按一下 [ **主動偵測** 並排顯示。 
 
 
@@ -127,3 +127,4 @@ Web 上有改善您的伺服器回應和頁面載入時間的完整建議，因�
 * [計量瀏覽器](app-insights-metrics-explorer.md)
 * [搜尋總管](app-insights-diagnostic-search.md)
  
+

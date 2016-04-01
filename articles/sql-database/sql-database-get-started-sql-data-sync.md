@@ -64,7 +64,7 @@
 <a id="InstallClient"></a>
 ### 步驟 2b：安裝新的用戶端代理程式
 
-依照 [安裝用戶端代理程式 (SQL 資料同步)](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf) 安裝代理程式。
+依照 [安裝用戶端代理程式 （SQL 資料同步）](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf) 安裝代理程式。
 
 
 
@@ -73,7 +73,7 @@
 
 1.  返回 [新增 SQL 資料同步代理程式] 精靈。
 2.  給予代理程式有意義的名稱。
-3.  從下拉式清單中，選取 **區域** (資料中心) 以裝載此代理程式。
+3.  從下拉式清單中，選取 **區域** （資料中心） 以裝載此代理程式。
 4.  從下拉式清單中，選取 **訂閱** 以裝載此代理程式。
 5.  按一下向右箭頭。
 
@@ -105,7 +105,7 @@
 
 
 1.  為同步群組輸入有意義的名稱。
-2.  從下拉式清單中，選取 **區域** (資料中心) 以裝載此同步群組。
+2.  從下拉式清單中，選取 **區域** （資料中心） 以裝載此同步群組。
 3. 按一下向右箭頭。
 
     ![Image3](./media/sql-database-get-started-sql-data-sync/NewSyncGroupName-Figure3.PNG)
@@ -204,4 +204,5 @@ Azure SQL 資料同步可讓您選取要同步的資料表和資料欄。 如果
  
 
  
+
 

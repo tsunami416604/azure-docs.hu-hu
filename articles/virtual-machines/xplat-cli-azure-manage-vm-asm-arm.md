@@ -38,7 +38,7 @@
 
 工作 | 服務管理 | 資源管理員
 -------------- | ----------- | -------------------------
-建立最基本的 VM | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(從 `azure vm image list` 命令取得 `image-urn`。)
+建立最基本的 VM | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(取得 `image-urn` 從 `azure vm image list` 命令。)
 建立 Linux VM | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Linux"`
 建立 Windows VM | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Windows"`
 列出 VM | `azure  vm list [options]` | `azure  vm list [options] <resource_group>`
@@ -71,4 +71,5 @@
 * 如需有關使用 Azure CLI 來使用資源管理員資源的詳細資訊，請參閱 [搭配使用 Azure 命令列介面與資源管理員](xplat-cli-azure-resource-manager.md) 和 [管理角色存取控制使用 Azure 命令列介面](../role-based-access-control-xplat-cli-install.md)。
 * 如需 CLI 命令的其他範例，請參閱 [與 Azure 服務管理中使用 Azure 命令列介面](../virtual-machines-command-line-tools.md) 和
 [使用 Azure CLI 與 Azure 資源管理員](azure-cli-arm-commands.md)。
+
 

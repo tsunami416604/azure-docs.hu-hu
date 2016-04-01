@@ -35,9 +35,9 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 
 上圖所定義的案例如下：
 
-- **識別定域機組**: 這些是在雲端中存在的身分識別。  就 Azure AD 來說，它們實際上就位於您的 Azure AD 目錄中。
-- **同步處理**: 這些是存在於內部部署身分識別和雲端。  使用 Azure AD Connect 時，將會以現有的 Azure AD 帳戶建立或聯結這些使用者。  在所謂的密碼雜湊中，使用者的密碼雜湊會從內部部署環境同步處理到雲端。  使用同步處理時，必須注意如果在內部部署環境中停用使用者，可能需要經過 3 小時，Azure AD 中才會顯示該帳戶狀態。  這是因為有同步處理時間間隔。
-- **同盟**: 這些身分識別存在於這兩個內部部署和雲端。  使用 Azure AD Connect 時，將會以現有的 Azure AD 帳戶建立或聯結這些使用者。  
+- **識別定域機組**︰ 這些是在雲端中存在的身分識別。  就 Azure AD 來說，它們實際上就位於您的 Azure AD 目錄中。
+- **同步處理**︰ 這些是存在於內部部署身分識別和雲端。  使用 Azure AD Connect 時，將會以現有的 Azure AD 帳戶建立或聯結這些使用者。  在所謂的密碼雜湊中，使用者的密碼雜湊會從內部部署環境同步處理到雲端。  使用同步處理時，必須注意如果在內部部署環境中停用使用者，可能需要經過 3 小時，Azure AD 中才會顯示該帳戶狀態。  這是因為有同步處理時間間隔。
+- **同盟**︰ 這些身分識別存在於這兩個內部部署和雲端。  使用 Azure AD Connect 時，將會以現有的 Azure AD 帳戶建立或聯結這些使用者。  
  
 >[AZURE.NOTE]
 如需同步處理選項的詳細資訊，請參閱 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
@@ -73,7 +73,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | Exchange ActiveSync    | 提示輸入認證     | 在 Lync 中需要單一登入，在 Exchange 中會提示輸入認證   |
 | 行動應用程式                 | 提示輸入認證     | 提示輸入認證                                               |
 
-如果您決定從您所要使用其中一個提供與 Azure AD 同盟 IdP 或合作對象第 3 之 1 的工作，您需要留意下列支援的功能:
+如果您決定從您所要使用其中一個提供與 Azure AD 同盟 IdP 或合作對象第 3 之 1 的工作，您需要留意下列支援的功能 ︰
 - SP Lite 設定檔相容的任何 SAML 2.0 提供者可以支援 Azure AD 的驗證和相關聯的應用程式
 - 支援被動的驗證，可協助驗證 OWA、 SPO 等。
 - Exchange Online 用戶端可支援透過 SAML 2.0 增強型用戶端設定檔 (ECP)
@@ -198,8 +198,9 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 您也應該確定您選取的多重要素驗證設計選項，支援您的設計所需的功能。 
 
 ##後續步驟
-[決定資料保護需求](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
+[判斷資料保護需求](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## 另請參閱
 [設計考量概觀](active-directory-hybrid-identity-design-considerations-overview.md)
+
 

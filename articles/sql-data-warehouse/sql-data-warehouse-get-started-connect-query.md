@@ -90,3 +90,4 @@
 [2]: ./media/sql-data-warehouse-get-started-connect-query/open-ssdt.png
 [3]: ./media/sql-data-warehouse-get-started-connect-query/connection-dialog.png
 [4]: ./media/sql-data-warehouse-get-started-connect-query/new-query.png
+

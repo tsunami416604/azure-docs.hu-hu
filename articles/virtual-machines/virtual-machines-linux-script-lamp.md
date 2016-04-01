@@ -72,7 +72,7 @@ script-vm VM 需要安裝 Azure CLI，並且與 Azure 之間具有正常運作�
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
-此外，還會建立 JSON 檔案，此檔案會描述如何從 Azure 儲存體下載指令碼。 儲存為 *public_config.json* (取代"mystorage"的儲存體帳戶名稱):
+此外，還會建立 JSON 檔案，此檔案會描述如何從 Azure 儲存體下載指令碼。 儲存為 *public_config.json* （取代"mystorage"的儲存體帳戶名稱） ︰
 
     {"fileUris":["https://mystorage.blob.core.windows.net/scripts/install_lamp.sh"], "commandToExecute":"sh install_lamp.sh" }
 
@@ -109,4 +109,5 @@ script-vm VM 需要安裝 Azure CLI，並且與 Azure 之間具有正常運作�
 [Azure Linux 延伸模組 (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
 [Azure 上的 Linux 和開放原始碼運算](virtual-machines-linux-opensource.md)
+
 

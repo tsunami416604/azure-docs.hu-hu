@@ -51,7 +51,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 每個步驟根據您建置的應用程式類型而略有不同，而我們公開的原始碼程式庫會為您顧及細節。
 
 ## Web Apps
-對於 web 應用程式 (.NET、 PHP、 Java、 Ruby、 Python、 節點等等)，為伺服器上裝載及存取透過瀏覽器支援 Azure AD B2C [OpenID Connect](active-directory-b2c-reference-protocols.md) 用於所有的使用者體驗，包括登入、 註冊，並設定檔管理。  在 Azure AD B2C 的 OpenID Connect 實作中，Web 應用程式會向 Azure AD 發出驗證要求，以起始這些使用者體驗。  要求的結果是 `id_token`，這是一個安全性權杖，代表使用者的身分識別並以宣告形式提供使用者的相關資訊：
+對於 web 應用程式 （.NET、 PHP、 Java、 Ruby、 Python、 節點等等），為伺服器上裝載及存取透過瀏覽器支援 Azure AD B2C [OpenID Connect](active-directory-b2c-reference-protocols.md) 用於所有的使用者體驗，包括登入、 註冊，並設定檔管理。  在 Azure AD B2C 的 OpenID Connect 實作中，Web 應用程式會向 Azure AD 發出驗證要求，以起始這些使用者體驗。  要求的結果是 `id_token`，這是一個安全性權杖，代表使用者的身分識別並以宣告形式提供使用者的相關資訊：
 
 ```
 // Partial raw id_token
@@ -68,7 +68,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 您可以了解所有語彙基元和應用程式中可用的宣告類型 [B2C 語彙基元參考](active-directory-b2c-reference-tokens.md)。
 
-在 web 應用程式，每次執行 [原則](active-directory-b2c-reference-policies.md) 會採用下列高階步驟:
+在 web 應用程式，每次執行 [原則](active-directory-b2c-reference-policies.md) 會採用下列高階步驟 ︰
 
 ![Web 應用程式泳道映像](./media/active-directory-b2c-apps/webapp.png)
 
@@ -129,3 +129,4 @@ Azure AD B2C 目前不支援此流程，也就是說，只有在進行互動式�
 許多架構中都有一個 Web API 需要呼叫另一個下游 Web API，而兩者都受 Azure AD B2C 保護。  此情況常見於有 Web API 後端的原生用戶端，而後端會再呼叫 Azure AD 圖形 API 等 Microsoft 線上服務。
 
 使用 OAuth 2.0 Jwt 持有人認證授與可支援此鏈結的 Web API 案例，亦稱為「代理者流程」。  不過，Azure AD B2C 預覽目前未實作代理者流程。
+

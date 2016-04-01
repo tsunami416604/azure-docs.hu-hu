@@ -91,3 +91,4 @@ Azure VM 延伸模組是由 Microsoft 和受信任的第 3 方發行者所發佈
 
 編寫範本之後，您可以使用 Azure CLI 或 Azure Powershell 部署它們。
 
+

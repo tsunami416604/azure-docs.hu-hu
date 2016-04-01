@@ -50,3 +50,4 @@ Azure 自動化提供非常可靠且高度可用的工作流程執行引擎，�
 請參閱 Azure 自動化 [快速入門教學課程](../automation-create-runbook-from-samples.md)
  
 
+

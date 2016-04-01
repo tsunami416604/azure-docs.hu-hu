@@ -68,7 +68,7 @@
 
 安裝從 MongoDB [http://mongodb.org](http://www.mongodb.org)。
 
-**注意:** 本逐步解說假設您使用 MongoDB，這在撰寫本文時是預設安裝和伺服器端點: mongodb://localhost
+**注意 ︰** 本逐步解說假設您使用 MongoDB，這在撰寫本文時是預設安裝和伺服器端點 ︰ mongodb://localhost
 
 
 ## 步驟 5：在您的 Web API 上安裝 Restify 模組
@@ -89,7 +89,7 @@
 
 #### 您有收到錯誤訊息嗎？
 
-當使用 npm，在某些作業系統上，您可能會收到錯誤的錯誤: EPERM，chmod ' / usr/本機/bin /..' 並要求您以系統管理員身分執行該帳戶。 若發生這個情況，使用 sudo 命令以更高的權限層級執行 npm。
+當使用 npm，在某些作業系統上，您可能會收到錯誤的錯誤 ︰ EPERM，chmod ' / usr/本機/bin /..' 並要求您以系統管理員身分執行該帳戶。 若發生這個情況，使用 sudo 命令以更高的權限層級執行 npm。
 
 #### 您有收到有關 DTRACE 的錯誤訊息嗎？
 
@@ -161,7 +161,7 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
 
 接下來，我們將加入持有者策略使用 passport-持有者-http、 的 Bearner 處理常式 [Passport](http://passportjs.org/)。 我們也會加入透過使用 node-jwt 支援的 JWT 權杖處理常式。
 
-**注意:** 雖然 OAuth2 提供的架構，在其中可以發出任何已知權杖類型，只有特定的權杖類型獲得普遍的使用。 在保護端點中，這會是持有者權杖。 持有者權杖是在 OAuth2 中最普遍發行的權杖類型，而且許多實作假設持有者權杖會是唯一發行的權杖類型。
+**注意 ︰** 雖然 OAuth2 提供的架構，在其中可以發出任何已知權杖類型，只有特定的權杖類型獲得普遍的使用。 在保護端點中，這會是持有者權杖。 持有者權杖是在 OAuth2 中最普遍發行的權杖類型，而且許多實作假設持有者權杖會是唯一發行的權杖類型。
 
 從命令列中，將目錄變更至 **azuread** 目錄。
 
@@ -188,12 +188,12 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
 * `npm install mongoose`
 * `npm install mongodb`
 
-## 步驟 9: 安裝其他模組
+## 步驟 9 ︰ 安裝其他模組
 
 接下來，我們將會安裝其餘所需的模組。
 
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -225,7 +225,7 @@ Restify 提供使用 DTrace 追蹤 REST 呼叫的強大機制。 不過，許多
 
 server.js 檔案可提供我們 Web API 伺服器的大部分功能。 我們將在此檔案中加入大部分的程式碼。 基於生產目的，您會將功能重整成較小的檔案，例如單獨分開的路徑和控制器。 基於此示範的目的，我們將在這項功能中使用 server.js。
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -255,7 +255,7 @@ server.js 檔案可提供我們 Web API 伺服器的大部分功能。 我們將
 這個程式碼檔會將設定參數從您的 Azure Active Directory 入口網站傳遞到 Passport.js。 您會在將 Web API 加入入口網站 (本逐步解說的第一個部分) 時建立這些設定值。 在您完成複製程式碼之後，我們將說明要放入這些參數值的內容。
 
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -273,16 +273,16 @@ server.js 檔案可提供我們 Web API 伺服器的大部分功能。 我們將
 
 
 
-**注意:** 很可能永遠不需要變更這些值。
+**注意 ︰** 很可能永遠不需要變更這些值。
 
-**注意:** 我們經常復原金鑰。 請確定您總是從 "openid_keys" URL 中進行提取，而且應用程式可以存取網際網路。
+**注意 ︰** 我們經常復原金鑰。 請確定您總是從 "openid_keys" URL 中進行提取，而且應用程式可以存取網際網路。
 
 
 ## 步驟 12：將設定加入 server.js 檔案
 
 我們必須從您剛才跨應用程式建立的組態檔中讀取這些值。 若要這樣做，我們只需在應用程式中將 .config 檔案作為必要資源加入，然後將全域變數設定為 config.js 文件中的那些值即可
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -306,9 +306,9 @@ var serverURI = ( process.env.PORT ) ? config.creds.mongoose_auth_mongohq : conf
 
 由於目標是為了在 server.js 檔案中僅保留應用程式邏輯，因此將一些協助程式方法放在不同檔案中會是合理的作法。 這些方法只會協助我們剖析 OpenID Connect 中繼資料，而且與核心案例無關。 最好是將它們放到別處。 隨著逐步進行本逐步解說，我們將會在此檔案中新增更多內容。
 
-***注意:*** 您會注意到，這個 metadata.js 檔案會剖析 XML 的 SAML 和 Ws-fed 以及 JSON OpenID connect。 這是預設的行為，您也將會在其他範例中使用這個檔案。 您可以放心地將其忽略。
+***注意 ︰*** 您會注意到，這個 metadata.js 檔案會剖析 XML 的 SAML 和 Ws-fed 以及 JSON OpenID connect。 這是預設的行為，您也將會在其他範例中使用這個檔案。 您可以放心地將其忽略。
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -520,7 +520,7 @@ exports.Metadata = Metadata;
 
 我們必須告訴伺服器哪裡可以找到您剛才撰寫的方法。
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -560,7 +560,7 @@ this.aadutils = new var Metadata = require('./metadata').Metadata;
 #### 在程式碼中建立結構描述
 
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -635,7 +635,7 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
 
 我們現在可以新增建立、擷取、更新和刪除的基本 CRUD 路由。
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -1012,7 +1012,7 @@ var server = restify.createServer({
 
 既然我們已經擁有執行中的 REST API (順道恭喜您！)，我們可以開始讓它在 Azure AD 中發揮其價值。
 
-從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有:
+從命令列中，將目錄變更至 **azuread** 資料夾，如果不是已有 ︰
 
 `cd azuread`
 
@@ -1180,3 +1180,4 @@ server.get('/tasks', passport.authenticate('provider', { session: false }), list
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
+

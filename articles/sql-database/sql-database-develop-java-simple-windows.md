@@ -63,7 +63,7 @@ Could this instead be a #tempPerson table, so that the Java code sample could be
 > [AZURE.NOTE] 如果您使用 JTDS JDBC 驅動程式，則您必須加入 「 ssl = 需要 」 url 的連接字串，而您需要設定下列 JVM 的選項"-Djsse.enableCBCProtection=false 」。 此 JVM 選項會停用安全性漏洞修正程式，因此請確定您了解會涉及到哪些風險，才能設定此選項。
 
 
-## 步驟 2: 編譯 Java 程式碼範例
+## 步驟 2 ︰ 編譯 Java 程式碼範例
 
 
 本節包含大量的 Java 程式碼範例。 其中的註解指出您將複製並貼上後續章節所提供之一小部分 Java 程式碼片段的位置。 即使未複製並貼到註解附近，本節中的範例仍可編譯及執行，但該範例只會連接，然後就結束。 您會找到下列註解：
@@ -227,4 +227,5 @@ Could this instead be a #tempPerson table, so that the Java code sample could be
 ## 後續步驟
 
 如需詳細資訊，請參閱 [Java 開發人員中心](/develop/java/)。
+
 

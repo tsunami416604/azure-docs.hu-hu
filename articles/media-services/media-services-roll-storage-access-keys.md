@@ -31,9 +31,9 @@
 
 ## 步驟 1：重新產生次要儲存體存取金鑰
 
-請先重新產生次要儲存體金鑰。 根據預設，媒體服務不會使用次要金鑰。  如需如何更換儲存體金鑰的詳細資訊，請參閱 [How to: 檢視、 複製和重新產生儲存體存取金鑰](../storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)。
+請先重新產生次要儲存體金鑰。 根據預設，媒體服務不會使用次要金鑰。  如需如何更換儲存體金鑰的詳細資訊，請參閱 [How to ︰ 檢視、 複製和重新產生儲存體存取金鑰](../storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)。
   
-##<a id="step2"></a>步驟 2: 更新媒體服務，以使用新的次要儲存體金鑰
+##<a id="step2"></a>步驟 2 ︰ 更新媒體服務，以使用新的次要儲存體金鑰
 
 更新媒體服務，開始使用次要儲存體存取金鑰。 您可以使用下列兩種方法的其中一個，將重新產生的儲存體金鑰與媒體服務同步。
 
@@ -41,7 +41,7 @@
 
 - 使用媒體服務管理 REST API。
 
-下列程式碼範例示範如何建構 the https://endpoint/<subscriptionId>/services/mediaservices/Accounts/<accountName>/StorageAccounts/<storageAccountName>/Key 要求，以便透過媒體服務同步指定的儲存體金鑰。 在本情況中，會使用次要儲存體金鑰。 如需詳細資訊，請參閱 [How to: 使用媒體服務管理 REST API](http://msdn.microsoft.com/library/azure/dn167656.aspx)。
+下列程式碼範例示範如何建構 the https://endpoint/<subscriptionId>/ services/mediaservices/帳戶 /<accountName>/StorageAccounts/<storageAccountName>/ 索引鍵的要求，以便透過媒體服務同步指定儲存體金鑰。 在本情況中，會使用次要儲存體金鑰。 如需詳細資訊，請參閱 [How to ︰ 使用媒體服務管理 REST API](http://msdn.microsoft.com/library/azure/dn167656.aspx)。
  
         public void UpdateMediaServicesWithStorageAccountKey(string mediaServicesAccount, string storageAccountName, string storageAccountKey)
         {
@@ -79,7 +79,7 @@
 
 在此步驟之後，請更新現有的定位器 (和舊的儲存體金鑰存在相依性)，如下列步驟所示。
 
->[AZURE.NOTE]等待 30 分鐘，再執行任何操作使用媒體服務 (例如，建立新定位器)，以免影響到待處理的工作。
+>[AZURE.NOTE]等待 30 分鐘，再執行任何操作使用媒體服務 （例如，建立新定位器），以免影響到待處理的工作。
 
 ##步驟 3：更新定位器 
 
@@ -128,15 +128,15 @@
     }
 
 
-##步驟 5: 重新產生主要儲存體存取金鑰
+##步驟 5 ︰ 重新產生主要儲存體存取金鑰
 
-重新產生主要儲存體存取金鑰。 如需如何更換儲存體金鑰的詳細資訊，請參閱 [How to: 檢視、 複製和重新產生儲存體存取金鑰](../storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)。
+重新產生主要儲存體存取金鑰。 如需如何更換儲存體金鑰的詳細資訊，請參閱 [How to ︰ 檢視、 複製和重新產生儲存體存取金鑰](../storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)。
 
 ##步驟 6：更新媒體服務，開始使用新的主要儲存體金鑰
     
 使用相同的程序中所述 [步驟 2](media-services-roll-storage-access-keys.md#step2) 僅此時間與媒體服務帳戶同步處理新的主要儲存體存取金鑰。
 
->[AZURE.NOTE]等待 30 分鐘，再執行任何操作使用媒體服務 (例如，建立新定位器)，以免影響到待處理的工作。
+>[AZURE.NOTE]等待 30 分鐘，再執行任何操作使用媒體服務 （例如，建立新定位器），以免影響到待處理的工作。
 
 ##步驟 7：更新定位器  
 
@@ -158,3 +158,4 @@
 ###通知 
 
 我們想要向下列為建立此文件貢獻心力的人員致謝：Cenk Dingiloglu、Milan Gada、Seva Titov。
+

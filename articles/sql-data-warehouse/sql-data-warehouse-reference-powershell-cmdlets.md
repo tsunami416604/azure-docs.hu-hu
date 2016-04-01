@@ -20,7 +20,7 @@
 
 您可使用 Azure PowerShell Cmdlet 或 REST API 管理 SQL 資料倉儲。 
 
-針對定義的命令 **Azure SQL Database** 也適用於 **SQL 資料倉儲**。 如需最新的清單，請參閱 [Azure SQL Cmdlet](https://msdn.microsoft.com/library/mt574084.aspx)。 Cmdlet **Suspend-azuresqldatabase** 和 **Resume-azuresqldatabase** (如下) 是針對 SQL 資料倉儲設計的新增。
+針對定義的命令 **Azure SQL Database** 也適用於 **SQL 資料倉儲**。 如需最新的清單，請參閱 [Azure SQL Cmdlet](https://msdn.microsoft.com/library/mt574084.aspx)。 Cmdlet **Suspend-azuresqldatabase** 和 **Resume-azuresqldatabase** （如下） 是針對 SQL 資料倉儲設計的新增。
 
 同樣地，REST Api 的 **SQL Azure 資料庫** 也可用於 **SQL 資料倉儲** 執行個體。 目前的清單，請參閱 [Azure SQL Database 的作業](https://msdn.microsoft.com/library/azure/dn505719.aspx)。
 
@@ -111,4 +111,5 @@ RestorePointCreationDate |備份快照時間 (在 restorePointType = DISCRETE �
 [gog]: http://google.com/
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
+
 

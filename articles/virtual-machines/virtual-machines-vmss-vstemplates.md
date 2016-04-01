@@ -25,7 +25,7 @@
 
 [Azure 虛擬機器擴充集合](azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) 是部署和管理類似的虛擬機器，輕鬆地整合式自動調整大小選項的集合，以及負載平衡的 Azure 運算資源。 您可以佈建和部署 VM 擴充集合使用 [Azure 資源管理員 (ARM) 範本](https://github.com/Azure/azure-quickstart-templates)。 可以使用 Azure CLI、PowerShell、REST 部署 ARM 範本，也可以直接從 Visual Studio 部署。 Visual Studio 會提供一組範例範本，可以部署為 Azure 資源群組部署專案的一部分。
 
-Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組在一起，並且在單一部署作業中發佈。 您可以進一步了解它們這裡: [建立和部署 Azure 資源群組，透過 Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy/)。
+Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組在一起，並且在單一部署作業中發佈。 您可以進一步了解它們這裡 ︰ [建立和部署 Azure 資源群組，透過 Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy/)。
 
 ## 必要條件
 
@@ -34,7 +34,7 @@ Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組�
 - Visual Studio 2013 或 2015
 - Azure SDK 2.7 或 2.8
 
-注意: 這些指示假設您使用 Visual Studio 2015 的 [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)。
+注意 ︰ 這些指示假設您使用 Visual Studio 2015 的 [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)。
 
 ## 建立專案
 
@@ -86,7 +86,7 @@ Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組�
 
 ## 探索 VM 調整集
 
-部署完成之後，您可以檢視新的 VM 小數位數設定 Visual Studio 中 **雲端總管** (重新整理清單)。 雲端總管可讓您在開發應用程式的同時，於 Visual Studio 中管理 Azure 資源。 您也可以在 Azure 入口網站和 Azure 資源總管中檢視 VM 調整集。
+部署完成之後，您可以檢視新的 VM 小數位數設定 Visual Studio 中 **雲端總管** （重新整理清單）。 雲端總管可讓您在開發應用程式的同時，於 Visual Studio 中管理 Azure 資源。 您也可以在 Azure 入口網站和 Azure 資源總管中檢視 VM 調整集。
 
 ![雲端總管][cloud_explorer]
 
@@ -94,7 +94,7 @@ Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組�
 
 ## 後續步驟
 
-一旦您透過 Visual Studio 成功部署 VM 調整集，您可以進一步自訂您的專案，以符合應用程式的需求。 例如，設定自動調整，方法是新增 Insights 資源、將基礎結構新增至您的範本 (例如獨立 VM)，或是使用自訂指令碼延伸模組部署應用程式。 很好的範例範本來源位於 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates) GitHub 儲存機制 (搜尋 「 vmss 」)。
+一旦您透過 Visual Studio 成功部署 VM 調整集，您可以進一步自訂您的專案，以符合應用程式的需求。 例如，設定自動調整，方法是新增 Insights 資源、將基礎結構新增至您的範本 (例如獨立 VM)，或是使用自訂指令碼延伸模組部署應用程式。 很好的範例範本來源位於 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates) GitHub 儲存機制 （搜尋 「 vmss 」）。
 
 [file_new]: ./media/virtual-machines-vmss-vstemplates/1-FileNew.png
 [create_project]: ./media/virtual-machines-vmss-vstemplates/2-CreateProject.png
@@ -107,4 +107,5 @@ Azure 資源群組部署是一種方式，可以將相關 Azure 資源集群組�
 [edit_parameters]: ./media/virtual-machines-vmss-vstemplates/8-EditParameter.png
 [output_window]: ./media/virtual-machines-vmss-vstemplates/9-Output.png
 [cloud_explorer]: ./media/virtual-machines-vmss-vstemplates/12-CloudExplorer.png
+
 

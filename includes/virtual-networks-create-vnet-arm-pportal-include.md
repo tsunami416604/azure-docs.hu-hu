@@ -34,3 +34,4 @@
 10. 請查看如下圖所示的子網路清單。
 
     ![VNet 中的子網路清單](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
+

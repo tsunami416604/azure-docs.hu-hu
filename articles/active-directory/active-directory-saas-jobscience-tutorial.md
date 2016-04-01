@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 Jobscience 單一登入的訂用帳戶
   
-完成本教學課程之後, 您已指派給 Jobscience 的 Azure AD 使用者將能夠登入位於您 Jobscience 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Jobscience 的 Azure AD 使用者將能夠登入位於您 Jobscience 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -107,14 +107,14 @@
 
     ![安全性控制項](./media/active-directory-saas-jobscience-tutorial/IC784364.png "Security Controls")
 
-11. 在 **單一登入設定** 區段中，執行下列步驟:
+11. 在 **單一登入設定** 區段中，執行下列步驟 ︰
 
     ![單一登入設定](./media/active-directory-saas-jobscience-tutorial/IC781026.png "Single Sign-On Settings")
 
     1.  選取 **已啟用 SAML**。
     2.  按一下 [ **新**。
 
-12. 在 **SAML 單一登入設定編輯** ] 對話方塊中，執行下列步驟:
+12. 在 **SAML 單一登入設定編輯** ] 對話方塊中，執行下列步驟 ︰
 
     ![SAML 單一登入設定](./media/active-directory-saas-jobscience-tutorial/IC784365.png "SAML Single Sign-On Setting")
 
@@ -171,7 +171,7 @@ Jobscience 需以手動的方式佈建。
 
     ![所有使用者](./media/active-directory-saas-jobscience-tutorial/IC784370.png "All Users")
 
-5.  在 **編輯使用者** ] 對話方塊中，執行下列步驟:
+5.  在 **編輯使用者** ] 對話方塊中，執行下列步驟 ︰
 
     ![使用者編輯](./media/active-directory-saas-jobscience-tutorial/IC784371.png "User Edit")
 
@@ -199,3 +199,4 @@ Jobscience 需以手動的方式佈建。
     ![是](./media/active-directory-saas-jobscience-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

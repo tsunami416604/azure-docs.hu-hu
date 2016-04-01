@@ -27,7 +27,7 @@
 
 ## 開始使用
 
-支援事件中樞的.NET 類別屬於 Microsoft.ServiceBus.dll 組件。 要參考服務匯流排 API，並設定應用程式以使用所有服務匯流排相依性，最簡單方法是下載服務匯流排 NuGet 封裝。 如需詳細資訊，請參閱 [使用 NuGet 服務匯流排封裝](https://msdn.microsoft.com/library/azure/dn741354.aspx)。 或者，您可以使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) Visual Studio 中。 若要這樣做，請發出下列命令在 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 視窗:
+支援事件中樞的.NET 類別屬於 Microsoft.ServiceBus.dll 組件。 要參考服務匯流排 API，並設定應用程式以使用所有服務匯流排相依性，最簡單方法是下載服務匯流排 NuGet 封裝。 如需詳細資訊，請參閱 [使用 NuGet 服務匯流排封裝](https://msdn.microsoft.com/library/azure/dn741354.aspx)。 或者，您可以使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) Visual Studio 中。 若要這樣做，請發出下列命令在 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 視窗 ︰
 
 ```powershell
 Install-Package WindowsAzure.ServiceBus
@@ -60,7 +60,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 var client = EventHubClient.Create(description.Path);
 ```
 
-這個方法會使用 App.config 檔案之 `appSettings` 區段中的服務匯流排連線資訊。 如需 `appSettings` XML 用來儲存服務匯流排連接資訊，請參閱文件 [microsoft.servicebus.messaging.eventhubclient.create (system.string)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) 方法。
+這個方法會使用 App.config 檔案之 `appSettings` 區段中的服務匯流排連線資訊。 如需 `appSettings` XML 用來儲存服務匯流排連接資訊，請參閱文件 [microsoft.servicebus.messaging.eventhubclient.create （system.string)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) 方法。
 
 另一個選項是從連接字串建立用戶端。 這個選項適合用來搭配 Azure 背景工作角色，因為您可以將字串儲存在背景工作的組態屬性中。 例如：
 
@@ -89,11 +89,11 @@ var client = factory.CreateEventHubClient("MyEventHub");
 
 ## 事件序列化
 
- [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別具有 [四個多載建構函式](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) ，有許多不同的參數，例如物件和序列化程式、 位元組陣列或資料流。 您也可具現化 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別，並在之後設定內文資料流。 使用 JSON 和 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx), ，您可以使用 **encoding.utf8.getbytes ()** 擷取 JSON 編碼字串的位元組陣列。
+ [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別具有 [四個多載建構函式](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) ，有許多不同的參數，例如物件和序列化程式、 位元組陣列或資料流。 您也可具現化 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別，並在之後設定內文資料流。 使用 JSON 和 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx), ，您可以使用 **encoding.utf8.getbytes （)** 擷取 JSON 編碼字串的位元組陣列。
 
 ## 資料分割索引鍵
 
- [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別具有 [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) 屬性，可讓傳送者指定雜湊來產生資料分割指派的值。 使用資料分割索引鍵，可確保所有具有相同索引鍵的事件均傳送到事件中樞內的同一個資料分割。 常見的資料分割索引鍵包含使用者工作階段識別碼和唯一的傳送者識別碼。  [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) 是選擇性屬性，可供使用時 [microsoft.servicebus.messaging.eventhubclient.send (microsoft.servicebus.messaging.eventdata)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 或 [Microsoft.servicebus.messaging.eventhubclient.sendasync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 方法。 如果您未提供值給 [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx), ，傳送的事件散佈至資料分割使用循環配置資源模型。
+ [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 類別具有 [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) 屬性，可讓傳送者指定雜湊來產生資料分割指派的值。 使用資料分割索引鍵，可確保所有具有相同索引鍵的事件均傳送到事件中樞內的同一個資料分割。 常見的資料分割索引鍵包含使用者工作階段識別碼和唯一的傳送者識別碼。  [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) 是選擇性屬性，可供使用時 [microsoft.servicebus.messaging.eventhubclient.send （microsoft.servicebus.messaging.eventdata)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 或 [Microsoft.servicebus.messaging.eventhubclient.sendasync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 方法。 如果您未提供值給 [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx), ，傳送的事件散佈至資料分割使用循環配置資源模型。
 
 ## 批次事件傳送作業
 
@@ -121,7 +121,7 @@ var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[
 
 ## 事件取用者
 
-事件中樞有兩個主要的事件取用模型: 直接接收者和較高層級的抽象，例如 [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)。 直接接收者負責自行協調消費者群組內之資料分割的存取。
+事件中樞有兩個主要的事件取用模型 ︰ 直接接收者和較高層級的抽象，例如 [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)。 直接接收者負責自行協調消費者群組內之資料分割的存取。
 
 ### 直接消費者
 
@@ -184,4 +184,5 @@ while(receive)
 - [事件中心概觀](event-hubs-overview.md)
 - [事件中樞程式碼範例](http://code.msdn.microsoft.com/site/search?query=event 中樞 & f [0]。值 = 事件中樞與 f [0]。輸入 = SearchText ac = 5)
 - [事件處理器主機 API 參考](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
+
 

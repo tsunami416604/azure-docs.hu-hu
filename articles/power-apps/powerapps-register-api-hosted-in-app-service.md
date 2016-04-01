@@ -57,9 +57,9 @@ API 部署至 App Service 環境之後，請使用下列步驟註冊：
 ![][11]
 2. 在 Api 管理中，選取 **新增**:  
 ![][12]  
-3. 在 **加入 API**, ，輸入 API 的內容:  
+3. 在 **加入 API**, ，輸入 API 的內容 ︰  
 
-    - 在 **名稱**, ，輸入您的 API 的名稱。 請注意，您輸入的名稱會包含在 API 的執行階段 URL 中。 請設定有意義且在組織中獨一無二的名稱。   
+    - 在 **名稱**, ，輸入您的 API 的名稱。 請注意，您輸入的名稱會包含在 API 的執行階段 URL 中。 設定有意義且在組織中獨一無二的名稱。   
     - 在 **來源**, ，請選取 **匯入從 App Service 環境中裝載 Api**:  
     ![][13]
 4. 在 **API App Service 環境中裝載**, ，選取您要匯入的 API。 此清單會顯示每個 web 應用程式、 API 的應用程式和行動裝置應用程式在 app service 環境具有其 **apiDefinition.url** 設定屬性。 若要匯入 API，它會使用利用這個屬性公開的 Swagger 2.0 API 定義。 請確定當您註冊 API 時，可公開存取此 URL:  
@@ -80,4 +80,5 @@ API 部署至 App Service 環境之後，請使用下列步驟註冊：
 [12]: ./media/powerapps-register-api-hosted-in-app-service/add-api-button.png
 [13]: ./media/powerapps-register-api-hosted-in-app-service/add-api-blade.png
 [14]: ./media/powerapps-register-api-hosted-in-app-service/add-api-select-from-ase.png
+
 

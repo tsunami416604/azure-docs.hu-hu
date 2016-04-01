@@ -31,25 +31,25 @@
 
 ```
 |-- NodeApplication
-    |-- bin
+  	|-- bin
         |-- www
-    |-- node_modules
+  	|-- node_modules
         |-- .bin
         |-- express
         |-- jade
         |-- etc.
-    |-- public
+  	|-- public
         |-- images
         |-- etc.
-    |-- routes
+  	|-- routes
         |-- index.js
         |-- users.js
-    |-- views
+  	|-- views
         |-- index.jade
         |-- etc.
-    |-- app.js
-    |-- package.json
-    |-- node.exe
+  	|-- app.js
+  	|-- package.json
+  	|-- node.exe
 ```
 
 在下一個步驟中，您將為 Node.js 應用程式建立應用程式封裝。 以下程式碼會建立包含 Node.js 應用程式的 Service Fabric 應用程式封裝。
@@ -60,18 +60,18 @@
 
 以下是所使用之參數的描述：
 
-- **來源/**: 指向應該一起封裝的應用程式的目錄
-- **/target**: 定義的目錄應該在其中建立封裝。 這個目錄必須是與目標目錄不同的目錄。
-- **/appname**: 定義現有的應用程式的應用程式名稱。 請務必了解這會轉譯成資訊清單中的「服務名稱」，而不是轉譯成 Service Fabric 應用程式名稱。
-- **/exe**: 定義服務網狀架構應該在此情況下啟動的可執行檔 `node.exe`
-- **/ma**: 定義用來啟動可執行檔的引數。 如未安裝 Node.js，需要啟動 Node.js web 伺服器執行 Service Fabric `node.exe bin/www`。  `/ma:'bin/www'` 會告訴封裝工具使用 `bin/ma` 做為 node.exe 引數
-- **/ AppType**: 定義 Service Fabric 應用程式的型別名稱。 如果您
+- **來源/**︰ 指向應該一起封裝的應用程式的目錄
+- **/target**︰ 定義的目錄應該在其中建立封裝。 這個目錄必須是與目標目錄不同的目錄。
+- **/appname**︰ 定義現有的應用程式的應用程式名稱。 請務必了解這會轉譯成資訊清單中的「服務名稱」，而不是轉譯成 Service Fabric 應用程式名稱。
+- **/exe**︰ 定義服務網狀架構應該在此情況下啟動的可執行檔 `node.exe`
+- **/ma**︰ 定義用來啟動可執行檔的引數。 如未安裝 Node.js，需要啟動 Node.js web 伺服器執行 Service Fabric `node.exe bin/www`。  `/ma:'bin/www'` 會告訴封裝工具使用 `bin/ma` 做為 node.exe 引數
+- **/ AppType**︰ 定義 Service Fabric 應用程式的型別名稱。 如果您
 
 如果您瀏覽至 /target 參數中指定的目錄，您可以看到工具已建立可完整運作的 Service Fabric 封裝，如以下所示：
 
 ```
 |--[yourtargetdirectory]
-    |-- NodeApplication
+  	|-- NodeApplication
         |-- C
               |-- bin
               |-- data
@@ -85,7 +85,7 @@
         |-- config
               |--Settings.xml
         |-- ServiceManifest.xml
-    |-- ApplicationManifest.xml
+  	|-- ApplicationManifest.xml
 ```
 所產生的 ServiceManifest.xml 現在有個描述應該如何啟動 Node.js Web 伺服器的區段，如以下程式碼片段所示：
 
@@ -115,7 +115,7 @@
 
 ```
 |-- MongoDB
-    |-- bin
+  	|-- bin
         |-- mongod.exe
         |-- mongo.exe
         |-- etc.
@@ -139,8 +139,8 @@ mongod.exe --dbpath [path to data]
 
 ```
 |--[yourtargetdirectory]
-    |-- MyNodeApplication
-    |-- MongoDB
+  	|-- MyNodeApplication
+  	|-- MongoDB
         |-- C
             |--bin
                 |-- mongod.exe
@@ -149,7 +149,7 @@ mongod.exe --dbpath [path to data]
         |-- config
             |--Settings.xml
         |-- ServiceManifest.xml
-    |-- ApplicationManifest.xml
+  	|-- ApplicationManifest.xml
 ```
 如您所見，工具已將新資料夾 [MongoDB] 新增至包含 MongoDB 二進位檔的目錄。 如果您開啟 `ApplicationManifest.xml` 檔案，您將可以看到封裝現在包含 Node.js 應用程式和 MongoDB。 以下程式碼會顯示應用程式資訊清單的內容。
 
@@ -197,4 +197,5 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 ## 後續步驟
 
 了解如何 [封裝單一應用程式手動](service-fabric-deploy-existing-app.md)。
+
 

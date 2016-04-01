@@ -40,14 +40,14 @@ DSC 提供一組 Windows PowerShell 語言延伸模組、新的 Windows PowerShe
 此外，您可以建立自訂的資源，來設定任何應用程式或系統設定的狀態。
 
 
-如需有關 PowerShell DSC 的詳細資訊，請參閱: [DevOps 世界-Windows PowerShell 期望狀態組態中的組態](http://blogs.msdn.com/b/powershell/archive/2013/11/01/configuration-in-a-devops-world-windows-powershell-desired-state-configuration.aspx)
+如需有關 PowerShell DSC 的詳細資訊，請參閱 ︰ [DevOps 世界-Windows PowerShell 期望狀態組態中的組態](http://blogs.msdn.com/b/powershell/archive/2013/11/01/configuration-in-a-devops-world-windows-powershell-desired-state-configuration.aspx)
 
 ##什麼是 Azure 自動化 DSC？##
 Azure 自動化 DSC 建置在 PowerShell DSC 中推出的基礎上，提供您更輕鬆的組態管理經驗。 Azure 自動化 DSC 為相同的管理層 [PowerShell 期望狀態組態](https://technet.microsoft.com/library/dn249912.aspx) <link> Azure 自動化提供的 PowerShell 指令碼目前。
 
-Azure 自動化 DSC 可讓您 [編寫和管理 PowerShell 期望狀態組態](https://technet.microsoft.com/library/dn249918.aspx), ，匯入 [DSC 資源](https://technet.microsoft.com/library/dn282125.aspx), ，並產生 DSC 節點組態 (MOF 文件)，全都在雲端。 這些 DSC 項目將會放在 Azure 自動化 [DSC 提取伺服器](https://technet.microsoft.com/library/dn249913.aspx) 以便在雲端或內部部署的目標節點 (例如實體和虛擬機器) 可以加以提取，自動符合它們指定，並回報其符合性到 Azure 自動化所需的狀態所需的狀態。
+Azure 自動化 DSC 可讓您 [編寫和管理 PowerShell 期望狀態組態](https://technet.microsoft.com/library/dn249918.aspx), ，匯入 [DSC 資源](https://technet.microsoft.com/library/dn282125.aspx), ，並產生 DSC 節點組態 （MOF 文件），全都在雲端。 這些 DSC 項目將會放在 Azure 自動化 [DSC 提取伺服器](https://technet.microsoft.com/library/dn249913.aspx) 以便在雲端或內部部署的目標節點 （例如實體和虛擬機器） 可以加以提取，自動符合它們指定，並回報其符合性到 Azure 自動化所需的狀態所需的狀態。
 
-寧可觀賞也不要閱讀？ 請觀賞以下在 2015 年 5 月發佈的影片，此為首次發佈 Azure 自動化 DSC 的時間。 **注意:** 概念和生命週期，這段影片中所述正確時，Azure 自動化 DSC 歷經多因為這段影片中記錄的作業。 它現在可公開預覽、在 Azure 入口網站中具有更豐富的 UI，並支援額外的功能。
+寧可觀賞也不要閱讀？ 請觀賞以下在 2015 年 5 月發佈的影片，此為首次發佈 Azure 自動化 DSC 的時間。 **注意 ︰** 概念和生命週期，這段影片中所述正確時，Azure 自動化 DSC 歷經多因為這段影片中記錄的作業。 它現在可公開預覽、在 Azure 入口網站中具有更豐富的 UI，並支援額外的功能。
 
 > [AZURE.VIDEO microsoft-ignite-2015-heterogeneous-configuration-management-using-microsoft-azure-automation]
 
@@ -65,7 +65,7 @@ PowerShell DSC 引進了稱為組態的新概念。 組態可讓您透過 PowerS
 
 ![替代文字](./media/automation-dsc-overview/AADSC_3.png)
 
-如需詳細的組態關鍵字的相關資訊，請參閱: [了解期望狀態組態中的組態關鍵字](http://blogs.msdn.com/b/powershell/archive/2013/11/05/understanding-configuration-keyword-in-desired-state-configuration.aspx "了解期望狀態組態中的組態關鍵字")
+如需詳細的組態關鍵字的相關資訊，請參閱 ︰ [了解期望狀態組態中的組態關鍵字](http://blogs.msdn.com/b/powershell/archive/2013/11/05/understanding-configuration-keyword-in-desired-state-configuration.aspx "了解期望狀態組態中的組態關鍵字")
 
 執行 (編譯) DSC 組態將會產生一或多個 DSC 節點組態 (MOF 文件)，這是 DSC 節點會套用以符合所需狀態的組態。
 
@@ -106,7 +106,7 @@ Azure 自動化 DSC 中的編譯工作是組態編譯的執行個體，以建立
 
 >[AZURE.NOTE] 就像 runbook，一樣可以發行組態。 這與將 DSC 項目放入 Azure 自動化 DSC 提取伺服器無關。 編譯工作造成 DSC 項目放在 Azure 自動化 DSC 提取伺服器上。 如需有關在 Azure 自動化中的 「 發行 」 的詳細資訊，請參閱 [發佈 Runbook](https://msdn.microsoft.com/library/dn903765.aspx)。
 
-Azure 自動化 DSC 目前提供下列 cmdlet 在 [Azure 資源管理員 PowerShell 模組](https://msdn.microsoft.com/library/mt244122.aspx) 用於編譯工作的管理:
+Azure 自動化 DSC 目前提供下列 cmdlet 在 [Azure 資源管理員 PowerShell 模組](https://msdn.microsoft.com/library/mt244122.aspx) 用於編譯工作的管理 ︰
 
 -   `Get-AzureRmAutomationDscCompilationJob`
 -   `Get-AzureRmAutomationDscCompilationJobOutput`
@@ -145,4 +145,5 @@ Azure 自動化 DSC 目前提供下列 cmdlet 在 [Azure 資源管理員 PowerSh
 - [Azure 自動化 DSC 指令程式]() https://msdn.microsoft.com/library/mt244122.aspx
 - [Azure 自動化 DSC 定價]() http://azure.microsoft.com/pricing/details/automation/
 - [連續部署至 IaaS Vm 使用 Azure 自動化 DSC 和 Chocolatey](自動化-dsc-cd-chocolatey.md)
+
 

@@ -81,7 +81,7 @@
     </tr>
     </table>
 
-6. 您也可以使用 `STORE` 陳述式儲存轉換結果。 例如，下列命令將 `RESULT` 至 **/example/data/pigout** 目錄中為您叢集的預設儲存體容器:
+6. 您也可以使用 `STORE` 陳述式儲存轉換結果。 例如，下列命令將 `RESULT` 至 **/example/data/pigout** 目錄中為您叢集的預設儲存體容器 ︰
 
         STORE RESULT into 'wasb:///example/data/pigout'
 
@@ -97,7 +97,7 @@
 
 3. 結束 grunt 提示字元之後, 開啟 **記事本** ，並建立新檔案命名為 **pigbatch.pig** 中 **%pig_home%** 目錄。
 
-4. 輸入或貼上下列數行 **pigbatch.pig** 檔案，並儲存:
+4. 輸入或貼上下列數行 **pigbatch.pig** 檔案，並儲存 ︰
 
         LOGS = LOAD 'wasb:///example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
@@ -124,7 +124,7 @@
 
 如您所見，Pig 命令可讓您以互動方式執行 MapReduce 作業，或執行批次檔中所儲存的 Pig Latin 工作。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 Pig 的一般資訊：
 
@@ -135,4 +135,5 @@
 * [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 MapReduce 與 HDInsight 上的 Hadoop](hdinsight-use-mapreduce.md)
+
 

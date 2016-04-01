@@ -12,19 +12,19 @@
 
     這會下載、 安裝，並將參考加入 [Azure IoT-裝置 SDK NuGet 封裝][lnk-device-nuget]。
 
-4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案:
+4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案 ︰
 
         using Microsoft.Azure.Devices.Client;
         using Newtonsoft.Json;
         using System.Threading;
 
-5. 加入下列欄位來 **程式** 類別，以取代預留位置值，以擷取的 IoT 中心主機名稱 *建立 IoT 中心* 中，擷取區段及裝置金鑰 *建立裝置的身分識別* 區段:
+5. 加入下列欄位來 **程式** 類別，以取代預留位置值，以擷取的 IoT 中心主機名稱 *建立 IoT 中心* 中，擷取區段及裝置金鑰 *建立裝置的身分識別* 區段 ︰
 
         static DeviceClient deviceClient;
         static string iotHubUri = "{iot hub hostname}";
         static string deviceKey = "{device key}";
 
-6. 將下列方法加入 **程式** 類別:
+6. 將下列方法加入 **程式** 類別 ︰
 
         private static async void SendDeviceToCloudMessagesAsync()
         {
@@ -52,7 +52,7 @@
 
     這個方法會每秒傳送新的裝置對雲端訊息。 此訊息會包含 JSON 序列化物件及 deviceId 與隨機產生的數字，以模擬風向速度感應器。
 
-7. 最後，加入下列幾行以 **Main** 方法:
+7. 最後，加入下列幾行以 **Main** 方法 ︰
 
         Console.WriteLine("Simulated device\n");
         deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey));
@@ -63,7 +63,7 @@
   根據預設， **建立** 方法會建立 **DeviceClient** IoT 中心與通訊使用 AMQP 通訊協定。 若要使用 HTTPS 通訊協定，使用覆寫 **建立** 方法，可讓您指定的通訊協定。 如果您選擇使用 HTTPS 通訊協定，您還應該新增 **Microsoft.AspNet.WebApi.Client** NuGet 封裝加入專案，以包含 **System.Net.Http.Formatting** 命名空間。
 
 
-> [AZURE.NOTE] 為了簡單起見，本教學課程不會實作任何重試原則。 在實際執行程式碼，您應該實作重試原則 (例如指數輪詢)，做為建議在 MSDN 文章 [暫時性錯誤處理][lnk-transient-faults]。
+> [AZURE.NOTE] 為了簡單起見，本教學課程不會實作任何重試原則。 在實際執行程式碼，您應該實作重試原則 （例如指數輪詢），做為建議在 MSDN 文章 [暫時性錯誤處理][lnk-transient-faults]。
 
 <!-- Links -->
 
@@ -72,4 +72,5 @@
 
 <!-- Images -->
 [30]: ./media/iot-hub-getstarted-device-csharp/create-identity-csharp1.png
+
 

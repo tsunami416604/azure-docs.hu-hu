@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Jitbit Helpdesk 租用戶
   
-完成本教學課程之後, 您已指派給 Jitbit Helpdesk 的 Azure AD 使用者將能夠登入位於您 Jitbit Helpdesk 公司網站 (服務提供者起始登入)，應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Jitbit Helpdesk 的 Azure AD 使用者將能夠登入位於您 Jitbit Helpdesk 公司網站 （服務提供者起始登入），應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -99,7 +99,7 @@
 
     ![使用者、公司和權限](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777682.png "Users, companies and permissions")
 
-8.  在 **驗證設定** 組態區段中，執行下列步驟:
+8.  在 **驗證設定** 組態區段中，執行下列步驟 ︰
 
     ![驗證設定](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777683.png "Authentication settings")
 
@@ -136,7 +136,7 @@
 
     ![新增使用者](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777685.png "Add user")
 
-5.  在 [建立] 區段中，輸入您想要在下列文字方塊的佈建的 Azure AD 帳戶資料: **Username**, ，**電子郵件**, ，**名字**, ，**姓氏**
+5.  在 [建立] 區段中，輸入您想要在下列文字方塊的佈建的 Azure AD 帳戶資料 ︰ **Username**, ，**電子郵件**, ，**名字**, ，**姓氏**
 
     ![建立](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777686.png "Create")
 
@@ -161,3 +161,4 @@
     ![是](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

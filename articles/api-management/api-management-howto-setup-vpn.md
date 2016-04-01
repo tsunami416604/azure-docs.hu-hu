@@ -40,9 +40,9 @@ API 管理的 VPN 支援可讓您將 API 管理閘道連接到 Azure 虛擬網�
 
 請注意，閘道的 VIP 位址將在每次啟用或停用 VPN 時變更。
 
-## <a name="connect-vpn"> </a>連線到 vpn 的 web 服務
+## <a name="connect-vpn"> </a>連接至 VPN 的 Web 服務
 
-在您的 API 管理服務連接至 VPN 之後，於虛擬網路內存取 Web 服務與存取公用服務沒有差別。 只要在本機位址或將 web 服務的主機名稱 (如果 DNS 伺服器已設定 Azure 虛擬網路) 中輸入 **Web 服務 URL** 欄位建立新的 API 時，或編輯現有的命名。
+在您的 API 管理服務連接至 VPN 之後，於虛擬網路內存取 Web 服務與存取公用服務沒有差別。 只要在本機位址或將 web 服務的主機名稱 （如果 DNS 伺服器已設定 Azure 虛擬網路） 中輸入 **Web 服務 URL** 欄位建立新的 API 時，或編輯現有的命名。
 
 ![透過 VPN 加入 API][api-management-setup-vpn-add-api]
 
@@ -65,4 +65,5 @@ API 管理的 VPN 支援可讓您將 API 管理閘道連接到 Azure 虛擬網�
 
 [Tutorial: Create a Cross-Premises Virtual Network for Site-to-Site Connectivity]: ../virtual-networks-create-site-to-site-cross-premises-connectivity
 [How to use the API Inspector to trace calls in Azure API Management]: api-management-howto-api-inspector.md
+
 

@@ -26,7 +26,7 @@
 
 開始執行本文中的指示之前，您必須擁有以下項目：
 
-- Azure 訂用帳戶。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- Azure 訂閱。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 
 ## 基本組態選項
@@ -53,16 +53,16 @@
     
 - **作業系統**
 
-    您可以建立 HDInsight 叢集上的下列兩個作業系統其中一個:
+    您可以建立 HDInsight 叢集上的下列兩個作業系統其中一個 ︰
     - **Windows (Windows Server 2012 R2 Datacenter) 上的 HDInsight**:
     - **Linux (Ubuntu 12.04 LTS 適用於 Linux) 上的 HDInsight**: HDInsight 提供在 Azure 上設定 Linux 叢集的選項。 如果您熟悉 Linux 或 Unix、要從現有的 Linux Hadoop 方案進行移轉，或想輕鬆整合針對 Linux 所建置的 Hadoop 生態系統元件，請設定 Linux 叢集。 如需詳細資訊，請參閱 [開始在 HDInsight 中的 Linux 上使用 Hadoop](hdinsight-hadoop-linux-get-started.md)。
 
-- **叢集類型** 和 **叢集大小 (亦稱為資料節點)**
+- **叢集類型** 和 **叢集大小 （亦稱為資料節點）**
 
     HDInsight 可讓客戶部署各種不同的叢集類型，用於不同的資料分析工作負載。 目前提供的叢集類型包括：
 
     - Hadoop 叢集：適用於查詢和分析工作負載
-    - HBase 叢集: NoSQL 工作負載
+    - HBase 叢集 ︰ NoSQL 工作負載
     - Storm 叢集：適用於即時事件的處理工作負載
     - Spark 叢集 (預覽)：適用於記憶體內部處理、互動式查詢、資料流和機器學習工作負載。
 
@@ -125,7 +125,7 @@
 
     選取 VM 的節點大小。 如需詳細資訊，請參閱 [雲端服務的大小](cloud-services-sizes-specs.md)
 
-    根據選擇的 VM ，您的成本可能會有所不同。 HDInsight 針對叢集節點會使用所有標準層 VM。 如需 VM 大小對您價格的影響，請參閱 <a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 定價</a>.
+    根據選擇的 VM ，您的成本可能會有所不同。 HDInsight 針對叢集節點會使用所有標準層 VM。 如需 VM 大小對您價格影響的相關資訊，請參閱 <a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 定價</a>。
 
 
 - **HDInsight 使用者**
@@ -146,12 +146,12 @@
 
     ![HDInsight 儲存體](./media/hdinsight-provision-clusters/HDInsight.storage.png)
 
-    >[AZURE.NOTE] Blob 儲存體容器提供一組 blob 的群組，如圖所示:
+    >[AZURE.NOTE] Blob 儲存體容器提供一組 blob 的群組，如圖所示 ︰
 
-    ![Azure Blob 儲存體](./media/hdinsight-provision-clusters/Azure.blob.storage.jpg)
+    ![Azure Blob](./media/hdinsight-provision-clusters/Azure.blob.storage.jpg)
 
 
-    >[AZURE.WARNING] Don't share one Blob storage container for multiple clusters. This is not supported.
+    >[AZURE.WARNING] 不會共用一個 Blob 儲存體容器，讓多個叢集。 不支援此做法。
 
     For more information on using secondary Blob stores, see [Using Azure Blob Storage with HDInsight](hdinsight-use-blob-storage.md).
 
@@ -215,7 +215,7 @@
     # oozie-site.xml configuration
     $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # default 120
 
-如需詳細資訊，請參閱標題為 Azim (英文) 部落格 [自訂 HDInsight 叢集 creationg](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx)。
+如需詳細資訊，請參閱標題為 Azim （英文） 部落格 [自訂 HDInsight 叢集 creationg](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx)。
 
 
 
@@ -267,16 +267,16 @@
 
 3. 輸入或選取下列值：
 
-  * **叢集名稱**: 輸入叢集的名稱。 如果該叢集名稱可使用，則名稱旁邊將會出現綠色的核取記號。
-  * **叢集類型**: 選取 **Hadoop**。
-  * **叢集作業系統**: 選取 **Windows Server 2012 R2 Datacenter**。
-  * **訂閱**: 選取將用來建立此叢集的 Azure 訂閱。
-  * **資源群組**: 選取現有或建立新的資源群組。 如果有可用的資源群組，則此項目會預設為現有資源群組的其中一個群組。
-  * **認證**: 設定使用者名稱和 Hadoop 使用者 (HTTP 使用者) 的密碼。 如果您啟用該叢集的遠端桌面，您必須設定遠端桌面使用者的使用者名稱、密碼和帳戶到期日。 按一下 [ **選取** 底部以儲存變更。
+  * **叢集名稱**︰ 輸入叢集的名稱。 如果該叢集名稱可使用，則名稱旁邊將會出現綠色的核取記號。
+  * **叢集類型**︰ 選取 **Hadoop**。
+  * **叢集作業系統**︰ 選取 **Windows Server 2012 R2 Datacenter**。
+  * **訂閱**︰ 選取將用來建立此叢集的 Azure 訂閱。
+  * **資源群組**︰ 選取現有或建立新的資源群組。 如果有可用的資源群組，則此項目會預設為現有資源群組的其中一個群組。
+  * **認證**︰ 設定使用者名稱和 Hadoop 使用者 （HTTP 使用者） 的密碼。 如果您啟用該叢集的遠端桌面，您必須設定遠端桌面使用者的使用者名稱、密碼和帳戶到期日。 按一下 [ **選取** 底部以儲存變更。
 
         ![Provide cluster credentials](./media/hdinsight-provision-clusters/HDI.CreateCluster.3.png "Provide cluster credentials")
 
-  * **資料來源**: 建立新的或選取現有的 Azure 儲存體帳戶作為叢集預設檔案系統。
+  * **資料來源**︰ 建立新的或選取現有的 Azure 儲存體帳戶作為叢集預設檔案系統。
 
         ![Data source blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.4.png "Provide data source configuration")
 
@@ -285,7 +285,7 @@
         * **Choose Default Container**: Use this to enter the name of the default container to use for the cluster. While you can enter any name here, we recommend using the same name as the cluster so that you can easily recognize that the container is used for this specific cluster.
         * **Location**: The geographic region that the storage account is in, or will be created in. This location will determine the cluster location.  The cluster and its default storage account must co-locate in the same Azure data center.
     
-  * **節點定價層**: 設定叢集所需的背景工作節點數目。 該叢集的預估成本將會顯示在此刀鋒視窗內。
+  * **節點定價層**︰ 設定叢集所需的背景工作節點數目。 該叢集的預估成本將會顯示在此刀鋒視窗內。
   
 
         ![Node pricing tiers blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.5.png "Specify number of cluster nodes")
@@ -321,9 +321,9 @@
 4. 按一下 [ **建立**。 選取 **釘選到開始面板** 會將叢集的磚加入至您的入口網站的儀表板。 該圖示可表示該叢集正在建立，並將在建立完成後變更為 HDInsight 圖示。
 
 
-    | While creating | Creationg complete |
-    | ------------------ | --------------------- |
-    | ![Provisioning indicator on startboard](./media/hdinsight-provision-clusters/provisioning.png) | ![Provisioned cluster tile](./media/hdinsight-provision-clusters/provisioned.png) |
+  	| While creating | Creationg complete |
+  	| ------------------ | --------------------- |
+  	| ![Provisioning indicator on startboard](./media/hdinsight-provision-clusters/provisioning.png) | ![Provisioned cluster tile](./media/hdinsight-provision-clusters/provisioned.png) |
 
 
     
@@ -462,7 +462,7 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您能夠輕鬆地從 .NE
         Install-Package Microsoft.Azure.Common.Authentication -pre
         Install-Package Microsoft.Azure.Management.HDInsight -Pre
 
-6. 從 [方案總管] 中，按兩下 **Program.cs** 來開啟它，請貼上下列程式碼，並提供變數的值:
+6. 從 [方案總管] 中，按兩下 **Program.cs** 來開啟它，請貼上下列程式碼，並提供變數的值 ︰
 
         using System;
         using System.Security;
@@ -752,4 +752,5 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，讓您能夠輕鬆地從 .NE
 [ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 [ssisclustercreate]: http://msdn.microsoft.com/library/mt146774(v=sql.120).aspx
 [ssisclusterdelete]: http://msdn.microsoft.com/library/mt146778(v=sql.120).aspx
+
 

@@ -43,7 +43,7 @@
 * [**Microsoft 帳戶**][account] -使用者名稱和您用來登入 Microsoft Azure 訂用帳戶、 XBox Live、 Outlook.com 和其他 Microsoft 服務的密碼。
 
 
-## <a name="access"></a> 資源群組中的控制存取
+## <a name="access"></a>控制資源群組中的存取
 
 請務必了解除了您為應用程式建立的資源之外，還有警示和 Web 測試的個別隱藏資源。 它們會附加至相同 [資源群組](#resource-group) 為您的應用程式。 您也可以在那裡放置其他 Azure 服務，例如網站或儲存體。
 
@@ -110,3 +110,4 @@ Application Insights 元件參與者 | 可以編輯 Application Insights 資源�
 [start]: app-insights-overview.md
 
  
+

@@ -83,7 +83,7 @@
 
     hadoop fs -copyFromLocal /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 
-### <a name="bPS7"></a>將資訊寫入至 STDOUT 和 STDERR
+### <a name="bPS7"></a>將資訊寫入 STDOUT 和 STDERR
 
 寫入 STDOUT 和 STDERR 的資訊會記錄起來，可以在使用 Ambari Web UI 佈建叢集之後檢視。
 
@@ -99,7 +99,7 @@
 
 如需有關如何檢視記錄的指令碼動作資訊的詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-###<a name="bps8"></a> 將檔案儲存為具有 LF 行尾結束符號的 ASCII
+###<a name="bps8"></a>將檔案儲存為具有 LF 行尾結束符號的 ASCII
 
 Bash 指令碼應該儲存為 ASCII 格式，該格式以 LF 做為行尾結束符號。 如果檔案儲存為 UTF-8，可能在檔案開頭包含位元組順序標記，或者以 CRLF 做為行尾結束符號，這對於 Windows 編輯器很常見，則指令碼將會失敗，且具有如下的錯誤：
 
@@ -108,7 +108,7 @@ Bash 指令碼應該儲存為 ASCII 格式，該格式以 LF 做為行尾結束�
 
 ## <a name="helpermethods"></a>自訂指令碼的協助程式方法
 
-指令碼動作協助程式方法是您在撰寫字訂指令碼時可以使用的公用程式。 定義在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh), ，而且可以包含在指令碼，使用下列命令:
+指令碼動作協助程式方法是您在撰寫字訂指令碼時可以使用的公用程式。 定義在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh), ，而且可以包含在指令碼，使用下列命令 ︰
 
     # Import the helper method module.
     wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
@@ -191,11 +191,11 @@ Microsoft 提供了在 HDInsight 叢集上安裝元件的範例指令碼。 您�
 
 __錯誤__: `$'\r': command not found`。 有時候後面接續 `syntax error: unexpected end of file`。
 
-_原因_: 指令碼中的行結尾 CRLF 時，會發生這個錯誤。 Unix 系統預期只有 LF 當做行尾結束符號。
+_原因_︰ 指令碼中的行結尾 CRLF 時，會發生這個錯誤。 Unix 系統預期只有 LF 當做行尾結束符號。
 
 此問題最常發生在於 Windows 環境中撰寫指令碼時，因為 CRLF 是 Windows 上許多文字編輯器中常見的行尾結束符號。
 
-_解析_: 如果您的文字編輯器中的選項，選取 [Unix 格式或 LF 的行尾結束符號。 您也可以在 Unix 系統上使用下列命令，將 CRLF 變更為 LF：
+_解析_︰ 如果您的文字編輯器中的選項，選取 [Unix 格式或 LF 的行尾結束符號。 您也可以在 Unix 系統上使用下列命令，將 CRLF 變更為 LF：
 
 > [AZURE.NOTE] 下列命令的方式大致相同，在於它們應該變更 LF CRLF 行尾結束符號。 根據您的系統上可用的公用程式，選取其中一個。
 
@@ -208,9 +208,9 @@ _解析_: 如果您的文字編輯器中的選項，選取 [Unix 格式或 LF �
 
 __錯誤__: `line 1: #!/usr/bin/env: No such file or directory`。
 
-_原因_: 指令碼儲存為 utf-8 的位元組順序標記 (BOM) 時，會發生此錯誤。
+_原因_︰ 指令碼儲存為 utf-8 的位元組順序標記 (BOM) 時，會發生此錯誤。
 
-_解析_: 以 ascii 模式，或為 utf-8 不具有 BOM 儲存檔案。 您也可以在 Linux 或 Unix 系統上使用下列命令，以建立不具有 BOM 的新檔案：
+_解析_︰ 以 ascii 模式，或為 utf-8 不具有 BOM 儲存檔案。 您也可以在 Linux 或 Unix 系統上使用下列命令，以建立不具有 BOM 的新檔案：
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
@@ -219,4 +219,5 @@ _解析_: 以 ascii 模式，或為 utf-8 不具有 BOM 儲存檔案。 您也�
 ## <a name="seeAlso"></a>另請參閱
 
 [使用指令碼動作來自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)
+
 

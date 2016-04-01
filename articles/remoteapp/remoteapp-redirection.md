@@ -67,7 +67,7 @@ RemoteApp 會利用遠端桌面通訊協定 (RDP) 與 RemoteFX 來提供重新�
 
     Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "redirectclipboard:i:0”
 
-> [AZURE.IMPORTANT] 請務必完全登出集合中的所有使用者 (和非僅中斷連線) 之前測試變更。 若要確保使用者完全登出，請移至 **工作階段** Azure 入口網站集合中索引標籤，然後登出任何已中斷連線或登入的使用者。 有時候可能需要花費數秒的時間，磁碟機才能顯示在工作階段內的檔案總管中。
+> [AZURE.IMPORTANT] 請務必完全登出集合中的所有使用者 （和非僅中斷連線） 之前測試變更。 若要確保使用者完全登出，請移至 **工作階段** Azure 入口網站集合中索引標籤，然後登出任何已中斷連線或登入的使用者。 有時候可能需要花費數秒的時間，磁碟機才能顯示在工作階段內的檔案總管中。
 
 ## 變更 Windows 用戶端的 USB 重新導向設定
 
@@ -103,4 +103,5 @@ RemoteApp 會利用遠端桌面通訊協定 (RDP) 與 RemoteFX 來提供重新�
 6. 按兩下 **允許 RDP 重新導向其他支援從這部電腦的 RemoteFX USB 裝置**。
 7. 選取 **啟用**, ，然後選取 **系統管理員和使用者在 [RemoteFX USB 重新導向存取權限**。
 8. 按一下 [ **確定**。  
+
 

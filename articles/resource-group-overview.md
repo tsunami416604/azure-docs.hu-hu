@@ -136,3 +136,4 @@ Azure 資源管理員支援跨原始資源共用 (CORS)。 利用 CORS，您可�
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
+

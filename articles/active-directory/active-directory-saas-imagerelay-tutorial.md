@@ -19,7 +19,7 @@
 
 # 教學課程：Azure Active Directory 與 ImageRelay 整合
 
-本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 ImageRelay。<br>與 Azure AD 整合 ImageRelay 可以提供下列優點:
+本教學課程的目標在於告訴您如何使用 Azure Active Directory (Azure AD) 整合 ImageRelay。<br>與 Azure AD 整合 ImageRelay 可以提供下列優點 ︰
 
 - 您可以在 Azure AD 中控制可存取 ImageRelay 的人員
 - 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 ImageRelay (單一登入)
@@ -27,7 +27,7 @@
 
 如果您想要知道更多詳細與 Azure AD 的 SaaS 應用程式整合，請參閱 [什麼是應用程式存取和單一登入與 Azure Active Directory](active-directory-appssoaccess-whatis.md)。
 
-## 先決條件
+## 必要條件
 
 若要設定 Azure AD 與 ImageRelay 整合，您需要下列項目：
 
@@ -46,7 +46,7 @@
 
 ## 案例描述
 此教學課程的目標是讓您在測試環境中測試 Azure AD 單一登入。 <br>
-本教學課程中說明的案例包含兩個主要建置區塊:
+本教學課程中說明的案例包含兩個主要建置區塊 ︰
 
 1. 從組件庫加入 ImageRelay
 
@@ -77,7 +77,7 @@
 ##  設定並測試 Azure AD 單一登入
 本節目標是說明如何以名為 "Britta Simon" 的測試使用者為基礎，使用 ImageRelay 來設定及測試 Azure AD 單一登入。
 
-要啟用單一登入，Azure AD 需要代表 ImageRelay 中相關的使用者的使用者帳戶。  換句話說，必須在 Azure AD 使用者和 ImageRelay 中的相關使用者之間建立連結關聯性。<br>
+要啟用單一登入，Azure AD 需要代表 ImageRelay 中相關的使用者的使用者帳戶。  換句話說，必須建立 Azure AD 使用者和 ImageRelay 中的相關的使用者之間的連結關聯性。<br>
 藉由指定的值建立此連結關聯性 **使用者名稱** 在 Azure AD 中的值為 **Username** ImageRelay 中。
 
 若要使用 ImageRelay 來設定並測試 Azure AD 單一登入，您需要完成下列建置組塊：
@@ -103,15 +103,15 @@
 
     ![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_03.png) <br>
 
-3. 在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟:
+3. 在 **設定應用程式設定** 對話方塊頁面上，執行下列步驟 ︰
 
      ![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_04.png) <br>
 
-    a. 在 **登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入 ImageRelay 應用程式 (例如: *https://fabrikam.ImageRelay.com/*)。
+    a. 在 **登入 URL** 文字方塊中，輸入 URL，讓使用者中用來登入 ImageRelay 應用程式 (例如 ︰ *https://fabrikam.ImageRelay.com/*)。
 
     b. 按一下 [ **下一步**。
 
-4. 在 **ImageRelay 在設定單一登入** 頁面上，執行下列步驟:
+4. 在 **ImageRelay 在設定單一登入** 頁面上，執行下列步驟 ︰
 
     ![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_05.png) <br>
 
@@ -125,7 +125,7 @@
 
     b. 按一下 [ **建立新的權限**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_08.png) <br>
 
-    c. 在 **單一登入設定** 工作負載，選取 **: 此群組可以只登入透過單一登入** 核取方塊，，然後按一下 [ **儲存**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_09.png) <br>
+    c. 在 **單一登入設定** 工作負載，選取 **︰ 此群組可以只登入透過單一登入** 核取方塊，，然後按一下 [ **儲存**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_09.png) <br>
 
     d. 移至 **帳戶設定**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_10.png) <br>
 
@@ -133,13 +133,13 @@
 
     f. 如同，填寫表單，然後按一下 **儲存**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_12.png)<br>
 
-    - **登入 URL (SSO)**: 它是從 Azure Active Directory 的單一登入服務 URL。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_13.png)<br>
+    - **登入 URL (SSO)**︰ 它是從 Azure Active Directory 的單一登入服務 URL。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_13.png)<br>
 
-    - **登出服務 URL**: 它是從 Azure Active Directory 的單一登出服務。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_14.png)<br>
+    - **登出服務 URL**︰ 它是從 Azure Active Directory 的單一登出服務。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_14.png)<br>
 
-    - 在 **名稱識別碼格式**, ，請選取 **urn: oasis: 名稱: tc: SAML:1.1:nameid-格式: emailAddress**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_15.png)<br>
+    - 在 **名稱識別碼格式**, ，請選取 **urn: oasis ︰ 名稱 ︰ tc: SAML:1.1:nameid-格式 ︰ emailAddress**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_15.png)<br>
 
-    - 在 **繫結的選項，從服務提供者 (影像轉送) 要求**, ，請選取 **POST 繫結**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_16.png)<br>  
+    - 在 **繫結的選項，從服務提供者 （影像轉送） 要求**, ，請選取 **POST 繫結**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_16.png)<br>  
 
     - 在 **x.509 憑證**, ，按一下 [ **更新憑證**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_17.png)<br>
 
@@ -159,7 +159,7 @@
 
 
 ### 建立 Azure AD 測試使用者
-本節的目標是要在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。<br>
+本節的目標是在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。<br>
 在 [使用者] 清單中選取 **Britta Simon**。<br><br>![建立 Azure AD 使用者][20]<br>
 
 **若要在 Azure AD 中建立測試使用者，請執行下列步驟：**
@@ -172,7 +172,7 @@
 
 4. 若要開啟 **新增使用者** ] 對話方塊的底部工具列上，按一下 [ **新增使用者**。<br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_04.png) <br>
 
-5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟:<br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_05.png) <br>
+5. 在 **告訴我們這位使用者** 對話方塊頁面上，執行下列步驟 ︰<br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_05.png) <br>
 
     a. 針對 [使用者類型]，選取 [您組織中的新使用者]。
 
@@ -180,7 +180,7 @@
 
     c. 按一下 [ **下一步**。
 
-6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟:<br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_06.png) <br>
+6.  在 **使用者設定檔** 對話方塊頁面上，執行下列步驟 ︰<br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_06.png) <br>
 
     a. 在 **名字** 文字方塊中，輸入 **Britta**。  
 
@@ -194,7 +194,7 @@
 
 7. 在 **取得暫時密碼** 對話方塊頁面上，按一下 [ **建立**。<br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_07.png) <br>
 
-8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟:<br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_08.png) <br>
+8. 在 **取得暫時密碼** 對話方塊頁面上，執行下列步驟 ︰<br><br>![建立 Azure AD 測試使用者](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_08.png) <br>
 
     a. 請記下的值 **新密碼**。
 
@@ -212,7 +212,7 @@
 
 1. 移至 **使用者和權限**    ，然後選取 **建立 SSO 使用者**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_21.png) <br>
 
-1. 輸入 **電子郵件**, ，**名字**, ，**姓氏** 和 **公司** 您想要佈建和選取的權限群組 (例如，SSO 基本) 即可以登入，只能透過單一登入的群組的使用者。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_22.png) <br>
+1. 輸入 **電子郵件**, ，**名字**, ，**姓氏** 和 **公司** 您想要佈建和選取的權限群組 （例如，SSO 基本） 即可以登入，只能透過單一登入的群組的使用者。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_22.png) <br>
 
 1. 按一下 [ **建立**。
 
@@ -223,11 +223,11 @@
 
 **若要將 Britta Simon 指派到 ImageRelay，請執行以下步驟：**
 
-1. 在 Azure 入口網站中，若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。<br><br>![將使用者指派][201] <br>
+1. 在 Azure 入口網站中，若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。<br><br>![指派給使用者][201] <br>
 
 2. 在應用程式清單中，選取 **ImageRelay**。<br><br>![設定單一登入](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_23.png) <br>
 
-1. 在頂端功能表中，按一下 [ **使用者**。<br><br>![將使用者指派][203] <br>
+1. 在頂端功能表中，按一下 [ **使用者**。<br><br>![指派給使用者][203] <br>
 
 1. 在 [使用者] 清單中選取 **Britta Simon**。
 
@@ -263,4 +263,5 @@
 [203]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_205.png
+
 

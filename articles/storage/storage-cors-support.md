@@ -18,7 +18,7 @@
 
 # Azure 儲存體服務的跨原始資源共用 (CORS) 支援
 
-從 2013-08-15 版本開始，Azure 儲存體服務就針對 Blob、資料表及佇列服務提供跨原始資源共用 (CORS) 的支援。 CORS 是一項 HTTP 功能，可讓 Web 應用程式在某個網域下執行，以存取其他網域中的資源。 網頁瀏覽器執行安全性限制，稱為 [相同原始原則](http://www.w3.org/Security/wiki/Same_Origin_Policy) 防止網頁呼叫的 api，在不同的網域。CORS 提供安全的方式，可讓一個網域 (原始網域) 能夠呼叫另一個網域中的 Api。 請參閱 [CORS 規格](http://www.w3.org/TR/cors/) 如需 CORS 的詳細資訊。
+從 2013-08-15 版本開始，Azure 儲存體服務就針對 Blob、資料表及佇列服務提供跨原始資源共用 (CORS) 的支援。 CORS 是一項 HTTP 功能，可讓 Web 應用程式在某個網域下執行，以存取其他網域中的資源。 網頁瀏覽器執行安全性限制，稱為 [相同原始原則](http://www.w3.org/Security/wiki/Same_Origin_Policy) 防止網頁呼叫的 api，在不同的網域。CORS 提供安全的方式，可讓一個網域 （原始網域） 能夠呼叫另一個網域中的 Api。 請參閱 [CORS 規格](http://www.w3.org/TR/cors/) 如需 CORS 的詳細資訊。
 
 您可以個別設定 CORS 規則的每個儲存體服務，藉由呼叫 [設定 Blob 服務屬性](https://msdn.microsoft.com/library/hh452235.aspx), ，[設定佇列服務屬性](https://msdn.microsoft.com/library/hh452232.aspx), ，和 [設定表格服務屬性](https://msdn.microsoft.com/library/hh452240.aspx)。 一旦設定服務的 CORS 規則之後，將評估從不同網域對服務所提出的適當驗證要求，以判斷是否可根據您指定的規則來允許它。
 
@@ -68,13 +68,13 @@ CORS 規則是設定於服務層級，因此您需要針對每個服務 (Blob、
 
 CORS 規則中包含的每個項目敘述如下：
 
-- **AllowedOrigins**: 允許對儲存體服務，透過 CORS 提出要求的原始網域。 原始網域是要求的來源網域。 請注意，原始網域的大小寫必須與使用者代理程式傳送至服務的原始網域完全相符。 您也可以使用萬用字元 '*'，允許所有原始網域透過 CORS 提出要求。 在上述範例，則網域 [http://www.contoso.com](http://www.contoso.com) 和 [http://www.fabrikam.com](http://www.fabrikam.com) 使用 CORS 對服務的要求。
+- **AllowedOrigins**︰ 允許對儲存體服務，透過 CORS 提出要求的原始網域。 原始網域是要求的來源網域。 請注意，原始網域的大小寫必須與使用者代理程式傳送至服務的原始網域完全相符。 您也可以使用萬用字元 '*'，允許所有原始網域透過 CORS 提出要求。 在上述範例，則網域 [http://www.contoso.com](http://www.contoso.com) 和 [http://www.fabrikam.com](http://www.fabrikam.com) 使用 CORS 對服務的要求。
 
-- **AllowedMethods**: 原始網域可能針對 CORS 要求使用的方法 (HTTP 要求動詞命令)。 在上述範例中，只允許 PUT 和 GET 要求。
+- **AllowedMethods**︰ 原始網域可能針對 CORS 要求使用的方法 （HTTP 要求動詞命令）。 在上述範例中，只允許 PUT 和 GET 要求。
 
-- **AllowedHeaders**: 原始網域可在 CORS 要求指定的要求標頭。 在上述範例中，允許以 x-ms-meta-data、x-ms-meta-target 及 x-ms-meta-abc 開始的所有中繼資料標頭。 請注意，萬用字元 '*' 表示允許任何以指定前置詞開頭的標頭。
+- **AllowedHeaders**︰ 原始網域可在 CORS 要求指定的要求標頭。 在上述範例中，允許以 x-ms-meta-data、x-ms-meta-target 及 x-ms-meta-abc 開始的所有中繼資料標頭。 請注意，萬用字元 '*' 表示允許任何以指定前置詞開頭的標頭。
 
-- **ExposedHeaders**: 可在 CORS 要求的回應中傳送和瀏覽器對要求簽發者所公開的回應標頭。 在上述範例中，會指示瀏覽器公開任何以 x-ms-meta 開頭的標頭。
+- **ExposedHeaders**︰ 可在 CORS 要求的回應中傳送和瀏覽器對要求簽發者所公開的回應標頭。 在上述範例中，會指示瀏覽器公開任何以 x-ms-meta 開頭的標頭。
 
 - **MaxAgeInSeconds**: 最大時間量瀏覽器應快取預檢 OPTIONS 要求。
 
@@ -88,7 +88,7 @@ Azure 儲存體服務支援兩個指定帶有前置詞的標頭 **AllowedHeaders
 - 允許的標頭和公開的標頭可以是：
   - 常值標頭，其中的確切的標頭名稱已提供，例如 **x-ms-中繼-處理**。 最多可在要求上指定 64 個常值標頭。
   - 前置詞的標頭，其標頭的前置詞會提供，例如 **x ms-中繼資料***。 以這種方式指定前置詞，可允許或公開以指定前置詞開頭的任何標頭。 最多可在要求上指定兩個有前置詞的標頭。
-- 中指定的方法 (或 HTTP 動詞命令) **AllowedMethods** 項目必須符合 Azure 儲存體服務 Api 支援的方法。 支援的方法為 DELETE、GET、HEAD、MERGE、POST、OPTIONS 及 PUT。
+- 中指定的方法 （或 HTTP 動詞命令） **AllowedMethods** 項目必須符合 Azure 儲存體服務 Api 支援的方法。 支援的方法為 DELETE、GET、HEAD、MERGE、POST、OPTIONS 及 PUT。
 
 ## 了解 CORS 規則評估邏輯
 
@@ -98,7 +98,7 @@ CORS 規則的評估，如下所示：
 
 1. 首先，根據列出的網域檢查要求的原始網域 **AllowedOrigins** 項目。 如果清單中包含原始網域，或是使用了萬用字元 '*' 來允許所有網域，則會繼續評估規則。 如果未包含原始網域，則要求會失敗。
 
-2. 接下來，針對中列出的方法檢查要求的方法 (或 HTTP 動詞命令) **AllowedMethods** 項目。 如果方法包含於清單中，就會繼續評估規則；如果沒有，則要求會失敗。
+2. 接下來，針對中列出的方法檢查要求的方法 （或 HTTP 動詞命令） **AllowedMethods** 項目。 如果方法包含於清單中，就會繼續評估規則；如果沒有，則要求會失敗。
 
 3. 如果要求符合其原始網域及其方法中的規則，就會選取該規則來處理要求，且不會評估任何其他規則。 要求才會成功，不過，在要求上指定的任何標頭會檢查中列出的標頭 **AllowedHeaders** 項目。 如果傳送的標頭與允許的標頭不符，則要求會失敗。
 
@@ -155,7 +155,7 @@ CORS 規則的評估，如下所示：
 
 當瀏覽器或其他使用者代理程式快取來自 CORS 要求的回應時，會將原始網域快取為允許的原始網域。 當第二個網域在快取作用中時發出相同的儲存體資源要求，使用者代理程式便會擷取快取的原始網域。 第二個網域不符合快取的網域，因此要求失敗 (它本來可以成功)。 在某些情況下，Azure 儲存體將 Vary 標頭設定為 **原點** 指示後續的 CORS 要求傳送至服務，當提出要求的網域與快取的原始使用者代理程式。
 
-Azure 儲存體會將 *Vary* 標頭以 **原點** 實際 GET/HEAD 要求，在下列情況:
+Azure 儲存體會將 *Vary* 標頭以 **原點** 實際 GET/HEAD 要求，在下列情況 ︰
 
 - 當要求的原始網域完全符合 CORS 規則所定義的允許來源。 若要完全符合，CORS 規則不能包含萬用字元 ' * '。
 
@@ -195,4 +195,5 @@ Request|帳戶設定和規則 evaluation||| 的結果Response|||
 
 [W3C 跨原始資源共用規格](http://www.w3.org/TR/cors/)
  
+
 

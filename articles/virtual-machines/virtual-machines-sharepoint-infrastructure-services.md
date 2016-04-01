@@ -69,3 +69,4 @@
 
 [在 Microsoft Azure 中部署 Office 365 Directory 同步處理 (DirSync)](https://technet.microsoft.com/library/dn635310.aspx)
 
+

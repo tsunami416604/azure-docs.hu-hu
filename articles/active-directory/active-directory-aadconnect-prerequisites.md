@@ -31,7 +31,7 @@
 **內部部署的伺服器和環境**
 
 - AD 結構描述版本與樹系功能等級必須是 Windows Server 2003 或更新版本。 只要符合結構描述和樹系層級需求，網域控制站就能執行任何版本。
-- 如果您打算使用的功能 **密碼回寫** 網域控制站必須是 Windows Server 2008 (含最新的預存程序) 或更新版本。
+- 如果您打算使用的功能 **密碼回寫** 網域控制站必須是 Windows Server 2008 （含最新的預存程序） 或更新版本。
 - Azure AD Connect 無法安裝至 Small Business Server 或 Windows Server Essentials。 伺服器必須使用 Windows Server Standard 或以上版本。
 - Azure AD Connect 必須安裝於 Windows Server 2008 或更新版本上。  此伺服器可以是網域控制站或成員伺服器 (如果使用快速設定)。 如果您使用自訂設定，伺服器也可以是獨立伺服器，而且不需加入網域。
 - 如果您要在 Windows Server 2008 上安裝 Azure AD Connect，請務必套用來自 Windows Update 的最新 Hotfix。 在未修補的伺服器上將無法開始進行安裝。
@@ -85,7 +85,7 @@
 
 **其他**
 
-- 選用: 測試使用者帳戶來驗證同步處理。
+- 選用 ︰ 測試使用者帳戶來驗證同步處理。
 
 ## 元件的必要條件
 
@@ -120,7 +120,7 @@ Azure AD Connect 需要 PowerShell 和 .Net 4.5.1。 依您的 Windows Server �
 
 ## SSL 憑證需求
 
-**重要事項:** 強烈建議您的 AD FS 伺服器陣列的所有節點以及所有 Web 應用程式 proxy 伺服器使用相同的 SSL 憑證。
+**重要事項 ︰** 強烈建議您的 AD FS 伺服器陣列的所有節點以及所有 Web 應用程式 proxy 伺服器使用相同的 SSL 憑證。
 
 - 此憑證必須是 X509 憑證。
 - 您可以在測試實驗室環境中的同盟伺服器上使用自我簽署的憑證。 不過，在生產環境中，我們建議您從公用 CA 取得憑證。
@@ -128,7 +128,7 @@ Azure AD Connect 需要 PowerShell 和 .Net 4.5.1。 依您的 Windows Server �
 - 憑證的身分識別必須與 Federation Service 名稱相符 (例如 fs.contoso.com)。
     - 身分識別可以是 dNSName 類型的主體別名 (SAN) 副檔名；或如果沒有 SAN 項目，則會將主體名稱指定為通用名稱。  
     - 憑證中可顯示多個 SAN 項目，前提是其中一個項目與 Federation Service 名稱相符。
-    - 如果您打算使用工作地點加入，其他的 SAN 是值的必要項目 **enterpriseregistration.** 再加上您的組織，例如，使用者主要名稱 (UPN) 尾碼 **enterpriseregistration.contoso.com**。
+    - 如果您打算使用工作地點加入，其他的 SAN 是值的必要項目 **enterpriseregistration。** 再加上您的組織，例如，使用者主要名稱 (UPN) 尾碼 **enterpriseregistration.contoso.com**。
 - 不支援以 CryptoAPI 新一代 (CNG) 金鑰和金鑰儲存體為基礎的憑證。 這表示您必須使用以 CSP (密碼編譯服務提供者) 為基礎的憑證，而不是 KSP (金鑰儲存體提供者)。
 - 支援萬用字元憑證。
 
@@ -166,4 +166,5 @@ Azure AD Connect 需要 PowerShell 和 .Net 4.5.1。 依您的 Windows Server �
 
 ## 後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](active-directory-aadconnect.md)。
+
 

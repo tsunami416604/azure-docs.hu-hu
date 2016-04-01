@@ -98,7 +98,7 @@ foreach (UserProfile activeUser in query)
 ## 雜湊分割解析程式
 有了雜湊分割，分割是根據雜湊函式的值來指派，讓您在一些分割上平均分配要求和資料。 這個方法通常用於分割從大量不同用戶端產生或取用的資料，適合用來儲存使用者設定檔、類別目錄項目，以及 IoT ("Internet of Things") 遙測資料。
 
-**雜湊分割:**
+**雜湊分割 ︰**
 ![說明如何雜湊分割中平均分配要求的圖表到資料分割](media/documentdb-sharding/partition-hash.png "Hash partitioning")
 
 資料分割配置上的簡易雜湊 *N* 集合就是對任何文件計算 *hash mod N* 來判斷它會放置在哪一個集合。 但這個簡單的技術有一個問題，那就是在新增集合或移除集合時無法正常運作，因為這會需要將幾乎所有的資料重新編組。 [一致的雜湊](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.23.3738) 是已知的演算法，可透過實作雜湊配置，必須在新增或移除集合期間移動的資料量降至最低。
@@ -122,21 +122,21 @@ foreach (UserProfile activeUser in query)
 
 ## 範例 
 
-看看  [DocumentDB 分割範例 Github 專案](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning) 包含有關如何使用這些 PartitionResolvers，並將它們延伸到實作自己的解析程式，以符合特定使用案例的程式碼片段如下所示: 
+看看  [DocumentDB 分割範例 Github 專案](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning) 包含有關如何使用這些 PartitionResolvers，並將它們延伸到實作自己的解析程式，以符合特定使用案例的程式碼片段如下所示 ︰ 
 
 * 如何為 GetPartitionKey 指定任意的 lambda 運算式，並用它來實作複合資料分割索引鍵，或用它來以不同的方式分割不同類型的物件。
 * 如何建立簡單的 [LookupPartitionResolver](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/LookupPartitionResolver.cs) ，會使用手動查閱資料表以執行資料分割。 此模式通常用於以離散值 (例如區域、租用戶識別碼或應用程式名稱) 為基礎的資料分割。
 * 如何建立 [ManagedPartitionResolver](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/ManagedHashPartitionResolver.cs) ，會建立自動定義的命名配置、 IndexingPolicy 和必須向新集合的預存程序範本為基礎的集合。
 * 如何建立無配置 [SpilloverPartitionResolver](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/SpilloverPartitionResolver.cs) ，直接建立新的集合，舊的集合。
 * 如何將 PartitionResolver 狀態序列化和還原序列化為 JSON，這樣您便可以在處理之間及在關閉期間共用。 您可以在組態檔中 (或甚至在 DocumentDB 集合中) 加以保存。
-* A [DocumentClientHashPartitioningManager](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Util/DocumentClientHashPartitioningManager.cs) 類別動態新增及移除分割的資料庫分割根據一致的雜湊。 在內部使用 [TransitionHashPartitionResolver]( https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/TransitionHashPartitionResolver.cs) 路由讀取和寫入使用四種模式-從舊的分割配置 (ReadCurrent)、 新讀取的其中一個在移轉期間目 (ReadNext)、 合併結果，這兩個 (readboth)，或無法使用 (無) 移轉期間。
+* A [DocumentClientHashPartitioningManager](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Util/DocumentClientHashPartitioningManager.cs) 類別動態新增及移除分割的資料庫分割根據一致的雜湊。 在內部使用 [TransitionHashPartitionResolver]( https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/TransitionHashPartitionResolver.cs) 路由讀取和寫入使用四種模式-從舊的分割配置 (ReadCurrent)、 新讀取的其中一個在移轉期間目 (ReadNext)、 合併結果，這兩個 (readboth)，或無法使用 （無） 移轉期間。
 
 這些範例是開放原始碼，我們鼓勵您提交提取要求，並附上可幫助其他 DocumentDB 開發人員的貢獻。 請參閱 [貢獻指導方針](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md) 有關如何貢獻的指引。  
 
 >[AZURE.NOTE] 建立集合是速率-DocumentDB 會限制，因此部分如下所示的範例方法可能需要幾分鐘才能完成。
 
 ##常見問題集
-**DocumentDB 為什麼支援用戶端磁碟分割與伺服器端資料分割?**
+**DocumentDB 為什麼支援用戶端與伺服器端資料分割？**
 
 DocumentDB 支援用戶端資料分割的幾個原因如下：
 
@@ -168,3 +168,4 @@ DocumentDB 支援用戶端資料分割的幾個原因如下：
 * [DocumentDB 限制](documentdb-limits.md)
 * [有關效能秘訣的 DocumentDB 部落格](http://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
+

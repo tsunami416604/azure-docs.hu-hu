@@ -21,7 +21,7 @@
 > [AZURE.NOTE]
 >
 - 公司商標是您升級至 Premium 或 Basic 版本的 Azure Active Directory 時才能使用的功能。 如需詳細資訊，請參閱 [Azure Active Directory 版本](active-directory-editions.md)。
-- Azure Active Directory Premium 和 Basic 版本適用於使用全球 Azure Active Directory 執行個體的中國客戶。 由 21Vianet 在中國提供的 Microsoft Azure 服務目前不支援 Azure Active Directory Premium 和 Basic 版本。 如需詳細資訊，與我們連絡 [Azure Active Directory 論壇](http://feedback.azure.com/forums/169401-azure-active-directory)。
+- Azure Active Directory Premium 和 Basic 版本適用於使用 Azure Active Directory 全球執行個體的中國客戶。 由 21Vianet 在中國提供的 Microsoft Azure 服務目前不支援 Azure Active Directory Premium 和 Basic 版本。 如需詳細資訊，與我們連絡 [Azure Active Directory 論壇](http://feedback.azure.com/forums/169401-azure-active-directory)。
 
 許多公司想要在所管理的所有網站和服務上套用一致的外觀及操作，讓使用者在需要使用這些網站時不致混淆。 Azure Active Directory 提供這項功能，讓您可以自訂下列使用者面向網頁的外觀，以納入您的公司標誌和色彩配置：
 
@@ -39,9 +39,9 @@
 
 ### 使用者何時會看到加上商標的登入頁面？
 
-當他們造訪具有租用戶特定 URL，例如 https://outlook.com/ 的服務時，使用者會看到加上商標的登入頁面**contoso**.com 或 https://mail。**contoso**.com (如果您已建立 CNAME)。
+當他們造訪具有租用戶特定 URL，例如 https://outlook.com/ 的服務時，使用者會看到加上商標的登入頁面**contoso**.com 或 https://mail。**contoso**.com （如果您已建立 CNAME）。
 
-如果他們造訪具有非租用戶特定 Url (例如 https://mail.office365.com) 的服務就會看到非品牌的登入頁面。 使用者輸入其使用者 ID 或選取使用者名稱之後，將會重新整理登入頁面以顯示您的商標。
+如果他們造訪具有非租用戶特定 Url （例如 https://mail.office365.com) 的服務就會看到非品牌的登入頁面。 使用者輸入其使用者 ID 或選取使用者名稱之後，將會重新整理登入頁面以顯示您的商標。
 
 > [AZURE.NOTE]
 >
@@ -52,19 +52,19 @@
 
 如果您想要在此頁面上顯示您的公司商標、色彩和其他可自訂的元素，請參閱下列影像以了解這兩種做法的差異。
 
-當使用者嘗試從桌上型電腦登入時，以下是使用者會看到在 Office 365 [登入] 頁面上的範例 *之前* 自訂:
+當使用者嘗試從桌上型電腦登入時，以下是使用者會看到在 Office 365 [登入] 頁面上的範例 *之前* 自訂 ︰
 
 ![][1]
 
-以下是相同的使用者會看到 *之後* 自訂:
+以下是相同的使用者會看到 *之後* 自訂 ︰
 
 ![][2]
 
-當使用者嘗試從行動裝置登入時，以下是使用者會看到在 Office 365 [登入] 頁面上的範例 *之前* 自訂:
+當使用者嘗試從行動裝置登入時，以下是使用者會看到在 Office 365 [登入] 頁面上的範例 *之前* 自訂 ︰
 
 ![][3]
 
-以下是相同的使用者會看到 *之後* 自訂:
+以下是相同的使用者會看到 *之後* 自訂 ︰
 
 ![][4]
 
@@ -163,16 +163,16 @@ Azure AD 中的部分可自訂元素有多個使用案例。 公司標誌可以�
 
 名稱 | 說明 | 條件約束 | 建議
     ------------- | ------------- | ------------- | -------------
-橫幅標誌 | [橫幅標誌] 會顯示在 [登入] 頁面和 [存取面板] 上。 | <p>JPG 或 PNG</p><p>60x280 像素</p><p>10 KB</p> | <p>使用您組織的完整標誌 (包含形符和商標)</p><p>保持低於 30 個像素，避免行動裝置上出現捲軸</p><p>保持低於 4 KB</p><p>使用透明 PNG (不假設 [登入] 頁面上永遠會在白色背景)</p>
-磚標誌 | (目前未用於 [登入] 頁面中) 未來，這段文字可能用來取代不同體驗位置中的泛用「工作或學校帳戶」pictogram。 | <p>JPG 或 PNG</p><p>120x120 像素</p><p>10 KB</p> | <p>保持簡單 (無小型文字)，因為此映像大小可能會調整為 50%
+橫幅標誌 | [橫幅標誌] 會顯示在 [登入] 頁面和 [存取面板] 上。 | <p>JPG 或 PNG</p><p>60x280 像素</p><p>10 KB</p> | <p>使用您組織的完整標誌 （包含形符和商標）</p><p>保持低於 30 個像素，避免行動裝置上出現捲軸</p><p>保持低於 4 KB</p><p>使用透明 PNG （不假設 [登入] 頁面上永遠會在白色背景）</p>
+磚標誌 | (目前未用於 [登入] 頁面中) 未來，這段文字可能用來取代不同體驗位置中的泛用「工作或學校帳戶」pictogram。 | <p>JPG 或 PNG</p><p>120x120 像素</p><p>10 KB</p> | <p>保持簡單 （無小型文字），因為此映像大小可能會調整為 50%
 </p> |
-登入頁面使用者名稱標籤 | (目前未用於 [登入] 頁面中) 未來，這段文字可能用來取代不同體驗位置中的泛用「工作或學校帳戶」字串。 您可以將它設定為「Contoso 帳戶」或 “Contoso ID” 這類項目。 | <p>Unicode 文字，最多 50 個字元</p><p>僅限純文字 (沒有連結或 HTML 標記)</p> | <p>保持簡短和簡單</p><p>詢問使用者通常如何引用的工作或學校帳戶您提供給他們。</p>
-登入頁面文字 | 此「重複使用」文字會出現在 [登入] 頁面表單下方，並且可以用來傳達其他指示或可在何處取得說明和支援。 | <p>Unicode 文字，最多 256 個字元</p><p>僅限純文字 (沒有連結或 HTML 標記)</p> | 保持低於 250 個字元 (約 3 行文字)
-登入頁面圖例 | 圖例是顯示在 [登入] 頁面表單左邊之 [登入] 頁面中的大型影像。 | <p>JPG 或 PNG</p><p>1420x1200</p><p>500 KB</p> | <p>1420x1200 像素</p><p>重要事項: 保持越小越好，最好低於 200 KB。 如果此影像太大，則會未快取影像時影響效能的登入頁面</p><p>此影像幾乎都會進行剪裁，以符合不同的螢幕外觀比例。 主要視覺元素保持在左上角 (右上方 RTL 語言)，因為調整大小會從右下角往左上，做為瀏覽器視窗的縮小。</p>
+登入頁面使用者名稱標籤 | (目前未用於 [登入] 頁面中) 未來，這段文字可能用來取代不同體驗位置中的泛用「工作或學校帳戶」字串。 您可以將它設定為「Contoso 帳戶」或 “Contoso ID” 這類項目。 | <p>Unicode 文字，最多 50 個字元</p><p>僅限純文字 （沒有連結或 HTML 標記）</p> | <p>保持簡短和簡單</p><p>詢問使用者通常如何引用的工作或學校帳戶您提供給他們。</p>
+登入頁面文字 | 此「重複使用」文字會出現在 [登入] 頁面表單下方，並且可以用來傳達其他指示或可在何處取得說明和支援。 | <p>Unicode 文字，最多 256 個字元</p><p>僅限純文字 （沒有連結或 HTML 標記）</p> | 保持低於 250 個字元 (約 3 行文字)
+登入頁面圖例 | 圖例是顯示在 [登入] 頁面表單左邊之 [登入] 頁面中的大型影像。 | <p>JPG 或 PNG</p><p>1420x1200</p><p>500 KB</p> | <p>1420x1200 像素</p><p>重要事項 ︰ 保持越小越好，最好低於 200 KB。 如果此影像太大，則會未快取影像時影響效能的登入頁面</p><p>此影像幾乎都會進行剪裁，以符合不同的螢幕外觀比例。 主要視覺元素保持在左上角 （右上方 RTL 語言），因為調整大小會從右下角往左上，做為瀏覽器視窗的縮小。</p>
 登入頁面背景色彩 | 登入頁面背景色彩用於 [登入] 頁面表單左方的區域。 沒有 [登入] 頁面圖例時，就會顯示此項目。 | 必須是十六進位格式的 RGB 色彩 (範例: #FFFFFF) | <p>可能顯示的背景色彩，來取代在低頻寬連線的大型圖例</p><p>我們建議挑選 [橫幅標誌] 的主要色彩</p>
 
 
-## 接下來
+## 後續步驟
 
 - [開始使用 Azure Active Directory Premium](active-directory-get-started-premium.md)
 - [檢視存取和使用情況報告](active-directory-view-access-usage-reports.md)
@@ -186,4 +186,5 @@ Azure AD 中的部分可自訂元素有多個使用案例。 公司標誌可以�
 [6]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedleft.png
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
+
 

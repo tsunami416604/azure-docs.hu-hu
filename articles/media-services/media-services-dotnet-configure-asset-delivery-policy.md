@@ -23,7 +23,7 @@
 
 本主題討論建立和設定資產傳遞原則的原因與方法。 
 
->[AZURE.NOTE]若要能夠使用動態封裝和動態加密，您必須確定至少一個縮放單元 (也稱為串流單位)。 如需詳細資訊，請參閱 [如何調整媒體服務](media-services-manage-origins.md#scale_streaming_endpoints)。 
+>[AZURE.NOTE]若要能夠使用動態封裝和動態加密，您必須確定至少一個縮放單元 （也稱為串流單位）。 如需詳細資訊，請參閱 [如何調整媒體服務](media-services-manage-origins.md#scale_streaming_endpoints)。 
 >
 >此外，您的資產必須包含一組調適性位元速率 MP4 或調適性位元速率 Smooth Streaming 檔案。      
 
@@ -55,7 +55,7 @@ HDS
 
 ##清除資產傳遞原則 
 
-下列 **ConfigureClearAssetDeliveryPolicy** 方法指定不套用動態加密，以及傳送任何下列通訊協定資料流: MPEG DASH、 HLS 和 Smooth Streaming 通訊協定。 您可能想要將此原則套用到您的儲存體加密資產。
+下列 **ConfigureClearAssetDeliveryPolicy** 方法指定不套用動態加密，以及傳送任何下列通訊協定資料流 ︰ MPEG DASH、 HLS 和 Smooth Streaming 通訊協定。 您可能想要將此原則套用到您的儲存體加密資產。
   
 如需哪些值建立 AssetDeliveryPolicy 時可以指定，請參閱 [定義 AssetDeliveryPolicy 時使用的型別](#types) 一節。 
 
@@ -72,7 +72,7 @@ HDS
 ##DynamicCommonEncryption 資產傳遞原則 
 
 
-下列 **CreateAssetDeliveryPolicy** 方法會建立 **AssetDeliveryPolicy** ，它會設定為套用動態一般加密 (**DynamicCommonEncryption**) 到 smooth streaming 通訊協定 (進行串流處理將會封鎖其他通訊協定)。 此方法會採用兩個參數: **資產** (您要套用傳遞原則的資產) 和 **IContentKey** (內容金鑰 **CommonEncryption** 型別，如需詳細資訊，請參閱: [建立內容金鑰](media-services-dotnet-create-contentkey.md#common_contentkey))。
+下列 **CreateAssetDeliveryPolicy** 方法會建立 **AssetDeliveryPolicy** ，它會設定為套用動態一般加密 (**DynamicCommonEncryption**) 到 smooth streaming 通訊協定 （進行串流處理將會封鎖其他通訊協定）。 此方法會採用兩個參數 ︰ **資產** （您要套用傳遞原則的資產） 和 **IContentKey** (內容金鑰 **CommonEncryption** 型別，如需詳細資訊，請參閱 ︰ [建立內容金鑰](media-services-dotnet-create-contentkey.md#common_contentkey))。
 
 如需哪些值建立 AssetDeliveryPolicy 時可以指定，請參閱 [定義 AssetDeliveryPolicy 時使用的型別](#types) 一節。 
 
@@ -134,7 +134,7 @@ Azure 媒體服務也可讓您加入 Widevine 加密。 下列範例會示範 Pl
 
 ##DynamicEnvelopeEncryption 資產傳遞原則 
 
-下列 **CreateAssetDeliveryPolicy** 方法會建立 **AssetDeliveryPolicy** ，它會設定為套用動態信封加密 (**DynamicEnvelopeEncryption**) 至 HLS 和 DASH 通訊協定 (進行串流處理將會封鎖其他通訊協定)。 此方法會採用兩個參數: **資產** (您要套用傳遞原則的資產) 和 **IContentKey** (內容金鑰 **EnvelopeEncryption** 型別，如需詳細資訊，請參閱: [建立內容金鑰](media-services-dotnet-create-contentkey.md#envelope_contentkey))。
+下列 **CreateAssetDeliveryPolicy** 方法會建立 **AssetDeliveryPolicy** ，它會設定為套用動態信封加密 (**DynamicEnvelopeEncryption**) 至 HLS 和 DASH 通訊協定 （進行串流處理將會封鎖其他通訊協定）。 此方法會採用兩個參數 ︰ **資產** （您要套用傳遞原則的資產） 和 **IContentKey** (內容金鑰 **EnvelopeEncryption** 型別，如需詳細資訊，請參閱 ︰ [建立內容金鑰](media-services-dotnet-create-contentkey.md#envelope_contentkey))。
 
 
 如需哪些值建立 AssetDeliveryPolicy 時可以指定，請參閱 [定義 AssetDeliveryPolicy 時使用的型別](#types) 一節。   
@@ -337,6 +337,7 @@ Azure 媒體服務也可讓您加入 Widevine 加密。 下列範例會示範 Pl
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 
 
 

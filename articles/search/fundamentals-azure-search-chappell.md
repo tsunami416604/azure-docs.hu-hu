@@ -18,7 +18,7 @@
 
 # Azure 搜尋服務簡介 #
 
-**摘要:** 學習如何使用 Azure 搜尋服務，在 Azure 上，完全受管理和託管雲端服務啟用 web 和行動應用程式的豐富的搜尋經驗。 搜尋是與網路上資料互動的預設樣式。 期盼所有應用程式狀況都具備此功能。
+**摘要 ︰** 學習如何使用 Azure 搜尋服務，在 Azure 上，完全受管理和託管雲端服務啟用 web 和行動應用程式的豐富的搜尋經驗。 搜尋是與網路上資料互動的預設樣式。 期盼所有應用程式狀況都具備此功能。
 
 **目錄：**
 
@@ -31,14 +31,15 @@
 
 本文將概述本技術及其所支援的功能和案例。 此處將不做深入的技術性討論。
 
-**作者:** David Chappell，Leiter von Chappell & Associates
+**作者 ︰** David Chappell，Leiter von Chappell & Associates
 
-**更新日期:** 2015 年 3 月
+**更新日期 ︰** 2015 年 3 月
 
-**修訂版本:** 1.1
+**修訂版本 ︰** 1.1
 
 **下載次數:** 
 
-* <a href="http://go.microsoft.com/fwlink/p/?LinkId=522547" target="_blank">「 簡介 Azure 搜尋服務 」 (PDF)</a>
-* <a href="http://go.microsoft.com/fwlink/p/?LinkId=529011" target="_blank">「 Azure 搜尋簡介 」 (在 Microsoft Word 檔案)</a> 
+* <a href="http://go.microsoft.com/fwlink/p/?LinkId=522547" target="_blank">「Azure 搜尋服務簡介」(PDF 檔案)</a>
+* <a href="http://go.microsoft.com/fwlink/p/?LinkId=529011" target="_blank">「Azure 搜尋服務簡介」(Microsoft Word 檔案)</a> 
+
 

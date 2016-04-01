@@ -44,7 +44,7 @@
 |SQL Server 2014 SP1|Windows Server 2012 R2|Enterprise、Standard 和 Web|
 |SQL Server 2016 CTP|Windows Server 2012 R2|評估|
 
->[AZURE.NOTE] 資料倉儲和交易式工作負載 (未如上所示) 的虛擬機器資源庫映像已被取代，即將移除從組件庫。 請使用上表中的標準映像並最佳化特定工作負載的效能。
+>[AZURE.NOTE] 資料倉儲和交易式工作負載 （未如上所示） 的虛擬機器資源庫映像已被取代，即將移除從組件庫。 請使用上表中的標準映像並最佳化特定工作負載的效能。
 
 除了這些預先設定的映像，您也可以 [建立 Azure 的虛擬機器](virtual-machines-windows-tutorial.md) 而不需要預先安裝的 SQL Server。 您可以安裝任何您擁有授權的 SQL Server 執行個體。 將您的授權移轉至 Azure 的 Azure 虛擬機器使用執行 SQL Server [Azure 上透過軟體保證的授權機動性](http://azure.microsoft.com/pricing/license-mobility/)。 在此案例中，您只需支付 Azure 計算和儲存體 [成本](http://azure.microsoft.com/pricing/details/virtual-machines) 與虛擬機器相關聯。
 
@@ -147,4 +147,5 @@
 - [Azure 虛擬機器中的 SQL Server 高可用性和災害復原](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)
 - [Azure 虛擬機器中的 SQL Server 應用程式模式和開發策略](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 - [Azure 虛擬機器](virtual-machines-about.md) 
+
 

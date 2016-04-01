@@ -48,7 +48,7 @@ Oracle 資料庫連接器提供下列觸發程序和動作：
 
     名稱 |需要 | 描述
 --- | --- | ---
-資料來源 |[是 |已安裝 Oracle 用戶端電腦上 tnsnames.ora 檔案中指定的資料來源 (網路服務) 名稱。 資料來源名稱和 tnsnames.ora 的相關資訊，請參閱 [設定 Oracle 用戶端](http://msdn.microsoft.com/library/dd787872.aspx)。
+資料來源 |[是 |已安裝 Oracle 用戶端電腦上 tnsnames.ora 檔案中指定的資料來源 （網路服務） 名稱。 資料來源名稱和 tnsnames.ora 的相關資訊，請參閱 [設定 Oracle 用戶端](http://msdn.microsoft.com/library/dd787872.aspx)。
 使用者名稱 |[是 |輸入要連接到 Oracle 伺服器的使用者名稱。
 密碼 |[是 |輸入使用者名稱密碼。
 服務匯流排連接字串 |[是 |如果您要連線至內部部署上，輸入服務匯流排轉送連接字串。<br/><br/>[使用混合式連線管理員](app-service-logic-hybrid-connection-manager.md)<br/>[服務匯流排定價](http://azure.microsoft.com/pricing/details/service-bus/)
@@ -61,7 +61,7 @@ Oracle 資料庫連接器提供下列觸發程序和動作：
 輪詢陳述式 |否 |輸入輪詢 Oracle Server 資料庫的陳述式。 例如，輸入 *選取 * from table_name*。
 後輪詢陳述式 |否 |輸入輪詢後要執行的陳述式。 例如，輸入 *刪除 * from table_name*。
 
-5. 完成時，[封裝設定看起來如下所示:
+5. 完成時，[封裝設定看起來如下所示 ︰
 <br/>
 ![][1]  
 
@@ -70,15 +70,15 @@ Oracle 資料庫連接器提供下列觸發程序和動作：
 讓我們以一個簡單的邏輯應用程式為例，它會輪詢 Oracle 資料表的資料、在另一個資料表中加入資料，以及更新資料。
 
 ### 加入觸發程序
-1. 建立或編輯邏輯應用程式時，請選取您建立的 Oracle 連接器做為觸發程序。 這樣會列出可用的觸發程序: **輪詢資料 (JSON)** 和 **輪詢資料 (XML)**:
+1. 建立或編輯邏輯應用程式時，請選取您建立的 Oracle 連接器做為觸發程序。 這樣會列出可用的觸發程序 ︰ **輪詢資料 (JSON)** 和 **輪詢資料 (XML)**:
 <br/>
 ![][5]
 
-2. 選取 **輪詢資料 (JSON)** 觸發程序中，輸入頻率，然後按一下 ✓:
+2. 選取 **輪詢資料 (JSON)** 觸發程序中，輸入頻率，然後按一下 ✓ ︰
 <br/>
 ![][6]
 
-3. 現在，觸發程序在邏輯應用程式中顯示為已設定。 觸發程序的輸出會顯示，並可用來當做輸入任何後續的動作:
+3. 現在，觸發程序在邏輯應用程式中顯示為已設定。 觸發程序的輸出會顯示，並可用來當做輸入任何後續的動作 ︰
 <br/>
 ![][7]
 
@@ -91,7 +91,7 @@ Oracle 資料庫連接器提供下列觸發程序和動作：
 <br/>
 ![][8]
 
-2. 輸入輸入的值的記錄插入，然後按一下 ✓:
+2. 輸入輸入的值的記錄插入，然後按一下 ✓ ︰
 <br/>
 ![][9]
 
@@ -99,7 +99,7 @@ Oracle 資料庫連接器提供下列觸發程序和動作：
 <br/>
 ![][11]
 
-4. 輸入更新動作中，輸入的值，然後按一下 ✓:
+4. 輸入更新動作中，輸入的值，然後按一下 ✓ ︰
 <br/>
 ![][12]
 
@@ -114,9 +114,9 @@ App Service 使用混合式組態管理員來安全地連線到內部部署系�
 請參閱 [使用混合式連線管理員](app-service-logic-hybrid-connection-manager.md)。
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -133,4 +133,5 @@ App Service 使用混合式組態管理員來安全地連線到內部部署系�
 [10]: ./media/app-service-logic-connector-oracle/LogicApp6.png
 [11]: ./media/app-service-logic-connector-oracle/LogicApp7.png
 [12]: ./media/app-service-logic-connector-oracle/LogicApp8.png
+
 

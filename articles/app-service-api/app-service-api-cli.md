@@ -24,7 +24,7 @@
 
 本文假設您已安裝 Azure CLI 並且知道如何執行基本工作。 CLI 的簡介，請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md)。 
 
-> [AZURE.NOTE] 指示 [連接到 Azure 訂用帳戶 ](../xplat-cli-connect.md) 提供兩個替代方案: 使用工作或學校的帳戶，登入，並下載 *.publishsettings* 檔案。 API 應用程式， *.publishsettings* 檔案驗證方法將無法運作。 這是因為您必須使用資源管理模式 (在下一節中介紹) 來處理 API 應用程式，而 *.publishsettings* 檔案驗證方法不會處理與資源管理員。 
+> [AZURE.NOTE] 指示 [連接到 Azure 訂用帳戶 ](../xplat-cli-connect.md) 提供兩個替代方案 ︰ 使用工作或學校的帳戶，登入，並下載 *.publishsettings* 檔案。 API 應用程式， *.publishsettings* 檔案驗證方法將無法運作。 這是因為您必須使用資源管理模式 （在下一節中介紹） 來處理 API 應用程式，而 *.publishsettings* 檔案驗證方法不會處理與資源管理員。 
 
 ## 啟用資源管理模式
 
@@ -287,4 +287,5 @@
 * [使用 Azure CLI for Mac、 Linux 和 Windows 搭配 Azure 資源管理](../xplat-cli-azure-resource-manager.md)。
 * [搭配使用 Azure PowerShell 與 Azure 資源管理員](../powershell-azure-resource-manager.md)
  
+
 

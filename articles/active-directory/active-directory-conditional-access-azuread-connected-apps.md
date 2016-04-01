@@ -65,11 +65,11 @@ SaaS 應用程式的 Azure 條件式存取已可公開預覽。 預覽版本可�
 ###存取規則選項
 目前的預覽版本支援下列選項：
 
-* **需要多重要素驗證**: 使用此選項時要套用存取規則的使用者才需要存取原則會套用至應用程式之前完成多因素驗證。
+* **需要多重要素驗證**︰ 使用此選項時要套用存取規則的使用者才需要存取原則會套用至應用程式之前完成多因素驗證。
 
-* **需要多因素驗證，不在工作時**: 使用此選項來自受信任的 IP 的使用者不需要執行多因素驗證。 在多因素驗證設定頁面上可以設定受信任的 IP 範圍。
+* **需要多因素驗證，不在工作時**︰ 使用此選項來自受信任的 IP 的使用者不需要執行多因素驗證。 在多因素驗證設定頁面上可以設定受信任的 IP 範圍。
 
-* **封鎖不在工作時存取**: 使用此選項將會遭到封鎖的使用者不來自受信任的 IP。 在多因素驗證設定頁面上可以設定受信任的 IP 範圍。
+* **封鎖不在工作時存取**︰ 使用此選項將會遭到封鎖的使用者不來自受信任的 IP。 在多因素驗證設定頁面上可以設定受信任的 IP 範圍。
 
 ###設定規則狀態
 存取規則狀態可讓您開啟或關閉規則。 當存取規則關閉時，將不會強制執行多因素驗證需求。
@@ -83,10 +83,11 @@ SaaS 應用程式的 Azure 條件式存取已可公開預覽。 預覽版本可�
 
 根據預設，MFA 會發生在 Azure Active Directory 所裝載的頁面上。 若要設定內部部署 MFA，必須使用 Windows PowerShell 的 Azure AD 模組，在 Azure Active Directory 中將 –SupportsMFA 屬性設定為 true。
 
-下列範例示範如何使用啟用內部部署 MFA [Set-msoldomainfederationsettings 指令程式](https://msdn.microsoft.com/library/azure/dn194088.aspx) contoso.com 租用戶上:
+下列範例示範如何使用啟用內部部署 MFA [Set-msoldomainfederationsettings 指令程式](https://msdn.microsoft.com/library/azure/dn194088.aspx) contoso.com 租用戶上 ︰
 
     Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true
 
 除了設定這個旗標，同盟租用戶 AD FS 執行個體必須設為執行多因素驗證。 依照指示在內部部署 Microsoft Azure Multi-Factor Authentication。
+
 
 

@@ -32,7 +32,7 @@ SQL 資料倉儲提供兩個核心功能，可從造成非預期之資料損毀�
 
 使用 Azure PowerShell 可以程式設計方式執行資料庫還原。 若要下載 Azure PowerShell 模組，請執行 [Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)。 
 
-若要還原資料庫，請使用 [Start-azuresqldatabaserestore] [] 指令程式。 
+若要還原資料庫，請使用 [Start-azuresqldatabaserestore][] 指令程式。 
 
 1. 開啟 Microsoft Azure PowerShell。
 2. 連接到您的 Azure 帳戶，並列出與您的帳戶相關聯的所有訂用帳戶。
@@ -72,10 +72,10 @@ Get-AzureSqlDatabaseOperation -ServerName "<YourServerName>" –OperationGuid $R
 使用 REST 可以程式設計方式執行資料庫還原。
 
 1. 使用 Get 資料庫還原點作業取得資料庫還原點清單。
-2. 使用 [建立資料庫還原要求] [] 作業來開始還原。
-3. 使用 [資料庫作業狀態] [] 作業來追蹤還原狀態。
+2. 開始使用還原 [建立資料庫還原要求][] 作業。
+3. 使用追蹤還原狀態 [資料庫作業狀態][] 作業。
 
-還原完成之後，您可以設定復原的資料庫可供遵循 [完成復原的資料庫] [] 指南。
+還原完成之後，您可以設定復原的資料庫可供遵循 [完成復原的資料庫][] 指南。
 
 ## 復原已刪除的資料庫
 若資料庫已刪除，您可以將已刪除的資料庫還原至刪除的時間點。 Azure SQL 資料倉儲會在卸除資料庫前採用資料庫快照集，並保留 7 天。
@@ -83,7 +83,7 @@ Get-AzureSqlDatabaseOperation -ServerName "<YourServerName>" –OperationGuid $R
 ### PowerShell
 使用 Azure PowerShell 以程式設計方式還原已刪除的資料庫。 若要下載 Azure PowerShell 模組，請執行 [Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)。 
 
-若要還原已刪除的資料庫，請使用 [Start-azuresqldatabaserestore] [] 指令程式。
+若要還原已刪除的資料庫，請使用 [Start-azuresqldatabaserestore][] 指令程式。
 
 1. 開啟 Microsoft Azure PowerShell。
 2. 連接到您的 Azure 帳戶，並列出與您的帳戶相關聯的所有訂用帳戶。
@@ -109,16 +109,16 @@ Get-AzureSqlDatabaseOperation –ServerName "<YourServerName>" –OperationGuid 
 ### REST API
 使用 REST 可以程式設計方式執行資料庫還原。
 
-1.  使用 [列出可還原的已卸除的資料庫] [] 作業，列出所有可還原的已刪除資料庫。
-2.  取得您想要使用 [取得可還原的已卸除的資料庫] [] 作業還原已刪除的資料庫的詳細資訊。
-3.  使用 [建立資料庫還原要求] [] 作業來開始還原。
-4.  使用 [資料庫作業狀態] [] 作業來追蹤還原狀態。
+1.  列出所有可還原的已刪除資料庫使用 [清單可還原的已卸除資料庫][] 作業。
+2.  取得您想要使用還原已刪除的資料庫的詳細資訊 [取得可還原的已卸除資料庫][] 作業。
+3.  開始使用還原 [建立資料庫還原要求][] 作業。
+4.  使用追蹤還原狀態 [資料庫作業狀態][] 作業。
 
-還原完成之後，您可以設定復原的資料庫可供遵循 [完成復原的資料庫] [] 指南。
+還原完成之後，您可以設定復原的資料庫可供遵循 [完成復原的資料庫][] 指南。
 
 
 ## 後續步驟
-若要深入了解其他 Azure SQL Database 版本的業務持續性功能，請閱讀 [Azure SQL Database 業務持續性概觀] []。
+若要深入了解其他 Azure SQL Database 版本的業務持續性功能，請閱讀 [Azure SQL Database 業務持續性概觀][]。
 
 
 <!--Image references-->
@@ -135,4 +135,5 @@ Get-AzureSqlDatabaseOperation –ServerName "<YourServerName>" –OperationGuid 
 [Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/library/dn720218.aspx
 
 <!--Other Web references-->
+
 

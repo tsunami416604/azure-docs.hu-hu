@@ -27,13 +27,14 @@
 
     1. 提供 **名稱** acr。
     2. 在 **iSCSI 啟動器名稱**, ，提供 iSCSI 合格名稱 (IQN) 的 Windows 主機。 如果您沒有 IQN，請移至 [取得 Windows Server 主機的 IQN](#get-the-iqn-of-a-windows-server-host)。
-    3. 在 **此磁碟區的預設備份?**, ，請選取 **啟用** ] 核取方塊。 預設備份將會建立原則，在每天的 22:30 (裝置時間) 執行，並建立此磁碟區的雲端快照。
+    3. 在 **此磁碟區的預設備份？**, ，請選取 **啟用** ] 核取方塊。 預設備份將會建立原則，在每天的 22:30 (裝置時間) 執行，並建立此磁碟區的雲端快照。
      
      > [AZURE.NOTE] 備份在此處啟用後，即無法回復。 您必須編輯磁碟區，才能修改此設定。
 
      ![新增磁碟區](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
 
 4. 按一下核取圖示 ![核取圖示](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). 使用指定的設定來建立磁碟區。
+
 
 
 

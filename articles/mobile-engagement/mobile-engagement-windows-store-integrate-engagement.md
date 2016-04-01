@@ -19,7 +19,7 @@
 # Windows 通用 app Engagement SDK 整合
 
 > [AZURE.SELECTOR] 
-- [Windows 通用](mobile-engagement-windows-store-integrate-engagement.md) 
+- [Universal Windows](mobile-engagement-windows-store-integrate-engagement.md) 
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
 - [iOS](mobile-engagement-ios-integrate-engagement.md) 
 - [Android](mobile-engagement-android-integrate-engagement.md) 
@@ -285,4 +285,5 @@ Engagement 組態會集中在您專案的 `Resources\EngagementConfiguration.xml
 [here]:http://www.nuget.org/packages/Capptain.WindowsCS
 [NuGet website]:http://docs.nuget.org/docs/start-here/overview
  
+
 

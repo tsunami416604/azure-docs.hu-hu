@@ -33,7 +33,7 @@
 
 如果您比較喜歡觀看影片，下列短片中的步驟跟本教學課程的步驟是相同的。
 
-影片: 「 取得開始使用 Xamarin 和 Azure 行動服務 」，Craig Dunn Xamarin 開發人員推廣者 (持續時間: 10:05 最小值)
+影片: 「 取得開始使用 Xamarin 和 Azure 行動服務 」，Craig Dunn Xamarin 開發人員推廣者 (持續時間 ︰ 10:05 最小值)
 
 > [AZURE.VIDEO getting-started-with-xamarin-and-mobile-services]
 
@@ -41,7 +41,7 @@
 
 ![][0]
 
-完成本教學課程需要有 [Xamarin.Android]，xamarin.android 將安裝 Xamarin Studio 和 Visual Studio 外掛程式 (在 Windows 上)，以及最新版 Android 平台。 需要 Android 4.2 SDK 或更新版本。
+完成本教學課程，您需要 [Xamarin.Android], ，xamarin.android 將安裝 Xamarin Studio 和 Visual Studio 外掛程式 （在 Windows 上)，以及最新版 Android 平台。 需要 Android 4.2 SDK 或更新版本。
 
 下載的快速入門專案包含 Xamarin.Android 的 Azure 行動服務元件。 雖然這個專案的目標是 Android 4.2 或以上的版本，不過行動服務 SDK 只需要 Android 2.2 或以上的版本。
 
@@ -57,7 +57,7 @@
 
 在本節中，您將建立可連接到您行動服務的新 Xamarin.Android 應用程式。
 
-1.  在 [Azure 傳統入口網站]，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
+1.  在 [Azure classic portal], ，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
 
 2. 在 [快速入門] 索引標籤中，按一下 [ **Xamarin.Android** 下 **選擇平台** 展開 **建立新的 Android 應用程式**。
 
@@ -94,7 +94,7 @@
     > [AZURE.NOTE]
     > 您可以檢閱存取行動服務以查詢與插入資料的程式碼，您可在 ToDoActivity.cs C# 檔案中找到此程式碼。
 
-6. 回到 [Azure 傳統入口網站]，按一下 [ **資料** 標籤，然後按一下 **TodoItems** 資料表。
+6. 回到 [Azure classic portal], ，按一下 [ **資料** 標籤，然後按一下 **TodoItems** 資料表。
 
     ![][11]
 
@@ -105,16 +105,16 @@
 ## <a name="next-steps"> </a>後續步驟
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
-* [開始使用離線資料同步]
+* [Get started with offline data sync]
   了解快速入門如何使用離線資料同步處理，讓應用程式迅速回應而且穩固。
 
-* [開始使用驗證]
+* [Get started with authentication]
   了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
-* [開始使用推播通知]
+* [Get started with push notifications]
   了解如何將非常基本的推播通知傳送至您的應用程式。
 
-* [如何使用 Azure 行動服務的 Xamarin 元件用戶端](partner-xamarin-mobile-services-how-to-use-client-library.md)
+* [如何使用適用於 Azure 行動服務的 Xamarin 元件用戶端](partner-xamarin-mobile-services-how-to-use-client-library.md)
    了解如何查詢行動服務、 處理資料，以及存取自訂 Api。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
@@ -150,5 +150,6 @@
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Azure]: http://azure.microsoft.com/
 [Azure classic portal]: https://manage.windowsazure.com/
+
 
 

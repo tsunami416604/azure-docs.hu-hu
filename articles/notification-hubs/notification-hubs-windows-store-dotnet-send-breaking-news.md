@@ -29,15 +29,15 @@
 
 包含一或多個來啟用廣播的案例 _標記_ 時在通知中樞建立註冊。 當標籤收到通知時，所有已註冊此標籤的裝置都會收到通知。 由於標籤只是簡單的字串而已，您無需預先佈建標籤。 如需標記的詳細資訊，請參閱 [通知中樞路由和標記運算式](notification-hubs-routing-tag-expressions.md)。
 
-##先決條件
+##必要條件
 
-本主題是根據您在建立應用程式 [開始使用通知中樞] [入門]。 在開始本教學課程之前, 您必須已完成 [開始使用通知中樞] [入門]。
+本主題會在您建立的應用程式以 [開始使用通知中樞][get-started]。 在開始本教學課程之前, 您必須已完成 [開始使用通知中樞][get-started]。
 
 ##在應用程式中新增類別選項
 
 第一個步驟是在您的現有主頁面上新增 UI 元素，以便使用者選取要註冊的類別。 使用者所選取的類別會儲存在裝置上。 啟動應用程式時，您的通知中心內會建立以所選取類別作為標籤的裝置註冊。
 
-1. 開啟 MainPage.xaml 專案檔案，然後複製下列程式碼中的 **方格** 項目:
+1. 開啟 MainPage.xaml 專案檔案，然後複製下列程式碼中的 **方格** 項目 ︰
 
         <Grid>
             <Grid.RowDefinitions>
@@ -62,14 +62,14 @@
         </Grid>
 
 
-2. 以滑鼠右鍵按一下 **共用** 專案，並新增新的類別，名為 **通知**, ，新增 **公用** 修飾詞新增至類別定義，然後新增下列 **使用** 陳述式，以新的程式碼檔案:
+2. 以滑鼠右鍵按一下 **共用** 專案，並新增新的類別，名為 **通知**, ，新增 **公用** 修飾詞新增至類別定義，然後新增下列 **使用** 陳述式，以新的程式碼檔案 ︰
 
         using Windows.Networking.PushNotifications;
         using Microsoft.WindowsAzure.Messaging;
         using Windows.Storage;
         using System.Threading.Tasks;
 
-3. 下列程式碼複製到新 **通知** 類別:
+3. 下列程式碼複製到新 **通知** 類別 ︰
 
         private NotificationHub hub;
 
@@ -120,7 +120,7 @@
 
 
 
-4. 在 App.xaml.cs 專案檔案中，新增下列屬性至 **應用程式** 類別:
+4. 在 App.xaml.cs 專案檔案中，新增下列屬性至 **應用程式** 類別 ︰
 
         public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
 
@@ -172,9 +172,9 @@
     
         var result = await notifications.SubscribeToCategories();
 
-    這會確保應用程式每次啟動時都會從本機儲存體擷取類別，並要求這些類別的註冊。  **InitNotificationsAsync** 方法所建立的 [開始使用通知中樞] [入門] 教學課程。
+    這會確保應用程式每次啟動時都會從本機儲存體擷取類別，並要求這些類別的註冊。  **InitNotificationsAsync** 方法所建立的 [開始使用通知中樞][get-started] 教學課程。
 
-3. 在 MainPage.xaml.cs 專案檔案中，加入下列程式碼 *OnNavigatedTo* 方法:
+3. 在 MainPage.xaml.cs 專案檔案中，加入下列程式碼 *OnNavigatedTo* 方法 ︰
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -212,7 +212,7 @@
 
 4. 若要從後端傳送新通知，您可以使用下列其中一種方式：
 
-    + **主控台應用程式:** 啟動主控台應用程式。
+    + **主控台應用程式 ︰** 啟動主控台應用程式。
 
     + **Java/PHP:** 執行您的應用程式/指令碼。
 
@@ -257,4 +257,5 @@
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+
 

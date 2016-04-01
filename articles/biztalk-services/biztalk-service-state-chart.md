@@ -25,7 +25,7 @@
 
 **不允許此作業**
 
-若要佈建 BizTalk 服務，請移至 [BizTalk 服務: 佈建使用 Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=302280)。
+若要佈建 BizTalk 服務，請移至 [BizTalk 服務 ︰ 佈建使用 Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=302280)。
 
 下表列出當 BizTalk 服務處於特定狀態時可執行的作業或動作。 ✔ 表示可在該狀態下執行作業。 空白項目表示無法在此狀態下執行作業。
 
@@ -256,14 +256,15 @@
 </table>
 
 ## 另請參閱
-- [BizTalk 服務: 佈建使用 Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk 服務: 儀表板、 監視和調整索引標籤](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-- [BizTalk 服務: 開發人員、 基本、 標準和高級版本圖表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk 服務: 備份與還原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-- [BizTalk 服務: 節流](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-- [BizTalk 服務: 簽發者名稱和簽發者金鑰](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+- [BizTalk 服務：使用 Azure 傳統入口網站進行佈建](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk 服務：儀表板、監視和調整索引標籤](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+- [BizTalk 服務：開發人員、基本、標準和高級版本圖表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+- [BizTalk 服務：備份與還原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+- [BizTalk 服務：節流](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+- [BizTalk 服務：簽發者名稱和簽發者金鑰](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 - [如何開始使用 Azure BizTalk 服務 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 
  
+
 

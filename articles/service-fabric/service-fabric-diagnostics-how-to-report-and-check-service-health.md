@@ -20,8 +20,8 @@
 # 回報和檢查服務健康情況
 當您的服務發生問題時，您必須能夠快速偵測問題，才能回應並修正所有產生的事件和中斷。 透過從您的服務程式碼向「Service Fabric 健康情況管理員」回報問題和失敗，您便可以使用 Service Fabric 提供的標準「健康情況監視」工具來檢查健康狀態。 本文將逐步引導您完成將健康情況報告新增至服務的範例，並說明如何使用 Service Fabric 所提供的工具來檢查健康狀態。 本文旨在快速介紹 Service Fabric 中的健康情況監視功能，如需更詳細的資訊，您可以從本文結尾的連結開始，閱讀一系列有關健康情況的深入文章。
 
-## 先決條件
-您必須安裝下列項目:
+## 必要條件
+您必須安裝下列項目 ︰
    * Visual Studio 2015
    * Service Fabric SDK
 
@@ -109,4 +109,5 @@ Service Fabric Visual Studio 專案範本包含範例程式碼。 以下步驟�
 
 ## 後續步驟
 [深入了解 Service Fabric 健康情況](service-fabric-health-introduction.md)
+
 

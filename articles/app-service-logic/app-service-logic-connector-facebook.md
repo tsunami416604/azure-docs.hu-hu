@@ -48,30 +48,30 @@
 ## 在邏輯應用程式中使用 Facebook 連接器
 建立 API 應用程式之後，您現在可以使用 Facebook 連接器做為邏輯應用程式的觸發程序/動作 。 若要這樣做，您需要：
 
-1.  邏輯應用程式中開啟 **觸發程序和動作** 以開啟邏輯應用程式設計工具並設定您的流程:  
+1.  邏輯應用程式中開啟 **觸發程序和動作** 以開啟邏輯應用程式設計工具並設定您的流程 ︰  
     ![][3]
-2.  Facebook 連接器會列在組件庫:  
+2.  Facebook 連接器會列在組件庫 ︰  
     ![][4]
 3. 選取 Facebook 連接器以自動加入至設計工具。 選取 **授權**, 、 輸入您的認證，然後選取 **允許**:  
     ![][5]
     ![][6]
     ![][7]
     ![][8]
-4.  選取觸發程序:  
+4.  選取觸發程序 ︰  
     ![][9]
 
-您現在可以在其他動作中使用從 Facebook 觸發程序擷取的貼文。 在下列流程中，每當使用者的 Facebook 在時間表上，張貼新文章時相同的文章將會成為貼文使用者的 Twitter 時間軸中:  
+您現在可以在其他動作中使用從 Facebook 觸發程序擷取的貼文。 在下列流程中，每當使用者的 Facebook 在時間表上，張貼新文章時相同的文章將會成為貼文使用者的 Twitter 時間軸中 ︰  
     ![][10]
 
-您可以類似的方式，使用 Facebook 連接器動作建立流程。 下列流程會擷取 Yammer 群組上張貼的新訊息並發佈使用者所管理的 Facebook 網頁上相同的文章:  
+您可以類似的方式，使用 Facebook 連接器動作建立流程。 下列流程會擷取 Yammer 群組上張貼的新訊息並發佈使用者所管理的 Facebook 網頁上相同的文章 ︰  
     ![][11]
 
 > [AZURE.TIP] 若要取得 Facebook 頁面識別碼或 Yammer 群組識別碼，尋找在 URL 中數值的程式碼。
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -89,4 +89,5 @@
 [9]: ./media/app-service-logic-connector-facebook/img9.png
 [10]: ./media/app-service-logic-connector-facebook/img10.png
 [11]: ./media/app-service-logic-connector-facebook/img11.png
+
 

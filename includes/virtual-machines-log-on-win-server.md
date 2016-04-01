@@ -1,6 +1,6 @@
 <properties services="virtual-machines" title="How to Log on to a Virtual Machine Running Windows Server" authors="cynthn" solutions="" manager="timlt" editor="tysonn" />
 
-4. 按一下 **連接** 會建立並下載遠端桌面通訊協定 (.rdp 檔) 檔案。 按一下 [ **開啟** 使用此檔案。
+4. 按一下 **連接** 會建立並下載遠端桌面通訊協定 （.rdp 檔） 檔案。 按一下 [ **開啟** 使用此檔案。
 
 5. 在 [遠端桌面] 視窗中，按一下 [ **連接** 以繼續。
 
@@ -17,4 +17,5 @@
 7.  按一下 [ **是** 驗證虛擬機器的身分識別，並完成登入。
 
     ![驗證機器的身分識別](./media/virtual-machines-log-on-win-server/connectverify.png)
+
 

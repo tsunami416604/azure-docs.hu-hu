@@ -28,10 +28,10 @@
 
 | 圖示  | 說明  |
 |:------|:-------------| 
-|![危險圖示](./media/storsimple-safety/IC740879.png) **危險!**|指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。| 
-|![警告圖示](./media/storsimple-safety/IC740879.png) **警告!**|指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。|
-|![警告圖示](./media/storsimple-safety/IC740879.png) **警告!**|指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。|
-|![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項:**|表示重要資訊，但與危險無關。|
+|![危險圖示](./media/storsimple-safety/IC740879.png) **危險 ！**|指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。| 
+|![警告圖示](./media/storsimple-safety/IC740879.png) **警告 ！**|指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。|
+|![警告圖示](./media/storsimple-safety/IC740879.png) **警告 ！**|指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。|
+|![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項 ︰**|表示重要資訊，但與危險無關。|
 |![電擊圖示](./media/storsimple-safety/IC740882.png) **電擊危險** |高電壓|
 |![重量圖示](./media/storsimple-safety/IC740883.png) **重量**| |
 |![沒有使用者可自行維修零件圖示](./media/storsimple-safety/IC740879.png) **沒有使用者可自行維修的零件**|除非受過適當訓練，否則請勿觸碰。|
@@ -41,7 +41,7 @@
 
 ## 處理預防措施
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![重量圖示](./media/storsimple-safety/IC740883.png) **警告!** 
+![警告圖示](./media/storsimple-safety/IC740879.png) ![重量圖示](./media/storsimple-safety/IC740883.png) **警告 ！** 
 
 
 減少受傷的風險：
@@ -52,7 +52,7 @@
 
 ## 連接預防措施
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告 ！**
 
 減少傷害、電擊或死亡的可能性：
 
@@ -66,7 +66,7 @@
 
 - 假設電源供應線上的插頭是主要的中斷裝置，請確保插座位於設備附近且可輕鬆觸及。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告 ！**
 
 降低電力連接過熱或火災的可能性：
 
@@ -78,7 +78,7 @@
 
 - 請確定以製造商所指定的方式使用設備。 如果未以製造商所指定的方式使用設備，設備所提供的保護可能會減損。
 
-![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項:**
+![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項 ︰**
 
 讓您的設備正確作業並避免產品損害：
 
@@ -92,7 +92,7 @@
 
 在機櫃中掛接裝置時，必須考量下列安全性需求。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![傾倒危險圖示](./media/storsimple-safety/IC740886.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png) ![傾倒危險圖示](./media/storsimple-safety/IC740886.png) **警告 ！**
  
 減少因為傾倒而受傷的可能性：
 
@@ -102,7 +102,7 @@
 
 - 不要一次從機架滑動超過一個機箱，以避免機架倒塌的危險。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告 ！**
 
 減少傷害、電擊或死亡的可能性：
 
@@ -114,7 +114,7 @@
 
 - 利用機箱設定機架時，機架上必須符合 UL 60950-1 和 IEC 60950-1/EN 60950-1 的安全性需求。
 
-![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項:**
+![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項 ︰**
 
 關於機架系統的適當冷卻：
 
@@ -126,13 +126,13 @@
 
 裝置設計為利用兩個 PCM 運作。 每個 PCM 都具有電源供應器和雙軸風扇。 在嚴苛條件期間，系統會允許其中一個電源供應器失敗，同時繼續正常作業。 兩個 PCM (因此和電源供應器) 必須一律安裝。 單一 PCM 不會提供備援電源。 因此，即使一個 PCM 失敗也可能會導致停機或可能會遺失資料。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png) ![電擊圖示](./media/storsimple-safety/IC740882.png) **警告 ！**
 
 減少傷害、電擊或死亡的可能性：
 
 - 請勿從 PCM 移除封蓋。 沒有內部觸電的危險。 若要退回 PCM 並取得替換品， [連絡 Microsoft 支援服務](https://msdn.microsoft.com/library/azure/dn757750.aspx)。
 
-![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項:**
+![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項 ︰**
 
 讓您的設備正確作業並避免產品損害：
 
@@ -142,7 +142,7 @@
 
 ## 靜電放電 (ESD) 預防措施
 
-![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項:**
+![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項 ︰**
 
 觀察下列 ESD 相關的預防措施。
 
@@ -158,7 +158,7 @@
 
 電源供應器會使用特殊的電池，以在暫時的短期電源中斷期間保護記憶體的內容。 電池置於 PCM 中。 記住下列電池相關資訊。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) **警告!**
+![警告圖示](./media/storsimple-safety/IC740879.png) **警告 ！**
 
 減少短路、火災、爆炸、傷害或死亡的風險：
 
@@ -168,7 +168,7 @@
 
 - 如果從電源供應器移除電池，請使用電池上的保護端帽。
 
-![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項:**
+![請注意圖示](./media/storsimple-safety/IC740881.png) **注意事項 ︰**
 
 當傳送或傳輸電池的空運，請遵循 IATA 鋰電池指引文件位於 [http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
@@ -179,5 +179,6 @@
 - 如為 8100 裝置，請移至 [安裝 StorSimple 8100 裝置](storsimple-8100-hardware-installation.md)。
 
 - 8600 裝置，請移至 [安裝 StorSimple 8600 裝置](storsimple-8600-hardware-installation.md)。
+
 
 

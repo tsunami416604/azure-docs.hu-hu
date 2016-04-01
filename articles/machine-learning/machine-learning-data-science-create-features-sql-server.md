@@ -96,14 +96,14 @@
 上述以位置為基礎的功能可進一步用來產生其他計數功能，如先前所述。 
 
 
-> [AZURE.TIP] 您可以以程式設計方式插入的記錄，使用您選擇的語言。 您可能需要插入的資料區塊 (chunk)，以改善寫入效率 [看看如何使用 pyodbc 這裡執行此動作的範例](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)。 
+> [AZURE.TIP] 您可以以程式設計方式插入的記錄，使用您選擇的語言。 您可能需要插入的資料區塊 （chunk），以改善寫入效率 [看看如何使用 pyodbc 這裡執行此動作的範例](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)。 
  
 
 > [AZURE.TIP] 另一個替代方式是將資料插入資料庫使用 [BCP 公用程式](https://msdn.microsoft.com/library/ms162802.aspx)
 
 ###<a name="sql-aml"></a>連接到 Azure Machine Learning
 
-新產生的功能可當成資料行新增至現有資料表或儲存於新的資料表中，並與原始資料表加以聯結以進行機器學習服務。 功能可以產生或存取如果已經建立，請使用 [讀取器](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 模組在 Azure ML，如下所示:
+新產生的功能可當成資料行新增至現有資料表或儲存於新的資料表中，並與原始資料表加以聯結以進行機器學習服務。 功能可以產生或存取如果已經建立，請使用 [讀取器](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) 模組在 Azure ML，如下所示 ︰
 
 ![azureml 讀取器](./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png) 
 
@@ -125,3 +125,4 @@
 現在您可以使用 Pandas 資料框架中的主題涵蓋 [建立功能的 Azure blob 儲存體資料使用貓熊](machine-learning-data-science-create-features-blob.md)。
 
  
+

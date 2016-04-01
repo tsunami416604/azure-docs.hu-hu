@@ -345,7 +345,7 @@ DocumentDB 是 JSON 文件的 NoSQL 存放區 (允許巢狀結構)。 Azure Data
 
 | **屬性** | **說明** | **必要** |
 | -------- | ----------- | --------- |
-| 類型 | Type 屬性必須設定為: **DocumentDb** | 是 |
+| 類型 | Type 屬性必須設定為 ︰ **DocumentDb** | 是 |
 | connectionString | 指定連接到 DocumentDB 資料庫所需的資訊。 | 是 |
 
 ## Azure DocumentDB 資料集類型屬性
@@ -381,48 +381,49 @@ DocumentDB 是 JSON 文件的 NoSQL 存放區 (允許巢狀結構)。 Azure Data
 
 如需區段和屬性可用來定義活動的完整清單，請參閱 [建立管線](data-factory-create-pipelines.md) 文件。 名稱、描述、輸入和輸出資料表、各種原則等屬性都適用於所有活動類型。
  
-**注意:** 複製活動會採用一個輸入，而且只產生一個輸出。
+**注意 ︰** 複製活動會採用一個輸入，而且只產生一個輸出。
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
 在複製活動類型的來源時 **DocumentDbCollectionSource**
-下列屬性可用於 **typeProperties** 區段:
+下列屬性可用於 **typeProperties** 區段 ︰
 
 | **屬性** | **說明** | **允許的值** | **必要** |
 | ------------ | --------------- | ------------------ | ------------ |
-| query | 指定查詢來讀取資料。 | DocumentDB 所支援的查詢字串。 <p>範例: SELECT c.BusinessEntityID，c.PersonType，c.NameStyle，c.Title，c.Name.First AS FirstName，c.Name.Last AS LastName，c.Suffix，c.EmailPromotion FROM c 其中 c.ModifiedDate > \"2009-01-01T00:00:00\ 」</p> | 否 <p>如果未指定，執行 SQL 陳述式: 選取 <columns defined in structure> 從 mycollection </p>
+| query | 指定查詢來讀取資料。 | DocumentDB 所支援的查詢字串。 <p>範例 ︰ SELECT c.BusinessEntityID，c.PersonType，c.NameStyle，c.Title，c.Name.First AS FirstName，c.Name.Last AS LastName，c.Suffix，c.EmailPromotion FROM c 其中 c.ModifiedDate > \"2009-01-01T00:00:00\ 」</p> | 否 <p>如果未指定，執行 SQL 陳述式 ︰ 選取 <columns defined in structure> 從 mycollection </p>
 | nestingSeparator | 用來表示文件為巢狀文件的特殊字元 | 任何字元。 <p>DocumentDB 是 JSON 文件的 NoSQL 存放區 (允許巢狀結構)。 Azure Data Factory 可讓使用者直接表示階層透過 nestingSeparator，也就是 「。 」 在上述範例中。 使用分隔符號，複製活動將會根據資料表定義中的 “Name.First”、“Name.Middle” 和 “Name.Last”，產生含有三個子元素 (First、Middle 和 Last) 的 "Name" 物件。</p> | 否
 
-**DocumentDbCollectionSink** 支援下列屬性:
+**DocumentDbCollectionSink** 支援下列屬性 ︰
 
 | **屬性** | **說明** | **允許的值** | **必要** |
 | -------- | ----------- | -------------- | -------- |
-| nestingSeparator | 來源資料行名稱中用來表示需要巢狀文件的特殊字元。 <p>上面範例: 輸出資料表中的 Name.First 會產生下列 JSON 結構 DocumentDB 文件中:</p><p>"Name": {<br/>  "First":"John"<br/>},</p> | 用來分隔巢狀層級的字元。<p>預設值為。 (點)。</p> | 用來分隔巢狀層級的字元。 <p>預設值為。 (點)。</p> | 否 | 
-| writeBatchSize | DocumentDB 服務來建立文件的平行要求數目。<p>將資料從 DocumentDB 複製使用這個屬性時，您可以微調效能。 增加 writeBatchSize 時，您可預期有更好的效能，因為對 DocumentDB 傳送了更多的平行要求。 不過，您要避免節流，可能會擲回的錯誤訊息: 「 要求速率很高 」。</p><p>節流是由數項因素，包括文件，文件中的詞彙數目的大小，等目標集合的檢索原則來決定。複製作業，您可以使用更好的集合 (例如 S3) 具有最多可用輸送量 (2500 要求單位/秒)。</p> | 整數值 | 否 |
+| nestingSeparator | 來源資料行名稱中用來表示需要巢狀文件的特殊字元。 <p>上面範例 ︰ 輸出資料表中的 Name.First 會產生下列 JSON 結構 DocumentDB 文件中 ︰</p><p>"Name": {<br/>  "First":"John"<br/>},</p> | 用來分隔巢狀層級的字元。<p>預設值為。 （點）。</p> | 用來分隔巢狀層級的字元。 <p>預設值為。 （點）。</p> | 否 | 
+| writeBatchSize | DocumentDB 服務來建立文件的平行要求數目。<p>將資料從 DocumentDB 複製使用這個屬性時，您可以微調效能。 增加 writeBatchSize 時，您可預期有更好的效能，因為對 DocumentDB 傳送了更多的平行要求。 不過，您要避免節流，可能會擲回的錯誤訊息: 「 要求速率很高 」。</p><p>節流是由數項因素，包括文件，文件中的詞彙數目的大小，等目標集合的檢索原則來決定。對於複製作業，您可以使用更好的集合 (例如 S3) 以取得最多可用輸送量 (2,500 要求單位/秒)。</p> | 整數值 | 否 |
 | writeBatchTimeout | 在逾時前等待作業完成的時間。 | (單位 = 時間範圍) 範例：“00:30:00” (30 分鐘)。 | 否 |
  
 ## 附錄
-1. **問題:** 
-    不會更新現有記錄的複製活動支援嗎?
+1. **問：** 
+    不會更新現有記錄的複製活動支援嗎？
 
-    **答案是:** 
+    **答：** 
     編號
 
-2. **問題:** 
-    重試複製到 DocumentDB 如何處理與已複製的記錄?
+2. **問：** 
+    重試複製到 DocumentDB 如何處理與已複製的記錄？
 
-    **答案是:** 
+    **答：** 
     如果記錄的 [ID] 欄位，複製作業會嘗試插入具有相同識別碼的記錄，複製作業會擲回錯誤。  
  
-3. **問題:**
-    Data Factory 支援 [範圍或雜湊為基礎的資料分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)嗎? 
+3. **問：**
+    Data Factory 支援 [範圍或雜湊為基礎的資料分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)嗎？ 
 
-    **答案是:**
+    **答：**
     編號 
-4. **問題:**
-    可以指定多個 DocumentDB 集合的資料表嗎?
+4. **問：**
+    可以指定多個 DocumentDB 集合的資料表嗎？
     
-    **答案是:**
+    **答：**
     編號 此時，可以指定只有一個集合。
      
+
 

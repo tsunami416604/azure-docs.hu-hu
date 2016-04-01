@@ -85,7 +85,7 @@ Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS�
 
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-(藉由建立定位器) 發行資產使用 **Azure 傳統入口網站** 或 **.NET**。
+（藉由建立定位器） 發行資產使用 **Azure 傳統入口網站** 或 **.NET**。
 
 [AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
 
@@ -104,4 +104,5 @@ Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS�
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

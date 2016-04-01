@@ -21,11 +21,11 @@
 # Azure Active Directory 如何運作？
 
 ###本主題的其他文章
-[什麼是 Azure AD?](active-directory-whatis.md)<br>
-[如何運作?](active-directory-works.md)<br>
+[什麼是 Azure AD？](active-directory-whatis.md)<br>
+[運作方式](active-directory-works.md)<br>
 [開始使用](active-directory-get-started.md)<br>
 [後續步驟](active-directory-next-steps.md)<br>
-[了解更多](active-directory-learn-map.md)
+[詳細資訊](active-directory-learn-map.md)
 
 
 Azure Active Directory (Azure AD) 會在雲端中建立您的身分識別景象。 它可以連接到您的內部部署身分識別系統或單獨使用。
@@ -51,4 +51,5 @@ Azure AD 支援數個最常用的驗證和授權通訊協定。 [深入了解 Az
 
 * [以組織方式註冊 Azure](sign-up-organization.md)
 * [Azure 身分識別](fundamentals-identity.md)
+
 

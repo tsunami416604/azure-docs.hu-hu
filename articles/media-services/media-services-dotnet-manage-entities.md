@@ -38,7 +38,7 @@
 - 刪除工作 
 - 刪除存取原則 
 
-##先決條件 
+##必要條件 
 
 請參閱 [設定環境](media-services-set-up-computer.md)
 
@@ -63,7 +63,7 @@
 ##取得工作參考
 
 當您使用媒體服務程式碼中的處理工作時，您通常需要根據識別碼取得現有工作的參考。 下列程式碼範例顯示如何從「工作」集合取得 IJob 物件的參考。
-警告:
+警告 ︰
 您可能需要長時間執行編碼工作，在啟動時，取得工作參考，並且需要檢查執行緒上的工作狀態。 在這種情況下，當此方法從執行緒傳回時，您需要擷取作業的重新整理的參考。
 
     static IJob GetJob(string jobId)
@@ -342,4 +342,5 @@
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

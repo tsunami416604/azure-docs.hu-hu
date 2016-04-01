@@ -52,20 +52,20 @@
 
 ```
 |-- AppplicationPackage
-    |-- code
+  	|-- code
         |-- existingapp.exe
-    |-- config
+  	|-- config
         |--Settings.xml
-    |--data    
-    |-- ServiceManifest.xml
+  	|--data    
+  	|-- ServiceManifest.xml
 |-- ApplicationManifest.xml
 ```
 
 根目錄包含可定義應用程式的 ApplicationManifest.xml 檔案。 對於應用程式包含的每個服務，都有一個子目錄用來包含服務所需的所有構件：ServiceManifest.xml 以及通常有 3 個目錄：
 
-- *程式碼*: 包含服務程式碼
-- *設定*: 包含 settings.xml 檔案 (和其他必要檔案) 的服務能夠存取以擷取特定的組態設定執行階段。
-- *資料*: 儲存其他本機資料服務可能需要額外的目錄。 注意：資料應用來只儲存短期資料，如果在容錯移轉期間必須重新定位服務，Service Fabric 不會將變更複製/複寫到資料目錄。
+- *程式碼*︰ 包含服務程式碼
+- *設定*︰ 包含 settings.xml 檔案 （和其他必要檔案） 的服務能夠存取以擷取特定的組態設定執行階段。
+- *資料*︰ 儲存其他本機資料服務可能需要額外的目錄。 注意：資料應用來只儲存短期資料，如果在容錯移轉期間必須重新定位服務，Service Fabric 不會將變更複製/複寫到資料目錄。
 
 注意：如果不需要 `config` 和 `data` 目錄，則不必建立。
 
@@ -78,7 +78,7 @@
 - 更新服務資訊清單檔
 - 更新應用程式資訊清單
 
->[AZURE.NOTE]: 我們並提供可讓您自動建立 ApplicationPackage 封裝工具。 此工具目前為預覽狀態。 您可以下載從 [這裡](http://aka.ms/servicefabricpacktool)。
+>[AZURE.NOTE]︰ 我們並提供可讓您自動建立 ApplicationPackage 封裝工具。 此工具目前為預覽狀態。 您可以下載從 [這裡](http://aka.ms/servicefabricpacktool)。
 
 ### 建立封裝目錄結構
 您可以如上所述開始建立目錄結構。
@@ -86,7 +86,7 @@
 ### 新增應用程式的程式碼和組態檔
 建立目錄結構之後，您可以在 code 和 config 目錄之下加入應用程式的程式碼和組態檔。 您也可以在 code 和 config 目錄之下建立其他目錄或子目錄。 Service Fabric 會進行應用程式根目錄內容的 xcopy，所以除了建立兩個最上層目錄 code 和 settings 以外，沒有預先定義的結構可使用 (但您可以選擇不同的名稱，下一節中有更多詳細資訊)。
 
->[AZURE.NOTE]: 請確定您已包含所有的檔案/相依性的應用程式需要。 Service Fabric 將會複製叢集中所有節點上的應用程式套件內容，而該叢集即將部署複製應用程式的服務。 套件應包含執行應用程式需要的所有程式碼。 不建議假設已經安裝相依項目。
+>[AZURE.NOTE]︰ 請確定您已包含所有的檔案/相依性的應用程式需要。 Service Fabric 將會複製叢集中所有節點上的應用程式套件內容，而該叢集即將部署複製應用程式的服務。 套件應包含執行應用程式需要的所有程式碼。 不建議假設已經安裝相依項目。
 
 ### 編輯服務資訊清單檔
 下一步就是編輯服務資訊清單檔以包含下列資訊：
@@ -172,10 +172,10 @@ SetupEntrypoint 用來指定任何應在服務的程式碼啟動前執行的可�
 服務資訊清單檔中的 `Entrypoint` 元素用來指定如何啟動服務。 `ExeHost` 元素指定應用來啟動服務的可執行檔 (和引數)。
 
 - `Program`：指定應執行才能啟動服務的可執行檔名稱。
-- `Arguments`: 它會指定應該傳遞至可執行檔的引數。 它可以是具有引數的參數清單。
+- `Arguments`︰ 它會指定應該傳遞至可執行檔的引數。 它可以是具有引數的參數清單。
 - `WorkingFolder`：指定即將啟動之程序的工作目錄。 您可以指定兩個值：
     - `CodeBase`：工作目錄將會設為應用程式封裝中的 Code 目錄 (如下所示結構中的 `Code` 目錄)
-    - `CodePackage`: 工作目錄會設定為應用程式封裝的根目錄 (`MyServicePkg`)
+    - `CodePackage`︰ 工作目錄會設定為應用程式封裝的根目錄 (`MyServicePkg`)
 - `WorkingDirectory` 元素適合用來設定正確的工作目錄，以便應用程式或初始化指令碼使用相對路徑。
 
 ### 端點
@@ -256,7 +256,7 @@ Service Fabric 服務可以各種「組態」部署，例如它可部署為單�
 `New-ServiceFabricService` Cmdlet 的 `InstanceCount` 參數用來指定應在 Service Fabric 叢集中啟動多少個服務執行個體。 您可以根據要部署的應用程式類型來設定 `InstanceCount` 值。 兩個最常見的案例包括：
 * `InstanCount = "1"`：在此情況下，只會在叢集上部署一個服務執行個體。 Service Fabric 的排程器會決定即將部署服務的節點。
 
-* `InstanceCount ="-1"`：在此情況下，Service Fabric 叢集中的每個節點上會部署一個服務執行個體。 最後的結果會是叢集中的每個節點有一個 (且僅只一個) 服務執行個體。 這是很有用的前端應用程式 (例如設定。 REST 端點) 因為用戶端應用程式只需要 「 連線 」 到任何叢集中的節點即可使用端點。 當 Service Fabric 叢集的所有節點都連線到負載平衡器時，也可使用此組態，以便將用戶端流量分散於在叢集中所有節點上執行的服務。
+* `InstanceCount ="-1"`：在此情況下，Service Fabric 叢集中的每個節點上會部署一個服務執行個體。 最後的結果會是叢集中的每個節點有一個 (且僅只一個) 服務執行個體。 這是很有用的前端應用程式 （例如設定。 REST 端點） 因為用戶端應用程式只需要 「 連線 」 到任何叢集中的節點即可使用端點。 當 Service Fabric 叢集的所有節點都連線到負載平衡器時，也可使用此組態，以便將用戶端流量分散於在叢集中所有節點上執行的服務。
 
 ### 來查執行中的應用程式
 
@@ -279,4 +279,5 @@ Service Fabric 服務可以各種「組態」部署，例如它可部署為單�
 - 範例封裝和部署自訂的應用程式上 [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Custom/SimpleApplication), ，其中包含封裝工具的預先發行版本的連結。
 - 了解如何 [部署多個自訂應用程式](service-fabric-deploy-multiple-apps.md)。
 - 如何開始使用 [建立第一個 Service Fabric 應用程式使用 Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)。
+
 

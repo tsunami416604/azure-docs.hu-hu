@@ -25,9 +25,9 @@ StorSimple Adapter for SharePoint 作為遠端 BLOB 儲存 (RBS) 提供者，使
 
 >[AZURE.NOTE] StorSimple Adapter for SharePoint 支援 SharePoint Server 2010 遠端 BLOB 儲存體 (RBS)。 它不支援 SharePoint Server 2010 外部 BLOB 儲存體 (EBS)。
 
-- 若要下載 StorSimple Adapter for SharePoint，請移至 [StorSimple Adapter for SharePoint] [1] 在 Microsoft 下載中心 」 中。
+- 若要下載 StorSimple Adapter for SharePoint，請移至 [StorSimple Adapter for SharePoint][1] 「 Microsoft 下載中心 」 中。
 
-- 如需規劃 RBS 和 RBS 限制資訊，請移至 [SharePoint 2013 中使用 RBS 決定] [2] 或 [規劃 RBS (SharePoint Server 2010)] [3]。
+- 如需規劃 RBS 和 RBS 限制資訊，請移至 [決定在 SharePoint 2013 中使用 RBS][2] 或 [規劃 RBS (SharePoint Server 2010)][3]。
 
 此概觀的其餘部分簡短說明 StorSimple Adapter for SharePoint 的角色，以及您在安裝和設定配接器之前，應該注意的 SharePoint 容量和效能限制。 檢閱這項資訊之後，請移至 [StorSimple Adapter for SharePoint 安裝](#storsimple-adapter-for-sharepoint-installation) ，開始設定配接器。
 
@@ -51,7 +51,7 @@ RBS 的 Microsoft Azure StorSimple 實作提供下列優點：
 
 - StorSimple Adapter for SharePoint 外掛到 SharePoint 管理中心入口網站，可讓您從中央位置管理整個 SharePoint 解決方案。
 
-將 BLOB 內容移至檔案系統可以節省更多成本並提供其他優點。 例如，使用 RBS 就不需要購買昂貴的第 1 層儲存體，也而因為它會縮小內容資料庫，RBS 可減少 SharePoint 伺服器陣列中所需的資料庫數目。 不過，其他因素也會影響儲存需求，例如資料庫大小限制和非 RBS 內容數量。 如需有關使用 RBS 的優點與成本的詳細資訊，請參閱 [規劃 RBS (SharePoint Foundation 2010)] [4] 以及 [決定要在 SharePoint 2013 中使用 RBS] [5]。
+將 BLOB 內容移至檔案系統可以節省更多成本並提供其他優點。 例如，使用 RBS 就不需要購買昂貴的第 1 層儲存體，也而因為它會縮小內容資料庫，RBS 可減少 SharePoint 伺服器陣列中所需的資料庫數目。 不過，其他因素也會影響儲存需求，例如資料庫大小限制和非 RBS 內容數量。 如需有關使用 RBS 的優點與成本的詳細資訊，請參閱 [規劃 RBS (SharePoint Foundation 2010)][4] 和 [決定在 SharePoint 2013 中使用 RBS][5]。
 
 ### 容量和效能限制
 
@@ -131,7 +131,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 
 - SharePoint 伺服器陣列必須設定為寫入此磁碟區。
 
->[AZURE.NOTE] 您安裝及設定配接器之後，所有 BLOB 外部化都必須都通過 StorSimple 裝置 (裝置會向 SQL Server 呈現磁碟區和管理儲存層)。 您無法使用任何其他目標進行 BLOB 外部化。
+>[AZURE.NOTE] 您安裝及設定配接器之後，所有 BLOB 外部化都必須都通過 StorSimple 裝置 （裝置會向 SQL Server 呈現磁碟區和管理儲存層）。 您無法使用任何其他目標進行 BLOB 外部化。
  
 如果您打算使用 StorSimple Snapshot Manager 建立 BLOB 和資料庫資料的快照集，務必將 StorSimple Snapshot Manager 安裝在資料庫伺服器上，它才能使用 SQL 寫入器服務來實作 Windows 磁碟區陰影複製服務 (VSS)。 
 
@@ -197,9 +197,9 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 
 從 SharePoint 網站刪除物件時，不會自動從 RBS 存放磁碟區刪除這些物件。 而是由一個非同步的背景維護程式，從檔案存放區刪除被遺棄的 BLOB。 系統管理員可以排程定期執行此程序，或需要時才啟動此程序。
 
-當您啟用 RBS 時，此維護程式 (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) 會自動安裝在所有 SharePoint WFE 伺服器和應用程式伺服器上。 安裝程式在下列位置: <boot drive>: Files\microsoft SQL 遠端 Blob 儲存體 10.50\Maintainer\
+當您啟用 RBS 時，此維護程式 (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) 會自動安裝在所有 SharePoint WFE 伺服器和應用程式伺服器上。 安裝程式在下列位置 ︰ <boot drive>: Files\microsoft SQL 遠端 Blob 儲存體 10.50\Maintainer\
 
-如需設定和使用維護計畫的資訊，請參閱 [維護 RBS SharePoint Server 2013 中] [8]。
+如需設定和使用維護計畫的資訊，請參閱 [SharePoint Server 2013 中的維護 RBS][8]。
 
 >[AZURE.IMPORTANT] RBS 維護程式會耗用大量資源。 您應該將它排程在 SharePoint 伺服器陣列的活動量較少期間執行。
 
@@ -218,7 +218,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 
 使用下列程序升級 SharePoint 伺服器，再重新安裝 StorSimple Adapter for SharePoint，或只是在現有的 SharePoint 伺服器陣列中升級或重新安裝配接器。 
 
->[AZURE.IMPORTANT] 在嘗試升級 SharePoint 軟體和 (或) 升級或重新安裝 StorSimple Adapter for SharePoint 之前，請檢閱下列資訊:
+>[AZURE.IMPORTANT] 在嘗試升級 SharePoint 軟體和 （或） 升級或重新安裝 StorSimple Adapter for SharePoint 之前，請檢閱下列資訊 ︰
 >
 >- 先前透過 RBS 移到外部儲存體的任何檔案，必須等到重新安裝完成並重新啟用 RBS 功能之後才能使用。 為了限制使用者受影響的程度，請在規劃的維護期間執行任何升級或重新安裝。
 >
@@ -226,7 +226,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 >
 >- 升級/重新安裝完成之後，您需要針對內容資料庫啟用 RBS。 請參閱 [設定 RBS](#configure-rbs) 如需詳細資訊。
 >
->- 如果您要設定 RBS 的 SharePoint 伺服器陣列有非常大量的資料庫 (超過 200 個)， **SharePoint 管理中心** 頁面可能會逾時。 如果發生這種情況，請重新整理頁面。 這不會影響設定程序。
+>- 如果您要設定 RBS 的 SharePoint 伺服器陣列有非常大量的資料庫 （超過 200 個）， **SharePoint 管理中心** 頁面可能會逾時。 如果發生這種情況，請重新整理頁面。 這不會影響設定程序。
 
 [AZURE.INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
  
@@ -263,7 +263,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 
 或者，您可以使用 SharePoint 隨附的 Microsoft ` RBS Migrate()` PowerShell cmdlet。 如需詳細資訊，請參閱 [移轉內容出 RBS 或](https://technet.microsoft.com/library/ff628255.aspx)。
 
-您將 Blob 移回內容資料庫之後，請移至下一個步驟: [解除安裝介面卡](#uninstall-the-adapter)。
+您將 Blob 移回內容資料庫之後，請移至下一個步驟 ︰ [解除安裝介面卡](#uninstall-the-adapter)。
 
 ### 解除安裝配接器
 
@@ -307,3 +307,4 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/en-us/library/ff943565.aspx
+

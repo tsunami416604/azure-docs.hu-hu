@@ -24,7 +24,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 資源管理員模型。
 
 
-##先決條件##
+##必要條件##
 本文假設您具有下列項目：
 
 - **Azure 訂用帳戶** -如果您沒有帳戶，您可以建立帳戶，只需要幾分鐘的時間。 如果您有 MSDN 訂閱，請參閱 [MSDN 訂戶的 Azure 權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否則，請參閱 [建立免費試用帳戶](http://azure.microsoft.com/pricing/free-trial/)。  
@@ -88,7 +88,7 @@
         # chmod 755 /usr/sbin/waagent
         # /usr/sbin/waagent -install
 
-    **重要**: 安裝之後，請再次確認它正在執行。
+    **重要**︰ 安裝之後，請再次確認它正在執行。
 
         # service –e | grep waagent
         /etc/rc.d/waagent
@@ -120,7 +120,7 @@
 
     - 選擇 **位置或同質群組** 儲存體帳戶。 同質群組可讓您將雲端服務和儲存體放在相同的資料中心。
 
-    - 決定是否要使用 **地理區域複寫** 的儲存體帳戶。 依預設會開啟異地複寫。 此選項可讓您免費將資料複寫至次要位置，使您在主要位置發生重大錯誤時，可將儲存體容錯移轉至該位置。 次要位置會自動指派，且無法變更。 如果您因為法律規定或組織原則而需要更充分掌控您以雲端為基礎的儲存體所在的位置，您可以關閉地理複寫。 但請注意，如果您後續又開啟異地複寫，在您將現有的資料複寫至次要位置時，將會產生一次性的資料傳輸費用。 不含異地複寫的儲存服務會有相對的折扣。 管理儲存體帳戶的地理區域複寫的更多詳細資料可以在這裡找到: [建立、 管理或刪除儲存體帳戶](../storage-create-storage-account/#replication-options)。
+    - 決定是否要使用 **地理區域複寫** 的儲存體帳戶。 依預設會開啟異地複寫。 此選項可讓您免費將資料複寫至次要位置，使您在主要位置發生重大錯誤時，可將儲存體容錯移轉至該位置。 次要位置會自動指派，且無法變更。 如果您因為法律規定或組織原則而需要更充分掌控您以雲端為基礎的儲存體所在的位置，您可以關閉地理複寫。 但請注意，如果您後續又開啟異地複寫，在您將現有的資料複寫至次要位置時，將會產生一次性的資料傳輸費用。 不含異地複寫的儲存服務會有相對的折扣。 管理儲存體帳戶的地理區域複寫的更多詳細資料可以在這裡找到 ︰ [建立、 管理或刪除儲存體帳戶](../storage-create-storage-account/#replication-options)。
 
     ![輸入儲存體帳戶詳細資料](./media/virtual-machines-freebsd-create-upload-vhd/Storage-create-account.png)
 
@@ -198,7 +198,7 @@
 
         Add-AzureVMImage -ImageName <Your Image's Name> -MediaLocation <location of the VHD> -OS <Type of the OS on the VHD>
 
-    **重要**: 請使用 Linux 作為作業系統現在因為目前的 Azure PowerShell 版本只接受"Linux"或"Windows"做為參數的型別。
+    **重要**︰ 請使用 Linux 作為作業系統現在因為目前的 Azure PowerShell 版本只接受"Linux"或"Windows"做為參數的型別。
 
 2. 完成上述步驟之後，當您選擇，會列出新的映像 **映像** Azure 傳統入口網站] 索引標籤。  
 
@@ -211,4 +211,5 @@
 4. 佈建完成後，您會看到 FreeBSD VM 在 Azure 中執行。
 
     ![azure 中的 freebsd 映像](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
+
 

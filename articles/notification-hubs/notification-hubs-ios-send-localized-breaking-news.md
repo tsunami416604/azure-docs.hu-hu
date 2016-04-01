@@ -25,7 +25,7 @@
 
 ##概觀
 
-本主題說明如何使用 [範本](notification-hubs-templates.md) Azure 通知中樞廣播已由語言和裝置當地語系化的即時新聞通知功能。 在本教學課程開始在 [使用通知中樞傳送即時新聞] 建立的 iOS 應用程式。 完成之後，您將可註冊您感興趣的類別、指定您要接收哪種語言的通知，並以該語言針對選取的類別接收推播通知。
+本主題說明如何使用 [範本](notification-hubs-templates.md) Azure 通知中樞廣播已由語言和裝置當地語系化的即時新聞通知功能。 在本教學課程開始使用 iOS 應用程式中建立 [Use Notification Hubs to send breaking news]。 完成之後，您將可註冊您感興趣的類別、指定您要接收哪種語言的通知，並以該語言針對選取的類別接收推播通知。
 
 
 此案例分成兩部分：
@@ -36,9 +36,9 @@
 
 
 
-##先決條件
+##必要條件
 
-您必須已完成 [使用通知中心傳送即時新聞] 教學課程中並具有可用的程式碼，因為本教學課程是直接根據該程式碼而建置。
+您必須已完成 [Use Notification Hubs to send breaking news] 教學課程中並具有可用的程式碼，因為本教學課程是直接根據該程式碼而建置。
 
 (選擇性) 需要 Visual Studio 2012 或更新版本。
 
@@ -46,7 +46,7 @@
 
 ##範本概念
 
-在 [使用通知中樞傳送即時新聞] 所建置的應用程式，使用 **標記** 來訂閱不同即時新聞類別的通知。
+在 [Use Notification Hubs to send breaking news] 建置的應用程式，使用 **標記** 來訂閱不同即時新聞類別的通知。
 但有許多應用程式是以多個市場為目標的，因此需要當地語系化。 這表示通知本身的內容必須進行當地語系化，並傳遞至正確的裝置集。
 在本主題中，我們將說明如何使用 **範本** 輕鬆地傳遞已當地語系化的即時新聞通知的通知中樞功能。
 
@@ -60,7 +60,7 @@
         "News_Mandarin": "..."
     }
 
-接著，我們將確保裝置會為參照正確屬性的範本進行註冊。 例如，想要註冊法文新聞的 iOS 應用程式將會註冊下列項目:
+接著，我們將確保裝置會為參照正確屬性的範本進行註冊。 例如，想要註冊法文新聞的 iOS 應用程式將會註冊下列項目 ︰
 
     {
         aps:{
@@ -72,7 +72,7 @@
 
 ##應用程式使用者介面
 
-現在，我們將修改您建立主題 [使用通知中心傳送即時新聞] 中的即時新聞應用程式傳送當地語系化的即時新聞使用範本。
+現在，我們將修改您建立主題中的即時新聞應用程式 [Use Notification Hubs to send breaking news] 傳送當地語系化的即時新聞使用範本。
 
 
 在您的 MainStoryboard_iPhone.storyboard 中，以我們支援的三種語言加入分段控制：英文、法文與中文。
@@ -86,7 +86,7 @@
 ##建置 iOS 應用程式
 
 
-1. 在您的 notification.h 中新增 *retrieveLocale* 方法，然後修改儲存和訂閱方法，如下所示:
+1. 在您的 notification.h 中新增 *retrieveLocale* 方法，然後修改儲存和訂閱方法，如下所示 ︰
 
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
 
@@ -96,7 +96,7 @@
 
         - (int) retrieveLocale;
 
-    在您的 Notification.m 中修改 *storeCategoriesAndSubscribe* 方法中的，新增地區設定參數，並將其儲存在使用者預設值:
+    在您的 Notification.m 中修改 *storeCategoriesAndSubscribe* 方法中的，新增地區設定參數，並將其儲存在使用者預設值 ︰
 
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -107,7 +107,7 @@
             [self subscribeWithLocale: locale categories:categories completion:completion];
         }
 
-    然後修改 *訂閱* 方法，以加入地區設定:
+    然後修改 *訂閱* 方法，以加入地區設定 ︰
 
         - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
             SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -142,11 +142,11 @@
             return locale < 0?0:locale;
         }
 
-2. 我們已修改 Notifications 類別，現在我們必須確保 ViewController 會使用新的 UISegmentControl。 加入下列這一行中的 *viewDidLoad* 方法，以確實顯示目前選取的地區設定:
+2. 我們已修改 Notifications 類別，現在我們必須確保 ViewController 會使用新的 UISegmentControl。 加入下列這一行中的 *viewDidLoad* 方法，以確實顯示目前選取的地區設定 ︰
 
         self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
 
-    然後，在您 *訂閱* 方法中，變更您對呼叫 *storeCategoriesAndSubscribe* 如下:
+    然後，在您 *訂閱* 方法中，變更您對呼叫 *storeCategoriesAndSubscribe* 如下 ︰
 
         [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
             if (!error) {
@@ -159,7 +159,7 @@
             }
         }];
 
-3. 最後，您必須更新 *didRegisterForRemoteNotificationsWithDeviceToken* 方法，在 AppDelegate.m 中，以便可以應用程式啟動時正確重新整理您的註冊。 變更您對呼叫 *訂閱* 的通知，以下列方法:
+3. 最後，您必須更新 *didRegisterForRemoteNotificationsWithDeviceToken* 方法，在 AppDelegate.m 中，以便可以應用程式啟動時正確重新整理您的註冊。 變更您對呼叫 *訂閱* 的通知，以下列方法 ︰
 
         NSSet* categories = [self.notifications retrieveCategories];
         int locale = [self.notifications retrieveLocale];
@@ -249,8 +249,8 @@
 
 如需使用範本的詳細資訊，請參閱：
 
-- [使用通知中心來通知使用者: ASP.NET]
-- [使用通知中心來通知使用者: 行動電話服務]
+- [使用通知中樞來通知使用者：ASP.NET]
+- [使用通知中樞來通知使用者：行動服務]
 
 
 
@@ -288,4 +288,5 @@
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+
 

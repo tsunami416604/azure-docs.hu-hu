@@ -47,7 +47,7 @@
 
 1. 若要選取您想要使用當您執行或偵錯在本機，雲端服務的服務設定中 **服務組態** 清單中選擇服務組態。
 
-  >[AZURE.NOTE] 如果您想要建立服務組態使用，請參閱 How to: 管理服務組態和設定檔。 如果您想要修改角色的服務組態，請參閱 [如何使用 Visual Studio 設定 Azure 雲端服務的角色](vs-azure-tools-configure-roles-for-cloud-service.md)。
+  >[AZURE.NOTE] 如果您想要建立服務組態使用，請參閱 How to ︰ 管理服務組態和設定檔。 如果您想要修改角色的服務組態，請參閱 [如何使用 Visual Studio 設定 Azure 雲端服務的角色](vs-azure-tools-configure-roles-for-cloud-service.md)。
 
 1. 若要啟動 Azure 儲存體模擬器，當您執行或偵錯雲端服務在本機，在 **啟動 Azure 儲存體模擬器**, ，選擇 [ **True**。
 
@@ -60,4 +60,5 @@
 ## 後續步驟
 
 若要深入了解如何在 Visual Studio 中設定 Azure 雲端服務專案，請參閱 [設定您的 Azure 專案中使用多個服務組態](vs-azure-tools-multiple-services-project-configurations.md)。
+
 

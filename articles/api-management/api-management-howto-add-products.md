@@ -24,7 +24,7 @@
 
 請在發行者入口網站新增和設定 API 的作業。 若要存取發行者入口網站，按一下 [ **管理** API 管理服務的 Azure 傳統入口網站中。
 
-![發佈者入口網站][api-management-management-console]
+![發行者入口網站][api-management-management-console]
 
 >如果您尚未建立 API 管理服務執行個體，請參閱 [建立 API 管理服務執行個體][] 中 [開始使用 Azure API 管理][] 教學課程。
 
@@ -58,7 +58,7 @@
 
 ## <a name="add-apis"> </a>將 API 加入至產品
 
- **產品** 頁面包含四個組態連結: **摘要**, ，**設定**, ，**可視性**, ，和 **訂閱者**。  **摘要** ] 索引標籤是將 Api 加入和發佈或取消發行產品。
+ **產品** 頁面包含四個組態連結 ︰ **摘要**, ，**設定**, ，**可視性**, ，和 **訂閱者**。  **摘要** ] 索引標籤是將 Api 加入和發佈或取消發行產品。
 
 ![摘要][api-management-new-product-summary]
 
@@ -147,3 +147,4 @@
 [Next steps]: #next-steps
 [How to create and use groups to manage developer accounts in Azure API Management]: api-management-howto-create-groups.md
 [How create and configure advanced product settings in Azure API Management]: api-management-howto-product-with-rules.md 
+

@@ -102,7 +102,7 @@ Azure 提供三種運算模型來執行應用程式：Azure 應用程式服務�
 
 1. 如本主題先前所述，建立 Azure 服務專案並加入 PHP Web 角色。
 2. 在位於 Web 角色根目錄內的 `bin` 資料夾中建立 `php` 資料夾，然後將 PHP 執行階段 (所有的二進位檔、組態檔、子資料夾等) 新增至 `php` 資料夾。
-3. (選擇性)如果您的 PHP 執行階段使用 [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers], ，您必須設定 web 角色，使安裝 [SQL Server Native Client 2012][sql native client] 時加以佈建。 若要這樣做，請新增 [sqlncli.msi x64 installer] 至 `bin` web 角色的根目錄中的資料夾。 下一個步驟中說明的啟動指令碼，將會在角色進行佈建時以無訊息方式執行安裝程式。 如果您的 PHP 執行階段並未使用適用於 PHP for SQL Server 的 Microsoft 驅動程式，您可以從下一個步驟所顯示的指令碼中移除以下一行：
+3. （選擇性）如果您的 PHP 執行階段使用 [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers], ，您必須設定 web 角色，使安裝 [SQL Server Native Client 2012][sql native client] 時加以佈建。 若要這樣做，請新增 [sqlncli.msi x64 installer] 至 `bin` web 角色的根目錄中的資料夾。 下一個步驟中說明的啟動指令碼，將會在角色進行佈建時以無訊息方式執行安裝程式。 如果您的 PHP 執行階段並未使用適用於 PHP for SQL Server 的 Microsoft 驅動程式，您可以從下一個步驟所顯示的指令碼中移除以下一行：
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
 
@@ -136,7 +136,7 @@ Azure 提供三種運算模型來執行應用程式：Azure 應用程式服務�
 
 1. 如本主題先前所述，建立 Azure 服務專案並加入 PHP 背景工作角色。
 2. 在背景工作角色的根目錄中建立 `php` 資料夾，然後將 PHP 執行階段 (所有的二進位檔、組態檔、子資料夾等) 新增至 `php` 資料夾。
-3. (選擇性)如果您的 PHP 執行階段使用 [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers], ，您必須設定背景工作角色，使安裝 [SQL Server Native Client 2012][sql native client] 時加以佈建。 若要這樣做，請新增 [sqlncli.msi x64 installer] 至背景工作角色的根目錄。 下一個步驟中說明的啟動指令碼，將會在角色進行佈建時以無訊息方式執行安裝程式。 如果您的 PHP 執行階段並未使用適用於 PHP for SQL Server 的 Microsoft 驅動程式，您可以從下一個步驟所顯示的指令碼中移除以下一行：
+3. （選擇性）如果您的 PHP 執行階段使用 [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers], ，您必須設定背景工作角色，使安裝 [SQL Server Native Client 2012][sql native client] 時加以佈建。 若要這樣做，請新增 [sqlncli.msi x64 installer] 至背景工作角色的根目錄。 下一個步驟中說明的啟動指令碼，將會在角色進行佈建時以無訊息方式執行安裝程式。 如果您的 PHP 執行階段並未使用適用於 PHP for SQL Server 的 Microsoft 驅動程式，您可以從下一個步驟所顯示的指令碼中移除以下一行：
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
 
@@ -210,4 +210,5 @@ Azure 模擬器所提供的本機環境，可讓您在 Azure 應用程式部署�
 [sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 installer]: http://go.microsoft.com/fwlink/?LinkID=239648
+
 

@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   啟用 TOPdesk - Public 單一登入的訂用帳戶
   
-完成本教學課程之後, 您已指派的 Azure AD 使用者給 TOPdesk-Public 都能夠使用單一登入位於您 TOPdesk-Public 公司網站 (服務提供者起始登入)，或使用應用程式 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派的 Azure AD 使用者給 TOPdesk-Public 都能夠使用單一登入位於您 TOPdesk-Public 公司網站 （服務提供者起始登入），或使用應用程式 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -86,7 +86,7 @@
 
     ![一般](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
 
-5.  在 **公用** 區段 **SAML 登入** 組態區段中，執行下列步驟:
+5.  在 **公用** 區段 **SAML 登入** 組態區段中，執行下列步驟 ︰
 
     ![技術設定](./media/active-directory-saas-topdesk-public-tutorial/IC790601.png "Technical Settings")
 
@@ -107,7 +107,7 @@
 
     ![設定單一登入](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "Configure Single Sign-On")
 
-9.  在 **設定應用程式 URL** 頁面上，執行下列步驟:
+9.  在 **設定應用程式 URL** 頁面上，執行下列步驟 ︰
 
     ![設定應用程式 URL](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "Configure App URL")
 
@@ -144,7 +144,7 @@
 
     ![SAML 登入](./media/active-directory-saas-topdesk-public-tutorial/IC790625.png "SAML Login")
 
-16. 在 **SAML 設定小幫手** 對話方塊頁面上，執行下列步驟:
+16. 在 **SAML 設定小幫手** 對話方塊頁面上，執行下列步驟 ︰
 
     ![SAML 組態輔助程式](./media/active-directory-saas-topdesk-public-tutorial/IC790608.png "SAML Configuration Assistant")
 
@@ -200,3 +200,4 @@ TOPdesk - Public 需以手動的方式佈建。
     ![是](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

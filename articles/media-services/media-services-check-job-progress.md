@@ -121,7 +121,7 @@ Microsoft Azure 媒體服務能夠傳送通知訊息給 [Azure 佇列儲存體](
 - 佇列服務不保證會按照先進先出 (FIFO) 的順序傳遞訊息。 如需詳細資訊，請參閱 [Azure 佇列和 Azure 服務匯流排佇列-比較和對照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
 - Azure 儲存體佇列不是推播服務；您必須輪詢佇列。 
 - 您可以有任意數目的佇列。 如需詳細資訊，請參閱 [佇列服務 REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)。
-- Azure 儲存體佇列具有某些限制，下列文件中所述的細節: [Azure 佇列和 Azure 服務匯流排佇列-比較和對照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
+- Azure 儲存體佇列具有某些限制，下列文件中所述的細節 ︰ [Azure 佇列和 Azure 服務匯流排佇列-比較和對照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
 
 ###程式碼範例
 
@@ -436,4 +436,5 @@ Microsoft Azure 媒體服務能夠傳送通知訊息給 [Azure 佇列儲存體](
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

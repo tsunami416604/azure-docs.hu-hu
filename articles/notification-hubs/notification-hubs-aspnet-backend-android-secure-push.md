@@ -53,12 +53,12 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 
 我們將修改 *登入* 為了將驗證標頭值儲存在您的應用程式共用喜好設定中的流程。 類別機制可用來儲存任何驗證權杖 (例如 OAuth tokens)，應用程式在不需要使用者認證的情況下必須使用這些驗證權杖。
 
-1. 在 Android 應用程式專案中，新增下列常數頂端 **MainActivity** 類別:
+1. 在 Android 應用程式專案中，新增下列常數頂端 **MainActivity** 類別 ︰
 
         public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
         public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
 
-2. 仍在 **MainActivity** 類別中，更新 `getAuthorizationHeader()` 方法以包含下列程式碼:
+2. 仍在 **MainActivity** 類別中，更新 `getAuthorizationHeader()` 方法以包含下列程式碼 ︰
 
         private String getAuthorizationHeader() throws UnsupportedEncodingException {
             EditText username = (EditText) findViewById(R.id.usernameText);
@@ -72,13 +72,13 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
             return basicAuthHeader;
         }
 
-3. 新增下列 `import` 上方的陳述式 **MainActivity** 檔案:
+3. 新增下列 `import` 上方的陳述式 **MainActivity** 檔案 ︰
 
         import android.content.SharedPreferences;
 
 現在我們將變更收到通知時所呼叫的處理常式。
 
-4. 在 **MyHandler** 類別中，變更 `OnReceive()` 方法以包含:
+4. 在 **MyHandler** 類別中，變更 `OnReceive()` 方法以包含 ︰
 
         public void onReceive(Context context, Bundle bundle) {
             ctx = context;
@@ -131,4 +131,5 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 3. 在 Android 應用程式 UI 中，輸入使用者名稱和密碼。 這些可以是任何字串，但必須是相同值。
 
 4. 在 Android 應用程式 UI 中，按一下 [ **登入**。 然後按一下 [ **傳送推播**。
+
 

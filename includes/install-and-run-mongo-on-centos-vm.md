@@ -2,7 +2,7 @@
 
 > [AZURE.WARNING] MongoDB 安全性功能，例如驗證和 IP 位址繫結，不會預設啟用。 安全性功能應該在將 MongoDB 部署到生產環境前加以啟用。  請參閱 [安全性和驗證](http://www.mongodb.org/display/DOCS/Security+and+Authentication) 如需詳細資訊。
 
-1. 設定套件管理系統 (YUM)，以使安裝 MongoDB。 建立 */etc/yum.repos.d/10gen.repo* 要保留您的儲存機制的相關資訊，並新增下列檔案:
+1. 設定套件管理系統 (YUM)，以使安裝 MongoDB。 建立 */etc/yum.repos.d/10gen.repo* 要保留您的儲存機制的相關資訊，並新增下列檔案 ︰
 
         [10gen]
         name=10gen Repository
@@ -71,4 +71,5 @@
 
 [Image7]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
 [Image8]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
+
 

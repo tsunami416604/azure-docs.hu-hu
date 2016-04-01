@@ -94,7 +94,7 @@ Azure SQL Database 是以 SQL Server 技術為基礎來建置的雲端型關聯�
 如果您選取 **新的 SQL 資料庫伺服器** 不輸入現有的名稱和密碼，而輸入新名稱和密碼，您現在定義以未來存取資料庫時使用。 如果選取先前建立的 SQL Server，系統會提示您提供先前建立之 SQL Server 帳戶名稱的密碼。 本教學課程中，您將不會檢查 **進階** 方塊。
 12. 按一下方塊右下角的打勾記號來表示完成。
 
- **Azure 傳統入口網站** 傳回 **Web 應用程式** ] 頁面上，而 **狀態** 資料行會顯示建立網站。 不久之後 (通常小於一分鐘)， **狀態** 欄會顯示已成功建立站台。 在左側導覽列中的儲存體中的站台數旁會出現 **Web 應用程式** 圖示，然後資料庫數目旁會出現 **SQL 資料庫** 圖示。
+ **Azure 傳統入口網站** 傳回 **Web 應用程式** ] 頁面上，而 **狀態** 資料行會顯示建立網站。 不久之後 （通常小於一分鐘）， **狀態** 欄會顯示已成功建立站台。 在左側導覽列中的儲存體中的站台數旁會出現 **Web 應用程式** 圖示，然後資料庫數目旁會出現 **SQL 資料庫** 圖示。
 ##建立 ASP.NET Web Forms 應用程式 
 您已建立 Web 應用程式，但其中還沒有內容。 接下來的步驟是建立要發行至 Azure 的 Visual Studio Web 應用程式。
 ###建立專案 
@@ -230,7 +230,7 @@ Azure SQL Database 是以 SQL Server 技術為基礎來建置的雲端型關聯�
 Visual Studio 將會下載您的發佈設定。
 4. 在 **發行 Web** 對話方塊中，按一下 [ **發行**。  
     ![發行 Web] 對話方塊](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms08.png)  
-您會看到整體發行狀態 **Web 發佈活動** Visual Studio 中的視窗:  
+您會看到整體發行狀態 **Web 發佈活動** Visual Studio 中的視窗 ︰  
     ![Web 發佈活動](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms09.png)  
 
 您建立的應用程式現在正在雲端中執行。 下次當您從 Visual Studio 部署應用程式時，只會部署變更的 (或新的) 檔案。  
@@ -310,7 +310,7 @@ Web Form Scaffolder 會新增新的資料夾，其中包含 *Default.aspx*, ，*
         enable-migrations
  
     Enable-migrations 命令會建立 *移轉* 資料夾，並放入該資料夾中 *Configuration.cs* 來植入資料庫及設定資料移轉，您可以編輯的檔案。  
-3. 在 **Package Manager Console** ] 視窗中，輸入下列命令:  
+3. 在 **Package Manager Console** ] 視窗中，輸入下列命令 ︰  
 
         add-migration Initial
 
@@ -380,7 +380,7 @@ Web Form Scaffolder 會新增新的資料夾，其中包含 *Default.aspx*, ，*
         }
 
     此程式碼會以連絡人資訊初始化 (植入) 該資料庫。 如需植入資料庫的詳細資訊，請參閱 [植入及偵錯 Entity Framework (EF) Db](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)。  
-7. 在 **Package Manager Console** 輸入命令:  
+7. 在 **Package Manager Console** 輸入命令 ︰  
 
         update-database
 
@@ -402,7 +402,7 @@ Web Form Scaffolder 會新增新的資料夾，其中包含 *Default.aspx*, ，*
 1. 在 **方案總管] 中**, ，按一下 [ **ContactManager** 專案，再按 **F4** 顯示 **屬性** 視窗。 
 2. 變更 **啟用 SSL** 到 `true`。 
 3. 複製 **SSL URL** 供稍後使用。  
-    SSL URL 將是 `https://localhost:44300/` 除非您先前已建立 SSL web 應用程式 (如下所示)。
+    SSL URL 將是 `https://localhost:44300/` 除非您先前已建立 SSL web 應用程式 （如下所示）。
     ![專案屬性](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms18.png)  
 4. 在 **方案總管] 中**, ，以滑鼠右鍵按一下 **Contact Manager** 專案，然後按一下 **屬性**。
 5. 在左側索引標籤中，按一下 [ **Web**。
@@ -443,7 +443,7 @@ ASP.NET Web Forms 提供成員資格和驗證的增強功能選項。 這些增�
     接下來，您會看到 **Google 開發人員主控台**。
     ![Google 開發人員主控台](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21a.png)  
 
-4. 按一下 [ **選取專案** > **建立專案** ，並輸入專案名稱和識別碼 (您可以使用預設值)。 然後按一下 [ **協議] 核取方塊** 和 **建立** ] 按鈕。  
+4. 按一下 [ **選取專案** > **建立專案** ，並輸入專案名稱和識別碼 （您可以使用預設值）。 然後按一下 [ **協議] 核取方塊** 和 **建立** ] 按鈕。  
     ![Google-New Project](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21b.png)  
     幾秒鐘內即可建立新的專案，您的瀏覽器便會顯示新的專案頁面。
 5. 在 **Google 開發人員主控台** 下拉式選單中，按一下 [ **API 管理員**, ，然後按一下 [ **認證**。
@@ -454,7 +454,7 @@ ASP.NET Web Forms 提供成員資格和驗證的增強功能選項。 這些增�
 8. 設定 **授權 JavaScript 來源** 您稍早在本教學課程中使用的 SSL url (**https://localhost:44300/ /** 除非您已建立其他 SSL 專案)。  
     此 URL 會是應用程式的原始來源。 在此範例中，您將僅輸入 localhost 測試 URL。 不過，您可以在帳戶中輸入多個 URL 以供 localhost 和生產使用。  
 
-9. 設定 **Authorized Redirect URI** 如下:  
+9. 設定 **Authorized Redirect URI** 如下 ︰  
 
         https://localhost:44300/signin-google  
 
@@ -588,7 +588,7 @@ ASP.NET 身分識別是成員資格系統，可用於建置 ASP.NET Web 應用�
         {
             AddUserAndRole(context);
 
-5. 在儲存所有變更之後, **Package Manager Console** 執行下列命令:  
+5. 在儲存所有變更之後, **Package Manager Console** 執行下列命令 ︰  
 
         Update-Database
 
@@ -600,11 +600,11 @@ ASP.NET 身分識別是成員資格系統，可用於建置 ASP.NET Web 應用�
 您將建立名為的資料夾 *Admin* 只有指派給"canEdit"角色的使用者可以存取。
 
 1. 在 **方案總管] 中**, ，新增到子資料夾 *連絡人* 資料夾，然後將新的子資料夾命名 *Admin*。
-2. 將下列檔案從 *連絡人* 資料夾 *Contacts/Admin* 資料夾:  
+2. 將下列檔案從 *連絡人* 資料夾 *Contacts/Admin* 資料夾 ︰  
     - *Delete.aspx *和* Delete.aspx.cs*
     - *Edit.aspx *和* Edit.aspx.cs*
     - *Insert.aspx *和* Insert.aspx.cs*
-3. 更新中的連結參考 *contacts* 加上"Admin / 」 連結的頁面參考前面 *Insert.aspx*, ，*Edit.aspx*, ，和 *Delete.aspx* ，如下所示:  
+3. 更新中的連結參考 *contacts* 加上"Admin / 」 連結的頁面參考前面 *Insert.aspx*, ，*Edit.aspx*, ，和 *Delete.aspx* ，如下所示 ︰  
 
         <%@ Page Title="ContactsList" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Default.aspx.cs" Inherits="ContactManager.Contacts.Default" ViewStateMode="Disabled" %>
         <%@ Register TagPrefix="FriendlyUrls" Namespace="Microsoft.AspNet.FriendlyUrls" %>
@@ -679,7 +679,7 @@ ASP.NET 身分識別是成員資格系統，可用於建置 ASP.NET Web 應用�
     現在，當您顯示與更新連絡人資料時，這些連結皆可正常運作。
 5. 若要限制存取 *Admin* 資料夾中，從 **方案總管] 中** 以滑鼠右鍵按一下 *Admin* 資料夾，然後選取 **加入新項目**。
 6. 從 Visual C# Web 範本清單中，選取 **Web 組態檔** 中間清單中，接受預設名稱 *Web.config*, ，然後選取 **新增**。
-7. 取代現有的 XML 內容中 *Web.config* 取代為下列檔案:
+7. 取代現有的 XML 內容中 *Web.config* 取代為下列檔案 ︰
 
         <?xml version="1.0"?>
         <configuration>
@@ -766,7 +766,7 @@ ASP.NET 身分識別是成員資格系統，可用於建置 ASP.NET Web 應用�
       如果您無法展開 **SQL 資料庫** 而且看 **ContactDB** 從 Visual Studio 中，您可以依照指示開放一個防火牆連接埠或連接埠的範圍。 若要這樣做，請依照下列指示 **設定 Azure 防火牆規則** 的結尾附近 [MVC 教學課程](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。 或者，您也可以檢閱本機資料庫的資料建置、 執行，並將資料加入至本機的應用程式 (**CTRL + F5** 從 Visual Studio)。  
 
 4. 如果 **連接到伺服器** ] 對話方塊隨即顯示，請輸入 **密碼** 您在此教學課程和按下開始建立 **連接** ] 按鈕。  
-      如果不記得密碼，您可以在本機專案檔案中找到此資訊。 在 **方案總管] 中**, ，依序展開 *屬性* 資料夾，然後展開 [ *PublishProfiles* 資料夾。 開啟 *contactmanager.pubxml* 檔案 (您的檔案可能有不同的名稱)。 搜尋檔案以找出您的發行密碼。
+      如果不記得密碼，您可以在本機專案檔案中找到此資訊。 在 **方案總管] 中**, ，依序展開 *屬性* 資料夾，然後展開 [ *PublishProfiles* 資料夾。 開啟 *contactmanager.pubxml* 檔案 （您的檔案可能有不同的名稱）。 搜尋檔案以找出您的發行密碼。
 
 5. 展開 **contactDB** 資料庫，然後展開 **資料表**。
 6. 以滑鼠右鍵按一下 **dbo。AspNetUsers** 資料表，然後選取 **檢視資料**。  
@@ -779,7 +779,7 @@ ASP.NET 身分識別是成員資格系統，可用於建置 ASP.NET Web 應用�
 
 1. 在 **SQL Server 物件總管**, ，以滑鼠右鍵按一下 **dbo。AspNetUserRoles** ，然後選取 **檢視資料**。
     ![[Aspnetuserroles] 資料](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms36.png)  
-2. 複製 *RoleId* 並將其貼至空白 (新) 資料列。  
+2. 複製 *RoleId* 並將其貼至空白 （新） 資料列。  
     ![[Aspnetuserroles] 資料](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms37.png)  
 3. 在 **dbo。AspNetUsers** 資料表中，尋找您要放在角色中，的使用者並複製該使用者的 *識別碼*。
 4. 貼上複製 *識別碼* 到 **UserId** 欄位中的新資料列的 **AspNetUserRoles** 資料表。  
@@ -795,4 +795,5 @@ ASP.NET 身分識別是成員資格系統，可用於建置 ASP.NET Web 應用�
 如果您發現喜歡的地方和希望我們改善的地方 (不論是針對本教學課程或其示範的產品)，歡迎留下意見反應。 您的意見反應將協助我們訂出優先改善要務。 您也可以要求，並對新主題進行投票 [告訴我如何處理程式碼](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code)。
 
  
+
 

@@ -22,7 +22,7 @@
 
 在本教學課程中，將會建立一個來源檔案遺失的問題，並使用 Azure 入口網站疑難排解問題。
 
-**先決條件**
+**必要條件**
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -98,7 +98,7 @@
     它會告訴您找不到來源資料夾。
     
 6. 按一下 [ **複製指令碼**。
-7. 更新 **FROM** 路徑如下:
+7. 更新 **FROM** 路徑如下 ︰
 
     "/Samples/Data/SearchLog.tsv"
 
@@ -111,6 +111,7 @@
 - [使用 Azure PowerShell 開始使用 Azure 資料湖分析](data-lake-analytics-get-started-powershell.md)
 - [透過 Visual Studio 開始使用 Azure 資料湖分析與 U-SQL](data-lake-analytics-get-started-u-sql-studio.md)
 - [使用 Azure 入口網站管理 Azure 資料湖分析](data-lake-analytics-manage-use-portal.md)
+
 
 
 

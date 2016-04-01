@@ -57,9 +57,10 @@
 
 ### 透過 [我] 來檢閱
 
-如果您選取了 [我] 選項做為檢閱者，則請繼續進行安全性檢閱。 如需完成檢閱詳細資訊，請參閱 [Azure 特殊權限的身分識別管理: 如何執行安全性檢閱](active-directory-privileged-identity-management-how-to-perform-security-review.md)
+如果您選取了 [我] 選項做為檢閱者，則請繼續進行安全性檢閱。 如需完成檢閱詳細資訊，請參閱 [Azure 特殊權限的身分識別管理 ︰ 如何執行安全性檢閱](active-directory-privileged-identity-management-how-to-perform-security-review.md)
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## PIM 的資料表的內容
+## PIM 目錄
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
+
 

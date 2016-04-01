@@ -39,8 +39,8 @@
 
 如需 SQL Server 在 Azure 虛擬機器上的背景資訊，請參閱 [Azure 虛擬機器中 SQL Server](virtual-machines-sql-server-infrastructure-services.md)。
 
-**作者:** Daniel Sol
-**技術校閱:** Luis Carlos Vargas Herring、 Sanjay Mishra、 Pravin Mital、 Juergen Thomas、 Gonzalo Ruiz。
+**作者 ︰** Daniel Sol
+**技術校閱 ︰** Luis Carlos Vargas Herring、 Sanjay Mishra、 Pravin Mital、 Juergen Thomas、 Gonzalo Ruiz。
 
 ## 適用於高階儲存體的必要條件
 
@@ -60,7 +60,7 @@
 
 DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「拓寬」VNET 的範圍，以便在其他叢集中佈建更大規模的 VM，並允許在它們之間進行通訊。 在下列螢幕擷取畫面中，反白顯示的位置會顯示區域 VNET，而第一個結果顯示的是「範圍縮小」的 VNET。
  
-![] RegionalVNET[] 1
+![RegionalVNET][1]
 
 您可以提高 Microsoft 支援票證以移轉到區域 VNET、Microsoft 將進行變更，然後完成區域 VNET 的移轉，在網路設定中變更屬性 AffinityGroup。 先匯出 PowerShell 中的網路設定，然後取代 **AffinityGroup** 屬性 **VirtualNetworkSite** 具有項目 **位置** 屬性。 指定 `Location = XXXX`，其中 `XXXX` 為 Azure 區域。 接著匯入新設定。
 
@@ -90,7 +90,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 您需要建立新的儲存體帳戶，此帳戶是針對高階儲存體所設定。 請注意，高階儲存體的用法是設定於儲存體帳戶上，而非個別的 VHD 上，但在使用 DS* 系列 VM 時，您可以從高階和標準儲存體帳戶連結 VHD 的儲存體帳戶。 如果您不想將作業系統 VHD 放置於高階儲存體帳戶上，可考慮使用此項。
 
-下列 **New-azurestorageaccountpowershell** 命令含有"Premium_LRS" **類型** 建立高階儲存體帳戶:
+下列 **New-azurestorageaccountpowershell** 命令含有"Premium_LRS" **類型** 建立高階儲存體帳戶 ︰
 
     $newstorageaccountname = "danpremstor" 
     New-AzureStorageAccount -StorageAccountName $newstorageaccountname -Location "West Europe" -Type "Premium_LRS"   
@@ -103,7 +103,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 ### Windows 儲存空間
 
-您可以使用 [Windows 儲存空間](https://technet.microsoft.com/library/hh831739.aspx) 一樣使用先前的標準儲存體，這可讓您移轉已經使用儲存體空間的 VM。 中的範例 [附錄](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) (步驟 9 和之前) 示範如何使用 Powershell 程式碼，擷取並匯入連結多個 Vhd 的 VM。 
+您可以使用 [Windows 儲存空間](https://technet.microsoft.com/library/hh831739.aspx) 一樣使用先前的標準儲存體，這可讓您移轉已經使用儲存體空間的 VM。 中的範例 [附錄](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) （步驟 9 和之前） 示範如何使用 Powershell 程式碼，擷取並匯入連結多個 Vhd 的 VM。 
 
 儲存集區會與標準的 Azure 儲存體帳戶搭配使用，以提高輸送量並降低延遲。 您可能會在針對新部署測試含有高階儲存體的儲存集區時尋找值，但它們會為儲存體設定增加額外的複雜度。 
 
@@ -119,28 +119,28 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 針對每個磁碟，請使用下列步驟：
 
-1. 取得清單中的磁碟連接至 VM **Get-azurevm** 命令:
+1. 取得清單中的磁碟連接至 VM **Get-azurevm** 命令 ︰
 
     Get-azurevm ServiceName <servicename> -Name <vmname> |Get AzureDataDisk
 
 1. 記下 Diskname 和 LUN。
 
-    ![] DisknameAndLUN[] 2
+    ![DisknameAndLUN][2]
 
 1. 從遠端桌面連接到 VM。 然後移至 **電腦管理** | **裝置管理員** | **磁碟機**。 看看每個 「 Microsoft 虛擬磁碟 」 的內容
 
-    ![] VirtualDiskProperties[] 3
+    ![VirtualDiskProperties][3]
 
 1. 此處的 LUN 編號是您在將 VHD 連結到 VM 時所指定的 LUN 編號的參考。
 1. 針對 「 Microsoft 虛擬磁碟 」，請移至 **詳細資料** ] 索引標籤，然後在 **屬性** 清單中，移至 **驅動程式機碼**。 在 **值**, ，注意 **位移**, ，下列螢幕擷取畫面中為 0002。 0002 表示儲存集區參考的 PhysicalDisk2。
 
-    ![] VirtualDiskPropertyDetails[] 4
+    ![VirtualDiskPropertyDetails][4]
 
 2. 針對每個儲存集區，傾印出相關聯的磁碟：
 
     Get-StoragePool -FriendlyName AMS1pooldata | Get-PhysicalDisk
 
-    ![] GetStoragePool[] 5
+    ![GetStoragePool][5]
  
 現在您可以使用此資訊，將連結的 VHD 關聯至儲存集區中的實體磁碟。
 
@@ -313,7 +313,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
  
 > [AZURE.NOTE] 您可能會發現即使狀態回報為成功，您可能仍然得到磁碟租用錯誤。 在此情況下，請等待大約 10 分鐘的時間。
 
-#### 步驟 7: 建置 VM
+#### 步驟 7 ︰ 建置 VM
 您會在此處從映像建置 VM，並連結兩個高階儲存體 VHD：
 
     $newimageName = "prem"+"dansoldonorsql2k14"
@@ -368,7 +368,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 內部部署的 SQL Server AlwaysOn 可用性群組會使用內部部署的接聽程式，來註冊虛擬 DNS 名稱以及 IP 位址，其可在一或多部 SQL Server 之間共用。 當用戶端連結時，即會透過接聽程式 IP 將它們路由傳送到主要的 SQL Server。 這是當時擁有 AlwaysOn IP 資源的伺服器。
  
-![] DeploymentsUseAlwaysOn[] 6
+![DeploymentsUseAlwaysOn][6]
 
 在 Microsoft Azure 中，您只能有一個已指派至 VM 上 NIC 的 IP 位址，因此，為了達到和內部部署一樣的抽象層，Azure 會利用已指派給內部/外部負載平衡器 (ILB/ELB) 的 IP 位址。 在伺服器之間共用的 IP 資源已設為與 ILB/ELB 相同的 IP。 這會在 DNS 中發佈，而用戶端流量是透過 ILB/ELB 傳遞到主要的 SQL Server 複本。 ILB/ELB 知道哪一部是主要的 SQL Server，因為它會使用探查來探查 AlwaysOn IP 資源。 在上一個範例中，它會探查每個擁有 ELB/ILB 所參考之端點的節點，無論哪個回應都是主要的 SQL Server。 
 
@@ -394,7 +394,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 您應該佈建可在新增加的節點上執行手動容錯移轉與混亂測試的時間，以確保 AlwaysOn 高可用性函式會如預期般運作。
 
-![] DeploymentUseAlwaysOn2[] 7
+![DeploymentUseAlwaysOn2][7]
 
 > [AZURE.NOTE] 您應該停止 SQL Server 驗證執行之前，使用儲存集區的所有執行個體。 
 ##### 高階步驟
@@ -492,7 +492,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 這份文件不會示範完整的端對端範例，不過 [附錄](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) 提供可以用來執行此動作的詳細資料。
  
-![] MinimalDowntime[] 8
+![MinimalDowntime][8]
 
 - 蒐集磁碟設定，並移除節點 (不要刪除連結的 VHD)。
 - 建立高階儲存體帳戶，並從標準儲存體帳戶複製 VHD
@@ -517,7 +517,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 停機時間包含容錯移轉到替代 DC 和返回的時間。 它也會取決於您的用戶端/DNS 設定，而您的用戶端重新連線可能會延遲。
 請考慮下列混合式 AlwaysOn 設定範例：
 
-![] MultiSite1[] 9
+![MultiSite1][9]
 
 ##### 優點
 
@@ -539,7 +539,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 此案例假設您已記錄安裝且知道儲存體的對應方式，以進行變更來取得最佳的磁碟快取設定。
 
 ##### 高階步驟
-![] Multisite2[] 10
+![Multisite2][10]
 
 - 使內部部署 / 替代 Azure DC 成為 SQL Server 主要項目，並使其成為另一個自動容錯移轉夥伴 (AFP)。 
 - 從 SQL2 蒐集磁碟設定資訊，並移除節點 (不要刪除連結的 VHD)。
@@ -562,13 +562,13 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 - SP 上 1 個 DB 檔案
 - 每個節點 2 x 個儲存集區
 
-![] Appendix1[] 11
+![Appendix1][11]
  
 ### VM：
  
 在此範例中，我們即將示範從 ELB 移動到 ILB 的方式。 ELB 可在 ILB 之前取得，因此，這會示範如何在移轉期間切換到前者。
 
-![] Appendix2[] 12
+![Appendix2][12]
 
 ### 預先步驟：連線到訂用帳戶
 
@@ -611,16 +611,16 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
     $destcloudsvc = "danNewSvcAms" 
     New-AzureService $destcloudsvc -Location $location 
 
-#### 步驟 2: 提高資源上允許的失敗 <Optional>
+#### 步驟 2 ︰ 提高資源上允許的失敗 <Optional>
 在隸屬於 AlwaysOn 可用性群組的特定資源上有下列限制：可以在一段期間內發生的失敗次數，而叢集服務將嘗試在其中重新啟動資源群組。 儘管您正在逐步執行此程序，但還是建議您提高此限制， 因為，如果您不會手動進行容錯移轉，以及藉由關閉機器來觸發容錯移轉，就會更接近這個限制。
 
 明智的做法是將容錯度加倍，若要在容錯移轉叢集管理員中執行這個動作，請移至 AlwaysOn 資源群組的 [屬性]：
  
-![] Appendix3[] 13
+![Appendix3][13]
 
 將 [最大失敗數目] 變更為 6。 
 
-#### 步驟 3: 新增 IP 位址資源的叢集群組 <Optional>
+#### 步驟 3 ︰ 新增 IP 位址資源的叢集群組 <Optional>
 
 如果您只有一個適用於叢集群組的 IP 位址且已將此位址指派給雲端子網路，請注意，如果您不小心在該網路上使雲端中的所有叢集節點離線，則叢集 IP 資源和叢集網路名稱將無法變成上線狀態。 發生這個情況時，將阻止更新其他叢集資源。 
 
@@ -640,11 +640,11 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 如果 ‘RegisterAllIpProviders’ 是 0，則您只會在與接聽程式相關聯的 DNS 中看見一個 DNS 記錄：
 
-![] Appendix4[] 14
+![Appendix4][14]
 
 如果 ‘RegisterAllIpProviders’ 是 1：
  
-![] Appendix5[] 15
+![Appendix5][15]
 
 下列程式碼將傾印出 VNN 設定，並為您設定它，請注意，若要讓變更生效，您需要使 VNN 離線，並使它再度上線，使接聽程式離線會導致用戶端連線中斷。 
 
@@ -698,7 +698,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 如果您有 2 部以上的 SQL Server，就應該將另一個 DC 上或內部部署中另一個次要項目的容錯移轉變更為 [同步]，並使其成為自動容錯移轉夥伴 (AFP)，這樣一來您就能在進行變更的同時保留 HA。 您可以透過 TSQL 執行這個動作，或透過 SSMS 來修改：
  
-![] Appendix6[] 16
+![Appendix6][16]
 
 #### 步驟 8：從雲端服務移除次要的 VM
 
@@ -757,7 +757,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 針對 TLOG 磁碟區，應該這些設定設為 NONE。
  
-![] Appendix7[] 17
+![Appendix7][17]
 
 #### 步驟 10：複製 VHDS
     #Ensure you have created the container for these:
@@ -801,7 +801,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
     Write-Host "Copying Disk Lun $lun, Label : $disklabel, VHD : $vhdname, STATUS = " $copystate.Status 
        }
  
-![] Appendix8[] 18
+![Appendix8][18]
 
 繼續等待，直到這所有設定都記錄為成功為止。
 
@@ -902,11 +902,11 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
     
     #Make sure no static records in DNS 
     
-![] Appendix9[] 19
+![Appendix9][19]
 
 現在，移除舊的雲端服務 IP 位址。
 
-![] Appendix10[] 20
+![Appendix10][20]
  
 #### 步驟 15：DNS 更新檢查
 
@@ -971,7 +971,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 針對 TLOG 磁碟區，應該這些設定設為 NONE。
  
-![] Appendix11[] 21
+![Appendix11][21]
 
 #### 步驟 19：為次要節點建立新的獨立儲存體帳戶
     $newxiostorageaccountnamenode2 = "danspremsams2" 
@@ -1022,7 +1022,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
     Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContext
      
     
-您可以檢查所有 Vhd 的 VHD 複製狀態:
+您可以檢查所有 Vhd 的 VHD 複製狀態 ︰
     ForEach ($diskobjects $disk)
        {
        $lun = $disk。Lun
@@ -1035,7 +1035,7 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
     Write-Host "Copying Disk Lun $lun, Label : $disklabel, VHD : $vhdname, STATUS = " $copystate.Status 
        }
      
-![] Appendix12[] 22
+![Appendix12][22]
 
 繼續等待，直到這所有設定都記錄為成功為止。
 
@@ -1119,15 +1119,15 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 
 1. 針對目前的 IP 位址資源，將 [可能的擁有者] 變更為「現有的主要 SQL Server」，在下列範例中為 ‘dansqlams4’：
 
-    ![] Appendix13[] 23
+    ![Appendix13][23]
 
 1. 針對新的 IP 位址資源變更可能的擁有者為 「 已移轉次要 SQL Server 」，在下列範例中，'dansqlams5':
 
-    ![] Appendix14[] 24
+    ![Appendix14][24]
 
 1. 完成此設定後就能進行容錯移轉，並且應該在移轉最後一個節點時編輯 [可能的擁有者]，如此便能新增該節點成為 [可能的擁有者]：
 
-    ![] Appendix15[] 25
+    ![Appendix15][25]
 
 ## 其他資源
 - [Azure 高階儲存體](../storage-premium-storage-preview-portal.md)
@@ -1161,3 +1161,4 @@ DS * vm，您必須設定虛擬網路 (VNET) 中裝載為區域 Vm。 這會「�
 [24]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
  
+

@@ -176,7 +176,7 @@ Web 應用程式與兩個不同的資源相依。 這表示只有在建立 App S
 
 在 `config/connectionstrings` 的 `properties` 項目中，每個連接字串也會定義為「名稱:值」配對，並且具有特定格式：`“<name>” : {“value”: “…”, “type”: “…”}`。 針對 `type` 項目，可能的值為 `MySql`、`SQLServer`、`SQLAzure` 和 `Custom`。
 
->[AZURE.TIP] 連接字串型別的限定清單，請在 Azure PowerShell 中執行下列命令:
+>[AZURE.TIP] 連接字串型別的限定清單，請在 Azure PowerShell 中執行下列命令 ︰
     \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
     
 ##### 原始檔控制 #####
@@ -187,9 +187,9 @@ Web 應用程式與兩個不同的資源相依。 這表示只有在建立 App S
 
 `RepoUrl` 和 `branch` 應該相當具直覺式，而且應該指向 Git 儲存機制以及從發佈之分支的名稱。 同樣地，這些是透過輸入參數所定義。 
 
-請注意，在 `dependsOn` 項目，除了 Web 應用程式資源本身之外，`sourcecontrols/web` 也與 `config/appsettings` 和 `config/connectionstrings` 相依。 原因是設定 `sourcecontrols/web` 之後，Azure 部署程序會自動嘗試部署、建置和啟動應用程式碼。 因此，插入此相依性有助於確定在執行應用程式碼之前，應用程式可以存取所需的應用程式設定和連接字串。 [TODO: 需要確認這是否為 true。]
+請注意，在 `dependsOn` 項目，除了 Web 應用程式資源本身之外，`sourcecontrols/web` 也與 `config/appsettings` 和 `config/connectionstrings` 相依。 原因是設定 `sourcecontrols/web` 之後，Azure 部署程序會自動嘗試部署、建置和啟動應用程式碼。 因此，插入此相依性有助於確定在執行應用程式碼之前，應用程式可以存取所需的應用程式設定和連接字串。 [TODO ︰ 需要確認這是否為 true。]
 
->[AZURE.NOTE] 也請注意， `IsManualIntegration` 設為 `true`。 這個屬性是在本教學課程所需，因為您實際上未擁有 GitHub 儲存機制，因此無法實際權限授與設定持續發佈，從 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) (也就是 自動儲存機制更新推送至 Azure)。 您可以使用預設值 `false` 所指定的儲存機制設定中的擁有者的 GitHub 認證時，才 [Azure 預覽入口網站](https://portal.azure.com) 之前。 換句話說，如果您已設定 GitHub 或 BitBucket 中任何應用程式的原始檔控制 [Azure 入口網站](https://portal.azure.com) 之前，使用您的使用者認證，則 Azure 會記住認證，並在未來部署從 GitHub 或 BitBucket 的任何應用程式時使用它們。 不過，如果您還沒有這麼做，則 Azure 資源管理員嘗試設定 Web 應用程式的原始檔控制設定時，JSON 範本的部署會失敗。因為它無法使用儲存機制擁有者的認證登入 GitHub 或 BitBucket。
+>[AZURE.NOTE] 也請注意， `IsManualIntegration` 設為 `true`。 這個屬性是在本教學課程所需，因為您實際上未擁有 GitHub 儲存機制，因此無法實際權限授與設定持續發佈，從 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) （也就是 自動儲存機制更新推送至 Azure）。 您可以使用預設值 `false` 所指定的儲存機制設定中的擁有者的 GitHub 認證時，才 [Azure 預覽入口網站](https://portal.azure.com) 之前。 換句話說，如果您已設定 GitHub 或 BitBucket 中任何應用程式的原始檔控制 [Azure 入口網站](https://portal.azure.com) 之前，使用您的使用者認證，則 Azure 會記住認證，並在未來部署從 GitHub 或 BitBucket 的任何應用程式時使用它們。 不過，如果您還沒有這麼做，則 Azure 資源管理員嘗試設定 Web 應用程式的原始檔控制設定時，JSON 範本的部署會失敗。因為它無法使用儲存機制擁有者的認證登入 GitHub 或 BitBucket。
 
 ## 比較具有已部署資源群組的 JSON 範本 ##
 
@@ -305,4 +305,5 @@ Web 應用程式與兩個不同的資源相依。 這表示只有在建立 App S
 
 
  
+
 

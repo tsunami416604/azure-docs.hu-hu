@@ -22,7 +22,7 @@
 
 如需定價資訊及包含的每個服務層的清單，請參閱 [Azure App Service 定價](http://azure.microsoft.com/pricing/details/app-service/)。
 
-> [AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+> [AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 核心連接器
 下表列出所有由 Microsoft 建立且可做為核心連接器使用的可用連接器和 API Apps：
@@ -72,12 +72,12 @@ Bing 翻譯 | 使用 Bing，將文字翻譯成其他語言。
 [FTP<br/>FTPS](app-service-logic-connector-ftp.md) | 連接到 FTP / FTPS 伺服器，執行不同的 FTP 工作，包括上傳、取得、刪除檔案等等。
 [Informix](app-service-logic-connector-informix.md) | 連接至內部部署和執行 Windows 作業系統的 Azure 虛擬機器上的 IBM Informix 資料庫。 可將 Web API 和 OData API 作業對應至 Informix 結構化查詢語言命令。<br/><br/>沒有觸發程序。 動作包括資料表選取、 插入、 更新、 刪除和自訂陳述式。<br/><br/>使用內部部署時，可以使用 VPN 或 Azure ExpressRoute。 此連接器也包括 Microsoft Client for DRDA，用來跨 TCP/IP 網路連接至 Informix 伺服器。
 [Microsoft SQL Server](app-service-logic-connector-sql.md) | Connects to on-premises SQL Server or an Azure SQL Database. 您可以建立、更新、取得和刪除 SQL 資料庫資料表上的項目。
-MQ | 連接至內部部署和執行 Windows 作業系統的 Azure 虛擬機器上的 IBM WebSphere MQ Server 第 8 版。 使用內部部署時，可以使用 VPN 或 Azure ExpressRoute。 此連接器也包含 Microsoft Client for MQ。<br/><br/>沒有觸發程序。 沒有動作。<br/><br/>**注意** 目前無法與 Logic Apps 搭配使用。
+MQ | 連接至內部部署和執行 Windows 作業系統的 Azure 虛擬機器上的 IBM WebSphere MQ Server 第 8 版。 使用內部部署時，可以使用 VPN 或 Azure ExpressRoute。 連接器也包括 Microsoft Client for MQ。<br/><br/>沒有觸發程序。 任何動作。<br/><br/>**請注意** 目前無法使用邏輯應用程式使用。
 [Oracle 資料庫](app-service-logic-connector-oracle.md) | 連接至內部部署 Oracle 資料庫，可以建立、 更新、 取得，和刪除資料庫資料表上的項目。
-[POP3](app-service-logic-connector-pop3.md) (郵局通訊協定)| 連接到 POP3 伺服器擷取帶有附件的電子郵件。
+[POP3](app-service-logic-connector-pop3.md) （郵局通訊協定）| 連接到 POP3 伺服器擷取帶有附件的電子郵件。
 [SAP](app-service-logic-connector-sap.md) | 連接到內部部署 SAP 伺服器，並且叫用 RFC、BAPI 和 tRFC，以及傳送 IDOC。
-[SFTP](app-service-logic-connector-sftp.md) (SSH 檔案傳輸通訊協定)| 連接到 SFTP，可以上傳、取得、刪除檔案等等。
-[SMTP](app-service-logic-connector-smtp.md) (簡易郵件傳送通訊協定) | 連接至 SMTP 伺服器，還可以傳送帶有附件的電子郵件。
+[SFTP](app-service-logic-connector-sftp.md) （SSH 檔案傳輸通訊協定）| 連接到 SFTP，可以上傳、取得、刪除檔案等等。
+[SMTP](app-service-logic-connector-smtp.md) （簡易郵件傳送通訊協定） | 連接至 SMTP 伺服器，還可以傳送帶有附件的電子郵件。
 
 ## 連接器做為觸發程序
 有數個連接器提供 Logic Apps 的觸發程序。 這些觸發程序分成兩種類型：
@@ -97,4 +97,5 @@ MQ | 連接至內部部署和執行 Windows 作業系統的 Azure 虛擬機器�
 [什麼是連接器和 BizTalk API 應用程式](app-service-logic-what-are-biztalk-api-apps.md)  
 [在 Azure App Service 中使用混合式連線管理員](app-service-logic-hybrid-connection-manager.md)  
 [管理和監視內建 API 應用程式和連接器](app-service-logic-monitor-your-connectors.md)
+
 

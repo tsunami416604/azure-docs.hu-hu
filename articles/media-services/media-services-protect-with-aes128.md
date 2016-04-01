@@ -33,7 +33,7 @@ Microsoft Azure 媒體服務可讓您傳遞您使用進階加密標準 (AES) (�
 
 本主題將有助於開發人員開發提供受保護媒體的應用程式。 本主題將展示如何利用授權原則設定金鑰傳遞服務，這樣只有授權的用戶端才會收到加密金鑰。 它也會展示如何使用動態加密。
 
->[AZURE.NOTE]若要使用動態加密，您必須先取得至少一個縮放單元 (也稱為串流單元)。 如需詳細資訊，請參閱 [如何調整媒體服務](media-services-manage-origins.md#scale_streaming_endpoints)。
+>[AZURE.NOTE]若要使用動態加密，您必須先取得至少一個縮放單元 （也稱為串流單元）。 如需詳細資訊，請參閱 [如何調整媒體服務](media-services-manage-origins.md#scale_streaming_endpoints)。
 
 ##使用 AES-128 動態加密和金鑰傳遞服務工作流程
 
@@ -75,13 +75,13 @@ Microsoft Azure 媒體服務可讓您傳遞您使用進階加密標準 (AES) (�
 
 如需有關如何編碼的指示，請參閱 [如何使用 Media Encoder Standard 為資產編碼](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
-##<a id="create_contentkey"></a>建立內容金鑰，並將它與編碼的資產產生關聯
+##<a id="create_contentkey"></a>建立內容金鑰並將它與編碼的資產產生關聯
 
 在媒體服務中，內容金鑰包含您要加密資產時使用的金鑰。
 
 如需詳細資訊，請參閱 [建立內容金鑰](media-services-dotnet-create-contentkey.md)。
 
-##<a id="configure_key_auth_policy"></a>設定內容金鑰授權原則
+##<a id="configure_key_auth_policy"></a>設定內容金鑰的授權原則
 
 媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則必須由您設定，而且用戶端 (播放器) 必須符合條件，才能將金鑰傳遞給用戶端。 內容金鑰授權原則可能會有一個或多個授權限制：Open、權杖限制或 IP 限制。
 
@@ -102,7 +102,7 @@ Microsoft Azure 媒體服務可讓您傳遞您使用進階加密標準 (AES) (�
 
 您必須為您的使用者提供 Smooth、DASH 或 HLS 的串流 URL。
 
->[AZURE.NOTE]如果您新增或更新您的資產傳遞原則，則必須刪除現有的定位器 (如果有的話)，並建立新的定位器。
+>[AZURE.NOTE]如果您新增或更新您的資產傳遞原則，則必須刪除現有的定位器 （如果有的話），並建立新的定位器。
 
 如需有關如何發行資產，並建置串流 URL 的指示，請參閱 [建置串流 URL](media-services-deliver-streaming-content.md)。
 
@@ -123,7 +123,7 @@ Microsoft Azure 媒體服務可讓您傳遞您使用進階加密標準 (AES) (�
 
 您可以使用 [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) 來測試您的資料流。
 
-##<a id="client_request"></a>如何將用戶端要求金鑰從金鑰傳遞服務?
+##<a id="client_request"></a>您的用戶端如何從金鑰傳遞服務要求金鑰？
 
 在上一個步驟中，您可以建構指向資訊清單檔案的 URL。 您的用戶端必須從串流資訊清單檔案擷取所需的資訊，才能向金鑰傳遞服務提出要求。
 
@@ -145,7 +145,7 @@ Microsoft Azure 媒體服務可讓您傳遞您使用進階加密標準 (AES) (�
 
 在 HLS 的案例中，根資訊清單會分成區段檔案。 
 
-例如，根資訊清單是: http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) 和它包含區段檔案名稱的清單。
+例如，根資訊清單是 ︰ http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) 和它包含區段檔案名稱的清單。
     
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -154,7 +154,7 @@ Microsoft Azure 媒體服務可讓您傳遞您使用進階加密標準 (AES) (�
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-如果您開啟其中一個區段檔案在文字編輯器中 (例如，http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/Manifest(video,format=m3u8-aapl)，它應該包含 #EXT X-索引鍵表示檔案已加密。
+如果您開啟其中一個區段檔案在文字編輯器中 (例如，http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels （514369)/Manifest(video,format=m3u8-aapl)，它應該包含 #EXT X-索引鍵表示檔案已加密。
     
     #EXTM3U
     #EXT-X-VERSION:4
@@ -619,4 +619,5 @@ Microsoft Azure 媒體服務可讓您傳遞您使用進階加密標準 (AES) (�
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

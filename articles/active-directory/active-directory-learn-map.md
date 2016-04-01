@@ -19,17 +19,17 @@
 # 深入了解 Azure AD
 
 ### 本主題的其他文章
-[什麼是 Azure AD?](active-directory-whatis.md)<br>
-[如何運作?](active-directory-works.md)<br>
+[什麼是 Azure AD？](active-directory-whatis.md)<br>
+[運作方式](active-directory-works.md)<br>
 [開始使用](active-directory-get-started.md)<br>
 [後續步驟](active-directory-next-steps.md)<br>
-[了解更多](active-directory-learn-map.md)
+[詳細資訊](active-directory-learn-map.md)
 
-我已有 Azure 訂用帳戶。 與 Azure AD 有何關聯？ [與目錄相關聯訂閱的方式](active-directory-how-subscriptions-associated-directory.md)
+我已有 Azure 訂用帳戶。 與 Azure AD 有何關聯？ [訂閱帳戶如何與目錄產生關聯](active-directory-how-subscriptions-associated-directory.md)
 
 對於 Azure AD 管理工作 (例如：使用者管理、網域管理或設定單一登入)，使用適用於 Windows PowerShell 的 Azure Active Directory 模組 Cmdlet。 [使用 Windows PowerShell 管理 Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx)
 
-使用 Azure Active Directory 圖形 API，透過 REST API 端點以程式設計方式存取 Azure AD。 [Azure AD Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx)
+使用 Azure Active Directory 圖形 API，透過 REST API 端點以程式設計方式存取 Azure AD。 [Azure AD 圖形 API](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 
 您可以將自己的自訂網域名稱加入至 Azure Active Directory，以便搭配 Microsoft 線上服務使用。 [網際網路網域管理](active-directory-add-domain.md)
 
@@ -40,4 +40,5 @@
 
 * [以組織方式註冊 Azure](sign-up-organization.md)
 * [Azure 身分識別](fundamentals-identity.md)
+
 

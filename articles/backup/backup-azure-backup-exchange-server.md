@@ -25,7 +25,7 @@
 
 >[AZURE.NOTE] 這篇文章中的範例，安裝 Azure 備份代理程式的版本 2.0.8719.0，以及 System Center 2012 R2 DPM 上安裝更新彙總套件 6。
 
-## 先決條件
+## 必要條件
 在繼續之前，請確定所有 [必要條件](backup-azure-dpm-introduction.md#prerequisites) 已符合使用 Microsoft Azure 備份保護工作負載。 這些先決條件包含下列各項：
 
 - 已在 Azure 網站上建立備份保存庫。
@@ -69,7 +69,7 @@
 
     選取此選項之後，備份一致性檢查會執行 DPM 伺服器，以避免產生所執行的 I/O 流量上 **eseutil** Exchange 伺服器上的命令。
 
-    >[AZURE.NOTE] 若要使用此選項，您必須將 Ese.dll 和 Eseutil.exe 檔案複製到 DPM 伺服器上的 C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin 目錄。 否則，就會觸發下列錯誤:  
+    >[AZURE.NOTE] 若要使用此選項，您必須將 Ese.dll 和 Eseutil.exe 檔案複製到 DPM 伺服器上的 C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin 目錄。 否則，就會觸發下列錯誤 ︰  
     ![eseutil 錯誤](./media/backup-azure-backup-exchange-server/eseutil-error.png)
 
 8. 按一下 [ **下一步**。
@@ -120,15 +120,16 @@
 
 線上復原點有五種復原類型：
 
-- **復原到原始 Exchange Server 位置:** 資料將會還原成原始的 Exchange 伺服器。
-- **復原到 Exchange 伺服器上的另一個資料庫:** ，資料將會還原到另一部 Exchange 伺服器上的其他資料庫。
-- **復原到復原資料庫:** 資料復原到 Exchange 復原資料庫 (RDB)。
-- **複製到網路資料夾:** ，資料將會還原到網路資料夾。
-- **複製到磁帶:** 的復原點如果您有任何磁帶媒體櫃或獨立磁帶機連接和 DPM 伺服器上設定，將會複製到可用的磁帶。
+- **復原到原始 Exchange Server 位置 ︰** 資料將會還原成原始的 Exchange 伺服器。
+- **復原到 Exchange 伺服器上的另一個資料庫 ︰** ，資料將會還原到另一部 Exchange 伺服器上的其他資料庫。
+- **復原到復原資料庫 ︰** 資料復原到 Exchange 復原資料庫 (RDB)。
+- **複製到網路資料夾 ︰** ，資料將會還原到網路資料夾。
+- **複製到磁帶 ︰** 的復原點如果您有任何磁帶媒體櫃或獨立磁帶機連接和 DPM 伺服器上設定，將會複製到可用的磁帶。
 
     ![選擇線上複寫](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
 ## 後續步驟
 
 - [Azure 備份常見問題集](backup-azure-backup-faq.md)
+
 

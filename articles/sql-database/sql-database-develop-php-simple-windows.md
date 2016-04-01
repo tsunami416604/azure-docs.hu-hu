@@ -39,7 +39,7 @@
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
 
-## 步驟 2: 連接
+## 步驟 2 ︰ 連接
 
 
 這 **OpenConnection** 函式會在所有後續函式的頂端附近呼叫。
@@ -63,9 +63,9 @@
     }
 
 
-## 步驟 3: 執行查詢
+## 步驟 3 ︰ 執行查詢
 
- [Sqlsrv_query ()](http://php.net/manual/en/function.sqlsrv-query.php) 函式可用來擷取對 SQL Database 設定從查詢的結果。 此函式基本上會接受任何查詢與連線物件，並傳回結果集，這可以藉由使用反覆 [sqlsrv_fetch_array ()](http://php.net/manual/en/function.sqlsrv-fetch-array.php)。
+ [Sqlsrv_query （)](http://php.net/manual/en/function.sqlsrv-query.php) 函式可用來擷取對 SQL Database 設定從查詢的結果。 此函式基本上會接受任何查詢與連線物件，並傳回結果集，這可以藉由使用反覆 [sqlsrv_fetch_array （)](http://php.net/manual/en/function.sqlsrv-fetch-array.php)。
 
     function ReadData()
     {
@@ -93,7 +93,7 @@
     }
 
 
-## 步驟 4: 插入資料列
+## 步驟 4 ︰ 插入資料列
 
 在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。  
 
@@ -123,7 +123,7 @@
         }
     }
 
-## 步驟 5: 回復交易
+## 步驟 5 ︰ 回復交易
 
 
 這個程式碼範例示範如何使用交易，您將：
@@ -179,4 +179,5 @@
 
 
 如需 PHP 安裝和使用方式的詳細資訊，請參閱 [使用 PHP 存取 SQL Server Database](http://technet.microsoft.com/library/cc793139.aspx)。
+
 

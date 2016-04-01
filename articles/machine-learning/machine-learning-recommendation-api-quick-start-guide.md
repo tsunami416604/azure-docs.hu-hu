@@ -88,7 +88,7 @@ Micosoft Azure Marketplace 可支援基本或 OAuth 驗證方法。 瀏覽至在
 
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-|   modelName   |   字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 20 |
+|   modelName   |   字母 （A-Z、 a-z） 的數字 (0-9)、 連字號 （-），並允許底線 (_)。<br>最大長度 ︰ 20 |
 |   apiVersion      | 1.0 |
 |||
 | 要求本文 | 無 |
@@ -99,7 +99,7 @@ Micosoft Azure Marketplace 可支援基本或 OAuth 驗證方法。 瀏覽至在
 HTTP 狀態碼：200
 
 - `feed/entry/content/properties/id` – 包含模型識別碼。
-**請注意**: 模型識別碼會區分大小寫。
+**請注意**︰ 模型識別碼會區分大小寫。
 
 OData XML
 
@@ -143,10 +143,10 @@ OData XML
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
 |   modelId |   模型的唯一識別碼 (區分大小寫)  |
-| 檔名 | 目錄的文字識別碼。<br>字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 50 |
+| 檔名 | 目錄的文字識別碼。<br>字母 （A-Z、 a-z） 的數字 (0-9)、 連字號 （-），並允許底線 (_)。<br>最大長度 ︰ 50 |
 |   apiVersion      | 1.0 |
 |||
-| 要求本文 | 目錄資料。 格式:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名稱</th><th>強制</th><th>類型</th><th>描述</th></tr><tr><td>項目 Id</td><td>是</td><td>英數字元，最大長度 50</td><td>項目的唯一識別碼</td></tr><tr><td>項目名稱</td><td>是</td><td>英數字元，最大長度 255</td><td>項目名稱</td></tr><tr><td>項目分類</td><td>是</td><td>英數字元，最大長度 255</td><td>此項目 (例如烹飪書籍、 劇本...) 所屬的類別</td></tr><tr><td>描述</td><td>否</td><td>英數字元，最大長度 4000</td><td>此項目的描述</td></tr></table><br>檔案大小上限為 200 MB。<br><br>範例:<br><pre>2406e770-769 c-4189-89de-1c9283f93a96，克拉拉 Callan 書籍<br>21bf8088-b6c0-4509-870 c-e1c7ac78304a，忘記聊天室: 小說 (拜占庭書籍) 的書籍<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23，Spadework，本書<br>552a1940-21e4-4399-82bb-594b46d7ed54，本例的傢伙，書籍</pre> |
+| 要求本文 | 目錄資料。 格式：<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名稱</th><th>強制</th><th>類型</th><th>說明</th></tr><tr><td>項目識別碼</td><td>是</td><td>英數字元，最大長度 50</td><td>項目的唯一識別碼</td></tr><tr><td>項目名稱</td><td>是</td><td>英數字元，最大長度 255</td><td>項目名稱</td></tr><tr><td>項目類別</td><td>是</td><td>英數字元，最大長度 255</td><td>此項目 （例如烹飪書籍、 劇本...） 所屬類別</td></tr><tr><td>說明</td><td>否</td><td>英數字元，最大長度 4000</td><td>此項目的描述</td></tr></table><br>檔案大小上限為 200 MB。<br><br>範例：<br><pre>2406e770-769 c-4189-89de-1c9283f93a96，克拉拉 Callan 活頁簿<br>21bf8088-b6c0-4509-870 c-e1c7ac78304a，忘記聊天室 ︰ 小說 （拜占庭書籍） 的書籍<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23，Spadework，活頁簿<br>552a1940-21e4-4399-82bb-594b46d7ed54，本例的活頁簿的機制，</pre> |
 
 
 **回應**:
@@ -192,10 +192,10 @@ OData XML
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
 |   modelId |   模型的唯一識別碼 (區分大小寫) |
-| 檔名 | 目錄的文字識別碼。<br>字母 (A-Z、 a-z) 的數字 (0-9)、 連字號 (-)，並允許底線 (_)。<br>最大長度: 50 |
+| 檔名 | 目錄的文字識別碼。<br>字母 （A-Z、 a-z） 的數字 (0-9)、 連字號 （-），並允許底線 (_)。<br>最大長度 ︰ 50 |
 |   apiVersion      | 1.0 |
 |||
-| 要求本文 | 使用量資料。 Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Mandatory</th><th>Type</th><th>Description</th></tr><tr><td>User Id</td><td>Yes</td><td>Alphanumeric</td><td>Unique identifier of a user</td></tr><tr><td>Item Id</td><td>Yes</td><td>Alphanumeric, max length 50</td><td>Unique identifier of an item</td></tr><tr><td>Time</td><td>No</td><td>Date in format: YYYY/MM/DDTHH:MM:SS (e.g. 2013/06/20T10:00:00)</td><td>Time of data</td></tr><tr><td>Event</td><td>No, if supplied then must also put date</td><td>One of the following:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>Maximum file size is 200MB.<br><br>範例:<br><pre>149452，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>6360，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>50321，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>71285，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>224450，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>236645，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>107951，1b3d95e2-84e4-414 c-bb38-be9cf461c347</pre> |
+| 要求本文 | 使用量資料。 格式：<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名稱</th><th>強制</th><th>類型</th><th>說明</th></tr><tr><td>使用者識別碼</td><td>是</td><td>英數字元</td><td>使用者的唯一識別碼</td></tr><tr><td>項目識別碼</td><td>是</td><td>英數字元，最大長度 50</td><td>項目的唯一識別碼</td></tr><tr><td>時間</td><td>否</td><td>日期格式 ︰ YYYY/MM/ddthh (例如 2013年/06/20T10:00:00)</td><td>資料的時間</td></tr><tr><td>事件</td><td>否，如果提供，必須也提供日期</td><td>下列其中之一：<br>• Click<br>• RecommendationClick<br>•	AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>檔案大小上限為 200 MB。<br><br>範例：<br><pre>149452，1b3d95e2-84e4-414 c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951，1b3d95e2-84e4-414 c-bb38-be9cf461c347</pre> |
 
 **回應**:
 
@@ -346,7 +346,7 @@ HTTP 狀態碼：200
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
 | modelId | 模型的唯一識別碼 (區分大小寫)  |
-| userDescription | 目錄的文字識別碼。 請注意，如果您使用空格，必須將其編碼改成 %20。 請參閱上面的範例。<br>最大長度: 50 |
+| userDescription | 目錄的文字識別碼。 請注意，如果您使用空格，必須將其編碼改成 %20。 請參閱上面的範例。<br>最大長度 ︰ 50 |
 | apiVersion | 1.0 |
 |||
 | 要求本文 | 無 |
@@ -421,7 +421,7 @@ OData XML
 
 |   參數名稱  |   有效值                        |
 |:--------          |:--------                              |
-|   modelId         |   唯一識別碼 (區分大小寫) 的模型    |
+|   modelId         |   唯一識別碼 （區分大小寫） 的模型    |
 |   onlyLastBuild   |   指出是要傳回模型的所有組建歷程記錄，還是只傳回最近一個組建的狀態。 |
 |   apiVersion      |   1.0                                 |
 
@@ -435,7 +435,7 @@ HTTP 狀態碼：200
 - `feed/entry/content/properties/UserName` – 使用者的名稱。
 - `feed/entry/content/properties/ModelName` – 模型的名稱。
 - `feed/entry/content/properties/ModelId` – 模型的唯一識別碼。
-- `feed/entry/content/properties/IsDeployed` – 組建是否已部署 (又稱為 作用中組建)。
+- `feed/entry/content/properties/IsDeployed` – 組建是否已部署 （又稱為 作用中組建）。
 - `feed/entry/content/properties/BuildId` – 組建的唯一識別碼。
 - `feed/entry/content/properties/BuildType` - 組建類型。
 - `feed/entry/content/properties/Status` – 組建狀態。 可以是下列其中之一：錯誤、建置中、已排入佇列、取消中、已取消、成功
@@ -447,17 +447,17 @@ HTTP 狀態碼：200
 - `feed/entry/content/properties/ProgressStep` - 正在進行建置之目前階段的相關詳細資料。
 
 有效的組建狀態：
-- 建立 – 已建立組建要求項目。
-- 排入佇列-組建要求已觸發，並已排入佇列。
-- 建置中-建置進行中。
+- 建立 - 組建要求項目已建立。
+- 已排入佇列 - 組建要求已觸發並排入佇列。
+- 建置中 - 建置進行中。
 - 成功 – 組建已成功結束。
 - 錯誤 – 組建已結束但發生失敗。
 - 已取消 - 組建已取消。
 - 取消中 - 正在取消組建。
 
-有效的組建類型的值:
-- Rank-排名組建。 (如需排名組建詳細資料，請參閱 「 Machine Learning 建議 API 文件集 」 文件。)
-- 建議事項-建議組建。
+組建類型的有效值：
+- 排名 - 排名組建。 （如需排名組建詳細資料，請參閱 「 Machine Learning 建議 API 文件集 」 文件。）
+- 建議 - 建議組建。
 - Fbt-通常一起購買的組建。
 
 OData XML
@@ -715,4 +715,5 @@ OData XML
 本文件未提供給您任何 Microsoft 產品中任何智慧財產的任何法定權利。 您可以複製並使用這份文件，供內部參考之用。 
 © 2014 Microsoft. 著作權所有，並保留一切權利。 
  
+
 

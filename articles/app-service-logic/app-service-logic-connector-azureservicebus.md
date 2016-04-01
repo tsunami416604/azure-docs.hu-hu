@@ -43,7 +43,7 @@ Azure 服務匯流排連接器提供下列觸發程序和動作：
 
     名稱 |描述
 --- | ---
-連接字串 |Azure 服務匯流排連接字串。 例如，輸入: *Endpoint=sb://[namespace].servicebus.windows.net;SharedAccessKeyName = [名稱]。SharedAccessKey = [金鑰]*。
+連接字串 |Azure 服務匯流排連接字串。 例如，輸入 ︰ *Endpoint=sb://[namespace].servicebus.windows.net;SharedAccessKeyName = [名稱]。SharedAccessKey = [金鑰]*。
 實體名稱 |輸入佇列或主題的名稱。
 訂閱名稱 |輸入要從中接收訊息的訂用帳戶的名稱。
 
@@ -52,31 +52,31 @@ Azure 服務匯流排連接器提供下列觸發程序和動作：
 ## 在邏輯應用程式中使用服務匯流排連接器
 建立連接器之後，即可使用 Azure 服務匯流排連接器做為邏輯應用程式的觸發程序或動作。 作法：
 
-1.  建立新的邏輯應用程式，並選擇具有 Azure 服務匯流排連接器的相同資源群組:  
+1.  建立新的邏輯應用程式，並選擇具有 Azure 服務匯流排連接器的相同資源群組 ︰  
     ![][2]
 
-2.  開啟 [觸發程序和動作] 以開啟邏輯應用程式設計工具並設定您的工作流程:  
+2.  開啟 [觸發程序和動作] 以開啟邏輯應用程式設計工具並設定您的工作流程 ︰  
     ![][3]
 
-3. Azure 服務匯流排連接器會出現在右側資源庫中的 API 應用程式中此資源群組] 區段中:  
+3. Azure 服務匯流排連接器會出現在右側資源庫中的 API 應用程式中此資源群組] 區段中 ︰  
     ![][4]
 
 4. 您可以按一下 [Azure 服務匯流排連接器]，將 Azure 服務匯流排連接器置入編輯器。
 
-5.  您現在可以在工作流程中使用 Azure 服務匯流排連接器。 您可以使用從 Azure 服務匯流排觸發程序 ([可用訊息]) 中的其他動作流程中擷取的訊息:  
+5.  您現在可以在工作流程中使用 Azure 服務匯流排連接器。 您可以使用從 Azure 服務匯流排觸發程序 （[可用訊息]） 中的其他動作流程中擷取的訊息 ︰  
     ![][5]  
 
     ![][6]
 
-您也可以使用 Azure 服務匯流排傳送訊息] 動作:  
+您也可以使用 Azure 服務匯流排傳送訊息] 動作 ︰  
 ![][7]  
 
 ![][8]
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -92,4 +92,5 @@ Azure 服務匯流排連接器提供下列觸發程序和動作：
 [6]: ./media/app-service-logic-connector-azureservicebus/img6.PNG
 [7]: ./media/app-service-logic-connector-azureservicebus/img7.PNG
 [8]: ./media/app-service-logic-connector-azureservicebus/img8.PNG
+
 

@@ -34,7 +34,7 @@
 
     ![透過 ManagementPortal 連絡 MS 支援服務](./media/storsimple-contact-microsoft-support/IC777286.png)
 
-2. 在 **連絡 Microsoft 支援服務** 對話方塊:                             
+2. 在 **連絡 Microsoft 支援服務** 對話方塊 ︰                             
 
     1. 從下拉式清單中，選取 [目標 **訂閱** StorSimple Manager 服務相關聯。 指定 **支援類型** 為 **技術**。 您必須已付費購買支援方案，才能啟用技術支援。
 
@@ -75,3 +75,4 @@
 7. 儲存這個字串，並透過電子郵件傳送給 Microsoft 支援服務。 
 
 > [AZURE.IMPORTANT] 您可以藉由執行停用支援存取 `Disable-HcsSupportAccess`。 在起始工作階段之後 8 小時，StorSimple 裝置也會嘗試停用支援存取。 最好在起始支援工作階段之後變更 StorSimple 裝置認證。
+

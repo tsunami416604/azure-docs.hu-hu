@@ -363,7 +363,7 @@ Azure 資源管理員範本會定義應用程式所使用的所有 Azure 資源�
 
 不論您使用哪種方法，一旦命令完成執行，資源群組及其包含的所有資源將不再存在，而且您不再需要負擔資源的費用。  
 
-您可以使用的應用程式開發期間會產生的 Azure 資源使用率費用降到最低 [Azure 自動化](automation/automation-intro.md) 排程工作:
+您可以使用的應用程式開發期間會產生的 Azure 資源使用率費用降到最低 [Azure 自動化](automation/automation-intro.md) 排程工作 ︰
 
 - 在每天結束時停止虛擬機器並在每天開始時重新啟動它們。
 - 在每天結束時刪除整個環境並在每天開始時重新建立它們。
@@ -383,4 +383,5 @@ Azure 資源管理員範本會定義應用程式所使用的所有 Azure 資源�
 - [部署 Web 應用程式](app-service-web/web-sites-deploy.md) 用於您所建立的環境。
 - 使用 [Visual Studio Release Management](http://msdn.microsoft.com/Library/vs/alm/Release/overview) 建立快速、 輕鬆且經常地釋放受管理的連續部署管線。
 - 要求的預覽 invite [Azure 開發/測試實驗室](http://azure.microsoft.com/campaigns/devtest-lab/)。 它可讓您使用範本管理開發和測試實驗室環境，並設定組織內的使用配額和原則。
+
 

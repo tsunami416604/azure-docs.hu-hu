@@ -25,13 +25,13 @@ Azure 服務匯流排提供兩種全方位訊息解決方案 – 其中一個透
 
 ## 簡介和必要條件
 
-如果有一或多個競爭取用者，佇列會採取先進先出 (FIFO) 訊息傳遞機制。 FIFO 表示通常預期由接收者依訊息加入佇列的時間順序來接收和處理訊息，而且每則訊息只能由一個訊息取用者接收和處理。 使用佇列的主要優點是達成 *暫時分離* 應用程式元件的: 也就是說，產生者和消費者不需要同時傳送和接收訊息在此同時，因為訊息長期儲存在佇列中。 相關的優點是 *負載調節*, ，可讓產生者和消費者，來傳送和接收訊息不同的速率。
+如果有一或多個競爭取用者，佇列會採取先進先出 (FIFO) 訊息傳遞機制。 FIFO 表示通常預期由接收者依訊息加入佇列的時間順序來接收和處理訊息，而且每則訊息只能由一個訊息取用者接收和處理。 使用佇列的主要優點是達成 *暫時分離* 應用程式元件的 ︰ 也就是說，產生者和消費者不需要同時傳送和接收訊息在此同時，因為訊息長期儲存在佇列中。 相關的優點是 *負載調節*, ，可讓產生者和消費者，來傳送和接收訊息不同的速率。
 
 以下是您在開始本教學課程之前所應遵循的一些管理和先決步驟。 第一步是建立服務命名空間，並取得共用存取簽章 (SAS) 金鑰。 服務命名空間會為每個透過服務匯流排公開的應用程式提供應用程式界限。 建立服務命名空間時，系統會自動產生 SAS 金鑰。 服務命名空間與 SAS 金鑰的結合提供了一個認證，以供服務匯流排驗證對應用程式的存取權。
 
 ### 建立服務命名空間並取得 SAS 金鑰
 
-1. 若要建立服務命名空間，請依照下列所述的步驟 [How To: 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690931.aspx)。
+1. 若要建立服務命名空間，請依照下列所述的步驟 [How To ︰ 建立或修改服務匯流排服務命名空間](https://msdn.microsoft.com/library/azure/hh690931.aspx)。
 
 1. 在主視窗中的 [Azure 傳統入口網站][], ，按一下您在上一個步驟中建立的命名空間的名稱。
 
@@ -99,7 +99,7 @@ Azure 服務匯流排提供兩種全方位訊息解決方案 – 其中一個透
 
 ### 建立可剖析訊息清單的函式
 
-1. 之前 `Main()` 方法中，宣告兩個變數: 其中一個型別 **DataTable**, ，包含 Data.csv 中的訊息清單。 其他應該是強型別類型清單物件 [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)。 後者是教學課程中的後續步驟將使用的代理訊息清單。
+1. 之前 `Main()` 方法中，宣告兩個變數 ︰ 其中一個型別 **DataTable**, ，包含 Data.csv 中的訊息清單。 其他應該是強型別類型清單物件 [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)。 後者是教學課程中的後續步驟將使用的代理訊息清單。
 
     ```
     namespace Microsoft.ServiceBus.Samples
@@ -652,3 +652,4 @@ namespace Microsoft.ServiceBus.Samples
 - [服務匯流排架構](service-bus-architecture.md)
 
 [Azure classic portal]: http://manage.windowsazure.com
+

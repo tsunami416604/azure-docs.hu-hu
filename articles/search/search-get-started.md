@@ -378,3 +378,4 @@ Microsoft Azure 搜尋服務是託管的雲端搜尋服務，可讓您將搜尋�
 [Create your first azure search solution]: search-create-first-solution.md
 [Create a geospatial search app using Azure Search]: search-create-geospatial.md
 
+

@@ -44,7 +44,7 @@
 
 在本節中，您將建立與行動服務連線的新通用 Windows 應用程式。
 
-1.  在 [Azure 傳統入口網站]，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
+1.  在 [Azure classic portal], ，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
 
 
 2. 在 [快速入門] 索引標籤中，按一下 [ **Windows** 下 **選擇平台** 展開 **建立新的 Windows 市集應用程式**。
@@ -53,7 +53,7 @@
 
     ![行動服務快速入門步驟](./media/mobile-services-javascript-backend-windows-store-dotnet-get-started/mobile-quickstart-steps.png)
 
-3. 如果您尚未這麼做，請在您的本機電腦或虛擬機器下載並安裝 [Visual Studio 2013 Express for Windows]。
+3. 如果您尚未這樣做，請下載並安裝 [Visual Studio 2013 Express for Windows] 在您本機電腦或虛擬機器。
 
 4. 按一下 [ **Create TodoItem table** 來建立儲存應用程式資料的資料表。
 
@@ -70,13 +70,13 @@
 ## 後續步驟
 請注意，您已完成快速入門，並了解如何執行行動服務中的其他重要工作：
 
-* [開始使用離線資料同步]  
+* [Get started with offline data sync]
   了解如何使用離線資料同步處理，建立可快速回應和功能強大的應用程式。
 
-* [將驗證新增至行動服務應用程式][開始使用驗證]  
+* [在您的行動服務應用程式中新增驗證 ][Get started with authentication]  
   了解如何透過身分識別提供者來驗證您的應用程式使用者。
 
-* [新增推播通知至您的應用程式][開始使用推播通知]  
+* [將推播通知新增至應用程式][Get started with push notifications]  
   了解如何將非常基本的推播通知傳送至您的應用程式。
 
 * [如何使用.NET 用戶端程式庫](mobile-services-windows-dotnet-how-to-use-client-library.md)  
@@ -102,3 +102,4 @@
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure classic portal]: https://manage.windowsazure.com/
  
+

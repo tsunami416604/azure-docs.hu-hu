@@ -47,3 +47,4 @@ Azure 應用程式服務中有不同的服務「層」可用。 所有層都包�
 ## 連接器和 API 應用程式清單
 請參閱 [連接器和 API 應用程式清單](app-service-logic-connectors-list.md) 連接器和 API 應用程式包含在每個類別目錄的完整清單，其中包括標準連接器、 BizTalk EAI、 高階連接器等。
  
+

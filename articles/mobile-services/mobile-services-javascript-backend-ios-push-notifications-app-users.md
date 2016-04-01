@@ -21,12 +21,12 @@
 
 [AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
 
-在本主題中，您將了解如何將推播通知傳送給 iOS 上已驗證的使用者。 開始本教學課程之前, 完成 [開始使用驗證] 和 [開始使用推播通知] 第一次。
+在本主題中，您將了解如何將推播通知傳送給 iOS 上已驗證的使用者。 開始本教學課程之前, 完成 [Get started with authentication] 和 [Get started with push notifications] 第一次。
 
 在本教學課程中，您會要求使用者先進行驗證、向通知中心註冊進行推播通知，以及更新伺服器指令碼以傳送這些通知給已驗證的使用者。
 
 
-##<a name="register"></a>更新服務以要求註冊的驗證
+##<a name="register"></a>更新服務以要求註冊所需的驗證
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-push-notifications-app-users](../../includes/mobile-services-javascript-backend-push-notifications-app-users.md)]
 
@@ -70,4 +70,5 @@ function insert(item, user, request) {
 [Get started with authentication]: mobile-services-ios-get-started-users.md
 [Get started with push notifications]: mobile-services-javascript-backend-ios-get-started-push.md
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-ios-how-to-use-client-library.md
+
 

@@ -73,7 +73,7 @@ Data Factory 可在美國西部和北歐地區使用。 資料處理站所使用
 您可以使用下列其中一項來撰寫/建立資料處理站：
 
 - **Azure 入口網站**。 Azure 入口網站中的 Data Factory 刀鋒視窗提供豐富的使用者介面，讓您建立資料處理站和連結的服務。  **Data Factory 編輯器**, ，也是屬於入口網站中，讓您輕鬆地透過指定成品的 JSON 定義中建立連結的服務、 資料表、 資料集和管線。 請參閱 [Data Factory 編輯器][data-factory-editor] 編輯器的概觀和 [開始使用 Data Factory][datafactory-getstarted] 如需使用入口網站/編輯器來建立和部署 data factory 的範例。   
-- **Azure PowerShell**。 如果您是 PowerShell 使用者，而且想要使用 PowerShell，而不是入口網站 UI，則可以使用 Azure PowerShell 隨附的 Azure Data Factory Cmdlet 來建立和部署資料處理站。 請參閱 [建立和監視 Azure Data Factory 使用 Azure PowerShell][create-data-factory-using-powershell] 取得簡單範例和 [教學課程: 移動和處理記錄檔使用 Data Factory][adf-tutorial] 的進階範例的使用 PowerShell cmdlet 建立和部署 data factory。 請參閱 [Data Factory Cmdlet 參考][adf-powershell-reference] MSDN Library 上的 Data Factory cmdlet 的完整文件內容。  
+- **Azure PowerShell**。 如果您是 PowerShell 使用者，而且想要使用 PowerShell，而不是入口網站 UI，則可以使用 Azure PowerShell 隨附的 Azure Data Factory Cmdlet 來建立和部署資料處理站。 請參閱 [建立和監視 Azure Data Factory 使用 Azure PowerShell][create-data-factory-using-powershell] 取得簡單範例和 [教學課程 ︰ 移動和處理記錄檔使用 Data Factory][adf-tutorial] 的進階範例的使用 PowerShell cmdlet 建立和部署 data factory。 請參閱 [Data Factory Cmdlet 參考][adf-powershell-reference] MSDN Library 上的 Data Factory cmdlet 的完整文件內容。  
 - **Visual Studio**。 您也可以使用 Visual Studio，以程式設計方式建立、監視及管理 Data Factory。 請參閱 [建立、 監視和管理 Azure data factory 使用 Data Factory.NET SDK](data-factory-create-data-factories-programmatically) 文章以取得詳細資料。  
 - **.NET 類別庫**。 您可以使用 Data Factory .NET SDK，透過程式設計方式建立資料處理站。 請參閱 [建立、 監視和管理 data factory 使用.NET SDK][create-factory-using-dotnet-sdk] 為建立使用.NET SDK 的 data factory 的逐步解說。 請參閱 [Data Factory 類別庫參考][msdn-class-library-reference] 的 Data Factory.NET SDK 的完整文件。  
 - **REST API**。 您也可以使用 Azure Data Factory 服務所公開的 REST API 來建立和部署資料處理站。 請參閱 [Data Factory REST API 參考][msdn-rest-api-reference] 的 Data Factory REST API 的完整文件。 
@@ -97,7 +97,7 @@ Data Factory 可在美國西部和北歐地區使用。 資料處理站所使用
 
 ### HDInsight 支援哪些區域？
 
-請參閱下列文件中的各地區上市: 或 [HDInsight 定價詳細資料][hdinsight-supported-regions]。
+請參閱下列文件中的各地區上市 ︰ 或 [HDInsight 定價詳細資料][hdinsight-supported-regions]。
 
 ### 隨選 HDInsight 叢集使用哪一個區域？
 
@@ -110,7 +110,7 @@ Data Factory 可在美國西部和北歐地區使用。 資料處理站所使用
 - [搭配使用 HDInsight 叢集與替代儲存體帳戶和中繼存放區][hdinsight-alternate-storage]
 - [搭配使用其他儲存體帳戶與 HDInsight Hive][hdinsight-alternate-storage-2]
 
-如果您使用 Data Factory 服務所建立的隨選叢集，則需要指定 HDInsight 連結服務的其他儲存體帳戶，讓 Data Factory 服務代表您註冊它們。 在隨選連結服務 JSON 定義中，使用 **additionalLinkedServiceNames** 屬性來指定替代的儲存體帳戶，如下列 JSON 片段所示:
+如果您使用 Data Factory 服務所建立的隨選叢集，則需要指定 HDInsight 連結服務的其他儲存體帳戶，讓 Data Factory 服務代表您註冊它們。 在隨選連結服務 JSON 定義中，使用 **additionalLinkedServiceNames** 屬性來指定替代的儲存體帳戶，如下列 JSON 片段所示 ︰
  
     {
         "name": "MyHDInsightOnDemandLinkedService",
@@ -176,4 +176,5 @@ Data Factory 可在美國西部和北歐地區使用。 資料處理站所使用
 [hdinsight-alternate-storage]: http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
+
 

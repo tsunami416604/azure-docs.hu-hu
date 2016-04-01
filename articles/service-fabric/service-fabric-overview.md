@@ -90,7 +90,7 @@ Service Fabric ALM 功能讓應用程式管理員/IT 操作員能夠使用簡單
 ## 後續步驟
 
 * 其他資訊： 
-    * [建置應用程式微服務方式為何?](service-fabric-overview-microservices.md)。
+    * [建置應用程式微服務方式為何？](service-fabric-overview-microservices.md)。
     * [技術概觀](service-fabric-technical-overview.md)。
 * 設定 Service Fabric [開發環境](service-fabric-get-started.md)。  
 * 選擇 [程式設計模型架構，](service-fabric-choose-framework.md) 為您的服務。
@@ -99,4 +99,5 @@ Service Fabric ALM 功能讓應用程式管理員/IT 操作員能夠使用簡單
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
  
+
 

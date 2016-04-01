@@ -83,7 +83,7 @@ Azure 排程器工作中的日期時間參考遵循 [ISO 8601 規格](http://en.
 |**_frequency_**| _頻率_ 字串，表示工作是否重複發生的頻率單位。 支援的值為 _"minute"、"hour"、"day"、"week"_ 或 _「 月 」。_|
 |**_interval_**| _間隔_ 這是一個正整數，表示的間隔 _頻率_ ，決定工作將執行的頻率。 例如，如果 _間隔_ 為 3 和 _頻率_ 為"week"，工作重複每隔 3 週。 Azure 排程器最多可支援 _間隔_ 18 個月的每月、 每週頻率 78 週或每日頻率和 548 天的頻率。 Hour 和 minute 頻率，支援的範圍是 1 < = _間隔_ < = 1000年。|
 |**_endTime_**| _EndTime_ 字串指定的工作不應執行的過去日期時間。 具有無效 _endTime_ 過去。 如果沒有 _endTime_ 或計數指定，則工作會無限期執行。 同時 _endTime_ 和 _計數_ 不能包含相同工作。|
-|**_計數_**|<p> _計數_ 是正整數 (大於零)，指定應該在完成之前執行此作業的次數。</p><p> _計數_ 表示之前被判斷為已完成的工作執行的次數。 例如，對於每天執行的工作 _計數_ 5 和開始日期為星期一、 星期五執行之後完成的工作。 如果開始日期是在過去，第一次執行會從建立時間計算。</p><p>如果沒有 _endTime_ 或 _計數_ 指定，則工作會無限期執行。 同時 _endTime_ 和 _計數_ 不能包含相同工作。</p>|
+|**_count_**|<p> _計數_ 是正整數 （大於零），指定應該在完成之前執行此作業的次數。</p><p> _計數_ 表示之前被判斷為已完成的工作執行的次數。 例如，對於每天執行的工作 _計數_ 5 和開始日期為星期一、 星期五執行之後完成的工作。 如果開始日期是在過去，第一次執行會計算從建立時間。</p><p>如果沒有 _endTime_ 或 _計數_ 指定，則工作會無限期執行。 同時 _endTime_ 和 _計數_ 不能包含相同工作。</p>|
 |**_排程_**|具有指定頻率的工作會根據週期排程來改變其週期。 A _排程_ 包含根據分鐘、 小時、 天、 月份天數和週數的修改。|
 
 ## 概觀：工作結構描述的預設值、限制和範例
@@ -92,25 +92,25 @@ Azure 排程器工作中的日期時間參考遵循 [ISO 8601 規格](http://en.
 
 |**JSON 名稱**|**值類型**|**必要？**|**預設值**|**有效值**|**範例**|
 |:---|:---|:---|:---|:---|:---|
-|**_startTime_**|String|否|None|ISO 8601 日期時間|<code>"startTime":"2013年-01-09T09:30:00-08:00"</code>|
-|**_週期_**|Object|否|None|Recurrence 物件|<code>"recurrence": {「 頻率 」: 「 每月 」、 「 間隔 」: 1}</code>|
-|**_frequency_**|String|是|None|"minute"、"hour"、"day"、"week"、"month"|<code>「 頻率 」: 「 小時 」</code> |
-|**_interval_**|Number|否|1|1 到 1000。|<code>「 間隔 」: 10</code>|
-|**_endTime_**|String|否|None|代表未來時間的日期時間值|<code>「 結束 」:"2013年-02-09T09:30:00-08:00"</code> |
-|**_計數_**|Number|否|None|>= 1|<code>「 計數 」: 5</code>|
-|**_排程_**|Object|否|None|Schedule 物件|<code>「 排程 」: {"minute": [30]，"hour": [8,17]}</code>|
+|**_startTime_**|String|否|None|ISO 8601 日期時間|<code>"startTime" : "2013-01-09T09:30:00-08:00"</code>|
+|**_週期_**|Object|否|None|Recurrence 物件|<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code>|
+|**_frequency_**|String|是|None|"minute"、"hour"、"day"、"week"、"month"|<code>"frequency" : "hour"</code> |
+|**_interval_**|Number|否|1|1 到 1000。|<code>"interval":10</code>|
+|**_endTime_**|String|否|None|代表未來時間的日期時間值|<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
+|**_count_**|Number|否|None|>= 1|<code>"count": 5</code>|
+|**_排程_**|Object|否|None|Schedule 物件|<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code>|
 
-## 深入探討: _開始時間_
+## 深入探討 ︰ _開始時間_
 
 下表如何擷取 _startTime_ 控制工作的執行方式。
 
 |**startTime 值**|**無週期**|**循環。 沒有排程**|**搭配排程的週期**|
 |:--|:--|:--|:--|
 |**没有開始時間**|立即執行一次|立即執行一次。 根據從上次執行時間算出的時間執行後續的執行作業|<p>立即執行一次</p><p>執行後續執行作業，根據週期排程</p>|
-|**過去的開始時間**|立即執行一次|<p>計算開始時間之後的第一個未來執行時間和執行在該時間</p><p>從上次執行時間執行後續執行基礎算</p><p>如需進一步說明此資料表之後，請參閱範例</p>|<p>作業啟動 _不一比_ 指定的開始時間。 第一個週期根據從開始時間計算的排程</p><p>根據週期排程執行後續的執行作業</p>|
-|**未來或目前的開始時間**|在指定的開始時間執行一次|<p>在指定的開始時間執行一次</p><p>根據從上次執行時間算出的時間執行後續的執行作業</p>|<p>作業啟動 _不一比_ 指定的開始時間。 第一個週期根據從開始時間計算的排程</p><p>根據週期排程執行後續的執行作業</p>|
+|**過去的開始時間**|立即執行一次|<p>計算開始時間之後的第一個未來執行時間和執行在該時間</p><p>從上次執行時間執行後續執行基礎算</p><p>如需進一步說明此資料表之後，請參閱範例</p>|<p>作業啟動 _不一比_ 指定的開始時間。 第一個根據從開始時間計算的排程</p><p>執行後續執行作業，根據週期排程</p>|
+|**未來或目前的開始時間**|在指定的開始時間執行一次|<p>在指定的開始時間執行一次</p><p>根據從上次執行時間算出的時間執行後續的執行作業</p>|<p>作業啟動 _不一比_ 指定的開始時間。 第一個根據從開始時間計算的排程</p><p>執行後續執行作業，根據週期排程</p>|
 
-我們來看看會發生什麼情況的範例位置 _startTime_ 在過去，是使用 _循環_ 但不含 _排程_。  假設目前的時間是 2015年-04-08 13:00， _startTime_ 是 2015年-04-07 14:00，和 _循環_ 是每 2 天 (以定義 _頻率_: 天和 _間隔_: 2。)請注意， _startTime_ 在過去，與目前時間之前發生
+我們來看看會發生什麼情況的範例位置 _startTime_ 在過去，是使用 _循環_ 但不含 _排程_。  假設目前的時間是 2015年-04-08 13:00， _startTime_ 是 2015年-04-07 14:00，和 _循環_ 是每 2 天 (以定義 _頻率_︰ 天和 _間隔_: 2。)請注意， _startTime_ 在過去，與目前時間之前發生
 
 這些條件 _第一次執行_ 會在 14:00\ 2015年-04-09。 排程器引擎會從開始時間計算執行週期。  過去的任何執行個體都會遭到捨棄。 引擎會使用下一個在未來發生的執行個體。  因此在此情況下， _startTime_ 是 2015年-04-07 下午 2:00，，因此下一個執行個體是從該時間是 2015年-04-09 下午 2:00 的 2 天。 
 
@@ -118,7 +118,7 @@ Azure 排程器工作中的日期時間參考遵循 [ISO 8601 規格](http://en.
 
 最後，當工作具有排程時，如果未在排程中設定小時及/或分鐘，則它們會分別預設為第一次執行的小時及/或分鐘。
 
-## 深入探討: _排程_
+## 深入探討 ︰ _排程_
 
 在一方面， _排程_ 可以 _限制_ 作業執行次數。  例如，如果工作，並將"month"頻率有 _排程_ 唯一日期 31 上的執行時，工作執行，在具有第 31 這些月份<sup>st</sup> 天。
 
@@ -132,8 +132,8 @@ Azure 排程器工作中的日期時間參考遵循 [ISO 8601 規格](http://en.
 |:---|:---|:---|
 |**minutes**|一小時內工作將執行的分鐘數|<ul><li>整數，或</li><li>整數的陣列</li></ul>|
 |**hours**|一天內工作將執行的小時數|<ul><li>整數，或</li><li>整數的陣列</li></ul>|
-|**weekDays**|工作將執行的星期幾。 只能搭配 weekly 頻率指定。|<ul><li>「 星期一 」、 「 星期二 」、"Wednesday"、"Thursday"、 「 星期五 」、 「 星期六 」 或 「 星期日 」</li><li>一連串上述值 (最大值的陣列大小 7)</li></ul>_不_ 區分大小寫|
-|**monthlyOccurrences**|決定將在當月哪幾天執行工作。 只能搭配 monthly 頻率指定。|<ul><li>一連串 monthlyOccurence 物件:</li></ul> <pre>{"day": _天_,，<br />  "occurrence": _出現_<br />}</pre><p> _天_ 工作將執行的一週天數，例如 {Sunday} 是當月的每個星期日。 所需。</p><p>會發生 _出現_ 月、 每日例如 {Sunday，-1} 是當月的最後一個星期日。 選擇性的。</p>|
+|**weekDays**|工作將執行的星期幾。 只能搭配 weekly 頻率指定。|<ul><li>「 星期一 」、 「 星期二 」、"Wednesday"、"Thursday"、 「 星期五 」、 「 星期六 」 或者 「 星期日 」</li><li>任何上述值 （最大值的陣列大小 7） 的陣列</li></ul>_不_ 區分大小寫|
+|**monthlyOccurrences**|決定將在當月哪幾天執行工作。 只能搭配 monthly 頻率指定。|<ul><li>MonthlyOccurence 物件的陣列 ︰</li></ul> <pre>{"day": _天_,，<br />  "occurrence": _出現項目_<br />}</pre><p> _天_ 工作將執行的一週天數，例如 {Sunday} 是當月的每個星期日。 必要。</p><p>會發生 _出現_ 月、 每日例如 {Sunday，-1} 是當月的最後一個星期日。 選用。</p>|
 |**monthDays**|工作將執行的月日。 只能搭配 monthly 頻率指定。|<ul><li>任何值 < =-1 和 > =-31。</li><li>任何值 > = 1 和 < = 31。</li><li>上述值的陣列</li></ul>|
 
 ## 範例：週期排程
@@ -144,37 +144,37 @@ Azure 排程器工作中的日期時間參考遵循 [ISO 8601 規格](http://en.
 
 |**範例**|**說明**|
 |:---|:---|
-|<code>{"hours": [5]}</code>|在每天上午 5 點執行。 Azure 排程器會將 "hours" 中的每個值與 "minutes" 中的每個值逐一比對，以建立一個清單，列出將執行工作的所有時間。|
-|<code>{[分鐘]: [15]，"hours": [5]}</code>|在每天上午 5:15 執行|
-|<code>{[分鐘]: [15]，"hours": [5,17]}</code>|在每天上午 5:15 和下午 5:15 執行|
-|<code>{[分鐘]: [15,45]，"hours": [5,17]}</code>|在每天上午 5:15、上午 5:45、下午 5:15 和下午 5:45 執行|
-|<code>{[分鐘]: [0,15,30,45]}</code>|每隔 15 分鐘執行一次|
-|<code>{hours": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]}</code>|每小時執行一次。 這項工作每小時執行一次。 分鐘會受到 _startTime_, ，如果有指定，或如果未指定，依據建立時間。 比方說，如果開始時間或建立時間 (無論套用哪一個) 為下午 12:25，則工作將會在 00:25、01:25、02:25、…、23:25 執行。 排程相當於擁有工作，並將 _頻率_ 為"hour"， _間隔_ 的 1，但不含任何 _排程_。 差別在於，此排程也可以搭配不同 _頻率_ 和 _間隔_ 來建立其他工作。 例如，如果 _頻率_ 為"month"，排程會執行一次而不是每天月份，如果 _頻率_ 為"day"|
-|<code>{分鐘的時間: [0]}</code>|在每小時整點執行。 這項工作也會每小時執行，但在整點 (例如上午 12 點、上午 1 點、上午 2 點等等。)這相當於 frequency 為 "hour"、startTime 為零分鐘且沒有 schedule (如果 frequency 為 "day") 的工作，但如果 frequency 為 "week" 或 "month"，則排程會分別在一週某一天或一個月某一天執行。|
-|<code>{[分鐘]: [15]}</code>|在過去每小時 15 分鐘執行。 每小時執行，開始於上午 00:15、上午 1:15、上午 2:15 等等，並結束於下午 10:15 和下午 11:15。|
-|<code>{"hours": [17]，"工作日": ["saturday"]}</code>|在每週星期六下午 5 點執行|
-|<code>{hours": [17]，"工作日": ["monday"、"wednesday"、"friday"]}</code>|在每週星期一、星期三、星期五下午 5 點執行|
-|<code>{「 分鐘 」: [15,45]，"hours": [17]，"工作日": ["monday"、"wednesday"、"friday"]}</code>|在每週星期一、星期三、星期五下午 5:15PM 和 5:45 執行|
-|<code>{"hours": [5,17]，"工作日": ["monday"、"wednesday"、"friday"]}</code>|在每週星期一、星期三、星期五上午 5 點和下午 5 點執行|
-|<code>{「 分鐘 」: [15,45]，"hours": [5,17]，"工作日": ["monday"、"wednesday"、"friday"]}</code>|在每週星期一、星期三、星期五上午 5:15、上午 5:45、下午 5:15 和下午 5:45 執行|
-|<code>{「 分鐘 」: [0,15,30,45]，"工作日": ["monday"、"tuesday"、"wednesday"、"thursday"、"friday"]}</code>|在工作日每隔 15 分鐘執行一次|
-|<code>{「 分鐘 」: [0,15,30,45]，"hours": [9、 10、 11、 12、 13、 14、 15、 16] 「 工作日": ["monday"、"tuesday"、"wednesday"、"thursday"、"friday"]}</code>|在工作日上午 9 點與下午 4:45 之間每隔 15 分鐘執行一次|
-|<code>{"工作日": ["sunday"]}</code>|在星期日開始時間執行|
-|<code>{"工作日": ["tuesday"、"thursday"]}</code>|在星期二和星期四開始時間執行|
-|<code>{[分鐘]: [0]，"hours": [6]，"monthDays": [28]}</code>|在每個月的第 28 天上午 6 點執行 (假設 frequency 為 month)|
-|<code>{[分鐘]: [0]，"hours": [6]，"monthDays": [-1]}</code>|在當月最後一天上午 6 點執行。 如果您想要在當月最後一天執行工作，請使用-1，而不是 28、29、30 或 31。|
-|<code>{[分鐘]: [0]，"hours": [6]，"monthDays": [1，-1]}</code>|在每個月第一天和最後一天上午 6 點執行|
-|<code>{monthDays": [1，-1]}</code>|在每個月第一天和最後一天的開始時間執行|
-|<code>{monthDays": [1,14]}</code>|在每個月第一天和第十四天的開始時間執行|
-|<code>{monthDays": [2]}</code>|在當月第二天的開始時間執行|
-|<code>{「 分鐘 」: [0]，"hours": [5]，"monthlyOccurrences": [{"day":"friday"，"occurrence": 1}]}</code>|在每個月第一個星期五上午 5 點執行|
-|<code>{"monthlyOccurrences": [{"day":"friday"，"occurrence": 1}]}</code>|在每個月第一個星期五的開始時間執行|
-|<code>{"monthlyOccurrences": [{"day":"friday"，"occurrence":-3}]}</code>|在每個月倒數第三個星期五的開始時間執行|
-|<code>{「 分鐘 」: [15]，"hours": [5]，"monthlyOccurrences": [{"day":"friday"，"occurrence": 1}，{"day":"friday"，"occurrence":-1}]}</code>|在每個月第一個和最後一個星期五上午 5:15 執行|
-|<code>{"monthlyOccurrences": [{"day":"friday"，"occurrence": 1}，{"day":"friday"，"occurrence":-1}]}</code>|在每個月第一個和最後一個星期五的開始時間執行|
-|<code>{"monthlyOccurrences": [{"day":"friday"，"occurrence": 5}]}</code>|在每個月第五個星期五的開始時間執行 如果一個月沒有第五個星期五，則此工作不會執行，因為它是排定為只在第五個星期五執行。 如果您想要在當月最後一個出現的星期五執行工作，則可以考慮對 occurrence 使用 -1 而不是 5。|
-|<code>{「 分鐘 」: [0,15,30,45]，"monthlyOccurrences": [{"day":"friday"，"occurrence":-1}]}</code>|在當月最後一個星期五每隔 15 分鐘執行一次|
-|<code>{「 分鐘 」: [15,45]，"hours": [5,17]，"monthlyOccurrences": [{"day":"wednesday"、"occurrence": 3}]}</code>|在每個月第 3 個星期三上午 5:15、上午 5:45、下午 5:15 和下午 5:45 執行|
+|<code>{"hours":[5]}</code>|在每天上午 5 點執行。 Azure 排程器會將 "hours" 中的每個值與 "minutes" 中的每個值逐一比對，以建立一個清單，列出將執行工作的所有時間。|
+|<code>{"minutes":[15],"hours":[5]}</code>|在每天上午 5:15 執行|
+|<code>{"minutes":[15],"hours":[5,17]}</code>|在每天上午 5:15 和下午 5:15 執行|
+|<code>{"minutes":[15,45],"hours":[5,17]}</code>|在每天上午 5:15、上午 5:45、下午 5:15 和下午 5:45 執行|
+|<code>{"minutes":[0,15,30,45]}</code>|每隔 15 分鐘執行一次|
+|<code>{hours":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]}</code>|每小時執行一次。 這項工作每小時執行一次。 分鐘會受到 _startTime_, ，如果有指定，或如果未指定，依據建立時間。 比方說，如果開始時間或建立時間 (無論套用哪一個) 為下午 12:25，則工作將會在 00:25、01:25、02:25、…、23:25 執行。 排程相當於擁有工作，並將 _頻率_ 為"hour"， _間隔_ 的 1，但不含任何 _排程_。 差別在於，此排程也可以搭配不同 _頻率_ 和 _間隔_ 來建立其他工作。 例如，如果 _頻率_ 為"month"，排程會執行一次而不是每天月份，如果 _頻率_ 為"day"|
+|<code>{minutes:[0]}</code>|在每小時整點執行。 這項工作也會每小時執行，但在整點 (例如上午 12 點、上午 1 點、上午 2 點等等。)這相當於 frequency 為 "hour"、startTime 為零分鐘且沒有 schedule (如果 frequency 為 "day") 的工作，但如果 frequency 為 "week" 或 "month"，則排程會分別在一週某一天或一個月某一天執行。|
+|<code>{"minutes":[15]}</code>|在過去每小時 15 分鐘執行。 每小時執行，開始於上午 00:15、上午 1:15、上午 2:15 等等，並結束於下午 10:15 和下午 11:15。|
+|<code>{"hours":[17],"weekDays":["saturday"]}</code>|在每週星期六下午 5 點執行|
+|<code>{hours":[17],"weekDays":["monday","wednesday","friday"]}</code>|在每週星期一、星期三、星期五下午 5 點執行|
+|<code>{"minutes":[15,45],"hours":[17],"weekDays":["monday","wednesday","friday"]}</code>|在每週星期一、星期三、星期五下午 5:15PM 和 5:45 執行|
+|<code>{"hours":[5,17],"weekDays":["monday","wednesday","friday"]}</code>|在每週星期一、星期三、星期五上午 5 點和下午 5 點執行|
+|<code>{"minutes":[15,45],"hours":[5,17],"weekDays":["monday","wednesday","friday"]}</code>|在每週星期一、星期三、星期五上午 5:15、上午 5:45、下午 5:15 和下午 5:45 執行|
+|<code>{"minutes":[0,15,30,45], "weekDays":["monday","tuesday","wednesday","thursday","friday"]}</code>|在工作日每隔 15 分鐘執行一次|
+|<code>{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday","tuesday","wednesday","thursday","friday"]}</code>|在工作日上午 9 點與下午 4:45 之間每隔 15 分鐘執行一次|
+|<code>{"weekDays":["sunday"]}</code>|在星期日開始時間執行|
+|<code>{"weekDays":["tuesday", "thursday"]}</code>|在星期二和星期四開始時間執行|
+|<code>{"minutes":[0],"hours":[6],"monthDays":[28]}</code>|在每個月的第 28 天上午 6 點執行 (假設 frequency 為 month)|
+|<code>{"minutes":[0],"hours":[6],"monthDays":[-1]}</code>|在當月最後一天上午 6 點執行。 如果您想要在當月最後一天執行工作，請使用-1，而不是 28、29、30 或 31。|
+|<code>{"minutes":[0],"hours":[6],"monthDays":[1,-1]}</code>|在每個月第一天和最後一天上午 6 點執行|
+|<code>{monthDays":[1,-1]}</code>|在每個月第一天和最後一天的開始時間執行|
+|<code>{monthDays":[1,14]}</code>|在每個月第一天和第十四天的開始時間執行|
+|<code>{monthDays":[2]}</code>|在當月第二天的開始時間執行|
+|<code>{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday","occurrence":1}]}</code>|在每個月第一個星期五上午 5 點執行|
+|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":1}]}</code>|在每個月第一個星期五的開始時間執行|
+|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":-3}]}</code>|在每個月倒數第三個星期五的開始時間執行|
+|<code>{"minutes":[15],"hours":[5],"monthlyOccurrences":[{"day":"friday","occurrence":1},{"day":"friday","occurrence":-1}]}</code>|在每個月第一個和最後一個星期五上午 5:15 執行|
+|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":1},{"day":"friday","occurrence":-1}]}</code>|在每個月第一個和最後一個星期五的開始時間執行|
+|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":5}]}</code>|在每個月第五個星期五的開始時間執行 如果一個月沒有第五個星期五，則此工作不會執行，因為它是排定為只在第五個星期五執行。 如果您想要在當月最後一個出現的星期五執行工作，則可以考慮對 occurrence 使用 -1 而不是 5。|
+|<code>{"minutes":[0,15,30,45],"monthlyOccurrences":[{"day":"friday","occurrence":-1}]}</code>|在當月最後一個星期五每隔 15 分鐘執行一次|
+|<code>{"minutes":[15,45],"hours":[5,17],"monthlyOccurrences":[{"day":"wednesday","occurrence":3}]}</code>|在每個月第 3 個星期三上午 5:15、上午 5:45、下午 5:15 和下午 5:45 執行|
 
 ## 另請參閱
  
@@ -198,4 +198,5 @@ Azure 排程器工作中的日期時間參考遵循 [ISO 8601 規格](http://en.
  [Azure 排程器輸出驗證](scheduler-outbound-authentication.md)
  
   
+
 

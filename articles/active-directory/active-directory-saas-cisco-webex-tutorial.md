@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   Cisco Webex 租用戶
 
-完成本教學課程之後, 您已指派給 Cisco Webex 的 Azure AD 使用者將能夠登入您的 Cisco Webex 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 Cisco Webex 的 Azure AD 使用者將能夠登入您的 Cisco Webex 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
 
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -83,8 +83,8 @@
 
     ![設定應用程式 URL](./media/active-directory-saas-cisco-webex-tutorial/IC777619.png "Configure app URL")
 
-    1.  在 **登入 URL** 文字方塊中，輸入您的 Cisco Webex 租用戶 URL (例如: *http://contoso.webex.com*)。
-    2.  在 **Cisco Webex 回覆 URL** 文字方塊中，輸入您 **Cisco Webex AssertionConsumerService URL** (例如: *https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company*)。
+    1.  在 **登入 URL** 文字方塊中，輸入您的 Cisco Webex 租用戶 URL (例如 ︰ *http://contoso.webex.com*)。
+    2.  在 **Cisco Webex 回覆 URL** 文字方塊中，輸入您 **Cisco Webex AssertionConsumerService URL** (例如 ︰ *https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company*)。
 
 4.  在 **設定單一登入，在 Cisco Webex** ] 頁面上，下載您的憑證，按一下 [ **下載憑證**, ，然後儲存您的電腦上的憑證檔案。
 
@@ -114,7 +114,7 @@
     5.  在 Azure 網站中，在 **Cisco Webex 在設定單一登入** 對話方塊頁面中，複製 **簽發者 URL** 值，並接著將它貼入 **saml (IdP ID) 的簽發者** 文字方塊。
     6.  在 Azure 網站中，在 **Cisco Webex 在設定單一登入** 對話方塊頁面中，複製 **遠端登入 URL** 值，並接著將它貼入 **客戶 SSO 服務登入 URL** 文字方塊。
     7.  從 **NameID 格式** 清單中，選取 **電子郵件地址**。
-    8.  在 **AuthnContextClassRef** 文字方塊中，輸入 **urn: oasis: 名稱: tc: SAML:2.0:ac:classes:Password**。
+    8.  在 **AuthnContextClassRef** 文字方塊中，輸入 **urn: oasis ︰ 名稱 ︰ tc: SAML:2.0:ac:classes:Password**。
     9.  在 Azure 網站中，在 **Cisco Webex 在設定單一登入** 對話方塊頁面中，複製 **遠端登出 URL** 值，並接著將它貼入 **客戶 SSO 服務登出 URL** 文字方塊。
     10. 按一下 [ **更新**。
 
@@ -139,7 +139,7 @@ Cisco Webex 需以手動方式佈建。
     ![新增使用者](./media/active-directory-saas-cisco-webex-tutorial/IC777626.png "Add user")
 
     1.  做為 **帳戶類型**, ，請選取 **主機**。
-    2.  在下列文字方塊中輸入現有的 Azure AD 使用者的資訊: **名字、 姓氏**, ，**使用者名稱**, ，**電子郵件**, ，**密碼**, ，**確認密碼**。
+    2.  在下列文字方塊中輸入現有的 Azure AD 使用者的資訊 ︰ **名字、 姓氏**, ，**使用者名稱**, ，**電子郵件**, ，**密碼**, ，**確認密碼**。
     3.  按一下 [ **新增**。
 
 >[AZURE.NOTE] 您可以使用任何其他 Cisco Webex 使用者帳戶建立工具或 Api 來佈建 AAD 使用者帳戶 Cisco Webex 所提供。
@@ -161,4 +161,5 @@ Cisco Webex 需以手動方式佈建。
     ![是](./media/active-directory-saas-cisco-webex-tutorial/IC767830.png "Yes")
 
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

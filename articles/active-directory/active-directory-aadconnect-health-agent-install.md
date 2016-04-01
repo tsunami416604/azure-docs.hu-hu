@@ -79,7 +79,7 @@
 1. 按一下 [ **啟動**, ，指向 [ **程式**, ，指向 [ **系統管理工具**, ，然後按一下 [ **本機安全性原則**。
 2. 瀏覽至 **Security Settings\Local Policies\User Rights Management** 資料夾，然後按兩下 [產生安全性稽核。
 3. 在 **本機安全性設定** 索引標籤上，確認已列出 AD FS 2.0 服務帳戶。 如果不存在，按一下 [ **新增使用者或群組** 並將其加入清單，然後按一下 **確定**。
-4. 使用提高的權限開啟命令提示字元，並執行下列命令以啟用稽核。<code>auditpol.exe /set /subcategory:"Application Generated"/failure /success:enable</code>
+4. 使用提高的權限開啟命令提示字元，並執行下列命令以啟用稽核。<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
 5. 關閉 [本機安全性原則]，然後開啟 [管理嵌入式管理單元]。  若要開啟 [管理] 嵌入式管理單元，請按一下 [ **啟動**, ，指向 [ **程式**, ，指向 [ **系統管理工具**, ，然後按一下 [AD FS 2.0 管理。
 6. 在 [動作] 窗格中，按一下 [編輯同盟服務屬性]。
 7. 在 **Federation Service 屬性** 對話方塊中，按一下 [ **事件** ] 索引標籤。
@@ -91,8 +91,8 @@
 1. 開啟 **本機安全性原則** 開啟 **伺服器管理員** 在 [開始] 畫面中或桌面上工作列中的伺服器管理員，然後按一下 [ **工具/本機安全性原則**。
 2. 瀏覽至 **安全性本機原則 \ 使用者權限指派** 資料夾，然後再按兩下 **產生安全性稽核**。
 3. 在 **本機安全性設定** 索引標籤上，確認已列出 AD FS 服務帳戶。 如果不存在，按一下 [ **新增使用者或群組** 並將其加入清單，然後按一下 **確定**。
-4. 使用提高的權限開啟命令提示字元，然後執行下列命令以啟用稽核: <code>auditpol.exe /set /subcategory:"Application Generated"/failure /success:enable。</code>
-5. 關閉 **本機安全性原則**, ，然後開啟 **AD FS 管理** 嵌入式管理單元 (在 [伺服器管理員] 中，按一下工具]，然後選取 [AD FS 管理)。
+4. 使用提高的權限開啟命令提示字元，然後執行下列命令以啟用稽核 ︰ <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
+5. 關閉 **本機安全性原則**, ，然後開啟 **AD FS 管理** 嵌入式管理單元 （在 [伺服器管理員] 中，按一下工具]，然後選取 [AD FS 管理）。
 6. 在 [動作] 窗格中，按一下 [ **編輯同盟服務屬性**。
 7. 在 [Federation Service 屬性] 對話方塊中，按一下 [ **事件** ] 索引標籤。
 8. 選取 **成功稽核] 和 [失敗稽核** 核取方塊，然後按一下 [ **確定**。
@@ -135,14 +135,14 @@
 您可以設定 Azure AD Connect Health 代理程式使用 HTTP Proxy。
 
 >[AZURE.NOTE]
-- 使用"Netsh WinHttp set ProxyServerAddress"將無法運作時的代理程式使用 System.Net 提出 web 要求，而不是 Microsoft Windows HTTP 服務。
-- 設定的 Http Proxy 位址將用來傳遞已加密的 Https 訊息中。
-- 不支援已驗證的 proxy (使用 HTTPBasic)。
+- "Netsh WinHttp set Proxy" 無法運作，因為代理程式使用 System.Net (而不是 Microsoft Windows HTTP 服務) 提出 Web 要求。
+- 設定的 Http Proxy 地址會用來當做傳遞加密 Https 訊息。
+- 不支援已驗證的 Proxy (使用 HTTPBasic)。
 
 ### 變更健康情況代理程式 Proxy 組態
 您有下列選項來設定 Azure AD Connect Health 代理程式使用 HTTP Proxy。
 
->[AZURE.NOTE] 您必須重新啟動所有的 Azure AD Connect Health 代理程式服務，以更新的 proxy 設定。 執行下列命令:<br>
+>[AZURE.NOTE] 您必須重新啟動所有的 Azure AD Connect Health 代理程式服務，以更新的 proxy 設定。 執行以下命令：<br>
     重新啟動服務 AdHealth *
 
 #### 匯入現有的 Proxy 設定
@@ -162,7 +162,7 @@
 
     Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 
-範例: *組 AzureAdConnectHealthProxySettings HttpsProxyAddress myproxyserver:443*
+範例 ︰ *組 AzureAdConnectHealthProxySettings HttpsProxyAddress myproxyserver:443*
 
 - 「位址」可以是可解析的 DNS 伺服器名稱或 IPv4 位址
 - 「連接埠」可以省略。 如果省略，則會選擇 443 做為預設連接埠。
@@ -189,4 +189,5 @@
 * [使用 Azure AD Connect Health 搭配 AD FS](active-directory-aadconnect-health-adfs.md)
 * [使用適用於同步處理的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health 常見問題集](active-directory-aadconnect-health-faq.md)
+
 

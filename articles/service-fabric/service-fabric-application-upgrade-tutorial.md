@@ -53,7 +53,7 @@ Visual Studio 工具可以執行自動彙總套件的版本 (藉由選取 **自�
 儲存變更，並立即檢查 **升級應用程式** 方塊。
 
 
-## 步驟 3: 升級您的應用程式
+## 步驟 3 ︰ 升級您的應用程式
 
 請讓您熟悉 [應用程式升級參數](service-fabric-application-upgrade-parameters.md) 和 [升級程序](service-fabric-application-upgrade.md) 以充分了解各種升級參數、 逾時和健康狀態準則套用。 針對此逐步解說，我們會將服務健康情況評估準則保留在預設值 (UnMonitored 模式)。 您可以設定這些項目選取 **升級設定** 和修改所需的參數。
 
@@ -62,7 +62,7 @@ Visual Studio 工具可以執行自動彙總套件的版本 (藉由選取 **自�
 
 現在，應用程式升級會繼續進行，您可以監視使用 Service Fabric 總管 (**升級的進度** ] 索引標籤下的應用程式)。
 
-幾分鐘後，應該就已升級 (完成) 所有升級網域，而 Visual Studio 的輸出視窗應該也會指出升級已完成。 您應該會發現和 *所有* 視覺物件瀏覽器視窗中的將現在已經開始旋轉!
+幾分鐘後，應該就已升級 (完成) 所有升級網域，而 Visual Studio 的輸出視窗應該也會指出升級已完成。 您應該會發現和 *所有* 視覺物件瀏覽器視窗中的將現在已經開始旋轉 ！
 
 您可能會想要嘗試變更版本，從版本 2.0.0 移到版本 3.0.0 來做為練習，或甚至是從版本 2.0.0 移回版本 1.0.0。 練習逾時和健康狀態原則，讓自己更熟練。 當您部署至 Azure 叢集時，所使用的參數將會不同於部署至本機叢集時使用的參數 - 建議保守地設定逾時。
 
@@ -85,4 +85,5 @@ Visual Studio 工具可以執行自動彙總套件的版本 (藉由選取 **自�
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png
 [image3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
+
 

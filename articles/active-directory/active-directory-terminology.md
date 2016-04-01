@@ -38,8 +38,9 @@ Microsoft Online Services 登入小幫手 | 登入小幫手是安裝在用戶端
 使用者識別碼 | 使用者識別碼會使用者在 [登入] 頁面上提供的唯一識別碼，用以存取您的組織已訂閱的 Microsoft 雲端服務。
 公司帳戶或學校帳戶 | 由組織 (公司、學校、非營利組織) 指派給其中一個成員 (員工、學生、客戶) 的使用者帳戶可供登入一或多個組織的 Microsoft 雲端服務訂閱，例如 Office 365 或 Azure。 這些帳戶會儲存在組織的 Azure AD 目錄中，而且通常會在使用者離開組織時刪除。 公司或學校帳戶與 Microsoft 帳戶不同，這類帳戶是由組織的系統管理員 (而非由使用者) 所建立及管理。
 
-## 接下來
+## 後續步驟
 - [以組織方式註冊 Azure](sign-up-organization.md)
 - [Azure 訂閱如何與 Azure AD 產生關聯](active-directory-how-subscriptions-associated-directory.md)
 - [Azure Active Directory 服務限制](active-directory-service-limits-restrictions.md)
+
 

@@ -82,7 +82,7 @@
 
 7. 您的使用者/安全性群組現在可以存取 Azure 資料湖儲存區帳戶。 若要將存取給予特定的使用者，您可以將其新增至安全性群組。 同樣地，若要撤銷使用者的存取，您可以將其從安全性群組中移除。 您也可以將多個安全性群組指派給一個帳戶。 
 
-## <a name="filepermissions"></a>使用者或安全性群組，指派給 Azure 資料湖存放區檔案系統 acl
+## <a name="filepermissions"></a>將使用者或安全性群組以 ACL 型式指派給 Azure 資料湖儲存區檔案系統
 
 藉由指派使用者/安全性群組給 Azure 資料湖檔案系統，您可以針對儲存在 Azure 資料湖儲存區中的資料設定存取控制。 在目前版本中，僅可在檔案系統的根節點設定 ACL。
 
@@ -112,12 +112,12 @@
     ![將權限指派至群組](./media/data-lake-store-secure-data/adl.acl.4.png "Assign permissions to group")
 
 
-    >[AZURE.NOTE] The Execute permission is required for enumeration of directories and is often required when providing a user or group read-only access to data.
+    >[AZURE.NOTE] Execute 權限需要列舉的目錄，並後通常需要提供使用者或群組唯讀存取資料時。
 
 
 6. 在 **加入自訂存取** 刀鋒視窗中，按一下 [ **確定**。 新加入的群組，有相關聯的權限，現在會列示在 **存取** 刀鋒視窗。
 
-    ![將權限指派至群組](./media/data-lake-store-secure-data/adl.acl.5.png "Assign permissions to group")
+    ![指派權限給群組](./media/data-lake-store-secure-data/adl.acl.5.png "Assign permissions to group")
 
     > [AZURE.IMPORTANT] 在目前版本中，您只能有 12 底下的項目 **自訂存取**。 若要新增 12 位以上的使用者，您必須建立安全性群組、新增使用者至安全性群組，並且新增存取權限給該資料湖儲存區帳戶的安全性群組。
 
@@ -160,8 +160,9 @@
 
 - [Azure 資料湖存放區概觀](data-lake-store-overview.md)
 - [將資料從 Azure 儲存體 Blob 複製到資料湖存放區](data-lake-store-copy-data-azure-storage-blob.md)
-- [搭配資料湖存放區使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)
+- [搭配 Data Lake 存放區使用 Azure Data Lake 分析](data-lake-analytics-get-started-portal.md)
 - [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [使用 PowerShell 開始使用資料湖存放區](data-lake-store-get-started-powershell.md)
 - [使用 .NET SDK 開始使用資料湖存放區](data-lake-store-get-started-net-sdk.md)
+
 

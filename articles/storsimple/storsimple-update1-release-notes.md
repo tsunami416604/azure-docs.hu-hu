@@ -69,7 +69,7 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 | 編號 | 功能 | 問題 | 在 Update 中修正的問題 | 適用於實體裝置 | 適用於虛擬裝置 |
 |-----|---------|-------|-----------------|---------------------------------|--------------------------------|
 | 1 | Windows PowerShell for StorSimple | 當使用者從遠端使用 Windows PowerShell for StorSimple 存取 StorSimple 裝置，然後再啟動安裝精靈時，只要輸入 Data 0 IP，就會當機。 這個 Bug 現在已在 Update 1 中修正。 | Update 1 | 是 | 是 |
-| 2 | 恢復出廠預設值 | 在某些情況下，當您執行原廠重設 StorSimple 裝置卡住並顯示此訊息: **重設為原廠正在進行 (階段 8)**。 如果正在進行 Cmdlet 時，按 CTRL+C，就會發生這種情況。 這個 Bug 現在已修正。| Update 1 | 是 | 否 |
+| 2 | 恢復出廠預設值 | 在某些情況下，當您執行原廠重設 StorSimple 裝置卡住並顯示此訊息 ︰ **重設為原廠正在進行 （階段 8）**。 如果正在進行 Cmdlet 時，按 CTRL+C，就會發生這種情況。 這個 Bug 現在已修正。| Update 1 | 是 | 否 |
 | 3 | 恢復出廠預設值 | 雙控制器恢復出廠預設值失敗之後，允許您繼續進行裝置註冊。 這會產生不支援的系統組態。 在 Update 1 中，會顯示錯誤訊息，而且在恢復出廠預設值失敗的裝置上，會阻止進行註冊。 | Update 1 | 是 | 否 |
 | 4 | 恢復出廠預設值 | 在某些情況下，會引發誤判的不相符警示。 在執行 Update 1 的裝置上，將不會再產生不正確的不相符警示。 | Update 1 | 是 | 否 |
 | 5 | 恢復出廠預設值 | 如果恢復出廠預設值在完成前遭到中斷，裝置會進入復原模式，且不允許您存取 Windows PowerShell for StorSimple。 這個 Bug 現在已修正。 | Update 1 | 是 | 否 |
@@ -96,7 +96,7 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 | 6 | Web Proxy | 如果您的 Web Proxy 組態設定將 HTTPS 做為指定的通訊協定，您的裝置對服務通訊將會受到影響並使裝置離線。 同時會在程序中產生支援封裝，耗用裝置上的大量資源。 | 請確定 Web Proxy URL 指定的通訊協定為 HTTP。 如需詳細資訊，請移至 [設定裝置的 web proxy](storsimple-configure-web-proxy.md)。 | 是 | 否 |
 | 7 | Web Proxy | 如果您在註冊的裝置上設定並啟用 Web Proxy，將需要重新啟動裝置上的主動控制器。 | | 是 | 否 |
 | 8 | 雲端高延遲與高 I/O 工作負載 | 當 StorSimple 裝置同時出現雲端延遲情況嚴重 (大約數秒) 和 I/O 工作負載高的情況時，裝置磁碟區會進入降級的狀態，而且 I/O 可能會失敗，發生「裝置未就緒」錯誤。 | 您必須以手動方式將裝置控制器重新開機，或或執行裝置容錯移轉，才能從這種情況下復原。 | 是 | 否 |
-| 9 | Azure PowerShell | 當您使用 StorSimple cmdlet **Get-azurestorsimplestorageaccountcredential & #124;Select-object-First 1-Wait** 選取第一個物件，以便您可以建立新 **VolumeContainer** 物件，此 cmdlet 會傳回所有物件。 | 將此指令程式包裝在括號括住，如下所示: **(Get-Azure-StorSimpleStorageAccountCredential) & #124;Select-object-First 1-Wait** | 是 | 是 |
+| 9 | Azure PowerShell | 當您使用 StorSimple cmdlet **Get-azurestorsimplestorageaccountcredential & #124;Select-object-First 1-Wait** 選取第一個物件，以便您可以建立新 **VolumeContainer** 物件，此 cmdlet 會傳回所有物件。 | 將此指令程式包裝在括號括住，如下所示 ︰ **(Get-Azure-StorSimpleStorageAccountCredential) & #124;Select-object-First 1-Wait** | 是 | 是 |
 | 10| 移轉 | 傳遞多個磁碟區容器以進行移轉時，只有第一個磁碟區容器的最新備份的 ETA 正確。 此外，在移轉第一個磁碟區容器中的前 4 個備份之後，將會開始進行平行移轉。 | 建議您一次移轉一個磁碟區容器。 | 是 | 否 |
 | 11| 移轉 | 還原之後，不會將磁碟區新增至備份原則或虛擬磁碟群組。 | 您必須將這些磁碟區新增至備份原則，才能建立備份。 | 是 | 是 |
 | 12| 移轉 | 完成移轉之後，5000/7000 系列裝置不得存取移轉的資料容器。 | 建議您在移轉完成並認可之後，刪除移轉的資料容器。 | 是 | 否 |
@@ -123,4 +123,5 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 
 - [在裝置上安裝更新的 1.2](storsimple-install-update-1.md)。
  
+
 

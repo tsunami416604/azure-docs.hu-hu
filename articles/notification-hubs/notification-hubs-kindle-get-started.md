@@ -29,12 +29,12 @@
 
 本教學課程需要下列各項：
 
-+ 取得從 Android SDK (我們假設您將使用 Eclipse) <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 的站台</a>.
-+ 請依照下列中的步驟 <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">設定開發環境</a> 若要針對 Kindle 設定您的開發環境。
++ 從 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 網站</a>取得 Android SDK (我們假設您將使用 Eclipse)。
++ 依照<a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">設定開發環境</a>中的步驟，為 Kindle 設定您的開發環境。
 
 ##將新的應用程式新增至開發人員入口網站
 
-1. 首先，在 [Amazon 開發人員入口網站] 建立應用程式。
+1. 首先，建立應用程式中的 [Amazon developer portal]。
 
     ![][0]
 
@@ -79,7 +79,7 @@
 
 將 ADM 程式庫新增至您的 Eclipse 專案：
 
-1. 若要取得 ADM 程式庫，[下載 SDK]。 將 SDK zip 檔案解壓縮。
+1. 若要取得 ADM 程式庫 [download the SDK]。 將 SDK zip 檔案解壓縮。
 2. 在 Eclipse 中，以滑鼠右鍵按一下您的專案，然後按一下 [ **屬性**。 選取 **Java 組建路徑** 在左邊，然後選取 * * 程式庫 * *] 索引標籤頂端。 按一下 [ **新增外部 Jar**, ，然後選取檔案 `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` 從中您解壓縮 Amazon SDK 的目錄。
 3. 下載 NotificationHubs Android SDK (連結)。
 4. 將封裝解壓縮，然後將 `notification-hubs-sdk.jar` 檔案拖曳到 Eclipse 的 `libs` 資料夾中。
@@ -108,7 +108,7 @@
         <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
         <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-3. 插入下列元素，做為應用程式元素的第一個子項。 請務必將 **[YOUR SERVICE NAME]** 的 ADM 訊息處理常式，在下一節 (包括封裝) 中建立，並取代名稱 **[YOUR PACKAGE NAME]** 取代您用來建立您的應用程式的封裝名稱。
+3. 插入下列元素，做為應用程式元素的第一個子項。 請務必將 **[YOUR SERVICE NAME]** 的 ADM 訊息處理常式，在下一節 （包括封裝） 中建立，並取代名稱 **[YOUR PACKAGE NAME]** 取代您用來建立您的應用程式的封裝名稱。
 
         <amazon:enable-feature
               android:name="com.amazon.device.messaging"
@@ -252,7 +252,7 @@
 2. 在模擬器中，從頂端撥動，然後按一下 [ **設定**, ，然後按一下 [ **我的帳戶** 並使用有效的 Amazon 帳戶進行註冊。
 3. 在 Eclipse 中執行應用程式。
 
-> [AZURE.NOTE] 如果發生問題，請檢查模擬器 (或裝置) 的時間。 時間值必須是正確的。 若要變更 Kindle 模擬器的時間，您可以從 Android SDK platform-tools 目錄執行下列命令：
+> [AZURE.NOTE] 如果發生問題，請檢查模擬器 （或裝置） 的時間。 時間值必須是正確的。 若要變更 Kindle 模擬器的時間，您可以從 Android SDK platform-tools 目錄執行下列命令：
 
         adb shell  date -s "yyyymmdd.hhmmss"
 
@@ -281,4 +281,5 @@
 [5]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-cmd-window.png
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
+
 

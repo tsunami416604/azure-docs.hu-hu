@@ -14,7 +14,7 @@
  
     這將會啟動建立快照的工作。 成功建立工作之後，您將會在頁面底部看到通知。
 
-4. 若要監視工作，按一下 [ **檢視作業** 在通知區域 (位於頁面底部)。 
+4. 若要監視工作，按一下 [ **檢視作業** 在通知區域 （位於頁面底部）。 
 
     ![監視手動備份](./media/storsimple-create-manual-backup/HCS_CreateManualBackup2-include.png)
 
@@ -23,4 +23,5 @@
 6. 將篩選選取項目設定為適當的裝置、備份原則和時間範圍。 按一下核取圖示 ![核取圖示](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png) 之後設定篩選器。
 
   備份應該會出現在類別目錄中顯示的備份組清單中。
+
 

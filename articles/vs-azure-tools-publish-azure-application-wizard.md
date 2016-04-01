@@ -33,9 +33,9 @@
 
 1. 啟用 Azure 的 web 應用程式。 若要啟用 web 應用程式以將其從 Visual Studio 發佈至 Azure，您必須將它與 Visual Studio 中的 Azure 雲端服務專案產生關聯。 建立相關聯的雲端服務專案中，開啟 web 應用程式專案的捷徑功能表，然後選擇 [轉換]， **轉換成 Azure 雲端服務專案**。
 
-1. 雲端服務專案加入至方案之後，再次開啟相同的捷徑功能表，然後選擇 [ **發行**。 如需如何啟用 Azure 的應用程式的詳細資訊，請參閱 [How to: 移轉並發行 Web 應用程式至 Azure 雲端服務從 Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx)。
+1. 雲端服務專案加入至方案之後，再次開啟相同的捷徑功能表，然後選擇 [ **發行**。 如需如何啟用 Azure 的應用程式的詳細資訊，請參閱 [How to ︰ 移轉並發行 Web 應用程式至 Azure 雲端服務從 Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx)。
 
->[AZURE.NOTE] 請務必使用系統管理員認證 (系統管理員身分執行) 啟動 Visual Studio。
+>[AZURE.NOTE] 請務必使用系統管理員認證 （系統管理員身分執行） 啟動 Visual Studio。
 
 1. 當您準備好要發行應用程式時，開啟 Azure 雲端服務專案的捷徑功能表，然後選擇 [ **發行**。 下列步驟會顯示發佈 Azure 應用程式精靈。
 
@@ -63,7 +63,7 @@
 
     指定雲端服務的新名稱。 名稱在 Azure 中必須是唯一的。 然後指定接近您或大部分用戶端之資料中心的區域或同質群組。 此名稱也用於 Azure 為雲端服務所建立的新儲存體帳戶。
 
-1. 修改任何設定，您想針對此部署，然後選擇 [發行 **發行** (下一節會提供更多詳細的各種設定)] 按鈕。 若要檢閱發行前的設定，請選擇 [ **下一步** ] 按鈕。
+1. 修改任何設定，您想針對此部署，然後選擇 [發行 **發行** （下一節會提供更多詳細的各種設定）] 按鈕。 若要檢閱發行前的設定，請選擇 [ **下一步** ] 按鈕。
 
     >[AZURE.NOTE] 如果您選擇發佈在此步驟中，您可以監視此部署 Visual Studio 中的狀態。
 
@@ -75,7 +75,7 @@
 
 ### 設定發佈設定
 
-1. 在 **雲端服務** 清單中，執行下列一組步驟:
+1. 在 **雲端服務** 清單中，執行下列一組步驟 ︰
 
    1. 在下拉式清單方塊中，選擇現有的雲端服務。 服務的資料中心位置會隨即出現。 您應該記下這個位置並確定您的儲存體帳戶位置位於相同的資料中心。
 
@@ -105,7 +105,7 @@
 
     您可以選擇更新部署的兩個選項之一，累加或同時。 累加部署一次會更新一個已部署的執行個體，讓您的應用程式保持連線並可供使用者使用。 同時部署會一次更新所有已部署的執行個體。 同時更新的速度比累加更新還快，但如果您選擇此選項，您的應用程式可能無法在更新過程中使用。
 
-    如果無法更新部署，您應該選取此核取方塊，如果您想要在更新部署失敗時自動更新完整部署，請執行完整部署。 完整部署會重設雲端服務的虛擬 IP (VIP) 位址。 如需詳細資訊，請參閱 [How to: 雲端服務保留固定的虛擬 IP 位址](https://msdn.microsoft.com/library/azure/jj614593.aspx)。
+    如果無法更新部署，您應該選取此核取方塊，如果您想要在更新部署失敗時自動更新完整部署，請執行完整部署。 完整部署會重設雲端服務的虛擬 IP (VIP) 位址。 如需詳細資訊，請參閱 [How to ︰ 雲端服務保留固定的虛擬 IP 位址](https://msdn.microsoft.com/library/azure/jj614593.aspx)。
 
 
 1. 若要偵錯您的服務，請選取 **啟用 IntelliTrace** 核取方塊，或如果您要部署 **偵錯** 組態，且想要偵錯雲端服務在 Azure 中，選取 **啟用遠端偵錯工具的所有角色** 核取方塊以部署的遠端偵錯服務。
@@ -113,7 +113,7 @@
 2. 若要從頭到尾分析應用程式，請選取 **啟用程式碼剖析** 核取方塊，然後按一下 **設定** 連結，以顯示程式碼剖析選項。 
 
 
-    >[AZURE.NOTE] You must use Visual Studio Ultimate to enable either IntelliTrace or Tier Interaction Profiling (TIP), and you can't enable both at the same time.
+    >[AZURE.NOTE] 您必須使用 Visual Studio Ultimate 以啟用 IntelliTrace 或階層互動分析 (TIP)，而且您不能兩者同時啟用。
 
     For more information, see [Debugging a Published Cloud Service with IntelliTrace and Visual Studio](https://msdn.microsoft.com/library/azure/ff683671.aspx) and [Testing the Performance of a Cloud Service](https://msdn.microsoft.com/library/azure/hh369930.aspx).
 
@@ -140,5 +140,6 @@
 [使用 IntelliTrace 和 Visual Studio 偵錯發佈的雲端服務](https://msdn.microsoft.com/library/azure/ff683671.aspx)
 
 [測試雲端服務的效能](https://msdn.microsoft.com/library/azure/hh369930.aspx)
+
 
 

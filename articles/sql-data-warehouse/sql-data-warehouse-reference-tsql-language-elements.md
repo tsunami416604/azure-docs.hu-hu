@@ -82,7 +82,7 @@
 - [|= (位元 OR EQUALS)](https://msdn.microsoft.com/library/cc627409.aspx)
 - [&=(位元 AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## 函式
+## Functions
 
 - [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 - [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
@@ -286,3 +286,4 @@
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
+

@@ -30,13 +30,13 @@ Azure IoT Suite 和 Azure IoT 中樞提供的基本功能可供進行 IoT 解決
 
 為您的 IoT 解決方案啟用 IoT 裝置管理時，請考慮下列功能並依據您的企業目標判斷其重要性︰
 
-* **[裝置佈建和探索](#device-provisioning-and-discovery)**: 透過此系統中註冊裝置的程序。
-* **[裝置登錄和裝置型號](#device-registry-and-device-models)**: 裝置型號中的系統和驗證方法所代表的裝置關聯性、 角色中繼資料結構化的使用。
-* **[裝置存取管理](#device-access-management)**: 如何裝置控制裝置資源從雲端服務的存取。
-* **[遠端控制](#remote-control)**: 如何遠端使用者存取裝置，並指示要變更的裝置。
-* **[遠端系統管理](#remote-administration-and-monitoring)**: 讓系統管理員定義裝置母體擴展的健全狀況的處理程序。  
-* **[遠端組態](#remote-configuration)**: 系統管理員變更裝置設定的方法。
-* **[遠端的韌體和軟體更新](#remote-firmware-and-software-update)**: 系統管理員可以透過此更新裝置的韌體和軟體的程序。
+* **[裝置佈建和探索](#device-provisioning-and-discovery)**︰ 透過此系統中註冊裝置的程序。
+* **[裝置登錄和裝置型號](#device-registry-and-device-models)**︰ 裝置型號中的系統和驗證方法所代表的裝置關聯性、 角色中繼資料結構化的使用。
+* **[裝置存取管理](#device-access-management)**︰ 如何裝置控制裝置資源從雲端服務的存取。
+* **[遠端控制](#remote-control)**︰ 如何遠端使用者存取裝置，並指示要變更的裝置。
+* **[遠端系統管理](#remote-administration-and-monitoring)**︰ 讓系統管理員定義裝置母體擴展的健全狀況的處理程序。  
+* **[遠端組態](#remote-configuration)**︰ 系統管理員變更裝置設定的方法。
+* **[遠端的韌體和軟體更新](#remote-firmware-and-software-update)**︰ 系統管理員可以透過此更新裝置的韌體和軟體的程序。
 
 下列各節將更深入說明上述每項裝置管理功能，並提供高階模型以利用 Azure IoT 中樞來實作這些功能。
 
@@ -149,5 +149,6 @@ Azure IoT Suite 預先設定的解決方案提供一個 Azure 網站，可讓您
 [Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
 [Connect your device]: https://azure.microsoft.com/develop/iot/
+
 
 

@@ -41,26 +41,26 @@
 2. 在左的導覽窗格中，選取 **BizTalk 服務** ，然後選取 BizTalk 服務。 
 
     如果您沒有現有的 BizTalk 服務，您可以 [建立 BizTalk 服務](biztalk-provision-services.md)。
-3. 選取 **混合式連線** ] 索引標籤:  
+3. 選取 **混合式連線** ] 索引標籤 ︰  
 ![混合式連線] 索引標籤][HybridConnectionTab]
 
 4. 選取 **建立混合式連線** 或選取 **新增** 在工作列上的按鈕。 輸入以下資訊：
 
     屬性 |描述
 --- | ---
-名稱 |混合式連線名稱必須是唯一的而且不能與 BizTalk 服務相同的名稱。 您可以輸入任何名稱，但要能夠具體表示用途。 範例包括:<br/><br/>薪資*SQLServer*<br/>SupplyList*SharepointServer*<br/>客戶*OracleServer*
-主機名稱 |輸入完整的主機名稱，只是主機名稱或內部部署資源的 IPv4 位址。 範例包括:<br/><br/>mySQLServer<br/>*mySQLServer*。*網域*。 corp.*yourCompany*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*。*yourCompany*.com<br/>10.100.10.10
+名稱 |混合式連線名稱必須是唯一的而且不能與 BizTalk 服務相同的名稱。 您可以輸入任何名稱，但要能夠具體表示用途。 範例包括：<br/><br/>薪資*SQLServer*<br/>SupplyList*SharepointServer*<br/>客戶*OracleServer*
+主機名稱 |輸入完整的主機名稱，只是主機名稱或內部部署資源的 IPv4 位址。 範例包括：<br/><br/>mySQLServer<br/>*mySQLServer*。*網域*。 corp.*yourCompany*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*。*yourCompany*.com<br/>10.100.10.10
 連接埠 |輸入內部部署資源的連接埠號碼。 例如，如果您使用 Web Apps，請輸入連接埠 80 或 443。 如果您使用 SQL Server，請輸入連接埠 1433。
 
 5. 選取核取記號以完成設定。 
 
 #### 其他
 
-- 可建立多個混合式連線。 請參閱 [BizTalk 服務: 版本圖表](biztalk-editions-feature-chart.md) 允許連線的數目。 
+- 可建立多個混合式連線。 請參閱 [BizTalk 服務 ︰ 版本圖表](biztalk-editions-feature-chart.md) 允許連線的數目。 
 - 每個「混合式連線」都是由一對連接字串建立而成：分別是負責「傳送」的應用程式金鑰，以及負責「接聽」的內部部署金鑰。 每一對都有「主要」和「次要」金鑰。 
 
 
-## <a name="LinkWebSite"></a>連結 Azure Web Apps 或 Azure 行動應用程式
+## <a name="LinkWebSite"></a>連結 Azure Web Apps 或 Azure Mobile Apps
 
 若要連結至現有的混合式連線的 Azure Web 應用程式，請選取 **使用現有的混合式連線** 在混合式連線] 分頁中。 請參閱 [Azure Web 應用程式連接到內部部署資源](../web-sites-hybrid-connection-get-started.md)。
 
@@ -73,7 +73,7 @@
 
 1. 登入 [Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
 2. 在左的導覽窗格中，選取 **BizTalk 服務** ，然後選取 BizTalk 服務。 
-3. 選取 **混合式連線** ] 索引標籤:  
+3. 選取 **混合式連線** ] 索引標籤 ︰  
 ![混合式連線] 索引標籤][HybridConnectionTab]
 4. 在工作列上，選取 **On-premises Setup**:  
 ![在內部部署設定][HCOnPremSetup]
@@ -83,11 +83,11 @@
 <!--
 You can also download the Hybrid Connection Manager MSI file and copy the file to your on-premises resource. Specific steps:
 
-1. 複製主要內部部署連接字串。 請參閱 [管理混合式連線](#ManageHybridConnection) 在本主題中的特定步驟。
-2. 下載混合式連線管理員 MSI 檔案。 
-3. 在內部部署資源，請從 MSI 檔案安裝混合式連線管理員。 
-4. 使用 Windows PowerShell，輸入: 
-> Add-hybridconnection-ConnectionString"*您的內部連接字串複製*」 
+1. Copy the on-premises primary Connection String. See [Manage Hybrid Connections](#ManageHybridConnection) in this topic for the specific steps.
+2. Download the Hybrid Connection Manager MSI file. 
+3. On the on-premises resource, install the Hybrid Connection Manager from the MSI file. 
+4. Using Windows PowerShell, type: 
+> Add-HybridConnection -ConnectionString “*Your On-Premises Connection String that you copied*” 
 --> 
 
 #### 其他
@@ -117,7 +117,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 1. 登入 [Azure 傳統入口網站](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
 2. 在左的導覽窗格中，選取 **BizTalk 服務** ，然後選取 BizTalk 服務。 
-3. 選取 **混合式連線** ] 索引標籤:  
+3. 選取 **混合式連線** ] 索引標籤 ︰  
 ![混合式連線] 索引標籤][HybridConnectionTab]
 4. 選取 [混合式連線]。 在工作列上，選取 **管理連線**:  
 ![管理選項][HCManageConnection]
@@ -153,13 +153,14 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 ## 另請參閱
 
-[用於管理 Microsoft Azure 上的 BizTalk 服務 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
-[BizTalk 服務: 版本圖表](biztalk-editions-feature-chart.md)  
-[建立 BizTalk 服務: 使用 Azure 傳統入口網站](biztalk-provision-services.md)  
-[BizTalk 服務: 儀表板、 監視和調整索引標籤](biztalk-dashboard-monitor-scale-tabs.md)
+[用於管理 Azure 上之 BizTalk 服務的 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[BizTalk 服務：版本圖表](biztalk-editions-feature-chart.md)  
+[使用 Azure 傳統入口網站建立「BizTalk 服務」](biztalk-provision-services.md)  
+[BizTalk 服務：儀表板、監視和調整索引標籤](biztalk-dashboard-monitor-scale-tabs.md)
 
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png 
+
 

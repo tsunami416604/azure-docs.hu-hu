@@ -39,19 +39,19 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 Hive 
 
 在遠端 HDInsight 叢集中執行 Hive 查詢時，會使用下列 Cmdlet：
 
-* **新增 AzureRmAccount**: 驗證 PowerShell 至您的 Azure 訂閱
+* **新增 AzureRmAccount**︰ 驗證 PowerShell 至您的 Azure 訂閱
 
-* **新 AzureRmHDInsightHiveJobDefinition**: 建立新 *作業定義* 使用指定的 HiveQL 陳述式
+* **新 AzureRmHDInsightHiveJobDefinition**︰ 建立新 *作業定義* 使用指定的 HiveQL 陳述式
 
-* **開始 AzureRmHDInsightJob**: 將工作定義傳送至 HDInsight、 啟動工作，並傳回 *工作* 物件，可用來檢查工作狀態
+* **開始 AzureRmHDInsightJob**︰ 將工作定義傳送至 HDInsight、 啟動工作，並傳回 *工作* 物件，可用來檢查工作狀態
 
-* **等候 AzureRmHDInsightJob**: 使用工作物件來檢查工作狀態。 它會等到工作完成，或等到等候時間超過。
+* **等候 AzureRmHDInsightJob**︰ 使用工作物件來檢查工作狀態。 它會等到工作完成，或等到等候時間超過。
 
-* **Get AzureRmHDInsightJobOutput**: 用來擷取工作的輸出
+* **Get AzureRmHDInsightJobOutput**︰ 用來擷取工作的輸出
 
-* **叫用 AzureRmHDInsightHiveJob**: 用來執行 HiveQL 陳述式。 這會阻止查詢完成，然後傳回結果
+* **叫用 AzureRmHDInsightHiveJob**︰ 用來執行 HiveQL 陳述式。 這會阻止查詢完成，然後傳回結果
 
-* **使用 AzureRmHDInsightCluster**: 設定要用於目前的叢集 **Invoke AzureRmHDInsightHiveJob** 命令
+* **使用 AzureRmHDInsightCluster**︰ 設定要用於目前的叢集 **Invoke AzureRmHDInsightHiveJob** 命令
 
 下列步驟示範如何使用這些 Cmdlet，在您的 HDInsight 叢集中執行工作：
 
@@ -106,7 +106,7 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 Hive 
             -DefaultStorageAccountKey $storageAccountKey `
             -HttpCredential $creds
             
-2. 開啟新 **PowerShell** 命令提示字元。 將目錄變更至位置 **hivejob.ps1** 檔案，然後使用下列命令來執行指令碼:
+2. 開啟新 **PowerShell** 命令提示字元。 將目錄變更至位置 **hivejob.ps1** 檔案，然後使用下列命令來執行指令碼 ︰
 
         .\hivejob.ps1
 
@@ -117,7 +117,7 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 Hive 
         Display the standard output...
         [ERROR] 3
 
-4. 如前所述， **Invoke-hive** 可用來執行查詢，並等候回應。 使用下列命令，並將 **CLUSTERNAME** 與您的叢集名稱:
+4. 如前所述， **Invoke-hive** 可用來執行查詢，並等候回應。 使用下列命令，並將 **CLUSTERNAME** 與您的叢集名稱 ︰
 
         Use-AzureRmHDInsightCluster -ClusterName $clusterName
         #Get the cluster info so we can get the resource group, storage, etc.
@@ -183,4 +183,5 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 Hive 
 * [搭配使用 Pig 與 HDInsight 上的 Hadoop](hdinsight-use-pig.md)
 
 * [搭配使用 MapReduce 與 HDInsight 上的 Hadoop](hdinsight-use-mapreduce.md)
+
 

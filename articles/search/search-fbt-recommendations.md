@@ -1,12 +1,12 @@
 <properties
-   pageTitle ="Azure 搜尋 「 人氣組合 」 建議 |Microsoft Azure |Apache Mahout |Azure 機器學習 」
-   描述 ="的範例程式碼使用 Apache Mahout 或 Azure 機器學習 Azure 搜尋服務應用程式中加入氣、 新的您，或者也購買了建議 」
-   服務 = 「 搜尋 」
+   pageTitle="Azure 搜尋 "Frequently Bought Together" recommendations | Microsoft Azure | Apache Mahout | Azure Machine Learning"
+   description="Azure 搜尋服務應用程式使用 Apache Mahout 或 Azure Machine Learning 中加入氣、 新的您，或者也購買了建議的範例程式碼"
+   services="search"
    documentationCenter=""
-   作者 ="liamca"
-   管理員 ="pablocas"
-   編輯器 =""
-   標記 ="機器學習 」 / >
+   authors="liamca"
+   manager="pablocas"
+   editor=""
+   tags="machine learning"/>
 
 <tags
    ms.service="search"
@@ -31,13 +31,13 @@
 
 ## 什麼是建議？
 
-*建議* 是一種技術，從目錄中呈現更多項目根據現有的搜尋用來建議項目，並改進轉換的使用者活動 (例如網頁記錄)。  
+*建議* 是一種技術，從目錄中呈現更多項目根據現有的搜尋用來建議項目，並改進轉換的使用者活動 （例如網頁記錄）。  
 
 建議引擎通常定型使用過去的客戶活動，或藉由直接從數位存放區中收集資料。 在此範例中，我使用 Apache Mahout 編譯建議資料。
 
-一般建議如下: 
-- 經常 Bought 在一起: 這購買的客戶也購買了，
-- 客戶對項目的建議: 客戶也購買了，像是
+一般建議如下 ︰ 
+- 經常 Bought 在一起 ︰ 這購買的客戶也購買了，
+- 客戶對項目的建議 ︰ 客戶也購買了，像是
 
 ## 建立 Azure Search 索引
 
@@ -49,7 +49,7 @@
 
 ## 建立一個簡單的 HTML 應用程式來搜尋影片
 
-已完成的 JavaScript web 應用程式可讓您查詢 Azure Search 索引，位於: 
+已完成的 JavaScript web 應用程式可讓您查詢 Azure Search 索引，位於 ︰ 
 \WebSite\starter-template-complete
 
 如果您想要從頭逐步示範，可以在這裡找到原始 CSS:
@@ -70,7 +70,7 @@
 
     mahout itemsimilarity -s SIMILARITY_COSINE --input "wasb://[CONTAINER]@[STORAGEACT].blob.core.windows.net/movie_usage.txt" --output "wasb://[CONTAINER]@[STORAGEACT].blob.core.windows.net/output/" --tempDir "wasb://[CONTAINER]@[STORAGEACT].blob.core.windows.net/temp" -m 5
 
-這應該需要好幾分鐘才能完成，但是儲存體容器時，應該包含下列檔案，其中包含您的電影推薦:
+這應該需要好幾分鐘才能完成，但是儲存體容器時，應該包含下列檔案，其中包含您的電影推薦 ︰
 /movies/output/part-r-00000
 
 此檔案有 3 個資料行：[有片的項目識別碼]、[此影片之相關建議的項目識別碼]、[相似度百分比]
@@ -93,6 +93,7 @@
 
 GroupLens (http://grouplens.org/datasets/hetrec-2011/) 所提供的資料
 
-此頁面，此資料的授權的詳細資訊，請參閱: http://files.grouplens.org/datasets/hetrec2011/hetrec2011-movielens-readme.txt
+此頁面，此資料的授權的詳細資訊，請參閱 ︰ http://files.grouplens.org/datasets/hetrec2011/hetrec2011-movielens-readme.txt
+
 
 

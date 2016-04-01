@@ -95,10 +95,11 @@ Microsoft Azure 媒體服務可讓您提供您使用進階加密標準 (AES) (�
 
 
 ##後續步驟
-現在您已設定內容金鑰授權原則，請移至 [How to: 使用 Azure 傳統入口網站來啟用加密](../media-services-manage-content#encrypt/) 主題。
+現在您已設定內容金鑰授權原則，請移至 [How to ︰ 使用 Azure 傳統入口網站來啟用加密](../media-services-manage-content#encrypt/) 主題。
 
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
 
  
+

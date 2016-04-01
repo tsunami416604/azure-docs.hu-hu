@@ -43,7 +43,7 @@
 
     Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 
->[AZURE.NOTE] LoadBalancerDistribution 可設定為 sourceIP 以用於 2-tuple (來源 IP、 目的地 IP) 負載平衡、 sourceipprotocol 以用於 3-tuple (來源 IP、 以 IP、 通訊協定) 負載平衡，或者如果您想 5-tuple 負載平衡的預設行為，則無
+>[AZURE.NOTE] LoadBalancerDistribution 可設定為 sourceIP 以用於 2-tuple （來源 IP、 目的地 IP） 負載平衡、 sourceipprotocol 以用於 3-tuple （來源 IP、 以 IP、 通訊協定） 負載平衡，或者如果您想 5-tuple 負載平衡的預設行為，則無
 
 
 擷取端點負載平衡器分配模式組態
@@ -79,7 +79,7 @@
 
 ### 可變更分配模式的雲端服務組態
 
-您可以利用 Azure SDK for.NET 2.5 (將於 11 月發行) 來更新雲端服務
+您可以利用 Azure SDK for.NET 2.5 （將於 11 月發行） 來更新雲端服務
 雲端服務的端點設定是設定於 .csdef 中。 若要更新雲端服務部署的負載平衡器分配模式，部署升級是必要的。
 適用於端點設定的 .csdef 變更範例如下：
 
@@ -133,7 +133,7 @@
     </InputEndpoint> 
     </LoadBalancedEndpointList>
 
-LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、 sourceipprotocol 以用於 3-tuple 同質性或 none (適用於沒有任何關聯性。 也就是 5-tuple)
+LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、 sourceipprotocol 以用於 3-tuple 同質性或 none （適用於沒有任何關聯性。 也就是 5-tuple)
 
     Response
 
@@ -152,4 +152,5 @@ LoadBalancerDistribution 的值可以是 sourceIP 以用於 2-tuple 同質性、
 [開始設定網際網路面向的負載平衡器](load-balancer-internet-getstarted.md)
 
 [設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md) 
+
 

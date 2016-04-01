@@ -25,19 +25,19 @@
 
 本文只涵蓋搭配 HDInsight 使用 Azure CLI。 如需如何使用 Azure CLI 的一般指引，請參閱 [安裝和設定 Azure CLI][azure-command-line-tools]。
 
-##先決條件
+##必要條件
 
 開始閱讀本文之前，您必須符合下列必要條件：
 
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 - **Azure CLI** -請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md) 取得安裝和組態資訊。
-- **連接到 Azure**, ，使用下列命令:
+- **連接到 Azure**, ，使用下列命令 ︰
 
         azure login
 
     如需有關如何使用工作或學校帳戶進行驗證的詳細資訊，請參閱 [從 Azure CLI 連接至 Azure 訂用帳戶](xplat-cli-connect.md)。
     
-- **切換至 Azure 資源管理員模式**, ，使用下列命令:
+- **切換至 Azure 資源管理員模式**, ，使用下列命令 ︰
 
         azure config mode arm
 
@@ -63,7 +63,7 @@
 
 - **HDInsight 叢集名稱**
 
-- **位置**: 其中一個 Azure 資料中心支援 HDInsight 叢集。 如需支援的位置，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
+- **位置**︰ 其中一個 Azure 資料中心支援 HDInsight 叢集。 如需支援的位置，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
 - **預設儲存體帳戶**: HDInsight 使用 Azure Blob 儲存體容器做為預設檔案系統。 必須要有 Azure 儲存體帳戶，才能夠建立 HDInsight 叢集。
 
@@ -87,7 +87,7 @@
 
     如需使用 Azure 入口網站取得資訊的詳細資訊，請參閱 「 檢視、 複製和重新產生儲存體存取金鑰 」 一節 [建立、 管理或刪除儲存體帳戶][azure-create-storageaccount]。
 
-- **(選擇性)預設 Blob 容器**: **azure hdinsight 叢集建立** 命令會建立容器，如果不存在。 如果您選擇預先建立容器，您可以使用下列命令：
+- **（選擇性）預設 Blob 容器**: **azure hdinsight 叢集建立** 命令會建立容器，如果不存在。 如果您選擇預先建立容器，您可以使用下列命令：
 
     建立 azure 儲存體容器-帳戶名稱 」<Storage Account Name>"-帳戶金鑰 <Storage Account Key> [] ContainerName
 
@@ -172,4 +172,5 @@
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "List and show clusters"
+
 

@@ -71,7 +71,7 @@
 
 1. 選取您想要移除的服務識別項 (伺服陣列名稱)，以便從 [服務清單] 刀鋒視窗開啟 [服務] 刀鋒視窗。
 2. 在 [伺服器] 刀鋒視窗上，按一下動作列中的 [刪除] 按鈕。
-3. 在確認方塊中輸入，以確認服務名稱。 (例如: sts.contoso.com)
+3. 在確認方塊中輸入，以確認服務名稱。 (例如 ︰ sts.contoso.com)
 4. 按一下 [刪除] 按鈕。
 <br><br>
 
@@ -86,9 +86,9 @@ Azure AD Connect Health 支援下列內建角色。
 
 | 角色 | 權限 |
 | ----------- | ---------- |
-| 擁有者 | 擁有者可以使用 ***管理存取*** (例如指派角色給使用者/群組中)， ***檢視的所有資訊*** (例如都檢視警示) 從入口網站和 ***變更設定*** (例如電子郵件通知) 在 Azure AD Connect Health。 <br>根據預設，Azure AD 全域系統管理員會被指派此角色，而且無法變更。  |
-|參與者|  參與者可以 ***檢視的所有資訊*** (例如都檢視警示) 從入口網站和 ***變更設定*** (例如電子郵件通知) 在 Azure AD Connect Health。|
-|讀取者| 讀者可以 ***檢視的所有資訊*** (例如都檢視警示) 從在 Azure AD Connect Health 入口網站。|
+| 擁有者 | 擁有者可以使用 ***管理存取*** （例如指派角色給使用者/群組中）， ***檢視的所有資訊*** （例如都檢視警示） 從入口網站和 ***變更設定*** （例如電子郵件通知） 在 Azure AD Connect Health。 <br>根據預設，Azure AD 全域系統管理員會指派此角色，便無法變更。  |
+|參與者|  參與者可以 ***檢視的所有資訊*** （例如都檢視警示） 從入口網站和 ***變更設定*** （例如電子郵件通知） 在 Azure AD Connect Health。|
+|讀取者| 讀者可以 ***檢視的所有資訊*** （例如都檢視警示） 從在 Azure AD Connect Health 入口網站。|
 
 其他即使有在入口網站體驗中提供的所有角色 (例如「使用者存取系統管理員」或「DevTest 實驗室使用者」) ，對 Azure AD Connect Health 內的存取則沒有影響。
 
@@ -96,9 +96,9 @@ Azure AD Connect Health 支援下列內建角色。
 
 Azure AD Connect 支援兩個層級的管理存取：
 
-- ***所有服務執行個體***: 這是大多數客戶的建議的途徑，控制對所有服務執行個體 (例如 ADFS 伺服陣列) 存取 Azure AD Connect Health 正在監視的所有角色類型。
+- ***所有服務執行個體***︰ 這是大多數客戶的建議的途徑，控制對所有服務執行個體 （例如 ADFS 伺服陣列） 存取 Azure AD Connect Health 正在監視的所有角色類型。
 
-- ***服務執行個體***: 在某些情況下，您可能需要將根據角色類型，或是由服務執行個體的存取。 在此情況下，您可以管理服務執行個體層級的存取。  
+- ***服務執行個體***︰ 在某些情況下，您可能需要將根據角色類型，或是由服務執行個體的存取。 在此情況下，您可以管理服務執行個體層級的存取。  
 
 如果使用者有權存取目錄或服務執行個體層級，則會被授與權限。
 
@@ -145,4 +145,5 @@ Azure AD Connect 支援兩個層級的管理存取：
 * [使用 Azure AD Connect Health 搭配 AD FS](active-directory-aadconnect-health-adfs.md)
 * [使用適用於同步處理的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health 常見問題集](active-directory-aadconnect-health-faq.md)
+
 

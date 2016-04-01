@@ -4,7 +4,7 @@
 
 下列程式碼會傳送通知給 Windows 市集、Windows Phone、iOS 和 Android 裝置。 
 
-如果您在完成時，建立主控台應用程式，請略過步驟 1-3 [開始使用通知中樞] [入門]。
+如果您在完成時，建立主控台應用程式，請略過步驟 1-3 [開始使用通知中樞][get-started]。
 
 1. 在 Visual Studio 中建立新的 Visual C# 主控台應用程式： 
 
@@ -14,7 +14,7 @@
 
         Install-Package Microsoft.Azure.NotificationHubs
     
-    這會加入到使用 Azure 通知中心 SDK 參考 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification 中樞 NuGet 封裝</a>. 
+    這會使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 封裝</a> 加入對 Azure 通知中樞 SDK 的參考。 
 
 3. 開啟 Program.cs 檔案，並新增下列 `using` 陳述式：
 
@@ -75,7 +75,7 @@
 
 6. 在上述程式碼，取代 `<hub name>` 和 `<connection string with full access>` 與通知中樞名稱和連接字串預留位置 *DefaultFullSharedAccessSignature* 先前取得的。
 
-7. 新增以下幾行，在 **Main** 方法:
+7. 新增以下幾行，在 **Main** 方法 ︰
 
          SendNotificationAsync();
          Console.ReadLine();
@@ -99,4 +99,5 @@
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
+
 

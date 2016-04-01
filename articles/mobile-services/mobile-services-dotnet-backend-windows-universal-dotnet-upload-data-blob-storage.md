@@ -41,7 +41,7 @@
 + [Azure 儲存體帳戶](../storage-create-storage-account.md)
 + 連接到電腦的相機或其他影像擷取裝置。
 
-本教學課程會以行動服務快速入門為基礎。 在開始本教學課程之前，您必須先完成 [開始使用行動服務]。
+本教學課程會以行動服務快速入門為基礎。 在開始本教學課程之前，您必須先完成 [Get started with Mobile Services]。
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-configure-blob-storage](../../includes/mobile-services-dotnet-backend-configure-blob-storage.md)]
 
@@ -74,4 +74,5 @@
 [Get started with Mobile Services]: ../mobile-services-windows-store-dotnet-get-started.md
 [How To Create a Storage Account]: ../storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
+
 

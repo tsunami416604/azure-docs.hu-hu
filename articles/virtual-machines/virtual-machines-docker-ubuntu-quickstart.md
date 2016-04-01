@@ -27,11 +27,11 @@
 
 > [AZURE.NOTE]Azure Marketplace 範本所建立的 VM 並未裝載遠端 docker 用戶端所管理的 Docker 遠端 API。 若要啟用從遠端控制此 VM 上的 Docker 主機，請參閱 [使用 HTTPS 執行 Docker](https://docs.docker.com/articles/https/) 或依照 [使用 Docker VM 延伸模組，從 Azure 傳統入口網站](virtual-machines-docker-with-portal.md) 或 [使用 Docker VM 延伸模組，從 Azure CLI](virtual-machines-docker-with-xplat-cli-install.md)。 
 <!-- -->
-如果您想要自動化從 Windows Azure 的 Docker VM，您可以 [install the Docker Toolbox](https://docs.docker.com/installation/windows/) 或取得 Docker.exe [from Chocolatey](https://chocolatey.org/packages/docker)。
+如果您想要自動化從 Windows Azure 的 Docker VM，您可以 [安裝 Docker 工具箱](https://docs.docker.com/installation/windows/) 或取得 Docker.exe [從 Chocolatey](https://chocolatey.org/packages/docker)。
 
 ## 登入入口網站
 
-這部分很簡單，除非您沒有 Azure 帳戶。 [太容易，取得一個免費](http://azure.microsoft.com/pricing/free-trial/)!
+這部分很簡單，除非您沒有 Azure 帳戶。 [太容易，取得一個免費](http://azure.microsoft.com/pricing/free-trial/)！
 
 ## 使用 Docker 映像從 Canonical 和 MSOpenTech 建立 VM
 
@@ -43,7 +43,7 @@
 
 > ![在映像庫中尋找映像](./media/virtual-machines-docker-ubuntu-quickstart/DockerOnUbuntuServerMSOpenTech.png)
 
-3. 提供使用者名稱和密碼執行個體或內容 **.pub** 檔案 (ssh rsa 格式)，以使用憑證啟用 SSH。 (下圖顯示指定使用者名稱和密碼的組合。)然後按下 **建立** 底部。
+3. 提供使用者名稱和密碼執行個體或內容 **.pub** 檔案 （ssh rsa 格式），以使用憑證啟用 SSH。 (下圖顯示指定使用者名稱和密碼的組合。)然後按下 **建立** 底部。
 
 > ![設定 VM 執行個體](./media/virtual-machines-docker-ubuntu-quickstart/CreateVMDockerUbuntuPwd.png)
 
@@ -64,7 +64,7 @@
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 後續步驟
 
-你想要開始使用 [Docker]!
+你想要開始使用 [Docker]！
 
 <!--Anchors-->
 [Log on to the Portal]: #logon
@@ -79,4 +79,5 @@
 [Canonical]: http://www.canonical.com/
 [MSOpenTech]: http://msopentech.com/
  
+
 

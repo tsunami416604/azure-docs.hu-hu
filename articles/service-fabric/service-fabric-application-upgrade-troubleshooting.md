@@ -32,7 +32,7 @@
 
 ### 識別失敗類型
 
-輸出中的 **Get-servicefabricapplicationupgrade**, ，**FailureTimestampUtc** 識別的時間戳記 (UTC) 的 Service fabric 偵測升級失敗， **FailureAction** 所觸發。  **FailureReason** 識別的三個可能高階原因失敗的其中一個:
+輸出中的 **Get-servicefabricapplicationupgrade**, ，**FailureTimestampUtc** 識別的時間戳記 （UTC) 的 Service fabric 偵測升級失敗， **FailureAction** 所觸發。  **FailureReason** 識別的三個可能高階原因失敗的其中一個 ︰
 
 1. UpgradeDomainTimeout-指出特定的升級網域花太長時間執行和 **UpgradeDomainTimeout** 過期。
 2. OverallUpgradeTimeout-指出整體升級花太長時間執行和 **UpgradeTimeout** 過期。
@@ -140,13 +140,13 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ~~~
 
-調查健康狀態檢查失敗首先需要了解 Service Fabric 健康狀態模型，但是即使沒有這類深入了解，我們可以看到兩個服務的健康情況不良: *fabric: / DemoApp/Svc3* 和 *fabric: / DemoApp/Svc2* 以及錯誤健康狀態報告 (為"InjectedFault"在此情況下)。 在此範例中，2 4 的服務中有狀況不良，低於預設目標 0%健康狀態不良 (*MaxPercentUnhealthyServices*)。
+調查健康狀態檢查失敗首先需要了解 Service Fabric 健康狀態模型，但是即使沒有這類深入了解，我們可以看到兩個服務的健康情況不良 ︰ *fabric: / DemoApp/Svc3* 和 *fabric: / DemoApp/Svc2* 以及錯誤健康狀態報告 (為"InjectedFault"在此情況下)。 在此範例中，2 4 的服務中有狀況不良，低於預設目標 0%健康狀態不良 (*MaxPercentUnhealthyServices*)。
 
 升級在失敗時擱置，指定 **FailureAction** 手動啟動升級時，因此我們可以調查失敗狀態中的即時系統如有需要採取任何進一步的動作之前。
 
 ### 從暫止升級復原
 
-使用回復 **FailureAction**, ，沒有任何復原所需因為升級會自動在失敗時回復。 使用手動 **FailureAction**, ，有數個復原選項:
+使用回復 **FailureAction**, ，沒有任何復原所需因為升級會自動在失敗時回復。 使用手動 **FailureAction**, ，有數個復原選項 ︰
 
 1. 手動觸發回復
 2. 以手動方式繼續進行升級的其餘部分
@@ -154,7 +154,7 @@ ServiceTypeHealthPolicyMap              :
 
  **Start-servicefabricapplicationrollback** 命令可以在任何時候用來啟動回復應用程式。 此命令成功傳回時，回復要求即已在系統中註冊，馬上就會啟動。
 
- **繼續 Resume-servicefabricapplicationupgrade** 命令可以用來以手動方式繼續進行升級的其餘部分一次一個升級網域。 在此模式中，系統只會執行安全檢查 - 不會執行其他健康狀態檢查。 此命令僅能使用的時機 *UpgradeState* 顯示 *RollingForwardPending*, ，表示目前升級網域已完成升級，但是下一個升級網域尚未啟動 (擱置中)。
+ **繼續 Resume-servicefabricapplicationupgrade** 命令可以用來以手動方式繼續進行升級的其餘部分一次一個升級網域。 在此模式中，系統只會執行安全檢查 - 不會執行其他健康狀態檢查。 此命令僅能使用的時機 *UpgradeState* 顯示 *RollingForwardPending*, ，表示目前升級網域已完成升級，但是下一個升級網域尚未啟動 （擱置中）。
 
  **Update-servicefabricapplicationupgrade** 命令可以用來繼續監視的升級安全和健康情況檢查正在執行。
 
@@ -196,7 +196,7 @@ Service Fabric 將所有百分比轉譯為健康狀態評估的實體實際數�
 
 ### 我未對應用程式升級指定健康狀態原則，但是升級還是因為我從未指定的逾時而失敗
 
-當未對升級要求，它們取自提供健全狀況原則 *ApplicationManifest.xml* 目前應用程式版本 (例如，如果將應用程式 X 從 v1 升級至 v2，為應用程式 X v1 指定的應用程式健全狀況原則會使用)。 如果應該對升級使用不同的健康狀態原則，則需要指定原則做為應用程式升級 API 呼叫的一部分。 請注意，指定為 API 呼叫一部分的原則只適用於升級持續時間。 完成升級後，在指定的原則 *ApplicationManifest.xml* 用。
+當未對升級要求，它們取自提供健全狀況原則 *ApplicationManifest.xml* 目前應用程式版本 （例如，如果將應用程式 X 從 v1 升級至 v2，為應用程式 X v1 指定的應用程式健全狀況原則會使用）。 如果應該對升級使用不同的健康狀態原則，則需要指定原則做為應用程式升級 API 呼叫的一部分。 請注意，指定為 API 呼叫一部分的原則只適用於升級持續時間。 完成升級後，在指定的原則 *ApplicationManifest.xml* 用。
 
 ### 指定了不正確的逾時。
 
@@ -226,4 +226,5 @@ Service Fabric 將所有百分比轉譯為健康狀態評估的實體實際數�
 
 [資料序列化](service-fabric-application-upgrade-data-serialization.md)
  
+
 

@@ -38,7 +38,7 @@ Microsoft Azure Machine Learning 包含許多功能強大的機器學習和資�
 
 在本快速入門指南中，我們將使用加州乳製品產量和訂價資料。 此資料包含數項乳製品之產量及奶油 (基準商品) 價格的每月相關資訊。
 
-資料在這篇文章，以及 R 指令碼中使用，可以在 [這裡下載] [下載]。 此資料原先是綜合自威斯康辛大學，網址為 http://future.aae.wisc.edu/tab/production.html。
+這篇文章，以及 R 指令碼中使用的資料可以是 [這裡下載][download]。 此資料原先是綜合自威斯康辛大學，網址為 http://future.aae.wisc.edu/tab/production.html。
 
 ### 組織
 
@@ -54,35 +54,35 @@ Microsoft Azure Machine Learning 包含許多功能強大的機器學習和資�
 
 * 最後，我們將針對牛奶產量建立季節性的時間序列預測模型。
 
-##<a id="mlstudio"></a>Machine Learning Studio 中的 R 語言互動
+##<a id="mlstudio"></a>與 Machine Learning Studio 中的 R 語言互動
 
 本節將帶領您了解在 Machine Learning Studio 環境中與 R 程式設計語言互動的一些基本概念。 R 語言提供一個功能強大的工具，可在 Azure Machine Learning 環境內建立自訂的分析和資料操作模組。
 
-我將使用 RStudio 來進行小規模的 R 程式碼開發、測試及偵錯。 此程式碼再剪下並貼到 Machine Learning Studio 準備好執行中的 [執行 R 指令碼] [執行-r-指令碼] 模組。  
+我將使用 RStudio 來進行小規模的 R 程式碼開發、測試及偵錯。 此程式碼會再剪下並貼到 [執行 R 指令碼][execute-r-script] 準備好要執行的 Machine Learning Studio 中的模組。  
 
 ###執行 R 指令碼模組
 
-在 Machine Learning Studio 中，[執行 R 指令碼] 的 [執行-r-指令碼] 模組內執行 R 指令碼。 [圖 1 顯示 Machine Learning Studio 中的 [執行 R 指令碼] [執行-r-指令碼] 模組的範例。
+在 Machine Learning Studio，R 指令碼執行內 [執行 R 指令碼][execute-r-script] 模組。 舉例來說， [執行 R 指令碼][execute-r-script] [圖 1 顯示 Machine Learning Studio 中的模組。
 
- ![R 程式設計語言: Machine Learning Studio 中已選取的執行 R 指令碼模組][] 1
+ ![R 程式設計語言：在 Machine Learning Studio 中選取的執行 R 指令碼模組。][1]
 
 *圖 1. 顯示已選取 [執行 R 指令碼模組的 Machine Learning Studio 環境。*
 
-參照圖 1，讓我們看看一些使用 [執行 R 指令碼] 的 [執行-r-指令碼] 模組的 Machine Learning Studio 環境的重要部分。
+參照圖 1，讓我們看看一些使用 Machine Learning Studio 環境的主要部分 [執行 R 指令碼][execute-r-script] 模組。
 
 - 實驗中的模組會顯示在中間的窗格。
 
 - 右窗格的上半部包含一個可檢視和編輯 R 指令碼的視窗。  
 
-- 右窗格的下半部顯示 [執行 R 指令碼] [執行-r-指令碼] 的部分屬性。 您可以按一下此窗格上適當的點來檢視錯誤和輸出記錄檔。
+- 右窗格的下半部顯示的某些屬性 [執行 R 指令碼][execute-r-script]。 您可以按一下此窗格上適當的點來檢視錯誤和輸出記錄檔。
 
-我們當然，將會討論 [執行 R 指令碼] [執行-r-指令碼] 在本文的其餘部分更詳細。
+我們將當然，討論 [執行 R 指令碼][execute-r-script] 在本文的其餘部分更詳細。
 
-使用複雜的 R 函式時，建議您在 RStudio 中進行編輯、測試及偵錯。 與進行任何軟體開發相同，請以累加方式擴充您的程式碼，並在小型的簡單測試案例上進行測試。 然後剪下並貼入 [執行 R 指令碼] 的 [執行-r-指令碼] 模組的 R 指令碼] 視窗中的函式。 這個方法既可讓您控制 RStudio 整合式開發環境 (IDE)，也可讓您控制 Azure Machine Learning 的強大功能。  
+使用複雜的 R 函式時，建議您在 RStudio 中進行編輯、測試及偵錯。 與進行任何軟體開發相同，請以累加方式擴充您的程式碼，並在小型的簡單測試案例上進行測試。 然後剪下並貼入 R 指令碼] 視窗中的函式 [執行 R 指令碼][execute-r-script] 模組。 這個方法既可讓您控制 RStudio 整合式開發環境 (IDE)，也可讓您控制 Azure Machine Learning 的強大功能。  
 
 ####執行 R 程式碼
 
-當您按一下以執行實驗，就會執行 [執行 R 指令碼] [執行-r-指令碼] 模組中的所有 R 程式碼 **執行** ] 按鈕。 當執行完成時，核取記號會出現在 [執行 R 指令碼] 的 [執行-r-指令碼] 圖示。
+中的所有 R 程式碼 [執行 R 指令碼][execute-r-script] 模組會在您按一下以執行實驗時執行 **執行** ] 按鈕。 核取記號完成執行之後，會出現在 [執行 R 指令碼][execute-r-script] 圖示。
 
 ####Azure Machine Learning 的防禦型 R 編碼
 
@@ -93,24 +93,24 @@ Microsoft Azure Machine Learning 包含許多功能強大的機器學習和資�
 
 ####在 Machine Learning Studio 中進行 R 程式碼偵錯和測試
 
-再次提醒您，建議您在 RStudio 中進行小規模的 R 程式碼測試和偵錯。 不過，有您要追蹤在 [Execute R Script] [執行-r-指令碼] 本身 R 程式碼問題的情況。 此外，在 Machine Learning Studio 中檢查結果也是相當好的做法。
+再次提醒您，建議您在 RStudio 中進行小規模的 R 程式碼測試和偵錯。 不過，還有您將必須探究 R 程式碼問題的情況下 [執行 R 指令碼][execute-r-script] 本身。 此外，在 Machine Learning Studio 中檢查結果也是相當好的做法。
 
 R 程式碼的執行及在 Azure Machine Learning 平台上的執行所產生的輸出主要都在 output.log 中。 有些其他資訊會顯示在 error.log 中。  
 
-如果在執行 R 程式碼時，Machine Learning Studio 中發生錯誤，您的第一個行動方針應該是查看 error.log。 此檔案可能包含可協助您了解並更正錯誤的實用錯誤訊息。 若要檢視 error.log，請按一下 **檢視錯誤記錄檔** 上 **屬性] 窗格** [執行 R 指令碼] [執行-r-指令碼] 包含錯誤。
+如果在執行 R 程式碼時，Machine Learning Studio 中發生錯誤，您的第一個行動方針應該是查看 error.log。 此檔案可能包含可協助您了解並更正錯誤的實用錯誤訊息。 若要檢視 error.log，請按一下 **檢視錯誤記錄檔** 上 **屬性] 窗格** 的 [執行 R 指令碼][execute-r-script] 包含錯誤。
 
-比方說，使用 [執行 R 指令碼] 的 [執行-r-指令碼] 模組中未定義變數 y，執行下列 R 程式碼:
+例如，執行下列 R 程式碼中，含有未定義變數 y 在 [執行 R 指令碼][execute-r-script] 模組 ︰
 
     x <- 1.0
     z <- x + y
 
 此程式碼無法執行，導致發生錯誤狀況。 按一下 **檢視錯誤記錄檔** 上 **屬性] 窗格** 便會產生 [圖 2 所示。
 
-  ![錯誤訊息快顯][] 2
+  ![錯誤訊息快顯][2]
 
 *圖 2. 錯誤訊息快顯。*
 
-看來我們必須查看 output.log 來找出 R 錯誤訊息。 按一下 [執行 R 指令碼] [執行-r-指令碼]，然後按一下 [ **檢視 output.log** 項目 **屬性] 窗格** 右邊。 新的瀏覽器視窗隨即開啟，我看到下列訊息。
+看來我們必須查看 output.log 來找出 R 錯誤訊息。 按一下 [ [執行 R 指令碼][execute-r-script] ，然後按一下 **檢視 output.log** 項目 **屬性] 窗格** 右邊。 新的瀏覽器視窗隨即開啟，我看到下列訊息。
 
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
@@ -127,7 +127,7 @@ R 程式碼的執行及在 Azure Machine Learning 平台上的執行所產生的
 
 ####Machine Learning Studio 中的封裝
 
-Azure Machine Learning 附有超過 350 個預先安裝的 R 語言封裝。 您可以使用 [執行 R 指令碼] 的 [執行-r-指令碼] 模組中的下列程式碼來擷取預先安裝套件的清單。
+Azure Machine Learning 附有超過 350 個預先安裝的 R 語言封裝。 您可以使用下列程式碼中的 [執行 R 指令碼][execute-r-script] 模組來擷取預先安裝的封裝清單。
 
     data.set <- data.frame(installed.packages())
     maml.mapOutputPort("data.set")
@@ -136,7 +136,7 @@ Azure Machine Learning 附有超過 350 個預先安裝的 R 語言封裝。 您
 
 ### RStudio 簡介
 
-RStudio 是一個廣泛使用、適用於 R 的 IDE。我將使用 RStudio 對本快速入門指南中所用的 R 程式碼進行編輯、測試及偵錯。 R 程式碼測試並備妥之後，您只需剪下並貼上從 RStudio 編輯器，在 Machine Learning Studio 的 [執行 R 指令碼] 的 [執行-r-指令碼] 模組。  
+RStudio 是一個廣泛使用、適用於 R 的 IDE。我將使用 RStudio 對本快速入門指南中所用的 R 程式碼進行編輯、測試及偵錯。 R 程式碼測試並備妥之後，只要剪下並貼上從 RStudio 編輯器 Machine Learning studio [執行 R 指令碼][execute-r-script] 模組。  
 
 如果您的桌上型電腦上並未安裝 R 程式設計語言，建議您現在安裝。 免費下載開放原始碼 R 語言的完整 R 封存網路 (或稱為 cran) 在 [http://www.r-project.org/](http://www.r-project.org/)。 有提供適用於 Windows、MacOS 及 Linux/UNIX 的下載項目。 請選擇附近的鏡像，然後依照下載指示進行。 此外，CRAN 也包含大量實用的分析和資料操作封裝。
 
@@ -144,11 +144,11 @@ RStudio 是一個廣泛使用、適用於 R 的 IDE。我將使用 RStudio 對�
 
 RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/200107586-Using-RStudio。
 
-我使用 RStudio [附錄 A] 中的 [appendixa] 提供一些額外資訊。  
+我使用 RStudio 中的提供一些額外資訊 [附錄 A][appendixa]。  
 
-##<a id="scriptmodule"></a>取得資料及執行 R 指令碼模組
+##<a id="scriptmodule"></a>將資料輸入執行 R 指令碼模組及從此模組輸出
 
-在本節中，我們將討論將資料，進出 [執行 R 指令碼] [執行-r-指令碼] 模組。 我們將回顧如何處理各種資料型別讀取進出的 [執行 R 指令碼] 的 [執行-r-指令碼] 模組。
+本節中我們將討論如何將資料傳入與傳出 [執行 R 指令碼][execute-r-script] 模組。 我們將回顧如何處理各種資料型別來讀取傳入與傳出 [執行 R 指令碼][execute-r-script] 模組。
 
 您稍早下載的 Zip 檔案中有本節的完整程式碼。
 
@@ -182,17 +182,17 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
 - 將拖放 **csdairydata.csv 資料集** 拖曳到實驗。
 
-- 在 **搜尋實驗項目** 左窗格頂端的方塊中，輸入 [執行 R 指令碼] [執行-r-指令碼]。 您會看到該模組出現在搜尋清單中。
+- 在 **搜尋實驗項目** 方塊頂端左窗格中，輸入 [執行 R 指令碼][execute-r-script]。 您會看到該模組出現在搜尋清單中。
 
-- 拖放到您的選盤上的 [執行 R 指令碼] [執行-r-指令碼] 模組。  
+- 將拖放 [執行 R 指令碼][execute-r-script] 模組至您的選盤。  
 
-- 輸出連接 **csdairydata.csv 資料集** 最左邊的輸入 (**Dataset1**) 的 [執行 R 指令碼] [執行-r-指令碼]。
+- 輸出連接 **csdairydata.csv 資料集** 最左邊的輸入 (**Dataset1**) 的 [執行 R 指令碼][execute-r-script]。
 
 - **別忘了按一下 [儲存]！**  
 
 此時，您的實驗應該會看起來像圖 3。
 
-![加州乳製品分析實驗資料集和執行 R 指令碼模組][] 3
+![含有資料集和 [執行 R 指令碼] 模組的「加州乳製品分析實驗」][3]
 
 *圖 3. 加州乳製品分析實驗資料集和執行 R 指令碼模組。*
 
@@ -200,7 +200,7 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
 讓我們看看已載入到實驗中的資料。 在此實驗中，按一下 [上的輸出 **cadairydata.csv 資料集** ，然後選取 **視覺化**。 您應該會看到類似圖 4 的內容。  
 
-![Cadairydata.csv 資料集的摘要][] 4
+![cadairydata.csv 資料集的摘要][4]
 
 *圖 4. Cadairydata.csv 資料集的摘要。*
 
@@ -225,15 +225,15 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
 ### 執行 R 指令碼模組的資料輸入
 
-讓我們看看 [執行 R 指令碼] 的 [執行-r-指令碼] 模組的輸入。 在此範例中我們會把加州乳製品資料讀入 [執行 R 指令碼] 的 [執行-r-指令碼] 模組。  
+讓我們看看所需的輸入 [執行 R 指令碼][execute-r-script] 模組。 在此範例中，我們將會讀取加州乳製品資料讀入 [執行 R 指令碼][execute-r-script] 模組。  
 
-有三個可能的輸入，[執行 R 指令碼] 的 [執行-r-指令碼] 模組。 視您的應用方式而定，您可以使用這當中的任何一個或所有輸入。 使用不接受任何輸入的 R 指令碼也是十分合理的。  
+有三個可能的輸入 [執行 R 指令碼][execute-r-script] 模組。 視您的應用方式而定，您可以使用這當中的任何一個或所有輸入。 使用不接受任何輸入的 R 指令碼也是十分合理的。  
 
 讓我們從左到右看看這當中的每一個輸入。 您可以將游標放到輸入上方並閱讀工具提示，來查看每個輸入的名稱。  
 
 #### 指令碼組合
 
-指令碼組合 」 輸入可讓您將 zip 檔案的內容傳入到 [執行 R 指令碼] [執行-r-指令碼] 模組。 您可以使用下列其中一個命令將 Zip 檔案的內容讀入到 R 程式碼中。
+指令碼組合 」 輸入可讓您將 zip 檔案的內容傳入 [執行 R 指令碼][execute-r-script] 模組。 您可以使用下列其中一個命令將 Zip 檔案的內容讀入到 R 程式碼中。
 
     source("src/yourfile.R") # Reads a zipped R script
     load("src/yourData.rdata") # Reads a zipped R data file
@@ -250,15 +250,15 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
 4.  將拖放 zip 檔案，從 **資料集** 到 **ML Studio 畫布**。
 
-5.  輸出連接 **zip 資料** 圖示以 **指令碼套件組合** [執行 R 指令碼] [執行-r-指令碼] 模組的輸入。
+5.  輸出連接 **zip 資料** 圖示以 **指令碼套件組合** 輸入 [執行 R 指令碼][execute-r-script] 模組。
 
-6.  型別 `source()` 含有您 zip 檔案名稱的程式碼視窗中 [執行 R 指令碼] [執行-r-指令碼] 模組的函式。 在我的案例中，我鍵入了 `source("src/SimplePlot.R")`。  
+6.  型別 `source()` 函式，以您的程式碼視窗中的 zip 檔案名稱 [執行 R 指令碼][execute-r-script] 模組。 在我的案例中，我鍵入了 `source("src/SimplePlot.R")`。  
 
 7.  請確定您按一下 **儲存**。
 
-完成這些步驟之後，則 [執行 R 指令碼] 的 [執行-r-指令碼] 模組將在實驗執行時，執行 R 指令碼的 zip 檔案中。 此時，您的實驗應該會看起來像圖 5。
+完成這些步驟之後， [執行 R 指令碼][execute-r-script] 模組將執行 R 指令碼的 zip 檔案中的實驗執行時。 此時，您的實驗應該會看起來像圖 5。
 
-!使用已壓縮之的 R 指令碼的 [實驗][] 6
+![使用已壓縮之 R 指令碼的實驗][6]
 
 *圖 5. 使用已壓縮之的 R 指令碼的實驗。*
 
@@ -268,7 +268,7 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
     cadairydata <- maml.mapInputPort(1)
 
-執行您的實驗即可 **執行** ] 按鈕。 當執行完成時，按一下 [執行 R 指令碼] [執行-r-指令碼] 模組，然後按一下 **檢視輸出記錄檔** [屬性] 窗格。 您的瀏覽器中應該會出現一個新頁面，當中顯示 output.log 檔案的內容。 當您向下捲動時，您應該會看到類似下列的內容。
+執行您的實驗即可 **執行** ] 按鈕。 執行完成時，按一下 [執行 R 指令碼][execute-r-script] 模組，然後按一下 [ **檢視輸出記錄檔** [屬性] 窗格。 您的瀏覽器中應該會出現一個新頁面，當中顯示 output.log 檔案的內容。 當您向下捲動時，您應該會看到類似下列的內容。
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -305,7 +305,7 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
 這些結果大致上如預期，資料框架中有 228 個觀察值和 9 個資料行。 我們可以看到資料行名稱、R 資料類型及每個資料行的範例。
 
-> [AZURE.NOTE] 這個相同的列印的輸出是從 [執行 R 指令碼] 的 [執行-r-指令碼] 模組的 [R 裝置] 輸出可以便利地取得。 我們將討論在下一節中的 [執行 R 指令碼] [執行-r-指令碼] 模組的輸出。  
+> [AZURE.NOTE] 這個相同的列印的輸出是從 [R 裝置] 輸出可以便利地取得 [執行 R 指令碼][execute-r-script] 模組。 我們將討論的輸出 [執行 R 指令碼][execute-r-script] 下一節中的模組。  
 
 ####資料集2
 
@@ -321,7 +321,7 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
 之後執行實驗，按一下結果 Dataset1 輸出連接埠，然後按一下 [ **視覺化**。 您應該會看到類似圖 6 的內容。
 
-![視覺效果的加州乳製品資料輸出][] 7
+![加州乳製品資料的輸出視覺化][7]
 
 *圖 6. 加州乳製品資料的輸出視覺化。*
 
@@ -329,17 +329,17 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
 ### R 裝置輸出
 
-[執行 R 指令碼] 的 [執行-r-指令碼] 模組的 [裝置] 輸出包含訊息和圖形輸出。 來自 R 的標準輸出和標準錯誤訊息都會傳送到 [R 裝置] 輸出連接埠。  
+[裝置] 輸出 [執行 R 指令碼][execute-r-script] 模組包含訊息和圖形輸出。 來自 R 的標準輸出和標準錯誤訊息都會傳送到 [R 裝置] 輸出連接埠。  
 
 若要檢視 [R 裝置] 輸出，按一下連接埠，然後在 **視覺化**。 我們會看到如圖 7 中來自 R 指令碼的標準輸出和標準錯誤。
 
-![標準輸出和標準錯誤，從 [R 裝置] 連接埠][] 8
+![來自 [R 裝置] 連接埠的標準輸出和標準誤差][8]
 
 *圖 7. 標準輸出和標準錯誤，從 [R 裝置] 連接埠。*
 
 向下捲動之後，我們會看到如圖 8 中來自 R 指令碼的圖形輸出。  
 
-![R 裝置] 連接埠圖形輸出][] 9
+![來自 [R 裝置] 連接埠的圖形輸出][9]
 
 *圖 8. 來自 [R 裝置] 連接埠圖形輸出。*  
 
@@ -353,7 +353,7 @@ RStudio 的教學課程介紹位於 https://support.rstudio.com/hc/sections/2001
 
 ### 類型轉換
 
-現在，我們可以將加州乳製品資料讀入 [執行 R 指令碼] 的 [執行-r-指令碼] 模組中的 R 程式碼中，我們需要確保資料行中的資料具有預期的類型和格式。  
+現在，我們可以將加州乳製品資料讀入 R 程式碼中 [執行 R 指令碼][execute-r-script] 模組中，我們需要確保資料行中的資料具有預期的類型和格式。  
 
 R 是動態指定類型的語言，這表示會視需要強制將資料類型從一種類型轉換成另一種類型。 R 中不可部分完成的資料類型包括數值、邏輯及字元。 因素類型可用來簡潔地儲存分類資料。 您可以在參考中找到更多有關資料型別 [附錄 B-進階閱讀](#appendixb)。
 
@@ -373,7 +373,7 @@ R 是動態指定類型的語言，這表示會視需要強制將資料類型從
 
 看看我們在上一節中輸入之資料行的資料類型：除了標示為 'Month' 的資料行為字元類型之外，所有資料行的類型都是數值。 讓我們將其轉換成因素，然後測試結果。  
 
-我已經刪除建立散佈圖矩陣的程式碼行，並新增將 'Month' 資料行轉換成因素的程式碼行。 在我的實驗我只會剪下並貼上程式碼視窗的 [執行 R 指令碼] 的 [執行-r-指令碼] 模組的 R 程式碼。 您也可以更新 Zip 檔案，然後將它上傳到 Azure Machine Learning Studio，但這需要數個步驟。  
+我已經刪除建立散佈圖矩陣的程式碼行，並新增將 'Month' 資料行轉換成因素的程式碼行。 在我的實驗我將只是剪下並將 R 程式碼貼到程式碼視窗的 [執行 R 指令碼][execute-r-script] 模組。 您也可以更新 Zip 檔案，然後將它上傳到 Azure Machine Learning Studio，但這需要數個步驟。  
 
     ## Only one of the following two lines should be used
     ## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
@@ -462,9 +462,9 @@ R 資料框架支援強大的篩選功能。 藉由在資料列或資料行使�
 
 有一些篩選是我們應該在資料集上執行的。 如果您看一下 cadariydata 資料框架中的資料行，您會看到兩個不必要的資料行。 第一個資料行只存放了資料列編號，這不是很有用。 第二個資料行 Year.Month 包含重複的資訊。 我們可以使用下列 R 程式碼輕鬆地排除這些資料行。
 
-> [AZURE.NOTE] 從現在起本節中，我將只會示範您在 [執行 R 指令碼] 的 [執行-r-指令碼] 模組中新增額外的程式碼。 將每個新的一行 **之前**  `str()` 函式。 我會使用此函式在 Azure Machine Learning Studio 中確認我的結果。
+> [AZURE.NOTE] 從現在起本節中，我將只會示範您額外的程式碼中新增 [執行 R 指令碼][execute-r-script] 模組。 將每個新的一行 **之前**  `str()` 函式。 我會使用此函式在 Azure Machine Learning Studio 中確認我的結果。
 
-我的 R 程式碼，在 [執行 R 指令碼] 的 [執行-r-指令碼] 模組中新增下列這一行。
+我的 R 程式碼中新增下列這一行 [執行 R 指令碼][execute-r-script] 模組。
 
     # Remove two columns we do not need
     cadairydata <- cadairydata[, c(-1, -2)]
@@ -632,7 +632,7 @@ R 資料框架支援強大的篩選功能。 藉由在資料列或資料行使�
 
 我們會看到值已經轉換。 現在，牛奶產量大幅超過所有其他乳製品產量，還記得我們現在看的是對數刻度。
 
-此時會清除我們的資料，而我們已經準備好進行一些建立模型工作。 看看我們 [執行 R 指令碼] 的 [執行-r-指令碼] 模組的摘要結果資料集輸出的視覺化，您會看到 'Month' 資料行是 'Categorical' 具有 12 個唯一值，一次，就像我們。
+此時會清除我們的資料，而我們已經準備好進行一些建立模型工作。 查看結果資料集的輸出之視覺化摘要我們 [執行 R 指令碼][execute-r-script] 模組，您會看到 'Month' 資料行是 'Categorical' 具有 12 個唯一值，一次，就像我們。
 
 ##<a id="timeseries"></a>時間序列物件和相互關聯分析
 
@@ -649,7 +649,7 @@ POSIXct 時間序列類別是常用且相對簡單的類別。 此時間序列�
 
 ### 時間序列物件範例
 
-讓我們開始進行我們的範例。 將拖放 **新** 到您的實驗的 [執行 R 指令碼] [執行-r-指令碼] 模組。 連接新的 [執行 R 指令碼] [執行-r-指令碼] 模組的 Dataset1 輸入連接埠的現有 [執行 R 指令碼] 的 [執行-r-指令碼] 模組的結果 Dataset1 輸出連接埠。
+讓我們開始進行我們的範例。 將拖放 **新** [執行 R 指令碼][execute-r-script] 模組到您的實驗。 連接現有的結果 Dataset1 輸出連接埠 [執行 R 指令碼][execute-r-script] 模組的資料集 1] 輸入新的連接埠 [執行 R 指令碼][execute-r-script] 模組。
 
 如同我為前幾個範例所做的，隨著我們循序進行此範例，在某些點，我將只會示範在每個步驟累加的額外 R 程式碼行。  
 
@@ -736,7 +736,7 @@ POSIXct 時間序列類別是常用且相對簡單的類別。 此時間序列�
 
 請執行此程式碼，然後看看結果如何。 在 [R 裝置] 連接埠產生的圖應該看起來像圖 16。
 
-![選取的變數中的散佈圖矩陣][] 17
+![所選變數的散佈圖矩陣][17]
 
 *[圖 16。 所選變數的散佈圖矩陣。*
 
@@ -801,7 +801,7 @@ POSIXct 時間序列類別是常用且相對簡單的類別。 此時間序列�
 
 最後一行程式碼會建立成對的散佈圖。 執行 R 程式碼之後，散佈圖的結果會如圖 17 所示。
 
-![已去除趨勢並已標準化之時間序列的成對散佈圖][] 18
+![已去除趨勢並已標準化之時間序列的成對散佈圖][18]
 
 *[圖 17。 已去除趨勢並已標準化之時間序列的成對散佈圖。*
 
@@ -917,15 +917,15 @@ POSIXct 時間序列類別是常用且相對簡單的類別。 此時間序列�
 
 3.  `data.frame()` 函式會強制將 `do.call()` 產生的結果轉換成資料框架。
 
-請注意，資料列名稱會在資料框架的資料行中。 這麼做，會保留資料列名稱何時可從 [執行 R 指令碼] [執行-r-指令碼] 的輸出。
+請注意，資料列名稱會在資料框架的資料行中。 當從輸出資料列進行保留名稱 [執行 R 指令碼][execute-r-script]。
 
 執行程式碼會產生如圖 19 所示的輸出時我 **視覺化** 結果資料集] 連接埠輸出。 資料列名稱如預期般在第一個資料行中。
 
-![從相互關聯分析的結果輸出][] 20
+![來自相互關聯分析的結果輸出][20]
 
 *[圖 19。 來自相互關聯分析結果輸出。*
 
-##<a id="seasonalforecasting"></a>時間序列範例: 季節性預測
+##<a id="seasonalforecasting"></a>時間序列範例：季節性預測
 
 我們的資料現在是適用於分析的形式，而我們已判斷出變數之間沒有重大的相互關聯。 讓我們繼續來建立時間序列預測模型。 我們將使用此模型預測 2013 年 12 個月的加州牛奶產量。
 
@@ -935,9 +935,9 @@ POSIXct 時間序列類別是常用且相對簡單的類別。 此時間序列�
 
 ### 建立用於分析的資料框架
 
-先加入 **新** [執行 R 指令碼] [執行-r-指令碼] 模組至您的實驗。 連接 **結果資料集** 現有 [執行 R 指令碼] [執行-r-指令碼] 模組的輸出 **Dataset1** 輸入新模組。 結果應該會看起來像圖 20。
+先加入 **新** [執行 R 指令碼][execute-r-script] 模組至您的實驗。 連接 **結果資料集** 的現有輸出 [執行 R 指令碼][execute-r-script] 模組 **Dataset1** 輸入新模組。 結果應該會看起來像圖 20。
 
-![加入新的執行 R 指令碼模組實驗][] 21
+![新增了 [執行 R 指令碼] 模組的實驗][21]
 
 *[圖 20。 加入新的執行 R 指令碼模組的實驗。*
 
@@ -1069,7 +1069,7 @@ POSIXct 時間序列類別是常用且相對簡單的類別。 此時間序列�
 
 這樣看起來較好。 所有的項都變得有意義。 不過，2e-16 值是預設值，因此不應該太認真看待。  
 
-讓我們繪製顯示趨勢曲線的加州乳製品產量資料時間序列圖，來做為例行性測試。 我新增下列程式碼在 Azure Machine Learning [執行 R 指令碼] [執行-r-指令碼] 模型 (非 RStudio) 中建立模型並繪圖。 結果顯示在「圖 23」中。
+讓我們繪製顯示趨勢曲線的加州乳製品產量資料時間序列圖，來做為例行性測試。 我在 Azure Machine Learning 中新增下列程式碼 [執行 R 指令碼][execute-r-script] 模型 (非 RStudio) 來建立模型並繪圖。 結果顯示在「圖 23」中。
 
     milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
@@ -1127,7 +1127,7 @@ POSIXct 時間序列類別是常用且相對簡單的類別。 此時間序列�
 
 我們會看到模型不再具有截距項，並且擁有 12 個重要的月份因素。 這就是我們想要看到的。
 
-讓我們繪製另一張加州乳製品產量資料的時間序列圖，看看季節性模型運作得如何。 我在 Azure Machine Learning [執行 R 指令碼] [執行-r-指令碼] 來建立模型並繪圖中新增下列程式碼。
+讓我們繪製另一張加州乳製品產量資料的時間序列圖，看看季節性模型運作得如何。 我在 Azure Machine Learning 中新增下列程式碼 [執行 R 指令碼][execute-r-script] 來建立模型並繪圖。
 
     milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
 
@@ -1261,7 +1261,7 @@ POSIXct 時間序列類別是常用且相對簡單的類別。 此時間序列�
 
 我們可以從這些結果看出，將季節性因素新增到模型中可大幅降低 RMS 誤差。 不出所料，訓練資料的 RMS 誤差比預測的 RMS 誤差小一些。
 
-##<a id="appendixa"></a>附錄 A:rstudio 指南
+##<a id="appendixa"></a>附錄 A：RStudio 指南
 
 RStudio 已經有相當充分的說明，因此在本附錄中，我將提供一些 RStudio 文件中重要小節的連結，讓您能夠輕鬆上手。
 
@@ -1281,7 +1281,7 @@ RStudio 已經有相當充分的說明，因此在本附錄中，我將提供一
 
     Https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting 會記錄中斷點疑難排解功能。
 
-##<a id="appendixb"></a>附錄 b: 進階閱讀
+##<a id="appendixb"></a>附錄 B：進階閱讀
 
 此 R 程式設計教學課程涵蓋您搭配 Azure Machine Learning Studio 使用 R 語言時所需的基本知識。 如果您不熟悉 R，CRAN 有提供兩本簡介：
 
@@ -1301,7 +1301,7 @@ RStudio 已經有相當充分的說明，因此在本附錄中，我將提供一
 
 - 如果您想要深入探索 R 中的進階主題，可以看看 Hadley Wickham 所著的《Advanced R》。 這本書的線上版本提供免費下載，網址為 http://adv-r.had.co.nz/。
 
-時間序列分析 「 CRAN 工作檢視中可以找到 R 時間序列封裝目錄: http://cran.r-project.org/web/views/TimeSeries.html。 如需特定時間序列物件封裝的資訊，您應該參考該封裝的相關文件。
+時間序列分析 「 CRAN 工作檢視中可以找到 R 時間序列封裝目錄 ︰ http://cran.r-project.org/web/views/TimeSeries.html。 如需特定時間序列物件封裝的資訊，您應該參考該封裝的相關文件。
 
 Paul Cowpertwait 與 Andrew Metcalfe 所著的 《Introductory Time Series with R》介紹如何使用 R 進行時間序列分析。 許多理論文本皆有提供 R 範例。
 
@@ -1346,4 +1346,5 @@ Paul Cowpertwait 與 Andrew Metcalfe 所著的 《Introductory Time Series with 
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
+
 

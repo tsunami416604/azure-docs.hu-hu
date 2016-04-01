@@ -102,7 +102,7 @@ Azure 入口網站是您在管理集合的效能層級的其中一個選項。 �
     //Now persist these changes to the database by replacing the original resource
     Offer updated = await client.ReplaceOfferAsync(offer);
 
-請瀏覽 [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 檢視其他範例，並深入了解我們提供的方法: 
+請瀏覽 [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 檢視其他範例，並深入了解我們提供的方法 ︰ 
 
 - [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
 - [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
@@ -121,4 +121,5 @@ Azure 入口網站是您在管理集合的效能層級的其中一個選項。 �
 若要深入了解 DocumentDB，請參閱 Azure DocumentDB [文件](http://azure.microsoft.com/documentation/services/documentdb/)。 
 
 [1]: ./media/documentdb-performance-levels/img1.png 
+
 

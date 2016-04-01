@@ -19,23 +19,23 @@
 # 如何使用 Azure Mobile Engagement 使用者介面 (UI)
  
 ## 簡介：
-當您應用程式中整合 Azure Mobile Engagement [SDK] [連結 5]，而且您了解基本的 Azure Mobile Engagement [概念] [連結 6] 時，有兩種方式，您的應用程式與 Azure Mobile Engagement 互動: 標準使用者可以使用 [使用者介面] [連結 1] 和開發人員的使用者可以使用 HTTP REST 型 [Api] [連結 4]。 如果您有任何困難，請參閱 Azure Mobile Engagement [疑難排解指南] [連結 2]。
+一旦您已整合 Azure Mobile Engagement [SDK][Link 5] 到您的應用程式，以及了解基本的 Azure Mobile Engagement [概念][Link 6], ，有兩種方式，您的應用程式與 Azure Mobile Engagement 互動 ︰ 標準使用者可以使用 [使用者介面][Link 1] 和開發人員的使用者可以使用 HTTP REST 型 [Api][Link 4]。 如果您有任何困難，請參閱 Azure Mobile Engagement [疑難排解指南][Link 2]。
 
 ## 使用者介面的文章：
 
-- [瀏覽][連結 12]
-- [首頁][連結 13]
-- [我的帳戶][連結 14]
-- [分析][連結 15]
-- [監視][連結 16]
-- [連接][連結 17]
-    - [觸達-活動][連結 27]
-    - [觸達-準則][連結 28]
-    - [觸達-內容][連結 29]
-    - [觸達-如何][連結 3]
-- [區段][連結 18]
-- [儀表板][連結 19]
-- [設定][連結 20]
+- [瀏覽][Link 12]
+- [Home][Link 13]
+- [我的帳戶][Link 14]
+- [Analytics][Link 15]
+- [監視][Link 16]
+- [觸達][Link 17]
+    - [觸達 - 活動][Link 27]
+    - [觸達 - 準則][Link 28]
+    - [觸達 - 內容][Link 29]
+    - [觸達 - 作法][Link 3]
+- [使用者分佈][Link 18]
+- [儀表板][Link 19]
+- [設定][Link 20]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -132,3 +132,4 @@
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
+

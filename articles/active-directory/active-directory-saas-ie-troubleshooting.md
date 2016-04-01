@@ -23,7 +23,7 @@
 - 使用 Internet Explorer 時無法透過「我的 app」入口網站存取您的 app。
 - 即使您已經安裝軟體，還是看到「安裝軟體」訊息。
 
-如果您是系統管理員，請參閱: [如何部署 Internet Explorer 使用群組原則的存取面板延伸模組](active-directory-saas-ie-group-policy.md)
+如果您是系統管理員，請參閱 ︰ [如何部署 Internet Explorer 使用群組原則的存取面板延伸模組](active-directory-saas-ie-group-policy.md)
 
 ##執行診斷工具
 
@@ -104,4 +104,5 @@
 如果您遇到問題，解除安裝延伸模組，您也可以移除它使用 [It](https://go.microsoft.com/?linkid=9779673) 工具。
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+
 

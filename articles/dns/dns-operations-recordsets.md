@@ -287,6 +287,7 @@ Set-AzureRmDnsRecordSet Cmdlet 使用 ‘etag’ 檢查，以確保不會覆寫�
 
 [開始建立記錄集和記錄](dns-getstarted-create-recordset.md)<BR>
 [管理 DNS 區域](dns-operations-dnszones.md)<BR>
-[使用.NET SDK 自動化作業](dns-sdk.md)
+[使用 .NET SDK 自動化作業](dns-sdk.md)
  
+
 

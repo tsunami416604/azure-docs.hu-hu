@@ -49,7 +49,7 @@ Azure Data Factory 可讓您輕鬆地建立管線運用已發佈的 [Azure Machi
 您使用 Azure Data Factory 協調資料移動和處理，並執行使用 Azure Machine Learning 批次執行。 若要達到此目的，您必須執行下列動作：
 
 1. 建立 Azure Machine Learning 連結服務。 您需要以下項目：
-    1. **要求 URI** 批次執行 API。 您可以找到要求 URI 上的 [ **批次執行** (如下所示) web 服務] 頁面中的連結。
+    1. **要求 URI** 批次執行 API。 您可以找到要求 URI 上的 [ **批次執行** （如下所示） web 服務] 頁面中的連結。
     1. **API 金鑰** 對已發行的 Azure Machine Learning web 服務。 按一下已發佈的 Web 服務，即可找到 API 金鑰。 
  2. 使用 **AzureMLBatchExecution** 活動。
 
@@ -110,7 +110,7 @@ Azure Data Factory 可讓您輕鬆地建立管線運用已發佈的 [Azure Machi
 
 此範例使用 Azure 儲存體來存放輸入和輸出資料。 
 
-我們建議您瀏覽 [建置您的第一個管線，使用 Data Factory][adf-build-1st-pipeline] 教學課程之前，先透過此範例，並使用 Data Factory 編輯器建立 Data Factory 成品 (連結的服務、 資料集、 管線) 在此範例中。   
+我們建議您瀏覽 [建置您的第一個管線，使用 Data Factory][adf-build-1st-pipeline] 教學課程之前，先透過此範例，並使用 Data Factory 編輯器建立 Data Factory 成品 （連結的服務、 資料集、 管線） 在此範例中。   
  
 
 1. 建立 **連結服務** 如您 **Azure 儲存體**。 如果輸入和輸出檔案會在不同的儲存體帳戶中，您就需要兩個連結服務。 以下是 JSON 範例：
@@ -204,7 +204,7 @@ Azure Data Factory 可讓您輕鬆地建立管線運用已發佈的 [Azure Machi
           }
         }
 
-4. 建立 **連結服務** 的型別: **AzureMLLinkedService**, 、 提供 API 金鑰和模型批次執行 URL。
+4. 建立 **連結服務** 的型別 ︰ **AzureMLLinkedService**, 、 提供 API 金鑰和模型批次執行 URL。
         
         {
           "name": "MyAzureMLLinkedService",
@@ -282,7 +282,7 @@ Azure Data Factory 可讓您輕鬆地建立管線運用已發佈的 [Azure Machi
         }
     }
 
-您也可以使用 [Data Factory 函式](https://msdn.microsoft.com/library/dn835056.aspx) 傳遞值的 web 服務參數，在下列範例所示:
+您也可以使用 [Data Factory 函式](https://msdn.microsoft.com/library/dn835056.aspx) 傳遞值的 web 服務參數，在下列範例所示 ︰
 
     "typeProperties": {
         "globalParameters": {
@@ -295,7 +295,7 @@ Azure Data Factory 可讓您輕鬆地建立管線運用已發佈的 [Azure Machi
 ### 使用讀取器模組讀取 Azure Blob 中多個檔案的資料
 巨量資料管線 (Pig、Hive 等) 可以產生沒有副檔名的一個或多個輸出檔案。 例如，當您指定外部 Hive 資料表時，外部 Hive 資料表的資料可以儲存在 Azure Blob 儲存體中，並命名為：000000_0。 您可以在實驗中使用讀取器模組讀取多個檔案，並將該模組用於預測。 
 
-在 Azure Machine Learning 實驗中使用讀取器模組時，您可以指定 Azure Blob 做為輸入。 Azure Blob 儲存體中的檔案可以是在 HDInsight 上執行的 Pig 和 Hive 指令碼所產生的輸出檔 (例如 000000_0)。 讀取器模組可讓您讀取檔案 (沒有副檔名) 藉由設定 **容器、 目錄或 blob 路徑** 指向容器/資料夾，如下所示，包含檔案的讀取器模組的屬性。 請注意，星號 (也就是 \ *) **指定容器/資料夾中的所有檔案 (也就是資料/aggregateddata/year = 2014年/month-6 / \ *)** 將實驗的過程中讀取。
+在 Azure Machine Learning 實驗中使用讀取器模組時，您可以指定 Azure Blob 做為輸入。 Azure Blob 儲存體中的檔案可以是在 HDInsight 上執行的 Pig 和 Hive 指令碼所產生的輸出檔 (例如 000000_0)。 讀取器模組可讓您讀取檔案 （沒有副檔名） 藉由設定 **容器、 目錄或 blob 路徑** 指向容器/資料夾，如下所示，包含檔案的讀取器模組的屬性。 請注意，星號 (也就是 \ *) **指定容器/資料夾中的所有檔案 (也就是資料/aggregateddata/year = 2014年/month-6 / \ *)** 將實驗的過程中讀取。
 
 ![Azure Blob 屬性](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -351,7 +351,7 @@ Azure Data Factory 可讓您輕鬆地建立管線運用已發佈的 [Azure Machi
  
 在上述 JSON 範例中：
 
-- 已部署的 Azure Machine Learning Web 服務使用讀取器和寫入器模組，讀取 Azure SQL Database 的資料，或將資料寫入其中。 此 Web 服務會公開下列四個參數: 資料庫伺服器名稱、 資料庫名稱、 伺服器使用者帳戶名稱和伺服器使用者帳戶密碼。  
+- 已部署的 Azure Machine Learning Web 服務使用讀取器和寫入器模組，讀取 Azure SQL Database 的資料，或將資料寫入其中。 此 Web 服務會公開下列四個參數 ︰ 資料庫伺服器名稱、 資料庫名稱、 伺服器使用者帳戶名稱和伺服器使用者帳戶密碼。  
 - 同時 **啟動** 和 **結束** 日期時間都必須位於 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。  **結束** 時間為選擇性。 如果您未指定值 **結束** 屬性，它會計算為"**start + 48 小時**」。 若要無限期地執行管線，請指定 **9999-09-09** 做為值 **結束** 屬性。 請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 如需 JSON 屬性的詳細資訊。
 
 ### 其他案例
@@ -436,7 +436,7 @@ Azure ML Web 服務的讀取器和寫入器模組可能會設定為不一定要�
         }
     },
 
- **Take aways** 是:
+ **Take aways** 是 ︰
 
 -   如果您的實驗端點會使用 webServiceInput，則可透過 Blob 資料集來表示它，並將它包含於活動輸入以及 webServiceInput 屬性中。 否則，即會省略 webServiceInput 屬性。 
 -   如果您的實驗端點會使用 webServiceOutput，則可透過 Blob 資料集來表示它們，並將它們包含於活動輸出以及 (此實驗中每個輸出名稱所對應的) webServicepOutputs 屬性中。 否則，即會省略 webServiceOutputs 屬性。
@@ -584,7 +584,7 @@ Azure 儲存體會保留下列資料：
     }
 
 
-建立及部署 Azure ML 連結服務之前，請依照下列中的步驟 [建立端點](../machine-learning/machine-learning-create-endpoint.md) 文件，以建立評分 web 服務的第二個 (非預設和更新) 端點。
+建立及部署 Azure ML 連結服務之前，請依照下列中的步驟 [建立端點](../machine-learning/machine-learning-create-endpoint.md) 文件，以建立評分 web 服務的第二個 （非預設和更新） 端點。
 
 建立更新非預設的端點之後，按一下 **批次執行** 取得的 URI 值 **mlEndpoint** JSON 屬性按一下 **更新資源** 連結以取得的 URI 值 **updateResourceEndpoint** JSON 屬性。 API 金鑰本身位於端點頁面 (位於右下角)。 
 
@@ -614,7 +614,7 @@ Azure ML 更新資源活動不會產生任何輸出，但在 Azure Data Factory 
 
 
 #### 管線
-管線有兩個活動: **AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure ML 批次執行活動會以訓練資料做為輸入並產生 iLearner 檔案做為輸出。 此活動會使用輸入訓練資料叫用訓練 Web 服務 (公開為 Web 服務的訓練實驗)，並從 Web 服務接收 iLearner 檔案。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。 
+管線有兩個活動 ︰ **AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure ML 批次執行活動會以訓練資料做為輸入並產生 iLearner 檔案做為輸出。 此活動會使用輸入訓練資料叫用訓練 Web 服務 (公開為 Web 服務的訓練實驗)，並從 Web 服務接收 iLearner 檔案。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。 
 
 ![管線圖](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
@@ -690,9 +690,9 @@ Azure ML 更新資源活動不會產生任何輸出，但在 Azure Data Factory 
 
 ## 常見問題集
 
-**問:** 有我的巨量資料管線所產生的多個檔案。 我可以使用 AzureMLBatchExecution 活動來處理所有檔案嗎？
+**問 ︰** 有我的巨量資料管線所產生的多個檔案。 我可以使用 AzureMLBatchExecution 活動來處理所有檔案嗎？
 
-**答:** [是]。 請參閱 **使用 Azure Blob 中的多個檔案中讀取資料的讀取器模組** 一節以取得詳細資料。 
+**答 ︰** [是]。 請參閱 **使用 Azure Blob 中的多個檔案中讀取資料的讀取器模組** 一節以取得詳細資料。 
 
 ## AzureML 批次計分活動
 如果您使用 **AzureMLBatchScoring** 活動整合 Azure 機器學習中，我們建議您使用最新 **AzureMLBatchExecution** 活動。 
@@ -737,7 +737,7 @@ Azure ML 更新資源活動不會產生任何輸出，但在 Azure Data Factory 
     }
 
 ### Web 服務參數
-新增 **typeProperties** 區段 **AzureMLBatchScoringActivty** 管線 JSON，如下列範例所示，該區段中指定的 Web 服務參數值中的區段: 
+新增 **typeProperties** 區段 **AzureMLBatchScoringActivty** 管線 JSON，如下列範例所示，該區段中指定的 Web 服務參數值中的區段 ︰ 
 
     "typeProperties": {
         "webServiceParameters": {
@@ -747,7 +747,7 @@ Azure ML 更新資源活動不會產生任何輸出，但在 Azure Data Factory 
     }
 
 
-您也可以使用 [Data Factory 函式](https://msdn.microsoft.com/library/dn835056.aspx) 傳遞值的 web 服務參數，在下列範例所示:
+您也可以使用 [Data Factory 函式](https://msdn.microsoft.com/library/dn835056.aspx) 傳遞值的 web 服務參數，在下列範例所示 ︰
 
     "typeProperties": {
         "webServiceParameters": {
@@ -771,4 +771,5 @@ Azure ML 更新資源活動不會產生任何輸出，但在 Azure Data Factory 
 
 
  
+
 

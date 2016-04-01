@@ -30,7 +30,7 @@
 以下的範例步驟會預期已經建立簡單的環境。 如果您想要執行的步驟，因為它們會顯示在這份文件，先建立測試環境中所述 [建立 vnet](virtual-networks-create-vnet-classic-pportal.md)。
 
 ## 建立 VM 時如何指定靜態私人 IP 位址
-若要建立名為的 VM *DNS01* 中 *前端* 名為 VNet 的子網路 *TestVNet* 固定的私人 ip *192.168.1.101*, ，依照下列步驟:
+若要建立名為的 VM *DNS01* 中 *前端* 名為 VNet 的子網路 *TestVNet* 固定的私人 ip *192.168.1.101*, ，依照下列步驟 ︰
 
 1. 從瀏覽器，瀏覽至 http://portal.azure.com，並有必要，請登入您的 Azure 帳戶。
 2. 按一下 [ **新增** > **計算** > **Windows Server 2012 R2 Datacenter**, ，請注意， **選取部署模型** 清單已顯示 **傳統**, ，然後按一下 [ **建立**。
@@ -58,7 +58,7 @@
 
 若要檢視使用上述步驟建立之 VM 的靜態私人 IP 位址資訊，請執行下列步驟。
 
-1. 從 Azure 預覽入口網站中，按一下 [ **全部瀏覽** > **虛擬機器 (傳統)** > **DNS01** > **所有設定** > **IP 位址** ，並注意 IP 位址指派和 IP 位址，如下所示。
+1. 從 Azure 預覽入口網站中，按一下 [ **全部瀏覽** > **虛擬機器 （傳統）** > **DNS01** > **所有設定** > **IP 位址** ，並注意 IP 位址指派和 IP 位址，如下所示。
 
     ![在預覽入口網站中建立 VM](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 
@@ -80,3 +80,4 @@
 - 深入了解 [保留公用 IP](../virtual-networks-reserved-public-ip) 位址。
 - 深入了解 [執行個體層級公用 IP (ILPIP)](../virtual-networks-instance-level-public-ip) 位址。
 - 請參閱 [保留的 IP REST Api](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
+

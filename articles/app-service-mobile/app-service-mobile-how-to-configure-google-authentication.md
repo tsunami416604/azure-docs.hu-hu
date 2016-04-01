@@ -47,17 +47,17 @@
 
 
     > [AZURE.NOTE]
-    If you are using the App Service Gateway instead of the App Service Authentication / Authorization feature, your redirect URL instead uses the gateway URL with the _/signin-google_ path.
+    如果您使用應用程式服務閘道，而不應用程式服務驗證 / 授權功能重新導向 URL 改為使用閘道的 URL 與 _/signin-google_ 路徑。
 
 
 7. 在下一個畫面上，記下用戶端識別碼和用戶端密碼的值。
 
 
     > [AZURE.IMPORTANT]
-    The client secret is an important security credential. Do not share this secret with anyone or distribute it within a client application.
+    用戶端密碼是重要的安全性認證。 請勿與任何人共用此密碼，或在用戶端應用程式中加以散發。
 
 
-## <a name="secrets"> </a>將 Google 資訊新增至您的應用程式
+## <a name="secrets"> </a>將 Google 資訊新增至應用程式
 
 > [AZURE.NOTE]
 如果您使用 App Service 閘道器，請忽略此章節，並改為在入口網站中瀏覽至您的閘道器。 選取 **設定**, ，**識別**, ，然後 **Google**。 貼入您稍早取得的值，然後按一下 [ **儲存**。
@@ -73,7 +73,7 @@
 
     App Service 預設會提供驗證，但不會限制對您網站內容和 API 的已授權存取。 您必須在應用程式程式碼中授權使用者。 
 
-17. (選擇性)若要限制存取您的站台只能由 Google 進行驗證的使用者，請設定 **不會驗證要求時要採取的動作** 至 **Google**。 這會要求所有要求都需經過驗證，且所有未經驗證的要求都會重新導向至 Google 以進行驗證。
+17. （選擇性）若要限制存取您的站台只能由 Google 進行驗證的使用者，請設定 **不會驗證要求時要採取的動作** 至 **Google**。 這會要求所有要求都需經過驗證，且所有未經驗證的要求都會重新導向至 Google 以進行驗證。
 
 12. 按一下 [ **儲存**。 
 
@@ -97,4 +97,5 @@
 
 [Azure portal]: https://portal.azure.com/
  
+
 

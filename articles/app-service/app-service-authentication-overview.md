@@ -62,7 +62,7 @@ Azure 的應用程式服務提供內建的驗證服務，可實作 [OAuth 2.0](#
 
 ## 伺服器流程和用戶端流程
 
-應用程式服務閘道提供兩種方式來驗證用戶端:  *用戶端流程* 和 *伺服器流程*。 在這兩種流程中，用戶端應用程式會將使用者認證 (一般來說是使用者名稱和密碼) 直接傳送給身分識別提供者。 不管是哪一種流程，閘道和應用程式都不會收到使用者認證。
+應用程式服務閘道提供兩種方式來驗證用戶端 ︰  *用戶端流程* 和 *伺服器流程*。 在這兩種流程中，用戶端應用程式會將使用者認證 (一般來說是使用者名稱和密碼) 直接傳送給身分識別提供者。 不管是哪一種流程，閘道和應用程式都不會收到使用者認證。
 
 ### 用戶端流程
 
@@ -80,7 +80,7 @@ Azure 的應用程式服務提供內建的驗證服務，可實作 [OAuth 2.0](#
 
 ![](./media/app-service-authentication-overview/serverflow.png)
 
-用戶端應用程式和受保護的 API 應用程式或行動應用程式之間的後續互動會處理與用戶端流程相同: 用戶端提供 Zumo 權杖在 HTTP 要求中的。 
+用戶端應用程式和受保護的 API 應用程式或行動應用程式之間的後續互動會處理與用戶端流程相同 ︰ 用戶端提供 Zumo 權杖在 HTTP 要求中的。 
 
 ### 該選擇用戶端流程還是伺服器流程
 
@@ -96,7 +96,7 @@ Azure 的應用程式服務提供內建的驗證服務，可實作 [OAuth 2.0](#
 
 您可以撰寫程式碼來撥出電話至軟體-做為服務 (SaaS) 平台，代表登入的使用者，或者您可以使用 [連接器 API 應用程式](../app-service-mobile/app-service-logic-what-are-biztalk-api-apps.md)。 例如，若要從您可以使用使用者的 Twitter 帳戶發表推文 [Twitter SDK](https://dev.twitter.com/overview/api/twitter-libraries), ，或佈建 [Twitter 連接器](../app-service-mobile/app-service-logic-connector-twitter.md) Azure 訂閱中並加以呼叫。 本節內容是關於從 API 應用程式或行動應用程式中執行的程式碼存取 SaaS 平台。   
 
-### <a id="obotoidprovider"></a> 使用身分識別提供者權杖 
+### <a id="obotoidprovider"></a>使用身分識別提供者權杖 
 
 閘道會維護 *權杖存放區* 在其中將 Zumo 權杖與一個或多個身分識別提供者存取權杖和重新整理權杖。 當收到具有有效 Zumo 權杖的 HTTP 要求時，閘道會知道屬於該使用者的身分識別提供者權杖。
   
@@ -156,7 +156,7 @@ Azure 的應用程式服務提供內建的驗證服務，可實作 [OAuth 2.0](#
 
 如果閘道驗證服務不符合您應用程式的需求，您可以自行處理驗證，或使用 Azure API 管理服務。
 
-### <a id="doityourself"></a>自己動手撰寫驗證
+### <a id="doityourself"></a>自行驗證
 
 您可以執行驗證架構，例如 [ASP.NET 身分識別](http://www.asp.net/identity) 或 [Thinktecture](http://www.thinktecture.com/identityAndAccessControl) Azure 上。 這麼做可讓您控制所有元件的運作方式，但是您也必須花更多時間開發和測試驗證功能。 此外，如果您有多個應用程式需要使用多個重新導向 URL 來進行保護，您必須針對協力廠商驗證提供者 (例如 Facebook、Google 和 Twitter) 設定多個用戶端識別碼和用戶端密碼。
 
@@ -196,7 +196,7 @@ Azure 的應用程式服務提供內建的驗證服務，可實作 [OAuth 2.0](#
 * [保護 API 應用程式](../app-service-api/app-service-api-dotnet-add-authentication.md) -API 應用程式組態的組件適用於用戶端和伺服器流程和測試-瀏覽器中組件說明伺服器流程。
 * [在 Azure App Service 中的.NET 用戶端的 API 應用程式](../app-service-api/app-service-api-dotnet-consume.md) -已驗證的呼叫的範例程式碼說明伺服器流程。 
 
-### <a id="apiaobo"></a>API 應用程式代表呼叫
+### <a id="apiaobo"></a>API Apps 代表呼叫
 
 * [部署及設定 SaaS 連接器 API 應用程式在 Azure App Service 中](../app-service-api/app-service-api-connnect-your-app-to-saas-connector.md) -說明如何佈建預先封裝的連接器 API 應用程式、 加以設定，並使用瀏覽器工具進行呼叫。
 * [從 Azure App Service 中的 ASP.NET API 應用程式連接到 SaaS 平台](../app-service-api/app-service-api-dotnet-connect-to-saas.md) -說明如何撰寫您自己的連接器-也就是佈建、 設定和撰寫自訂的 API 應用程式可代表的呼叫 SaaS 提供者的程式碼。
@@ -212,7 +212,8 @@ Azure 的應用程式服務提供內建的驗證服務，可實作 [OAuth 2.0](#
 * [將驗證新增至 Xamarin.Android 應用程式](../app-service-mobile/app-service-mobile-dotnet-backend-xamarin-android-get-started-users-preview.md)
 * [將驗證新增至您的 Windows 應用程式](../app-service-mobile/app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-users-preview.md)
 
-### <a id="maobo"></a>行動應用程式代表的呼叫受保護資源
+### <a id="maobo"></a>行動應用程式代表呼叫受保護的資源
 
 * [在行動應用程式中取得存取權杖和呼叫 SharePoint API](../app-service-mobile/app-service-mobile-dotnet-backend-get-started-connect-to-enterprise.md#obtain-token)
+
 

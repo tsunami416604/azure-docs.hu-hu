@@ -100,7 +100,7 @@
         Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
             -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $nsg
 
-    僅顯示輸出 *前端* 子網路設定，請注意值 **NetworkSecurityGroup** 屬性:
+    僅顯示輸出 *前端* 子網路設定，請注意值 **NetworkSecurityGroup** 屬性 ︰
 
         Subnets           : [
                               {
@@ -162,7 +162,7 @@
         Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd `
             -AddressPrefix 192.168.2.0/24 -NetworkSecurityGroup $nsg
 
-    僅顯示輸出 *後端* 子網路設定，請注意值 **NetworkSecurityGroup** 屬性:
+    僅顯示輸出 *後端* 子網路設定，請注意值 **NetworkSecurityGroup** 屬性 ︰
 
         Subnets           : [
                       {
@@ -181,3 +181,4 @@
 7. 將新的 VNet 設定儲存至 Azure。
 
         Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+

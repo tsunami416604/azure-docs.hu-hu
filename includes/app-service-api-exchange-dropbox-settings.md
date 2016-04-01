@@ -12,7 +12,7 @@
 
     ![輸入設定並按一下 [儲存]](./media/app-service-api-exchange-dropbox-settings/authblade.png)
 
-3. 複製 **重新導向 URI** (用戶端識別碼和用戶端密碼上方的灰色方塊) 並將值加入至您在上一個步驟中開啟的頁面。 
+3. 複製 **重新導向 URI** （用戶端識別碼和用戶端密碼上方的灰色方塊） 並將值加入至您在上一個步驟中開啟的頁面。 
 
     重新導向 URI 會導循下列模式：
 
@@ -25,3 +25,4 @@
     ![取得重新導向 URI](./media/app-service-api-exchange-dropbox-settings/redirecturi.png)
 
     ![建立 Dropbox 應用程式](./media/app-service-api-exchange-dropbox-settings/dbappsettings2.png)
+

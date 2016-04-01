@@ -112,7 +112,7 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 若您想�
         -ResourceGroupName $resourceGroupName `
         -Name $dataLakeAnalyticsAccountName  
 
-您也可以使用 Azure 資源群組範本。 用來建立資料湖分析帳戶和相依的資料湖存放區帳戶的範本位於 [附錄 A](#appendix-a)。 將範本儲存成 .json 範本的檔案，然後使用下列 PowerShell 指令碼呼叫該範本：
+您也可以使用 Azure 資源群組範本。 用來建立資料湖分析帳戶和相依的資料湖存放區帳戶的範本位於 [附錄 A](#appendix-a)。將範本儲存成 .json 範本的檔案，然後使用下列 PowerShell 指令碼呼叫該範本：
 
 
     $AzureSubscriptionID = "<Your Azure Subscription ID>"
@@ -442,3 +442,4 @@ U-SQL 目錄是用來建構資料和程式碼，讓 U-SQL 指令碼可以共用�
             }
         }
     }
+

@@ -45,3 +45,4 @@
 - 若要深入了解更詳細的資源之間建立連結，請參閱 [Azure 資源管理員中連結資源](../resource-group-link-resources.md)。
 - 若要了解有關使用透過預覽入口網站的資源群組的詳細資訊，請參閱 [使用 Azure Preview 入口網站來管理您的 Azure 資源](resource-group-portal.md)。
 
+

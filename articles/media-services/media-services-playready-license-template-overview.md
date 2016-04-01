@@ -30,7 +30,7 @@ Azure 媒體服務現在提供一種服務，來傳遞 Microsoft PlayReady 授�
 - audio\video 內容的輸出控制輸出保護層級。 
 - 如需詳細資訊，請參閱輸出控制 (3.5) 中部分 [PlayReady 法規規則](https://www.microsoft.com/playready/licensing/compliance/) 文件。
 
->[AZURE.NOTE]目前，您只能設定 PlayReady 授權 (此權限是必要的) 的 PlayRight。 PlayRight 可讓用戶端播放內容。 PlayRight 也可讓設定限制專屬於播放。 如需詳細資訊，請參閱 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)。
+>[AZURE.NOTE]目前，您只能設定 PlayReady 授權 （此權限是必要的） 的 PlayRight。 PlayRight 可讓用戶端播放內容。 PlayRight 也可讓設定限制專屬於播放。 如需詳細資訊，請參閱 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)。
 
 若要使用媒體服務設定 PlayReady 授權，您必須設定媒體服務 PlayReady 授權範本。 範本會在 XML 中定義。
 
@@ -53,7 +53,7 @@ XML 符合 PlayReady 授權範本 XML 結構描述，該結構描述是在 PlayR
 
 如需使用.NET 類別來設定 PlayReady 授權範本的端對端範例，請參閱 [使用 PlayReady 動態加密和授權傳遞服務](https://msdn.microsoft.com/library/azure/dn783467.aspx)。
 
-##<a id="classes"></a>用來設定授權範本的媒體服務.NET 類別
+##<a id="classes"></a>用來設定授權範本的媒體服務 .NET 類別
 
 以下是主要的 .NET 類別，可用於設定媒體服務 PlayReady 授權範本。 這些類別中定義的型別來對應 [PlayReady 授權範本 XML 結構描述](media-services-playready-license-template-overview.md#schema)。
 
@@ -77,7 +77,7 @@ XML 符合 PlayReady 授權範本 XML 結構描述，該結構描述是在 PlayR
 
 >[AZURE.IMPORTANT]這些類型的限制可能非常強大，但也可能影響客戶體驗。 如果輸出保護設定限制太多，內容可能無法在某些用戶端上播放。 如需詳細資訊，請參閱 [PlayReady 法規規則](https://www.microsoft.com/playready/licensing/compliance/) 文件。
 
-如需保護層級 Silverlight 支援的範例，請參閱: [Silverlight 支援輸出保護](http://go.microsoft.com/fwlink/?LinkId=617318)。
+如需保護層級 Silverlight 支援的範例，請參閱 ︰ [Silverlight 支援輸出保護](http://go.microsoft.com/fwlink/?LinkId=617318)。
 
 ##<a id="schema"></a>PlayReady 授權範本 XML 結構描述
     
@@ -311,4 +311,5 @@ XML 符合 PlayReady 授權範本 XML 結構描述，該結構描述是在 PlayR
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

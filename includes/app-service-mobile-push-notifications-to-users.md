@@ -1,6 +1,6 @@
 <!---Use the procedure that matches your backend project type&mdash;either [.NET backend](#dotnet) or [Node.js backend](#nodejs).
 
-### <a name="dotnet"></a>.NET 後端專案-->
+### <a name="dotnet"></a>.NET backend project -->
 1. 在 Visual Studio 中，使用下列程式碼更新 `PostTodoItem` 方法定義：  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
@@ -50,7 +50,7 @@
 
 <!---### <a name="nodejs"></a>Node.js backend project
 
-1. 在 todoitem.js 檔案中，以下列程式碼取代現有的程式碼：
+1. Replace the existing code in the todoitem.js file with the following:
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -94,6 +94,7 @@
 
         module.exports = table;  
 
-    這是目前使用者的 SID，加上註冊，才能傳送範本通知。 請注意 SID 值可以變更，因為它衍生自驗證提供者的權杖。 
+    This sends a template notification only to registrations tagged with the current user's SID. Note that the SID value can change since it derived from the authentication provider's token. 
 
-2. 當編輯您的本機電腦中的檔案重新發佈的伺服器專案。-->
+2. When editing the file in your local computer, republish the server project.-->
+

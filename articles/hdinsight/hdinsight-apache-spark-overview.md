@@ -19,14 +19,14 @@
 
 # 概觀：Azure HDInsight 上的 Apache Spark 
  
-<a href="http://spark.apache.org/" target="_blank">Apache Spark</a> 開放原始碼平行處理架構，可支援記憶體中處理，大幅提升巨量資料分析應用程式的效能。 Spark 處理引擎是專為速度、易用性及精密分析打造的產品。 Spark 的記憶體內計算功能，使其成為機器學習和圖表計算中反覆演算法的絕佳選擇 。 Spark 也能與 Azure Blob 儲存體 (WASB) 相容，因此您可以輕鬆地透過 Spark 處理儲存在 Azure 中的現有資料。
+<a href="http://spark.apache.org/" target="_blank">Apache Spark</a> 是一個開放原始碼平行處理架構，可支援記憶體內部處理，大幅提升巨量資料分析應用程式的效能。 Spark 處理引擎是專為速度、易用性及精密分析打造的產品。 Spark 的記憶體內計算功能，使其成為機器學習和圖表計算中反覆演算法的絕佳選擇 。 Spark 也能與 Azure Blob 儲存體 (WASB) 相容，因此您可以輕鬆地透過 Spark 處理儲存在 Azure 中的現有資料。
 
 在 HDInsight 中佈建 Spark 叢集時，即是佈建安裝及設定 Spark 的 Azure 計算資源。 在 HDInsight 中佈建 Spark 叢集只需要約十分鐘。 系統會將要處理的資料儲存在 Azure Blob 儲存體。 請參閱 [搭配 HDInsight 使用 Azure Blob 儲存體][hdinsight-storage]。
 
 ![Azure HDInsight 上的 Apache Spark](./media/hdinsight-apache-spark-overview/SparkArchitecture.png  "Apache Spark on Azure HDInsight")
 
 
-**要開始使用 Azure HDInsight 上的 Apache Spark?**請參閱 [快速入門: 佈建 HDInsight 上的 Spark 叢集並執行範例應用程式使用 Jupyter 和 Zeppelin](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)。
+**想要開始使用 Azure HDInsight 上的 Apache Spark 嗎？** 請參閱 [快速入門 ︰ 佈建 HDInsight 上的 Spark 叢集並執行範例應用程式使用 Jupyter 和 Zeppelin](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)。
 
 
 
@@ -75,7 +75,7 @@ Apache Spark 附有 [MLlib](http://spark.apache.org/mllib/), 、 機器學習程
 
 不論是藉由在資料抵達時進行處理來縮短取得資料見解的時間，或是建置實用的串流解決方案，這些案例都是即時資料分析的適用範圍內。 HDInsight 中的 Spark 提供豐富的支援供您建置即時分析解決方案。 雖然 Spark 已附有從 Kafka、Flume、Twitter、ZeroMQ 或 TCP 通訊端等眾多來源擷取資料的連接器，不過 HDInsight 中的 Spark 仍加入首屈一指的支援，供您從 Azure 事件中樞擷取資料。 事件中樞是 Azure 上最廣泛使用的佇列服務。 擁有立即可用的事件中樞支援，讓 HDInsight 中的 Spark 成為建置即時分析管線的理想平台。
 
-##<a name="next-steps"></a>Spark 叢集的一部分哪些元件?
+##<a name="next-steps"></a>Spark 叢集包含哪些元件？
 
 依預設，HDInsight 中的 Spark 能經由叢集提供下列元件。
 
@@ -91,7 +91,7 @@ HDInsight 中的 Spark 也提供 [ODBC 驅動程式](http://go.microsoft.com/fwl
 
 * [快速入門：搭配使用 HDInsight 中的 Spark 和 Zeppelin Notebook 執行互動式資料分析](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)
 * [在 HDInsight 中佈建 Spark 叢集](hdinsight-apache-spark-provision-clusters.md)
-* [在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
+* [執行 HDInsight 中使用 Spark 與 BI 工具的互動式資料分析](hdinsight-apache-spark-use-bi-tools.md)
 * [在 HDInsight 中使用 Spark 建置機器學習應用程式](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 * [在 HDInsight 中使用 Spark 建置即時串流應用程式](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](hdinsight-apache-spark-resource-manager.md)
@@ -99,4 +99,5 @@ HDInsight 中的 Spark 也提供 [ODBC 驅動程式](http://go.microsoft.com/fwl
 
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
+
 

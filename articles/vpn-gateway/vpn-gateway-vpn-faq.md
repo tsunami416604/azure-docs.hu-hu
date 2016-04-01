@@ -32,9 +32,9 @@
 
 支援下列跨單位連線：
 
-- [站台對站台](vpn-gateway-site-to-site-create.md) – 透過 IPsec (IKE v1 和 IKE v2) 的 VPN 連線。 此類型的連線需要 VPN 裝置或 RRAS。
+- [站台對站台](vpn-gateway-site-to-site-create.md) – 透過 IPsec （IKE v1 和 IKE v2） 的 VPN 連線。 此類型的連線需要 VPN 裝置或 RRAS。
 
-- [點對站台](vpn-gateway-point-to-site-create.md) – 透過 SSTP (安全通訊端通道通訊協定) 的 VPN 連線。 此連線不需要 VPN 裝置。
+- [點對站台](vpn-gateway-point-to-site-create.md) – 透過 SSTP （安全通訊端通道通訊協定） 的 VPN 連線。 此連線不需要 VPN 裝置。
 
 - [VNet 對 VNet](virtual-networks-configure-vnet-to-vnet-connection.md) – 這種類型的連接是與站台對站台組態相同。 VNet 對 VNet 是透過 IPsec (IKE v1 和 IKE v2) 的 VPN 連線， 並不需要 VPN 裝置。
 
@@ -268,3 +268,4 @@ VPN 閘道基本上是一個多重主目錄的裝置，擁有一個使用客戶�
 您可以檢視關於 VPN 閘道的詳細資訊，在 [VPN 閘道文件頁面](https://azure.microsoft.com/documentation/services/vpn-gateway/)。
 
  
+

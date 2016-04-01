@@ -34,16 +34,16 @@
 
 如果在進行過下列指導方針後仍無法解決問題，請連絡我們的支援工程師。 當您與他們連絡時，建議您包含下列資訊：
 
- - **錯誤的一般描述** – 什麼確切的錯誤訊息的使用者看到?  如果沒有任何錯誤訊息，請詳細說明您所注意到的未預期行為。
- - **頁面** – 哪一頁上看到此錯誤是你 (包含 URL)?
- - **日期 / 時間 / 時區** – 時的精確日期和時間看到錯誤 (包含時區)?
- - **支援的程式碼** – 使用者看到錯誤 (若要尋找這、 重現錯誤，然後按一下畫面底部的支援程式碼連結及所產生的 GUID 傳送給支援工程師) 時，產生的支援程式碼是什麼。 
+ - **錯誤的一般描述** – 什麼確切的錯誤訊息的使用者看到？  如果沒有任何錯誤訊息，請詳細說明您所注意到的未預期行為。
+ - **頁面** – 哪一頁上看到此錯誤是你 （包含 URL）？
+ - **日期 / 時間 / 時區** – 時的精確日期和時間看到錯誤 （包含時區）？
+ - **支援的程式碼** – 使用者看到錯誤 （若要尋找這、 重現錯誤，然後按一下畫面底部的支援程式碼連結及所產生的 GUID 傳送給支援工程師） 時，產生的支援程式碼是什麼。 
    - 如果您所在的頁面底部沒有支援碼，請按 F12，搜尋 SID 和 CID，然後將這兩個結果傳送給支援工程師。
 
     ![][001]
 
- - **使用者識別碼** – 看到錯誤 (例如 user@contoso.com) 的使用者識別碼是什麼?
- - **使用者的相關資訊** – 使用者已同盟、 密碼雜湊同步處理、 僅限雲端?  使用者是否已獲得 AAD Premium 或 AAD Basic 授權？
+ - **使用者識別碼** – 看到錯誤 (例如 user@contoso.com) 的使用者識別碼是什麼？
+ - **使用者的相關資訊** – 使用者已同盟、 密碼雜湊同步處理、 僅限雲端？  使用者是否已獲得 AAD Premium 或 AAD Basic 授權？
  - **應用程式事件記錄檔** – 如果您使用密碼回寫，而且錯誤位於您內部部署基礎結構，請從 Azure AD Connect 伺服器應用程式事件記錄檔的複本進行壓縮，然後連同要求一起送。
 
 包含這些資訊將有助於我們儘快為您解決問題。
@@ -61,7 +61,7 @@
             </td>
             <td>
               <p>
-                <strong>使用者看到的錯誤</strong>
+                <strong>使用者會看到哪些錯誤？</strong>
               </p>
             </td>
             <td>
@@ -72,25 +72,25 @@
           </tr>
           <tr>
             <td>
-              <p>我沒看到 <strong>使用者密碼重設原則 </strong>在下一節 <strong>設定</strong> 在 Azure 管理入口網站] 索引標籤</p>
+              <p>我沒看到 <strong>使用者密碼重設原則 </strong>區段底下 <strong>設定</strong> 在 Azure 管理入口網站] 索引標籤</p>
             </td>
             <td>
-              <p>Auch die Eigenschaften <strong>使用者密碼重設原則 </strong>看不到區段 <strong>設定</strong> 在 Azure 管理入口網站] 索引標籤。</p>
+              <p> <strong>使用者密碼重設原則 </strong>看不到區段 <strong>設定</strong> 在 Azure 管理入口網站] 索引標籤。</p>
             </td>
             <td>
               <p>如果沒有指派 AAD Premium 或 AAD Basic 授權給執行此作業的系統管理員，就會發生這種情況。 </p>
-              <p>若要修正此問題，AAD Premium 或 AAD Basic 授權指派給問題的系統管理員帳戶瀏覽至 <strong>授權</strong> 索引標籤，再試一次。</p>
+              <p>若要修正此問題，AAD Premium 或 AAD Basic 授權指派給問題的系統管理員帳戶瀏覽至 <strong>授權</strong> 索引標籤，然後再試一次。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>我沒看到任何下的組態選項 <strong>使用者密碼重設原則</strong> 一節所述的文件。</p>
+              <p>我沒看到任何組態選項底下 <strong>使用者密碼重設原則</strong> 一節所述的文件。</p>
             </td>
             <td>
-              <p>Auch die Eigenschaften <strong>使用者密碼重設原則 </strong>區段可見，但其下方出現的唯一旗標是 <strong>啟用密碼重設的使用者</strong> 旗標。</p>
+              <p> <strong>使用者密碼重設原則 </strong>區段可見，但其下方出現的唯一旗標是 <strong>使用者已啟用密碼重設</strong> 旗標。</p>
             </td>
             <td>
-              <p>當您切換時，就會出現其餘 UI <strong>啟用密碼重設的使用者</strong> 旗標設為 <strong>是。</strong></p>
+              <p>當您切換時，就會出現其餘 UI <strong>使用者已啟用密碼重設</strong> 旗標設為 <strong>[是]。</strong></p>
             </td>
           </tr>
           <tr>
@@ -98,23 +98,23 @@
               <p>我沒看到特定設定選項。</p>
             </td>
             <td>
-              <p>比方說，我看不到 <strong>使用者必須確認其連絡資料之前的天數</strong> 當我捲動選項 <strong>使用者密碼重設原則</strong> 區段 (或相同問題的其他範例)。</p>
+              <p>比方說，我看不見 <strong>的使用者必須確認其連絡資料之前的天數</strong> 選項出現在我捲動 <strong>使用者密碼重設原則</strong> 區段 （或相同問題的其他範例）。</p>
             </td>
             <td>
               <p>許多 UI 項目只會在需要時出現。 如果您想要看到這些項目，請嘗試啟用頁面上的所有選項。</p>
-              <p>請參閱 [] <a href="../active-directory-passwords-customize#password-management-behavior">自訂使用者密碼重設原則</a> 如需所有可用的控制項的詳細資訊。</p>
+              <p>請參閱 <a href="../active-directory-passwords-customize#password-management-behavior">自訂使用者密碼重設原則</a> 如需所有可用控制項的詳細資訊。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>我沒看到 <strong>將密碼寫回內部部署</strong> 組態選項</p>
+              <p>我沒看到 <strong>密碼回寫至內部部署上</strong> 組態選項</p>
             </td>
             <td>
-              <p>Auch die Eigenschaften <strong>將密碼寫回內部部署</strong> 選項不會下顯示 <strong>設定</strong> 在 Azure 管理入口網站] 索引標籤</p>
+              <p> <strong>密碼回寫至內部部署上</strong> 選項下沒有出現 <strong>設定</strong> 在 Azure 管理入口網站] 索引標籤</p>
             </td>
             <td>
               <p>在您下載 Azure AD Connect 並設定密碼回寫後，才會出現此選項。 當您完成上述動作時，此選項便會出現，並可讓您啟用或停用雲端回寫。</p>
-              <p>請參閱 [] <a href="../active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords">如何啟用/停用密碼回寫</a> 如需有關如何執行這項操作的詳細資訊。</p>
+              <p>請參閱 <a href="../active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords">如何啟用/停用密碼回寫</a> 如需有關如何執行這項操作。</p>
             </td>
           </tr>
         </tbody></table>
@@ -131,7 +131,7 @@
             </td>
             <td>
               <p>
-                <strong>使用者看到的錯誤</strong>
+                <strong>使用者會看到哪些錯誤？</strong>
               </p>
             </td>
             <td>
@@ -145,11 +145,11 @@
               <p>我沒看到任何密碼管理報表</p>
             </td>
             <td>
-              <p>Auch die Eigenschaften <strong>密碼重設活動</strong> 和 <strong>密碼重設註冊活動</strong> 報表不會顯示在 <strong>活動記錄檔</strong> 中的報表 <strong>報告</strong> 索引標籤。</p>
+              <p> <strong>密碼重設活動</strong> 和 <strong>密碼重設註冊活動</strong> 報告底下沒有出現 <strong>活動記錄</strong> 中的報表 <strong>報表</strong> ] 索引標籤。</p>
             </td>
             <td>
               <p>如果沒有指派 AAD Premium 或 AAD Basic 授權給執行此作業的系統管理員，就會發生這種情況。 </p>
-              <p>若要修正此問題，AAD Premium 或 AAD Basic 授權指派給問題的系統管理員帳戶瀏覽至 <strong>授權</strong> 索引標籤，再試一次。</p>
+              <p>若要修正此問題，AAD Premium 或 AAD Basic 授權指派給問題的系統管理員帳戶瀏覽至 <strong>授權</strong> 索引標籤，然後再試一次。</p>
             </td>
           </tr>
           <tr>
@@ -178,7 +178,7 @@
             </td>
             <td>
               <p>
-                <strong>使用者看到的錯誤</strong>
+                <strong>使用者會看到哪些錯誤？</strong>
               </p>
             </td>
             <td>
@@ -195,7 +195,7 @@
               <p>您的系統管理員還沒為您啟用這項功能。</p>
             </td>
             <td>
-              <p>參數 <strong>啟用密碼重設的使用者</strong> 旗標設為 <strong>是</strong> 按 enter <strong>儲存</strong> 在 Azure 管理入口網站目錄組態] 索引標籤。 您必須指派 Azure AD Premium 或 Basic 授權給執行此作業的系統管理員。</p>
+              <p>交換器 <strong>使用者已啟用密碼重設</strong> 旗標設為 <strong>是</strong> 文字，然後按 <strong>儲存</strong> Azure 管理入口網站目錄設定] 索引標籤中。 您必須指派 Azure AD Premium 或 Basic 授權給執行此作業的系統管理員。</p>
             </td>
           </tr>
           <tr>
@@ -206,7 +206,7 @@
               <p>您的系統管理員還沒為您啟用這項功能。</p>
             </td>
             <td>
-              <p>將 Azure AD Premium 或 Azure AD Basic 授權指派給使用者 <strong>授權</strong> 在 Azure 管理入口網站] 索引標籤。 您必須指派 Azure AD Premium 或 Basic 授權給執行此作業的系統管理員。</p>
+              <p>將 Azure AD Premium 或 Azure AD Basic 授權指派給使用者在 <strong>授權</strong> 在 Azure 管理入口網站] 索引標籤。 您必須指派 Azure AD Premium 或 Basic 授權給執行此作業的系統管理員。</p>
             </td>
           </tr>
           <tr>
@@ -240,7 +240,7 @@
             </td>
             <td>
               <p>
-                <strong>使用者看到的錯誤</strong>
+                <strong>使用者會看到哪些錯誤？</strong>
               </p>
             </td>
             <td>
@@ -428,7 +428,7 @@
             </td>
             <td>
               <p>
-                <strong>使用者看到的錯誤</strong>
+                <strong>使用者會看到哪些錯誤？</strong>
               </p>
             </td>
             <td>
@@ -651,12 +651,12 @@
           <tbody><tr>
             <td>
               <p>
-                <strong>代碼</strong>
+                <strong>程式碼</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>名稱/訊息</strong>
+                <strong>名稱 / 訊息</strong>
               </p>
             </td>
             <td>
@@ -666,7 +666,7 @@
             </td>
             <td>
               <p>
-                <strong>說明</strong>
+                <strong>描述</strong>
               </p>
             </td>
           </tr>
@@ -768,7 +768,7 @@
                 <li class="unordered">
                                         The user’s account is in a protected group, such as domain or enterprise admins, which disallows password set operations.<br\><br\></li>
               </ul>
-              <p>請參閱 [] <a href="#troubleshoot-password-writeback">疑難排解密碼回寫</a> 若要深入了解哪些其他狀況可能導致此錯誤。</p>
+              <p>請參閱 <a href="#troubleshoot-password-writeback">疑難排解密碼回寫</a> 若要深入了解有哪些其他狀況會造成這個錯誤。</p>
             </td>
           </tr>
           <tr>
@@ -851,7 +851,7 @@
                 <li class="unordered">
                                         The user’s account is in a protected group, such as domain or enterprise admins, which disallows password set operations.<br\><br\></li>
               </ul>
-              <p>請參閱 [] <a href="#troubleshoot-password-writeback">疑難排解密碼回寫</a> 若要深入了解什麼其他情況下可能導致此錯誤。</p>
+              <p>請參閱 <a href="#troubleshoot-password-writeback">疑難排解密碼回寫</a> 若要深入了解有哪些其他狀況會造成此錯誤。</p>
             </td>
           </tr>
           <tr>
@@ -906,7 +906,7 @@
                 <li class="unordered">
                                         The user’s account is in a protected group, such as domain or enterprise admins, which disallows password set operations.<br\><br\></li>
               </ul>
-              <p>請參閱 [] <a href="#troubleshoot-password-writeback">疑難排解密碼回寫</a> 若要深入了解哪些其他狀況可能導致此錯誤。</p>
+              <p>請參閱 <a href="#troubleshoot-password-writeback">疑難排解密碼回寫</a> 若要深入了解有哪些其他狀況會造成這個錯誤。</p>
             </td>
           </tr>
           <tr>
@@ -1046,7 +1046,7 @@
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>這個事件表示連線到租用戶的服務匯流排執行個體時發生錯誤。 可能原因是您在內部部署環境中封鎖了輸出連線。 請檢查您的防火牆，確保您允許連線透過 TCP 443，並 <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>然後再試一次。 如果仍遇到問題，請嘗試停用再重新啟用密碼回寫。</p>
+              <p>這個事件表示連線到租用戶的服務匯流排執行個體時發生錯誤。 可能原因是您在內部部署環境中封鎖了輸出連線。 請檢查您的防火牆，確保您允許連線透過 TCP 443 和 <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>, ，然後再試一次。 如果仍遇到問題，請嘗試停用再重新啟用密碼回寫。</p>
             </td>
           </tr>
           <tr>
@@ -1172,7 +1172,7 @@
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>這個事件表示內部部署服務無法與密碼重設 Web 服務正確地通訊，來起始上架程序。 這可能是因為有防火牆規則或是取得租用戶的授權權杖時發生問題。 若要修正此問題，請確定您不封鎖輸出連線透過 TCP 443 和 TCP 9350-9354 或是 <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>與 AAD 系統管理員帳戶您用來將產品上架並未同盟。 </p>
+              <p>這個事件表示內部部署服務無法與密碼重設 Web 服務正確地通訊，來起始上架程序。 這可能是因為有防火牆規則或是取得租用戶的授權權杖時發生問題。 若要修正此問題，請確定您不封鎖輸出連線透過 TCP 443 和 TCP 9350-9354 或是 <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>, 、 和的 AAD 系統管理員帳戶您用來將產品上架並未同盟。 </p>
             </td>
           </tr>
           <tr>
@@ -1200,7 +1200,7 @@
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>這個事件表示內部部署服務無法與密碼重設 Web 服務正確地通訊，來起始下架程序。 這可能是因為有防火牆規則或是取得租用戶的授權權杖時發生問題。 若要修正此問題，請確定沒有封鎖透過 443 或是為輸出連線 <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>與您用來下架的 AAD 系統管理員帳戶並未同盟。 </p>
+              <p>這個事件表示內部部署服務無法與密碼重設 Web 服務正確地通訊，來起始下架程序。 這可能是因為有防火牆規則或是取得租用戶的授權權杖時發生問題。 若要修正此問題，請確定沒有封鎖輸出連線透過 443 或是 <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>, ，和您用來下架的 AAD 系統管理員帳戶並未同盟。 </p>
             </td>
           </tr>
           <tr>
@@ -1284,7 +1284,7 @@
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>這個事件表示管理代理程式服務帳戶沒有適當的指定帳戶權限，因此無法設定新密碼。 請確定使用者樹系中的 MA 帳戶有樹系中所有物件的重設和變更密碼權限。  如需有關如何執行這項作業，請參閱 <a href="../active-directory-passwords-getting-started#step-4-set-up-the-appropriate-active-directory-permissions">步驟 4：設定適當的 Active Directory 權限</a>.</p>
+              <p>這個事件表示管理代理程式服務帳戶沒有適當的指定帳戶權限，因此無法設定新密碼。 請確定使用者樹系中的 MA 帳戶有樹系中所有物件的重設和變更密碼權限。  如需有關如何執行作業，請參閱 <a href="../active-directory-passwords-getting-started#step-4-set-up-the-appropriate-active-directory-permissions">步驟 4 ︰ 設定適當的 Active Directory 權限</a>。</p>
             </td>
           </tr>
           <tr>
@@ -1500,5 +1500,6 @@
 [002]: ./media/active-directory-passwords-troubleshoot/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
+
 
 

@@ -27,7 +27,7 @@
 
 了解如何使用 Azure PowerShell 建立 Azure 資料湖存放區帳戶並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需詳細資料湖存放區的詳細資訊，請參閱 [資料湖市集概觀](data-lake-store-overview.md)。
 
-## 先決條件
+## 必要條件
 
 開始進行本教學課程之前，您必須具備下列條件：
 
@@ -160,7 +160,7 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 出現提示時，輸入 **Y** 刪除帳戶。
 
 
-## 建立資料湖存放區帳戶的其他方式
+## 其他建立資料湖存放區帳戶的方法
 
 - [使用入口網站開始使用資料湖存放區](data-lake-store-get-started-portal.md)
 - [使用 .NET SDK 開始使用資料湖存放區](data-lake-store-get-started-net-sdk.md)
@@ -170,7 +170,8 @@ WebPI 每個月都會更新。 PowerShell 資源庫將持續更新。 如果您�
 ## 後續步驟
 
 - [保護資料湖存放區中的資料](data-lake-store-secure-data.md)
-- [搭配資料湖存放區使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)
+- [搭配 Data Lake 存放區使用 Azure Data Lake 分析](data-lake-analytics-get-started-portal.md)
 - [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
+
 
 

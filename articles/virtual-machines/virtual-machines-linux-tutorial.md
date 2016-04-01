@@ -53,7 +53,7 @@
 
 ## 建立 Azure 虛擬機器
 
-型別 `azure group create <my-group-name> westus` 取代 _& lt; 我群組名稱 & gt;_ 是唯一的群組名稱 (您可以使用不同的區域如果您想要)。 您應該會看到如下的內容：
+型別 `azure group create <my-group-name> westus` 取代 _& lt; 我群組名稱 & gt;_ 是唯一的群組名稱 （您可以使用不同的區域如果您想要）。 您應該會看到如下的內容：
 
     azure group create myuniquegroupname westus
     info:    Executing command group create
@@ -273,7 +273,7 @@
     Calling ioctl() to re-read partition table.
     Syncing disks.
 
-使用檔案系統寫入磁碟分割和 **mkfs** 命令，並指定檔案系統類型和裝置名稱。 在本主題中，我們將使用先前內容中的 `ext4` 和 `/dev/sdc1`：
+使用檔案系統寫入磁碟分割和 **mkfs** 命令，並指定檔案系統類型和裝置名稱。 在本主題中，我們將使用 `ext4` 和 `/dev/sdc1` 上述 ︰
 
     sudo mkfs -t ext4 /dev/sdc1
     mke2fs 1.42.9 (4-Feb-2014)
@@ -327,4 +327,5 @@
 - [使用適用於 Linux 的 Azure CustomScript 延伸模組部署 LAMP 應用程式](virtual-machines-linux-script-lamp.md)
 
 - [Azure 上 Linux 的 Docker 虛擬機器擴充程式](virtual-machines-docker-vm-extension.md)
+
 

@@ -10,13 +10,13 @@
 
     這會下載、 安裝，並將參考加入 [Microsoft Azure 儲存體 SDK](https://www.nuget.org/packages/WindowsAzure.Storage/)。
 
-3. 在 **Program.cs** 檔案中，在檔案頂端新增下列陳述式:
+3. 在 **Program.cs** 檔案中，在檔案頂端新增下列陳述式 ︰
 
         using System.IO;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
 
-4. 在 **程式** 類別中變更 **ReceiveC2dAsync** 方法如下:
+4. 在 **程式** 類別中變更 **ReceiveC2dAsync** 方法如下 ︰
          
         private static async void ReceiveC2dAsync()
         {
@@ -64,15 +64,16 @@
             await deviceClient.CompleteAsync(fileUploadCommand);
         }
 
-    此方法會使用 Azure Storage SDK，將隨機產生的 10Mb Blob 上傳至指定的 URI。 請參閱 [Azure 儲存體-如何使用 blob] 如需有關如何將 blob 上傳。
+    此方法會使用 Azure Storage SDK，將隨機產生的 10Mb Blob 上傳至指定的 URI。 請參閱 [Azure Storage - How to use blobs] 如需有關如何將 blob 上傳。
 
-> [AZURE.NOTE] 請注意已上傳 blob 時，才能模擬裝置的這項實作完成定域機組對裝置訊息的方式。 此方法可簡化後端中已上傳檔案的處理作業，因為傳遞通知即代表上傳的檔案已可供處理。 中所述 [IoT 中心開發人員指南] [IoT 中心開發人員指南-C2D]，不過，一則訊息，則不會完成之前 *可見度逾時* (通常是 1 分鐘) 會放回裝置佇列，而 **ReceiveAsync()** 方法，它會再次接收。 在檔案上傳時間較長的情況下，可能較適合為模擬裝置將目前的上傳工作保持長期存放。 這可讓模擬裝置在檔案上傳完畢之前，完成雲端對裝置的訊息，然後傳送雲端到裝置訊息，以對後端通知工作已完成。
+> [AZURE.NOTE] 請注意已上傳 blob 時，才能模擬裝置的這項實作完成定域機組對裝置訊息的方式。 此方法可簡化後端中已上傳檔案的處理作業，因為傳遞通知即代表上傳的檔案已可供處理。 中所述 [IoT 中心開發人員指南][IoT Hub Developer Guide - C2D], ，不過一則訊息，則不會完成之前 *可見度逾時* （通常是 1 分鐘） 會放回裝置佇列和 **ReceiveAsync()** 方法，它會再次接收。 在檔案上傳時間較長的情況下，可能較適合為模擬裝置將目前的上傳工作保持長期存放。 這可讓模擬裝置在檔案上傳完畢之前，完成雲端對裝置的訊息，然後傳送雲端到裝置訊息，以對後端通知工作已完成。
 
 <!-- Links -->
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
 [Azure Storage - How to use blobs]: https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/#upload-a-blob-into-a-container
 
 <!-- Images -->
+
 
 
 

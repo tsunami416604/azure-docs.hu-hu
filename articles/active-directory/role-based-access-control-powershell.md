@@ -27,9 +27,9 @@
 
 在本教學課程裡，您將學習如何使用 Windows PowerShell 來管理 RBAC。 本課程將帶您逐一了解建立與檢查角色指派的程序。
 
-**預估完成時間:** 15 分鐘
+**預估完成時間 ︰** 15 分鐘
 
-## 先決條件
+## 必要條件
 
 在使用 Windows PowerShell 來管理 RBAC 之前，您必須具備下列項目：
 
@@ -156,11 +156,12 @@
 若要深入了解使用 Windows PowerShell 管理角色存取控制的詳細資訊，請參閱下列相關主題：
 
 - [Azure 中的角色型存取控制](../role-based-access-control-configure.md)
-- [Azure 資源管理員 Cmdlet](http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409): 了解如何使用 AzureResourceManager 模組中的 cmdlet。
-- [使用資源群組來管理您的 Azure 資源](../azure-preview-portal-using-resource-groups.md): 了解如何建立和管理 Azure 管理入口網站中的資源群組。
-- [Azure 部落格](http://blogs.msdn.com/windowsazure): 了解在 Azure 中的新功能。
-- [Windows PowerShell 部落格](http://blogs.msdn.com/powershell): 了解 Windows PowerShell 中的新功能。
+- [Azure 資源管理員 Cmdlet](http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409)︰ 了解如何使用 AzureResourceManager 模組中的 cmdlet。
+- [使用資源群組來管理您的 Azure 資源](../azure-preview-portal-using-resource-groups.md)︰ 了解如何建立和管理 Azure 管理入口網站中的資源群組。
+- [Azure 部落格](http://blogs.msdn.com/windowsazure)︰ 了解在 Azure 中的新功能。
+- [Windows PowerShell 部落格](http://blogs.msdn.com/powershell)︰ 了解 Windows PowerShell 中的新功能。
 - ["Hey, Scripting Guy!"部落格](http://blogs.technet.com/b/heyscriptingguy/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
 - [使用 Azure CLI 設定角色存取控制](role-based-access-control-xplat-cli-install.md)
 - [為角色存取控制進行疑難排解](role-based-access-control-troubleshooting.md)
+
 

@@ -27,7 +27,7 @@
 
 在 Microsoft Azure Media Services **串流端點** 代表可以內容直接傳遞給用戶端播放器應用程式，或以內容傳遞網路 (CDN) 進行進一步發佈的串流服務。 媒體服務也提供順暢的 Azure CDN 整合。 來自 StreamingEndpoint 服務的輸出資料流可以是即時資料流，也可以是媒體服務帳戶中的隨選視訊資產。
 
-此外，您可以藉由調整縮放單位 (也稱為串流單位)，控制串流端點服務處理成長頻寬需求的產能。 建議您為生產環境中的應用程式配置一個或多個縮放單位。 縮放單位提供您可以以 200 Mbps 和其他功能的遞增量購買哪些功能，其中包含兩個專用的流出容量: [動態封裝](media-services-dynamic-packaging-overview.md), ，CDN 整合，以及進階的組態。
+此外，您可以藉由調整縮放單位 (也稱為串流單位)，控制串流端點服務處理成長頻寬需求的產能。 建議您為生產環境中的應用程式配置一個或多個縮放單位。 縮放單位提供您可以以 200 Mbps 和其他功能的遞增量購買哪些功能，其中包含兩個專用的流出容量 ︰ [動態封裝](media-services-dynamic-packaging-overview.md), ，CDN 整合，以及進階的組態。
 
 請注意，只有 StreamingEndpoint 處於執行中狀態時，才會向您收取費用。
 
@@ -68,9 +68,9 @@
     任何新的串流單位配置需要大約 20 分鐘的時間才能完成。 
 
      
-    >[AZURE.NOTE] Currently, going from any positive value of streaming units back to none, can disable on-demand streaming for up to an hour.
+    >[AZURE.NOTE] 目前，從任何正值的串流處理單元為 none，可以停用隨選串流長達一小時。
 
-    >[AZURE.NOTE] The highest number of units specified for the 24-hour period is used in calculating the cost. For information about pricing details, see [Media Services Pricing Details](http://go.microsoft.com/fwlink/?LinkId=275107).
+    >[AZURE.NOTE]計算成本時會使用 24 小時內指定的最大單元數。 如需定價詳細資料的相關資訊，請參閱 [媒體服務定價詳細資料](http://go.microsoft.com/fwlink/?LinkId=275107)。
     
 ##<a id="configure_streaming_endpoints"></a>設定串流端點
 
@@ -121,7 +121,7 @@
 
 在所有 Azure 資料中心啟用 CDN 整合：美國西部、美國東部、北歐、西歐、日本西部、日本東部、東南亞和東亞。
 
-一旦啟用，停用下列組態: **自訂主機名稱** 和 **存取控制**。
+一旦啟用，停用下列組態 ︰ **自訂主機名稱** 和 **存取控制**。
 
 ![串流端點啟用 CDN][streaming-endpoint-enable-cdn]
 
@@ -133,7 +133,7 @@
 - 對於新的串流端點，您可以藉由建立新的端點來啟用 CDN；對於現有的串流端點，您必須先停止端點，然後再啟用 CDN。
  
 
-如需詳細資訊，請參閱 [宣佈 Azure 媒體服務整合 Azure CDN (內容傳遞網路) 與](http://azure.microsoft.com/blog/2015/03/17/announcing-azure-media-services-integration-with-azure-cdn-content-delivery-network/)。
+如需詳細資訊，請參閱 [宣佈 Azure 媒體服務整合 Azure CDN （內容傳遞網路） 與](http://azure.microsoft.com/blog/2015/03/17/announcing-azure-media-services-integration-with-azure-cdn-content-delivery-network/)。
 
 
 ##媒體服務學習路徑
@@ -149,3 +149,4 @@
 [configure-origin]: ./media/media-services-manage-origins/media-services-origins-configure.png
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
+

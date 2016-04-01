@@ -30,7 +30,7 @@ Microsoft Azure Active Directory 應用程式 Proxy 可讓您在私人網路內�
 
 - Microsoft Azure AD [基本或進階訂用帳戶](active-directory-editions.md) 和 Azure AD 目錄的全域管理員。
 - 執行 Windows Server 2012 R2 或 Windows 8.1 或更高版本的伺服器，您可以在該伺服器上安裝應用程式 Proxy 連接器。 伺服器必須能夠將 HTTPS 要求傳送至雲端的應用程式 Proxy 服務，而且必須有您想要發佈的應用程式的 HTTPS 連線。
-- 如果防火牆置於路徑中，請確定已開啟防火牆，以允許源自連接器到應用程式 Proxy 的 HTTPS (TCP) 要求。 連接器會將這些連接埠與屬於高層級網域的子網域一起使用：msappproxy.net。 請確定開啟 **所有** 下列連接埠 **輸出** 流量:
+- 如果防火牆置於路徑中，請確定已開啟防火牆，以允許源自連接器到應用程式 Proxy 的 HTTPS (TCP) 要求。 連接器會將這些連接埠與屬於高層級網域的子網域一起使用：msappproxy.net。 請確定開啟 **所有** 下列連接埠 **輸出** 流量 ︰
 
 連接埠號碼 | 說明
 --- | ---
@@ -80,7 +80,7 @@ Microsoft Azure Active Directory 應用程式 Proxy 可讓您在私人網路內�
 - [啟用單一登入](active-directory-application-proxy-sso-using-kcd.md)
 - [啟用條件式存取](active-directory-application-proxy-conditional-access.md)
 - [使用宣告感知應用程式](active-directory-application-proxy-claims-aware-apps.md)
-- [使用應用程式 Proxy 疑難排解您遇到的問題](active-directory-application-proxy-troubleshoot.md)
+- [您無法使用應用程式 Proxy 的問題進行疑難排解](active-directory-application-proxy-troubleshoot.md)
 
 ## 深入了解應用程式 Proxy
 - [看看我們在這裡的線上說明](active-directory-application-proxy-enable.md)
@@ -91,4 +91,5 @@ Microsoft Azure Active Directory 應用程式 Proxy 可讓您在私人網路內�
 * [以組織方式註冊 Azure](sign-up-organization.md)
 * [Azure 身分識別](fundamentals-identity.md)
 * [使用應用程式 Proxy 發行應用程式](active-directory-application-proxy-publish.md)
+
 

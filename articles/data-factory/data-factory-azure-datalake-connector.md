@@ -71,7 +71,7 @@
 
     ![授權按鈕](./media/data-factory-azure-data-lake-connector/authorize-button.png)
 4. 使用您的認證來登入和 **授權** 在 JSON 中的屬性應該被指派的值現在。
-5. (選擇性)指定選擇性參數的值，例如 **accountName**, ，**subscriptionID** 和 **resourceGroupName** 在 JSON 中 (或) 從 JSON 刪除這些屬性。
+5. （選擇性）指定選擇性參數的值，例如 **accountName**, ，**subscriptionID** 和 **resourceGroupName** 在 JSON 中 （或） 從 JSON 刪除這些屬性。
 6. 按一下 [ **部署** 命令列來部署連結的服務。
 
 
@@ -397,8 +397,8 @@
 
 | 屬性 | 說明 | 必要 |
 | :-------- | :----------- | :-------- |
-| 類型 | Type 屬性必須設定為: **AzureDataLakeStore** | 是 |
-| dataLakeUri | 指定有關 Azure 資料湖存放區帳戶的資訊。 它是以下列格式: https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 | 是 |
+| 類型 | Type 屬性必須設定為 ︰ **AzureDataLakeStore** | 是 |
+| dataLakeUri | 指定有關 Azure 資料湖存放區帳戶的資訊。 它是以下列格式 ︰ https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 | 是 |
 | authorization | 按一下 [ **授權** 按鈕 **Data Factory 編輯器** 並輸入您的認證，這會自動產生的授權 URL 指派給這個屬性。  | 是 |
 | sessionId | OAuth 工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是獨一無二的，只能使用一次。 當您使用 Data Factory 編輯器時便會自動產生。 | 是 |  
 | accountName | 資料湖帳戶名稱 | 否 |
@@ -415,13 +415,13 @@
 | 屬性 | 說明 | 必要 |
 | :-------- | :----------- | :-------- |
 | folderPath | Azure 資料湖存放區中容器與資料夾的路徑。 | 是 |
-| fileName | <p>在 Azure 資料湖存放區中的檔案名稱。 檔案名稱是選擇性的。 </p><p>如果您指定檔案名稱，活動 (包括複製) 適用於特定的檔案。</p><p>未指定 fileName 時，複製會將輸入資料集的 folderPath 包含所有檔案。</p><p>檔案名稱未指定輸出資料集，所產生檔案的名稱會在下列這種格式: 資料。<Guid>.txt (例如:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p> | 否 |
+| fileName | <p>在 Azure 資料湖存放區中的檔案名稱。 檔案名稱是選擇性的。 </p><p>如果您指定檔案名稱，活動 （包括複製） 適用於特定的檔案。</p><p>未指定 fileName 時，複製會將輸入資料集的 folderPath 包含所有檔案。</p><p>檔案名稱未指定輸出資料集，所產生檔案的名稱會在下列這種格式 ︰ 資料。<Guid>.txt (例如:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p> | 否 |
 | partitionedBy | partitionedBy 是選擇性的屬性。 您可以用來指定時間序列資料的動態 folderPath 和 filename。 例如，folderPath 可針對每小時的資料進行參數化。 如需詳細資訊和範例，請參閱下面的＜運用 partitionedBy 屬性＞一節。 | 否 |
-| format | 支援兩種格式類型: **TextFormat**, ，**AvroFormat**。 您需要將格式底下的 type 屬性設定為這些值。 如果格式為 TextFormat，您可以指定格式的其他選擇性屬性。 請參閱 [指定 TextFormat](#specifying-textformat) 下面章節以取得詳細資料。 | 否 |
+| format | 支援兩種格式類型 ︰ **TextFormat**, ，**AvroFormat**。 您需要將格式底下的 type 屬性設定為這些值。 如果格式為 TextFormat，您可以指定格式的其他選擇性屬性。 請參閱 [指定 TextFormat](#specifying-textformat) 下面章節以取得詳細資料。 | 否 |
 | compression | 指定此資料的壓縮類型和層級。 支援的類型為：GZip、Deflate 和 BZip2，而支援的層級為：最佳和最快。 請參閱 [壓縮支援](#compression-support) 一節以取得詳細資料。  | 否 |
 
 ### 運用 partitionedBy 屬性
-如上所述，您可以指定的動態 folderPath 和 filename 時間序列資料 **partitionedBy** 區段、 Data Factory 巨集和系統變數: SliceStart 和 SliceEnd，表示指定的資料配量的開始和結束時間。
+如上所述，您可以指定的動態 folderPath 和 filename 時間序列資料 **partitionedBy** 區段、 Data Factory 巨集和系統變數 ︰ SliceStart 和 SliceEnd，表示指定的資料配量的開始和結束時間。
 
 請參閱 [建立資料集](data-factory-create-datasets.md) 和 [排程和執行](data-factory-scheduling-and-execution.md) 文章，以了解更多詳細資料的時間序列資料集、 排程和配量。
 
@@ -457,10 +457,10 @@
 | -------- | ----------- | -------- |
 | columnDelimiter | 在檔案中做為資料行分隔符號的字元。此標記是選擇性的。 預設值是逗號 (,)。 | 否 |
 | rowDelimiter | 在檔案中做為資料列分隔符號的字元。 此標記是選擇性的。 預設值是下列任一項：[“\r\n”, “\r”,” \n”]。 | 否 |
-| escapeChar | <p>用來逸出內容中顯示之資料行分隔符號的特殊字元。 此標記是選擇性的。 沒有預設值。 您必須指定這個屬性不能超過一個字元。</p><p>比方說，如果您以逗號 (，) 做為資料行分隔符號，但您想要有逗號字元的文字 (範例:"Hello，world")，您可以定義 '$' 做為逸出字元，並使用字串"Hello$，world"中的來源。</p><p>請注意，您無法指定 escapeChar 和 quoteChar 資料表。</p> | 否 | 
-| quoteChar | <p>用來引用字串值的特殊字元。 引號字元內的資料行和資料列分隔符號會被視為字串值的一部分。 此標記是選擇性的。 沒有預設值。 您必須指定這個屬性不能超過一個字元。</p><p>比方說，如果您以逗號 (，) 做為資料行分隔符號，但您想要有逗號字元的文字 (範例: < Hello，world >)，您可以定義 '"' 做為引用字元並在來源中使用字串 <"Hello，world">。 這個屬性不適用於輸入和輸出資料表。</p><p>請注意，您無法指定 escapeChar 和 quoteChar 資料表。</p> | 否 |
+| escapeChar | <p>用來逸出內容中顯示之資料行分隔符號的特殊字元。 此標記是選擇性的。 沒有預設值。 您必須指定這個屬性不能超過一個字元。</p><p>比方說，如果您以逗號 （，） 做為資料行分隔符號，但您想要有逗號字元的文字 (範例:"Hello，world")，您可以定義 '$' 做為逸出字元，並使用字串"Hello$，world"中的來源。</p><p>請注意，您無法指定 escapeChar 和 quoteChar 資料表。</p> | 否 | 
+| quoteChar | <p>用來引用字串值的特殊字元。 引號字元內的資料行和資料列分隔符號會被視為字串值的一部分。 此標記是選擇性的。 沒有預設值。 您必須指定這個屬性不能超過一個字元。</p><p>比方說，如果您以逗號 （，） 做為資料行分隔符號，但您想要有逗號字元的文字 (範例 ︰ < Hello，world >)，您可以定義 '"' 做為引用字元並在來源中使用字串 <"Hello，world">。 這個屬性不適用於輸入和輸出資料表。</p><p>請注意，您無法指定 escapeChar 和 quoteChar 資料表。</p> | 否 |
 | nullValue | <p>用來代表 Blob 檔案內容中 null 值的字元。 此標記是選擇性的。 預設值為"\N"。</p><p>例如，根據上述範例，blob 中的"NaN"會轉換成 null 值複製到 SQL Server 時。</p> | 否 |
-| encodingName | 指定編碼名稱。 如需有效編碼名稱的清單，請參閱: [Encoding.EncodingName 屬性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 預設值為 UTF-8。 | 否 | 
+| encodingName | 指定編碼名稱。 如需有效編碼名稱的清單，請參閱 ︰ [Encoding.EncodingName 屬性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 預設值為 UTF-8。 | 否 | 
 
 #### 範例
 下列範例顯示 TextFormat 的一些格式屬性。
@@ -497,7 +497,7 @@
 ### 壓縮支援  
 處理大型資料集可能會導致 I/O 和網路瓶頸。 因此，存放區中的壓縮資料不但可以跨網路加速資料傳輸和節省磁碟空間，也能在處理巨量資料時帶來顯著的效能提升。 在此階段中，Azure Blob 或內部部署檔案系統等以檔案為基礎的資料存放區支援壓縮。  
 
-若要指定資料集的壓縮，請使用 **壓縮** 屬性在資料集 JSON，如下列範例所示:   
+若要指定資料集的壓縮，請使用 **壓縮** 屬性在資料集 JSON，如下列範例所示 ︰   
 
     {  
         "name": "AzureDatalakeStoreDataSet",  
@@ -519,12 +519,12 @@
         }  
     }  
  
-請注意， **壓縮** 區段具有兩個屬性:  
+請注意， **壓縮** 區段具有兩個屬性 ︰  
   
-- **類型:** 的壓縮轉碼器，它可以是 **GZIP**, ，**Deflate** 或 **BZIP2**。  
-- **層級:** 壓縮比，它可以是 **最佳** 或 **最快**。 
-    - **最快速:** 壓縮作業應該儘速完成，即使未以最佳方式壓縮所產生的檔案。 
-    - **最佳**: 壓縮作業應該以最佳方式壓縮，即使該作業耗費很長的時間才能完成。 
+- **類型 ︰** 的壓縮轉碼器，它可以是 **GZIP**, ，**Deflate** 或 **BZIP2**。  
+- **層級 ︰** 壓縮比，它可以是 **最佳** 或 **最快**。 
+    - **最快速 ︰** 壓縮作業應該儘速完成，即使未以最佳方式壓縮所產生的檔案。 
+    - **最佳**︰ 壓縮作業應該以最佳方式壓縮，即使該作業耗費很長的時間才能完成。 
     
     請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題取得詳細資訊。 
 
@@ -542,7 +542,7 @@
 
 另一方面，活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同，而在複製活動的案例中，可用的屬性會根據來源與接收的類型而有所不同。
 
-**AzureDataLakeStoreSource** 支援下列屬性 **typeProperties** 區段:
+**AzureDataLakeStoreSource** 支援下列屬性 **typeProperties** 區段 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
@@ -550,11 +550,11 @@
 
 
 
-**AzureDataLakeStoreSink** 支援下列屬性 **typeProperties** 區段:
+**AzureDataLakeStoreSink** 支援下列屬性 **typeProperties** 區段 ︰
 
 | 屬性 | 說明 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
-| copyBehavior | 指定複製行為。 | <p>**PreserveHierarchy:** : 保留目標資料夾，亦即，來源資料夾的原始程式檔的相對路徑中的檔案階層完全相同的目標資料夾的目標檔案相對路徑。</p><p>**FlattenHierarchy:** 從來源資料夾的所有檔案會都出現在第一層的目標資料夾。 目標檔案會有自動產生的名稱。</p><p>**MergeFiles:** (稍後即將這項功能) 合併為一個檔案的來源資料夾的所有檔案。 如果指定檔案名稱，則合併的檔案名稱會指定的名稱。否則，就會自動產生的檔案名稱。</p> | 否 |
+| copyBehavior | 指定複製行為。 | <p>**PreserveHierarchy:** ︰ 保留目標資料夾，亦即，來源資料夾的原始程式檔的相對路徑中的檔案階層完全相同的目標資料夾的目標檔案相對路徑。</p><p>**FlattenHierarchy:** 從來源資料夾的所有檔案會都出現在第一層的目標資料夾。 目標檔案會有自動產生的名稱。</p><p>**MergeFiles:** （稍後即將這項功能） 合併為一個檔案的來源資料夾的所有檔案。 如果已指定檔案/Blob 名稱，合併檔案名稱會是指定的名稱；否則，就會是自動產生的檔案名稱。</p> | 否 |
 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
@@ -562,4 +562,5 @@
 [AZURE.INCLUDE [data-factory-type-conversion-sample](../../includes/data-factory-type-conversion-sample.md)]
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+
 

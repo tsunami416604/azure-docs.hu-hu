@@ -23,24 +23,24 @@
 ## 什麼是 CSDL 及其結構？
 CSDL (概念結構定義語言) 是一項規格，會定義如何使用常見的 XML 用語來說明對於 Azure Marketplace 的 Web 服務或資料庫服務。
 
-簡單概觀 **要求流程:**
+簡單概觀 **要求流程 ︰**
 
   `Client -> Azure Marketplace -> Content Provider’s Web Service (Get, Post, Delete, Put)`
 
- **資料流程** 是以相反的方向:
+ **資料流程** 是以相反的方向 ︰
 
   `Client <- Azure Marketplace <- Content Provider’s WebService`
 
-**[圖 1** 圖表如何用戶端會從取得資料內容的提供者 (服務) 透過 Azure Marketplace。  對應/轉換元件會使用 CSDL 來處理內容提供者的服務和要求用戶端之間的要求和資料傳遞。
+**[圖 1** 圖表如何用戶端會從取得資料內容的提供者 （服務） 透過 Azure Marketplace。  對應/轉換元件會使用 CSDL 來處理內容提供者的服務和要求用戶端之間的要求和資料傳遞。
 
 *圖 1：透過 Azure Marketplace，從要求用戶端到內容提供者的詳細流程*
 
   ![繪圖](media/marketplace-publishing-data-service-creation-odata-mapping/figure-1.png)
 
-如需有關 Atom 背景，Atom Pub 和 OData 通訊協定的 Marketplace</延伸模組建置時，請檢閱: [http://msdn.microsoft.com/library/ff478141.aspx](http://msdn.microsoft.com/library/ff478141.aspx)
+如需有關 Atom 背景，Atom Pub 和 OData 通訊協定的 Marketplace</延伸模組建置時，請檢閱 ︰ [http://msdn.microsoft.com/library/ff478141.aspx](http://msdn.microsoft.com/library/ff478141.aspx)
 
-摘錄 from above 連結:
-    *「 開放式資料通訊協定 (以下稱為 OData) 的目的是提供 CRUD 樣式作業 (建立、 讀取、 更新和刪除) 對資源公開為資料服務以 REST 為基礎的通訊協定。「資料服務」是一個端點，其中含有公開自一或多個「集合」的資料，每個集合均包含零到多個「項目」，這些項目是由具類型的具名值組所組成。OData 是 Microsoft 基於 OASIS (Organization for the Advancement of Structured Information Standards) 標準所發佈，因此，任何有需要的人都能建置伺服器、用戶端或工具，而沒有任何權利金或限制。」*
+摘錄 from above 連結 ︰
+    *「 開放式資料通訊協定 （以下稱為 OData） 的目的是提供 CRUD 樣式作業 （建立、 讀取、 更新和刪除） 對資源公開為資料服務以 REST 為基礎的通訊協定。 「資料服務」是一個端點，其中含有公開自一或多個「集合」的資料，每個集合均包含零到多個「項目」，這些項目是由具類型的具名值組所組成。 OData 會發佈下 OASIS （先進的結構化資訊標準組織） 標準的 microsoft，讓想要的任何人都可以建立伺服器、 用戶端或工具，而不需權利金或限制 」。*
 
 ### 以下是三個必須由 CSDL 定義的關鍵部分：
 
@@ -61,19 +61,19 @@ CSDL (概念結構定義語言) 是一項規格，會定義如何使用常見的
 2. CSDL 可用來驗證服務呼叫。
     - 格式化的服務呼叫接著會由 Azure Marketplace 傳送到內容提供者服務
 3. Web 服務會執行並 preforms Http 動詞命令的動作 (亦即 GET)
-  將資料傳回至要求的資料 (如果有的話) 的公開給用戶端 XML 格式的 Azure Marketplace 使用 CSDL 中定義的對應。
+  將資料傳回至要求的資料 （如果有的話） 的公開給用戶端 XML 格式的 Azure Marketplace 使用 CSDL 中定義的對應。
 4. 用戶端會以 XML 或 JSON 格式傳送資料 (如果有的話)
 
 ## 定義
 
 ### OData ATOM Pub
 
-ATOM Pub 的延伸模組，其中每個項目代表結果集的一個資料列。 項目的內容部分已增強來包含資料列的值 - 做為索引鍵值組。 在這裡找到更多的資訊:
+ATOM Pub 的延伸模組，其中每個項目代表結果集的一個資料列。 項目的內容部分已增強來包含資料列的值 - 做為索引鍵值組。 在這裡找到更多的資訊 ︰
 [https://www.odata.org/documentation/odata-version-3-0/atom-format/](https://www.odata.org/documentation/odata-version-3-0/atom-format/)
 
 ### CSDL - 概念結構定義語言
 
-允許定義透過資料庫公開的函式 (SPROC) 和實體。 詳細資訊，請參閱: [http://msdn.microsoft.com/library/bb399292.aspx](http://msdn.microsoft.com/library/bb399292.aspx)  
+允許定義透過資料庫公開的函式 (SPROC) 和實體。 詳細資訊，請參閱 ︰ [http://msdn.microsoft.com/library/bb399292.aspx](http://msdn.microsoft.com/library/bb399292.aspx)  
 
 > [AZURE.TIP] 按一下 [ **其他版本** 下拉式清單中選取的版本，如果您沒有看到文件。
 
@@ -92,7 +92,7 @@ ATOM Pub 的延伸模組，其中每個項目代表結果集的一個資料列�
 
 ## CSDL 基本概念
 
-CSDL (概念結構定義語言) 是一項規格，會定義如何使用常見的 XML 用語來說明對於 Azure Marketplace 的 Web 服務或資料庫服務。 CSDL 描述重要 pieces， **可傳遞的資料來源的資料至 Azure Marketplace。**主要部分如下所示：
+CSDL (概念結構定義語言) 是一項規格，會定義如何使用常見的 XML 用語來說明對於 Azure Marketplace 的 Web 服務或資料庫服務。 CSDL 描述重要 pieces， **可傳遞的資料來源的資料至 Azure Marketplace。** 主要部分如下所示：
 
 - 說明所有對外公開使用之函式 (FunctionImport 節點) 的介面資訊
 - 適用於所有訊息要求 (輸入) 和訊息回應 (輸出) (EntityContainer/EntitySet/EntityType 節點) 的資料類型資訊
@@ -104,7 +104,7 @@ CSDL (概念結構定義語言) 是一項規格，會定義如何使用常見的
 ### 將 CSDL 關聯至資料庫或集合
 **CSDL 規格**
 
-CSDL 是說明 Web 服務的 XML 文法。 規格本身分成 4 個主要元素: EntitySet、 FunctionImport;命名空間和 EntityType。
+CSDL 是說明 Web 服務的 XML 文法。 規格本身分成 4 個主要元素 ︰ EntitySet、 FunctionImport;命名空間和 EntityType。
 
 若要讓這個抽象層更容易了解，可讓 CSDL 關聯至資料表。
 
@@ -122,10 +122,10 @@ CSDL 是說明 Web 服務的 XML 文法。 規格本身分成 4 個主要元素:
 - FunctionImport ~ = 預存程序
 
 **允許的 HTTP 動詞命令**
-- 取得 – 從 db (傳回的集合) 的傳回值
-- POST – 用來傳遞從 db (建立新的項目在集合中，傳回的識別碼 URI) 的資料和選擇性的傳回值
-- 刪除 – 刪除的資料庫 (刪除集合)
-- 將 – 更新到資料庫的資料 (取代集合或建立一個)
+- 取得 – 從 db （傳回的集合） 的傳回值
+- POST – 用來傳遞從 db （建立新的項目在集合中，傳回的識別碼 URI） 的資料和選擇性的傳回值
+- 刪除 – 刪除的資料庫 （刪除集合）
+- 將 – 更新到資料庫的資料 （取代集合或建立一個）
 
 ## 中繼資料/對應文件
 
@@ -133,14 +133,14 @@ CSDL 是說明 Web 服務的 XML 文法。 規格本身分成 4 個主要元素:
 
 CSDL 的範例如下: (複製和貼上下列範例 CSDL 中的 XML 編輯器和變更，以符合您的服務。  然後貼到 CSDL 對應 DataService] 索引標籤底下建立您的服務中時  [Azure Marketplace 發佈入口網站](https://publish.windowsazure.com))。
 
-**詞彙:**
+**詞彙 ︰**
 關於 CSDL 詞彙至 [發佈入口網站](https://publish.windowsazure.com) UI (PPUI) 條款。
 - 提供 「 Title 」 在 PPUI 與 MyWebOffer
 - 在 PPUI MyCompany 與 **發行者顯示名稱** 中 [Microsoft 開發人員中心](http://dev.windows.com/registration?accountprogram=azure) UI
-- 您的 API 與 Web 或資料服務 (在 PPUI 計劃)
+- 您的 API 與 Web 或資料服務 （在 PPUI 計劃）
 
-**階層:**
-  (內容提供者) 的公司擁有 Offer(s) 的方案，也就是 service(s) 總哪一行的 api。
+**階層 ︰**
+  （內容提供者） 的公司擁有 Offer(s) 的方案，也就是 service(s) 總哪一行的 api。
 
 ### WebService CSDL 範例
 
@@ -259,7 +259,7 @@ CSDL 的範例如下: (複製和貼上下列範例 CSDL 中的 XML 編輯器和�
 ###DataService CSDL 範例
 
 連接至資料庫資料表或檢視做為端點所公開的服務
-以下範例顯示兩個基底資料的 Api 基礎 API CSDL (可以使用檢視，而非資料表)。
+以下範例顯示兩個基底資料的 Api 基礎 API CSDL （可以使用檢視，而非資料表）。
 
         <?xml version="1.0"?>
         <!-- The namespace attribute below is used by our system to generate C#. You can change “MyCompany.MyOffer” to something that makes sense for you, but change “MyOffer” consistently throughout the document. -->
@@ -316,4 +316,5 @@ CSDL 的範例如下: (複製和貼上下列範例 CSDL 中的 XML 編輯器和�
 - 如果您有興趣學習和了解特定節點和其參數，請閱讀這篇文章 [資料服務 OData 對應節點](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) 的定義和說明、 範例和使用案例的內容。
 - 如果您有興趣檢閱範例，請閱讀這篇文章 [資料服務 OData 對應範例](marketplace-publishing-data-service-creation-odata-mapping-examples.md) 查看範例程式碼，並了解程式碼語法與內容。
 - 若要返回發佈至 Azure Marketplace 資料服務的指定路徑，請閱讀本文 [資料服務的發行指導](marketplace-publishing-data-service-creation.md)。
+
 

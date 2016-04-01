@@ -20,7 +20,7 @@
 
 本教學課程示範如何使用 API 應用程式中裝載 ASP.NET web 應用程式 [應用程式服務](../app-service.md)。
 
-## 先決條件
+## 必要條件
 
 本教學課程是根據 API 應用程式教學課程系列所建置：
 
@@ -30,7 +30,7 @@
 
 ## 將 API 應用程式設為可公開存取
 
-在 [Azure 入口網站](http://go.microsoft.com/fwlink/?LinkId=529715), ，選取 API 應用程式。 按一下 [ **設定** 命令列中的按鈕。 在 **應用程式設定** 刀鋒視窗中，變更 **存取層級** 至 **公用 (匿名)**。
+在 [Azure 入口網站](http://go.microsoft.com/fwlink/?LinkId=529715), ，選取 API 應用程式。 按一下 [ **設定** 命令列中的按鈕。 在 **應用程式設定** 刀鋒視窗中，變更 **存取層級** 至 **公用 （匿名）**。
 
 ![](./media/app-service-web-connect-web-app-to-saas-api/4-5-Change-Access-Level-To-Public.png)
 
@@ -70,7 +70,7 @@
     ![HomeController.cs 程式碼更新](./media/app-service-web-connect-web-app-to-saas-api/5-Write-Code-Which-Leverages-Swagger-Generated-Code.png)
 
 1. 使用下面的程式碼來更新 `Contact` 檢視，以反映連絡人動態清單：  
-    <pre>加入檢視檔案的最上層
+    <pre>// Add to the very top of the view file
     @model IList & l t;MyContactsList.Web.Models.Contact & gt;
     
     // Replace the default email addresses with the following
@@ -78,7 +78,7 @@
     & lt; ul & gt;
         @foreach (var contact in Model)
         {
-            & lt; li & gt; lt; a = & quot;mailto:@contact。EmailAddress & q u o t; & gt;@contact。名稱 & amp;lt;@contact。電子郵件位址 (& s) amp; gt; & lt; /a gt; & lt; / l i & gt;
+            & lt; li & gt; lt; a = & quot;mailto:@contact。EmailAddress & q u o t; & gt;@contact。名稱 & amp;lt;@contact。電子郵件位址 （& s) amp; gt; & lt; /a gt; & lt; / l i & gt;
         }
     & l t; / u l & gt; 
     </pre>
@@ -89,9 +89,10 @@
 
 請依照下列指示 [如何部署 Azure web 應用程式](web-sites-deploy.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
  
+
 

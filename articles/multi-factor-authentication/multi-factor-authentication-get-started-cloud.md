@@ -73,9 +73,9 @@
 --------------------------------------------------------------------------------
 <ol>
 
-<li>登入 Azure 入口網站，以系統管理員。</li>
+<li>以系統管理員身分登入 Azure 入口網站。</li>
 <li>在左側，選取 **Active Directory**。</li>
-<li>在 [Active Directory] 頁面中，在有您想要啟用的使用者的目錄上按兩下。</li>
+<li>在 [Active Directory] 頁面上，在有您要啟用的使用者之目錄上按兩下。</li>
 <li>在 [目錄] 頁面頂端，選取 **授權**。</li>
 <li>在 [授權] 頁面中，選取 Active Directory Premium 或 Enterprise Mobility Suite，，然後按一下 [ **指派**。</li>
 
@@ -155,5 +155,6 @@ Azure Multi-Factor Authentication 中的使用者帳戶具有下列三種不同�
         Your Administrator
 
 ## 後續步驟
-您現在已設定多重要素驗證在雲端中，您可以前往什麼是移至下一步 [設定 Azure 多重要素驗證。](multi-factor-authentication-whats-next.md)您將會瞭解有關報告、詐騙警示、自訂語音訊息，以及 Azure Multi-Factor Authentication 提供之所有功能的相關資訊。  
+您現在已設定多重要素驗證在雲端中，您可以前往什麼是移至下一步 [設定 Azure 多重要素驗證。](multi-factor-authentication-whats-next.md)  您將會瞭解有關報告、詐騙警示、自訂語音訊息，以及 Azure Multi-Factor Authentication 提供之所有功能的相關資訊。  
+
 

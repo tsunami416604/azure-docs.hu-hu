@@ -48,7 +48,7 @@ System Center DPM 會備份檔案和應用程式資料。 備份到 DPM 的資�
 
 >[AZURE.NOTE] Linux 虛擬機器只能進行檔案一致性的備份可供使用。
 
-## 先決條件
+## 必要條件
 如下所示讓 Azure 備份做好備份 DPM 資料的準備：
 
 1. **建立備份保存庫** — 在 Azure 備份主控台中建立保存庫。
@@ -91,4 +91,5 @@ System Center DPM 會備份檔案和應用程式資料。 備份到 DPM 的資�
 - 疏鬆資料流
 
 >[AZURE.NOTE] 從 System Center 2012 dpm sp1 開始您可以備份至 Azure，使用 Microsoft Azure 備份的 DPM 所保護的工作負載。
+
 

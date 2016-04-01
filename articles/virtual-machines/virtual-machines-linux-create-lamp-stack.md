@@ -32,7 +32,7 @@
 -   如何準備用於 LAMP 堆疊的虛擬機器。
 -   如何在虛擬機器上安裝 LAMP 伺服器所需的軟體。
 
-假設讀者已具備 Azure 訂用帳戶。  如果您可以註冊免費試用版，網址 [http://azure.microsoft.com](http://azure.microsoft.com)。 如果您有 MSDN 訂閱，請參閱 [Microsoft Azure 特價: MSDN、 MPN 及 Bizspark 優惠](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)。 若要深入了解 Azure，請參閱 [什麼是 Azure?](http://azure.microsoft.com/overview/what-is-azure/)
+假設讀者已具備 Azure 訂用帳戶。  如果您可以註冊免費試用版，網址 [http://azure.microsoft.com](http://azure.microsoft.com)。 如果您有 MSDN 訂閱，請參閱 [Microsoft Azure 特價 ︰ MSDN、 MPN 及 Bizspark 優惠](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)。 若要深入了解 Azure，請參閱 [什麼是 Azure？](http://azure.microsoft.com/overview/what-is-azure/)
 
 除了本主題中，如果您已經有虛擬機器，只是想在不同 Linux 散發套件上安裝 LAMP 堆疊的基本概念，請參閱 [在 Azure 中的 Linux 虛擬機器上安裝 LAMP 堆疊](virtual-machines-linux-install-lamp-stack.md)。
 
@@ -46,7 +46,7 @@ SSH 對系統管理員而言是很重要的工具。 因為無論如何，依賴
 
 依照下列步驟來產生 SSH 驗證金鑰。
 
--   下載並安裝 puttygen 從下列位置: [http://www.chiark.greenend.org.uk/~sgtatham/](http://www.chiark.greenend.org.uk/~sgtatham/)putty/download.html
+-   下載並安裝 puttygen 從下列位置 ︰ [http://www.chiark.greenend.org.uk/~sgtatham/](http://www.chiark.greenend.org.uk/~sgtatham/)putty/download.html
 -   執行 puttygen.exe。
 -   按一下 [ **產生** 來產生金鑰。 在這個程序中，您可以在視窗中的空白區域移動滑鼠來提高隨機性。  
 ![][1]
@@ -118,7 +118,7 @@ TCP 連接埠 80 是 Apache 接聽的預設連接埠號碼。 在 Azure 端點�
 
 ![][9]
 
-在左窗格中，按一下 [  **連線]-> [SSH]-> [Auth** 然後按一下 [ **瀏覽** 指定的位置 **privateKey.ppk** 檔案，其中包含 puttygen 在 「 第 1 階段產生的私密金鑰: 建立映像。 下列是一個範例：  
+在左窗格中，按一下 [  **連線]-> [SSH]-> [Auth** 然後按一下 [ **瀏覽** 指定的位置 **privateKey.ppk** 檔案，其中包含 puttygen 在 「 第 1 階段產生的私密金鑰 ︰ 建立映像。 下列是一個範例：  
 
 ![][10]
 
@@ -357,7 +357,7 @@ Tasksel 是一個 Debian/Ubuntu 工具，以協調工作的方式安裝多個相
         sudo chmod g+w /var/www/html/                 # grant write permission to group lampappgroup
 
     >[AZURE.NOTE] 您可能需要如果您想要修改的檔案/var/www/html/中一次登入。
--   使用任何 SFTP 用戶端 (例如 FileZilla) 連線到您的虛擬機器 (例如 lampdemo.cloudapp.net) 的 DNS 名稱，並瀏覽至 /**var/www/html** 發佈您的網站。  
+-   使用任何 SFTP 用戶端 （例如 FileZilla) 連線到您的虛擬機器 (例如 lampdemo.cloudapp.net) 的 DNS 名稱，並瀏覽至 /**var/www/html** 發佈您的網站。  
 ![][18]
 
 
@@ -422,7 +422,7 @@ Apache 正在執行，但是使用瀏覽器無法看到 Apache 預設頁面。
 
         sudo chown -R username:group directory  
 
-    此命令會變更擁有權 (使用者和群組) 的所有檔案和目錄以及目錄本身內。  
+    此命令會變更擁有權 （使用者和群組） 的所有檔案和目錄以及目錄本身內。  
 
     下列命令只會變更資料夾目錄的權限，卻不會變更目錄內檔案和資料夾的權限。  
 
@@ -472,4 +472,5 @@ Apache 正在執行，但是使用瀏覽器無法看到 Apache 預設頁面。
 [16]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-16.png
 [17]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-17.png
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
+
 

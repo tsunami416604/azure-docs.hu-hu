@@ -68,7 +68,7 @@ Azure 是 64 位元環境。 因此，針對 32 位元目標編譯的 .NET 組�
 - `DiagnosticsConnectionString` 設定指向 Azure 中的有效儲存體帳戶。  
   根據預設，此設定會指向模擬儲存體帳戶，因此您必須在部署應用程式封裝之前明確變更這項設定。 若未變更此設定，當角色執行個體嘗試啟動診斷監視器時，將會擲回例外狀況。 這可能會導致角色執行個體無限期地回收。
   
-- 在下列指定的連接字串 [格式](storage-configure-connection-string.md) (通訊協定必須指定為 HTTPS)。 取代 *MyAccountName* 的儲存體帳戶名稱和 *MyAccountKey* 與便捷鍵:    
+- 在下列指定的連接字串 [格式](storage-configure-connection-string.md) （通訊協定必須指定為 HTTPS）。 取代 *MyAccountName* 的儲存體帳戶名稱和 *MyAccountKey* 與便捷鍵 ︰    
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
@@ -93,3 +93,4 @@ Azure 是 64 位元環境。 因此，針對 32 位元目標編譯的 .NET 組�
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+

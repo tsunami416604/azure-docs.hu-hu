@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure 傳統入口網站](vpn-gateway-site-to-site-create.md)
-- [PowerShell-資源管理員](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [PowerShell - 資源管理員](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 本文將逐步引導您使用 Azure 資源管理員部署模型建立虛擬網路以及內部部署網路的站對站 VPN 連線。 如果您要尋找此設定的其他部署模型，請使用上方索引標籤來選取您想要的文章。 如果您想要將 Vnet 連接在一起，但不是會建立連線至內部部署位置，請參閱 [設定 VNet 對 VNet 連線](vpn-gateway-vnet-vnet-rm-ps.md)。
 
@@ -38,7 +38,7 @@
 
 - 您的 VPN 裝置對外開放的公用 IP 位址。 此 IP 位址不能位於 NAT 後方。
     
-- Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用您 [MSDN 訂閱者權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或申請 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
+- Azure 訂閱。 如果您還沒有 Azure 訂用帳戶，則可以啟用您 [MSDN 訂閱者權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或申請 [免費試用版](http://azure.microsoft.com/pricing/free-trial/)。
 
 ## 安裝 PowerShell 模組
 
@@ -86,7 +86,7 @@
         $subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name 'Subnet1' -AddressPrefix '10.0.1.0/28'
         New-AzureRmVirtualNetwork -Name testvnet -ResourceGroupName testrg -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $subnet1, $subnet2
 
-### <a name="gatewaysubnet"></a>將閘道器子網路新增至 VNet (選擇性)
+### <a name="gatewaysubnet"></a>將閘道器子網路新增至 VNet (選用)
 
 只有在您要將先前建立的閘道器子網路新增至 VNet 時才需要此步驟。
 
@@ -147,7 +147,7 @@
 輸入下列值：
 
 - 閘道類型是 *Vpn*。
-- VpnType 可以是 RouteBased * (稱為動態閘道，在某些文件中)，或 *原則的* (稱為靜態閘道某些文件中)。 如需 VPN 閘道類型的詳細資訊，請參閱 [關於 VPN 閘道](vpn-gateway-about-vpngateways.md)。     
+- VpnType 可以是 RouteBased * （稱為動態閘道，在某些文件中），或 *原則的* （稱為靜態閘道某些文件中）。 如需 VPN 閘道類型的詳細資訊，請參閱 [關於 VPN 閘道](vpn-gateway-about-vpngateways.md)。     
 
         New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
@@ -253,3 +253,4 @@
 ## 後續步驟
 
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 請參閱 [建立虛擬機器](../virtual-machines/virtual-machines-windows-tutorial.md) 的步驟。
+

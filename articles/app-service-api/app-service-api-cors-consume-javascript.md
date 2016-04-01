@@ -68,7 +68,7 @@ Azure App Service 可讓您輕鬆設定允許呼叫 API 應用程式的網域，
             $scope.refresh();
         });
 
-當頁面載入 (在上述程式碼片段的結尾) 和最多有線網路時，程式碼會呼叫 $scope.refresh() 方法 **重新整理** 在 UI 中的按鈕。
+當頁面載入 （在上述程式碼片段的結尾） 和最多有線網路時，程式碼會呼叫 $scope.refresh() 方法 **重新整理** 在 UI 中的按鈕。
 
         <th><button class="btn btn-sm btn-info" ng-click="refresh()">Refresh</button></th>
 
@@ -111,7 +111,7 @@ Azure App Service 可讓您輕鬆設定允許呼叫 API 應用程式的網域，
 
 5. 使用 **檢視** 設為預設值 **資源群組**, ，展開您建立針對本教學課程系列的資源群組。
 
-7. 選取您在第一個教學課程中建立的 web 應用程式 (請確定您沒有選取 API 應用程式)，然後按一下 [ **確定**。
+7. 選取您在第一個教學課程中建立的 web 應用程式 （請確定您沒有選取 API 應用程式），然後按一下 [ **確定**。
 
 8. 按一下 [ **設定** ] 索引標籤。
 
@@ -127,7 +127,7 @@ Azure App Service 可讓您輕鬆設定允許呼叫 API 應用程式的網域，
 
     ![](./media/app-service-api-cors-consume-javascript/corserror.png)
 
-## <a id="corsconfig"></a> 在 Azure 中為目標 API 應用程式設定 CORS
+## <a id="corsconfig"></a>在 Azure 中為目標 API 應用程式設定 CORS
 
 8. 在另一個瀏覽器視窗中，移至 [Azure 入口網站](https://portal.azure.com/)。
 
@@ -155,7 +155,7 @@ Azure App Service 可讓您輕鬆設定允許呼叫 API 應用程式的網域，
 
 您也可以設定 CORS 的 API 應用程式使用 Azure 資源管理員工具，例如 Azure PowerShell、 CLI 或 [資源總管](https://resources.azure.com/)。 
 
-在您的 <site name>/web 資源的 Microsoft.Web/sites/config 資源類型上設定 `cors` 屬性。 例如，在 **資源總管**, ，請移至 **訂閱 > {您的訂閱} > resourceGroups > {您的資源群組} > 提供者 > Microsoft.Web > 站台 > {網站} > 組態 > web**, ，您會看到 cors 屬性:
+設定 `cors` 屬性 Microsoft.Web/sites/config 資源類型的程式 <site name>/web 資源。 例如，在 **資源總管**, ，請移至 **訂閱 > {您的訂閱} > resourceGroups > {您的資源群組} > 提供者 > Microsoft.Web > 站台 > {網站} > 組態 > web**, ，您會看到 cors 屬性 ︰
 
         "cors": {
             "allowedOrigins": [
@@ -202,9 +202,10 @@ Azure App Service 可讓您輕鬆設定允許呼叫 API 應用程式的網域，
             [EnableCors(origins:"*", headers:"*", methods: "*")]
             public class ContactsController : ApiController
  
-    > **請注意**: 將萬用字元的所有參數與 `EnableCors` 屬性僅供示範之用，並將您的 API 開啟至所有來源和所有 HTTP 要求。 請謹慎使用這個屬性。
+    > **請注意**︰ 將萬用字元的所有參數與 `EnableCors` 屬性僅供示範之用，並將您的 API 開啟至所有來源和所有 HTTP 要求。 請謹慎使用這個屬性。
 
 ## 後續步驟 
 
 在本教學課程中，您已看到如何啟用 App Service CORS 支援，以便用戶端 JavaScript 程式碼可以呼叫不同網域中的 API。 在下一篇文章中取得入門的系列的 API 應用程式，您將了解 [App Service API 應用程式的驗證](app-service-api-authentication.md)。
+
 

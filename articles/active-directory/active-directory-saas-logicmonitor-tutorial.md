@@ -93,7 +93,7 @@
 
     ![單一登入](./media/active-directory-saas-logicmonitor-tutorial/IC790053.png "Single Sign-On")
 
-8.  在 **單一登入 (SSO) 設定** 區段中，執行下列步驟:
+8.  在 **單一登入 (SSO) 設定** 區段中，執行下列步驟 ︰
 
     ![單一登入設定](./media/active-directory-saas-logicmonitor-tutorial/IC790054.png "Single Sign-On Settings")
 
@@ -119,7 +119,7 @@
 
 3.  按一下 [ **新增**。
 
-4.  在 **將帳戶加入** 區段中，執行下列步驟:
+4.  在 **將帳戶加入** 區段中，執行下列步驟 ︰
 
     ![新增帳戶](./media/active-directory-saas-logicmonitor-tutorial/IC790057.png "Add an account")
 
@@ -146,6 +146,7 @@
     ![是](./media/active-directory-saas-logicmonitor-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 
 
 

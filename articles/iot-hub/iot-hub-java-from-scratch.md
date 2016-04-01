@@ -42,7 +42,7 @@
 
 2. 開啟 **pom.xml** iot 裝置資料夾在文字編輯器中的檔案。
 
-3. 新增下列新 **相依性** 之後要包含必要的用戶端程式庫的現有區段:
+3. 新增下列新 **相依性** 之後要包含必要的用戶端程式庫的現有區段 ︰
 
     ```
     <dependency>
@@ -95,7 +95,7 @@
 
 1. 開啟 **App.java** iot 裝置/src/main/java/com/mycompany/應用程式資料夾在文字編輯器中的檔案。
 
-2. 新增下列 **匯入** 陳述式，包括 IoT 裝置程式庫之後, **封裝** 陳述式:
+2. 新增下列 **匯入** 陳述式，包括 IoT 裝置程式庫之後, **封裝** 陳述式 ︰
 
     ```
     import com.microsoft.azure.iothub.DeviceClient;
@@ -145,7 +145,7 @@
     }
     ```
 
-5. 取代現有 **主要** 方法，以下列程式碼:
+5. 取代現有 **主要** 方法，以下列程式碼 ︰
 
   - 建立 **DeviceClient** 執行個體。
   - 初始化雲端對裝置訊息的訊息回撥。
@@ -192,13 +192,13 @@
     }
     ```
 
-6. 若要編譯程式碼，並封裝成 JAR 檔案，執行下列命令在命令提示字元中 **iot 裝置** 專案資料夾:
+6. 若要編譯程式碼，並封裝成 JAR 檔案，執行下列命令在命令提示字元中 **iot 裝置** 專案資料夾 ︰
 
     ```
     mvn package
     ```
 
-7. 若要執行應用程式，執行下列命令在命令提示字元中 **iot 裝置** 專案資料夾:
+7. 若要執行應用程式，執行下列命令在命令提示字元中 **iot 裝置** 專案資料夾 ︰
 
     ```
     java -jar target/iot-device-1.0-SNAPSHOT-with-deps.jar
@@ -229,5 +229,6 @@
 [devbox-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/java/device/doc/devbox_setup.md
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md
 [lnk-iothub-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/doc/provision_device.md
+
 
 

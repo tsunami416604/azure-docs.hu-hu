@@ -62,7 +62,7 @@ Azure Machine Learning 有兩種類型的服務：
 當您部署 Web 服務時，會建立 Azure ML API 說明頁面。 請參閱 [Azure Machine Learning 逐步解說-部署的 Web 服務](machine-learning-walkthrough-5-publish-web-service.md)。
 
 
-**若要檢視 Azure ML API 說明頁面**
+**檢視 Azure ML API 說明頁面**
 在 Microsoft Azure Machine Learning Studio 中：
 
 1. 選擇 **WEB 服務**。
@@ -104,4 +104,5 @@ Azure ML API 說明頁面包含有關預測 web 服務的詳細資料。
 1. 發佈 Azure ML 範例集合中的 "Sample 1: Download dataset from UCI: Adult 2 class dataset" 實驗。
 2. 使用來自 Web 服務的金鑰指派 apikey。 請了解如何取得 Azure ML 授權金鑰。
 3. 使用要求 URI 指派 serviceUri。 請了解如何取得要求 URI。
+
 

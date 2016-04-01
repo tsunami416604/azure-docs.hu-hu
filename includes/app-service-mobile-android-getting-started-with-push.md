@@ -20,25 +20,25 @@
         </receiver>
 
 
-4. 加入這一行底下 *相依性* 中 **build.gradle** 檔案位於應用程式目錄，並重新同步 gradle 與專案: 
+4. 加入這一行底下 *相依性* 中 **build.gradle** 檔案位於應用程式目錄，並重新同步 gradle 與專案 ︰ 
 
         compile(group: 'com.microsoft.azure', name: 'azure-notifications-handler', version: '1.0.1', ext: 'jar')
 
 
-5. 開啟檔案 *ToDoActivity.java*, ，新增下列 import 陳述式:
+5. 開啟檔案 *ToDoActivity.java*, ，新增下列 import 陳述式 ︰
 
         import com.microsoft.windowsazure.notifications.NotificationsManager;
 
 
-6. 新增下列私用變數至類別: 取代 _`<PROJECT_NUMBER>`_ 由 Google 指派給您的應用程式之前程序中的專案編號:
+6. 新增下列私用變數至類別 ︰ 取代 _`<PROJECT_NUMBER>`_ 由 Google 指派給您的應用程式之前程序中的專案編號 ︰
 
         public static final String SENDER_ID = "<PROJECT_NUMBER>";
 
-7. 變更的定義 *MobileServiceClient* 從 **私人** 至 **公用靜態**, ，因此現在看起來像這樣:
+7. 變更的定義 *MobileServiceClient* 從 **私人** 至 **公用靜態**, ，因此現在看起來像這樣 ︰
 
         public static MobileServiceClient mClient;
 
-8. 接下來我們需要加入新類別來處理通知。 在 [專案總管] 中，開啟 **src** = > **主要** = > **java** 節點，然後以滑鼠右鍵按一下封裝名稱節點: 按一下 **新增**, ，然後按一下 [ **Java 類別**。
+8. 接下來我們需要加入新類別來處理通知。 在 [專案總管] 中，開啟 **src** = > **主要** = > **java** 節點，然後以滑鼠右鍵按一下封裝名稱節點 ︰ 按一下 **新增**, ，然後按一下 [ **Java 類別**。
 
 9. 在 **名稱** 類型 `MyHandler`, ，然後按一下 [ **確定**。 
 
@@ -130,3 +130,4 @@
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
     Your app is now updated to support push notifications.
+

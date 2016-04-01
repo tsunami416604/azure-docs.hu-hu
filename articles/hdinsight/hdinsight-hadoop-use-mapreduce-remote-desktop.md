@@ -43,11 +43,11 @@
 
     > [AZURE.NOTE] 版本號碼會隨著 Hadoop 更新而變更。  **HADOOP_HOME** 環境變數可以用來尋找路徑。 例如，`cd %HADOOP_HOME%` 會將目錄變更為 Hadoop 目錄，而您並不需要知道版本號碼。
 
-2. 若要使用 **Hadoop** 命令執行範例 MapReduce 工作，請使用下列命令:
+2. 若要使用 **Hadoop** 命令執行範例 MapReduce 工作，請使用下列命令 ︰
 
         hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    這會啟動 **wordcount** 類別，包含在 **mapreduce-hadoop-examples.jar** 目前目錄中的檔案。 做為輸入，它會使用 **wasb://example/data/gutenberg/davinci.txt** 文件，輸出則儲存在: **wasb: / 範例/data/WordCountOutput**。
+    這會啟動 **wordcount** 類別，包含在 **mapreduce-hadoop-examples.jar** 目前目錄中的檔案。 做為輸入，它會使用 **wasb://example/data/gutenberg/davinci.txt** 文件，輸出則儲存在 ︰ **wasb: / 範例/data/WordCountOutput**。
 
     > [AZURE.NOTE] 如需有關此 MapReduce 工作和範例資料的詳細資訊，請參閱 <a href="hdinsight-use-mapreduce.md">HDInsight Hadoop 中使用 MapReduce</a>。
 
@@ -84,7 +84,7 @@
 
 如您所見，Hadoop 命令提供簡單的方法，在 HDInsight 叢集上執行 MapReduce 工作，然後檢視工作輸出。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 MapReduce 工作的一般資訊：
 
@@ -95,4 +95,5 @@
 * [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 Pig 與 HDInsight 上的 Hadoop](hdinsight-use-pig.md)
+
 

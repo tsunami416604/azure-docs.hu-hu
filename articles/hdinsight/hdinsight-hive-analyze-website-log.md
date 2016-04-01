@@ -30,7 +30,7 @@
 
 ![HDI.Samples.Website.Log.Analysis][img-hdi-weblogs-sample]
 
-##先決條件
+##必要條件
 
 - 您必須已在 Azure HDInsight 上佈建 Hadoop 叢集。 如需指示，請參閱 [佈建 HDInsight 叢集][hdinsight-provision]。 
 - 您必須已安裝 Microsoft Excel 2013 或 Excel 2010。
@@ -39,7 +39,7 @@
 
 ##執行範例
 
-1. 從 [Azure 入口網站](https://ms.portal.azure.com/), ，從 [開始面板] (如果您釘選叢集中那里)，按一下您要執行範例的叢集] 磚。
+1. 從 [Azure 入口網站](https://ms.portal.azure.com/), ，從 [開始面板] （如果您釘選叢集中那里），按一下您要執行範例的叢集] 磚。
 
 2. [叢集] 分頁中，從下 **快速連結**, ，按一下 [ **叢集儀表板**, ，然後從 **叢集儀表板** 刀鋒視窗中，按一下 [ **HDInsight 叢集儀表板**。 或者，您也可以使用下列 URL 直接開啟儀表板：
 
@@ -52,7 +52,7 @@
 3. 依照網頁上提供的指示完成範例。
 
 ##後續步驟
-嘗試下列範例: [分析感應器資料搭配使用 Hive 與 HDInsight](hdinsight-hive-analyze-sensor-data.md)。
+嘗試下列範例 ︰ [分析感應器資料搭配使用 Hive 與 HDInsight](hdinsight-hive-analyze-sensor-data.md)。
 
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
@@ -60,3 +60,4 @@
 
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
  
+

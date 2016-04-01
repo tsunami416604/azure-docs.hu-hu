@@ -46,7 +46,7 @@ Microsoft 的巨量資料解決方案整合 Microsoft 商務智慧 (BI) 元件�
 下列步驟將說明如何建立 Hive ODBC 資料來源。
 
 1. 從 Windows 8 或 Windows 10 中，按視窗鍵以開啟 [開始] 畫面，然後鍵入 **資料來源**。
-2. 按一下 [ **設定 ODBC 資料來源 (32 位元)** 或 **設定 ODBC 資料來源 (64 位元)** Office 版本而定。 如果您使用 Windows 7，請選擇 **ODBC 資料來源 (32 位元)** 或 **ODBC 資料來源 (64 位元)** 從 **系統管理工具**。 這會啟動 **ODBC 資料來源管理員** ] 對話方塊。
+2. 按一下 [ **設定 ODBC 資料來源 （32 位元）** 或 **設定 ODBC 資料來源 （64 位元）** Office 版本而定。 如果您使用 Windows 7，請選擇 **ODBC 資料來源 （32 位元）** 或 **ODBC 資料來源 （64 位元）** 從 **系統管理工具**。 這會啟動 **ODBC 資料來源管理員** ] 對話方塊。
 
     ![OBDC data source administrator][img-hdi-simbahiveodbc-datasource-admin]
 
@@ -59,12 +59,12 @@ Microsoft 的巨量資料解決方案整合 Microsoft 商務智慧 (BI) 元件�
 ---|---
 資料來源名稱|為資料來源指定名稱
 Host|Enter <HDInsightClusterName>。 n e t。 例如，myHDICluster.azurehdinsight.net
-連接埠|使用 <strong>443</strong>. (此連接埠已從 563 變更為 443。)
-資料庫|使用 <strong>預設值</strong>.
-Hive 伺服器類型|選取 <strong>Hive 伺服器 2</strong>
-機制|選取 <strong>Azure HDInsight 服務</strong>
+連接埠|使用 <strong>443</strong>。 (此連接埠已從 563 變更為 443。)
+資料庫|使用<strong>預設值</strong>
+Hive 伺服器類型|選取 [Hive Server 2]<strong></strong>
+機制|選取 [Azure HDInsight 服務]<strong></strong>
 HTTP 路徑|保留為空白。
-使用者名稱|輸入 HDInsight 叢集使用者的使用者名稱。 這是在叢集佈建程序中所建立的使用者名稱。 如果您使用快速建立選項，預設使用者名稱是 <strong>admin</strong>.
+使用者名稱|輸入 HDInsight 叢集使用者的使用者名稱。 這是在叢集佈建程序中所建立的使用者名稱。 如果您使用快速建立選項，預設使用者名稱會是 <strong>admin</strong>。
 密碼|輸入 HDInsight 叢集使用者的密碼。
 </table>
 
@@ -79,7 +79,7 @@ HTTP 路徑|保留為空白。
 
     ![Advanced options][img-HiveOdbc-DataSource-AdvancedOptions]
 
-6. 按一下 [ **測試** 以測試資料來源。 當資料來源已正確設定時，它會顯示 *測試順利完成!*。
+6. 按一下 [ **測試** 以測試資料來源。 當資料來源已正確設定時，它會顯示 *測試順利完成 ！*。
 7. 按一下 [ **確定** 以關閉 [測試] 對話方塊。 新的資料來源應該現在會列示在 **ODBC 資料來源管理員**。
 8. 按一下 [ **確定** 以結束精靈。
 
@@ -130,4 +130,5 @@ HTTP 路徑|保留為空白。
 [img-HiveOdbc-DataSource-AdvancedOptions]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png
 [img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
+
 

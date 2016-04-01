@@ -26,7 +26,7 @@
 
 本主題說明 API 管理的主要概念。
 
->[AZURE.NOTE] 如需詳細資訊，請參閱 [雲端為基礎的 API 管理: 如何運用 Api 的威力](http://j.mp/ms-apim-whitepaper) PDF 白皮書。 這份 CITO Research 發表的簡介白皮書涵蓋： 
+>[AZURE.NOTE] 如需詳細資訊，請參閱 [雲端為基礎的 API 管理 ︰ 如何運用 Api 的威力](http://j.mp/ms-apim-whitepaper) PDF 白皮書。 這份 CITO Research 發表的簡介白皮書涵蓋： 
 >
 > - 常見的 API 需求與挑戰
 >     - 解構 API 並呈現其外貌
@@ -113,3 +113,4 @@ API 是 API 管理服務執行個體的基礎。 每個 API 都代表一組開�
 
 
  
+

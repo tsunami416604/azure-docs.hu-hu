@@ -30,7 +30,7 @@ Azure 資料湖存放區提供命令列工具 [AdlCopy](http://aka.ms/downloadad
 - **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - **啟用您的 Azure 訂閱** 資料湖存放區公開預覽。 請參閱 [指示](data-lake-store-get-started-portal.md#signup)。 
 - **Azure 儲存體 Blob** 某些資料的容器。
-- **Azure 資料湖分析帳戶 (選擇性)** -請參閱 [開始使用 Azure 資料湖分析](data-lake-analytics/data-lake-analytics-get-started-portal.md) 如需如何建立資料湖存放區帳戶的指示。
+- **Azure 資料湖分析帳戶 （選擇性）** -請參閱 [開始使用 Azure 資料湖分析](data-lake-analytics/data-lake-analytics-get-started-portal.md) 如需如何建立資料湖存放區帳戶的指示。
 - **AdlCopy 工具**。 安裝從 AdlCopy 工具 [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy)。
 
 ## AdlCopy 工具的語法
@@ -106,6 +106,7 @@ Azure 資料湖存放區提供命令列工具 [AdlCopy](http://aka.ms/downloadad
 ## 後續步驟
 
 - [保護資料湖存放區中的資料](data-lake-store-secure-data.md)
-- [搭配資料湖存放區使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)
+- [搭配 Data Lake 存放區使用 Azure Data Lake 分析](data-lake-analytics-get-started-portal.md)
 - [搭配資料湖存放區使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
+
 

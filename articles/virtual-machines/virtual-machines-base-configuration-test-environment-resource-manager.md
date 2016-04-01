@@ -136,7 +136,7 @@ DC1 是 corp.contoso.com Active Directory 網域服務 (AD DS) 網域的網域�
 3.  出現提示時，開啟下載的 DC1.rdp 檔案。
 4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用下列：
-- 名稱: **DC1\\**[本機系統管理員帳戶名稱]
+- 名稱 ︰ **DC1\\**[本機系統管理員帳戶名稱]
 - 密碼：[本機系統管理員帳戶密碼]
 6.  顯示憑證相關的遠端桌面連線] 訊息方塊提示，請按一下 **是**。
 
@@ -165,7 +165,7 @@ DC1 重新啟動之後，重新連接到 DC1 的虛擬機器。
 3.  當系統提示開啟 DC1.rdp 時，按一下 [ **開啟**。
 4.  遠端桌面連線] 訊息方塊提示，請按一下 **連接**。
 5.  出現輸入認證的提示時，使用下列：
-- 名稱: **CORP\\**[本機系統管理員帳戶名稱]
+- 名稱 ︰ **CORP\\**[本機系統管理員帳戶名稱]
 - 密碼：[本機系統管理員帳戶密碼]
 6.  顯示憑證相關的遠端桌面連線訊息方塊提示時按一下 **是**。
 
@@ -174,7 +174,7 @@ DC1 重新啟動之後，重新連接到 DC1 的虛擬機器。
     New-ADUser -SamAccountName User1 -AccountPassword (read-host "Set user password" -assecurestring) -name "User1" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
     Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
-請注意，第一個命令會提示使用者輸入 User1 帳戶密碼。 因為這個帳戶會用於所有 CORP 網域成員電腦的遠端桌面連線，所以請選取強式密碼。 若要檢查其強度，請參閱 [密碼檢查程式: 使用強式密碼](https://www.microsoft.com/security/pc-security/password-checker.aspx)。 記錄 User1 帳戶的密碼，然後儲存在安全的位置。
+請注意，第一個命令會提示使用者輸入 User1 帳戶密碼。 因為這個帳戶會用於所有 CORP 網域成員電腦的遠端桌面連線，所以請選取強式密碼。 若要檢查其強度，請參閱 [密碼檢查程式 ︰ 使用強式密碼](https://www.microsoft.com/security/pc-security/password-checker.aspx)。 記錄 User1 帳戶的密碼，然後儲存在安全的位置。
 
 關閉具有 DC1 的遠端桌面工作階段，然後使用 CORP\User1 帳戶重新連接。
 
@@ -294,7 +294,7 @@ CLIENT1 充當 Contoso 內部網路上的一般膝上型電腦、平板電腦或
 - 使用這個做為基礎來建置 [模擬混合式雲端測試環境](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)。
 
 
-## <a id="costs"></a>在 Azure 中的測試環境虛擬機器的成本降至最低
+## <a id="costs"></a>將 Azure 的測試環境虛擬機器費用降至最低
 
 為了將測試環境虛擬機器的執行成本降到最低，您可以執行下列其中一項：
 
@@ -320,4 +320,5 @@ CLIENT1 充當 Contoso 內部網路上的一般膝上型電腦、平板電腦或
     Start-AzureRMVM -ResourceGroupName $rgName -Name "DC1"
     Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
     Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
+
 

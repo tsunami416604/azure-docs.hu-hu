@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure 傳統入口網站](virtual-networks-configure-vnet-to-vnet-connection.md)
-- [PowerShell-Azure 資源管理員](vpn-gateway-vnet-vnet-rm-ps.md)
+- [PowerShell - Azure Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
 
 
 本文將引導您完成使用傳統部署模型 (也稱為「服務管理」) 來建立虛擬網路並將虛擬網路連接在一起的步驟。 這些步驟將會使用「Azure 傳統入口網站」(不是「Azure 入口網站」) 搭配 PowerShell Cmdlet。 如果您要尋找此設定的其他部署模型，請使用上方索引標籤來選取您想要的文章。 
@@ -113,7 +113,7 @@ VNet1：位址空間 = 10.1.0.0/16；區域 = 美國西部
 
 VNet2： 位址空間 = 10.2.0.0/16；區域 = 日本東部
 
-1. 登入 **Azure 傳統入口網站** (非 Azure 入口網站)。
+1. 登入 **Azure 傳統入口網站** （非 Azure 入口網站）。
 
 2. 在畫面的左下角，按一下 [ **新增**。 在導覽窗格中，按一下 **網路服務**, ，然後按一下 [ **虛擬網路**。 按一下 [ **自訂建立** 開始組態精靈。
 
@@ -122,7 +122,7 @@ VNet2： 位址空間 = 10.2.0.0/16；區域 = 日本東部
   ![虛擬網路詳細資料](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736055.png)
 
   - **名稱** -虛擬網路命名。 例如：VNet1。
-  - **位置** – 當您建立虛擬網路關聯的 Azure 位置 (區域)。 例如，如果您希望部署到虛擬網路的 VM 實際位於美國西部，請選取該位置。 建立關聯之後，您就無法變更與您的虛擬網路相關聯的位置。
+  - **位置** – 當您建立虛擬網路關聯的 Azure 位置 （區域）。 例如，如果您希望部署到虛擬網路的 VM 實際位於美國西部，請選取該位置。 建立關聯之後，您就無法變更與您的虛擬網路相關聯的位置。
 
 
 
@@ -131,7 +131,7 @@ VNet2： 位址空間 = 10.2.0.0/16；區域 = 日本東部
   ![DNS 伺服器和 VPN 連線能力](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736056.jpg)  
 
 
-- **DNS 伺服器** : 輸入 DNS 伺服器名稱和 IP 位址，或從下拉式清單中選取先前註冊的 DNS 伺服器。 此設定不會建立 DNS 伺服器，它可讓您指定您想要用於此虛擬網路的名稱解析的 DNS 伺服器。 如果您想要在虛擬網路之間進行名稱解析，您必須設定自己的 DNS 伺服器，而不是使用 Azure 所提供的名稱解析。
+- **DNS 伺服器** ︰ 輸入 DNS 伺服器名稱和 IP 位址，或從下拉式清單中選取先前註冊的 DNS 伺服器。 此設定不會建立 DNS 伺服器，它可讓您指定您想要用於此虛擬網路的名稱解析的 DNS 伺服器。 如果您想要在虛擬網路之間進行名稱解析，您必須設定自己的 DNS 伺服器，而不是使用 Azure 所提供的名稱解析。
 
   - 請不要選取任何核取方塊。 只要按一下右下角的箭頭，就可以移到下一個畫面。
 
@@ -231,4 +231,5 @@ VNet2： 位址空間 = 10.2.0.0/16；區域 = 日本東部
 [1]: ../hdinsight-hbase-geo-replication-configure-vnets.md
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
+
 

@@ -42,7 +42,7 @@ Site Recovery 服務提供健全的商務持續性和災害復原 (BCDR) 解決�
 建立復原方案的方法取決於您的 Site Recovery 部署方式。
 
 - **HYPER-V 複寫 (VMM)**— 如果您要複寫從 VMM 站台對次要內部部署站台或 Azure 使用 HYPER-V 複寫，您將受保護 HYPER-V 虛擬機器從 VMM 雲端至復原方案。
-- **HYPER-V 複寫 (HYPER-V 站台)**— 如果從 HYPER-V 站台 (不含 VMM 伺服器) 複寫至 Azure 加入受保護的 HYPER-V 虛擬機器從保護群組的復原計劃。
+- **HYPER-V 複寫 （HYPER-V 站台）**— 如果從 HYPER-V 站台 （不含 VMM 伺服器） 複寫至 Azure 加入受保護的 HYPER-V 虛擬機器從保護群組的復原計劃。
 - **SAN 複寫**— 如果您要複寫至次要內部部署站台使用 SAN 複寫將加入包含到復原計畫的虛擬機器的複寫群組。 您應選取複寫群組，而不是特定的虛擬機器，因為複寫群組中的所有虛擬機器必須同時執行容錯移轉 (容錯移轉會先從儲存層開始)。
 - **VMware 複寫**— 如果您要將 VMware 虛擬機器複寫至 Azure 將加入包含至復原方案的虛擬機器的複寫群組。
 
@@ -57,7 +57,7 @@ Site Recovery 服務提供健全的商務持續性和災害復原 (BCDR) 解決�
     - 如果從 Hyper-V 站台複寫，請選取 [來源類型] 中的 Hyper-V 站台。 選取該網站做為來源，並選取 **Azure** 做為目標。
     - 如果您要從 VMware 或實體內部部署伺服器複寫至 Azure，則選取組態伺服器做為來源和 **Azure** 做為目標
 
-2.在 **選取虛擬機器** 選取您想要新增至預設群組 (群組 1) 在復原方案中的虛擬機器 (或複寫群組)。
+2.在 **選取虛擬機器** 選取您想要新增至預設群組 (群組 1) 在復原方案中的虛擬機器 （或複寫群組）。
 
 ## 自訂復原方案
 
@@ -81,7 +81,7 @@ Site Recovery 服務提供健全的商務持續性和災害復原 (BCDR) 解決�
 - 請使用 Windows PowerShell 撰寫指令碼。
 - 會在 Windows PowerShell 模組中傳遞 VMM Cmdlet。 安裝 VMM 主控台時，會一併安裝 VMM Windows PowerShell 模組。 系統可能使用指令碼的下列命令將 VMM 模組載入您的指令碼：Import-Module -Name virtualmachinemanager。 [如需詳細資料](hhttps://technet.microsoft.com/library/hh875013.aspx)。
 - 確認您的 VMM 部署中至少有一部程式庫伺服器。 根據預設，VMM 伺服器的程式庫共用路徑位於本機的 VMM 伺服器上，資料夾名稱為 MSCVMMLibrary。
-- 如果您的程式庫共用路徑位於遠端 (或本機上，但未與 MSCVMMLibrary 共用、 設定共用，如下所示 (使用 \\libserver2.contoso.com\share\ 做為範例):
+- 如果您的程式庫共用路徑位於遠端 (或本機上，但未與 MSCVMMLibrary 共用、 設定共用，如下所示 （使用 \\libserver2.contoso.com\share\ 做為範例） ︰
     - 開啟 [登錄編輯器]。
     - 瀏覽至 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter\Registration。
     - 編輯 ScriptLibraryPath 的值。
@@ -92,7 +92,7 @@ Site Recovery 服務提供健全的商務持續性和災害復原 (BCDR) 解決�
 -   請確認您用來測試指令碼的使用者帳戶與 VMM 服務帳戶具有相同權限，以確保獨立測試的指令碼與其在復原方案中執行的方式相同。
 -   在 VMM 伺服器上，設定要略過的執行原則，如下所示：
     - 以較高的權限開啟 64 位元 Windows PowerShell 主控台。
-    - 類型: **set-executionpolicy 略過**。 [如需詳細資料](https://technet.microsoft.com/library/ee176961.aspx)。
+    - 類型 ︰ **set-executionpolicy 略過**。 [如需詳細資料](https://technet.microsoft.com/library/ee176961.aspx)。
 - 請確認您使用的是 try catch 區塊，以便適當地處理例外狀況。 如果在指令碼中出現例外狀況，指令碼會隨即停止執行，而工作也會顯示為失敗。  一旦發生錯誤，指令碼的剩餘部分將不會執行。 如果在執行未規劃的容錯移轉時發生這種情況，復原方案將會繼續執行。 如果在執行規劃的容錯移轉時發生這種情況，復原方案將會停止執行。 若發生這種情況，請修正指令碼，確認其能如預期執行，然後再次執行復原方案。
 - Write-Host 命令不會在復原方案指令碼中正常運作，指令碼將會失敗。 如果要建立輸出，請建立 Proxy 指令碼，使其依序執行主要指令碼，並確保全部使用 >> 命令經由管道輸出。
 - 如果指令碼未在 600 秒內傳回則會逾時。
@@ -114,7 +114,7 @@ Site Recovery 服務提供健全的商務持續性和災害復原 (BCDR) 解決�
 1. 開啟您要自訂的復原方案。
 2. 按一下以新增虛擬機器或新的群組。
 3. 若要新增指令碼或手動動作，請按一下任何項目中的 **步驟** 清單，然後按一下 **指令碼** 或 **手動動作**。 指定要在已選取項目之前或之後新增指令碼或動作。 使用 **移** 和 **下移** 命令按鈕，上下移動指令碼的位置。
-4. 如果您新增 VMM 指令碼，請選取 **容錯移轉至 VMM 指令碼**, ，然後在中 **指令碼路徑** 輸入共用的相對路徑。 因此，我們的範例的共用位置為 \\<VMMServerName>\MSSCVMMLibrary\RPScripts，指定的路徑: \RPScripts\RPScript.PS1。
+4. 如果您新增 VMM 指令碼，請選取 **容錯移轉至 VMM 指令碼**, ，然後在中 **指令碼路徑** 輸入共用的相對路徑。 因此，我們的範例的共用位置為 \\<VMMServerName>\MSSCVMMLibrary\RPScripts，指定的路徑 ︰ \RPScripts\RPScript.PS1。
 5. 如果您新增 Azure 自動化 runbook，請指定 **Azure 自動化帳戶** runbook 的位置，然後選取適當 **Azure Runbook 指令碼**。
 5. 執行復原方案容錯移轉，以確保指令碼可以正常運作。
 
@@ -125,3 +125,4 @@ Site Recovery 服務提供健全的商務持續性和災害復原 (BCDR) 解決�
 
 
  
+

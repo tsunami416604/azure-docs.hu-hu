@@ -1,5 +1,5 @@
 <properties
-    pageTitle="我的 ASP.NET 專案發生什麼事? |Microsoft Azure |Visual Studio 已連接服務"
+    pageTitle="我的 ASP.NET 專案發生什麼事？ |Microsoft Azure |Visual Studio 已連接服務"
     description="說明使用 Visual Studio 已連接服務將 Azure 儲存體新增至 ASP.NET 專案後，會發生什麼事"
     services="storage"
     documentationCenter=""
@@ -36,4 +36,5 @@ Azure 儲存體 NuGet 封裝已加入至 Visual Studio 專案。
 在專案的 web.config 檔案中，已使用所選儲存體帳戶的連接字串和金鑰建立一個元素。
 
 如需詳細資訊，請參閱 [ASP.NET](http://www.asp.net)。
+
 

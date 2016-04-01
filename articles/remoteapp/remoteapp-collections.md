@@ -90,3 +90,4 @@ AD Connect 有兩種案例 - 使用密碼同步化或使用 AD 同盟。 簽出 
 嗯，我想我們現在已經說明白了，那麼只剩下一件事要做 - 建立您的第一個 Azure RemoteApp 集合。
 
 [建立雲端收藏](remoteapp-create-cloud-deployment.md) 或 [建立混合式收藏](remoteapp-create-hybrid-deployment.md) -只取得建立。
+

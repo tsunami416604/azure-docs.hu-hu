@@ -22,7 +22,7 @@
 -   有效的 Azure 訂閱
 -   PolicyStat 租用戶
   
-完成本教學課程之後, 您已指派給 PolicyStat 的 Azure AD 使用者將能夠登入您 PolicyStat 公司網站 (服務提供者起始登入)，在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+完成本教學課程之後, 您已指派給 PolicyStat 的 Azure AD 使用者將能夠登入您 PolicyStat 公司網站 （服務提供者起始登入），在應用程式的單一登入或使用 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
   
 本教學課程中說明的案例由下列建置組塊組成：
 
@@ -81,7 +81,7 @@ PolicyStat 應用程式需要特定的格式，會要求您新增自訂屬性對
 
     ![設定單一登入](./media/active-directory-saas-policystat-tutorial/IC808630.png "Configure Single Sign-On")
 
-3.  在 **設定應用程式設定** 頁面上，於 **登入 URL** 文字方塊中，輸入您的使用者用於登入 URL PolicyStat 應用程式使用的 URL (例如: *"https://demo-azure.policystat.com"*)，然後按一下 [ **下一步**。
+3.  在 **設定應用程式設定** 頁面上，於 **登入 URL** 文字方塊中，輸入您的使用者用於登入 URL PolicyStat 應用程式使用的 URL (例如 ︰ *"https://demo-azure.policystat.com"*)，然後按一下 [ **下一步**。
 
     ![設定 App 設定](./media/active-directory-saas-policystat-tutorial/IC808631.png "Configure App Settings")
 
@@ -99,7 +99,7 @@ PolicyStat 應用程式需要特定的格式，會要求您新增自訂屬性對
 
     ![單一登入設定](./media/active-directory-saas-policystat-tutorial/IC808634.png "Single Sign-On Configuration")
 
-8.  按一下 [ **設定屬性**, ，然後在 **設定屬性** 區段中，執行下列步驟:
+8.  按一下 [ **設定屬性**, ，然後在 **設定屬性** 區段中，執行下列步驟 ︰
 
     ![單一登入設定](./media/active-directory-saas-policystat-tutorial/IC808635.png "Single Sign-On Configuration")
 
@@ -109,7 +109,7 @@ PolicyStat 應用程式需要特定的格式，會要求您新增自訂屬性對
     4.  在 **電子郵件屬性** 文字方塊中，輸入 **emailaddress**。
     5.  按一下 [ **儲存變更**。
 
-9.  按一下 [ **您 IDP 中繼資料**, ，然後在 **您 IDP 中繼資料** 區段中，執行下列步驟:
+9.  按一下 [ **您 IDP 中繼資料**, ，然後在 **您 IDP 中繼資料** 區段中，執行下列步驟 ︰
 
     ![單一登入設定](./media/active-directory-saas-policystat-tutorial/IC808635.png "Single Sign-On Configuration")
 
@@ -158,3 +158,4 @@ PolicyStat 支援即時使用者佈建。 這表示您不需要手動將使用�
     ![是](./media/active-directory-saas-policystat-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+

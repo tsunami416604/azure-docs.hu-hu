@@ -26,14 +26,14 @@ Azure 入口網站以及 Azure 資源管理員 API 裡的角色型存取控制 (
 
 在本教學課程中，您將學習如何使用 Azure CLI 來管理角色型存取控制。 本課程將帶您逐一了解建立與檢查角色指派的程序。
 
-**預估完成時間:** 15 分鐘
+**預估完成時間 ︰** 15 分鐘
 
-## 先決條件 ##
+## 必要條件 ##
 
 在使用 Azure CLI 來管理 RBAC 之前，您必須具備以下項目：
 
 - Azure CLI 0.8.8 版或更新版本。 若要安裝最新版本，並將它與 Azure 訂閱建立關聯，請參閱 [安裝和設定 Azure CLI](../xplat-cli-install.md)。
-- 另請閱讀下列教學課程以熟悉設定和使用 Azure CLI 中的 Azure 資源管理員: [使用 Azure CLI 與資源管理員](../xplat-cli-azure-resource-manager.md)
+- 另請閱讀下列教學課程以熟悉設定和使用 Azure CLI 中的 Azure 資源管理員 ︰ [使用 Azure CLI 與資源管理員](../xplat-cli-azure-resource-manager.md)
 
 ## 本教學課程內容 ##
 
@@ -43,7 +43,7 @@ Azure 入口網站以及 Azure 資源管理員 API 裡的角色型存取控制 (
 * [驗證權限](#verify)
 * [後續步驟](#next)
 
-## <a id="connect"></a>連線到您的訂閱 ##
+## <a id="connect"></a>連線到您的訂用帳戶 ##
 
 由於 RBAC 只能搭配 Azure 資源管理員一起運作，因此您必須先切換至 Azure 資源管理員模式。 輸入：
 
@@ -139,15 +139,16 @@ Azure 入口網站以及 Azure 資源管理員 API 裡的角色型存取控制 (
 
 接著當您嘗試執行其他 Cmdlet 時 (像是 `azure group create`)，如果您沒有權限就會傳回存取拒絕錯誤。
 
-## <a id="next"></a>後續步驟 ##
+## <a id="next"></a>接續步驟 ##
 
 若要深入了解使用 Azure CLI 管理角色型存取控制的詳細資訊，請參閱下列相關主題：
 
 - [Azure 中的角色型存取控制](../role-based-access-control-configure.md)
 - [安裝和設定 Azure CLI](../xplat-cli-install.md)
 - [將 Azure CLI 和資源管理員搭配使用](../xplat-cli-azure-resource-manager.md)
-- [使用資源群組來管理您的 Azure 資源](../azure-preview-portal-using-resource-groups.md): 了解如何建立和管理 Azure 管理入口網站中的資源群組。
-- [Azure 部落格](http://blogs.msdn.com/windowsazure): 了解在 Azure 中的新功能。
+- [使用資源群組來管理您的 Azure 資源](../azure-preview-portal-using-resource-groups.md)︰ 了解如何建立和管理 Azure 管理入口網站中的資源群組。
+- [Azure 部落格](http://blogs.msdn.com/windowsazure)︰ 了解在 Azure 中的新功能。
 - [使用 Windows PowerShell 來設定角色存取控制](role-based-access-control-powershell.md)
 - [為角色存取控制進行疑難排解](role-based-access-control-troubleshooting.md)
+
 

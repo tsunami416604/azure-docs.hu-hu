@@ -35,7 +35,7 @@
 
 | 受支援的作業系統 | 必要版本 | 其他需求/注意事項 |
 | --------------------------- | ---------------- | ------------- |
-| Windows Server              | 2008R2 SP1、2012、2012R2 |僅支援在下列 Windows 磁碟類型上使用 StorSimple iSCSI 磁碟區：<ul><li>基本磁碟上的簡單磁碟區</li><li>動態磁碟上的簡單和鏡像磁碟區</li></ul>使用 StorSimple iSCSI 磁碟區時，支援 Windows Server 2012 精簡佈建和 ODX 功能。<br><br>StorSimple 只能建立精簡佈建磁碟區。 它無法建立完整佈建或部分佈建的磁碟區。<br><br>重新格式化精簡佈建的磁碟區，可能需要很長的時間。 建議刪除磁碟區，然後建立新的磁碟區，而不是重新格式化。 不過，如果您仍然偏好重新格式化磁碟區:<ul><li>執行下列命令再重新格式化以避免空間回收延遲: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成後，使用下列命令來重新啟用空間回收:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>中所述，適用於 Windows Server 2012 hotfix [KB 2878635](https://support.microsoft.com/kb/2870270) 到您的 Windows 伺服器電腦。</li></ul></li></ul></ul>如果您要設定 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，請移至 [選用元件的軟體需求](#software-requirements-for-optional-components)。|
+| Windows Server              | 2008R2 SP1、2012、2012R2 |只有下列 Windows 磁碟類型上使用支援 StorSimple iSCSI 磁碟區 ︰<ul><li>基本磁碟上的簡單磁碟區</li><li>動態磁碟上的簡單及鏡像磁碟區</li></ul>如果您使用 StorSimple iSCSI 磁碟區，支援 Windows Server 2012 精簡佈建和 ODX 功能。<br><br>StorSimple 只能建立精簡佈建磁碟區。 無法建立完整佈建或部分佈建磁碟區。<br><br>重新格式化精簡佈建的磁碟區可能需要很長的時間。 建議刪除磁碟區，然後建立新的磁碟區，而不是重新格式化。 不過，如果您仍然偏好重新格式化磁碟區 ︰<ul><li>執行下列命令再重新格式化以避免空間回收延遲 ︰ <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成後，使用下列命令來重新啟用空間回收 ︰<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>中所述，適用於 Windows Server 2012 hotfix [KB 2878635](https://support.microsoft.com/kb/2870270) 到您的 Windows 伺服器電腦。</li></ul></li></ul></ul> 如果您要設定 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，請移至 [選用元件的軟體需求](#software-requirements-for-optional-components)。|
 | VMWare ESX | 5.1 | 支援以 VMWare vSphere 5.1 作為 iSCSI 用戶端。 StorSimple 裝置上的 VMWare vSphere 5.1 版支援 VAAI 區塊功能。 
 | Linux RHEL/CentOS | 5 和 6 | 支援具備 Open-iSCSI 啟動器第 5 版和第 6 版的 Linux iSCSI 用戶端。 |
 | Linux | SUSE Linux 11 | |
@@ -47,14 +47,14 @@
 
 | 元件 | 主機平台 | 其他需求/注意事項 |
 | --------------------------- | ---------------- | ------------- |
-| StorSimple Snapshot Manager | Windows Server 2008R2 SP1、2012、2012R2 | 備份/還原鏡像動態磁碟，以及進行任何應用程式一致的備份需要使用 StorSimple Snapshot Manager Windows 伺服器上。<br> 只能在 Windows Server 2008 R2 SP1 (64 位元)、 Windows 2012 R2 和 Windows Server 2012 上才支援 StorSimple Snapshot Manager。<ul><li>如果您使用 Window Server 2012，您必須先安裝.NET 3.5 – 4.5，才能安裝 StorSimple Snapshot Manager。</li><li>如果您使用 Windows Server 2008 R2 SP1，您必須先安裝 Windows Management Framework 3.0，才能安裝 StorSimple Snapshot Manager。</li></ul> |
+| StorSimple Snapshot Manager | Windows Server 2008R2 SP1、2012、2012R2 | 備份/還原鏡像動態磁碟，以及進行任何應用程式一致的備份需要使用 StorSimple Snapshot Manager Windows 伺服器上。<br> 只能在 Windows Server 2008 R2 SP1 （64 位元）、 Windows 2012 R2 和 Windows Server 2012 上才支援 StorSimple Snapshot Manager。<ul><li>如果您使用 Window Server 2012，您必須先安裝.NET 3.5 – 4.5，才能安裝 StorSimple Snapshot Manager。</li><li>如果您使用 Windows Server 2008 R2 SP1，您必須先安裝 Windows Management Framework 3.0，才能安裝 StorSimple Snapshot Manager。</li></ul> |
 | StorSimple Adapter for SharePoint | Windows Server 2008R2 SP1、2012、2012R2 |<ul><li>StorSimple Adapter for SharePoint 只支援 SharePoint 2010 和 SharePoint 2013。</li><li>RBS 需要 SQL Server Enterprise Edition、 2008 R2 或 2012年版。</li></ul>|
  
 ## StorSimple 裝置的網路需求。
 
-您的 StorSimple 裝置是鎖定的裝置。 不過，您的防火牆中必須開啟連接埠，以允許 iSCSI、雲端或管理流量。 下表列出必須在防火牆中開啟的連接埠。 在此資料表中， *中* 或 *輸入* 指的是傳入的用戶端要求存取您的裝置的方向。 *Out* 或 *輸出* 指的是以您的 StorSimple 裝置置於外部傳送資料至部署的方向: 例如，輸出到網際網路。
+您的 StorSimple 裝置是鎖定的裝置。 不過，您的防火牆中必須開啟連接埠，以允許 iSCSI、雲端或管理流量。 下表列出必須在防火牆中開啟的連接埠。 在此資料表中， *中* 或 *輸入* 指的是傳入的用戶端要求存取您的裝置的方向。 *Out* 或 *輸出* 指的是以您的 StorSimple 裝置置於外部傳送資料至部署的方向 ︰ 例如，輸出到網際網路。
 
-| 連接埠號碼<sup>1,2</sup> | 內或外 | 連接埠範圍 | 必要 | 注意事項 |
+| 連接埠號碼 <sup>1,2</sup> | 內或外 | 連接埠範圍 | 必要 | 注意事項 |
 |------------------------|-----------|------------|----------|-------| 
 |TCP 80 (HTTP)<sup>3</sup>|  外 |  WAN | 否 |<ul><li>輸出連接埠用於網際網路存取以擷取更新。</li><li>輸出 web proxy 可由使用者設定。</li><li>若要允許系統更新，此連接埠也必須為控制器固定 Ip 開啟。</li></ul> |
 |TCP 443 (HTTPS)<sup>3</sup>| 外 | WAN | 是 |<ul><li>輸出連接埠用來存取雲端中的資料。</li><li>輸出 web proxy 可由使用者設定。</li><li>若要允許系統更新，此連接埠也必須為控制器固定 Ip 開啟。</li></ul>|
@@ -65,11 +65,11 @@
 | 5985 | 在 | LAN | 否 | 輸入連接埠是 StorSimple Snapshot Manager 使用與 StorSimple 裝置通訊。<br>當您從遠端連線到 Windows PowerShell for StorSimple over HTTP，也會使用此連接埠。 |
 | 5986 | 在 | LAN | 否 | 當您透過 HTTPS 從遠端連線到 Windows PowerShell for StorSimple，便會使用此連接埠。 |
 
-<sup>1</sup> 不必須在公用網際網路上開啟任何輸入連接埠。
+<sup>1</sup> 公用網際網路上沒有必須開啟的輸入連接埠。
 
 <sup>2</sup> 如果多個連接埠傳送閘道組態，將根據所述的連接埠路由順序決定輸出路由的流量順序 [連接埠路由](#port-routing), 底下。
 
-<sup>3</sup> 固定 Ip StorSimple 裝置上的控制器必須可路由傳送且能夠連線到網際網路。 固定的 IP 位址用來為裝置更新提供服務。 如果裝置控制器無法透過固定 IP 連線到網際網路，您將無法更新您的 StorSimple 裝置。
+<sup>3</sup> StorSimple 裝置上的控制器固定 IP 必須可路由傳送，且能夠連線到網際網路。 固定的 IP 位址用來為裝置更新提供服務。 如果裝置控制器無法透過固定 IP 連線到網際網路，您將無法更新您的 StorSimple 裝置。
 
 > [AZURE.IMPORTANT] 請確定防火牆不會不修改或解密任何 StorSimple 裝置與 Azure 之間的 SSL 流量。
 
@@ -106,14 +106,14 @@ Update 2 有幾項網路相關的改進且路由度量已變更。 行為可以�
 - 當它們已啟用雲端或已停用雲端，但是具有已設定的閘道器時，請考量以下所示的範例資料表，具有指派給各種網路介面的值 (範例)。
 
         
-    | Network interface | Cloud-enabled | Cloud-disabled with gateway |
-    |-----|---------------|---------------------------|
-    | Data 0  | 1            | -                        |
-    | Data 1  | 2            | 20                       |
-    | Data 2  | 3            | 30                       |
-    | Data 3  | 4            | 40                       |
-    | Data 4  | 5            | 50                       |
-    | Data 5  | 6            | 60                       |
+  	| Network interface | Cloud-enabled | Cloud-disabled with gateway |
+  	|-----|---------------|---------------------------|
+  	| Data 0  | 1            | -                        |
+  	| Data 1  | 2            | 20                       |
+  	| Data 2  | 3            | 30                       |
+  	| Data 3  | 4            | 40                       |
+  	| Data 4  | 5            | 50                       |
+  	| Data 5  | 6            | 60                       |
 
 
 - 雲端流量透過網路介面路由的順序為：
@@ -251,7 +251,7 @@ StorSimple 裝置包括受到使用鏡像空間保護的固態磁碟 (SSD) 和�
 
 仔細檢閱這些最佳作法，以確保連接至 StorSimple 裝置之主機的高可用性。
 
-- 使用 [雙節點檔案伺服器叢集組態] 設定 StorSimple [1]。 藉由移除失敗的單點，以及在主機端上建置備援，整個解決方案會變得高度可用。
+- 設定與 StorSimple [雙節點檔案伺服器叢集組態][1]。 藉由移除失敗的單點，以及在主機端上建置備援，整個解決方案會變得高度可用。
 
 - 使用 Windows Server 2012 (SMB 3.0) 持續可用的 (CA) 共用，以在儲存體控制器的容錯移轉期間獲得高可用性。 設定檔案伺服器叢集和持續可用的共用與 Windows Server 2012 的詳細資訊，請參閱此 [影片示範](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)。
 
@@ -262,4 +262,5 @@ StorSimple 裝置包括受到使用鏡像空間保護的固態磁碟 (SSD) 和�
  
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
+
 

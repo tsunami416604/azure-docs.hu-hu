@@ -16,7 +16,7 @@
     ms.date="12/16/2015"
     ms.author="maheshu"/>
 
-# Azure AD 網域服務 *(預覽)*
+# Azure AD 網域服務 *（預覽）*
 
 ## 概觀
 Azure 基礎結構服務可讓您以敏捷的方式部署各種不同的運算解決方案。 利用 Azure 虛擬機器，您幾乎可以進行即時部署，而且只需要以分鐘計價。 利用對 Windows、Linux、SQL Server、Oracle、IBM、SAP 和 BizTalk 的支援性，您幾乎可以在所有作業系統上使用任何語言部署所有工作負載。 這些優點可讓您將內部部署的舊版應用程式移轉至 Azure，以便節約營運費用。
@@ -80,4 +80,5 @@ Azure AD 網域服務所佈建的受管理網域的幾個顯著層面如下所�
 -   **相容** – Azure AD 網域服務建置在 Windows Server Active Directory 的已經實證的企業級基礎結構，因為您的應用程式可以依賴較大的 Windows Server Active Directory 功能的相容性。 請注意，並非 Windows Server AD 中的所有功能目前都可在 Azure AD 網域服務中使用。 不過，可用的功能與您在內部部署基礎結構中依賴的相對應 Windows Server AD 功能相容。 LDAP、Kerberos、NTLM、群組原則和 Azure AD 網域服務所提供的網域加入功能構成了成熟的產品服務，已對各種 Windows Server 版本經過測試並進一步修改。
 
 -   **符合成本效益** – Azure AD 網域服務時，就可以避免與管理身分識別基礎結構來支援傳統目錄感知應用程式相關聯的基礎結構和管理負擔。 您可以將這些應用程式移至 Azure 基礎結構服務，並受益於營運費用的大幅節約。
+
 

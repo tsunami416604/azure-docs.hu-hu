@@ -59,7 +59,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 ### 管線中每個活動的檢視狀態
 您可以藉由檢視活動所產生的任何資料集的狀態，查看活動的目前狀態。 
 
-例如: 在下列範例中， **BlobPartitionHiveActivity** 已順利執行並產生名為資料集 **PartitionedProductsUsageTable** 是中 **準備** 狀態。
+例如 ︰ 在下列範例中， **BlobPartitionHiveActivity** 已順利執行並產生名為資料集 **PartitionedProductsUsageTable** 是中 **準備** 狀態。
 
 ![管線的狀態](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
@@ -147,8 +147,8 @@ Data Factory 中的資料集配量可以有下列狀態之一：
 
 ![狀態圖表](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-Data factory 中的資料集狀態轉換流程涉及下列工作:
-等待中-進度/進行中 (驗證)]-> [-> 就緒/失敗
+Data factory 中的資料集狀態轉換流程涉及下列工作 ︰
+等待中-進度/進行中 （驗證）]-> [-> 就緒/失敗
 
 配量開始 **等候** 執行之前，必須滿足的前置條件狀態。 接著活動開始執行，配量進入 **進行中** 狀態。 活動執行可能成功或失敗，並根據該配量會進入 **準備**' 或 **失敗** 狀態。 
 
@@ -161,7 +161,7 @@ Data factory 中的資料集狀態轉換流程涉及下列工作:
 ### 暫停及繼續管線
 您可以暫停/暫止管線使用 **暫止 AzureRmDataFactoryPipeline** Powershell cmdlet。 如果您已經了解資料的問題所在，且在問題解決前不想再執行管線來處理資料，此做法相當有用。
 
-例如: 在以下螢幕擷取畫面，已知問題與 **PartitionProductsUsagePipeline** 中 **productrecgamalbox1dev** 資料處理站，因此我們想暫止管線。
+例如 ︰ 在以下螢幕擷取畫面，已知問題與 **PartitionProductsUsagePipeline** 中 **productrecgamalbox1dev** 資料處理站，因此我們想暫止管線。
 
 ![暫止的管線](./media/data-factory-monitor-manage-pipelines/pipeline-to-be-suspended.png)
 
@@ -211,7 +211,7 @@ Azure Data Factory 透過 Azure 傳統入口網站和 Azure PowerShell 提供許
 2.  切換至 **AzureResourceManager** 模式，因為 Data Factory cmdlet 都只會在此模式。
 
         switch-azuremode AzureResourceManager
-3.  執行 **Get AzureRmDataFactorySlice** 命令來查看區塊和其狀態。 您應該會看到有狀態的配量: **失敗**。
+3.  執行 **Get AzureRmDataFactorySlice** 命令來查看區塊和其狀態。 您應該會看到有狀態的配量 ︰ **失敗**。
 
         Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     
@@ -270,7 +270,7 @@ Azure Data Factory 透過 Azure 傳統入口網站和 Azure PowerShell 提供許
 
 ![重新執行失敗的配量](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
 
-萬一原則失敗而導致的驗證失敗的配量 (如 ex: 沒有可用資料)，修正問題，然後按一下 [再次驗證 **驗證** 命令列上的按鈕。
+萬一原則失敗而導致的驗證失敗的配量 (如 ex ︰ 沒有可用資料)，修正問題，然後按一下 [再次驗證 **驗證** 命令列上的按鈕。
 ![修正錯誤，然後驗證](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### 使用 Azure PowerShell
@@ -279,10 +279,10 @@ Azure Data Factory 透過 Azure 傳統入口網站和 Azure PowerShell 提供許
 
     Set-AzureRmDataFactorySliceStatus [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Status] <String> [[-UpdateType] <String> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
 
-**範例:**
+**範例：**
 下列範例會設定在 Azure data factory 'WikiADF' 資料表 'DAWikiAggregatedData' 為 'PendingExecution' 的所有配量的狀態。
 
-**注意:** 設 upstreaminpipeline，表示資料表的每個配量和所有相依 (上游) 資料表，其作為管線中活動的輸入資料表的狀態都設為"PendingExecution"。 此參數的另一個可能值為 "Individual"。
+**注意 ︰** 設 upstreaminpipeline，表示資料表的每個配量和所有相依 （上游） 資料表，其作為管線中活動的輸入資料表的狀態都設為"PendingExecution"。 此參數的另一個可能值為 "Individual"。
 
     Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -TableName DAWikiAggregatedData -Status PendingExecution -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 
@@ -341,7 +341,7 @@ Azure 事件可讓您深入了解 Azure 資源的情況。 當建立、更新或
 
 在上述 JSON 定義中， **子狀態** 可以移除，如果您不想接獲特定失敗通知。
 
-上述範例會為您的訂用帳戶中所有 Data Factory 設定警示。 如果您想要設定特定的資料處理站的警示，您可以指定資料處理站 **resourceUri** 中 **dataSource** 封鎖類似如下:
+上述範例會為您的訂用帳戶中所有 Data Factory 設定警示。 如果您想要設定特定的資料處理站的警示，您可以指定資料處理站 **resourceUri** 中 **dataSource** 封鎖類似如下 ︰
 
     "resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>"
 
@@ -358,7 +358,7 @@ OnDemandClusterDeleted | Succeeded
 請參閱 [建立警示規則](https://msdn.microsoft.com/library/azure/dn510366.aspx) 在上述範例中所使用的 JSON 元素的詳細資料。 
 
 #### 部署警示 
-若要部署警示，請使用 Azure PowerShell cmdlet: **New-azureresourcegroupdeployment**, ，如下列範例所示:
+若要部署警示，請使用 Azure PowerShell cmdlet: **New-azureresourcegroupdeployment**, ，如下列範例所示 ︰
 
     New-AzureResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
 
@@ -380,7 +380,7 @@ OnDemandClusterDeleted | Succeeded
     Outputs           :
 
 #### 擷取 Azure 資源群組部署的清單
-若要擷取已部署的 Azure 資源群組部署的清單，請使用 cmdlet: **Get-azureresourcegroupdeployment**, ，如下列範例所示:
+若要擷取已部署的 Azure 資源群組部署的清單，請使用 cmdlet: **Get-azureresourcegroupdeployment**, ，如下列範例所示 ︰
 
     Get-AzureResourceGroupDeployment -ResourceGroupName adf
     
@@ -397,12 +397,12 @@ OnDemandClusterDeleted | Succeeded
 #### 使用者事件疑難排解
 
 
-- 您可以看到按一下後產生的所有事件 **作業** 磚和警示，可以設定在任何一項作業上看到 **事件** 刀鋒視窗中:
+- 您可以看到按一下後產生的所有事件 **作業** 磚和警示，可以設定在任何一項作業上看到 **事件** 刀鋒視窗中 ︰
 
     ![作業](./media/data-factory-monitor-manage-pipelines/operations.png)
 
 
-- 請參閱 [Azure 深入了解 Cmdlet](https://msdn.microsoft.com/library/mt282452.aspx) PowerShell cmdlet，您可以使用 [新增/get/移除警示的文章。 以下是一些範例使用 **Get AlertRule** 指令程式: 
+- 請參閱 [Azure 深入了解 Cmdlet](https://msdn.microsoft.com/library/mt282452.aspx) PowerShell cmdlet，您可以使用 [新增/get/移除警示的文章。 以下是一些範例使用 **Get AlertRule** 指令程式 ︰ 
 
 
         PS C:\> get-alertrule -res $resourceGroup -n ADFAlertsSlice -det
@@ -483,7 +483,7 @@ Data Factory 可讓您擷取各種度量並建立度量警示。 您可以針對
 
 ### 設定度量警示：
 
-若要設定度量警示，請按一下下列 Data factory 刀鋒視窗:
+若要設定度量警示，請按一下下列 Data factory 刀鋒視窗 ︰
 **監視** ]-> [ **度量** ]-> [ **新增警示** ]-> [ **新增警示規則**。
 
 填入警示規則的詳細資料、 指定電子郵件並按一下 [ **確定**。
@@ -547,13 +547,13 @@ Data Factory 可讓您擷取各種度量並建立度量警示。 您可以針對
  
 以適當的值取代上述範例中的 subscriptionId、resourceGroupName、和 dataFactoryName。
 
-*metricName* 目前支援 2 個值:
+*metricName* 目前支援 2 個值 ︰
 - FailedRuns
-- Successfulruns。
+- SuccessfulRuns
 
 **部署警示：**
 
-若要部署警示，請使用 Azure PowerShell cmdlet: **New-azureresourcegroupdeployment**, ，如下列範例所示:
+若要部署警示，請使用 Azure PowerShell cmdlet: **New-azureresourcegroupdeployment**, ，如下列範例所示 ︰
 
     New-AzureResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
 
@@ -572,6 +572,7 @@ Data Factory 可讓您擷取各種度量並建立度量警示。 您可以針對
     TemplateLink      :
     Parameters        :
     Outputs           
+
 
 
 

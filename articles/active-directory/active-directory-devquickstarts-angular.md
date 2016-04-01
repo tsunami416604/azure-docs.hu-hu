@@ -145,9 +145,10 @@ $scope.logout = function () {
 
 Aaal.js 可讓您輕鬆地將這些常見的身分識別功能全部納入您的應用程式。  它會為您處理一切麻煩的事，包括快取管理、OAuth 通訊協定支援、向使用者顯示登入 UI、重新整理過期權杖等等。
 
-提供完整的範例 (不含您的設定值) 是供您參考 [這裡](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip)。  您現在可以繼續探索其他案例。  您可以嘗試：
+提供完整的範例 （不含您的設定值） 是供您參考 [這裡](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip)。  您現在可以繼續探索其他案例。  您可以嘗試：
 
 [從 SPA 呼叫 CORS Web API >>](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
+
 

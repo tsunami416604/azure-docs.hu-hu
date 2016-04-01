@@ -35,12 +35,12 @@
 
 首先，請確定您已安裝 Azure Storage Client Library for .NET。 您可以安裝 [nuget](http://nuget.org/packages/WindowsAzure.Storage/ "nuget") 包含最新的組件，用戶端程式庫中，這是確保您擁有最新的修正程式的建議的方法。 您也可以下載用戶端程式庫做為最新版本的一部分 [Azure SDK for.NET](http://azure.microsoft.com/downloads/)。
 
-在 Visual Studio 中建立新的 Windows 主控台應用程式並將它 **GenerateSharedAccessSignatures**。 將參考加入至  **Microsoft.WindowsAzure.Configuration.dll** 和 **Microsoft.WindowsAzure.Storage.dll**, ，使用下列方法:
+在 Visual Studio 中建立新的 Windows 主控台應用程式並將它 **GenerateSharedAccessSignatures**。 將參考加入至  **Microsoft.WindowsAzure.Configuration.dll** 和 **Microsoft.WindowsAzure.Storage.dll**, ，使用下列方法 ︰
 
 -   如果您想要安裝 NuGet 封裝，第一次安裝 [NuGet Package Manager Extension for Visual Studio](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。 在 Visual Studio 中，選取 **專案 |管理 NuGet 封裝**, ，線上搜尋 **Azure 儲存體**, ，並依照指示進行安裝。
 -   或者，在您的 Azure SDK 安裝中找到組件，並新增對它們的參照。
  
-在 program.cs 的頂端，新增下列 **使用** 陳述式:
+在 program.cs 的頂端，新增下列 **使用** 陳述式 ︰
 
     using System.IO;    
     using Microsoft.WindowsAzure;
@@ -62,7 +62,7 @@
 
 一開始，我們將新增方法以在新容器上產生共用存取簽章。 在此情況中，簽章不與預存存取原則相關，因此它在 URI 上攜帶了資訊，以指出其到期時間與授與權限。
 
-首先，加入程式碼以 **main ()** 方法來驗證儲存體帳戶的存取權，並建立新的容器:
+首先，加入程式碼以 **main （)** 方法來驗證儲存體帳戶的存取權，並建立新的容器 ︰
 
     static void Main(string[] args)
     {
@@ -99,7 +99,7 @@
         return container.Uri + sasContainerToken;
     }
 
-加入下列幾行底部 **main ()** 方法，再呼叫 **console.readline ()**, ，以呼叫 **getcontainersasuri ()** 和簽章 URI 寫到主控台視窗:
+加入下列幾行底部 **main （)** 方法，再呼叫 **console.readline （)**, ，以呼叫 **getcontainersasuri （)** 和簽章 URI 寫到主控台視窗 ︰
 
     //Generate a SAS URI for the container, without a stored access policy.
     Console.WriteLine("Container SAS URI: " + GetContainerSasUri(container));
@@ -147,7 +147,7 @@
         return blob.Uri + sasBlobToken;
     }
 
-底部的 **main ()** 方法中，加入下列幾行內容呼叫 **console.readline ()**, ，再呼叫 **console.readline ()**, ，並寫入主控台視窗中的共用的存取簽章 URI:    
+底部的 **main （)** 方法中，加入下列幾行內容呼叫 **console.readline （)**, ，再呼叫 **console.readline （)**, ，並寫入主控台視窗中的共用的存取簽章 URI:    
     
     //Generate a SAS URI for a blob within the container, without a stored access policy.
     Console.WriteLine("Blob SAS URI: " + GetBlobSasUri(container));
@@ -188,7 +188,7 @@
         container.SetPermissions(permissions);
     }
 
-在底部 **main ()** 方法，再呼叫 **console.readline ()**, ，新增下列各行，以先清除任何現有的存取原則，然後呼叫 **createsharedaccesspolicy ()** 方法:    
+在底部 **main （)** 方法，再呼叫 **console.readline （)**, ，新增下列各行，以先清除任何現有的存取原則，然後呼叫 **createsharedaccesspolicy （)** 方法 ︰    
 
     //Clear any existing access policies on container.
     BlobContainerPermissions perms = container.GetPermissions();
@@ -218,7 +218,7 @@
         return container.Uri + sasContainerToken;
     }
     
-在底部 **main ()** 方法，再呼叫 **console.readline ()**, ，加入下列幾行內容呼叫 **getcontainersasuriwithpolicy ()** 方法:
+在底部 **main （)** 方法，再呼叫 **console.readline （)**, ，加入下列幾行內容呼叫 **getcontainersasuriwithpolicy （)** 方法 ︰
 
     //Generate a SAS URI for the container, using a stored access policy to set constraints on the SAS.
     Console.WriteLine("Container SAS URI using stored access policy: " + GetContainerSasUriWithPolicy(container, sharedAccessPolicyName));
@@ -253,13 +253,13 @@
         return blob.Uri + sasBlobToken;
     }
 
-在底部 **main ()** 方法，再呼叫 **console.readline ()**, ，加入下列幾行內容呼叫 **GetBlobSasUriWithPolicy** 方法:    
+在底部 **main （)** 方法，再呼叫 **console.readline （)**, ，加入下列幾行內容呼叫 **GetBlobSasUriWithPolicy** 方法 ︰    
 
     //Generate a SAS URI for a blob within the container, using a stored access policy to set constraints on the SAS.
     Console.WriteLine("Blob SAS URI using stored access policy: " + GetBlobSasUriWithPolicy(container, sharedAccessPolicyName));
     Console.WriteLine();
 
- **Main ()** 方法現在看起來應該像這樣失真。 執行它以將共用存取簽章 URI 寫到主控台視窗，然後將它們複製並貼入文字檔，以便用於本教學課程的第 2 部分。
+ **Main （)** 方法現在看起來應該像這樣失真。 執行它以將共用存取簽章 URI 寫到主控台視窗，然後將它們複製並貼入文字檔，以便用於本教學課程的第 2 部分。
 
     static void Main(string[] args)
     {
@@ -314,13 +314,13 @@
 
 在 Visual Studio 中建立新的 Windows 主控台應用程式並將它 **ConsumeSharedAccessSignatures**。 將參考加入至 **Microsoft.WindowsAzure.Configuration.dll** 和 **Microsoft.WindowsAzure.Storage.dll**, 、 與之前相同。
 
-在 program.cs 的頂端，新增下列 **使用** 陳述式:
+在 program.cs 的頂端，新增下列 **使用** 陳述式 ︰
 
     using System.IO;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     
-在本文中 **main ()** 方法，新增下列限制，並將其值更新為您在本教學課程的第 1 部分中產生的共用的存取簽章。
+在本文中 **main （)** 方法，新增下列限制，並將其值更新為您在本教學課程的第 1 部分中產生的共用的存取簽章。
 
     static void Main(string[] args)
     {
@@ -423,7 +423,7 @@
     }
 
 
-更新 **main ()** 方法以呼叫 **usecontainersas ()** 使用您在容器建立共用的存取簽章的兩個:
+更新 **main （)** 方法以呼叫 **usecontainersas （)** 使用您在容器建立共用的存取簽章的兩個 ︰
 
     static void Main(string[] args)
     {
@@ -442,7 +442,7 @@
 
 ### 新增方法以嘗試使用共用存取簽章的 Blob 操作
 
-最後，我們將新增使用 blob 上的共用存取簽章，測試部分代表性 blob 操作的方法。 我們在此情況下使用建構函式 **cloudblockblob (string)**, ，並傳入共用的存取簽章，以傳回 blob 的參照。 不需要其他驗證；只有根據簽章。
+最後，我們將新增使用 blob 上的共用存取簽章，測試部分代表性 blob 操作的方法。 我們在此情況下使用建構函式 **cloudblockblob （string)**, ，並傳入共用的存取簽章，以傳回 blob 的參照。 不需要其他驗證；只有根據簽章。
 
 將下列方法新增至 Program.cs：
 
@@ -516,7 +516,7 @@
     }
 
 
-更新 **main ()** 方法以呼叫 **useblobsas ()** 使用您在 blob 建立共用的存取簽章的兩個:
+更新 **main （)** 方法以呼叫 **useblobsas （)** 使用您在 blob 建立共用的存取簽章的兩個 ︰
 
     static void Main(string[] args)
     {
@@ -554,3 +554,4 @@
 [sas-console-output-2]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-2.PNG
 
  
+

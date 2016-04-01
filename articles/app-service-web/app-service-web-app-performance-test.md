@@ -26,19 +26,19 @@
 這些測試會模擬您的應用程式在特定期間內的使用者負載並測量您的應用程式的回應。 例如，您的測試結果顯示您的應用程式指定的數字的回應速度 
 使用者。 也會顯示多少要求失敗，這可能表示您的應用程式有問題。      
 
-![Web 應用程式中尋找效能問題][] TestOverview
+![尋找您的 Web 應用程式中的效能問題][TestOverview]
 
 ## 開始之前
 
-*   您將需要 [Azure 訂閱] [AzureSubscription]， 
+*   您將需要 [Azure 訂用帳戶][AzureSubscription],， 
 如果您還沒有。 了解如何 
 [免費申請 Azure 帳戶][AzureFreeTrial]。
 
-*   您將需要 [Visual Studio Team Services (VSTS)] [WhatIsVSTS] 
+*   您將需要 [Visual Studio Team Services (VSTS)][WhatIsVSTS] 
 若要保留您的效能測試記錄的帳戶。 
 建立新的帳戶，當您設定您的效能測試 
 或使用現有的帳戶，如果您的帳戶擁有者。 
-[還有什麼做與 Visual Studio Team Services 帳戶?](#VSTSAccount)
+[Visual Studio Team Service 帳戶還有什麼用途？](#VSTSAccount)
 
 *   部署您的應用程式以便在非生產環境中進行測試。 
 讓您的應用程式使用生產環境中所用方案以外的 App Service 方案。 
@@ -46,24 +46,24 @@
 
 ## 設定和執行效能測試
 
-0.  登入 [Azure 入口網站] [AzurePortal]。 
+0.  登入 [Azure 入口網站][AzurePortal]。 
 若要使用您所擁有的 Visual Studio Team Services 帳戶 
 帳戶擁有者身分登入。
 
 0.  移至您的 Web 應用程式。
 
-    ![移至 [全部瀏覽、 Web 應用程式、 web 應用程式][] WebApp
+    ![請移至 [全部瀏覽]、[Web Apps]、您的 Web 應用程式][WebApp]
 
 0.  移至 **效能測試**。
 
-    ![移至 [工具]，效能測試][] ExpandedTools
+    ![移至 [工具]、[效能測試]][ExpandedTools]
  
-0.  現在您將連結 [Visual Studio Team Services (VSTS)] [WhatIsVSTS] 
+0.  現在您將連結 [Visual Studio Team Services (VSTS)][WhatIsVSTS] 
 若要保留您的效能測試記錄的帳戶。
 
     如果您已經有 VSTS 帳戶，請選取該帳戶。 如果沒有，請建立新帳戶。
 
-    ![選取現有的 VSTS 帳戶，或建立新的帳戶][] ExistingNewVSTSAccount
+    ![選取現有的 VSTS 帳戶，或建立新的帳戶][ExistingNewVSTSAccount]
 
 0.  建立您的效能測試。 設定詳細資料並執行測試。 
 您可以在測試執行時即時觀看結果。
@@ -74,11 +74,11 @@
     藉由減少頁面的客戶滿意度載入從 5 秒的時間為 2 秒。 
     因此，我們將以 250 名使用者測試更新後應用程式的效能達 15 分鐘之久。
 
-    我們將我們的應用程式上模擬負載，藉由產生虛擬使用者 (客戶) 
+    我們將我們的應用程式上模擬負載，藉由產生虛擬使用者 （客戶） 
     使用者一次造訪我們的網站。 此命令會顯示我們多少 
     要求已經失敗或回應速度較慢。
 
-    ![建立、 設定和執行效能測試][] NewTest
+    ![設定、設定和執行效能測試][NewTest]
 
      *  系統會自動加入您的 Web 應用程式的預設 URL。 
      您可以變更此 URL 以測試其他頁面 (僅限 HTTP GET 要求)。
@@ -89,13 +89,13 @@
     以下是進行中的測試。 在第一次的幾分鐘， 
     我們的頁面載入速度比我們想要的。
 
-    ![效能測試以即時資料的進行中][] TestRunning
+    ![使用即時資料的進行中效能測試][TestRunning]
 
     在測試完成之後，我們了解在頁面載入速度 
     之後第一分鐘。 這可協助識別我們可能想要 
     開始進行疑難排解問題。
 
-    ![已完成的效能測試顯示結果，包括失敗的要求][] TestDone
+    ![完成的效能測試會顯示結果，包括失敗的要求][TestDone]
     
 歡迎您提供的意見反應。 針對疑問或問題， 
 請與我們連絡 <vsoloadtest@microsoft.com>
@@ -108,7 +108,7 @@
 
 #### 問：我可執行效能測試的時間有多少？ 
 
-答: 過後公用預覽版本中，您會收到 20000 虛擬使用者分鐘 (VUMs) 
+答 ︰ 過後公用預覽版本中，您會收到 20000 虛擬使用者分鐘 (VUMs) 
 釋出每個月的 Visual Studio Team Services 帳戶。 
 VUM 是數字的 multipled 虛擬使用者數目 
 測試中的分鐘數。 如果您的需求超過可用的限制， 
@@ -118,16 +118,16 @@ VUM 是數字的 multipled 虛擬使用者數目
 
 答：您可以在 Azure 入口網站中檢查此數量。
 
-![移至 VSTS 帳戶][] VSTSAccount
+![移至 VSTS 帳戶][VSTSAccount]
 
-![使用核取 VUMs][] CheckTestTime
+![檢查已使用的 VUM][CheckTestTime]
 
 <a name="VSOAccount"></a>
 #### 問：Visual Studio Team Services 帳戶還有什麼用途？
 
 答：若要尋找您的新帳戶，請移至 ```https://{accountname}.visualstudio.com```。 
 共用程式碼、 建置、 測試、 追蹤工作和交付軟體 – 全都在雲端 
-使用任何工具或語言。 深入瞭解 [Visual Studio Team Services] [WhatIsVSTS] 
+使用任何工具或語言。 深入了解如何 [Visual Studio Team Services][WhatIsVSTS] 
 功能和服務，幫助您的小組共同作業更容易，並持續部署。
 
 <!--Image references-->
@@ -146,4 +146,5 @@ VUM 是數字的 multipled 虛擬使用者數目
 [AzureSubscription]: https://account.windowsazure.com/subscriptions
 [AzureFreeTrial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [WhatIsVSTS]: https://www.visualstudio.com/products/what-is-visual-studio-online-vs
+
 

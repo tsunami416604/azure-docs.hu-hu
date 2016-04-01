@@ -49,7 +49,7 @@ None | 張貼訊息
 1.  邏輯應用程式內開啟 **觸發程序和動作**。  
     [建立新的邏輯應用程式](app-service-logic-create-a-logic-app.md)
 
-2.  Slack 連接器會列在右邊組件庫:  
+2.  Slack 連接器會列在右邊組件庫 ︰  
 ![][2]
 
 3.  選取您建立的 Slack 連接器，以自動將它加入邏輯應用程式。 
@@ -59,7 +59,7 @@ None | 張貼訊息
 ![][5]  
 ![][6]  
     
-5.  您現在可以在流程中使用 Slack 連接器。 張貼訊息動作有:  
+5.  您現在可以在流程中使用 Slack 連接器。 張貼訊息動作有 ︰  
 ![][7]
 
 
@@ -72,7 +72,7 @@ None | 張貼訊息
 --- | ---
 文字 | 輸入要張貼的訊息文字。
 通道名稱 | 輸入要在其中張貼此訊息的 Slack 通道。 如果未輸入通道，則會將訊息張貼至 #general。
-進階屬性 | **Bot 使用者名稱**: 要用於此訊息的 bot 名稱。 如果未輸入此屬性，則會將訊息張貼為 "Bot"。<p><p>**圖示 URL**：要作為此訊息圖示的影像 URL。<p><p>**圖示 Emoji**：要作為此訊息圖示的 Emoji。 這個屬性會覆寫圖示 URL 屬性。
+進階屬性 | **Bot 使用者名稱**︰ 要用於此訊息的 bot 名稱。 如果這不輸入，會將訊息張貼為"Bot"。<p><p>**圖示 URL**︰ 要作為此訊息圖示的影像 URL。<p><p>**圖示 Emoji**︰ 要作為此訊息圖示的 Emoji。 這個屬性會覆寫圖示 URL 屬性。
 
 
 Slack 連接器具有 REST API，因此您可以在邏輯應用程式外部使用連接器。 開啟 Slack 連接器，然後選取 **API 定義**:  
@@ -80,9 +80,9 @@ Slack 連接器具有 REST API，因此您可以在邏輯應用程式外部使�
 
 
 ## 進一步運用您的連接器
-現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式?](app-service-logic-what-are-logic-apps.md)。
+現在已建立連接器，您可以將它加入到使用邏輯應用程式的商務工作流程。 請參閱 [什麼是邏輯應用程式？](app-service-logic-what-are-logic-apps.md)。
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure 邏輯應用程式，請移至 [試邏輯應用程式](https://tryappservice.azure.com/?appservice=logic), ，您可以立即建立短期入門邏輯應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 檢視在 Swagger REST API 參考 [連接器和 API 應用程式參考](http://go.microsoft.com/fwlink/p/?LinkId=529766)。
 
@@ -99,4 +99,5 @@ Slack 連接器具有 REST API，因此您可以在邏輯應用程式外部使�
 [7]: ./media/app-service-logic-connector-slack/img7.PNG
 [8]: ./media/app-service-logic-connector-slack/img8.PNG
 [9]: ./media/app-service-logic-connector-slack/img9.PNG
+
 

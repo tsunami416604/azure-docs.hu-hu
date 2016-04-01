@@ -68,7 +68,7 @@ SDK 會在 `PeekLock` 模式中收到訊息，並在函數成功完成時，於�
             logger.WriteLine(message);
         }
 
-**注意:** 如果您要在不使用 WebJobs SDK 的應用程式中建立佇列訊息，請務必將 [BrokeredMessage.ContentType](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx) 為"text/plain"。
+**注意 ︰** 如果您要在不使用 WebJobs SDK 的應用程式中建立佇列訊息，請務必將 [BrokeredMessage.ContentType](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx) 為"text/plain"。
 
 ### POCO 佇列訊息
 
@@ -120,7 +120,7 @@ SDK 會自動還原序列化包含 JSON 的 poco 物件佇列訊息 [(純舊 CLR
 
 ### 建立多個佇列訊息或在非同步函式中
 
-若要建立多個訊息，請使用 `ServiceBus` 屬性搭配 `ICollector<T>` 或 `IAsyncCollector<T>`, ，如下列程式碼範例所示:
+若要建立多個訊息，請使用 `ServiceBus` 屬性搭配 `ICollector<T>` 或 `IAsyncCollector<T>`, ，如下列程式碼範例所示 ︰
 
         public static void CreateQueueMessages(
             [ServiceBusTrigger("inputqueue")] string queueMessage,
@@ -165,4 +165,5 @@ SDK 會自動還原序列化包含 JSON 的 poco 物件佇列訊息 [(純舊 CLR
 
 本指南提供了程式碼範例，示範如何處理使用 Azure Service Bus 的常見案例。 如需如何使用 Azure WebJobs 和 WebJobs SDK 的詳細資訊，請參閱 [Azure WebJobs 建議資源](http://go.microsoft.com/fwlink/?linkid=390226)。
  
+
 

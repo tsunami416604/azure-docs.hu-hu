@@ -55,8 +55,8 @@ Curl 用來示範如何使用原始 HTTP 要求與 HDInsight 互動，以執行 
 
     此命令中使用的參數如下：
 
-    * **-u**: 表示的使用者名稱和密碼可用來驗證要求
-    * **-G**: 指出這是 GET 要求
+    * **-u**︰ 表示的使用者名稱和密碼可用來驗證要求
+    * **-G**︰ 指出這是 GET 要求
 
     URI，開頭 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ，也適用於所有要求。
 
@@ -68,10 +68,10 @@ Curl 用來示範如何使用原始 HTTP 要求與 HDInsight 互動，以執行 
 
     * **-d**: `-G` 未使用，因此要求會依預設使用 POST 方法。 `-d` 指定傳送的資料值與要求。
 
-        * **user.name**: 執行命令的使用者
-        * **jar**: 執行包含的類別的 jar 檔案的位置
-        * **類別**: 包含 MapReduce 邏輯的類別
-        * **arg**: 引數傳遞給 MapReduce 工作，在此情況下，輸入的文字檔和目錄，以供輸出
+        * **user.name**︰ 執行命令的使用者
+        * **jar**︰ 執行包含的類別的 jar 檔案的位置
+        * **類別**︰ 包含 MapReduce 邏輯的類別
+        * **arg**︰ 引數傳遞給 MapReduce 工作，在此情況下，輸入的文字檔和目錄，以供輸出
 
     此命令應該會傳回可用來檢查工作狀態的工作識別碼：
 
@@ -87,7 +87,7 @@ Curl 用來示範如何使用原始 HTTP 要求與 HDInsight 互動，以執行 
 
 4. 當工作的狀態已變更為 **成功**, ，您可以從 Azure Blob 儲存體擷取工作結果。  `statusdir` 與查詢一起傳遞的參數包含輸出檔案的; 在此案例中，位置 **wasb: / 範例/curl**。 此位址會將儲存在工作的輸出 **範例/curl** 目錄中的 HDInsight 叢集所使用的預設儲存體容器。
 
-您可以列出並下載這些檔案使用 [適用於 Mac、 Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。 例如，若要列出檔案中 **範例/curl**, ，使用下列命令:
+您可以列出並下載這些檔案使用 [適用於 Mac、 Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。 例如，若要列出檔案中 **範例/curl**, ，使用下列命令 ︰
 
     azure storage blob list <container-name> example/curl
 
@@ -103,7 +103,7 @@ Curl 用來示範如何使用原始 HTTP 要求與 HDInsight 互動，以執行 
 
 如需這篇文章中所使用的 REST 介面的詳細資訊，請參閱 [WebHCat 參照](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 MapReduce 工作的一般資訊：
 
@@ -114,4 +114,5 @@ Curl 用來示範如何使用原始 HTTP 要求與 HDInsight 互動，以執行 
 * [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 Pig 與 HDInsight 上的 Hadoop](hdinsight-use-pig.md)
+
 

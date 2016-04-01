@@ -20,8 +20,8 @@
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直接，只需幾行的程式碼便可提供單一登入和登出。  在 Asp.NET Web 應用程式中，您可以使用 Microsoft 的社群導向 OWIN 中介軟體 (隨附於 .NET Framework 4.5) 實作來完成這個作業。  這裡我們將使用 OWIN 來:
--   使用者登入應用程式使用 Azure AD 作為身分識別提供者。
+Azure AD 讓您外包 Web 應用程式的身分識別管理變得既簡單又直接，只需幾行的程式碼便可提供單一登入和登出。  在 Asp.NET Web 應用程式中，您可以使用 Microsoft 的社群導向 OWIN 中介軟體 (隨附於 .NET Framework 4.5) 實作來完成這個作業。  這裡我們將使用 OWIN 來 ︰
+-   使用 Azure AD 做為身分識別提供者，將使用者登入應用程式。
 -   顯示使用者的一些相關資訊。
 -   讓使用者登出 App。
 
@@ -170,7 +170,7 @@ public ActionResult About()
 
 最後，建置並執行您的應用程式！  如果您還沒有這麼做，現在正是使用 *.onmicrosoft.com 網域在租用戶中建立新使用者的好時機。  使用該名使用者登入，並注意上方導覽列如何反映使用者的身分識別。  登出，再以租用戶中的另一個使用者身分重新登入。  如果覺得還不夠，您可以註冊並執行此應用程式的另一個執行個體 (有自己的 clientId)，和監看作用中的單一登入。
 
-(不含您的設定值) 已完成的範例供您參考 [這裡提供](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)。  
+（不含您的設定值） 已完成的範例供您參考 [這裡提供](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)。  
 
 您現在可以進入更進階的主題。  您可以嘗試：
 
@@ -178,3 +178,4 @@ public ActionResult About()
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
+

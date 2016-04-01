@@ -27,7 +27,7 @@
 本主題提供可在 Ubuntu Linux 用戶端電腦上執行，以連接到 Azure SQL Database 資料庫的 Python 程式碼範例。
 
 
-## 先決條件
+## 必要條件
 
 
 - [Python 2.7.6](https://www.python.org/download/releases/2.7.6/)。
@@ -53,7 +53,7 @@
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
 
-## 步驟 2: 連接
+## 步驟 2 ︰ 連接
 
 !!!!!sql-database-include-connection-string-details-20-portalshots.md
 
@@ -65,7 +65,7 @@
 
 ## 步驟 3：執行查詢
 
- [Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 函式可用來擷取對 SQL Database 設定從查詢的結果。 此函式基本上會接受任何查詢，並傳回結果集，這可以藉由使用反覆 [cursor.fetchone ()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone)。
+ [Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 函式可用來擷取對 SQL Database 設定從查詢的結果。 此函式基本上會接受任何查詢，並傳回結果集，這可以藉由使用反覆 [cursor.fetchone （)](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone)。
 
 
     import pymssql
@@ -78,7 +78,7 @@
         row = cursor.fetchone()
 
 
-## 步驟 4: 插入資料列
+## 步驟 4 ︰ 插入資料列
 
 在您將了解如何執行此範例 [插入](https://msdn.microsoft.com/library/ms174335.aspx) 陳述式，將保護您的應用程式的參數傳遞 [SQL 資料隱碼](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) 弱點，以及擷取自動產生 [主索引鍵](https://msdn.microsoft.com/library/ms179610.aspx) 值。  
 
@@ -93,7 +93,7 @@
         row = cursor.fetchone()
 
 
-## 步驟 5: 回復交易
+## 步驟 5 ︰ 回復交易
 
 
 這個程式碼範例示範如何使用交易，您將：
@@ -116,4 +116,5 @@
 ## 後續步驟
 
 如需詳細資訊，請參閱 [Python 開發人員中心](/develop/python/)。
+
 

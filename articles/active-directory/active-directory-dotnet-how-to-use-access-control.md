@@ -73,8 +73,8 @@ ACS 是以宣告式身分識別為原則來打造，後者是為內部部署上�
     使用者選取適當的 IP。
 3.  用戶端瀏覽至 IP 的驗證頁面，並提示
     使用者登入。
-4.  當用戶端驗證 (例如，身分識別
-    輸入的認證)，IP 即簽發安全性權杖。
+4.  當用戶端驗證 （例如，身分識別
+    輸入的認證），IP 即簽發安全性權杖。
 5.  在簽發安全性權杖後，IP 引導用戶端傳送 IP 所簽發的安全性權杖給 ACS。
 6.  ACS 驗證 IP，輸入所簽發的安全性權杖
     識別此權杖中宣告至 ACS 規則引擎，計算
@@ -127,7 +127,7 @@ Azure 即會建立並啟動命名空間。
 
 1. 在 **名稱**, ，型別 **MvcACS**, ，然後按一下 [ **確定**。
 1. 在下一步] 對話方塊中，選取 **網際網路應用程式**, ，然後按一下 [ **確定**。
-1. 編輯 *Views\Shared\_LoginPartial.cshtml* 檔案，並以下列程式碼取代內容:
+1. 編輯 *Views\Shared\_LoginPartial.cshtml* 檔案，並以下列程式碼取代內容 ︰
 
         @if (Request.IsAuthenticated)
         {
@@ -197,7 +197,7 @@ Azure 即會建立並啟動命名空間。
 
     Visual Studio 會使用命名空間的相關資訊，來連線至 ACS 管理入口網站，並取得命名空間的設定，包括身分識別提供者、領域及傳回 URL。
 
-8.  選取 **Windows Live ID** (Microsoft 帳戶)，按一下 [確定]。
+8.  選取 **Windows Live ID** （Microsoft 帳戶），按一下 [確定]。
 
     ![][5]
 
@@ -221,7 +221,7 @@ Azure 即會建立並啟動命名空間。
 
     using System.Threading;
 
-1. 在 HomeController 類別中，新增 *宣告* 方法:
+1. 在 HomeController 類別中，新增 *宣告* 方法 ︰
 
     public ActionResult Claims()
     {
@@ -238,7 +238,7 @@ Azure 即會建立並啟動命名空間。
 
 1. 按一下 [ **新增**。
 
-1. 內容取代 *Views\Home\Claims.cshtml* 以下列程式碼檔案:
+1. 內容取代 *Views\Home\Claims.cshtml* 以下列程式碼檔案 ︰
 
         @{
             ViewBag.Title = "Claims";
@@ -288,7 +288,7 @@ Azure 即會建立並啟動命名空間。
         }
         </table>
 
-1. 執行應用程式，並瀏覽至 *宣告* 方法:
+1. 執行應用程式，並瀏覽至 *宣告* 方法 ︰
 
 ![][666]
 
@@ -336,7 +336,7 @@ Visual Studio 中的 Identity and Access Tool 會自動將您的應用程式與 
 
 讓我們使用 ACS 管理入口網站來變更 MvcACS 應用程式的驗證。 在此範例中，我們將新增 Google 作為 MvcACS 的身分識別提供者。
 
-1.  按一下 [ **身分識別提供者** (在導覽功能表中)，然後按一下 **新增**。
+1.  按一下 [ **身分識別提供者** （在導覽功能表中），然後按一下 **新增**。
 
     ![][13]
 
@@ -413,4 +413,5 @@ Visual Studio 中的 Identity and Access Tool 會自動將您的應用程式與 
   [18]: ./media/active-directory-dotnet-how-to-use-access-control/acsManagementService.png
   [19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png
   [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
+
 

@@ -46,3 +46,4 @@ Azure Machine Learning 可讓您為已發行的 Web 服務建立多個端點。 
 建立端點之後，您就可以透過同步 API、批次 API 以及 Excel 工作表來取用該端點。 除了透過此 UI 新增端點之外，您也可以使用端點管理 API，以程式設計方式加入端點。 如需有關如何使用 Machine Learning web 服務的詳細資訊，請參閱 [如何取用已發佈的 Azure Machine Learning web 服務](machine-learning-consume-web-services.md)。
  
 
+

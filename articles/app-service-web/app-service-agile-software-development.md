@@ -21,7 +21,7 @@
 
 在本教學課程中，您將學習如何建立高級別複雜應用程式與 [Azure App Service](/services/app-service/) 支援的方式 [敏捷式軟體開發](https://en.wikipedia.org/wiki/Agile_software_development)。 它會假設您已經知道如何 [部署複雜應用程式如預期般在 Azure 中的](app-service-deploy-complex-application-predictably.md)。
 
-技術程序限制通常會妨礙成功的實作敏捷式方法。 Azure App Service 與功能，例如 [連續發行](web-sites-publish-source-control.md), ，[預備環境](web-sites-staged-publishing.md) (位置)，和 [監視](web-sites-monitor.md), 明智地結合的協調流程與管理部署、 [Azure 資源管理員](resource-group-overview.md), ，對於採納敏捷式軟體開發的開發人員可以參與的絕佳解決方案。
+技術程序限制通常會妨礙成功的實作敏捷式方法。 Azure App Service 與功能，例如 [連續發行](web-sites-publish-source-control.md), ，[預備環境](web-sites-staged-publishing.md) （位置），和 [監視](web-sites-monitor.md), 明智地結合的協調流程與管理部署、 [Azure 資源管理員](resource-group-overview.md), ，對於採納敏捷式軟體開發的開發人員可以參與的絕佳解決方案。
 
 下表是敏捷式開發相關需求以及 Azure 服務如何啟用它們的簡短清單。
 
@@ -46,7 +46,7 @@
 -   部署架構分成三個不同環境 (或 [資源群組](resource-group-overview.md) 在 Azure 中)，各有其專屬 [應用程式服務方案](azure-web-sites-web-hosting-plans-in-depth-overview.md), ，[調整](web-sites-scale.md) 設定，以及 SQL 資料庫。 
 -   您可以個別管理每個環境。 它們甚至可以存在於不同的訂用帳戶中。
 -   預備和生產環境會實作為相同 App Service 應用程式的兩個位置。 主要分支是設定進行具有預備位置的連續整合。
--   已驗證的預備應用程式在預備位置 (含生產資料) 上驗證主要分支的認可後，會交換到生產位置 [停機](web-sites-staged-publishing.md)。
+-   已驗證的預備應用程式在預備位置 （含生產資料） 上驗證主要分支的認可後，會交換到生產位置 [停機](web-sites-staged-publishing.md)。
 
 生產和預備環境的範本所定義 [*& l t; repository_root >*/ARMTemplates/ProdandStage.json](https://github.com/azure-appservice-samples/ToDoApp/blob/master/ARMTemplates/ProdAndStage.json)。
 
@@ -67,11 +67,11 @@
     -   [Git](http://git-scm.com/documentation)
     -   [PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
-> [AZURE.NOTE] 您需要 Azure 帳戶才能完成此教學課程:
+> [AZURE.NOTE] 您需要 Azure 帳戶才能完成此教學課程 ︰
 > + 您可以 [免費申請 Azure 帳戶](/pricing/free-trial/?WT.mc_id=A261C142F) -取得點數可用來試用付費 Azure 服務，並甚至用完後，您可以保留帳戶，並使用免費的 Azure 服務，例如 Web 應用程式。
 > + 您可以 [啟用 Visual Studio 訂閱者權益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) -您的 Visual Studio 訂閱提供您額度，您可以使用 Azure 付費服務的每個月。
 >
-> 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+> 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## 設定生產環境 ##
 
@@ -91,7 +91,7 @@
 
         git clone https://github.com/<your_fork>/ToDoApp.git 
 
-4.  您的本機副本之後，請瀏覽至 *& l t; repository_root >*\ARMTemplates，並執行 deploy.ps1 指令碼，如下所示:
+4.  您的本機副本之後，請瀏覽至 *& l t; repository_root >*\ARMTemplates，並執行 deploy.ps1 指令碼，如下所示 ︰
 
         .\deploy.ps1 –RepoUrl https://github.com/<your_fork>/todoapp.git
 
@@ -154,7 +154,7 @@
     -   您的開發環境是即時在 Azure 中執行。
     -   刪除開發環境，就像刪除資源群組一樣簡單。 您將了解如何執行這項操作 [稍後](#delete)。
 
->[AZURE.NOTE] 當有多位開發人員處理新的更新時，每一種可以輕鬆建立分支和專用的開發環境執行下列動作:
+>[AZURE.NOTE] 當有多位開發人員處理新的更新時，每一種可以輕鬆建立分支和專用的開發環境執行下列動作 ︰
 >
 >1. 在 GitHub 中建立自己的儲存機制的 「 分叉 」 (請參閱 [分岔儲存機制](https://help.github.com/articles/fork-a-repo/))。
 >2. 複製其本機電腦上的分岔
@@ -178,11 +178,11 @@
 
         git checkout Dev
 
-2.  簡單地變更應用程式的 UI 層藉由變更程式碼來使用 [Bootstrap](http://getbootstrap.com/components/) 列出。 開啟 *& l t; repository_root >*\src\MultiChannelToDo.Web\index.cshtml 並進行下列反白顯示的變更:
+2.  簡單地變更應用程式的 UI 層藉由變更程式碼來使用 [Bootstrap](http://getbootstrap.com/components/) 列出。 開啟 *& l t; repository_root >*\src\MultiChannelToDo.Web\index.cshtml 並進行下列反白顯示的變更 ︰
 
     ![](./media/app-service-agile-software-development/commit-1-changes.png)
 
-    >[AZURE.NOTE] 如果您無法讀取上述的映像: 
+    >[AZURE.NOTE] 如果您無法讀取上述的映像 ︰ 
     >
     >- 在第 18 行，將 `check-list` 變更為 `list-group`。
     >- 在第 19 行，將 `class="check-list-item"` 變更為 `class="list-group-item"`。
@@ -266,7 +266,7 @@
 
 ## 摘要 ##
 
-對於許多想要採用 Azure 做為其應用程式平台的公司而言，敏捷式軟體開發是必要的。 在本教學課程中，您已經學會如何輕鬆地建立和終止生產環境的確切複本或接近複本，甚至針對複雜應用程式也是一樣。 您也學到如何運用這項功能來建立開發程序，以建置和測試 Azure 中的每個認可。 本教學課程希望示範如何最恰當地搭配使用 Azure App Service 和 Azure 資源管理員，來建立提供敏捷式方法的 DevOps 方案。 接下來，您可以建置在此案例中執行進階 DevOps 技術，例如 [在生產環境中測試](app-service-web-test-in-production-get-start.md)。 一般測試-生產案例，請參閱 [Flighting 部署 (beta 版測試) 在 Azure App Service 中](app-service-web-test-in-production-controlled-test-flight.md)。
+對於許多想要採用 Azure 做為其應用程式平台的公司而言，敏捷式軟體開發是必要的。 在本教學課程中，您已經學會如何輕鬆地建立和終止生產環境的確切複本或接近複本，甚至針對複雜應用程式也是一樣。 您也學到如何運用這項功能來建立開發程序，以建置和測試 Azure 中的每個認可。 本教學課程希望示範如何最恰當地搭配使用 Azure App Service 和 Azure 資源管理員，來建立提供敏捷式方法的 DevOps 方案。 接下來，您可以建置在此案例中執行進階 DevOps 技術，例如 [在生產環境中測試](app-service-web-test-in-production-get-start.md)。 一般測試-生產案例，請參閱 [Flighting 部署 （beta 版測試） 在 Azure App Service 中](app-service-web-test-in-production-controlled-test-flight.md)。
 
 ## 其他資源 ##
 
@@ -282,4 +282,5 @@
 -   [Azure 跨平台命令列工具](xplat-cli-install.md)
 -   [在 Azure AD 中建立或編輯使用者](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -   [專案 Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
+
 

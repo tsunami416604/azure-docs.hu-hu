@@ -48,7 +48,7 @@ Azure 診斷會將資料儲存至 Azure 儲存體資料表。 不過，您也可
 
 ### 將 Application Insights 設定為接收器
 
-當您使用的角色屬性來設定 [傳送資料至 Application Insights] 時，將 Azure SDK (2.8 或更新版本) 加入 `<SinksConfig>` 公開的項目 [Azure 診斷組態檔](https://msdn.microsoft.com/library/azure/dn782207.aspx) 的角色。
+當您使用的角色屬性來設定 [傳送資料至 Application Insights] 時，將 Azure SDK （2.8 或更新版本） 加入 `<SinksConfig>` 公開的項目 [Azure 診斷組態檔](https://msdn.microsoft.com/library/azure/dn782207.aspx) 的角色。
 
 `<SinksConfig>` 會定義可以傳送 Azure 診斷資料的其他接收器位置。  範例 `SinksConfig` 如下所示：
 
@@ -145,6 +145,7 @@ Azure 診斷會將資料儲存至 Azure 儲存體資料表。 不過，您也可
 * [使用 Application Insights 監視 Azure 雲端服務](app-insights-cloudservices.md)
 * [使用 PowerShell 將 Azure 診斷傳送至 Application Insights](app-insights-powershell-azure-diagnostics.md)
 * [Azure 診斷組態檔](https://msdn.microsoft.com/library/azure/dn782207.aspx)
+
 
 
 

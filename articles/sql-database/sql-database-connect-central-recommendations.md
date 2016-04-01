@@ -29,10 +29,10 @@
 ## 與技術無關的建議
 
 
-- [連接到 Azure SQL 資料庫以程式設計方式方針](http://msdn.microsoft.com/library/azure/ee336282.aspx) -討論包括:
+- [連接到 Azure SQL 資料庫以程式設計方式方針](http://msdn.microsoft.com/library/azure/ee336282.aspx) -討論包括 ︰
  - [連接埠和防火牆](sql-database-configure-firewall-settings.md)
  - 連接字串
-- [Azure SQL Database 資源管理](http://msdn.microsoft.com/library/azure/dn338083.aspx) -討論包括:
+- [Azure SQL Database 資源管理](http://msdn.microsoft.com/library/azure/dn338083.aspx) -討論包括 ︰
  - 資源管理
  - 限制強制執行
  - 節流
@@ -103,8 +103,8 @@
 ### V12 中 1433 以外的連接埠
 
 
-與 Azure SQL Database V12 的用戶端連線有時會略過 proxy 並直接與資料庫互動。 1433 以外的連接埠變得重要。 如需詳細資訊，請參閱:<br/>
-[針對 ADO.NET 4.5 及 SQL Database V12 的 1433年以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)
+與 Azure SQL Database V12 的用戶端連線有時會略過 proxy 並直接與資料庫互動。 1433 以外的連接埠變得重要。 如需詳細資料，請參閱：<br/>
+[針對 ADO.NET 4.5 及 SQL Database V12 的 1433 以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 
 下一節會更詳細說明重試邏輯和暫時性錯誤處理。
@@ -141,7 +141,7 @@ Azure 系統能夠在 SQL Database 服務出現繁重的工作負載時動態重
 
 - [SQL Database 用戶端程式的錯誤訊息](sql-database-develop-error-messages.md#bkmk_connection_errors)
  - 其 **暫時性錯誤、 連接遺失錯誤** 區段是一個有理由自動重試的暫時性錯誤清單。
- - 例如，如果重試錯誤編號 40613，表示發生類似的程式碼顯示<br/>*資料庫 'mydatabase' 伺服器 'theserver' 上不存在。*
+ - 例如，如果出現錯誤編號 40613，表示發生類似如下的狀況，則重試：<br/>*資料庫 'mydatabase' 伺服器 'theserver' 上不是目前可用的。*
 
 
 如需進一步資訊，請參閱：
@@ -160,17 +160,18 @@ Azure 系統能夠在 SQL Database 服務出現繁重的工作負載時動態重
 會針對在 Windows、Linux 和 Mac OS X 上執行的用戶端提供各種程式碼範例。
 
 
-**一般範例:** 有 [程式碼範例](sql-database-develop-quick-start-client-code-samples.md) 各種不同的程式設計語言，包括 PHP、 Python、 Node.js 和.NET CSharp。 此外，也提供在 Windows、Linux 和 Mac OS X 上執行的用戶端範例。
+**一般範例 ︰** 有 [程式碼範例](sql-database-develop-quick-start-client-code-samples.md) 各種不同的程式設計語言，包括 PHP、 Python、 Node.js 和.NET CSharp。 此外，也提供在 Windows、Linux 和 Mac OS X 上執行的用戶端範例。
 
 
-**彈性延展:** 彈性擴縮資料庫的連線相關資訊，請參閱:
+**彈性延展 ︰** 彈性擴縮資料庫的連線相關資訊，請參閱 ︰
 
 - [開始使用 Azure SQL Database Elastic Scale 預覽](sql-database-elastic-scale-get-started.md)
 - [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)
 
 
-**驅動程式庫:** 如需連接驅動程式庫的詳細資訊，包括建議的版本，請參閱:
+**驅動程式庫 ︰** 如需連接驅動程式庫的詳細資訊，包括建議的版本，請參閱 ︰
 
 - [SQL Database 和 SQL Server 的連線庫](sql-database-libraries.md)
+
 
 

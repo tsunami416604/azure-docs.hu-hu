@@ -23,7 +23,7 @@
 
 本文件提供使用 Azure PowerShell 在 HDInsight 叢集的 Hadoop 中執行 MapReduce 工作的範例。
 
-##<a id="prereq"></a>先決條件
+##<a id="prereq"></a>必要條件
 
 若要完成本文中的步驟，您需要下列項目：
 
@@ -31,21 +31,21 @@
 
 - **具有 Azure PowerShell 的工作站**。 請參閱 [安裝和設定 Azure PowerShell](../powershell-install-configure.md)
 
-##<a id="powershell"></a>執行 MapReduce 工作，使用 Azure PowerShell
+##<a id="powershell"></a>使用 Azure PowerShell 執行 MapReduce 工作
 
 Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 MapReduce 工作。 在內部，您可以使用在 HDInsight 叢集上執行的 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (先前稱為 Templeton) 的 REST 呼叫來達到此目的。
 
 在遠端 HDInsight 叢集中執行 MapReduce 工作時，會使用下列 Cmdlet。
 
-* **登入 AzureRmAccount**: 驗證 PowerShell 至您的 Azure 訂閱
+* **登入 AzureRmAccount**︰ 驗證 PowerShell 至您的 Azure 訂閱
 
-* **新 AzureRmHDInsightMapReduceJobDefinition**: 建立新 *作業定義* 使用指定的 MapReduce 資訊
+* **新 AzureRmHDInsightMapReduceJobDefinition**︰ 建立新 *作業定義* 使用指定的 MapReduce 資訊
 
-* **開始 AzureRmHDInsightJob**: 將工作定義傳送至 HDInsight、 啟動工作，並傳回 *工作* 物件，可用來檢查工作狀態
+* **開始 AzureRmHDInsightJob**︰ 將工作定義傳送至 HDInsight、 啟動工作，並傳回 *工作* 物件，可用來檢查工作狀態
 
-* **等候 AzureRmHDInsightJob**: 使用工作物件來檢查工作狀態。 它會等到工作完成，或等到等候時間超過。
+* **等候 AzureRmHDInsightJob**︰ 使用工作物件來檢查工作狀態。 它會等到工作完成，或等到等候時間超過。
 
-* **Get AzureRmHDInsightJobOutput**: 用來擷取工作的輸出
+* **Get AzureRmHDInsightJobOutput**︰ 用來擷取工作的輸出
 
 下列步驟示範如何使用這些 Cmdlet，在您的 HDInsight 叢集中執行工作。
 
@@ -119,7 +119,7 @@ Azure PowerShell 提供 *cmdlet* 可讓您從遠端在 HDInsight 上執行 MapRe
             -DefaultStorageAccountKey $storageAccountKey `
             -HttpCredential $creds
             
-2. 開啟新 **PowerShell** 命令提示字元。 將目錄變更至位置 **mapreducejob.ps1** 檔案，然後使用下列命令來執行指令碼:
+2. 開啟新 **PowerShell** 命令提示字元。 將目錄變更至位置 **mapreducejob.ps1** 檔案，然後使用下列命令來執行指令碼 ︰
 
         .\mapreducejob.ps1
     
@@ -170,7 +170,7 @@ MapReduce 工作的輸出會儲存在檔案名稱 *一部分-r-# # #*。 開啟 
 
 如您所見，Azure PowerShell 提供簡單的方法，在 HDInsight 叢集上執行 MapReduce 工作、監視工作狀態，以及擷取輸出。
 
-##<a id="nextsteps"></a>後續步驟
+##<a id="nextsteps"></a>接續步驟
 
 如需 HDInsight 中 MapReduce 工作的一般資訊：
 
@@ -181,4 +181,5 @@ MapReduce 工作的輸出會儲存在檔案名稱 *一部分-r-# # #*。 開啟 
 * [搭配使用 Hive 與 HDInsight 上的 Hadoop](hdinsight-use-hive.md)
 
 * [搭配使用 Pig 與 HDInsight 上的 Hadoop](hdinsight-use-pig.md)
+
 

@@ -29,7 +29,7 @@
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；沒有承諾。
+>[AZURE.NOTE] 如果您想要註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751), ，您可以立即建立短期入門 web 應用程式的應用程式服務中。 不需要信用卡；無需承諾。
 
 ## Sign into Azure
 
@@ -47,7 +47,7 @@
 
 ## 使用 Azure 內建的範本建立網站
 
-1. 在 [開始] 畫面中，按一下 [ **新增** 按鈕，然後選擇 **範本庫** 從範本庫建立新的網站:
+1. 在 [開始] 畫面中，按一下 [ **新增** 按鈕，然後選擇 **範本庫** 從範本庫建立新的網站 ︰
 
     ![New site from Template Gallery][sitefromtemplate]
 
@@ -104,7 +104,7 @@
 如果您遇到問題的應用程式部署至 Azure 之後，請參閱 [如何偵錯 Node.js web 應用程式在 Azure App Service 中的](web-sites-nodejs-debug.md) 獲得診斷問題的資訊。
 
 ## 變更的項目
-* 如需變更從應用程式服務的網站的指南，請參閱: [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 如需變更從應用程式服務的網站的指南，請參閱 ︰ [Azure App Service，及其對現有 Azure 服務的影響](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [WebMatrix WebSite]: http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398
 [WebMatrix for Azure]: http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409
@@ -124,3 +124,4 @@
 [sitefromtemplate]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-site-from-template.png
 [nodesitefromtemplateazure]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-node-site-azure.png
  
+

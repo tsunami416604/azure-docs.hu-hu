@@ -24,7 +24,7 @@
 
 ###Assets
 
- [資產](https://msdn.microsoft.com/library/azure/hh974277.aspx) 包含數位檔案 (包括視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式字幕檔案) 和這些檔案的相關中繼資料。 將數位檔案上傳到資產之後，可以用於媒體服務編碼和串流工作流程。
+ [資產](https://msdn.microsoft.com/library/azure/hh974277.aspx) 包含數位檔案 （包括視訊、 音訊、 影像、 縮圖集合、 文字播放軌和隱藏式字幕檔案） 和這些檔案的相關中繼資料。 將數位檔案上傳到資產之後，可以用於媒體服務編碼和串流工作流程。
 
 資產會對應至 Azure 儲存體帳戶中的 blob 容器，資產中的檔案則儲存為該容器中的 blob。
 
@@ -52,13 +52,13 @@
 
 若要傳遞儲存體加密資產，您必須設定資產的傳遞原則，讓媒體服務知道您的內容傳遞方式。 串流處理資產之前，串流伺服器會移除儲存體加密，並使用指定的傳遞原則來串流處理您的內容 (例如，AES、PlayReady 或不加密)。 
 
-**CommonEncryptionProtected** -使用此選項，如果您想要加密 (或上傳已加密) 內容使用一般加密或 PlayReady DRM (例如 Smooth Streaming 使用 PlayReady DRM 保護)。
+**CommonEncryptionProtected** -使用此選項，如果您想要加密 （或上傳已加密） 內容使用一般加密或 PlayReady DRM (例如 Smooth Streaming 使用 PlayReady DRM 保護)。
 
-**EnvelopeEncryptionProtected** – 使用此選項，如果您想要保護 (或上傳已受到保護) HTTP 即時資料流 (HLS) 透過進階加密標準 (AES) 加密。 請注意，如果您正在上傳已利用 AES 所加密的 HLS，則必須已由 Transform Manager 進行加密。
+**EnvelopeEncryptionProtected** – 使用此選項，如果您想要保護 （或上傳已受到保護） HTTP 即時資料流 (HLS) 透過進階加密標準 (AES) 加密。 請注意，如果您上傳已透過 AES 加密的 HLS，它必須是由 Transform Manager 加密。
 
 ###存取原則 
 
- [AccessPolicy](https://msdn.microsoft.com/library/azure/hh974297.aspx) 定義權限 (例如讀取、 寫入和清單) 和持續期間存取資產。 您通常會傳遞 AccessPolicy 物件到定位器，接著再用來存取資產中包含的檔案。
+ [AccessPolicy](https://msdn.microsoft.com/library/azure/hh974297.aspx) 定義權限 （例如讀取、 寫入和清單） 和持續期間存取資產。 您通常會傳遞 AccessPolicy 物件到定位器，接著再用來存取資產中包含的檔案。
 
 
 ###Blob 容器
@@ -81,11 +81,11 @@ Blob 容器提供一組 blob。 Blob 容器在媒體服務中是做為存取控�
 
 ##工作 (Job) 和工作 (Task)
 
-A [工作](https://msdn.microsoft.com/library/azure/hh974289.aspx) 通常用來處理程序 (例如索引或編碼) 一個音訊/視訊簡報。 如果您要處理多個視訊，請為每個要編碼的視訊各建立一個工作。
+A [工作](https://msdn.microsoft.com/library/azure/hh974289.aspx) 通常用來處理程序 （例如索引或編碼） 一個音訊/視訊簡報。 如果您要處理多個視訊，請為每個要編碼的視訊各建立一個工作。
 
 工作包含要進行之處理的相關中繼資料。 每個工作包含一或多個 [工作](https://msdn.microsoft.com/library/azure/hh974286.aspx)(task) 指定不可部分完成的處理工作、 其輸入資產、 輸出資產、 媒體處理器以及其關聯的設定。 工作 (Job) 中的工作 (Task) 可以鏈結在一起，其中一項工作 (Task) 的輸出資產指定為下一個工作 (Task) 的輸入資產。 透過這種方式，一項工作 (Job) 可以包含一個媒體簡報所需的所有處理。
 
-##<a id="encoding"></a>編碼 \ 封裝
+##<a id="encoding"></a>編碼\封裝
 
 ###編碼
 
@@ -149,7 +149,7 @@ Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存、處理�
 
 如果您要串流儲存體加密資產，您必須設定資產的傳遞原則，以指定資產的傳遞方式。    
 
-播放程式要求資料流時，媒體服務會使用動態加密您的內容 (使用 AES) 信封加密或一般加密 (透過 PlayReady 或 Widevine) 指定的索引鍵。 為了將串流解密，播放程式將從金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
+播放程式要求資料流時，媒體服務會使用動態加密您的內容 （使用 AES) 信封加密或一般加密 （透過 PlayReady 或 Widevine） 指定的索引鍵。 為了將串流解密，播放程式將從金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
 
 ###權杖限制
@@ -161,7 +161,7 @@ Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存、處理�
 如需詳細資訊，請參閱下列文章。
 
 [保護內容概觀](media-services-content-protection-overview.md)
-[保護透過 AES 128](media-services-protect-with-aes128.md)
+[利用 AES 128 保護](media-services-protect-with-aes128.md)
 [使用 DRM 保護](media-services-protect-with-drm.md)
 
 ##傳遞
@@ -250,4 +250,5 @@ StreamingEndpoint 代表可以直接將內容傳遞給用戶端播放程式應�
 ##提供意見反應
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
 

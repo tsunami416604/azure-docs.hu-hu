@@ -45,16 +45,16 @@
 
 這個 Cmdlet 的必要參數如下所示：
 
- + **RequestedServiceObjectiveName**: 要求的 DWU 數量、 在表單中 「 DWXXX 」 目前支援的值為: 100、 200、 300、 400、 500，600、 1000，1200年，1500年，2000年。
- + **DatabaseName**: 您所建立的 SQL 資料倉儲的名稱。
- + **ServerName**: 用來建立伺服器的名稱 (必須是 V12)。
- + **ResourceGroupName**: 您正在使用的資源群組。  若要尋找訂用帳戶中可用的資源，請使用 Get-AzureResource。
- + **Edition**: 您必須設定 「 資料倉儲 」 來建立 SQL 資料倉儲的版本。 
+ + **RequestedServiceObjectiveName**︰ 要求的 DWU 數量、 在表單中 「 DWXXX 」 目前支援的值為 ︰ 100、 200、 300、 400、 500，600、 1000，1200年，1500年，2000年。
+ + **DatabaseName**︰ 您所建立的 SQL 資料倉儲的名稱。
+ + **ServerName**︰ 用來建立伺服器的名稱 （必須是 V12）。
+ + **ResourceGroupName**︰ 您正在使用的資源群組。  若要尋找訂用帳戶中可用的資源，請使用 Get-AzureResource。
+ + **Edition**︰ 您必須設定 「 資料倉儲 」 來建立 SQL 資料倉儲的版本。 
 
 ## 後續步驟
-SQL 資料倉儲可以 [載入範例資料] [] 或簽出如何 [開發] []、 [載入] [] 中，佈建完成之後或 [移轉] []。
+您可以佈建完成您的 SQL 資料倉儲之後 [範例資料載入][] 或簽出如何 [開發][], ，[載入][], ，或 [移轉][]。
 
-如果您感興趣需如何以程式設計方式管理 SQL 資料倉儲的詳細資訊，請查看我們 [Powershell] [] 或 [REST API] [] 文件。
+如果您感興趣需如何以程式設計方式管理 SQL 資料倉儲的詳細資訊，請參閱我們 [Powershell][] 或 [REST API][] 文件。
 
 
 
@@ -70,4 +70,5 @@ SQL 資料倉儲可以 [載入範例資料] [] 或簽出如何 [開發] []、 [�
 [MSDN]:https://msdn.microsoft.com/library/azure/dn546722.aspx
 [firewall rules]:https://azure.microsoft.com/en-us/documentation/articles/sql-database-configure-firewall-settings/
 [How to install and configure Azure PowerShell]: powershell-install-configure.md
+
 

@@ -19,15 +19,15 @@
 
 *Application Insights 目前僅供預覽。*
 
-如果您有 [檢測您的 Java web 應用程式使用 Application Insights][java], ，您可以使用 Java 代理程式，以取得更深入的見解，不需要變更任何程式碼:
+如果您有 [檢測您的 Java web 應用程式使用 Application Insights][java], ，您可以使用 Java 代理程式，以取得更深入的見解，不需要變更任何程式碼 ︰
 
 
-* **相依性:** 呼叫的應用程式可讓其他元件，包括相關的資料:
+* **相依性 ︰** 呼叫的應用程式可讓其他元件，包括相關的資料 ︰
  * **REST 呼叫** 透過 HttpClient、 OkHttp 和 RestTemplate (Spring)。
  * **Redis** 透過 Jedis 用戶端進行呼叫。 如果呼叫時間長於 10 秒，代理程式也會擷取呼叫引數。
  * **[JDBC 呼叫](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** -MySQL、 SQL Server、 PostgreSQL、 SQLite、 Oracle DB 或 Apache Derby DB。 支援 「 executeBatch 」 呼叫。 MySQL 與 PostgreSQL 的呼叫時間如果長於 10 秒，代理程式會回報查詢計劃。 
-* **攔截到例外狀況:** 由您的程式碼處理的例外狀況的相關資料。
-* **方法執行時間:** 執行特定的方法所花費的時間相關資料。
+* **攔截到例外狀況 ︰** 由您的程式碼處理的例外狀況的相關資料。
+* **方法執行時間 ︰** 執行特定的方法所花費的時間相關資料。
 
 若要使用 Java 代理程式，您要在伺服器上安裝它。 您的 web 應用程式必須使用檢測 [Application Insights Java SDK][java]。
 
@@ -121,3 +121,4 @@
 [usage]: app-insights-web-track-usage.md
 
  
+

@@ -32,7 +32,7 @@
 ## 取得 VM
 這是您會經常使用的基本工作。 使用它來取得 VM 的相關資訊、在 VM 上執行工作，或取得輸出以儲存至變數中。
 
-若要取得 VM 的相關資訊，請執行這個命令，取代以引號括住，包括所有項目 < 和 > 字元:
+若要取得 VM 的相關資訊，請執行這個命令，取代以引號括住，包括所有項目 < 和 > 字元 ︰
 
      Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
@@ -58,7 +58,7 @@
 
     Stop-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
->[AZURE.IMPORTANT] 使用此參數来保留虛擬 IP (VIP) 的雲端服務，以便在該雲端服務中的最後一個 VM。 <br><br> 如果使用 StayProvisioned 參數，還是需要支付 VM 的費用。
+>[AZURE.IMPORTANT] 使用此參數来保留虛擬 IP (VIP) 的雲端服務，以便在該雲端服務中的最後一個 VM。 <br><br> 如果使用 StayProvisioned 參數，您將還是需要支付費用 VM。
 
 ## 啟動 VM
 
@@ -100,9 +100,10 @@
 
 ## 建立以 Linux 為基礎的 VM
 
-使用中的指示 [建立和預先設定以使用 Azure Powershell 在 Linux 虛擬機器](virtual-machines-ps-create-preconfigure-linux-vms.md) 在預先設定的 Azure 中建立新的 linux 虛擬機器:
+使用中的指示 [建立和預先設定以使用 Azure Powershell 在 Linux 虛擬機器](virtual-machines-ps-create-preconfigure-linux-vms.md) 在預先設定的 Azure 中建立新的 linux 虛擬機器 ︰
 
 - 具有額外的磁碟。
 - 成為現有負載平衡集的成員。
 - 具有靜態 IP 位址。
+
 

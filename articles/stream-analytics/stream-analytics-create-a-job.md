@@ -24,7 +24,7 @@ Azure 串流分析中的最上層資源就是串流分析工作。  其包含一
 若要開始使用串流分析，您必須先建立新的串流分析工作。  請注意直到開始工作之前，這個動作不會以任何方式計費。
 
 1.  登入線上 [Microsoft Azure 入口網站](http://manage.windowsazure.com) 或 Azure 預覽入口網站。
-2.  在 Azure 入口網站: **按一下 [新增**, ，然後按一下 [ **Data Services**, ，然後按一下 [ **資料流分析** 和 **快速建立**。
+2.  在 Azure 入口網站 ︰ **按一下 [新增**, ，然後按一下 [ **Data Services**, ，然後按一下 [ **資料流分析** 和 **快速建立**。
 
     ![資料分析處理工作精靈](./media/stream-analytics-create-a-job/1-stream-analytics-create-a-job.png)  
 
@@ -60,3 +60,4 @@ Azure 串流分析中的最上層資源就是串流分析工作。  其包含一
 - [調整 Azure 資料流分析工作](stream-analytics-scale-jobs.md)
 - [Azure Stream Analytics 查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+

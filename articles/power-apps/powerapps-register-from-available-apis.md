@@ -50,16 +50,16 @@
 
 API | 說明 | 步驟連結
 --- | --- | ---
-![][31] | **Dropbox**<br/><br/> 可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-dropbox.md)
-![][32] | **線上 DynamicsCRM**<br/><br/> 可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-crmonline.md)
-![][33] | **Excel**<br/><br/> 可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-excel.md)
-![][34] | **Google 磁碟機**<br/><br/> 可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-googledrive.md)
-![][35] | **Microsoft Translator**<br/><br/>轉譯文字、 語言及多個偵測到。 | [**開始使用**](powerapps-create-api-microsofttranslator.md)
+![][31] | **Dropbox**<br/><br/> 您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-dropbox.md)
+![][32] | **線上 DynamicsCRM**<br/><br/> 您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-crmonline.md)
+![][33] | **Excel**<br/><br/> 您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-excel.md)
+![][34] | **Google 磁碟機**<br/><br/> 您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-googledrive.md)
+![][35] | **Microsoft 轉譯器**<br/><br/>轉譯文字，偵測到的語言，等等。 | [**開始使用**](powerapps-create-api-microsofttranslator.md)
 ![][36] | **Office365 Outlook**<br/><br/>管理您的電子郵件。 | [**開始使用**](powerapps-create-api-office365-outlook.md)
-![][37] | **Office365 使用者**<br/><br/>存取使用者設定檔、 經理、 其直屬員工。 | [**開始使用**](powerapps-create-api-office365-users.md)
-![][38] | **OneDrive**<br/><br/> 可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-onedrive.md)
-![][39] | **Salesforce**<br/><br/> 可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-salesforce.md)
-![][40] | **SharePoint Online**<br/><br/> 可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-sharepointonline.md)
+![][37] | **Office365 使用者**<br/><br/>存取使用者設定檔、 經理、 其直屬員工，等等。 | [**開始使用**](powerapps-create-api-office365-users.md)
+![][38] | **OneDrive**<br/><br/> 您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-onedrive.md)
+![][39] | **Salesforce**<br/><br/> 您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-salesforce.md)
+![][40] | **SharePoint Online**<br/><br/> 您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-sharepointonline.md)
 ![][43] | **Twitter**<br/><br/> 傳送推文、 搜尋推文，請參閱粉絲等等。 | [**開始使用**](powerapps-create-api-twitter.md)
 
 
@@ -79,9 +79,9 @@ API | 說明 | 步驟連結
 
 API | 說明 | 步驟連結
 --- | --- | ---
-![][30] | **Bing 搜尋**<br/><br/>內嵌搜尋結果中，新增搜尋功能，以及其他等等。 | [**開始使用**](powerapps-create-api-bingsearch.md)
-![][42] | **SQL Server**<br/><br/>可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-sqlserver.md)
-![][41] | **SharePoint Server**<br/><br/>可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-sharepointserver.md)
+![][30] | **Bing 搜尋**<br/><br/>內嵌搜尋結果中，新增搜尋功能。 | [**開始使用**](powerapps-create-api-bingsearch.md)
+![][42] | **SQL Server**<br/><br/>您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-sqlserver.md)
+![][41] | **SharePoint Server**<br/><br/>您可以取得、 更新、 刪除項目等等。 | [**開始使用**](powerapps-create-api-sharepointserver.md)
 
 
 #### 為什麼要註冊您自己的執行個體
@@ -111,9 +111,9 @@ API | 說明 | 步驟連結
 ![][17]
 2. 在 Api 管理中，選取 **新增**:  
 ![][18]  
-3. 在 **加入 API**, ，輸入 API 的內容:  
+3. 在 **加入 API**, ，輸入 API 的內容 ︰  
 
-    - 在 **名稱**, ，輸入您的 API 的名稱。 請注意，您輸入的名稱會包含在 API 的執行階段 URL 中。 請設定有意義且在組織中獨一無二的名稱。
+    - 在 **名稱**, ，輸入您的 API 的名稱。 請注意，您輸入的名稱會包含在 API 的執行階段 URL 中。 設定有意義且在組織中獨一無二的名稱。
     - 在 **來源**, ，請選取 **從可用的 Api**:  
     ![][19]
 4. 選取 **API** ]，然後選擇您想要註冊的 API:  
@@ -154,4 +154,5 @@ API | 說明 | 步驟連結
 [41]: ./media/powerapps-register-from-available-apis/sharepointserver.png
 [42]: ./media/powerapps-register-from-available-apis/sqlserver.png
 [43]: ./media/powerapps-register-from-available-apis/twitter.png
+
 

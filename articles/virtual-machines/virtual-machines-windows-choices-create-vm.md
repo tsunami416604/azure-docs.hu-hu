@@ -23,7 +23,7 @@ Azure 提供建立虛擬機器的不同方式，因為虛擬機器適用於不�
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 傳統部署模型。
 
-我們最近推出 Azure 資源管理員範本做為一種方式，用以建立虛擬機器，並將它與其不同資源當成一個邏輯部署單位來管理。 以下提供這個可用方法的指示。 若要深入了解 Azure 資源管理員，以及如何管理資源當成一個單位，請參閱 [概觀] []。
+我們最近推出 Azure 資源管理員範本做為一種方式，用以建立虛擬機器，並將它與其不同資源當成一個邏輯部署單位來管理。 以下提供這個可用方法的指示。 若要深入了解 Azure 資源管理員，以及如何管理資源當成一個單位，請參閱 [概觀][]。
 
 ## 工具選項
 
@@ -55,7 +55,7 @@ Azure 傳統入口網站的圖形化使用者介面是用來嘗試設定虛擬�
 
 ## 作業系統和映像選項
 
-根據您想要執行的作業系統來選擇映像。 Azure 與其合作夥伴提供許多映像，其中有些包括應用程式和工具。 或者，使用您自己的其中一個映像。 尋找您需要為應用程式使用中的資訊平台映像: [瀏覽並選取 [Windows PowerShell 和 Azure CLI 與 Azure 虛擬機器映像][]。
+根據您想要執行的作業系統來選擇映像。 Azure 與其合作夥伴提供許多映像，其中有些包括應用程式和工具。 或者，使用您自己的其中一個映像。 尋找您需要為應用程式使用中的資訊平台映像 ︰ [瀏覽並選取 [Windows PowerShell 和 Azure CLI 與 Azure 虛擬機器映像][]。
 
 <!-- LINKS -->
 [overview]: ../resource-group-overview.md
@@ -78,4 +78,5 @@ Azure 傳統入口網站的圖形化使用者介面是用來嘗試設定虛擬�
 [Base configuration test environment]: virtual-machines-base-configuration-test-environment.md
 
 [Azure hybrid cloud test environments]: virtual-machines-hybrid-cloud-test-environments.md
+
 

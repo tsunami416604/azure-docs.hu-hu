@@ -345,7 +345,7 @@
 
 從網域控制站的其他區段 **"name":"UpdateVNetDNS"** 使用靜態 IP 位址的網域控制站的虛擬網路的 DNS 伺服器。
 
-下一個 **"type":"Microsoft.compute/virtualmachines"** 區段會建立在部署中的 SQL Server 虛擬機器和:
+下一個 **"type":"Microsoft.compute/virtualmachines"** 區段會建立在部署中的 SQL Server 虛擬機器和 ︰
 
 - 指定儲存體帳戶、可用性集合、負載平衡器、虛擬網路及網路介面。
 - 新增額外的磁碟。
@@ -354,7 +354,7 @@
 
 下一個 **"type":"Microsoft.compute/virtualmachines"** 區段會在部署中，指定儲存體帳戶、 可用性設定組、 負載平衡器、 虛擬網路和網路介面來建立 SharePoint 虛擬機器。 額外 **"Microsoft.Compute/virtualMachines/extensions"** 區段會呼叫 PowerShell 指令碼來設定 SharePoint 伺服器陣列。
 
-請注意子區段整體組織 **「 資源 」** JSON 檔案的區段:
+請注意子區段整體組織 **「 資源 」** JSON 檔案的區段 ︰
 
 1.  建立 Azure 基礎結構的元素，我們需要此元素來支援多個虛擬機器 (儲存體帳戶、公用 IP 位址、可用性集合、虛擬網路、網路介面、負載平衡器執行個體)。
 2.  建立網域控制站虛擬機器，此虛擬機器會使用先前建立的 Azure 基礎結構的一般和特定元素、新增資料磁碟，並執行 PowerShell 指令碼。 此外，更新虛擬網路來使用網域控制站的靜態 IP 位址。
@@ -370,10 +370,11 @@
 
 ## 其他資源
 
-[Azure 運算、 網路和存放裝置提供者 Azure 資源管理員](virtual-machines-azurerm-versus-azuresm.md)
+[Azure 資源管理員提供的 Azure 運算、網路和儲存提供者](virtual-machines-azurerm-versus-azuresm.md)
 [Azure 資源管理員概觀](../resource-group-overview.md)
 
 [編寫 Azure 資源管理員範本](../resource-group-authoring-templates.md)
 
 [虛擬機器文件](http://azure.microsoft.com/documentation/services/virtual-machines/)
+
 

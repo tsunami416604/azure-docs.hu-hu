@@ -24,11 +24,11 @@
 
 ##整合程序
 
-1. 從這裡開始: [如何整合 Mobile Engagement Windows 通用應用程式中](mobile-engagement-windows-store-integrate-engagement.md)
+1. 從這裡開始 ︰ [如何整合 Mobile Engagement Windows 通用應用程式中](mobile-engagement-windows-store-integrate-engagement.md)
 
-2. 通知: [如何在 Windows 通用應用程式中整合 Reach (通知)](mobile-engagement-windows-store-integrate-engagement-reach.md)
+2. 通知 ︰ [如何在 Windows 通用應用程式中整合 Reach （通知）](mobile-engagement-windows-store-integrate-engagement-reach.md)
 
-3. 標記計劃實作: [如何使用進階的 Mobile Engagement 標記 API 在 Windows 通用應用程式](mobile-engagement-windows-store-use-engagement-api.md)
+3. 標記計劃實作 ︰ [如何使用進階的 Mobile Engagement 標記 API 在 Windows 通用應用程式](mobile-engagement-windows-store-use-engagement-api.md)
 
 ##版本資訊
 
@@ -172,3 +172,4 @@
 ### 從舊版升級
 
 請參閱 [升級程序](mobile-engagement-windows-store-upgrade-procedure/) 
+

@@ -48,7 +48,7 @@
 -   使用中 [Microsoft Azure 帳戶](/account/)
 -   使用 visual Studio 2015 [Azure SDK](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409)
 
-> [AZURE.NOTE] 您需要 Azure 帳戶才能完成此教學課程:
+> [AZURE.NOTE] 您需要 Azure 帳戶才能完成此教學課程 ︰
 > + 您可以 [免費申請 Azure 帳戶](/pricing/free-trial/) -取得點數可用來試用付費 Azure 服務，並甚至用後可保留帳戶，並使用免費的 Azure 服務，例如網站。
 > + 您可以 [啟用 MSDN 訂戶權益](/pricing/member-offers/msdn-benefits-details/) -您的 MSDN 訂閱提供您額度，您可以使用 Azure 付費服務的每個月。
 
@@ -201,7 +201,7 @@ CDN 設定檔就是 CDN 端點的集合。  每個設定檔皆包含一或多個
       ...
     </system.webServer>
 
-這樣做時，雲端服務中的所有靜態檔案會在您的 CDN 快取中遵守相同規則。 更精確控制快取設定，請新增 *Web.config* 檔案的資料夾，並加入您的設定。 例如，加入 *Web.config* 檔案重新命名為 *\Content* 資料夾，並將以下列 XML 內容:
+這樣做時，雲端服務中的所有靜態檔案會在您的 CDN 快取中遵守相同規則。 更精確控制快取設定，請新增 *Web.config* 檔案的資料夾，並加入您的設定。 例如，加入 *Web.config* 檔案重新命名為 *\Content* 資料夾，並將以下列 XML 內容 ︰
 
     <?xml version="1.0"?>
     <configuration>
@@ -221,9 +221,9 @@ CDN 設定檔就是 CDN 端點的集合。  每個設定檔皆包含一或多個
 <a name="controller"></a>
 ## 透過 Azure CDN 從控制器動作提供內容 ##
 
-整合雲端服務 Web 角色與 Azure CDN 時，透過 Azure CDN 從控制器動作提供內容就非常簡單。 不提供您的雲端服務直接透過 Azure CDN (如上所示)， [Maarten Balliauw](https://twitter.com/maartenballiauw) 示範步驟以一個有趣的 MemeGenerator 控制器中的 [降低延遲與 Azure CDN 從網站上的](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)。 我在這裡簡單地重述一次。
+整合雲端服務 Web 角色與 Azure CDN 時，透過 Azure CDN 從控制器動作提供內容就非常簡單。 不提供您的雲端服務直接透過 Azure CDN （如上所示）， [Maarten Balliauw](https://twitter.com/maartenballiauw) 示範步驟以一個有趣的 MemeGenerator 控制器中的 [降低延遲與 Azure CDN 從網站上的](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)。 我在這裡簡單地重述一次。
 
-假設您的雲端中您想要拍攝的服務會根據查克羅禮士年輕 (相片 [Alan Light](http://www.flickr.com/photos/alan-light/218493788/)) 如下所示:
+假設您的雲端中您想要拍攝的服務會根據查克羅禮士年輕 (相片 [Alan Light](http://www.flickr.com/photos/alan-light/218493788/)) 如下所示 ︰
 
 ![](media/cdn-cloud-service-with-cdn/cdn-5-memegenerator.PNG)
 
@@ -337,7 +337,7 @@ CDN 設定檔就是 CDN 端點的集合。  每個設定檔皆包含一或多個
 
     ![](media/cdn-cloud-service-with-cdn/cdn-7-configureview.PNG)
 
-4. 開啟新 *Views\MemeGenerator\Index.cshtml* 和內容取代成下列簡單的 HTML 來提交笑梗:
+4. 開啟新 *Views\MemeGenerator\Index.cshtml* 和內容取代成下列簡單的 HTML 來提交笑梗 ︰
 
         <h2>Meme Generator</h2>
         
@@ -519,7 +519,7 @@ CDN 設定檔就是 CDN 端點的集合。  每個設定檔皆包含一或多個
 
  [配套](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx) 類別包含一個稱為屬性 [CdnFallbackExpression](http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) ，可讓您設定 CDN 失敗時的後援機制。 若要使用此屬性，請遵循下列步驟：
 
-1. 在 Web 角色專案中，開啟 *app_start\ bundleconfig.cs*, 、 您已加入 CDN URL 每 [Bundle 建構函式](http://msdn.microsoft.com/library/jj646464.aspx), ，並進行下列醒目提示的變更將後援機制加入預設套件組合:  
+1. 在 Web 角色專案中，開啟 *app_start\ bundleconfig.cs*, 、 您已加入 CDN URL 每 [Bundle 建構函式](http://msdn.microsoft.com/library/jj646464.aspx), ，並進行下列醒目提示的變更將後援機制加入預設套件組合 ︰  
 
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -637,3 +637,4 @@ CDN 設定檔就是 CDN 端點的集合。  每個設定檔皆包含一或多個
 [cdn-new-endpoint-button]: ./media/cdn-cloud-service-with-cdn/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-cloud-service-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-cloud-service-with-cdn/cdn-endpoint-success.png
+

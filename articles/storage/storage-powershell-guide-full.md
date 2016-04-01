@@ -32,7 +32,7 @@ Azure PowerShell 是個模組，其提供了各種 Cmdlet 來透過 Windows Powe
 
 本節說明如何在 5 分鐘內透過 PowerShell 存取 Azure 儲存體。
 
-**Azure 新手:** 取得 Microsoft Azure 訂閱和與該訂用帳戶相關聯的 Microsoft 帳戶。 如需 Azure 購買選項的詳細資訊，請參閱 [免費試用版](http://azure.microsoft.com/pricing/free-trial/), ，[購買選項](http://azure.microsoft.com/pricing/purchase-options/), ，和 [會員優惠](http://azure.microsoft.com/pricing/member-offers/) (適用於 MSDN、 Microsoft Partner Network、 BizSpark 和其他 Microsoft 程式的成員)。
+**Azure 新手 ︰** 取得 Microsoft Azure 訂閱和與該訂用帳戶相關聯的 Microsoft 帳戶。 如需 Azure 購買選項的詳細資訊，請參閱 [免費試用版](http://azure.microsoft.com/pricing/free-trial/), ，[購買選項](http://azure.microsoft.com/pricing/purchase-options/), ，和 [會員優惠](http://azure.microsoft.com/pricing/member-offers/) （適用於 MSDN、 Microsoft Partner Network、 BizSpark 和其他 Microsoft 程式的成員）。
 
 請參閱 [管理帳戶、 訂閱和系統管理角色](https://msdn.microsoft.com/library/azure/hh531793.aspx) 如需有關 Azure 訂用帳戶。
 
@@ -114,7 +114,7 @@ Azure PowerShell 是個模組，其提供了各種 Cmdlet 來透過 Windows Powe
         
         ![Azure 傳統入口網站][Image1]
 
-    - **$StorageAccountName:** 指令碼中使用的指定名稱或輸入新名稱儲存體帳戶。 **重要事項:** 的儲存體帳戶名稱必須是唯一在 Azure 中。 而且必須是小寫字母！
+    - **$StorageAccountName:** 指令碼中使用的指定名稱或輸入新名稱儲存體帳戶。 **重要事項 ︰** 的儲存體帳戶名稱必須是唯一在 Azure 中。 而且必須是小寫字母！
 
     - **$Location:** 指令碼中使用指定的"West US"，或選擇其他的 Azure 位置，例如美國東部、 北歐等等。
 
@@ -212,7 +212,7 @@ Azure 儲存體內容是 PowerShell 中用以封裝儲存體認證的物件。 �
 
 使用下列三種方式之一來建立儲存體內容：
 
-- 執行 [Get-azurestoragekey](http://msdn.microsoft.com/library/azure/dn495235.aspx) cmdlet 來找出您的 Azure 儲存體帳戶的主要儲存體存取金鑰。 接下來，呼叫 [New-azurestoragecontext](http://msdn.microsoft.com/library/azure/dn806380.aspx) 指令程式來建立儲存體內容:
+- 執行 [Get-azurestoragekey](http://msdn.microsoft.com/library/azure/dn495235.aspx) cmdlet 來找出您的 Azure 儲存體帳戶的主要儲存體存取金鑰。 接下來，呼叫 [New-azurestoragecontext](http://msdn.microsoft.com/library/azure/dn806380.aspx) 指令程式來建立儲存體內容 ︰
 
         $StorageAccountName = "yourstorageaccount"
         $StorageAccountKey = Get-AzureStorageKey -StorageAccountName $StorageAccountName
@@ -224,7 +224,7 @@ Azure 儲存體內容是 PowerShell 中用以封裝儲存體認證的物件。 �
         $sasToken = New-AzureStorageContainerSASToken -Container abc -Permission rl
         $Ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -SasToken $sasToken
 
-    如需詳細資訊，請參閱 [New-azurestoragecontainersastoken](http://msdn.microsoft.com/library/azure/dn806416.aspx) 和 [共用存取簽章，第 1 部分: 了解 SAS 模型 ](storage-dotnet-shared-access-signature-part-1.md)。
+    如需詳細資訊，請參閱 [New-azurestoragecontainersastoken](http://msdn.microsoft.com/library/azure/dn806416.aspx) 和 [共用存取簽章，第 1 部分 ︰ 了解 SAS 模型 ](storage-dotnet-shared-access-signature-part-1.md)。
 
 - 在某些情況下，您可能想要在建立新的儲存體內容時指定服務端點。 當您向 Blob 服務註冊儲存體帳戶的自訂網域名稱，或想要使用共用存取簽章存取儲存體資源時，這可能是必要作業。 在連接字串中設定服務端點，並用來建立新的儲存體內容，如下所示：
 
@@ -244,14 +244,14 @@ Azure 儲存體中的每個 Blob 必須位於一個容器中。 您可以使用 
     $StorageContainerName = "yourcontainername"
     New-AzureStorageContainer -Name $StorageContainerName -Permission Off
 
-> [AZURE.NOTE] 有三個層級的匿名讀取權限: **關閉**, ，**Blob**, ，和 **容器**。 若要防止匿名存取 blob，權限] 參數設定為 **關閉**。 新容器預設為私人，且只能由帳戶擁有者存取。 若要允許匿名公開讀取權限 blob 資源，但不是會對容器中繼資料或容器中 blob 清單的權限將參數設定 **Blob**。 若要允許 blob 資源、 容器中繼資料的容器中 blob 清單的完整公用讀取權限，權限] 參數設定為 **容器**。 如需詳細資訊，請參閱 [管理 Azure 儲存體資源的存取](storage-manage-access-to-resources.md)。
+> [AZURE.NOTE] 有三個層級的匿名讀取權限 ︰ **關閉**, ，**Blob**, ，和 **容器**。 若要防止匿名存取 blob，權限] 參數設定為 **關閉**。 新容器預設為私人，且只能由帳戶擁有者存取。 若要允許匿名公開讀取權限 blob 資源，但不是會對容器中繼資料或容器中 blob 清單的權限將參數設定 **Blob**。 若要允許 blob 資源、 容器中繼資料的容器中 blob 清單的完整公用讀取權限，權限] 參數設定為 **容器**。 如需詳細資訊，請參閱 [管理 Azure 儲存體資源的存取](storage-manage-access-to-resources.md)。
 
 ### 如何將 Blob 上傳到容器中
 Azure Blob 儲存體支援區塊 Blob 和頁面 Blob。 如需詳細資訊，請參閱 [了解區塊 Blob 和分頁 Blob](http://msdn.microsoft.com/library/azure/ee691964.aspx)。
 
 若要上傳至容器的 blob，您可以使用 [Set-azurestorageblobcontent](http://msdn.microsoft.com/library/azure/dn806379.aspx) 指令程式。 根據預設，此命令會將本機檔案上傳至區塊 Blob。 若要指定 Blob 的類型，您可以使用 -BlobType 參數。
 
-下列範例會執行 [Get-childitem](http://technet.microsoft.com/library/hh849800.aspx) cmdlet 來取得指定的資料夾中的所有檔案，然後使用管線運算子將它們傳送到下一個指令程式。  [Set-azurestorageblobcontent](http://msdn.microsoft.com/library/azure/dn806379.aspx) cmdlet 會將本機檔案上傳到您的容器:
+下列範例會執行 [Get-childitem](http://technet.microsoft.com/library/hh849800.aspx) cmdlet 來取得指定的資料夾中的所有檔案，然後使用管線運算子將它們傳送到下一個指令程式。  [Set-azurestorageblobcontent](http://msdn.microsoft.com/library/azure/dn806379.aspx) cmdlet 會將本機檔案上傳到您的容器 ︰
 
     Get-ChildItem –Path C:\Images\* | Set-AzureStorageBlobContent -Container "yourcontainername"
 
@@ -409,10 +409,10 @@ Azure 資料表儲存體服務是 NoSQL 資料存放區，您可以用來儲存�
 目前，Azure PowerShell 不會提供 Cmdlet 來直接管理資料表實體。 若要執行資料表實體上的作業，您可以使用所提供的類別 [Azure Storage Client Library for.NET](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)。
 
 #### 如何新增資料表實體
-若要將實體新增至資料表，請先建立一個可定義實體屬性的物件。 實體可以有最多 255 個屬性，包括 3 個系統屬性: **PartitionKey**, ，**RowKey**, ，和 **時間戳記**。 您必須負責插入及更新的值 **PartitionKey** 和 **RowKey**。 伺服器管理的值 **時間戳記**, ，無法修改。 一起 **PartitionKey** 和 **RowKey** 唯一識別資料表中的每個實體。
+若要將實體新增至資料表，請先建立一個可定義實體屬性的物件。 實體可以有最多 255 個屬性，包括 3 個系統屬性 ︰ **PartitionKey**, ，**RowKey**, ，和 **時間戳記**。 您必須負責插入及更新的值 **PartitionKey** 和 **RowKey**。 伺服器管理的值 **時間戳記**, ，無法修改。 一起 **PartitionKey** 和 **RowKey** 唯一識別資料表中的每個實體。
 
--   **PartitionKey**: 決定儲存實體的資料分割。
--   **RowKey**: 唯一識別資料分割內的實體。
+-   **PartitionKey**︰ 決定儲存實體的資料分割。
+-   **RowKey**︰ 唯一識別資料分割內的實體。
 
 您可以為每個實體最多定義 252 個自訂屬性。 如需詳細資訊，請參閱 [了解表格服務資料模型](http://msdn.microsoft.com/library/azure/dd179338.aspx)。
 
@@ -613,7 +613,7 @@ Azure 檔案儲存體為使用標準 SMB 通訊協定的應用程式提供共用
 
 共用存取簽章可以是下列其中一種格式：
 
-- **臨機操作 SAS**: 當您建立臨機操作 SAS，開始時間、 到期時間，以及 SAS 的權限全都指定於 SAS URI。 您可以在容器、Blob、資料表或佇列上建立此類型的 SAS，而且無法撤銷它。
+- **臨機操作 SAS**︰ 當您建立臨機操作 SAS，開始時間、 到期時間，以及 SAS 的權限全都指定於 SAS URI。 您可以在容器、Blob、資料表或佇列上建立此類型的 SAS，而且無法撤銷它。
 - **具有預存的存取原則的 SAS**: 預存的存取原則定義於資源容器的 blob 容器、 資料表或佇列-佇列，您可以使用它來管理一或多個共用的存取簽章的限制。 當您將 SAS 與預存存取原則建立關聯時，SAS 會繼承為該預存存取原則所定義的限制 (開始時間、過期時間和權限)。 這種類型的 SAS 是可撤銷的。
 
 如需詳細資訊，請參閱 [共用存取簽章教學課程](storage-dotnet-shared-access-signature-part-1.md) 和 [管理 Azure 儲存體資源的存取](storage-manage-access-to-resources.md)。
@@ -628,7 +628,7 @@ Azure 檔案儲存體為使用標準 SMB 通訊協定的應用程式提供共用
     New-AzureStorageTableSASToken -Name $tableName -Policy $policy -Context $Ctx
 
 ### 如何建立臨機操作 (非可撤銷) 的共用存取簽章權杖
-使用 [New-azurestoragetablesastoken](http://msdn.microsoft.com/library/azure/dn806400.aspx) 指令程式來建立新臨機操作 (非可撤銷) 共用存取簽章的權杖為 Azure 儲存體資料表:
+使用 [New-azurestoragetablesastoken](http://msdn.microsoft.com/library/azure/dn806400.aspx) 指令程式來建立新臨機操作 （非可撤銷） 共用存取簽章的權杖為 Azure 儲存體資料表 ︰
 
     New-AzureStorageTableSASToken -Name $tableName -Permission "rqud" -StartTime "2015-01-01" -ExpiryTime "2015-02-01" -Context $Ctx
 
@@ -654,7 +654,7 @@ Azure 環境是 Microsoft Azure 的獨立部署這類 [用於美國政府的 Azu
 
 若要搭配使用 Azure 儲存體與 AzureChinaCloud，您需要建立與 AzureChinaCloud 相關聯的儲存體內容。 遵循下列步驟，以便開始使用產品：
 
-1.  執行 [Get-azureenvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) cmdlet 來查看可用的 Azure 環境:
+1.  執行 [Get-azureenvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) cmdlet 來查看可用的 Azure 環境 ︰
 
     `Get-AzureEnvironment`
 
@@ -732,4 +732,5 @@ Azure 環境是 Microsoft Azure 的獨立部署這類 [用於美國政府的 Azu
 [How to use Azure Storage for U.S. government and Azure China]: #gov
 [Next Steps]: #next
  
+
 

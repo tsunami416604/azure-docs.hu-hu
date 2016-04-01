@@ -38,8 +38,8 @@ BACPAC 會匯出至 Azure 儲存體 Blob 容器，以供您在作業順利完成
 
 若要完成本文，您需要下列項目：
 
-- Azure 訂用帳戶。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
-- Azure SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟: [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
+- Azure 訂閱。 如果您需要 Azure 訂用帳戶，可以按一下 **免費試用版** 頂端的這個頁面上，然後再回來完成這篇文章。
+- Azure SQL Database。 如果您沒有 SQL 資料庫，建立一個遵循本文中的步驟 ︰ [建立您的第一個 Azure SQL Database](sql-database-get-started.md)。
 -  [Azure 儲存體帳戶](storage-create-storage-account.md) 與 blob 容器來儲存 BACPAC。 目前的儲存體帳戶必須使用傳統部署模型選擇這樣做的話 **傳統** 時建立儲存體帳戶。
 - Azure PowerShell。 您可以下載並安裝 Azure PowerShell 模組執行 [Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
 
@@ -102,7 +102,7 @@ BACPAC 會匯出至 Azure 儲存體 Blob 容器，以供您在作業順利完成
 
 ## 監視匯出作業的進度
 
-執行之後 **開始 AzureSqlDatabaseExport** 您可以檢查要求的狀態。 之後立即執行此要求會通常傳回 **狀態: 擱置** 或 **狀態: 執行** 讓您可以執行這個項目多次，直到您看到 **狀態: 完成** 輸出中。 
+執行之後 **開始 AzureSqlDatabaseExport** 您可以檢查要求的狀態。 之後立即執行此要求會通常傳回 **狀態 ︰ 擱置** 或 **狀態 ︰ 執行** 讓您可以執行這個項目多次，直到您看到 **狀態 ︰ 完成** 輸出中。 
 
 執行此命令時，會提示您輸入密碼。 請輸入您的 SQL Server 系統管理員密碼。
 
@@ -147,4 +147,5 @@ BACPAC 會匯出至 Azure 儲存體 Blob 容器，以供您在作業順利完成
 - [業務續航力概觀](sql-database-business-continuity.md)
 - [災害復原詳細資訊](sql-database-disaster-recovery-drills.md)
 - [SQL Database 文件](https://azure.microsoft.com/documentation/services/sql-database/)
+
 

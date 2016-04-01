@@ -29,7 +29,7 @@
         "count": "[parameters('count')]" 
     } 
 
-您可以存取目前的反覆項目值與 **copyindex ()** 函式，例如 concat 函式內，如下所示。
+您可以存取目前的反覆項目值與 **copyindex （)** 函式，例如 concat 函式內，如下所示。
 
     [concat('examplecopy-', copyIndex())]
 
@@ -75,7 +75,7 @@
 
 ## 位移索引值
 
-您會在上述範例中注意到，索引值從零到 2。 若要位移索引值，您可以傳入值 **copyindex ()** 函式，例如 **copyindex (1)**。 要執行的反覆項目數仍然在複製項目中指定，但 copyIndex 的值會由指定的值位移。 因此，與前一個範例中，使用相同的範本，但指定 **copyindex (1)** 會部署下列三個名為的網站:
+您會在上述範例中注意到，索引值從零到 2。 若要位移索引值，您可以傳入值 **copyindex （)** 函式，例如 **copyindex （1)**。 要執行的反覆項目數仍然在複製項目中指定，但 copyIndex 的值會由指定的值位移。 因此，與前一個範例中，使用相同的範本，但指定 **copyindex （1)** 會部署下列三個名為的網站 ︰
 
 - examplecopy-1
 - examplecopy-2
@@ -201,4 +201,5 @@
 - 如果您想要深入了解範本的區段，請參閱 [編寫 Azure 資源管理員範本](./resource-group-authoring-templates.md)。
 - 對於所有您可以在範本中使用的函式，請參閱 [Azure 資源管理員範本函數](./resource-group-template-functions.md)。
 - 若要了解如何部署您的範本，請參閱 [應用程式使用 Azure 資源管理員範本部署](resource-group-template-deploy.md)。
+
 

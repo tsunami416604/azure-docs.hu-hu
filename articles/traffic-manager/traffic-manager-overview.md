@@ -36,12 +36,12 @@ Microsoft Azure 流量管理員可讓您控制使用者流量，將流量分散�
 
 **圖 1**
 
-1. **流向公司網域名稱的使用者流量**: 用戶端要求使用公司網域名稱資訊。 目標是要將 DNS 名稱解析為 IP 位址。 公司網域必須透過標準網際網路網域名稱註冊保留，在流量管理員外部維護。 圖 1] 中的範例公司網域是 *www.contoso.com*。
-2. **公司網域名稱指向流量管理員網域名稱**: 公司網域指向 Azure Traffic Manager 中維護的流量管理員網域名稱的 DNS 資源記錄。 方式是使用 CNAME 資源記錄，將公司網域名稱對應至流量管理員網域名稱。 在此範例中，流量管理員網域名稱是 *contoso.trafficmanager.net*。
-3. **流量管理員網域名稱和設定檔**: 流量管理員網域名稱是流量管理員設定檔的一部分。 使用者的 DNS 伺服器會傳送新的 DNS 查詢流量管理員網域名稱 (在本例中， *contoso.trafficmanager.net*)，這接收的流量管理員 DNS 名稱伺服器。
-4. **流量管理員設定檔的規則處理**: 流量管理員會使用指定的流量路由方法和監視狀態來判斷哪一個 Azure 或其他端點應該回應服務要求。
-5. **端點網域名稱傳送給使用者**: 流量管理員傳回的 CNAME 記錄，對應的流量管理員網域名稱至端點網域名稱。 使用者的 DNS 伺服器將端點網域名稱解析為其 IP 位址，並將它傳送給使用者。
-6. **使用者呼叫端點**: 使用者呼叫傳回直接使用其 IP 位址的端點。
+1. **流向公司網域名稱的使用者流量**︰ 用戶端要求使用公司網域名稱資訊。 目標是要將 DNS 名稱解析為 IP 位址。 公司網域必須透過標準網際網路網域名稱註冊保留，在流量管理員外部維護。 圖 1] 中的範例公司網域是 *www.contoso.com*。
+2. **公司網域名稱指向流量管理員網域名稱**︰ 公司網域指向 Azure Traffic Manager 中維護的流量管理員網域名稱的 DNS 資源記錄。 方式是使用 CNAME 資源記錄，將公司網域名稱對應至流量管理員網域名稱。 在此範例中，流量管理員網域名稱是 *contoso.trafficmanager.net*。
+3. **流量管理員網域名稱和設定檔**︰ 流量管理員網域名稱是流量管理員設定檔的一部分。 使用者的 DNS 伺服器會傳送新的 DNS 查詢流量管理員網域名稱 (在本例中， *contoso.trafficmanager.net*)，這接收的流量管理員 DNS 名稱伺服器。
+4. **流量管理員設定檔的規則處理**︰ 流量管理員會使用指定的流量路由方法和監視狀態來判斷哪一個 Azure 或其他端點應該回應服務要求。
+5. **端點網域名稱傳送給使用者**︰ 流量管理員傳回的 CNAME 記錄，對應的流量管理員網域名稱至端點網域名稱。 使用者的 DNS 伺服器將端點網域名稱解析為其 IP 位址，並將它傳送給使用者。
+6. **使用者呼叫端點**︰ 使用者呼叫傳回直接使用其 IP 位址的端點。
 
 由於用戶端電腦會快取公司網域和解析的 IP 位址，使用者會繼續與所選的端點互動，直到其本機 DNS 快取項目到期為止。 請務必注意，DNS 用戶端會快取 DNS 主機項目，持續時間為其存留時間 (TTL)。 從 DNS 用戶端快取擷取主機項目時會略過流量管理員設定檔，因此如果端點在 TTL 到期前變得無法使用，您可能會遇到連線延遲。 如果快取中 DNS 主機項目的 TTL 到期，且用戶端電腦必須再次解析公司網域名稱，它就會傳送新的 DNS 查詢。 用戶端電腦在要求時根據套用的流量路由方法和端點的健康情況，可能會收到不同端點的 IP 位址。
 
@@ -59,7 +59,7 @@ Microsoft Azure 流量管理員可讓您控制使用者流量，將流量分散�
 4. **決定您想要使用的流量路由方法**。 有三種不同的流量路由方法可以使用。 請花一些時間了解哪一種方法最能符合您的需求。 如果您稍後需要變更方法，可以隨時進行。 此外也請注意，每個方法需要的組態步驟稍有不同。 流量路由方法的相關資訊，請參閱 [關於流量管理員流量路由方法](traffic-manager-load-balancing-methods.md)。
 5. **建立您的設定檔和組態設定**。 您可以使用 REST API、Windows PowerShell 或 Azure 傳統入口網站來建立流量管理員設定檔和進行設定。 如需詳細資訊，請參閱 [如何設定流量管理員設定](#how-to-configure-traffic-manager-settings)。 下列步驟假設您將使用 **快速建立** Azure 傳統入口網站中。 
    - **建立流量管理員設定檔** -若要使用 [快速建立在 Azure 傳統入口網站中建立設定檔，請參閱 [管理流量管理員設定檔](traffic-manager-manage-profiles.md)。
-   - **設定流量路由方法設定** – 在快速建立 」，您必須為您的設定檔選取流量路由方法。 此設定可以在完成「快速建立」步驟之後隨時變更。 如需組態步驟，請參閱主題對應至您的流量路由方法: [設定效能流量路由方法](traffic-manager-configure-performance-load-balancing.md), ，[設定容錯移轉流量路由方法](traffic-manager-configure-failover-load-balancing.md), ，[設定循環配置資源流量路由方法](traffic-manager-configure-round-robin-load-balancing.md)。
+   - **設定流量路由方法設定** – 在快速建立 」，您必須為您的設定檔選取流量路由方法。 此設定可以在完成「快速建立」步驟之後隨時變更。 如需組態步驟，請參閱主題對應至您的流量路由方法 ︰ [設定效能流量路由方法](traffic-manager-configure-performance-load-balancing.md), ，[設定容錯移轉流量路由方法](traffic-manager-configure-failover-load-balancing.md), ，[設定循環配置資源流量路由方法](traffic-manager-configure-round-robin-load-balancing.md)。
    
    >[AZURE.NOTE] 流量路由方法的循環配置資源方法現在支援網路流量的加權的分配。 不過，您目前必須使用 REST API 或 Windows PowerShell 才能設定權數。 如需詳細資訊和範例組態，請參閱 [Azure 流量管理員外部端點和透過 PowerShell 的加權循環](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/) Azure 部落格中。
 
@@ -76,7 +76,7 @@ Microsoft Azure 流量管理員可讓您控制使用者流量，將流量分散�
 
 您可以使用 Azure 傳統入口網站，搭配REST API 和 Windows PowerShell Cmdlet 進行流量管理員設定。
 
-雖然在 Azure 傳統入口網站中並不會顯示各個 REST API 項目，不過使用任一種方法都可以進行許多設定。 如需有關使用 REST api，請參閱 [流量管理員的相關作業 (REST API 參考)](http://go.microsoft.com/fwlink/p/?LinkId=313584)。
+雖然在 Azure 傳統入口網站中並不會顯示各個 REST API 項目，不過使用任一種方法都可以進行許多設定。 如需有關使用 REST api，請參閱 [流量管理員的相關作業 （REST API 參考）](http://go.microsoft.com/fwlink/p/?LinkId=313584)。
 
 如需有關 Windows PowerShell 指令程式的流量管理員，請參閱 [Azure 流量管理員 Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=400769)。
 
@@ -93,11 +93,11 @@ Microsoft Azure 流量管理員可讓您控制使用者流量，將流量分散�
 - **訂閱** – 選取您的設定檔將會對應到的訂閱。 請注意，只有當您有多個訂用帳戶時，才會出現這個選項。
 - **流量路由方法** – 您想要流量管理員處理流量路由方式。
 - **容錯移轉順序** – 當使用容錯移轉流量路由方法中，端點的順序。
-- **監視** – 監視設定包含通訊協定 (HTTP 或 HTTPS)、 連接埠和相對路徑和檔案名稱。
+- **監視** – 監視設定包含通訊協定 （HTTP 或 HTTPS）、 連接埠和相對路徑和檔案名稱。
 
 ### 使用 REST API 進行設定
 
-您可以使用 REST API 來建立和設定您的流量管理員設定檔。 如需詳細資訊，請參閱 [流量管理員的相關作業 (REST API 參考)](http://go.microsoft.com/fwlink/?LinkId=313584)。
+您可以使用 REST API 來建立和設定您的流量管理員設定檔。 如需詳細資訊，請參閱 [流量管理員的相關作業 （REST API 參考）](http://go.microsoft.com/fwlink/?LinkId=313584)。
 
 - **設定檔** – 設定檔包含您所建立的網域名稱前置詞。 每個設定檔都對應至您的訂用帳戶。 每個訂用帳戶可以建立多個設定檔。 設定檔名稱會顯示在 Azure 傳統入口網站中。 您在設定檔中建立的名稱，稱為「流量管理員網域」。
 - **定義** – 定義包含原則設定和監視設定。 定義對應至設定檔。 每個設定檔可以只有一個定義。 雖然定義內的許多設定會顯示在 Azure 傳統入口網站中，而且可加以設定，但是定義本身並不會顯示在 Azure 傳統入口網站中。
@@ -172,3 +172,4 @@ Microsoft Azure 流量管理員可讓您控制使用者流量，將流量分散�
 [建立設定檔](traffic-manager-manage-profiles.md)
 
 [Azure 流量管理員 Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=400769) 
+

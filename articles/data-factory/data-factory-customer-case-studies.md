@@ -30,7 +30,7 @@ Data Factory 是雲端架構資訊管理服務，會自動移動和轉換資料�
 
 ## Ziosk
 
-[您會想什麼遊戲搭配漢堡一起享用? Ziosk 可能已經知道。](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
+[您會想什麼遊戲搭配漢堡一起享用？ Ziosk 可能已經知道。](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
 ## 阿拉斯加航空公司
 
@@ -47,4 +47,5 @@ Data Factory 是雲端架構資訊管理服務，會自動移動和轉換資料�
 ## Pier 1 Imports
 
 [透過雲端機器學習服務尋求更緊密的客戶關係](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
+
 

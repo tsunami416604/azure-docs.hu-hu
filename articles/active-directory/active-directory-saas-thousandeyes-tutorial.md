@@ -100,7 +100,7 @@
 
     ![安全性和驗證](./media/active-directory-saas-thousandeyes-tutorial/IC790068.png "Security & Authentication")
 
-9.  在 **設定單一登入** 區段中，執行下列步驟:
+9.  在 **設定單一登入** 區段中，執行下列步驟 ︰
 
     ![設定單一登入](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "Setup Single Sign-On")
 
@@ -136,7 +136,7 @@ ThousandEyes 需以手動的方式佈建。
 
     ![帳戶和使用者](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "Accounts & Users")
 
-5.  在 **新增使用者及帳戶** 區段中，執行下列步驟:
+5.  在 **新增使用者及帳戶** 區段中，執行下列步驟 ︰
 
     ![新增使用者帳戶](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "Add User Accounts")
 
@@ -164,4 +164,5 @@ ThousandEyes 需以手動的方式佈建。
     ![是](./media/active-directory-saas-thousandeyes-tutorial/IC767830.png "Yes")
   
 如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
 

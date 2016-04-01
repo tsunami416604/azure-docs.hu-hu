@@ -20,7 +20,7 @@
 Azure SQL Database 彈性資料庫查詢 (預覽) 可讓您執行使用單一連接點跨越多個資料庫的 T-SQL 查詢。 如需有關彈性資料庫查詢功能的詳細資訊，請參閱 [功能概觀頁](sql-database-elastic-query-overview.md)。
 
 本主題會延伸此範例中找到 [開始使用彈性資料庫工具](sql-database-elastic-scale-get-started.md)。 完成時，您將：了解如何設定和使用 Azure SQL Database 以執行跨越多個相關資料庫的查詢。
-## 先決條件
+## 必要條件
 
 下載並執行 [開始使用彈性資料庫工具範例](sql-database-elastic-scale-get-started.md)。
 
@@ -30,12 +30,12 @@ Azure SQL Database 彈性資料庫查詢 (預覽) 可讓您執行使用單一連
 
 1. 建置並執行 **開始使用彈性資料庫工具** 範例應用程式。 遵循步驟，直到步驟一節中的 7 [下載及執行範例應用程式](sql-database-elastic-scale-get-started.md#Getting-started-with-elastic-database-tools)。 在步驟 7 結束時，您會看到下列的命令提示字元：
 
-    ![命令提示字元][] 1
+    ![命令提示字元][1]
 
 2.  在命令視窗中，輸入"1"，然後按 **Enter**。 這會建立分區對應管理員，並加入兩個分區到伺服器。 接著，輸入"3"，然後按下 **Enter**; 四次重複的動作。 這會在您的分區中插入範例資料列。
-3.   [Azure 入口網站](https://portal.azure.com) v12 伺服器中應該會顯示三個新的資料庫:
+3.   [Azure 入口網站](https://portal.azure.com) v12 伺服器中應該會顯示三個新的資料庫 ︰
 
-    ![Visual Studio 確認][] 2
+    ![Visual Studio 確認][2]
 
     目前，跨資料庫查詢是透過彈性資料庫用戶端程式庫支援。 例如，在命令視窗中使用第 4 個選項。 多分區查詢的結果永遠是 **UNION ALL** 所有分區的結果。
 
@@ -46,7 +46,7 @@ Azure SQL Database 彈性資料庫查詢 (預覽) 可讓您執行使用單一連
 1. 開啟 [Azure 入口網站](https://portal.azure.com) 並登入。
 2. 在與分區安裝程式相同的伺服器中建立新的 Azure SQL Database。 將資料庫命名為 "ElasticDBQuery"。 針對定價層，您必須選取其中一個 Premium 提供項目。 彈性資料庫查詢目前僅適用於 Premium 層。
 
-    ![Azure 入口網站和定價層][] 3
+    ![Azure 入口網站和定價層][3]
 
     附註：您可以使用現有的 Premium 資料庫。 如果您可以這樣做，它不得是您想要對其執行查詢的其中一個分區。 此資料庫將用於為彈性資料庫查詢建立中繼資料物件。
 
@@ -105,7 +105,7 @@ Azure SQL Database 彈性資料庫查詢 (預覽) 可讓您執行使用單一連
 
 您會注意到查詢會從所有分區彙總結果，並提供下列輸出：
 
-![輸出詳細資料][] 4
+![輸出詳細資料][4]
 
 ## 匯入彈性資料庫查詢結果到 Excel
 
@@ -115,7 +115,7 @@ Azure SQL Database 彈性資料庫查詢 (預覽) 可讓您執行使用單一連
 2.  瀏覽至 **資料** 功能區。
 3.  按一下 [ **從其他來源** 按一下 **從 SQL Server**。
 
-    ![從其他來源的 Excel 匯入][] 5
+    ![從其他來源的 Excel 匯入][5]
 4.  在 **資料連線精靈** 輸入伺服器名稱和登入認證。 然後按一下 [ **下一步**。
 5.  在對話方塊中 **選取包含您想要的資料的資料庫**, ，請選取 **ElasticDBQuery** 資料庫。
 6.  選取 **客戶** 清單檢視中的資料表，然後按一下 **下一步**。 然後按一下 [ **完成**。
@@ -141,4 +141,5 @@ Azure SQL Database 彈性資料庫查詢 (預覽) 可讓您執行使用單一連
 [4]: ./media/sql-database-elastic-query-getting-started/details.png
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
+
 

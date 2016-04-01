@@ -21,7 +21,7 @@
 
 您也可以撰寫程式碼來傳送自訂事件、例外狀況報告和追蹤。 如果您已經使用記錄架構 (例如 log4J、log4net、NLog 或 System.Diagnostics.Trace)，可以擷取這些記錄檔，並將它們包含在搜尋中。 這樣會較容易將使用者動作、例外狀況和其他事件與記錄追蹤相互關聯。
 
-## <a name="send"></a>在您撰寫自訂遙測之前
+## <a name="send"></a>在您撰寫自訂遙測資料之前
 
 如果您尚未 [為您的專案設定 Application Insights][start], ，請立即進行安裝。
 
@@ -37,7 +37,7 @@
 
 ## 取樣 
 
-如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [進一步了解取樣。](app-insights-sampling.md)
+如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](app-insights-sampling.md)
 
 
 ##<a name="events"></a>自訂事件
@@ -100,7 +100,7 @@
 
 ##<a name="pages"></a> 頁面檢視
 
-Trackpageview () 呼叫所傳送頁面檢視遙測 [JavaScript 程式碼片段插入 web 網頁中][usage]。 此資料主要用途是提供您在概觀頁面看到的頁面檢視計數。
+Trackpageview （） 呼叫所傳送頁面檢視遙測 [JavaScript 程式碼片段插入 web 網頁中][usage]。 此資料主要用途是提供您在概觀頁面看到的頁面檢視計數。
 
 通常它在每個 HTML 頁面中只會被呼叫一次，但是您可以插入多個呼叫 (例如，您有單頁應用程式，且想在使用者取得更多資料時記錄新頁面)。
 
@@ -264,9 +264,9 @@ Application Insights 報告未處理例外狀況，它可以從裝置， [網頁
 
 如果您想要傳送其他事件，可以使用 TrackRequest() API。
 
-## <a name="questions"></a>問答集
+## <a name="questions"></a>問與答
 
-### <a name="emptykey"></a>我收到「檢測機碼不能是空白」的錯誤
+### <a name="emptykey"></a>我收到「檢測金鑰不能是空白」的錯誤
 
 您可能只安裝記錄配接器 Nuget 封裝，但未安裝 Application Insights。
 
@@ -278,10 +278,10 @@ Application Insights 報告未處理例外狀況，它可以從裝置， [網頁
 
 ### 有些事件或追蹤沒有顯示出來
 
-如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [進一步了解取樣。](app-insights-sampling.md)
+如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](app-insights-sampling.md)
 
 
-## <a name="add"></a>後續步驟
+## <a name="add"></a>接續步驟
 
 * [設定可用性和回應性測試][availability]
 * [疑難排解][qna]
@@ -304,3 +304,4 @@ Application Insights 報告未處理例外狀況，它可以從裝置， [網頁
 [usage]: app-insights-web-track-usage.md
 
  
+

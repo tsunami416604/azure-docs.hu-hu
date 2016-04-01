@@ -43,9 +43,10 @@
 - [Azure AD 密碼管理的常見問題集](active-directory-passwords-faq.md)
 
 
-## 接下來
+## 後續步驟
 
 - [管理 Azure AD](active-directory-administer.md)
 - [在 Azure AD 中建立或編輯使用者](active-directory-create-users.md)
 - [在 Azure AD 中管理群組](active-directory-manage-groups.md)
+
 

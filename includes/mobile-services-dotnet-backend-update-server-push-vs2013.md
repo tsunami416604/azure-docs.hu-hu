@@ -10,7 +10,7 @@
 
     這會建立名為的新空白控制器類別 **NotifyAllUsersController**。 
 
-3. 在新的 NotifyAllUsersController.cs 專案檔案，新增下列 **使用** 陳述式:
+3. 在新的 NotifyAllUsersController.cs 專案檔案，新增下列 **使用** 陳述式 ︰
 
         using Newtonsoft.Json.Linq;
         using System.Threading.Tasks;
@@ -45,4 +45,5 @@
         }
 
     >[AZURE.NOTE]這個 POST 方法可以呼叫任何具有應用程式索引鍵，這並不安全的用戶端。 為了保護端點，請將 `[AuthorizeLevel(AuthorizationLevel.User)]` 屬性套用至方法或類別，以要求驗證。 
+
 

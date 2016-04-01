@@ -18,7 +18,7 @@
 
 # 如何建立 App Service 環境 #
 
-App Service 環境 (ASE) 是 Azure App Service 的進階服務選項，可提供多租用戶戳記中不提供的增強式設定功能。  ASE 功能基本上會將 Azure App Service 部署到客戶的虛擬網路中。  若要取得讀取 App Service 環境所提供的功能，更深入瞭解 [什麼是 App Service 環境] [WhatisASE] 文件。
+App Service 環境 (ASE) 是 Azure App Service 的進階服務選項，可提供多租用戶戳記中不提供的增強式設定功能。  ASE 功能基本上會將 Azure App Service 部署到客戶的虛擬網路中。  若要取得讀取 App Service 環境所提供的功能，更深入瞭解 [什麼是 App Service 環境][WhatisASE] 文件。
 
 ### 概觀 ###
 
@@ -30,13 +30,13 @@ App Service 環境 (ASE) 是 Azure App Service 的進階服務選項，可提供
 - Azure 虛擬網路 (VNET) 選取項目和子網路
 - ASE 資源集區定義
 
-有一些重要的詳細資料，以每個這些項目。
-- 將子網域中使用 ASE 的名稱，該 ASE 中所做的任何應用程式
-- 在 ASE 中所做的所有應用程式都在 ASE 本身相同的訂閱
-- 如果您沒有存取用來建立 ASE 的訂閱您無法使用 ASE 來建立應用程式
-- 用來裝載 ASE 的 Vnet 必須是區域的傳統"v1"Vnet 
-- 用來裝載 ASE 的子網路不能包含任何其他計算資源
-- 只有一個 ASE 可以存在的子網路
+其中每個項目都有一些重要的詳細資料。
+- ASE 的名稱將用於該 ASE 中建立的任何應用程式的子網域。
+- ASE 中建立的所有應用程式將位於 ASE 本身的相同訂用帳戶中
+- 如果您無法存取用來建立 ASE 的訂用帳戶，則無法使用 ASE 來建立應用程式
+- 用來裝載 ASE 的 VNET 必須是區域傳統 "v1" VNET 
+- 用來裝載 ASE 的子網路不得包含任何其他計算資源
+- 子網路中只能存在一個 ASE
 
 每個 ASE 部署都是 Azure 管理和維護的託管服務。  雖然客戶會管理執行個體的數量和其大小，但不能存取裝載 ASE 系統角色的計算資源。  
 
@@ -75,7 +75,7 @@ App Service 環境 (ASE) 是 Azure App Service 的進階服務選項，可提供
 
 VNET 的位置就是 ASE 的位置，因為 ASE 部署至該 VNET 中。
 
-在您指定或選取 VNET 後，您必須建立或選取適當的子網路。  您必須提供以下是詳細資料:
+在您指定或選取 VNET 後，您必須建立或選取適當的子網路。  您必須在此處提供的詳細資料包括：
 - 子網路名稱
 - CIDR 表示法中的子網路範圍
 
@@ -111,7 +111,7 @@ VNET 的位置就是 ASE 的位置，因為 ASE 部署至該 VNET 中。
 - 如果 X 介於 21 到 40，您可用於工作負載的可用計算資源數量為 X-2
 - 如果 X 介於 41 到 53，您可用於工作負載的可用計算資源數量為 X-3
 
-除了能夠管理您可指派給指定集區的計算資源數量以外，您也可以控制大小。  在 App Service 環境中，您可以選擇 4 個標示為 P1 至 P4 的不同大小。  如需這些大小及其定價請請參閱以下 [應用程式服務定價] [AppServicePricing]。  P1 至 P3 計算資源大小與多租用戶環境中可用的大小相同。  P4 計算資源提供 14 GB RAM 的八核心， 而且只適用於 App Service 環境。  
+除了能夠管理您可指派給指定集區的計算資源數量以外，您也可以控制大小。  在 App Service 環境中，您可以選擇 4 個標示為 P1 至 P4 的不同大小。  如需這些大小和及其定價的詳細資訊，請參閱 [App Service 定價][AppServicePricing]。  P1 至 P3 計算資源大小與多租用戶環境中可用的大小相同。  P4 計算資源提供 14 GB RAM 的八核心， 而且只適用於 App Service 環境。  
 
 App Service 環境的定價是根據指派的計算資源。  無論是否裝載工作負載，您都需支付配置給您的 App Service 環境的計算資源。 
 
@@ -122,7 +122,7 @@ App Service 環境的定價是根據指派的計算資源。  無論是否裝載
 建立 ASE 之後，您可以調整：
 
 - 前端的數量 (最小值：2)
-- 背景工作的數量 (最小值: 2)
+- 背景工作的數量 (最小值 ︰ 2)
 - IP SSL 可用的 IP 位址數目
 - 前端或背景工作所使用的計算資源大小 (前端大小下限為 P2)
 
@@ -134,19 +134,19 @@ App Service 環境的定價是根據指派的計算資源。  無論是否裝載
 - 使用的 VNET
 - 使用的子網路
 
-有關於手動縮放比例、 管理和監視 App Service 環境這裡的更多詳細資料: [如何設定 App Service 環境] [ASEConfig] 
+有關於手動縮放比例、 管理和監視 App Service 環境這裡的更多詳細資料 ︰ [如何設定 App Service 環境][ASEConfig] 
 
-如需自動調整是以下指南:
-[如何設定自動調整 App Service 環境][] ASEAutoscale
+如需自動調整是以下指南 ︰
+[如何設定自動調整 App Service 環境][ASEAutoscale]
 
 有其他無法自訂的相依性，例如資料庫和儲存體。  這些都是由 Azure 處理並由系統隨附。  系統儲存體對於整個 App Service 環境最多可支援 500 GB，且 Azure 會根據系統規模的需要來調整資料庫。
 
 
 ## 開始使用
 
-若要開始使用 App Service 環境，請參閱 [App Service 環境簡介] [WhatisASE]
+若要開始使用 App Service 環境，請參閱 [App Service 環境簡介][WhatisASE]
 
-如需有關 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service] [AzureAppService]。
+如需 Azure App Service 平台的詳細資訊，請參閱 [Azure App Service][AzureAppService]。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -164,3 +164,4 @@ App Service 環境的定價是根據指派的計算資源。  無論是否裝載
 [AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/ 
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/ 
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
+
