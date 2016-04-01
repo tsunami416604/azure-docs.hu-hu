@@ -1,45 +1,36 @@
 <properties writer="kathydav" editor="tysonn" manager="timlt" />
 
-# How to Detach a Data Disk from a Virtual Machine
+當不再需要某個連接至虛擬機器的資料磁碟時，卸離此資料磁碟很簡單。 這會將磁碟從虛擬機器中卸離，但這不會將它從儲存體中移除。 
 
--   [Step 1: Find the disk][Step 1: Find the disk]
--   [Step 2: Detach a data disk][Step 2: Detach a data disk]
+如果您想要再次使用磁碟上現有的資料，您可以將磁碟重新連接至相同或其他虛擬機器。  
 
-When you no longer need a data disk that is attached to a virtual machine, you can easily detach it. This removes the disk from the virtual machine, but doesn't remove it from storage. If you want to use the existing data on the disk again, you can reattach it to the same virtual machine, or another one.
+> [AZURE.NOTE] 您不卸離作業系統磁碟，除非您同時刪除虛擬機器。
 
-> [WACOM.NOTE] A virtual machine in Azure uses different types of disks -- an operating system disk, a local temporary disk, and optional data disks. Data disks are the recommended way to store data for a virtual machine. For details about disks, see [About disks and images][About disks and images]. For instructions, see [How to Attach a Data Disk to a Virtual Machine][How to Attach a Data Disk to a Virtual Machine].
 
-## <span id="finddisks"></span> </a>Step 1: Find the disk
+## 尋找磁碟
 
-If you don't know or want to verify the name of the disk before you detach it, follow these steps.
+如果您不知道磁碟的名稱，或想要先驗證它再卸離，請遵循下列步驟。
 
-> [WACOM.NOTE] Azure automatically assigns a name to the disk when you attach it. The name consists of the cloud service name, the virtual machine name, and a number.
 
-1.  If you haven't already done so, sign in to the Azure [Management Portal][Management Portal].
+1. 如果您尚未這樣做，請登入 [Azure 入口網站](http://manage.windowsazure.com)。
 
-2.  Click **Virtual Machines**, and then select the appropriate virtual machine. The VM's dashboard opens.
+2. 按一下 [ **虛擬機器**, ，按一下 [虛擬機器的名稱，然後按一下 **儀表板**。
 
-3.  Under **Disks**, the table lists the name and type of all attached disks. For example, this screen shows a virtual machine with one operating system (OS) disk and one data disk:
+3. 在 **磁碟**, ，資料表會列出名稱和類型的所有連接的磁碟。 例如，此畫面會顯示虛擬機器及一個作業系統 (OS) 磁碟和一個資料磁碟：
 
-    ![Find data disk][Find data disk]
+    ![尋找資料磁碟](./media/howto-detach-disk-windows-linux/FindDataDisks.png)
 
-## <span id="detachdisk"></span> </a>Step 2: Detach the disk
 
-After you find the name of the disk, you're ready to detach the disk:
+## 卸離磁碟
 
-1.  Click **Virtual Machines**, select the virtual machine that has the data disk you want to detach.
-2.  From the command bar, click **Detach the Disk**.
+1. 按一下 [ **虛擬機器**, ，按一下您想要卸離，然後按一下的資料磁碟的虛擬機器名稱 **儀表板**。
 
-3.  Select the data disk, and then click the check mark to detach it.
+2. 從命令列按一下 **卸離磁碟**。
 
-    ![Detach disk details][Detach disk details]
+3. 選取資料磁碟，然後按一下核取記號即可卸離。
 
-The disk remains in storage but is no longer attached to a virtual machine.
+    ![卸離磁碟詳細資料](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
 
-  [Step 1: Find the disk]: #finddisks
-  [Step 2: Detach a data disk]: #detachdisk
-  [About disks and images]: http://go.microsoft.com/fwlink/p/?LinkId=263439
-  [How to Attach a Data Disk to a Virtual Machine]: /en-us/manage/windows/how-to-guides/attach-a-disk/
-  [Management Portal]: http://manage.windowsazure.com
-  [Find data disk]: ./media/howto-detach-disk-windows-linux/FindDataDisks.png
-  [Detach disk details]: ./media/howto-detach-disk-windows-linux/DetachDiskDetails.png
+磁碟仍留在儲存中，但不再連接至虛擬機器。
+
+

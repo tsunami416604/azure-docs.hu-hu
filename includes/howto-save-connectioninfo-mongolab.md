@@ -1,26 +1,28 @@
-While it's possible to paste a MongoLab URI into your code, we recommend configuring it in the environment for ease of management. This way, if the URI changes, you can update it through the Azure Portal without going to the code.
+雖然可以將 MongoLab URI 貼在程式碼中，但建議在環境中設定，以方便管理。 如此一來，當 URI 變更時，只要透過 Azure 入口網站來更新即可，不必處理程式碼。
 
 
-1. In the Azure Portal, select **Websites**.
-1. Click the name of the website in the website list.  
-![WebSiteEntry][entry-website]  
-The Website Dashboard displays.
+1. 在 Azure 入口網站中，選取 **Web 應用程式**。
+1. 在 Web 應用程式清單中，按一下 Web 應用程式的名稱。  
+![WebAppEntry][entry-website]  
+Web 應用程式儀表板隨即顯示。
 
-1. Click **Configure** in the menu bar.  
-![WebSiteDashboardConfig][focus-mongolab-websitedashboard-config]
+1. 按一下 [ **設定** 功能表列中。  
+![WebAppDashboardConfig][focus-mongolab-websitedashboard-config]
 
-1. Scroll down to the Connection Strings section.  
-![WebSiteConnectionStrings][focus-mongolab-websiteconnectionstring]
+1. 向下捲動到 [連接字串] 區段。  
+![WebAppConnectionStrings][focus-mongolab-websiteconnectionstring]
 
-1. For **Name**, enter MONGOLAB_URI.
-1. For **Value**, paste the connection string we obtained in the previous section.
-1. Select **Custom** in the **Type** drop-down list (instead of the default **SQLAzure**).
-1. Click **Save** on the toolbar.  
-![SaveWebSite][button-website-save]
+1. 如 **名稱**, ，輸入 MONGOLAB_URI。
+1. 如 **值**, ，貼上我們在上一節中取得的連接字串。
+1. 選取 **自訂** 中 **類型** 下拉式清單 (而非預設的 **SQLAzure**)。
+1. 按一下 [ **儲存** 工具列上。  
+![SaveWebApp][button-website-save]
 
-**Note:** Azure adds the **CUSTOMCONNSTR\_** prefix to this variable, which is why the code above references **CUSTOMCONNSTR\_MONGOLAB_URI.**
+**注意 ︰** Azure 會將 **CUSTOMCONNSTR\_** 前置詞加入至此變數，這就是為什麼參考上述程式碼 **customconnstr\_mongolab_uri 的原因。**
 
 [entry-website]: ./media/howto-save-connectioninfo-mongolab/entry-website.png
 [focus-mongolab-websitedashboard-config]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websitedashboard-config.png
 [focus-mongolab-websiteconnectionstring]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websiteconnectionstring.png
 [button-website-save]: ./media/howto-save-connectioninfo-mongolab/button-website-save.png
+
+

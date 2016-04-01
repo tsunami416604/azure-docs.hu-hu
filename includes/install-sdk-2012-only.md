@@ -1,20 +1,22 @@
-<h2><a name="setupdevenv"></a><span class="short-header">Set up environment</span>Set up the development environment</h2>
+<h2><a name="setupdevenv"></a>設定開發環境</h2>
 
-To start, set up your development environment by installing the Azure SDK for .NET.
+首先，安裝 Azure SDK for .NET，以設定您的開發環境。
 
-1. To install the SDK, click the link below. This tutorial requires Visual Studio 2012. If you don't have Visual Studio installed, Visual Studio Express for Web will be installed along with the SDK.
+1. 若要安裝 SDK，請按下面的連結。 本教學課程需要 Visual Studio 2012。 如果您尚未安裝 Visual Studio，則 Visual Studio Express for Web 將隨著 SDK 一起安裝。
 
-	- [Azure SDK for Visual Studio 2012][]
+    - [Azure SDK for Visual Studio 2012][]
 
-	**Note:** Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
+    **注意 ︰** 根據其中有多少 SDK 相依性，您已經在您的電腦，安裝 SDK 可能需要較長的時間，從數分鐘到半小時以上。
 
-2. When you are prompted to run or save the installation executable, click **Run**.
+2. 當系統會提示您執行或儲存安裝可執行檔，按一下 [ **執行**。
 
-3. In the Web Platform Installer window, click **Install** and proceed with the installation.
+3. 在 Web Platform Installer] 視窗中，按一下 [ **安裝** 並繼續進行安裝。
 
-	![Web Platform Installer - Azure SDK for .NET][WebPIAzureSdk]
+    ![Web Platform Installer - Azure SDK for .NET][WebPIAzureSdk]
 
-When the installation is complete, you have everything necessary to start developing.
+安裝完成時，您即可開始進行開發。
 
 [Azure SDK for Visual Studio 2012]: http://go.microsoft.com/fwlink/?LinkID=324323
 [WebPIAzureSdk]: ./media/install-sdk-2012-only/WebPI46-2012.png
+
+

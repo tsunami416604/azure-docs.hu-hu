@@ -1,10 +1,10 @@
-In this section we will modify the model of our database by adding a new timestamp field named **CompleteDate**. This field will record the last time the todo item was completed. Entity Framework will update the database based on our model change using a default database initializer class derived from [DropCreateDatabaseIfModelChanges](http://go.microsoft.com/fwlink/?LinkId=394621). 
+本節中，我們將修改資料庫的模型加入名為的新時間戳記欄位 **CompleteDate**。 此欄位將記錄前次完成的 Todo 項目時間。 Entity Framework 將會更新資料庫，根據我們模型變更，使用預設資料庫初始設定式類別衍生自 [DropCreateDatabaseIfModelChanges](http://go.microsoft.com/fwlink/?LinkId=394621)。 
 
-1. In Solution Explorer for Visual Studio, expand the **App_Start** folder in the todolist service project. Open the WebApiConfig.cs file.
+1. 在 Visual studio 方案總管] 中展開 **App_Start** todolist 服務專案資料夾中的。 開啟 WebApiConfig.cs 檔案。
 
-2. In the WebApiConfig.cs file, notice that your default database initializer class is derived from the `DropCreateDatabaseIfModelChanges` class. This means any change to the model will result in the table being dropped and recreated to accommodate the new model. So the data in the table will be lost and the table will be re-seeded. Modify the Seed method of the database initializer so that the seed data is as follows as save the WebApiConfig.cs file.
+2. 在 WebApiConfig.cs 檔案中，注意您的預設資料庫初始設定式類別是衍生自 `DropCreateDatabaseIfModelChanges` 類別。 這意味對模型的任何變更都會導致資料表捨棄，並重新建立以容納新模型。 因此資料表的資料將流失，並且將重新植入資料表。 修改資料庫初始設定式的 Seed 方法，以便如下所示將種子資料儲存至 WebApiConfig.cs 檔案。
 
-    >[WACOM.NOTE] When using the default database initializer, Entity Framework will drop and recreate the database whenever it detects a data model change in the Code First model definition. To make this data model change and maintain existing data in the database, you must use Code First Migrations. For more information, see [How to Use Code First Migrations to Update the Data Model](/en-us/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations).
+    >[AZURE.NOTE] 當使用預設資料庫初始設定式時，Entity Framework 會卸除並 Code First 模型定義中偵測到資料模型變更時重新建立資料庫。 若要進行此資料模型變更，並保有資料庫的現有資料，必須使用 Code First Migrations。 如需詳細資訊，請參閱 [如何使用 Code First Migrations 更新資料模型](../articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)。
 
         List<TodoItem> todoItems = new List<TodoItem>
         {
@@ -13,7 +13,7 @@ In this section we will modify the model of our database by adding a new timesta
         };
      
 
-3. In Solution Explorer for Visual Studio, expand the **DataObjects** folder in the todolist service project. Open the TodoItem.cs file and update the TodoItem class to include the CompleteDate field as follows. Then save the TodoItem.cs file.
+3. 在 Visual studio 方案總管] 中展開 **DataObjects** todolist 服務專案資料夾中的。 開啟 TodoItem.cs 檔案，並更新 TodoItem 類別以加入 CompleteDate 欄位，如下所示。 接著儲存 TodoItem.cs 檔案。
 
         public class TodoItem : EntityData
         {
@@ -22,7 +22,7 @@ In this section we will modify the model of our database by adding a new timesta
           public System.DateTime? CompleteDate { get; set; }
         }
 
-4. In Solution Explorer for Visual Studio, expand the **Controllers** folder in the todolist service project. Open the TodoItemController.cs file and update the `PatchTodoItem` method so that it will set the **CompleteDate** when the **Complete** property is changing from false to true. Then save the TodoItemController.cs file.
+4. 在 Visual studio 方案總管] 中展開 **控制器** todolist 服務專案資料夾中的。 開啟 TodoItemController.cs 檔案並更新 `PatchTodoItem` 方法，使它將設定 **CompleteDate** 時 **完成** 屬性從 false 變更為 true。 接著儲存 TodoItemController.cs 檔案。
 
         public Task<TodoItem> PatchTodoItem(string id, Delta<TodoItem> patch)
         {
@@ -36,6 +36,7 @@ In this section we will modify the model of our database by adding a new timesta
         }
 
 
-5. Rebuild the todolist .NET backend service project and verify that you have no build errors. 
+5. 重新建置 todolist .NET 後端服務專案並確認未發生建置錯誤。 
 
-Next, you will update the client app to display the new **CompleteDate** data.
+接下來，您將會更新用戶端應用程式，以顯示新 **CompleteDate** 資料。
+

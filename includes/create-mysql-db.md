@@ -1,83 +1,76 @@
-#How to Create a MySQL Database in Azure
+本指南將示範如何使用 [ClearDB] 建立 MySQL 資料庫從 [Azure Store] ，以及如何建立 MySQL 資料庫作為連結的資源，當您建立 [Azure 網站][waws] 。 [ClearDB] 是可讓您執行和管理 MySQL 資料庫，在 Azure 資料中心，以及從任何應用程式連線至這些容錯的資料庫做為服務提供者。  
 
-This guide will show you how to use [ClearDB] to create a MySQL database from the [Azure Store] and  how to create a MySQL database as a linked resource when you create a [Azure Web Site][waws] . [ClearDB] is a fault-tolerant database-as-a-service provider that allows you to run and manage MySQL databases in Azure datacenters and connect to them from any application.  
+> [AZURE.NOTE] 當您建立 MySQL 資料庫做為網站建立程序的一部分時，您只能建立免費資料庫。 從 Azure 市集建立 MySQL 資料庫時，則可以建立免費資料庫或選擇付費選項。
 
-##Table of Contents
-* [How to: Create a MySQL database from the Azure Store](#CreateFromStore)
-* [How to: Create a MySQL database as a linked resource for Azure Web Site](#CreateForWebSite)
+## 做法：從 Azure 市集建立 MySQL 資料庫
 
-<div class="dev-callout"> 
-<b>Note</b> 
-<p>When you create a MySQL database as part of the Website creation process, you can only create a free database. Creating a MySQL database from the Azure Store allows you to create a free database or choose from paid options.</p> 
-</div>
+若要建立 MySQL 資料庫從 [Azure Store], ，執行下列動作 ︰
 
-<h2><a id="CreateFromStore"></a>How to: Create a MySQL database from the Azure Store</h2>
+1. 登入 [Azure 管理入口網站][portal]。
+2. 按一下 [ **+ 新增** 在頁面底部，然後選取 **MARKETPLACE**。
 
-To create a MySQL database from the [Azure Store], do the following:
+    ![從市集中選取附加元件](./media/create-mysql-db/select-store.png)
 
-1. Log in to the [Azure Management Portal][portal].
-2. Click **+NEW** at the bottom of the page, then select **STORE**.
+3. 選取 **ClearDB MySQL 資料庫**, ，然後按一下框架底部的箭頭。
 
-	![Select add-on from store](./media/create-mysql-db/select-store.png)
+    ![選取 ClearDB MySQL 資料庫](./media/create-mysql-db/select-cleardb-mysql.png)
 
-3. Select **ClearDB MySQL Database**, then click the arrow at the bottom of the frame.
+4. 選取方案、輸入資料庫名稱、選取區域，然後按一下框架底部的箭頭。
 
-	![Select ClearDB MySQL Database](./media/create-mysql-db/select-cleardb-mysql.png)
+    ![從市集購買 MySQL 資料庫](./media/create-mysql-db/purchase-mysql.png)
 
-4. Select a plan, enter a database name, and select a region, then click the arrow at the bottom of the frame.
+5. 按一下打勾記號完成選購。
 
-	![Purchase MySQL database from store](./media/create-mysql-db/purchase-mysql.png)
+    ![檢查並完成選購](./media/create-mysql-db/complete-mysql-purchase.png)
 
-5. Click the checkmark to complete your purchase.
+6. 建立資料庫之後，您可以管理從 **附加元件** 在管理入口網站] 索引標籤。
 
-	![Review and complete your purchase](./media/create-mysql-db/complete-mysql-purchase.png)
+    ![在 Azure 入口網站中管理 MySQL 資料庫](./media/create-mysql-db/manage-mysql-add-on.png)
 
-6. After your database has been created, you can manage it from the **ADD-ONS** tab in the management portal.
+7. 您可以取得資料庫連接資訊即可 **連線資訊** 底部的頁面 （如上所示）。
 
-	![Manage MySQL database in Azure portal](./media/create-mysql-db/manage-mysql-add-on.png)
-
-7. You can get the database connection information by clicking on **CONNECTION INFO** at the bottom of the page (shown above).
-
-	![MySql connection information](./media/create-mysql-db/mysql-conn-info.png) 
+    ![MySql 連接資訊](./media/create-mysql-db/mysql-conn-info.png) 
 
 
-<h2><a id="CreateForWebSite"></a>How to: Create a MySQL database as a linked resource for Azure Website</h2>
+## 如何：為 Azure 網站建立 MySQL 資料庫作為連結的資源
 
-To create a MySQL database as a linked resource when you create a [Azure Web Site][waws], do the following:
+若要建立 MySQL 資料庫作為連結的資源，當您建立 [Azure 網站][waws], ，執行下列動作 ︰
 
-1. Log in to the [Azure Management Portal][portal].
-2. Click **+NEW** at the bottom of the page, then select **COMPUTE**, **WEBSITE**, and **CREATE WITH DATABASE**.
+1. 登入 [Azure 管理入口網站][portal]。
+2. 按一下 [ **+ 新增** 在頁面底部，然後選取 **計算**, ，**網站**, ，和 **和資料庫一起建立**。
 
-	![Create website with database](./media/create-mysql-db/custom_create.png)
+    ![和資料庫一起建立網站](./media/create-mysql-db/custom_create.png)
 
-3. Provide a **URL** for your website, select the **REGION** for your site, and choose **Create a new MySQL database** from the **DATABASE** dropdown. Optionally, you can replace the default name for the connection string. Click the arrow at the bottom of the page.
+3. 提供 **URL** 您的網站，請選取 **區域** 網站，然後選擇 [ **建立新的 MySQL 資料庫** 從 **資料庫** 下拉式清單。 (選用) 您可以取代連接字串的預設名稱。 按一下頁面底部的箭頭。
 
-	![Provide website details](./media/create-mysql-db/provide-website-details.png) 
+    ![提供網站詳細資料](./media/create-mysql-db/provide-website-details.png) 
 
-4. Provide a database **NAME**, select the **REGION** for your database (this should be same as the region for your website), agree to ClearDB's legal terms, and click the checkmark at the bottom of the frame.
+4. 提供資料庫 **名稱**, ，請選取 **區域** 資料庫 （這應該是您網站的區域相同），同意 ClearDB 的法律條款，然後按一下框架底部的核取記號。
 
-	![Provide MySQL details](./media/create-mysql-db/provide-mysql-details.png)
+    ![提供 MySQL 詳細資料](./media/create-mysql-db/provide-mysql-details.png)
 
-5. After your website has been created, click on the name of your site to go to your site's dashboard.
+5. 建立網站之後，按一下網站的名稱，以移至網站的儀表板。
 
-	![Go to web site dashboard](./media/create-mysql-db/go-to-website-dashboard.png)
+    ![移至網站儀表板](./media/create-mysql-db/go-to-website-dashboard.png)
 
-6. Click on **CONFIGURE**.
+6. 按一下 [ **設定**。
 
-	![Go to configure tab](./media/create-mysql-db/go-to-configure-tab.png)
+    ![移至設定索引標籤](./media/create-mysql-db/go-to-configure-tab.png)
 
-7. Scroll down to the **connection strings** section and click **Show Connection Strings**. 
+7. 向下捲動至 **連接字串** 區段，然後按一下 **顯示連接字串**。 
 
-	![Show connection string](./media/create-mysql-db/show-conn-string.png)
+    ![顯示連接字串](./media/create-mysql-db/show-conn-string.png)
 
-8. Copy the connection string for use in your application.
+8. 複製連接字串以用於應用程式中。
 
-	![Shown connection string](./media/create-mysql-db/shown-conn-string.png)
+    ![顯示的連接字串](./media/create-mysql-db/shown-conn-string.png)
 
-> [WACOM.NOTE] Connection strings are accessible to your website application by connection string name. In .NET applications, connection strings are availble in the **connectionStrings** object. In other programming languages, connection strings are accessible as environment variables. For more information, see [How to Configure Web Sites][configure].
+> [AZURE.NOTE] 連接字串是可存取您網站應用程式可以根據連接字串名稱。 在.NET 應用程式，連接字串位於 **connectionStrings** 物件。 在其他程式設計語言中，連接字串則可以環境變數的形式受到存取。 如需詳細資訊，請參閱 [如何設定網站][configure]。
 
 [ClearDB]: http://www.cleardb.com/
-[waws]: /en-us/documentation/services/web-sites/
-[Azure Store]: /en-us/gallery/store/
+[waws]: /documentation/services/web-sites/
+[Azure Store]: ../articles/store.md
 [portal]: http://manage.windowsazure.com
-[configure]: ../web-sites-configure/
+[configure]: ../article/app-service-web/web-sites-configure.md
+
+

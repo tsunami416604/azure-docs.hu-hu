@@ -1,31 +1,30 @@
+1. 按一下 Android Studio 工具列上的圖示，或按一下 [開啟 Android SDK Manager **工具** ]-> [ **Android** ]-> [ **SDK Manager** ] 功能表上。 尋找專案中使用之 Android SDK 的目標版本，開啟它，然後選擇 **Google APIs**, ，如果尚未安裝。
+
+2. 向下捲動至 **Extras**, ，加以展開，然後選擇 [ **Google Play 服務**, ，如下所示。 按一下 [ **安裝封裝**。 記錄以下步驟使用的 SDK 路徑。 
+
+    ![](./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png)
 
 
-1. Open the Android SDK Manager by clicking **Window** from the top toolbar of Eclipse. Locate the target version of the Android SDK that is specified in your project properties, open it, and choose **Google APIs**.
+3. 開啟 **build.gradle** 應用程式目錄中的檔案。
 
-2. Scroll down to **Extras**, expand it, and choose **Google Play Services**, as shown below. Click **Install Packages**. Note the SDK path, for use in the following step. Restart Eclipse.
+    ![](./media/mobile-services-android-get-started-push/android-studio-push-build-gradle.png)
 
-   	![](./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png)
+4. 加入這一行底下 *相依性*: 
 
+        compile 'com.google.android.gms:play-services-base:6.5.87'
 
-3. Install the Google Play Services SDK in your project. In Eclipse, click **File**, then **Import**. Select **Android**, then **Existing Android Code into Workspace**, and click **Next**. Click **Browse**, navigate to the Android SDK path (usually in a folder named `adt-bundle-windows-x86_64` inside the folder that contains Eclipse), then go to the `\extras\google\google_play_services\libproject` subfolder, and there select the google-play-services-lib folder, and click **OK**. Check the **Copy projects into workspace** checkbox, and then click **Finish**.
-
-	![](./media/mobile-services-android-get-started-push/mobile-eclipse-import-Play-library.png)
-
-4. Next you must reference the Google Play Services SDK library that you just imported, from your project. 
-
-5. In **Package Explorer**, right-click your project and choose *Properties*.
+5. 在 *defaultConfig*, ，變更 *minSdkVersion* 到 9。
  
-6. In the Properties window, choose Android on the left.
+6. 按一下 [ **同步處理專案與 Gradle 檔案** 工具列圖示。
 
-	![](./media/mobile-services-android-get-started-push/mobile-google-set-project-properties.png)
+7. 開啟 **AndroidManifest.xml** ，並新增到此標記 *應用程式* 標記。
 
-
-7. Under **Project Build Target**, ensure that `Google APIs x86` (or `Google APIs`, depending on your development platform) is selected for the appropriate SDK level.
-
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
  
-8. In the **Library** section, choose **Add** , and select the Google Play Services project (*google-play-services-lib*) and click **OK**.
 
-9. Click **Apply** and then **OK**.
+
+
 
 
 

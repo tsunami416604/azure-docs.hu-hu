@@ -1,26 +1,24 @@
-# Create an Azure account and enable preview features
+若要將應用程式部署至 Azure，您需要有帳戶。 本文說明如何建立免費試用帳戶，以及如何對帳戶啟用 Azure 預覽功能 (包括 BizTalk 服務、HDInsight 和 Azure Back)。
 
-In order to deploy applications to Azure, you need an account. This article describes how to create a free trial account and how to enable Azure preview features, including BizTalk Services, HDInsight, and Azure Back, for the account.
+## 建立 Azure 帳戶
 
-## Create an Azure account
+1.  開啟網頁瀏覽器並瀏覽至 <http://azure.microsoft.com>
+2.  如果您有 MSDN 訂用帳戶，請瀏覽到 [[MSDN 訂戶的 Azure 權益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)] 頁面，並依照步驟啟用 MSDN 訂戶的權益來建立帳戶。
 
-1.  Open a web browser and browse to <a href="http://www.windowsazure.com">http://www.windowsazure.com</a>
-2.  If you have an MSDN subscription, navigate to the <a href="/en-us/pricing/member-offers/msdn-benefits-details/" target="_blank">Azure Benefit for MSDN Subscribers</a> page and follow the steps to create an account by activating your MSDN subscriber benefits.
+   否則，請瀏覽到 [[建立免費試用帳戶](http://azure.microsoft.com/pricing/free-trial/)] 頁面，並依照步驟來建立試用帳戶。 您將需要有信用卡號和行動電話號碼來證明身分，但是您不會被收取任何費用。
 
-   Otherwise, navigate to the <a href="/en-us/pricing/free-trial/" target="_blank">create a free trial account</a> page and follow the steps to create a trial account. You'll need a credit card number and a mobile phone number for proof of identity, but you will not be billed.
+## 啟用 Azure 預覽功能
 
-<h2><a id="enable"></a>Enable Azure preview features</h2>
-
-1.  Navigate to [https://account.windowsazure.com/](https://account.windowsazure.com/) and sign in with your Azure account.
-2.  Click **preview features** to view the available previews.<br />
-    ![open preview features tab][1]
-3.  Scroll down to the feature you want to enable and click **try it now**.<br />
-    ![select a preview feature][2]
-4.  Select your subscription and click the check.<br />
-    ![select subscription][3]
-
-
+1.  瀏覽至 <https://account.windowsazure.com/> 並以您的 Azure 帳戶登入。
+2.  按一下 [ **預覽功能** 若要檢視可用的預覽。<br />
+    ![開啟預覽功能索引標籤][1]
+3.  捲動至您想要啟用，然後按一下的功能 **立即試用**。<br />
+    ![選取預覽功能][2]
+4.  選取您的訂閱，然後按一下勾號。<br />
+    ![選取訂用帳戶][3]
 
 [1]: ./media/create-an-azure-account/antares-iaas-preview-01.png
 [2]: ./media/create-an-azure-account/antares-iaas-preview-05.png
 [3]: ./media/create-an-azure-account/antares-iaas-preview-06.png
+
+

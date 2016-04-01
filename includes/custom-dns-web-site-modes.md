@@ -1,3 +1,4 @@
-Setting a custom domain name is only available for the Shared, Basic and Standard modes for Azure Websites. Before switching a website from the Free website mode to the Shared, Basic or Standard mode, you must first remove spending caps in place for your Website subscription. 
+設定自訂網域名稱只適用於 **共用**, ，**基本** 和 **標準** 模式的 Web 應用程式。 從 web 應用程式切換之前 **免費** 模式 **共用**, ，**基本** 或 **標準** 模式中，您必須先移除 Web 應用程式訂閱的支出上限。 
 
-For more information on the Website modes, including how to change the mode of your site, see [How to scale web sites](/en-us/documentation/articles/web-sites-scale/).
+如需應用程式服務計劃模式，包括如何變更您的網站模式的詳細資訊請參閱 [如何調整 web 應用程式](../article/app-service-web/web-sites-scale.md)。
+

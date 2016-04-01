@@ -1,0 +1,207 @@
+<properties 
+    pageTitle="教學課程：Azure Active Directory 與 Zscaler 整合 | Microsoft Azure" 
+    description="了解如何使用 Zscaler 搭配 Azure Active Directory 來啟用單一登入、自動化佈建和更多功能！" 
+    services="active-directory" 
+    authors="markusvi"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
+<tags 
+    ms.service="active-directory" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="10/22/2015" 
+    ms.author="markvi" />
+
+#教學課程：Azure Active Directory 與 Zscaler 整合
+  
+本教學課程的目的是要示範 Azure 與 Zscaler 的整合。 本教學課程中說明的案例假設您已經具有下列項目：
+
+-   有效的 Azure 訂閱
+-   Zscaler 中的租用戶
+  
+本教學課程中說明的案例由下列建置組塊組成：
+
+1.  啟用 Zscaler 的應用程式整合
+2.  設定單一登入
+3.  進行 Proxy 設定
+4.  設定使用者佈建
+5.  指派使用者
+
+![案例](./media/active-directory-saas-zscaler-tutorial/IC769226.png "Scenario")
+
+##啟用 Zscaler 的應用程式整合
+  
+本節的目的是要說明如何啟用 Zscaler 的應用程式整合。
+
+###若要啟用 Zscaler 的應用程式整合，請執行下列步驟：
+
+1.  在 Azure 管理入口網站中，在左的導覽窗格中，按一下 [ **Active Directory**。
+
+    ![Active Directory](./media/active-directory-saas-zscaler-tutorial/IC700993.png "Active Directory")
+
+2.  從 **目錄** 清單中，選取您要啟用目錄整合的目錄。
+
+3.  若要開啟 [應用程式] 檢視中，目錄檢視中，按一下 [ **應用程式** 上方功能表中。
+
+    ![應用程式](./media/active-directory-saas-zscaler-tutorial/IC700994.png "Applications")
+
+4.  按一下 [ **新增** 頁面的底部。
+
+    ![新增應用程式](./media/active-directory-saas-zscaler-tutorial/IC749321.png "Add application")
+
+5.  在 **您想要** ] 對話方塊中，按一下 [ **從資源庫新增應用程式**。
+
+    ![從組件庫新增應用程式](./media/active-directory-saas-zscaler-tutorial/IC749322.png "Add an application from gallerry")
+
+6.  在 **搜尋方塊**, ，型別 **Zscaler**。
+
+    ![應用程式庫](./media/active-directory-saas-zscaler-tutorial/IC769227.png "Application gallery")
+
+7.  在 [結果] 窗格中，選取 **Zscaler**, ，然後按一下 [ **完成** 加入應用程式。
+
+    ![Zscaler](./media/active-directory-saas-zscaler-tutorial/IC769228.png "Zscaler")
+
+##設定單一登入
+  
+本節的目的是要說明如何依據 SAML 通訊協定來使用同盟，讓使用者能夠用自己在 Azure AD 中的帳戶在 Zscaler 中進行驗證。  
+您必須將憑證上傳至 Zscaler，這是程序的一部分。
+
+###若要設定單一登入，請執行下列步驟：
+
+1.  在 Azure AD 入口網站上 **Zscaler** 應用程式整合頁面上，按一下 [ **設定單一登入** 開啟 * * 設定單一登入 * * 對話方塊。
+
+    ![啟用單一登入](./media/active-directory-saas-zscaler-tutorial/IC769229.png "Enable single sign-on")
+
+2.  在 **您希望使用者如何登入 Zscaler** 頁面上，選取 **Microsoft Azure AD 單一登入**, ，然後按一下 [ **下一步**。
+
+    ![設定單一登入](./media/active-directory-saas-zscaler-tutorial/IC769230.png "Configure single sign on")
+
+3.  在 **設定應用程式 URL** 頁面上，於 **Zscaler 登入 URL** 文字方塊中，輸入的 URL，您可以向 Zscaler 中，您的帳戶登，然後按一下 [ **下一步**: 
+
+    >[AZURE.NOTE] 請如果您不知道您的登入 URL，連絡 Zscaler 支援小組。
+
+    ![設定應用程式 URL](./media/active-directory-saas-zscaler-tutorial/IC769231.png "Configure app URL")
+
+4.  在 **在 Zscaler 設定單一登入** 頁面上，執行下列步驟 ︰
+
+    ![設定單一登入](./media/active-directory-saas-zscaler-tutorial/IC769232.png "Configure single sign-on")
+
+    1.  按一下 [ **下載憑證**, ，然後將儲存在本機憑證檔當做 **c:\\Zscaler.cer**。
+    2.  複製 **驗證要求 URL** 到剪貼簿。
+
+5.  登入 Zscaler 租用戶。
+
+6.  在頂端功能表中，按一下 [ **管理**。
+
+    ![系統管理](./media/active-directory-saas-zscaler-tutorial/IC769486.png "Administration")
+
+7.  在 **管理管理員及角色**, ，按一下 [ **管理使用者及授權**。
+
+    ![管理系統管理員和角色](./media/active-directory-saas-zscaler-tutorial/IC769487.png "Manage Administrators & Roles")
+
+8.  在 **選擇驗證選項，為您的組織** 區段中，執行下列步驟 ︰
+
+    ![選擇驗證選項](./media/active-directory-saas-zscaler-tutorial/IC769488.png "Choose Authentication Options")
+
+    1.  選取 **使用 SAML 單一登入驗證**。
+    2.  按一下 [ **設定 SAML 單一登入參數**。
+
+9.  在 **設定 SAML 單一登入參數** 對話方塊頁面上，執行下列步驟，以及 [ **完成**:
+
+    ![Upload certificate](./media/active-directory-saas-zscaler-tutorial/IC769489.png "Upload certificate")
+
+    1.  在 **SAML 入口網站進行驗證的使用者會傳送至此 URL** 文字方塊中，貼上的值 **驗證要求 URL** 欄位從 Azure 入口網站。
+    2.  在 **屬性包含登入名稱** 文字方塊中，輸入 **NameID**。
+    3.  在 **上傳 SSL 公用憑證** 欄位中上, 傳您從 Azure 入口網站下載的憑證。
+    4.  選取 **啟用 SAML 自動佈建**。
+
+10. 在 **設定使用者驗證** 對話方塊頁面上，執行下列步驟 ︰
+
+    ![設定使用者驗證](./media/active-directory-saas-zscaler-tutorial/IC769490.png "Configure User Authentication")
+
+    1.  按一下 [ **儲存**。
+    2.  按一下 [ **立即啟用**。
+
+11. 在 Azure AD 入口網站中，選取單一登入設定確認，，然後按一下 [ **完成** 關閉 **設定單一登入** ] 對話方塊。
+
+    ![設定單一登入](./media/active-directory-saas-zscaler-tutorial/IC769491.png "Configure single sign-on")
+
+##進行 Proxy 設定
+
+###在 Internet Explorer 中進行 Proxy 設定
+
+1.  啟動 **Internet Explorer**。
+
+2.  選取 **網際網路選項** 從 **工具** 功能表開啟 **網際網路選項** ] 對話方塊。
+
+    ![，](./media/active-directory-saas-zscaler-tutorial/IC769492.png "Internet Options")
+
+3.  按一下 [ **連線** ] 索引標籤。
+
+    ![連線](./media/active-directory-saas-zscaler-tutorial/IC769493.png "Connections")
+
+4.  按一下 [ **LAN 設定** 開啟 **LAN 設定** ] 對話方塊。
+
+5.  在 [Proxy 伺服器] 區段中，執行下列步驟：
+
+    ![Proxy 伺服器](./media/active-directory-saas-zscaler-tutorial/IC769494.png "Proxy server")
+
+    1.  選取 [在您的區域網路使用 Proxy 伺服器]。
+    2.  在 [位址] 文字方塊中輸入 **gateway.zscalertwo.net**。
+    3.  在連接埠] 文字方塊中，輸入 **80**。
+    4.  選取 **近端網址不使用 proxy 伺服器**。
+    5.  按一下 [ **確定** 關閉 **區域網路 (LAN) 設定** ] 對話方塊。
+
+6.  按一下 [ **確定** 關閉 **網際網路選項** ] 對話方塊。
+
+##設定使用者佈建
+  
+為了讓 Azure AD 使用者登入 Zscaler，他們必須佈建到 Zscaler 中。  
+ZScaler 需以手動的方式佈建。
+
+###若要設定使用者佈建，請執行下列步驟：
+
+1.  登入您 **Zscaler** 租用戶。
+
+2.  按一下 [ **管理**。
+
+    ![系統管理](./media/active-directory-saas-zscaler-tutorial/IC781035.png "Administration")
+
+3.  按一下 [ **使用者管理**。
+
+    ![使用者管理](./media/active-directory-saas-zscaler-tutorial/IC781036.png "User Management")
+
+4.  在 **使用者** 索引標籤上，按一下 [ **新增**。
+
+    ![新增](./media/active-directory-saas-zscaler-tutorial/IC781037.png "Add")
+
+5.  在 [新增使用者] 區段中，執行下列步驟：
+
+    ![新增使用者](./media/active-directory-saas-zscaler-tutorial/IC781038.png "Add User")
+
+    1.  型別 **UserID**, ，**使用者顯示名稱**, ，**密碼**, ，**確認密碼**, ，然後選取 **群組** 和 **部門** 您想要佈建之有效 AAD 帳戶。
+    2.  按一下 [ **儲存**。
+
+>[AZURE.NOTE] 您可以使用任何其他 Zscaler 使用者帳戶建立工具或 Api 來佈建 AAD 使用者帳戶提供 Zscaler。
+
+##指派使用者
+  
+若要測試您的組態，您需要指派使用者，授予存取權給您想要允許其使用您的應用程式存取設定的 Azure AD 使用者。
+
+###若要指派使用者給 Zscaler，請執行下列步驟：
+
+1.  在 Azure AD 入口網站中建立測試帳戶。
+
+2.  在 **Zscaler** 應用程式整合頁面上，按一下 [ **指派使用者**。
+
+    ![指派使用者](./media/active-directory-saas-zscaler-tutorial/IC769495.png "Assign users")
+
+3.  選取測試使用者，請按一下 **指派**, ，然後按一下 [ **是** 以確認您的作業。
+
+    ![是](./media/active-directory-saas-zscaler-tutorial/IC767830.png "Yes")
+  
+如果要測試您的單一登入設定，請開啟存取面板。 如需有關存取面板的詳細資訊，請參閱 [存取面板簡介](active-directory-saas-access-panel-introduction.md)。
+
+

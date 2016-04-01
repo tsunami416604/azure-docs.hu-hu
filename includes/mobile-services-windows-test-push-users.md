@@ -1,12 +1,14 @@
 
-1. In Visual Studio, press the F5 key to run the app.
+1. 在 Visual Studio 中，按 F5 鍵以執行此應用程式。
 
-2. Log in using the selected identity provider and verify that authentication succeeds. 
+2. 使用選取的身分識別提供者登入，然後確認驗證成功。 
 
-3. In the app, type text in **Insert a TodoItem**, and then click **Save**.
+3. 在應用程式中鍵入文字 **Insert a TodoItem**, ，然後按一下 [ **儲存**。
 
-   	Note that after the insert completes, the app receives a push notification from WNS.
+    Note that after the insert completes, the app receives a push notification from WNS.
 
-4. (Optional) Repeat steps 1-3 on a different client device and using a different account when logging in.  
+4. (選用) 在不同的用戶端裝置上重複執行步驟 1-3，並在登入時使用不同的帳戶。  
 
-	Verify that the notification is received only on this device, since the previous device was not tagged with the current user ID. 
+    確認只會在這個裝置上收到通知，因為先前的裝置並未使用目前的使用者識別碼加以標記。 
+
+

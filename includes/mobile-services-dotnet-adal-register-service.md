@@ -1,23 +1,23 @@
-## <a name="register-mobile-service-aad"></a>Register your mobile service with the Azure Active Directory
+## <a name="register-mobile-service-aad"></a>向 Azure Active Directory 註冊您的行動服務
 
 
-In this section you will register your mobile service with the Azure Active Directory and configure permissions to allow single sign-on impersonation.
+在本節中，您將向 Azure Active Directory 註冊您的行動服務，並設定權限以允許單一登入模擬。
 
-1. Register your application with your Azure Active Directory by following the [How to Register with the Azure Active Directory] topic.
+1. 向 Azure Active Directory 註冊應用程式，依照 [How to Register with the Azure Active Directory] 主題。
 
-2. In the [Azure Management Portal], go back to the Azure Active Directory extension and click on your active directory
+2. 在 [Azure clasic 入口網站](https://manage.windowsazure.com/), 回到 Azure Active Directory 擴充功能，按一下您的 active directory
 
-3. Click the **Applications** tab and then click your application.
+3. 按一下 [ **應用程式** 標籤，然後按一下您的應用程式。
 
-4. Click **Manage Manifest**. Then click **Download Manifest** and save the application manifest to a local directory.
+4. 按一下 [ **管理資訊清單**。 然後按一下 [ **下載資訊清單** ，並將應用程式資訊清單儲存到本機目錄。
 
    ![](./media/mobile-services-dotnet-adal-register-service/mobile-services-aad-app-manage-manifest.png)
 
-5. Open the application manifest file with Visual Studio. At the top of the file find the app permissions line that looks as follows:
+5. 在 Visual Studio 中開啟應用程式資訊清單。 在檔案的頂端尋找應用程式權限行，如下所示：
 
         "oauth2Permissions": [],
 
-    Replace that line with the following app permissions and save the file.
+    使用下列應用程式權限來取代該行，並儲存檔案。
 
         "oauth2Permissions": [
             {
@@ -33,8 +33,9 @@ In this section you will register your mobile service with the Azure Active Dire
             }
         ],
 
-6. In the Azure Management portal, click **Manage Manifest** for the application again and click **Upload Manifest**.  Browse to the location of the application manifest that you just updated and upload the manifest.
+6. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **管理資訊清單** 做為應用程式會再次按一下 **上傳資訊清單**。  瀏覽到您剛剛更新的應用程式資訊清單位置，並上傳此資訊清單。
 
 <!-- URLs. -->
-[How to Register with the Azure Active Directory]: /en-us/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
-[Azure Management Portal]: https://manage.windowsazure.com/
+[How to Register with the Azure Active Directory]: ../articles/mobile-services/mobile-services-how-to-register-active-directory-authentication.md
+
+

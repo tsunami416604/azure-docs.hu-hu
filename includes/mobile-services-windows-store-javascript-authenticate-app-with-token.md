@@ -1,9 +1,9 @@
 
-The previous example showed a standard sign-in, which requires the client to contact both the identity provider and the mobile service every time that the app starts. Not only is this method inefficient, you can run into usage-relates issues should many customers try to start you app at the same time. A better approach is to cache the authorization token returned by Mobile Services and try to use this first before using a provider-based sign-in.
+先前範例所示範的標準登入，在每次應用程式啟動時，皆需要用戶端連絡身分識別提供者和行動服務。 這個方法不只效率不彰，而且如果同時有許多用戶試圖啟用您的應用程式時，還可能遇到使用量相關的問題。 更好的方法就是快取行動服務傳回的驗證權杖，然後嘗試在使用提供者形式登入前先使用此方法。
 
->[WACOM.NOTE]You can cache the token issued by Mobile Services regardless of whether you are using client-managed or service-managed authentication. This tutorial uses service-managed authentication.
+>[AZURE.NOTE]您可以快取無論您使用用戶端管理或服務管理驗證行動服務所簽發的權杖。 本教學課程使用服務管理驗證。
 
-1. In the default.js project file, replace the existing **Login** function with the following code:
+1. 在 default.js 專案檔案中，將現有的 **登入** 函式，以下列程式碼 ︰
 
         var credential = null;
         var vault = new Windows.Security.Credentials.PasswordVault();
@@ -31,7 +31,7 @@ The previous example showed a standard sign-in, which requires the client to con
             });
         }
 
-2. Replace the existing **authenticate** function with the following code:
+2. 取代現有 **驗證** 函式，以下列程式碼 ︰
 
         var authenticate = function () {
             // Try to get a stored credential from the PasswordVault.                
@@ -76,8 +76,9 @@ The previous example showed a standard sign-in, which requires the client to con
             }
         }
 
-	In this version of **authenticate**, the app tries to use credentials stored in the **PasswordVault** to access the mobile service. A simple query is sent to verify that the stored token is not expired. When a 401 is returned, a regular provider-based sign-in is attempted. A regular sign-in is also performed when there is no stored credential.
+    在這個版本的 **驗證**, ，應用程式會嘗試使用已儲存在認證 **PasswordVault** 來存取行動服務。 系統會傳送簡單的查詢，以確認儲存的權杖尚未到期。 傳回 401 時，即會嘗試以提供者為主的一般登入。 如果沒有儲存任何認證，也會執行一般登入。
 
-3. Restart the app twice.
+3. 重新啟動應用程式兩次。
 
-	Notice that on the first start-up, sign-in with the provider is again required. However, on the second restart the cached credentials are used and sign-in is bypassed. 
+    請注意，第一次啟動時，需要再次使用該提供者登入。 不過，在第二次重新啟動時，可以使用快取的認證，並略過登入。 
+

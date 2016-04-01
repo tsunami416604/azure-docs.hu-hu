@@ -1,22 +1,6 @@
 
+1. 在 Visual Studio 中，以滑鼠右鍵按一下專案，請按一下 **發行** > **Microsoft Azure 行動服務**。 而不是使用 Visual Studio 中， [您也可以使用 Git](../articles/mobile-services/mobile-services-dotnet-backend-store-code-source-control.md)。
 
-After testing the client app against the local mobile service, the final stage of this tutorial is to publish the mobile service to Azure and run the app against the live service.
+2. 使用 Azure 認證登入，然後選取您的服務 **現有行動服務**。 Visual Studio 便會直接從 Azure 下載您的發佈設定。 最後，按一下 [ **發行**。
 
-1. In Solution Explorer, right-click the mobile service project, click **Publish**, then in the **Publish Web** dialog box click **Azure Mobile Services**.
-
-	![](./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish.png)
-	
-2. Sign in with your Azure account credentials, select your service from **Existing Mobile Services**, and click **OK**.
-
-	![](./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-select-service.png)
-
-	Visual Studio downloads your publish settings directly from Azure.
-
-	>[WACOM.NOTE]Visual Studio stores your Azure credentials until you explicitly sign out.
-
-3. Click **Validate connection** to verify that publishing is correctly configured, then click **Publish**.
-
-	![](./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-2.png)
-
-	After publishing succeeds, you will again see the confirmation page that the mobile service is up and running, this time in Azure.
 

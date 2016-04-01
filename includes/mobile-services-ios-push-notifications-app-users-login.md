@@ -1,34 +1,14 @@
 
-Next, you need to change the way that push notifications are registered to make sure that the user is authenticated before registration is attempted. 
+接下來，您需要變更註冊推播通知的方式，如此可以在使用者通過驗證後，再嘗試註冊。
 
-1. In **QSAppDelegate.m**, remove the implementation of **didFinishLaunchingWithOptions** altogether:
+1. 在 **QSAppDelegate.m**, ，移除的實作 **didFinishLaunchingWithOptions** 完全。
 
-		
-		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:
-		(NSDictionary *)launchOptions
-		{
-		    // Register for remote notifications
-		    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-		    UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-		    return YES;
-		}
+2. 開啟 **QSTodoListViewController.m** 結尾加入下列程式碼和 **viewDidLoad** 方法 ︰
 
-2. Open the project file **QSTodoListViewController.m** and in the **viewDidLoad** method, add the code removed above to the add:
+```
+// Register for remote notifications
+[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+```
 
-	
-		- (void)viewDidAppear:(BOOL)animated
-		{
-		    MSClient *client = self.todoService.client;
-		
-		    if (client.currentUser != nil) {
-		        return;
-		    }
-		
-		    [client loginWithProvider:@"facebook" controller:self animated:YES completion:^(MSUser *user, NSError *error) {
-		        [self refresh];
-		    }];
-		
-		    // Register for remote notifications
-		    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-		    UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-		}
+

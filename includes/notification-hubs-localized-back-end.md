@@ -1,53 +1,78 @@
 
 
-In your back-end app, you now have to switch to sending template notifications instead of native payloads. This will simplify the back-end code as you will not have to send multiple payloads for the different platforms.
-
-When you send template notifications you only need to provide a set of properties, in our case we will send the set of properties containing the localized version of the current news, for instance:
-
-	{
-		"News_English": "World News in English!",
-    	"News_French": "World News in French!",
-    	"News_Mandarin": "World News in Mandarin!"
-	}
 
 
-This section shows how to send notifications in two different ways:
+傳送範本通知時，您只需提供一組屬性，在我們的案例中，我們將傳送一組包含已當地語系化版本的目前新聞屬性，例如：
 
-- using a console app
-- using a Mobile Services script
+    {
+        "News_English": "World News in English!",
+        "News_French": "World News in French!",
+        "News_Mandarin": "World News in Mandarin!"
+    }
 
-The included code broadcasts to both Windows Store and iOS devices, since the backend can broadcast to any of the supported devices.
+
+本節將使用主控台應用程式示範傳送通知的方式
+
+後端可廣播至任何支援的裝置，因此隨附的程式碼會廣播至 Windows 市集和 iOS 裝置。
 
 
+### 使用 C# 主控台應用程式傳送通知 
 
-## To send notifications using a C# console app ##
+在先前建立的主控台應用程式中以下列程式碼修改 `SendTemplateNotificationAsync` 方法。 請注意，此案例不需要針對不同地區設定和平台傳送多次通知。
 
-We will simply modify your *SendNotificationAsync* method by sending a single template notification.
+        private static async void SendTemplateNotificationAsync()
+        {
+            // Define the notification hub.
+            NotificationHubClient hub = 
+                NotificationHubClient.CreateClientFromConnectionString(
+                    "<connection string with full access>", "<hub name>");
 
-	var hub = NotificationHubClient.CreateClientFromConnectionString("<connection string>", "<hub name>");
-    var notification = new Dictionary<string, string>() {
-							{"News_English", "World News in English!"},
-                            {"News_French", "World News in French!"},
-                            {"News_Mandarin", "World News in Mandarin!"}};
-    await hub.SendTemplateNotificationAsync(notification, "World");
+            // Sending the notification as a template notification. All template registrations that contain 
+            // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
+            // This includes APNS, GCM, WNS, and MPNS template registrations.
+            Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
-Note that this simple call will deliver the correct localized piece of news to **all** your devices, irrespective of the platform, as your Notification Hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
+            // Create an array of breaking news categories.
+            var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
+            var locales = new string[] { "English", "French", "Mandarin" };
 
-### Mobile Services
+            foreach (var category in categories)
+            {
+                templateParams["messageParam"] = "Breaking " + category + " News!";
 
-In your Mobile Service scheduler, overwrite your script with:
+                // Sending localized News for each tag too...
+                foreach( var locale in locales)
+                {
+                    string key = "News_" + locale;
 
-	var azure = require('azure');
+                    // Your real localized news content would go here.
+                    templateParams[key] = "Breaking " + category + " News in " + locale + "!";
+                }
+
+                await hub.SendTemplateNotificationAsync(templateParams, category);
+            }
+        }
+
+
+請注意，此簡單呼叫會實現當地語系化的新聞 **所有** 您裝置失效，無論平台，因為您的通知中心會建立並傳遞正確的原生裝載訂用特定標籤的所有裝置。
+
+### 使用行動服務傳送通知
+
+在您的行動服務排程器中，您可以使用下列指令碼：
+
+    var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');
     var notification = {
-			"News_English": "World News in English!",
-			"News_French": "World News in French!",
-			"News_Mandarin", "World News in Mandarin!"
-	}
-	notificationHubService.send('World', notification, function(error) {
-		if (!error) {
-			console.warn("Notification successful");
-		}
-	});
-	
-Note how in this case there is no need to send multiple notifications for different locales and platforms.
+            "News_English": "World News in English!",
+            "News_French": "World News in French!",
+            "News_Mandarin", "World News in Mandarin!"
+    }
+    notificationHubService.send('World', notification, function(error) {
+        if (!error) {
+            console.warn("Notification successful");
+        }
+    });
+    
+
+
+

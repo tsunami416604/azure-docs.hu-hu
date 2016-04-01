@@ -1,0 +1,2 @@
+> [AZURE.NOTE] 這份文件中的資訊僅適用於以 Windows 為基礎的 HDInsight 叢集。
+

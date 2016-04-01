@@ -1,140 +1,143 @@
-<properties linkid="develop-python-cloud-services-with-ptvs" urlDisplayName="Python Web and Worker Roles with Python Tools 2.1 for Visual Studio" pageTitle="Python Web and Worker Roles with Python Tools 2.1 for Visual Studio" metaKeywords="Azure python, web role, worker role, PTVS, cloud service" description="Overview of using Python Tools for Visual Studio to create Azure cloud services including web roles and worker roles." metaCanonical="" services="" documentationCenter="Python" title="Python Web and Worker Roles with Python Tools 2.1 for Visual Studio" authors="huvalo" solutions="" manager="" editor="" />
+<properties
+    pageTitle="Python Web 和背景工作角色與 Python Tools 2.2 for Visual Studio | Microsoft Azure"
+    description="使用 Python Tools for Visual Studio 建立 Azure 雲端服務的概觀，包括 Web 角色和背景工作角色。"
+    services=""
+    documentationCenter="python"
+    authors="huguesv"
+    manager="wpickett"
+    editor=""/>
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="10/10/2014" ms.author="huvalo"></tags>
+<tags
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="python"
+    ms.topic="hero-article"
+    ms.date="08/30/2015"
+    ms.author="huvalo"/>
 
-# Python Web and Worker Roles with Python Tools 2.1 for Visual Studio
 
-This guide provides an overview of using Python web and worker roles using [Python Tools for Visual Studio][Python Tools for Visual Studio].
 
--   [Prerequisites][Prerequisites]
--   [What are Python web and worker roles?][What are Python web and worker roles?]
--   [Project creation][Project creation]
--   [Run locally][Run locally]
--   [Publish to Azure][Publish to Azure]
--   [Next steps][Next steps]
 
-## <a name="prerequisites"></a>Prerequisites
+# Python Web 和背景工作角色與 Python Tools 2.2 for Visual Studio
 
--   Visual Studio 2012 or 2013
--   [Python Tools 2.1 for Visual Studio][Python Tools 2.1 for Visual Studio]
--   [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] or [Azure SDK Tools for VS 2012][Azure SDK Tools for VS 2012]
--   [Python 2.7 32-bit][Python 2.7 32-bit] or [Python 3.4 32-bit][Python 3.4 32-bit]
+這篇文章提供使用 Python web 和背景工作角色的概觀 [Python Tools for Visual Studio][]。
 
-[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+## 必要條件
 
-## <a name="what-are-python-web-and-worker-roles"></a>What are Python web and worker roles?
+ - Visual Studio 2013 或 2015
+ - [Python Tools for Visual Studio 2.2][] (PTVS)
+ - [Azure SDK Tools for VS 2013][] 或 [Azure SDK Tools for VS 2015][]
+ - [Python 2.7 32 位元][] 或 [Python 3.4 32 位元][]
 
-Azure provides three compute models for running applications: [Azure Web Sites][Azure Web Sites], [Azure Virtual Machines][Azure Virtual Machines], and [Azure Cloud Services][Azure Cloud Services]. All three models support Python. Cloud Services, which include web and worker roles, provide *Platform as a Service (PaaS)*. Within a cloud service, a web role provides a dedicated Internet Information Services (IIS) web server to host front-end web applications, while a worker role can run asynchronous, long-running or perpetual tasks independent of user interaction or input.
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-For more information, see [What is a Cloud Service?][What is a Cloud Service?].
+## 什麼是 Python Web 和背景工作角色？
 
-<div class="dev-callout"><strong>Looking to build a simple website?</strong>
-<p>If your scenario involves just a simple website front-end, consider using a lightweight Azure Website. You can easily upgrade to a Cloud Service as your website grows and your requirements change. See the <a href="/en-us/develop/python/">Python Developer Center</a> for articles that cover development of Azure Websites.</p>
-</div>
+Azure 提供三種計算模型來執行應用程式 ︰ [Azure App Service 中的 Web 應用程式功能][execution model-web sites], ，[Azure 虛擬機器][execution model-vms], ，和 [Azure 雲端服務][execution model-cloud services]。 這三種模型都支援 Python。 雲端服務包含 web 和背景工作角色，提供 *平台即服務 (PaaS)*。 在雲端服務中，Web 角色應用程式會提供專用的 Internet Information Services (IIS) Web 伺服器，用以代管前端 Web 應用程式，而背景工作角色則可執行獨立於使用者互動或輸入以外的非同步、長時間執行或持續性工作。
 
-## <a name="project-creation"></a>Project creation
+如需詳細資訊，請參閱 [What is a Cloud Service?]。
 
-In Visual Studio, you can select **Azure Cloud Service** in the **New Project** dialog, under **Python**.
+> [AZURE.NOTE] *正在尋求建置簡單的網站嗎？*
+如果您的案例只需要簡單的網站前端，請考慮使用 Azure App Service 中的輕量型 Web Apps 功能。 隨著網站擴大，以及需求改變，您可以很輕易地升級到雲端服務。 請參閱 <a href="/develop/python/">Python 開發人員中心</a> 開發 Azure 應用程式服務的 Web 應用程式功能的文章。
+<br />
 
-![New Project Dialog][New Project Dialog]
 
-In the Azure Cloud Service wizard, you can select to create new web and worker roles.
+## 建立專案
 
-![Azure Cloud Service Dialog][Azure Cloud Service Dialog]
+在 Visual Studio 中，您可以選取 **Azure 雲端服務** 中 **新的專案** 對話方塊的 [ **Python**。
 
-The worker role template comes with boilerplate code to connect to a Azure storage account or service bus.
+![新專案對話](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
-![Cloud Service Solution][Cloud Service Solution]
+在 [Azure 雲端服務] 精靈中，您可以建立新的 Web 和背景工作角色。
 
-You can add web or worker roles to an existing cloud service at any time. You can choose to add existing projects in your solution, or create new ones.
+![Azure Cloud Service Dialog](./media/cloud-services-python-ptvs/new-service-wizard.png)
 
-![Add Role Command][Add Role Command]
+背景工作角色範本隨附未定案程式碼，可連接至 Azure 儲存體帳戶或 Azure 服務匯流排。
 
-Your cloud service can contain roles implemented in different languages. For example, you can have a Python web role implemented using Django, with Python and C# worker roles. You can easily communicate between your roles using service bus queues or storage queues.
+![Cloud Service Solution](./media/cloud-services-python-ptvs/worker.png)
 
-## <a name="run-locally"></a>Run locally
+您可以隨時將 Web 或背景工作角色加入至現有的雲端服務。  您可以選擇加入方案中現有的專案，或建立新專案。
 
-If you set your cloud service project as the startup project and press F5, the cloud service will run in the local Azure emulator.
+![Add Role Command](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
-Although PTVS supports launching in the emulator, debugging (breakpoints, etc) will not work.
+雲端服務可以包含以不同語言實作的角色。  例如，您可以有使用 Django 實作的 Python Web 角色，以及 Python 或 C# 背景工作角色。  您可以使用服務匯流排佇列或儲存體佇列，輕鬆地與角色進行通訊。
 
-To debug your web and worker roles, you can set the role project as the startup project and debug that instead. You can also set multiple startup projects. Right-click on the solution and select **Set StartUp Projects**.
+## 在本機執行
 
-![Solution Startup Project Properties][Solution Startup Project Properties]
+如果您將雲端服務專案設為啟始專案並按下 F5，雲端服務會在本機 Azure 模擬器中執行。
 
-## <a name="publish-to-azure"></a>Publish to Azure
+雖然 PTVS 支援在模擬器中啟動，但無法使用偵錯 (例如，中斷點)。
 
-To publish, right-click on the cloud service project in the solution and select **Publish**.
+若要對 Web 和背景工作角色進行偵錯，您可以將角色專案設為啟始專案，然後偵錯。  您也可以設定多個啟始專案。  以滑鼠右鍵按一下方案，然後選取 **設定啟始專案**。
 
-![Microsoft Azure Publish Sign In][Microsoft Azure Publish Sign In]
+![Solution Startup Project Properties](./media/cloud-services-python-ptvs/startup.png)
 
-In the settings page, select the cloud service you want to publish to.
+## 發佈至 Azure
 
-![Microsoft Azure Publish Settings][Microsoft Azure Publish Settings]
+若要發行，以滑鼠右鍵按一下方案中的雲端服務專案，然後選取 **發行**。
 
-You can create a new cloud service if you don't already have one available.
+![Microsoft Azure Publish Sign In](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
-![Create Cloud Service Dialog][Create Cloud Service Dialog]
+在設定頁面上，選取您要發佈到其中的雲端服務。
 
-It's also useful to enable remote desktop connections to the machine(s) for debugging failures.
+![Microsoft Azure Publish Settings](./media/cloud-services-python-ptvs/publish-settings.png)
 
-![Remote Desktop Configuration Dialog][Remote Desktop Configuration Dialog]
+如果沒有雲端服務可用，您可以建立新的雲端服務。
 
-When you are done configuring settings, click **Publish**.
+![Create Cloud Service Dialog](./media/cloud-services-python-ptvs/publish-create-cloud-service.png)
 
-Some progress will appear in the output window, then you'll see the Microsoft Azure Activity Log window.
+對機器啟用遠端桌面連線也有助於進行失敗偵錯。
 
-![Microsoft Azure Activity Log Window][Microsoft Azure Activity Log Window]
+![Remote Desktop Configuration Dialog](./media/cloud-services-python-ptvs/publish-remote-desktop-configuration.png)
 
-Deployment will take several minutes to complete, then your web and/or worker roles will be running on Azure!
+當組態設定完成之後時，按一下 [ **發行**。
 
-## <a name="next-steps"></a>Next steps
+輸出視窗中會顯示一些進度，接著會出現 [Microsoft Azure 活動記錄] 視窗。
 
-For more detailed information on working with web and worker roles in Python Tools for Visual Studio, see the PTVS documentation:
+![Microsoft Azure Activity Log Window](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
--   [Cloud Service Projects][Cloud Service Projects]
+部署需要幾分鐘才會完成，然後，Web 及/或背景工作角色就會在 Azure 上運作！
 
-For more details on using Azure services from your web and worker roles, such as using Azure storage or service bus, see the following guides:
+## 後續步驟
 
--   [Blob Service][Blob Service]
--   [Table Service][Table Service]
--   [Queue Service][Queue Service]
--   [Service Bus Queues][Service Bus Queues]
--   [Service Bus Topics][Service Bus Topics]
+如需在 Python Tools for Visual Studio 中使用 Web 和背景工作角色的相關詳細資訊，請參閱 PTVS 文件：
 
-<!--Link references--> <!--External Link references-->
+- [雲端服務專案][]
 
-  [Python Tools for Visual Studio]: http://pytools.codeplex.com
-  [Prerequisites]: #prerequisites
-  [What are Python web and worker roles?]: #what-are-python-web-and-worker-roles
-  [Project creation]: #project-creation
-  [Run locally]: #run-locally
-  [Publish to Azure]: #publish-to-azure
-  [Next steps]: #next-steps
-  [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
-  [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-  [Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
-  [Python 2.7 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517190
-  [Python 3.4 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517191
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
-  [Azure Web Sites]: /en-us/documentation/articles/fundamentals-application-models/#WebSites
-  [Azure Virtual Machines]: /en-us/documentation/articles/fundamentals-application-models/#VMachine
-  [Azure Cloud Services]: /en-us/documentation/articles/fundamentals-application-models/#CloudServices
-  [What is a Cloud Service?]: /en-us/manage/services/cloud-services/what-is-a-cloud-service/
-  [Python Developer Center]: /en-us/develop/python/
-  [New Project Dialog]: ./media/cloud-services-python-ptvs/new-project-cloud-service.png
-  [Azure Cloud Service Dialog]: ./media/cloud-services-python-ptvs/new-service-wizard.png
-  [Cloud Service Solution]: ./media/cloud-services-python-ptvs/worker.png
-  [Add Role Command]: ./media/cloud-services-python-ptvs/add-new-or-existing-role.png
-  [Solution Startup Project Properties]: ./media/cloud-services-python-ptvs/startup.png
-  [Microsoft Azure Publish Sign In]: ./media/cloud-services-python-ptvs/publish-sign-in.png
-  [Microsoft Azure Publish Settings]: ./media/cloud-services-python-ptvs/publish-settings.png
-  [Create Cloud Service Dialog]: ./media/cloud-services-python-ptvs/publish-create-cloud-service.png
-  [Remote Desktop Configuration Dialog]: ./media/cloud-services-python-ptvs/publish-remote-desktop-configuration.png
-  [Microsoft Azure Activity Log Window]: ./media/cloud-services-python-ptvs/publish-activity-log.png
-  [Cloud Service Projects]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
-  [Blob Service]: /en-us/documentation/articles/storage-python-how-to-use-blob-storage/
-  [Table Service]: /en-us/documentation/articles/storage-python-how-to-use-table-storage/
-  [Queue Service]: /en-us/documentation/articles/storage-python-how-to-use-queue-storage/
-  [Service Bus Queues]: /en-us/documentation/articles/service-bus-python-how-to-use-queues/
-  [Service Bus Topics]: /en-us/documentation/articles/service-bus-python-how-to-use-topics-subscriptions/
+如需有關從 Web 和背景工作角色使用 Azure 服務的詳細資訊，例如使用 Azure 儲存體或服務匯流排，請參閱下列文章。
+
+- [Blob 服務][]
+- [資料表服務][]
+- [佇列服務][]
+- [服務匯流排佇列][]
+- [服務匯流排主題][]
+
+
+<!--Link references-->
+
+[What is a Cloud Service?]: /manage/services/cloud-services/what-is-a-cloud-service/
+[execution model-web sites]: fundamentals-application-models.md#WebSites
+[execution model-vms]: fundamentals-application-models.md#VMachine
+[execution model-cloud services]: fundamentals-application-models.md#CloudServices
+[Python Developer Center]: /develop/python/
+
+[Blob Service]: storage-python-how-to-use-blob-storage.md
+[Queue Service]: storage-python-how-to-use-queue-storage.md
+[Table Service]: storage-python-how-to-use-table-storage.md
+[Service Bus Queues]: service-bus-python-how-to-use-queues.md
+[Service Bus Topics]: service-bus-python-how-to-use-topics-subscriptions.md
+
+
+<!--External Link references-->
+
+[Python Tools for Visual Studio]: http://aka.ms/ptvs
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[Cloud Service Projects]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
+[Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
+[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
+[Python 2.7 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517190
+[Python 3.4 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517191
+
+

@@ -1,7 +1,10 @@
-> [WACOM.NOTE] **This article uses the Azure Preview portal**
->
-> The [Preview portal][Preview portal] provides access to new features and experiences on the Azure platform, and is required when using the steps and information provided in this article.
->
-> If you are not currently logged into your Azure subscription, you will be prompted to log in when you visit the [Preview portal][Preview portal].
 
-  [Preview portal]: https://portal.azure.com/
+> [AZURE.NOTE] **本文使用 Azure 預覽入口網站**
+> 
+>  [預覽入口網站](https://portal.azure.com/) Azure 平台，提供新功能與體驗存取權，且需要時使用的步驟和本文中提供的資訊。
+> 
+> 如果您目前並未登入您的 Azure 訂閱，系統會提示您登入，當您瀏覽 [預覽入口網站](https://portal.azure.com/)。
+
+
+
+

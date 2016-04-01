@@ -1,273 +1,215 @@
 
-# Managing Azure SQL Database using SQL Server Management Studio 
+# 使用 SQL Server Management Studio 管理 Azure SQL Database 
 
-You can use Azure SQL Database Management Portal or the SQL Server Management Studio (SSMS) client application to administer your SQL Database subscriptions and create and manage associated logical servers and databases. The guidance below describes how to use Management Studio to manage SQL Database logical servers and databases.
+您可以使用 SQL Server Management Studio (SSMS) 來管理 Azure SQL Database 邏輯伺服器與資料庫。 本主題會引導您使用 SSMS 的一般工作。 在您開始之前，您應該已經有 Azure SQL Database 中建立的邏輯伺服器與資料庫。 若要開始，讀取 [建立您的第一個 Azure SQL Database](sql-database-get-started.md) 然後再回來。
 
-<div class="dev-callout-new-collapsed">
-<strong>Note <span>Click to collapse</span></strong>
-<div class="dev-callout-content">
-<p>You can use SQL Server 2014, SQL Server 2012, or the SQL Server 2008 R2 version of SSMS. Earlier versions are not supported.</p>
-</div>
-</div>
-
-This topic includes the following steps:
-
--   [Step 1: Get SQL Server Management Studio][]
--   [Step 2: Connect to SQL Database][]
--   [Step 3: Create and manage databases][]
--   [Step 4: Create and manage logins][]
--   [Step 5: Monitor SQL Database using Dynamic Management Views][]
-
-<h2><a id="Step1" name="Step1"> </a>Step 1: Get Management Studio</h2>
-
-Management Studio is an integrated environment for
-managing SQL databases. When managing 
-databases on Azure, you can use the Management Studio application installed with
-SQL Server or download the free SQL Server 2012 Management Studio Express (SSMSE) version. The steps below describe
-how to install SSMSE.
-
-1.  On the [Microsoft SQL Server 2012 Express][] page, select the x86 version of Management Studio if you are running a 32-bit operating system, or x64 if you are running a 64-bit operating system. Click **Download**, and when prompted, run Setup.
-
-2.  Click **New SQL Server stand-alone installation or add features to an
-    existing installation** and click **OK**.
-
-3.  Accept the license terms and click **Next**.
-
-4. Click **Install** to install files required by SQL Server Setup.
-
-5.  On the **Feature Selection** screen, **Management Tools -
-    Basic** is preselected. This is because you are running the installer for Management Studio. If you are running Setup for all of SQL Server Express, choose the **Management Tools - Basic** option, and click **Next**.
-
-6.  On the **Error Reporting** screen, you can optionally choose to send
-    error reports to Microsoft. This is not required to use SSMSE. Click
-    **Next** to start the installation.
-
-7.  When the installation is complete, you will see the **Complete**
-    page. Click **Close**. 
+每當您使用 Azure SQL Database 時，建議您使用最新版本的 SSMS。 請瀏覽 [下載 SQL Server Management Studio](https://msdn.microsoft.com/en-us/library/mt238290.aspx) 來取得它。 
 
 
-<h2><a id="Step2" name="Step2"> </a>Step 2: Connect to SQL Database</h2>
+## 連線到 SQL Database 邏輯伺服器
 
-Connecting to SQL Database requires that you know the server name on Azure. You might need to sign in to the portal to get this information.
+若要連線到 SQL Database，您需要知道 Azure 上的伺服器名稱。 您可能需要登入入口網站才能取得此資訊。
 
-1.  Sign in to the [Azure Management Portal][].
+1.  登入 [Azure 管理入口網站](http://manage.windowsazure.com)。
 
-2.  In the left pane, click on **SQL Databases**.
+2.  在左窗格中，按一下 [ **SQL 資料庫**。
 
-3.  On the SQL Databases home page, click **SERVERS** at the top of the page to list all of the servers associated with your subscription. Find the name of the server to which you want to connect and copy it to the clipboard.
+3.  在 SQL Databases 首頁上，按一下 [ **伺服器** 來列出所有與您的訂閱相關聯的伺服器] 頁面的頂端。 尋找想要連線的伺服器名稱，並將它複製到剪貼簿上。
 
-	Next, configure your SQL Database firewall to
-allow connections from your local machine. You do this by adding your local machines IP address to the firewall exception list.
+    接著，設定您的 SQL Database 防火牆
+允許來自本機電腦的連線。 若要這麼做，請將本機電腦 IP 位址加入防火牆例外清單。
 
-1.  On SQL Databases home page, click **SERVERS** and then click the server to which you want to connect.
+1.  在 SQL Databases 首頁上，按一下 [ **伺服器** ，然後按一下您要連接的伺服器。
 
-2.  Click **Configure** at the top of the page.
+2.  按一下 [ **設定** 頁面的頂端。
 
-3.  Copy the IP address in CURRENT CLIENT IP ADDRESS.
+3.  複製 [目前用戶端 IP 位址] 中的 IP 位址。
 
-4.  In the Configure page, **Allowed IP Addresses** includes three boxes where you can specify a rule name and a range of IP addresses as starting and ending values. For a rule name, you might enter the name of your computer. For the start and end range, paste in the IP address of your computer into both boxes, and then click the checkbox that appears.
+4.  在 [設定] 頁面中， **允許的 IP 位址** 包括三個方塊，讓您可以指定規則名稱與 IP 位址範圍作為起始和結束值。 在規則名稱中，您可以輸入您的電腦名稱。 在起始範圍和結束範圍中，將您的電腦 IP 位址貼入這兩個方塊，然後按一下出現的核取方塊。
 
-	The rule name must be unique. If this is your development computer, you can enter the IP address in both the IP range start box and the IP range end box. Otherwise, you might need to enter a broader range of IP addresses to accommodate connections from additional computers in your organization.
+    規則名稱必須是唯一的。 如果這是您的開發電腦，您可以在 IP 範圍起始方塊和 IP 範圍結束方塊中輸入 IP 位址。 否則，您可能需要輸入較廣泛的 IP 位址範圍，以容納來自組織中其他電腦的連線。
  
-5. Click **SAVE** at the bottom of the page.
+5. 按一下 [ **儲存** 頁面的底部。
 
-    **Note:** There can be up as much as a five-minute delay for changes
-    to the firewall settings to take effect.
+    **注意 ︰** 最長可能延遲五分鐘的變更
+    防火牆設定的變更才會生效。
 
-	You are now ready to connect to SQL Database using Management Studio.
+    您現在可以使用 Management Studio 來連線到 SQL Database。
 
-1.  On the taskbar, click **Start**, point to **All Programs**, point to
-    **Microsoft SQL Server 2012**, and then click **SQL Server
-    Management Studio**.
+1.  在工作列上，按一下 [ **啟動**, ，指向 [ **所有程式**, ，指向
+    **Microsoft SQL Server 2014**, ，然後按一下 [ **SQL Server
+    Management Studio**。
 
-2.  In **Connect to Server**, specify the fully-qualified
-    server name  as *serverName*.database.windows.net. On Azure, the server name is an autogenerated string composed of alphanumeric characters.
+2.  在 **連接到伺服器**, ，指定完整
+    伺服器名稱做為 *serverName*。.database.windows.net。 在 Azure 上，伺服器名稱是由英數字元組成的自動產生字串。
 
-3.  Select **SQL Server Authentication**.
+3.  選取 **SQL Server 驗證**。
 
-4.  In the **Login** box, enter the SQL Server administrator login that you
-    specified in the portal when creating your server in the format
-    *login*@*yourServerName*.
+4.  在 **登入** 方塊中，輸入 SQL Server 系統管理員登入，您
+    當您建立伺服器時，入口網站中指定。
 
-5.  In the **Password** box, enter the password that you specified in
-    the portal when creating your server.
+5.  在 **密碼** 方塊中，輸入您在中指定的密碼
+    入口網站建立伺服器時。
 
-8.  Click **Connect** to establish the connection.
+8.  按一下 [ **連接** 來建立連接。
 
-On Azure, each SQL Database logical server is an abstraction that defines a grouping of databases. The physical location of each database might be on any computer in the data center. 
+具備最新更新的 SQL Server 2014 SSMS 提供下列工作的擴大支援：
+建立和修改 Azure SQL Database。 此外，您也可以使用
+Transact-SQL 陳述式來完成這些工作。 下列步驟
+提供這些陳述式的範例。 如需有關使用
+Transact-SQL 與 SQL Database 的詳細資訊 (包括所支援命令的詳細資料)，
+支援，請參閱 [TRANSACT-SQL 參考 (SQL Database)](http://msdn.microsoft.com/library/bb510741.aspx)。
 
-In previous versions, you had to connect directly to **master** when setting up the connection in Management Studio. This step is no longer necessary. Connections will now succeed based on the server name, authentication type, and administrator credentials.
+## 建立和管理 Azure SQL 資料庫
 
-Many of the SSMS wizards you can use for tasks like
-creating and modifying logins and databases on a SQL Server database are
-not available for SQL databases on Azure, so you'll need to utilize
-Transact-SQL statements to accomplish these tasks. The steps below
-provide examples of these statements. For more information about using
-Transact-SQL with SQL Database, including details about which commands are
-supported, see [Transact-SQL Reference (SQL Database)][].
+連線到時 **主要** 資料庫中，您可以建立新的
+資料庫，並修改或卸除現有資料庫。 以下步驟
+說明如何透過 Management Studio 完成幾個常見的資料庫管理
+工作。 若要執行這些工作，請確定使用您在設定伺服器時所建立的伺服器層級主體登入，連線到
+**主要** 您資料庫的伺服器層級主體登入
+所建立。
 
-<h2><a id="Step3" name="Step3"> </a>Step 3: Create and Manage Databases</h2>
+若要在 Management Studio 中開啟查詢視窗，開啟 [資料庫] 資料夾中，展開 **系統資料庫** 資料夾中，以滑鼠右鍵按一下 **主要**, ，然後按一下 [ **新查詢**。
 
-While connected to the **master** database, you can create new
-databases on the server and modify or drop existing databases. The steps
-below describe how to accomplish several common database management
-tasks through Management Studio. To perform these tasks, make sure you are connected to the
-**master** database with the server-level principal login that you
-created when you set up your server.
-
-To open a query window in Management Studio, open the Databases folder, expand the **System Databsaes** folder, right-click on **master**, and then click **New Query**.
-
--   Use the **CREATE DATABASE** statement to create a new database. For
-    more information, see [CREATE DATABASE (SQL Database)][]. The statement below creates a new database named
-    **myTestDB** and specifies that it is a Web Edition database
-    with a maximum size of 1 GB.
+-   使用 **CREATE DATABASE** 陳述式來建立新的資料庫。 如需
+    詳細資訊，請參閱 [CREATE DATABASE (SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx)。 以下陳述式會建立名為的新資料庫 **myTestDB** ，並指定它是預設大小上限為 250 GB 的標準 S0 Edition 資料庫。
 
         CREATE DATABASE myTestDB
-        (MAXSIZE=1GB,
-         EDITION='web');
+        (EDITION='Standard',
+         SERVICE_OBJECTIVE='S0');
 
-Click **Execute** to run the query.
+按一下 [ **Execute** 來執行查詢。
 
--   Use the **ALTER DATABASE** statement to modify an existing database,
-    for example if you want to change the name, maximum size, or edition
-    (business or web) of the database. For more information, see [ALTER DATABASE (SQL Database)][]. The
-    statement below modifies the database you created in the previous
-    step to change the maximum size to 5 GB.
+-   使用 **ALTER DATABASE** 陳述式來修改現有的資料庫，
+    例如，如果您要變更資料庫的名稱和版本
+    。 如需詳細資訊，請參閱 [ALTER DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms174269.aspx)。 Auch die Eigenschaften
+    以下陳述式修改您在先前步驟中建立的資料庫
+    將版本變更為標準 S1。
 
         ALTER DATABASE myTestDB
         MODIFY
-        (MAXSIZE=5GB,
-         EDITION='web');
+        (SERVICE_OBJECTIVE='S1');
 
--   Use **the DROP DATABASE** Statement to delete an existing database.
-    For more information, see [DROP DATABASE (SQL Database)][]. The statement below deletes the **myTestDB**
-    database, but don't drop it now because you will use it create logins in the next step.
+-   使用 **卸除資料庫** 陳述式來刪除現有的資料庫。
+    如需詳細資訊，請參閱 [DROP DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms178613.aspx)。 刪除以下陳述式 **myTestDB** 資料庫，但不會卸除它現在因為您將使用下一個步驟中建立登入。
 
         DROP DATABASE myTestBase;
 
--   The master database has the **sys.databases** view that you can use
-    to view details about all databases. To view all existing databases,
-    execute the following statement:
+-   Master 資料庫具有 **sys.databases** 可讓您檢視
+    來檢視所有資料庫的詳細資料。 若要檢視所有現有資料庫，
+    請執行下列陳述式：
 
         SELECT * FROM sys.databases;
 
--   In SQL Database, the **USE** statement is not supported for switching
-    between databases. Instead, you need to establish a connection
-    directly to the target database.
+-   在 SQL 資料庫中， **使用** 陳述式不支援的切換
+    資料庫之間的切換。 相反地，您需要建立
+    直接與目標資料庫的連線。
 
-<div class="dev-callout-new">
- <strong>Note <span>Click to collapse</span></strong>
- <div class="dev-callout-content">
-   <p>Many of the Transact-SQL statements that create or modify a
-database must be run within their own batch and cannot be grouped with
-other Transact-SQL statements. For more information, see the statement-specific information available from the links listed above.</p>
-</div>
-</div>
+>[AZURE.NOTE] 許多可建立或修改資料庫的 TRANSACT-SQL 陳述式必須在自己的批次中執行，且無法與其他 TRANSACT-SQL 陳述式。 如需詳細資訊，請參閱陳述式特定資訊 (可透過上面列出的連結取得)。
 
-<h2><a id="Step4" name="Step4"> </a>Step 4: Create and Manage Logins</h2>
+## 建立和管理登入
 
-The **master** database keeps track of logins and which logins have
-permission to create databases or other logins. Manage logins by
-connecting to the **master** database with the server-level principal
-login that you created when you set up your server. You can use the
-**CREATE LOGIN**, **ALTER LOGIN**, or **DROP LOGIN** statements to
-execute queries against the master database that will manage logins
-across the entire server. For more information, see [Managing Databases and Logins in SQL Database][]. 
+ **主要** 登入，以及哪些登入具有追蹤的資料庫
+建立資料庫或其他登入的權限。 管理登入的方式是
+連接到 **主要** 資料庫與伺服器層級主體
+而伺服器層級主體登入是您在設定伺服器時所建立。 您可以使用
+**建立登入**, ，**ALTER LOGIN**, ，或 **卸除登入** 陳述式
+針對 master 資料庫執行查詢，而 master 資料庫將管理
+整個伺服器的登入。 如需詳細資訊，請參閱 [管理資料庫和 SQL 資料庫中的登入](http://msdn.microsoft.com/library/azure/ee336235.aspx)。 
 
 
--   Use the **CREATE LOGIN** statement to create a new server-level
-    login. For more information, see [CREATE LOGIN (SQL Database)][]. The statement below creates a new login
-    called **login1**. Replace **password1** with the password of your
-    choice.
+-   使用 **建立登入** 陳述式來建立新的伺服器層級
+    登入。 如需詳細資訊，請參閱 [CREATE LOGIN (SQL Database)](https://msdn.microsoft.com/library/ms189751.aspx)。 以下陳述式會建立
+    呼叫 **login1**。 取代 **password1** 的密碼與您
+    選擇的密碼。
 
         CREATE LOGIN login1 WITH password='password1';
 
--   Use the **CREATE USER** statement to grant database-level
-    permissions. All logins must be created in the **master** database,
-    but for a login to connect to a different database, you
-    must grant it database-level permissions using the **CREATE USER**
-    statement on that database. For more information, see [CREATE USER (SQL Database)][]. 
+-   使用 **CREATE USER** 陳述式來授與資料庫層級
+    權限。 所有登入也必須在建立 **主要** 資料庫，
+    但是針對連線到不同資料庫的登入，您
+    必須授與它使用的資料庫層級權限 **建立使用者**
+    陳述式。 如需詳細資訊，請參閱 [CREATE USER (SQL Database)](https://msdn.microsoft.com/library/ms173463.aspx)。 
 
--   To give login1
-    permissions to a database called **myTestDB**, complete the following
-    steps:
+-   若要將
+    資料庫的權限呼叫 **myTestDB**, ，完成下列步驟
+    步驟：
 
- 1.  To refresh Object Explorer to view the **myTestDB** database that you just created, right-click the server name in Object Explorer and then click **Refresh**.  
+ 1.  若要重新整理物件總管] 中，檢視 **myTestDB** 您剛剛建立的資料庫，以滑鼠右鍵按一下 [物件總管] 中的伺服器名稱，然後按一下 **重新整理**。  
 
-     If you closed the connection, you can reconnect by selecting **Connect Object Explorer** on the File menu. Repeat the instructions in [Step 2: Connect to SQL Database][] to connect to the database.
+     如果連線已關閉，您可以重新連線選取 **連接物件總管** 檔案] 功能表上。
 
- 2. Right-click **myTestDB** database and select **New Query**.
+ 2. 以滑鼠右鍵按一下 **myTestDB** 資料庫，然後選取 **新查詢**。
 
-    3.  Execute the following statement against the myTestDB database to
-        create a database user named **login1User** that corresponds to
-        the server-level login **login1**.
+    3.  針對 myTestDB 資料庫執行下列陳述式，以
+        建立名為資料庫使用者 **login1User** 對應至
+        伺服器層級登入 **login1**。
 
             CREATE USER login1User FROM LOGIN login1;
 
--   Use the **sp\_addrolemember** stored procedure to give the user
-    account the appropriate level of permissions on the database. For
-    more information, see [sp_addrolemember (Transact-SQL)][]. The statement below gives **login1User**
-    read-only permissions to the database by adding **login1User** to
-    the **db\_datareader** role.
+-   使用 **sp\_addrolemember** 預存程序來授與使用者
+    將資料庫的適當權限等級授與使用者帳戶。 如需
+    詳細資訊，請參閱 [sp_addrolemember (TRANSACT-SQL)](http://msdn.microsoft.com/library/ms187750.aspx)。 以下陳述式 **login1User**
+    加入資料庫的唯讀權限 **login1User** 至
+     **db\_datareader** 角色。
 
         exec sp_addrolemember 'db_datareader', 'login1User';    
 
--   Use the **ALTER LOGIN** statement to modify an existing login, for
-    example if you want to change the password for the login. For
-    more information, see [ALTER LOGIN (SQL Database)][]. The **ALTER LOGIN** statement should be run against
-    the **master** database. Switch back to the query window that is connected to that database. 
+-   使用 **ALTER LOGIN** 陳述式來修改現有的登入，
+    例如，如果您要變更登入的密碼。 如需
+    詳細資訊，請參閱 [ALTER LOGIN (SQL Database)](https://msdn.microsoft.com/library/ms189828.aspx)。  **ALTER LOGIN** 陳述式應該針對執行 **主要** 資料庫。 切換回連線到該資料庫的查詢視窗。 
 
-    The statement below modifies the **login1** login to reset the password.
-    Replace **newPassword** with the password of your choice, and
-    **oldPassword** with the current password for the login.
+    以下陳述式修改 **login1** 重設密碼的登入。
+    取代 **newPassword** 以您選擇的密碼，
+    **oldPassword** 使用目前登入密碼。
 
         ALTER LOGIN login1
         WITH PASSWORD = 'newPassword'
         OLD_PASSWORD = 'oldPassword';
 
--   Use **the DROP LOGIN** statement to delete an existing login.
-    Deleting a login at the server level also deletes any associated
-    database user accounts. For more information,
-    see [DROP DATABASE (SQL Database)][]. The **DROP LOGIN**
-    statement should be run against the **master** database. The
-    statement below deletes the **login1** login.
+-   使用 **卸除登入** 陳述式來刪除現有的登入。
+    刪除伺服器層級的登入也會同時刪除任何相關
+    資料庫使用者帳戶。 如需詳細資訊，
+    請參閱 [DROP DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms178613.aspx)。  **卸除登入**
+    陳述式應該針對執行 **主要** 資料庫。 Auch die Eigenschaften
+    刪除以下陳述式 **login1** 登入。
 
         DROP LOGIN login1;
 
--   The master database has the **sys.sql\_logins** view that you can
-    use to view logins. To view all existing logins, execute the
-    following statement:
+-   Master 資料庫具有 **sql\_logins** ，您可以檢視
+    來檢視登入。 若要檢視所有現有的登入，請執行
+    下列陳述式：
 
         SELECT * FROM sys.sql_logins;
 
-<h2><a id="Step5" name="Step5"> </a>Step 5: Monitor SQL Database using Dynamic Management Views</h2>
+## 使用動態管理檢視監視 SQL Database</h2>
 
-SQL Database supports several dynamic management views that you
-can use to monitor an individual database. Below are a few examples of
-the type of monitor data you can retrieve through these views. For
-complete details and more usage examples, see [Monitoring SQL Database using Dynamic Management Views][].
+SQL Database 支援數個動態管理檢視，而您可以使用這些檢視
+來監視個別資料庫。 以下幾個範例說明
+您可以透過這些檢視擷取的監視器資料類型。 如需
+完整的詳細資訊和詳細的使用方式範例，請參閱 [使用動態管理檢視監視 SQL Database](https://msdn.microsoft.com/library/azure/ff394114.aspx)。
 
--   Querying a dynamic management view requires **VIEW DATABASE STATE**
-    permissions. To grant the **VIEW DATABASE STATE** permission to a
-    specific database user, connect to the database you want to manage
-    with your server-level principle login and execute the following
-    statement against the database:
+-   查詢動態管理檢視需要 **檢視資料庫狀態**
+    權限。 若要授與 **VIEW DATABASE STATE** 權限
+    特定資料庫使用者，請連線到您想要使用伺服器層級主體登入所管理的資料庫，
+    並針對資料庫執行下列
+    陳述式：
 
         GRANT VIEW DATABASE STATE TO login1User;
 
--   Calculate database size using the **sys.dm\_db\_partition\_stats**
-    view. The **sys.dm\_db\_partition\_stats** view returns page and
-    row-count information for every partition in the database, which you
-    can use to calculate the database size. The following query returns
-    the size of your database in megabytes:
+-   計算資料庫大小使用 **sys.dm\_db\_partition\_stats**
+    檢視呈現。  **Sys.dm\_db\_partition\_stats** 檢視傳回的頁面和
+    資料列計數資訊：資料庫中的每個資料分割，而您
+    可以使用這些資訊來計算資料庫大小。 下列查詢會傳回
+    資料庫的大小 (MB)：
 
         SELECT SUM(reserved_page_count)*8.0/1024
         FROM sys.dm_db_partition_stats;   
 
--   Use the **sys.dm\_exec\_connections** and **sys.dm\_exec\_sessions**
-    views to retrieve information about current user connections and
-    internal tasks associated with the database. The following query
-    returns information about the current connection:
+-   使用 **sys.dm\_exec\_connections** 和 **sys.dm\_exec\_sessions**
+    檢視，以擷取下列項目的相關資訊：目前使用者連線以及
+    與資料庫相關聯的內部工作。 下列查詢
+    會傳回目前連線的相關資訊：
 
         SELECT
             e.connection_id,
@@ -280,10 +222,10 @@ complete details and more usage examples, see [Monitoring SQL Database using Dyn
             INNER JOIN sys.dm_exec_connections e
               ON s.session_id = e.session_id;
 
--   Use the **sys.dm\_exec\_query\_stats** view to retrieve aggregate
-    performance statistics for cached query plans. The following query
-    returns information about the top five queries ranked by average CPU
-    time.
+-   使用 **sys.dm\_exec\_query\_stats** 來擷取彙總檢視
+    已快取查詢計畫的效能統計資料。 下列查詢
+    會傳回依下列項目排名之前五項查詢的相關資訊：平均 CPU
+    時間。
 
         SELECT TOP 5 query_stats.query_hash AS "Query Hash",
             SUM(query_stats.total_worker_time), SUM(query_stats.execution_count) AS "Avg CPU Time",
@@ -300,40 +242,4 @@ complete details and more usage examples, see [Monitoring SQL Database using Dyn
         GROUP BY query_stats.query_hash
         ORDER BY 2 DESC;
 
-<h2>Additional Resources</h2>
 
-* [Introducing SQL Database][]   
-* [Managing Databases and Logins in SQL Database][]   
-* [Monitoring SQL Database using Dynamic Management Views][]   
-* [SQL Database Provisioning Model][]   
-* [Adding Users to your SQL Database][]   
-* [Transact-SQL Reference (SQL Database)][]
-
-  [How to use Azure SQL Database]: http://www.windowsazure.com/en-us/develop/net/how-to-guides/sql-azure/
-  [Step 1: Get SQL Server Management Studio]: #Step1
-  [Step 2: Connect to SQL Database]: #Step2
-  [Step 3: Create and manage databases]: #Step3
-  [Step 4: Create and manage logins]: #Step4
-  [Step 5: Monitor SQL Database using Dynamic Management Views]:
-    #Step5
-  [Microsoft SQL Server 2012 Express]: http://www.microsoft.com/en-us/download/details.aspx?id=29062
-  [SSMS Installer - Select installation type]: /media/installer_installation_type.png
-  [SSMS Installer - Select features]: /media/installer_feature_selection.png
-  [SSMS Installer - Installation complete]: /media/installer_completed.png
-  [Azure Management Portal]: http://manage.windowsazure.com/
-  [Get SQL Database server name from Management Portal]: /media/portal_get_database_name.png
-  [Connect to SSMS]: /media/ssms_connect.png
-  [Connect to SSMS -- properties]: /media/ssms_connect_properties.png
-  [Transact-SQL Reference (SQL Database)]: http://msdn.microsoft.com/en-us/library/bb510741(v=sql.120).aspx
-  [CREATE DATABASE (SQL Database)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336274.aspx
-  [ALTER DATABASE (SQL Database)]: http://msdn.microsoft.com/en-us/library/windowsazure/ff394109.aspx
-  [DROP DATABASE (SQL Database)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336259.aspx
-  [Managing Databases and Logins in SQL Database]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336235.aspx
-  [CREATE LOGIN (SQL Database)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336268.aspx
-  [CREATE USER (SQL Database)]: http://msdn.microsoft.com/en-us/library/ee336277.aspx
-  [sp_addrolemember (Transact-SQL)]: http://msdn.microsoft.com/en-us/library/ms187750.aspx
-  [ALTER LOGIN (SQL Database)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336254.aspx
-  [Monitoring SQL Database using Dynamic Management Views]: http://msdn.microsoft.com/en-us/library/windowsazure/ff394114.aspx
-  [Introducing SQL Database]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336230.aspx
-  [SQL Database Provisioning Model]: http://msdn.microsoft.com/en-us/library/ee336227.aspx
-  [Adding Users to your SQL Database]: http://blogs.msdn.com/b/sqlazure/archive/2010/06/21/10028038.aspx

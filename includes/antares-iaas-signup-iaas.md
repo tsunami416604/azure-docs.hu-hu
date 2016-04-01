@@ -1,6 +1,6 @@
 <properties pageTitle="" title="" description="" documentationCenter="" services="" solutions="" authors="" writer="kathydav" editor="tysonn" manager="jeffreyg" />
 
-> [WACOM.NOTE]
-> To complete this tutorial, you need an Azure account. You can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][Azure Free Trial].
+> [AZURE.NOTE]
+> 若要完成此教學課程，您需要 Azure 帳戶。 只需要幾分鐘的時間，您就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](http://azure.microsoft.com/pricing/free-trial/)。
 
-  [Azure Free Trial]: http://www.windowsazure.com/en-us/pricing/free-trial
+

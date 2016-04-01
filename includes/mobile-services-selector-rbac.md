@@ -1,3 +1,3 @@
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Windows Store C# | .NET)](/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac/)
-- [(Windows Store C# | JavaScript)](/en-us/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/)
+> [AZURE.SELECTOR-LIST (Platform | Backend )]
+- [(Windows 8.x 市集 C# |.NET)](../articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac.md)
+

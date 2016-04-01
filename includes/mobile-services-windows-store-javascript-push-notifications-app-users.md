@@ -1,81 +1,81 @@
 
-Next, you need to change the way that push notifications are registered to make sure that the user is authenticated before registration is attempted. The client app updates depend on the way in which you implemented push notifications.
+接下來，您需要變更註冊推播通知的方式，以便在嘗試註冊之前，能夠確定使用者已通過驗證。 用戶端應用程式更新會根據您實作推播通知的方法而定。
 
-###Using the Push Notification Wizard in Visual Studio 2013 Update 2 or a later version
+###在 Visual Studio 2013 Update 2 或更新版本中使用推播通知精靈
 
-In this method, the wizard generated new push.register.js and service.js files in your project.
+在這個方法中，精靈會在專案中產生新的 push.register.js 和 service.js 檔案。
 
->[WACOM.NOTE]The Add Push Notification Wizard is currently only supported for a .NET backend mobile service.
+1. 在 Visual Studio 方案總管] 中，開啟 push.register.js 專案檔，並在註解化或刪除呼叫 **addEventListener**。 
 
-1. In Visual Studio in Solution Explorer, open the push.register.js project file and comment-out or delete the call to **addEventListener**. 
-
-2. In the default.js project file, replace the existing **login** function, with the following code:
+2. 在 default.js 專案檔案中，將現有的 **登入** 函式，以下列程式碼 ︰
  
-		// Request authentication from Mobile Services using a Facebook login.
-		var login = function () {
-		    return new WinJS.Promise(function (complete) {
-		        client.login("facebook").done(function (results) {
-		            userId = results.userId;
-		            // Request a push notification channel.
-		            Windows.Networking.PushNotifications
-		                .PushNotificationChannelManager
-		                .createPushNotificationChannelForApplicationAsync()
-		                .then(function (channel) {
-		                    // Register for notifications using the new channel
-		                    client.push.registerNative(channel.uri);
-		                });
-		            refreshTodoItems();
-		            var message = "You are now logged in as: " + userId;
-		            var dialog = new Windows.UI.Popups.MessageDialog(message);
-		            dialog.showAsync().done(complete);
-		        }, function (error) {
-		            userId = null;
-		            var dialog = new Windows.UI.Popups
-		                .MessageDialog("An error occurred during login", "Login Required");
-		            dialog.showAsync().done(complete);
-		        });
-		    });
-		}  
+        // Request authentication from Mobile Services using a Facebook login.
+        var login = function () {
+            return new WinJS.Promise(function (complete) {
+                client.login("facebook").done(function (results) {
+                    userId = results.userId;
+                    // Request a push notification channel.
+                    Windows.Networking.PushNotifications
+                        .PushNotificationChannelManager
+                        .createPushNotificationChannelForApplicationAsync()
+                        .then(function (channel) {
+                            // Register for notifications using the new channel
+                            client.push.registerNative(channel.uri);
+                        });
+                    refreshTodoItems();
+                    var message = "You are now logged in as: " + userId;
+                    var dialog = new Windows.UI.Popups.MessageDialog(message);
+                    dialog.showAsync().done(complete);
+                }, function (error) {
+                    userId = null;
+                    var dialog = new Windows.UI.Popups
+                        .MessageDialog("An error occurred during login", "Login Required");
+                    dialog.showAsync().done(complete);
+                });
+            });
+        }  
 
-###Manually enabled push notifications		
+###手動啟用推播通知      
 
-In this method, you added registration code from the tutorial directly to the default.js project file.
+在這個方法中，您已將從教學課程取得的註冊程式碼直接新增到 default.js 專案檔。
 
-1. In Visual Studio in Solution Explorer, open the default.js project file and in the **onActivated** event handler, locate the line of code that calls the **createPushNotificationChannelForApplicationAsync** function, which looks like the following:
+1. 在 Visual Studio 方案總管] 中，開啟 default.js 專案檔案並在 **onActivated** 事件處理常式中，尋找呼叫的程式碼行 **createPushNotificationChannelForApplicationAsync** 函式，如下列所示 ︰
 
-		// Request a push notification channel.
-		Windows.Networking.PushNotifications
-		    .PushNotificationChannelManager
-		    .createPushNotificationChannelForApplicationAsync()
-		    .then(function (channel) {
-		        // Register for notifications using the new channel
-		        client.push.registerNative(channel.uri);
-		    }); 
+        // Request a push notification channel.
+        Windows.Networking.PushNotifications
+            .PushNotificationChannelManager
+            .createPushNotificationChannelForApplicationAsync()
+            .then(function (channel) {
+                // Register for notifications using the new channel
+                client.push.registerNative(channel.uri);
+            }); 
  
-2. Move this line of code into the **login** function, just before the call to **refreshTodoItems** so that the **login** function looks like this:
+2. 將這行程式碼貼入移 **登入** 函式，呼叫前面 **refreshTodoItems** 以便 **登入** 函式看起來像這樣 ︰
  
-		// Request authentication from Mobile Services using a Facebook login.
-		var login = function () {
-		    return new WinJS.Promise(function (complete) {
-		        client.login("facebook").done(function (results) {
-		            userId = results.userId;
-		            // Request a push notification channel.
-		            Windows.Networking.PushNotifications
-		                .PushNotificationChannelManager
-		                .createPushNotificationChannelForApplicationAsync()
-		                .then(function (channel) {
-		                    // Register for notifications using the new channel
-		                    client.push.registerNative(channel.uri);
-		                });
-		            refreshTodoItems();
-		            var message = "You are now logged in as: " + userId;
-		            var dialog = new Windows.UI.Popups.MessageDialog(message);
-		            dialog.showAsync().done(complete);
-		        }, function (error) {
-		            userId = null;
-		            var dialog = new Windows.UI.Popups
-		                .MessageDialog("An error occurred during login", "Login Required");
-		            dialog.showAsync().done(complete);
-		        });
-		    });
-		}  
+        // Request authentication from Mobile Services using a Facebook login.
+        var login = function () {
+            return new WinJS.Promise(function (complete) {
+                client.login("facebook").done(function (results) {
+                    userId = results.userId;
+                    // Request a push notification channel.
+                    Windows.Networking.PushNotifications
+                        .PushNotificationChannelManager
+                        .createPushNotificationChannelForApplicationAsync()
+                        .then(function (channel) {
+                            // Register for notifications using the new channel
+                            client.push.registerNative(channel.uri);
+                        });
+                    refreshTodoItems();
+                    var message = "You are now logged in as: " + userId;
+                    var dialog = new Windows.UI.Popups.MessageDialog(message);
+                    dialog.showAsync().done(complete);
+                }, function (error) {
+                    userId = null;
+                    var dialog = new Windows.UI.Popups
+                        .MessageDialog("An error occurred during login", "Login Required");
+                    dialog.showAsync().done(complete);
+                });
+            });
+        }  
+
+
