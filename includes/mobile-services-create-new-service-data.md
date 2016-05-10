@@ -1,37 +1,36 @@
 
 
-接下來，您將建立新的行動服務來取代記憶體內部資料儲存區清單。 依照下列步驟即可建立新的行動服務。
+Next, you will create a new mobile service to replace the in-memory list for data storage. Follow these steps to create a new mobile service.
 
-1. 登入 [Azure 傳統入口網站](https://manage.windowsazure.com/)。 
-2.  在導覽窗格的底部，按一下 [ **+ 新增**。
+1. Log into the [Azure Management Portal](https://manage.windowsazure.com/). 
+2.	At the bottom of the navigation pane, click **+NEW**.
 
-    ![plus-new](./media/mobile-services-create-new-service-data/plus-new.png)
+	![plus-new](./media/mobile-services-create-new-service-data/plus-new.png)
 
-3.  展開 **計算** 和 **行動服務**, ，然後按一下 [ **建立**。
+3.	Expand **Compute** and **Mobile Service**, then click **Create**.
 
-    ![mobile-create](./media/mobile-services-create-new-service-data/mobile-create.png)
+	![mobile-create](./media/mobile-services-create-new-service-data/mobile-create.png)
 
-    這會顯示 **新的行動服務** ] 對話方塊。
+    This displays the **New Mobile Service** dialog.
 
-4.  在 **建立的行動服務** 頁面上，選取 **建立免費的 20 MB SQL Database**, ，然後輸入新的行動服務中的子網域名稱 **URL** 文字方塊並等候進行名稱驗證。 一旦名稱驗證完成之後，按一下向右鍵按鈕前往下一頁。   
+4.	In the **Create a mobile service** page, select **Create a free 20 MB SQL Database**, then type a subdomain name for the new mobile service in the **URL** textbox and wait for name verification. Once name verification completes, click the right arrow button to go to the next page.	
 
-    ![mobile-create-page1](./media/mobile-services-create-new-service-data/mobile-create-page1.png)
+	![mobile-create-page1](./media/mobile-services-create-new-service-data/mobile-create-page1.png)
 
-    這會顯示 **指定資料庫設定** 頁面。
+    This displays the **Specify database settings** page.
 
-    
-    > [AZURE.NOTE] 本教學課程的一部分，您可以建立新的 SQL 資料庫執行個體和伺服器。 您可以如同任何其他 SQL Database 執行個體般重新使用這個新資料庫，並加以管理 如果您已經有資料庫做為新的行動服務的相同區域中，您可以改選 [ **使用現有的資料庫** ，然後選取該資料庫。 不建議您使用位在不同區域的資料庫，因為這會需要額外的頻寬成本和產生更高的延遲。
+    <div class="dev-callout"> 
+	<b>Note</b> 
+	<p>As part of this tutorial, you create a new SQL Database instance and server. You can reuse this new database and administer it as you would any other SQL Database instance. If you already have a database in the same region as the new mobile service, you can instead choose <strong>Use existing Database</strong> and then select that database. The use of a database in a different region is not recommended because of additional bandwidth costs and higher latencies.</p></div>	
 
-5.  在 **名稱**, ，輸入名稱的新資料庫，然後輸入 **登入名稱**, ，這是系統管理員登入新的 SQL 資料庫伺服器類型名稱並確認密碼，然後按一下檢查按鈕以完成程序。
+5.	In **Name**, type the name of the new database, then type **Login name**, which is the administrator login name for the new SQL Database server, type and confirm the password, and click the check button to complete the process.
 
-    ![mobile-create-page2](./media/mobile-services-create-new-service-data/mobile-create-page2.png)
+	![mobile-create-page2](./media/mobile-services-create-new-service-data/mobile-create-page2.png)
 
-    
-    > [AZURE.NOTE] 當您提供的密碼不符合最低需求或不相符時，會顯示警告。  
-    >
-    > 建議您記下您所指定的系統管理員登入名稱和密碼；您日後需要此資訊才能重複使用 SQL 資料庫執行個體或伺服器。
+    <div class="dev-callout"> 
+	<b>Note</b> 
+	<p>When the password that you supply does not meet the minimum requirements or when there is a mismatch, a warning is displayed. <br/>We recommend that you make a note of the administrator login name and password that you specify; you will need this information to reuse the SQL Database instance or the server in the future.</p> 
+	</div>
 
-您現在已經建立可供行動應用程式使用的新行動服務。 接下來，您將新增要用來儲存應用程式資料的資料表。 應用程式將使用此資料表來取代記憶體內部收集。
-
-
+You have now created a new mobile service that can be used by your mobile apps. Next, you will add a new table in which to store app data. This table will be used by the app in place of the in-memory collection.
 

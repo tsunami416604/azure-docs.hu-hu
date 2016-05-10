@@ -1,23 +1,20 @@
-由於持續進行開發，因此 Android Studio 中安裝的 Android SDK 版本可能與程式碼中的版本不相符。 此教學課程參照的 Android SDK 為 21 版，是撰寫本文時的最新版本。 隨著新修訂版 SDK 發行，版本號碼可能會隨之增加，我們建議您使用最新的可用版本。
+Because of ongoing development, the Android SDK version installed in Eclipse might not match the version in the code. The Android SDK referenced in this tutorial is version 19, the latest at the time of writing. The version number may increase as new releases of the SDK appear, and we recomend using the latest version available.
 
-版本不符合的兩個徵兆為：
+Two symptoms of version mismatch are:
 
-1. 當您建置或重新建置專案時，您可能會收到之類的 Gradle 錯誤訊息 「**找不到目標 Google inc.不**」。
+1. Look in the Eclipse Console in the bottom pane. You may see error messages of the form "**Unable to resolve target 'android-n'**".
 
-2. 錯誤訊息可能是程式碼中必須根據 `import` 陳述式解析的標準 Android 物件所產生。
+2. Standard Android objects in code that should resolve based on `import` statements may be generating error messages.
 
-若出現其中任一項，則 Android Studio 中安裝的 Android SDK 版本可能與下載專案的 SDK 目標不相符。  若要確認版本，請進行下列變更：
+If either of these appear, the version of the Android SDK installed in Eclipse might not match the SDK target of the downloaded project.  To verify the version, make the following changes:
 
 
-1. 在 Android Studio 中，按一下 [ **工具** = > **Android** = > **SDK Manager**。 若尚未安裝最新版的 SDK 平台，則按一下以安裝它。 記下版本號碼。
+1. In Eclipse, click **Window**, then click **Android SDK Manager**. If you have not installed the latest version of the SDK Platform, then click to install it. Make a note of the version number.
 
-2. 在 [專案總管] 索引標籤中，在 **Gradle 指令碼**, ，開啟檔案 **build.gradle (modeule ︰ 應用程式)**。 請確認 **compileSdkVersion** 和 **buildToolsVersion** 設定最新安裝的 SDK 版本。 標記外觀如下：
+2. Open the project file **AndroidManifest.xml**. Ensure that in the **uses-sdk** element, the **targetSdkVersion** is set to the latest version installed. The **uses-sdk** tag might look like this:
  
-            compileSdkVersion 'Google Inc.:Google APIs:21'
-            buildToolsVersion "21.1.2"
-    
-3. 在 Android Studio 專案總管] 中以滑鼠右鍵按一下專案節點，選擇 [ **屬性**, ，然後在左欄中選擇 **Android**。 請確認 **專案建置目標** 設為相同的 SDK 版本 **targetSdkVersion**。
-
-4. 與 Eclipse 的情況不同，在 Android Studio 中，不再使用資訊清單檔案來指定目標 SDK 和最低的 SDK 版本。
-
-
+	 	    <uses-sdk
+	 	        android:minSdkVersion="8"
+	 	        android:targetSdkVersion="19" />
+	
+3. In the Eclipse Package Explorer right-click the project node, choose **Properties**, and in the left column choose **Android**. Ensure that the **Project Build Target** is set to the same SDK version as the **targetSdkVersion**.

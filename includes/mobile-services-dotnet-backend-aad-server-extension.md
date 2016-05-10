@@ -1,16 +1,11 @@
-### (選用) 設定 Azure Active Directory 的 .NET 行動服務
+### (Optional) Configure your .NET mobile service for AAD login
 
->[AZURE.NOTE] 這些步驟都是選用的因為它們只適用於 Azure Active Directory 登入提供者。
+>[WACOM.NOTE] These steps are optional because they only apply to the Azure Active Directory login provider.
 
-1. 安裝 [WindowsAzure.MobileServices.Backend.Security NuGet 封裝](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend.Security)。
+1. Install the **WindowsAzure.MobileServices.Backend.Security** NuGet package.
 
-2. 在 Visual Studio 中，展開 App_Start，然後開啟 WebApiConfig.cs。 在頂端新增下列 `using` 陳述式：
-
-        using Microsoft.WindowsAzure.Mobile.Service.Security.Providers;
-
-3. 另外，在 WebApiConfig.cs 中，將 `options` 具現化之後，立即將下列程式碼新增至 `Register` 方法：
+2. In Visual Studio expand App_Start and open the WebApiConfig.cs file. Add the following code to the `Register` method, immediately after `options` is instantiated:
 
         options.LoginProviders.Remove(typeof(AzureActiveDirectoryLoginProvider));
         options.LoginProviders.Add(typeof(AzureActiveDirectoryExtendedLoginProvider));
-
 

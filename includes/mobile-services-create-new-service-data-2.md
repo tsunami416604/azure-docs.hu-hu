@@ -1,52 +1,60 @@
-若要能夠在新行動服務中儲存應用程式資料，您必須先在相關聯的 SQL 資料庫執行個體中建立新的資料表。
+To be able to store app data in the new mobile service, you must first create a new table in the associated SQL Database instance.
 
-1. 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **行動電話服務**, ，然後按一下您剛才建立的行動服務。
+1. In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
 
-2. 按一下 [ **資料** 索引標籤，然後按一下 [ **+ 建立**。
+2. Click the **Data** tab, then click **+Create**.
+	
+   	![mobile-data-tab-empty](./media/mobile-services-create-new-service-data-2/mobile-data-tab-empty.png)
 
-    這會顯示 **建立新資料表** ] 對話方塊。
+   	This displays the **Create new table** dialog.
 
-3. 在 **資料表名稱** 類型 _TodoItem_, ，然後按一下核取按鈕。 這會建立新的儲存體資料表 **TodoItem** 包含預設權限集。 這表示擁有應用程式金鑰 (隨應用程式散佈) 的人都可以存取與變更資料表中的資料。 
+3. In **Table name** type _TodoItem_, then click the check button.
 
-    >[AZURE.NOTE] 在行動服務快速入門中使用相同的資料表名稱。 However, each table is created in a schema that is specific to a given mobile service. 目的是為了防止多個行動服務使用相同資料庫時產生資料衝突。
+ 	![mobile-create-todoitem-table](./media/mobile-services-create-new-service-data-2/mobile-create-todoitem-table.png)
 
-4. 按一下新 **TodoItem** 資料表，並驗證其中不含資料列。
+  This creates a new storage table **TodoItem** with the default permissions set. This means that anyone with the application key, which is distributed with your app, can access and change data in the table. 
 
-5. 按一下 [ **資料行** ] 索引標籤。 驗證是否已為您自動建立下列預設資料行： 
-    
-    <table border="1" cellpadding="10">
-    <tr>
-    <th>資料行名稱</th>
-    <th>類型</th>
-    <th>索引</th>
-    </tr>
-    <tr>
-    <td>id</td>
-    <td>字串</td>
-    <td>已編製索引</td>
-    </tr>
-    <tr>
-    <td>__createdAt</td>
-    <td>日期</td>
-    <td>已編製索引</td>
-    </tr>
-    <tr>
-    <td>__updatedAt</td>
-    <td>日期</td>
-    <td><font color="transparent">-</font></td>
-    </tr>
-    <tr>
-    <td>__version</td>
-    <td>時間戳記 (MSSQL)</td>
-    <td><font color="transparent">-</font></td>
-    </tr>   
-    </table>    
-        
+> [WACOM.NOTE] 
+> The same table name is used in Mobile Services quickstart. However, each table is created in a schema that is specific to a given mobile service. This is to prevent data collisions when multiple mobile services use the same database.
 
-    This is the minimum requirement for a table in Mobile Services. 
+4. Click the new **TodoItem** table and verify that there are no data rows.
 
-    > [AZURE.NOTE] When dynamic schema is enabled on your mobile service, new columns are created automatically when JSON objects are sent to the mobile service by an insert or update operation.
+5. Click the **Columns** tab. Verify that the following default columns are automatically created for you: 
+	
+	<table border="1" cellpadding="10">
+ 	<tr>
+ 	<th>Column Name</th>
+ 	<th>Type</th>
+ 	<th>Index</th>
+ 	</tr>
+ 	<tr>
+ 	<td>id</td>
+ 	<td>string</td>
+ 	<td>Indexed</td>
+ 	</tr>
+ 	<tr>
+ 	<td>__createdAt</td>
+ 	<td>date</td>
+ 	<td>Indexed</td>
+ 	</tr>
+ 	<tr>
+ 	<td>__updatedAt</td>
+ 	<td>date</td>
+ 	<td><font color="transparent">-</font></td>
+ 	</tr>
+ 	<tr>
+ 	<td>__version</td>
+ 	<td>timestamp (MSSQL)</td>
+ 	<td><font color="transparent">-</font></td>
+ 	</tr> 	
+ 	</table> 	
+		
 
-現在您已準備好將新的行動服務作為應用程式的資料儲存區使用。
+  	This is the minimum requirement for a table in Mobile Services. 
 
+    <div class="dev-callout"><b>Note</b>
+	<p>When dynamic schema is enabled on your mobile service, new columns are created automatically when JSON objects are sent to the mobile service by an insert or update operation.</p>
+    </div>
+
+You are now ready to use the new mobile service as data storage for the app.
 

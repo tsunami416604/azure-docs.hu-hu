@@ -1,10 +1,10 @@
-> [AZURE.NOTE]
-> 若要順利完成此區段，您的平台必須有運作中的 Node.js 安裝和 Azure SDK for Node.js。
+> [WACOM.NOTE]
+> To successfully complete this section, you must have a working installation of Node.js and the Azure SDK for Node.js for your platform.
 
->* 安裝 Azure SDK for Node.js: <a href="http://go.microsoft.com/fwlink/?LinkId=254279">Windows installer</a> | <a href="http://go.microsoft.com/fwlink/?LinkId=253471">Mac 安裝程式</a> | <a href="http://go.microsoft.com/fwlink/?LinkId=253472">Linux 下載</a></li>
+> -   Install the Azure SDK for Node.js: [Windows installer][Windows installer] | [Mac installer][Mac installer] | [Linux download][Linux download]
 
->* 如果您使用的是 Mac 或 Linux，請從 <a href="http://nodejs.org">http://nodejs.org</a> 安裝 Node.js。 Windows 安裝程式已包含 Node.js。
+> -   If you are using Mac or Linux, install Node.js from <http://nodejs.org>. The Windows installer already includes Node.js.
 
-
-
-
+  [Windows installer]: http://go.microsoft.com/fwlink/?LinkId=254279
+  [Mac installer]: http://go.microsoft.com/fwlink/?LinkId=253471
+  [Linux download]: http://go.microsoft.com/fwlink/?LinkId=253472

@@ -1,11 +1,7 @@
-1. 開啟網頁瀏覽器，並瀏覽到 [http://www.windowsazure.com][]。
+1.  Open a web browser and browse to [<http://www.windowsazure.com>][<http://www.windowsazure.com>].
 
-2. 若要開始使用免費帳戶，請按一下 [ **免費試用版** 在右上角，然後遵循的步驟。 您將需要有信用卡號和行動電話號碼來證明身分，但是您不會被收取任何費用。
+2.  To get started with a free account, click **Free Trial** in the upper-right corner and follow the steps. You'll need a credit card number and a mobile phone number for proof of identity, but you will not be billed.
 
- ![Azure 網站][0]
+![Azure Web Site][Azure Web Site]
 
-
-[0]: ./media/create-azure-account/freetrialonwindowsazurehomepage.png
- 
-
-
+  [Azure Web Site]: ./media/create-azure-account/freetrialonwindowsazurehomepage.png

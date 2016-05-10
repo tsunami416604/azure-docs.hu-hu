@@ -1,3 +1,1 @@
-如果您還沒有流量管理員設定檔，使用中的資訊 [建立流量管理員設定檔使用 [快速建立](../traffic-manager/traffic-manager-manage-profiles.md) 建立一個。 請注意 **。 trafficmanager.net** 因為這會使用本文件稍後的步驟，與您的流量管理員設定檔相關聯的網域名稱。
-
-
+If you do not already have a Traffic Manager profile, use the information in [Create a Traffic Manager profile using Quick Create](/en-us/library/windowsazure/dn339012.aspx) to create one. Note the **.trafficmanager.net** domain name associated with your Traffic Manager profile, as this will be used later by later steps in this document.

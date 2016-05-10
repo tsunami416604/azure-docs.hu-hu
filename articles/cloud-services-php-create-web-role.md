@@ -1,66 +1,65 @@
-<properties
-    pageTitle="PHP Web 和背景工作角色 | Microsoft Azure"
-    description="在 Azure 雲端服務中建立 PHP Web 和背景工作角色及設定 PHP 執行階段的指南。"
-    services=""
-    documentationCenter="php"
-    authors="tfitzmac"
-    manager="wpickett"
-    editor="mollybos"/>
+<properties urlDisplayName="Create Web and Worker Roles" pageTitle="Create Web and Worker Roles" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="PHP" title="How to create PHP web and worker roles" authors="bswan" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags
-    ms.service="cloud-services"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="PHP"
-    ms.topic="article"
-    ms.date="09/01/2015"
-    ms.author="tomfitz"/>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="bswan"></tags>
 
-#如何建立 PHP Web 和背景工作角色
+# How to create PHP web and worker roles
 
-## 概觀
+This guide will show you how to create PHP web or worker roles in a Windows development environment, choose a specific version of PHP from the "built-in" versions available, change the PHP configuration, enable extensions, and finally, how to deploy to Azure. It also describes how to configure a web or worker role to use a PHP runtime (with custom configuration and extensions) that you provide.
 
-本指南將說明如何在 Windows 開發環境中建立 PHP Web 或背景工作角色、從「內建」的可用版本中選擇特定版本的 PHP、變更 PHP 組態、啟用擴充功能，最終部署至 Azure。 此外也會說明如何設定 Web 或背景工作角色，以使用您所提供的 PHP 執行階段 (具有自訂組態和擴充功能)。
+## <a name="TableOfContents"></a>Table of Contents
 
-## 什麼是 PHP Web 和背景工作角色？
+-   [What are PHP web and worker roles?][What are PHP web and worker roles?]
+-   [Download the Azure SDK for PHP][Download the Azure SDK for PHP]
+-   [How to: Create a Cloud Services project][How to: Create a Cloud Services project]
+-   [How to: Add PHP Web and worker roles][How to: Add PHP Web and worker roles]
+-   [How to: Specify the built-in PHP version][How to: Specify the built-in PHP version]
+-   [How to: Customize the built-in PHP runtime][How to: Customize the built-in PHP runtime]
+-   [How to: Use your own PHP runtime][How to: Use your own PHP runtime]
+-   [How to: Run your application in the Compute and Storage Emulators][How to: Run your application in the Compute and Storage Emulators]
+-   [How to: Publish your application][How to: Publish your application]
 
-Azure 提供三種運算模型來執行應用程式：Azure 應用程式服務、Azure 虛擬機器和 Azure 雲端服務。 這三種模型都支援 PHP。 雲端服務，包含 web 和背景工作角色，提供 *平台即服務 (PaaS)*。 在雲端服務中，Web 角色提供專用的 Internet Information Services (IIS) Web 伺服器，用來代管前端 Web 應用程式。 背景工作角色可以執行非同步、長時間或永久的工作，且不受使用者互動或輸入所影響。
+## <a name="WhatIs"></a>What are PHP web and worker roles?
 
-如需有關這些選項的詳細資訊，請參閱 [裝載 Azure 所提供的選項運算](./cloud-services/fundamentals-application-models.md)。
+Azure provides three compute models for running applications: [Azure Web Sites][Azure Web Sites], [Azure Virtual Machines][Azure Virtual Machines], and [Azure Cloud Services][Azure Cloud Services]. All three models support PHP. Cloud Services, which include web and worker roles, provide *Platform as a Service (PaaS)*. Within a cloud service, a web role provides a dedicated Internet Information Services (IIS) web server to host front-end web applications, while a worker role can run asynchronous, long-running or perpetual tasks independent of user interaction or input.
 
-## 下載 Azure SDK for PHP
+For more information, see [What is a Cloud Service?][What is a Cloud Service?].
 
- [Azure SDK for PHP] 數個元件所組成。 本文將使用下列兩個元件：Azure PowerShell 和 Azure 模擬器。 這兩個元件可透過 Microsoft Web Platform Installer 來安裝。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
+## <a name="DownloadSdk"></a>Download the Azure SDK for PHP
 
-## 建立雲端服務專案
+The [Azure SDK for PHP][Azure SDK for PHP] consists of several components. This article will use two of them: Azure PowerShell and the Azure Emulators. These two components can be installed via the Microsoft Web Platform Installer here: [Install Azure PowerShell and the Azure Emulators][Install Azure PowerShell and the Azure Emulators].
 
-要建立 PHP Web 或背景工作角色，首先必須建立 Azure 服務專案。 Azure 服務專案可作為 web 和背景工作角色的邏輯容器，其中包含專案的 [service definition (.csdef)] 和 [service configuration (.cscfg)] 檔案。
+## <a name="CreateProject"></a>How to: Create a Cloud Services project
 
-若要建立新的 Azure 服務專案，請以系統管理員身分執行 Azure PowerShell 並執行下列命令：
+The first step in creating a PHP web or worker role is to create an Azure Service project. an Azure Service project serves as a logical container for web and worker roles, and contains the project's [service definition (.csdef)][service definition (.csdef)] and [service configuration (.cscfg)][service configuration (.cscfg)] files.
 
-    PS C:\>New-AzureServiceProject myProject
+To create a new Azure Servcie project, execute the following command:
 
-此命令會建立新目錄 (`myProject`)，讓您可將 Web 和背景工作角色新增至該處。
+    PS C:PS C:\>New-AzureServiceProject myProjectgt;New-AzureServiceProject myProject
 
-## 新增 PHP Web 或背景工作角色
+This command will create a new directory (`myProject`) to which you can add web and worker roles.
 
-若要將 PHP Web 角色新增至專案，請從專案的根目錄中執行下列命令：
+## <a name="AddRole"></a>How to: Add PHP web or worker roles
+
+To add a PHP web role to a project, run the following command from within the project's root directory:
 
     PS C:\myProject> Add-AzurePHPWebRole roleName
 
-對於背景工作角色，請使用下列命令：
+For a worker role, use this command:
 
     PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
-> [AZURE.NOTE]  `roleName` 參數是選擇性的。 若省略此參數，將會自動產生角色名稱。 第一個建立的 Web 角色將是 `WebRole1`、第二個將是 `WebRole2`，依此類推。 第一個建立的背景工作角色將是 `WorkerRole1`、第二個將是 `WorkerRole2`，依此類推。
+<div class="dev-callout"> 
+<b>Note</b> 
+<p>The <code data-inline="1">roleName</code> parameter is optional. If it is omitted, the role name will be automatically generated. The first web role created will be <code data-inline="1">WebRole1</code>, the second <code data-inline="1">WebRole2</code>, and so on. The first worker role created will be <code data-inline="1">WorkerRole1</code>, the second <code data-inline="1">WorkerRole2</code>, and so on.</p> 
+</div>
 
-## 指定內建 PHP 版本
+## <a name="SpecifyPHPVersion"></a>How to: Specify the built-in PHP Version
 
-當您將 PHP Web 或背景工作角色新增至專案時，專案的組態檔會進行修改，使應用程式在部署時，會將 PHP 安裝在其每個 Web 或背景工作執行個體上。 若要檢視依預設所將安裝的 PHP 版本，請執行下列命令：
+When you add a PHP web or worker role to a project, the project's configuration files are modified so that PHP will be installed on each web or worker instance of your application when it is deployed. To see the version of PHP that will be installed by default, run the following command:
 
     PS C:\myProject> Get-AzureServiceProjectRoleRuntime
 
-前述命令的輸出會類似於下列內容。 在此範例中，會將 PHP 5.3.17 的 `IsDefault` 旗標設為 `true`，表示這是預設安裝的 PHP 版本。
+The output from the command above will look similar to what is shown below. In this example, the `IsDefault` flag is set to `true` for PHP 5.3.17, indicating that it will be the default PHP version installed.
 
     Runtime Version     PackageUri                      IsDefault
     ------- -------     ----------                      ---------
@@ -72,41 +71,48 @@ Azure 提供三種運算模型來執行應用程式：Azure 應用程式服務�
     PHP 5.3.17          http://nodertncu.blob.core...   True
     PHP 5.4.0           http://nodertncu.blob.core...   False
 
-您可以將 PHP 執行階段版本設為任何列出的 PHP 版本。 例如，若要將 PHP 版本 (針對名為 `roleName` 的角色) 設為 5.4.0，請使用下列命令：
+You can set the PHP runtime version to any of the PHP versions that are listed. For example, to set the PHP version (for a role with name `roleName`) to 5.4.0, use the following command:
 
     PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
 
-> [AZURE.NOTE] 可用的 PHP 版本可能會在未來變更。
+<div class="dev-callout"> 
+<b>Note</b> 
+<p>More PHP versions may be available in the future, and the available versions may change.</p> 
+</div>
 
-## 自訂內建 PHP 執行階段
+## <a name="CustomizePHP"></a>How to: Customize the built-in PHP runtime
 
-對於您在前述步驟中安裝的 PHP 執行階段，您可以完整掌控其組態，包括修改 `php.ini` 設定和啟用擴充功能。
+You have complete control over the configuration of the PHP runtime that is installed when you follow the steps above, including modification of `php.ini` settings and enabling of extensions.
 
-若要自訂內建 PHP 執行階段，請遵循下列步驟：
+To customize the built-in PHP runtime, follow these steps:
 
-1. 將名為 `php` 的新資料夾新增至 Web 角色的 `bin` 目錄。 對於背景工作角色，請將其新增至角色的根目錄。
-2. 在`php` 資料夾中，建立另一個名為 `ext` 的資料夾。 在此資料夾中放入任何您要啟用的 `.dll` 擴充功能檔案 (例如 `php_mongo.dll`)。
-3. 將 `php.ini` 檔案新增至 `php` 資料夾。 在此檔案中啟用自訂擴充功能，並設定 PHP 指示詞。 例如，如果您要開啟 `display_errors`，並啟用 `php_mongo.dll` 擴充功能，則 `php.ini` 檔案的內容將如下所示：
+1.  Add a new folder, named `php`, to the `bin` directory of your web role. For a worker role, add it to the role's root directory.
+2.  In the `php` folder, create another folder called `ext`. Put any `.dll` extension files (e.g. `php_mongo.dll`) you want to enable in this folder.
+3.  Add a `php.ini` file to the `php` folder. Enable any custom extensions and set any PHP directives in this file. For example, if you wanted to turn `display_errors` on and enable the `php_mongo.dll` extension, the contents of your `php.ini` file would be as follows:
 
         display_errors=On
         extension=php_mongo.dll
 
-> [AZURE.NOTE] 您沒有明確設定中的任何設定 `php.ini` 檔提供將會自動設為其預設值。 但請留意，您可以新增完整的 `php.ini` 檔案。
+<div class="dev-callout"> 
+<b>Note</b> 
+<p>Any settings that you don't explicity set in the <code data-inline="1">php.ini</code> file that you provide will automatically be set to their default values. However, keep in mind that you can add a complete <code data-inline="1">php.ini</code> file. </p> 
+</div>
 
-## 使用您自己的 PHP 執行階段
-在某些情況下，您可能會想要提供自己的 PHP 執行階段，而不依照前述的說明選取內建 PHP 執行階段並加以設定。 例如，您可以使用與在開發環境使用的 Web 或背景工作角色中相同的 PHP 執行階段。 這可讓您更輕鬆地確保應用程式在您的生產環境中不會變更行為。
+## <a name="OwnPHP"></a>How to: Use your own PHP runtime
 
-### 設定 Web 角色以使用您自己的 PHP 執行階段
+In some cases, instead of selecting a built-in PHP runtime and configuring it as described above, you may want to provide your own PHP runtime. For example, you can use the same PHP runtime in a web or worker role that you use in your development environment, making it easier to ensure that application will not change behavior in your production environment.
 
-若要設定 Web 角色以使用您所提供的 PHP 執行階段，請遵循下列步驟：
+### <a name="OwnPHPWebRole"></a>Configuring a web role to use your own PHP runtime
 
-1. 如本主題先前所述，建立 Azure 服務專案並加入 PHP Web 角色。
-2. 在位於 Web 角色根目錄內的 `bin` 資料夾中建立 `php` 資料夾，然後將 PHP 執行階段 (所有的二進位檔、組態檔、子資料夾等) 新增至 `php` 資料夾。
-3. （選擇性）如果您的 PHP 執行階段使用 [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers], ，您必須設定 web 角色，使安裝 [SQL Server Native Client 2012][sql native client] 時加以佈建。 若要這樣做，請新增 [sqlncli.msi x64 installer] 至 `bin` web 角色的根目錄中的資料夾。 下一個步驟中說明的啟動指令碼，將會在角色進行佈建時以無訊息方式執行安裝程式。 如果您的 PHP 執行階段並未使用適用於 PHP for SQL Server 的 Microsoft 驅動程式，您可以從下一個步驟所顯示的指令碼中移除以下一行：
+To configure a web role to use a PHP runtime that you provide, follow the steps below.
+
+1.  Create an Azure Service project and add a PHP web role as described in the [How to: Create a cloud services project][How to: Create a Cloud Services project] and [How to: Add PHP web or worker roles][How to: Add PHP Web and worker roles] sections above.
+2.  Create a `php` folder in the `bin` folder that is in your web role's root directory, then add your PHP runtime (all binaries, configuration files, subfolders, etc.) to the `php` folder.
+3.  (OPTIONAL) If your PHP runtime uses the [Microsoft Drivers for PHP for SQL Server][Microsoft Drivers for PHP for SQL Server], you will need to configure your web role to install [SQL Server Native Client 2012][SQL Server Native Client 2012] when it is provisioned. To do this, add the `sqlncli.msi` installer to the `bin` folder in your web role's root directory. You can download the installer here: [sqlncli.msi x64 installer][sqlncli.msi x64 installer]. The startup script described in the next step will silently run the installer when the role is provisioned. If your PHP runtime does not use the Microsoft Drivers for PHP for SQL Server, you can remove the following line from the script shown in the next step:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
 
-4. 定義啟動工作，設定 [網際網路資訊服務 (IIS)][iis.net] 要您的 PHP 執行階段用來處理要求 `.php` 頁面。 若要執行此動作，請在文字編輯器中開啟 `setup_web.cmd` 檔案 (位於 Web 角色根目錄的 `bin` 檔案中)，並使用下列指令碼來取代它的內容：
+4.  The next step is to define a startup task that configures [Internet Information Services (IIS)][Internet Information Services (IIS)] to use your PHP runtime to handle requests for `.php` pages. To do this, open the `setup_web.cmd` file (in the `bin` file of your web role's root directory) in a text editor and replace its contents with the following script:
 
         @ECHO ON
         cd "%~dp0"
@@ -124,23 +130,26 @@ Azure 提供三種運算模型來執行應用程式：Azure 應用程式服務�
         %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/handlers /+"[name='PHP',path='*.php',verb='GET,HEAD,POST',modules='FastCgiModule',scriptProcessor='%PHP_FULL_PATH%',resourceType='Either',requireAccess='Script']" /commit:apphost
         %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /"[fullPath='%PHP_FULL_PATH%'].queueLength:50000"
 
-5. 將應用程式檔案新增至 Web 角色的根目錄。 這會是 Web 伺服器的根目錄。
+5.  Add your application files to your web role's root directory. This will be the web server's root directory.
 
-6. 發行您的應用程式中所述 [發行您的應用程式](#how-to-publish-your-application) 下一節。
+6.  Publish your application as described in the [How to: Publish your application][How to: Publish your application] section below.
 
-> [AZURE.NOTE]  `download.ps1` 指令碼 (在 `bin` web 角色根目錄的資料夾) 可以執行上面所述，使用您自己的 PHP 執行階段的步驟之後刪除。
+<div class="dev-callout"> 
+<b>Note</b> 
+<p>The <code data-inline="1">download.ps1</code> script (in the <code data-inline="1">bin</code> folder of the web role's root directory) can be deleted after following the steps described above for using your own PHP runtime.</p> 
+</div>
 
-### 設定背景工作角色以使用您自己的 PHP 執行階段
+### <a name="OwnPHPWorkerRole"></a>Configuring a worker role to use your own PHP runtime
 
-若要設定背景工作角色以使用您所提供的 PHP 執行階段，請遵循下列步驟：
+To configure a worker role to use a PHP runtime that you provide, follow the steps below.
 
-1. 如本主題先前所述，建立 Azure 服務專案並加入 PHP 背景工作角色。
-2. 在背景工作角色的根目錄中建立 `php` 資料夾，然後將 PHP 執行階段 (所有的二進位檔、組態檔、子資料夾等) 新增至 `php` 資料夾。
-3. （選擇性）如果您的 PHP 執行階段使用 [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers], ，您必須設定背景工作角色，使安裝 [SQL Server Native Client 2012][sql native client] 時加以佈建。 若要這樣做，請新增 [sqlncli.msi x64 installer] 至背景工作角色的根目錄。 下一個步驟中說明的啟動指令碼，將會在角色進行佈建時以無訊息方式執行安裝程式。 如果您的 PHP 執行階段並未使用適用於 PHP for SQL Server 的 Microsoft 驅動程式，您可以從下一個步驟所顯示的指令碼中移除以下一行：
+1.  Create an Azure Service project and add a PHP worker role as described in the [How to: Create a cloud services project][How to: Create a Cloud Services project] and [How to: Add PHP web or worker roles][How to: Add PHP Web and worker roles] sections above.
+2.  Create a `php` folder in the worker role's root directory, then add your PHP runtime (all binaries, configuration files, subfolders, etc.) to the `php` folder.
+3.  (OPTIONAL) If your PHP runtime uses [Microsoft Drivers for PHP for SQL Server][Microsoft Drivers for PHP for SQL Server], you will need to configure your worker role to install [SQL Server Native Client 2012][SQL Server Native Client 2012] when it is provisioned. To do this, add the `sqlncli.msi` installer to the worker role's root directory. You can download the installer here: [sqlncli.msi x64 installer][sqlncli.msi x64 installer]. The startup script described in the next step will silently run the installer when the role is provisioned. If your PHP runtime does not use the Microsoft Drivers for PHP for SQL Server, you can remove the following line from the script shown in the next step:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
 
-4. 定義啟動工作，在佈建角色時將您的 `php.exe` 可執行檔新增至背景工作角色的 PATH 環境變數中。 若要執行此動作，請在文字編輯器中開啟 `setup_worker.cmd` 檔案 (位於背景工作角色的根目錄中)，並使用下列指令碼來取代它的內容：
+4.  The next step is to define a startup task that adds your `php.exe` executable to the worker role's PATH environment variable when the role is provisioned. To do this, open the `setup_worker.cmd` file (in the worker role's root directory) in a text editor and replace its contents with the following script:
 
         @echo on
 
@@ -165,50 +174,61 @@ Azure 提供三種運算模型來執行應用程式：Azure 應用程式服務�
         :error
 
         echo FAILED
-        exit /b -1
+        exit /b -1  
 
-5. 將應用程式檔案新增至背景工作角色的根目錄。
+5.  Add your application files to your worker role's root directory.
 
-6. 發行您的應用程式中所述 [發行您的應用程式](#how-to-publish-your-application) 下一節。
+6.  Publish your application as described in the [How to: Publish your application][How to: Publish your application] section below.
 
-## 在計算和儲存模擬器中執行您的應用程式
+## <a name="Emulators"></a>How to: Run your application in the Compute and Storage Emulators
 
-Azure 模擬器所提供的本機環境，可讓您在 Azure 應用程式部署至雲端前先加以測試。 模擬器與 Azure 環境之間有若干差異。 若要進一步了解，請參閱 [使用 Azure 儲存體模擬器進行開發和測試](./storage/storage-use-emulator.md)。
+The Azure Compute and Storage Emulators provide a local environment in which you can test your Azure application before deploying it to the cloud. There are some differences between the emulators and the Azure environment. To understand this better, see [Differences Between the Compute Emulator and Azure][Differences Between the Compute Emulator and Azure] and [Differences Between the Storage Emulator and Azure Storage Services][Differences Between the Storage Emulator and Azure Storage Services].
 
-請注意，您必須在本機安裝 PHP，才能使用計算模擬器。 計算模擬器會使用您的本機 PHP 安裝執行您的應用程式。
+Note that you must have PHP installed locally to use the Compute Emulator. The Compute Emulator will use your local PHP installation to run your application.
 
-若要在模擬器中執行您的專案，請從專案的根目錄執行下列命令：
+To run your project in the emulators, execute the following command from your project's root directory:
 
     PS C:\MyProject> Start-AzureEmulator
 
-您將看到類似以下的輸出：
+You will see out put similar to this:
 
     Creating local package...
     Starting Emulator...
     Role is running at http://127.0.0.1:81
     Started
 
-您可以開啟網頁瀏覽器，並瀏覽至輸出中顯示的本機位址 (在前述範例輸出中為 `http://127.0.0.1:81`)，即可看見您的應用程式正在模擬器中執行。
+You can see your application running in the emulator by opening a web browser and browsing to local address shown in the output (`http://127.0.0.1:81` in the example output above).
 
-若要停止模擬器，請執行下列命令：
+To stop the emulators, execute this command:
 
     PS C:\MyProject> Stop-AzureEmulator
 
-## 發行您的應用程式
+## <a name="Publish"></a>How to: Publish your application
 
-若要發行應用程式，您必須先匯入您使用發行設定 **Import-publishsettingsfile** 指令程式。 然後您可以發佈您的應用程式使用 [Publish-azureserviceproject](https://msdn.microsoft.com/library/azure/dn495166.aspx) 指令程式。 如需登入資訊，請參閱 [如何安裝和設定 Azure PowerShell](powershell-install-configure.md)。
+To publish your application, you need to first import your publish settings with the **Import-PublishSettingsFile** cmdlet, then you can publish your application with the **Publish-AzureServiceProject** cmdlet. Details on using each of these cmdlets can be found in [How to: Import publish settings][How to: Import publish settings] and [How to: Deploy a cloud service to Azure][How to: Deploy a cloud service to Azure] respectively.
 
-## 後續步驟
-
-如需詳細資訊，請參閱 [PHP 開發人員中心](/develop/php/)。
-
-[Azure SDK for PHP]: /develop/php/common-tasks/download-php-sdk/
-[install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[service definition (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[service configuration (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
-[iis.net]: http://www.iis.net/
-[sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
-[sqlsrv drivers]: http://php.net/sqlsrv
-[sqlncli.msi x64 installer]: http://go.microsoft.com/fwlink/?LinkID=239648
-
-
+  [What are PHP web and worker roles?]: #WhatIs
+  [Download the Azure SDK for PHP]: #DownloadSdk
+  [How to: Create a Cloud Services project]: #CreateProject
+  [How to: Add PHP Web and worker roles]: #AddRole
+  [How to: Specify the built-in PHP version]: #SpecifyPHPVersion
+  [How to: Customize the built-in PHP runtime]: #CustomizePHP
+  [How to: Use your own PHP runtime]: #OwnPHP
+  [How to: Run your application in the Compute and Storage Emulators]: #Emulators
+  [How to: Publish your application]: #Publish
+  [Azure Web Sites]: /en-us/develop/net/fundamentals/compute/#WebSites
+  [Azure Virtual Machines]: /en-us/develop/net/fundamentals/compute/#VMachine
+  [Azure Cloud Services]: /en-us/develop/net/fundamentals/compute/#CloudServices
+  [What is a Cloud Service?]: /en-us/manage/services/cloud-services/what-is-a-cloud-service/
+  [Azure SDK for PHP]: /en-us/develop/php/common-tasks/download-php-sdk/
+  [Install Azure PowerShell and the Azure Emulators]: http://go.microsoft.com/fwlink/?LinkId=253447&clcid=0x409
+  [service definition (.csdef)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758711.aspx
+  [service configuration (.cscfg)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758710.aspx
+  [Microsoft Drivers for PHP for SQL Server]: http://php.net/sqlsrv
+  [SQL Server Native Client 2012]: http://msdn.microsoft.com/en-us/sqlserver/aa937733.aspx
+  [sqlncli.msi x64 installer]: http://go.microsoft.com/fwlink/?LinkID=239648
+  [Internet Information Services (IIS)]: http://www.iis.net/
+  [Differences Between the Compute Emulator and Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg432960.aspx
+  [Differences Between the Storage Emulator and Azure Storage Services]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433135.aspx
+  [How to: Import publish settings]: /en-us/develop/php/how-to-guides/powershell-cmdlets/#ImportPubSettings
+  [How to: Deploy a cloud service to Azure]: /en-us/develop/php/how-to-guides/powershell-cmdlets/#Deploy

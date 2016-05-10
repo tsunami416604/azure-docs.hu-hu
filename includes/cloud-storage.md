@@ -1,185 +1,192 @@
-#資料管理和商務分析
+# Data Management and Business Analytics
 
-管理和分析雲端中的資料，其重要性不亞於管理和分析其他位置中的資料。 為了讓您能夠管理和分析雲端中的資料，Azure 提供多種技術來處理關聯式與非關聯式資料。 本文將介紹每個選項。 
+Managing and analyzing data in the cloud is just as important as it is anywhere else. To let you do this, Azure provides a range of technologies for working with relational and non-relational data. This article introduces each of the options.
 
-##目錄      
+## Table of Contents
 
-- [Blob 儲存體](#blob)
-- [在虛擬機器中執行 DBMS](#dbinvm)
-- [SQL Database](#sqldb)
-    - [SQL 資料同步](#datasync)
-    - [使用虛擬機器產生 SQL 資料報表](#datarpt)
-- [資料表儲存體](#tblstor)
-- [Hadoop](#hadoop)
+-   [Blob Storage][Blob Storage]
+-   [Running a DBMS in a Virtual Machine][Running a DBMS in a Virtual Machine]
+-   [SQL Database][SQL Database]
 
-## <a name="blob"></a>Blob 儲存體
+    -   [SQL Data Sync][SQL Data Sync]
+    -   [SQL Data Reporting using Virtual Machines][SQL Data Reporting using Virtual Machines]
+-   [Table Storage][Table Storage]
+-   [Hadoop][Hadoop]
 
-"Blob" 的全名是 Binary Large Object (二進位大型物件)，從此全名不難看出 Blob 的意思是什麼： 然而，Blob 雖然簡單，卻相當有用。 [[圖 1](#Fig1) 說明 Azure Blob 儲存體的基本概念。
+## <a name="blob"></a>Blob Storage
 
-<a name="Fig1"></a>![Blob 的圖][blobs]
- 
-**圖 1：Azure Blob 儲存體將二進位資料 (Blob) 儲存在容器中。**
+The word "blob" is short for "Binary Large OBject", and it describes exactly what a blob is: a collection of binary information. Yet even though they're simple, blobs are quite useful. [Figure 1][Figure 1] illustrates the basics of Azure Blob Storage.
 
-若要使用 blob，您先建立 Azure *儲存體帳戶*。 在這過程中，您還須指定 Azure 資料中心來儲存您使用此帳戶所建立的物件。 您所建立的每個 Blob 不論位於何處，都屬於您儲存體帳戶中的某個容器。 應用程式要存取 Blob 時，必須提供下列形式的 URL：
+<a name="Fig1"></a>![Diagram of Blobs][Diagram of Blobs]
 
-http://&lt;*StorageAccount*& gt;.blob.core.windows.net/ & l t;*容器*& gt; / & l t;*BlobName*& gt;
+**Figure 1: Azure Blob Storage stores binary data - blobs - in containers.**
 
-& l t;*StorageAccount*& gt; 是在建立新的儲存體帳戶時指派的唯一識別碼時 & lt;*容器*& gt; 與 & lt;*BlobName*& gt; 中有特定的容器以及該容器內的 blob 名稱。 
+To use blobs, you first create an Azure *storage account*. As part of this, you specify the Azure datacenter that will store the objects you create using this account. Wherever it lives, each blob you create belongs to some container in your storage account. To access a blob, an application provides a URL with the form:
 
-Azure 提供兩種不同類型的 Blob。 選擇如下：
+[http://\<\*StorageAccount][http://\<\*StorageAccount]*\>.blob.core.windows.net/\<*Container*\>/\<*BlobName\*\>
 
-- *區塊* blob，每一個都可以包含 200 gb 的資料。 如其名稱所示，一個區塊 Blob 會再細分為多個區塊。 如果傳輸區塊 Blob 時發生失敗，則重新傳輸作業可以從最新的區塊繼續，而不是重新傳送整個 Blob。 區塊 Blob 是相當常見的儲存方式，也是現在最常用的 Blob 類型。
+\<*StorageAccount*\> is a unique identifier assigned when a new storage account is created, while \<*Container*\> and \<*BlobName*\> are the names of a specific container and a blob within that container.
 
-- *頁面* 多可在 1 tb 的 blob。 分頁 Blob 是針對隨機存取所設計，因此，每個會再細分為多個分頁。 應用程式可以自由隨機讀寫 Blob 中的個別分頁。 例如，在 Azure 虛擬機器中，您建立的 VM 會使用分頁 Blob 作為 OS 磁碟與資料磁碟的永續性儲存體。
+Azure provides two different kinds of blobs. The choices are:
 
-不論您選擇區塊 Blob 還是分頁 Blob，應用程式都可以透過多種不同的方式來存取 Blob 資料。 選項包括：
+-   *Block* blobs, each of which can contain up to 200 gigabytes of data. As its name suggests, a block blob is subdivided into some number of blocks. If a failure occurs while transferring a block blob, retransmission can resume with the most recent block rather than sending the entire blob again. Block blobs are a quite general approach to storage, and they're the most commonly used blob type today.
 
-- 直接透過 RESTful (即 HTTP 型) 存取通訊協定。 Azure 應用程式和外部應用程式 (包括內部部署執行的應用程式) 都可以使用此選項。
-- 使用 Azure 儲存體用戶端程式庫，其為開發人員提供較原始 RESTful Blob 存取通訊協定更容易使用的介面。 同樣地，Azure 應用程式和外部應用程式都可以使用此程式庫來存取 Blob。
-- 使用 Azure 磁碟機，此選項可讓 Azure 應用程式將分頁 Blob 視為含 NTFS 檔案系統的本機磁碟機。 對應用程式而言，分頁 blob 看起來就像使用標準檔案 I/O 存取的一般 Windows 檔案系統。 事實上，讀取和寫入都會傳送至實作 Azure Drive 的基礎分頁 blob。 
+-   *Page* blobs, which can be as large at one terabyte each. Page blobs are designed for random access, and so each one is divided into some number of pages. An application is free to read and write individual pages at random in the blob. In Azure Virtual Machines, for example, VMs you create use page blobs as persistent storage for both OS disks and data disks.
 
-為了防範硬體故障並提升可用性，每個 Blob 都會複寫到 Azure 資料中心內的三部電腦。 寫入至 Blob 時即會更新所有這三份複本，使得稍後讀取時不會看到不一致結果。 您也可以指定 Blob 的資料應該複製至相同地理區域中的另一個 Azure 資料中心，但至少要距離 500 英哩遠。 此複製稱為 *地理區域複寫*, ，會更新幾分鐘內發生 blob，而且它的災害復原時很有用。
+Whether you choose block blobs or page blobs, applications can access blob data in several different ways. The options include the following:
 
-Blob 中的資料也可透過 Azure *內容傳遞網路 (CDN)*。 CDN 可以將 Blob 資料的複本快取至全世界數十部伺服器，以加快對重複存取之資訊的存取速度。 
+-   Directly through a RESTful (i.e., HTTP-based) access protocol. Both Azure applications and external applications, including apps running on premises, can use this option.
+-   Using the Azure Storage Client library, which provides a more developer-friendly interface on top of the raw RESTful blob access protocol. Once again, both Azure applications and external applications can access blobs using this library.
+-   Using Azure drives, an option that lets an Azure application treat a page blob as a local drive with an NTFS file system. To the application, the page blob looks like an ordinary Windows file system accessed using standard file I/O. In fact, reads and writes are sent to the underlying page blob that implements the Azure Drive.
 
-Blob 十分簡單，因此在許多情況下都是正確選擇。 視訊和音訊的儲存與串流是明顯的例子，而備份和其他類型的資料封存也是。 開發人員也可以使用 Blob 來保存所喜歡的任何一類未結構化資料。 少有人想到可以用如此簡單明瞭的方式來儲存和存取二進位資料。
+To guard against hardware failures and improve availability, every blob is replicated across three computers in an Azure datacenter. Writing to a blob updates all three copies, so later reads won't see inconsistent results. You can also specify that a blob's data should be copied to another Azure datacenter in the same geo but at least 500 miles away. This copying, called *geo-replication*, happens within a few minutes of an update to the blob, and it's useful for disaster recovery.
 
+Data in blobs can also be made available via the Azure *Content Delivery Network (CDN)*. By caching copies of blob data at dozens of servers around the world, the CDN can speed up access to information that's accessed repeatedly.
 
-## <a name="dbinvm"></a>在虛擬機器中執行 DBMS
+Simple as they are, blobs are the right choice in many situations. Storing and streaming video and audio are obvious examples, as are backups and other kinds of data archiving. Developers can also use blobs to hold any kind of unstructured data they like. Having a straightforward way to store and access binary data can be surprisingly useful.
 
-現在，許多應用程式都依賴某種類型的資料庫管理系統 (DBMS)。 關聯式系統，例如 SQL Server 是最常使用的選擇，但是非關聯式方式，通常稱為 「 *NoSQL* 技術，取得更多熱門每一天。 為了讓雲端應用程式能夠使用這些資料管理選項，Azure 虛擬機器允許您在 VM 中執行 DBMS (關聯式或 NoSQL)。 [[圖 2](#Fig2) 顯示其外觀與 SQL Server。
+## <a name="dbinvm"></a>Running a DBMS in a Virtual Machine
 
-<a name="Fig2"></a>![SQL Server 的虛擬機器中的圖表][SQLSvr-vm]
- 
-**圖 2：Azure 虛擬機器允許在 VM 中執行 DBMS 並以 Blob 提供永續保存能力。**
+Many applications today rely on some kind of database management system (DBMS). Relational systems such as SQL Server are the most frequently used choice, but non-relational approaches, commonly known as *NoSQL* technologies, get more popular every day. To let cloud applications use these data management options, Azure Virtual Machines allows you to run a DBMS (relational or NoSQL) in a VM. [Figure 2][Figure 2] shows how this looks with SQL Server.
 
-對開發人員和資料庫管理員而言，此案例看起來就像是讓相同的軟體在專屬的資料中心內執行一樣。 例如，在這裡顯示的範例中，幾乎所有 SQL Server 功能都可以使用，而且您對系統擁有完整的管理存取權。 當然，您也負責管理資料庫伺服器，彷彿資料庫伺服器是在本機執行一樣。
+<a name="Fig2"></a>![Diagram of SQL Server in a Virtual Machine][Diagram of SQL Server in a Virtual Machine]
 
-做為 [[圖 2](#Fig2) 所示，您的資料庫看起來是儲存在 VM 執行所在伺服器的本機磁碟上。 但事實真相是，這每個磁碟都是寫入至 Azure Blob。 (這與在您專屬資料中心內使用 SAN 類似，而 Blob 的角色就像 LUN。)與任何 Azure Blob 一樣，其所含的資料會在資料中心內受到複寫三次，而且還可以應您要求，透過地理區域複寫來複寫至相同區域中的另一個資料中心。 此外，要使用 SQL Server 資料庫鏡像之類的選項來提升可靠性也可以。 
+**Figure 2: Azure Virtual Machines allows running a DBMS in a VM, with persistence provided by blobs.**
 
-另一種在 VM 中使用 SQL Server 的方式是建立混合式應用程式，也就是讓資料存在 Azure 上，但讓應用程式邏輯在內部部署執行。 例如，想想在多個位置或在各種行動裝置上執行的應用程式必須使用相同的資料，就能了解這樣做是有道理的。 若要簡化雲端資料庫與內部部署邏輯之間的通訊，組織可以使用 Azure 虛擬網路在 Azure 資料中心與組織本身內部部署資料中心之間建立虛擬私人網路 (VPN) 連線。
+To both developers and database administrators, this scenario looks much like running the same software in their own datacenter. In the example shown here, for instance, nearly all of SQL Server's capabilities can be used, and you have full administrative access to the system. You also have the responsibility of managing the database server, of course, just as if it were running locally.
 
+As [Figure 2][Figure 2] shows, your databases appear to be stored on the local disk of the VM the server runs in. Under the covers, however, each of those disks is written to an Azure blob. (It's similar to using a SAN in your own datacenter, with a blob acting much like a LUN.) As with any Azure blob, the data it contains is replicated three times within a datacenter and, if you request it, geo-replicated to another datacenter in the same region. It's also possible to use options such as SQL Server database mirroring for improved reliability.
+
+Another way to use SQL Server in a VM is to create a hybrid application, where the data lives on Azure while the application logic runs on-premises. For example, this might make sense when applications running in multiple locations or on various mobile devices must share the same data. To make communication between the cloud database and on-premises logic simpler, an organization can use Azure Virtual Network to create a virtual private network (VPN) connection between an Azure datacenter and its own on-premises datacenter.
 
 ## <a name="sqldb"></a>SQL Database
 
-談到管理雲端中的結構化資料，許多人想到的第一個選擇是在 VM 中執行 DBMS。 但這不是唯一的選擇，也不一定是最佳的選擇。 在某些情況下，使用「平台即服務」(PaaS) 方式來管理資料會比較合適。 Azure 提供一項稱為 SQL Database 的 PaaS 技術，讓您能對關聯式資料進行此類管理。 [[圖 3](#Fig3) 說明此選項。 
+For many people, running a DBMS in a VM is the first option that comes to mind for managing structured data in the cloud. It's not the only choice, though, nor is it always the best choice. In some cases, managing data using a Platform as a Service (PaaS) approach makes more sense. Azure provides a PaaS technology called SQL Database that lets you do this for relational data. [Figure 3][Figure 3] illustrates this option.
 
-<a name="Fig3"></a>![SQL Database 的圖][SQL-db]
- 
-**圖 3：SQL Database 提供共用型 PaaS 關聯式儲存服務。**
+<a name="Fig3"></a>![Diagram of SQL Database][Diagram of SQL Database]
 
-SQL Database 並不會讓每個客戶都享有一個專屬的實體 SQL Server 執行個體。 事實上，其提供的是多租用戶服務，也就是每個客戶都將享有一個專屬的邏輯 SQL Database 伺服器。 所有的客戶都共用此服務所提供的運算與儲存容量。 此外，與 Blob 儲存體的情形一樣，SQL Database 中的所有資料都會儲存在 Azure 資料中心內的三部不同電腦上，讓您的資料庫具有內建的高可用性 (HA)。
+**Figure 3: SQL Database provides a shared PaaS relational storage service.**
 
-對應用程式而言，SQL Database 看起來和 SQL Server 沒什麼不同。 應用程式可以對關聯式資料表發出 SQL 查詢、使用 T-SQL 預存程序，以及執行跨多個資料表的交易。 而且，應用程式因為是使用表格式資料流 (TDS) 通訊協定 (亦即存取 SQL Server 時所用的相同通訊協定) 來存取 SQL Database，所以可以使用 Entity Framework、ADO.NET、JDBC 和其他大家熟悉的資料存取介面來處理資料。 
+SQL Database doesn't give each customer its own physical instance of SQL Server. Instead, it provides a multi-tenant service, with a logical SQL Database server for each customer. All customers share the compute and storage capacity that the service provides. And as with Blob Storage, all data in SQL Database is stored on three separate computers within an Azure datacenter, giving your databases built-in high availability (HA).
 
-但是，因為 SQL Database 是一項在 Azure 資料中心內執行的雲端服務，所以您不需要管理系統的任何實體層面 (如磁碟使用狀況)。 您也不需要親自去更新軟體或處理其他低階系統管理工作。 當然，每個客戶組織對自己的資料庫 (包括其結構描述和使用者登入) 仍握有控制權，但是許多細碎的系統管理工作都會自動完成。 
+To an application, SQL Database looks much like SQL Server. Applications can issue SQL queries against relational tables, use T-SQL stored procedures, and execute transactions across multiple tables. And because applications access SQL Database using the Tabular Data Stream (TDS) protocol, the same protocol used to access SQL Server, they can work with data using Entity Framework, ADO.NET, JDBC, and other familiar data access interfaces.
 
-雖然 SQL Database 對應用程式而言看起來和 SQL Server 沒什麼不同，但是其行為並不與實體機器或虛擬機器上執行的 DBMS 完全相同。 它是在共用硬體上執行，所以效能可能會隨其所有客戶對該硬體造成的負載而異。 這表示 SQL Database 中如預存程序等項目的效能可能會每天都不同。 
+But because SQL Database is a cloud service running in Azure data centers, you don't need to manage any of the system's physical aspects, such as disk usage. You also don't need to worry about updating software or handling other low-level administrative tasks. Each customer organization still controls its own databases, of course, including their schemas and user logins, but many of the mundane administrative tasks are done for you.
 
-現在，SQL Database 可讓您建立最多可容納 150 GB 資料的資料庫。 如果您需要使用更大的資料庫，此服務會提供一個稱為的選項 *同盟*。 若要這樣做，資料庫管理員會建立兩個或多個 *同盟成員*, ，每個都是一個具有專屬結構描述的資料庫。 資料會分散給這些成員，此動作通常稱為 *分區化*, ，而每個成員都會獲派唯一 *同盟索引鍵*。 應用程式在對這些資料發出 SQL 查詢時，會指定同盟索引鍵來識別查詢應鎖定的目標同盟成員。 如此一來，就能對大量資料採取傳統關聯式方法。 當然，此方法也有缺點，例如，查詢與交易的範圍無法涵蓋不同的同盟成員。 但是，當關聯式 PaaS 服務是最佳選擇，且上述缺點還可令人接受時，使用 SQL 同盟會是不錯的解決方案。
+While SQL Database looks much like SQL Server to applications, it doesn't behave exactly the same as a DBMS running on a physical or virtual machine. Because it runs on shared hardware, its performance will vary with the load placed on that hardware by all of its customers. This means that the performance of, say, a stored procedure in SQL Database might vary from one day to the next.
 
-在 Azure 或其他位置 (如內部部署資料中心內) 上執行的應用程式都可以使用 SQL Database。 這點對於需要關聯式資料的雲端應用程式，以及將可能因為在雲端中儲存資料而受益的內部部署應用程式而言十分有用。 例如，行動應用程式可以透過 SQL Database 來管理共用的關聯式資料，而在全世界各地經銷處執行的盤點應用程式也同樣可以這麼做麼做。
+Today, SQL Database lets you create a database holding up to 150 gigabytes. If you need to work with larger databases, the service provides an option called *Federation*. To do this, a database administrator creates two or more *federation members*, each of which is a separate database with its own schema. Data is spread across these members, something that's often referred to as *sharding*, with each member assigned a unique *federation key*. An application issues SQL queries against this data by specifying the federation key that identifies the federation member the query should target. This allows using a traditional relational approach with large amounts of data. As always, there are trade-offs; neither queries nor transactions can span federation members, for instance. But when a relational PaaS service is the best choice and these trade-offs are acceptable, using SQL Federation can be a good solution.
 
-考慮使用 SQL Database 時會引起一個明顯 (且重要) 的問題：何時應該在 VM 中執行 SQL Server？何時採用 SQL Database 是較明智的選擇？ 當然，這些方式各有利弊，因此何種方式較好完全取決於您的需求。 
+SQL Database can be used by applications running on Azure or elsewhere, such as in your on-premises datacenter. This makes it useful for cloud applications that need relational data, as well as on-premises applications that can benefit from storing data in the cloud. A mobile application might rely on SQL Database to manage shared relational data, for instance, as might an inventory application that runs at multiple dealers around the world.
 
-一個簡單的判斷方式，是視 SQL Database 為適用於新的應用程式，而視 VM 中的 SQL Server 為將現有內部部署應用程式移至雲端時較佳的選擇。 不過，進行更深入的分析再做此決定也很好。 例如，SQL Database 只需要基本的設定與系統管理工作，因此較容易使用。 但是，在 VM 中執行 SQL Server 可以有更穩定的效能 (因為其並非共用的服務)，而且相較於 SQL Database 來說，可支援更大的非同盟資料庫。 不過，SQL Database 內建複寫資料與處理程序的能力，因此您只須花少許精神就能獲得有效的高可用性 DBMS。 雖然 SQL Server 可讓您具有更多的控制力和更廣泛的選擇，但是 SQL Database 較容易設定，而且要管的工作也少很多。
+Thinking about SQL Database raises an obvious (and important) issue: When should you run SQL Server in a VM, and when is SQL Database a better choice? As usual, there are trade-offs, and so which approach is better depends on your requirements.
 
-最後請務必注意，SQL Database 並非 Azure 上唯一可用的 PaaS 資料服務。 也有其他選項是由 Microsoft 合作夥伴。 例如，ClearDB 提供 MySQL PaaS 供應項目，而 Cloudant 則銷售 NoSQL 選項。 在許多情況下，PaaS 資料服務是正確的解決方案，因此，此資料管理方式是 Azure 的重要一環。
+One simple way to think about it is to view SQL Database as being for new applications, while SQL Server in a VM is a better choice when you're moving an existing on-premises application to the cloud. It can also be useful to look at this decision in a more fine-grained way, however. For example, SQL Database is easier to use, since there's minimal setup and administration. But running SQL Server in a VM can have more predictable performance - it's not a shared service - and it also supports larger non-federated databases than SQL Database. Still, SQL Database provides built-in replication of both data and processing, effectively giving you a high-availability DBMS with very little work. While SQL Server gives you more control and a somewhat broader set of options, SQL Database is simpler to set up and significantly less work to manage.
 
+Finally, it's important to point out that SQL Database isn't the only PaaS data service available on Azure. Microsoft partners provide other options as well. For example, ClearDB offers a MySQL PaaS offering, while Cloudant sells a NoSQL option. PaaS data services are the right solution in many situations, and so this approach to data management is an important part of Azure.
 
-### <a name="datasync"></a>SQL 資料同步
+### <a name="datasync"></a>SQL Data Sync
 
-SQL Database 雖然會在單一 Azure 資料中心內為每個資料庫各維護三份複本，卻不會自動在 Azure 資料中心之間複寫資料。 事實上，它提供了 SQL 資料同步這項服務，供您用來執行該動作。 [[圖 4](#Fig4) 顯示運作架構。
+While SQL Database does maintain three copies of each database within a single Azure datacenter, it doesn't automatically replicate data between Azure datacenters. Instead, it provides SQL Data Sync, a service that you can use to do this. [Figure 4][Figure 4] shows how this looks.
 
-<a name="Fig4"></a>![SQL 資料同步的圖][SQL-datasync]
- 
-**圖 4：SQL 資料同步會將 SQL Database 中的資料與其他 Azure 和內部部署資料中心內的資料同步處理。**
+<a name="Fig4"></a>![Diagram of SQL data sync][Diagram of SQL data sync]
 
-如圖所示，SQL 資料同步可以跨不同位置來同步處理資料。 假設您是在多個 Azure 資料中心內執行應用程式 (例如，使用 SQL Database 中儲存的資料)。 您可以使用 SQL 資料同步來使該資料保持同步。 SQL 資料同步也可以在 Azure 資料中心與內部部署資料中心內執行的 SQL Server 執行個體之間同步處理資料。 如果您維護了內部部署應用程式所使用資料的本機複本，同時又維護了 Azure 上執行之應用程式所使用的雲端複本時，這就會很有用。 此外，SQL 資料同步雖然未顯示於圖中，但是也可以用來在 SQL Database 與 SQL Server (執行於 Azure 上或其他位置上的 VM 中) 之間同步處理資料。
+**Figure 4: SQL Data Sync synchronizes data in SQL Database with data in other Azure and on-premises datacenters.**
 
-同步處理可以雙向進行，而同步處理的確切資料與頻率則由您決定。 (不過，資料庫之間的同步處理並非不可部分完成，因為一定至少會有些延遲。)不過，不管以怎樣的方式使用 SQL 資料同步，要設定用它進行同步處理，完全只須透過設定選項來完成，而不需要撰寫程式碼。
+As the diagram shows, SQL Data Sync can synchronize data across different locations. Suppose you're running an application in multiple Azure datacenters, for instance, with data stored in SQL Database. You can use SQL Data Sync to keep that data synchronized. SQL Data Sync can also synchronize data between an Azure datacenter and an instance of SQL Server running in an on-premises datacenter. This might be useful for maintaining both a local copy of data used by on-premises applications and a cloud copy used by applications running on Azure. And although it's not shown in the figure, SQL Data Sync can also be used to synchronize data between SQL Database and SQL Server running in a VM on Azure or elsewhere.
 
+Synchronization can be bi-directional, and you determine exactly what data is synchronized and how frequently it's done. (Synchronization between databases isn't atomic, however - there's always at least some delay.) And however it's used, setting up synchronization with SQL Data Sync is entirely configuration-driven; there's no code to write.
 
-### <a name="datarpt"></a>使用虛擬機器產生 SQL 資料報表
+### <a name="datarpt"></a>SQL Data Reporting using Virtual Machines
 
-資料庫包含資料之後，可能會有人想要使用該資料來建立報表。 Azure 可以在 Azure 虛擬機器中執行 SQL Server Reporting Services (SSRS)，以提供與內部部署 SQL Server Reporting Services 相同的功能。 然後，您便可以使用 SSRS 來根據 Azure SQL Database 中儲存的資料建立報表。  [[圖 5](#Fig5) 顯示處理程序的運作方式。
+Once a database contains data, somebody will probably want to create reports using that data. Azure can run SQL Server Reporting Services (SSRS) in Azure Virtual Machines, which is functionally equivalent to running SQL Server Reporting Services on-premises. Then you can use SSRS to run reports on data stored in an Azure SQL Database. [Figure 5][Figure 5] shows how the process works.
 
-<a name="Fig5"></a>![SQL 報告的圖][SQL-report]
- 
-**[圖 5: SQL Server Reporting Services 在 Azure 虛擬機器中執行的提供報表服務 SQL 資料庫中的資料。 .**
+<a name="Fig5"></a>![Diagram of SQL reporting][Diagram of SQL reporting]
 
-在讓使用者看到報表前，應要有人定義該報表的外觀 (步驟 1)。 在 VM 上使用 SSRS 時，有兩項工具可以用來完成此動作：SQL Server Data Tools (內附於 SQL Server 2012) 或其前身產品 Business Intelligence (BI) Development Studio。 與 SSRS 的情形一樣，這些報表定義是以報表定義語言 (RDL) 表達。 建立報表的 RDL 檔之後，這些檔案會上傳至雲端中的 VM (步驟 2)。 現在，報表定義便已變得可供使用。
+**Figure 5: SQL Server Reporting Services running in an Azure Virtual Machines provides reporting services for data in SQL Database. .**
 
-接下來，應用程式使用者會存取報表 (步驟 3)。 應用程式會將此要求傳遞給 SSRS VM (步驟 4)，後者會連絡 SQL Database 或其他資料來源以取得所需資料 (步驟 5)。 SSRS 會使用此資料和相關 RDL 檔來轉譯報表 (步驟 6)，然後將報表傳回給應用程式 (步驟 7)，由其向使用者顯示報表 (步驟 8)。
+Before a user can see a report, someone defines what that report should look like (step 1). With SSRS on a VM, this can be done using either of two tools: SQL Server Data Tools, part of SQL Server 2012, or its predecessor, Business Intelligence (BI) Development Studio. As with SSRS, these report definitions are expressed in the Report Definition Language (RDL). After the RDL files for a report have been created, they are uploaded to a VM in the cloud (step 2). The report definition is now ready to use.
 
-在應用程式中內嵌報表 (如這裡的案例所示) 不是唯一的選項。 要在 VM 上的 [報表管理員]、在 VM 上的 SharePoint，或以其他方式來檢視報表也可以。 報表也可以相互結合，讓一份報表含有另一份報表的連結。
+Next, a user of the application accesses the report (step 3). The application passes this request to the SSRS VM (step 4), which contacts SQL Database or other data sources to get the data it needs (step 5). SSRS uses this data and the relevant RDL files to render the report (step 6), then returns the report to the application (step 7), which displays it to the user (step 8).
 
-Azure VM 上的 SSRS 以雲端中的報表解決方案形式，提供您完整的功能。 報表可以使用 SSRS 所支援的任何資料來源。 應用程式和報表中可以內嵌程式碼或組譯碼，以支援自訂行為。 報表的執行與轉譯速度很快，因為報表伺服器的內容與引擎是在同一個虛擬伺服器上一起執行。
+Embedding a report in an application, the scenario shown here, isn't the only option. It's also possible to view reports in Report Manager on the VM, SharePoint on the VM, or in other ways. Reports can also be combined, with one report containing a link to another.
 
+SSRS on an Azure VM gives you full functionality as a reporting solution in the cloud. Reports can use any data source supported by SSRS. Applications and reports can include embedded code or assemblies to support custom behaviors. Report execution and rendering are fast because report server content and engine run together on the same virtual server.
 
+## <a name="tblstor"></a>Table Storage
 
-## <a name="tblstor"></a>資料表儲存體
+Relational data is useful in many situations, but it's not always the right choice. If your application needs fast, simple access to very large amounts of loosely structured data, for instance, a relational database might not work well. A NoSQL technology is likely to be a better option.
 
-關聯式資料在許多情況下很有用，但不總是是正確的選擇。 例如，如果您的應用程式需要快速、簡單地存取極大量的鬆散結構化資料，則關聯式資料庫可能不適合。 這時，NoSQL 技術就可能是較佳的選擇。
+Azure Table Storage is an example of this kind of NoSQL approach. Despite its name, Table Storage doesn't support standard relational tables. Instead, it provides what's known as a *key/value store*, associating a set of data with a particular key, then letting an application access that data by providing the key. [Figure 6][Figure 6] illustrates the basics.
 
-Azure 資料表儲存體是此種 NoSQL 方式的範例。 資料表儲存體雖然有這樣的名稱，卻不支援標準關聯式資料表。 事實上，它提供所謂 *索引鍵/值存放區*, 、 一組資料關聯至特定的索引鍵，然後讓應用程式提供的索引鍵來存取該資料。 [[圖 6](#Fig6) 說明基本概念。
+<a name="Fig6"></a>![Diagram of table storage][Diagram of table storage]
 
-<a name="Fig6"></a>![資料表儲存體的圖][SQL-tblstor]
- 
-**圖 6：Azure 資料表儲存體是一種索引鍵/值存放區，以讓應用程式快速、簡單地存取大量資料。**
+**Figure 6: Azure Table Storage is a key/value store that provides fast, simple access to large amounts of data.**
 
-如同 Blob，每個資料表都有一個相關聯的 Azure 儲存體帳戶。 資料表的命名也很像 Blob，具有下列形式的 URL
+Like blobs, each table is associated with an Azure storage account. Tables are also named much like blobs, with a URL of the form
 
-http://&lt;*StorageAccount*& gt;.table.core.windows.net/ & l t;*TableName*& gt;
+[http://\<\*StorageAccount][http://\<\*StorageAccount]*\>.table.core.windows.net/\<*TableName\*\>
 
-如圖所示，每個資料表都分成多個資料分割，而每個資料分割都可以儲存在不同的機器上。 (這是一種分區化形式，和 SQL 同盟的情形一樣。)Azure 應用程式以及在其他位置執行的應用程式都可以使用 RESTful OData 通訊協定或 Azure Storage Client 程式庫來存取資料表。
+As the figure shows, each table is divided into some number of partitions, each of which can be stored on a separate machine. (This is a form of sharding, as with SQL Federation.) Both Azure applications and applications running elsewhere can access a table using either the RESTful OData protocol or the Azure Storage Client library.
 
-在資料表中的每個資料分割都容納一些 *實體*, ，而每個包含多達 255 個 *屬性*。 每個屬性都有一個名稱、類型 (如 Binary、Bool、DateTime、Int 或 String) 和值。 與關聯式儲存體不同，這些資料表沒有固定的結構描述，因此相同資料表中的不同實體可以包含不同類型的屬性。 例如，某個實體可能只有一個含名稱的 String 屬性，而相同資料表中的另一個實體卻有兩個分別含客戶識別碼與信用評分的 Int 屬性。
+Each partition in a table holds some number of *entities*, each containing as many as 255 *properties*. Every property has a name, a type (such as Binary, Bool, DateTime, Int, or String), and a value. Unlike relational storage, these tables have no fixed schema, and so different entities in the same table can contain properties with different types. One entity might have just a String property containing a name, for example, while another entity in the same table has two Int properties containing a customer ID number and a credit rating.
 
-為了識別資料表內的特定實體，應用程式會提供該實體的索引鍵。 索引鍵有兩個部分 ︰ *資料分割索引鍵* 識別特定資料分割和 *資料列索引鍵* 識別該資料分割內之實體。 在 [[圖 6](#Fig6), ，比方說，用戶端要求的資料分割索引鍵為 A、 且資料列索引鍵為 3，實體和資料表儲存體 」 傳回該實體，包括所有包含的屬性。
+To identify a particular entity within a table, an application provides that entity's key. The key has two parts: a *partition key* that identifies a specific partition and a *row key* that identifies an entity within that partition. In [Figure 6][Figure 6], for example, the client requests the entity with partition key A and row key 3, and Table Storage returns that entity, including all of the properties it contains.
 
-此結構會讓資料表變得很大 (單一資料表最多可以包含 100 TB 的資料)，並且可讓人快速存取其所含的資料。 不過，它也有一些限制。 例如，不支援進行跨不同資料表、或甚至跨單一資料表中不同資料分割的交易式更新。 要對某個資料表進行的一組更新將只能群組成一筆不可部分完成的交易 (如果所有涉及的實體皆位於同一資料分割中)。 此外，也沒有方法可以根據屬性值來查詢資料表，也不支援跨多張資料表進行聯結。 而且，與關聯式資料庫不同，資料表不支援預存程序。
+This structure lets tables be big - a single table can contain up to 100 terabytes of data - and it allows fast access to the data they contain. It also brings limitations, however. For example, there's no support for transactional updates that span tables or even partitions in a single table. A set of updates to a table can only be grouped into an atomic transaction if all of the entities involved are in the same partition. There's also no way to query a table based on the value of its properties, nor is there support for joins across multiple tables. And unlike relational databases, tables have no support for stored procedures.
 
-如果應用程式需要快速、便宜地存取大量的鬆散結構化資料，則 Azure 資料表儲存體會是不錯的選擇。 例如，網際網路應用程式如果會儲存大量使用者的設定檔資訊，就可以使用資料表。 在此情況下，快速存取很重要，而且應用程式可能不需要用到 SQL 的完整功能。 放棄此功能來換取速度和規模上的增加有時很合理，因此「資料表儲存體」會是部分問題的正確解決方案。
-
+Azure Table Storage is a good choice for applications that need fast, cheap access to large amounts of loosely structured data. For example, an Internet application that stores profile information for lots of users might use tables. Fast access is important in this situation, and the application probably doesn't need the full power of SQL. Giving up this functionality to gain speed and size can sometimes make sense, and so Table Storage is just the right solution for some problems.
 
 ## <a name="hadoop"></a>Hadoop
 
-數十年來，許多組織一直在建立資料倉儲。 這些收集到的資訊 (最常儲存在關聯式資料表中) 可讓人們透過許多不同方式來使用及分析資料。 例如，SQL Server 上就常使用 SQL Server Analysis Services 這類工具來進行這樣的動作。
+Organizations have been building data warehouses for decades. These collections of information, most often stored in relational tables, let people work with and learn from data in many different ways. With SQL Server, for instance, it's common to use tools such as SQL Server Analysis Services to do this.
 
-但是，假設您想要分析的是非關聯式資料。 您的資料可能涵蓋許多形式： 從感應器或 RFID 標籤得來的資訊、伺服器陣列中的記錄檔、Web 應用程式所產生的點選流資料、從醫療診斷儀器得來的影像等等。 這些資料也可能非常非常地大，大到傳統資料倉儲無法有效加以處理。 這樣的海量資料問題在幾年前還很罕見，但到現在已經變成家常便飯。
+But suppose you want to do analysis on non-relational data. Your data might take many forms: information from sensors or RFID tags, log files in server farms, clickstream data produced by web applications, images from medical diagnostic devices, and more. This data might also be really big, too big to be used effectively with a traditional data warehouse. Big data problems like this, rare just a few years ago, have now become quite common.
 
-為了分析這種海量資料，業界已大幅採納單一解決方案，也就是：開放原始碼技術 Hadoop。 Hadoop 執行於實體機器或虛擬機器的叢集中，並會將自己所處理的資料分散給那些機器，以便平行處理那些資料。 Hadoop 可使用的機器愈多，工作完成的速度就愈快。
+To analyze this kind of big data, our industry has largely converged on a single solution: the open-source technology Hadoop. Hadoop runs on a cluster of physical or virtual machines, spreading the data it works on across those machines and processing it in parallel. The more machines Hadoop has to use, the faster it can complete whatever work it's doing.
 
-公用雲端自然也會發生這種問題。 在雲端中執行 Hadoop 可讓您只有在需要時才建立 (並支付) VM，而不是維護一組可能大部分時間都沒事做的內部部署伺服器。 更棒的是，您想要使用 Hadoop 來分析的海量資料有愈來愈多是在雲端中建立，省去您將資料移來移去的麻煩。 為了讓您能享受這些綜效，Microsoft 在 Azure 上提供了 Hadoop 服務。 [[圖 7](#Fig7) 顯示此服務最重要的元件。
+This kind of problem is a natural fit for the public cloud. Rather than maintaining an army of on-premises servers that might sit idle much of the time, running Hadoop in the cloud lets you create (and pay for) VMs only when you need them. Even better, more and more of the big data that you want to analyze with Hadoop is created in the cloud, saving you the trouble of moving it around. To help you exploit these synergies, Microsoft provides a Hadoop service on Azure. [Figure 7][Figure 7] shows the most important components of this service.
 
-<a name="Fig7"></a>![Hadoop 的圖][hadoop]
+<a name="Fig7"></a>![Diagram of hadoop][Diagram of hadoop]
 
-**圖 7：Azure 上的 Hadoop 執行 MapReduce 工作，由其使用多個虛擬機器來平行處理資料。**
+**Figure 7: Hadoop on Azure runs MapReduce jobs that process data in parallel using multiple virtual machines.**
 
-若要使用 Azure 上的 Hadoop，您必須先要求此雲端平台建立 Hadoop 叢集，並指定所需的 VM 數目。 您自己設定 Hadoop 叢集是件難事，因此讓 Azure 自動幫您完成很合理。 當您使用完叢集時，就關閉叢集。 您完全不需要為未在使用中的運算資源支付費用。
+To use Hadoop on Azure, you first ask this cloud platform to create a Hadoop cluster, specifying the number of VMs you need. Setting up a Hadoop cluster yourself is a non-trivial task, and so letting Azure do it for you makes sense. When you're done using the cluster, you shut it down. There's no need to pay for compute resources that you aren't using.
 
-Hadoop 應用程式，一般稱為 *工作*, ，會使用稱為的程式設計模型 *MapReduce*。 如圖所示，MapReduce 工作的邏輯會跨許多 VM 同時執行。 Hadoop 因為是在平行處理資料，所以分析資料的速度會比單一機器解決方案還快。
+A Hadoop application, commonly called a *job*, uses a programming model known as *MapReduce*. As the figure shows, the logic for a MapReduce job runs simultaneously across many VMs. By processing data in parallel, Hadoop can analyze data much more rapidly than single-machine solutions.
 
-在 Azure 上，MapReduce 工作所處理的資料通常是保存在 Blob 儲存體中。 在 Hadoop，不過，MapReduce 工作會預期資料儲存在 *Hadoop 分散式檔案系統 (HDFS)*。 HDFS 在某些方面與 Blob 儲存體類似；例如，其會將資料複寫到多個實體伺服器。 Azure 上的 Hadoop 並不會完全複製此功能的運作方式，而是透過 HDFS API 公開 Blob 儲存體 (如圖所示)。 雖然 MapReduce 工作中的邏輯認為自己是在存取一般 HDFS 檔案，但該工作實際上是在處理從 Blob 串流傳送過來的資料。 而且，為了支援對相同資料執行多個工作的情形，Azure 上的 Hadoop 也允許將 Blob 中的資料複製至 VM 中執行的完整 HDFS。 
+On Azure, the data a MapReduce job works on is typically kept in blob storage. In Hadoop, however, MapReduce jobs expect data to be stored in the *Hadoop Distributed File System (HDFS)*. HDFS is similar to Blob Storage in some ways; it replicates data across multiple physical servers, for example. Rather than duplicate this functionality, Hadoop on Azure instead exposes Blob Storage through the HDFS API, as the figure shows. While the logic in a MapReduce job thinks it's accessing ordinary HDFS files, the job is in fact working with data streamed to it from blobs. And to support the case where multiple jobs are run over the same data, Hadoop on Azure also allow copying data from blobs into full HDFS running in the VMs.
 
-現在的 MapReduce 工作通常是以 Java 撰寫，此方式受 Azure 上的 Hadoop 支援。 Microsoft 也已開始支援以其他語言 (包括 C#、F# 和 JavaScript) 建立 MapReduce 工作。 目標是要讓更多的開發人員可以更輕鬆地存取這項海量資料技術。
+MapReduce jobs are commonly written in Java today, an approach that Hadoop on Azure supports. Microsoft has also added support for creating MapReduce jobs in other languages, including C#, F\#, and JavaScript. The goal is to make this big data technology more easily accessible to a larger group of developers.
 
-除了 HDFS 和 MapReduce，Hadoop 還包含其他讓人們不需自行撰寫 MapReduce 工作就能分析資料的技術。 例如，Pig 是專為分析海量資料而設計的高階語言，而 Hive 則提供稱為 HiveQL 的 SQL 式語言。 Pig 和 Hive 實際上都會產生可處理 HDFS 資料的 MapReduce 工作，但是它們讓使用者不需面對其中的複雜過程。 
-這兩項技術皆會隨 Azure 上的 Hadoop 一起提供。
+Along with HDFS and MapReduce, Hadoop includes other technologies that let people analyze data without writing a MapReduce job themselves. For example, Pig is a high-level language designed for analyzing big data, while Hive offers a SQL-like language called HiveQL. Both Pig and Hive actually generate MapReduce jobs that process HDFS data, but they hide this complexity from their users.
+Both are provided with Hadoop on Azure.
 
-Microsoft 也提供 Excel 適用的 HiveQL 驅動程式。 商務分析師可以使用 Excel 增益集，直接從 Excel 建立 HiveQL 查詢 (因此建立 MapReduce 工作)，然後使用 PowerPivot 和其他 Excel 工具來處理並視覺化呈現結果。 Azure 上的 Hadoop 還包含其他技術，如機器學習庫 Mahout、圖形採礦系統 Pegasus 等。
+Microsoft also provides a HiveQL driver for Excel. Using an Excel add-in, business analysts can create HiveQL queries (and thus MapReduce jobs) directly from Excel, then process and visualize the results using PowerPivot and other Excel tools. Hadoop on Azure includes other technologies as well, such as the machine learning libraries Mahout, the graph mining system Pegasus, and more.
 
-海量資料分析十分重要，因此 Hadoop 也相當重要。 透過在 Azure 上提供 Hadoop 作為受管理服務，並提供常用工具 (如 Excel) 的連結，Microsoft 一直努力要讓更多使用者能夠享受到此技術的好處。
+Big data analysis is important, and so Hadoop is also important. By providing Hadoop as a managed service on Azure, along with links to familiar tools such as Excel, Microsoft aims at making this technology accessible to a broader set of users.
 
-再放寬視野，所有類型的資料都很重要。 這就是 Azure 會包含各種資料管理與商務分析選項的原因。 不論您想建立哪種應用程式，都一定能在此雲端平台中找到適合您的工具。
+More broadly, data of all kinds is important. This is why Azure includes a range of options for data management and business analytics. Whatever application you're trying to create, it's likely that you'll find something in this cloud platform that will work for you.
 
-[blobs]: ./media/cloud-storage/Data_01_Blobs.png
-[SQLSvr-vm]: ./media/cloud-storage/Data_02_SQLSvrVM.png
-[SQL-db]: ./media/cloud-storage/Data_03_SQLdb.png
-[SQL-datasync]: ./media/cloud-storage/Data_04_SQLDataSync.png
-[SQL-report]: ./media/cloud-storage/Data_05_SQLReporting.png
-[SQL-tblstor]: ./media/cloud-storage/Data_06_TblStorage.png
-[hadoop]: ./media/cloud-storage/Data_07_Hadoop.png
-
-
+  [Blob Storage]: #blob
+  [Running a DBMS in a Virtual Machine]: #dbinvm
+  [SQL Database]: #sqldb
+  [SQL Data Sync]: #datasync
+  [SQL Data Reporting using Virtual Machines]: #datarpt
+  [Table Storage]: #tblstor
+  [Hadoop]: #hadoop
+  [Figure 1]: #Fig1
+  [Diagram of Blobs]: ./media/cloud-storage/Data_01_Blobs.png
+  [http://\<\*StorageAccount]: http://<*StorageAccount
+  [Figure 2]: #Fig2
+  [Diagram of SQL Server in a Virtual Machine]: ./media/cloud-storage/Data_02_SQLSvrVM.png
+  [Figure 3]: #Fig3
+  [Diagram of SQL Database]: ./media/cloud-storage/Data_03_SQLdb.png
+  [Figure 4]: #Fig4
+  [Diagram of SQL data sync]: ./media/cloud-storage/Data_04_SQLDataSync.png
+  [Figure 5]: #Fig5
+  [Diagram of SQL reporting]: ./media/cloud-storage/Data_05_SQLReporting.png
+  [Figure 6]: #Fig6
+  [Diagram of table storage]: ./media/cloud-storage/Data_06_TblStorage.png
+  [Figure 7]: #Fig7
+  [Diagram of hadoop]: ./media/cloud-storage/Data_07_Hadoop.png

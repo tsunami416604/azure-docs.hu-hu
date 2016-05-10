@@ -1,18 +1,15 @@
-##適用於 Eclipse 的 Azure 工具組
+##Azure Plugin for Eclipse with Java (by Microsoft Open Technologies)
 
-必要條件：
+Prerequisites:
 
-1. Windows 7、Windows 8、Windows Server 2008 或 Windows Server 2012。
-2. 列在 Macintosh 或 Linux operting 系統 [的新功能在 Azure Toolkit for Eclipse](http://go.microsoft.com/fwlink/?LinkId=690333) 文件。
-2. Eclipse Indigo 或更新版本。
+1. Windows 7, Windows 8, Windows Server 2008, or Windows Server 2012. (Not available for Mac or Linux.)
+2. Eclipse Indigo or later.
 
-安裝步驟：
+Installation steps:
 
-1. 在 Eclipse 中，從 **協助** 功能表上，選取 **安裝新軟體**。
-2. 輸入網站位置 <http://dl.msopentech.com/eclipse> 按 **Enter**。
-3. 選取的項目，就按一下 **完成**。
+1. In Eclipse, from the **Help** menu, select **Install New Software**.
+2. Enter the site location <http://dl.msopentech.com/eclipse> and press **Enter**.
+3. Select the items to be installed and click **Finish**.
 
-此外掛程式使用最新版本的 Azure SDK。 這可以下載使用 Web Platform Installer (WebPI) 從 <http://go.microsoft.com/fwlink/?LinkID=252838>。 不過，如果您沒有安裝此 SDK，則建立第一個 Azure 部署專案時，Azure Toolkit for Eclipse 會自動安裝適當版本的 Azure SDK。
-
-
+This plugin uses the latest version of the Azure SDK. This can be downloaded using the Web Platform Installer (WebPI) at <http://go.microsoft.com/fwlink/?LinkID=252838>. However, if you don't have it installed, when you create your first Azure deployment project, the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) will automatically install the appropriate version of the Azure SDK. 
 

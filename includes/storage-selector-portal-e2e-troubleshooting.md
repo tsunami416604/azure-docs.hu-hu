@@ -1,5 +1,0 @@
-> [AZURE.SELECTOR]
-- [Azure 入口網站](../articles/storage/storage-e2e-troubleshooting.md)
-- [Azure 傳統入口網站](../articles/storage/storage-e2e-troubleshooting-classic-portal.md)
-
-

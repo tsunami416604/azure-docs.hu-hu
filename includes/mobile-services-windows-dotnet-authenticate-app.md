@@ -1,10 +1,10 @@
 
-1. 開啟專案檔案 MainPage.xaml.cs，並新增下列 using 陳述式：
+1. Open the project file MainPage.xaml.cs and add the following using statement:
 
         using Windows.UI.Popups;
 
-2. 將下列程式碼片段新增至 MainPage 類別：
-    
+2. Add the following code snippet to the MainPage class:
+	
         private MobileServiceUser user;
         private async System.Threading.Tasks.Task AuthenticateAsync()
         {
@@ -29,17 +29,16 @@
             }
         }
 
-    如此會建立一個成員變數來存放目前使用者，並建立一個方法來處理驗證程序。 使用者透過 Facebook 登入來驗證。 如果您使用除了 Facebook 以外的識別提供者，將值變更 **MobileServiceAuthenticationProvider** 上為您的提供者的值。
+    This creates a member variable for storing the current user and a method to handle the authentication process. The user is authenticated by using a Facebook login. If you are using an identity provider other than Facebook, change the value of **MobileServiceAuthenticationProvider** above to the value for your provider.
 
-3. 取代現有 **OnNavigatedTo** 方法覆寫下列方法，以呼叫新 **驗證** 方法 ︰
+3. Replace the existing **OnNavigatedTo** method override with the following method that calls the new **Authenticate** method:
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             await AuthenticateAsync();
             RefreshTodoItems();
         }
-        
-4. 按 F5 鍵執行應用程式，並以您選擇的身分識別提供者登入應用程式。 
+		
+4. Press the F5 key to run the app and sign into the app with your chosen identity provider. 
 
-    成功登入後，應用程式應會正確無誤地執行，而且您應能夠查詢行動服務並更新資料。
-
+   	When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.

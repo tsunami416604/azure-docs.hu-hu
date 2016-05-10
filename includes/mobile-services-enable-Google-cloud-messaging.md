@@ -1,25 +1,33 @@
 
-1. 瀏覽至 [Google Cloud Console](https://console.developers.google.com/project), ，使用您的 Google 帳戶認證登入。 
- 
-2. 按一下 [ **建立專案**, ，輸入專案名稱，然後按一下 [ **建立**。 如果要求，請執行簡訊驗證，然後按一下 [ **建立** 一次。
-
-    ![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
-
-     在新的型別 **專案名稱** 按一下 **建立專案**。
-
-3. 請記下中的專案號碼 **專案** 一節。 您必須設定這個值稱為 *PROJECT_ID* 變數中的用戶端。
-
-4. 在專案儀表板中，按一下 [ **使用 Google Api** > **Cloud Messaging for Android**, ，然後在下一頁按一下 **啟用 API**。 
-
-5. 在 API 管理員中，按一下 [ **認證** > **加入認證** > **API 金鑰**。 
-
-    ![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-create-server-key.png)
-
-6. 在 **建立新的金鑰**, ，按一下 [ **伺服器金鑰**, ，輸入您的金鑰的名稱，然後按一下 [ **建立**。
-
-7. 請記下的 **API 金鑰** 值。
-
-    您將使用此 API 金鑰值，讓 Azure 能夠使用 GCM 進行驗證，並代表您的應用程式傳送推播通知。
 
 
+1. Navigate to the <a href="http://cloud.google.com/console" target="_blank">Google Cloud Console</a> website, sign-in with your Google account credentials, and then click **CREATE PROJECT**.
+
+   	![](./media/notification-hubs-android-get-started/mobile-services-google-new-project.png)   
+
+	>[WACOM.NOTE]When you already have an existing project, you are directed to the <strong>Projects</strong> page after login. To create a new project from the Dashboard, expand <strong>API Project</strong>, click <strong>Create...</strong> under <strong>Other projects</strong>, then enter a project name and click <strong>Create project</strong>.
+
+2. Enter a project name, accept the terms of service, and click **Create**. Carry out the requested SMS Verification, and click **Create** again.
+
+3. Make a note of the project number in the **Projects** section. 
+
+	Later in the tutorial you set this value as the PROJECT_ID variable in the client.
+
+4. In the left column, click **APIs & auth**, then scoll down and click the toggle to enable **Google Cloud Messaging for Android** and accept the terms of service. 
+
+	![](./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png)
+
+5. Click **Credentials**, and then click **CREATE NEW KEY** 
+
+   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key.png)
+
+6. In **Create a new key**, click **Server key**. In the next window click **Create**.
+
+   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key2.png)
+
+7. Make a note of the **API key** value.
+
+   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key3.png) 
+
+	You will use this API key value to enable Mobile Services to authenticate with GCM and send push notifications on behalf of you app.
 

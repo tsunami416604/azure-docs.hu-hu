@@ -1,94 +1,93 @@
 
-1. 在 Visual Studio 的 [方案總管] 中，展開 App_Start 資料夾，然後開啟 WebApiConfig.cs 專案檔。
+1. In Solution Explorer in Visual Studio, expand the App_Start folder and open the WebApiConfig.cs project file.
 
-2. 之後的 Register 方法中加入下列程式碼行 **ConfigOptions** 定義 ︰
+2. Add the following line of code to the Register method after the **ConfigOptions** definition:
 
         options.PushAuthorization = 
             Microsoft.WindowsAzure.Mobile.Service.Security.AuthorizationLevel.User;
  
-    這樣會在註冊推播通知之前，強制執行使用者驗證。 
+	This enforces user authentication before registering for push notifications. 
 
-2. 以滑鼠右鍵按一下專案，請按一下 **新增** 然後按一下 [ **類別...**。
+2. Right-click the project, click **Add** then click **Class...**.
 
-3. 將新的空類別命名 `PushRegistrationHandler` 然後按一下 [ **新增**。
+3. Name the new empty class `PushRegistrationHandler` then click **Add**.
 
-4. 在程式碼頁面頂端，新增下列 **使用** 陳述式 ︰
+4. At the top of the code page, add the following **using** statements:
 
-        using System.Threading.Tasks; 
-        using System.Web.Http; 
-        using System.Web.Http.Controllers; 
-        using Microsoft.WindowsAzure.Mobile.Service; 
-        using Microsoft.WindowsAzure.Mobile.Service.Notifications; 
-        using Microsoft.WindowsAzure.Mobile.Service.Security; 
+		using System.Threading.Tasks; 
+		using System.Web.Http; 
+		using System.Web.Http.Controllers; 
+		using Microsoft.WindowsAzure.Mobile.Service; 
+		using Microsoft.WindowsAzure.Mobile.Service.Notifications; 
+		using Microsoft.WindowsAzure.Mobile.Service.Security; 
 
-5. 取代現有 **PushRegistrationHandler** 類別取代下列程式碼 ︰
+5. Replace the existing **PushRegistrationHandler** class with the following code:
  
-        public class PushRegistrationHandler : INotificationHandler
-        {
-            public Task Register(ApiServices services, HttpRequestContext context,
+	    public class PushRegistrationHandler : INotificationHandler
+	    {
+	        public Task Register(ApiServices services, HttpRequestContext context,
             NotificationRegistration registration)
+        {
+            try
             {
-                try
+                // Perform a check here for user ID tags, which are not allowed.
+                if(!ValidateTags(registration))
                 {
-                    // Perform a check here for user ID tags, which are not allowed.
-                    if(!ValidateTags(registration))
-                    {
-                        throw new InvalidOperationException(
-                            "You cannot supply a tag that is a user ID.");                    
-                    }
-    
-                    // Get the logged-in user.
-                    var currentUser = context.Principal as ServiceUser;
-    
-                    // Add a new tag that is the user ID.
-                    registration.Tags.Add(currentUser.Id);
-    
-                    services.Log.Info("Registered tag for userId: " + currentUser.Id);
+                    throw new InvalidOperationException(
+                        "You cannot supply a tag that is a user ID.");                    
                 }
-                catch(Exception ex)
-                {
-                    services.Log.Error(ex.ToString());
-                }
-                    return Task.FromResult(true);
+
+                // Get the logged-in user.
+                var currentUser = context.Principal as ServiceUser;
+
+                // Add a new tag that is the user ID.
+                registration.Tags.Add(currentUser.Id);
+
+                services.Log.Info("Registered tag for userId: " + currentUser.Id);
             }
-    
-            private bool ValidateTags(NotificationRegistration registration)
+            catch(Exception ex)
             {
-                // Create a regex to search for disallowed tags.
-                System.Text.RegularExpressions.Regex searchTerm =
-                new System.Text.RegularExpressions.Regex(@"facebook:|google:|twitter:|microsoftaccount:",
-                    System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-    
-                foreach (string tag in registration.Tags)
-                {
-                    if (searchTerm.IsMatch(tag))
-                    {
-                        return false;
-                    }
-                }
-                return true;
+                services.Log.Error(ex.ToString());
             }
-        
-            public Task Unregister(ApiServices services, HttpRequestContext context, 
-                string deviceId)
-            {
-                // This is where you can hook into registration deletion.
                 return Task.FromResult(true);
-            }
         }
 
-     **註冊** 在註冊期間呼叫方法。 這樣讓您能夠將標籤新增到已登入使用者識別碼的註冊中。 已驗證所提供的標記，防止使用者註冊另一位使用者的識別碼。 傳送通知給這位使用者時，此裝置和該使用者已註冊的任何其他裝置都會收到該通知。 
+        private bool ValidateTags(NotificationRegistration registration)
+        {
+            // Create a regex to search for disallowed tags.
+            System.Text.RegularExpressions.Regex searchTerm =
+            new System.Text.RegularExpressions.Regex(@"facebook:|google:|twitter:|microsoftaccount:",
+                System.Text.RegularExpressions.RegexOptions.IgnoreCase);
 
-6. 展開 Controllers 資料夾、 開啟 TodoItemController.cs 專案檔案、 找出 **PostTodoItem** 方法，並呼叫的程式碼行取代 **SendAsync** 為下列程式碼 ︰
+            foreach (string tag in registration.Tags)
+            {
+                if (searchTerm.IsMatch(tag))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+	
+        public Task Unregister(ApiServices services, HttpRequestContext context, 
+            string deviceId)
+        {
+            // This is where you can hook into registration deletion.
+            return Task.FromResult(true);
+        }
+    }
+
+	The **Register** method is called during registration. This lets you add a tag to the registration that is the ID of the logged-in user. The supplied tags are validated to prevent a user from registering for another user's ID. When a notification is sent to this user, it is received on this and any other device registered by the user. 
+
+6. Expand the Controllers folder, open the TodoItemController.cs project file, locate the **PostTodoItem** method and replace the line of code that calls **SendAsync** with the following code:
 
         // Get the logged-in user.
-        var currentUser = this.User as ServiceUser;
-        
-        // Use a tag to only send the notification to the logged-in user.
+		var currentUser = this.User as ServiceUser;
+		
+		// Use a tag to only send the notification to the logged-in user.
         var result = await Services.Push.SendAsync(message, currentUser.Id);
 
-7. 重新發佈行動服務專案。
+7. Republish the mobile service project.
 
-現在，服務會使用使用者識別碼標籤，將推播通知 (以及插入項目的文字) 傳送到該位已登入使用者建立的所有註冊中。
+Now, the service uses the user ID tag to send a push notification (with the text of the inserted item) to all registrations created by the logged-in user.
  
-

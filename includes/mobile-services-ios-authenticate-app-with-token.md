@@ -1,37 +1,86 @@
 
-在先前範例中，每次應用程式啟動時，都會連繫識別提供者和行動服務。 相反地，您可以快取授權權杖，並嘗試優先使用它。
-
-* 建議在 iOS 用戶端上用來加密和儲存驗證權杖的方法是使用 iOS Keychain。 我們將使用 [SSKeychain](https://github.com/soffes/sskeychain) -iOS Keychain 的簡單包裝函式。 依照 [SSKeychain] 頁面上的指示，將該包裝函式加入至您的專案。 確認 **啟用模組** 在專案的啟用設定 **建置設定** (區段 **Apple LLVM-語言-模組**。)
-
-* 開啟 **QSTodoListViewController.m** 並新增下列程式碼 ︰
-
-```
-        - (void) saveAuthInfo {
-                [SSKeychain setPassword:self.todoService.client.currentUser.mobileServiceAuthenticationToken forService:@"AzureMobileServiceTutorial" account:self.todoService.client.currentUser.userId]
-        }
+The previous example showed a standard sign-in, which requires the client to contact both the identity provider and the mobile service every time that the app starts. Not only is this method inefficient, you can run into usage-relates issues should many customers try to start you app at the same time. A better approach is to cache the authorization token returned by Mobile Services and try to use this first before using a provider-based sign-in. 
 
 
-        - (void)loadAuthInfo {
-                NSString *userid = [[SSKeychain accountsForService:@"AzureMobileServiceTutorial"][0] valueForKey:@"acct"];
-            if (userid) {
-                NSLog(@"userid: %@", userid);
-                self.todoService.client.currentUser = [[MSUser alloc] initWithUserId:userid];
-                 self.todoService.client.currentUser.mobileServiceAuthenticationToken = [SSKeychain passwordForService:@"AzureMobileServiceTutorial" account:userid];
+>[WACOM.NOTE] You can cache the token issued by Mobile Services regardless of whether you are using client-managed or service-managed authentication. This tutorial uses service-managed authentication.
 
-            }
-        }
-```
+1. The recommended way to encrypt and store authentication tokens on an iOS client is use the Keychain. To do this, create a class KeychainWrapper, copying [KeychainWrapper.m](https://github.com/WindowsAzure-Samples/iOS-LensRocket/blob/master/source/client/LensRocket/Misc/KeychainWrapper.m) and [KeychainWrapper.h](https://github.com/WindowsAzure-Samples/iOS-LensRocket/blob/master/source/client/LensRocket/Misc/KeychainWrapper.h) from the [LensRocket sample](https://github.com/WindowsAzure-Samples/iOS-LensRocket). We use this KeychainWrapper as the KeychainWrapper defined in Apple's documentation does not account for automatic reference counting (ARC).
 
-* 在 `loginAndGetData`, ，修改  `loginWithProvider:controller:animated:completion:`的 completion 區塊。 在 `[self refresh]` 前面加入下列這一行，以儲存使用者識別碼和權杖屬性：
 
-```
-                [self saveAuthInfo];
-```
+2. Open the project file **QSTodoListViewController.m** and add the following code:
 
-* 讓我們在應用程式啟動時載入使用者識別碼和權杖。 在 `viewDidLoad` 中 **QSTodoListViewController.m**, 之後, 加入這`self.todoService` 初始化。
+		
+		- (void) saveAuthInfo{
+		    [KeychainWrapper createKeychainValue:self.todoService.client.currentUser.userId
+				 forIdentifier:@"userid"];
+		    [KeychainWrapper createKeychainValue:self.todoService.client.currentUser.mobileServiceAuthenticationToken
+				 forIdentifier:@"token"];
+		}
+		
+		
+		- (void)loadAuthInfo {
+		    NSString *userid = [KeychainWrapper keychainStringFromMatchingIdentifier:@"userid"];
+		    if (userid) {
+		        NSLog(@"userid: %@", userid);
+		        self.todoService.client.currentUser = [[MSUser alloc] initWithUserId:userid];
+		        self.todoService.client.currentUser.mobileServiceAuthenticationToken = [KeychainWrapper keychainStringFromMatchingIdentifier:@"token"];
+		    }
+		}
+		
 
-```
-                [self loadAuthInfo];
-```
 
+3. At the end of the **viewDidAppear** method in **QSTodoListViewController.m**, add a call to saveAuthInfo. With this call, we are simply storing the userId and token properties.  
+
+
+
+		- (void)viewDidAppear:(BOOL)animated
+		{
+		    MSClient *client = self.todoService.client;
+		
+		    if (client.currentUser != nil) {
+		        return;
+		    }
+		
+		    [client loginWithProvider:@"facebook" controller:self animated:YES completion:^(MSUser *user, NSError *error) {
+		
+		        [self saveAuthInfo];
+		        [self refresh];
+		    }];
+		}
+
+  
+4. Now that we've seen how we can cache the user token and ID, let's see how we can load that when the app starts. In the **viewDidLoad** method in **QSTodoListViewController.m**, add a call to loadAuthInfo, after **self.todoService** has been initialized. 
+		
+		- (void)viewDidLoad
+		{
+		    [super viewDidLoad];
+		    
+		    // Create the todoService - this creates the Mobile Service client inside the wrapped service
+		    self.todoService = [QSTodoService defaultService];
+
+			[self loadAuthInfo];
+		    
+		    // Set the busy method
+		    UIActivityIndicatorView *indicator = self.activityIndicator;
+		    self.todoService.busyUpdate = ^(BOOL busy)
+		    {
+		        if (busy)
+		        {
+		            [indicator startAnimating];
+		        } else
+		        {
+		            [indicator stopAnimating];
+		        }
+		    };
+		    
+		    // have refresh control reload all data from server
+		    [self.refreshControl addTarget:self
+		                            action:@selector(onRefresh:)
+		                  forControlEvents:UIControlEventValueChanged];
+		
+		    // load the data
+		    [self refresh];
+		}
+
+5. If the app makes a request to your Mobile Service that should get through because the user is authenticated and you receive a 401 response (unauthorized error), it means the user token you're passing over has expired. In the completion handler for every method that we have that interacts with our Mobile Service, we could check for a 401 response, or we can handle things in one place: the MSFilter's handleRequest method.  To see how to handle this scenario, see [this blog post](http://www.thejoyofcode.com/Handling_expired_tokens_in_your_application_Day_11_.aspx)
 

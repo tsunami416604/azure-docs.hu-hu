@@ -1,15 +1,15 @@
 
-##<a name="add-select-images"></a>更新快速入門用戶端應用程式以擷取和上傳影像
+##<a name="add-select-images"></a>Update the quickstart client app to capture and upload images
 
-在本節中，您將更新從專案 [Get started with Mobile Services] 教學課程，以便拍照並將它們上傳至 Azure Blob 儲存體。 為了擷取影像，此教學課程使用 [CameraCaptureTask] 從 `Microsoft.Phone.Tasks` 命名空間。 此類別會啟動 Windows Phone 裝置的相機 UI 以擷取相片，並將影像自動儲存到 Windows Phone 裝置上的相機相簿。 如果您不要將影像儲存至相機相簿，請使用 [PhotoCamera] 類別 `Microsoft.Devices` 命名空間改。
+In this section you will update the project from the [Get started with Mobile Services] tutorial to take photos and upload them to Azure Blob Storage. To capture the image, this tutorial uses the [CameraCaptureTask] from the `Microsoft.Phone.Tasks` namespace. This class launches the camera UI on the Windows Phone device to capture the photo and automatically saves the image to the Camera Roll on the Windows Phone device. If you do not want the images saved to the Camera Roll, use the [PhotoCamera] class in the `Microsoft.Devices` namespace instead.
 
-1. 在 Visual Studio 專案底下的 [方案總管] 中展開 **屬性**。 然後開啟 WMAppManifest.xml 檔案並在 **功能** ] 索引標籤，即可啟用相機 **ID\_CAP\_ISV\_CAMERA**。 關閉檔案以儲存您的變更。
+1. In the Solution Explorer for Visual Studio, under the project, expand **Properties**. Then open the WMAppManifest.xml file and on the **Capabilities** tab enable the camera by clicking **ID\_CAP\_ISV\_CAMERA**. Close the file to save your change.
 
-    ![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png)
+   	![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png)
 
-    如此能確保您的應用程式可以使用連接至電腦的相機。 Users will be requested to allow camera access the first time that the app is run.
+   	This makes sure that your app can use a camera attached to the computer. Users will be requested to allow camera access the first time that the app is run.
 
-2. 開啟 MainPage.xaml 檔案，並取代 **方格** 名 **ContentPanel** 為下列程式碼 ︰
+2. Open the MainPage.xaml file and replace the **Grid** element named **ContentPanel** with the following code:
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
@@ -44,54 +44,54 @@
         </Grid>
 
 
-    這會新增一個按鈕來啟動 [CameraCaptureTask] 並新增一個影像 **ItemTemplate** 並將其繫結來源設為 Blob 儲存體服務中已上傳影像的 URI。
+   	This adds a new button to launch the [CameraCaptureTask] and adds an image to the **ItemTemplate** and sets its binding source as the URI of the uploaded image in the Blob Storage service.
 
-3. 開啟 MainPage.xaml.cs 專案檔案並新增下列 **使用** 陳述式 ︰
+3. Open the MainPage.xaml.cs project file and add the following **using** statements:
+	
+		using Microsoft.Phone.Tasks;
+		using System.IO;
+		using Microsoft.WindowsAzure.Storage.Auth;
+		using Microsoft.WindowsAzure.Storage.Blob;
     
-        using Microsoft.Phone.Tasks;
-        using System.IO;
-        using Microsoft.WindowsAzure.Storage.Auth;
-        using Microsoft.WindowsAzure.Storage.Blob;
-    
-4. 在 MainPage.xaml.cs 專案檔案中，新增下列屬性以更新 TodoItem 類別：
+4. In the MainPage.xaml.cs project file, update the TodoItem class by adding the following properties:
 
         [JsonProperty(PropertyName = "containerName")]
         public string ContainerName { get; set; }
-        
+		
         [JsonProperty(PropertyName = "resourceName")]
         public string ResourceName { get; set; }
-        
+		
         [JsonProperty(PropertyName = "sasQueryString")]
         public string SasQueryString { get; set; }
-        
+		
         [JsonProperty(PropertyName = "imageUri")]
         public string ImageUri { get; set; } 
 
-5. 在 MainPage.xaml.cs 專案檔案中更新 MainPage 類別。 加入下列程式碼以宣告 [CameraCaptureTask] 以及將參照擷取的映像的串流物件 ︰
+5. In the MainPage.xaml.cs project file, update the MainPage class. Add the following code to declare the [CameraCaptureTask] and a stream object that will reference the captured image:
 
         // Using the CameraCaptureTask to allow the user to capture a todo item image //
         CameraCaptureTask cameraCaptureTask;
-        
+		
         // Using a stream reference to upload the image to blob storage.
         Stream imageStream = null;
 
-6. 在 MainPage.xaml.cs 專案檔案中更新 MainPage 類別。 新增下列程式碼，更新建構函式來建立 CameraCaptureTask，並新增 Completed 事件的事件處理常式：
+6. In the MainPage.xaml.cs project file, update the MainPage class. Add the following code to update the constructor to create the CameraCaptureTask and add an event handler for the Completed event:
 
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-            
+			
             cameraCaptureTask = new CameraCaptureTask();
             cameraCaptureTask.Completed += cameraCaptureTask_Completed;
         }
-        
+		
         void cameraCaptureTask_Completed(object sender, PhotoResult e)
         {
             imageStream = e.ChosenPhoto;
         }
 
-7. 在 MainPage.xaml.cs 專案檔案中更新 MainPage 類別。 加入下列程式碼顯示相機 UI，讓使用者擷取映像時 **擷取映像** 按鈕 ︰
+7. In the MainPage.xaml.cs project file, update the MainPage class. Add the following code that displays the camera UI to allow the user to capture an image when the **Capture Image** button is clicked:
 
         private void ButtonCaptureImage_Click(object sender, RoutedEventArgs e)
         {
@@ -99,23 +99,23 @@
         }
 
 
-8. 在 MainPage.xaml.cs 專案檔案中更新 MainPage 類別。 以下列程式碼取代現有 `InsertTodoItem` 方法：
+8. In the MainPage.xaml.cs project file, update the MainPage class. Replace the existing `InsertTodoItem` method with the following code:
  
         private async void InsertTodoItem(TodoItem todoItem)
         {
             string errorString = string.Empty;            
-            
+			
             if (imageStream != null)
             {
                 // Set blob properties of TodoItem.
                 todoItem.ContainerName = "todoitemimages";
                 todoItem.ResourceName = Guid.NewGuid().ToString() + ".jpg";
             }                       
-            
+			
             // Send the item to be inserted. When blob properties are set this
             // generates an SAS in the response.
             await todoTable.InsertAsync(todoItem);  
-            
+			
             // If we have a returned SAS, then upload the blob.
             if (!string.IsNullOrEmpty(todoItem.SasQueryString))
             {
@@ -123,64 +123,62 @@
                 // and extract the storage credentials.
                 StorageCredentials cred = new StorageCredentials(todoItem.SasQueryString);
                 var imageUri = new Uri(todoItem.ImageUri);
-                
+				
                 // Instantiate a Blob store container based on the info in the returned item.
                 CloudBlobContainer container = new CloudBlobContainer(
                     new Uri(string.Format("https://{0}/{1}",
                         imageUri.Host, todoItem.ContainerName)), cred);                
-                
+				
                 // Upload the new image as a BLOB from the stream.
                 CloudBlockBlob blobFromSASCredential =
                     container.GetBlockBlobReference(todoItem.ResourceName);
                 await blobFromSASCredential.UploadFromStreamAsync(imageStream);
-                
-                // When you request an SAS at the container-level instead of the blob-level,
-                // you are able to upload multiple streams using the same container credentials.
+				
+				// When you request an SAS at the container-level instead of the blob-level,
+				// you are able to upload multiple streams using the same container credentials.
 
                 imageStream = null;
             }              
-            
+			
             // Add the new item to the collection.
             items.Add(todoItem);
             TextInput.Text = "";
         }
 
 
-    此程式碼會將要求傳送給行動服務以插入新 TodoItem，包括影像檔案名稱。 回應包含 SAS，接著可在 Blob 存放區中插入影像，及影像的 URI 以進行資料繫結。
+	This code sends a request to the mobile service to insert a new TodoItem, including the image file name. The response contains the SAS, which is then used to insert the image in the Blob store, and the URI of the image for data binding.
 
-最後一個步驟是測試應用程式並驗證已成功上傳。
-        
-##<a name="test"></a>在應用程式中測試上傳影像
+The final step is to test the app and validate that uploads succeed.
+		
+##<a name="test"></a>Test uploading the images in your app
 
-1. 您可以在 Visual Studio 中按 F5 鍵，在模擬器或選定的實際裝置中測試應用程式。
+1. In Visual Studio, you can press the F5 key to test the app in the emulator or with an actual device targeted.
 
-2. 在文字方塊中，輸入部分文字，然後按一下 [ **擷取映像**。
+2. Enter some text in the textbox, then click **Capture Image**.
 
-    ![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-wp8.png)
+   	![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-wp8.png)
 
-    這會顯示相機擷取 UI。 
+  	This displays the camera capture UI. 
 
-3. 按一下相機上的影像或快照按鈕來拍照。
+3. Click the image or the snapshot button on the phone to take a picture.
   
-    ![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-camera-wp8.png)
+   	![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-camera-wp8.png)
 
-4. 按一下 [ **接受** 以接受影像並結束相機 UI。
+4. Click **accept** to accept the image and exit the camera UI.
 
     ![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-camera-accept-wp8.png)
 
-5. 按一下 [ **儲存** 插入新項目並上傳映像。
+5. Click **Save** to insert the new item and upload the image.
 
-    ![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-save-wp8.png)
+	![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-save-wp8.png)
 
-6. 新項目以及上傳的影像會顯示在清單檢視中。
+6. The new item, along with the uploaded image, is displayed in the list view.
 
-    ![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-final-wp8.png)
+	![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-final-wp8.png)
 
-   >[AZURE.NOTE]從 Blob 儲存體自動下載影像服務 <code>imageUri</code> 新項目的屬性繫結至 <strong>映像</strong> 控制項。
-
-
-[Get started with Mobile Services]: ../articles/mobile-services-windows-phone-get-started.md
-[CameraCaptureTask]: http://msdn.microsoft.com/library/windowsphone/develop/microsoft.phone.tasks.cameracapturetask(v=vs.105).aspx
-[PhotoCamera]: http://msdn.microsoft.com/library/windowsphone/develop/microsoft.devices.photocamera(v=vs.105).aspx
+   >[WACOM.NOTE]The image is downloaded automatically from the Blob Storage service when the <code>imageUri</code> property of the new item is bound to the <strong>Image</strong> control.
 
 
+[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-windows-phone-get-started
+[CameraCaptureTask]: http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.phone.tasks.cameracapturetask(v=vs.105).aspx
+[PhotoCamera]: http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.devices.photocamera(v=vs.105).aspx

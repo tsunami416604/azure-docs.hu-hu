@@ -1,51 +1,44 @@
-<properties 
-    pageTitle="如何從 Twilio 撥打電話 (.NET) | Microsoft Azure" 
-    description="了解如何在 Azure 上使用 Twilio API 服務撥打電話及傳送簡訊。 程式碼範例以 .NET 撰寫。" 
-    services="" 
-    documentationCenter=".net" 
-    authors="devinrader" 
-    manager="twilio" 
-    editor=""/>
+<properties urlDisplayName="Twilio Phone Call" pageTitle="How to make a phone call from Twilio (.NET) - Azure" metaKeywords="Azure .NET Twilio, Azure Twilio, Azure phone calls, Azure twilio, Azure SMS, Azure SMS, Azure voice calls, azure voice calls, Azure text messages, Azure text messages, ASP.NET twilio Azure" description="Learn how to make a phone call and send a SMS message with the Twilio API service on Azure. Code samples written in .NET." metaCanonical="" services="" documentationCenter=".NET" title="How to make a phone call using Twilio in a web role on Azure" authors="MicrosoftHelp@twilio.com" solutions="" manager="twilio" editor="" />
 
-<tags 
-    ms.service="cloud-services" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="dotnet" 
-    ms.topic="article" 
-    ms.date="11/16/2015" 
-    ms.author="microsofthelp@twilio.com"/>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com; larryf"></tags>
 
+# How to make a phone call using Twilio in a web role on Azure
 
+This guide demonstrates how to use Twilio to make a call from a web page hosted in Azure. The resulting application prompts the user for phone call values, as shown in the following screenshot.
 
+![Azure call form using Twilio and ASP.NET][Azure call form using Twilio and ASP.NET]
 
-# 如何在 Azure 上的 Web 角色中使用 Twilio 撥打電話
+## Table of Contents
 
-本指南將說明如何從 Azure 代管的網頁上使用 Twilio 撥打電話。 產生的應用程式會提示使用者提供電話值，如下列螢幕擷取畫面所示。
+-   [Prerequisites][Prerequisites]
+-   [How to: Create a web form for making a call][How to: Create a web form for making a call]
+-   [How to: Create the code to make the call][How to: Create the code to make the call]
+-   [Next steps][Next steps]
+-   [See also][See also]
 
-![Azure call form using Twilio and ASP.NET][twilio_dotnet_basic_form]
+## <a name="twilio-prereqs"></a>Prerequisites
 
-## <a name="twilio-prereqs"></a>必要條件
+You will need to do the following to use the code in this topic:
 
-您必須執行下列動作才能使用本主題中的程式碼：
+1.  Acquire a Twilio account and authentication token. To get started with Twilio, sign up at [][]<https://www.twilio.com/try-twilio></a>. You can evaluate pricing at [][1]<http://www.twilio.com/pricing></a>. For information about the API provided by Twilio, see [][2]<http://www.twilio.com/voice/api></a>.
+2.  Verify your phone number with Twilio. For information on how to verify your phone number, see [][3]<https://www.twilio.com/user/account/phone-numbers/verified>\#</a>. As an alternative to using an existing number, you can purchase a Twilio phone number.
+    For the purposes of this example you will use the Twilio sandbox phone number to send a message to the verified phone number. You can only use the sandbox phone number to send to verified phone numbers.
+3.  Add the Twilio .NET libary to your web role. See "To add the Twilio libraries to your web role project," later in this topic.
 
-1. 取得 Twilio 帳戶和驗證權杖。 若要開始使用 Twilio，請註冊在 [https://www.twilio.com/try-twilio][try_twilio]。 您可以在評估價格 [http://www.twilio.com/pricing][twilio_pricing]。 Twilio 所提供之 API 的相關資訊，請參閱 [http://www.twilio.com/voice/api][twilio_api]。
-2. 將 Twilio .NET 程式庫新增至您的 Web 角色。 請參閱本主題稍後的「將 Twilio 程式庫新增至 Web 角色專案」。
+You should be familiar with creating a basic web role on Azure.
 
-您應知悉如何在 Azure 上建立基本 Web 角色。
+## <a name="howtocreateform"></a>How to: Create a web form for making a call
 
-## </a><a name="howtocreateform">作法：建立用以撥打電話的 Web 表單
+### <span id="use_nuget"></span></a>To add the Twilio libraries to your web role project:
 
-</a><a id="use_nuget">將 Twilio 程式庫新增至 Web 角色專案：
+1.  Open your solution in Visual Studio.
+2.  Right-click **References**.
+3.  Click **Manage NuGet Packages**.
+4.  Click **Online**.
+5.  In the search online box, type *twilio*.
+6.  Click **Install** on the Twilio package.
 
-1.  在 Visual Studio 中開啟方案。
-2.  以滑鼠右鍵按一下 **參考**。
-3.  按一下 [ **管理 NuGet 封裝**。
-4.  按一下 [ **線上**。
-5.  在搜尋線上方塊中，輸入 *twilio*。
-6.  按一下 [ **安裝** Twilio 套件上。
-
-下列程式碼將說明如何建立 Web 表單，以擷取撥打電話所需的使用者資料。 在此範例中，ASP.NET web 角色命名為 **TwilioCloud** 建立。
+The following code shows how to create a web form to retrieve user data for making a call. In this example, an ASP.NET web role named **TwilioCloud** is created.
 
     <%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master"
         AutoEventWireup="true" CodeBehind="Default.aspx.cs"
@@ -69,8 +62,9 @@
         </div>
     </asp:Content>
 
-## <a id="howtocreatecode"></a>作法：建立用以撥打電話的程式碼
-下列程式碼會在使用者完成表單時受到呼叫，可用來建立通話訊息及產生通話。 在此範例中，程式碼會在表單按鈕的 onclick 事件處理常式中執行。 (使用您的 Twilio 帳戶和驗證權杖，而不是預留位置值指派給使用 **accountSID** 和 **authToken** 程式碼所示。)
+## <span id="howtocreatecode"></span></a>How to: Create the code to make the call
+
+The following code, which is called when the user completes the form, creates the call message and generates the call. In this example, the code is run in the onclick event handler of the button on the form. (Use your Twilio account and authentication token instead of the placeholder values assigned to **accountSID** and **authToken** in the code below.)
 
     using System;
     using System.Collections.Generic;
@@ -125,8 +119,8 @@
                     String Url = "http://twimlets.com/message?Message%5B0%5D="
                             + myMessage.Replace(" ", "%20");
 
-                    // Display the endpoint, API version, and the URL for the message.
-                    this.varDisplay.Items.Add("Using Twilio endpoint "
+                    // Diplay the enpoint, API version, and the URL for the message.
+                    this.varDisplay.Items.Add("Using Tilio endpoint "
                         + TwilioBaseURL);
                     this.varDisplay.Items.Add("Twilioclient API Version is "
                         + APIversuion);
@@ -136,7 +130,9 @@
                     // to the outbound call.
                     CallOptions options = new CallOptions();
 
-                    // Set the call From, To, and URL values.                    
+                    // Set the call From, To, and URL values into a hash map.
+                    // This sample uses the sandbox number provided by Twilio
+                    // to make the call.
                     options.From = "+14155992671";
                     options.To = to;
                     options.Url = Url;
@@ -149,47 +145,41 @@
         }
     }
 
-通話建立後，會顯示 Twilio 端點、API 版本和通話狀態。 下列螢幕擷取畫面顯示執行範例的輸出。
+The call is made, and the Twilio endpoint, API version, and the call status are displayed. The following screenshot shows output from a sample run.
 
-![Azure call response using Twilio and ASP.NET][twilio_dotnet_basic_form_output]
+![Azure call response using Twilio and ASP.NET][Azure call response using Twilio and ASP.NET]
 
-TwiML 的詳細資訊，請參閱 [http://www.twilio.com/docs/api/twiml][twiml]。 詳細資訊 & l t;Y & gt;和其他 Twilio 動詞命令，請參閱 [http://www.twilio.com/docs/api/twiml/say][twilio_say]。
+More information about TwiML can be found at [][4]<http://www.twilio.com/docs/api/twiml></a>. More information about \<Say\> and other Twilio verbs can be found at [][5]<http://www.twilio.com/docs/api/twiml/say></a>.
 
-## <a id="nextsteps"></a>接續步驟
-此程式可說明在 Azure 上的 ASP.NET Web 角色中使用 Twilio 的基本功能。 在部署至生產環境中的 Azure 之前，您可以新增更多錯誤處理或其他功能。 例如：
+## <span id="nextsteps"></span></a>Next steps
 
-* 除了使用 Web 表單以外，您也可以使用 Azure Blob 儲存體或 Azure SQL Database 執行個體來儲存電話號碼和通話文字。 在 Azure 中使用 blob 的相關資訊，請參閱 [如何在.NET 中使用 Azure Blob 儲存體服務][howto_blob_storage_dotnet]。 使用 SQL Database 的相關資訊，請參閱 [如何在.NET 應用程式中使用 Azure SQL Database][howto_sql_azure_dotnet]。
-* 您可以使用 RoleEnvironment.getConfigurationSettings，從部署的組態設定中擷取 Twilio 帳戶 ID 和驗證權杖，而不要在表單中進行值的硬式編碼。 RoleEnvironment 類別的相關資訊，請參閱 [Microsoft.WindowsAzure.ServiceRuntime 命名空間][azure_runtime_ref_dotnet]。
-* 讀取的 Twilio 安全性指引 [https://www.twilio.com/docs/security][twilio_docs_security]。
-* 深入了解在 Twilio [https://www.twilio.com/docs][twilio_docs]。
+This code was provided to show you basic functionality using Twilio in an ASP.NET web role on Azure. Before deploying to Azure in production, you may want to add more error handling or other features. For example:
 
-##<a name="seealso"></a>另請參閱
-* [如何透過 Twilio 來使用 Azure 的語音和簡訊功能](twilio-dotnet-how-to-use-for-voice-sms.md)
+-   Instead of using a web form, you could use Azure Blob storage or an Azure SQL Database instance to store phone numbers and call text. For information about using blobs in Azure, see [How to use the Azure Blob storage service in .NET][How to use the Azure Blob storage service in .NET]. For information about using SQL Database, see [How to use Azure SQL Database in .NET applications][How to use Azure SQL Database in .NET applications].
+-   You could use RoleEnvironment.getConfigurationSettings to retrieve the Twilio account ID and authentication token from your deployment's configuration settings, instead of hard-coding the values in your form. For information about the RoleEnvironment class, see [Microsoft.WindowsAzure.ServiceRuntime Namespace][Microsoft.WindowsAzure.ServiceRuntime Namespace].
+-   Read the Twilio security guidelines at [][6]<https://www.twilio.com/docs/security></a>.
+-   Learn more about Twilio at [][7]<https://www.twilio.com/docs></a>.
 
-[twilio_pricing]: http://www.twilio.com/pricing
-[try_twilio]: http://www.twilio.com/try-twilio
-[twilio_api]: http://www.twilio.com/voice/api
-[verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
+## <a name="seealso"></a>See also
 
-[twilio_dotnet_basic_form]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form.png
-[twilio_dotnet_basic_form_output]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form_output.png
+-   [How to use Twilio for voice and SMS capabilities from Azure][How to use Twilio for voice and SMS capabilities from Azure]
 
-[twiml]: http://www.twilio.com/docs/api/twiml
-
-
-
-[howto_twilio_voice_sms_dotnet]: /develop/net/how-to-guides/twilio/
-
-[howto_blob_storage_dotnet]: https://www.windowsazure.com/develop/net/how-to-guides/blob-storage/
-
-[howto_sql_azure_dotnet]: https://www.windowsazure.com/develop/net/how-to-guides/sql-database/
-
-
-[twilio_docs_security]: http://www.twilio.com/docs/security
-[twilio_docs]: http://www.twilio.com/docs
-[twilio_say]: http://www.twilio.com/docs/api/twiml/say
-
-
-[azure_runtime_ref_dotnet]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
-
-
+  [Azure call form using Twilio and ASP.NET]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form.png
+  [Prerequisites]: #twilio-prereqs
+  [How to: Create a web form for making a call]: #howtocreateform
+  [How to: Create the code to make the call]: #howtocreatecode
+  [Next steps]: #nextsteps
+  [See also]: #seealso
+  []: http://www.twilio.com/try-twilio
+  [1]: http://www.twilio.com/pricing
+  [2]: http://www.twilio.com/voice/api
+  [3]: https://www.twilio.com/user/account/phone-numbers/verified#
+  [Azure call response using Twilio and ASP.NET]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form_output.png
+  [4]: http://www.twilio.com/docs/api/twiml
+  [5]: http://www.twilio.com/docs/api/twiml/say
+  [How to use the Azure Blob storage service in .NET]: https://www.windowsazure.com/en-us/develop/net/how-to-guides/blob-storage/
+  [How to use Azure SQL Database in .NET applications]: https://www.windowsazure.com/en-us/develop/net/how-to-guides/sql-database/
+  [Microsoft.WindowsAzure.ServiceRuntime Namespace]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
+  [6]: http://www.twilio.com/docs/security
+  [7]: http://www.twilio.com/docs
+  [How to use Twilio for voice and SMS capabilities from Azure]: ../twilio-dotnet-how-to-use-for-voice-sms/

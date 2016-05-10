@@ -1,45 +1,43 @@
 
-2. 以下列程式碼取代 TodoItem 類別定義： 
+1. In the file MainPage.xaml.cs, add or uncomment the following using statements: 
 
-        public class TodoItem
-        {
-            public string Id { get; set; }
-    
-            [Newtonsoft.Json.JsonProperty(PropertyName = "text")]  
-            public string Text { get; set; }
-    
-            [Newtonsoft.Json.JsonProperty(PropertyName = "complete")]  
-            public bool Complete { get; set; }
-        }
-    
-     **JsonPropertyAttribute** 用來定義資料行名稱與基礎資料表中資料的用戶端類型中屬性名稱之間的對應。
+		using Microsoft.WindowsAzure.MobileServices;
 
-    >[AZURE.NOTE] 在通用 Windows 應用程式專案中，TodoItem 類別定義不同的程式碼中的檔案共用之 DataModel 資料夾中。
+2. Replace the TodoItem class definition with the following code: 
 
-1. 在檔案 MainPage.cs 中，使用陳述式新增或取消註解下列項目： 
+	    public class TodoItem
+	    {
+	        public string Id { get; set; }
+	
+	        [Newtonsoft.Json.JsonProperty(PropertyName = "text")]  
+	        public string Text { get; set; }
+	
+	        [Newtonsoft.Json.JsonProperty(PropertyName = "complete")]  
+	        public bool Complete { get; set; }
+	    }
+	
+	The **JsonPropertyAttribute** is used to define the mapping between property names in the client type to column names in the underlying data table.
 
-        using Microsoft.WindowsAzure.MobileServices;
+	>[WACOM.NOTE] In a universal Windows app project, the TodoItem class is defined in the seperate code file in the shared DataModel folder.
 
+3. In MainPage.xaml.cs, comment-out or delete the line that defines the existing items collection, then uncomment or add the following lines, replacing _&lt;yourClient&gt;_ with the `MobileServiceClient` field added to the App.xaml.cs file when you connected your project to the mobile service: 
 
-4. 註解化或刪除定義現有的項目集合，然後取消註解或新增下列幾行取代 _& lt; 資料 （& s) gt;_ 與 `MobileServiceClient` 時將專案連線至行動服務新增到 App.xaml.cs 檔案 ︰ 
+		private MobileServiceCollection<TodoItem, TodoItem> items;
+		private IMobileServiceTable<TodoItem> todoTable = 
+		    App.<yourClient>.GetTable<TodoItem>();
+		  
+	This code creates a mobile services-aware binding collection (items) and a proxy class for the database table (todoTable). 
 
-        private MobileServiceCollection<TodoItem, TodoItem> items;
-        private IMobileServiceTable<TodoItem> todoTable = 
-            App.<yourClient>.GetTable<TodoItem>();
-          
-    此程式碼會建立行動服務感知繫結集合 (項目)，和資料庫資料表 (todoTable) 的 Proxy 類別。 
+4. In the **InsertTodoItem** method, remove the line of code that sets the **TodoItem.Id** property, add the **async** modifier to the method, and uncomment the following line of code: 
 
-
-4. 在 **InsertTodoItem** 方法中，移除設定的程式碼行 **TodoItem.Id** 屬性中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行 ︰ 
-
-        await todoTable.InsertAsync(todoItem);
+		await todoTable.InsertAsync(todoItem);
 
 
-    此程式碼會將新的項目插入資料表中。 
+	This code inserts a new item into the table. 
 
-5. 取代 **RefreshTodoItems** 方法取代下列程式碼 ︰ 
+5. Replace the **RefreshTodoItems** method with the following code: 
 
-        private async void RefreshTodoItems()
+		private async void RefreshTodoItems()
         {
             MobileServiceInvalidOperationException exception = null;
             try
@@ -62,13 +60,12 @@
             }    
         }
 
-    此設定的繫結至集合中的項目 `todoTable`, ，其中包含的所有 **TodoItem** 從行動服務傳回的物件。 如果您在執行查詢時發生問題，系統會引發訊息方塊來顯示錯誤。 
+	This sets the binding to the collection of items in `todoTable`, which contains all of the **TodoItem** objects returned from the mobile service. If there is a problem executing the query, a message box is raised to display the errors. 
 
-6. 在 **UpdateCheckedTodoItem** 方法中，加入 **非同步** 修飾詞新增至方法，並取消註解下列程式碼行 ︰ 
+6. In the **UpdateCheckedTodoItem** method, add the **async** modifier to the method, and uncomment the following line of code: 
 
-        await todoTable.UpdateAsync(item);
+		await todoTable.UpdateAsync(item);
 
-    這會將項目更新傳送到行動服務。 
+	This sends an item update to the mobile service. 
 
-應用程式現已更新為使用行動服務進行後端儲存，我們可以開始在行動服務中測試應用程式。
-
+Now that the app has been updated to use Mobile Services for backend storage, it's time to test the app against Mobile Services.

@@ -1,213 +1,219 @@
-#如何使用適用於 Mac 和 Linux 的 Azure 命令列工具
+#How to use the Azure Command-Line Tools for Mac and Linux
 
-本指南說明如何使用適用於 Mac 和 Linux 的 Azure 命令列工具，在 Azure 中建立和管理服務。 涵蓋的案例包括 **安裝工具**, ，**匯入發佈設定**, ，**建立和管理 Azure 網站**, ，和 **建立和管理 Azure 虛擬機器**。 如需完整的參考文件，請參閱 [Azure 命令列工具，適用於 Mac 和 Linux 文件][reference-docs]。 
+This guide describes how to use the Azure Command-Line Tools for Mac and Linux to create and manage services in Azure. The scenarios covered include **installing the tools**, **importing your publishing settings**, **creating and managing Azure Websites**, and **creating and managing Azure Virtual Machines**. For comprehensive reference documentation, see [Azure command-line tool for Mac and Linux Documentation][reference-docs]. 
 
-##目錄
-* [什麼是適用於 Mac 和 Linux 的 Azure 命令列工具](#Overview)
-* [如何安裝適用於 Mac 和 Linux 的 Azure 命令列工具](#Download)
-* [如何建立 Azure 帳戶](#CreateAccount)
-* [如何下載和匯入發行設定](#Account)
-* [如何建立和管理 Azure 網站](#WebSites)
-* [如何建立和管理 Azure 虛擬機器](#VMs)
+##Table of contents
+* [What are the Azure Command-Line Tools for Mac and Linux](#Overview)
+* [How to install the Azure Command-Line Tools for Mac and Linux](#Download)
+* [How to create an Azure account](#CreateAccount)
+* [How to download and import publish settings](#Account)
+* [How to create and manage an Azure Web Site](#WebSites)
+* [How to create and manage an Azure Virtual Machine](#VMs)
 
 
-<h2><a id="Overview"></a>適用於 Mac 和 Linux 的 Azure 命令列工具有哪些？</h2>
+<h2><a id="Overview"></a>What are the Azure Command-Line Tools for Mac and Linux</h2>
 
-適用於 Mac 和 Linux 的 Azure 命令列工具是一組用來部署和管理 Azure 服務的命令列工具。
+The Azure Command-Line Tools for Mac and Linux are a set of command-line tools for deploying and managing Azure services.
  
-支援的工作包括：
+The supported tasks include the following:
 
-* 匯入發佈設定。
-* 建立和管理 Azure 網站。
-* 建立和管理 Azure 虛擬機器。
+* Import publishing settings.
+* Create and manage Azure Websites.
+* Create and manage Azure Virtual Machines.
 
-如需支援的命令的完整清單，輸入 `azure -help` 在命令列安裝工具之後，或參閱 [參考文件][reference-docs]。
+For a complete list of supported commands, type `azure -help` at the command line after installing the tools, or see the [reference documentation][reference-docs].
 
-<h2><a id="Download">如何安裝適用於 Mac 和 Linux 的 Azure 命令列工具</a></h2>
+<h2><a id="Download">How to install the Azure Command-Line Tools for Mac and Linux</a></h2>
 
-下列清單包含安裝命令列工具的相關資訊，視作業系統而定：
+The following list contains information for installing the command-line tools, depending on your operating system:
 
-* **Mac**︰ 下載 [Azure SDK 安裝程式][mac-installer]。 開啟已下載的 .pkg 檔案，並依照提示完成安裝步驟。
+* **Mac**: Download the [Azure SDK Installer][mac-installer]. Open the downloaded .pkg file and complete the installation steps as you are prompted.
 
-* **Linux**︰ 安裝最新版 [Node.js][nodejs-org] (請參閱 [透過封裝管理員來安裝 Node.js][install-node-linux])，然後執行下列命令 ︰
+* **Linux**: Install the latest version of [Node.js][nodejs-org] (see [Install Node.js via Package Manager][install-node-linux]), then run the following command:
 
-        npm install azure-cli -g
+		npm install azure-cli -g
 
-    **請注意**︰ 您可能需要較高權限執行此命令 ︰
+	**Note**: You may need to run this command with elevated privileges:
 
-        sudo npm install azure-cli -g
+		sudo npm install azure-cli -g
 
-* **Windows**︰ 執行 Winows 安裝程式 （.msi 檔案），位於此處 ︰ [Azure 命令列工具][windows-installer]。
+* **Windows**: Run the Winows installer (.msi file), which is available here: [Azure Command Line Tools][windows-installer].
 
 
-若要測試安裝，請在命令提示字元中輸入 `azure`。 如果安裝成功，您會看到所有可用的 `azure` 命令的清單。
+To test the installation, type `azure` at the command prompt. If the installation was successful, you will see a list of all the available `azure` commands.
 
-<h2><a id="CreateAccount"></a>如何建立 Azure 帳戶</h2>
+<h2><a id="CreateAccount"></a>How to create an Azure account</h2>
 
-您需要 Azure 帳戶，才能使用適用於 Mac 和 Linux 的 Azure 命令列工具。
+To use the Azure Command-Line Tools for Mac and Linux, you will need an Azure account.
 
-開啟網頁瀏覽器並瀏覽至 [http://www.windowsazure.com][windowsazuredotcom] 按一下 **免費試用版** 右上角。
+Open a web browser and browse to [http://www.windowsazure.com][windowsazuredotcom] and click **free trial** in the upper right corner.
 
-![Azure 網站][Azure Web Site]
+![Azure Web Site][Azure Web Site]
 
-依照指示來建立帳戶。
+Follow the instructions for creating an account.
 
-<h2><a id="Account"></a>如何下載和匯入發佈設定</h2>
+<h2><a id="Account"></a>How to download and import publish settings</h2>
 
-若要開始進行，您需要先下載並匯入發佈設定。 這可讓您使用工具來建立和管理 Azure 服務。 若要下載發佈設定，請使用 `account download` 命令：
+To get started, you need to first download and import your publish settings. This will allow you to use the tools to create and manage Azure Services. To download your publish settings, use the `account download` command:
 
-    azure account download
+	azure account download
 
-這樣會開啟預設瀏覽器，並提示您登入管理入口網站。 登入之後，將會下載 `.publishsettings` 檔案。 請記下此檔案的儲存位置。
+This will open your default browser and prompt you to sign in to the Management Portal. After signing in, your `.publishsettings` file will be downloaded. Make note of where this file is saved.
 
-接下來，執行下列命令，並將 `{path to .publishsettings file}` 改為 `.publishsettings` 檔案的路徑，以匯入 `.publishsettings` 檔案：
+Next, import the `.publishsettings` file by running the following command, replacing `{path to .publishsettings file}` with the path to your `.publishsettings` file:
 
-    azure account import {path to .publishsettings file}
+	azure account import {path to .publishsettings file}
 
-您可以移除所有儲存的資訊 <code>import</code> 命令，以使用 <code>account clear</code> 命令 ︰
+You can remove all of the information stored by the <code>import</code> command by using the <code>account clear</code> command:
 
-    azure account clear
+	azure account clear
 
-若要查看 `account` 命令的選項清單，請使用 `-help` 選項：
+To see a list of options for `account` commands, use the `-help` option:
 
-    azure account -help
+	azure account -help
 
-匯入發佈設定之後，基於安全的考量，請刪除 `.publishsettings` 檔案。
+After importing your publish settings, you should delete the `.publishsettings` file for security reasons.
 
-> [AZURE.NOTE] 當您匯入發行設定，用來存取您的 Azure 訂閱認證會儲存在您 `user` 資料夾。 `user` 資料夾已受到作業系統的保護。 不過，建議您採取額外的步驟來加密 `user` 資料夾。 做法如下：    
-> 
-> - 在 Windows 中，修改資料夾屬性或使用 BitLocker。
-> - 在 Mac 中，開啟資料夾的 FileVault。
-> - 在 Ubuntu 中，使用「加密主目錄」功能。 其他 Linux 散發套件提供同等的功能。
+<div class="dev-callout"> 
+<b>Note</b> 
+<p>When you import publish settings, credentials for accessing your Azure subscription are stored inside your <code>user</code> folder. Your <code>user</code> folder is protected by your operating system. However, it is recommended that you take additional steps to encrypt your <code>user</code> folder. You can do so in the following ways:</p>
 
-現在，您可以開始建立和管理 Azure 網站及 Azure 虛擬機器。  
+<ul>
+<li>On Windows, modify the folder properties or use BitLocker.</li>
+<li>On Mac, turn on FileVault for the folder.</li>
+<li>On Ubuntu, use the Encrypted Home directory feature. Other Linux distributions offer equivalent features.</li>
+</ul>
 
-<h2><a id="WebSites"></a>如何建立和管理 Azure 網站</h2>
+</div>
 
-###建立網站
+You are now ready to being creating and managing Azure Websites and Azure Virtual Machines.  
 
-若要建立 Azure 網站，請先建立名為 `MySite` 的空目錄，並進入該目錄中。
+<h2><a id="WebSites"></a>How to create and manage an Azure Website</h2>
 
-然後，執行下列命令：
+###Create a Website
 
-    azure site create MySite --git
+To create an Azure website, first create an empty directory called `MySite` and browse into that directory.
 
-此命令的輸出包含新建立之網站的預設 URL。 `--git` 選項可讓您在本機應用程式目錄和網站的資料中心建立 git 儲存機制，以利用 git 來發佈至網站。 請注意，如果本機資料夾已經是 git 儲存機制，此命令會將新的遠端新增至現有的儲存機制，並指向網站資料中心裡的儲存機制。
+Then, run the following command:
 
-請注意，您可以搭配下列任何選項來執行 `azure site create` 命令：
+	azure site create MySite --git
 
-* `--location [location name]`。 此選項可讓您指定要建立網站的資料中心位置 (例如，[美國西部])。 如果省略此選項，此命令會提示您選擇位置。
-* `--hostname [custom host name]`。 此選項可讓您指定網站的自訂主機名稱。
+The output from this command will contain the default URL for the newly created website. The `--git` option allows you to use git to publish to your website by creating git repositories in both your local application directory and in your website's data center. Note that if your local folder is already a git repository, the command will add a new remote to the existing repository, pointing to the repository in your website's data center.
 
-接著，您可以將內容加入網站目錄中。 請使用一般 git 流程 (`git add`、`git commit`) 來認可內容。 請使用下列 git 命令將網站內容發送至 Azure： 
+Note that you can execute the `azure site create` command with any of the following options:
 
-    git push azure master
+* `--location [location name]`. This option allows you to specify the location of the data center in which your website is created (e.g. "West US"). If you omit this option, you will be promted to choose a location.
+* `--hostname [custom host name]`. This option allows you to specify a custom hostname for your website.
 
-###設定從 GitHub 發佈
+You can then add content to your website directory. Use the regular git flow (`git add`, `git commit`) to commit your content. Use the following git command to push your website content to Azure: 
 
-若要設定從 GitHub 儲存機制持續發佈，請在建立網站時使用 `--GitHub` 選項：
+	git push azure master
 
-    auzre site create MySite --github --githubusername username --githubpassword password --githubrepository githubuser/reponame
+###Set up publishing from GitHub
 
-如果您有 GitHub 儲存機制的本機副本，或儲存機制中具有 GitHub 儲存機制的單一遠端參考，則此命令會自動將 GitHub 儲存機制中的程式碼發佈至網站。 此後，任何發送至 GitHub 儲存機制的變更會自動發佈至網站。
+To set up continuous publishing from a GitHub repository, use the `--GitHub` option when creating a site:
 
-設定從 GitHub 發佈時，使用的預設分支為主要分支。 若要指定不同的分支，請從本機儲存機制執行下列命令：
+	auzre site create MySite --github --githubusername username --githubpassword password --githubrepository githubuser/reponame
 
-    azure site repository <branch name>
+If you have a local clone of a GitHub repository or if you have a repository with a single remote reference to a GitHub repository, this command will automatically publish code in the GitHub repository to your site. From then on, any changes pushed to the GitHub repository will automatically be published to your site.
 
-###進行應用程式設定
+When you set up publishing from GitHub, the default branch used is the master branch. To specify a different branch, execute the following command from your local repository:
 
-應用程式設定是應用程式在執行階段可用的機碼值組。 針對 Azure 網站來設定時，應用程式設定值會覆寫網站的 Web.config 檔案中以相同機碼定義的設定。 若為 Node.js 和 PHP 應用程式，應用程式設定是以環境變數的形式存在。 下列範例顯示如何設定機碼值組：
+	azure site repository <branch name>
 
-    azure site config add <key>=<value> 
+###Configure app settings
 
-若要查看所有機碼值組的清單，請使用下列命令：
+App settings are key-value pairs that are available to your application at runtime. When set for an Azure Website, app setting values will override settings with the same key that are defined in your site's Web.config file. For Node.js and PHP applications, app settings are available as environment variables. The following example shows you how to set a key-value pair:
 
-    azure site config list 
+	azure site config add <key>=<value> 
 
-或者，如果知道機碼，您可以使用下列命令來查看此機碼的值：
+To see a list of all key/value pairs, use the following:
 
-    azure site config get <key> 
+	azure site config list 
 
-如果要變更現有機碼的值，必須先清除現有機碼，再重新加入機碼。 清除命令為：
+Or if you know the key and want to see the value, you can use:
 
-    azure site config clear <key> 
+	azure site config get <key> 
 
-###列出和顯示網站
+If you want to change the value of an existing key you must first clear the existing key and then re-add it. The clear command is:
 
-若要列出網站，請使用下列命令：
+	azure site config clear <key> 
 
-    azure site list
+###List and show sites
 
-若要取得網站的詳細資訊，請使用 `site show` 命令。 下列範例會詳細說明 `MySite`：
+To list your websites, use the following command:
 
-    azure site show MySite
+	azure site list
 
-###停止、啟動或重新啟動網站
+To get detailed information about a site, use the `site show` command. The following example shows details for `MySite`:
 
-您可以使用 `site stop`、`site start` 或 `site restart` 命令來停止、啟動或重新啟動網站：
+	azure site show MySite
 
-    azure site stop MySite
-    azure site start MySite
-    azure site restart MySite
+###Stop, start, or restart a site
 
-###刪除網站
+You can stop, start, or restart a site with the `site stop`, `site start`, or `site restart` commands:
 
-最後，您可以使用 `site delete` 命令刪除網站：
+	azure site stop MySite
+	azure site start MySite
+	azure site restart MySite
 
-    azure site delete MySite
+###Delete a site
 
-請注意，如果您從原本執行 `site create` 的資料夾內執行上述任何命令，則不需要指定網站名稱 `MySite` 當做最後一個參數。
+Finally, you can delete a site with the `site delete` command:
 
-若要查看完整的 `site` 命令清單，請使用 `-help` 選項：
+	azure site delete MySite
 
-    azure site -help 
+Note that if you are running any of above commands from inside the folder where you ran `site create`, you do not need to specify the site name `MySite` as the last parameter.
 
-<h2><a id="VMs"></a>如何建立和管理 Azure 虛擬機器</h2>
+To see a complete list of `site` commands, use the `-help` option:
 
-Azure 虛擬機器是使用您提供的映像或映像庫中的虛擬機器映像 (.vhd 檔案) 來建立。 若要查看可用的映像，請使用 `vm image list` 命令：
+	azure site -help 
 
-    azure vm image list
+<h2><a id="VMs"></a>How to create and manage an Azure Virtual Machine</h2>
 
-您可以使用 `vm create` 命令從可用的映象檔之一佈建並啟動虛擬機器。 下列範例顯示如何從映像庫中的映像 (CentOS 6.2) 建立 Linux 虛擬機器 (名為 `myVM`)。 虛擬機器的根使用者名稱和密碼分別是 `myusername` 和 `Mypassw0rd`。 (請注意，`--location` 參數指定要建立虛擬機器的資料中心。 如果省略 `--location` 參數，此命令會提示您選擇位置)。
+an Azure Virtual Machine is created from a virtual machine image (a .vhd file) that you provide or that is available in the Image Gallery. To see images that are available, use the `vm image list` command:
 
-    azure vm create myVM OpenLogic__OpenLogic-CentOS-62-20120509-en-us-30GB.vhd myusername --location "West US"
+	azure vm image list
 
-您可以選擇將 `--ssh` 旗標 (Linux) 或 `--rdp` 旗標 (Windows) 傳給 `vm create`，以允許從遠端連線至新建立的虛擬機器。
+You can provision and start a virtual machine from one of the available images with the `vm create` command. The following example shows how to create a Linux virtual machine (called `myVM`) from an image in the Image Gallery (CentOS 6.2). The root user name and password for the virtual machine are `myusername` and `Mypassw0rd` respectively. (Note that the `--location` parameter specifies the data center in which the virtual machine is created. If you omit the `--location` parameter, you will be prompted to choose a location.)
 
-如果想要從自訂映像佈建虛擬機器，您可以使用 `vm image create` 命令從 .vhd 檔案建立映像，然後使用 `vm create` 命令來建立虛擬機器。 下列範例顯示如何從本機 .vhd 檔案建立 Linux 映像 (名為 `myImage`) (`--location` 參數指定儲存映像的資料)。
+	azure vm create myVM OpenLogic__OpenLogic-CentOS-62-20120509-en-us-30GB.vhd myusername --location "West US"
 
-    azure vm image create myImage /path/to/myImage.vhd --os linux --location "West US"
+You may consider passing the `--ssh` flag (Linux) or `--rdp` flag (Windows) to `vm create` to enable remote connections to the newly-created virtual machine.
 
-除了從本機 .vhd 建立映像，您也可以從 Azure 二進位大型物件儲存體中儲存的 .vhd 建立映像。 您若要這麼做，可透過 `blob-url` 參數：
+If you would rather provision a virtual machine from a custom image, you can create an image from a .vhd file with the `vm image create` command, then use the `vm create` command to provision the virtual machine. The following example shows how to create a Linux image (called `myImage`) from a local .vhd file. (The `--location` parameter specifies the data in which the image is stored.)
 
-    azure vm image create myImage --blob-url <url to .vhd in Blob Storage> --os linux
+	azure vm image create myImage /path/to/myImage.vhd --os linux --location "West US"
 
-建立映像之後，若要要從映像佈建虛擬機器，可以使用 `vm create`。 下列命令會從以上建立的映像 (`myImage`) 建立名為 `myVM` 的虛擬機器。
+Instead of creating an image from a local .vhd, you can create an image from a .vhd stored in Azure Blob Storage. You can do this with the `blob-url` parameter:
 
-    azure vm create myVM myImage myusername --location "West US"
+	azure vm image create myImage --blob-url <url to .vhd in Blob Storage> --os linux
 
-佈建虛擬機器之後，建議您建立端點，以允許從遠端存取虛擬機器 (舉例來說)。 下列範例使用 `vm create endpoint` 命令，開啟 `myVM` 上的外部連接埠 22 和本機連接埠 22：
+After creating an image, you can provision a virtual machine from the image by using `vm create`. The command below creates a virtual machine called `myVM` from the image created above (`myImage`).
 
-    azure vm endpoint create myVM 22 22
+	azure vm create myVM myImage myusername --location "West US"
 
-若要取得虛擬機器的詳細資訊 (包括 IP 位址、DNS 名稱和端點資訊)，您可以使用 `vm show` 命令：
+After you have provisioned a virtual machine, you may want to create endpoints to allow remote access to your virtual machine (for example). The following example uses the `vm create endpoint` command to open external port 22 and local port 22 on `myVM`:
 
-    azure vm show myVM
+	azure vm endpoint create myVM 22 22
 
-若要關閉、啟動或重新啟動虛擬機器，請使用下列其中一個命令：
+You can get detailed information about a virtual machine (including IP address, DNS name, and endpoint information) with the `vm show` command:
 
-    azure vm shutdown myVM
-    azure vm start myVM
-    azure vm restart myVM
+	azure vm show myVM
 
-最後，若要刪除 VM，請使用 `vm delete` 命令：
+To shutdown, start, or restart the virtual machine, use one of the following commands:
 
-    azure vm delete myVM
+	azure vm shutdown myVM
+	azure vm start myVM
+	azure vm restart myVM
 
-如需用來建立和管理虛擬機器的完整命令清單，請使用 `-h` 選項：
+And finally, to delete the VM, use the `vm delete` command:
 
-    azure vm -h
+	azure vm delete myVM
+
+For a complete list of commands for creating and managing virtual machines, use the `-h` option:
+
+	azure vm -h
 
 <!-- IMAGES -->
 [Azure Web Site]: ./media/crossplat-cmd-tools/freetrial.png
@@ -219,6 +225,4 @@ Azure 虛擬機器是使用您提供的映像或映像庫中的虛擬機器映�
 [windows-installer]: http://go.microsoft.com/fwlink/?LinkID=275464
 [reference-docs]: http://go.microsoft.com/fwlink/?LinkId=252246
 [windowsazuredotcom]: http://www.windowsazure.com
-
-
 

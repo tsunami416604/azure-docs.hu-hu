@@ -1,33 +1,132 @@
-=======
-實體|配額 (標準提供項目)
----|---
-資料庫帳戶*|5
-每個資料庫帳戶的資料庫數目|100
-每個資料庫帳戶的使用者數目 - 跨所有資料庫|500,000
-每個資料庫帳戶的權限數目 - 跨所有資料庫|2,000,000
-每個資料庫帳戶的附件儲存體 (預覽功能)|2 GB
-每個集合的每秒要求單位上限|2500
-每個集合的預存程序、觸發程序和 UDF 數目* |各 25 個
-預存程序和觸發程序的執行時間上限|5 seconds
-佈建的文件儲存體/集合|10 GB
-每個資料庫帳戶的集合上限*|100
-每個資料庫的文件儲存體上限 (100 個集合)* |1 TB
-Id 屬性的長度上限|255 字元
-每個頁面的項目數上限|無實際限制
-文件和附件的要求大小上限 |512 KB
-預存程序、觸發程序和 UDF 的要求大小上限|512 KB
-回應大小上限|1MB
-String|所有字串都必須符合 UTF-8 編碼。 因為 UTF-8 是寬度不一定的編碼，所以字串大小是使用 UTF-8 位元組來決定。
-屬性或值的長度上限|無實際限制
-每個查詢的 UDF 數目上限* |2
-每個查詢的 JOIN 數目上限* |5
-每個查詢的 AND 子句數目上限* |20
-每個查詢的 OR 子句數目上限* |20
-每個 IN 運算式的值數目上限* |200
-ST_WITHIN 查詢中多邊形引數的點數上限* |16
-每分鐘建立集合的數目上限* |5
-每分鐘縮放作業的數目上限* |5
-
-以星號 （*） 列出的配額 [可以透過聯絡 Azure 支援人員來進行調整](../articles/documentdb/documentdb-increase-limits.md)。
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Resource</th>
+<th align="left">Default Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><p>Database Accounts</p></td>
+<td align="left"><p>5</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Number of databases per database account</p></td>
+<td align="left"><p>100</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Number of users per database account – across all databases</p></td>
+<td align="left"><p>500,000</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Number of permissions per database account – across all databases</p></td>
+<td align="left"><p>2,000,000</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Attachment storage per database account</p></td>
+<td align="left"><p>2 GB</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Maximum number of capacity units per database account</p></td>
+<td align="left"><p>5</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Number of collections per capacity unit</p></td>
+<td align="left"><p>3</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Minimum Allocated Storage per collection with minimum 1 document</p></td>
+<td align="left"><p>3.3 GB</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Minimum Allocated Throughput per collection with minimum 1 document</p></td>
+<td align="left"><p>667 RUs</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Elasticity of a collection</p></td>
+<td align="left"><p>0-10 GB</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum Request Units / sec per collection</p></td>
+<td align="left"><p>2000</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Number of stored procedures, triggers and UDFs per collection</p></td>
+<td align="left"><p>25 each</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum execution time for stored procedure and trigger</p></td>
+<td align="left"><p>5 seconds</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Provisioned document storage / capacity unit</p></td>
+<td align="left"><p>10 GB</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Provisioned Request Units / sec / capacity unit</p></td>
+<td align="left"><p>2000</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Maximum document storage per database (5 capacity units)</p></td>
+<td align="left"><p>50 GB</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum Length of the Id property</p></td>
+<td align="left"><p>255 characters</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Default number of items per page</p></td>
+<td align="left"><p>100</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum items per page</p></td>
+<td align="left"><p>1000</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Maximum request size of document and attachment</p></td>
+<td align="left"><p>256 KB</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum request size of stored procedure, trigger and UDF</p></td>
+<td align="left"><p>256 KB</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Maximum response size</p></td>
+<td align="left"><p>1MB</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum number of unique paths per collection</p></td>
+<td align="left"><p>100</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>String</p></td>
+<td align="left"><p>All strings must conform to the UTF-8 encoding. Since UTF-8 is a variable width encoding, string sizes are determined using the UTF-8 bytes.</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum length of property or value</p></td>
+<td align="left"><p>No practical limit</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Maximum number of UDFs per query</p></td>
+<td align="left"><p>1</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum number of JOINs per query</p></td>
+<td align="left"><p>2</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Maximum number of AND clauses per query</p></td>
+<td align="left"><p>5</p></td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maximum number of OR clauses per query</p></td>
+<td align="left"><p>5</p></td>
+</tr>
+</tbody>
+</table>
 
 

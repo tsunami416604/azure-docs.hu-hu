@@ -1,12 +1,10 @@
 
-1. 在 Android Studio 中按 **執行** = > **執行應用程式** 變更部署到您的 Android 裝置，並執行應用程式。
+1. In Eclipse, press F11 to deploy the changes to your Android device and run the app.
 
-2. 使用您的身分識別提供者登入，然後確認驗證成功。 
+2. Log in with your identity provider and verify that authentication succeeds. 
 
-3. 在應用程式中鍵入文字 **Insert a TodoItem**, ，然後按一下 [ **儲存**。
+3. In the app, type text in **Insert a TodoItem**, and then click **Save**.
 
-    請注意，插入完成之後，應用程式會收到來自 GCM 的推播通知。
+   	Note that after the insert completes, the app receives a push notification from GCM.
 
-4. (選用) 在不同的用戶端裝置上重複執行步驟 1-3，並在登入時使用不同的帳戶。 確認只有使用相同使用者帳戶驗證的裝置才會收到通知。 
-
-
+4. (Optional) Repeat steps 1-3 on a different client device and using a different account when logging in. Verify that the notification is received only by devices authenticating with the same user account. 

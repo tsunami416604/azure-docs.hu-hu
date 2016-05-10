@@ -1,12 +1,12 @@
 
-接下來，您需要變更您註冊通知的時間，以確認使用者在嘗試註冊前已經驗證。
+Next, you need to change when you register for notifications to make sure that the user is authenticated before registration is attempted.
 
 
-1. 在 Android Studio 的 [專案總管] 中，開啟 ToDoActivity.java 檔案並尋找 `onCreate` 方法。 將下列程式碼從 `onCreate` 方法移至 `createTable` 方法的開頭。
+1. In Package Explorer in Eclipse, open the ToDoActivity.java file and find the `onCreate` method. Move the following code from the `onCreate` method to the beginning of the `createTable` method.
 
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
-     系統會在 `authenticate` 方法完成時呼叫 `createTable` 方法。 您的完整 `createTable` 方法應會如下所示：
+     The `createTable` method is called when `authenticate` method completes. Your entire `createTable` method should look similar to the following.
 
         private void createTable() {
         
@@ -24,7 +24,5 @@
             
             // Load the items from the Mobile Service
             refreshItemsFromTable();
-        }   
-
-
+        }	
 

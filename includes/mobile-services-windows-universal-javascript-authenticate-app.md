@@ -1,6 +1,6 @@
 
 
-1. 開啟 default.js 專案檔案，然後再於 **應用程式。OnActivated** 方法多載中，取代在上次呼叫 **refreshTodoItems** 方法取代下列程式碼 ︰ 
+1. Open the project file default.js and in the **app.OnActivated** method overload, replace the last call to the **refreshTodoItems** method with the following code: 
 
         // Define a member variable for storing the signed-in user.
         var userId = null;
@@ -32,15 +32,14 @@
             authenticate();
         });
 
-    如果您使用的身分識別提供者不是 Facebook，變更值傳遞至 <strong>登入</strong> 上述方法有下列幾種 ︰ _microsoftaccount_, ，_twitter_, ，_google_, ，或 _windowsazureactivedirectory_。
+	If you are using an identity provider other than Facebook, change the value passed to the <strong>login</strong> method above to one of the following: _microsoftaccount_, _twitter_, _google_, or _windowsazureactivedirectory_.
 
-    >[AZURE.NOTE]如果您使用行動服務註冊您的 Windows 市集應用程式套件資訊，您應該呼叫 <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">登入</a> 方法提供的值 <strong>true</strong> 的 <em>useSingleSignOn</em> 參數。 若您沒有這麼做，您的使用者將在每次呼叫登入方法時都看到登入提示。
+    >[WACOM.NOTE]If you registered your Windows Store app package information with Mobile Services, you should call the <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">login</a> method by supplying a value of <strong>true</strong> for the <em>useSingleSignOn</em> parameter. If you do not do this, your users will still be presented with a login prompt every time that the login method is called.
 
-2. 在 Windows 市集應用程式專案中，開啟 default.html 專案檔案並新增下列 **按鈕** 項目定義的元素前方 **儲存** 按鈕 ︰
+2. In the Windows Store app project, open the default.html project file and add the following **button** element just before the element that defines the **save** button:
 
-        <button id="buttonLogin" style="margin-left: 5px">Sign in</button>
+      	<button id="buttonLogin" style="margin-left: 5px">Sign in</button>
 
-3. 按 F5 鍵執行應用程式，並以您選擇的身分識別提供者登入應用程式。 
+3. Press the F5 key to run the app and sign into the app with your chosen identity provider. 
 
-    成功登入後，應用程式應會正確無誤地執行，而且您應能夠查詢行動服務並更新資料。
-
+   	When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.

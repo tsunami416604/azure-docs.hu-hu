@@ -1,149 +1,133 @@
 
-現在讓我們更新應用程式，以將項目儲存在 Azure 行動服務中，而不是儲存在本機記憶體內部集合中。
+Now that your mobile service is ready, you can update the app to store items in Mobile Services instead of the local collection.
 
-* 在 **TodoService.h**, ，找出下列一行 ︰
+1. If you haven't already installed the [Mobile Services iOS SDK](https://go.microsoft.com/fwLink/p/?LinkID=266533), install it now. Once installed, copy the WindowsAzureMobileServices.framework directory and over-write the WindowsAzureMobileServices.framework directory included in the downloaded project. This way, you are using the very latest Azure Mobile Services SDK.
 
-```
-// TODO - create an MSClient property
-```
+2. In the TodoService.h file, locate the following commented line of code:
 
-以下列的程式碼行取代此註解。 這會建立一個屬性，表示連線至此服務的 `MSClient`。
+        // TODO - create an MSClient proeprty
 
-```
-@property (nonatomic, strong)   MSClient *client;
-```
+   	After this comment, add the following line of code:
 
+        @property (nonatomic, strong)   MSClient *client;
 
-* 在 **TodoService.m**, ，找出下列一行 ︰
+   	This creates a property that represents the MSClient that connects to the service
 
-```
-// TODO - create an MSTable property for your items
-```
+3. In the file TodoService.m, locate the following commented line of code:
 
-在 `@interface` 宣告內以下列的程式碼行取代此註解。 這將建立行動服務資料表的代表屬性。
+        // TODO - create an MSTable property for your items
 
-```
-@property (nonatomic, strong)   MSTable *table;
-```
+   	After this comment, add the following line of code inside the @interface declaration:
 
+        @property (nonatomic, strong)   MSTable *table;
 
-* 在 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **行動電話服務**, ，然後按一下 [行動服務。 按一下 [ **儀表板** 索引標籤並記下 **網站 URL**。 然後按一下 [ **管理金鑰** 並記下的 **應用程式金鑰**。 從應用程式程式碼存取行動服務時，您將會用到這些值。
+   	This creates a property representation for your mobile services table.
 
+4. In the Management Portal, click **Mobile Services**, and then click the mobile service you just created.
 
-* 在 **TodoService.m**, ，找出下列一行 ︰
+5. Click the **Dashboard** tab and make a note of the **Site URL**, then click **Manage keys** and make a note of the **Application key**.
 
-```
-// Initialize the Mobile Service client with your URL and key.
-```
+   	![](./media/mobile-services-ios-enable-mobile-service-access/mobile-dashboard-tab.png)
 
-在此註解之後，加入下列程式碼行： 以您在上個步驟取得的網站 URL 與應用程式金鑰取代 `APPURL` 與 `APPKEY`。
+  	You will need these values when accessing the mobile service from your app code.
 
-```
-self.client = [MSClient clientWithApplicationURLString:@"APPURL" applicationKey:@"APPKEY"];
-```
+6. Back in Xcode, open TodoService.m and locate the following commented line of code:
 
+        // Initialize the Mobile Service client with your URL and key.
 
-* 在 **TodoService.m**, ，找出下列一行 ︰
+    After this comment, add the following line of code:
 
-```
-// Create an MSTable instance to allow us to work with the TodoItem table.
-```
+        self.client = [MSClient clientWithApplicationURLString:@"APPURL" applicationKey:@"APPKEY"];
 
-以下列的程式碼行取代此註解。 這會建立 TodoItem 資料表執行個體。
+    This creates an instance of the Mobile Services client.
 
-```
-self.table = [self.client tableWithName:@"TodoItem"];
-```
+7. Replace the values of **APPURL** and **APPKEY** in this code with the URL and application key from the mobile service that you acquired in step 6.
 
+8. Locate the following commented line of code:
 
-* 在 **TodoService.m**, ，找出下列一行 ︰
+        // Create an MSTable instance to allow us to work with the TodoItem table.
 
-```
-// Create a predicate that finds items where complete is false
-```
+    After this comment, add the following line of code:
 
-以下列的程式碼行取代此註解。 This creates a query to return all tasks that have not yet been completed.
+        self.table = [self.client tableWithName:@"TodoItem"];
 
-```
-NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
-```
+    This creates the TodoItem table instance.
 
+9. Locate the following commented line of code:
 
-* 尋找下列程式碼行：
+ 	    // Create a predicate that finds items where complete is false
 
-```
-// Query the TodoItem table and update the items property with the results from the service
-```
+    After this comment, add the following line of code:
 
-取代註解和後續 **完成** 區塊引動，下列程式碼 ︰
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
-```
-[self.table readWhere:predicate completion:^(NSArray *results, NSInteger totalCount, NSError *error)
-{
-self.items = [results mutableCopy];
-   completion();
-}];
-```
+    This creates a query to return all tasks that have not yet been completed.
 
+10. Locate the following commented line of code:
 
-* 找出 **addItem** 方法，並使用下列程式碼取代其主體。 此程式碼會傳送插入要求給行動服務。
+        // Query the TodoItem table and update the items property with the results from the service
 
-```
-// Insert the item into the TodoItem table and add to the items array on completion
-[self.table insert:item completion:^(NSDictionary *result, NSError *error) {
-    NSUInteger index = [items count];
-    [(NSMutableArray *)items insertObject:item atIndex:index];
+   	Replace that comment and the subsequent **completion** block invocation with the following code:
 
-    // Let the caller know that we finished
-    completion(index);
-}];
-```
+        [self.table readWhere:predicate completion:^(NSArray *results, NSInteger totalCount, NSError *error)
+		{
+		   self.items = [results mutableCopy];
+           completion();
+        }];
 
+11. Locate the **addItem** method, and replace the body of the method with the following code:
 
-* 找出 **completeItem** 方法，並找出下列加上註解程式碼行 ︰
+        // Insert the item into the TodoItem table and add to the items array on completion
+        [self.table insert:item completion:^(NSDictionary *result, NSError *error) {
+            NSUInteger index = [items count];
+            [(NSMutableArray *)items insertObject:item atIndex:index];
 
-```
-// Update the item in the TodoItem table and remove from the items array on completion
-```
+            // Let the caller know that we finished
+            completion(index);
+        }];
 
-以下列程式碼取代方法的主體 (從該點至方法的結尾)。 此程式碼會在待辦事項被標示為已完成時將它移除。
+    This code sends an insert request to the mobile service.
 
-```
-// Update the item in the TodoItem table and remove from the items array on completion
-[self.table update:mutable completion:^(NSDictionary *item, NSError *error) {
+12. Locate the **completeItem** method, and locate the following commented line of code:
 
-    // Get a fresh index in case the list has changed
-    NSUInteger index = [items indexOfObjectIdenticalTo:mutable];
+        // Update the item in the TodoItem table and remove from the items array on completion
 
-    [mutableItems removeObjectAtIndex:index];
+    Replace the body of the method, from that point to the end of the method, with the following code:
 
-    // Let the caller know that we have finished
-    completion(index);
-}];
-```
+        // Update the item in the TodoItem table and remove from the items array on completion
+        [self.table update:mutable completion:^(NSDictionary *item, NSError *error) {
 
+            // Get a fresh index in case the list has changed
+            NSUInteger index = [items indexOfObjectIdenticalTo:mutable];
 
-* 在 TodoListController.m 中，找出 **onAdd** 方法加以覆寫為下列程式碼 ︰
+            [mutableItems removeObjectAtIndex:index];
 
-```
-- (IBAction)onAdd:(id)sender
-{
-    if (itemText.text.length  == 0)
-    {
-        return;
-    }
+            // Let the caller know that we have finished
+            completion(index);
+	    }];
 
-    NSDictionary *item = @{ @"text" : itemText.text, @"complete" : @NO };
-    UITableView *view = self.tableView;
-    [self.todoService addItem:item completion:^(NSUInteger index)
-    {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        [view insertRowsAtIndexPaths:@[ indexPath ]
-                    withRowAnimation:UITableViewRowAnimationTop];
-    }];
+   	This code removes TodoItems after they are marked as completed.
 
-    itemText.text = @"";
-}
-```
+13. In TodoListController.m, locate the **onAdd** method and overwrite it with the following code:
+
+      - (IBAction)onAdd:(id)sender
+      {
+          if (itemText.text.length  == 0)
+          {
+              return;
+          }
+
+          NSDictionary *item = @{ @"text" : itemText.text, @"complete" : @NO };
+          UITableView *view = self.tableView;
+          [self.todoService addItem:item completion:^(NSUInteger index)
+          {
+              NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+              [view insertRowsAtIndexPaths:@[ indexPath ]
+                          withRowAnimation:UITableViewRowAnimationTop];
+          }];
+
+          itemText.text = @"";
+      }
 
 
+Now that the app has been updated to use Mobile Services for backend storage, it's time to test the app against Mobile Services.

@@ -1,21 +1,22 @@
 
-本教學課程的最後階段是建立並執行新的應用程式。
+The final stage of this tutorial is to build and run your new app.
 
-1. 瀏覽至儲存壓縮專案檔案的位置，在電腦上將檔案解壓縮，然後在 Visual Studio 中開啟方案檔。
+1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the solution file in Visual Studio.
 
-2. 按下 **F5** 鍵，以重建專案並啟動應用程式。
+2. Press the **F5** key to rebuild the project and start the app.
 
-3. 在應用程式中，輸入有意義的文字，例如 *完成教學課程*, 中 **Insert a TodoItem**, ，然後按一下 [ **儲存**。
+3. In the app, type meaningful text, such as *Complete the tutorial*, in **Insert a TodoItem**, and then click **Save**.
 
-    如此會傳送 POST 要求到 Azure 中代管的新行動服務。 要求中的資料會插入 TodoItem 資料表中。 行動服務會傳回資料表中儲存的項目，並且在應用程式的第二個資料欄中顯示資料。
+   	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the second column in the app.
 
-4. (選用) 在通用 Windows 解決方案中，將預設的開始專案變更為其他應用程式，並再次執行應用程式。
+4. (Optional) In a universal Windows solution, change the default start up project to the other app and run the app again.
 
-    請注意，從先前步驟中儲存的資料，會在應用程式啟動後從行動服務載入。
+	Notice that data saved from the previous step is loaded from the mobile service after the app starts.
  
-4. 回到 [Azure 傳統入口網站](https://manage.windowsazure.com/), ，按一下 [ **資料** 標籤，然後按一下 **TodoItems** 資料表。
+4. Back in the Management Portal, click the **Data** tab and then click the **TodoItems** table.
 
-    如此可讓您瀏覽由應用程式插入資料表中的資料。
+   	![](./media/mobile-services-javascript-backend-run-app/mobile-data-tab.png)
 
-    ![](./media/mobile-services-javascript-backend-run-app/mobile-data-browse.png)
+   	This lets you browse the data inserted by the app into the table.
 
+   	![](./media/mobile-services-javascript-backend-run-app/mobile-data-browse.png)

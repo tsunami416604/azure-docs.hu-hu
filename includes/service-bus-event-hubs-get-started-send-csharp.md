@@ -1,34 +1,32 @@
-## 將訊息傳送至事件中心
+## Send messages to Event Hubs
+In this section, you will write a Windows console app to send events to your Event Hub.
 
-在本節中，您將撰寫一個 Windows 主控台應用程式，以將事件傳送至事件中心。
+1. In Visual Studio, create a new Visual C# Desktop App project using the **Console  Application** project template. Name the project **Sender**.
 
-1. 在 Visual Studio 中建立新的 Visual C# 桌面應用程式專案使用 **主控台應用程式** 專案範本。 將專案命名為 **寄件者**。
+   	![][7]
 
-    ![][7]
+2. In Solution Explorer, right-click the solution, and then click **Manage NuGet Packages for Solution...**. 
 
-2. 在 [方案總管] 中，以滑鼠右鍵按一下方案，以及 [ **Manage NuGet Packages for Solution...**。 
+	This displays the Manage NuGet Packages dialog box.
 
-    此時會顯示 [管理 NuGet 封裝] 對話方塊。
+3. Search for `Microsoft Azure Service Bus`, click **Install**, and accept the terms of use. 
 
-3. 搜尋 `Microsoft Azure Service Bus`, ，按一下 [ **安裝**, ，並接受使用規定。 
+	![][8]
 
-    ![][8]
+	This downloads, installs, and adds a reference to the <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus/">Azure Service Bus library NuGet package</a>.
 
-    這會下載、安裝並新增 <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus/">Azure Service Bus 程式庫 NuGet 封裝</a>的參考。
+4. Add the following `using` statement at the top of the **Program.cs** file:
 
-4. 新增下列 `using` 上方的陳述式 **Program.cs** 檔案 ︰
+		using Microsoft.ServiceBus.Messaging;
 
-        using System.Threading;
-        using Microsoft.ServiceBus.Messaging;
+5. Add the following `static` fields to the **Program** class, substituting the values with the name of the Event Hub you created in the previous section, and the connection string with **send** rights:
 
-5. 加入下列欄位來 **程式** 類別，以取代預留位置值，以您在上一節中建立事件中樞的名稱和連接字串與 **傳送** 權限 ︰
-
-        static string eventHubName = "{event hub name}";
+		static string eventHubName = "{event hub name}";
         static string connectionString = "{send connection string}";
 
-6. 將下列方法加入 **程式** 類別 ︰
+6. Add the following method to the **Program** class:
 
-        static void SendingRandomMessages()
+		static async Task SendingRandomMessages()
         {
             var eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, eventHubName);
             while (true)
@@ -36,31 +34,30 @@
                 try
                 {
                     var message = Guid.NewGuid().ToString();
-                    Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, message);
-                    eventHubClient.Send(new EventData(Encoding.UTF8.GetBytes(message)));
+                    Console.WriteLine("{0} > Sending message: {1}", DateTime.Now.ToString(), message);
+                    await eventHubClient.SendAsync(new EventData(Encoding.UTF8.GetBytes(message)));
                 }
                 catch (Exception exception)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("{0} > Exception: {1}", DateTime.Now, exception.Message);
+                    Console.WriteLine("{0} > Exception: {1}", DateTime.Now.ToString(), exception.Message);
                     Console.ResetColor();
                 }
 
-                Thread.Sleep(200);
+                await Task.Delay(200);
             }
         }
 
-    這個方法會以 200 毫秒的延遲時間持續將事件傳送至事件中心。
+	This method will continuously send events to your Event Hub with a 200ms delay.
 
-7. 最後，加入下列幾行以 **Main** 方法 ︰
+7. Finally, add the following lines to the **Main** method:
 
-        Console.WriteLine("Press Ctrl-C to stop the sender process");
+		Console.WriteLine("Press Ctrl-C to stop the sender process");
         Console.WriteLine("Press Enter to start now");
         Console.ReadLine();
-        SendingRandomMessages();
+        SendingRandomMessages().Wait();
 
 
 <!-- Images -->
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
-

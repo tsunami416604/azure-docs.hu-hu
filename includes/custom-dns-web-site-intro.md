@@ -1,2 +1,1 @@
-當您建立的 web 應用程式時，Microsoft Azure 提供好記的子 azurewebsites.net 網域上讓使用者可以存取您 web 應用程式使用 http://&lt;mywebapp&gt; 之類的 URL。azurewebsites.net。 您也可以建立自訂網域名稱 (例如 contoso.com) 與您 Web 應用程式的關聯，以便為使用者提供更容易辨識的網域名稱。
-
+When you create a website, Microsoft Azure provides a friendly subdomain on the azurewebsites.net domain so your users can access your website using a URL like http://&lt;mysite&gt;.azurewebsites.net. You can also associate a custom domain name, such as contoso.com, with your website in order to provide a more recognizable domain name for your users.

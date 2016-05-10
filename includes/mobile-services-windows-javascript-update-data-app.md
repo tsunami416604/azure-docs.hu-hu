@@ -1,24 +1,37 @@
 
 
-1. 接著，取消註解或加入以下程式碼行，然後將 `<yourClient>` 取代為連接專案與行動服務時新增至 service.js 檔案中的變數：
-
-        var todoTable = <yourClient>.getTable('TodoItem');
-
-    此程式碼會建立 proxy 物件 (**todoTable**) 為新的資料庫資料表中，您可以使用快取篩選。 
-
-2. 取代 **InsertTodoItem** 函式，以下列程式碼 ︰
-
-        var insertTodoItem = function (todoItem) {
-            // Inserts a new row into the database. When the operation completes
-            // and Mobile Services has assigned an id, the item is added to the binding list.
-            todoTable.insert(todoItem).done(function (item) {
-                todoItems.push(item);
-            });
+1. In the default.js script file just below the line of code that defines the todoItems list, add the following function definition:
+ 
+        // Add a filter that adds a header to prevent caching. This makes sure that the 
+		// latest data is returned when the 'Refresh; button is clicked.        
+        var noCachingFilter = function (request, next, callback) {
+            if (request.type === 'GET' && !request.headers['If-Modified-Since']) {
+                request.headers['If-Modified-Since'] = 'Mon, 27 Mar 1972 00:00:00 GMT';
+            }
+            next(request, callback);
         };
 
-    此程式碼會將新的項目插入資料表中。
+	This defines a filter function that adds the `If-Modified-Since` header to prevent caching on the client.
+ 
+2. Next, uncomment or add the following line of code and replace `<yourClient>` with the variable added to the service.js file when you connected your project to the mobile service:
 
-3. 取代 **RefreshTodoItems** 函式，以下列程式碼 ︰
+		var todoTable = <yourClient>.withFilter(noCachingFilter).getTable('TodoItem');
+
+   	This code creates a proxy object (**todoTable**) for the new database table, using the caching filter. 
+
+3. Replace the **InsertTodoItem** function with the following code:
+
+		var insertTodoItem = function (todoItem) {
+		    // Inserts a new row into the database. When the operation completes
+		    // and Mobile Services has assigned an id, the item is added to the binding list.
+		    todoTable.insert(todoItem).done(function (item) {
+		        todoItems.push(item);
+		    });
+		};
+
+	This code inserts a new item into the table.
+
+3. Replace the **RefreshTodoItems** function with the following code:
 
         var refreshTodoItems = function () {
             // This code refreshes the entries in the list by querying the table.
@@ -30,9 +43,9 @@
             });
         };
 
-    此設定，其中包含的所有 todoTable 中的項目集合的繫結 **TodoItem** 從行動服務傳回的物件。 
+   	This sets the binding to the collection of items in the todoTable, which contains all of the **TodoItem** objects returned from the mobile service. 
 
-4. 取代 **UpdateCheckedTodoItem** 函式，以下列程式碼 ︰
+4. Replace the **UpdateCheckedTodoItem** function with the following code:
         
         var updateCheckedTodoItem = function (todoItem) {
             // This code takes a freshly completed TodoItem and updates the database. 
@@ -41,8 +54,6 @@
             todoItems.splice(todoItems.indexOf(todoItem), 1);
         };
 
-    這會將項目更新傳送到行動服務。
+   	This sends an item update to the mobile service.
 
-應用程式現已更新為使用行動服務進行後端儲存，我們可以開始在行動服務中測試應用程式。
-
-
+Now that the app has been updated to use Mobile Services for backend storage, it's time to test the app against Mobile Services.

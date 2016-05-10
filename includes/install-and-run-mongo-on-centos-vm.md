@@ -1,8 +1,11 @@
-遵循下列步驟，在執行 CentOS Linux 的虛擬機器上安裝並執行 MongoDB。
+Follow these steps to install and run MongoDB on a virtual machine running CentOS Linux.
 
-> [AZURE.WARNING] MongoDB 安全性功能，例如驗證和 IP 位址繫結，不會預設啟用。 安全性功能應該在將 MongoDB 部署到生產環境前加以啟用。  請參閱 [安全性和驗證](http://www.mongodb.org/display/DOCS/Security+and+Authentication) 如需詳細資訊。
+<div class="dev-callout">
+<b>Warning</b>
+<p>MongoDB security features, such as authentication and IP address binding, are not enabled by default. Security features should be enabled before deploying MongoDB to a production environment.  See <a href="http://www.mongodb.org/display/DOCS/Security+and+Authentication">Security and Authentication</a> for more information.</p>
+</div>
 
-1. 設定套件管理系統 (YUM)，以使安裝 MongoDB。 建立 */etc/yum.repos.d/10gen.repo* 要保留您的儲存機制的相關資訊，並新增下列檔案 ︰
+1.  Configure the Package Management System (YUM) so that you can install MongoDB. Create a */etc/yum.repos.d/10gen.repo* file to hold information about your repository and add the following:
 
         [10gen]
         name=10gen Repository
@@ -10,30 +13,30 @@
         gpgcheck=0
         enabled=1
 
-2. 儲存儲存機制檔案，並執行以下命令以更新本機套件資料庫：
+2.  Save the repo file and then run the following command to update the local package database:
 
         $ sudo yum update
 
-3. 要安裝套件，請執行下列命令以安裝最新版本的 MongoDB 以及相關工具：
+3.  To install the package, run the following command to install the latest stable version of MongoDB and the associated tools:
 
         $ sudo yum install mongo-10gen mongo-10gen-server
 
-    等待 MongoDB 下載及安裝完成。
+    Wait while MongoDB downloads and installs.
 
-4. 建立資料目錄。 根據預設，MongoDB 儲存中的資料 */資料/db* 目錄中，但您必須先建立該目錄。 若要建立目錄，請執行：
+4.  Create a data directory. By default MongoDB stores data in the */data/db* directory, but you must create that directory. To create it, run:
 
         $ sudo mkdir -p /srv/datadrive/data
         $ sudo chown `id -u` /srv/datadrive/data
 
-    如需 Linux 上安裝 MongoDB 的詳細資訊，請參閱 [快速入門 Unix][QuickstartUnix]。
+    For more information on installing MongoDB on Linux, see [Quickstart Unix][Quickstart Unix].
 
-5. 若要啟動資料庫，請執行：
+5.  To start the database, run:
 
         $ mongod --dbpath /srv/datadrive/data --logpath /srv/datadrive/data/mongod.log
 
-    所有記錄訊息會被都導向至 */srv/datadrive/data/mongod.log* MongoDB 伺服器啟動和預先配置日誌檔案時的檔案。 MongoDB 可能需要花費數分鐘來預先配置日誌檔案，並開始接聽連線。
+    All log messages will be directed to the */srv/datadrive/data/mongod.log* file as MongoDB server starts and preallocates journal files. It may take several minutes for MongoDB to preallocate the journal files and start listening for connections.
 
-6. 若要啟動 MongoDB 管理殼層，請先個別開啟 SSH 或 PuTTY 視窗並執行：
+6.  To start the MongoDB administrative shell, open a separate SSH or PuTTY window and run:
 
         $ mongo
         > db.foo.save ( { a:1 } )
@@ -45,31 +48,22 @@
         ...  
         > help  
 
-    資料庫由插入項目建立。
+    The database is created by the insert.
 
-7. 一旦 MongoDB 安裝完成，您必須設定端點，讓 MongoDB 可以遠端存取。 在管理入口網站中，按一下 [ **虛擬機器**, ，接著按一下新的虛擬機器的名稱，再按一下 **端點**。
-    
-    ![端點][Image7]
+7.  Once MongoDB is installed you must configure an endpoint so that MongoDB can be accessed remotely. In the Management Portal, click **Virtual Machines**, then click the name of your new virtual machine, then click **Endpoints**.
 
-8. 按一下 [ **新增端點** 頁面的底部。
-    
-    ![端點][Image8]
+    ![Endpoints][Endpoints]
 
-9. 新增具有下列設定的端點：
+8.  Click **Add Endpoint** at the bottom of the page.
 
- - **名稱**: Mongo
- - **通訊協定**: TCP
- - **公用連接埠**: 27017
- - **私人連接埠**: 27017
- 
- 這樣可允許 MongoDB 遠端存取。
+    ![Endpoints][1]
 
+9.  Add an endpoint with name "Mongo", protocol **TCP**, and both **Public** and **Private** ports set to "27017". This will allow MongoDB to be accessed remotely.
 
+    ![Endpoints][2]
 
-[QuickStartUnix]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
-
-
-[Image7]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
-[Image8]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
-
-
+  [Security and Authentication]: http://www.mongodb.org/display/DOCS/Security+and+Authentication
+  [Quickstart Unix]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
+  [Endpoints]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
+  [1]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
+  [2]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint3.png

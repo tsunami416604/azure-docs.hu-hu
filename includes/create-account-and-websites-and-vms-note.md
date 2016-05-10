@@ -1,3 +1,1 @@
-> [AZURE.NOTE] 若要完成本教學課程，您需要 Azure 帳戶。 您可以<a href="/pricing/member-offers/msdn-benefits-details/" target="_blank">啟用自己的 MSDN 訂戶權益</a>或是<a href="/pricing/free-trial/" target="_blank">申請免費試用</a>。
-
-
+> [WACOM.NOTE] To complete this tutorial, you need an Azure account. You can <a href="/en-us/pricing/member-offers/msdn-benefits-details/" target="_blank">activate your MSDN subscriber benefits</a> or <a href="/en-us/pricing/free-trial/" target="_blank">sign up for a free trial</a>.

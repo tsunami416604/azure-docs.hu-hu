@@ -1,15 +1,14 @@
 
-1. 按 F5 鍵以重建專案並啟動 Windows 市集應用程式。
+1. Press the F5 key to rebuild the project and start the Windows Store app.
 
-2. 在應用程式中，輸入有意義的文字，例如 *完成教學課程*, 中 **Insert a TodoItem**, ，然後按一下 [ **儲存**。
+2. In the app, type meaningful text, such as *Complete the tutorial*, in **Insert a TodoItem**, and then click **Save**.
 
-    ![](./media/mobile-services-windows-universal-test-app/mobile-quickstart-startup.png)
+	![](./media/mobile-services-windows-universal-test-app/mobile-quickstart-startup.png)
 
-    如此會傳送 POST 要求到 Azure 中代管的新行動服務。
+	This sends a POST request to the new mobile service hosted in Azure.
 
-3. 停止偵錯並將通用 Windows 方案中的預設起始專案變更為 Windows Phone 市集應用程式，然後再按一次 F5。
+3. Stop debugging and change the default start up project in the universal Windows solution to the Windows Phone Store app and press F5 again.
 
-    ![](./media/mobile-services-windows-universal-test-app/mobile-quickstart-completed-wp8.png)
-    
-    請注意，從先前步驟中儲存的資料，會在應用程式啟動後從行動服務載入。
-
+	![](./media/mobile-services-windows-universal-test-app/mobile-quickstart-completed-wp8.png)
+	
+	Notice that data saved from the previous step is loaded from the mobile service after the app starts.

@@ -1,9 +1,11 @@
 
 
-行動服務專案可讓您在本機執行新的行動服務。 如此，您即可在將服務程式碼發佈至 Azure 之前先加以偵錯。
+The mobile service project that you download lets you to run your new mobile service right on your local computer or virtual machine. This makes it easy to debug your service code before you even publish it to Azure.
 
-1. 在 Windows PC 上下載您的個人化伺服器專案，然後在 Visual Studio 中開啟。
+1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the solution file in Visual Studio.
 
-2. 按下 **F5** 鍵以重建專案並啟動在本機的行動服務。 在行動服務成功啟動後，會顯示一個網頁。
+2. Press the **F5** key to rebuild the project and start the mobile service locally.
 
+	![](./media/mobile-services-dotnet-backend-test-local-service/mobile-service-startup.png)
 
+	A web page is displayed after the mobile service starts successfully.
