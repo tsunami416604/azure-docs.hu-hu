@@ -193,6 +193,6 @@ Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topo
 [preview-portal]: https://portal.azure.com/
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

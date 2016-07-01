@@ -108,6 +108,6 @@ Emellett megtekinthet kódokat, amelyek az Azure Media Services SDK használatá
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

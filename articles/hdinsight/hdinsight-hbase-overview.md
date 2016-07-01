@@ -96,6 +96,6 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

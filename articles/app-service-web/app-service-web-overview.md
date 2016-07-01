@@ -64,6 +64,6 @@ Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése el
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

@@ -25,6 +25,6 @@ A számítási, hálózati ás tárolási képességek az Azure Resource Manager
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

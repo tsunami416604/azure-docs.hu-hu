@@ -518,6 +518,6 @@ További információ: [Python fejlesztői központ](/develop/python/).
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

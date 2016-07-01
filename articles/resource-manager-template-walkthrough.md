@@ -583,6 +583,6 @@ A sablont újból telepítheti a tárfiók telepítésénél használt parancsok
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

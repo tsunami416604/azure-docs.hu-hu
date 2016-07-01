@@ -281,6 +281,6 @@ Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visua
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

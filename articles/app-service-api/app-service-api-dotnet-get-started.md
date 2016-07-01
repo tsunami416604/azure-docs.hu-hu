@@ -493,6 +493,6 @@ Az **Azure API App** projektsablon használatával azt az eredményt éri el, mi
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

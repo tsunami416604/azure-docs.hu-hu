@@ -157,6 +157,6 @@ Tudjon meg többet arról, hogyan tehet még többet az üzembe helyezett alkalm
 - [Ismerje meg az App Service működését](../app-service/app-service-how-works-readme.md) 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

@@ -222,6 +222,6 @@ További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

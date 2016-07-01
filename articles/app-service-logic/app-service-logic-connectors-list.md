@@ -86,6 +86,6 @@ Az összekötők a logikai alkalmazásban műveletként is felhasználhatók. A 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

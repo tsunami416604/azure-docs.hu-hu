@@ -277,6 +277,6 @@ Ha befejezte az esemény streamelését, és törölni szeretné a korábban kio
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

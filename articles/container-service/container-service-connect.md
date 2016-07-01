@@ -126,6 +126,6 @@ Tárolók telepítése és felügyelete DC/OS és Swarm rendszer esetén.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

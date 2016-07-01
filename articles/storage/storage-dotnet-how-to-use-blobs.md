@@ -397,6 +397,6 @@ Most, hogy megismerte a Blob Storage alapjait, az alábbi hivatkozásokat követ
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

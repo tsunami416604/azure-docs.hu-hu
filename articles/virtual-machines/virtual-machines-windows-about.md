@@ -42,6 +42,6 @@ Mivel az oktatóanyag célja segítség nyújtása egy virtuális gép gyors lé
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

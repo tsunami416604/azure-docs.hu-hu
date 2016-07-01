@@ -173,6 +173,6 @@ Ezek a cikkek segítséget nyújtanak az Azure-infrastruktúrák, valamint tetsz
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

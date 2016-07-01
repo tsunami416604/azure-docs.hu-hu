@@ -67,6 +67,6 @@ Ha speciális egyéni beállításokra van szüksége, meglévő Azure virtuáli
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

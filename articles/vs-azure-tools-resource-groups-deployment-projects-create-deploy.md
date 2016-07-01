@@ -205,6 +205,6 @@ Miután a telepítés véget ért, a helyre ellátogatva láthatja, hogy az alap
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

@@ -287,6 +287,6 @@ Ebből a cikkből megtudhatta, hogyan engedélyezheti az App Service CORS-támog
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

@@ -111,6 +111,6 @@ További részletek az ASP.NET-munkamenetállapot használatával kapcsolatban: 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

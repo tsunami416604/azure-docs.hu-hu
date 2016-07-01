@@ -98,6 +98,6 @@ Miután konfigurálta a Mobile Apps-háttéralkalmazást, létrehozhat új ügyf
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

@@ -85,6 +85,6 @@ További információk az Azure App Service alapjairól.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

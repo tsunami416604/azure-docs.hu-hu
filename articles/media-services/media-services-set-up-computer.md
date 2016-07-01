@@ -56,6 +56,6 @@ Az Azure Media Serviceshez való programozott kapcsolódáshoz válasszon a .NET
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

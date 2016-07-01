@@ -187,6 +187,6 @@ Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazás
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

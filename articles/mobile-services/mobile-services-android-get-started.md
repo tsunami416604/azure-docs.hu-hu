@@ -100,6 +100,6 @@ Most, hogy végzett a gyorsútmutatóval, ismerje meg, hogyan hajthat végre tov
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

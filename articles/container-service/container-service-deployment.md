@@ -197,6 +197,6 @@ Most, hogy létrehozott egy működő fürtöt, tekintse meg a kapcsolati és ke
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

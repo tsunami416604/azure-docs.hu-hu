@@ -247,6 +247,6 @@ Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

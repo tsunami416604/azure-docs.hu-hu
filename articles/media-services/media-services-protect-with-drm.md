@@ -628,6 +628,6 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

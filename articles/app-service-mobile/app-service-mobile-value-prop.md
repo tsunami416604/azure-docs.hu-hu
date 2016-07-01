@@ -105,6 +105,6 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

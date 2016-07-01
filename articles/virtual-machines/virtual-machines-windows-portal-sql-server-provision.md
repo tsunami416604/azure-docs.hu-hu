@@ -253,6 +253,6 @@ További információ az SQL Server használatáról az Azure-ban: [SQL Server o
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

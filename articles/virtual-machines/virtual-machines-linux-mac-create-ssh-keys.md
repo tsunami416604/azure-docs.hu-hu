@@ -237,6 +237,6 @@ Ezután létre kell hoznia az Azure Linux virtuális gépeket az új nyilvános 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

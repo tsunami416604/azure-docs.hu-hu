@@ -307,6 +307,6 @@ A szervezet adatain végrehajtott big data elemzések hasznos, a vállalatára v
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

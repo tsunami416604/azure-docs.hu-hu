@@ -314,6 +314,6 @@ Ebben a szakaszban egy helyi Git-tárházat hozunk létre, amely tartalmazza az 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

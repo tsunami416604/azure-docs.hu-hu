@@ -262,6 +262,6 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

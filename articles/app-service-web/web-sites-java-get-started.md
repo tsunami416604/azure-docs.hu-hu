@@ -194,6 +194,6 @@ További információk Java-alkalmazások fejlesztéséről az Azure-ban: [Java 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

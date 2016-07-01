@@ -112,6 +112,6 @@ Ha a fenti .NET-háttérkonfigurációs megoldást választja, a háttéralkalma
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

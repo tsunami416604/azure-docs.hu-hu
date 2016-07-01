@@ -73,6 +73,6 @@ Az elmúlt kevesebb mint 5 percben létrehozott és beállított egy egyszerű, 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

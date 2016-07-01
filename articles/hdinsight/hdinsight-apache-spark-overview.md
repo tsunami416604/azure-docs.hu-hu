@@ -137,6 +137,6 @@ Kezdjük Spark-fürt létrehozásával HDInsight Linux platformon. Lásd: [Gyors
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

@@ -136,6 +136,6 @@ További információk az univerzális Windows-alkalmazásokról: [Több eszköz
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 
