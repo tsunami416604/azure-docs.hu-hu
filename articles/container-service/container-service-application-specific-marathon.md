@@ -55,6 +55,6 @@ dcos config set marathon.url http://<hostname>/service/marathon-alice/
 A `dcos config show` paranccsal ellenőrizheti, hogy a Marathon melyik példányával működik a parancssori felület. A fő Marathon-szolgáltatásra a `dcos config unset marathon.url` paranccsal állíthatja vissza.
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

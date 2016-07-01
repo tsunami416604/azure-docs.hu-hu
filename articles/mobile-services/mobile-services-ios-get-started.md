@@ -98,6 +98,6 @@ Megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Services
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

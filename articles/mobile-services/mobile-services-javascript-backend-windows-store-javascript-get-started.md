@@ -93,6 +93,6 @@ Most, hogy végzett a gyors üzembe helyezéssel, megismerheti a [HTML-hez/JavaS
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

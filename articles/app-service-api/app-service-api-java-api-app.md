@@ -340,6 +340,6 @@ A Java-alkalmazások Azure-ban való használatáról bővebben a [Java fejleszt
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

@@ -109,6 +109,6 @@ Az előző lépések során létrehozott egy munkaterület-csoportot, valamint e
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

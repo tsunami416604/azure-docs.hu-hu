@@ -64,6 +64,6 @@ Az *App Service* meglévő Mobile Service szolgáltatáshoz való használatát 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

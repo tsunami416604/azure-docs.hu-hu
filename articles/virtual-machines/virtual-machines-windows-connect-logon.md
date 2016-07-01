@@ -47,6 +47,6 @@ A csatlakozásra tett kísérlet során felmerülő hibákkal kapcsolatban tekin
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

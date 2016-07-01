@@ -270,6 +270,6 @@ További részletekért lásd: [Ismerkedés az Azure Blob Storage szolgáltatás
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

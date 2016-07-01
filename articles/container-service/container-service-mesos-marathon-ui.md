@@ -99,6 +99,6 @@ A skálázási művelet befejezése után több példányt fog látni ugyanabbó
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

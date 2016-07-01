@@ -100,6 +100,6 @@ A Microsoft Azure portál jelentősen leegyszerűsíti az alkalmazások felépí
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

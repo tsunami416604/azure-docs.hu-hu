@@ -669,6 +669,6 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure File Sto
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

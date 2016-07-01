@@ -139,6 +139,6 @@ Gratulálunk! Megtanulta, hogyan exportálhat sablonokat a portálon létrehozot
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

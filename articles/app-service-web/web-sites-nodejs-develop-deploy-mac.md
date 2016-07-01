@@ -227,6 +227,6 @@ A Node.js-alkalmazásoknak az Azure-on történő fejlesztéséről további inf
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

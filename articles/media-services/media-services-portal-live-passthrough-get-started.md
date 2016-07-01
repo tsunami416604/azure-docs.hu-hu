@@ -177,6 +177,6 @@ Az objektumok kezeléséhez válassza a  **Setting** (Beállítás) elemet, majd
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

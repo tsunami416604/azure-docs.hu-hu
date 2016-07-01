@@ -726,6 +726,6 @@ A Sencha Touch használatának első lépéseivel kapcsolatos részletesebb info
 [klasszikus Azure portál]: https://manage.windowsazure.com/
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

@@ -470,6 +470,6 @@ Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokbó
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

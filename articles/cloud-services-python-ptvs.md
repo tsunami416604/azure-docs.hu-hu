@@ -142,6 +142,6 @@ Ha további részletekre kíváncsi az Azure szolgáltatások használatáról w
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

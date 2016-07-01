@@ -179,6 +179,6 @@ WordPress webalkalmazások Azure platformon való fejlesztésével kapcsolatos t
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

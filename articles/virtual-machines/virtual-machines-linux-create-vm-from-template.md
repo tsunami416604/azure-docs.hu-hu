@@ -79,6 +79,6 @@ Miután létrehozott egy Linux virtuális gépet sablonok alapján, érdemes ut�
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

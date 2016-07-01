@@ -143,6 +143,6 @@ Az Azure parancssori felület használatával törölheti a fürtöt vagy az er�
 - [Create Linux-based Hadoop clusters in HDInsight using ARM templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban ARM-sablonok segítségével): megtudhatja, hogyan hívhat meg ARM-sablonokat HDInsight-fürtök létrehozásához.
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

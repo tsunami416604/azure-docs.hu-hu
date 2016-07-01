@@ -163,6 +163,6 @@ A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

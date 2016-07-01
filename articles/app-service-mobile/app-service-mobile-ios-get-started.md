@@ -54,6 +54,6 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

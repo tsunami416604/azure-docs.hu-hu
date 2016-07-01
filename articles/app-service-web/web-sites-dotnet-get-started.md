@@ -242,6 +242,6 @@ Ebben az oktatóanyagban megtudhatta, hogyan lehet létrehozni egy egyszerű web
     További információ az erőforráscsoportok kezeléséről az Azure portálon: [Az Azure portál használata az Azure-erőforrások telepítéséhez és kezeléséhez](../resource-group-portal.md).   
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

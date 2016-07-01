@@ -83,6 +83,6 @@ Az alábbiakban a Logic Apps használatának kulcsfontosságú elemeit emeljük 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

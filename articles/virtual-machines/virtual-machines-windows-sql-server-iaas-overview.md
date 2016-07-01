@@ -92,6 +92,6 @@ További kérdései vannak? Először tekintse át [Az SQL Server használatána
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

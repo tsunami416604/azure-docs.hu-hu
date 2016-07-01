@@ -172,6 +172,6 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

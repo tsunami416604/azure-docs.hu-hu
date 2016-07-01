@@ -230,6 +230,6 @@ A fenti cikk a **Power BI**-jelentések alkalmazásokba történő beágyazásá
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

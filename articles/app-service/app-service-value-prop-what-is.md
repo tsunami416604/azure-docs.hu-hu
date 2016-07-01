@@ -82,6 +82,6 @@ Vagy hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pric
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

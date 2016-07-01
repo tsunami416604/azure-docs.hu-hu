@@ -278,6 +278,6 @@ Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokbó
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 

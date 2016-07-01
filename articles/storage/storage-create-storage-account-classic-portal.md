@@ -177,6 +177,6 @@ A már nem használt tárfiókok törléséhez használja a **Törlés** gombot 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO2--->
 
 
