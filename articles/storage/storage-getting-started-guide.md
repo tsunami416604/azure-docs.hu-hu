@@ -62,7 +62,8 @@ A következő lépésben futtassa a mintaalkalmazást:
 
     `<!--<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>-->`
 
-2.  Állítsa vissza az Azure Storage szolgáltatás kapcsolati karakterláncát, és adja meg az App.config fájlban a tárfiók nevét és hívóbetűjét: `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
+2.  Állítsa vissza az Azure Storage szolgáltatás kapcsolati karakterláncát, és adja meg az App.config fájlban a tárfiók nevét és hívóbetűjét: 
+	`<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
 
     A tárfiók elérési kulcsának lekéréséhez lásd: [Manage your storage access keys](storage-create-storage-account.md#manage-your-storage-access-keys) (A tárfiókok hívóbetűinek kezelése).
 
@@ -112,7 +113,7 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 * [A Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Az Azure Storage szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
-[1. kép]: ./media/storage-getting-started-guide/QuickStart.png
+[Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
 
 
