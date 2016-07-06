@@ -96,7 +96,7 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js][NOD
 
     Ekkor elméletben a Node.js alkalmazásának élőben futnia kell az Azure App Service-ben.
     
-    ![Példa a telepített alkalmazás tallózással való megkeresésére.][deployed-express-app]
+    ![Example of browsing to the deployed application.][deployed-express-app]
 
 ## A Node.js webalkalmazás frissítése
 
@@ -166,7 +166,7 @@ Az iisnode naplók elolvasásához használja az alábbi lépéseket.
 
         https://{appname}.scm.azurewebsites.net/DebugConsole 
 
-    Vegye figyelembe, hogy ez az URL eltér a webalkalmazás URL-címétől, amennyiben hozzá lett fűzve egy „*.scm.*” tag a DNS-névhez. Ha kihagyja ezt a kiegészítést az URL-hez, 404 hibaüzenetet kap.
+    Vegye figyelembe, hogy ez az URL eltér a webalkalmazás URL-címétől, amennyiben hozzá lett fűzve egy „ *.scm.*  ” tag a DNS-névhez. Ha kihagyja ezt a kiegészítést az URL-hez, 404 hibaüzenetet kap.
 
 5. Lépjen a D:\home\site\wwwroot\iisnode helyre
 
@@ -237,7 +237,7 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 <!-- IMG List -->
 
-[telepített-express-alkalmazás]: ./media/app-service-web-nodejs-get-started/deployed-express-app.png
+[deployed-express-app]: ./media/app-service-web-nodejs-get-started/deployed-express-app.png
 [iislog-kudu-konzol-keresés]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-navigate.png
 [iislog-kudu-konzol-megnyitás]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
 [iislog-kudu-konzol-olvasás]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
