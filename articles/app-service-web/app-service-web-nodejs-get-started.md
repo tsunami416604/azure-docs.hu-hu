@@ -170,15 +170,15 @@ Az iisnode naplók elolvasásához használja az alábbi lépéseket.
 
 5. Lépjen a D:\home\site\wwwroot\iisnode helyre
 
-    ![Navigálás az iisnode naplófájlok helyéhez.][iislog-kudu-console-find]
+    ![Navigálás az iisnode naplófájlok helyéhez.][iislog-kudu-konzol-keresés]
 
 6. Kattintson az olvasni kívánt napló **Szerkesztés** ikonjára. Kattinthat a **Letöltés** vagy a **Törlés** lehetőségre is, ha szeretne.
 
-    ![Egy iisnode naplófájl megnyitása.][iislog-kudu-console-open]
+    ![Egy iisnode naplófájl megnyitása.][iislog-kudu-konzol-megnyitás]
 
     Most megjelenik a napló, amely segít az App Service üzemelő példányon végzett hibakeresésben.
     
-    ![Egy iisnode naplófájl vizsgálata.][iislog-kudu-console-read]
+    ![Egy iisnode naplófájl vizsgálata.][iislog-kudu-konzol-olvasás]
 
 ## Alkalmazás hibakeresése a Node-Inspector használatával
 
