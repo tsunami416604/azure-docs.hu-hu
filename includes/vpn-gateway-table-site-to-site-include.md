@@ -1,9 +1,15 @@
-|  | **Classic Deployment**  | **Resource Manager Deployment** |
+|  | **Klasszikus üzembe helyezés**  | **Resource Managerrel végzett üzembe helyezés** |
 |----------------------------------------|--------------|----------------------|
-| **Classic Portal**                     |[Article*](../articles/vpn-gateway/vpn-gateway-site-to-site-create.md) |  Not Supported |
-| **Azure Portal**                       | Supported               | [Article](vpn-gateway-howto-site-to-site-resource-manager-portal.md)|
-| **PowerShell**               |[Article+](..articles/vpn-gateway/vpn-gateway-multi-site.md)          | [Article](..articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)| 
+| **Klasszikus portál**                     |[Cikk*](../articles/vpn-gateway/vpn-gateway-site-to-site-create.md) |  Nem támogatott |
+| **Azure portálra**                       | Támogatott               | [Cikk](vpn-gateway-howto-site-to-site-resource-manager-portal.md)|
+| **PowerShell**               |[Cikk+](..articles/vpn-gateway/vpn-gateway-multi-site.md)          | [Cikk](..articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)| 
 
-(*) denotes that the classic portal can only support creating one S2S VPN connection.
+A (*) azt jelzi, hogy a klasszikus portál csak egy S2S VPN-kapcsolat létrehozását támogatja.
 
-(+) denotes that this article is written for multi-site connections.
+A (+) azt jelzi, hogy ez a cikk többhelyes kapcsolatokhoz íródott.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

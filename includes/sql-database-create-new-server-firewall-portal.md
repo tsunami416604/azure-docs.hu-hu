@@ -9,41 +9,46 @@ articles/sql-database/sql-database-get-started-tutorial.md
 articles/sql-database/sql-database-configure-firewall-settings
 
 -->
-## Create a new Azure SQL server-level firewall
+## Új Azure SQL kiszolgálószintű tűzfal létrehozása
 
-Use the following steps in the Azure portal to create a server-level firewall rule that allows connections from an individual IP address (your client computer) or an entire IP address range to a SQL logical server. 
+Kövesse a következő lépéseket az Azure portálon, hogy létrehozzon egy kiszolgálószintű tűzfalszabályt, amely kapcsolatokat engedélyez egy egyedi IP-címről (az Ön ügyfélszámítógépéről) vagy egy teljes IP-címtartományról egy SQL logikai kiszolgálóra. 
 
-1. If not currently connected, connect to the [Azure portal](http://portal.azure.com).
-2. In the default blade, click **SQL Server**.
+1. Ha jelenleg nincs csatlakozva, jelentkezzen be az [Azure portálra](http://portal.azure.com).
+2. Az alapértelmezett panelen kattintson az **SQL Server** elemre.
 
-  	![new server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-1.png)
+    ![új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-1.png)
 
-2. In the SQL Server blade, click the SQL server on which to create the firewall rule. 
+2. Az SQL Server panelen kattintson arra az SQL-kiszolgálóra, ahol létrehozná a tűzfalszabályt. 
 
- 	![new server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-2.png)
+    ![új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-2.png)
            
-3. Review the properties of your server.
+3. Tekintse át a kiszolgálója tulajdonságait.
 
- 	![new server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-3.png)
+    ![új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-3.png)
       
-4. In the Settings blade, click **Firewall**.
+4. A Beállítások panelen kattintson a **Tűzfal** elemre.
 
- 	![new server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-4.png)
+    ![új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-4.png)
     
 
- 	> [AZURE.IMPORTANT] If you do not see the option for **Firewall** on the blade you are looking at, go back and make sure that you are looking at the blade for the SQL Database logical server and not the blade for a SQL database.
+    > [AZURE.IMPORTANT] Ha nem látja a **Tűzfal** beállítást a panelen, lépjen vissza, és győződjön meg arról, hogy az SQL Database logikai kiszolgáló paneljét nézi, és nem egy SQL-adatbázisét.
 
-5. Click **Add Client IP** to have Azure create a rule for your client's IP address.
+5. Kattintson az **Ügyfél IP-címének hozzáadása** lehetőségre az ügyfele IP-címéhez való szabály létrehozásához.
 
-      ![new server firewall]
-	  (./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-5.png)
+      ![új kiszolgálótűzfal]    (./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-5.png)
 
-6. Optionally, click the IP address that was added to edit the firewall address to allow access to a range of IP addresses.
+6. Másik lehetőségként kattinthat a hozzáadott IP-címre, és szerkesztheti a tűzfal címét egy IP-címtartományhoz való hozzáférés engedélyezéséhez.
 
-      ![new server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-6.png)
+      ![új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-6.png)
     
-7. Click **Save** to create the server-level firewall rule.
+7. Kattintson a **Mentés** gombra egy kiszolgálószintű tűzfalszabály létrehozásához.
 
-     ![new server firewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-7.png)
+     ![új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-7.png)
 
-	>[AZURE.IMPORTANT] Your Client IP address may change from time to time, and you may not be able to access your server until you create a new firewall rule. You can check your IP address using [Bing](http://www.bing.com/search?q=my%20ip%20address), and then add a single IP address or a range of IP addresses. See [Manage firewall settings](sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal) for details.
+    >[AZURE.IMPORTANT] Az ügyfél IP-címe időnként változhat, így előfordulhat, hogy új szabály létrehozásáig nem férhet hozzá a kiszolgálóhoz. IP-címét ellenőrizheti a [Bing](http://www.bing.com/search?q=my%20ip%20address) használatával, és ezután hozzáadhat egy egyedi IP-címet vagy egy IP-címtartományt. Részletek: [Manage firewall settings](sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal) (Tűzfalbeállítások kezelése).
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

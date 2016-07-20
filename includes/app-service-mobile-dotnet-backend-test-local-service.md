@@ -1,7 +1,13 @@
 
 
-The mobile app project lets you to run your new mobile app backend locally. This makes it easy to debug your service code before you even publish it to Azure.
+A mobilalkalmazás-projekt lehetővé teszi az új mobilalkalmazás-háttérrendszer helyi futtatását. Így egyszerűen kijavíthatja a szolgáltatáskód hibáit, mielőtt közzétenné az Azure-on.
 
-1. On your Windows PC, extract project you downloaded earlier, and then open it in Visual Studio.
+1. Windows rendszerű számítógép esetén bontsa ki a korábban letöltött projektet, majd nyissa meg a Visual Studio alkalmazásban.
 
-2. Select the bottom project which should be your Mobile App name with Service at the end of it. Press **CTRL-F5** to download the nuget packages, build the project and start the mobile app backend locally. When you run your mobile app client, pointed at localhost, it will talk to your local backend. 
+2. Válassza ki az alsó projektet, amelynek a neve egyezik saját mobilalkalmazásának nevével, végén a Service kifejezéssel. Nyomja le a **CTRL-F5** billentyűkombinációt a NuGet-csomagok letöltéséhez, a projekt felépítéséhez, valamint a mobilalkalmazás háttérrendszerének helyi elindításához. Ha a mobilalkalmazás-ügyfelet a helyi állomásra mutatva futtatja, akkor az a helyi háttérrendszerrel kommunikál. 
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

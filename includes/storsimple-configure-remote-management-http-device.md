@@ -1,14 +1,19 @@
 
-####To configure remote management on the device
+####A távfelügyelet konfigurálása az eszközön
 
-1. On your virtual device, go to **Devices > Configure**.
+1. A virtuális eszközön nyissa meg az **Eszközök > Konfigurálás** lapot.
 
-2. Scroll down to the **Remote Management** section.
+2. Görgessen le a **Távoli felügyelet** részig.
 
-3. Set **Enable Remote Management** to **Yes**.
+3. A **Távoli felügyelet engedélyezése** lehetőségnél válassza az **Igen** beállítást.
 
-4. You can now choose to connect using HTTP. The default is to connect over HTTPS. Connecting over HTTP is acceptable only on trusted networks.
+4. Mostantól HTTP-n keresztül is csatlakozhat. Az alapértelmezett csatlakozási mód a HTTPS protokoll használata. A HTTP-n keresztüli csatlakozást kizárólag megbízható hálózatokon célszerű engedélyezni.
 
-5. Click **Download Remote Management Certificate** to download a remote management certificate. You will specify a location in which to save this file. This certificate then needs to be installed on the client or host machine that you will use to connect to the virtual device.
+5. A távfelügyeleti tanúsítvány letöltéséhez kattintson a **Távfelügyeleti tanúsítvány letöltése** lehetőségre. Először meg kell adnia a fájl mentésének helyét. A tanúsítványt ezt követően telepítenie kell arra az ügyfélszámítógépre vagy állomásra, amellyel csatlakozni fog a virtuális eszközhöz.
 
-6. Click **Save** at the bottom of the page.
+6. Kattintson a lap alján található **Mentés** gombra.
+
+
+<!--HONumber=Jun16_HO2-->
+
+

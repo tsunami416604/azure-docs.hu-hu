@@ -1,12 +1,18 @@
 
-1. Visit the [Azure Portal]. Click **Browse All** > **Mobile Apps** > the backend that you just created. In the mobile app settings, click **Quickstart** > **Android)**. Under **Configure your client application**, click **Download**. This downloads a complete Android project for an app pre-configured to connect to your backend. 
+1. Látogasson el az [Azure portálra]. Kattintson az **Összes tallózása** > **Mobilalkalmazások** lehetőségre > az imént létrehozott háttérrendszerre. A mobilalkalmazás beállításaiban kattintson az **Első lépések** > **Android** elemre. Az **Ügyfélalkalmazás konfigurálása** menüben kattintson a **Letöltés** elemre. Ez letölti egy olyan alkalmazás teljes Android-projektjét, amely előre konfigurálva van a háttérkészlethez való csatlakozáshoz. 
 
-2. Open the project using **Android Studio**, using **Import project (Eclipse ADT, Gradle, etc.)**. Make sure you make this import selection to avoid any JDK errors.
+2. Nyissa meg a projektet az **Android Studio** **Import project (Eclipse ADT, Gradle, etc.)** (Projekt importálása (Eclipse ADT, Gradle stb.)) lehetőségével. A JDK-hibák elkerülése érdekében győződjön meg arról, hogy ez az importálási lehetőség van kiválasztva.
 
-3. Press the **Run 'app'** button to build the project and start the app in the Android simulator.
+3. Nyomja le a **Run 'app'** („Alkalmazás” futtatása) gombot a projekt felépítéséhez és az alkalmazás Android-szimulátorban történő elindításához.
 
-4. In the app, type meaningful text, such as _Complete the tutorial_ and then click the 'Add' button. This sends a POST request to the Azure backend you deployed earlier. The backend inserts data from the request is into the TodoItem SQL table, and returns information about the newly stored items back to the mobile app. The mobile app displays this data in the list. 
+4. Az alkalmazásban írjon be egy értelmes szöveget, például _Az oktatóanyag befejezése_, majd kattintson a Hozzáadás gombra. Ez egy POST kérést küld a korábban telepített Azure-háttérrendszernek. A háttérrendszer beilleszti az adatokat a kérésből a TodoItem SQL táblázatba, majd visszaküldi az újonnan eltárolt adatokra vonatkozó információkat a mobilalkalmazásnak. A mobilalkalmazás megjeleníti ezeket az adatokat a listában. 
 
     ![](./media/mobile-services-android-get-started/mobile-quickstart-startup-android.png)
 
-[Azure Portal]: https://portal.azure.com/
+[Azure portálra]: https://portal.azure.com/
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

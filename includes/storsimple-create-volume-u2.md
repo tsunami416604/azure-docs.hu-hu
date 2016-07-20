@@ -1,45 +1,51 @@
 <!--author=SharS last changed: 02/29/2016-->
 
-#### To create a volume
+#### Kötet létrehozása
 
-1. On the device **Quick Start** page, click **Add a volume**. This starts the Add a volume wizard.
+1. A **Gyors üzembe helyezés** oldalon kattintson a **Kötet hozzáadása** lehetőségre. Ezzel elindítja a Kötet hozzáadása varázslót.
 
-2. In the Add a volume wizard, under **Basic Settings**:
+2. A Kötet hozzáadása varázslóban az **Alapbeállítások** területen:
 
-	4. Type a **Name** for your volume.
-	5. On the drop-down list, select the **Usage Type** for your volume. For workloads that require local guarantees, low latencies, and higher performance, select a **Locally pinned** volume. For all other data, select a **Tiered** volume. If you are using this volume for archival data, check **Use this volume for less frequently accessed archival data**. 
-	
-		A locally pinned volume is thickly provisioned and ensures that the primary data on the volume stays local to the device and does not spill to the cloud.  If you create a locally pinned volume, the device will check for available space on the local tiers to provision the volume of the requested size. The operation of creating a locally pinned volume may involve spilling existing data from the device to the cloud and the time taken to create the volume may be long. The total time depends on the size of the provisioned volume, available network bandwidth, and the data on your device. 
+    4. Adja meg a kötet **Nevét**.
+    5. A legördülő listából adja meg a **Használat típusa** beállítást a kötethez. Helyi garanciákat, kis késleltetést és magasabb teljesítményt igénylő munkaterheléseknél válasszon **Helyileg rögzített** kötetet. Minden más adathoz válasszon **Rétegzett** kötetet. Ha archív adatokhoz használja ezt a kötetet, jelölje be a **Kötet használata ritkábban használt archív adatokhoz** beállítást. 
+    
+        Egy helyileg rögzített kötet kiosztása állandó, és biztosítja, hogy a kötet elsődleges adatai helyben tárolódnak az eszközön, és nem kerülnek a felhőbe.  Ha helyileg rögzített kötetet hoz létre, az eszköz ellenőrzi a helyi rétegeken elérhető tárhelyet a kívánt méretű kötet kiosztásához. A helyileg rögzített kötet létrehozásához hozzátartozhat az eszközön levő adatok felhőbe küldése is, így a kötet létrehozása hosszú időt vehet igénybe. A teljes időtartam a kiosztott kötet méretétől, az elérhető hálózati sávszélességtől és az eszközön lévő adatoktól függ. 
 
-		A tiered volume is thinly provisioned and can be created very quickly. If you are using the tiered volume for archival data, selecting **Use this volume for less frequently accessed archival data** changes the deduplication chunk size for your volume to 512 KB. If this field is not checked, the corresponding tiered volume will use a chunk size of 64 KB. A larger deduplication chunk size allows the device to expedite the transfer of large archival data to the cloud.
+        A rétegzett kötetek kiosztása dinamikus, és ezek nagyon gyorsan létrehozhatók. Ha a rétegzett kötetet archív adatokhoz használja, a **Kötet használata ritkábban használt archív adatokhoz** beállítás bejelölésével a kötet deduplikációs adattömbméretét 512 KB-ra módosíthatja. Ha ez a mező nincs bejelölve, a megfelelő rétegzett kötet 64 KB adattömbméretet használ. Egy nagyobb deduplikációs adattömbméret lehetővé teszi az eszköz számára a nagy mennyiségű archiválási adatok továbbítását a felhőbe.
 
-	3. Specify the **Provisioned Capacity** for your volume. Make a note of the capacity that is available based on the volume type selected. The specified volume size must not exceed the available space.
+    3. Adja meg a kötethez tartozó **Kiosztott kapacitást**. Jegyezze fel a kiválasztott kötettípus alapján elérhető kapacitást. A megadott kötetméret nem haladhatja meg a rendelkezésre álló területet.
 
-		You can provision locally pinned volumes up to 8 TB or tiered volumes up to 200 TB on the 8100 device. On the larger 8600 device, you can provision locally pinned volumes up to 20 TB or tiered volumes up to 500 TB. As local space on the device is required to host the working set of tiered volumes, creation of locally pinned volumes will impact the space available for provisioning tiered volumes. Therefore, if you create a locally pinned volume, space available for creation of tiered volumes will be reduced. Similarly, if a tiered volume is created, the available space for creation of  locally pinned volumes will be reduced. 
+        A 8100-as eszközön helyileg rögzített kötetekhez legfeljebb 8 TB, rétegzett kötetekhez legfeljebb 200 TB területet oszthat ki. A nagyobb 8600-as eszközön helyileg rögzített kötetekhez legfeljebb 20 TB, rétegzett kötetekhez legfeljebb 500 TB területet oszthat ki. Mivel a rétegzett kötetek munkakészletének üzemeltetéséhez helyi terület szükséges az eszközön, a helyileg rögzített kötetek létrehozása hatással van a rétegzett kötetek kiosztásához rendelkezésre álló területre. Ha tehát helyileg rögzített kötetet hoz létre, a rétegzett kötetek létrehozásához rendelkezésre álló terület csökken. Hasonlóképpen ha rétegzett kötetet hoz létre, a helyileg rögzített kötetek létrehozásához rendelkezésre álló terület csökken. 
 
-		If you provision a locally pinned volume of 8 TB (maximum allowable size) on your 8100 device, then you will have exhausted all the local space available on the device. You will not be able to create any tiered volume from that point onwards as there is no local space on the device to host the working set of the tiered volume. Existing tiered volumes also affect the space available. For example, if you have an 8100 device that already has tiered volumes of 100 TB, only 4 TB of space will be available for locally pinned volumes.
+        Ha a 8100-as eszközön kioszt egy 8 TB-os (ez a legnagyobb megengedett méret) helyileg rögzített kötetet, azzal elfoglalja az összes rendelkezésre álló helyi területet az eszközön. Innentől kezdve nem hozhat létre további rétegzett köteteket, mivel nincs helyi terület az eszközön, amely üzemeltethetné a rétegzett kötet munkakészletét. A meglévő rétegzett kötetek is hatással vannak a rendelkezésre álló területre. Ha például egy 8100-as eszközhöz már tartozik 100 TB rétegzett kötet, akkor már csak 4 TB érhető el a helyileg rögzített kötetekhez.
 
-        The following image shows the **Basic Settings** dialog box for a locally pinned volume.
+        Az alábbi képen egy helyileg rögzített kötet **Alapbeállítások** párbeszédablaka látható.
 
-         ![Add local volume](./media/storsimple-create-volume-u2/add-local-volume-include.png)
+         ![Helyi kötet hozzáadása](./media/storsimple-create-volume-u2/add-local-volume-include.png)
 
-        The following image shows the **Basic Settings** dialog box for a tiered volume.
+        Az alábbi képen egy rétegzett kötet **Alapbeállítások** párbeszédablaka látható.
 
-         ![Add local volume](./media/storsimple-create-volume-u2/add-tiered-volume-include.png)
+         ![Helyi kötet hozzáadása](./media/storsimple-create-volume-u2/add-tiered-volume-include.png)
 
-   4. Click the arrow icon ![arrow-icon](./media/storsimple-create-volume-u2/HCS_ArrowIcon-include.png) to go to the next page.
+   4. Kattintson a nyíl ikonra ![nyíl ikon](./media/storsimple-create-volume-u2/HCS_ArrowIcon-include.png) a következő oldalra lépéshez.
 
 
-3. In the **Additional Settings** dialog box, add a new access control record (ACR):
+3. A **További beállítások** párbeszédpanelen adjon hozzá egy új hozzáférés-vezérlési rekordot (ACR):
 
-	1. Supply a **Name** for your ACR.
-	2. Under **iSCSI Initiator Name**, provide the iSCSI Qualified Name (IQN) of your Windows host. If you don't have the IQN, go to [Get the IQN of a Windows Server host](#get-the-iqn-of-a-windows-server-host).
-	3. Under **Default backup for this volume?**, select the **Enable** check box. The default backup will create a policy that executes at 22:30 each day (device time) and creates a cloud snapshot of this volume.
-	 
-     > [AZURE.NOTE] After the backup is enabled here, it cannot be reverted. You will need to edit the volume to modify this setting.
+    1. Adja meg az ACR **nevét**.
+    2. Az **iSCSI-kezdeményező neve** alatt adja meg a Windows-gazdagép iSCSI minősített nevét (IQN). Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz.
+    3. A **Alapértelmezett a biztonsági mentés ehhez a kötethez?** területen jelölje be az **Engedélyezés** jelölőnégyzetet. Az alapértelmezett biztonsági mentés létrehoz egy házirendet, amelyet a rendszer mindennap 22:30-kor (az eszköz ideje szerint) futtat, és létrehoz egy felhő-pillanatfelvételt a kötetről.
+     
+     > [AZURE.NOTE] Miután itt engedélyezte a biztonsági mentést, a beállítás nem állítható vissza. A beállítás módosításához a kötetet kell szerkesztenie.
 
-     ![Add volume](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
+     ![Kötet hozzáadása](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
 
-4. Click the check icon ![check icon](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). A volume will be created with the specified settings.
+4. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). Létrejön egy kötet a megadott beállításokkal.
+
+
+
+
+
+<!--HONumber=Jun16_HO2-->
 
 

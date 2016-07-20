@@ -1,10 +1,16 @@
-You are billed for Azure Storage usage based on your storage account. Storage costs are based on the following factors: region/location, account type, storage capacity, replication scheme, storage transactions, and data egress.
+Az Azure Storage használatáért a tárfiók alapján kell fizetni. A tárolási költségeket az alábbi tényezők határozzák meg: a régió/hely, a fiók típusa, a tárolási kapacitás, a replikálási séma, a tárolási tranzakciók és a kimenő adatforgalom.
 
-- Region refers to the geographical region in which your account is based.
-- Account type refers to whether you are using a general-purpose storage account or a Blob storage account. With a Blob storage account, the access tier also determines the billing model for the account.
-- Storage capacity refers to how much of your storage account allotment you are using to store data.
-- Replication determines how many copies of your data are maintained at one time, and in what locations.
-- Transactions refer to all read and write operations to Azure Storage.
-- Data egress refers to data transferred out of an Azure region. When the data in your storage account is accessed by an application that is not running in the same region, you are charged for data egress. (For Azure services, you can take steps to group your data and services in the same data centers to reduce or eliminate data egress charges.)
+- A régió alatt az a földrajzi régió értendő, amelyben a fiókja található.
+- A fiók típusa arra utal, hogy általános célú tárfiókot vagy Blob Storage-fiókot használ-e. Blob Storage-fiók esetén a hozzáférési szint határozza meg a fiók számlázási modelljét is.
+- A tárolási kapacitás azt jelzi, hogy tárfiókja mekkora részét használja adatok tárolására.
+- A replikálás határozza meg, hogy adatait egyszerre hány példányban és hol tárolja.
+- A tranzakciók az összes olvasási és írási műveletet jelentik az Azure Storage szolgáltatásban.
+- A kimenő adatforgalom az adott Azure-régiókból kifelé irányuló adatátvitelt jelenti. Amikor a tárfiókban lévő adatokat egy olyan alkalmazás használja, amely nem ugyanabban a régióban fut, a kimenő adatforgalom díjköteles. (Az Azure szolgáltatások esetében adatait és szolgáltatásait azonos adatközpontba csoportosítva csökkentheti vagy elkerülheti a kimenő adatforgalom díját.)
 
-The [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) page provides detailed pricing information based on account type, storage capacity, replication, and transactions. The [Data Transfers Pricing Details](https://azure.microsoft.com/pricing/details/data-transfers/) provides detailed pricing information for data egress. You can use the [Azure Storage Pricing Calculator](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) to help estimate your costs.
+Az [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) lap részletes információkat biztosít a fióktípussal, a tárolási kapacitással, a replikálással és a tranzakciókkal kapcsolatban. Az [Adatforgalmi díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) tartalmazza a kimenő adatforgalommal kapcsolatos részletes díjszabási információkat. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) használatával megbecsülheti költségeit.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

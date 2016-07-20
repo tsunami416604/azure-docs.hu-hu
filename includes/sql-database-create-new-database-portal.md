@@ -8,41 +8,46 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## Create a new Azure SQL database
+## Új Azure SQL Database létrehozása
 
-Use the following steps in the Azure portal to create a new Azure SQL database on a new or existing Azure SQL Database logical server.
+Kövesse a következő lépéseket az Azure portálon, hogy létrehozzon egy új Azure SQL Database adatbázist egy új vagy egy létező Azure SQL Database logikai kiszolgálón.
 
-1. If not currently connected, connect to the [Azure portal](http://portal.azure.com).
-2. Click **New** , type **SQL Database** and then click **SQL Database (new database)**
+1. Ha jelenleg nincs csatlakozva, jelentkezzen be az [Azure portálra](http://portal.azure.com).
+2. Kattintson az **Új** gombra, írja be az **SQL Database** (SQL-adatbázis) kifejezést, majd kattintson az **SQL Database (new database)** (SQL-adatbázis (új adatbázis)) elemre
 
-     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
+     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
 
-3. Click SQL Database (new database).
+3. Kattintson az SQL Database (new database) (SQL-adatbázis (új adatbázis)) elemre.
 
-     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)
+     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)
    
-4. Click **Create** to create a new database in the SQL Database service.
+4. Kattintson a **Létrehozás** gombra az új adatbázis létrehozásához az SQL Database szolgáltatásban.
 
-     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
+     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
 
-5. Provide the values for the following server properties:
+5. Adja meg az alábbi kiszolgálótulajdonságok értékeit:
 
- - Database name
- - Subscription (only if you have multiple subscriptions)
- - Resource group (if just getting started, use the resource group of the logical server)
- - Select source (you can choose a blank database, sample data or a database backup)
- - Server (a new or existing logical server)
- - Server admin password
- - Password
- - Pricing tier (if just getting started, use the default value S0)
- - Collation (only if blank database chosen)
+ - Adatbázis neve
+ - Előfizetés (csak akkor, ha több előfizetéssel rendelkezik)
+ - Erőforráscsoport (ha ezek az első lépései, használja a logikai kiszolgáló erőforráscsoportját)
+ - Forrás kiválasztása (választhat üres adatbázist, mintaadatokat vagy egy adatbázis biztonsági mentését)
+ - Kiszolgáló (egy új vagy meglévő logikai kiszolgáló)
+ - Kiszolgáló-rendszergazdai jelszava
+ - Jelszó
+ - Tarifacsomag (ha ezek az első lépései, használja az alapértelmezett értéket – S0)
+ - Rendezés (csak akkor, ha üres adatbázist választott)
 
         ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-4.png)
 
-6.  Click **Create** and in the notification area, you can see that deployment has started.
+6.  Kattintson a **Létrehozás** gombra – ekkor az értesítési területen látható, hogy az üzembe helyezés megkezdődött.
 
-     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)
+     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)
 
-7. Wait for deployment to finish before continuing to the next step.
+7. Mielőtt folytatja a következő lépéssel, várja meg, míg az üzembe helyezés befejeződik.
 
-     ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
+     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
+
+
+<!--HONumber=Jun16_HO2-->
+
+

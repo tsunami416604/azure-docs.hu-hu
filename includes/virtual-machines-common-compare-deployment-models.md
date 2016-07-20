@@ -1,94 +1,100 @@
 
 
 
-## Advantages of integrating Compute, Network, and Storage under the Azure Resource Manager deployment model
+## A számítás, a hálózatkezelés és a tárolás Azure Resource Manager-alapú üzemi modellben való integrálásának előnyei
 
-The Azure Resource Manager deployment model offers the ability to easily leverage pre-built application templates or construct an application template to deploy and manage compute, network, and storage resources on Azure. In this section, we’ll walk through the advantages of deploying resources through the Azure Resource Manager deployment model.
+Az Azure Resource Manager-alapú üzemi modell lehetővé teszi az előre elkészített alkalmazássablonok egyszerű használatát vagy egy JSON-sablon összeállítását, és annak segítségével számítási, hálózati és tárolási erőforrások az Azure-on való telepítését és kezelését. Ebben a szakaszban végigvesszük az erőforrások az Azure Resource Manager-alapú üzemi modell használatával való telepítésének előnyeit.
 
--	Complexity made simple -- Build, integrate, and collaborate on complicated applications that can include the entire gamut of Azure resources (such as Websites, SQL Databases, Virtual Machines, or Virtual Networks) from a shareable template file
--	Flexibility to have repeatable deployments for development, devOps, and system administrators when you use the same template file
--	Deep integration of VM Extensions (Custom Scripts, DSC, Chef, Puppet, etc.) with the Azure Resource Manager in a template file allows easy orchestration of in-VM setup configuration
--	Defining tags and the billing propagation of those tags for Compute, Network & Storage resources
--	Simple and precise organizational resource access management using Azure Role-Based Access Control (RBAC)
--	Simplified Upgrade/Update story by modifying the original template and then redeploying it
+-   Összetett megoldás egyszerűbben – Egy megosztható sablonfájlból kiépíthet és integrálhat olyan összetett alkalmazásokon, illetve együttműködhet rajtuk, amelyek az Azure-erőforrások teljes skáláját használják (Websites, SQL-adatbázisok, Virtual Machines vagy virtuális hálózatok)
+-   A megoldás rugalmassága lehetővé teszi az ismétlődő telepítések elvégzését a fejlesztések, a devOps és a rendszergazdák számára, amikor ugyanazt a sablonfájlt használja
+-   A virtuálisgép-bővítmények szoros integrációja (Egyéni parancsfájlok, DSC, Chef, Puppet stb.) az Azure Resource Managerrel egy sablonfájlban lehetővé teszi a virtuális gépen belüli beállítási konfiguráció egyszerű összehangolását
+-   Címkék meghatározása, és ezen címkék terjesztése a számítási, hálózati és tárolási erőforrásokhoz
+-   Egyszerű és pontos szervezeti erőforráshozzáférés-kezelés az Azure szerepköralapú hozzáférés-vezérlésével (RBAC)
+-   Egyszerűsített Frissítés az eredeti sablon módosításával, majd újratelepítésével
 
 
-## Advancements of the Compute, Network, and Storage APIs under Azure Resource Manager
+## Fejlesztések a számítási, hálózati és tárolási API-k területén az Azure Resource Managerben
 
-In addition to the advantages mentioned above, there are some significant performance advancements in the APIs released:
+A fent említett előnyökön túl van néhány jelentős teljesítménybeli fejlesztés is a kiadott API-kban:
 
--	Enabling massive and parallel deployment of Virtual Machines
--	Support for 3 Fault Domains in Availability Sets
--	Improved Custom Script extension that allows specification of scripts from any publicly accessible custom URL
-- Integration of Virtual Machines with the Azure Key Vault for highly secure storage and private deployment of secrets from [FIPS-validated](http://wikipedia.org/wiki/FIPS_140-2) [Hardware Security Modules](http://wikipedia.org/wiki/Hardware_security_module)
--	Provides the basic building blocks of networking through APIs to enable customers to construct complicated applications that include Network Interfaces, Load Balancers, and Virtual Networks
--	Network Interfaces as a new object allows complicated network configuration to be sustained and reused for Virtual Machines
--	Load Balancers as a first-class resource enables IP Address assignments
--	Granular Virtual Network APIs allow you to simplify the management of individual Virtual Networks
+-   A virtuális gépek tömeges és párhuzamos telepítésének lehetősége
+-   3 tartalék tartomány támogatása a rendelkezésre állási csoportokban
+-   Továbbfejlesztett Custom Script bővítmény, amely lehetővé teszi a parancsfájlok megadását bármely nyilvánosan hozzáférhető egyéni URL-ről
+- A Virtual Machines integrálása az Azure Key Vaulttal a rendkívül biztonságos tárolás és a bizalmas anyagok [FIPS használatával érvényesített](http://wikipedia.org/wiki/FIPS_140-2) [hardveres biztonsági modulokból](http://wikipedia.org/wiki/Hardware_security_module) való magántelepítése érdekében
+-   Alapszintű hálózatkezelési elemeket biztosít az API-kon keresztül, így az ügyfelek bonyolult, hálózati adaptereket, terheléselosztókat és virtuális hálózatokat tartalmazó alkalmazásokat hozhatnak létre
+-   A Network Interfaces nevű új objektum lehetővé teszi az összetett hálózati konfiguráció megtartását és újrahasznosítását a virtuális gépeken
+-   A terheléselosztók első osztályú erőforrásként lehetővé teszik az IP-címek hozzárendelését
+-   A részletes Virtual Network API-k lehetővé teszik az egyéni virtuális hálózatok egyszerűsítését
 
-## Conceptual differences with the introduction of new APIs
+## Fogalmi változások az új API-k bevezetése kapcsán
 
-In this section, we will walk through some of the most important conceptual differences between the XML based APIs available today and JSON based APIs available through the Azure Resource Manager for Compute, Network & Storage.
+Ez a szakasz a legfontosabb fogalmi eltéréseket tárgyalja a jelenleg rendelkezésre álló XML-alapú API-k és a számítás-, hálózat- és tárkezelő Azure Resource Manageren keresztül elérhető JSON-alapú API-k között.
 
- Item | Azure Service Management (XML-based)	| Compute, Network & Storage Providers (JSON-based)
+ Elem | Azure szolgáltatásfelügyelet (XML-alapú)    | Számítás-, hálózat- és társzolgáltatók (JSON-alapú)
  ---|---|---
-| Cloud Service for Virtual Machines |	Cloud Service was a container for holding the virtual machines that required Availability from the platform and Load Balancing.	| Cloud Service is no longer an object required for creating a Virtual Machine using the new model. |
-| Availability Sets	| Availability to the platform was indicated by configuring the same “AvailabilitySetName” on the Virtual Machines. The maximum count of fault domains was 2. | Availability Set is a resource exposed by Microsoft.Compute Provider. Virtual Machines that require high availability must be included in the Availability Set. The maximum count of fault domains is now 3. |
-| Affinity Groups |	Affinity Groups were required for creating Virtual Networks. However, with the introduction of Regional Virtual Networks, that was not required anymore. |To simplify, the Affinity Groups concept doesn’t exist in the APIs exposed through Azure Resource Manager. |
-| Load Balancing	| Creation of a Cloud Service provides an implicit load balancer for the Virtual Machines deployed. | The Load Balancer is a resource exposed by the Microsoft.Network provider. The primary network interface of the Virtual Machines that needs to be load balanced should be referencing the load balancer. Load Balancers can be internal or external. [Read more.](../articles/resource-groups-networking.md) |
-|Virtual IP Address	| Cloud Services will get a default VIP (Virtual IP Address) when a VM is added to a cloud service. The Virtual IP Address is the address associated with the implicit load balancer.	| Public IP address is a resource exposed by the Microsoft.Network provider. Public IP Address can be Static (Reserved) or Dynamic. Dynamic Public IPs can be assigned to a Load Balancer. Public IPs can be secured using Security Groups. |
-|Reserved IP Address|	You can reserve an IP Address in Azure and associate it with a Cloud Service to ensure that the IP Address is sticky.	| Public IP Address can be created in “Static” mode and it offers the same capability as a “Reserved IP Address”. Static Public IPs can only be assigned to a Load balancer right now. |
-|Public IP Address (PIP) per VM	| Public IP Addresses can also associated to a VM directly. | Public IP address is a resource exposed by the Microsoft.Network provider. Public IP Address can be Static (Reserved) or Dynamic. However, only dynamic Public IPs can be assigned to a Network Interface to get a Public IP per VM right now. |
-|Endpoints| Input Endpoints needed to be configured on a Virtual Machine to be open up connectivity for certain ports. One of the common modes of connecting to virtual machines done by setting up input endpoints. | Inbound NAT Rules can be configured on Load Balancers to achieve the same capability of enabling endpoints on specific ports for connecting to the VMs. |
-|DNS Name| A cloud service would get an implicit globally unique DNS Name. For example: `mycoffeeshop.cloudapp.net`. | DNS Names are optional parameters that can be specified on a Public IP Address resource. The FQDN will be in the following format - `<domainlabel>.<region>.cloudapp.azure.com`. |
-|Network Interfaces	| Primary and Secondary Network Interface and its properties were defined as network configuration of a Virtual machine. | Network Interface is a resource exposed by Microsoft.Network Provider. The lifecycle of the Network Interface is not tied to a Virtual Machine. |
+| Felhőszolgáltatás a virtuális gépekhez |  A Cloud Service egy tároló volt a virtuális gépekhez, amely platform és a terheléselosztás Rendelkezésre állását is igényelte. | Az új modell használatával a Cloud Service már nem szükséges objektum egy virtuális gép létrehozásához. |
+| Rendelkezésre állási csoportok | A platform felé való rendelkezésre állást azonos „AvailabilitySetName” konfigurálásával lehetett jelezni a virtuális gépeken. A tartalék tartományok maximális száma 2 volt. | A Rendelkezésre állási csoport egy Microsoft.Compute szolgáltató által közzétett erőforrás. A nagy rendelkezésre állást igénylő virtuális gépeket szerepeltetni kell a Rendelkezésre állási csoportban. A tartalék tartományok maximális száma mostantól 3. |
+| Affinitáscsoportok | Virtuális hálózatok létrehozásához szükség volt Affinitáscsoportokra. A regionális virtuális hálózatok bevezetésével erre már nem volt szükség. |Egyszerűbben fogalmazva az Azure Resource Manageren keresztül közzétett API-kban nem létezik az Affinitáscsoportok koncepciója. |
+| Terheléselosztás    | Egy felhőszolgáltatás létrehozása egy implicit terheléselosztót biztosít a telepített virtuális gépekhez. | A Load Balancer egy Microsoft.Network szolgáltató által közzétett erőforrás. A terheléselosztást igénylő virtuális gépek elsődleges hálózati adapterének hivatkoznia kell a terheléselosztóra. Egy terheléselosztó lehet külső vagy belső. [További információk.](../articles/resource-groups-networking.md) |
+|Virtuális IP-cím | A Cloud Services kap egy alapértelmezett VIP-t (Virtuális IP-cím), amikor egy virtuális gépet hozzáadnak egy felhőszolgáltatáshoz. A Virtuális IP-cím az implicit terheléselosztóhoz társított cím.   | A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Egy nyilvános IP-cím lehet Statikus (Fenntartott) vagy Dinamikus. A dinamikus nyilvános IP-címek hozzárendelhetők egy terheléselosztóhoz. A nyilvános IP-címek védelme biztonsági csoportok segítségével biztosítható. |
+|Fenntartott IP-címek|   Az Azure-ban fenntarthat egy IP-címet, és társíthatja egy felhőszolgáltatáshoz, hogy biztosítsa az IP-cím állandóságát.   | A nyilvános IP-címek létrehozhatók „Statikus” módban, amely ugyanazokat a képességeket biztosítja, mint a „Fenntartott IP-cím”. A statikus nyilvános IP-címek jelenleg csak terheléselosztóhoz rendelhetők hozzá. |
+|Virtuális gépenként megadott nyilvános IP-cím (PIP) | A nyilvános IP-címek közvetlenül is hozzárendelhetők egy virtuális géphez. | A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Egy nyilvános IP-cím lehet Statikus (Fenntartott) vagy Dinamikus. Jelenleg azonban csak dinamikus nyilvános IP-címek rendelhetők hozzá hálózati adapterekhez, hogy virtuális gépenként legyen meghatározva egy nyilvános IP-cím. |
+|Végpontok| A virtuális gépen konfigurálni kell a bemeneti végpontokat, hogy bizonyos portok csatlakoztathatóvá váljanak. A virtuális gépekhez való csatlakozás egyik legelterjedtebb módja a bemeneti végpontok beállítása. | A bejövő NAT-szabályok konfigurálhatók a terheléselosztókon, így azonos képességek érhetők el a végpontok engedélyezésére adott portokon a virtuális gépekhez való csatlakozás céljából. |
+|DNS-név| Egy felhőszolgáltatás egy implicit globálisan egyedi DNS-nevet kap. Például: `mycoffeeshop.cloudapp.net`. | A DNS-nevek opcionális paraméterek, amelyek egy nyilvános IP-cím erőforráson adhatók meg. Az FQDN formátum a következő lesz: `<domainlabel>.<region>.cloudapp.azure.com`. |
+|Hálózati illesztők | Az elsődleges és másodlagos hálózati adapter és tulajdonságai egy virtuális gép hálózati konfigurációjaként voltak megadva. | A hálózati adapter egy Microsoft.Network szolgáltató által közzétett erőforrás. A hálózati adapter életciklusa nincs a virtuális géphez kötve. |
 
-## Getting Started with Azure Templates for Virtual Machines
+## A virtuális gépekhez elérhető Azure-sablonok – első lépések
 
-You can get started with the Azure Templates by leveraging the various tools that we have for developing and deploying to the platform.
+Az Azure-sablonokkal való ismerkedés során először használja a platform fejlesztéséhez és telepítéséhez biztosított különböző eszközöket.
 
-### Azure portal
+### Azure portál
 
-The Azure portal will continue to have the option to deploy Virtual Machines with the classic deployment model and Virtual Machines with the Resource Manager deployment model simultaneously. The Azure portal will also allow custom template deployments.
+Az Azure portál továbbra is lehetőséget biztosít a Virtual Machines klasszikus üzembe helyezési modelljének és a Virtual Machines Resource Manager-alapú üzemi modelljének párhuzamos telepítésére. Az Azure portál az egyéni sablonok alapján történő üzembe helyezést is lehetővé teszi.
 
 ### Azure PowerShell
 
-Azure PowerShell will have two modes of deployment – **AzureServiceManagement** mode and **AzureResourceManager** mode.  AzureResourceManager mode will now also contain the cmdlets to manage Virtual Machines, Virtual Networks, and Storage Accounts. You can read more about it [here](../articles/powershell-azure-resource-manager.md).
+Az Azure PowerShell két módon telepíthető – az **AzureServiceManagement** és az **AzureResourceManager** módban.  Az AzureResourceManager mód mostantól tartalmazza a Virtual Machines, a Virtual Networks és a Storage-fiókok felügyeletéhez szükséges parancsmagokat is. További információk [itt](../articles/powershell-azure-resource-manager.md).
 
 ### Azure CLI
 
-The Azure Command-line Interface (Azure CLI) will have two modes of deployment – **AzureServiceManagement** mode and **AzureResourceManager** mode. The AzureResourceManager mode will now also contain commands to manage Virtual Machines, Virtual Networks, and Storage Accounts. You can read more about it [here](../articles/xplat-cli-azure-resource-manager.md).
+Az Azure parancssori felület (CLI) két módon telepíthető – az **AzureServiceManagement** és az **AzureResourceManager** módban. Az AzureResourceManager mód mostantól tartalmazza a Virtual Machines, a Virtual Networks és a Storage-fiókok felügyeletéhez szükséges parancsokat is. További információk [itt](../articles/xplat-cli-azure-resource-manager.md).
 
 ### Visual Studio
 
-With the latest Azure SDK release for Visual Studio, you can author and deploy Virtual Machines and complex applications right from Visual Studio. Visual Studio offers the ability to deploy from a pre-built list of templates or start from an empty template.
+A Visual Studióhoz legutóbb kiadott Azure SDK segítségével közvetlenül a Visual Studióból hozhat létre és telepíthet virtuális gépeket és összetett alkalmazásokat. A Visual Studio segítségével elvégezheti a telepítést sablonok előre összeállított listájáról, vagy kezdhet egy üres sablonnal.
 
-### REST APIs
+### REST API-k
 
-You can find the detailed REST API documentation for the Compute, Network & Storage Resource Providers [here](https://msdn.microsoft.com/library/azure/dn790568.aspx).
+A Számítás-, hálózat és társzolgáltatók részletes REST API-dokumentációját [itt](https://msdn.microsoft.com/library/azure/dn790568.aspx) találja.
 
-## Frequently Asked Questions
+## Gyakori kérdések
 
-**Can I create a Virtual Machine using the new Azure Resource Manager to deploy in a Virtual Network or Storage Account created using the Azure Service Management APIs?**
+**Létrehozhatok virtuális gépet az új Azure Resource Managerrel úgy, hogy azután egy Azure szolgáltatásfelügyeleti API-val létrehozott virtuális hálózatban vagy Storage-fiókban telepítsem azt?**
 
-This is not supported at the moment. You cannot deploy using the new Azure Resource Manager APIs to deploy a Virtual Machine into a Virtual Network that was created using the Service Management APIs.
+Ez jelenleg nem támogatott. Az új Azure Resource Manager API-kat nem használhatja arra, hogy virtuális gépet telepítsen egy Szolgáltatásfelügyeleti API-val létrehozott virtuális hálózatba.
 
-**Can I create a Virtual Machine using the new Azure Resource Manager APIs from a user image that was created using the Azure Service Management APIs?**
+**Létrehozhatok virtuális gépet az új Azure Resource Managerrel egy Azure szolgáltatásfelügyeleti API-val létrehozott felhasználói rendszerképből?**
 
-This is not supported at the moment. However, you can copy the VHD files from a Storage Account that was created using the Service Management APIs and copy it to a new account created using the using the new Azure Resource Manager APIs.
+Ez jelenleg nem támogatott. A Szolgáltatásfelügyeleti API használatával létrehozott tárfiókból azonban átmásolhatja a VHD-fájlokat egy új fiókba, amelyet az új Azure Resource Manager API-k használatával hozott létre.
 
-**What is the impact on the quota for my subscription?**
+**Milyen változások vonatkoznak az előfizetésemhez tartozó kvótára?**
 
-The quotas for the Virtual Machines, Virtual Networks, and Storage Accounts created through the new Azure Resource Manager APIs  are separate from the quotas that you currently have. Each subscription gets new quotas to create the resources using the new APIs. You can read more about the additional quotas [here](../articles/azure-subscription-service-limits.md).
+Az új Azure Resource Manager API-kkal létrehozott Virtual Machines, Virtual Networks és a Storage-fiókok kvótái nem azonosak a már meglévő kvótákkal. Minden előfizetés új kvótákat kap az erőforrások az új API-kkal való létrehozására. A további kvótákról [itt](../articles/azure-subscription-service-limits.md) talál részletes információkat.
 
-**Can I continue to use my automated scripts for provisioning Virtual Machines, Virtual Networks, Storage Accounts etc. through the new Azure Resource Manager APIs?**
+**Használhatom továbbra is az automatizált parancsfájljaimat virtuális gépek, virtuális hálózatok, Storage-fiókok stb. kiépítésére az új Azure Resource Manager API-kban?**
 
-All the automation and scripts that you’ve built will continue to work for the existing Virtual Machines, Virtual Networks created under the Azure Service Management mode. However, the scripts have to be updated to use the new schema for creating the same resources through the new Azure Resource Manager mode.
+Az összes már létrehozott automatizálás és parancsfájl továbbra is működni fog az Azure Szolgáltatásfelügyelet módban létrehozott, már meglévő virtuális gépekhez, virtuális hálózatokhoz stb. Ha viszont az új sémával szeretné használni a parancsfájlokat ugyanazon erőforrásoknak az új Azure Resource Manager módban való létrehozásához, frissítenie kell őket.
 
-**Can the Virtual Networks created using the new Azure Resource Manager APIs be connected to my Express Route circuit?**
+**Csatlakoztathatók az új Azure Resource Manager API-kkal létrehozott virtuális hálózatok az Express Route körömhöz?**
 
-This is not supported at the moment. You cannot connect the Virtual Networks created using the new Azure Resource Manager APIs with an Express Route Circuit. This will be supported in the future.
+Ez jelenleg nem támogatott. Nem csatlakoztathatja az új Azure Resource Manager API-kkal létrehozott virtuális hálózatokat az Express Route körhöz. A jövőben ez támogatott lesz.
 
-**Where can I find examples of Azure Resource Manager templates?**
+**Hol találhatok példákat az Azure Resource Manager-sablonokra?**
 
-A comprehensive set of starter templates can be found on [Azure Resource Manager QuickStart Templates](https://azure.microsoft.com/documentation/templates/).
+Az [Azure Resource Manager gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) között találhat egy átfogó kezdősablonkészletet.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

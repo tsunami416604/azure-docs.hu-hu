@@ -1,36 +1,42 @@
-1.	Sign in to the online [Microsoft Azure portal](https://portal.azure.com/).
-2.	In the Jumpbar, click **New**, then click **Data + Storage**, and then click **Azure DocumentDB**.
+1.  Jelentkezzen be az online a [Microsoft Azure portálra](https://portal.azure.com/).
+2.  Az ugrósávon kattintson az **Új**, majd az **Adatok + tárolás**, és végül az **Azure DocumentDB** lehetőségre.
 
-	![Screen shot of the Azure portal  to create a database, highlighting the New button, Data + storage in the Create blade, and Azure DocumentDB in the Data + Storage blade](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)  
+    ![Képernyőfelvétel az Azure portálról adatbázisok létrehozásához, kiemelve az Új gombot, a Létrehozás panel Adatok+ tárolás elemét, valamint az Adatok + tárolás panel Azure DocumentDB elemét.](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)  
 
-3. In the **New DocumentDB account** blade, specify the desired configuration for the DocumentDB account.
+3. Az **Új DocumentDB-fiók** panelen adja meg a DocumentDB-fiók kívánt beállításait.
 
-	![Screen shot of the New DocumentDB blade](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
+    ![Képernyőfelvétel az Új DocumentDB panelről](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
 
 
-	- In the **ID** box, enter a name to identify the DocumentDB account.  When the **ID** is validated, a green check mark appears in the **ID** box. The **ID** value becomes the host name within the URI. The **ID** may contain only lowercase letters, numbers, and the '-' character, and must be between 3 and 50 characters. Note that *documents.azure.com* is appended to the endpoint name you choose, the result of which will become your DocumentDB account endpoint.
+    - Az **Azonosító** mezőben adja meg a DocumentDB-fiókot azonosító nevet.  Az **azonosító** érvényesítése után egy zöld pipa jelenik meg az **Azonosító** mezőben. Az **Azonosító** mező értéke lesz az állomásnév az URI-n belül. Az **azonosító** kizárólag kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja, és legalább 3, de legfeljebb 50 karakter lehet. Figyelje meg, hogy a rendszer hozzáfűzi a *documents.azure.com* címet a választott végpontnévhez, és így létrehozza a DocumentDB-fiók végpontját.
 
-	- For **Subscription**, select the Azure subscription that you want to use for the DocumentDB account. If your account has only one subscription, that account is selected by default.
+    - Az **Előfizetés** mezőben válassza ki a DocumentDB-fiókhoz használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, a rendszer alapértelmezés szerint azt választja ki.
 
-	- In **Resource Group**, select or create a resource group for your DocumentDB account.  By default, an existing Resource group under the Azure subscription will be chosen.  You may, however, choose to select to create a new resource group to which you would like to add your DocumentDB account. For more information, see [Using the Azure portal to manage your Azure resources](resource-group-portal.md).
+    - Az **Erőforráscsoport** területen válasszon ki vagy hozzon létre egy erőforráscsoportot a DocumentDB-fiókhoz.  Alapértelmezés szerint a rendszer egy, az Azure-előfizetéshez tartozó erőforráscsoportot választ ki.  Ön azonban dönthet úgy, hogy létrehoz egy új erőforráscsoportot, amelyhez hozzá szeretné adni a DocumentDB-fiókot. További információk: [Using the Azure portal to manage your Azure resources](resource-group-portal.md) (Az Azure portál használata az Azure-erőforrások kezeléséhez).
 
-	- Use **Location** to specify the geographic location in which to host your DocumentDB account.   
+    - A **Hely** beállítás segítségével megadhatja a földrajzi helyet, ahol a DocumentDB-fiókot üzemeltetni szeretné.   
 
-4.	Once the new DocumentDB account options are configured, click **Create**.  It can take a few minutes to create the DocumentDB account.  To check the status, you can monitor the progress on the Startboard.  
-	![Screen shot of the Creating tile on the Startboard - Online database creator](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)  
+4.  A DocumentDB-fiók beállításainak konfigurálása után kattintson a **Létrehozás** gombra.  A DocumentDB-fiók létrehozása eltarthat néhány percig.  A folyamat állapotát a kezdőpult alján ellenőrizheti.  
+    ![Képernyőfelvétel a kezdőpult Létrehozás csempéjéről – online adatbázis-készítő](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)  
 
-	Or, you can monitor your progress from the Notifications hub.  
+    A folyamat állapotát az értesítésközpontban is ellenőrizheti.  
 
-	![Create databases quickly - Screen shot of the Notifications hub, showing that the DocumentDB account is being created](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-4.png)  
+    ![Adatbázisok gyors létrehozása – képernyőfelvétel az értesítésközpontról, ahol nyomon követhető a DocumentDB-fiók létrehozásának folyamata](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-4.png)  
 
-	![Screen shot of the Notifications hub, showing that the DocumentDB account was created successfully and deployed to a resource group - Online database creator notification](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-5.png)
+    ![Képernyőfelvétel az értesítésközpontról, amelyben az látszik, hogy a DocumentDB-fiók sikeresen létrejött, és telepítve lett egy erőforráscsoportba – online adatbázis-készítő értesítése](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-5.png)
 
-5.	After the DocumentDB account is created, it is ready for use with the default settings in the online portal. Note that the default consistency of the DocumentDB account is set to **Session**.  You can adjust the default consistency setting by clicking the **Settings** icon on the top command bar, then clicking the **Default Consistency** entry under **Feature** on the **All Settings** blade.
+5.  A létrehozást követően a DocumentDB-fiók (az alapértelmezett beállításokkal) azonnal készen áll a használatra az online portálon. Vegye figyelembe, hogy a DocumentDB-fiók alapértelmezett konzisztenciája a **Munkamenet**.  Az alapértelmezett konzisztencia beállításának módosításához kattintson a **Beállítások** ikonra a felső parancssávon, majd kattintson az **Alapértelmezett konzisztencia** bejegyzésre az **Összes beállítás** panel **Szolgáltatás** területén.
 
-    ![Screen shot of the Resource Group blade - begin application development](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-6.png)  
+    ![Képernyőfelvétel az Erőforráscsoport panelről – alkalmazás fejlesztésének megkezdése](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-6.png)  
 
-    ![Screen shot of the Consistency Level blade - Session Consistency](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-7.png)  
+    ![Képernyőfelvétel a Konzisztenciaszint panelről – munkamenet-konzisztencia](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-7.png)  
 
-[How to: Create a DocumentDB account]: #Howto
-[Next steps]: #NextSteps
+[DocumentDB-fiók létrehozása]: #Howto
+[Következő lépések]: #NextSteps
 [documentdb-manage]:../articles/documentdb/documentdb-manage.md
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

@@ -1,23 +1,24 @@
 
-1. Visit the [Azure Portal]. Click **Browse All** > **Mobile Apps** > the backend that you just created. In the mobile
-app settings, click **Quickstart** > **Cordova**. Under **Configure your client application**, select **Create a New App**,
-then click **Download**. This downloads a complete Cordova project for an app pre-configured to connect to your backend.
+1. Látogasson el az [Azure portálra]. Kattintson az **Összes tallózása** > **Mobilalkalmazások** lehetőségre > az imént létrehozott háttérrendszerre. A mobilalkalmazás beállításaiban kattintson az **Első lépések** > **Cordova** elemre. Az **Ügyfélalkalmazás konfigurálása** menüben válassza az **Új alkalmazás létrehozása** lehetőséget, majd kattintson a **Letöltés** gombra. Ez letölti egy olyan alkalmazás teljes Cordova-projektjét, amely előre konfigurálva van a háttérrendszerhez való csatlakozáshoz.
 
-2. Unpack the downloaded ZIP file to a directory on your hard drive.
+2. Csomagolja ki a letöltött ZIP-fájlt a merevlemez egy könyvtárába.
 
-3. Open the project using **Visual Studio**.  Click on **Open** > **Project/Solution...**.
+3. Nyissa meg a projektet a **Visual Studio** alkalmazással.  Kattintson az **Open** (Megnyitás) > **Project/Solution...** (Projekt/Megoldás...) lehetőségre.
 
-4. Find the _sitename_.sln file and click **Open**.
+4. Keresse meg a _sitename_.sln nevű fájlt, majd kattintson az **Open** (Megnyitás) gombra.
 
-5. The default emulator is **Ripple - Nexus (Galaxy)**.  Click the drop-down arrow next to the emulator and select **Google Android Emulator**.
+5. Az alapértelmezett emulátor a **Ripple - Nexus (Galaxy)**.  Kattintson az emulátor melletti legördülő nyílra, majd válassza ki a **Google Android Emulator** elemet.
 
-6. Click on **Google Android Emulator**.  The project will be built and then run.  You may see a network security warning from the
-Google Android Emulator requesting access to the network.  Eventually, the Google Android Emulator will be shown and your application will run.
+6. Kattintson a **Google Android Emulator** elemre.  A rendszer felépíti és futtatja a projektet.  Előfordulhat, hogy megjelenik egy hálózatbiztonsági figyelmeztetés, amelyben a Google Android Emulator hozzáférést kér a hálózathoz.  Végül a Google Android Emulator megjelenik, és lefuttatja az alkalmazást.
 
-7. In the app, type meaningful text, such as _Complete the tutorial_ and then click the 'Add' button. This sends a POST request to the
-Azure backend you deployed earlier. The backend inserts data from the request is into the TodoItem SQL table, and returns information
-about the newly stored items back to the mobile app. The mobile app displays this data in the list.
+7. Az alkalmazásban írjon be egy értelmes szöveget, például _Az oktatóanyag befejezése_, majd kattintson a Hozzáadás gombra. Ez egy POST kérést küld a korábban telepített Azure-háttérrendszernek. A háttérrendszer beilleszti az adatokat a kérésből a TodoItem SQL táblázatba, majd visszaküldi az újonnan eltárolt adatokra vonatkozó információkat a mobilalkalmazásnak. A mobilalkalmazás megjeleníti ezeket az adatokat a listában.
 
     ![](./media/app-service-mobile-cordova-quickstart/quickstart-startup.png)
 
-[Azure Portal]: https://portal.azure.com/
+[Azure portálra]: https://portal.azure.com/
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

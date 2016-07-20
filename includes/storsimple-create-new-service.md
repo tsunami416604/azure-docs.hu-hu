@@ -1,29 +1,34 @@
 <!--author=alkohli last changed:01/14/2016-->
 
 
-#### To create a new service
+#### Új szolgáltatás létrehozása
 
-1. Using your Microsoft account credentials, log on to the Azure classic portal at this URL: [https://manage.windowsazure.com/](https://manage.windowsazure.com/).
+1. Jelentkezzen be a klasszikus Azure portálra a Microsoft-fiók hitelesítő adataival a következő címen: [https://manage.windowsazure.com](https://manage.windowsazure.com/).
 
-2. In the Azure classic portal , click **New** > **Data Services** > **StorSimple Manager** > **Quick Create**.
+2. A klasszikus Azure portálon, kattintson az **Új** > **Adatszolgáltatások** > **StorSimple Manager** > **Gyorslétrehozás** elemre.
 
-3. In the form that is displayed, do the following:
-  1. Supply a unique **Name** for your service. This is a friendly name that can be used to identify the service. The name can have between 2 and 50 characters that can be letters, numbers, and hyphens. The name must start and end with a letter or a number.
-  2. Supply a **Location** for your service. In general, choose a Location closest to the geographical region where you want to deploy your device. You may also want to factor in the following: 
-	 
-		- If you have existing workloads in Azure that you also intend to deploy with your StorSimple device, you should use that datacenter.
-		- Your StorSimple Manager service and Azure storage can be in two separate locations. In such a case, you are required to create the StorSimple Manager and Azure storage account separately. To create an Azure storage account, go to the Azure Storage service in the Azure classic portal and follow the steps in [Create an Azure Storage account](storage-create-storage-account.md#create-a-storage-account). After you create this account, add it to the StorSimple Manager service by following the steps in [Configure a new storage account for the service](storsimple-deployment-walkthrough.md#configure-a-new-storage-account-for-the-service).
-		 
-  3. Choose a **Subscription** from the drop-down list. The subscription is linked to your billing account. This field is not present if you have only one subscription.
-  4. Select **Create a new storage account** to automatically create a storage account with the service. This storage account will have a special name such as "storsimplebwv8c6dcnf." If you need your data in a different location, uncheck this box. 
-  5. Click **Create StorSimple Manager** to create the service.
+3. A megjelenő adatlapon tegye a következőket:
+  1. Adjon egy egyedi **nevet** a szolgáltatásnak. Ez a szolgáltatás azonosítására szolgáló rövid név. A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.
+  2. Adjon meg egy **helyet** a szolgáltatáshoz. Általában az eszköz telepítésének földrajzi helyéhez legközelebb eső hely a legoptimálisabb választás. Ezenkívül az alábbiakat is érdemes figyelembe vennie: 
+     
+        - Ha olyan folyamatban lévő számítási feladatai vannak az Azure rendszerben, amelyeket a StorSimple-eszközre is telepíteni szeretne, akkor válassza azt az adatközpontot.
+        - A StorSimple Manager és az Azure Storage szolgáltatás helye eltérő is lehet. Ilyen esetben a StorSimple Manager-fiókot és az Azure-tárfiókot külön kell létrehoznia. Azure-tárfiók létrehozásához keresse meg az Azure Storage szolgáltatást a klasszikus Azure portálon, és kövesse az [Azure-tárfiók létrehozása](storage-create-storage-account.md#create-a-storage-account) című szakasz lépéseit. Ha létrehozta a fiókot, az [Új tárfiók konfigurálása a szolgáltatáshoz](storsimple-deployment-walkthrough.md#configure-a-new-storage-account-for-the-service) című szakasz lépéseit követve adja hozzá azt a StorSimple Manager szolgáltatáshoz.
+         
+  3. A legördülő listából válasszon egy **előfizetést**. Az előfizetés az Ön számlázási fiókjához lesz társítva. Ez a mező nem jelenik meg abban az esetben, ha csak egy előfizetéssel rendelkezik.
+  4. A szolgáltatáshoz tartozó tárfiók automatikus létrehozásához válassza az **Új tárfiók létrehozása** lehetőséget. Ez a tárfiók egy speciális névvel jön létre, pl.: „storsimplebwv8c6dcnf”. Ha máshová szeretné menteni az adatokat, akkor törölje a pipát a jelölőnégyzetből. 
+  5. A szolgáltatás létrehozásához kattintson a **StorSimple Manager létrehozása** elemre.
 
-   ![Create StorSimple Manager](./media/storsimple-create-new-service/HCS_CreateAService-include.png)
+   ![StorSimple Manager létrehozása](./media/storsimple-create-new-service/HCS_CreateAService-include.png)
 
-  You will be directed to the **Service** landing page. The service creation will take a few minutes. After the service is successfully created, you will be notified appropriately and the status of the service will change to **Active**.
+  Ekkor a **Szolgáltatás** kezdőlapjára kerül. A szolgáltatás létrehozása eltarthat néhány percig. A szolgáltatás sikeres létrehozásáról a rendszer értesítést küld, a szolgáltatás pedig **Aktív** állapotú lesz.
  
-   ![Service creation](./media/storsimple-create-new-service/HCS_StorSimpleManagerServicePage-include.png)
+   ![Szolgáltatás létrehozása](./media/storsimple-create-new-service/HCS_StorSimpleManagerServicePage-include.png)
 
-![Video available](./media/storsimple-create-new-service/Video_icon.png) **Video available**
+![Videó elérhető](./media/storsimple-create-new-service/Video_icon.png) **Videó elérhető**
 
-To watch a video that demonstrates how to create a new StorSimple Manager service, click [here](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/).
+Az új StorSimple Manager szolgáltatás létrehozását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/).
+
+
+<!--HONumber=Jun16_HO2-->
+
+

@@ -1,3 +1,8 @@
-- **Policy-based VPN type:** Policy-based VPNs were previously called static routing gateways in the classic deployment model. Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies configured with the combinations of address prefixes between your on premises network and the Azure VNet. The policy (or traffic selector) is usually defined as an access list in the VPN device configuration. The value for a policy-based VPN type is *PolicyBased*.
+- **Házirendalapú VPN-típus:** A házirendalapú VPN korábbi megnevezése statikus útválasztó átjáró volt a klasszikus üzembe helyezési modellben. A házirendalapú VPN-ek a helyszíni hálózat és az Azure VNet közötti címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján titkosítják és irányítják a csomagokat az IPsec-alagutakon keresztül. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában. A házirendalapú VPN-típus értéke *PolicyBased*.
 
-- **Route-based VPN type**: Route-based VPNs were previously called dynamic routing gateways in the classic deployment model. Route-based VPNs use "routes" in the IP forwarding or routing table to direct packets into their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy (or traffic selector) for route-based VPNs are configured as any-to-any (or wild cards). The value for a route-based VPN type is *RouteBased*.
+- **Útvonalalapú VPN-típus**: Az útvonalalapú VPN korábbi megnevezése dinamikus útválasztó átjáró volt a klasszikus üzembe helyezési modellben. Az útvonalalapú VPN-ek „útvonalakat” használnak az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. Az útvonalalapú VPN-ek házirendje (vagy forgalomválasztója) bármely két elem közöttiként (vagy helyettesítő karakterekként) van konfigurálva. Az útvonalalapú VPN-típus értéke *RouteBased*.
+
+
+<!--HONumber=Jun16_HO2-->
+
+

@@ -1,29 +1,35 @@
-## Defining a backup policy
+## Biztonsági mentési házirend meghatározása
 
-A backup policy defines a matrix of when the data snapshots are taken, and how long those snapshots are retained. When defining a policy for backing up a VM, you can trigger a backup job *once a day*. When you create a new policy, it is applied to the vault. The backup policy interface looks like this:
+A biztonsági mentési házirend egy mátrixot határoz meg ahhoz, hogy mikor készüljön pillanatkép az adatokról, és mennyi ideig őrizze meg a rendszer a pillanatképeket. Virtuális gépek biztonsági mentéséről szóló házirend meghatározása esetén *naponta egyszer* indíthat el biztonsági mentési feladatot. Az újonnan létrehozott házirendek a tárolón érvényesülnek. A biztonsági mentési házirendek felülete a következőképpen néz ki:
 
-![Backup policy](./media/backup-create-policy-for-vms/backup-policy.png)
+![Biztonsági mentési házirend](./media/backup-create-policy-for-vms/backup-policy.png)
 
-To create a policy:
+Házirend létrehozása:
 
-1. Enter a name for the **Policy name**.
+1. Adjon meg egy nevet a **Házirend neve** mezőben.
 
-2. Snapshots of your data can be taken at Daily or Weekly intervals. Use the **Backup Frequency** drop-down menu to choose whether data snapshots are taken Daily or Weekly.
+2. Az adatokról napi vagy heti rendszerességgel készíthet pillanatképet. A **Biztonsági mentés gyakorisága** legördülő menüben kiválaszthatja, hogy napi vagy heti rendszerességgel szeretne pillanatképet készíteni az adatokról.
 
-    - If you choose a Daily interval, use the highlighted control to select the time of the day for the snapshot. To change the hour, de-select the hour, and select the new hour.
+    - Ha a napi rendszerességet választja, a kiemelt vezérlővel kiválaszthatja, hogy a nap melyik szakában szeretné elkészíteni a pillanatképet. Ha módosítani szeretné a kiválasztott órát, törölje a kijelölését, majd válasszon ki egy másikat.
 
-    ![Daily backup policy](./media/backup-create-policy-for-vms/backup-policy-daily.png) <br/>
+    ![Napi biztonsági mentési házirend](./media/backup-create-policy-for-vms/backup-policy-daily.png) <br/>
 
-    - If you choose a Weekly interval, use the highlighted controls to select the day(s) of the week, and the time of day to take the snapshot. In the day menu, select one or multiple days. In the hour menu, select one hour. To change the hour, de-select the selected hour, and select the new hour.
+    - Ha a heti rendszerességet választja, a kiemelt vezérlőkkel kiválaszthatja, hogy a hét melyik napjain, illetve a nap melyik szakában szeretné elkészíteni a pillanatképet. A nap menüben válasszon ki egy vagy több napot. Az óra menüben válasszon ki egy órát. Ha módosítani szeretné a kiválasztott órát, törölje a kijelölését, majd válasszon ki egy másikat.
 
-    ![Weekly backup policy](./media/backup-create-policy-for-vms/backup-policy-weekly.png)
+    ![Heti biztonsági mentési házirend](./media/backup-create-policy-for-vms/backup-policy-weekly.png)
 
-3. By default, all **Retention Range** options are selected. Uncheck any retention range limit you do not want to use. Then, specify the interval(s) to use.
+3. Alapértelmezés szerint az összes **Megőrzési időtartam** beállítás ki van választva. Törölje a megőrzési időtartam azon korlátozásainak kijelölését, amelyeket nem szeretne használni. Ezután adja meg használni kívánt időtartamo(ka)t.
 
-    Monthly and Yearly retention ranges allow you to specify the snapshots based on a weekly or daily increment.
+    A havi és éves megőrzési időtartamok lehetővé teszik a heti vagy napi növekményes pillanatképek megadását.
 
-    >[AZURE.NOTE] When protecting a VM, a backup job runs once a day. The time when the backup runs is the same for each retention range.
+    >[AZURE.NOTE] A virtuális gépek védelméhez a rendszer naponta egyszer készít biztonsági mentést. A biztonsági mentés futtatásának ideje minden megőrzési időtartam esetén ugyanaz.
 
-4. After setting all options for the policy, at the top of the blade click **Save**.
+4. A házirend beállításainak megadása után kattintson a panel tetején található **Mentés** gombra.
 
-    The new policy is immediately applied to the vault.
+    Ekkor a rendszer automatikusan alkalmazza az új házirendet a tárolón.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

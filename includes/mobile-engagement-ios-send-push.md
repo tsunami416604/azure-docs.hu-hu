@@ -1,57 +1,62 @@
-###Grant access to your Push Certificate to Mobile Engagement
+###A leküldéses tanúsítványhoz való hozzáférés biztosítása a Mobile Engagement számára
 
-To allow Mobile Engagement to send Push Notifications on your behalf, you need to grant it access to your certificate. This is done by configuring and entering your certificate into the Mobile Engagement portal. Make sure you obtain your .p12 certificate as explained in [Apple's documentation](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
+Ha engedélyezni szeretné, hogy a Mobile Engagement leküldéses értesítéseket küldjön az Ön nevében, hozzáférést kell biztosítania számára a tanúsítványhoz. Ezt a tanúsítvány konfigurálásával, valamint annak a Mobile Engagement portálon történő megadásával teheti meg. Győződjön meg róla, hogy az [Apple dokumentációjában](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6) leírtak alapján szerezte be .p12-tanúsítványát.
 
-1. Navigate to your Mobile Engagement portal. Ensure you're in the correct and then click on the **Engage** button at the bottom:
+1. Lépjen a Mobile Engagement portálra. Győződjön meg arról, hogy a megfelelő helyen van, majd kattintson a lap alján található **Engage** (Aktiválás) gombra:
 
-	![](./media/mobile-engagement-ios-send-push/engage-button.png)
+    ![](./media/mobile-engagement-ios-send-push/engage-button.png)
 
-2. Click on the **Settings** page in your Engagement Portal. From there click on the **Native Push** section to upload your p12 certificate:
+2. Kattintson a **Settings** (Beállítások) lapra az Engagement portálon. Itt kattintson a **Native Push** (Natív leküldés) szakaszra a p12-tanúsítvány feltöltéséhez:
 
-	![](./media/mobile-engagement-ios-send-push/engagement-portal.png)
+    ![](./media/mobile-engagement-ios-send-push/engagement-portal.png)
 
-3. Select your p12, upload it and type your password:
+3. Válassza ki a p12-tanúsítványát, töltse fel, majd írja be a jelszavát:
 
-	![](./media/mobile-engagement-ios-send-push/native-push-settings.png)
+    ![](./media/mobile-engagement-ios-send-push/native-push-settings.png)
 
-##<a id="send"></a>Send a notification to your app
+##<a id="send"></a>Értesítés küldése az alkalmazásnak
 
-We will now create a simple Push Notification campaign that will send a push to our app:
+Most létrehozunk egy egyszerű leküldéses értesítési kampányt, amely elküld egy leküldéses értesítést az alkalmazásnak.
 
-1. Navigate to the **Reach** tab in your Mobile Engagement portal.
+1. Lépjen a Mobile Engagement portál **Reach** (Elérés) lapjára.
 
-2. Click **New Announcement** to create your push campaign
+2. Kattintson a **New Announcement** (Új értesítés) elemre a leküldéses kampány létrehozásához.
 
-	![](./media/mobile-engagement-ios-send-push/new-announcement.png)
+    ![](./media/mobile-engagement-ios-send-push/new-announcement.png)
 
-3. Setup the first fields of your campaign:
+3. Adja meg a kampány első mezőinek értékét:
 
-	![](./media/mobile-engagement-ios-send-push/campaign-first-params.png)
+    ![](./media/mobile-engagement-ios-send-push/campaign-first-params.png)
 
-	- 	Provide a **Name** for your campaign 
-	- 	Select the **Delivery time** as **Out of app only**: this is the simple Apple push notification type that features some text.
-	- 	In the notification text, type first the **Title** which will be the first line in the push.
-	- 	Then type your **Message** which will be the second line
+    -   A **Name** (Név) mezőben adja meg a kampány nevét. 
+    -   A **Delivey time** (Kézbesítés időpontja) beállítást állítsa **Out of app only** (Csak alkalmazáson kívül) értékre. Ez egy egyszerű Apple leküldéses értesítési típus, amely egy kevés szöveget tartalmaz.
+    -   Az értesítés szövegéhez először adja meg a címet (**Title**), amely a leküldéses üzenetben az elsős sorban jelenik majd meg.
+    -   Ezután írja be az üzenetét (**Message**), amely a második sorban jelenik majd meg.
 
-4. Scroll down, and in the content section select **Notification only**
+4. Görgessen lefelé, és a tartalom szakaszban válassza a **Notification only** (Csak értesítés) lehetőséget.
 
-	![](./media/mobile-engagement-ios-send-push/campaign-content.png)
+    ![](./media/mobile-engagement-ios-send-push/campaign-content.png)
 
-5. You're done setting the most basic campaign. Now scroll down and click on **Create** button to save your push notification campaign. 
+5. Ezzel beállította a lehető legegyszerűbb kampányt. Görgessen lefelé, és kattintson a **Create** (Létrehozás) gombra a leküldéses értesítési kampány mentéséhez. 
 
-6. Finally - click on **Activate** to send push notification. 
+6. Végezetül kattintson az **Activate** (Aktiválás) gombra a leküldéses értesítés kiküldéséhez. 
 
-	![](./media/mobile-engagement-ios-send-push/campaign-activate.png)
+    ![](./media/mobile-engagement-ios-send-push/campaign-activate.png)
 
-7. You will be able receive the notification on your iOS device in the notification center like the following:
+7. Az értesítést az alábbi formában fogadhatja iOS-eszközének értesítési központjában:
 
-	![](./media/mobile-engagement-ios-send-push/iphone-notification.png)
+    ![](./media/mobile-engagement-ios-send-push/iphone-notification.png)
 
-8. If you have an Apple Watch paired with this iOS device then you will see the notification on your Apple Watch:
+8. Ha rendelkezik egy, az iOS-eszközzel párosított Apple Watchcsal, akkor az értesítés az óráján jelenik majd meg.
 
-	![](./media/mobile-engagement-ios-send-push/apple-watch.png)
+    ![](./media/mobile-engagement-ios-send-push/apple-watch.png)
 
+
+ 
 
  
 
- 
+
+<!--HONumber=Jun16_HO2-->
+
+

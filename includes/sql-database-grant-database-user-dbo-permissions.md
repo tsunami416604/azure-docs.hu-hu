@@ -1,23 +1,29 @@
 
 
-## Grant new database user db_owner permissions
+## db_owner engedélyek megadása adatbázis-felhasználónak
 
-Use the following steps to grant an existing database user db_owner permissions
+Kövesse a következő lépéseket a db_owner engedélyek megadásához egy létező adatbázis-felhasználónak
 
-Theses steps assume that you are connected to SQL Database in Object Explorer in SSMS and are connected to your SQL Database logical server as a server-level principal administrator or with a user account with permissions to grant user permissions. 
+Ezek a lépések azt feltételezik, hogy csatlakozik az SQL Database szolgáltatáshoz az SSMS Object Exploreréből, és az SQL Database logikai kiszolgálóhoz kiszolgálószintű fő rendszergazdaként vagy felhasználói engedélyek hozzáadásához szükséges engedélyekkel rendelkező felhasználói fiókkal csatlakozik. 
 
-1. In Object Explorer, expand the Databases node and select the database with the user to which you wish to grant dbo permissions.
+1. Az Object Explorerben bontsa ki a Databases (Adatbázisok) csomópontot, és válassza ki az adatbázist, amelyben megtalálható a felhasználó, akinek megadja a dbo-engedélyeket.
 
-     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-1.png)
+     ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-1.png)
 
-2. Right-click the selected database and then click **Query**.
+2. Kattintson a jobb egérgombbal a kiválasztott adatbázisra, majd kattintson a **Query** (Lekérdezés) elemre.
 
-     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-2.png)
+     ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-2.png)
 
-3. In the query window, edit and use the following Transact-SQL statement to grant dbo permissions to a specified user. 
+3. A lekérdezési ablakban szerkessze és használja a következő Transact-SQL utasítást a dbo-engedélyek megadásához egy adott felhasználó számára. 
 
     '''ALTER ROLE db_owner ADD MEMBER user1;
 
-     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
+     ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
+
+
+
+
+
+<!--HONumber=Jun16_HO2-->
 
 

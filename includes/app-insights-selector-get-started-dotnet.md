@@ -1,16 +1,22 @@
 
-*Application Insights is in preview.*
+*Az Application Insights jelenleg még előzetes verziójú kiadásban érhető el.*
 
 <a name="selector1"></a>
 
-[Visual Studio Application Insights](../articles/application-insights/app-insights-overview.md) monitors your live application to help you [detect and diagnose performance issues and exceptions](../articles/application-insights/app-insights-detect-triage-diagnose.md), and [discover how your app is used](../articles/application-insights/app-insights-overview-usage.md). 
+A [Visual Studio Application Insights](../articles/application-insights/app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](../articles/application-insights/app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](../articles/application-insights/app-insights-overview-usage.md). 
 
-Install the SDK and then add monitoring for other data:
+Telepítse az SDK-t, majd kezdje el figyelni az egyéb adatokat:
 
 > [AZURE.SELECTOR]
-- [Install the SDK](../articles/application-insights/app-insights-asp-net.md#selector1)
-- [User & page data](../articles/application-insights/app-insights-javascript.md#selector1)
-- [Exceptions](../articles/application-insights/app-insights-asp-net-exceptions.md#selector1)
-- [Dependencies](../articles/application-insights/app-insights-asp-net-dependencies.md#selector1)
-- [Availability](../articles/application-insights/app-insights-monitor-web-app-availability.md#selector1)
+- [Az SDK telepítése](../articles/application-insights/app-insights-asp-net.md#selector1)
+- [Felhasználók és lapadatok](../articles/application-insights/app-insights-javascript.md#selector1)
+- [Kivételek](../articles/application-insights/app-insights-asp-net-exceptions.md#selector1)
+- [Függőségek](../articles/application-insights/app-insights-asp-net-dependencies.md#selector1)
+- [Rendelkezésre állás](../articles/application-insights/app-insights-monitor-web-app-availability.md#selector1)
+
+
+
+
+<!--HONumber=Jun16_HO2-->
+
 

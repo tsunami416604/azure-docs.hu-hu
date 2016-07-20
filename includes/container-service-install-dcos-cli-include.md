@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Install the DC/OS CLI | Microsoft Azure"
-   description="Install the DC/OS CLI."
+   pageTitle="A DC/OS parancssori felület telepítése | Microsoft Azure"
+   description="A DC/OS parancssori felület telepítése."
    services="container-service"
    documentationCenter=""
    authors="rgardler"
@@ -18,9 +18,9 @@
    ms.date="05/10/2016"
    ms.author="rogardle"/>
 
->[AZURE.NOTE] This is for working with DC/OS-based ACS clusters. There is no need to do this for Swarm-based ACS clusters.
+>[AZURE.NOTE] Erre a DC/OS-alapú ACS-fürtökkel végzett munka esetén van szükség. A Swarm-alapú ACS-fürtök esetén erre a lépésre nincs szükség.
 
-First, [connect to your DC/OS-based ACS cluster](../articles/container-service/container-service-connect.md). Once you have done this, you can install the DC/OS CLI on your client machine with the commands below:
+Először is, [csatlakozzon a DC/OS-alapú ACS-fürthöz](../articles/container-service/container-service-connect.md). Ezután az alábbi parancsok használatával telepítheti a DC/OS parancssori felületet az ügyfélgépre:
 
 ```bash
 sudo pip install virtualenv
@@ -30,18 +30,23 @@ chmod +x install-optout-dcos-cli.sh
 ./install-optout-dcos-cli.sh . http://localhost --add-path yes
 ```
 
-If you are using an old version of Python, you may notice some "InsecurePlatformWarnings". You can safely ignore these.
+Ha a Python egy régebbi verzióját használja, előfordulhat, hogy „InsecurePlatformWarnings” figyelmeztetésekbe ütközik. Ezek biztonságosan figyelmen kívül hagyhatók.
 
-In order to get started without restarting your shell, run:
+A parancskörnyezet újraindítása nélküli indításhoz futtassa a következő parancsot:
 
 ```bash
 source ~/.bashrc
 ```
 
-This step will not be necessary when you start new shells.
+Új parancskörnyezet indítása esetén ez a lépés elhagyható.
 
-Now you can confirm that the CLI is installed:
+Most meggyőződhet arról, hogy a parancssori felület telepítve van:
 
 ```bash
 dcos --help
 ```
+
+
+<!--HONumber=Jun16_HO2-->
+
+

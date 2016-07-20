@@ -1,4 +1,9 @@
-You can view AMS learning paths here:
+Az AMS képzési terveket itt tekintheti meg:
 
-- [AMS Live Streaming Workflow](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS on Demand Streaming Workflow](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+- [AMS élő adatfolyam-továbbítási munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS igény szerinti adatfolyam-továbbítási munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
+<!--HONumber=Jun16_HO2-->
+
+

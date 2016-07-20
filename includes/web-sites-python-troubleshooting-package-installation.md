@@ -1,69 +1,75 @@
-Some packages may not install using pip when run on Azure.  It may simply be that the package is not available on the Python Package Index.  It could be that a compiler is required (a compiler is not available on the machine running the web app in Azure App Service).
+Előfordulhat, hogy egyes csomagok nem települnek a pip használatával, ha Azure-on futtatja őket.  Lehetséges, hogy a csomag egyszerűen nem érhető el a Python-csomagindexben.  Lehet, hogy egy fordító szükséges (a fordító nem érhető el azon a gépen, amelyik a webalkalmazást futtatja az Azure App Service-ben).
 
-In this section, we'll look at ways to deal with this issue.
+Ebben a szakaszban megnézzük, hogyan kezelhető ez a probléma.
 
-### Request wheels
+### Kerekek kérése
 
-If the package installation requires a compiler, you should try contacting the package owner to request that wheels be made available for the package.
+Ha a csomag telepítéséhez fordító szükséges, akkor próbálja meg felvenni a kapcsolatot a csomag tulajdonosával, és kérje meg, hogy tegyen elérhetővé kerekeket a csomaghoz.
 
-With the recent availability of [Microsoft Visual C++ Compiler for Python 2.7][], it is now easier to build packages that have native code for Python 2.7.
+A nemrégiben elérhetővé vált [Microsoft Visual C++ Compiler for Python 2.7][] megkönnyíti a natív Python 2.7-kóddal rendelkező csomagok építését.
 
-### Build wheels (requires Windows)
+### Kerekek építése (Windows rendszert igényel)
 
-Note: When using this option, make sure to compile the package using a Python environment that matches the platform/architecture/version that is used on the web app in Azure App Service (Windows/32-bit/2.7 or 3.4).
+Megjegyzés: Ha ezt a lehetőséget választja, ne felejtse el lefordítani a csomagot az Azure App Services-szolgáltatásban a webalkalmazásban használt platformmal/architektúrával/verzióval (Windows/32 bites/2.7 vagy 3.4) megegyező Python-környezetben.
 
-If the package doesn't install because it requires a compiler, you can install the compiler on your local machine and build a wheel for the package, which you will then include in your repository.
+Ha a csomag telepítése sikertelen, mert fordító szükséges hozzá, akkor telepítse a fordítót a helyi gépén, és építsen egy kereket a csomaghoz, amelyet majd belefoglalhat a tárházba.
 
-Mac/Linux Users: If you don't have access to a Windows machine, see [Create a Virtual Machine Running Windows][] for how to create a VM on Azure.  You can use it to build the wheels, add them to the repository, and discard the VM if you like. 
+Mac-/Linux-felhasználók: Ha nincs hozzáférése egy Windows-rendszert futtató géphez, a [Windows rendszerű virtuális gép létrehozása][] című cikkből megtudhatja, hogy hogyan hozhat létre egy virtuális gépet az Azure-ban.  Ezzel létrehozhatja a kerekeket, hozzáadhatja őket a tárházhoz, a virtuális gépet pedig igény szerint elvetheti. 
 
-For Python 2.7, you can install [Microsoft Visual C++ Compiler for Python 2.7][].
+Python 2.7 esetén telepítheti a [Microsoft Visual C++ Compiler for Python 2.7][] eszközt.
 
-For Python 3.4, you can install [Microsoft Visual C++ 2010 Express][].
+Python 3.4 esetén telepítheti a [Microsoft Visual C++ 2010 Express][] eszközt.
 
-To build wheels, you'll need the wheel package:
+A kerekek építéséhez szüksége lesz a kerékcsomagra:
 
     env\scripts\pip install wheel
 
-You'll use `pip wheel` to compile a dependency:
+A `pip wheel` segítségével fordíthat le egy függőséget:
 
     env\scripts\pip wheel azure==0.8.4
 
-This creates a .whl file in the \wheelhouse folder.  Add the \wheelhouse folder and wheel files to your repository.
+Ez létrehoz egy .whl fájlt a \wheelhouse mappában.  Adja hozzá a \wheelhouse mappát és a kerékfájlokat a tárházhoz.
 
-Edit your requirements.txt to add the `--find-links` option at the top. This tells pip to look for an exact match in the local folder before going to the python package index.
+Szerkessze a requirements.txt fájlt, és adja hozzá a `--find-links` kapcsolót a felső részen. A pip ebből tudni fogja, hogy a helyi mappában kell pontos egyezést keresnie, mielőtt áttér a Python-csomagindexre.
 
     --find-links wheelhouse
     azure==0.8.4
 
-If you want to include all your dependencies in the \wheelhouse folder and not use the python package index at all, you can force pip to ignore the package index by adding `--no-index` to the top of your requirements.txt.
+Ha azt szeretné, hogy az összes függősége a \wheelhouse mappában szerepeljen, és a Python-csomagindexet egyáltalán nem kívánja használni, akkor a `--no-index` kapcsolót a requirements.txt fájl tetejéhez adva kényszerítheti a pipet, hogy hagyja figyelmen kívül a csomagindexet.
 
     --no-index
 
-### Customize installation
+### A telepítés testreszabása
 
-You can customize the deployment script to install a package in the virtual environment using an alternate installer, such as easy\_install.  See deploy.cmd for an example that is commented out.  Make sure that such packages aren't listed in requirements.txt, to prevent pip from installing them.
+Az üzembe helyezési parancsfájl testreszabásával egy alternatív telepítővel, például az easy\_install segítségével telepíthet csomagokat a virtuális környezetben.  A deploy.cmd fájlban megtekinthet egy megjegyzésként szereplő példát.  Ügyeljen arra, hogy a requirements.txt fájlban ne szerepeljenek ilyen jellegű csomagok, hogy a pip ne telepítse őket.
 
-Add this to the deployment script:
+Adja hozzá a következőt az üzembe helyezési parancsfájlhoz:
 
     env\scripts\easy_install somepackage
 
-You may also be able to use easy\_install to install from an exe installer (some are zip compatible, so easy\_install supports them).  Add the installer to your repository, and invoke easy\_install by passing the path to the executable.
+Lehetséges, hogy az easy\_install segítségével egy exe-telepítőből is végrehajthatja a telepítést (némelyikük zip-kompatibilis, ezért az easy\_install támogatja őket).  Adja hozzá a telepítőt a tárházhoz, majd az elérési utat a végrehajtható fájlnak átadva hívja meg az easy\_install telepítőt.
 
-Add this to the deployment script:
+Adja hozzá a következőt az üzembe helyezési parancsfájlhoz:
 
     env\scripts\easy_install "%DEPLOYMENT_SOURCE%\installers\somepackage.exe"
 
-### Include the virtual environment in the repository (requires Windows)
+### A virtuális környezet felvétele a tárházba (Windowst igényel)
 
-Note: When using this option, make sure to use a virtual environment that matches the platform/architecture/version that is used on the web app in Azure App Service (Windows/32-bit/2.7 or 3.4).
+Megjegyzés: Ha ezt a lehetőséget választja, ne felejtsen el olyan virtuális környezetet használni, amely megegyezik az Azure App Services-szolgáltatásban a webalkalmazásban használt platformmal/architektúrával/verzióval (Windows/32 bites/2.7 vagy 3.4).
 
-If you include the virtual environment in the repository, you can prevent the deployment script from doing virtual environment management on Azure by creating an empty file:
+Ha felveszi a virtuális környezetet a tárházba, egy üres fájl létrehozásával megakadályozhatja, hogy az üzembe helyezési parancsfájl virtuáliskörnyezet-felügyeletet folytasson:
 
     .skipPythonDeployment
 
-We recommend that you delete the existing virtual environment on the app, to prevent leftover files from when the virtual environment was managed automatically.
+Javasoljuk, hogy törölje a létező virtuális környezetet az alkalmazásban, hogy ne maradjanak vissza fájlok akkorról, amikor a virtuális környezet felügyelete automatikus volt.
 
 
-[Create a Virtual Machine Running Windows]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
+[Windows rendszerű virtuális gép létrehozása]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
 [Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

@@ -1,16 +1,22 @@
 
 
 
-The final stage of this tutorial is to build and run your new app.
+Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futtatásából áll.
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the project file using Xcode.
+1. Keresse meg a helyet, ahová a tömörített projektfájlokat mentette, tömörítse ki a fájlokat a számítógépre, és nyissa meg a projektfájlt az Xcode használatával.
 
-2. Press the **Run** button to build the project and start the app in the iPhone emulator.
+2. Nyomja le a **Run** (Futtatás) gombot a projekt felépítéséhez és az alkalmazás iPhone-emulátorban történő elindításához.
 
-3. In the app, type meaningful text, such as _Complete the tutorial_ and then click the plus (**+**) icon.
+3. Az alkalmazásban írjon be egy jelentéssel bíró szöveget, például _Az oktatóanyag befejezése_, majd kattintson a plusz (**+**) ikonra.
 
-   	![](./media/mobile-services-ios-run-app/mobile-quickstart-startup-ios.png)
+    ![](./media/mobile-services-ios-run-app/mobile-quickstart-startup-ios.png)
 
-   	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the list.
+    Ez egy POST kérést küld az Azure-ban futtatott új mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
 
- 	</div>
+    </div>
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

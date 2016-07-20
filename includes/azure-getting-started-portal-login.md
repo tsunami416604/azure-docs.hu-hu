@@ -8,26 +8,32 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## Connecting to the Microsoft Azure portal with a subscription
+## Csatlakozás a Microsoft Azure portálhoz előfizetéssel
 
-To connect to the Microsoft Azure portal, you must have a subscription. 
+A Microsoft Azure portálhoz történő csatlakozáshoz előfizetéssel kell rendelkeznie. 
 
-### Get a new account
+### Új fiók létrehozása
 
-If you do not have an existing Microsoft Azure account, follow one of the links below to obtain an account:
+Ha még nem rendelkezik Microsoft Azure-fiókkal, az alábbi hivatkozások egyikére kattintva hozhat létre egyet:
 
-- Get a [free account](https://azure.microsoft.com/get-started/)
-- Use an [MSDN subscription](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)
+- [Ingyenes fiók](https://azure.microsoft.com/get-started/) létrehozása
+- [MSDN-előfizetés](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) használata
 
-###Sign in using your existing account
+###Bejelentkezés meglévő fiókkal
 
-Using your [existing subscription]( https://account.windowsazure.com/Home/Index), follow the steps below to connect to the Azure portal. 
+[Meglévő előfizetés]( https://account.windowsazure.com/Home/Index) használata esetén kövesse az alábbi lépéseket az Azure portál megnyitásához. 
 
-1. Open your browser of choice and connect to the [Azure portal](https://portal.azure.com/).
+1. Nyisson meg egy tetszőleges böngészőt, és csatlakozzon az [Azure portálhoz](https://portal.azure.com/).
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-1. When the sign in page appears, provide the credentials for your subscription
+1. A bejelentkezési oldal megjelenése után adja meg az előfizetése hitelesítő adatait.
 
-   ![sign in](./media/azure-getting-started-portal-login/login.png)
+   ![bejelentkezés](./media/azure-getting-started-portal-login/login.png)
    
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

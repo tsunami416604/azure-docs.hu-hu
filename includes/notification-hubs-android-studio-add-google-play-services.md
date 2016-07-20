@@ -1,30 +1,36 @@
-1. Open the Android SDK Manager by clicking the icon on the toolbar of Android Studio or by clicking **Tools** -> **Android** -> **SDK Manager** on the menu. Locate the target version of the Android SDK that is used in your project , open it by clicking **Show Package Details**, and choose **Google APIs**, if it is not already installed.
+1. Nyissa meg az Android SDK Manager alkalmazást az Android Studióban található ikonnal, vagy a **Tools** (Eszközök) -> **Android** -> **SDK Manager** lehetőségre kattintva a menüben. Keresse meg az alkalmazásában használt Android SDK célverzióját, nyissa meg a **Show Package Details** (Csomag részleteinek megtekintésre) elemre való kattintással, és válassza a **Google APIs** (Google API-k) lehetőséget, ha azok nincsenek még telepítve.
 
-2. Click the **SDK Tools** tab. If you haven't already installed Google Play Service, click **Google Play Services** as shown below. Then click **Apply** to install. 
+2. Kattintson az **SDK Tools** (SDK-eszközök) fülre. Ha még nem telepítette a Google Play szolgáltatást, kattintson a **Google Play Services** (Google Play szolgáltatások) elemre, ahogy az ábra mutatja. Ezután kattintson az **Apply** (Alkalmaz) gombra. 
  
-	Note the SDK path, for use in a later step. 
+    Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben. 
 
-   	![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
 
 
-3. Open the **build.gradle** file in the app directory.
+3. Nyissa meg a **build.gradle** fájlt az alkalmazáskönyvtárban.
 
-	![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
+    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
 
-4. Add this line under *dependencies*: 
+4. Adja hozzá ezt a sort a *dependencies* (függőségek) sor alatt: 
 
-   		compile 'com.google.android.gms:play-services-gcm:8.4.0'
+        compile 'com.google.android.gms:play-services-gcm:8.4.0'
 
-5. Under *defaultConfig*, change *minSdkVersion* to 9.
+5. A *defaultConfig* sor alatt módosítsa a *minSdkVersion* tulajdonságot 9-re.
  
-6. Click the **Sync Project with Gradle Files** icon in the tool bar.
+6. Kattintson a **Sync Project with Gradle Files** (Projekt szinkronizálása a Gradle-fájlokkal) ikonra az eszköztárban.
 
-7. Open **AndroidManifest.xml** and add this tag to the *application* tag.
+7. Nyissa meg az **AndroidManifest.xml** fájlt, és adja ezt a címkét az *application* (alkalmazás) címkéhez.
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
  
 
 
+
+
+
+
+
+<!--HONumber=Jun16_HO2-->
 
 

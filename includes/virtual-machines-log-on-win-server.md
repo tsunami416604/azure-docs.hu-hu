@@ -1,19 +1,25 @@
 <properties services="virtual-machines" title="How to Log on to a Virtual Machine Running Windows Server" authors="cynthn" solutions="" manager="timlt" editor="tysonn" />
 
-4. Clicking **Connect** creates and downloads a Remote Desktop Protocol file (.rdp file). Click **Open** to use this file.
+4. A **Csatlakozás** elemre kattintva létrehoz és letölt egy Remote Desktop Protocol fájlt (.rdp-fájlt). A fájl használatához kattintson a **Megnyitás** elemre.
 
-5. You will get a warning that the .rdp is from an unknown publisher. This is normal. In the Remote Desktop window, click **Connect** to continue.
+5. Egy figyelmeztetés fog megjelenni arról, hogy az RDP-fájl közzétevője ismeretlen. Ez nem jelent problémát. A Távoli asztal ablakában kattintson a **Csatlakozás** gombra a folytatáshoz.
 
-	![Screenshot of a warning about an unknown publisher.](./media/virtual-machines-log-on-win-server/rdp-warn.png)
+    ![Képernyőkép az ismeretlen közzétevőre vonatkozó figyelmeztetésről.](./media/virtual-machines-log-on-win-server/rdp-warn.png)
 
-6. In the **Windows Security** window, type the credentials for an account on the virtual machine and then click **OK**.
+6. A **Windows rendszerbiztonsági** ablakban írja be a virtuális gép egy fiókjának a hitelesítő adatait, majd kattintson az **OK** gombra.
 
- 	**Local account** - this is usually the local account user name and password that you specified when you created the virtual machine. In this case, the domain is the name of the virtual machine and it is entered as *vmname*&#92;*username*.  
-	
-	**Domain joined VM** - if the VM belongs to a domain, enter the user name in the format *Domain*&#92;*Username*. The account also needs to either be in the Administrators group or have been granted remote access privileges to the VM.
-	
-	**Domain controller** - if the VM is a domain controller, type the user name and password of a domain administrator account for that domain.
+    **Helyi fiók** – ez általában a helyi fiók felhasználójának neve és jelszava, amelyet a virtuális gép létrehozásakor adott meg. Ebben az esetben a tartomány a virtuális gép neve, és a következő módon van megadva: *vmname*&#92;*username*.  
+    
+    **Tartományhoz csatlakoztatott virtuális gép** – ha a virtuális gép egy tartományhoz tartozik, a felhasználó nevét a következő formátumban adja meg: *Domain*&#92;*Username*. A fióknak szerepelnie kell a Rendszergazdák csoportban, vagy távoli hozzáférési jogosultságokkal kell rendelkeznie a virtuális géphez.
+    
+    **Tartományvezérlő** – ha a virtuális gép egy tartományvezérlő, írja be egy, a tartományhoz tartozó tartományi rendszergazdai fiók felhasználónevét és jelszavát.
 
-7.	Click **Yes** to verify the identity of the virtual machine and finish logging on.
+7.  Kattintson az **Igen** gombra a virtuális gép identitásának ellenőrzéséhez és a bejelentkezés befejezéséhez.
 
-	![Screenshot showing a message abut verifying the identity of the VM.](./media/virtual-machines-log-on-win-server/cert-warning.png)
+    ![Képernyőkép a virtuális gép identitásának ellenőrzésére vonatkozó üzenetről.](./media/virtual-machines-log-on-win-server/cert-warning.png)
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

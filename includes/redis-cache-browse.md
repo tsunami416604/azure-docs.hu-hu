@@ -1,13 +1,18 @@
-Caches can be accessed in the [Azure Portal](https://portal.azure.com) using the **Browse** blade.
+A gyorsítótárak az [Azure portálon](https://portal.azure.com) érhetők el a **Tallózás** panelen.
 
-![Azure Redis Cache Browse Blade](media/redis-cache-browse/redis-cache-browse.png)
+![Azure Redis Cache – Tallózás panel](media/redis-cache-browse/redis-cache-browse.png)
 
-Click **Browse > Redis Caches** to view your caches. If you have recently browsed to a Redis Cache, you can click **Redis Caches** directly from the list without clicking **Browse**.
+Kattintson a **Tallózás > Redis Cache-gyorsítótárak** elemre a gyorsítótárak megtekintéséhez. Ha nemrég tallózott egy Redis gyorsítótárra, a **Redis Cache-gyorsítótárak** elemet megtalálhatja közvetlenül a listáról a **Tallózás** lehetőségre kattintás nélkül is.
 
-Select the desired cache to view the properties for that cache.
+Válassza ki a kívánt gyorsítótárat a tulajdonságok megtekintéséhez.
 
-![Azure Redis Cache Browse Cache List](media/redis-cache-browse/redis-caches.png)
+![Azure Redis Cache – A gyorsítótárak listájának tallózása](media/redis-cache-browse/redis-caches.png)
 
-Click **Settings** or **All settings** to view and configure your cache.
+Kattintson a **Beállítások** vagy az **Összes beállítás** elemre a gyorsítótár megtekintéséhez és konfigurálásához.
 
-![Redis Cache All Settings](media/redis-cache-browse/redis-cache-blade.png)
+![A Redis Cache-gyorsítótár összes beállítása](media/redis-cache-browse/redis-cache-blade.png)
+
+
+<!--HONumber=Jun16_HO2-->
+
+

@@ -1,30 +1,35 @@
 <!--author=alkohli last changed: 9/17/15-->
 
-### To take a backup
+### Biztonsági mentés végrehajtása
 
-1. On the device **Quick Start** page, click **Add a backup policy**. This will start the Add Backup Policy wizard. 
+1. A **Gyors üzembe helyezés** oldalon kattintson a **Biztonsági mentési házirend hozzáadása** elemre. Ez elindítja a Biztonsági mentési házirend hozzáadása varázslót. 
 
-2. On the **Define your backup policy** page:
-  1. Supply a name that contains between 3 and 150 characters for your backup policy.
-  2. Select the volumes to be backed up. If you select more than one volume, these volumes will be grouped together to create a crash-consistent backup.
-  3. Click the arrow icon ![arrow-icon](./media/storsimple-take-backup/HCS_ArrowIcon-include.png). 
+2. A **Biztonsági mentési házirend meghatározása** oldalon:
+  1. Adjon egy 3–150 karakter hosszúságú nevet a biztonsági mentési házirendnek.
+  2. Válassza ki a köteteket, amelyekről biztonsági mentést kíván készíteni. Ha egynél több kötetet választ ki, ezeket a köteteket egy összeomlásbiztos biztonsági mentésbe csoportosítja a rendszer.
+  3. Kattintson a nyíl ikonra ![nyíl ikon](./media/storsimple-take-backup/HCS_ArrowIcon-include.png). 
   
-    ![Add-backup-policy](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard1M-include.png)
+    ![Biztonsági mentési házirend hozzáadása](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard1M-include.png)
 
-3. On the **Define a schedule** page:
-  1. Select the type of backup from the drop-down list. For faster restores, select **Local Snapshot**. For data resiliency, select **Cloud Snapshot**.
-  2. Specify the backup frequency in minutes, hours, days, or weeks.
-  3. Select a retention time. The retention choices depend on the backup frequency. For example, for a daily policy, the retention can be specified in weeks, whereas retention for a monthly policy is in months.
-  4. Select the starting time and date for the backup policy.
-  5. Select the **Enable** check box to enable the backup policy. 
-  6. Click the check icon ![check-icon](./media/storsimple-take-backup/HCS_CheckIcon-include.png) to save the policy.
+3. Az **Ütemezés meghatározása** oldalon:
+  1. Válassza ki a biztonsági mentés típusát a legördülő menüből. A gyorsabb visszaállítás érdekében válassza a **Helyi pillanatfelvétel** lehetőséget. Az adatrugalmasság érdekében válassza a **Felhőbeli pillanatfelvételt**.
+  2. Adja meg a biztonsági mentés gyakoriságát percben, órában, napban vagy hétben kifejezve.
+  3. Adjon meg egy megőrzési időtartamot. A megőrzési lehetőségek a biztonsági mentés gyakoriságától függenek. Napi házirend esetén például a megtartás hetekben adható meg, míg havi házirend esetén hónapokban.
+  4. Válassza ki a biztonsági házirend indítási időpontját és dátumát.
+  5. Jelölje be az **Engedélyezés** jelölőnégyzetet a biztonsági mentési házirend engedélyezéséhez. 
+  6. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-take-backup/HCS_CheckIcon-include.png) a házirend mentéséhez.
 
-    ![Add-backup-policy](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard2M-include.png)
+    ![Biztonsági mentési házirend hozzáadása](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard2M-include.png)
  
-     You now have a backup policy that will create scheduled backups of your volume data.
+     Mostantól a biztonsági mentési házirend ütemezett biztonsági mentéseket hoz létre a kötetadatokról.
 
-You have completed the device configuration. 
+Befejezte az eszköz konfigurálását. 
 
-![Video available](./media/storsimple-take-backup/Video_icon.png) **Video available**
+![Videó elérhető](./media/storsimple-take-backup/Video_icon.png) **Videó elérhető**
 
-To watch a video that demonstrates how to take a StorSimple backup, click [here](https://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/).
+A StorSimple-kötet biztonsági mentését bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/).
+
+
+<!--HONumber=Jun16_HO2-->
+
+

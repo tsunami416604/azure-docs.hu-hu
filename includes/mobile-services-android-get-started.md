@@ -1,40 +1,46 @@
-The final stage of this tutorial is to build and run your new app.
+Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futtatásából áll.
 
-### Load project into Android Studio and sync Gradle
+### Projekt betöltése az Android Studióba és szinkronizálása a Gradle-lel
 
-1. Browse to the location where you saved the compressed project files and expand the files on your computer into your Android Studio projects directory.
+1. Keresse meg a helyet, ahová a tömörített projektfájlokat mentette, és tömörítse ki a fájlokat a számítógépre az Android Studio projekteket tartalmazó mappába.
 
-2. Open Android Studio. If you are working with a project and it appears, close the project (File => Close Project).
+2. Nyissa meg az Android Studiót. Ha megjelenik egy projekt, amin dolgozik, zárja be azt (File => Close Project (Fájl => Projekt bezárása)).
 
-3. Select **Open an existing Android Studio project**, browse to the project location, and then click **OK.** This will load the project and start to sync it with Gradle.
+3. Válassza az **Open an existing Android Studio project** (Létező Android Studio projekt megnyitása) lehetőséget, tallózzon a projekt helyére, majd kattintson az **OK** gombra. Ekkor megnyílik a projekt és megkezdődik a szinkronizálás a Gradle-lel.
 
- 	![](./media/mobile-services-android-get-started/android-studio-import-project.png)
+    ![](./media/mobile-services-android-get-started/android-studio-import-project.png)
 
-4. Wait for the Gradle sync activity to complete. If you see a "failed to find target" error, this is because the version used in Android Studio doesn't match that of the sample. The easiest way to fix this is to click the **Install missing platform(s) and sync project** link in the error message. You might get additional version error messages, and you simply repeat this process until no errors appear.
-    - There is another way to fix this if you want to run with the "latest and greatest" version of Android. You can update the **targetSdkVersion** in the *build.gradle* file in the *app* directory to match the version already installed on your machine, which you can discover by clicking the **SDK Manager** icon and seeing what version is listed. Next you press the **Sync Project with Gradle Files**. You may get an error message for the version of Build Tools, and you fix that the same way.
+4. Várjon, amíg a Gradle-szinkronizálás befejeződik. Ha „failed to find target” (a cél nem található) hiba jelenik meg, az azt jelenti, hogy az Android Studióban használt verzió nem egyezik meg a minta verziójával. Ezt a legegyszerűbben úgy lehet kijavítani, ha az **Install missing platform(s) and sync project** (Hiányzó platform(ok) telepítése és a projekt szinkronizálása) hivatkozásra kattint a hibaüzenetben. Ekkor további verzióhibák jelenhetnek meg. Ismételje meg a fenti lépést, amíg az összes hiba meg nem oldódik.
+    - Másik módja is van az ilyen hibák kijavításának, ha az Android „legújabb és legjobb” verzióját szeretné használni. Frissítheti a **targetSdkVersion** tulajdonságot az *app* mappában található *build.gradle* fájlban úgy, hogy egyezzen a számítógépen már telepített verzióval. Utóbbit úgy azonosíthatja, ha az **SDK Manager** ikonra kattint, és megnézi, melyik verzió van listázva. Ezután kattintson a **Sync Project with Gradle Files** (Projekt szinkronizálása a Gradle-fájlokkal) lehetőségre. Ekkor hibaüzenetet kaphat a Build Tools verziójával kapcsolatban – ezt a már ismert módon javítsa ki.
 
-### Running the app
+### Az alkalmazás futtatása
 
-You can run the app using the emulator, or using an actual device.
+Az alkalmazást futtathatja emulátorral, vagy tényleges eszközön.
 
-1. To run from a device, connect it to your computer with a USB cable. You must [set up the device for development](https://developer.android.com/training/basics/firstapp/running-app.html). If you are developing on a Windows machine, you must also download and install a USB driver.
+1. Az eszközön való futtatáshoz csatlakoztassa azt egy USB-kábellel. [Az eszközt be kell állítani fejlesztéshez](https://developer.android.com/training/basics/firstapp/running-app.html). Ha Windows-gépen fejleszt, emellett töltsön le és telepítsen egy USB-illesztőprogramot is.
 
-2. To run using the Android emulator, you must define at least one Android Virtual Device (AVD). Click the AVD Manager icon to create and manage these devices.
+2. Az Android-emulátorban való futtatáshoz meg kell határoznia legalább egy Android virtuális eszközt (AVD). Kattintson az AVD Manager ikonra az eszközök létrehozásához és kezeléséhez.
 
-3. From the **Run** menu, click **Run** to start the project. and choose a device or emulator from the dialog box that appears.
+3. A projekt elindításához a **Run** (Futtatás) menüben kattintson a **Run** (Futtatás) gombra. Ezután válasszon egy eszközt vagy emulátort a megjelenő párbeszédablakban.
 
-4. When the app appears, type meaningful text, such as _Complete the tutorial_, and then click **Add**.
+4. Miután megjelent az alkalmazás, írjon be egy értelmes szöveget, például _Az oktatóanyag befejezése_, majd kattintson az **Add** (Hozzáadás) gombra.
 
-   	![](./media/mobile-services-android-get-started/mobile-quickstart-startup-android.png)
+    ![](./media/mobile-services-android-get-started/mobile-quickstart-startup-android.png)
 
-   	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the list.
+    Ez egy POST kérést küld az Azure-ban futtatott új mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
 
-	> [AZURE.NOTE] You can review the code that accesses your mobile service to query and insert data, which is found in the ToDoActivity.java file.
+    > [AZURE.NOTE] A mobilszolgáltatáshoz az adatok lekérdezése és beszúrása céljából hozzáférő kódot át is tekintheti a ToDoActivity.java fájlban.
 
-8. Back in the Azure classic portal, click the **Data** tab and then click the **TodoItems** table.
+8. A klasszikus Azure portálra visszatérve kattintson a **Data** (Adatok) fülre, majd a **TodoItems** táblára.
 
-   	![](./media/mobile-services-android-get-started/mobile-data-tab1.png)
+    ![](./media/mobile-services-android-get-started/mobile-data-tab1.png)
 
-   	This lets you browse the data inserted by the app into the table.
+    Így tallózással kiválaszthatja az alkalmazás által a táblába beszúrt adatokat.
 
-   	![](./media/mobile-services-android-get-started/mobile-data-browse.png)
+    ![](./media/mobile-services-android-get-started/mobile-data-browse.png)
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

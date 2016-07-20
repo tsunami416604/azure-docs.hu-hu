@@ -1,8 +1,13 @@
-This setting allows you to specify the DNS server that you want to use for name resolution for this virtual network. It does not create a DNS server.
+Ezzel a beállítással megadhatja azt a DNS-kiszolgálót, amelyet névfeloldásra kíván használni ennél a virtuális hálózatnál. A beállítás nem hoz létre új DNS-kiszolgálót.
 
-1. On the **Settings** page for your virtual network, navigate to **DNS Servers** and click to open the DNS servers blade.
-2. On the **DNS Servers** page, under **DNS servers**, select **Custom DNS**.
-3. In the **Primary DNS server** field, enter the IP address of the DNS server that you want to use for name resolution.
-4. Click **Save** at the top of the blade to save your configuration.
+1. A virtuális hálózata **Settings** (Beállítások) lapján lépjen a **DNS Servers** (DNS-kiszolgálók) elemre, és kattintással nyissa meg a DNS-kiszolgálók paneljét.
+2. A **DNS Servers** (DNS-kiszolgálók) oldal **DNS servers** (DNS-kiszolgálók) területén válassza a **Custom DNS** (Egyéni DNS) lehetőséget.
+3. A **Primary DNS server** (Elsődleges DNS-kiszolgáló) mezőbe írja be annak a DNS-kiszolgálónak az IP-címét, amelyet névfeloldásra kíván használni.
+4. A panel tetején látható **Save** (Mentés) gombra kattintva mentse a konfigurációt.
 
-	![Custom DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
+    ![Egyéni DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
+
+
+<!--HONumber=Jun16_HO2-->
+
+

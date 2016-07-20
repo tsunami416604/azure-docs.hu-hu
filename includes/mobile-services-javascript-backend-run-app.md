@@ -1,20 +1,25 @@
 
-The final stage of this tutorial is to build and run your new app.
+Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futtatásából áll.
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the solution file in Visual Studio.
+1. Keresse meg a helyet, ahová a tömörített projektfájlokat mentette, tömörítse ki a fájlokat a számítógépre, és nyissa meg a megoldásfájlt a Visual Studióban.
 
-2. Press the **F5** key to rebuild the project and start the app.
+2. Nyomja le az **F5** billentyűt a projekt újraépítéséhez és az alkalmazás indításához.
 
-3. In the app, type meaningful text, such as *Complete the tutorial*, in **Insert a TodoItem**, and then click **Save**.
+3. Az alkalmazásban írjon be egy jelentéssel bíró szöveget az **Insert a TodoItem** (Tennivaló beszúrása) mezőbe, például *Az oktatóanyag befejezése*, majd kattintson a **Save** (Mentés) gombra.
 
-   	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the second column in the app.
+    Ez egy POST kérést küld az Azure-ban futtatott új mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek az alkalmazás második oszlopában jelennek meg.
 
-4. (Optional) In a universal Windows solution, change the default start up project to the other app and run the app again.
+4. (Nem kötelező) Egy univerzális Windows-megoldásban cserélje le az alapértelmezett kezdő projektet a másik alkalmazásra, és indítsa el újra az alkalmazást.
 
-	Notice that data saved from the previous step is loaded from the mobile service after the app starts.
+    Figyelje meg, hogy az előző lépésben mentett adatok betöltődnek a mobilszolgáltatásból az alkalmazás indítása után.
  
-4. Back in the [Azure classic portal](https://manage.windowsazure.com/), click the **Data** tab and then click the **TodoItems** table.
+4. A [klasszikus Azure portálra](https://manage.windowsazure.com/) visszatérve kattintson a **Data** (Adatok) fülre, majd a **TodoItems** táblára.
 
-   	This lets you browse the data inserted by the app into the table.
+    Így tallózással kiválaszthatja az alkalmazás által a táblába beszúrt adatokat.
 
-   	![](./media/mobile-services-javascript-backend-run-app/mobile-data-browse.png)
+    ![](./media/mobile-services-javascript-backend-run-app/mobile-data-browse.png)
+
+
+<!--HONumber=Jun16_HO2-->
+
+

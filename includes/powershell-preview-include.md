@@ -1,5 +1,11 @@
-> [AZURE.NOTE] Azure PowerShell is currently available in two releases - 1.0 and 0.9.8. If you have existing scripts and do not want to change them right now, you can continue using the 0.9.8 release. When using the 1.0 release, you should carefully test your scripts in pre-production environments before using them in production to avoid unexpected impacts.
+> [AZURE.NOTE] Az Azure PowerShell jelenleg két verzióban érhető el – 1.0 és 0.9.8. Ha rendelkezik létező parancsfájlokkal, és nem szeretné módosítani ezeket, folytathatja a 0.9.8-as verzió használatát. Az 1.0-ás kiadás használatakor a nem várt hatások elkerülése érdekében az éles használat előtt körültekintően tesztelje a parancsfájlokat egy nem éles környezetben.
 >
-> 1.0 cmdlets follow the naming pattern {verb}-AzureRm{noun}; whereas, the 0.9.8 names do not include **Rm** (for example, New-AzureRmResourceGroup instead of New-AzureResourceGroup). When using Azure PowerShell 0.9.8, you must first enable the Resource Manager mode by running the **Switch-AzureMode AzureResourceManager** command. This command is not necessary in 1.0.
+> Az 1.0-ás parancsmagok az {ige}-AzureRm{főnév} elnevezési mintát használják; a 0.9.8-as nevek viszont nem tartalmazzák az **Rm** tagot (például New-AzureRmResourceGroup New-AzureResourceGroup helyett). Ha az Azure PowerShell 0.9.8-as verzióját használja, először engedélyeznie kell az erőforrás-kezelői módot a **Switch-AzureMode AzureResourceManager** parancs futtatásával. Ez a parancs az 1.0-ás verzióban nem szükséges.
 >
-> New features will be added to only the 1.0 release. For information about the 1.0 release, including how to install and uninstall the release, see [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/).
+> Az új funkciók kizárólag az 1.0-ás kiadásba kerülnek be. Információk az 1.0-ás kiadásról, köztük annak telepítéséről és eltávolításáról: [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/).
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

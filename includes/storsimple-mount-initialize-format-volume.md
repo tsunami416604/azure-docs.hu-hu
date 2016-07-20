@@ -1,36 +1,42 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### To mount, initialize, and format a volume
+#### Kötet csatlakoztatása, inicializálása és formázása
 
-1. Start the Microsoft iSCSI initiator.
+1. Indítsa el a Microsoft iSCSI-kezdeményezőt.
 
-2. In the **iSCSI Initiator Properties** window, on the **Discovery** tab, click **Discover Portal**.
+2. Az **iSCSI-kezdeményező tulajdonságai** ablakban a **Felderítés** lapon kattintson a **Kapu felderítése** elemre.
 
-3. In the **Discover Target Portal** dialog box, supply the IP address of your iSCSI-enabled network interface, and then click **OK**. 
+3. A **Tárolókapu felderítése** párbeszédablakban adja meg az iSCSI-kompatibilis hálózati adaptert, majd kattintson az **OK** gombra. 
 
-4. In the **iSCSI Initiator Properties** window, on the **Targets** tab, locate the **Discovered targets**. The device status should appear as **Inactive**.
+4. Az **iSCSI-kezdeményező tulajdonságai** ablakban a **Tárolók** lapon keresse meg a **Felderített tárolók** elemet. Az eszköznek **Inaktív** állapotúnak kell lennie.
 
-5. Select the target device and then click **Connect**. After the device is connected, the status should change to **Connected**. (For more information about using the Microsoft iSCSI initiator, see [Installing and Configuring Microsoft iSCSI Initiator][1]).
+5. Válassza ki a céleszközt, majd kattintson a **Csatlakozás** gombra. Az eszköz csatlakoztatása után az állapotnak **Csatlakoztatva** állapotra kell módosulnia. (További információ a Microsoft iSCSI-kezdeményezőről: [Installing and Configuring Microsoft iSCSI Initiator][1] (A Microsoft iSCSI-kezdeményező telepítése és konfigurálása).)
 
-6. On your Windows host, press the Windows Logo key + X, and then click **Run**. 
+6. A Windows-gazdagépen nyomja le a Windows és az X billentyűt, majd kattintson a **Futtatás** parancsra. 
 
-7. In the **Run** dialog box, type **Diskmgmt.msc**. Click **OK**, and the **Disk Management** dialog box will appear. The right pane will show the volumes on your host.
+7. A **Futtatás** párbeszédpanelen írja be a **Diskmgmt.msc** karakterláncot. Kattintson az **OK** gombra, és megjelenik a **Lemezkezelés**párbeszédablak. A jobb oldali panel a gazdagépen lévő köteteket jeleníti meg.
 
-8. In the **Disk Management** window, the mounted volumes will appear as shown in the following illustration. Right-click the discovered volume (click the disk name), and then click **Online**.
+8. A **Lemezkezelés** ablakban a csatlakoztatott kötetek az alábbi ábrán látható módon jelennek meg. Kattintson a jobb gombbal a felderített kötetre (kattintson a lemez nevére), majd kattintson az **Online** elemre.
 
-     ![Initialize format volume](./media/storsimple-mount-initialize-format-volume/HCS_InitializeFormatVolume-include.png) 
+     ![Kötet formázásának inicializálása](./media/storsimple-mount-initialize-format-volume/HCS_InitializeFormatVolume-include.png) 
 
-9. Right-click the volume (click the disk name) again, and then click **Initialize**.
+9. Kattintson a jobb gombbal a kötetre (kattintson a lemez nevére), majd kattintson az **Inicializálás** elemre.
 
-10. To format a simple volume, perform the following steps:
-  1. Select the volume, right-click it (click the right area), and click **New Simple Volume**.
-  2. In the New Simple Volume wizard, specify the volume size and drive letter and configure the volume as an NTFS file system.
-  3. Specify a 64 KB allocation unit size. This allocation unit size works well with the deduplication algorithms used in the StorSimple solution.
-  4. Perform a quick format.
+10. Egyszerű kötet formázásához hajtsa végre az alábbi lépéseket:
+  1. Válassza ki a kötetet, kattintson rá a jobb gombbal (kattintson a jobb oldali területre), majd kattintson az **Új egyszerű kötet** lehetőségre.
+  2. Az Új egyszerű kötet varázslóban adja meg a kötet méretét és a meghajtó betűjelét, majd konfigurálja a kötetet NTFS fájlrendszerűként.
+  3. Adjon meg 64 KB-os lemezfoglalásiegység-méretet. Ez a lemezfoglalásiegység-méret jól működik a StorSimple megoldásban használt deduplikációs algoritmusokkal.
+  4. Hajtson végre egy gyorsformázást.
 
-![Video available](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **Video available**
+![Videó elérhető](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **Videó elérhető**
 
-To watch a video that demonstrates how to mount, initialize, and format a StorSimple volume, click [here](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/).
+A StorSimple-kötet csatlakoztatását, inicializálását és formázását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/).
 
 <!--Link references-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

@@ -1,41 +1,47 @@
 <a name="tellmevm"></a>
-## Tell me about virtual machines
+## Tudnivalók a virtuális gépekről
 
-Azure Virtual Machines lets you create and use virtual machines in the cloud. Providing what's known as *Infrastructure as a Service (IaaS)*, virtual machine technology can be used in variety of ways. Some examples are:
+Az Azure Virtual Machines modullal virtuális gépeket hozhat létre és használhat a felhőben. A *Szolgáltatásként kínált infrastruktúra (IaaS)* néven ismert koncepciónak köszönhetően a virtuális gépek technológiája számos különböző módon használható. Néhány példa:
 
-- **Virtual machines (VMs) for development and test.** Development groups commonly use VMs because they offer a quick, easy way to create a computer with specific configurations required to code and test an application. Azure Virtual Machines provides a straightforward and economical way to create these VMs, use them, then delete them when they're no longer needed.
-- **Running applications in the cloud.** It makes economic sense to run some applications in the public cloud. One example is an application that has large spikes in demand. Although you could equip your own data center with enough hardware to handle peak demand, that hardware might be underutilized much of the time. Running this application on Azure lets you pay for extra VMs only when you need them and shut them down when you don't. Or, suppose you're a start-up that needs on-demand computing resources quickly and with no commitment. Once again, Azure can be the right choice.
-- **Extending your own datacenter into the public cloud.** When you use Azure Virtual Network, your organization can create a virtual network (VNET) that's an extension of your own on-premises network and add VMs to that VNET. This allows running applications such as [SharePoint](../articles/virtual-machines/virtual-machines-windows-sharepoint-farm.md), [SQL Server](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md) and others on an Azure VM. This approach might be easier to deploy or less expensive than running them in VMs your own datacenter.   
-- **Disaster recovery.** Rather than paying continuously for a backup datacenter that's rarely used, IaaS-based disaster recovery lets you pay for the computing resources you need only when you really need them.  For example, if your primary datacenter goes down, you can create VMs running on Azure to run essential applications, then shut them down when they're no longer needed.
+- **Fejlesztés és tesztelés virtuális gépek használatával.** A fejlesztői csoportok gyakran használnak virtuális gépeket, mert gyors és egyszerű módot biztosítanak egy alkalmazás programozásához és teszteléséhez szükséges adott konfigurációjú számítógépek létrehozásához. Az Azure Virtual Machines célirányos és gazdaságos módot biztosít a virtuális gépek létrehozásához, használatához, majd, ha már nincs szükség rájuk, a törlésükhöz.
+- **Alkalmazások futtatása a felhőben.** Gazdaságossági megfontolásból érdemes lehet néhány alkalmazást a nyilvános felhőben futtatni. Igaz lehet ez egy olyan alkalmazás esetében, amely időnként kiugróan magas teljesítményt igényel. Ugyan felszerelheti a saját adatközpontját a magas teljesítményigényeknek megfelelő hardverekkel, azonban azok az idő legnagyobb részében kihasználatlanok maradnának. Ezzel az alkalmazással az Azure lehetővé teszi, hogy csak akkor fizessen az extra virtuális gépekért, amikor szüksége van rájuk, és leállítsa őket, amikor nincs. Vagy tegyük fel, hogy egy olyan start-up vállalkozást vezet, amelynek igény szerinti számítási erőforrásra van szüksége gyorsan, elkötelezettség nélkül. Ebben az esetben is az Azure lehet a megfelelő választás.
+- **A saját adatközpont kiterjesztése a nyilvános felhőbe.** Az Azure Virtual Network használatakor a szervezete létrehozhat egy virtuális hálózatot (VNET), amely a saját helyszíni hálózat kiterjesztése, és hozzáadhat virtuális gépeket a virtuális hálózathoz. Ez lehetővé teszi, hogy olyan alkalmazásokat futtasson egy Azure virtuális gépen, mint például a [SharePoint](../articles/virtual-machines/virtual-machines-windows-sharepoint-farm.md), az [SQL Server](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md) és egyebek. Ez a megközelítés könnyebben telepíthető vagy kevésbé költséges, mint ha a saját adatközpontjában lévő virtuális gépeken futtatná őket.   
+- **Vészhelyreállítás.** Ahelyett, hogy folyamatosan fizetne egy biztonsági mentési adatközpontért, amelyet ritkán használ, az IaaS-alapú vészhelyreállítással csak akkor kell fizetnie a számítási erőforrásokért, amikor tényleg szüksége van rájuk.  Ha például az elsődleges adatközpont leáll, létrehozhat az Azure-on futó virtuális gépeket a létfontosságú alkalmazások futtatásához, majd leállíthatja őket, amikor már nincs rájuk szüksége.
 
-Like other virtual machines, a VM in Azure has an operating system, storage and networking capabilities and can run a wide variety of applications. You can use an image provided by Azure or one of it's partners, or use your own. Examples include various versions, editions and configurations of:
+Az egyéb virtuális gépekhez hasonlóan egy Azure-ban futó virtuális gépen is van operációs rendszer, tárhely és hálózati képességek, valamint számos különböző alkalmazás futtatására alkalmas. Használhat az Azure vagy egy partnere által biztosított rendszerképet, vagy használhatja a sajátját. A példák között számos különböző verziót, kiadást és konfigurációt talál:
  
-- Linux servers such as Suse, Ubuntu and CentOS
+- Linux kiszolgálók, mint például a Suse, az Ubuntu és a CentOS
 - Windows Server 
 - SQL Server
 - BizTalk Server 
 - SharePoint Server
 
-Virtual machines use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you can choose from to install an OS. The following figure shows this, as well as two of the tools for creating and managing your VMs.
+A virtuális gépek virtuális merevlemezeken (VHD-k) tárolják az operációs rendszereket és az adatokat. A VHD-ken találhatók az operációs rendszer telepítéséhez kiválasztható rendszerképek is. Az alábbi ábra ezt mutatja be, valamint két eszközt a virtuális gépek létrehozásához és felügyeletéhez.
 
 <a name="fig_createvms"></a>
 ![vm_diagram](./media/virtual-machines-choose-me-content/diagram.png)
 
-**Figure: Azure Virtual Machines provides Infrastructure as a Service.**
+**Ábra: Az Azure Virtual Machines szolgáltatásként kínált infrastruktúrát (IaaS) biztosít.**
 
-VMs can be managed using a browser-based portal, command-line tools with support for scripting, or directly through the REST API. Microsoft partners such as RightScale and ScaleXtreme also provide management services that rely on the REST API. 
+A virtuális gépek felügyelhetők egy böngészőalapú portállal, parancsfájlkezelést támogató parancssori eszközökkel, vagy közvetlenül a REST API-n keresztül. A Microsoft bizonyos partnerei, például a RightScale és a ScaleXtreme REST API-n alapuló felügyeleti szolgáltatásokat is biztosítanak. 
 
-Along with the OS, other configuration choices you have with VMs include:
+Az operációs rendszer mellett a virtuális gépeken elérhető egyéb konfigurációs lehetőségek:
 
-- The size, which determines factors such as how many disks you can attach and the processing power. Azure offers a wide variety of sizes to support many types of uses. For details, see [Sizes for Virtual Machines](../articles/virtual-machines/virtual-machines-linux-sizes.md).  
-- The Azure region where your new VM will be hosted, such as in the US, Europe, or Asia. 
-- VM extensions, which give your virtual machine additional capabilities, such as running anti-virus or using the Desired State Configuration feature of Windows PowerShell.
+- A méret, amely meghatároz olyan tényezőket, mint a csatlakoztatható lemezek számát és a feldolgozási kapacitást. Az Azure számos különböző méretet kínál különféle felhasználási módokhoz. Részletek: [Virtuális gépek méretei](../articles/virtual-machines/virtual-machines-linux-sizes.md).  
+- Az az Azure-régió, ahol az új virtuális gép üzemelni fog, például az Egyesült Államok, Európa vagy Ázsia. 
+- Virtuálisgép-bővítmények, amelyek segítségével a virtuális gép további képességeket kaphat, például képes lesz vírusirtók futtatására vagy a Windows PowerShell célállapot-konfiguráció szolgáltatásának használatára.
 
-Other benefits to consider for VMs include:
+A virtuális gépek által biztosított egyéb előnyök:
 
-**Pay-as-you-go** -- Azure charges an hourly price based on the VM’s size and operating system. For partial hours, Azure charges only for the minutes of use. Storage is priced and charged separately. For details, see [Virtual Machines Pricing](https://azure.microsoft.com/pricing/details/virtual-machines/).
+**Használatalapú fizetés** – Az Azure óradíjat számol fel a virtuális gép mérete és az operációs rendszer alapján. A megkezdett órák esetében az Azure percalapú elszámolást biztosít. A tárhely árazása és felszámítása külön történik. Részletek: [A Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
-**Resiliency** -- Azure monitors the physical hardware that hosts each running VM. If a physical server running a VM fails, Azure notices this, moves the VM to new hardware and restarts the VM. This process is sometimes called service healing. Azure also protects a virtual machine's data, by keeping redundant copies of the VHDs in blob storage. 
+**Rugalmasság** – Az Azure megfigyeli az egyes virtuális gépeket futtató fizikai hardvert. Ha egy virtuális gépet futtató fizikai kiszolgáló leáll, az Azure észleli ezt, és a virtuális gépet új hardverre költözteti, majd újraindítja. Ezt a folyamatot nevezik néha szolgáltatásjavításnak. Az Azure védi a virtuális gép adatait is, ennek érdekében redundáns másolatokat tart a virtuális merevlemezről a Blob Storage-ban. 
 
+
+
+
+
+
+<!--HONumber=Jun16_HO2-->
 
 

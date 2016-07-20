@@ -1,22 +1,28 @@
-The deployment script will skip creation of the virtual environment on Azure if it detects that a compatible virtual environment already exists.  This can speed up deployment considerably.  Packages that are already installed will be skipped by pip.
+A telepítési parancsfájl kihagyja a virtuális környezet létrehozását az Azure-on, ha úgy észleli, hogy már létezik kompatibilis virtuális környezet.  Ez jelentősen felgyorsíthatja a telepítést.  A pip kihagyja a már telepített csomagok telepítését.
 
-In certain situations, you may want to force delete that virtual environment.  You'll want to do this if you decide to include a virtual environment as part of your repository.  You may also want to do this if you need to get rid of certain packages, or test changes to requirements.txt.
+Bizonyos esetekben érdemes lehet kényszeríteni a létező virtuális környezet törlését.  Ezt akkor célszerű megtenni, ha a tárház részeként szeretne használni virtuális környezetet.  Akkor is érdemes lehet a törlés, ha el szeretne távolítani egyes csomagokat, vagy tesztelni szeretné a requirements.txt fájl módosításait.
 
-There are a few options to manage the existing virtual environment on Azure:
+A létező virtuális környezet több módon is kezelhető az Azure-ban:
 
-### Option 1: Use FTP
+### 1. lehetőség: FTP használata
 
-With an FTP client, connect to the server and you'll be able to delete the env folder.  Note that some FTP clients (such as web browsers) may be read-only and won't allow you to delete folders, so you'll want to make sure to use an FTP client with that capability.  The FTP host name and user are displayed in your web app's blade on the [Azure Portal](https://portal.azure.com).
+Csatlakozzon a kiszolgálóhoz FTP-ügyféllel – ekkor törölheti az env mappát.  Vegye figyelembe, hogy egyes FTP-ügyfelek (például a webböngészők) csak olvasható hozzáférést biztosítanak, így nem teszik lehetővé a mappák törlését. Ügyeljen arra, hogy olyan FTP-ügyfelet használjon, amely biztosítja ezt a képességet.  Az FTP-állomás neve és a felhasználó az [Azure portálon](https://portal.azure.com) a webalkalmazása panelén jelenik meg.
 
-### Option 2: Toggle runtime
+### 2. lehetőség: Futtatókörnyezet-váltás
 
-Here's an alternative that takes advantage of the fact that the deployment script will delete the env folder when it doesn't match the desired version of Python.  This will effectively delete the existing environment, and create a new one.
+Ez egy olyan alternatíva, amely azt használja ki, hogy a telepítési parancsfájl törli az env mappát, ha az nem egyezik meg a Python kívánt verziójával.  Ez a módszer így törli a létező környezetet, és létrehoz egy újat.
 
-1. Switch to a different version of Python (via runtime.txt or the **Application Settings** blade in the Azure Portal)
-1. git push some changes (ignore any pip install errors if any)
-1. Switch back to initial version of Python
-1. git push some changes again
+1. Váltson át a Python egy másik verziójára (a runtime.txt fájlon keresztül, vagy az Azure portál **Alkalmazásbeállítások** panelén)
+1. továbbítson módosításokat a gittel (hagyja figyelmen kívül az esetleges pip-telepítési hibákat)
+1. Váltson vissza a Python eredeti verziójára
+1. továbbítson újabb módosításokat a gittel
 
-### Option 3: Customize deployment script
+### 3. lehetőség: A telepítési parancsfájl testreszabása
 
-If you've customized the deployment script, you can change the code in deploy.cmd to force it to delete the env folder.
+Ha testre szabta a telepítési parancsfájlt, módosíthatja a deploy.cmd fájl kódját, hogy az törölje az env mappát.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+
