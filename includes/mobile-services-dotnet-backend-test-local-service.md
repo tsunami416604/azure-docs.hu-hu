@@ -1,7 +1,13 @@
 
 
-The mobile service project lets you run your new mobile service locally. This makes it easy to debug your service code before you even publish it to Azure.
+A mobilszolgáltatás-projekt lehetővé teszi az új mobilszolgáltatás helyileg történő futtatását. Így egyszerűen kijavíthatja a szolgáltatáskód hibáit, mielőtt közzétenné az Azure-on.
 
-1. On your Windows PC, download your personalized server project, extract it, and then open it in Visual Studio.
+1. Windows rendszerű számítógép esetén töltse le a testre szabott kiszolgálóprojektjét, majd nyissa meg a Visual Studio alkalmazásban.
 
-2. Press the **F5** key to rebuild the project and start the mobile service locally. A web page is displayed after the mobile service starts successfully.
+2. Nyomja le az **F5** billentyűt a projekt újraépítéséhez és a mobilszolgáltatás indításához. Miután a mobilszolgáltatás sikeresen elindul, megjelenik egy weboldal.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

@@ -1,42 +1,48 @@
 
 
-## Connect to Azure SQL Database using a server-level principal login
+## Csatlakozzon az Azure SQL Database szolgáltatáshoz kiszolgálószintű fő bejelentkezéssel
 
-Use the following steps to connect to Azure SQL Database with SSMS using a server-level principal login.
+Kövesse a következő lépéseket, hogy az SSMS használatával csatlakozzon az Azure SQL Database szolgáltatáshoz a kiszolgálószintű fő bejelentkezés használatával.
 
-1. Type "Microsoft SQL Server Management Studio" in the Windows search box, and then click the desktop app to start SSMS.
+1. Írja be a „Microsoft SQL Server Management Studio” kifejezést a Windows keresőmezőbe, majd kattintson az asztali alkalmazásra az SSMS elindításához.
 
-2. In the Connect to Server window, enter the following information:
+2. A Connect to Server (Kapcsolódás a kiszolgálóhoz) ablakban adja meg a következő adatokat:
 
- - **Server type**: The default is database engine; do not change this value.
- - **Server name**: Enter the name of the server that hosts your SQL database in the followinbg format: *&lt;servername>*.**database.windows.net**
- - **Authentication type**: If you are just getting started, select SQL Authentication. If you have enabled Active Directory for your SQL Database logical server, you can select either Active Directory Password Authentication or Active Directory Integrated Authentication.
- - **User name**: If you selected either SQL Authentication or Active Directory Password Authentication, enter the name of a user with access to a database on the server.
- - **Password**: If you selected either SQL Authentication or Active Directory Password Authentication, enter the password for the specified user.
+ - **Server type** (Kiszolgáló típusa): Az alapértelmezett adatbázismotor; ne módosítsa ezt az értéket.
+ - **Server name** (Kiszolgáló neve): Adja meg az SQL-adatbázisát üzemeltető kiszolgáló nevét a következő formátumban: *&lt;kiszolgálónév>*.**database.windows.net**
+ - **Authentication type** (Hitelesítés típusa): Ha ezek az első lépései, válassza az SQL-hitelesítést. Ha engedélyezte az Active Directory szolgáltatást az SQL Database logikai kiszolgálójához, választhatja az Active Directory jelszavas hitelesítést, vagy az Active Directory integrált hitelesítést is.
+ - **User name** (Felhasználónév): Ha az SQL-hitelesítést vagy az Active Directory jelszavas hitelesítést választotta, adjon meg egy a felhasználónevet, amelynek hozzáférése van a kiszolgálón található adatbázishoz.
+ - **Password** (Jelszó): Ha az SQL-hitelesítést vagy az Active Directory jelszavas hitelesítést választotta, adja meg a megadott felhasználóhoz tartozó jelszót.
    
        ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-1.png)
 
-3. Click **Connect**.
+3. Kattintson a **Csatlakozás** gombra.
  
-4. If your client's IP address does not have access to the SQL Database logical server, you will be prompted to sign in to an Azure account and create a server-level firewall rule. If you are an Azure subscription administrator, click **Sign in** to create a server-level firewall rule. If not, have an Azure administrator create a server-level firewall rule.
+4. Ha az ügyfél IP-címének nincs hozzáférése az SQL Database logikai kiszolgálóhoz, a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, és hozzon létre egy kiszolgálószintű tűzfalszabályt. Ha Ön Azure-előfizetési rendszergazda, kattintson a **Bejelentkezés** gombra a kiszolgálószintű tűzfalszabály létrehozásához. Ha nem az, kérjen meg egy Azure rendszergazdát a kiszolgálószintű tűzfalszabály létrehozására.
  
-      ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-2.png)
+      ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-2.png)
  
-1. If you are an Azure subscription administrator and need to sign in, when the sign in page appears, provide the credentials for your subscription and sign in.
+1. Ha Ön Azure-előfizetési rendszergazda, és be kell jelentkeznie, a bejelentkezési oldal megjelenése után adja meg az előfizetése hitelesítő adatait, és jelentkezzen be.
 
-      ![sign in](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-3.png)
+      ![bejelentkezés](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-3.png)
  
-1. After your sign in to Azure is successful, review the proposed server-level firewall rule (you can modify it to allow a range of IP addresses) and then click **OK** to create the firewall rule and complete the connection to SQL Database.
+1. Miután sikeresen bejelentkezett az Azure-ba, ellenőrizze a tervezett kiszolgálószintű tűzfalszabályt (ezt módosíthatja, hogy egy IP-címtartományt engedélyezzen), majd kattintson az **OK** gombra a tűzfalszabály létrehozásához és az SQL Database szolgáltatáshoz való csatlakozás befejezéséhez.
  
-      ![new server-level firewall](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-4.png)
+      ![új kiszolgálószintű tűzfal](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-4.png)
  
-5. If your credentials grant you access, Object Explorer opens and you can now perform administrative tasks or query data. 
+5. Ha a hitelesítő adatai megadják a hozzáférést, megnyílik az Object Explorer – ekkor elvégezheti az adminisztratív feladatokat és adatokat is lekérdezhet. 
  
-     ![new server-level firewall](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)
+     ![új kiszolgálószintű tűzfal](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)
  
      
-## Troubleshoot connection failures
+## Csatlakozási hibák elhárítása
 
-The most common reason for connection failures are mistakes in the server name (remember, <*servername*> is the name of the logical server, not the database), the user name, or the password, as well as the server not allowing connections for security reasons. 
+A csatlakozási hibák leggyakoribb okai a kiszolgáló nevében található hibák (ne feledje, a <*servername*> a logikai kiszolgáló neve, nem az adatbázisé), a helytelen felhasználónév vagy jelszó, valamint a biztonsági okok, melyek miatt a kiszolgáló nem engedélyez kapcsolatokat. 
+
+
+
+
+
+<!--HONumber=Jun16_HO2-->
 
 

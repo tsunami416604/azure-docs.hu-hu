@@ -1,138 +1,144 @@
 
 
-##Generate the Certificate Signing Request file
+##A tanúsítvány-aláírási kérelem fájljának létrehozása
 
-The Apple Push Notification Service (APNS) uses certificates to authenticate your push notifications. Follow these instructions to create the necessary push certificate to send and receive notifications. For more information on these concepts see the official [Apple Push Notification Service](http://go.microsoft.com/fwlink/p/?LinkId=272584) documentation.
+Az Apple Push Notification szolgáltatás (APNS) tanúsítványokat használ a leküldéses értesítések hitelesítéséhez. Kövesse ezeket az utasításokat az értesítések küldéséhez és fogadásához szükséges leküldéses tanúsítvány létrehozásához. További információért lásd az [Apple Push Notification Service](http://go.microsoft.com/fwlink/p/?LinkId=272584) (Apple Push Notification szolgáltatás) hivatalos dokumentációját.
 
-Generate the Certificate Signing Request (CSR) file, which is used by Apple to generate a signed push certificate.
+Hozza létre a tanúsítvány-aláírási kérelem (CSR) fájlját, mellyel az Apple létrehoz egy aláírt leküldéses tanúsítványt.
 
-1. On your Mac, run the Keychain Access tool. It can be opened from the **Utilities** folder or the **Other** folder on the launch pad.
+1. Futtassa a Kulcskarika-elérés eszközt Mac számítógépén. Ez a **Segédprogramok** vagy az **Egyéb** mappából nyitható meg a Launchpadről.
 
-2. Click **Keychain Access**, expand **Certificate Assistant**, then click **Request a Certificate from a Certificate Authority...**.
+2. Kattintson a **Kulcskarika-elérés ** menüpontra, bontsa ki a **Tanúsítványasszisztens** almenü, majd kattintson a **Tanúsítvány igénylése egy tanúsítványkiadó központból...** lehetőségre.
 
-  	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 
-3. Select your **User Email Address** and **Common Name** , make sure that **Saved to disk** is selected, and then click **Continue**. Leave the **CA Email Address** field blank as it is not required.
+3. Töltse ki a **Felhasználói e-mail-cím** és az **Általános név** mezőket, ügyeljen arra, hogy a **Mentve lemezre** lehetőség legyen kiválasztva, majd kattintson a **Folytatás** gombra. Hagyja üresen a **CA e-mail-cím** mezőt, ennek kitöltése nem kötelező.
 
-  	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
-4. Type a name for the Certificate Signing Request (CSR) file in **Save As**, select the location in **Where**, then click **Save**.
+4. Adjon meg egy nevet a tanúsítvány-aláírási kérelem (CSR) fájljához a **Mentés mint** mezőben, válassza ki a helyet a **Hely** mezőben, majd kattintson a **Mentés** gombra.
 
-  	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
 
-  	This saves the CSR file in the selected location; the default location is in the Desktop. Remember the location chosen for this file.
+    Ez menti a CSR-fájlt a megadott helyre; az alapértelmezett hely az Íróasztal. Jegyezze meg a fájlhoz választott helyet.
 
-Next, you will register your app with Apple, enable push notifications, and upload this exported CSR to create a push certificate.
+Ezután regisztrálni fogja az alkalmazását az Apple rendszerében, engedélyezi a leküldéses értesítéseket, és feltölti ezt az exportált CSR-t a leküldéses tanúsítvány létrehozásához.
 
-##Register your app for push notifications
+##Alkalmazás regisztrálása leküldéses értesítésekhez
 
-To be able to send push notifications to an iOS app, you must register your application with Apple and also register for push notifications.  
+Ahhoz, hogy leküldéses értesítéseket küldhessen az iOS-alkalmazásoknak, először regisztrálnia kell az alkalmazását az Apple rendszerében, és regisztrálnia kell a leküldéses értesítésekhez is.  
 
-1. If you have not already registered your app, navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> at the Apple Developer Center, log on with your Apple ID, click **Identifiers**, then click **App IDs**, and finally click on the **+** sign to register a new app.
+1. Ha már regisztrálta az alkalmazását, lépjen az <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> (iOS üzembe helyezési portál) felületére az Apple Developer Center központban, jelentkezzen be Apple-azonosítójával, kattintson az **Identifiers** (Azonosítók), majd az **App IDs** (Alkalmazásazonosítók) lehetőségre, végül kattintson a **+** jelre az új alkalmazás regisztrálásához.
 
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
 
-2. Update the following three fields for your new app and then click **Continue**:
+2. Frissítse a következő három mezőt az új alkalmazásában, és kattintson a **Continue** (Folytatás) gombra:
 
-	* **Name**: Type a descriptive name for your app in the **Name** field in the **App ID Description** section.
-	
-	* **Bundle Identifier**: Under the **Explicit App ID** section, enter a **Bundle Identifier** in the form `<Organization Identifier>.<Product Name>` as mentioned in the [App Distribution Guide](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8). The *Organization Identifier* and *Product Name* you use must match the organization identifier and product name you will use when you create your XCode project. In the screeshot below *NotificationHubs* is used as a organization idenitifier and *GetStarted* is used as the product name. Making sure this matches the values you will use in your XCode project will allow you to use the correct publishing profile with XCode. 
-	
-	* **Push Notifications**: Check the **Push Notifications** option in the **App Services** section, .
+    * **Name** (Név): Adjon meg egy leíró nevet az alkalmazáshoz a **Name** (Név) mezőben az **App ID Description** (Alkalmazásazonosító leírása) szakaszban.
+    
+    * **Bundle Identifier** (Csomagazonosító): Az **Explicit App ID** (Explicit alkalmazásazonosító) szakasz alatt adjon meg egy csomagazonosítót (**Bundle Identifier**) abban a formában, `<Organization Identifier>.<Product Name>` ahogy azt az [App Distribution Guide](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8) (Alkalmazásterjesztési útmutató) írja. A használt szervezetazonosítónak (*Organization Identifier*) és terméknévnek (*Product Name*) meg kell egyeznie azzal a szervezetazonosítóval és terméknévvel, melyeket az Xcode projektje létrehozásakor fog használni. Az alábbi képernyőképen a *NotificationHubs* a használt szervezetazonosító, a terméknév pedig a *GetStarted*. Ha ügyel arra, hogy ezek az értékek megegyezzenek azokkal, amelyeket az XCode projektjében fog használni, a helyes közzétételi profilt fogja tudni használni az XCode környezetben. 
+    
+    * **Push Notifications** (Leküldéses értesítések): Jelölje be a **Push Notifications** (Leküldéses értesítések) beállítást az **App Services** (Alkalmazásszolgáltatások) szakaszban.
 
-	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-   	This generates your app ID and requests you to confirm the information. Click **Submit**
+    Ekkor létrejön az alkalmazásazonosító, és a rendszer megkéri Önt az információk megerősítésére. Kattintson a **Submit** (Küldés) gombra
 
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-confirm-new-appid.png)
 
 
-   	Once you click **Submit**, you will see the **Registration complete** screen, as shown below. Click **Done**.
+    Miután a **Submit** (Küldés) gombra kattintott, megjelenik az alábbi ábrán is látható **Registration complete** (Regisztráció kész) képernyő. Kattintson a **Done** (Kész) gombra.
 
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 
-3. In the Developer Center, under App IDs, locate the app ID that you just created, and click on its row.
+3. Keresse meg az előbb létrehozott alkalmazásazonosítót a fejlesztői központban az alkalmazásazonosítók alatt, és kattintson az azt tartalmazó sorra.
 
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids2.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids2.png)
 
-   	Clicking on the app ID will display the app details. Click the **Edit** button at the bottom.
+    Ha az alkalmazásazonosítóra kattint, megjelennek az alkalmazás részletei. Kattintson az alul található **Edit** (Szerkesztés) gombra.
 
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-4. Scroll to the bottom of the screen, and click the **Create Certificate...** button under the section **Development Push SSL Certificate**.
+4. Görgessen a képernyő aljára, és kattintson a **Create Certificate...** (Tanúsítvány létrehozása...) gombra a **Development Push SSL Certificate** (Leküldéses fejlesztési SSL-tanúsítvány) szakasz alatt.
 
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
-   	This displays the "Add iOS Certificate" assistant.
+    Ekkor megjelenik az „Add iOS Certificate” (iOS tanúsítvány hozzáadása) segédprogram.
 
-    > [AZURE.NOTE] This tutorial uses a development certificate. The same process is used when registering a production certificate. Just make sure that you use the same certificate type when sending notifications.
+    > [AZURE.NOTE] Ez az oktatóprogram fejlesztési tanúsítványt használ. Ugyanez a folyamat használatos a termelési tanúsítvány regisztrálásához is. Csak arra ügyeljen, hogy ugyanazt a tanúsítványtípust használja az értesítések küldéséhez.
 
-5. Click **Choose File**, browse to the location where you saved the CSR file that you created in the first task, then click **Generate**.
+5. Kattintson a **Choose File** (Fájl kiválasztása) lehetőségre, keresse meg a helyet, ahová mentette az első feladatban létrehozott CSR-fájlt, majd kattintson a **Generate** (Létrehozás) gombra.
 
-  	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-cert-choose-csr.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-cert-choose-csr.png)
 
-6. After the certificate is created by the portal, click the **Download** button, and click **Done**.
+6. Miután a portál létrehozza a tanúsítványt, kattintson a **Download** (Letöltés) gombra, majd a **Done** (Kész) gombra.
 
-  	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
-   	This downloads the certificate and saves it to your computer in your Downloads folder.
+    Ez letölti a tanúsítványt, és menti azt a számítógépére, a Letöltések mappába.
 
-  	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
-    > [AZURE.NOTE] By default, the downloaded file a development certificate is named **aps_development.cer**.
+    > [AZURE.NOTE] Alapértelmezés szerint a letöltött fejlesztési tanúsítványfájl neve **aps_development.cer**.
 
-7. Double-click the downloaded push certificate **aps_development.cer**.
+7. Kattintson duplán a letöltött **aps_development.cer** leküldéses tanúsítványra.
 
-   	This installs the new certificate in the Keychain, as shown below:
+    Ez telepíti az új tanúsítványt a kulcsláncba, az alábbiak szerint:
 
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
-    > [AZURE.NOTE] The name in your certificate might be different, but it will be prefixed with **Apple Development iOS Push Services:**.
+    > [AZURE.NOTE] A tanúsítványban található név lehet különböző, de rendelkezni fog az **Apple Development iOS Push Services:** (Apple fejlesztési iOS leküldéses szolgáltatások:) előtagjával.
 
-8. In Keychain Access, right-click the new push certificate that you created in the **Certificates** category. Click **Export**, name the file, select the **.p12** format, and then click **Save**.
+8. A kulcslánc-hozzáférési oldalon kattintson a jobb egérgombbal az új leküldéses tanúsítványra, melyet a **Certificates** (Tanúsítványok) kategóriában létrehozott. Kattintson az **Export** (Exportálás) elemre, válassza a **.p12** formátumot, majd kattintson a **Save** (Mentés) gombra.
 
-	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
-	Make a note of the file name and location of the exported .p12 certificate. It will be used to enable authentication with APNS.
+    Jegyezze fel az exportált .p12 tanúsítvány nevét és helyét. Ezek szükségesek lesznek az APNS-sel való hitelesítéshez.
 
-	>[AZURE.NOTE] This tutorial creates a QuickStart.p12 file. Your file name and location might be different.
-
-
-##Create a provisioning profile for the app
-
-1. Back in the <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a>, select **Provisioning Profiles**, select **All**, and then click the **+** button to create a new profile. This launches the **Add iOS Provisiong Profile** Wizard
-
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
-
-2. Select **iOS App Development** under **Development** as the provisiong profile type, and click **Continue**. 
+    >[AZURE.NOTE] Ez az oktatóprogram egy QuickStart.p12 fájlt hoz létre. Az Ön fájljának neve és helye eltérhet ettől.
 
 
-3. Next, select the app ID you just created from the **App ID** drop-down list, and click **Continue**
+##Üzembe helyezési profil létrehozása az alkalmazáshoz
 
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
+1. Térjen vissza az <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> felületére, válassza a **Provisioning Profiles** (Üzembe helyezési profilok), majd az **All** (Összes) lehetőséget, és kattintson a **+** gombra az új profil létrehozásához. Ekkor elindul az **Add iOS Provisiong Profile** (iOS üzembe helyezési profil hozzáadása) varázsló
 
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 
-4. In the **Select certificates** screen, select your usual development certificate used for code signing, and click **Continue**. This is not the push certificate you just created.
-
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
-
-
-5. Next, select the **Devices** to use for testing, and click **Continue**
-
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
+2. Az üzembe helyezési profil típusaként válassza az **iOS App Development** (iOS-alkalmazásfejlesztés) lehetőséget a **Development** (Fejlesztés) alatt, majd kattintson a **Continue** (Folytatás) gombra. 
 
 
-6. Finally, pick a name for the profile in **Profile Name**, click **Generate**.
+3. Ezután válassza ki az imént létrehozott azonosítót az **App ID** (Alkalmazásazonosító) legördülő listából, és kattintson a **Continue** (Folytatás) gombra
 
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 
 
-7. When the new provisioning profile is created click to download it and install it on your Xcode development machine. Then click **Done**.
+4. A **Select certificates** (Tanúsítványok kiválasztása) képernyőn válassza ki a kódaláíráshoz használt szokásos fejlesztési tanúsítványt, majd kattintson a **Continue** (Folytatás) gombra. Ez a nem az Ön által imént létrehozott leküldéses tanúsítvány.
 
-   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
+
+
+5. Ezután válassza ki a teszteléshez használt eszközöket a **Devices** (Eszközök) mezőben, és kattintson a **Continue** (Folytatás) gombra
+
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
+
+
+6. Végül adjon meg egy nevet a profilnak a **Profile Name** (Profilnév) mezőben, és kattintson a **Generate** (Létrehozás) gombra.
+
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
+
+
+7. Az új üzembe helyezési profil létrejötte után kattintson rá a letöltéshez, és telepítse az Xcode-fejlesztői gépére. Ezután kattintson a **Done** (Kész) gombra.
+
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
+
+
+
+
+
+<!--HONumber=Jun16_HO2-->
 
 

@@ -1,70 +1,76 @@
-## Set up your development environment
+## A fejlesztési környezet beállítása
 
-Next, set up your development environment in Visual Studio so that you are ready to try the code examples provided in this guide.
+A következő lépésként állítsa be a fejlesztési környezetet a Visual Studióban, hogy kipróbálhassa az útmutatóban megadott példákat.
 
-### Create a Windows console application project
+### Windows-konzolalkalmazás projekt létrehozása
 
-In Visual Studio, create a new Windows console application, as shown:
+Az alábbiak alapján hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban:
 
-![Create Windows console application](./media/storage-development-environment-include/storage-development-environment-include-1.png)
+![Windows-konzolalkalmazás létrehozása](./media/storage-development-environment-include/storage-development-environment-include-1.png)
 
-All of the code examples in this tutorial can be added to the **Main()** method in `program.cs` in your console application.
+Az oktatóanyagban szereplő példák hozzáadhatók a **Main()** metódusához a konzolalkalmazás `program.cs` részében.
 
-Note that you can use the Azure Storage Client Library from any type of .NET application, including an Azure cloud service, an Azure web app, a desktop application, or a mobile application. In this guide, we use a console application for simplicity.
+Vegye figyelembe, hogy az Azure Storage ügyféloldali kódtárat bármilyen típusú .NET-alkalmazásból használhatja, ideértve az Azure-felhőszolgáltatásokat, az Azure-webalkalmazásokat, az asztali alkalmazásokat, illetve a mobilalkalmazásokat. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
 
-### Use NuGet to install the required packages
+### A szükséges csomagok telepítése a NuGettel
 
-There are two packages that you'll need to install to your project to complete this tutorial:
+Két csomagot kell telepítenie a projektben az oktatóanyag teljesítéséhez:
 
-- [Microsoft Azure Storage Client Library for .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): This package provides programmatic access to data resources in your storage account.
-- [Microsoft Azure Configuration Manager library for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): This package provides a class for parsing a connection string from a configuration file, regardless of where your application is running.
+- [A Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/): Ez a csomag programozott hozzáférést biztosít a tárfiókja adatforrásaihoz.
+- [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlból származó kapcsolati karakterlánc elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 
-You can use NuGet to obtain both packages. Follow these steps:
+A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 
-1. Right-click your project in **Solution Explorer** and choose **Manage NuGet Packages**.
-2. Search online for "WindowsAzure.Storage" and click **Install** to install the Storage Client Library and its dependencies.
-3. Search online for "ConfigurationManager" and click **Install** to install the Azure Configuration Manager.
+1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
+2. Keressen rá az interneten a „WindowsAzure.Storage” kifejezésre, és kattintson az **Install** (Telepítés) gombra a Storage ügyféloldali kódtár és függőségeinek telepítéséhez.
+3. Keresse rá az interneten a „ConfigurationManager” kifejezésre, és kattintson az **Install** (Telepítés) gombra az Azure Configuration Manager telepítéséhez.
 
->[AZURE.NOTE] The Storage Client Library package is also included in the [Azure SDK for .NET](https://azure.microsoft.com/downloads/). However, we recommend that you also install the Storage Client Library from NuGet to ensure that you always have the latest version of the client library.
+>[AZURE.NOTE] A Storage ügyféloldali kódtár csomagja a [.NET-keretrendszerhez készült Azure SDK-ban](https://azure.microsoft.com/downloads/) is megtalálható. Azt javasoljuk azonban, hogy a Storage ügyféloldali kódtárat a NuGetből is telepítse, hogy az ügyféloldali kódtárnak biztosan mindig a legújabb verziójával rendelkezzen.
 >
->The ODataLib dependencies in the Storage Client Library for .NET are resolved through the ODataLib (version 5.0.2 and greater) packages available through NuGet, and not through WCF Data Services. The ODataLib libraries can be downloaded directly or referenced by your code project through NuGet. The specific ODataLib packages used by the Storage Client Library are [OData](http://nuget.org/packages/Microsoft.Data.OData/5.0.2), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/5.0.2), and [Spatial](http://nuget.org/packages/System.Spatial/5.0.2). While these libraries are used by the Azure Table storage classes, they are required dependencies for programming with the Storage Client Library.
+>A .NET-keretrendszerhez készült Storage ügyféloldali kódtár ODataLib-függőségeit nem a WCF-adatszolgáltatások, hanem a NuGeten keresztül elérhető (5.0.2-es vagy újabb verziójú) ODataLib-csomagok oldják fel. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A Storage ügyféloldali kódtár által használt konkrét ODataLib-csomagok az [OData](http://nuget.org/packages/Microsoft.Data.OData/5.0.2), az [Edm](http://nuget.org/packages/Microsoft.Data.Edm/5.0.2) és a [Spatial](http://nuget.org/packages/System.Spatial/5.0.2) csomagok. Ezeket a kódtárakat az Azure Table Storage osztályai használják, de szükséges függőségek a Storage ügyféloldali kódtárral való programozáshoz.
 
 
-### Determine your target environment
+### A célkörnyezet meghatározása
 
-You have two environment options for running the examples in this guide:
+Az útmutatóban lévő példákat kétféle környezetben futtathatja:
 
-- You can run your code against an Azure Storage account in the cloud. 
-- You can run your code against the Azure storage emulator. The storage emulator is a local environment that emulates an Azure Storage account in the cloud. The emulator is a free option for testing and debugging your code while your application is under development. The emulator uses a well-known account and key. For more details, see [Use the Azure Storage Emulator for Development and Testing](../articles/storage/storage-use-emulator.md)
+- A kódot futtathatja a felhőben, egy Azure Storage-fiókban. 
+- A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. A további részleteket lásd: [Use the Azure Storage Emulator for Development and Testing](../articles/storage/storage-use-emulator.md) (Fejlesztés és tesztelés az Azure Storage Emulatorral)
 
-If you are targeting a storage account in the cloud, copy the primary access key for your storage account from the Azure Portal. For more information, see [View and copy storage access keys](../articles/storage/storage-create-storage-account.md#view-and-copy-storage-access-keys).
+Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure portálról. További információért lásd: [View and copy storage access keys](../articles/storage/storage-create-storage-account.md#view-and-copy-storage-access-keys) (A tárelérési kulcsok megtekintése és másolása).
 
-> [AZURE.NOTE] You can target the storage emulator to avoid incurring any costs associated with Azure Storage. However, if you do choose to target an Azure storage account in the cloud, costs for performing this tutorial will be negligible.
+> [AZURE.NOTE] A Storage Emulator megcélzásával elkerülheti az Azure Storage-hoz kapcsolódó költségeket. Ha azonban mégis egy Azure Storage-fiókot céloz meg a felhőben, az oktatóanyag végrehajtásával járó költségek elhanyagolhatóak.
 
-### Configure your storage connection string
+### A tárolási kapcsolati karakterlánc konfigurálása
 
-The Azure Storage Client Library for .NET supports using a storage connection string to configure endpoints and credentials for accessing storage services. The best way to maintain your storage connection string is in a configuration file. 
+A .NET-hez készült Azure Storage ügyféloldali kódtár támogatja a tárolási szolgáltatások eléréséhez használt végpontok és hitelesítő adatok tárolási kapcsolati karakterlánccal történő konfigurálását. A tárolási kapcsolati karakterlánc egy konfigurációs fájlban tartható fenn a legjobban. 
 
-For more information about connection strings, see [Configure a Connection String to Azure Storage](../articles/storage/storage-configure-connection-string.md).
+A kapcsolati karakterláncokkel kapcsolatos további információkért lásd: [Az Azure Storage kapcsolati karakterláncának konfigurálása](../articles/storage/storage-configure-connection-string.md).
 
-> [AZURE.NOTE] Your storage account key is similar to the root password for your storage account. Always be careful to protect your storage account key. Avoid distributing it to other users, hard-coding it, or saving it in a plain-text file that is accessible to others. Regenerate your key using the Azure Portal if you believe it may have been compromised.
+> [AZURE.NOTE] A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure portál segítségével generálja újra.
 
-To configure your connection string, open the `app.config` file from Solution Explorer in Visual Studio. Add the contents of the `<appSettings>` element shown below. Replace `account-name` with the name of your storage account, and `account-key` with your account access key:
+A kapcsolati karakterlánc konfigurálásához nyissa meg az `app.config` fájlt a Visual Studio Megoldáskezelőjében. Adja hozzá az alábbi `<appSettings>` elem tartalmát. Az `account-name` kifejezést cserélje a tárfiókja nevére, az `account-key` kifejezést pedig a hívóbetűre:
 
-	<configuration>
-	    <startup> 
-	        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
-	    </startup>
-  		<appSettings>
-    		<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key" />
-  		</appSettings>
-	</configuration>
+    <configuration>
+        <startup> 
+            <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+        </startup>
+        <appSettings>
+            <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key" />
+        </appSettings>
+    </configuration>
 
-For example, your configuration setting will be similar to:
+A konfiguráció beállítása például hasonló lesz a következőhöz:
 
-	<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=nYV0gln6fT7mvY+rxu2iWAEyzPKITGkhM88J8HUoyofvK7C6fHcZc2kRZp6cKgYRUM74lHI84L50Iau1+9hPjB==" />
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=nYV0gln6fT7mvY+rxu2iWAEyzPKITGkhM88J8HUoyofvK7C6fHcZc2kRZp6cKgYRUM74lHI84L50Iau1+9hPjB==" />
 
-To target the storage emulator, you can use a shortcut that maps to the well-known account name and key. In that case, your connection string setting will be:
+A Storage Emulator célzásához használhat egy hivatkozást, amely leképezi a jól ismert fióknevet és kulcsot. Ebben az esetben a kapcsolati karakterlánc beállítása a következő lesz:
 
-	<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
+    <add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
+
+
+
+
+<!--HONumber=Jun16_HO2-->
+
 

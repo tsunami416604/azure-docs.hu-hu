@@ -1,30 +1,36 @@
-## About records
+## A rekordok
 
-Each DNS record has a name and a type. Records are organized into various types according to the data they contain. The most common type is an "A" record, which maps a name to an IPv4 address. Another type is an "MX" record, which maps a name to a mail server.
+Minden DNS-rekord rendelkezik névvel és típussal. A rekordok különféle típusokba vannak rendezve attól függően, hogy milyen adatokat tartalmaznak. A leggyakoribb típus az „A” rekord, amely egy nevet képez le egy IPv4-címhez. Egy másik típus, az „MX” rekord, egy nevet képez le egy levelezési kiszolgálóhoz.
 
-Azure DNS supports all common DNS record types, including A, AAAA, CNAME, MX, NS, SOA, SRV, and TXT. SOA record sets  are created automatically with each zone. They cannot be created separately. Note that SPF records should be created by using the TXT record type. For more information, see [this page](http://tools.ietf.org/html/rfc7208#section-3.1).
+Az Azure DNS minden gyakori DNS-rekord típust támogat, beleértve a következőket: A, AAAA, CNAME, MX, NS, SOA, SRV és TXT. A SOA típusú rekordhalmazok automatikusan jönnek létre az egyes zónákkal együtt. Külön nem hozhatók létre. Ügyeljen arra, hogy az SPF-rekordokat TXT típusú rekordok használatával kell létrehozni. További információkat [ezen az oldalon](http://tools.ietf.org/html/rfc7208#section-3.1) talál.
 
-In Azure DNS, records are specified by using relative names. A "fully qualified" domain name (FQDN) includes the zone name, whereas a "relative" name does not. For example, the relative record name "www" in the zone "contoso.com" gives the fully qualified record name www.contoso.com.
+Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A „teljes” tartománynév (FQDN) tartalmazza a zóna nevét, a „relatív” név azonban nem. Például: a „www” relatív rekordnév a „contoso.com” zónában a www.contoso.com teljes tartománynevet adja ki.
 
-## About record sets
+## A rekordhalmazok
 
-Sometimes you need to create more than one DNS record with a given name and type. For example, suppose the "www.contoso.com" web site is hosted on two different IP addresses. The website requires two different A records, one for each IP address. This is an example of a record set:
+Előfordulhat, hogy több, azonos nevű és típusú DNS-rekordot is létre kell hoznia. Tegyük fel például, hogy a „www.contoso.com” webhely két különböző IP-címről is üzemel. A webhelynek két különböző A-rekordra van szüksége a két IP-címhez. Példa egy rekordhalmazra:
 
-	www.contoso.com.		3600	IN	A	134.170.185.46
-	www.contoso.com.		3600	IN	A	134.170.188.221
+    www.contoso.com.        3600    IN  A   134.170.185.46
+    www.contoso.com.        3600    IN  A   134.170.188.221
 
-Azure DNS manages DNS records by using record sets. A record set is the collection of DNS records in a zone that have the same name and are the same type. Most record sets contain a single record, but examples like this one, in which a record set contains more than one record, are not uncommon.
+Az Azure DNS rekordhalmazok használatával kezeli a DNS-rekordokat. A rekordhalmazok az egy zónába tartozó, ugyanazzal a névvel és típussal rendelkező DNS-rekordok gyűjteményei. A legtöbb rekordhalmaz egyetlen rekordot tartalmaz, de a fentihez hasonló példához hasonló esetek sem szokatlanok, ahol egy rekordhalmazban több rekord is van.
 
-SOA and CNAME record sets are exceptions. The DNS standards don't permit multiple records with the same name for these types.
+A SOA és CNAME típusú rekordhalmazok kivételt jelentenek ez alól. A DNS-szabványok nem engedélyezik, hogy ezen típusok esetén több rekord is ugyanazzal a névvel rendelkezzen.
 
-The time to live, or TTL, specifies how long each record is cached by clients before being re-queried. In this example, the TTL is 3600 seconds or 1 hour. The TTL is specified for the record set, not for each record, so the same value is used for all records within that record set.
+Az élettartam (TTL) megadja, hogy az ügyfelek mennyi ideig gyorsítótárazzák az egyes rekordokat az újbóli lekérdezés előtt. Ebben a példában az élettartam 3600 másodperc, vagyis 1 óra. Az élettartam a rekordhalmazhoz van megadva, nem az egyes rekordokhoz, így a halmaz összes rekordján ugyanaz az érték érvényesül.
 
-#### Wildcard record sets
+#### Helyettesítő rekordhalmazok
 
-Azure DNS supports [wildcard records](https://en.wikipedia.org/wiki/Wildcard_DNS_record). These are returned for any query with a matching name (unless there is a closer match from a non-wildcard record set). Wildcard record sets are supported for all record types except NS and SOA.  
+Az Azure DNS [helyettesítő rekordok](https://en.wikipedia.org/wiki/Wildcard_DNS_record) használatát is támogatja. A rendszer ezeket minden egyező nevű lekérdezésre visszaadja (hacsak nincs egy nem helyettesítő rekordhalmazból származó közelebbi találat). A helyettesítő rekordhalmazok minden rekordtípus esetén támogatottak, kivéve az NS és SOA típust.  
 
-To create a wildcard record set, use the record set name "\*". Or, use a name with the label "\*", for example, "\*.foo".
+Helyettesítő rekordhalmazok létrehozásához használja a következő rekordhalmaznevet: \*. Vagy használjon \* címkével ellátott nevet, például: \*.foo.
 
-#### CNAME record sets
+#### CNAME-rekordhalmazok
 
-CNAME record sets cannot coexist with other record sets with the same name. For example, you cannot create a CNAME record set with the relative name "www" and an A record with the relative name "www" at the same time. Because the zone apex (name = ‘@’) always contains the NS and SOA record sets that were created when the zone was created, you can't create a CNAME record set at the zone apex. These constraints arise from the DNS standards and aren't limitations of Azure DNS.
+CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. Nem hozhat létre például egyidejűleg egy CNAME-rekordhalmazt és egy A-rekordot is a „www” relatív névvel. Mivel a zóna felső pontja (név = @) mindig tartalmazza a zóna létrehozásakor létrejött NS és SOA típusú rekordhalmazokat, a zóna felső pontján nem hozhat létre CNAME-rekordhalmazokat. Ezek a korlátozások a DNS-szabványokból erednek, és nem az Azure DNS korlátozásai.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

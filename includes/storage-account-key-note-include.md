@@ -1,1 +1,7 @@
->[AZURE.IMPORTANT] Your storage account key is similar to the root password for your storage account. Always be careful to protect your account key. Avoid distributing it to other users, hard-coding it, or saving it in a plain-text file that is accessible to others. Regenerate your account key using the Azure Portal if you believe it may have been compromised. To learn how to regenerate your account key, see [How to create, manage, or delete a storage account in the Azure Portal](../articles/storage/storage-create-storage-account.md#manage-your-storage-account).
+>[AZURE.IMPORTANT] A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a fiókja kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a fiókkulcs biztonsága sérült, az Azure portál segítségével generálja újra. A fiók kulcsának újragenerálásával kapcsolatos útmutatást lásd: [Tárfiókok létrehozása, kezelése vagy törlése az Azure portálon](../articles/storage/storage-create-storage-account.md#manage-your-storage-account).
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

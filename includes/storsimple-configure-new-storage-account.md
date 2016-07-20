@@ -1,19 +1,25 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### To add a new storage account in StorSimple Release version (GA)
+#### Új tárfiók hozzáadása a StorSimple Release verzióban (GA)
 
-1. On the StorSimple Manager service landing page, select your service and double-click it. This will take you to the **Quick Start** page. Select the **Configure** page.
+1. A StorSimple Manager szolgáltatás kezdőlapján válasza ki a szolgáltatást, és kattintson rá duplán. Ekkor a **Gyors üzembe helyezés** oldalra kerül. Válassza a **Konfigurálás** lapot.
 
-2. Click **Add/edit storage account**.
+2. Kattintson a **Tárfiók hozzáadása/szerkesztése** elemre.
 
-3. In the **Add/Edit Storage Account** dialog box, do the following:
+3. A **Tárfiók hozzáadása/szerkesztése** párbeszédpanelen tegye a következőket:
 
-  1. Click **Add new**.
-  2. Provide a name for your storage account.
-  3. Supply the primary **Access Key** for your Microsoft Azure storage account.
-  4. Select **Enable SSL Mode** to create a secure channel for network communication between your device and the cloud. Clear the **Enable SSL Mode** check box only if you are operating within a private cloud.
-  5. Click the check icon ![check icon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). You will be notified after the storage account is successfully created.
+  1. Kattintson az **Új hozzáadása** parancsra.
+  2. Adja meg a tárfiók nevét.
+  3. Adja meg a Microsoft Azure-tárfiók elsődleges **elérési kulcsát**.
+  4. Válassza az **SSL-mód engedélyezése** lehetőséget, ha egy biztonságos csatornát szeretne létrehozni az eszköz és a felhő közötti hálózati kommunikációhoz. Csak akkor törölje a jelölést az **SSL-mód engedélyezése** jelölőnégyzetből, ha magánfelhőben tevékenykedik.
+  5. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). Értesítést kap, ha a tárfiók sikeresen létrejött.
 
-    ![Add storage account](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
+    ![Tárfiók hozzáadása](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
 
-4. The newly created storage account will be displayed on the **Configure** page under **Storage accounts**. Click **Save** to save the newly created storage account. Click **OK** when prompted for confirmation.
+4. Az újonnan létrehozott tárfiók megjelenik a **Tárfiókok** terület **Konfigurálás** lapján. Az újonnan létrehozott tárfiók mentéséhez kattintson a **Mentés** gombra. Ha a rendszer megerősítést kér, kattintson az **OK** gombra.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

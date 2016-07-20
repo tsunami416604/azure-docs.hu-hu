@@ -76,7 +76,7 @@ A sorozat következő oktatóanyagában azt tanulhatja meg, hogyan lehet az SPA-
 
 2. Hozza létre a NuGet-csomagok visszaállítására szolgáló megoldást.
 
-    Ha telepítés előtt szeretné működés közben megtekinteni az alkalmazást, a helyi számítógépen is futtathatja. Ehhez gondoskodjon róla, hogy mind a három projekt indítási projekt legyen. Használja az Internet Explorer vagy az Edge böngészőt, mivel csak ezek támogatják a `http://localhost` URL-címekre mutató eltérő eredetű JavaScript-hívásokat. 
+    Ha telepítés előtt szeretné működés közben megtekinteni az alkalmazást, a helyi számítógépen is futtathatja. Ehhez gondoskodjon róla, hogy mind a három projekt indítási projekt legyen. Használja az Internet Explorer vagy a Microsoft Edge böngészőt, mivel csak ezek támogatják a `http://localhost` URL-címekre mutató eltérő eredetű JavaScript-hívásokat. 
 
 ## A Swagger API-metaadatok és felhasználói felület használata
 
@@ -100,7 +100,7 @@ Az oktatóanyag ezen részében a generált Swagger 2.0-metaadatokat tekintjük 
 
     ![JSON-metaadatok letöltése az Internet Explorerben](./media/app-service-api-dotnet-get-started/iev1json.png)
 
-    Ha Chrome, Firefox vagy Edge böngészőt használ, a JSON jelenik meg a böngészőablakban. A különböző böngészők eltérően kezelik a JSON-t, így előfordulhat, hogy az Ön böngészőjében nem pontosan az látható, mint a képen.
+    Ha Chrome, Firefox vagy Microsoft Edge böngészőt használ, a JSON jelenik meg a böngészőablakban. A különböző böngészők eltérően kezelik a JSON-t, így előfordulhat, hogy az Ön böngészőjében nem pontosan az látható, mint a képen.
 
     ![JSON-metaadatok a Chrome-ban](./media/app-service-api-dotnet-get-started/chromev1json.png)
 
@@ -493,6 +493,6 @@ Az **Azure API App** projektsablon használatával azt az eredményt éri el, mi
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=Jun16_HO2-->
 
 

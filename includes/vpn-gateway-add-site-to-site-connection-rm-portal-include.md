@@ -1,24 +1,30 @@
-1. Locate your virtual network gateway and click **All settings** to open the **Settings** blade.
+1. Keresse meg a virtuális hálózati átjáróját, és kattintson az **All Settings** (Összes beállítás) elemre a **Settings** (Beállítások) panel megnyitásához.
 
-2. On the **Settings** blade, click **Connections**, and then click **Add** at the top of the blade to open the **Add connection** blade.
+2. A **Settings** (Beállítások) panelen kattintson a **Connections** (Kapcsolatok) elemre, majd a panel tetején látható **Add** (Hozzáadás) elemre a **Add connection** (Kapcsolat hozzáadása) panel megnyitásához.
 
-	![Create Site-to-Site connection](./media/vpn-gateway-add-site-to-site-connection-rm-portal-include/addconnection250.png)
+    ![Helyek közötti kapcsolat létrehozása](./media/vpn-gateway-add-site-to-site-connection-rm-portal-include/addconnection250.png)
 
-3. On the **Add connection** blade, **Name** your connection. 
+3. Az **Add Connection** (Kapcsolat hozzáadása) panelen **nevezze el** a kapcsolatot. 
 
-4. For **Connection type**, select **Site-to-site(IPSec)**.
+4. A **Connection type** (Kapcsolat típusa) beállításnál válassza a **Site-to-site(IPSec)** Helyek közötti (IPSec) típust.
 
-5. For **Virtual network gateway**, the value is fixed because you are connecting from this gateway.
+5. A **Virtual network gateway** (Virtuális hálózati átjáró) értéke fix, mivel erről az átjáróról csatlakozik.
 
-6. For **Local network gateway**, click **Choose a local network gateway** and select the local network gateway that you want to use. 
+6. A **Local network gateway** (Helyi hálózati átjáró) beállításnál kattintson a **Choose a local network gateway** (Helyi hálózati átjáró kiválasztása) elemre, és válassza ki a használni kívánt helyi hálózati átjárót. 
 
-7. For **Shared Key**, the value here must match the value that you are using for your local VPN device. If your VPN device on your local network doesn't provide a shared key, you can make one up and input it here and on your local device. The important thing is that they both match.
+7. A **Shared Key** (Megosztott kulcs) értékének egyeznie kell azzal az értékkel, amit a helyi VPN-eszközhöz használ. Ha a helyi hálózatán található VPN-eszköz nem ad meg egy megosztott kulcsot, akkor kitalálhat egyet, és beírhatja ide és a helyi eszközén. A lényeg az, hogy megegyezzenek.
 
-8. The remaining values for **Subscription**, **Resource Group**, and **Location** are fixed.
+8. A fennmaradó **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **Location** (Hely) mezők értékei rögzítettek.
 
-9. Click **OK** to create your connection. You'll see *Creating Connection* flash on the screen.
+9. A kapcsolat létrehozásához kattintson az **OK** gombra. A *Creating Connection* (Kapcsolat létrehozása) üzenet elkezd villogni a képernyőn.
 
-10. When the connection is complete, you'll see it appear in the **Connections** blade for your Gateway.
+10. Amikor a kapcsolat elkészült, megjelenik az átjáró **Connections** (Kapcsolatok) paneljén.
 
-	![Create Site-to-Site connection](./media/vpn-gateway-add-site-to-site-connection-rm-portal-include/connectionstatus450.png)
+    ![Helyek közötti kapcsolat létrehozása](./media/vpn-gateway-add-site-to-site-connection-rm-portal-include/connectionstatus450.png)
+
+
+
+
+<!--HONumber=Jun16_HO2-->
+
 

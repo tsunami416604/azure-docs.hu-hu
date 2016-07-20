@@ -1,12 +1,17 @@
-The table below lists the requirements for policy-based and route-based VPN gateways. This table applies to both the Resource Manager and classic deployment models. For the classic model, Policy-based VPN gateways are the same as Static gateways, and Route-based gateways are the same as Dynamic gateways.
+Az alábbi tábla a házirendalapú és az útválasztó-alapú VPN Gatewayek követelményeit. Ez a tábla a Resource Managerrel végzett és a klasszikus üzembe helyezési modellre is érvényes. A klasszikus modell esetében a házirendalapú VPN Gatewayek ugyanazok, mint a statikus átjárók, az útválasztó-alapú átjárók pedig ugyanazok, mint a dinamikus átjárók.
 
 
-|   | **Policy-based Basic VPN Gateway** | **Route-based Basic VPN Gateway** | **Route-based Standard VPN Gateway**   | **Route-based High Performance VPN Gateway** |
+|   | **Házirendalapú alapszintű VPN Gateway** | **Útválasztó-alapú alapszintű VPN Gateway** | **Útválasztó-alapú standard VPN Gateway**   | **Útválasztó-alapú nagy teljesítményű VPN Gateway** |
 |---|---------------------------------------|---------------------------------------|----------------------------|----------------------------------|
-|    **Site-to-Site connectivity   (S2S)**  | Policy-based VPN configuration        | Route-based VPN configuration  | Route-based VPN configuration     | Route-based VPN configuration    |
-| **Point-to-Site connectivity (P2S**)      | Not supported   | Supported (Can coexist with S2S)  | Supported (Can coexist with S2S)  | Supported (Can coexist with S2S) |
-| **Authentication method**                 |    Pre-shared key  | Pre-shared key for S2S connectivity, Certificates for P2S connectivity | Pre-shared key for S2S connectivity, Certificates for P2S connectivity | Pre-shared key for S2S connectivity, Certificates for P2S connectivity |
-| **Maximum number of S2S connections**       | 1                              | 10                                                                    | 10                                | 30                               |
-| **Maximum number of P2S connections**       | Not supported                  | 128                                                                   | 128                               | 128                              |
-|**Active routing support (BGP)**           | Not supported                  | Not supported                                                         | Not supported                     | Not supported                    |
+|    **Helyek közötti kapcsolat   (S2S)**  | Házirendalapú VPN-konfiguráció        | Útválasztó-alapú VPN-konfiguráció  | Útválasztó-alapú VPN-konfiguráció     | Útválasztó-alapú VPN-konfiguráció    |
+| **Pont–hely típusú kapcsolat (P2S**)      | Nem támogatott   | Támogatott (párhuzamosan használható az S2S mellett)  | Támogatott (párhuzamosan használható az S2S mellett)  | Támogatott (párhuzamosan használható az S2S mellett) |
+| **Hitelesítési módszer**                 |    Előre megosztott kulcs  | Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz | Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz | Előre megosztott kulcs S2S-kapcsolatokhoz, tanúsítvány P2S-kapcsolatokhoz |
+| **S2S-kapcsolatok maximális száma**       | 1                              | 10                                                                    | 10                                | 30                               |
+| **P2S-kapcsolatok maximális száma**       | Nem támogatott                  | 128                                                                   | 128                               | 128                              |
+|**Aktív útválasztás-támogatás (BGP)**           | Nem támogatott                  | Nem támogatott                                                         | Nem támogatott                     | Nem támogatott                    |
  
+
+
+<!--HONumber=Jun16_HO2-->
+
+

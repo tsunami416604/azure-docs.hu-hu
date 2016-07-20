@@ -1,15 +1,21 @@
-The Database Transaction Unit (DTU) is the unit of measure in SQL Database that represents the relative power of databases based on a real-world measure: the database transaction. We took a set of operations that are typical for an online transaction processing (OLTP) request, and then measured how many transactions could be completed per second under fully loaded conditions (that’s the short version, you can read the gory details in the [Benchmark overview](../articles/sql-database/sql-database-benchmark-overview.md)). 
+A Database Transaction Unit (DTU) az SQL Database mértékegysége, amely valós mérték, az adatbázisadatbázis-tranzakciók alapján jelöli az adatbázisok teljesítményszintjét. Egy online tranzakció-feldolgozási (OLTP-) kérésre jellemző műveletkészlet esetében megmértük, hogy teljes terhelés mellett hány tranzakció teljesíthető másodpercenként (ez a rövid verzió, a részleteket a [referenciaalap áttekintésében](../articles/sql-database/sql-database-benchmark-overview.md) olvashatja). 
 
-For example, a Premium P11 database with 1750 DTUs provides 350x more DTU compute power than a Basic database with 5 DTUs. 
+Például egy 1750 DTU-val rendelkező Prémium P11 adatbázis 350x több DTU számítási teljesítményt nyújt, mint egy 5 DTU-val rendelkező Alapszintű adatbázis. 
 
-![Intro to SQL Database: Single database DTUs by tier and level.](./media/sql-database-understanding-dtus/single_db_dtus.png)
+![Bevezetés az SQL Database-be: önálló adatbázis DTU-k rétegek és szintek szerint.](./media/sql-database-understanding-dtus/single_db_dtus.png)
 
->[AZURE.NOTE] If you are migrating an existing SQL Server database, you can use a third-party tool, [the Azure SQL Database DTU Calculator](http://dtucalculator.azurewebsites.net/), to get an estimate of the performance level and service tier your database might require in Azure SQL Database.
+>[AZURE.NOTE] Egy létező SQL Server-adatbázis áttelepítésekor egy külső eszközzel, [az Azure SQL Database DTU kalkulátorával](http://dtucalculator.azurewebsites.net/) megbecsülheti azt a teljesítményszintet és szolgáltatásréteget, amelyre az adatbázisnak szüksége lehet az Azure SQL Database-ben.
 
-### DTU vs. eDTU
+### DTU és eDTU
 
-The DTU for single databases translates directly to the eDTU for elastic databases. For example, a database in a Basic elastic database pool offers up to 5 eDTUs. That’s the same performance as a single Basic database. The difference is that the elastic database won’t consume any eDTUs from the pool until it has to. 
+A DTU az önálló adatbázisok esetében ugyanaz, mint az eDTU a rugalmas adatbázisoknál. Egy Alapszintű rugalmas adatbáziskészletben található adatbázis például legfeljebb 5 eDTU-t kínál. Ez ugyanaz a teljesítmény, mint egy önálló Alapszintű adatbázis esetében. A különbség abban rejlik, hogy a rugalmas adatbázis addig nem használ fel eDTU-t a készletből, amíg rá nem kényszerül. 
 
-![Intro to SQL Database: Elastic pools by tier.](./media/sql-database-understanding-dtus/sqldb_elastic_pools.png)
+![Bevezetés az SQL Database-be: rugalmas készletek rétegek szerint.](./media/sql-database-understanding-dtus/sqldb_elastic_pools.png)
 
-A simple example helps. Take a Basic elastic database pool with 1000 DTUs and drop 800 databases in it. As long as only 200 of the 800 databases are being used at any point in time (5 DTU X 200 = 1000), you won’t hit capacity of the pool, and database performance won’t degrade. This example is simplified for clarity. The real math is a bit more involved. The portal does the math for you, and makes a recommendation based on historical database usage. See [Price and performance considerations for an elastic database pool](../articles/sql-database/sql-database-elastic-pool-guidance.md) to learn how the recommendations work, or to do the math yourself. 
+Egy egyszerű példa segíthet. Vegyünk egy 1000 DTU-val ellátott Alapszintű rugalmas adatbáziskészletet, és helyezzünk bele 800 adatbázist. Amíg bármilyen időpontban csak 200 adatbázist használ a 800-ból (5 DTU X 200 = 1000), addig nem éri el a készlet kapacitását, és az adatbázis teljesítménye nem csökken. Ezt a példát az érthetőség kedvéért leegyszerűsítettük. A valódi számítás egy kicsit bonyolultabb. A portál elvégzi Ön helyett a számításokat, és javaslatot tesz az adatbázis-használati előzmények alapján. Ha szeretné megtudni, hogyan működnek a javaslatok, vagy ha szeretné maga elvégezni a számításokat, akkor tekintse meg [a rugalmas adatbáziskészlet költségekkel és teljesítménnyel kapcsolatos tudnivalóit](../articles/sql-database/sql-database-elastic-pool-guidance.md). 
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

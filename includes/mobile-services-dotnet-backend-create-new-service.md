@@ -1,21 +1,27 @@
 
-Follow these steps to create a new mobile service.
+Kövesse az alábbi lépéseket egy új mobilszolgáltatás létrehozásához.
 
-1.	Log into the [Azure classic portal](https://manage.windowsazure.com/). At the bottom of the navigation pane, click **+NEW**. Expand **Compute** and **Mobile Service**, then click **Create**.
-	
-	![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create.png)
+1.  Jelentkezzen be a [klasszikus Azure portálon](https://manage.windowsazure.com/). A navigációs ablaktábla alján kattintson a **+NEW** (+ÚJ) gombra. Bontsa ki a **Compute** (Számítás) és a **Mobile Service** (Mobilszolgáltatás) csomópontokat, majd kattintson a **Create** (Létrehozás) pontra.
+    
+    ![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create.png)
 
-	This displays the **Create a Mobile Service** dialog.
+    Ekkor megjelenik a **Create a Mobile Service** (Mobilszolgáltatás létrehozása) párbeszédablak.
 
-2.	In the **Create a Mobile Service** page, select **Create a free 20 MB SQL Database**, select **.NET** runtime, then type a subdomain name for the new mobile service in the **URL** textbox. Click the right arrow button to go to the next page.
-	
-	![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page1.png)
+2.  A **Create a Mobile Service** (Mobilszolgáltatás létrehozása) oldalon válassza az **Create a free 20 MB SQL Database** (Ingyenes 20 MB-os SQL-adatbázis létrehozása) lehetőséget, majd a **.NET** futtatókörnyezetet, és az **URL** mezőben adjon meg egy nevet az új mobilszolgáltatás altartományához. Kattintson a jobbra mutató nyílra a következő oldalra lépéshez.
+    
+    ![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page1.png)
 
-	This displays the **Specify database settings** page.
+    Ekkor megjelenik az **Specify database settings** (Adatbázis beállításainak megadása) oldal.
 
-	> [AZURE.NOTE] As part of this tutorial, you create a new SQL Database instance and server. You can reuse this new database and administer it as you would any other SQL Database instance. If you already have a database in the same region as the new mobile service, you can instead choose **Use existing Database** and then select that database. The use of a database in a different region is not recommended because of additional bandwidth costs and higher latencies.
+    > [AZURE.NOTE] Ebben az oktatóprogramban létre fog hozni egy új SQL Database-példányt és -kiszolgálót. Ezt az új adatbázist újra használhatja, és felügyelheti úgy, mint akármelyik SQL Database-példányt. Ha már rendelkezik adatbázissal az új mobilszolgáltatással megegyező régióban, választhatja a **Use existing Database** (Létező adatbázis használata) lehetőséget, miután kiválaszthatja azt. Más régióban található adatbázis használata nem ajánlott, mert ez további sávszélességi költségekkel és nagyobb késleltetéssel jár.
 
-3.	In **Name**, type the name of the new database, then type **Login name**, which is the administrator login name for the new SQL Database server, type and confirm the password, and click the check button to complete the process.
-	![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page2.png)
+3.  A **Name** (Név) mezőben adja meg az új adatbázis nevét, adja meg a bejelentkezési nevet (**Login name**), ez a rendszergazda bejelentkezési neve az új SQL Database-kiszolgálón, erősítse meg a jelszót, végül kattintson a pipa gombra a folyamat befejezéséhez.
+    ![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page2.png)
 
-You have now created a new mobile service that can be used by your mobile apps.
+Ezzel létrehozott egy új mobilszolgáltatást, amelyet használhat a mobilalkalmazásaival.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

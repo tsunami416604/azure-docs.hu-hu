@@ -1,31 +1,36 @@
-To create a VNet by using the Azure portal, follow the steps below. Note that the screenshots are provided as examples. Be sure to replace the values with your own. For more information about working with virtual networks, see the [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md).
+Az alábbi lépésekkel hozhat létre egy VNetet az Azure portállal. Vegye figyelembe, hogy a képernyőképek csak példaként szolgálnak. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. További információ a virtuális hálózatok használatáról: [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md) (Virtuális hálózatok áttekintése).
 
-1. From a browser, navigate to the [Azure portal](http://portal.azure.com) and, if necessary, sign in with your Azure account.
+1. Egy böngészőből keresse fel az [Azure portált](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
 
-2. Click **New** **>** **Networking** **>** **Virtual Network**.
+2. Kattintson az **Új** **>** **Hálózatkezelés** **>** **Virtuális hálózat** elemre.
 
-	![VNetBlade](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal650.png)
+    ![VNetBlade](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal650.png)
 
-3. Near the bottom of the Virtual Network blade, from the **Select a deployment model** list, select **Resource Manager**, and then click **Create**.
-
-
-	![Select Resource Manager](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png)
-
-4. On the **Create virtual network** blade, configure the VNet settings. In this blade, you'll add your first address space and a single subnet address range. After you finish creating the VNet, you can go back and add additional subnets and address spaces. This is a current limitation of the portal. You can always come back to update these values by editing the VNet properties in the portal, or by using PowerShell. The values that you use will depend on the configuration you want to create. Be sure to refer to your planned configuration values. 
-
-	![Create virtual network blade](./media/vpn-gateway-basic-vnet-rm-portal-include/createavnet250.png)
-
-5. Verify that the **Subscription** is the correct one. You can change subscriptions by using the dropdown.
-
-6. Click **Resource group** and either select an existing resource group, or create a new one by typing a name for your new resource group. If you are creating a new group, name the resource group according to your planned configuration values. For more information about resource groups, visit [Azure Resource Manager Overview](resource-group-overview.md#resource-groups).
-
-7. Next, select the **Location** settings for your VNet. Note that the location will determine where the resources that you deploy to this VNet will reside. You can't change this later without redeploying your resources.
-
-8. Select **Pin to dashboard** if you want to be able to find your VNet easily on the dashboard, and then click **Create**.
-	
-	![Pin to dashboard](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png)
+3. A Virtuális hálózat panel alján, a **Telepítési modell kiválasztása** listában válassza ki a **Resource Manager** elemet, majd kattintson a **Létrehozás** elemet.
 
 
-9. After clicking Create, you will see a tile on your dashboard that will reflect the progress of your VNet. The tile will change as the VNet is being created.
+    ![A Resource Manager kiválasztása](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png)
 
-	![Creating virtual network tile](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png)
+4. A **Virtuális hálózat létrehozása** panelen konfigurálja a VNet beállításait. Ezen a panelen adhatja majd hozzá az első címterét és egy önálló alhálózati címtartományt. A VNet létrehozása után visszaléphet, és további alhálózatokat és címtereket vehet fel. Ez az aktuális korlátozás a portál miatt van. Bármikor visszatérhet, és frissítheti ezeket az értékeket a VNet tulajdonságainak a portálon vagy a PowerShell használatával történő módosításával. A használt értékek a létrehozni kívánt konfigurációtól függnek majd. Ügyeljen arra, hogy a tervezett konfiguráció értékeit használja. 
+
+    ![Virtuális hálózat létrehozása panel](./media/vpn-gateway-basic-vnet-rm-portal-include/createavnet250.png)
+
+5. Ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg a **Subscription** (Előfizetés) résznél. Az előfizetéseket a legördülő menüben módosíthatja.
+
+6. Kattintson a **Resource group** (Erőforráscsoport) elemre, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat az új erőforráscsoport nevének beírásával. Ha új csoportot hoz létre, a tervezett konfigurációs értékeknek megfelelően nevezze el az erőforráscsoportot. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](resource-group-overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
+
+7. Ezután válassza ki a VNethez tartozó **Location** (Hely) beállításokat. Vegye figyelembe, hogy ez a hely határozza meg a VNeten üzembe helyezett erőforrások helyét. Ezt a későbbiekben csak az erőforrások ismételt üzembe helyezésével módosíthatja.
+
+8. Ha szeretné könnyen megtalálni a VNetet az irányítópulton, akkor válassza a **Pin to dashboard** (Rögzítés az irányítópulton) lehetőséget, majd kattintson a **Create** (Létrehozás) gombra.
+    
+    ![Rögzítés az irányítópulton](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png)
+
+
+9. A Create (Létrehozás) gombra kattintva létrejön egy csempe az irányítópulton, amely a VNet állapotát mutatja. A VNet létrejöttével a csempe is módosul.
+
+    ![Virtuális hálózat csempéjének létrehozása](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png)
+
+
+<!--HONumber=Jun16_HO2-->
+
+

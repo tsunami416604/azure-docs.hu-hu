@@ -1,20 +1,25 @@
 
-The mobile service project that you download lets you to run your new mobile service right on your local computer or virtual machine. This makes it easy to debug your service code before you even publish it to Azure.
+A letölthető mobilszolgáltatás-projekt lehetővé teszi az új mobilszolgáltatás futtatását a helyi számítógépén vagy virtuális gépén. Így egyszerűen kijavíthatja a szolgáltatáskód hibáit, mielőtt közzétenné az Azure-on.
 
-In this section, you will test your new app against the mobile service running locally.
+Ebben a szakaszban tesztelni fogja az új alkalmazást a helyileg futó mobilszolgáltatáson.
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the solution file in Visual Studio.
+1. Keresse meg a helyet, ahová a tömörített projektfájlokat mentette, tömörítse ki a fájlokat a számítógépre, és nyissa meg a megoldásfájlt a Visual Studióban.
 
-2. In the Solution Explorer in Visual Studio, right-click your service project, click **Set as StartUp Project**, and then press the **F5** key to build the project and start the mobile service locally.
+2. A Visual Studio Solution Explorerben (Megoldáskezelőben) kattintson a jobb egérgombbal szolgáltatásprojektre, kattintson a **Set as StartUp Project** (Beállítás indítási projektként) lehetőségre, majd nyomja le az **F5** billentyűt a projekt felépítéséhez és a mobilszolgáltatás helyi indításához.
 
-	![](./media/mobile-services-dotnet-backend-test-local-service-dotnet/mobile-service-startup.png)
+    ![](./media/mobile-services-dotnet-backend-test-local-service-dotnet/mobile-service-startup.png)
 
-	A web page is displayed after the mobile service starts successfully.
+    Miután a mobilszolgáltatás sikeresen elindul, megjelenik egy weboldal.
 
-3. To test the store app, right-click your client app project, click **Set as StartUp Project**, and then press the **F5** key to rebuild the project and start the app.
+3. Az áruházbeli alkalmazás teszteléséhez kattintson a jobb egérgombbal az ügyfélalkalmazás-projektjére, kattintson a **Set as StartUp Project** (Beállítás indítási projektként) lehetőségre, majd nyomja le az **F5** billentyűt a projekt újraépítéséhez és az alkalmazás indításához.
 
-	This starts the app, which connects to the local mobile service instance.	
+    Ekkor elindul az alkalmazás, amely a helyi mobilszolgáltatás-példányhoz csatlakozik.   
 
-4. In the app, type meaningful text, such as _Complete the tutorial_, in **Insert a TodoItem**, and then click **Save**.
+4. Az alkalmazásban írjon be egy jelentéssel bíró szöveget az **Insert a TodoItem** (Tennivaló beszúrása) mezőbe, például _Az oktatóanyag befejezése_, majd kattintson a **Save** (Mentés) gombra.
 
-	This sends a POST request to the local mobile service. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the second column in the app.
+    Ez egy POST kérést küld a helyi mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek az alkalmazás második oszlopában jelennek meg.
+
+
+<!--HONumber=Jun16_HO2-->
+
+

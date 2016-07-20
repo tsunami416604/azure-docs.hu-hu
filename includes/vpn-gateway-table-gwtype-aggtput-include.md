@@ -1,8 +1,13 @@
-|    | **VPN Gateway throughput (1)** | **VPN Gateway max IPsec tunnels (2)** | **ExpressRoute Gateway throughput** | **VPN Gateway and ExpressRoute coexist**|
+|    | **VPN Gateway teljesítménye (1)** | **VPN Gateway IPsec-alagútjainak maximális száma (2)** | **ExpressRoute-átjáró teljesítménye** | **VPN Gateway és ExpressRoute párhuzamos használata**|
 |--- |----------------------------|-----------------------------------|-------------------------------------|-----------------------------------------|
-| **Basic SKU**              |  100 Mbps | 10                         |  500 Mbps                           | No   |
-| **Standard SKU**           |  100 Mbps | 10                         | 1000 Mbps                           | Yes  |
-| **High Performance SKU**   | 200 Mbps  | 30                         | 2000 Mbps                           | Yes  |
+| **Alapszintű termékváltozat**              |  100 Mbps | 10                         |  500 Mbps                           | Nem   |
+| **Standard termékváltozat**           |  100 Mbps | 10                         | 1000 Mbps                           | Igen  |
+| **Nagy teljesítményű termékváltozat**   | 200 Mbps  | 30                         | 2000 Mbps                           | Igen  |
 
-- (1) The VPN throughput is a rough estimate based on the measurements between VNets in the same Azure region. It is not a guarantee of what you can get for cross-premises connections across the Internet, but should be used as a maximum possible measure.
-- (2) The number of tunnels refer to route-based VPN below. A policy-based VPN can only support one Site-to-Site VPN tunnel
+- (1)A VPN teljesítménye hozzávetőleges becslés az ugyanazon Azure-régióban található VNetek közötti mérések alapján. Nem garantált, hogy ezt fogja tapasztalni a létesítmények közötti internetes kapcsolatok során, viszont érdemes maximális lehetséges mértékként használni.
+- (2)Az alagutak száma az alábbi útvonalalapú VPN-re utal. A házirendalapú VPN csak helyek közötti VPN-alagutatak támogat
+
+
+<!--HONumber=Jun16_HO2-->
+
+

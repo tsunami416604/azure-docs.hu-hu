@@ -1,21 +1,26 @@
-#### To create public endpoints on the virtual device
+#### Nyilvános végpontok létrehozása a virtuális eszközön
 
-1. Sign in to the Azure classic portal.
+1. Jelentkezzen be a klasszikus Azure portálra.
 
-- Click **Virtual Machines**, and then select the virtual machine that is being used as your virtual device.
+- Kattintson a **Virtual Machines** elemre, majd válasszon ki egy, virtuális eszközként használni kívánt virtuális gépet.
 
-- Click **Endpoints**. The **Endpoints** page lists all endpoints for the virtual machine.
+- Kattintson a **Végpontok** elemre. A **Végpontok** lapon megjelennek a virtuális gép végpontjai.
 
-- Click **Add**. The **Add Endpoint** dialog box appears. Click the arrow to continue.
+- Kattintson a **Hozzáadás** parancsra. Megjelenik a **Végpont hozzáadása** párbeszédpanel. A folytatáshoz kattintson a nyílra.
 
-- For the **Name**, type the following name for the endpoint: **WinRMHttps**.
+- A **Név** mezőbe írja be a végponthoz a következő nevet: **WinRMHttps**.
 
-- For the **Protocol**, specify **TCP**.
+- A **Protokoll** mezőben adja meg a **TCP** lehetőséget.
 
-- For the **Public Port**, type the port numbers that you want to use for the connection.
+- A **Nyilvános port** mezőbe írja be a csatlakozáshoz használni kívánt portok számát.
 
-- For the **Private Port**, type **5986**.
+- A **Magánhálózati port** mezőbe írja be az **5986** értéket.
 
-- Click the check mark to create the endpoint.
+- Kattintson a pipa jelre a végpont létrehozásához.
 
-After the endpoint is created, you can view its details to determine the Public Virtual IP (VIP) address. Record this address.
+Ha létrehozta a végpontot, a részletek között megnézheti a nyilvános virtuális IP-címet (VIP). Jegyezze fel ezt az IP-címet.
+
+
+<!--HONumber=Jun16_HO2-->
+
+

@@ -1,34 +1,40 @@
-### Add or remove prefixes if you haven't yet created a VPN gateway connection
+### Előtagok felvétele vagy eltávolítása, ha még nem hozott létre VPN Gateway-kapcsolatot
 
-- **To add** additional address prefixes to a local network gateway that you created, but that doesn't yet have a VPN gateway connection, use the example below.
+- Ha további címelőtagokat szeretne **felvenni** egy Ön által létrehozott hálózati átjáróra, de az még nem rendelkezik VPN Gateway-kapcsolattal, akkor használja a lenti példát.
 
-		$local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
-		Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+        $local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
+        Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
 
 
-- **To remove** an address prefix from a local network gateway that doesn't have a VPN connection, use the example below. Leave out the prefixes that you no longer need. In this example, we no longer need prefix 20.0.0.0/24 (from the previous example), so we will update the local network gateway and exclude that prefix.
+- Ha szeretne **eltávolítani** egy címelőtagot egy hálózati átjáróból, amely nem rendelkezik VPN-kapcsolattal, akkor használja az alábbi példát. Hagyja ki azokat címelőtagokat, amelyekre már nincs szüksége. Ebben a példában a 20.0.0.0/24 előtagra (az előző példából) már nincs szükségünk, ezért frissítjük a helyi hálózati átjárót, és kihagyjuk ezt az előtagot.
 
-		$local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
-		Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
+        $local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
+        Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
 
-### Add or remove prefixes if you've already created a VPN gateway connection
+### Előtagok felvétele vagy eltávolítása, ha már létrehozott egy VPN Gateway-kapcsolatot
 
-If you have created your VPN connection and want to add or remove the IP address prefixes contained in your local network gateway, you'll need to do the following steps in order. This will result in some downtime for your VPN connection.
+Ha már létrehozott egy VPN-kapcsolatot, és szeretné felvenni vagy eltávolítani a helyi hálózati átjáróban tárolt IP-címelőtagokat, akkor az alábbi lépéseket kell sorban végrehajtania. Ez némi állásidőt jelent majd a VPN-kapcsolata számára.
 
->[AZURE.IMPORTANT] Don’t delete the VPN gateway. If you do so, you’ll have to go back through the steps to recreate it, as well as reconfigure your on-premises router with the new settings.
+>[AZURE.IMPORTANT] Ne törölje a VPN Gatewayt. Ha törli, akkor újra végre kell hajtania a létrehozásához szükséges lépéseket, valamint a helyszíni útválasztót is újra kell konfigurálnia az új beállításokkal.
  
-1. Remove the IPsec connection. 
-2. Modify the prefixes for your local network gateway. 
-3. Create a new IPsec connection. 
+1. Távolítsa el az IPsec-kapcsolatot. 
+2. Módosítsa a helyi hálózati átjáró előtagjait. 
+3. Hozzon létre egy új IPsec-kapcsolatot. 
 
-You can use the following sample as a guideline.
+A következő mintát útmutatóként használhatja.
 
-	$gateway1 = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-	$local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
+    $gateway1 = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+    $local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 
-	Remove-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
+    Remove-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
 
-	$local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
-	Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
-	
-	New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+    $local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
+    Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+    
+    New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

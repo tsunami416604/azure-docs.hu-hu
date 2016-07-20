@@ -1,1 +1,6 @@
-> [AZURE.NOTE] In Azure AD B2C, your policy's name will be prefixed with `b2c_1_`, like `b2c_1_sign_up`.  You are free to use your policies across all of your apps, both client and server.  If you've previously created policies in another B2C walk-through, there is no need to do so again. You may reuse the policies you've previously created in the portal if they match the requirements of the application.
+> [AZURE.NOTE] Az Azure AD B2C-ben a házirend neve elé a `b2c_1_` előtag kerül, pl.: `b2c_1_sign_up`.  A házirendeket minden alkalmazásában szabadon használhatja, mind az ügyfél-, mind a kiszolgálóverziók esetén.  Ha a házirendeket korábban, egy másik B2C részletes útmutató alapján már létrehozta, ezt a lépést nem kell újra megismételnie. Használhatja az előzőleg létrehozott házirendeket, ha azok megfelelnek az alkalmazás követelményeinek.
+
+
+<!--HONumber=Jun16_HO2-->
+
+

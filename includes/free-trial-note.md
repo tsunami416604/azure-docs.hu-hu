@@ -1,5 +1,11 @@
-> [AZURE.NOTE] <a name="note"></a>You need an Azure account to complete this tutorial:
+> [AZURE.NOTE] <a name="note"></a>A jelen oktatóanyag elvégzéséhez Azure-fiókra van szükség:
   >
-  > + You can [open an Azure account for free](/pricing/free-trial/?WT.mc_id=A261C142F): You get credits you can use to try out paid Azure services, and even after they're used up you can keep the account and use free Azure services, such as Websites. Your credit card will never be charged, unless you explicitly change your settings and ask to be charged.
+  > + [Ingyenesen is létrehozhat egy Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F): A kapott kreditek használatával kipróbálhatja a fizetős Azure-szolgáltatásokat, sőt, azok lejárta után is megtarthatja a fiókot, és továbbra is használhatja az ingyenes Azure-szolgáltatásokat (amilyen például a Websites). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez.
   >
-  > + You can [activate MSDN subscriber benefits](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Your MSDN subscription gives you credits every month that you can use for paid Azure services.
+  > + [Aktiválhatja MSDN-előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Az MSDN-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+

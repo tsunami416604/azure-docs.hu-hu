@@ -1,48 +1,54 @@
 <!--author=alkohli last changed: 9/17/15-->
 
-#### To add a storage account in StorSimple 8000 Series Update 1.0
+#### Tárfiók hozzáadása a StorSimple 8000 Series 1.0-s frissítésében
 
-1. On the StorSimple Manager service landing page, select your service and double-click it. This will take you to the **Quick Start** page. Select the **Configure** page.
+1. A StorSimple Manager szolgáltatás kezdőlapján válasza ki a szolgáltatást, és kattintson rá duplán. Ekkor a **Gyors üzembe helyezés** oldalra kerül. Válassza a **Konfigurálás** lapot.
 
-2. Click **Add/edit storage account**.
+2. Kattintson a **Tárfiók hozzáadása/szerkesztése** elemre.
 
-3. In the **Add/Edit Storage Account** dialog box, click **Add new**.
+3. A **Tárfiók hozzáadása/szerkesztése** párbeszédpanelen kattintson az **Új hozzáadása** parancsra.
 
-4. In the **Provider** field, select the appropriate cloud service provider. The supported providers are Azure, Amazon S3, Amazon S3 with RRS, HP and OpenStack. Specify the credentials and the location associated with the storage account of your cloud service providers. The fields presented for credentials will be different depending upon the cloud service provider you have specified. 
-  - If you have selected Azure as your cloud service provider, supply the **Name** and the primary **Access Key** for your Microsoft Azure storage account. For an Azure account, the location will be automatically populated.
+4. A **Szolgáltató** mezőben válassza ki a kívánt felhőszolgáltatót. A támogatott szolgáltatók a következők: Azure, Amazon S3, Amazon S3 with RRS, HP és OpenStack. Adja meg a felhőszolgáltatók tárfiókjához tartozó hitelesítő adatokat és helyet. A hitelesítő adatok megadására szolgáló mezők a megadott felhőszolgáltatóktól függően eltérhetnek. 
+  - Ha az Azure felhőszolgáltatást választotta, adja meg a Microsoft Azure-tárfiókhoz tartozó **nevet** és az elsődleges **elérési kulcsot**. Azure-fiók esetén a hely mező automatikusan ki lesz töltve.
 
         ![Add Azure storage account](./media/storsimple-configure-new-storage-account-u1/AddAzureStorageaccount-include.png)
 
- - If you have selected Amazon S3 or Amazon S3 with RRS, provide a friendly **Storage Account name**, **Access Key**, and **Secret Key**. For Amazon S3 and Amazon S3 with RRS, the following locations are supported:
+ - Ha az Amazon S3 vagy az Amazon S3 with RRS szolgáltatót választotta, adjon meg egy rövid **tárfióknevet**, **elérési kulcsot** és **titkos kulcsot**. Az Amazon S3 és az Amazon S3 with RRS esetén az alábbi helyek támogatottak:
 
-		- US Standard
-		- US West (Oregon)
-		- US West (Northern California)
-		- EU (Ireland)
-		- Asia Pacific (Singapore)
-		- Asia Pacific (Sydney)
-		- Asia Pacific (Tokyo)
-		- South America (Sao Paulo)
+        - US Standard
+        - US West (Oregon)
+        - US West (Northern California)
+        - EU (Ireland)
+        - Asia Pacific (Singapore)
+        - Asia Pacific (Sydney)
+        - Asia Pacific (Tokyo)
+        - South America (Sao Paulo)
 
         ![Add Amazon storage account](./media/storsimple-configure-new-storage-account-u1/AddAmazonStorageaccount-include.png)
-	  		
- - If you have selected HP as your cloud service provider, supply a friendly **Storage Account Name**, **Tenant ID**, **Username**, and **Password**. For HP, the following locations are supported:
+            
+ - Ha a HP felhőszolgáltatót választotta, adjon meg egy rövid **tárhelyfióknevet**, **bérlőazonosítót**, **felhasználónevet** és **jelszót**. A HP esetén az alábbi helyek támogatottak:
 
-		- US East
-		- US West
-	  
+        - US East
+        - US West
+      
         ![Add HP storage account](./media/storsimple-configure-new-storage-account-u1/AddHPStorageaccount-include.png)
-	  		
- - If you have selected **Openstack** as your cloud service provider, provide a **Hostname**, **Access Key**, and **Secret Key**.
+            
+ - Ha az **Openstack** felhőszolgáltatót választotta, adjon meg egy **állomásnevet**, **elérési kulcsot** és **titkos kulcsot**.
 
-        > [AZURE.NOTE] For all the cloud service providers, excluding Azure, a friendly name is allowed. You can use different friendly names and create more than one storage account with the same set of credentials.
+        > [AZURE.NOTE] Az Azure kivételével minden felhőszolgáltató esetén egy rövid nevet is megadhat. Ugyanazon hitelesítő adatokkal, de több különböző rövid névvel több tárfiókot is létrehozhat.
 
         ![Add Openstack storage account](./media/storsimple-configure-new-storage-account-u1/AddOpenstackStorageaccount-include.png)
 
-5. Select **Enable SSL Mode** to create a secure channel for network communication between your device and the cloud. Clear the **Enable SSL Mode** check box only if you are operating within a private cloud.
+5. Válassza az **SSL-mód engedélyezése** lehetőséget, ha egy biztonságos csatornát szeretne létrehozni az eszköz és a felhő közötti hálózati kommunikációhoz. Csak akkor törölje a jelölést az **SSL-mód engedélyezése** jelölőnégyzetből, ha magánfelhőben tevékenykedik.
 
-      > [AZURE.NOTE] If you are using HP as your provider, SSL will always be enabled.
-  		
-6. Click the check icon ![check icon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). You will be notified after the storage account is successfully created.
+      > [AZURE.NOTE] Ha a HP szolgáltatót választotta, akkor az SSL-mód mindig engedélyezve van.
+        
+6. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). Értesítést kap, ha a tárfiók sikeresen létrejött.
 
-7. The newly created storage account will be displayed on the **Configure** page under **Storage accounts**. Click **Save** to save the new storage account. Click **OK** when prompted for confirmation.
+7. Az újonnan létrehozott tárfiók megjelenik a **Tárfiókok** terület **Konfigurálás** lapján. Az új tárfiók mentéséhez kattintson a **Mentés** gombra. Ha a rendszer megerősítést kér, kattintson az **OK** gombra.
+
+
+
+<!--HONumber=Jun16_HO2-->
+
+
