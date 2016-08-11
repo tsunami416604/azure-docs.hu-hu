@@ -24,7 +24,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure-portál](sql-database-get-started.md)
-- [C##](sql-database-get-started-csharp.md)
+- [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
 Oktatóanyagunkból elsajátíthatja, hogyan hozhatja létre a következőket az Azure-portálon:
@@ -62,6 +62,6 @@ Miután áttanulmányozta az SQL Database oktatóanyagát, és létrehozott egy 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!---HONumber=Jun16_HO2-->
 
 
