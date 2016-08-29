@@ -218,7 +218,7 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-windows-phone-send-breaking-news.md
 [bejelentéskatalógussal]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[csempekatalógus]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[csempekatalógussal]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hubs – Windows Phone Silverlight-oktatóanyagot]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 
 

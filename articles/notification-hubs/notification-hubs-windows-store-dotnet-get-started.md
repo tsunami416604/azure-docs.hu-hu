@@ -282,8 +282,8 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 
 [bejelentéskatalógussal]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[csempekatalógus]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[jelvények áttekintése]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[csempekatalógussal]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
+[jelvények áttekintésével]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
 
 

@@ -37,7 +37,7 @@ Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekint
 
 ![Microsoft Azure Machine Learning Studio képességek áttekintése][studio-overview]
 
-[studio áttekintése]: ./media/machine-learning-studio-overview-diagram/ml_studio_overview_v1.1.png
+[studio-overview]: ./media/machine-learning-studio-overview-diagram/ml_studio_overview_v1.1.png
 
 
 ## További segítség a Machine Learning Studio használatához

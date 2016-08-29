@@ -313,7 +313,7 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 [A Mobile Services használatának első lépéseit]: /develop/mobile/tutorials/get-started-xamarin-ios
 [klasszikus Azure portálra]: https://manage.windowsazure.com/
 [Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs útmutató iOS-hez]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs iOS rendszeren való használatával]: http://msdn.microsoft.com/library/jj927168.aspx
 [Az Xcode telepítése]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
