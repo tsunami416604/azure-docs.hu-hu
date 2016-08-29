@@ -510,7 +510,7 @@ Ebben az egyszerű példában értesítéseket küldött az összes Android-eszk
 [klasszikus Azure portál]: https://manage.windowsazure.com/
 [wns-objektum]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs útmutató Androidhoz]: http://msdn.microsoft.com/library/dn282661.aspx
+[Notification Hubs Android rendszeren való használatával]: http://msdn.microsoft.com/library/dn282661.aspx
 
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: /manage/services/notification-hubs/notify-users-aspnet
 [A legfrissebb hírek elküldése a Notification Hubs használatával]: /manage/services/notification-hubs/breaking-news-dotnet
