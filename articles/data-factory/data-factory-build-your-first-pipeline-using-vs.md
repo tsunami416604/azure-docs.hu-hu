@@ -1,0 +1,491 @@
+<properties
+    pageTitle="Az első data factory létrehozása (Visual Studio) | Microsoft Azure"
+    description="Az oktatóanyag során létre fog hozni egy minta Azure Data Factory-folyamatot a Visual Studio használatával."
+    services="data-factory"
+    documentationCenter=""
+    authors="spelluru"
+    manager="jhubbard"
+    editor="monicar"/>
+
+<tags
+    ms.service="data-factory"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article" 
+    ms.date="05/16/2016"
+    ms.author="spelluru"/>
+
+# Az első Azure data factory létrehozása a Microsoft Visual Studio használatával
+> [AZURE.SELECTOR]
+- [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md)
+- [A Data Factory Editor használata](data-factory-build-your-first-pipeline-using-editor.md)
+- [A PowerShell használata](data-factory-build-your-first-pipeline-using-powershell.md)
+- [A Visual Studio használata](data-factory-build-your-first-pipeline-using-vs.md)
+- [A Resource Manager-sablon használata](data-factory-build-your-first-pipeline-using-arm.md)
+
+
+Ez az oktatóanyag bemutatja, hogyan hozhatja létre első Azure data factoryját a Microsoft Visual Studio használatával. 
+
+## Előfeltételek
+
+1. Mielőtt továbblépne, **mindenképpen** olvassa el [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című cikket, és hajtsa végre az előfeltételként felsorolt lépéseket.
+2. Ez a cikk nem nyújt fogalmi áttekintést az Azure Data Factory szolgáltatásról. Javasoljuk, hogy a szolgáltatás részletes áttekintéséhez olvassa el az [Introduction to Azure Data Factory](data-factory-introduction.md) (Az Azure Data Factory bemutatása) című cikket.  
+
+## Data Factory-entitások létrehozása és üzembe helyezése  
+
+### Előfeltételek
+
+A számítógépre a következőket kell telepíteni: 
+
+- Visual Studio 2013 vagy Visual Studio 2015
+- Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
+- Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következőképpen is frissítheti: A menüben kattintson a **Tools** -> **Extensions and Updates** -> **Online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio** ->  **Update** (Eszközök > Bővítmények és frissítések > Online > Visual Studio-gyűjtemény > Microsoft Azure Data Factory-eszközök a Visual Studióhoz > Frissítések) elemre. 
+    
+    
+
+## Visual Studio-projekt létrehozása 
+1. Indítsa el a **Visual Studio 2013-at** vagy a **Visual Studio 2015-öt**. Kattintson a **File** (Fájl) menüre, mutasson a **New** (Új) elemre, és kattintson a **Project** (Projekt) lehetőségre. Meg kell jelennie a **New project** (Új projekt) párbeszédpanelnek.  
+2. A **New project** (Új projekt) párbeszédpanelen jelölje ki a **DataFactory** sablont, és kattintson az **Empty Data Factory Project** (Üres Data Factory-projekt) elemre.   
+
+    ![A New project (Új projekt) párbeszédpanel](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+
+3. Adja meg a projekt **nevét**, a **helyet**, valamint a **megoldás** nevét, és kattintson az **OK** gombra.
+
+    ![Megoldáskezelő](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
+
+## Társított szolgáltatások létrehozása
+A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Például a másolási tevékenység, amely adatokat másol a forrásadattárból a céladattárba, és a HDInsight Hive tevékenység, amely Hive-parancsfájlt futtat a bemeneti adatok kimeneti adatokká történő átalakításához. A data factory nevét és beállításait később, a Data Factory-megoldás közzétételekor fogja megadni.
+
+Ebben a lépésben társítani fogja az Azure Storage-fiókját és egy igény szerinti Azure HDInsight-fürtöt a data factoryjához. Ebben a példában az Azure Storage-fiók a bemeneti és a kimeneti adatokat tárolja a folyamathoz, a HDInsight társított szolgáltatás pedig a folyamat tevékenységében meghatározott Hive-parancsfájlt futtatja. Meg kell határoznia, hogy mely adattárat/számítási szolgáltatásokat használja a forgatókönyvben, és társított szolgáltatások létrehozásával a data factoryhoz kell társítania őket.  
+
+#### Azure Storage társított szolgáltatás létrehozása
+Ebben a lépésben társítani fogja az Azure Storage-fiókját a data factoryjához. A jelen oktatóanyag esetében ugyanazt az Azure Storage-fiókot fogja használni a bemeneti/kimeneti adatok és a HQL-parancsfájl tárolásához. 
+
+4. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **Linked Services** (Társított szolgáltatások) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) elemre.      
+5. Az **Add New Item** (Új elem hozzáadása) párbeszédpanelen válassza ki a listából az **Azure Storage Linked Service** (Azure Storage társított szolgáltatás) elemet, és kattintson az **Add** (Hozzáadás) parancsra. 
+3. Az **accountname** és az **accountkey**kifejezéseket cserélje az Azure Storage-tárfiókja nevére, illetve kulcsára. A tárelérési kulcs lekérésével kapcsolatos információk: [Tárelérési kulcsok megtekintése, másolása és újragenerálása](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
+
+    ![Azure Storage társított szolgáltatás](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
+
+4. Mentse az **AzureStorageLinkedService1.json** fájlt.
+
+#### Azure HDInsight társított szolgáltatás létrehozása
+Ebben a lépésben egy igény szerinti HDInsight-fürtöt fog társítani data factoryjához. A HDInsight-fürtöt a rendszer automatikusan létrehozza a futásidő során, majd törli a feldolgozás befejezését követően, miután egy adott ideig tétlen volt. Igény szerinti HDInsight-fürt helyett saját HDInsight-fürtöt is használhat. További információ: [Compute Linked Services](data-factory-compute-linked-services.md) (Számítási társított szolgáltatás). . 
+
+1. A **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal a **Linked Services** (Társított szolgáltatások) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) elemre.
+2. Válassza a **HDInsight On Demand Linked Service** (HDInsight igény szerinti társított szolgáltatás) lehetőséget, és kattintson az **Add** (Hozzáadás) parancsra. 
+3. Cserélje a **JSON-t** az alábbiakkal:
+
+        {
+          "name": "HDInsightOnDemandLinkedService",
+          "properties": {
+            "type": "HDInsightOnDemand",
+            "typeProperties": {
+              "version": "3.2",
+              "clusterSize": 1,
+              "timeToLive": "00:30:00",
+              "linkedServiceName": "AzureStorageLinkedService1"
+            }
+          }
+        }
+    
+    Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat:
+    
+    Tulajdonság | Leírás
+    -------- | -----------
+    Verzió | Megadja, hogy a HDInsight-fürtnek 3.2-es verziójúnak kell lennie. 
+    ClusterSize | Egy csomópontos HDInsight-fürtöt hoz létre. 
+    TimeToLive | Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer.
+    linkedServiceName | Megadja a HDInsight által előállított naplók tárolására szolgáló tárfiókot.
+
+    Vegye figyelembe a következőket: 
+    
+    - A Data Factory létrehoz egy **Windows-alapú** HDInsight-fürtöt a fenti JSON-fájllal. A szolgáltatás **Linux-alapú** HDInsight-fürtöt is képes létrehozni. További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás). 
+    - Igény szerinti HDInsight-fürt helyett **saját HDInsight-fürtöt** is használhat. További információ: [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (HDInsight társított szolgáltatás).
+    - A HDInsight-fürt létrehoz egy **alapértelmezett tárolót ** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez az elvárt működés. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer mindig létrehoz egy HDInsight-fürt, amikor fel kell dolgozni egy szeletet, kivéve, ha van meglévő élő fürt (**timeToLive**), majd a feldolgozás végén a rendszer törli a fürtöt.
+    
+        Ahogy egyre több szelet lesz feldolgozva, egyre több tároló jelenik meg az Azure Blob Storage-tárban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: „adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”. Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](http://storageexplorer.com/).
+
+    További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás). 
+4. Mentse a **HDInsightOnDemandLinkedService1.json** fájlt.
+
+## Adatkészletek létrehozása
+Ebben a lépésben adatkészleteket fog létrehozni, amelyek a Hive-feldolgozás bemeneti és kimeneti adatait képviselik. Ezek az adatkészletek az oktatóanyag során korábban létrehozott **AzureStorageLinkedService1** szolgáltatásra hivatkoznak. A társított szolgáltatás egy Azure Storage-fiókra mutat, az adatkészletek pedig meghatározzák a bemeneti és kimeneti adatokat tartalmazó tárban lévő tárolót, mappát és fájlnevet.   
+
+#### Bemeneti adatkészlet létrehozása
+
+1. A **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal a **Tables** (Táblák) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) lehetőségre. 
+2. Válassza ki a listából az **Azure Blob** lehetőséget, módosítsa a fájl nevét **InputDataSet.json** névre, és kattintson az **Add** (Hozzáadás) parancsra.
+3. A szerkesztőben cserélje a **JSON-t** az alábbiakkal: 
+
+    A JSON-kódrészletben hozza létre az **AzureBlobInput** nevű adatkészletet, amely a folyamat egyik tevékenységének bemeneti adatait képviseli. Emellett határozza meg azt is, hogy a bemeneti adatok az **adfgetstarted** nevű blob-tárolóban és az **inputdata** nevű mappában találhatók.
+        
+        {
+            "name": "AzureBlobInput",
+            "properties": {
+                "type": "AzureBlob",
+                "linkedServiceName": "AzureStorageLinkedService1",
+                "typeProperties": {
+                    "fileName": "input.log",
+                    "folderPath": "adfgetstarted/inputdata",
+                    "format": {
+                        "type": "TextFormat",
+                        "columnDelimiter": ","
+                    }
+                },
+                "availability": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "external": true,
+                "policy": {}
+            }
+        } 
+
+    Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat:
+
+  	| Tulajdonság | Leírás |
+  	| :------- | :---------- |
+  	| type | A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |  
+  	| linkedServiceName | A korábban létrehozott AzureStorageLinkedService1 szolgáltatásra hivatkozik. |
+  	| fileName | Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva. |
+  	| type | A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. | 
+  	| columnDelimiter | A naplófájlokban vesszővel (,) vannak elválasztva az oszlopok. |
+  	| frequency/interval | A frequency (gyakoriság) beállítása Month (Hónap), az interval (időköz) beállítása pedig 1, ami azt jelenti, hogy a bemeneti szeletek havonta érhetők el. | 
+  	| external | Ez a tulajdonság true (igaz) értékre van állítva, ha a bemeneti adatokat nem a Data Factory szolgáltatás hozta létre. | 
+      
+    
+3. Mentse az **InputDataset.json** fájlt. 
+
+ 
+#### Kimeneti adatkészlet létrehozása
+Most a kimeneti adatkészletet fogja létrehozni, amely az Azure Blob Storage-tárban tárolt kimeneti adatokat jelöli. 
+
+1. A **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal a **Tables** (Táblák) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) lehetőségre. 
+2. Válassza ki a listából az **Azure Blob** lehetőséget, módosítsa a fájl nevét **OutputDataset.json** névre, és kattintson az **Add** (Hozzáadás) parancsra. 
+3. A szerkesztőben cserélje a **JSON-t** az alábbiakkal: 
+
+    A JSON-kódrészletben hozza létre az **AzureBlobOutput** nevű adatkészletet, és határozza meg a Hive-parancsfájl által előállított adatok szerkezetét. Emellett határozza meg azt is, hogy az eredmények tárolása az **adfgetstarted** nevű blob-tárolóban és a **partitioneddata** nevű mappában történjen. Az **availability** (rendelkezésre állás) szakasz meghatározza, hogy a kimeneti adatkészlet előállítása havonta történik.
+    
+        {
+          "name": "AzureBlobOutput",
+          "properties": {
+            "type": "AzureBlob",
+            "linkedServiceName": "AzureStorageLinkedService1",
+            "typeProperties": {
+              "folderPath": "adfgetstarted/partitioneddata",
+              "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+              }
+            },
+            "availability": {
+              "frequency": "Month",
+              "interval": 1
+            }
+          }
+        }
+
+    A tulajdonságok leírását a **Bemeneti adatkészlet létrehozása** című szakaszban tekintheti meg. Külső adatkészlet esetén nem kell beállítani az external (külső) tulajdonságot, mert az adatkészletet a Data Factory szolgáltatás állítja elő.
+
+4. Mentse az **OutputDataset.json** fájlt.
+
+
+### Folyamat létrehozása
+Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező első folyamatát. Vegye figyelembe, hogy a bemeneti szelet havonta érhető el (frequency: Month, interval: 1), a kimeneti szelet előállítása havonta történik, és a tevékenység scheduler (ütemező) tulajdonsága szintén a hónap értékre van beállítva (lásd alább). A kimeneti adatkészlet és a tevékenységütemező beállításainak egyezniük kell. Jelenleg a kimeneti adatkészlet vezérli az ütemezést, ezért kimeneti adatkészletet akkor is létre kell hoznia, ha a tevékenység nem állít elő semmilyen kimenetet. Ha a tevékenység nem fogad semmilyen bemenetet, kihagyhatja a bemeneti adatkészlet létrehozását. Az alábbi JSON-fájlban használt tulajdonságok magyarázata a szakasz végén található.
+
+1. A **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal a **Pipelines** (Folyamatok) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) lehetőségre. 
+2. Válassza ki a listából a **Hive Transformation Pipeline** (Hive átalakítási folyamat) lehetőséget, és kattintson az **Add** (Hozzáadás) parancsra. 
+3. Cserélje a **JSON-t** az alábbi kódrészlettel.
+
+    > [AZURE.IMPORTANT] Cserélje a **storageaccountname** kifejezést a tárfiókja nevére.
+
+        {
+            "name": "MyFirstPipeline",
+            "properties": {
+                "description": "My first Azure Data Factory pipeline",
+                "activities": [
+                    {
+                        "type": "HDInsightHive",
+                        "typeProperties": {
+                            "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
+                            "scriptLinkedService": "AzureStorageLinkedService1",
+                            "defines": {
+                                "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
+                                "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "name": "AzureBlobInput"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "AzureBlobOutput"
+                            }
+                        ],
+                        "policy": {
+                            "concurrency": 1,
+                            "retry": 3
+                        },
+                        "scheduler": {
+                            "frequency": "Month",
+                            "interval": 1
+                        },
+                        "name": "RunSampleHiveActivity",
+                        "linkedServiceName": "HDInsightOnDemandLinkedService"
+                    }
+                ],
+                "start": "2016-04-01T00:00:00Z",
+                "end": "2016-04-02T00:00:00Z",
+                "isPaused": false
+            }
+        }
+
+    A JSON-kódrészletben létrehoz egy folyamatot, amely egyetlen tevékenységből áll, és a tevékenység a Hive használatával dolgozza fel az adatokat egy HDInsight-fürtön.
+    
+    A JSON-kódrészletben létrehoz egy folyamatot, amely egyetlen tevékenységből áll, és a tevékenység a Hive használatával dolgozza fel az adatokat egy HDInsight-fürtön.
+    
+    A **partitionweblogs.hql** Hive-parancsfájl tárolása az Azure Storage-fiókban (az **AzureStorageLinkedService1** nevű scriptLinkedService szolgáltatás által megadva), és az **adfgetstarted** tároló **script** mappájában történik.
+
+    A **defines** (meghatározza) szakasz meghatározza a futásidő beállításait, amelyek Hive konfigurációs értékekként (például ${hiveconf:inputtable}, ${hiveconf:partitionedtable}) lesznek átadva a Hive-parancsfájlnak.
+
+    A folyamat **start** (kezdés) és **end** (befejezés) tulajdonságai a folyamat aktív időszakát határozzák meg.
+
+    A tevékenység JSON-fájljában meg van határozva, hogy a Hive-parancsfájl a **linkedServiceName** – **HDInsightOnDemandLinkedService** által meghatározott számítási szolgáltatáson fut.
+
+    > [AZURE.NOTE] A fenti példában használt JSON-tulajdonságokkal kapcsolatos részletekért lásd az [Anatomy of a Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) (A folyamatok működése) című témakört. 
+3. Mentse a **HiveActivity1.json** fájlt.
+
+### A partitionweblogs.hql és az input.log fájl hozzáadása függőségként 
+
+1. A **Solution Explorer** (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Dependencies** (Függőségek) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson az **Existing Item** (Meglévő elem) lehetőségre.  
+2. Lépjen a **C:\ADFGettingStarted** mappába, jelölje ki a **partitionweblogs.hql** és az **input.log** fájlt, majd kattintson az **Add** (Hozzáadás) parancsra. Ezt a két fájlt [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című cikk előfeltételeinek részeként hozta létre.
+
+Amikor a következő lépésben közzéteszi a megoldást, a **partitionweblogs.hql** fájlt az **adfgetstarted** blob-tároló parancsfájlmappájába tölti fel a rendszer.   
+
+### Data Factory-entitások közzététele/üzembe helyezése
+
+18. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a projektre, majd kattintson a **Publish** (Közzététel) parancsra. 
+19. Ha megjelenik a **Sign in to your Microsoft account** (Bejelentkezés a Microsoft-fiókba) párbeszédpanel, adja meg az Azure-előfizetéssel rendelkező fiókja hitelesítő adatait, és kattintson a **sign in** (bejelentkezés) elemre.
+20. A következő párbeszédpanelnek kell megjelennie:
+
+    ![Publish (Közzététel) párbeszédpanel](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
+
+21. A Configure data factory (Data factory konfigurálása) oldalon tegye a következőket: 
+    1. Válassza a **Create New Data Factory** (Új data factory létrehozása) lehetőséget.
+    2. A **Name** (Név) mezőbe írja be a következőt: **FirstDataFactoryUsingVS**. 
+    
+        > [AZURE.IMPORTANT] Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha a közzététel során a **Data factory name “FirstDataFactoryUsingVS” is not available** (A „FirstDataFactoryUsingVS” data factory-név nem érhető el) hibaüzenetet kapja, módosítsa a nevet (például: azÖnneveFirstDataFactoryUsingVS). A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
+3. A **Subscription** (Előfizetés) mezőben válassza ki a megfelelő előfizetést. 4. Válassza ki a data factoryhoz az **erőforráscsoportot**. 5. Válassza ki a data factoryhoz a **régiót**. 6. Kattintson a **Tovább** gombra a **Publish Items** (Elemek közzététele) oldalra való váltáshoz. (Ha a **Tovább** gomb le van tiltva, nyomja le a **TAB** billentyűt a Name (Név) mezőből való kilépéshez.) 
+23. A **Publish Items** (Elemek közzététele) oldalon győződjön meg arról, hogy az összes Data Factory-entitás ki van jelölve, és kattintson a **Tovább** gombra a **Summary** (Összegzés) oldalra való váltáshoz.     
+24. Tekintse át az összefoglalót, és kattintson a **Tovább** gombra az üzembehelyezési folyamat elindításához, és a **Deployment Status** (Üzembehelyezési állapot) megtekintéséhez.
+25. A **Deployment Status** (Üzembehelyezési állapot) oldalon meg kell jelennie az üzembehelyezési folyamat állapotának. Miután befejeződött az üzembe helyezés, kattintson a Finish (Befejezés) gombra. 
+
+Vegye figyelembe a következőket: 
+
+- Ha a „**This subscription is not registered to use namespace Microsoft.DataFactory**” (Az előfizetés nem jogosult használni a Microsoft.DataFactory névteret) hibaüzenetet kapja, tegye a következők egyikét, és próbálkozzon újra a közzététellel: 
+
+    - Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához. 
+        
+            Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    
+        Az alábbi parancs futtatásával ellenőrizheti a Data Factory-szolgáltató regisztrálását. 
+    
+            Get-AzureRmResourceProvider
+    - Az Azure-előfizetés használatával jelentkezzen be az [Azure Portalra](https://portal.azure.com), és navigáljon egy Data Factory panelre, vagy hozzon létre egy data factoryt az Azure Portalon. Ezzel automatikusan regisztrálja a szolgáltatót.
+-   A data factory neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá válhat.
+-   Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének/rendszergazdájának kell lennie.
+
+ 
+## Folyamat figyelése
+
+6. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és tegye a következőket:
+    1. Kattintson a **Tallózás** elemre, és válassza a **Data factories** elemet.
+        ![Data factoryk tallózása](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
+    2. A data factoryk listájában válassza ki a **FirstDataFactoryUsingVS** elemet. 
+7. A data factory kezdőlapján kattintson a **Diagram** lehetőségre.
+  
+    ![Diagram csempe](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)
+7. A diagramnézet áttekintést nyújt az oktatóanyagban használt folyamatokról és adatkészletekről.
+    
+    ![Diagramnézet](./media/data-factory-build-your-first-pipeline-using-vs/diagram-view-2.png) 
+8. A folyamat összes tevékenységének megtekintéséhez kattintson a jobb gombbal a folyamatra a diagramban, majd kattintson az Open pipeline (Folyamat megnyitása) elemre. 
+
+    ![Folyamat megnyitása menü](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-menu.png)
+9. Győződjön meg arról, hogy a HDInsightHive tevékenység megjelenik a folyamatban. 
+  
+    ![Folyamat megnyitása nézet](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
+
+    Az előző nézethez való visszatéréshez az oldal tetején lévő navigációs menüben kattintson a **Data factory** elemre. 
+10. A **diagramnézetben** kattintson duplán az **AzureBlobInput** adatkészletre. Győződjön meg arról, hogy a szelet **Ready** (Kész) állapotú. Eltarthat néhány percig, amíg a szelet Ready (Kész) állapotúként jelenik meg. Ha ez azután sem történik meg, hogy vár néhány percet, ellenőrizze, hogy a megfelelő tárolóba (adfgetstarted) és mappába (inputdata) helyezte-e a bemeneti fájlt (input.log).
+
+    ![Kész állapotú bemeneti szelet](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
+11. Kattintson az **X** elemre az **AzureBlobInput** panel bezárásához. 
+12. A **diagramnézetben** kattintson duplán az **AzureBlobOutput** adatkészletre. Látni fogja, hogy a szelet feldolgozás alatt áll.
+
+    ![Adatkészlet](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+9. A feldolgozás befejeztével a szelet **Ready** (Kész) állapotú lesz.
+    >[AZURE.IMPORTANT] Az igény szerinti HDInsight-fürt létrehozása általában eltart egy ideig (körülbelül 20 percig).  
+
+    ![Adatkészlet](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png) 
+    
+10. Ha a szelet **Ready** (Kész) állapotú, a kimeneti adatok **adfgetstarted** Blob Storage-tárolójában ellenőrizze a **partitioneddata** mappát.  
+ 
+    ![kimeneti adatok](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
+
+A [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) (Adatkészletek és folyamatok figyelése) című cikkben útmutatást találhat arról, hogy hogyan használhatja az Azure Portalt az oktatóanyagban létrehozott folyamatok és adatkészletek figyeléséhez.
+
+Az adatfolyamatok figyeléséhez a Monitor and Manage Appot is használhatja. Az alkalmazás használatával kapcsolatos információkért tekintse meg a [Monitor and manage Azure Data Factory pipelines using Monitoring App](data-factory-monitor-manage-app.md) (Azure Data Factory-folyamatok figyelése és felügyelete a Monitoring App használatával) című cikket. 
+
+> [AZURE.IMPORTANT] A szelet sikeres feldolgozásakor a rendszer törli a bemeneti fájlt. Ezért ha újra le szeretné futtatni a szeletet, vagy újra el szeretné végezni az oktatóanyagban foglaltakat, töltse fel a bemeneti fájlt (input.log) az adfgetstarted tároló inputdata mappájába.
+ 
+
+## A Kiszolgókezelő használata data factoryk megtekintéséhez
+
+1. A **Visual Studio** menüjében kattintson a **View** (Megtekintés), majd a **Server Explorer** (Kiszolgálókezelő) elemre.
+2. A Server Explorer (Kiszolgálókezelő) ablakban bontsa ki az **Azure**, majd a **Data Factory** elemet. Ha megjelenik a **Sign in to Visual Studio** (Jelentkezzen be a Visual Studióba) üzenet, adja meg az Azure-előfizetéséhez társított **fiókot**, és kattintson a **Continue** (Folytatás) elemre. Adja meg a **jelszót**, és kattintson a **Sign in** (Bejelentkezés) elemre. A Visual Studio megpróbálja lekérni az információkat az előfizetésében elérhető összes Azure data factoryről. Ennek a műveletnek az állapota a **Data Factory Task List** (Data Factory-feladatlista) ablakban jelenik meg.
+
+    ![Server Explorer (Kiszolgálókezelő)](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
+3. Ha egy meglévő data factory alapján szeretne létrehozni Visual Studio-projektet, kattintson a jobb gombbal egy dara factoryre, és válassza az **Export Data Factory to New Project** (Data factory exportálása új projektbe) lehetőséget.
+
+    ![Export data factory (Data factory exportálása) menüelem](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
+
+## Visual Studióhoz készült Data Factory-eszközök frissítése
+
+A Visual Studióhoz készült Data Factory-eszközök frissítéséhez tegye a következőket:
+
+1. Kattintson a menüben a **Tools** (Eszközök) elemre, és válassza az **Extensions and Updates** (Bővítmények és frissítések) lehetőséget.
+2. A bal oldali panelen válassza az **Updates** (Frissítések) elemet, majd válassza a **Visual Studio Gallery** (Visual Studio-gyűjtemény) lehetőséget.
+3. Válassza az **Azure Data Factory tools for Visual Studio** lehetőséget, és kattintson az **Update** (Frissítés) elemre. Ha nem látja ezt a bejegyzést, már rendelkezik az eszközök legújabb verziójával. 
+
+## Konfigurációs fájlok használata
+A Visual Studióban konfigurációs fájlokat használhat, ha az egyes környezetekhez eltérően szeretné konfigurálni a társított szolgáltatások/táblák/folyamatok tulajdonságait. 
+
+Használja például az alábbi JSON-definíciót egy Azure Storage társított szolgáltatáshoz. A **connectionString** tulajdonság accountname és accountkey értékeit annak a környezetnek (fejlesztői/teszt/éles) megfelelően adja meg, amelyikben üzembe helyezi a Data Factory-entitásokat. Ezt úgy teheti meg, hogy minden környezethez külön konfigurációs fájlt használ. 
+
+    {
+        "name": "StorageLinkedService",
+        "properties": {
+            "type": "AzureStorage",
+            "description": "",
+            "typeProperties": {
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
+        }
+    } 
+
+### Konfigurációs fájl hozzáadása
+Adjon hozzá konfigurációs fájlt az egyes környezetekhez a következő lépések végrehajtásával:   
+
+1. A Visual Studio-megoldásban kattintson a jobb gombbal a Data Factory-projektre, mutasson az **Add** (Hozzáadás) elemre, és kattintson a **New Item** (Új elem) lehetőségre.
+2. A telepített sablonok bal oldali listájában válassza a **Config** elemet, jelölje ki a **Configuration File** (Konfigurációs fájl) lehetőséget, adja meg a konfigurációs fájl **nevét**, majd kattintson az **Add** (Hozzáadás) elemre.
+
+    ![Konfigurációs fájl hozzáadása](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
+3. Adja meg a konfigurációs paramétereket az értéküket az alábbi formátumban:
+
+        {
+            "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
+            "AzureStorageLinkedService1": [
+                {
+                    "name": "$.properties.typeProperties.connectionString",
+                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+                }
+            ],
+            "AzureSqlLinkedService1": [
+                {
+                    "name": "$.properties.typeProperties.connectionString",
+                    "value":  "Server=tcp:spsqlserver.database.windows.net,1433;Database=spsqldb;User ID=spelluru;Password=Sowmya123;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                }
+            ]
+        }
+
+    Ez a példa konfigurálja egy Azure Storage társított szolgáltatás és egy Azure SQL társított szolgáltatás connectionString tulajdonságát. Figyelje meg, hogy a névmegadás szintaxisa a [JsonPath](http://goessner.net/articles/JsonPath/).   
+
+    Ha a JSON-fájlban szerepel egy olyan tulajdonság, amely értékek tömbjével rendelkezik az alább látható módon:  
+
+        "structure": [
+            {
+                "name": "FirstName",
+                "type": "String"
+            },
+            {
+                "name": "LastName",
+                "type": "String"
+            }
+        ],
+    
+    A következőképpen kell elvégeznie a konfigurációt a konfigurációs fájlban (nullaalapú indexelés használatával): 
+        
+        {
+            "name": "$.properties.structure[0].name",
+            "value": "FirstName"
+        }
+        {
+            "name": "$.properties.structure[0].type",
+            "value": "String"
+        }
+        {
+            "name": "$.properties.structure[1].name",
+            "value": "LastName"
+        }
+        {
+            "name": "$.properties.structure[1].type",
+            "value": "String"
+        }
+
+### Tulajdonságnevek szóközökkel
+Ha egy tulajdonságnév szóközöket tartalmaz, használjon szögletes zárójeleket az alábbi példában látható módon (Adatbázis-kiszolgáló neve): 
+
+     {
+         "name": "$.properties.activities[1].typeProperties.webServiceParameters.['Database server name']",
+         "value": "MyAsqlServer.database.windows.net"
+     }
+
+
+### Megoldás üzembe helyezése konfiguráció használatával
+Amikor Azure Data Factory-entitásokat tesz közzé a Visual Studióban, megadhatja azt a konfigurációt, amelyet a közzétételi művelethez szeretne használni. 
+
+Entitások közzététele Azure Data Factory-projektben konfigurációs fájl használatával:   
+
+1. Kattintson a jobb gombbal a Data Factory projektre, majd kattintson a **Publish** (Közzététel) elemre a **Publish Items** (Elemek közzététele) párbeszédpanel megjelenítéséhez. 
+2. Válasszon ki egy meglévő data factoryt, vagy adja meg az értékeket egy új data factory létrehozásához a **Configure data factory** (Data factory konfigurálása) oldalon, és kattintson a **Next** (Tovább) gombra.   
+3. A **Publish Items** (Elemek közzététele) oldalon látni fog egy legördülő listát az elérhető konfigurációkkal a **Select Deployment Config** (Üzembehelyezési konfiguráció kiválasztása) mezőhöz.
+
+    ![Konfigurációs fájl kiválasztása](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
+
+4. Válassza ki a használni kívánt **konfigurációs fájlt**, és kattintson a **Next** (Tovább) gombra. 
+5. Győződjön meg arról, hogy a JSON-fájl neve megjelenik a **Summary** (Összegzés) oldalon, és kattintson a **Next** (Tovább) gombra. 
+6. Miután befejeződött az üzembehelyezési művelet, kattintson a **Finish** (Befejezés) gombra. 
+
+Az üzembe helyezés során a rendszer a konfigurációs fájlban szereplő értékek használatával beállítja a Data Factory-entitások (társított szolgáltatások, táblák vagy folyamatok) JSON-fájljaiban szereplő tulajdonságok értékeit, mielőtt üzembe helyezné az entitásokat az Azure Data Factory szolgáltatásban.   
+
+## Összefoglalás 
+Az oktatóanyag során létrehozott egy Azure data factoryt, amely egy HDInsight Hadoop-fürtön futtatott Hive-parancsfájllal dolgozza fel az adatokat. Az Azure Portal Data Factory Editor eszközét használta a következő lépések végrehajtásához:  
+
+1.  Létrehozott egy Azure **data factoryt**.
+2.  Létrehozott két **társított szolgáltatást**:
+    1.  Az **Azure Storage** társított szolgáltatást, amely a bemeneti és kimeneti adatokat tároló Azure blob-tárolót társítja a data factoryval.
+    2.  Az **Azure HDInsight** igény szerinti társított szolgáltatást, amely egy igény szerinti HDInsight Hadoop-fürtöt társít a data factoryval. Az Azure Data Factory létrehoz egy HDInsight Hadoop-fürtöt, amely igény szerint dolgozza fel a bemeneti adatokat és állítja elő a kimeneti adatokat. 
+3.  Létrehozott két **adatkészletet**, amelyek leírják a bemeneti és kimeneti adatokat a folyamat HDInsight Hive-tevékenysége számára. 
+4.  Létrehozott egy **folyamatot** egy **HDInsight Hive**-tevékenységgel.  
+
+
+## Következő lépések
+Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely Hive-parancsfájlt futtat egy igény szerinti HDInsight-fürtön. Ha tudni szeretné, hogyan használhatja a Másolás tevékenységet az adatok Azure-blobból Azure SQL Database adatbázisba történő másolásához, tekintse meg a következő cikket: [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-get-started.md) (Oktatóanyag: adatok másolása Azure-blobból Azure SQL Database adatbázisba).
+  
+## Lásd még:
+| Témakör | Leírás |
+| :---- | :---- |
+| [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) | Ez a cikk felsorolja az Azure Data Factory által támogatott adatátalakítási tevékenységeket (mint például a jelen oktatóanyagban használt HDInsight Hive-átalakítás). | 
+| [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) | Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
+| [Folyamatok](data-factory-create-pipelines.md) | Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
+| [Adatkészletek](data-factory-create-datasets.md) | Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban.
+| [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) | Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. 
+
+
+<!--HONumber=jun16_HO2-->
+
+

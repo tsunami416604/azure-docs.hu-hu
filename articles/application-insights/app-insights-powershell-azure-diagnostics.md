@@ -1,0 +1,125 @@
+<properties
+    pageTitle="Azure Diagnostics küldése az Application Insights szolgáltatásba a PowerShell segítségével | Microsoft Azure"
+    description="Az Azure Diagnostics konfigurálásának automatizálása az Application Insights felé való továbbításra."
+    services="application-insights"
+    documentationCenter=".net"
+    authors="sbtron"
+    manager="douge"/>
+
+<tags
+    ms.service="application-insights"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="11/17/2015"
+    ms.author="awills"/>
+
+# Azure Diagnostics küldése az Application Insights szolgáltatásba a PowerShell segítségével
+
+A [Microsoft Azure](https://azure.com) [konfigurálható úgy, hogy az Azure Diagnostics adatait elküldje](app-insights-azure-diagnostics.md) a [Visual Studio Application Insights ](app-insights-overview.md) szolgáltatásba. A diagnosztika az Azure Cloud Services szolgáltatáshoz és az Azure virtuális gépekhez kapcsolódik. Kiegészíti az alkalmazáson belülről az Application Insights SDK használatával küldött telemetriát. Az új erőforrások Azure-ban való létrehozási folyamatának részeként konfigurálhatja a diagnosztikát a PowerShell segítségével.
+
+## A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
+
+A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` paraméterrel, amely egy diagnosztikakonfigurációs tömböt foglal magába. Ez a `New-AzureServiceDiagnosticsExtensionConfig` parancsmag segítségével hozható létre. Példa:
+
+```ps
+
+    $service_package = "CloudService.cspkg"
+    $service_config = "ServiceConfiguration.Cloud.cscfg"
+    $diagnostics_storagename = "myservicediagnostics"
+    $webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
+    $workerrole_diagconfigpath = "MyService.WorkerRole.PubConfig.xml"
+
+    $primary_storagekey = (Get-AzureStorageKey `
+     -StorageAccountName "$diagnostics_storagename").Primary
+    $storage_context = New-AzureStorageContext `
+       -StorageAccountName $diagnostics_storagename `
+       -StorageAccountKey $primary_storagekey
+
+    $webrole_diagconfig = `
+     New-AzureServiceDiagnosticsExtensionConfig `
+      -Role "WebRole" -Storage_context $storageContext `
+      -DiagnosticsConfigurationPath $webrole_diagconfigpath
+    $workerrole_diagconfig = `
+     New-AzureServiceDiagnosticsExtensionConfig `
+      -Role "WorkerRole" `
+      -StorageContext $storage_context `
+      -DiagnosticsConfigurationPath $workerrole_diagconfigpath
+
+    New-AzureDeployment `
+      -ServiceName $service_name `
+      -Slot Production `
+      -Package $service_package `
+      -Configuration $service_config `
+      -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
+
+``` 
+
+## A diagnosztikai bővítmény engedélyezése egy meglévő felhőszolgáltatáson
+
+Meglévő szolgáltatáson használja a következőt: `Set-AzureServiceDiagnosticsExtension`.
+
+```ps
+ 
+    $service_name = "MyService"
+    $diagnostics_storagename = "myservicediagnostics"
+    $webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
+    $workerrole_diagconfigpath = "MyService.WorkerRole.PubConfig.xml"
+    $primary_storagekey = (Get-AzureStorageKey `
+         -StorageAccountName "$diagnostics_storagename").Primary
+    $storage_context = New-AzureStorageContext `
+        -StorageAccountName $diagnostics_storagename `
+        -StorageAccountKey $primary_storagekey
+
+    Set-AzureServiceDiagnosticsExtension `
+        -StorageContext $storage_context `
+        -DiagnosticsConfigurationPath $webrole_diagconfigpath `
+        -ServiceName $service_name `
+        -Slot Production `
+        -Role "WebRole" 
+    Set-AzureServiceDiagnosticsExtension `
+        -StorageContext $storage_context `
+        -DiagnosticsConfigurationPath $workerrole_diagconfigpath `
+        -ServiceName $service_name `
+        -Slot Production `
+        -Role "WorkerRole"
+```
+
+## Az aktuális diagnosztikai bővítmény konfigurációjának lekérése
+
+```ps
+
+    Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
+```
+
+
+## A diagnosztikai bővítmény eltávolítása
+
+```ps
+
+    Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
+```
+
+Ha a Szerepkör paraméter nélkül engedélyezte a diagnosztikai bővítményt a `Set-AzureServiceDiagnosticsExtension` vagy a `New-AzureServiceDiagnosticsExtensionConfig` használatával, akkor a bővítményt a Szerepkör paraméter nélküli `Remove-AzureServiceDiagnosticsExtension` segítségével távolíthatja el. Ha használta a Szerepkör paramétert a bővítmény engedélyezésekor, akkor a bővítmény eltávolításakor is használnia kell.
+
+A diagnosztika bővítmény egyes szerepkörökből való eltávolítása:
+
+```ps
+
+    Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
+```
+
+
+## Lásd még:
+
+* [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](app-insights-cloudservices.md)
+* [Az Azure Diagnostics küldése az Application Insights-ba](app-insights-azure-diagnostics.md)
+* [Riasztások konfigurálásának automatizálása](app-insights-powershell-alerts.md)
+
+
+
+
+<!--HONumber=jun16_HO2-->
+
+
