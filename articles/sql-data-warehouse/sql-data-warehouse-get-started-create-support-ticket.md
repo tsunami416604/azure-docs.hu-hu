@@ -84,10 +84,10 @@ Ezenkívül kapcsolatba léphet az SQL Data Warehouse-közösséggel a [Stack Ov
 <!-- External links -->
 [Azure portált]: https://portal.azure.com/
 [Azure-támogatás ügyfeleknek]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
-[Azure támogatás – gyakori kérdések]: https://azure.microsoft.com/support/faq/
+[Azure-támogatás – gyakori kérdések]: https://azure.microsoft.com/support/faq/
 [Microsoft Premier online portálon]: https://premier.microsoft.com/
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
-[Azure SQL Data Warehouse MSDN fórum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
+[Azure SQL Data Warehouse MSDN fórumon]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
 
 

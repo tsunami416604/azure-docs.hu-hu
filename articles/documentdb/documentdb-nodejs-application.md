@@ -40,7 +40,7 @@ A jelen adatbázis-oktatóanyagban leírtak követésével egy olyan egyszerű, 
 
 ![Képernyőfelvétel a jelen Node.js oktatóanyag során készített My Todo List (Saját teendőlista) alkalmazásról](./media/documentdb-nodejs-application/image1.png)
 
-Nincs ideje elvégezni az oktatóanyagot, és csak hozzá szeretne jutni a teljes megoldáshoz? A teljes megoldást beszerezheti a [GitHubról][].
+Nincs ideje elvégezni az oktatóanyagot, és csak hozzá szeretne jutni a teljes megoldáshoz? A teljes megoldást beszerezheti a [GitHub][].
 
 ## <a name="_Toc395783176"></a>Előfeltételek
 
@@ -565,7 +565,7 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
 
 Gratulálunk! Létrehozta az első Node.js Express-webalkalmazását az Azure DocumentDB használatával, és közzétette azt az Azure Websiteson.
 
-A teljes referenciaalkalmazás forráskódja letölthető a [GitHubról][].
+A teljes referenciaalkalmazás forráskódja letölthető a [Github][].
 
 További információk: [Node.js fejlesztői központ](https://azure.microsoft.com/develop/nodejs/).
 

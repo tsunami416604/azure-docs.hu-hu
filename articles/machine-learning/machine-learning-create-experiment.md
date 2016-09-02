@@ -61,7 +61,7 @@ Ebben az adathalmazban számos különböző autót bemutató bejegyzés szerepe
 
 2. A kísérletvászontól balra az adathalmazokat és modulokat tartalmazó paletta látható. A paletta tetején található keresőmezőbe gépelje be, hogy **automobile**. A rendszer megjeleníti az **Automobile price data (Raw)** (Nyers autóáradatok) nevű adathalmazt.
 
-    ![Keresés a palettán][screen1a]
+    ![Palet zoeken][screen1a]
 
 3. Húzza rá az adathalmazt a kísérletvászonra.
 
