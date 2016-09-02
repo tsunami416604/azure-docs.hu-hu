@@ -619,7 +619,7 @@ Ezután, a ```config.js``` fájlban frissítse a config.endpoint és config.auth
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
 
-[kulcsok]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
+[keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
 
 

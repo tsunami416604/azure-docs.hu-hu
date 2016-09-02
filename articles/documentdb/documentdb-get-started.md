@@ -616,7 +616,7 @@ Ahhoz, hogy visszaállítsa a DocumentDB .NET SDK-ra mutató hivatkozásokat a V
 
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
-[kulcsok]: media/documentdb-get-started/nosql-tutorial-keys.png
+[keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
 
 
