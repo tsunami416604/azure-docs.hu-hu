@@ -210,20 +210,21 @@ Ha szeretné részletesebben megismerni a modellek létrehozásához, tanítás�
 [walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
 <!-- Images -->
-[képernyő1]:./media/machine-learning-create-experiment/screen1.png
-[képernyő1a]:./media/machine-learning-create-experiment/screen1a.png
-[képernyő1b]:./media/machine-learning-create-experiment/screen1b.png
-[képernyő2]:./media/machine-learning-create-experiment/screen2.png
-[képernyő3]:./media/machine-learning-create-experiment/screen3.png
-[képernyő4]:./media/machine-learning-create-experiment/screen4.png
-[képernyő4a]:./media/machine-learning-create-experiment/screen4a.png
-[képernyő5]:./media/machine-learning-create-experiment/screen5.png
-[képernyő6]:./media/machine-learning-create-experiment/screen6.png
-[képernyő7]:./media/machine-learning-create-experiment/screen7.png
-[képernyő8]:./media/machine-learning-create-experiment/screen8.png
-[képernyő8a]:./media/machine-learning-create-experiment/screen8a.png
-[képernyő9]:./media/machine-learning-create-experiment/screen9.png
-[képernyő10]:./media/machine-learning-create-experiment/complete-linear-regression-experiment.png
+[screen1]:./media/machine-learning-create-experiment/screen1.png
+[screen1a]:./media/machine-learning-create-experiment/screen1a.png
+[screen1b]:./media/machine-learning-create-experiment/screen1b.png
+[screen1c]: ./media/machine-learning-create-experiment/screen1c.png
+[screen2]:./media/machine-learning-create-experiment/screen2.png
+[screen3]:./media/machine-learning-create-experiment/screen3.png
+[screen4]:./media/machine-learning-create-experiment/screen4.png
+[screen4a]:./media/machine-learning-create-experiment/screen4a.png
+[screen5]:./media/machine-learning-create-experiment/screen5.png
+[screen6]:./media/machine-learning-create-experiment/screen6.png
+[screen7]:./media/machine-learning-create-experiment/screen7.png
+[screen8]:./media/machine-learning-create-experiment/screen8.png
+[screen8a]:./media/machine-learning-create-experiment/screen8a.png
+[screen9]:./media/machine-learning-create-experiment/screen9.png
+[screen10]:./media/machine-learning-create-experiment/complete-linear-regression-experiment.png
 
 
 <!-- Module References -->
