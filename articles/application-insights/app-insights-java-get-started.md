@@ -98,7 +98,7 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
       // or applicationinsights-core for bare API
     }
 
-* *Build- vagy ellenőrzőösszeg-érvényesítési hibák? Próbáljon adott verziót használni, például a következőt: * `version:'1.0.n'`. *A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.*
+* *Build- vagy ellenőrzőösszeg-érvényesítési hibák? Próbáljon adott verziót használni, például a következőt:* `version:'1.0.n'`. *A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.*
 * *Frissítés új SDK-ra*
  * Frissítse a projekt függőségeit.
 
