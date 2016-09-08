@@ -151,8 +151,8 @@ A Big Compute-megoldása más Azure-szolgáltatásokat is igényelhet ahhoz, hog
 * A legújabb bejelentésekért lásd: [A Microsoft HPC és Batch csapatának blogja](http://blogs.technet.com/b/windowshpc/) és [Azure-blog](https://azure.microsoft.com/blog/tag/hpc/).
 
 <!--Image references-->
-[párhuzamos]: ./media/batch-hpc-solutions/parallel.png
-[összekapcsolt]: ./media/batch-hpc-solutions/coupled.png
+[parallel]: ./media/batch-hpc-solutions/parallel.png
+[coupled]: ./media/batch-hpc-solutions/coupled.png
 [iaas_cluster]: ./media/batch-hpc-solutions/iaas_cluster.png
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png

@@ -34,7 +34,7 @@ Az [Azure Portal][azure_portal] biztosítja azokat az eszközöket, amelyek az A
 
     ![Batch a Piactéren][marketplace_portal]
 
-3. Megjelenik az **Új Batch-fiók** panel. Az alábbi *a*–*e* részekben találja az egyes panelelemek leírását.
+3. Megjelenik az **Új Batch-fiók** panel. Az alábbi *a* – *e* részekben találja az egyes panelelemek leírását.
 
     ![Batch-fiók létrehozása][account_portal]
 

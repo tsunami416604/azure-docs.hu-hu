@@ -225,9 +225,9 @@ Mivel ezek az oktatóanyagok a gyors biztonsági mentésben segítenek, az adato
 
 
 
-[zöld]: ./media/backup-introduction-to-azure-backup/green.png
-[sárga]: ./media/backup-introduction-to-azure-backup/yellow.png
-[vörös]: ./media/backup-introduction-to-azure-backup/red.png
+[green]: ./media/backup-introduction-to-azure-backup/green.png
+[yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
+[red]: ./media/backup-introduction-to-azure-backup/red.png
 
 
 
