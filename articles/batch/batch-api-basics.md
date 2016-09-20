@@ -279,7 +279,7 @@ A tevékenységfüggőségekkel a következőkhöz hasonló forgatókönyveket k
 
 * A *taskB* a *taskA* tevékenységtől függ (a *taskB* végrehajtása nem kezdődik meg a *taskA* befejeződéséig).
 * A *taskC* a *taskA* és a *taskB* tevékenységtől is függ.
-* A *taskD* egy tevékenységtartománytól függ, például az *1*–*10.* tevékenység befejeződéséig nem hajtja végre a rendszer.
+* A *taskD* egy tevékenységtartománytól függ, például az *1* – *10.* tevékenység befejeződéséig nem hajtja végre a rendszer.
 
 A funkció részletesebb bemutatásért olvassa el a [Task dependencies in Azure Batch](batch-task-dependencies.md) (Tevékenységfüggőségek az Azure Batch szolgáltatásban) című cikket, vagy tekintse meg a Github [azure-batch-samples][github_samples] nevű adattárában található [TaskDependencies][github_sample_taskdeps] kódmintát.
 

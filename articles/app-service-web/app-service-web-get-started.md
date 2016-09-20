@@ -42,7 +42,7 @@ Az alábbiakat fogja elvégezni:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
-2. Kattintson az **Új ** > ** Web + mobil ** > **Webalkalmazás** elemre.
+2. Kattintson az **Új** > **Web + mobil** > **Webalkalmazás** elemre.
 
     ![](./media/app-service-web-get-started/create-web-app-portal.png)
 
