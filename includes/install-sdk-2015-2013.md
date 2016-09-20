@@ -8,6 +8,6 @@ Ha nincs telepítve a Visual Studio alkalmazás, a Visual Studio 2015 hivatkozá
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -7,6 +7,6 @@
 - [parancssori felület](../articles/data-lake-analytics/data-lake-analytics-get-started-cli.md)
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

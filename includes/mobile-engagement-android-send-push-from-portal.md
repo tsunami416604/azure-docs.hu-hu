@@ -46,13 +46,13 @@ Ezután létrehozunk egy egyszerű leküldéses értesítési kampányt, amely e
 
     ![](./media/mobile-engagement-android-send-push/campaign-content.png)
 
-5. Ezzel beállította a lehető legegyszerűbb kampányt. Görgessen ismét lefelé, és kattintson a **Create** (Létrehozás) gombra a kampány mentéséhez.
+5. Ezzel beállította a lehető legegyszerűbb kampányt. Görgessen újra le, és kattintson a **Create** (Létrehozás) gombra a kampány mentéséhez.
 
 6. Utolsó lépés: Kattintson az **Activate** (Aktiválás) lehetőségre a kampány aktiválásához és a leküldéses értesítések küldésének megkezdéséhez.
 
     ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

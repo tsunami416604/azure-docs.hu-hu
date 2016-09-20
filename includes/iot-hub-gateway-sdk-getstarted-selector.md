@@ -2,65 +2,65 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-get-started.md)
 
-This article provides a detailed walkthrough of the [Hello World sample code][lnk-helloworld-sample] to illustrate the fundamental components of the [Azure IoT Gateway SDK][lnk-gateway-sdk] architecture. The sample uses the Gateway SDK to build a simple gateway that logs a "hello world" message to a file every five seconds.
+Ez a cikk a [Hello World mintakód][lnk-helloworld-sample] részletes bemutatóját tartalmazza, amely képet ad az [Azure IoT átjáró-SDK][lnk-gateway-sdk] architektúrájáról. A minta az átjáró-SDK használatával egy egyszerű átjárót hoz létre, amely öt másodpercenként egy „hello world” üzenetet naplóz egy fájlba.
 
-This walkthrough covers:
+A bemutató tartalma:
 
-- **Concepts**: A conceptual overview of the components that compose any gateway you create with the Gateway SDK.  
-- **Hello World sample architecture**: Describes how the concepts apply to the Hello World sample and how the components fit together.
-- **How to build the sample**: The steps required to build the sample.
-- **How to run the sample**: The steps required to run the sample. 
-- **Typical output**: An example of the output to expect when you run the sample.
-- **Code snippets**: A collection of code snippets to show how the Hello World sample implements key gateway components.
+- **Fogalmak:** Az átjáró-SDK-val létrehozott átjárókat alkotó összetevők fogalmi áttekintése.  
+- **Hello World mintaarchitektúra:** A Hello World mintára alkalmazott fogalmakat írja le, valamint az összetevők illeszkedését.
+- **Minta létrehozása:** A minta megvalósításához szükséges lépések.
+- **Minta futtatása:** A minta futtatásához szükséges lépések. 
+- **Tipikus kimenet:** Példa a minta futtatásakor várható kimenetre.
+- **Kódrészletek:** Kódrészletek gyűjteménye, amely bemutatja, hogy a Hello World minta hogyan implementálja a kulcsfontosságú átjáró-összetevőket.
 
-## Gateway SDK concepts
+## Átjáró-SDK-fogalmak
 
-Before you examine the sample code or create your own field gateway using the Gateway SDK, you should understand the key concepts that underpin the architecture of the SDK.
+Mielőtt vizsgálni kezdené a mintakódot, vagy létrehozná saját éles átjáróját az átjáró-SDK használatával, meg kell ismerkednie az SDK architektúrája mögött rejlő alapfogalmakkal.
 
-### Modules
+### Modulok
 
-You build a gateway with the Azure IoT Gateway SDK by creating and assembling *modules*. Modules use *messages* to exchange data with each other. A module receives a message, performs some action on it, optionally transforms it into a new message, and then publishes it for other modules to process. Some modules might only produce new messages and never process incoming messages. A chain of modules creates a data processing pipeline with each module performing a transformation on the data at one point in that pipeline.
+Az Azure IoT átjáró-SDK használata esetén *modulok* létrehozásával és összeállításával készíthet átjárókat. A modulok *üzenetek* használatával cserélnek adatokat egymással. Az egyes modulok üzeneteket fogadnak, végrehajtanak valamilyen műveletet rajtuk, esetleg átalakítják őket új üzenetekké, majd közzéteszik azokat más modulok számára feldolgozásra. Egyes modulok esetleg kizárólag új üzeneteket állítanak elő, és nem dolgoznak fel beérkező üzeneteket. Modulok láncba rendezésével egy adatfeldolgozó folyamat hozható létre, amelynek minden pontján valamely modul valamilyen módon átalakítja az adatokat.
 
 ![][1]
  
-The SDK contains the following:
+Az SDK a következőket tartalmazza:
 
-- Pre-written modules which perform common gateway functions.
-- The interfaces a developer can use to write custom modules.
-- The infrastructure necessary to deploy and run a set of modules.
+- Előre megírt modulok, amelyek gyakori átjárófunkciókat hajtanak végre.
+- Felületek, amelyek segítségével a fejlesztők egyedi modulokat hozhatnak létre.
+- A modulok üzembe helyezéséhez és futtatásához szükséges infrastruktúra.
 
-The SDK provides an abstraction layer that enables you to build gateways to run on a variety of operating systems and platforms.
+Az SDK egy olyan absztrakciós réteget biztosít, amelynek segítségével különféle operációs rendszereken és platformokon futtatható átjárók készíthetők.
 
 ![][2]
 
-### Messages
+### Üzenetek
 
-Although thinking about modules passing messages to each other is a convenient way to conceptualize how a gateway functions, it does not accurately reflect what happens. Modules use a message bus to communicate with each other, they publish messages to the bus, and the bus broadcasts the messages to all the modules connected to the bus.
+Ha úgy képzeljük el, hogy a modulok egymásnak küldözgetnek üzeneteket, könnyen megragadható az átjáró működése mögött rejlő elv, azonban ez nem pontosan így történik. A modulok egy üzenetbusz segítségével kommunikálnak egymással: üzeneteket tesznek közzé a buszon, az pedig elküldi az üzeneteket a buszhoz csatlakoztatott összes modulnak.
 
-A module uses the **MessageBus_Publish** function to publish a message to the message bus. The message bus delivers messages to a module by invoking a callback function. A message consists of a set of key/value properties and content passed as a block of memory.
+A modulok a **MessageBus_Publish** függvény használatával teszik közzé az üzeneteket az üzenetbuszon. Az üzenetbusz az üzeneteket az egyes moduloknak a visszahívási függvény használatával továbbítja. Az üzenetek kulcs/érték tulajdonságokból és tartalmakból állnak, amelyek memóriablokként vannak továbbítva.
 
 ![][3]
 
-Each module is responsible for filtering the messages because the message bus uses a broadcast mechanism to deliver each message to every module connected to it. A module should only act on messages that are intended for it. The message filtering effectively creates the message pipeline. A module typically filters the messages it receives using the message properties to identify messages it should process.
+Mindegyik modul saját feladata az üzenetek szűrése, mivel az üzenetbusz közzétételi mechanizmusa mindegyik üzenetet továbbítja az összes csatlakoztatott modulnak. Az egyes moduloknak azonban csak a nekik szánt üzenetekkel kell foglalkozniuk. Az üzenetek szűrése hozza voltaképp létre az üzenetfolyamatot. Az egyes modulok általában az üzenettulajdonságok használatával szűrik ki a fogadott üzenetek közül azokat, amelyeket fel kell dolgozniuk.
 
-## Hello World sample architecture
+## Hello World mintaarchitektúra
 
-The Hello World sample illustrates the concepts described in the previous section. The Hello World sample implements a gateway that has a pipeline made up of two modules:
+A Hello World minta az előző szakaszban leírt fogalmakat mutatja be. A Hello World egy olyan átjárót hoz létre, amely egy két modulból álló folyamatot tartalmaz:
 
--	The *hello world* module creates a message every five seconds and passes it to the logger module.
--	The *logger* module writes the messages it receives to a file.
+-   A *hello world* modul egy üzenetet hoz létre öt másodpercenként, és továbbítja azt a naplózó modulnak.
+-   A *naplózó* modul a fogadott üzeneteket egy fájlba írja.
 
 ![][4]
 
-As described in the previous section, the Hello World module does not pass messages directly to the logger module every five seconds. Instead, it publishes a message to the message bus every five seconds.
+Az előző szakaszban foglaltak szerint a Hello World modul nem közvetlenül továbbítja öt másodpercenként az üzeneteket a naplózó modulnak. Ehelyett az üzenetbuszon teszi közzé öt másodpercenként az üzenetet.
 
-The logger module receives the message from the message bus and inspects its properties in a filter. If the logger module determines that it should process the message, it writes the contents of the message to a file.
+A naplózó modul az üzenetbuszról fogadja az üzeneteket, és megvizsgálja azok tulajdonságait egy szűrővel. Ha a naplózó modul azt állapítja meg, hogy fel kell dolgoznia egy adott üzenetet, az üzenet tartalmát egy fájlba írja.
 
-The logger module only consumes messages from the message bus, it never publishes new messages to the bus.
+A naplózó modul kizárólag fogadja az üzeneteket az üzenetbuszról, soha nem tesz közzé új üzeneteket a buszon.
 
 ![][5]
 
-The figure above shows the architecture of the Hello World sample and the relative paths to the source files that implement different portions of the sample in the [repository][lnk-gateway-sdk]. Explore the code on your own, or use the code snippets below as a guide.
+A fenti ábrán a Hello World mintaarchitektúrája látható, valamint a minta egyes részeit implementáló forrásfájlok relatív elérési útjai a [tárházban][lnk-gateway-sdk]. Ismerkedjen meg a kóddal, vagy használja az alábbi kódrészleteket segítségképp.
 
 <!-- Images -->
 [1]: media/iot-hub-gateway-sdk-getstarted-selector/modules.png
@@ -72,3 +72,8 @@ The figure above shows the architecture of the Hello World sample and the relati
 <!-- Links -->
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+
+
+<!--HONumber=sep16_HO1-->
+
+
