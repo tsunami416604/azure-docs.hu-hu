@@ -91,6 +91,6 @@ A letöltött ARM-sablon Azure CLI-vel történő üzembe helyezéséhez kövess
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -93,6 +93,6 @@ A letöltött ARM-sablon PowerShell használatával történő üzembe helyezés
                             ]
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

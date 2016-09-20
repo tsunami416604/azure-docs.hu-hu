@@ -59,6 +59,6 @@ A GitHubból letöltheti a meglévő ARM-sablont, amellyel létrehozhat egy VNet
   
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 
