@@ -13,26 +13,12 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="03/22/2016"
+     ms.date="06/16/2016"
      ms.author="dobett"/>
 
 # Ismerkedés az Azure IoT Hub for .NET szolgáltatással
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
-
-## Bevezetés
-
-Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé az eszközök internetes hálózatához (IoT) csatlakozó több millió eszköz között, valamint megoldást biztosít a háttérrendszer kialakításához. Az IoT-projektek számára az egyik legnagyobb kihívást az jelenti, hogyan lehet megbízható és biztonságos módon csatlakoztatni az eszközöket a megoldás háttérrendszeréhez. A kihívás megoldására az IoT Hub a következőket kínálja:
-
-- Megbízható nagy kapacitású üzenetkezelést kínál az eszközök és a felhő között mindkét irányban.
-- Az eszközönkénti biztonsági hitelesítő adatok és hozzáférés-vezérlés segítségével lehetővé teszi a biztonságos kommunikációt.
-- Tartalmazza a legnépszerűbb nyelvek és platformok eszközkönyvtárait.
-
-Ez az oktatóanyag a következőket mutatja be:
-
-- Egy IoT Hub létrehozása az Azure Portallal.
-- Eszközidentitás létrehozása az IoT Hubban.
-- Egy szimulált eszköz létrehozása, amely telemetriai adatokat küld a felhő háttérrendszerének, és parancsokat fogad a felhő háttérrendszeréből.
 
 Az oktatóanyag végén három Windows-konzolalkalmazással fog rendelkezni:
 
@@ -74,7 +60,7 @@ Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely egy új
 5. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban létrehozott IoT Hub kapcsolati karakterláncra.
 
         static RegistryManager registryManager;
-        static string connectionString = "{iothub connection string}";
+        static string connectionString = "{iot hub connection string}";
 
 6. Adja hozzá a **Program** osztályhoz a következő módszert:
 
@@ -243,11 +229,11 @@ Ez az oktatóanyag végigvezeti egy IoT Hub-eszközügyfél létrehozásának l�
 
 Most már készen áll az alkalmazások futtatására.
 
-1.  A Visual Studióban a Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Set StartUp projects** (Indítási projektek beállítása) parancsra. Válassza a **Multiple startup projects** (Több indítási projekt) lehetőséget, majd válassza ki a **Start** (Indítás) elemet a **ProcessDeviceToCloudMessages** és a **SimulatedDevice** projektek műveleteként.
+1.  A Visual Studióban a Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Set StartUp projects** (Indítási projektek beállítása) parancsra. Válassza a **Multiple startup projects** (Több indítási projekt) lehetőséget, majd válassza a **Start** (Indítás) elemet a **ReadDeviceToCloudMessages** és a **SimulatedDevice** projekt műveleteként.
 
     ![Indítási projektek tulajdonságai][41]
 
-2.  Nyomja le az **F5** billentyűt a két alkalmazás futtatásához. A **SimulatedDevice** alkalmazás konzolkimenete a szimulált eszköz által az IoT Hubnak küldött üzeneteket jeleníti meg. A **ProcessDeviceToCloudMessages** alkalmazás konzolkimenete az IoT Hub által fogadott üzeneteket jeleníti meg.
+2.  Nyomja le az **F5** billentyűt a két alkalmazás futtatásához. A **SimulatedDevice** alkalmazás konzolkimenete a szimulált eszköz által az IoT Hubnak küldött üzeneteket jeleníti meg. A **ReadDeviceToCloudMessages** alkalmazás konzolkimenete az IoT Hub által fogadott üzeneteket jeleníti meg.
 
     ![Az alkalmazások konzolkimenetei][42]
 
@@ -258,11 +244,15 @@ Most már készen áll az alkalmazások futtatására.
 
 ## Következő lépések
 
-Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. A következő oktatóanyagokban folytathatja az IoT Hub szolgáltatásainak, valamint további IoT-forgatókönyveknek a felfedezését:
+Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. 
 
-- [A felhőből az eszközre irányuló üzenetek IoT Hubbal való küldését][lnk-c2d-tutorial] ismertető oktatóanyagból megtudhatja, hogyan küldhet üzeneteket eszközökre, és hogyan dolgozhatja fel az IoT Hub által előállított kézbesítési visszajelzéseket.
-- [Az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyag bemutatja, hogyan dolgozhatók fel megbízhatóan az eszközökről érkező telemetriai és interaktív üzenetek.
-- A [Fájlok feltöltése eszközökről][lnk-upload-tutorial] című oktatóanyag egy mintázatot ismertet, amelyet a felhőből az eszközre irányuló üzenetek használnak az eszközökről történő fájlfeltöltések elősegítésére.
+További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
+
+- [Eszköz csatlakoztatása][lnk-connect-device]
+- [Eszközfelügyelet – első lépések][lnk-device-management]
+- [Átjáró SDK – első lépések][lnk-gateway-SDK]
+
+Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban tekintse meg [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot.
 
 <!-- Images. -->
 [41]: ./media/iot-hub-csharp-csharp-getstarted/run-apps1.png
@@ -273,9 +263,7 @@ Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létre
 [12]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp3.png
 
 <!-- Links -->
-[lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-[lnk-upload-tutorial]: iot-hub-csharp-csharp-file-upload.md
 
 [lnk-hub-sdks]: iot-hub-sdks-summary.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -290,9 +278,12 @@ Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létre
 [lnk-device-nuget]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-connected-service]: https://visualstudiogallery.msdn.microsoft.com/e254a3a5-d72e-488e-9bd3-8fee8e0cd1d6
+[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

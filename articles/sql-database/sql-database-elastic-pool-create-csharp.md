@@ -3,7 +3,7 @@
     description="Skálázható rugalmas adatbáziskészlet létrehozása az Azure SQL Database-ben C#-alapú adatbázis-fejlesztői módszerek használatával az erőforrások több adatbázis közötti megosztásához."
     services="sql-database"
     documentationCenter=""
-    authors="srinia"
+    authors="stevestein"
     manager="jhubbard"
     editor=""/>
 
@@ -13,28 +13,26 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="05/27/2016"
-    ms.author="srinia"/>
+    ms.date="08/18/2016"
+    ms.author="sstein"/>
 
 # Új rugalmas adatbáziskészlet létrehozása a C&#x23; használatával.
 
 > [AZURE.SELECTOR]
-- [Azure-portál](sql-database-elastic-pool-create-portal.md)
+- [Azure Portal](sql-database-elastic-pool-create-portal.md)
 - [PowerShell](sql-database-elastic-pool-create-powershell.md)
-- [C#](sql-database-elastic-pool-create-csharp.md)
+- [C##](sql-database-elastic-pool-create-csharp.md)
 
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre [rugalmas adatbáziskészletet](sql-database-elastic-pool.md) a C&#x23; használatával. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre [rugalmas adatbáziskészletet](sql-database-elastic-pool.md) a C# használatával.
 
 A gyakori hibakódokat megtalálja az [SQL error codes for SQL Database client applications: Database connection error and other issues](sql-database-develop-error-messages.md) (SQL Database-ügyfélalkalmazások SQL-hibakódjai: adatbázis-kapcsolati és más hibák) című cikkben.
 
-A rugalmas adatbáziskészletek jelenleg előzetes kiadásban érhetők el, és csak SQL Database V12-es verziójú kiszolgálókkal használhatók. Ha SQL Database V11-es verziószámú kiszolgálóval rendelkezik, [használhatja a PowerShellt a V12-es verzióra való frissítéshez és készlet létrehozásához](sql-database-upgrade-server-portal.md) egyetlen lépésben.
+A példák az [SQL Database .NET-es kódtárát](https://msdn.microsoft.com/library/azure/mt349017.aspx) veszik alapul, úgyhogy amennyiben még nincs telepítve, a továbblépés előtt telepítse ezt a kódtárat. A kódtár telepítését elvégezheti a Visual Studio [csomagkezelő konzolján](http://docs.nuget.org/Consume/Package-Manager-Console) (**Eszközök** > **NuGet Csomagkezelő** > **Csomagkezelő konzol**) az alábbi paranccsal:
 
-A példákban az [SQL Database .NET-kódtára](https://msdn.microsoft.com/library/azure/mt349017.aspx) szerepel, ezért azt telepítenie kell. A telepítést elvégezheti a Visual Studio [csomagkezelő konzolján](http://docs.nuget.org/Consume/Package-Manager-Console) (**Eszközök** > **NuGet Csomagkezelő** > **Csomagkezelő konzol**) az alábbi paranccsal:
+    Install-Package Microsoft.Azure.Management.Sql –Pre
 
-    PM> Install-Package Microsoft.Azure.Management.Sql –Pre
-
-## Új készlet létrehozása
+## Készlet létrehozása
 
 Hozzon létre egy [SqlManagementClient](https://msdn.microsoft.com/library/microsoft.azure.management.sql.sqlmanagementclient) példányt az [Azure Active Directory](sql-database-client-id-keys.md) értékeinek használatával. Hozzon létre egy [ElasticPoolCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.elasticpoolcreateorupdateparameters) példányt, majd hívja meg a [CreateOrUpdate](https://msdn.microsoft.com/library/microsoft.azure.management.sql.databaseoperationsextensions.createorupdate) metódust. A készletenkénti eDTU-értékek, valamint a DTU-k minimális és maximális értékei a szolgáltatásszinttől (alapszintű, standard vagy prémium) függenek. Lásd: [Rugalmas készletek és rugalmas adatbázisok eDTU- és tárterületi korlátozásai](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
@@ -54,7 +52,7 @@ Hozzon létre egy [SqlManagementClient](https://msdn.microsoft.com/library/micro
     // Create the pool
     var newPoolResponse = sqlClient.ElasticPools.CreateOrUpdate("resourcegroup-name", "server-name", "ElasticPool1", newPoolParameters);
 
-## Új adatbázis létrehozása a készletben
+## Adatbázis létrehozása egy készletben
 
 Hozzon létre egy [DataBaseCreateorUpdateProperties](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.databasecreateorupdateproperties) példányt, és állítsa be az új adatbázis tulajdonságait. Ezután hívja meg a CreateOrUpdate metódust az erőforráscsoport, a kiszolgáló és az új adatbázis nevével.
 
@@ -78,20 +76,20 @@ További információ a már létező adatbázisok készletbe való áthelyezés
 
 ## Példa: Készlet létrehozása a C&#x23 használatával
 
-Ebben a példában egy új Azure-erőforráscsoportot, egy új Azure SQL Server-példányt és egy új rugalmas készletet hozunk létre. 
+A példa egy Azure-erőforráscsoportot, egy Azure SQL-kiszolgálót és egy rugalmas készletet hoz létre. 
  
 
 A példa futtatásához az alábbi kódtárak szükségesek. A telepítést elvégezheti a Visual Studio [csomagkezelő konzolján](http://docs.nuget.org/Consume/Package-Manager-Console) (**Eszközök** > **NuGet Csomagkezelő** > **Csomagkezelő konzol**) az alábbi paranccsal.
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.Resources –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-Hozzon létre egy konzolalkalmazást, és cserélje le a Program.cs tartalmát az alábbira. A szükséges ügyfél-azonosítóról és a kapcsolódó értékekről a [Register your app and get the required client values for connecting your app to SQL Database](sql-database-client-id-keys.md) (Alkalmazás regisztrálása és a szükséges ügyféladatok beszerzése az SQL Database-hez való kapcsolódáshoz) című témakörben olvashat. A subscriptionId értékét a [Get-AzureRmSubscription](https://msdn.microsoft.com/library/mt619284.aspx) parancsmag használatával kérheti le.
+Hozzon létre egy konzolalkalmazást, és cserélje le a Program.cs tartalmát az alábbira. A szükséges ügyfél-azonosító és a kapcsolódó értékek beszerzéséhez hozzon létre egy natív alkalmazást a következő cikk segítségével: [Register your app and get the required client values for connecting your app to SQL Database](sql-database-client-id-keys.md) (Az alkalmazás regisztrálása és a szükséges ügyfélértékek beszerzése az alkalmazás az SQL Database-hez való csatlakoztatásához).
 
     using Microsoft.Azure;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Azure.Management.Sql;
     using Microsoft.Azure.Management.Sql.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -243,7 +241,7 @@ Hozzon létre egy konzolalkalmazást, és cserélje le a Program.cs tartalmát a
 ## Következő lépések
 
 - [Készlet kezelése](sql-database-elastic-pool-manage-csharp.md)
-- [Rugalmas feladat létrehozása](sql-database-elastic-jobs-overview.md): a rugalmas feladatok lehetővé teszik a T-SQL-szkriptek használatát a készletben lévő tetszőleges számú adatbázishoz.
+- [Rugalmas feladat létrehozása](sql-database-elastic-jobs-overview.md): a rugalmas feladatok lehetővé teszik a T-SQL-szkriptek használatát egy készletben lévő tetszőleges számú adatbázishoz.
 - [Horizontális felskálázás az Azure SQL Database-ben](sql-database-elastic-scale-introduction.md): horizontális skálázáshoz rugalmas adatbáziseszközöket használhat.
 
 ## További források
@@ -252,6 +250,7 @@ Hozzon létre egy konzolalkalmazást, és cserélje le a Program.cs tartalmát a
 - [Az Azure erőforrás-kezelési API-jai](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

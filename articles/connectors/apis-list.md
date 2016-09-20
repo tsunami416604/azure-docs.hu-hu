@@ -1,7 +1,7 @@
 <properties
-    pageTitle="A Microsoft Azure Logic Apps alkalmazásokban használható, Microsoft által felügyelt összekötők listája | Microsoft Azure App Service"
+    pageTitle="A Microsoft Azure Logic Apps alkalmazásokban használható, Microsoft által felügyelt összekötők listája | Microsoft Azure App Service | Microsoft Azure"
     description="A Microsoft által felügyelt összekötők teljes listája, amelyek használatával Logic Apps alkalmazásokat készíthet az Azure App Service szolgáltatásban"
-    services="app-service\logic"
+    services="logic-apps"
     documentationCenter=""
     authors="MSFTMAN"
     manager="erikre"
@@ -9,79 +9,85 @@
     tags="connectors"/>
 
 <tags
-    ms.service="app-service-logic"
+    ms.service="logic-apps"
     ms.workload="integration"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/31/2016"
+    ms.date="08/23/2016"
     ms.author="deonhe"/>
 
-# A felügyelt összekötők listája
+# Az összekötők listája
 
->[AZURE.NOTE] A cikk e verziója a Logic Apps 2015. 08. 01. dátumú előnézeti sémaverziójára vonatkozik. A 2014. 12. 01. dátumú előzetes sémaverzióért kattintson az [összekötők listájára](../app-service-logic/app-service-logic-connectors-list.md). 
+Válasszon egy összekötőt, és ismerkedjen meg a munkafolyamatok gyors kiépítésének módjaival.
 
-Ha szeretne további tájékoztatáshoz jutni az árakról, illetve kíváncsi rá, hogy mit tartalmaznak az egyes szolgáltatásszintek, látogasson el az [Azure App Service Díjszabás](https://azure.microsoft.com/pricing/details/app-service/) című weblapra.
-
-> [AZURE.NOTE] Ha az Azure Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appservice=logic) oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Nincs szükség bankkártyára, és nem jár semmiféle kötelezettséggel.
-
-Válasszon egy ikont, ha szeretné megtudni, hogyan használhatja ezeket az összekötőket olyan alkalmazások készítéséhez, amelyek ezen szolgáltatásokat hívják meg. Az összekötők Logic Apps, PowerApps és Flow-alkalmazások készítéséhez használhatók.
+## Szokványos összekötők
 
 |Összekötők||||
 |-----------|-----------|-----------|-----------|
-|[![API Icon][blobicon]<br/>**Azure Blob**][azureblobdoc]|[![API Icon][boxicon]<br/>**Box**][boxDoc]|[![API Icon][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|[![API Icon][dropboxicon]<br/>**Dropbox**][dropboxdoc]|
-|[![API Icon][facebookicon]<br/>**Facebook**][facebookdoc]|[![API Icon][ftpicon]<br/>**FTP**][ftpdoc]|[![API Icon][githubicon]<br/>**GitHub**][githubdoc]|[![API Icon][googledriveicon]<br/>**Google Drive**][googledrivedoc]|
-|[![API Icon][mailchimpicon]<br/>**MailChimp**][mailchimpdoc]|[![API Icon][microsofttranslatoricon]<br/>**Fordító**][microsofttranslatordoc]|[![API Icon][office365icon]<br/>**Office 365**<br/>**Outlook**][office365outlookdoc]|[![API Icon][office365icon]<br/>**Office 365**<br/>**Users**][office365usersdoc]|
-|[![API Icon][office365icon]<br/>**Office 365**<br/>**Video**][office365videodoc]|[![API Icon][onedriveicon]<br/>**OneDrive**][onedrivedoc]|[![API Icon][onedriveicon]<br/>**OneDrive<br/>Vállalati verzió**][onedriveforbusinessdoc]|[![API Icon][outlookicon]<br/>**Outlook**][outlookdoc]|
-|[![API Icon][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API Icon][rssicon]<br/>**RSS**][rssdoc]|[![API Icon][salesforceicon]<br/>**Salesforce**][salesforcedoc]|[![API Icon][sendgridicon]<br/>**SendGrid**][sendgriddoc]|
-|[![API Icon][servicebusicon]<br/>**Service Bus**][servicebusdoc]|[![API Icon][sftpicon]<br/>**SFTP**][sftpdoc]|[![API Icon][sharepointicon]<br/>**SharePoint**<br/>**Online**][sharepointdoc]|[![API Icon][slackicon]<br/>**Slack**<br/>][slackdoc]|
-|[![API Icon][smtpicon]<br/>**SMTP**][smtpdoc]|[![API Icon][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API Icon][trelloicon]<br/>**Trello**][trellodoc]|[![API Icon][twilioicon]<br/>**Twilio**][twiliodoc]|
-|[![API Icon][twittericon]<br/>**Twitter**][twitterdoc]|[![API Icon][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|[![API Icon][yammericon]<br/>**Yammer**][yammerdoc] | |
+|[![API Icon][API/Web-Appicon]<br/>**API/Web App**][API/Web-Appdoc]|[![API Icon][Azure-Blobicon]<br/>**Azure Blob**][Azure-Blobdoc]|[![API Icon][Azure~Functionsicon]<br/>**Azure<br/>Functions**][Azure~Functionsdoc]|[![API Icon][Boxicon]<br/>**Box**][Boxdoc]|
+|[![API Icon][CRM-Onlineicon]<br/>**CRM Online**][CRM-Onlinedoc]|[![API Icon][Delayicon]<br/>**Delay**][Delaydoc]|[![API Icon][Dropboxicon]<br/>**Dropbox**][Dropboxdoc]|[![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc]|
+|[![API Icon][FTPicon]<br/>**FTP**][FTPdoc]|[![API Icon][GitHubicon]<br/>**GitHub**][GitHubdoc]|[![API Icon][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc]|![API-ikon][Google-Sheetsicon]<br/>**Google Táblázatok**|
+|![API-ikon][Google-Tasksicon]<br/>**Google Teendők**|![API-ikon][Google~Calendaricon]<br/>**Google<br/>Naptár**|[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc]|[![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][HTTP-Swaggerdoc]|
+|[![API Icon][HTTP~Requesticon]<br/>**HTTP<br/>Request**][HTTP~Requestdoc]|[![API Icon][HTTP~Responseicon]<br/>**HTTP<br/>Response**][HTTP~Responsedoc]|![API-ikon][Instagramicon]<br/>**Instagram**|[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|
+|![API-ikon][Mandrillicon]<br/>**Mandrill**|[![API Icon][Nested~Logic-Appicon]<br/>**Nested<br/>Logic App**][Nested~Logic-Appdoc]|[![API Icon][Office-365~Outlookicon]<br/>**Office 365<br/>Outlook**][Office-365~Outlookdoc]|[![API Icon][Office-365~Usersicon]<br/>**Office 365<br/>Users**][Office-365~Usersdoc]|
+|[![API Icon][Office-365~Videoicon]<br/>**Office 365<br/>Video**][Office-365~Videodoc]|[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|[![API Icon][OneDrive-for~Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for~Businessdoc]|[![API Icon][Outlookicon]<br/>**Outlook**][Outlookdoc]|
+|[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API Icon][Queryicon]<br/>**Query**][Querydoc]|[![API Icon][Recurrenceicon]<br/>**Recurrence**][Recurrencedoc]|[![API Icon][RSSicon]<br/>**RSS**][RSSdoc]|
+|[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc]|[![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc]|
+|[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API Icon][Slackicon]<br/>**Slack**][Slackdoc]|[![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API-ikon][SparkPosticon]<br/>**SparkPost**|
+|[![API Icon][SQLicon]<br/>**SQL**][SQLdoc]|[![API Icon][Translatoricon]<br/>**Translator**][Translatordoc]|[![API Icon][Trelloicon]<br/>**Trello**][Trellodoc]|[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc]|
+|[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc]|[![API Icon][Webhookicon]<br/>**Webhook**][Webhookdoc]|[![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc]|
+|![API-ikon][YouTubeicon]<br/>**YouTube**||||
 
-> [AZURE.NOTE] Amennyiben a 2014. 12. 01. dátumú előnézeti séma használatával készített Logic Apps alkalmazásokat, észrevehette, hogy a vállalati integrációs összekötők, például a BizTalk összekötői nem láthatók fent. Tisztában vagyunk vele, hogy ezek fontosak, és minden erőfeszítést megteszünk azért, hogy mihamarabb használhassa őket. Jóllehet még nem tudjuk a pontos dátumot, hogy mikor lesznek elérhetők az összekötők, szeretnénk, ha tudná, hogy a biztosításuk a legfontosabb prioritásaink közé tartozik. Addig is az [1-es verziójú API-kat és a BizTalk API-kat elérheti a Logic Apps alkalmazásokból](https://blogs.msdn.microsoft.com/logicapps/2016/02/25/accessing-v1-apis-and-biztalk-apis-from-logic-apps/). Megértését köszönjük. Kövessen bennünket.
+> [AZURE.NOTE] Ha az Azure Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appservice=logic) oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
+## Enterprise Integration Pack- (EIP-) összekötők
+Az EIP-összekötőkkel logikai alkalmazásokat hozhat létre EAI-t és EDI-t tartalmazó B2B-forgatókönyvekhez.  
+ 
+|EIP-összekötők ||||
+|-----------|-----------|-----------|-----------|
+|[![API Icon][xmlvalidateicon]<br/>**XML <br/>validation**][xmlvalidatedoc]|[![API Icon][xmltransformicon]<br/>**XML<br/> transform**][xmltransformdoc]|[![API Icon][flatfileicon]<br/>**Flat file</br>encode**][flatfiledoc]|[![API Icon][flatfiledecodeicon]<br/>**Flat file</br>decode**][flatfiledecodedoc]|
+|[![API Icon][as2icon]<br/>**AS2</br>decode**][as2decode]|[![API Icon][as2icon]<br/>**AS2</br>encode**][as2encode]|[![API Icon][x12icon]<br/>**X12</br>decode**][x12decode]|[![API Icon][x12icon]<br/>**X12</br>encode**][x12encode]|
+|[![API Icon][x12icon]<br/>**EDIFACT</br>decode**][EDIFACTdecode]|[![API Icon][x12icon]<br/>**EDIFACT</br>encode**][EDIFACTencode]||||
 
+<!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
 ### Az összekötők lehetnek eseményindítók
 Több összekötő is biztosít eseményindítókat, amelyek adott események bekövetkezése esetén értesíthetik az alkalmazást. Az FTP-összekötő például az OnUpdatedFile eseményindítót tartalmazza. Készíthet olyan Logic App, PowerApp vagy Flow-alkalmazást, amely figyel erre az eseményindítóra, és végrehajt egy műveletet, amint az eseményindító aktiválódik.
 
 Két eseményindító-típus létezik:  
 
-* Lekérdezéses eseményindítók: ezek az eseményindítók a beállított időközönként új adatokat kereső lekérdezést küldenek a szolgáltatásnak. Amikor új adatok válnak elérhetővé, az alkalmazás új példánya bemeneti adatokként fogja azokat használni a futása során. Ha meg szeretné akadályozni, hogy ugyanazokat az adatokat többször is feldolgozza a rendszer, elérheti, hogy az eseményindító megtisztítsa azokat az adatokat, amelyeket az alkalmazása már beolvasott.
-* Leküldéses eseményindítók: ezek az eseményindítók azt figyelik, hogy mikor jelennek meg adatok egy végponton, vagy mikor megy végbe egy adott esemény. Ezután elindítják az alkalmazás egy új példányát. Ilyen például a Twitter-összekötő.
-
+* Lekérdezéses eseményindítók: ezek az eseményindítók a beállított időközönként új adatokat kereső lekérdezést küldenek a szolgáltatásnak. Amikor új adatok válnak elérhetővé, az alkalmazás új példánya bemeneti adatokként fogja azokat használni a futása során. Ha meg szeretné akadályozni, hogy ugyanazokat az adatokat többször is feldolgozza a rendszer, elérheti, hogy az eseményindító megtisztítsa azokat az adatokat, amelyeket az alkalmazás már beolvasott.
+* Leküldéses eseményindítók: ezek az eseményindítók azt figyelik, hogy mikor jelennek meg adatok egy végponton, vagy mikor megy végbe egy adott esemény, majd elindítják az alkalmazás egy új példányát. Ilyen például a Twitter-összekötő.
 
 ### Az összekötők lehetnek műveletek
 Az összekötők használhatók műveletekként is az alkalmazásokban. A műveletek olyan adatok gyűjtéséhez lehetnek hasznosak, amelyeket azután az alkalmazás végrehajtása során használ. Előfordulhat például, hogy ügyféladatokat kell keresnie egy SQL-adatbázisban egy megrendelés feldolgozásához. Vagy előfordulhat, hogy a céltáblában kell adatokat írnia, frissítenie vagy törölnie. Ezt mind megteheti az összekötők által kínált műveletekkel. Ezek a műveletek leképezhetőek a Swagger-metaadatokban meghatározott műveletekké.
 
+## Következő lépések
 
-[Újdonságok](../app-service-logic/app-service-logic-schema-2015-08-01.md)  
-[Hozzon létre egy Logic App alkalmazást](../app-service-logic/app-service-logic-create-a-logic-app.md)  
-[Bevezetés a PowerApps használatába](../power-apps/powerapps-get-started-azure-portal.md)  
-[Meglévő Logic Apps alkalmazások áttelepítése a legújabb sémaverzióra](connectors-schema-migration.md) 
+- [Hozzon létre egy Logic App alkalmazást](../app-service-logic/app-service-logic-create-a-logic-app.md)  
+- [Egyéni összekötő létrehozása](../app-service-logic/app-service-logic-create-api-app.md)
+- [A Logic Apps figyelése](../app-service-logic/app-service-logic-monitor-your-logic-apps.md)
 
 <!--Connectors Documentation-->
-[azureblobdoc]: ./connectors-create-api-azureblobstorage.md "Az Azure-blobhoz csatlakozhat a blobtárolókban lévő fájlok kezeléséhez."
-[bingsearchDoc]: ./connectors-create-api-bingsearch.md "A Bing használatával kereshet webes tartalmakat, képeket, híreket és videókat."
+[azure-blobdoc]: ./connectors-create-api-azureblobstorage.md "Csatlakozhat az Azure-blobhoz a blobtárolókban található fájlok kezeléséhez."
 [boxDoc]: ./connectors-create-api-box.md "A Box szolgáltatáshoz csatlakozhat, és fájlokat tölthet fel, kérhet le, törölhet, listázhat stb."
-[crmonlinedoc]: ./connectors-create-api-crmonline.md "A Dynamics CRM Online szolgáltatáshoz csatlakozhat, és hatékonyabban használhatja CRM Online-adatait."
+[crm-onlinedoc]: ./connectors-create-api-crmonline.md "A Dynamics CRM Online szolgáltatáshoz csatlakozhat, és hatékonyabban használhatja CRM Online adatait."
 [dropboxdoc]: ./connectors-create-api-dropbox.md "A Dropbox szolgáltatáshoz csatlakozhat, és fájlokat tölthet fel, kérhet le, törölhet, listázhat stb."
-[exceldoc]: ./connectors-create-api-excel.md "Az Excelhez csatlakozhat."
 [facebookdoc]: ./connectors-create-api-facebook.md "A Facebookhoz csatlakozhat, és bejegyzéseket tehet közzé az idővonalon, laptartalmakat kérhet le, és egyéb műveleteket végezhet."
 [ftpdoc]: ./connectors-create-api-ftp.md "Ezzel az összekötővel csatlakozhat FTP-/FTPS-kiszolgálókhoz, és ott különféle FTP-műveleteket hajthat végre, például fájlok feltöltését, lekérését, törlését stb."
-[googledrivedoc]: ./connectors-create-api-googledrive.md "A Google Drive-hoz csatlakozhat, és kezelheti adatait."
-[microsofttranslatordoc]: ./connectors-create-api-microsofttranslator.md
-[office365outlookdoc]: ./connectors-create-api-office365-outlook.md "Az Office 365-összekötővel e-maileket küldhet és fogadhat, kezelheti naptárát és névjegyeit Office 365-fiókjában."
-[officeunifieddoc]: ./connectors-create-api-bingsearch.md
-[office365usersdoc]: ./connectors-create-api-office365-users.md
-[office365videodoc]: ./connectors-create-api-office365-video.md
+[google-drivedoc]: ./connectors-create-api-googledrive.md "A Google Drive-hoz csatlakozhat, és kezelheti adatait."
+[translatordoc]: ./connectors-create-api-microsofttranslator.md
+[office-365~outlookdoc]: ./connectors-create-api-office365-outlook.md "Az Office 365-összekötővel e-maileket küldhet és fogadhat, kezelheti naptárát és névjegyeit Office 365-fiókjában."
+[office-365~usersdoc]: ./connectors-create-api-office365-users.md
+[office-365~videodoc]: ./connectors-create-api-office365-video.md
 [onedrivedoc]: ./connectors-create-api-onedrive.md "Személyes Microsoft OneDrive-fiókjához csatlakozhat, és fájlokat tölthet fel, törölhet, listázhat stb."
-[onedriveforbusinessdoc]: ./connectors-create-api-onedriveforbusiness.md "Vállalati Microsoft OneDrive-fiókjához csatlakozhat, és fájlokat tölthet fel, törölhet, listázhat stb."
+[onedrive-for~businessdoc]: ./connectors-create-api-onedriveforbusiness.md "Vállalati Microsoft OneDrive-fiókjához csatlakozhat, és fájlokat tölthet fel, törölhet, listázhat stb."
 [outlookdoc]: ./connectors-create-api-outlook.md "Outlook-postaládájához csatlakozhat, amelyben elérheti e-mailjeit, és egyéb műveleteket végezhet."
-[projectonlinedoc]: ./connectors-create-api-projectonline.md "A Microsoft Project Online-hoz csatlakozhat."
+[project-onlinedoc]: ./connectors-create-api-projectonline.md "A Microsoft Project Online-hoz csatlakozhat."
 [rssdoc]: ./connectors-create-api-rss.md "Az RSS-összekötő használatával a felhasználók közzétehetnek és lekérhetnek hírcsatornaelemeket. Az összekötő emellett lehetővé teszi, hogy a felhasználók műveleteket indítsanak, ha egy új elemet tesznek közzé a hírcsatornán."
 [salesforcedoc]: ./connectors-create-api-salesforce.md "Salesforce-fiókjához csatlakozhat, és kezelheti ügyfeleit, üzleti lehetőségeit és egyebeket."
 [sendgriddoc]: ./connectors-create-api-sendgrid.md "A Microsoft Project Online-hoz csatlakozhat."
-[servicebusdoc]: ./connectors-create-api-servicebus.md "Üzeneteket küldhet a Service Bus-üzenetsorokból és -témákból, illetve üzeneteket fogadhat a Service Bus-üzenetsorokból és -előfizetésekből."
+[service-busdoc]: ./connectors-create-api-servicebus.md "Üzeneteket küldhet a Service Bus-üzenetsorokból és -témákból, illetve üzeneteket fogadhat a Service Bus-üzenetsorokból és -előfizetésekből."
 [sharepointdoc]: ./connectors-create-api-sharepointonline.md "A SharePoint Online-hoz csatlakozhat a dokumentumok kezeléséhez és az elemek listázásához."
 [slackdoc]: ./connectors-create-api-slack.md "A Slackhez csatlakozhat, és üzeneteket tehet közzé a Slack-csatornákon."
 [sftpdoc]: ./connectors-create-api-sftp.md "Az SFTP szolgáltatáshoz csatlakozhat, és fájlokat tölthet fel, kérhet le, törölhet stb."
@@ -94,42 +100,98 @@ Az összekötők használhatók műveletekként is az alkalmazásokban. A művel
 [twitterdoc]: ./connectors-create-api-twitter.md "A Twitterhez csatlakozhat, és idővonal-tartalmakat fogadhat, tweeteket tehet közzé, és egyéb műveleteket végezhet."
 [wunderlistdoc]: ./connectors-create-api-wunderlist.md "Szervezetten élheti életét."
 [yammerdoc]: ./connectors-create-api-yammer.md "A Yammerhez csatlakozhat, és üzeneteket tehet közzé vagy fogadhat újakat."
+[as2doc]: ../app-service-logic/app-service-logic-enterprise-integration-as2.md "Megismerheti a vállalati integrációs AS2-t."
+[x12doc]: ../app-service-logic/app-service-logic-enterprise-integration-x12.md "Megismerheti a vállalati integrációs X12-t."
+[flatfiledoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Megismerheti a vállalati integrációs egybesimított fájlt."
+[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Megismerheti a vállalati integrációs egybesimított fájlt."
+[xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml-validation.md "Megismerheti a vállalati integrációs XML-érvényesítést."
+[xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "Megismerheti a vállalati integrációs átalakításokat."
+[as2decode]: ..//app-service-logic/app-service-logic-enterprise-integration-as2-decode.md "Megismerheti a vállalati integrációs AS2-dekódolást."
+[as2encode]: ..//app-service-logic/app-service-logic-enterprise-integration-as2-encode.md "Megismerheti a vállalati integrációs AS2-kódolást."
+[X12decode]: ..//app-service-logic/app-service-logic-enterprise-integration-X12-decode.md "Megismerheti a vállalati integrációs X12-dekódolást."
+[X12encode]: ..//app-service-logic/app-service-logic-enterprise-integration-X12-encode.md "Megismerheti a vállalati integrációs X12-kódolást."
+[EDIFACTdecode]: ..//app-service-logic/app-service-logic-enterprise-integration-EDIFACT-decode.md "Megismerheti a vállalati integrációs EDIFACT-dekódolást."
+[EDIFACTencode]: ..//app-service-logic/app-service-logic-enterprise-integration-EDIFACT-encode.md "Megismerheti a vállalati integrációs EDIFACT-kódolást."
+[httpdoc]: ./connectors-native-http.md "HTTP-összekötő HTTP-hívásokhoz."
+[http~requestdoc]: ./connectors-native-reqres.md "Kérelem- és válaszműveletek."
+[http~responsedoc]: ./connectors-native-reqres.md "Kérelem- és válaszműveletek."
+[delaydoc]: ./connectors-native-delay.md "Megismerheti a késleltetési műveletet."
+[http-swaggerdoc]: ./connectors-native-http-swagger.md "HTTP + Swagger összekötő HTTP-hívásokhoz."
+[querydoc]: ./connectors-native-query.md "Lekérdezési művelet tömbök kiválasztásához és szűréséhez."
+[webhookdoc]: ./connectors-native-webhook.md "Webhook művelet és eseményindító logikai alkalmazásokhoz."
+[azure~functionsdoc]: ../app-service-logic/app-service-logic-azure-functions.md "Logikai alkalmazások integrálása az Azure Functions függvényekkel."
+[api/web-appdoc]: ../app-service-logic/app-service-logic-custom-hosted-api.md "Logikai alkalmazások integrálása App Service API Apps alkalmazásokkal."
+[nested~logic-appdoc]: ../app-service-logic/app-service-logic-http-endpoint.md "Logikai alkalmazások integrálása egy beágyazott munkafolyamattal."
+[recurrencedoc]:  ./connectors-native-recurrence.md "Ismétlődési eseményindító logikai alkalmazásokhoz."
+[google-sheetsdoc]: ./connectors-create-api-googlesheet.md "A Google Táblázatokhoz csatlakozik, és módosíthatja a táblázatokat."
+[google-tasksdoc]: ./connectors-create-api-googletasks.md "A Google Teendőkhöz csatlakozik, és felügyelheti a teendőket."
+[google~calendardoc]: ./connectors-create-api-googlecalendar.md "A Google Naptárhoz csatlakozik, és felügyelheti a naptárat."
+[instagramdoc]: ./connectors-create-api-instagram.md "Az Instagramhoz csatlakozik, és eseményeket indíthat vagy reagálhat rájuk."
+[mandrilldoc]: ./connectors-create-api-mandrill.md "A Mandrillhoz csatlakozik, és kommunikációhoz használható."
+[youtubedoc]: ./connectors-create-api-youtube.md "A YouTube-hoz csatlakozik, és videókkal és csatornákkal kapcsolatos műveleteket hajthat végre."
+[sparkpostdoc]: ./connectors-create-api-sparkpost.md "A SparkPosthoz csatlakozik, és kommunikációhoz használható."
 
 <!--Icon references-->
-[blobicon]: ./media/apis-list/blobicon.png
-[bingsearchicon]: ./media/apis-list/bingsearchicon.png
-[boxicon]: ./media/apis-list/boxicon.png
-[ftpicon]: ./media/apis-list/ftpicon.png
-[githubicon]: ./media/apis-list/githubicon.png
-[crmonlineicon]: ./media/apis-list/dynamicscrmicon.png
-[dropboxicon]: ./media/apis-list/dropboxicon.png
-[excelicon]: ./media/apis-list/excelicon.png
-[facebookicon]: ./media/apis-list/facebookicon.png
-[googledriveicon]: ./media/apis-list/googledriveicon.png
-[mailchimpicon]: ./media/apis-list/mailchimpicon.png
-[microsofttranslatoricon]: ./media/apis-list/translatoricon.png
-[office365icon]: ./media/apis-list/office365icon.png
-[onedriveicon]: ./media/apis-list/onedriveicon.png
-[onedriveforbusinessicon]: ./media/apis-list/onedriveforbusinessicon.png
-[outlookicon]: ./media/apis-list/outlookicon.png
-[projectonlineicon]: ./media/apis-list/projectonlineicon.png
-[rssicon]: ./media/apis-list/rssicon.png
-[salesforceicon]: ./media/apis-list/salesforceicon.png
-[sendgridicon]: ./media/apis-list/sendgridicon.png
-[servicebusicon]: ./media/apis-list/servicebusicon.png
-[sftpicon]: ./media/apis-list/sftpicon.png
-[sharepointicon]: ./media/apis-list/sharepointicon.png
-[slackicon]: ./media/apis-list/slackicon.png
-[smtpicon]: ./media/apis-list/smtpicon.png
-[sqlicon]: ./media/apis-list/sqlicon.png
-[trelloicon]: ./media/apis-list/trelloicon.png
-[twilioicon]: ./media/apis-list/twilioicon.png
-[twittericon]: ./media/apis-list/twittericon.png
-[wunderlisticon]: ./media/apis-list/wunderlisticon.png
-[yammericon]: ./media/apis-list/yammericon.png
+[Azure-Blobicon]: ./media/apis-list/azureblob.png
+[Boxicon]: ./media/apis-list/box.png
+[FTPicon]: ./media/apis-list/ftp.png
+[GitHubicon]: ./media/apis-list/github.png
+[CRM-Onlineicon]: ./media/apis-list/dynamicscrmonline.png
+[Dropboxicon]: ./media/apis-list/dropbox.png
+[Facebookicon]: ./media/apis-list/facebook.png
+[Google-Driveicon]: ./media/apis-list/googledrive.png
+[MailChimpicon]: ./media/apis-list/mailchimp.png
+[Translatoricon]: ./media/apis-list/microsofttranslator.png
+[Office-365~Outlookicon]: ./media/apis-list/office365.png
+[Office-365~Usersicon]: ./media/apis-list/office365.png
+[Office-365~Videoicon]: ./media/apis-list/sharepointonline.png
+[OneDriveicon]: ./media/apis-list/onedrive.png
+[OneDrive-for~Businessicon]: ./media/apis-list/onedriveforbusiness.png
+[Outlookicon]: ./media/apis-list/outlook.png
+[Project-Onlineicon]: ./media/apis-list/projectonline.png
+[RSSicon]: ./media/apis-list/rss.png
+[Salesforceicon]: ./media/apis-list/salesforce.png
+[SendGridicon]: ./media/apis-list/sendgrid.png
+[Service-Busicon]: ./media/apis-list/servicebus.png
+[SFTPicon]: ./media/apis-list/sftp.png
+[SharePointicon]: ./media/apis-list/sharepointonline.png
+[Slackicon]: ./media/apis-list/slack.png
+[SMTPicon]: ./media/apis-list/smtp.png
+[SQLicon]: ./media/apis-list/sql.png
+[Trelloicon]: ./media/apis-list/trello.png
+[Twilioicon]: ./media/apis-list/twilio.png
+[Twittericon]: ./media/apis-list/twitter.png
+[Wunderlisticon]: ./media/apis-list/wunderlist.png
+[Yammericon]: ./media/apis-list/yammer.png
+[Google~Calendaricon]: ./media/apis-list/googlecalendar.png
+[Google-Tasksicon]: ./media/apis-list/googletasks.png
+[Google-Sheetsicon]: ./media/apis-list/googlesheet.png
+[Mandrillicon]: ./media/apis-list/mandrill.png
+[SparkPosticon]: ./media/apis-list/sparkpost.png
+[Instagramicon]: ./media/apis-list/instagram.png
+[YouTubeicon]: ./media/apis-list/youtube.png
+[HTTPicon]: ./media/apis-list/http.png
+[HTTP~Requesticon]: ./media/apis-list/request.png
+[HTTP~Responseicon]: ./media/apis-list/response.png
+[Delayicon]: ./media/apis-list/delay.png
+[HTTP-Swaggericon]: ./media/apis-list/http_swagger.png
+[Queryicon]: ./media/apis-list/query.png
+[Webhookicon]: ./media/apis-list/webhook.png
+[Azure~Functionsicon]: ./media/apis-list/function.png
+[API/Web-Appicon]: ./media/apis-list/api.png
+[Nested~Logic-Appicon]: ./media/apis-list/workflow.png
+[Recurrenceicon]: ./media/apis-list/recurrence.png
+
+<!-- EIP Icons -->
+[as2icon]: ./media/apis-list/as2new.png
+[x12icon]: ./media/apis-list/x12new.png
+[flatfileicon]: ./media/apis-list/flatfileencoding.png
+[flatfiledecodeicon]: ./media/apis-list/flatfiledecoding.png
+[xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
+[xmltransformicon]: ./media/apis-list/xsltransform.png
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

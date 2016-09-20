@@ -1,23 +1,25 @@
 <properties
-            pageTitle="Get started with Azure File storage on Windows (Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással) | Microsoft Azure"
-            description="A felhőben tárolhatja a fájljait az Azure File Storage használatával, valamint a felhőalapú fájlmegosztását Azure virtuális gépről vagy Windowst futtató helyszíni alkalmazásokból csatlakoztathatja."
-            services="storage"
-            documentationCenter=".net"
-            authors="mine-msft"
-            manager="aungoo"
-            editor="tysonn" />
+    pageTitle="Get started with Azure File storage on Windows (Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással) | Microsoft Azure"
+    description="A felhőben tárolhatja a fájljait az Azure File Storage használatával, valamint a felhőalapú fájlmegosztását Azure virtuális gépről vagy Windowst futtató helyszíni alkalmazásokból csatlakoztathatja."
+    services="storage"
+    documentationCenter=".net"
+    authors="mine-msft"
+    manager="aungoo"
+    editor="tysonn" />
 
 <tags ms.service="storage"
-      ms.workload="storage"
-      ms.tgt_pltfrm="na"
-      ms.devlang="dotnet"
-      ms.topic="hero-article"
-      ms.date="04/11/2016"
-      ms.author="minet" />
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="hero-article"
+    ms.date="07/26/2016"
+    ms.author="minet" />
 
 # Get started with Azure File storage on Windows (Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással)
 
 [AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
 ## Áttekintés
 
@@ -25,7 +27,7 @@ Az Azure File storage egy felhőalapú fájlmegosztást kínáló, [SMB protokol
 
 Mivel a File Storage-megosztás egy szabványos SMB-fájlmegosztás, az Azure-ban futó alkalmazások a fájlrendszer adatátviteli API-jain keresztül férhetnek hozzá a megosztás adataihoz. A fejlesztők épp ezért meglévő kódjaik és képességeik felhasználásával áttelepíthetik az alkalmazásokat. Az informatikai szakemberek az Azure-alkalmazások rendszergazdai feladatainak részeként PowerShell-parancsmagokkal hozhatják létre, csatlakoztathatják és kezelhetik a File Storage-megosztásokat.
 
-Azure fájlmegosztásokat létrehozhat az [Azure portálon](https://portal.azure.com), az Azure Storage PowerShell parancsmagjainak segítségével, illetve az Azure Storage ügyfélkódtáraival vagy az Azure Storage REST API-val. Emellett, mivel a fájlmegosztások SMB-megosztások, azokhoz szabványos, ismert fájlrendszer API-kkal is hozzáférhet. 
+Azure fájlmegosztásokat létrehozhat az [Azure Portalon](https://portal.azure.com), az Azure Storage PowerShell parancsmagjainak segítségével, illetve az Azure Storage ügyfélkódtáraival vagy az Azure Storage REST API-val. Emellett, mivel a fájlmegosztások SMB-megosztások, azokhoz szabványos, ismert fájlrendszer API-kkal is hozzáférhet. 
 
 A File Storage Linuxszal való használatáról további információt itt talál: [How to use Azure File Storage with Linux](storage-how-to-use-files-linux.md) (Az Azure File Storage használata Linuxszal).
 
@@ -59,7 +61,7 @@ A fájlmegosztás mostantól minden tárfiókhoz lehetséges, így használhat m
 
 ## Fájlmegosztás kezelése az Azure portállal
 
-Az [Azure portál](https://portal.azure.com) kezelőfelületet nyújt a felhasználók számára a fájlmegosztásokhoz. A portál a következőket teszi lehetővé:
+Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhasználók számára a fájlmegosztásokhoz. A portál a következőket teszi lehetővé:
 
 - Fájlmegosztás létrehozása
 - Fájlok fel- és letöltése a fájlmegosztásból
@@ -138,7 +140,7 @@ Kattintson a **Start** gombra, és írja be a **Windows PowerShell** kifejezést
 
 ### Környezet létrehozása a tárfiókhoz és a fiókkulcshoz
 
-Hozza létre a tárfiók környezetét. A környezet magában foglalja a tárfiók nevét és a fiókkulcsot. Útmutatás a fiókkulcs átmásolásához egy [Azure portálról](https://portal.azure.com): [View and copy storage access keys](storage-create-storage-account.md#view-and-copy-storage-access-keys) (A tárelérési kulcs megtekintése és másolása).
+Hozza létre a tárfiók környezetét. A környezet magában foglalja a tárfiók nevét és a fiókkulcsot. Útmutatás a fiókkulcs átmásolásához egy [Azure Portalról](https://portal.azure.com): [View and copy storage access keys](storage-create-storage-account.md#view-and-copy-storage-access-keys) (A tárelérési kulcs megtekintése és másolása).
 
 Az alábbi példában cserélje ki a `storage-account-name` és a `storage-account-key` elemet a tárfiók nevére és kulcsára.
 
@@ -213,8 +215,8 @@ Ha egy ügyfél hozzáfér a File Storage-hoz, a használt SMB verziója az oper
 Az Azure fájlmegosztások csatlakoztatásának bemutatásához létrehozunk egy Windowst futtató Azure virtuális gépet, és távolról jelentkezünk be a megosztás csatlakoztatásához.
 
 
-1. Először hozzon létre egy új Azure virtuális gépet a [Create a Windows virtual machine in the Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) (Windows virtuális gép létrehozása az Azure portálon) útmutatásait követve.
-2. Ezután lépjen be távolról a virtuális gépre a [Log on to a Windows virtual machine using the Azure Portal](../virtual-machines/virtual-machines-windows-connect-logon.md) (Bejelentkezés Windows virtuális gépre az Azure portál segítségével) útmutatásai alapján.
+1. Először hozzon létre egy új Azure virtuális gépet a [Create a Windows virtual machine in the Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) (Windows virtuális gép létrehozása az Azure Portalon) útmutatásait követve.
+2. Ezután lépjen be távolról a virtuális gépre a [Log on to a Windows virtual machine using the Azure Portal](../virtual-machines/virtual-machines-windows-connect-logon.md) (Bejelentkezés Windows virtuális gépre az Azure Portal segítségével) útmutatásai alapján.
 3. Nyisson meg egy PowerShell-ablakot a virtuális gépen.
 
 ### A tárfiók hitelesítő adatainak megőrzése a virtuális gépen
@@ -529,7 +531,7 @@ Ugyanígy másolhat blobokat fájlokba. Ha a forrásobjektum egy blob, hozzon l�
 
 Az Azure Storage Analytics mostantól a File Storage esetén is támogatja a mérőszámok használatát. A metrikai adatok segítségével nyomon követheti a kéréseket, és diagnosztizálhatja a problémákat.
 
-A File Storage mérőszámait az [Azure portálon](https://portal.azure.com) engedélyezheti. A mérőszámokat szoftveresen is lehet engedélyezni. Ehhez hívja meg a Set File Service Properties (Fájl szolgáltatástulajdonságainak beállítása) műveletet a REST API vagy valamelyik, a Storage ügyféloldali kódtárában megtalálható megfelelője segítségével.
+A File Storage mérőszámait az [Azure Portalon](https://portal.azure.com) engedélyezheti. A mérőszámokat szoftveresen is lehet engedélyezni. Ehhez hívja meg a Set File Service Properties (Fájl szolgáltatástulajdonságainak beállítása) műveletet a REST API vagy valamelyik, a Storage ügyféloldali kódtárában megtalálható megfelelője segítségével.
 
 Az alábbi példakód bemutatja, hogyan használható a Storage .NET-hez készült ügyféloldali kódtára arra, hogy engedélyezze a mérőszámok használatát a File Storage-hoz.
 
@@ -640,7 +642,7 @@ Ne feledje, hogy amíg a Blob, Table és Queue Storage a megosztott `ServiceProp
 
     Az IBM kiadott egy útmutató dokumentumot az IBM MQ ügyfelei számára, amely segítséget nyújt az Azure File Storage konfigurálásához az általuk használt szolgáltatással. További információk: [How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service) (Az IBM MQ többpéldányos üzenetsor-kezelőjének beállítása a Microsoft Azure File szolgáltatással).
 
-## További lépések
+## Következő lépések
 
 Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.
 
@@ -669,6 +671,6 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure File Sto
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

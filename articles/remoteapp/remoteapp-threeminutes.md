@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="05/31/2016"
+    ms.date="08/15/2016"
     ms.author="mbaldwin" />
 
 
 
 # Az Azure RemoteApp kipróbálása az eszközén kevesebb mint 3 perc alatt
+
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Meg szeretné tekinteni az Azure RemoteAppot az eszközén? Ha van Microsoft-fiókja, 10 percre hozzáférhet a bemutató telepítéshez. Ezen elérhető az Office és néhány egyéb alkalmazás. Ez remek mód az Azure RemoteApp felhasználói élményének kipróbálására, kevesebb mint 3 perc alatt.
 
@@ -37,6 +40,6 @@ Számít a véleménye. Minden munkamenet végén egy párbeszédablak jelenik m
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

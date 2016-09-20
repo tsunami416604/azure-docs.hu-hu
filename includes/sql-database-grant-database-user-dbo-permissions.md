@@ -16,14 +16,15 @@ Ezek a lépések azt feltételezik, hogy csatlakozik az SQL Database szolgáltat
 
 3. A lekérdezési ablakban szerkessze és használja a következő Transact-SQL utasítást a dbo-engedélyek megadásához egy adott felhasználó számára. 
 
-    '''ALTER ROLE db_owner ADD MEMBER user1;
+    ```ALTER ROLE db_owner ADD MEMBER user1;
+    ```
 
-     ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
-
-
-
+     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
 
 
-<!--HONumber=Jun16_HO2-->
+
+
+
+<!--HONumber=sep16_HO1-->
 
 

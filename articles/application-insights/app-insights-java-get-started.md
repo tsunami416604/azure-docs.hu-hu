@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/12/2016"
+    ms.date="08/17/2016"
     ms.author="awills"/>
 
 # Ismerkedés az Application Insights szolgáltatással Java webes projektben
@@ -30,7 +30,7 @@ Az Application Insights a Linux, Unix vagy Windows rendszeren futó Java alkalma
 A következők szükségesek:
 
 * Oracle JRE 1.6 vagy újabb, vagy Zulu JRE 1.6 vagy újabb
-* Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés. (Kezdhet az [ingyenes próbaverzióval](https://azure.microsoft.com/pricing/free-trial/).)
+* Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés. (Kezdhet az [ingyenes próba](https://azure.microsoft.com/pricing/free-trial/).)
 
 *Ha már élő webalkalmazása van, az alternatív eljárást követve [hozzáadhatja az SDK-t a futásidőben a webkiszolgálón](app-insights-java-live.md). Ezzel az alternatívával nem kell újraépítenie a kódot, de nem tud kódot írni a felhasználói tevékenységek követése érdekében.*
 
@@ -38,13 +38,10 @@ A következők szükségesek:
 ## 1. Application Insights-kialakítási kulcs beszerzése
 
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
-2. Hozzon létre egy új Application Insights-erőforrást.
-
-    ![Kattintson a + gombra, és válassza az Application Insights lehetőséget.](./media/app-insights-java-get-started/01-create.png)
-3. Állítsa be a Java webalkalmazás alkalmazástípust.
+2. Hozzon létre egy Application Insights-erőforrást. Állítsa be a Java webalkalmazás alkalmazástípust.
 
     ![Adjon meg egy nevet, válassza ki a Java webalkalmazást, és kattintson a Létrehozás gombra.](./media/app-insights-java-get-started/02-create.png)
-4. Keresse meg az új erőforrás kialakítási kulcsát. Ezt nemsokára a kódprojektbe kell illesztenie.
+4. Keresse meg az új erőforrás kialakítási kulcsát. Ezt a kulcsot nemsokára a kódprojektbe kell illesztenie.
 
     ![Az új erőforrás áttekintésében kattintson a Tulajdonságok gombra, és másolja le a kialakítási kulcsot](./media/app-insights-java-get-started/03-key.png)
 
@@ -106,18 +103,18 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
 
 Kézzel adja hozzá az SDK-t:
 
-1. Töltse le a [Javához készült Application Insights SDK-t](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html).
+1. Töltse le a [Javához készült Application Insights SDK-t](https://aka.ms/aijavasdk).
 2. Bontsa ki a bináris fájlokat a zip-fájlból, és adja azokat a projekthez.
 
 ### Kérdések...
 
 * *Mi a kapcsolat a zip-fájl `-core` és `-web` összetevője között?*
 
- * `applicationinsights-core` – csak az API-t biztosítja. Erre mindig szüksége van.
- * `applicationinsights-web` – olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP-kérések számát és a válaszidőket. Ezt kihagyhatja, ha nem szeretné automatikusan gyűjteni ezt a telemetriát, hanem például sajátot szeretne írni.
+ * `applicationinsights-core` – csak az API-t biztosítja. Erre az összetevőre mindig szüksége van.
+ * `applicationinsights-web` – olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP-kérések számát és a válaszidőket. Ezt az összetevőt kihagyhatja, ha nem szeretné automatikusan gyűjteni ezt a telemetriát. hanem például sajátot szeretne írni.
 
 * *Az SDK frissítése a változások közzétételekor*
- * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.zip), és cserélje le a régieket.
+ * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://aka.ms/qqkaq6), és cserélje le a régieket.
  * A változások leírását az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.
 
 
@@ -161,7 +158,21 @@ Helyettesítse be az Azure Portalról kapott kialakítási kulcsot.
 
 * A kialakítási kulcsot a telemetria minden elemével megkapja, és ez közli az Application Insights eszközzel, hogy megjelenítse azt az erőforrásban.
 * A HTTP-kérelemösszetevő nem kötelező. Automatikusan telemetriát küld a kérelmekkel és válaszidőkkel kapcsolatban a portálra.
-* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és ezt „Operation.Id” tulajdonságként adja a telemetria minden eleméhez. Lehetővé teszi az egyes kérelmekkel társított telemetria korrelációját, ha beállít egy szűrőt a [diagnosztikai keresésben][diagnosztika].
+* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és az azonosítót „Operation.Id” tulajdonságként hozzáadja a telemetria minden eleméhez. Lehetővé teszi az egyes kérelmekkel társított telemetria korrelációját, ha beállít egy szűrőt a [diagnosztikai keresésben][diagnosztika].
+* Az Application Insights-kulcs dinamikusan továbbadható az Azure Portalról rendszertulajdonságként (-DAPPLICATION_INSIGHTS_IKEY=saját_kialakítási_kulcs). Ha nincs tulajdonság meghatározva, környezeti változót (APPLICATION_INSIGHTS_IKEY) keres az Azure App-beállításokban. Ha egyik tulajdonság sincs meghatározva, az alapértelmezett InstrumentationKey lesz használva az ApplicationInsights.xml-ből. Ez a sorozat segít a különböző környezetekhez tartozó InstrumentationKey-ek dinamikus kezelésében.
+
+### A kialakítási kulcs beállításának egyéb módjai
+
+Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
+
+1. Rendszertulajdonság: -DAPPLICATION_INSIGHTS_IKEY=saját_kialakítási_kulcs
+2. Környezeti változó: APPLICATION_INSIGHTS_IKEY
+3. Konfigurációs fájl: ApplicationInsights.xml
+
+[Beállíthatja a programkódban](app-insights-api-custom-events-metrics.md#ikey) is:
+
+    telemetryClient.InstrumentationKey = "...";
+
 
 ## 4. HTTP-szűrő hozzáadása
 
@@ -182,7 +193,7 @@ A legpontosabb eredmények érdekében le kell képezni a szűrőt az összes t�
        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-#### Ha az MVC 3.1-es vagy újabb verzióját használja
+#### Ha a Spring Web MVC 3.1-es vagy újabb verzióját használja
 
 Szerkessze úgy ezeket az elemeket, hogy tartalmazzák az Application Insights-csomagot:
 
@@ -227,7 +238,7 @@ Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
-> Az Application Insights feltételezi, hogy az MVC alkalmazások HTTP-kérelmeinek formátuma a következő: `VERB controller/action`. Például a `GET Home/Product/f9anuh81`, a `GET Home/Product/2dffwrf5` és a `GET Home/Product/sdf96vws` a következőbe lesz csoportosítva: `GET Home/Product`. Ez lehetővé teszi a kérelmek fontos információkat biztosító összesítéseit, például a kérelmek számának és a kérelmek átlagos végrehajtási idejének meghatározását.
+> Az Application Insights feltételezi, hogy az MVC alkalmazások HTTP-kérelmeinek formátuma a következő: `VERB controller/action`. Például a `GET Home/Product/f9anuh81`, a `GET Home/Product/2dffwrf5` és a `GET Home/Product/sdf96vws` a következőbe van csoportosítva: `GET Home/Product`. Ez a csoportosítás lehetővé teszi a kérelmek fontos információkat biztosító összesítéseit, például a kérelmek számának és a kérelmek átlagos végrehajtási idejének meghatározását.
 
 
 ### Példányadatok 
@@ -248,29 +259,27 @@ Ahogy egyre több adatot gyűjt össze, lekérdezéseket futtathat az adatok ös
 ![Példa elemzésre](./media/app-insights-java-get-started/025.png)
 
 
-## 5. Az alkalmazás telepítése a kiszolgálón
+## 7. Az alkalmazás telepítése a kiszolgálón
 
 Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használják, és nézze, ahogyan a telemetria megjelenik a portálon.
 
 * Győződjön meg arról, hogy a tűzfal lehetővé teszi, hogy az alkalmazás telemetriát küldjön ezekre a portokra:
 
  * dc.services.visualstudio.com:443
- * dc.services.visualstudio.com:80
  * f5.services.visualstudio.com:443
- * f5.services.visualstudio.com:80
 
 
 * Windows-kiszolgálókon telepítse a következőt:
 
  * [Microsoft Visual C++ újraterjeszthető csomag](http://www.microsoft.com/download/details.aspx?id=40784)
 
-    (Ez lehetővé teszi a teljesítményszámlálókat.)
+    (Ez az összetevő lehetővé teszi a teljesítményszámlálókat.)
 
 ## Kivételek és kérelemhibák
 
 A rendszer a nem kezelt kivételeket automatikusan begyűjti:
 
-![Görgessen lefelé, és kattintson a Hibák csempére](./media/app-insights-java-get-started/21-exceptions.png)
+![Beállítások megnyitása, Hibák](./media/app-insights-java-get-started/21-exceptions.png)
 
 Adatok és más kivételek gyűjtésére két lehetősége van:
 
@@ -285,7 +294,7 @@ Adatok és más kivételek gyűjtésére két lehetősége van:
 
 ## Teljesítményszámlálók
 
-Kattintson a **Kiszolgálók** csempére, és láthatja a teljesítményszámlálók készletét.
+Nyissa meg a **Beállítások**, **Kiszolgálók** elemet, ahol láthatja a teljesítményszámlálók készletét.
 
 
 ![](./media/app-insights-java-get-started/11-perf-counters.png)
@@ -367,17 +376,15 @@ Most, hogy telepítette az SDK-t, az API-val saját telemetriát küldhet.
 
 ## Rendelkezésre állási webes tesztek
 
-Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e. [A beállításhoz][rendelkezésre állás] görgessen lefelé a Rendelkezésre állás lehetőségre kattintáshoz.
+Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e. [A ][rendelkezésre állás]beállításához kattintson a Webes tesztek elemre.
 
-![Görgessen lefelé, kattintson a Rendelkezésre állás elemre, majd a Webes teszt hozzáadása elemre](./media/app-insights-java-get-started/31-config-web-test.png)
+![Kattintson a Webes tesztek elemre, majd a Webes teszt hozzáadása elemre.](./media/app-insights-java-get-started/31-config-web-test.png)
 
 Megkapja a válaszidők diagramjait, valamint e-mailes értesítéseket kap, ha a webhely leáll.
 
 ![Példa webes tesztre](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
 [További információk a rendelkezésre állási webes tesztekről.][rendelkezésre állás] 
-
-
 
 
 
@@ -403,6 +410,6 @@ További információ: [Java fejlesztői központ](/develop/java/).
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

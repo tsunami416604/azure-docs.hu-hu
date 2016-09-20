@@ -13,7 +13,7 @@
     ms.workload="search"
     ms.topic="hero-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/08/2016"
+    ms.date="07/14/2016"
     ms.author="evboyle"/>
 
 # Bevezetés az Azure Search használatába NodeJS nyelven
@@ -54,12 +54,11 @@ Miután létrehozta a szolgáltatást, térjen vissza a portálra az URL-cím va
 
 A minta letöltéséhez a következő módszerek bármelyikét használhatja.
 
-1. Lépjen az [AzureSearchNodeJSIndexerDemo](http://go.microsoft.com/fwlink/p/?LinkId=530198) elemre.
+1. Lépjen az [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo) elemre.
 2. Kattintson a **Download ZIP** (ZIP-fájl letöltése) elemre, mentse el a .zip-fájlt, és bontsa ki a benne található összes fájlt.
 
 Minden további fájlmódosítás és utasításfuttatás az ebben a mappában lévő fájlokra vonatkozóan fog történni.
 
-Másik lehetőségként, ha az útvonal-utasításában szerepel a GIT, megnyithat egy PowerShell-ablakot, és oda beírhatja a következőt: `git clone https://github.com/EvanBoyle/AzureSearchNodeJSIndexerDemo.git`
 
 ## Frissítse a config.js fájlt. a keresőszolgáltatása URL-címével és API-kulcsával
 
@@ -123,6 +122,6 @@ Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóany
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -47,7 +47,7 @@ Ez a szakasz a legfontosabb fogalmi eltéréseket tárgyalja a jelenleg rendelke
 
 Az Azure-sablonokkal való ismerkedés során először használja a platform fejlesztéséhez és telepítéséhez biztosított különböző eszközöket.
 
-### Azure portál
+### Azure Portal
 
 Az Azure portál továbbra is lehetőséget biztosít a Virtual Machines klasszikus üzembe helyezési modelljének és a Virtual Machines Resource Manager-alapú üzemi modelljének párhuzamos telepítésére. Az Azure portál az egyéni sablonok alapján történő üzembe helyezést is lehetővé teszi.
 
@@ -85,16 +85,12 @@ Az új Azure Resource Manager API-kkal létrehozott Virtual Machines, Virtual Ne
 
 Az összes már létrehozott automatizálás és parancsfájl továbbra is működni fog az Azure Szolgáltatásfelügyelet módban létrehozott, már meglévő virtuális gépekhez, virtuális hálózatokhoz stb. Ha viszont az új sémával szeretné használni a parancsfájlokat ugyanazon erőforrásoknak az új Azure Resource Manager módban való létrehozásához, frissítenie kell őket.
 
-**Csatlakoztathatók az új Azure Resource Manager API-kkal létrehozott virtuális hálózatok az Express Route körömhöz?**
-
-Ez jelenleg nem támogatott. Nem csatlakoztathatja az új Azure Resource Manager API-kkal létrehozott virtuális hálózatokat az Express Route körhöz. A jövőben ez támogatott lesz.
-
 **Hol találhatok példákat az Azure Resource Manager-sablonokra?**
 
 Az [Azure Resource Manager gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) között találhat egy átfogó kezdősablonkészletet.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

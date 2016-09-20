@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="05/25/2016"
+ ms.date="08/09/2016"
  ms.author="dobett"/>
 
 # Mik az Azure IoT előre konfigurált megoldások?
@@ -28,13 +28,13 @@ Mindegyik előre konfigurált megoldás teljes körű megvalósítás, amelyben 
 
 A megoldások Azure-ban való üzembe helyezése és futtatása mellett letöltheti a teljes forráskódot, majd testreszabhatja és kibővítheti a megoldást, hogy megfeleljen saját IoT-követelményeinek.
 
-> [AZURE.NOTE] Az egyik előre konfigurált megoldások üzembe helyezéséről lásd: [Microsoft Azure IoT Suite][lnk-azureiotsuite]. [Az IoT előre konfigurált megoldások bemutatása][lnk-preconf-get-started] című cikk további információt tartalmaz a megoldások üzembe helyezéséről és futtatásáról.
+> [AZURE.NOTE] Az egyik előre konfigurált megoldások üzembe helyezéséről lásd: [Microsoft Azure IoT Suite][lnk-azureiotsuite]. [Az IoT előre konfigurált megoldások bemutatása][lnk-getstarted-preconfigured] című cikk további információt tartalmaz a megoldások üzembe helyezéséről és futtatásáról.
 
 A következő táblázatban láthatja, hogyan képezhetők le a megoldások adott IoT-funkciókra:
 
 | Megoldás | Adatfeldolgozás | Eszközidentitás | Parancs és vezérlés | Szabályok és műveletek | Prediktív elemzés |
 |------------------------|-----|-----|-----|-----|-----|
-| [Távoli megfigyelés][lnk-preconf-get-started] | Igen | Igen | Igen | Igen | -   |
+| [Távoli megfigyelés][lnk-getstarted-preconfigured] | Igen | Igen | Igen | Igen | -   |
 | [Prediktív karbantartás][lnk-predictive-maintenance] | Igen | Igen | Igen | Igen | Igen |
 
 - *Adatfeldolgozás*: A felhőbe érkező nagy mennyiségű adatforgalom.
@@ -111,16 +111,13 @@ A megoldásportál egy webalapú felhasználói felület, amely az előre konfig
 - Parancsok küldése adott eszközökre.
 - Szabályok és műveletek kezelése.
 
-Ebben az előre konfigurált megoldásban a megoldásportál az **IoT-megoldás hátterének** és a **Feldolgozás és üzleti kapcsolatoknak** a része a tipikus [IoT megoldásarchitektúrákban][lnk-what-is-azure-iot].
+Ebben az előre konfigurált megoldásban a megoldásportál az **IoT-megoldás hátterének** és a **feldolgozási és üzleti kapcsolatoknak** a része a tipikus [IoT megoldásarchitektúrákban][lnk-what-is-azure-iot].
 
 ## Következő lépések
 
 További információ az IoT-megoldások architektúrájáról: [Microsoft Azure IoT-szolgáltatások: referenciaarchitektúra][lnk-refarch].
 
-Ezekben a forrásanyagokban további információt talál az IoT előre konfigurált megoldásokról:
-
-- [Az IoT előre konfigurált megoldások bemutatása][lnk-preconf-get-started]
-- [Prediktív karbantartási előre konfigurált megoldás áttekintése][lnk-predictive-maintenance]
+Most, hogy már tudja, mik azok az előre konfigurált megoldások, üzembe helyezheti az előre konfigurált *távoli megfigyelési* megoldást: [Az előre konfigurált megoldások bemutatása][lnk-getstarted-preconfigured].
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
@@ -128,15 +125,13 @@ Ezekben a forrásanyagokban további információt talál az IoT előre konfigur
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
 [lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
-[lnk-document-db]: https://azure.microsoft.com/documentation/services/documentdb/
 [lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
-[lnk-suite-overview]: iot-suite-overview.md
-[lnk-preconf-get-started]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
+[lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

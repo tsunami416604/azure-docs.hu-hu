@@ -4,7 +4,7 @@
     services="multi-factor-authentication" 
     documentationCenter="" 
     authors="billmath" 
-    manager="stevenpo" 
+    manager="femila" 
     editor="curtand"/>
 
 <tags 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="05/12/2016" 
+    ms.date="08/15/2016" 
     ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication a felhőben – első lépések
@@ -63,7 +63,7 @@ A következő eljárással engedélyezheti az MFA-t a felhasználók számára.
 
 ## A Multi-Factor Authentication bekapcsolásának automatizálása a PowerShell használatával
 
-Ha az [állapot](multi-factor-authentication-whats-next.md) módosításához az [Azure AD PowerShellt](powershell-install-configuremd) szeretné használni, tegye a következőket.  Módosítsa úgy a `$st.State` elemet, hogy a következő állapotok valamelyikével rendelkezzen:
+Ha az [állapot](multi-factor-authentication-whats-next.md) módosításához az [Azure AD PowerShellt](../powershell-install-configure.md) szeretné használni, tegye a következőket.  Módosítsa úgy a `$st.State` elemet, hogy a következő állapotok valamelyikével rendelkezzen:
 
 
 - Engedélyezve
@@ -98,6 +98,6 @@ Most, hogy beállította a Multi-Factor Authenticationt a felhőben, konfigurál
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

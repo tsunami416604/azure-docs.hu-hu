@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure AD tartományi szolgáltatások: Jelszó-szinkronizálás engedélyezése | Microsoft Azure"
-    description="Ismerkedés az Azure Active Directory tartományi szolgáltatásokkal"
+    pageTitle="Azure AD tartományi szolgáltatások: Jelszavak szinkronizálásának engedélyezése | Microsoft Azure"
+    description="Első lépések az Azure Active Directory tartományi szolgáltatások használatával"
     services="active-directory-ds"
     documentationCenter=""
     authors="mahesh-unnikrishnan"
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/25/2016"
+    ms.date="07/06/2016"
     ms.author="maheshu"/>
 
 # Azure AD tartományi szolgáltatások *(előzetes verzió)* – Jelszó-szinkronizálás engedélyezése az Azure AD tartományi szolgáltatásokra
@@ -26,7 +26,7 @@ Az ehhez szükséges lépések eltérőek aszerint, hogy a szervezet csak felhő
 <br>
 
 > [AZURE.SELECTOR]
-- [Csak felhőalapú Azure AD-címtár](active-directory-ds-getting-started-password-sync.md)
+- [Kizárólag felhőalapú Azure AD-címtár](active-directory-ds-getting-started-password-sync.md)
 - [Szinkronizált Azure AD-címtár](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 
 <br>
@@ -40,7 +40,7 @@ Telepítse az Azure AD Connect legújabb ajánlott verzióját a tartományhoz c
 
 **[Az Azure AD Connect letöltése](http://www.microsoft.com/download/details.aspx?id=47594)**
 
-Ajánlott verzió: **1.1.130.0** – közzétéve: 2016. április 12.
+Ajánlott verzió: **1.1.189.0** – közzététel dátuma: 2016. június 3.
 
   > [AZURE.WARNING] Az Azure AD Connect legújabb ajánlott verzióját FELTÉTLENÜL telepítenie kell  ahhoz, hogy az örökölt (NTLM és Kerberos hitelesítéshez szükséges) jelszavas hitelesítő adatokat szinkronizálni lehessen az Azure AD bérlőhöz. Ez a funkció nem érhető el az Azure AD Connect korábbi verzióiban vagy az örökölt DirSync eszközzel.
 
@@ -76,12 +76,12 @@ A címtár méretétől (felhasználók, csoportok stb. száma) függ, hogy a hi
 
 - [Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)
 
-- [Windows virtuális gép csatlakoztatása Azure AD tartományi szolgáltatások által kezel tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)
+- [Windows virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
 
-- [Red Hat Enterprise Linux-alapú virtuális gép csatlakoztatása Azure AD tartományi szolgáltatások által kezelt tartományhoz](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+- [Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

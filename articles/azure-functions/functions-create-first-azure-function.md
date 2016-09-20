@@ -7,7 +7,7 @@
    manager="erikre"
    editor=""
    tags=""
-   />
+/>
 
 <tags
    ms.service="functions"
@@ -15,10 +15,10 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="05/05/2016"
+   ms.date="08/22/2016"
    ms.author="glenga"/>
 
-# Az első Azure-függvény létrehozása
+#Az első Azure-függvény létrehozása
 
 ##Áttekintés
 Az Azure Functions egy eseményvezérelt, számítási igények szerint működtethető eszköz, amely bővíti a meglévő Azure alkalmazásplatformot, lehetővé téve események által kiváltott kód megvalósítását más Azure-szolgáltatásokban, SaaS-termékekben, valamint a helyszíni rendszerekben. Az Azure Functions segítségével alkalmazásai igény szerint méretezhetők, és Ön csak a felhasznált erőforrásokért fizet. Az Azure Functions segítségével ütemezett és aktivált kódegységek hozhatók létre, különböző programnyelveken megvalósítva. További információk az Azure Functions szolgáltatásról: [Azure Functions Overview](functions-overview.md) (Az Azure Storage áttekintése).
@@ -53,7 +53,7 @@ Mivel az Azure Functions gyorsindítók működő kódokat tartalmaznak, az új 
 
 3. Ugyanannak a függvénynek egy másik böngészőablakból vagy lapról történő aktiválásához másolja ki a **Function URL** (Függvény URL) értéket a **Develop** (Fejlesztés) lapról, és illessze be egy böngészőcímsorba, majd fűzze hozzá a `&name=yourname` karakterláncértéket, és nyomja le az Enter billentyűt. Ekkor a rendszer beírója a naplókba ugyanazt az információt, és a böngésző ugyanúgy megjeleníti a „hello” választ, mint az előző esetben.
 
-##További lépések
+##Következő lépések
 
 Ez a gyorsindító egy nagyon egyszerű módot mutat be egy alapszintű, HTTP-eseményindítóval aktivált függvény végrehajtására. A következő témakörökben további információkat talál arról, hogyan használhatja ki alkalmazásaiban az Azure Functions által nyújtott lehetőségeket.
 
@@ -70,6 +70,6 @@ Az Azure Functions az Azure App Service platform használatával biztosítja az 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

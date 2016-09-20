@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="nodejs"
     ms.topic="hero-article"
-    ms.date="04/08/2016"
+    ms.date="08/11/2016"
     ms.author="robmcm"/>
 
 # Node.js-webalkalmazás létrehozása az Azure App Service-ben
@@ -40,9 +40,9 @@ A kész alkalmazás egy rövid „hello world” karakterláncot jelenít meg a 
 Az összetettebb Node.js-alkalmazások oktatóanyagait és mintakódját, valamint a Node.js-nek az Azure felületén történő használatával kapcsolatos további információkat a következő témakörben talál: [Node.js fejlesztői központ](/develop/nodejs/).
 
 > [AZURE.NOTE]
-> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), vagy [regisztrálhat egy ingyenes próbaverzióra](/en-us/pricing/free-trial/?WT.mc_id=A261C142F).
+> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), vagy [regisztráljon egy ingyenes próbaverzióra](/en-us/pricing/free-trial/?WT.mc_id=A261C142F).
 >
-> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
 ## Webalkalmazás létrehozása és a Git-közzététel engedélyezése
 
@@ -58,7 +58,7 @@ A [Git](http://git-scm.com/) egy olyan elosztott verziókezelő rendszer, amely 
 
     ![][portal-quick-create]
 
-4. A **Web app** (Webalkalmazás) mezőben adjon meg egy nevet a webalkalmazás számára.
+4. A **Webalkalmazás** mezőben adjon meg egy nevet a webalkalmazás számára.
 
     Ennek a névnek egyedinek kell lennie az azurewebsites.net tartományban, mert a webalkalmazás URL-címe {név}.azurewebsites.net lesz. Ha a megadott név nem egyedi, egy piros felkiáltójel jelenik meg a szövegmezőben.
 
@@ -66,13 +66,13 @@ A [Git](http://git-scm.com/) egy olyan elosztott verziókezelő rendszer, amely 
 
 6. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
 
-    További információk az erőforráscsoportokkal kapcsolatban: [Az Azure portál használata az Azure-erőforrások kezeléséhez](../resource-group-portal.md).
+    További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../resource-group-overview.md).
 
-7. Válasszon ki egy **App Service-csomagot/-helyet** vagy hozzon létre egy újat.
+7. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
 
     További információk az App Service-csomagokról: [Az Azure App Service-csomagok áttekintése](../azure-web-sites-web-hosting-plans-in-depth-overview.md)
 
-8. Kattintson a ** Create** (Létrehozás) gombra.
+8. Kattintson a **Létrehozás** gombra.
    
     ![][portal-quick-create2]
 
@@ -227,6 +227,6 @@ A Node.js-alkalmazásoknak az Azure-on történő fejlesztéséről további inf
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

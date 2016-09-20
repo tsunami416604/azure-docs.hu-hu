@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/06/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # DNS-rekordhalmazok és -rekordok létrehozása a parancssori felület használatával
@@ -68,6 +68,6 @@ Az Azure DNS szolgáltatással kapcsolatos további információért tekintse me
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/31/2016"
+    ms.date="08/29/2016"
     ms.author="ashmaka"
 />
 # Az Azure Search-index lekérdezése az Azure portál használatával
@@ -49,6 +49,6 @@ Az útmutató megkezdése előtt [létre kell hozni egy Azure Search-indexet](se
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

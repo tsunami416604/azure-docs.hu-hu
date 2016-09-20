@@ -2,7 +2,7 @@
     pageTitle="Excel csatlakoztatása SQL Database adatbázishoz| Microsoft Azure"
     description="Útmutató a Microsoft Excel Azure SQL adatbázishoz való csatlakoztatásához a felhőben. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez."
     services="sql-database"
-    keywords="connect excel to sql, import data to excel"
+    keywords="excel csatlakoztatása sql-hez, adatok importálása excelbe"
     documentationCenter=""
     authors="joseidz"
     manager="jhubbard"
@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/25/2016"
+    ms.date="07/05/2016"
     ms.author="joseidz"/>
 
 
@@ -48,7 +48,7 @@ Az Excelnek is telepítve kell lennie. Ebben a cikkben a [Microsoft Excel 2016](
 
     ![Kiszolgálónév és hitelesítő adatok megadása](./media/sql-database-connect-excel/connect-to-server.png)
 
-    > [AZURE.TIP] A hálózati környezettől függően előfordulhat, hogy nem tud csatlakozni, vagy megszakad a kapcsolat, ha az SQL Database-kiszolgáló nem engedélyezi az ügyfél IP-címről érkező forgalmat. Lépjen az [Azure portálhoz](https://portal.azure.com/), kattintson az SQL Server-példányok lehetőségre, majd a saját kiszolgálójára, ezután a beállítások alatt a tűzfalra, és adja hozzá ügyfél IP-címét. A részleteket a [Tűzfal beállításainak konfigurálása](sql-database-configure-firewall-settings.md) részben találja meg.
+    > [AZURE.TIP] A hálózati környezettől függően előfordulhat, hogy nem tud csatlakozni, vagy megszakad a kapcsolat, ha az SQL Database-kiszolgáló nem engedélyezi az ügyfél IP-címről érkező forgalmat. Lépjen az [Azure Portalhoz](https://portal.azure.com/), kattintson az SQL Server-példányok lehetőségre, majd a saját kiszolgálójára, ezután a beállítások alatt a tűzfalra, és adja hozzá ügyfél IP-címét. A részleteket a [Tűzfal beállításainak konfigurálása](sql-database-configure-firewall-settings.md) részben találja meg.
 
 5. Az **Adatbázis és tábla kijelölése** párbeszédpanelen válassza a listából azt az adatbázist, amellyel dolgozni szeretne, majd kattintson azokra a táblákra vagy nézetekre, amelyekkel dolgozni szeretne (ebben a példában a **vGetAllCategories**), majd kattintson a **Tovább** gombra.
 
@@ -86,6 +86,6 @@ Most, hogy létrehozta a kapcsolatot és az adatokat, illetve kapcsolatadatokat 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

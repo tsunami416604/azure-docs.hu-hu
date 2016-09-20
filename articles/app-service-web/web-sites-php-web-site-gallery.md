@@ -1,6 +1,6 @@
 <properties
     pageTitle="WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban | Microsoft Azure"
-    description="Megtudhatja, hogyan hozhat létre egy új Azure-webalkalmazást egy WordPress-bloghoz az Azure portál használatával."
+    description="Megtudhatja, hogyan hozhat létre egy új Azure-webalkalmazást egy WordPress-bloghoz az Azure Portal használatával."
     services="app-service\web"
     documentationCenter="php"
     authors="rmcmurray"
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="PHP"
     ms.topic="hero-article"
-    ms.date="04/08/2016"
+    ms.date="08/11/2016"
     ms.author="robmcm"/>
 
 # WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban
@@ -32,18 +32,18 @@ Az oktatóanyagból a következőket sajátíthatja el:
 * Megtudhatja, hogyan hozhat létre sablonalapú webalkalmazást az Azure App Service-ben.
 * Megtudhatja, hogyan végezheti el az új webalkalmazáshoz és adatbázishoz tartozó Azure App Service-beállítások konfigurálását.
 
-Az Azure Piactér a Microsoft, külső vállalatok és nyílt forrású szoftver-kezdeményezések által fejlesztett népszerű webalkalmazások széles skáláját teszi elérhetővé. A webalkalmazások a legkülönbözőbb népszerű keretrendszerekre épülnek, mint a [PHP](/develop/nodejs/) ebben a WordPress példában, vagy a [.NET](/develop/net/), a [Node.js](/develop/nodejs/), a [Java](/develop/java/) és a [Python](/develop/python/), csak hogy néhányat említsünk. A webalkalmazások Azure Piactérről való létrehozásához az [Azure portál](https://portal.azure.com/) eléréséhez használt böngésző az egyetlen szoftver, amelyre szüksége van. 
+Az Azure Piactér a Microsoft, külső vállalatok és nyílt forrású szoftver-kezdeményezések által fejlesztett népszerű webalkalmazások széles skáláját teszi elérhetővé. A webalkalmazások a legkülönbözőbb népszerű keretrendszerekre épülnek, mint a [PHP](/develop/nodejs/) ebben a WordPress példában, vagy a [.NET](/develop/net/), a [Node.js](/develop/nodejs/), a [Java](/develop/java/) és a [Python](/develop/python/), csak hogy néhányat említsünk. A webalkalmazások Azure Piactérről való létrehozásához az [Azure Portal](https://portal.azure.com/) eléréséhez használt böngésző az egyetlen szoftver, amelyre szüksége van. 
 
 Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatbázist használ. Ha ehelyett SQL Database szolgáltatást használna az adatbázishoz, akkor tekintse meg a [Project Nami](http://projectnami.org/) nevű alkalmazást. A **Project Nami** alkalmazás szintén elérhető a Piactéren keresztül.
 
 > [AZURE.NOTE]
-> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), vagy [regisztrálhat egy ingyenes próbaverzióra](/en-us/pricing/free-trial/?WT.mc_id=A261C142F).
+> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), vagy [regisztráljon egy ingyenes próbaverzióra](/en-us/pricing/free-trial/?WT.mc_id=A261C142F).
 >
-> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
 ## Válassza ki a WordPresst, és konfigurálja azt az Azure App Service-hez
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Kattintson az **Új** lehetőségre.
     
@@ -65,9 +65,9 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 
 5. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
 
-    További információk az erőforráscsoportokkal kapcsolatban: [Az Azure portál használata az Azure-erőforrások kezeléséhez](../resource-group-portal.md).
+    További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../resource-group-overview.md).
 
-5. Válasszon ki egy **App Service-csomagot/-helyet** vagy hozzon létre egy újat.
+5. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
 
     További információk az App Service-csomagokról: [Az Azure App Service-csomagok áttekintése](../azure-web-sites-web-hosting-plans-in-depth-overview.md) 
 
@@ -93,7 +93,7 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 
 ## A WordPress-webalkalmazás elindítása és kezelése
     
-7. Ha a webalkalmazás létrehozása befejeződött, navigáljon az Azure portálon ahhoz az erőforráscsoporthoz, amelyben létrehozta az alkalmazást, és tekintse meg a webalkalmazást és az adatbázist.
+7. Ha a webalkalmazás létrehozása befejeződött, navigáljon az Azure Portalon ahhoz az erőforráscsoporthoz, amelyben létrehozta az alkalmazást, és tekintse meg a webalkalmazást és az adatbázist.
 
     A villanykörte ikonnal rendelkező további erőforrás az [Application Insights](/services/application-insights/), amely figyelési szolgáltatásokat biztosít a webalkalmazás számára.
 
@@ -130,6 +130,6 @@ Az App Service Web Apps használatával kapcsolatos további információért l�
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

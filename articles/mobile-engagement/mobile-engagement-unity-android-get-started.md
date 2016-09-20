@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-unity-android"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="03/25/2016"
+    ms.date="08/19/2016"
     ms.author="piyushjo" />
 
 # Ismerkedés az Azure Mobile Engagement Unity Android üzemelő példánnyal való használatával
@@ -55,7 +55,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 ###Az EngagementConfiguration frissítése
 
-1. Nyissa meg az **EngagementConfiguration** parancsfájlt az SDK mappából, és frissítse az **ANDROID\_CONNECTION\_STRING** elemet az Azure portálról korábban beszerzett kapcsolati karakterlánccal.  
+1. Nyissa meg az **EngagementConfiguration** parancsfájlt az SDK mappából, és frissítse az **ANDROID\_CONNECTION\_STRING** elemet az Azure Portalról korábban beszerzett kapcsolati karakterlánccal.  
 
     ![][73]
 
@@ -153,6 +153,7 @@ Ellenőrizze, hogy az Android SDK telepítve van-e a gépén, mielőtt a Unity-a
 [54]: ./media/mobile-engagement-unity-android-get-started/54.png
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

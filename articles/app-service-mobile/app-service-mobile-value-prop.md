@@ -18,7 +18,7 @@
 
 # <a name="getting-started"> </a>Mi a Mobile Apps szolgáltatás?
 
-Az Azure App Service teljes körűen felügyelt, professzionális fejlesztők számára készült platformszolgáltatás, amely számos lehetőséget kínál webes, mobil- és integrációs feladatokhoz. Az *Azure App Service* *Mobile Apps* szolgáltatása jól skálázható, világszerte elérhető, vállalati fejlesztők és rendszerintegrátorok számára készült mobilalkalmazás-fejlesztő platform, amely számos lehetőséget kínál a mobilos fejlesztésekhez.
+Az Azure App Service teljes körűen felügyelt, professzionális fejlesztők számára készült [platformszolgáltatás](https://azure.microsoft.com/overview/what-is-paas/), amely számos lehetőséget kínál webes, mobil- és integrációs feladatokhoz. Az *Azure App Service* *Mobile Apps* szolgáltatása jól skálázható, világszerte elérhető, vállalati fejlesztők és rendszerintegrátorok számára készült mobilalkalmazás-fejlesztő platform, amely számos lehetőséget kínál a mobilos fejlesztésekhez.
 
 ![Mobile Apps](./media/app-service-mobile-value-prop/overview.png)
 
@@ -98,13 +98,13 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 [átmeneti környezet]: ../app-service-web/web-sites-staged-publishing.md
 [telepítési lehetőségek]: ../app-service-web/web-sites-deploy.md
 [hibrid kapcsolatok]: ../app-service-web/web-sites-hybrid-connection-get-started.md
-[virtuális hálózatok]: ../app-service-web/web-sites-integrate-with-vnet.md
+[virtuális hálózatokkal]: ../app-service-web/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service-környezetek]: ../app-service-web/app-service-app-service-environment-intro.md
 [tanulási térkép]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

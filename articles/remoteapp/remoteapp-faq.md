@@ -4,7 +4,7 @@
     services="remoteapp" 
     documentationCenter="" 
     authors="lizap" 
-    manager="mbaldwin" 
+    manager="swadhwa" 
     editor=""/>
 
 <tags 
@@ -13,11 +13,18 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="04/08/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo"/>
 
 # Azure RemoteApp – gyakori kérdések
+
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+
 A következő kérdéseket hallottuk az Azure RemoteApp szolgáltatással kapcsolatban. További kérdései vannak? Látogasson el a [RemoteApp-fórumokra](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureRemoteApp), és tegye fel nekünk a kérdéseit, vagy szóljon hozzá alább.
+
+## Nem találja, amit keres? Kérdése van, amire nem kapott választ?
+Ha nem találja a keresett információt, vagy olyan kérdése van, amelyre itt nem kapott választ, kérjük, keresse fel az [Azure RemoteApp fórumát](http://aka.ms/araforum), és tegye fel ott a kérdését. Itt bármikor közzétehetünk új válaszokat.
 
 ## Mi az az Azure RemoteApp? ##
 
@@ -33,7 +40,7 @@ A következő kérdéseket hallottuk az Azure RemoteApp szolgáltatással kapcso
 - **Mik a szolgáltatásra vonatkozó korlátozások?** Az Azure RemoteApp alapértelmezett beállításait és szolgáltatási korlátait itt ismerheti meg: [Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md) (Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései). Ha további kérdései vannak, ossza meg velünk.
 - **Hány felhasználómnak kell lennie?** A felhasználók minimális száma 20. Csak az egyértelműség kedvéért: a 20 a MINIMUM. A számlázás 20 felhasználó után történik. 
 - **Mennyibe kerül a RemoteApp szolgáltatás?** Tekintse meg az [Azure RemoteApp díjszabásának részleteit](https://azure.microsoft.com/pricing/details/remoteapp/).
-- **Van olyan gyűjteménytípus, amely drágább, mint a többi?** Igen, előfordulhat, hogy van. Ez a gyűjteménnyel szemben támasztott követelményektől függ. A hibrid gyűjteményhez az Azure RemoteApp és az Ön helyszíni hálózata közötti kapcsolatra van szükség. Ha meglévő VNET-/Express Route-kapcsolatokat használ, ez nem jelent többletköltséget. De ha egy új Azure VNET-kapcsolatot, és egy átjárót vagy Express Route-kapcsolatot használ, a [VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway) vagy az [Express Route](../../../pricing/details/expressroute/) használata díjköteles. Ez a költség (amelynek részleteit a hivatkozások között találja) az Azure RemoteApp szolgáltatás havi költségén felül fizetendő.
+- **Van olyan gyűjteménytípus, amely drágább, mint a többi?** Igen, előfordulhat, hogy van. Ez a gyűjteménnyel szemben támasztott követelményektől függ. A hibrid gyűjteményhez az Azure RemoteApp és az Ön helyszíni hálózata közötti kapcsolatra van szükség. Ha meglévő VNET-/Express Route-kapcsolatokat használ, ez nem jelent többletköltséget. De ha egy új Azure VNET-kapcsolatot, és egy átjárót vagy Express Route-kapcsolatot használ, a [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) vagy az [Express Route](https://azure.microsoft.com/pricing/details/expressroute/) használata díjköteles. Ez a költség (amelynek részleteit a hivatkozások között találja) az Azure RemoteApp szolgáltatás havi költségén felül fizetendő.
 
 ## Gyűjtemények – mi támogatott, mit érdemes használni és egyebek
 - **Támogatottak az egyéni üzletági (LOB) alkalmazások?** Igen. Ha egy egyéni alkalmazást szeretne használni az Azure RemoteApp szolgáltatásban, hozzon létre egy [egyéni sablonrendszerképet](remoteapp-create-custom-image.md), és töltse fel azt a RemoteApp-gyűjteménybe.
@@ -86,7 +93,7 @@ Számítógépek és táblagépek:
 
 - **Melyik Windows Server-verziót támogatja a Távoli asztali munkamenetgazda (RDSH)?** Windows Server 2012 R2.
 
-##Támogatás és visszajelzés
+## Támogatás és visszajelzés
 
 
 - **Mi található a RemoteApp támogatási csomagjában?** A számlázási és előfizetés-kezelési támogatás ingyenesen elérhető. Műszaki támogatás [Azure támogatási csomagok](https://azure.microsoft.com/support/plans/) formájában érhető el. Emellett [Azure vitafórumunkban](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp) ingyenes közösségi támogatáshoz juthat. 
@@ -117,6 +124,6 @@ Tudta, hogy a cikk értékelése és alább hozzászólások írása mellett mag
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

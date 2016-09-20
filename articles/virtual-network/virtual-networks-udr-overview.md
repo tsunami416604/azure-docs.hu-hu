@@ -3,7 +3,7 @@
    description="Ismerje meg, hogyan kell használni a felhasználó által megadott útvonalakat (UDR) és az IP-továbbítást a forgalom virtuális készülékekre történő irányításához az Azure-ban."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Mi a felhasználó által megadott útvonal és az IP-továbbítás?
 Amikor az Azure-ban virtuális gépeket (VM-ek) ad hozzá egy virtuális hálózathoz (VNet), észre fogja venni, hogy a virtuális gépek automatikusan tudnak egymással kommunikálni a hálózaton keresztül. Nem kell megadni átjárót, akkor sem, ha a virtuális gépek külön alhálózatokon vannak. Ugyanez vonatkozik a virtuális gépek és a nyilvános internet közötti kommunikációra, és akár a helyszíni hálózatra is, ha jelen van egy hibrid kapcsolat az Azure és a saját adatközpont között.
@@ -43,9 +43,16 @@ A csomagok útválasztása a TCP/IP-hálózatban egy útválasztási táblázato
 
 |Tulajdonság|Leírás|Korlátozások|Megfontolások|
 |---|---|---|---|
-| Címelőtag | A cél CIDR, amelyre az útvonal vonatkozik, például 10.1.0.0/16.|Érvényes CIDR tartománynak kell lennie, ami a nyilvános interneten, az Azure virtuális hálózatban vagy a helyszíni adatközpontban található címeket jelöli.|Győződjön meg arról, hogy a **címelőtag** nem **a következő ugrás értékének** címét tartalmazza, különben a csomagok bekerülnek egy hurokba, és a forrásuktól a következő ugráshoz kerülnek anélkül, hogy valaha is elérnék a céljukat. |
-| A következő ugrás típusa | Az Azure ugrás típusa, amellyel a csomagot küldeni kell. | A következő értékek egyikének kell lennie: <br/> **Helyi**. A helyi virtuális hálózatot jelöli. Ha például ugyanabban a virtuális hálózatban két alhálózat van, (10.1.0.0/16 és 10.2.0.0/16) az útválasztási táblázatban az alhálózatok útvonalának következő ugrás értéke *Helyi* lesz. <br/> **VPN Gateway**. Egy Azure S2S VPN Gateway átjárót jelöl. <br/> **Internet**. Az Azure infrastruktúra által biztosított alapértelmezett internetes átjárót jelöli. <br/> **Virtuális készülék**. Az Azure Virtual Networkhöz hozzáadott virtuális készüléket jelöli. <br/> **NULL**. Egy fekete lyukat jelöl. A fekete lyukakba továbbított csomagok nem lesznek továbbítva.| Érdemes a **NULL** típust használni, ha nem szeretné, hogy a csomagok elérjék a megadott céljukat. | 
-| Következő ugrás értéke | A következő ugrás érték azt az IP-címet tartalmazza, ahová a csomagokat továbbítani kell. A következő ugrás értékei csak az olyan útvonalaknál engedélyezettek, ahol a következő ugrás típusa *Virtuális készülék*.| Elérhető IP-címnek kell lennie. | Ha az IP-cím egy virtuális gépet jelöl, győződjön meg arról, hogy engedélyezi az [IP-továbbítást](#IP-forwarding) a virtuális gép számára az Azure-ban. |
+| Címelőtag | A cél CIDR, amelyre az útvonal vonatkozik, például 10.1.0.0/16.|Érvényes CIDR tartománynak kell lennie, ami a nyilvános interneten, az Azure virtuális hálózatban vagy a helyszíni adatközpontban található címeket jelöli.|Győződjön meg arról, hogy a **címelőtag** nem **a következő ugrás címét** tartalmazza, különben a csomagok bekerülnek egy hurokba, és a forrásuktól a következő ugráshoz kerülnek anélkül, hogy valaha is elérnék a céljukat. |
+| A következő ugrás típusa | Az Azure ugrás típusa, amellyel a csomagot küldeni kell. | A következő értékek egyikének kell lennie: <br/> **Virtuális hálózat**. A helyi virtuális hálózatot jelöli. Ha például ugyanabban a virtuális hálózatban két alhálózat van, (10.1.0.0/16 és 10.2.0.0/16) az útválasztási táblázatban az alhálózatok útvonalának következő ugrás értéke *Virtuális hálózat* lesz. <br/> **Virtuális hálózati átjáró**. Egy Azure S2S VPN Gateway átjárót jelöl. <br/> **Internet**. Az Azure infrastruktúra által biztosított alapértelmezett internetes átjárót jelöli. <br/> **Virtuális készülék**. Az Azure Virtual Networkhöz hozzáadott virtuális készüléket jelöli. <br/> **Nincs**. Egy fekete lyukat jelöl. A fekete lyukakba továbbított csomagok nem lesznek továbbítva.| Érdemes a **Nincs** típust használni, ha nem szeretné, hogy a csomagok elérjék a megadott céljukat. | 
+| A következő ugrás címe | A következő ugrás címe azt az IP-címet tartalmazza, ahová a csomagokat továbbítani kell. A következő ugrás értékei csak az olyan útvonalaknál engedélyezettek, ahol a következő ugrás típusa *Virtuális készülék*.| Elérhető IP-címnek kell lennie. | Ha az IP-cím egy virtuális gépet jelöl, győződjön meg arról, hogy engedélyezi az [IP-továbbítást](#IP-forwarding) a virtuális gép számára az Azure-ban. |
+
+Az Azure PowerShellben néhány „NextHopType” értéknek különböző neve van:
+- A virtuális hálózat a VnetLocal
+- A virtuális hálózati átjáró a VirtualNetworkGateway
+- A virtuális készülék a VirtualAppliance
+- Az internet az Internet
+- A nincs a Nincs
 
 ### Rendszerútvonalak
 A rendszer a virtuális hálózatban létrehozott összes alhálózatot automatikusan hozzárendeli egy útválasztási táblázathoz, ami az alábbi útválasztási szabályokat tartalmazza:
@@ -68,9 +75,9 @@ Az alhálózatok egészen addig rendszerútvonalakra támaszkodnak, amíg hozzá
 1. BGP-útvonal (ExpressRoute használatánál)
 1. Rendszerútvonal
 
-A felhasználó által megadott útvonalak létrehozásával kapcsolatban tekintse meg a [How to Create Routes and Enable IP Forwarding in Azure](virtual-networks-udr-how-to.md#How-to-manage-routes) (Hogyan hozhat létre útvonalakat, és engedélyezheti az IP-továbbítást az Azure-ban) részt.
+A felhasználó által megadott útvonalak létrehozásával kapcsolatban tekintse meg a [How to Create Routes and Enable IP Forwarding in Azure](virtual-network-create-udr-arm-template.md) (Hogyan hozhat létre útvonalakat, és engedélyezheti az IP-továbbítást az Azure-ban) című cikket.
 
->[AZURE.IMPORTANT] A rendszer a felhasználó által megadott útvonalakat csak az Azure virtuális gépekre és felhőszolgáltatásokra alkalmazza. Ha például virtuális készülékként egy tűzfalat szeretne beiktatni a helyszíni hálózat és az Azure közé, létre kell hoznia egy felhasználó által megadott útvonalat az Azure útválasztási táblázatban, amely a helyszíni címtérre irányuló teljes forgalmat a virtuális készülékre továbbítja. A helyszíni címtérről érkező bejövő forgalom viszont keresztül fog haladni a VPN-átjárón vagy ExpressRoute körön, egyenesen az Azure környezetbe, a virtuális készülék megkerülésével.
+>[AZURE.IMPORTANT] A rendszer a felhasználó által megadott útvonalakat csak az Azure virtuális gépekre és felhőszolgáltatásokra alkalmazza. Ha például virtuális készülékként egy tűzfalat szeretne beiktatni a helyszíni hálózat és az Azure közé, létre kell hoznia egy felhasználó által megadott útvonalat az Azure útválasztási táblázatban, amely a helyszíni címtérre irányuló teljes forgalmat a virtuális készülékre továbbítja. Hozzáadhat egy felhasználó által megadott útvonalat a GatewaySubnet alhálózathoz, így az összes helyszíni forgalmat továbbíthatja az Azure-ba a virtuális készüléken keresztül. Ez a lehetőség a közelmúltban lett hozzáadva.
 
 ### BGP-útvonalak
 Ha a helyszíni hálózat és az Azure között ExpressRoute kapcsolat van, akkor engedélyezni lehet a BGP-t, hogy az útvonalakat a helyszíni hálózatból az Azure-ba terjessze. A BGP-útvonalakat minden Azure alhálózatban ugyanúgy kell használni, mint a rendszerútvonalakat és a felhasználó által megadott útvonalakat. További információ: [ExpressRoute Introduction](../expressroute/expressroute-introduction.md) (Az ExpressRoute bemutatása).
@@ -82,13 +89,13 @@ A fent leírtak alapján a felhasználó által megadott útvonal létrehozásá
 
 A virtuális készüléknek képesnek kell lennie fogadni a nem neki címzett bejövő forgalmat. Ahhoz, hogy egy virtuális gép számára engedélyezze a más célhelyre irányított forgalom fogadását, először engedélyeznie kell a virtuális gép számára az IP-továbbítást. Ez egy Azure beállítás, nem a vendég operációs rendszer beállítása.
 
-## További lépések
+## Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre útvonalakat a Resource Manager üzembe helyezési modellben](virtual-network-create-udr-arm-template.md), és hogyan rendelheti őket hozzá az alhálózatokhoz. 
 - Ismerje meg, hogyan [hozhat létre útvonalakat a klasszikus üzembe helyezési modellben](virtual-network-create-udr-classic-ps.md), és hogyan rendelheti őket hozzá az alhálózatokhoz.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

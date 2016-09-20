@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Virtuális hálózat létrehozása az Azure portállal | Microsoft Azure"
-   description="Ismerje meg, hogyan hozhat létre virtuális hálózatot az ARM eszközben az Azure portállal | Resource Manager."
+   pageTitle="Virtuális hálózat létrehozása az Azure Portallal | Microsoft Azure"
+   description="Ismerje meg, hogyan hozhat létre virtuális hálózatot az ARM eszközben az Azure Portallal | Resource Manager."
    services="virtual-network"
    documentationCenter=""
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
@@ -15,9 +15,9 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos"/>
+   ms.author="jdial"/>
 
-# Virtuális hálózat létrehozása az Azure portállal
+# Virtuális hálózat létrehozása az Azure Portallal
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
 
@@ -31,6 +31,6 @@
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-pportal-include](../../includes/virtual-networks-create-vnet-arm-pportal-include.md)]
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -2,10 +2,10 @@
     pageTitle="Az Azure Active Directory eszközregisztrációjának áttekintése | Microsoft Azure"
     description="az eszközalapú feltételes hozzáférési forgatókönyvek alapja. Amikor regisztrál egy eszközt, az Azure Active Directory eszközregisztráció egy identitással látja el az eszközt, amely az eszköz hitelesítésére használható a felhasználó bejelentkezésekor."
     services="active-directory"
-    keywords="device registration, enable device registration, device registration and MDM"
+    keywords="eszközregisztráció, eszközregisztráció engedélyezése, eszközregisztráció és MDM"
     documentationCenter=""
     authors="femila"
-    manager="stevenpo"
+    manager="swadhwa"
     editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/29/2016"
+    ms.date="06/23/2016"
     ms.author="femila"/>
 
 # Ismerkedés az Azure Active Directory eszközregisztrációjával
@@ -35,12 +35,12 @@ Az Azure Active Directory eszközregisztráció részét képezi az iOS-, Androi
 
 ##Az Azure Active Directory eszközregisztráció beállítása
 
-Engedélyeznie kell az Azure AD eszközregisztrációját az Azure portálon, hogy a mobileszközök felderíthessék a szolgáltatást a jól ismert DNS-rekordok megkeresésével. Úgy kell konfigurálnia a vállalat DNS-ét, hogy a Windows 10, Windows 8.1, Windows 7, Android és iOS rendszerű eszközök felderíthessék és használhassák a szolgáltatást.
+Engedélyeznie kell az Azure AD eszközregisztrációját az Azure Portalon, hogy a mobileszközök felderíthessék a szolgáltatást a jól ismert DNS-rekordok megkeresésével. Úgy kell konfigurálnia a vállalat DNS-ét, hogy a Windows 10, Windows 8.1, Windows 7, Android és iOS rendszerű eszközök felderíthessék és használhassák a szolgáltatást.
 Az Azure Active Directory felügyeleti portálján tekintheti meg és engedélyezheti/tilthatja le a regisztrált eszközöket.
 
 ### Az Azure Active Directory eszközregisztrációs szolgáltatás engedélyezése
 
-1. Jelentkezzen be a Microsoft Azure portálra rendszergazdaként.
+1. Jelentkezzen be a Microsoft Azure Portalra rendszergazdaként.
 2. A bal oldali panelen válassza az **Active Directory** elemet.
 3. A **Címtár** lapon válassza ki a címtárat.
 4. Válassza a **Konfigurálás** lapot.
@@ -71,7 +71,7 @@ Ha például két UPN-utótagot használ a szervezetben (például a @contoso.co
 
 ## Eszközobjektumok megtekintése és kezelése az Azure Active Directoryban
 1. Az Azure felügyeleti portálon megtekintheti, blokkolhatja és feloldhatja az eszközök blokkolását. A blokkolt eszközök már nem érhetik el azon alkalmazásokat, amelyek csak regisztrált eszközök engedélyezésére vannak konfigurálva.
-2. Jelentkezzen be a Microsoft Azure portálra rendszergazdaként.
+2. Jelentkezzen be a Microsoft Azure Portalra rendszergazdaként.
 3. A bal oldali panelen válassza az **Active Directory** elemet.
 4. Válassza ki a címtárát.
 5. Válassza a **Felhasználók** lapot. Ezután válasszon ki egy felhasználót az eszközei megtekintéséhez.
@@ -90,6 +90,6 @@ Regisztrálhatja a Windows 7- és a Windows 8.1-tartományhoz csatlakozott eszk�
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

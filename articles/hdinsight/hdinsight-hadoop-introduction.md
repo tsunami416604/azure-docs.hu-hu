@@ -1,7 +1,7 @@
-<properties
+ <properties
     pageTitle="Mi a felhőalapú Hadoop? A HDInsight bemutatása | Microsoft Azure"
-    description="Mi a felhőalapú Hadoop, és hogyan kezelhető a HDInsightban? A Hadoop összetevőinek és a big data típusú adatok elemzésének bemutatása."
-    keywords="big data analysis,introduction to hadoop,what is hadoop,hadoop in the cloud"
+    description="Mi a felhőalapú Hadoop, és hogyan kezelhető a Microsoft Azure HDInsightban? A Hadoop összetevőinek és a big data típusú adatok elemzésének bemutatása."
+    keywords="big data elemzés,bevezetés a hadoopba,mi az a hadoop,felhőalapú hadoop,hadoop technológiák,hadoop ökoszisztéma"
     services="hdinsight"
     documentationCenter=""
     authors="cjgronlund"
@@ -14,50 +14,35 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/29/2016"
+   ms.date="07/21/2016"
    ms.author="cgronlun"/>
 
 
-# Mi a felhőalapú Hadoop? A HDInsightban található és a big data típusú adatok elemzésére szolgáló Hadoop-összetevők bemutatása
+# Mi a felhőalapú Hadoop? Bevezetés a Hadoop-ökoszisztéma használatába a HDInsightban
 
 Megismerkedhet a Hadooppal és rendszerével, valamint a big data típusú adatokkal az Azure HDInsight rendszerén belül. Megtudhatja, hogyan működik a Hadoop a HDInsightban, és melyek a big data típusú adatok elemzéséhez szükséges Hadoop-összetevők, gyakori fogalmak és forgatókönyvek. Továbbá olyan, a Hadooppal kapcsolatos oktatóanyagokkal, dokumentációkkal és forrásanyagokkal ismerkedhet meg, amelyek segítenek használni a felhőalapú Hadoop szolgáltatást a HDInsightban.
 
-## Mi a felhőalapú Hadoop szolgáltatás a HDInsightban?
+## Mi a Hadoop szolgáltatás a HDInsightban?
 
-Az Azure HDInsight felhőalapú, felügyelt Apache Hadoop-fürtöket helyez üzembe és tesz elérhetővé, amelyek egy nagy mértékben megbízható és hozzáférhető szoftver-keretrendszert biztosítanak a big data feldolgozásához, elemzéséhez és jelentésekbe foglalásához. A HDInsight a **Hortonworks Data Platform (HDP)** Hadoop-terjesztést használja. A Hadoop gyakran hivatkozik a Hadoop-összetevők teljes rendszerére, amely magában foglalja az Apache HBase, Apache Spark és Apache Storm eszközöket, illetve a Hadoop alá tartozó más technológiákat. A részleteket lásd a lenti [A Hadoop ökoszisztémájának áttekintése a HDInsightban](#overview) című szakaszban.
+Az Azure HDInsight a **Hortonworks Data Platform (HDP)** Hadoop-terjesztést használja. A HDInsight felhőalapú, felügyelt Apache Hadoop-fürtöket helyez üzembe és tesz elérhetővé, amelyek egy nagy mértékben megbízható és hozzáférhető szoftver-keretrendszert biztosítanak a big data feldolgozásához, elemzéséhez és jelentésekbe foglalásához.  
 
+A Hadoop gyakran hivatkozik a Hadoop-összetevők teljes rendszerére, amely magában foglalja az Apache HBase, Apache Spark és Apache Storm eszközöket, illetve a Hadoop alá tartozó más technológiákat. A részleteket lásd a lenti, [A Hadoop ökoszisztémájának áttekintése a HDInsightban](#overview) című szakaszban.
 
 ## Mik azok a big data típusú adatok?
-A big data az adatok egyre növekvő kötetekben, egyre nagyobb sebességgel történő gyűjtésére utal, és strukturálatlan formátumok egyre bővülő választéka és változatos szemantikai környezetek jellemzik.
 
-A big data kifejezés bármilyen nagyobb digitális információhalmazra utalhat egy Twitter-hírcsatorna szövegeitől vagy egy ipari berendezés érzékelőitől származó információktól kezdve egy online katalógusban végzett vásárlói keresésekig és vásárlásokig. A big data típusú adatok lehetnek előzményadatok (azaz tárolt adatok) vagy valós idejű adatok (azaz közvetlenül a forrásból streamelt adatok).
+A big data kifejezés bármilyen nagyobb digitális információhalmazra utalhat egy Twitter-hírcsatorna szövegeitől vagy egy ipari berendezés érzékelőitől származó információktól kezdve egy webhelyen végzett vásárlói keresésekig és vásárlásokig. A big data típusú adatok lehetnek előzményadatok (azaz tárolt adatok) vagy valós idejű adatok (azaz közvetlenül a forrásból streamelt adatok). A big data az adatok egyre növekvő kötetekben, egyre nagyobb sebességgel történő gyűjtésére utal, és a formátumok egyre bővülő választéka jellemzi.
 
 Ahhoz, hogy a big data típusú adatok a gyakorlatban is használható információkkal vagy részletekkel szolgáljanak, a vonatkozó adatok összegyűjtése és a megfelelő kérdések feltétele mellett elengedhetetlen ezen adatok hozzáférhetősége, megtisztítása, elemzése és hasznosítható formában történő bemutatása. Ebben segíthet a HDInsight rendszerében a Hadoop big data elemzése.
-
 
 ## <a name="overview"></a>A Hadoop ökoszisztémájának áttekintése a HDInsightban
 
 A HDInsight a gyorsan fejlődő Apache Hadoop technológiák felhőalapú megvalósítása a Microsoft Azure felületén, és az első számú megoldás a big data típusú adatok elemzésére. Tartalmazza többek között az Apache Spark, a HBase, a Storm, a Pig, a Hive, a Sqoop, az Oozie és az Ambari implementációit. A HDInsight emellett olyan üzletiintelligencia- (BI-) eszközökkel is integrálható, mint a Power BI, az Excel, az SQL Server Analysis Services és az SQL Server Reporting Services.
 
-### Fürtök a Linuxon
-
-Az Azure HDInsight Hadoop-fürtöket helyez üzembe és tesz elérhetővé a felhőben, **Linux rendszereken**. A részletekért tekintse meg a lenti táblázatot.
-
-Kategória | Hadoop on Linux
----------| -------------------
-**Fürt operációs rendszere** | Ubuntu 12.04 Long Term Support (LTS)
-**Fürt típusa** | Hadoop, Spark, HBase, Storm
-**Környezet** | Azure portál, Azure parancssori felület (CLI), Azure PowerShell
-**Fürt felhasználói felülete** | Ambari
-**Távelérés** | Secure Shell (SSH), REST API, ODBC, JDBC
-
-
-
 ### Hadoop, HBase, Spark, Storm és személyre szabott fürtök
 
 A HDInsight az Apache Hadoop, a Spark, a HBase és a Storm fürtökhöz kínál különböző konfigurációkat. A [fürtöket parancsfájlműveletekkel is testreszabhatja](hdinsight-hadoop-customize-cluster-linux.md).
 
-* **Hadoop** („Query” számítási feladat): megbízható adattárolást biztosít a [HDFS](#HDFS) és egy egyszerű [MapReduce](#mapreduce) programozási modell segítségével az adatok párhuzamos feldolgozásához és elemzéséhez.
+* **Hadoop** („Query” számítási feladat): megbízható adattárolást biztosít a [HDFS](#hdfs) és egy egyszerű [MapReduce](#mapreduce) programozási modell segítségével az adatok párhuzamos feldolgozásához és elemzéséhez.
 
 * **<a target="_blank" href="http://spark.apache.org/">Apache Spark</a>**: egy párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást a big data elemző alkalmazások, az SQL Spark folyamatok, a streamelési adatok és a gépi tanulás teljesítményének növelése érdekében. Lásd: [Overview: What is Apache Spark in HDInsight?](hdinsight-apache-spark-overview.md) (Áttekintés: Mi az Apache Spark a HDInsightban?)
 
@@ -65,7 +50,7 @@ A HDInsight az Apache Hadoop, a Spark, a HBase és a Storm fürtökhöz kínál 
 
 * **<a  target="_blank" href="https://storm.incubator.apache.org/">Apache Storm</a>** („Stream” számítási feladat): egy elosztott, valós idejű számítási rendszer a nagy méretű adatstreamek gyors feldolgozására. A Storm a HDInsightban felügyelt fürtként érhető el. Lásd: [Analyze real-time sensor data using Storm and Hadoop](hdinsight-storm-sensor-data-analysis.md) (Valós idejű érzékelőadatok elemzése a Storm és a Hadoop segítségével).
 
-#### Példák testreszabási parancsfájlokra
+### Példák testreszabási parancsfájlokra
 
 A parancsfájlműveletek olyan parancsfájlok, amelyek a fürtök kiépítése során futnak, és segítségükkel további összetevők telepíthetők a fürtön. A Linux-alapú fürtök esetében ezek a Bash parancsfájlok.
 
@@ -81,9 +66,6 @@ A HDInsight csapat az alábbi parancsfájlpéldákat biztosítja:
 
 Az egyéni parancsfájlművelet-fejlesztéssel kapcsolatos további információkért lásd: [Script Action development with HDInsight](hdinsight-hadoop-script-actions-linux.md) (Parancsfájlműveletek fejlesztése a HDInsighttal).
 
-## HDInsight Standard és HDInsight Prémium
-
-A HDInsight a big data felhőajánlatokat kétféle – Standard és Prémium – kategóriában biztosítja. A HDInsight Standard egy vállalati szintű fürtöt biztosít, amelyet a vállalkozások a big data számítási feladatokat futtatásához használhatnak. A HDInsight Prémium ezen felül fejlett elemzési és biztonsági képességeket biztosít a HDInsight-fürtök számára. További információért lásd: [Azure HDInsight Prémium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
 
 ## Melyek a Hadoop összetevői és segédprogramjai?
 
@@ -113,7 +95,7 @@ A HDInsight-fürtök az alábbi összetevőket és segédprogramokat tartalmazz�
 
 * **[ZooKeeper](#zookeeper)**: elosztott rendszerek folyamatait koordinálja.
 
-> [AZURE.NOTE] Az egyes összetevőkkel és verziókkal kapcsolatos további információkért lásd: [What's new in the Hadoop cluster versions provided by HDInsight?][component-versioning] (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).
+> [AZURE.NOTE] Az egyes összetevőkkel és verziókkal kapcsolatos információkért lásd: [A Hadoop összetevői, verziószámozása és szolgáltatásajánlatai a HDInsightban][component-versioning]
 
 ### <a name="ambari"></a>Ambari
 
@@ -149,14 +131,14 @@ A [YARN](#yarn) a Hadoop következő generációs erőforrás-kezelője és alka
 A MapReduce rendszerről a Hadoop Wiki <a target="_blank" href="http://wiki.apache.org/hadoop/MapReduce">MapReduce</a> című részében talál további információkat.
 
 ### <a name="oozie"></a>Oozie
-<a target="_blank" href="http://oozie.apache.org/">Az Apache Oozie</a> egy munkafolyamat-koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Integrálva van a Hadoop-veremmel, és támogatja a Hadoop-feladatokat a MapReduce, a Pig, a Hive és a Sqoop számára. Ezen felül használható rendszerspecifikus feladatok, például Java programok vagy héjparancsfájlok ütemezésére. Lásd: [Use a time-based Oozie Coordinator with Hadoop](hdinsight-use-oozie-coordinator-time.md) (Időalapú Oozie-koordinátor használata a Hadooppal).
+<a target="_blank" href="http://oozie.apache.org/">Az Apache Oozie</a> egy munkafolyamat-koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Integrálva van a Hadoop-veremmel, és támogatja a Hadoop-feladatokat a MapReduce, a Pig, a Hive és a Sqoop számára. Ezen felül használható rendszerspecifikus feladatok, például Java programok vagy héjparancsfájlok ütemezésére. Lásd: [Use Oozie with Hadoop](hdinsight-use-oozie.md) (Az Oozie és a Hadoop együttes használata).
 
 ### <a name="phoenix"></a>Phoenix
 <a  target="_blank" href="http://phoenix.apache.org/">Az Apache Phoenix</a> egy relációs adatbázisréteg, amely a HBase-re épül. A Phoenix egy olyan JDBC-illesztőt tartalmaz, amely lehetővé teszi a felhasználók számára az SQL-táblák közvetlen lekérdezését és kezelését. A Phoenix a MapReduce használata helyett natív NoSQL API-hívásokká alakítja a lekérdezéseket és egyéb kifejezéseket, ezáltal gyorsabb alkalmazásokat tesz lehetővé a NoSQL-tárolókon. Lásd: [Use Apache Phoenix and SQuirreL with HBase clusters](hdinsight-hbase-phoenix-squirrel.md) (Az Apache Phoenix és az SQuirreL használata HBase-fürtökkel).
 
 
 ### <a name="pig"></a>Pig
-<a  target="_blank" href="http://pig.apache.org/">Az Apache Pig</a> egy magas szintű platform, amely a Pig Latin nevezetű egyszerű parancsnyelv használata révén összetett MapReduce-átalakításokat tesz lehetővé nagy méretű adatkészleteken. A Pig lefordítja a Pig Latin parancsfájlokat, így azok a Hadoop rendszerben is futtathatók. A Pig Latin kiterjesztésére felhasználó által megadott funkciókat (UDF) is létrehozhat. Lásd: [Use Pig with Hadoop to analyze an Apache log file](hdinsight-use-pig.md) (Apache-naplófájlok elemzése a Pig és a Hadoop együttes használatával).
+<a  target="_blank" href="http://pig.apache.org/">Az Apache Pig</a> egy magas szintű platform, amely a Pig Latin nevezetű egyszerű parancsnyelv használata révén összetett MapReduce-átalakításokat tesz lehetővé nagy méretű adatkészleteken. A Pig lefordítja a Pig Latin parancsfájlokat, így azok a Hadoop rendszerben is futtathatók. A Pig Latin kiterjesztésére felhasználó által megadott funkciókat (UDF) is létrehozhat. Lásd: [Use Pig with Hadoop](hdinsight-use-pig.md) (A Pig és a Hadoop együttes használata).
 
 ### <a name="sqoop"></a>Sqoop
 <a  target="_blank" href="http://sqoop.apache.org/">Az Apache Sqoop</a> egy olyan eszköz, amely a lehető leghatékonyabb módon biztosít tömeges adatátvitelt a Hadoop és a relációs adatbázisok (például egy SQL) vagy más strukturált adattárolók között. Lásd: [Use Sqoop with Hadoop](hdinsight-use-sqoop.md) (A Sqoop és a Hadoop együttes használata).
@@ -214,27 +196,27 @@ Az Azure felhőalapú ökoszisztémájának részeként a HDInsight Hadoop eszk�
 
 * A Hadoop-fürtök automatikus kiépítése. A HDInsight-fürtök létrehozása sokkal egyszerűbb, mint a Hadoop-fürtök manuális konfigurálása. További részletek: [Provision Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Hadoop-fürtök kiépítése a HDInsightban).
 
-* A legmodernebb Hadoop-összetevők. További részletekért lásd: [What's new in the Hadoop cluster versions provided by HDInsight?][component-versioning] (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).
+* A legmodernebb Hadoop-összetevők. További részletek: [Hadoop components, versioning, and service offerings in HDInsight][component-versioning] (A Hadoop összetevői, verziószámozása és szolgáltatásajánlatai a HDInsightban).
 
-* A fürtök magas fokú rendelkezésre állása és megbízhatósága.  A Hadoop-fürtök egy másodlagos átjárócsomóponttal bővültek, amelyet a HDInsight fejlesztett ki a szolgáltatás rendelkezésre állásának növelésére. A Hadoop-fürtök hagyományos implementációi jellemzően csak egy átjárócsomóponttal rendelkeznek. A HDInsight egy másodlagos átjárócsomópont hozzáadásával szüntette meg ezt a hibaérzékeny pontot. Egy új HA-fürtkonfigurációra való átváltás nem változtat a fürt árán, csak akkor, ha az ügyfelek egy alapértelmezett nagy méretű csomópont helyett egy extra nagy átjárócsomóponttal hoznak létre fürtöket.
-
-    További részletek: [Availability and reliability of Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md) (A Hadoop fürtök rendelkezésre állása és megbízhatósága a HDInsightban).
+* A fürtök magas fokú rendelkezésre állása és megbízhatósága. További részletek: [Availability and reliability of Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md) (A Hadoop fürtök rendelkezésre állása és megbízhatósága a HDInsightban).
 
 * Hatékony és gazdaságos adattárolás az Azure Blob Storage szolgáltatással, amely egy Hadoop-kompatbilis megoldás. További részletek: [Use Azure Blob storage with Hadoop in HDInsight](hdinsight-hadoop-use-blob-storage.md) (Az Azure Blob Storage és a Hadoop együttes használata a HDInsightban).
 
-* Integráció más Azure-szolgáltatásokkal, beleértve a [Web Apps](../documentation/services/app-service/web/) és az [SQL Database](../documentation/services/sql-database/) szolgáltatásokat.
+* Integráció más Azure-szolgáltatásokkal, beleértve a [Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/) és az [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/) szolgáltatásokat.
 
-* További virtuálisgép-méretek. A HDInsight-fürtök különböző virtuálisgép-típusokon és -méreteken érhetők el. A HDInsight-fürtök mostantól képesek kihasználni az általános célra készült A2 és A7 közötti méreteket, az SSD-meghajtókkal és 60 százalékkal gyorsabb processzorokkal ellátott D sorozatú csomópontokat, valamint a hálózatkezelést InfiniBand-támogatással gyorsító A8 és A9 méreteket. Az Apache HBase on Azure HDInsight ügyfelei a D sorozat nagyobb memória-konfigurációival növelhetik a teljesítményt. Az Apache Storm on Azure HDInsight ügyfelei szintén részesülnek a nagyobb hivatkozási adatkészletek betöltésére szolgáló több memóriával, illetve a processzort gyorsító nagyobb átviteli sebességgel járó előnyökben.
+* A HDInsight-fürtök futtatásához szükséges további virtuálisgép-méretek és -típusok. További információk: [A Hadoop összetevői, verziószámozása és szolgáltatásajánlatai a HDInsightban][component-versioning].
 
 * Fürtméretezés. A fürtméretezés lehetővé teszi, hogy módosítsa egy futtatott HDInsight-fürt csomópontjainak a számát, annak törlése vagy ismételt létrehozása nélkül.
 
 * Virtual Network támogatása. A HDInsight-fürtök és az Azure Virtual Network együttes használatával támogatható azoknak a felhőben található erőforrásoknak vagy hibrid forgatókönyveknek az elkülönítése, amelyek a felhőalapú erőforrásokat kötik össze az adatközpontban találhatókkal.
 
-* Alacsony kezdőköltség. Indítson el egy [ingyenes próbaverziót](/pricing/free-trial/), vagy tekintse át a [HDInsight díjszabásának részleteit](/pricing/details/hdinsight/).
-
+* Alacsony kezdőköltség. Indítson el egy [ingyenes próbaverziót](https://azure.microsoft.com/free/), vagy tekintse át a [HDInsight díjszabásának részleteit](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 A HDInsight Hadoop eszközének előnyeiről az [Azure-szolgáltatások HDInsight-ra vonatkozó lapján][marketing-page] olvashat.
 
+## HDInsight Standard és HDInsight Prémium
+
+A HDInsight a big data felhőajánlatokat kétféle – Standard és Prémium – kategóriában biztosítja. A HDInsight Standard egy vállalati szintű fürtöt biztosít, amelyet a vállalkozások a big data számítási feladatokat futtatásához használhatnak. A HDInsight Prémium ezen felül fejlett elemzési és biztonsági képességeket biztosít a HDInsight-fürtök számára. További információért lásd: [Azure HDInsight Prémium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
 
 
 ## <a id="resources"></a>A big data elemzésről, a Hadoopról és a HDInsight-ról további információkkal szolgáló erőforrások
@@ -244,17 +226,15 @@ A felhőalapú Hadoopról és a big data elemzésekről az alábbi forrásanyago
 
 ### Hadoop-dokumentáció a HDInsight-hoz
 
-* [HDInsight-dokumentáció](https://azure.microsoft.com/documentation/services/hdinsight/): az Azure HDInsight dokumentációs lapja, amely cikkekre, videókra és egyéb forrásanyagokra mutató hivatkozásokat tartalmaz.
+* [HDInsight-dokumentáció](https://azure.microsoft.com/documentation/services/hdinsight/): a Hadoop on Azure HDInsight dokumentációs lapja, amely cikkekre, videókra és egyéb forrásanyagokra mutató hivatkozásokat tartalmaz.
 
-* [A HDInsight használatának első lépései Linux rendszeren](hdinsight-hadoop-linux-tutorial-get-started.md): gyors üzembe helyezési útmutató HDInsight Hadoop-fürtök kiépítéséhez Linux rendszeren és Hive mintalekérdezések futtatásához.
+* [A Hadoop használatának első lépései a HDInsightban](hdinsight-hadoop-linux-tutorial-get-started.md): gyors üzembe helyezési útmutató HDInsight Hadoop-fürtök kiépítéséhez és Hive-mintalekérdezések futtatásához.
 
-* [A Linux-alapú Storm használatának első lépései a HDInsight-on](hdinsight-apache-storm-tutorial-get-started-linux.md): gyors üzembe helyezési útmutató egy HDInsight-fürtön alapuló Storm kiépítéséhez és Storm mintatopológiák futtatásához.
+* [A Spark használatának első lépései a HDInsightban](hdinsight-apache-spark-jupyter-spark-sql.md): gyors üzembe helyezési útmutató Spark-fürt létrehozásához és interaktív Spark SQL-lekérdezések futtatásához.
 
-* [A HDInsight kiépítése Linux-rendszeren](hdinsight-hadoop-provision-linux-clusters.md): útmutató egy HDInsight Hadoop-fürt Linux rendszeren történő kiépítéséhez az Azure portálon, az Azure parancssori felületen vagy az Azure PowerShell szolgáltatáson keresztül.
+* [R Server használata a HDInsighton](hdinsight-hadoop-r-server-get-started.md): Az R Server használatának megkezdése a HDInsight Premiumban.
 
-* [A HDInsight használata Linux-rendszeren](hdinsight-hadoop-linux-information.md): gyors tippek az Azure-ban kiépített Hadoop Linux-fürtök használatához.
-
-* [HDInsight-fürtök kezelése az Ambari segítségével](hdinsight-hadoop-manage-ambari.md): útmutató a HDInsight-ra épülő Linux-alapú Hadoop-fürt megfigyeléséhez és kezeléséhez az Ambari Web vagy az Ambari REST API segítségével.
+* [HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md): útmutató HDInsight Hadoop-fürt kiépítéséhez az Azure Portalon, az Azure parancssori felületen vagy az Azure PowerShellen keresztül.
 
 
 ### Apache Hadoop
@@ -265,48 +245,32 @@ A felhőalapú Hadoopról és a big data elemzésekről az alábbi forrásanyago
 
 * <a target="_blank" href="http://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html">MapReduce oktatóanyag</a>: további információk a Hadoop-alkalmazások írására szolgáló programozási keretrendszerről, amely gyorsan és párhuzamosan dolgozza fel a számítási csomópontok nagy fürtjein található nagy mennyiségű adatot.
 
-### SQL Database az Azure-on
 
-* [Azure SQL Database](/documentation/services/sql-database/): az SQL Database adatbázisra vonatkozó dokumentáció, oktatóanyagok és videók.
-
-* [SQL Database az Azure portálon](../sql-database/sql-database-manage-portal.md): egy kis méretű és könnyen használható adatbázis-kezelő eszköz az SQL Database felhőbeli kezeléséhez.
-
-* [Adventure Works az SQL Database-hez](http://msftdbprodsamples.codeplex.com/releases/view/37304): Az SQL Database mintaadatbázisának letöltési oldala.
-
-### Microsoft üzleti intelligencia (Windows rendszeren működő HDInsight-hoz)
+### Microsoft üzleti intelligencia
 
 Az ismerős üzletiintelligencia- (BI-) eszközök, mint például az Excel, a PowerPivot, az SQL Server Analysis Services és az SQL Server Reporting Services, a Power Query beépülő modul vagy a Microsoft Hive ODBC-illesztő segítségével kérik le, elemzik és jelentik a HDInsight rendszerébe integrált adatokat.
 
 Ezek az üzletiintelligencia-eszközök segíthetnek a big data elemzések elvégzésében:
 
-* [Az Excel és a Hadoop csatlakoztatása a Power Query segítségével](hdinsight-connect-excel-power-query.md): megtudhatja, hogyan csatlakoztathatja az Excelt a HDInsight-fürthöz kapcsolódó adatokat tároló Azure Storage-fiókhoz az Excelhez készült Microsoft Power Query segítségével.
+* [Az Excel és a Hadoop csatlakoztatása a Power Query segítségével](hdinsight-connect-excel-power-query.md): megtudhatja, hogyan csatlakoztathatja az Excelt a HDInsight-fürthöz kapcsolódó adatokat tároló Azure Storage-fiókhoz az Excelhez készült Microsoft Power Query segítségével. Használatához Windows-munkaállomás szükséges. Windows- vagy Linux-alapú fürtökkel működik.
 
-* [Az Excel és a Hadoop csatlakoztatása a Microsoft Hive ODBC-illesztő segítségével](hdinsight-connect-excel-hive-ODBC-driver.md): megtudhatja, hogyan importálhat adatokat a HDInsight-ból a Microsoft Hive ODBC-illesztővel.
+* [Az Excel és a Hadoop csatlakoztatása a Microsoft Hive ODBC-illesztő segítségével](hdinsight-connect-excel-hive-ODBC-driver.md): megtudhatja, hogyan importálhat adatokat a HDInsight-ból a Microsoft Hive ODBC-illesztővel. Használatához Windows-munkaállomás szükséges. Windows- vagy Linux-alapú fürtökkel működik.
 
 * [Microsoft Cloud platform](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx): további információt szerezhet az Office 365-höz készült Power BI szolgáltatásról, letöltheti az SQL Server próbaverzióját, és beállíthatja a SharePoint Server 2013-at és az SQL Server BI-t.
 
-* <a target="_blank" href="http://msdn.microsoft.com/library/hh231701.aspx">További információk az SQL Server Analysis Services szolgáltatásról</a>.
+* [SQL Server Analysis Services](http://msdn.microsoft.com/library/hh231701.aspx).
 
-* <a target="_blank" href="http://msdn.microsoft.com/library/ms159106.aspx">Információk az SQL Server Reporting Services szolgáltatásról</a>.
-
-
-### Hadoop-megoldások kipróbálása big data elemzésekhez (Windows rendszeren működő HDInsight-hoz)
-
-A szervezet adatain végrehajtott big data elemzések hasznos, a vállalatára vonatkozó információkkal szolgálnak. Néhány példa:
-
-* [HVAC-érzékelőadatok elemzése](hdinsight-hive-analyze-sensor-data.md): megtudhatja, hogyan elemezhet érzékelőadatokat a Hive és a HDInsight (Hadoop) együttes használatával, és hogyan jelenítheti meg az adatokat a Microsoft Excelben. Ez a példa a HVAC-rendszerek által előállított előzményadatokat a Hive segítségével dolgozza fel annak kimutatásához, hogy mely rendszerek nem képesek megbízhatóan fenntartani egy megadott hőmérsékletet.
-
-* [Webhelyek naplóinak elemzése a Hive és a HDInsight együttes használatával](hdinsight-hive-analyze-website-log.md): megtudhatja, hogy a HDInsight HiveQL eszközével hogyan elemezhet webhelynaplókat, hogy képet kapjon a külső webhelyekről egy nap alatt érkező látogatások gyakoriságáról, valamint összegezni tudja a felhasználók által a webhelyen tapasztalt hibákat.
-
-* [Érzékelőadatok valós idejű elemzése a HDInsightban (Hadoop) a Storm és a HBase segítségével](hdinsight-storm-sensor-data-analysis.md): megtudhatja, hogyan hozhat létre egy olyan megoldást, amely a HDInsightban egy Storm-fürt használatával dolgozza fel az Azure Event Hubs érzékelőadatait, majd a feldolgozott adatokat közel valós idejű információként jeleníti meg egy webalapú irányítópulton.
+* [SQL Server Reporting Services](http://msdn.microsoft.com/library/ms159106.aspx).
 
 
-[marketing-page]: ../services/hdinsight/
+
+
+[marketing-page]: https://azure.microsoft.com/services/hdinsight/
 [component-versioning]: hdinsight-component-versioning.md
 [zookeeper]: http://zookeeper.apache.org/
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/12/2016"
+   ms.date="06/10/2016"
    ms.author="ryanwi"/>
 
 # A helyi fürtön lévő alkalmazások üzembe helyezésének és frissítésének elsajátítása
@@ -26,7 +26,7 @@ A Service Fabric-fürt olyan hardver-erőforrások készletét képviseli, amely
 
 Fontos tisztában lenni azzal, hogy a Service Fabric helyi fürtje nem emulátor vagy szimulátor. Ugyanazt a platformkódot futtatja, mint ami a több számítógépes fürtökön található. Az egyetlen különbség, hogy az általában öt számítógép között elosztott platformfolyamatokat egyetlen számítógépen futtatja.
 
-Az SDK két lehetőséget biztosít a helyi fürt beállításához: egy Windows PowerShell-parancsfájlt és a Local Cluster Manager rendszertálca-alkalmazást. Ebben az oktatóanyagban a PowerShell-parancsfájlt használjuk.
+Az SDK két lehetőséget biztosít a helyi fürt beállításához: egy Windows PowerShell-parancsfájlt és a Local Cluster Manager rendszertálca-alkalmazást. Ebben az oktatóanyagban a PowerShell-szkriptet használjuk.
 
 > [AZURE.NOTE] Ha a Visual Studióból egy alkalmazás üzembe helyezésével már létrehozott egy a helyi fürtöt, ezt a szakaszt kihagyhatja.
 
@@ -39,7 +39,7 @@ Az SDK két lehetőséget biztosít a helyi fürt beállításához: egy Windows
     & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
     ```
 
-    A fürtbeállítás eltarthat néhány percig. A beállítás befejezése után az alábbihoz hasonló kimenetnek kell megjelennie:
+    A fürt beállítása hosszabb időt vehet igénybe. A beállítást követően a következőhöz hasonló kimenetnek kell megjelennie:
 
     ![A fürtbeállítás kimenete][cluster-setup-success]
 
@@ -66,7 +66,7 @@ Ebben az oktatóanyagban egy meglévő mintaalkalmazást (a neve WordCount) hasz
     cd c:\ServiceFabric\
     ```
 
-4. [Töltse le a WordCount alkalmazást](http://aka.ms/servicefabric-wordcountapp) a létrehozott helyre.
+4. [Töltse le a WordCount alkalmazást](http://aka.ms/servicefabric-wordcountapp) a létrehozott helyre.  Megjegyzés: A Microsoft Edge böngésző *.zip* kiterjesztéssel menti a fájlt.  Módosítsa a fájl kiterjesztését a következőre: *.sfpkg*.
 
 5. Csatlakozzon a helyi fürthöz:
 
@@ -74,7 +74,7 @@ Ebben az oktatóanyagban egy meglévő mintaalkalmazást (a neve WordCount) hasz
     Connect-ServiceFabricCluster localhost:19000
     ```
 
-6. Hívja meg az SDK üzembe helyezési parancsát, hozzon létre egy új alkalmazást, és adja meg az alkalmazáscsomag nevét és elérési útját.
+6. Az SDK telepítési parancsának használatával hozzon létre egy új alkalmazást, adjon meg hozzá egy nevet és egy, az alkalmazáscsomagra mutató elérési utat.
 
     ```powershell  
   Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
@@ -84,11 +84,11 @@ Ebben az oktatóanyagban egy meglévő mintaalkalmazást (a neve WordCount) hasz
 
     ![Alkalmazás üzembe helyezése a helyi fürtön][deploy-app-to-local-cluster]
 
-7. Ha szeretné az alkalmazást működés közben megtekinteni, indítsa el a böngészőt, és navigáljon a következő webhelyre: [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). Ennek nagyjából a következőképpen kell kinéznie:
+7. Ha szeretné az alkalmazást működés közben megtekinteni, indítsa el a böngészőt, és navigáljon a következő webhelyre: [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). A következőnek kell megjelennie:
 
     ![Az üzembe helyezett alkalmazás felhasználói felülete][deployed-app-ui]
 
-    A WordCount alkalmazás rendkívül egyszerű. Ügyféloldali JavaScript-kódot tartalmaz öt karakterből álló „szavak” véletlenszerű előállításához, amelyek aztán az ASP.NET Web API-n keresztül továbbítódnak az alkalmazásnak. Egy állapotalapú szolgáltatás nyomon követi a megszámolt szavak számát. Ezek particionálása a szó első karaktere alapján történik.
+    A WordCount alkalmazás rendkívül egyszerű. Ügyféloldali JavaScript-kódot tartalmaz öt karakterből álló „szavak” véletlenszerű előállításához, amelyek aztán az ASP.NET Web API-n keresztül továbbítódnak az alkalmazásnak. Az állapotalapú szolgáltatások nyomon követik a szavak számának változását. Ezek particionálása a szó első karaktere alapján történik. A WordCount alkalmazás forráskódját az [első lépéseket ismertető minták](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/) könyvtárában érheti el.
 
     Az üzembe helyezett alkalmazás négy partíciót tartalmaz. Az A–G kezdetű szavak az első partícióban, a H–N kezdetű szavak a második partícióban vannak tárolva és így tovább.
 
@@ -101,7 +101,7 @@ Miután üzembe helyeztük az alkalmazást, nézzük meg a PowerShellben az alka
     Get-ServiceFabricApplication
     ```
 
-    Feltételezve, hogy már üzembe helyezte a WordCount alkalmazást, a következőhöz hasonló elemeknek kell megjelennie:
+    Feltételezve, hogy kizárólag a WordCount alkalmazás lett üzembe helyezve, egy ehhez hasonló képernyőnek kell megjelennie:
 
     ![Az összes üzembe helyezett alkalmazás lekérdezése a PowerShellben][ps-getsfapp]
 
@@ -113,7 +113,7 @@ Miután üzembe helyeztük az alkalmazást, nézzük meg a PowerShellben az alka
 
     ![Az alkalmazáshoz használható szolgáltatások listája a PowerShellben][ps-getsfsvc]
 
-    Vegye figyelembe, hogy az alkalmazás két szolgáltatásból áll: a webes kezelőfelületből és az állapotalapú szolgáltatásból, amely a szavakat kezeli.
+    Az alkalmazás két szolgáltatásból áll: a webes kezelőfelületből és az állapotalapú szolgáltatásból, amely a szavakat kezeli.
 
 3. Végül tekintse meg a WordCountService partícióinak listáját:
 
@@ -123,7 +123,7 @@ Miután üzembe helyeztük az alkalmazást, nézzük meg a PowerShellben az alka
 
     ![A szolgáltatáspartíciók megtekintése a PowerShellben][ps-getsfpartitions]
 
-    Az Ön által éppen most használt parancsok készlete, például a Service Fabric PowerShell-parancsok, bármilyen (helyi vagy távoli) fürt számára elérhetők, amelyekhez kapcsolódni tud.
+    Az Ön által használt parancsok készlete, például a Service Fabric PowerShell-parancsok, bármilyen (helyi vagy távoli) fürt számára elérhetők, amelyekhez kapcsolódni tud.
 
     Ha vizuálisabban szeretne kommunikálni a fürttel, használhatja a webalapú Service Fabric Explorer eszközt is, ha a böngészőben megnyitja a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) weblapot.
 
@@ -134,7 +134,7 @@ Miután üzembe helyeztük az alkalmazást, nézzük meg a PowerShellben az alka
 ## Alkalmazás frissítése
 A Service Fabric állásidő nélküli frissítéseket biztosít az alkalmazás állapotának figyelésével, miközben megtörténik a bevezetése az egész fürtön. Végezzük el a WordCount alkalmazás egyszerű frissítését.
 
-Az alkalmazás új verziója mostantól csak a magánhangzóval kezdődő szavakat fogja számolni. A frissítés bevezetése során két változást figyelhetünk meg az alkalmazás viselkedésében. Az első az a sebesség, amelynél a számok növekedésének le kell lassulnia, mivel kevesebb szót kell megszámolni. A második, mivel az első partíció két magánhangzót tartalmaz (A és E), és az összes többi partíció mindegyike csak egyet, az első partíciónál a szám gyorsabban fog növekedni, mint a többinél.
+Az alkalmazás új verziója kizárólag a magánhangzóval kezdődő szavakat számolja össze. A frissítés előre haladtával két változást vehet észre az alkalmazás viselkedésében. Az első az a sebesség, amelynél a számok növekedésének le kell lassulnia, mivel kevesebb szót kell megszámolni. A második, mivel az első partíció két magánhangzót tartalmaz (A és E), és az összes többi partíció mindegyike csak egyet, az első partíciónál a szám gyorsabban fog növekedni, mint a többinél.
 
 1. [Töltse le a WordCount v2 csomagot](http://aka.ms/servicefabric-wordcountappv2) ugyanarra a helyre, amelyre a v1 csomagot töltötte.
 
@@ -144,7 +144,7 @@ Az alkalmazás új verziója mostantól csak a magánhangzóval kezdődő szavak
     Publish-UpgradedServiceFabricApplication -ApplicationPackagePath C:\ServiceFabric\WordCountV2.sfpkg -ApplicationName "fabric:/WordCount" -UpgradeParameters @{"FailureAction"="Rollback"; "UpgradeReplicaSetCheckTimeout"=1; "Monitored"=$true; "Force"=$true}
     ```
 
-    Amint a frissítés elindul, a következőhöz hasonló kimenetet kell látnia a PowerShellben.
+    A frissítés indításakor az alábbihoz hasonló kimenetnek kell megjelennie a PowerShellben.
 
     ![Folyamatban lévő frissítés a PowerShellben][ps-appupgradeprogress]
 
@@ -154,7 +154,7 @@ Az alkalmazás új verziója mostantól csak a magánhangzóval kezdődő szavak
 
     Ahogy a frissítés előrehalad az egyes tartományokon keresztül, a rendszer mindig állapotellenőrzést végez annak érdekében, hogy biztosítsa az alkalmazás megfelelő viselkedését.
 
-4. Ha újrafuttatja fabric:/WordCount alkalmazásban található szolgáltatáskészlet korábbi lekérdezését, megfigyelheti, hogy míg a WordCountService verziója megváltozott, a WordCountWebService verziója nem.
+4. Ha újra futtatja a korábbi, a fabric:/WordCount alkalmazás szolgáltatáskészletére irányuló lekérdezést, azt láthatja, hogy a WordCountService szolgáltatás verziószáma megváltozott, a WordCountWebService szolgáltatásé viszont nem:
 
     ```powershell
     Get-ServiceFabricService -ApplicationName 'fabric:/WordCount'
@@ -168,10 +168,37 @@ Az alkalmazás új verziója mostantól csak a magánhangzóval kezdődő szavak
 
     ![Az alkalmazás új verziójának megtekintése a böngészőben][deployed-app-ui-v2]
 
+## Takarítás
+
+A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. Az alkalmazások futtatása azonban a háttérben tovább folytatódik mindaddig, amíg el nem távolítja azokat.  Az alkalmazások jellegétől függően azok jelentős erőforrásokat is igénybe vehetnek a gépen. Az alkalmazás és a fürt kezelésére számos lehetősége van:
+
+1. Egyedi alkalmazások és azok adatainak eltávolításához futtassa a következőket:
+
+    ```powershell
+    Unpublish-ServiceFabricApplication -ApplicationName "fabric:/WordCount"
+    ```
+
+    Másik megoldásként törölje az alkalmazást a Service Fabric Explorer **ACTIONS** (MŰVELETEK) menüjéből, vagy a bal oldali ablaktábla alkalmazáslista nézetének helyi menüjéből.
+
+    ![Alkalmazás törlése a Service Fabric Explorerrel][sfe-delete-application]
+
+2. Az alkalmazásnak a fürtről történő törlését követően törölheti a WordCount alkalmazástípus 1.0.0-s és 2.0.0-s verzióinak regisztrációját is. A törléssel eltávolítja az alkalmazáscsomagokat a fürt lemezképtárolójából, beleértve a kódot és a konfigurációt is.
+
+    ```powershell
+    Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 2.0.0
+    Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0
+    ```
+
+    Esetleg a Service Fabric Explorerben válassza az **Unprovision Type** (Típus telepítésének visszavonása) lehetőséget az adott alkalmazás esetében.
+
+3. A fürt leállításához, ugyanakkor az alkalmazás adatainak és nyomkövetéseinek megtartásához a rendszertálca alkalmazásban kattintson a **Stop Local Cluster** (Helyi fürt leállítása) parancsra.
+
+4. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Vegye figyelembe, hogy ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A helyi fürtöt csak abban az esetben távolítsa el, ha egy ideig nem kívánja azt használni, vagy ha erőforrásokat kíván felszabadítani.
+
 ## Következő lépések
 - Most, hogy már üzembe helyezett és frissített néhány előre létrehozott alkalmazást, [megpróbálhatja felépíteni a saját alkalmazását a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md).
 - A jelen cikkben a helyi fürttel elvégzett összes művelet elvégezhető egy [Azure-fürttel](service-fabric-cluster-creation-via-portal.md) is.
-- A cikkben végrehajtott frissítés nagyon alapszintű volt. A Service Fabric frissítéskezelésének hatékonyságát és rugalmasságát a [frissítési dokumentációból](service-fabric-application-upgrade.md) ismerheti meg.
+- A jelen cikkben végrehajtott frissítés alapszintű volt. A Service Fabric frissítéskezelésének hatékonyságát és rugalmasságát a [frissítési dokumentációból](service-fabric-application-upgrade.md) ismerheti meg.
 
 <!-- Images -->
 
@@ -189,9 +216,10 @@ Az alkalmazás új verziója mostantól csak a magánhangzóval kezdődő szavak
 [ps-getsfsvc-postupgrade]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc-PostUpgrade.png
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
+[sfe-delete-application]: ./media/service-fabric-get-started-with-a-local-cluster/sfe-delete-application.png
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -1,7 +1,7 @@
 <properties
     pageTitle="Az SQL Database kipróbálása: SQL-adatbázis létrehozása a C# segítségével | Microsoft Azure"
     description="Próbálja ki az SQL Database-t az SQL- és C#-alkalmazások fejlesztésére, és hozzon létre egy Azure SQL Database adatbázist a C# segítségével és az SQL Database .NET-es kódtárával."
-    keywords="try sql, sql c#"   
+    keywords="sql kipróbálása, sql c#"   
     services="sql-database"
     documentationCenter=""
     authors="stevestein"
@@ -21,7 +21,7 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure portál](sql-database-get-started.md)
+- [Azure Portal](sql-database-get-started.md)
 - [C##](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
@@ -46,7 +46,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 Az SQL-adatbázisok C# segítségével történő beállításához szerezze be a szükséges kezelési kódtárakat, ehhez telepítse a következő csomagokat a [csomagkezelő konzol](http://docs.nuget.org/Consume/Package-Manager-Console) segítségével a Visual Studióban (**Tools (Eszközök)** > **NuGet Package Manager (NuGet csomagkezelő)** > **Package Manager Console (Csomagkezelő konzol)**):
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.ResourceManager –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre -Version 1.1.1-preview
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
 
@@ -99,7 +99,7 @@ Az új alkalmazás létrehozásához, illetve a megfelelő Active Directoryban v
 
 A kódban szükség lesz a tartománynévre. Egyszerűen azonosíthatja a megfelelő tartománynevet:
 
-1. Nyissa meg az [Azure portált](http://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](http://portal.azure.com).
 2. Vigye a kurzort a jobb felső sarokban látható név fölé, és jegyezze fel az előugró ablakban megjelenő tartományt.
 
     ![A tartománynév azonosítása.][3]
@@ -458,6 +458,6 @@ Most, hogy kipróbálta az SQL Database-t, és létrehozott egy adatbázist a C#
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

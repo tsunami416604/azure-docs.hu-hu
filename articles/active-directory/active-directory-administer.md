@@ -5,7 +5,7 @@
     documentationCenter=""
     authors="markusvi"
     writer="markvi"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/07/2016"
+    ms.date="07/13/2016"
     ms.author="markvi"/>
 
 # Az Azure AD-címtár felügyelete
@@ -40,7 +40,8 @@ Az Azure AD alapvető fontosságú címtár- és identitáskezelési funkciókat
 
 Azure AD-címtárhoz úgy juthat, ha regisztrál bármelyik fenti Microsoft felhőszolgáltatásra. Szükség szerint több címtárat is létrehozhat. Az első címtárat fenntarthatja például éles címtárként, majd létrehozhat egy másik címtárat is tesztelési vagy előkészítési céllal.
 
-> [AZURE.NOTE] Miután regisztrált az első szolgáltatásra, javasoljuk, hogy a további Microsoft felhőszolgáltatásokra történő regisztrációkor ugyanazt a szervezetéhez tartozó rendszergazdai fiókot használja.
+> [AZURE.NOTE]
+> Miután regisztrált az első szolgáltatásra, javasoljuk, hogy a további Microsoft felhőszolgáltatásokra történő regisztrációkor ugyanazt a szervezetéhez tartozó rendszergazdai fiókot használja.
 
 Amikor első alkalommal regisztrál Microsoft felhőszolgáltatásra, a rendszer felkéri a szervezet alapadatainak és internetes tartománynév-regisztrációs adatainak megadására. Ezek az információk az adott szervezet új Azure AD-címtárpéldányának létrehozásához szükségesek. Ha több Microsoft felhőszolgáltatásra fizet elő, a bejelentkezési kísérletek hitelesítésére a rendszer ugyanazt a címtárat használja.
 
@@ -101,8 +102,8 @@ Az egyes címtárakat teljesen független erőforrásként kezelheti: mindegyik�
 
 - **Erőforrás-függetlenség**. Ha erőforrást hoz létre vagy töröl egy címtárban, az nem érinti a többi címtárban található erőforrásokat, a külső felhasználókra vonatkozó részleges kivétellel (lásd lent). Ha egy címtárat egy „contoso.com” egyedi tartománnyal használja, azt egyetlen másik címtárral sem használhatja.
 - **Felügyeleti függetlenség**.  Ha a „Contoso” címtár nem rendszergazda felhasználója létrehoz egy „Teszt” nevű tesztelési címtárat, majd
-    - ◦ egy címtár-szinkronizálási eszközt egyetlen AD-erdővel történő szinkronizáláshoz,
-    - ◦ a „Contoso” címtár rendszergazdájának nem lesznek közvetlen rendszergazdai jogosultságai a „Teszt” címtáron, kivéve, ha annak a rendszergazdája kifejezetten megadja számára ezeket a jogokat. A „Contoso” rendszergazdái képesek a „Teszt” címtár hozzáférésének szabályozására a címtárat létrehozó felhasználói fiók felügyeleti joga révén.
+    - a címtár-szinkronizálási eszköz egyetlen AD-erdővel történő szinkronizáláshoz.
+    - A „Contoso” címtár rendszergazdájának nem lesznek közvetlen rendszergazdai jogosultságai a „Teszt” címtáron, kivéve, ha annak a rendszergazdája kifejezetten megadja számára ezeket a jogokat. A „Contoso” rendszergazdái képesek a „Teszt” címtár hozzáférésének szabályozására a címtárat létrehozó felhasználói fiók felügyeleti joga révén.
 
     Ha pedig egy címtárban módosítja (hozzáadja vagy eltávolítja) a felhasználó rendszergazdai szerepkörét, ez a változtatás nem érinti az adott felhasználó más címtárakra vonatkozó rendszergazdai szerepkörét.
 
@@ -129,8 +130,8 @@ A rendszer a következő feltételek teljesülését ellenőrzi:
 - A címtárban nem lehetnek alkalmazások. A címtár törlése előtt az összes alkalmazást törölni kell.
 - Törölni kell minden, a címtárhoz társított Microsoft Online Services-előfizetést, például a Microsoft Azure-t, az Office 365-öt vagy a Prémium szintű Azure AD-t. Ha például az alapértelmezett címtár az Azure-ban lett létrehozva, nem törölheti azt mindaddig, amíg Azure-előfizetésének hitelesítése továbbra is ezen a címtáron alapul. Akkor sem törölhet egy címtárat, ha felhasználói előfizetés társul hozzá. Az előfizetés másik címtárhoz történő társításához jelentkezzen be az Azure felügyeleti portálra, majd a bal oldali navigációs ablaktáblán kattintson a **Settings**(Beállítások) lehetőségre. Ezt követően kattintson az **Subscriptions** (Előfizetések) oldal alján található **Edit Directory** (Címtár szerkesztése) elemre. További információk az Azure-előfizetésekről: [How Azure subscriptions are associated with Azure AD?](active-directory-how-subscriptions-associated-directory.md) (Hogyan kapcsolódnak az Azure-előfizetések az Azure AD-hoz?)
 
-    > [AZURE.NOTE]
-    > Ha a felhasználó munkahelyi vagy iskolai fiókkal jelentkezik be, kezdőcímtárát nem szabad törölnie. Ha például a felhasználó joe@contoso.onmicrosoft.com fiókkal van bejelentkezve, nem törölheti a contoso.onmicrosoft.com-ot alapértelmezett tartományként használó címtárat.
+> [AZURE.NOTE]
+> Ha a felhasználó munkahelyi vagy iskolai fiókkal jelentkezik be, kezdőcímtárát nem szabad törölnie. Ha például a felhasználó joe@contoso.onmicrosoft.com fiókkal van bejelentkezve, nem törölheti a contoso.onmicrosoft.com-ot alapértelmezett tartományként használó címtárat.
 
 - A címtárhoz nem kapcsolhatók Multi-Factor Authentication-szolgáltatók.
 
@@ -150,6 +151,6 @@ A rendszer a következő feltételek teljesülését ellenőrzi:
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

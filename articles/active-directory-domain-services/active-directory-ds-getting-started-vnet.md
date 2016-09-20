@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/25/2016"
+    ms.date="07/06/2016"
     ms.author="maheshu"/>
 
 # Azure AD tartományi szolgáltatások *(előzetes verzió)* – Virtuális hálózat létrehozása vagy kiválasztása
@@ -72,6 +72,6 @@ A következő konfigurációs feladat [az Azure AD tartományi szolgáltatások 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

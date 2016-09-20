@@ -39,42 +39,7 @@ Az Service Bus Relay Azure-ban való használatához először egy névteret kel
 
 Szolgáltatásnévtér létrehozása:
 
-1.  Jelentkezzen be a [klasszikus Azure portálba][].
-
-2.  A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre.
-
-3.  A portál alsó panelén kattintson a **Create** (Létrehozás) elemre.
-
-    ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
-
-4.  Az **Add a new namespace** (Új névtér felvétele) párbeszédpanelen adja meg a névtér nevét.
-    A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-
-    ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-04.png)
-
-5.  Miután meggyőződött arról, hogy a név elérhető, válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz (ugyanazt azt az országot/régiót kell használnia, amelyben a számítási erőforrásokat üzembe helyezi).
-
-    > [AZURE.IMPORTANT] *Ugyanazt a régiót* válassza, amelyet az alkalmazás telepítéséhez kíván használni. Ez biztosítja a legjobb teljesítményt.
-
-6.  A párbeszédpanelen lévő többi mezőt hagyja az alapértelmezett értékükön (**Messaging** (Üzenetkezelés) és **Standard** réteg), majd kattintson a pipára. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
-
-    ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png)
-
-    A létrehozott névtér ezután megjelenik a portálon, és az aktiválása eltarthat egy rövid ideig. A folytatás előtt várja meg, amíg az állapota **Aktív** nem lesz.
-
-## Az alapértelmezett felügyeleti hitelesítő adatok beszerzése a névtérhez
-
-Az új névtéren a kezelési műveletek végrehajtásához, például egy közvetítő kapcsolat létrehozásához konfigurálnia kell a névtérhez a közös hozzáférésű jogosultságkód (SAS) hitelesítési szabályait. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus][] (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával).
-
-1.  A bal oldali navigációs panelen kattintson a **Service Bus** csomópontra az elérhető névterek listájának megjelenítéséhez.
-    ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
-
-2.  A megjelenő listában kattintson duplán az imént létrehozott névtér nevére.
-    ![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-09.png)
-
-3.  Kattintson a **Configure** (Konfigurálás) fülre az oldal tetején.
-
-4.  Ha egy Service Bus-névtér kiosztása megtörtént, alapértelmezés szerint létrejön egy **SharedAccessAuthorizationRule**, amelyben a **KeyName** **RootManageSharedAccessKey** értékre van beállítva. Ez a lap megjeleníti ezt a kulcsot, valamint az alapértelmezett szabályhoz tartozó elsődleges és másodlagos kulcsot.
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## A Service Bus NuGet-csomag beszerzése
 
@@ -263,7 +228,7 @@ A végpontdefiníciók ekkor az App.config fájlba kerülnek. A következő pél
 </behaviors>
 ```
 
-## További lépések
+## Következő lépések
 
 Most, hogy megismerte a Service Bus Relay szolgáltatás alapjait, az alábbi hivatkozásokból tudhat meg többet.
 
@@ -271,12 +236,11 @@ Most, hogy megismerte a Service Bus Relay szolgáltatás alapjait, az alábbi hi
 - [Azure Service Bus architectural overview (Az Azure Service Bus) architektúrájának áttekintése](service-bus-fundamentals-hybrid-solutions.md)
 - Letölthet Service Bus-mintákat az [Azure-minták][] közül, illetve megtekintheti a [Service Bus-minták áttekintését][].
 
-  [klasszikus Azure portálba]: http://manage.windowsazure.com
   [Shared Access Signature Authentication with Service Bus]: service-bus-shared-access-signature-authentication.md
   [Azure-minták]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
-  [a Service Bus-minták áttekintése]: service-bus-samples.md
+  [Service Bus-minták áttekintését]: service-bus-samples.md
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

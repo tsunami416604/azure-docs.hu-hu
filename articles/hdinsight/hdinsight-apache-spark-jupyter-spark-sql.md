@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/06/2016"
+    ms.date="07/25/2016"
     ms.author="nitinme"/>
 
 
@@ -37,6 +37,8 @@
     -  Linux rendszerű számítógépről – [Az SSH és a Linux-alapú HDInsight (Hadoop) együttes használata Linux, Unix vagy OS X rendszerről](hdinsight-hadoop-linux-use-ssh-unix.md).
     
     -  Windows rendszerű számítógépről – [Az SSH és a Linux-alapú HDInsight (Hadoop) együttes használata Windows rendszerről](hdinsight-hadoop-linux-use-ssh-windows.md).
+
+>[AZURE.NOTE] Ez a cikk egy ARM-sablon segítségével hoz létre egy Spark-fürtöt, amely [Azure Storage-blobokat használ fürttárolóként](hdinsight-hadoop-use-blob-storage.md). Olyan Spark-fürt is létrehozható, amely az alapértelmezett tárolóként használt Azure Storage-blobok mellett az [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) szolgáltatást is használja további tárolóként. Útmutatás: [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) (HDInsight-fürt létrehozása a Data Lake Store-ral).
 
 
 ## Spark-fürt létrehozása
@@ -121,7 +123,7 @@ Ebben a cikkben a PySpark kernelt fogja használni. A PySpark kernel használat�
     Illessze be a következő kódpéldát egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt. Ez a kódpélda az adatokat a **hvac** nevű ideiglenes táblába regisztrálja.
 
         # Load the data
-        hvacText = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+        hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
         
         # Create the schema
         hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
@@ -173,6 +175,8 @@ Ebben a cikkben a PySpark kernelt fogja használni. A PySpark kernel használat�
 
 * [A webhelynapló elemzése a Spark on HDInsight használatával](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
+* [Az Application Insights telemetriai adatainak elemzése a Spark on HDInsight használatával](hdinsight-spark-analyze-application-insight-logs.md)
+
 ### Alkalmazások létrehozása és futtatása
 
 * [Önálló alkalmazás létrehozása a Scala használatával](hdinsight-apache-spark-create-standalone-application.md)
@@ -212,6 +216,6 @@ Ebben a cikkben a PySpark kernelt fogja használni. A PySpark kernel használat�
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

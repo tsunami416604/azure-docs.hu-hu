@@ -1,19 +1,19 @@
 <properties
-   pageTitle="Az Azure Automation biztonsága"
+   pageTitle="Az Azure Automation biztonsága | Microsoft Azure"
    description="Ez a cikk az Automation biztonságának és az Azure Automation-fiókok számára elérhető különböző hitelesítési módszerek áttekintését nyújtja."
    services="automation"
    documentationCenter=""
    authors="MGoedtel"
    manager="jwhit"
    editor="tysonn"
-   keywords="automation security, secure automation" />
+   keywords="automation-biztonság, automation biztonságossá tétele" />
 <tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/10/2016"
+   ms.date="07/29/2016"
    ms.author="magoedte" />
 
 # Az Azure Automation biztonsága
@@ -27,11 +27,14 @@ Az Azure-fiókokhoz tartozó Automation-erőforrások egy Azure-régióhoz tarto
 
 >[AZURE.NOTE]Az Azure portálon létrehozott Automation-fiókok, valamint a rajtuk tárolt erőforrások nem érhetők el a klasszikus Azure portálról. Ha ezeket fiókokat vagy az erőforrásaikat Windows PowerShellel felügyeli, az Azure Resource Manager modulokat kell használnia.
 
-Az összes feladatot, amelyet az Azure Resource Manager (ARM) és az Azure Automation parancsmagjainak használatával az erőforrásokon végrehajt, hitelesíteni kell az Azure Active Directory szervezetiidentitás-hitelesítésével.  A tanúsítványalapú hitelesítés volt az eredeti hitelesítési módszer az Azure szolgáltatásfelügyelet (ASM) módban, de azt bonyolult volt beállítani.  Az Azure felé egy Azure AD-felhasználóval történő hitelesítés lehetőségét 2014-ben vezettük be, nem csak a hitelesítési fiókok konfigurálási folyamatának leegyszerűsítéséért, hanem hogy az Azure-ba nem interaktívan, egyetlen felhasználói fiókkal történő hitelesítés képességét is támogassa, amely működött az ASM és ARM módokkal is.   
+Az összes feladatot, amelyet az Azure Resource Manager és az Azure Automation parancsmagjainak használatával az erőforrásokon végrehajt, hitelesíteni kell az Azure Active Directory szervezetiidentitás-hitelesítésével.  A tanúsítványalapú hitelesítés volt az eredeti hitelesítési módszer az Azure szolgáltatásfelügyeleti módban, de azt bonyolult volt beállítani.  Az Azure felé egy Azure AD-felhasználóval történő hitelesítés lehetőségét 2014-ben vezettük be, nem csak a hitelesítési fiókok konfigurálási folyamatának leegyszerűsítéséért, hanem hogy az Azure-ba nem interaktívan, egyetlen felhasználói fiókkal történő hitelesítés képességét is támogassa, amely működött az Azure Resource Managerrel és klasszikus erőforrásokkal is.   
 
-Nemrég kiadtunk egy másik frissítést, amellyel már automatikusan hozunk létre egy Azure AD egyszerű szolgáltatási objektumot, amikor az Automation-fiók létrejön. Ezt Azure-beli futtató fióknak hívják, és ez az Azure Resource Manager forgatókönyv-automatizálásának alapértelmezett hitelesítési módszere.     
+Jelenleg, amikor létrehoz egy új Automation-fiókot az Azure Portalon, azzal automatikusan létrehozza az alábbiakat:
 
-A szerepköralapú hozzáférés-vezérlés elérhető az ARM-módban, hogy hozzáférést adjon az engedélyezett műveleteknek egy Azure AD-felhasználói fiókhoz és egyszerű szolgáltatáshoz, és hitelesítse ez utóbbit.  Az Automation-engedélyek kezelésére használt modell fejlesztéséhez további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](../automation/automation-role-based-access-control.md) című cikket.  
+-  Egy futtatófiókot, amely létrehoz egy új egyszerű szolgáltatást az Azure Active Directoryban, létrehoz egy tanúsítványt, valamint kiosztja a Közreműködő szerepköralapú hozzáférés-vezérlést (RBAC), amelynek használatával a Resource Manager-erőforrások kezelhetők runbookokkal.
+-  Egy klasszikus futtatófiókot egy felügyeleti tanúsítvány feltöltésével, amelynek használatával az Azure szolgáltatásfelügyelet erőforrásai vagy a klasszikus erőforrások kezelhetők runbookokkal.  
+
+A szerepköralapú hozzáférés-vezérlés az Azure Resource Managerben érhető el, hogy hozzáférést adjon az engedélyezett műveleteknek egy Azure AD-felhasználói fiókhoz és futtatófiókhoz, és hitelesítse az egyszerű szolgáltatást.  Az Automation-engedélyek kezelésére használt modell fejlesztéséhez további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](../automation/automation-role-based-access-control.md) című cikket.  
 
 Az adatközpontban egy hibrid forgatókönyv-feldolgozón vagy az AWS számítástechnikai szolgáltatásain futó forgatókönyvek nem használhatják ugyanazt a módszert, amelyet az Azure-erőforrásokon hitelesítő forgatókönyvek használnak.  Ennek oka az, hogy azok az erőforrások az Azure-on kívül futnak, és emiatt az Automation szolgáltatásban meghatározott saját biztonsági hitelesítő adataikra lesz szükség a helyileg elérhető erőforrásokhoz történő hitelesítéshez.  
 
@@ -42,12 +45,16 @@ A következő táblázat összefoglalja az Azure Automation által támogatott �
 Módszer  |  Környezet  | Cikk
 ----------|----------|----------
 Azure AD felhasználói fiók | Azure Resource Manager és Azure szolgáltatásfelügyelet | [Forgatókönyvek hitelesítése Azure AD-felhasználói fiókkal](../automation/automation-sec-configure-aduser-account.md)
-Azure AD egyszerű szolgáltatási objektum | Azure Resource Manager | [Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](../automation/automation-sec-configure-azure-runas-account.md)
+Azure-futtatófiók | Azure Resource Manager | [Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](../automation/automation-sec-configure-azure-runas-account.md)
+Klasszikus Azure-futtatófiók | Azure szolgáltatásfelügyelet | [Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](../automation/automation-sec-configure-azure-runas-account.md)
 Windows-hitelesítés | Helyszíni adatközpont | [Forgatókönyvek hitelesítése hibrid forgatókönyv-feldolgozókhoz](../automation/automation-hybrid-runbook-worker.md)
 AWS hitelesítő adatok | Amazon webszolgáltatások | [Forgatókönyvek hitelesítése az Amazon webszolgáltatásokkal (AWS)](../automation/automation-sec-configure-aws-account.md)
 
 
 
-<!--HONumber=jun16_HO2-->
+
+
+
+<!--HONumber=sep16_HO1-->
 
 

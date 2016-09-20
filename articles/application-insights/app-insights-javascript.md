@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/18/2016"
+    ms.date="08/15/2016"
     ms.author="awills"/>
 
 # Application Insights weblapokhoz
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
-Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. A Visual Studio Application Insights szolgáltatást a lap szkriptjeihez adhatja, és megkapja a lapbetöltések és AJAX hívások időzítését, a böngészőkivételek és AJAX hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. A hibaszámokról és a lassú lapbetöltésekről beállíthat riasztásokat.
+Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio Application Insightst a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. A hibaszámokról és a lassú lapbetöltésekről beállíthat riasztásokat.
 
 Az Application Insights bármely weblappal használható – csak egy rövid JavaScriptet kell hozzáadni. Ha a webszolgáltatása [Java](app-insights-java-get-started.md) vagy [ASP.NET](app-insights-asp-net.md), telemetriát integrálhat a kiszolgálóról és az ügyfelekről.
 
@@ -29,7 +29,7 @@ Ehhez egy [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Ha
 
 ## Az Application Insights beállítása a weboldalához
 
-Lehet, hogy már rendelkezik ezzel. Ha az alkalmazása új ASP.NET-projekt és úgy döntött, hogy hozzáadja az Application Insights szolgáltatást a Visual Studio New Project (Új projekt) párbeszédpanelén, a szkript már hozzá van adva, és minden be van állítva.
+Elsőként is: hozzá kell adnia az Application Insightst a weboldalaihoz? Lehet, hogy ezt már megtette. Ha úgy döntött, hogy hozzáadja az Application Insightst a webalkalmazásához a Visual Studio New Project (Új projekt) párbeszédpanelén, a szkript hozzáadása már megtörtént. Ebben az esetben ezt nem kell még egyszer megtennie.
 
 Egyéb esetben kódrészletet kell hozzáadnia a weblapjaihoz, a következők szerint.
 
@@ -57,7 +57,7 @@ A Gyors üzembe helyezés területen kérje le a weblapok szkriptjét:
 
 ![Az alkalmazás áttekintési panelén válassza a Gyors üzembe helyezés, Kód letöltése a weblapok figyeléséhez lehetőséget. Másolja a szkriptet.](./media/app-insights-javascript/02-monitor-web-page.png)
 
-Szúrja be a szkriptet minden olyan lap `<head>` címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Példa:
+Szúrja be a szkriptet minden olyan lap `</head>` címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Példa:
 
 * Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: `View\Shared\_Layout.cshtml`
 * Egy SharePoint-helyen, a vezérlőpulton nyissa meg a [Hely beállításai / Mesterlap](app-insights-sharepoint.md) elemet.
@@ -71,7 +71,7 @@ A szkript tartalmazza a kialakítási kulcsot, amely az adatokat az Application 
 
 ## Részletes konfiguráció
 
-Több [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) beállíthat, de a legtöbb esetben erre nincs szükség. Letilthatja vagy korlátozhatja például a lapmegtekintésenként jelentett Ajax hívások számát (a forgalom csökkentése érdekében); vagy beállíthatja a hibakeresési módot, hogy a telemetria gyorsan haladjon át a folyamaton, kötegelés nélkül.
+Több [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) beállíthat, de a legtöbb esetben erre nincs szükség. Letilthatja vagy korlátozhatja például az oldalmegtekintésenként jelentett Ajax-hívások számát (a forgalom csökkentése érdekében). Vagy beállíthatja a hibakeresési módot, hogy a telemetria gyorsan haladjon át a folyamaton, kötegkészítés nélkül.
 
 Ezen paraméterek beállításához keresse meg ezt a sort a kódrészletben, és adjon hozzá utána vesszővel elválasztott elemeket:
 
@@ -85,10 +85,10 @@ Az [elérhető paraméterek](https://github.com/Microsoft/ApplicationInsights-JS
     // Send telemetry immediately without batching.
     // Remember to remove this when no longer required, as it
     // can affect browser performance.
-    enableDebug: true,
+    enableDebug: boolean,
 
     // Don't log browser exceptions.
-    disableExceptionTracking: true,
+    disableExceptionTracking: boolean,
 
     // Don't log ajax calls.
     disableAjaxTracking: boolean,
@@ -175,7 +175,7 @@ A weblapjáról végzett AJAX hívások a Böngészők panelen függőségekkén
 Kattintson valamelyik sorra a részletekért.
 
 
-> [AZURE.NOTE] Ha törli a Böngészők szűrőt a panelen, a kiszolgáló és az AJAX függőségei is belekerülnek ezekbe a diagramokba. Kattintson az Alapértelmezések visszaállítása gombra a szűrő újrakonfigurálásához.
+> [AZURE.NOTE] Ha törli a Böngészők szűrőt a panelen, a kiszolgáló és az AJAX-függőségei is belekerülnek ezekbe a diagramokba. Kattintson az Alapértelmezések visszaállítása gombra a szűrő újrakonfigurálásához.
 
 **A sikertelen Ajax hívások részletezéséért** görgessen le a Függőséghibák rácsra, majd kattintson egy sorra az adott példányok megtekintéséhez.
 
@@ -205,9 +205,9 @@ A Diagnosztikai keresés panelen állítsa a Szűrők elemet Lapmegtekintés ér
 
 Válassza ki valamelyik eseményt további részletek megtekintéséhez. A részletek lapján kattintson a „...” gombra további részletek megtekintéséhez.
 
-> [AZURE.NOTE] Ha a [Keresés](app-insights-diagnostic-search.md) lehetőséget használja, vegye figyelembe, hogy teljes szavakat kell megadnia: a „Tudni” és a „valók” nem felel meg a „Tudnivalók” kifejezésnek, de a „Tudni*” igen. Emellett nem kezdhet keresőkifejezést helyettesítő karakterrel. A „*valók” keresése például nem felel meg a „Tudnivalók” kifejezésnek.
+> [AZURE.NOTE] Ha a [Keresés](app-insights-diagnostic-search.md) lehetőséget használja, vegye figyelembe, hogy teljes szavakat kell megadnia: a „Tudni” és a „valók” nem felel meg a „Tudnivalók” kifejezésnek.
 
-> [További információk a diagnosztikai keresésről](app-insights-diagnostic-search.md)
+Használhatja a nagy teljesítményű [Analytics lekérdezési nyelvet](app-insights-analytics-tour.md) a lapmegtekintések kereséséhez.
 
 ### Lapmegtekintési tulajdonságok
 
@@ -226,7 +226,7 @@ Szúrjon be egy ehhez hasonló JavaScript hívást az ügyfélkód megfelelő po
 
     appInsights.trackPageView(myPageName);
 
-A lap neve ugyanazokat a karaktereket tartalmazhatja, mint egy URL, de a rendszer a „#” vagy „?” utáni karaktereket figyelmen kívül hagyja.
+A lap neve ugyanazokat a karaktereket tartalmazhatja, mint egy URL-cím, de a rendszer a „#” vagy „?” utáni karaktereket figyelmen kívül hagyja.
 
 
 
@@ -253,6 +253,6 @@ Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

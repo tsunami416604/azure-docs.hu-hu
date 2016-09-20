@@ -14,7 +14,7 @@
     ms.devlang="node"
     ms.topic="get-started-article"
     ms.date="05/26/2016"
-    ms.author="bradygaster"/>
+    ms.author="rachelap"/>
 
 # Node.js RESTful API buildjének elkészítése és telepítése Azure-ban futó API-alkalmazásba
 
@@ -193,7 +193,7 @@ Ebben a szakaszban használhatja az Azure portál segítségével új API-alkalm
 
 6. Az **Erőforráscsoport** legördülő menüben kattintson az **Új** elemre, majd az **Új erőforráscsoport neve** mezőbe írja be a „NodejsAPIAppGroup” nevet, vagy amit szeretne. 
 
-    Az [erőforráscsoport](../azure-portal/resource-group-portal.md) olyan Azure-erőforrások gyűjteménye, mint az API-alkalmazások, adatbázisok és virtuális gépek. Ebben az oktatóanyagban érdemes új erőforráscsoportot létrehozni, mivel így később egyetlen művelettel törölheti az oktatóanyaghoz létrehozott összes Azure-erőforrást.
+    Az [erőforráscsoport](../resource-group-overview.md) olyan Azure-erőforrások gyűjteménye, mint például az API-alkalmazások, adatbázisok és virtuális gépek. Ebben az oktatóanyagban érdemes új erőforráscsoportot létrehozni, mivel így később egyetlen művelettel törölheti az oktatóanyaghoz létrehozott összes Azure-erőforrást.
 
 4. Kattintson az **App Service-csomag/Hely**, majd az **Új létrehozása** elemre.
 
@@ -314,6 +314,6 @@ Ebben a szakaszban egy helyi Git-tárházat hozunk létre, amely tartalmazza az 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

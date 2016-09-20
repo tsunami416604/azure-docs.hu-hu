@@ -13,16 +13,11 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/06/2016"
+   ms.date="07/21/2016"
    ms.author="yurid"/>
 
 #Biztonsági állapotfigyelés az Azure Security Centerben
 Ez a dokumentum segítséget nyújt az Azure Security Center által nyújtott figyelési funkcióknak a szabályzatoknak való megfelelés ellenőrzésére történő használatába.
-
-> [AZURE.NOTE] A dokumentumban szereplő információk az Azure Security Center előzetes verziójára vonatkoznak.
-
-## Mi az az Azure Security Center?
-A Security Center magasabb fokú betekintést és szélesebb körű vezérlést tesz lehetővé az Azure-erőforrások fölött, így segít a fenyegetések megelőzésében, észlelésében és kezelésében. A biztonsági megoldások átfogó ökoszisztémájának alkalmazásával az összes előfizetésére vonatkozóan integrált biztonságfelügyeletet és szabályzatkezelést biztosít, és segít felderíteni az egyébként nehezen észlelhető fenyegetéseket.
 
 ##Mi az a biztonsági állapotfigyelés?
 Ha a „figyelés” szót halljuk, általában arra gondolunk, hogy elővigyázatosan várjuk, hogy egy adott esemény bekövetkezzen, hogy aztán reagálhassunk a szituációra. A biztonságfigyelés ezzel szemben proaktív stratégiát jelent, amely az erőforrásokat ellenőrizve azonosítja a vállalati szabványoknak vagy ajánlott eljárásoknak meg nem felelő rendszereket.
@@ -34,14 +29,14 @@ A javaslatok alkalmazásával kapcsolatban további információkat talál a kö
 
 A **Resources security health** (Erőforrások biztonsági állapota) csempén is nyomon követheti erőforrásainak biztonsági állapotát. Az alábbi példában több olyan magas és közepes súlyosságú probléma látható, amely intézkedést követel meg. A bekapcsolt biztonsági szabályzatok hatással vannak a megfigyelt vezérlőtípusokra.
 
-![Erőforrások állapota](./media/security-center-monitoring/security-center-monitoring-fig1-new3.png)
+![Erőforrások állapota](./media/security-center-monitoring/security-center-monitoring-fig1-ga.png)
 
 Ha a Security Center biztonsági rést (például biztonsági frissítésekkel el nem látott virtuális gépet vagy [hálózati biztonsági csoporttal](../virtual-network/virtual-networks-nsg.md) nem rendelkező alhálózatot) észlel, azt a rendszer itt listázza.
 
 ###Virtuális gépek figyelése
 A **Resources security health** (Erőforrások biztonsági állapota) csempén található **Virtual machines** (Virtuális gépek) elemre kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen további információkat talál az előkészítési és megelőzési lépésekről, valamint itt tekintheti meg a Security Center által figyelt virtuális gépek listáját is.
 
-![Hiányzó rendszerfrissítés a virtuális gépen](./media/security-center-monitoring/security-center-monitoring-fig2-2-new.png)
+![Hiányzó rendszerfrissítés a virtuális gépen](./media/security-center-monitoring/security-center-monitoring-fig2-ga.png)
 
 - Onboarding steps (Előkészítési lépések)
 - Virtual machine recommendations (A virtuális gépre vonatkozó javaslatok)
@@ -49,20 +44,22 @@ A **Resources security health** (Erőforrások biztonsági állapota) csempén t
 
 Az egyes szakaszokban elérhető lehetőségek kiválasztásával további részleteket tudhat meg a probléma megoldásához szükséges lépésekről. Az alábbi szakaszokban részletesen foglalkozunk ezekkel a területekkel.
 
-####Onboarding steps (Előkészítési lépések)
-Ebben a szakaszban tekintheti meg az adatgyűjtésre beállított virtuális gépeket, valamint aktuális állapotukat. Ha az összes virtuális gépen bekapcsolta az adatgyűjtést, azok készen állnak a Security Center biztonsági szabályzatainak fogadására. Ha az elemre kattint, megnyílik az **Initializing data collection** (Adatgyűjtés inicializálása) panel, ahol megtekintheti a virtuális gépek nevét, az **INSTALLATION STATUS** (Telepítés állapota) oszlopban pedig az adatgyűjtés aktuális állapotát, ahogy az az alábbi képen is látható.
+#### Figyelési javaslatok
+Ebben a szakaszban tekintheti meg az adatgyűjtésre beállított virtuális gépeket, valamint aktuális állapotukat. Ha az összes virtuális gépen bekapcsolta az adatgyűjtést, azok készen állnak a Security Center biztonsági szabályzatainak fogadására. Ha ebbe a bejegyzésbe kattint, a **Data collection installation status** (Adatgyűjtés telepítési állapota) panel nyílik meg, amelyen a virtuális gépek nevei, valamint az adatgyűjtés aktuális állapota jelenik meg az **INSTALLATION STATUS** (TELEPÍTÉSI ÁLLAPOT) oszlopban, ahogyan az az alábbi képen is látható.
 
-![Initialization status (Telepítés állapota)](./media/security-center-monitoring/security-center-monitoring-fig3-new.png)
+![Initialization status (Telepítés állapota)](./media/security-center-monitoring/security-center-monitoring-fig3-ga.png)
 
 
 ####Virtual machine recommendations (A virtuális gépre vonatkozó javaslatok)
 Ebben a szakaszban az Azure Security Center által megfigyelt egyes virtuális gépekre vonatkozó javaslatok szerepelnek. Ahogy az alábbi képen is látható, az első oszlopban maga a javaslat látható, a másodikban azoknak a virtuális gépeknek a száma, amelyekre érvényes a javaslat, a harmadikban pedig a probléma súlyossága.
 
-![Virtuális gépekre vonatkozó javaslatok](./media/security-center-monitoring/security-center-monitoring-fig4-2-new.png)
+![Virtuális gépekre vonatkozó javaslatok](./media/security-center-monitoring/security-center-monitoring-fig4-ga.png)
+
+> [AZURE.NOTE] A Networking Health (Hálózatkezelés állapota) panel Network topology (Hálózati topológia) listájában kizárólag a legalább egy nyilvános végponttal rendelkező virtuális gépek jelennek meg.
 
 Az egyes javaslatokra kattintva különböző műveleteket végezhet el. Ha például a **Missing system updates** (Hiányzó rendszerfrissítések) elemre kattint, megnyílik a **Missing system updates** (Hiányzó rendszerfrissítések) panel. Ahogy az alábbi képen is látható, ezen a panelen megtekintheti azoknak a virtuális gépeknek a listáját, amelyekről frissítések hiányoznak, illetve a hiányzó frissítés súlyosságát.
 
-![Hiányzó rendszerfrissítések](./media/security-center-monitoring/security-center-monitoring-fig5-new.png)
+![Hiányzó rendszerfrissítések](./media/security-center-monitoring/security-center-monitoring-fig5-ga.png)
 
 A **Missing system updates** (Hiányzó rendszerfrissítések) panelen az alábbi információkat tartalmazó táblázat található:
 
@@ -80,24 +77,37 @@ A **Missing system updates** (Hiányzó rendszerfrissítések) panelen az alább
 
 A javaslat részletes adatainak megtekintéséhez kattintson a virtuális gép nevére. Ahogy az alábbi képen is látható, megnyílik a virtuális gépre vonatkozó új panel, amelyen megtalálja a frissítések listáját.
 
-![Hiányzó rendszerfrissítések virtuális gépenként](./media/security-center-monitoring/security-center-monitoring-fig6-new.png)
+![Hiányzó rendszerfrissítések virtuális gépenként](./media/security-center-monitoring/security-center-monitoring-fig6-ga.png)
 
 > [AZURE.NOTE] Itt ugyanazok a biztonsági javaslatok láthatók, mint a Recommendations (Javaslatok) panelen. A javaslatok alkalmazásával kapcsolatban további információkat talál a következő cikkben: [Implementing security recommendations in Azure Security Center](security-center-recommendations.md) (A biztonsági javaslatok alkalmazása az Azure Security Centerben). Ez nem csupán a virtuális gépekre vonatkozik, hanem az összes erőforrásra, amely szerepel a Resource Health (Erőforrás állapota) csempén.
 
 ####A Virtual machines (Virtuális gépek) szakasz
 A virtuális gépekre vonatkozó szakaszban áttekintheti az összes virtuális gépet, valamint a rájuk vonatkozó javaslatokat. Ahogy az alábbi képen is látható, minden oszlop egy javaslatcsoportot képvisel:
 
-![Virtuális gépek](./media/security-center-monitoring/security-center-monitoring-fig7-new.png)
+![Virtuális gépek](./media/security-center-monitoring/security-center-monitoring-fig7-ga.png)
 
 Az egyes javaslatok alatt megjelenő ikonok segítenek gyorsan azonosítani azokat a virtuális gépeket, amelyekkel foglalkoznia kell, illetve azt, hogy milyen típusú javaslat érkezett.
 
-A fenti példában egy virtuális gépnél kritikus súlyosságú javaslat érkezett a kártevőirtó programokkal kapcsolatban. További információkért kattintson a kívánt virtuális gépre. Ahogy az alábbi képen is látható, megjelenik egy új panel, amelyen a virtuális gép adatai láthatók.
+A fenti példában az egyik virtuális gép végpontvédelmével kapcsolatban a rendszer kritikus fontosságú javaslatot tett közzé. További információkért kattintson a kívánt virtuális gépre. Ahogy az alábbi képen is látható, megjelenik egy új panel, amelyen a virtuális gép adatai láthatók.
 
-![Virtuális gép biztonsági adatai](./media/security-center-monitoring/security-center-monitoring-fig8-new.png)
+![Virtuális gép biztonsági adatai](./media/security-center-monitoring/security-center-monitoring-fig8-ga.png)
 
 A virtuális gép biztonsági információi ezen a panelen találhatók meg. A panel alján a javasolt műveleteket, valamint az egyes problémák súlyosságát láthatja.
 
-###Virtuális hálózatok figyelése
+#### Felhőszolgáltatások (előzetes verzió) szakasz
+A felhőszolgáltatások állapotinformációi a virtuális gép biztonsági állapot csempéjén jelennek meg. A rendszer akkor tesz közzé javaslatot, ha az operációs rendszer nem naprakész, ahogyan az az alábbi képen is látható: 
+
+![Felhőszolgáltatások](./media/security-center-monitoring/security-center-monitoring-fig8-new2.png)
+
+A javaslatban megadott lépéseket követve frissítheti az operációs rendszer verzióját. Ha például az egyik webes vagy feldolgozói szerepkör (mindkettő az IIS-re automatikusan telepített webalkalmazással együtt futtatja a Windows Servert) esetében a vörös színű riasztásra kattint, egy új panel nyílik meg, amelyen további részletek láthatóak az adott javaslatról ahogyan az az alábbi képen is látható:
+
+![Felhőszolgáltatás adatai](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png) 
+
+Ha az előírásoknak megfelelőbb magyarázatot kíván megtekinteni erről a javaslatról, a **DESCRIPTION** (LEÍRÁS) oszlopban kattintson az **Update OS version** (Operációs rendszer verziójának frissítése) elemre. Ekkor megnyílik a további részleteket tartalmazó **Operációs rendszer verziójának frissítése (előzetes verzió)** panel.
+
+![Cloud Services – javaslatok](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
+
+### Virtuális hálózatok figyelése
 A **Resources security health** (Erőforrások biztonsági állapota) panel **Networking** (Hálózat) csempéjére kattintva megnyithatja az alább látható **Networking** (Hálózat) panelt, amelyen további információk érhetők el:
 
 ![Hálózat](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
@@ -116,7 +126,7 @@ A hálózati állapotot részletező listában megtekintheti a potenciális bizt
 
 Ha a javaslatokra kattint, új panel nyílik meg, amelyen, ahogy az az alábbi képen is látható, további részletek ismerhetők meg a javaslatról.
 
-![Végpont korlátozása](./media/security-center-monitoring/security-center-monitoring-fig11-new2.png)
+![Végpont korlátozása](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
 
 A példában a **Configure Missing Network Security Groups for Subnets** (Hiányzó hálózati biztonsági csoportok konfigurálása az alhálózatok számára) panelen láthatja azoknak az alhálózatoknak és virtuális gépeknek a listáját, amelyekhez nem tartozik NSG-védelem. Ha rákattint az alhálózatra, amelyre NSG-t kíván alkalmazni, megnyílik egy újabb panel.
 
@@ -126,7 +136,7 @@ A **Choose network security group** (Hálózati biztonsági csoport választása
 
 Az **Internet facing endpoints** (Internet felé néző végpontok) részben azoknak a virtuális gépeknek a listája látható, amelyeken jelenleg internet felé néző végpont működik, illetve megtekinthető a végpont aktuális állapota is.
 
-![Internet felé néző végpont](./media/security-center-monitoring/security-center-monitoring-fig121-new5.png)
+![Internet felé néző végpont](./media/security-center-monitoring/security-center-monitoring-fig10-ga.png)
 
 Ez a táblázat tartalmazza a virtuális gépet tartalmazó végpont nevét, az internet felé néző IP-címet, valamint az NSG és az NGFW aktuális súlyossági állapotát. A táblázat elemei súlyosság szerint rendezve jelennek meg, az alábbi sorrendben:
 - Piros (legfelül): a legmagasabb prioritás, azonnal foglalkozzon vele 
@@ -144,20 +154,20 @@ A táblázat elemei (a virtuális gépek és az alhálózatok) súlyosság szeri
 - Narancssárga: közepes szintű prioritás, a lehető leghamarabb foglalkozzon vele
 - Zöld (utolsó): megfelelő állapot
 
-A topológia e nézetében az első szinten vannak a [virtuális hálózatok](../virtual-network/virtual-networks-overview.md), a [virtuális hálózati átjárók](../vpn-gateway/vpn-gateway-site-to-site-create.md) és a [virtuális hálózat (klasszikus)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). A második szinthez tartoznak az alhálózatok, míg a harmadik szinten az ezekhez az alhálózatokhoz kapcsolódó virtuális gépek. A jobb oldali oszlopban tekintheti meg az adott erőforrás hálózati biztonsági csoport (NSG) szerinti állapotát. Ha például a VM-CL-W1 jelzésű virtuális gépet választja, a következő jelenik meg:
+A topológia e nézetében az első szinten vannak a [virtuális hálózatok](../virtual-network/virtual-networks-overview.md), a [virtuális hálózati átjárók](../vpn-gateway/vpn-gateway-site-to-site-create.md) és a [virtuális hálózat (klasszikus)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). A második szinthez tartoznak az alhálózatok, míg a harmadik szinten az ezekhez az alhálózatokhoz kapcsolódó virtuális gépek. A jobb oldali oszlopban az adott erőforrásokhoz tartozó hálózati biztonsági csoport (NSG) aktuális állapota található, ahogyan az az alábbi példában is látható:
 
-![Hálózati fa](./media/security-center-monitoring/security-center-monitoring-fig13-new2.png)
+![Hálózati fa](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
 A panel alsó részén a virtuális gépre vonatkozó javaslatok láthatók, a fentiekben leírtakhoz hasonlóan. A javaslatra kattintva további információkat tekinthet meg, illetve alkalmazhatók a szükséges biztonsági rendszabályok/konfigurációk.
 
 ###SQL-erőforrások figyelése
 A **Resources security health** (Erőforrások biztonsági állapota) csempe **SQL** csempéjére kattintva megnyithatja az SQL panelt, amelyen megtekintheti a problémákkal (például a naplózás vagy a transzparens adattitkosítás kikapcsolása) kapcsolatos javaslatokat. Ezenfelül általános javaslatokat is talál itt az adatbázis állapotára vonatkozóan.
 
-![SQL-erőforrás állapota](./media/security-center-monitoring/security-center-monitoring-fig15-new.png)
+![SQL-erőforrás állapota](./media/security-center-monitoring/security-center-monitoring-fig13-ga.png)
 
 A javaslatok bármelyikére kattintva további részleteket tudhat meg a probléma megoldásához szükséges műveletekről. Az alábbi példában a **Database Auditing not enabled** (Adatbázis-naplózás nincs engedélyezve) javaslat kibontott nézete látható.
 
-![SQL-erőforrás állapota](./media/security-center-monitoring/security-center-monitoring-fig16-new.png)
+![SQL-erőforrás állapota](./media/security-center-monitoring/security-center-monitoring-fig14-ga.png)
 
 Az **Enable Auditing on SQL databases** (SQL-adatbázis naplózásának engedélyezése) panelen a következő információk láthatók:
 
@@ -169,34 +179,35 @@ Az **Enable Auditing on SQL databases** (SQL-adatbázis naplózásának engedél
 
 Ha a javaslat megoldása érdekében rákattint az adatbázisra, az alábbi képen látható módon megnyílik az **Auditing & Threat detection** (Naplózás és fenyegetésészlelés) panel.
 
-![SQL-erőforrás állapota](./media/security-center-monitoring/security-center-monitoring-fig17-new.png)
+![SQL-erőforrás állapota](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
 
-A naplózás bekacsolásához egyszerűen válassza az **Auditing** (Naplózás) beállításnál az **ON** (Be) lehetőséget, majd kattintson a **Save** (Mentés) gombra.
+A naplózás engedélyezéséhez egyszerűen módosítsa az **Auditing** (Naplózás) beállítását **ON** (BE) értékre.
 
-###Alkalmazások figyelése
+### Alkalmazások figyelése
+
 Ha az Azure számítási feladatban felfedett webes portokkal (80-as és 443-as TCP-portok) működő [erőforrás-kezelő virtuális gépeken](../resource-manager-deployment-model.md) található alkalmazások futnak, a Security Center képes ezeket is figyelni, azonosítani a potenciális biztonsági problémákat, és megoldást javasolni. Az **Applications** (Alkalmazások) csempére kattintva megnyithatja az **Applications** (Alkalmazások) panelt, amelynek megelőzési lépéseket tartalmazó szakaszában számos javaslat található. Ezenfelül itt látható az alkalmazások állomásonkénti/virtuális IP-címenkénti lebontása is.
 
-![Alkalmazások biztonsági állapota](./media/security-center-monitoring/security-center-monitoring-fig18-new.png)
+![Alkalmazások biztonsági állapota](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
 Ahogy a többi javaslat esetében, itt is az egyes elemekre kattintva további információkhoz juthat a problémáról, illetve lehetséges megoldásáról. Az alábbi képen szereplő példában a rendszer nem biztonságos webalkalmazásként azonosított egy alkalmazást. Ha kijelöli a nem biztonságosnak ítélt alkalmazást, megnyílik egy újabb panel, amelyen az alábbi lehetőségek érhetők el:
 
-![Alkalmazások](./media/security-center-monitoring/security-center-monitoring-fig19-new.png)
+![Alkalmazások](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
 
-Az **Unsecured Web Applications** (Nem biztonságos webalkalmazások) panelen azok a virtuális gépek szerepelnek, amelyeken nem biztonságosnak ítélt alkalmazások futnak. A listában megtalálható a virtuális gép neve, a probléma aktuális helyzete, valamint súlyossága. Ha a webalkalmazásra kattint, megnyílik az **Add a Web Application Firewall** (Webalkalmazási tűzfal hozzáadása) panel, amelyen – ahogy az az alábbi képen is látható – lehetősége nyílik egy külső fejlesztőtől származó WAF (webalkalmazási tűzfal) telepítésére.
+Ezen a panelen az alkalmazáshoz tartozó összes javaslat listája megjelenik. Az **Add a web application firewall** (Webalkalmazás-tűzfal hozzáadása) javaslatra kattintva megnyílik az **Add a Web Application Firewall** (Webalkalmazás-tűzfal hozzáadása) panel, amelyről külső WAF (webalkalmazás-tűzfal) telepítésére van lehetőség, ahogyan az az alábbi képen is látható.
 
-![WAF hozzáadása](./media/security-center-monitoring/security-center-monitoring-fig20-new.png)
+![WAF hozzáadása](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
 
-## Következő lépések
+## Lásd még:
 Ebben a dokumentumban megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-- [Setting security policies in Azure Security Center](security-center-policies.md) (Biztonsági szabályzatok beállítása az Azure Security Centerben) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben) – Ebből az írásból megtanulhatja a biztonsági riasztások kezelésének és megoldásának módját.
-- [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Ez a cikk ismerteti a partnermegoldások biztonsági állapotának figyelését.
-- [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – A szolgáltatás használatára vonatkozó gyakran ismételt kérdések.
+- [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
+- [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
+- [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
+- [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 - [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

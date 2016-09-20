@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="hero-article" 
-    ms.date="05/03/2016" 
+    ms.date="08/07/2016"
     ms.author="juliako;anilmur"/>
 
 #Az Azure Media Services áttekintése és gyakori alkalmazási esetei
@@ -49,7 +49,7 @@ Az AMS képzési terveket itt tekintheti meg:
 
 Az Azure Media Services használatának megkezdéséhez rendelkeznie kell a következőkkel:
  
-3. Egy Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](azure.microsoft.com).
+3. Egy Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com).
 2. Egy Azure Media Services-fiók. Azure Media Services-fiókot a klasszikus Azure portál, a .NET vagy a REST API használatával hozhat létre. További információ: [Fiók létrehozása](media-services-create-account.md)
 3. (Lehetőség:) A fejlesztési környezet beállítása Válassza ki, hogy a .NET vagy a REST API fejlesztési környezetet kívánja-e használni. További információ: [Környezet beállítása](media-services-dotnet-how-to-use.md) 
 
@@ -60,7 +60,7 @@ Az Azure Media Services használatának megkezdéséhez rendelkeznie kell a köv
 
 Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concepts.md)
 
-Az Azure Media Services összes fő összetevőjét bemutató útmutató-sorozat: [Az Azure Media Services részletes oktatóprogramjai](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) Ez a sorozat átfogó áttekintést nyújt a fogalmakról, és az AMSE eszköz használatával mutatja be az AME-műveleteket. Megjegyzés: Az AMSE eszköz egy Windows-eszköz. Az eszköz támogatja a legtöbb olyan műveletet, amelyek a [.NET-keretrendszerhez készült AMS SDK](https://github.com/Azure/azure-sdk-for-media-services), a [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java) vagy az [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) használatával programozás útján megvalósíthatók.
+Az Azure Media Services összes fő összetevőjét bemutató útmutató-sorozat: [Az Azure Media Services részletes oktatóprogramjai](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) Ez a sorozat átfogó áttekintést nyújt a fogalmakról, és az AMSE eszköz használatával mutatja be az AMS-feladatokat. Megjegyzés: Az AMSE eszköz egy Windows-eszköz. Az eszköz támogatja a legtöbb olyan műveletet, amelyek a [.NET-keretrendszerhez készült AMS SDK](https://github.com/Azure/azure-sdk-for-media-services), a [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java) vagy az [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) használatával programozás útján megvalósíthatók.
 
 ##<a id="vod_scenarios"></a>Igény szerinti médiatovábbítás az Azure Media Services használatával: gyakori forgatókönyvek és műveletek
 
@@ -85,7 +85,7 @@ Ez a szakasz gyakori forgatókönyveket ismertet, és hivatkozásokat tartalmaz 
 
 1. Tegye közzé az adategységet egy OnDemand-kereső létrehozásával.
 
-    Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
+    Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
 
 1. Továbbítsa a közzétett tartalmat.
 
@@ -222,6 +222,6 @@ További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

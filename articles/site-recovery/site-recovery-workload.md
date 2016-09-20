@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="storage-backup-recovery" 
-    ms.date="03/27/2016" 
+    ms.date="07/06/2016" 
     ms.author="raynew"/>
 
 # Milyen számítási feladatokat tud védeni az Azure Site Recovery?
@@ -60,7 +60,7 @@ Exchange (nem DAG) | I | Hamarosan | I | I
 Távoli asztal/VDI | I | I | I | N/A 
 Linux (operációs rendszer és alkalmazások) | I (a Microsoft által végzett tesztek alapján) | I (a Microsoft által végzett tesztek alapján) | I (a Microsoft által végzett tesztek alapján) | I (a Microsoft által végzett tesztek alapján) 
 Dynamics AX | I | I | I | I
-Dynamics CRM | I | Hamarosan | I | Hamarosan
+Dynamics CRM | I | Hamarosan | I | Hamarosan elérhető
 Oracle | I (a Microsoft által végzett tesztek alapján) | I (a Microsoft által végzett tesztek alapján) | I (a Microsoft által végzett tesztek alapján) | I (a Microsoft által végzett tesztek alapján)
 Windows fájlkiszolgáló | I | I | I | I
 
@@ -145,13 +145,13 @@ A Site Recovery segítségével a következőkkel védheti SAP üzemelő példá
 
 [Itt részletesen tájékozódhat](http://aka.ms/asr-sap) az SAP védelméről.
 
-## További lépések
+## Következő lépések
 
 [Előkészületek](site-recovery-best-practices.md) a Site Recovery üzembe helyezéséhez
 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

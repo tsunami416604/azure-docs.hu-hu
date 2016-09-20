@@ -1,48 +1,51 @@
 
 
-## Csatlakozzon az Azure SQL Database szolgáltatáshoz kiszolgálószintű fő bejelentkezéssel
+## Csatlakozás az Azure SQL Database-hez SQL Server-hitelesítéssel
 
-Kövesse a következő lépéseket, hogy az SSMS használatával csatlakozzon az Azure SQL Database szolgáltatáshoz a kiszolgálószintű fő bejelentkezés használatával.
+A következő lépések bemutatják, hogyan kapcsolódhat Azure SQL Server-kiszolgálóhoz és -adatbázishoz az SSMS használatával. Ha nincs kiszolgálója és adatbázisa, a létrehozásukhoz tekintse meg az [SQL-adatbázis létrehozása pillanatok alatt](../articles/sql-database/sql-database-get-started.md) című dokumentumot.
 
-1. Írja be a „Microsoft SQL Server Management Studio” kifejezést a Windows keresőmezőbe, majd kattintson az asztali alkalmazásra az SSMS elindításához.
 
-2. A Connect to Server (Kapcsolódás a kiszolgálóhoz) ablakban adja meg a következő adatokat:
+1. Az SSMS elindításához írja be a **Microsoft SQL Server Management Studio** kifejezést a Windows keresőmezőjébe, majd kattintson az asztali alkalmazásra.
+
+2. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) ablakban adja meg a következő adatokat (ha az SSMS már fut, kattintson a **Connect > Database Engine** (Csatlakozás > Adatbázismotor) elemre a **Connect to Server** (Kapcsolódás a kiszolgálóhoz) ablak megnyitásához):
 
  - **Server type** (Kiszolgáló típusa): Az alapértelmezett adatbázismotor; ne módosítsa ezt az értéket.
- - **Server name** (Kiszolgáló neve): Adja meg az SQL-adatbázisát üzemeltető kiszolgáló nevét a következő formátumban: *&lt;kiszolgálónév>*.**database.windows.net**
- - **Authentication type** (Hitelesítés típusa): Ha ezek az első lépései, válassza az SQL-hitelesítést. Ha engedélyezte az Active Directory szolgáltatást az SQL Database logikai kiszolgálójához, választhatja az Active Directory jelszavas hitelesítést, vagy az Active Directory integrált hitelesítést is.
- - **User name** (Felhasználónév): Ha az SQL-hitelesítést vagy az Active Directory jelszavas hitelesítést választotta, adjon meg egy a felhasználónevet, amelynek hozzáférése van a kiszolgálón található adatbázishoz.
- - **Password** (Jelszó): Ha az SQL-hitelesítést vagy az Active Directory jelszavas hitelesítést választotta, adja meg a megadott felhasználóhoz tartozó jelszót.
+ - **Server name** (Kiszolgáló neve): Adja meg az Azure SQL Database-kiszolgáló teljes nevét a következő formátumban: *&lt;kiszolgálónév>*.**database.windows.net**
+ - **Authentication type** (Hitelesítés típusa): Ez a cikk ismerteti, hogyan csatlakozhat **SQL Server-hitelesítéssel**. További információ az Azure Active Directoryhoz való kapcsolódásról: [Kapcsolódás Active Directory integrált hitelesítésel](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-integrated-authentication), [Kapcsolódás Active Directory jelszavas hitelesítéssel](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-password-authentication) és [Kapcsolódás Active Directory univerzális hitelesítéssel](../articles/sql-database/sql-database-ssms-mfa-authentication.md).
+ - **User name** (Felhasználónév): Adjon meg egy felhasználónevet, amelynek hozzáférése van a kiszolgálón található adatbázishoz (például a kiszolgáló létrehozásakor beállított *kiszolgálói rendszergazdát*). 
+ - **Password** (Jelszó): Adja meg a megadott felhasználó jelszavát (például a kiszolgáló létrehozásakor beállított *jelszót*).
    
-       ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-1.png)
+       ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-server-principal/connect.png)
 
-3. Kattintson a **Csatlakozás** gombra.
+3. Kattintson a **Connect** (Csatlakozás) gombra.
  
-4. Ha az ügyfél IP-címének nincs hozzáférése az SQL Database logikai kiszolgálóhoz, a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, és hozzon létre egy kiszolgálószintű tűzfalszabályt. Ha Ön Azure-előfizetési rendszergazda, kattintson a **Bejelentkezés** gombra a kiszolgálószintű tűzfalszabály létrehozásához. Ha nem az, kérjen meg egy Azure rendszergazdát a kiszolgálószintű tűzfalszabály létrehozására.
- 
-      ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-2.png)
- 
-1. Ha Ön Azure-előfizetési rendszergazda, és be kell jelentkeznie, a bejelentkezési oldal megjelenése után adja meg az előfizetése hitelesítő adatait, és jelentkezzen be.
+4. Alapértelmezés szerint az új kiszolgálók nem rendelkeznek meghatározott [tűzfalszabályokkal](../articles/sql-database/sql-database-firewall-configure.md), így az ügyfelek csatlakozása kezdetben le van tiltva. Ha a kiszolgáló még nem rendelkezik olyan tűzfalszabállyal, amely lehetővé teszi egy adott IP-cím csatlakozását, az SSMS rákérdez, hogy létrehozzon-e egy kiszolgálószintű tűzfalszabályt.
 
-      ![bejelentkezés](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-3.png)
+    Kattintson a **Bejelentkezés** gombra, és hozzon létre kiszolgálószintű tűzfalszabályt. A kiszolgálószintű tűzfalszabály létrehozásához Azure-rendszergazdának kell lennie.
  
-1. Miután sikeresen bejelentkezett az Azure-ba, ellenőrizze a tervezett kiszolgálószintű tűzfalszabályt (ezt módosíthatja, hogy egy IP-címtartományt engedélyezzen), majd kattintson az **OK** gombra a tűzfalszabály létrehozásához és az SQL Database szolgáltatáshoz való csatlakozás befejezéséhez.
+       ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-server-principal/newfirewallrule.png)
  
-      ![új kiszolgálószintű tűzfal](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-4.png)
- 
-5. Ha a hitelesítő adatai megadják a hozzáférést, megnyílik az Object Explorer – ekkor elvégezheti az adminisztratív feladatokat és adatokat is lekérdezhet. 
+
+5. Miután sikeresen csatlakozott az Azure SQL Database-hez, megnyílik az **Object Explorer**, és elérheti az adatbázisát [adminisztratív feladatok elvégzéséhez vagy adatok lekérdezéséhez.](../articles/sql-database/sql-database-manage-azure-ssms.md).
  
      ![új kiszolgálószintű tűzfal](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)
  
      
 ## Csatlakozási hibák elhárítása
 
-A csatlakozási hibák leggyakoribb okai a kiszolgáló nevében található hibák (ne feledje, a <*servername*> a logikai kiszolgáló neve, nem az adatbázisé), a helytelen felhasználónév vagy jelszó, valamint a biztonsági okok, melyek miatt a kiszolgáló nem engedélyez kapcsolatokat. 
+A kapcsolati hibák leggyakoribb okai a kiszolgálónév hibái és a hálózati kapcsolati hibák. Ne feledje, hogy a <*kiszolgálónév*> a kiszolgáló neve, nem az adatbázisé, és teljes kiszolgálónevet kell megadnia: `<servername>.database.windows.net`
+
+Ezenkívül győződjön meg róla, hogy a felhasználónév és a jelszó nem tartalmaz elütéseket vagy felesleges szóközöket (a felhasználónevek nem tesznek különbséget a kis- és nagybetűk között, de a jelszavak igen). 
+
+Explicit módon beállíthat egy protokollt és portszámot is a kiszolgáló nevével, a következőhöz hasonlóan: `tcp:servername.database.windows.net,1433`
+
+A hálózati kapcsolati hibák csatlakozási hibákat és időtúllépéseket is okozhatnak. Elég lehet, ha egyszerűen újra megpróbál csatlakozni (ha tudja, hogy a kiszolgáló neve, a hitelesítő adatok és a tűzfalszabályok helyesek).
 
 
 
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

@@ -19,7 +19,7 @@
 #  VMM-felhőkben futó Hyper-V virtuális gépek replikálása az Azure-ba
 
 > [AZURE.SELECTOR]
-- [Azure portál](site-recovery-vmm-to-azure.md)
+- [Azure Portal](site-recovery-vmm-to-azure.md)
 - [PowerShell – ARM](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 - [Klasszikus portál](site-recovery-vmm-to-azure-classic.md)
 - [PowerShell – klasszikus](site-recovery-deploy-with-powershell.md)
@@ -89,7 +89,7 @@ A hálózatleképezés előkészítéséhez tegye a következőket:
 ## 1. lépés: Site Recovery-tároló létrehozása
 
 1. Jelentkezzen be a regisztrálni kívánt VMM-kiszolgálón a [felügyeleti portálra](https://portal.azure.com).
-2. Kattintson az **Adatszolgáltatások** > **Recovery Services** > **Site Recovery-tároló** lehetőségre.
+2. Kattintson a **Data Services** > **Recovery Services** > **Site Recovery-tároló** lehetőségre.
 3. Kattintson az **Új létrehozása** > **Gyorslétrehozás** elemre.
 4. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet.
 5. A **Régió** mezőben válassza ki a tároló földrajzi régióját. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
@@ -134,9 +134,13 @@ Hozza létre a tároló regisztrációs kulcsát. Az Azure Site Recovery Provide
 
     ![Telepítés kész](./media/site-recovery-vmm-to-azure-classic/install-complete.png)
 
-7. Az **Internet Connection** (Internetkapcsolat) lapon adja meg, hogy a VMM-kiszolgálón futó Provider hogyan csatlakozzon az internethez. A kiszolgálón beállított alapértelmezett internetkapcsolat-konfiguráció használatához válassza a **Use default system proxy settings** (Alapértelmezett rendszerproxy-beállítások használata) lehetőséget.
+9. A **Tároló neve** résznél ellenőrizze a tároló nevét, amelyben a kiszolgálót regisztrálni fogja. Kattintson a *Tovább* gombra.
 
-    ![Internetbeállítások](./media/site-recovery-vmm-to-azure-classic/proxy.png)
+    ![Kiszolgáló regisztrációja](./media/site-recovery-vmm-to-azure-classic/vaultcred.PNG)
+
+7. Az **Internet Connection** (Internetkapcsolat) lapon adja meg, hogy a VMM-kiszolgálón futó Provider hogyan csatlakozzon az internethez. Válassza a **Connect with existing proxy settings** (Csatlakozás a meglévő proxybeállításokkal) lehetőséget, ha a kiszolgálón konfigurált alapértelmezett internetkapcsolat-beállításokat szeretné használni.
+
+    ![Internetbeállítások](./media/site-recovery-vmm-to-azure-classic/proxydetails.PNG)
 
     - Ha egyéni proxyt szeretne használni, állítsa be még a Provider telepítése előtt. Miután megadta az egyéni proxy beállításait, a rendszer egy teszt lefuttatásával ellenőrzi a proxykapcsolatot.
     - Ha egyéni proxyt használ, vagy az alapértelmezett proxy hitelesítést igényel, meg kell adnia a proxy adatait, többek között a proxy címét és portját.
@@ -146,26 +150,23 @@ Hozza létre a tároló regisztrációs kulcsát. Az Azure Site Recovery Provide
         - *.backup.windowsazure.com
         - *.blob.core.windows.net
         - *.store.core.windows.net
-    - Engedélyezze az [Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (Azure Datacenter IP-tartományai) részben említett IP-címeket, valamint a HTTPS (443) protokollt. Ezenfelül engedélyezze a használni kívánt Azure-régióhoz, valamint az USA nyugati régiójához tartozó IP-tartományokat.
+    - Engedélyezze az [Azure Datacenter IP Ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) (Azure Datacenter IP-tartományai) részben említett IP-címeket, valamint a HTTPS (443) protokollt. Egy engedélyezési listára kell tennie a használni kívánt Azure-régió és az USA nyugati régiójának IP-tartományait.
+    - Ha egyéni proxyt használ, a rendszer automatikusan létrehoz egy, a megadott hitelesítő adatokat alkalmazó VMM RunAs-fiókot (DRAProxyAccount). Állítsa be úgy a proxykiszolgálót, hogy ez a fiók elvégezhesse a hitelesítést. A VMM RunAs-fiók beállításait a VMM-konzolban módosíthatja. Ehhez a **Beállítások** munkaterületen bontsa ki a **Biztonság** lehetőséget, kattintson a **Futtató fiókok** elemre, majd módosítsa a DRAProxyAccount jelszavát. A beállítás akkor lép érvénybe, ha újraindítja a VMM szolgáltatást.
 
-    - Ha egyéni proxyt használ, a rendszer automatikusan létrehoz egy, a megadott hitelesítő adatokat alkalmazó VMM RunAs-fiókot (DRAProxyAccount). Állítsa be úgy a proxykiszolgálót, hogy ez a fiók elvégezhesse a hitelesítést. A VMM RunAs-fiók beállításait a VMM-konzolban módosíthatja. Ehhez a Beállítások munkaterületen bontsa ki a Biztonság lehetőséget, kattintson a Futtató fiókok elemre, majd módosítsa a DRAProxyAccount jelszavát. A beállítás akkor lép érvénybe, ha újraindítja a VMM szolgáltatást.
 
 8. A **Regisztrációs kulcs** résznél válassza ki az Azure Site Recoveryből letöltött, majd a VMM-kiszolgálóra másolt kulcsot.
-9. A **Tároló neve** résznél ellenőrizze a tároló nevét, amelyben a kiszolgálót regisztrálni fogja.
 
-    ![Kiszolgáló regisztrációja](./media/site-recovery-vmm-to-azure-classic/credentials.png)
 
-10. Megadhatja az adatok titkosításához automatikusan létrehozott SSL-tanúsítvány mentési helyét. Ezt a tanúsítványt akkor használja a rendszer, ha Ön a Site Recovery üzembe helyezése során bekapcsolja a VMM-felhő adattitkosítását. Őrizze biztonságos helyen a tanúsítványt. Amikor feladatátvételt végez az Azure-ba, szüksége lesz rá a titkosított adatok feloldásához.
+10.  A titkosítási beállítást csak akkor használja a rendszer, amikor a VMM-felhőkben található Hyper-V virtuális gépeket az Azure-ba replikálja. Másodlagos helyre történő replikáláskor a beállítást nem használja a rendszer.
 
-    ![Kiszolgáló regisztrációja](./media/site-recovery-vmm-to-azure-classic/encryption.png)
+11.  A **Kiszolgáló neve** mezőben adjon meg egy, a tárolóban regisztrált VMM-kiszolgálót azonosító rövid nevet. Fürtkonfiguráció használata esetén adja meg a VMM-fürtszerepkör nevét.
+12.  A **Synchronize cloud metadata** (Felhőmetaadatok szinkronizálása) mezőben válassza ki, hogy szeretné-e a VMM-kiszolgáló összes felhőjének metaadatait szinkronizálni a tárolóval. Ezt a műveletet kiszolgálónként csak egyszer szükséges elvégezni. Ha nem szeretné az összes felhőt szinkronizálni, ne jelölje be a jelölőnégyzetet, és szinkronizálja egyenként a felhőket a VMM-konzolban, a felhők tulajdonságainál.
 
-11. A **Kiszolgáló neve** mezőben adjon meg egy, a tárolóban regisztrált VMM-kiszolgálót azonosító rövid nevet. Fürtkonfiguráció használata esetén adja meg a VMM-fürtszerepkör nevét.
+13.  A folyamat befejezéséhez kattintson a **Next** (Tovább) gombra. A regisztrációt követően az Azure Site Recovery lekéri a metaadatokat VMM-kiszolgálóról. A kiszolgáló ezt követően megjelenik a tároló **Kiszolgálók** lapjának **VMM-kiszolgálók** lapján.
+    
+    ![Utolsó oldal](./media/site-recovery-vmm-to-azure-classic/provider13.PNG)
 
-12. Az **Initial cloud metadata sync** (Felhőmetaadatok kezdeti szinkronizálása) résznél adja meg, hogy szeretné-e a VMM-kiszolgálóban található összes felhő metadaatait szinkronizálni a tárolóval. Ezt a műveletet kiszolgálónként csak egyszer szükséges elvégezni. Ha nem szeretné az összes felhőt szinkronizálni, ne jelölje be a jelölőnégyzetet, és szinkronizálja egyenként a felhőket a VMM-konzolban, a felhők tulajdonságainál.
-
-    ![Kiszolgáló regisztrációja](./media/site-recovery-vmm-to-azure-classic/friendly.png)
-
-13. A folyamat befejezéséhez kattintson a **Next** (Tovább) gombra. A regisztrációt követően az Azure Site Recovery lekéri a metaadatokat VMM-kiszolgálóról. A kiszolgáló ezt követően megjelenik a tároló **Kiszolgálók** lapjának **VMM-kiszolgálók** lapján.
+A regisztrációt követően az Azure Site Recovery lekéri a metaadatokat VMM-kiszolgálóról. A kiszolgáló ezt követően megjelenik a tároló **Kiszolgálók** lapjának **VMM-kiszolgálók** lapján.
 
 ### Parancssori telepítés
 
@@ -204,6 +205,8 @@ A paraméterek a következőt jelentik:
 2. A fióknál engedélyezze a georeplikációt. A fióknak és az Azure Site Recovery szolgáltatásnak ugyanabban a régióban kell elhelyezkednie, és ugyanahhoz az előfizetéshez kell társulnia.
 
     ![Tárfiók](./media/site-recovery-vmm-to-azure-classic/storage.png)
+
+> [AZURE.NOTE] A Site Recovery üzembe helyezéséhez használt tárfiókok esetében a [Migration of storage accounts](../resource-group-move-resources.md) (Tárfiókok áttelepítése) művelet az egy előfizetésen belüli erőforráscsoportok között vagy előfizetések között nem támogatott.
 
 ## 5. lépés: Az Azure Recovery Services Agent ügynök telepítése
 
@@ -266,6 +269,8 @@ A hálózatleképezés megkezdése előtt ellenőrizze, hogy a forrás VMM-kiszo
 A beállítások mentését követően elindul egy feladat, amely a leképezési művelet előrehaladását követi nyomon. Ezt a Jobs (Feladatok) lapon ellenőrizheti. A forrás virtuálisgép-hálózatnak megfelelő meglévő replika virtuális gépeket a rendszer csatlakoztatja a cél Azure-hálózatokhoz. A forrás virtuálisgép-hálózathoz kapcsolódó új virtuális gépeket a rendszer a replikálást követően csatlakoztatja a leképezett Azure-hálózathoz. Ha módosít egy meglévő hálózatleképezést, a replika virtuális gépek az új beállításokkal fognak csatlakozni.
 
 Ne feledje, hogy ha a célhálózatban már több alhálózat működik, és ezek egyikének ugyanaz a neve, mint annak, amelyen a forrás virtuális gép is található, a replika virtuális gép a feladatátvételt követően ehhez a cél alhálózathoz fog csatlakozni. Ha nem létezik egyező nevű alhálózat, a virtuális gép a hálózat első virtuális gépéhez csatlakozik.
+
+> [AZURE.NOTE] A Site Recovery üzembe helyezéséhez használt hálózatok esetében a [Migration of networks](../resource-group-move-resources.md) (Hálózatok áttelepítése) művelet az egy előfizetésen belüli erőforráscsoportok között vagy előfizetések között nem támogatott.
 
 ## 8. lépés: A virtuális gépek védelmének engedélyezése
 
@@ -333,9 +338,8 @@ A feladatátvételi teszt segítségével elkülönített hálózatban próbálh
 
 2. A **Virtuális gépek kijelölése** lapon válassza ki a helyreállítási tervbe felvenni kívánt virtuális gépeket. Ezek a virtuális gépek a helyreállítási terv alapértelmezett csoportjába, az 1. csoportba kerülnek. A tesztek során egy helyreállítási tervben legfeljebb 100 virtuális gépet használtunk.
 
-    - Ha a tervbe való felvétel előtt szeretné ellenőrizni a virtuális gépek tulajdonságait, kattintson a virtuális gépet tartalmazó felhő tulajdonságok lapján a kívánt virtuális gépre. Ezenfelül a VMM-konzolban is beállíthatja a virtuális gépek tulajdonságait.
-    - A megjelenített virtuális gépek mindegyikén engedélyezte a védelmet. A listán egyaránt szerepelnek azok a virtuális gépek, amelyeknek már engedélyezte a védelmét, és végrehajtotta a kezdeti replikációját, illetve azok, amelyeknek ugyan már engedélyezte a védelmét, de a kezdeti replikáció még folyamatban van. Helyreállítási terv részeként csak azoknak a virtuális gépeknek a feladatátvételét lehet végrehajtani, amelyeknek már végbement a kezdeti replikációja.
-
+- Ha a tervbe való felvétel előtt szeretné ellenőrizni a virtuális gépek tulajdonságait, kattintson a virtuális gépet tartalmazó felhő tulajdonságok lapján a kívánt virtuális gépre. Ezenfelül a VMM-konzolban is beállíthatja a virtuális gépek tulajdonságait.
+- A megjelenített virtuális gépek mindegyikén engedélyezte a védelmet. A listán egyaránt szerepelnek azok a virtuális gépek, amelyeknek már engedélyezte a védelmét, és végrehajtotta a kezdeti replikációját, illetve azok, amelyeknek ugyan már engedélyezte a védelmét, de a kezdeti replikáció még folyamatban van. Helyreállítási terv részeként csak azoknak a virtuális gépeknek a feladatátvételét lehet végrehajtani, amelyeknek már végbement a kezdeti replikációja.
 
     ![Helyreállítási terv létrehozása](./media/site-recovery-vmm-to-azure-classic/select-rp.png)
 
@@ -375,12 +379,12 @@ A feladatátvételi teszt futtatásához tegye a következőket:
 
 >
 
-## További lépések
+## Következő lépések
 
 Tájékozódjon a [helyreállítási tervek beállításáról](site-recovery-create-recovery-plans.md) és a [feladatátvételről](site-recovery-failover.md).
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

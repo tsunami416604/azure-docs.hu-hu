@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/25/2016"
+    ms.date="08/24/2016"
     ms.author="sdanie"/>
 
 # A fejlesztői portál testreszabása az Azure API Management szolgáltatásban
@@ -78,7 +78,7 @@ A fejlesztői portál kezdőlapján megjelenített tartalmak szerkesztéséhez k
 
 ## <a name="next-steps"> </a>Következő lépések
 
--   Tekintse meg a [Bevezetés az API-k speciális konfigurálásába][] oktatóanyag többi témakörét.
+-   Megtudhatja, hogyan szabhatja testre a fejlesztői portál oldalainak tartalmát a [fejlesztői portál sablonjainak](api-management-developer-portal-templates.md) használatával.
 
 [Az oldalfejlécek szövegének/emblémájának módosítása]: #change-page-headers
 [A fejlécek stílusának módosítása]: #change-headers-styling
@@ -95,12 +95,11 @@ A fejlesztői portál kezdőlapján megjelenített tartalmak szerkesztéséhez k
 [api-management-customization-manage-content]: ./media/api-management-customize-portal/api-management-customization-manage-content.png
 
 
-[Bevezetés az API-k speciális konfigurálásába]: api-management-get-started-advanced.md
 [bootstrap]: http://getbootstrap.com/
 [LESS változók]: http://getbootstrap.com/css/
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

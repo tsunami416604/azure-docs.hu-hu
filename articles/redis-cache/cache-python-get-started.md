@@ -13,7 +13,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="cache-redis"
     ms.workload="tbd"
-    ms.date="05/31/2016"
+    ms.date="08/16/2016"
     ms.author="sdanie"/>
 
 # Az Azure Redis Cache használata Pythonnal
@@ -70,6 +70,6 @@ Cserélje le a `<name>` elemet a gyorsítótár nevére, és a `key` elemet a h�
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

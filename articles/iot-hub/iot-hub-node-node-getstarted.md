@@ -13,31 +13,17 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="03/22/2016"
+     ms.date="06/16/2016"
      ms.author="dobett"/>
 
 # Ismerkedés az Azure IoT Hub for Node.js szolgáltatással
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-## Bevezetés
-
-Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé az eszközök internetes hálózatához (IoT) csatlakozó több millió eszköz között, valamint megoldást biztosít a háttérrendszer kialakításához. Az IoT-projektek számára az egyik legnagyobb kihívást az jelenti, hogyan lehet megbízható és biztonságos módon csatlakoztatni az eszközöket a megoldás háttérrendszeréhez. A kihívás megoldására az IoT Hub a következőket kínálja:
-
-- Megbízható nagy kapacitású üzenetkezelést kínál az eszközök és a felhő között mindkét irányban.
-- Az eszközönkénti biztonsági hitelesítő adatok és hozzáférés-vezérlés segítségével lehetővé teszi a biztonságos kommunikációt.
-- Tartalmazza a legnépszerűbb nyelvek és platformok eszközkönyvtárait.
-
-Ez az oktatóanyag a következőket mutatja be:
-
-- Egy IoT Hub létrehozása az Azure Portallal.
-- Eszközidentitás létrehozása az IoT Hubban.
-- Egy szimulált eszköz létrehozása, amely telemetriai adatokat küld a felhő háttérrendszerének.
-
 Az oktatóanyag végén három Node.js-konzolalkalmazással fog rendelkezni:
 
 * A **CreateDeviceIdentity.js** egy eszközidentitást, valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat a szimulált eszközhöz.
-* A **ReadDEviceToCloudMessages.js** megjeleníti a szimulált eszköz által küldött telemetriát.
+* A **ReadDeviceToCloudMessages.js** megjeleníti a szimulált eszköz által küldött telemetriát.
 * A **SimulatedDevice.js** csatlakozik az IoT Hubhoz a korábban létrehozott eszközidentitással, és másodpercenként telemetriai üzenetet küld az AMQPS protokoll használatával.
 
 > [AZURE.NOTE] Különböző SDK-kat használhat az alkalmazások összeállításához, hogy eszközökön és a megoldás háttérrendszerén is fussanak. Ezekről az [IoT Hub SDKs][lnk-hub-sdks] című témakörben talál további információt.
@@ -46,15 +32,11 @@ Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
 
 + A Node.js 0.12.x vagy újabb verziója. <br/> [A fejlesztési környezet előkészítése][lnk-dev-setup] leírja, hogyan telepíthető a Node.js ehhez az oktatóprogramhoz Windows vagy Linux rendszeren.
 
-+ Aktív Azure-fiók. <br/>Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].
++ Aktív Azure-fiók. (Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].)
 
 [AZURE.INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Utolsó lépésként kattintson az IoT Hub panel **Beállítások** elemére, majd a **Beállítások** panel **Üzenetküldés** elemére. Az **Üzenetküldés** panelen jegyezze fel az **Event Hub-kompatibilis nevet** és az **Event Hub-kompatibilis végpontot**. Ezekre az értékekre szüksége lesz a **read-d2c-messages** alkalmazása létrehozásakor.
-
-![][6]
-
-Létrehozott egy IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges IoT Hub-állomásnévvel és kapcsolati karakterlánccal, valamint EventHub-kompatibilis névvel és végpontértékekkel.
+Ezzel létrehozta az IoT Hubot. Ezenkívül rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges IoT Hub-állomásnévvel és kapcsolati karakterlánccal is.
 
 ## Eszközidentitás létrehozása
 
@@ -94,7 +76,7 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely egy új
 
     ```
     var device = new iothub.Device(null);
-    device.deviceId = 'myFirstDevice';
+    device.deviceId = 'myFirstNodeDevice';
     registry.create(device, function(err, deviceInfo, res) {
       if (err) {
         registry.get(device.deviceId, printDeviceInfo);
@@ -136,10 +118,10 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely az eszk
     npm init
     ```
 
-2. A **readdevicetocloudmessages** mappában egy parancssorban futtassa a következő parancsot az **amqp10** és **bluebird** csomagok telepítéséhez:
+2. A **readdevicetocloudmessages** mappában egy parancssorban futtassa a következő parancsot az **azure-event-hubs** csomag telepítéséhez:
 
     ```
-    npm install amqp10 bluebird --save
+    npm install azure-event-hubs --save
     ```
 
 3. Egy szövegszerkesztővel hozzon létre egy új **ReadDeviceToCloudMessages.js** fájlt a **readdevicetocloudmessages** mappában.
@@ -149,91 +131,48 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely az eszk
     ```
     'use strict';
 
-    var AMQPClient = require('amqp10').Client;
-    var Policy = require('amqp10').Policy;
-    var translator = require('amqp10').translator;
-    var Promise = require('bluebird');
+    var EventHubClient = require('azure-event-hubs').Client;
     ```
 
-5. Adja hozzá a következő változódeklarációkat, és cserélje le a helyőrzőket a korábban feljegyzett értékekre. A **{your event hub-compatible namespace}** helyőrző értéke a portál **Event Hub-kompatibilis végpont** mezőjéből származik – a **namespace.servicebus.windows.net** formát veszi fel (az *sb://* előtag nélkül).
+5. Adja hozzá a következő változódeklarációt, és a helyőrző értékét cserélje le az IoT Hub kapcsolati karakterláncára:
 
     ```
-    var protocol = 'amqps';
-    var eventHubHost = '{your event hub-compatible namespace}';
-    var sasName = 'iothubowner';
-    var sasKey = '{your iot hub key}';
-    var eventHubName = '{your event hub-compatible name}';
-    var numPartitions = 2;
+    var connectionString = '{iothub connection string}';
     ```
 
-    > [AZURE.NOTE] Ez a kód azt feltételezi, hogy az IoT hubot az F1 (ingyenes) rétegen hozta létre. Az ingyenes IoT hub két, „0” és „1” nevű partícióval rendelkezik. Ha az IoT Hubot egy másik tarifacsomaggal hozta létre, úgy kell módosítania a kódot, hogy minden partícióhoz **MessageReceiver** fogadót hozzon létre.
-
-6. Adja hozzá a következő szűrődefiníciót. Ez az alkalmazás szűrőt használ a fogadó létrehozásakor, hogy a fogadó csak a fogadó futtatásának megkezdése után az IoT Hubra küldött üzeneteket olvassa. Ez tesztkörnyezetben hasznos, mivel láthatja az üzenetek aktuális készletét, éles környezetben azonban a kódnak biztosítania kell, hogy az összes üzenetet feldolgozza. További információért lásd: [Eszközről a felhőbe irányuló IoT Hub-üzenetek feldolgozása][lnk-process-d2c-tutorial].
+6. Adja hozzá az alábbi két függvényt, amelyek kinyomtatják a konzol kimenetét:
 
     ```
-    var filterOffset = new Date().getTime();
-    var filterOption;
-    if (filterOffset) {
-      filterOption = {
-      attach: { source: { filter: {
-      'apache.org:selector-filter:string': translator(
-        ['described', ['symbol', 'apache.org:selector-filter:string'], ['string', "amqp.annotation.x-opt-enqueuedtimeutc > " + filterOffset + ""]])
-        } } }
-      };
-    }
-    ```
-
-7. Adja hozzá a következő kódot a fogadócím és az AMQP-ügyfél létrehozásához:
-
-    ```
-    var uri = protocol + '://' + encodeURIComponent(sasName) + ':' + encodeURIComponent(sasKey) + '@' + eventHubHost;
-    var recvAddr = eventHubName + '/ConsumerGroups/$default/Partitions/';
-    
-    var client = new AMQPClient(Policy.EventHub);
-    ```
-
-8. Adja hozzá az alábbi két függvényt, amelyek kinyomtatják a konzol kimenetét:
-
-    ```
-    var messageHandler = function (partitionId, message) {
-      console.log('Received(' + partitionId + '): ', message.body);
+    var printError = function (err) {
+      console.log(err.message);
     };
-    
-    var errorHandler = function(partitionId, err) {
-      console.warn('** Receive error: ', err);
+
+    var printMessage = function (message) {
+      console.log('Message received: ');
+      console.log(JSON.stringify(message.body));
+      console.log('');
     };
     ```
 
-9. Adja hozzá a következő függvényt, amely fogadóként működik adott partícióhoz a szűrővel:
+7. Az **EventHubClient** létrehozásához adja hozzá az alábbi kódot, nyissa meg az IoT Hub kapcsolatát, majd hozzon létre fogadót minden egyes partícióhoz. Ez az alkalmazás szűrőt használ a fogadó létrehozásakor, hogy a fogadó csak a fogadó futtatásának megkezdése után az IoT Hubra küldött üzeneteket olvassa. Ez tesztkörnyezetben hasznos, mivel az üzeneteknek csak az aktuális készletét jelenítheti meg, éles környezetben azonban a kódnak biztosítania kell, hogy az összes üzenetet feldolgozza. További információért lásd az [eszközről a felhőbe irányuló IoT Hub-üzenetek feldolgozásával][lnk-process-d2c-tutorial] foglalkozó oktatóanyagot.
 
     ```
-    var createPartitionReceiver = function(partitionId, receiveAddress, filterOption) {
-      return client.createReceiver(receiveAddress, filterOption)
-        .then(function (receiver) {
-          console.log('Listening on partition: ' + partitionId);
-          receiver.on('message', messageHandler.bind(null, partitionId));
-          receiver.on('errorReceived', errorHandler.bind(null, partitionId));
-        });
-    };
+    var client = EventHubClient.fromConnectionString(connectionString);
+    client.open()
+        .then(client.getPartitionIds.bind(client))
+        .then(function (partitionIds) {
+            return partitionIds.map(function (partitionId) {
+                return client.createReceiver('$Default', partitionId, { 'startAfterTime' : Date.now()}).then(function(receiver) {
+                    console.log('Created partition receiver: ' + partitionId)
+                    receiver.on('errorReceived', printError);
+                    receiver.on('message', printMessage);
+                });
+            });
+        })
+        .catch(printError);
     ```
 
-10. Adja hozzá a következő kódot az Event Hub-kompatibilis végponthoz való csatlakozás és a fogadók elindítása érdekében:
-
-    ```
-    client.connect(uri)
-      .then(function () {
-        var partitions = [];
-        for (var i = 0; i < numPartitions; ++i) {
-          partitions.push(createPartitionReceiver(i, recvAddr + i, filterOption));
-        }
-        return Promise.all(partitions);
-    })
-    .error(function (e) {
-        console.warn('Connection error: ', e);
-    });
-    ```
-
-11. Mentse és zárja be a **ReadDeviceToCloudMessages.js** fájlt.
+8. Mentse és zárja be a **ReadDeviceToCloudMessages.js** fájlt.
 
 ## Szimulált eszközalkalmazás létrehozása
 
@@ -262,10 +201,10 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
     var Message = require('azure-iot-device').Message;
     ```
 
-5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre eszközügyfelet. Cserélje le a **{youriothubname}** helyőrzőt az IoT Hub nevére, és a **{yourdeviceid}** és **{yourdevicekey}** helyőrzőket pedig az *Eszközidentitás létrehozása* szakaszban létrehozott eszközértékekre:
+5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre eszközügyfelet. A **{youriothostname}** helyőrző értékét cserélje le az *IoT Hub létrehozása* című szakaszban létrehozott IoT Hub-névre, illetve a **{yourdevicekey}** helyőrző értékét az *Eszközidentitás létrehozása* szakaszban létrehozott eszközkulcsértékre:
 
     ```
-    var connectionString = 'HostName={youriothubname}.azure-devices.net;DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
+    var connectionString = 'HostName={youriothostname};DeviceId=myFirstNodeDevice;SharedAccessKey={yourdevicekey}';
     
     var client = clientFromConnectionString(connectionString);
     ```
@@ -293,11 +232,11 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
         // Create a message and send it to the IoT Hub every second
         setInterval(function(){
             var windSpeed = 10 + (Math.random() * 4);
-            var data = JSON.stringify({ deviceId: 'mydevice', windSpeed: windSpeed });
+            var data = JSON.stringify({ deviceId: 'myFirstNodeDevice', windSpeed: windSpeed });
             var message = new Message(data);
             console.log("Sending message: " + message.getData());
             client.sendEvent(message, printResultFor('send'));
-        }, 2000);
+        }, 1000);
       }
     };
     ```
@@ -339,11 +278,15 @@ Most már készen áll az alkalmazások futtatására.
 
 ## Következő lépések
 
-Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak, valamint létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. A következő oktatóanyagokban folytathatja az IoT Hub szolgáltatásainak, valamint további IoT-forgatókönyveknek a felfedezését:
+Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. 
 
-- [A felhőből az eszközre irányuló üzenetek IoT Hubbal való küldését][lnk-c2d-tutorial] ismertető oktatóanyagból megtudhatja, hogyan küldhet üzeneteket eszközökre, és hogyan dolgozhatja fel az IoT Hub által előállított kézbesítési visszajelzéseket.
-- [Az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyag bemutatja, hogyan dolgozhatók fel megbízhatóan az eszközökről érkező telemetriai és interaktív üzenetek.
-- A [Fájlok feltöltése eszközökről][lnk-upload-tutorial] című oktatóanyag egy mintázatot ismertet, amelyet a felhőből az eszközre irányuló üzenetek használnak az eszközökről történő fájlfeltöltések elősegítésére.
+További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
+
+- [Eszköz csatlakoztatása][lnk-connect-device]
+- [Eszközfelügyelet – első lépések][lnk-device-management]
+- [Átjáró SDK – első lépések][lnk-gateway-SDK]
+
+Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban tekintse meg [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot.
 
 <!-- Images. -->
 [6]: ./media/iot-hub-node-node-getstarted/create-iot-hub6.png
@@ -358,17 +301,18 @@ Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létre
 [lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/node/device/doc/devbox_setup.md
-[lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-[lnk-upload-tutorial]: iot-hub-csharp-csharp-file-upload.md
 
 [lnk-hub-sdks]: iot-hub-sdks-summary.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
+[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

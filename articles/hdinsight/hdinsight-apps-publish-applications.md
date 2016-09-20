@@ -14,7 +14,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="na"
     ms.workload="big-data"
-    ms.date="06/01/2016"
+    ms.date="06/29/2016"
     ms.author="jgao"/>
 
 # HDInsight-alkalmazások közzététele az Azure Piactéren
@@ -25,6 +25,7 @@ A HDInsight-alkalmazások a *saját licenc használata (BYOL)* modellt használj
 
 A HDInsight-alkalmazásokhoz kapcsolódó további cikkek:
 
+- [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md): Megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat a fürtjeire.
 - [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Egyéni HDInsight-alkalmazások telepítése): útmutató az egyéni HDInsight-alkalmazások telepítéséhez és teszteléséhez.
 
  
@@ -38,7 +39,7 @@ A fejlesztői fiókját is regisztrálnia kell. Lásd: [publish an offer to the 
 
 ## Alkalmazás meghatározása
 
-Az alkalmazások két lépésben tehetők közzé az Azure Piactéren.  Először meg kell adni egy **createUiDef.json** fájlt, amely meghatározza, hogy az alkalmazás melyik fürtökkel legyen kompatibilis, ezután pedig közzé kell tenni a sablont az Azure portálról. Az alábbiakban egy createUiDef.json mintafájl látható.
+Az alkalmazások két lépésben tehetők közzé az Azure Piactéren.  Először meg kell adni egy **createUiDef.json** fájlt, amely meghatározza, hogy az alkalmazás melyik fürtökkel legyen kompatibilis, ezután pedig közzé kell tenni a sablont az Azure Portalról. Az alábbiakban egy createUiDef.json mintafájl látható.
 
     {
         "handler": "Microsoft.HDInsight",
@@ -64,7 +65,7 @@ Hozzon létre egy zip fájlt, amely tartalmazza a HDInsight-alkalmazások telep�
 - [createUiDefinition.json](#define-application).
 - mainTemplate.json. Az [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Egyéni HDInsight-alkalmazások telepítése) részben megtekinthet egy mintát.
 
-    >[AZURE.IMPORTANT] Az alkalmazás telepítési parancsfájljainak egyedi névvel kell rendelkezniük egy adott fürtben, és az alábbi formátumúnak kell lenniük. 
+    >[AZURE.IMPORTANT] Az alkalmazás telepítési parancsfájljainak egyedi névvel kell rendelkezniük egy adott fürtben, és az alábbi formátumúnak kell lenniük. Emellett minden telepítési és eltávolítási szkriptműveletnek idempotentnek kell lennie, azaz a szkripteknek ismételten hívhatóknak kell lenniük, és ugyanazt az eredményt kell adniuk.
     
     >   name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
         
@@ -94,11 +95,12 @@ A HDInsight-alkalmazások közzétételéhez kövesse az alábbi lépéseket:
 
 ## Következő lépések
 
+- [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md): Megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat a fürtjeire.
 - [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Egyéni HDInsight-alkalmazások telepítése): megtudhatja, hogyan helyezhet üzembe a HDInsight szolgáltatásban egy olyan HDInsight-alkalmazást, amely nincs közzétéve.
 - [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md) (Linux-alapú HDInsight-fürtök testreszabása parancsfájlműveletek segítségével): megtudhatja, hogyan telepíthet további alkalmazásokat parancsfájlműveletek használatával.
-- [Create Linux-based Hadoop clusters in HDInsight using ARM templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban ARM-sablonok segítségével): megtudhatja, hogyan hívhat meg ARM-sablonokat HDInsight-fürtök létrehozásához.
+- [Create Linux-based Hadoop clusters in HDInsight using Azure Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban Azure Resource Manager-sablonok segítségével): Megtudhatja, hogyan hívhat meg Resource Manager-sablonokat HDInsight-fürtök létrehozásához.
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

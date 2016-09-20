@@ -1,7 +1,7 @@
 <properties
     pageTitle="HBase oktatóprogram: Ismerkedés a Linux-alapú HBase-fürtökkel a Hadoop rendszerben | Microsoft Azure"
     description="Ez a HBase oktatóanyag segítséget nyújt az Apache HBase Hadoop-eszközzel végzett használatának első lépéseiben a HDInsight eszközben. Táblákat hozhat létre a HBase rendszehéjból, és lekérdezheti azokat a Hive eszközzel."
-    keywords="apache hbase,hbase,hbase shell,hbase tutorial"
+    keywords="apache hbase,hbase,hbase rendszerhéj,hbase-oktatóanyag"
     services="hdinsight"
     documentationCenter=""
     authors="mumian"
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/04/2016"
+    ms.date="07/25/2016"
     ms.author="jgao"/>
 
 
@@ -58,10 +58,10 @@ A következő eljárás Azure ARM sablonnal hoz létre HBase-fürtöt. Az eljár
 3. Kattintson az **OK** gombra a paraméterek mentéséhez.
 4. A **Custom deployment** (Egyéni üzembe helyezés) panelen kattintson a **Resource group** (Erőforráscsoport) legördülő listára, majd a **New** (Új) lehetőségre egy új erőforráscsoport létrehozásához.  Az erőforráscsoport egy olyan tároló, amely csoportosítja a fürtöt, a függő tárfiókot és egyéb kapcsolt erőforrásokat.
 5. Kattintson a **Legal terms** (Jogi feltételek), majd a **Create** (Létrehozás) gombra.
-6. Kattintson a ** Create** (Létrehozás) gombra. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
+6. Kattintson a **Létrehozás** gombra. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
 
->[AZURE.NOTE] A HBase-fürtök törlése után egy másik HBase-fürtöt hozhat létre ugyanazon alapértelmezett blobtárolóval. Az új fürt felveszi az eredeti fürtben létrehozott HBase táblákat.
+>[AZURE.NOTE] A HBase-fürtök törlése után egy másik HBase-fürtöt hozhat létre ugyanazon alapértelmezett blobtárolóval. Az új fürt felveszi az eredeti fürtben létrehozott HBase táblákat. Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat.
 
 ## Táblák létrehozása és adatok beszúrása
 
@@ -111,12 +111,14 @@ Több értelme lesz a következő eljárás befejezése után.
 
         exit
 
+
+
 **Adatok kötegelt betöltése a névjegyek HBase táblájába**
 
 A HBase több módszert tartalmaz az adatok táblába töltéséhez.  További információ: [Bulk loading](http://hbase.apache.org/book.html#arch.bulk.load) (Kötegelt betöltés).
 
 
-Egy minta adatfájl lett feltöltve egy nyilvános blob tárolóba, *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Az adatfájl tartalma a következő:
+Egy mintául szolgáló adatfájl lett feltöltve egy nyilvános blobtárolóba, *wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Az adatfájl tartalma a következő:
 
     8396    Calvin Raji     230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu        646-555-0113    230-555-0192    9265 La Paz
@@ -135,7 +137,7 @@ Létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjáb
 
 1. Az SSH-ból futtassa az alábbi parancsot, hogy az adatfájlt StoreFiles-fájllá alakítsa, és a Dimporttsv.bulk.output által meghatározott relatív elérési úton tárolja:  Ha a HBase rendszerhéjban van, a kilépés paranccsal lépjen ki.
 
-        hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
+        hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
 
 4. Futtassa a következő parancsot, hogy adatokat töltsön fel az /example/data/storeDataFileOutput mappából a HBase táblába:
 
@@ -174,34 +176,59 @@ A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ez a szaka
 
 1. Egy parancssorból a következő paranccsal ellenőrizze, hogy tud-e kapcsolódni a HDInsight-fürthöz:
 
-        curl -u <UserName>:<Password> -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
+        curl -u <UserName>:<Password> \
+        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
 
     A következőhöz hasonló választ kell kapnia:
 
-    {"status":"ok","version":"v1"}
+        {"status":"ok","version":"v1"}
 
-  Ezen parancs paraméterei a következők:
+    Ezen parancs paraméterei a következők:
 
     * **-u** - A kérés hitelesítéséhez használt felhasználónév és jelszó.
     * **-G** - Jelzi, hogy ez egy GET kérés.
 
 2. Használja az alábbi parancsot a meglévő HBase táblák listázásához:
 
-        curl -u <UserName>:<Password> -G https://<ClusterName>.azurehdinsight.net/hbaserest/
+        curl -u <UserName>:<Password> \
+        -G https://<ClusterName>.azurehdinsight.net/hbaserest/
 
 3. Használja az alábbi parancsot egy új HBase tábla létrehozásához két oszlopcsaláddal:
 
-        curl -u <UserName>:<Password> -v -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"@name\":\"test\",\"ColumnSchema\":[{\"name\":\"Personal\"},{\"name\":\"Office\"}]}"
+        curl -u <UserName>:<Password> \
+        -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" \
+        -H "Accept: application/json" \
+        -H "Content-Type: application/json" \
+        -d "{\"@name\":\"Contact1\",\"ColumnSchema\":[{\"name\":\"Personal\"},{\"name\":\"Office\"}]}" \
+        -v
 
     A séma a JSon formátumban van megadva.
 
 4. Használja az alábbi parancsot néhány adat beviteléhez:
 
-        curl -u <UserName>:<Password> -v -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"Row\":{\"key\":\"1000\",\"Cell\":{\"column\":\"Personal:Name\", \"$\":\"John Dole\"}}}"
+        curl -u <UserName>:<Password> \
+        -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
+        -H "Accept: application/json" \
+        -H "Content-Type: application/json" \
+        -d "{\"Row\":{\"key\":\"MTAwMA==\",\"Cell\":{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}}}" \
+        -v
+
+    A -d kapcsolóban megadott értékeket a base64 használatával kell kódolnia.  A példában:
+
+    - MTAwMA==: 1000
+    - UGVyc29uYWw6TmFtZQ==: Personal:Name
+    - Sm9obiBEb2xl: John Dole
+
+    A [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) lehetővé teszi több (kötegelt) érték beszúrását.
 
 5. Használja az alábbi parancsot egy sor lekéréséhez:
 
-        curl -u <UserName>:<Password> -v -X GET "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/1000" -H "Accept: application/json"
+        curl -u <UserName>:<Password> \
+        -X GET "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/1000" \
+        -H "Accept: application/json" \
+        -v
+
+További információ a HBase REST-ről: [Apache HBase Reference Guide](https://hbase.apache.org/book.html#_rest) (Apache HBase referencia-útmutató).
 
 ## A fürt állapotának ellenőrzése
 
@@ -252,15 +279,18 @@ Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezh
     - **SOCKS v5**: (kiválasztva)
     - **Távoli DNS**: (kiválasztva)
 7. A módosítások mentéséhez kattintson az **OK** gombra.
-8. Keresse fel a http://<TheFQDN of a ZooKeeper>:60010/master-status helyet
+8. Nyissa meg a következő címet: http://&lt;ZooKeeper teljes tartományneve>:60010/master-status.
 
 Magas rendelkezésre állású fürtökön megtalálja a webes felhasználói felületet szolgáltató, aktuálisan aktív HBase főcsomópont hivatkozását.
 
 ##A fürt törlése
 
+Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat.
+
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## Következő lépések
+
 A HDInsight ezen HBase oktatóprogramjában megtanulta, hogyan hozhat létre HBase-fürtöt, hogyan hozhat létre táblákat, és tekintheti meg ezen táblák adatait a HBase rendszerhéjból. Azt is megtanulta, hogyan használhat Hive-lekérdezést a HBase táblákban lévő adatokon, és hogyan használhatja a HBase C# REST API-kat egy HBase tábla létrehozásához és adatok lekérdezéséhez a táblából.
 
 További tudnivalókért lásd:
@@ -297,6 +327,6 @@ További tudnivalókért lásd:
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

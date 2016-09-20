@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Az Azure Media Services használata Javával" 
+    pageTitle="Igény szerinti tartalomtovábbítás Java használatával | Microsoft Azure" 
     description="Leírja, hogyan végezhet el az Azure Media Services használatával olyan gyakori műveleteket, mint az erőforrások kódolása, titkosítása és továbbítása." 
     services="media-services" 
     documentationCenter="java" 
@@ -13,16 +13,16 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article"
-    ms.date="04/18/2016"  
+    ms.date="08/17/2016"   
     ms.author="robmcm"/>
 
-#A Media Services használata Javával
+# Igény szerinti tartalomtovábbítás Java használatával
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 ##Egy Azure-fiók létrehozása a Media Services szolgáltatásokhoz
 
-Egy Media Services-fiók létrehozásához használja a klasszikus Azure portált. További információ: [Media Services-fiók létrehozása](media-services-create-account.md) Miután a klasszikus Azure portálon létrehozta a saját Media Services-fiókját, készen áll arra, hogy előkészítse a számítógépét a Media Services-fejlesztés használatára.
+Egy Media Services-fiók létrehozásához használja a klasszikus Azure portált. További információ: [Media Services-fiók létrehozása](media-services-create-account.md) Miután a klasszikus Azure Portalon létrehozta a saját Media Services-fiókját, készen áll arra, hogy előkészítse a számítógépét a Media Services-fejlesztés használatára.
 
 ##A Media Services-fejlesztés előkészítése
 
@@ -39,7 +39,7 @@ A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet f
 
 A kód használatához először létre kell hoznia egy Media Services-fiókot. A fiók létrehozásával kapcsolatos információk: [Media Services-fiók létrehozása](media-services-create-account.md)
 
-A `clientId` és `clientSecret` változók helyére helyettesítse be a saját értékeit. A kód egy helyileg tárolt fájlt is használ. Meg kell adnia a saját használandó fájlját.
+A „clientId” és „clientSecret” változó helyére helyettesítse be a saját értékeit. A kód egy helyileg tárolt fájlt is használ. Meg kell adnia a saját használandó fájlját.
     
     import java.io.*;
     import java.security.NoSuchAlgorithmException;
@@ -278,6 +278,6 @@ A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvt
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

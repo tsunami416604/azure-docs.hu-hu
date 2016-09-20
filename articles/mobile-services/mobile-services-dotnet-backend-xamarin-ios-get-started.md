@@ -13,10 +13,10 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="03/16/2016"
+    ms.date="07/21/2016"
     ms.author="donnam"/>
 
-# <a name="getting-started"> </a>A Mobile Services használatának első lépései
+# <a name="getting-started"> </a>A Mobile Services használatának első lépéseit
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 &nbsp;
@@ -49,7 +49,7 @@ Ebben a szakaszban egy új Xamarin iOS-alkalmazást és egy, a mobilszolgáltat�
 
 1. Ha még nem tette volna meg, telepítse a Visual Studio with Xamarin eszközt. Útmutatást itt talál: [Visual Studio és Xamarin beállítása és telepítése](https://msdn.microsoft.com/library/mt613162.aspx) A Xamarin Studio akár Mac OS X gépeken is használható, ezt az alábbi témakör ismerteti: [Beállítás, telepítés és ellenőrzés Mac gépeken](https://msdn.microsoft.com/library/mt488770.aspx)
 
-2. A [Klasszikus Azure portál] kattintson a **Mobile Services** elemre, majd az imént létrehozott mobilszolgáltatásra.
+2. A [klasszikus Azure portál] kattintson a **Mobile Services** elemre, majd az imént létrehozott mobilszolgáltatásra.
 
 3. A gyorsindítási lap **Platform kiválasztása** részében kattintson a **Xamarin** lehetőségre, és bontsa ki az **Új Xamarin-alkalmazás létrehozása** elemet.
 
@@ -61,7 +61,7 @@ Ebben a szakaszban egy új Xamarin iOS-alkalmazást és egy, a mobilszolgáltat�
 
 4. A **Szolgáltatás letöltése és közzététele a felhőben** menüben válassza az **iOS** elemet, majd kattintson a **Letöltés** gombra.
 
-    Ezzel letölt egy megoldást, amely a mobilszolgáltatás és a mobilszolgáltatáshoz kapcsolt _Tennivalók listája_ mintaalkalmazás projektjeit is tartalmazza. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+    Ezzel letölt egy megoldást, amely a mobilszolgáltatás és a mobilszolgáltatáshoz kapcsolt _Tennivalók listája_ mintaalkalmazás projektjeit is tartalmazza. Mentse a tömörített projektfájlt a helyi számítógépre, és jegyezze fel a mentési helyét.
 
 5. Töltse le a közzétett profilját, mentse el a letöltött fájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
 
@@ -104,7 +104,7 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
   <br/>Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
 
 * [Bevezetés a leküldéses értesítések használatába]
-  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazásnak.
+  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazás számára.
 
 * [Mobile Services .NET-háttérrendszer hibaelhárítása]
   <br/> Ismerje meg, hogyan diagnosztizálhatja és javíthatja ki a Mobile Services .NET-háttérrendszerekkel kapcsolatban felmerülő hibákat.
@@ -133,11 +133,11 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [JavaScript és HTML]: mobile-services-win8-javascript/
-[Klasszikus Azure portál]: https://manage.windowsazure.com/
+[klasszikus Azure portál]: https://manage.windowsazure.com/
 [JavaScript háttérrendszer verzió]: mobile-services-ios-get-started.md
 [Mobile Services .NET-háttérrendszer hibaelhárítása]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

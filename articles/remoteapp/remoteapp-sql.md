@@ -13,10 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/02/2016"
+   ms.date="08/15/2016"
    ms.author="elizapo"/>
 
 # Az SQL Azure és az Azure RemoteApp
+
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Amikor a felhasználók a Windows-alkalmazásaikat a felhőben kívánják üzemeltetni az Azure RemoteApp segítségével, gyakran az adataikat, például az SQL-kiszolgálóikat is át szeretnék telepíteni a felhőbe egy teljes körű felhőalapú telepítés érdekében. Ez lehetővé teszi egy teljesen a felhőben üzemeltetett megoldás megvalósítását, amely bármikor, bármilyen eszköz használatával elérhető az Azure RemoteApp használatával. Az alábbiakban útmutatásokat tartalmazó hivatkozásokat és referenciákat talál, amelyek segítenek ebben a folyamatban.  
 
@@ -41,7 +44,7 @@ Ismerje meg, [hogyan konfigurálható egy Azure SQL-adatbázis tűzfala](../sql-
 
 Emellett amikor egy számítógép megpróbál csatlakozni az adatbázis-kiszolgálóhoz az internetről, a tűzfal a kiszolgálószintű és (szükség esetén) az adatbázisszintű tűzfalszabályok teljes készletében ellenőrzi a kérés eredeti IP-címét. „Ha a kérés IP-címe a kiszolgálószinten megadott tűzfalszabályok tartományok egyikébe esik, a rendszer engedélyezi a csatlakozást az Azure SQL Database-kiszolgálóhoz.” Így nemcsak egyes forrás IP-címek, hanem IP-címtartományok is használhatók.
 
-Az IP-címtartomány megadásához kövesse a következő cikkben található utasításokat: [How to: Configure firewall settings on SQL Database using the Azure Portal](../sql-database/sql-database-configure-firewall-settings.md) (Útmutató: Az SQL database tűzfalbeállításainak konfigurálása az Azure portál segítségével). Az SQL-tűzfalszabályok konfigurálásakor adja meg azon alhálózat IP-címtartományát, amely meg van adva az Azure RemoteApp-gyűjteményhez. Ez lehetővé teszi az ARA-kiszolgálók számára, hogy csatlakozzanak az SQL Database-hez, annak ellenére, hogy dinamikusan hozzárendelt IP-címekkel rendelkeznek.
+Az IP-címtartomány megadásához kövesse a következő cikkben található utasításokat: [How to: Configure firewall settings on SQL Database using the Azure Portal](../sql-database/sql-database-configure-firewall-settings.md) (Útmutató: Az SQL database tűzfalbeállításainak konfigurálása az Azure Portal segítségével). Az SQL-tűzfalszabályok konfigurálásakor adja meg azon alhálózat IP-címtartományát, amely meg van adva az Azure RemoteApp-gyűjteményhez. Ez lehetővé teszi az ARA-kiszolgálók számára, hogy csatlakozzanak az SQL Database-hez, annak ellenére, hogy dinamikusan hozzárendelt IP-címekkel rendelkeznek.
 
 ## Hibaelhárítás
 Ha egy Azure RemoteAppban üzemeltetett, egy Azure-ban vagy a helyszínen üzemeltetett SQL Database-hez csatlakozó ügyfélalkalmazás lelassul, annak több oka is lehet.  
@@ -53,6 +56,6 @@ Ha egy Azure RemoteAppban üzemeltetett, egy Azure-ban vagy a helyszínen üzeme
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

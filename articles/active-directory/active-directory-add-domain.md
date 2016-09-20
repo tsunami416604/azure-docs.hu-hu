@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="jeffsta"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -13,23 +13,18 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/20/2016"
+    ms.date="07/18/2016"
     ms.author="curtand;jeffsta"/>
 
 # Egyéni tartománynév hozzáadása az Azure Active Directoryhoz
 
 Üzleti tevékenysége során a vállalatok egy vagy több tartománynevet használnak, a felhasználók pedig vállalati tartománynév használatával jelentkeznek be a vállalati hálózatra. Mivel most már Azure Active Directoryt (Azure AD-t) használ, vállalata tartománynevét is felveheti az Azure AD-ba. Ezzel lehetővé válik, hogy olyan felhasználóneveket rendeljen a címtárhoz, amelyek a felhasználók számára is felismerhetők (például „alice@contoso.com”). A folyamat egyszerűen végrehajtható:
 
-- A klasszikus Azure portálon vegye fel saját tartománynevét a **Tartomány hozzáadása** varázslóval.
+1. Az egyéni tartománynév hozzáadása a címtárhoz
+2. Vegye fel a DNS-bejegyzést a tartománynévhez a tartománynév-regisztrálónál
+3. Az egyéni tartománynév ellenőrzése az Azure AD-ben
 
-- A klasszikus Azure AD portálon vagy az Azure AD Connect eszköz használatával szerezze be a DNS-bejegyzést.
-
-- Vegye fel a tartománynévhez tartozó DNS-bejegyzést a DNS zónafájljába a DNS-regisztráló webhelyén.
-
-- A klasszikus Azure AD portálon vagy az Azure AD Connect eszköz használatával ellenőrizze a tartománynevet.
-
-
-Amíg nem ellenőrzi az egyéni tartománynevet, a felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint például az „alice@contoso.onmicrosoft.com”, amely a címtár eredeti tartománynevét használja. Ha több tartománynévre van szüksége (például „contoso.com” és „contosobank.com”), legfeljebb 900 tartománynév felvételére van lehetőség. Minden egyes tartománynév hozzáadásához hajtsa végre a jelen cikkben ismertetett lépéseket.
+> [AZURE.NOTE] Ha tervezi az egyéni tartománynév beállítását, hogy azt használhassa Active Directory összevonási szolgáltatásokkal (AD FS) vagy egy másik biztonsági jogkivonatokkal kapcsolatos szolgáltatással (STS) a vállalati hálózaton, kövesse az [Add and configure a domain for federation with Azure Active Directory](active-directory-add-domain-federated.md) (Tartomány hozzáadása és beállítása Azure Active Directory-összevonáshoz) című részben leírt utasításokat. Ez akkor hasznos, ha szinkronizálni szeretné a felhasználókat a vállalati címtárból az Azure AD-be, és a [jelszókivonat szinkronizálása](active-directory-aadconnectsync-implement-password-synchronization.md) nem felel meg a követelményeinek.
 
 ## Egyéni tartománynév hozzáadása a címtárhoz
 
@@ -37,33 +32,29 @@ Amíg nem ellenőrzi az egyéni tartománynevet, a felhasználóknak olyan felha
 
 2. Az **Active Directory** területen nyissa meg a címtárat, majd válassza a **Tartományok** lapot.
 
-3. A parancssávon válassza a **Hozzáadás** lehetőséget, majd adja meg az egyéni tartomány nevét (például „contoso.com”). A névben mindenképpen szerepeljen a .com, a .net vagy egyéb legfelső szintű kiterjesztés.
+3. A parancssávon válassza a **Hozzáadás** elemet. Adja meg az egyéni tartomány nevét (például: „contoso.com”). A névben mindenképpen szerepeljen a .com, a .net vagy egyéb legfelső szintű kiterjesztés, és hagyja az „egyszeri bejelentkezés” (összevonás) jelölőnégyzetet üresen.
 
-4. Ha a tartománynál [összevont bejelentkezést](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) tervez konfigurálni a helyszíni Active Directoryval, jelölje be a jelölőnégyzetet.
+4. Válassza a **Hozzáadás** lehetőséget.
 
-5. Válassza a **Hozzáadás** lehetőséget.
+5. A Tartomány hozzáadása varázsló második oldalán keresse meg azt a DNS-bejegyzést, amelyet az Azure AD fog használni annak ellenőrzésére, hogy az adott tartománynév valóban a szervezete tulajdonában van-e.
 
 A tartománynév hozzáadását követően az Azure AD-nek ellenőriznie kell, hogy az adott tartománynév valóban a szervezete tulajdonában van-e. Mielőtt az Azure AD végre tudná hajtani ezt az ellenőrzést, DNS-bejegyzést kell hozzáadnia a tartománynév DNS zónafájljában. Ezt a feladatot a tartománynév-regisztrációs webhelyén kell végrehajtani.
 
-## A tartománynévhez tartozó DNS-bejegyzés beszerzése
+## Vegye fel a DNS-bejegyzést a tartomány tartománynév-regisztrálójánál.
 
-A DNS-bejegyzések a **Tartomány hozzáadása** varázsló második oldalán találhatók, ha nem végez összevonást a helyszíni Windows Server Active Directoryval.
+A következő lépés az egyéni tartománynév Azure AD-vel történő használatához a tartomány DNS-zónafájljának frissítése. Ez lehetővé teszi, hogy az Azure AD ellenőrizze, hogy az adott tartománynév valóban a szervezete tulajdonában van-e.
 
-Ha a tartományt összevonásra konfigurálja, a rendszer az Azure AD Connect eszköz letöltéséhez irányítja át. [A tartománynév-regisztrálóban hozzáadandó DNS-bejegyzések beszerzéséhez](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation) futtassa az Azure AD Connect eszközt. Az Azure AD Connect eszköz az Azure AD tartománynevét is ellenőrzi.
+1.  Jelentkezzen be a tartomány tartománynév-regisztrálójába. Ha nem rendelkezik hozzáféréssel a DNS-bejegyzés frissítéséhez, kérjen meg egy olyan személyt vagy csapatot, amely rendelkezik a 2. lépés végrehajtásához szükséges hozzáféréssel, és értesíti, amikor a frissítés befejeződött.
 
-## DNS-bejegyzés hozzáadása a DNS-zónafájlhoz
+2.  Frissítse a tartomány DNS-zónafájlját az Azure AD által rendelkezésre bocsátott DNS-bejegyzés hozzáadásával. Ez a DNS-bejegyzés lehetővé teszi az Azure AD számára az adott tartomány tulajdonosának ellenőrzését. A DNS-bejegyzés semmilyen értelemben nem módosítja a rendszer viselkedését, például a levélkezelési útválasztást vagy a webes üzemeltetést sem.
 
-1.  Jelentkezzen be a tartomány tartománynév-regisztrálójába. Ha nem rendelkezik megfelelő engedélyekkel a DNS-bejegyzés frissítéséhez, kérjen meg egy ilyen jogosultsággal rendelkező személyt vagy csapatot a DNS-bejegyzés hozzáadására.
-
-2.  Frissítse a tartomány DNS-zónafájlját az Azure AD által rendelkezésre bocsátott DNS-bejegyzés hozzáadásával. Ez a DNS-bejegyzés lehetővé teszi az Azure AD számára az adott tartomány tulajdonosának ellenőrzését. A DNS-bejegyzés semmilyen értelemben nem módosítja a rendszer viselkedését, például a levélkezelési útválasztást vagy a webes üzemeltetést sem. A DNS-rekordok propagálása akár egy órát is igénybe vehet.
-
-[Útmutató DNS-bejegyzések hozzáadásához népszerű DNS-regisztrálókon](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)
+DNS-bejegyzések hozzáadásával kapcsolatos segítségért olvassa el az [Útmutató DNS-bejegyzések hozzáadásához népszerű DNS-regisztrálókon](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/) című részt.
 
 ## A tartománynév ellenőrzése az Azure AD-vel
 
-A DNS-bejegyzés hozzáadását követően meg kell győződnie arról, hogy az Azure AD ellenőrizte-e a tartománynevet. Ez a végső lépés a sikerhez.
+A DNS-bejegyzés hozzáadását követően készen áll a tartománynév Azure AD-vel történő ellenőrzésére.
 
-Ha még meg van nyitva a **Tartomány hozzáadása** varázsló, annak harmadik oldalán válassza az **Ellenőrzés** lehetőséget. Mielőtt megkezdené az ellenőrzést, várjon legalább egy órát a DNS-bejegyzés propagálására.
+Ha még meg van nyitva a **Tartomány hozzáadása** varázsló, annak harmadik oldalán válassza az **Ellenőrzés** lehetőséget. Az **Ellenőrzés** kiválasztásakor az Azure AD megkeresi a DNS-bejegyzést a tartomány DNS-zónafájljában. Az Azure AD csak azután tudja ellenőrizni a tartománynevet, hogy a DNS-rekordok propagálása megtörtént. Ez a propagálás általában csak másodperceket vesz igénybe, de néha egy vagy több óráig is eltarthat. Ha az ellenőrzés nem sikerül első alkalommal, próbálkozzon újra később.
 
 Ha a **Tartomány hozzáadása** varázsló már nincs megnyitva, a következőképpen ellenőrizheti a tartományt a [klasszikus Azure portálon](https://manage.windowsazure.com/):
 
@@ -71,27 +62,28 @@ Ha a **Tartomány hozzáadása** varázsló már nincs megnyitva, a következők
 
 2.  Nyissa meg a címtárat, majd válassza a **Tartományok** lapot.
 
-3.  Jelölje ki az ellenőrizni kívánt tartományt.
+3.  Jelölje ki az ellenőrizni kívánt tartománynevet, és válassza az **Ellenőrzés** lehetőséget a parancssávon.
 
-4.  A parancssávon válassza az **Ellenőrzés** lehetőséget, majd a párbeszédpanelen válassza szintén az **Ellenőrzés** lehetőséget.
+4. A párbeszédpanelen válassza az **Ellenőrzés** elemet az ellenőrzés befejezéséhez.
 
-Gratulálunk a sikeres végrehajtáshoz! Mostantól [hozzá tud rendelni egyéni tartománynevet tartalmazó felhasználóneveket](active-directory-add-domain-add-users.md). Ha a tartománynév ellenőrzése során bármilyen problémát tapasztal, tekintse meg a [Hibaelhárítás](#troubleshooting) című szakaszt.
+Mostantól [hozzá tud rendelni egyéni tartománynevet tartalmazó felhasználóneveket](active-directory-add-domain-add-users.md).
 
 ## Hibaelhárítás
-Ha nem képes egyéni tartománynév ellenőrzésére, ennek néhány potenciális oka lehet. A leggyakoribb okok ismertetésével kezdjük, és a végén megemlítünk néhány ritkábban jelentkező okot is.
 
-- A DNS-bejegyzés propagálása előtt próbálkozott a tartománynév ellenőrzésével. Várjon egy ideig, majd próbálkozzon újra.
+Ha nem képes egyéni tartománynév ellenőrzésére, próbálja meg a következőket. A leggyakoribb okok ismertetésével kezdjük, és a végén megemlítünk néhány ritkábban jelentkező okot is.
 
-- A DNS-rekord egyáltalán nem lett megadva. Ellenőrizze a DNS-bejegyzést, várjon annak propagálására, majd próbálkozzon újra.
+1.  **Várjon egy órát**. A DNS-rekordokat propagálni kell, mielőtt az Azure AD ellenőrizni tudja a tartományt. Ez egy vagy több órát is igénybe vehet.
 
-- A tartománynév ellenőrzése egy másik címtárban már megtörtént. Keresse meg a tartománynevet, törölje azt a címtárból, majd próbálkozzon újra.
+2.  **Győződjön meg róla, hogy a DNS-rekord helyesen lett megadva**. Hajtsa végre ezt a lépést a tartomány tartománynév-regisztrációs webhelyén. Az Azure AD nem tudja ellenőrizni a tartománynevet, ha a DNS-bejegyzés nincs a DNS-zónafájlban, vagy ha az nem pontosan egyezik azzal a DNS-bejegyzéssel, amelyet az Azure AD adott meg. Ha nincs hozzáférése a tartomány DNS-rekordjainak frissítéséhez a tartománynév-regisztrálónál, ossza meg a DNS-bejegyzést egy ilyen engedélyekkel rendelkező személlyel vagy csapattal, majd kérje a DNS-bejegyzés hozzáadását.
 
-- A DNS-rekord hibát tartalmaz. Javítsa ki a hibát, majd próbálkozzon újra.
-
-- Nem rendelkezik megfelelő engedélyekkel a DNS-rekordok frissítéséhez. Ossza meg a DNS-bejegyzéseket egy ilyen engedélyekkel rendelkező személlyel vagy csapattal, majd kérje fel őt/őket a DNS-bejegyzés hozzáadására.
+3.  **Tartománynév törlése egy Azure AD-ben található másik címtárból**. A tartománynév csak egyetlen címtárban ellenőrizhető. Ha a tartománynév ellenőrzése egy másik címtárban már megtörtént, onnan előbb törölni kell, mielőtt ellenőrizni lehetne az új címtárban. Információ a tartománynevek törléséről: [Egyéni tartománynevek kezelése](active-directory-add-manage-domain-names.md).
 
 
-## További lépések
+## További egyéni tartománynevek hozzáadása
+
+Ha a szervezete több tartománynevet használ (például: „contoso.com” és „contosobank.com”), legfeljebb 900 tartománynév felvételére van lehetőség. Minden egyes tartománynév hozzáadásához hajtsa végre a jelen cikkben ismertetett lépéseket.
+
+## Következő lépések
 
 -   [Az egyéni tartománynevet tartalmazó felhasználónevek hozzárendelése](active-directory-add-domain-add-users.md)
 -   [Egyéni tartománynevek kezelése](active-directory-add-manage-domain-names.md)
@@ -101,6 +93,6 @@ Ha nem képes egyéni tartománynév ellenőrzésére, ennek néhány potenciál
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

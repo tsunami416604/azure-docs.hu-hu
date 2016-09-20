@@ -13,7 +13,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="na"
     ms.workload="big-compute"
-    ms.date="06/03/2016"
+    ms.date="08/17/2016"
     ms.author="marsma"/>
 
 # Ismerkedés az Azure Batch Python-ügyféllel
@@ -22,7 +22,7 @@
 - [.NET](batch-dotnet-get-started.md)
 - [Python](batch-python-tutorial.md)
 
-Ebben a cikkben megismerheti az [Azure Batch][azure_batch] alapjait és a [Batch Python][py_azure_sdk]-ügyfelet egy Pythonban írt kisméretű Batch-alkalmazás részletes ismertetésén keresztül. Áttekintjük, hogyan használja ki ez a két minta parancsfájl a Batch szolgáltatást párhuzamos számítási feladat feldolgozásához Linux virtuális gépeken a felhőben, valamint hogyan használják az [Azure Storage-ot](./../storage/storage-introduction.md) a fájlok előkészítéséhez és lekéréséhez. Megismerheti a Batch-alkalmazások általános munkafolyamatát, és a Batch fő összetevőivel, például a tevékenységekkel, feladatokkal, készletekkel és számítási csomópontokkal kapcsolatos alapvető ismereteket is elsajátíthatja.
+Ebben a cikkben megismerheti az [Azure Batch][azure_batch] alapjait és a [Batch Python][py_azure_sdk]-ügyfelet egy Pythonban írt kisméretű Batch-alkalmazás részletes ismertetésén keresztül. Áttekintjük, hogyan használja ez a két mintául szolgáló parancsfájl a Batch szolgáltatást párhuzamos számítási feladat feldolgozásához Linux virtuális gépeken a felhőben, valamint hogyan használják az [Azure Storage-ot](./../storage/storage-introduction.md) a fájlok előkészítéséhez és lekéréséhez. Megismerheti a Batch-alkalmazások általános munkafolyamatát, és a Batch fő összetevőivel, például a tevékenységekkel, feladatokkal, készletekkel és számítási csomópontokkal kapcsolatos alapvető ismereteket is elsajátíthatja.
 
 > [AZURE.NOTE] A Batch Linux-támogatása jelenleg előzetes verzióban üzemel. A szolgáltatás néhány itt tárgyalt szempontja változhat a nyilvános rendelkezésre állás előtt. Az [alkalmazáscsomagok](batch-application-packages.md) **jelenleg nem támogatottak** a linuxos számítási csomópontokon.
 
@@ -40,7 +40,7 @@ Ez a cikk a Python és a Linux gyakorlati ismeretét feltételezi. Azt is felté
 
 ### Kódminta
 
-A Python-oktatóprogram kódmintája a GitHubon lévő [azure-batch-samples][github_samples] tárban található számos Batch-kódminta egyike. Az összes minta letöltéséhez kattintson a **Clone or download > Download ZIP** (Klónozás vagy letöltés > ZIP letöltése) elemre a tár kezdőlapján, vagy kattintson az [azure-batch-samples-master.zip][github_samples_zip] közvetlen letöltésére szolgáló hivatkozásra. Amikor kibontotta a ZIP-fájl tartalmát, az oktatóprogram két parancsfájlja található meg az `article_samples` könyvtárban:
+A Python-oktatóprogram [kódmintája][github_article_samples] a GitHubon lévő [azure-batch-samples][github_samples] tárban található számos Batch-kódminta egyike. Az összes minta letöltéséhez kattintson a **Clone or download > Download ZIP** (Klónozás vagy letöltés > ZIP letöltése) elemre a tár kezdőlapján, vagy kattintson az [azure-batch-samples-master.zip][github_samples_zip] közvetlen letöltésére szolgáló hivatkozásra. Amikor kibontotta a ZIP-fájl tartalmát, az oktatóprogram két parancsfájlja található meg az `article_samples` könyvtárban:
 
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_client.py`<br/>
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_task.py`
@@ -49,7 +49,7 @@ A Python-oktatóprogram kódmintája a GitHubon lévő [azure-batch-samples][git
 
 A *python_tutorial_client.py* minta parancsfájl helyi munkaállomáson való futtatásához a **2.7-es** vagy **3.3–3.5-ös** verzióval kompatibilis **Python-fordítóra** lesz szüksége. A parancsfájl Linux és Windows rendszeren is tesztelve lett.
 
-Az **Azure Batch** és az **Azure Storage** Python-csomagokat is telepítenie kell. Ezt az itt található *requirements.txt* fájllal teheti meg:
+Az **Azure Batch** és az **Azure Storage** Python-csomagokat is telepítenie kell. Ezt az itt található **pip** és a *requirements.txt* fájllal teheti meg:
 
 `/azure-batch-samples/Python/Batch/requirements.txt`
 
@@ -57,13 +57,12 @@ Adja ki a következő **pip** parancsot a Batch- és Storage-csomagok telepíté
 
 `pip install -r requirements.txt`
 
-Az [azure-batch][pypi_batch] és [azure-storage][pypi_storage] Python-csomagot manuálisan is telepítheti.
+Az [azure-batch][pypi_batch] és [azure-storage][pypi_storage] Python-csomagot manuálisan is telepítheti:
 
-> [AZURE.TIP] Lehet, hogy a `sudo` előtagot kell hozzáadnia a parancsokhoz (például: `sudo pip install -r requirements.txt`), ha megfelelő jogosultságokkal nem rendelkező fiókot használ (ajánlott). További információ a Python-csomagok telepítésével kapcsolatban: [Installing Packages][pypi_install] (Csomagok telepítése) a readthedocs.io webhelyen.
+`pip install azure-batch==0.30.0rc4`<br/>
+`pip install azure-storage==0.30.0`
 
-### Azure Batch Explorer (nem kötelező)
-
-Az [Azure Batch Explorer][github_batchexplorer] egy ingyenes segédprogram, amely a GitHub [azure-batch-samples][github_samples] tárában szerepel. Bár ezen oktatóprogram elvégzéséhez nem szükséges, hasznos a Batch-megoldások fejlesztésekor és hibakeresésekor.
+> [AZURE.TIP] Lehet, hogy a `sudo` előtagot kell hozzáadnia a parancsokhoz, ha megfelelő jogosultságokkal nem rendelkező fiókot használ. Például: `sudo pip install -r requirements.txt`. További információ a Python-csomagok telepítésével kapcsolatban: [Installing Packages][pypi_install] (Csomagok telepítése) a readthedocs.io webhelyen.
 
 ## Batch Python-oktatóprogram kódmintája
 
@@ -230,7 +229,7 @@ def upload_file_to_container(block_blob_client, container_name, file_path):
 
 ### ResourceFiles
 
-A [ResourceFile][py_resource_file] tevékenységeket biztosít a Batch-ben az Azure Storage azon fájljának URL-jével, amely a számítási csomópontra lesz letöltve a feladat futtatása előtt. A [ResourceFile][py_resource_file].**blob_source** tulajdonság határozza meg a fájl teljes URL-jét, ahogyan az az Azure Storage-ban található. Az URL a fájl biztonságos elérését nyújtó közös hozzáférésű jogosultságkódot (SAS-t) is tartalmazhat. A Batch legtöbb feladattípusa tartalmaz *ResourceFiles* tulajdonságot, beleértve a következőket:
+A [ResourceFile][py_resource_file] tevékenységeket biztosít a Batch-ben az Azure Storage azon fájljának URL-jével, amely a számítási csomópontra töltődik le a feladat futtatása előtt. A [ResourceFile][py_resource_file].**blob_source** tulajdonság határozza meg a fájl teljes URL-jét, ahogyan az az Azure Storage-ban található. Az URL a fájl biztonságos elérését nyújtó közös hozzáférésű jogosultságkódot (SAS-t) is tartalmazhat. A Batch legtöbb feladattípusa tartalmaz *ResourceFiles* tulajdonságot, beleértve a következőket:
 
 - [CloudTask][py_task]
 - [StartTask][py_starttask]
@@ -265,9 +264,8 @@ Miután feltölti a feladatparancsfájlt és az adatfájlokat a Storage-fiókba,
                                               _BATCH_ACCOUNT_KEY)
 
  batch_client = batch.BatchServiceClient(
-     batch.BatchServiceClientConfiguration(
-         credentials,
-         base_url=_BATCH_ACCOUNT_URL))
+     credentials,
+     base_url=_BATCH_ACCOUNT_URL)
 ```
 
 Ezután a számítási csomópontok készlete jön létre a Batch-fiókban a `create_pool` hívásával.
@@ -333,17 +331,17 @@ def create_pool(batch_service_client, pool_id,
 }
 ```
 
-Készlet létrehozásakor egy [PoolAddParameter][py_pooladdparam] paramétert határoz meg, amely a készlet több tulajdonságát meghatározza:
+Készlet létrehozásakor egy [PoolAddParameter][py_pooladdparam] paramétert ad meg, amely a készlet több tulajdonságát meghatározza:
 
 - A készlet **azonosítója** (*id* – kötelező)<p/>A Batch legtöbb entitásához hasonlóan az új készletnek egyedi azonosítóval kell rendelkeznie a Batch-fiókban. A kód erre a készletre hivatkozik az azonosítót használva, és így azonosítható a készlet az Azure [Portalon][azure_portal].
 
-- **Számítási csomópontok száma** (*target_dedicated* – kötelező)<p/>Azt határozza meg, hogy hány virtuális gépet kell üzembe helyezni a készletben. Fontos megjegyezni, hogy az összes Batch-fiók alapértelmezett **kvótával** rendelkezik, amely korlátozza a **magok** (és így a számítási csomópontok) számát a Batch-fiókokban. Az alapértelmezett kvótákat és a [kvóták növelésével](batch-quota-limit.md#increase-a-quota) (például a Batch-fiókban lévő magok maximális számának növelésével) kapcsolatos útmutatásokat [Az Azure Batch szolgáltatás kvótái és korlátai](batch-quota-limit.md) cím témakörben találja. Ha azt kérdezi magától, hogy „Miért nem ér el a készletem X-nél több csomópontot?”, akkor a magkvóta lehet ennek az oka.
+- **Számítási csomópontok száma** (*target_dedicated* – kötelező)<p/>Ez a tulajdonság azt határozza meg, hogy hány virtuális gépet kell üzembe helyezni a készletben. Fontos megjegyezni, hogy az összes Batch-fiók alapértelmezett **kvótával** rendelkezik, amely korlátozza a **magok** (és így a számítási csomópontok) számát a Batch-fiókokban. Az alapértelmezett kvótákat és a [kvóták növelésével](batch-quota-limit.md#increase-a-quota) (például a Batch-fiókban lévő magok maximális számának növelésével) kapcsolatos útmutatásokat [Quotas and limits for the Azure Batch service](batch-quota-limit.md) (Az Azure Batch szolgáltatás kvótái és korlátai) című témakörben találja. Ha azt kérdezi magától, hogy „Miért nem ér el a készletem X-nél több csomópontot?”, akkor a magkvóta lehet ennek az oka.
 
 - Csomópontok **operációs rendszere** (*virtual_machine_configuration* **vagy** *cloud_service_configuration* – kötelező)<p/>A *python_tutorial_client.py* fájlban létrehozzuk a Linux-csomópontok készletét a `get_vm_config_for_distro` segédfüggvénnyel beszerzett [VirtualMachineConfiguration][py_vm_config] osztállyal. Ez a segédfüggvény a [list_node_agent_skus][py_list_skus] használatával szerez be és választ ki rendszerképet az [Azure Virtual Machines-piactér][vm_marketplace] kompatibilis rendszerképeinek listájából. Helyette megadhat egy [CloudServiceConfiguration][py_cs_config] osztályt, és létrehozhatja a Windows-csomópontok készletét a Cloud Servicesből. A két konfigurációval kapcsolatos további információ: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linux számítási csomópontok létrehozása Azure Batch-készletekben).
 
 - **Számítási csomópontok mérete** (*vm_size* – kötelező)<p/>Mivel Linux-csomópontokat határozunk meg a [VirtualMachineConfiguration][py_vm_config] számára, megadunk egy virtuális gép méretet (`STANDARD_A1` ebben a mintában) a [Sizes for virtual machines in Azure](../virtual-machines/virtual-machines-linux-sizes.md) (Virtuális gépek méretei az Azure-ban) szakaszban. Lásd ismét: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linux számítási csomópontok létrehozása Azure Batch-készletekben).
 
-- **Tevékenység indítása** (*start_task* – nem kötelező)<p/>A fenti fizikai csomópont-tulajdonságok mellett egy [StartTask][py_starttask] is megadható a készlethez (nem kötelező). A StartTask mindegyik csomóponton fut, amikor a csomópont csatlakozik a készlethez, valamint a csomópont minden újraindításakor. A StartTask különösen hasznos a számítási csomópontok tevékenységek végrehajtására való előkészítéséhez, például a tevékenységek által futtatott alkalmazások telepítéséhez.<p/>Ebben a mintaalkalmazásban a StartTask átmásolja a Storage-ból letöltött fájlokat (amelyek a StartTask **resource_files** tulajdonságával határozhatók meg) a StartTask *munkakönyvtárból* abba a *megosztott* könyvtárba, amelyet a csomóponton futó összes tevékenység elér. Ez lényegében mindegyik csomóponton a megosztott könyvtárba másolja a `python_tutorial_task.py` fájlt, amikor a csomópont csatlakozik a készlethez, hogy a csomóponton futó összes tevékenység elérje a fájlt.
+- **Tevékenység indítása** (*start_task* – nem kötelező)<p/>A fenti fizikai csomópont-tulajdonságok mellett egy [StartTask][py_starttask] is megadható a készlethez (nem kötelező). A StartTask mindegyik csomóponton fut, amikor a csomópont csatlakozik a készlethez, vagy amikor újraindul. A StartTask különösen hasznos a számítási csomópontok tevékenységek végrehajtására való előkészítéséhez, például a tevékenységek által futtatott alkalmazások telepítéséhez.<p/>Ebben a mintaalkalmazásban a StartTask átmásolja a Storage-ból letöltött fájlokat (amelyek a StartTask **resource_files** tulajdonságával határozhatók meg) a StartTask *munkakönyvtárból* abba a *megosztott* könyvtárba, amelyet a csomóponton futó összes tevékenység elér. Ez lényegében mindegyik csomóponton a megosztott könyvtárba másolja a `python_tutorial_task.py` fájlt, amikor a csomópont csatlakozik a készlethez, hogy a csomóponton futó összes tevékenység elérje a fájlt.
 
 Bizonyára észrevette a `wrap_commands_in_shell` segédfüggvényre irányuló hívást. Ez a függvény különálló parancsok gyűjteményéből hoz létre a tevékenység parancssori tulajdonságának megfelelő egyetlen parancssort.
 
@@ -357,9 +355,9 @@ A fenti kódrészletben a StartTask **command_line** tulajdonságában lévő k�
 
 A Batch-**feladatok** számítási csomópontok készletéhez társított tevékenységek gyűjteményei. A feladatok tevékenységei a társított készlet számítási csomópontjain futnak.
 
-A feladatokat nemcsak a tevékenységek rendszerezéséhez és nyomon követéséhez használhatja a kapcsolódó számítási feladatokban, hanem bizonyos kényszerek betartatásához is – mint például a feladat (és így a tevékenységei) maximális futásideje, valamint a feladat prioritása a Batch-fiókban lévő egyéb feladatokhoz képest. Ebben a példában azonban a feladat csak a 3. lépésben létrehozott készlettel van társítva. Nincsenek konfigurálva további tulajdonságok.
+A feladatokat nemcsak a tevékenységek rendszerezéséhez és nyomon követéséhez használhatja a kapcsolódó számítási feladatokban, hanem bizonyos kényszerek betartatásához is – mint például a feladat (és annak tevékenységei) maximális futásideje, valamint a feladat prioritása a Batch-fiókban lévő egyéb feladatokhoz képest. Ebben a példában azonban a feladat csak a 3. lépésben létrehozott készlettel van társítva. Nincsenek konfigurálva további tulajdonságok.
 
-Mindegyik Batch-feladat egy adott készlettel van társítva. Ez a társítás jelzi, hogy a feladat tevékenységei melyik csomópontokon futnak. Ezt a [PoolInformation][py_poolinfo] tulajdonsággal határozhatja meg, ahogyan az alábbi kódrészletben is láthatja.
+Mindegyik Batch-feladat egy adott készlettel van társítva. Ez a társítás jelzi, hogy a feladat tevékenységei melyik csomópontokon futnak. A készletet a [PoolInformation][py_poolinfo] tulajdonsággal határozhatja meg, ahogyan azt az alábbi kódrészlet is mutatja.
 
 ```python
 def create_job(batch_service_client, job_id, pool_id):
@@ -437,7 +435,7 @@ def add_tasks(batch_service_client, job_id, input_files,
     batch_service_client.task.add_collection(job_id, tasks)
 ```
 
-> [AZURE.IMPORTANT] Amikor környezeti változókat érnek el (például az `$AZ_BATCH_NODE_SHARED_DIR` változót) vagy a csomópont `PATH` elemében nem található alkalmazást hajtanak végre, a feladat parancssorait a `/bin/bash` (Linux) vagy `cmd /c` (Windows) előtaggal kell ellátni. Ez explicit módon futtatja a parancsrendszerhéjat, és arra utasítja, hogy befejeződjön a parancs végrehajtása után. Ez a követelmény nem szükséges, ha a tevékenységek a csomóponti `PATH` helyen futtatják az alkalmazást (például *python* a fenti kódrészletben).
+> [AZURE.IMPORTANT] Amikor környezeti változókat érnek el (például az `$AZ_BATCH_NODE_SHARED_DIR` változót) vagy a csomópont `PATH` elemében nem található alkalmazást hajtanak végre, a feladat parancssorainak explicit módon kell meghívnia a rendszerhéjat, például a `/bin/sh -c MyTaskApplication $MY_ENV_VAR` paranccsal. Ez a követelmény nem szükséges, ha a tevékenységek a csomóponti `PATH` helyen futtatják az alkalmazást, és nem hivatkoznak környezeti változókra.
 
 A fenti kódrészletben a `for` hurokban láthatja, hogy a tevékenység parancssora úgy van felépítve, hogy öt parancssori argumentumot továbbítson a *python_tutorial_task.py* számára:
 
@@ -543,7 +541,7 @@ def download_blobs_from_container(block_blob_client,
     print('  Download complete!')
 ```
 
-> [AZURE.NOTE] A *python_tutorial_client.py* `download_blobs_from_container` függvényének meghívása határozza meg, hogy a fájlokat a felhasználó kezdőkönyvtárába kell letölteni. Ezt a kimeneti helyet nyugodtan módosíthatja.
+> [AZURE.NOTE] A *python_tutorial_client.py* `download_blobs_from_container` függvényének meghívása határozza meg, hogy a fájlokat a kezdőkönyvtárba kell letölteni. Ezt a kimeneti helyet nyugodtan módosíthatja.
 
 ## 8. lépés: Tárolók törlése
 
@@ -559,9 +557,9 @@ blob_client.delete_container(output_container_name)
 
 ## 9. lépés: A feladat és a készlet törlése
 
-Az utolsó lépésben a rendszer arra kéri a felhasználót, hogy törölje a *python_tutorial_client.py* parancsfájl által létrehozott feladatot és készletet. Bár magukért a munkákért és feladatokért nem kell fizetnie, a számítási csomópontokért *igen*. Ezért ajánlott csak szükség szerint lefoglalni a csomópontokat. A nem használt készletek törlése a karbantartási folyamat része lehet.
+Az utolsó lépésben a rendszer arra kéri, hogy törölje a *python_tutorial_client.py* parancsfájl által létrehozott feladatot és készletet. Bár magukért a munkákért és feladatokért nem kell fizetnie, a számítási csomópontokért *igen*. Ezért ajánlott csak szükség szerint lefoglalni a csomópontokat. A nem használt készletek törlése a karbantartási folyamat része lehet.
 
-A BatchServiceClient [JobOperations][py_job] és [PoolOperations][py_pool] művelete is rendelkezik megfelelő törlési metódusokkal, amelyeket a rendszer meghív, ha a felhasználó megerősíti a törlést:
+A BatchServiceClient [JobOperations][py_job] és [PoolOperations][py_pool] művelete is rendelkezik megfelelő törlési metódusokkal, amelyeket a rendszer meghív, ha megerősíti a törlést:
 
 ```python
 # Clean up Batch resources (if the user so chooses).
@@ -576,7 +574,7 @@ if query_yes_no('Delete pool?') == 'yes':
 
 ## A minta parancsfájl futtatása
 
-A *python_tutorial_client.py* parancsfájl futtatásakor a konzol kimenete az alábbihoz hasonló lesz. Szünetet lát a `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` részen a készlet számítási csomópontjainak létrehozása, elindítása és a készlet indítási tevékenységében található parancsok futtatása során. Az [Azure Portal][azure_portal] vagy a [Batch Explorer][github_batchexplorer] használatával figyelheti meg a készletet, a számítási csomópontokat, a feladatokat és a tevékenységeket a végrehajtás alatt és után. Az [Azure Portallal][azure_portal] vagy a [Microsoft Azure Storage Explorer][storage_explorer] használatával tekintheti meg az alkalmazás által létrehozott tárolási erőforrásokat (tárolókat és blobokat).
+Amikor a *python_tutorial_client.py* parancsfájlt az oktatóanyag [kódmintájából][github_article_samples] futtatja, a konzol kimenete a következőképpen fog kinézni. Szünet következik be a `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` részen a készlet számítási csomópontjainak létrehozása, elindítása és a készlet indítási tevékenységében található parancsok futtatása során. Az [Azure Portal][azure_portal] használatával figyelheti meg a készletet, a számítási csomópontokat, a feladatokat és a tevékenységeket a végrehajtás alatt és után. Az [Azure Portallal][azure_portal] vagy a [Microsoft Azure Storage Explorer][storage_explorer] használatával tekintheti meg az alkalmazás által létrehozott tárolási erőforrásokat (tárolókat és blobokat).
 
 A jellemző végrehajtási idő **körülbelül 5–7 perc**, ha az alapértelmezett konfigurációban futtatja az alkalmazást.
 
@@ -610,7 +608,7 @@ Press ENTER to exit...
 
 ## Következő lépések
 
-Nyugodtan módosítsa a *python_tutorial_client.py* és a *python_tutorial_task.py* fájlt a különböző számítási forgatókönyvekkel való kísérletezéshez. Próbáljon meg például végrehajtási késleltetést adni a *python_tutorial_task.py* fájlhoz, így hosszan futó feladatokat szimulálhat, és megfigyelheti őket a Batch Explorer *Hőtérkép* funkciójával. Próbáljon meg több tevékenységet hozzáadni, vagy módosítani a számítási csomópontok számát. Adja hozzá az ellenőrizni kívánt logikát, és engedélyezze meglévő készlet használatát a futtatási idő csökkentéséhez.
+Nyugodtan módosítsa a *python_tutorial_client.py* és a *python_tutorial_task.py* fájlt a különböző számítási forgatókönyvekkel való kísérletezéshez. Próbáljon meg például végrehajtási késleltetést adni a *python_tutorial_task.py* elemhez, így hosszan futó feladatokat szimulálhat, és megfigyelheti őket a portálon. Próbáljon meg több tevékenységet hozzáadni, vagy módosítani a számítási csomópontok számát. Adja hozzá az ellenőrizni kívánt logikát, és engedélyezze meglévő készlet használatát a futtatási idő csökkentéséhez.
 
 Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch szolgáltatás további funkcióit is áttekintheti.
 
@@ -621,14 +619,12 @@ Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch sz
 [azure_batch]: https://azure.microsoft.com/services/batch/
 [azure_free_account]: https://azure.microsoft.com/free/
 [azure_portal]: https://portal.azure.com
-[batch_explorer_blog]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
 [blog_linux]: http://blogs.technet.com/b/windowshpc/archive/2016/03/30/introducing-linux-support-on-azure-batch.aspx
-[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[github_samples_common]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/Common
 [github_samples_zip]: https://github.com/Azure/azure-batch-samples/archive/master.zip
 [github_topnwords]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords
+[github_article_samples]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch/article_samples
 
 [nuget_packagemgr]: https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c
 [nuget_restore]: https://docs.nuget.org/consume/package-restore/msbuild-integrated#enabling-package-restore-during-build
@@ -670,20 +666,20 @@ Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch sz
 [visual_studio]: https://www.visualstudio.com/products/vs-2015-product-editions
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
-[1]: ./media/batch-dotnet-get-started/batch_workflow_01_sm.png "Tárolók létrehozása az Azure Storage-ban"
-[2]: ./media/batch-dotnet-get-started/batch_workflow_02_sm.png "Tevékenységalkalmazás- és bemeneti (adat-) fájlok feltöltése tárolókba"
-[3]: ./media/batch-dotnet-get-started/batch_workflow_03_sm.png "Batch-készlet létrehozása"
-[4]: ./media/batch-dotnet-get-started/batch_workflow_04_sm.png "Batch-feladat létrehozása"
-[5]: ./media/batch-dotnet-get-started/batch_workflow_05_sm.png "Tevékenységek hozzáadása a feladathoz"
-[6]: ./media/batch-dotnet-get-started/batch_workflow_06_sm.png "Tevékenységek figyelése"
-[7]: ./media/batch-dotnet-get-started/batch_workflow_07_sm.png "Feladat kimenetének letöltése a Storage-ból"
-[8]: ./media/batch-dotnet-get-started/batch_workflow_sm.png "Batch-megoldás munkafolyamata (teljes diagram)"
-[9]: ./media/batch-dotnet-get-started/credentials_batch_sm.png "A Batch hitelesítő adatai a portálon"
-[10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "A Storage hitelesítő adatai a portálon"
-[11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch-megoldás munkafolyamata (minimális diagram)"
+[1]: ./media/batch-python-tutorial/batch_workflow_01_sm.png "Tárolók létrehozása az Azure Storage-ban"
+[2]: ./media/batch-python-tutorial/batch_workflow_02_sm.png "Tevékenységalkalmazás- és bemeneti (adat-) fájlok feltöltése tárolókba"
+[3]: ./media/batch-python-tutorial/batch_workflow_03_sm.png "Batch-készlet létrehozása"
+[4]: ./media/batch-python-tutorial/batch_workflow_04_sm.png "Batch-feladat létrehozása"
+[5]: ./media/batch-python-tutorial/batch_workflow_05_sm.png "Tevékenységek hozzáadása a feladathoz"
+[6]: ./media/batch-python-tutorial/batch_workflow_06_sm.png "Tevékenységek figyelése"
+[7]: ./media/batch-python-tutorial/batch_workflow_07_sm.png "Feladat kimenetének letöltése a Storage-ból"
+[8]: ./media/batch-python-tutorial/batch_workflow_sm.png "Batch-megoldás munkafolyamata (teljes diagram)"
+[9]: ./media/batch-python-tutorial/credentials_batch_sm.png "A Batch hitelesítő adatai a portálon"
+[10]: ./media/batch-python-tutorial/credentials_storage_sm.png "A Storage hitelesítő adatai a portálon"
+[11]: ./media/batch-python-tutorial/batch_workflow_minimal_sm.png "Batch-megoldás munkafolyamata (minimális diagram)"
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

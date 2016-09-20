@@ -2,7 +2,7 @@
     pageTitle="Azure AD Connect: Testreszabott telepítés | Microsoft Azure"
     description="Ez a dokumentum az Azure AD Connect egyéni telepítési beállításait részletezi. Ezeknek az utasításoknak a használatával telepítheti az Active Directoryt az Azure AD Connecten keresztül."
     services="active-directory"
-    keywords="what is Azure AD Connect, install Active Directory, required components for Azure AD"
+    keywords="mi az Azure AD Connect, az Active Directory telepítése, az Azure AD szükséges összetevői"
     documentationCenter=""
     authors="andkjell"
     manager="stevenpo"
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/31/2016"
+    ms.date="06/27/2016"
     ms.author="billmath;andkjell"/>
 
 # Az Azure AD Connect testreszabott telepítése
@@ -244,7 +244,7 @@ Ezen felül hajtsa végre a következő ellenőrzési lépéseket:
 - Ellenőrizze, hogy be tud jelentkezni egy, az extraneten lévő eszközről. Egy otthoni gépről vagy mobileszközről csatlakozzon a https://myapps.microsoft.com helyre, és adja meg hitelesítő adatait.
 - Ellenőrizze a gazdag ügyféllel való bejelentkezést. Csatlakozzon a https://testconnectivity.microsoft.com helyhez, lépjen az **Office 365** lapra, és válassza az **Office 365 Single Sign-On Test** (Office 365 egyszeri bejelentkezés tesztelése) lehetőséget.
 
-## További lépések
+## Következő lépések
 Miután a telepítés befejeződött, jelentkezzen ki, majd ismét jelentkezzen be a Windowsba, mielőtt a Synchronization Service Managert (Szinkronizálási szolgáltatás kezelőjét) vagy a Synchronization Rule Editort (Szinkronizálási szabályok szerkesztőjét) használná.
 
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](active-directory-aadconnect-whats-next.md).
@@ -266,6 +266,6 @@ Telepítési fiókok | [További információk az Azure AD Connect-fiókokkal é
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

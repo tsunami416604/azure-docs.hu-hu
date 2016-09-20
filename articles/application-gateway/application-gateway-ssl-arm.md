@@ -3,7 +3,7 @@
    description="Ez az oldal utasításokat tartalmaz egy SSL-alapú kiszervezéssel rendelkező Application Gateway létrehozásához az Azure Resource Manager használatával"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor="tysonn"/>
 <tags
@@ -12,14 +12,15 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/03/2016"
-   ms.author="joaoma"/>
+   ms.date="08/09/2016"
+   ms.author="gwallace"/>
 
 # Application Gateway konfigurálása SSL-alapú kiszervezéshez az Azure Resource Manager használatával
 
 > [AZURE.SELECTOR]
--[Klasszikus Azure PowerShell](application-gateway-ssl.md)
+-[Azure Portal](application-gateway-ssl-portal.md)
 -[Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
+-[Klasszikus Azure PowerShell](application-gateway-ssl.md)
 
  Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure Sockets Layer (SSL) munkamenetét az átjárónál, így elkerülhetők a költséges SSL visszafejtési feladatok a webfarmon. Az SSL-alapú kiszervezés emellett leegyszerűsíti az előtér-kiszolgáló számára webalkalmazás telepítését és kezelését.
 
@@ -27,8 +28,8 @@
 ## Előkészületek
 
 1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
-2. Létre fog hozni egy virtuális hálózatot és egy alhálózatot az Application Gateway számára. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
-3. A kiszolgálóknak, amelyeket az Application Gateway használatára fog konfigurálni, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
+2. Létre kell hozni egy virtuális hálózatot és alhálózatot az Application Gateway számára. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
+3. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
 
 ## Mire van szükség egy Application Gateway létrehozásához?
 
@@ -36,17 +37,17 @@
 - **Háttér-kiszolgálókészlet:** A háttérkiszolgálók IP-címeinek listája. A listán szereplő IP-címeknek a virtuális hálózat alhálózatához kell tartozniuk, vagy nyilvános/virtuális IP-címnek kell lenniük.
 - **Háttér-kiszolgálókészlet beállításai:** Minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
 - **Előtérbeli port:** Az Application Gateway-en megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
-- **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, kis- és a nagybetűk megkülönböztetésével) és az SSL tanúsítványnévvel rendelkezik.
+- **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, ezek kis- és nagybetűt megkülönböztető beállítások) és SSL tanúsítványnévvel rendelkezik.
 - **Szabály:** A szabály összeköti a figyelőt és a háttérkiszolgáló-készletet, és meghatározza, hogy mely háttérkiszolgáló-készletre legyen átirányítva a forgalom, ha elér egy adott figyelőt. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
 
 **További konfigurációs megjegyzések**
 
-Az SSL-tanúsítványok konfigurálásához *Https*-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Az **SslCertificate** elemet hozzá kell adni a **HttpListener** elemhez az SSL-tanúsítványhoz konfigurált változó értékével. Az előtérbeli portot frissíteni kell 443-ra.
+Az SSL-tanúsítványok konfigurálásához *Https*-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Az **SslCertificate** elemet hozzá kell adni a **HttpListener** elemhez az SSL-tanúsítvány számára konfigurált változóértékkel. Az előtérbeli portot frissíteni kell 443-ra.
 
 **A cookie-alapú affinitás engedélyezése**: Egy Application Gateway konfigurálható úgy, hogy egy ügyfélmunkamenetből érkező kérelmet mindig a webfarm ugyanazon virtuális gépére irányítsa. Ez egy munkameneti cookie beszúrásával történik, amely lehetővé teszi az átjáró számára a forgalom megfelelő irányítását. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen *Enabled* a **BackendHttpSettings** elemen belül.
 
 
-## Új Application Gateway létrehozása
+## Application Gateway létrehozása
 
 A klasszikus Azure üzembe helyezési modell és az Azure Resource Manager használata abban tér el egymástól, hogy más sorrendben kell létrehoznia az Application Gateway-t és a konfigurálást igénylő elemeket.
 
@@ -67,7 +68,7 @@ Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShe
 
 ### 1. lépés
 
-        PS C:\> Login-AzureRmAccount
+    Login-AzureRmAccount
 
 
 
@@ -75,7 +76,7 @@ Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShe
 
 Keresse meg a fiókot az előfizetésekben.
 
-        PS C:\> get-AzureRmSubscription
+    Get-AzureRmSubscription
 
 A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.<BR>
 
@@ -84,16 +85,16 @@ A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.<BR>
 Válassza ki, hogy melyik Azure előfizetést fogja használni. <BR>
 
 
-        PS C:\> Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
 ### 4. lépés
 
-Hozzon létre egy új erőforráscsoportot (hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ).
+Hozzon létre egy erőforráscsoportot (hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ).
 
-    New-AzureRmResourceGroup -Name appgw-rg -location "West US"
+    New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
 
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez lesz az erőforráscsoport erőforrásainak alapértelmezett helye. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot fogja használni.
+Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez a beállítás szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
 
 A fenti példában létrehoztunk egy „appgw-RG” nevű erőforráscsoportot, amelynek a helye az USA nyugati régiója, „West US”.
 
@@ -114,7 +115,7 @@ Ez létrehoz egy „appgwvnet” nevű virtuális hálózatot az „appgw-rg” 
 
 ### 3. lépés
 
-    $subnet=$vnet.Subnets[0]
+    $subnet = $vnet.Subnets[0]
 
 Ez hozzárendeli az alhálózat objektumot a $subnet változóhoz a következő lépésekre.
 
@@ -131,13 +132,13 @@ Ez létrehoz egy „publicIP01” nevű, nyilvános IP-címhez tartozó erőforr
 
     $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
-Ez létrehoz egy „gatewayIP01” nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból fel fog venni egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez fogja irányítani. Ne feledje, hogy minden példány el fog foglalni egy IP-címet.
+Ez létrehoz egy „gatewayIP01” nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
 ### 2. lépés
 
     $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
-Ez a „pool01” nevű háttérbeli IP-címkészletet konfigurálja az alábbi IP-címekkel: „134.170.185.46, 134.170.188.221,134.170.185.50”. Ezek az IP-címek fogadják majd az előtérbeli IP-cím végpontból érkező hálózati forgalmat. Cserélje le a fenti példában szereplő IP-címeket a webalkalmazás végpontjainak IP-címeire.
+Ez a „pool01” nevű háttérbeli IP-címkészletet konfigurálja az alábbi IP-címekkel: „134.170.185.46, 134.170.188.221,134.170.185.50”. Ezek az IP-címek fogadják az előtérbeli IP-végpontból érkező hálózati forgalmat. Cserélje le a fenti példában szereplő IP-címeket a webalkalmazás végpontjainak IP-címeire.
 
 ### 3. lépés
 
@@ -201,6 +202,6 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

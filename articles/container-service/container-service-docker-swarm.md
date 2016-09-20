@@ -7,7 +7,7 @@
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
+   keywords="Docker, tárolók, mikroszolgáltatások, Mesos, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -30,7 +30,7 @@ A dokumentumban szereplő gyakorlatok előfeltételei:
 
 ## Új tároló üzembe helyezése
 
-Új tároló Docker Swarmban történő üzembe helyezéséhez használja a `docker run` parancsot. Az alábbi példa létrehoz egy tárolót a `yeasy/simple-web` lemezképből:
+Ha új tárolót szeretne létrehozni a Docker Swarmban, használja a `docker run` parancsot (ügyeljen arra, hogy a fenti előfeltételeknek megfelelően nyisson meg egy SSH-alagutat a főkiszolgálók felé). Az alábbi példa létrehoz egy tárolót a `yeasy/simple-web` lemezképből:
 
 
 ```bash
@@ -49,14 +49,16 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 4298d397b9ab        yeasy/simple-web    "/bin/sh -c 'python i"   31 seconds ago      Up 9 seconds        10.0.0.5:80->80/tcp   swarm-agent-34A73819-1/happy_allen
 ```  
 
-A tárolóban futó alkalmazást a Swarm ügynök terheléselosztójának nyilvános DNS-nevén keresztül érheti el. Ezeket az információkat megtalálja az Azure portálon:  
+A tárolóban futó alkalmazást a Swarm ügynök terheléselosztójának nyilvános DNS-nevén keresztül érheti el. Ezeket az információkat megtalálja az Azure Portalon:  
 
 
 ![Valós látogatási eredmények](media/real-visit.jpg)  
 
+Alapértelmezés szerint a Load Balancer a 80-as, 8080-as és 443-as portot nyitja meg. Ha másik porton keresztül szeretne csatlakozni, akkor az Azure Load Balancerben meg kell nyitnia a portot az ügynökkészlet számára.
+
 ## Több tároló üzembe helyezése
 
-Mivel több tárolót a Docker Swarm fürtön kell elindítani, a `docker ps` paranccsal ellenőrizheti, mely gazdagépen futnak a tárolók. Az alábbi példában három tároló egyenlően van elosztva három Swarm ügynök között:  
+Amikor több tároló is elindul a „docker run” többszöri végrehajtása után, a `docker ps` paranccsal megtekintheti, mely állomásokon futnak a tárolók. Az alábbi példában három tároló oszlik el egyenlően a három Swarm-ügynökön:  
 
 
 ```bash
@@ -70,7 +72,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 ## Tároló üzembe helyezése a Docker Compose-zal
 
-A Docker Compose-zal automatizálhatja a több tároló telepítését és konfigurálását. Először ellenőrizze, hogy létrejött-e a Secure Shell (SSH) alagút, és hogy be van-e állítva a DOCKER_HOST változó.
+A Docker Compose-zal automatizálhatja a több tároló telepítését és konfigurálását. Ehhez hozzon létre egy Secure Shell- (SSH-) alagutat, és állítsa be a DOCKER_HOST változót (lásd a feni előfeltételeket).
 
 Hozzon létre egy docker-compose.yml fájlt a helyi számítógépen. Ehhez használja ezt a [mintát](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml).
 
@@ -115,12 +117,14 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 040efc0ea937        adtd/rest:0.1       "catalina.sh run"      3 minutes ago       Up 2 minutes        10.0.0.4:8080->8080/tcp   swarm-agent-3B7093B8-0/compose_rest_1
 ```
 
+A `docker-compose ps` használatával természetesen megvizsgálhatja a csak a `compose.yml` fájlban megadott tárolókat.
+
 ## Következő lépések
 
 [További információ a Docker Swarmról](https://docs.docker.com/swarm/)
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

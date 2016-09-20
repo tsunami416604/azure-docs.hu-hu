@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article"
-    ms.date="05/05/2016"
+    ms.date="06/22/2016"
     ms.author="juliako"/>
 
 
@@ -40,7 +40,7 @@ A következő lépések a gyakran használt élő adatfolyam-továbbítási alka
 
 >[AZURE.NOTE] Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha egy ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@Microsoft.com e-mail címen.
 
-1. Csatlakoztasson a számítógéphez egy videokamerát. Indítson el és állítson be egy helyszíni valós idejű kódolót, amely képes egy egyféle sávszélességű kimeneti adatfolyam továbbítására a következő protokollok valamelyikével: RTMP, Smooth Streaming vagy RTP (MPEG-TS). További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](http://go.microsoft.com/fwlink/?LinkId=532824)
+1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és állítson be egy helyszíni valós idejű kódolót, amely képes egy egyféle sávszélességű kimeneti adatfolyam továbbítására a következő protokollok valamelyikével: RTMP, Smooth Streaming vagy RTP (MPEG-TS). További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](http://go.microsoft.com/fwlink/?LinkId=532824)
 
     Ezt a lépést a csatorna létrehozása után is elvégezheti.
 
@@ -48,7 +48,7 @@ A következő lépések a gyakran használt élő adatfolyam-továbbítási alka
 
 1. Kérje le a csatorna feldolgozó URL-címét.
 
-    A valós idejű kódoló a feldolgozó URL-en keresztül küldi az adatfolyamot a csatornára.
+    Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
 
 1. Kérje le a csatorna előnézeti URL-címét.
 
@@ -532,6 +532,6 @@ Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a t�
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

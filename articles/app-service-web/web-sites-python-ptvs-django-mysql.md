@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="python"
     ms.topic="get-started-article" 
-    ms.date="06/01/2016"
+    ms.date="07/07/2016"
     ms.author="huvalo"/>
 
 # Django and MySQL on Azure with Python Tools 2.2 for Visual Studio (Django és MySQL az Azure-ban, Python Tools 2.2 for Visual Studio alkalmazással) 
@@ -26,16 +26,16 @@ Ebben az oktatóanyagban a [Python Tools for Visual Studio] (PTVS) alkalmazásá
 > 
 > [PTVS 2.1: Django app with MySQL] (PTVS 2.1: Django-alkalmazás és MySQL) [videó]
 
-A [Python fejlesztői központ] találhat további, az Azure App Service Web Apps szolgáltatásának a PTVS-sel történő fejlesztését ismertető cikkeket a Bottle, a Flask és a Django webes keretrendszerek használatával, olyan szolgáltatások esetében, mint a MongoDB, az Azure Table Storage, a MySQL és az SQL Database. Az App Service-t tárgyaló jelen cikkben szereplő lépések hasonlóak az [Azure Cloud Services] fejlesztése esetében használtakhoz.
+A [Python fejlesztői központban] találhat további, az Azure App Service Web Apps szolgáltatásának PTVS-sel történő fejlesztését ismertető cikkeket a Bottle, a Flask és a Django webes keretrendszerek használatával, olyan szolgáltatások esetében, mint az Azure Table Storage, a MySQL és az SQL Database. Az App Service-t tárgyaló jelen cikkben szereplő lépések hasonlóak az [Azure Cloud Services] fejlesztése esetében használtakhoz.
 
 ## Előfeltételek
 
- - Visual Studio 2013 vagy 2015
- - [Python 2.7, 32 bites]
+ - Visual Studio 2015
+ - [Python 2.7 32 bites] vagy [Python 3.4 32 bites]
  - [Python Tools 2.2 for Visual Studio]
  - [Python Tools 2.2 for Visual Studio Samples VSIX]
- - [Azure SDK Tools for VS 2013] vagy [Azure SDK Tools for VS 2015]
- - Django 1.6 vagy régebbi
+ - [Azure SDK Tools for VS 2015]
+ - Django 1.9 vagy újabb
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -49,7 +49,7 @@ Ebben a szakaszban mintasablon használatával fog létrehozni Visual Studio-pro
 
 1. A Visual Studio felületén válassza a **File** (Fájl), **New Project** (Új projekt) lehetőséget.
 
-1. A PTVS Samples VSIX projektsablonjai a következő helyen érhetőek el: **Python** > **Samples** (Minták). Válassza a **Polls Django Web Project** (Szavazási Django webes projekt) lehetőséget, majd kattintson az OK gombra a projekt létrehozásához.
+1. A [Python Tools 2.2 for Visual Studio Samples VSIX] projektsablonjai a **Python**, **Példák** elem alatt érhetők el. Válassza a **Polls Django Web Project** (Szavazási Django webes projekt) lehetőséget, majd kattintson az OK gombra a projekt létrehozásához.
 
     ![A New Project (Új projekt) párbeszédpanel](./media/web-sites-python-ptvs-django-mysql/PollsDjangoNewProject.png)
 
@@ -57,17 +57,13 @@ Ebben a szakaszban mintasablon használatával fog létrehozni Visual Studio-pro
 
     ![Az External Packages (Külső csomagok) párbeszédpanel](./media/web-sites-python-ptvs-django-mysql/PollsDjangoExternalPackages.png)
 
-1. Alapszintű értelmezőként válassza ki a **Python 2.7** alkalmazást.
+1. Alapszintű értelmezőként válassza ki a **Python 2.7** vagy **Python 3.4** alkalmazást.
 
     ![Az Add Virtual Environment (Virtuális környezet hozzáadása) párbeszédpanel](./media/web-sites-python-ptvs-django-mysql/PollsCommonAddVirtualEnv.png)
 
-1. A **Solution Explorer** (Megoldáskezelő) felületén kattintson a jobb gombbal a projektcsomópontra, majd válassza a **Python**, végül pedig a **Django Sync DB** lehetőséget.
-
-    ![A Django Sync DB parancs](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSyncDB.png)
+1. A **Megoldáskezelő** felületén kattintson a jobb gombbal a projektcsomópontra, majd válassza a **Python**, végül pedig a **Django Migrate** lehetőséget.  Ezután válassza a **Django Create Superuser** elemet.
 
 1. Ekkor megnyílik a Django felügyeleti konzol, majd sqlite-adatbázis jön létre a projektmappában. Kövesse az utasításokat a felhasználó létrehozásához.
-
-    ![A Django felügyeleti konzol ablaka](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
 1. Az alkalmazás működőképességét az `F5` billentyű lenyomásával ellenőrizze.
 
@@ -95,17 +91,11 @@ Másik lehetőségként létrehozhatja saját Azure-beli virtuális gépét, maj
 
 Az alábbi lépéseket követve ingyenes csomaggal rendelkező adatbázist hozhat létre.
 
-1. Jelentkezzen be az [Azure portálra].
+1. Jelentkezzen be az [Azure Portal].
 
 1. A navigációs ablaktábla felső részén kattintson a **NEW** (ÚJ) > **Data + Storage** (Adatok + tárolás) > **MySQL Database** (MySQL-adatbázis) elemre. 
 
-1. A keresőmezőbe írja be a „**mysql**” szöveget, majd kattintson a **MySQL Database** (MySQL-adatbázis) > **Create** (Létrehozás) elemre.
-
-    <!-- ![Choose Add-on Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoClearDBAddon1.png) -->
-
 1. Konfigurálja az új MySQL-adatbázist új erőforráscsoport létrehozásával, majd válassza ki számára a megfelelő helyet.
-
-    <!-- ![Personalize Add-on Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoClearDBAddon2.png) -->
 
 1. A MySQL-adatbázis létrehozását követően kattintson az adatbázis paneljén a **Properties** (Tulajdonságok) lehetőségre.
 
@@ -135,15 +125,13 @@ Ebben a szakaszban a webalkalmazást a most létrehozott MySQL-adatbázis haszn�
 
 1. A Solution Explorer (Megoldáskezelő) **Python Environments** (Python-környezetek) területén kattintson a jobb gombbal a virtuális környezetre, majd válassza az **Install Python Package** (Python-csomag telepítése) lehetőséget.
 
-1. Telepítse a `mysql-python` csomagot az **easy_install** használatával.
+1. Telepítse a `mysqlclient` csomagot a **pip** használatával.
 
     ![Az Install Package (Csomag telepítése) párbeszédpanel](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
 
-1. A **Solution Explorer** (Megoldáskezelő) felületén kattintson a jobb gombbal a projektcsomópontra, majd válassza a **Python**, végül pedig a **Django Sync DB** lehetőséget.
+1. A **Megoldáskezelő** felületén kattintson a jobb gombbal a projektcsomópontra, majd válassza a **Python**, végül pedig a **Django Migrate** lehetőséget.  Ezután válassza a **Django Create Superuser** elemet.
 
     Ekkor létrejönnek az előző szakaszban a MySQL-adatbázishoz létrehozott táblák. Kövesse az utasításokat a felhasználó létrehozásához. Ennek a felhasználónak nem kell megegyeznie a jelen cikk első szakaszában létrehozott felhasználóval, amely az sqlite-adatbázisban található.
-
-    ![A Django felügyeleti konzol ablaka](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
 1. Futtassa az alkalmazást az `F5` billentyű lenyomásával. A **Create Sample Polls** (Mintaszavazások létrehozása) szolgáltatással előállított szavazások, illetve a szavazás során elküldött adatok szerializálása a MySQL-adatbázisban történik.
 
@@ -155,7 +143,7 @@ Az Azure .NET SDK egyszerű módot kínál a webalkalmazása az Azure App Servic
 
     ![A Publish Web (Webes közzététel) párbeszédpanel](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)
 
-1. Kattintson a **Microsoft Azure Web Apps** lehetőségre.
+1. Kattintson a **Microsoft Azure App Service** lehetőségre.
 
 1. A **New** (Új) gombra kattintva hozzon létre egy új webalkalmazást.
 
@@ -165,8 +153,6 @@ Az Azure .NET SDK egyszerű módot kínál a webalkalmazása az Azure App Servic
     - **Erőforráscsoport**
     - **Régió**
     - Hagyja változatlanul a **Database server** (Adatbázis-kiszolgáló) **No database** (Nincs adatbázis) beállítását
-
-    <!-- ![Create Site on Microsoft Azure Dialog](./media/web-sites-python-ptvs-django-mysql/PollsCommonCreateWebSite.png) -->
 
 1. Fogadja el az összes többi alapértelmezett értéket, majd kattintson a **Publish** (Közzététel) gombra.
 
@@ -187,23 +173,23 @@ A következő hivatkozásokat követve tudhat meg többet a Python Tools for Vis
 - [A Django dokumentációja]
 - [MySQL]
 
-További információ: [Python fejlesztői központ](/develop/python/).
+További információ: [Python fejlesztői központban](/develop/python/).
 
 <!--Link references-->
 
-[Python fejlesztői központ]: /develop/python/
+[Python fejlesztői központban]: /develop/python/
 [Azure Cloud Services]: ../cloud-services-python-ptvs.md
 
 <!--External Link references-->
 
-[Azure portálra]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Python Tools 2.2 for Visual Studio Samples VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
-[Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
-[Python 2.7, 32 bites]: http://go.microsoft.com/fwlink/?LinkId=517190 
-[A Python Tools for Visual Studio dokumentációja]: http://aka.ms/ptvsdocs
+[Python 2.7 32 bites]: http://go.microsoft.com/fwlink/?LinkId=517190 
+[Python 3.4 32 bites]: http://go.microsoft.com/fwlink/?LinkId=517191
+[a Python Tools for Visual Studio dokumentációjában]: http://aka.ms/ptvsdocs
 [Remote Debugging on Microsoft Azure (Távoli hibakeresés a Microsoft Azure-ban)]: http://go.microsoft.com/fwlink/?LinkId=624026
 [Webes projektek]: http://go.microsoft.com/fwlink/?LinkId=624027
 [Cloud Service projektek]: http://go.microsoft.com/fwlink/?LinkId=624028
@@ -213,6 +199,6 @@ További információ: [Python fejlesztői központ](/develop/python/).
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

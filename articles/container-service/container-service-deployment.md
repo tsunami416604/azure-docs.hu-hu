@@ -1,13 +1,13 @@
 <properties
    pageTitle="Azure tárolószolgáltatás-fürt üzembe helyezése | Microsoft Azure"
-   description="Azure tárolószolgáltatás-fürt üzembe helyezése az Azure portál, az Azure CLI vagy a PowerShell használatával."
+   description="Azure tárolószolgáltatás-fürt üzembe helyezése az Azure Portal, az Azure CLI vagy a PowerShell használatával."
    services="container-service"
    documentationCenter=""
    authors="rgardler"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
+   keywords="Docker, tárolók, mikroszolgáltatások, Mesos, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -24,65 +24,65 @@ Az Azure tárolószolgáltatással gyorsan üzembe helyezhet népszerű nyílt f
 
 E dokumentum részletes útmutatása alapján üzembe helyezhet egy Azure tárolószolgáltatás-fürtöt az [Azure portál](#creating-a-service-using-the-azure-portal), az [Azure parancssori felülete (CLI)](#creating-a-service-using-the-azure-cli) vagy az [Azure PowerShell modul](#creating-a-service-using-powershell) használatával.  
 
-## Szolgáltatás létrehozása az Azure portál használatával
+## Szolgáltatás létrehozása az Azure Portal használatával
 
-Jelentkezzen be az Azure portálon, válassza az Új elemet, majd keresse meg az **Azure tárolószolgáltatást** az Azure Piactéren.
+Jelentkezzen be az Azure Portalra, válassza az **Új** lehetőséget, és az Azure Marketplace-en keresse meg az **Azure Container Service** elemet.
 
-![Üzemelő példány létrehozása](media/acs-portal1.png)  <br /> 
+![1. üzemelő példány létrehozása](media/acs-portal1.png)  <br />
 
-Válassza ki az **Azure tárolószolgáltatást** és kattintson a **Létrehozásra**.
+Válassza ki az **Azure Container Service** elemet, és kattintson a **Létrehozás** gombra.
 
-![Üzemelő példány létrehozása](media/acs-portal2.png)  <br /> 
+![2. üzemelő példány létrehozása](media/acs-portal2.png)  <br />
 
 Adja meg a következő információkat:
 
-- Felhasználónév – ezt a felhasználónevet fogja használni a fiók az Azure tárolószolgáltatás-fürt összes virtuális gépén és a virtulálisgép-skálázási készletekben.
-- Előfizetés – válasszon ki egy Azure-előfizetést.
-- Erőforráscsoport – válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
-- Hely – válassza ki azt az Azure-régiót, amelyben az Azure tárolószolgáltatást üzembe kívánja helyezni.
-- Nyilvános SSH kulcs – adja meg az Azure tárolószolgáltatás virtuális gépeinek hitelesítésére szolgáló nyilvános kulcsot. Nagyon fontos, hogy a kulcs ne tartalmazzon sortörést, és hogy szerepeljen benne az „ssh-rsa” előtag és a „felhasználónév@tartomány” utótag. A kulcsot a következőhöz hasonlóan kell megadni: „**ssh-rsa AAAAB3Nz...KIVÁGOTTTARTALOM...UcyupgH azurefelhasználó@linuxvm**” Az SSH-kulcsok létrehozásához útmutatást a [Linux]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) és a [Windows]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/) rendszerhez készült cikkben talál.
+- **Felhasználónév**: ezt a felhasználónevet fogja használni a fiók az Azure tárolószolgáltatás-fürt összes virtuális gépén és a virtulálisgép-skálázási készletekben.
+- **Előfizetés**: válasszon ki egy Azure-előfizetést.
+- **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
+- **Hely**: válassza ki azt az Azure-régiót, amelyben az Azure Container Service-t üzembe kívánja helyezni.
+- **Nyilvános SSH kulcs**: adja meg az Azure Container Service virtuális gépeinek hitelesítésére szolgáló nyilvános kulcsot. Nagyon fontos, hogy a kulcs ne tartalmazzon sortörést, és hogy szerepeljen benne az „ssh-rsa” előtag és a „felhasználónév@tartomány” utótag. A következőhöz hasonlóan kell kinéznie: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azurefelhasználó@linuxvm**. A Secure Shell- (SSH-) kulcsok létrehozására vonatkozó útmutatásért tekintse meg a [Linuxra]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) és a [Windowsra]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/) vonatkozó cikkeket.
 
-A folytatáshoz kattintson az **OK** gombra.
+Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
-![Üzemelő példány létrehozása](media/acs-portal3.png)  <br /> 
+![3. üzemelő példány létrehozása](media/acs-portal3.png)  <br />
 
 Válassza ki a vezénylés típusát. A következő lehetőségek közül választhat:
 
-- DC/OS – DC/OS-fürt üzembe helyezése.
-- Swarm – Docker Swarm-fürt üzembe helyezése.
+- **DC/OS**: DC/OS fürt üzembe helyezése.
+- **Swarm**: Docker Swarm-fürt üzembe helyezése.
 
-A folytatáshoz kattintson az **OK** gombra.
+Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
-![Üzemelő példány létrehozása](media/acs-portal4.png)  <br /> 
+![4. üzemelő példány létrehozása](media/acs-portal4.png)  <br />
 
 Adja meg a következő információkat:
 
-- Főkiszolgálók száma – a főkiszolgálók száma a fürtben.
-- Ügynökök száma – a Docker Swarm esetében ez lesz az ügynökök kezdeti száma az ügynökskálázási készletben. A DC/OS esetében ez lesz az ügynökök kezdeti száma a privát skálázási készletekben. Létrejön továbbá egy nyilvános skálázási készletek is, amely meghatározott számú ügynököt tartalmaz. A nyilvános skálázási készlet ügynökeinek száma a fürtben létrehozott főkiszolgálók számától függ. 1 főkiszolgáló esetén 1 nyilvános ügynököt, 3-5 főkiszolgáló esetén pedig 2 nyilvános ügynököt tartalmaz a készlet.
-- Ügynök-virtuálisgép mérete – az ügynök-virtuálisgépek mérete.
-- DNS-előtag – globálisan egyedi név, amely a szolgáltatás teljes tartományneveiben a főrész előtagja lesz. 
+- **Főkiszolgálók száma**: a főkiszolgálók száma a fürtben.
+- **Ügynökök száma**: a Docker Swarm esetében ez lesz az ügynökök kezdeti száma az ügynökskálázási készletben. A DC/OS esetében ez lesz az ügynökök kezdeti száma a privát skálázási készletekben. Ezenkívül létrejön egy nyilvános méretkészlet, amely az ügynökök előre meghatározott számát tartalmazza. Az ebben a nyilvános méretkészletben található ügynökök számát az határozza meg, hogy hány főkiszolgáló jött létre a fürtön. Egy nyilvános ügynök tartozik egy főkiszolgálóhoz, és két nyilvános ügynök három vagy öt főkiszolgálóhoz.
+- **Ügynök-virtuálisgép mérete**: az ügynök-virtuálisgépek mérete.
+- **DNS-előtag**: globálisan egyedi név, amely a szolgáltatás teljes tartományneveiben a főrész előtagja lesz.
 
-A folytatáshoz kattintson az **OK** gombra.
+Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
-![Üzemelő példány létrehozása](media/acs-portal5.png)  <br /> 
+![5. üzemelő példány létrehozása](media/acs-portal5.png)  <br />
 
-Kattintson az **OK** gombra, ha a szolgáltatás érvényesítése befejeződött.
+Kattintson az **OK** gombra az érvényesítés befejezése után.
 
-![Üzemelő példány létrehozása](media/acs-portal6.png)  <br /> 
+![6. üzemelő példány létrehozása](media/acs-portal6.png)  <br />
 
 Az üzembe helyezés elindításához kattintson a **Létrehozás** gombra.
 
-![Üzemelő példány létrehozása](media/acs-portal7.png)  <br /> 
+![7. üzemelő példány létrehozása](media/acs-portal7.png)  <br />
 
-Ha azt választotta, hogy az üzemelő példányt rögzíti az Azure portálon, megjelenik az üzembe helyezés állapota.
+Ha úgy döntött, hogy rögzíti az üzembe helyezést az Azure Portalon, megtekintheti annak állapotát.
 
-![Üzemelő példány létrehozása](media/acs-portal8.png)  <br /> 
+![8. üzemelő példány létrehozása](media/acs-portal8.png)  <br />
 
 Az üzembe helyezés befejezése után az Azure tárolószolgáltatás-fürt használatra kész.
 
 ## Szolgáltatáspéldány létrehozása az Azure CLI használatával
 
-Az Azure tárolószolgáltatás-példány parancssorban történő létrehozásához Azure előfizetésre van szükség. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). Ezen felül telepítenie és konfigurálnia kell az Azure CLI-t is.
+Az Azure tárolószolgáltatás-példány parancssorban történő létrehozásához Azure előfizetésre van szükség. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). Ezen felül [telepítenie](../xplat-cli-install.md) és [konfigurálnia](../xplat-cli-connect.md) kell az Azure CLI-t is.
 
 DC/OS- vagy Docker Swarm-fürt üzembe helyezéséhez válassza az alábbi GitHub-sablonok egyikét. A két sablon az alapértelmezett vezénylési típus kivételével azonos.
 
@@ -106,14 +106,14 @@ Ezt követően állítsa be az Azure CLI-eszközeit az Azure Resource Manager ha
 azure config mode arm
 ```
 
-Hozzon létre egy Azure-erőforráscsoportot és egy tárolószolgáltatás-fürtöt az alábbi paranccsal.
+Hozzon létre egy Azure-erőforráscsoportot és egy tárolószolgáltatás-fürtöt az alábbi paranccsal, ahol:
 
-- Az **ERŐFORRÁSCSOPORT** annak az erőforráscsoportnak a neve, amelyet ehhez a szolgáltatáshoz szeretne használni.
-- A **HELY** az az Azure-régió, ahol az erőforráscsoportot és az Azure tárolószolgáltatást üzembe szeretné helyezni.
-- A **SABLON_URI_AZONOSÍTÓJA** az üzembe helyezési fájl helye. **Megjegyzés:** ennek a RAW-fájlnak kell lennie, és nem egy GitHub-felületre mutató hivatkozásnak. Az URL-cím megkereséséhez válassza ki az azuredeploy.json fájlt a GitHubon, majd kattintson a RAW gombra:
+- A **RESOURCE_GROUP** a szolgáltatáshoz használni kívánt erőforráscsoport neve.
+- A **HELY** az az Azure-régió, ahol az erőforráscsoportot és az Azure Container Service-t üzembe szeretné helyezni.
+- A **SABLON_URI_AZONOSÍTÓJA** az üzembe helyezési fájl helye. Vegye figyelembe, hogy ennek nyersfájlnak kell lennie, nem a GitHub felhasználói felületre mutató elemnek. Az URL-cím megkereséséhez válassza ki az azuredeploy.json fájlt a GitHubon, majd kattintson a **Raw** gombra.
 
-> Megjegyzés: a parancs futtatásakor a rendszerhéj kérni fogja az üzembe helyezési paramétereket.
- 
+> [AZURE.NOTE] A parancs futtatásakor a rendszerhéj kérni fogja az üzembe helyezési paraméterek értékeit.
+
 ```bash
 # sample deployment
 
@@ -161,7 +161,7 @@ Az Azure-ba való bejelentkezéshez használja a `Login-AzureRMAccount` parancso
 Login-AzureRmAccount
 ```
 
-Ha az üzembe helyezést új erőforráscsoportban végzi, először létre kell hoznia az erőforráscsoportot. Új erőforráscsoport létrehozásához használja a `New-AzureRmResourceGroup` parancsot az erőforráscsoport nevének és a célrégiónak a megadásával:
+Ha az üzembe helyezést új erőforráscsoportban végzi, először létre kell hoznia az erőforráscsoportot. Új erőforráscsoport létrehozásához használja a `New-AzureRmResourceGroup` parancsot, és adjon meg egy erőforráscsoport-nevet és célrégiót:
 
 ```powershell
 New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
@@ -188,15 +188,15 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 ```
 
 ## Következő lépések
- 
-Most, hogy létrehozott egy működő fürtöt, tekintse meg a kapcsolati és kezelési információkról szóló dokumentumokat is.
- 
-[Csatlakozás Azure tárolószolgáltatás-fürthöz](container-service-connect.md)
-[Az Azure tárolószolgáltatás és a DC/OS használata](container-service-mesos-marathon-rest.md)
-[Az Azure tárolószolgáltatás és a Docker Swarm használata](container-service-docker-swarm.md)
+
+Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsolatra és a felügyeletre vonatkozó részletekért:
+
+- [Csatlakozás Azure tárolószolgáltatási fürthöz](container-service-connect.md)
+- [Az Azure Container Service és a DC/OS használata](container-service-mesos-marathon-rest.md)
+- [Az Azure Container Service és a Docker Swarm használata](container-service-docker-swarm.md)
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

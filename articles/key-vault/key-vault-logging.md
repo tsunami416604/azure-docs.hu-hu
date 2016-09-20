@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="05/06/2016"
+    ms.date="07/15/2016"
     ms.author="cabailey"/>
 
 # Az Azure Key Vault naplózása #
@@ -32,9 +32,11 @@ Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával, a t�
 
 >[AZURE.NOTE]  Az oktatóanyag nem tartalmazza a kulcstárolók, a kulcsok és titkos kulcsok létrehozásának lépéseit. Ezekről a [Get started with Azure Key Vault](key-vault-get-started.md) (Bevezetés az Azure Key Vault használatába) című cikkben találhat információt. A platformfüggetlen parancssori felületre vonatkozó utasításokat megtekintheti [ebben a megfelelő oktatóanyagban](key-vault-manage-with-cli.md).
 >
->Az Azure Key Vault jelenleg nem konfigurálható az Azure-portálon. Ehelyett kövesse ezeket az Azure PowerShell-utasításokat.
+>Az Azure Key Vault jelenleg nem konfigurálható az Azure-portálon. Ehelyett használja az itt szereplő Azure PowerShell-utasításokat.
 
-Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az az Azure Key Vault?) című cikkben találhat.
+Az összegyűjtött naplók az Operations Management Suite csomag Log Analytics eszközével jeleníthetők meg. További információ: [Azure Key Vault (Preview) solution in Log Analytics](../log-analytics/log-analytics-azure-key-vault.md) (Az Azure Key Vault (előzetes verzió) megoldás a Log Analyticsben).
+
+Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az Azure Key Vault?) című cikkben talál.
 
 ## Előfeltételek
 
@@ -136,7 +138,7 @@ A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
 Mivel ugyanazt a tárfiókot több erőforrásból gyűjtött naplók tárolására is használhatja, a blob nevének teljes erőforrás-azonosítója segít abban, hogy csak a szükséges blobokat töltse le, illetve csak azokhoz férjen hozzá. Előtte azonban nézzük meg, hogyan tölthető le az összes blob. 
 
-Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Például:
+Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Példa:
 
     New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 
@@ -150,7 +152,7 @@ A listát a „Get-AzureStorageBlobContent” paranccsal töltse le a mappába:
 
 A második parancs futtatásakor a blob nevének **/** elválasztója egy teljes mapparendszert létrehoz a célmappában, és a program ebben a rendszerben tárolja majd fájlokként a letöltött blobokat.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
 
 - Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
@@ -219,7 +221,7 @@ Az alábbi táblázat a mezők neveit és leírásait sorolja fel.
  
 
 
-Az **operationName** mező értékei ObjectVerb formátumúak. Például:
+Az **operationName** mező értékei ObjectVerb formátumúak. Példa:
 
 - Minden kulcstárolón elvégzett művelet „Vault`<action>`” formátumú, például `VaultGet` és `VaultCreate`. 
 
@@ -262,19 +264,17 @@ Az alábbi táblázat az operationName műveleteket és a megfelelő REST API-pa
 
 
 
-## <a id="next"></a>További lépések ##
+## <a id="next"></a>Következő lépések ##
 
 Az Azure Key Vault webalkalmazásban való használatáról a [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Az Azure Key Vault webalkalmazással való használata) című témakörben találhat útmutatást.
 
 Programozási hivatkozások: [Azure Key Vault developer’s guide](key-vault-developers-guide.md) (Az Azure Key Vault fejlesztői útmutatója).
 
 Az Azure Key Vaultra vonatkozó Azure PowerShell 1.0-parancsmagok listáját az [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (Az Azure Key Vault parancsmagjai) című témakörben találja. 
- 
+
+A kulcsrotálással és a naplózással kapcsolatos oktatóanyag: [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md) (A Key Vault beállítása átfogó kulcsrotálással és naplózással).
 
 
-
-
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

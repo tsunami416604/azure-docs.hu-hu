@@ -13,7 +13,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="02/18/2016"
+    ms.date="06/08/2016"
     ms.author="heidist"/>
 
 # A Fiddler használata az Azure Search REST API-k értékeléséhez és teszteléséhez
@@ -47,33 +47,33 @@ Az alábbi lépések elvégzéséhez szüksége lesz egy Azure Search szolgálta
 
     A teljes URL-címnek az alábbi példához kell hasonlítania.
 
-         https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
+            https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
 
 4.  Adja meg a kérelem fejlécét, a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélve.
 
-        User-Agent: Fiddler
-        host: my-app.search.windows.net
-        content-type: application/json
-        api-key: 1111222233334444
+            User-Agent: Fiddler
+            host: my-app.search.windows.net
+            content-type: application/json
+            api-key: 1111222233334444
 
 5.  A kérelem törzse területre illessze be az index definícióját alkotó mezőket.
-
-         {
-        "name": "hotels",  
-        "fields": [
-          {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
-          {"name": "baseRate", "type": "Edm.Double"},
-          {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-          {"name": "hotelName", "type": "Edm.String"},
-          {"name": "category", "type": "Edm.String"},
-          {"name": "tags", "type": "Collection(Edm.String)"},
-          {"name": "parkingIncluded", "type": "Edm.Boolean"},
-          {"name": "smokingAllowed", "type": "Edm.Boolean"},
-          {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-          {"name": "rating", "type": "Edm.Int32"},
-          {"name": "location", "type": "Edm.GeographyPoint"}
-         ]
-        }
+            
+             {
+            "name": "hotels",  
+            "fields": [
+              {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
+              {"name": "baseRate", "type": "Edm.Double"},
+              {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
+              {"name": "hotelName", "type": "Edm.String"},
+              {"name": "category", "type": "Edm.String"},
+              {"name": "tags", "type": "Collection(Edm.String)"},
+              {"name": "parkingIncluded", "type": "Edm.Boolean"},
+              {"name": "smokingAllowed", "type": "Edm.Boolean"},
+              {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
+              {"name": "rating", "type": "Edm.Int32"},
+              {"name": "location", "type": "Edm.GeographyPoint"}
+             ]
+            }
 
 6.  Kattintson a **Végrehajtás** parancsra.
 
@@ -91,77 +91,77 @@ A **Szerkesztő** lapon a dokumentumok küldésére szolgáló kérelem az aláb
 
 2.  Adjon meg egy olyan URL-címet, amely a HTTPS előtaggal kezdődik, amelyet a szolgáltatási URL-cím, majd az „/indexes/<'indexname'>/docs/index?api-version=2015-02-28” karakterlánc követ. A teljes URL-címnek az alábbi példához kell hasonlítania.
 
-        https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+            https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
 
 3.  A kérelem fejléce azonos az előzővel. Ne feledje, hogy a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélte.
 
-        User-Agent: Fiddler
-        host: my-app.search.windows.net
-        content-type: application/json
-        api-key: 1111222233334444
+            User-Agent: Fiddler
+            host: my-app.search.windows.net
+            content-type: application/json
+            api-key: 1111222233334444
 
 4.  A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot tartalmaz.
 
-        {
-        "value": [
-        {
-            "@search.action": "upload",
-            "hotelId": "1",
-            "baseRate": 199.0,
-            "description": "Best hotel in town",
-            "hotelName": "Fancy Stay",
-            "category": "Luxury",
-            "tags": ["pool", "view", "wifi", "concierge"],
-            "parkingIncluded": false,
-            "smokingAllowed": false,
-            "lastRenovationDate": "2010-06-27T00:00:00Z",
-            "rating": 5,
-            "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
-          },
-          {
-            "@search.action": "upload",
-            "hotelId": "2",
-            "baseRate": 79.99,
-            "description": "Cheapest hotel in town",
-            "hotelName": "Roach Motel",
-            "category": "Budget",
-            "tags": ["motel", "budget"],
-            "parkingIncluded": true,
-            "smokingAllowed": true,
-            "lastRenovationDate": "1982-04-28T00:00:00Z",
-            "rating": 1,
-            "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
-          },
-          {
-            "@search.action": "upload",
-            "hotelId": "3",
-            "baseRate": 279.99,
-            "description": "Surprisingly expensive",
-            "hotelName": "Dew Drop Inn",
-            "category": "Bed and Breakfast",
-            "tags": ["charming", "quaint"],
-            "parkingIncluded": true,
-            "smokingAllowed": false,
-            "lastRenovationDate": null,
-            "rating": 4,
-            "location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
-          },
-          {
-            "@search.action": "upload",
-            "hotelId": "4",
-            "baseRate": 220.00,
-            "description": "This could be the one",
-            "hotelName": "A Hotel for Everyone",
-            "category": "Basic hotel",
-            "tags": ["pool", "wifi"],
-            "parkingIncluded": true,
-            "smokingAllowed": false,
-            "lastRenovationDate": null,
-            "rating": 4,
-            "location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
-          }
-         ]
-        }
+            {
+            "value": [
+            {
+                "@search.action": "upload",
+                "hotelId": "1",
+                "baseRate": 199.0,
+                "description": "Best hotel in town",
+                "hotelName": "Fancy Stay",
+                "category": "Luxury",
+                "tags": ["pool", "view", "wifi", "concierge"],
+                "parkingIncluded": false,
+                "smokingAllowed": false,
+                "lastRenovationDate": "2010-06-27T00:00:00Z",
+                "rating": 5,
+                "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
+              },
+              {
+                "@search.action": "upload",
+                "hotelId": "2",
+                "baseRate": 79.99,
+                "description": "Cheapest hotel in town",
+                "hotelName": "Roach Motel",
+                "category": "Budget",
+                "tags": ["motel", "budget"],
+                "parkingIncluded": true,
+                "smokingAllowed": true,
+                "lastRenovationDate": "1982-04-28T00:00:00Z",
+                "rating": 1,
+                "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
+              },
+              {
+                "@search.action": "upload",
+                "hotelId": "3",
+                "baseRate": 279.99,
+                "description": "Surprisingly expensive",
+                "hotelName": "Dew Drop Inn",
+                "category": "Bed and Breakfast",
+                "tags": ["charming", "quaint"],
+                "parkingIncluded": true,
+                "smokingAllowed": false,
+                "lastRenovationDate": null,
+                "rating": 4,
+                "location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
+              },
+              {
+                "@search.action": "upload",
+                "hotelId": "4",
+                "baseRate": 220.00,
+                "description": "This could be the one",
+                "hotelName": "A Hotel for Everyone",
+                "category": "Basic hotel",
+                "tags": ["pool", "wifi"],
+                "parkingIncluded": true,
+                "smokingAllowed": false,
+                "lastRenovationDate": null,
+                "rating": 4,
+                "location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
+              }
+             ]
+            }
 
 8.  Kattintson a **Végrehajtás** parancsra.
 
@@ -176,17 +176,17 @@ Most, hogy az index és a dokumentumok is betöltődtek, lekérdezheti őket.  A
 1.  Válassza a **GET** lehetőséget.
 
 2.  Adjon meg egy olyan URL-címet, amely a HTTPS előtaggal kezdődik, amelyet a szolgáltatási URL, majd az „/indexes/<'indexname'>/docs?” karakterlánc, végül a lekérdezési paraméterek követnek. Példaképpen használja a következő URL-címet, és cserélje le benne a mintaállomásnevet egy, az Ön szolgáltatásában érvényes állomásnévvel.
-
-        https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
+    
+            https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
 
     Ez a lekérdezés a „motel” kifejezést keresi, és értékkorlátozó kategóriákat ad vissza az értékelésekhez.
 
 3.  A kérelem fejléce azonos az előzővel. Ne feledje, hogy a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélte.
 
-        User-Agent: Fiddler
-        host: my-app.search.windows.net
-        content-type: application/json
-        api-key: 1111222233334444
+            User-Agent: Fiddler
+            host: my-app.search.windows.net
+            content-type: application/json
+            api-key: 1111222233334444
 
 200-as válaszkódnak kell érkeznie, a válasz kimenetének pedig az alábbi képernyőfelvételhez kell hasonlítania.
 
@@ -212,14 +212,14 @@ A rendszertől a dokumentumok számát és a tárhelyhasználatot is lekérdezhe
 
 2.  Adjon meg egy olyan URL-címet, amelyben a szolgáltatási URL-címet az „/indexes/hotels/stats?api-version=2015-02-28” karakterlánc követi.
 
-        https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
+            https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
 
 3.  Adja meg a kérelem fejlécét, a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélve.
 
-        User-Agent: Fiddler
-        host: my-app.search.windows.net
-        content-type: application/json
-        api-key: 1111222233334444
+            User-Agent: Fiddler
+            host: my-app.search.windows.net
+            content-type: application/json
+            api-key: 1111222233334444
 
 4.  Hagyja üresen a kérés törzsét.
 
@@ -241,6 +241,6 @@ Tekintse meg [A Search szolgáltatás kezelése az Azure rendszerben](search-man
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

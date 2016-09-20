@@ -1,10 +1,10 @@
 <properties 
     pageTitle="A Node.js megismerése – DocumentDB Node.js oktatóanyag | Microsoft Azure" 
     description="A Node.js megismerése Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure Websitesban tárolt Node.js Express-webalkalmazások adatait a Microsoft Azure DocumentDB segítségével." 
-    keywords="Application development, database tutorial, learn node.js, node.js tutorial, documentdb, azure, Microsoft azure"
+    keywords="Alkalmazásfejlesztés, adatbázis-oktatóanyag, a node.js megismerése, node.js-oktatóanyag, documentdb, azure, Microsoft Azure"
     services="documentdb" 
     documentationCenter="nodejs" 
-    authors="aliuy" 
+    authors="AndrewHoh" 
     manager="jhubbard" 
     editor="cgronlun"/>
 
@@ -14,8 +14,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="nodejs" 
     ms.topic="hero-article" 
-    ms.date="04/18/2016" 
-    ms.author="andrl"/>
+    ms.date="08/25/2016" 
+    ms.author="anhoh"/>
 
 # <a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása a DocumentDB használatával
 
@@ -165,11 +165,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
                                 id: collectionId
                             };
                             
-                            var requestOptions = {
-                                offerType: 'S1'
-                            };
-                            
-                            client.createCollection(databaseLink, collectionSpec, requestOptions, function (err, created) {
+                            client.createCollection(databaseLink, collectionSpec, function (err, created) {
                                 callback(null, created);
                             });
         
@@ -183,8 +179,9 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
                 
         module.exports = DocDBUtils;
 
-> [AZURE.TIP] A createCollection metódus tartalmazhat egy opcionális requestOptions paramétert is, amellyel megadható a gyűjtemény ajánlattípusa. Ha nem ad meg értéket a requestOptions.offerType paraméter esetében, a gyűjtemény az alapértelmezett ajánlattípus használatával jön létre.
-> A DocumentDB ajánlattípusaival kapcsolatos további információkért lásd: [Performance levels in DocumentDB](documentdb-performance-levels.md) (A DocumentDB teljesítményszintjei) 
+    > [AZURE.TIP] A createCollection metódus tartalmazhat egy opcionális requestOptions paramétert is, amellyel megadható a gyűjtemény ajánlattípusa. Ha nem ad meg értéket a requestOptions.offerType paraméter esetében, a gyűjtemény az alapértelmezett ajánlattípus használatával jön létre.
+    >
+    > A DocumentDB ajánlattípusaival kapcsolatos további információkért lásd: [Performance levels in DocumentDB](documentdb-performance-levels.md) (A DocumentDB teljesítményszintjei) 
         
 3. Mentse és zárja be a **docdbUtils.js** fájlt.
 
@@ -549,7 +546,7 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
 
 ## <a name="_Toc395783182"></a>7. lépés: Az alkalmazásfejlesztési projekt telepítése az Azure Websitesra
 
-1. Ha még nem tette meg, engedélyezzen egy Git-tárházat az Azure Websites számára. Ehhez az alábbi témakörben találhat útmutatót: [Continuous deployment using GIT in Azure App Service](../app-service-web/web-sites-publish-source-control.md) (Folyamatos üzembe helyezés a GIT használatával, az Azure App Service-ben).
+1. Ha még nem tette meg, engedélyezzen egy Git-tárházat az Azure Websites számára. Ehhez a következő témakörben találhat útmutatót: [Local Git Deployment to Azure App Service](../app-service-web/app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
 2. Adja hozzá Azure-webhelyét távoli Git-elemként.
 
@@ -576,6 +573,6 @@ További információk: [Node.js fejlesztői központ](https://azure.microsoft.c
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

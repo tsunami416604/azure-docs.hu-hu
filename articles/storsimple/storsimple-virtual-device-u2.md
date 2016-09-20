@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/29/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # A StorSimple virtuális eszköz üzembe helyezése és kezelése az Azure-ban
@@ -33,7 +33,7 @@ A StorSimple virtuális eszköz két modellben érhető el: a hagyományos 8010-
 | **Azure VM**              | Standard_A3 (4 mag, 7 GB memória)                                                                      | Standard_DS3 (4 mag, 14 GB memória)                                                                                                                          |
 | **Verziók kompatibilitása** | A 2. frissítés előzetes verzióját vagy újabb verziókat futtató verziók                                             | A 2. frissítést vagy újabb verziókat futtató verziók                                                                                                  |
 | **Régiónkénti elérhetőség**   | Minden Azure-régió                                                         | A Premium szintű Storage-ot támogató Azure-régiók<br></br>A régiók listáját lásd: [A 8020-as modellt támogató régiók](#supported-regions-for-8020) |
-| **Tárolási típus**          | A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról]() | A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium szintű tárfiók létrehozásáról](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)                                                               |
+| **Tárolási típus**          | A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról]() | A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)                                                               |
 | **Útmutató a számítási feladatokhoz**     | A fájlok elemszintű lekérése a biztonsági másolatokból                                              | Felhőalapú fejlesztési és tesztelési forgatókönyvek, kis késés, nagyobb teljesítményű számítási feladatok <br></br>Másodlagos vészhelyreállítási eszköz                                                                                            |
  
 <sup>1</sup> *Korábbi nevén az 1100-as*.
@@ -116,7 +116,7 @@ Hajtsa végre a következő frissítéseket az Azure StorSimple eszközön a vir
 
 - Vegyen fel [hozzáférés-vezérlési rekordokat](storsimple-manage-acrs.md) azokon a gépekhez, amelyek a virtuális eszköz gazdakiszolgálói lesznek.
 
-- A virtuális eszközével megegyező régióban lévő [tárfiókot](storsimple-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A virtuális eszközzel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard szintű Storage-fiók](), illetve a [Premium szintű Storage-fiók ](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk) létrehozásáról
+- A virtuális eszközével megegyező régióban lévő [tárfiókot](storsimple-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A virtuális eszközzel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók](), illetve a [Premium Storage-fiók ](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk) létrehozásáról
 
 - A virtuális eszköz létrehozásához ne használja ugyanazt a tárfiókot, amelyet az adataihoz is használ. Ugyanazon tárfiók használata esetén a teljesítmény gyenge lehet.
 
@@ -274,7 +274,7 @@ Ha törli vagy leállítja a virtuális eszközt, az **Offline** állapottal fog
 
    
 
-## További lépések
+## Következő lépések
 
 - Tekintse át, hogyan végezhető el [a virtuális eszköz felügyelete a StorSimple Manager szolgáltatással](storsimple-manager-service-administration.md).
  
@@ -283,6 +283,6 @@ Ha törli vagy leállítja a virtuális eszközt, az **Offline** állapottal fog
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

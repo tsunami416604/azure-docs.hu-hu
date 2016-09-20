@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Oktatóanyag: U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
@@ -139,7 +139,7 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
 
     - **Automatikus formázás**
 
-        A felhasználók a kód szerkezete alapján módosíthatják a Hatókör parancsfájl behúzásának mértékét az Edit (Szerkesztés) -> (Advanced) Speciális menüben:
+        A felhasználók a kód szerkezete alapján módosíthatják az U-SQL szkript behúzásának mértékét az Edit (Szerkesztés) -> (Advanced) Speciális menüben:
 
         - Dokumentum formázása (Ctrl+E, D): a teljes dokumentumot formázza   
         - Kijelölés formázása (Ctrl+K, Ctrl+F): a kijelölt részletet formázza. Ha semmi sincs kijelölve, ez a parancs azt a sort formázza, amelyben a kurzor áll.  
@@ -175,7 +175,7 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
 
     * Feladat összegzése. Megjeleníti az aktuális feladattal kapcsolatos összegző információkat, pl. az állapotot, az előrehaladást, a végrehajtás idejét, a futtatókörnyezet nevét vagy a küldőt.   
     * Feladat részletei. Részletes információkat ad a feladatról, köztük a parancsfájlt, a forrásokat és a Vertex végrehajtási nézetet.
-    * Feladat grafikonjai. Négy grafikonon jeleníti meg a feladattal kapcsolatos információkat: az előrehaladást, az olvasott és írt adatok mennyiségét, a végrehajtás idejét, a csomópontonkénti átlagos végrehajtási időt, az átviteli be- és kimenetet.
+    * Feladat grafikonjai. Négy grafikonon jeleníti meg a feladattal kapcsolatos információkat: az előrehaladást, az olvasott és írt adatok mennyiségét, a végrehajtás idejét, a csomópontonkénti átlagos végrehajtási időt, valamint az átviteli be- és kimenetet.
     * Metaadat-műveletek. Megjelenít minden metaadatokkal kapcsolatos műveletet.
     * Állapotelőzmények.
     * Diagnosztika. A Data Lake Tools for Visual Studio automatikusan diagnosztizálja a feladat végrehajtását. Értesítéseket küld, ha hibák vagy teljesítményproblémák lépnek fel a feladatokban. További információért lásd a Feladatdiagnosztika (hivatkozás később) részt.
@@ -279,7 +279,7 @@ A következő eljárás csak a Visual Studio 2015 esetében működik. A régebb
 
 A Data Lake Analytics különböző eszközökkel való használatának megismeréséhez lásd:
 
-- [A Data Lake Analytics használatának első lépései az Azure portállal](data-lake-analytics-get-started-portal.md)
+- [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)
 - [A Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md)
 - [A Data Lake Analytics használatának első lépései a .NET SDK-val](data-lake-analytics-get-started-net-sdk.md)
 
@@ -292,7 +292,7 @@ További fejlesztői témakörökért lásd:
 
 ##„A” melléklet – PowerShell-példa az oktatóanyag előkészítéséhez
 
-A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics-fiókot és a forrásadatokat. Ezt átugorva a [U-SQL-parancsfájlok fejlesztése](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts) részhez léphet.
+A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics-fiókot és a forrásadatokat. Ezt átugorva az [U-SQL-parancsfájlok fejlesztése](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts) részhez léphet.
 
     #region - used for creating Azure service names
     $nameToken = "<Enter an alias>"
@@ -364,6 +364,6 @@ A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

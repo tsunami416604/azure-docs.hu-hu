@@ -6,19 +6,19 @@
     authors="mgoedtel"
     manager="jwhit"
     editor=""
-    keywords="azure powershell, powershell script tutorial, powershell automation"/>
+    keywords="azure powershell, powershell-szkript oktatóanyag, powershell automation"/>
 <tags
     ms.service="automation"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/02/2016"
+    ms.date="07/19/2016"
     ms.author="magoedte;sngun"/>
 
 # Az első PowerShell-forgatókönyvem
 
-> [AZURE.SELECTOR] - [Grafikus](automation-first-runbook-graphical.md) - [PowerShell](automation-first-runbook-textual-PowerShell.md) - [PowerShell munkafolyamat](automation-first-runbook-textual.md)
+> [AZURE.SELECTOR] - [Grafikus](automation-first-runbook-graphical.md) - [PowerShell](automation-first-runbook-textual-PowerShell.md) - [PowerShell munkafolyamat](automation-first-runbook-textual.md)  
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre az Azure Automationben egy [PowerShell-forgatókönyvet](automation-runbook-types.md#powershell-runbooks). Egy egyszerű forgatókönyvvel fogunk kezdeni, amelyet tesztelünk és közzé is teszünk, és bemutatjuk a forgatókönyv állapotának nyomon követését is. Ezután módosítjuk a forgatókönyvet, hogy ténylegesen kezeljen Azure-erőforrásokat, ebben az esetben elindítson egy Azure virtuális gépet. Ezután még robusztusabbá tesszük a forgatókönyvet, és forgatókönyv-paramétereket adunk hozzá.
 
@@ -106,7 +106,7 @@ Most már teszteltük és közzétettük a forgatókönyvet, de még nem csinál
     ``` 
 <br>
 4.  Kattintson a **Teszt panel** elemre, hogy tesztelhessük forgatókönyvet.
-5.  Kattintson az **Indítás** gombra a teszt elindításához. Ha kész, a kimenetnek a fiókja alapvető adatait kell megjelenítenie. Ez ellenőrzi, hogy érvényes-e a hitelesítő adat. <br> ![Hitelesítés](media/automation-first-runbook-textual-powershell/runbook-auth-results.png)
+5.  Kattintson az **Indítás** gombra a teszt elindításához. Ha kész, a kimenetnek a fiókja alapvető adatait kell megjelenítenie, a következőhöz hasonló módon. Ez ellenőrzi, hogy érvényes-e a hitelesítő adat. <br> ![Hitelesítés](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
 ## 6. lépés: Kód hozzáadása a virtuális gép indításához
 
@@ -117,7 +117,7 @@ Most, hogy a forgatókönyv hitelesítést végez az Azure-előfizetésünkön, 
     ```
      $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint 
+     -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint 
      Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
      ```
 <br>
@@ -137,7 +137,7 @@ A forgatókönyvünk jelenleg elindítja a forgatókönyvben szoftveresen rögz�
     )
      $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint 
+     -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint 
      Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
      ```
 <br> 
@@ -167,6 +167,6 @@ A PowerShell-forgatókönyvek életciklusa, képességei és felügyelete megegy
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

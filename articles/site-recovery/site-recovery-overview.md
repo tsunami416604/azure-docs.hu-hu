@@ -20,13 +20,20 @@
 
 Üdvözli Önt az Azure Site Recovery szolgáltatás! Kezdje ezzel a cikkel, hogy gyorsan áttekinthesse a Site Recovery szolgáltatás működését, illetve azt, hogyan járulhat hozzá a szolgáltatás üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégiájának megvalósításához.
 
-Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md). Ez a cikk mindkét modellre vonatkozik. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
-
 ## Áttekintés
 
-A szervezete BCDR-stratégiájának egyik fontos része, hogy tudja, hogyan kell fenntartani a vállalati munkaterheléseket és alkalmazásokat, illetve azok futtatását tervezett és nem tervezett leállások esetén.
+A legtöbb vállalatnál szükség van üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégiára, amely meghatározza, hogy hogyan tudnak az alkalmazások, a számítási feladatok és az adatok üzemben maradni a tervezett és nem tervezett leállások során, illetve, hogy hogyan lehet minél gyorsabban visszaállni a normál működésre. Fontos, hogy a BCDR stratégia gondoskodjon a vállalati adatok biztonságáról és helyreállíthatóságáról, és lehetővé tegye, hogy a számítási feladatok még vészhelyzet esetén se álljanak le. 
 
-A Site Recovery ennek a célnak a teljesülését a munkaterhelések és alkalmazások replikálásával, feladatátvételével és helyreállításával segíti, hogy elérhetők legyenek egy másodlagos helyen, ha az elsődleges hely leáll. 
+Az Azure Site Recovery szolgáltatása a helyszíni fizikai kiszolgálóknak és virtuális gépeknek az Azure-felhőbe vagy egy másodlagos adatközpontba történő replikálásával segít a stratégia kidolgozásában. Ha az elsődleges helyen valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat a másodlagos helynek, így az alkalmazások és számítási feladatok nem állnak le. Ha az elsődleges helyen helyreáll a normál működés, a rendszer visszaadja a feladatokat. További információ: [Mi a Site Recovery?](site-recovery-overview.md)
+
+## Site Recovery az Azure Portalon
+
+Az Azure két különböző [üzemi modellel](../resource-manager-deployment-model.md) rendelkezik az erőforrások létrehozásához és használatához: az Azure Resource Manager-modellel és a klasszikus szolgáltatáskezelési modellel. Az Azure-ban két különböző portál érhető el: a [klasszikus Azure Portal](https://manage.windowsazure.com/), amely a klasszikus üzembe helyezési modellt, és az [Azure Portal](https://portal.azure.com), amely mindkét modellt támogatja.
+
+A Site Recovery a klasszikus portálon és az Azure Portalon egyaránt elérhető. A klasszikus Azure portálon a Site Recovery a klasszikus szolgáltatáskezelési modellel támogatható. Az Azure Portalon a klasszikus modellen és a Resource Manageren alapuló üzemelő példányok is támogatottak. [További információ](site-recovery-overview.md#site-recovery-in-the-azure-portal) az Azure Portalon történő üzembe helyezésről.
+
+A cikk információi a klasszikus és az Azure Portalon üzemelő példányokra egyaránt vonatkoznak. Az esetleges különbségeket jelezzük.
+
 
 ## Miért előnyös a Site Recovery használata? 
 
@@ -40,20 +47,20 @@ A Site Recovery a következőkkel segítheti a vállalatát:
 
 ## Miket replikálhatok?
 
-Itt található egy összegzés arról, hogy miket replikálhat a Site Recovery.
+Itt található egy összefoglaló arról, hogy mit replikálhat a Site Recovery használatával.
 
 ![Két helyszíni hely közötti replikálás](./media/site-recovery-overview/asr-overview-graphic.png)
 
-**REPLIKÁLÁS** | **REPLIKÁLÁS FORRÁSHELYE** | **REPLIKÁLÁS CÉLHELYE** | **CIKK**
+**REPLIKÁLÁS** | **REPLIKÁLÁS FORRÁSA (HELYSZÍNI)** | **REPLIKÁLÁS CÉLHELYE** | **CIKK**
 ---|---|---|---
-VMware virtuális gépeken futó számítási feladatok | Helyszíni VMware-kiszolgáló | Azure Storage-tárterület | [Üzembe helyezés](site-recovery-vmware-to-azure-classic.md)
-VMware virtuális gépeken futó számítási feladatok | Helyszíni VMware-kiszolgáló | Másodlagos VMware-hely | [Üzembe helyezés](site-recovery-vmware-to-vmware.md) 
-Hyper-V virtuális gépeken futó számítási feladatok | Helyszíni Hyper-V gazdakiszolgáló a VMM-felhőben | Azure Storage-tárterület | [Üzembe helyezés](site-recovery-vmm-to-azure.md)
-Hyper-V virtuális gépeken futó számítási feladatok | Helyszíni Hyper-V gazdakiszolgáló a VMM-felhőben | Másodlagos VMM-hely | [Üzembe helyezés](site-recovery-vmm-to-vmm.md)
-Hyper-V virtuális gépeken futó számítási feladatok | Helyszíni Hyper-V gazdakiszolgáló a VMM-felhőben, SAN-tárral| VMM másodlagos hely, SAN-tárral | [Üzembe helyezés](site-recovery-vmm-san.md)
-Hyper-V virtuális gépeken futó számítási feladatok | Helyszíni Hyper-V-hely (nincs VMM) | Azure Storage-tárterület | [Üzembe helyezés](site-recovery-hyper-v-site-to-azure.md)
-Fizikai Windows/Linux-kiszolgálókon futó számítási feladatok | Helyszíni fizikai kiszolgáló | Azure Storage-tárterület | [Üzembe helyezés](site-recovery-vmware-to-azure-classic.md)
-Fizikai Windows/Linux-kiszolgálókon futó számítási feladatok | Helyszíni fizikai kiszolgáló | Másodlagos adatközpont | [Üzembe helyezés](site-recovery-vmware-to-vmware.md) 
+VMware virtuális gépek | VMware-kiszolgáló | Azure | [Részletek](site-recovery-vmware-to-azure-classic.md)
+VMware virtuális gépek | VMware-kiszolgáló | Másodlagos VMware-hely | [Részletek](site-recovery-vmware-to-vmware.md) 
+Hyper-V virtuális gépek | Hyper-V-gazdagépek a VMM-felhőben | Azure | [Részletek](site-recovery-vmm-to-azure.md) 
+Hyper-V virtuális gépek | Hyper-V-gazdagépek a VMM-felhőben | Másodlagos VMM-hely | [Részletek](site-recovery-vmm-to-vmm.md)
+Hyper-V virtuális gépek | Hyper-V-gazdagépek a VMM-felhőben, SAN-tárakkal| VMM másodlagos hely, SAN-tárral | [Részletek](site-recovery-vmm-san.md)
+Hyper-V virtuális gépek | Hyper-V-gazdagép (VMM nélkül) | Azure | [Részletek](site-recovery-hyper-v-site-to-azure.md)
+Fizikai Windows-/Linux-kiszolgálók | Fizikai kiszolgáló | Azure | [Részletek](site-recovery-vmware-to-azure-classic.md)
+Fizikai Windows/Linux-kiszolgálókon futó számítási feladatok | Fizikai kiszolgáló | Másodlagos adatközpont | [Részletek](site-recovery-vmware-to-vmware.md) 
 
 
 ## Milyen számítási feladatokat tudok megvédeni?
@@ -61,11 +68,11 @@ Fizikai Windows/Linux-kiszolgálókon futó számítási feladatok | Helyszíni 
 A Site Recovery elősegíti az alkalmazásbarát BCDR-stratégia megvalósítását, így a számítási feladatok és az alkalmazások konzisztens módon futhatnak továbbra leállások esetén is. A Site Recovery a következőket biztosítja: 
 
 - **Alkalmazáskonzisztens pillanatképek** – Egyetlen vagy N szintű alkalmazásokhoz alkalmazáskonzisztens pillanatképeket használó replikáció.
-**Közel szinkron replikáció** – A replikáció gyakorisága Hyper-V esetén akár 30 másodperc is lehet, VMware esetén pedig folyamatos lehet a replikáció.
-**Integráció az SQL Server AlwaysOn szolgáltatással** – A Site Recovery helyreállítási terveiben kezelheti a rendelkezésre állási csoportok feladatátvételét. 
+- **Közel szinkron replikáció** – A replikáció gyakorisága Hyper-V esetén akár 30 másodperc is lehet, VMware esetén pedig folyamatos lehet a replikáció.
+- **Integráció az SQL Server AlwaysOn szolgáltatással** – A Site Recovery helyreállítási terveiben kezelheti a rendelkezésre állási csoportok feladatátvételét. 
 - **Rugalmas helyreállítási tervek** – Külső parancsfájlokat, manuális műveleteket és Azure Automation-forgatókönyveket tartalmazó helyreállítási terveket hozhat létre és szabhat testre, amelyek segítségével egész alkalmazáscsoportokat állíthat helyre egyetlen kattintással.
-- **Automatizálási könyvtár** – Az Azure Automation-könyvtár gazdag, éles használatra kész és alkalmazásspecifikus parancsfájlokat tartalmazó automatizálási könyvtár, amely letölthető, és beépíthető a Site Recovery szolgáltatásba. 
--**Egyszerű hálózatkezelés** – A Site Recovery és az Azure fejlett hálózatkezelési funkciói leegyszerűsítik az alkalmazáshálózati követelményeket, ideértve az IP-címek lefoglalását, a terheléselosztók konfigurálását, valamint az Azure Traffic Manager integrációját, amely hatékony hálózatváltást garantál.
+- **Automatizálási könyvtár** – Az Azure Automation-könyvtár gazdag, éles használatra kész és alkalmazásspecifikus parancsfájlokat tartalmazó automatizálási könyvtár, amely letölthető, és beépíthető a Site Recovery szolgáltatásba.
+- **Egyszerű hálózatkezelés** – A Site Recovery és az Azure fejlett hálózatkezelési funkciói leegyszerűsítik az alkalmazáshálózati követelményeket, ideértve az IP-címek lefoglalását, a terheléselosztók konfigurálását, valamint az Azure Traffic Manager integrációját, amely hatékony hálózatváltást garantál.
 
 
 ## Következő lépések
@@ -76,6 +83,6 @@ A Site Recovery elősegíti az alkalmazásbarát BCDR-stratégia megvalósítás
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

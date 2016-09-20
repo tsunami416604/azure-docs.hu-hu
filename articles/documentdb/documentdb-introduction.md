@@ -1,7 +1,7 @@
 <properties 
     pageTitle="A DocumentDB, egy JSON-adatbázis bemutatása | Microsoft Azure" 
     description="Ismerje meg a DocumentDB-t, amely egy NoSQL-alapú JSON-adatbázis. Ez a dokumentum-adatbázis a big data, a rugalmas méretezhetőség és a magas rendelkezésre állás jegyében készült." 
-    keywords="json database, document database"
+    keywords="json-adatbázis, dokumentum-adatbázis"
     services="documentdb" 
     authors="mimig1" 
     manager="jhubbard" 
@@ -14,18 +14,18 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="03/30/2016" 
+    ms.date="07/01/2016" 
     ms.author="mimig"/>
 
 # A DocumentDB, egy NoSQL-alapú JSON-adatbázis bemutatása
 
-Az Azure DocumentDB egy teljes körűen felügyelt NoSql adatbázis-szolgáltatás, amely a gyors és kiszámítható teljesítmény, a magas rendelkezésre állás, az automatikus méretezhetőség és a könnyű fejlesztés jegyében készült. A rugalmas adatmodell, az egységes sebesség és rövid késleltetés, valamint a gazdag lekérdezési képességek nagyszerű megoldássá teszik a webes, játék-, IoT- és számos egyéb alkalmazás esetében, amelyek zökkenőmentes méretezést igényelnek.
+Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltatás, amely a gyors és kiszámítható teljesítmény, a magas rendelkezésre állás, az automatikus méretezhetőség, a globális terjesztés és a könnyű fejlesztés jegyében készült. A rugalmas adatmodell, az egységes sebesség és rövid késleltetés, valamint a gazdag lekérdezési képességek nagyszerű megoldássá teszik a webes, játék-, IoT- és számos egyéb alkalmazás esetében, amelyek zökkenőmentes méretezést igényelnek.
 
 Az alábbi három lépést követve gyorsan megismerheti ezt a JSON-adatbázist működés közben: 
 
 1. Tekintse meg a kétperces [Mi a DocumentDB?](https://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/) című videót, amely a DocumentDB használatának előnyeit mutatja be.
-2. Tekintse meg a háromperces [DocumentDB létrehozása az Azure-on](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) című videót, amely kiemeli a DocumentDB-vel kapcsolatos első lépéseket az Azure-portál használatával. 
-3. Tekintse meg a [Tesztlekérdezéseket](http://www.documentdb.com/sql/demo), amelyek segítségével különböző tevékenységeken keresztül ismerheti meg a DocumentDB gazdag lekérdezési funkcióit. Ezután lépjen a Próbakörnyezet lapra, ahol futtathatja saját, egyéni SQL-lekérdezéseit, valamint kísérletezhet a DocumentDB-vel. 
+2. Tekintse meg a háromperces [DocumentDB létrehozása az Azure-on](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) című videót, amely kiemeli a DocumentDB-vel kapcsolatos első lépéseket az Azure-portál használatával.
+3. Tekintse meg a [Tesztlekérdezéseket](http://www.documentdb.com/sql/demo), amelyek segítségével különböző tevékenységeken keresztül ismerheti meg a DocumentDB gazdag lekérdezési funkcióit. Ezután lépjen a Próbakörnyezet lapra, ahol futtathatja saját, egyéni SQL-lekérdezéseit, valamint kísérletezhet a DocumentDB-vel.
 
 Ezt követően térjen vissza a cikkhez, amelyben a dolgok mélyére ásva az alábbi kérdésekre kaphat választ:  
 
@@ -38,13 +38,15 @@ Ezt követően térjen vissza a cikkhez, amelyben a dolgok mélyére ásva az al
 
 A modern alkalmazások rendkívül nagy mennyiségű adatot állítanak elő és hasznának fel, továbbá gyorsan is reagálnak ezekre. Ezek az alkalmazások nagyon gyorsan fejlődnek, és ezáltal a mögöttes adatséma is. Erre reagálva a fejlesztők egyre gyakrabban választanak sémamentes NoSQL dokumentum-adatbázisokat, mivel ezek egyszerű, gyors és méretezhető megoldást biztosítanak az adatok tárolásához és feldolgozásához, miközben megőrzik az alkalmazás-adatmodellek és a strukturálatlan adatcsatornák gyors ismétlésének képességét. A sémamentes adatbázisok közül sok azonban nem teszi lehetővé az összetett lekérdezéseket és a tranzakciós feldolgozást, ami megnehezíti a speciális adatkezelést. Itt jön a képbe a DocumentDB. A Microsoft arra tervezte a DocumentDB-t, hogy megfeleljen a napjaink alkalmazásai által támasztott adatkezelési követelményeknek.
 
-A DocumentDB egy valódi sémamentes NoSQL-adatbázis, amelyet modern mobil-, webes, játék- és IoT-alkalmazásokhoz terveztek. A DocumentDB egységesen biztosítja a gyors olvasást és írást, a séma rugalmasságát, valamint az adatbázis méretének igény szerinti növelését, illetve csökkentését. Nem feltételez vagy igényel semmilyen sémát a JSON-dokumentumok esetében, amelyeket indexel. Alapértelmezés szerint automatikusan indexeli az adatbázisban szereplő összes dokumentumot, és nem vár vagy igényel semmilyen sémát, illetve másodlagos indexek létrehozását. A DocumentDB összetett, eseti lekérdezéseket tesz lehetővé az SQL-nyelv használatával, támogatja a jól meghatározott konzisztenciaszinteket, továbbá a JavaScript nyelvvel integrált, többdokumentumos tranzakció-feldolgozást kínál a tárolt eljárások, eseményindítók és felhasználói függvények megszokott programozási modelljének használatával. 
+A DocumentDB egy valódi sémamentes NoSQL-adatbázis, amelyet modern mobil-, webes, játék- és IoT-alkalmazásokhoz terveztek. A DocumentDB biztosítja, hogy az olvasási feladatok 99%-a 10 ezredmásodpercen belül, az írási feladatok 99%-a pedig 15 ezredmásodpercen belül ki legyen szolgálva. Emellett biztosítja a séma rugalmasságát, valamint az adatbázis méretének igény szerinti növelését, illetve csökkentését is. Nem feltételez vagy igényel semmilyen sémát a JSON-dokumentumok esetében, amelyeket indexel. Alapértelmezés szerint automatikusan indexeli az adatbázisban szereplő összes dokumentumot, és nem vár vagy igényel semmilyen sémát, illetve másodlagos indexek létrehozását. A DocumentDB összetett, eseti lekérdezéseket tesz lehetővé az SQL-nyelv használatával, támogatja a jól meghatározott konzisztenciaszinteket, továbbá a JavaScript nyelvvel integrált, többdokumentumos tranzakció-feldolgozást kínál a tárolt eljárások, eseményindítók és felhasználói függvények megszokott programozási modelljének használatával. 
 
 JSON-adatbázisként a DocumentDB natív módon támogatja a JSON-dokumentumokat, lehetővé téve az alkalmazássémák egyszerű ismétlését, valamint a kulcsérték, dokumentum és táblázatos adatmodelleket igénylő alkalmazások támogatását. A DocumentDB támogatja a JSON és a JavaScript mindenre kiterjedő jelenlétét, kiküszöbölve ezáltal az alkalmazás által meghatározott objektumok és az adatbázis-séma közötti eltéréseket. A JavaScript szoros integrációja továbbá lehetővé teszi a fejlesztők számára az alkalmazáslogika hatékony és közvetlen végrehajtását – mindezt az adatbázis motorján belül az adatbázis-tranzakció során. 
 
 Az Azure DocumentDB az alábbi főbb képességeket és előnyöket kínálja:
 
--   **Rugalmasan méretezhető átviteli sebesség és tárterület:** Könnyedén növelheti vagy csökkentheti a DocumentDB JSON-adatbázisának méretét az alkalmazás igényeinek megfelelően. Az adatok tárolása tartós állapotú meghajtón (SSD) történik az alacsony, előre jelezhető késés érdekében. A DocumentDB támogatja a gyűjteménynek nevezett JSON-adatok tárolására szolgáló tárolókat, amelyek szinte korlátlanul méretezhető tárterületet és átviteli sebességet biztosítanak. Ahogy az alkalmazás növekszik, kiszámítható teljesítmény mellett, rugalmasan és zökkenőmentesen méretezheti a DocumentDB-t. 
+-   **Rugalmasan méretezhető átviteli sebesség és tárterület:** Könnyedén növelheti vagy csökkentheti a DocumentDB JSON-adatbázisának méretét az alkalmazás igényeinek megfelelően. Az adatok tárolása tartós állapotú meghajtón (SSD) történik az alacsony, előre jelezhető késés érdekében. A DocumentDB támogatja a gyűjteményeknek nevezett, JSON-adatok tárolására szolgáló tárolókat, amelyek szinte korlátlanul méretezhető tárterületet és átviteli sebességet biztosítanak. Ahogy az alkalmazás növekszik, kiszámítható teljesítmény mellett, rugalmasan és zökkenőmentesen méretezheti a DocumentDB-t. 
+
+-   **Többrégiós replikáció:** A DocumentDB transzparensen replikálja az Ön adatait a DocumentDB-fiókjához társított összes régióba, lehetővé téve a globális adathozzáférést igénylő alkalmazások fejlesztését, és kompromisszumot kínál a konzisztencia, a rendelkezésre állás és a teljesítmény között, a megfelelő garanciákkal. A DocumentDB transzparens regionális feladatátvételt biztosít a többkiszolgálós API-k segítségével, valamint világszerte rugalmasan méretezhető teljesítményt és tárolókapacitást nyújt. További információ: [Distribute data globally with DocumentDB](documentdb-distribute-data-globally.md) (Globális adatterjesztés a DocumentDB-vel).
 
 -   **Eseti lekérdezések a megszokott SQL-szintaxissal:** Heterogén JSON-dokumentumokat tárolhat a DocumentDB-ben, és a már ismerős SQL-szintaxis használatával kérdezheti le ezeket. A DocumentDB az egyidejűséget támogató, zárolásmentes, naplószerkezetű indexelési technológiát alkalmaz a dokumentumok teljes tartalmának indexeléséhez. Ez részletes, valós idejű lekérdezéseket tesz lehetővé sémamutatók, másodlagos indexek vagy nézetek megadása nélkül. További információk: [A DocumentDB lekérdezése](documentdb-sql-query.md). 
 
@@ -102,7 +104,7 @@ Amennyiben már rendelkezik Azure-fiókkal, egy [DocumentDB adatbázis-fiók lé
 
 Ha nem rendelkezik Azure-fiókkal, a következőket teheti:
 
-- Regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/), amely 30 napot és egy 200 dolláros keretet biztosít az összes Azure-szolgáltatás kipróbálására. 
+- Regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/), amely 30 napot és egy 200 dolláros keretet biztosít az összes Azure-szolgáltatás kipróbálására. 
 - Ha MSDN-előfizetéssel rendelkezik, akkor [havi 150 dollár ingyenes Azure-kreditre](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jogosult, amit bármelyik Azure-szolgáltatáshoz felhasználhat. 
 
 Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket](https://azure.microsoft.com/documentation/learning-paths/documentdb/), és azon belül az összes elérhető képzési erőforrást. 
@@ -113,6 +115,6 @@ Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket]
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

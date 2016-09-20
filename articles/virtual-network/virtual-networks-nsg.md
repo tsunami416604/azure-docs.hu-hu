@@ -3,7 +3,7 @@
    description="Ismerje meg a hálózati biztonsági csoportokra (NSG) épülő Azure elosztott tűzfalat, és azt, hogy miként használhatja az NSG-ket a virtuális hálózatokon (VNetek) a forgalom elkülönítésére és irányítására."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/11/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Mi az a hálózati biztonsági csoport (NSG)?
 
@@ -23,7 +23,7 @@ A hálózati biztonsági csoport (NSG) tartalmaz egy hozzáférés-vezérlési l
 
 Az NSG-k az alábbi tulajdonságokat tartalmazzák.
 
-|Tulajdonság|Leírás|Korlátozások|Megfontolások|
+|Tulajdonság|Leírás|Korlátozások|Megfontolandó szempontok|
 |---|---|---|---|
 |Név|Az NSG neve|Egyedinek kell lennie a régión belül<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat<br/>Betűvel vagy számmal kell kezdődnie<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie<br/>Legfeljebb 80 karakterből állhat|Mivel előfordulhat, hogy több NSG-t kell létrehoznia, győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel könnyedén azonosíthatja az NSG-k funkcióját|
 |Régió|Az Azure-régió, ahol az NSG-t üzemeltetik|Az NSG-ket csak abban a régióban lehet alkalmazni az erőforrásokra, ahol létrehozták|Tekintse meg alább a [korlátok](#Limits) szakaszt, hogy megtudja az egy régióban megengedett NSG-k számát|
@@ -36,7 +36,7 @@ Az NSG-k az alábbi tulajdonságokat tartalmazzák.
 
 Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák.
 
-|Tulajdonság|Leírás|Korlátozások|Megfontolások|
+|Tulajdonság|Leírás|Korlátozások|Megfontolandó szempontok|
 |---|---|---|---|
 |**Név**|A szabály neve|Egyedinek kell lennie a régión belül<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat<br/>Betűvel vagy számmal kell kezdődnie<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie<br/>Legfeljebb 80 karakterből állhat|Egy NSG-n belül több szabály is lehet, ezért győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel azonosíthatja a szabályok funkcióját|
 |**Protocol (Protokoll)**|A szabálynak megfelelő protokoll|TCP, UDP vagy \*|A \* protokollként történő használata tartalmazza az ICMP-t (csak kelet–nyugat irányú forgalom), valamint az UDP-t és a TCP-t, és csökkentheti a szükséges szabályok számát<br/>A \* használata azonban túl széles körű lehet, ezért ügyeljen arra, hogy csak szükség esetén használja|
@@ -72,7 +72,7 @@ Ahogy az alábbi alapértelmezett szabályok is mutatják, a virtuális hálóza
 
 **Bejövő alapértelmezett szabályok**
 
-| Név                              | Prioritás | Forrás IP-címe          | Forrásport | Cél IP-címe  | Célport | Protocol (Protokoll) | Hozzáférés |
+| Név                              | Prioritás | Forrás IP-címe          | Forrásport | Cél IP-címe  | Célport | Protocol (Protokoll) | Access |
 |-----------------------------------|----------|--------------------|-------------|-----------------|------------------|----------|--------|
 | ALLOW VNET INBOUND                | 65000    | VIRTUAL_NETWORK    | *           | VIRTUAL_NETWORK | *                | *        | ALLOW  |
 | ALLOW AZURE LOAD BALANCER INBOUND | 65001    | AZURE_LOADBALANCER | *           | *               | *                | *        | ALLOW  |
@@ -80,7 +80,7 @@ Ahogy az alábbi alapértelmezett szabályok is mutatják, a virtuális hálóza
 
 **Kimenő alapértelmezett szabályok**
 
-| Név                    | Prioritás | Forrás IP-címe       | Forrásport | Cél IP-címe  | Célport | Protocol (Protokoll) | Hozzáférés |
+| Név                    | Prioritás | Forrás IP-címe       | Forrásport | Cél IP-címe  | Célport | Protocol (Protokoll) | Access |
 |-------------------------|----------|-----------------|-------------|-----------------|------------------|----------|--------|
 | ALLOW VNET OUTBOUND     | 65000    | VIRTUAL_NETWORK | *           | VIRTUAL_NETWORK | *                | *        | ALLOW  |
 | ALLOW INTERNET OUTBOUND | 65001    | *               | *           | INTERNET        | *                | *        | ALLOW  |
@@ -115,7 +115,7 @@ Különböző NSG-ket társíthat egy virtuális géphez (vagy hálózati adapte
        
            If subnet NSG has a matching rule to deny traffic, packet will be dropped here, although VM\NIC NSG has a matching rule to allow traffic.
 
-![NSG ACL-ek](./media/virtual-network-nsg-overview/figure2.png)
+    ![NSG ACL-ek](./media/virtual-network-nsg-overview/figure2.png)
 
 >[AZURE.NOTE] Bár egy alhálózathoz, virtuális géphez vagy hálózati adapterhez csak egy NSG-t lehet társítani, ugyanazt az NSG-t korlátlan számú erőforráshoz hozzá lehet rendelni.
 
@@ -125,10 +125,10 @@ Az NSG-ket a hagyományos és a Resource Manager üzembe helyezési modellel is 
 |Üzembe helyezési eszköz|Klasszikus|Resource Manager|
 |---|---|---|
 |klasszikus portál|![Nem][red]|![Nem][red]|
-|Azure portál|![Igen][green]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-pportal">![Igen][green]</a>|
-|PowerShell|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps">![Igen][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-ps">![Igen][green]</a>|
-|Azure CLI|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-cli">![Igen][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-cli">![Igen][green]</a>|
-|ARM-sablon|![Nem][red]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-template">![Igen][green]</a>|
+|Azure Portal|![Igen][green]|[](virtual-networks-create-nsg-arm-pportal.md)![Igen][green]|
+|PowerShell|[](virtual-networks-create-nsg-classic-ps.md)![Igen][green]|[](virtual-networks-create-nsg-arm-ps.md)![Igen][green]|
+|Azure CLI|[](virtual-networks-create-nsg-classic-cli.md)![Igen][green]|[](virtual-networks-create-nsg-arm-cli.md)![Igen][green]|
+|ARM-sablon|![Nem][red]|[](virtual-networks-create-nsg-arm-template.md)![Igen][green]|
 
 |**Kulcs**|![Igen][green] Támogatott. A cikk megtekintéséhez kattintson ide.|![Nem][red] Nem támogatott.|
 |---|---|---|
@@ -218,7 +218,7 @@ A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területe
 
 **Bejövő szabályok**
 
-|Szabály|Hozzáférés|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
+|Szabály|Access|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
 |---|---|---|---|---|---|---|---|
 |HTTP engedélyezése|Engedélyezés|100|INTERNET|\*|\*|80|TCP|
 |RDP engedélyezése a FrontEnd alhálózatból|Engedélyezés|200|192.168.1.0/24|\*|\*|3389|TCP|
@@ -226,7 +226,7 @@ A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területe
 
 **Kimenő szabályok**
 
-|Szabály|Hozzáférés|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
+|Szabály|Access|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
 |---|---|---|---|---|---|---|---|
 |internetforgalom megtagadása|Megtagadás|100|\*|\*|INTERNET|\*|\*|
 
@@ -234,13 +234,13 @@ A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területe
 
 **Bejövő szabályok**
 
-|Szabály|Hozzáférés|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
+|Szabály|Access|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
 |---|---|---|---|---|---|---|---|
 |internetforgalom megtagadása|Megtagadás|100|INTERNET|\*|\*|\*|\*|
 
 **Kimenő szabályok**
 
-|Szabály|Hozzáférés|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
+|Szabály|Access|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
 |---|---|---|---|---|---|---|---|
 |internetforgalom megtagadása|Megtagadás|100|\*|\*|INTERNET|\*|\*|
 
@@ -248,7 +248,7 @@ A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területe
 
 **Bejövő szabályok**
 
-|Szabály|Hozzáférés|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
+|Szabály|Access|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
 |---|---|---|---|---|---|---|---|
 |internetről érkező RDP engedélyezése|Engedélyezés|100|INTERNET|*|\*|3389|TCP|
 
@@ -258,7 +258,7 @@ A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területe
 
 **Bejövő szabályok**
 
-|Szabály|Hozzáférés|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
+|Szabály|Access|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
 |---|---|---|---|---|---|---|---|
 |előtérből érkező RDP engedélyezése|Engedélyezés|100|192.168.1.0/24|*|\*|3389|TCP|
 
@@ -266,13 +266,13 @@ A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területe
 
 **Bejövő szabályok**
 
-|Szabály|Hozzáférés|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
+|Szabály|Access|Prioritás|Forráscímtartomány|Forrásport|Célcímtartomány|Célport|Protocol (Protokoll)|
 |---|---|---|---|---|---|---|---|
 |előtérből érkező SQL engedélyezése|Engedélyezés|100|192.168.1.0/24|*|\*|1433|TCP|
 
 Mivel a fenti NSG-k közül néhányat különálló hálózati adapterekhez kell társítani, ezt a forgatókönyvet Resource Manager-telepítésként kell üzembe helyezni. Figyelje meg, hogy a szabályok egyesítve vannak az alhálózat és a hálózati adapterek szintjén, attól függően, hogy hogyan kell őket alkalmazni. 
 
-## További lépések
+## Következő lépések
 
 - [Deploy NSGs in the classic deployment model](virtual-networks-create-nsg-classic-ps.md) (NSG-k telepítése a klasszikus üzembe helyezési modellel).
 - [Deploy NSGs in Resource Manager](virtual-networks-create-nsg-arm-pportal.md) (NSG-k üzembe helyezése a Resource Manager eszközzel).
@@ -284,6 +284,6 @@ Mivel a fenti NSG-k közül néhányat különálló hálózati adapterekhez kel
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

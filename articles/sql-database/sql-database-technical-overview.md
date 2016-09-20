@@ -1,7 +1,7 @@
 <properties
     pageTitle="Mi az SQL Database? Bevezetés az SQL Database-be| Microsoft Azure"
     description="Bevezetés az SQL Database-be: a Microsoft felhőalapú relációs adatbázis-kezelő rendszerének (RDBMS) technikai részletei és funkciói."
-    keywords="introduction to sql,intro to sql,what is sql database"
+    keywords="bevezetés az sql-be,az sql bemutatása,mi az sql database"
     services="sql-database"
     documentationCenter=""
     authors="shontnew"
@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/23/2016"
+   ms.date="08/16/2016"
    ms.author="shkurhek"/>
 
 # Mi az SQL Database? Bevezetés az SQL Database-be
@@ -61,6 +61,6 @@ Most, hogy elolvasta az SQL Database-be történő bevezetést, és választ kap
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

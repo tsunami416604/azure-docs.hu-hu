@@ -13,11 +13,11 @@
     ms.tgt_pltfrm="mobile-html5"
     ms.devlang="javascript"
     ms.topic="get-started-article" 
-    ms.date="11/30/2015"
+    ms.date="07/21/2016"
     ms.author="glenga"/>
 
 
-# <a name="getting-started"> </a>A Mobile Services használatának első lépései
+# <a name="getting-started"> </a>A Mobile Services használatának első lépéseit
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 &nbsp;
@@ -95,7 +95,7 @@ Az oktatóanyag utolsó szakaszát egy új alkalmazás a helyi számítógépen 
     + **launch-mac.command** (Mac OS X rendszerű számítógépek)
     + **launch-linux.sh** (Linux rendszerű számítógépek)
 
-    > [AZURE.NOTE] Windows rendszerű számítógépeken, amikor a PowerShell a parancsfájl futtatási szándékának megerősítését kéri, írja be: `R` Lehetséges, hogy a webböngészője arra fogja figyelmeztetni, hogy ne futtassa a parancsfájlt, mert az az internetről lett letöltve. Ha ez történik, utasítsa a böngészőt a parancsfájl betöltésének folytatására.
+    > [AZURE.NOTE] Windows rendszerű számítógépeken, amikor a PowerShell a parancsfájl futtatási szándékának megerősítését kéri, írja be: `R`. Lehetséges, hogy a webböngészője arra fogja figyelmeztetni, hogy ne futtassa a parancsfájlt, mert az az internetről lett letöltve. Ha ez történik, utasítsa a böngészőt a parancsfájl betöltésének folytatására.
 
     Ezzel a helyi számítógépen elindul egy webkiszolgáló, amely az új alkalmazást tárolja.
 
@@ -159,6 +159,6 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

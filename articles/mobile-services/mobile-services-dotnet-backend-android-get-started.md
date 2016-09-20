@@ -14,11 +14,11 @@
     ms.tgt_pltfrm="mobile-android"
     ms.devlang="java"
     ms.topic="get-started-article"
-    ms.date="03/05/2016"
+    ms.date="07/21/2016"
     ms.author="ricksal"/>
 
 
-# <a name="getting-started"> </a>A Mobile Services használatának első lépései
+# <a name="getting-started"> </a>A Mobile Services használatának első lépéseit
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
@@ -80,7 +80,7 @@ Ebben a szakaszban egy, a mobilszolgáltatásához csatlakozó új Android-alkal
 
 4. A **Download and run your app** (Alkalmazás letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra.
 
-    Ezzel letölti a projektet a mobilszolgáltatáshoz kapcsolódó _Teendőlista_ mintaalkalmazáshoz. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+    Ezzel letölti a projektet a mobilszolgáltatáshoz kapcsolódó _Teendőlista_ mintaalkalmazáshoz. Mentse a tömörített projektfájlt a helyi számítógépre, és jegyezze fel a mentési helyét.
 
 ## Az Android-alkalmazás futtatása
 
@@ -90,7 +90,7 @@ Ebben a szakaszban egy, a mobilszolgáltatásához csatlakozó új Android-alkal
 Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Servicesben:
 
 * [Leküldéses értesítések hozzáadása az alkalmazáshoz]
-  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazásnak.
+  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazás számára.
 
 * [Hitelesítés hozzáadása az alkalmazáshoz]
   <br/>Ismerje meg, hogyan korlátozhatja a háttérrendszeri adatok elérhetőségét az alkalmazás egyes regisztrált felhasználóira.
@@ -134,6 +134,6 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/01/2016"
+    ms.date="08/19/2016"
     ms.author="piyushjo" />
 
 # A Mobile Engagement-stratégia kidolgozása
@@ -118,7 +118,7 @@ Az *alkalmazásadatok* olyan adatok, amelyek lehetővé teszik az alkalmazás va
 2.  A célközönség szegmentálása a bejelentkezési állapot alapján. Gyűjtsön adatokat annak meghatározására, hogy egy felhasználó csatlakozott-e vagy létrehozott-e fiókot. Ez segítséget nyújt azon végfelhasználókat megcélzásában, akik még nem jelentkeztek be, és leküldéses értesítést küld, amellyel a csatlakozásra bátorítja őket.
     ![][2]
 
-### További lépések
+### Következő lépések
 
 - A Mobile Engagement fogalmait a [Mobile Engagement fogalmait] ismertető cikkben ismerheti meg bővebben.
 - Keresse fel a [Mobile Engagement-alkalmazás létrehozását](mobile-engagement-create.md) ismertető cikket, amely egy új Mobile Engagement-alkalmazásgyűjteménynek az Azure-ban való létrehozását, valamint azt ismerteti, hogy hogyan kezdheti meg az alkalmazások kezelését a Mobile Engagement portál használatával.
@@ -138,6 +138,6 @@ Az *alkalmazásadatok* olyan adatok, amelyek lehetővé teszik az alkalmazás va
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="get-started-article"
-    ms.date="06/01/2016"
+    ms.date="08/11/2016"
     ms.author="robmcm"/>
 
 # Java-webalkalmazás létrehozása az Azure App Service szolgáltatásban
 
 [AZURE.INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-Ez az oktatóanyag bemutatja, hogyan hozható létre Java-webalkalmazás [az Azure App Service szolgáltatásban] az [Azure Portál] használatával. Az Azure portál egy webes felület, amely az Azure-erőforrások kezelésére használható.
+Ez az oktatóanyag bemutatja, hogyan hozható létre Java-webalkalmazás [az Azure App Service szolgáltatásban] az [Azure Portal] használatával. Az Azure portál egy webes felület, amely az Azure-erőforrások kezelésére használható.
 
 > [AZURE.NOTE] Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit], vagy [regisztráljon egy ingyenes próbaverzióra].
 >
@@ -32,7 +32,7 @@ A Java-alkalmazások többféleképpen is beállíthatók az App Service-webalka
 
 1. Hozzon létre egy alkalmazást, és konfigurálja az **alkalmazás beállításait**.
 
-    Az App Service többféle Tomcat- és Jetty-verziót biztosít, alapértelmezett konfigurációval. Ha az üzemeltetni kívánt alkalmazás a beépített verziók egyikével fog működni, ez a legegyszerűbb módszer a webes tároló beállítására – tökéletes választás, ha mindössze egy war-fájlt szeretne feltölteni egy webes tárolóba. Ha ezt a módszert használja, először létrehoz egy alkalmazást az Azure portálon, majd az alkalmazás **Alkalmazásbeállítások** paneljére lépve kiválasztja a Java verzióját a kívánt Java webes tárolóval együtt. Ezzel a módszerrel a Java és a webes tároló is a Program Files mappából fut. A többi módszer a webes tárolót és esetlegesen a JVM-et is a lemezterületre helyezi. Ha ezt a modellt használja, a fájlrendszer ezen részén nem lesz engedélye a fájlok szerkesztésére. Ez azt jelenti, hogy ebben az esetben nem végezhet olyan műveleteket, mint a *server.xml* fájl konfigurálása, vagy a könyvtárfájlok áthelyezése a */lib* mappába. További információkért lásd az oktatóanyag [Java-webalkalmazás létrehozása és konfigurálása](#appsettings) című szakaszát.
+    Az App Service többféle Tomcat- és Jetty-verziót biztosít, alapértelmezett konfigurációval. Ha az üzemeltetni kívánt alkalmazás a beépített verziók egyikével fog működni, ez a legegyszerűbb módszer a webes tároló beállítására – tökéletes választás, ha mindössze egy war-fájlt szeretne feltölteni egy webes tárolóba. Ha ezt a módszert használja, először létrehoz egy alkalmazást az Azure Portalon, majd az alkalmazás **Alkalmazásbeállítások** paneljére lépve kiválasztja a Java verzióját a kívánt Java webes tárolóval együtt. Ezzel a módszerrel a Java és a webes tároló is a Program Files mappából fut. A többi módszer a webes tárolót és esetlegesen a JVM-et is a lemezterületre helyezi. Ha ezt a modellt használja, a fájlrendszer ezen részén nem lesz engedélye a fájlok szerkesztésére. Ez azt jelenti, hogy ebben az esetben nem végezhet olyan műveleteket, mint a *server.xml* fájl konfigurálása, vagy a könyvtárfájlok áthelyezése a */lib* mappába. További információkért lásd az oktatóanyag [Java-webalkalmazás létrehozása és konfigurálása](#appsettings) című szakaszát.
     
 2. Válasszon egy sablont az Azure Piactérről.
 
@@ -40,7 +40,7 @@ A Java-alkalmazások többféleképpen is beállíthatók az App Service-webalka
   
 3. Hozzon létre egy alkalmazást, majd manuálisan másolja át és szerkessze a konfigurációs fájlokat 
 
-    Előfordulhat, hogy olyan egyéni Java-alkalmazást célszerű üzemeltetni, amely nem az App Service által biztosított webes tárolókba települ. Például:
+    Előfordulhat, hogy olyan egyéni Java-alkalmazást célszerű üzemeltetni, amely nem az App Service által biztosított webes tárolókba települ. Példa:
     
     * Az Ön Java-alkalmazása olyan Tomcat- vagy Jetty-verziót igényel, amelyet az App Service nem támogat közvetlenül, és nincs a katalógusban.
     * Az Ön Java-alkalmazása HTTP-kéréseket fogad, és nem települ WAR-fájlként egy meglévő webes tárolóba.
@@ -53,7 +53,7 @@ A Java-alkalmazások többféleképpen is beállíthatók az App Service-webalka
 
 Ez a szakasz bemutatja, hogyan hozható létre egy webalkalmazás és konfigurálható a Javához a portál **Alkalmazásbeállítások** paneljén.
 
-1. Jelentkezzen be az [Azure Portál].
+1. Jelentkezzen be az [Azure Portal].
 
 2. Kattintson az **Új > Web + mobil > Webalkalmazás** elemre.
 
@@ -63,9 +63,9 @@ Ez a szakasz bemutatja, hogyan hozható létre egy webalkalmazás és konfigurá
 
     Ennek a névnek egyedinek kell lennie az azurewebsites.net tartományban, mert a webalkalmazás URL-címe {név}.azurewebsites.net lesz. Ha a megadott név nem egyedi, egy piros felkiáltójel jelenik meg a szövegmezőben.
 
-5. Válasszon egy **Erőforráscsoportot**, vagy hozzon létre egy újat.
+5. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
 
-    További információk az erőforráscsoportokkal kapcsolatban: [Az Azure portál használata az Azure-erőforrások kezeléséhez].
+    További információk az erőforráscsoportokkal kapcsolatban: [Az Azure Portal használata az Azure-erőforrások kezeléséhez].
 
 6. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
 
@@ -75,7 +75,7 @@ Ez a szakasz bemutatja, hogyan hozható létre egy webalkalmazás és konfigurá
 
     ![Webalkalmazás létrehozása][newwebapp2]
  
-8. A webalkalmazás létrehozása után kattintson a következőre: **Web Apps > {az Ön webalkalmazása}**.
+8. A webalkalmazás létrehozása után kattintson a következőre: **Webalkalmazások > {az Ön webalkalmazása}**.
  
     ![Webalkalmazás kiválasztása][selectwebapp]
 
@@ -91,7 +91,7 @@ Ez a szakasz bemutatja, hogyan hozható létre egy webalkalmazás és konfigurá
 
     ![Webes tároló verziói][versions]
 
-13. Kattintson a **Mentés**gombra.
+13. Kattintson a **Save** (Mentés) gombra.
 
     Kis idő elteltével webalkalmazása Java-alapúvá válik, és az Ön által kiválasztott webes tároló használatára lesz konfigurálva.
 
@@ -105,7 +105,7 @@ Ez a szakasz bemutatja, hogyan hozható létre egy webalkalmazás és konfigurá
 
 Ez a szakasz ismerteti, hogyan használható az Azure Piactér Java-webalkalmazások létrehozására. Ugyanezzel a folyamattal létrehozhatók Java-alapú mobil- és API-alkalmazások is. 
 
-1. Jelentkezzen be az [Azure Portál]
+1. Jelentkezzen be az [Azure Portal]
 
 2. Kattintson az **Új > Piactér** elemre.
 
@@ -129,9 +129,9 @@ Ez a szakasz ismerteti, hogyan használható az Azure Piactér Java-webalkalmaz�
 
     Ennek a névnek egyedinek kell lennie az azurewebsites.net tartományban, mert a webalkalmazás URL-címe {név}.azurewebsites.net lesz. Ha a megadott név nem egyedi, egy piros felkiáltójel jelenik meg a szövegmezőben.
 
-8. Válasszon egy **Erőforráscsoportot**, vagy hozzon létre egy újat.
+8. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
 
-    További információk az erőforráscsoportokkal kapcsolatban: [Az Azure portál használata az Azure-erőforrások kezeléséhez].
+    További információk az erőforráscsoportokkal kapcsolatban: [Az Azure Portal használata az Azure-erőforrások kezeléséhez].
 
 9. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
 
@@ -143,7 +143,7 @@ Ez a szakasz ismerteti, hogyan használható az Azure Piactér Java-webalkalmaz�
 
     Az Azure kis időn belül, általában kevesebb mint egy perc alatt létrehozza az új webalkalmazást.
 
-11. Kattintson a következőre: **Webalkalmazások > {az Ön webalkalmazása}**.
+11. Kattintson a következőre: **Web apps (Webalkalmazások) > {az Ön webalkalmazása}**.
 
 12. Kattintson az **URL-címre** az új webhelyre lépéshez.
 
@@ -159,7 +159,7 @@ Ez a szakasz ismerteti, hogyan használható az Azure Piactér Java-webalkalmaz�
 
 Most, hogy létrehozta a webalkalmazást egy alkalmazástárolóval, tekintse meg a [További lépések](#next-steps) szakaszt az alkalmazás a webalkalmazásba való feltöltésével kapcsolatos információkért.
 
-## További lépések
+## Következő lépések
 
 Ekkor egy Java-alkalmazáskiszolgáló fut a webalkalmazásában az Azure App Service szolgáltatásban. A kód a webalkalmazásban való telepítése: [Alkalmazás vagy weblap hozzáadása a Java-webalkalmazáshoz].
 
@@ -169,13 +169,13 @@ További információk Java-alkalmazások fejlesztéséről az Azure-ban: [Java 
 
 [Alkalmazás vagy weblap hozzáadása a Java-webalkalmazáshoz]: ./web-sites-java-add-app.md
 [Az Azure App Service-csomagok áttekintése]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
-[Azure Portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [aktiválhatja a Visual Studio előfizetői előnyeit]: http://go.microsoft.com/fwlink/?LinkId=623901
 [regisztráljon egy ingyenes próbaverzióra]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Az App Service kipróbálása]: http://go.microsoft.com/fwlink/?LinkId=523751
 [az Azure App Service szolgáltatásban]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Java fejlesztői központ]: /develop/java/
-[Az Azure portál használata az Azure-erőforrások kezeléséhez]: ../azure-portal/resource-group-portal.md
+[Az Azure Portal használata az Azure-erőforrások kezeléséhez]: ../azure-portal/resource-group-portal.md
 [Upload a custom Java web app to Azure (Egyéni Java-webalkalmazás feltöltése az Azure-ba)]: ./web-sites-java-custom-upload.md
 
 <!-- IMG List -->
@@ -194,6 +194,6 @@ További információk Java-alkalmazások fejlesztéséről az Azure-ban: [Java 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="05/18/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # A Microsoft Outlook használata az Azure RemoteAppban
+
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Az Azure RemoteApp támogatja a Microsoft Outlook O365 használatát. További információk az [Office működéséről az Azure RemoteAppban](remoteapp-officesubscription.md). Az Outlook az Azure RemoteAppban való használatához van néhány ajánlott beállítás.
 
@@ -27,12 +30,12 @@ A felhasználók a fiók beállításakor választhatják ki a **gyorsítótára
 Olvassa el [a gyorsítótáras üzemmód engedélyezésének lépésenkénti útmutatóját](https://technet.microsoft.com/library/c6f4cad9-c918-420e-bab3-8b49e1885034#proc).
 
 ## Keresés
-Az Azure RemoteAppban az Outlookon belüli keresésekre korlátozások vonatkoznak. Az Azure RemoteApp készletbe vont virtuális gépekkel teszi lehetővé a felhasználói munkameneteket. A keresések indexelése a gép azonosítójától függ, amely különbözik a különböző virtuális gépek esetében. Lehetséges, hogy minden alkalommal, amikor egy felhasználó bejelentkezik az Azure RemoteAppba, a rendszer egy új virtuális géphez irányítja át. Ez azt jelenti, hogy ha engedélyezzük a helyi keresést, az indexelő minden alkalommal fut, amikor megváltozik a gép azonosítója (amikor a felhasználó eltérő virtuális gépet használ). Az .OST fájl méretétől függően előfordulhat, hogy az indexelő sok időt igényel a befejezéshez, és elhasználja a más alkalmazásokhoz szükséges erőforrásokat. A keresés ilyenkor nemcsak lassú, de előfordulhat, hogy eredményeket sem ad. Egy lehetséges megkerülő megoldás, ha alapértelmezés szerint engedélyezi az online keresést. Az indexelt/helyi keresés sajnos nem tiltható le, és az online keresés nem engedélyezhető alapértelmezés szerint az Outlook 2013-ban.
+Az Azure RemoteAppban az Outlookon belüli keresésekre korlátozások vonatkoznak. Az Azure RemoteApp készletbe vont virtuális gépekkel teszi lehetővé a felhasználói munkameneteket. A keresések indexelése a gép azonosítójától függ, amely különbözik a különböző virtuális gépek esetében. Lehetséges, hogy minden alkalommal, amikor egy felhasználó bejelentkezik az Azure RemoteAppba, a rendszer egy új virtuális géphez irányítja át. Ez azt jelenti, hogy ha engedélyezzük a helyi keresést, az indexelő minden alkalommal fut, amikor megváltozik a gép azonosítója (amikor a felhasználó eltérő virtuális gépet használ). Az .OST fájl méretétől függően előfordulhat, hogy az indexelő sok időt igényel a befejezéshez, és elhasználja a más alkalmazásokhoz szükséges erőforrásokat. A keresés ilyenkor nemcsak lassú, de előfordulhat, hogy eredményeket sem ad. Erre megoldást jelenthet egy online módú fiókprofil, azonban ettől csökkenne az általános teljesítmény a helyi gyorsítótár hiánya miatt (a gyorsítótárazott és az online mód közötti különbségekkel kapcsolatos további információkat a fenti hivatkozást követve tekintheti meg). Az indexelt/helyi keresés sajnos nem tiltható le, és az online keresés nem engedélyezhető alapértelmezés szerint az Outlook 2013-ban.
 
-Az Outlook 2016-ban van megoldás erre, amely új online keresési élményt biztosít az Exchange 2016-kiszolgálókon (vagy az Office 365-ben) üzemeltetett postaládák esetében. Ez a kiszolgálói keresési eredményeket használja a helyi gyorsítótárban (OST). Egyes forgatókönyvekben előfordulhat, hogy az Outlook visszatér a keresési indexelő használatához, de a legtöbb keresés az online módot használja. Az Azure RemoteApphoz az Outlook 2016 használata javasolt, ha a levelek keresése nagy fontossággal bír.
+Az Outlook 2016-nak gyorsítótárazott módban is van erre megoldása, amely új szolgáltatáskeresési élményt biztosít az Exchange 2016-kiszolgálókon (vagy az Office 365-ben) üzemeltetett postaládák esetében. Ez a megoldás a szolgáltatáskeresési eredményeket használja a helyi gyorsítótárban (OST). Egyes forgatókönyvekben előfordulhat, hogy az Outlook visszatér a helyi keresési indexelő használatához, de a legtöbb keresés az új szolgáltatáskeresési funkciót fogja használni. Az Azure RemoteApphoz az Outlook 2016 használata javasolt, ha a levelek keresése nagy fontossággal bír.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

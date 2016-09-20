@@ -1,271 +1,380 @@
 <properties
-   pageTitle="Azure Data Catalog – Ismerkedés az Azure Data Catalog szolgáltatással | Microsoft Azure"
-   description="Átfogó oktatóanyag az Azure Data Catalog forgatókönyveiről és képességeiről."
-   documentationCenter=""
-   services="data-catalog"
-   authors="steelanddata"
-   manager=""
-   editor=""
-   tags=""/>
+    pageTitle="Ismerkedés az Azure Data Catalog szolgáltatással | Microsoft Azure"
+    description="Átfogó oktatóanyag az Azure Data Catalog forgatókönyveiről és képességeiről."
+    documentationCenter=""
+    services="data-catalog"
+    authors="steelanddata"
+    manager=""
+    editor=""
+    tags=""/>
 <tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="05/06/2016"
-   ms.author="maroche"/>
+    ms.service="data-catalog"
+    ms.devlang="NA"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="NA"
+    ms.workload="data-catalog"
+    ms.date="07/06/2016"
+    ms.author="spelluru"/>
 
 # Ismerkedés az Azure Data Catalog szolgáltatással
+Az Azure Data Catalog teljes körűen felügyelt felhőszolgáltatás, amely vállalati adategységek regisztrációs és felderítőrendszereként szolgál. A szolgáltatás részletes bemutatásáért olvassa el a [Mi az az Azure Data Catalog?](data-catalog-what-is-data-catalog.md) című cikket.
 
-Ez a cikk átfogó áttekintést nyújt az **Azure Data Catalog** forgatókönyveiről és képességeiről. A szolgáltatásban való regisztrálás után kövesse az alábbi lépéseket egy adatkatalógus létrehozásához, valamint adatforrások regisztrálásához, megjegyzésekkel ellátásához és felderítéséhez.
+Ez az oktatóanyag az Azure Data Catalog használatának megkezdésébe vezeti be a felhasználót. Az oktatóanyagban az alábbi eljárásokat fogja végrehajtani:
+
+| Eljárás | Leírás |
+| :--- | :---------- |
+| [Adatkatalógus létrehozása](#provision-data-catalog) | Az eljárás keretében el fogja végezni az Azure Data Catalog kiépítését. Erre a lépésre csak akkor van szükség, ha a katalógust korábban még nem hozták létre. Szervezetenként (Microsoft Azure Active Directory-tartományonként) csupán egyetlen adatkatalógussal rendelkezhet, még akkor is, ha Azure-fiókjához több előfizetés is tartozik. |
+| [Adategységek regisztrálása](#register-data-assets) | Ebben az eljárásban az AdventureWorks2014 példaadatbázisból fog adategységeket regisztrálni az adatkatalógusban. A regisztráció az a folyamat, amelynek során a rendszer kinyeri az adatforrásból a fő szerkezeti metaadatokat (például nevek, típusok és helyek), majd bemásolja ezeket a katalógusba. Az adatforrás és az adategységek az eredeti helyükön maradnak, de a metaadatok használatával a katalógus könnyebben feltárhatóvá és értelmezhetővé teszi őket. |
+| [Adategységek felderítése](#discover-data-assets) | Ebben az eljárásban az Azure Data Catalog portál segítségével fogja felderíteni az előző lépésben regisztrált adategységeket. Azt követően, hogy az adatforrást regisztrálja az Azure Data Catalogban, a szolgáltatás indexeli metaadatait, hogy a felhasználók egyszerűen megtalálják az általuk keresett adatokat. |
+| [Adategységek ellátása dekorációkkal](#annotate-data-assets) | Ebben az eljárásban dekorációkkal egészítheti ki az adategységeket (például leírást, címkét, dokumentációt vagy szakértőket adhat hozzájuk). Az adatforrásból kinyert metaadatok kiegészítése révén könnyebben áttekinthető az adatforrás. |
+| [Csatlakozás adategységekhez](#connect-to-data-assets) | Ebben az eljárásban a kapcsolatadatok felhasználásával adategységeket fog megnyitni integrált ügyféleszközökkel (például az Excellel és az SQL Server Data Tools eszközzel), valamint egy nem integrált eszközzel (SQL Server Management Studio). |
+| [Adategységek felügyelete](#manage-data-assets) | Ebben az eljárásban fogja elvégezni az adategységek biztonságának beállítását. A Data Catalog nem ad hozzáférést a felhasználóknak magukhoz az adatokhoz. Az adatok elérését az adatforrás tulajdonosa szabályozza. <br/><br/> A Data Catalog szolgáltatás arra szolgál, hogy Ön adatforrásokat derítsen fel, és megtekintse a katalógusban regisztrált forrásokhoz tartozó **metaadatokat**. Előfordulhat azonban, hogy az adatforrásokat csak bizonyos felhasználók, illetve adott csoportok tagjai számára szeretné láthatóvá tenni. Ebben az esetben a Data Catalog használatával átveheti a katalógusban regisztrált adategységek tulajdonjogát, és beállíthatja a birtokában lévő adategységek láthatóságát. |
+| [Adategységek eltávolítása](#remove-data-assets) | Ebben az eljárásban megismerheti, hogyan távolíthat el adategységeket az adatkatalógusból. |  
 
 ## Az oktatóanyag előfeltételei
 
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-- **Egy Azure-előfizetés** – Ha nincs előfizetése, néhány perc alatt létrehozhat egy ingyenes próbafiókot. A részletekért lásd: [Ingyenes próbafiók](https://azure.microsoft.com/pricing/free-trial/).
-- **Azure Active Directory** – Az Azure Data Catalog az [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) szolgáltatást használja az identitások és hozzáférések felügyeletéhez.
-- **Adatforrások** – Az Azure Data Catalog képes adatforrások felderítésére. Ez az oktatóanyag az Adventure Works példaadatbázisát használja, de bármilyen támogatott adatforrást használhat, ha szeretne ismerős és a szerepköre szempontjából releváns adatokkal dolgozni. A támogatott adatforrások listájáért lásd: [Supported data sources](data-catalog-dsr.md) (Támogatott adatforrások).
+### Azure-előfizetés
+Az Azure Data Catalog szolgáltatás beállítását kizárólag Azure-előfizetések tulajdonosai vagy társtulajdonosai végezhetik el.
 
-> [AZURE.NOTE] További információk az Azure-előfizetésekről és az Azure Active Directory szolgáltatásról: [Azure Data Catalog prerequisites](data-catalog-prerequisites.md) (Az Azure Data Catalog előfeltételei).
+Az Azure-előfizetés segít rendszerezni a felhőszolgáltatás-erőforrások, például az Azure Data Catalog elérését. Ezenfelül az előfizetés révén azt is megszabhatja, hogy hogyan szeretne jelentést készíteni az erőforrások használatáról, hogy hogyan számlázzák ki azt Önnek, illetve, hogy hogyan szeretne fizetni érte. Az egyes előfizetésekhez eltérő számlázási és fizetési beállítások tartozhatnak, így osztályonként, projektenként, területi képviseletenként stb. különböző előfizetési és fizetési megoldásokat használhat. A felhőszolgáltatásokat mindig egy előfizetéshez kell rendelni, ezért ahhoz, hogy beállítsa az Azure Data Catalog szolgáltatást, rendelkeznie kell előfizetéssel. További információkat a [fiókok, előfizetések és rendszergazdai szerepkörök kezeléséről](../active-directory/active-directory-how-subscriptions-associated-directory.md) szóló cikkben talál.
 
-Kezdjük az Adventure Works példaadatbázisának telepítésével.
+Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. A részletekért lásd: [Ingyenes próbafiók](https://azure.microsoft.com/pricing/free-trial/).
 
-## 1. gyakorlat: az Adventure Works példaadatbázisának telepítése
+### Azure Active Directory
+Az Azure Data Catalog beállításához be kell jelentkeznie egy Azure Active Directory (Azure AD) felhasználói fiókkal. A felhasználónak Azure-előfizetés tulajdonosának vagy társtulajdonosának kell lennie.  
 
-Ebben a gyakorlatban telepíteni fogja az Adventure Works vállalat SQL Server adatbázismotorhoz tartozó példaadatbázisát, amelyet a következő gyakorlatokban is használni fog.
+Az Azure AD egyszerű módot kínál vállalkozásának az identitás és a hozzáférés kezelésére, mind a felhőben, mind a helyszínen. A felhasználók egyetlen munkahelyi vagy iskolai fiók segítségével bejelentkezhetnek bármely felhőben futó vagy helyszíni webalkalmazásba. Az Azure Data Catalog az Azure AD segítségével hitelesíti a bejelentkező felhasználókat. További információk: [Mi az az Azure Active Directory?](../active-directory/active-directory-whatis.md)
+
+### Azure Active Directory-szabályzat konfigurálása
+
+Előfordulhat, hogy ugyan be tud lépni az Azure Data Catalog portálra, de amikor megpróbál bejelentkezni az adatforrás-regisztrációs eszközbe, hibaüzenet jelenik meg, amely meggátolja a belépést. Ez a céges hálózatról, illetve a céges hálózaton kívülről történő csatlakozás esetében egyaránt előfordulhat.
+
+A regisztrációs eszköz *űrlapos hitelesítés* segítségével veti össze a felhasználói bejelentkezéseket az Azure Active Directory adatbázisával. Ahhoz, hogy a bejelentkezés sikeres legyen, az Azure Active Directory rendszergazdájának engedélyeznie kell az űrlapos hitelesítést a *globális hitelesítési szabályzatban*.
+
+Ahogy az az alábbi képen is látható, a globális hitelesítési szabályzat segítségével különböző hitelesítést engedélyezhet az intranetes és az extranetes kapcsolatokhoz. Ha nincs engedélyezve az űrlapos hitelesítés azon a hálózaton, amelyről csatlakozik, bejelentkezési hiba léphet fel.
+
+ ![Az Azure Active Directory globális hitelesítési szabályzata](./media/data-catalog-prerequisites/global-auth-policy.png)
+
+További információkért lásd a [Hitelesítési házirendek konfigurálása](https://technet.microsoft.com/library/dn486781.aspx) című cikket.
+
+## Adatkatalógus létrehozása
+Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatkatalógust hozhat létre. Ez azt jelenti, hogy ha az Önnel megegyező Azure Active Directory-tartományhoz tartozó Azure-előfizetés tulajdonosa vagy társtulajdonosa már létrehozott egy katalógust, Ön nem fog tudni katalógust létrehozni, még akkor sem, ha több Azure-előfizetéssel rendelkezik. Ha szeretné megnézni, hogy az Ön Azure Active Directory-tartományában hozott-e már létre adatkatalógust valamelyik felhasználó, lépjen az [Azure Data Catalog honlapjára](http://azuredatacatalog.com), és ellenőrizze, hogy lát-e katalógust. Ha valaki már létrehozta a katalógust, ugorja át az itt látható eljárást, és folytassa a következő résszel.    
+
+1. Nyissa meg a [Data Catalog szolgáltatás weboldalát](https://azure.microsoft.com/services/data-catalog), és kattintson **Az első lépések** lehetőségre.
+
+    ![Azure Data Catalog – marketinges kezdőlap](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
+2. Jelentkezzen be egy olyan felhasználói fiókkal, amely Azure-előfizetés tulajdonosa vagy társtulajdonosa. A bejelentkezést követően megjelenik az alábbi oldal.
+
+    ![Azure Data Catalog – adatkatalógus létrehozása](media/data-catalog-get-started/data-catalog-create-azure-data-catalog.png)
+3. Adja meg az adatkatalógus **nevét**, a használni kívánt **előfizetést**, valamint a katalógus kívánt **helyét**.
+4. Bontsa ki az **Árképzés** csomópontot, és válassza ki az Azure Data Catalog **kiadását** (Ingyenes vagy Standard).
+    ![Azure Data Catalog – kiadás kiválasztása](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
+5. Bontsa ki a **Katalógus felhasználói** csomópontot, majd kattintson a **Hozzáadás** gombra, és adja hozzá a kívánt felhasználókat az adatkatalógushoz. Önt a rendszer automatikusan hozzáadja ehhez a csoporthoz.
+    ![Azure Data Catalog – felhasználók](media/data-catalog-get-started/data-catalog-add-catalog-user.png)
+6. Bontsa ki a **Katalógus-rendszergazdák** csomópontot, majd kattintson a **Hozzáadás** gombra, így további rendszergazdákat rendelhet hozzá az adatkatalógushoz. Önt a rendszer automatikusan hozzáadja ehhez a csoporthoz.
+    ![Azure Data Catalog – rendszergazdák](media/data-catalog-get-started/data-catalog-add-catalog-admins.png)
+7. A szervezet adatkatalógusának létrehozásához kattintson a **Katalógus létrehozása** lehetőségre. A rendszer létrehozza az adatkatalógust, majd megjeleníti annak kezdőlapját.
+    ![Azure Data Catalog – létrehozva](media/data-catalog-get-started/data-catalog-created.png)    
+
+### Adatkatalógus megkeresése az Azure Portalon
+1. A böngésző egy másik lapján, illetve egy másik böngésző ablakában nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be ugyanazzal a fiókkal, amelyet az előző lépésnél az adatkatalógus létrehozásához használt.
+2. Válassza a **Tallózás** lehetőséget, majd kattintson a **Data Catalog** elemre.
+
+    ![Azure Data Catalog – Azure-tallózás](media/data-catalog-get-started/data-catalog-browse-azure-portal.png) Látni fogja a korábban létrehozott adatkatalógust.
+
+    ![Azure Data Catalog – katalóguslista megtekintése](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
+4.  Kattintson a korábban létrehozott katalógusra. Megjelenik a portál **Data Catalog** panele.
+
+    ![Azure Data Catalog – panel a portálon ](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
+5. Itt megtekintheti az adatkatalógus tulajdonságait, illetve frissítheti is azokat. Kattintson például a **Tarifacsomag** elemre, és módosítsa a kiadást.
+
+    ![Azure Data Catalog – tarifacsomag](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
+
+### Az Adventure Works példaadatbázisa
+Ebben a példában az AdventureWorks2014 példaadatbázisban található adategységeket (táblákat) fog regisztrálni az SQL Server adatbázismotor számára. Bármilyen támogatott adatforrást használhat azonban, ha inkább olyan adatokkal szeretne dolgozni, amelyeket ismer, vagy amelyek munkaköre szempontjából relevánsak. A támogatott adatforrások listájáért lásd: [Supported data sources](data-catalog-dsr.md) (Támogatott adatforrások).
 
 ### Az Adventure Works 2014 OLTP adatbázis telepítése
+Az Adventure Works adatbázisa olyan szabványos online tranzakciófeldolgozási forgatókönyveket támogat, melyeket egy fiktív kerékpárgyártó (az Adventure Works Cycles) használhat például a termékek, az értékesítések és a vásárlások követésére. Ebben az oktatóanyagban termékekre vonatkozó információkat fog regisztrálni az Azure Data Catalogba.
 
-Az Adventure Works adatbázisa szabványos online tranzakciófeldolgozási forgatókönyveket bonyolít le egy fiktív kerékpárgyártó (Adventure Works Cycles) számára, ideértve a termékek, az értékesítések és a vásárlások kezelését is. Ebben az oktatóanyagban a termékekre vonatkozó információkat fog regisztrálni az **Azure Data Catalog** szolgáltatásba.
+Az Adventure Works példaadatbázisának telepítése:
 
-Az Adventure Works példaadatbázisát az alábbiakban leírt módon telepítheti.
+1. Töltse le az [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) fájlt a CodePlex oldalról.
+2. Állítsa vissza az adatbázist a gépére. Ehhez kövesse a [Restore a Database Backup by using SQL Server Management Studio](http://msdn.microsoft.com/library/ms177429.aspx) (Adatbázis biztonsági másolatának visszaállítása az SQL Server Management Studio segítségével) című cikk utasításait, vagy az alábbi lépéseket:
+    1. Nyissa meg az SQL Server Management Studiót, és kapcsolódjon az SQL Server adatbázismotorjához.
+    2. Kattintson jobb gombbal a **Databases** (Adatbázisok) lehetőségre, majd a **Restore Database** (Adatbázis visszaállítása) elemre.
+    3. A **Restore Database** (Adatbázis visszaállítása) területen kattintson a **Source** (Forrás) beállításhoz tartozó **Device** (Eszköz) lehetőségre, majd a **Browse** (Tallózás) gombra.
+    4. A **Select backup devices** (Biztonsági mentési eszközök kiválasztása) lehetőségnél kattintson az **Add** (Hozzáadás) lehetőségre.
+    5. Keresse meg a mappát, amelyben az **AdventureWorks2014.bak** fájlt tárolja, jelölje ki a fájlt, kattintson az **OK** gombra, majd zárja be a **Locate Backup File** (Biztonsági mentési fájl megkeresése) párbeszédpanelt.
+    6. Kattintson az **OK** gombra a **Select backup devices** (Biztonsági mentési eszközök kiválasztása) párbeszédpanel bezárásához.    
+    7. Kattintson az **OK** gombra a **Restore Database** (Adatbázis visszaállítása) párbeszédpanel bezárásához.
 
-Az Adventure Works példaadatbázis telepítéséhez egy AdventureWorks2014 nevű biztonsági mentés helyreállítása szükséges, amely az [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) fájlban található a CodePlex webhelyen. Az adatbázis helyreállításának egyik módja egy T-SQL-parancsfájl futtatása az SQL Server Management Studióban.
+Mostantól regisztrálhatja az Adventure Works példaadatbázisból származó adategységeket az Azure Data Catalog segítségével.
 
-**Az Adventure Works példaadatbázisának telepítése egy T-SQL-parancsfájl használatával**
+## Adategységek regisztrálása
 
-1.  Hozza létra s C:\DataCatalog_GetStarted mappát. Ha más mappanevet használ, ne felejtse az elérési utat az alábbi T-SQL-parancsfájlban is módosítani.
-2.  Töltse le az [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) fájlt.
-3.  Csomagolja ki az Adventure Works 2014 Full Database Backup.zip fájlt a C:\DataCatalog_GetStarted mappába. Az alábbi parancsfájl feltételezi, hogy a biztonságimentés-fájl a C:\DataCatalog_GetStarted\Adventure Works 2014 Full Database Backup\AdventureWorks2014.bak helyen található.
-4.  Az **SQL Server Management Studio** alkalmazásban a **Standard** eszköztáron kattintson a **New Query** (Új lekérdezés) elemre.
-5.  A lekérdezési ablakban futtassa a következő T-SQL-kódot.
+Ebben a gyakorlatban a regisztrációs eszközt használva regisztrálja az Adventure Works adatbázisból származó adategységeket a katalógusban. A regisztráció az a folyamat, amelynek során az adatforrásból és a benne található adategységekből kinyert fő szerkezeti metaadatok (például nevek, típusok és helyek) hozzáadódnak a katalógushoz. Az adatforrás és az adategységek az eredeti helyükön maradnak, de a metaadatok használatával a katalógus könnyebben feltárhatóvá és értelmezhetővé teszi őket.
 
-**Futtassa ezt a parancsfájlt az Adventure Works 2014 adatbázis telepítéséhez**
+### Adatforrás regisztrálása
 
-    USE [master]
-    GO
-    -- NOTE: This script is for sample purposes only. The default backup file path for this script is C:\DataCatalog_GetStarted. To run this script, create the default file path or change the file path, and copy AdventureWorks2014.bak into the path.
+1.  Nyissa meg az [Azure Data Catalog kezdőlapját](https://azuredatacatlog.com), és kattintson az **Adatok közzététele** elemre.
 
-    -- IMPORTANT: In a production application, restore a SQL database to the data folder for your SQL Server instance.
+    ![Azure Data Catalog – Adatok közzététele gomb](media/data-catalog-get-started/data-catalog-publish-data.png)
 
-    RESTORE DATABASE AdventureWorks2014
-        -- AdventureWorks2014.bak file location
-        FROM disk = 'C:\DataCatalog_GetStarted\Adventure Works 2014 Full Database Backup\AdventureWorks2014.bak'
+2.  A regisztrációs eszköz letöltéséhez, telepítéséhez, majd a számítógépen való futtatásához kattintson az **Alkalmazás indítása** gombra.
 
-        -- AdventureWorks2014.mdf database location
-        WITH MOVE 'AdventureWorks2014_data' TO 'C:\DataCatalog_GetStarted\AdventureWorks2014.mdf',
+    ![Azure Data Catalog – Indítás gomb](media/data-catalog-get-started/data-catalog-launch-application.png)
 
-        -- AdventureWorks2014.ldf log location
-        MOVE 'AdventureWorks2014_Log' TO 'C:\DataCatalog_GetStarted\AdventureWorks2014.ldf'
-    ,REPLACE
-    GO
+3. A **Kezdőlapon** kattintson a **Bejelentkezés** elemre, és adja meg a hitelesítő adatait.    
 
-A T-SQL-parancsfájl futtatása helyett alternatív megoldásként az adatbázist az SQL Server Management Studio használatával is helyreállíthatja. Lásd: [Restore a Database Backup (SQL Server Management Studio)](http://msdn.microsoft.com/library/ms177429.aspx) (Adatbázis biztonsági mentésének helyreállítása (SQL Server Management Studio)).
+    ![Azure Data Catalog – Kezdőlap](media/data-catalog-get-started/data-catalog-welcome-dialog.png)
 
-Ebben a gyakorlatban telepítette az Adventure Works példaadatbázisát, amelyet a következő gyakorlatokban is használni fog. A következő gyakorlatból elsajátíthatja, hogyan regisztrálhat adatforrásokat az **Azure Data Catalog** szolgáltatásba az Adventure Works példaadatbázisában található táblákból.
+4. A **Microsoft Azure Data Catalog** lapon kattintson az **SQL Server** lehetőségre, majd a **Tovább** gombra.
 
-## 2. gyakorlat: Adatforrások regisztrálása
+    ![Azure Data Catalog – adatforrások](media/data-catalog-get-started/data-catalog-data-sources.png)
 
-Ebben a gyakorlatban az **Azure Data Catalog** regisztrációs eszközét használva regisztrálja az Adventure Works adatforrásait a katalógusba. A regisztráció az a folyamat, amely során az adatforrásból és a benne található adategységekből kinyert fő szerkezeti metaadatok (például nevek, típusok és helyek) hozzáadódnak a katalógushoz. Az adatforrások és a bennük tárolt adatok az eredeti helyükön maradnak, de a metaadatok használatával a katalógus könnyebben feltárhatóvá és értelmezhetővé teszi őket.
+5.  Adja meg az **AdventureWorks2014** adatbázishoz tartozó SQL Server-kapcsolati tulajdonságokat (lásd az alábbi példát), majd kattintson a **CSATLAKOZÁS** lehetőségre.
 
-### Egy adatforrás regisztrálása
+    ![Azure Data Catalog – SQL Server-kapcsolati tulajdonságok](media/data-catalog-get-started/data-catalog-sql-server-connection.png)
 
-1.  Lépjen a https://azure.microsoft.com/services/data-catalog helyre, majd kattintson **Az első lépések** elemre.
-2.  Jelentkezzen be az **Azure Data Catalog**-portálra, majd kattintson a **Publish data** (Adatok közzététele) lehetőségre.
+6.  Regisztrálja az adategység metaadatait. Ebben a példában a **Production/Product** objektumait regisztrálja az AdventureWorks Production névtérből:
 
-    ![](media/data-catalog-get-started/data-catalog-publish-data.png)
+    1. A **Kiszolgálóhierarchia** fában bontsa ki az **AdventureWorks2014** lehetőséget, majd kattintson **Production** elemre.
+    2. A Ctrl+kattintás módszerrel jelölje ki egyszerre a következőket: **Product**, **ProductCategory**, **ProductDescription** és **ProductPhoto**.
+    3. Kattintson a **kiválasztott elemeket áthelyező nyílra** (**>**). Ez az összes kiválasztott objektumot áthelyezi a **Regisztrálandó objektumok** listára.
 
-3.  Kattintson a **Launch Application** (Alkalmazás indítása) parancsra.
+        ![Azure Data Catalog oktatóanyag – objektumok megkeresése és kiválasztása](media/data-catalog-get-started/data-catalog-server-hierarchy.png)
+    4. Ha szeretne pillanatképes előnézetet is hozzáadni az adatokról, jelölje be az **Előnézet belefoglalása** jelölőnégyzetet. A pillanatkép legfeljebb 20 bejegyzést tartalmazhat az egyes táblákból. A rendszer a katalógusba másolja az előnézetet.
+    5. Ha szeretné, hogy az adatprofil objektumstatisztikáit (például: minimális, maximális és átlagos értékek az oszlopban, sorok száma) bemutató pillanatképet is tartalmazza a katalógus, válassza az **Adatprofil belefoglalása** lehetőséget.
+    6. A **Címkék felvétele** mezőbe írja be a következőket: **adventure works, cycles**. Ez hozzáadja az adategységekhez a keresési címkéket. A címkék nagy segítséget nyújtanak abban, hogy a felhasználók megtaláljanak egy bizonyos regisztrált adatforrást.
+    7. Adja meg az adatokhoz kapcsolódó **szakértő** nevét (kihagyható).
 
-    ![](media/data-catalog-get-started/data-catalog-launch-application.png)
+        ![Azure Data Catalog oktatóanyag – regisztrálandó objektumok](media/data-catalog-get-started/data-catalog-objects-register.png)
 
-4. A **Kezdőlapon** kattintson a **Sign in** (Bejelentkezés) elemre, és adja meg a hitelesítő adatait.
-5. A **Microsoft Azure Data Catalog** oldalon kattintson duplán az **SQL Server** elemre, vagy kattintson az **SQL Server**, majd a **Next** (Tovább) gombra.
+    8. Kattintson a **REGISTER** (REGISZTRÁLÁS) gombra. Az Azure Data Catalog regisztrálja a kiválasztott objektumokat. Ebben a gyakorlatban az Adventure Works kiválasztott objektumai lesznek regisztrálva. A regisztrációs eszköz kinyeri a metaadatokat az adategységből, majd az Azure Data Catalogba másolja az adatokat. Az adatok helye nem változik, ahogy az sem, hogy mely rendszergazdák felügyelik az adatokat, és milyen szabályzatok érvényesek rájuk.
 
-    ![](media/data-catalog-get-started/data-catalog-data-sources.png)
+        ![Azure Data Catalog – regisztrált objektumok](media/data-catalog-get-started/data-catalog-registered-objects.png)
 
-6.  Adja meg az AdventureWorks2014 adatbázis SQL Server-kapcsolódási tulajdonságait (lásd a példát alább), majd kattintson a **CONNECT** (CSATLAKOZÁS) gombra.
+    9. A regisztrált adatforrás-objektumok megtekintéséhez kattintson a **View Portal** (Portál megtekintése) lehetőségre. Az Azure Data Catalog-portálon ellenőrizze, hogy a rácsnézetben látja-e mind a négy táblát, illetve az adatbázist.
 
-    ![](media/data-catalog-get-started/data-catalog-sql-server-connection.png)
+        ![Objektumok az Azure Data Catalog-portálon ](media/data-catalog-get-started/data-catalog-view-portal.png)
 
-7.  A következő oldalon kell regisztrálnia az adatforrásához tartozó metaadatokat. Ebben a példában a **Production/Product** objektumait regisztrálja az AdventureWorks Production névtérből. Ennek menete a következő:
 
-    a. A **Server Hierarchy** (Kiszolgálóhierarchia) fán kattintson a **Production** elemre.
+Ebben a gyakorlatban az Adventure Works példaadatbázisából regisztrált néhány objektumot, amelyeket mostantól a szervezet bármelyik felhasználója könnyen megtalálhat. A következő gyakorlatból elsajátíthatja, hogyan találhat meg regisztrált adategységeket.
 
-    ![](media/data-catalog-get-started/data-catalog-server-hierarchy.png)
+## Adategységek felderítése
+Az Azure Data Catalog felderítési funkciója elsődlegesen két mechanizmust használ: keresés és szűrés.
 
-    b. Ctrl+kattintással jelölje ki a Product, a ProductCategory, a ProductDescription és a ProductPhoto elemeket.
+A keresés nem csupán magától értetődő, de rendkívül hatékony is. Alapértelmezés szerint a keresőkifejezéseket a rendszer összeveti a katalógusban szereplő összes tulajdonsággal, még a felhasználók által beírt dekorációkkal is.
 
-    c. Kattintson a kiválasztott elemeket áthelyező nyílra (**>**). Ez az összes kiválasztott Product objektumot áthelyezi az **Objects to be registered** (Regisztrálandó objektumok) listára.
+A szűrés a keresést hivatott kiegészíteni. Különböző jellemzőket (például szakértők, adatforrástípusok, objektumtípusok és címkék) adhat meg, és megtekintheti az azokkal egyező adategységeket, illetve az egyezést mutató adategységekre szűkítheti a találatokat.
 
-    ![](media/data-catalog-get-started/data-catalog-available-objects.png)
+A keresés és szűrés együttes használatával egyszerűen navigálhat az Azure Data Catalog szolgáltatásban regisztrált adatforrások között, így könnyen megtalálja a keresett adategységeket.
 
-    d. Az **Add tags** (Címke hozzáadása) mezőben adja meg a „leírás” és a „fénykép” címkéket. Ez hozzáadja az adategységekhez a keresési címkéket. A címkék nagy segítséget nyújtanak abban, hogy a felhasználók megtaláljanak egy bizonyos regisztrált adatforrást.
+Ebben a gyakorlatban az Azure Data Catalog-portál segítségével fogja felderíteni az előző gyakorlat során regisztrált adategységeket. A keresési szintaxissal kapcsolatban lásd: [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) (A Data Catalog keresési szintaxisának leírása).
 
-    ![](media/data-catalog-get-started/data-catalog-objects-register.png)
+Az alábbiakban különböző példákat hozunk a katalógusban szereplő adategységek felderítésére.  
 
-    e.  **Választható lehetőség**: Használhatja az **Include a Preview** (Előnézet hozzáadása) és az **Add a data source expert** (Adatforrás-szakértő hozzáadása) lehetőséget is.
+### Adategységek felderítése az alapszintű kereséssel
+Az alapszintű kereséssel egy vagy több keresőkifejezést megadva végezhet keresést a katalógusban. Megjelenik az összes olyan adategység, amelynek tulajdonságai egyeznek egy vagy több megadott kifejezéssel.
 
-    f.  Kattintson a **REGISTER** (REGISZTRÁLÁS) gombra. Az **Azure Data Catalog** regisztrálja a kiválasztott objektumokat. Ebben a gyakorlatban az Adventure Works kiválasztott objektumai lesznek regisztrálva.
+1. Kattintson az Azure Data Catalog portál **Kezdőlap** lehetőségére. Ha már bezárta a böngészőt, nyissa meg az [Azure Data Catalog kezdőlapját](https://www.azuredatacatalog.com).
+2. A keresőmezőbe írja be a **cycles** kifejezést, majd nyomja le az **ENTER** billentyűt.
 
-    g.  A regisztrált adatforrás-objektumok megtekintéséhez kattintson a **View Portal** (Portál megtekintése) lehetőségre. Az **Azure Data Catalog**-portálon **mozaik** vagy **lista** formájában is megtekintheti az adatforrás-objektumokat.
+    ![Azure Data Catalog – alapszintű szöveges keresés](media/data-catalog-get-started/data-catalog-basic-text-search.png)
+3. Ellenőrizze, hogy a találatok között látja-e mind a négy táblát, valamint az adatbázist (AdventureWorks2014). Ahogy az az alábbi képen látható, az eszköztárban található gombokra kattintva válthat a **rácsnézet** és a **listanézet** között. Figyelje meg, hogy a kereséshez használt kulcsszót a rendszer kijelöli a találatok között. Ez azért van, mert a **Kiemelés** funkció **BE** értékre van állítva. Megadhatja az **eredmények száma oldalanként** beállítás értékét is.
 
-    ![](media/data-catalog-get-started/data-catalog-view-portal.png)
+    ![Azure Data Catalog – alapszintű szöveges keresés, találatok](media/data-catalog-get-started/data-catalog-basic-text-search-results.png)
 
-Ebben a gyakorlatban az Adventure Works példaadatbázisából regisztrált néhány objektumot, amelyeket mostantól a szervezet bármely felhasználója könnyen megtalálhat.
-A következő gyakorlatból elsajátíthatja, hogyan találhat meg regisztrált adategységeket.
+    A **Keresések** panel bal oldalon, a **Tulajdonságok** panel jobb oldalon található. A **Keresések** panelen módosíthatja a keresési feltételeket, valamint szűrheti a találatokat. A **Tulajdonságok** panelen láthatja a rácsban vagy a listában kiválasztott objektum tulajdonságait.
 
-## 3. gyakorlat: Regisztrált adategységek keresése
+4. Kattintson a találatok között látható **Product** elemre. Kattintson az **Előnézet**, **Oszlopok**, **Adatprofil** és **Dokumentáció** lapfülekre, vagy kattintson a nyílra az alsó panel kibontásához.  
 
-Ebben a gyakorlatban az **Azure Data Catalog**-portál használatával korábban regisztrált adategységeket fog megkeresni és megtekinteni a hozzájuk tartozó metaadatokat. Az **Azure Data Catalog** számos eszközt biztosít az adategységek kereséséhez, köztük az egyszerű kulcsszavas keresést, az interaktív szűrőket és egy összetett keresési szintaxist a „kiemelt” felhasználók számára.
+    ![Azure Data Catalog – alsó panel](media/data-catalog-get-started/data-catalog-data-asset-preview.png)
 
-### Így találhat meg regisztrált adategységeket
+    Az **Előnézet** lapon a **Product** táblában szereplő adatok előnézete látható.  
+5. Az **Oszlopok** lapon az adategységben szereplő oszlopok részletes adatait tekintheti meg (például **név** és **adattípus**).
+6. Az adategységben szereplő adatok profiljának (például sorok száma, adatok mérete, adott oszlop legalacsonyabb értéke) megtekintéséhez kattintson az **Adatprofil** lapfülre.
+7. A bal oldalt található **szűrők** segítségével szűrheti a találatokat. Ha például az **Objektumtípus** szűrőnél a **Tábla** lehetőséget választja, csak a négy tábla jelenik meg, maga az adatbázis nem.
 
-Az **Azure Data Catalog** egyszerű, de hatékony keresési szintaxisának köszönhetően egyszerűen hozhatók létre olyan lekérdezések, amelyekkel megtalálhatók a felhasználók számára szükséges adatok. Az **Azure Data Catalog** keresőjével kapcsolatos részletekért lásd: [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) (A Data Catalog keresési szintaxisának leírása).
+    ![Azure Data Catalog – találatok szűrése](media/data-catalog-get-started/data-catalog-filter-search-results.png)
 
-Az **Azure Data Catalog** a következő keresési lehetőségeket biztosítja:
+### Adategységek felderítése tulajdonságértékekben való kereséssel
+A tulajdonságértékekben való keresés segítségével megkeresheti azokat az adategységeket, amelyeknél a keresőkifejezés és a megadott tulajdonság között egyezés található.
 
-- Kulcsszavas keresés
-- Szűrés
-- Összetett keresés
+1. A **Szűrők** menü **Objektumtípus** szűrőjének **Tábla** beállításánál törölje az oda korábban esetleg beírt értéket.  
+2. A keresőmezőbe írja be a **tags:cycles** kifejezést, majd nyomja le az **ENTER** billentyűt. Az adatkatalógusban való kereséshez használható összes tulajdonság megtekintéséhez lásd: [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) (A Data Catalog keresési szintaxisának leírása).
+3. Ellenőrizze, hogy a találatok között látja-e mind a négy táblát, valamint az adatbázist (AdventureWorks2014).  
 
-Emellett a megjelenítendő adategységek köre is leszűkíthető. Az **Azure Data Catalog** a következő megtekintési lehetőségeket biztosítja:
+    ![Data Catalog – tulajdonságértékekben való keresés, találatok](media/data-catalog-get-started/data-catalog-property-scoping-results.png)
 
-- Tulajdonságok megtekintése
-- Oszlopok megtekintése
-- Előnézet megtekintése
+### A keresés mentése
+1. Az **Aktuális keresés** rész **Keresések** paneljén adjon nevet a keresésnek, majd kattintson a **Mentés** gombra.
 
-Ebben a példában egy kulcsszavas keresést végzünk el. Az **Azure Data Catalog** keresője számos lekérdezési módszerrel rendelkezik. Ebben a példában egy **csoportosításos** keresési lekérdezést alkalmazunk.
+    ![Azure Data Catalog – keresés mentése](media/data-catalog-get-started/data-catalog-save-search.png)
+2. Ellenőrizze, hogy a mentett keresés megjelent-e a **Mentett keresések** menüben.
 
-**Lekérdezési módszerek**
+    ![Azure Data Catalog – mentett keresések](media/data-catalog-get-started/data-catalog-saved-search.png)
+3. Válasszon a mentett kereséseken elvégezhető műveletek közül (**Átnevezés**, **Törlés**, **Mentés alapértelmezettként**).
 
-|Módszer|Használat|Példa
-|---|---|---
-|Tulajdonság keresése|Csak olyan adatforrásokat ad vissza, amelyeknél a keresett kifejezés a megadott tulajdonsághoz tartozik|name:termék
-|Logikai operátorok|A keresések logikai műveletekkel bővíthetők vagy szűkíthetők, a jelen oldal Logikai operátorok szakaszában leírtak szerint|pénzügyi NOT vállalati
-|Csoportosítás zárójelekkel|A lekérdezés részei zárójelekkel csoportosíthatók a logikai elkülönítés érdekében, különösen a logikai operátorokkal együtt használva|name:termék AND (tags:illusztráció OR tags:fénykép)
-|Összehasonlító operátorok|A szám és adat adattípusú tulajdonságok esetében a nem egyenlő összehasonlítások is használhatók|creationTime:>11/05/14
+    ![Azure Data Catalog – mentett kereséseken elvégezhető műveletek](media/data-catalog-get-started/data-catalog-saved-search-options.png)
 
-Ebben a példában egy **csoportosításos** kereséssel olyan adatokat keresünk, amelyeknek a neve „termék”, a címkék között pedig szerepel az „illusztráció” vagy a „fénykép” szó.
+### Logikai operátorok
+A keresést logikai operátorok segítségével bővítheti vagy szűkítheti.
 
-1. Lépjen a https://azure.microsoft.com/services/data-catalog helyre, majd kattintson **Az első lépések** elemre, és jelentkezzen be az **Azure Data Catalog**-portálra.
-2. A **Search Data Catalog** (Keresés a Data Catalogban) mezőben adjon meg egy **csoportosításos** lekérdezést: (**tags:illusztráció OR tags:fénykép**).
-3. Kattintson a Keresés ikonra, vagy nyomja le az Enter billentyűt. Az **Azure Data Catalog** megjeleníti az ennek a keresési lekérdezésnek megfelelő adategységeket.
+1. A keresőmezőbe írja be a **tags:cycles AND objectType:table** kifejezést, majd nyomja le az **ENTER** billentyűt.
+2. Ellenőrizze, hogy a találatok között csak a táblák jelennek-e meg (maga az adatbázis nem).  
 
-    ![](media/data-catalog-get-started/data-catalog-search-box.png)
+    ![Azure Data Catalog – keresés logikai operátorokkal](media/data-catalog-get-started/data-catalog-search-boolean-operator.png)
 
-Ebben a gyakorlatban az **Azure Data Catalog**-portál használatával a katalógusban regisztrált Adventure Works-adategységeket keresett és tekintett meg.
+### Csoportosítás zárójelekkel
+Zárójelek segítségével csoportosítva különböző logikai egységekre bonthatja a lekérdezés részeit, ami különösen a logikai operátorokkal együtt alkalmazva lehet hasznos.
 
-<a name="annotating"/>
-## 4. gyakorlat: Regisztrált adatforrások ellátása megjegyzésekkel
+1. A keresőmezőbe írja be: **name:product AND (tags:cycles AND objectType:table)**, majd nyomja le az **ENTER** billentyűt.
+2. Ellenőrizze, hogy a találatok között csak a **Product** tábla jelent-e meg.
 
-Ebben a gyakorlatban az **Azure Data Catalog**-portál használatával a katalógusban korábban regisztrált adategységeket fog megjegyzésekkel ellátni. A megadott megjegyzések kiegészítik és megerősítik az adatforrásból a regisztrálás során kinyert metaadatokat, és sokkal könnyebben megtalálhatóvá és értelmezhetővé teszik az adategységeket. Mivel a **Data Catalog** minden egyes felhasználója hozzáadhatja a saját megjegyzéseit, így minden olyan felhasználó, akinek meglátásai vannak az adatokra vonatkozóan, könnyedén megoszthatja azokat.
+    ![Azure Data Catalog – keresések csoportosítása](media/data-catalog-get-started/data-catalog-grouping-search.png)   
 
-### Így adhat megjegyzéseket az adategységekhez
+### Összehasonlító operátorok
+Az összehasonlító operátorok segítségével a szám és adat adattípusú tulajdonságok esetében a nem egyenlő összehasonlítások is használhatók.
 
-1. Lépjen a https://azure.microsoft.com/services/data-catalog helyre, majd kattintson **Az első lépések** elemre, és jelentkezzen be az **Azure Data Catalog**-portálra.
-2. Kattintson a **Discover** (Felderítés) gombra.
-3. Válasszon ki egy vagy több **adategységet**. Ebben a példában válassza ki a **ProductPhoto** elemet, és írja be: „Termékfényképek marketingcélú felhasználásra.”
-4. Adjon meg egy **leírást**, amely segíteni fog másoknak feltárni és értelmezni, miért és hogyan használják a kiválasztott adategységet. Írja be például, hogy „Termékképek”. Lehetősége van további címkék hozzáadására és oszlopok megtekintésére is.
-5. Most megpróbálhatja az adategységeket a katalógushoz hozzáadott leíró metaadatok használatával megkeresni és szűrni.
+1. Írja be a keresőmezőbe: **lastRegisteredTime:>"06/09/2016"**.
+2. Az **Objektumtípus** szűrő **Tábla** beállításánál törölje az oda korábban esetleg beírt értéket.
+3. Nyomja le az **ENTER** billentyűt.
+4. Ellenőrizze, hogy a találatok között csak a **Product**, **ProductCategory**, **ProductDescription** és a **ProductPhoto** tábla, illetve a korábban regisztrált AdventureWorks2014 adatbázis jelent-e meg.
 
-    ![](media/data-catalog-get-started/data-catalog-annotate.png)
+    ![Azure Data Catalog – összehasonlító találatok](media/data-catalog-get-started/data-catalog-comparison-operator-results.png)
 
-Ebben a gyakorlatban leíró információkat adott hozzá a regisztrált adategységekhez, hogy a katalógus felhasználói számukra érthető kifejezések használatával deríthessenek fel adatforrásokat.
+Az [adategységek felderítésével](data-catalog-how-to-discover.md) kapcsolatos cikkben a felderítés módjáról olvashat részletesen, a keresési szintaxissal kapcsolatban pedig a [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) (A Data Calatog keresési szintaxisának leírása) című cikkben talál további információt.
 
-> [AZURE.NOTE] A Data Catalog Standard kiadása egy üzleti szószedetet tartalmaz, amelynek segítségével a katalógus-rendszergazdák meghatározhatnak egy központi üzleti elnevezési rendszert. A katalógus felhasználói ezután a szószedet kifejezéseivel jelölhetik meg az adategységeket. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása)  
+## Adategységek ellátása dekorációkkal
+Ebben a gyakorlatban az Azure Data Catalog portál használatával dekorációkat fog fűzni a katalógusban korábban regisztrált adategységekhez (azaz különféle információkat, például leírásokat, címkéket vagy szakértőket fog fűzni hozzájuk). A megadott megjegyzések kiegészítik és megerősítik az adatforrásból a regisztrálás során kinyert metaadatokat, és sokkal könnyebben megtalálhatóvá és értelmezhetővé teszik az adategységeket.
 
-## 5. gyakorlat: Metaadatok közösségi hozzáadása
+Ebben a gyakorlatban egyetlen adategységet (ProductPhoto) fogunk dekorációkkal ellátni. Hozzá fog adni egy rövid nevet és egy leírást a ProductPhoto adategységhez.  
 
-Ebben a gyakorlatban egy másik felhasználóval együttműködve ad hozzá metaadatokat egy adategységhez a katalógusban. Az **Azure Data Catalog** közösségi megjegyzésmegosztási elve bármely felhasználó számára lehetővé teszi, hogy címkéket, leírásokat és egyéb metaadatokat adjon meg, így bárki, aki meglátásokkal rendelkezik egy adategységet és a felhasználását illetően, rögzítheti és más felhasználók számára elérhetővé teheti a meglátásait.
+1.  Nyissa meg az [Azure Data Catalog honlapját](https://www.azuredatacatalog.com), és a **tags:cycles** kifejezés megadásával keresse meg a korábban regisztrált adategységeket.  
+2. Kattintson a találatok között a **ProductPhoto** elemre.  
+3. A **Rövid név** mezőbe írja be: **Product images**, a **Leírás** mezőbe pedig a következőt: **Product photos for marketing materials**.
 
-> [AZURE.NOTE] Ha ezen oktatóprogram során nem tud egy másik felhasználóval együttműködni, az sem jelent problémát. Bármely felhasználó, aki hozzáfér az adatkatalógushoz, tetszés szerint hozzáadhatja a saját meglátásait. A metaadatok közösségi megosztási elvének köszönhetően a katalógus tartalma és a katalógus metaadat-gazdagsága az idő haladtával egyre nő.
+    ![Azure Data Catalog – ProductPhoto leírása](media/data-catalog-get-started/data-catalog-productphoto-description.png)
 
-### Így adhat közösségi megjegyzéseket az adategységekhez
+    A **Leírás** mező segít másoknak megismerni és értelmezni, hogy miért és hogyan használják a kiválasztott adategységet. Lehetősége van további címkék hozzáadására és oszlopok megtekintésére is. Most megpróbálhatja az adategységeket a katalógushoz hozzáadott leíró metaadatok használatával megkeresni és szűrni.
 
-Kérje meg egy munkatársát, hogy ismételje meg a fenti [Regisztrált adatforrások ellátása megjegyzésekkel](#annotating) gyakorlatot. Miután a munkatársai megjegyzéseket adtak egy adategységhez, például egy ProductPhoto adategységhez, Ön több megjegyzést is lát majd.
+Az oldalon a következő műveleteket is elvégezheti:
 
-![](media/data-catalog-get-started/data-catalog-crowdsource.png)
+- Szakértőket adhat az adategységekhez. Kattintson a **Szakértők** részen található **Hozzáadás** gombra.
+- Címkéket adhat hozzá az adatkészlet szintjén. Kattintson a **Címkék** részen található **Hozzáadás** gombra. A címke lehet felhasználói vagy szószedetcímke. A Data Catalog Standard kiadása tartalmaz egy üzleti szószedetet is, amelynek segítségével a katalógus-rendszergazdák megalkothatják a központi üzleti elnevezési rendszert. A katalógus felhasználói ezután a szószedet kifejezéseivel jelölhetik meg az adategységeket. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása)
+- Címkéket adhat hozzá az oszlopok szintjén. Kattintson annak az oszlopnak a **Címkék** részénél található **Hozzáadás** gombra, amelyhez dekorációt kíván fűzni.
+- Leírást adhat hozzá az oszlopok szintjén. Töltse ki az oszlop **Leírás** mezőjét. Megtekintheti az adatforrásból kinyert leírási metaadatokat.
+- Adjon hozzá **Hozzáférés kérése** típusú információkat, amelyekből a felhasználók megtudhatják, hogyan kérhetnek hozzáférést az adategységhez.
 
-Ebben a gyakorlatban felfedezte az **Azure Data Catalog** közösségi metaadat-megosztási lehetőségeit, amelyekkel a katalógus bármely felhasználója megjegyzéseket fűzhet az általa felfedezett adategységekhez.
+    ![Azure Data Catalog – címkék és leírások hozzáadása](media/data-catalog-get-started/data-catalog-add-tags-experts-descriptions.png)
 
-## 6. gyakorlat: Kapcsolódás az adatforrásokhoz
+- Válassza a **Dokumentáció** lapfület, és adja meg az adategységhez tartozó dokumentációt. Az Azure Data Catalog dokumentációs funkciójával az adatkatalógus egyben tartalomtárként is használható, amely bemutatja az adategységek közötti összefüggéseket is.
 
-Ebben a gyakorlatban az **Azure Data Catalog**-portál használatával egy Microsoft Excel-alapú adatforráshoz fog kapcsolódni.
+    ![Azure Data Catalog – Dokumentáció lap](media/data-catalog-get-started/data-catalog-documentation.png)
 
-> [AZURE.NOTE] Fontos észben tartani, hogy az **Azure Data Catalog** nem a konkrét adatforrásokhoz biztosít hozzáférést a felhasználóknak – egyszerűen csak megkönnyíti ezek felderítését és értelmezését. Amikor a felhasználók csatlakoznak egy adatforráshoz, az általuk választott ügyfélalkalmazás a Windows rendszerbeli hitelesítő adataikat használja fel, vagy megkéri őket, hogy adják meg a szükséges hitelesítő adatokat. Ha a felhasználó korábban még nem kapott hozzáférést az adatforráshoz, a csatlakozás előtt be kell szereznie az erre irányuló jogosultságot.
 
-### Így kapcsolódhat egy Excel-alapú adatforráshoz
+Ugyanazt a dekorációt egyszerre több adategységhez is hozzáadhatja. Kiválaszthatja például a korábban regisztrált összes adategységet, és megadhat hozzájuk egy szakértőt.
 
-1. Lépjen a https://azure.microsoft.com/services/data-catalog helyre, majd kattintson **Az első lépések** elemre, és jelentkezzen be az **Azure Data Catalog**-portálra.
-2. Kattintson a **Discover** (Felderítés) gombra.
-3. Válasszon ki egy adategységet. Ebben a példában válassza a ProductCategory elemet.
-4. Válassza az **Open In** > **Excel** (Megnyitás a következőben: Excel) lehetőséget.
+![Azure Data Catalog – dekoráció készítése több adategységhez](media/data-catalog-get-started/data-catalog-multi-select-annotate.png)
 
-    ![](media/data-catalog-get-started/data-catalog-connect1.png)
+Az Azure Data Catalog közösségi kiszervezést alkalmazó megközelítést használ a dekorációknál. A Data Catalog bármelyik felhasználója felvehet (felhasználói vagy szószedet-) címkéket, leírásokat és más típusú metaadatokat, így bárki, aki ismeri az adategységet, rögzítheti és elérhetővé teheti meglátásait.
 
-5. A **Microsoft Excel Security Notice** (Microsoft Excel biztonsági figyelmeztetés) ablakban kattintson az **Enable** (Engedélyezés) gombra.
-6. Nyissa meg a **ProductCategory.odc** fájlt.
-7. Az adatforrás megnyílt az Excelben.
+Az adategységek dekorációkkal való ellátásával kapcsolatban [az adategységek dekorálását bemutató cikkben](data-catalog-how-to-annotate.md) olvashat részletesen.
 
-    ![](media/data-catalog-get-started/data-catalog-connect2.png)
+## Csatlakozás adategységekhez
+Ebben a gyakorlatban a kapcsolatadatok segítségével az adategységeket egy integrált ügyféleszközben (Excel) és egy nem integrált eszközben (SQL Server Management Studio) is meg fogja nyitni.
 
-Ebben a gyakorlatban egy, az **Azure Data Catalog** portál használatával felfedezett adatforráshoz kapcsolódott. Az **Azure Data Catalog**-portál lehetővé teszi a felhasználók számára, hogy közvetlenül, az **Open in…** (Megnyitás a következőben…) menübe integrált ügyfélalkalmazások használatával, illetve az adategység metaadatai között megadott kapcsolódási helyet felhasználva bármilyen szabadon választott alkalmazás használatával kacsolódjanak az adatforrásokhoz.
+> [AZURE.NOTE] Nem szabad elfelejteni, hogy az Azure Data Catalog nem ad hozzáférést magához az adatforráshoz, csupán megkönnyíti a felderítését és a megértését. Amikor Ön csatlakozik egy adatforráshoz, a választott ügyfélalkalmazás a windowsos hitelesítési adatokat fogja használni, illetve, ha szükséges, felszólítja Önt a hitelesítési adatok megadására. Ha korábban még nem kapott hozzáférést az adatforráshoz, ahhoz, hogy csatlakozhasson, meg kell kapnia a hozzáférést.
 
-## 7. gyakorlat: Adatforrások metaadatainak eltávolítása
+### Csatlakozás adategységhez az Excelből
 
-Ebben a gyakorlatban az **Azure Data Catalog**-portál használatával előnézeti adatokat fog eltávolítani a regisztrált adategységekből, és adategységeket fog törölni a katalógusból.
+1. A találatok közül válassza ki a **Product** elemet. Kattintson a **Megnyitás a következőben:** lehetőségre, majd válassza az **Excel** elemet.
 
-> [AZURE.NOTE] A katalógus alapértelmezett viselkedése szerint bármely felhasználó regisztrálhat bármilyen adatforrást, és bármely felhasználó törölhet bármilyen regisztrált adatforrást. Az **Azure Data Catalog Standard kiadásának** felügyeleti lehetőségei további lehetőségeket nyújtanak, amelyekkel az adategységek saját tulajdonba vehetők, és korlátozható az adategységeket felfedezni és törölni jogosult felhasználók köre.
+    ![Azure Data Catalog – csatlakozás adategységhez](media/data-catalog-get-started/data-catalog-connect1.png)
+2. Kattintson a **Megnyitás** gombra a letöltési előugró ablakban. Ez böngészőnként eltérően jelenhet meg.
 
-Az **Azure Data Catalog**ban az adategységek egyesével vagy csoportosan is törölhetők.
+    ![Azure Data Catalog – exceles csatlakozási fájl letöltése](media/data-catalog-get-started/data-catalog-download-open.png)
+3. A **Microsoft Excel Security Notice** (Microsoft Excel biztonsági figyelmeztetés) ablakban kattintson az **Enable** (Engedélyezés) gombra.
 
-### Így törölhet egyszerre több adategységet
+    ![Azure Data Catalog – Excel biztonsági előugró ablak](media/data-catalog-get-started/data-catalog-excel-security-popup.png)
+4. Az **Adatok beolvasása** párbeszédpanelen tartsa meg az alapértelmezéseket, majd kattintson az **OK** gombra.
 
-1. Lépjen a https://azure.microsoft.com/services/data-catalog helyre, majd kattintson **Az első lépések** elemre, és jelentkezzen be az **Azure Data Catalog**-portálra.
-2. Kattintson a **Discover** (Felderítés) gombra.
-3. Válasszon ki egy vagy több adategységet.
-4. Kattintson a **Delete** (Törlés) gombra.
+    ![Azure Data Catalog – Excel, adatok beolvasása](media/data-catalog-get-started/data-catalog-excel-import-data.png)
+5. Tekintse meg az adatforrást az Excelben.
 
-Ebben a gyakorlatban regisztrált adategységeket távolított el a katalógusból.
+    ![Azure Data Catalog – terméktábla az Excelben](media/data-catalog-get-started/data-catalog-connect2.png)
 
-## 8. gyakorlat: Regisztrált adatforrások felügyelete
+Ebben a gyakorlatban az Azure Data Catalog segítségével felderített adategységekhez fog csatlakozni. Az Azure Data Catalog-portál segítségével közvetlenül, a **Megnyitás a következőben:** menüben elérhető integrált ügyfélalkalmazásokkal végezheti el a csatlakozást. Ezenfelül tetszőleges alkalmazáshoz csatlakozhat az adategység metaadataiban szereplő csatlakozási helyadatok segítségével. Például az SQL Server Management Studio használatával csatlakozhat az AdventureWorks2014 adatbázishoz, és elérheti az oktatóanyag korábbi részében regisztrált adategységekben szereplő adatokat.
 
-Ebben a gyakorlatban az **Azure Data Catalog** felügyeleti képességeit kihasználva saját tulajdonába vesz egy adategységet, és szabályozza azt, mit fedezhetnek fel a felhasználók, és hogyan felügyelhetik az adategységeket.
+1. Nyissa meg az **SQL Server Management Studiót**.
+2. A **Kapcsolódás kiszolgálóhoz** párbeszédpanelen írja be a kiszolgáló nevét az Azure Data Catalog portál **Tulajdonságok** paneljéről.
+3. Adja meg az adategység eléréséhez szükséges megfelelő hitelesítési és bejelentkezési adatokat. Ha nincs hozzáférése, használja a **Hozzáférés kérése** mezőben szereplő adatokat, és kérjen hozzáférést.
 
-> [AZURE.NOTE] Az ebben a gyakorlatban leírt felügyeleti képességek kizárólag az **Azure Data Catalog Standard kiadásában** érhetők el, az**ingyenes kiadásban** nem.
-Az **Azure Data Catalog** lehetőséget nyújt az adategységek saját tulajdonba vételére, társtulajdonosok hozzáadására, valamint az adategységek láthatóságának beállítására.
+    ![Azure Data Catalog – hozzáférés kérése](media/data-catalog-get-started/data-catalog-request-access.png)
 
-### Így vehetők saját tulajdonba az adategységek és korlátozható a láthatóságuk
+Kattintson a **Kapcsolati karakterláncok megtekintése** elemre, tekintse meg, majd másolja a vágólapra az ADF.NET, ODBC és OLEDB kapcsolati karakterláncokat, amelyekre az alkalmazásban szükség lesz.
 
-1. Lépjen a https://azure.microsoft.com/services/data-catalog helyre, majd kattintson **Az első lépések** elemre, és jelentkezzen be az **Azure Data Catalog**-portálra.
-2. Kattintson a **Discover** (Felderítés) gombra.
-3. Válasszon ki egy vagy több adategységet.
-4. A **Properties** (Tulajdonságok) panel **Management** (Felügyelet) szakaszában kattintson a **Take Ownership** (Saját tulajdonba vétel) gombra.
-5. A láthatóság korlátozásához kattintson az **Owners & These Users** (Tulajdonosok és ezek a felhasználók) lehetőségre.
+## Adategységek felügyelete
+Ebben a lépésben bemutatjuk, hogyan állítsa be az adategységek biztonságát. A Data Catalog nem ad hozzáférést a felhasználóknak magukhoz az adatokhoz. Az adatok elérését az adatforrás tulajdonosa szabályozza.
 
-    ![](media/data-catalog-get-started/data-catalog-ownership.png)
+A Data Catalog szolgáltatás arra szolgál, hogy adatforrásokat derítsen fel, és megtekintse a katalógusban regisztrált forrásokhoz tartozó metaadatokat. Előfordulhat azonban, hogy az adatforrásokat csak bizonyos felhasználók, illetve adott csoportok tagjai számára szeretné láthatóvá tenni. Ebben az esetben a Data Catalog használatával átveheti a katalógusban regisztrált adategységek tulajdonjogát, és beállíthatja a birtokában lévő adategységek láthatóságát.
 
-Ebben a gyakorlatban megismerte az **Azure Data Catalog** felügyeleti képességeit, és korlátozta egyes adategységek láthatóságát.
+> [AZURE.NOTE] Az ebben a gyakorlatban leírt felügyeleti funkciók kizárólag az Azure Data Catalog Standard kiadásában érhetők el, az ingyenes kiadásban nem.
+Az Azure Data Catalog lehetőséget nyújt az adategységek saját tulajdonba vételére, társtulajdonosok hozzáadására, valamint az adategységek láthatóságának beállítására.
 
-## Összegzés
+### Adategységek birtokbavétele és láthatóságának korlátozása
 
-Ebben az oktatóprogramban megismerte az **Azure Data Catalog** alapvető képességeit, köztük a regisztrálást, a megjegyzésekkel ellátást, a felfedezést és a vállalati adatforrások felügyeletét. Most, hogy teljesítette az oktatóprogramot, ideje megkezdeni a használatot. Regisztrálja az adatforrásokat, amelyeket a csapatával használ, és hívja fel a munkatársai figyelmét is a katalógus használatára.
+1. Nyissa meg az [Azure Data Catalog honlapját](https://www.azuredatacatalog.com). A **Keresés** szövegmezőbe írja be a **tags:cycles** kifejezést, majd nyomja le az **ENTER** billentyűt.
+2. Kattintson a kívánt elemre a találatok listájában, majd kattintson az eszköztár **Saját tulajdonba vétel** elemére.
+3. A **Tulajdonságok** panel **Felügyelet** részénél kattintson a **Saját tulajdonba vétel** elemre.
 
+    ![Azure Data Catalog – saját tulajdonba vétel](media/data-catalog-get-started/data-catalog-take-ownership.png)
+4. A láthatóság korlátozásához a **Láthatóság** résznél válassza a **Tulajdonosok és ezek a felhasználók** lehetőséget, majd kattintson a **Hozzáadás** gombra. A szövegmezőbe írja be a kívánt e-mail-címet, majd nyomja le az **ENTER** billentyűt.
 
+    ![Azure Data Catalog – hozzáférés korlátozása](media/data-catalog-get-started/data-catalog-ownership.png)
 
-<!--HONumber=Jun16_HO2-->
+## Adategységek eltávolítása
+
+Ebben a gyakorlatban az Azure Data Catalog-portál használatával el fogja távolítani az előnézeti adatokat a regisztrált adategységekből, és adategységeket fog törölni a katalógusból.
+
+Az Azure Data Catalogban az adategységek egyesével és csoportosan is törölhetők.
+
+1. Nyissa meg az [Azure Data Catalog honlapját](https://www.azuredatacatalog.com).
+2. A **Keresés** szövegmezőbe írja be a **tags:cycles** kifejezést, majd nyomja le az **ENTER** billentyűt.
+3. Ahogy az az alábbi képen is látható, válasszon egy elemet a találatok listájában, és kattintson az eszköztár **Törlés** elemére.
+
+    ![Azure Data Catalog – rácselem törlése](media/data-catalog-get-started/data-catalog-delete-grid-item.png)
+
+    Ahogy az az alábbi képen is látható, ha a listanézetet használja, a jelölőnégyzet az elemtől balra látható.
+
+    ![Azure Data Catalog – listaelem törlése](media/data-catalog-get-started/data-catalog-delete-list-item.png)
+
+    Ahogy az az alábbi képen is látható, egyszerre több adategységet is kiválaszthat:
+
+    ![Azure Data Catalog – több adategység törlése](media/data-catalog-get-started/data-catalog-delete-assets.png)
+
+
+> [AZURE.NOTE] A katalógus alapértelmezett viselkedése szerint bármely felhasználó regisztrálhat bármilyen adatforrást, és bármely felhasználó törölhet bármilyen regisztrált adatforrást. Az Azure Data Catalog Standard kiadásának felügyeleti lehetőségei további lehetőségeket nyújtanak, amelyekkel az adategységek saját tulajdonba vehetők, és korlátozható az adategységeket felderíteni és törölni jogosult felhasználók köre.
+
+
+## Összefoglalás
+
+Ebben az oktatóanyagban bemutattuk az Azure Data Catalog alapvető funkcióit, például a regisztrálást, a dekorálást, a felderítést és a vállalati adategységek felügyeletét. Most, hogy teljesítette az oktatóprogramot, ideje megkezdeni a használatot. Regisztrálja az adatforrásokat, amelyeket a csapatával használ, és hívja fel a munkatársai figyelmét is a katalógus használatára.
+
+## Referencia
+
+- [Adategységek regisztrálása](data-catalog-how-to-register.md)
+- [Adategységek felderítése](data-catalog-how-to-discover.md)
+- [Adategységek dekorálása](data-catalog-how-to-annotate.md)
+- [Adategységek dokumentálása](data-catalog-how-to-documentation.md)
+- [Adategységekhez való kapcsolódás](data-catalog-how-to-connect.md)
+- [Adategységek felügyelete](data-catalog-how-to-manage.md)
+
+
+
+<!--HONumber=sep16_HO1-->
 
 

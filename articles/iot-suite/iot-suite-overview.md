@@ -14,7 +14,7 @@
      ms.topic="get-started-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/23/2016"
+     ms.date="08/09/2016"
      ms.author="dobett"/>
 
 # Mi az Azure IoT Suite?
@@ -53,14 +53,7 @@ Az IoT Suite előre konfigurált megoldásokat tartalmaz, amelyekkel gyorsan teh
 
 ## Következő lépések
 
-Most, hogy áttekintette az IoT Suite képességeit és fő összetevőit, a következőket teheti:
-
-- Ha további információt szeretne megtudni az IoT Suite előre konfigurált megoldásairól, lásd: [Mik az Azure IoT előre konfigurált megoldásai?][lnk-what-are-preconfig]
-
-- Az előre konfigurált megoldások használatának elkezdéséről lásd: [Az előre konfigurált megoldások bemutatása][lnk-preconfig-start].
-
-- Az Azure IoT Hub szolgáltatásról további információért lásd az [IoT Hub dokumentációját][lnk-iot-hub].
-
+Most, hogy áttekintette az IoT Suite képességeit és fő összetevőit, többet is megtudhat az IoT Suite előre konfigurált megoldásairól a következő cikkből: [Mik az Azure IoT előre konfigurált megoldásai?][lnk-what-are-preconfig]
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
@@ -71,11 +64,9 @@ Most, hogy áttekintette az IoT Suite képességeit és fő összetevőit, a kö
 [lnk-web-apps]: https://azure.microsoft.com/documentation/services/app-service/web/
 [iot-suite-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
 [lnk-what-are-preconfig]: iot-suite-what-are-preconfigured-solutions.md
-[lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions.md
-[lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

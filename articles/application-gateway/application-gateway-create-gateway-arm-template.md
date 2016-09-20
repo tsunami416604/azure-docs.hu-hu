@@ -4,7 +4,7 @@
    description="Ez az oldal utasításokat tartalmaz egy Azure Application Gateway Azure Resource Manager-sablonnal történő létrehozásához"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="jdial"
    editor="tysonn"/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
-   ms.author="joaoma"/>
+   ms.date="08/09/2016"
+   ms.author="gwallace"/>
 
 
 # Application Gateway létrehozása az Azure Resource Manager-sablonokkal
@@ -22,13 +22,15 @@
 Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az Application Gateway az alábbi alkalmazáskézbesítési funkciókkal rendelkezik: HTTP-terheléselosztás, cookie-alapú munkamenet-affinitás és Secure Sockets Layer (SSL) alapú kiszervezés.
 
 > [AZURE.SELECTOR]
-- [Klasszikus Azure PowerShell](application-gateway-create-gateway.md)
+- [Azure Portal](application-gateway-create-gateway-portal.md)
 - [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
+- [Klasszikus Azure PowerShell](application-gateway-create-gateway.md)
 - [Azure Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
+- [Azure CLI](application-gateway-create-gateway-cli.md)
 
 <BR>
 
-Ismertetjük, hogy miként tölthet le és módosíthat egy meglévő Azure Resource Manager-sablont a GitHubból, és miként helyezheti üzembe a sablont a GitHubból, PowerShellből és az Azure parancssori felületéről.
+Ismertetjük, hogy miként tölthet le és módosíthat egy meglévő Azure Resource Manager-sablont a GitHubból, és miként helyezheti üzembe a sablont a GitHubból, a PowerShellből és az Azure parancssori felületéről.
 
 Ha közvetlenül a GitHubból helyezi üzembe az Azure Resource Manager-sablont változtatások nélkül, ugorjon a sablont a GitHubból telepítő lépésre.
 
@@ -40,9 +42,9 @@ Ebben a forgatókönyvben az alábbiakat fogja tenni:
 - Létrehoz egy Application Gateway-t két példánnyal.
 - Létrehoz egy VirtualNetwork1 nevű virtuális hálózatot a 10.0.0.0/16 egy fenntartott CIDR-blokkjával.
 - Létrehoz egy Appgatewaysubnet nevű alhálózatot, amelynek a CIDR-blokkja 10.0.0.0/28 lesz.
-- Beállít két korábban konfigurált háttér IP-címet a webkiszolgálóknak, amelyek között el szeretné osztani a forgalom terhelését. Ebben a példasablonban a két háttér IP-cím 10.0.1.10 és 10.0.1.11.
+- Beállít két korábban konfigurált háttér IP-címet a webkiszolgálóknak, amelyek között el szeretné osztani a forgalom terhelését. Ebben a példasablonban a háttér IP-cím a 10.0.1.10 és a 10.0.1.11.
 
->[AZURE.NOTE] Ezek a sablon paraméterei. A sablon személyre szabásához módosíthatja a szabályokat, a figyelőt és az SSL-t, amely az azuredeploy.json elemet nyitja meg.
+>[AZURE.NOTE] Ezek a beállítások a sablon paraméterei. A sablon személyre szabásához módosíthatja a szabályokat, a figyelőt és az SSL-t, amely az azuredeploy.json elemet nyitja meg.
 
 
 
@@ -58,7 +60,7 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 2. Kattintson az **azuredeploy.json**, majd a **RAW** elemre.
 3. Mentse a fájlt egy helyi mappába a számítógépén.
 4. Ha már ismeri az Azure Resource Manager-sablonokat, akkor ugorjon a 7. lépéshez.
-5. Nyissa meg az előbb mentett fájlt, és nézze át az 5. sorban a **paraméterek** alatt látható tartalmakat. Az Azure Resource Manager-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
+5. Nyissa meg a mentett fájlt, és nézze át az 5. sorban a **parameters** (paraméterek) alatt látható tartalmakat. Az Azure Resource Manager-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
 
   	| Paraméter | Leírás |
   	|---|---|
@@ -73,18 +75,18 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
   	| **backendaddress2** | A második webkiszolgáló IP-címe |
 
 
->[AZURE.IMPORTANT] A GitHubban fenntartott Azure Resource Manager-sablonok idővel módosulhatnak. Ne feledje el ellenőrizni a sablont, mielőtt használja azt.
+    >[AZURE.IMPORTANT] A GitHubban fenntartott Azure Resource Manager-sablonok idővel módosulhatnak. Ne feledje el ellenőrizni a sablont, mielőtt használja azt.
 
 6. Ellenőrizze a **resources** alatt látható tartalmat, és figyelje meg a következőket:
 
     - **type**. A sablon által létrehozott erőforrástípus. Ebben az esetben a típus **Microsoft.Network/applicationGateways**, amely egy Application Gateway-t jelöl.
-    - **name**. Az erőforrás neve. Figyelje meg a **[parameters('applicationGatewayName')]** használatát, ami azt jelzi, hogy a nevet a felhasználó vagy egy paraméterfájl adja meg az üzembe helyezés során bemenetként.
+    - **name**. Az erőforrás neve. Figyelje meg a **[parameters('applicationGatewayName')]** használatát, ami azt jelzi, hogy a nevet Ön vagy egy paraméterfájl adja meg az üzembe helyezés során bemenetként.
     - **properties**. Az erőforrás tulajdonságainak listája. A sablon az Application Gateway létrehozása során a virtuális hálózatot és a nyilvános IP-címet használja.
 
-7. Lépjen vissza a https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/ webhelyre.
+7. Lépjen vissza a[ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create) webhelyre.
 8. Kattintson az **azuredeploy-paremeters.json**, majd a **RAW** elemre.
 9. Mentse a fájlt egy helyi mappába a számítógépén.
-10. Nyissa meg az előbb mentett fájlt, és módosítsa a paraméterek értékeit. Az alábbi értékek használatával helyezze üzembe a forgatókönyvünkben ismertetett Application Gateway-t.
+10. Nyissa meg a mentett fájlt, és módosítsa a paraméterek értékeit. A következő értékek használatával helyezze üzembe a forgatókönyvünkben ismertetett Application Gateway-t.
 
         {
           "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -116,11 +118,11 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 
 ## Az Azure Resource Manager-sablon üzembe helyezése a PowerShell használatával
 
-Ha még nem használta az Azure PowerShellt, tekintse meg [Az Azure PowerShell telepítése és konfigurálása](../powershell-install-configure.md) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
+Ha még nem használta az Azure PowerShellt, tekintse meg [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 
 ### 1. lépés
 
-        Login-AzureRmAccount
+    Login-AzureRmAccount
 
 
 
@@ -128,7 +130,7 @@ Ha még nem használta az Azure PowerShellt, tekintse meg [Az Azure PowerShell t
 
 Keresse meg a fiókot az előfizetésekben.
 
-        get-AzureRmSubscription
+    Get-AzureRmSubscription
 
 A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.<BR>
 
@@ -137,17 +139,15 @@ A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.<BR>
 Válassza ki, hogy melyik Azure előfizetést fogja használni. <BR>
 
 
-        Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
 ### 4. lépés
 
 
-Szükség esetén hozzon létre egy új erőforráscsoportot a **New-AzureResourceGroup** parancsmaggal. Az alábbi példában létre fog hozni egy új, AppgatewayRG nevű erőforráscsoportot az USA keleti régiójában.
+Szükség esetén hozzon létre egy erőforráscsoportot a **New-AzureResourceGroup** parancsmaggal. Az alábbi példában egy új, AppgatewayRG nevű erőforráscsoportot hoz létre az USA keleti régiójában.
 
-     New-AzureRmResourceGroup -Name AppgatewayRG -Location "East US"
-        VERBOSE: 5:38:49 PM - Created resource group 'AppgatewayRG' in location 'eastus'
-
+    New-AzureRmResourceGroup -Name AppgatewayRG -Location "East US"
 
         ResourceGroupName : AppgatewayRG
         Location          : eastus
@@ -160,81 +160,89 @@ Szükség esetén hozzon létre egy új erőforráscsoportot a **New-AzureResour
 
         ResourceId        : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/AppgatewayRG
 
-Futtassa a **New-AzureRmResourceGroupDeployment** parancsmagot, hogy a fent letöltött és módosított sablonnal és paraméterfájlokkal üzembe helyezhesse az új virtuális hálózatot.
+Futtassa a **New-AzureRmResourceGroupDeployment** parancsmagot, hogy az előzőleg letöltött és módosított sablonnal és paraméterfájlokkal üzembe helyezhesse az új virtuális hálózatot.
 
-        New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
-           -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
+    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+        -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
 
-A parancssor az alábbi kimenetet fogja létrehozni:
+A parancssor az alábbi kimenetet hozza létre:
 
-        DeploymentName    : testappgatewaydeployment
-        ResourceGroupName : appgatewayRG
-        ProvisioningState : Succeeded
-        Timestamp         : 9/19/2015 1:49:41 AM
-        Mode              : Incremental
-        TemplateLink      :
-        Parameters        :
-                   Name             Type                       Value
-                   ===============  =========================  ==========
-                   location         String                     East US
-                   addressPrefix    String                     10.0.0.0/16
-                   subnetPrefix     String                     10.0.0.0/24
-                   skuName          String                     Standard_Small
-                   capacity         Int                        2
-                   backendIpAddress1  String                     10.0.1.10
-                   backendIpAddress2  String                     10.0.1.11
+    DeploymentName    : testappgatewaydeployment
+    ResourceGroupName : appgatewayRG
+    ProvisioningState : Succeeded
+    Timestamp         : 9/19/2015 1:49:41 AM
+    Mode              : Incremental
+    TemplateLink      :
+    Parameters        :
+                Name             Type                       Value
+                ===============  =========================  ==========
+                location         String                     East US
+                addressPrefix    String                     10.0.0.0/16
+                subnetPrefix     String                     10.0.0.0/24
+                skuName          String                     Standard_Small
+                capacity         Int                        2
+                backendIpAddress1  String                     10.0.1.10
+                backendIpAddress2  String                     10.0.1.11
 
-        Outputs           :
+    Outputs           :
 
 
 ## Az Azure Resource Manager-sablon üzembe helyezése az Azure CLI használatával
 
 A letöltött Azure Resource Manager-sablon Azure CLI-vel történő üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Az Azure CLI telepítése és konfigurálása](../xplat-cli-install.md) című szakaszt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
-2. Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
+### 1. lépés
 
-        azure config mode arm
+Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Az Azure CLI telepítése és konfigurálása](../xplat-cli-install.md) című szakaszt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+### 2. lépés
+
+Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
+
+    azure config mode arm
 
 A fenti parancs várható kimenete:
 
-        info:   New mode is arm
+    info:   New mode is arm
 
-3. Szükség esetén az **azure group create** parancs futtatásával hozzon létre egy új erőforráscsoportot, a lent látható módon. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../resource-group-overview.md).
+### 3. lépés
 
-        azure group create -n appgatewayRG -l eastus
+Szükség esetén az **azure group create** parancs futtatásával hozzon létre egy új erőforráscsoportot, a lent látható módon. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../resource-group-overview.md).
+
+    azure group create -n appgatewayRG -l eastus
 
 **-n (vagy --name)**. Az új erőforráscsoport neve. A mi esetünkben *appgatewayRG*.
 
 **-l (vagy --location)**. Az Azure-régió, ahol az új erőforráscsoport létrejön. A mi esetünkben *eastus*.
 
-4. Futtassa az **azure group deployment create** parancsmagot, hogy a fent letöltött és módosított sablonnal és paraméterfájlokkal üzembe helyezhesse az új virtuális hálózatot. A kimenet után látható lista ismerteti a használt paramétereket.
+### 4. lépés
 
-        azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
+Futtassa az **azure group deployment create** parancsmagot, hogy a fent letöltött és módosított sablonnal és paraméterfájlokkal üzembe helyezhesse az új virtuális hálózatot. A kimenet után látható lista ismerteti a használt paramétereket.
+
+    azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
 
 A fenti parancs várható kimenete:
 
-        azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
-        info:    Executing command group deployment create
-        + Initializing template configurations and parameters
-        + Creating a deployment
-        info:    Created template deployment "TestAppgatewayDeployment"
-        + Waiting for deployment to complete
-        data:    DeploymentName     : TestAppgatewayDeployment
-        data:    ResourceGroupName  : appgatewayRG
-        data:    ProvisioningState  : Succeeded
-        data:    Timestamp          : 2015-09-21T20:50:27.5129912Z
-        data:    Mode               : Incremental
-        data:    Name               Type    Value
-        data:    -----------------  ------  --------------
-        data:    location           String  East US
-        data:    addressPrefix      String  10.0.0.0/16
-        data:    subnetPrefix       String  10.0.0.0/24
-        data:    skuName            String  Standard_Small
-        data:    capacity           Int     2
-        data:    backendIpAddress1  String  10.0.1.10
-        data:    backendIpAddress2  String  10.0.1.11
-        info:    group deployment create command OK
+    azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
+    info:    Executing command group deployment create
+    + Initializing template configurations and parameters
+    + Creating a deployment
+    info:    Created template deployment "TestAppgatewayDeployment"
+    + Waiting for deployment to complete
+    data:    DeploymentName     : TestAppgatewayDeployment
+    data:    ResourceGroupName  : appgatewayRG
+    data:    ProvisioningState  : Succeeded
+    data:    Timestamp          : 2015-09-21T20:50:27.5129912Z
+    data:    Mode               : Incremental
+    data:    Name               Type    Value
+    data:    -----------------  ------  --------------
+    data:    location           String  East US
+    data:    addressPrefix      String  10.0.0.0/16
+    data:    subnetPrefix       String  10.0.0.0/24
+    data:    skuName            String  Standard_Small
+    data:    capacity           Int     2
+    data:    backendIpAddress1  String  10.0.1.10
+    data:    backendIpAddress2  String  10.0.1.11
+    info:    group deployment create command OK
 
 **-g (vagy --resource-group)**. Az erőforráscsoport neve, amelyben az új virtuális hálózat létrejön.
 
@@ -286,6 +294,6 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

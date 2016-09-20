@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/18/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
 # Az ExpressRoute QoS-követelményei
@@ -21,7 +21,7 @@ A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, ame
 
 ![](./media/expressroute-qos/expressroute-qos.png)
 
->[AZURE.NOTE] A QoS-követelmények csak a Microsoft társviszony-létesítésre vonatkoznak.
+>[AZURE.NOTE] A QoS-követelmények csak a Microsoft társviszony-létesítésre vonatkoznak. Az Azure nyilvános vagy Azure privát társviszony-létesítésen keresztül kapott hálózati forgalom DSCP-értékei 0-ra állnak. 
 
 A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöléseket sorolja fel. További információkért lásd: [A QoS kezelése a Skype Vállalati verzióhoz](https://technet.microsoft.com/library/gg405409.aspx).
 
@@ -52,6 +52,6 @@ A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöl
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

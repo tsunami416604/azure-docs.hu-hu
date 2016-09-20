@@ -14,6 +14,8 @@ DNS-címke létrehozásához először válassza a **Virtuális gépek** elemet 
 
 3. Adjon meg egy DNS-címkenevet. Ez a név egy A rekord, amelynek használatával név szerint csatlakozhat az SQL Server rendszerű virtuális géphez az IP-cím megadásával való közvetlen csatlakozás helyett.
 
+4. Kattintson a **Mentés** gombra.
+
     ![dns-címke](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
 
 ### Csatlakozás az adatbázismotorhoz egy másik számítógépről
@@ -28,12 +30,12 @@ DNS-címke létrehozásához először válassza a **Virtuális gépek** elemet 
 
 6. A **Jelszó** szövegmezőbe írja be a bejelentkezési jelszót.
 
-7. Kattintson a **Csatlakozás** gombra.
+7. Kattintson a **Connect** (Csatlakozás) gombra.
 
     ![ssms connect](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

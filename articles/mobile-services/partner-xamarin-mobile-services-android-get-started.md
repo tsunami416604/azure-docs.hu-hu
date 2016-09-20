@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="mobile-xamarin-android"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="02/10/2016"
+    ms.date="07/21/2016"
     ms.author="donnam"/>
 
 # <a name="getting-started"></a>A Mobile Services használatának első lépései
@@ -67,7 +67,7 @@ Ebben a szakaszban egy, a mobilszolgáltatásához kapcsolódó új Xamarin.Andr
 
 4. A **Download and run app** (Alkalmazás letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra.
 
-    Ezzel letölti a projektet a mobilszolgáltatáshoz kapcsolódó _Teendőlista_ mintaalkalmazáshoz. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+    Ezzel letölti a projektet a mobilszolgáltatáshoz kapcsolódó _Teendőlista_ mintaalkalmazáshoz. Mentse a tömörített projektfájlt a helyi számítógépre, és jegyezze fel a mentési helyét.
 
 ## Az Android-alkalmazás futtatása
 
@@ -87,7 +87,8 @@ Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futta
 
     Ez egy POST kérést küld az Azure-ban futtatott új mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
 
-    > [AZURE.NOTE] A mobilszolgáltatáshoz az adatok lekérdezése és beszúrása céljából hozzáférő kódot át is tekintheti a ToDoActivity.cs C# fájlban.
+    > [AZURE.NOTE]
+    > A mobilszolgáltatáshoz az adatok lekérdezése és beszúrása céljából hozzáférő kódot át is tekintheti a ToDoActivity.cs C# fájlban.
 
 6. A [klasszikus Azure portál] visszatérve kattintson a **Data** (Adatok) fülre, majd a **TodoItems** táblára.
 
@@ -144,6 +145,6 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

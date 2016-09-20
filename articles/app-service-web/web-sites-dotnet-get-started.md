@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="04/22/2016"
-    ms.author="tdykstra"/>
+    ms.date="07/22/2016"
+    ms.author="rachelap"/>
 
 # ASP.NET webalkalmazás telepítése az Azure App Service szolgáltatásba a Visual Studio használatával
 
@@ -210,7 +210,7 @@ Ha vállalati hálózaton dolgozik, és tűzfalon keresztül szeretne az Azure A
 
 Most, hogy sikeresen telepítette ASP.NET webalkalmazását az Azure App Service-ben, további információkat tudhat meg a Visual Studio hibaelhárítást megkönnyítő funkcióiról. A naplózással, a távoli hibakereséssel és egyebekkel kapcsolatos információkért lásd: [Troubleshooting Azure web apps in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md) (Azure-webalkalmazások hibaelhárítása a Visual Studióban).
 
-## További lépések
+## Következő lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan lehet létrehozni egy egyszerű webalkalmazást és telepíteni azt egy Azure-webalkalmazásban. Íme, néhány kapcsolódó témakör és forrás, amely az Azure App Service-szel kapcsolatos további tudnivalókat biztosít:
 
@@ -239,9 +239,12 @@ Ebben az oktatóanyagban megtudhatta, hogyan lehet létrehozni egy egyszerű web
 
 * Ha már nem használja őket, törölje a webalkalmazást tartalmazó erőforráscsoportot és a kapcsolódó Azure-erőforrásokat.
 
-    További információ az erőforráscsoportok kezeléséről az Azure portálon: [Az Azure portál használata az Azure-erőforrások telepítéséhez és kezeléséhez](../resource-group-portal.md).   
+    További információ az erőforráscsoportoknak az Azure Portalon való használatával kapcsolatban: [Deploy resources with Resource Manager templates and Azure portal](../resource-group-template-deploy-portal.md) (Erőforrások üzembe helyezése Resource Manager-sablonok és az Azure Portal segítségével).   
+
+*   További példák egy ASP.NET-webalkalmazás létrehozására az App Service szolgáltatásban: [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (ASP.NET-webalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) és [Create and deploy a mobile app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-a-mobile-app-in-Azure-App-Service) (Mobilalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóból](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). A HealthClinic.biz bemutató további gyors útmutatóit lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Azure fejlesztői eszközök – gyors útmutatók).
 
 
-<!--HONumber=Jun16_HO2--->
+
+<!--HONumber=sep16_HO1-->
 
 

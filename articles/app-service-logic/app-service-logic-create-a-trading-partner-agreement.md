@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Kereskedelmipartner-egyezmény létrehozása az Azure App Service szolgáltatásban | Microsoft Azure" 
    description="Kereskedelmipartner-egyezmények létrehozása" 
-   services="app-service\logic" 
+   services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
    manager="erikre" 
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
     ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="04/20/2016"
+   ms.date="08/23/2016"
    ms.author="rajram"/>
 
 # Kereskedelmipartner-egyezmény létrehozása   
@@ -27,7 +27,7 @@ Kereskedelmi partnereknek a vállalatközi kommunikációban részt vevő entit�
 - X12 (ASC X12)
 
 ### A vállalatközi megoldásokat támogató BizTalk API-alkalmazások
-Az alábbi API-alkalmazások használhatók az Azure portál gazdag és magától értetődő felhasználói felületével:
+Az alábbi API-alkalmazások használhatók az Azure Portal gazdag és magától értetődő felhasználói felületével:
 
 
 ## BizTalk Trading Partner Management (TPM)
@@ -81,6 +81,6 @@ Kereskedelmipartner-egyezmények létrehozása:
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -2,7 +2,7 @@
     pageTitle="Csatlakozás az SQL Database-hez – SQL Server Management Studio | Microsoft Azure"
     description="Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban az SQL Server Management Studio (SSMS) használatával. Ezt követően pedig mintalekérdezést futtathat a Transact-SQL (T-SQL) használatával."
     metaCanonical=""
-    keywords="connect to sql database,sql server management studio"
+    keywords="csatlakozás sql database-hez,sql server management studio"
     services="sql-database"
     documentationCenter=""
     authors="stevestein"
@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/09/2016"
+    ms.date="08/17/2016"
     ms.author="sstein;carlrab" />
 
 # Csatlakozás az SQL Database-hez az SQL Server Management Studio segítségével, és T-SQL-mintalekérdezés futtatása
@@ -25,26 +25,23 @@
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-Az alábbi cikkből megtudhatja, hogyan csatlakozhat az SQL Server Management Studio (SSMS) aktuális verziójával egy Azure SQL-adatbázishoz, valamint hogyan végezhet el egy egyszerű lekérdezést Transact-SQL (T-SQL) nyelvű utasításokkal.
-
-[AZURE.INCLUDE [Sign in](../../includes/azure-getting-started-portal-login.md)]
+Ebből a cikkből megtudhatja, hogyan csatlakozhat egy SQL Database adatbázishoz az SQL Server Management Studio (SSMS) használatával. A sikeres csatlakozás után futtatunk egy egyszerű Transact-SQL (T-SQL) lekérdezést az adatbázissal való kommunikáció ellenőrzéséhez.
 
 [AZURE.INCLUDE [SSMS Install](../../includes/sql-server-management-studio-install.md)]
 
 [AZURE.INCLUDE [SSMS Connect](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
 
-A tűzfalszabályokkal kapcsolatos információkért lásd: [Tűzfal beállításainak konfigurálása (Azure SQL Database)](sql-database-configure-firewall-settings.md).
 
 ## Mintalekérdezések futtatása
 
-A logikai kiszolgálóhoz való csatlakozás után csatlakozhat az adatbázishoz, és futtathatja a mintalekérdezést. 
+A kiszolgálóhoz való csatlakozás után csatlakozhat egy adatbázishoz, és futtathat egy mintalekérdezést. Ha nem ismeri a lekérdezések írásának módját, tekintse meg a [Writing Transact-SQL Statements](https://msdn.microsoft.com/library/ms365303.aspx) (Transact-SQL-utasítások írása) című témakört.
 
-1. Az **Object Explorerben** navigáljon a kiszolgálón egy olyan adatbázishoz, amelyhez van engedélye, például az **AdventureWorks** mintaadatbázishoz.
-2. Kattintson a jobb gombbal az adatbázisra, majd válassza az **Új lekérdezés** lehetőséget.
+1. Az **Object Explorerben** lépjen a kiszolgáló egyik adatbázisához, például az **AdventureWorks** mintaadatbázisához.
+2. Kattintson a jobb gombbal az adatbázisra, majd válassza az **Új lekérdezés** lehetőséget:
 
     ![Új lekérdezés. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
 
-3. A lekérdezésablakban másolja és illessze be a következő kódot.
+3. A lekérdezésablakban másolja és illessze be a következőt:
 
         SELECT
         CustomerId
@@ -54,7 +51,7 @@ A logikai kiszolgálóhoz való csatlakozás után csatlakozhat az adatbázishoz
         ,CompanyName
         FROM SalesLT.Customer;
 
-4. Kattintson a **Végrehajt** gombra.  Sikeres lekérdezés esetén a következő képernyőfelvételen látható eredmény jelenik meg.
+4. Kattintson a **Végrehajt** gombra:
 
     ![Siker. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query-ssms/5-success.png)
 
@@ -66,8 +63,10 @@ Ha most ismerkedik a T-SQL-lel, tekintse meg [a Transact-SQL-utasítások írás
 
 Az adatbázis-felhasználók és adatbázis-felhasználói rendszergazdák létrehozásának kezdő lépéseit a következő cikk ismerteti: [Azure SQL Database – biztonsággal kapcsolatos első lépések](sql-database-get-started-security.md)
 
+További tudnivalók az SSMS-ről: [Use SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (Az SQL Server Management Studio használata).
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

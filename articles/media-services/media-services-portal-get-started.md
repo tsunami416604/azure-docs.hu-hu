@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="02/25/2016"
+    ms.date="06/22/2016"
     ms.author="juliako"/>
 
 
@@ -42,17 +42,17 @@ Az oktatóanyag a következő feladatokat tartalmazza:
 
 1. A [klasszikus Azure portálon](https://manage.windowsazure.com/) kattintson az **Új** > **Media Service** elemre, majd a **Gyorslétrehozás** lehetőségre.
 
-    ![Media Services, Gyorslétrehozás](./media/media-services-portal-get-started/wams-QuickCreate.png)
+    ![Media Services-fiók gyors létrehozása](./media/media-services-portal-get-started/wams-QuickCreate.png)
 
-2. A **NÉV** mezőben adja meg az új fiók nevét. A Media Services-fiók neve csak kisbetűket és számokat tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.
+2. A **NAME** (NÉV) mezőbe írja be az új fiók nevét. A Media Services-fiók nevének 3–24 karakter hosszúságúnak kell lennie, és csak kisbetűket és számokat tartalmazhat, szóközök nélkül.
 
 3. A **RÉGIÓ** részben válassza ki azt a földrajzi régiót, amelyben tárolni fogja a Media Services-fiókhoz tartozó metaadat-bejegyzéseket. A legördülő listában csak a Media Services szolgáltatásban elérhető régiók jelennek meg.
 
-4. A **TÁRFIÓK** résznél válasszon egy tárfiókot, amely Blob Storage tárolót fog biztosítani a Media Services-fiókhoz tartozó médiatartalmak számára. Választhat egy, a Media Services-fiókkal azonos földrajzi régióban elhelyezkedő meglévő tárfiókot, vagy új fiókot is létrehozhat. A újonnan létrehozott tárfiók is ugyanahhoz a régióhoz fog tartozni.
+4. A **TÁRFIÓK** résznél válasszon egy tárfiókot, amely Blob Storage tárolót fog biztosítani a Media Services-fiókhoz tartozó médiatartalmak számára. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy új tárfiókot. Az újonnan létrehozott tárfiókok ugyanabban a régióban jönnek létre.
 
-5. Az új tárfiók létrehozását követően a **NEW STORAGE ACCOUNT NAME** (ÚJ TÁRFIÓK NEVE) mezőben adjon nevet a tárfióknak. A tárfiók nevére ugyanazok a szabályok vonatkoznak, mint a Media Services-fiókok nevére.
+5. Ha egy új tárfiókot hozott létre, a **NEW STORAGE ACCOUNT NAME** (ÚJ TÁRFIÓK NEVE) mezőben adjon meg egy nevet a tárfióknak. A tárfiókok elnevezési szabályai ugyanazok, mint a Media Services-fiókok esetében.
 
-6. Kattintson az űrlap alján található **Gyorslétrehozás** lehetőségre.
+6. Az űrlap alsó részén kattintson a **Gyors létrehozás** elemre.
 
     A folyamat állapotát az ablak alsó részén található üzenetterületen követheti nyomon.
 
@@ -67,11 +67,11 @@ Az oktatóanyag a következő feladatokat tartalmazza:
 
 ## Strevégpont konfigurálása a portál használatával
 
-Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. Adaptív sávszélességű streamelés esetén az ügyfél az elérhető hálózati sávszélesség, a processzorhasználat és más tényezők függvényében a videó megjelenítését követően magasabb vagy alacsonyabb sávszélességű streamelésre kapcsolhat. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (amelyhez Adobe PrimeTime-/Access-licenc szükséges).
+Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. Az adaptív sávszélességű streameléskor az ügyfél magasabb vagy alacsonyabb sávszélességű adatfolyam-továbbításra válthat a videó lejátszása közben, az aktuális hálózati sávszélességhez, CPU-használathoz és egyéb tényezőkhöz igazodva. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH, és HDS (csak Adobe PrimeTime/Access licenctulajdonosok esetében).
 
-A Media Services dinamikus becsomagolást biztosít, amelynek köszönhetően adaptív sávszélességű MP4 vagy Smooth Streaming formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming, HDS) továbbíthatja, mindezt anélkül, hogy át kellene őket csomagolni ezekbe a formátumokba.
+A Media Services dinamikus csomagolást biztosít, amely lehetővé teszi az adaptív sávszélességű, MP4- vagy Smooth Streaming-kódolású tartalmak továbbítását a Media Services által támogatott formátumokban (MPEG DASH, HLS, Smooth Streaming, HDS) anélkül, hogy a tartalmakat újra kellene csomagolni ezekbe az adatfolyam-továbbítási formátumokba.
 
-A dinamikus becsomagolás funkció használatához tegye a következőket:
+A dinamikus csomagolás előnyeinek kihasználásához a következőket kell tennie:
 
 - Kódolja adaptív sávszélességű MP4- vagy Smooth Streaming-fájlokká a forrásfájlt (a kódolás lépéseit az oktatóanyag egy későbbi részében találja meg).  
 - Szerezzen be legalább egy streamelési egységet a tartalom továbbításához használni kívánt *streamvégpontra*.
@@ -86,11 +86,11 @@ Streameléshez fenntartott egységek számának megváltoztatásához tegye a k�
 
 3. A streamelési egységek számának meghatározásához kattintson a **SCALE** (Skálázás) lapra, majd mozgassa tetszőleges irányba a **reserved capacity** (lefoglalt kapacitás) csúszkát.
 
-    ![A Scale (Skálázás) lap](./media/media-services-portal-get-started/media-services-origin-scale.png)
+    ![Méretezés oldal](./media/media-services-portal-get-started/media-services-origin-scale.png)
 
 4. A módosítások mentéséhez kattintson a **SAVE** (Mentés) gombra.
 
-    Az új egységek allokációja akár 20 percig is eltarthat.
+    Az új egységek lefoglalásának teljesítése körülbelül 20 percet vesz igénybe.
 
     >[AZURE.NOTE] Ha pozitív értékről nullára csökkenti a streamelési egységek számát, azzal jelenleg akár egy órára is elérhetetlenné teheti a streamelési funkciót.
     >
@@ -124,11 +124,11 @@ Ha a feltöltési folyamat befejeződését követően nem módosul a fájlmére
 
 Ahhoz, hogy digitális videót továbbíthasson az interneten keresztül, először el kell végezni a tartalom tömörítését. A Media Services szolgáltatásnak egy kódoló is részét képezi, amelyben részletesen beállíthatja, hogy hogyan szeretné kódolni tartalmait (megadhatja például a használni kívánt kodeket, fájlformátumot, felbontást és sávszélességet).
 
-Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. Adaptív sávszélességű streamelés esetén az ügyfél az elérhető hálózati sávszélesség, a processzorhasználat és más tényezők függvényében a videó megjelenítését követően magasabb vagy alacsonyabb sávszélességű streamelésre kapcsolhat. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (amelyhez Adobe PrimeTime-/Access-licenc szükséges).
+Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. Az adaptív sávszélességű streameléskor az ügyfél magasabb vagy alacsonyabb sávszélességű adatfolyam-továbbításra válthat a videó lejátszása közben, az aktuális hálózati sávszélességhez, CPU-használathoz és egyéb tényezőkhöz igazodva. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (amelyhez Adobe PrimeTime-/Access-licenc szükséges).
 
 A Media Services dinamikus becsomagolást biztosít, amelynek köszönhetően adaptív sávszélességű MP4 vagy Smooth Streaming formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming vagy HDS) továbbíthatja, mindezt anélkül, hogy át kellene őket csomagolni ezekbe a formátumokba.
 
-A dinamikus becsomagolás funkció használatához tegye a következőket:
+A dinamikus csomagolás előnyeinek kihasználásához a következőket kell tennie:
 
 - Kódolja adaptív sávszélességű MP4- vagy Smooth Streaming-fájlokká a forrásfájlt (a kódolás lépéseit az oktatóanyag egy későbbi részében találja meg).
 - Szerezzen be legalább egy igényalapú streamelési egységet a tartalom továbbításához használni kívánt streamvégpontra. További információk: [How to scale On-Demand Streaming reserved units](media-services-manage-origins.md#scale_streaming_endpoints/) (Igényalapú streameléshez fenntartott egységek méretezése).
@@ -164,7 +164,7 @@ Ebben a részben leírjuk, milyen lépéseket kell elvégeznie a tartalmaknak a 
 
 ### Áttekintés
 
-Ahhoz, hogy átadhassa a tartalmak streamelésére vagy letöltésére használható URL-címet a felhasználónak, először „közzé kell tennie” az objektumot. Ehhez létre kell hoznia egy lokátort. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services két lokátortípust támogat: az egyik az OnDemandOrigin lokátortípus, amely médiafájlok (például MPEG DASH, HLS vagy Smooth Streaming) streamelésére használható, a másik pedig a hozzáférési aláírás (SAS) lokátortípus, amely médiafájlok letöltésére alkalmas.
+Ahhoz, hogy átadhassa a tartalmak streamelésére vagy letöltésére használható URL-címet a felhasználónak, először „közzé kell tennie” az objektumot. Ehhez létre kell hoznia egy lokátort. A keresők biztosítják az adategységben található fájlokhoz való hozzáférést. A Media Services két lokátortípust támogat: az egyik az OnDemandOrigin lokátortípus, amely médiafájlok (például MPEG DASH, HLS vagy Smooth Streaming) streamelésére használható, a másik pedig a hozzáférési aláírás (SAS) lokátortípus, amely médiafájlok letöltésére alkalmas.
 
 Ha a klasszikus Azure portál segítségével teszi közzé tartalmait, a rendszer létrehozza Ön helyett a lokátorokat, és átadja Önnek az OnDemand-alapú URL-címet (ha az objektum .ism-fájlt tartalmaz) vagy az SAS URL-címet.
 
@@ -238,7 +238,7 @@ Ha ebben a témakörben nem azt találta, amire számított, valami hiányzik, v
 
 
 <!-- URLs. -->
-[Klasszikus Azure portál]: http://manage.windowsazure.com/
+[klasszikus Azure portál]: http://manage.windowsazure.com/
 
 
 <!-- Images -->
@@ -256,6 +256,6 @@ Ha ebben a témakörben nem azt találta, amire számított, valami hiányzik, v
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

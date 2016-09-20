@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="get-started-article"
-   ms.date="05/24/2016"
+   ms.date="07/14/2016"
    ms.author="magoedte" />
 
 # Azure Automation integrációs modulok
@@ -26,7 +26,9 @@ Egy PowerShell-modul olyan PowerShell-parancsmagok csoportja, mint a **Get-Date*
 
 ## Mi az az Azure Automation integrációs modul?
 
-Az integrációs modul nem különbözik sokban a többi PowerShell-modultól. Egyszerűen egy olyan PowerShell-modul, amely opcionálisan tartalmaz egy további fájlt, egy Azure Automation kapcsolattípust megadó metaadatfájlt, amely a modul parancsmagjaival használható a forgatókönyvekben. Ezek a PowerShell-modulok (az opcionális fájllal vagy anélkül) importálhatók az Azure Automationbe, hogy a parancsmagjaik használhatók legyenek a forgatókönyvekben, és a DSC-erőforrásaik elérhetők legyenek használatra a DSC-konfigurációkon belülről. A színfalak mögött az Azure Automation tárolja ezeket a modulokat, és a forgatókönyv-feladat és a DSC-fordítási feladat a végrehajtási ideje betölti őket az Azure Automation próbakörnyezetbe, ahol a rendszer végrehajtja a forgatókönyveket és a lefordítja a DSC-konfigurációkat.  A modulok DSC-erőforrásai is automatikusan kikerülnek az Automation DSC lekéréses kiszolgálóra, így a DSC-konfigurációkat alkalmazni próbáló gépek lekérhetik őket.  Az Azure Automation számos Azure Powershell-modult tartalmaz használatra készen, hogy azonnal elkezdhesse az Azure-felügyelet automatizálást, továbbá egyszerűen importálhat PowerShell-modulokat bármilyen integrálni kívánt rendszerhez, szolgáltatáshoz vagy eszközhöz. 
+Az integrációs modul nem különbözik sokban a többi PowerShell-modultól. Egyszerűen egy olyan PowerShell-modul, amely opcionálisan tartalmaz egy további fájlt, egy Azure Automation kapcsolattípust megadó metaadatfájlt, amely a modul parancsmagjaival használható a forgatókönyvekben. Ezek a PowerShell-modulok (az opcionális fájllal vagy anélkül) importálhatók az Azure Automationbe, hogy a parancsmagjaik használhatók legyenek a forgatókönyvekben, és a DSC-erőforrásaik elérhetők legyenek használatra a DSC-konfigurációkon belülről. A színfalak mögött az Azure Automation tárolja ezeket a modulokat, és a forgatókönyv-feladat és a DSC-fordítási feladat végrehajtási ideje betölti őket az Azure Automation próbakörnyezetbe, ahol a rendszer végrehajtja a forgatókönyveket, és a lefordítja a DSC-konfigurációkat.  A modulok DSC-erőforrásai is automatikusan kikerülnek az Automation DSC lekéréses kiszolgálóra, így a DSC-konfigurációkat alkalmazni próbáló gépek lekérhetik őket.  Az Azure Automation számos Azure Powershell-modult tartalmaz használatra készen, hogy azonnal elkezdhesse az Azure-felügyelet automatizálást, továbbá egyszerűen importálhat PowerShell-modulokat bármilyen integrálni kívánt rendszerhez, szolgáltatáshoz vagy eszközhöz. 
+
+>[AZURE.NOTE] Bizonyos modulok „globális modulként” érhetők el az Automation szolgáltatásban. Ezek a globális modulok egy Automation-fiók létrehozásakor azonnal rendelkezésre állnak, és időnként frissítjük őket, ami automatikusan leküldi a modulokat az Automation-fiókba. Ha nem szeretné a modulok automatikus frissítését, bármikor importálhatja ugyanazon modulokat, így elsőbbséget élveznek majd azokkal a globális modulverziókkal szemben, amelyeket a szolgáltatásban közzéteszünk. 
 
 Az importálni kívánt integrációsmodul-csomag formátuma a modullal azonos nevet viselő, .zip kiterjesztésű tömörített fájl. A mappa tartalmazza a Windows PowerShell-modult és minden kiegészítő fájlt, beleértve a jegyzékfájlt (.psd1) is, ha a modul rendelkezik ilyennel.
 
@@ -179,7 +181,7 @@ Bár az integrációs modulok alapvetően PowerShell-modulok, ez nem jelenti azt
     }
     ```
 <br>
- A kapcsolati adategységek a forgatókönyvekben kivonattáblák, amelyek komplex típusúak, de úgy tűnik, hogy ezek a kivonattáblák bekerülhetnek a parancsmagokba –Connection paraméterként, és a rendszer nem ad vissza kivételt. Technikailag bizonyos PowerShell-típusok képesek megfelelően átalakulni a szerializált formájukból a deszerializált formájukba, és így átadhatók a nem deszerializált típust fogadó paraméterként a parancsmagoknak. A kivonattábla egy ezek közül. Lehetséges implementálni egy modul szerzőjének definiált típusait oly módon, hogy a deszerializálásuk is helyesen történjen meg, de ehhez néhány dolgot fel kell áldozni. A típusnak rendelkeznie kell alapértelmezett konstruktorral, minden tulajdonságának nyilvánosnak kell kennie, és rendelkeznie kell egy PSTypeConverter elemmel. A modulkészítő által nem birtokolt, már definiált típusoknál nincs mód a „javításra”, így azt javasoljuk, hogy általában kerülje a paramétereknél az összetett típusokat. Forgatókönyv-készítési tipp: Ha valamilyen okból a parancsmagjainak komplex típusú paraméterre van szüksége, vagy valaki más komplex típusú paramétert igénylő moduljára van szüksége, PowerShell-alapú munkafolyamat-forgatókönyvekben és helyi PowerShellben lévő PowerShell-munkafolyamatokban a megoldás az, hogy ha becsomagolja a komplex típust létrehozó parancsmagot és a komplex típust használó parancsmagot ugyanabba az InlineScript-tevékenységbe. Minthogy az InlineScript a tartalmait inkább a PowerShellhez, mint a PowerShell-munkafolyamathoz hasonlóan hajtja végre, a komplex típust létrehozó parancsmag a helyes típust hozza létre, nem a deszerializált komplex típust.
+ A kapcsolati adategységek a forgatókönyvekben kivonattáblák, amelyek komplex típusúak, de úgy tűnik, hogy ezek a kivonattáblák bekerülhetnek a parancsmagokba –Connection paraméterként, és a rendszer nem ad vissza kivételt. Technikailag bizonyos PowerShell-típusok képesek megfelelően átalakulni a szerializált formájukból a deszerializált formájukba, és így átadhatók a nem deszerializált típust fogadó paraméterként a parancsmagoknak. A kivonattábla egy ezek közül. Lehetséges implementálni egy modul szerzőjének definiált típusait oly módon, hogy a deszerializálásuk is helyesen történjen meg, de ehhez néhány dolgot fel kell áldozni. A típusnak rendelkeznie kell alapértelmezett konstruktorral, minden tulajdonságának nyilvánosnak kell kennie, és rendelkeznie kell egy PSTypeConverter elemmel. A modulkészítő által nem birtokolt, már definiált típusoknál nincs mód a „javításra”, így azt javasoljuk, hogy általában kerülje a paramétereknél az összetett típusokat. Forgatókönyv-készítési tipp: Ha valamilyen okból a parancsmagjainak komplex típusú paraméterre van szüksége, vagy valaki más komplex típusú paramétert igénylő moduljára van szüksége, PowerShell-alapú munkafolyamat-forgatókönyvekben és helyi PowerShellben lévő PowerShell-munkafolyamatokban a megoldás az, ha becsomagolja a komplex típust létrehozó parancsmagot és a komplex típust használó parancsmagot ugyanabba az InlineScript-tevékenységbe. Minthogy az InlineScript a tartalmait inkább a PowerShellhez, mint a PowerShell-munkafolyamathoz hasonlóan hajtja végre, a komplex típust létrehozó parancsmag a helyes típust hozza létre, nem a deszerializált komplex típust.
 5. A modul egyik parancsmagjának se legyen állapota. A PowerShell-munkafolyamat a munkafolyamatban meghívott parancsmagok mindegyikét külön munkamenetben hívja meg. Ez azt jelenti, hogy azok a parancsmagok, amelyek ugyanazon modul más parancsmagjai által létrehozott/módosított munkamenet-állapottól függenek, nem fognak működni a PowerShell-alapú munkafolyamat-forgatókönyvekben.  Az alábbi példa bemutatja, mit ne tegyen.
 
     ```
@@ -203,10 +205,9 @@ Bár az integrációs modulok alapvetően PowerShell-modulok, ez nem jelenti azt
 ## Következő lépések
 
 - A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)
-- További információk PowerShell-modulok létrehozásáról: [Windows PowerShell-modul írása](https://msdn.microsoft.com/library/dd878310(v=vs.85).aspx).
+- További információk PowerShell-modulok létrehozásáról: [Windows PowerShell-modul írása](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx).
 
 
-
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

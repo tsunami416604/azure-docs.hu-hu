@@ -13,10 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/02/2016"
+   ms.date="08/15/2016"
    ms.author="elizapo"/>
 
 # Windows-alkalmazások futtatása bármely Azure RemoteAppet használó eszközön
+
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Bárhol, bármilyen eszközön, akár azonnal futtathat Windows-alkalmazásokat – egyszerűen az Azure RemoteApp használatával. Legyen szó akár egy 10 éve írt egyéni alkalmazásról, akár egy Office-alkalmazásról, felhasználói nincsenek többé egy adott operációs rendszerhez (például a Windows XP-hez) kötve néhány alkalmazás miatt.
 
@@ -28,7 +31,9 @@ Ebben a cikkben az Access programot fogjuk megosztani az összes felhasználónk
 
 Fontos megjegyezni, hogy mivel az Access egy adatbázis, és szeretnénk, hogy az adatbázis használható legyen, néhány további lépést is elvégzünk, hogy a felhasználók hozzáférhessenek az Access adatmegosztásához. Ha az Ön alkalmazása nem adatbázis, vagy nincs szükség arra, hogy a felhasználók hozzáférhessenek egy adatmegosztáshoz, akkor az oktatóanyag erre vonatkozó lépéseit kihagyhatja.
 
-[AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
+> [AZURE.NOTE] <a name="note"></a>A jelen oktatóanyag elvégzéséhez Azure-fiókra van szükség:
+> - [Ingyenesen is létrehozhat egy Azure-fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F): A kapott kreditek használatával kipróbálhatja a fizetős Azure-szolgáltatásokat, sőt, azok lejárta után is megtarthatja a fiókot, és továbbra is használhatja az ingyenes Azure-szolgáltatásokat (amilyen például a Websites). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez.
+> - [Aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Az MSDN-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat.
 
 
 ## Katalógus létrehozása a RemoteAppben
@@ -111,7 +116,7 @@ Ezután a felhasználókon a sor. Először kérje meg a felhasználóit, hogy t
 Most már bármelyik eszközön használhatja az Accesst, ha telepít hozzá egy RemoteApp-ügyfelet.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## További lépések
+## Következő lépések
 
 Most, hogy elsajátította gyűjtemények létrehozását, próbáljon meg létrehozni egy [Office 365-öt használó gyűjteményt](remoteapp-tutorial-o365anywhere.md). Vagy hozzon létre egy [hibrid gyűjteményt](remoteapp-create-hybrid-deployment.md), amely hozzáfér a helyi hálózatához.
 
@@ -120,6 +125,6 @@ Most, hogy elsajátította gyűjtemények létrehozását, próbáljon meg létr
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

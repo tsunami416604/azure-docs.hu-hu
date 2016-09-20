@@ -2,7 +2,7 @@
 
 Az [EventProcessorHost][] egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubs szolgáltatásból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs eseményközpontokból. Az [EventProcessorHost][] szolgáltatással feloszthatja az eseményeket több fogadóra, akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az [EventProcessorHost][] egyetlen fogadóhoz. A [horizontálisan felskálázott eseményfeldolgozási][] minta megmutatja, hogyan használható a [EventProcessorHost][] több fogadóval.
 
-Az [EventProcessorHost][] használatához [Azure Storage-fiók][] szükséges:
+Az [EventProcessorHost][] használatához egy [Azure Storage-fiók][] szükséges:
 
 1. Jelentkezzen be a [klasszikus Azure portálra][], és kattintson a **NEW** (ÚJ) lehetőségre a képernyő alján.
 
@@ -26,7 +26,7 @@ Az [EventProcessorHost][] használatához [Azure Storage-fiók][] szükséges:
 
     ![][13]
 
-    Ez letölti és telepíti az [Azure Service Bus Event Hub - EventProcessorHost NuGet package](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) (Azure szolgáltatásbusz-eseményközpont - EventProcessorHost NuGet-csomag) elemet minden függőségével, és hozzáad egy rá mutató hivatkozást is.
+    A Visual Studio letölti és telepíti az [Azure Service Bus Event Hub - EventProcessorHost NuGet csomagot](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) minden függőségével együtt, és hozzáad egy rá mutató hivatkozást is.
 
 7. Kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az új osztályt **SimpleEventProcessor** névre, és kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához.
 
@@ -121,7 +121,7 @@ Az [EventProcessorHost][] használatához [Azure Storage-fiók][] szükséges:
 [Event Hubs – áttekintés]: event-hubs-overview.md
 [Event Hubs programozási útmutató]: event-hubs-programming-guide.md
 [horizontálisan felskálázott eseményfeldolgozási]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure Storage-fiók]: ../storage/storage-create-storage-account.md
+[Azure Storage-fiók]: ../storage/storage-create-storage-account-classic-portal.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [klasszikus Azure portálra]: http://manage.windowsazure.com
 
@@ -136,6 +136,6 @@ Az [EventProcessorHost][] használatához [Azure Storage-fiók][] szükséges:
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

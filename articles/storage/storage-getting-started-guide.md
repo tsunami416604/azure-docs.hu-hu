@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="dotnet" 
     ms.topic="get-started-article" 
-    ms.date="05/23/2016"
+    ms.date="07/21/2016"
     ms.author="tamram"/>
 
 # Az Azure Storage első lépéseinek rövid összefoglalása 
@@ -62,8 +62,7 @@ A következő lépésben futtassa a mintaalkalmazást:
 
     `<!--<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>-->`
 
-2.  Állítsa vissza az Azure Storage szolgáltatás kapcsolati karakterláncát, és adja meg az App.config fájlban a tárfiók nevét és hívóbetűjét: 
-	`<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
+2.  Állítsa vissza az Azure Storage szolgáltatás kapcsolati karakterláncát, és adja meg az App.config fájlban a tárfiók nevét és hívóbetűjét: `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
 
     A tárfiók elérési kulcsának lekéréséhez lásd: [Manage your storage access keys](storage-create-storage-account.md#manage-your-storage-access-keys) (A tárfiókok hívóbetűinek kezelése).
 
@@ -74,7 +73,7 @@ A következő lépésben futtassa a mintaalkalmazást:
 
 ## Az első Azure Storage-alkalmazás helyi futtatása az Azure Storage Emulatorban
 
-Az [Azure Storage Emulator](storage-use-emulator.md) helyi környezetet biztosít, amely az Azure Blob, Queue és Table szolgáltatásait emulálja a fejlesztéshez. A Storage Emulatorral helyben tesztelheti Storage-alkalmazását Azure-előfizetés vagy tárfiók létrehozása, illetve bármilyen felmerülő költség nélkül.
+Az [Azure Storage Emulator](storage-use-emulator.md) helyi környezetet biztosít, amely az Azure Blob, Queue és Table Service szolgáltatásait emulálja a fejlesztéshez. A Storage Emulatorral helyben tesztelheti Storage-alkalmazását Azure-előfizetés vagy tárfiók létrehozása, illetve bármilyen felmerülő költség nélkül.
 
 A kipróbáláshoz hozzon létre egy egyszerű Azure Storage-alkalmazást az egyik Azure gyors üzembe helyezési mintaprojekttel a Visual Studióban. Ez az oktatóanyag az **Azure Blob Storage**, **Azure Table Storage** és az **Azure Queue Storage** szolgáltatásokra koncentrál:
 
@@ -99,11 +98,12 @@ Következő lépésben futtassa a mintaalkalmazást az Azure Storage Emulatorban
 2.  A Visual Studio **Build** menüjében kattintson a **Megoldás fordítása** elemre. 
 3.  A **Hibakeresés** menüben a megoldás lépésről lépésre való futtatásához nyomja le az **F11**, vagy a teljes megoldás futtatásához az **F5** billentyűt.
 
-## További lépések
+## Következő lépések
 
 Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 * [A Microsoft Azure Storage bemutatása](storage-introduction.md)
+* [Ismerkedés az Azure Storage Explorerrel](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Get started with Azure Blob Storage using .NET (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel)](storage-dotnet-how-to-use-blobs.md)
 * [Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel](storage-dotnet-how-to-use-tables.md)
 * [Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel](storage-dotnet-how-to-use-queues.md)
@@ -118,6 +118,6 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

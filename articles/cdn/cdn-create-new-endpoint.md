@@ -1,5 +1,5 @@
 <properties
-     pageTitle="Az Azure CDN szolgáltatás használata"
+     pageTitle="Az Azure CDN szolgáltatás használata | Microsoft Azure"
      description="Ez a témakör azt mutatja be, hogyan engedélyezhető a CDN (Content Delivery Network – tartalomkézbesítési hálózat) az Azure számára. Az oktatóanyag végigvezeti Önt egy új CDN-profil és -végpont létrehozásán."
      services="cdn"
      documentationCenter=""
@@ -12,7 +12,7 @@
      ms.tgt_pltfrm="na"
      ms.devlang="na"
      ms.topic="get-started-article"
-     ms.date="05/24/2016" 
+     ms.date="07/28/2016" 
      ms.author="casoper"/>
 
 # Az Azure CDN szolgáltatás használata  
@@ -67,7 +67,7 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
     
     > [AZURE.NOTE] A **Forrásport** értéke csak azt befolyásolja, hogy a végpont melyik portot használja az információk forrásról való lekéréséhez.  Magát a végpontot a végügyfelek – a **Forrásport** értékétől függetlenül – csak az alapértelmezett HTTP- és HTTPS-porton (azaz a 80-as és a 443-as porton) keresztül érik el.  
     >
-    > Az **Akamai Azure CDN** típusú végpontok esetén a források számára nem áll rendelkezésre a teljes TCP-porttartomány.  A nem használható forrásportok listáját az [Azure CDN from Akamai behavior details](cdn-akamai-behavior-details.md) (Akamai Azure CDN viselkedésének részletei) című cikkben tekintheti meg.  
+    > Az **Akamai Azure CDN** típusú végpontok esetén a források számára nem áll rendelkezésre a teljes TCP-porttartomány.  A nem engedélyezett forrásportok listáját lást: [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Az Akamai Azure CDN engedélyezett forrásportjai).  
     >
     > A CDN-tartalom HTTPS-kapcsolaton keresztüli elérésére a következő korlátozások vonatkoznak:
     > 
@@ -99,6 +99,6 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

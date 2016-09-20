@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="cache-redis" 
     ms.devlang="na" 
     ms.topic="hero-article" 
-    ms.date="05/18/2016" 
+    ms.date="07/22/2016" 
     ms.author="sdanie"/>
 
 # Webalkalmazás létrehozása a Redis Cache használatával
@@ -802,6 +802,8 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
 ## Következő lépések
 
 -   Az [ASP.NET MVC 5 – Első lépések](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started) elvégzéséről további információkat az [ASP.NET](http://asp.net/) webhelyén talál.
+-   További példák egy ASP.NET-webalkalmazás létrehozására az App Service szolgáltatásban: [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (ASP.NET-webalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóból](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/).
+    -   A HealthClinic.biz bemutató további gyors útmutatóit lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Azure fejlesztői eszközök – gyors útmutatók).
 -   Itt további információkat talál a jelen oktatóanyagban használt, [Code first to a new database](https://msdn.microsoft.com/data/jj193542) (Code First alkalmazása egy új adatbázisra) nevű Entity Framework-megközelítésról.
 -   További információ [az Azure App Service webalkalmazásairól](../app-service-web/app-service-web-overview.md).
 -   Tudnivalók a gyorsítótár [figyeléséről](cache-how-to-monitor.md) az Azure portálon.
@@ -811,6 +813,7 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
     -   [Fürtözés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-clustering.md)
     -   [Virtuális hálózat támogatásának konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-vnet.md)
     -   További részletes információk a prémium gyorsítótárak méretével, teljesítményével és a sávszélességével kapcsolatban: [Azure Redis Cache – Gyakori kérdések](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
+
 
 
 <!-- IMAGES -->
@@ -849,6 +852,6 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

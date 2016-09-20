@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/18/2016"
+   ms.date="07/27/2016"
    ms.author="larryfr"/>
 
 #A HDInsight alatt futó Apache Storm bemutatása: Valós idejű elemzések a Hadoop használatával
@@ -109,7 +109,7 @@ A HDInsight alatt futó Stormhoz éjjel-nappal teljes körű, vállalati szintű
 
 ##Valós idejű elemzések gyakori alkalmazási helyzetei
 
-Az alábbiakban néhány gyakori forgatókönyvet ismertetünk, amelyek esetén a HDInsight alatt futó Apache Storm használható. Információ a való életben előforduló forgatókönyvekről: [A Storm vállalati felhasználása](https://storm.incubator.apache.org/documentation/Powered-By.html)
+Az alábbiakban néhány gyakori forgatókönyvet ismertetünk, amelyek esetén a HDInsight alatt futó Apache Storm használható. Információ valós felhasználási forgatókönyvekről: [How companies are using Storm](https://storm.apache.org/documentation/Powered-By.html) (A Storm vállalati felhasználása).
 
 * Eszközök internetes hálózata (IoT)
 * Csalások észlelése
@@ -162,7 +162,7 @@ További információk: [C#-topológiák fejlesztése HDInsight alatt futó Apac
 
 A legtöbb Java-alapú példa, amelyekkel találkozik, egyszerű Java vagy Trident nyelvet használ. A Trident egy magas szintű absztrakció, amely megkönnyíti az olyan műveleteket, mint az illesztés, az összesítés, a csoportosítás és a szűrés. Azonban a Trident rekordkötegeket is képes kezelni, szemben a nyers Java megoldásokkal, amelyek a rekordokat egyenként dolgozzák fel.
 
-További információ a Tridentről: [Trident-oktatóanyag](https://storm.incubator.apache.org/documentation/Trident-tutorial.html) az apache.org webhelyen.
+További információ a Tridentről: [Trident-oktatóanyag](https://storm.apache.org/documentation/Trident-tutorial.html) az apache.org webhelyen.
 
 Példák a Java- és Trident-topológiákra: [Storm-topológiapéldák listája](hdinsight-storm-example-topology.md) vagy HDInsight-fürtön található Storm-kezdőpéldák.
 
@@ -206,6 +206,12 @@ Ha egy topológia a „legfelső n számú elem” értékének kiszámítását
 
 Példa erre: [RollingTopWords](https://github.com/nathanmarz/storm-starter/blob/master/src/jvm/storm/starter/RollingTopWords.java) példa.
 
+##Milyen típusú naplózást használ a Storm?
+
+A Storm az Apache Log4j használatával naplózza az információkat. Alapértelmezés szerint nagy mennyiségű adat rögzítése történik, aminek az áttekintése nehézségekkel járhat. A Storm-topológia részeként hozzáadhat egy naplózáskonfigurációs fájlt, amely a naplózás működését vezérli.
+
+A naplózás konfigurálását bemutató példatopológiát a HDInsight alatt futó Stormra vonatkozó [Java-alapú WordCount](hdinsight-storm-develop-java-topology.md) példában tekintheti meg.
+
 ##Következő lépések
 
 További információk a HDInsight alatt futó Apache Storm valós idejű elemzési megoldásairól:
@@ -214,13 +220,13 @@ További információk a HDInsight alatt futó Apache Storm valós idejű elemz�
 
 * [HDInsight alatt futó Storm példatopológiái](hdinsight-storm-example-topology.md)
 
-[stormtrident]: https://storm.incubator.apache.org/documentation/Trident-API-Overview.html
+[stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
 [samoa]: http://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
-[apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
+[apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

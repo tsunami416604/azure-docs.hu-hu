@@ -1,7 +1,7 @@
 <properties
     pageTitle="A Visual Studio Hadoop-eszközök használatának megismerése a HDInsight eszközhöz | Microsoft Azure"
     description="Megtudhatja, hogyan telepítheti és használhatja a Visual Studio Hadoop-eszközöket a HDInsight alkalmazáshoz a Hadoop fürtök csatlakoztatásához és a Hive-lekérdezések futtatásához."
-    keywords="hadoop tools,hive query,visual studio"
+    keywords="hadoop-eszközök,hive-lekérdezés,visual studio"
     services="HDInsight"
     documentationCenter=""
     tags="azure-portal"
@@ -15,7 +15,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="big-data"
-    ms.date="05/25/2016"
+    ms.date="08/10/2016"
     ms.author="jgao"/>
 
 # Bevezetés a Visual Studio Hadoop-eszközök használatába a HDInsight alkalmazáshoz és Hive-lekérdezések futtatásához
@@ -75,7 +75,7 @@ Miután csatlakozott az Azure-előfizetéshez, a következőket teheti:
 
 **Csatlakozás az Azure portálhoz a Visual Studio eszközből**
 
-- A Server Explorer eszközből bontsa ki az **Azure** > **HDInsight** elemet, kattintson a jobb gombbal egy HDInsight-fürtre, majd kattintson a **Manage Cluster in Azure Portal** (Fürt kezelése az Azure portálon) parancsra.
+- A Server Explorer eszközből bontsa ki az **Azure** > **HDInsight** elemet, kattintson a jobb gombbal egy HDInsight-fürtre, majd kattintson a **Manage Cluster in Azure Portal** (Fürt kezelése az Azure Portalon) parancsra.
 
 **Kérdések felvetése és visszajelzés nyújtása a Visual Studióból**
 
@@ -86,6 +86,11 @@ Miután csatlakozott az Azure-előfizetéshez, a következőket teheti:
 A Server Explorer eszközből láthatja az alapértelmezett tárfiókot és az összes kapcsolt tárfiókot. Ha kibontja az alapértelmezett tárfiókot, láthatja a tárfiókon lévő tárolókat. Az alapértelmezett tárfiók és az alapértelmezett tároló meg van jelölve. Bármely tárolóra a jobb gombbal kattintva azok tartalmát is megtekintheti.
 
 ![HDInsight Tools for Visual Studio Server Explorer fürtlista][2]
+
+Egy tároló megnyitása után a következő gombokkal tölthet fel, törölhet vagy tölthet le blobokat:
+
+![A HDInsight Tools for Visual Studio Server Explorer blobműveletei](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png)
+
 
 ## Hive-lekérdezések futtatása
 Az [Apache Hive][apache.hive] egy, a Hadoop technológiára épülő adatraktár infrastruktúra az adatösszegzések, lekérdezések és elemzések nyújtásához. A HDInsight Tools for Visual Studio támogatja a Hive-lekérdezések Visual Studio eszközből végzett futtatását. A Hive rendszerrel kapcsolatban további információért lásd: [Use Hive with HDInsight][hdinsight.hive] (A Hive használata a HDInsightban).
@@ -281,6 +286,6 @@ Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visua
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

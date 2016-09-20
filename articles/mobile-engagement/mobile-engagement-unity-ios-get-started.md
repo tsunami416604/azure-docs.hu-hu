@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-unity-ios"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="03/25/2016"
+    ms.date="08/19/2016"
     ms.author="piyushjo" />
 
 # Ismerkedés az Azure Mobile Engagement Unity iOS üzemelő példánnyal való használatával
@@ -55,7 +55,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 ###Az EngagementConfiguration frissítése
 
-1. Nyissa meg az **EngagementConfiguration** parancsfájlt az SDK mappából, és frissítse az **IOS\_CONNECTION\_STRING** elemet az Azure portálról korábban beszerzett kapcsolati karakterlánccal.  
+1. Nyissa meg az **EngagementConfiguration** parancsfájlt az SDK mappából, és frissítse az **IOS\_CONNECTION\_STRING** elemet az Azure Portalról korábban beszerzett kapcsolati karakterlánccal.  
 
     ![][73]
 
@@ -134,6 +134,7 @@ Az alkalmazásban nem kell további konfigurációt elvégezni az értesítések
 [75]: ./media/mobile-engagement-unity-ios-get-started/75.png
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

@@ -1,10 +1,10 @@
 <properties 
     pageTitle="ASP.NET MVC oktatóprogram a DocumentDB szolgáltatáshoz: webalkalmazás-fejlesztés | Microsoft Azure" 
     description="ASP.NET MVC oktatóprogram MVC webalkalmazás létrehozásához a DocumentDB szolgáltatással. A JSON-fájlok tárolása és az adatok elérése az Azure-webhelyeken tárolt teendőkezelő alkalmazásból történik – ASP NET MVC oktatóprogram lépésről lépésre." 
-    keywords="asp.net mvc tutorial, web application development, mvc web application, asp net mvc tutorial step by step"
+    keywords="asp.net mvc oktatóanyag, webalkalmazás fejlesztése, mvc-webalkalmazás, asp net mvc lépésről lépésre haladó oktatóanyag"
     services="documentdb" 
     documentationCenter=".net" 
-    authors="aliuy" 
+    authors="AndrewHoh" 
     manager="jhubbard" 
     editor="cgronlun"/>
 
@@ -15,10 +15,10 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="dotnet" 
     ms.topic="hero-article" 
-    ms.date="05/18/2016" 
-    ms.author="andrl"/>
+    ms.date="08/25/2016" 
+    ms.author="anhoh"/>
 
-#<a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése a DocumentDB szolgáltatással
+# <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése a DocumentDB szolgáltatással
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -32,14 +32,14 @@ Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazás
 
 Ez az útmutató bemutatja, hogyan használhatja az Azure által biztosított DocumentDB szolgáltatást az Azure rendszeren üzemeltetett ASP.NET MVC webalkalmazásról származó adatok eléréséhez. Ha olyan oktatóprogramot keres, amely csak a DocumentDB szolgáltatással foglalkozik, az ASP.NET MVC összetevőkkel nem, akkor tekintse meg: [DocumentDB C# konzolalkalmazás felépítése](documentdb-get-started.md).
 
-> [AZURE.TIP] Ez az oktatóprogram feltételezi, hogy van korábbi tapasztalata az ASP.NET MVC és az Azure webhelyek használatában. Ha nem ismeri az ASP.NET rendszert vagy az [előfeltételt jelentő eszközöket](#_Toc395637760), érdemes letöltenie a teljes mintaprojektet a [GitHubról][] és követni a mintában lévő utasításokat. Ha felépítette, ezen cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.
+> [AZURE.TIP] Ez az oktatóprogram feltételezi, hogy van korábbi tapasztalata az ASP.NET MVC és az Azure webhelyek használatában. Ha nem ismeri az ASP.NET rendszert vagy az [előfeltételt jelentő eszközöket](#_Toc395637760), érdemes letöltenie a teljes mintaprojektet a [GitHub][] és követni a mintában lévő utasításokat. Ha felépítette, ezen cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.
 
 ## <a name="_Toc395637760"></a>Ezen adatbázis-építési oktatóprogram előfeltételei
 
 A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
 
 - Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-- [Visual Studio 2013](http://www.visualstudio.com/) Update 4 vagy újabb.
+- [Visual Studio 2015](http://www.visualstudio.com/) vagy Visual Studio 2013 Update 4 vagy újabb verzió. Ha Visual Studio 2013-at használ, telepítenie kell a [Microsoft.Net.Compilers NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Net.Compilers/) a C# 6.0 támogatásához. 
 - Azure SDK for .NET 2.5.1-es vagy újabb verzió, amely a [Microsoft Webplatform-telepítőn][] keresztül érhető el.
 
 A jelen cikk összes képernyőfelvétele az Update 4-es verzióval ellátott Visual Studio 2013 programmal és az Azure SDK for .NET 2.5.1-es verzióval készült. Ha a rendszere más verziókkal van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
@@ -455,7 +455,7 @@ Adjunk néhány kódot a DocumentDBRepository és az ItemController elemhez, hog
 
     Ez a kód a DocumentDBRepository tárat hívja be, és a CreateItemAsync metódussal őrzi meg az új teendőelemet az adatbázisban. 
  
-    **Biztonsági megjegyzés**: A **ValidateAntiForgeryToken** attribútum itt segít megvédeni az alkalmazást a webhelyközi kérések hamisítása ellen. Az attribútum hozzáadásánál többről van szó, a nézeteknek is működniük kell ezzel a hamisítás elleni tokennel. A témáról további részletekért és a megfelelő megvalósításának példáiért lásd: [Webhelyközi kérések hamisításának megakadályozása][]. A [GitHubról][] közzétett forráskódban szerepel a teljes megvalósítás.
+    **Biztonsági megjegyzés**: A **ValidateAntiForgeryToken** attribútum itt segít megvédeni az alkalmazást a webhelyközi kérések hamisítása ellen. Az attribútum hozzáadásánál többről van szó, a nézeteknek is működniük kell ezzel a hamisítás elleni tokennel. A témáról további részletekért és a megfelelő megvalósításának példáiért lásd: [Webhelyközi kérések hamisításának megakadályozása][]. A [GitHub][] közzétett forráskódban szerepel a teljes megvalósítás.
 
     **Biztonsági megjegyzés**: A metódus paraméteren a **Bind** (Kötés) attribútummal is segítünk a túlküldéses támadások elleni védelemben. További részletekért lásd: [Alapvető CRUD műveletek az ASP.NET MVC-ben][].
 
@@ -546,7 +546,7 @@ Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
 
     ![A jelen adatbázis-oktatóprogram során létrehozott teendőlista webalkalmazás képernyőfelvétele](./media/documentdb-dotnet-application/image24.png)
 
-    Ha ekkor hibákba ütközik, összehasonlíthatja a kódját a [GitHubról][] lévő mintaprojekttel
+    Ha Visual Studio 2013-at használ, és a „Nem lehet várakozni a „catch” záradék törzsében.” hibaüzenetet kapja, telepítenie kell a [Microsoft.Net.Compilers NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Net.Compilers/). Emellett össze is hasonlíthatja a kódját a [GitHub][] lévő mintaprojekttel. 
 
 2. Kattintson a **Create New** (Új létrehozása) hivatkozásra, és adjon értékeket a **Name** (Név) és a **Description** (Leírás) mezőkbe. Hagyja bejelöletlenül a **Completed** (Befejezve) jelölőnégyzetet, különben az új **elem** befejezett állapotban lesz hozzáadva és nem jelenik meg a kiindulási listában.
 
@@ -564,7 +564,7 @@ Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
 
 4. Ha befejezte az alkalmazás tesztelését, nyomja meg a Ctrl+F5 billentyűkombinációt az alkalmazás hibakeresésének befejezéséhez. Készen áll a telepítésre!
 
-##<a name="_Toc395637774"></a>7. lépés: Az alkalmazás központi telepítése az Azure webhelyeken
+## <a name="_Toc395637774"></a>7. lépés: Az alkalmazás központi telepítése az Azure webhelyeken
 
 Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB adatbázissal, Azure-webhelyekre fogjuk telepíteni ezt a webalkalmazást. Ha bejelölte a **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget az üres ASP.NET MVC projekt létrehozásakor, akkor a Visual Studio jelentősen megkönnyíti ezt, és a legtöbb munkát elvégzi. 
 
@@ -578,11 +578,11 @@ Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB adatbázissa
 
 Néhány másodpercen belül a Visual Studio befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure rendszeren futó munkáját!
 
-##<a name="_Toc395637775"></a>Következő lépések
+## <a name="_Toc395637775"></a>Következő lépések
 
-Gratulálunk! Megépítette az első ASP.NET MVC webalkalmazását az Azure DocumentDB eszközzel és közzétette azt Azure-webhelyekre. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHubról][]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
+Gratulálunk! Megépítette az első ASP.NET MVC webalkalmazását az Azure DocumentDB eszközzel és közzétette azt Azure-webhelyekre. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHub][]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
 
-Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át a [DocumentDB .NET kódtárban](https://msdn.microsoft.com/library/azure/dn948556.aspx) lévő API-kat, és nyugodtan járuljon hozzá a DocumentDB .NET kódtárhoz a [GitHubról][]. 
+Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át a [DocumentDB .NET kódtárban](https://msdn.microsoft.com/library/azure/dn948556.aspx) lévő API-kat, és nyugodtan járuljon hozzá a DocumentDB .NET kódtárhoz a [GitHub][]. 
 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
@@ -590,10 +590,10 @@ Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át a [Documen
 [Microsoft Webplatform-telepítőn]: http://www.microsoft.com/web/downloads/platform.aspx
 [Webhelyközi kérések hamisításának megakadályozása]: http://go.microsoft.com/fwlink/?LinkID=517254
 [Alapvető CRUD műveletek az ASP.NET MVC-ben]: http://go.microsoft.com/fwlink/?LinkId=317598
-[GitHubról]: https://github.com/Azure-Samples/documentdb-net-todo-app
+[GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

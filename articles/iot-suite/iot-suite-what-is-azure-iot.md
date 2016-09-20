@@ -14,14 +14,14 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="05/25/2016"
+ ms.date="08/09/2016"
  ms.author="dobett"/>
 
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## Azure IoT Suite
 
-A Microsoft Azure IoT Suite vállalati szintű megoldás, amellyel gyorsan teheti meg az első lépéseket az előre konfigurált bővíthető megoldások készletével, amely általános IoT-forgatókönyveket, például a [távoli megfigyelést][lnk-preconfigured-solutions] és a [prediktív karbantartást][lnk-predictive-maintenance] érinti. Ezek a megoldások a korábban leírt IoT-megoldásarchitektúra megvalósításai.
+A Microsoft Azure IoT Suite vállalati szintű megoldás, amellyel gyorsan teheti meg az első lépéseket az előre konfigurált bővíthető megoldások készletével, amely általános IoT-forgatókönyveket, például a [távoli megfigyelést][lnk-preconfigured-solutions] és a [prediktív karbantartást][lnk-predictive-maintenance] érinti. Ezek a megoldások az ebben a cikkben leírt IoT-megoldásarchitektúra megvalósításai.
 
 Az előre konfigurált megoldások teljes, működő, átfogó megoldások, amelyekben a kezdeti lépésekhez szimulált eszközök, előre konfigurált Azure-szolgáltatások, például az [Azure IoT Hub][], [Azure Event Hubs][], [Azure Stream Analytics][], [Azure Machine Learning][] és [Azure Storage][], valamint megoldásspecifikus felügyeleti konzolok találhatók. Az előre konfigurált megoldások bevált, éles környezetekben használható kódot tartalmaznak, amelyek testreszabásával és bővítésével megvalósíthatja saját specifikus IoT-megoldásait.
 
@@ -29,15 +29,14 @@ A sok előre konfigurált megoldás által használt [Azure IoT Hub][] szolgált
 
 ## Következő lépések
 
-Tekintse át ezeket a forrásanyagokat az Azure IoT-vel kapcsolatos további információkért:
+Ezekben a forrásanyagokban további információt talál az IoT Suite-ról és az előre konfigurált megoldásokról:
 
-- [Overview of Azure IoT Suite] (Az Azure IoT Suite áttekintése)[lnk-suite-overview].
-- [Get started with the IoT preconfigured solutions] (Az IoT előre konfigurált megoldások bemutatása)[lnk-preconfigured-solutions].
-- [Connecting your device to the IoT Suite remote monitoring solution] (Az eszköz csatlakoztatása az IoT Suite távoli figyelési megoldáshoz)[lnk-connecting].
-- [Azure IoT Hub]
+- [Mi az Azure IoT Suite?][lnk-whatissuite]
+- [Mik az Azure IoT előre konfigurált megoldások?][lnk-whatarepreconfigured]
 
-[lnk-suite-overview]: iot-suite-overview.md
-[lnk-connecting]: iot-suite-connecting-devices.md
+[lnk-whatissuite]: iot-suite-overview.md
+[lnk-whatarepreconfigured]: iot-suite-what-are-preconfigured-solutions.md
+
 [lnk-preconfigured-solutions]: iot-suite-getstarted-preconfigured-solutions.md
 [Azure IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [Azure Event Hubs]: https://azure.microsoft.com/documentation/services/event-hubs/
@@ -47,6 +46,6 @@ Tekintse át ezeket a forrásanyagokat az Azure IoT-vel kapcsolatos további inf
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

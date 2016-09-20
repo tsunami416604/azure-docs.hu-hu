@@ -13,13 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/09/2016"
+    ms.date="07/26/2016"
     ms.author="robinsh"/>
 
 
 # Tudnivalók az Azure Storage-fiókokról
 
 [AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## Áttekintés
 
@@ -45,11 +47,11 @@ A tárfiókok kapacitási és teljesítménycéljaival kapcsolatos további info
 
 > [AZURE.NOTE] Azure virtuális gép létrehozásakor a rendszer automatikusan létrehoz egy tárfiókot az Ön számára a telepítés helyén, ha nem rendelkezik még tárfiókkal azon a helyen. Így nem szükséges a tárfiók létrehozásának alábbi lépéseit végrehajtania a virtuális gép lemezeihez. A tárfiók neve a virtuális gép nevén alapul. További részletek: [Azure Virtual Machines – dokumentáció](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
-## Tárfiók létrehozása
+## Create a storage account
 
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com).
 
-2. Kattintson a lap alján a tálcán található **Új** gombra. Válassza az **Adatszolgáltatások** | **Tárolás** lehetőséget, majd kattintson a **Gyorslétrehozás** elemre.
+2. Kattintson a lap alján a tálcán található **Új** gombra. Válassza a **Data Services** | **Tárolás** lehetőséget, majd kattintson a **Gyorslétrehozás** elemre.
 
     ![NewStorageAccount](./media/storage-create-storage-account-classic-portal/storage_NewStorageAccount.png)
 
@@ -89,7 +91,7 @@ Ha például a tárfiók neve *mystorageaccount*, a tárfiókhoz tartozó alapé
 
 - Blob szolgáltatás: http://*mystorageaccount*.blob.core.windows.net
 
-- Table szolgáltatás: http://*mystorageaccount*.table.core.windows.net
+- Table Service: http://*mystorageaccount*.table.core.windows.net
 
 - Queue szolgáltatás: http://*mystorageaccount*.queue.core.windows.net
 
@@ -135,7 +137,7 @@ Javasoljuk, hogy rendszeres időközönként cserélje le tárfiókja elérési 
 
 > [AZURE.WARNING] A tárelérési kulcsok újragenerálása hatással lehet a szolgáltatásokra az Azure-ban, valamint a tárfióktól függő saját alkalmazásaira is. A tárfiók eléréséhez a tárelérési kulcsot használó összes ügyfelet frissíteni kell, hogy az új kulcsot használják.
 
-**Médiaszolgáltatások** – Ha rendelkezik a tárfióktól függő médiaszolgáltatásokkal, újra kell szinkronizálnia a tárelérési kulcsokat a médiaszolgáltatással, miután újragenerálása azokat.
+**Médiaszolgáltatások** – Ha rendelkezik a tárfióktól függő médiaszolgáltatásokkal, újra kell szinkronizálnia a tárelérési kulcsokat a médiaszolgáltatással, miután újragenerálta azokat.
 
 **Alkalmazások** – Ha a tárfiókot használó webalkalmazásokkal vagy felhőszolgáltatásokkal rendelkezik, a kulcsok újragenerálásával elveszti a kapcsolatokat, kivéve, ha rotálja a kulcsokat. 
 
@@ -169,7 +171,7 @@ A már nem használt tárfiókok törléséhez használja a **Törlés** gombot 
 
 3. Kattintson az **Igen** gombra annak megerősítéséhez, hogy törölni kívánja a tárfiókot.
 
-## További lépések
+## Következő lépések
 
 - Az Azure Storage szolgáltatással kapcsolatos további információkért lásd [az Azure Storage-dokumentációt](https://azure.microsoft.com/documentation/services/storage/).
 - Látogasson el [az Azure Storage csapat blogjára](http://blogs.msdn.com/b/windowsazurestorage/).
@@ -177,6 +179,6 @@ A már nem használt tárfiókok törléséhez használja a **Törlés** gombot 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

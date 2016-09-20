@@ -3,7 +3,7 @@
    description="Ez az oldal utasításokat tartalmaz egy belső terheléselosztóval (ILB) rendelkező Azure Application Gateway létrehozásához, konfigurálásához, indításához és törléséhez az Azure Resource Manager számára"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor="tysonn"/>
 <tags
@@ -12,8 +12,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
-   ms.author="joaoma"/>
+   ms.date="08/19/2016"
+   ms.author="gwallace"/>
 
 
 # Belső terheléselosztóval (ILB) rendelkező Application Gateway létrehozása az Azure Resource Manager használatával
@@ -29,8 +29,8 @@ Ez a cikk részletesen ismerteti egy Application Gateway ILB-hez történő konf
 ## Előkészületek
 
 1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
-2. Létre fog hozni egy virtuális hálózatot és egy alhálózatot az Application Gateway számára. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
-3. A kiszolgálóknak, amelyeket az Application Gateway használatára fog konfigurálni, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
+2. Létre kell hozni egy virtuális hálózatot és alhálózatot az Application Gateway számára. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
+3. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
 
 ## Mire van szükség egy Application Gateway létrehozásához?
 
@@ -43,7 +43,7 @@ Ez a cikk részletesen ismerteti egy Application Gateway ILB-hez történő konf
 
 
 
-## Új Application Gateway létrehozása
+## Application Gateway létrehozása
 
 A klasszikus Azure és az Azure Resource Manager használata abban tér el egymástól, hogy más sorrendben kell létrehoznia az Application Gateway-t és a konfigurálást igénylő elemeket.
 A Resource Managerrel az Application Gateway összes alkotóelemét külön kell konfigurálni, és csak utána kell őket összeállítani az Application Gateway-erőforrás létrehozásához.
@@ -63,13 +63,13 @@ Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShe
 
 ### 1. lépés
 
-        PS C:\> Login-AzureRmAccount
+    Login-AzureRmAccount
 
 ### 2. lépés
 
 Keresse meg a fiókot az előfizetésekben.
 
-        PS C:\> get-AzureRmSubscription
+    Get-AzureRmSubscription
 
 A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.<BR>
 
@@ -78,7 +78,7 @@ A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.<BR>
 Válassza ki, hogy melyik Azure előfizetést fogja használni. <BR>
 
 
-        PS C:\> Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
 ### 4. lépés
@@ -87,7 +87,7 @@ Hozzon létre egy új erőforráscsoportot (hagyja ki ezt a lépést, ha egy meg
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez lesz az erőforráscsoport erőforrásainak alapértelmezett helye. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot fogja használni.
+Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
 
 A fenti példában létrehoztunk egy „appgw-rg” nevű erőforráscsoportot, amelynek az USA nyugati régiója, West US” a helye.
 
@@ -109,7 +109,7 @@ Ez létrehoz egy „appgwvnet” nevű virtuális hálózatot az „appgw-rg” 
 
 ### 3. lépés
 
-    $subnet=$vnet.subnets[0]
+    $subnet = $vnet.subnets[0]
 
 Ez hozzárendeli az alhálózat objektumot a $subnet változóhoz a következő lépésekre.
 
@@ -119,14 +119,14 @@ Ez hozzárendeli az alhálózat objektumot a $subnet változóhoz a következő 
 
     $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
-Ez létrehoz egy „gatewayIP01” nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból fel fog venni egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez fogja irányítani. Ne feledje, hogy minden példány el fog foglalni egy IP-címet.
+Ez létrehoz egy „gatewayIP01” nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
 
 ### 2. lépés
 
     $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
-Ez a „pool01” nevű háttérbeli IP-címkészletet konfigurálja az alábbi IP-címekkel: „134.170.185.46, 134.170.188.221,134.170.185.50”. Ezek az IP-címek fogadják majd az előtérbeli IP-cím végpontból érkező hálózati forgalmat. A fenti IP-címeket később le fogja cserélni a saját alkalmazása IP-cím végpontjaira.
+Ez a „pool01” nevű háttérbeli IP-címkészletet konfigurálja az alábbi IP-címekkel: „134.170.185.46, 134.170.188.221,134.170.185.50”. Ezek az IP-címek fogadják az előtérbeli IP-végpontból érkező hálózati forgalmat. A fenti IP-címeket később lecseréli a saját alkalmazása IP-cím végpontjaira.
 
 ### 3. lépés
 
@@ -240,6 +240,6 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

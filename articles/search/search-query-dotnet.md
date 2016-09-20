@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/23/2016"
+    ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
 # Az Azure Search-index lekérdezése a .NET SDK használatával
@@ -164,6 +164,6 @@ A fenti mintakód a keresési eredményeket a konzolon jeleníti meg. A keresés
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

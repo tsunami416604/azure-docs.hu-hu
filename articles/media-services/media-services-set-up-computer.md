@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/18/2016"  
+    ms.date="06/22/2016"
     ms.author="juliako"/>
 
 # A környezet kialakítása
@@ -56,6 +56,6 @@ Az Azure Media Serviceshez való programozott kapcsolódáshoz válasszon a .NET
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

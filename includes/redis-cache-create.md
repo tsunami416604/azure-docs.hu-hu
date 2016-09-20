@@ -1,12 +1,12 @@
-Gyorsítótár létrehozásához jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Új**, **Adatok + tárolás**, **Redis Cache-gyorsítótár** lehetőségre.
+Gyorsítótár létrehozásához jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Új**, **Adatok + tárolás**, **Redis Cache** lehetőségre.
 
 >[AZURE.NOTE] Ha nincs Azure-fiókja, [ingyenesen nyithat egyet](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero) mindössze pár perc alatt.
 
 ![Új gyorsítótár](media/redis-cache-create/redis-cache-new-cache-menu.png)
 
->[AZURE.NOTE] A gyorsítótárak létrehozására az Azure portálon kívül az ARM-sablonok, a PowerShell vagy az Azure parancssori felület is használható.
+>[AZURE.NOTE] A gyorsítótárak létrehozására az Azure Portalon kívül a Resource Manager-sablonok, a PowerShell vagy az Azure parancssori felület is használható.
 >
->-  A gyorsítótár ARM-sablonokkal való létrehozásához lásd: [Create a Redis cache using a template](../articles/redis-cache/cache-redis-cache-arm-provision.md) (Redis gyorsítótár létrehozása sablon használatával).
+>-  A gyorsítótár Resource Manager-sablonokkal való létrehozásához lásd: [Create a Redis cache using a template](../articles/redis-cache/cache-redis-cache-arm-provision.md) (Redis Cache létrehozása sablon használatával).
 >-  A gyorsítótár Azure PowerShell használatával való létrehozásához lásd: [Manage Azure Redis Cache with Azure PowerShell](../articles/redis-cache/cache-howto-manage-redis-cache-powershell.md) (Az Azure Redis Cache kezelése az Azure PowerShellel).
 >-  A gyorsítótár Azure parancssori felület használatával való létrehozásához lásd: [How to create and manage Azure Redis Cache using the Azure Command-Line Interface (Azure CLI)](../articles/redis-cache/cache-manage-cli.md) (Az Azure Redis Cache létrehozása és kezelése az Azure parancssori felület (Azure CLI) használatával).
 
@@ -23,13 +23,13 @@ Az **Új Redis Cache-gyorsítótár** panelen adja meg a gyorsítótár kívánt
 -   A **Redis-adatmegőrzés** lehetővé teszi a gyorsítótár adatainak megőrzését egy Azure Storage-fiókban. Útmutató az adatmegőrzés konfigurálásához: [How to configure clustering for a Premium Azure Redis Cache](../articles/redis-cache/cache-how-to-premium-persistence.md) (Adatmegőrzés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz).
 -   A **virtuális hálózat** magasabb védelmet és elszigeteltséget biztosít, mivel a gyorsítótárhoz csak az adott Azure virtuális hálózatban található ügyfelek férnek hozzá. Használhatja a VNet összes funkcióját, köztük az alhálózatokat, a hozzáférés-vezérlési házirendeket, és a Redishez való hozzáférést korlátozó többi egyéb funkciókat. További információk: [How to configure clustering for a Premium Azure Redis Cache](../articles/redis-cache/cache-how-to-premium-vnet.md) (Virtuális hálózat támogatásának konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz).
 
-Az új gyorsítótár beállításainak konfigurálása után kattintson a **Létrehozás** lehetőségre. A gyorsítótár létrehozása eltarthat néhány percig. A folyamat állapotát a kezdőpult alján ellenőrizheti. Miután a rendszer létrehozta a gyorsítótárat, az új gyorsítótár **Futó** állapotú, és az alapértelmezett beállításokkal használatra kész.
+Az új gyorsítótár beállításainak konfigurálása után kattintson a **Létrehozás** lehetőségre. A gyorsítótár létrehozása eltarthat néhány percig. A folyamat állapotát a kezdőpult alján ellenőrizheti. Miután a rendszer létrehozta a gyorsítótárat, az új gyorsítótár **Futó** állapotú, és az [alapértelmezett beállításokkal](../articles/redis-cache/cache-configure.md#default-redis-server-configuration) használatra kész.
 
 ![A gyorsítótár létrejött](media/redis-cache-create/redis-cache-cache-created.png)
 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

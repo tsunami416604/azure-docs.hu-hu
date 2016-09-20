@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/10/2016"
+    ms.date="07/11/2016"
     ms.author="robmcm"/>
 
 <!-- Note: This article replaces web-sites-php-web-site-gallery.md -->
@@ -22,28 +22,28 @@
 
 [AZURE.INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-Az Azure Piactér a Microsoft, külső vállalatok és nyílt forrású szoftver-kezdeményezések által fejlesztett népszerű webalkalmazások széles skáláját teszi elérhetővé. Például: WordPress, Umbraco CMS, Drupal stb. Ezek a webalkalmazások a legkülönbözőbb népszerű keretrendszerekre épülnek, mint a [PHP] ebben a WordPress példában, vagy a [.NET], a [Node.js], a [Java] és a [Python], csak hogy néhányat említsünk. A webalkalmazások Azure Piactérről való létrehozásához az [Azure portál] eléréséhez használt böngésző az egyetlen szoftver, amelyre szüksége van.
+Az Azure Piactér a Microsoft, külső vállalatok és nyílt forrású szoftver-kezdeményezések által fejlesztett népszerű webalkalmazások széles skáláját teszi elérhetővé. Például: WordPress, Umbraco CMS, Drupal stb. Ezek a webalkalmazások a legkülönbözőbb népszerű keretrendszerekre épülnek, mint a [PHP] ebben a WordPress példában, vagy a [.NET], a [Node.js], a [Java] és a [Python], csak hogy néhányat említsünk. A webalkalmazások Azure Piactérről való létrehozásához az [Azure Portal] eléréséhez használt böngésző az egyetlen szoftver, amelyre szüksége van.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
-* Alkalmazássablonok keresése az Azure Piactéren.
-* A sablonon alapuló webalkalmazás létrehozása az Azure App Service szolgáltatásban.
-* Az Azure App Service szolgáltatás beállításainak konfigurálása az új webalkalmazáshoz és adatbázishoz.
+* Az Azure piactér egyik sablonján alapuló webalkalmazás keresése és létrehozása az Azure App Service szolgáltatásban.
+* Az Azure App Service szolgáltatás beállításainak konfigurálása az új webalkalmazás számára.
+* A webalkalmazás elindítása és kezelése.
 
 A jelen oktatóanyag esetében egy WordPress blogwebhelyet fog üzembe helyezni az Azure Piactérről. Ha végrehajtja a jelen oktatóanyag lépéseit, egy saját, a felhőben futó WordPress webhellyel fog rendelkezni.
 
-![A példaként használt WordPress webalkalmazás irányítópultja][WordPressDashboard]
+![A példaként használt WordPress webalkalmazás irányítópultja][WordPressDashboard1]
 
 Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatbázist használ. Ha ehelyett SQL Database szolgáltatást használna az adatbázishoz, akkor tekintse meg a [Project Nami] nevű alkalmazást, amely szintén elérhető az Azure Piactéren keresztül.
 
 > [AZURE.NOTE]
-> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit][aktiválás], vagy [regisztráljon egy ingyenes próbaverzióra][ingyenes próbaverzió].
+> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit][aktiválás], vagy [regisztráljon egy ingyenes próbaverzióra][ingyenes próba].
 >
 > Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása] oldalra. Innen azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben; ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
-## Válassza ki a WordPresst, és konfigurálja azt az Azure App Service-hez
+## Webalkalmazás keresése és létrehozása az Azure App Service használatával
 
-1. Jelentkezzen be az [Azure portál].
+1. Jelentkezzen be az [Azure Portal].
 
 1. Kattintson az **Új** lehetőségre.
     
@@ -57,7 +57,9 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 
     ![A WordPress webalkalmazás létrehozása][MarketplaceCreate]
 
-1. A WordPress beállításpanelje jelenik meg, amelynek segítségével elvégezheti a következő lépéseket:
+## Az Azure App Service szolgáltatás beállításainak konfigurálása az új webalkalmazás számára
+
+1. Miután létrehozott egy új webalkalmazást, megjelenik a WordPress beállításpanelje, amelynek segítségével elvégezheti a következő lépéseket:
 
     ![A WordPress webalkalmazás beállításainak konfigurálása][ConfigStart]
 
@@ -71,9 +73,9 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 
     ![A webalkalmazáshoz tartozó előfizetés konfigurálása][ConfigSubscription]
 
-1. Válasszon egy **Erőforráscsoportot**, vagy hozzon létre egy újat.
+1. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
 
-    További információk a erőforráscsoportokkal kapcsolatban: [Using the Azure Portal to manage your Azure resources][ResourceGroups] (Az Azure portál használata az Azure erőforrások kezeléséhez).
+    További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése][ResourceGroups].
 
     ![A webalkalmazáshoz tartozó erőforráscsoport konfigurálása][ConfigResourceGroup]
 
@@ -87,7 +89,7 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 
     a. Írjon be egy új nevet, vagy hagyja meg az alapértelmezett nevet.
 
-    b. Az **Adatbázistípus** mezőt hagyja **Megosztott** értéken.
+    b. A **Database Type** (Adatbázistípus) mezőt hagyja **Shared** (Megosztott) értéken.
 
     c. Válassza ki ugyanazt a helyet, amelyet a webalkalmazás számára is választott.
 
@@ -105,9 +107,9 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 
     ![Folyamatjelző][ConfigProgress]
 
-## A WordPress webalkalmazás elindítása és kezelése
+## A WordPress-webalkalmazás elindítása és kezelése
     
-1. Ha a webalkalmazás létrehozása befejeződött, navigáljon az Azure portálon ahhoz az erőforráscsoporthoz, amelyben létrehozta az alkalmazást, és tekintse meg a webalkalmazást és az adatbázist.
+1. Ha a webalkalmazás létrehozása befejeződött, navigáljon az Azure Portalon ahhoz az erőforráscsoporthoz, amelyben létrehozta az alkalmazást, és tekintse meg a webalkalmazást és az adatbázist.
 
     A villanykörte ikonnal rendelkező további erőforrás az [Application Insights][ApplicationInsights], amely figyelési szolgáltatásokat biztosít a webalkalmazás számára.
 
@@ -131,9 +133,9 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 
 1. A webhely irányítópult-oldala nyílik meg, és megjeleníti az Ön által megadott információkat.    
 
-    ![A WordPress irányítópult megtekintése][WordPressDashboard]
+    ![A WordPress irányítópult megtekintése][WordPressDashboard2]
 
-## További lépések
+## Következő lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan helyezhet üzembe egy példa-webalkalmazást az Azure Piactérről.
 
@@ -151,10 +153,10 @@ WordPress webalkalmazások Azure platformon való fejlesztésével kapcsolatos t
 [aktiválás]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [ingyenes próba]: https://azure.microsoft.com/pricing/free-trial/
 [Az App Service kipróbálása]: http://go.microsoft.com/fwlink/?LinkId=523751
-[ResourceGroups]: ../azure-portal/resource-group-portal.md
+[ResourceGroups]: ../resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
-[Azure portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Project Nami]: http://projectnami.org/
 [WordPressOnAzure]: ./develop-wordpress-on-app-service-web-apps.md
 
@@ -174,11 +176,12 @@ WordPress webalkalmazások Azure platformon való fejlesztésével kapcsolatos t
 [WordPressSelect]: ./media/app-service-web-create-web-app-from-marketplace/wpselect.png
 [WordPressBrowse]: ./media/app-service-web-create-web-app-from-marketplace/wpbrowse.png
 [WordPressLanguage]: ./media/app-service-web-create-web-app-from-marketplace/wplanguage.png
-[WordPressDashboard]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard.png
+[WordPressDashboard1]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard1.png
+[WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="nodejs"
     ms.topic="get-started-article"
-    ms.date="06/01/2016"
+    ms.date="07/01/2016"
     ms.author="cephalin"/>
 
 # Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben
 
 [AZURE.INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js][NODEJS] alkalmazást, majd hogyan telepítheti azt egy [webalkalmazásra] az [Azure App Service-ben] egy parancssori környezetben, mint a cmd.exe vagy a bash. Az oktatóanyag utasításai követhetők bármelyik operációs rendszeren, amely alkalmas a Node.js futtatására.
+Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js][NODEJS] alkalmazást, majd hogyan telepítheti azt egy [webalkalmazásra] az [Azure App Service] egy parancssori környezetben, mint a cmd.exe vagy a bash. Az oktatóanyag utasításai követhetők bármelyik operációs rendszeren, amely alkalmas a Node.js futtatására.
 
 <a name="prereq"></a>
 ## Előfeltételek
@@ -70,7 +70,7 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js][NOD
 
     A felszólítást követve válasszon egy Azure-régiót, ahová telepíteni szeretné. Ha még nem állított be Git/FTP telepítési hitelesítő adatokat az Azure-előfizetéséhez, a rendszer erre is felszólítja.
 
-3. Nyissa meg a ./config/config fájlt az alkalmazás gyökeréből, és módosítsa a termelési portot, hogy az `process.env.port` legyen; a termelési JSON objektumnak az alábbihoz hasonlóan kell kinéznie. Ha ez a könyvtár-/fájlútvonal nem létezik az alkalmazás gyökérkönyvtárában, hozzon létre egy **config** nevű mappát az alkalmazás gyökérkönyvtárában, és másolja abba az alábbi JSON-kódot.
+3. Nyissa meg a ./config/config fájlt az alkalmazás gyökeréből, és módosítsa a termelési portot, hogy az `process.env.port` legyen; a `config` objektum `production` tulajdonságának pedig az alábbi példához hasonlóan kell kinéznie.
 
         production: {
             root: rootPath,
@@ -96,7 +96,7 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js][NOD
 
     Ekkor elméletben a Node.js alkalmazásának élőben futnia kell az Azure App Service-ben.
     
-    ![Example of browsing to the deployed application.][deployed-express-app]
+    ![Példa a telepített alkalmazás tallózással való megkeresésére.][deployed-express-app]
 
 ## A Node.js webalkalmazás frissítése
 
@@ -166,19 +166,19 @@ Az iisnode naplók elolvasásához használja az alábbi lépéseket.
 
         https://{appname}.scm.azurewebsites.net/DebugConsole 
 
-    Vegye figyelembe, hogy ez az URL eltér a webalkalmazás URL-címétől, amennyiben hozzá lett fűzve egy „ *.scm.*  ” tag a DNS-névhez. Ha kihagyja ezt a kiegészítést az URL-hez, 404 hibaüzenetet kap.
+    Vegye figyelembe, hogy ez az URL eltér a webalkalmazás URL-címétől, amennyiben hozzá lett fűzve egy „*.scm.*” tag a DNS-névhez. Ha kihagyja ezt a kiegészítést az URL-hez, 404 hibaüzenetet kap.
 
 5. Lépjen a D:\home\site\wwwroot\iisnode helyre
 
-    ![Navigálás az iisnode naplófájlok helyéhez.][iislog-kudu-konzol-keresés]
+    ![Navigálás az iisnode naplófájlok helyéhez.][iislog-kudu-console-find]
 
 6. Kattintson az olvasni kívánt napló **Szerkesztés** ikonjára. Kattinthat a **Letöltés** vagy a **Törlés** lehetőségre is, ha szeretne.
 
-    ![Egy iisnode naplófájl megnyitása.][iislog-kudu-konzol-megnyitás]
+    ![Egy iisnode naplófájl megnyitása.][iislog-kudu-console-open]
 
     Most megjelenik a napló, amely segít az App Service üzemelő példányon végzett hibakeresésben.
     
-    ![Egy iisnode naplófájl vizsgálata.][iislog-kudu-konzol-olvasás]
+    ![Egy iisnode naplófájl vizsgálata.][iislog-kudu-console-read]
 
 ## Alkalmazás hibakeresése a Node-Inspector használatával
 
@@ -208,6 +208,7 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 ## További erőforrások
 
 - [A Node.js verzió megadása az Azure alkalmazásban](../nodejs-specify-node-version-azure-apps.md)
+- [Ajánlott eljárások és hibaelhárítási útmutató az Azure-on futó Node.js-alkalmazásokhoz](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)
 - [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](web-sites-nodejs-debug.md)
 - [A Node.js modulok használata az Azure alkalmazásokkal](../nodejs-use-node-modules-azure-apps.md)
 - [Azure App Service Web Apps: Node.js](http://blogs.msdn.com/b/silverlining/archive/2012/06/14/windows-azure-websites-node-js.aspx)
@@ -238,12 +239,12 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 <!-- IMG List -->
 
 [deployed-express-app]: ./media/app-service-web-nodejs-get-started/deployed-express-app.png
-[iislog-kudu-konzol-keresés]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-navigate.png
-[iislog-kudu-konzol-megnyitás]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
-[iislog-kudu-konzol-olvasás]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
+[iislog-kudu-console-find]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-navigate.png
+[iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
+[iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

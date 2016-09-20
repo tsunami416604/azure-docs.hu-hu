@@ -14,60 +14,36 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/25/2016"
+     ms.date="08/16/2016"
      ms.author="dobett"/>
 
 # Oktatóprogram: Az előre konfigurált megoldások bemutatása
 
 ## Bevezetés
 
-Az Azure IoT Suite [előre konfigurált megoldások][lnk-preconfigured-solutions] több Azure IoT-szolgáltatást kombinálnak, hogy általános IoT üzleti forgatókönyveket megvalósító végpontok közötti megoldásokat nyújtsanak.
+Az Azure IoT Suite [előre konfigurált megoldások][lnk-preconfigured-solutions] több Azure IoT-szolgáltatást kombinálnak, hogy általános IoT üzleti forgatókönyveket megvalósító végpontok közötti megoldásokat nyújtsanak. Az előre konfigurált *távoli figyelő* megoldás csatlakozik az eszközökhöz, és megfigyeli azokat. Ez a megoldás az eszközökről származó adatstream elemzésére használható, valamint az ezen streamre automatikusan válaszoló folyamatok létrehozásával az üzleti eredmények is javíthatók.
 
-Ez az oktatóprogram bemutatja, hogyan építheti ki az előre konfigurált *távoli figyelő* megoldást. A program az előre konfigurált távoli figyelő megoldás alapvető funkcióin is végigvezeti.
+Ez az oktatóprogram bemutatja, hogyan építheti ki az előre konfigurált távoli figyelő megoldást. Emellett a távoli figyelő megoldás alapszintű funkcióin is végigvezeti. Ezek közül számos szolgáltatáshoz a megoldás irányítópultján keresztül férhet hozzá, amelyet a rendszer az előre konfigurált megoldással együtt telepít:
 
-Az oktatóprogram elvégzéséhez aktív Azure-előfizetésre van szüksége.
+![Az előre konfigurált távoli figyelési megoldás irányítópultja][img-dashboard]
+
+Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 
 > [AZURE.NOTE]  Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][lnk_free_trial].
 
-## Az előre konfigurált távoli figyelő megoldás kiépítése
+[AZURE.INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
-1.  Jelentkezzen be az [azureiotsuite.com][lnk-azureiotsuite] címre az Azure-fiókja hitelesítő adataival, majd kattintson a **+** elemre egy új megoldás létrehozásához.
-
-    > [AZURE.NOTE] Ha problémája van a megoldás kiépítéséhez szükséges engedélyekkel, útmutatásért lásd: [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions].
-
-2.  Kattintson a **Kiválasztás** elemre a **Távoli figyelés** csempén.
-
-3.  Adja meg a **Megoldásnevet** az előre konfigurált távoli figyelési megoldáshoz.
-
-4.  Válassza ki a megoldás kiépítéséhez használni kívánt **Régiót** és **Előfizetést**.
-
-5.  Kattintson a **Megoldás létrehozása** gombra a kiépítés elkezdéséhez. Ennek futtatása általában több percig tart.
-
-## Várjon, amíg a kiépítési folyamat befejeződik
-
-1. Kattintson a megoldás **Kiépítési** állapotát jelző csempére.
- 
-2. Megtekintheti a **Kiépítési állapotokat**, miközben az Azure-szolgáltatások telepítése megtörténik az Azure-előfizetésben.
-
-3. A kiépítés befejezése után az állapot **Kész** értékre változik.
-
-4. Kattintson a csempére, és a jobb oldali panelen láthatja a megoldás részleteit.
-
-> [AZURE.NOTE] Ha problémái vannak az előre konfigurált megoldás telepítésekor, tekintse meg az [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions] és a [GYIK][lnk-faq] fejezetet. Ha a problémák továbbra is fennállnak, hozzon létre egy szolgáltatásjegyet a [portálon][lnk-portal].
-
-Hiányol bizonyos részleteket a megoldásával kapcsolatban? A [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/321918-azure-iot) elküldheti a szolgáltatásokkal kapcsolatos javaslatait.
-
-## Távoli megfigyelő megoldás irányítópultjának megtekintése
+## A megoldás irányítópultjának megtekintése
 
 A megoldás irányítópultján kezelheti az üzembe helyezett megoldást. Megtekintheti például a telemetriát, eszközöket adhat hozzá és szabályokat konfigurálhat.
 
 1.  Amikor a kiépítés befejeződött, és az előre konfigurált megoldás csempéje **Kész** állapotot jelez, kattintson az **Indítás** gombra a távoli figyelési megoldás új lapon való megnyitásához.
 
-    ![][img-launch-solution]
+    ![Az előre konfigurált megoldás indítása][img-launch-solution]
 
 2.  Alapértelmezés szerint a megoldás portálja a *megoldás irányítópultját* jeleníti meg. A bal oldali menüből választhat más nézeteket.
 
-    ![][img-dashboard]
+    ![Az előre konfigurált távoli figyelési megoldás irányítópultja][img-dashboard]
 
 Az irányítópult az alábbi információkat jeleníti meg:
 
@@ -75,19 +51,19 @@ Az irányítópult az alábbi információkat jeleníti meg:
 - A **Telemetria előzményei** panel a páratartalommal és hőmérséklettel kapcsolatos telemetriát jelenít meg a kiválasztott eszközről közel valós időben, és összesített adatokat tartalmaz, például a maximális, minimális és átlagos páratartalmat.
 - A **Riasztások előzményei** panel közelmúltbeli riasztási eseményeket jelenít meg, amikor egy telemetriaérték túllépett egy küszöbértéken. Saját riasztásokat is meghatározhat az előre konfigurált megoldás által létrehozott példák mellett.
 
-## A megoldás eszközlistájának megtekintése
+## Az eszközlista megtekintése
 
 Az eszközlista a megoldásban regisztrált összes eszközt megjeleníti. Megtekintheti és szerkesztheti az eszközök metaadatait, eszközöket adhat hozzá vagy távolíthat el, illetve parancsokat küldhet az eszközöknek.
 
 1.  Kattintson a bal oldali menü **Eszközök** elemére a megoldás *eszközlistájának* megjelenítéséhez.
 
-    ![][img-devicelist]
+    ![Az eszközök listája az irányítópulton][img-devicelist]
 
 2.  Az eszközlistán látható, hogy a kiépítési folyamat négy szimulált eszközt hozott létre.
 
 3.  Kattintson egy eszközre az eszközlistában az eszköz részleteinek megtekintéséhez.
 
-    ![][img-devicedetails]
+    ![Eszközadatok az irányítópulton][img-devicedetails]
 
 Az **Eszköz részletei** panel három szakaszból áll:
 
@@ -101,7 +77,7 @@ Az eszköz részletei panel megjeleníti az adott eszköz által támogatott ös
 
 1.  A kiválasztott eszköz részleteit tartalmazó panelen kattintson a **Parancsok** elemre.
 
-    ![][img-devicecommands]
+    ![Eszközparancsok az irányítópulton][img-devicecommands]
 
 2.  Válassza a **PingDevice** parancsot a parancslistából.
 
@@ -109,55 +85,61 @@ Az eszköz részletei panel megjeleníti az adott eszköz által támogatott ös
 
 4.  A parancs előzményeiben láthatja a parancs állapotát.
 
-    ![][img-pingcommand]
+    ![Parancsállapot az irányítópulton][img-pingcommand]
 
 A megoldás nyomon követi az általa küldött összes parancs állapotát. Az eredmény kezdetben **Függőben** állapotú. Amikor az eszköz jelenti, hogy végrehajtotta a parancsot, az eredmény **Sikeres** állapotra vált.
 
 ## Új szimulált eszköz hozzáadása
 
+Az előre konfigurált megoldás üzembe helyezésekor az eszközlistában látható négy mintaeszköz kiosztása automatikusan megtörténik. Ezek az eszközök Azure WebJobs-feladatban futó, *szimulált eszközök*. A szimulált eszközök megkönnyítik az előre konfigurált megoldással történő kísérletezést, anélkül, hogy valódi, fizikai eszközök üzembe helyezésére lenne szükség. Valós eszközök a megoldáshoz történő csatlakoztatásáról a következő oktatóanyagban olvashat: [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
+
+Az alábbi lépések bemutatják, hogyan adhat szimulált eszközt a megoldáshoz:
+
 1.  Lépjen vissza az eszközlistára.
 
-2.  Kattintson a bal alsó sarokban lévő **+ Eszköz hozzáadása** gombra új eszköz hozzáadásához.
+2.  Kattintson a bal alsó sarokban lévő **+ Eszköz hozzáadása** gombra egy eszköz hozzáadásához.
 
-    ![][img-adddevice]
+    ![Eszköz hozzáadása az előre konfigurált megoldáshoz][img-adddevice]
 
 3.  Kattintson a **Szimulált eszköz** csempe **Új hozzáadása** elemére.
 
-    ![][img-addnew]
+    ![Az új eszköz adatainak megadása az irányítópulton][img-addnew]
     
-    Új szimulált eszköz létrehozása mellett fizikai eszközt is hozzáadhat egy **Egyéni eszköz** létrehozásával. További információért lásd: [Az eszköz csatlakoztatása az IoT Suite előre konfigurált távoli figyelési megoldáshoz][lnk-connecting-devices].
+    Új szimulált eszköz létrehozása mellett fizikai eszközt is hozzáadhat egy **Egyéni eszköz** létrehozásával. További információk fizikai eszközök a megoldáshoz csatlakoztatásáról: [Az eszköz csatlakoztatása az IoT Suite előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
 
 4.  Válassza a **Meghatározom a saját eszközazonosítómat** elemet, és írjon be egy egyéni eszközazonosító nevet, például a **mydevice_01** nevet.
 
-5.  Kattintson a ** Create** (Létrehozás) gombra.
+5.  Kattintson a **Létrehozás** gombra.
 
-    ![][img-definedevice]
+    ![Új eszköz mentése][img-definedevice]
 
-6. A **Szimulált eszköz hozzáadása** folyamat 3. lépésében kattintson a **Kész** gombra, az eszközlistához való visszatéréshez.
+6. A **Szimulált eszköz hozzáadása** folyamat 3. lépésében kattintson a **Kész** gombra az eszközlistához való visszatéréshez.
 
 7. Az eszközlistában láthatja a **futó** eszközét.
 
-    ![][img-runningnew]
+    ![Új eszköz megtekintése az eszközlistában][img-runningnew]
 
 8. Az új eszköz szimulált telemetriáját is megtekintheti az irányítópulton:
 
-    ![][img-runningnew-2]
+    ![Az új eszköz telemetriájának megtekintése][img-runningnew-2]
 
 ## Az eszköz metaadatainak szerkesztése
+
+Amikor az eszköz első alkalommal csatlakozik a megoldáshoz, elküldi metaadatait a megoldás számára. Ha az eszköz metaadatait a megoldás irányítópultján szerkeszti, az elküldi az új metaadatértékeket az eszköznek, és a megoldás DocumentDB-adatbázisában tárolja azokat. További információk: [Eszközidentitás-jegyzék és DocumentDB][lnk-devicemetadata].
 
 1.  Lépjen vissza az eszközlistára.
 
 2.  Válassza ki az új eszközt az **Eszközlistában**, majd kattintson a **Szerkesztés** gombra az **Eszköztulajdonságok** szerkesztéséhez:
 
-    ![][img-editdevice]
+    ![Az eszköz metaadatainak szerkesztése][img-editdevice]
 
 3. Görgessen lefelé, és módosítsa a szélességi és a hosszúsági értékeket. Ezután kattintson az **Eszközjegyzék módosításainak mentése** elemre.
 
-    ![][img-editdevice2]
+    ![Az eszköz metaadatainak szerkesztése][img-editdevice2]
 
 4. Az irányítópultra visszatérve láthatja, hogy az eszköz helye változott a térképen:
 
-    ![][img-editdevice3]
+    ![Az eszköz metaadatainak szerkesztése][img-editdevice3]
 
 ## Szabály hozzáadása az új eszközhöz
 
@@ -165,60 +147,71 @@ A most hozzáadott új eszköznek még nincsenek szabályai. Ebben a szakaszban 
 
 1.  Lépjen vissza az eszközlistára.
 
-2.  Válassza ki az új eszközt az **Eszközlistában**, majd kattintson a **Szabály hozzáadása** gombra, egy új szabály hozzáadásához.
+2.  Válassza ki az új eszközt az **Eszközlistában**, majd kattintson a **Szabály hozzáadása** gombra egy szabály hozzáadásához.
 
 3. Hozzon létre egy szabályt, amely a **Hőmérsékletet** használja adatmezőként és az **AlarmTemp** elemet használja kimenetként, amikor a hőmérséklet meghaladja a 47 fokot:
 
-    ![][img-adddevicerule]
+    ![Eszközszabály hozzáadása][img-adddevicerule]
 
 4. Kattintson a **Mentés és szabályok megtekintése** elemre a módosítások mentéséhez.
 
 5.  Az új eszköz részleteit tartalmazó panelen kattintson a **Parancsok** elemre.
 
-    ![][img-adddevicerule2]
+    ![Eszközszabály hozzáadása][img-adddevicerule2]
 
 6.  Válassza a **ChangeSetPointTemp** parancsot a parancslistából, és a **SetPointTemp** értékét állítsa 45-re. Ezután kattintson a **Parancs küldése** parancsra:
 
-    ![][img-adddevicerule3]
+    ![Eszközszabály hozzáadása][img-adddevicerule3]
 
 7.  Lépjen vissza a megoldás irányítópultjára. Rövid idő után új bejegyzést fog látni a **Riasztások előzményei** panelen, amikor az új eszköz hőmérséklete meghaladja a 47 fokos küszöbértéket:
 
-    ![][img-adddevicerule4]
+    ![Eszközszabály hozzáadása][img-adddevicerule4]
 
 8. Az irányítópult **Szabályok** oldalán tekintheti át és szerkesztheti az összes szabályt:
 
-    ![][img-rules]
+    ![Eszközszabályok listázása][img-rules]
 
 9. Az irányítópult **Műveletek** oldalán tekintheti át és szerkesztheti a szabályra adott válaszként elvégezhető összes műveletet:
 
-    ![][img-actions]
+    ![Eszközműveletek listázása][img-actions]
 
-> [AZURE.NOTE] Olyan műveletek határozhatók meg, amelyek e-mail-üzenetet vagy SMS-t küldenek egy szabályra válaszul, vagy üzletági rendszerrel integrálhatók egy [logikai alkalmazáson][lnk-logic-apps] keresztül.
+> [AZURE.NOTE] Olyan műveletek határozhatók meg, amelyek e-mail-üzenetet vagy SMS-t küldenek egy szabályra válaszul, vagy üzletági rendszerrel integrálhatók egy [logikai alkalmazáson][lnk-logic-apps] keresztül. További információk: [Logikai alkalmazás csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldásához][lnk-logicapptutorial].
+
+## Egyéb jellemzők
+
+A megoldás portáljával adott jellemzőkkel, például modellszámmal rendelkező eszközöket kereshet:
+
+![Eszköz keresése][img-search]
+
+Letilthatja az eszközöket, és a letiltásuk után eltávolíthatja őket:
+
+![Eszköz letiltása és eltávolítása][img-disable]
 
 ## A színfalak mögött
 
-Előre konfigurált megoldás üzembe helyezésekor az üzembehelyezési folyamat több erőforrást hoz létre a kiválasztott Azure-előfizetésben. Ezeket az erőforrásokat az Azure [Portalon][lnk-portal] tekintheti meg. Az üzembehelyezési folyamat létrehoz egy **erőforráscsoportot** az előre konfigurált megoldáshoz kiválasztott néven alapuló névvel:
+Előre konfigurált megoldás üzembe helyezésekor az üzembehelyezési folyamat több erőforrást hoz létre a kiválasztott Azure-előfizetésben. Ezeket az erőforrásokat az Azure [Portalon][lnk-portal] tekintheti meg. Az üzembe helyezési folyamat létrehoz egy **erőforráscsoportot** az előre konfigurált megoldáshoz kiválasztott néven alapuló névvel:
 
-![][img-portal]
+![Előre konfigurált megoldás az Azure Portalon][img-portal]
 
-Az egyes erőforrások beállításainak megtekintéséhez válassza ki az erőforrást az erőforráscsoport erőforráslistájában. A fenti képernyőképen az előre konfigurált megoldásban használt IoT Hub beállításai láthatók.
+Az egyes erőforrások beállításainak megtekintéséhez válassza ki az erőforrást az erőforráscsoport erőforráslistájában.
 
-Megtekintheti az előre konfigurált megoldás forráskódját is. Az előre konfigurált távoli figyelési megoldás forráskódja az [azure-iot-remote-monitoring][lnk-rmgithub] mappában található:
+Megtekintheti az előre konfigurált megoldás forráskódját is. Az előre konfigurált távoli figyelési megoldás forráskódja az [azure-iot-remote-monitoring][lnk-rmgithub] GitHub-adattárban található:
 
 - A **DeviceAdministration** mappa tartalmazza az irányítópult forráskódját.
 - A **Simulator** mappa tartalmazza a szimulált eszköz forráskódját.
 - Az **EventProcessor** mappa tartalmazza a bejövő telemetriát kezelő háttérfolyamat forráskódját.
 
-Amikor elkészült, törölheti az előre konfigurált megoldást az Azure-előfizetésből az [azureiotsuite.com][lnk-azureiotsuite] webhelyen – így könnyedén törölheti az előre konfigurált megoldás létrehozásakor megkapott összes erőforrást.
+Amikor elkészült, törölheti az előre konfigurált megoldást az Azure-előfizetésből az [azureiotsuite.com][lnk-azureiotsuite] webhelyen. Így könnyedén törölheti az előre konfigurált megoldás létrehozásakor megkapott összes erőforrást.
 
 > [AZURE.NOTE] Ahhoz, hogy biztosan törölje az előre konfigurált megoldáshoz kapcsolódó összes elemet, törölje azt az [azureiotsuite.com][lnk-azureiotsuite] webhelyről, és ne csak az erőforráscsoportot törölje a portálon.
 
 ## Következő lépések
 
-Most, hogy működő előre konfigurált megoldást épített, a következő bemutatókkal folytathatja:
+Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a következő cikkek elolvasásával folytathatja az ismerkedést az IoT Suite használatával:
 
--   [Útmutatás az előre konfigurált megoldások testreszabásához][lnk-customize]
--   [Előre konfigurált prediktív karbantartási megoldás áttekintése][lnk-predictive]
+- [Az előre konfigurált távoli figyelési megoldás bemutatója][lnk-rm-walkthrough]
+- [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm]
+- [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
 
 [img-launch-solution]: media/iot-suite-getstarted-preconfigured-solutions/launch.png
 [img-dashboard]: media/iot-suite-getstarted-preconfigured-solutions/dashboard.png
@@ -241,21 +234,23 @@ Most, hogy működő előre konfigurált megoldást épített, a következő bem
 [img-adddevicerule4]: media/iot-suite-getstarted-preconfigured-solutions/addrule4.png
 [img-actions]: media/iot-suite-getstarted-preconfigured-solutions/actions.png
 [img-portal]: media/iot-suite-getstarted-preconfigured-solutions/portal.png
+[img-search]: media/iot-suite-getstarted-preconfigured-solutions/solutionportal_07.png
+[img-disable]: media/iot-suite-getstarted-preconfigured-solutions/solutionportal_08.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-predictive]: iot-suite-predictive-overview.md
-[lnk-connecting-devices]: iot-suite-connecting-devices.md
-[lnk-permissions]: iot-suite-permissions.md
 [lnk-logic-apps]: https://azure.microsoft.com/documentation/services/app-service/logic/
 [lnk-portal]: http://portal.azure.com/
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
-[lnk-faq]: iot-suite-faq.md
+[lnk-devicemetadata]: iot-suite-what-are-preconfigured-solutions.md#device-identity-registry-and-documentdb
+[lnk-logicapptutorial]: iot-suite-logic-apps-tutorial.md
+[lnk-rm-walkthrough]: iot-suite-remote-monitoring-sample-walkthrough.md
+[lnk-connect-rm]: iot-suite-connecting-devices.md
+[lnk-permissions]: iot-suite-permissions.md
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

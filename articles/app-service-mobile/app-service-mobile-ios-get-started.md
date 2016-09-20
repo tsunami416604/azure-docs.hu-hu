@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-ios"
     ms.devlang="objective-c"
     ms.topic="hero-article"
-    ms.date="04/19/2016"
+    ms.date="08/17/2016"
     ms.author="krisragh"/>
 
 #iOS-alkalmazás létrehozása
@@ -24,13 +24,8 @@
 
 Az útmutató azt mutatja be, hogyan adhatja hozzá az [Azure Mobile Apps](app-service-mobile-value-prop.md) felhőalapú háttérszolgáltatást az iOS-alkalmazásokhoz. Először létre kell hoznunk egy új mobil-háttéralkalmazást. Ezt követően egy egyszerű _Tennivalólista_ iOS-alkalmazást fogunk használni az adatoknak az Azure-ban való tárolására.
 
-## Előfeltételek
+Az oktatóanyag elvégzéséhez egy Mac gépre és [egy Azure-fiókra](https://azure.microsoft.com/pricing/free-trial/) lesz szüksége.
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
-
-* [Aktív Azure-fiók](https://azure.microsoft.com/pricing/free-trial/).
-* Számítógép, amelyen fut a [Visual Studio Community 2013] vagy újabb verzió. 
-* Mac-számítógép, amelyen fut az Xcode 7.3-as vagy újabb verziója.
 
 ## 1. lépés: Új Azure Mobile Apps-háttéralkalmazás létrehozása
 
@@ -48,12 +43,12 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

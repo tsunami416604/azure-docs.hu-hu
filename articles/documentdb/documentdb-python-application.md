@@ -1,10 +1,10 @@
 <properties
     pageTitle="Python Flask-webalkalmazás fejlesztése a DocumentDB használatával | Microsoft Azure"
     description="Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait a DocumentDB használatával. Alkalmazásfejlesztési megoldások keresése." 
-    keywords="Application development, database tutorial, python flask, python web application, python web development, documentdb, azure, Microsoft azure"
+    keywords="Alkalmazásfejlesztés, adatbázis-oktatóanyag, python flask, python-webalkalmazás, python-webfejlesztés, documentdb, azure, Microsoft Azure"
     services="documentdb"
     documentationCenter="python"
-    authors="aliuy"
+    authors="AndrewHoh"
     manager="jhubbard"
     editor="cgronlun"/>
 
@@ -14,8 +14,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="python"
     ms.topic="hero-article"
-    ms.date="04/18/2016"
-    ms.author="andrl"/>
+    ms.date="08/25/2016"
+    ms.author="anhoh"/>
 
 # Python Flask-webalkalmazás fejlesztése a DocumentDB használatával
 
@@ -182,7 +182,7 @@ def create():
     db = client.CreateDatabase({ 'id': config.DOCUMENTDB_DATABASE })
 
     # Create collection
-    collection = client.CreateCollection(db['_self'],{ 'id': config.DOCUMENTDB_COLLECTION }, { 'offerType': 'S1' })
+    collection = client.CreateCollection(db['_self'],{ 'id': config.DOCUMENTDB_COLLECTION })
 
     # Create document
     document = client.CreateDocument(collection['_self'],
@@ -341,8 +341,8 @@ def vote():
     DOCUMENTDB_DOCUMENT = 'voting document'
     ```
 
-3. Az [Azure portálon](https://portal.azure.com/) navigáljon a **Kulcsok** panelre. Ehhez kattintson a **Tallózás**, majd a **DocumentDB-fiókok** lehetőségre, kattintson duplán a használni kívánt fiók nevére, és végül kattintson a **Kulcsok** gombra az **Alapvető erőforrások** területen. A **Kulcsok** panelen másolja ki az **URI** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_HOST** paraméter értéke helyére. 
-4. Ismét az Azure portálon, a **Kulcsok** panelen másolja ki az **Elsődleges kulcs** vagy **Másodlagos kulcs** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_KEY** paraméter értéke helyére.
+3. Az [Azure Portalon](https://portal.azure.com/) navigáljon a **Kulcsok** panelre. Ehhez kattintson a **Tallózás**, majd a **DocumentDB-fiókok** lehetőségre, kattintson duplán a használni kívánt fiók nevére, és végül kattintson a **Kulcsok** gombra az **Alapvető erőforrások** területen. A **Kulcsok** panelen másolja ki az **URI** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_HOST** paraméter értéke helyére. 
+4. Ismét az Azure Portalon, a **Kulcsok** panelen másolja ki az **Elsődleges kulcs** vagy **Másodlagos kulcs** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_KEY** paraméter értéke helyére.
 5. Adja hozzá a következő sort az **\_\_init\_\_.py** fájlhoz. 
 
         app.config.from_object('config')
@@ -432,10 +432,10 @@ További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, W
   [2]: https://www.python.org/downloads/windows/
   [3]: https://www.microsoft.com/download/details.aspx?id=44266
   [Microsoft Webplatform-telepítő]: http://www.microsoft.com/web/downloads/platform.aspx
-  [Azure portál]: http://portal.azure.com
+  [Azure Portal]: http://portal.azure.com
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,10 +13,10 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="03/16/2016"
+    ms.date="07/21/2016"
     ms.author="craig.dunn@xamarin.com"/>
 
-# <a name="getting-started"> </a>A Mobile Services használatának első lépései
+# <a name="getting-started"> </a>A Mobile Services használatának első lépéseit
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 &nbsp;
 
@@ -139,6 +139,6 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

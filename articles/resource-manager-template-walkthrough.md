@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/04/2016"
+   ms.date="08/04/2016"
    ms.author="navale;tomfitz"/>
    
 # Útmutató Resource Manager sablonokhoz
@@ -32,7 +32,7 @@ Ez a témakör bemutatja azon lépéseket, amelyekkel elkészíthető a fent le�
 
 Ez azonban túl sok ahhoz, hogy egyszerre hozza őket létre, ezért először hozzon létre egy tárfiókot, és telepítse azt. A tárfiókok létrehozásának elsajátítása után további erőforrásokat ad majd hozzá, és újból telepíti majd a sablont az infrastruktúra befejezéséhez.
 
->[AZURE.NOTE] A sablon létrehozásához bármilyen szerkesztőt használhat. A Visual Studio olyan eszközöket biztosít, amelyek egyszerűbbé teszik a sablonok fejlesztését. A jelen oktatóanyag elvégzéséhez azonban nincs szükség a Visual Studio használatára. A Webes alkalmazások és SQL Database telepítések Visual Studióval történő létrehozásával kapcsolatos oktatóanyag: [Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio használatával](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). 
+>[AZURE.NOTE] A sablon létrehozásához bármilyen szerkesztőt használhat. A Visual Studio olyan eszközöket biztosít, amelyek egyszerűbbé teszik a sablonok fejlesztését. A jelen oktatóanyag elvégzéséhez azonban nincs szükség a Visual Studio használatára. A Webes alkalmazások és SQL-adatbázisok Visual Studióval történő létrehozásával kapcsolatos oktatóanyag: [Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio használatával](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). 
 
 ## A Resource Manager-sablon létrehozása
 
@@ -53,7 +53,7 @@ Kezdjük a legegyszerűbb sablonnal:
 
 Mentse el a fájlt **azuredeploy.json** néven (a sablon neve bármi lehet, de json-fájlnak kell lennie).
 
-## Tárfiók létrehozása
+## Create a storage account
 A **resources** (erőforrás) szakaszban adjon hozzá egy objektumot, amely definiálja a tárfiókot az alább látható módon. 
 
 ```json
@@ -246,7 +246,7 @@ Hozzon létre egy virtuális hálózatot egyetlen alhálózattal. A beállítand
 }
 ```
 
-## Load balancer
+## Terheléselosztó
 Most egy kívülre irányuló terheléselosztót hoz majd létre. Mivel a terheléselosztó a nyilvános IP-címet használja, deklarálnia kell annak a nyilvános IP-címtől való függőségét a **dependsOn** szakaszban. Ez azt jelenti, hogy a terheléselosztó nem lesz telepítve, amíg a nyilvános IP-cím telepítése be nem fejeződött. A függőség meghatározása nélkül hibaüzenetet kapna, mert a Resource Manager párhuzamosan próbálja meg telepíteni az erőforrásokat, és olyan IP-címre próbálná a terheléselosztót beállítani, amely még nem létezik. 
 
 Emellett az alábbiakat is létrehozza majd: egy háttér címkészletet, néhány bejövő NAT-szabályt a virtuális gépek távoli asztali eléréséhez, valamint egy terheléselosztási szabályt egy TCP-hálózatfigyelővel a jelen erőforrás-definíció 80-as portján. Az összes tulajdonságért tekintse meg a [Terheléselosztóhoz szükséges REST API](https://msdn.microsoft.com/library/azure/mt163574.aspx) című részt.
@@ -575,7 +575,7 @@ Elkészült a sablon! Összehasonlíthatja a sablont a [gyorsindítási galéria
 
 A sablont újból telepítheti a tárfiók telepítésénél használt parancsokkal. Nem kell törölni a tárfiókot az újbóli telepítés előtt, mert a Resource Manager átugorja a már létező, és nem módosított erőforrások újbóli létrehozását.
 
-## További lépések
+## Következő lépések
 
 - Az [Azure Resource Manager-sablon vizualizálója (ARMViz)](http://armviz.io/#/) egy remek eszköz, amellyel vizuálisan megjelenítheti Resource Manager-sablonjait, ha azok már túl nagyok, és nem láthatók át a JSON-fájlból olvasva.
 - A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
@@ -583,6 +583,6 @@ A sablont újból telepítheti a tárfiók telepítésénél használt parancsok
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

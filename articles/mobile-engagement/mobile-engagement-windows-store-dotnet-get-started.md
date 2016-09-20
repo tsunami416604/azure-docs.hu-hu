@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="mobile-windows-store"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="05/03/2016"
-    ms.author="piyushjo" />
+    ms.date="08/12/2016"
+    ms.author="piyushjo;ricksal" />
 
 # Ismerkedés az Azure Mobile Engagement univerzális Windows-alkalmazásokkal való használatával
 
@@ -23,14 +23,12 @@
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazáshasználat megértéséhez, valamint leküldéses értesítések univerzális Windows-alkalmazásba történő küldéséhez szegmentált felhasználók számára.
 Ez az oktatóanyag a Mobile Engagementet használó egyszerű küldési forgatókönyvet mutat be. Ennek során létrehoz egy üres univerzális Windows-alkalmazást, amely alapszintű alkalmazáshasználati adatokat gyűjt, és leküldéses értesítéseket fogad a Windows értesítési szolgáltatása (WNS) használatával.
 
-Az oktatóanyaghoz az alábbiakra lesz szükség:
+## Előfeltételek
 
-+ Visual Studio 2013
-+ [MicrosoftAzure.MobileEngagement] NuGet-csomag
+[AZURE.INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
-> [AZURE.NOTE] Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-windows-store-dotnet-get-started).
 
-##<a id="setup-azme"></a>A Mobile Engagement beállítása az univerzális Windows-alkalmazáshoz
+## A Mobile Engagement beállítása az univerzális Windows-alkalmazáshoz
 
 [AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -38,15 +36,15 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez és leküldéses értesítés küldéséhez. A teljes integrációs dokumentáció itt található: [Mobile Engagement univerzális Windows SDK-integráció](mobile-engagement-windows-store-sdk-overview.md).
 
-Létre fogunk hozni egy alapszintű alkalmazást a Visual Studio segítségével az integráció bemutatásához.
+Létre fog hozni egy alapszintű alkalmazást a Visual Studio segítségével az integráció bemutatásához.
 
-###Új univerzális Windows-alkalmazás projekt létrehozása
+###Univerzális Windows-alkalmazás projekt létrehozása
 
-A következő lépések a Visual Studio 2015 használatát feltételezik, de a lépések a Visual Studio korábbi verziói esetén is hasonlóak. 
+A következő lépések a Visual Studio 2015 használatát feltételezik, de a lépések a Visual Studio korábbi verziói esetén is hasonlóak.
 
 1. Indítsa el a Visual Studiót, és a **Kezdőképernyőn** válassza a **New Project** (Új projekt) lehetőséget.
 
-2. Az előugró ablakban válassza a **Windows 8** -> **Universal** -> **Blank App (Universal Windows 8.1)** (Windows 8 > Univerzális > Üres alkalmazás (Univerzális Windows 8.1)) lehetőséget. Adja meg az alkalmazás **nevét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
+2. Az előugró ablakban válassza a **Windows** -> **Universal** -> **Blank App (Universal Windows)** (Windows > Univerzális > Üres alkalmazás (Univerzális Windows)) lehetőséget. Adja meg az alkalmazás **nevét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
 
     ![][1]
 
@@ -66,7 +64,7 @@ Most létrehozott egy új univerzális Windows-alkalmazás projektet, amelybe in
 
     ![][3]
 
-    >[AZURE.TIP] Ha az alkalmazása a Windows és a Windows Phone platformot is célozza, hozzon létre két Mobile Engagement-alkalmazást – egyet-egyet mindegyik támogatott platformhoz. Ez azért szükséges, hogy megfelelő célközönség-szegmentálást hozhasson létre, és megfelelően célzott értesítéseket küldhessen mindegyik platformra.
+    >[AZURE.TIP] Ha az alkalmazása a Windows és a Windows Phone platformot is célozza, hozzon létre két Mobile Engagement-alkalmazást – egyet-egyet mindegyik támogatott platformhoz. Ezzel a két alkalmazással biztosítható, hogy megfelelő közönségszegmentálást hozhasson létre, és megfelelően célzott értesítéseket küldhessen mindegyik platformra.
 
 4. Az `App.xaml.cs` fájlban:
 
@@ -74,7 +72,7 @@ Most létrehozott egy új univerzális Windows-alkalmazás projektet, amelybe in
 
             using Microsoft.Azure.Engagement;
 
-    b. Adjon hozzá egy, az Engagement inicializálására és beállítására kijelölt metódust:
+    b. Adja hozzá az Engagementet inicializáló metódust:
 
            private void InitEngagement(IActivatedEventArgs e)
            {
@@ -120,8 +118,8 @@ Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felh
         xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"
 
     b. Az XML-címke nevének **Page** részét cserélje le a következőre: **engagement:EngagementPageOverlay**.
-    
-> [AZURE.IMPORTANT] Ha az oldala felülírja az `OnNavigatedTo` metódust, hívja meg a következőt: `base.OnNavigatedTo(e)`. Ellenkező esetben a tevékenységről nem készül jelentés (az `EngagementPage` meghívja a `StartActivity` tevékenységet az `OnNavigatedTo` metódusán belül). Ez különösen a Windows Phone-projektek esetében fontos, ahol az alapértelmezett sablonok egy `OnNavigatedTo` metódussal rendelkeznek. 
+
+> [AZURE.IMPORTANT] Ha az oldala felülírja az `OnNavigatedTo` metódust, hívja meg a következőt: `base.OnNavigatedTo(e)`. Ellenkező esetben a tevékenységről nem készül jelentés (az `EngagementPage` meghívja a `StartActivity` tevékenységet az `OnNavigatedTo` metódusán belül). Ez különösen a Windows Phone-projektek esetében fontos, ahol az alapértelmezett sablonok egy `OnNavigatedTo` metódussal rendelkeznek.
 
 ##<a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 
@@ -148,16 +146,16 @@ Az `App.xaml.cs` fájlban, az **InitEngagement** függvényben hívja meg az **E
            EngagementReach.Instance.Init(e);
         }
 
-Ezzel készen is áll bejelentések küldésére. Most ellenőrizzük, hogy ezt az alapszintű integrációt megfelelően végezte-e el.
+Készen áll a bejelentés elküldésére. A következő lépésben ellenőrizni fogjuk, hogy ezt az alapszintű integrációt megfelelően végezte-e el.
 
 ###Értesítésküldési hozzáférés biztosítása a Mobile Engagement számára
 
 1. Nyissa meg a [Windows fejlesztői központot] a webböngészőjében, és jelentkezzen be, vagy ha szükséges, hozzon létre egy fiókot.
-2. Kattintson a jobb felső sarokban lévő **Irányítópult** elemre, majd kattintson a bal oldali panelmenüben az **Új alkalmazás létrehozása** lehetőségre. 
+2. Kattintson a jobb felső sarokban lévő **Irányítópult** elemre, majd kattintson a bal oldali panelmenüben az **Új alkalmazás létrehozása** lehetőségre.
 
     ![][9]
 
-2. Hozza létre az alkalmazást a neve lefoglalásával. 
+2. Hozza létre az alkalmazást a neve lefoglalásával.
 
     ![][10]
 
@@ -165,27 +163,27 @@ Ezzel készen is áll bejelentések küldésére. Most ellenőrizzük, hogy ezt 
 
     ![][11]
 
-4. A Leküldéses értesítések szakaszban kattintson a **Live Services webhelye** hivatkozásra. 
+4. A Leküldéses értesítések szakaszban kattintson a **Live Services webhelye** hivatkozásra.
 
     ![][12]
 
-5. Ezzel a Leküldési hitelesítő adatok részbe lép. Ellenőrizze, hogy az **Alkalmazásbeállítások** szakaszban van-e, majd másolja ki a **Csomag biztonsági azonosítóját** és a **Titkos ügyfélkulcsot**.
+5. Ezzel a Leküldési hitelesítő adatok részhez lép. Ellenőrizze, hogy az **Alkalmazásbeállítások** szakaszban van-e, majd másolja ki a **Csomag biztonsági azonosítóját** és a **Titkos ügyfélkulcsot**.
 
     ![][13]
 
-6. Lépjen a **Beállítások** részre a Mobile Engagement portálon, majd kattintson a bal oldalon a **Natív leküldés** szakaszra. Ezután kattintson a **Szerkesztés** gombra, és adja meg a **Csomag biztonsági azonosítója (SID)** és a **Titkos kulcs** értékét az alábbiakban látható módon:
+6. Lépjen a **Beállítások** részre a Mobile Engagement portálon, majd kattintson a bal oldalon a **Natív leküldés** szakaszra. Ezután kattintson a **Szerkesztés** gombra, és adja meg a **Csomag biztonsági azonosítója (SID)** és a **Titkos kulcs** értékét az itt látható módon:
 
     ![][6]
 
-8. Végül ellenőrizze, hogy a Visual Studio alkalmazás társítva van-e az újonnan létrehozott alkalmazással az alkalmazás-áruházban. Ehhez a Visual Studióban kattintson az **Associate App with Store** (Alkalmazás társítása az áruházhoz) lehetőségre.
-
+8. Végül ellenőrizze, hogy a Visual Studio alkalmazás társítva van-e az újonnan létrehozott alkalmazással az alkalmazás-áruházban. A Visual Studióban kattintson a következőkre: **Associate app with the store** (Alkalmazás társítása az Áruházzal).
     ![][7]
 
 ##<a id="send"></a>Értesítés küldése az alkalmazásnak
 
 [AZURE.INCLUDE [Create Windows Push campaign](../../includes/mobile-engagement-windows-push-campaign.md)]
 
-Ha az alkalmazás éppen fut, egy alkalmazásbeli értesítés jelenik meg, ha be van zárva, akkor egy bejelentési értesítés. Ha az alkalmazásbeli értesítés megjelenik, de a bejelentési értesítés nem, és az alkalmazást hibakeresési módban futtatja a Visual Studióban, akkor kattintson az eszköztár **Lifecycle events -> Suspend** (Életciklus-események -> Felfüggesztés) lehetőségére, hogy az alkalmazás biztosan fel legyen függesztve. Ha akkor kattintott a Kezdőképernyő gombra, miközben az alkalmazás hibakeresését végzi a Visual Studióban, az nem mindig lesz felfüggesztve, és bár az alkalmazásbeli értesítések megjelennek, a bejelentési értesítések nem.  
+Ha az alkalmazás fut, egy alkalmazásbeli értesítést kell látnia. Ha azonban az alkalmazás be van zárva, egy bejelentési értesítést fog látni.
+Ha alkalmazásbeli értesítés jelenik meg, és nem bejelentési értesítés, és az alkalmazást hibakeresési módban futtatja a Visual Studióban, akkor kattintson az eszköztár **Lifecycle events -> Suspend** (Életciklus-események -> Felfüggesztés) lehetőségére, hogy az alkalmazás biztosan fel legyen függesztve. Ha akkor kattintott a Kezdőképernyő gombra, miközben az alkalmazás hibakeresését végzi a Visual Studióban, az nem mindig lesz felfüggesztve, és bár egy alkalmazásbeli értesítés megjelenik, bejelentési értesítés nem.  
 
 ![][8]
 
@@ -211,8 +209,6 @@ Ha az alkalmazás éppen fut, egy alkalmazásbeli értesítés jelenik meg, ha b
 
 
 
-
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

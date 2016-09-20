@@ -3,7 +3,7 @@
    description="Információk az Azure virtuális hálózatokról (VNetekről)."
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,11 +13,11 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # A Virtual Network áttekintése
 
-Az Azure virtuális hálózat (VNet) a saját, felhőben található hálózatának megfelelője.  A hálózat az előfizetésre kijelölt Azure-felhő logikai elkülönítése. A hálózaton belül teljes mértékben irányíthatja az IP-címblokkokat, a DNS-beállításokat, a biztonsági házirendeket és az útválasztási táblázatokat. A VNetet emellett tovább oszthatja alhálózatokra, valamint Azure infrastruktúra-szolgáltatási virtuális gépeket (VM-ek) és/vagy [felhőszolgáltatásokat (PaaS szerepkörpéldányok)](../cloud-services/cloud-services-choose-me.md) indíthat. A virtuális hálózatot ezen felül a helyszíni hálózathoz is csatlakoztathatja az Azure-ban elérhető [kapcsolati lehetőségek](../vpn-gateway/vpn-gateway-cross-premises-options.md) egyikével. Lényegében kiterjesztheti a hálózatot az Azure-ra, az IP-címblokkok teljes körű irányítása és a vállalati méretű Azure által nyújtott előnyök mellett.
+Az Azure virtuális hálózat (VNet) a saját, felhőben található hálózatának megfelelője.  A hálózat az előfizetésre kijelölt Azure-felhő logikai elkülönítése. A hálózaton belül teljes mértékben irányíthatja az IP-címblokkokat, a DNS-beállításokat, a biztonsági házirendeket és az útválasztási táblázatokat. A VNetet emellett tovább oszthatja alhálózatokra, valamint Azure IaaS virtuális gépeket (VM-ek) és/vagy [felhőszolgáltatásokat (PaaS szerepkörpéldányok)](../cloud-services/cloud-services-choose-me.md) indíthat. A virtuális hálózatot ezen felül a helyszíni hálózathoz is csatlakoztathatja az Azure-ban elérhető [kapcsolati lehetőségek](../vpn-gateway/vpn-gateway-cross-premises-options.md) egyikével. Lényegében kiterjesztheti a hálózatot az Azure-ra, az IP-címblokkok teljes körű irányítása és a vállalati méretű Azure által nyújtott előnyök mellett.
 
 A VNetek jobb megértése érdekében tekintse meg az alábbi ábrát, amely egy egyszerűsített helyszíni hálózatot mutat be.
 
@@ -37,17 +37,17 @@ Figyelje meg, hogy az Azure infrastruktúra felveszi az útválasztó szerepkör
 
 - **Elkülönítés**. A VNetek teljesen elkülönülnek egymástól. Ez lehetővé teszi, hogy különálló hálózatokat hozzon létre a fejlesztés, a tesztelés és a termelés számára, amelyek ugyanazokat a CIDR címblokkokat használják.
 
-- **Hozzáférés a nyilvános internethez**. Egy VNet minden infrastruktúra-szolgáltatási virtuális gépe és PaaS szerepkörpéldánya alapértelmezés szerint hozzáférhet a nyilvános internethez. A hozzáférést hálózati biztonsági csoportokkal (NSG-k) lehet irányítani.
+- **Hozzáférés a nyilvános internethez**. Egy VNet minden IaaS virtuális gépe és PaaS szerepkörpéldánya alapértelmezés szerint hozzáférhet a nyilvános internethez. A hozzáférést hálózati biztonsági csoportokkal (NSG-k) lehet irányítani.
 
-- **Hozzáférés a virtuális gépekhez a VNeten belül**. A PaaS szerepkörpéldányokat és infrastruktúra-szolgáltatási virtuális gépeket el lehet indítani ugyanabban a virtuális hálózatban, és privát IP-címek használatával képesek csatlakozni egymáshoz, akkor is, ha külön alhálózatokon vannak, anélkül, hogy átjárót kellene konfigurálni vagy nyilvános IP-címeket kellene használni.
+- **Hozzáférés a virtuális gépekhez a VNeten belül**. A PaaS szerepkörpéldányokat és IaaS virtuális gépeket el lehet indítani ugyanabban a virtuális hálózatban, és privát IP-címek használatával képesek csatlakozni egymáshoz, akkor is, ha külön alhálózatokon vannak, anélkül, hogy átjárót kellene konfigurálni vagy nyilvános IP-címeket kellene használni.
 
-- **Névfeloldás**. Az Azure belső névfeloldást biztosít a VNetben üzembe helyezett infrastruktúra-szolgáltatási virtuális gépek és PaaS szerepkörpéldányok számára. Saját DNS-kiszolgálókat is üzembe helyezhet, és konfigurálhatja a VNetet a használatukra.
+- **Névfeloldás**. Az Azure belső névfeloldást biztosít a VNetben üzembe helyezett IaaS virtuális gépek és PaaS szerepkörpéldányok számára. Saját DNS-kiszolgálókat is üzembe helyezhet, és konfigurálhatja a VNetet a használatukra.
 
 - **Biztonság**. A VNeten belül a virtuális gépekre és PaaS szerepkörpéldányokra érkező, illetve onnan kifelé irányuló forgalmat hálózati biztonsági csoportok használatával lehet irányítani.
 
 - **Kapcsolatok**. A VNetek csatlakozhatnak egymáshoz, és akár a helyszíni adatközponthoz is, egy helyek közötti VPN- vagy ExpressRoute kapcsolattal. Ha többet szeretne megtudni a VPN-átjárókról:[About VPN gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) (Információk a VPN-átjárókról). Ha többet szeretne megtudni az ExpressRoute-ról:[ExpressRoute technical overview](../expressroute/expressroute-introduction.md) (ExpressRoute műszaki áttekintés).
 
-    >[AZURE.NOTE] Győződjön meg arról, hogy létrehoz egy VNetet, mielőtt infrastruktúra-szolgáltatási virtuális gépet, vagy PaaS szerepkörpéldányt helyezne üzembe az Azure környezetben. Az ARM alapú virtuális gépeknek szüksége van egy VNetre, és ha nem ad meg egy meglévő VNetet, az Azure létrehoz egy alapértelmezett VNetet, amelynek a CIDR címblokkja ütközhet a helyszíni hálózattal. Így a VNetet nem lehet majd csatlakoztatni a helyszíni hálózathoz.
+    >[AZURE.NOTE] Győződjön meg arról, hogy létrehoz egy VNetet, mielőtt IaaS virtuális gépet, vagy PaaS szerepkörpéldányt helyezne üzembe az Azure környezetben. Az ARM alapú virtuális gépeknek szüksége van egy VNetre, és ha nem ad meg egy meglévő VNetet, az Azure létrehoz egy alapértelmezett VNetet, amelynek a CIDR címblokkja ütközhet a helyszíni hálózattal. Így a VNetet nem lehet majd csatlakoztatni a helyszíni hálózathoz.
 
 ## Alhálózatok
 
@@ -64,9 +64,9 @@ Ha többet szeretne megtudni az Azure-ban használt IP-címekről: [IP addresses
 
 Egy virtuális hálózatban a virtuális gépek és a felhőszolgáltatások is kommunikálhatnak az internettel az Azure Load Balancer terheléselosztók segítségével. A belső hálózatra irányuló üzleti alkalmazások terheléselosztása csak belső terheléselosztó használatával lehetséges.
 
-- **Külső terheléselosztó**. A nyilvános internetről hozzáférhető infrastruktúra-szolgáltatási virtuális gépeknél és PaaS szerepkörpéldányoknál a magas rendelkezésre állás biztosításához használhat külső terheléselosztót.
+- **Külső terheléselosztó**. A nyilvános internetről hozzáférhető IaaS virtuális gépeknél és PaaS szerepkörpéldányoknál a magas rendelkezésre állás biztosításához használhat külső terheléselosztót.
 
-- **Belső terheléselosztó**. A VNeten található más szolgáltatásokkal hozzáférhető infrastruktúra-szolgáltatási virtuális gépeknél és PaaS szerepkörpéldányoknál a magas rendelkezésre állás biztosításához használhat belső terheléselosztót.
+- **Belső terheléselosztó**. A VNeten található más szolgáltatásokkal hozzáférhető IaaS virtuális gépeknél és PaaS szerepkörpéldányoknál a magas rendelkezésre állás biztosításához használhat belső terheléselosztót.
 
 Ha többet szeretne megtudni a terheléselosztásról az Azure-ban: [Load balancer overview](../load-balancer/load-balancer-overview.md) (A Load Balancer áttekintése).
 
@@ -88,7 +88,7 @@ Az előfizetés által engedélyezett virtuális hálózatok száma korlátozott
 ## Díjszabás
 A Virtual Networks az Azure-ban ingyenesen használható. A VNetben belül indított számítási példányokért az [Azure virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/) szerinti standard díjat kell fizetni. A VNetben használt[VPN-átjárókért](https://azure.microsoft.com/pricing/details/vpn-gateway/) és [Nyilvános IP-címekért] (https://azure.microsoft.com/pricing/details/ip-addresses/) szintén a standard díjat kell fizetni.
 
-## További lépések
+## Következő lépések
 
 - [Hozzon létre egy VNetet](virtual-networks-create-vnet-arm-pportal.md) és az alhálózatokat.
 - [Hozzon létre egy virtuális gépet a VNeten belül](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
@@ -97,6 +97,6 @@ A Virtual Networks az Azure-ban ingyenesen használható. A VNetben belül indí
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

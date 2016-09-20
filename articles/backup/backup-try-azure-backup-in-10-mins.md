@@ -6,7 +6,7 @@
    authors="Jim-Parker"
    manager="jwhit"
    editor=""
-   keywords="how to backup; how to back up"/>
+   keywords="biztonsági mentés menete; biztonsági mentési útmutató"/>
 
 <tags
    ms.service="backup"
@@ -14,10 +14,10 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="hero-article"
-   ms.date="05/10/2016"
+   ms.date="06/27/2016"
    ms.author="jimpark;"/>
 
-# Áttekintés: Megtudhatja, hogyan készíthet biztonsági másolatot a fájlokról és mappákról Windows Serverről vagy -ügyfélről Azure-ba az Azure Backuppal a Resource Manager-alapú üzemi modell segítségével
+# Áttekintés: Fájlok és mappák biztonsági mentése az Azure Backuppal a Resource Manager-alapú üzemi modell segítségével
 
 Ez a cikk leírja, hogyan készíthet biztonsági másolatot a Windows Server (vagy Windows-ügyfél) fájljairól és mappáiról az Azure-ba az Azure Backuppal a Resource Manager használatával. Ez az oktatóanyag végigvezeti az alapokon. Ha el szeretné kezdeni az Azure Backup használatát, jó helyen van.
 
@@ -209,6 +209,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

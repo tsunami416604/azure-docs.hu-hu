@@ -13,10 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/31/2016"
+   ms.date="08/15/2016"
    ms.author="piotrci"/>
 
 # Alkalmazások közzététele egyéni felhasználók számára egy Azure RemoteApp-gyűjteményben (előzetes)
+
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Ez a cikk ismerteti, hogyan tehet közzé alkalmazásokat egyéni felhasználók számára egy Azure RemoteApp-gyűjteményben. Ez az Azure RemoteApp új funkciója, amely jelenleg „privát előzetes verzióként”, csak egyes korai belépők számára érhető el értékelési célokra.
 
@@ -33,7 +36,7 @@ Ez mostantól lehetséges az Azure RemoteAppban – jelenleg korlátozott előze
 
 2. Az alkalmazás mód jelenleg csak Azure RemoteApp PowerShell-parancsmagok használatával engedélyezhető.
 
-  - Amikor alkalmazás módba állítja be a gyűjteményt, a gyűjtemény felhasználó-hozzárendelése nem kezelhető az Azure portálon keresztül. A felhasználó-hozzárendelés kezelését PowerShell-parancsmagokon keresztül kell elvégezni.
+  - Amikor alkalmazás módba állítja be a gyűjteményt, a gyűjtemény felhasználó-hozzárendelése nem kezelhető az Azure Portalon keresztül. A felhasználó-hozzárendelés kezelését PowerShell-parancsmagokon keresztül kell elvégezni.
 
 3. A felhasználók ekkor csak a közvetlenül a számukra közzétett alkalmazásokat láthatják. Lehetséges azonban, hogy a felhasználók továbbra is elindíthatják a rendszerképen lévő többi alkalmazást, ha közvetlenül az operációs rendszerben férnek hozzájuk.
   - Ez a szolgáltatás nem biztosítja az alkalmazások biztonságos zárolását; csak a láthatóságot korlátozza az alkalmazásfolyamban.
@@ -104,6 +107,6 @@ Ha még nem használta az előzetes verziót, töltse ki ezt a [felmérést](htt
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

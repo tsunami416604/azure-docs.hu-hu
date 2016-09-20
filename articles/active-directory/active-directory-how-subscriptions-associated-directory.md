@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="curtand"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/26/2016"
+    ms.date="08/15/2016"
     ms.author="curtand"/>
 
 # How Azure subscriptions are associated with Active Directory? (Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?)
@@ -123,7 +123,7 @@ Ha mindkét címtárat a klasszikus Azure portálon szeretné kezelni, végezze 
 7. Jelentkezzen be ismét a klasszikus Azure portálra a Microsoft-fiókjával. Mindkét címtár megjelenik az Active Directory-bővítményben.
 
 
-## További lépések
+## Következő lépések
 
 - Az Azure-előfizetések rendszergazdáinak módosításáról további információ: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../billing-add-change-azure-subscription-administrator.md)
 
@@ -141,6 +141,6 @@ Ha mindkét címtárat a klasszikus Azure portálon szeretné kezelni, végezze 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

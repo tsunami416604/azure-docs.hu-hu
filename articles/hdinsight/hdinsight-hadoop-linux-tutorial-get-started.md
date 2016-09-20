@@ -14,7 +14,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="na"
     ms.workload="big-data"
-    ms.date="03/16/2016"
+    ms.date="06/13/2016"
     ms.author="jgao"/>
 
 # Hadoop oktatóanyag: A Linux-alapú Hadoop használatának első lépései a HDInsightban
@@ -23,7 +23,7 @@
 - [Linux-alapú](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [Windows-alapú](hdinsight-hadoop-tutorial-get-started-windows.md)
 
-Megtanulhatja, hogyan hozhat létre Linux-alapú [Hadoop](http://hadoop.apache.org/)-fürtöket, és hogyan futtathat Hive-feladatokat a HDInsightban. Az [Apache Hive](https://hive.apache.org/) a Hadoop ökoszisztémájának legnépszerűbb összetevője. Jelenleg a HDInsight 4 különböző fürttípussal érhető el: [Hadoop](hdinsight-hadoop-introduction), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md) és [Storm](hdinsight-storm-overview.md).  Minden egyes fürttípus más és más összetevőket támogat. A Hive-ot mind a 4 fürttípus támogatja. A HDInsightban támogatott összetevők listáját lásd: [What's new in the Hadoop cluster versions provided by HDInsight?](hdinsight-component-versioning.md) (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).  
+Megtanulhatja, hogyan hozhat létre Linux-alapú [Hadoop](http://hadoop.apache.org/)-fürtöket, és hogyan futtathat Hive-feladatokat a HDInsightban. Az [Apache Hive](https://hive.apache.org/) a Hadoop ökoszisztémájának legnépszerűbb összetevője. Jelenleg a HDInsight 4 különböző fürttípussal érhető el: [Hadoop](hdinsight-hadoop-introduction.md), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md) és [Storm](hdinsight-storm-overview.md).  Minden egyes fürttípus más és más összetevőket támogat. A Hive-ot mind a 4 fürttípus támogatja. A HDInsightban támogatott összetevők listáját lásd: [What's new in the Hadoop cluster versions provided by HDInsight?](hdinsight-component-versioning.md) (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).  
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -163,6 +163,6 @@ A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/26/2016"
+   ms.date="06/16/2016"
    ms.author="yushwang"/>
 
 # A BGP és az Azure VPN Gateway együttműködésének áttekintése
@@ -35,7 +35,9 @@ A BGP használata számos előnyt és új képességet biztosít:
 
 A BGP használatakor kizárólag egy minimális előtag megadására van szükség egy adott BGP-társ számára, az IPsec S2S VPN-alagúton keresztül. Lehet ez olyan kicsi is, mint a helyszíni VPN-eszközhöz tartozó BGP-társ IP-címének gazdaelőtagja (/32-es előtag). Szabályozhatja az Azure-on meghirdetett helyszíni hálózati előtagok körét az Azure Virtual Network hozzáférésének biztosításához.
     
-Olyan nagyobb előtagok is meghirdethetők, amelyek a virtuális hálózat címelőtagjainak bizonyos részeit tartalmazhatják, így például az alapértelmezett útvonalat (0.0.0.0/0) vagy egy nagy privát IP-címteret (például 10.0.0.0/8). Ügyeljen rá, hogy az előtagok nem egyezhetnek meg a virtuális hálózat előtagjainak egyikével sem. A rendszer elutasítja a virtuális hálózat előtagjaival azonos útvonalakat.
+Olyan nagyobb előtagok is meghirdethetők, amelyek a virtuális hálózat címelőtagjainak bizonyos részeit tartalmazhatják, így például egy nagy privát IP-címteret (például 10.0.0.0/8). Ügyeljen rá, hogy az előtagok nem egyezhetnek meg a virtuális hálózat előtagjainak egyikével sem. A rendszer elutasítja a virtuális hálózat előtagjaival azonos útvonalakat.
+
+>[AZURE.IMPORTANT] Jelenleg az Azure VPN Gateway átjárókhoz vezető alapértelmezett útvonal meghirdetése (0.0.0.0/0) blokkolva van. Ha ezt a lehetőséget engedélyezzük, arról egy későbbi frissítésben adunk majd tájékoztatást.
 
 #### Többcsatornás üzemeltetés támogatása BGP-alapú automatikus feladatátvétellel, egy virtuális hálózat és egy helyszín között
 
@@ -68,6 +70,6 @@ A BGP helyek és virtuális hálózatok közötti kapcsolathoz történő konfig
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

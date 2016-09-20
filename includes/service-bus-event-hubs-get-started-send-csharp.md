@@ -12,9 +12,9 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
 
     ![][8]
 
-    Ez letölti és telepíti az <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus/">Azure Service Bus library NuGet package</a> (Azure szolgáltatásbusz-könyvtár NuGet-csomag) elemet, és hozzáad egy rá mutató hivatkozást is.
+    A Visual Studio letölti és telepíti az [Azure Service Bus library NuGet package](https://www.nuget.org/packages/WindowsAzure.ServiceBus) (Azure szolgáltatásbusz-könyvtár NuGet-csomag) elemet, és hozzáad egy rá mutató hivatkozást is.
 
-4. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
+4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
 
     ```
     using System.Threading;
@@ -54,7 +54,7 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
     }
     ```
 
-    Ez a metódus folyamatosan küldi az eseményeket az eseményközpontjának 200 ms-os késleltetéssel.
+    Ez a metódus folyamatosan küldi az eseményeket az eseményközpontjának 200 ezredmásodperces késleltetéssel.
 
 7. Végül adja a következő sorokat a **Main** metódushoz:
 
@@ -71,6 +71,6 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

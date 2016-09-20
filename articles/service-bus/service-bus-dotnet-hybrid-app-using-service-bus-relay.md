@@ -67,45 +67,7 @@ Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszkö
 
 A Service Bus-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
-1.  Jelentkezzen be a [klasszikus Azure portálra][].
-
-2.  A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre.
-
-3.  A portál alsó panelén kattintson a **Create** (Létrehozás) elemre.
-
-    ![][5]
-
-4.  Az **Add a new namespace** (Új névtér felvétele) párbeszédpanelen adja meg a névtér nevét.
-    A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-    ![][6]
-
-5.  Miután meggyőződött arról, hogy a név elérhető, válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz (ugyanazt azt az országot/régiót kell használnia, amelyben a számítási erőforrásokat üzembe helyezi).
-
-    > [AZURE.IMPORTANT] *Ugyanazt a régiót* válassza, amelyet az alkalmazás telepítéséhez kíván használni. Ez biztosítja a legjobb teljesítményt.
-
-6.  A párbeszédpanelen lévő többi mezőt hagyja az alapértelmezett értékükön, majd kattintson a pipára. A rendszer létrehozza, majd engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
-
-A létrehozott névtér ezután megjelenik a portálon, bár egy rövid ideig eltarthat az aktiválása. A folytatás előtt várja meg, amíg az állapota **Aktív** nem lesz.
-
-## Az alapértelmezett felügyeleti hitelesítő adatok beszerzése a névtérhez
-
-Ha kezelési műveleteket szeretne végrehajtani az új névtéren, például üzenetküldési entitásokat szeretne létrehozni, be kell szereznie a névtérhez tartozó hitelesítő adatokat.
-
-1.  A fő ablakban kattintson az előző lépésben létrehozott névtérre.
-
-2.  Kattintson a lap alján található **Kapcsolatadatok** gombra.
-
-3.  A **Kapcsolati adatok elérése** panelen keresse meg azt a kapcsolati karakterláncot, amely tartalmazza az SAS-kulcsot és annak nevét.
-
-    ![][45]
-
-4.  Másolja ki a kapcsolati karakterláncot, és illessze be azt valahová – erre később lesz szüksége az oktatóanyagban.
-
-5. Ugyanezen a portállapon kattintson az oldal tetején található **Konfigurálás** lapra.
-
-6. Másolja a vágólapra a **RootManageSharedAccessKey** házirend elsődleges kulcsát, vagy illessze be a Jegyzettömbe. Ezt az értéket az oktatóanyag későbbi részében fogja használni.
-
-    ![][46]
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## Helyszíni kiszolgáló létrehozása
 
@@ -117,7 +79,7 @@ Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGe
 
 1.  Rendszergazdai jogosultságokkal indítsa el a Microsoft Visual Studiót. A Visual Studio rendszergazdai jogosultságokkal történő elindításához kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
 
-2.  A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, maja kattintson a **Project** (Projekt) elemre.
+2.  A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
 
 3.  Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Console Application** (Konzolalkalmazás) elemre. A **Name** (Név) mezőbe írja be a **ProductsServer** nevet:
 
@@ -528,7 +490,7 @@ Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a 
 
     ![][38]
 
-## További lépések  
+## Következő lépések  
 
 A Service Busról a következő forrásanyagokban találhat további információkat:  
 
@@ -541,11 +503,6 @@ A Service Busról a következő forrásanyagokban találhat további informáci�
   [Eszközök és az SDK beszerzése]: http://go.microsoft.com/fwlink/?LinkId=271920
   [NuGet]: http://nuget.org
   
-  [klasszikus Azure portálra]: http://manage.windowsazure.com
-  [5]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/sb-queues-03.png
-  [6]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/sb-queues-04.png
-
-
   [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
   [13]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-13.png
   [15]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-2.png
@@ -567,15 +524,14 @@ A Service Busról a következő forrásanyagokban találhat további informáci�
   [38]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-service2.png
   [41]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-40.png
   [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
-  [45]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-45.png
-  [46]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/service-bus-policies.png
+
 
   [sbwacom]: /documentation/services/service-bus/  
-  [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
+  [sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md
 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

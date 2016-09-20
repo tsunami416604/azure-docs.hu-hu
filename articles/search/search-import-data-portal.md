@@ -14,14 +14,14 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/10/2016"
+    ms.date="06/08/2016"
     ms.author="heidist"/>
 
 # Adatok importálása az Azure Search szolgáltatásba a portál használatával
 
-Az Azure portál irányítópultján található **Adatok importálása** parancs segítségével elvégezhető az adatfeldolgozás az Azure Search felületén. A parancs olyan beépített indexelő szolgáltatásra támaszkodik, amely feltérképez egy létező adatforrást, majd az ott észlelt sorhalmaz alapján hoz létre és tölt fel dokumentumokat.
+Az Azure Portal Azure Search irányítópultján található **Adatok importálása** parancs segítségével az adatok betölthetők egy indexbe. A parancs a beépített indexelő szolgáltatásokra támaszkodik, amelyek feltérképeznek egy létező adatforrást, majd az abból lekért sorhalmaz alapján hoznak létre és töltenek fel dokumentumokat.
 
-A varázslóval az adatok importálása 3 részben történik:
+Az adatoknak a varázslóval való importálása 3 részből áll:
 
 - adatforrás-kapcsolat
 - az adatok feltöltésére használt célindex (a legtöbb esetben a varázsló ezt létrehozza)
@@ -68,10 +68,16 @@ Az imént befejezett adatimportálási művelet egy indexelőt hozott létre a h
 
 ##Meglévő indexelő szerkesztése
 
-A szolgáltatás irányítópultján kattintson duplán az Indexelő csempére az előfizetéshez létrehozott összes indexelő listájának kicsúsztatásához. Az indexelők futtatásához, szerkesztéséhez és törléséhez kattintson rájuk duplán.
+A szolgáltatás irányítópultján kattintson duplán az Indexelő csempére az előfizetéshez létrehozott összes indexelő listájának kicsúsztatásához. Az indexelők futtatásához, szerkesztéséhez és törléséhez kattintson rájuk duplán. Lecserélheti az indexet egy másik létező indexre, módosíthatja az adatforrást, és beállíthatja az indexelés során érvényes hibaküszöböket.
+
+##Meglévő index szerkesztése
+
+Az Azure Search szolgáltatásban az index strukturális frissítéséhez az index újjáépítésére van szükség, ami az index törléséből, újbóli létrehozásából és az adatok újbóli betöltéséből áll. A strukturális frissítések közé tartozik az adattípusok módosítása és a mezők átnevezése vagy törlése.
+
+Az újjáépítést nem igénylő szerkesztési műveletek közé tartozik az új mezők hozzáadása, illetve a pontozási profilok, a javaslatok vagy a nyelvelemzők módosítása. További információ: [Update Index](https://msdn.microsoft.com/library/azure/dn800964.aspx) (Index frissítése).
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

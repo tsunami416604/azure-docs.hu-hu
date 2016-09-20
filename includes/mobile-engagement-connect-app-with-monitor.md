@@ -8,13 +8,13 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatja az alkalmazást a Mobile Engage
 
 3. A figyelő most már készen áll az alkalmazást elindító eszközök valós idejű megjelenítésére.
      
-4. Indítsa el az alkalmazást az emulátorban/szimulátorban vagy egy csatlakoztatott eszközön. Ha az integráció helyes, a figyelőben egyetlen munkamenet jelenik meg. Ez azt jelenti, hogy az alkalmazás csatlakoztatva van a Mobile Engagement háttérrendszeréhez, és adatokat továbbít felé.  
+4. Most indítsa el az alkalmazást. Ha az integráció helyes, a figyelőben egyetlen munkamenet jelenik meg. Ez azt jelenti, hogy az alkalmazás csatlakoztatva van a Mobile Engagement háttérrendszeréhez, és adatokat továbbít felé.  
     
      ![](./media/mobile-engagement-connect-app-with-monitor/monitor.png)
 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

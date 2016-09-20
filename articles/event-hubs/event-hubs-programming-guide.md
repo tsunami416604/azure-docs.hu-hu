@@ -12,7 +12,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="tbd"
-    ms.date="04/15/2016"
+    ms.date="08/16/2016"
     ms.author="sethm" />
 
 # Event Hubs programozási útmutató
@@ -23,9 +23,9 @@ Ez a témakör az Azure Event Hubs segítségével történő programozást isme
 
 Az események küldése az egyes eseményközpontokba a HTTP POST használatával vagy egy AMQP 1.0-kapcsolaton keresztül történik. A használandó módszert az adott forgatókönyv határozza meg. Az AMQP 1.0-kapcsolatok mérése közvetített kapcsolatként történik a Service Bus szolgáltatásban, és az olyan forgatókönyvekben megfelelőbbek, ahol gyakoriak a nagyobb üzenetmennyiségek és alacsony késés szükséges, mivel ezek állandó üzenetkezelési csatornát biztosítanak.
 
-Az eseményközpontok a [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) osztály használatával hozhatók létre és felügyelhetők. A .NET által felügyelt API-k használatakor az adatoknak az Event Hubs számára történő közzétételére szolgáló elsődleges szerkezetek az [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) és az [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) osztály. Az [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) egy AMQP kommunikációs csatornát biztosít, amelyen keresztül az események küldhetők az eseményközpontba. Az [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) osztály egy eseményt képvisel, és az üzeneteknek az eseményközpontba való közzétételéhez használható. Ez az osztály az esemény törzsét, bizonyos metaadatait és fejléc-információit tartalmazza. Az [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) objektum egyéb tulajdonságokkal is bővül, ahogy keresztülhalad az eseményközponton.
+Az Event Hubs a [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) osztály használatával hozható létre és felügyelhető. A .NET által felügyelt API-k használatakor az adatoknak az Event Hubs számára történő közzétételére szolgáló elsődleges szerkezetek az [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) és az [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) osztály. Az [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) egy AMQP kommunikációs csatornát biztosít, amelyen keresztül az események küldhetők az eseményközpontba. Az [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) osztály egy eseményt képvisel, és az üzeneteknek az eseményközpontban való közzétételéhez használható. Ez az osztály az esemény törzsét, bizonyos metaadatait és fejléc-információit tartalmazza. Az [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) objektum egyéb tulajdonságokkal is bővül, ahogy keresztülhalad az eseményközponton.
 
-## Első lépések
+## Bevezetés
 
 Az Event Hubs szolgáltatást támogató .NET-osztályok a Microsoft.ServiceBus.dll szerelvényben találhatók. A Service Bus API-ra való hivatkozásnak és az alkalmazás az összes Service Bus-függőséggel való konfigurálásának a legegyszerűbb módja, ha letölti a [Service Bus NuGet-csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus). Használhatja a Visual Studio [Csomagkezelő konzolját](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) is. Ehhez adja ki a következő parancsot a [Csomagkezelő konzol](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakában:
 
@@ -172,11 +172,11 @@ Az [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servi
 
 ## Közzétevők visszavonása
 
-Az [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) fejlett futtatókörnyezeti szolgáltatásai mellett az Event Hubs lehetővé teszi a közzétevők visszavonását is annak érdekében, hogy blokkolni lehessen, hogy adott közzétevők számára események közzétételét egy eseményközpontba. Ezek a szolgáltatások akkor igazán hasznosak, ha egy közzétevői token biztonsága sérült, vagy egy szoftverfrissítés eredményeként nem megfelelően működik. Ilyen helyzetekben a közzétevő identitása (amely a SAS-token részét képezi) blokkolható az események közzétételének a megakadályozásához.
+Az [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) fejlett futtatókörnyezeti szolgáltatásai mellett az Event Hubs lehetővé teszi a közzétevők visszavonását is annak érdekében, hogy blokkolni lehessen adott közzétevők számára események közzétételét egy eseményközpontban. Ezek a szolgáltatások akkor igazán hasznosak, ha egy közzétevői token biztonsága sérült, vagy egy szoftverfrissítés eredményeként nem megfelelően működik. Ilyen helyzetekben a közzétevő identitása (amely a SAS-token részét képezi) blokkolható az események közzétételének a megakadályozásához.
 
 A közzétevők visszavonásával és az eseményközpontokba közzétevőként való küldés módjával kapcsolatban a [Service Bus Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Service Bus Event Hubs nagyléptékű biztonságos közzététel) mintában tekinthet meg további információt.
 
-## További lépések
+## Következő lépések
 
 Az Event Hubs-forgatókönyvekkel kapcsolatos további információkért látogasson el a következő hivatkozásokra:
 
@@ -187,6 +187,6 @@ Az Event Hubs-forgatókönyvekkel kapcsolatos további információkért látoga
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

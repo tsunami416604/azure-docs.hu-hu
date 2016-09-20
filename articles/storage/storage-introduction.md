@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/23/2016"
+    ms.date="07/21/2016"
     ms.author="tamram"/>
 
 # A Microsoft Azure Storage bemutatása
@@ -46,7 +46,7 @@ Az Azure Storage a világon bárhol, bármilyen alkalmazásból elérhető, füg
 
 Az Azure Storage ügyfelei a kényelmes fejlesztés érdekében számos operációs rendszert (beleértve a Windows és a Linux rendszereket is) és programnyelvet (többek között a .NET, a Java, a Node.js, a Python, a Ruby, a PHP, a C++ és a mobil programnyelveket) támogatnak. Az Azure Storage egyszerű REST API-kon keresztül is közzétesz adatforrásokat, amelyek minden, HTTP/HTTPS kapcsolaton adatot küldeni és fogadni képes ügyféllel elérhetők.
 
-Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatást biztosít az Azure Virtual Machines szolgáltatáson futtatott, nagy adatátviteli teljesítményt igénylő számítási feladatokhoz. Az Azure Premium Storage használatával több állandó adatlemezt csatlakoztathat egy virtuális géphez, és beállíthatja őket úgy, hogy alkalmazkodjanak a teljesítménykövetelményekhez. A maximális adatátviteli teljesítményt a minden adatlemezről elkészült, SSD-n tárolt biztonsági másolat biztosítja az Azure Premium Storage-ban. A Premium Storage részletesebb áttekintéséért lásd: [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](storage-premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
+A prémium szintű Storage nagy teljesítményű, kis késleltetésű lemeztámogatást biztosít az Azure virtuális gépeken futtatott, nagy adatátviteli teljesítményt igénylő számítási feladatokhoz. A prémium szintű Azure Storage használatával több állandó adatlemezt csatlakoztathat egy virtuális géphez, és beállíthatja őket úgy, hogy alkalmazkodjanak a teljesítménykövetelményekhez. A maximális adatátviteli teljesítményt a minden adatlemezről elkészült, SSD-n tárolt biztonsági másolat biztosítja a prémium szintű Azure Storage-ban. A Premium Storage részletesebb áttekintéséért lásd: [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](storage-premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
 
 ## Az Azure Storage szolgáltatásainak bemutatása
 
@@ -132,7 +132,11 @@ További információ a közös hozzáférésű jogosultságkódokról: [Shared 
 
 ## Replikáció a tartósság és magas rendelkezésre állás érdekében
 
-A Microsoft Azure-tárfiókban lévő adatokról a rendszer mindig replikációt készít a tartósságuk és magas szintű rendelkezésre állásuk érdekében, így még átmeneti hardverhibák esetén is teljesíti a [Storage szolgáltatásiszint-szerződésének](https://azure.microsoft.com/support/legal/sla/storage/) feltételeit. Amikor tárfiókot hoz létre, ki kell választania a következő replikációs lehetőségek egyikét:  
+A Microsoft Azure-tárfiókban lévő adatokról a rendszer mindig replikációt készít a tartósságuk és magas szintű rendelkezésre állásuk érdekében, így még átmeneti hardverhibák esetén is teljesíti a [Storage szolgáltatásiszint-szerződésének](https://azure.microsoft.com/support/legal/sla/storage/) feltételeit. 
+
+Tekintse meg [Az Azure régiói](https://azure.microsoft.com/regions/#services) című lapot azzal kapcsolatban, hogy az egyes régiókban mely szolgáltatások érhetőek el.
+
+Amikor tárfiókot hoz létre, ki kell választania a következő replikációs lehetőségek egyikét:  
 
 - **Helyileg redundáns tárolás (LRS)** A helyileg redundáns tárolás három másolatot tart fenn adatairól. A rendszer egy régió egyetlen létesítményén belül háromszor replikálja az LRS-t. Az LRS megvédi adatait a normál hardverhibáktól, de nem nyújt védelmet a létesítményt érintő hibák ellen.  
   
@@ -147,10 +151,11 @@ A Microsoft Azure-tárfiókban lévő adatokról a rendszer mindig replikációt
     > 
     > Miután létrehozott egy tárfiókot és kiválasztotta a ZRS-t, már nem módosíthatja a replikáció típusát más típusra, és ugyanez fordítva is igaz. 
 
-- **Georedundáns tárolás (GRS)**. Amikor létrehoz egy tárfiókot, a georedundáns tárolás alapértelmezés szerint engedélyezve van. A GRS hat másolatot tart fenn adatairól. A GRS tárolással a rendszer háromszor replikálja az adatokat az elsődleges régióban, valamint még háromszor replikálja őket egy másodlagos régióban, az elsődleges régiótól több száz kilométer távolságban, így a legnagyobb szintű tartósságot biztosítja. Ha az elsődleges régióban hiba történne, az Azure Storage feladatátvételt hajt végre a másodlagos régióba. A GRS biztosítja az adatok tartósságát két külön régióban.
+- **Georedundáns tárolás (GRS)**. A GRS hat másolatot tart fenn adatairól. A GRS tárolással a rendszer háromszor replikálja az adatokat az elsődleges régióban, valamint még háromszor replikálja őket egy másodlagos régióban, az elsődleges régiótól több száz kilométer távolságban, így a legnagyobb szintű tartósságot biztosítja. Ha az elsődleges régióban hiba történne, az Azure Storage feladatátvételt hajt végre a másodlagos régióba. A GRS biztosítja az adatok tartósságát két külön régióban.
 
+    További információ az elsődleges és másodlagos régiók párosításairól: [Az Azure régiói](https://azure.microsoft.com/regions/).
 
-- **Írásvédett georedundáns tárolás (RA-GRS)**. Az írásvédett georedundáns tárolás az adatokat egy másodlagos földrajzi helyre replikálja, és az adatokhoz a másodlagos helyszínen is írásvédett hozzáférést biztosít. Az írásvédett georedundáns tárolással az elsődleges vagy a másodlagos helyszínről is hozzáférhet az adatokhoz, ha valamely helyszín elérhetetlenné válik.
+- **Írásvédett georedundáns tárolás (RA-GRS)**. Amikor létrehoz egy tárfiókot, az írásvédett georedundáns tárolás alapértelmezés szerint engedélyezve van. Az írásvédett georedundáns tárolás az adatokat egy másodlagos földrajzi helyre replikálja, és az adatokhoz a másodlagos helyszínen is írásvédett hozzáférést biztosít. Az írásvédett georedundáns tárolással az elsődleges vagy a másodlagos helyszínről is hozzáférhet az adatokhoz, ha valamely helyszín elérhetetlenné válik.
 
     > [AZURE.IMPORTANT] A tárfiók létrehozása után módosíthatja az adatok replikálási módját, kivéve ha a fiók létrehozásakor a ZRS módot választotta. Azonban ügyeljen arra, hogy ha az  LRS-ről  GRS-re vagy RA- GRS-re vált, akkor lehetséges, hogy egyszeri adatátviteli díjat kell fizetnie.
  
@@ -203,12 +208,14 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 
 ### Eszközök és segédprogramok
 
-- [Azure SDK-k és eszközök](https://azure.microsoft.com/downloads/)
+- [Azure Storage Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+- [Azure Storage-ügyféleszközök](storage-explorers.md)
+- [Azure SDK-k és eszközök](https://azure.microsoft.com/tools/)
 - [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
 - [Azure PowerShell](../powershell-install-configure.md)
 - [AzCopy parancssori segédprogram](http://aka.ms/downloadazcopy)
 
-## További lépések
+## Következő lépések
 
 Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
@@ -262,6 +269,6 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -17,14 +17,15 @@ Ezek a lépések azt feltételezik, hogy csatlakozik az SQL Database szolgáltat
 3. A lekérdezési ablakban szerkessze és használja a következő Transact-SQL utasítást egy felhasználó létrehozásához a felhasználói adatbázisban. 
 
     ```CREATE USER user1 WITH PASSWORD ='p@ssw0rd1';
+    ```
 
-     ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-3.png)
-
-
-
+     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-3.png)
 
 
 
-<!--HONumber=Jun16_HO2-->
+
+
+
+<!--HONumber=sep16_HO1-->
 
 

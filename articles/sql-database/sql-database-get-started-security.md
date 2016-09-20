@@ -4,7 +4,7 @@
     keywords=""
     services="sql-database"
     documentationCenter=""
-    authors="carlrabeler"
+    authors="CarlRabeler"
     manager="jhubbard"
     editor=""/>
 
@@ -15,17 +15,22 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="05/03/2016"
+    ms.date="08/17/2016"
     ms.author="carlrab"/>
 
-# SQL Database oktatóanyag: Hozzon létre SQL adatbázis felhasználói fiókokat adatbázishoz való hozzáféréshez és adatbázis kezeléséhez Azure portál használatával
+# SQL Database oktatóanyag: SQL Database felhasználói fiókok létrehozása az adatbázisok eléréséhez és kezeléséhez
 
-Ebből az oktatóanyagból megtanulhatja, hogyan kell az Azure portált a következőkre használni:
+
+> [AZURE.SELECTOR]
+- [Első lépéseket ismertető oktatóanyag](sql-database-get-started-security.md)
+- [Hozzáférés biztosítása](sql-database-manage-logins.md)
+
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az SQL Server Management Studio (SSMS) használatával:
 
 - Bejelentkezés az SQL Database szolgáltatásba egyszerű kiszolgálószintű bejelentkezéssel
 - SQL Database felhasználói fiók létrehozása
-- DBO engedélyek kiadása egy SQL Database felhasználói fiókhoz egy felhasználói adatbázison belül
-- Csatlakozás SQL adatbázishoz nem egyszerű, kiszolgálószintű felhasználói fiókkal 
+- [Db_owner engedélyek](https://msdn.microsoft.com/library/ms189121.aspx#Anchor_0) megadása egy SQL Database-felhasználónak.
+- Csatlakozás SQL adatbázishoz nem egyszerű, kiszolgálószintű felhasználói fiókkal.
 
 [AZURE.INCLUDE [Login](../../includes/azure-getting-started-portal-login.md)]
 
@@ -49,6 +54,6 @@ Miután végigment ezen az SQL Database oktatóanyagon, és létrehozott egy fel
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

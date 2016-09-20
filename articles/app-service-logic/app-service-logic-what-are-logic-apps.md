@@ -4,85 +4,86 @@
     authors="kevinlam1" 
     manager="dwrede" 
     editor="" 
-    services="app-service\logic" 
+    services="logic-apps" 
     documentationCenter=""/>
 
 <tags
-    ms.service="app-service-logic"
+    ms.service="logic-apps"
     ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article" 
-    ms.date="04/07/2016"
+    ms.date="07/12/2016"
     ms.author="klam"/>
 
 #Mi a Logic Apps szolgáltatás?
 
-| Rövid összefoglalás |
-| --------------- |
-| [A Logic Apps szolgáltatás definíciós nyelve](https://msdn.microsoft.com/library/azure/mt643789.aspx) |
-| [A Logic Apps-összekötők dokumentációja](../connectors/apis-list.md) |
-| [Logic Apps-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) |
+A Logic Apps lehetőséget teremt a skálázható integrálások és munkafolyamatok felhőbe implementálásának leegyszerűsítésére és implementálása. Egy vizuális tervezőt biztosít a folyamatai lépéssorozatként, más néven munkafolyamatként történő modellezésére és automatizálására.  Sok helyszíni és felhőben található [összekötő](../connectors/apis-list.md) létezik, amelyeket gyorsan integrálni lehet a szolgáltatások és protokollok között.  Egy logikai alkalmazás egy eseményindítóval kezdődik (például „amikor egy fiókot hozzáadnak a Dynamics CRM-hez”), és az indítás után kezdődhet számos műveleti, konverziós és feltétellogikai kombináció.
 
-Az Azure App Service teljes körűen felügyelt platformszolgáltatás fejlesztők számára, amely jelentősen megkönnyíti a webes, mobilos és integrációs alkalmazások megalkotását. A Logic Apps ennek a programcsomagnak a része. A szolgáltatás segítségével a technikusok vagy fejlesztők egy könnyen használható vizuális tervezőeszközzel automatizálhatják az üzleti folyamatok végrehajtását és az ezekhez kapcsolódó munkafolyamatokat.
+A Logic Apps használatának előnyei többek között a következők:  
 
-A Logic Apps ráadásul a beépített [felügyelt API-kkal][felügyelt api-k] együtt használva még a legbonyolultabb integrációs kihívásokra is egyszerű választ tud adni: 
+- Idő spórolható meg, mert az összetett folyamatok tervezése könnyen átlátható tervezőeszközökkel történik
+- Minták és munkafolyamatok zökkenőmentes megvalósítása, amelyek amúgy nehezen implementálhatók lennének a programkódban
+- Gyors kezdés sablonok segítségével
+- A logikai alkalmazás testre szabható egyéni API-kkal, programkóddal és műveletekkel
+- Különálló rendszerek összekapcsolása és szinkronizálása a helyszíni rendszer és a felhő között
+- BizTalk Server, API Management, Azure Functions és Azure Service Bus kiépítése első osztályú integrációs támogatással
+
+A Logic Apps egy teljesen felügyelt iPaaS (szolgáltatásként nyújtott integrációs platform), amely lehetővé teszi a fejlesztők számára, hogy ne kelljen aggódniuk az üzemeltetés, a méretezhetőség és a felügyelet kiépítése miatt.  A Logic Apps automatikusan vertikálisan felskálázódik, hogy kielégítse az igényeket.
 
 ![Alkalmazásfolyamat-tervező](./media/app-service-logic-what-are-logic-apps/LogicAppCapture2.png)
 
-Ahogy korábban már említettük, a logikai alkalmazások segítségével automatizálhatja az üzleti folyamatokat. Íme néhány példa erre:  
+Ahogy korábban már említettük, a Logic Apps segítségével automatizálhatja az üzleti folyamatokat. Íme néhány példa erre:  
  
-* Beállíthatja, hogy a rendszer automatikusan replikálja az SQL-adatbázisba bekerülő új bejegyzéseket, majd e-mailt küldjön azokról az ügyfélszolgálatnak.   
-* Beállíthatja, hogy a rendszer automatikusan megkeresse a negatív Twitter-üzeneteket, majd továbbítsa őket egy Slack-csatornára.
+* FTP-kiszolgálóra feltöltött fájlok áthelyezése az Azure Storage-ba
+* Rendelések feldolgozása és irányítása a helyszíni és felhőrendszerek között
+* Egy megadott témához tartozó tweetek figyelése, vélemények elemzése, valamint riasztások és feladatok létrehozása utókövetést igénylő elemekhez.
 
-Az ehhez hasonló helyzeteknek megfelelő konfiguráláshoz mindössze a vizuális tervező szükséges, egyetlen sor kódot sem kell írnia. Kezdje el [összeállítani saját logikai alkalmazását][létrehozás].
+Az ehhez hasonló helyzeteknek megfelelő konfiguráláshoz mindössze a vizuális tervező szükséges, egyetlen sor kódot sem kell írnia. Kezdje el [összeállítani saját logikai alkalmazását][létrehozás].  Ha már megírták, a logikai alkalmazás [gyorsan üzembe helyezhető és újrakonfigurálható](app-service-logic-create-deploy-template.md) több környezetben és régióban is.
 
 ## Miért válasszam a Logic Apps szolgáltatást?
 
-A Logic Apps szolgáltatásban a fejlesztők olyan munkafolyamatokat alkothatnak meg, amelyek egy eseményindítóval kezdődnek, majd végrehajtanak bizonyos lépéseket. A rendszer minden egyes lépésnél elindít egy-egy API-t, illetve biztonságosan gondoskodik a hitelesítésről és a további ajánlott eljárásokról, például az ellenőrzőpontokról és a tartós végrehajtásról.
+A Logic Apps sebességet és méretezhetőséget biztosít a vállalati integráció terén.  A tervező könnyű használata, a számos elérhető eseményindító és művelet, valamint a sokoldalú kezelőeszközök teszik minden eddiginél könnyebbé az API-k központosítását.  Ahogy a vállalkozások a digitalizáció felé mozdulnak el, a Logic Apps lehetővé teszi a régi és a legmodernebb rendszerek összekapcsolását.
 
-A Logic Apps remek megoldást nyújt a különféle adatforrások integrálására, akár a felhőtől kezdve a helyszíni erőforrásokig. Ez különösen hasznos lehet, ha üzleti folyamatokat szeretne automatizálni (például megkeresni a negatív Twitter-üzeneteket, majd elküldeni őket egy belső Slack-csatornára, vagy a beérkezést követően replikálni az új ügyfélbejegyzéseket az SQL-ből a vállalati CRM-rendszerbe). Ha további lehetőségekre kíváncsi, olvasson a [felügyelt API-król][felügyelt api-k], vagy [vágjon bele már most][létrehozás], és tapasztalja meg, mire képes a szolgáltatás. 
+Továbbá a [nagyvállalati integrációs fiókokkal][biztalk] részletes integrációs forgatókönyvekre is méretezhet az [XML-üzenetküldés][xml], a [kereskedelmipartner-kezelés][tpm] és további szolgáltatások használatával.
 
-Ezenfelül a [BizTalk felügyelt API-k][biztalk] révén a [szabálymotor][szabályok], a [kereskedelmipartner-kezelés][tpm] és még számos más funkció is rendelkezésére áll az összetett integrációs feladatok megoldására.
+- **Könnyen használható tervezőeszközök** – A Logic Apps teljes körűen megtervezhető a böngészőben vagy a Visual Studio-eszközökkel. Indítás eseményindítóval – egy egyszerű ütemezéstől a GitHub-problémák létrehozásáig is eljuthat. Ezt követően az összekötők széles választéka segítségével tetszőleges számú műveletet vezényelhet le.
 
-- **Könnyen használható tervezőeszközök** – A Logic Apps tervezése elejétől a végéig megvalósítható a böngészőben. Első lépés: az eseményindító – Ez lehet egy egyszerű ütemezés, de beállíthatja, hogy a folyamat akkor induljon el, amikor egy Twitter-üzenetben megemlítik a vállalatot. Ezt követően az összekötők széles választéka segítségével tetszőleges számú műveletet vezényelhet le.
+- **API-k könnyű csatlakoztatása** – Még a könnyen leírható, de összetett feladatokat is nehéz a programkódban implementálni. A Logic Apps megkönnyíti a különböző rendszerek összekapcsolását. Szeretné összekapcsolni felhőalapú marketingmegoldását a helyszíni számlázórendszerrel? Szeretné központosítani az API-k és rendszerek közötti üzenetküldést egy Enterprise Service Bus segítségével? A Logic Apps a lehető leggyorsabb és legmegbízhatóbb megoldást kínálja ezekre a feladatokra.
 
-- **Egyszerű SaaS-összeállítás** – Még az egyébként egyszerűen leírható összeállítási feladatokat is nehéz lehet kódban megírni. A Logic Apps szolgáltatásban pofonegyszerűen megoldható a különböző rendszerek összekötése. Szeretne létrehozni egy, a Facebook- vagy Twitter-fiókjában zajló tevékenységeken alapuló feladatot létrehozni CRM-szoftverében? Szeretné összekapcsolni felhőalapú marketingmegoldását a helyszíni számlázórendszerrel? A Logic Apps a lehető leggyorsabb és legmegbízhatóbb megoldást kínálja ezekre a feladatokra.
+- **Gyors használatbavétel a sablonok révén** – Hogy megkönnyítsük a program használatának első lépéseit, összeállítottunk egy [sablongalériát][sablonok], amelynek alapján számos gyakran előforduló megoldás is rendkívül gyorsan megalkotható. A speciális B2B-megoldásoktól az egyszerű SaaS-kapcsolatokig és néhány olyanig, amely csak kedvtelésből készült – a katalógus a leggyorsabb módja a Logic Apps képességei megismerésének.
 
-- **Gyors használatbavétel a sablonok révén** – Hogy megkönnyítsük a program használatának első lépéseit, összeállítottunk egy [sablongalériát][sablonok], amelynek alapján számos gyakran előforduló megoldás is rendkívül gyorsan megalkotható. Legyen szó akár BizTalk-megoldásokról, akár egyszerű SaaS-kapcsolatokról vagy akár a szórakozásról – a galéria segítségével tökéletes képet kaphat a Logic Apps hatékonyságáról.
+- **Beépített bővíthetőség** – Nem találja a szükséges összekötőt? A Logic Appst arra tervezték, hogy együttműködjön a saját API-kkal és programkóddal. Egyszerűen létrehozhatja és használhatja saját API-alkalmazását egyéni összekötőként, vagy meghívhatja egy [Azure-függvényben](https://functions.azure.com) a kódtöredékek igény szerinti végrehajtásához. 
 
-- **Beépített bővíthetőség** – Nem találja az API-t, amit keres? A Logic Apps szolgáltatást úgy terveztük meg, hogy együttműködjön az API-alkalmazásokkal. Bárki könnyedén elkészítheti saját API-alkalmazását, amely egyéni API-ként használatba vehető. Hozza létre saját privát alkalmazását, vagy ossza meg és keressen pénzt művével a piactéren.
-
-- **Komoly integrációs teljesítmény** – Kezdje könnyedén, és növekedjen az igényekkel együtt. A Logic Apps a BizTalk, a Microsoft piacvezető integrációs megoldásának erejével eszközöket ad az integrációs szakemberek kezébe, amelyekkel könnyedén kialakíthatják a saját igényeiknek leginkább megfelelő megoldásokat. További információk a [Logic Apps által biztosított BizTalk-funkciókról][biztalk].
+- **Komoly integrációs teljesítmény** – Kezdje könnyedén, és növekedjen az igényekkel együtt. A Logic Apps a BizTalk, a Microsoft piacvezető integrációs megoldásának erejével eszközöket ad az integrációs szakemberek kezébe, amelyekkel könnyedén kialakíthatják a saját igényeiknek leginkább megfelelő megoldásokat. További információk az [Enterprise Integration Packről](./app-service-logic-enterprise-integration-overview.md).
 
 ## A logikai alkalmazások alapjai
 
 Az alábbiakban a Logic Apps használatának kulcsfontosságú elemeit emeljük ki. 
 
 - **Munkafolyamat** – A Logic Apps grafikus felületén lépések sorozataként vagy munkafolyamatként modellezheti az üzleti folyamatokat.
-- **Felügyelt API-k** – A logikai alkalmazások adatokhoz és szolgáltatásokhoz való hozzáférést igényelnek. A felügyelt API-kat kifejezetten azért hoztuk létre, hogy segítséget nyújtsanak az adatokhoz való kapcsolódásban, és az azokkal való munkavégzésben. Tekintse meg, hogy milyen [felügyelt API-k érhetők el][felügyelt api-k].
-- **Eseményindítók** – Egyes felügyelt API-k akár eseményindítóként is képesek működni. Az eseményindítóknak az a szerepük, hogy egy adott esemény bekövetkezésekor (például e-mail érkezésekor vagy az Azure-tárfiókban bekövetkezett változáskor) a munkafolyamat új példányát indítsák el.
--  **Műveletek** – Az eseményindítót követő lépéseket műveleteknek nevezzük. A műveletek általában összekapcsolódnak egy, a felügyelt vagy egyéni API-alkalmazásokban elvégzett tevékenységgel.
-- **BizTalk** – Az összetettebb integrációs feladatokhoz a Logic Apps BizTalk-funkciókat tesz elérhetővé. A BizTalk a Microsoft piacvezető integrációs platformja. A BizTalk API-alkalmazások segítségével könnyedén vehet fel érvényesítést, átalakítást, szabályokat vagy más fontos műveletet a logikai alkalmazás munkafolyamatába. További információk: [a BizTalk API-alkalmazások bemutatása][biztalk].
+- **Felügyelt összekötők** – A logikai alkalmazásoknak hozzá kell férniük az adatokhoz és a szolgáltatásokhoz. A felügyelt összekötők azzal a céllal jöttek létre, hogy segítséget nyújtsanak, amikor az adataihoz csatlakozik vagy azokkal dolgozik. A jelenleg elérhető összekötők listája a [felügyelt összekötők][managedapis] alatt található meg.
+- **Eseményindítók** – Néhány felügyelt összekötő betöltheti az eseményindító szerepét is. Az eseményindítóknak az a szerepük, hogy egy adott esemény bekövetkezésekor (például e-mail érkezésekor vagy az Azure-tárfiókban bekövetkezett változáskor) a munkafolyamat új példányát indítsák el.
+-  **Műveletek** – Az eseményindítót követő lépéseket műveleteknek nevezzük. Minden művelet általában egy másik művelethez vezet a felügyelt összekötőn vagy egyéni API-alkalmazásokban.
+- **Enterprise Integration Pack** – A további speciális integrálási forgatókönyvek mmegvalósításaérdekében a Logic Apps BizTalk-képességeket is tartalmaz. A BizTalk a Microsoft piacvezető integrációs platformja. Az Enterprise Integration Pack-összekötők lehetővé teszik, hogy egyszerűen belefoglaljon érvényesítést, átalakítást és még több lehetőséget a Logic App-munkafolyamatokba.
 
 ## Első lépések  
 
- - Az első lépések megismeréséhez olvassa el a [Logikai alkalmazás létrehozása][létrehozás] című oktatóanyagot.  
- - [Gyakori példák és forgatókönyvek megtekintése](app-service-logic-examples-and-scenarios.md)
- - [Üzleti folyamatok automatizálása a Logic Apps segítségével](http://channel9.msdn.com/Events/Build/2016/T694) 
- - [A Logic Apps segítségével történő rendszerintegráció módjainak megismerése](http://channel9.msdn.com/Events/Build/2016/P462)
-- További információk az Azure App Service platformról: [Azure App Service][appservice].
+- Az első lépések megismeréséhez olvassa el a [Logikai alkalmazás létrehozása][létrehozás] című oktatóanyagot.  
+- [Gyakori példák és forgatókönyvek megtekintése](app-service-logic-examples-and-scenarios.md)
+- [Üzleti folyamatok automatizálása a Logic Apps segítségével](http://channel9.msdn.com/Events/Build/2016/T694) 
+- [A Logic Apps segítségével történő rendszerintegráció módjainak megismerése](http://channel9.msdn.com/Events/Build/2016/P462)
 
-[biztalk]: app-service-logic-what-are-biztalk-api-apps.md
+[biztalk]: app-service-logic-enterprise-integration-accounts.md
 [appservice]: ../app-service/app-service-value-prop-what-is.md
 [létrehozás]: app-service-logic-create-a-logic-app.md
-[felügyelt api-k]: ../connectors/apis-list.md
-[tpm]: app-service-logic-create-a-trading-partner-agreement.md
-[szabályok]: app-service-logic-use-biztalk-rules.md
+[managedapis]: ../connectors/apis-list.md
+[tpm]: app-service-logic-enterprise-integration-accounts.md
+[xml]: app-service-logic-enterprise-integration-b2b.md
 [sablonok]: app-service-logic-use-logic-app-templates.md
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

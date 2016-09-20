@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felülettel
@@ -165,6 +165,6 @@ A feladat befejezése után az alábbi parancsmagok segítségével listázhatja
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

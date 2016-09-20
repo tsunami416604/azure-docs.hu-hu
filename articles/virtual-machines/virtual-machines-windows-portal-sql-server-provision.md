@@ -13,7 +13,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="vm-windows-sql-server"
     ms.workload="infrastructure-services"
-    ms.date="05/24/2016"
+    ms.date="06/21/2016"
     ms.author="jroth" />
 
 # SQL Server rendszerű virtuális gép létrehozása az Azure portálon
@@ -35,17 +35,17 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 ## SQL virtuálisgép-rendszerkép kiválasztása a katalógusból
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) a saját fiókjával.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a saját fiókjával.
 
     >[AZURE.NOTE] Ha nem rendelkezik Azure-fiókkal, az [Azure ingyenes próbát](https://azure.microsoft.com/pricing/free-trial/) biztosít.
 
-1. Az Azure portálon kattintson az **Új** elemre. A portál megnyitja az **Új** panelt. Az SQL Server virtuálisgép-erőforrások a Piactér **Virtual Machines** csoportjában találhatók.
+1. Az Azure Portalon kattintson az **Új** elemre. A portál megnyitja az **Új** panelt. Az SQL Server virtuálisgép-erőforrások a Piactér **Virtuális gépek** csoportjában találhatók.
 
-1. Az **Új** panelen kattintson a **Virtual Machines** elemre.
+1. Az **Új** panelen kattintson a **Virtuális gépek** elemre.
 
-1. Az összes elérhető rendszerkép megtekintéséhez kattintson az **Összes megjelenítése** lehetőségre a **Virtual Machines** panelen.
+1. Az összes elérhető rendszerkép megtekintéséhez kattintson az **Összes megjelenítése** lehetőségre a **Virtuális gépek** panelen.
 
-    ![Az Azure Virtual Machines panelje](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade.png)
+    ![Az Azure Virtuális gépek panelje](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade.png)
 
 1. Az **Adatbázis-kiszolgálók** részen kattintson az **SQL Server** elemre. Lehetséges, hogy le kell görgetnie az **Adatbázis-kiszolgálók** megtalálásához. Tekintse át az elérhető SQL Server-sablonokat.
 
@@ -53,7 +53,9 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 1. Minden sablon egy SQL Server-verziót és egy operációs rendszert azonosít. Válasszon egyet a lista rendszerképei közül. Ezután tekintse át a részleteket tartalmazó panelt, amelyen a virtuálisgép-rendszerkép leírása található.
 
-1. Ellenőrizze, hogy a **Telepítési modell kiválasztása** alatt az **Erőforrás-kezelő** van-e kiválasztva, majd kattintson a **Létrehozás** parancsra.
+    >[AZURE.NOTE] Az SQL virtuális gépek rendszerképeinek percalapú díjszabása tartalmazza az SQL-kiszolgáló licencelési költségeit. Van egy másik lehetőség is: a saját licenc használata (BYOL), amely esetben csak a virtuális gépért kell fizetni. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. További információk erről a lehetőségről: [Az SQL Server használatának első lépései az Azure Virtual Machines szolgáltatásban](virtual-machines-windows-sql-server-iaas-overview.md).
+
+1. Ellenőrizze, hogy a **Telepítési modell kiválasztása** alatt a **Resource Manager** van-e kiválasztva. Az új virtuális gépek esetén az ajánlott üzemi modell a Resource Manager. Kattintson a **Létrehozás** gombra.
 
     ![SQL virtuális gép létrehozása a Resource Manager használatával](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
@@ -66,7 +68,7 @@ Az SQL Server rendszerű virtuális gépek konfigurálásra öt panel szolgál.
 | **Méret**                | [A virtuális gép méretének kiválasztása](#2-choose-virtual-machine-size)   |
 | **Beállítások**            | [Választható funkciók konfigurálása](#3-configure-optional-features)   |
 | **SQL Server beállításai** | [Az SQL Server beállításainak konfigurálása](#4-configure-sql-server-settings) |
-| **Összegzés**             | [Összegzés áttekintése](#5-review-the-summary)            |
+| **Összefoglalás**             | [Összegzés áttekintése](#5-review-the-summary)            |
 
 ## 1. Az alapvető beállítások konfigurálása
 Az **Alapvető beállítások** panelen adja meg a következő információkat:
@@ -100,7 +102,7 @@ A **Beállítások** panelen konfigurálhatja az Azure-tárolót, a hálózatot 
 
 - A **Tárolás** alatt a **Lemez típusa** értékeként adja meg a Standard vagy a Prémium (SSD) lehetőséget. A termelési számítási feladatokhoz a Prémium szintű Storage ajánlott.
 
->[AZURE.NOTE] Ha a Prémium (SSD) lehetőséget választja egy olyan méretű géphez, amely nem támogatja a Premium Storage tárolást, akkor a gép méretét a szolgáltatás automatikus módosítja.  
+>[AZURE.NOTE] Ha a Prémium (SSD) lehetőséget választja egy olyan méretű géphez, amely nem támogatja a Prémium szintű Storage tárolást, akkor a gép méretét a szolgáltatás automatikus módosítja.  
 
 - A **Tárfiók** alatt elfogadhatja az automatikusan megadott tárfióknevet. A **Tárfiók** elemre kattintva választhat egy meglévő fiókot is, és konfigurálhatja a tárfiók típusát. Alapértelmezés szerint az Azure egy új fiókot hoz létre helyileg redundáns tárolással. További információ a tárolási lehetőségekről: [Azure Storage replication](../storage/storage-redundancy.md) (Az Azure Storage replikációja).
 
@@ -118,7 +120,7 @@ Az **SQL Server beállításai** panelen konfigurálhatja az SQL Server adott be
 | Beállítás               |
 |---------------------|
 | [Kapcsolatok](#connectivity)              |
-| [Hitelesítés](#authentication)                |
+| [Authentication](#authentication)                |
 | [Tároló konfigurálása](#storage-configuration)            |
 | [Automatikus javítás](#automated-patching) |
 | [Automatikus biztonsági mentés](#automated-backup)             |
@@ -159,7 +161,7 @@ Kattintson a **Tároló konfigurációja** elemre a tárolási követelmények m
 
 ![SQL-tároló konfigurálása](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-storage.png)
 
->[AZURE.NOTE] Ha a standard szintű tárolót választotta, ez a beállítás nem érhető el. Az automatikus tárolóoptimalizálás csak a Premium Storage esetében érhető el.
+>[AZURE.NOTE] Ha a standard szintű tárolót választotta, ez a beállítás nem érhető el. Az automatikus tárolóoptimalizálás csak a prémium szintű Storage esetében érhető el.
 
 Megadhat különböző követelményeket, például a kimeneti/bemeneti műveletek másodpercenkénti számát (IOPS), a MB/másodpercben megadott átviteli sebességet, illetve a tárterület teljes méretét. Ezeket az értékeket a csúszkákkal állíthatja be. A portál ezen követelmények alapján automatikusan kiszámítja a lemezek számát.
 
@@ -176,7 +178,7 @@ Az **Automatikus javítás** alapértelmezés szerint engedélyezve van. Az auto
 
 ![SQL automatikus javítás](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png)
 
-További információk: [Automated Patching for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-patching.md) (Az SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban).
+További információk: [Automated Patching for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-patching.md) (Az SQL Server automatikus javítása Azure virtuális gépeken).
 
 ### Automatikus biztonsági mentés
 Az **Automatikus biztonsági mentés** területen engedélyezheti az összes adatbázis automatikus mentését. Az automatikus biztonsági mentés alapértelmezés szerint le van tiltva.
@@ -191,7 +193,7 @@ A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre.
 
 ![SQL automatikus biztonsági mentés](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
 
- További információk: [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-backup.md) (Az SQL Server automatikus biztonsági mentése az Azure Virtual Machines szolgáltatásban).
+ További információk: [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-backup.md) (Az SQL Server automatikus biztonsági mentése Azure virtuális gépeken).
 
 ### Azure Key Vault-integráció
 Ha biztonsági titkokat az Azure-ban szeretne titkosítva tárolni, kattintson az **Azure key vault integration** (Azure Key Vault-integráció) elemre, majd az **Enable** (Engedélyezés) elemre.
@@ -246,13 +248,15 @@ A következő szakaszok bemutatják, hogyan csatlakozhat a virtuális gépén ta
 
 > [AZURE.INCLUDE [Connect to SQL Server in a VM Resource Manager](../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## További lépések
-További információ az SQL Server használatáról az Azure-ban: [SQL Server on Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md) (SQL Server az Azure Virtual Machines szolgáltatásban) és [Frequently Asked Questions](virtual-machines-windows-sql-server-iaas-faq.md) (Gyakran ismételt kérdések).
+## Következő lépések
+További információ az SQL Server használatáról az Azure-ban: [SQL Server on Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md) (SQL Server az Azure virtuális gépeken) és [Frequently Asked Questions](virtual-machines-windows-sql-server-iaas-faq.md) (Gyakran ismételt kérdések).
 
-Áttekintő videó az SQL Server Azure Virtual Machines szolgáltatásban való használatáról: [Azure VM is the best platform for SQL Server 2016](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016) (Az Azure VM a legjobb platform az SQL Server 2016-kiszolgálókhoz).
+Áttekintő videó az SQL Server Azure virtuális gépeken való használatáról: [Azure VM is the best platform for SQL Server 2016](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016) (Az Azure VM a legjobb platform az SQL Server 2016-kiszolgálókhoz).
+
+Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/).
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

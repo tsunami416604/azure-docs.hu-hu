@@ -1,7 +1,7 @@
 <properties
     pageTitle="Apache Storm-oktatóanyag: Megismerkedés a Linux-alapú Storm on HDInsight alkalmazással | Microsoft Azure"
     description="Ismerkedjen meg a big data elemzésre szolgáló Apache Storm alkalmazással, valamint a Linux-alapú HDInsight Storm Starter-mintáival. Ismerkedjen meg a Storm valós idejű adatfeldolgozásra történő használatával."
-    keywords="apache storm,apache storm tutorial,big data analytics,storm starter"
+    keywords="apache storm,apache storm-oktatóanyag,big data-elemzés,storm starter"
     services="hdinsight"
     documentationCenter=""
     authors="Blackmist"
@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/31/2016"
+   ms.date="08/16/2016"
    ms.author="larryfr"/>
 
 
@@ -40,13 +40,13 @@ Ennek az Apache Storm-oktatóanyagnak a sikeres befejezéséhez az alábbiakra v
 
 ## Storm-fürt létrehozása
 
-Ebben a szakaszban 3.2-es verziójú (0.9.3-as Storm-verziójú) HDInsight-fürtöt hoz létre egy Azure ARM-sablon használatával. Információk a HDInsight-verziókról és azok SLA-iról: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md). Egyéb fürtlétrehozási módszerek: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
+Ebben a szakaszban 3.2-es verziójú (0.9.3-as Storm-verziójú) HDInsight-fürtöt hoz létre egy Azure Resource Manager-sablon használatával. Információk a HDInsight-verziókról és azok SLA-iról: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md). Egyéb fürtlétrehozási módszerek: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
 
-1. Az alábbi képre kattintva megnyithat egy ARM-sablont az Azure portálon.         
+1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon.         
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-storm-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Az ARM-sablon a következő nyilvános blobtárolóban található: *https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json*. 
+    A sablon a következő nyilvános blobtárolóban található: *https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json*. 
    
 2. A Parameters (Paraméterek) panelen adja meg a következőket:
 
@@ -93,9 +93,9 @@ A [storm-starter](https://github.com/apache/storm/tree/master/examples/storm-sta
 
 2. Használja az alábbi parancsot példatopológia indításához:
 
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.9.3.2.2.4.9-1.jar storm.starter.WordCountTopology wordcount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.10.0.2.4.2.4-5.jar storm.starter.WordCountTopology wordcount
         
-    > [AZURE.NOTE] A HDInsight a Storm újabb verzióival történő frissítésekor lehetséges, hogy a fájlnév `0.9.3.2.2.4.9-1` része megváltozik.
+    > [AZURE.NOTE] A HDInsight a Storm újabb verzióival történő frissítésekor lehetséges, hogy a fájlnév `0.10.0.2.4.2.4-5` része megváltozik.
 
     Ekkor a fürtön a már ismert „wordcount” néven elindul a WordCount-példatopológia. Ez véletlenszerűen állít elő mondatokat, majd az egyes szavak előfordulását számolja meg a mondatokban.
 
@@ -193,6 +193,6 @@ Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topo
 [preview-portal]: https://portal.azure.com/
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

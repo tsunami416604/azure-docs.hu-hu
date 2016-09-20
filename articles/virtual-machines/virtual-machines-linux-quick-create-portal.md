@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Linux virtuális gép létrehozása az Azure portál használatával | Microsoft Azure"
-    description="Létrehozhat Linux virtuális gépet az Azure portál használatával."
+    pageTitle="Linux virtuális gép létrehozása az Azure Portal használatával | Microsoft Azure"
+    description="Létrehozhat Linux virtuális gépet az Azure Portal használatával."
     services="virtual-machines-linux"
     documentationCenter=""
     authors="vlivech"
@@ -15,20 +15,22 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="04/29/2016"
+    ms.date="08/18/2016"
     ms.author="v-livech"
 />
 
 # Linux virtuális gép létrehozása az Azure-ban a portál használatával
 
-Ez a cikk bemutatja, hogyan használhatja az [Azure portált](https://portal.azure.com/) a Linux virtuális gépek gyors létrehozásához. Ehhez mindössze [egy Azure-fiókra](https://azure.microsoft.com/pricing/free-trial/) és [nyilvános és titkos SSH-kulcsfájlokra](virtual-machines-linux-mac-create-ssh-keys.md) van szükség.
+> [AZURE.NOTE] Ha van néhány perce, megoszthatja velünk a tapasztalatait egy [rövid felmérés](https://aka.ms/linuxdocsurvey) kitöltésével, amely segítséget nyújt számunkra az Azure Linux VM dokumentációjának továbbfejlesztésében. Minden válasz segít a minél teljesebb körű megoldások kialakításában.
+
+Ez a cikk bemutatja, hogyan használhatja az [Azure Portalt](https://portal.azure.com/) a Linux virtuális gépek gyors létrehozásához. Ehhez mindössze [egy Azure-fiókra](https://azure.microsoft.com/pricing/free-trial/) és [nyilvános és titkos SSH-kulcsfájlokra](virtual-machines-linux-mac-create-ssh-keys.md) van szükség.
 
 
-1. Miután bejelentkezett az Azure portálra az Azure-fiókjának hitelesítő adataival, kattintson a bal felső sarokban található **+ Új** elemre:
+1. Miután bejelentkezett az Azure Portalra Azure-fiókjának hitelesítő adataival, kattintson a bal felső sarokban található **+ Új** elemre:
 
     ![képernyő1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
 
-2. Kattintson a **Virtual Machines** elemre a **Piactér** területen, majd válassza az **Ubuntu Server 14.04 LTS** elemet a **Kiemelt alkalmazások** rendszerképlistájában.  Ellenőrizze a lap alján, hogy a telepítési modell `Resource Manager` legyen, majd kattintson a **Létrehozás** parancsra.
+2. Kattintson a **Virtuális gépek** elemre a **Piactér** területen, majd válassza az **Ubuntu Server 14.04 LTS** elemet a **Kiemelt alkalmazások** rendszerképlistájában.  Ellenőrizze a lap alján, hogy a telepítési modell `Resource Manager` legyen, majd kattintson a **Létrehozás** parancsra.
 
     ![képernyő2](../media/virtual-machines-linux-quick-create-portal/screen2.png)
 
@@ -36,8 +38,8 @@ Ez a cikk bemutatja, hogyan használhatja az [Azure portált](https://portal.azu
     - a virtuális gép nevét,
     - a rendszergazdai felhasználó felhasználónevét,
     - a Hitelesítési típus beállítását **Nyilvános SSH-kulcs** értékűként,
-    - a nyilvános SSH-kulcsot karakterláncként (alapértelmezés szerint a `~/.ssh/` könyvtárból),
-    - erőforráscsoport nevét (új üzembe helyezési csoport létrehozásához), vagy válasszon egy meglévő csoportot,
+    - a nyilvános SSH-kulcsot karakterláncként (a `~/.ssh/` könyvtárból),
+    - az erőforráscsoport nevét, vagy válasszon egy meglévő csoportot,
 
     majd kattintson az **OK** gombra a folytatáshoz, és válassza ki a virtuális gép méretét, az alábbiakhoz hasonlóan:
 
@@ -69,7 +71,7 @@ Ez a cikk bemutatja, hogyan használhatja az [Azure portált](https://portal.azu
 ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 ```
 
-## További lépések
+## Következő lépések
 
 Gyorsan létrehozott egy Linux virtuális gépet tesztelési és bemutatási célokra. Az infrastruktúrának megfelelően beállított Linux virtuális gép létrehozásához kattintson az alábbi cikkek valamelyikére.
 
@@ -77,10 +79,8 @@ Gyorsan létrehozott egy Linux virtuális gépet tesztelési és bemutatási cé
 - [SSH-védelemmel rendelkező Linux virtuális gép létrehozása az Azure-ban sablonok használatával](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 - [Linux virtuális gép létrehozása az Azure parancssori felülettel](virtual-machines-linux-create-cli-complete.md)
 
-Ezek a cikkek segítséget nyújtanak az Azure-infrastruktúrák, valamint tetszőleges számú jogvédett vagy nyílt forráskódú infrastruktúra üzembe helyezési, konfigurálási és vezénylési létrehozásához.
 
 
-
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

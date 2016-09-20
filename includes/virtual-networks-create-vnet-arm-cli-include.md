@@ -11,7 +11,7 @@ Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat b
 
         info:    New mode is arm
 
-3. Szükség esetén az **azure group create** futtatásával hozzon létre egy új erőforráscsoportot, a lent látható módon. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/virtual-network/resource-group-overview.md/#resource-groups) (Az Azure Resource Manager áttekintése).
+3. Szükség esetén az **azure group create** futtatásával hozzon létre egy új erőforráscsoportot, a lent látható módon. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/virtual-network/resource-group-overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
 
         azure group create -n TestRG -l centralus
 
@@ -108,6 +108,6 @@ Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat b
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

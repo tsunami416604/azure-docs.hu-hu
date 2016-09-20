@@ -2,10 +2,10 @@
     pageTitle="Azure Multi-Factor Authentication-kiszolgáló – első lépések" 
     description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA-kiszolgáló használatát." 
     services="multi-factor-authentication"
-    keywords="authentication server, azure multi factor authentication app activation page, authentication server download" 
+    keywords="hitelesítési kiszolgáló, azure multi factor authentication alkalmazásaktiválási oldal, hitelesítési kiszolgáló letöltése" 
     documentationCenter="" 
     authors="billmath" 
-    manager="stevenpo" 
+    manager="femila" 
     editor="curtand"/>
 
 <tags 
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="05/12/2016" 
+    ms.date="08/15/2016" 
     ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication-kiszolgáló – első lépések
@@ -192,6 +192,6 @@ Módszer|Leírás
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

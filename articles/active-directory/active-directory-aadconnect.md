@@ -1,7 +1,7 @@
 <properties
     pageTitle="Azure AD Connect: Helyszíni identitások integrálása az Azure Active Directoryval | Microsoft Azure"
     description="Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz."
-    keywords="introduction to Azure AD Connect, Azure AD Connect overview, what is Azure AD Connect, install active directory"
+    keywords="az Azure AD Connect bemutatása, az Azure AD Connect áttekintése, mi az Azure AD Connect, az Active Directory telepítése"
     services="active-directory"
     documentationCenter=""
     authors="andkjell"
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/19/2016"
+    ms.date="07/14/2016"
     ms.author="andkjell;billmath"/>
 
 # Helyszíni identitások integrálása az Azure Active Directoryval
@@ -139,6 +139,7 @@ Ha az ADFS-kiszolgáló még nem lett konfigurálva az Azure AD-tanúsítványok
 
 Témakör |  
 --------- | ---------
+Minden AD FS-cikk | [Azure AD Connect és összevonás](active-directory-aadconnectfed-whatis.md)
 Az ADFS konfigurálása altartományokkal | [Többtartományos támogatás az Azure AD összevonási szolgáltatásához](active-directory-aadconnect-multiple-domains.md)
 AD FS-farm kezelése | [Az AD FS kezelése és testreszabása az Azure AD Connect segítségével](active-directory-aadconnect-federation-management.md)
 Összevonási tanúsítványok manuális frissítése | [Az Office 365 és az Azure AD összevonási tanúsítványainak megújítása](active-directory-aadconnect-o365-certs.md)
@@ -164,6 +165,6 @@ Az Ignite 2015 bemutatója a helyszíni címtárak felhőbe történő kiterjesz
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/25/2016"
+    ms.date="08/24/2016"
     ms.author="sdanie"/>
 
 # Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
@@ -129,7 +129,6 @@ Vegye figyelembe, hogy a **sampleheader** értéke a válaszban most már **valu
 
 ## <a name="next-steps"> </a>Következő lépések
 
--   Tekintse meg a [Bevezetés az API-k speciális konfigurálásába][] oktatóanyag többi témakörét.
 -   További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][] [Gyorsítótárazási házirendek][] szakaszában talál.
 -   További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 
@@ -151,7 +150,6 @@ Vegye figyelembe, hogy a **sampleheader** értéke a válaszban most már **valu
 [API-k hozzáadása termékekhez]: api-management-howto-add-products.md#add-apis
 [Termék közzététele]: api-management-howto-add-products.md#publish-product
 [Ismerkedés az Azure API Management szolgáltatással]: api-management-get-started.md
-[Bevezetés az API-k speciális konfigurálásába]: api-management-get-started-advanced.md
 
 [API Management házirend-referencia]: https://msdn.microsoft.com/library/azure/dn894081.aspx
 [Gyorsítótárazási házirendek]: https://msdn.microsoft.com/library/azure/dn894086.aspx
@@ -165,6 +163,6 @@ Vegye figyelembe, hogy a **sampleheader** értéke a válaszban most már **valu
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

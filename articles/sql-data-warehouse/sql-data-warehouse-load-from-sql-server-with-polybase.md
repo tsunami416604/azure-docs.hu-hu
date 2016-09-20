@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/10/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
@@ -72,7 +72,7 @@ Minta szöveges fájl előkészítése:
 
 A Blob-szolgáltatásvégpont megkeresése:
 
-1. Az Azure portálon válassza a **Tallózás** > **Storage-fiókok** lehetőséget.
+1. Az Azure Portalon válassza a **Tallózás** > **Storage-fiókok** lehetőséget.
 2. Kattintson a használni kívánt tárfiókra.
 3. A Storage-fiók panelen kattintson a Blobok elemre
 
@@ -86,7 +86,7 @@ A Blob-szolgáltatásvégpont megkeresése:
 
 Az Azure Storage-kulcs megkeresése:
 
-1. Az Azure portálon válassza a **Tallózás** > **Storage-fiókok** lehetőséget.
+1. Az Azure Portalon válassza a **Tallózás** > **Storage-fiókok** lehetőséget.
 2. Kattintson a használni kívánt tárfiókra.
 3. Válassza az **Összes beállítás** > **Hívóbetűk** lehetőséget.
 4. Kattintson a másolás mezőre az egyik hívóbetű vágólapra másolásához.
@@ -109,7 +109,7 @@ Adatok másolása az Azure Blob Storage-ba:
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-Lásd még [az AzCopy parancssori segédprogram használatát ismertető][] részt.
+Lásd még: [Bevezetés az AzCopy parancssori segédprogram használatába][az AzCopy legújabb verzióját].
 
 ### E. A Blob Storage-tároló áttekintése
 
@@ -249,20 +249,17 @@ CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 További tudnivalók: [Statisztika][].  
 
 
-## További lépések
+## Következő lépések
 A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban][] találhat további információt.
 
 <!--Image references-->
 
 
 <!--Article references-->
-[PolyBase az SQL Data Warehouse-ban – oktatóanyag]: sql-data-warehouse-get-started-load-with-polybase.md
-[Adatok betöltése bcp-vel]: sql-data-warehouse-load-with-bcp.md
-[megoldási partnerek]: sql-data-warehouse-solution-partners.md
-[fejlesztői áttekintés]: sql-data-warehouse-overview-develop.md
-[Statisztika]: sql-data-warehouse-develop-statistics.md
-[PolyBase-útmutatóban]: sql-data-warehouse-load-polybase-guide.md
-[az AzCopy parancssori segédprogram használatát ismertető]: ../storage/storage-use-azcopy.md
+[PolyBase az SQL Data Warehouse-ban – oktatóanyag]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[Adatok betöltése bcp-vel]: ./sql-data-warehouse-load-with-bcp.md
+[Statisztika]: ./sql-data-warehouse-tables-statistics.md
+[PolyBase-útmutatóban]: ./sql-data-warehouse-load-polybase-guide.md
 [az AzCopy legújabb verzióját]: ../storage/storage-use-azcopy.md
 
 <!--External references-->
@@ -289,6 +286,6 @@ A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban]
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

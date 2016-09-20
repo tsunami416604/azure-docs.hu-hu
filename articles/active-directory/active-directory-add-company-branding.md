@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="markusvi"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/16/2016" 
+    ms.date="07/13/2016"
     ms.author="MarkVi"/>
 
 # Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon
@@ -46,9 +46,7 @@ Nem bérlőspecifikus URL-címmel (például https://mail.office365.com) elláto
 
 > [AZURE.NOTE]
 >
-
 - A tartománynévnek aktív állapottal kell szerepelnie a klasszikus Azure portál **Active Directory** > **Címtár** > **Tartományok** szakaszában, ahol a vállalati arculatot konfigurálta.
-
 - A bejelentkezési oldal vállalati arculata a Microsoft ügyfél-bejelentkezési oldalán nem jelenik meg. Ha személyes Microsoft-fiókkal jelentkezik be, láthatja a felhasználói csempék vállalati arculattal ellátott és Azure AD által renderelt listáját, vállalatának arculata azonban a Microsoft-fiók bejelentkezési oldalán nem jelenik meg.
 
 
@@ -107,7 +105,7 @@ Az oldalon szereplő összes elem honosítható. A testreszabási összetevők �
 
 ## A hozzáférési panel oldalának testreszabása
 
-A hozzáférési panel alapvetően a portál egy olyan oldala, ahonnan olyan felhőalkalmazásokhoz lehet gyorsan hozzáférni, amelyekhez a rendszergazda jogosultságot adott. Ezen az oldalon az alkalmazások kattintható alkalmazáscsempékként jelennek meg. 
+A hozzáférési panel alapvetően a portál egy olyan oldala, ahonnan olyan felhőalkalmazásokhoz lehet gyorsan hozzáférni, amelyekhez a rendszergazda jogosultságot adott. Ezen az oldalon az alkalmazások kattintható alkalmazáscsempékként jelennek meg.
 
 
 Az alábbi képernyőfelvétel a hozzáférési panel oldalát mutatja be a testreszabást követően.
@@ -118,14 +116,14 @@ Az alábbi képernyőfelvétel a hozzáférési panel oldalát mutatja be a test
 
 A klasszikus Azure portálon testreszabható elemek egy alapértelmezett készletét állíthatja be címtáranként. Az alapértelmezett verziók mentését követően a rendszergazda az egyes elemek különböző nyelvekhez/területi beállításokhoz honosított verzióit is hozzáadhatja a készlethez. A testre szabható elemek egyikének sem kötelező a használata.
 
-Ha például beállít egy alapértelmezett szalagcímemblémát, de nagy méretű ábrát nem, az embléma megjelenik a bejelentkezési oldal jobb felső sarkában. A megjelenő ábra azonban a webhely lapértelmezett ábrája lesz. 
+Ha például beállít egy alapértelmezett szalagcímemblémát, de nagy méretű ábrát nem, az embléma megjelenik a bejelentkezési oldal jobb felső sarkában. A megjelenő ábra azonban a webhely lapértelmezett ábrája lesz.
 
 Vegyük a következő konfigurációt:
 
-- A szalagcím alapértelmezett emblémája és a bejelentkezési oldal szövege angolul 
-- Nyelvspecifikus bejelentkezési oldal német nyelven 
+- A szalagcím alapértelmezett emblémája és a bejelentkezési oldal szövege angolul
+- Nyelvspecifikus bejelentkezési oldal német nyelven
 
-Ha az Ön választott nyelve a német, az oldal az alapértelmezett szalagcímemblémával, de német szöveggel jelenik meg. 
+Ha az Ön választott nyelve a német, az oldal az alapértelmezett szalagcímemblémával, de német szöveggel jelenik meg.
 
 Bár technikailag az Azure AD által támogatott valamennyi nyelvhez beállíthat különböző nyelvi készleteket, karbantartási és teljesítmény-felhasználási okokból nem javasoljuk túl sok változat fenntartását.
 
@@ -136,7 +134,7 @@ Bár technikailag az Azure AD által támogatott valamennyi nyelvhez beállítha
 3. A felső eszköztáron kattintson a **Konfigurálás** lehetőségre.
 4. Kattintson a **Customize Branding** (Márkajelzés testreszabása) lehetőségre.
 4. Módosítsa az elemeket, amelyeket testre szeretne szabni. A mezők egyike sem kötelező.
-5. Kattintson a **Mentés**gombra.
+5. Kattintson a **Save** (Mentés) gombra.
 
 A bejelentkezési oldal vállalati arculatán alkalmazott módosítások megjelenése akár egy órát is igénybe vehet.
 
@@ -166,7 +164,7 @@ A bejelentkezési oldal vállalati arculatán alkalmazott módosítások megjele
 
     c. Távolítsa el a szöveget az összes szövegmezőből.
 
-    d. Kattintson a **Next** (Tovább) gombra.
+    d. Kattintson a **Tovább** gombra.
 
     e. Távolítsa el a szöveget az összes szövegmezőből.
 
@@ -180,8 +178,8 @@ Javasoljuk, hogy mielőtt éles környezetben hajtana végre módosításokat, p
 
 **Annak ellenőrzése, hogy a rendszer életbe léptette-e a márkajelzési beállításokat:**
 
-1. Nyisson meg egy InPrivate vagy Incognito böngésző-munkamenetet. 
-2. Látogasson el a https://outlook.com/contoso.com címre, ahol a contoso.com helyére a testreszabott tartomány nevét írja be. 
+1. Nyisson meg egy InPrivate vagy Incognito böngésző-munkamenetet.
+2. Látogasson el a https://outlook.com/contoso.com címre, ahol a contoso.com helyére a testreszabott tartomány nevét írja be.
 
 Ez a contoso.onmicrosoft.com formátumú tartományok esetében is működik.
 
@@ -207,7 +205,7 @@ A bejelentkezési oldal ábrája | Az ábra a bejelentkezési oldalon a bejelent
 A bejelentkezési oldal háttérszíne | A bejelentkezési oldal háttérszíne a bejelentkezési űrlaptól balra található területen érvényesül. | Hexadecimális formátumú RGB-színnek kell lennie (például: #FFFFFF) | <p>Alacsony sávszélességű kapcsolat használatakor a nagy méretű ábrák helyén a háttérszín jelenhet meg.</p><p>Javasoljuk, hogy a szalagcím emblémájának elsődleges színét válassza háttérszínnek.</p>
 
 
-## További lépések
+## Következő lépések
 
 - [Bevezetés a Prémium szintű Azure Active Directory használatába](active-directory-get-started-premium.md)
 - [View your access and usage reports (A hozzáférési és használati jelentések megtekintése)](active-directory-view-access-usage-reports.md)
@@ -224,6 +222,6 @@ A bejelentkezési oldal háttérszíne | A bejelentkezési oldal háttérszíne 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -47,7 +47,7 @@ Most pedig lássuk, mennyire egyszerű hitelesítést hozzáadni az alkalmazásh
 5. Az **Azure Active Directory beállításai** panelen kattintson az **Expressz** lehetőségre, majd kattintson az **OK** gombra. Alapértelmezés szerint az új Azure AD alkalmazás az alapértelmezett címtárban jön létre.  
  ![Hitelesítés – expressz konfiguráció](./media/app-service-web-get-started/aad-login-express.png)
 
-6. Kattintson a **Mentés**gombra.  
+6. Kattintson a **Save** (Mentés) gombra.  
     ![Hitelesítés – konfiguráció mentése](./media/app-service-web-get-started/aad-login-save.png)
 
     A sikeres módosítást követően az értesítési csengő egy barátságos üzenet kíséretében zöld színre vált.
@@ -72,7 +72,7 @@ Az App Service „kulcsrakész” megoldást kínál néhány gyakori hitelesít
 
 ## Alkalmazás igény szerinti automatikus skálázása
 
-Most pedig skálázzuk automatikusan az alkalmazást, hogy az a felhasználói igények szerint automatikusan módosítsa a kapacitását (további információ [Scale pricing tier in Azure App Service](app-service-scale) (Tarifacsomag skálázása az Azure App Service-ben) és [Scale instance count manually or automatically](../azure-portal/insights-how-to-scale.md) (Példányszám manuális vagy automatikus skálázása)). 
+Most pedig skálázzuk automatikusan az alkalmazást, hogy az a felhasználói igények szerint automatikusan módosítsa a kapacitását (további információ: [Scale up your app in Azure](web-sites-scale.md) (Alkalmazás vertikális felskálázása az Azure-ban) és [Scale instance count manually or automatically](../azure-portal/insights-how-to-scale.md) (Példányszám manuális vagy automatikus skálázása)). 
 
 Röviden: a webalkalmazás két módon skálázható:
 
@@ -112,7 +112,7 @@ Talán észrevette, hogy a **Skálázás beállításai** panelen sokkal több l
 - Ütemezett automatikus skálázás
 - Automatikus skálázási viselkedés beállítása jövőbeli eseményekhez
 
-Az alkalmazás vertikális felskálázásával kapcsolatos további információ: [Scale pricing tier in Azure App Service](../app-service/app-service-scale.md) (Tarifacsomag skálázása az Azure App Service-ben). A horizontális felskálázással kapcsolatos további információ: [Scale instance count manually or automatically](../azure-portal/insights-how-to-scale.md) (Példányszám manuális vagy automatikus skálázása).
+Az alkalmazás vertikális felskálázásával kapcsolatban a [Scale up your app in Azure](../app-service-web/web-sites-scale.md) (Alkalmazás vertikális felskálázása az Azure-ban) című témakörben tekinthet meg további információt. A horizontális felskálázással kapcsolatos további információ: [Scale instance count manually or automatically](../azure-portal/insights-how-to-scale.md) (Példányszám manuális vagy automatikus skálázása).
 
 ## Az alkalmazással kapcsolatos riasztások fogadása
 
@@ -139,7 +139,7 @@ Látni fogja, hogy az **Előfizetés rendszergazdái** már **tulajdonosai** az 
 
 > [AZURE.NOTE] A riasztási szabályok az Azure szolgáltatásai. További információ: [Receive alert notifications](../azure-portal/insights-receive-alert-notifications.md) (Riasztások fogadása). 
 
-## További lépések
+## Következő lépések
 
 A riasztás konfigurálása során talán már észrevette az **Eszközök** panelen lévő eszközök széles skáláját. Segítségükkel hibákat háríthat el, figyelemmel kísérheti a teljesítményt, sebezhetőségeket kereshet, erőforrásokat kezelhet, interakcióba léphet a virtuális gép konzoljával, valamint hasznos bővítményeket adhat hozzá. Az ajánljuk, hogy az egyes eszközökre kattintva fedezze fel a kezében lévő egyszerű, mégis hatékony eszközöket. 
 
@@ -147,7 +147,7 @@ Tudjon meg többet arról, hogyan tehet még többet az üzembe helyezett alkalm
 
 - [Buy and configure a custom domain name](custom-dns-web-site-buydomains-web-app.md) (Egyedi tartománynév vásárlása és konfigurálása) – Vásároljon vonzó tartományt webalkalmazása számára a *.azurewebsites.net tartomány helyett. Esetleg használja már meglévő tartományai valamelyikét.
 - [Set up staging environments](web-sites-staged-publishing.md) (Átmeneti környezetek beállítása) – Mielőtt hozzálátna az éles használathoz, az alkalmazását egy átmeneti URL-re helyezheti üzembe. Magabiztosan frissítheti élő webalkalmazását. Összetett, több telepítési ponttal rendelkező DevOps-megoldásokat állíthat be. 
-- [Set up continuous deployment](web-sites-publish-source-control.md) (Folyamatos üzembe helyezés beállítása) – Az alkalmazástelepítést a verziókövetési rendszerbe integrálhatja. Minden egyes véglegesítés után üzembe helyezheti az alkalmazását az Azure-ban.
+- [Folyamatos üzembe helyezés beállítása](app-service-continuous-deployment.md) – Az alkalmazástelepítést a verziókövetési rendszerbe integrálhatja. Minden egyes véglegesítés után üzembe helyezheti az alkalmazását az Azure-ban.
 - [Access on-premises resources](web-sites-hybrid-connection-get-started.md) (Helyszíni erőforrások elérése) – Meglévő, helyszíni adatbázisokhoz vagy CRM-rendszerekhez férhet hozzá.
 - [Back up your app](web-sites-backup.md) (Az alkalmazás biztonsági mentése) – Biztonsági mentést készíthet webalkalmazásáról és visszaállíthatja azt. Készüljön fel a váratlan meghibásodásokra és hárítsa el azokat.
 - [Enable diagnostic logs](web-sites-enable-diagnostic-log.md) (Diagnosztikai naplók engedélyezése) – Tekintse át az Azure IIS-naplóit vagy az alkalmazáskövetéseket. Streamben, letöltve vagy az[Application Insights-ba](../application-insights/app-insights-overview.md) portolva is olvashatja őket a teljes körű elemzés érdekében.
@@ -157,6 +157,6 @@ Tudjon meg többet arról, hogyan tehet még többet az üzembe helyezett alkalm
 - [Ismerje meg az App Service működését](../app-service/app-service-how-works-readme.md) 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

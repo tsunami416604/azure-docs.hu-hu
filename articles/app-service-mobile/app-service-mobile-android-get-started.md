@@ -3,7 +3,7 @@
     description="Az útmutató bevezeti Önt az Azure-alapú mobil-háttéralkalmazások használatával megvalósítható, Android rendszerben történő fejlesztésbe."
     services="app-service\mobile"
     documentationCenter="android"
-    authors="ysxu"
+    authors="RickSaling"
     manager="erikre"
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="mobile-android"
     ms.devlang="java"
     ms.topic="hero-article"
-    ms.date="05/03/2016"
-    ms.author="yuaxu;ricksal"/>
+    ms.date="08/17/2016"
+    ms.author="ricksal"/>
 
 #Android-alkalmazás létrehozása
 
@@ -32,7 +32,6 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * [Android Developer Tools](https://developer.android.com/sdk/index.html): ez a csomag tartalmazza az androidos integrált fejlesztőkörnyezetet, valamint a legújabb Android-platformot.
 * Azure Mobile Android SDK, amelyre a rendszer automatikusan hivatkozik a letöltött bevezető gyorssablonos projekt letöltésekor.
-* Számítógép, amelyen fut a [Visual Studio Community 2013] vagy újabb verzió&mdash;Node.js-háttéralkalmazáshoz nem szükséges.
 * [Aktív Azure-fiók](https://azure.microsoft.com/pricing/free-trial/).
 
 ## Új Azure Mobile Apps-háttéralkalmazás létrehozása
@@ -51,11 +50,11 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

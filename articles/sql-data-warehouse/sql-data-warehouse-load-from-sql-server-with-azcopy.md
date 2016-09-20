@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/08/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
@@ -56,7 +56,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
->[AZURE.NOTE] További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblatervezés][] vagy [CREATE TABLE szintaxis][].
+>[AZURE.NOTE] További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][] vagy [CREATE TABLE szintaxis][].
 
 ### 2. lépés: Forrásadatfájlok létrehozása
 
@@ -152,7 +152,7 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 
 >[AZURE.NOTE] Az elosztott rendszerek jellemzői miatt előfordulhat, hogy az adatok sorrendje nem egyforma a különböző SQL Data Warehouse-adatbázisokban. Másik lehetőségként használhatja a bcp **queryout** függvényét, amellyel a teljes táblázat helyett egy lekérdezéssel kinyert tartalom írható.
 
-## További lépések
+## Következő lépések
 A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][].
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][].
 
@@ -160,10 +160,10 @@ További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][].
 
 <!--Article references-->
 
-[Adatok betöltése az SQL Data Warehouse-ba]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse fejlesztői áttekintés]: sql-data-warehouse-overview-develop.md
-[Táblatervezés]: sql-data-warehouse-develop-table-design.md
-[Statisztika]: sql-data-warehouse-develop-statistics.md
+[Adatok betöltése az SQL Data Warehouse-ba]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse fejlesztői áttekintés]: ./sql-data-warehouse-overview-develop.md
+[Táblák áttekintése]: ./sql-data-warehouse-tables-overview.md
+[Statisztika]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
@@ -174,6 +174,6 @@ További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][].
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

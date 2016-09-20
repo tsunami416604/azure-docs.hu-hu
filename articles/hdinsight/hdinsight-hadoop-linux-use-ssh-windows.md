@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/25/2016"
+   ms.date="08/30/2016"
    ms.author="larryfr"/>
 
 #Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Windows rendszerben
@@ -26,6 +26,8 @@
 A [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) lehetővé teszi, hogy egy parancssori felülettel távolról hajtson végre műveleteket a Linux-alapú HDInsight-fürtökön. Ez a dokumentum arra vonatkozó információkat tartalmaz, hogyan csatlakozhat Windows-alapú ügyfelekről a HDInsight-hoz a PuTTY SSH-ügyfél segítségével.
 
 > [AZURE.NOTE] A cikkben ismertetett eljárásokhoz Windows-alapú ügyfelet kell használnia. Ha Linux-, Unix- vagy OS X-ügyfelet használ, tekintse meg [Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben](hdinsight-hadoop-linux-use-ssh-unix.md) című témakört.
+>
+> Ha Windows 10-et és a [Windowson futó Ubuntu Bash-környezetét](https://msdn.microsoft.com/commandline/wsl/about), kövesse a [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md) (Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben) című dokumentumban ismertetett lépéseket.
 
 ##Előfeltételek
 
@@ -95,9 +97,9 @@ Egy Linux-alapú HDInsight-fürt létrehozásakor meg kell adnia az előzőleg l
 
 Mindkét módszerhez a nyilvános kulcs megadása szükséges. A Linux-alapú HDInsight-fürtök létrehozására vonatkozó teljes körű információkat a [Provision Linux-based HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú HDInsight-fürtök kiépítése) című témakör tartalmazza.
 
-###Azure-portál
+###Azure Portal
 
-Amikor az [Azure portál][preview-portal] segítségével hoz létre egy Linux-alapú HDInsight-fürtöt, meg kell adnia egy **SSH Username** (SSH felhasználónév) megadása szükséges, valamint választania kell egy **PASSWORD** (JELSZÓ) vagy egy **SSH PUBLIC KEY** (SSH NYILVÁNOS KULCS) megadása között.
+Amikor az [Azure Portal][preview-portal] segítségével hoz létre egy Linux-alapú HDInsight-fürtöt, meg kell adnia egy **SSH Username** (SSH felhasználónév) megadása szükséges, valamint választania kell egy **PASSWORD** (JELSZÓ) vagy egy **SSH PUBLIC KEY** (SSH NYILVÁNOS KULCS) megadása között.
 
 Ha az **SSH PUBLIC KEY** (SSH NYILVÁNOS KULCS) megadását választja, a nyilvános kulcsot (amely a PuTTYGen __Public key for pasting into OpenSSH authorized\_keys file__ (OpenSSH authorized_keys fájlba másolandó nyilvános kulcs) mezőjében jelenik meg) bemásolhatja az __SSH PublicKey__ (SSH nyilvános kulcs) mezőbe, vagy a __Select a file__ (Fájl kijelölése) lehetőséggel megkeresheti és kiválaszthatja a nyilvános kulcsot tartalmazó fájlt.
 
@@ -237,6 +239,6 @@ Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

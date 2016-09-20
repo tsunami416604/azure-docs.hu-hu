@@ -13,14 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései az Azure portállal
 
 [AZURE.INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure portált Azure Data Lake Analytics-fiókok létrehozásához, Data Lake Analytics-feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-fiókokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure Portalt Azure Data Lake Analytics-fiókok létrehozásához, Data Lake Analytics-feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-fiókokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
 Az oktatóanyag során elkészít egy feladatot, amely beolvas egy tabulátorral elválasztott értékeket (TSV) tartalmazó fájlt, és azt vesszővel elválasztott értékeket (CSV) tartalmazó fájllá konvertálja. Ha ugyanezt az oktatóanyagot más támogatott eszközök használatával szeretné elvégezni, kattintson a szakasz tetején található fülekre. Ha az első feladatot sikeresen befejezte, elkezdhet összetettebb adatátalakításokat írni a U-SQL-lel.
 
@@ -52,7 +52,7 @@ Minden Data Lake Analytics-fiók egy [Azure Data Lake Store]()-fióktól függ. 
     - **Erőforráscsoport**. Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat. Az Azure Resource Manager (ARM) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat csoportként használja. További információk: [Azure Resource Manager overview](resource-group-overview.md) (Az Azure Resource Manager áttekintése). 
     - **Hely**. Válasszon egy Azure-adatközpontot az Azure Data Lake Analytics-fiókhoz. 
 7. Válassza **A kezdőpulton rögzít** lehetőséget. Ez szükséges az oktatóanyag lépéseinek követéséhez.
-8. Kattintson a ** Create** (Létrehozás) gombra. Ezzel továbblép a kezdőpult portálra. A kezdőpulton megjelenik egy új csempe „Az Azure Data Lake Analytics telepítése” címkével. A Data Lake Analytics-fiók létrehozása igénybe vehet pár másodpercet. Ha a fiók kész, a portál egy új panelen nyitja meg a fiókot.
+8. Kattintson a **Létrehozás** gombra. Ezzel továbblép a kezdőpult portálra. A kezdőpulton megjelenik egy új csempe „Az Azure Data Lake Analytics telepítése” címkével. A Data Lake Analytics-fiók létrehozása igénybe vehet pár másodpercet. Ha a fiók kész, a portál egy új panelen nyitja meg a fiókot.
 
     ![Azure Data Lake Analytics portál panel](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-blade.png)
 
@@ -67,7 +67,7 @@ Az Azure portál felhasználói felületet biztosít bizonyos mintaadatfájlok a
 
 **Mintaadatfájlok másolása**
 
-1. Az Azure portálon kattintson a bal felső sarokban található **Microsoft Azure** elemre.
+1. Az Azure Portalon kattintson a bal felső sarokban található **Microsoft Azure** elemre.
 2. Kattintson a Data Lake Analytics-fiókja nevével ellátott csempére.  Ezt a rendszer a fiók létrehozásakor tűzi ki.
 Ha a fiók nem látható ezen a felületen, a fiók megnyitásához tekintse meg a [Data Lake Analytics-fiók megnyitása a portálról](data-lake-analytics-manage-use-portal.md#access-adla-account) című szakaszt..
 3. Bontsa ki az **Alapvető erőforrások** panelt, majd kattintson a **Mintafeladatok kezelése** lehetőségre. Ekkor megnyílik egy másik, **Mintafeladatok** nevű panel.
@@ -155,9 +155,9 @@ Miután előkészítette a forrásadatokat, nekiláthat a U-SQL-parancsfájl elk
 - Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md) (Az Azure Data Lake Analytics kezelése az Azure portállal).
 - A Data Lake Analytics áttekintése: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 - Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
+- A diagnosztikai információk naplózása: [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Az Azure Data Lake Analytics diagnosztikai naplóinak elérése).
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

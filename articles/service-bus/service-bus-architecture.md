@@ -1,23 +1,23 @@
 <properties 
     pageTitle="Service Bus-architektúra | Microsoft Azure"
-    description="A cikk ismerteti az Azure Service Bus üzenetfeldolgozási architektúráját."
+    description="A cikk ismerteti az Azure Service Bus üzenet- és továbbításfeldolgozási architektúráját."
     services="service-bus"
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
-    editor="tysonn" />
+    editor="" />
 <tags 
     ms.service="service-bus"
     ms.devlang="na"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="04/19/2016"
+    ms.date="07/11/2016"
     ms.author="sethm" />
 
 # Service Bus-architektúra
 
-Ez a cikk ismerteti az Azure Service Bus üzenetfeldolgozási architektúrát.
+Ez a cikk ismerteti az Azure Service Bus üzenet- és továbbításfeldolgozási architektúráját.
 
 ## A Service Bus skálázási egységei
 
@@ -51,16 +51,16 @@ Ha a továbbítási kapcsolat létrejött, az ügyfelek üzeneteket válthatnak 
 
 ![Bejövő továbbítási kérelmek feldolgozása](./media/service-bus-architecture/IC690645.png)
 
-## További lépések
+## Következő lépések
 
-Most, hogy elolvasta a Service Bus működésének áttekintését, a kezdéshez látogasson el a következő hivatkozásokra:
+Most, hogy elolvasta a Service Bus architektúrájának áttekintését, a kezdéshez kövesse a alábbi hivatkozásokat:
 
-- [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
+- [Service Bus messaging overview (A Service Bus üzenetkezelésének áttekintése)](service-bus-messaging-overview.md)
 - [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 - [Üzenetsor-kezelési megoldás a Service Bus által kezelt üzenetsorokkal](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

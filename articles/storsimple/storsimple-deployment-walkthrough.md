@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/26/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # A helyszíni StorSimple eszköz üzembe helyezése
@@ -288,7 +288,7 @@ Ha szeretne egy azonnali manuális mentést létrehozni a StorSimple eszköze eg
 [AZURE.INCLUDE [Create a manual backup](../../includes/storsimple-create-manual-backup.md)]
 
 
-## További lépések
+## Következő lépések
 
 - [Virtuális eszköz](storsimple-virtual-device-u2.md) konfigurálása.
 
@@ -296,6 +296,6 @@ Ha szeretne egy azonnali manuális mentést létrehozni a StorSimple eszköze eg
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

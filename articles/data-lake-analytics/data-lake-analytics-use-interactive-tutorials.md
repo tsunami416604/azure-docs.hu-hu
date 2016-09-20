@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="A Data Lake Analytics és a U-SQL megismerése az Azure portál interaktív oktatóanyagaival | Azure" 
+   pageTitle="A Data Lake Analytics és a U-SQL megismerése az Azure Portal interaktív oktatóanyagaival | Azure" 
    description="A Data Lake Analytics és a U-SQL megismerésének első lépései. " 
    services="data-lake-analytics" 
    documentationCenter="" 
@@ -13,13 +13,13 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="02/11/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 
 # Az Azure Data Lake Analytics interaktív oktatóanyagainak használata
 
-Az Azure portál egy interaktív oktatóanyaggal segíti a Data Lake Analytics megismerését. Ez a cikk azt ismerteti, hogyan haladhat végig a webhelynaplók elemzését bemutató oktatóanyagon.
+Az Azure Portal egy interaktív oktatóanyaggal segíti a Data Lake Analytics megismerését. Ez a cikk azt ismerteti, hogyan haladhat végig a webhelynaplók elemzését bemutató oktatóanyagon.
 
 
 >[AZURE.NOTE] Ha a Visual Studio használatával szeretné elvégezni ugyanezeket az oktatóanyagokat, tekintse meg a [Analyze website logs using Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelynaplók elemzése a Data Lake Analytics használatával) című cikket.
@@ -37,7 +37,7 @@ Egyéb oktatóanyagok:
 
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-- **Egy Data Lake Analytics-fiók**.  Lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure portállal](data-lake-analytics-get-started-portal.md).
+- **Egy Data Lake Analytics-fiók**.  Lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md).
 
 ##Data Lake Analytics-fiók létrehozása 
 
@@ -47,7 +47,7 @@ Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/
 
 **Data Lake Analytics-fiók létrehozása**
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/signin/index/?Microsoft_Azure_Kona=true&Microsoft_Azure_DataLake=true&hubsExtension_ItemHideKey=AzureDataLake_BigStorage%2cAzureKona_BigCompute).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index/?Microsoft_Azure_Kona=true&Microsoft_Azure_DataLake=true&hubsExtension_ItemHideKey=AzureDataLake_BigStorage%2cAzureKona_BigCompute).
 2. A kezdőpult megnyitásához kattintson a bal felső sarokban található **Microsoft Azure** elemre.
 3. Kattintson a **Piactér** csempére.  
 3. A **Minden erőforrás** panelen írja be a keresőmezőbe az **Azure Data Lake Analytics** kifejezést, és nyomja le az **ENTER** gombot. A listában megjelenik az **Azure Data Lake Analytics** elem.
@@ -63,7 +63,7 @@ Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/
     - **Erőforráscsoport**. Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat. Az alkalmazások általában számos összetevőből állnak, például webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból, tárolóból és külső szolgáltatásokból. Az Azure Resource Manager (ARM) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat egy Azure-erőforráscsoportként nevezett csoportként használja. Az alkalmazás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti, figyelheti vagy törölheti. A telepítéshez egy sablont használ, amely különböző, például tesztelési, átmeneti és üzemi környezetekben is képes működni. Tisztázhatja a szervezete számlázását a teljes csoport összegzett költségeinek megtekintésével. További információk: [Azure Resource Manager overview](resource-group-overview.md) (Az Azure Resource Manager áttekintése). 
     - **Hely**. Válasszon egy Azure-adatközpontot az Azure Data Lake Analytics-fiókhoz. 
 7. Válassza **A kezdőpulton rögzít** lehetőséget. Ez szükséges az oktatóanyag lépéseinek követéséhez.
-8. Kattintson a ** Create** (Létrehozás) gombra. Ezzel továbblép a kezdőpult portálra. A kezdőpulton megjelenik egy új csempe „Az Azure Data Lake Analytics telepítése” címkével. A Data Lake Analytics-fiók létrehozása igénybe vehet pár másodpercet. Ha a fiók kész, a portál megnyitja a fiókot egy új panelen.
+8. Kattintson a **Létrehozás** gombra. Ezzel továbblép a kezdőpult portálra. A kezdőpulton megjelenik egy új csempe „Az Azure Data Lake Analytics telepítése” címkével. A Data Lake Analytics-fiók létrehozása igénybe vehet pár másodpercet. Ha a fiók kész, a portál megnyitja a fiókot egy új panelen.
 
     ![Azure Data Lake Analytics portál panel](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-blade.png)
 
@@ -91,6 +91,6 @@ Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

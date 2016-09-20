@@ -3,7 +3,7 @@
    description="Ez cikk az Azure Traffic Manager-profilok létrehozásában, letiltásában, engedélyezésében, törlésében, valamint előzményeinek megtekintésében segít."
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Az Azure Traffic Manager-profilok kezelése
 
@@ -86,6 +86,6 @@ A Traffic Manager-profil módosítási előzményeit a klasszikus Azure portál 
 [Hibaelhárítás a Traffic Manager „Csökkentett teljesítményű” állapota esetén](traffic-manager-troubleshooting-degraded.md)
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/31/2016"
+    ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
 # Az Azure Search-index lekérdezése a REST API használatával
@@ -161,6 +161,6 @@ További segítségért tekintse meg a [Dokumentumok keresése](https://msdn.mic
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

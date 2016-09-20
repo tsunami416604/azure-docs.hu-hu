@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel
 
 [AZURE.INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure PowerShellt Azure Data Lake Analytics-fiókok létrehozásához, Data Lake Analytics-feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-fiókokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure PowerShellt Azure Data Lake Analytics-fiókok létrehozásához, Data Lake Analytics-feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok elküldéséhez Data Lake Analytics-fiókokba. További információk a Data Lake Analyticsről: [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md).
 
 Az oktatóanyag során elkészít egy feladatot, amely beolvas egy tabulátorral elválasztott értékeket (TSV) tartalmazó fájlt, és azt vesszővel elválasztott értékeket (CSV) tartalmazó fájllá konvertálja. Ha ugyanezt az oktatóanyagot más támogatott eszközök használatával szeretné elvégezni, kattintson a szakasz tetején található fülekre.
 
@@ -127,7 +127,7 @@ Az alábbi PowerShell-parancsfájl bemutatja, hogyan kérheti le a Data Lake Ana
     $dataLakeAnalyticsName = "<DataLakeAnalyticsAccountName>"
     $dataLakeStoreName = (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticName).Properties.DefaultDataLakeAccount
 
->[AZURE.NOTE] Az Azure portál felhasználói felületet biztosít a mintaadatfájlok alapértelmezett Data Lake Store-fiókba való másolásához. Útmutatásért lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure portállal](data-lake-analytics-get-started-portal.md#upload-data-to-the-default-data-lake-store-account).
+>[AZURE.NOTE] Az Azure Portal felhasználói felületet biztosít a mintaadatfájlok alapértelmezett Data Lake Store-fiókba való másolásához. Útmutatásért lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md#upload-data-to-the-default-data-lake-store-account).
 
 A Data Lake Analytics az Azure Blob Storage-hoz is rendelkezik hozzáféréssel.  A fájlok az Azure Blob Storage-ba történő feltöltéséhez lásd: [Using Azure PowerShell with Azure Storage](../storage/storage-powershell-guide-full.md) (Az Azure PowerShell és az Azure Storage használata).
 
@@ -212,6 +212,6 @@ A feladat befejezése után az alábbi parancsmagok segítségével listázhatja
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

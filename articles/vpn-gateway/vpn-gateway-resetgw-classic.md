@@ -14,13 +14,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/26/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Azure VPN Gateway alaphelyzetbe állítása a PowerShell használatával | Microsoft Azure
 
 
-Ez a cikk útmutatást nyújt az Azure VPN Gateway PowerShell-parancsmagokkal való alaphelyzetbe állításához. Ez az útmutató a klasszikus üzemi modellre vonatkozik.  A Resource Manager-alapú üzemi modellel létrehozott virtuális hálózatok VPN Gateway átjáróinak alaphelyzetbe állításához jelenleg nem érhető el parancsmag vagy REST API. Ezek fejlesztése folyamatban van. Azt, hogy VPN Gateway átjárója a klasszikus üzemi modellel jött-e létre, a virtuális hálózat megtekintésével ellenőrizheti az Azure Portalon. A klasszikus üzemi modellel létrehozott virtuális hálózatok az Azure Portal Virtuális hálózat (klasszikus) részén jelennek meg.
+Ez a cikk útmutatást nyújt az Azure VPN Gateway PowerShell-parancsmagokkal való alaphelyzetbe állításához. Ez az útmutató a klasszikus üzemi modellre vonatkozik. A Resource Manager-alapú üzemi modellben létrehozott virtuális hálózati átjárókat jelenleg nem lehet alaphelyzetbe állítani.
 
 Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több S2S VPN-alagúton elveszíti a létesítmények közötti VPN-kapcsolatot. Ebben az esetben a helyszíni VPN-eszközei megfelelően működnek, de nem tudnak Ipsec-alagutakat létesíteni az Azure VPN Gateway átjárókkal. Amikor a *Reset-AzureVNetGateway* parancsmagot használja, az újraindítja az átjárót, majd újra alkalmazza arra a létesítmények közötti konfigurációkat. Az átjáró megtartja azt a nyilvános IP-címet, amellyel rendelkezik. Ez azt jelenti, hogy a VPN-útválasztó konfigurációját nem kell frissíteni új nyilvános IP-címmel az Azure VPN Gatewayhez.  
 
@@ -31,7 +31,7 @@ Az átjáró alaphelyzetbe állítása előtt ellenőrizze a következő elemeke
 
 - Az Azure VPN Gateway és a helyszíni VPN-átjáró internetes IP-címei (VIP-k) helyesen vannak konfigurálva az Azure és a helyszíni VPN-házirendekben.
 - Az előre megosztott kulcsnak meg kell egyeznie az Azure VPN Gateway átjáróban és a helyszíni VPN-átjáróban.
-- Ha adott IPsec/IKE-konfigurációt alkalmaz – például titkosítást, kivonatoló algoritmust, vagy sérülés utáni titkosságvédelmet (PFS) – ügyeljen arra, hogy az Azure VPN Gateway és a helyszíni VPN-átjárók ugyanezzel a konfigurációval rendelkeznek.
+- Ha adott IPsec/IKE-konfigurációt alkalmaz – például titkosítást, kivonatoló algoritmust vagy sérülés utáni titkosságvédelmet (PFS) – ügyeljen arra, hogy az Azure VPN Gateway és a helyszíni VPN-átjárók ugyanezzel a konfigurációval rendelkezzenek.
 
 
 ## VPN-átjáró alaphelyzetbe állítása a PowerShell használatával
@@ -50,7 +50,7 @@ A következő példa alaphelyzetbe állítja a „ContosoVNet” nevű virtuáli
         StatusCode     : OK
 
 
-Ha a kapcsolat nem áll vissza az első újraindítás után, adja ki ugyanezt a parancsot újra a második virtuálisgép-példány (az új aktív átjáró) újraindításához. Ha a két, újraindításra vonatkozó kérelem egymás után van kiadva, hosszabb szünet következhet be, amíg az aktív és a készenléti virtuálisgép-példány is újraindul. Ebben az esetben hosszabb szünet következik be a VPN-kapcsolatban – akár 2–4 perc – amíg a virtuális gépek újraindulnak.
+Ha a kapcsolat nem áll vissza az első újraindítás után, adja ki ugyanezt a parancsot újra a második virtuálisgép-példány (az új aktív átjáró) újraindításához. Ha a két, újraindításra vonatkozó kérelem egymás után van kiadva, hosszabb szünet következhet be, amíg az aktív és a készenléti virtuálisgép-példány is újraindul. Ebben az esetben hosszabb szünet következik be a VPN-kapcsolatban – akár 2–4 perc –, amíg a virtuális gépek újraindulnak.
 
 Ha a két újraindítás után a létesítmények közötti kapcsolati problémák továbbra is fennállnak, nyisson egy támogatási jegyet a klasszikus Azure portálról, amellyel felveheti a kapcsolatot a Microsoft Azure-támogatással.
 
@@ -66,6 +66,6 @@ A parancsmaggal kapcsolatos további információkat a [PowerShell-referenciába
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

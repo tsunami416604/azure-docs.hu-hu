@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article" 
-    ms.date="05/03/2016" 
+    ms.date="06/22/2016"
     ms.author="juliako"/>
 
 
@@ -609,7 +609,7 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
         }
 
 
-##A Media Services tanulási útvonalai
+##Media Services képzési tervek
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -628,6 +628,6 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

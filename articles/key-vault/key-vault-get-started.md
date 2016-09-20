@@ -13,11 +13,11 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="05/06/2016"
+    ms.date="07/15/2016"
     ms.author="cabailey"/>
 
 # Bevezetés az Azure Key Vault használatába #
-Az Azure Key Vault a legtöbb régióban elérhető. További információ: [Key Vault Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/) oldal.
+Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## Bevezetés  
 Ez az oktatóanyag segít megismerni az Azure Key Vault szolgáltatást, amellyel megerősített tárolókat (kulcstartókat) hozhat létre, valamint kriptográfiai kulcsokat és titkos kódokat tárolhat az Azure-ban. A cikk ismerteti az Azure-alkalmazásokkal kompatibilis kulcsokat vagy jelszavakat tartalmazó tárolók létrehozását az Azure PowerShellben. Ezután bemutatja, hogyan használhatják az adott kulcsot vagy jelszót az alkalmazásai.
@@ -61,7 +61,7 @@ Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fi�
 
     Login-AzureRmAccount 
 
-Vegye figyelembe, hogy az Azure bizonyos példányainak, például az Azure Governmentnek a használatakor az -Environment paramétert kell használni ehhez a parancshoz. Például: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
+Vegye figyelembe, hogy az Azure bizonyos példányainak, például az Azure Governmentnek a használatakor az -Environment paramétert kell használni ehhez a parancshoz. Példa: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
 
 Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Az Azure PowerShell beolvassa az összes olyan előfizetést, amely ehhez a fiókhoz van rendelve, és alapértelmezés szerint az elsőt használja.
 
@@ -234,7 +234,7 @@ Egyéb parancsok, amelyek hasznosak lehetnek az Azure Key Vault kezeléséhez:
 - `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Példa egy adott titkos kód eltávolítására.
 
 
-## <a id="next"></a>További lépések ##
+## <a id="next"></a>Következő lépések ##
 
 Az Azure Key Vault webalkalmazásban való használatáról a [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Az Azure Key Vault webalkalmazással való használata) című témakörben találhat további útmutatást.
 
@@ -247,6 +247,6 @@ Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-v
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

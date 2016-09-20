@@ -1,6 +1,6 @@
 ## Eseményközpont létrehozása
 
-1. Jelentkezzen be a [klasszikus Azure portálra][], és kattintson az **ÚJ** gombra a képernyő alján.
+1. Jelentkezzen be a [klasszikus Azure portálra][], és kattintson a **NEW** (ÚJ) lehetőségre a képernyő alján.
 
 2. Kattintson az **Alkalmazásszolgáltatások**, majd a **Service Bus**, az **Eseményközpont**, végül pedig a **Gyorslétrehozás** elemre.
 
@@ -25,7 +25,9 @@ Létrejött az Eseményközpont, és most már rendelkezik az események küldé
 [3]: ./media/event-hubs-create-event-hub/create-event-hub3.png
 [4]: ./media/event-hubs-create-event-hub/create-conn-str1.png
 
+[klasszikus Azure portálra]: https://manage.windowsazure.com/
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

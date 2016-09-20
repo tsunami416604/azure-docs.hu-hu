@@ -2,11 +2,11 @@
     pageTitle="Első lépések: Azure AD-jelszókezelés | Microsoft Azure"
     description="Lehetővé teheti, hogy a felhasználók visszaállíthassák a saját jelszavukat, megismerheti a jelszó-visszaállítás előfeltételeit, és lehetővé teheti a jelszavak visszaírását a helyszíni jelszavak kezeléséhez az Active Directoryban."
     services="active-directory"
-    keywords="Active directory password management, password management, reset Azure AD password"
+    keywords="Active Directory-jelszókezelés, jelszókezelés, Azure AD-jelszó alaphelyzetbe állítása"
     documentationCenter=""
     authors="asteen"
-    manager="kbrint"
-    editor="billmath"/>
+    manager="femila"
+    editor="curtand"/>
 
 <tags
     ms.service="active-directory"
@@ -14,10 +14,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="02/16/2016" 
+    ms.date="07/12/2016"
     ms.author="asteen"/>
 
 # A jelszókezelés első lépései
+
+> [AZURE.IMPORTANT] **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
+
 Csupán néhány egyszerű lépéssel lehetővé teheti, hogy a felhasználók kezelhessék a saját felhőalapú Azure Active Directory- vagy helyszíni Active Directory-jelszavaikat. Miután ellenőrizte, hogy megfelel-e néhány egyszerű előfeltételnek, a jelszómódosítás és -visszaállítás hamar engedélyezhetővé tehető a teljes szervezet számára. Ez a cikk a következő fogalmakat ismerteti:
 
 * [**Annak engedélyezése, hogy a felhasználók visszaállíthassák a felhőalapú Azure Active Directory-jelszavaikat**](#enable-users-to-reset-their-azure-ad-passwords)
@@ -195,7 +198,7 @@ Mielőtt engedélyezhetné és használhatná a Jelszóvisszaírót, eleget kell
 
 
 ### 1. lépés: Az Azure AD Connect legújabb verziójának letöltése
-A Jelszóvisszaíró az Azure AD Connectben vagy az **1.0.0419.0911**-es vagy újabb verziójú Azure AD Sync eszközben érhető el.  A Jelszóvisszaíró automatikus fiókzárolás-feloldással az Azure AD Connectben vagy az **1.0.0485.0222**-es vagy újabb verziójú Azure AD Sync eszközben érhető el. Ha régebbi verziót futtat, frissítsen legalább erre a verzióra a folytatás előtt. [Kattintson ide az Azure AD Connect legújabb verziójának letöltéséhez](active-directory-aadconnect.md#download-azure-ad-connect).
+A Jelszóvisszaíró az Azure AD Connectben vagy az **1.0.0419.0911**-es vagy újabb verziójú Azure AD Sync eszközben érhető el.  A Jelszóvisszaíró automatikus fiókzárolás-feloldással az Azure AD Connectben vagy az **1.0.0485.0222**-es vagy újabb verziójú Azure AD Sync eszközben érhető el. Ha régebbi verziót futtat, frissítsen legalább erre a verzióra a folytatás előtt. [Kattintson ide az Azure AD Connect legújabb verziójának letöltéséhez](active-directory-aadconnect.md#install-azure-ad-connect).
 
 #### Az Azure AD Sync verziójának ellenőrzése
 1.  Nyissa meg a **%ProgramFiles%\Azure Active Directory Sync\** könyvtárat.
@@ -312,7 +315,7 @@ Most, hogy engedélyezett a jelszóvisszaírás, tesztelheti a működését, ha
 ## A jelszóvisszaállítási dokumentáció hivatkozásai
 Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokumentációs oldal hivatkozását:
 
-* [**A saját jelszó visszaállítása**](active-directory-passwords-update-your-own-password.md) – megtudhatja, hogyan állíthatja vissza vagy módosíthatja a saját jelszavát a rendszer felhasználójaként
+* **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
 * [**Működés**](active-directory-passwords-how-it-works.md) – megismerheti a szolgáltatás hat különböző összetevőjét és azt, hogy ezek mire valók
 * [**Testreszabás**](active-directory-passwords-customize.md) – megtudhatja, hogyan szabhatja testre a szervezet által igényelt szolgáltatás kezelőfelületét és működését
 * [**Ajánlott eljárások**](active-directory-passwords-best-practices.md) – megtudhatja, hogyan helyezhet gyorsan üzembe és hogyan kezelhet hatékonyan jelszavakat a szervezetben
@@ -358,6 +361,6 @@ Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokument�
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

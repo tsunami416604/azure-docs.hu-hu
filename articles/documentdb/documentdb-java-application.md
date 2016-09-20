@@ -1,10 +1,10 @@
 <properties
     pageTitle="Oktatóanyag Java alapú alkalmazásfejlesztéshez DocumentDB használatával | Microsoft Azure"
     description="Ez a Java-webalkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure Websitesban tárolt Java-alkalmazás adatait az Azure DocumentDB szolgáltatás segítségével."
-    keywords="Application development, database tutorial, java application, java web application tutorial, documentdb, azure, Microsoft azure"
+    keywords="Alkalmazásfejlesztés, adatbázis-oktatóanyag, java-alkalmazás, java-webalkalmazás oktatóanyag, documentdb, azure, Microsoft Azure"
     services="documentdb"
     documentationCenter="java"
-    authors="aliuy"
+    authors="AndrewHoh"
     manager="jhubbard"
     editor="mimig"/>
 
@@ -14,8 +14,8 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-services"
-    ms.date="03/10/2016"
-    ms.author="andrl"/>
+    ms.date="08/24/2016"
+    ms.author="anhoh"/>
 
 # Java-webalkalmazás létrehozása a DocumentDB használatával
 
@@ -216,13 +216,9 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
                             DocumentCollection collectionDefinition = new DocumentCollection();
                             collectionDefinition.setId(COLLECTION_ID);
 
-                            // Configure the new collection performance tier to S1.
-                            RequestOptions requestOptions = new RequestOptions();
-                            requestOptions.setOfferType("S1");
-
                             collectionCache = documentClient.createCollection(
                                     getTodoDatabase().getSelfLink(),
-                                    collectionDefinition, requestOptions).getResource();
+                                    collectionDefinition, null).getResource();
                         } catch (DocumentClientException e) {
                             // TODO: Something has gone terribly wrong - the app wasn't
                             // able to query or create the collection.
@@ -786,6 +782,6 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 
