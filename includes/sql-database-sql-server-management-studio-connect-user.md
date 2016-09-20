@@ -22,7 +22,7 @@ Kövesse a következő lépéseket, hogy az SSMS használatával felhasználók�
 
      ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-user/connect-user-3.png)
 
-5. Kattintson a **Csatlakozás** gombra.
+5. Kattintson a **Connect** (Csatlakozás) gombra.
  
 6. Ha az ügyfél IP-címének nincs hozzáférése az SQL Database logikai kiszolgálóhoz, a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, és hozzon létre egy kiszolgálószintű tűzfalszabályt. Ha Ön Azure-előfizetési rendszergazda, kattintson a **Bejelentkezés** gombra a kiszolgálószintű tűzfalszabály létrehozásához. Ha nem az, kérjen meg egy rendszergazdát egy kiszolgálószintű vagy adatbázisszintű tűzfalszabály létrehozására ahhoz az adatbázishoz, amelyhez csatlakozni szeretne.
  
@@ -33,7 +33,7 @@ Kövesse a következő lépéseket, hogy az SSMS használatával felhasználók�
       ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-user/connect-user-5.png)
       
  
- ## Csatlakozási hibák elhárítása
+## Csatlakozási hibák elhárítása
 
 A csatlakozási hibák leggyakoribb okai a kiszolgáló nevében található hibák (ne feledje, a <*servername*> a logikai kiszolgáló neve, nem az adatbázisé), a helytelen felhasználónév vagy jelszó, valamint a biztonsági okok, melyek miatt a kiszolgáló nem engedélyez kapcsolatokat. 
 
@@ -41,6 +41,6 @@ A csatlakozási hibák leggyakoribb okai a kiszolgáló nevében található hib
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

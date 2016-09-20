@@ -13,42 +13,42 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/02/2016"
+   ms.date="09/01/2016"
    ms.author="mbaldwin"/>
 
 
 # Az Azure Active Directory fejlesztői útmutatója
 
 ## Áttekintés
-Mivel az Azure Active Directory egy identitáskezelést szolgáltatásként (IDMaaS) nyújtó platform, hatékony módot biztosít a fejlesztők számára, hogy az alkalmazásokba integrálhassák az identitáskezelést. A következő cikkek az Azure Active Directory implementálásának és fő szolgáltatásainak áttekintését nyújtják. Ajánlott ezeket sorrendben elolvasni, vagy ha készen áll, folytassa az [Első lépések](#getting-started) című szakasszal.
+Mivel az Azure Active Directory (AD) egy identitáskezelést szolgáltatásként nyújtó (IDMaaS) platform, hatékony módot biztosít a fejlesztők számára, hogy az alkalmazásokba integrálhassák az identitáskezelést. A következő cikkek az Azure AD implementálásának és fő jellemzőinek áttekintését nyújtják. Ajánlott ezeket sorrendben elolvasni, vagy ha készen áll, folytassa az [Első lépések](#getting-started) című szakasszal.
 
 
-1. [Az Azure Active Directory integrációjának előnyei:](active-directory-how-to-integrate.md) Megtudhatja, miért kínálja a legjobb megoldást az Azure Active Directory integrációja a biztonságos bejelentkezéshez és hitelesítéshez.
+1. [Az Azure AD integrációjának előnyei:](active-directory-how-to-integrate.md) Megtudhatja, miért kínálja a legjobb megoldást az Azure AD integrációja a biztonságos bejelentkezéshez és hitelesítéshez.
 
-1. [Az Active Directory hitelesítési forgatókönyvei:](active-directory-authentication-scenarios.md) Kihasználhatja az Azure Active Directory egyszerűsített hitelesítésének előnyeit az alkalmazásba történő bejelentkezéshez.
+1. [Az Azure AD hitelesítési forgatókönyvei:](active-directory-authentication-scenarios.md) Kihasználhatja az Azure AD egyszerűsített hitelesítésének előnyeit az alkalmazásba történő bejelentkezéshez.
 
-1. [Alkalmazások integrálása az Azure Active Directoryval:](active-directory-integrating-applications.md) Megtudhatja, hogyan adhat hozzá, frissíthet és távolíthat el alkalmazásokat az Azure Active Directoryból, és megismerheti az integrált alkalmazások arculati útmutatóját.
+1. [Alkalmazások integrálása az Azure AD-vel:](active-directory-integrating-applications.md) Megtudhatja, hogyan adhat hozzá, frissíthet és távolíthat el alkalmazásokat az Azure AD-ből, és megismerheti az integrált alkalmazások arculati útmutatóját.
 
-1. [Azure Active Directory Graph API:](active-directory-graph-api.md) Az Azure Active Directory Graph API-val programozott módon érheti el az Azure Active Directoryt REST API-végpontokon keresztül. Vegye figyelembe, hogy az Azure AD Graph API a [Microsoft Graph](https://graph.microsoft.io/) egyesített API-n keresztül is elérhető, amely lehetővé teszi több Microsoft-felhőszolgáltatás API-elérését egyetlen REST API-végponton keresztül, és egyetlen hozzáférési tokennel.
+1. [Azure AD Graph API:](active-directory-graph-api.md) Az Azure AD Graph API-val programozott módon érheti el az Azure AD-t REST API-végpontokon keresztül. Az Azure AD Graph API szintén elérhető a [Microsoft Graph](https://graph.microsoft.io/) használatával. A Microsoft Graph egy egységes API-t biztosít, amely lehetővé teszi több Microsoft-felhőszolgáltatás API-elérését egyetlen REST API-végponton keresztül, illetve egyetlen hozzáférési tokennel.
 
-1. [Az Azure Active Directory hitelesítési kódtárai:](active-directory-authentication-libraries.md) A .NET, JavaScript, Objective-C, Android és további Azure AD-hitelesítési kódtárakkal könnyedén hitelesítheti a felhasználókat a hozzáférési tokenek beszerzése érdekében.
+1. [Az Azure AD hitelesítési kódtárai:](active-directory-authentication-libraries.md) A .NET, JavaScript, Objective-C, Android és további Azure AD-hitelesítési kódtárakkal könnyedén hitelesítheti a felhasználókat a hozzáférési tokenek beszerzése érdekében.
 
 
-## Első lépések
+## Bevezetés
 
 Ezek az oktatóanyagok több platformot is lefednek, és segíthetnek, hogy minél gyorsabban elkezdje az Azure Active Directoryval folytatott fejlesztést. Előfeltételként [be kell szereznie egy Azure Active Directory-bérlőt](active-directory-howto-tenant.md).
 
 ### Mobil- és számítógépes alkalmazások első lépéseinek útmutatói
 
-|[![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md)|[![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md)|[![Windows Universal](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md)|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md)|[![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md)
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:
-|[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android.md)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Phone](active-directory-devquickstarts-windowsphone.md)|[Windows Áruház](active-directory-devquickstarts-windowsstore.md)|[Xamarin](active-directory-devquickstarts-xamarin.md)|[Cordova](active-directory-devquickstarts-cordova.md)
+|[![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md)|[![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md)|[![Windows Universal](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md)|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md)|[![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md)|[![OAuth 2.0](./media/active-directory-developers-guide/oauth-2.png)](active-directory-protocols-oauth-code.md)
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android.md)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Universal](active-directory-devquickstarts-windowsstore.md)|[Xamarin](active-directory-devquickstarts-xamarin.md)|[Cordova](active-directory-devquickstarts-cordova.md)|[Integráció közvetlenül OAuth 2.0-val](active-directory-protocols-oauth-code.md)|
 
 ### Webalkalmazások első lépéseinek útmutatói
 
-|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md)|[![Javascript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md)
-|:--:|:--:|:--:|:--:|
-|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Java](active-directory-devquickstarts-webapp-java.md)|[Javascript](active-directory-devquickstarts-angular.md)|[Node.js](active-directory-devquickstarts-openidconnect-nodejs.md)
+|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md)|[![AngularJS](./media/active-directory-developers-guide/angularjs.png)](active-directory-devquickstarts-angular.md)|[![Javascript](./media/active-directory-developers-guide/javascript.png)](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md) | [![OpenID Connect](./media/active-directory-developers-guide/openid-connect.png)](active-directory-protocols-openid-connect-code.md)
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Java](active-directory-devquickstarts-webapp-java.md)|[AngularJS](active-directory-devquickstarts-angular.md)|[Javascript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi)|[Node.js](active-directory-devquickstarts-openidconnect-nodejs.md)|[Integráció közvetlenül OpenID Connecttel](active-directory-protocols-openid-connect-code.md)|
 
 ### Webes API-k első lépéseinek útmutatói
 
@@ -66,12 +66,14 @@ Ezek az oktatóanyagok több platformot is lefednek, és segíthetnek, hogy min�
 
 Ezek a cikkek ismertetik, hogyan végezhet el bizonyos feladatokat az Azure Active Directoryval:
 
-- [Azure Active Directory-bérlő beszerzése](active-directory-howto-tenant.md)
-- [Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](active-directory-app-gallery-listing.md)
-- [Az Azure Active Directory alkalmazásjegyzékének megismerése](active-directory-application-manifest.md)
-- [Alkalmazás létrehozása Office 365 API-kkal](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
+- [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
+- [Azure AD-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával](active-directory-devhowto-multi-tenant-overview.md) 
+- Alkalmazások közötti SSO engedélyezése ADAL-kódtárral [Android](active-directory-sso-android.md) és [iOS](active-directory-sso-ios.md) rendszerű eszközökön
+- [Alkalmazás AppSource Certified minősítése Azure AD-hez](active-directory-devhowto-appsource-certified.md)
+- [Az alkalmazás szerepeltetése az Azure AD alkalmazáskatalógusában](active-directory-app-gallery-listing.md)
 - [Webalkalmazások beküldése az Office 365 Értékesítői információközpontjába](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
-- Megtudhatja, hogyan engedélyezheti az alkalmazások közötti SSO-t ADAL-kódtárral [Android](active-directory-sso-android.md) és [iOS](active-directory-sso-ios.md) rendszerű eszközökön
+- [Az Azure Active Directory alkalmazásjegyzékének megismerése](active-directory-application-manifest.md)
+- [Az ügyfélalkalmazásban található bejelentkezési és alkalmazásbeszerzési gombok arculati irányelveinek megismerése](active-directory-branding-guidelines.md)
 - [Előzetes verzió: Olyan alkalmazások fordítása, amelyekben a személyes és a munkahelyi vagy iskolai fiókokkal is bejelentkezhetnek a felhasználók](active-directory-appmodel-v2-overview.md)
 - [Előzetes verzió: Olyan alkalmazások fordítása, amelyekben a végfelhasználók regisztrálhatnak és bejelentkezhetnek](../active-directory-b2c/active-directory-b2c-overview.md)
 
@@ -82,6 +84,7 @@ Ezek a cikkek a REST és hitelesítési kódtár API-k, protokollok, hibák, kó
 
 ###  Támogatás
 - [Címkével ellátott kérdések:](http://stackoverflow.com/questions/tagged/azure-active-directory) Az [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) és [adal](http://stackoverflow.com/questions/tagged/adal) címkékkel ellátott Azure Active Directory-megoldások keresése a Stack Overflow oldalain.
+- Az alkalmazásfejlesztéshez és az integrációhoz gyakran használt fogalmak meghatározásához tekintse meg az [Azure AD fejlesztői szószedetét](active-directory-dev-glossary.md).
 
 ### Kód
 
@@ -97,17 +100,21 @@ Ezek a cikkek a REST és hitelesítési kódtár API-k, protokollok, hibák, kó
 
 - [Graph API-engedélyhatókörök:](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) Olyan OAuth 2.0-engedélyhatókörök, amelyekkel az alkalmazások hozzáférése vezérelhető a bérlőkben lévő címtáradatokhoz.
 
-### Hitelesítési protokollok
+### Hitelesítési és engedélyezési protokollok
 
-- [Az Azure Active Directory hitelesítési protokolljai:](active-directory-protocols.md) Megismerheti az Azure Active Directory által támogatott különböző hitelesítési és engedélyezési protokollokat.
+- [Aláírókulcs-váltás az Azure AD-ben:](active-directory-signing-key-rollover.md) További információ az Azure AD aláírókulcs-váltás gyakoriságáról és a leggyakoribb alkalmazás-forgatókönyvek kulcsának frissítéséről.
+
+- [OAuth 2.0 protokoll: Engedélyezési kódmegadásának használata:](active-directory-protocols-oauth-code.md) Az OAuth 2.0 protokoll engedélyezési kódmegadásával a webalkalmazásokhoz és a webes API-khoz engedélyezheti a hozzáférést az Azure Active Directory-bérlőben.
+
+- [OAuth 2.0 protokoll: Az implicit engedélyezés megismerése:](active-directory-dev-understanding-oauth2-implicit-grant.md) Tudjon meg többet az implicit engedélyezés megadásáról és arról, hogy ez a megfelelő-e az alkalmazásához.
+
+- [OAuth 2.0 protokoll: Szolgáltatások közötti hívások ügyfél-hitelesítő adatok használatával:](active-directory-protocols-oauth-service-to-service.md) Az OAuth 2.0 ügyfél-hitelesítő adatok engedélyezi a webszolgáltatás (bizalmas ügyfél) számára a saját hitelesítő adatainak használatát egy másik webszolgáltatás hívásakor, a felhasználó megszemélyesítése helyett. Ebben a forgatókönyvben az ügyfél általában egy köztes rétegű webszolgáltatás, démonszolgáltatás vagy webhely.
+
+- [OpenID Connect 1.0 protokoll: Bejelentkezés és hitelesítés:](active-directory-protocols-openid-connect-code.md) Az OpenID Connect 1.0 protokoll az OAuth 2.0 protokollt bővíti ki hitelesítési protokollként történő használat esetén. Az ügyfélalkalmazás fogadhat id_tokent a bejelentkezési folyamat kezeléséhez, vagy az engedélyezési kódfolyam bővítéséhez, hogy id_token és engedélyezési kód fogadása is lehetséges legyen.
 
 - [A SAML 2.0 protokoll referenciája:](active-directory-saml-protocol-reference.md) A SAML 2.0 protokoll lehetővé teszi, hogy az alkalmazások egyszeri bejelentkezéses működést biztosítsanak a felhasználóiknak.
 
-- [Az OAuth 2.0 protokoll referenciája:](active-directory-protocols-oauth-code.md) Az OAuth 2.0 protokollal a webalkalmazásokhoz és a webes API-khoz engedélyezheti a hozzáférést az Azure Active Directory-bérlőben.
-
-- [Az OpenID Connect 1.0 protokoll referenciája:](active-directory-protocols-openid-connect-code.md) Az OpenID Connect 1.0 protokoll az OAuth 2.0 protokollt bővíti ki hitelesítési protokollként történő használat esetén.
-
-- [WS-Federation 1.2 protokoll:](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) Az Azure Active Directory támogatja a WS-Federation 1.2 protokoll a Web Services Federation Version 1.2 specifikációnak megfelelő használatát.
+- [WS-Federation 1.2 protokoll:](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) Az Azure Active Directory támogatja a WS-Federation 1.2 protokoll a Web Services Federation Version 1.2 specifikációnak megfelelő használatát. További információk az összevonási metaadat-dokumentumokról: [Összevonási metaadatok](active-directory-federation-metadata.md).
 
 - [Támogatott token- és jogcímtípusok:](active-directory-token-and-claims.md) Ennek az útmutatónak a segítségével megismerheti és kiértékelheti a SAML 2.0 és a JSON Web Tokens (JWT) tokenek jogcímeit.
 
@@ -141,6 +148,6 @@ Az [Azure Friday](https://azure.microsoft.com/documentation/videos/azure-friday/
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

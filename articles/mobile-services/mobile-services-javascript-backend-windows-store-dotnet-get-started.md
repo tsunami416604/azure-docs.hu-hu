@@ -13,10 +13,10 @@
     ms.tgt_pltfrm="mobile-windows"
     ms.devlang="dotnet"
     ms.topic="get-started-article" 
-    ms.date="05/11/2016"
+    ms.date="07/21/2016"
     ms.author="glenga"/>
 
-# <a name="getting-started"> </a>A Mobile Services használatának első lépései
+# <a name="getting-started"> </a>A Mobile Services használatának első lépéseit
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 &nbsp;
@@ -77,7 +77,7 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
   Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
 
 * [Leküldéses értesítések hozzáadása az alkalmazáshoz][Bevezetés a leküldéses értesítések használatába]  
-  Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazásnak.
+  Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazás számára.
 
 * [A .NET ügyféloldali kódtár használata](mobile-services-dotnet-how-to-use-client-library.md)  
  Megtudhatja, hogyan kérdezheti le a mobilszolgáltatást, hogyan kezelheti az adatokat, és hogyan érheti el az egyedi API-kat.
@@ -104,6 +104,6 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
  
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

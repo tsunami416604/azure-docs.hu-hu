@@ -12,12 +12,12 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/02/2016"
+    ms.date="08/15/2016"
     ms.author="awills"/>
 
-# Application Insights: nyelvek, platformok és integrációk
+# Fejlesztői elemzések: nyelvek, platformok és integrációk
 
-Ezek azok a megvalósítások, amelyekről hallottunk, beleértve néhány harmadik fél által létrehozottat.
+Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósításai, amelyekről hallottunk, beleértve néhány harmadik fél által létrehozottat.
 
 ## Nyelvek
 
@@ -38,23 +38,22 @@ Ezek azok a megvalósítások, amelyekről hallottunk, beleértve néhány harma
 + [ASP.NET](app-insights-asp-net.md)
 + [ASP.NET – már élő alkalmazásokhoz](app-insights-monitor-performance-live-website-now.md)
 + [ASP.NET 5](app-insights-asp-net-five.md)
-+ [Android](https://github.com/Microsoft/ApplicationInsights-Android)
++ [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 + [Azure webalkalmazások és virtuális gépek](../azure-portal/insights-perf-analytics.md)
 + [Azure Cloud Services](app-insights-cloudservices.md)&#151;beleértve a webes és a feldolgozói szerepköröket
 + [Microsoft Dynamics CRM Online](app-insights-sample-mscrm.md)
 + [Docker](app-insights-docker.md)
 + [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
-+ [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
++ [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (HockeyApp)
 + [J2EE](app-insights-java-get-started.md)
 + [J2EE – már élő alkalmazásokhoz](app-insights-java-live.md)
 + [Node.JS](https://www.npmjs.com/package/applicationinsights)
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 + [Spring](http://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
 + [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
-+ [Windows Áruház C#|VB](app-insights-windows-get-started.md)
-+ [Windows Áruház C++](app-insights-windows-cpp.md)
++ [Windows Áruház C#|VB](app-insights-windows-get-started.md) (HockeyApp)
++ [Windows Áruház C++](app-insights-windows-cpp.md) (HockeyApp)
 + [Asztali Windows-alkalmazások, szolgáltatások és feldolgozói szerepkörök](app-insights-windows-desktop.md)
-+ [Xamarin](https://github.com/Microsoft/ApplicationInsights-Xamarin)
 + [Bármi más](#projects)
 
 
@@ -88,6 +87,6 @@ Ha még nem készült SDK az Ön nyelvéhez vagy platformjához, akár Ön is l�
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

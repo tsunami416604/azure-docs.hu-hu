@@ -12,7 +12,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="04/15/2016"
+    ms.date="08/16/2016"
     ms.author="sethm" />
 
 # Azure Event Hubs – áttekintés
@@ -21,9 +21,9 @@ Számos modern megoldás igyekszik alkalmazkodó ügyfélélményt biztosítani,
 
 ![Event Hubs](./media/event-hubs-overview/IC759856.png)
 
-Az Azure Event Hubs egy eseményfeldolgozási szolgáltatás, amely a felhőbe irányuló, nagy léptékű esemény- és telemetriabevitelt biztosít alacsony késéssel és nagy megbízhatósággal. A szolgáltatás más alárendelt szolgáltatásokkal együtt alkalmazva különösen hatékony az alkalmazások kialakításában, a felhasználói élmények vagy munkafolyamatok feldolgozásában, és az eszközök internetes hálózatát (IoT) érintő forgatókönyvekben. Az Event Hubs üzenetstream-kezelési képességet biztosít, és jóllehet az eseményközpontok az üzenetsorokhoz és témakörökhöz hasonló entitások, olyan tulajdonságokkal rendelkeznek, amelyek nagyon eltérőek a hagyományos vállalati üzenetkezeléstől. A vállalati üzenetkezelési forgatókönyvek általában számos kifinomult képességet igényelnek, mint az előkészítés, a kézbesítetlen levelek kezelése, a tranzakciók támogatása, valamint az erős kézbesítési biztosítékok, miközben a befelé irányuló események fő problémája a nagy mennyiség és a feldolgozási rugalmasság az eseménystreamek tekintetében. Az Event Hubs képességei ezért eltérnek a Service Bus-témaköröktől, mivel kimondottan a nagy mennyiségre és eseményfeldolgozási forgatókönyvekre vannak optimalizálva. Az Event Hubs így nem valósít meg bizonyos üzenetkezelési képességeket, amelyek a témakörök esetén elérhetők. Amennyiben szüksége van ezekre a képességekre, továbbra is a témakörök használata az optimális választás.
+Az Azure Event Hubs egy eseményfeldolgozási szolgáltatás, amely a felhőbe irányuló, nagy léptékű esemény- és telemetriabevitelt biztosít alacsony késéssel és nagy megbízhatósággal. A szolgáltatás más alárendelt szolgáltatásokkal együtt alkalmazva különösen hatékony az alkalmazások kialakításában, a felhasználói élmények vagy munkafolyamatok feldolgozásában, és az eszközök internetes hálózatát (IoT) érintő forgatókönyvekben. Az Event Hubs üzenetstream-kezelési képességet biztosít, és jóllehet az eseményközpontok az üzenetsorokhoz és témakörökhöz hasonló entitások, olyan tulajdonságokkal rendelkeznek, amelyek nagyon eltérőek a hagyományos vállalati üzenetkezeléstől. A vállalati üzenetkezelési forgatókönyvek általában számos kifinomult képességet igényelnek, mint például az előkészítés, a kézbesítetlen levelek kezelése, a tranzakciók támogatása és az erős kézbesítési biztosítékok, miközben a befelé irányuló események fő problémája az eseménystreamekre jellemző nagy mennyiség és a feldolgozáshoz szükséges rugalmasság. Az Event Hubs képességei ezért eltérnek a Service Bus-témaköröktől, mivel kimondottan a nagy mennyiségre és eseményfeldolgozási forgatókönyvekre vannak optimalizálva. Az Event Hubs így nem valósít meg bizonyos üzenetkezelési képességeket, amelyek a témakörök esetén elérhetők. Amennyiben szüksége van ezekre a képességekre, továbbra is a témakörök használata az optimális választás.
 
-Az eseményközpontok a névterek szintjén hozhatók létre a Service Busban, hasonlóan az üzenetsorokhoz és a témakörökhöz. Az Event Hubs AMQP-t és HTTP-t használ elsődleges API felületként. Az alábbi ábrán az Event Hubs és a Service Bus közötti kapcsolat látható.
+Az eseményközpontok az Event Hubsban névterek szintjén hozhatók létre, hasonlóan a Service Bus üzenetsoraihoz és témaköreihez. Az Event Hubs AMQP-t és HTTP-t használ elsődleges API felületként. Az alábbi ábrán az Event Hubs és a Service Bus közötti kapcsolat látható.
 
 ![Event Hubs](./media/event-hubs-overview/IC741188.png)
 
@@ -43,7 +43,7 @@ A partíciók az eseményközpont szintjén konfigurált megőrzési időtartami
 
 A partíciók száma az eseményközpont létrehozásakor határozható meg, és ez a szám 2 és 32 közé eshet (az alapértelmezett szám a 4). A partíció egy adatrendezési mechanizmus, és jobban köthető a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamosság mértékéhez, mint az Event Hubs átviteli kapacitásához. Így az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. Az eseményközpontok létrehozását követően a partíciók száma nem módosítható, ezért a számot a hosszú távú skálázási igények figyelembe vételével érdemes meghatároznia. A 32-es partíciós korlát növelhető – ehhez vegye fel a kapcsolatot a Service Bus csapatával.
 
-Jóllehet a partíciók azonosíthatóak, és közvetlenül is küldhetők adatok rájuk, általában jobb elkerülni az adatok adott partíciókra való küldését. Helyette használhatja az [Esemény-közzétevő](#event-publisher) és a [Közzétevői házirend](#capacity-and-security) című szakaszban bemutatott magasabb szintű szerkezeteket.
+Jóllehet a partíciók azonosíthatók, és közvetlenül is küldhetők adatok rájuk, jobb elkerülni az adatok adott partíciókra való küldését. Helyette használhatja az [Esemény-közzétevő](#event-publisher) és a [Közzétevői házirend](#capacity-and-security) című szakaszban bemutatott magasabb szintű szerkezeteket.
 
 Az Event Hubs környezetében az üzenetekre *eseményadat* néven hivatkozunk. Az eseményadatok az esemény törzsét, a felhasználó által definiált tulajdonságcsomagot és az eseménnyel kapcsolatos különféle metaadatokat tartalmazzák, például az esemény eltolását a partícióban vagy a számát a streamsorozatban. A partíciók eseményadatok sorozatát tartalmazzák.
 
@@ -118,7 +118,7 @@ Miután egy AMQP 1.0-munkamenet és -hivatkozás meg lett nyitva egy adott part�
 
 ![Event Hubs](./media/event-hubs-overview/IC759862.png)
 
-A felhasználó felelőssége, hogy az eltolást oly módon kezelje, amely a legjobban támogatja a streamfeldolgozás folyamatának kezelését.
+Az Ön felelőssége, hogy az eltolást oly módon kezelje, amely a legjobban támogatja a streamfeldolgozás folyamatának kezelését.
 
 ## Kapacitás és biztonság
 
@@ -134,9 +134,9 @@ Az Event Hubs átviteli kapacitásának szabályozása az átviteli egységek r�
 
 A befelé irányuló forgalmat a megvásárolt átviteli egységek mennyisége által biztosított kapacitás szabályozza. Az ezen felül küldött adatmennyiség esetén a rendszer a „kvóta túllépve” kivételt adja vissza. Ez a mennyiség másodpercenként 1 MB vagy 1000 esemény, amelyiket a forgalom előbb eléri. A kimenő forgalom nem eredményez szabályozási kivételeket, azonban a megvásárolt átviteli egységek által biztosított adatátviteli kapacitásra van korlátozva, ami másodpercenként 2 MB átviteli egységenként. Ha közzétételi-sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt ahhoz a névtérhez, amelyben az eseményközpont létre lett hozva. További átviteli egységek beszerzéséhez módosíthatja a [klasszikus Azure portál][] a **Scale** (Méret) lapján található **Namespaces** (Névterek) lap megfelelő beállítását. A beállítást az Azure API-k használatával is módosíthatja.
 
-Amíg a partíció egy adatrendezési fogalom, addig az átviteli egység tisztán kapacitási. Az átviteli egységek óraalapú díjszabással rendelkeznek, és előre kell megvásárolni őket. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. A Service Bus-névterekhez legfeljebb 20 átviteli egység vásárolható, és Azure-fiókonként is legfeljebb 20 átviteli egység szerezhető be. Az átviteli egységek közösen használhatóak egy adott névtér összes eseményközpontjában.
+Amíg a partíció egy adatrendezési fogalom, addig az átviteli egység tisztán kapacitási. Az átviteli egységek óraalapú díjszabással rendelkeznek, és előre kell megvásárolni őket. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Az Event Hubs-névterekhez legfeljebb 20 átviteli egység vásárolható, és Azure-fiókonként is legfeljebb 20 átviteli egység szerezhető be. Az átviteli egységek közösen használhatóak egy adott névtér összes eseményközpontjában.
 
-Az átviteli egységek kiosztása az elérhetőség alapján történik, és előfordulhat, hogy nem vásárolhatók meg azonnal. Amennyiben egy meghatározott kapacitásra van szüksége, javasoljuk, hogy az átviteli egységeket időben vásárolja meg. Amennyiben több mint 20 átviteli egységre van szüksége, vegye fel a kapcsolatot a Service Bus ügyfélszolgálatával, és kötelezettségvállalás ellenében 20-as csomagokban vásárolhat átviteli egységeket az első 100 átviteli egységig. Efölött 100-as csomagokban vásárolhat átviteli egységeket.
+Az átviteli egységek kiosztása az elérhetőség alapján történik, és előfordulhat, hogy nem vásárolhatók meg azonnal. Amennyiben egy meghatározott kapacitásra van szüksége, javasoljuk, hogy az átviteli egységeket időben vásárolja meg. Amennyiben több mint 20 átviteli egységre van szüksége, vegye fel a kapcsolatot az Azure ügyfélszolgálatával, és kötelezettségvállalás ellenében 20-as csomagokban vásárolhat átviteli egységeket az első 100 átviteli egységig. Efölött 100-as csomagokban vásárolhat átviteli egységeket.
 
 Javasoljuk, hogy az átviteli egységek és partíciók mennyiségét gondosan egyensúlyozza ki, hogy optimális mértékben vegye igénybe az Event Hubs szolgáltatást. Egy partíció legfeljebb egy átviteli egységgel rendelkezhet. Az egyes eseményközpontban az átviteli egységek száma nem haladhatja meg a partíciók számát.
 
@@ -148,13 +148,13 @@ Az Event Hubs lehetővé teszi az esemény-közzétevők részletes szabályozá
 
     //<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 
-Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük kell az esemény közzétételekor használt SAS-tokennel a független közzétevő-azonosságok biztosítása érdekében. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus/service-bus-shared-access-signature-authentication.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával). A közzétevői házirendek használatakor a **PartitionKey** értéke a közzétevő neve lesz. A megfelelő működés érdekében ezeknek az értékeknek egyezniük kell.
+Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük kell az esemény közzétételekor használt SAS-tokennel a független közzétevő-azonosságok biztosítása érdekében. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus/service-bus-shared-access-signature-authentication.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával). A közzétevői házirendek használatakor a **PartitionKey** értéke a közzétevő neve lesz. A megfelelő működéshez ezeknek az értékeknek egyezniük kell.
 
-## Összegzés
+## Összefoglalás
 
 Az Azure Event Hubs egy nagy kapacitású esemény- és telemetria-feldolgozási szolgáltatás, amelynek használatával általános alkalmazás- és felhasználói munkafolyamat-figyelés végezhető bármilyen léptékben. Az alacsony késésű és nagy méretű közzétételi-feliratkozási képességek biztosításával az Event Hubs az „első lépcsőfok” a Big Data kezelése irányában. A közzététel-alapú identitás- és visszavonási listák révén ezek a képességek kiterjeszthetőek az eszközök internetes hálózatát (IoT) érintő általános forgatókönyvekre is. További információ az Event Hubs-alkalmazások fejlesztésével kapcsolatban: [Event Hubs programming guide](event-hubs-programming-guide.md) (Event Hubs programozási útmutató).
 
-## További lépések
+## Következő lépések
 
 Most, hogy megismerkedett az Event Hubshoz kapcsolódó fogalmakkal, továbbléphet a következő forgatókönyvekre:
 
@@ -170,6 +170,6 @@ Most, hogy megismerkedett az Event Hubshoz kapcsolódó fogalmakkal, továbblép
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

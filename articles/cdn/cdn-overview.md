@@ -1,8 +1,8 @@
 <properties
-    pageTitle="Azure tartalomkézbesítési hálózat (CDN) – áttekintés"
+    pageTitle="Az Azure CDN áttekintése | Microsoft Azure"
     description="Megismerheti, mi is az az Azure Content Delivery Network (CDN), valamint hogyan használható a tartalmak nagy sávszélességű kézbesítéséhez a blobok és a statikus tartalom gyorsítótárazása révén."
     services="cdn"
-    documentationCenter=".NET"
+    documentationCenter=""
     authors="camsoper"
     manager="erikre"
     editor=""/>
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="06/06/2016"
+    ms.date="08/09/2016"
     ms.author="casoper"/>
 
 # Az Azure Content Delivery Network (CDN) áttekintése
@@ -39,7 +39,7 @@ A webhelyek objektumainak CDN használatával történő gyorsítótárazása a 
 
 3. A forrás visszaküldi a fájlt a peremhálózati kiszolgálóra, belefoglalva a fájl élettartamát (TTL) leíró nem kötelező HTTP-fejléceket is.
 
-4. A peremhálózati kiszolgáló gyorsítótárazza a fájlt, és visszaadja az eredeti kérelmezőnek (Anna).  A fájl a peremhálózati kiszolgáló gyorsítótárában marad addig, amíg az élettartama le nem jár.  Ha a forrás nem ad meg élettartamot, az alapértelmezett élettartam 7 nap.
+4. A peremhálózati kiszolgáló gyorsítótárazza a fájlt, és visszaadja az eredeti kérelmezőnek (Anna).  A fájl gyorsítótárazva marad a peremhálózati kiszolgálón, amíg a TTL le nem jár.  Ha a forrás nem adott meg TTL-t, akkor az alapértelmezett TTL hét nap.
 
 5. További felhasználók (például Bálint) is lekérhetik ugyanazt a fájlt ugyanannak az URL-címnek a használatával, és a rendszer őket is ugyanarra a jelenléti pontra irányíthatja.
 
@@ -57,32 +57,35 @@ Három Azure CDN termék áll rendelkezésre: az **Akamai Azure CDN Standard**, 
 | Terheléselosztás | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | Védelem DDOS-támadások ellen | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | Kettős verem (IPv4/IPv6) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [HTTP/2](https://msdn.microsoft.com/library/mt762901.aspx) | **&#x2713;**  |  |  |
 | [Egyéni tartománynevek támogatása](cdn-map-content-to-custom-domain.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [Lekérdezési karakterláncok gyorsítótárazása](cdn-query-string.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [Ország szerinti szűrés](cdn-restrict-access-by-country.md) |  | **&#x2713;** | **&#x2713;** |
 | [Gyors végleges törlés](cdn-purge-endpoint.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [Objektumok előzetes betöltése](cdn-preload-endpoint.md) |  | **&#x2713;** | **&#x2713;** |
 | [Egyszerűsített analitika](cdn-analyze-usage-patterns.md) |  | **&#x2713;** | **&#x2713;** |
-| [Kezelés REST API-n keresztül](https://msdn.microsoft.com/library/mt634456.aspx) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| Felügyelet [REST API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](./cdn-app-dev-net.md), [Node.js](./cdn-app-dev-node.md) vagy [PowerShell](./cdn-manage-powershell.md) használatával. | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [Testreszabható, szabályalapú tartalomkézbesítési motor](cdn-rules-engine.md) | | | **&#x2713;** |
 | [Speciális HTTP-jelentések](cdn-advanced-http-reports.md) | | | **&#x2713;** |
 | [Valós idejű statisztikák](cdn-real-time-stats.md) | | | **&#x2713;** |
+| [Valós idejű riasztások](cdn-real-time-alerts.md) | | | **&#x2713;** |
 
+>[AZURE.TIP] Van olyan szolgáltatás, amelyet szívesen látna az Azure CDN rendszerben?  [Küldjön visszajelzést!](https://feedback.azure.com/forums/169397-cdn) 
 
 ## Következő lépések
 
 A CDN használatbavételének első lépéseiért tekintse meg [Az Azure CDN szolgáltatás használata](./cdn-create-new-endpoint.md) című cikket.
 
-Amennyiben Ön már CDN-ügyfél, megkezdheti a CDN-végpontok kezelését a [Microsoft Azure portálon](https://portal.azure.com) keresztül.
+Ha Ön már meglévő CDN-ügyfél, a CDN-végpontjait már a [Microsoft Azure Portal](https://portal.azure.com) vagy a [PowerShell](cdn-manage-powershell.md) használatával is kezelheti.
 
 Ha működés közben szeretné látni a CDN-t, tekintse meg a [Build 2016 konferencián elhangzott előadásunk videófelvételét](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/).
 
+Ismerje meg, hogyan automatizálhatja az Azure CDN-t a [.NET](./cdn-app-dev-net.md) vagy a [Node.js](./cdn-app-dev-node.md) segítségével.
+
 Díjszabási információkért tekintse meg [A tartalomkézbesítési hálózat (CDN) díjszabása](https://azure.microsoft.com/pricing/details/cdn/) című cikket.
 
-Van olyan szolgáltatás, amelyet szívesen látna az Azure CDN rendszerben?  [Küldjön visszajelzést!](https://feedback.azure.com/forums/169397-cdn) 
 
 
-
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

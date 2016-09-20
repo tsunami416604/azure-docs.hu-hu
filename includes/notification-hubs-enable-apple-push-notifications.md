@@ -43,13 +43,9 @@ Ahhoz, hogy leküldéses értesítéseket küldhessen az iOS-alkalmazásoknak, e
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-    Ekkor létrejön az alkalmazásazonosító, és a rendszer megkéri Önt az információk megerősítésére. Kattintson a **Submit** (Küldés) gombra
+    Ekkor létrejön az alkalmazásazonosító, és a rendszer megkéri Önt az információk megerősítésére. Kattintson a **Register** (Regisztráció) gombra az új alkalmazásazonosító megerősítéséhez.
 
-
-    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-confirm-new-appid.png)
-
-
-    Miután a **Submit** (Küldés) gombra kattintott, megjelenik az alábbi ábrán is látható **Registration complete** (Regisztráció kész) képernyő. Kattintson a **Done** (Kész) gombra.
+    Miután a **Register** (Regisztráció) gombra kattintott, megjelenik az alábbiakban is látható **Registration complete** (Regisztráció kész) képernyő. Kattintson a **Done** (Kész) gombra.
 
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
@@ -139,6 +135,6 @@ Ahhoz, hogy leküldéses értesítéseket küldhessen az iOS-alkalmazásoknak, e
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

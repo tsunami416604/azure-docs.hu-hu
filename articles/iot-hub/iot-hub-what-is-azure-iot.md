@@ -13,20 +13,20 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="07/19/2016"
  ms.author="dobett"/>
 
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## Következő lépések
 
-Az Azure IoT Hub olyan Azure-szolgáltatás, amely biztonságos és megbízható kétirányú kommunikációt tesz lehetővé az alkalmazás háttérrendszere és több millió eszköz között. Lehetővé teszi, hogy az alkalmazás háttérrendszere méretezett telemetriát fogadjon az eszközökről, az adatokat streamalapú eseményfeldolgozóra irányítsa, és a felhőből az eszközre irányuló parancsokat is küldjön adott eszközökre. Az IoT Hubbal saját megoldáshátteret valósíthat meg. Ezenkívül az IoT Hub eszközidentitás-jegyzéket tartalmaz, amellyel kiépíthetők az eszközök, a biztonsági hitelesítő adataik és a hubhoz való csatlakozással kapcsolatos jogosultságaik. További tudnivalókért lásd:
+Az Azure IoT Hub olyan Azure-szolgáltatás, amely biztonságos és megbízható kétirányú kommunikációt tesz lehetővé az alkalmazás háttérrendszere és több millió eszköz között. Lehetővé teszi, hogy az alkalmazás háttérrendszere méretezett telemetriát fogadjon az eszközökről, az adatokat streamalapú eseményfeldolgozóra irányítsa, fájlfeltöltéseket fogadjon az eszközökről, és a felhőből az eszközre irányuló parancsokat is küldjön adott eszközökre. Az IoT Hubbal saját megoldáshátteret valósíthat meg. Ezenkívül az IoT Hub eszközidentitás-jegyzéket tartalmaz, amellyel kiépíthetők az eszközök, a biztonsági hitelesítő adataik és a hubhoz való csatlakozással kapcsolatos jogosultságaik. További információk az IoT Hubról: [Mi az IoT Hub?][lnk-iot-hub].
 
-- [Mi az IoT Hub?][lnk-iot-hub]
-- [Bevezetés az IoT Hub használatába][lnk-getstarted]
-- [Az Azure IoT Hub-eszközfelügyelet áttekintése][lnk-device-management]
+További információk arról, hogyan felügyelheti, konfigurálhatja és frissítheti az eszközeit távolról, az Azure IoT Hub által biztosított szabványalapú IoT-eszközfelügyelet segítségével: [Az Azure IoT Hub-eszközfelügyelet áttekintése][lnk-device-management].
 
 Ha az ügyfélalkalmazásokat az eszközök hardveres platformjainak és operációs rendszereinek széles választékára szeretné telepíteni, használhatja az IoT eszköz SDK-kat. Az IoT eszköz SDK-k olyan kódtárakat tartalmaznak, amelyek elősegítik a telemetria küldését az IoT Hubra, valamint a felhőből az eszközre irányuló parancsok fogadását. Amikor az SDK-kat használja, több hálózati protokoll közül választhat az IoT Hubbal való kommunikációhoz. További tudnivalókért lásd: [információ az eszköz SDK-król][lnk-device-sdks].
+
+Bevetés a kódírásba és a példák futtatásába: [Bevezetés az IoT Hub használatába][lnk-getstarted] című oktatóanyag.
 
 Az [Azure IoT Suite][lnk-iot-suite] is hasznos lehet, amely egy előre konfigurált megoldásokat tartalmazó gyűjtemény. Az IoT Suite lehetővé teszi, hogy gyorsan tegye meg az első lépéseket, és méretezze az IoT-projekteket a gyakori IoT-forgatókönyvek – például a távoli megfigyelés, az eszközkezelés és a prediktív karbantartás kezeléséhez.
 
@@ -38,6 +38,6 @@ Az [Azure IoT Suite][lnk-iot-suite] is hasznos lehet, amely egy előre konfigur�
 [lnk-device-management]: iot-hub-device-management-overview.md
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

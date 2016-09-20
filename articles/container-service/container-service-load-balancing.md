@@ -7,7 +7,7 @@
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Containers, Micro-services, DC/OS, Azure"/>
+   keywords="Tárolók, mikroszolgáltatások, DC/OS, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -15,109 +15,132 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="07/11/2016"
    ms.author="rogardle"/>
 
 # Azure tárolószolgáltatási fürt terhelésének elosztása
 
-Ebben a cikkben üzembe helyezünk egy webes előtér-szolgáltatást, amely skálázható az Azure LB mögötti szolgáltatások biztosítására.
-
+Ebben a cikkben webes kezelőfelületet állítunk be egy DC/OS által felügyelt Azure Container Service szolgáltatáson. Marathon-LB-t is konfigurálunk, hogy növelhesse az alkalmazás méretét.
 
 ## Előfeltételek
 
-[Az Azure tárolószolgáltatás egy DCOS vezénylőtípusú példányának üzembe helyezése](container-service-deployment.md), [az ügyfél és a fürt közötti kapcsolat feltételeinek megteremtése](container-service-connect.md), valamint [AZURE.INCLUDE [install the DC/OS CLI](../../includes/container-service-install-dcos-cli-include.md)].
-
+[Helyezze üzembe az Azure Container Service egy példányát](container-service-deployment.md) DC/OS típusú vezénylővel, és [győződjön meg róla, hogy az ügyfél képes csatlakozni a fürthöz](container-service-connect.md). 
 
 ## Terheléselosztás
 
-A tárolószolgáltatási fürtökben két terheléselosztási réteg van: az Azure LB a nyilvános belépési pontok (a végfelhasználók által elért pontok) számára, valamint a mélyebb rétegben működő marathon-lb, amely a bejövő kéréseket a szolgáltatáskéréseket kiszolgáló tárolópéldányokhoz irányítja. A marathon-lb dinamikusan alkalmazkodik a szolgáltatást nyújtó tárolók skálázásához.
+Két terheléselosztó réteg van azon a Container Service-fürtön, amelyet ki fogunk építeni: 
 
-## Marathon LB 
+  1. Az Azure Load Balancer nyilvános belépési pontokat biztosít (amelyekre a végfelhasználók rákattintanak). Ezt az Azure Container Service automatikusan biztosítja, és alapértelmezés szerint a 80-as, 443-as és 8080-as portok használatára van konfigurálva.
+  2. A Marathon Load Balancer (Marathon-LB) a bejövő kéréseket olyan tárolópéldányokhoz irányítja, amelyek ezeket a kéréseket kiszolgálják. A webszolgáltatás biztosítás közben a Marathon-LB dinamikusan alkalmazkodik a tárolók méretezéséhez. Ez a terheléselosztó nincs alapértelmezés szerint megadva a Container Service-ben, de nagyon könnyű telepíteni.
 
-A Marathon LB megoldás dinamikusan átkonfigurálja magát az üzembe helyezett tárolók alapján. Annak is ellenáll, ha elvész egy tároló vagy ügynök. Ilyen esetben a Mesos egyszerűen újraindítja a tárolót máshol, és átkonfigurálja a Marathon LB-t. 
+## Marathon Load Balancer
 
-A Marathon LB telepítéséhez futtassa az ügyfélszámítógépről a következő parancsot:
+A Marathon Load Balancer dinamikusan újrakonfigurálja magát az üzembe helyezett tárolók alapján. A tárolók és az ügynökök elvesztése sem zavarja meg a működését. Ilyen esetekben az Apache Mesos egyszerűen máshol indítja újra a tárolót, és a Marathon-LB alkalmazkodik a változáshoz.
+
+A Marathon Load Balancer telepítéséhez a DC/OS webes felhasználói felületet vagy a parancssort használhatja.
+
+### A Marathon-LB telepítése DC/OS webes felhasználói felülettel
+
+  1. Kattintson a Universe elemre.
+  2. Keressen rá a Marathon-LB kifejezésre.
+  3. Kattintson az Install (Telepítés) gombra.
+
+![A Marathon-LB telepítése a DC/OS webes felületén keresztül](./media/dcos/marathon-lb-install.png)
+
+### A Marathon-LB használata a DC/OS parancssori felülettel
+
+A DC/OS parancssori felület telepítése és annak ellenőrzése után, hogy tud-e csatlakozni a fürthöz, futtassa a következő parancsot az ügyfélgépről:
 
 ```bash
-dcos package install marathon-lb 
-``` 
+dcos package install marathon-lb
+```
 
-Most, hogy már rendelkezésre áll a marathon-lb csomag, telepíthetünk egy egyszerű webkiszolgálót, amely a következő konfigurációt használja:
+## Elosztott terhelésű webalkalmazás üzembe helyezése
 
+Most, hogy már rendelkezésre áll a marathon-lb csomag, telepíthetünk egy egyszerű webkiszolgálót a következő konfiguráció használatával:
 
 ```json
-{ 
-  "id": "web", 
-  "container": { 
-    "type": "DOCKER", 
-    "docker": { 
-      "image": "tutum/hello-world", 
-      "network": "BRIDGE", 
-      "portMappings": [ 
-        { "hostPort": 0, "containerPort": 80, "servicePort": 10000 } 
-      ], 
-      "forcePullImage":true 
-    } 
-  }, 
-  "instances": 3, 
-  "cpus": 0.1, 
-  "mem": 65, 
-  "healthChecks": [{ 
-      "protocol": "HTTP", 
-      "path": "/", 
-      "portIndex": 0, 
-      "timeoutSeconds": 10, 
-      "gracePeriodSeconds": 10, 
-      "intervalSeconds": 2, 
-      "maxConsecutiveFailures": 10 
-  }], 
-  "labels":{ 
+{
+  "id": "web",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "yeasy/simple-web",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "hostPort": 0, "containerPort": 80, "servicePort": 10000 }
+      ],
+      "forcePullImage":true
+    }
+  },
+  "instances": 3,
+  "cpus": 0.1,
+  "mem": 65,
+  "healthChecks": [{
+      "protocol": "HTTP",
+      "path": "/",
+      "portIndex": 0,
+      "timeoutSeconds": 10,
+      "gracePeriodSeconds": 10,
+      "intervalSeconds": 2,
+      "maxConsecutiveFailures": 10
+  }],
+  "labels":{
     "HAPROXY_GROUP":"external",
     "HAPROXY_0_VHOST":"YOUR FQDN",
-    "HAPROXY_0_MODE":"http" 
-  } 
+    "HAPROXY_0_MODE":"http"
+  }
 }
 
 ```
 
-Ennek a következők a legfontosabb elemei: 
-  * Állítsa a HAProxy_0_VHOST paramétert az ügynökök terheléselosztójának teljes tartománynevére (FQDN). Ennek formátuma: `<acsName>agents.<region>.cloudapp.azure.com`. Ha például létrehozott egy  `myacs` nevű tárolószolgáltatási fürtöt a `West US` régióban, akkor a következő lenne az FQDN: `myacsagents.westus.cloudapp.azure.com`. Úgy is megtalálhatja, hogy azt a terheléselosztót keresi, amelynek a nevében szerepel az „agent” az [Azure portálon](https://portal.azure.com), a tárolószolgáltatás számára létrehozott erőforráscsoport erőforrásai között.
-  * Állítsa a servicePort értéket egy 10 000-nél nagyobb számra. Ezzel azonosítja az ebben a tárolóban futó szolgáltatást. A marathon-lb ennek alapján azonosítja, hogy mely szolgáltatásokra kiterjedően kell terheléselosztást végeznie.
-  * Állítsa a HAPROXY_GROUP címkét az "external" értékre.
-  * Állítsa a hostPort paramétert 0-ra. Ez azt jelenti, hogy a marathon egy tetszőleges szabad portot fog kiosztani.
+  * Állítsa a `HAProxy_0_VHOST` értékét az ügynökök terheléselosztójának FQDN-jére. Ez az `<acsName>agents.<region>.cloudapp.azure.com` elemben szerepel. Ha például `myacs` nevű tárolószolgáltatás-fürtöt hoz létre a `West US` régióban, az FQDN a következő: `myacsagents.westus.cloudapp.azure.com`. Ezt úgy is megtalálhatja, ha a nevében az „ügynök” kifejezést tartalmazó terheléselosztót keres, amikor áttekinti az [Azure Portalon](https://portal.azure.com) a Container Service-hez létrehozott erőforráscsoportban lévő erőforrásokat.
+  * Állítsa a servicePort értéket egy 10 000-nél nagyobb számra. Ez azonosítja a tárolóban futtatott szolgáltatást – a Marathon-LB ezzel azonosítja a kiegyenlítendő szolgáltatásokat.
+  * Állítsa a `HAPROXY_GROUP` címkét „external” értékre.
+  * Állítsa a `hostPort` elemet 0 értékre. Ez azt jelenti, hogy a Marathon véletlenszerűen foglal le egy elérhető portot.
+  * Állítsa az `instances` elemet a létrehozni kívánt példányok számára. Az értéket később bármikor növelheti vagy csökkentheti.
 
-Másolja ezt a JSON-kódot egy `hello-web.json` nevű fájlba, és helyezzen vele üzembe egy tárolót: 
+### Üzembe helyezés a DC/OS webes felhasználói felületével
+
+  1. Látogasson el a Marathon oldalára a http://localhost/marathon címen (az [SSH-alagút](container-service-connect.md) beállítása után), és kattintson a következőre: `Create Appliction`
+  2. A `New Application` párbeszédpanelen kattintson a `JSON Mode` elemre a jobb felső sarokban.
+  3. Illessze be a fenti JSON-t a szerkesztőbe.
+  4. Kattintson a következőre: `Create Appliction`
+
+### Üzembe helyezés a DC/OS parancssori felülettel
+
+Ha ezt az alkalmazást a DC/OS parancssori felülettel szeretné telepíteni, egyszerűen másolja a fenti JSON-t egy `hello-web.json` nevű fájlba, és futtassa a következőt:
 
 ```bash
-dcos marathon app add hello-web.json 
-``` 
+dcos marathon app add hello-web.json
+```
 
-## Azure LB 
+## Azure Load Balancer
 
-Az Azure LB alapértelmezés szerint a 80-as, a 8080-as és a 443-as portot teszi elérhetővé. Ha ebből a három portból használja valamelyiket (mint mi a fenti példában), akkor semmi teendője sincs: ez esetben el kell tudnia érni az ügynök terheléselosztó FQDN-jét, és minden frissítés alkalmával ciklikusan a sorban következő webkiszolgálót kell elérnie. Ha viszont másik portot használ, akkor ciklikus multiplexelési szabályt és egy mintavételt kell hozzáadnia az Azure LB-n az Ön által használt porthoz. Ez az [Azure XPLAT parancssori felületen](../xplat-cli-azure-resource-manager.md), az `azure lb rule create` és az `azure lb probe create` paranccsal teheti meg.
+Alapértelmezés szerint az Azure Load Balancer a 80-as, 8080-as és 443-as portokat teszi elérhetővé. Ha ezen portok egyikét használja (ahogyan a fenti példában is), akkor semmit nem kell tennie. Képesnek kell lennie arra, hogy rákattintson az ügynöke terheléselosztójának FQDN-jére, és minden frissítéskor ciklikusan fogja elérni a három webkiszolgáló egyikét. De ha másik portot használ, ciklikus szabályt és egy hálózatfigyelőt kell hozzáadnia a terheléselosztón a használt porthoz. Ezt az [Azure parancssori felületén](../xplat-cli-azure-resource-manager.md) teheti meg az `azure lb rule create` és `azure lb probe create` parancsokkal. A műveleteket az Azure Portalon is végrehajthatja.
 
 
 ## További helyzetek
 
-Előfordulhat, hogy eltérő tartományokat használ különféle szolgáltatások elérhetővé tételére. Példa: 
+Előfordulhat, hogy eltérő tartományokat használ különféle szolgáltatások elérhetővé tételére. Példa:
 
 tartomany1.com -> Azure LB:80 -> marathon-lb:10001 tarolo1:33292 ->  
-tartomany2.com -> Azure LB:80 -> marathon-lb:10002 -> tarolo2:22321 
+tartomany2.com -> Azure LB:80 -> marathon-lb:10002 -> tarolo2:22321
 
-Ennek egyik módjáról a [Virtual Hosts](https://mesosphere.com/blog/2015/12/04/dcos-marathon-lb/) (Virtuális gazdagépek) című cikk nyújt tájékoztatást: bemutatja, hogyan lehet a tartományokat konkrét marathon-lb elérési utakhoz társítani.
+Ehhez nézze át a [virtuális gazdagépekre](https://mesosphere.com/blog/2015/12/04/dcos-marathon-lb/) vonatkozó tudnivalókat, amelyekkel konkrét marathon-lb elérési utakhoz társíthatja a tartományokat.
 
-Azt is megteheti, hogy különféle portokat tesz elérhetővé, majd leképezi őket a marathon lb mögött futó szolgáltatások közül a megfelelőkre. Példa:
+Azt is megteheti, hogy különféle portokat tesz elérhetővé, majd leképezi őket a marathon-lb mögött futó szolgáltatások közül a megfelelőkre. Példa:
 
 Azure lb:80 -> marathon-lb:10001 -> tarolo:233423  
-Azure lb:8080 -> marathon-lb:1002 -> tarolo2:33432 
- 
+Azure lb:8080 -> marathon-lb:1002 -> tarolo2:33432
+
 
 ## Következő lépések
 
-[Ebben a blogbejegyzésen](https://mesosphere.com/blog/2015/12/04/dcos-marathon-lb/) részletesebb tájékoztatást olvashat a Marathon LB-ről.
+A [Marathon-LB-re](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/) vonatkozó további információért tekintse meg a DC/OS dokumentációt.
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article"
-    ms.date="05/05/2016" 
+    ms.date="06/22/2016"
     ms.author="juliako"/>
 
 
@@ -26,7 +26,7 @@
 
 Ez az oktatóanyag bemutatja, hogyan hozzon létre egy egyszeres sávszélességű élő streamet fogadó **csatornát**, amely többszörös sávszélességű streammé kódolja azt.
 
->[AZURE.NOTE]Az élő kódolás funkcióval kapcsolatos további információkért lásd: [Live streaming using Azure Media Services to create multi-bitrate streams](media-services-manage-live-encoder-enabled-channels.md) (Élő streamelés az Azure Media Services segítségével többszörös sávszélességű streamek létrehozása érdekében.
+>[AZURE.NOTE]További elméleti információk a valós idejű kódolásra képes csatornákról: [Élő adatfolyam továbbítása az Azure Media Services használatával, és többféle sávszélességű adatfolyamok létrehozása](media-services-manage-live-encoder-enabled-channels.md)
 
 ##Az élő streamelés egy gyakori alaphelyzete
 
@@ -34,26 +34,26 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 
 >[AZURE.NOTE] Jelenleg az élő stream maximális javasolt időtartama 8 óra. Ha hosszabb időtartamon át szeretné működtetni a csatornát, forduljon „amslived”-hez a Microsoft.com oldalon.
 
-1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el, majd állítson be egy élő helyszíni kódolót, amely képes egyszeres sávszélességű streamet létrehozni a következő protokollok valamelyikén: RTMP, Smooth Streaming vagy RTP (MPEG-TS). További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.
+1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és állítson be egy helyszíni valós idejű kódolót, amely képes egy egyféle sávszélességű kimeneti adatfolyam továbbítására a következő protokollok valamelyikével: RTMP, Smooth Streaming vagy RTP (MPEG-TS). További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](http://go.microsoft.com/fwlink/?LinkId=532824)
     
-    Ezt a lépést a csatorna létrehozása után is el lehet végezni.
+    Ezt a lépést a csatorna létrehozása után is elvégezheti.
 
-1. Hozza létre, majd indítsa el a csatornát. 
+1. Hozzon létre és indítson el egy csatornát. 
 
-1. Kérje le a Channel ingest URL (Csatorna betöltési URL-címe) értékét. 
+1. Kérje le a csatorna feldolgozó URL-címét. 
 
-    Az élő kódoló a betöltési URL-címet használva küldi el az streamet a csatornának.
-1. Kérje le a Channel preview URL (Csatorna előnézetének URL-címe) értékét. 
+    Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
+1. Kérje le a csatorna előnézeti URL-címét. 
 
     Ezen az URL-címen győződhet meg róla, hogy a csatorna rendben megkapja-e az élő streamet.
 
 3. Hozzon létre egy programot (ezzel egy objektumot is létrehoz). 
 1. Tegye közzé a programot (ezzel létrehozza a kapcsolódó objektumhoz tartozó OnDemand-lokátort is).  
 
-    Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
-1. Amikor készen áll a streamelésre és az archiválásra, indítsa el a programot.
-2. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés bekerül a kimenő streambe.
-1. Amikor le kívánja állítani az esemény streamelését és az archiválását, állítsa le a programot.
+    Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
+1. Indítsa el a programot, ha készen áll az adatfolyam-továbbításra és az archiválásra.
+2. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
+1. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
 1. Törölje a programot (ha kívánja, törölje az objektumot is).   
 
 ##Az oktatóanyag tartalma
@@ -69,25 +69,25 @@ Ebben az oktatóanyagban a következő feladatokat fogjuk elvégezni a klassziku
 2.  Takarítás
 
 ##Előfeltételek
-Az ismertetett eljárás végrehajtásához a következők szükségesek:
+Az oktatóanyag elvégzésének a következők a feltételei.
 
 - Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-- Egy Media Services-fiók. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-create-account.md) (Fiók létrehozása).
+- Egy Media Services-fiók szükséges. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-create-account.md) (Fiók létrehozása).
 - Egy webkamera és egy egyszeres sávszélességű élő stream továbbítására alkalmas kódoló.
 
 ##Streamvégpont konfigurálása a portál használatával
 
-Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. Adaptív sávszélességű streamelés esetén az ügyfél az elérhető hálózati sávszélesség, a processzorhasználat és más tényezők függvényében a videó megjelenítését követően magasabb vagy alacsonyabb sávszélességű streamelésre kapcsolhat. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (amelyhez Adobe PrimeTime-/Access-licenc szükséges). 
+Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. Az adaptív sávszélességű streameléskor az ügyfél magasabb vagy alacsonyabb sávszélességű adatfolyam-továbbításra válthat a videó lejátszása közben, az aktuális hálózati sávszélességhez, CPU-használathoz és egyéb tényezőkhöz igazodva. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH, és HDS (csak Adobe PrimeTime/Access licenctulajdonosok esetében). 
 
 Élő streameléssel való munkavégzés esetén a helyszíni élő kódoló (esetünkben a Wirecast) tölti be a csatornának a többszörös sávszélességű élő streamet. Amikor egy felhasználó lekéri a streamet, a Media Services dinamikus becsomagolás segítségével átcsomagolja a forrásstreamet a kért adaptív sávszélességű streamformátumba (ez lehet HLS, DASH vagy Smooth). 
 
 A dinamikus becsomagolás által nyújtott előnyök kihasználásához legalább egy streamelési egységnek rendelkezésre kell állnia azon a **streamvégponton**, amely a tervek szerint közvetíteni fogja a tartalmakat.
 
-Streameléshez fenntartott egységek számának megváltoztatásához tegye a következőket:
+A folyamatos átvitelhez fenntartott egységek számának módosításához tegye a következőt:
 
 1. A [klasszikus Azure portálon](https://manage.windowsazure.com/) kattintson a **Media Services** elemre. Ezt követően kattintson az adott médiaszolgáltatás nevére.
 
-2. Válassza a STREAMING ENDPOINTS (Streamvégpontok) lapot. Itt kattintson a módosítani kívánt streamvégpontra.
+2. Válassza ki az STREAMING ENDPOINTS (STREAMVÉGPONTOK) oldalt. Itt kattintson a módosítani kívánt streamvégpontra.
 
 3. A streamelési egységek számának meghatározásához kattintson a SCALE (Skálázás) lapra, majd mozgassa tetszőleges irányba a **reserved capacity** (lefoglalt kapacitás) csúszkát.
 
@@ -222,7 +222,7 @@ A **CONTENT** (Tartalom) lapra lépve megtekintheti a programokhoz létrehozott 
 
 ##Tartalmak lejátszása
 
-Ahhoz, hogy a felhasználók rendelkezésére bocsáthassa a tartalmak streamelésére használható URL-címet, először közzé kell tennie az objektumot (ennek folyamatát megtalálja az előzőekben) egy lokátor segítségével (amikor a portálon keresztül teszi közzé az objektumot, a rendszer létrehozza a lokátorokat). Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. 
+Ahhoz, hogy a felhasználók rendelkezésére bocsáthassa a tartalmak streamelésére használható URL-címet, először közzé kell tennie az objektumot (ennek folyamatát megtalálja az előzőekben) egy lokátor segítségével (amikor a portálon keresztül teszi közzé az objektumot, a rendszer létrehozza a lokátorokat). A keresők biztosítják az adategységben található fájlokhoz való hozzáférést. 
 
 A tartalmak lejátszásához használt streamelési protokoll típusától függően előfordulhat, hogy módosítania kell a csatorna/program **PUBLISH URL** (Közzétételi URL-cím) hivatkozására kattintva lekérhető URL-címet.
 
@@ -255,11 +255,11 @@ Ha befejezte az esemény streamelését, és törölni szeretné a korábban kio
 
 ##Megfontolandó szempontok
 
-- Jelenleg az élő stream maximális javasolt időtartama 8 óra. Ha hosszabb időtartamon át szeretné működtetni a csatornát, forduljon „amslived”-hez a Microsoft.com oldalon.
-- Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
+- Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha egy ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@Microsoft.com e-mail címen.
+- Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
 
 
-##A Media Services tanulási útvonalai
+##Media Services képzési tervek
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -277,6 +277,6 @@ Ha befejezte az esemény streamelését, és törölni szeretné a korábban kio
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

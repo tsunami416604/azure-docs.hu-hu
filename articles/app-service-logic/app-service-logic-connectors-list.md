@@ -1,30 +1,30 @@
 <properties
     pageTitle="A rendelkezésre álló összekötők és API Apps-lista | Microsoft Azure App Service"
     description="Az Azure App Service-ben rendelkezésre álló összekötők és az API Apps megismerése"
-    services="app-service\logic"
+    services="logic-apps"
     documentationCenter=""
     authors="MandiOhlinger"
     manager="erikre"
     editor="cgronlun"/>
 
 <tags
-    ms.service="app-service-logic"
+    ms.service="logic-apps"
     ms.workload="integration"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/11/2016"
+    ms.date="07/28/2016"
     ms.author="mandia"/>
 
 
 # A Logic Apps-alkalmazásokban használható összekötők és API-alkalmazások listája
->[AZURE.NOTE] A cikk e verziója a Logic Apps 2014. 12. 01. dátumú előnézeti sémaverziójára vonatkozik. A 2015. 08. 01. dátumú előnézeti sémaverzióval kapcsolatos információkért olvassa el az [új összekötőket felsoroló](../connectors/apis-list.md) bemutató cikkre.
+>[AZURE.NOTE] A cikk e verziója a Logic Apps 2014. 12. 01. dátumú előnézeti sémaverziójára vonatkozik. A Logic Apps általánosan elérhető (GA) verziójával kapcsolatban tekintse meg az [új összekötők listáját](../connectors/apis-list.md).
 
 A cikkben leírtak alapján megismerheti a Microsoft által a Logic Apps szolgáltatásban való használatra létrehozott összekötőket és API-alkalmazásokat.
 
 Ha szeretne további tájékoztatáshoz jutni az árakról, illetve kíváncsi rá, hogy mit tartalmaznak az egyes szolgáltatásszintek, látogasson el az [Azure App Service Díjszabás](https://azure.microsoft.com/pricing/details/app-service/) című weblapra.
 
-> [AZURE.NOTE] Ha az Azure Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appservice=logic) oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Nincs szükség bankkártyára, és nem jár semmiféle kötelezettséggel.
+> [AZURE.NOTE] Ha a Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [a Logic Apps kipróbálását](https://tryappservice.azure.com/?appservice=logic) lehetővé tevő oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
 ## Magösszekötők
 Az alábbi táblázatban megtalálja az összes, a Microsoft által létrehozott és magösszekötőként felhasználható összekötőt és API-alkalmazást:
@@ -32,7 +32,7 @@ Az alábbi táblázatban megtalálja az összes, a Microsoft által létrehozott
 Név | Leírás
 --- | ---
 [Azure Service Bus](app-service-logic-connector-azureservicebus.md) | Képes üzeneteket küldeni a Service Bus-üzenetsorokból és -témákból, valamint üzeneteket fogadni a Service Bus-üzenetsorok és  -előfizetések felől.
-[Bing Fordító](https://azure.microsoft.com/marketplace/partners/microsoft_com/bingtranslator) | Szöveg fordítása más nyelvre a Bing segítségével.
+[Bing Fordító](https://azure.microsoft.com/marketplace/partners/bing/microsofttranslator/) | Szöveg fordítása más nyelvre a Bing segítségével.
 [HTTP](app-service-logic-connector-http.md) | A HTTP-figyelő megnyit egy végpontot, amely HTTP-kiszolgálóként üzemel, és figyeli a beérkező HTTP- vagy HTTPS-kéréseket. A HTTP-művelet nem igényel API-alkalmazást, ezt a funkciót a Logic Apps natívan támogatja.
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Az Office 365-összekötő képes a felhasználó Office 365-fiókját használva küldeni és fogadni e-maileket, illetve kezelni a naptárt és a névjegyeket.
 [QuickBooks](app-service-logic-connector-quickbooks.md) | Ezzel az összekötővel több feladatot is elvégezhet, például különféle entitásokat (ügyfeleket, elemeket, számlákat stb.) hozhat létre, frissíthet és kérdezhet le az Intuit QuickBooksból.
@@ -86,6 +86,6 @@ Az összekötők a logikai alkalmazásban műveletként is felhasználhatók. A 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -12,12 +12,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/18/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 # Hogyan működik a licenckezelés az Azure RemoteAppban?
 
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Az eddigiekben beállította az Azure RemoteAppot, létrehozta a sablonokat, és készen áll arra, hogy alkalmazásokat tegyen közzé a felhasználóknak. Egy dolog azonban még hátra van: a licencelés. Hogyan működik a RemoteApp és rajta keresztül megosztott alkalmazások licenckezelése?
 
@@ -37,6 +39,6 @@ Vegye figyelembe, hogy felhőalapú gyűjtemény esetében nem használhat ügyf
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

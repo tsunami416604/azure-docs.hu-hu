@@ -14,12 +14,12 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/16/2016"
+    ms.date="08/08/2016"
     ms.author="v-livech"/>
 
 # SSH-kulcsok létrehozása Linux és Mac rendszerben Linux virtuális gépek számára az Azure-ban
 
-Jelszóval védett nyilvános és titkos SSH-kulcs létrehozásához meg kell nyitnia egy terminált a munkaállomáson.  Az SSH-kulcsok beszerzése után létrehozhat új virtuális gépeket ezzel a kulccsal alapértelmezés szerint, vagy meglévő virtuális gépekhez adhatja hozzá a nyilvános kulcsot az Azure parancssori felület és Azure-sablonok használatával.  Ez jelszó nélküli bejelentkezéseket tesz lehetővé SSH-n keresztül a sokkal biztonságosabb, jelszavak helyett kulcsokat használó hitelesítési módszerrel.
+Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, aminek köszönhetően nincs szükség jelszavakra a bejelentkezéshez.  A jelszavak kitalálhatók, és szüntelen találgatásos támadási kísérleteknek teszik ki a virtuális gépet a jelszó kiderítése céljából. Az Azure-sablonokkal vagy az `azure-cli` használatával létrehozott virtuális gépek az üzembe helyezés részeként tartalmazhatják a nyilvános SSH-kulcsot, így nincs szükség az üzembe helyezés utáni konfigurálásra.  Ha Linux rendszerű virtuális géphez csatlakozik a Windowsból, tekintse meg [ezt a dokumentumot](virtual-machines-linux-ssh-from-windows.md).
 
 ## Gyors parancslista
 
@@ -29,7 +29,7 @@ Az alábbi parancspéldákban cserélje a &lt; és &gt; közötti értékeket a 
 ssh-keygen -t rsa -b 2048 -C "<your_user@yourdomain.com>"
 ```
 
-Adja meg a `~/.ssh/` könyvtárban menteni kívánt fájl nevét:
+Adja meg a `~/.ssh/` könyvtárba mentett fájl nevét:
 
 ```bash
 <azure_fedora_id_rsa>
@@ -64,19 +64,21 @@ $
 
 ## Bevezetés
 
-A nyilvános és titkos SSH-kulcsok használata biztosítja a legegyszerűbb módot a Linux-kiszolgálókra való bejelentkezéshez, emellett pedig a [nyíltkulcsú titkosítás](https://en.wikipedia.org/wiki/Public-key_cryptography) a jelszavak használatánál egy sokkal biztonságosabb módszert is lehetővé tesz a Linux vagy BSD virtuális gépekre való bejelentkezéshez az Azure-ban, hiszen a jelszavak sokkal könnyebben törhetők fel találgatásos módszeren alapuló támadással. A nyilvános kulcs bárkivel megosztható, azonban csak Ön (vagy a helyi biztonsági infrastruktúra) rendelkezik a titkos kulccsal.  A létrehozott titkos SSH-kulcsot [biztonságos jelszó](https://www.xkcd.com/936/) védi, és ez a jelszó csak a titkos SSH-kulcs elérésére szolgál, **nem** pedig a felhasználói fiók jelszava.  Amikor jelszót ad hozzá az SSH-kulcshoz, az titkosítja a titkos kulcsot, így a titkos kulcs nem használható az azt feloldó jelszó nélkül.  Ha egy támadó el tudná lopni a titkos kulcsot, és azt nem védené jelszó, a titkos kulccsal bejelentkezhetne azon kiszolgálókra, amelyeken a megfelelő nyilvános kulcs lett telepítve.  Ha a titkos kulcsot jelszó védi, a kulcsot nem használhatja a támadó, így ez további biztonsági réteget nyújt az Azure-beli infrastruktúra számára.
+A nyilvános és titkos SSH-kulcsok használata biztosítja a legegyszerűbb módot a Linux-kiszolgálókra való bejelentkezéshez. A [nyíltkulcsú titkosítás](https://en.wikipedia.org/wiki/Public-key_cryptography) a jelszavak használatánál egy sokkal biztonságosabb módszert is lehetővé tesz a Linux vagy BSD virtuális gépekre való bejelentkezéshez az Azure-ban, hiszen a jelszavak sokkal könnyebben törhetők fel találgatásos módszeren alapuló támadással. A nyilvános kulcs bárkivel megosztható, azonban csak Ön (vagy a helyi biztonsági infrastruktúra) rendelkezik a titkos kulccsal.  A titkos SSH-kulcsnak [nagyon biztonságos jelszóval](https://www.xkcd.com/936/) kell rendelkeznie (forrás: [xkcd.com](https://xkcd.com)) a védelme érdekében.  Ez a jelszó csak a titkos SSH-kulcs elérésére szolgál, **nem** pedig a felhasználói fiók jelszava.  Amikor jelszót ad hozzá az SSH-kulcshoz, az titkosítja a titkos kulcsot, így a titkos kulcs használhatatlan az azt feloldó jelszó nélkül.  Ha egy támadó ellopná a titkos kulcsot, és azt nem védené jelszó, a támadó a titkos kulccsal bejelentkezhetne azon kiszolgálókra, amelyeken a megfelelő nyilvános kulcs lett telepítve.  Ha egy titkos kulcsot jelszó véd, a kulcsot nem használhatja a támadó, így ez további biztonsági réteget nyújt az Azure-beli infrastruktúra számára.
 
 
-Ez a cikk az *ssh-rsa* formátumú kulcsfájlok létrehozását ismerteti, mivel ezek ajánlottak a Resource Managerben üzemelő példányok esetén, és ezekre van szükség a [portálon](https://portal.azure.com) a klasszikus és Resource Managerben üzemelő példányokhoz is.
+
+Ez a cikk az *ssh-rsa* formátumú kulcsfájlok létrehozását ismerteti, mivel ezek ajánlottak a Resource Managerben üzemelő példányok esetén.  Az *ssh-rsa* kulcsokra van szükség a [portálon](https://portal.azure.com) a klasszikus és Resource Managerben üzemelő példányokhoz is.
 
 
 ## Az SSH-kulcsok létrehozása
 
-Az Azure legalább 2048 bites ssh-rsa formátumú nyilvános és titkos kulcsokat követel meg. A pár létrehozásához az `ssh-keygen` parancsot fogjuk használni, amely kérdések sorát teszi fel, majd létrehoz egy titkos kulcsot és egy megfelelő nyilvános kulcsot. Az Azure virtuális gép létrehozásakor át kell adnia a nyilvános kulcs tartalmát, amelyet a Linux virtuális gépre másol a rendszer, majd a helyi és biztonságosan tárolt titkos kulcsot egyszerre használja a hitelesítéshez a bejelentkezéskor.
+Az Azure legalább 2048 bites ssh-rsa formátumú nyilvános és titkos kulcsokat követel meg. A kulcsok létrehozásához az `ssh-keygen` parancsot használja, amely kérdések sorát teszi fel, majd létrehoz egy titkos kulcsot és egy megfelelő nyilvános kulcsot. Egy Azure virtuális gép létrehozásakor a rendszer a `~/.ssh/authorized_keys` mappába másolja a nyilvános kulcsot.  A rendszer a `~/.ssh/authorized_keys` mappában lévő SSH-kulcsokat használja az ügyfél ellenőrzésére, hogy egyezik-e a megfelelő titkos kulcs egy SSH-bejelentkezési kapcsolat esetén.
+
 
 ## Az ssh-keygen használata
 
-Ez a parancs jelszóval védett (titkosított) SSH-kulcspárt hoz létre 2048 bites RSA használatával, és az egyszerű azonosítás érdekében megjegyzéssel lesz ellátva.
+Ez a parancs jelszóval védett (titkosított) SSH-kulcspárt hoz létre 2048 bites RSA használatával, és az egyszerű azonosítás érdekében megjegyzéssel van ellátva.
 
 ```bash
 ssh-keygen -t rsa -b 2048 -C "ahmet@fedoraVMAzure"
@@ -91,6 +93,16 @@ _A parancs ismertetése_
 `-b 2048` = a kulcs bitjeinek száma,
 
 `-C "ahmet@fedoraVMAzure"` = a nyilvános kulcsfájl végéhez fűzött megjegyzés az egyszerű azonosítás érdekében.  Általában e-mailt használnak megjegyzésként, de használhat bármit, ami a leginkább megfelel az infrastruktúra szempontjából.
+
+### PEM-kulcsok használata
+
+Ha a klasszikus üzembe helyezési modellt használja (a klasszikus Azure portált vagy az Azure szolgáltatásfelügyeleti CLI-t `asm`), előfordulhat, hogy PEM-formátumú SSH-kulcsokat kell használnia a Linux rendszerű virtuális gépek eléréséhez.  Az alábbiakban láthatja, hogyan hozhat létre PEM-kulcsot egy meglévő nyilvános SSH-kulcsból és egy meglévő x509-tanúsítványból.
+
+PEM-formátumú kulcs meglévő nyilvános SSH-kulcsból történő létrehozása:
+
+```bash
+ssh-keygen -f id_rsa.pub -m 'PEM' -e > id_rsa.pem
+```
 
 ## Az ssh-keygen bemutatása
 
@@ -124,24 +136,24 @@ Mentett kulcsfájlok:
 
 `Enter file in which to save the key (/home/ahmet/.ssh/id_rsa): azure_fedora_id_rsa`
 
-A cikkben használt kulcspár neve.  Az **id_rsa** nevű kulcspár az alapértelmezett, és mivel egyes eszközök az **id_rsa** nevű titkos kulcsfájlt várhatják, célszerű ezt a nevet adni a kulcspárnak. (A `~/.ssh/` általában az összes SSH-kulcspár és az SSH konfigurációs fájl alapértelmezett helye.)
+A cikkben használt kulcspár neve.  Az **id_rsa** nevű kulcspár az alapértelmezett, és mivel egyes eszközök az **id_rsa** nevű titkos kulcsfájlt várhatják, célszerű ezt a nevet adni a kulcspárnak. A `~/.ssh/` könyvtár az SSH-kulcspárok és az SSH konfigurációs fájl alapértelmezett helye.
 
 ```bash
 ahmet@fedora$ ls -al ~/.ssh
 -rw------- 1 ahmet staff  1675 Aug 25 18:04 azure_fedora_id_rsa
 -rw-r--r-- 1 ahmet staff   410 Aug 25 18:04 azure_fedora_id_rsa.pub
 ```
-Ez a parancs az új kulcspárokat és azok engedélyeit jeleníti meg. `ssh-keygen` létrehozza a `~/.ssh` könyvtárat, ha az még nem létezik, és beállítja a megfelelő tulajdonjogokat és fájlmódokat.
+A `~/.ssh` könyvtár listázása. `ssh-keygen` létrehozza a `~/.ssh` könyvtárat, ha az még nem létezik, és beállítja a megfelelő tulajdonjogokat és fájlmódokat.
 
 Kulcs jelszava:
 
 `Enter passphrase (empty for no passphrase):`
 
-Erősen ajánlott jelszót (a `ssh-keygen` ezt „hozzáférési kódnak” nevezi) hozzáadni a kulcspárokhoz. A kulcspárt védő jelszó nélkül bárki bejelentkezhet a titkos kulcsfájl másolatával bármely olyan kiszolgálóra – a kiszolgálóira –, amely rendelkezik a megfelelő nyilvános kulccsal. A jelszó hozzáadása így sokkal nagyobb védelmet nyújt arra az esetre, ha valaki megszerezné a titkos kulcsot, mert így lesz ideje módosítani a hitelesítéséhez használt kulcsokat.
+`ssh-keygen` a jelszóra „hozzáférési kódként” hivatkozik.  *Erősen* ajánlott jelszót hozzáadni a kulcspárokhoz. A kulcspárt védő jelszó nélkül bárki bejelentkezhet a titkos kulcsfájllal bármely olyan kiszolgálóra, amely rendelkezik a megfelelő nyilvános kulccsal. A jelszó hozzáadása sokkal nagyobb védelmet nyújt arra az esetre, ha valaki megszerezné a titkos kulcsot, mert így lesz ideje módosítani a hitelesítéséhez használt kulcsokat.
 
 ## Az ssh-agent használata a titkos kulcs jelszavának tárolásához
 
-Ha nem szeretné beírni a titkos kulcsfájl jelszavát minden SSH-bejelentkezéskor, az `ssh-agent` segítségével gyorsítótárazhatja a titkos kulcsfájl jelszavát a Linux virtuális gépekre való gyors és biztonságos bejelentkezéshez.  Ha OSX rendszert használ, a Kulcskarika biztonságosan módon menteni fogja a titkos kulcsok jelszavát az `ssh-agent` indításakor.
+Ha nem szeretné beírni a titkos kulcsfájl jelszavát minden SSH-bejelentkezéskor, az `ssh-agent` segítségével gyorsítótárazhatja a titkos kulcsfájl jelszavát. Ha Mac gépet használ, az OSX Kulcskarika biztonságos módon menti a titkos kulcsok jelszavát az `ssh-agent` indításakor.
 
 Először ellenőrizze, hogy az `ssh-agent` fut-e.
 
@@ -149,17 +161,17 @@ Először ellenőrizze, hogy az `ssh-agent` fut-e.
 eval "$(ssh-agent -s)"
 ```
 
-Ezután adja hozzá a titkos kulcsot az `ssh-agent` ügynökhöz az `ssh-add` paranccsal, amivel OSX rendszeren elindítja a hitelesítő adatok tárolására szolgáló Kulcskarikát.
+Ezután adja hozzá a titkos kulcsot az `ssh-agent` ügynökhöz az `ssh-add` paranccsal.
 
 ```bash
 ssh-add ~/.ssh/azure_fedora_id_rsa
 ```
 
-A titkos kulcs jelszavát a rendszer mentette, így nem kell beírni a kulcs jelszavát minden SSH-bejelentkezéskor.
+A titkos kulcs jelszava ekkor az `ssh-agent` ügynökben lesz tárolva.
 
 ## SSH konfigurációs fájl létrehozása és konfigurálása
 
-Jóllehet nem feltétlenül szükséges Linux virtuális gép beüzemeléséhez, az ajánlott eljárás szerint érdemes létrehozni és konfigurálni egy `~/.ssh/config` fájlt, hogy ne használjon véletlenül jelszavakat a virtuális gépekkel való bejelentkezéshez, ne használja automatikusan különböző Azure virtuális gépek különböző kulcspárjait, illetve hogy ne konfiguráljon más programokat (például **git**) több kiszolgálóra vonatkozóan.
+Ajánlott létrehozni és konfigurálni egy `~/.ssh/config` fájlt a bejelentkezések felgyorsításához és az SSH-ügynök működésének optimalizálásához.
 
 Az alábbi példában a szabványos konfiguráció látható.
 
@@ -182,42 +194,38 @@ vim ~/.ssh/config
 Host fedora22
   Hostname 102.160.203.241
   User ahmet
-  PubkeyAuthentication yes
-  IdentityFile /home/ahmet/.ssh/azure_fedora_id_rsa
 # ./Azure Keys
 # Default Settings
 Host *
-  PubkeyAuthentication=no
+  PubkeyAuthentication=yes
   IdentitiesOnly=yes
   ServerAliveInterval=60
   ServerAliveCountMax=30
   ControlMaster auto
-  ControlPath /home/ahmet/.ssh/Connections/ssh-%r@%h:%p
+  ControlPath ~/.ssh/SSHConnections/ssh-%r@%h:%p
   ControlPersist 4h
-  StrictHostKeyChecking=no
-  IdentityFile /home/ahmet/.ssh/id_rsa
-  UseRoaming=no
+  IdentityFile ~/.ssh/id_rsa
 ```
 
-Ez az SSH-konfiguráció szakaszokat ad hozzá mindegyik szolgáltatáshoz, hogy mindegyik saját dedikált kulcspárral rendelkezzen. Az alapértelmezett beállítások a fenti csoportoknak nem megfelelő olyan állomásokra vonatkoznak, amelyekre bejelentkezett.
+Ez az SSH-konfiguráció szakaszokat ad hozzá mindegyik kiszolgálóhoz, hogy mindegyik saját dedikált kulcspárral rendelkezzen. Az alapértelmezett beállítások (`Host *`) a konfigurációs fájlban feljebb szereplő adott állomásoknak nem megfelelő állomásokra vonatkoznak.
 
 
 ### A konfigurációs fájl ismertetése
 
 `Host` = a terminálon hívott állomás neve.  `ssh fedora22` a `Host fedora22` címkéjű beállításblokkban található értékek használatára szólítja fel az `SSH`-t. MEGJEGYZÉS: Ez a bármilyen olyan címke lehet, amely logikus a használatra vonatkozóan, és egyetlen kiszolgáló tényleges állomásnevét sem képviseli.
 
-`Hostname 102.160.203.241` = azon kiszolgáló IP-címe vagy DNS-neve, amelyre bejelentkezik. A cím a kiszolgálóra való irányításra szolgál, és lehet egy belső IP-címre leképezett külső IP-cím.
+`Hostname 102.160.203.241` = azon kiszolgáló IP-címe vagy DNS-neve, amelyhez hozzáfér.
 
-`User git` = a használni kívánt távoli felhasználói fiók az Azure virtuális gépbe való bejelentkezéskor.
+`User git` = a használni kívánt távoli felhasználói fiók.
 
 `PubKeyAuthentication yes` = közli az SSH-val, hogy SSH-kulcsot kíván használni a bejelentkezéshez.
 
-`IdentityFile /home/ahmet/.ssh/azure_fedora_id_rsa` = közli az SSH-val, hogy mely kulcspárt mutassa be a kiszolgálónak a bejelentkezés hitelesítéséhez.
+`IdentityFile /home/ahmet/.ssh/id_id_rsa` = a titkos SSH-kulcs és a hitelesítéshez használt megfelelő nyilvános kulcs.
 
 
 ## SSH-ból Linuxba jelszó nélkül
 
-Most, hogy rendelkezik SSH-kulcspárral és konfigurált SSH konfigurációs fájllal, gyorsan és biztonságosan jelentkezhet be a Linux virtuális gépre. Amikor először jelentkezik be egy kiszolgálóra SSH-kulccsal, a parancs felszólítja a kulcs jelszavának a megadására.
+Most, hogy rendelkezik SSH-kulcspárral és konfigurált SSH konfigurációs fájllal, gyorsan és biztonságosan jelentkezhet be a Linux virtuális gépre. Amikor először jelentkezik be egy kiszolgálóra SSH-kulccsal, a parancs felszólítja a kulcs jelszavának megadására.
 
 ```bash
 ssh fedora22
@@ -227,16 +235,16 @@ ssh fedora22
 
 Az `ssh fedora22` futtatásakor az SSH először megkeresi és betölti a `Host fedora22` blokk beállításait, majd betölti az összes többi beállítást az utolsó `Host *` blokkból.
 
-## További lépések
+## Következő lépések
 
-Ezután létre kell hoznia az Azure Linux virtuális gépeket az új nyilvános SSH-kulcs használatával.  A bejelentkezéshez nyilvános SSH-kulccsal létrehozott Azure virtuális gépek biztonságosabbak, mint az alapértelmezett bejelentkezési módszer jelszavaival létrehozottak.  A rendszer alapértelmezés szerint úgy konfigurálja a bejelentkezéshez SSH-kulcsokat használó Azure virtuális gépeket, hogy letiltsa a jelszavas bejelentkezéseket, így elkerülje a találgatásos támadáson alapuló betörési kísérleteket.
+Ezután létre kell hoznia az Azure Linux virtuális gépeket az új nyilvános SSH-kulcs használatával.  A bejelentkezéshez nyilvános SSH-kulccsal létrehozott Azure virtuális gépek biztonságosabbak, mint az alapértelmezett bejelentkezési módszer jelszavaival létrehozott virtuális gépek.  Az SSH-kulcsokkal létrehozott Azure virtuális gépek alapértelmezés szerint letiltott jelszavakkal vannak konfigurálva, ami megakadályozza a találgatásos támadásokat.
 
 - [Biztonságos Linux virtuális gép létrehozása Azure-sablon alapján](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-- [Biztonságos Linux virtuális gép létrehozása az Azure portál használatával](virtual-machines-linux-quick-create-portal.md)
+- [Biztonságos Linux virtuális gép létrehozása az Azure Portal használatával](virtual-machines-linux-quick-create-portal.md)
 - [Biztonságos Linux virtuális gép létrehozása az Azure parancssori felülettel](virtual-machines-linux-quick-create-cli.md)
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

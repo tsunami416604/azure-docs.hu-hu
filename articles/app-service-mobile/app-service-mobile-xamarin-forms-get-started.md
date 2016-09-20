@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-xamarin"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="05/06/2016"
+    ms.date="08/11/2016"
     ms.author="glenga"/>
 
 #Xamarin.Forms-alkalmazás létrehozása
@@ -36,7 +36,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Mac számítógép 7.0 vagy-s újabb verziójú Xcode-dal és Xamarin Studio Communityvel. Lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése) és [Setup, install, and verifications for Mac users](https://msdn.microsoft.com/library/mt488770.aspx) (Beállítás, telepítés és ellenőrzés Macintosh-felhasználók számára) (MSDN).
  
->[AZURE.NOTE] Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appServiceName=mobile) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű mobilalkalmazást az App Service szolgáltatásban. Nincs szükség bankkártyára, és nem jár semmiféle kötelezettséggel.
+>[AZURE.NOTE] Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appServiceName=mobile) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű mobilalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
 ## Új Azure Mobile Apps-háttéralkalmazás létrehozása
 
@@ -53,24 +53,16 @@ Konfigurálja a kiszolgálóprojektet a Node.js vagy a .NET-háttéralkalmazás 
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-
-## A háttérprojekt helyi tesztelése (nem kötelező)
-
-Ha a fenti .NET-háttérkonfigurációs megoldást választja, a háttéralkalmazást helyileg is tesztelheti (nem kötelező).
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-test-local-service](../../includes/app-service-mobile-dotnet-backend-test-local-service.md)]
-
-
 ##A Xamarin.Forms-megoldás letöltése és futtatása
 
 Itt több lehetősége is van. Letöltheti a megoldást egy Mac-számítógépre, és megnyithatja a Xamarin Studióban, vagy letöltheti a megoldást egy Windows-számítógépre, és megnyithatja a Visual Studióban egy hálózati Mac-számítógép segítségével az iOS-alkalmazás buildjének elkészítéséhez. A Xamarin beállítási lehetőségeivel kapcsolatos bővebb információkat lásd a [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése) című cikkben.
 
 Lássunk hozzá:
 
- 1. Macintosh- vagy Windows-számítógépén nyissa meg egy böngészőablakban az [Azure portál].
+ 1. Macintosh- vagy Windows-számítógépén nyissa meg egy böngészőablakban az [Azure Portal].
  2. A mobilalkalmazás beállítási paneljén kattintson az **Első lépések** (a Mobil alatt) > **Xamarin.Forms** elemre. A 3. lépésben kattintson az **Új alkalmazás létrehozása** lehetőségre, ha még nincs kiválasztva.  Ezután kattintson a **Letöltés** gombra.
 
-    Ez letölti a projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse a tömörített projektfájlt a helyi számítógépre, és jegyezze fel a mentési helyét.
+    Ez letölti a projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
 
  3. Bontsa ki a letöltött projektet, és nyissa meg a Xamarin Studio (vagy a Visual Studio) alkalmazást.
 
@@ -100,9 +92,10 @@ Az alkalmazásban írjon be egy értelmes szöveget, például _Xamarin-tanulás
 
 ![][10]
 
-Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A rendszer beilleszti kérés adatait a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
+Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
 
->[AZURE.NOTE] A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
+>[AZURE.NOTE]
+> A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
 
 ##Az Android-projekt futtatása (nem kötelező)
 
@@ -126,9 +119,10 @@ Az alkalmazásban írjon be egy értelmes szöveget, például _Xamarin-tanulás
 
 ![][11]
 
-Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A rendszer beilleszti kérés adatait a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
+Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
 
-> [AZURE.NOTE] A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
+> [AZURE.NOTE]
+> A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
 
 
 ##A Windows-projekt futtatása (nem kötelező)
@@ -148,18 +142,24 @@ Ez a szakasz a Windows-eszközökhöz készült Xamarin WinApp-projektek futtat�
 
 Az alkalmazásban írjon be egy értelmes szöveget, például _Xamarin-tanulás_, majd kattintson a **+** gombra.
 
-Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A rendszer beilleszti kérés adatait a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
+Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
 
 ![][12]
 
-> [AZURE.NOTE] A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
+> [AZURE.NOTE]
+> A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
 
 ##Következő lépések
 
-* [Hitelesítés hozzáadása az alkalmazáshoz ](app-service-mobile-xamarin-forms-get-started-users.md)  
-Ismerje meg, hogyan hitelesítheti alkalmazása felhasználóit identitásszolgáltató használatával.
-* [Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-push.md)  
-Ismerje meg, hogyan adhat leküldéses értesítéseket az alkalmazáshoz.
+* [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-users.md)  
+Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
+
+* [Leküldéses értesítések hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-push.md)  
+Ismerje meg, hogyan adhat leküldéses értesítéseket az alkalmazásához, illetve hogyan konfigurálhatja Mobile Apps-háttéralkalmazását az Azure Notification Hubs használatára a leküldéses értesítések küldéséhez.
+
+* [Az offline szinkronizálás engedélyezése az alkalmazás számára](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
+  Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. A kapcsolat nélküli szinkronizálás a mobilalkalmazást használó végfelhasználók számára lehetővé teszi &mdash;az adatok megtekintését, hozzáadását és módosítását&mdash; akkor is, ha nincs hálózati kapcsolat.
+
 * [A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz](app-service-mobile-dotnet-how-to-use-client-library.md)  
 Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazásokban. 
 
@@ -182,11 +182,11 @@ Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazás
 <!-- URLs. -->
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobilalkalmazás-SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

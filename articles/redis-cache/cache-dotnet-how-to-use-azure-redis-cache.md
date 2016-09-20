@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="cache-redis" 
     ms.devlang="dotnet" 
     ms.topic="hero-article" 
-    ms.date="05/31/2016" 
+    ms.date="08/25/2016" 
     ms.author="sdanie"/>
 
 # Az Azure Redis Cache használata
@@ -59,21 +59,7 @@ További információk a gyorsítótár konfigurálásáról: [How to configure 
 <a name="NuGet"></a>
 ## A gyorsítótárügyfelek konfigurálása
 
-Az Azure Redis Cache segítségével létrehozott gyorsítótárak bármelyik Azure-alkalmazásból elérhetők. A Visual Studióban fejlesztett .NET-alkalmazások képesek használni a **StackExchange.Redis** gyorsítótárügyfelet, amely konfigurálható a gyorsítótár-ügyfélalkalmazások konfigurálását leegyszerűsítő NuGet-csomagokkal. 
-
->[AZURE.NOTE] További információkat a [StackExchange.Redis][] github-oldalon és a [StackExchange.Redis gyorsítótárügyfél dokumentációjában][] talál.
-
-Egy ügyfélalkalmazás a Visual Studióban a StackExchange.Redis NuGet-csomag használatával történő konfigurálásához kattintson a jobb gombbal a projektre a **Solution Explorer** (Megoldáskezelő) felületén, majd válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget. 
-
-![NuGet-csomagok kezelése][NuGetMenu]
-
-Írja be a **StackExchange.Redis** vagy a **StackExchange.Redis.StrongName** kifejezést a keresőmezőbe, az eredmények közül válassza ki a kívánt verziót, majd kattintson az **Install** (Telepítés) gombra.
-
->[AZURE.NOTE] Ha inkább a **StackExchange.Redis** ügyfélkönyvtár erős elnevezésű verzióját kívánja használni, válassza a **StackExchange.Redis.StrongName**, ellenkező esetben pedig a **StackExchange.Redis** lehetőséget.
-
-![StackExchange.Redis NuGet-csomag][StackExchangeNuget]
-
-A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás számára szükséges szerelvényhivatkozásokat az Azure Redis Cache a StackExchange.Redis gyorsítótárügyféllel történő eléréséhez.
+[AZURE.INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
 Miután az ügyfélprojektet konfigurálta gyorsítótárazásra, a következő szakaszokban ismertetett módszereket is alkalmazhatja a gyorsítótár használatakor.
 
@@ -207,7 +193,9 @@ Most, hogy megismerte az alapokat, az alábbi hivatkozásokra kattintva tudhat m
 -   [Engedélyezze a gyorsítótár-diagnosztikát,](cache-how-to-monitor.md#enable-cache-diagnostics) hogy [megfigyelhesse](cache-how-to-monitor.md) a gyorsítótár állapotát. A mérőszámokat megtekintheti az Azure portálon, illetve többféle eszközzel [letöltheti és áttekintheti](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) őket.
 -   Tekintse meg a [StackExchange.Redis gyorsítótárügyfél dokumentációjában][].
     -   Az Azure Redis Cache számos Redis-ügyfélből és fejlesztési nyelvből elérhető. További információ: [http://redis.io/clients][].
-    -   Az Azure Redis Cache olyan szolgáltatásokkal is használható, mint a Redsmin. További információk: [Azure Redis kapcsolati karakterlánc lekérése és használata a Redsminne][].
+-   Az Azure Redis Cache olyan harmadik féltől származó szolgáltatásokkal és eszközökkel is használható, mint a Redsmin vagy a Redis Destkop Manager.
+    -   További információk a Redsminről: [How to retrieve an Azure Redis connection string and use it with Redsmin][] (Azure Redis kapcsolati karakterlánc lekérése és használata a Redsminnel).
+    -   Az Azure Redis Cache-ben tárolt adatait a [RedisDesktopManagert](https://github.com/uglide/RedisDesktopManager) használó grafikus felhasználó felületen érheti el és vizsgálhatja meg.
 -   Tekintse meg a [Redis][] dokumentációt, ahol olvashat a [Redis-adattípusokról][], valamint áttekintheti [A Redis-adattípusok tizenöt perces bemutatását][].
 
 
@@ -257,7 +245,7 @@ Most, hogy megismerte az alapokat, az alábbi hivatkozásokra kattintva tudhat m
 <!-- LINKS -->
 [http://redis.io/clients]: http://redis.io/clients
 [Develop in other languages for Azure Redis Cache (Fejlesztés más nyelveken az Azure Redis Cache-hez)]: http://msdn.microsoft.com/library/azure/dn690470.aspx
-[Azure Redis kapcsolati karakterlánc lekérése és használata a Redsminne]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
+[How to retrieve an Azure Redis connection string and use it with Redsmin]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
 [Az Azure Redis munkamenetállapot-szolgáltatója]: http://go.microsoft.com/fwlink/?LinkId=398249
 [How to: Configure a Cache Client Programmatically (Útmutató: A gyorsítótár-ügyfél szoftveres konfigurálása)]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
 [Session State Provider for Azure Cache (Az Azure Cache munkamenetállapot-szolgáltatója)]: http://go.microsoft.com/fwlink/?LinkId=320835
@@ -302,6 +290,6 @@ Most, hogy megismerte az alapokat, az alábbi hivatkozásokra kattintva tudhat m
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

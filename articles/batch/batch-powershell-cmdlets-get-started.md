@@ -13,11 +13,11 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="powershell"
    ms.workload="big-compute"
-   ms.date="04/21/2016"
+   ms.date="07/28/2016"
    ms.author="danlep"/>
 
 # Az Azure Batch PowerShell-parancsmagok használatának első lépései
-Ez a cikk gyors ismertetést nyújt a Batch-fiókok felügyeletéhez és a Batch-erőforrásokkal, például készletekkel, feladatokkal és tevékenységekkel használható Azure PowerShell-parancsmagokról. A Batch API-k, az Azure Portal és az Azure parancssori felület (CLI) használatával végrehajtott műveletek közül sokat elvégezhet a Batch-parancsmagokkal is. Ez a cikk az Azure PowerShell 1.3.2-es vagy újabb verziójának parancsmagjain alapul.
+Az Azure Batch PowerShell-parancsmagokkal a Batch API-k, az Azure Portal és az Azure parancssori felület (CLI) használatával végrehajtott műveletek közül sokat elvégezhet. Ez a cikk gyors ismertetést nyújt a Batch-fiókok felügyeletéhez és a Batch-erőforrásokkal, például készletekkel, feladatokkal és tevékenységekkel használható parancsmagokról. Ez a cikk az Azure PowerShell 1.6.0-s verziójának parancsmagjain alapul.
 
 A Batch-parancsmagok teljes listájáért és a parancsmagok részletes szintaxisáért lásd: [Azure Batch-parancsmagok referenciája](https://msdn.microsoft.com/library/azure/mt125957.aspx). 
 
@@ -45,7 +45,7 @@ A **New-AzureRmBatchAccount** parancs új Batch-fiókot hoz létre a meghatároz
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
 
-Ezután hozzon létre egy új Batch-fiókot az erőforráscsoportban, majd adjon meg egy fióknevet az <*account_name*> helyőrző helyett, valamint egy helyet, ahol a Batch-szolgáltatás elérhető. A fiók létrehozásának befejezése több percig is eltarthat. Példa:
+Ezután hozzon létre egy új Batch-fiókot az erőforráscsoportban, adjon meg egy fióknevet az <*account_name*> helyőrző helyett, és adja meg az erőforráscsoport helyét és nevét. A Batch-fiókok létrehozása eltarthat egy ideig. Példa:
 
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
@@ -94,14 +94,20 @@ A BatchAccountContext objektumot a **BatchContext** paramétert használó paran
 ## Batch-erőforrások létrehozása és módosítása
 Például a **New-AzureBatchPool**, **New-AzureBatchJob** és **New-AzureBatchTask** parancsmagokkal hozhat létre erőforrásokat a Batch-fiókokban. Megfelelő **Get-** és **Set-** parancsmagokkal frissítheti a meglévő erőforrások tulajdonságait, és a **Remove-** parancsmagokkal távolíthatja el az erőforrásokat a Batch-fiókokról. 
 
+Sok parancsmag használatakor egy BatchContext objektum átadása mellett részletes erőforrás-beállításokat tartalmazó objektumok létrehozására vagy átadására is szükség van, ahogyan az a következő példában látható. További példákat az egyes parancsmagok részletes súgójában talál.
+
 ### Batch-készlet létrehozása
 
-A következő parancsmag például egy új Batch-készletet hoz létre, amely úgy van konfigurálva, hogy kis méretű virtuális gépeket használjon a 3-as család (Windows Server 2012) legújabb operációsrendszer-verziójával. A számítási csomópontok célszámát egy automatikus méretezési képlet határozza meg. Ebben az esetben a képlet egyszerűen a **$TargetDedicated=3**, ami jelzi, hogy a készletben lévő számítási csomópontok száma legfeljebb 3. A **BatchContext** paraméter egy korábban meghatározott *$context* változót ad meg a BatchAccountContext objektumként.
+Batch-készlet létrehozásakor vagy frissítésekor kiválaszt egy felhőszolgáltatás- vagy virtuálisgép-konfigurációt az operációs rendszerhez a számítási csomópontokon (lásd: [Batch-funkciók áttekintése](batch-api-basics.md#pool)). A választása határozza meg, hogy a számítási csomópontok az egyik [Azure vendég operációs rendszer kiadással](../cloud-services/cloud-services-guestos-update-matrix.md#releases), vagy az Azure Marketplace egyik támogatott Linux vagy Windows virtuálisgép-lemezképével képeződnek-e le. 
+
+A **New-AzureBatchPool** parancs futtatásakor adja át a PSCloudServiceConfiguration vagy PSVirtualMachineConfiguration objektumban található operációsrendszer-beállításokat. A következő parancsmag például egy új Batch-készletet hoz létre kis méretű számítási csomópontokkal a felhőszolgáltatás konfigurációjában, amely a 3-as család (Windows Server 2012) legújabb operációsrendszer-verziójával van leképezve. Itt a **CloudServiceConfiguration** paraméter a *$configuration* változót a PSCloudServiceConfiguration objektumként határozza meg. A **BatchContext** paraméter egy korábban meghatározott *$context* változót ad meg a BatchAccountContext objektumként.
 
 
-    New-AzureBatchPool -Id "MyAutoScalePool" -VirtualMachineSize "Small" -OSFamily "3" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=3;' -BatchContext $Context
+    $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(3,"*")
+    
+    New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=4;' -BatchContext $context
 
->[AZURE.NOTE]A Batch PowerShell-parancsmagok jelenleg csak a számítási csomópontok Cloud Services-konfigurációját támogatják. Így a Windows Server operációs rendszer Azure vendég operációs rendszer verzióit futtathatja a számítási csomópontokon. A Batch-készletek egyéb számításicsomópont-konfigurációihoz használja a Batch SDK-kat vagy az Azure parancssori felületet.
+Az új készletben a számítási csomópontok célszámát egy automatikus méretezési képlet határozza meg. Ebben az esetben a képlet egyszerűen a **$TargetDedicated=4**, ami jelzi, hogy a készletben lévő számítási csomópontok száma legfeljebb 4. 
 
 ## Készletek, feladatok, tevékenységek és egyéb részletek lekérdezése
 
@@ -159,10 +165,10 @@ A Batch-parancsmagok a PowerShell-folyamattal adatokat tudnak küldeni a folyama
 ## Következő lépések
 * A parancsmag részletes szintaxisáért és példákért lásd: [Azure Batch-parancsmagok referenciája](https://msdn.microsoft.com/library/azure/mt125957.aspx).
 
-* További információ az elemek számának csökkentéséről és a Batch lekérdezésiről visszaadott információk típusáról: [A Batch szolgáltatás hatékony lekérdezése](batch-efficient-list-queries.md). 
+* További információ az elemek számának csökkentéséről és a Batch lekérdezésiről visszaadott információk típusáról: [Query the Batch service efficiently](batch-efficient-list-queries.md) (A Batch szolgáltatás hatékony lekérdezése). 
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

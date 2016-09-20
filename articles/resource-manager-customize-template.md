@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/10/2016"
+    ms.date="08/01/2016"
     ms.author="tomfitz"/>
 
 # Exportált Azure Resource Manager sablon testreszabása
@@ -227,7 +227,7 @@ Az alábbi cikk mindkét lehetőséget bemutatja.
 
         .\deploy.sh
 
-## További lépések
+## Következő lépések
 
 - Az [Útmutató Resource Manager sablonokhoz](resource-manager-template-walkthrough.md) című cikk a jelen cikkben megszerzett tudásra épít, és bemutatja, hogyan készítheti el bonyolultabb megoldások sablonjait. Segít a rendelkezésre álló erőforrások jobb megértésében, valamint a megadott értékek meghatározásában.
 - A sablonok PowerShellen keresztül történő exportálásával kapcsolatos információk: [Az Azure PowerShell használata Azure Resource Managerrel](powershell-azure-resource-manager.md).
@@ -236,6 +236,6 @@ Az alábbi cikk mindkét lehetőséget bemutatja.
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

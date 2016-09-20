@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-sencha"
     ms.devlang="multiple"
     ms.topic="get-started-article"
-    ms.date="02/10/2016"
+    ms.date="07/21/2016"
     ms.author="glenga"/>
 
 # <a name="getting-started"> </a>Bevezetés a Mobile Services és a Sencha Touch használatába
@@ -726,6 +726,6 @@ A Sencha Touch használatának első lépéseivel kapcsolatos részletesebb info
 [klasszikus Azure portál]: https://manage.windowsazure.com/
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

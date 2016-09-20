@@ -5,7 +5,7 @@
     documentationCenter=".net" 
     authors="Rick-Anderson" 
     manager="wpickett" 
-    editor="jimbe"/>
+    editor="none"/>
 
 <tags 
     ms.service="app-service-web" 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="dotnet" 
     ms.topic="get-started-article" 
-    ms.date="02/27/2016" 
+    ms.date="06/27/2016" 
     ms.author="riande"/>
 
 
@@ -43,7 +43,7 @@ A NuGet csomag szerelvényhivatkozások a gyorsítótárhoz való létrehozása 
 
 1. Nyissa meg a *web.config* fájlt, és keresse meg a **sessionState** elemet.
 
-1. Adja meg a `host`, az `accessKey`, és a `port` értékét (az SSL-port legyen 6380), és állítsa az `SSL` tulajdonságot `true` értékűre. Ezek az értékek a gyorsítótárpéldány [Azure portál](http://go.microsoft.com/fwlink/?LinkId=529715) paneljéről szerezhetők be. További információ: [Csatlakozás a gyorsítótárhoz](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Vegye figyelembe, hogy a nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. További információk a nem SSL port engedélyezésével kapcsolatban: [Configure a cache in Azure Redis Cache](https://msdn.microsoft.com/library/azure/dn793612.aspx) (Gyorsítótár konfigurálása az Azure Redis Cache-ben) témakör, [Access Ports](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) (Hozzáférési portok) című szakasz. A következő kódban láthatók a *web.config* fájlon eszközölt módosítások, vagyis a *port*, a *host*, az accessKey*, és az *ssl* változásai.
+1. Adja meg a `host`, az `accessKey`, és a `port` értékét (az SSL-port legyen 6380), és állítsa az `SSL` tulajdonságot `true` értékűre. Ezek az értékek a gyorsítótárpéldány [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) paneljéről szerezhetők be. További információ: [Csatlakozás a gyorsítótárhoz](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Vegye figyelembe, hogy a nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. További információk a nem SSL port engedélyezésével kapcsolatban: [Configure a cache in Azure Redis Cache](https://msdn.microsoft.com/library/azure/dn793612.aspx) (Gyorsítótár konfigurálása az Azure Redis Cache-ben) témakör, [Access Ports](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) (Hozzáférési portok) című szakasz. A következő kódban láthatók a *web.config* fájlon eszközölt módosítások, vagyis a *port*, a *host*, az accessKey*, és az *ssl* változásai.
 
           <system.web>;
             <customErrors mode="Off" />;
@@ -89,7 +89,7 @@ A következő kód lekéri ezt az értéket a munkamenet-állapotból.
 A webalkalmazáson belüli objektumok gyorsítótárazásához ezenkívül használhatja a Redis Cache-t is. További információk: [MVC movie app with Azure Redis Cache in 15 minutes](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/) (MVC filmalkalmazás 15 perc alatt az Azure Redis Cache segítségével).
 További részletek az ASP.NET-munkamenetállapot használatával kapcsolatban: [ASP.NET Session State Overview (Az ASP.NET-munkamenetállapot áttekintése)][] .
 
->[AZURE.NOTE] Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+>[AZURE.NOTE] Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az Azure App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
 ## A változások
 * Információk a Websites szolgáltatásról az App Service-re való váltásról: [Az Azure App Service és a hatása a meglévő Azure-szolgáltatásokra](http://go.microsoft.com/fwlink/?LinkId=529714)
@@ -111,6 +111,6 @@ További részletek az ASP.NET-munkamenetállapot használatával kapcsolatban: 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/26/2016"
+    ms.date="06/27/2016"
     ms.author="billmath;andkjell"/>
 
 # Első lépések az Azure AD Connecttel a gyorsbeállítások használatával
@@ -31,9 +31,9 @@ Ezeket a lépéseket működés közben a [Videók](#videos) szakaszban tekinthe
 3. Az üdvözlőképernyőn jelölje be a licencfeltételek elfogadását jelző mezőt, és kattintson a **Continue** (Folytatás) gombra.  
 4. Az Express settings (Gyorsbeállítások) képernyőn kattintson a **Use express settings** (Gyorsbeállítások használata) lehetőségre.  
 ![Üdvözli az Azure AD Connect](./media/active-directory-aadconnect-get-started-express/express.png)
-5. A Connect to Azure AD (Csatlakozás az Azure AD szolgáltatáshoz) képernyőn adja meg az Azure AD egy globális rendszergazdai fiókjának felhasználónevét és jelszavát. Kattintson a **Next** (Tovább) gombra.  
+5. A Connect to Azure AD (Csatlakozás az Azure AD szolgáltatáshoz) képernyőn adja meg az Azure AD egy globális rendszergazdai fiókjának felhasználónevét és jelszavát. Kattintson a **Tovább** gombra.  
 ![Csatlakozás az Azure AD szolgáltatáshoz](./media/active-directory-aadconnect-get-started-express/connectaad.png) Ha hibaüzenetet kap és problémák adódnak a kapcsolódással, tekintse meg a [Troubleshoot connectivity problems](active-directory-aadconnect-troubleshoot-connectivity.md) (Kapcsolati problémák elhárítása) szakaszt.
-6. A Connect to AD DS (Csatlakozás az AD DS szolgáltatáshoz) képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, azaz FABRIKAM\rendszergazda vagy fabrikam.com\rendszergazda alakban. Kattintson a **Next** (Tovább) gombra.  
+6. A Connect to AD DS (Csatlakozás az AD DS szolgáltatáshoz) képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, azaz FABRIKAM\rendszergazda vagy fabrikam.com\rendszergazda alakban. Kattintson a **Tovább** gombra.  
 ![Csatlakozás az AD DS szolgáltatáshoz](./media/active-directory-aadconnect-get-started-express/connectad.png)
 7. Az [**Azure AD sign-in configuration**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration) (Azure AD bejelentkezés konfigurálása) lap csak akkor jelenik meg, ha nem végezte el [a tartományok ellenőrzését](active-directory-add-domain.md) az [előfeltételek](active-directory-aadconnect-prerequisites.md) közt.
 ![Nem ellenőrzött tartományok](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
@@ -51,7 +51,7 @@ A gyorstelepítés használatát bemutató videót itt tekintheti meg:
 
 >[AZURE.VIDEO azure-active-directory-connect-express-settings]
 
-## További lépések
+## Következő lépések
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](active-directory-aadconnect-whats-next.md).
 
 Ismerkedjen meg a következő, a telepítéssel engedélyezett szolgáltatásokkal: az [Automatikus frissítés](active-directory-aadconnect-feature-automatic-upgrade.md), a [Véletlen törlések megakadályozása](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) és az [Azure AD Connect Health](active-directory-aadconnect-health-sync.md).
@@ -71,6 +71,6 @@ Telepítési fiókok | [További információk az Azure AD Connect-fiókokkal é
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Batch- és HPC-megoldások a felhőben | Microsoft Azure"
-   description="Ez a cikk a Batch- és nagy teljesítményű feldolgozási (HPC- és Big Compute-) forgatókönyveket és megoldási lehetőségeket ismerteti az Azure rendszerben"
+   description="Megismerheti a Batch- és nagy teljesítményű feldolgozási (HPC- és Big Compute-) forgatókönyveket és megoldási lehetőségeket az Azure rendszerben"
    services="batch, virtual-machines, cloud-services"
    documentationCenter=""
    authors="dlepow"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="04/21/2016"
+   ms.date="07/27/2016"
    ms.author="danlep"/>
 
 # Batch- és HPC-megoldások az Azure-felhőben | Microsoft Azure
@@ -62,7 +62,7 @@ Sok, helyszíni HPC-fürtön való futtatásra tervezett alkalmazást áttelepí
 
 A Big Compute- és a Big Data-alkalmazások közötti határvonal nem mindig egyértelmű, és egyes alkalmazások mindkettő jellemzőivel rendelkezhetnek. Mindkettőben nagy méretű számítások futnak, általában számítógépfürtökön. A megoldások megközelítései és a támogatási eszközök azonban eltérhetnek.
 
-• A **Big Compute** általában olyan alkalmazásokkal használatos, amelyek processzorteljesítményt és memóriát igényelnek. Ilyenek például a mérnöki szimulációk, a pénzügyi kockázatmodellezések és a digitális renderelések. A Big Compute-megoldásokat működtető fürtök speciális, többmagos processzorral működő számítógépeket tartalmazhatnak, amelyek a nyers számítási feladatokat végzik, a számítógépeket pedig speciális, nagysebességű hálózati hardverek köthetik össze.
+• A **Big Compute** általában olyan alkalmazásokkal használatos, amelyek processzorteljesítményt és memóriát igényelnek. Ilyenek például a mérnöki szimulációk, a pénzügyi kockázatmodellezések és a digitális renderelések. A Big Compute-megoldások infrastruktúrája speciális, többmagos processzorral működő számítógépeket tartalmazhat, amelyek a nyers számítási feladatokat végzik, a számítógépeket pedig speciális, nagy sebességű hálózati hardverek köthetik össze.
 
 • A **Big Data** olyan adatelemzési problémákat old meg, amelyek adatmennyisége nem kezelhető egyetlen számítógéppel vagy adatbázis-kezelő rendszerrel, például nagy mennyiségű webnapló- vagy egyéb üzletiintelligencia-adat kezeléséhez. A Big Data jellemzően inkább a lemezkapacitásra és az adatátviteli teljesítményre támaszkodik, mint a processzorteljesítményre, és speciális eszközöket, például az Apache Hadoopot használhatja a fürt kezeléséhez és az adatok particionálásához. (Az Azure HDInsighttal és más Azure Hadoop-megoldásokkal kapcsolatban további információért lásd: [Hadoop](https://azure.microsoft.com/solutions/hadoop/).)
 
@@ -74,7 +74,7 @@ A Batch- és HPC-alkalmazások futtatásában általában egy *fürtkezelő* és
 
 * **Feladatütemező** – Meghatározza az alkalmazások által igényelt erőforrásokat (például processzorokat vagy memóriát) és a futtatásuk feltételeit. A feladatütemezők fenntartják a feladatok várólistáját, és erőforrásokat foglalnak le a hozzájuk rendelt prioritás vagy egyéb jellemzők alapján.
 
-A Windows-alapú és Linux-alapú fürtök fürtkezelő és feladatütemező eszközei jó áttelepíthetők az Azure-ra. A [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029), a Microsoft windowsos és linuxos HPC számítási feladatokhoz használható ingyenes számítási fürtkezelő megoldása például több lehetőséget nyújt az Azure-on való futtatáshoz. Linux-fürtöket is építhet nyílt forráskódú eszközök, például a Torque és a SLURM futtatásához, vagy kereskedelmi eszközök, például a [TIBCO DataSynapse GridServer](http://www.tibco.com/products/automation/application-development/grid-computing/gridserver) és az [Univa Grid Engine](http://www.univa.com/products/grid-engine) futtatásához az Azure-ban.
+A Windows-alapú és Linux-alapú fürtök fürtkezelő és feladatütemező eszközei jó áttelepíthetők az Azure-ra. A [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029), a Microsoft windowsos és linuxos HPC számítási feladatokhoz használható ingyenes számítási fürtkezelő megoldása például több lehetőséget nyújt az Azure-on való futtatáshoz. Linux-fürtöket is építhet nyílt forráskódú eszközök, például a Torque és a SLURM futtatásához, vagy kereskedelmi eszközök, például a [TIBCO DataSynapse GridServer](http://www.tibco.com/company/news/releases/2016/tibco-to-accelerate-cloud-adoption-of-banking-and-capital-markets-customers-via-microsoft-collaboration), az [IBM Platform Symphony](http://www-01.ibm.com/support/docview.wss?uid=isg3T1023592) és az [Univa Grid Engine](http://www.univa.com/products/grid-engine) futtatásához az Azure-ban.
 
 A következő szakaszokban leírtak szerint az Azure-szolgáltatások segítségével hagyományos fürtkezelő eszközök nélkül (vagy mellett) is kezelhet számítási erőforrásokat és ütemezhet feladatokat.
 
@@ -85,9 +85,9 @@ Itt három általános forgatókönyv látható a Big Compute számítási felad
 
   | Forgatókönyv | Kiválasztás szempontjai
 ------------- | ----------- | ---------------
-**HPC-fürt löketszerű átvitele az Azure-ba**<br/><br/>[![Cluster burst][burst_cluster]](./media/batch-hpc-solutions/burst_cluster.png) <br/><br/> További információ:<br/>• [Burst to Azure with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx) (Adatlöket átvitele az Azure-ba a Microsoft HPC Packkel)<br/><br/>• [Set up a hybrid compute cluster with Microsoft HPC Pack](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md) (Hibrid számítási fürt beállítása Microsoft HPC Packkel)<br/><br/>|• A [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) vagy más helyszíni fürtök további Azure-erőforrásokkal kombinálhatók egy hibrid megoldásban.<br/><br/>• A Big Compute számítási feladatokat kibővítheti, hogy szolgáltatott platformra (PaaS) épülő virtuálisgép-példányokon fussanak (jelenleg csak a Windows Server támogatott).<br/><br/>• Helyszíni licenckiszolgáló vagy adattár elérése opcionális Azure virtuális hálózattal|• Meglévő HPC-fürttel rendelkezik, és több erőforrásra van szüksége <br/><br/>• Nem szeretne további HPC-fürtinfrastruktúrát vásárolni és kezelni<br/><br/>• Átmeneti csúcsidőszakai vagy speciális projektjei vannak
+**HPC-fürt löketszerű átvitele az Azure-ba**<br/><br/>[![Cluster burst][burst_cluster]](./media/batch-hpc-solutions/burst_cluster.png) <br/><br/> További információ:<br/>• [Burst to Azure worker instances with HPC Pack](https://technet.microsoft.com/library/gg481749.aspx) (Adatlöket átvitele az Azure feldolgozópéldányokba a HPC Packkel)<br/><br/>• [Set up a hybrid compute cluster with HPC Pack](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md) (Hibrid számítási fürt beállítása HPC Packkel)<br/><br/>• [Burst to Azure Batch with HPC Pack](https://technet.microsoft.com/library/mt612877.aspx) (Adatlöket átvitele az Azure Batch-be a HPC Packkel)<br/><br/>|• A [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) vagy más helyszíni fürtök további Azure-erőforrásokkal kombinálhatók egy hibrid megoldásban.<br/><br/>• A Big Compute számítási feladatokat kibővítheti, hogy szolgáltatott platformra (PaaS) épülő virtuálisgép-példányokon fussanak (jelenleg csak a Windows Server támogatott).<br/><br/>• Helyszíni licenckiszolgáló vagy adattár elérése opcionális Azure virtuális hálózattal|• Meglévő HPC-fürttel rendelkezik, és több erőforrásra van szüksége <br/><br/>• Nem szeretne további HPC-fürtinfrastruktúrát vásárolni és kezelni<br/><br/>• Átmeneti csúcsidőszakai vagy speciális projektjei vannak
 **HPC-fürt létrehozása kizárólag az Azure-ban**<br/><br/>[![Cluster in IaaS][iaas_cluster]](./media/batch-hpc-solutions/iaas_cluster.png)<br/><br/>További információ:<br/>• [HPC-fürtmegoldások az Azure-ban](./big-compute-resources.md)<br/><br/>|• Gyorsan és egységesen telepítheti az alkalmazásait és fürteszközeit szolgáltatott infrastruktúrára (IaaS) épülő, szabványos vagy egyéni Windows- és Linux- alapú virtuális gépekre.<br/><br/>• Különböző Big Compute számítási feladatokat futtathat az igényeinek megfelelő munkaütemező megoldással.<br/><br/>• További Azure-szolgáltatások, többek között a hálózatkezelés és tárolás használata teljes felhőalapú megoldások létrehozásához. |• Nem szeretne további Linux- vagy Windows-alapú HPC-fürtinfrastruktúrát vásárolni és kezelni<br/><br/>• Átmeneti csúcsidőszakai vagy speciális projektjei vannak<br/><br/>• Egy ideig szüksége van egy további fürtre, de nem kíván számítógépekre és az üzembe helyezéshez szükséges helyre költeni<br/><br/>• Szeretne kiszervezni egy nagy számítási igényű alkalmazást, hogy kizárólag a felhőben, szolgáltatásként fusson
-**Párhuzamos alkalmazás horizontális felskálázása az Azure-ra**<br/><br/>[![Azure Batch][batch_proc]](./media/batch-hpc-solutions/batch_proc.png)<br/><br/>További információ:<br/>• [Az Azure Batch alapjai](./batch-technical-overview.md)<br/><br/>• [Ismerkedés az Azure Batch .NET-es kódtárával](./batch-dotnet-get-started.md)|• Fejlesztés az [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) API-kkal különböző Big Compute számítási feladatok kiterjesztéséhez, hogy Windows- vagy Linux-alapú virtuális gépek készletein fussanak.<br/><br/>• A virtuális gépek üzembe helyezésének és automatikus méretezésének, a feladatütemezés, a vészhelyreállítás, az adatmozgatás, a függőségkezelés és az alkalmazások üzembe helyezésének kezelése Azure-szolgáltatásokkal – különálló HPC-fürt vagy feladatütemező nélkül.|• Nem szeretne számítási erőforrásokat vagy feladatütemezőt kezelni; ehelyett az alkalmazások futtatására szeretne összpontosítani<br/><br/>• Szeretne kiszervezni egy nagy számítási igényű alkalmazást, hogy szolgáltatásként fusson a felhőben<br/><br/>• Automatikusan, a számítási feladatoknak megfelelően szeretné méretezni a számítási erőforrásokat
+**Párhuzamos alkalmazás horizontális felskálázása az Azure-ra**<br/><br/>[![Azure Batch][batch_proc]](./media/batch-hpc-solutions/batch_proc.png)<br/><br/>További információ:<br/>• [Az Azure Batch alapjai](./batch-technical-overview.md)<br/><br/>• [Ismerkedés az Azure Batch .NET-es kódtárával](./batch-dotnet-get-started.md)|• Fejlesztés az [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) segítségével különböző Big Compute számítási feladatok kiterjesztéséhez, hogy Windows- vagy Linux-alapú virtuális gépek készletein fussanak.<br/><br/>• A virtuális gépek üzembe helyezésének és automatikus méretezésének, a feladatütemezés, a vészhelyreállítás, az adatmozgatás, a függőségkezelés és az alkalmazások üzembe helyezésének kezelése Azure-szolgáltatásokkal – különálló HPC-fürt vagy feladatütemező nélkül.|• Nem szeretne számítási erőforrásokat vagy feladatütemezőt kezelni; ehelyett az alkalmazások futtatására szeretne összpontosítani<br/><br/>• Szeretne kiszervezni egy nagy számítási igényű alkalmazást, hogy szolgáltatásként fusson a felhőben<br/><br/>• Automatikusan, a számítási feladatoknak megfelelően szeretné méretezni a számítási erőforrásokat
 
 
 ## Azure-szolgáltatások a Big Compute-feladatokhoz
@@ -100,12 +100,12 @@ Ebben a cikkben további információt talál a Big Compute-megoldások és -mun
 
 Az Azure számítási szolgáltatások a Big Compute-megoldások fő elemei, és a különböző számítási szolgáltatások különböző forgatókönyvekhez nyújtanak előnyöket. Alapszinten ezek a szolgáltatások különböző módokat nyújtanak, amelyekkel az alkalmazások az Azure által a Windows Server Hyper-V technológiával biztosított virtuálisgép-alapú számítási példányokon futhatnak. Ezek a példányok különböző szabványos és egyéni Linux és Windows operációs rendszereket és eszközöket futtathatnak. Az Azure különböző [példányméreteket](../virtual-machines/virtual-machines-windows-sizes.md) tesz elérhetővé a processzormagok, memória, lemezkapacitás és más jellemzők különböző konfigurációival. Az igényei alapján a példányokat több ezer magra is méretezheti, majd csökkentheti a méretüket, amikor kevesebb erőforrásra van szüksége.
 
->[AZURE.NOTE] Az A8-A11 példányok használatával növelheti egyes HPC számítási feladatok teljesítményét, mint például a kis késést és nagy teljesítményű alkalmazáshálózatot igénylő párhuzamos MPI-alkalmazásokat. Lásd: [Az A8, A9, A10 és A11 nagy számítási igényű példányok névjegye](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md).  
+>[AZURE.NOTE] Az Azure számításigényes példányainak használatával növelheti egyes HPC számítási feladatok, például a kis késést és nagy teljesítményű alkalmazáshálózatot igénylő párhuzamos MPI-alkalmazások teljesítményét. Lásd: [About the A8, A9, A10, and A11 compute-intensive instancese](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) (Az A8, A9, A10 és A11 nagy számítási igényű példányok névjegye).  
 
 Szolgáltatás | Leírás
 ------------- | -----------
+**[Virtual machines (Virtuális gépek)](https://azure.microsoft.com/documentation/services/virtual-machines/)**<br/><br/> |• Szolgáltatott infrastruktúra (IaaS) biztosítása Microsoft Hyper-V technológiával<br/><br/>• Lehetővé teszi, hogy rugalmasan építsen ki és kezeljen állandó felhőalapú számítógépeket az [Azure Marketplace](https://azure.microsoft.com/marketplace/)-ről származó standard Windows Server- vagy Linux-rendszerképekről, illetve az Ön által megadott rendszerképekről és adatlemezekről.<br/><br/>• [Virtuálisgép-méretezési készletekként](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/) telepíthető és kezelhető nagyméretű szolgáltatások létrehozásához azonos virtuális gépekből, a kapacitás méretének automatikus növelésével vagy csökkentésével<br/><br/>• Helyszíni számításifürt-eszközök és -alkalmazások futtatása teljes mértékben a felhőn<br/><br/>
 **[Felhőszolgáltatások](https://azure.microsoft.com/documentation/services/cloud-services/)**<br/><br/> |• A Big Compute-alkalmazásokat feldolgozói szerepkörpéldányokban futtathatja, amelyek a Windows Server valamelyik verzióját futtató, teljes mértékben az Azure által kezelt virtuális gépek<br/><br/>• Méretezhető, megbízható alkalmazásokat engedélyezhet alacsony adminisztrációs terheléssel, szolgáltatott platform (PaaS) modellben<br/><br/>• További eszközöket vagy fejlesztést igényelhet a helyi-HPC fürtmegoldásokkal való integráláshoz
-**[Virtual machines (Virtuális gépek)](https://azure.microsoft.com/documentation/services/virtual-machines/)**<br/><br/> |• Szolgáltatott infrastruktúra (IaaS) biztosítása Microsoft Hyper-V technológiával<br/><br/>• Lehetővé teszi, hogy rugalmasan építsen ki és kezeljen állandó felhőalapú számítógépeket standard Windows Server- vagy Linux-rendszerképekről, illetve az Ön által megadott vagy az [Azure Marketplace-ről](https://azure.microsoft.com/marketplace/) származó rendszerképekről és adatlemezekről<br/><br/>• [Virtuálisgép-méretezési készletekként](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/) telepíthető és kezelhető nagyméretű szolgáltatások létrehozásához azonos virtuális gépekből, a kapacitás méretének automatikus növelésével vagy csökkentésével<br/><br/>• Helyszíni számításifürt-eszközök és -alkalmazások futtatása teljes mértékben a felhőn<br/><br/>
 **[Batch](https://azure.microsoft.com/documentation/services/batch/)**<br/><br/> |• Nagy méretű párhuzamos és kötegelt számítási feladatokat futtat egy teljes mértékben felügyelt szolgáltatásban<br/><br/>• Biztosítja a virtuális gépek felügyelt készletének feladatütemezését és automatikus méretezését<br/><br/>• Lehetővé teszi, hogy a fejlesztők szolgáltatásként építsék fel és futtassák az alkalmazásokat, vagy a meglévő alkalmazásokat a felhőben tegyék elérhetővé<br/>
 
 ### Tárolási szolgáltatások
@@ -134,7 +134,7 @@ Egyes Big Compute-forgatókönyvekben nagy méretű adatfolyamok szerepelnek, va
 
 A Big Compute-megoldása más Azure-szolgáltatásokat is igényelhet ahhoz, hogy a helyszínen vagy más környezetekben csatlakozzon az erőforrásokhoz. Példák erre vonatkozóan:
 
-* [Virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/) – Logikailag elkülönített szakaszt hoz létre az Azure-ban, így az Azure-erőforrások a helyszíni adatközponthoz vagy egyetlen ügyfélgéphez csatlakozhatnak az IPSec használatával. Emellett lehetővé teszi, hogy a Big Compute-alkalmazások elérjék a helyszíni adatokat, az Active Directory-szolgáltatásokat és a licenckiszolgálókat
+* [Virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/) – Logikailag elkülönített szakaszt hoz létre az Azure-ban, így az Azure-erőforrások egymáshoz vagy a helyszíni adatközponthoz csatlakozhatnak. Emellett lehetővé teszi, hogy a Big Compute-alkalmazások elérjék a helyszíni adatokat, az Active Directory-szolgáltatásokat és a licenckiszolgálókat.
 
 * [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) – Magánkapcsolatot hoz létre a Microsoft-adatközpontok és olyan infrastruktúrák között, amelyek helyszíniek vagy közös környezetben találhatók. A kapcsolat biztonságosabb, megbízhatóbb, gyorsabb és kevesebb késéssel jár, mint az interneten keresztüli általános kapcsolatok.
 
@@ -146,19 +146,19 @@ A Big Compute-megoldása más Azure-szolgáltatásokat is igényelhet ahhoz, hog
 
 * Beszélje meg az Azure-lehetőségeket a partnerekkel, a Cycle Computingot és az UberCloudot is beleértve.
 
-* Olvasson a [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222), [Altair](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/) és [d3VIEW](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088) által készített Azure Big Compute-megoldásokról.
+* Olvasson a [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222), [Altair](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/), [ANSYS](https://azure.microsoft.com/blog/ansys-cfd-and-microsoft-azure-perform-the-best-hpc-scalability-in-the-cloud/) és [d3VIEW](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088) által készített Azure Big Compute-megoldásokról.
 
 * A legújabb bejelentésekért lásd: [A Microsoft HPC és Batch csapatának blogja](http://blogs.technet.com/b/windowshpc/) és [Azure-blog](https://azure.microsoft.com/blog/tag/hpc/).
 
 <!--Image references-->
-[parallel]: ./media/batch-hpc-solutions/parallel.png
-[coupled]: ./media/batch-hpc-solutions/coupled.png
+[párhuzamos]: ./media/batch-hpc-solutions/parallel.png
+[összekapcsolt]: ./media/batch-hpc-solutions/coupled.png
 [iaas_cluster]: ./media/batch-hpc-solutions/iaas_cluster.png
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

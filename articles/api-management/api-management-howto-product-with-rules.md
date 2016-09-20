@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/25/2016"
+    ms.date="08/24/2016"
     ms.author="sdanie"/>
 
 # Az API-k védelme sebességkorlátokkal az Azure API Management használatával
@@ -238,7 +238,6 @@ Ha a 10 hívás percenként sebességkorlátozási házirend van érvényben, a 
 
 ## <a name="next-steps"> </a>Következő lépések
 
--   Tekintse meg a [Bevezetés az API-k speciális konfigurálásába][] oktatóanyag többi témakörét.
 -   A sebességkorlátok és a kvóták beállításáról az alábbi videó kínál egy bemutatót.
 
 > [AZURE.VIDEO rate-limits-and-quotas]
@@ -289,13 +288,12 @@ Ha a 10 hívás percenként sebességkorlátozási házirend van érvényben, a 
 [A termék közzététele]: #publish-product
 [Előfizetés a termékre egy fejlesztői fiók nevében]: #subscribe-account
 [Művelet meghívása és a sebességkorlátozás tesztelése]: #test-rate-limit
-[Bevezetés az API-k speciális konfigurálásába]: api-management-get-started-advanced.md
 
 [A hívások sebességének korlátozása]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Használati kvóta beállítása]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

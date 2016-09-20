@@ -1,7 +1,7 @@
 <properties
     pageTitle="Mi az a HBase a HDInsight eszközben? | Microsoft Azure"
     description="Az Apache HBase HDInsightban való használatának bevezetése, amely egy, a Hadoop programra épített NoSQL-adatbázis. Megismerheti a használati eseteket, és összehasonlíthatja a HBase programot más Hadoop-fürtökkel."
-    keywords="bigtable,nosql,what is hbase"
+    keywords="bigtable,nosql,mi az a hbase"
     services="hdinsight"
     documentationCenter=""
     tags="azure-portal"
@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/05/2016"
+    ms.date="06/28/2016"
     ms.author="jgao"/>
 
 
@@ -96,6 +96,6 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

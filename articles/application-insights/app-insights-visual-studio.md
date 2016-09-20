@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="05/25/2016" 
+    ms.date="06/21/2016" 
     ms.author="awills"/>
 
 
@@ -65,7 +65,11 @@ Ha [beállította a kivételek figyelését](app-insights-asp-net-exceptions.md)
 Híváslánc lekéréséhez kattintson egy kivételre. Ha az alkalmazás kódja meg van nyitva a Visual Studióban, a hívásláncból végigkattinthat a kód megfelelő soráig.
 
 
-![](./media/app-insights-visual-studio/17.png)
+![Kivétel híváslánca](./media/app-insights-visual-studio/17.png)
+
+Ezenfelül az egyes módszerek fölötti Code Lens sorban látható az Application Insights által az elmúlt 24 órában naplózott kivételek száma.
+
+![Kivétel híváslánca](./media/app-insights-visual-studio/21.png)
 
 
 ## Helyi figyelés
@@ -84,17 +88,17 @@ Az is hasznos, ha van [egyéni telemetriája](app-insights-api-custom-events-met
  * A Keresés ablak Beállításai között lehetősége van a helyi diagnosztika keresésére még akkor is, ha az alkalmazás elküldi a telemetriát a portálra.
  * Ha nem akarja, hogy a rendszer elküldje a telemetriát a portálra, tegye megjegyzésbe az `<instrumentationkey>...` sort az ApplicationInsights.config fájlban. Ha azt szeretné, hogy a rendszer megint elküldje a telemetriát a portálra, állítsa vissza a kódot.
 
+## Trendek
 
+A Trendek használatával megjelenítheti az alkalmazás időbeni működésének a módját. 
 
+Válassza az **Explore Telemetry Trends** (Telemetriatrendek megtekintése) elemet az Application Insights eszköztárgombjáról vagy az Application Insights Keresés ablakában. A kezdéshez válasszon egyet az öt gyakori lekérdezés közül. A különböző adatkészleteket telemetriatípusok, időintervallumok és egyéb tulajdonságok szerint elemezheti. 
 
+Az adatokban előforduló rendellenességek felderítéséhez válassza valamelyik rendellenességi lehetőséget a „View Type” (Nézettípus) legördülő menüben. Az ablak alján található szűrőbeállítások megkönnyítik a telemetria bizonyos részhalmazainak alaposabb vizsgálatát.
 
-## Frissítés a jövőbeli SDK-verziókra
+![Trendek](./media/app-insights-visual-studio/51.png)
 
-Ha frissíteni szeretne egy [új SDK-kiadásra](app-insights-release-notes-dotnet.md), nyissa meg ismét a NuGet-csomagkezelőt, és szűréssel keresse meg a telepített csomagokat. Jelölje ki a Microsoft.ApplicationInsights.Web lehetőséget, és válassza a Frissítés elemet.
-
-Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt, majd egyesítse a módosításait az új verzióval.
-
-
+[További információ a Trendekről](app-insights-visual-studio-trends.md).
 
 ## A következő lépések
 
@@ -108,6 +112,6 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

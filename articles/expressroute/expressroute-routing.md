@@ -3,8 +3,8 @@
    description="Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti."
    documentationCenter="na"
    services="expressroute"
-   authors="cherylmc"
-   manager="carmonm"
+   authors="ganesr"
+   manager="rossort"
    editor=""/>
 <tags
    ms.service="expressroute"
@@ -12,8 +12,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/01/2016"
-   ms.author="cherylmc"/>
+   ms.date="08/10/2016"
+   ms.author="ganesr"/>
 
 
 # Az ExpressRoute útválasztási követelményei  
@@ -78,15 +78,15 @@ Az útválasztás cseréje az eBGP protokollon keresztül történik. Az EBGP-mu
 
 ## Autonóm rendszerek számai
 
-A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak.
+A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak. A társoldalon (ügyfél vagy szolgáltató) az AS nyilvános ASN lehet, ha igazolható, hogy az Ön tulajdona, illetve személyes ASN-szám lehet a privát társviszonyhoz, amely nyilvános ASN-t igényel a nyilvános és Microsoft-társviszonyokhoz. 
 
-Az adatátvitel szimmetriájára nem vonatkoznak követelmények. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat az Önhöz tartozó kapcsolatcsoport-párokon mindkét oldalról meg kell hirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
+Az adatátvitel szimmetriájára nem vonatkoznak követelmények az adott kapcsolatcsoportok elsődleges és másodlagos elérési útjain. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat az Önhöz tartozó kapcsolatcsoport-párok elsődleges vagy másodlagos oldaláról is meg kell hirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
 
 ## Útvonal-összevonások és előtagkorlátozások
 
 Legfeljebb 4000 előtag számunkra történő meghirdetését támogatjuk az Azure privát társviszony-létesítésen keresztül. Ez legfeljebb 10 000 előtagra növelhető, ha az ExpressRoute prémium bővítmény engedélyezve van. BGP-munkamenetenként legfeljebb 200 előtagot fogadunk el az Azure nyilvános és a Microsoft társviszony-létesítés esetében. 
 
-A BGP-munkamenetek el lesznek dobva, ha az előtagok száma meghaladja a korlátot. Csak a privát társviszony-létesítési kapcsolaton fogadjuk el az alapértelmezett útvonalakat. A szolgáltatónak ki kell szűrnie az alapértelmezett útvonalakat és a privát IP-címeket (RFC 1918) az Azure nyilvános és a Microsoft társviszony-létesítési útvonalakból. 
+A BGP-munkamenetek el lesznek dobva, ha az előtagok száma meghaladja a korlátot. Csak a privát társviszony-létesítési kapcsolaton fogadjuk el az alapértelmezett útvonalakat. A szolgáltatónak vagy az ügyfélnek ki kell szűrnie az alapértelmezett útvonalakat és a privát IP-címeket (RFC 1918) a nyilvános Azure- és a Microsoft társviszony-létesítési útvonalakon található BGP-hirdetésekből. 
 
 ## Tranzit útválasztás és régiók közötti útválasztás
 
@@ -124,6 +124,8 @@ A Microsoft a megfelelő BGP-közösség értékét tartalmazó címkével látj
 |    | USA keleti régiója | 12076:51004 |
 |    | USA 2. keleti régiója | 12076:51005 |
 |    | USA nyugati régiója | 12076:51006 |
+|    | USA nyugati régiója, 2. | 12076:51026 |
+|    | USA nyugati középső régiója | 12076:51027 |
 |    | USA északi középső régiója | 12076:51007 |
 |    | USA déli középső régiója | 12076:51008 |
 |    | USA középső régiója | 12076:51009 |
@@ -177,6 +179,6 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

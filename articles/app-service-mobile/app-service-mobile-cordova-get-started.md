@@ -7,7 +7,7 @@
     manager="erikre"
     editor=""
     tags=""
-    keywords="cordova,javascript,mobile,client" />
+    keywords="cordova,javascript,mobil,ügyfél" />
 
 <tags
     ms.service="app-service-mobile"
@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="mobile-html"
     ms.devlang="javascript"
     ms.topic="hero-article"
-    ms.date="05/02/2016"
+    ms.date="08/11/2016"
     ms.author="glenga"/>
 
 #Apache Cordova-alkalmazás létrehozása
@@ -42,6 +42,8 @@ Közvetlenül az Apache Cordova parancssorának használata esetén nincs szüks
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
+[Tekintse meg hasonló lépéseket ismertető videót](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
+
 ## Kiszolgálóprojekt konfigurálása
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
@@ -59,7 +61,7 @@ Ha elvégezte ezt a bevezető oktatóanyagot, lépjen tovább valamelyik tovább
 
 További információk az Azure App Service alapjairól.
 
-* [Hitelesítés]
+* [Authentication]
 * [Leküldéses értesítések]
 
 Útmutató az SDK-k használatához.
@@ -71,12 +73,12 @@ További információk az Azure App Service alapjairól.
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: http://www.visualstudio.com/
 [Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [Hitelesítés hozzáadása]: app-service-mobile-cordova-get-started-users.md
 [Leküldéses értesítések hozzáadása]: app-service-mobile-cordova-get-started-push.md
-[Hitelesítés]: app-service-mobile-auth.md
+[Authentication]: app-service-mobile-auth.md
 [Leküldéses értesítések]: ../notification-hubs/notification-hubs-overview.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
@@ -84,7 +86,6 @@ További információk az Azure App Service alapjairól.
 
 
 
-
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

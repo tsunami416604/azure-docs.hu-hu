@@ -73,45 +73,11 @@ Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszkö
 
 6.  A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban. Ha nincs telepítve a Visual Studio, az SDK az ingyenes Visual Studio Expresst is telepíti.
 
-## Service Bus-névtér létrehozása
+## Névtér létrehozása
 
-A következő lépés egy szolgáltatásnévtér létrehozása, valamint egy közös hozzáférésű jogosultságkód (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer állítja elő a szolgáltatásnévtér létrehozásakor. A névtér és az SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
+A következő lépés egy szolgáltatásnévtér létrehozása, valamint egy közös hozzáférésű jogosultságkód (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer állítja elő a névtér létrehozásakor. A névtér és az SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
-### A névtér beállítása a klasszikus Azure portál használatával
-
-1.  Jelentkezzen be a [klasszikus Azure portálra][].
-
-2.  A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre.
-
-3.  A portál alsó panelén kattintson a **Create** (Létrehozás) elemre.
-
-    ![][6]
-
-4.  Az **Add a new namespace** (Új névtér hozzáadása) lapon adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-
-    ![][7]
-
-5.  Miután meggyőződött arról, hogy a név elérhető, válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz (ugyanazt az országot/régiót kell használnia, amelyben a számítási erőforrásokat üzembe helyezi). Emellett válassza a **Messaging** (Üzenettovábbítás) lehetőséget a névtér **Type** (Típus) mezőjében, illetve a **Standard** lehetőséget a **Messaging Tier** (Üzenettovábbítás rétege) mezőben.
-
-    > [AZURE.IMPORTANT] **Ugyanazt a régiót** válassza, amelyet az alkalmazás üzembe helyezéshez kíván használni. Ez biztosítja a legjobb teljesítményt.
-
-6.  Kattintson az OK pipára. A rendszer ekkor létrehozza és engedélyezi a szolgáltatásnévteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
-
-7.  A főablakban kattintson a szolgáltatásnévtér nevére.
-
-8. Kattintson a **Connection Information** (Kapcsolatadatok) gombra.
-
-9.  Az **Access connection information** (Kapcsolati adatok elérése) panelen keresse meg azt a kapcsolati karakterláncot, amely tartalmazza az SAS-kulcsot és annak nevét.
-
-    ![][35]
-
-10.  Jegyezze fel vagy másolja a vágólapra a hitelesítő adatokat.
-
-11. Ugyanezen a portállapon kattintson az oldal tetején található **Configure** (Konfigurálás) fülre.
-
-12. Másolja a vágólapra a **RootManageSharedAccessKey** házirend elsődleges kulcsát, vagy illessze be a Jegyzettömbbe. Ezt az értéket az oktatóanyag későbbi részében fogja használni.
-
-    ![][36]
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## Webes szerepkör létrehozása
 
@@ -272,7 +238,7 @@ Adja hozzá az elemeknek a Service Bus-üzenetsorba történő elküldésére sz
 
 2.  Adja az osztálynak a **QueueConnector.cs** nevet. Kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához.
 
-3.  Adja hozzá a kapcsolati adatokat tartalmazó és a Service Bus-üzenetsorral létesített kapcsolatot inicializáló kódot. Cserélje le a QueueConnector.cs teljes tartalmát a következő kódra, és adjon meg értéket a `your Service Bus namespace` (névtér neve) és a `yourKey` számára, amely az az **elsődleges kulcs**, amelyet korábban a [klasszikus Azure portálra][] szerzett be a „Service Bus-névtér létrehozása” című szakasz 12. lépésében.
+3.  Adja hozzá a kapcsolati adatokat tartalmazó és a Service Bus-üzenetsorral létesített kapcsolatot inicializáló kódot. Cserélje le a QueueConnector.cs teljes tartalmát a következő kódra, és adjon meg értéket a `your Service Bus namespace` (névtér neve) és a `yourKey` számára, amely az az **elsődleges kulcs**, amelyet korábban az Azure Portalon szerzett be.
 
     ```
     using System;
@@ -473,9 +439,6 @@ További információ a többrétegű forgatókönyvekkel kapcsolatban:
 
   [EventHubClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx
 
-  [klasszikus Azure portálra]: http://manage.windowsazure.com
-  [6]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-03.png
-  [7]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-04.png
   [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
   [10]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-11.png
   [11]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-02.png
@@ -493,16 +456,14 @@ További információ a többrétegű forgatókönyvekkel kapcsolatban:
   [25]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBWorkerRoleProperties.png
   [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
   [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
-  [35]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/multi-web-45.png
-  [36]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/service-bus-policies.png
 
   [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
   [sbwacom]: /documentation/services/service-bus/  
-  [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md  
+  [sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
   [multitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

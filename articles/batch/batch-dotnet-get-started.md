@@ -1,6 +1,6 @@
 <properties
     pageTitle="Oktatóprogram – Ismerkedés az Azure Batch .NET-es kódtárával | Microsoft Azure"
-    description="Egy egyszerű forgatókönyvvel megismerheti az Azure Batch alapvető fogalmait és azt, hogyan fejleszthet a Batch szolgáltatáshoz"
+    description="Egy példaforgatókönyvvel megismerheti az Azure Batch alapvető fogalmait, illetve azt, hogyan végezhet fejlesztést a Batch szolgáltatáshoz."
     services="batch"
     documentationCenter=".net"
     authors="mmacy"
@@ -13,7 +13,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="na"
     ms.workload="big-compute"
-    ms.date="05/27/2016"
+    ms.date="08/15/2016"
     ms.author="marsma"/>
 
 # Ismerkedés az Azure Batch .NET-es kódtárával
@@ -40,7 +40,7 @@ Ez a cikk a C# és a Visual Studio gyakorlati ismeretét feltételezi. Azt is fe
 
 ### Visual Studio
 
-A mintaprojekt összeállításához **Visual Studio 2013** vagy **Visual Studio 2015** szükséges. A Visual Studio ingyenes és próbaverzióit a [Visual Studio 2015-termékek áttekintésében][visual_studio] találja.
+A mintaprojekt összeállításához **Visual Studio 2015** szükséges. A Visual Studio ingyenes és próbaverzióit a [Visual Studio 2015-termékek áttekintésében][visual_studio] találja.
 
 ### *DotNetTutorial* kódminta
 
@@ -54,7 +54,7 @@ Az [Azure Batch Explorer][github_batchexplorer] egy ingyenes segédprogram, amel
 
 ## DotNetTutorial mintaprojekt áttekintése
 
-A *DotNetTutorial* kódminta egy Visual Studio 2013-megoldás, amely két projektből áll: a **DotNetTutorial** és a **TaskApplication** projektből.
+A *DotNetTutorial* kódminta egy Visual Studio 2015-megoldás, amely két projektből áll: a **DotNetTutorial** és a **TaskApplication** projektből.
 
 - A **DotNetTutorial** az az ügyfélalkalmazás, amely a Batch és a Storage szolgáltatásokkal együttműködve végez párhuzamos számítási feladatokat a számítási csomópontokon (virtuális gépeken). A DotNetTutorial a helyi munkaállomáson fut.
 
@@ -99,7 +99,7 @@ private const string StorageAccountName = "";
 private const string StorageAccountKey  = "";
 ```
 
-> [AZURE.IMPORTANT] Ahogy korábban említettük, most meg kell adnia egy **Általános célú** Azure Storage-tárfiók hitelesítő adatait. A Batch-alkalmazások a Blob Storage-et fogják használni az **Általános célú** tárfiókon belül. Ne olyan Storage-fiók hitelesítő adatait adja meg, amelyet a *Blob Storage* fióktípus kiválasztásával hozott létre.
+> [AZURE.IMPORTANT] Ahogy korábban említettük, most meg kell adnia egy **Általános célú** Azure Storage-tárfiók hitelesítő adatait. A Batch-alkalmazások a Blob Storage-ot fogják használni az **Általános célú** Storage-fiókon belül. Ne olyan Storage-fiók hitelesítő adatait adja meg, amelyet a *Blob Storage* fióktípus kiválasztásával hozott létre.
 
 A Batch- és a Storage-fiók hitelesítő adatai a szolgáltatások fiókpaneljein találhatók az [Azure Portalon][azure_portal]:
 
@@ -127,7 +127,7 @@ A Batch beépített támogatást tartalmaz az Azure Storage használatához. A S
 
 A Storage-fiókkal való kommunikációhoz és a tárolók létrehozásához a [.NET-hez készült Azure Storage ügyféloldali kódtárat][net_api_storage] használjuk. Létrehozunk egy hivatkozást a fiókra a [CloudStorageAccount][net_cloudstorageaccount] fiókkal, és ebből létrehozunk egy [CloudBlobClient][net_cloudblobclient] hivatkozást:
 
-```
+```csharp
 // Construct the Storage account connection string
 string storageConnectionString = String.Format(
     "DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
@@ -135,15 +135,17 @@ string storageConnectionString = String.Format(
     StorageAccountKey);
 
 // Retrieve the storage account
-CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+CloudStorageAccount storageAccount =
+    CloudStorageAccount.Parse(storageConnectionString);
 
-// Create the blob client, for use in obtaining references to blob storage containers
+// Create the blob client, for use in obtaining references to
+// blob storage containers
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
 A `blobClient` hivatkozást használjuk a teljes alkalmazásban, és számos metódusnak továbbítjuk paraméterként. Erre a közvetlenül a fentiek után található kódblokkban talál példát, ahol a `CreateContainerIfNotExistAsync` metódust hívjuk a tárolók tényleges létrehozásához.
 
-```
+```csharp
 // Use the blob client to create the containers in Azure Storage if they don't
 // yet exist
 const string appContainerName    = "application";
@@ -154,12 +156,13 @@ await CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 await CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
-```
+```csharp
 private static async Task CreateContainerIfNotExistAsync(
     CloudBlobClient blobClient,
     string containerName)
 {
-        CloudBlobContainer container = blobClient.GetContainerReference(containerName);
+        CloudBlobContainer container =
+            blobClient.GetContainerReference(containerName);
 
         if (await container.CreateIfNotExistsAsync())
         {
@@ -257,7 +260,7 @@ private static async Task<ResourceFile> UploadFileToContainerAsync(
 
 ### ResourceFiles
 
-A [ResourceFile][net_resourcefile] tevékenységeket biztosít a Batch-ben az Azure Storage azon fájljának URL-jével, amely a számítási csomópontra lesz letöltve a feladat futtatása előtt. A [ResourceFile.BlobSource][net_resourcefile_blobsource] tulajdonság határozza meg a fájl teljes URL-jét, ahogyan az az Azure Storage-ban található. Az URL a fájl biztonságos elérését nyújtó közös hozzáférésű jogosultságkódot (SAS-t) is tartalmazhat. A Batch .NET-en belüli legtöbb tevékenység tartalmaz egy *ResourceFiles* tulajdonságot, beleértve a következőket:
+A [ResourceFile][net_resourcefile] tevékenységeket biztosít a Batch-ben az Azure Storage azon fájljának URL-jével, amely a számítási csomópontra töltődik le a feladat futtatása előtt. A [ResourceFile.BlobSource][net_resourcefile_blobsource] tulajdonság határozza meg a fájl teljes URL-jét, ahogyan az az Azure Storage-ban található. Az URL a fájl biztonságos elérését nyújtó közös hozzáférésű jogosultságkódot (SAS-t) is tartalmazhat. A Batch .NET-en belüli legtöbb tevékenység tartalmaz egy *ResourceFiles* tulajdonságot, beleértve a következőket:
 
 - [CloudTask][net_task]
 - [StartTask][net_pool_starttask]
@@ -274,16 +277,18 @@ A közös hozzáférésű jogosultságkódok olyan karakterláncok, amelyek – 
 
 - **Tároló közös hozzáférésű jogosultságkódjai**: Amikor az egyes tevékenységek befejezik a munkájukat a számítási csomóponton, feltöltik a kimeneti fájljukat az Azure Storage *output* tárolójába. Ehhez a TaskApplication egy tároló közös hozzáférésű jogosultságkódját használja, amely írási hozzáférést nyújt a tárolóhoz az elérési út részeként a fájl feltöltésekor. A tároló közös hozzáférésű jogosultságkódjának beszerzése hasonlóan végezhető, mint a blob közös hozzáférésű jogosultságkódjának beszerzése. A DotNetTutorial-oktatóprogramban láthatja, hogy a `GetContainerSasUrl` segédmetódus ehhez a [CloudBlobContainer.GetSharedAccessSignature][net_sas_container] metódust hívja meg. A „6. lépés: Tevékenységek figyelése” című szakaszban olvashat többet arról, hogyan használja a TaskApplication a tárolók közös hozzáférésű jogosultságkódját.
 
-> [AZURE.TIP] A tárfiókon lévő adatok biztonságos hozzáférésének biztosításával kapcsolatos további információkért tekintse meg a közös hozzáférésű jogosultságkódokkal kapcsolatos két részből álló sorozatot: [Part 1: Understanding the shared access signature (SAS) model](../storage/storage-dotnet-shared-access-signature-part-1.md) (1. rész: A közös hozzáférésű jogosultságkód (SAS) modell ismertetése) és a [Part 2: Create and use a shared access signature (SAS) with the Blob service](../storage/storage-dotnet-shared-access-signature-part-2.md) (2. rész: Közös hozzáférésű jogosultságkód (SAS) létrehozása és használata a Blob szolgáltatással).
+> [AZURE.TIP] A tárfiókon lévő adatok biztonságos hozzáférésének biztosításával kapcsolatos további információkért tekintse meg a közös hozzáférésű jogosultságkódokkal kapcsolatos két részből álló sorozatot: [Part 1: Understanding the shared access signature (SAS) model](../storage/storage-dotnet-shared-access-signature-part-1.md) (1. rész: A közös hozzáférésű jogosultságkód (SAS) modell ismertetése) és a [Part 2: Create and use a shared access signature (SAS) with Blob storage](../storage/storage-dotnet-shared-access-signature-part-2.md) (2. rész: Közös hozzáférésű jogosultságkód (SAS) létrehozása és használata Blob Storage tárolóval).
 
 ## 3. lépés: Batch-készlet létrehozása
 
 ![Batch-készlet létrehozása][3]
 <br/>
 
+A Batch-**készletek** olyan számítási csomópontok (virtuális gépek) gyűjteményei, amelyeken a Batch a feladatok tevékenységeit végzi el.
+
 Miután feltölti az alkalmazást és az adatfájlokat a Storage-fiókra, a *DotNetTutorial* a Batch .NET-kódtár használatával kezdi el a kommunikációt a Batch szolgáltatással. Ehhez először egy [BatchClient][net_batchclient] jön létre:
 
-```
+```csharp
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(
     BatchAccountUrl,
     BatchAccountName,
@@ -296,7 +301,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 
 Ezután a számítási csomópontok készlete jön létre a Batch-fiókban a `CreatePoolAsync` hívásával. `CreatePoolAsync` a [BatchClient.PoolOperations.CreatePool][net_pool_create] metódussal hoz létre ténylegesen egy készletet a Batch szolgáltatásban.
 
-```
+```csharp
 private static async Task CreatePoolAsync(
     BatchClient batchClient,
     string poolId,
@@ -337,29 +342,31 @@ private static async Task CreatePoolAsync(
 }
 ```
 
-Amikor létrehoz egy készletet a [CreatePool][net_pool_create] használatával, meghatározza a paraméterek számát, például a számítási csomópontok számát, a [csomópontok méretét](../cloud-services/cloud-services-sizes-specs.md) és a csomópontok operációs rendszerét. A *DotNetTutorial* oktatóanyagban a [CloudServiceConfiguration][net_cloudserviceconfiguration] konfigurációval a Windows Server 2012 R2 rendszert határozzuk meg a [Cloud Servicesből](../cloud-services/cloud-services-guestos-update-matrix.md). Ehelyett a [VirtualMachineConfiguration][net_virtualmachineconfiguration] is használható, amellyel a Piactérről származó lemezképekből létrehozott csomópontkészleteket hozhat létre, amelyek tartalmaz Windows- és Linux-rendszerképeket is tartalmaznak– további információért lásd: [Linux számítási csomópontok biztosítása Azure Batch-készletekben](batch-linux-nodes.md).
+Amikor létrehoz egy készletet a [CreatePool][net_pool_create] használatával, több paramétert is meghatároz, például a számítási csomópontok számát, a [csomópontok méretét](../cloud-services/cloud-services-sizes-specs.md) és a csomópontok operációs rendszerét. A *DotNetTutorial* oktatóanyagban a [CloudServiceConfiguration][net_cloudserviceconfiguration] konfigurációval a Windows Server 2012 R2 rendszert határozzuk meg a [Cloud Servicesből](../cloud-services/cloud-services-guestos-update-matrix.md). Ehelyett a [VirtualMachineConfiguration][net_virtualmachineconfiguration] is használható. Ezzel a Marketplace-ről származó lemezképekből létrehozott csomópontkészleteket hozhat létre, amelyek Windows- és Linux-rendszerképeket is tartalmaznak. További információért lásd: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linux számítási csomópontok biztosítása Azure Batch-készletekben).
 
 > [AZURE.IMPORTANT] A Batchben lévő számítási erőforrások díjkötelesek. A költségek minimalizálása érdekében a `targetDedicated` értékét 1-re csökkentheti a minta futtatása előtt.
 
-A fizikai csomópontok tulajdonságai mellett egy [StartTask][net_pool_starttask] is megadható a készlethez. A StartTask mindegyik csomóponton fut, amikor a csomópont csatlakozik a készlethez, valamint a csomópont minden újraindításakor. A StartTask különösen hasznos az alkalmazások számítási csomópontokra való telepítéséhez a tevékenységek futtatása előtt. Ha például a tevékenységek Python-szkriptekkel dolgoznak fel adatokat, a StartTask használatával telepítheti a Pythont a számítási csomópontokra.
+A fizikai csomópontok tulajdonságai mellett egy [StartTask][net_pool_starttask] is megadható a készlethez. A StartTask mindegyik csomóponton fut, amikor a csomópont csatlakozik a készlethez, vagy amikor újraindul. A StartTask különösen hasznos az alkalmazások számítási csomópontokra való telepítéséhez a tevékenységek futtatása előtt. Ha például a tevékenységek Python-szkriptekkel dolgoznak fel adatokat, a StartTask használatával telepítheti a Pythont a számítási csomópontokra.
 
 Ebben a mintaalkalmazásban a StartTask átmásolja a Storage-ból letöltött fájlokat (amelyek a [StartTask][net_starttask].[ResourceFiles][net_starttask_resourcefiles] tulajdonsággal határozhatók meg) a StartTask munkakönyvtárból abba a megosztott könyvtárba, amelyet a csomóponton futó *összes* tevékenység elér. Ez lényegében mindegyik csomóponton a megosztott könyvtárba másolja a(z) `TaskApplication.exe` fájlt és annak függőségeit, amikor a csomópont csatlakozik a készlethez, hogy a csomóponton futó összes feladat elérje a fájlt.
 
 > [AZURE.TIP] Az Azure Batch **alkalmazáscsomagok** szolgáltatása egy másik módot nyújt arra, hogy az alkalmazást egy készletben lévő számítási csomópontokra helyezze. Részletekért lásd: [Alkalmazástelepítés Azure Batch-alkalmazáscsomagokkal](batch-application-packages.md).
 
-A fenti kódrészletben a StartTask *CommandLine* tulajdonságában lévő két környezeti változó használatát is érdemes kiemelni: az `%AZ_BATCH_TASK_WORKING_DIR%` és az `%AZ_BATCH_NODE_SHARED_DIR%` változóé. A Batch-készletben lévő összes számítási csomópont konfigurálása automatikusan történik a Batch-készletre jellemző környezeti változók számával. A tevékenységek által futtatott összes folyamat hozzáféréssel rendelkezik ezekhez a környezeti változókhoz.
+A fenti kódrészletben a StartTask *CommandLine* tulajdonságában lévő két környezeti változó használatát is érdemes kiemelni: az `%AZ_BATCH_TASK_WORKING_DIR%` és az `%AZ_BATCH_NODE_SHARED_DIR%` változóé. A Batch-készletben lévő összes számítási csomópont konfigurálása automatikusan történik a Batch-készletre jellemző számos környezeti változóval. A tevékenységek által futtatott összes folyamat hozzáféréssel rendelkezik ezekhez a környezeti változókhoz.
 
-> [AZURE.TIP] A Batch-készletekben található számítási csomópontokon elérhető környezeti változókkal és a feladatok munkakönyvtárával kapcsolatban [Az Azure Batch szolgáltatásainak áttekintése](batch-api-basics.md) című témakör „Környezeti beállítások feladatok esetén” és „Fájlok és könyvtárak” szakaszában tekinthet meg további információt.
+> [AZURE.TIP] A Batch-készletekben található számítási csomópontokon elérhető környezeti változókkal és a feladatok munkakönyvtárával kapcsolatban [Az Azure Batch funkcióinak áttekintése](batch-api-basics.md) című témakör [Környezeti beállítások tevékenységekhez](batch-api-basics.md#environment-settings-for-tasks) és [Fájlok és könyvtárak](batch-api-basics.md#files-and-directories) című szakaszában tekinthet meg további információt.
 
 ## 4. lépés: Batch-feladat létrehozása
 
 ![Batch-feladat létrehozása][4]<br/>
 
-A Batch-feladatok lényegében számítási csomópontok készletéhez társított tevékenységek gyűjteményei. Ezeket nemcsak a tevékenységek rendszerezéséhez és nyomon követéséhez használhatja a kapcsolódó számítási feladatokban, hanem bizonyos kényszerek betartatásához is – mint például a feladat (és így a tevékenységei) maximális futásideje, valamint a feladat prioritása a Batch-fiókban lévő egyéb feladatokhoz képest. Ebben a példában azonban a feladat csak a 3. lépésben létrehozott készlettel van társítva. Nincsenek konfigurálva további tulajdonságok.
+A Batch-**feladatok** számítási csomópontok készletéhez társított tevékenységek gyűjteményei. A feladatok tevékenységei a társított készlet számítási csomópontjain futnak.
 
-Mindegyik Batch-feladat egy adott készlettel van társítva. Ez a társítás jelzi, hogy a feladat tevékenységei melyik csomópontokon futnak.  Ezt a [CloudJob.PoolInformation][net_job_poolinfo] tulajdonsággal határozhatja meg, ahogyan az alábbi kódrészletben is láthatja.
+A feladatokat nemcsak a tevékenységek rendszerezéséhez és nyomon követéséhez használhatja a kapcsolódó számítási feladatokban, hanem bizonyos kényszerek betartatásához is – mint például a feladat (és így a tevékenységei) maximális futásideje, valamint a feladat prioritása a Batch-fiókban lévő egyéb feladatokhoz képest. Ebben a példában azonban a feladat csak a 3. lépésben létrehozott készlettel van társítva. Nincsenek konfigurálva további tulajdonságok.
 
-```
+Mindegyik Batch-feladat egy adott készlettel van társítva. Ez a társítás jelzi, hogy a feladat tevékenységei melyik csomópontokon futnak. Ezt a [CloudJob.PoolInformation][net_job_poolinfo] tulajdonsággal határozhatja meg, ahogyan az alábbi kódrészletben is láthatja.
+
+```csharp
 private static async Task CreateJobAsync(
     BatchClient batchClient,
     string jobId,
@@ -382,9 +389,11 @@ Most, hogy létrejött egy feladat, hozzáadhatók a munka végrehajtásáért f
 ![Tevékenységek hozzáadása a feladathoz][5]<br/>
 *(1) A feladathoz hozzáadja a tevékenységeket, (2) ütemezi a tevékenységeket a csomópontokon való futáshoz, és (3) a tevékenységek letöltik a feldolgozni kívánt adatfájlokat*
 
+A Batch-**tevékenységek** a számítási csomópontokon futtatott egyéni munkaegységek. A tevékenységek parancssorral rendelkeznek, és a parancssorban megadott parancsfájlokat vagy futtatható fájlokat futtatnak.
+
 Egy feladat tényleges elvégzéséhez tevékenységeket kell hozzáadnia a feladathoz. Mindegyik [CloudTask][net_task] egy parancssori tulajdonsággal és [ResourceFiles][net_task_resourcefiles] használatával konfigurálható (mint a készlet StartTask tevékenysége is), amelyet a tevékenység letölt a csomópontra a parancssora automatikus futtatása előtt. A *DotNetTutorial*-mintaprojektben mindegyik tevékenység csak egy fájlt dolgoz fel. A ResourceFiles gyűjtemény így egyetlen elemet tartalmaz.
 
-```
+```csharp
 private static async Task<List<CloudTask>> AddTasksAsync(
     BatchClient batchClient,
     string jobId,
@@ -431,7 +440,7 @@ A fenti kódrészletben a `foreach` hurokban láthatja, hogy a tevékenység par
 
 3. A **harmadik argumentum** az a közös hozzáférésű jogosultságkód (SAS), amely írási hozzáférést biztosít a **kimeneti** tárolóhoz az Azure Storage-ban. A *TaskApplication.exe* ezt a közös hozzáférésű jogosultságkód URL-t használja, amikor a kimeneti fájlt az Azure Storage-ba tölti fel. Ennek kódját az `UploadFileToContainer` metódusban találja, a TaskApplication projekt `Program.cs` fájljában:
 
-```
+```csharp
 // NOTE: From project TaskApplication Program.cs
 
 private static void UploadFileToContainer(string filePath, string containerSas)
@@ -483,7 +492,7 @@ DotNetTutorial `Program.cs` fájljában lévő `MonitorTasks` metódusban a Batc
 
 A *DotNetTutorial* `Program.cs` fájljának `MonitorTasks` metódusa az alábbiakban látható:
 
-```
+```csharp
 private static async Task<bool> MonitorTasks(
     BatchClient batchClient,
     string jobId,
@@ -494,75 +503,72 @@ private static async Task<bool> MonitorTasks(
     const string failureMessage = "One or more tasks failed to reach the Completed state within the timeout period.";
 
     // Obtain the collection of tasks currently managed by the job. Note that we use
-    // a detail level to specify that only the "id" property of each task should be
+    // a detail level to  specify that only the "id" property of each task should be
     // populated. Using a detail level for all list operations helps to lower
     // response time from the Batch service.
     ODATADetailLevel detail = new ODATADetailLevel(selectClause: "id");
     List<CloudTask> tasks =
         await batchClient.JobOperations.ListTasks(JobId, detail).ToListAsync();
 
-    Console.WriteLine("Awaiting task completion, timeout in {0}...", timeout.ToString());
+    Console.WriteLine("Awaiting task completion, timeout in {0}...",
+        timeout.ToString());
 
     // We use a TaskStateMonitor to monitor the state of our tasks. In this case, we
     // will wait for all tasks to reach the Completed state.
-    TaskStateMonitor taskStateMonitor = batchClient.Utilities.CreateTaskStateMonitor();
-    bool timedOut = await taskStateMonitor.WaitAllAsync(
-        tasks,
-        TaskState.Completed,
-        timeout);
+    TaskStateMonitor taskStateMonitor
+        = batchClient.Utilities.CreateTaskStateMonitor();
 
-    if (timedOut)
+    try
     {
-        allTasksSuccessful = false;
-
-        await batchClient.JobOperations.TerminateJobAsync(jobId, failureMessage);
-
-        Console.WriteLine(failureMessage);
+        await taskStateMonitor.WhenAll(tasks, TaskState.Completed, timeout);
     }
-    else
+    catch (TimeoutException)
     {
-        await batchClient.JobOperations.TerminateJobAsync(jobId, successMessage);
+        await batchClient.JobOperations.TerminateJobAsync(jobId, failureMessage);
+        Console.WriteLine(failureMessage);
+        return false;
+    }
 
-        // All tasks have reached the "Completed" state. However, this does not
-        // guarantee that all tasks were completed successfully. Here we further
-        // check each task's ExecutionInfo property to ensure that it did not
-        // encounter a scheduling error or return a non-zero exit code.
+    await batchClient.JobOperations.TerminateJobAsync(jobId, successMessage);
 
-        // Update the detail level to populate only the task id and executionInfo
-        // properties. We refresh the tasks below, and need only this information
-        // for each task.
-        detail.SelectClause = "id, executionInfo";
+    // All tasks have reached the "Completed" state, however, this does not
+    // guarantee all tasks completed successfully. Here we further check each task's
+    // ExecutionInfo property to ensure that it did not encounter a scheduling error
+    // or return a non-zero exit code.
 
-        foreach (CloudTask task in tasks)
+    // Update the detail level to populate only the task id and executionInfo
+    // properties. We refresh the tasks below, and need only this information for
+    // each task.
+    detail.SelectClause = "id, executionInfo";
+
+    foreach (CloudTask task in tasks)
+    {
+        // Populate the task's properties with the latest info from the
+        // Batch service
+        await task.RefreshAsync(detail);
+
+        if (task.ExecutionInformation.SchedulingError != null)
         {
-            // Populate the task's properties with the latest info from the Batch service
-            await task.RefreshAsync(detail);
+            // A scheduling error indicates a problem starting the task on the node.
+            // It is important to note that the task's state can be "Completed," yet
+            // still have encountered a scheduling error.
 
-            if (task.ExecutionInformation.SchedulingError != null)
-            {
-                // A scheduling error indicates a problem starting the task on the
-                // node. It is important to note that the task's state can be
-                // "Completed," yet the task still might have encountered a
-                // scheduling error.
+            allTasksSuccessful = false;
 
-                allTasksSuccessful = false;
+            Console.WriteLine("WARNING: Task [{0}] encountered a scheduling error: {1}",
+                task.Id,
+                task.ExecutionInformation.SchedulingError.Message);
+        }
+        else if (task.ExecutionInformation.ExitCode != 0)
+        {
+            // A non-zero exit code may indicate that the application executed by
+            // the task encountered an error during execution. As not every
+            // application returns non-zero on failure by default (e.g. robocopy),
+            // your implementation of error checking may differ from this example.
 
-                Console.WriteLine(
-                    "WARNING: Task [{0}] encountered a scheduling error: {1}",
-                    task.Id,
-                    task.ExecutionInformation.SchedulingError.Message);
-            }
-            else if (task.ExecutionInformation.ExitCode != 0)
-            {
-                // A non-zero exit code may indicate that the application executed by
-                // the task encountered an error during execution. As not every
-                // application returns non-zero on failure by default (e.g. robocopy),
-                // your implementation of error checking may differ from this example.
+            allTasksSuccessful = false;
 
-                allTasksSuccessful = false;
-
-                Console.WriteLine("WARNING: Task [{0}] returned a non-zero exit code - this may indicate task execution or completion failure.", task.Id);
-            }
+            Console.WriteLine("WARNING: Task [{0}] returned a non-zero exit code - this may indicate task execution or completion failure.", task.Id);
         }
     }
 
@@ -581,7 +587,7 @@ private static async Task<bool> MonitorTasks(
 
 Most, hogy a feladat befejeződött, a tevékenységek kimenete letölthető az Azure Storage-ból. Ez a `DownloadBlobsFromContainerAsync` hívásával végezhető el a *DotNetTutorial* `Program.cs` fájljában:
 
-```
+```csharp
 private static async Task DownloadBlobsFromContainerAsync(
     CloudBlobClient blobClient,
     string containerName,
@@ -615,7 +621,7 @@ private static async Task DownloadBlobsFromContainerAsync(
 
 Mivel az Azure Storage-ban lévő adatok díjkötelesek, mindig célszerű eltávolítani azokat a blobokat, amelyekre már nincs szükség a Batch-feladatokhoz. A DotNetTutorial `Program.cs` fájljában ez a `DeleteContainerAsync` segítőmetódus három hívásával végezhető el:
 
-```
+```csharp
 // Clean up Storage resources
 await DeleteContainerAsync(blobClient, appContainerName);
 await DeleteContainerAsync(blobClient, inputContainerName);
@@ -624,7 +630,7 @@ await DeleteContainerAsync(blobClient, outputContainerName);
 
 Maga a metódus csak beszerez egy hivatkozást, amely a tárolóra mutat, majd meghívja a [CloudBlobContainer.DeleteIfExistsAsync][net_container_delete] metódust:
 
-```
+```csharp
 private static async Task DeleteContainerAsync(
     CloudBlobClient blobClient,
     string containerName)
@@ -649,7 +655,7 @@ Az utolsó lépésben a rendszer arra kéri a felhasználót, hogy törölje a D
 
 A BatchClient [JobOperations][net_joboperations] és [PoolOperations][net_pooloperations] művelete is rendelkezik megfelelő törlési metódusokkal, amelyeket a rendszer meghív, ha a felhasználó megerősíti a törlést:
 
-```
+```csharp
 // Clean up the resources we've created in the Batch account if the user so chooses
 Console.WriteLine();
 Console.WriteLine("Delete job? [yes] no");
@@ -671,7 +677,7 @@ if (response != "n" && response != "no")
 
 ## A *DotNetTutorial*-minta futtatása
 
-A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet történik a következőnél a készlet számítási csomópontjainak indításakor: `Awaiting task completion, timeout in 00:30:00...`. A [Batch Explorer][github_batchexplorer] használatával figyelheti meg a készletet, a számítási csomópontokat, a feladatokat és a tevékenységeket a végrehajtás alatt és után. Az [Azure Portallal][azure_portal] vagy az egyik [elérhető Azure Storage-tallózóval][storage_explorers] tekintheti meg az alkalmazás által létrehozott tárolási erőforrásokat (tárolókat és blobokat).
+A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet történik a következőnél a készlet számítási csomópontjainak indításakor: `Awaiting task completion, timeout in 00:30:00...`. Az [Azure Portal][azure_portal] használatával figyelheti meg a készletet, a számítási csomópontokat, a feladatokat és a tevékenységeket a végrehajtás alatt és után. Az [Azure Portallal][azure_portal] vagy az [Azure Storage Explorer][storage_explorers] használatával tekintheti meg az alkalmazás által létrehozott tárolási erőforrásokat (tárolókat és blobokat).
 
 A jellemző végrehajtási idő **körülbelül 5 perc**, ha az alapértelmezett konfigurációban futtatja az alkalmazást.
 
@@ -708,20 +714,18 @@ Sample complete, hit ENTER to exit...
 
 ## Következő lépések
 
-Nyugodtan módosítsa a *DotNetTutorial* és a *TaskApplication* elemeket a különböző számítási forgatókönyvekkel való kísérletezéshez. Próbáljon meg például végrehajtási késleltetést adni a *TaskApplication* elemhez, például a [Thread.Sleep][net_thread_sleep] paranccsal, így hosszan futó feladatokat szimulálhat, és megfigyelheti őket a Batch Explorer *Hőtérkép* funkciójával. Próbáljon meg több tevékenységet hozzáadni, vagy módosítani a számítási csomópontok számát. Adja hozzá az ellenőrizni kívánt logikát, és engedélyezze meglévő készlet használatát a futtatási idő csökkentéséhez (*tipp*: tekintse meg az `ArticleHelpers.cs` témakört a [Microsoft.Azure.Batch.Samples.Common][github_samples_common] projektben az [azure-batch-samples][github_samples] mintákban).
+Nyugodtan módosítsa a *DotNetTutorial* és a *TaskApplication* elemeket a különböző számítási forgatókönyvekkel való kísérletezéshez. Próbáljon meg például végrehajtási késleltetést adni a *TaskApplication* elemhez, például a [Thread.Sleep][net_thread_sleep] paranccsal, így hosszan futó feladatokat szimulálhat, és megfigyelheti őket a portálon. Próbáljon meg több tevékenységet hozzáadni, vagy módosítani a számítási csomópontok számát. Adja hozzá az ellenőrizni kívánt logikát, és engedélyezze meglévő készlet használatát a futtatási idő csökkentéséhez (*tipp*: tekintse meg az `ArticleHelpers.cs` témakört a [Microsoft.Azure.Batch.Samples.Common][github_samples_common] projektben az [azure-batch-samples][github_samples] mintákban).
 
 Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch szolgáltatás további funkcióit is áttekintheti.
 
-- Ha korábban nem használta a szolgáltatást, olvassa el [az Azure Batch szolgáltatásainak áttekintését](batch-api-basics.md) tartalmazó cikket.
+- Olvassa el [Az Azure Batch funkcióinak áttekintése](batch-api-basics.md) című témakört, amelyet a Batch összes új felhasználójának ajánlunk.
 - Kezdje tanulmányozni a többi Batch-fejlesztéssel kapcsolatos cikket a [Batch képzési terv][batch_learning_path] **Fejlesztés részletesebben** részében.
 - Az „első N szó” számítási feladat Batch használatával való feldolgozásának egy másik megvalósítását a [TopNWords][github_topnwords] mintában találja.
 
 [azure_batch]: https://azure.microsoft.com/services/batch/
 [azure_free_account]: https://azure.microsoft.com/free/
 [azure_portal]: https://portal.azure.com
-[batch_explorer_blog]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
-[blog_linux]: http://blogs.technet.com/b/windowshpc/archive/2016/03/30/introducing-linux-support-on-azure-batch.aspx
 [github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [github_dotnettutorial]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/DotNetTutorial
 [github_samples]: https://github.com/Azure/azure-batch-samples
@@ -760,9 +764,9 @@ Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch sz
 [net_taskstatemonitor]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskstatemonitor.aspx
 [net_thread_sleep]: https://msdn.microsoft.com/library/274eh01d(v=vs.110).aspx
 [net_virtualmachineconfiguration]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.virtualmachineconfiguration.aspx
-[nuget_packagemgr]: https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c
+[nuget_packagemgr]: https://docs.nuget.org/consume/installing-nuget
 [nuget_restore]: https://docs.nuget.org/consume/package-restore/msbuild-integrated#enabling-package-restore-during-build
-[storage_explorers]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx
+[storage_explorers]: http://storageexplorer.com/
 [visual_studio]: https://www.visualstudio.com/products/vs-2015-product-editions
 
 [1]: ./media/batch-dotnet-get-started/batch_workflow_01_sm.png "Tárolók létrehozása az Azure Storage-ban"
@@ -779,6 +783,6 @@ Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch sz
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

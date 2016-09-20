@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
+   ms.date="07/19/2016"
    ms.author="charwen"/>
 
 # ExpressRoute- és helyek közötti egyidejű kapcsolatok konfigurálása a klasszikus üzembehelyezési modellben
@@ -227,6 +227,6 @@ További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakor
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

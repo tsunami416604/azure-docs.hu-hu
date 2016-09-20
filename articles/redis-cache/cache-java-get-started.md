@@ -13,7 +13,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="cache-redis"
     ms.workload="tbd"
-    ms.date="05/31/2016"
+    ms.date="08/24/2016"
     ms.author="sdanie"/>
 
 # Az Azure Redis Cache használata Javával
@@ -82,6 +82,6 @@ Egyes Redis-ügyfelek nem támogatják az SSL-t, és alapértelmezés szerint a 
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

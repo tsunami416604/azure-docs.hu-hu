@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/16/2016"
+    ms.date="06/22/2016"
     ms.author="darosa;sethm"/>
 
 # A Service Bus prémium és standard szintű üzenetkezelés szintjei 
 
-A Service Bus közvetítőalapú üzenettovábbítás, amely a várólistákhoz és témakörökhöz hasonló üzenetkezelési entitásokat is tartalmaz, a vállalati üzenetkezelési képességeket ötvözi a gazdag közzétételi/előfizetési szemantikákkal a felhőbeli skálázással. A Service Bus közvetítőalapú üzenettovábbítás számos kifinomult felhőalapú megoldás kommunikációs vázaként szolgál.
+A Service Bus közvetítőalapú üzenettovábbítás, amely a várólistákhoz és témakörökhöz hasonló üzenetkezelési entitásokat is tartalmaz, a vállalati üzenetkezelési képességeket ötvözi a gazdag közzétételi/előfizetési szemantikákkal a felhőbeli skálázással. A Service Bus üzenetkezelés számos kifinomult felhőalapú megoldás kommunikációs vázaként szolgál.
 
 A Service Bus üzenetkezelés *prémium* szintje a skálázással, teljesítménnyel és a legfontosabb alkalmazásokkal kapcsolatos általános ügyfélkérelmeket kezeli. Noha a szolgáltatáskészletek csaknem azonosak, a Service Bus üzenetkezelés két szintje különböző felhasználói esetekhez lett tervezve.
 
@@ -32,7 +32,7 @@ Az alábbi táblázat néhány fontos eltérést emel ki.
 | Lehetőség a munkaterhelés vertikális fel- és leskálázására | N/A                            |
 | Üzenet mérete > 256 KB                  | Az üzenet mérete 256 KB          |
 
-Az **Azure Service Bus prémium szintű üzenetkezelés** a CPU-ban és a memóriarétegben biztosít erőforrás-elkülönítést, így minden ügyfél számítási feladata elkülönítve fut. Ennek az erőforrás-tárolónak a neve *üzenetkezelési egység*. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Az egyes Service Bus prémium névterekhez 1, 2 vagy 4 üzenetkezelési egység vásárolható. Egyetlen számítási feladat vagy entitás több üzenetkezelési egységre is kiterjedhet, az üzenetkezelési egységek száma pedig tetszés szerint módosítható, bár a számlázás 24 órás vagy napi díjszabás szerint történik. Az eredmény a Service Bus-alapú megoldás kiszámítható és ismételhető teljesítménye.
+A **Service Bus prémium szintű üzenetkezelés** a CPU-ban és a memóriarétegben biztosít erőforrás-elkülönítést, így minden ügyfél számítási feladata elkülönítve fut. Ennek az erőforrás-tárolónak a neve *üzenetkezelési egység*. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Az egyes Service Bus prémium névterekhez 1, 2 vagy 4 üzenetkezelési egység vásárolható. Egyetlen számítási feladat vagy entitás több üzenetkezelési egységre is kiterjedhet, az üzenetkezelési egységek száma pedig tetszés szerint módosítható, bár a számlázás 24 órás vagy napi díjszabás szerint történik. Az eredmény a Service Bus-alapú megoldás kiszámítható és ismételhető teljesítménye.
 
 Nem csak kiszámíthatóbb és nagyobb rendelkezésre állású a teljesítmény, de gyorsabb is. A Service Bus prémium szintű üzenetkezelés az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatásban bemutatott tárolási motorra épít. Prémium szintű üzenetkezelés esetén a csúcsteljesítmény jóval gyorsabb, mint a standard szint esetén.
 
@@ -42,7 +42,7 @@ Alább olvasható néhány különbség a prémium és a standard szintű üzene
 
 ### Particionált entitások
 
-A particionált entitások támogatottak a prémium szintű üzenetkezelésben, de nem ugyanúgy működnek, mint a standard és az alapszintű Service Bus üzenetkezelés. A prémium szintű üzenetkezelés nem használ SQL-t az adattároláshoz, és már nem jelentkezik a megosztott platformokhoz társuló erőforrásverseny. Ennek köszönhetően a particionálás nem kötelező. Ezen felül a partíciók száma a standard szint 16 partíciójáról a prémium szinten két partícióra változott. A 2 partíció biztosítja a rendelkezésre állást, és megfelelőbb szám a prémium szintű futtatókörnyezethez. A partícionálásra vonatkozó további információkért lásd: [Partitioned messaging entities](service-bus-partitioning.md) (Particionált üzenetküldési entitások).
+A particionált entitások támogatottak a prémium szintű üzenetkezelésben, de nem ugyanúgy működnek, mint a standard és az alapszintű Service Bus üzenetkezelés. A prémium szintű üzenetkezelés nem használ SQL-t az adattároláshoz, és már nem jelentkezik a megosztott platformokhoz társuló erőforrásverseny. Ennek köszönhetően a particionálás nem kötelező. Ezen felül a partíciók száma a standard szint 16 partíciójáról a prémium szinten 2 partícióra változott. A két partíció biztosítja a rendelkezésre állást, és megfelelőbb szám a prémium szintű futtatókörnyezethez. A partícionálásra vonatkozó további információkért lásd: [Partitioned messaging entities](service-bus-partitioning.md) (Particionált üzenetküldési entitások).
 
 ### Expressz entitások
 
@@ -56,10 +56,10 @@ A Service Bus üzenetkezelésről az alábbi témakörökben találhat további 
 - [Introducing Azure Service Bus Premium messaging (Az Azure Service Bus prémium szintű üzenetkezelés bemutatása) (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 - [Service Bus messaging overview (A Service Bus üzenetkezelésének áttekintése)](service-bus-messaging-overview.md)
 - [Azure Service Bus architectural overview (Az Azure Service Bus architektúrájának áttekintése)](service-bus-fundamentals-hybrid-solutions.md)
-- [How to use Service Bus Queues (A Service Bus-üzenetsorok használata)](service-bus-dotnet-how-to-use-queues.md)
+- [How to use Service Bus Queues (A Service Bus-üzenetsorok használata)](service-bus-dotnet-get-started-with-queues.md)
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

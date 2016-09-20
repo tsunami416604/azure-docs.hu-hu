@@ -13,13 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="04/29/2016"
+    ms.date="07/23/2016"
     ms.author="tamram"/>
 
 
 # Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel
 
 [AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Áttekintés
 
@@ -41,6 +43,11 @@ Ez az oktatóanyag bemutatja, hogyan írhat .NET kódot néhány, az Azure Table
 - Egy [Azure-tárfiók](storage-create-storage-account.md#create-a-storage-account)
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
+
+### További példák
+
+További példák a Table Storage használatára: [Getting Started with Azure Table Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel). Letöltheti és futtathatja a mintaalkalmazást, vagy megkeresheti a kódot a GitHubon. 
+
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -88,7 +95,7 @@ A példa bemutatja, hogyan hozhat létre táblát, ha még nem rendelkezik vele:
 
 ## Entitás hozzáadása a táblához
 
-Az entitásokat a rendszer C\# objektumokká képezi le egy **TableEntity** osztályból származtatott egyéni osztály használatával. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait. Az alábbi kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, mint a különböző partíciókulcsúak, de az eltérő partíciókulcsok használata a párhuzamos műveletek nagyobb méretezhetőségét teszi lehetővé.  A Table szolgáltatásban tárolni kívánt tulajdonságoknak egy, a `get` és a `set` elemet is elérhetővé tévő támogatott típus nyilvános tulajdonságának kell lenniük.
+Az entitásokat a rendszer C\# objektumokká képezi le egy **TableEntity** osztályból származtatott egyéni osztály használatával. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait. Az alábbi kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, mint a különböző partíciókulcsúak, de az eltérő partíciókulcsok használata a párhuzamos műveletek nagyobb méretezhetőségét teszi lehetővé.  A Table Service szolgáltatásban tárolni kívánt tulajdonságoknak egy, a `get` és a `set` elemet is elérhetővé tévő támogatott típus nyilvános tulajdonságának kell lenniük.
 Az entitástípusnak emellett elérhetővé *kell* tennie egy paraméter nélküli konstruktort is.
 
     public class CustomerEntity : TableEntity
@@ -438,11 +445,12 @@ Ha sok entitást olvas, és az összes visszaadott entitás helyett csak az épp
     // Loop until a null continuation token is received, indicating the end of the table.
     } while(continuationToken != null);
 
-## További lépések
+## Következő lépések
 
 Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről is:
 
-- A Table szolgáltatás elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
+- További Table Storage-példákat a [Getting Started with Azure Table Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel) című cikkben tekinthet meg.
+- A Table Service elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
     - [A Storage ügyféloldali kódtára a .NET-hez – referencia](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
     - [REST API-referencia](http://msdn.microsoft.com/library/azure/dd179355)
 - Az [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md) használatával megtudhatja, hogyan egyszerűsítheti az Azure Storage használatához írt kódot
@@ -470,6 +478,6 @@ Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokbó
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/25/2016"
+    ms.date="08/16/2016"
     ms.author="markvi"/>
 
 # Bevezetés a Prémium szintű Azure Active Directory használatába
@@ -23,7 +23,7 @@ A Prémium szintű Active Directory-kiadásra történő regisztrálásra több 
 
 **Azure vagy Office 365** – Azure- vagy Office 365-előfizetőként az interneten vásárolhatja meg a Prémium szintű Active Directory-kiadást. A részletes lépésekért lásd: [A Prémium szintű Active Directory megvásárlása – meglévő ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) vagy [A Prémium szintű Active Directory megvásárlása – új ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).  
 
-**Nagyvállalati mobilitási csomag** – A Nagyvállalati mobilitási csomaggal a szervezetek költséghatékony módon használhatják a következő szolgáltatásokat együttesen, egy licenccsomagban: Prémium szintű Active Directory, Azure Rights Management, Microsoft Intune. További információkat a [Nagyvállalati mobilitási csomag](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) webhelyén talál. 30 napos ingyenes próbaverzióért kattintson [ide](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0).
+**Nagyvállalati mobilitás és biztonság** – A Nagyvállalati mobilitás és biztonság (korábbi nevén Nagyvállalati mobilitási csomag) révén a szervezetek költséghatékony módon használhatják a következő szolgáltatásokat együttesen, egy licenccsomagban: Prémium szintű Active Directory, Azure Rights Management, Microsoft Intune. További információt a [Nagyvállalati mobilitás és biztonság](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) webhelyén talál. 30 napos ingyenes próbaverzióért kattintson [ide](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0).
 
 
 **Microsoft mennyiségi licencelés** – A Prémium szintű Active Directory a [Microsoft Nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 vagy több licenc esetén) vagy a [Open mennyiségi licencelés](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5–250 licenc esetén) keretén belül érhető el.
@@ -164,6 +164,6 @@ A Microsoft felhőalapú szolgáltatásainak és funkcióinak rendelkezésre ál
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

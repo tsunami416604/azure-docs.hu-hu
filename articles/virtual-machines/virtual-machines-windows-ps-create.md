@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/02/2016"
+    ms.date="06/07/2016"
     ms.author="davidmu"/>
 
 # Windowsos virtuális gép létrehozása a Resource Manager és a PowerShell használatával
@@ -33,34 +33,36 @@ Először is létre kell hoznia egy erőforráscsoportot.
 
 1. Szerezzen be egy listát az összes elérhető helyről, ahol erőforrásokat lehet létrehozni.
 
-        Get-AzureLocation | sort Name | Select Name
+        Get-AzureRmLocation | sort Location | Select Location
         
     Ennek nagyjából a következőképpen kell kinéznie:
     
-        Name
-        ----
-        Australia East
-        Australia Southeast
-        Brazil South
-        Central India
-        Central US
-        East Asia
-        East US
-        East US 2
-        Japan East
-        Japan West
-        North Central US
-        North Europe
-        South Central US
-        South India
-        Southeast Asia
-        West Europe
-        West India
-        West US
+        Location
+        --------
+        australiaeast
+        australiasoutheast
+        brazilsouth
+        canadacentral
+        canadaeast
+        centralindia
+        centralus
+        eastasia
+        eastus
+        eastus2
+        japaneast
+        japanwest
+        northcentralus
+        northeurope
+        southcentralus
+        southeastasia
+        southindia
+        westeurope
+        westindia
+        westus
 
 2. Cserélje le a **$locName** értéket egy helyre a listából. Hozza létre a változót.
 
-        $locName = "Central US"
+        $locName = "centralus"
         
 3. Cserélje le a **$rgName** értéket az új erőforráscsoport nevére. Hozza létre a változót és az erőforráscsoportot.
 
@@ -74,13 +76,13 @@ A létrehozott virtuális gép által használt virtuális merevlemez tárolás�
 1. Cserélje le a **$stName** értéket a tárfiók nevére. Ellenőrizze, hogy a név egyedi-e.
 
         $stName = "mystorage1"
-        Test-AzureName -Storage $stName
+        Get-AzureRmStorageAccountNameAvailability $stName
 
-    Ha ez a parancs **Hamis** eredményt ad, a választott név egyedi az Azure-ban. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
+    Ha ez a parancs **Igaz** eredményt ad, a választott név egyedi az Azure-ban. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
     
 2. Futtassa a parancsot a tárfiók létrehozásához.
     
-        $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_LRS" -Location $locName
+        $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -SkuName "Standard_LRS" -Kind "Storage" -Location $locName
         
 ## 4. lépés: Virtuális hálózat létrehozása
 
@@ -120,7 +122,7 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
         $cred = Get-Credential -Message "Type the name and password of the local administrator account."
         
-    A jelszónak 8–123 karakter hosszúnak kell lennie, és tartalmaznia kell legalább hármat a következők közül: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. 
+    A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy bonyolultsági feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információk a [felhasználónév- és jelszókövetelményekről](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm).
         
 2. Cserélje le a **$vmName** értéket a virtuális gép nevére. Hozza létre a változót és a virtuálisgép-konfigurációt.
 
@@ -158,20 +160,20 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
         New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-    Az Azure portálon látszania kell az erőforráscsoportnak és a hozzá tartozó összes erőforrásnak, a PowerShell-ablakban pedig egy sikeres állapotnak:
+    Az Azure Portalon látszania kell az erőforráscsoportnak és a hozzá tartozó összes erőforrásnak, a PowerShell-ablakban pedig egy sikeres állapotnak:
 
         RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
         ---------  -------------------  ----------  ------------
                                   True          OK  OK
                                   
-## További lépések
+## Következő lépések
 
-- Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure portálon)
+- Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
 - A létrehozott virtuális gép felügyeletét a következő cikk ismerteti: [Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md) (Virtuális gépek felügyelete az Azure Resource Manager és a PowerShell használatával).
 - A virtuális gépek sablonokkal történő létrehozásáról a következő cikkben találhat hasznos információkat: [Create a Windows virtual machine with a Resource Manager template](virtual-machines-windows-ps-template.md) (Windows rendszerű virtuális gép létrehozása egy Resource Manager-sablonnal)
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

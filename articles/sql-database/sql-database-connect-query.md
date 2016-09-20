@@ -2,9 +2,9 @@
     pageTitle="Csatlakozás SQL Database adatbázishoz C# lekérdezéssel | Microsoft Azure"
     description="Program írása C# programozási nyelven lekérdezéséhez és SQL-adatbázishoz való csatlakozáshoz. Információk IP-címekről, kapcsolati sztringekről, biztonságos bejelentkezésről és ingyenes Visual Studio."
     services="sql-database"
-    keywords="c# database query, c# query, connect to database, SQL C#"
+    keywords="c# adatbázis-lekérdezés, c# lekérdezés, csatlakozás adatbázishoz, SQL C#"
     documentationCenter=""
-    authors="MightyPen"
+    authors="stevestein"
     manager="jhubbard"
     editor=""/>
 
@@ -14,8 +14,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="04/25/2016"
-    ms.author="annemill"/>
+    ms.date="08/17/2016"
+    ms.author="stevestein"/>
+
 
 
 # Kapcsolódás SQL Database adatbázishoz Visual Studio használatával
@@ -30,75 +31,59 @@ Kapcsolódás Azure SQL Database adatbázishoz a Visual Studióban.
 ## Előfeltételek
 
 
-SQL Database adatbázishoz való, Visual Studio használatával történő kapcsolódáshoz a következőkre van szüksége: 
+SQL-adatbázishoz a Visual Studio használatával történő csatlakozáshoz a következők szükségesek: 
 
 
-- Azure-fiók és -előfizetés. Regisztrálhat [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
-
-
-- **AdventureWorksLT** mintaadatbázis az Azure SQL Database szolgáltatásban.
- - [Hozzon létre mintaadatbázist ](sql-database-get-started.md), ez csak néhány percet vesz igénybe.
+- Egy SQL-adatbázis, amelyhez csatlakozhat. Ebben a cikkben az **AdventureWorks** mintaadatbázist használjuk. Az AdventureWorks mintaadatbázis beszerzésével kapcsolatban lásd: [A bemutató-adatbázis létrehozása](sql-database-get-started.md).
 
 
 - Visual Studio 2013 4. frissítés (vagy újabb). A Microsoft most *ingyenesen* biztosítja a Visual Studio Community-t.
  - [Visual Studio Community, letöltés](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [Egyéb lehetőségek Visual Studio ingyenes letöltésére](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
- - A témakör későbbi [lépésében](#InstallVSForFree) is megtalálja annak leírását, hogy az[Azure portál](https://portal.azure.com/) hogyan vezeti Önt végig a Visual Studio telepítésén.
 
 
-<a name="InstallVSForFree" id="InstallVSForFree"></a>
-
-&nbsp;
-
-## 1. lépés: Telepítse ingyenesen a Visual Studio Community-t
 
 
-Lehetőségek Visual Studio telepítésére:
-
-- A Visual Studio Community ingyenes telepítéséhez navigáljon a böngészőben a Visual Studio termékek azon weblapjaira, amelyek ingyenes letöltést és egyéb lehetőségeket kínálnak; vagy
-- Az [Azure portál](https://portal.azure.com/) végigvezeti Önt a letöltési weblapon, ennek leírását lásd a következőkben.
+## Nyissa meg a Visual Studiót az Azure Portalon
 
 
-### Visual Studio letöltése Azure portálon keresztül
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+
+2. Kattintson a **További szolgáltatások** > **SQL-adatbázisok** elemre.
+3. Nyissa meg az **AdventureWorks** adatbázis paneljét. Ehhez keresse meg az *AdventureWorks* adatbázist, és kattintson rá.
+
+6. Az adatbázis paneljének tetején kattintson az **Eszközök** gombra:
+
+    ![Új lekérdezés. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query/tools.png)
+
+7. Kattintson a **Megnyitás a Visual Studióban** parancsra (ha nem rendelkezik a Visual Studióval, kattintson a letöltési hivatkozásra):
+
+    ![Új lekérdezés. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query/open-in-vs.png)
 
 
-1. Jelentkezzen be az [Azure portálon](https://portal.azure.com/) keresztül, http://portal.azure.com/.
-
-2. Kattintson a **TALLÓZÁS* ÖSSZES** > **SQL-adatbázisok** lehetőségre. Megnyílik egy panel, amely adatbázisokat keres.
-
-3. Az oldal tetején a Szűrő szövegmezőbe kezdje el beírni **AdventureWorksLT** adatbázisának nevét.
-
-4. Amikor a kiszolgálón megjelenik az adatbázis sora, kattintson rá. Megnyílik egy panel az adatbázishoz.
-
-5. Kényelmi okokból kattintson a Kis méretűvé tesz elemre az előző paneleken.
-
-6. Kattintson az adatbázis paneljének tetején található **Megnyitás Visual Studio használatával** gombra. Megnyílik egy új Visual Studio panel a Visual Studio telepítési helyeire mutató hivatkozásokkal.
-
-    ![Megnyitás Visual Studio használatával gomb][20-OpenInVisualStudioButton]
-
-7. Kattintson a **Community (ingyenes) ** vagy hasonló hivatkozásra. Megjelenik egy új weblap.
-
-8. Az új weblapon található hivatkozások segítségével telepítse a Visual Studio programot.
-
-9. A Visual Studio telepítése után a **Megnyitás Visual Studio használatával** panelen kattintson a **Megnyitás Visual Studio használatával** gombra. Megnyílik a Visual Studio.
-
-10. A Visual Studio egy párbeszédpanelen kéri a kapcsolati sztringek mezőinek kitöltését az **SQL Server Object Explorer** ablaktábla számára.
- - Az **SQL Server-hitelesítés** lehetőséget válassza a **Windows-hitelesítés** helyett.
- - Ne felejtse el megadni **AdventureWorksLT** adatbázisát (**Beállítások** > **Kapcsolat tulajdonságai** beállításokat a párbeszédpanelen).
-
-11. Az **SQL Server Object Explorerben** bontsa ki a csomópontot az adatbázisra.
+8. Megnyílik a Visual Studio, amelyben a **Connect to Server** (Csatlakozás kiszolgálóhoz) ablak már be van állítva a portálon kiválasztott kiszolgálóhoz és adatbázishoz való csatlakozáshoz.  (Kattintson az **Options** (Beállítások) elemre annak ellenőrzéséhez, hogy a megfelelő adatbázishoz való csatlakozás lett-e beállítva.) Írja be a kiszolgáló-rendszergazdai jelszót, majd kattintson a **Connect** (Csatlakozás) parancsra.
 
 
-## 2. lépés: Mintalekérdezések futtatása
+    ![Új lekérdezés. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query/connect.png)
 
-A logikai kiszolgálóhoz való csatlakozás után tud adatbázishoz csatlakozni és mintalekérdezést futtatni. 
 
-1. Az **Object Explorerben** navigáljon a kiszolgálón egy olyan adatbázishoz, amelyre van engedélye, például az **AdventureWorks** mintaadatbázishoz.
+8. Ha nem állított be tűzfalszabályt a számítógép IP-címéhez, a *Cannot connect* (Nem lehet kapcsolódni) üzenet jelenik meg. Tűzfalszabály létrehozásával kapcsolatban lásd: [Azure SQL Database kiszolgálói szintű tűzfalszabály konfigurálása](sql-database-configure-firewall-settings.md).
+
+
+9. A sikeres csatlakozás után megnyílik az **SQL Server Object Explorer** ablak, amely kapcsolódik az adatbázishoz.
+
+    ![Új lekérdezés. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query/sql-server-object-explorer.png)
+
+
+## Mintalekérdezés futtatása
+
+Az adatbázishoz való csatlakozást követően a következő lépések bemutatják, hogyan futtathat egy egyszerű lekérdezést:
+
 2. Kattintson a jobb gombbal az adatbázisra, majd válassza az **Új lekérdezés** lehetőséget.
 
-    ![Új lekérdezés. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
+    ![Új lekérdezés. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query/new-query.png)
 
-3. A lekérdezés ablakban másolja és illessze be a következő kódot.
+3. A lekérdezésablakban másolja és illessze be a következő kódot.
 
         SELECT
         CustomerId
@@ -108,22 +93,20 @@ A logikai kiszolgálóhoz való csatlakozás után tud adatbázishoz csatlakozni
         ,CompanyName
         FROM SalesLT.Customer;
 
-4. Kattintson a **Végrehajt** gombra.  Sikeres lekérdezés esetén a következő képernyőfelvétel jelenik meg.
+4. Kattintson a **Végrehajt** gombra a lekérdezés futtatásához:
 
-    ![Sikeres. Csatakozás SQL Database-kiszolgálóhoz: Visual Studio](./media/sql-database-connect-query-ssms/5-success.png)
+    ![Siker. Csatakozás SQL Database-kiszolgálóhoz: Visual Studio](./media/sql-database-connect-query/run-query.png)
 
 ## Következő lépések
 
-[Csatlakozás SQL Database adatbázishoz  .NET (C#) használatával](sql-database-develop-dotnet-simple.md) 
-
-
-<!-- Image references. -->
-
-[20-OpenInVisualStudioButton]: ./media/sql-database-connect-query/connqry-free-vs-e.png
+- A Visual Studio az SQL Server Data Tools eszközöket használja SQL-adatbázisok megnyitásához. További információ: [SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx).
+- SQL-adatbázishoz kód használatával történő csatlakozással kapcsolatban lásd: [Connect to SQL Database by using .NET (C#)](sql-database-develop-dotnet-simple.md) (Csatlakozás SQL Database adatbázishoz a .NET (C#) használatával).
 
 
 
 
-<!--HONumber=Jun16_HO2-->
+
+
+<!--HONumber=sep16_HO1-->
 
 

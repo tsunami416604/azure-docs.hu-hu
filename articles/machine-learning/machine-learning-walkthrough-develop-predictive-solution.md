@@ -1,7 +1,7 @@
 <properties
     pageTitle="Prediktív megoldás a hitelkockázat kiszámításához a Machine Learning használatával | Microsoft Azure"
     description="Részletes útmutató, amely azt ismerteti, hogyan hozható létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldás az Azure Machine Learning Studio eszközben."
-    keywords="credit risk, predictive analytics solution,risk assessment"
+    keywords="hitelkockázat, prediktív elemzési megoldás,kockázatértékelés"
     services="machine-learning"
     documentationCenter=""
     authors="garyericson"
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/09/2016"
+    ms.date="06/10/2016"
     ms.author="garye"/>
 
 
@@ -27,6 +27,8 @@ A hitelkockázat értékelése természetesen összetett probléma, de a példa 
 Ebben a részletes leírásban végigvezetjük Önt egy prediktív elemzési modell Machine Learning Studio használatával történő kifejlesztésén, majd a modell Azure Machine Learning webszolgáltatásként történő üzembe helyezésén. Nyilvánosan elérhető hitelkockázati adatokkal fogunk dolgozni, amelyek alapján kifejlesztünk és betanítunk egy prediktív modellt, majd a modellt üzembe helyezzük webszolgáltatásként, hogy mások is használhassák a hitelkockázatok értékeléséhez.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+<!-- -->
 
 >[AZURE.TIP] Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](machine-learning-studio-overview-diagram.md) című cikket.
 
@@ -43,6 +45,6 @@ Ez az útmutató a [Cortana Intelligence Gallery](http://gallery.cortanaintellig
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

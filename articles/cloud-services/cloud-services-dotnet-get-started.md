@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="03/21/2016"
+    ms.date="06/10/2016"
     ms.author="adegeo"/>
 
 # Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
@@ -60,7 +60,7 @@ Az oktatóanyag utasításai az alábbi termékek bármelyikére alkalmazhatók:
 * Visual Studio 2013
 * Visual Studio 2015
 
-Ha egyikkel sem rendelkezik, az Azure SDK telepítésekor a Visual Studio 2015 is automatikusan telepítve lesz. 
+Ha egyikkel sem rendelkezik, az Azure SDK telepítésekor a Visual Studio 2015 is automatikusan telepítve lesz.
 
 ## Alkalmazásarchitektúra
 
@@ -183,7 +183,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 
 4. Az **Allowed Services** (Engedélyezett Szolgáltatások) területen módosítsa az **Azure Services** (Azure-szolgáltatások) beállítását a következőre: **Yes** (Igen).
 
-5. Kattintson a **Mentés**gombra.
+5. Kattintson a **Save** (Mentés) gombra.
 
 ### Azure-tárfiók létrehozása
 
@@ -229,7 +229,7 @@ A webes szerepkör esetében [Web.config transzformálása](http://www.asp.net/m
         providerName="System.Data.SqlClient" xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
     </connectionStrings>
     ```
-    
+
     Hagyja megnyitva a fájlt a szerkesztéshez.
 
 2. A [klasszikus Azure portálon](http://manage.windowsazure.com) kattintson a bal oldali ablaktáblában található **SQL-adatbázisok** elemre, kattintson az oktatóanyaghoz létrehozott adatbázisra, kattintson az **Irányítópult** lapra, majd kattintson a **Kapcsolati karakterláncok megjelenítése** elemre.
@@ -314,10 +314,10 @@ A *ServiceConfiguration.Cloud.cscfg* fájl pedig azokat az értékeket tartalmaz
         <Setting name="StorageConnectionString" value="{yourconnectionstring}" />
         <Setting name="ContosoAdsDbConnectionString" value="{yourconnectionstring}" />
         <!-- other settings not shown -->
-    
+
     </ConfigurationSettings>
     <!-- other settings not shown -->
-    
+
 </Role>
 ```
 
@@ -442,7 +442,7 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati karakterláncokat fog konfi
         <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
-    
+
     A Visual Studio 2015 használata esetén helyettesítse a „v11.0” elemet az „MSSQLLocalDB” elemmel.
 
 2. Mentse a módosításokat.
@@ -849,7 +849,7 @@ Ha a teljes emulátor használatára szeretné módosítani a projekt beállít�
 
 Az alkalmazás teljes emulátorral való futtatásához rendszergazdai jogosultságokkal kell megnyitnia a Visual Studiót.
 
-## További lépések
+## Következő lépések
 
 A Contoso Ads alkalmazás kialakítása szándékosan egyszerű az első lépéseket ismertető oktatóanyag kedvéért. Nem valósítja meg például a [függőségi beszúrást](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) vagy a [működési minták adattárát és egységét](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nem [használ felületet a naplózáshoz](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nem használ [EF Code First áttelepítést](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) az adatmodellek kezeléséhez vagy [EF-kapcsolati rugalmasságot](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) az átmeneti hálózati hibák kezeléséhez stb.
 
@@ -868,9 +868,10 @@ További információkért lásd a következőket:
 * [Azure Cloud Services – 1. rész: Bevezetés](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [A Cloud Services kezelése](cloud-services-how-to-manage.md)
 * [Azure Storage](/documentation/services/storage/)
+* [Felhőszolgáltató kiválasztása](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

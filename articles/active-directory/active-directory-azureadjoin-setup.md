@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="femila"
-    manager="stevenpo"
+    manager="swadhwa"
     editor=""
     tags="azure-classic-portal"/>
 
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="02/26/2016"
+    ms.date="06/23/2016"
     ms.author="femila"/>
 
 # Az Azure AD Join beállítása a vállalatánál
@@ -27,14 +27,14 @@ A helyszíni felhasználók Azure Advel történő szinkronizálásának részle
 A felhasználók manuális létrehozásához és felügyeletéhez lásd: [Felhasználófelügyelet az Azure AD-ben](https://msdn.microsoft.com/library/azure/hh967609.aspx).
 
 ## Az eszközregisztráció beállítása
-1. Jelentkezzen be az Azure portálra rendszergazdaként.
+1. Jelentkezzen be az Azure Portalra rendszergazdaként.
 2. A bal oldali panelen válassza az **Active Directory** elemet.
 3. A **Címtár** lapon válassza ki a címtárat.
 4. Válassza a **Konfigurálás** lapot.
 5. Lépjen az **Eszközök** szakaszra.
 6. Az **Eszközök** lapon állítsa be a következőket:  
    * **ESZKÖZÖK MAXIMÁLIS SZÁMA FELHASZNÁLÓNKÉNT:** Válassza ki azon eszközök maximális számát, amelyekkel a felhasználók az Azure AD-ben rendelkezhetnek.  Ha egy felhasználó eléri ezt a kvótát, nem tud további eszközöket felvenni, amíg el nem távolít egy vagy több meglévő eszközt.
-   * **TÖBBTÉNYEZŐS HITELESÍTÉS MEGKÖVETELÉSE ESZKÖZÖK CSATLAKOZTATÁSÁHOZ:** Állítsa be, hogy a felhasználóknak meg kell-e adniuk egy második hitelesítési tényezőt ahhoz, hogy csatlakoztassák az eszközüket az Azure AD-hez. Az Azure többtényezős hitelesítéséről további információért lásd: [Getting started with Azure Multi-Factor Authentication in the cloud](multi-factor-authentication-get-started-cloud/) (Azure többtényezős hitelestés a felhőben).
+   * **TÖBBTÉNYEZŐS HITELESÍTÉS MEGKÖVETELÉSE ESZKÖZÖK CSATLAKOZTATÁSÁHOZ:** Állítsa be, hogy a felhasználóknak meg kell-e adniuk egy második hitelesítési tényezőt ahhoz, hogy csatlakoztassák az eszközüket az Azure AD-hez. Az Azure többtényezős hitelesítésére vonatkozó további információért lásd: [Azure Multi-Factor Authentication a felhőben – első lépések](..\multi-factor-authentication\multi-factor-authentication-get-started-cloud.md).
    * **A FELHASZNÁLÓK CSATLAKOZTATHATJÁK AZ ESZKÖZEIKET AZ AZURE AD-HEZ:** Válassza ki azokat a felhasználókat és csoportokat, amelyek csatlakoztathatják az eszközeiket az Azure AD-hez.
    * **TOVÁBBI RENDSZERGAZDÁK AZ AZURE AD-HOZ CSATLAKOZTATOTT ESZKÖZÖKÖN:** Az Azure AD Prémium kiadással vagy a Nagyvállalati mobilitási csomaggal (EMS) kiválaszthatja, hogy mely felhasználók kapjanak helyi rendszergazdai jogosultságokat az eszközhöz. A globális rendszergazdák és eszköztulajdonosok alapértelmezés szerint helyi rendszergazdai jogosultságot kapnak.
 
@@ -57,6 +57,6 @@ A következő három forgatókönyvvel engedélyezheti, hogy a felhasználók be
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

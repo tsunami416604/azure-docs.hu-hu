@@ -1,10 +1,10 @@
 <properties
     pageTitle="Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban | Microsoft Azure"
     description="Tudja meg, hogyan figyelheti az adatbázisokat Azure- eszközökkel és dinamikus felügyeleti nézetekkel."
-    keywords="database monitoring, cloud database performance"
+    keywords="adatbázis-megfigyelés, felhőalapú adatbázis teljesítménye"
     services="sql-database"
     documentationCenter=""
-    authors="carlrabeler"
+    authors="CarlRabeler"
     manager="jhubbard"
     editor=""/>
 
@@ -14,26 +14,26 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="data-management"
-    ms.date="03/25/2016"
+    ms.date="07/06/2016"
     ms.author="carlrab"/>
 
 # Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban
-Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. A figyelés segítségével megállapítható, ha az adatbázis többletkapacitással rendelkezik, vagy éppen elérte a maximumot az erőforrások kihasználtságában, és emiatt problémák jelentkezhetnek, így az is eldönthető, hogy módosítani kell-e az adatbázis teljesítményszintjét és [szolgáltatásszintjét](sql-database-service-tiers.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure portálon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.
+Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. A figyelés segítségével megállapítható, ha az adatbázis többletkapacitással rendelkezik, vagy éppen elérte a maximumot az erőforrások kihasználtságában, és emiatt problémák jelentkezhetnek, így az is eldönthető, hogy módosítani kell-e az adatbázis teljesítményszintjét és [szolgáltatásszintjét](sql-database-service-tiers.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure Portalon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.
 
-## Adatbázisok figyelése Azure portál használatával
+## Adatbázisok figyelése Azure Portal használatával
 
-Az [Azure portálon](https://portal.azure.com/) az adatbázis kiválasztásával és a **Figyelés** diagramra történő kattintással figyelheti egy önálló adatbázist erőforrás-használat. Ekkor megjelenik a **Metrika** ablak, amelyet a **Diagram szerkesztése** gombra kattintva módosíthat. Adja hozzá a következő metrikákat:
+Az [Azure Portalon](https://portal.azure.com/) az adatbázis kiválasztásával és a **Figyelés** diagramra történő kattintással figyelheti egy önálló adatbázist erőforrás-használat. Ekkor megjelenik a **Metrika** ablak, amelyet a **Diagram szerkesztése** gombra kattintva módosíthat. Adja hozzá a következő metrikákat:
 
 - Processzorhasználat (%)
 - DTU-kihasználtság (%)
 - Adat IO kihasználtsága (%)
-- Tárterület-használat (%)
+- Adatbázis méretének kihasználtsága
 
 A fenti metrikák hozzáadása után azokat a **Figyelés** diagramon tekintheti meg, további részleteket pedig a **Metrika** ablakban talál. A négy metrika az átlagos kihasználtság százalékos arányát jeleníti meg az adatbázis **DTU-jához** viszonyítva. A DTU-król részletesebben a [szolgáltatásszintekről](sql-database-service-tiers.md) szóló cikkben olvashat.
 
 ![Adatbázis-teljesítményének szolgáltatásszint-figyelése.](./media/sql-database-service-tiers/sqldb_service_tier_monitoring.png)
 
-A metrikákhoz riasztásokat is lehet konfigurálni. Kattintson a **Riasztás hozzáadása** gombra a **Metrika** ablakban.  A riasztás konfigurálásához kövesse a Varázslót. Lehetőség van riasztást kérni, ha a metrikák túllépnek egy bizonyos küszöböt, vagy egy bizonyos küszöb alá esnek.
+A metrikákhoz riasztásokat is lehet konfigurálni. Kattintson a **Riasztás hozzáadása** gombra a **Metrika** ablakban. A riasztás konfigurálásához kövesse a Varázslót. Lehetőség van riasztást kérni, ha a metrikák túllépnek egy bizonyos küszöböt, vagy egy bizonyos küszöb alá esnek.
 
 Például ha az adatbázisban munkaterhelés-növekedésére számít, beállíthatja, hogy riasztást kapjon elektronikus üzenet formájában abban az esetben, ha az adatbázisra vonatkozó bármelyik metrika eléri a 80 százalékot. Ez korai figyelmeztetésként szolgálhat annak eldöntésére, hogy mikor kell a következő, magasabb teljesítményszintre váltani.
 
@@ -49,6 +49,6 @@ Rugalmas adatbáziskészletek esetén az ebben a szakaszban leírt technikákkal
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

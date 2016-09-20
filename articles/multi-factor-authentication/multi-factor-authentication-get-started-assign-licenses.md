@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="05/12/2016" 
+    ms.date="08/04/2016" 
     ms.author="billmath"/>
 
 # Azure MFA, Azure AD Prémium vagy Nagyvállalati mobilitási licenc hozzárendelése felhasználókhoz
@@ -38,6 +38,7 @@ Ha Azure MFA, Azure AD Prémium vagy Nagyvállalati mobilitási csomag licenceke
 ![Licencek hozzárendelése](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)
 
 
-<!--HONumber=jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

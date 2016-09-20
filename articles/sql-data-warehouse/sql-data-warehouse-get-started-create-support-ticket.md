@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/29/2016"
+   ms.date="07/18/2016"
    ms.author="sonyam;barbkess;sonyama"/>
 
 # Támogatási jegy létrehozása az SQL Data Warehouse-hoz
@@ -22,7 +22,7 @@ Ha bármilyen probléma merül fel az SQL Data Warehouses-szal kapcsolatban, hoz
 
 ## Támogatási jegy létrehozása
 
-1. Nyissa meg az [Azure portált][].
+1. Nyissa meg az [Azure Portal][].
 
 2. A kezdőképernyőn kattintson a **Súgó és támogatás** csempére.
 
@@ -31,30 +31,32 @@ Ha bármilyen probléma merül fel az SQL Data Warehouses-szal kapcsolatban, hoz
 3. A Súgó és támogatás panelen kattintson a **Támogatási kérelem létrehozása** gombra.
 
     ![Új támogatási kérelem](./media/sql-data-warehouse-get-started-create-support-ticket/create-support-request.png)
+    
+    <a name="request-quota-change"></a> 
 
 4. Válassza ki a **Kérelemtípust**.
 
     ![Kérelemtípus](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
+    
+    >[AZURE.NOTE]  Alapértelmezés szerint minden SQL-kiszolgáló (például a myserver.database.windows.net) rendelkezik egy 45 000 egységnyi **DTU-kvótával**. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótát egy támogatási jegy létrehozásával, és a kérelem típusaként a *Kvóta* kiválasztásával növelheti meg. A DTU-igények számításához tudnia kell, hogy az SQL Data Warehouse minden egyes 100 [DWU][] egysége 750 DTU-t használ fel. Emiatt a 45 000 egységnyi alapértelmezett kvóta legfeljebb egy DW6000 (45 000/750), vagy több, kevesebb DWU egységgel rendelkező kisebb adatbázis létrehozását teszi lehetővé. Ha például két DW6000-et szeretne üzemeltetni egy SQL-kiszolgálón, akkor 90 000 egységnyi DTU-kvótát kell igényelnie.  Az aktuális DTU-felhasználást az SQL-kiszolgáló panelen tekintheti meg a portálon. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. 
 
 5. Válassza ki az **Előfizetést**, amely alatt az az adatbázis fut, amellyel kapcsolatban támogatást kér.
 
-    ![Előfizetés](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
+    ![Előfizetést](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
 
 6. Erőforrásként adja meg a **SQL Data Warehouse** szolgáltatást.
 
     ![Erőforrás](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
 
-7. Jelölje ki **Támogatási csomagot**.
+7. Jelölje ki az [Azure támogatási csomagot][].
 
-    - A **számlázással és az előfizetés kezelésével kapcsolatos** támogatás minden támogatási szinten elérhető.
-    - A **javítás/csere** támogatás a Fejlesztői, Standard, Pro Direct vagy a Premier szintű támogatásban érhető el. A **javítás/csere** típusú problémákkal az Azure használata során fellépő hibák esetén lehet a támogatáshoz fordulni, ha a hibát nagy valószínűséggel a Microsoft terméke okozta.
-    - A **fejlesztői mentorálás** és a **tanácsadási szolgáltatás** Közvetlen professzionális támogatás és Premier szintű támogatás esetén érhető el.
+    - A **számlázással, kvótával és az előfizetés kezelésével** kapcsolatos támogatás minden támogatási szinten elérhető.
+    - A **javítás/csere** támogatás a [Fejlesztői][], [Standard][], [Közvetlen professzionális támogatás][] vagy a [Premier][] támogatás esetén érhető el. A javítás/csere típusú problémákkal az Azure használata során fellépő hibák esetén lehet a támogatáshoz fordulni, ha a hibát nagy valószínűséggel a Microsoft terméke okozta.
+    - A **fejlesztői mentorálás** és a **tanácsadási szolgáltatás** [Közvetlen professzionális támogatás][] és [Premier][] esetén érhető el. 
     
-    Az [Azure-támogatás ügyfeleknek][] című témakör részletesen bemutatja a támogatási csomagokat, beleértve azok hatókörét, a válaszidőt, a díjszabást stb.  Az Azure-támogatással kapcsolatos gyakori kérdéseket az [Azure-támogatás – gyakori kérdések][] című témakör tekinti át.
+    Premier szintű támogatás megléte esetén az SQL Data Warehouse-szal kapcsolatos problémákat is jelentheti a [Microsoft Premier online portálon][].  Az [Azure-támogatás ügyfeleknek][Azure támogatási csomagot] című témakör részletesen bemutatja a támogatási csomagokat, beleértve azok hatókörét, a válaszidőt, a díjszabást stb.  Az Azure-támogatással kapcsolatos gyakori kérdéseket az [Azure támogatás – gyakori kérdések][] című témakör tekinti át.  
 
     ![Támogatási csomag](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-
-    Premier szintű támogatás megléte esetén az SQL Data Warehouse-szal kapcsolatos problémákat is jelentheti a [Microsoft Premier online portálon][].
 
 8. Válassza ki a **Problem Type** (Probléma típusa) és a **Category** (Kategória) mezőt.
 
@@ -81,10 +83,21 @@ A támogatási kérelem elküldése után az Azure támogatási csapata kapcsola
 
 Ezenkívül kapcsolatba léphet az SQL Data Warehouse-közösséggel a [Stack Overflow][] webhelyen vagy az [Azure SQL Data Warehouse MSDN fórumon][].
 
-<!-- External links -->
-[Azure portált]: https://portal.azure.com/
-[Azure-támogatás ügyfeleknek]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
-[Azure-támogatás – gyakori kérdések]: https://azure.microsoft.com/support/faq/
+<!--Image references--> 
+
+<!--Article references--> 
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+
+<!--MSDN references--> 
+
+<!--Other web references--> 
+[Azure Portal]: https://portal.azure.com/
+[Azure támogatási csomagot]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/  
+[Fejlesztői]: https://azure.microsoft.com/support/plans/developer/  
+[Standard]: https://azure.microsoft.com/support/plans/standard/  
+[Közvetlen professzionális támogatás]: https://azure.microsoft.com/support/plans/prodirect/  
+[Premier]: https://azure.microsoft.com/support/plans/premier/  
+[Azure támogatás – gyakori kérdések]: https://azure.microsoft.com/support/faq/
 [Microsoft Premier online portálon]: https://premier.microsoft.com/
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN fórumon]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
@@ -92,6 +105,6 @@ Ezenkívül kapcsolatba léphet az SQL Data Warehouse-közösséggel a [Stack Ov
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

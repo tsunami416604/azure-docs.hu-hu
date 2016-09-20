@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/20/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # A helyszíni StorSimple eszköz (1. frissítés) üzembe helyezése
@@ -283,7 +283,7 @@ Az MPIO Linux-állomáshoz csatlakoztatott StorSimple eszközre való telepíté
 
 
 
-## További lépések
+## Következő lépések
 
 - [Virtuális eszköz](storsimple-virtual-device-u2.md) konfigurálása.
 
@@ -292,6 +292,6 @@ Az MPIO Linux-állomáshoz csatlakoztatott StorSimple eszközre való telepíté
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="05/25/2016"
+    ms.date="08/24/2016"
     ms.author="sdanie"/>
 
 # Az első API kezelése az Azure API Management szolgáltatásban
@@ -186,7 +186,7 @@ Az **Elemzés** szakasz az alábbi négy lapból áll:
 
 ## <a name="next-steps"> </a>Következő lépések
 
--   Tekintse meg a [Bevezetés az API-k speciális konfigurálásába][] oktatóanyag többi témakörét.
+- Megtudhatja, hogyan [védheti meg az API-kat sebességkorlátozással](api-management-howto-product-with-rules.md).
 
 [Ingyenes Azure-fiók létrehozása]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
@@ -205,7 +205,6 @@ Az **Elemzés** szakasz az alábbi négy lapból áll:
 [Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban]: api-management-howto-configure-notifications.md
 [Válaszok]: api-management-howto-add-operations.md#responses
 [Termék létrehozása és közzététele]: api-management-howto-add-products.md
-[Bevezetés az API-k speciális konfigurálásába]: api-management-get-started-advanced.md
 [Az API Management díjszabása]: http://azure.microsoft.com/pricing/details/api-management/
 
 [klasszikus Azure portál]: https://manage.windowsazure.com/
@@ -247,6 +246,6 @@ Az **Elemzés** szakasz az alábbi négy lapból áll:
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

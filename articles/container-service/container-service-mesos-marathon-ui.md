@@ -7,7 +7,7 @@
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
+   keywords="Docker, tárolók, mikroszolgáltatások, Mesos, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -97,8 +97,12 @@ A skálázási művelet befejezése után több példányt fog látni ugyanabbó
 
 - [A DC/OS és a Marathon API használata](container-service-mesos-marathon-rest.md)
 
+A Mesost használó Azure Container Service részletes bemutatása
+
+> [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
 
 
-<!--HONumber=Jun16_HO2--->
+
+<!--HONumber=sep16_HO1-->
 
 

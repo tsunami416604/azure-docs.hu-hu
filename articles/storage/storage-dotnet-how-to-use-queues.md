@@ -1,6 +1,6 @@
 <properties
     pageTitle="Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel | Microsoft Azure"
-    description="Az Azure Queue Storage segítségével aszinkron módon küldhet és fogadhat üzeneteket az alkalmazás-összetevők között. Megismerkedhet a Queue Storage egyszerű műveleteivel, például az üzenetsorok létrehozásával és törlésével, valamint az üzenetsorban található üzenetek hozzáadásával, olvasásával és törlésével."
+    description="Az Azure-üzenetsorok megbízható, aszinkron üzenetkezelést biztosítanak az alkalmazások összetevői között. A felhőbeli üzenetkezelésnek köszönhetően az alkalmazások összetevői függetlenül méretezhetők."
     services="storage"
     documentationCenter=".net"
     authors="robinsh"
@@ -13,16 +13,18 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="04/07/2016"
+    ms.date="07/26/2016"
     ms.author="gusapost"/>
 
 # Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
 [AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## Áttekintés
 
-Az Azure Queue Storage szolgáltatás üzenetsorokat biztosít a felhőben. A méretezhető alkalmazások tervezésekor az alkalmazás összetevői gyakran le vannak választva, hogy egymástól függetlenül lehessen őket méretezni.  A Queue Storage megbízható üzenetkezelési megoldást kínál az alkalmazás összetevő közötti aszinkron kommunikációhoz, függetlenül attól, hogy az összetevők a felhőben, asztali gépen, egy helyszíni kiszolgálón vagy egy mobileszközön futnak. A Queue Storage támogatja az aszinkron feladatok kezelését és a feldolgozási munkafolyamatok kialakítását is.
+Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások összetevői között. A méretezhető alkalmazások tervezésekor az alkalmazás összetevői gyakran le vannak választva, hogy egymástól függetlenül lehessen őket méretezni. A Queue Storage aszinkron üzenetkezelést biztosít az alkalmazások összetevői közötti kommunikációhoz, függetlenül attól, hogy az összetevők a felhőben, asztali gépen, egy helyszíni kiszolgálón vagy egy mobileszközön futnak. A Queue Storage támogatja az aszinkron feladatok kezelését és a feldolgozási munkafolyamatok kialakítását is.
 
 ### Az oktatóanyag ismertetése
 
@@ -255,7 +257,7 @@ Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a *
     // Delete the queue.
     queue.Delete();
 
-## További lépések
+## Következő lépések
 
 Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről is.
 
@@ -278,6 +280,6 @@ Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokbó
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -1,10 +1,10 @@
 <properties
-    pageTitle="A virtuális gépek védelme az Azure-ban az Azure Backup használatával | Microsoft Azure"
-    description="Azure virtuális gépeit megvédheti az Azure Backup szolgáltatással. Ez az oktatóanyag azt írja le, hogyan regisztrálhat virtuális gépeket, hozhat létre egy házirendet és védheti meg virtuális gépeit az Azure-ban."
+    pageTitle="Áttekintés: Azure virtuális gépek védelme Backup-tárolóval | Microsoft Azure"
+    description="Megvédheti Azure virtuális gépeit egy Backup-tárolóval. Ez az oktatóanyag azt írja le, hogyan regisztrálhat virtuális gépeket, hozhat létre egy házirendet és védheti meg virtuális gépeit az Azure-ban."
     services="backup"
     documentationCenter=""
     authors="markgalioto"
-    manager="jwhit"
+    manager="cfreeman"
     editor=""/>
 
 <tags
@@ -13,17 +13,17 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="04/22/2016"
+    ms.date="07/29/2016"
     ms.author="markgal; jimpark"/>
 
 
 # Áttekintés: Azure virtuális gépek biztonsági mentése
 
 > [AZURE.SELECTOR]
-- [ARM-alapú virtuális gépek biztonsági mentése](backup-azure-vms-first-look-arm.md)
-- [Klasszikus módú virtuális gépek biztonsági mentése](backup-azure-vms-first-look.md)
+- [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md)
+- [Áttekintés: Azure virtuális gépek védelme Backup-tárolóval](backup-azure-vms-first-look.md)
 
-Ez az oktatóanyag végigvezeti egy Azure virtuális gép (VM) az Azure-ba végzett biztonsági mentésének lépésein. Az oktatóanyag sikeres elvégzéséhez a következő előfeltételek szükségesek:
+Ez az oktatóanyag végigvezeti egy Azure virtuális gép (VM) egy Azure-beli Backup-tárolóba való biztonsági mentésének lépésein. Ez a cikk a virtuális gépek biztonsági mentésének klasszikus modelljét vagy Service Managerrel üzemi modelljét ismerteti. Ha többet szeretne tudni a virtuális gépek egy erőforráscsoporthoz tartozó Recovery Services-tárolóba való biztonsági mentéséről, olvassa el az [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikket. Az oktatóanyag sikeres elvégzéséhez a következő előfeltételek szükségesek:
 
 - Létrehozott egy virtuális gépet az Azure-előfizetésben.
 - A virtuális gép csatlakozik Azure nyilvános IP-címekhez. További információkért lásd: [Hálózati kapcsolatok](./backup-azure-vms-prepare.md#network-connectivity).
@@ -38,7 +38,7 @@ A virtuális gépek biztonsági mentésének öt fő lépése van:
 
 ![A virtuális gépek biztonsági mentési folyamatának áttekintése](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
->[AZURE.NOTE] Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md). Ez az oktatóanyag olyan virtuális gépekhez készült, amelyeket a klasszikus Azure portálon lehet létrehozni. Az Azure Backup szolgáltatás támogatja az Azure Resource Manager- (ARM-) alapú virtuális gépeket – más néven az IaaS V2 virtuális gépeket. Az ARM-alapú virtuális gépek biztonsági mentésével kapcsolatos részletekért lásd: [First Look: Back up ARM VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md) (Áttekintés: ARM-alapú virtuális gépek biztonsági mentése Recovery Services-tárolóba).
+>[AZURE.NOTE] Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md). Ez az oktatóanyag olyan virtuális gépekhez készült, amelyeket a klasszikus Azure portálon lehet létrehozni. Az Azure Backup szolgáltatás támogatja a Resource Manager-alapú virtuális gépeket. A virtuális gépek Recovery Services-tárolóba való biztonsági mentésének részleteit az [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikkben tekintheti meg.
 
 
 
@@ -145,7 +145,7 @@ Mielőtt regisztrálná a virtuális gépet egy tárolóval, futtassa a felderí
 
 ## 3. lépés – A virtuálisgép-ügynök telepítése a virtuális gépre
 
-Az Azure virtuálisgép-ügynököt telepíteni kell az Azure virtuális gépre, hogy a Backup bővítmény működjön. Ha a virtuális gépe az Azure-katalógusból lett létrehozva, a virtuálisgép-ügynök már megtalálható a virtuális gépen. Ekkor [a virtuális gépek védelmével](backup-azure-vms-first-look.md#step-4---protect-azure-virtual-machines) folytathatja.
+Az Azure virtuálisgép-ügynököt telepíteni kell az Azure virtuális gépre, hogy a Backup bővítmény működjön. Ha a virtuális gépe az Azure-katalógusból lett létrehozva, a virtuálisgép-ügynök már megtalálható a virtuális gépen. Ekkor [a virtuális gépek védelmével](backup-azure-vms-first-look.md#step-4-protect-azure-virtual-machines) folytathatja.
 
 Ha a virtuális gépe helyszíni adatközpontból lett áttelepítve, a virtuális gépre valószínűleg nincs telepítve a virtuálisgép-ügynök. Telepítenie kell a virtuálisgép-ügynököt a virtuális gépen a virtuális gép védelme előtt. A virtuálisgép-ügynök telepítésének részletes lépéseiért lásd [a virtuális gépek biztonsági mentéséről szóló cikk virtuálisgép-ügynökökre vonatkozó szakaszát](backup-azure-vms-prepare.md#vm-agent).
 
@@ -213,7 +213,7 @@ A kezdeti biztonsági mentés indítása most:
     >[AZURE.NOTE] A virtuális gépek biztonsági mentése egy helyi folyamat. Nem lehet biztonsági mentést készíteni egy adott régióban található virtuális gépről egy másik régióban található Backup-tárolóra. Így minden olyan Azure-régióban, ahol biztonsági mentésre szoruló virtuális gépek vannak, legalább egy Backup-tárolót létre kell hozni.
 
 ## Következő lépések
-Most, hogy sikeresen készített biztonsági mentést egy virtuális gépről, számos további lépés végezhető. A leglogikusabb lépés az adatok virtuális gépre végzett visszaállításának megismerése. De olyan felügyeleti tevékenységek is elérhetőek, amelyekkel megtudhatja, hogyan védheti meg az adatait, és hogyan csökkentheti minimálisra a költségeket.
+Most, hogy sikeresen készített biztonsági mentést egy virtuális gépről, számos további lépés végezhető. A leglogikusabb lépés az adatok virtuális gépre végzett visszaállításának megismerése. De olyan felügyeleti tevékenységek is elérhetők, amelyekkel megtudhatja, hogyan védheti meg az adatait, és hogyan csökkentheti minimálisra a költségeket.
 
 - [A virtuális gépek kezelése és figyelése](backup-azure-manage-vms.md)
 - [Virtuális gépek visszaállítása](backup-azure-restore-vms.md)
@@ -225,6 +225,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

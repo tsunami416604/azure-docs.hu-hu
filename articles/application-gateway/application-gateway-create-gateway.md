@@ -3,7 +3,7 @@
    description="Ez a lap utasításokat tartalmaz egy Azure Application Gateway létrehozásához, konfigurálásához, indításához és törléséhez"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="jdial"
    editor="tysonn"/>
 <tags
@@ -12,18 +12,19 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
-   ms.author="joaoma"/>
+   ms.date="08/09/2016"
+   ms.author="gwallace"/>
 
 # Application Gateway létrehozása, indítása vagy törlése
 
 Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az Application Gateway az alábbi alkalmazáskézbesítési funkciókkal rendelkezik: HTTP-terheléselosztás, cookie-alapú munkamenet-affinitás és Secure Sockets Layer (SSL) alapú kiszervezés.
 
 > [AZURE.SELECTOR]
-- [Klasszikus Azure PowerShell](application-gateway-create-gateway.md)
+- [Azure Portal](application-gateway-create-gateway-portal.md)
 - [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
+- [Klasszikus Azure PowerShell](application-gateway-create-gateway.md)
 - [Azure Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
-
+- [Azure CLI](application-gateway-create-gateway-cli.md)
 
 <BR>
 
@@ -33,8 +34,9 @@ Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat, konfigu
 ## Előkészületek
 
 1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
-2. Ellenőrizze, hogy rendelkezik-e működő virtuális hálózattal és hozzá tartozó érvényes alhálózattal. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
-3. A kiszolgálóknak, amelyeket az Application Gateway használatára fog konfigurálni, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
+2. Ha rendelkezik meglévő virtuális hálózattal, válasszon ki egy meglévő üres alhálózatot, vagy hozzon létre egy új alhálózatot a meglévő virtuális hálózatban kizárólag az Application Gateway számára. Nem helyezheti üzembe az Application Gateway-t az Application Gateway mögött üzembe helyezni kívánt erőforrásoktól eltérő virtuális hálózatra.
+3. Ellenőrizze, hogy rendelkezik-e működő virtuális hálózattal és hozzá tartozó érvényes alhálózattal. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
+3. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
 
 ## Mire van szükség egy Application Gateway létrehozásához?
 
@@ -47,11 +49,11 @@ Az értékek a következők:
 - **Háttér-kiszolgálókészlet:** A háttérkiszolgálók IP-címeinek listája. A listán szereplő IP-címeknek a virtuális hálózat alhálózatához kell tartozniuk, vagy nyilvános/virtuális IP-címnek kell lenniük.
 - **Háttér-kiszolgálókészlet beállításai:** Minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
 - **Előtérbeli port:** Az Application Gateway-en megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
-- **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, kis- és a nagybetűk megkülönböztetésével) és az SSL tanúsítványnévvel rendelkezik.
+- **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, a kis- és a nagybetűk megkülönböztetésével) és SSL tanúsítványnévvel rendelkezik (SSL-kiszervezés konfigurálásakor).
 - **Szabály:** A szabály összeköti a figyelőt és a háttérkiszolgáló-készletet, és meghatározza, hogy mely háttérkiszolgáló-készletre legyen átirányítva a forgalom, ha elér egy adott figyelőt.
 
 
-## Új Application Gateway létrehozása
+## Application Gateway létrehozása
 
 Application Gateway létrehozásához tegye a következőket:
 
@@ -64,7 +66,7 @@ Application Gateway létrehozásához tegye a következőket:
 
 ### Application Gateway erőforrás létrehozása
 
-Az átjáró létrehozásához használja a **New-AzureApplicationGateway** parancsmagot, és cserélje le az értékeket a saját értékeire. Ne feledje, hogy az átjáró használati díjának felszámolása nem indul el ezen a ponton. A használati díj felszámolása egy későbbi lépésnél kezdődik, amikor az átjáró sikeresen elindul.
+Az átjáró létrehozásához használja a **New-AzureApplicationGateway** parancsmagot, és cserélje le az értékeket a saját értékeire. Az átjáró használati díjának felszámolása ekkor még nem kezdődik el. A használati díj felszámolása egy későbbi lépésnél kezdődik, amikor az átjáró sikeresen elindul.
 
 Az alábbi példa egy új Application Gateway-t hoz létre egy „testvnet1” nevű virtuális hálózat és egy „subnet-1” nevű alhálózat használatával.
 
@@ -100,7 +102,7 @@ Az átjáró létrehozásának ellenőrzéséhez használhatja a **Get-AzureAppl
 >[AZURE.NOTE]  Az *InstanceCount* alapértelmezett értéke 2, a maximális értéke pedig 10. A *GatewaySize* alapértelmezett értéke Közepes. A Kicsi, Közepes és a Nagy lehetőségek közül választhat.
 
 
- A *VirtualIPs* és a *DnsName* paraméterek azért üresek, mert az átjáró még nem indult el. Ezek akkor lesznek kitöltve, ha az átjáró futó állapotba kerül.
+ A *VirtualIPs* és a *DnsName* paraméterek azért üresek, mert az átjáró még nem indult el. Ezek kitöltése akkor történik, amikor az átjáró futó állapotba kerül.
 
 ## Az Application Gateway konfigurálása
 
@@ -108,7 +110,7 @@ Az Application Gateway-t egy XML-fájl vagy konfigurációs objektum segítség�
 
 ## Az Application Gateway konfigurálása XML-fájl használatával
 
-Az alábbi példában egy XML-fájllal fogja konfigurálni az Application Gateway beállításait, és véglegesíteni fogja őket az Application Gateway erőforráshoz.  
+Az alábbi példában egy XML-fájllal konfigurálja az Application Gateway beállításait, és véglegesíti őket az Application Gateway-erőforráshoz.  
 
 ### 1. lépés  
 
@@ -161,7 +163,7 @@ Szerkessze a zárójelek közötti értékeket a konfigurációs elemeknek megfe
 
 >[AZURE.IMPORTANT] A Http és Https protokollelem különbséget tesz a kis- és a nagybetűk között.
 
-Az alábbi példa bemutatja, hogyan használhat egy konfigurációs fájlt arra, hogy beállítsa az Application Gateway-t a 80-as nyilvános port HTTP forgalmának terheléselosztására, illetve hogy a két IP-cím közötti hálózati forgalmat a háttérbeli 80-as portra küldje.
+Az alábbi példa bemutatja, hogyan használhat egy konfigurációs fájlt az Application Gateway beállítására. A példa elosztja a nyilvános 80-as port HTTP-forgalmának a terhelését, illetve a háttérbeli 80-as portra küldi a két IP-cím közötti hálózati forgalmat.
 
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
@@ -222,9 +224,9 @@ A következő lépésként állítsa be az Application Gateway-t. Használja a *
 
 ## Az Application Gateway konfigurálása konfigurációs objektum segítségével
 
-Az alábbi példa bemutatja, hogyan konfigurálhatja az Application Gateway-t konfigurációs objektumok segítségével. Minden konfigurációs elemet külön kell konfigurálni, és utána kell hozzáadni egy Application Gateway konfigurációs objektumhoz. A konfigurációs objektum létrehozása után a **Set-AzureApplicationGateway** paranccsal fogja véglegesíteni a konfigurációt a korábban létrehozott Application Gateway erőforráshoz.
+Az alábbi példa bemutatja, hogyan konfigurálhatja az Application Gateway-t konfigurációs objektumok segítségével. Minden konfigurációs elemet külön kell konfigurálni, és utána kell hozzáadni egy Application Gateway konfigurációs objektumhoz. A konfigurációs objektum létrehozása után a **Set-AzureApplicationGateway** paranccsal véglegesíti a konfigurációt a korábban létrehozott Application Gateway-erőforráshoz.
 
->[AZURE.NOTE] Mielőtt értékeket rendelne a konfigurációs objektumokhoz, deklarálnia kell, hogy a PowerShell milyen típusú objektumot használ a tároláshoz. Az egyéni elemek létrehozásának első sora határozza meg, hogy milyen Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name) lesz használva.
+>[AZURE.NOTE] Mielőtt értékeket rendelne a konfigurációs objektumokhoz, deklarálnia kell, hogy a PowerShell milyen típusú objektumot használ a tároláshoz. Az egyéni elemek létrehozásának első sora határozza meg, hogy milyen Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name) elemet használ a rendszer.
 
 ### 1. lépés
 
@@ -415,6 +417,6 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

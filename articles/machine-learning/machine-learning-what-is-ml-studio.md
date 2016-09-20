@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/09/2016"
+    ms.date="06/10/2016"
     ms.author="garye"/>
 
 # Mi az Azure Machine Learning Studio?
@@ -47,6 +47,7 @@ Felül három fül látható: a **Kezdőlap** (az először megjelenő lap), a *
 
 Kattintson a **Studio** lapra, és a rendszer felkéri a Microsoft-fiókjával, illetve a munkahelyi vagy iskolai fiókjával történő bejelentkezésre. Miután bejelentkezett, bal oldalon az alábbi lapokat fogja látni:
 
+- **PROJEKTEK** – Az egyes projekteket alkotó kísérletek, adatkészletek, jegyzetek és egyéb erőforrások gyűjteményei
 - **KÍSÉRLETEK** – A létrehozott, futtatott és vázlatként mentett kísérletek
 - **WEBSZOLGÁLTATÁSOK** – A kísérletekből üzembe helyezett webszolgáltatások
 - **NOTEBOOKOK** – A létrehozott Jupyter notebookok
@@ -117,6 +118,6 @@ Ha elkészült a prediktív elemzési modell, közvetlenül a Machine Learning S
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

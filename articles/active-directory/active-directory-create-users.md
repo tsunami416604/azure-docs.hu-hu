@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="curtand"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/31/2016"
+    ms.date="06/21/2016"
     ms.author="curtand;viviali"/>
 
 # Új felhasználók vagy Microsoft-fiókkal rendelkező felhasználók hozzáadása az Azure Active Directoryhoz
@@ -88,6 +88,6 @@ Ezután szerkesztheti a vendégfelhasználók hozzáférés-vezérlésének lehe
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="get-started-article"
- ms.date="03/09/2016"
+ ms.date="08/18/2016"
  ms.author="krisragh"/>
 
 # A Scheduler alapfogalmai, entitáshierarchiája és terminológiája
@@ -220,6 +220,6 @@ A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbó
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

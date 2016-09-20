@@ -1,6 +1,6 @@
 <properties
     pageTitle="A Service Bus üzenetkezelésének áttekintése | Microsoft Azure"
-    description="Service Bus üzenetkezelés: Rugalmas adattovábbítás a felhőben"
+    description="Service Bus üzenetkezelés: rugalmas adattovábbítás a felhőben"
     services="service-bus"
     documentationCenter=".net"
     authors="sethmanheim"
@@ -13,13 +13,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="multiple"
     ms.topic="get-started-article"
-    ms.date="03/09/2016"
+    ms.date="06/20/2016"
     ms.author="sethm"/>
 
 
 # Service Bus üzenetkezelés: rugalmas adattovábbítás a felhőben
 
-Az Azure Service Bus üzenetkezelés egy megbízható információkézbesítési szolgáltatás. A szolgáltatás célja a kommunikáció megkönnyítése. Ha két vagy több fél információt szeretne cserélni, kommunikációs mechanizmusra van szükségük. A Service Bus üzenetkezelés egy közvetítő- vagy harmadikfél-alapú kommunikációs módszer. Hasonló a fizikai világ postai szolgáltatásaihoz. A postai szolgáltatások számos kézbesítési garanciával könnyítik meg különböző fajta levelek és csomagok küldését a világ minden táján.
+A Microsoft Azure Service Bus üzenetkezelés egy megbízható információkézbesítési szolgáltatás. A szolgáltatás célja a kommunikáció megkönnyítése. Ha két vagy több fél információt szeretne cserélni, kommunikációs mechanizmusra van szükségük. A Service Bus üzenetkezelés egy közvetítő- vagy harmadikfél-alapú kommunikációs módszer. Hasonló a fizikai világ postai szolgáltatásaihoz. A postai szolgáltatások számos kézbesítési garanciával könnyítik meg különböző fajta levelek és csomagok küldését a világ minden táján.
 
 A postai szolgáltatás levélkézbesítéséhez hasonlóan a Service Bus üzenetkezelés is rugalmas információkézbesítési szolgáltatást biztosít a küldő és a címzett számára. Az üzenetkezelési szolgáltatás biztosítja, hogy az információ akkor is célba érjen, ha a két fél soha nincs egyszerre online, vagy nem érhetők el pont egyszerre. Ebben a tekintetben az üzenetkezelés egy levél küldéséhez, a nem közvetítőalapú kommunikáció pedig egy telefonhíváshoz (vagy legalábbis a hívásvárakoztatás és hívóazonosítás korát megelőző idők telefonhívásaihoz) hasonlít.
 
@@ -39,7 +39,7 @@ A továbbítón keresztüli üzenetcsere számos előnnyel jár, de elengedhetet
 
 ## Közvetítőalapú üzenettovábbítás
 
-A továbbítón keresztüli üzenetcsere sémájával szemben a [közvetítőalapú üzenettovábbítás](service-bus-fundamentals-hybrid-solutions.md) tekinthető aszinkronnak vagy átmenetileg leválasztottnak. Az adatalkotóknak (küldőknek) és a fogyasztóknak (fogadóknak) nem kell egyszerre online lenniük. Az üzenetküldési infrastruktúra megbízhatóan tárolja az üzeneteket egy közvetítőben (például várólistán), amíg a fogyasztó fél készen nem áll a fogadásukra. Ez lehetővé teszi az elosztott alkalmazás összetevőinek leválasztását, akár önkéntesen – például karbantartási céllal –, akár egy összetevő összeomlása miatt, anélkül, hogy ez az egész rendszerre hatással lenne. A fogadó alkalmazásnak továbbá csak a nap bizonyos szakaszaiban kell online lennie, például egy olyan készletkezelő rendszer esetén, amelynek csak a munkanapok végén kell futnia.
+A továbbítón keresztüli üzenetcsere sémájával szemben a [közvetítőalapú üzenettovábbítás](service-bus-queues-topics-subscriptions.md) tekinthető aszinkronnak vagy átmenetileg leválasztottnak. Az adatalkotóknak (küldőknek) és a fogyasztóknak (fogadóknak) nem kell egyszerre online lenniük. Az üzenetküldési infrastruktúra megbízhatóan tárolja az üzeneteket egy közvetítőben (például várólistán), amíg a fogyasztó fél készen nem áll a fogadásukra. Ez lehetővé teszi az elosztott alkalmazás összetevőinek leválasztását, akár önkéntesen – például karbantartási céllal –, akár egy összetevő összeomlása miatt, anélkül, hogy ez az egész rendszerre hatással lenne. A fogadó alkalmazásnak továbbá csak a nap bizonyos szakaszaiban kell online lennie, például egy olyan készletkezelő rendszer esetén, amelynek csak a munkanapok végén kell futnia.
 
 A Service Bus közvetítő alapú üzenettovábbítás infrastruktúrájának alapvető összetevői a várólisták, témakörök és előfizetések.  Az elsődleges különbség az, hogy a témakörök támogatják a közzétételi/előfizetési képességeket, amelyek segítségével kifinomultabb tartalomalapú útválasztás és kézbesítési logika érhető el, például küldés több címzettnek. Ezek az összetevők új aszinkron üzenetkezelési forgatókönyveket tesznek lehetővé, például az átmeneti leválasztást, a közzétételt/előfizetést és a terheléselosztást. További információk ezekről az üzenetkezelési entitásokról: [Service Bus queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md) (Service Bus-üzenetsorok, -témakörök és -előfizetések).
 
@@ -49,15 +49,15 @@ Akárcsak a továbbítón keresztüli üzenetcsere infrastruktúra esetén, a k�
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
-- [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 - [Service Bus fundamentals (A Service Bus alapjai)](service-bus-fundamentals-hybrid-solutions.md)
+- [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 - [Service Bus-architektúra](service-bus-architecture.md)
-- [How to use Service Bus Queues (A Service Bus-üzenetsorok használata)](service-bus-dotnet-how-to-use-queues.md)
-- [A Service Bus-üzenettémakörök használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [How to use Service Bus Queues (A Service Bus-üzenetsorok használata)](service-bus-dotnet-get-started-with-queues.md)
+- [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
  
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

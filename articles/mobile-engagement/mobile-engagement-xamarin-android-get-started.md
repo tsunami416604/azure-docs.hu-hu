@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-xamarin-android"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="03/25/2016"
+    ms.date="06/16/2016"
     ms.author="piyushjo" />
 
 # Ismerkedés az Azure Mobile Engagement Xamarin.Android-alkalmazásokkal való használatával
@@ -109,6 +109,20 @@ A Xamarin Studio létrehozza az alkalmazást, amelybe integrálni fogjuk a Mobil
 Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felhasználók aktívak, legalább egy képernyőt el kell küldenie a Mobile Engagement háttérrendszere számára. Ennek elvégzéséhez biztosítsa, hogy a `MainActivity` az `EngagementActivity` elemtől örököl az `Activity` helyett.
 
     public class MainActivity : EngagementActivity
+    
+Ha az `EngagementActivity` elemtől nem lehet örökölni, akkor hozzá kell adnia a `.StartActivity` és `.EndActivity` metódust az `OnResume` és `OnPause` elemhez.  
+
+        protected override void OnResume()
+            {
+                EngagementAgent.StartActivity(EngagementAgentUtils.BuildEngagementActivityName(Java.Lang.Class.FromType(this.GetType())), null);
+                base.OnResume();             
+            }
+    
+            protected override void OnPause()
+            {
+                EngagementAgent.EndActivity();
+                base.OnPause();            
+            }
 
 ##<a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 
@@ -134,6 +148,7 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 [6]: ./media/mobile-engagement-xamarin-android-get-started/6.png
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

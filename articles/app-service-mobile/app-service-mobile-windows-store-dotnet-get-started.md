@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Univerzális Windows-platform- (UWP-) alkalmazás létrehozása az Azure App Service Mobile Apps szolgáltatásában | Microsoft Azure"
+    pageTitle="Mobile Apps-t használó Univerzális Windows-platform (UWP) létrehozása | Microsoft Azure"
     description="Az útmutató bevezeti Önt az Azure-alapú, az Univerzális Windows-platformra (UWP) C#, Visual Basic vagy JavaScript nyelven történő alkalmazásfejlesztésre szolgáló mobil-háttéralkalmazások használatába."
     services="app-service\mobile"
     documentationCenter="windows"
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-windows"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="05/03/2016"
+    ms.date="08/11/2016"
     ms.author="glenga"/>
 
 #Windows-alkalmazás létrehozása
@@ -80,24 +80,24 @@ Miután konfigurálta a Mobile Apps-háttéralkalmazást, létrehozhat új ügyf
 
 ##Következő lépések
 
-* [Hitelesítés hozzáadása az alkalmazáshoz ](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  Ismerje meg, hogyan hitelesítheti alkalmazása felhasználóit identitásszolgáltató használatával.
+* [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-windows-store-dotnet-get-started-users.md)  
+  Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
 
 * [Leküldéses értesítések hozzáadása az alkalmazáshoz](app-service-mobile-windows-store-dotnet-get-started-push.md)  
   Ismerje meg, hogyan adhat leküldéses értesítéseket az alkalmazásához, illetve hogyan konfigurálhatja Mobile Apps-háttéralkalmazását az Azure Notification Hubs használatára a leküldéses értesítések küldéséhez.
 
-* [Windows-alkalmazás kapcsolat nélküli szinkronizálásának engedélyezése](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
+* [Az offline szinkronizálás engedélyezése az alkalmazás számára](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
   Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. A kapcsolat nélküli szinkronizálás a mobilalkalmazást használó végfelhasználók számára lehetővé teszi &mdash;az adatok megtekintését, hozzáadását és módosítását&mdash; akkor is, ha nincs hálózati kapcsolat.
 
 <!-- Anchors. -->
 <!-- Images. -->
 <!-- URLs. -->
 [Mobilalkalmazás-SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

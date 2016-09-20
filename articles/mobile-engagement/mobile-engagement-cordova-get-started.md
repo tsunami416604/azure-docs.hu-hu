@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-phonegap"
     ms.devlang="js"
     ms.topic="hero-article" 
-    ms.date="04/04/2016"
+    ms.date="08/19/2016"
     ms.author="piyushjo" />
 
 # Ismerkedés az Azure Mobile Engagement Cordova/Phonegap-alkalmazásokkal való használatával
@@ -192,7 +192,7 @@ Most létre fogunk hozni egy egyszerű leküldéses értesítési kampányt, ame
 
 3. Adja meg a bemeneti adatokat a kampány létrehozásához **[Android]**.
     
-    - Írja be a kampány nevét a **Name** mezőbe. 
+    - Adja meg a kampány nevét a **Name** mezőben. 
     - A **Delivery Type** (Kézbesítési típus) értékeként jelölje be a *System notification* és *Simple* (Rendszerértesítés, Egyszerű) választógombot.
     - A **Delivery time** (Kézbesítési idő) értékeként jelölje be az *Any time* (Bármikor) választógombot.
     - Írja be az értesítés címét a **Title** (Cím) mezőbe. A cím a leküldéses értesítés első sora lesz.
@@ -223,7 +223,7 @@ Most létre fogunk hozni egy egyszerű leküldéses értesítési kampányt, ame
 
 9. Ekkor meg kellene jelennie egy leküldéses értesítésnek az eszközön vagy az emulátorban a jelen kampány részeként. 
 
-##<a id="next-steps"></a>További lépések
+##<a id="next-steps"></a>Következő lépések
 [A Cordova Mobile Engagement SDK-val elérhető összes módszer áttekintése](https://github.com/Azure/azure-mobile-engagement-cordova)
 
 <!-- Images. -->
@@ -241,6 +241,6 @@ Most létre fogunk hozni egy egyszerű leküldéses értesítési kampányt, ame
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

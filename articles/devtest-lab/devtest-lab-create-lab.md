@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/01/2016"
+    ms.date="08/25/2016"
     ms.author="tarcher"/>
 
 # Labor létrehozása az Azure DevTest Labs szolgáltatásban
@@ -27,7 +27,7 @@ Labor létrehozásához a következőkre lesz szüksége:
 
 ## Labor létrehozása
 
-1. Jelentkezzen be az [Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Válassza a **Tallózás** lehetőséget.
 
@@ -46,6 +46,8 @@ Labor létrehozásához a következőkre lesz szüksége:
 
     ![Laborpanel létrehozása](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## Következő lépések
 
 A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
@@ -61,6 +63,6 @@ A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
 - [Összetevőkkel rendelkező virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm-with-artifacts.md).
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

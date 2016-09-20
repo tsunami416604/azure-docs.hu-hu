@@ -10,9 +10,9 @@ articles/sql-database/sql-database-get-started-tutorial.md
 -->
 ## Új Azure SQL Database létrehozása
 
-Kövesse a következő lépéseket az Azure portálon, hogy létrehozzon egy új Azure SQL Database adatbázist egy új vagy egy létező Azure SQL Database logikai kiszolgálón.
+Kövesse a következő lépéseket az Azure Portalon, hogy létrehozzon egy új Azure SQL Database adatbázist egy új vagy egy létező Azure SQL Database logikai kiszolgálón.
 
-1. Ha jelenleg nincs csatlakozva, jelentkezzen be az [Azure portálra](http://portal.azure.com).
+1. Ha jelenleg nincs csatlakozva, jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 2. Kattintson az **Új** gombra, írja be az **SQL Database** (SQL-adatbázis) kifejezést, majd kattintson az **SQL Database (new database)** (SQL-adatbázis (új adatbázis)) elemre
 
      ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
@@ -30,7 +30,7 @@ Kövesse a következő lépéseket az Azure portálon, hogy létrehozzon egy új
  - Adatbázis neve
  - Előfizetés (csak akkor, ha több előfizetéssel rendelkezik)
  - Erőforráscsoport (ha ezek az első lépései, használja a logikai kiszolgáló erőforráscsoportját)
- - Forrás kiválasztása (választhat üres adatbázist, mintaadatokat vagy egy adatbázis biztonsági mentését)
+ - Forrás kiválasztása (választhat üres adatbázist, mintaadatokat vagy egy Azure-adatbázis biztonsági mentését – egy helyszíni SQL Server-adatbázis áttelepítéséhez vagy adatok a BCP használatával történő betöltéséhez tekintse meg a cikk végén található hivatkozásokat)
  - Kiszolgáló (egy új vagy meglévő logikai kiszolgáló)
  - Kiszolgáló-rendszergazdai jelszava
  - Jelszó
@@ -48,6 +48,7 @@ Kövesse a következő lépéseket az Azure portálon, hogy létrehozzon egy új
      ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

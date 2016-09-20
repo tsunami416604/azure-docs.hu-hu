@@ -5,13 +5,13 @@
 - [Szerepkör aktiválása vagy inaktiválása](../articles/active-directory/active-directory-privileged-identity-management-how-to-activate-role.md)
 - [Szerepkör alapértelmezett aktiválási beállításainak módosítása vagy megtekintése](../articles/active-directory/active-directory-privileged-identity-management-how-to-change-default-settings.md)
 - [Biztonsági riasztások konfigurálása](../articles/active-directory/active-directory-privileged-identity-management-how-to-configure-security-alerts.md)
-- [Biztonsági felülvizsgálat indítása](../articles/active-directory/active-directory-privileged-identity-management-how-to-start-security-review.md)
-- [Biztonsági felülvizsgálat végrehajtása](../articles/active-directory/active-directory-privileged-identity-management-how-to-perform-security-review.md)
+- [Elérés áttekintésének indítása](../articles/active-directory/active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [Elérés áttekintésének végrehajtása](../articles/active-directory/active-directory-privileged-identity-management-how-to-perform-security-review.md)
 - [MFA igénylése](../articles/active-directory/active-directory-privileged-identity-management-how-to-require-mfa.md)
 - [A naplófájl használata](../articles/active-directory/active-directory-privileged-identity-management-how-to-use-audit-log.md)
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-windows"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="05/11/2016"
+    ms.date="07/21/2016"
     ms.author="glenga"/>
 
 
@@ -84,7 +84,7 @@ Ebben a szakaszban egy, a mobilszolgáltatásához csatlakozó új univerzális 
             "https://todolist.azure-mobile.net/",
             "XXXX-APPLICATION-KEY-XXXXX");</code></pre>
 
-    <p>The client will now access the mobile service published to Azure.</p></li>
+    <p>Az ügyfél most hozzáfér az Azure-on közzétett mobilszolgáltatáshoz.</p></li>
 </ol>
 
 ## Alkalmazás tesztelése az Azure-on tárolt mobilszolgáltatáson
@@ -107,7 +107,7 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
   <br/>Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
 
 * [Leküldéses értesítések hozzáadása az alkalmazáshoz][Bevezetés a leküldéses értesítések használatába]
-  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazásnak.
+  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazás számára.
 
 * [Mobile Services .NET-háttérrendszer hibaelhárítása]
   <br/> Ismerje meg, hogyan diagnosztizálhatja és javíthatja ki a Mobile Services .NET-háttérrendszerekkel kapcsolatban felmerülő hibákat.
@@ -136,6 +136,6 @@ További információk az univerzális Windows-alkalmazásokról: [Több eszköz
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

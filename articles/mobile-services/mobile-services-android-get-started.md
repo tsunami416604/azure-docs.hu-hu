@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-android"
     ms.devlang="java"
     ms.topic="hero-article"
-    ms.date="04/08/2016"
+    ms.date="07/21/2016"
     ms.author="ricksal"/>
 
 # Ismerkedés a Mobile Services for Android rendszerrel (JavaScript háttérrendszer)
@@ -74,7 +74,7 @@ Ebben a szakaszban egy, a mobilszolgáltatásához csatlakozó új Android-alkal
 [AZURE.INCLUDE [mobile-services-run-your-app](../../includes/mobile-services-android-get-started.md)]
 
 
-## <a name="next-steps"> </a>További lépések
+## <a name="next-steps"> </a>Következő lépések
 Most, hogy végzett a gyorsútmutatóval, ismerje meg, hogyan hajthat végre további fontos feladatokat a Mobile Services szolgáltatásban:
 
 * [Bevezetés az adatok használatába]
@@ -100,6 +100,6 @@ Most, hogy végzett a gyorsútmutatóval, ismerje meg, hogyan hajthat végre tov
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

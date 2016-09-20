@@ -1,7 +1,7 @@
 <properties
     pageTitle="Logic Apps alkalmazások áttelepítése a 2015. 08. 01. dátumú előzetes sémaverzióra | Microsoft Azure App Service"
     description="Logic Apps alkalmazásait egyszerűen áttelepítheti a legújabb sémaverzióra. Csak kövesse az alábbi lépéseket."
-    services="app-service\logic"
+    services="logic-apps"
     documentationCenter=""
     authors="MSFTMAN"
     manager="erikre"
@@ -9,18 +9,18 @@
     tags="connectors"/>
 
 <tags
-    ms.service="app-service-logic"
+    ms.service="logic-apps"
     ms.workload="integration"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/20/2016"
+    ms.date="08/23/2016"
     ms.author="deonhe"/>
 
 # Logic Apps alkalmazások áttelepítése a 2015. 08. 01. dátumú előzetes sémaverzióra
 
 A meglévő Logic Apps alkalmazásoknak az új sémára való áttelepítéséhez tegye az alábbiakat:  
-1. Nyissa meg a Logic Apps alkalmazást az Azure portálon  
+1. Nyissa meg a Logic Apps alkalmazást az Azure Portalon  
 2. Kattintson az Update Schema (Séma frissítése) elemre:
 
  ![API-ikon][step1]   
@@ -51,6 +51,6 @@ Megjelenik az Update Schema (Séma frissítése) lap az új sémában találhat�
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

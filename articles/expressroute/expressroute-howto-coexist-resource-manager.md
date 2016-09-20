@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/04/2016"
+   ms.date="07/19/2016"
    ms.author="charleywen"/>
 
 # ExpressRoute- és helyek közötti egyidejű kapcsolatok konfigurálása a Resource Manager-alapú üzemi modellben
@@ -196,6 +196,6 @@ További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakor
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

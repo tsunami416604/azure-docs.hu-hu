@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="nodejs"
     ms.topic="hero-article"
-    ms.date="05/03/2016" 
+    ms.date="08/11/2016" 
     ms.author="robmcm"/>
 
 # Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
@@ -127,7 +127,8 @@ Miután a közzététel sikeresen megtörtént, a következőhöz hasonló vála
 
 ![A Publish-AzureService parancs kimenete][The output of the Publish-AzureService command]
 
-> [AZURE.NOTE] Az első közzététel alkalmával több percet is igénybe vehet, mire megtörténik az alkalmazás telepítése, és elérhetővé válik.
+> [AZURE.NOTE]
+> Az első közzététel alkalmával több percet is igénybe vehet, mire az alkalmazás települ, és elérhetővé válik.
 
 A telepítés befejezése után megnyílik egy ablak a böngészőben, amely megjeleníti a felhőszolgáltatást.
 
@@ -170,7 +171,7 @@ A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
 
     > [AZURE.NOTE] A szolgáltatás törlésével nem törlődik a szolgáltatás első közzétételekor létrehozott tárfiók, ezért továbbra is fizetnie kell a felhasznált tárterület után. További információk a tárfiók törlésével kapcsolatban: [Tárfiók törlése az Azure-előfizetésből].
 
-## További lépések
+## Következő lépések
 
 További információk: [Node.js fejlesztői központ].
 
@@ -199,6 +200,6 @@ További információk: [Node.js fejlesztői központ].
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.workload="search"
     ms.topic="hero-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/08/2016"
+    ms.date="07/14/2016"
     ms.author="evboyle"/>
 
 # Bevezetés az Azure Search használatába Java nyelven
@@ -69,7 +69,7 @@ Az Azure Search szolgáltatásba történő minden REST API-hívás esetében me
 
 ## A mintafájlok letöltése
 
-1. Lépjen a GitHubon található [AzureSearchJavaDemo](http://go.microsoft.com/fwlink/p/?LinkId=530197) elemre.
+1. Lépjen a GitHubon található [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) elemre.
 
 2. Kattintson a **Download ZIP** (ZIP-fájl letöltése) elemre, mentse a .zip-fájlt a lemezre, és bontsa ki a benne található összes fájlt. A Java-munkaterületére csomagolja ki a fájlokat, hogy később könnyebben megtalálja a projektet.
 
@@ -205,6 +205,6 @@ Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóany
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

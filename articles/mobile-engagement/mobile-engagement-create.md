@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-windows-store"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="02/17/2016"  
+    ms.date="08/19/2016"  
     ms.author="piyushjo"/>
 
 
@@ -49,6 +49,7 @@ Miután belépett a Mobile Engagement portálra, elemezheti, létrehozhatja és 
 [Ismerkedés az Azure Mobile Engagement szolgáltatással](mobile-engagement-windows-store-dotnet-get-started.md) (a lap tetején választhat másik mobilplatformot).
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

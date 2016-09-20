@@ -1,7 +1,7 @@
 <properties
-    pageTitle="Egyszerű kísérlet létrehozása a Machine Learning Studióban | Microsoft Azure"
-    description="Ebből a kezdő szintű gépi tanulási oktatóanyagból elsajátíthatja, hogyan hozhat létre egy egyszerű kísérletet, és miképpen taníthat be és tesztelhet egy lineáris regressziós modellt az Azure Machine Learning Studióban."
-    keywords="experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques"
+    pageTitle="Egy egyszerű kísérlet a Machine Learning Studióban | Microsoft Azure"
+    description="Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát."
+    keywords="kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet"
     services="machine-learning"
     documentationCenter=""
     authors="garyericson"
@@ -14,23 +14,24 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="03/09/2016"
+    ms.date="07/14/2016"
     ms.author="garye"/>
 
-# Machine Learning oktatóanyag: Az első kísérlet létrehozása az Azure Machine Learning Studióban
+# Machine Learning-oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
-Ebben a kezdő szintű Machine Learning oktatóanyagban létrehozunk egy lineáris regressziós modellt, amely képes különböző változók (például a márka és a műszaki adatok) alapján előre jelezni az autók árát. Ehhez az Azure Machine Learning Studióban létrehozunk egy egyszerű prediktív elemzési kísérletet, amelyet aztán megismételhet.
+Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Olyan lineáris regressziós modellt hozunk létre, amely különböző változók (például márka, műszaki jellemzők) alapján előre megbecsüli egy autó árát. Ehhez az Azure Machine Learning Studióban létrehozunk egy egyszerű prediktív elemzési kísérletet, amelyet aztán megismételhet.
+
+A *prediktív elemzés* olyan adatelemzési módszer, amely az aktuális adatok felhasználásával előre jelzi a jövőbeni kimeneteket. A prediktív elemzés egy nagyon egyszerű példája látható az Adatelemzés kezdőknek sorozat 4. videójában: [Predict an answer with a simple model](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) (Válasz előrejelzése egyszerű modellel – videó hossza: 7:42).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-A Machine Learning Studio-kísérlet keretében a komponenseket a megfelelő helyre kell húzni a vásznon, majd összekapcsolni őket, és így *létrehozni a modellt*, *betanítani a modellt*, majd *pontozni és tesztelni a modellt*. A kísérletben a Machine Learning Studio moduljai által képviselt prediktív modellezési módszereket használjuk, amelyek betöltik az adatokat, ezek alapján elvégzik a modell tanítását, majd alkalmazzák a modellt az új adatokra. Ezenfelül más modellek segítségével elvégezheti az adatok előfeldolgozását, vagy jellemzőket választhat ki, tanítási és tesztelési halmazokra oszthatja az adatokat, valamint kiértékelheti és ellenőrizheti a modell minőségét.  
+## Hogyan lehet a segítségére a Machine Learning Studio?
 
-Nyissa meg a Machine Learning Studiót a következő címen: [https://studio.azureml.net](https://studio.azureml.net), majd kattintson a **Get started** (Első lépések) gombra. Válassza a Guest Access (Vendéghozzáférés) lehetőséget, vagy jelentkezzen be a Microsoft-fiókjával.
+A Machine Learning Studio prediktív modellezési módszerekkel előre programozott, húzással kezelhető moduljaival megkönnyíti a kísérletek beállítását. A kísérlet futtatásához és a válasz előrejelzéséhez a Machine Learning Studio használatával *létrehoz egy modellt*, *betanítja a modellt*, majd *pontozza és teszteli a modellt*.
 
-A Machine Learning Studio általános bemutatását a [What is Machine Learning Studio?](machine-learning-what-is-ml-studio.md) (Mire használható a Machine Learning Studio?) című cikk tartalmazza.
+Belépés a Machine Learning Studióba: [https://studio.azureml.net](https://studio.azureml.net). Ha korábban már bejelentkezett a Machine Learning Studióba, kattintson a **Sign in here** (Bejelentkezés itt) lehetőségre. Ellenkező esetben kattintson a **Sign Up** (Regisztráció) lehetőségre, majd válasszon az ingyenes vagy a fizetős lehetőség használata közül.
 
->[AZURE.TIP] Ha szeretne letölteni egy kinyomtatható diagramot, amely bemutatja a Machine Learning Studio funkcióit, nyissa meg az [Overview diagram of Azure Machine Learning Studio capabilities](machine-learning-studio-overview-diagram.md) (Az Azure Machine Learning Studio funkcióit bemutató diagram) című cikket.
-
+A Machine Learning Studio általános bemutatását a [Mi az Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md) című cikk tartalmazza.
 
 ## A kísérlet létrehozásának öt lépése
 
@@ -61,13 +62,17 @@ Ebben az adathalmazban számos különböző autót bemutató bejegyzés szerepe
 
 2. A kísérletvászontól balra az adathalmazokat és modulokat tartalmazó paletta látható. A paletta tetején található keresőmezőbe gépelje be, hogy **automobile**. A rendszer megjeleníti az **Automobile price data (Raw)** (Nyers autóáradatok) nevű adathalmazt.
 
-    ![Palet zoeken][screen1a]
+    ![Keresés a palettán][screen1a]
 
 3. Húzza rá az adathalmazt a kísérletvászonra.
 
     ![Adathalmaz][screen1]
 
-Ha szeretné megtekinteni az adatokat, kattintson az autókat tartalmazó adathalmaz alsó részén látható kimeneti portra, és válassza a **Visualize** (Képi megjelenítés) elemet. Megjelennek az adathalmazban található változókat tartalmazó oszlopok, az egyes autóknak egy-egy sor felel meg. A jobb szélső oszlop (azaz a 26-os, „price” (ár) című oszlop) a célváltozó, amelyet meg szeretnénk kapni.
+Ha szeretné megtekinteni az adatokat, kattintson az autókat tartalmazó adathalmaz alsó részén látható kimeneti portra, és válassza a **Visualize** (Képi megjelenítés) elemet.
+
+![A modul kimeneti portja][screen1c]
+
+Megjelennek az adathalmazban található változókat tartalmazó oszlopok, az egyes autóknak egy-egy sor felel meg. A jobb szélső oszlop (azaz a 26-os, „price” (ár) című oszlop) a célváltozó, amelyet meg szeretnénk kapni.
 
 ![Az adathalmaz képi megjelenítése][screen1b]
 
@@ -85,8 +90,9 @@ Először eltávolítjuk a **normalized-losses** oszlopot, majd az összes sort,
 
 2. Jelölje ki a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modult, majd a **Properties** (Tulajdonságok) panelen kattintson a **Launch column selector** (Oszlopválasztó elindítása) elemre.
 
-    - A **Begin With** (Kezdés) szűrő alatti legördülő listában válassza az **All columns** (Összes oszlop) lehetőséget. Ezzel megadja, hogy a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modul az összes oszlopot feldolgozza (kivéve azokat, amelyeket hamarosan ki fogunk zárni).
-    - A következő sorban válassza az **Exclude** (Kizárás) **column names** (oszlopnév alapján) lehetőséget, majd kattintson a szövegdobozba. Megjelenik az oszlopnevek listája. Válassza a **normalized-losses** lehetőséget, amely aztán bekerül a szövegdobozba.
+    - A bal oldalon kattintson a **With rules** (Szabályokkal) lehetőségre
+    - A **Begin With** (Kezdés a következővel) területen kattintson az **All columns** (Minden oszlop) lehetőségre. Ezzel megadja, hogy a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modul az összes oszlopot feldolgozza (kivéve azokat, amelyeket hamarosan ki fogunk zárni).
+    - A legördülő listákból válassza az **Exclude** (Kizárás) és a **column names** (oszlopnevek) lehetőséget, majd kattintson a szövegmezőbe. Megjelenik az oszlopnevek listája. Válassza a **normalized-losses** lehetőséget, amely aztán bekerül a szövegdobozba.
     - Az oszlopválasztó bezárásához kattintson a pipa (OK) gombra.
 
     ![Oszlopok kiválasztása][screen3]
@@ -113,21 +119,26 @@ Most, hogy megtisztítottuk az adatokat, megadhatjuk, hogy mely jellemzőket sze
 
 ## 3. lépés: A jellemzők meghatározása
 
-A gépi tanulásban a *jellemzők* azok a külön-külön mérhető tulajdonságok, amelyekre kíváncsiak vagyunk. Adathalmazunk minden sora egy-egy autót képvisel, az oszlopok pedig az autók különböző jellemzőit tartalmazzák. A prediktív modellben használandó jellemzők helyes megválasztásához fontos a kísérletezés, illetve a megoldani kívánt probléma jó ismerete. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Ráadásul egyes jellemzők erős korrelációban állnak más jellemzőkkel – példánkban ilyen például a city-mpg (fogyasztás városban) és highway-mpg (fogyasztás autópályán). Ezek nem sok újat adnak a modellhez, ezért eltávolíthatók.
+A gépi tanulásban a *jellemzők* azok a külön-külön mérhető tulajdonságok, amelyekre kíváncsiak vagyunk. Adathalmazunk minden sora egy-egy autót képvisel, az oszlopok pedig az autók különböző jellemzőit tartalmazzák.
 
-Ideje, hogy létrehozzuk a modellt az adathalmaz jellemzőinek meghatározott részhalmaza alapján. Később visszatérhet ehhez a lépéshez, és más jellemzőket kiválasztva ismét lefuttathatja a modellt, ha kíváncsi rá, hogy úgy jobb eredményeket kap-e. Először próbálkozzunk meg a következő jellemzőkkel (oszlopokkal). Válassza ki ezeket a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modul segítségével. Ne feledje, hogy a modell betanításához mindenképpen ki kell választanunk a *price* (ár) értéket, hiszen ezt szeretnénk előre jelezni.
+A prediktív modellben használandó jellemzők helyes megválasztásához fontos a kísérletezés, illetve a megoldani kívánt probléma jó ismerete. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Ráadásul egyes jellemzők erős korrelációban állnak más jellemzőkkel – példánkban ilyen például a city-mpg (fogyasztás városban) és highway-mpg (fogyasztás autópályán). Ezek nem sok újat adnak a modellhez, ezért eltávolíthatók.
+
+Ideje, hogy létrehozzuk a modellt az adathalmaz jellemzőinek meghatározott részhalmaza alapján. Később visszatérhet ehhez a lépéshez, és más jellemzőket kiválasztva ismét lefuttathatja a modellt, ha kíváncsi rá, hogy úgy jobb eredményeket kap-e. Kezdésként azonban a következő funkciókat próbáljuk ki:
 
     make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
+
 
 1. Húzzon egy újabb [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modult a kísérletvászonra, és ezt kösse össze a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modul bal oldali kimeneti portjával. Kattintson duplán a modulra, és írja be: „Az előrejelzéshez használatos jellemzők kiválasztása”.
 
 2. Kattintson a **Properties** (Tulajdonságok) panel **Launch column selector** (Oszlopválasztó indítása) elemére.
 
-3. Az oszlopválasztóban a **Begin With** (Kezdés) résznél válassza a **No columns** (Oszlopok nélkül) lehetőséget, majd a szűrősorban válassza az **Include** (Bevonás) és **column names** (oszlopnevek) lehetőségeket. Adja meg a kiválasztott oszlopok nevét. Ezzel arra utasítja a modult, hogy csak a megadott oszlopokat dolgozza fel.
+3. Kattintson a **With rules** (Szabályokkal) lehetőségre.
 
-    > [AZURE.TIP] Mivel már egyszer lefuttattuk a kísérletet, az adatainkra vonatkozó oszlopdefiníciók az eredeti adathalmazból átkerültek a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulba. Mivel összekötötte a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) és a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modult, a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modul megkapja az adatokban található oszlopdefiníciókat. Kattintson a **column names** (oszlopnevek) mezőre. Megjelenik az oszlopnevek listája, amelyből kiválaszthatja, hogy melyeket szeretné a listához adni.
+4. A **Begin With** (Kezdés a következővel) területen kattintson a **No columns** (Egyetlen oszlop sem) lehetőségre, majd a szűrősorban válassza ki az **Include** (Belefoglalás) és a **column names** (oszlopnevek) lehetőséget. Adja meg a kiválasztott oszlopok nevét. Ezzel arra utasítja a modult, hogy csak a megadott oszlopokat dolgozza fel.
 
-4. Kattintson a pipa (OK) gombra.
+    > [AZURE.TIP] A kísérlet futtatásával biztosítható, hogy az adatokhoz tartozó oszlopdefiníciók az adatkészletből a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulon keresztülhaladnak. Ez azt jelenti, hogy a további csatlakoztatott modulok is rendelkeznek az adatkészletből származó információkkal.
+
+5. Kattintson a pipa (OK) gombra.
 
 ![Oszlopok kiválasztása][screen6]
 
@@ -135,11 +146,11 @@ Ezzel létrehozza az adathalmazt, amelyet a következő lépésben említett tan
 
 ## 4. lépés: Tanulási algoritmus kiválasztása és alkalmazása
 
-Most, hogy előkészítettük az adatokat, a prediktív modell létrehozásához már csak a tanítás és a tesztelés szükséges. A következőkben az adatok segítségével elvégezzük a modell betanítását, majd a modell tesztelésével megállapítjuk, hogy milyen pontossággal képes előre jelezni az árakat.
+Most, hogy előkészítettük az adatokat, a prediktív modell létrehozásához már csak a tanítás és a tesztelés szükséges. A következőkben az adatok segítségével elvégezzük a modell betanítását, majd a modell tesztelésével megállapítjuk, hogy milyen pontossággal képes előre jelezni az árakat. Egyelőre ne foglalkozzon azzal, hogy miért van szükség a modellek betanítására és tesztelésére.
 
-A *besorolás* és a *regresszió* két módszer, amelynek segítségével felügyelt gépi tanítás valósítható meg. A besorolás értékek meghatározott készletén, például különböző színeken (piros, kék, zöld) alapuló előrejelzésekre használható. A regresszió segítségével ellenben folytonos értékek (például egy személy életkora) alapján lehet előrejelzéseket végezni.
+A *besorolás* és a *regresszió* két módszer, amelynek segítségével felügyelt gépi tanítás valósítható meg. Besoroláskor a válaszok előrejelzése megadott kategóriakészletből történik (például: színek (vörös, kék vagy zöld)). A rendszer a számok előrejelzésére regressziós módszert használ.
 
-Mivel mi egy autó árára vagyunk kíváncsiak, ami bármekkora érték lehet, ezért a regresszív modellt fogjuk alkalmazni. Ebben a példában egy egyszerű *lineáris regressziós* modellt tanítunk be, amelyet aztán a következő lépésben le is tesztelünk.
+Mivel most az árat szeretnénk előre jelezni, ami egy szám, regressziós modellt fogunk használni. Ebben a példában egy egyszerű *lineáris regressziós* modellt tanítunk be, amelyet aztán a következő lépésben le is tesztelünk.
 
 1. Az adatok betanításra és tesztelésre is használhatók. Ehhez két halmazra, egy tanítási és egy tesztelési halmazra osztjuk fel az adatokat. Jelölje ki, majd húzza a kísérletvászonra a [Split Data][split] (Adatok felosztása) modult, majd kösse össze a legutóbb használt [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modul kimenetével. A **Fraction of rows in the first output dataset** (Oszlopok hányadosa az első kimeneti adathalmazban) beállításnál adja meg a 0,75 értéket. Így az adatok 75 százalékát a modell betanítására, 25 százalékát pedig a modell tesztelésére használhatjuk.
 
@@ -193,7 +204,7 @@ Az elkészült kísérletnek a következőképpen kell kinéznie:
 
 ![Machine Learning oktatóanyag: Prediktív modellezési módszereket használó lineáris regressziós kísérlet kész.][screen10]
 
-## További lépések
+## Következő lépések
 
 Most, hogy az első Machine Learning oktatóanyag végére ért, és beállította kísérletét, megismételheti a műveletet, és kipróbálhatja, hogy tud-e javítani a modellen. Például módosíthatja az előrejelzéshez használt jellemzők körét. Vagy megváltoztathatja a [Linear Regression][linear-regression] (Lineáris regresszió) algoritmus tulajdonságait, vagy akár egy teljesen más algoritmust is kipróbálhat. Akár két különböző gépi tanulási algoritmus segítségével is futtathatja a kísérletet, majd az [Evaluate Model][evaluate-model] (Modell kiértékelése) modul használatával összehasonlíthatja az eredményeket.
 
@@ -210,21 +221,21 @@ Ha szeretné részletesebben megismerni a modellek létrehozásához, tanítás�
 [walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
 <!-- Images -->
-[screen1]:./media/machine-learning-create-experiment/screen1.png
-[screen1a]:./media/machine-learning-create-experiment/screen1a.png
-[screen1b]:./media/machine-learning-create-experiment/screen1b.png
+[képernyő1]:./media/machine-learning-create-experiment/screen1.png
+[képernyő1a]:./media/machine-learning-create-experiment/screen1a.png
+[képernyő1b]:./media/machine-learning-create-experiment/screen1b.png
 [screen1c]: ./media/machine-learning-create-experiment/screen1c.png
-[screen2]:./media/machine-learning-create-experiment/screen2.png
-[screen3]:./media/machine-learning-create-experiment/screen3.png
-[screen4]:./media/machine-learning-create-experiment/screen4.png
-[screen4a]:./media/machine-learning-create-experiment/screen4a.png
-[screen5]:./media/machine-learning-create-experiment/screen5.png
-[screen6]:./media/machine-learning-create-experiment/screen6.png
-[screen7]:./media/machine-learning-create-experiment/screen7.png
-[screen8]:./media/machine-learning-create-experiment/screen8.png
-[screen8a]:./media/machine-learning-create-experiment/screen8a.png
-[screen9]:./media/machine-learning-create-experiment/screen9.png
-[screen10]:./media/machine-learning-create-experiment/complete-linear-regression-experiment.png
+[képernyő2]:./media/machine-learning-create-experiment/screen2.png
+[képernyő3]:./media/machine-learning-create-experiment/screen3.png
+[képernyő4]:./media/machine-learning-create-experiment/screen4.png
+[képernyő4a]:./media/machine-learning-create-experiment/screen4a.png
+[képernyő5]:./media/machine-learning-create-experiment/screen5.png
+[képernyő6]:./media/machine-learning-create-experiment/screen6.png
+[képernyő7]:./media/machine-learning-create-experiment/screen7.png
+[képernyő8]:./media/machine-learning-create-experiment/screen8.png
+[képernyő8a]:./media/machine-learning-create-experiment/screen8a.png
+[képernyő9]:./media/machine-learning-create-experiment/screen9.png
+[képernyő10]:./media/machine-learning-create-experiment/complete-linear-regression-experiment.png
 
 
 <!-- Module References -->
@@ -238,6 +249,6 @@ Ha szeretné részletesebben megismerni a modellek létrehozásához, tanítás�
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

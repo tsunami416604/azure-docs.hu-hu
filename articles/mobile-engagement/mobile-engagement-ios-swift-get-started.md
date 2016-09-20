@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-ios"
     ms.devlang="swift"
     ms.topic="hero-article"
-    ms.date="05/03/2016"
+    ms.date="08/19/2016"
     ms.author="piyushjo" />
 
 # Ismerkedés az Azure Mobile Engagement Swift nyelven írt iOS-alkalmazásokkal való használatával
@@ -86,7 +86,7 @@ Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az int
 
     ![][6]
 
-10. Lépjen vissza az Azure portálra az alkalmazás *Connection Info* (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot
+10. Lépjen vissza az Azure Portalra az alkalmazás *Connection Info* (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot
 
     ![][5]
 
@@ -207,6 +207,6 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

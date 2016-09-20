@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="06/06/2016" 
+    ms.date="08/25/2016" 
     ms.author="nitinme"/>
 
 # Áttekintés: Apache Spark on HDInsight Linux
@@ -137,6 +137,6 @@ Kezdjük Spark-fürt létrehozásával HDInsight Linux platformon. Lásd: [Gyors
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

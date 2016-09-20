@@ -1,7 +1,7 @@
 <properties 
     pageTitle="Azure App Service web- és mobilalkalmazásokhoz | Microsoft Azure" 
     description="Ismerje meg, hogyan segíthet az Azure App Service web- és mobilalkalmazások fejlesztésében, telepítésében és kezelésében." 
-    keywords="app service, azure app service, app service cost, scale, scalable, app deployment, azure app deployment, paas, platform-as-a-service"
+    keywords="app service, azure app service, app service ára, méret, méretezhető, alkalmazás üzembe helyezése, azure-alkalmazás üzembe helyezése, paas, platformszolgáltatás"
     services="app-service" 
     documentationCenter="" 
     authors="omarkmsft" 
@@ -33,9 +33,9 @@ Az App Service legfontosabb funkciói és képességei többek között az aláb
 
 - **Több nyelv és keretrendszer** – Az App Service kiváló támogatást nyújt az ASP.NET, Node.js, Java, PHP és Python nyelvekhez. Az App Service virtuális gépeken futtathat [Windows PowerShell és egyéb parancsfájlokat vagy végrehajtható fájlokat](../app-service-web/web-sites-create-web-jobs.md) is.
 
-- **DevOps optimalizálás** - Beállíthat [folyamatos integrációt és üzembe helyezést](../app-service-web/app-service-continous-deployment.md) a Visual Studio Team Services, GitHub vagy BitBucket szolgáltatásokhoz. [Teszt- és átmeneti környezetek](../app-service-web/web-sites-staged-publishing.md) segítségével küldheti ki a frissítéseket. [A/B tesztelést](../app-service-web/app-service-web-test-in-production-get-start.md) végezhet. Alkalmazásait az App Service-ben az [Azure PowerShell](../powershell-install-configure.md) vagy a [többplatformos parancssori felület (CLI)](../xplat-cli-install.md) segítségével felügyelheti.
+- **DevOps optimalizálás** – Beállíthat [folyamatos integrációt és üzembe helyezést](../app-service-web/app-service-continuous-deployment.md) a Visual Studio Team Services, GitHub vagy BitBucket szolgáltatásokhoz. [Teszt- és átmeneti környezetek](../app-service-web/web-sites-staged-publishing.md) segítségével küldheti ki a frissítéseket. [A/B tesztelést](../app-service-web/app-service-web-test-in-production-get-start.md) végezhet. Alkalmazásait az App Service-ben az [Azure PowerShell](../powershell-install-configure.md) vagy a [többplatformos parancssori felület (CLI)](../xplat-cli-install.md) segítségével felügyelheti.
  
-- **Globális méret magas rendelkezésre állással** - Manuálisan vagy automatikusan is végezhet [felfelé skálázást](../app-service/app-service-scale.md) és [horizontális skálázást](../azure-portal/insights-how-to-scale.md). A Microsoft globális adatközpont infrastruktúrájában bárhol üzemeltetheti az alkalmazásait, az App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pedig magas rendelkezésre állást biztosít.
+- **Globális méret magas rendelkezésre állással** – Manuálisan vagy automatikusan is végezhet [vertikális skálázást](../app-service-web/web-sites-scale.md) és [horizontális skálázást](../azure-portal/insights-how-to-scale.md). A Microsoft globális adatközpont infrastruktúrájában bárhol üzemeltetheti az alkalmazásait, az App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pedig magas rendelkezésre állást biztosít.
 
 - **Csatlakozás SaaS platformokhoz és helyszíni adatokhoz** - Több mint 50 [összekötő](../connectors/apis-list.md) közül választhat nagyvállalati rendszerekhez (például SAP, Siebel vagy Oracle), SaaS-szolgáltatásokhoz (például Salesforce vagy Office 365), valamint internetes szolgáltatásokhoz (többek között a Facebookhoz és a Twitterhez). Hozzáférhet helyszíni adatokhoz a [Hibrid kapcsolatok](../biztalk-services/integration-hybrid-connection-overview.md) és az [Azure virtuális hálózatok](../app-service-web/web-sites-integrate-with-vnet.md) segítségével.
 
@@ -82,6 +82,6 @@ Vagy hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pric
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/31/2016"
+    ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
 # Adatfeltöltés az Azure Search szolgáltatásba a REST API használatával
@@ -170,6 +170,6 @@ Az Azure Search-index feltöltését követően készen áll a dokumentumkeresé
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

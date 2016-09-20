@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-xamarin-android"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="01/14/2016"
+    ms.date="07/21/2016"
     ms.author="donnam"/>
 
 # <a name="getting-started"> </a>A Mobile Services használatának első lépései
@@ -89,7 +89,8 @@ Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futta
 
     Ez egy POST kérést küld az Azure-ban futtatott új mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
 
-    > [AZURE.NOTE] A mobilszolgáltatáshoz az adatok lekérdezése és beszúrása céljából hozzáférő kódot át is tekintheti a ToDoActivity.cs C# fájlban.
+    > [AZURE.NOTE]
+    > A mobilszolgáltatáshoz az adatok lekérdezése és beszúrása céljából hozzáférő kódot át is tekintheti a ToDoActivity.cs C# fájlban.
 
 ## Következő lépések
 Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Servicesben:
@@ -101,7 +102,7 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
   <br/>Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
 
 * [Bevezetés a leküldéses értesítések használatába]
-  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazásnak.
+  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazás számára.
 
 * [Mobile Services .NET-háttérrendszer hibaelhárítása]
   <br/> Ismerje meg, hogyan diagnosztizálhatja és javíthatja ki a Mobile Services .NET-háttérrendszerekkel kapcsolatban felmerülő hibákat.
@@ -130,12 +131,12 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [JavaScript és HTML]: mobile-services-win8-javascript/
-[Klasszikus Azure portál]: https://manage.windowsazure.com/
+[klasszikus Azure portálra]: https://manage.windowsazure.com/
 [klasszikus portál]: https://manage.windowsazure.com/
 [JavaScript háttérrendszer verzió]: mobile-services-android-get-started.md
 [Mobile Services .NET-háttérrendszer hibaelhárítása]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

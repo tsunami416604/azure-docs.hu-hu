@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="dotnet"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="05/27/2016"
-    ms.author="tdykstra"/>
+    ms.date="08/19/2016"
+    ms.author="rachelap"/>
 
 # Az Azure App Service szolgáltatásban elérhető API Apps, az ASP.NET és a Swagger használatának megismerése
 
@@ -201,7 +201,7 @@ Az oktatóanyag ezen részében a generált Swagger 2.0-metaadatokat tekintjük 
 
 14. Zárja be a böngészőt, és állítsa le a Visual Studio hibakeresési módját.
 
-A Swashbuckle bármelyik ASP.NET Web API-projekttel működik. Ha egy meglévő projektjébe szeretné felvenni a Swagger-metaadatok létrehozását, egyszerűen telepítse a Swashbuckle csomagot.  
+A Swashbuckle bármelyik ASP.NET Web API-projekttel működik. Ha egy meglévő projektjébe szeretné felvenni a Swagger-metaadatok létrehozását, egyszerűen telepítse a Swashbuckle csomagot. 
 
 **Megjegyzés:** a Swagger-metaadatokban minden API-művelet saját egyedi azonosítót kap. Alapértelmezés szerint előfordulhat, hogy a Swashbuckle duplikált Swagger-műveleti azonosítókat hoz létre a Web API-vezérlő metódusokhoz. Ez akkor fordul elő, ha a vezérlőben túlterhelt HTTP-metódusok találhatók, például: `Get()` vagy `Get(id)`. A túlterhelések kezeléséről további információt talál a következő cikkben: [Customize Swashbuckle-generated API definitions](app-service-api-dotnet-swashbuckle-customize.md) (A Swashbuckle által generált API-definíciók testreszabása). Ha az Azure API App sablon segítségével hoz lére Web API-projekteket a Visual Studióban, az egyedi műveleti azonosítókat generáló kódot a rendszer automatikusan hozzáadja a *SwaggerConfig.cs* fájlhoz.  
 
@@ -233,13 +233,13 @@ Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) vará
 
     Ha olyan nevet ad meg, amelyet valaki más már használ, piros felkiáltójel jelenik meg a jobb oldalon.
 
-    Az API-alkalmazás URL-címe a következő lesz: `{APi app name}.azurewebsites.net`.
+    Az API-alkalmazás URL-címe a következő lesz: `{API app name}.azurewebsites.net`.
 
 6. A **Resource Group** (Erőforráscsoport) legördülő menüben kattintson a **New** (Új) elemre, majd adja meg a „ToDoListGroup”, vagy más tetszőleges nevet. 
 
     Az erőforráscsoportok Azure-erőforrások (például API Apps, adatbázisok, virtuális gépek stb.) gyűjteményei. Ebben az oktatóanyagban érdemes új erőforráscsoportot létrehozni, mivel így később egyetlen művelettel törölheti az oktatóanyaghoz létrehozott összes Azure-erőforrást.
 
-    Ebben a mezőben kiválaszthat egy meglévő [erőforráscsoportot](../azure-portal/resource-group-portal.md), vagy újat is létrehozhat. Új csoport létrehozásához írjon be egy olyan nevet, amely eltér az előfizetéshez tartozó többi erőforráscsoport nevétől.
+    Ebben a mezőben kiválaszthat egy meglévő [erőforráscsoportot](../resource-group-overview.md), vagy újat is létrehozhat. Új csoport létrehozásához írjon be egy olyan nevet, amely eltér az előfizetéshez tartozó többi erőforráscsoport nevétől.
 
 4. Kattintson az **App Service Plan** (App Service-csomag) legördülő menü mellett látható **New** (Új) gombra.
 
@@ -265,7 +265,7 @@ Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) vará
 
 7. A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson a **Create** (Létrehozás) gombra.
 
-    ![A Create (Létrehozás) gombra kattintás a Create App Service (App Service létrehozása) párbeszédpanelen ](./media/app-service-api-dotnet-get-started/clickcreate.png)
+    ![A Create (Létrehozás) gombra kattintás a Create App Service (App Service létrehozása) párbeszédpanelen](./media/app-service-api-dotnet-get-started/clickcreate.png)
 
     A Visual Studio létrehozza az API-alkalmazást és egy közzétételi profilt, amely tartalmazza az API-alkalmazáshoz szükséges összes beállítást. Ezt követően megnyitja a **Publish Web** (Weboldal közzététele) varázslót, amely a projekt telepítésére használatos.
 
@@ -285,7 +285,7 @@ Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) vará
 
     Ehhez az oktatóanyagokhoz ezek egyikét sem kell használnia. Ezek használatáról a következő cikkben talál részletes leírást: [How to: Deploy a Web Project Using One-Click Publish in Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx) (Útmutató: Webes projekt telepítése a Visual Studio Közzététel egyetlen kattintással funkciójával).
 
-14. Kattintson a **Tovább** gombra.
+14. Kattintson a **Next** (Tovább) gombra.
 
     ![Kattintás a Next (Tovább) gombra a Publish Web (Weboldal közzététele) varázsló Settings (Beállítások) lapján](./media/app-service-api-dotnet-get-started/settingsnext.png)
 
@@ -311,7 +311,7 @@ Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) vará
  
 14. Kattintson a **Browse > App Services** (Tallózás > Alkalmazásszolgáltatások) elemre.
 
-    ![Tallózás az Alkalmazásszolgáltatások között ](./media/app-service-api-dotnet-get-started/browseas.png)
+    ![Tallózás az Alkalmazásszolgáltatások között](./media/app-service-api-dotnet-get-started/browseas.png)
 
 15. Az **App Services** (Alkalmazásszolgáltatások) panelen keresse meg az új API-alkalmazást, majd kattintson rá. (Az Azure-portálon jobb oldalt megnyíló ablakokat *paneleknek* nevezzük.)
 
@@ -321,7 +321,7 @@ Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) vará
 
 16. A **Settings** (Beállítások) panelen keresse meg az **API** szakaszt, és kattintson az **API Definition** (API-definíció) elemre. 
 
-    ![Az API Definition (API-definíció) elem a Settings (Beállítások) panelen ](./media/app-service-api-dotnet-get-started/apidefinsettings.png)
+    ![Az API Definition (API-definíció) elem a Settings (Beállítások) panelen](./media/app-service-api-dotnet-get-started/apidefinsettings.png)
 
     Az **API Definition** (API-definíció) panelen adhatja meg az URL-címet, amely Swagger 2.0-metaadatokat ad vissza JSON formátumban. Amikor a Visual Studio létrehozza az API-alkalmazást, a korábban látott Swashbuckle által generált metaadatokban található alapértelmezésre állítja az API-definíció URL-címét. Ez az API-alkalmazás alap URL-címe, plusz a következő: `/swagger/docs/v1`. 
 
@@ -391,7 +391,7 @@ A ToDoListAPI projekt már tartalmazza a generált ügyfélkódot, de a követke
 
     A konstruktorparaméter a `toDoListDataAPIURL` alkalmazásbeállításból kéri le a végpont URL-címét. A Web.config fájlban az API-projekthez tartozó helyi IIS Express URL-cím van beállítva, hogy az alkalmazás a helyi számítógépen is futtatható legyen. Ha kihagyja a konstruktorparamétert, az alapértelmezett végpont az az URL-cím lesz, amelyből a kódot generálta.
 
-6. Az Ön ügyfélosztályát a rendszer az adott API-alkalmazás nevének megfelelő névvel generálja. Módosítsa a *Controllers\ToDoListController.cs* fájlban lévő kódot úgy, hogy a típusnév megfeleljen a projektben generáltnak. Ha például az API-alkalmazás neve ToDoListDataAPI0121, a következő kódot:
+6. Az Ön ügyfélosztályát a rendszer az adott API-alkalmazás nevének megfelelő névvel generálja. Módosítsa a *Controllers\ToDoListController.cs* fájlban lévő kódot úgy, hogy a típusnév megfeleljen a projektben generáltnak. Ha például az API-alkalmazás neve ToDoListDataAPI071316, a következő kódot:
 
         private static ToDoListDataAPI NewDataAPIClient()
         {
@@ -399,9 +399,9 @@ A ToDoListAPI projekt már tartalmazza a generált ügyfélkódot, de a követke
 
 módosítsa a következőre:
 
-        private static ToDoListDataAPI0121 NewDataAPIClient()
+        private static ToDoListDataAPI071316 NewDataAPIClient()
         {
-            var client = new ToDoListDataAPI0121(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
+            var client = new ToDoListDataAPI071316(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
 
 
 ## A középső réteget futtató API-alkalmazás létrehozása
@@ -445,9 +445,9 @@ Ha most próbálná meg behívni a középső réteg API-alkalmazását, az a We
   	| **Paraméter** | toDoListDataAPIURL |
   	|---|---|
   	| **Érték** | https://{az adatréteghez tartozó API-alkalmazás neve}.azurewebsites.net |
-  	| **Példa** | https://todolistdataapi0121.azurewebsites.net |
+  	| **Példa** | https://todolistdataapi.azurewebsites.net |
 
-4. Kattintson a **Mentés** gombra.
+4. Kattintson a **Save** (Mentés) gombra.
 
     ![Kattintás a Mentés gombra az Alkalmazásbeállítások menüben](./media/app-service-api-dotnet-get-started/asinportal.png)
 
@@ -493,6 +493,6 @@ Az **Azure API App** projektsablon használatával azt az eredményt éri el, mi
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/18/2016"
+    ms.date="06/22/2016"
     ms.author="juliako"/>
 
 
@@ -51,7 +51,7 @@ A Media Services szolgáltatásainak eléréséhez két kapcsolódó fiók szük
 <a id="quick"></a>
 ## Media Services-fiók létrehozása a Gyors létrehozással
 
-1. A [klasszikus Azure portálon][] kattintson az **Új** > **Média Services** > **Gyors létrehozás** lehetőségre.
+1. A [klasszikus Azure portál][] kattintson az **Új** > **Média Services** > **Gyors létrehozás** lehetőségre.
 
 ![Media Services-fiók gyors létrehozása](./media/media-services-create-account/wams-QuickCreate.png)
 
@@ -104,10 +104,10 @@ Emellett megtekinthet kódokat, amelyek az Azure Media Services SDK használatá
 <!-- URLs. -->
   [Webplatform-telepítő]: http://go.microsoft.com/fwlink/?linkid=255386
 
-  [klasszikus Azure portálon]: http://manage.windowsazure.com/
+  [klasszikus Azure portál]: http://manage.windowsazure.com/
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -1,6 +1,7 @@
 <properties 
-    pageTitle="Az Azure Data Factory bemutatása" 
-    description="Megtudhatja, hogyan állíthat össze az Azure Data Factory szolgáltatás használatával adatfeldolgozási, adattárolási és adattovábbítási szolgáltatásokat olyan folyamatok létrehozásához, amelyek megbízható információkat állítanak elő." 
+    pageTitle="Mi az a Data Factory? Adatintegrációs szolgáltatás | Microsoft Azure" 
+    description="A témakör ismerteti, hogy mi is az Azure Data Factory: egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása." 
+    keywords="adatintegrálás, felhőalapú adatintegráció, mi az az azure data factory"
     services="data-factory" 
     documentationCenter="" 
     authors="spelluru" 
@@ -13,17 +14,17 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="04/26/2016" 
+    ms.date="07/12/2016" 
     ms.author="spelluru"/>
 
-# Az Azure Data Factory szolgáltatás bemutatása
+# Az Azure Data Factory, egy adatintegrációs felhőalapú szolgáltatás ismertetése
 
-## Áttekintés
+## Mi az az Azure Data Factory? 
 A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. Egy gyártóüzemhez hasonlóan, amely berendezések működtetésével átalakítja a nyersanyagokat késztermékekké, a Data Factory a nyers adatokat összegyűjtő meglévő szolgáltatásokat hangolja össze az adatok azonnal felhasználható információkká történő átalakítására. 
 
 A Data Factory a helyszíni és felhőbeli adatforrások, valamint a szolgáltatottszoftver-megoldások esetén is felhasználható az adatok fogadására, előkészítésére, átalakítására, elemzésére és közzétételére.  A Data Factory használatával a szolgáltatásokat felügyelt adatfolyam-folyamatokká állíthatja össze, és átalakítja az adatokat például az [Azure HDInsight (Hadoop)](http://azure.microsoft.com/documentation/services/hdinsight/) és az [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) használatával a Big Data-számítási igények kielégítéséhez, vagy az [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) használatával az elemzési megoldások működtetéséhez.  Az egyszerű, táblázatos figyelési nézeten túlmutatva a Data Factory látványos vizualizációival gyorsan megjeleníthetők a folyamatok közötti leszármaztatások és függőségek. Egyetlen, egységesített nézetben figyelheti az összes adatfolyam-folyamatát, így egyszerűen kiszűrheti a problémákat és beállíthatja a figyelési riasztásokat.
 
-![Áttekintés](./media/data-factory-introduction/data-factory-overview.png)
+![Ábra: Data Factory áttekintése, adatintegrációs szolgáltatás](./media/data-factory-introduction/what-is-azure-data-factory.png)
 
 **1. ábra** Számos különböző helyszíni adatforrásból gyűjtheti össze az adatokat, amelyeket feldolgozhat és előkészíthet, különféle átalakításokkal rendszerezhet és elemezhet, majd azonnal felhasználható adatokat tehet közzé.
 
@@ -35,7 +36,7 @@ A Data Factoryt bármikor igénybe veheti, amikor különböző típusú és mé
 
 Az Azure Data Factory néhány főbb entitásának együttes használatával meghatározhatók a bemeneti és kimeneti adatok, a feldolgozási események, valamint a kívánt adatfolyam végrehajtásához szükséges ütemezés és erőforrások.
 
-![Fő fogalmak](./media/data-factory-introduction/key-concepts.png)
+![Ábra: Data Factory áttekintése, felhőalapú adatintegrációs szolgáltatás – fő fogalmak](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 **2. ábra** Az adatkészlet, a tevékenység, a folyamat és a társított szolgáltatás közötti kapcsolatok
 
@@ -68,10 +69,16 @@ Tegyük fel például, hogy számítási környezete(i), mint például az Azure
 
 A későbbiekben szeretnénk minden olyan régióra kiterjeszteni az Azure Data Factoryt, ahol támogatott az Azure használata.
   
+## Következő lépések
+A következő oktatóanyagok részletes utasításainak követésével megtudhatja, hogyan építhet ki adatfolyamatokkal rendelkező data factorykat. 
+
+Oktatóanyag | Leírás
+-------- | -----------
+[Az adatokat Hadoop-fürttel feldolgozó adatfolyamat kiépítése](data-factory-build-your-first-pipeline.md) | Az oktatóanyag során kiépíti az első Azure data factoryját egy olyan adatfolyamattal, amely egy Azure HDInsight (Hadoop) fürtön futtatott Hive-parancsfájllal **dolgozza fel az adatokat**. |
+[Adatfolyamat kiépítése két felhőalapú adattár közötti adatáthelyezéshez](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | Ebben az oktatóanyagban olyan folyamattal rendelkező data factoryt hoz létre, amely Blob Storage-ból SQL-adatbázisba **helyez át adatokat**.
+[Adatfolyamat kiépítése egy helyszíni és egy felhőalapú adattár közötti adatáthelyezéshez adatkezelési átjáró segítségével](data-factory-move-data-between-onprem-and-cloud.md) |  Ebben az oktatóanyagban olyan folyamattal rendelkező data factoryt épít ki, amely egy **helyszíni** SQL Server-adatbázisból Azure-blobba **helyez át adatokat**. A bemutató részeként telepíti és konfigurálja az adatkezelési átjárót a gépen. 
 
 
-
-
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

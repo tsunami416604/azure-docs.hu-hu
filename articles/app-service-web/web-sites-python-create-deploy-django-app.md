@@ -58,9 +58,9 @@ Saját alkalmazása létrehozásának első lépése egy webalkalmazás létreho
 
 1. Jelentkezzen be az Azure portálra, majd kattintson a bal alsó sarokban található **NEW** (ÚJ) gombra.
 3. A keresőmezőbe írja be a „python” kifejezést.
-4. A keresési eredmények közül válassza ki a **Django** elemet, majd kattintson a **Create** (Létrehozás) gombra.
+4. A keresési eredmények közül válassza ki a **Django** elemet (amelyet a PTVS tett közzé), majd kattintson a **Create** (Létrehozás) gombra.
 5. Konfigurálja az új Django-alkalmazást, például új App Service-csomag és egy ahhoz tartozó új erőforráscsoport létrehozásával. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-6. Konfigurálja az újonnan létrehozott webalkalmazáshoz tartozó Git-közzétételt a [Continuous deployment using GIT in Azure App Service](web-sites-publish-source-control.md) (Folyamatos üzembe helyezés a GIT használatával, az Azure App Service-ben) részben megadott utasítások szerint.
+6. Konfigurálja az újonnan létrehozott webalkalmazáshoz tartozó Git-közzétételt a [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben) részben megadott utasítások szerint.
 
 ## Az alkalmazás áttekintése
 
@@ -146,7 +146,7 @@ A következő három szakaszban a webalkalmazások fejlesztéséről talál info
 
 ### A tárház klónozása
 
-Első lépésben klónozza a tárházat az Azure portálon található URL-cím használatával. További információk: [Continuous deployment using GIT in Azure App Service](web-sites-publish-source-control.md) (Folyamatos üzembe helyezés a GIT használatával, az Azure App Service-ben).
+Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
 Nyissa meg a tárház gyökérkönyvtárában található megoldásfájlt (.sln).
 
@@ -223,7 +223,7 @@ A módosítások megtekintéséhez lépjen az Azure URL-címére.
 
 ### A tárház klónozása
 
-Első lépésben klónozza a tárházat az Azure portálon található URL-cím használatával, majd távoli tárházként vegye fel az Azure-tárházat. További információk: [Continuous deployment using GIT in Azure App Service](web-sites-publish-source-control.md) (Folyamatos üzembe helyezés a GIT használatával, az Azure App Service-ben).
+Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával, majd távoli tárházként vegye fel az Azure-tárházat. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
     git clone <repo-url>
     cd <repo-folder>
@@ -312,7 +312,7 @@ A módosítások megtekintéséhez lépjen az Azure URL-címére.
 
 ### A tárház klónozása
 
-Első lépésben klónozza a tárházat az Azure portálon található URL-cím használatával, majd távoli tárházként vegye fel az Azure-tárházat. További információk: [Continuous deployment using GIT in Azure App Service](web-sites-publish-source-control.md) (Folyamatos üzembe helyezés a GIT használatával, az Azure App Service-ben).
+Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával, majd távoli tárházként vegye fel az Azure-tárházat. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
     git clone <repo-url>
     cd <repo-folder>
@@ -444,7 +444,7 @@ A hibakeresési mód letiltása:
 
     DEBUG = False
 
-Ha a hibakeresés le van tiltva, az `ALLOWED_HOSTS` értékét módosítani kell úgy, hogy tartalmazza az Azure-gazdagép nevét. Például:
+Ha a hibakeresés le van tiltva, az `ALLOWED_HOSTS` értékét módosítani kell úgy, hogy tartalmazza az Azure-gazdagép nevét. Példa:
 
     ALLOWED_HOSTS = (
         'pythonapp.azurewebsites.net',
@@ -518,6 +518,6 @@ További információ: [Python fejlesztői központ](/develop/python/).
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/29/2016"
+    ms.date="08/05/2016"
     ms.author="vakarand"/>
 
 
@@ -28,7 +28,7 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 | ----------- | ---------- |
 |Azure AD Premium| Az Azure AD Connect Health egy Azure AD Premium szolgáltatás, amelyhez Azure AD Premium szükséges. </br></br>További információkért lásd: [Ismerkedés az Azure AD Premium szolgáltatással](active-directory-get-started-premium.md) </br>Egy 30 napos ingyenes próbaverzió indításához lásd: [Próbaverzió indítása.](https://azure.microsoft.com/trial/get-started-active-directory/)|
 |Az Azure AD Connect Health szolgáltatás indításához az Azure AD szolgáltatásban globális rendszergazdának kell lennie|Alapértelmezés szerint kizárólag a globális rendszergazdák telepíthetik és konfigurálhatják az állapotügynököket, hogy azok elinduljanak, a portálhoz hozzáférjenek, és műveletek hajtsanak végre az Azure AD Connect Health szolgáltatásban. További információkért lásd: [Az Azure AD-címtár felügyelete](active-directory-administer.md). <br><br> A szerepköralapú hozzáférés-vezérlés használatával hozzáférést engedhet az Azure AD Connect Health szolgáltatáshoz más felhasználók számára is a szervezetben. További információért lásd: [Role Based Access Control for Azure AD Connect Health](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control) (Szerepköralapú hozzáférés-vezérlés az Azure AD Connect Health szolgáltatáshoz). </br></br>**Fontos:** Az ügynökök telepítésekor használt fióknak munkahelyi vagy iskolai fióknak kell lennie, és nem lehet Microsoft-fiók. További információkért lásd: [Regisztráció az Azure-ba szervezetként](sign-up-organization.md)
-|Az Azure AD Connect Health-ügynököt az összes célkiszolgálóra telepíteni kell| Az Azure AD Connect Health használatához szükséges, hogy mindegyik célkiszolgálón telepítve legyen egy ügynök, amely a portálon megtekintett adatokat szolgáltatja. </br></br>Ha például az AD FS helyszíni infrastruktúrájával kapcsolatos adatokat kíván gyűjteni, az ügynököt telepíteni kell az AD FS-kiszolgálókra, az AD FS proxykiszolgálókra és a webalkalmazás-proxy kiszolgálókra. </br></br>**Fontos:** Az ügynökök telepítésekor használt fióknak munkahelyi vagy iskolai fióknak kell lennie, és nem lehet Microsoft-fiók.   További információkért lásd: [Regisztráció az Azure-ba szervezetként](sign-up-organization.md)|
+|Az Azure AD Connect Health-ügynököt az összes célkiszolgálóra telepíteni kell| Az Azure AD Connect Health használatához szükséges, hogy mindegyik célkiszolgálón telepítve legyen egy ügynök, amely a portálon megtekintett adatokat szolgáltatja. </br></br>Ha például az AD FS helyszíni infrastruktúrájával kapcsolatos adatokat kíván gyűjteni, az ügynököt telepíteni kell az AD FS-kiszolgálókra, az AD FS proxykiszolgálókra és a webalkalmazás-proxy kiszolgálókra. Szintén telepíteni kell az ügynököt a tartományvezérlőkre, ha a helyszíni AD DS-infrastruktúrával kapcsolatos adatokat kíván gyűjteni. </br></br>**Fontos:** Az ügynökök telepítésekor használt fióknak munkahelyi vagy iskolai fióknak kell lennie, és nem lehet Microsoft-fiók.   További információkért lásd: [Regisztráció az Azure-ba szervezetként](sign-up-organization.md)|
 |Kimenő kapcsolódás az Azure szolgáltatásvégpontokra|A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health alább felsorolt szolgáltatásvégpontjaira. Amennyiben blokkolta a kimenő kapcsolatokat, bizonyosodjon meg róla, hogy az alábbiak fel vannak véve az engedélyezett célok listájára: </br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.queue.core.windows.net</li><li>adhsprodwus.servicebus.windows.net – port: 5671 </li><li>https://management.azure.com </li><li>https://s1.adhybridhealth.azure.com/</li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li> |
 |Az ügynököt futtató kiszolgáló tűzfalportjai.| Az ügynök a következőt tűzfalportok megnyitását igényli, hogy kommunikálhasson az Azure AD Health szolgáltatásvégpontjaival.</br></br><li>TCP/UDP port: 443</li><li>TCP/UDP port: 5671</li>
 |Az alábbi webhelyek engedélyezése, amennyiben az Internet Explorer - Fokozott biztonsági beállítások be van kapcsolva|Az alábbi webhelyeket engedélyezni kell, amennyiben az Internet Explorer - Fokozott biztonsági beállítások be van kapcsolva a kiszolgálón, amelyen az ügynök telepítve lesz.</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>A szervezet Azure Active Directory által megbízhatóként megjelölt összevonási kiszolgálója. Például: https://sts.contoso.com</li>
@@ -155,7 +155,38 @@ A parancs a következő paramétereket fogadja:
 
 Amikor a rendszer a hitelesítő adatait kéri, használja ugyanazt a globális rendszergazdai fiókot (például admin@domain.onmicrosoft.com), amelyet az Azure AD Connect konfigurálásához használt.
 
+## Az Azure AD Connect Health-ügynök telepítése az AD DS szolgáltatáshoz
+Az ügynök telepítésének indításához kattintson duplán a letöltött .exe-fájlra. Az első képernyőn kattintson az Install (Telepítés) elemre.
 
+![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install1.png)
+
+Amint a telepítés befejeződött, kattintson a Configure Now (Konfigurálás most) gombra.
+
+![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install2.png)
+
+Ekkor megnyílik egy parancssor, majd egy PowerShell parancsmag, amely végrehajtja a Register-AzureADConnectHealthADDSAgent parancsot. A rendszer kéri majd, hogy jelentkezzen be az Azure-ba. Lépjen tovább, és jelentkezzen be.
+
+![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install3.png)
+
+A bejelentkezést követően a PowerShell továbblép. Amint befejeződött, bezárhatja a PowerShellt, és a konfiguráció véget ér.
+
+Ezen a ponton a szolgáltatásoknak automatikusan el kell indulniuk, és az ügynök innentől fogva figyeli és gyűjti az adatokat. Az alábbi képernyő egy példa a kimenetre. Vegye figyelembe, hogy figyelmeztetéseket fog látni a PowerShell-ablakban, amennyiben nem teljesítette az előző szakaszokban vázolt összes előfeltételt. Mindenképp végezze el ezeket a követelményeket [itt](active-directory-aadconnect-health-agent-install.md#requirements), mielőtt folytatná az ügynök telepítését. 
+
+![Az Azure AD Connect Health for AD DS ellenőrzése](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install4.png)
+
+Az ügynök telepítésének ellenőrzéséhez nyissa meg a szolgáltatásokat, és keresse a következőket:
+
+- Azure AD Connect Health AD DS Insights szolgáltatás
+- Azure AD Connect Health AD DS Monitoring szolgáltatás
+
+Ez a két szolgáltatás nem indul el addig, amíg a konfigurálást be nem fejezte.
+
+![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install5.png)
+
+## Az Azure AD Connect Health Agent for AD DS telepítése Server Core telepítésen. 
+A .exe fájl telepítése után a regisztrációs folyamatot a következő PowerShell-parancs használatával hajthatja végre:
+
+`Register-AzureADConnectHealthADDSAgent -Credentials $cred
 
 ## Azure AD Connect Health-ügynökök konfigurálása HTTP proxyk használatára
 Az Azure AD Connect Health-ügynököket konfigurálhatja úgy, hogy HTTP proxyval működjenek.
@@ -216,6 +247,7 @@ A szerepkör-paraméter a következő értékeket veheti:
 
 - Adfs
 - Sync
+- ADDS
 
 A parancs -ShowResults jelzőjével megtekintheti a részletes naplókat.  Használja a következő példát:
 
@@ -231,11 +263,12 @@ A parancs -ShowResults jelzőjével megtekintheti a részletes naplókat.  Haszn
 * [Azure AD Connect Health Operations (Az Azure AD Connect Health műveletei)](active-directory-aadconnect-health-operations.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md)
 * [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md)
+* [Az Azure AD Connect Health használata az AD DS szolgáltatással](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health Version History (Az Azure AD Connect Health verzióelőzményei)](active-directory-aadconnect-health-version-history.md)
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

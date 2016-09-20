@@ -7,7 +7,7 @@
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker, Containers, Micro-services, DC/OS, Azure"/>
+   keywords="Docker, tárolók, mikroszolgáltatások, DC/OS, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -21,7 +21,7 @@
 
 # Csatlakozás Azure tárolószolgáltatási fürthöz
 
-Az Azure tárolószolgáltatáson telepített DC/OS- és Swarm-fürtök REST-végpontok elérését teszik lehetővé. Ezek a végpontok azonban a külvilág számára nem hozzáférhetők. Ezeknek a végpontoknak a kezeléséhez létre kell hoznia egy Secure Shell- (SSH-) alagutat. Ha az SSH-alagút létrejött, kiadhat parancsokat a fürt végpontjaira, és a fürt felhasználói felületét a saját rendszerén belül, egy böngészőablakban tekintheti meg. Ez a dokumentum végigvezeti azon a folyamaton, amellyel SSH-alagutat hozhat létre a Linux, a Windows és az OS X rendszerben.
+Az Azure Container Service által üzembe helyezett DC/OS- és Docker Swarm-fürtök REST-végpontokat tesznek közzé. Ezek a végpontok azonban a külvilág számára nem hozzáférhetők. Ezeknek a végpontoknak a kezeléséhez létre kell hoznia egy Secure Shell- (SSH-) alagutat. Miután az SSH-alagút létrejött, kiadhat parancsokat a fürt végpontjaira, és a fürt felhasználói felületét a saját rendszerén belül, egy böngészőablakban tekintheti meg. Ez a dokumentum végigvezeti azon a folyamaton, amellyel SSH-alagutat hozhat létre a Linux, a Windows és az OS X rendszerben.
 
 >[AZURE.NOTE] Fürtkezelő rendszerrel is létrehozhat SSH-munkamenetet. Ez azonban nem ajánlott. A magán a felügyeleti rendszeren végzett munka növeli a konfiguráció véletlen megváltoztatásának kockázatát.   
 
@@ -38,14 +38,14 @@ a **PORT** az elérhetővé tenni kívánt végpont portja. Swarm esetén ez 237
 a **USERNAME** a fürt telepítésekor megadott felhasználónév.  
 a **DNSPREFIX** a fürt telepítésekor megadott DNS-előtag.  
 a **REGION** az a régió, ahol az erőforráscsoport megtalálható.  
-a **PATH_TO_PRIVATE_KEY** [NEM KÖTELEZŐ] a tárolószolgáltatási fürt létrehozásakor megadott nyilvános kulcs titkos kulcsának útvonala. Ezt a beállítást az -i jelzővel együtt kell használni.
+a **PATH_TO_PRIVATE_KEY** [NEM KÖTELEZŐ] a Container Service-fürt létrehozásakor megadott nyilvános kulcshoz tartozó titkos kulcs elérési útja. Ezt a beállítást az -i jelzővel együtt kell használni.
 
 ```bash
 # ssh sample
 
 ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
-> Az SSH-kapcsolati port 2200, és nem a szokásos 22.
+> Az SSH-kapcsolat portja nem a szabványos 22-es, hanem a 2200-as port.
 
 ## DC/OS-alagút
 
@@ -75,7 +75,7 @@ A Swarm végponthoz vezető alagút megnyitásához adjon ki egy a következőh�
 ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
-Most már beállíthatja a DOCKER_HOST környezeti változót az alábbiak szerint, és a szokásos módon használhatja tovább a Docker parancssori felületet (CLI).
+Most beállíthatja a DOCKER_HOST környezeti változót az alábbi módon. A Docker parancssori felületét továbbra is a szokott módon használhatja.
 
 ```bash
 export DOCKER_HOST=:2375
@@ -91,11 +91,11 @@ Adjon meg egy állomásnevet, amely a fürt rendszergazdai felhasználónevébő
 
 ![A PuTTY-konfigurálásának 1. lépése](media/putty1.png)
 
-Válassza ki az `SSH` és a `Authentication` lehetőséget. Adja meg a hitelesítéshez használandó titkos kulcs fájlját a Private key file for authentication mezőben.
+Válassza az **SSH** és a **Hitelesítés** elemet. Adja meg a hitelesítéshez használandó titkos kulcs fájlját a Private key file for authentication mezőben.
 
 ![A PuTTY-konfigurálásának 2. lépése](media/putty2.png)
 
-Válassza ki az `Tunnels` lehetőséget, és konfigurálja a következő továbbított portokat:
+Válassza az **Alagutak** elemet, és konfigurálja az alábbi továbbított portokat:
 - **Source port** (Forrásport): Igény szerint – DC/OS esetén használja a 80-as, Swarm estén a 2375-ös portot.
 - **Destination** (Cél): DC/OS esetén használja a localhost:80, Swarm esetén a localhost:2375 portot.
 
@@ -119,13 +119,13 @@ Ha az alagutat a Docker Swarmra konfigurálta, a Swarm fürtöt a Docker parancs
 
 ## Következő lépések
 
-Tárolók telepítése és felügyelete DC/OS és Swarm rendszer esetén.
+Tárolók telepítése és felügyelete DC/OS és Swarm rendszer esetén:
 
-[Az Azure tárolószolgáltatás és a DC/OS használata](container-service-mesos-marathon-rest.md)
-[Az Azure tárolószolgáltatás és a Docker Swarm használata](container-service-docker-swarm.md)
+- [Az Azure Container Service és a DC/OS használata](container-service-mesos-marathon-rest.md)
+- [Az Azure Container Service és a Docker Swarm használata](container-service-docker-swarm.md)
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

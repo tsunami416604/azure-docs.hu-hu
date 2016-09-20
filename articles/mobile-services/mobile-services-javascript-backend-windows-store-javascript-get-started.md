@@ -13,10 +13,10 @@
     ms.tgt_pltfrm="mobile-windows-store"
     ms.devlang="javascript"
     ms.topic="get-started-article"
-    ms.date="03/06/2016"
+    ms.date="07/21/2016"
     ms.author="glenga"/>
 
-# A Mobile Services használatának első lépései
+# A Mobile Services használatának első lépéseit
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
@@ -93,6 +93,6 @@ Most, hogy végzett a gyors üzembe helyezéssel, megismerheti a [HTML-hez/JavaS
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

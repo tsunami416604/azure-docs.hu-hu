@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Első lépések: Csatlakozás az Azure SQL Data Warehouse-hoz | Microsoft Azure"
-   description="Az SQL Data Warehouse-kapcsolat létrehozásának és a lekérdezések futtatásának első lépései."
+   pageTitle="Az Azure SQL Data Warehouse lekérdezése (sqlcmd) | Microsoft Azure"
+   description="Az Azure SQL Data Warehouse lekérdezése az sqlcmd parancssori segédprogram használatával."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -13,41 +13,22 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/16/2016"
+   ms.date="08/30/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
-# Csatlakozás és lekérdezés az SQLCMD használatával
+# Az Azure SQL Data Warehouse lekérdezése (sqlcmd)
 
 > [AZURE.SELECTOR]
-- [Visual Studio](sql-data-warehouse-get-started-connect.md)
-- [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
-- [AAD](sql-data-warehouse-get-started-connect-aad-authentication.md)
+- [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+- [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+- [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
 
+Ez az útmutató az [sqlcmd][] parancssori segédprogramot használja az Azure SQL Data Warehouse lekérdezéséhez.  
 
-Ez a bemutató ismerteti, hogyan lehet néhány perc alatt csatlakozni az Azure SQL Data Warehouse-adatbázishoz, és adatokat lekérdezni onnan az sqlcmd.exe segédprogrammal. A bemutató keretében a következő lépéseket fogja végrehajtani:
+## 1. Kapcsolódás
 
-+ Az előfeltételt jelentő szoftverek telepítése
-+ Csatlakozás az AdventureWorksDW-mintaadatbázist tartalmazó adatbázishoz
-+ Lekérdezés a mintaadatbázisból  
-
-## Előfeltételek
-
-+ Az [sqlcmd.exe][] letöltéséhez lásd: [Microsoft Command Line Utilities 11 for SQL Server][].
-
-## A teljes Azure SQL-kiszolgálónév lekérdezése
-
-Az adatbázishoz való csatlakozáshoz szükség van a kiszolgáló teljes nevére (***kiszolgálónév**.database.windows.net*), ami tartalmazza annak az adatbázisnak a nevét, amelyhez csatlakozni kíván.
-
-1. Nyissa meg az [Azure portált][].
-2. Keresse meg azt az adatbázist, amelyhez csatlakozni kíván.
-3. Keresse meg a teljes kiszolgálónevet (a következő lépésekben szükség lesz rá):
-
-![][1]
-
-
-## Csatlakozás az SQL Data Warehouse-hoz az sqlcmd használatával
-
-Amennyiben az SQL Data Warehouse egy adott példányához kíván csatlakozni az sqlcmd használatával, meg kell nyitnia a parancssort. Írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse adatbázisának kapcsolati karakterláncát. A kapcsolati karakterláncnak a következő paramétereket kell tartalmaznia:
+Az [sqlcmd][] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati karakterláncát. A kapcsolati karakterláncban a következő paraméterekre van szükség:
 
 + **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
 + **Database (-d):** Az adatbázis neve.
@@ -55,48 +36,51 @@ Amennyiben az SQL Data Warehouse egy adott példányához kíván csatlakozni az
 + **Password (-P):** A felhasználóhoz tartozó jelszó.
 + **Enable Quoted Identifiers (-I):** A SQL Data Warehouse-példányokhoz való csatlakozáshoz engedélyezni kell a határolójeles azonosítókat.
 
-Ezért ha csatlakozni kíván az SQL Data Warehouse-példányhoz, a következőt kell beírnia:
+A kapcsolati karakterlánc például a következőképpen nézhet ki:
 
 ```sql
-C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Password> -I
+C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-## Mintalekérdezések futtatása
+> [AZURE.NOTE] Az -I kapcsoló, amely a határolójeles azonosítókat engedélyezi, jelenleg szükséges az SQL Data Warehouse-hoz való kapcsolódáshoz.
 
-A kapcsolódás után kiadhatók a példányon a támogatott Transact-SQL utasítások.
+## 2. Lekérdezés
+
+A kapcsolódás után kiadhatók a példányon a támogatott Transact-SQL utasítások.  Ebben a példában a lekérdezések elküldése interaktív módban történik.
 
 ```sql
-C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Password> -I
+C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 1> SELECT name FROM sys.tables;
 2> GO
 3> QUIT
 ```
 
-Az sqlcmd segédprogrammal kapcsolatban további információkat az [sqlcmd dokumentációjában olvashat][sqlcmd.exe].
+A következő példák bemutatják, hogyan lehet a lekérdezéseket kötegelt módban futtatni a -Q kapcsoló használatával vagy az SQL átirányításával az sqlcmd-re.
 
+```sql
+sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
+```
 
-## További lépések
+```sql
+"SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
+```
 
-Most, hogy képes csatlakozni és elvégezni a lekérdezéseket, próbáljon [csatlakozni a PowerBI-jal][].
+## Következő lépések
 
-A környezet Windows-hitelesítésre való konfigurálásához tekintse meg a [Csatlakozás az SQL Database vagy az SQL Data Warehouse szolgáltatáshoz Azure Active Directory-hitelesítéssel][] című cikket.
-
-<!--Articles-->
-[Csatlakozás az SQL Database vagy az SQL Data Warehouse szolgáltatáshoz Azure Active Directory-hitelesítéssel]: ../sql-data-warehouse/sql-data-warehouse-get-started-connect-aad-authentication.md
-[csatlakozni a PowerBI-jal]: ./sql-data-warehouse-integrate-power-bi.md
-[Visual Studio]: ./sql-data-warehouse-get-started-connect.md
-[SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
-
-<!--Other-->
-[sqlcmd.exe]: https://msdn.microsoft.com/en-us/library/ms162773.aspx
-[Microsoft Command Line Utilities 11 for SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
-[Azure portált]: https://portal.azure.com
+Az sqlcmd-ben elérhető további lehetőségek részleteit az [sqlcmd dokumentációjában][sqlcmd] tekintheti meg.
 
 <!--Image references-->
-[1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
+
+<!--Article references-->
+
+<!--MSDN references--> 
+[sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
+[Azure Portal]: https://portal.azure.com
+
+<!--Other Web references-->
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

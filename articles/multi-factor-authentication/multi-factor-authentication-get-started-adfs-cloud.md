@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="05/12/2016" 
+    ms.date="08/04/2016" 
     ms.author="billmath"/>
 
 # A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
@@ -106,6 +106,6 @@ Készen is van. Ekkor az összevont Office 365-felhasználóknak csak az MFA-t k
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

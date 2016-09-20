@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/31/2016"
+    ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
 # Azure Search-index létrehozása .NET SDK használatával
@@ -29,18 +29,18 @@ Ez a cikk végigvezeti az Azure Search-[index](https://msdn.microsoft.com/librar
 
 Már az útmutató követése és az index létrehozása előtt [létre kell hoznia egy Azure Search szolgáltatást](search-create-service-portal.md).
 
-Vegye figyelembe, hogy a cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskód a [GitHubon](http://aka.ms/search-dotnet-howto) található.
+Vegye figyelembe, hogy a cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskódot a [GitHub](http://aka.ms/search-dotnet-howto) webhelyén találja.
 
 ## I. Az Azure Search szolgáltatás adminisztrációs API-kulcsának azonosítása
-Most, hogy létrehozta az Azure Search szolgáltatást, csaknem készen áll arra, hogy a .NET SDK használatával kérelmeket bocsásson ki a szolgáltatásvégponton. Először meg kell szereznie a létrehozott keresőszolgáltatáshoz generált adminisztrációs API-kulcsok egyikét. A .NET SDK minden kérelemnél elküldi ezt az API-kulcsot a szolgáltatásának. Érvényes kulcs birtokában kérelmenként bizalom hozható létre a kérelmet küldő alkalmazás és a kérelmet kezelő szolgáltatás között.
+Most, hogy létrehozta az Azure Search szolgáltatást, csaknem készen áll arra, hogy a .NET SDK használatával kérelmeket bocsásson ki a szolgáltatásvégponton. Először meg kell szereznie a létrehozott keresőszolgáltatáshoz generált adminisztrációs API-kulcsok egyikét. A .NET SDK minden kérelemnél elküldi ezt az API-kulcsot a szolgáltatásának. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-1. A szolgáltatása API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
-2. Nyissa meg az Azure Search szolgáltatás paneljét
+1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
+2. Nyissa meg az Azure Search szolgáltatáspaneljét
 3. Kattintson a „Kulcsok” ikonra
 
-A szolgáltatása *adminisztrációs kulcsokat* és *lekérdezési kulcsokat* fog tartalmazni.
+A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog rendelkezni.
 
-  - Az elsődleges és másodlagos *adminisztrációs kulcsok* teljes körű jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás kezelését, valamint az indexek, az indexelők és az adatforrások létrehozását és törlését. Két kulcs van, így továbbra is használhatja a másodlagos kulcsot, ha úgy dönt, hogy újra generálja az elsődleges kulcsot. Ugyanez fordítva is igaz.
+  - Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
   - A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások kapják meg őket.
 
 Index létrehozása céljából az elsődleges és a másodlagos adminisztrációs kulcsot is használhatja.
@@ -125,6 +125,6 @@ Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a 
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

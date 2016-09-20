@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="java"
     ms.topic="get-started-article"
-    ms.date="06/01/2016"
-    ms.author="bradygaster"/>
+    ms.date="08/31/2016"
+    ms.author="rachelap"/>
 
 # Java API-alkalmazás buildjének elkészítése és telepítése az Azure App Service platformon
 
@@ -259,7 +259,7 @@ Ebben a szakaszban a Swagger által generált kód kiszolgálóoldali implement�
 
 Ebben a szakaszban megtudhatja, hogyan hozhat létre új API-alkalmazást az Azure portálon, hogyan készítheti elő az API-alkalmazást Java-alkalmazások futtatására, valamint hogy hogyan telepítheti az újonnan létrehozott WAR-fájlt az Azure App Service platformra az új API-alkalmazás futtatásához. 
 
-1. Hozzon létre egy új API-alkalmazást az [Azure portál]. Ehhez kattintson a **Új -> Web + mobil -> API-alkalmazás** menüpontra, írja be az adatokat, majd kattintson a **Létrehozás** gombra.
+1. Hozzon létre egy új API-alkalmazást az [Azure Portal]. Ehhez kattintson a **Új -> Web + mobil -> API-alkalmazás** menüpontra, írja be az adatokat, majd kattintson a **Létrehozás** gombra.
 
     ![Új API-alkalmazás létrehozása][create-api-app]
 
@@ -304,7 +304,7 @@ A Java-alkalmazások Azure-ban való használatáról bővebben a [Java fejleszt
 <!-- URL List -->
 
 [App Service API CORS]: app-service-api-cors-consume-javascript.md
-[Azure portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
 [ingyenes]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
@@ -340,6 +340,6 @@ A Java-alkalmazások Azure-ban való használatáról bővebben a [Java fejleszt
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

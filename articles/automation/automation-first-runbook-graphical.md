@@ -6,14 +6,14 @@
     authors="mgoedtel"
     manager="jwhit"
     editor=""
-    keywords="runbook, runbook template, runbook automation, azure runbook"/>
+    keywords="runbook, runbook-sablon, runbook automation, azure runbook"/>
 <tags
     ms.service="automation"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/31/2016"
+    ms.date="07/06/2016"
     ms.author="magoedte;bwren"/>
 
 # Az első grafikus forgatókönyvem
@@ -115,7 +115,7 @@ Most, hogy van egy változónk az előfizetés-azonosító tárolására, konfig
 10.  Az **Add-AzureRmAccount** több paraméterkészlettel rendelkezik, ezért ki kell választanunk egyet, mielőtt megadhatnánk a paraméterértékeket.  Kattintson a **Paraméterkészlet** lehetőségre, és válassza a **ServicePrincipalCertificate** paraméterkészletet. 
 11.  Ha kiválasztotta a paraméterkészletet, a paraméterek megjelennek a Tevékenység paramétereinek konfigurálása panelen.  Kattintson az **APPLICATIONID** elemre.<br> ![Azure RM-fiók paramétereinek hozzáadása](media/automation-first-runbook-graphical/add-azurermaccount-parameterset.png)
 12.  A Paraméter értéke panelen válassza a **Tevékenység kimenete** elemet az **Adatforrás** területen, majd válassza a **Futtató kapcsolat létesítése** elemet a listáról. A **Mező elérési útja** szövegmezőbe írja be az **ApplicationId** kifejezést, majd kattintson az **OK** elemre.  A mező elérési útjához tartozó tulajdonság nevét azért adjuk meg, mert a tevékenység egy több tulajdonsággal rendelkező objektumot eredményez.
-13.  Kattintson a **CERTIFICATETHUMBPRINT** elemre, és a Paraméter értéke panelen válassza a **Tevékenység kimenete** elemet az **Adatforrás** területen.  Válassza a **Futtató kapcsolat létesítése** elemet a listáról, és a **Mező elérési útja** szövegmezőbe írja be a **CertificateThumbprint** kifejezést, majd kattintson az **OK** elemre. 
+13.  Kattintson a **CERTIFICATETHUMBPRINT** elemre, és a Paraméter értéke panelen válassza a **Tevékenység kimenete** elemet az **Adatforrás** területen.  Válassza a **Futtató kapcsolat létesítése** elemet a listáról, és a **Mező elérési útja** szövegmezőbe írja be a **CertificateThumbprint** kifejezést, majd kattintson az **OK** gombra. 
 14.  Kattintson a **SERVICEPRINCIPAL** elemre, és a Paraméter értéke panelen válassza a **ConstantValue** elemet az **Adatforrás** területen, kattintson a **True** lehetőségre, és kattintson az **OK** gombra.
 15.  Kattintson a **TENANTID** elemre, és a Paraméter értéke panelen válassza a **Tevékenység kimenete** elemet az **Adatforrás** területen.  Válassza a **Futtató kapcsolat létesítése** elemet a listáról, és a **Mező elérési útja** szövegmezőbe írja be a **TenantId** kifejezést, majd kattintson kétszer az **OK** elemre.  
 16.  A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Set-AzureRmContext**.
@@ -135,7 +135,7 @@ A forgatókönyvnek ezen a ponton az alábbi kódhoz kell hasonlítania: <br>![F
 Most hozzáadunk egy **Start-AzureRmVM** tevékenységet egy virtuális gép elindítására.  Kiválaszthatja az Azure-előfizetésében lévő bármelyik virtuális gépet, és most szoftveresen rögzítjük ezt a nevet a parancsmagba.
 
 1. A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Start-AzureRm**.
-2. Adja hozzá a **Start-AzureRmVM** elemet a vászonhoz, és húzza az **Előfizetés azonosítójának megadása** alá.
+2. Adja hozzá a **Start-AzureRmVM** elemet a vászonhoz, és húzza a **Csatlakozás az Azure szolgáltatáshoz** alá.
 3. Vigye a kurzort a **Előfizetés azonosítójának megadása** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör.  Kattintson a körre, és húzza a nyilat a **Start-AzureRmVM** elemre. 
 4.  Jelölje ki a **Start-AzureRmVM** elemet.  A **Start-AzureRmVM** készleteinek megtekintéséhez kattintson a **Paraméterek**, majd a **Paraméterkészlet** lehetőségre.  Válassza ki a **ResourceGroupNameParameterSetName** paraméterkészletet. Figyelje meg, hogy a **ResourceGroupName** és a **Name** mellett felkiáltójel van.  Ez azt jelzi, hogy ezek kötelező paraméterek.  Azt is észreveheti, hogy mindkét helyen szöveges értéket kell megadni.
 5.  Válassza ki a **Name** paramétert.  Válassza ki a **PowerShell-kifejezés** elemet az **Adatforrás** területen, majd írja be a forgatókönyvvel elindított virtuális gép nevét idézőjelek között.  Kattintson az **OK** gombra.<br>![Start-AzureRmVM nevének paraméteres értéke](media/automation-first-runbook-graphical/runbook-startvm-nameparameter.png)
@@ -198,15 +198,15 @@ Most úgy fogjuk módosítani a forgatókönyvet, hogy csak akkor próbálja meg
 17. A **Feltételkifejezés** területen írja be a következőt: *$ActivityOutput['Get Status'] -eq "Stopped"*.  A **Start-AzureRmVM** most csak akkor fog futni, ha a virtuális gép le van állítva.
 18. A Könyvtár vezérlőben bontsa ki a **Parancsmagok** elemet, és válassza a **Microsoft.PowerShell.Utility** lehetőséget.
 19. Adja hozzá a vászonhoz kétszer a következőt: **Write-Output**.<br> ![Forgatókönyv Write-Output parancsmaggal](media/automation-first-runbook-graphical/runbook-startazurermvm-complete.png)
-20. Az első **Write-Output** vezérlőn módosítsa a **Címke** értéket a következőre:*Értesítés a virtuális gép indulásáról*
+20. Az első **Write-Output** vezérlőn kattintson a **Paraméterek** elemre, és módosítsa a **Címke** értéket a következőre: *Értesítés a virtuális gép indulásáról*.
 21. Az **InputObject** elemnél módosítsa az **Adatforrás** beállítását a **PowerShell-kifejezés** értékre, és írja be a következő kifejezést:*„$VMName sikeresen elindult.”*.
-22. A második **Write-Output** vezérlőn módosítsa a **Címke** értéket a következőre:*Értesítés a virtuális gép indulásának meghiúsulásáról*
+22. A második **Write-Output** vezérlőn kattintson a **Paraméterek** elemre, és módosítsa a **Címke** értéket a következőre: *Értesítés a virtuális gép indulásának meghiúsulásáról*
 23. Az **InputObject** elemnél módosítsa az **Adatforrás** beállítását a **PowerShell-kifejezés** értékre, és írja be a következő kifejezést:*„VMName nem tudott elindulni.”*.
 24. Hozzon létre egy hivatkozást a **Start-AzureRmVM** és az **Értesítés a virtuális gép indulásáról**, valamint az **Értesítés a virtuális gép indulásának meghiúsulásáról** között.
 25. Válassza ki az **Értesítés a virtuális gép indulásáról** felé mutató hivatkozást, és módosítsa a **Feltétel alkalmazása** beállítást arra, hogy **Igaz**.
 26. A **Feltételkifejezéshez** írja be a következőt: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true*.  A Write-Output vezérlés most csak akkor fog futni, ha a virtuális gép sikeresen elindult.
 27. Válassza ki az **Értesítés a virtuális gép indulásának meghiúsulásáról** felé mutató hivatkozást, és módosítsa a **Feltétel alkalmazása** beállítást arra, hogy **Igaz**.
-28. A **Feltételkifejezéshez** írja be a következőt: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true*.  A Write-Output vezérlés most csak akkor fog futni, ha a virtuális gép nem indult el sikeresen. 
+28. A **Feltételkifejezéshez** írja be a következőt: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true*.  A Write-Output vezérlés most csak akkor fog futni, ha a virtuális gép nem indult el sikeresen.
 29. Mentse a forgatókönyvet, és nyissa meg a Teszt panelt.
 30. Indítsa el a forgatókönyvet úgy, hogy a virtuális gép nem fut, és elvileg el kell indulnia.
 
@@ -214,10 +214,10 @@ Most úgy fogjuk módosítani a forgatókönyvet, hogy csak akkor próbálja meg
 
 -   További információk a Grafikus létrehozásról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
 -   A PowerShell-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md).
--   A PowerShell munkafolyamat  forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md).
+-   A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

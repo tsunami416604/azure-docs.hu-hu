@@ -7,7 +7,7 @@
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
+   keywords="Docker, tárolók, mikroszolgáltatások, Mesos, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -172,14 +172,11 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 ## Következő lépések
 
-[További információk a Mesos HTTP-végpontokról]( http://mesos.apache.org/documentation/latest/endpoints/).
-[További információk a Marathon REST API-ról]( https://mesosphere.github.io/marathon/docs/rest-api.html).
+- [További információk a Mesos HTTP-végpontokról]( http://mesos.apache.org/documentation/latest/endpoints/).
+- [További információk a Marathon REST API-ról]( https://mesosphere.github.io/marathon/docs/rest-api.html).
 
 
 
-
-
-
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

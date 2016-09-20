@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="hero-article" 
-    ms.date="05/24/2016" 
+    ms.date="08/09/2016" 
     ms.author="sdanie"/>
 
 #Mi az API Management?
@@ -88,7 +88,7 @@ Az API Management házirendek teljes listájáért tekintse meg a [Házirend-ref
 
 > [AZURE.VIDEO rate-limits-and-quotas]
 
-## <a name="developer-portal"> </a> Fejlesztői portál
+## <a name="developer-portal"> </a> Fejlesztői portálon
 
 A fejlesztők a fejlesztői portálon ismerhetik meg az API-kat, tekinthetik meg és hívhatják meg a műveleteket, és ott fizethetnek elő a termékekre. A leendő ügyfelek meglátogathatják a fejlesztői portált, megtekinthetik az API-kat és a műveleteket, illetve regisztrálhatnak. A fejlesztői portál URL-címe az API Management szolgáltatáspéldányhoz tartozó klasszikus Azure portál irányítópultján található.
 
@@ -124,6 +124,6 @@ Ha többet szeretne megtudni az API Management szolgáltatásról, tekintse meg 
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

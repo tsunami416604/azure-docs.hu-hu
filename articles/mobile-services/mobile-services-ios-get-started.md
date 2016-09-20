@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-ios"
     ms.devlang="objective-c"
     ms.topic="hero-article"
-    ms.date="03/09/2016"
+    ms.date="07/21/2016"
     ms.author="krisragh"/>
 
 # <a name="getting-started"> </a>A Mobile Services használatának első lépései
@@ -98,6 +98,6 @@ Megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Services
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

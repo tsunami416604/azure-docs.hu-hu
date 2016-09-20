@@ -1,7 +1,7 @@
 <properties
-    pageTitle="Új rugalmas készlet létrehozása az Azure portálon | Microsoft Azure"
+    pageTitle="Új rugalmas készlet létrehozása az Azure Portalon | Microsoft Azure"
     description="A cikk ismerteti, hogyan adható méretezhető rugalmas adatbáziskészlet az SQL-adatbázis konfigurációjához, amely megkönnyíti a felügyeletet, valamint az erőforrások számos adatbázis közti megosztását."
-    keywords="scalable database,database configuration"
+    keywords="méretezhető adatbázis,adatbázis-konfiguráció"
     services="sql-database"
     documentationCenter=""
     authors="ninarn"
@@ -11,21 +11,21 @@
 <tags
     ms.service="sql-database"
     ms.devlang="NA"
-    ms.date="05/06/2016"
+    ms.date="07/20/2016"
     ms.author="ninarn"
     ms.workload="data-management"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="NA"/>
 
 
-# Új rugalmas adatbáziskészlet létrehozása az Azure portállal
+# Új rugalmas adatbáziskészlet létrehozása az Azure Portallal
 
 > [AZURE.SELECTOR]
-- [Azure portál](sql-database-elastic-pool-create-portal.md)
+- [Azure Portal](sql-database-elastic-pool-create-portal.md)
 - [PowerShell](sql-database-elastic-pool-create-powershell.md)
 - [C##](sql-database-elastic-pool-create-csharp.md)
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre méretezhető [rugalmas adatbáziskészletet](sql-database-elastic-pool.md) az [Azure portállal](https://portal.azure.com/). Készlet két különböző módon hozható létre. Létrehozhatja a készletet a nulláról is, ha tisztában van a használni kívánt beállításokkal, de alapul veheti a szolgáltatás javaslatait is. Az SQL Database beépített funkciói képesek készletbeállítást javasolni, ha a rendszer úgy ítéli meg, hogy a múltbeli használat telemetriai adatai alapján ez az adatbázisok esetében használható legköltséghatékonyabb megoldás.
+Ebből a cikkből megtudhatja, hogyan hozhat létre méretezhető [rugalmas adatbáziskészletet](sql-database-elastic-pool.md) az [Azure Portallal](https://portal.azure.com/). Készlet két különböző módon hozható létre. Létrehozhatja a készletet a nulláról is, ha tisztában van a használni kívánt beállításokkal, de alapul veheti a szolgáltatás javaslatait is. Az SQL Database beépített funkciói képesek készletbeállítást javasolni, ha a rendszer úgy ítéli meg, hogy a múltbeli használat telemetriai adatai alapján ez az adatbázisok esetében használható legköltséghatékonyabb megoldás.
 
 Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók különböző kiszolgálókról származó adatbázisok. Készlet létrehozásához egy legalább 12-es verziójú kiszolgálón üzemelő adatbázis szükséges. Ha még nem rendelkezik Azure SQL-adatbázissal, olvassa el a [Create your first Azure SQL database](sql-database-get-started.md) (Az első Azure SQL-adatbázis létrehozása) című cikket. Egyetlen adatbázissal is létrehozhatja a készletet, de a készletek több adatbázis használata esetén biztosítanak költséghatékony működést. További információk: [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md) (Rugalmas adatbáziskészletek ára és teljesítménye).
 
@@ -33,9 +33,11 @@ Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók kül
 
 ## 1. lépés: Új készlet létrehozása
 
-A rugalmas adatbáziskészlet létrehozásához hozzá kell adnia egy új készletet a kiszolgálóhoz. Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók különböző kiszolgálókról származó adatbázisok.
+A cikk bemutatja, hogy miként lehet új készletet létrehozni a portál egy meglévő **kiszolgáló** paneljéről, amely a meglévő adatbázisok készletbe történő áthelyezésének legegyszerűbb módja. 
 
-1. Az [Azure portálon](http://portal.azure.com/) kattintson az **SQL-kiszolgálók** elemre, majd a kiszolgálóra, amely a készlethez adandó adatbázisokat tartalmazza.
+> [AZURE.NOTE] Függetlenül attól, hogy rendelkezik-e már kiszolgálóval, a **Rugalmas SQL-készletek** panelről is létrehozhat egy új készletet (a portál bal oldalán lévő lista alatt kattintson a **Tallózás** **>** **Rugalmas SQL-készletek** elemre). A **Rugalmas SQL-készletek** panel **+Hozzáadás** elemére kattintva megjelenítheti egy új kiszolgáló létrehozásának lépéseit a készletet érintő kiépítési munkafolyamat során.
+
+1. A bal oldali lista alatti [Azure Portal](http://portal.azure.com/) területen kattintson a **Tallózás** **>** **SQL-kiszolgálók** elemre, majd kattintson a készlethez hozzáadni kívánt adatbázisokat tartalmazó kiszolgálóra.
 2. Kattintson a **Új készlet** lehetőségre.
 
     ![Készlet hozzáadása a kiszolgálóhoz](./media/sql-database-elastic-pool-create-portal/new-pool.png)
@@ -115,6 +117,6 @@ Miután hozzáadta az adatbázisokat a készlethez, a rendszer a kiválasztott a
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

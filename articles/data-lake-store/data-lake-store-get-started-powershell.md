@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/07/2016"
+   ms.date="07/07/2016"
    ms.author="nitinme"/>
 
 # Az Azure Data Lake Store használatának első lépései az Azure PowerShell használatával
@@ -43,7 +43,7 @@ Tekintse meg a [Using Azure PowerShell with Azure Storage](../powershell-azure-r
 
 ## Azure Data Lake Store-fiók létrehozása
 
-1. Nyisson meg egy új Azure PowerShell ablakot, és adja meg az alábbi kódrészletet az Azure-fiókba való bejelentkezéshez, az előfizetés beállításához és a Data Lake Store-szolgáltató regisztrálásához. Győződjön meg arról, hogy az előfizetés rendszergazdájaként/tulajdonosaként jelentkezik be, amikor a rendszer erre kéri:
+1. Nyisson meg egy új Windows PowerShell ablakot, és adja meg az alábbi kódrészletet az Azure-fiókba való bejelentkezéshez, az előfizetés beállításához és a Data Lake Store-szolgáltató regisztrálásához. Győződjön meg arról, hogy az előfizetés rendszergazdájaként/tulajdonosaként jelentkezik be, amikor a rendszer erre kéri:
 
         # Log in to your Azure account
         Login-AzureRmAccount
@@ -135,7 +135,7 @@ Az alábbi parancs segítségével törölheti a Data Lake Store-fiókját.
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 
-## További lépések
+## Következő lépések
 
 - [Secure data in Data Lake Store (Az adatok védelme a Data Lake Store-ban)](data-lake-store-secure-data.md)
 - [Use Azure Data Lake Analytics with Data Lake Store (Az Azure Data Lake Analytics használata a Data Lake Store-ral)](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
@@ -143,6 +143,6 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

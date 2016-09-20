@@ -1,7 +1,7 @@
 <properties
     pageTitle="Adatok lekérdezése HDFS-kompatibilis Blob Storage tárolóról | Microsoft Azure"
     description="A HDInsight az Azure Blob Storage tárolót használja a HDFS big data-táraként. Megtudhatja, hogyan kérdezhet le adatokat a Blob Storage tárolóból, és hogyan tárolhatja az eredményeket elemzéshez."
-    keywords="blob storage,hdfs,structured data,unstructured data"
+    keywords="blob storage,hdfs,strukturált adatok,strukturálatlan adatok"
     services="hdinsight,storage"
     documentationCenter=""
     tags="azure-portal"
@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/18/2016"
+    ms.date="08/10/2016"
     ms.author="jgao"/>
 
 
@@ -27,11 +27,7 @@ Az Azure Blob Storage egy robusztus, általános célú tárolómegoldás, amely
 
 Az adatok Blob Storage tárolóban végzett tárolása lehetővé teszi, hogy biztonságosan törölje a számításhoz használt HDInsight fürtöket a felhasználói adatok elvesztése nélkül.
 
-> [AZURE.NOTE]  Az *asv://* szintaxis nem támogatott a HDInsight 3.0-s verziójú fürtökben. Ez azt jelenti, hogy a HDInsight 3.0-s fürtbe elküldött, explicit módon az *asv://* szintaxist használó feladatok meghiúsulnak. Ehelyett a *wasb://* szintaxist kell használni. Ezenkívül az olyan meglévő metaadattárral létrehozott HDInsight 3.0-s verzióba küldött feladatok, amelyek az asv:// szintaxist használó erőforrásokra mutató explicit hivatkozásokat tartalmaznak, meghiúsulnak. Ezeket a metaadattárakat a wasb:// szintaxissal kell újra létrehozni erőforrások kezeléséhez.
-
-> A HDInsight jelenleg csak blokk blobokat támogat.
-
-> A legtöbb HDFS parancs (például az <b>ls</b>, a <b>copyFromLocal</b> és a <b>mkdir</b>) továbbra is a várt módon működik. Csak a natív HDFS implementációra ( más néven DFS-re) jellemző parancsok, például a <b>fschk</b> és a <b>dfsadmin</b> viselkednek máshogy az Azure Blob Storage tárolóban.
+> [AZURE.IMPORTANT] A HDInsight csak blokkblobokat támogat. A lapblobokat és hozzáfűző blobokat nem támogatja.
 
 A HDInsight fürtök létrehozásával kapcsolatban további információért lásd: [Get Started with HDInsight][hdinsight-get-started] (HDInsight – első lépések) vagy [Create HDInsight clusters][hdinsight-creation] (HDInsight-fürtök létrehozása).
 
@@ -49,6 +45,7 @@ Emellett a HDInsight lehetővé teszi az Azure Blob Storage tárolóban tárolt 
 
     wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
 
+> [AZURE.NOTE] A 3.0-s verzió előtti HDInsight-verziókban az `asv://` volt használatban a `wasb://` helyett. `asv://` nem használható a 3.0-s vagy újabb verziójú HDInsight-fürtökkel, mivel ez egy hibát eredményez.
 
 A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight létrehozási folyamata alatt egy Azure Storage-fiók és a fiók adott Azure Blob Storage tárolója lesz kijelölve az alapértelmezett fájlrendszerként.
 
@@ -83,7 +80,7 @@ Több előnye is van annak, ha az adatokat a HDFS helyett az Azure Blob Storage 
 
 Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak létre, amelyeket nem érdemes az Azure Blob Storage tárolóban tárolni. Ebben az esetben a helyi HDFS-ben is tárolhatja az adatokat. Valójában a HDInsight a DFS-t használja több ilyen köztes eredményhez a Hive-feladatokban és egyéb folyamatokban.
 
-
+> [AZURE.NOTE] A legtöbb HDFS parancs (például az <b>ls</b>, a <b>copyFromLocal</b> és a <b>mkdir</b>) továbbra is a várt módon működik. Csak a natív HDFS implementációra ( más néven DFS-re) jellemző parancsok, például a <b>fschk</b> és a <b>dfsadmin</b> viselkednek máshogy az Azure Blob Storage tárolóban.
 
 ## Blob tárolók létrehozása
 
@@ -155,10 +152,6 @@ A Blob Storage tárolóban a HDInsight eszközről végzett fájlelérés URI s�
     wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 
 
-> [AZURE.NOTE] A (HDInsight emulátoron futó) Storage Emulator eszközön a fájlok kezelésének szintaxisa a következő: <i>wasb://&lt;Tárolónév&gt;@tárolóemulátor</i>.
-
-
-
 Az URI séma titkosítatlan hozzáférést (a *wasb:* előtaggal) és SSL titkosított hozzáférést (a *wasbs* előtaggal) biztosít. Ajánlott a *wasbs* előtagot használnia, amikor lehetséges, még akkor is, amikor az Azure-ban ugyanabban a régióban lévő adatokat éri el.
 
 A &lt;BlobStorageContainerName&gt; azonosítja a tároló nevét az Azure Blob Storage tárolóban.
@@ -166,8 +159,8 @@ A &lt;StorageAccountName&gt; azonosítja az Azure Storage-fiók nevét. Szüksé
 
 Ha a &lt;BlobStorageContainerName&gt; és a &lt;StorageAccountName&gt; sincs meghatározva, a rendszer az alapértelmezett fájlrendszert használja. Az alapértelmezett fájlrendszeren tárolt fájlok esetén relatív elérési utat vagy abszolút elérési utat használhat. A HDInsight-fürtökben lévő *hadoop-mapreduce-examples.jar* fájlra például a következők egyikével lehet hivatkozni:
 
-    wasb://mycontainer@myaccount.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-    wasb:///example/jars/hadoop-mapreduce-examples.jar
+    wasbs://mycontainer@myaccount.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+    wasbs:///example/jars/hadoop-mapreduce-examples.jar
     /example/jars/hadoop-mapreduce-examples.jar
 
 > [AZURE.NOTE] A fájlnév a <i>hadoop-examples.jar</i> a HDInsight 2.1-es és 1.6-s verziójú fürtökben.
@@ -277,7 +270,7 @@ $clusterName = "<HDInsightClusterName>"
     $defines = @{}
     $defines.Add("fs.azure.account.key.$undefinedStorageAccount.blob.core.windows.net", $undefinedStorageKey)
 
-    Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
+    Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasbs://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
 ## Következő lépések
 
@@ -308,6 +301,6 @@ További információkért lásd:
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

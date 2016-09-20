@@ -13,7 +13,7 @@
    ms.topic="hero-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/08/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása
@@ -240,6 +240,6 @@ A következő lépés egy [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsopo
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

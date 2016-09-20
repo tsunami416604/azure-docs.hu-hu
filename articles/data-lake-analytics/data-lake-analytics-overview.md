@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # A Microsoft Azure Data Lake Analytics áttekintése
@@ -52,7 +52,7 @@ Az Azure Data Lake Analytics egy új szolgáltatás, amely a big data-elemzések
 ## Lásd még:
 
 - Első lépések
-    - [A Data Lake Analytics használatának első lépései az Azure portállal](data-lake-analytics-get-started-portal.md)
+    - [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)
     - [A Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md)
     - [A Data Lake Analytics használatának első lépései az Azure .NET SDK-val](data-lake-analytics-get-started-net-sdk.md)
     - [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
@@ -64,9 +64,10 @@ Az Azure Data Lake Analytics egy új szolgáltatás, amely a big data-elemzések
     - [Felhasználó által definiált U-SQL-operátorok fejlesztése Data Lake Analytics-feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)
     
 - Kezelés
-    - [Az Azure Data Lake Analytics kezelése az Azure portál használatával](data-lake-analytics-manage-use-portal.md)
+    - [Az Azure Data Lake Analytics kezelése az Azure Portal használatával](data-lake-analytics-manage-use-portal.md)
     - [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](data-lake-analytics-manage-use-powershell.md)
-    - [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure portállal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+    - [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure Portallal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+    - [Accessing diagnostics logs for Azure Data Lake Analytics (Az Azure Data Lake Analytics diagnosztikai naplóinak elérése)](data-lake-analytics-diagnostic-logs.md)
 
 - Átfogó oktatóanyag
     - [Az Azure Data Lake Analytics interaktív oktatóanyagainak használata](data-lake-analytics-use-interactive-tutorials.md)
@@ -81,6 +82,6 @@ Az Azure Data Lake Analytics egy új szolgáltatás, amely a big data-elemzések
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

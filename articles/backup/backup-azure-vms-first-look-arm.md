@@ -1,6 +1,6 @@
 <properties
-    pageTitle="A Resource Manager által telepített virtuális gépek védelme Azure Backup használatával | Microsoft Azure"
-    description="A Resource Manager által telepített virtuális gépeket megóvhatja az Azure Backup szolgáltatással. A Resource Manager által telepített virtuális gépek és a Premium Storage virtuális gépek biztonsági mentéseit használhatja adatai megvédéséhez. Létrehozhat és regisztrálhat egy Recovery Services-tárolót. Regisztrálhat virtuális gépeket, létrehozhat egy házirendet, és megvédheti virtuális gépeit az Azure-ban."
+    pageTitle="Áttekintés: Azure virtuális gépek védelme Recovery Services-tárolóval | Microsoft Azure"
+    description="Megvédheti Azure virtuális gépeit egy Recovery Services-tárolóval. Az adatok védelmére a Resource Manager által üzembe helyezett virtuális gépek, a klasszikus módon üzembe helyezett virtuális gépek és a Premium Storage virtuális gépek biztonsági másolatait használhatja. Létrehozhat és regisztrálhat egy Recovery Services-tárolót. Regisztrálhat virtuális gépeket, létrehozhat egy házirendet, és megvédheti virtuális gépeit az Azure-ban."
     services="backup"
     documentationCenter=""
     authors="markgalioto"
@@ -18,11 +18,11 @@
     ms.author="markgal; jimpark"/>
 
 
-# Áttekintés: a Resource Manager által telepített virtuális gépek biztonsági mentése egy Recovery Services-tárolóba
+# Áttekintés: Azure virtuális gépek védelme Recovery Services-tárolóval
 
 > [AZURE.SELECTOR]
-- [A Resource Manager által telepített virtuális gépek biztonsági mentése](backup-azure-vms-first-look-arm.md)
-- [Klasszikus módú virtuális gépek biztonsági mentése](backup-azure-vms-first-look.md)
+- [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md)
+- [Áttekintés: Azure virtuális gépek védelme Backup-tárolóval](backup-azure-vms-first-look.md)
 
 Ez az oktatóprogram végigkíséri egy Recovery Services-tároló létrehozásának és egy Azure virtuális gép (VM) biztonsági mentésének lépésein. A Recovery Services-tárolók megvédik:
 
@@ -30,6 +30,7 @@ Ez az oktatóprogram végigkíséri egy Recovery Services-tároló létrehozás�
 - A klasszikus virtuális gépeket
 - A Standard szintű tárolós virtuális gépeket
 - A Prémium szintű tárolós virtuális gépeket
+- Az Azure Disk Encryption használatával titkosított virtuális gépeket, amelyek rendelkeznek BEK-kel és KEK-kel (amelyeket a PowerShell támogat)
 
 A Prémium szintű tárolós virtuális gépek védelméről további információ: [Prémium szintű tárolós virtuális gépek biztonsági mentése és visszaállítása](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms)
 
@@ -52,7 +53,7 @@ A Recovery Services-tároló egy olyan entitás, amely eltárolja az idők sorá
 
 Egy Recovery Services-tároló létrehozásához:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. A központi menüben kattintson a **Tallózás** elemre, majd az erőforrások listájába írja be a következőt: **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Recovery Services-tároló** elemre.
 
@@ -72,13 +73,13 @@ Egy Recovery Services-tároló létrehozásához:
 
 5. Kattintson az **Előfizetés** elemre az elérhető előfizetések listájának megtekintéséhez. Ha nem biztos benne, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (vagy javasolt) előfizetést. Csak akkor lesz több választási lehetőség, ha a szervezetéhez tartozó fiók több Azure-előfizetéssel van összekötve.
 
-6. Kattintson az **Erőforráscsoport** elemre az elérhető erőforráscsoportok listájának megtekintéséhez, vagy kattintson az **Új** elemre egy új erőforráscsoport létrehozásához. Az erőforráscsoportokról minden információt megtalál a [Az Azure portál használata az Azure-erőforrások telepítéséhez és kezeléséhez](../azure-portal/resource-group-portal.md) című cikkben.
+6. Kattintson az **Erőforráscsoport** elemre az elérhető erőforráscsoportok listájának megtekintéséhez, vagy kattintson az **Új** elemre egy új erőforráscsoport létrehozásához. Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../resource-group-overview.md).
 
 7. Kattintson a **Hely** elemre a tárolóhoz tartozó földrajzi régió kiválasztásához. A tárolónak ugyanabban a régióban **kell** lennie, mint a megvédeni kívánt virtuális gépeknek.
 
     >[AZURE.IMPORTANT] Ha nem biztos a virtuális gép helyében, lépjen ki a tároló-létrehozási párbeszédpanelből, és lépjen a virtuális gépek listájához a portálon. Ha több régióban rendelkezik virtuális gépekkel, minden régióban létre kell hoznia egy Recovery Services-tárolót. Hozza létre a tárolót az első helyen, majd lépjen a következő helyre. Az adatok biztonsági másolatának tárolásához nincs szükség tárfiókok megadására – a Recovery Services-tároló és az Azure Backup szolgáltatás ezt automatikusan kezeli.
 
-8. Kattintson a ** Create** (Létrehozás) gombra. A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az állapotértesítéseket a portál jobb felső területén. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában.
+8. Kattintson a **Létrehozás** gombra. A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az állapotértesítéseket a portál jobb felső területén. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában.
 
     ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
 
@@ -102,7 +103,7 @@ A tárreplikációs beállítás szerkesztése:
 
 Mielőtt regisztrálna egy virtuális gépet a tárolóval, futtassa a felfedezési folyamatot, hogy meggyőződjön arról, hogy az előfizetéshez hozzáadott minden új virtuális gép azonosítva lett. A folyamat lekéri az Azure-ból az előfizetésben található virtuális gépek listáját, olyan kiegészítő információkkal, mint a felhőszolgáltatás neve és a régió. Az Azure portálon a forgatókönyv arra utal, amit bele fog tenni a Recovery Services-tárolóba. A házirend adja meg a helyreállítási pontok gyakoriságának és elhelyezési idejének a menetrendjét. A házirend emellett tartalmazza a helyreállítási pontok megőrzési tartományát.
 
-1. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 2. lépéssel. Ha nincs megnyitva egy Recovery Services-tároló, de az Azure portál igen, a központi menüben kattintson a **Tallózás** elemre.
+1. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 2. lépéssel. Ha nincs megnyitva egy Recovery Services-tároló, de az Azure Portal igen, a központi menüben kattintson a **Tallózás** elemre.
 
   - Az erőforrások listájába írja be a következőt: **Recovery Services**.
   - Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Amikor meglátja a **Recovery Services-tárolót**, kattintson rá.
@@ -222,6 +223,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

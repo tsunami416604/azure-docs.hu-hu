@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/25/2016"
+    ms.date="07/06/2016"
     ms.author="maheshu"/>
 
 # Azure AD tartományi szolgáltatások *(előzetes kiadás)* – Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra
@@ -65,6 +65,6 @@ Miután a felhasználók módosították jelszavukat, az új jelszó rövidesen 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

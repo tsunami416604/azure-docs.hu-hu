@@ -1,19 +1,19 @@
 <properties 
     pageTitle="Mik azok az összekötők és a BizTalk API-alkalmazások?" 
     description="Az API-alkalmazások, az összekötők és a BizTalk API-alkalmazások megismerése" 
-    services="app-service\logic" 
+    services="logic-apps" 
     documentationCenter="" 
     authors="MandiOhlinger" 
     manager="erikre" 
     editor=""/>
 
 <tags 
-    ms.service="app-service-logic" 
+    ms.service="logic-apps" 
     ms.workload="integration" 
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="04/20/2016" 
+    ms.date="07/28/2016" 
     ms.author="mandia"/>
 
 # Mik azok az összekötők és a BizTalk API-alkalmazások?
@@ -21,21 +21,21 @@
 [AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 
-Az Azure App Services szolgáltatás a bővíthetőség és a széles körű összekapcsolhatóság elveire épült. Ezeket a funkciókat az API-alkalmazások biztosítják. Az *összekötők* olyan API-alkalmazások, amelyek az összekapcsolhatóságra fókuszálnak. Az összekötők a többi API-alkalmazáshoz hasonlóan a Web Apps, a Mobile Apps és a Logic Apps szolgáltatáson keresztül érhetők el. Az összekötők segítenek a meglévő szolgáltatásokhoz való kapcsolódásban, illetve a hitelesítés kezelésében, ezenfelül figyelést, elemzési lehetőségeket és más hasznos funkciókat is biztosítanak.
+Az *összekötők* olyan API-alkalmazások, amelyek az összekapcsolhatóságra fókuszálnak. Az összekötők a többi API-alkalmazáshoz hasonlóan a Web Apps, a Mobile Apps és a Logic Apps szolgáltatáson keresztül érhetők el. Az összekötők segítenek a meglévő szolgáltatásokhoz való kapcsolódásban, illetve a hitelesítés kezelésében, ezenfelül figyelést, elemzési lehetőségeket és más hasznos funkciókat is biztosítanak.
 
 Bármelyik fejlesztő megalkothatja saját API-alkalmazását, amelyet aztán bevezethet saját rendszerében. A jövőben a fejlesztők megoszthatják saját API-alkalmazásaikat a piactéren, és profitálhatnak is belőlük. 
 
 ![API-alkalmazások piactere](./media/app-service-logic-what-are-biztalk-api-apps/Marketplace.png)
 
-Hogy a fejlesztők gyorsabban alkothassák meg Azure App Service-alapú megoldásaikat, az Azure-csapat új összekötőket adott a piactérhez, amelyek számos gyakori alkalmazási helyzet kezelésére alkalmasak. Ezenfelül több Premium és BizTalk funkciót is elérhetővé tettünk, hogy az App Service összetett és speciális integrálási helyzetek kezelésére is alkalmas legyen.
+Annak érdekében, hogy meggyorsítsuk a fejlesztők számára a megoldások létrehozását, az Azure csapata összekötőkkel bővítette a piacteret, amelyek számos gyakori forgatókönyv esetén használhatók. Emellett az összetett és speciális integrációs forgatókönyvek igényeinek jobb kielégítése érdekében számos prémium és BizTalk-képesség is elérhetővé vált.
 
-Az Azure App Service-ben több különböző szolgáltatáscsomag érhető el. Minden csomagban elérhető az összes összekötő és API-alkalmazás, illetve ezek minden funkciója.  
+Több különböző szolgáltatási „szint” érhető el. Minden csomagban elérhető az összes összekötő és API-alkalmazás, illetve ezek minden funkciója.  
 
 Az [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/app-service/) oldalon megtalálja ezeket a csomagokat, és azt, hogy mit kínálnak az egyes csomagok. Az alábbi bekezdésekben a BizTalk API-alkalmazások és összekötők különböző kategóriáit ismertetjük.
 
 
 ## Hibrid összekötők 
-A hibrid összekötők révén az App Services szolgáltatás mélyebb vállalati szinteken is bevethető, mivel ezen összekötők segítségével kapcsolat létesíthető [SAP-](app-service-logic-connector-sap.md), [Oracle-](app-service-logic-connector-oracle.md), [DB2-](app-service-logic-connector-db2.md), [Informix-](app-service-logic-connector-informix.md) és WebSphere MQ-rendszerekkel. 
+A hibrid összekötők a vállalati igények jobb kiszolgálását biztosítják az [SAP-](app-service-logic-connector-sap.md), [Oracle-](app-service-logic-connector-oracle.md), [DB2-](app-service-logic-connector-db2.md), [Informix-](app-service-logic-connector-informix.md) és WebSphere MQ-kapcsolatok révén. 
 
 ## EAI- és EDI-szolgáltatások
 A vállalat szempontjából létfontosságú alkalmazások megalkotásához nem csupán a kapcsolat kialakításának lehetősége szükséges. A BizTalk Serveren, a Microsoft piacvezető integrációs platformján alapuló BizTalk API-alkalmazások fejlett integrációs funkciókat tesznek elérhetővé, amelyek könnyedén beilleszthetők webes, mobil- és logikai alkalmazásaiba. Az integrációs funkciók között a következőket találjuk: [Érvényesítés](app-service-logic-xml-validator.md), [Kinyerés](app-service-logic-xpath-extract.md), [Átalakítás](app-service-logic-transform-xml-documents.md), [Kódolók](app-service-logic-connector-jsonencoder.md), [Kereskedelmipartner-kezelés](app-service-logic-connector-tpm.md) és EDI-formátumok ([X12](app-service-logic-connector-x12.md), [EDIFACT](app-service-logic-connector-edifact.md) és [AS2](app-service-logic-connector-as2.md)) támogatása.
@@ -47,7 +47,7 @@ További források: [Business-to-business connectors and API apps](app-service-l
 
 
 ## Szabályok
-Az üzleti szabályok tartalmazzák az üzleti folyamatokat vezérlő szabályzatokat és döntéseket. Ezek a szabályok általában dinamikusan változnak az idők során, követve az üzleti terveket, a szabályozókat és az egyéb releváns körülményeket. Az [App Services szolgáltatásban elérhető BizTalk-szabályok](app-service-logic-use-biztalk-rules.md) segítségével leválaszthatja a szabályokat az alkalmazás kódjáról, ami jelentősen leegyszerűsíti és felgyorsítja a módosítás folyamatát.
+Az üzleti szabályok tartalmazzák az üzleti folyamatokat vezérlő szabályzatokat és döntéseket. Ezek a szabályok általában dinamikusan változnak az idők során, követve az üzleti terveket, a szabályozókat és az egyéb releváns körülményeket. A [BizTalk Rules](app-service-logic-use-biztalk-rules.md) segítségével leválaszthatja ezeket a házirendeket az alkalmazáskódról, így egyszerűbbé és gyorsabbá teheti a módosítás folyamatát.
 
 ## Az összekötők és API-alkalmazások listája
 Az egyes kategóriákban szereplő összekötők és API-alkalmazások (köztük a Standard összekötők, a BizTalk EAI-összekötők, a Premium összekötők stb.) teljes listáját az [Connectors and API Apps List](app-service-logic-connectors-list.md) (Összekötők és API-alkalmazások listája) című cikket.
@@ -55,6 +55,6 @@ Az egyes kategóriákban szereplő összekötők és API-alkalmazások (köztük
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

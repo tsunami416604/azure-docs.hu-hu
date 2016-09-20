@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/31/2016"
+    ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
 # Azure Search-index létrehozása REST API használatával
@@ -35,13 +35,13 @@ Az Azure Search-index REST API használatával történő létrehozásához egye
 ## I. Az Azure Search szolgáltatás adminisztrációs API-kulcsának azonosítása
 Most, hogy létrehozta az Azure Search szolgáltatást, HTTP-kérelmeket küldhet a szolgáltatás URL-végpontjának a REST API használatával. Azonban az *összes* API-kérelemnek tartalmaznia kell a létesített Search szolgáltatás számára előállított API-kulcsot. Érvényes kulcs birtokában kérelmenként bizalom hozható létre a kérelmet küldő alkalmazás és a kérelmet kezelő szolgáltatás között.
 
-1. A szolgáltatása API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
-2. Nyissa meg az Azure Search szolgáltatás paneljét
+1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
+2. Nyissa meg az Azure Search szolgáltatáspaneljét
 3. Kattintson a „Kulcsok” ikonra
 
-A szolgáltatása *adminisztrációs kulcsokat* és *lekérdezési kulcsokat* fog tartalmazni.
+A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog rendelkezni.
 
- - Az elsődleges és másodlagos *adminisztrációs kulcsok* teljes körű jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás kezelését, valamint az indexek, az indexelők és az adatforrások létrehozását és törlését. Két kulcs van, így továbbra is használhatja a másodlagos kulcsot, ha úgy dönt, hogy újra generálja az elsődleges kulcsot. Ugyanez fordítva is igaz.
+ - Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
  - A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások kapják meg őket.
 
 Index létrehozása céljából az elsődleges és a másodlagos adminisztrációs kulcsot is használhatja.
@@ -108,6 +108,6 @@ Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a 
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="08/25/2016"
    ms.author="terrylan"/>
 
 # Biztonságkezelés az Azure-ban
 
-Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és még olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure portál](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Szolgáltatásfelügyeleti API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
+Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Szolgáltatásfelügyeleti API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
 
-A sokféle hozzáférési és kezelési képesség a lehetőségek széles tárházát biztosítja, ugyanakkor nagymértékű kockázatot is jelent a felhőkörnyezeteknél, megnehezítve a felügyeleti műveletek kezelését, nyomon követését és naplózását. Ez a sokrétűség biztonsági fenyegetésekkel is járhat, mivel nem szabályozott hozzáférést tesz lehetővé a felhőszolgáltatások kezelésére használt ügyfélvégpontokhoz. Az általános vagy személyes munkaállomások fejlesztésre és infrastruktúra-kezelésre való használata olyan kiszámíthatatlan fenyegetési vektoroknak enged utat, mint például a webböngészés (pl. alapesetben megbízható weboldalak megfertőződése, ún. watering hole attack) vagy az e-mail (pl. pszichológiai manipuláció és adathalászat).
+A sokféle hozzáférési és kezelési képesség a lehetőségek széles tárházát biztosítja, ugyanakkor nagymértékű kockázatot is jelent a felhőkörnyezetek esetén. A felügyeleti műveletek kezelése, nyomon követése és naplózása nehézségekbe ütközhet. Ez a sokrétűség biztonsági fenyegetésekkel is járhat, mivel nem szabályozott hozzáférést tesz lehetővé a felhőszolgáltatások kezelésére használt ügyfélvégpontokhoz. Az általános vagy személyes munkaállomások fejlesztésre és infrastruktúra-kezelésre való használata olyan kiszámíthatatlan fenyegetési vektoroknak enged utat, mint például a webböngészés (pl. alapesetben megbízható weboldalak megfertőződése, ún. watering hole attack) vagy az e-mail (pl. pszichológiai manipuláció és adathalászat).
 
 ![][1]
 
@@ -95,11 +95,11 @@ Mindezt kényszerítheti [csoportházirend-objektumok](https://www.microsoft.com
 
 ### A szolgáltatások, alkalmazások és adatok felügyelete
 
-Az Azure felhőszolgáltatások konfigurálása lehetséges az Azure portálon vagy SMAPI-n keresztül, a Windows PowerShell parancssori felületen, vagy olyan egyedi alkalmazás használatával, amely kihasználja ezeket a RESTful-felületeket. Ilyen mechanizmusokat használó szolgáltatások például az alábbiak: Azure Active Directory (Azure AD), Azure Storage, Azure Websites, Azure Virtual Network.
+Az Azure felhőszolgáltatások konfigurálása lehetséges az Azure Portalon vagy SMAPI-n keresztül, a Windows PowerShell parancssori felületen, vagy olyan egyedi alkalmazás használatával, amely kihasználja ezeket a RESTful-felületeket. Ilyen mechanizmusokat használó szolgáltatások például az alábbiak: Azure Active Directory (Azure AD), Azure Storage, Azure Websites, Azure Virtual Network.
 
 A virtuális gépek által telepített alkalmazások szükség szerint saját ügyféleszközöket és -felületeket biztosítanak. Ilyen a Microsoft Management Console (MMC), a vállalati felügyeleti konzolok (mint a Microsoft System Center vagy a Windows Intune), vagy más felügyeleti alkalmazások, például a Microsoft SQL Server Management Studio. Ezek az eszközök általában vállalati környezetben vagy az ügyfélhálózaton találhatóak meg. Függhetnek meghatározott hálózati protokolloktól (ilyen például a Remote Desktop Protocol (RDP)), amelyek közvetlen, állapotalapú kapcsolatokat igényelnek. Némelyik webes felülettel rendelkezhet, amelyet nem szabad nyilvánosan vagy az interneten keresztül elérhetővé tenni.
 
-Az Azure-ban korlátozhatja az infrastruktúrához és a platformszolgáltatások kezeléséhez való hozzáférést [többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md), [X.509 felügyeleti tanúsítványok](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/) és tűzfalszabályok használatával. Az Azure portál és a SMAPI a Transport Layer Security (TLS) protokoll használatát követeli meg. Azonban az Azure-ra telepített szolgáltatások és alkalmazások megkövetelik a megfelelő védelmi intézkedéseket, az adott alkalmazástól függően. Ezek a mechanizmusok gyakran egyszerűbben engedélyezhetőek egy szabványosított, megerősített munkaállomás-konfigurációval.
+Az Azure-ban korlátozhatja az infrastruktúrához és a platformszolgáltatások kezeléséhez való hozzáférést [többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md), [X.509 felügyeleti tanúsítványok](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/) és tűzfalszabályok használatával. Az Azure Portal és a SMAPI a Transport Layer Security (TLS) protokoll használatát követeli meg. Azonban az Azure-ra telepített szolgáltatások és alkalmazások megkövetelik a megfelelő védelmi intézkedéseket, az adott alkalmazástól függően. Ezek a mechanizmusok gyakran egyszerűbben engedélyezhetőek egy szabványosított, megerősített munkaállomás-konfigurációval.
 
 ### Felügyeleti átjáró
 
@@ -118,7 +118,7 @@ A távoli asztali átjáró egy házirendalapú RDP-proxyszolgáltatás, amely k
 
 A rendszergazdai munkaállomások felhőhasználatra való biztonságossá tétele általánosságban véve nagyon hasonlít bármilyen más, helyszíni munkaállomás esetében alkalmazott gyakorlathoz. Példa erre a minimalizált szerkezet és a korlátozó engedélyek. A felhőfelügyelet bizonyos egyedi aspektusai jobban hasonlítanak a távoli vagy izolált vállalatfelügyeletéihez. Ezek közé tartozik a hitelesítő adatok naplózása, a megnövelt biztonságú távelérés, valamint a fenyegetések észlelése és kezelése.
 
-### Hitelesítés
+### Authentication
 
 Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek korlátozására, amelyek jogosultak a felügyeleti eszközökhöz hozzáférni és naplózás-hozzáférési kérést küldeni. Annak érdekében, hogy az Azure könnyebben azonosíthassa a felügyeleti ügyfeleket (munkaállomásokat és/vagy alkalmazásokat), mind a SMAPI-t (olyan ügyfelek által fejlesztett eszközök segítségével, mint a Windows PowerShell-parancsmagok), mind az Azure felügyeleti portált beállíthatja úgy, hogy az SSL-tanúsítványok mellett ügyféloldali felügyeleti tanúsítványokat is igényeljenek. Javasolt a többtényezős hitelesítés bevezetése a rendszergazdai hozzáférés esetében is.
 
@@ -128,7 +128,7 @@ Egyes Azure-ra telepített alkalmazások vagy szolgáltatások saját hitelesít
 
 Az Azure virtuális hálózataihoz való ügyfélkapcsolatok biztonságossá tételének céljából több mechanizmus áll rendelkezésre. Ezen mechanizmusok közül kettő, a [helyek közötti VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) és a [pont-hely típusú VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) (P2S) lehetővé teszik az iparági szabványnak megfelelő IPsec (S2S) vagy a [Secure Socket Tunneling Protocol](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) használatát titkosítás és alagútkezelés céljából. A nyilvánosan elérhető Azure-szolgáltatásokhoz (pl. Azure felügyeleti portál) való csatlakozáshoz az Azure-nak HTTPS-kapcsolatra van szüksége.
 
-Az olyan önálló megerősített munkaállomás esetében, amely nem RD-átjárón keresztül csatlakozik az Azure-hoz, javasolt, hogy SSTP alapú pont-hely típusú VPN-nel hozza létre az Azure Virtual Networkhöz való kezdeti kapcsolatot, majd az egyes virtuális gépekhez való RDP-kapcsolatokat a VPN-alagútból létesítse.
+Az olyan önálló megerősített munkaállomás esetében, amely nem RD-átjárón keresztül csatlakozik az Azure-hoz, javasolt, hogy SSTP alapú pont-hely típusú VPN-nel hozza létre az Azure Virtual Networkkel kialakított kezdeti kapcsolatot, majd az egyes virtuális gépekhez vezető RDP-kapcsolatokat a VPN-alagútból alakítsa ki.
 
 ### Felügyeleti naplózás vagy házirend kikényszerítése
 
@@ -229,11 +229,11 @@ A rendszergazdák által a megerősített munkaállomásokon végezhető feladat
 - Titkosítás. Győződjön meg róla, hogy a felügyeleti munkaállomásai rendelkeznek TPM-mel, a [titkosított fájlrendszer](https://technet.microsoft.com/library/cc700811.aspx)(EFS) és a BitLocker biztonságosabb üzembe helyezésének érdekében. Ha Windows To Go-t használ, csak titkosított USB-meghajtókat használjon a BitLockerrel együtt.
 - Irányítás. Az AD DS csoportházirend-objektumok használatával ellenőrzés alatt tarthatja a rendszergazdák összes Windows-felületét, mint például a fájlmegosztást. Terjessze ki a naplózási és megfigyelési folyamatokat a felügyeleti munkaállomásokra. Kövessen nyomon minden rendszergazdai és fejlesztői hozzáférést és tevékenységet.
 
-## Összegzés
+## Összefoglalás
 
 A megerősített munkaállomás-konfiguráció Azure-felhőszolgáltatások, virtuális gépek és szolgáltatások felügyeletére való használata segíthet számos olyan kockázatok és fenyegetések elkerülésében, amelyek a kritikus informatikai infrastruktúrák távfelügyeletével járhatnak. Az Azure és a Windows is kínál a kommunikáció, hitelesítés és ügyfélviselkedés védelmére és ellenőrzésére alkalmas mechanizmusokat.
 
-## További lépések
+## Következő lépések
 A következő források általánosabb információkat kínálnak az Azure-ról és a kapcsolódó Microsoft-szolgáltatásokról, az ebben a dokumentumban bemutatott konkrét elemek mellett:
 
 - [Az emelt szintű hozzáférés biztonságossá tétele](https://technet.microsoft.com/library/mt631194.aspx) – itt technikai részleteket olvashat az Azure-felügyelethez használt biztonságos felügyeleti munkaállomás tervezéséről és kiépítéséről.
@@ -249,6 +249,6 @@ A következő források általánosabb információkat kínálnak az Azure-ról 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

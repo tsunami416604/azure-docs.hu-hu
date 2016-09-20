@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-multiple"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/03/2016"
+    ms.date="06/30/2016"
     ms.author="krisragh"/>
 
 # <a name="getting-started"> </a>A Mobile Services szolgáltatást használom, miben válhat előnyömre az App Service?
@@ -51,7 +51,7 @@ Az *Azure App Service* szélesebb körben és több funkcióval támogatja az AS
 A Mobile Servicesben a háttéralkalmazás kódjának összes példánya kisebb méretű virtuális gépeken futott. Az *Azure App Service* szolgáltatásban jóval szélesebb körben választhatja meg a virtuális gépek méretét. Ezenfelül az ügyfelektől beérkező terhelés esetén gyors vertikális vagy horizontális skálázást végezhet a korábbi teljesítménymutatók alapján.
 
 ##Részletes információk a rendszerről
-A felmerülő problémákról Ön és csapata is valós időben értesülhet az automatikus figyelési funkciók és riasztások segítségével. Ha szeretne részleteiben is tisztában lenni a mobilalkalmazás teljesítményével, akár a New Relic és az AppInsights által biztosított fejlett alkalmazáselemzési és -figyelési funkciókat is integrálhatja. Az *Azure App Service* segítségével mostantól számos különböző teljesítményelemzési mutatón alapuló riasztást állíthat be, akár a programon, akár az Azure-portálon keresztül.
+A felmerülő problémákról Ön és csapata is valós időben értesülhet az automatikus figyelési funkciók és riasztások segítségével. Ha szeretne részleteiben is tisztában lenni a mobilalkalmazás teljesítményével, akár a New Relic és az AppInsights által biztosított fejlett alkalmazáselemzési és -figyelési funkciókat is integrálhatja. Az *Azure App Service* segítségével mostantól számos különböző teljesítményelemzési mutatón alapuló riasztást állíthat be, akár a programon, akár az Azure Portalon keresztül.
 
 ##Védelem objektumai számára
 A szolgáltatás automatikus biztonsági mentést készít a háttéralkalmazásról és az adatbázisról. Kódja és adatai még katasztrófa esetén sem vesznek el, és könnyen helyreállíthatók, így magabiztosan vezetheti üzletét.
@@ -64,6 +64,6 @@ Az *App Service* meglévő Mobile Service szolgáltatáshoz való használatát 
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

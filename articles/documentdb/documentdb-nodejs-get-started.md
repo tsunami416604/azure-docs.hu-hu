@@ -1,7 +1,7 @@
 <properties
   pageTitle="NoSQL Node.js-oktatóanyag a DocumentDB-hez | Microsoft Azure"
   description="Ez egy NoSQL Node.js-oktatóanyag, amely egy Node-adatbázis és egy C# konzolalkalmazás a DocumentDB .NET SDK használatával történő létrehozását ismerteti. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
-    keywords="node.js tutorial, node database"
+    keywords="node.js-oktatóanyag, node-adatbázis"
   services="documentdb"
   documentationCenter="node.js"
   authors="AndrewHoh"
@@ -14,7 +14,7 @@
   ms.tgt_pltfrm="na"
   ms.devlang="node"
   ms.topic="hero-article"
-  ms.date="04/26/2016"
+  ms.date="08/11/2016"
   ms.author="anhoh"/>
 
 # NoSQL Node.js oktatóanyag: DocumentDB Node.js-konzolalkalmazás  
@@ -23,7 +23,7 @@
 - [.NET](documentdb-get-started.md)
 - [Node.js](documentdb-nodejs-get-started.md)
 
-Üdvözöljük a DocumentDB Node.js SDK-hoz készült Node.j-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást hozhat létre, amely DocumentDB-erőforrásokat (pl. Node-adatbázisokat) hoz létre és kérdez le.
+Üdvözöljük az Azure DocumentDB Node.js SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást hozhat létre, amely DocumentDB-erőforrásokat (pl. Node-adatbázisokat) hoz létre és kérdez le.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -56,7 +56,7 @@ Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kíván
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-##<a id="SetupNode"></a> 2. lépés: A Node.js-alkalmazás beállítása
+## <a id="SetupNode"></a>2. lépés: A Node.js-alkalmazás beállítása
 
 1. Nyissa meg kedvenc terminálját.
 2. Keresse meg azt a mappát vagy könyvtárat, ahova a Node.js-alkalmazást menteni szeretné.
@@ -72,7 +72,7 @@ Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kíván
 
 Remek! A beállítás befejeztével nekiláthat a kód írásának.
 
-##<a id="Config"></a> 3. lépés: Az alkalmazás konfigurációnak megadása
+## <a id="Config"></a>3. lépés: Az alkalmazás konfigurációnak megadása
 
 Nyissa meg a ```config.js``` fájlt egy tetszőleges szövegszerkesztőben.
 
@@ -598,7 +598,7 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg 
 
 Gratulálunk! Ezennel befejezte a Node.js-oktatóanyagot, és létrehozta első saját DocumentDB-konzolalkalmazását.
 
-##<a id="GetSolution"></a> A Node. js-oktatóanyagban szereplő teljes megoldás beszerzése
+## <a id="GetSolution"></a>A Node. js-oktatóanyagban szereplő teljes megoldás beszerzése
 A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás összeállításához az alábbiakra lesz szüksége:
 
 -   [DocumentDB-fiók][documentdb-create-account].
@@ -614,7 +614,7 @@ Ezután, a ```config.js``` fájlban frissítse a config.endpoint és config.auth
 -   Összetettebb Node.js-mintát szeretne használni? Lásd: [Node.js-webalkalmazás létrehozása a DocumentDB használatával](documentdb-nodejs-application.md)
 -  Ismerje meg, hogyan [felügyelhet egy DocumentDB-fiókot](documentdb-monitor-accounts.md).
 -  Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.
--  A programozási modellel kapcsolatos további tudnivalókat a [DocumentDB dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja. 
+-  A programozási modellel kapcsolatos további tudnivalókat a [DocumentDB dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
 
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
@@ -623,6 +623,6 @@ Ezután, a ```config.js``` fájlban frissítse a config.endpoint és config.auth
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

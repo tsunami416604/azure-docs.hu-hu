@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Azure Backup Nyilvános előzetes kiadása – GYIK | Microsoft Azure"
+   pageTitle="Recovery Services-tároló – gyakori kérdések | Microsoft Azure"
    description="A GYIK ezen verziója támogatja az Azure Backup szolgáltatás Nyilvános előzetes kiadását. Megválaszolja a biztonsági mentési ügynökre, a biztonsági mentésre és a megtartásra, helyreállításra, biztonságra és egyéb, a biztonsági mentéssel és az Azure Backup megoldással kapcsolatos általánosságokra vonatkozó gyakran ismételt kérdéseket."
    services="backup"
    documentationCenter=""
    authors="markgalioto"
    manager="jwhit"
    editor=""
-   keywords="backup solution; backup service"/>
+   keywords="biztonsági mentési megoldás; biztonsági mentési szolgáltatás"/>
 
 <tags
    ms.service="backup"
@@ -14,41 +14,37 @@
      ms.tgt_pltfrm="na"
      ms.devlang="na"
      ms.topic="get-started-article"
-     ms.date="03/30/2016"
+     ms.date="08/21/2016"
      ms.author="trinadhk; markgal; jimpark;"/>
 
-# Az Azure Backup szolgáltatás Nyilvános előzetes kiadása – GYIK
+# Recovery Services-tároló – gyakori kérdések
 
 > [AZURE.SELECTOR]
 - [Backup GYIK klasszikus módhoz](backup-azure-backup-faq.md)
-- [Backup GYIK ARM módhoz](backup-azure-backup-ibiza-faq.md)
+- [Backup GYIK Resource Manager módhoz](backup-azure-backup-ibiza-faq.md)
 
-Ez a cikk az Azure Backup szolgáltatás Nyilvános előzetes kiadására vonatkozó konkrét információkat tartalmaz. Ez a cikk a gyakori kérdések beérkezésekor frissül, és kiegészíti az [Azure Backup GYIK](backup-azure-backup-faq) című cikket. Az Azure Backup GYIK tartalmazza az Azure Backup szolgáltatással kapcsolatos kérdéseket és válaszokat.  
+Ez a cikk a Recovery Services-tárolóra vonatkozó információkat tartalmaz, és az [Azure Backup GYIK](backup-azure-backup-faq) kiegészítéséül szolgál. Az Azure Backup GYIK tartalmazza az Azure Backup szolgáltatással kapcsolatos kérdéseket és válaszokat.  
 
 Az Azure Backup szolgáltatással kapcsolatban ezen vagy egy kapcsolódó cikk Disqus szakaszában tehet fel kérdéseket. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
-## Mi található a Nyilvános előzetes kiadásban?
-A Nyilvános előzetes kiadás bevezeti a Recovery Services-tárolót, és ARM-támogatást nyújt Azure virtuális gépek megvédésekor. A Recovery Services-tároló a tárolók legújabb generációját képviseli. Ezt a tárolót használja az Azure és az Azure Site Recovery (ASR) szolgáltatás. Tekinthetjük v.2 tárolóként.
+## Ha a Recovery Services-tárolók Resource Manager alapúak, a (klasszikus módú) Backup-tárolók támogatása megmarad? <br/>
+Igen, a Backup tárolók még támogatottak. Backup tárolókat a [klasszikus portálon](https://manage.windowsazure.com) lehet létrehozni. Recovery Services-tárolókat az [Azure Portalon](https://portal.azure.com) lehet létrehozni. Határozottan javasolt azonban Recovery Services-tárolót létrehozni, mivel a jövőbeli fejlesztések csak Recovery Services-tárolókban lesznek elérhetők. 
 
-## Recovery Services és Backup tárolók
+## Áttelepíthetek egy Backup tárolót egy Recovery Services-tárolóra? <br/>
+Sajnos nem, jelenleg nem telepíthető át egy Backup tároló tartalma egy Recovery Services-tárolóra. Jelenleg is dolgozunk ezen funkción, de a Nyilvános előzetes kiadásnak nem része.
 
-**1. kérdés Ha a Recovery Services-tárolók a v.2 tárolók, a Backup tárolók (v.1) még támogatottak?** <br/>
-1. válasz Igen, a Backup tárolók még támogatottak. Backup tárolókat a klasszikus portálon lehet létrehozni. Recovery Services-tárolókat az Azure portálon lehet létrehozni.
+## A Recovery Services-tárolók támogatják a klasszikus vagy a Resource Manager alapú virtuális gépeket? <br/>
+A Recovery Services-tárolók mindkét modellt támogatják.  Mind a klasszikus portálon létrehozott (vagyis klasszikus módú), mind az Azure Portalon létrehozott (vagyis Resource Manager alapú) virtuális gépekről készíthet biztonsági mentést egy Recovery Services-tárolóba.
 
-**2. kérdés Áttelepíthetek egy Backup tárolót egy Recovery Services-tárolóra?** <br/>
-2. válasz Sajnos nem, jelenleg nem telepíthető át egy Backup tároló tartalma egy Recovery Services-tárolóra. Jelenleg is dolgozunk ezen funkción, de a Nyilvános előzetes kiadásnak nem része.
+## Biztonsági másolatot készítettem a klasszikus virtuális gépemről a Backup-tárolóban. Most át szeretném telepíteni a virtuális gépeimet a klasszikus módból Resource Manager módba.  Hogyan készíthetek róluk biztonsági másolatot a Recovery Services-tárolóban?
+A klasszikus virtuális gépek biztonsági másolatai a Backup tárolóból nem telepíthetők át automatikusan a Recovery Services-tárolóba, amikor a virtuális gépeket a klasszikusból Resource Manager módba telepíti át. Kövesse a virtuális gép biztonsági mentéseinek áttelepítésére vonatkozó lépéseket:
 
-**3. kérdés A Recovery Services-tárolók támogatják a virtuális gépek v.1 vagy v.2 változatait?** <br/>
- 3. válasz A Recovery Services-tárolók támogatják a virtuális gépek v.1 és v.2 változatait. Biztonsági mentést végezhet a klasszikus portálon létrehozott virtuális gépekről (vagyis V.1), illetve az Azure portálon létrehozott virtuális gépekről (vagyis V.2) egy Recovery Services-tárolóba.
-
-
-## ARM támogatás Azure virtuális gépekhez
-
-**1. kérdés Az Azure virtuális gépek ARM támogatása korlátozott?** <br/>
-1. válasz Az ARM-hez tartozó PowerShell-parancsmagok jelenleg nem érhetők el. Az Azure portál felhasználói felületét kell használni ahhoz, hogy erőforrásokat adjon hozzá egy erőforráscsoporthoz.
+1. A Backup-tárolóban lépjen a **Protected Items** (Védett elemek) lapra, és válassza ki a virtuális gépet. Kattintson a [Stop Protection](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) (Védelem leállítása) gombra. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**. 
+2. Telepítse át a virtuális gépet a klasszikus módból a Resource Manager módba. A virtuális gépnek megfelelő tárolót és hálózatot is mindenképpen telepítse át Resource Manager módba. 
+3. Hozzon létre egy Recovery Services-tárolót, és konfigurálja a biztonsági mentést az áttelepített virtuális gépen a tároló irányítópultjának tetejénél található **Biztonsági mentés** művelettel. További információk a [biztonsági mentés engedélyezéséről a Recovery Services-tárolóban](backup-azure-vms-first-look-arm.md).
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

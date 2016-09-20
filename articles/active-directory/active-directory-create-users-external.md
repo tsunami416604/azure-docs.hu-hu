@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="curtand"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/31/2016"
-    ms.author="curtand;viviali"/>
+    ms.date="08/02/2016"
+    ms.author="curtand"/>
 
 # Más címtárakban vagy partnervállalatokban lévő felhasználók felvétele az Azure Active Directoryba
 
-Felhasználók hozzáadásával feltöltheti a címtárat adatokkal. Ez a cikk azt ismerteti, hogyan vehet fel felhasználókat más címtárakból az Azure Active Directoryba, illetve hogyan vehet fel felhasználókat a partnervállalatokból. A szervezetben új felhasználók hozzáadásáról és a Microsoft-fiókokkal rendelkező felhasználók hozzáadásáról további információért lásd: [Új felhasználók felvétele az Azure Active Directoryba](active-directory-create-users.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
+Ez a cikk azt ismerteti, hogyan vehet fel felhasználókat más címtárakból az Azure Active Directoryba, illetve hogyan vehet fel felhasználókat a partnervállalatokból. A szervezetben új felhasználók hozzáadásáról és a Microsoft-fiókokkal rendelkező felhasználók hozzáadásáról további információért lásd: [Új felhasználók felvétele az Azure Active Directoryba](active-directory-create-users.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
 
 ## Felhasználó hozzáadása
 
@@ -56,7 +56,8 @@ Amikor egy másik címtárból ad hozzá felhasználót a címtárához, ez a fe
 
 A két fiók között az egyetlen kapcsolat, hogy a felhasználó mindig a saját címtárával vagy a Microsoft-fiókjával végzi a hitelesítést. Ezért nem lát olyan lehetőséget, amellyel alaphelyzetbe állíthatná a jelszót, vagy engedélyezhetné a többtényezős hitelesítést a külső felhasználók számára. Jelenleg a saját címtár vagy a Microsoft-fiók hitelesítési házirendje az egyetlen, amelyet a rendszer kiértékel a felhasználó bejelentkezésekor.
 
-> [AZURE.NOTE] Továbbra is letilthatja a külső felhasználót a címtárban, amivel blokkolja a hozzáférését a címtárhoz.
+> [AZURE.NOTE]
+> Továbbra is letilthatja a külső felhasználót a címtárban, amivel blokkolja a hozzáférését a címtárhoz.
 
 Ha a felhasználót törlik a saját címtárában, vagy ha törlik a Microsoft-fiókját, a külső felhasználó továbbra is létezik a címtárában. De a címtárában lévő felhasználó nem éri el az erőforrásokat, mert nem tudja hitelesíteni magát a saját címtárával vagy Microsoft-fiókjával.
 
@@ -85,6 +86,6 @@ Ha a felhasználót törlik a saját címtárában, vagy ha törlik a Microsoft-
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

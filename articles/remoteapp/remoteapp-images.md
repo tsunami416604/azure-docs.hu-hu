@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/05/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Mit tartalmaznak az Azure RemoteApp sablon rendszerképei?
+
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Az Azure RemoteApp-előfizetés három sablon rendszerképet tartalmaz:
 
@@ -61,7 +64,7 @@ Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft 
 - Excel
 - Lync
 - OneNote
-- OneDrive Vállalati verzió
+- OneDrive Vállalati verzió (megjegyzés: az Azure RemoteApp nem támogatja a szinkronizálási ügynök használatát)
 - Outlook
 - PowerPoint
 - Word
@@ -94,7 +97,7 @@ Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft 
 - Excel
 - Lync
 - OneNote
-- OneDrive Vállalati verzió
+- OneDrive Vállalati verzió (megjegyzés: az Azure RemoteApp nem támogatja a szinkronizálási ügynök használatát)
 - Outlook
 - PowerPoint
 - Project
@@ -106,6 +109,6 @@ Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/07/2016"
+   ms.date="07/07/2016"
    ms.author="nitinme"/>
 
 # Az Azure Data Lake Store használatának első lépései az Azure parancssori felülettel
@@ -180,7 +180,7 @@ Példa:
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 
-## További lépések
+## Következő lépések
 
 - [Secure data in Data Lake Store (Az adatok védelme a Data Lake Store-ban)](data-lake-store-secure-data.md)
 - [Use Azure Data Lake Analytics with Data Lake Store (Az Azure Data Lake Analytics használata a Data Lake Store-ral)](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
@@ -191,6 +191,6 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,13 +13,11 @@
 
 4. Adja hozzá ezt a sort a *dependencies* (függőségek) sor alatt: 
 
-        compile 'com.google.android.gms:play-services-gcm:8.4.0'
+        compile 'com.google.android.gms:play-services-gcm:9.2.0'
 
-5. A *defaultConfig* sor alatt módosítsa a *minSdkVersion* tulajdonságot 9-re.
- 
-6. Kattintson a **Sync Project with Gradle Files** (Projekt szinkronizálása a Gradle-fájlokkal) ikonra az eszköztárban.
+5. Kattintson a **Sync Project with Gradle Files** (Projekt szinkronizálása a Gradle-fájlokkal) ikonra az eszköztárban.
 
-7. Nyissa meg az **AndroidManifest.xml** fájlt, és adja ezt a címkét az *application* (alkalmazás) címkéhez.
+6. Nyissa meg az **AndroidManifest.xml** fájlt, és adja ezt a címkét az *application* (alkalmazás) címkéhez.
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -31,6 +29,6 @@
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

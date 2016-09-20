@@ -1,7 +1,7 @@
 <properties
     pageTitle="Azure Machine Learning GYIK | Microsoft Azure"
     description="Azure Machine Learning bevezetés: a zökkenőmentes prediktív modellezést támogató felhőalapú szolgáltatással kapcsolatos számlázásra, képességekre és korlátozásokra vonatkozó GYIK."
-    keywords="machine learning introduction,predictive modeling,what is machine learning"
+    keywords="bevezetés a gépi tanulásba, prediktív modellezés, mi az a gépi tanulás"
     services="machine-learning"
     documentationCenter=""
     authors="garyericson"
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/18/2016"
+    ms.date="07/14/2016"
     ms.author="garye"/>
 
 # Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
@@ -26,7 +26,6 @@ Ez a GYIK az Azure Machine Learning szolgáltatással kapcsolatos kérdésekre a
 **Mi az Azure Machine Learning?**
 
 Az Azure Machine Learning egy olyan teljes körűen felügyelt szolgáltatás, amelynek segítségével megtervezheti, tesztelheti, üzembe helyezheti és felügyelheti a felhőalapú prediktív elemzési megoldásokat. Csupán egy böngésző szükségez ahhoz, hogy bejelentkezzen, feltöltse adatait, és azonnal nekiláthasson a gépi tanulási kísérletekhez. Az áthúzással működtethető prediktív modellezés, a modulok széles skálájának és a kezdősablonok gyűjteményének segítségével egyszerűen és gyorsan elvégezhetők az általános gépi tanulási feladatok.  További információk: [Az Azure Machine Learning szolgáltatás áttekintése](https://azure.microsoft.com/services/machine-learning/). A gépi tanulás fontosabb szakkifejezéseit és alapfogalmait tartalmazó bevezetéshez olvassa el a [Bevezetés az Azure Machine Learning használatához](machine-learning-what-is-machine-learning.md) című fejezetet.
-
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -42,16 +41,26 @@ A Machine Learning API szolgáltatás segítségével méretezhető, hibatűrő 
 
 További információ: [Csatlakozás egy Machine Learning webszolgáltatáshoz](machine-learning-connect-to-azure-machine-learning-web-service.md).
 
+**Hol találom meg a klasszikus webszolgáltatások listáját? Hol találom meg az új ARM-alapú webszolgáltatások listáját?**
 
-## Számlázással kapcsolatos kérdések
+A klasszikus webszolgáltatások listája a [Machine Learning Studio](http://studio.azureml.net) alatt, a Webszolgáltatások lapon található. Az új, ARM-alapú webszolgáltatások listája a [Microsoft Azure Machine Learning- webszolgáltatások](https://services.azureml.net/) portálján található. Egy elem csak egy listán szerepelhet.
 
-**Milyen díjszámítási módszer vonatkozik a Machine Learning szolgáltatásra?**
+## A Microsoft Azure Machine Learning webszolgáltatással kapcsolatos kérdések
 
-A számlázással és a díjszabással kapcsolatos információkért olvassa el a [Machine Learning díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/) című fejezetet.
+**Mik azok az Azure ML-webszolgáltatások?**
 
-**Létezik a Machine Learningnek ingyenes próbaverziója?**
+Az Azure Machine Learning webszolgáltatásánál egy külső alkalmazás valós időben kommunikál a Machine Learning munkafolyamatának pontozási modelljével. A Machine Learning webszolgáltatás felé irányuló hívások visszaadják az előrejelzés eredményét a külső alkalmazásnak. Machine Learning webszolgáltatási hívás létrehozásához át kell adnia az API-kulcsot, amelyet a webszolgáltatás üzembe helyezésekor hozott létre. A Machine Learning webszolgáltatás a webprogramozási projektekben népszerű REST architektúrán alapul.
 
- Az Azure ingyenes próbaverziójára történő regisztrációt követően bármely Azure-szolgáltatást kipróbálhatja egy hónapig. Ha többet szeretne tudni az Azure ingyenes próbaverziójáról, olvassa el az [Azure Ingyenes próbaverziójára vonatkozó GYIK-et](/pricing/free-trial-faq/).
+Az Azure Machine Learning két különböző típusú szolgáltatást tud biztosítani:
+
+* Kérés-válasz szolgáltatás (RRS): alacsony késésű, nagy mértékben skálázható szolgáltatás, amely interfészt biztosít a Machine Learning Studióban létrehozott, és onnan üzembe helyezett állapot nélküli modellekhez.
+* Kötegelt végrehajtási szolgáltatás (BES): aszinkron szolgáltatás, amely adatrekordok szerint pontozza a kötegeket.
+
+A REST API felhasználására, illetve a webszolgáltatás elérésére számos megoldás áll rendelkezésre. Megírhatja például C#, R vagy Python nyelven az alkalmazást, és felhasználhatja hozzá a webszolgáltatás üzembe helyezésekor kapott mintakódot (ez a Machine Learning Studióban, a webszolgáltatás irányítópultján, az API Help (API-súgó) lapon érhető el). Vagy az Önnek létrehozott Microsoft Excel-munkafüzetmintát is használhatja (ez szintén a Studióban, a webszolgáltatás irányítópultján érhető el).
+
+**Milyen újdonságokat hoz az új Azure ML-webszolgáltatások funkció?**
+
+Az új New Azure Machine Learning-webszolgáltatások funkcióval kapcsolatos részletes információkért olvassa el a [kapcsolódó dokumentációt](machine-learning-whats-new.md). 
 
 ## A Machine Learning Studióra vonatkozó kérdések
 
@@ -61,6 +70,14 @@ A számlázással és a díjszabással kapcsolatos információkért olvassa el 
 
 Nem, a Machine Learning Studio azonban megőriz minden egyes megismételt kísérletet, amelyek más felhasználók által nem módosíthatóak.
 További információ: [Kísérletismétlések kezelése a Machine Learning Studióban](machine-learning-manage-experiment-iterations.md).
+
+
+### Kísérlet üzembe helyezése
+
+**Üzembe helyezhetek egy prediktív kísérletet új (ARM-alapú) webszolgáltatásként, ha korábban már egyszer klasszikus webszolgáltatásként üzembe helyeztem?**
+
+Nem, a korábban már klasszikus webszolgáltatásként üzembe helyezett kísérleteket nem lehet ismét üzembe helyezni. Hozzon létre egy új prediktív kísérletet, és azt helyezze üzembe.
+
 
 ### Adatok importálása és exportálása a Machine Learning szolgáltatáshoz
 
@@ -226,7 +243,7 @@ További információk: [Machine Learning-modellek szoftveres átképezése](mac
 
 **Hogyan követhetem figyelemmel az éles környezetben telepített webszolgáltatásaimat?**
 
-A telepítés után a klasszikus Azure portálon keresztül figyelheti a prediktív modellt. Minden telepített szolgáltatásnak van egy saját irányítópultja, ahol az adott szolgáltatásra vonatkozó információkat láthatja.
+A telepítés után a klasszikus Azure portálon keresztül figyelheti a prediktív modellt. Minden telepített szolgáltatásnak van egy saját irányítópultja, ahol az adott szolgáltatásra vonatkozó információkat láthatja. Az üzembe helyezett webszolgáltatásokkal kapcsolatos további információkért lásd: [Manage an Azure Machine Learning workspace](machine-learning-manage-workspace.md) (Az Azure Machine Learning-munkaterület kezelése).
 
 **Láthatom valahol az RRS/BES elemeim kimenetét?**
 
@@ -323,6 +340,240 @@ Az Azure Machine Learninghez való műszaki támogatásért lépjen az [Azure-t�
 
 Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, ahol az Azure Machine Learninggel kapcsolatos kérdéseit teheti fel. A fórumot az Azure Machine Learning szolgáltatás fejlesztőcsapata figyeli. Látogasson el az [Azure fórumra](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
 
+## Számlázással kapcsolatos kérdések
+
+**Milyen díjszámítási módszer vonatkozik a Machine Learning szolgáltatásra?**
+
+Az Azure Machine Learning-szolgáltatás két összetevőből áll: a Machine Learning Studióból és a Machine Learning webszolgáltatásokból.
+
+Amíg kipróbálja a Machine Learning Studiót, használhatja az ingyenes tarifacsomagot.  Az ingyenes szint lehetőséget kínál korlátozott kapacitású klasszikus webszolgáltatások üzembe helyezésére is.
+
+Ha úgy véli, hogy az Azure Machine Learning felel meg a legjobban igényeinek, előfizethet a standard szintre. Az előfizetéshez regisztrálnia kell egy Microsoft Azure-előfizetést.
+
+A standard szinten munkaállomásonként, havonta kell fizetnie a Machine Learning Studio használatáért. Amikor kísérletet futtat a Studióban, fizetnie kell a kísérlet elvégzéséhez felhasznált számítási erőforrásokért. Amikor klasszikus webszolgáltatást helyez üzembe, a használat alapján kell fizetnie a tranzakciókért és a számítási órákért. 
+
+Az új Machine Learning webszolgáltatások esetében bevezettük a számlázási csomagokat, amelyek megkönnyítik a költségek tervezését. A szintekre bontott árképzés azoknak az ügyfeleknek kínál kedvezményes díjakat, akiknek jelentős kapacitásra van szükségük.
+
+A csomag létrehozásakor fix összeget kell lekötnie, amelyért az API-számítási órákat és -tranzakciókat adott mértékig fedező szolgáltatási keretet kap. Ha később nagyobb keretre van szüksége, további példányokat adhat a csomaghoz. Ha lényegesen nagyobb keretre van szüksége, érdemes magasabb szinthez tartozó csomagra áttérni, mivel így kedvezményesebb áron juthat hozzá a szükséges erőforrásokhoz.
+
+Ha kimerül a meglévő példány(ok) kerete, a további használatért a tarifacsomag szintje szerinti többlethasználati díjon kell fizetnie.
+
+Megjegyzés: a keretet a rendszer 30 naponta újra kiosztja, a fel nem használt erőforrások nem vihetők át a következő időszakra.
+
+A számlázással és a díjszabással kapcsolatos további információkért olvassa el a [Machine Learning díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/) című fejezetet.
+
+**Létezik a Machine Learningnek ingyenes próbaverziója?**
+
+ Az Azure Machine Learning ingyenes előfizetési lehetőséget is kínál (tovább információkért lásd: [Machine Learning díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/)), a Machine Learning Studióhoz pedig 8 órás, gyors kipróbálási időszak érhető el (a próbaverzió eléréséhez jelentkezzen be a [Machine Learning Studióba](https://studio.azureml.net/?selectAccess=true&o=2)).
+ 
+ Emellett az Azure ingyenes próbaverziójára történő regisztrációt követően bármely Azure-szolgáltatást kipróbálhatja egy hónapig. Ha többet szeretne tudni az Azure ingyenes próbaverziójáról, olvassa el az [Azure Ingyenes próbaverziójára vonatkozó GYIK-et](/pricing/free-trial-faq/).
+
+**Mit nevezünk tranzakciónak?**
+
+A tranzakciók azok az API-hívások, amelyekre az Azure Machine Learning válaszol. A kérés-válasz szolgáltatás (RRS) és a kötegelt végrehajtási szolgáltatás (BES) által küldött hívások alapján létrejövő tranzakciókat a rendszer összesíti; ezekért a számlázási csomag szerint fizetnie kell.
+
+**A csomagba foglalt tranzakciómennyiséget RRS- és BES-tranzakciókra is felhasználhatom?**
+
+Igen, a rendszer összesíti az RRS- és BES-tranzakciókat, és ezekért kell fizetnie a számlázási csomag szerint.
+
+**Mik azok az API számítási órák?**
+
+Az API üzemóra számlázási egység, amely azon az időtartamon alapul, amennyibe az API-hívásnak beletelik, hogy az ML számítási erőforrásait felhasználva lefusson. A hívásokat a rendszer a számlázás céljából összesíti. 
+
+**Általában milyen hosszú időt vesz igénybe egy jellemző éles üzemi API-hívás?**
+
+A különböző éles üzemi API-hívások időtartama között jelentős eltérés lehet, a hívások az adatfeldolgozási és a gépi tanulási modell összetettségétől függően néhány száz ezredmásodperctől több másodpercig is terjedhetnek, de akár perceket is igénybe vehetnek. Az éles üzemi API-hívások időtartamának megbecsülésére a legjobb módszer, ha a Machine Learning szolgáltatás segítségével teszteli a modellt.
+
+**Mik a számítási órák a Studióban?**
+
+A számítási óra a Studio számlázási egysége, amelynek alapján fizetnie kell azért az összesített időtartamért, amíg kísérletei használták a Studio számítási erőforrásait. 
+
+**Mit jelent az új webszolgáltatásokban a fejlesztés + tesztelés szint?**
+
+Az Azure ML új webszolgáltatások több szintet biztosítanak, amelyet felhasználhat számlázási csomagjai kialakításához. A fejlesztés + tesztelés szint korlátozott keretet kínál, amely lehetővé teszi, hogy további költségek felmerülése nélkül tesztelje kísérletét új webszolgáltatásként. Ez lehetőséget nyújt a kísérlet gyakorlati kipróbálására.
+
+**Kell külön fizetnem a tárterületért?** 
+
+A Machine Learning Ingyenes szintje nem igényel különálló tárterületet, illetve nem is teszi lehetővé annak használatát. A Machine Learning Standard szintjénél a felhasználóknak Azure-tárfiókkal kell rendelkezniük. Az Azure-tárterületért [külön kell fizetnie](https://azure.microsoft.com/pricing/details/storage/).
+
+**Hogyan támogatja a Machine Learning a magas rendelkezésre állást?** 
+
+A különböző éles üzemi API-hívások időtartama között jelentős eltérés lehet, a hívások az adatfeldolgozási és a gépi tanulási modell összetettségétől függően néhány száz ezredmásodperctől több másodpercig is terjedhetnek, de akár perceket is igénybe vehetnek. Az éles üzemi API-hívások időtartamának megbecsülésére a legjobb módszer, ha a Machine Learning szolgáltatás segítségével teszteli a modellt.
+
+**Konkrétan milyen számítási erőforrásokon fognak futni az éles üzemi API-hívásaim?**
+
+A Machine Learning többvállalatos szolgáltatás, a háttérben használt tényleges számítási erőforrások ezért változóak lehetnek: mindig a legoptimálisabb és legkiszámíthatóbb működést részesítjük előnyben.
+
+### Az új webszolgáltatások kezelése 
+
+**Mi történik, ha törlöm a csomagot?**
+
+A csomagot eltávolítjuk az előfizetéséből, a használatot pedig időarányosan számlázzuk ki.
+
+Megjegyzés: ha a csomagot használja egy webszolgáltatás, nem lehet törölni. Ha törölni szeretné a csomagot, rendelje új csomaghoz a webszolgáltatást, vagy törölje a webszolgáltatást.
+
+**Mik azok a csomagpéldányok?**
+
+A csomagpéldány a szolgáltatási keret egysége, amelyet a számlázási csomaghoz adhat. Amikor kiválasztja a számlázási szintet a számlázási csomaghoz, egy darab példányt kap. Ha többre van szüksége, további példányokat adhat csomagjához a kiválasztott számlázási szintről. 
+
+**Legfeljebb hány csomagpéldányt használhatok?**
+
+A fejlesztés + tesztelés szinten egy példány szerepelhet az előfizetésben.
+
+Az S1, az S2 és az S3 szinten annyi példányt vehet fel, ahányra csak szüksége van. 
+
+Megjegyzés: a tervezett használat mértékétől függően költséghatékonyabb megoldás lehet, ha ahelyett, hogy újabb példányokat adna az aktuális szinthez, inkább magasabb keretszintre tér át.
+
+**Mi történik, ha módosítom a csomagom szintjét (magasabbra vagy alacsonyabbra)?**
+
+Töröljük a régi csomagot, a használatot pedig időarányosan kiszámlázzuk. A számlázási időszak fennmaradó időtartamára az új, magasabb vagy alacsonyabb szint teljes keretét tartalmazó új csomag jön létre. 
+
+Megjegyzés: a szolgáltatási keret az adott időszakra vonatkozik, a fel nem használt erőforrások nem vihetők át a következő időszakra.
+
+**Mi történik, ha növelem a csomagban lévő példányok számát?**
+
+A szolgáltatási keretet időarányos alapon tesszük elérhetővé, a váltás életbe léptetése pedig akár 24 órába is beletelhet. 
+
+**Mi történik, ha törlök egy példányt a csomagból?**
+
+A példányt eltávolítjuk az előfizetéséből, a használatot pedig időarányosan számlázzuk ki. 
+
+
+### Regisztrálás új webszolgáltatás-csomagokra
+
+**Hogyan tudok regisztrálni a csomagokra?**
+
+Számlázási csomagot két különböző módon hozhat létre.
+
+Az új webszolgáltatás első üzembe helyezésekor választhat egy meglévő csomagot, vagy létrehozhat egy új csomagot. 
+
+Az itt létrehozott csomagok a felhasználó alapértelmezett régiójához fognak tartozni, és a webszolgáltatást is ebben a régióban helyezzük üzembe. 
+
+Érdemes lehet még a szolgáltatás üzembe helyezése előtt létrehozni a számlázási csomagot, ha például az alapértelmezettől eltérő régióban szeretné üzembe helyezni a szolgáltatást.
+
+Ebben az esetben jelentkezzen be az Azure Machine Learning webszolgáltatások portáljára, és nyissa meg a tervekkel foglalkozó lapot. Itt lehetősége van csomagokat felvenni és törölni, valamint módosítani a meglévő csomagokat.
+
+**Melyik csomaggal érdemes kezdeni?**
+
+Javasoljuk, hogy először válassza a Standard S1 csomagot, és kövesse figyelemmel, hogy mennyi erőforrást használnak szolgáltatásai. Ha úgy találja, hogy gyorsan kimerül a szolgáltatási keret, adjon hozzá további példányokat, vagy a kedvezményesebb fizetés érdekében váltson magasabb szintre. A számlázási csomagot bármikor tetszés szerint módosíthatja. 
+
+**Mely régiókban érhetők el az új csomagok?**
+
+Az új számlázási csomagok abban a három éles régióban érhetők el, amelyekben támogatjuk az új webszolgáltatásokat:
+
+* USA déli középső régiója
+* Nyugat-Európa
+* Délkelet-Ázsia
+
+**Több régióban is működnek webszolgáltatásaim. Minden régióhoz külön csomagot kell létrehoznom?**
+
+Igen. A csomagok ára régiónként változik. Ha egy webszolgáltatást az eredetitől eltérő régióban is szeretne üzembe helyezni, az adott régióhoz tartozó csomagot kell hozzárendelnie.
+
+### Új webszolgáltatások – Többletköltségek
+
+**Hogyan tudom ellenőrizni, hogy felmerültek-e többletköltségek a webszolgáltatás használata miatt?**
+
+Az Azure Machine Learning webszolgáltatások portál Csomagok lapján az összes csomag által használt erőforrásokat megtekintheti. Jelentkezzen be a portálra, és kattintson a Csomagok menüpontra. 
+
+A táblázat Tranzakciók és Számítás oszlopában láthatja a csomag szolgáltatási keretét, és azt, hogy az adott pillanatig annak hány százalékát használta fel. 
+
+**Mi történik, ha a fejlesztés + tesztelés szint esetében kimerítem a szolgáltatási keretet?**
+
+A fejlesztés + tesztelés szinttel ellátott szolgáltatásokat ilyenkor a következő periódus elérkeztéig leállítja, illetve Önnek lehetősége van áthelyezni őket az egyik fizetett szint alá.
+
+**Hogyan számítják ki a kérés-válasz (RRS) és a kötegelt (BES) számítási feladatokért fizetendő összeget a klasszikus webszolgáltatásoknál és az új webszolgáltatások többleteinél?** 
+
+Az RRS számítási feladatoknál minden tranzakciós API-hívásért, valamint a kérésekhez kapcsolódó számítási időért fizetnie kell. Az éles üzemi RRS API-tranzakciókért fizetendő díjat a következőképp számítjuk ki: elvégzett API-hívások száma, szorozva az 1000 tranzakciónkénti árral (az egyes tranzakciókhoz képest arányosítva). Az éles üzemi RRS API számítási órák díját a következőképp számítjuk ki: az egyes API-hívások lefutásához szükséges idő, szorozva az API-tranzakciók számával, szorozva az egyes éles API számítási órák díjával. A Standard S1 csomagban érvényes többletköltségekkel számolva 1 000 000, egyenként 0,72 másodpercen át futó API-tranzakcióért 500 USD-t (1 000 000 * 0,50 USD/1000 API-hívás) kell fizetni az éles API-tranzakciókért magukért, és 400 USD-t (1 000 000 * 0,72 másodperc * 2 USD/óra) az éles üzemi API-k számítási üzemidejéért, azaz az összköltség 900 USD.
+
+A BES számítási feladatokért ugyanígy kell fizetni, azonban az API-tranzakciók költsége a beküldött kötegelt feladatok számához igazodik, a számítási költségek pedig az ezekhez a kötegelt feladatok elvégzéséhez szükséges számítási időn alapulnak. Az éles üzemi BES API-tranzakciók költségét ezért a következőképp lehet kiszámítani: beküldött feladatok száma, szorozva az 1000 tranzakciónként fizetendő díjjal (az egyes tranzakciókhoz képest arányosítva). Az éles üzemi BES API számítási órák költségét a következőképp lehet kiszámítani: a feladatban szereplő sorok lefutásához szükséges időtartam, szorozva a feladatban szereplő sorok számával, szorozva a feladatok számával, szorozva az éles üzemi API számítási órák díjával. A Machine Learning számológépének használata során a tranzakcióhoz tartozó érték a beküldeni tervezett feladatok számát jelöli, a tranzakciónkénti időt tartalmazó mező pedig az egyes feladatokban szereplő összes sor lefutásához szükséges időt mutatja. A Standard S1 csomagban érvényes többletköltségekkel számolva ha napi 100 feladatot ad be, és ezek mindegyike 500, egyenként 0,72 másodpercen át futó sort tartalmaz, a havi átlagköltség 1,55 USD (napi 100 feladat = 3100 feladat/hónap * 0,50 USD/1000 API-tranzakció) az éles API-tranzakciókért, és 620 USD (500 sor * 0,72 másodperc * 3100 feladat * 2 USD/óra) az éles üzemi API-k számítási üzemidejéért, azaz összesen 621,55 USD.
+
+### Azure ML klasszikus webszolgáltatások
+
+**Elérhető még a használatalapú modell?**
+Igen, az Azure Machine Learning továbbra is használható a klasszikus webszolgáltatásokkal is.  
+
+### Az Azure Machine Learning Ingyenes és Standard szintje
+
+**Mit tartalmaz az Azure Machine Learning Ingyenes szintje?**
+
+Az Azure Machine Learning Ingyenes szintje arra szolgál, hogy részletesen bemutassa az Azure Machine Learning Studio szolgáltatást. A bejelentkezéshez mindössze egy Microsoft-fiókra van szükség. Az Ingyenes szint [Microsoft-fiókonként](https://www.microsoft.com/account/default.aspx) egy Azure Machine Learning Studio-munkaterülethez nyújt ingyenes hozzáférést. A felhasználónak lehetősége van 10 GB tárhely használatára, valamint a modellek átmeneti API-ként történő üzembe helyezésére. Az Ingyenes szinthez tartozó számítási feladatokra nem vonatkozik SLA, ezek csak fejlesztési és személyes célokra használhatók. Az Ingyenes szinthez tartozó számítási feladatok nem tudják elérni az adatokat a helyszíni SQL-kiszolgálókhoz való kapcsolódással. A fenti táblázatban az Ingyenes és a Standard szintek közötti különbségeket ismertetjük, azonban más eltérések is létezhetnek, az Ingyenes szint funkciói pedig idővel változhatnak.
+
+**Mit tartalmaznak az Azure Machine Learning Standard szintjei és csomagjai?**
+
+Az Azure Machine Learning Standard szintje az Azure Machine Learning Studio fizetős változatát tartalmazza. Az Azure ML szolgáltatásai közé tartozó Studio havidíját munkaállomásonként számítjuk fel. A nem teljes hónapokért időarányosan kell fizetni. Az Azure ML Studio-kísérletezési idő (óra) után az aktív kísérletezéssel töltött számítási óránként számítunk fel díjat. A nem teljes órákért időarányos módon kell fizetni.  
+
+Az Azure ML API szolgáltatásnál a fizetendő összeget az határozza meg, hogy a klasszikus vagy az új webszolgáltatásról van szó. 
+
+Az alábbi díjak a munkaállomásonként összesített költségeket jelzik az előfizetésben. 
+
+* ML munkaállomásonkénti előfizetés: az ML munkaállomásonkénti előfizetés az a havidíj, amelynek megfizetéséért cserébe eléri az ML Studio munkaterületet, és kísérleteket futtathat a Studióban, valamint használhatja az éles üzemi API-kat.
+* Studio-kísérletezési idő (óra): ez az érték az ML Studióban futtatott kísérletek, valamint az éles üzemi API-hívások átmeneti környezetben való futtatása során elvégzett számítási feladatokkal kapcsolatos díjakat összesíti.
+* Érje el adatait a tanítási és pontozási modellekben egy helyszíni SQL-kiszolgálóhoz való csatlakozással.
+* Klasszikus webszolgáltatásoknál: 
+    * Számítási üzemidő éles üzemi API-n (óra) – Ez az érték az éles üzemben futó webszolgáltatásokért fizetendő számítási díjakat adja meg.
+    * Éles üzemi API-tranzakciók (ezer db) – Ez az érték az éles üzemi webszolgáltatás felé irányuló hívásonkénti díjakat adja meg.
+
+A fenti díjakon felül az új webszolgáltatások esetében a rendszer a kiválasztott csomaghoz tartozó díjakat is összesíti: 
+
+* Standard S1/S2/S3 API-használati csomag (egység) – Ez az érték az új webszolgáltatáshoz kiválasztott példány típusát adja meg.
+* Standard S1/S2/S3 keretét túllépő API-számítási üzemóra – Ez az érték azt adja meg, hogy mennyi számítási feladatokkal kapcsolatos díj merült fel azt követően, hogy az éles üzemben futó új webszolgáltatással felhasználta a meglévő példány(ok)ban elérhető szolgáltatási keretet. A kereten felüli használatért az S1/S2/S3 csomagszinthez tartozó feláras díj alapján kell fizetni.
+* Standard S1/S2/S3 keretét túllépő API-tranzakciószám (ezer db) – Ez az érték azt adja meg, hogy mennyi díj merült fel az éles üzemben futó új webszolgáltatás felé irányuló hívásonként azt követően, hogy a meglévő példány(ok)ban elérhető szolgáltatási keret kimerült. A kereten felüli használatért az S1/S2/S3 csomagszinthez tartozó feláras díj alapján kell fizetni.
+* Szolgáltatási keretbe foglalt API-számítási üzemóra – Az új webszolgáltatásokban ez az érték adja meg az API számítási órákra vonatkozó szolgáltatási keretet. 
+* Szolgáltatási keretbe foglalt API-tranzakció (1000 db) – Az új webszolgáltatásokban ez az érték adja meg az API-tranzakciókra vonatkozó szolgáltatási keretet. 
+
+
+**Hogy tudok regisztrálni az Azure ML Ingyenes szintjére?**
+
+Mindössze egy Microsoft-fiókra van szükség. Nyissa meg az [Azure Machine Learning szolgáltatás honlapját](https://azure.microsoft.com/services/machine-learning/), és kattintson az Első lépések gombra. Jelentkezzen be Microsoft-fiókjával, és a rendszer létrehozza az Ön számára az Ingyenes szinthez tartozó munkaterületet. Ezt követően azonnal elkezdheti felfedezni a szolgáltatást, és létrehozni Machine Learning-kísérleteit.
+
+**Hogy tudok regisztrálni az Azure ML Standard szintjére?**
+
+Ahhoz, hogy Standard ML-munkaterületet hozhasson létre, Azure-előfizetéssel kell rendelkeznie. Regisztrálhat az Azure 30 napos, ingyenes próba-előfizetésére, és később frissíthet fizetős Azure-előfizetésre, vagy akár egyből megvásárolhatja az Azure-előfizetést. Ha megkapta a hozzáférést az előfizetéshez, a Microsoft klasszikus Azure portáljából létrehozhatja a Machine Learning-munkaterületet. Olvassa el a [lépéseket részletes bemutató utasításokat](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
+
+Másik lehetőség, ha egy már meglévő Standard ML-munkaterület tulajdonosa elérést ad Önnek a munkaterületéhez.
+
+**Beállíthatom az Ingyenes szinten saját Azure Blob Storage-fiókom használatát?**
+
+Nem. A Standard szint a Machine Learning azon változata, amely a szintek bevezetése előtt elérhető volt.
+
+**Van rá lehetőség az Ingyenes szinten, hogy API-ként üzembe helyezzem gépi tanulási modelljeimet?**
+
+Igen, az Ingyenes szinten átmeneti API-szolgáltatásokba helyezheti üzembe gépi tanulási modelljeit. Ahhoz azonban már a Standard szintre lesz szüksége, hogy az átmeneti API-szolgáltatás éles üzembe kapcsolhasson, illetve, hogy beszerezhesse az üzembe helyezett szolgáltatáshoz kapcsolódó éles üzemi végpontot. 
+
+**Mi a különbség az Azure ingyenes próbaverziója és az Azure Machine Learning Ingyenes szintje között?**
+
+A [Microsoft Azure ingyenes próbaverziója](https://azure.microsoft.com/free/) krediteket kínál, amelyeket egy hónapig bármelyik Azure-szolgáltatásban felhasználhat, míg az Azure Machine Learning Ingyenes szintje kifejezetten az Azure Machine Learning szolgáltatáshoz nyújt folyamatos hozzáférést, amelyet nem éles üzemi számítási feladatok futtatására használhat.
+
+**Hogy tudom átvinni a kísérleteimet az Ingyenes szintről a Standard szintre?**
+
+Ha szeretné az Ingyenes szintről a Standard szintre másolni kísérleteit, kövesse az alábbi lépéseket.
+
+1.  Jelentkezzen be az Azure Machine Learning Studióba, és győződjön meg róla, hogy a felső navigációs sávban, a munkaterület-választóban mind az Ingyenes, mind a Standard munkaterület látható.
+2.  Ha a Standard munkaterületen tartózkodik, váltson át az Ingyenes munkaterületre.
+3.  A kísérletek listanézetében válassza ki a másolni kívánt kísérletet, majd kattintson a Másolás parancs gombjára.
+4.  A felugró párbeszédpanelen válassza a Standard munkaterületet, majd kattintson a Másolás gombra.
+5.  Tájékoztatjuk, hogy ezt követően a rendszer a kísérletet, valamint a hozzá tartozó összes adatkészletet, betanított modellt és egyéb elemet a Standard munkaterületre másolja.
+6.  A kísérletet újra le kell futtatnia, a webszolgáltatást pedig ismét közzé kell tennie a Standard munkaterületen.
+
+### Studio-munkaterület
+
+**Mi az a Machine Learning munkaállomás-előfizetés, és mikor van ilyenre szükségem?**
+
+A Machine Learning munkaállomás-előfizetése egy munkaállomásra vonatkozik. Javasoljuk, hogy minden olyan felhasználóhoz szerezzen be Machine Learning munkaállomás-előfizetést, aki kísérleteket fog futtatni az ML Studióban, vagy éles üzemi API-szolgáltatást fog működtetni.
+
+**A különböző munkaterületekhez különböző számlák tartoznak?**
+
+A munkaterületekért felszámított költségek részletezését közös számlán, de mérőszámonként külön-külön fogja megkapni.
+
+**Konkrétan milyen számítási erőforrásokon fognak futni a kísérleteim?**
+
+A Machine Learning többvállalatos szolgáltatás, a háttérben használt tényleges számítási erőforrások ezért változóak lehetnek: mindig a legoptimálisabb és legkiszámíthatóbb működést részesítjük előnyben.
+
+### Vendéghozzáférés
+
+**Mit jelent a vendéghozzáférés az Azure Machine Learning Studióban?**
+
+A vendéghozzáférés a szolgáltatás korlátozott kipróbálására nyújt lehetőséget: ingyenesen hozhat létre és futtathat kísérleteket az Azure Machine Learning Studióban, és még hitelesítő adatokat sem kell megadnia. A vendégként végzett munkamenetek nem perzisztensek (nem lehet őket menteni), maximális időtartamuk 8 óra. További korlátozások: nincs R- és Python-támogatás, nincs lehetőség átmeneti API-k használatára, illetve az adatkészletek mérete és a tárolókapacitás is korlátozott. Ezzel szemben ha bejelentkezik Microsoft-fiókjával, teljes hozzáférést kap a Machine Learning Studio fentiekben leírt Ingyenes szintjéhez, amely perzisztens munkaterületet és bővebb funkciókészletet tartalmaz. Nyissa meg a [https://studio.azureml.net](https://studio.azureml.net) oldalt, kattintson az „Első lépések” gombra, és válassza ki, hogy melyik ingyenes próbaverziót szeretné használni: kattintson a Vendéghozzáférés vagy a Bejelentkezés a Microsoft-fiókba lehetőségre.
 
 <!-- Module References -->
 [képolvasó]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/
@@ -337,6 +588,6 @@ Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

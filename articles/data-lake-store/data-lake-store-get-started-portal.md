@@ -13,10 +13,10 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/11/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
-# Az Azure Data Lake Store használatának első lépései az Azure portál használatával
+# Az Azure Data Lake Store használatának első lépései az Azure Portal használatával
 
 > [AZURE.SELECTOR]
 - [Portál](data-lake-store-get-started-portal.md)
@@ -27,7 +27,7 @@
 - [Azure CLI](data-lake-store-get-started-cli.md)
 - [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure portál használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Azure Data Lake Store](data-lake-store-overview.md) (Az Azure Data Lake Store áttekintése).
+Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure Portal használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Azure Data Lake Store](data-lake-store-overview.md) (Az Azure Data Lake Store áttekintése).
 
 ## Előfeltételek
 
@@ -39,7 +39,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 Először igényelnie kell az Azure-előfizetésének engedélyezését a Data Lake Store nyilvános előzetes verziójához. Kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az új [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
 2. Kattintson a **NEW** (új) **Data + Storage** (Adatok és tárolás), majd az **Azure Data Lake Store** elemre.
 3. A **New Data Lake Store** (Új Data Lake Store) panelen kattintson a **Sign up to preview** (Feliratkozás az előzetes verzióra) elemre. Olvassa el az információkat, majd kattintson az **OK** gombra. Amint megtörtént az előfizetés engedélyezése a Nyilvános előzetes verzióhoz, egy e-mailt fog kapni.
 
@@ -54,7 +54,7 @@ Tekintse meg az alábbi videókat a Data Lake Store megismeréséhez.
 
 ## Azure Data Lake Store-fiók létrehozása
 
-1. Jelentkezzen be az új [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
 
 2. Kattintson a **NEW** (új) **Data + Storage** (Adatok és tárolás), majd az **Azure Data Lake Store** elemre. Olvassa el az **Azure Data Lake Store** panelen látható információkat, majd kattintson a panel bal alsó sarkában található **Create** (Létrehozás) elemre.
 
@@ -68,7 +68,7 @@ Tekintse meg az alábbi videókat a Data Lake Store megismeréséhez.
 
 4. Válassza a **Pin to Startboard** (Rögzítés a kezdőpulton) lehetőséget, ha szeretné, hogy a Data Lake Store-fiók a kezdőpultról is elérhető legyen.
 
-5. Kattintson a ** Create** (Létrehozás) gombra. Ha úgy döntött, hogy rögzíti a fiókot a kezdőpulton, visszakerül a kezdőpultra, ahol láthatja a Data Lake Store-fiók üzembe helyezésének folyamatát. A Data Lake Store-fiók üzembe helyezése után megjelenik a fiókpanel.
+5. Kattintson a **Létrehozás** gombra. Ha úgy döntött, hogy rögzíti a fiókot a kezdőpulton, visszakerül a kezdőpultra, ahol láthatja a Data Lake Store-fiók üzembe helyezésének folyamatát. A Data Lake Store-fiók üzembe helyezése után megjelenik a fiókpanel.
 
 6. Bontsa ki az **Essentials** (Alapvető adatok) legördülő menüt a Data Lake Store-fiók részleteinek (pl. az erőforráscsoport, amelynek része, a helye stb.) megtekintéséhez. Kattintson a**Quick Start** (Gyors üzembe helyezés) ikonra a Data Lake Store-hoz kapcsolódó egyéb forrásokra mutató hivatkozások megtekintéséhez.
 
@@ -131,14 +131,15 @@ Az Azure Data Lake Store-fiók törléséhez kattintson a **Delete** (Törlés) 
 ![Data Lake-fiók törlése](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Delete Data Lake account")
 
 
-## További lépések
+## Következő lépések
 
 - [Secure data in Data Lake Store (Az adatok védelme a Data Lake Store-ban)](data-lake-store-secure-data.md)
 - [Use Azure Data Lake Analytics with Data Lake Store (Az Azure Data Lake Analytics használata a Data Lake Store-ral)](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Use Azure HDInsight with Data Lake Store (Az Azure HDInsight használata a Data Lake Store-ral)](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Access diagnostic logs for Data Lake Store (A Data Lake Store diagnosztikai naplóinak elérése)](data-lake-store-diagnostic-logs.md)
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

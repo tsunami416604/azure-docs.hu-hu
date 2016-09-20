@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="05/03/2016" 
-    ms.author="tdykstra"/>
+    ms.date="08/23/2016" 
+    ms.author="rachelap"/>
 
 # Az API Apps áttekintése
 
@@ -38,7 +38,7 @@ Az API Apps által nyújtott főbb szolgáltatások:
 
 - **Integráció a Logic Apps szolgáltatással** – az Ön által készített API-alkalmazások az [App Service Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) számára is felhasználhatók.  További információ: [Az App Service-ben üzemeltetett egyéni API használata a Logic Apps szolgáltatással](../app-service-logic/app-service-logic-custom-hosted-api.md), valamint [Az új, 2015-08-01-es sémaverzió előzetese](../app-service-logic/app-service-logic-schema-2015-08-01.md).
 
-Emellett az API-alkalmazások a [Web Apps](../app-service-web/app-service-web-overview.md) és a [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) által nyújtott szolgáltatások előnyeit is kihasználhatják. Ez fordítva is igaz: ha webalkalmazást vagy mobilalkalmazást használ az API üzemeltetéséhez, a web- vagy mobilalkalmazás kihasználhatja az API Apps által nyújtott szolgáltatások előnyeit, mint például a Swagger-metaadatokat az ügyfélkód generálásához, valamint a CORS-t a tartományközi böngészőalapú hozzáféréshez. Az egyetlen különbség a három alkalmazástípus (API-, web- és mobilalkalmazások) között a nevük, valamint az Azure portálon használt ikonjuk.
+Emellett az API-alkalmazások a [Web Apps](../app-service-web/app-service-web-overview.md) és a [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) által nyújtott szolgáltatások előnyeit is kihasználhatják. Ez fordítva is igaz: ha webalkalmazást vagy mobilalkalmazást használ az API üzemeltetéséhez, a web- vagy mobilalkalmazás kihasználhatja az API Apps által nyújtott szolgáltatások előnyeit, mint például a Swagger-metaadatokat az ügyfélkód generálásához, valamint a CORS-t a tartományközi böngészőalapú hozzáféréshez. Az egyetlen különbség a három alkalmazástípus (API-, web- és mobilalkalmazások) között a nevük, valamint az Azure Portalon használt ikonjuk.
 
 ## Mi a különbség az API Apps és az Azure API Management között?
 
@@ -65,6 +65,6 @@ Az API-alkalmazásokkal kapcsolatos kérdéseit az [API Apps fórumán](https://
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,11 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="04/05/2016"
+   ms.date="08/15/2016"
    ms.author="guscatal;elizapo"/>
 
 
 # Azonos Office 365-élmény bármely Azure RemoteApp szolgáltatást használó eszközön
+
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 
 Ez a cikk ismerteti, hogy hogyan helyezheti üzembe az Office 365-alkalmazásokat a vállat bármelyik eszközén. A felhasználók ugyanolyan képességeket kaphatnak és ugyanolyan felhasználói élményben lehet részük Android-, Apple- és Windows-eszközökön.
 
@@ -26,7 +29,7 @@ Ezt az Azure RemoteApp használatával érheti el az Office 365 méretezhető vi
 ## Felhőalapú gyűjtemény létrehozása
 
 Miután létrehozott egy Azure-fiókot, először navigáljon a **RemoteAppra** a bal oldalon található hivatkozásra kattintva.
-![Az Azure RemoteApp megjelenítése az Azure portálon](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
+![Az Azure RemoteApp megjelenítése az Azure Portalon](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
 
 Ezután alul kattintson a **new** (új) , majd a gyűjtemény „gyors létrehozása” elemre. Adjon meg egy nevet, a régiót, az előfizetését, a díjcsomagot és az általunk biztosított „Office Professional 2013” rendszerképet.
 ![Létrehozás párbeszédpanel](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
@@ -69,6 +72,6 @@ Ha bármelyik alkalmazásra kattint, az alkalmazás elindul az Azure virtuális 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,8 +13,8 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="mobile-multiple"
     ms.workload="mobile" 
-    ms.date="03/28/2016"
-    ms.author="wesmc"/>
+    ms.date="07/07/2016"
+    ms.author="wesmc;ricksal"/>
 
 # Azure Mobile Engagement – Első lépések útmutató ajánlott eljárásokkal
 
@@ -392,7 +392,7 @@ Miután szert tett némi tapasztalatra, vegye fontolóra a bevonási programok b
 
 
 
-## További lépések
+## Következő lépések
 
 - [Azure Mobile Engagement-fiók létrehozása](mobile-engagement-create.md).
 - További információ a mobilmarketing-stratégiájának meghatározásával kapcsolatban: [A mobilmarketing stratégia meghatározása](mobile-engagement-define-your-mobile-engagement-strategy.md).
@@ -409,6 +409,6 @@ Miután szert tett némi tapasztalatra, vegye fontolóra a bevonási programok b
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

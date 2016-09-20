@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/08/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
@@ -181,19 +181,19 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 
 A bcp **queryout** függvényével exportálhatja egy lekérdezés eredményeit az egész tábla exportálása helyett. 
 
-## További lépések
+## Következő lépések
 A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][].
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][].
-További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban: [Táblatervezés][] vagy [CREATE TABLE szintaxis][].
+További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban: [Táblák áttekintése][] vagy [CREATE TABLE szintaxis][].
 
 <!--Image references-->
 
 <!--Article references-->
 
-[Adatok betöltése az SQL Data Warehouse-ba]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse fejlesztői áttekintés]: sql-data-warehouse-overview-develop.md
-[Táblatervezés]: sql-data-warehouse-develop-table-design.md
-[Statisztika]: sql-data-warehouse-develop-statistics.md
+[Adatok betöltése az SQL Data Warehouse-ba]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse fejlesztői áttekintés]: ./sql-data-warehouse-overview-develop.md
+[Táblák áttekintése]: ./sql-data-warehouse-tables-overview.md
+[Statisztika]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
@@ -204,6 +204,6 @@ További információk a táblázatok létrehozásáról az SQL Data Warehouse-b
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

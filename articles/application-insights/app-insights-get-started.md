@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="03/31/2016"
+    ms.date="06/06/2016"
     ms.author="awills"/>
 
 # Ismerkedés a Visual Studio Application Insights eszközzel
@@ -52,8 +52,6 @@ Amire szüksége van | Teendő | Amihez jut
  * [Hibaelhárítás][qna]
  * [MSDN fórum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
-* Hibák:
- * [Kapcsolódás](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * Javaslatok:
  * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 * Kódminták
@@ -61,8 +59,9 @@ Amire szüksége van | Teendő | Amihez jut
 
 
 
-## <a name="video"></a>Videók
+## <a name="video"></a>Videó
 
+[![Aanimált bevezetés](./media/app-insights-get-started/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
 > [AZURE.VIDEO 218]
 
@@ -78,6 +77,6 @@ Amire szüksége van | Teendő | Amihez jut
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

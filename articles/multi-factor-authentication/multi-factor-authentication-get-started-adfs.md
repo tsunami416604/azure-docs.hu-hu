@@ -12,7 +12,7 @@
     ms.workload="identity" 
     ms.tgt_pltfrm="na" 
     ms.devlang="na" ms.topic="get-started-article" 
-    ms.date="05/12/2016" 
+    ms.date="08/04/2016" 
     ms.author="billmath"/>
 
 # Bevezetés az Azure Multi-Factor Authentication és az Active Directory összevonási szolgáltatások használatába
@@ -55,6 +55,7 @@ Az Azure Multi-Factor Authentication vagy az Azure Multi-Factor Authentication-k
  
 
 
-<!--HONumber=jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

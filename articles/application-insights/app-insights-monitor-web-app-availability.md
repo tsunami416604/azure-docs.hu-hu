@@ -12,15 +12,12 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/20/2016"
+    ms.date="08/10/2016"
     ms.author="awills"/>
 
 # Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 
-
-[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
-
-A webalkalmazás telepítése után webes teszteket állíthat be a rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az Application Insights rendszeres időközönként webes kéréseket küld világszerte különböző helyekről, és riasztja Önt, ha az alkalmazása lassan vagy egyáltalán nem válaszol.
+Miután telepítette a webalkalmazást bármely állomásra, webes teszteket állíthat be a rendelkezésre állásának és válaszkészségének megfigyeléséhez. A [Visual Studio Application Insights](app-insights-overview.md) rendszeres időközönként webes kéréseket küld világszerte különböző helyekről, és riasztja Önt, ha az alkalmazása lassan vagy egyáltalán nem válaszol.
 
 ![Példa webes tesztre](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
@@ -40,7 +37,7 @@ Alkalmazás-erőforrásonként legfeljebb 10 webes tesztet hozhat létre.
 
 Hagyja ki ezt a lépést, ha már [beállított egy Application Insights-erőforrást][start] ehhez az alkalmazáshoz, és ha ugyanezen a helyen szeretné megtekinteni a rendelkezésre állási adatokat.
 
-Regisztráljon a [Microsoft Azure](http://azure.com)-ba, lépjen az [Azure Portalra](https://portal.azure.com), és hozzon létre egy új Application Insights-erőforrást.
+Regisztráljon a [Microsoft Azure](http://azure.com)-ba, lépjen az [Azure Portalra](https://portal.azure.com), és hozzon létre egy Application Insights-erőforrást.
 
 ![Új > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
@@ -52,24 +49,24 @@ Az Application Insights-erőforrásban keresse meg a Rendelkezésre állás csem
 
 ![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-- **Az URL-címnek** láthatónak kell lennie a nyilvános internetről. Tartalmazhat egy lekérdezési karakterláncot&#151;,így például használhatja az adatbázisát. Ha az URL átirányítássá oldódik fel, legfeljebb 10 átirányításig követjük.
+- **Az URL-címnek** láthatónak kell lennie a nyilvános internetről. Tartalmazhat egy lekérdezési karakterláncot&#151;,így például használhatja az adatbázisát. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
 - **Függő kérelmek elemzése**: A rendszer kéri a lap képeit, szkriptjeit, stílusfájljait és más erőforrásait a teszt részeként. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt.
 - **Újrapróbálkozások engedélyezése**: Amikor a teszt meghiúsul, a rendszer rövid idő után újrapróbálja. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. (Ezt a beállítást javasoljuk. Átlagosan körülbelül a hibák 80%-a eltűnik az újrapróbálkozáskor.)
-- **Teszt gyakorisága**: Beállítja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. 5 perces gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.
+- **Teszt gyakorisága**: Beállítja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perces gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.
 - A **Teszthelyek** olyan helyek, ahonnan a kiszolgálóink webes kérelmeket küldenek az Ön URL-címére. Többet válasszon, hogy megkülönböztethesse webhelye problémáit a hálózati hibáktól. Legfeljebb 16 hely választható ki.
 
 - **Sikeresség feltétele**:
 
-    **Teszt időkorlátja**: Ha csökkenti, riasztást kap a lassú válaszokról. A teszt akkor sikertelen, ha nem érkeznek meg a webhely válaszai ezen az időtartamon belül. Ha bejelölte a **Függő kérelmek elemzése** lehetőséget, akkor az összes képnek, stílusfájlnak, szkriptnek és más függő erőforrásnak meg kell érkeznie ezen az időn belül.
+    **Teszt időkorlátja:** Ha csökkenti az értéket, riasztást kap a lassú válaszokról. A teszt akkor sikertelen, ha nem érkeznek meg a webhely válaszai ezen az időtartamon belül. Ha bejelölte a **Függő kérelmek elemzése** lehetőséget, akkor az összes képnek, stílusfájlnak, szkriptnek és más függő erőforrásnak meg kell érkeznie ezen az időn belül.
 
     **HTTP-válasz**: A visszaadott, sikert jelző állapotkód. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.
 
-    **Tartalmi egyezés**: egy karakterlánc, például „Üdvözöljük!” Tesztelni fogjuk, hogy minden válaszban előfordul-e. Egyszerű karakterláncnak kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
+    **Tartalmi egyezés**: egy karakterlánc, például „Üdvözöljük!” Teszteljük, hogy minden válaszban előfordul-e. Egyszerű karakterláncnak kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
 
 
 - Alapértelmezés szerint akkor kap **riasztásokat**, ha öt perc alatt három helyen fordulnak elő hibák. Ha egy helyen fordul elő a hiba, azt valószínűleg hálózati probléma okozza, és nem a hellyel van probléma. A küszöbérték érzékenységét állítani lehet, és azt is módosíthatja, hogy kinek küldje a rendszer az e-maileket.
 
-    Be lehet állítani egy [webhookot](../azure-portal/insights-webhooks-alerts.md), amelyet a rendszer egy riasztás megjelenésekor hív meg.
+    Be lehet állítani egy [webhookot](../azure-portal/insights-webhooks-alerts.md), amelyet a rendszer egy riasztás megjelenésekor hív meg. (Vegye figyelembe, hogy jelenleg a lekérdezési paraméterek nem továbbítódnak Tulajdonságokként.)
 
 #### További URL-címek tesztelése
 
@@ -82,13 +79,13 @@ Adjon hozzá további teszteket. Például a kezdőlap tesztelése mellett egy k
 
 ![Az összegzés eredményei a kezdőpanelen](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
-Kattintson a fenti összegző diagram bármely sávjára az időszak részletesebb megjelenítéséhez.
+Kattintson az összegző diagram bármely sávjára az időszak részletesebb megjelenítéséhez.
 
 Ezek a diagramok az alkalmazás összes webes tesztjének eredményeit egyesítik.
 
 #### A weblap összetevői
 
-A képek, stíluslapok, szkriptek és a tesztelt weblap egyéb statikus összetevői a teszt részeként le vannak kérve.  
+A rendszer a képek, stíluslapok, szkriptek és a tesztelt weblap egyéb statikus összetevőit a teszt részeként lekéri.  
 
 A rögzített válaszidő az összes összetevő betöltéséhez szükséges idő.
 
@@ -104,7 +101,7 @@ Vagy görgessen le, és kattintson egy tesztre, amelynél 100% alatti a sikeress
 
 ![Kattintson egy adott webes tesztre](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
 
-Megjelennek a teszt eredményei.
+Megnyílnak a teszt eredményei.
 
 ![Kattintson egy adott webes tesztre](./media/app-insights-monitor-web-app-availability/16-1test.png)
 
@@ -123,7 +120,7 @@ Kattintson az eredményre a portálon való kiértékeléséhez, és tekintse me
 Másik lehetőségként letöltheti az eredményfájlt, és megvizsgálhatja a Visual Studióban.
 
 
-*Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, akkor is, ha a fő HTML-oldal megfelelően töltődik be.
+*Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal megfelelően töltődik be.
 
 
 
@@ -131,7 +128,7 @@ Másik lehetőségként letöltheti az eredményfájlt, és megvizsgálhatja a V
 
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
 
-Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studióval, majd fel kell tölteni a felvételt az Application Insightsba. Az Application Insights időközönként vissza fogja játszani a forgatókönyvet, és ellenőrizni fogja a válaszokat.
+Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studióval, majd fel kell tölteni a felvételt az Application Insightsba. Az Application Insights időközönként visszajátssza a forgatókönyvet, és ellenőrzi a válaszokat.
 
 Vegye figyelembe, hogy a tesztekben nem használhat kódolt függvényeket: a forgatókönyv lépéseinek szkriptekként kell szerepelniük a .webtest fájlban.
 
@@ -141,7 +138,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise vagy U
 
 1. Hozzon létre egy webes teljesítményt tesztelő projektet.
 
-    ![A Visual Studióban hozzon létre egy új projektet a webes teljesítmény és terheléstesztelési sablonból.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+    ![A Visual Studióban hozzon létre egy projektet a webes teljesítmény és a terheléstesztelés sablonjából.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
 2. Nyissa meg a .webtest fájlt, és kezdje meg a rögzítést.
 
@@ -195,13 +192,13 @@ Tegyük fel, hogy egy olyan eszközt tesztel, amely időfüggő adatokat fogad, 
 
 A teszt futtatásakor az EndTime paraméternek mindig az aktuális időnek kell lennie, a StartTime paraméternek pedig a 15 perccel korábbi időnek.
 
-A webes teszt beépülő modulok lehetővé teszik ezt.
+A webes teszt beépülő modulok lehetővé teszik az idő paraméterezését.
 
 1. Adjon hozzá egy webes teszt beépülő modult minden kívánt változóparaméter-értékhez. A webes teszt eszköztárában válassza ki a **Webes teszt beépülő modul hozzáadása** elemet.
 
     ![Válassza ki a Webes teszt beépülő modul hozzáadása elemet, majd válasszon egy típust.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugins.png)
 
-    Ebben a példában a Dátum és idő beépülő modul két példányát fogjuk használni. Az egyik példány a „15 perccel ezelőtt” a másik pedig a „most” paraméterértékhez tartozik.
+    Ebben a példában a Dátum és idő beépülő modul két példányát használjuk. Az egyik példány a „15 perccel ezelőtt” a másik pedig a „most” paraméterértékhez tartozik.
 
 2. Nyissa meg a beépülő modulok tulajdonságait. Adjon meg egy nevet, és állítsa be úgy, hogy az aktuális időt használja. Az egyiknél állítsa be a következőt: Add Minutes = -15.
 
@@ -211,24 +208,48 @@ A webes teszt beépülő modulok lehetővé teszik ezt.
 
     ![A tesztparaméterében használja a {{plug-in name}} elemet.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-name.png)
 
-Ezután töltse fel a tesztet a portálra. Ez a teszt minden futtatásánál a dinamikus értékeket fogja használni.
+Ezután töltse fel a tesztet a portálra. Ez a teszt minden futtatásánál a dinamikus értékeket használja.
 
 ## A bejelentkezés kezelése
 
 Ha a felhasználók bejelentkeznek az alkalmazásába, számos lehetősége van a bejelentkezés szimulálására a bejelentkezés után megjelenő lapok teszteléséhez. A használt megközelítés az alkalmazás által kínált biztonság típusától függ.
 
-Minden esetben ajánlott létrehozni egy fiókot tesztelési célra. Ha lehetséges, korlátozza a fiók engedélyeit, hogy csak olvasható legyen.
+Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési célra. Ha lehetséges, korlátozza az engedélyt ezen a tesztfiókon, így elkerülheti, hogy a webes tesztek hatással legyenek a tényleges felhasználókra.
 
-* Egyszerű felhasználónév és jelszó: rögzítsen egy webes tesztet a szokásos módon. Először törölje a cookie-kat.
-* SAML-hitelesítés. Ehhez használhatja a webes tesztek számára elérhető SAML beépített modult.
-* Titkos ügyfélkód: Ha az alkalmazás bejelentkezési módja titkos ügyfélkódot igényel, használja azt. Az Azure Active Directory biztosítja ezt. 
-* Nyílt hitelesítés – például a Microsoft- vagy Google-fiókkal történő bejelentkezés. Számos OAuth protokollt használó alkalmazás biztosítja a titkos ügyfélkódos alternatívát, így az első feladat ennek megvizsgálása. Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközelítés a következő:
+### Egyszerű felhasználónév és jelszó
+
+Rögzítsen egy webes tesztet a szokásos módon. Először törölje a cookie-kat.
+
+### SAML-hitelesítés
+
+Használhatja a webes tesztek számára elérhető SAML beépülő modult.
+
+### Titkos ügyfélkulcs
+
+Ha az alkalmazás bejelentkezési módja titkos ügyfélkódot igényel, használja azt a módot. Az Azure Active Directory (AAD) mint egy példa olyan szolgáltatásra, amely titkos ügyfélkulccsal történő bejelentkezést biztosít. Az AAD-ben a titkos ügyfélkulcs az alkalmazáskulcs. 
+
+Itt egy alkalmazáskulcsot használó Azure-webalkalmazás webes tesztelésre találhat példát:
+
+![Titkos ügyfélkulcs-minta](./media/app-insights-monitor-web-app-availability/110.png)
+
+1. Szerezze be a tokent az AAD-ből a titkos ügyfélkulcs használatával (AppKey).
+2. Nyerje ki a tulajdonosi jogkivonatot a válaszból.
+3. Az engedélyezési fejléc tulajdonosi jogkivonatával hívja meg az API-t.
+
+Győződjön meg róla, hogy a webes teszt egy tényleges ügyfél – saját alkalmazása van az AAD-ben –, valamint használja a clientId + appkey értékét. A teszt alatt álló szolgáltatása is rendelkezik saját alkalmazással az AAD-ben: az alkalmazás appID URI-ja a webes teszt „resource” mezőjében látható. 
+
+### Nyílt hitelesítés
+
+Nyílt hitelesítés például a Microsoft- vagy Google-fiókkal történő bejelentkezés. Számos OAuth protokollt használó alkalmazás biztosítja a titkos ügyfélkódos alternatívát, így az első feladat ennek a lehetőségnek a megvizsgálása. 
+
+Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközelítés a következő:
+
  * Használjon egy eszközt, például a Fiddlert a webböngésző, a hitelesítési hely és az alkalmazás közötti forgalom vizsgálatához. 
  * Jelentkezzen be legalább két alkalommal különböző gépek vagy böngészők használatával, illetve hosszú időközönként (hogy a tokennek legyen ideje lejárni).
  * A különböző munkamenetek összehasonlításával azonosítsa a hitelesítési helyről visszaadott tokent, amelyet a rendszer a bejelentkezést követően továbbad az alkalmazáskiszolgálónak. 
  * Rögzítsen egy webes tesztet a Visual Studióval. 
  * Paraméterezze a tokeneket. Ehhez állítsa be a paramétereket, amikor a hitelesítő visszaküldi a tokent, és használja a webhely felé indított lekérdezésben.
- (A Visual Studio meg fogja próbálni paraméterezni a tesztet, de a tokent nem fogja megfelelően paraméterezni).
+ (A Visual Studio megpróbálja paraméterezni a tesztet, de a tokeneket nem paraméterezi megfelelően.)
 
 
 ## <a name="edit"></a> Teszt szerkesztése vagy letiltása
@@ -239,6 +260,15 @@ Nyisson meg egy egyéni tesztet annak szerkesztéséhez vagy letiltásához.
 
 Érdemes letiltani a webes teszteket, miközben karbantartást végez a szolgáltatáson.
 
+## Teljesítménytesztek
+
+Terheléstesztelést futtathat a webhelyén. Csakúgy, mint a rendelkezésre állási teszt esetében, egyszerű vagy több lépésből álló kéréseket küldhet a világ minden táján található helyekről. A rendelkezésre állási teszttől eltérően sok kérés lesz elküldve, több párhuzamos felhasználót szimulálva.
+
+Az Áttekintés panelről nyissa meg a **Beállítások**, **Teljesítménytesztek** elemet. Teszt létrehozásakor egy kérést kap arra, hogy csatlakozzon a Visual Studio Team Services-fiókhoz, vagy hozzon létre egyet. 
+
+A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
+
+
 ## Automatizálás
 
 * [Használjon PowerShell-szkripteket a webes teszt automatikus beállításához](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/). 
@@ -248,11 +278,11 @@ Nyisson meg egy egyéni tesztet annak szerkesztéséhez vagy letiltásához.
 
 * *Meghívhatok egy kódot a webes tesztből?*
 
-    Nem. A .webtest fájlnak tartalmaznia kell a teszt lépéseit. Nem hívhat meg más teszteket, és nem használhat hurkokat. Azonban számos beépített modul van, amely hasznos lehet.
+    Nem. A .webtest fájlnak tartalmaznia kell a teszt lépéseit. Nem hívhat meg más teszteket, és nem használhat hurkokat. Azonban számos beépülő modul van, amely hasznos lehet.
 
 * *Támogatott a HTTPS?*
 
-    Jelenleg az SSL 3.0 és a TLS 1.0 támogatott.
+    A TLS 1.1 és a TLS 1.2 támogatott.
 
 * *Van különbség a „webes tesztek” és a „rendelkezésre állási tesztek” között?*
 
@@ -260,11 +290,11 @@ Nyisson meg egy egyéni tesztet annak szerkesztéséhez vagy letiltásához.
 
 * *Rendelkezésre állási teszteket szeretnék használni a tűzfal mögött futó belső kiszolgálón.*
 
-    Konfigurálja úgy a tűzfalat, hogy engedélyezze a cikk végén található lista IP-címeiről érkező kérelmeket.
+    Konfigurálja úgy a tűzfalat, hogy engedélyezi a [webes tesztügynökök IP-címeiről](app-insights-ip-addresses.md#availability) érkező kéréseket.
 
 * *A többlépéses teszt feltöltése sikertelen*
 
-    A méretkorlát 300K.
+    A méretkorlát: 300 KB.
 
     A hurkok nem támogatottak.
 
@@ -277,7 +307,7 @@ Nyisson meg egy egyéni tesztet annak szerkesztéséhez vagy letiltásához.
 
     Egy teszt legfeljebb 100 kérelemből állhat.
 
-    A teszt le fog állni, ha két percnél tovább fut.
+    A teszt leáll, ha két percnél tovább fut.
 
 * *Hogyan futtathatok tesztet ügyféltanúsítványokkal?*
 
@@ -294,125 +324,7 @@ Nyisson meg egy egyéni tesztet annak szerkesztéséhez vagy letiltásához.
 
 [Hibaelhárítás][qna]
 
-
-## A webes tesztek IP-címei
-
-Itt találja az IP-címek jelenlegi listáját, ha meg kell nyitnia egy tűzfalat a webes tesztek engedélyezéséhez. A lista időről időre változhat.
-
-Nyissa meg a 80-as (http) és a 443-as (https) portot.
-
-```
-
-213.199.178.54
-213.199.178.55
-213.199.178.56
-213.199.178.61
-213.199.178.57
-213.199.178.58
-213.199.178.59
-213.199.178.60
-213.199.178.63
-213.199.178.64
-207.46.98.158
-207.46.98.159
-207.46.98.160
-207.46.98.157
-207.46.98.152
-207.46.98.153
-207.46.98.156
-207.46.98.162
-207.46.98.171
-207.46.98.172
-65.55.244.40
-65.55.244.17
-65.55.244.42
-65.55.244.37
-65.55.244.15
-65.55.244.16
-65.55.244.44
-65.55.244.18
-65.55.244.46
-65.55.244.47
-207.46.14.60
-207.46.14.61
-207.46.14.62
-207.46.14.55
-207.46.14.63
-207.46.14.64
-207.46.14.51
-207.46.14.52
-207.46.14.56
-207.46.14.65
-157.55.14.60
-157.55.14.61
-157.55.14.62
-157.55.14.47
-157.55.14.64
-157.55.14.65
-157.55.14.43
-157.55.14.44
-157.55.14.49
-157.55.14.50
-65.54.66.56
-65.54.66.57
-65.54.66.58
-65.54.66.61
-207.46.71.54
-207.46.71.52
-207.46.71.55
-207.46.71.38
-207.46.71.51
-207.46.71.57
-207.46.71.58
-207.46.71.37
-202.89.228.67
-202.89.228.68
-202.89.228.69
-202.89.228.57
-65.54.78.49
-65.54.78.50
-65.54.78.51
-65.54.78.54
-94.245.82.32
-94.245.82.33
-94.245.82.37
-94.245.82.38
-94.245.72.44
-94.245.72.45
-94.245.72.46
-94.245.72.49
-207.46.56.57
-207.46.56.58
-207.46.56.59
-207.46.56.67
-207.46.56.61
-207.46.56.62
-207.46.56.63
-207.46.56.64
-65.55.82.84
-65.55.82.85
-65.55.82.86
-65.55.82.81
-65.55.82.87
-65.55.82.88
-65.55.82.89
-65.55.82.90
-65.55.82.91
-65.55.82.92
-94.245.78.40
-94.245.78.41
-94.245.78.42
-94.245.78.45
-70.37.147.43
-70.37.147.44
-70.37.147.45
-70.37.147.48
-94.245.66.43
-94.245.66.44
-94.245.66.45
-94.245.66.48
-
-```
+[A webes tesztügynökök IP-címei](app-insights-ip-addresses.md)
 
 
 <!--Link references-->
@@ -424,6 +336,6 @@ Nyissa meg a 80-as (http) és a 443-as (https) portot.
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

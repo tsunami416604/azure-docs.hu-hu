@@ -13,14 +13,17 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="05/18/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo"/>
 
 # Mi az az Azure RemoteApp?
 
+> [AZURE.IMPORTANT]
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+
 Az Azure RemoteApp az Azure-ban biztosítja a helyszíni Microsoft RemoteApp program funkcióit a távoli asztali szolgáltatások támogatásával. Az Azure RemoteApp segítségével biztonságos távoli elérést biztosíthat az alkalmazásokhoz számos különböző felhasználói eszközről. Az Azure RemoteApp alapvetően nem állandó terminálkiszolgáló-munkameneteket üzemeltet a felhőben, amelyeket használhat és megoszthat a felhasználóival.
 
-Az Azure RemoteApp segítségével szinte bármilyen eszközön megoszthat alkalmazásokat és erőforrásokat a felhasználókkal. Az alkalmazásokat mi üzemeltetjük a felhőben, ami azt jelenti, hogy mi gondoskodunk a hardverről és a méretezésről, hogy megfeleljenek a felhasználói igényeknek. Önnek mindössze fel kell töltenie a megosztani kívánt alkalmazásokat, majd utasítani a felhasználókat, hogy használják az alkalmazásokat. [A felhasználók megtarthatják saját eszközeiket](remoteapp-clients.md), miközben Ön mindent az Azure portálon keresztül kezelhet. Lehetősége van arra is, hogy vállalati hitelesítő adatait használja, így biztosíthatja az alkalmazások és az adatok biztonságát.
+Az Azure RemoteApp segítségével szinte bármilyen eszközön megoszthat alkalmazásokat és erőforrásokat a felhasználókkal. Az alkalmazásokat mi üzemeltetjük a felhőben, ami azt jelenti, hogy mi gondoskodunk a hardverről és a méretezésről, hogy megfeleljenek a felhasználói igényeknek. Önnek mindössze fel kell töltenie a megosztani kívánt alkalmazásokat, majd utasítani a felhasználókat, hogy használják az alkalmazásokat. [A felhasználók megtarthatják saját eszközeiket](remoteapp-clients.md), miközben Ön mindent az Azure Portalon keresztül kezelhet. Lehetősége van arra is, hogy vállalati hitelesítő adatait használja, így biztosíthatja az alkalmazások és az adatok biztonságát.
 
 Az alábbiakban további információkat talál az Azure RemoteAppról, vagy ha máris meggyőztük, [próbálja ki most](https://azure.microsoft.com/services/remoteapp/).
 
@@ -65,7 +68,7 @@ Az Azure RemoteApp a Windows és Windows RT rendszerekhez készült RemoteApp-ü
 
 Az ügyfelekkel kapcsolatos további információk: [Accessing your apps in Azure RemoteApp](remoteapp-clients.md) (Az alkalmazások elérése az Azure RemoteAppban).
 
-## További lépések
+## Következő lépések
 Rajta! Próbálja ki! A következő cikkek segítenek az Azure RemoteApp első lépéseiben:
 
 - [What kind of collection do you need for Azure RemoteApp? (Milyen típusú gyűjteményre van szüksége az Azure RemoteApphoz?)](remoteapp-collections.md)
@@ -81,6 +84,6 @@ Rajta! Próbálja ki! A következő cikkek segítenek az Azure RemoteApp első l
 Tudta, hogy a cikk értékelése és alább hozzászólások írása mellett magát a cikket is módosíthatja? Valami hiányzik? Valami nem működik? Írtam valami olyat, ami nem egyértelmű? Görgessen fel, és kattintson a **Szerkesztés a GitHubon** vagy a **Szerkesztés** elemre a módosítások végrehajtásához. Ezek hozzánk kerülnek jóváhagyásra, és miután jóváhagytuk őket, itt fognak megjelenni.
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

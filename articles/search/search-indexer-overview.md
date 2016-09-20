@@ -4,7 +4,7 @@
     services="search"
     documentationCenter=""
     authors="HeidiSteen"
-    manager="mblythe"
+    manager="paulettm"
     editor=""
     tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="04/14/2016"
+    ms.date="08/08/2016"
     ms.author="heidist"/>
 
 # Indexelők az Azure Search szolgáltatásban
@@ -32,24 +32,53 @@ Az indexelőt használhatja kizárólag adatfeldolgozásra, illetve olyan kombin
 
 Az indexelők futtatása történhet igény szerint vagy ismétlődő adatfrissítési ütemterv alapján, akár 15 perces gyakorisággal is. Az ennél gyakoribb frissítésekhez olyan leküldési modellre van szükség, amely egyszerre frissíti az adatokat az Azure Search szolgáltatásban és a külső adatforrásban is.
 
+## Indexelők létrehozásának és kezelésének módszerei
+
+Az olyan, mindenki számára elérhető indexelők esetében, mint az Azure SQL vagy a DocumentDB, az indexelők létrehozása és kezelése a következő módszerekkel történhet:
+
+- [Portál > Adatok importálása varázsló ](search-get-started-portal.md)
+- [Szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dn946891.aspx)
+- [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx)
+
+Az olyan előzetes verziójú indexelők, mint az Azure Blob vagy Table storage használatához kód és előzetes verziójú API-k (például az [Azure Search előzetes verziójú REST API-ja](search-api-indexers-2015-02-28-preview.md)) szükségesek. A portálon történő eszközfelügyelet általában nem érhető el az előzetes verziójú funkciók esetében.
+
+## Alapszintű konfigurációs lépések
+
+Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
+
+### 1. lépés: Index létrehozása
+
+Az indexelők képesek egyes, az adatfeldolgozással kapcsolatos feladat automatikussá tételére, de az index létrehozása nem tartozik ezek közé. Előfeltételként olyan előre meghatározott indexre van szükség, amelynek mezői egyeznek a külső adatforrás mezőivel. További információk az indexek strukturálásáról: [Index létrehozása (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn798941.aspx).
+
+### 2. lépés: Adatforrás létrehozása
+
 Az indexelők olyan **adatforrásokból** kérnek le adatokat, amelyek például kapcsolati karakterláncokat tartalmaznak. Jelenleg a következő adatforrások támogatottak:
 
-- [Azure SQL-adatbázis](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) (vagy SQL Server egy Azure virtuális gépen)
+- [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 - [DocumentDB](../documentdb/documentdb-search-indexer.md)
-- [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (Jelenleg előzetes verzióban. Szöveges állomány kinyerésére PDF, Office-dokumentum, HTML, XMF formátumokból.)
-- [Azure Table Storage](search-howto-indexing-azure-tables.md) (Jelenleg előzetes verzióban)
+- [Azure Blob Storage (előzetes verzió)](search-howto-indexing-azure-blob-storage.md) – szöveg kinyerésére szolgál PDF, Office-dokumentum, HTML vagy XML formátumokból
+- [Azure Table Storage (előzetes verzió)](search-howto-indexing-azure-tables.md)
 
 Az adatforrások konfigurálása és kezelése az azokat használó indexelőktől függetlenül történik, ami azt jelenti, hogy egy adatforrást több indexelő is használhat egyidejűleg, egynél több index betöltésére. 
 
-Az indexelők és az adatforrások felügyeletét a [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx) és a [szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dn946891.aspx) egyaránt támogatja. 
+### 3. lépés: Az indexelő létrehozása és ütemezése
 
-Az indexelők konfigurálását a portálon az **Adatok importálása** varázsló használata közben is elvégezheti. Gyors üzembe helyezési oktatóanyagot az [Ismerkedés az Azure Search szolgáltatással a portálon](search-get-started-portal) részben talál, ahol a varázslót használó index létrehozására és betöltésére mintaadatokat és DocumentDB-indexelőt alkalmazunk.
+Az indexelődefiníció egy olyan konstrukció, amely megadja az indexet, az adatforrást és az ütemezést. Az indexelők egy másik szolgáltatásból is hivatkozhatnak egy adatforrásra, ha az adott adatforrás ugyanabból az előfizetésből származik. További információk az indexelők strukturálásáról: [Indexelő létrehozása (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn946899.aspx).
+
+## Következő lépések
+
+Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
+
+- [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
+- [DocumentDB](../documentdb/documentdb-search-indexer.md)
+- [Azure Blob Storage (előzetes verzió)](search-howto-indexing-azure-blob-storage.md) – szöveg kinyerésére szolgál PDF, Office-dokumentum, HTML vagy XML formátumokból
+- [Azure Table Storage (előzetes verzió)](search-howto-indexing-azure-tables.md)
+- [CSV-blobok indexelése az Azure Search Blob indexelőjével (előzetes verzió)](search-howto-index-csv-blobs.md)
+- [JSON-blobok indexelése az Azure Search Blob indexelőjével (előzetes verzió)](search-howto-index-json-blobs.md)
 
 
 
 
-
-
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

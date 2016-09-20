@@ -13,26 +13,12 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="06/06/2016"
+     ms.date="08/11/2016"
      ms.author="dobett"/>
 
 # Ismerkedés az Azure IoT Hub for Java szolgáltatással
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
-
-## Bevezetés
-
-Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé az eszközök internetes hálózatához (IoT) csatlakozó több millió eszköz között, valamint megoldást biztosít a háttérrendszer kialakításához. Az IoT-projektek számára az egyik legnagyobb kihívást az jelenti, hogyan lehet megbízható és biztonságos módon csatlakoztatni az eszközöket a megoldás háttérrendszeréhez. A kihívás megoldására az IoT Hub a következőket kínálja:
-
-- Megbízható nagy kapacitású üzenetkezelést kínál az eszközök és a felhő között mindkét irányban.
-- Az eszközönkénti biztonsági hitelesítő adatok és hozzáférés-vezérlés segítségével lehetővé teszi a biztonságos kommunikációt.
-- Tartalmazza a legnépszerűbb nyelvek és platformok eszközkönyvtárait.
-
-Ez az oktatóanyag a következőket mutatja be:
-
-- Egy IoT Hub létrehozása az Azure Portallal.
-- Eszközidentitás létrehozása az IoT Hubban.
-- Egy szimulált eszköz létrehozása, amely telemetriai adatokat küld a felhő háttérrendszerének.
 
 Az oktatóanyag végén három Java-konzolalkalmazással fog rendelkezni:
 
@@ -42,25 +28,25 @@ Az oktatóanyag végén három Java-konzolalkalmazással fog rendelkezni:
 
 > [AZURE.NOTE] Különböző SDK-kat használhat az alkalmazások összeállításához, hogy eszközökön és a megoldás háttérrendszerén is fussanak. Ezekről az [IoT Hub SDKs][lnk-hub-sdks] című témakörben talál további információt.
 
-Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 + Java SE 8. <br/> [A fejlesztési környezet előkészítését][lnk-dev-setup] ismertető cikk leírja, hogyan telepítheti a Javát ehhez az oktatóprogramhoz Windows vagy Linux rendszeren.
 
 + Maven 3  <br/> [A fejlesztési környezet előkészítését][lnk-dev-setup] ismertető cikk leírja, hogyan telepítheti a Mavent ehhez az oktatóprogramhoz Windows vagy Linux rendszeren.
 
-+ Aktív Azure-fiók. <br/>Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].
++ Aktív Azure-fiók. (Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].)
 
 [AZURE.INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Utolsó lépésként kattintson az IoT Hub panel **Beállítások** elemére, majd a **Beállítások** panel **Üzenetküldés** elemére. Az **Üzenetküldés** panelen jegyezze fel az **Event Hub-kompatibilis nevet** és az **Event Hub-kompatibilis végpontot**. Ezekre az értékekre szüksége lesz a **read-d2c-messages** alkalmazása létrehozásakor.
+Az utolsó lépésben jegyezze fel az **Elsődleges kulcs** értékét, majd kattintson az **Üzenetküldés** lehetőségre. Az **Üzenetküldés** panelen jegyezze fel az **Event Hub-kompatibilis nevet** és az **Event Hub-kompatibilis végpontot**. Erre a három értékre szüksége lesz a **read-d2c-messages** alkalmazás létrehozásakor.
 
 ![][6]
 
-Létrehozott egy IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges IoT Hub-állomásnévvel és kapcsolati karakterlánccal, valamint EventHub-kompatibilis névvel és végponttal.
+Létrehozott egy IoT Hubot, és rendelkezik az oktatóanyag teljesítéséhez szükséges IoT Hub-állomásnévvel és kapcsolati karakterlánccal, IoT Hub elsődleges kulccsal, valamint Event Hubs-kompatibilis névvel és végponttal.
 
 ## Eszközidentitás létrehozása
 
-Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az eszközidentitás-jegyzékbe. További információkért lásd az [Azure IoT Hub fejlesztői útmutató][lnk-devguide-identity] **Eszközidentitás-jegyzék** című szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
+Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy új eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az eszközidentitás-jegyzékbe. További információkért lásd az [Azure IoT Hub fejlesztői útmutató][lnk-devguide-identity] **Eszközidentitás-jegyzék** című szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
 
 1. Hozzon létre egy új, iot-java-get-started nevű üres mappát. Az iot-java-get-started mappában hozzon létre egy új, **create-device-identity** nevű Maven-projektet a következő beírásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
 
@@ -76,7 +62,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új es
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-service-client</artifactId>
-      <version>1.0.2</version>
+      <version>1.0.7</version>
     </dependency>
     ```
     
@@ -95,11 +81,11 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új es
     import java.net.URISyntaxException;
     ```
 
-7. Adja a következő osztályszintű változókat az **App** osztályhoz, lecserélve a **{yourhubname}** és a **{yourhubkey}** helyőrzőket a korábban feljegyzett értékekkel:
+7. Adja a következő osztályszintű változókat az **App** osztályhoz, lecserélve a **{yourhubconnectionstring}** helyőrzőt a korábban feljegyzett értékkel:
 
     ```
-    private static final String connectionString = "HostName={yourhubname}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={yourhubkey}";
-    private static final String deviceId = "javadevice";
+    private static final String connectionString = "{yourhubconnectionstring}";
+    private static final String deviceId = "myFirstJavaDevice";
     
     ```
     
@@ -148,9 +134,9 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új es
 
 ## Az eszközről a felhőbe irányuló üzenetek fogadása
 
-Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Event Hub][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs szolgáltatástól érkező üzenetek feldolgozásával kapcsolatos további információkért lásd a [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. Ez az IoT Hub Event Hub-kompatibilis végpontjaira érvényes.
+Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Event Hub][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs szolgáltatástól érkező üzenetek feldolgozásával kapcsolatos további információkért lásd a [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. Ez az IoT Hub Event Hub-kompatibilis végpontjaira érvényes.
 
-> [AZURE.NOTE] Az eszközről a felhőbe irányuló üzenetek olvasásához használt Event Hub-kompatibilis végpontok mindig az AMQPS protokollt használják.
+> [AZURE.NOTE] Az eszközről a felhőbe irányuló üzenetek olvasásához használt Event Hubs-kompatibilis végpontok mindig az AMQPS protokollt használják.
 
 1. Az *Eszközidentitás létrehozása* szakaszban létrehozott iot-java-get-started mappában hozzon létre egy új **read-d2c-messages** nevű Maven-projektet a következő parancs beírásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
 
@@ -160,7 +146,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
 
 2. A parancssorban keresse meg az új read-d2c-messages mappát.
 
-3. Egy szövegszerkesztővel nyissa meg a pom.xml fájlt a read-d2c-messages mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel használhatja az eventhubs-client csomagot az alkalmazásban az Event Hub-kompatibilis végpontról való olvasáshoz:
+3. Egy szövegszerkesztővel nyissa meg a pom.xml fájlt a read-d2c-messages mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel használhatja az eventhubs-client csomagot az alkalmazásban az Event Hub-kompatibilis végpontról végzett olvasáshoz:
 
     ```
     <dependency> 
@@ -190,25 +176,20 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
     import java.util.logging.*;
     ```
 
-7. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a **{youriothubkey}**, **{youreventhubcompatiblenamespace}** és **{youreventhubcompatiblename}** helyőrzőket a korábban feljegyzett értékekre. A **{youreventhubcompatiblenamespace}** helyőrző értéke az **Event Hub-kompatibilis végpontból** származik – az **xyznamespace** formát veszi fel (vagyis távolítsa el az **sb://** előtagot és a **.servicebus.windows.net** utótagot az Event Hub-kompatibilis végpontról a portálon):
+7. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a **{youriothubkey}**, **{youreventhubcompatibleendpoint}** és **{youreventhubcompatiblename}** helyőrzőket a korábban feljegyzett értékekre:
 
     ```
-    private static String namespaceName = "{youreventhubcompatiblenamespace}";
-    private static String eventHubName = "{youreventhubcompatiblename}";
-    private static String sasKeyName = "iothubowner";
-    private static String sasKey = "{youriothubkey}";
-    private static long now = System.currentTimeMillis();
+    private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
-8. Adja hozzá a következő **receiveMessages** metódust az **App** osztályhoz. Ez a metódus **EventHubClient** példányt hoz létre, amely az Event Hub-kompatibilis végponthoz csatlakozik, majd aszinkron módon létrehoz egy **PartitionReceiver** példányt, amely egy Event Hub-partícióról olvas. Folyamatosan hurkokat alkot, és kinyomtatja az üzenet részleteit az alkalmazás befejezéséig.
+8. Adja hozzá a következő **receiveMessages** metódust az **App** osztályhoz. Ez a metódus egy **EventHubClient** példányt hoz létre, amely az Event Hub-kompatibilis végponthoz csatlakozik, majd aszinkron módon létrehoz egy **PartitionReceiver** példányt, amely egy Event Hub-partícióról olvas. Folyamatosan hurkokat alkot, és kinyomtatja az üzenet részleteit az alkalmazás befejezéséig.
 
     ```
     private static EventHubClient receiveMessages(final String partitionId)
     {
       EventHubClient client = null;
       try {
-        ConnectionStringBuilder connStr = new ConnectionStringBuilder(namespaceName, eventHubName, sasKeyName, sasKey);
-        client = EventHubClient.createFromConnectionString(connStr.toString()).get();
+        client = EventHubClient.createFromConnectionStringSync(connStr);
       }
       catch(Exception e) {
         System.out.println("Failed to create client: " + e.getMessage());
@@ -225,7 +206,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
             System.out.println("** Created receiver on partition " + partitionId);
             try {
               while (true) {
-                Iterable<EventData> receivedEvents = receiver.receive().get();
+                Iterable<EventData> receivedEvents = receiver.receive(100).get();
                 int batchSize = 0;
                 if (receivedEvents != null)
                 {
@@ -259,7 +240,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
     }
     ```
 
-    > [AZURE.NOTE] Ez a metódus szűrőt használ a fogadó létrehozásakor, hogy a fogadó csak a fogadó futtatásának megkezdése után az IoT Hubra küldött üzeneteket olvassa. Ez tesztkörnyezetben hasznos, mivel láthatja az üzenetek aktuális készletét, éles környezetben azonban a kódnak biztosítania kell, hogy az összes üzenetet feldolgozza. További információért lásd: [Eszközről a felhőbe irányuló IoT Hub-üzenetek feldolgozása][lnk-process-d2c-tutorial].
+    > [AZURE.NOTE] Ez a metódus szűrőt használ a fogadó létrehozásakor, hogy a fogadó csak a fogadó futtatásának megkezdése után az IoT Hubra küldött üzeneteket olvassa. Ez tesztkörnyezetben hasznos, mivel láthatja az aktuális üzeneteket. Éles környezetben azonban a kódnak biztosítania kell, hogy az összes üzenetet feldolgozza. További információért lásd a következő oktatóanyagot: [Eszközről a felhőbe irányuló IoT Hub-üzenetek feldolgozása][lnk-process-d2c-tutorial].
 
 9. Módosítsa úgy a **main** metódus aláírását, hogy tartalmazza az alábbi kivételt:
 
@@ -298,7 +279,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
 
 ## Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
+Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
 
 1. Az *Eszközidentitás létrehozása* szakaszban létrehozott iot-java-get-started mappában hozzon létre egy új, **simulated-device** nevű Maven-projektet a következő parancs beírásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
 
@@ -314,7 +295,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-device-client</artifactId>
-      <version>1.0.2</version>
+      <version>1.0.8</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -336,20 +317,21 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
     import com.microsoft.azure.iothub.IotHubStatusCode;
     import com.microsoft.azure.iothub.IotHubEventCallback;
     import com.microsoft.azure.iothub.IotHubMessageResult;
+    import com.google.gson.Gson;
     import java.io.IOException;
     import java.net.URISyntaxException;
-    import java.security.InvalidKeyException;
     import java.util.Random;
-    import javax.naming.SizeLimitExceededException;
-    import com.google.gson.Gson;
+    import java.util.concurrent.Executors;
+    import java.util.concurrent.ExecutorService;
     ```
 
-7. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz, lecserélve a **{youriothubname}** helyőrzőt az IoT hub nevére, a **{yourdeviceid}** és **{yourdevicekey}** helyőrzőket pedig az *Eszközidentitás létrehozása* szakaszban létrehozott eszközértékekre:
+7. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz, lecserélve a **{youriothubname}** helyőrzőt az IoT hub nevére, a **{yourdevicekey}** helyőrzőt pedig az *Eszközidentitás létrehozása* szakaszban létrehozott eszközkulcsértékre:
 
     ```
-    private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}";
+    private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
     private static IotHubClientProtocol protocol = IotHubClientProtocol.AMQPS;
-    private static boolean stopThread = false;
+    private static String deviceId = "myFirstJavaDevice";
+    private static DeviceClient client;
     ```
 
     Ez a mintaalkalmazás a **protocol** változót használja **DeviceClient** objektum példányának létrehozásakor. A HTTPS vagy az AMQPS protokollt használja az IoT Hubbal való kommunikációhoz.
@@ -374,7 +356,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
     private static class EventCallback implements IotHubEventCallback
     {
       public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to message with status " + status.name());
+        System.out.println("IoT Hub responded to message with status: " + status.name());
       
         if (context != null) {
           synchronized (context) {
@@ -390,37 +372,33 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
     ```
     private static class MessageSender implements Runnable {
       public volatile boolean stopThread = false;
-
+      
       public void run()  {
         try {
           double avgWindSpeed = 10; // m/s
           Random rand = new Random();
-          DeviceClient client;
-          client = new DeviceClient(connString, protocol);
-          client.open();
-        
+          
           while (!stopThread) {
             double currentWindSpeed = avgWindSpeed + rand.nextDouble() * 4 - 2;
             TelemetryDataPoint telemetryDataPoint = new TelemetryDataPoint();
-            telemetryDataPoint.deviceId = "myFirstDevice";
+            telemetryDataPoint.deviceId = deviceId;
             telemetryDataPoint.windSpeed = currentWindSpeed;
-      
+            
             String msgStr = telemetryDataPoint.serialize();
             Message msg = new Message(msgStr);
-            System.out.println(msgStr);
-        
+            System.out.println("Sending: " + msgStr);
+            
             Object lockobj = new Object();
             EventCallback callback = new EventCallback();
             client.sendEventAsync(msg, callback, lockobj);
-    
+            
             synchronized (lockobj) {
               lockobj.wait();
             }
             Thread.sleep(1000);
           }
-          client.close();
-        } catch (Exception e) {
-          e.printStackTrace();
+        } catch (InterruptedException e) {
+          System.out.println("Finished.");
         }
       }
     }
@@ -432,14 +410,18 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
 
     ```
     public static void main( String[] args ) throws IOException, URISyntaxException {
-    
-      MessageSender ms0 = new MessageSender();
-      Thread t0 = new Thread(ms0);
-      t0.start(); 
-    
+      client = new DeviceClient(connString, protocol);
+      client.open();
+
+      MessageSender sender = new MessageSender();
+
+      ExecutorService executor = Executors.newFixedThreadPool(1);
+      executor.execute(sender);
+
       System.out.println("Press ENTER to exit.");
       System.in.read();
-      ms0.stopThread = true;
+      executor.shutdownNow();
+      client.close();
     }
     ```
 
@@ -460,15 +442,7 @@ Most már készen áll az alkalmazások futtatására.
 1. A read-d2c mappában egy parancssorban futtassa a következő parancsot, amellyel megkezdheti az IoT Hub első partíciójának megfigyelését:
 
     ```
-    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"  -Dexec.args="0"
-    ```
-
-    ![][7]
-
-1. A read-d2c mappában egy parancssorban futtassa a következő parancsot, amellyel megkezdheti az IoT Hub második partíciójának megfigyelését:
-
-    ```
-    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"  -Dexec.args="1"
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
     ![][7]
@@ -487,17 +461,21 @@ Most már készen áll az alkalmazások futtatására.
 
 ## Következő lépések
 
-Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak, valamint létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. A következő oktatóanyagokban folytathatja az IoT Hub szolgáltatásainak, valamint további IoT-forgatókönyveknek a felfedezését:
+Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. 
 
-- [A felhőből az eszközre irányuló üzenetek IoT Hubbal való küldését][lnk-c2d-tutorial] ismertető oktatóanyagból megtudhatja, hogyan küldhet üzeneteket eszközökre, és hogyan dolgozhatja fel az IoT Hub által előállított kézbesítési visszajelzéseket.
-- [Az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyag bemutatja, hogyan dolgozhatók fel megbízhatóan az eszközökről érkező telemetriai és interaktív üzenetek.
-- A [Fájlok feltöltése eszközökről][lnk-upload-tutorial] című oktatóanyag egy mintázatot ismertet, amelyet a felhőből az eszközre irányuló üzenetek használnak az eszközökről történő fájlfeltöltések elősegítésére.
+További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
+
+- [Eszköz csatlakoztatása][lnk-connect-device]
+- [Eszközfelügyelet – első lépések][lnk-device-management]
+- [Átjáró SDK – első lépések][lnk-gateway-SDK]
+
+Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban tekintse meg [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot.
 
 <!-- Images. -->
 [6]: ./media/iot-hub-java-java-getstarted/create-iot-hub6.png
 [7]: ./media/iot-hub-java-java-getstarted/runapp1.png
 [8]: ./media/iot-hub-java-java-getstarted/runapp2.png
-[43]: ./media/iot-hub-csharp-csharp-getstarted/usage.png
+[43]: ./media/iot-hub-java-java-getstarted/usage.png
 
 <!-- Links -->
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
@@ -506,17 +484,18 @@ Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létre
 [lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/java/device/doc/devbox_setup.md
-[lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-[lnk-upload-tutorial]: iot-hub-csharp-csharp-file-upload.md
 
 [lnk-hub-sdks]: iot-hub-sdks-summary.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
+[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

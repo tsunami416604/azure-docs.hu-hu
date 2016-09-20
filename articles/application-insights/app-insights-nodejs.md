@@ -54,7 +54,7 @@ A kulcs azonosítja az erőforrást, és hamarosan telepíteni fogja azt az SDK-
 ## <a name="sdk"></a> Az SDK telepítése az alkalmazásban
 
 ```
-npm install applicationinsights
+npm install applicationinsights --save
 ```
 
 ## Használat
@@ -63,7 +63,7 @@ Ezzel engedélyezi a kérelmek figyelését, a nem kezelt kivételek nyomon köv
 
 ```javascript
 
-import appInsights = require("applicationinsights");
+var appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>").start();
 ```
 
@@ -226,6 +226,6 @@ server.on("listening", () => {
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="07/25/2016"
    ms.author="barbkess;mausher;jrj;sonyama"/>
 
 
@@ -38,7 +38,7 @@ Az adatbetöltés jelenős részét teszi ki az adatraktár-számítási feladat
 
 - A betöltési folyamatot hagyományosan ETL-nek nevezik, ami az Extract, Transform és Load (kinyerés, átalakítás és betöltés) rövidítése. Az adatokat általában át kell alakítani, hogy konzisztensek legyenek az adatraktár többi adatával. Korábban a vállalkozások dedikált ETL-kiszolgálókat használtak az átalakításokhoz. A nagymértékben párhuzamos feldolgozás gyorsaságának köszönhetően most már első lépésként betöltheti az adatokat az SQL Data Warehouse szolgáltatásba, majd végrehajthatja az átalakításokat. A folyamat neve ETL (Extract, Load, and Transform – kinyerés, betöltés és átalakítás). Egyre inkább ez válik új szabvánnyá az adatraktár-számítási feladatoknál.
 
-> [AZURE.NOTE] Az SQL Server CTP2 használatával most már valós időben is elemezheti az OLTP táblákat. Ez nem teszi szükségtelenné az adatok tárolását és elemzését az adatraktárban, viszont lehetővé teszi a valós idejű elemzést.
+> [AZURE.NOTE] Az SQL Server 2016 használatával már valós időben is elemezheti az OLTP-táblákat. Ez nem teszi szükségtelenné az adatok tárolását és elemzését az adatraktárban, viszont lehetővé teszi a valós idejű elemzést.
 
 ### Jelentés- és elemzéslekérdezések
 A jelentés- és elemzési lekérdezéseket a kicsi, közepes és nagy kategóriákba sorolják, esetenként a feltételek száma, de legtöbbször az időtartam alapján. A legtöbb adatraktárban vegyes számítási feladatok futnak, amelyet gyorsan és lassan futó lekérdezések alkotnak. Minden esetben fontos meghatározni ezt a keveréket, és annak gyakoriságát (óránként, naponta, hónap végén, negyedév végén stb.). Fontos megérteni, hogy a vegyes lekérdezésekből álló számítási feladatok és a párhuzamosság együtt megfelelő kapacitástervezést igényelnek.
@@ -58,16 +58,14 @@ Az adatok jelentéskészítés és elemzés számára történő elérhetővé t
 - A jelentések létrehozásához az írásvédett jelentéskészítő kiszolgálókra minden éjszaka fel lehet tölteni egy pillanatképet a napi adatokról. Ez nagyobb sávszélességet biztosít az ügyfelek számára, miközben csökkenti az adatraktár számítási erőforrásigényét. Biztonsági szempontjából az adatpiacok lehetővé teszik az adatraktárhoz hozzáférő felhasználók számának csökkentését.
 - Az elemzéshez ki lehet építeni az adatraktáron egy elemzési adatkockát, és le lehet futtatni az elemzést az adatraktáron, vagy előre fel lehet dolgozni az adatokat és exportálni lehet őket az elemzési kiszolgálóra további elemzés céljából.
 
-## További lépések
-Az adatraktár fejlesztésének elkezdéséhez tekintse meg a [fejlesztői áttekintést][].
-
-## Könyvek
-[Big Data Warehousing](https://www.manning.com/books/big-data-warehousing) – Karthik Ramachandran, Istvan Szededi és Richard L. Saltzer (Manning Publications). [1. fejezet](https://manning-content.s3.amazonaws.com/download/e/3d94acd-9512-46c8-b0b0-8c9c3c6a303b/BDW_MEAP_ch1.pdf)
+## Következő lépések
+Miután a fentiekben áttekintést kapott az SQL Data Warehouse használatáról, ismerje meg, hogyan hozhat létre gyorsan egy [SQL Data Warehouse létrehozása][] és hogyan [mintaadatokat tölthet be][].
 
 <!--Image references-->
 
 <!--Article references-->
-[fejlesztői áttekintést]: sql-data-warehouse-overview-develop.md
+[mintaadatokat tölthet be]: ./sql-data-warehouse-load-sample-databases.md
+[SQL Data Warehouse létrehozása]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
@@ -75,6 +73,6 @@ Az adatraktár fejlesztésének elkezdéséhez tekintse meg a [fejlesztői átte
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

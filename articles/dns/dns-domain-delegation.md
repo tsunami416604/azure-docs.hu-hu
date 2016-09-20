@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/10/2016"
+   ms.date="06/30/2016"
    ms.author="cherylmc"/>
 
 
@@ -46,6 +46,10 @@ Kétféle DNS-kiszolgáló létezik:
 
 - A _mérvadó_ DNS-kiszolgáló üzemelteti a DNS-zónákat. Csak az ezekben a zónákban található rekordokra irányuló DNS-lekérdezéseket válaszolja meg.
 - A _rekurzív_ DNS-kiszolgáló nem üzemeltet DNS-zónákat. Minden DNS-lekérdezést megválaszol a mérvadó DNS-kiszolgálók adatait összegyűjtve.
+
+>[AZURE.NOTE] Az Azure DNS mérvadó DNS szolgáltatást nyújt.  Rekurzív DNS szolgáltatást nem biztosít.
+
+> Az Azure felhőszolgáltatásai és virtuális gépei automatikusan egy rekurzív DNS szolgáltatás használatára vannak konfigurálva, amelyet az Azure infrastruktúra külön biztosít.  Információ ezen DNS-beállítások módosításáról: [Névfeloldás az Azure-ban](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
 
 A számítógépes vagy mobileszköz-kompatibilis DNS-ügyfelek általában egy rekurzív DNS-kiszolgálóval végeztetik el az ügyfélalkalmazások számára szükséges DNS-lekérdezéseket.
 
@@ -116,7 +120,9 @@ Az Azure platformfüggetlen parancssori felületével is lekérheti a mérvadó 
 
 Minden tartományregisztráló a saját DNS-kezelési eszközeit használja a tartományok névkiszolgálói rekordjainak módosítására. A regisztráló DNS-kezelési oldalán szerkessze a névkiszolgálói rekordokat, és cserélje le őket az Azure DNS által létrehozottakra.
 
-Amikor egy tartományt az Azure DNS-be delegál, az Azure DNS által nyújtott névkiszolgálói neveket kell használnia. Ne használjon „összetartó rekordokat” az Azure DNS névkiszolgálói IP-címeire való rámutatáshoz, mert ezek az IP-címek megváltozhatnak a jövőben. A saját zónájában történő, névkiszolgálói neveket használó delegálásokat – más néven „személyes névkiszolgálókat” – az Azure DNS jelenleg nem támogatja.
+Amikor egy tartományt az Azure DNS-be delegál, az Azure DNS által nyújtott névkiszolgálói neveket kell használnia.  Mindig használja mind a 4 névkiszolgálói nevet, a tartomány nevétől függetlenül.  A tartománydelegáláshoz nem szükséges, hogy a névkiszolgálói név ugyanazt a legfelső szintű tartományt használja, mint az Ön tartománya.
+
+Ne használjon „összetartó rekordokat” az Azure DNS névkiszolgálói IP-címeire való rámutatáshoz, mert ezek az IP-címek megváltozhatnak a jövőben. A saját zónájában történő, névkiszolgálói neveket használó delegálásokat – más néven „személyes névkiszolgálókat” – az Azure DNS jelenleg nem támogatja.
 
 ### A névfeloldás működésének ellenőrzése
 
@@ -193,7 +199,7 @@ A gyermekzóna SOA típusú rekordjának megkeresésével ellenőrizheti, hogy m
         expire = 604800 (7 days)
         default TTL = 300 (5 mins)
 
-## További lépések
+## Következő lépések
 
 [DNS-zónák kezelése](dns-operations-dnszones.md)
 
@@ -202,6 +208,6 @@ A gyermekzóna SOA típusú rekordjának megkeresésével ellenőrizheti, hogy m
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

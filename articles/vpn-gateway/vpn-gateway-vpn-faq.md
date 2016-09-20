@@ -42,7 +42,7 @@ A következő létesítmények közötti kapcsolattípusok támogatottak:
 
 - [ExpressRoute](../expressroute/expressroute-introduction.md) – Az ExpressRoute közvetlen kapcsolatot biztosít az Azure-ral WAN-on (nem a nyilvános interneten) keresztül. További információk: [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) (Az ExpressRoute műszaki áttekintése) és [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
 
-További információk a létesítmények közötti kapcsolatokról: [About secure cross-premises connectivity](vpn-gateway-cross-premises-options.md) (Tudnivalók a létesítmények közötti biztonságos kapcsolatokról).
+További információk a kapcsolatokról: [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
 
 ### Mi a különbség a helyek közötti és a pont–hely kapcsolatok között?
 
@@ -51,8 +51,6 @@ A **helyek közötti** kapcsolatok lehetővé teszik a helyszínen található s
 A **pont–hely** kapcsolattal csatlakozhat egy tetszőleges helyen található számítógépről a virtuális hálózata összes eleméhez. Ez a típus a Windows beépített VPN-ügyfelét használja. A pont–hely konfiguráció részeként telepíteni kell egy tanúsítványt és egy VPN-ügyfélkonfigurációs csomagot, amelyben azok a beállítások találhatók, amelyeket a számítógépe használ a virtuális hálózatban található virtuális gépekhez vagy szerepkörpéldányokhoz való csatlakozáshoz. Ez ideális megoldás, ha csatlakozni szeretne egy virtuális hálózathoz, de nem a helyszínen tartózkodik, valamint akkor is jól használható, ha nincs hozzáférése VPN-hardverhez vagy kifelé irányuló IPv4-címhez, amelyek a helyek közötti kapcsolatok kialakításához szükségesek. 
 
 A virtuális hálózatát konfigurálhatja úgy, hogy helyek közötti és pont–hely kapcsolatokat használjon egyidejűleg – ha a helyek közötti kapcsolatot útvonalalapú VPN-típussal hozza létre az átjáróhoz. Az útvonalalapú VPN-típusok korábbi megnevezése dinamikus átjáró volt a klasszikus üzemi modellben.
-
-További információ: [About secure cross-premises connectivity for virtual networks](vpn-gateway-cross-premises-options.md) (Tudnivalók a biztonságos létesítmények közötti kapcsolatról a virtuális hálózatokban).
 
 ### Mi az az ExpressRoute?
 
@@ -70,11 +68,11 @@ Eszközszállítói partnereinkkel különböző standard helyek közötti VPN-e
 
 ### Mi a teendő, ha az én VPN-eszközöm nincs az ismert kompatibilis eszközök listájában?
 
-Ha nem látja az eszközét a kompatibilis VPN-eszközök listájában, de ezt kívánja használni a VPN-kapcsolathoz, ellenőriznie kell, hogy megfelel-e az [itt](vpn-gateway-about-vpn-devices.md#devices-not-on-the-compatible-list) felsorolt támogatott IPsec/IKE-konfigurációknak és paramétereknek. A minimális rendszerkövetelményeknek megfelelő eszközök működnek a VPN-átjárókkal. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
+Ha nem látja az eszközét a kompatibilis VPN-eszközök listájában, de azt szeretné használni a VPN-kapcsolathoz, ellenőriznie kell, hogy megfelel-e az [itt](vpn-gateway-about-vpn-devices.md#devices-not-on-the-compatible-list) felsorolt támogatott IPsec/IKE-konfigurációknak és paramétereknek. A minimális rendszerkövetelményeknek megfelelő eszközök működnek a VPN-átjárókkal. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
 
 ### Miért áll le a házirendalapú VPN-alagutam, amikor nincs adatforgalom?
 
-Ez normális működés házirendalapú (más néven statikus útválasztású) VPN-átjárók esetében. Ha az alagúton átmenő adatforgalom több mint 5 percig inaktív, a rendszer megszakítja az alagutat, de amint az adatforgalom megindul bármelyik irányba, a rendszer azonnal újból létrehozza azt. Ha útvonalalapú (más néven dinamikus) VPN-átjáróval rendelkezik, ezt a viselkedést nem fogja tapasztalni.
+Ez normális működés házirendalapú (más néven statikus útválasztású) VPN-átjárók esetében. Ha az alagúton átmenő adatforgalom több mint 5 percig inaktív, a rendszer megszakítja az alagutat, Amikor az adatforgalom megindul bármelyik irányba, az alagút azonnal újra létrejön. Ha útvonalalapú (más néven dinamikus) VPN-átjáróval rendelkezik, ezt a viselkedést nem fogja tapasztalni.
 
 ### Csatlakozhatok az Azure-hoz szoftveres VPN-nel?
 
@@ -88,13 +86,17 @@ Az egyéb szoftveres VPN-megoldások szintén működhetnek, ha megfelelnek az i
 
 A következő operációs rendszerek támogatottak:
 
-- Windows 7 (csak 64 bites verzió)
+- Windows 7 (32 bites és 64 bites)
 
-- Windows Server 2008 R2
+- Windows Server 2008 R2 (csak 64 bites)
 
-- Windows 8 (csak 64 bites verzió)
+- Windows 8 (32 bites és 64 bites)
 
-- Windows Server 2012
+- Windows 8.1 (32 bites és 64 bites)
+
+- Windows Server 2012 (csak 64 bites)
+
+- Windows Server 2012 R2 (csak 64 bites)
 
 - Windows 10
 
@@ -124,7 +126,7 @@ Az automatikus újrakapcsolódás és a DDNS jelenleg nem támogatott a pont–h
 
 ### Lehetnek-e helyek közötti és pont–hely konfigurációk egyidejűleg egy virtuális hálózaton?
 
-Igen. Mindkét megoldás működhet, ha az átjárójához útvonalalapú VPN-típust használ. A klasszikus üzemi modellhez dinamikus átjáróra lesz szükség. A pont–hely kapcsolat nem támogatott a statikus útválasztású VPN-átjárókhoz vagy a PolicyBased értékű -VpnType paraméterrel rendelkező átjárókhoz.
+Igen. Mindkét megoldás működhet, ha az átjárójához RouteBased (útvonalapú) VPN-típust használ. A klasszikus üzemi modellhez dinamikus átjáróra van szükség. A pont–hely kapcsolat nem támogatott a statikus útválasztású VPN-átjárókhoz vagy a PolicyBased értékű -VpnType paraméterrel rendelkező átjárókhoz.
 
 ### Konfigurálhatok úgy egy pont–hely ügyfelet, hogy több virtuális hálózathoz csatlakozzon egyszerre?
 
@@ -164,11 +166,11 @@ Hitelesítésként csak az előmegosztott kulcsok (PSK-k) használhatók.
 
 A létesítmények közötti kapcsolatok az átjárószolgáltatásunkkal engedélyezhetők. 
 
-A VPN-átjáró konfigurálásához létre kell hozni egy átjáróalhálózatot a virtuális hálózathoz. A megfelelő működéshez az összes átjáróalhálózatnak GatewaySubnet nevűnek kell lennie. Ne nevezze el másként az átjáróalhálózatát, és ne helyezzen üzembe rajta virtuális gépeket vagy más eszközt.
+A VPN-átjáró konfigurálásához létre kell hozni egy átjáróalhálózatot a virtuális hálózathoz. A megfelelő működéshez az összes átjáró-alhálózatnak a GatewaySubnet névvel kell rendelkeznie. Ne nevezze el másként az átjáróalhálózatát, és ne helyezzen üzembe rajta virtuális gépeket vagy más eszközt.
 
 Az átjáró-alhálózat minimális mérete teljes mértékben a létrehozni kívánt konfigurációtól függ. Ugyan egyes konfigurációkhoz létrehozhat kicsi, akár /29-es méretű átjáróalhálózatot is, ajánlott /28-ast vagy nagyobbat létrehozni (/28, /27, /26 stb.). 
 
-## Telepíthetek virtuális gépeket vagy szerepkörpéldányokat az átjáróalhálózatomra?
+### Telepíthetek virtuális gépeket vagy szerepkörpéldányokat az átjáróalhálózatomra?
 
 Nem.
 
@@ -180,7 +182,7 @@ Ha a klasszikus Azure portált használja, a Hálózatok lap Helyi hálózatok r
 
 Igen. Lásd: [Kényszerített bújtatás konfigurálása](vpn-gateway-about-forced-tunneling.md).
 
-### Üzembe helyezhetem a saját VPN-kiszolgálómat az Azure-ban és csatlakozhatok vele a helyszíni hálózatomhoz?
+### Üzembe helyezhetem a saját VPN-kiszolgálómat az Azure-ban, és csatlakozhatok vele a helyszíni hálózatomhoz?
 
 Igen, az Azure-ban üzembe helyezheti saját VPN-átjáróit vagy -kiszolgálóit az Azure Piactérről, vagy saját VPN-útválasztók létrehozásával. Ilyenkor a virtuális hálózatában felhasználó által definiált útvonalakat kell konfigurálnia, hogy az adatforgalom megfelelően legyen irányítva a helyszíni hálózatai és a virtuális hálózatainak alhálózatai között.
 
@@ -193,7 +195,7 @@ A VPN-átjáró alapvetően egy többhelyű eszköz, amelynek egy hálózati ada
 
 ### További információk az átjárótípusokról, a követelményekről és az adatátviteli sebességről
 
-További információk: [About VPN gateways](vpn-gateway-about-vpngateways.md) (Információk a VPN-átjárókról).
+További információk: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn gateway-settings.md).
 
 ## Többhelyes és virtuális hálózatok közötti kapcsolatok
 
@@ -201,7 +203,7 @@ További információk: [About VPN gateways](vpn-gateway-about-vpngateways.md) (
 
 Csak az útvonalalapú (dinamikus útválasztású) VPN-ek.
 
-### Összekapcsolhatok egy útvonalalapú VPN-típussal rendelkező virtuális hálózatot egy házirendalapú VPN-típussal rendelkezővel?
+### Összekapcsolhatok egy RouteBased (útvonalapú) VPN-típussal rendelkező virtuális hálózatot egy házirendalapú VPN-típussal rendelkezővel?
 
 Nem, mindkét virtuális hálózatnak útvonalalapú (dinamikus útválasztású) VPN-t KELL használnia.
 
@@ -223,11 +225,11 @@ Igen, a pont–hely (P2S) VPN-ek több helyszíni helyhez és egyéb virtuális 
 
 ### Konfigurálhatok több alagutat a virtuális hálózatom és a helyszíni helyem között többhelyes VPN használatával?
 
-Nem, a redundáns alagutak az Azure Virtual Networkök és a helyszíni helyek között nem támogatottak.
+Nem, a redundáns alagutak az Azure Virtual Network hálózatok és a helyszíni helyek között nem támogatottak.
 
 ### Lehetnek-e egymással átfedésben lévő címterek a csatlakoztatott virtuális hálózatok és helyszíni helyek között?
 
-Nem. Ha a címterek egymással átfedésben vannak, a netcfg fájl feltöltése vagy a virtuális hálózat létrehozása meghiúsul.
+Nem. Ha a címterek átfedésben vannak egymással, a hálózati konfigurációs fájl feltöltése vagy a virtuális hálózat létrehozása meghiúsul.
 
 ### Nagyobb sávszélességhez jutok több helyek közötti VPN használatával, mint egyetlen virtuális hálózattal?
 
@@ -235,7 +237,10 @@ Nem, az összes VPN-alagút, így a pont–hely VPN-ek is ugyanazt az Azure VPN 
 
 ### Használhatok Azure VPN Gateway átjárót az adatforgalomhoz a helyszíni helyeim között vagy egy másik virtuális hálózatba?
 
-Az Azure VPN Gateway átjárókon keresztüli adatátvitel lehetséges, de ez a netcfg konfigurációs fájlban statikusan meghatározott címterekre hagyatkozik. A BGP jelenleg nem támogatott az Azure Virtual Networkökhöz és VPN Gatewayekhez. BGP nélkül az átviteli címterek manuális meghatározása sok hibalehetőséggel jár, ezért nem ajánlott.
+**Klasszikus üzemi modell**<br>
+Az Azure VPN Gateway-átjárókon keresztüli adatátvitel a klasszikus üzemi modellel lehetséges, de ez a hálózati konfigurációs fájlban statikusan meghatározott címterekre hagyatkozik. A BGP jelenleg nem támogatott az Azure Virtual Networkökhöz és VPN Gateway-átjárókhoz a klasszikus üzemi modell használatával. BGP nélkül az átviteli címterek manuális meghatározása sok hibalehetőséggel jár, ezért nem ajánlott.<br>
+**Resource Manager-alapú üzemi modell**<br>
+Ha a Resource Manager-alapú üzemi modellt használja, további információért tekintse meg a [BGP](#bgp) szakaszt.
 
 ### Egy adott virtuális hálózaton az Azure ugyanazt az IPsec/IKE előmegosztott kulcsot hozza létre az összes VPN-kapcsolathoz?
 
@@ -250,7 +255,7 @@ A különböző Azure Virtual Networkök közötti adatforgalom esetében az Azu
 
 Igen, ez támogatott. További információk: [Párhuzamosan fennálló ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása](../expressroute/expressroute-howto-coexist-classic.md).
 
-## BGP
+## <a name="bgp"></a>BGP
 
 [AZURE.INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)] 
 
@@ -260,7 +265,7 @@ Igen, ez támogatott. További információk: [Párhuzamosan fennálló ExpressR
 
 ### Ha a virtuális gépem egy virtuális hálózaton található, és rendelkezem egy létesítmények közötti kapcsolattal, hogyan csatlakozhatok a virtuális géphez?
 
-Több lehetősége van. Ha az RDP engedélyezve van, és létrehozott egy végpontot, a virtuális IP-címmel csatlakozhat a virtuális géphez. Ebben az esetben meg kell adnia a virtuális IP-címet és a portot, amelyhez csatlakozni szeretne, a virtuális gép portját pedig konfigurálnia kell az adatátvitelhez. Általános esetben ehhez lépjen a klasszikus Azure portálra, és mentse az RDP-kapcsolat beállításait a számítógépén. Ezek a beállítások tartalmazzák majd a szükséges kapcsolati információkat.
+Több lehetősége van. Ha az RDP engedélyezve van, és létrehozott egy végpontot, a virtuális IP-címmel csatlakozhat a virtuális géphez. Ebben az esetben meg kell adnia a virtuális IP-címet és a portot, amelyhez csatlakozni szeretne, a virtuális gép portját pedig konfigurálnia kell az adatátvitelhez. Általános esetben ehhez lépjen a klasszikus Azure portálra, és mentse az RDP-kapcsolat beállításait a számítógépén. Ezek a beállítások tartalmazzák a szükséges kapcsolati információkat.
 
 Ha a virtuális hálózatán konfigurálva van létesítmények közötti kapcsolat, a belső dedikált IP-címmel vagy magánhálózati IP-címmel csatlakozhat a virtuális géphez. A belső dedikált IP-címmel egy, a virtuális hálózaton található másik virtuális gépről is csatlakoztathat a virtuális géphez. Ha a virtuális hálózatán kívüli helyről csatlakozik, nem használhatja az RDP-t a virtuális gépéhez való csatlakozáshoz a dedikált IP-címmel. Ha például pont–hely virtuális hálózatot konfigurált, és nem létesít kapcsolatot a számítógépéről, nem csatlakozhat a virtuális gépéhez a dedikált IP-címmel.
 
@@ -272,15 +277,10 @@ Nem. Csak az az adatforgalom fog áthaladni a virtuális hálózati átjárón, 
 ## Virtual Network – gyakori kérdések
 
 A virtuális hálózatokkal kapcsolatos további információk: [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md) (Virtual Network – gyakori kérdések).
-
-## Következő lépések
-
-További információk a VPN-átjárókról: [About VPN gateways](https://azure.microsoft.com/documentation/services/vpn-gateway/) (Információk a VPN-átjárókról).
-
  
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

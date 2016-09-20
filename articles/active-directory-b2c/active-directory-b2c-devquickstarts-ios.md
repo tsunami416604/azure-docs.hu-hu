@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure Active Directory B2C előzetes verzió: webes API meghívása iOS-alkalmazásból | Microsoft Azure"
-    description="A cikkből megtanulhatja, hogyan hozzon létre olyan „tennivalólista” típusú iOS-alkalmazást, amely OAuth 2.0-s tulajdonosi jogkivonatok segítségével képes meghívni egy Node.js webes API-t. Az iOS-alkalmazás és a webes API egyaránt az Azure Active Directory B2C-t használja a felhasználói identitások kezelésére, valamint a felhasználók hitelesítésére."
+    pageTitle="Azure Active Directory B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával | Microsoft Azure"
+    description="A cikkből megtanulhatja, hogyan hozzon létre olyan „tennivalólista” típusú iOS-alkalmazást, amely OAuth 2.0 tulajdonosi jogkivonatok segítségével képes meghívni egy Node.js webes API-t külső fejlesztőktől származó kódtárak használatával."
     services="active-directory-b2c"
     documentationCenter="ios"
     authors="brandwe"
@@ -9,23 +9,23 @@
 
 <tags ms.service="active-directory-b2c" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="objectivec" ms.topic="hero-article"
 
-    ms.date="05/31/2016"
+    ms.date="07/26/2016"
     ms.author="brandwe"/>
 
-# Azure AD B2C előzetes verzió: webes AI meghívása iOS-alkalmazásból
+# Azure AD B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával
 
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-Az Azure Active Directory (Azure AD) B2C használatával mindössze néhány lépés elvégzésével hatékony önkiszolgáló identitáskezelési funkciókat adhat iOS-alkalmazásaihoz és webes API-jaihoz. A cikkből megtudhatja, hogyan hozzon létre olyan „tennivalólista” típusú iOS-alkalmazást, amely OAuth 2.0-s tulajdonosi jogkivonatok segítségével képes behívni egy Node.js webes API-t. Az iOS-alkalmazás és a webes API egyaránt az AD B2C-t használja a felhasználói identitások kezelésére, valamint a felhasználók hitelesítésére.
+A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Így a fejlesztők bármilyen típusú kódtárat integrálhatnak szolgáltatásainkkal. Hogy segítséget nyújtsunk a fejlesztőknek platformunk más kódtárakkal való használatában, több különböző útmutatót is írtunk, amelyekből megtudhatják, hogy hogyan kell beállítani úgy a külső fejlesztőktől származó kódtárakat, hogy azok kapcsolódni tudjanak a Microsoft identitásplatformjához. Az [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) használó legtöbb kódtár képes lesz kapcsolódni a Microsoft identitásplatformjához.
 
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-> [AZURE.NOTE]
-    A jelen gyorsútmutató teljes körű elvégzéséhez az szükséges, hogy Ön rendelkezzen egy Azure AD B2C által védett webes API-val. Mi építettünk egyet a .NET-hez és a Node.js-hez is, amelyet használhat. Ez az útmutató azt veszi alapul, hogy a Node.js webes API-mintát használja. További információkért olvassa el az [Azure Active Directory web API for Node.js sample](active-directory-b2c-devquickstarts-api-node.md) (Azure Active Directory webes API-minta Node.js-hez) című cikket.
-).
+Ha csak most ismerkedik az OAuth2 vagy az OpenID Connect használatával, előfordulhat, hogy nem fogja tökéletesen érteni a konfigurációs lépéseket. Ebben az esetben javasoljuk, hogy olvassa el [a protokoll áttekintését, amelyet itt talál](active-directory-b2c-reference-protocols.md).
 
 > [AZURE.NOTE]
-    A cikk nem tér ki az Azure AD B2C segítségével megvalósítható bejelentkezési, regisztrációs és profilkezelési műveletekre. A cikk a webes API-knak a felhasználó hitelesítését követő meghívásával foglalkozik. Ha még nem tette meg, az Azure AD B2C alapjainak megismerése érdekében végezze el a következő oktatóanyagot: [.NET web app get started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md) (Bevezetés a .NET-es webalkalmazásokba). 
+    Platformunknak a szabványokban leképzett több funkciójához (például a feltételes hozzáféréshez vagy az Intune-szabályzatok felügyeletéhez) a nyílt forráskódú Microsoft Azure identitáskódtárainkat is használnia kell. 
+   
+A B2C platform nem támogatja az összes Azure Active Directory-forgatókönyvet és funkciót.  Ha nem biztos benne, hogy érdemes-e a B2C platformot használnia, olvassa el a [B2C korlátozásait](active-directory-b2c-limitations.md).
+
 
 ## Az Azure AD B2C-címtár beszerzése
 
@@ -35,585 +35,600 @@ Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt.
 
 A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez biztosítja az alkalmazással történő biztonságos kommunikációhoz szükséges információkat az Azure AD számára. Az ügyfélalkalmazást és a webes API-t egyetlen **alkalmazásazonosító** képviseli, mivel a két elem közös logikai alkalmazássá áll össze. Az alkalmazást a következő [utasítások](active-directory-b2c-app-registration.md) alapján hozza létre. Ügyeljen arra, hogy:
 
-- Az alkalmazás tartalmazzon egy **webalkalmazást vagy webes API-t**.
-- A **Reply URL** (Válasz URL-cím) legyen a következő: `http://localhost:3000/auth/openid/return`. Ez a kódminta alapértelmezett URL-címe.
-- Hozzon létre egy **alkalmazástitkot** az alkalmazáshoz, majd másolja. Erre később még szüksége lesz.
+- Az alkalmazáshoz tartozzon egy **mobileszköz**.
 - Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Később erre is szüksége lesz.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## Szabályzatok létrehozása
+## Házirendek létrehozása
 
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Az alkalmazás három különböző, identitással kapcsolatos műveletet tartalmaz: regisztráció, bejelentkezés és bejelentkezés Facebook-fiókkal. Mindháromhoz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) leírtak szerint. A három szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directory-b2c-reference-policies.md) határoznak meg. Az alkalmazás egyetlen identitással kapcsolatos interakciót tartalmaz: egy kombinált regisztrációs és bejelentkezési folyamatot. Az összes típushoz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) leírtak szerint. A szabályzat létrehozásakor ügyeljen arra, hogy:
 
-- A regisztrációs szabályzatban adja meg a **Megjelenített név** értékét, illetve a regisztrációs attribútumokat.
+- A szabályzatban adja meg a **Megjelenített név** értékét, illetve a regisztrációs attribútumokat.
 - Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet. Ezenfelül más jogcímeket is használhat.
-- Az egyes házirendek létrehozása után másolja a házirend **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A házirendek nevére később még szüksége lesz.
+- Az egyes házirendek létrehozása után másolja a házirend **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A szabályzat nevére később még szüksége lesz.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-A három szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
+A szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
 
-Felhívjuk figyelmét, hogy ebben a cikkben nem foglalkozunk a létrehozott szabályzatok használatával. Ha szeretné megismerni a szabályzatoknak az Azure AD B2C alatti működését, végezze el a [.NET-es webalkalmazások használatába bevezető oktatóanyagot](active-directory-b2c-devquickstarts-web-dotnet.md).
 
 ## A kód letöltése
 
-Az oktatóanyag kódjának [kezelése a GitHubon történik](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS). A minta menet közbeni létrehozásához [töltse le a projekt vázát tartalmazó .zip-fájlt](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/skeleton.zip). A vázprojektet klónozhatja is:
+Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c).  Hogy követni tudja a lépéseket, [töltse le .zip-fájlként az alkalmazást](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c)/archive/master.zip), vagy klónozza:
 
 ```
-git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS.git
+git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-> [AZURE.NOTE] **Az oktatóanyag elvégzéséhez le kell töltenie a vázat.** Mivel teljes funkcionalitású iOS-alkalmazást létrehozni rendkívül összetett feladat, a **váz** tartalmazza a felhasználói élmény kódját, amely futtatható az oktatóanyag elvégzése után. Ezzel a fejlesztő időt takarít meg. A felhasználói élmény kódjának ismertetése nem tartozik a B2C iOS-alkalmazáshoz adásának témaköréhez.
+Vagy egyszerűen csak töltse le az elkészült kódot, és már kezdheti is: 
 
-A kész alkalmazás [.zip-fájlként](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip) vagy az adott tárház `complete` ágában is elérhető.
+```
+git clone --branch complete git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
+```
 
-Következő lépésként a CocoaPods segítségével töltse be a következőt: `podfile`. Ezzel létrehoz egy új Xcode-munkaterületet. Ha nem rendelkezik a CocoaPods programmal, [keresse fel a webhelyét, és töltse le a szoftvert](https://cocoapods.org).
+## A külső fejlesztőtől származó nxoauth2 kódtár letöltése és a munkaterület elindítása
+
+Ebben az útmutatóban a GitHubon található OAuth2Client nevű, Mac OS X-hez és iOS-hez (Cocoa és Cocoa touch) készült OAuth2-kódtárat fogjuk használni. A kódtár az OAuth2 specifikációinak 10-es tervezetén alapul. Célja a natív alkalmazásprofil implementálása, valamint a végfelhasználót hitelesítő végpont támogatása. Ezekre mind szükség lesz a Microsoft identitásplatformjával való integrációhoz.
+
+### A kódtár hozzáadása a projekthez a CocoaPods segítségével
+
+A CocoaPods egy Xcode-projektekhez készült függőségkezelő. Automatikusan képes elvégezi a fenti telepítési lépéseket.
+
+```
+$ vi Podfile
+```
+Adja hozzá a következőt a pod-fájlhoz:
+
+```
+ platform :ios, '8.0'
+ 
+ target 'SampleforB2C' do
+ 
+ pod 'NXOAuth2Client'
+ 
+ end
+```
+
+Ezt követően töltse be a pod-fájlt a CocoaPods segítségével. Ezzel létrehozza az új XCode-munkaterületet, amelyet később be fog tölteni.
 
 ```
 $ pod install
 ...
-$ open Microsoft Tasks for Consumers.xcworkspace
-```
-
-## Az iOS-feladatalkalmazás konfigurálása
-
-Ahhoz, hogy az iOS-feladatalkalmazás kommunikálni tudjon az Azure AD B2C-vel, meg kell adnia néhány általános paramétert. A `Microsoft Tasks` mappában, a projekt gyökérkönyvtárában nyissa meg a `settings.plist` fájlt, és cserélje le a `<dict>` szakaszban szereplő értékeket. Ezeket az értékeket az alkalmazás számos részében használni fogjuk.
+$ open SampleforB2C.xcworkspace
 
 ```
+
+## A projekt struktúrája
+
+A vázban a következő struktúrát állítottuk be a projekthez:
+
+* **Főnézet**, amelyhez munkaablak is tartozik
+* **Tevékenység hozzáadása nézet**, amely a kiválasztott feladat adatait tartalmazza
+* **Bejelentkezési nézet**, amelyből a felhasználók bejelentkezhetnek az alkalmazásba.
+
+Az útmutató során hitelesítést fogunk adni a projektben szereplő különböző fájlokhoz. A kód más részei, például a vizuális kód nem fontos az identitáskezelés szempontjából, ezért ezt készen bocsátjuk rendelkezésre.
+
+## Az alkalmazáshoz tartozó `settings.plist` fájl létrehozása
+
+Leegyszerűsíti az alkalmazás konfigurálását, ha egyetlen központi helyen tároljuk az összes konfigurációs értékét. Ez ráadásul segít jobban átlátni, hogy mire szolgálnak az egyes beállítások az alkalmazásban. Az értékeket a *Tulajdonságlista* segítségével adjuk át az alkalmazásnak.
+
+* Nyissa meg/hozza létre a `settings.plist` fájlt az alkalmazás munkaterületének `Supporting Files` részén.
+
+* Adja meg az alábbi értékeket (ezeket hamarosan részletesen is elmagyarázzuk).
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
 <dict>
-    <key>authority</key>
-    <string>https://login.microsoftonline.com/<your tenant name>.onmicrosoft.com/</string>
-    <key>clientId</key>
-    <string><Enter the Application Id assigned to your app by the Azure portal, e.g.580e250c-8f26-49d0-bee8-1c078add1609></string>
-    <key>scopes</key>
-    <array>
-        <string><Enter the Application Id assigned to your app by the Azure portal, e.g.580e250c-8f26-49d0-bee8-1c078add1609></string>
-    </array>
-    <key>additionalScopes</key>
-    <array>
-    </array>
-    <key>redirectUri</key>
+    <key>accountIdentifier</key>
+    <string>B2C_Acccount</string>
+    <key>clientID</key>
+    <string><client ID></string>
+    <key>clientSecret</key>
+    <string></string>
+    <key>authURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/authorize?p=<policy name></string>
+    <key>loginURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/login</string>
+    <key>bhh</key>
     <string>urn:ietf:wg:oauth:2.0:oob</string>
-    <key>taskWebAPI</key>
-    <string>http://localhost/tasks:3000</string>
-    <key>emailSignUpPolicyId</key>
-    <string><Enter your sign up policy name, e.g.g b2c_1_sign_up></string>
-    <key>faceBookSignInPolicyId</key>
-    <string><your sign in policy for FB></string>
-    <key>emailSignInPolicyId</key>
-    <string><Enter your sign in policy name, e.g. b2c_1_sign_in></string>
-    <key>fullScreen</key>
-    <false/>
-    <key>showClaims</key>
-    <true/>
+    <key>tokenURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/token?p=<policy name></string>
+    <key>keychain</key>
+    <string>com.microsoft.azureactivedirectory.samples.graph.QuickStart</string>
+    <key>contentType</key>
+    <string>application/x-www-form-urlencoded</string>
+    <key>taskAPI</key>
+    <string>https://aadb2cplayground.azurewebsites.net</string>
 </dict>
 </plist>
 ```
 
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
+Nézzük az értékek részletezését.
 
-## Hozzáférési jogkivonat lekérése és a feladat-API meghívása
 
-Ebben a részben leírjuk, hogyan végezhet OAuth 2.0 jogkivonatcserét egy webalkalmazásban a Microsoft kódtárai és keretrendszerei segítségével. Ha nincs tisztában a hitelesítési kódok és a hozzáférési jogkivonatok működésével, az [OAuth 2.0 protokoll referenciájában](active-directory-b2c-reference-protocols.md) további információkhoz juthat.
+Az `authURL`, `loginURL`, `bhh` és `tokenURL` értékeknél láthatta, hogy a bérlő nevét kellett megadnia. Ez annak a B2C-bérlőnek a bérlőneve, amelyet Önhöz rendeltek. Például `kidventusb2c.onmicrosoft.com`. Ha a Microsoft Azure identitáskódtárait használja, ezt az információt metaadatvégpontunk segítségével kérjük le Önnek. A nehezét, azaz az értékek kinyerését mi végezzük Ön helyett.
 
-### Fejlécfájlok létrehozása metódusok segítségével
+A B2C-bérlőnevekkel kapcsolatos részletes információkért lásd: [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md).
 
-A kiválasztott szabályzatot tartalmazó jogkivonat lekéréséhez, valamint a feladatkiszolgáló meghívásához metódusok használata szükséges. Most ezeket állítjuk be.
+A `keychain` érték azt a tárolót adja meg, amelyet az NXOAuth2Client kódtár a jogkivonatok tárolására szolgáló kulcslánc létrehozásához fog használni. Ha több alkalmazásra érvényes egyszeri bejelentkezést (SSO-t) szeretne használni, adja meg az összes alkalmazásban ugyanezt a kulcsláncot, valamint az XCode-jogosultságokban kérelmezze a kulcslánc használatát. Ennek módját az Apple dokumentációja írja le.
 
-Hozzon létre egy `samplesWebAPIConnector.h` nevű fájlt az Xcode projekt alatt, a `/Microsoft Tasks` mappában.
+Az egyes URL-címek végén szereplő `<policy name>` azokat a helyeket jelöli, ahová a fentiekben létrehozott szabályzat kerül. Az alkalmazás a folyamattól függően meghívja ezeket a szabályzatokat.
 
-Adja hozzá az alábbi kódot, amely meghatározza a teendőket:
+A `taskAPI` az a REST-végpont, amelyet a B2C-jogkivonat segítségével feladatok hozzáadása vagy meglévő feladatok lekérdezése céljából meghívunk. Ezt itt kifejezetten ehhez a mintához állítottuk be, ezért nem szükséges módosítani.
 
-```
+A többi érték a kódtár használatát segíti elő, és olyan helyeket biztosít, amelyek segítségével átadhatja az értékeket a kontextusnak.
+
+Most, hogy létrehoztuk a `settings.plist` fájlt, már csak a kódra van szükség, hogy be tudjuk olvasni.
+
+## AppData osztály létrehozása a beállítások beolvasása érdekében
+
+Hozzunk létre egy egyszerű fájlt, amely elemzi a fentiekben elkészített `settngs.plist` fájlt, és a jövőben bármilyen osztály számára elérhetővé teszi a beállításokat. Mivel nem szeretnénk újabb és újabb másolatot létrehozni az adatokból minden alkalommal, amikor egy osztály lekéri azokat, egy Singleton-mintát fogunk használni, amely mindig ugyanazt a példányt adja vissza a beállításokra vonatkozó kéréseknek.
+
+* Hozzon létre egy `AppData.h` fájlt:
+
+```objc
 #import <Foundation/Foundation.h>
-#import "samplesTaskItem.h"
-#import "samplesPolicyData.h"
-#import "ADALiOS/ADAuthenticationContext.h"
 
-@interface samplesWebAPIConnector : NSObject<NSURLConnectionDataDelegate>
+@interface AppData : NSObject
 
-+(void) getTaskList:(void (^) (NSArray*, NSError* error))completionBlock
-             parent:(UIViewController*) parent;
+@property(strong) NSString *accountIdentifier;
+@property(strong) NSString *taskApiString;
+@property(strong) NSString *authURL;
+@property(strong) NSString *clientID;
+@property(strong) NSString *loginURL;
+@property(strong) NSString *bhh;
+@property(strong) NSString *keychain;
+@property(strong) NSString *tokenURL;
+@property(strong) NSString *clientSecret;
+@property(strong) NSString *contentType;
 
-+(void) addTask:(samplesTaskItem*)task
-         parent:(UIViewController*) parent
-completionBlock:(void (^) (bool, NSError* error)) completionBlock;
-
-+(void) deleteTask:(samplesTaskItem*)task
-            parent:(UIViewController*) parent
-   completionBlock:(void (^) (bool, NSError* error)) completionBlock;
-
-+(void) doPolicy:(samplesPolicyData*)policy
-         parent:(UIViewController*) parent
-completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionBlock;
-
-+(void) signOut;
++ (id)getInstance;
 
 @end
 ```
 
-Ezek egyszerű, létrehozás, olvasás, frissítés és törlés (CRUD) típusú műveletek az API-n, valamint a következő metódus: `doPolicy`. A metódus segítségével kérheti le a használni kívánt szabályzathoz tartozó jogkivonatot.
+* Hozzon létre egy `AppData.m` fájlt:
 
-Ezenfelül két másik fejlécfájlt is létre kell hozni. Ezek tartalmazzák a feladatelemeket és a szabályzat adatait. Hozza létre most ezeket:
+```objc
+#import "AppData.h"
 
-Hozza létre a `samplesTaskItem.h` fájlt a következő kóddal:
+@implementation AppData
+
++ (id)getInstance {
+  static AppData *instance = nil;
+  static dispatch_once_t onceToken;
+
+  dispatch_once(&onceToken, ^{
+    instance = [[self alloc] init];
+
+    NSDictionary *dictionary = [NSDictionary
+        dictionaryWithContentsOfFile:[[NSBundle mainBundle]
+                                         pathForResource:@"settings"
+                                                  ofType:@"plist"]];
+    instance.accountIdentifier = [dictionary objectForKey:@"accountIdentifier"];
+    instance.clientID = [dictionary objectForKey:@"clientID"];
+    instance.clientSecret = [dictionary objectForKey:@"clientSecret"];
+    instance.authURL = [dictionary objectForKey:@"authURL"];
+    instance.loginURL = [dictionary objectForKey:@"loginURL"];
+    instance.bhh = [dictionary objectForKey:@"bhh"];
+    instance.tokenURL = [dictionary objectForKey:@"tokenURL"];
+    instance.keychain = [dictionary objectForKey:@"keychain"];
+    instance.contentType = [dictionary objectForKey:@"contentType"];
+    instance.taskApiString = [dictionary objectForKey:@"taskAPI"];
+
+  });
+
+  return instance;
+}
+@end
+```
+
+Ettől kezdve (ahogy azt lentebb látni fogjuk), minden osztályból elég egy `  AppData *data = [AppData getInstance];` hívás az adatok beszerzéséhez.
+
+
+
+## Az NXOAuth2Client kódtár beállítása az AppDelegate-ben
+
+Az NXOAuthClient kódtár beállításához különböző értékek szükségesek. Ha ezeket megadta, a létrejövő jogkivonat segítségével meghívhatja a REST API-t. Mivel tudjuk, hogy az alkalmazás betöltésekor a rendszer mindig meghívja az `AppDelegate`-et, logikus lépés ebben a fájlban elhelyezni a konfigurációs értékeket.
+* Nyissa meg az `AppDelegate.m` fájlt.
+
+* Importálja azokat a fejlécfájlokat, amelyeket később fogunk használni.
+
+```objc
+#import "NXOAuth2.h" // the Identity library we are using
+#import "AppData.h" // the class we just created we will use to load the settings of our application
+```
+
+* Adja hozzá a `setupOAuth2AccountStore` metódust az AppDelegate-hez.
+
+Létre kell hoznunk egy AccountStore-t, és átadni ennek a `settings.plist` fájlból beolvasott adatokat.
+
+Itt meg kell említenünk néhány dolgot a B2C szolgáltatással kapcsolatban, amely segít érthetőbbé tenni az alábbi kódot:
+
+
+1. Az Azure AD B2C a lekérdezési paraméterek által biztosított módon használja a *szabályzatot* a kérések teljesítésére. Így az Azure Active Directory független, kizárólag az Ön alkalmazásához kapcsolódó szolgáltatásként tud működni. Ahhoz, hogy megadhassuk ezeket a további lekérdezési paramétereket, el kell látnunk a `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` metódust szabályzatunk egyedi paramétereivel. 
+
+2. Az Azure AD B2C a többi OAuth2-kiszolgálókhoz rendkívül hasonló módon kezeli a hatóköröket. Mivel azonban a B2C használatának célja nemcsak a felhasználók hitelesítése, hanem legalább ilyen mértékben az erőforrások elérhetővé tétele is, ahhoz, hogy a folyamat megfelelően működjön, bizonyos hatókörökre feltétlenül szükség van. Ilyen az `openid` hatókör. A Microsoft identitáskezelő SDK-i automatikusan elérhetővé teszik az `openid` hatókört, így ez itt nem szerepel az SDK konfigurációjában. Mivel azonban külső fejlesztőtől származó kódtárat használunk, ezúttal meg kell adnunk ezt a hatókört.
+
+```objc
+- (void)setupOAuth2AccountStore {
+  AppData *data = [AppData getInstance]; // The singleton we use to get the settings
+
+  NSDictionary *customHeaders =
+      [NSDictionary dictionaryWithObject:@"application/x-www-form-urlencoded"
+                                  forKey:@"Content-Type"];
+
+  // Azure B2C needs
+  // kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters for
+  // sending policy to the server,
+  // therefore we use -setConfiguration:forAccountType:
+  NSDictionary *B2cConfigDict = @{
+    kNXOAuth2AccountStoreConfigurationClientID : data.clientID,
+    kNXOAuth2AccountStoreConfigurationSecret : data.clientSecret,
+    kNXOAuth2AccountStoreConfigurationScope :
+        [NSSet setWithObjects:@"openid", data.clientID, nil],
+    kNXOAuth2AccountStoreConfigurationAuthorizeURL :
+        [NSURL URLWithString:data.authURL],
+    kNXOAuth2AccountStoreConfigurationTokenURL :
+        [NSURL URLWithString:data.tokenURL],
+    kNXOAuth2AccountStoreConfigurationRedirectURL :
+        [NSURL URLWithString:data.bhh],
+    kNXOAuth2AccountStoreConfigurationCustomHeaderFields : customHeaders,
+    //      kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:customAuthenticationParameters
+  };
+
+  [[NXOAuth2AccountStore sharedStore] setConfiguration:B2cConfigDict
+                                        forAccountType:data.accountIdentifier];
+}
+```
+Ezt követően állítsa be, hogy az AppDelegate is meghívja a hatókört a `didFinishLaunchingWithOptions:` metódus részeként. 
 
 ```
-#import <Foundation/Foundation.h>
+[self setupOAuth2AccountStore];
+```
 
-@interface samplesTaskItem : NSObject
 
-@property NSString *itemName;
-@property NSString *ownerName;
-@property BOOL completed;
-@property (readonly) NSDate *creationDate;
+## A hitelesítési kérések kezelésére szolgáló `LoginViewController` osztály létrehozása
+
+A fiókkal történő bejelentkezéshez webnézetet használunk. Így felszólíthatjuk a felhasználót különféle további tényezők (például, ha beállítja, SMS-üzenetek) használatára, illetve megjeleníthetjük számára az esetleges hibaüzeneteket. Most beállítjuk a webnézetet, majd később megírjuk a kódot, amely kezelni fogja a webnézetben a Microsoft identitásszolgáltatásától érkező visszahívásokat.
+
+* Hozzon létre egy `LoginViewController.h` osztályt.
+
+```objc
+@interface LoginViewController : UIViewController <UIWebViewDelegate>
+@property(weak, nonatomic) IBOutlet UIWebView *loginView; // Our webview that we will use to do authentication
+
+- (void)handleOAuth2AccessResult:(NSURL *)accessResult; // Allows us to get a token after we've received an Access code.
+- (void)setupOAuth2AccountStore; // We will need to add to our OAuth2AccountStore we setup in our AppDelegate
+- (void)requestOAuth2Access; // This is where we invoke our webview.
+```
+
+Az egyes metódusokat alább fogjuk létrehozni.
+
+> [AZURE.NOTE] 
+    Ne felejtse el összekötni a `loginView`-t a forgatókönyvben szereplő tényleges webnézettel. Ellenkező esetben a webnézet nem fog megjelenni, amikor hitelesítést kell kérni.
+
+* Hozzon létre egy `LoginViewController.m` osztályt.
+
+* Adjon hozzá változókat, amelyek átadják az állapotokat a hitelesítés során.
+
+```objc
+NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory 
+NSURL *myLoadedUrl; \\ The URL loaded for Azure Active Directory
+bool loginFlow = FALSE; 
+bool isRequestBusy; \\ A way to give status to the thread that the request is still happening
+NSURL *authcode; \\ A placeholder for our auth code.
+```
+
+* Írja felül a webnézet metódusait a hitelesítés kezeléséhez.
+
+Be kell állítanunk, hogy a webnézet mit tegyen, amikor a felhasználók be szeretnének jelentkezni a fentiekben leírtak szerint. Egyszerűen másolja a fájlba az alábbi kódot.
+
+```objc
+- (void)resolveUsingUIWebView:(NSURL *)URL {
+  // We get the auth token from a redirect so we need to handle that in the
+  // webview.
+
+  if (![NSThread isMainThread]) {
+    [self performSelectorOnMainThread:@selector(resolveUsingUIWebView:)
+                           withObject:URL
+                        waitUntilDone:YES];
+    return;
+  }
+
+  NSURLRequest *hostnameURLRequest =
+      [NSURLRequest requestWithURL:URL
+                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                   timeoutInterval:10.0f];
+  isRequestBusy = YES;
+  [self.loginView loadRequest:hostnameURLRequest];
+
+  NSLog(@"resolveUsingUIWebView ready (status: UNKNOWN, URL: %@)",
+        self.loginView.request.URL);
+}
+
+- (BOOL)webView:(UIWebView *)webView
+    shouldStartLoadWithRequest:(NSURLRequest *)request
+                navigationType:(UIWebViewNavigationType)navigationType {
+  AppData *data = [AppData getInstance];
+
+  NSLog(@"webView:shouldStartLoadWithRequest: %@ (%li)", request.URL,
+        (long)navigationType);
+
+  // The webview is where all the communication happens. Slightly complicated.
+
+  myLoadedUrl = [webView.request mainDocumentURL];
+  NSLog(@"***Loaded url: %@", myLoadedUrl);
+
+  // if the UIWebView is showing our authorization URL or consent URL, show the
+  // UIWebView control
+  if ([request.URL.absoluteString rangeOfString:data.authURL
+                                        options:NSCaseInsensitiveSearch]
+          .location != NSNotFound) {
+    self.loginView.hidden = NO;
+  } else if ([request.URL.absoluteString rangeOfString:data.loginURL
+                                               options:NSCaseInsensitiveSearch]
+                 .location != NSNotFound) {
+    // otherwise hide the UIWebView, we've left the authorization flow
+    self.loginView.hidden = NO;
+  } else if ([request.URL.absoluteString rangeOfString:data.bhh
+                                               options:NSCaseInsensitiveSearch]
+                 .location != NSNotFound) {
+    // otherwise hide the UIWebView, we've left the authorization flow
+    self.loginView.hidden = YES;
+    [[NXOAuth2AccountStore sharedStore] handleRedirectURL:request.URL];
+  } else {
+    self.loginView.hidden = NO;
+    // read the Location from the UIWebView, this is how Microsoft APIs is
+    // returning the
+    // authentication code and relation information. This is controlled by the
+    // redirect URL we chose to use from Microsoft APIs
+    // continue the OAuth2 flow
+    // [[NXOAuth2AccountStore sharedStore] handleRedirectURL:request.URL];
+  }
+
+  return YES;
+}
+
+```
+
+* Írja meg az OAuth2-kérés eredményét kezelő kódot.
+
+Szükségünk lesz a kódra, amely képes kezelni a webnézettől visszakapott átirányítási URL-címet. Ha nem jártunk sikerrel, újrapróbálkozunk. Ilyenkor a kódtár megadja a hibát, amelyet aztán megtekinthet a konzolban, vagy aszinkron módon kezelhet. 
+
+```objc
+- (void)handleOAuth2AccessResult:(NSURL *)accessResult {
+  // parse the response for success or failure
+  if (accessResult)
+  // if success, complete the OAuth2 flow by handling the redirect URL and
+  // obtaining a token
+  {
+    [[NXOAuth2AccountStore sharedStore] handleRedirectURL:accessResult];
+  } else {
+    // start over
+    [self requestOAuth2Access];
+  }
+}
+```
+
+* Állítson be értesítési példányosító metódusokat.
+
+Ugyanazt a metódust állítjuk be, mint fent, az `AppDelegate` esetében, de ezúttal néhány `NSNotification` hozzáadásával elérjük, hogy a metódus tájékoztasson minket arról, hogy mi történik a szolgáltatásban. Beállítunk egy figyelőt, amely közli, ha bármi módosul a jogkivonatban. Ha megvan a jogkivonat, visszaléptetjük a felhasználót a `masterView`-be.
+
+
+
+```objc
+- (void)setupOAuth2AccountStore {
+  [[NSNotificationCenter defaultCenter]
+      addObserverForName:NXOAuth2AccountStoreAccountsDidChangeNotification
+                  object:[NXOAuth2AccountStore sharedStore]
+                   queue:nil
+              usingBlock:^(NSNotification *aNotification) {
+                if (aNotification.userInfo) {
+                  // account added, we have access
+                  // we can now request protected data
+                  NSLog(@"Success!! We have an access token.");
+                  dispatch_async(dispatch_get_main_queue(), ^{
+
+                    MasterViewController *masterViewController =
+                        [self.storyboard
+                            instantiateViewControllerWithIdentifier:@"master"];
+                    [self.navigationController
+                        pushViewController:masterViewController
+                                  animated:YES];
+                  });
+                } else {
+                  // account removed, we lost access
+                }
+              }];
+
+  [[NSNotificationCenter defaultCenter]
+      addObserverForName:NXOAuth2AccountStoreDidFailToRequestAccessNotification
+                  object:[NXOAuth2AccountStore sharedStore]
+                   queue:nil
+              usingBlock:^(NSNotification *aNotification) {
+                NSError *error = [aNotification.userInfo
+                    objectForKey:NXOAuth2AccountStoreErrorKey];
+                NSLog(@"Error!! %@", error.localizedDescription);
+              }];
+}
+
+```
+* Adja hozzá a kódot, amely kezeli a felhasználót, amikor sign-native kérést kezdeményeznek.
+
+Hozzuk létre a metódust, amelyet a rendszer meghív, ha hitelesítési kérést kap. Ez lesz az a metódus, amely ténylegesen létrehozza a webnézetet.
+
+```objc
+- (void)requestOAuth2Access {
+  AppData *data = [AppData getInstance];
+
+  // in order to login to Mircosoft APIs using OAuth2 we must show an embedded
+  // browser (UIWebView)
+  [[NXOAuth2AccountStore sharedStore]
+           requestAccessToAccountWithType:data.accountIdentifier
+      withPreparedAuthorizationURLHandler:^(NSURL *preparedURL) {
+        // navigate to the URL returned by NXOAuth2Client
+
+        NSURLRequest *r = [NSURLRequest requestWithURL:preparedURL];
+        [self.loginView loadRequest:r];
+      }];
+}
+```
+
+* Végül állítsuk be, hogy a rendszer a `LoginViewController` betöltésekor mindig meghívja a fentiekben megírt összes metódust. Ezt úgy érjük el, hogy hozzáadjuk a metódusokat az Apple-től kapott `viewDidLoad` metódushoz.
+
+```objc
+  [super viewDidLoad];
+  // Do any additional setup after loading the view.
+
+  // OAuth2 Code
+
+  self.loginView.delegate = self;
+  [self requestOAuth2Access];
+  [self setupOAuth2AccountStore];
+  NSURLCache *URLCache =
+      [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
+                                    diskCapacity:20 * 1024 * 1024
+                                        diskPath:nil];
+  [NSURLCache setSharedURLCache:URLCache];
+```
+
+Ezzel létrehoztuk a fő módszert, amellyel bejelentkezés céljából interakcióba lehet lépni az alkalmazással. A bejelentkezést követően használni kell a kapott jogkivonatokat. Ehhez meg kell írnunk némi segédkódot, amely a kódtár használatával meghívja a REST API-kat.
+
+
+## Hozzon létre egy `GraphAPICaller` osztályt, amely kezeli a REST API felé irányuló kéréseket.
+
+Elértük, hogy a rendszer az alkalmazás megnyitásakor betöltse a konfigurációt. Most ezzel kell tennünk valamit, ha megkaptuk a jogkivonatot. 
+
+* Hozzon létre egy `GraphAPICaller.h` fájlt.
+
+```objc
+@interface GraphAPICaller : NSObject <NSURLConnectionDataDelegate>
+
++ (void)addTask:(Task *)task
+completionBlock:(void (^)(bool, NSError *error))completionBlock;
+
++ (void)getTaskList:(void (^)(NSMutableArray *, NSError *error))completionBlock;
 
 @end
 ```
 
-Hozza létre a `samplesPolicyData.h` fájlt is, amely a szabályzati adatokat fogja tárolni:
+Ebből a kódból látható, hogy két metódust fogunk létrehozni: egyet a feladatok lekérésre az API-tól, egy másikat pedig feladatok API-hoz adására.
 
-```
-#import <Foundation/Foundation.h>
+Most, hogy beállítottuk az interfészt, adjuk hozzá a tényleges implementációt:
 
-@interface samplesPolicyData : NSObject
+* Hozzon létre egy `GraphAPICaller.m file`
 
-@property (strong) NSString* policyName;
-@property (strong) NSString* policyID;
+```objc
+@implementation GraphAPICaller
 
-+(id) getInstance;
+// 
+// Gets the tasks from our REST endpoint we specified in settings
+//
+
++ (void)getTaskList:(void (^)(NSMutableArray *, NSError *))completionBlock
+
+{
+  AppData *data = [AppData getInstance];
+
+  NSString *taskURL =
+      [NSString stringWithFormat:@"%@%@", data.taskApiString, @"/api/tasks"];
+
+  NXOAuth2AccountStore *store = [NXOAuth2AccountStore sharedStore];
+  NSMutableArray *Tasks = [[NSMutableArray alloc] init];
+
+  NSArray *accounts = [store accountsWithAccountType:data.accountIdentifier];
+  [NXOAuth2Request performMethod:@"GET"
+      onResource:[NSURL URLWithString:taskURL]
+      usingParameters:nil
+      withAccount:accounts[0]
+      sendProgressHandler:^(unsigned long long bytesSend,
+                            unsigned long long bytesTotal) {
+        // e.g., update a progress indicator
+      }
+      responseHandler:^(NSURLResponse *response, NSData *responseData,
+                        NSError *error) {
+        // Process the response
+        if (!error) {
+          NSDictionary *dataReturned =
+              [NSJSONSerialization JSONObjectWithData:responseData
+                                              options:0
+                                                error:nil];
+          NSLog(@"Graph Response was: %@", dataReturned);
+
+          if ([dataReturned count] != 0) {
+
+            for (NSMutableDictionary *theTask in dataReturned) {
+
+              Task *t = [[Task alloc] init];
+              t.name = [theTask valueForKey:@"Text"];
+
+              [Tasks addObject:t];
+            }
+          }
+
+          completionBlock(Tasks, nil);
+        } else {
+          completionBlock(nil, error);
+        }
+
+      }];
+}
+
+// 
+// Adds a task from our REST endpoint we specified in settings
+//
+
++ (void)addTask:(Task *)task
+completionBlock:(void (^)(bool, NSError *error))completionBlock {
+
+  AppData *data = [AppData getInstance];
+
+  NSString *taskURL =
+      [NSString stringWithFormat:@"%@%@", data.taskApiString, @"/api/tasks"];
+
+  NXOAuth2AccountStore *store = [NXOAuth2AccountStore sharedStore];
+  NSDictionary *params = [self convertParamsToDictionary:task.name];
+
+  NSArray *accounts = [store accountsWithAccountType:data.accountIdentifier];
+  [NXOAuth2Request performMethod:@"POST"
+      onResource:[NSURL URLWithString:taskURL]
+      usingParameters:params
+      withAccount:accounts[0]
+      sendProgressHandler:^(unsigned long long bytesSend,
+                            unsigned long long bytesTotal) {
+        // e.g., update a progress indicator
+      }
+      responseHandler:^(NSURLResponse *response, NSData *responseData,
+                        NSError *error) {
+        // Process the response
+        if (responseData) {
+          NSDictionary *dataReturned =
+              [NSJSONSerialization JSONObjectWithData:responseData
+                                              options:0
+                                                error:nil];
+          NSLog(@"Graph Response was: %@", dataReturned);
+
+          completionBlock(TRUE, nil);
+        } else {
+          completionBlock(FALSE, error);
+        }
+
+      }];
+}
+
++ (NSDictionary *)convertParamsToDictionary:(NSString *)task {
+  NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+
+  [dictionary setValue:task forKey:@"Text"];
+
+  return dictionary;
+}
 
 @end
-```
-### A feladatokra és a szabályzatelemekre vonatkozó implementáció hozzáadása
-
-Most, hogy elkészültek a fejlécfájlok, megírhatja a mintában használt adatok tárolására szolgáló kódot.
-
-Hozza létre a `samplesPolicyData.m` fájlt a következő kóddal:
-
-```
-#import <Foundation/Foundation.h>
-#import "samplesPolicyData.h"
-
-@implementation samplesPolicyData
-
-+(id) getInstance
-{
-    static samplesPolicyData *instance = nil;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        instance = [[self alloc] init];
-        NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
-        instance.policyName = [dictionary objectForKey:@"policyName"];
-        instance.policyID = [dictionary objectForKey:@"policyID"];
-
-
-    });
-
-    return instance;
-}
-
-
-@end
-```
-
-### Beállítási kód megírása az iOS-es ADAL meghívásához
-
-A felhasználói felületi objektumok tárolására szolgáló gyorskód elkészült. A következőkben meg kell írnia a kódot, amely a `settings.plist` fájlban elhelyezett paraméterek használatával meghívja az iOS-es Active Directory Authentication Libraryt (ADAL). Így megkapja a hozzáférési jogkivonatot, amelyet aztán átadhat a feladatkiszolgálónak.
-
-Minden műveletet a következő helyen kell elvégezni: `samplesWebAPIConnector.m`.
-
-Először hozza létre a `doPolicy()`-implementációt, amelyet korábban a `samplesWebAPIConnector.h` fejlécfájlban már megírt:
-
-```
-+(void) doPolicy:(samplesPolicyData *)policy
-         parent:(UIViewController*) parent
-completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionBlock
-{
-    if (!loadedApplicationSettings)
-    {
-        [self readApplicationSettings];
-    }
-
-    [self getClaimsWithPolicyClearingCache:NO policy:policy params:nil parent:parent completionHandler:^(ADProfileInfo* userInfo, NSError* error) {
-
-        if (userInfo == nil)
-        {
-            completionBlock(nil, error);
-        }
-
-        else {
-
-            completionBlock(userInfo, nil);
-        }
-    }];
-
-}
-
-
-```
-
-A metódus felettébb egyszerű. Bemenetei a következők: a létrehozott `samplesPolicyData` objektum, a szülő `ViewController`, illetve egy visszahívás. Minket most a visszahívás érdekel, ezért ezt részletesebben is megnézzük.
-
-- Láthatjuk, hogy a `completionBlock` típusa a következő: `ADProfileInfo`. Ezt a rendszer egy `userInfo` objektum segítségével adja vissza. `ADProfileInfo` típus tárolja a kiszolgáló összes válaszát, köztük a jogcímeket is.
-- Nézze meg a következőt is: `readApplicationSettings`. Ez olvassa be az Ön által a `settings.plist` résznél megadott adatokat.
-- Végül ott a nagyobb `getClaimsWithPolicyClearingCache` metódus. Ez maga az iOS-es ADAL-nak küldendő hívás, amelyet meg kell írnia. Később még visszatérünk rá.
-
-Következő lépésként írja meg a nagyobb metódust: `getClaimsWithPolicyClearingCache`. Ez elég nagy ahhoz, hogy külön fejezetben foglalkozzunk vele.
-
-### Az iOS-es ADAL-nak küldendő hívás létrehozása
-
-A váznak a GitHubról való letöltését követően láthatja, hogy az számos ilyen hívást tartalmaz a mintaalkalmazás létrehozásának megkönnyítése érdekében. Ezek mindegyike a következő mintát követi: `get(Claims|Token)With<verb>ClearningCache`. Mivel az Objective C nyelv konvencióit használják, szinte olyanok, mintha angolul írták volna őket. Például a „Kérd le a jogkivonatot az általam megadott kiegészítő paraméterekkel, és ürítsd ki a gyorsítótárat” parancs a következőképp néz ki: `getTokenWithExtraParamsClearingCache()`.
-
-A „Kérd le a jogcímeket, valamint a jogkivonatot az által megadott szabályzattal, de ne ürítsd a gyorsítótárat” parancs a következőképp néz ki: `getClaimsWithPolicyClearingCache`. Az ADAL mindig elküldi a jogkivonatot, ezért a metódusban nem szükséges megadni, hogy a jogcímek és jogkivonat lekérése is szükséges. Előfordulhat azonban, hogy csak a jogkivonatra van szüksége, és nem szeretne a jogcímek elemzésével foglalkozni. Erre az esetre a vázban található `getTokenWithPolicyClearingCache` nevű metódus használható.
-
-Írja meg az alábbi kódot:
-
-```
-+(void) getClaimsWithPolicyClearingCache  : (BOOL) clearCache
-                           policy:(samplesPolicyData *)policy
-                           params:(NSDictionary*) params
-                           parent:(UIViewController*) parent
-                completionHandler:(void (^) (ADProfileInfo*, NSError*))completionBlock;
-{
-    SamplesApplicationData* data = [SamplesApplicationData getInstance];
-
-
-    ADAuthenticationError *error;
-    authContext = [ADAuthenticationContext authenticationContextWithAuthority:data.authority error:&error];
-    authContext.parentController = parent;
-    NSURL *redirectUri = [[NSURL alloc]initWithString:data.redirectUriString];
-
-    if(!data.correlationId ||
-       [[data.correlationId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)
-    {
-        authContext.correlationId = [[NSUUID alloc] initWithUUIDString:data.correlationId];
-    }
-
-    [ADAuthenticationSettings sharedInstance].enableFullScreen = data.fullScreen;
-    [authContext acquireTokenWithScopes:data.scopes
-                      additionalScopes: data.additionalScopes
-                              clientId:data.clientId
-                           redirectUri:redirectUri
-                            identifier:[ADUserIdentifier identifierWithId:data.userItem.profileInfo.username type:RequiredDisplayableId]
-                            promptBehavior:AD_PROMPT_ALWAYS
-                  extraQueryParameters: params.urlEncodedString
-                                policy: policy.policyID
-                       completionBlock:^(ADAuthenticationResult *result) {
-
-                           if (result.status != AD_SUCCEEDED)
-                           {
-                               completionBlock(nil, result.error);
-                           }                              else
-                              {
-                                  data.userItem = result.tokenCacheStoreItem;
-                                  completionBlock(result.tokenCacheStoreItem.profileInfo, nil);
-                              }
-                          }];
-}
-
-
-```
-
-A kód eleje bizonyára ismerős lesz.
-
-- Töltse be a `settings.plist` által megadott beállításokat, majd rendelje a következőhöz: `data`.
-- Állítsa be a következőt: `ADAuthenticationError`, amely fogadja az iOS-es ADAL által küldött hibákat.
-- Hozza létre a következőt: `authContext`, amely az ADAL felé irányuló hívásért felel. A folyamat elindításához meg kell adni ennek a felhatalmazást.
-- Hozzon létre a felsőbb szintű vezérlőre mutató hivatkozást a következőben: `authContext`, hogy később vissza tudjon térni hozzá.
-- Alakítsa át a `redirectURI`-ben karaktersorként szereplő `settings.plist`-et az ADAL által igényelt NSURL-típussá.
-- Állítsa be a `correlationId` azonosítót. Ez az UUID képes követni a meghívást az ügyfélen át a kiszolgálóhoz, és vissza. Ez a hibakeresés során lehet hasznos.
-
-A következő az ADAL felé irányuló tényleges hívás. A hívás itt alakul át az iOS-es ADAL korábbi használata során megszokottakhoz képest:
-
-```
-[authContext acquireTokenWithScopes:data.scopes
-                      additionalScopes: data.additionalScopes
-                              clientId:data.clientId
-                           redirectUri:redirectUri
-                            identifier:[ADUserIdentifier identifierWithId:data.userItem.profileInfo.username type:RequiredDisplayableId]
-                            promptBehavior:AD_PROMPT_ALWAYS
-                  extraQueryParameters: params.urlEncodedString
-                                policy: policy.policyID
-                       completionBlock:^(ADAuthenticationResult *result) {
-
-```
-
-Láthatja, hogy a hívás viszonylag egyszerű.
-
-`scopes`: azok a hatókörök, amelyeket átad a kiszolgálónak, és amelyeket a bejelentkező felhasználó számára kérelmezni kell a kiszolgálótól. A B2C előzetes verziója esetében a következőnek az átadására van szükség: `client_id`. Ez azonban a jövőben várhatóan olvasási hatókörökre fog módosulni. Ebben az esetben módosítani fogjuk ezt a dokumentumot.
-`additionalScopes`: érdemes megfontolni ezeknek a további hatóköröknek a használatát is az alkalmazásban. Terveink szerint a jövőben ezeket is használni fogjuk.
-`clientId`: a portáltól kapott alkalmazásazonosító.
-`redirectURI`: az átirányítási hely, amelyre a rendszernek vissza kell küldenie a jogkivonatokat.
-`identifier`: a felhasználó azonosításának módja, amelynek segítségével eldöntheti, hogy van-e használható jogkivonat a gyorsítótárban. Így nem szükséges mindig újabb jogkivonatot kérni a kiszolgálótól. Ezt egy `ADUserIdentifier` nevű típus tárolja. Az azonosítóként használt elemet Ön adhatja meg. Javasoljuk a `username` használatát.
-`promptBehavior`: Elavult. A következőnek kellene itt szerepelnie: `AD_PROMPT_ALWAYS`.
-`extraQueryParameters`: bármi más, amit szeretne URL-ként kódolt formában átadni a kiszolgálónak.
-`policy`: a meghívott szabályzat. Ez az útmutató legfontosabb eleme.
-
-A `completionBlock` jelzi, hogy átadta a következőt: `ADAuthenticationResult`. Ez tartalmazza a jogkivonatot, valamint a profiladatokat (ha a meghívás sikeres volt).
-
-A fenti kódot használva lekérheti a megadott szabályzathoz tartozó jogkivonatot. A jogkivonat segítségével aztán meghívhatja az API-t.
-
-### A kiszolgálónak küldendő feladathívások létrehozása
-
-Most, hogy megkapta a jogkivonatot, át kell adnia az API-nak a hitelesítés céljából.
-
-Három metódust kell használnia:
-
-```
-+(void) getTaskList:(void (^) (NSArray*, NSError* error))completionBlock
-             parent:(UIViewController*) parent;
-
-+(void) addTask:(samplesTaskItem*)task
-         parent:(UIViewController*) parent
-completionBlock:(void (^) (bool, NSError* error)) completionBlock;
-
-+(void) deleteTask:(samplesTaskItem*)task
-            parent:(UIViewController*) parent
-   completionBlock:(void (^) (bool, NSError* error)) completionBlock;
-```
-
-`getTasksList` : a feladatokat képviselő tömböt hoz létre a kiszolgálón. `addTask` és `deleteTask`: elvégzik a szükséges műveleteket, és ha azok sikeresek, a `true` vagy a `false` értéket adják vissza.
-
-Írja meg először a `getTaskList` metódust:
-
-```
-
-+(void) getTaskList:(void (^) (NSArray*, NSError*))completionBlock
-             parent:(UIViewController*) parent;
-{
-    if (!loadedApplicationSettings)
-    {
-        [self readApplicationSettings];
-    }
-
-    SamplesApplicationData* data = [SamplesApplicationData getInstance];
-
-    [self craftRequest:[self.class trimString:data.taskWebApiUrlString]
-                parent:parent
-     completionHandler:^(NSMutableURLRequest *request, NSError *error) {
-
-        if (error != nil)
-        {
-            completionBlock(nil, error);
-        }
-        else
-        {
-
-            NSOperationQueue *queue = [[NSOperationQueue alloc]init];
-
-            [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-
-                if (error == nil && data != nil){
-
-                    NSArray *tasks = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-                    //each object is a key value pair
-                    NSDictionary *keyValuePairs;
-                    NSMutableArray* sampleTaskItems = [[NSMutableArray alloc]init];
-
-                    for(int i =0; i < tasks.count; i++)
-                    {
-                        keyValuePairs = [tasks objectAtIndex:i];
-
-                        samplesTaskItem *s = [[samplesTaskItem alloc]init];
-                        s.itemName = [keyValuePairs valueForKey:@"task"];
-
-                        [sampleTaskItems addObject:s];
-                    }
-
-                    completionBlock(sampleTaskItems, nil);
-                }
-                else
-                {
-                    completionBlock(nil, error);
-                }
-
-            }];
-        }
-    }];
-
-}
-
-```
-
-Ennek az útmutatónak nem célja a feladatkód részletes bemutatása. Elképzelhető, hogy észrevett valami érdekeset: a `craftRequest` metódust, amely a feladat URL-címét használja bemenetként. Ezzel a metódussal hozza létre a kiszolgálónak küldendő kérelmet a kapott hozzáférési jogkivonat segítségével. Írja meg most ezt.
-
-Adja a következő kódot a `samplesWebAPIConnector.m` fájlhoz:
-
-```
-+(void) craftRequest : (NSString*)webApiUrlString
-               parent:(UIViewController*) parent
-    completionHandler:(void (^)(NSMutableURLRequest*, NSError* error))completionBlock
-{
-    [self getClaimsWithPolicyClearingCache:NO parent:parent completionHandler:^(NSString* accessToken, NSError* error){
-
-        if (accessToken == nil)
-        {
-            completionBlock(nil,error);
-        }
-        else
-        {
-            NSURL *webApiURL = [[NSURL alloc]initWithString:webApiUrlString];
-
-            NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:webApiURL];
-
-            NSString *authHeader = [NSString stringWithFormat:@"Bearer %@", accessToken];
-
-            [request addValue:authHeader forHTTPHeaderField:@"Authorization"];
-
-            completionBlock(request, nil);
-        }
-    }];
-}
-```
-
-Ez vesz egy webes URI-t, kiegészíti a jogkivonattal a HTTP `Bearer` fejléc segítségével, majd visszaküldi Önnek az eredményt. A `getTokenClearingCache` API-t kell meghívni. Furcsának tűnhet, de ez a hívás mindössze arra szolgál, hogy lekérje a jogkivonatot a gyorsítótárból, és ellenőrizze az érvényességét. (A `getToken` hívások is ezt a műveletet végzik el az ADAL lekérdezésével.) Ezt a kódrészletet minden egyes hívásban használni kell. A következő lépés a kiegészítő feladatmetódusok létrehozása.
-
-Írja meg a `addTask` metódust:
-
-```
-+(void) addTask:(samplesTaskItem*)task
-         parent:(UIViewController*) parent
-completionBlock:(void (^) (bool, NSError* error)) completionBlock
-{
-    if (!loadedApplicationSettings)
-    {
-        [self readApplicationSettings];
-    }
-
-    SamplesApplicationData* data = [SamplesApplicationData getInstance];
-    [self craftRequest:data.taskWebApiUrlString parent:parent completionHandler:^(NSMutableURLRequest* request, NSError* error){
-
-        if (error != nil)
-        {
-            completionBlock(NO, error);
-        }
-        else
-        {
-            NSDictionary* taskInDictionaryFormat = [self convertTaskToDictionary:task];
-
-            NSData* requestBody = [NSJSONSerialization dataWithJSONObject:taskInDictionaryFormat options:0 error:nil];
-
-            [request setHTTPMethod:@"POST"];
-            [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-            [request setHTTPBody:requestBody];
-
-            NSString *myString = [[NSString alloc] initWithData:requestBody encoding:NSUTF8StringEncoding];
-
-            NSLog(@"Request was: %@", request);
-            NSLog(@"Request body was: %@", myString);
-
-            NSOperationQueue *queue = [[NSOperationQueue alloc]init];
-
-            [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-
-                NSString* content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"%@", content);
-
-                if (error == nil){
-
-                    completionBlock(true, nil);
-                }
-                else
-                {
-                    completionBlock(false, error);
-                }
-            }];
-        }
-    }];
-}
-```
-
-Ez a korábban megismert mintákat követi, de egyben bevezeti az utoljára létrehozandó metódust, amely a `convertTaskToDictionary`. Ez szótárobjektumot hoz létre a tömbből. Ez az objektum egyszerűbben idomítható a kiszolgálónak küldendő lekérdezési paraméterekhez. A kód egyszerű:
-
-```
-// Here we have some conversation helpers that allow us to parse passed items into dictionaries for URLEncoding later.
-
-+(NSDictionary*) convertTaskToDictionary:(samplesTaskItem*)task
-{
-    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc]init];
-
-    if (task.itemName){
-        [dictionary setValue:task.itemName forKey:@"task"];
-    }
-
-    return dictionary;
-}
-
-```
-
-Következő lépésként írja meg a `deleteTask` metódust:
-
-```
-+(void) deleteTask:(samplesTaskItem*)task
-            parent:(UIViewController*) parent
-   completionBlock:(void (^) (bool, NSError* error)) completionBlock
-{
-    if (!loadedApplicationSettings)
-    {
-        [self readApplicationSettings];
-    }
-
-    SamplesApplicationData* data = [SamplesApplicationData getInstance];
-    [self craftRequest:data.taskWebApiUrlString parent:parent completionHandler:^(NSMutableURLRequest* request, NSError* error){
-
-        if (error != nil)
-        {
-            completionBlock(NO, error);
-        }
-        else
-        {
-            NSDictionary* taskInDictionaryFormat = [self convertTaskToDictionary:task];
-
-            NSData* requestBody = [NSJSONSerialization dataWithJSONObject:taskInDictionaryFormat options:0 error:nil];
-
-            [request setHTTPMethod:@"DELETE"];
-            [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-            [request setHTTPBody:requestBody];
-
-            NSLog(@"%@", request);
-
-            NSOperationQueue *queue = [[NSOperationQueue alloc]init];
-
-            [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-
-                NSString* content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"%@", content);
-
-                if (error == nil){
-
-                    completionBlock(true, nil);
-                }
-                else
-                {
-                    completionBlock(false, error);
-                }
-            }];
-        }
-    }];
-}
-```
-
-### Kijelentkezés hozzáadása az alkalmazáshoz
-
-Az utolsó lépés a kijelentkezés beállítása. Ez felettébb egyszerű: A `sampleWebApiConnector.m` fájlba írja be:
-
-```
-+(void) signOut
-{
-    [authContext.tokenCacheStore removeAll:nil];
-
-    NSHTTPCookie *cookie;
-
-    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [storage cookies])
-    {
-        [storage deleteCookie:cookie];
-    }
-}
 ```
 
 ## A mintaalkalmazás futtatása
@@ -622,9 +637,6 @@ Végül fordítsa le és futtassa az alkalmazást az Xcode-ban. Regisztráljon v
 
 Figyelje meg, hogy a rendszer felhasználónként tárolja a feladatokat az API-ban, mivel az API kinyeri a felhasználó identitását a beérkező hozzáférési jogkivonatból.
 
-Referenciaként a teljes minta [elérhető .zip-fájlként is](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip). Ezenfelül a GitHubból is klónozhatja:
-
-```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS```
 
 ## Következő lépések
 
@@ -636,6 +648,6 @@ Most már továbbléphet az összetettebb B2C-témákra. Próbálkozzon meg a k�
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

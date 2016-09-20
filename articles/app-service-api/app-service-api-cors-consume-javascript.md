@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="dotnet"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="03/31/2016"
-    ms.author="tdykstra"/>
+    ms.date="08/27/2016"
+    ms.author="rachelap"/>
 
 # API-alkalmazások felhasználása JavaScriptből a CORS használatával
 
@@ -24,15 +24,15 @@ Ez a cikk két részből áll:
 
 * [A CORS konfigurálásának módja](#corsconfig) című rész általánosságban ismerteti, hogyan kell a CORS szolgáltatást konfigurálni tetszőleges API-alkalmazáshoz, webalkalmazáshoz vagy mobilalkalmazáshoz. Ez a rész minden, az App Service által támogatott keretrendszerre alkalmazható, beleértve a .NET, a Node.js és a Java keretrendszert. 
 
-* [A .NET-bevezető oktatóanyagok folytatása](#tutorialstart) című résztől kezdve a cikk oktató funkciót tölt be, és [az első API-alkalmazásokba való bevezető oktatóanyag](app-service-api-dotnet-get-started.md) tartalmára építve mutatja be a CORS-támogatást. 
+* A [.NET-bevezető oktatóanyagok folytatása](#tutorialstart) résztől kezdve a cikk oktató funkciót tölt be, és [az első API-alkalmazásokba való bevezető oktatóanyag](app-service-api-dotnet-get-started.md) tartalmára építve mutatja be a CORS-támogatást. 
 
 ## <a id="corsconfig"></a> A CORS konfigurálása az Azure App Service platformon
 
-A CORS szolgáltatást konfigurálhatja az Azure portálon vagy az [Azure Resource Manager](../resource-group-overview.md) eszközeinek használatával.
+A CORS szolgáltatást konfigurálhatja az Azure Portalon vagy az [Azure Resource Manager](../resource-group-overview.md) eszközeinek használatával.
 
 #### A CORS konfigurálása az Azure portálon
 
-8. Nyissa meg böngészőben az [Azure portált](https://portal.azure.com/).
+8. Nyissa meg böngészőben az [Azure Portalt](https://portal.azure.com/).
 
 2. Kattintson az **App Services** lehetőségre, majd kattintson az API-alkalmazás nevére.
 
@@ -80,8 +80,7 @@ A [ToDoList példaalkalmazásban](https://github.com/Azure-Samples/app-service-a
 
         angular.module('todoApp')
         .factory('todoListSvc', ['$http', function ($http) {
-            var apiEndpoint = "http://localhost:46439";
-        
+
             $http.defaults.useXDomain = true;
             delete $http.defaults.headers.common['X-Requested-With']; 
         
@@ -116,7 +115,7 @@ Az új App Service-webalkalmazások létrehozása és a hozzájuk tartozó proje
 
 4. Az **App Service Plan** (App Service-csomag) legördülő listában válassza a korábban létrehozott csomagot. 
 
-7. Kattintson a **Create** (Létrehozás) elemre.
+7. Kattintson a **Létrehozás** gombra.
 
     A Visual Studio létrehozza a webalkalmazást és a hozzá tartozó közzétételi profilt, majd megjeleníti a **Publish Web** (Weboldal közzététele) varázsló **Connection** (Kapcsolat) lépését.
 
@@ -124,7 +123,7 @@ Az új App Service-webalkalmazások létrehozása és a hozzájuk tartozó proje
 
 ### A középső réteg URL-címének beállítása a webalkalmazás beállításaiban
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com/), majd keresse meg a ToDoListAngular projekt (kezelőfelület) üzemeltetésére létrehozott webalkalmazáshoz tartozó **Web App** (Webalkalmazás) panelt.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/), majd keresse meg a ToDoListAngular projekt (kezelőfelület) üzemeltetésére létrehozott webalkalmazáshoz tartozó **Web App** (Webalkalmazás) panelt.
 
 2. Kattintson a **Settings > Application Settings** (Beállítások > Alkalmazásbeállítások) lehetőségre.
 
@@ -188,9 +187,9 @@ Az új App Service-webalkalmazások létrehozása és a hozzájuk tartozó proje
 
 Ebben a szakaszban a középső rétegbeli ToDoListAPI API-alkalmazás CORS beállítását konfiguráljuk az Azure-ban. Ez a beállítás lehetővé teszi, hogy a középső rétegbeli API-alkalmazás JavaScript-hívásokat fogadjon abból a webalkalmazásból, amelyet a ToDoListAngular projekthez létrehozott.
 
-8. Nyissa meg böngészőben az [Azure portált](https://portal.azure.com/).
+8. Nyissa meg böngészőben az [Azure Portalt](https://portal.azure.com/).
 
-2. Kattintson az **App Services** lehetőségre, majd a ToDoListAPI (középső réteg) API-alkalmazásra.
+2. Kattintson az **App Services** (Alkalmazásszolgáltatások) lehetőségre, majd a ToDoListAPI (középső réteg) API-alkalmazásra.
 
     ![API-alkalmazás kiválasztása a portálon](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
 
@@ -287,6 +286,6 @@ Ebből a cikkből megtudhatta, hogyan engedélyezheti az App Service CORS-támog
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

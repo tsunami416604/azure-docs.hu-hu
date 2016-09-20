@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/02/2016"
+    ms.date="08/22/2016"
     ms.author="marsma"/>
 
 # Az Azure Batch alapjai
@@ -46,9 +46,11 @@ Az Azure által biztosított Batch szolgáltatás és az egyéb HPC-megoldások 
 
 ## Fejlesztés a Batch használatával
 
-Az Azure Batch szolgáltatást párhuzamos számítási feladatok feldolgozásához használó megoldásokat a Batch API-k használatával, szoftveresen hozhatja létre. A Batch API-kkal számítási csomópontok (virtuális gépek) készleteit hozhatja létre és felügyelheti, valamint feladatokat és tevékenységeket ütemezhet a csomópontokon való futtatáshoz. Az Ön által készített ügyfélalkalmazások vagy szolgáltatások a Batch API-k használatával kommunikálnak a Batch szolgáltatással. Hatékonyan dolgozhat fel nagyméretű számítási feladatokat a szervezet számára, vagy szolgáltatási előtérrendszert nyújthat az ügyfeleknek, hogy feladatokat és tevékenységeket futtathassanak – igény szerint vagy ütemterv alapján – egy, több száz vagy több ezer csomóponton. A Batch szolgáltatást a nagyobb munkafolyamatok részeként is felügyelheti olyan eszközökkel, mint az [Azure Data Factory][data_factory].
+A párhuzamos számítási feladatok Batch használatával végzett feldolgozása általában programozott módon történik az egyik [Batch API-val](#batch-development-apis). A Batch API-kkal számítási csomópontok (virtuális gépek) készleteit hozhatja létre és felügyelheti, valamint feladatokat és tevékenységeket ütemezhet a csomópontokon való futtatáshoz. Az Ön által készített ügyfélalkalmazások vagy szolgáltatások a Batch API-k használatával kommunikálnak a Batch szolgáltatással.
 
-> [AZURE.TIP] Amikor készen áll a Batch API megismerésére az általa nyújtott szolgáltatások alaposabb elsajátítása érdekében, tekintse meg az [Azure Batch-funkciók áttekintésével](batch-api-basics.md) foglalkozó témakört.
+Hatékonyan dolgozhat fel nagyméretű számítási feladatokat a szervezet számára, vagy szolgáltatási előtérrendszert nyújthat az ügyfeleknek, hogy feladatokat és tevékenységeket futtathassanak – igény szerint vagy ütemterv alapján – egyetlen, több száz vagy akár több ezer csomóponton. A Batch szolgáltatást a nagyobb munkafolyamatok részeként is felügyelheti olyan eszközökkel, mint például az [Azure Data Factory](../data-factory/data-factory-data-processing-using-batch.md).
+
+> [AZURE.TIP] Amikor készen áll a Batch API megismerésére, az általa nyújtott szolgáltatások alaposabb elsajátítása érdekében tekintse meg [Az Azure Batch funkcióinak áttekintése](batch-api-basics.md) című témakört.
 
 ### Szükséges Azure-fiókok
 
@@ -56,9 +58,9 @@ Batch-megoldások fejlesztésekor a következő fiókokat fogja használni a Mic
 
 - **Azure-fiók és -előfizetés** – Ha még nincs Azure-előfizetése, aktiválhatja az [MSDN-előfizetői előnyeit][msdn_benefits], vagy regisztrálhat egy [ingyenes Azure-fiókot][free_account]. Fiók létrehozásakor a rendszer egy alapértelmezett előfizetést hoz létre.
 
-- **Batch-fiók** – Amikor az alkalmazások kommunikálnak a Batch szolgáltatással, a fióknév, fiók URL-je és egy elérési kulcs szolgál hitelesítő adatként. Az összes Batch-erőforrás, például a készletek, számítási csomópontok, feladatok és tevékenységek, egy Batch-fiókkal van társítva. Az Azure Portalon [hozhat létre és felügyelhet Batch-fiókot](batch-account-create-portal.md).
+- **Batch-fiók** – Amikor az alkalmazások kommunikálnak a Batch szolgáltatással, a fióknév, fiók URL-je és egy elérési kulcs szolgál hitelesítő adatként. Az összes Batch-erőforrás, például a készletek, számítási csomópontok, feladatok és tevékenységek, egy Batch-fiókkal vannak társítva. Az Azure Portalon [hozhat létre Batch-fiókot](batch-account-create-portal.md).
 
-- **Storage-fiók** – A Batch beépített támogatást tartalmaz az [Azure Storage][azure_storage] fájljainak használatához. Szinte mindegyik Batch-forgatókönyv az Azure Storage-ot használja – a tevékenységek által futtatott programok és feldolgozott adatok átmeneti tárolásához, valamint a tevékenységek által létrehozott kimeneti adatok tárolásához. A Storage-fiók létrehozásával kapcsolatban tekintse meg a [Tudnivalók az Azure Storage-fiókokról](./../storage/storage-create-storage-account.md) című témakört.
+- **Storage-fiók** – A Batch beépített támogatást tartalmaz az [Azure Storage][azure_storage] fájljainak használatához. Szinte mindegyik Batch-forgatókönyv az Azure Storage-ot használja a tevékenységek által futtatott programok és feldolgozott adatok átmeneti tárolásához, valamint a tevékenységek által létrehozott kimeneti adatok tárolásához. A Storage-fiók létrehozásával kapcsolatban tekintse meg a [Tudnivalók az Azure Storage-fiókokról](./../storage/storage-create-storage-account.md) című témakört.
 
 ### Batch fejlesztési API-k
 
@@ -70,7 +72,7 @@ A számítási erőforrások felügyeletéhez és a párhuzamos számítási fel
 | **Batch .NET**    | [MSDN][api_net] | [NuGet ][api_net_nuget] | [GitHub][api_sample_net] |
 | **Batch Python**  | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
 | **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - |
-| **Batch Java** (előzetes verzió) | [github.io][api_java] | [Maven pillanatfelvétel-tár][api_java_jar] | - |
+| **Batch Java** (előzetes verzió) | [github.io][api_java] | [Maven][api_java_jar] | [GitHub][api_sample_java] |
 
 ### Batch-erőforráskezelés
 
@@ -84,11 +86,13 @@ Az ügyfél API-k mellett az alábiakkal is felügyelheti az erőforrásokat a B
 
 ### Batch-eszközök
 
-Jóllehet nem kötelező a Batch szolgáltatással létrehozni a megoldásokat, ezek az eszközök elengedhetetlennek tekinthetők a Batch-alkalmazások és -szolgáltatások létrehozásakor és hibakeresésekor.
+Noha nem kötelező a Batch szolgáltatással létrehozni a megoldásokat, itt megtalálható néhány hasznos eszköz a Batch-alkalmazások és -szolgáltatások létrehozásához és hibakereséséhez.
 
-- [Azure Batch Explorer][batch_explorer]: A Batch Explorer a [GitHub][github_samples] webhelyen elérhető Batch .NET-mintaalkalmazások egyike. A Windows megjelenítési alaprendszeren (WPF) alapuló alkalmazást létrehozhatja a Visual Studio 2013-mal vagy 2015-tel, majd a használatával megkeresheti és felügyelheti az erőforrásokat a Batch-fiókban a Batch megoldások fejlesztésekor és hibakeresésekor. Megtekintheti a feladatok, készletek és tevékenységek részleteit, fájlokat tölthet le a számítási csomópontokról, vagy akár távolról is csatlakozhat csomópontokhoz a Batch Explorer felületéről mindössze néhány kattintással beszerezhető távoli asztali (RDP-) fájlokkal.
+ - [Azure Portal][portal]: Batch-készleteket, -feladatokat és -tevékenységeket hozhat létre, figyelhet meg és törölhet az Azure Portal Batch paneljein. Megtekintheti ezen és más erőforrások állapotinformációit a feladatok futtatásakor, és fájlokat is letölthet a készletekben található számítási csomópontokról (letöltheti például egy sikertelen feladat `stderr.txt` fájlját hibaelhárításkor). Távoli asztali (RDP-) fájlokat is letölthet, amelyekkel bejelentkezhet a számítási csomópontokba.
 
-- [Microsoft Azure Storage Explorer][storage_explorer]: Bár nem kimondottan Azure Batch-eszköz, a Storage Explorer egy másik értékes eszköz a Batch-megoldások fejlesztésekor és hibakeresésekor.
+ - [Azure Batch Explorer][batch_explorer]: A Batch Explorer hasonló Batch-erőforráskezelő funkciókat nyújt, mint az Azure Portal, de egy különálló Windows megjelenítési alaprendszer (WPF) ügyfélalkalmazás részeként. A [GitHubon][github_samples] elérhető egyik Batch .NET mintaalkalmazás, amelyet a Visual Studio 2015-ös vagy újabb verziójával építhet ki, majd a használatával megkeresheti és felügyelheti az erőforrásokat a Batch-fiókban a Batch-megoldások fejlesztésekor és hibakeresésekor. Megtekintheti a feladatok, készletek és tevékenységek részleteit, fájlokat tölthet le a számítási csomópontokról, és távolról csatlakozhat csomópontokhoz a Batch Explorerrel letölthető távoli asztali (RDP-) fájlokkal.
+
+ - [Microsoft Azure Storage Explorer][storage_explorer]: Bár nem kimondottan Azure Batch-eszköz, a Storage Explorer egy másik értékes eszköz a Batch-megoldások fejlesztésekor és hibakeresésekor.
 
 ## Forgatókönyv: Párhuzamos számítási feladat horizontális felskálázása
 
@@ -102,7 +106,7 @@ Ebben az általános forgatókönyvben az alkalmazás vagy a szolgáltatás szá
 
 1. Töltse fel a **bemeneti fájlokat** és az **alkalmazást**, amely fel fogja dolgozni ezeket a fájlokat az Azure Storage-fiókban. A bemeneti fájlok bármely olyan adatok lehetnek, amelyet az alkalmazás fel fog dolgozni, például pénzügyi modellezési adatok vagy átkódolni kívánt videofájlok. Az alkalmazásfájlok az adatok feldolgozásához használt bármilyen alkalmazások lehetnek, például 3D renderelési alkalmazások vagy adathordozó-átkódolók.
 
-2. Hozza létre a számítási csomópontok Batch-**készletét** a Batch-fiókban – ezek a feladatokat végrehajtó virtuális gépek. Olyan tulajdonságokat adhat meg, mint a [csomópont mérete](./../cloud-services/cloud-services-sizes-specs.md), operációs rendszere és helye azon alkalmazás Azure Storage tárolójában, amelyet akkor telepít, amikor a csomópontok a készlethez csatlakoznak (az 1. lépésben feltöltött alkalmazás). A készletet [automatikus méretezésre](batch-automatic-scaling.md) is konfigurálhatja – dinamikusan állítsa be a számítási csomópontok számát a készletben – a tevékenységek által létrehozott számítási feladatokra válaszul.
+2. Hozza létre a számítási csomópontok Batch-**készletét** a Batch-fiókban. Ezek a csomópontok a feladatokat végrehajtó virtuális gépek. Olyan tulajdonságokat adhat meg, mint a [csomópont mérete](./../cloud-services/cloud-services-sizes-specs.md), operációs rendszere és helye azon alkalmazás Azure Storage tárolójában, amelyet akkor telepít, amikor a csomópontok a készlethez csatlakoznak (az 1. lépésben feltöltött alkalmazás). A készletet [automatikus méretezésre](batch-automatic-scaling.md) is konfigurálhatja – dinamikusan állítsa be a számítási csomópontok számát a készletben – a tevékenységek által létrehozott számítási feladatokra válaszul.
 
 3. Hozzon létre egy Batch-**feladatot** a számítási feladat futtatásához a számítási csomópontok készletén. Feladat létrehozásakor társítsa azt a Batch-készlettel.
 
@@ -116,23 +120,23 @@ Ebben az általános forgatókönyvben az alkalmazás vagy a szolgáltatás szá
 
 7. Amikor a megfigyelés észleli, hogy a feladat tevékenységei befejeződtek, az ügyfélalkalmazás vagy szolgáltatás letöltheti a kimeneti adatokat további feldolgozás vagy kiértékelés céljából.
 
-Vegye figyelembe, hogy ez a Batch használatának csak egyik módja, és ez a forgatókönyv a szolgáltatás mindössze néhány elérhető funkcióját ismerteti. Futtathat például [párhuzamosan több tevékenységet](batch-parallel-node-tasks.md) mindegyik számítási csomóponton, a[feladat-előkészítési és befejezési tevékenységekkel](batch-job-prep-release.md) pedig előkészítheti a csomópontokat a feladatokhoz, majd tisztítást végezhet.
+Vegye figyelembe, hogy ez a Batch használatának csak egyik módja, és ez a forgatókönyv a szolgáltatás mindössze néhány elérhető funkcióját ismerteti. Futtathat például [párhuzamosan több tevékenységet](batch-parallel-node-tasks.md) mindegyik számítási csomóponton, a [feladat-előkészítési és befejezési tevékenységekkel](batch-job-prep-release.md) pedig előkészítheti a csomópontokat a feladatokhoz, majd tisztítást végezhet.
 
 ## Következő lépések
 
-Most, hogy látott egy példa Batch-forgatókönyvet, ideje, hogy mélyebben megismerjük a szolgáltatást, hogy megtudja, hogyan használhatja a számításigényes párhuzamos számítási feladatok feldolgozásához.
+Most, hogy nagy vonalakban áttekintette a Batch szolgáltatás jellemzőit, ideje mélyebbre ásni, hogy megtudja, hogyan használhatja ezt a szolgáltatást a számításigényes párhuzamos számítási feladatok feldolgozásához.
 
-- [Ismerkedjen meg az Azure Batch .NET-es kódtárával](batch-dotnet-get-started.md), hogy megtudja, hogyan használhatja a C# nyelvet és a Batch .NET-es kódtárat a fent leírt módszerek végrehajtásához. Ennek kell az egyik első megállónak lennie a Batch szolgáltatás használatának elsajátításakor.
+- Olvassa el [Az Azure Batch funkcióinak áttekintése](batch-api-basics.md) című témakört, amely hasznos információkkal szolgál a Batch használatára készülőknek. A cikk a Batch szolgáltatás erőforrásainak, például a készleteknek, csomópontoknak, feladatoknak, tevékenységeknek és sok olyan API funkciónak a részletesebb információit tartalmazza, amelyeket a Batch-alkalmazás kiépítésekor használhat.
 
-- Tekintse meg a [Batch-funkció áttekintésével](batch-api-basics.md) foglalkozó témakört, amelyben részletes információkat olvashat a Batch által a nagy számításigényű számítási feladatok feldolgozásához nyújtott API-funkciókkal kapcsolatban.
+- [Ismerkedjen meg az Azure Batch .NET-es kódtárával](batch-dotnet-get-started.md), hogy megtudja, hogyan használhatja a C# nyelvet és a Batch .NET-es kódtárat egy egyszerű számítási feladat végrehajtásához egy általános Batch-munkafolyamattal. Ennek a cikknek az áttekintése legyen az egyik első lépés, amikor igyekszik elsajátítani a Batch használatát. Az oktatóanyagnak [Python verziója](batch-python-tutorial.md) is van.
 
-- A Batch Explorer mellett a [GitHub többi kódmintája][github_samples] mutatja be, hogyan használhatja a Batch számos funkcióját a Batch .NET-es kódtárával.
+- Töltse le a [GitHubon található kódmintákat][github_samples], hogy lássa, hogyan használható a C# és a Python a Batch eszközzel a mintául szolgáló számítási feladatok ütemezése és feldolgozása során.
 
 - Tekintse meg a [Batch képzési tervet][learning_path], amelyben megismerheti az elérhető erőforrásokat a Batch használatának elsajátításakor.
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: http://azure.github.io/azure-sdk-for-java/
-[api_java_jar]: http://adxsnapshots.azurewebsites.net/?dir=com%5cmicrosoft%5cazure%5cazure-batch
+[api_java_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_nuget]: https://www.nuget.org/packages/Azure.Batch/
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
@@ -143,21 +147,22 @@ Most, hogy látott egy példa Batch-forgatókönyvet, ideje, hogy mélyebben meg
 [api_python_pypi]: https://pypi.python.org/pypi/azure-batch
 [api_sample_net]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp
 [api_sample_python]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
-[batch_explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[api_sample_java]: https://github.com/Azure/azure-batch-samples/tree/master/Java/
 [batch_ps]: https://msdn.microsoft.com/library/azure/mt125957.aspx
 [batch_rest]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
-[data_factory]: https://azure.microsoft.com/documentation/services/data-factory/
 [free_account]: https://azure.microsoft.com/free/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
 [msdn_benefits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[batch_explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [storage_explorer]: http://storageexplorer.com/
+[portal]: https://portal.azure.com
 
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

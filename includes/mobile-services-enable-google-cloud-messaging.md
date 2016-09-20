@@ -14,9 +14,9 @@
 
 4. A projekt irányítópultján, a **Mobile APIs** (Mobil API-k) elem alatt kattintson a **Google Cloud Messaging**, a következő oldalon pedig az **Enable API** (API engedélyezése) lehetőségre, majd fogadja el a szolgáltatási feltételeket. 
 
-    ![](./media/mobile-services-enable-google-cloud-messaging/enable-GCM.png)
+    ![GCM engedélyezése](./media/mobile-services-enable-google-cloud-messaging/enable-GCM.png)
 
-    ![](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-2.png) 
+    ![GCM engedélyezése](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-2.png) 
 
 5. A projekt irányítópultján kattintson a **Credentials** (Hitelesítő adatok) > **Create Credential** (Hitelesítő adat létrehozása) > **API Key** (API-kulcs) lehetőségre. 
 
@@ -31,6 +31,6 @@
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

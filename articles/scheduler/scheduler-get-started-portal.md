@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="hero-article"
- ms.date="03/09/2016"
+ ms.date="08/10/2016"
  ms.author="krisragh"/>
 
 # Ismerkedés az Azure portál Azure Scheduler szolgáltatásával
@@ -25,7 +25,7 @@ Az Azure Scheduler szolgáltatásban egyszerűen hozhat létre ütemezett felada
 
 2.  Kattintson az **+Új** lehetőségre, írja be a _Scheduler_ kifejezést a keresőmezőbe, majd válassza ki a **Scheduler** elemet az eredmények között, végül pedig kattintson a **Létrehozás** gombra.
 
-   ![][marketplace-create]
+     ![][marketplace-create]
 
 3.  Hozzunk létre egy olyan feladatot, amely egy GET kéréssel egyszerűen rákeres a http://www.microsoft.com/ webhelyre. A **Scheduler-feladat** képernyőn adja meg a következő információkat:
 
@@ -43,7 +43,7 @@ Az Azure Scheduler szolgáltatásban egyszerűen hozhat létre ütemezett felada
 
     3.  **URL-cím:** ` http://www.microsoft.com`  
 
-   ![][action-settings]
+      ![][action-settings]
 
 5.  Végül határozzon meg egy ütemezést. A feladat egyszeriként is megadható, most azonban vegyünk fel egy ismétlődési ütemezést:
 
@@ -55,7 +55,7 @@ Az Azure Scheduler szolgáltatásban egyszerűen hozhat létre ütemezett felada
 
     4. **Befejeződés**: A mai naptól számított két nap múlva  
 
-   ![][recurrence-schedule]
+      ![][recurrence-schedule]
 
 6.  Kattintson a ** Create** (Létrehozás) gombra
 
@@ -73,7 +73,7 @@ A létrehozott feladatok megjelennek az Azure fő irányítópultján. A feladat
 
 5.  Felhasználók
 
-   ![][job-overview]
+    ![][job-overview]
 
 ### Tulajdonságok
 
@@ -100,7 +100,7 @@ Service Bus művelettípusok esetében módosítható a névtér, a témakör/ü
 
 Ha módosítani kívánja a gyorslétrehozási varázslóban létrehozott ütemezést, itt újrakonfigurálhatja azt.
 
-Ez lehetőséget ad [komplex és speciális, ismétlődő ütemezések létrehozására a feladathoz](scheduler-advanced-complexity.md)
+Ez lehetőséget ad [komplex és speciális, ismétlődő ütemezések létrehozására a feladathoz](scheduler-advanced-complexity.md).
 
 Módosítható a kezdési dátum és időpont, az ismétlődési ütemezés, valamint a befejezési dátum és időpont (amennyiben a feladat ismétlődő jellegű).
 
@@ -184,6 +184,6 @@ Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletesen beállít
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

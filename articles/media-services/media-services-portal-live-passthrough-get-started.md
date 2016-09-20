@@ -13,15 +13,13 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article"
-    ms.date="06/05/2016" 
+    ms.date="08/30/2016" 
     ms.author="juliako"/>
 
 
 #Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával
 
-Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva az Azure portálon. 
-
-Az Azure portál Azure Media Services szolgáltatása jelenleg előzetes verziójú.   
+Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva az Azure Portalon. 
 
 
 ##Előfeltételek
@@ -43,17 +41,17 @@ Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
 
 A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streamelő alkalmazásokat létrehozni, amelyek átmenő közvetítésre vannak konfigurálva. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet átmenő csatornát és élő eseményeket.
 
-1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.
+1. Csatlakoztasson a számítógéphez egy videokamerát. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.
     
     Ezt a lépést a csatorna létrehozása után is el lehet végezni.
 
 1. Hozzon létre és indítson el egy átmenő csatornát.
 1. Kérje le a Channel ingest URL (Csatorna betöltési URL-címe) értékét. 
 
-    Az élő kódoló a betöltési URL-címet használva küldi el az streamet a csatornának.
-1. Kérje le a Channel preview URL (Csatorna előnézetének URL-címe) értékét. 
+    Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
+1. Kérje le a csatorna előnézeti URL-címét. 
 
-    Ezen az URL-címen győződhet meg róla, hogy a csatorna rendben megkapja-e az élő streamet.
+    Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
 
 3. Hozzon létre egy élő eseményt/programot. 
 
@@ -107,7 +105,7 @@ Egy csatorna három egyidejűleg zajló esemény támogat, hogy több archívumo
 
 A meglévő élő eseményeket nem szabad újra felhasználni. Ehelyett hozzon létre egy új eseményt minden eseményhez, és indítsa el.
 
-Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt. Amikor le kívánja állítani az esemény streamelését és az archiválását, állítsa le a programot. 
+Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt. 
 
 Az archivált tartalom törléséhez állítsa le és törölje az eseményt, majd törölje a hozzá társított objektumot. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
@@ -123,7 +121,7 @@ Az átmenő csatornákról a [Live streaming with on-premise encoders that creat
 
 1. Kattintson a **Settings** (Beállítások) ablak **Live streaming** (Élő stream) elemére. 
 
-    ![Első lépések](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
+    ![Bevezetés](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
     
     Megjelenik a **Live streaming** (Élő stream) ablak.
 
@@ -146,7 +144,7 @@ A csatorna létrehozása után beolvashatja a betöltési URL-címeket. Ezeket k
 
 ##Esemény megtekintése
 
-Ha meg szeretne tekinteni egy eseményt, kattintson az Azure portál **Watch** (Megtekintés) elemére. 
+Ha meg szeretne tekinteni egy eseményt, kattintson az Azure Portal **Watch** (Megtekintés) elemére. 
  
 ![Létrehozva](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
@@ -177,6 +175,6 @@ Az objektumok kezeléséhez válassza a  **Setting** (Beállítás) elemet, majd
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

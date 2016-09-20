@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Tartalmak továbbítása igény szerint a .NET SDK használatával"
+    pageTitle="Tartalmak továbbítása igény szerint a .NET használatával | Azure"
     description="Ez az útmutató lépésről lépésre ismerteti, hogyan valósíthat meg egy igény szerinti tartalomtovábbító alkalmazást a .NET-keretrendszert használó Azure Media Services segítségével."
     services="media-services"
     documentationCenter=""
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="04/18/2016"
+    ms.date="08/17/2016"
     ms.author="juliako"/>
 
 
@@ -70,7 +70,7 @@ Töltsön le és futtasson egy mintát [innen](https://azure.microsoft.com/docum
 
 2. A **NAME** (NÉV) mezőbe írja be az új fiók nevét. A Media Services-fiók nevének 3–24 karakter hosszúságúnak kell lennie, és csak kisbetűket és számokat tartalmazhat, szóközök nélkül.
 
-3. A **REGION** (RÉGIÓ) mezőben válassza ki a földrajzi régiót, ahol a Media Services-fiók metaadatrekordjai tárolva lesznek. A legördülő listában kizárólag az elérhető Media Services-régiók jelennek meg.
+3. A **RÉGIÓ** részben válassza ki azt a földrajzi régiót, amelyben tárolni fogja a Media Services-fiókhoz tartozó metaadat-bejegyzéseket. A legördülő listában kizárólag az elérhető Media Services-régiók jelennek meg.
 
 4. A **STORAGE ACCOUNT** (TÁRFIÓK) mezőben válasszon ki egy tárfiókot, amely a Media Services-fiókhoz tartozó médiatartalmak blobtárolását biztosítja. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy új tárfiókot. Az újonnan létrehozott tárfiókok ugyanabban a régióban jönnek létre.
 
@@ -78,11 +78,11 @@ Töltsön le és futtasson egy mintát [innen](https://azure.microsoft.com/docum
 
 6. Az űrlap alsó részén kattintson a **Gyors létrehozás** elemre.
 
-Az ablak alján az üzenetmezőben figyelemmel kísérheti a folyamat állapotát.
+A folyamat állapotát az ablak alsó részén található üzenetterületen követheti nyomon.
 
 A fiók sikeres létrejöttekor az állapot **Aktívra** változik.
 
-Az oldal alján megjelenik a **MANAGE KEYS** (KULCSOK KEZELÉSE) gomb. Ha erre a gombra kattint, egy párbeszédpanelen megjelenik a Media Services-fiók neve, valamint az elsődleges és másodlagos kulcsok. A Media Services-fiókhoz való szoftveres hozzáféréshez szükség lesz a fiók nevére és az elsődleges kulcsra.
+Az oldal alján megjelenik a **MANAGE KEYS** (KULCSOK KEZELÉSE) gomb. Ha erre a gombra kattint, egy párbeszédpanelen megjelenik a Media Services-fiók neve, valamint az elsődleges és másodlagos kulcsok. A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fiók nevére és az elsődleges kulcs adataira.
 
 ![Media Services oldal](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
 
@@ -445,7 +445,7 @@ A progresszív letöltés teszteléséhez másoljon egy URL-címet a böngésző
 
 ### Valami mást keres?
 
-Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a témakörből hiányzik valami; vagy bármilyen egyéb módon nem felelt meg az elvárásainak, kérjük, küldjön nekünk visszajelzést alább, egy Disqus-hozzászóláson keresztül.
+Ha ebben a témakörben nem azt találta, amire számított, valami hiányzik, vagy bármilyen más módon hiányérzete maradt, mondja el nekünk véleményét az alábbi Disqus-beszélgetés segítségével.
 
 
 <!-- Anchors. -->
@@ -457,6 +457,6 @@ Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a t�
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=sep16_HO1-->
 
 

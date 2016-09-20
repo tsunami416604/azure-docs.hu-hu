@@ -3,10 +3,10 @@
     description="Az Azure Backup és a Recovery Services használatával biztonsági mentést végezhet és visszaállíthatja az adatokat és alkalmazásokat Windows Serverekről, Windows-ügyfélgépekről, System Center DPM-kiszolgálókról és Azure virtuális gépekről."
     services="backup"
     documentationCenter=""
-    authors="Jim-Parker"
-    manager="jwhit"
+    authors="markgalioto"
+    manager="cfreeman"
     editor="tysonn"
-    keywords="backup and restore; recovery services; backup solutions"/>
+    keywords="biztonsági mentés és visszaállítás; recovery services; biztonsági mentési megoldások"/>
 
 <tags
     ms.service="backup"
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/10/2016"
+    ms.date="07/21/2016"
     ms.author="jimpark; trinadhk"/>
 
 # Mi az az Azure Backup?
@@ -80,7 +80,7 @@ Mivel a Backup hibrid biztonsági mentési megoldás, több olyan összetevőbő
 | Azure Backup (MARS) ügynöke | Igen | Nem (csak Windows-alapú ügynök) |
 | System Center Data Protection Manager | Igen (ügynök a vendégben) | Csak Hyper-V (nem Azure VM) Csak fájlkonzisztens biztonsági mentésre van lehetőség |
 | Azure Backup Server (MABS) | Igen (ügynök a vendégben) | Csak Hyper-V (nem Azure VM) Csak fájlkonzisztens biztonsági mentésre van lehetőség (ugyanaz, mint a DPM) |
-| Azure IaaS virtuális gép biztonsági mentése | Nyilvános előzetes verzióban | Nyilvános előzetes verzióban – Linux rendszerű virtuális gépek Resource Manager-alapú üzemi modellben <br>(Fájlrendszerszintű konzisztencia)<br><br>Igen, Linux rendszerű virtuális gépekhez klasszikus üzemi modellben |
+| Azure IaaS virtuális gép biztonsági mentése | Igen | Igen |
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
@@ -99,7 +99,7 @@ A biztonsági mentési feladat befejezése után a rendszer törli az előkész�
 
 ### A Premium Storage virtuális gépek visszaállítása
 
-A Premium Storage virtuális gép helyreállítási pontjának Premium Storage-ba való visszaállítása a visszaállítás tipikus folyamata. Azonban költséghatékony lehet a Premium Storage virtuális gépek helyreállítási pontjait Standard szintű tárolóba visszaállítani. Ez a visszaállítási típus használható, ha a fájlok egy részére van szüksége a virtuális gépről.
+A Premium Storage virtuális gépek Premium Storage tárolóba vagy normál tárolóba állíthatók vissza. A Premium Storage virtuális gép helyreállítási pontjának Premium Storage-ba való visszaállítása a visszaállítás tipikus folyamata. Azonban költséghatékony lehet a Premium Storage virtuális gépek helyreállítási pontjait Standard szintű tárolóba visszaállítani. Ez a visszaállítási típus használható, ha a fájlok egy részére van szüksége a virtuális gépről.
 
 ## Funkció
 Ez az öt táblázat összegzi a biztonsági mentési funkció kezelésének módját az egyes összetevőkben.
@@ -225,12 +225,12 @@ Mivel ezek az oktatóanyagok a gyors biztonsági mentésben segítenek, az adato
 
 
 
-[green]: ./media/backup-introduction-to-azure-backup/green.png
-[yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
-[red]: ./media/backup-introduction-to-azure-backup/red.png
+[zöld]: ./media/backup-introduction-to-azure-backup/green.png
+[sárga]: ./media/backup-introduction-to-azure-backup/yellow.png
+[vörös]: ./media/backup-introduction-to-azure-backup/red.png
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=sep16_HO1-->
 
 

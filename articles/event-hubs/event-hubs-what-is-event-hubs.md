@@ -13,16 +13,16 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/12/2016"
-    ms.author="sethm;nberdy"/>
+    ms.date="08/17/2016"
+    ms.author="sethm"/>
 
 # Mi az Azure Event Hubs?
 
-Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs a „bejárati ajtó” funkcióját látja el egy eseményfolyamat számára, az adatoknak egy eseményközpontba való összegyűjtését követően az adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
+Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs a „bejárati ajtó” funkcióját látja el egy eseményfolyamat számára, az adatoknak egy eseményközpontba való összegyűjtését követően az adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez. További információk és műszaki részletek: [Event Hubs – áttekintés](event-hubs-overview.md).
 
 ## Az Event Hubs képességei
 
-Az Event Hubs egy eseményfeldolgozási szolgáltatás, amely a felhőbe irányuló, nagy léptékű esemény- és telemetriabevitelt biztosít alacsony késéssel és nagy megbízhatósággal. Ez a szolgáltatás különösen hasznos az alábbi esetekben:
+Az Event Hubs egy eseményfeldolgozási szolgáltatás, amely nagy léptékű esemény- és telemetriafeldolgozást biztosít alacsony késéssel és nagy megbízhatósággal. Ez a szolgáltatás különösen hasznos az alábbi esetekben:
 
 - alkalmazások kialakítása,
 - felhasználói élmények vagy munkafolyamatok feldolgozása,
@@ -32,7 +32,7 @@ Az Event Hubs további fontos képességei közé tartozik például a viselked�
 
 A [Service Bus-üzenetsorokkal és témakörökkel](../service-bus/service-bus-messaging-overview.md) ellentétben az Event Hubs arra összpontosít, hogy nagy léptékben kínáljon üzenetstream-kezelést. Az Event Hubs képességei eltérnek a Service Bus-témaköröktől, például abban, hogy kimondottan a nagy mennyiségre és eseményfeldolgozási forgatókönyvekre vannak optimalizálva. Az Event Hubs így nem valósít meg bizonyos üzenetkezelési képességeket, amelyek a [témakörök](../service-bus/service-bus-fundamentals-hybrid-solutions.md#topics) esetén elérhetők. Amennyiben szüksége van ezekre a képességekre, továbbra is a témakörök használata az optimális választás.
 
-## További lépések
+## Következő lépések
 
 Az Event Hubs szolgáltatásról az alábbi témakörökben talál részletes információkat.
 
@@ -46,6 +46,7 @@ Az Event Hubs szolgáltatásról az alábbi témakörökben talál részletes in
 [Az Event Hubsot használó teljes mintaalkalmazás]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 

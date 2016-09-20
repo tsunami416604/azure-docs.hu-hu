@@ -10,11 +10,18 @@ Nem, a BGP csak az útvonalalapú VPN Gatewayeken támogatott.
 
 Igen, a helyszíni hálózatokhoz és az Azure virtuális hálózatokhoz is használhat saját nyilvános ASN-eket vagy titkos ASN-eket.
 
+#### Vannak ASN-ek, amelyeket az Azure lefoglal?
+
+Igen, az Azure a következő ASN-eket foglalja le a belső és a külső társviszonyok esetén:
+
+- Nyilvános ASN-ek: 8075, 8076, 12076
+- Privát ASN-ek: 65515, 65517, 65518, 65519, 65520
+
+Ezeket az ASN-eket nem adhatja meg a helyszíni VPN-eszközök számára, amikor Azure VPN Gateway átjárókhoz csatlakozik.
+
 ### Használhatom ugyanazt az ASN-t a helyszíni VPN-hálózatokhoz és az Azure VNetekhez?
 
 Nem, a helyszíni hálózatokhoz és az Azure VNetekhez különböző ASN-eket kell hozzárendelnie, ha BGP-vel kapcsolja össze őket. Az Azure VPN Gatewayek alapértelmezett hozzárendelt ASN-je a 65515, függetlenül attól, hogy a BGP engedélyezve van-e a létesítmények közötti kapcsolathoz. Ezt az alapértelmezett értéket felülírhatja, ha a VPN Gateway létrehozása során egy eltérő ASN-t rendel hozzá, vagy ha az átjáró létrehozása után módosítja az ASN-t. A helyszíni ASN-eket a megfelelő Azure helyi hálózati átjáróhoz kell hozzárendelni.
-
-
 
 ### Milyen címelőtagokat ajánlanak majd az Azure VPN Gatewayek?
 
@@ -23,6 +30,14 @@ Az Azure VPN Gatewayek a helyszíni BGP-eszközök alábbi elérési útjait aj�
 - Az Ön VNet-címelőtagjait
 - Az Azure VPN Gatewayhez csatlakozó egyes helyi hálózati átjárók címelőtagjait
 - Az Azure VPN Gatewayhez csatlakozó más BGP társviszony-munkamenetektől tanult elérési utakat, **kivéve a VNet-előtagok által átfedett alapértelmezett elérési uta(ka)t**.
+
+#### Meghirdethetem az Azure VPN Gateway átjárókhoz vezető alapértelmezett útvonalat (0.0.0.0/0)?
+
+Jelenleg nem.
+
+#### Meghirdethetem pontosan ugyanazokat az előtagokat, mint a virtuális hálózataim előtagjai?
+
+Nem, ha bármelyik virtuális hálózatának a címéhez tartozó előtagot meghirdeti, azokat az Azure platform blokkolni vagy szűrni fogja.
 
 ### Használhatom a BGP-t a VNet–VNet kapcsolatokhoz?
 
@@ -50,7 +65,7 @@ Jelenleg nem.
 
 ### Milyen címet használ az Azure VPN Gateway a BGP-társgép IP-címéhez?
 
-Az Azure VPN Gateway egyetlen IP-címet foglal le a virtuális hálózathoz definiált GatewaySubnet-tartományból. Alapértelmezés szerint ez a tartomány utolsó előtti címe. Ha például az átjárója 10.12.255.0.0/27, és a tartománya 10.42.255.0.0-tól 10.42.255.31-ig terjed, akkor a BGP társ IP-címe 10.12.255.30 lesz az Azure VPN Gatewayen. Ezeket az információkat az Azure VPN Gatewayinformációinak listázásakor találhatja meg.
+Az Azure VPN Gateway egyetlen IP-címet foglal le a virtuális hálózathoz definiált GatewaySubnet-tartományból. Alapértelmezés szerint ez a tartomány utolsó előtti címe. Ha például az alhálózati átjárója 10.12.255.0/27, és a tartománya 10.12.255.0-tól 10.12.255.31-ig terjed, akkor a BGP társ IP-címe 10.12.255.30 lesz az Azure VPN Gatewayen. Ezeket az információkat az Azure VPN Gatewayinformációinak listázásakor találhatja meg.
 
 ### Mik a BGP-társ IP-címének követelményei a VPN-eszközön?
 
@@ -65,6 +80,7 @@ Az Azure helyi hálózati átjárója adja meg a kezdeti címelőtagokat a helys
 Vegye fel a VPN-eszközén az Azure BGP-társgép IP-címének gazdaútvonalát, amely az IPsec S2S VPN-alagútra mutat. Ha például az Azure VPN-társgép IP-címe „10.12.255.30”, akkor a VPN-eszköz megfelelő IPsec alagútkapcsolatának a „10.12.255.30” címre mutató gazdaútvonalat kell megadnia egy következő ugrás felülettel.
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=sep16_HO1-->
 
 
