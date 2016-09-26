@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Helyezze üzembe az első webalkalmazását öt perc alatt az Azure-ban | Microsoft Azure" 
-    description="Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben. Gyorsan hozzáfoghat a valós fejlesztéshez, az eredményeket pedig azonnal meg is tekintheti." 
+    pageTitle="Helyezze üzembe az első webalkalmazását öt perc alatt az Azure-ban | Microsoft Azure"
+    description="Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben. Gyorsan hozzáfoghat a valós fejlesztéshez, az eredményeket pedig azonnal meg is tekintheti."
     services="app-service\web"
     documentationCenter=""
     authors="cephalin"
@@ -17,7 +17,7 @@
     ms.date="09/09/2016" 
     ms.author="cephalin"
 />
-    
+
 # Helyezze üzembe az első webalkalmazását öt perc alatt az Azure-ban
 
 Ez az oktatóanyag segítséget nyújt az első webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
@@ -44,7 +44,7 @@ Az alábbiakat fogja elvégezni:
 
 2. Kattintson az **Új** > **Web + mobil** > **Webalkalmazás** elemre.
 
-    ![](./media/app-service-web-get-started/create-web-app-portal.png)
+    ![az első webes alkalmazás elkészítésének első lépései az Azure-ban](./media/app-service-web-get-started/create-web-app-portal.png)
 
 3. Az alkalmazás-létrehozási panelen használja az alábbi beállításokat az új alkalmazásához:
 
@@ -54,27 +54,27 @@ Az alábbiakat fogja elvégezni:
 
     Amikor elkészült, az alkalmazás-létrehozási panelnek az alábbihoz hasonlóan kell kinéznie:
 
-    ![](./media/app-service-web-get-started/create-web-app-settings.png)
+    ![az első webes alkalmazás konfigurálása az Azure-ban](./media/app-service-web-get-started/create-web-app-settings.png)
 
 3. Kattintson az alul lévő **Létrehozás** lehetőségre. A felül lévő **Értesítés** ikonra kattintva megtekintheti a folyamat állapotát.
 
-    ![](./media/app-service-web-get-started/create-web-app-started.png)
+    ![az első webes alkalmazás alkalmazáslétrehozási értesítése az Azure-ban](./media/app-service-web-get-started/create-web-app-started.png)
 
 4. Az üzembe helyezés befejezése után ennek az értesítési üzenetnek kell megjelennie. Kattintson az üzenetre az üzemelő példány panelének megnyitásához.
 
-    ![](./media/app-service-web-get-started/create-web-app-finished.png)
+    ![az első webes alkalmazás üzembe helyezésének végét jelző üzenet az Azure-ban](./media/app-service-web-get-started/create-web-app-finished.png)
 
 5. **Az üzembe helyezés sikeres** panelen kattintson az **Erőforrás** hivatkozásra az új webalkalmazás panelének megnyitásához.
 
-    ![](./media/app-service-web-get-started/create-web-app-resource.png)
+    ![az első webes alkalmazás erőforrás-hivatkozása az Azure-ban](./media/app-service-web-get-started/create-web-app-resource.png)
 
 ## Kód üzembe helyezése a webalkalmazásban
 
 Ideje néhány kódot üzembe helyezni az Azure-ban a Git használatával.
 
-5. A webalkalmazás panelén görgessen le vagy keressen rá az **Deployment options** (Üzembe helyezési lehetőségek) elemre, majd kattintson rá. 
+5. A webalkalmazás panelén görgessen le vagy keressen rá az **Deployment options** (Üzembe helyezési lehetőségek) elemre, majd kattintson rá.
 
-    ![](./media/app-service-web-get-started/deploy-web-app-deployment-options.png)
+    ![az első webes alkalmazás üzembehelyezési beállításai az Azure-ban](./media/app-service-web-get-started/deploy-web-app-deployment-options.png)
 
 6. Kattintson a **Forrás kiválasztása** > **Helyi git-tárház** > **OK** elemre.
 
@@ -84,7 +84,7 @@ Ideje néhány kódot üzembe helyezni az Azure-ban a Git használatával.
 
 7. Térjen vissza a webalkalmazás panelére, görgessen le vagy keressen rá a **Tulajdonságok** elemre, majd kattintson rá. A **Gites URL-cím** elem mellett kattintson a **Másolás** gombra.
 
-    ![](./media/app-service-web-get-started/deploy-web-app-properties.png)
+    ![az első webes alkalmazás tulajdonságok panele az Azure-ban](./media/app-service-web-get-started/deploy-web-app-properties.png)
 
     Készen áll a kód Git használatával történő üzembe helyezésére.
 
@@ -148,6 +148,6 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 
 
-<!--HONumber=sep12_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 
