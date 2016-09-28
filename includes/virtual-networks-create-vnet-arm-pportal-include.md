@@ -36,7 +36,6 @@ Ha a fenti forgatókönyv alapján kíván létrehozni egy VNetet az Azure Betek
     ![A VNet alhálózatainak listája](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

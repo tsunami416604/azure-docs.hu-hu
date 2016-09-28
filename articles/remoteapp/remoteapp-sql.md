@@ -16,6 +16,7 @@
    ms.date="08/15/2016"
    ms.author="elizapo"/>
 
+
 # Az SQL Azure és az Azure RemoteApp
 
 > [AZURE.IMPORTANT]
@@ -56,6 +57,6 @@ Ha egy Azure RemoteAppban üzemeltetett, egy Azure-ban vagy a helyszínen üzeme
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

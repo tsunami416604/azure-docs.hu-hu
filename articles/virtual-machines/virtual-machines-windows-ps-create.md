@@ -17,6 +17,7 @@
     ms.date="06/07/2016"
     ms.author="davidmu"/>
 
+
 # Windowsos virtuális gép létrehozása a Resource Manager és a PowerShell használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre gyorsan egy Windows Server rendszert futtató Azure virtuális gépet és az ehhez szükséges erőforrásokat a [Resource Manager](../resource-group-overview.md) és a PowerShell használatával. 
@@ -174,6 +175,6 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

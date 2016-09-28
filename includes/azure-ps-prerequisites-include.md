@@ -3,7 +3,6 @@ A cikkben szereplő lépések végrehajtásához először [telepítse és konfi
 
 > [AZURE.NOTE] Ha nem rendelkezik Azure-fiókkal, létre kell hoznia egyet. Itt regisztrálhat az [ingyenes próbaverzióra](../articles/active-directory/sign-up-organization.md). 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

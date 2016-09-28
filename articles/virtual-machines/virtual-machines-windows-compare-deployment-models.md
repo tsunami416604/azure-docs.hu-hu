@@ -17,6 +17,7 @@
    ms.date="08/19/2015"
    ms.author="tomfitz"/>
 
+
 # Windows-alkalmazások Azure számítás-, hálózat- és társzolgáltatói Azure Resource Manager-alapú üzemi modellben
 
 A számítási, hálózati ás tárolási képességek az Azure Resource Manager-alapú üzemi modellbe integrálása jelentősen leegyszerűsíti az IaaS-en futó összetett alkalmazások telepítését és kezelését. Számos alkalmazás igényli több erőforrás kombinációját, például virtuális hálózatot, tárfiókot, virtuális gépet és hálózati adaptert. Az Azure Resource Manager-alapú üzemi modell lehetővé teszi egy JSON-sablon összeállítását, és annak segítségével ezen erőforrások együtt, egyetlen alkalmazásként való telepítését és kezelését.
@@ -25,6 +26,6 @@ A számítási, hálózati ás tárolási képességek az Azure Resource Manager
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

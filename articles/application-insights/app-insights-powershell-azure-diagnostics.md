@@ -15,6 +15,7 @@
     ms.date="11/17/2015"
     ms.author="awills"/>
 
+
 # Azure Diagnostics küldése az Application Insights szolgáltatásba a PowerShell segítségével
 
 A [Microsoft Azure](https://azure.com) [konfigurálható úgy, hogy az Azure Diagnostics adatait elküldje](app-insights-azure-diagnostics.md) a [Visual Studio Application Insights ](app-insights-overview.md) szolgáltatásba. A diagnosztika az Azure Cloud Services szolgáltatáshoz és az Azure virtuális gépekhez kapcsolódik. Kiegészíti az alkalmazáson belülről az Application Insights SDK használatával küldött telemetriát. Az új erőforrások Azure-ban való létrehozási folyamatának részeként konfigurálhatja a diagnosztikát a PowerShell segítségével.
@@ -120,6 +121,6 @@ A diagnosztika bővítmény egyes szerepkörökből való eltávolítása:
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

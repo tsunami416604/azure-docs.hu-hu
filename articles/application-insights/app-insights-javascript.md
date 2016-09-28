@@ -15,6 +15,7 @@
     ms.date="08/15/2016"
     ms.author="awills"/>
 
+
 # Application Insights weblapokhoz
 
 
@@ -253,6 +254,6 @@ Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

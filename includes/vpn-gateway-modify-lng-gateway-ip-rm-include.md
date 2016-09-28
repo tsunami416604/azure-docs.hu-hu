@@ -47,7 +47,6 @@ Ha már létezik egy átjárókapcsolat, először el kell távolítania a kapcs
 
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

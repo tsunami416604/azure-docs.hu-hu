@@ -58,7 +58,6 @@ A GitHubból letöltheti a meglévő ARM-sablont, amellyel létrehozhat egy VNet
 11. Mentse a fájlt.
   
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

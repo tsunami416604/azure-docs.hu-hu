@@ -4,7 +4,7 @@
     services="hdinsight" 
     documentationCenter="" 
     authors="nitinme" 
-    manager="paulettm" 
+    manager="jhubbard" 
     editor="cgronlun"
     tags="azure-portal"/>
 
@@ -16,6 +16,7 @@
     ms.topic="get-started-article" 
     ms.date="08/25/2016" 
     ms.author="nitinme"/>
+
 
 # Áttekintés: Apache Spark on HDInsight Linux
  
@@ -137,6 +138,6 @@ Kezdjük Spark-fürt létrehozásával HDInsight Linux platformon. Lásd: [Gyors
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -7,7 +7,7 @@
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Containers, Micro-services, DC/OS, Azure"/>
+   keywords="Tárolók, mikroszolgáltatások, DC/OS, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -17,6 +17,7 @@
    ms.workload="na"
    ms.date="05/10/2016"
    ms.author="rogardle"/>
+
 
 >[AZURE.NOTE] Erre a DC/OS-alapú ACS-fürtökkel végzett munka esetén van szükség. A Swarm-alapú ACS-fürtök esetén erre a lépésre nincs szükség.
 
@@ -47,6 +48,6 @@ dcos --help
 ```
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

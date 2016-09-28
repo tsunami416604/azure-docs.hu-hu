@@ -36,7 +36,6 @@ A StorSimple-kötet csatlakoztatását, inicializálását és formázását bem
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

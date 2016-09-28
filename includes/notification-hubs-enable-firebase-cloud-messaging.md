@@ -12,7 +12,6 @@
 4. A projektbeállítások között kattintson a **Cloud Messaging** fülre, majd másolja a **Server key** (Kiszolgálókulcs) és a **Sender ID** (Küldő azonosítója) értékét.  Ezeket az értékeket később fogja használni az értesítési csomópont elérési házirendjének, valamint az alkalmazás értesítéskezelőjének a konfigurálásához.
   
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -49,7 +49,6 @@ Ha már létrehozott egy átjárókapcsolatot, és szeretné felvenni vagy eltá
         -RoutingWeight 10 -SharedKey 'abc123'
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

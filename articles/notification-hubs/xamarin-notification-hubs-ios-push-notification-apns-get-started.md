@@ -17,6 +17,7 @@
     ms.date="06/29/2016"
     ms.author="wesmc"/>
 
+
 # iOS leküldéses értesítések küldése a Notification Hubs használatával Xamarin-alkalmazásokba
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -331,6 +332,6 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

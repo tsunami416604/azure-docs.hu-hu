@@ -90,7 +90,6 @@ Az összes már létrehozott automatizálás és parancsfájl továbbra is műk�
 Az [Azure Resource Manager gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) között találhat egy átfogó kezdősablonkészletet.
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

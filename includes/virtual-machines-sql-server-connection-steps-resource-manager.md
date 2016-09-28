@@ -35,7 +35,6 @@ DNS-címke létrehozásához először válassza a **Virtuális gépek** elemet 
     ![ssms connect](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

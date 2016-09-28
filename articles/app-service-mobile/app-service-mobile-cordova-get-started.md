@@ -18,6 +18,7 @@
     ms.date="08/11/2016"
     ms.author="glenga"/>
 
+
 #Apache Cordova-alkalmazás létrehozása
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -79,13 +80,13 @@ További információk az Azure App Service alapjairól.
 [Hitelesítés hozzáadása]: app-service-mobile-cordova-get-started-users.md
 [Leküldéses értesítések hozzáadása]: app-service-mobile-cordova-get-started-push.md
 [Authentication]: app-service-mobile-auth.md
-[Leküldéses értesítések]: ../notification-hubs/notification-hubs-overview.md
+[Leküldéses értesítések]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

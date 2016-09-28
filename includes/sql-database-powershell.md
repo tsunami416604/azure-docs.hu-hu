@@ -16,7 +16,6 @@ Ha több előfizetéssel rendelkezik, használja a [**Set-AzureRmContext**](http
     Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

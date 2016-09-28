@@ -15,6 +15,7 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
+
 # A Microsoft Outlook használata az Azure RemoteAppban
 
 > [AZURE.IMPORTANT]
@@ -36,6 +37,6 @@ Az Outlook 2016-nak gyorsítótárazott módban is van erre megoldása, amely ú
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

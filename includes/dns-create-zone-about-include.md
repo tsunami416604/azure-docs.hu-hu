@@ -11,7 +11,6 @@ A „contoso.com” tartomány például számos DNS-rekordot tartalmazhat, pél
 
 - Abban az esetben, ha több zóna rendelkezik ugyanazzal a névvel, minden példány különböző névkiszolgáló-címet kap, és csak egyetlen példány delegálható a szülőtartományból. További információ: [Delegate a domain to Azure DNS](../articles/dns/dns-domain-delegation.md) (Tartomány delegálása az Azure DNS-be).
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

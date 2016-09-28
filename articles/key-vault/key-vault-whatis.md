@@ -18,6 +18,7 @@
 
 
 
+
 # Mi az Azure Key Vault?
 
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -69,6 +70,6 @@ A kulcsok és a titkos kulcsok Azure Key Vault segítségével történő haszn�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

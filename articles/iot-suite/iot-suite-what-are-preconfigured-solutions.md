@@ -17,6 +17,7 @@
  ms.date="08/09/2016"
  ms.author="dobett"/>
 
+
 # Mik az Azure IoT előre konfigurált megoldások?
 
 Az Azure IoT Suite előre konfigurált megoldások az általános IoT-megoldásminták megvalósításai, amelyeket az előfizetésével üzembe helyezhet az Azure-ban. A következőkre használhatja az előre konfigurált megoldásokat:
@@ -132,6 +133,6 @@ Most, hogy már tudja, mik azok az előre konfigurált megoldások, üzembe hely
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

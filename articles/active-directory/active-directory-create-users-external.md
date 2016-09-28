@@ -16,7 +16,12 @@
     ms.date="08/02/2016"
     ms.author="curtand"/>
 
+
 # Más címtárakban vagy partnervállalatokban lévő felhasználók felvétele az Azure Active Directoryba
+
+> [AZURE.SELECTOR]
+- [Azure Portal](active-directory-create-users-external-azure-portal.md)
+- [klasszikus Azure portál](active-directory-create-users-external.md)
 
 Ez a cikk azt ismerteti, hogyan vehet fel felhasználókat más címtárakból az Azure Active Directoryba, illetve hogyan vehet fel felhasználókat a partnervállalatokból. A szervezetben új felhasználók hozzáadásáról és a Microsoft-fiókokkal rendelkező felhasználók hozzáadásáról további információért lásd: [Új felhasználók felvétele az Azure Active Directoryba](active-directory-create-users.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
 
@@ -86,6 +91,6 @@ Ha a felhasználót törlik a saját címtárában, vagy ha törlik a Microsoft-
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

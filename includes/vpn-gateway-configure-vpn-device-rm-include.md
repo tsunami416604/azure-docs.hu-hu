@@ -5,9 +5,8 @@ A virtuális hálózati átjáró IP-címét az alábbi minta alapján keresheti
 
     Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 
-A virtuális hálózati átjáró IP-címét az Azure portálon is megtekintheti. Válassza a **Virtuális hálózati átjárók** elemet, majd kattintson az átjárója nevére.
+A virtuális hálózati átjáró IP-címét az Azure Portalon is megtekintheti. Válassza a **Virtuális hálózati átjárók** elemet, majd kattintson az átjárója nevére.
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

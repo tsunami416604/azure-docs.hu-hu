@@ -16,6 +16,7 @@
     ms.date="08/24/2016"
     ms.author="sdanie"/>
 
+
 # Az Azure Redis Cache használata Javával
 
 > [AZURE.SELECTOR]
@@ -82,6 +83,6 @@ Egyes Redis-ügyfelek nem támogatják az SSL-t, és alapértelmezés szerint a 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

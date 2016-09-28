@@ -22,7 +22,6 @@
 
 A szolgáltatás regisztrációs kulcsának lekérését bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/get-the-service-registration-key/).
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

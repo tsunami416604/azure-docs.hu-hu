@@ -107,7 +107,6 @@ Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat b
         info:    network vnet show command OK
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

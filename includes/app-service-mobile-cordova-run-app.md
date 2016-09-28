@@ -17,7 +17,6 @@ Ez egy POST kérést küld a korábban telepített Azure-háttérrendszernek. A 
 [Azure Portal]: https://portal.azure.com/
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

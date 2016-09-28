@@ -9,7 +9,6 @@ Az alábbiakban az elkészült alkalmazás képernyőképei láthatók:
 
 Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Windows Áruházbeli és Windows Phone Áruházbeli alkalmazásokkal kapcsolatos Mobile Services-oktatóanyag elvégzéséhez. 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

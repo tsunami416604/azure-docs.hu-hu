@@ -16,6 +16,7 @@
     ms.date="06/29/2016"
     ms.author="wesmc"/>
 
+
 # Ismerkedés a Notification Hubs szolgáltatással Kindle-alkalmazásokhoz
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -284,6 +285,6 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

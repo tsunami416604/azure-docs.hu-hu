@@ -15,6 +15,7 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
+
 # A StorSimple virtuális eszköz üzembe helyezése és kezelése az Azure-ban
 
 
@@ -283,6 +284,6 @@ Ha törli vagy leállítja a virtuális eszközt, az **Offline** állapottal fog
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

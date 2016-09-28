@@ -3,7 +3,6 @@
 - [klasszikus Azure portálon](../articles/storage/storage-create-storage-account-classic-portal.md)
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

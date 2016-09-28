@@ -1,20 +1,21 @@
 <properties 
-    pageTitle="Microsoft Azure Multi-Factor Authentication a felhőben – első lépések" 
-    description="Ez a Microsoft Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA használatát a felhőben." 
-    services="multi-factor-authentication" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="femila" 
+    pageTitle="Microsoft Azure Multi-Factor Authentication a felhőben – első lépések"
+    description="Ez a Microsoft Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA használatát a felhőben."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtand"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/15/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/15/2016"
+    ms.author="kgremban"/>
+
 
 # Azure Multi-Factor Authentication a felhőben – első lépések
 A következő cikkből megtudhatja, hogyan kezdheti el az Azure Multi-Factor Authentication használatát a felhőben.
@@ -24,16 +25,16 @@ A következő cikkből megtudhatja, hogyan kezdheti el az Azure Multi-Factor Aut
 ![MFA a felhőben](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
 
 ## Előfeltételek
-A következő előfeltételek teljesülésére van szükség, hogy engedélyezhesse az Azure Multi-Factor Authenticationt a felhasználók számára. 
+A következő előfeltételek teljesülésére van szükség, hogy engedélyezhesse az Azure Multi-Factor Authenticationt a felhasználók számára.
 
 
 
 
 - [Regisztráció Azure-előfizetésre](https://azure.microsoft.com/pricing/free-trial/) – Ha még nincs Azure-előfizetése, regisztrálnia kell rá. Ha csak most kezdi és az Azure MFA-t használja, használhat próbaelőfizetést
-2. [Multi-Factor Auth szolgáltató létrehozása](multi-factor-authentication-get-started-auth-provider.md) és hozzárendelése a címtárhoz vagy [licencek hozzárendelése felhasználókhoz](multi-factor-authentication-get-started-assign-licenses.md) 
+2. [Multi-Factor Auth szolgáltató létrehozása](multi-factor-authentication-get-started-auth-provider.md) és hozzárendelése a címtárhoz vagy [licencek hozzárendelése felhasználókhoz](multi-factor-authentication-get-started-assign-licenses.md)
 
-> [AZURE.NOTE]  A licencek az Azure MFA, az Azure AD Prémium vagy a Nagyvállalati mobilitási csomag (EMS) felhasználói számára érhetők el.  Az MFA megtalálható az Azure AD Prémium és az EMS csomagban. Ha elegendő licenccel rendelkezik, nem kell létrehoznia hitelesítésszolgáltatót. 
-        
+> [AZURE.NOTE]  A licencek az Azure MFA, az Azure AD Prémium vagy a Nagyvállalati mobilitási csomag (EMS) felhasználói számára érhetők el.  Az MFA megtalálható az Azure AD Prémium és az EMS csomagban. Ha elegendő licenccel rendelkezik, nem kell létrehoznia hitelesítésszolgáltatót.
+
 
 ## A Multi-Factor Authentication bekapcsolása a felhasználók számára
 A Multi-Factor Authentication a felhasználók számára való bekapcsolásához egyszerűen módosítsa a felhasználó állapotát letiltottról engedélyezett értékre.  A felhasználói állapotokkal kapcsolatos további információ: [Felhasználói állapotok az Azure Multi-Factor Authenticationben](multi-factor-authentication-get-started-user-states.md)
@@ -52,7 +53,7 @@ A következő eljárással engedélyezheti az MFA-t a felhasználók számára.
 6.  Ez megnyit egy új böngészőlapot.  Keresse meg a felhasználót, akit a Multi-Factor Authenticationhöz engedélyezni szeretne. Lehet, hogy módosítania kell felül a nézetet. Győződjön meg arról, hogy az állapot **letiltva** értékű.
 ![Felhasználó engedélyezése](./media/multi-factor-authentication-get-started-cloud/enable1.png)
 7.  **Jelölje be** a neve melletti jelölőnégyzetet.
-7.  A jobb oldalon kattintson az **Engedélyezés** lehetőségre. 
+7.  A jobb oldalon kattintson az **Engedélyezés** lehetőségre.
 ![Felhasználó engedélyezése](./media/multi-factor-authentication-get-started-cloud/user1.png)
 8.  Kattintson a **Multi-Factor Auth engedélyezése** gombra.
 ![Felhasználó engedélyezése](./media/multi-factor-authentication-get-started-cloud/enable2.png)
@@ -71,7 +72,7 @@ Ha az [állapot](multi-factor-authentication-whats-next.md) módosításához az
 - Letiltva  
 
 > [AZURE.IMPORTANT]  Vegye figyelembe, hogy ha Letiltva állapotból közvetlenül Kényszerítve állapotra vált, a nem modern hitelesítési ügyfelek nem fognak működni, mert a felhasználó nem esett át MFA-regisztráción, és nem szerzett be [alkalmazásjelszót](multi-factor-authentication-whats-next.md#app-passwords).  Ha nem modern hitelesítési ügyfeleket használ, és alkalmazásjelszavakra van szüksége, ajánlott a Letiltva állapotot Engedélyezve állapotra váltani.  Így a felhasználók regisztrálhatnak és beszerezhetik az alkalmazásjelszavaikat.   
-        
+
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
         $st.RelyingParty = "*"
         $st.State = “Enabled”
@@ -79,7 +80,7 @@ Ha az [állapot](multi-factor-authentication-whats-next.md) módosításához az
         Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 
 A PowerShell használata a felhasználók kötegelt engedélyezésének egy módszere.  Jelenleg nincs kötegelt engedélyezési funkció az Azure portálon, és a felhasználókat egyenként kell kiválasztania.  Ez nehéz feladat, ha sok felhasználója van.  Ha a fenti eljárással PowerShell-szkriptet hoz létre, hurkot készíthet a felhasználók listáján, és engedélyezheti őket.  Például:
-    
+
     $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
     foreach ($user in $users)
     {
@@ -98,6 +99,6 @@ Most, hogy beállította a Multi-Factor Authenticationt a felhőben, konfigurál
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

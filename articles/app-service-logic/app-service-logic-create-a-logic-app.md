@@ -16,6 +16,7 @@
     ms.date="07/16/2016"
     ms.author="jehollan"/>
 
+
 # Új, SaaS szolgáltatásokhoz csatlakozó logikai alkalmazás létrehozása
 
 Ez a témakör bemutatja, hogyan kezdhet neki mindössze néhány perc alatt az [Azure Logic Apps](app-service-logic-what-are-logic-apps.md) használatának. Bemutatunk egy egyszerű munkafolyamatot, amely érdekes tweetek elküldését teszi lehetővé az e-mail-címére.
@@ -68,6 +69,6 @@ Az elmúlt kevesebb mint 5 percben létrehozott és beállított egy egyszerű, 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

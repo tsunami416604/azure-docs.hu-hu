@@ -15,8 +15,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="09/13/2016"
    ms.author="nepeters"/>
+
 
 # Tárolókezelés a REST API használatával
 
@@ -74,8 +75,6 @@ A Docker-formátumú tárolók Marathon segítségével való üzembe helyezés�
 Docker-formátumú tároló üzembe helyezéséhez hozzon létre egy saját JSON-fájlt, vagy használja az [Azure tárolószolgáltatás bemutatójában](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json) elérhető mintát. A fájlt tárolja elérhető helyen. Ezt követően a tároló üzembe helyezéséhez futtassa az alábbi parancsot. Adja meg a JSON-fájl nevét.
 
 ```
-# deploy container
-
 curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-type: application/json"
 ```
 
@@ -104,8 +103,6 @@ Az alkalmazás horizontális skálázásához használja az alábbi parancsot.
 >[AZURE.NOTE] Az URI a http://localhost/marathon/v2/apps/ cím, majd a skálázandó alkalmazás azonosítója lesz. Ha az itt szerepelő Nginx mintát használja, akkor az URI a http://localhost/marathon/v2/apps/nginx cím lesz.
 
 ```json
-# scale container
-
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
@@ -149,8 +146,6 @@ A Docker-formátumú tárolók Marathon segítségével való üzembe helyezés�
 Hozzon létre egy saját JSON-fájlt, vagy használja az [Azure tárolószolgáltatás bemutatójában](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json) elérhető mintát. A fájlt tárolja elérhető helyen. Ezt követően a tároló üzembe helyezéséhez futtassa az alábbi parancsot. Adja meg a JSON-fájl nevét.
 
 ```powershell
-# deploy container
-
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
@@ -165,8 +160,6 @@ Az alkalmazás horizontális skálázásához használja az alábbi parancsot.
 > [AZURE.NOTE] Az URI a http://localhost/marathon/v2/apps/ cím, majd a skálázandó alkalmazás azonosítója lesz. Ha az Nginx-mintát használja, akkor az URI a http://localhost/marathon/v2/apps/nginx cím lesz.
 
 ```powershell
-# scale container
-
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
@@ -177,6 +170,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

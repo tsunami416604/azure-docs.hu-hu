@@ -17,6 +17,7 @@
     ms.date="05/25/2016" 
     ms.author="omark"/>
 
+
 # Az Azure App Service-ről
 
 Az *App Service* a Microsoft Azure [szolgáltatásként nyújtott platformja](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS). Web- és mobilalkalmazásokat hozhat létre bármely platformra és eszközre. Alkalmazásait integrálhatja SaaS megoldásokkal, csatlakozhat helyszíni alkalmazásokhoz és automatizálhatja üzleti folyamatait. Az alkalmazásokat az Azure teljes körűen felügyelt virtuális gépeken futtatja, az Ön választása szerint vagy közös virtuálisgép-erőforrásokkal, vagy dedikált virtuális gépekkel. 
@@ -82,6 +83,6 @@ Vagy hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pric
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

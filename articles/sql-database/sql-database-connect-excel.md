@@ -19,6 +19,7 @@
     ms.author="joseidz"/>
 
 
+
 # SQL Database oktatóanyag: Excel csatlakoztatása Azure SQL adatbázishoz és jelentés létrehozása
 
 > [AZURE.SELECTOR]
@@ -86,6 +87,6 @@ Most, hogy létrehozta a kapcsolatot és az adatokat, illetve kapcsolatadatokat 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

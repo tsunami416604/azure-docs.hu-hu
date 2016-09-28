@@ -7,7 +7,6 @@ A mobilszolgáltatás-projekt lehetővé teszi az új mobilszolgáltatás helyil
 2. Nyomja le az **F5** billentyűt a projekt újraépítéséhez és a mobilszolgáltatás indításához. Miután a mobilszolgáltatás sikeresen elindul, megjelenik egy weboldal.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

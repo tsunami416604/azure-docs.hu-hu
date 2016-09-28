@@ -47,7 +47,6 @@ Kövesse a következő lépéseket az Azure Portalon, hogy létrehozzon egy kisz
     >[AZURE.IMPORTANT] Az ügyfél IP-címe időnként változhat, így előfordulhat, hogy új tűzfalszabály létrehozásáig nem férhet hozzá a kiszolgálóhoz. IP-címét ellenőrizheti a [Bing](http://www.bing.com/search?q=my%20ip%20address) használatával. Ezután hozzáadhat egy egyedi IP-címet vagy egy IP-címtartományt. Részletek: [Manage firewall settings](sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal) (Tűzfalbeállítások kezelése).
 
 
-
-<!--HONumber=sep12_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

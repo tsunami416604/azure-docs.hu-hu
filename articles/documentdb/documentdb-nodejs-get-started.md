@@ -17,6 +17,7 @@
   ms.date="08/11/2016"
   ms.author="anhoh"/>
 
+
 # NoSQL Node.js oktatóanyag: DocumentDB Node.js-konzolalkalmazás  
 
 > [AZURE.SELECTOR]
@@ -623,6 +624,6 @@ Ezután, a ```config.js``` fájlban frissítse a config.endpoint és config.auth
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

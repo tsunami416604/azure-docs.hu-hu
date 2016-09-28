@@ -20,7 +20,6 @@
 
 - Az azonos régión belüli virtuális hálózatok közötti adatforgalom ingyenes mindkét irányban. A régiókon átívelő virtuális hálózatok közötti kimenő forgalom díjának megállapítása a virtuális hálózatok közötti kimenő adatátviteli tarifák alapján történik a forrásrégiók alapján. A részletekért tekintse meg a [díjszabást ismertető oldalt](https://azure.microsoft.com/pricing/details/vpn-gateway/).
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

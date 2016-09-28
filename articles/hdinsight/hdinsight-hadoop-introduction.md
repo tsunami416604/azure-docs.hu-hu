@@ -5,7 +5,7 @@
     services="hdinsight"
     documentationCenter=""
     authors="cjgronlund"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -16,6 +16,7 @@
    ms.workload="big-data"
    ms.date="07/21/2016"
    ms.author="cgronlun"/>
+
 
 
 # Mi a felhőalapú Hadoop? Bevezetés a Hadoop-ökoszisztéma használatába a HDInsightban
@@ -271,6 +272,6 @@ Ezek az üzletiintelligencia-eszközök segíthetnek a big data elemzések elvé
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

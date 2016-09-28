@@ -20,7 +20,6 @@
 
 7. Az új profil létrehozásához kattintson a **Létrehozás** gombra. 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

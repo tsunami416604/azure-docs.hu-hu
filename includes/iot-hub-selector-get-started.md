@@ -17,7 +17,6 @@ Ez az oktatóanyag a következőket mutatja be:
 - Eszközidentitás létrehozása az IoT Hubban.
 - Egy szimulált eszköz létrehozása, amely telemetriai adatokat küld a felhő háttérrendszerének, és parancsokat fogad a felhő háttérrendszeréből.
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

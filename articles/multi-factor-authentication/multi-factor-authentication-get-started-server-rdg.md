@@ -1,20 +1,21 @@
 <properties 
-    pageTitle="Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló" 
-    description="Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a távoli asztali (RD) átjáró és a RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló telepítéséhez." 
-    services="multi-factor-authentication" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="femila" 
+    pageTitle="Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló"
+    description="Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a távoli asztali (RD) átjáró és a RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló telepítéséhez."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtand"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/15/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/15/2016"
+    ms.author="kgremban"/>
+
 
 # Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló
 
@@ -55,12 +56,12 @@ Az Azure Multi-Factor Authentication-kiszolgáló RADIUS-proxyként van konfigur
 1. Nyissa meg az Azure Multi-Factor Authentication-kiszolgálót, és kattintson a RADIUS-hitelesítés ikonra. Jelölje be a RADIUS-hitelesítés engedélyezése jelölőnégyzetet.
 2. Az Ügyfelek lapon győződjön meg arról, hogy a portok egyeznek az NPS-ben konfiguráltakkal, és kattintson a Hozzáadás... gombra. Adja hozzá a távoli asztali átjáró kiszolgálójának IP-címét, az alkalmazás nevét (nem kötelező) és a közös titkos kulcsot. A közös titkos kulcsnak azonosnak kell lennie az Azure Multi-Factor Authentication-kiszolgálón és a távoli asztali átjárón.
 3. Kattintson a Cél fülre, és jelölje be a RADIUS-kiszolgálók választógombot.
-4. Kattintson a Hozzáadás... gombra. Adja meg az IP-címet, a közös titkos kulcsot és az NPS-kiszolgáló portjait. Ha nem központi NPS-t használ, a RADIUS-ügyfél és a RADIUS-cél azonos. A közös titkos kulcsnak egyeznie kell az NPS-kiszolgáló RADIUS-ügyfél szakaszában beállítottal. 
+4. Kattintson a Hozzáadás... gombra. Adja meg az IP-címet, a közös titkos kulcsot és az NPS-kiszolgáló portjait. Ha nem központi NPS-t használ, a RADIUS-ügyfél és a RADIUS-cél azonos. A közös titkos kulcsnak egyeznie kell az NPS-kiszolgáló RADIUS-ügyfél szakaszában beállítottal.
 
 ![Radius-hitelesítés](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

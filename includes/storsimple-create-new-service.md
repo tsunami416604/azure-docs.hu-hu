@@ -5,7 +5,7 @@
 
 1. Jelentkezzen be a klasszikus Azure portálra a Microsoft-fiók hitelesítő adataival a következő címen: [https://manage.windowsazure.com](https://manage.windowsazure.com/).
 
-2. A klasszikus Azure portálon, kattintson az **Új** > **Adatszolgáltatások** > **StorSimple Manager** > **Gyorslétrehozás** elemre.
+2. A klasszikus Azure Portalon kattintson az **Új** > **Data Services** > **StorSimple Manager** > **Gyorslétrehozás** elemre.
 
 3. A megjelenő adatlapon tegye a következőket:
   1. Adjon egy egyedi **nevet** a szolgáltatásnak. Ez a szolgáltatás azonosítására szolgáló rövid név. A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.
@@ -28,7 +28,6 @@
 
 Az új StorSimple Manager szolgáltatás létrehozását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/).
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

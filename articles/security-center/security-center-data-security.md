@@ -16,6 +16,7 @@
    ms.date="08/08/2016"
    ms.author="yurid"/>
 
+
 # Az Azure Security Center által nyújtott adatbiztonság
 Annak érdekében, hogy segítsen az ügyfeleknek a fenyegetések megelőzésében, észlelésében és az azokra való reagálásban, az Azure Security Center összegyűjti és feldolgozza az Azure-erőforrásainak adatait, beleértve a konfigurációs adatokat, a metaadatokat, az eseménynaplókat, az összeomlási memóriaképeket stb. Fontos kötelességünknek tekintjük ezen adatok védelmét és biztonságát. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. 
 
@@ -64,6 +65,6 @@ Ebből a dokumentumból megtudta, hogyan kezeli az Azure Security Center az adat
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

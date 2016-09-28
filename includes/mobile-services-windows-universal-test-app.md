@@ -13,7 +13,6 @@
     
     Figyelje meg, hogy az előző lépésben mentett adatok betöltődnek a mobilszolgáltatásból az alkalmazás indítása után.
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

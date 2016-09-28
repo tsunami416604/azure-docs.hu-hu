@@ -18,6 +18,7 @@
    ms.date="03/09/2016"
    ms.author="yochayk@microsoft.com"/>
    
+
 # Egy Azure-szolgáltatáshoz kötődő Azure-függvény létrehozása
    
 [AZURE.INCLUDE [Getting Started Note](../../includes/functions-getting-started.md)]
@@ -30,6 +31,6 @@ Ebből a rövid videóból megtudhatja, hogyan hozhat létre egy Azure-függvén
 [AZURE.INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

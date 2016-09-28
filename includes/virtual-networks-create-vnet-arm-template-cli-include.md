@@ -90,7 +90,6 @@ A letöltött ARM-sablon Azure CLI-vel történő üzembe helyezéséhez kövess
         info:    network vnet show command OK
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

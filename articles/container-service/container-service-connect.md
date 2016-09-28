@@ -15,8 +15,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/12/2016"
+   ms.date="09/13/2016"
    ms.author="rogardle"/>
+
 
 
 # Csatlakozás Azure tárolószolgáltatási fürthöz
@@ -41,8 +42,6 @@ a **REGION** az a régió, ahol az erőforráscsoport megtalálható.
 a **PATH_TO_PRIVATE_KEY** [NEM KÖTELEZŐ] a Container Service-fürt létrehozásakor megadott nyilvános kulcshoz tartozó titkos kulcs elérési útja. Ezt a beállítást az -i jelzővel együtt kell használni.
 
 ```bash
-# ssh sample
-
 ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
 > Az SSH-kapcsolat portja nem a szabványos 22-es, hanem a 2200-as port.
@@ -52,8 +51,6 @@ ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.az
 A DC/OS-hez kapcsolódó végpontokhoz vezető alagút megnyitásához adjon ki egy a következőhöz hasonló parancsot:
 
 ```bash
-# ssh sample
-
 sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
@@ -70,8 +67,6 @@ Ehhez hasonlóan az egyes alkalmazások REST API-jait is ezen az alagúton keres
 A Swarm végponthoz vezető alagút megnyitásához adjon ki egy a következőhöz hasonló parancsot:
 
 ```bash
-# ssh sample
-
 ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
@@ -126,6 +121,6 @@ Tárolók telepítése és felügyelete DC/OS és Swarm rendszer esetén:
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

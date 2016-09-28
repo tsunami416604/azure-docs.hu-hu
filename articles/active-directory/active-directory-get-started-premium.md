@@ -16,6 +16,7 @@
     ms.date="08/16/2016"
     ms.author="markvi"/>
 
+
 # Bevezetés a Prémium szintű Azure Active Directory használatába
 
 
@@ -164,6 +165,6 @@ A Microsoft felhőalapú szolgáltatásainak és funkcióinak rendelkezésre ál
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

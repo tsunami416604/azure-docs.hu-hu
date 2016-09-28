@@ -13,8 +13,9 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="06/08/2016"
+    ms.date="08/08/2016"
     ms.author="heidist"/>
+
 
 # A Fiddler használata az Azure Search REST API-k értékeléséhez és teszteléséhez
 > [AZURE.SELECTOR]
@@ -241,6 +242,6 @@ Tekintse meg [A Search szolgáltatás kezelése az Azure rendszerben](search-man
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

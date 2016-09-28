@@ -16,6 +16,7 @@
     ms.date="07/15/2016"
     ms.author="cabailey"/>
 
+
 # Bevezetés az Azure Key Vault használatába #
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
 
@@ -247,6 +248,6 @@ Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-v
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

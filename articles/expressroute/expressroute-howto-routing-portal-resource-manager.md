@@ -16,6 +16,7 @@
    ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
+
 # ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása
 
 
@@ -240,6 +241,6 @@ A következő lépés egy [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsopo
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
     ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
+
 # Azure Search-index létrehozása .NET SDK használatával
 > [AZURE.SELECTOR]
 - [Áttekintés](search-what-is-an-index.md)
@@ -125,6 +126,6 @@ Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

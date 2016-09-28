@@ -16,6 +16,7 @@
     ms.date="08/17/2016"
     ms.author="tarcher" />
 
+
 # Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
 
 ## Áttekintés 
@@ -231,6 +232,6 @@ A keresés törléséhez kattintson az **x** gombra a keresőmezőben.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

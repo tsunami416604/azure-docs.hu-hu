@@ -17,6 +17,7 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
+
 # Adatfeltöltés az Azure Search szolgáltatásba a REST API használatával
 > [AZURE.SELECTOR]
 - [Áttekintés](search-what-is-data-import.md)
@@ -170,6 +171,6 @@ Az Azure Search-index feltöltését követően készen áll a dokumentumkeresé
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
     ms.date="07/22/2016"
     ms.author="wesmc"/>
 
+
 # Leküldéses értesítések küldése Chrome-alkalmazásokba az Azure Notification Hubs használatával
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -480,6 +481,6 @@ Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, o
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

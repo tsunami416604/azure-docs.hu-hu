@@ -1,20 +1,21 @@
-<properties 
-    pageTitle="A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0-s verziójának használatával" 
-    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS 2.0 használatát." 
-    services="multi-factor-authentication" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="stevenpo" 
+<properties
+    pageTitle="A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0-s verziójának használatával"
+    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS 2.0 használatát."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtland"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/04/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
+
 # A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0-s verziójának használatával
 
 Ha a szervezete Azure Active Directory-összevonást használ, és olyan helyszíni vagy felhőbeli erőforrásokkal rendelkezik, amelyeket meg szeretne védeni, konfigurálja az Azure Multi-Factor Authentication-kiszolgálót az AD FS-sel való együttműködésre, hogy a többtényezős hitelesítés elinduljon a magas értékű végpontokhoz.
@@ -23,7 +24,7 @@ Ez a dokumentáció az Azure Multi-Factor Authentication-kiszolgáló AD FS 2.0-
 
 
 ## AD FS 2.0-proxy
-Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authentication-kiszolgálót az ADFS-proxykiszolgálóra, és konfigurálja a kiszolgálót az alábbi lépések szerint. 
+Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authentication-kiszolgálót az ADFS-proxykiszolgálóra, és konfigurálja a kiszolgálót az alábbi lépések szerint.
 
 ### Az AD FS 2.0 védelme proxyval
 
@@ -63,7 +64,7 @@ Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authe
 
 ## AD FS 2.0 Direct proxy nélkül
 
-Az AD FS AD FS proxy nélküli védelméhez telepítse az Azure Multi-Factor Authentication-kiszolgálót az AD FS-kiszolgálóra, és konfigurálja a kiszolgálót az alábbi lépések szerint. 
+Az AD FS AD FS proxy nélküli védelméhez telepítse az Azure Multi-Factor Authentication-kiszolgálót az AD FS-kiszolgálóra, és konfigurálja a kiszolgálót az alábbi lépések szerint.
 
 ### Az AD FS 2.0 védelme proxy nélkül
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
@@ -80,7 +81,7 @@ Az AD FS AD FS proxy nélküli védelméhez telepítse az Azure Multi-Factor Au
 
 
 ## Megbízható IP-címek
-A Megbízható IP-címek segítségével a felhasználók adott IP-címekről vagy alhálózatokról származó webhelykérések esetén kihagyhatják az Azure Multi-Factor Authenticationt. Például mentesítheti a felhasználókat az Azure Multi-Factor Authentication alól, ha az irodából jelentkeznek be. Ehhez az irodai alhálózatot Megbízható IP-címek bejegyzésként kell megadni. 
+A Megbízható IP-címek segítségével a felhasználók adott IP-címekről vagy alhálózatokról származó webhelykérések esetén kihagyhatják az Azure Multi-Factor Authenticationt. Például mentesítheti a felhasználókat az Azure Multi-Factor Authentication alól, ha az irodából jelentkeznek be. Ehhez az irodai alhálózatot Megbízható IP-címek bejegyzésként kell megadni.
 
 ### Megbízható IP-címek konfigurálása
 
@@ -93,10 +94,8 @@ A Megbízható IP-címek segítségével a felhasználók adott IP-címekről va
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
 
- 
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

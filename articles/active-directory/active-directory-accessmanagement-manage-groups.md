@@ -14,8 +14,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/10/2016"
+    ms.date="09/22/2016"
     ms.author="curtand"/>
+
 
 
 # Csoportkezelés az Azure Active Directoryban
@@ -116,6 +117,6 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

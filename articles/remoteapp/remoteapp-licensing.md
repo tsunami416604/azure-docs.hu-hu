@@ -16,6 +16,7 @@
     ms.author="elizapo" />
 
 
+
 # Hogyan működik a licenckezelés az Azure RemoteAppban?
 
 > [AZURE.IMPORTANT]
@@ -39,6 +40,6 @@ Vegye figyelembe, hogy felhőalapú gyűjtemény esetében nem használhat ügyf
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

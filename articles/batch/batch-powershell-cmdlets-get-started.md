@@ -16,6 +16,7 @@
    ms.date="07/28/2016"
    ms.author="danlep"/>
 
+
 # Az Azure Batch PowerShell-parancsmagok használatának első lépései
 Az Azure Batch PowerShell-parancsmagokkal a Batch API-k, az Azure Portal és az Azure parancssori felület (CLI) használatával végrehajtott műveletek közül sokat elvégezhet. Ez a cikk gyors ismertetést nyújt a Batch-fiókok felügyeletéhez és a Batch-erőforrásokkal, például készletekkel, feladatokkal és tevékenységekkel használható parancsmagokról. Ez a cikk az Azure PowerShell 1.6.0-s verziójának parancsmagjain alapul.
 
@@ -169,6 +170,6 @@ A Batch-parancsmagok a PowerShell-folyamattal adatokat tudnak küldeni a folyama
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

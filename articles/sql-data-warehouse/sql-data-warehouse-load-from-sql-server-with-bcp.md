@@ -17,6 +17,7 @@
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
+
 # Adatok betöltése az SQL Serverből az Azure SQL Data Warehouse-ba (egybesimított fájlok)
 
 > [AZURE.SELECTOR]
@@ -204,6 +205,6 @@ További információk a táblázatok létrehozásáról az SQL Data Warehouse-b
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

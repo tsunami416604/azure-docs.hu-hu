@@ -17,6 +17,7 @@
  ms.date="08/17/2016"
  ms.author="dobett"/>
 
+
 # A távoli figyelési előre konfigurált megoldás bemutatója
 
 ## Bevezetés
@@ -241,6 +242,6 @@ Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 [lnk-permissions]: iot-suite-permissions.md
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -5,11 +5,10 @@ A [User Voice](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) fórum
 - [Encoding and processing (Kódolás és feldolgozás)](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)
 - [Live streaming (Élő adatfolyam)](https://feedback.azure.com/forums/169396-media-services/category/144414-live-streaming/)
 - [Media analytics (Médiaelemzés)](https://feedback.azure.com/forums/169396-media-services/category/146181-media-analytics)
-- [Azure portál](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
+- [Azure Portal](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
 - [REST API and platform (REST API és platform)](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
 - [VoD streaming (VoD-streamelés)](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

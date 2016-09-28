@@ -15,6 +15,7 @@
     ms.date="08/16/2016"
     ms.author="sethm" />
 
+
 # Event Hubs programozási útmutató
 
 Ez a témakör az Azure Event Hubs segítségével történő programozást ismerteti az Azure .NET SDK használatával. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-overview.md).
@@ -187,6 +188,6 @@ Az Event Hubs-forgatókönyvekkel kapcsolatos további információkért látoga
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

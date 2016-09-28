@@ -17,6 +17,7 @@
    ms.author="mbaldwin"/>
 
 
+
 # Az Azure Active Directory fejlesztői útmutatója
 
 ## Áttekintés
@@ -148,6 +149,6 @@ Az [Azure Friday](https://azure.microsoft.com/documentation/videos/azure-friday/
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

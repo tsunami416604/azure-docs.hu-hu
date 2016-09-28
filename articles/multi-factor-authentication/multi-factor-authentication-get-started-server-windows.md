@@ -1,20 +1,21 @@
 <properties 
-    pageTitle="Windows-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló" 
-    description="Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a Windows-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez." 
-    services="multi-factor-authentication" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="stevenpo" 
+    pageTitle="Windows-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló"
+    description="Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a Windows-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtand"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/04/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
+
 
 # Windows-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
 
@@ -31,7 +32,7 @@ A Windows-hitelesítés szakaszban a rendszergazda engedélyezheti és konfigur�
 
 
 >[AZURE.NOTE]Ez a szolgáltatás nem támogatott a Terminálszolgáltatások védelmének biztosítására Windows Server 2012 R2-n.
- 
+
 
 
 
@@ -47,11 +48,11 @@ A Windows-hitelesítés szakaszban a rendszergazda engedélyezheti és konfigur�
 7. Kattintson a Hozzáadás... gombra.
 8. Válassza az Egyetlen IP-cím lehetőséget, ha egyetlen IP-címet szeretne kihagyni.
 9. Válassza az IP-címtartomány lehetőséget, ha egy teljes IP-címtartományt szeretne kihagyni. Példa: 10.63.193.1-10.63.193.100.
-10. Válassza az Alhálózat lehetőséget, ha egy IP-címtartományt szeretne megadni alhálózat megjelöléssel. Adja meg az alhálózat kezdő IP-címét, és válassza ki a megfelelő hálózati maszkot a legördülő listából. 
+10. Válassza az Alhálózat lehetőséget, ha egy IP-címtartományt szeretne megadni alhálózat megjelöléssel. Adja meg az alhálózat kezdő IP-címét, és válassza ki a megfelelő hálózati maszkot a legördülő listából.
 11. Kattintson az OK gombra.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

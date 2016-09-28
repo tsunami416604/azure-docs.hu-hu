@@ -5,7 +5,7 @@
     services="hdinsight"
     documentationCenter=""
     authors="Blackmist"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -16,6 +16,7 @@
    ms.workload="big-data"
    ms.date="08/16/2016"
    ms.author="larryfr"/>
+
 
 
 # Apache Storm-oktatóanyag: Megismerkedés a big data elemzés HDInsight platformon történő elvégzésére szolgáló Storm Starter-mintákkal
@@ -193,6 +194,7 @@ Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topo
 [preview-portal]: https://portal.azure.com/
 
 
-<!--HONumber=sep16_HO1-->
+
+<!--HONumber=Sep16_HO4-->
 
 

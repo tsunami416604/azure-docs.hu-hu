@@ -15,6 +15,7 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"
 />
+
 # Az Azure Search-index lekérdezése az Azure portál használatával
 > [AZURE.SELECTOR]
 - [Áttekintés](search-query-overview.md)
@@ -49,6 +50,6 @@ Az útmutató megkezdése előtt [létre kell hozni egy Azure Search-indexet](se
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

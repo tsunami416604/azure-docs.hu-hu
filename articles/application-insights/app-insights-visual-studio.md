@@ -16,6 +16,7 @@
     ms.author="awills"/>
 
 
+
 # Az Application Insights használata a Visual Studióban
 
 A Visual Studio 2015-ös és újabb verzióiban elemezheti a teljesítményt és diagnosztizálhat problémákat hibakeresés közben és éles környezetben is, a [Visual Studio Application Insights](app-insights-overview.md) telemetriájával.
@@ -112,6 +113,6 @@ Az adatokban előforduló rendellenességek felderítéséhez válassza valamely
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

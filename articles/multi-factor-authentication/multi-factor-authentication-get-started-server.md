@@ -1,21 +1,22 @@
 <properties 
-    pageTitle="Azure Multi-Factor Authentication-kiszolgáló – első lépések" 
-    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA-kiszolgáló használatát." 
+    pageTitle="Azure Multi-Factor Authentication-kiszolgáló – első lépések"
+    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA-kiszolgáló használatát."
     services="multi-factor-authentication"
-    keywords="hitelesítési kiszolgáló, azure multi factor authentication alkalmazásaktiválási oldal, hitelesítési kiszolgáló letöltése" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="femila" 
+    keywords="hitelesítési kiszolgáló, azure multi factor authentication alkalmazásaktiválási oldal, hitelesítési kiszolgáló letöltése"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtand"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/15/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/15/2016"
+    ms.author="kgremban"/>
+
 
 # Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -73,7 +74,7 @@ Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt.  Győ
 
 
 Az Azure Multi-Factor Authentication-kiszolgáló követelményei|Leírás|
-:------------- | :------------- | 
+:------------- | :------------- |
 Hardver|<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li>
 Szoftver|<li>Windows Server 2008 vagy újabb, ha a gazdagép egy kiszolgálói operációs rendszer</li><li>Windows 7 vagy újabb, ha a gazdagép egy ügyfél operációs rendszer</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li>
 
@@ -122,7 +123,7 @@ A fenti lépések a konfigurációs varázsló segítségével végrehajtott gyo
 
 ##Felhasználók importálása az Active Directoryból
 
-Most, hogy a kiszolgáló telepítve és konfigurálva van, a felhasználókat gyorsan importálhatja az Azure MFA-kiszolgálóra. 
+Most, hogy a kiszolgáló telepítve és konfigurálva van, a felhasználókat gyorsan importálhatja az Azure MFA-kiszolgálóra.
 
 ### Felhasználók importálása az Active Directoryból
 --------------------------------------------------------------------------------
@@ -164,10 +165,10 @@ Ha a Multi-Factor Authentication- (MFA-) kiszolgálót a helyszínen használja,
 - E-mail-cím – nem kötelező
 - Telefonszám – hanghívások vagy SMS-hitelesítés esetén
 - Eszköztoken – mobilalkalmazásos hitelesítés esetén
-- Hitelesítési mód 
-- Hitelesítés eredménye 
-- MFA-kiszolgáló neve 
-- MFA-kiszolgáló IP-címe 
+- Hitelesítési mód
+- Hitelesítés eredménye
+- MFA-kiszolgáló neve
+- MFA-kiszolgáló IP-címe
 - Ügyfél IP-címe – ha elérhető
 
 
@@ -179,7 +180,7 @@ A fenti mezőkön kívül a hitelesítési eredményeket (sikeres/elutasítva) �
 A speciális telepítési és konfigurációs adatokról további információkat az alábbi táblázatban talál.
 
 Módszer|Leírás
-:------------- | :------------- | 
+:------------- | :------------- |
 [Felhasználói portál](multi-factor-authentication-get-started-portal.md)|  Információk a felhasználói portál telepítéséről és konfigurálásáról, beleértve az üzemelő példányt és a felhasználói önkiszolgáló funkciókat.
 [Active Directory összevonási szolgáltatás](multi-factor-authentication-get-started-adfs.md)|Információk az Azure Multi-Factor Authentication az AD FS-sel való beállításáról.
 [RADIUS-hitelesítés](multi-factor-authentication-get-started-server-radius.md)|  Információk az Azure MFA-kiszolgáló telepítéséről és konfigurálásáról a RADIUS-szal.
@@ -192,6 +193,6 @@ Módszer|Leírás
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

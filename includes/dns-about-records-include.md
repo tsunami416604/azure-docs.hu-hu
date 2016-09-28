@@ -30,7 +30,6 @@ Helyettesítő rekordhalmazok létrehozásához használja a következő rekordh
 CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. Nem hozhat létre például egyidejűleg egy CNAME-rekordhalmazt és egy A-rekordot is a „www” relatív névvel. Mivel a zóna felső pontja (név = @) mindig tartalmazza a zóna létrehozásakor létrejött NS és SOA típusú rekordhalmazokat, a zóna felső pontján nem hozhat létre CNAME-rekordhalmazokat. Ezek a korlátozások a DNS-szabványokból erednek, és nem az Azure DNS korlátozásai.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO3-->
 
 

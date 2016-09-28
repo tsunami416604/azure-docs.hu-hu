@@ -3,7 +3,7 @@
     description="Ez az oktatóanyag segítséget nyújt az Azure Event Hubs használatának a megkezdéséhez, az események C# környezetben való elküldéséhez, és a Java környezetben, az EventProcessorHost használatával történő fogadásukhoz."
     services="event-hubs"
     documentationCenter=""
-    authors="fsautomata"
+    authors="jtaubensee"
     manager="timlt"
     editor=""/>
 
@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="06/16/2016"
-    ms.author="jotaub"/>
+    ms.date="09/27/2016"
+    ms.author="jotaub;sethm"/>
+
 
 # Bevezetés az Event Hubs használatába
 
@@ -73,6 +74,6 @@ Létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot,
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

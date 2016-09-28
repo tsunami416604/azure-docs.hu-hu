@@ -15,6 +15,7 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
+
 # Mit tartalmaznak az Azure RemoteApp sablon rendszerképei?
 
 > [AZURE.IMPORTANT]
@@ -109,6 +110,6 @@ Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

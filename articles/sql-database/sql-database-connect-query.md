@@ -19,6 +19,7 @@
 
 
 
+
 # Kapcsolódás SQL Database adatbázishoz Visual Studio használatával
 
 > [AZURE.SELECTOR]
@@ -107,6 +108,6 @@ Az adatbázishoz való csatlakozást követően a következő lépések bemutatj
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

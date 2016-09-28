@@ -16,6 +16,7 @@
    ms.date="08/15/2016"
    ms.author="elizapo"/>
 
+
 # Windows-alkalmazások futtatása bármely Azure RemoteAppet használó eszközön
 
 > [AZURE.IMPORTANT]
@@ -125,6 +126,6 @@ Most, hogy elsajátította gyűjtemények létrehozását, próbáljon meg létr
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

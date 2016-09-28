@@ -16,6 +16,7 @@
     ms.date="08/05/2016"
     ms.author="douglasl"/>
 
+
 # Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása
 
 Az adatbázisoknak a Stretch Database-zel való használatra történő beállításához futtassa az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázslót.  Ebben a témakörben leírjuk, hogy milyen adatokat kell megadnia, és milyen lehetőségeket kell választania a varázslóban.
@@ -196,6 +197,6 @@ Engedélyezze a Stretch Database használatát további táblákon. \-Figyelje a
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

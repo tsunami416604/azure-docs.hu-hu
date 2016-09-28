@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -15,6 +15,7 @@
    ms.workload="identity"
    ms.date="03/07/2016"
    ms.author="dhanyahk"/>
+
 
 # Bevezetés az Azure Active Directory Premium Reporting használatába
 
@@ -75,7 +76,7 @@ A legutóbb feldolgozott bejelentkezést az egyes jelentések tetején megjelen�
 
 
 
-## Első lépések
+## Bevezetés
 
 
 ### Bejelentkezés a klasszikus Azure portálra
@@ -110,7 +111,7 @@ Ha egy jelentést CSV-formátumban szeretne letölteni, navigáljon a jelentésh
 
 
 
-## További lépések
+## Következő lépések
 
 ### Rendellenes bejelentkezési tevékenységek riasztásainak testreszabása
 
@@ -158,6 +159,6 @@ Az [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) e-mai
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

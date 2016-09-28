@@ -45,7 +45,6 @@ A hálózati kapcsolati hibák csatlakozási hibákat és időtúllépéseket is
 
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

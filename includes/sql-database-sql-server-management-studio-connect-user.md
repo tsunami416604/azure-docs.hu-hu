@@ -40,7 +40,6 @@ A csatlakozási hibák leggyakoribb okai a kiszolgáló nevében található hib
 
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

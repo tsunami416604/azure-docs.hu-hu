@@ -11,7 +11,6 @@ Ebben az esetben egy **TestVNet** nevű VNetet fog létrehozni a**192.168.0.0./1
 
  
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

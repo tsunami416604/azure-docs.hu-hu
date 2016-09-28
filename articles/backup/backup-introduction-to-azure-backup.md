@@ -17,6 +17,7 @@
     ms.date="07/21/2016"
     ms.author="jimpark; trinadhk"/>
 
+
 # Mi az az Azure Backup?
 Az Azure Backup szolgáltatással biztonsági másolatot készíthet adatairól és visszaállíthatja azokat a Microsoft-felhőből. A szolgáltatás lecseréli a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást egy felhőalapú megoldásra, amely megbízható, biztonságos és költséghatékony. Emellett segít megvédeni a felhőben futó objektumokat. Az Azure Backup által nyújtott visszaállítási szolgáltatások világszínvonalú infrastruktúrára épülnek, amely méretezhető, tartós és magas rendelkezésre állású.
 
@@ -231,6 +232,6 @@ Mivel ezek az oktatóanyagok a gyors biztonsági mentésben segítenek, az adato
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

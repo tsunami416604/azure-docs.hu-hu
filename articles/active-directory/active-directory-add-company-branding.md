@@ -16,6 +16,7 @@
     ms.date="07/13/2016"
     ms.author="MarkVi"/>
 
+
 # Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon
 
 
@@ -222,6 +223,6 @@ A bejelentkezési oldal háttérszíne | A bejelentkezési oldal háttérszíne 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

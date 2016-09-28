@@ -16,6 +16,7 @@
     ms.date="08/01/2016"
     ms.author="tomfitz"/>
 
+
 # Exportált Azure Resource Manager sablon testreszabása
 
 Ez a cikk bemutatja, hogyan módosíthat egy exportált sablont, hogy további értékeket adhasson meg paraméterekként. Ez a [Resource Manager sablon exportálása](resource-manager-export-template.md) cikkben bemutatott lépéseken alapul, azonban nem feltétlenül szükséges, hogy először elolvassa az előző cikket. A szükséges sablont és parancsfájlokat ebben a cikkben találja.
@@ -236,6 +237,6 @@ Az alábbi cikk mindkét lehetőséget bemutatja.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -16,6 +16,7 @@
     ms.date="08/15/2016" 
     ms.author="elizapo"/>
 
+
 # Mi az az Azure RemoteApp?
 
 > [AZURE.IMPORTANT]
@@ -84,6 +85,6 @@ Rajta! Próbálja ki! A következő cikkek segítenek az Azure RemoteApp első l
 Tudta, hogy a cikk értékelése és alább hozzászólások írása mellett magát a cikket is módosíthatja? Valami hiányzik? Valami nem működik? Írtam valami olyat, ami nem egyértelmű? Görgessen fel, és kattintson a **Szerkesztés a GitHubon** vagy a **Szerkesztés** elemre a módosítások végrehajtásához. Ezek hozzánk kerülnek jóváhagyásra, és miután jóváhagytuk őket, itt fognak megjelenni.
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

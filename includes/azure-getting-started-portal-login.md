@@ -32,7 +32,6 @@ Ha még nem rendelkezik Azure-fiókkal, válassza az alábbi lehetőségek valam
    ![Bejelentkezés](./media/azure-getting-started-portal-login/login.png)
 
 
-
-<!--HONumber=sep12_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

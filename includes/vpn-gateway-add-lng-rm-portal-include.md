@@ -17,7 +17,6 @@
 8. A helyi hálózati átjáró létrehozásához kattintson a **Create** (Létrehozás) gombra.
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

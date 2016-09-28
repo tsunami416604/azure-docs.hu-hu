@@ -19,9 +19,9 @@
     ms.author="v-livech"
 />
 
+
 # Linux virtuális gép létrehozása az Azure-ban a portál használatával
 
-> [AZURE.NOTE] Ha van néhány perce, megoszthatja velünk a tapasztalatait egy [rövid felmérés](https://aka.ms/linuxdocsurvey) kitöltésével, amely segítséget nyújt számunkra az Azure Linux VM dokumentációjának továbbfejlesztésében. Minden válasz segít a minél teljesebb körű megoldások kialakításában.
 
 Ez a cikk bemutatja, hogyan használhatja az [Azure Portalt](https://portal.azure.com/) a Linux virtuális gépek gyors létrehozásához. Ehhez mindössze [egy Azure-fiókra](https://azure.microsoft.com/pricing/free-trial/) és [nyilvános és titkos SSH-kulcsfájlokra](virtual-machines-linux-mac-create-ssh-keys.md) van szükség.
 
@@ -81,6 +81,6 @@ Gyorsan létrehozott egy Linux virtuális gépet tesztelési és bemutatási cé
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

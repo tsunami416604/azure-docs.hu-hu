@@ -15,6 +15,7 @@
    ms.date="03/17/2016"
    ms.author="sewhee" />
 
+
 # Az Azure Traffic Manager-profilok kezelése
 
 A Traffic Manager-profil használatával adhatja meg a Traffic Manager által figyelt felhőszolgáltatásokat vagy webhelyvégpontokat, valamint azt, hogy milyen forgalom-útválasztási módszerrel szeretné terjeszteni a kapcsolatokat ezekre a végpontokra.
@@ -86,6 +87,6 @@ A Traffic Manager-profil módosítási előzményeit a klasszikus Azure portál 
 [Hibaelhárítás a Traffic Manager „Csökkentett teljesítményű” állapota esetén](traffic-manager-troubleshooting-degraded.md)
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
  ms.date="08/17/2016"
  ms.author="araguila"/>
 
+
 # A prediktív karbantartási előre konfigurált megoldás áttekintése
 
 A *prediktív karbantartás* előre konfigurált megoldás a [Microsoft Azure IoT Suite][lnk_iot_suite] részeként kiadott [előre konfigurált megoldások][lnk_preconfigured_solutions] egyike. Ez a megoldás a valós idejű eszköztelemetria-gyűjtést az [Azure Machine Learning][lnk_machine_learning] használatával létrehozott prediktív modellel integrálja.
@@ -68,6 +69,6 @@ Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltat�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -15,8 +15,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/13/2016"
+   ms.date="09/13/2016"
    ms.author="nepeters"/>
+
 
 # Tárolókezelés a Docker Swarmmal
 
@@ -125,6 +126,6 @@ A `docker-compose ps` használatával természetesen megvizsgálhatja a csak a `
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

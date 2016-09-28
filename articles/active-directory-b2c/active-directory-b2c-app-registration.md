@@ -17,6 +17,7 @@
     ms.author="swkrish"/>
 
 
+
 # Azure Active Directory B2C: Az alkalmazás regisztrációja
 
 ## Előfeltétel
@@ -56,6 +57,6 @@ Miután az Azure AD B2C-vel regisztrált egy alkalmazást, gyors üzembe helyez�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

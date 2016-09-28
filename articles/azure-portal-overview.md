@@ -1,6 +1,6 @@
 <properties
-    pageTitle="A Microsoft Azure portál áttekintése"
-    description="Ismerje meg, a Microsoft Azure portált használatát"
+    pageTitle="A Microsoft Azure Portal áttekintése"
+    description="Ismerje meg, a Microsoft Azure Portalt használatát."
     services=""
     documentationCenter=""
     authors="davidwrede"
@@ -16,15 +16,16 @@
     ms.date="12/16/2015"
     ms.author="dwrede"/>
 
-# A Microsoft Azure portál áttekintése
 
-A Microsoft Azure portál egy központi felület, ahol kioszthatja és kezelheti az Azure-erőforrásokat.  Ez az oktatóanyag bemutatja a portált, illetve megmutatja, hogyan használhatja néhány főbb funkcióját
+# A Microsoft Azure Portal áttekintése
+
+A Microsoft Azure Portal egy központi felület, ahol kioszthatja és kezelheti az Azure-erőforrásokat.  Ez az oktatóanyag bemutatja a portált, illetve megmutatja, hogyan használhatja néhány főbb funkcióját
 - Az **univerzális piactéren** a Microsoft és egyéb gyártók által fejlesztett alkalmazások ezrei között válogathat, amelyeket megvásárolhat és/vagy letölthet.
 - Az **egységesített és méretezhető tallózási élménynek** köszönhetően könnyen megtalálhatja a fontos erőforrásokat és végrehajthat különböző felügyeleti műveleteket.
 - A **konzisztens felügyeleti oldalak** (vagy panelek) segítségével az Azure számos szolgáltatását kezelheti a beállítások, műveletek, számlázási adatok, állapotfigyelés, használati adatok és sok más információ egységes megjelenítésével.
 - A **személyes élmény** részeként létrehozhat egy testreszabott indítóképernyőt, amely azokat az információkat jeleníti meg, amelyeket látni kíván a bejelentkezéskor.  A csempéket tartalmazó mindegyik felügyeleti panelt testreszabhatja.
 
- ![Az Azure portál felhasználói felületének bemutatása][UIOrientation]
+ ![Az Azure Portal felhasználói felületének bemutatása][UIOrientation]
 
 ## A kezdés előtt
 
@@ -78,7 +79,7 @@ Ha problémába ütközik, mi szívesen segítünk Önnek.  A portál rendelkezi
 
 ![Súgó és támogatás][HelpSupport]
 
-## Összegzés
+## Összefoglalás
 
 Tekintsük át, hogy mit tudott meg ebből az oktatóanyagból:
 - Megtudta, hogyan lehet regisztrálni, előfizetést beszerezni és elérni a portált
@@ -89,7 +90,7 @@ Tekintsük át, hogy mit tudott meg ebből az oktatóanyagból:
 - Megtudta, hogyan szabályozhatja az erőforrásokhoz való hozzáférést szerepköralapú hozzáférés-vezérléssel (RBAC)
 - Megtudta, hogyan kérhet segítséget és támogatást
 
-A Microsoft Azure portál jelentősen leegyszerűsíti az alkalmazások felépítését és kezelését a felhőben.  A [felügyeleti blog](https://azure.microsoft.com/blog/topics/management/) követésével mindig naprakész maradhat, mivel folyamatosan [figyelünk a visszajelzésekre](https://feedback.azure.com/forums/223579-azure-preview-portal/) és fejlesztjük a portált.  [ScottGu blogja](http://weblogs.asp.net/scottgu) egy másik remek hely, ahol megtalálhatja az összes Azure-hírt.
+A Microsoft Azure Portal jelentősen leegyszerűsíti az alkalmazások felépítését és kezelését a felhőben.  A [felügyeleti blog](https://azure.microsoft.com/blog/topics/management/) követésével mindig naprakész maradhat, mivel folyamatosan [figyelünk a visszajelzésekre](https://feedback.azure.com/forums/223579-azure-preview-portal/) és fejlesztjük a portált.  [ScottGu blogja](http://weblogs.asp.net/scottgu) egy másik remek hely, ahol megtalálhatja az összes Azure-hírt.
 
 [UIOrientation]: ./media/azure-portal-how-to-use/azure_portal_1.png
 [PortalCategories]: ./media/azure-portal-how-to-use/azure_portal_2.png
@@ -100,6 +101,6 @@ A Microsoft Azure portál jelentősen leegyszerűsíti az alkalmazások felépí
 
 
 
-<!--HONumber=Jun16_HO2--->
+<!--HONumber=Sep16_HO4-->
 
 

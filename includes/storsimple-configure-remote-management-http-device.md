@@ -13,7 +13,6 @@
 
 6. Kattintson a lap alján található **Mentés** gombra.
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

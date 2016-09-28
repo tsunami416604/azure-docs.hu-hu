@@ -17,11 +17,12 @@
     ms.author="brandwe"/>
 
 
+
 # Azure AD B2C: Bejelentkezés felvétele Node.js-webalkalmazásokba
 
 > [AZURE.WARNING] Nagyon sajnáljuk, de ezen az oktatóanyagon fontos karbantartási műveleteket kell végrehajtanunk, ezért úgy döntöttünk, hogy rövid időre eltávolítjuk.  Hasonló tartalmú .NET-oktatóanyagot a [fejlesztői útmutatónkban](active-directory-b2c-overview.md) érhet el.
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -44,7 +44,6 @@ Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszköz. Az alá
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide.md#accesscontrol
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

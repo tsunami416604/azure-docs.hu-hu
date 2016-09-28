@@ -17,6 +17,7 @@
    ms.date="06/16/2016"
    ms.author="yushwang"/>
 
+
 # A BGP és az Azure VPN Gateway együttműködésének áttekintése
 
 Ez a cikk ismerteti az Azure VPN Gateway megoldásban a BGP (Border Gateway Protocol) támogatását.
@@ -70,6 +71,6 @@ A BGP helyek és virtuális hálózatok közötti kapcsolathoz történő konfig
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

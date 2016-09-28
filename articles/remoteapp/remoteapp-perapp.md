@@ -16,6 +16,7 @@
    ms.date="08/15/2016"
    ms.author="piotrci"/>
 
+
 # Alkalmazások közzététele egyéni felhasználók számára egy Azure RemoteApp-gyűjteményben (előzetes)
 
 > [AZURE.IMPORTANT]
@@ -107,6 +108,6 @@ Ha még nem használta az előzetes verziót, töltse ki ezt a [felmérést](htt
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

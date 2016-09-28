@@ -15,6 +15,7 @@
     ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
+
 # Az Azure Search-index lekérdezése a .NET SDK használatával
 > [AZURE.SELECTOR]
 - [Áttekintés](search-query-overview.md)
@@ -164,6 +165,6 @@ A fenti mintakód a keresési eredményeket a konzolon jeleníti meg. A keresés
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

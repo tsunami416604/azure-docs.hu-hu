@@ -29,7 +29,6 @@ Házirend létrehozása:
     Ekkor a rendszer automatikusan alkalmazza az új házirendet a tárolón.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

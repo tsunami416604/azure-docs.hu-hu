@@ -5,7 +5,7 @@
     services="machine-learning"
     documentationCenter=""
     authors="hning86"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -16,6 +16,7 @@
     ms.topic="hero-article"
     ms.date="08/05/2016"
     ms.author="garye;haining"/>
+
 
 # A Microsoft Azure Machine Learning PowerShell-modulja
 
@@ -56,6 +57,7 @@ A Machine Learning PowerShell használatának megkezdéséhez töltse le a [kiad
 Az előzetes verzió időszaka alatt a PowerShell-modult folyamatosan fejlesztjük és bővítjük. További hírekért és információkért kövesse a [Cortana Intelligence and Machine Learning blogot](https://blogs.technet.microsoft.com/machinelearning/).
 
 
-<!--HONumber=sep16_HO1-->
+
+<!--HONumber=Sep16_HO4-->
 
 

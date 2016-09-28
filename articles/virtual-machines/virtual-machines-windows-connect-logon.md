@@ -17,6 +17,7 @@
     ms.date="07/28/2016"
     ms.author="cynthn"/>
 
+
 # Csatlakozás és bejelentkezés Windows rendszert futtató Azure virtuális gépre 
 
 
@@ -47,6 +48,6 @@ A csatlakozási kísérlet során felmerülő hibákkal kapcsolatban tekintse me
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

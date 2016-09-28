@@ -25,7 +25,6 @@
   Ezután a biztonsági mentés megjelenik a katalógusban szereplő biztonságimentés-készletek listájában.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

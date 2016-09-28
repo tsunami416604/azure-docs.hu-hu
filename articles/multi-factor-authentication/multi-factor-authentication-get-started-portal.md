@@ -1,28 +1,29 @@
 <properties 
-    pageTitle="A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz" 
-    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és a felhasználói portál használatát." 
-    services="multi-factor-authentication" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="femila" 
+    pageTitle="A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz"
+    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és a felhasználói portál használatát."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtand"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/15/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/15/2016"
+    ms.author="kgremban"/>
+
 
 # A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz
 
-A felhasználói portál segítségével a rendszergazda telepítheti és konfigurálhatja az Azure Multi-Factor Authentication felhasználói portálját. A felhasználói portál egy IIS-webhely, ahol a felhasználók regisztrálhatnak az Azure Multi-Factor Authenticationre és kezelhetik a fiókjaikat. A felhasználók megváltoztathatják a telefonszámukat, a PIN-kódjukat, vagy mellőzhetik az Azure Multi-Factor Authenticationt a következő bejelentkezéskor. 
+A felhasználói portál segítségével a rendszergazda telepítheti és konfigurálhatja az Azure Multi-Factor Authentication felhasználói portálját. A felhasználói portál egy IIS-webhely, ahol a felhasználók regisztrálhatnak az Azure Multi-Factor Authenticationre és kezelhetik a fiókjaikat. A felhasználók megváltoztathatják a telefonszámukat, a PIN-kódjukat, vagy mellőzhetik az Azure Multi-Factor Authenticationt a következő bejelentkezéskor.
 
-A felhasználók a normál felhasználónevükkel és jelszavukkal jelentkeznek be a felhasználói portálra és Azure Multi-Factor Authentication-hívást végeznek vagy biztonsági kérdésekre válaszolnak a hitelesítéshez. Ha a felhasználók regisztrációja engedélyezett, a felhasználók a felhasználói portálra való első bejelentkezéskor konfigurálják a telefonszámukat és PIN-kódjukat. 
+A felhasználók a normál felhasználónevükkel és jelszavukkal jelentkeznek be a felhasználói portálra és Azure Multi-Factor Authentication-hívást végeznek vagy biztonsági kérdésekre válaszolnak a hitelesítéshez. Ha a felhasználók regisztrációja engedélyezett, a felhasználók a felhasználói portálra való első bejelentkezéskor konfigurálják a telefonszámukat és PIN-kódjukat.
 
-A felhasználói portálhoz rendszergazdák állíthatók be, akik az új felhasználók hozzáadására és a meglévő felhasználók frissítésére vonatkozó engedélyt kaphatnak. 
+A felhasználói portálhoz rendszergazdák állíthatók be, akik az új felhasználók hozzáadására és a meglévő felhasználók frissítésére vonatkozó engedélyt kaphatnak.
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-portal/install.png)</center>
 
@@ -30,12 +31,12 @@ A felhasználói portálhoz rendszergazdák állíthatók be, akik az új felhas
 
 A következő előfeltételek teljesülésére van szükség, ha a felhasználói portált az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálóra szeretné telepíteni:
 
-- Telepíteni kell az IIS-t, beleértve az asp.net-et és az IIS 6 metabázisával való kompatibilitási funkciót (IIS 7 vagy újabb verzió esetén) 
+- Telepíteni kell az IIS-t, beleértve az asp.net-et és az IIS 6 metabázisával való kompatibilitási funkciót (IIS 7 vagy újabb verzió esetén)
 - A bejelentkezett felhasználóknak rendszergazdai jogosultságokkal kell rendelkezniük a számítógéphez és a tartományhoz, ha szükséges.  Ez azért van, mert a fióknak engedélyekre van szüksége Active Directory biztonsági csoportok létrehozásához.
 
 ### A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz
 
-1. Az Azure Multi-Factor Authentication-kiszolgálón: kattintson a bal oldali menüben lévő felhasználói portál ikonra, majd kattintson a Felhasználói portál telepítése gombra. 
+1. Az Azure Multi-Factor Authentication-kiszolgálón: kattintson a bal oldali menüben lévő felhasználói portál ikonra, majd kattintson a Felhasználói portál telepítése gombra.
 1. Kattintson a Next (Tovább) gombra.
 1. Kattintson a Next (Tovább) gombra.
 1. Ha a számítógép tartományhoz csatlakozik, és a felhasználói portál és az Azure Multi-Factor Authentication szolgáltatás közötti kommunikáció védelmét biztosító Active Directory-konfiguráció hiányos, az Active Directory lépés jelenik meg. Kattintson a Tovább gombra a konfiguráció automatikus elvégzéséhez.
@@ -48,7 +49,7 @@ A következő előfeltételek teljesülésére van szükség, ha a felhasználó
 
 ## Az Azure Multi-Factor Authentication-kiszolgáló felhasználói portáljának telepítése különálló kiszolgálón
 
-Az Azure Multi-Factor Authentication alkalmazás használatához a következőkre van szükség, hogy az alkalmazás sikeresen kommunikáljon a felhasználói portállal: 
+Az Azure Multi-Factor Authentication alkalmazás használatához a következőkre van szükség, hogy az alkalmazás sikeresen kommunikáljon a felhasználói portállal:
 
 Tekintse meg a hardver- és szoftverkövetelményeket a Hardver- és szoftverkövetelmények részben:
 
@@ -71,7 +72,7 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
 
 ### A Web Service SDK telepítése
 
-Ha az Azure Multi-Factor Authentication Web Service SDK még nincs telepítve az Azure Multi-Factor Authentication-kiszolgálón, lépjen a kiszolgálóra és nyissa meg az Azure Multi-Factor Authentication-kiszolgálót. Kattintson a Web Service SDK ikonra, majd a Web Service SDK telepítése… gombra, és kövesse a megjelenő utasításokat. A Web Service SDK védelméhez SSL-tanúsítvány használata szükséges. Erre a célra megfelel egy önaláírt tanúsítvány, de azt a felhasználói portál webkiszolgálójának Helyi számítógép fiókja „Megbízható legfelső szintű hitelesítésszolgáltatók” tárolójába kell importálni, hogy megbízzon ebben a tanúsítványban az SSL-kapcsolat elindításakor. 
+Ha az Azure Multi-Factor Authentication Web Service SDK még nincs telepítve az Azure Multi-Factor Authentication-kiszolgálón, lépjen a kiszolgálóra és nyissa meg az Azure Multi-Factor Authentication-kiszolgálót. Kattintson a Web Service SDK ikonra, majd a Web Service SDK telepítése… gombra, és kövesse a megjelenő utasításokat. A Web Service SDK védelméhez SSL-tanúsítvány használata szükséges. Erre a célra megfelel egy önaláírt tanúsítvány, de azt a felhasználói portál webkiszolgálójának Helyi számítógép fiókja „Megbízható legfelső szintű hitelesítésszolgáltatók” tárolójába kell importálni, hogy megbízzon ebben a tanúsítványban az SSL-kapcsolat elindításakor.
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-portal/sdk.png)</center>
 
@@ -101,7 +102,7 @@ Most, hogy telepítette a portált, konfigurálnia kell az Azure Multi-Factor Au
 Az Azure Multi-Factor Authentication-kiszolgáló több lehetőséget nyújt a felhasználói portálhoz.  A következő táblázat tartalmazza ezen lehetőségek listáját és annak magyarázatát, hogy mire szolgálnak.
 
 Felhasználói portál beállításai|Leírás|
-:------------- | :------------- | 
+:------------- | :------------- |
 Felhasználói portál URL-címe| Lehetővé teszi, hogy beírja a portál üzemeltetési helyének URL-címét.
 Elsődleges hitelesítés| Lehetővé teszi, hogy megadja a portálra való bejelentkezéskor használandó hitelesítési típust.  Ez Windows-, Radius- vagy LDAP-hitelesítés lehet.
 Felhasználók bejelentkezésének engedélyezése|Lehetővé teszi, hogy a felhasználók beírjanak egy felhasználónevet és jelszót a bejelentkezési oldalon a felhasználói portálhoz.  Ha ez nincs bejelölve, a mezők szürkén jelennek meg.
@@ -153,7 +154,7 @@ Lehetővé teszi a felhasználói portál beállítását arra, hogy jogcímeket
 ![SAML](./media/multi-factor-authentication-get-started-portal/saml.png)
 
 ## Megbízható IP-címek
-Ez a lap lehetővé teszi, hogy egyetlen IP-címet vagy egy IP-címtartományt adjon meg, amelyek hozzáadhatók annak érdekében, hogy mellőzve legyen a Multi-Factor Authentication, ha egy felhasználó ezen IP-címek valamelyikéről jelentkezik be. 
+Ez a lap lehetővé teszi, hogy egyetlen IP-címet vagy egy IP-címtartományt adjon meg, amelyek hozzáadhatók annak érdekében, hogy mellőzve legyen a Multi-Factor Authentication, ha egy felhasználó ezen IP-címek valamelyikéről jelentkezik be.
 
 ![Felhasználó portál megbízható IP-címei](./media/multi-factor-authentication-get-started-portal/trusted.png)
 
@@ -168,13 +169,13 @@ Ha a felhasználók a Hanghívás hitelesítési módszert választják vagy ha 
 
 Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód megadását is kéri.  A telefonszám(ok) és a PIN-kód (ha van) megadása után a felhasználó a Hívjon fel a hitelesítéshez gombra kattint.  Az Azure Multi-Factor Authentication telefonhíváson alapuló hitelesítést kezdeményez a felhasználó elsődleges telefonszámának használatával.  A felhasználónak fogadnia kell a hívást, és meg kell adnia a PIN-kódját (ha van), majd meg kell nyomnia a # gombot az önregisztrációs folyamat következő lépésére való továbblépéshez.   
 
-Ha a felhasználók az SMS szöveges hitelesítési módszert választják, vagy ha ez a módszer van előre konfigurálva, a felhasználóknak a lapon meg kell adniuk a mobiltelefonszámukat.  Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód megadását is kéri.  A telefonszám és a PIN-kód (ha van) beírása után a felhasználó a Küldjön SMS-t a hitelesítéshez gombra kattint.  Az Azure Multi-Factor Authentication SMS-hitelesítést kezdeményez a felhasználó mobiltelefonszáma használatával.  A felhasználónak egyszeri jelszót (OTP-t) tartalmazó SMS-t kell kapnia és válaszolnia kell az üzenetre az OTP-vel és a PIN-kódjával (ha van), hogy az önregisztrációs folyamat következő lépésére ugorjon. 
+Ha a felhasználók az SMS szöveges hitelesítési módszert választják, vagy ha ez a módszer van előre konfigurálva, a felhasználóknak a lapon meg kell adniuk a mobiltelefonszámukat.  Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód megadását is kéri.  A telefonszám és a PIN-kód (ha van) beírása után a felhasználó a Küldjön SMS-t a hitelesítéshez gombra kattint.  Az Azure Multi-Factor Authentication SMS-hitelesítést kezdeményez a felhasználó mobiltelefonszáma használatával.  A felhasználónak egyszeri jelszót (OTP-t) tartalmazó SMS-t kell kapnia és válaszolnia kell az üzenetre az OTP-vel és a PIN-kódjával (ha van), hogy az önregisztrációs folyamat következő lépésére ugorjon.
 
 ![Felhasználói portál SMS](./media/multi-factor-authentication-get-started-portal/text.png)   
 
 Ha a felhasználó a mobilalkalmazásos hitelesítési módszert választja, vagy ha ez a módszer van előre konfigurálva, az oldal felkéri a felhasználót, hogy telepítse az Azure Multi-Factor Authentication alkalmazást az eszközére, és hozzon létre egy aktiválási kódot.  Az Azure Multi-Factor Authentication alkalmazás telepítése után a felhasználónak az Aktiváló kód előállítása gombra kell kattintania.    
 
->[AZURE.NOTE]Az Azure Multi-Factor Authentication alkalmazás használatához a felhasználónak engedélyeznie kell a leküldéses értesítéseket az eszközén. 
+>[AZURE.NOTE]Az Azure Multi-Factor Authentication alkalmazás használatához a felhasználónak engedélyeznie kell a leküldéses értesítéseket az eszközén.
 
 A lap ezután megjelenít egy aktiválási kódot és egy URL-címet egy vonalkód képével együtt.  Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód megadását is kéri.  A felhasználó beírja az aktiválási kódot és az URL-címet az Azure Multi-Factor Authentication alkalmazásba, vagy a vonalkódolvasóval beolvassa a vonalkód képét, majd az Aktiválás gombra kattint.    
 
@@ -187,10 +188,8 @@ Ha a rendszergazdák úgy konfigurálták az Azure Multi-Factor Authentication-k
 
 A felhasználó önregisztrációja ezzel befejeződött, és a felhasználó be van jelentkezve a felhasználói portálra.  A felhasználók ezután bármikor újra bejelentkezhetnek a felhasználói portálra a telefonszámuk, PIN-kódjuk, hitelesítési módszerük és biztonsági kérdéseik módosításához, ha ezt a rendszergazdáik engedélyezték.
 
- 
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

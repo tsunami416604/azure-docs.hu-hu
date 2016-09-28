@@ -15,8 +15,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="09/19/2016"
    ms.author="nepeters"/>
+
 
 # Tárolókezelés a webes felhasználói felületen
 
@@ -60,7 +61,7 @@ Protocol (Protokoll)        | TCP
 Ha statikusan le kívánja képezni a tárolóportot egy az ügynökön lévő portra, akkor a JSON üzemmódot kell használnia. Ehhez váltsa át a New Application (Új alkalmazás) varázslót erre az üzemmódra a **JSON Mode** (JSON üzemmód) váltógombbal. Ezután írja be a következőt az alkalmazás definíciójának `portMappings` szakaszába. A példa a tároló 80-as portját a DC/OS-ügynök 80-as portjához köti. Ennek a módosításnak az elvégzése után visszaválthat a varázsló JSON üzemmódjából.
 
 ```none
-“hostPort”: 80,
+"hostPort": 80,
 ```
 
 ![New Application (Új alkalmazás) felhasználói felület – példa a 80-as portra](media/dcos/dcos13.png)
@@ -103,6 +104,6 @@ A Mesost használó Azure Container Service részletes bemutatása
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

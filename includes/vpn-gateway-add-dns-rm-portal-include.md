@@ -7,7 +7,6 @@ Ezzel a beállítással megadhatja azt a DNS-kiszolgálót, amelyet névfeloldá
 
     ![Egyéni DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

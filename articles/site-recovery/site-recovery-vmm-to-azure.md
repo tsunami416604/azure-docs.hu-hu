@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="08/23/2016"
+    ms.date="09/16/2016"
     ms.author="raynew"/>
+
 
 # VMM-felhőben lévő Hyper-V virtuális gépek replikálása az Azure-ba az Azure Site Recovery és az Azure portál használatával | Microsoft Azure
 
@@ -574,6 +575,6 @@ Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 
