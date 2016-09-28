@@ -148,6 +148,6 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!---HONumber=Sep16_HO4-->
 
 
