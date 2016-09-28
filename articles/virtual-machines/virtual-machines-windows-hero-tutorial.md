@@ -120,6 +120,6 @@ Ha újra használni kívánja a virtuális gépet, az **Indítás** gombra katti
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!---HONumber=Sep16_HO4-->
 
 

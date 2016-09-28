@@ -139,6 +139,6 @@ Miután áttanulmányozta az SQL Database oktatóanyagát, és létrehozott egy 
 
 
 
-<!--HONumber=sep12_HO2-->
+<!---HONumber=sep12_HO2-->
 
 
