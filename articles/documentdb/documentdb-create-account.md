@@ -95,6 +95,6 @@ Az alábbi forrásokból többet is megtudhat a DocumentDB-ről:
 
 
 
-<!--HONumber=sep12_HO2-->
+<!---HONumber=sep12_HO2-->
 
 
