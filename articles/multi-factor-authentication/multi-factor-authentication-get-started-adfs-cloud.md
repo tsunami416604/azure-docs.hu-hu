@@ -1,26 +1,27 @@
-<properties 
-    pageTitle="A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel" 
-    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS használatát a felhőben." 
-    services="multi-factor-authentication" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="stevenpo" 
+<properties
+    pageTitle="A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel"
+    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS használatát a felhőben."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtland"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/04/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
+
 
 # A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
 
 Ha a szervezete Azure Active Directory-összevonást használ, és az Azure AD által elért erőforrásokkal rendelkezik, az Azure Multi-Factor Authentication segítségével vagy az Active Directory összevonási szolgáltatásokkal védheti meg ezeket az erőforrásokat. Az alábbi eljárásokkal védheti meg az Azure Active Directory-erőforrásokat az Azure Multi-Factor Authentication segítségével vagy az Active Directory összevonási szolgáltatásokkal.
 
-## Az Azure AD-erőforrások AD FS-sel való védelméhez tegye a következőket: 
+## Az Azure AD-erőforrások AD FS-sel való védelméhez tegye a következőket:
 
 
 
@@ -71,7 +72,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozun
 10. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a Jogcímek küldése egyéni szabállyal elemet a legördülő menüből, és kattintson a Tovább gombra.
 11. A Jogcímszabály neve: alatti mezőbe írja be a következőt: Keep Users Signed In (A felhasználók maradjanak bejelentkezve).
 12. Az Egyéni szabály mezőbe írja be a következőt:
-        
+
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
 ![Felhő](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
@@ -100,12 +101,6 @@ Készen is van. Ekkor az összevont Office 365-felhasználóknak csak az MFA-t k
 
 
 
-
-
-
-
-
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

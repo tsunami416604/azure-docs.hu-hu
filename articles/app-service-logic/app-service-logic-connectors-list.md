@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/28/2016"
+    ms.date="09/01/2016"
     ms.author="mandia"/>
+
 
 
 # A Logic Apps-alkalmazásokban használható összekötők és API-alkalmazások listája
@@ -35,9 +36,7 @@ Név | Leírás
 [Bing Fordító](https://azure.microsoft.com/marketplace/partners/bing/microsofttranslator/) | Szöveg fordítása más nyelvre a Bing segítségével.
 [HTTP](app-service-logic-connector-http.md) | A HTTP-figyelő megnyit egy végpontot, amely HTTP-kiszolgálóként üzemel, és figyeli a beérkező HTTP- vagy HTTPS-kéréseket. A HTTP-művelet nem igényel API-alkalmazást, ezt a funkciót a Logic Apps natívan támogatja.
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Az Office 365-összekötő képes a felhasználó Office 365-fiókját használva küldeni és fogadni e-maileket, illetve kezelni a naptárt és a névjegyeket.
-[QuickBooks](app-service-logic-connector-quickbooks.md) | Ezzel az összekötővel több feladatot is elvégezhet, például különféle entitásokat (ügyfeleket, elemeket, számlákat stb.) hozhat létre, frissíthet és kérdezhet le az Intuit QuickBooksból.
 [Slack](app-service-logic-connector-slack.md) | Csatlakozás a Slackhez, illetve üzenetek közzététele a Slack-csatornákban.
-[Várakozás](app-service-logic-connector-wait.md) | Ezzel az összekötővel késleltetheti az alkalmazás végrehajtását. A késleltetéshez megadhat konkrét időtartamot, de kötheti egy adott időpontban bekövetkező eseményhez is.
 
 
 ## Vállalati integrációs összekötők
@@ -61,9 +60,6 @@ Név  | Leírás
 [Informix](app-service-logic-connector-informix.md) | Egy helyszíni IBM Informix-adatbázishoz és egy Windows operációs rendszeren futó Azure virtuális géphez csatlakozik. Képes a webes API- és OData API-műveleteket Informix strukturált lekérdezésinyelv-parancsokhoz párosítani.<br/><br/>Nincsenek eseményindítók. A műveletek a következők lehetnek: táblázat kiválasztása, beillesztés, frissítés, törlés és egyéni utasítás.<br/><br/>Helyszíni használat esetén a VPN vagy az Azure ExpressRoute is igénybe vehető. Ez az összekötő tartalmazza a Microsoft DRDA-ügyfelét is, amelynek segítségével TCP/IP-hálózaton keresztül is csatlakozhat az Informix-kiszolgálókhoz.
 [Microsoft SQL Server](app-service-logic-connector-sql.md) | Helyszíni SQL Server és Azure SQL Database összekapcsolására szolgál. Az összekötővel SQL-adatbázistáblában szereplő bejegyzéseket hozhat létre, frissíthet, kérhet le és törölhet.
 MQ | Egy helyszíni, 8-as verziójú IBM WebSphere MQ Server kiszolgálóhoz és egy Windows operációs rendszeren futó Azure virtuális géphez csatlakozik. Helyszíni használat esetén a VPN vagy az Azure ExpressRoute is igénybe vehető. Az összekötő a Microsoft MQ-ügyfelét is tartalmazza.<br/><br/>Nincsenek eseményindítók. Nincsenek műveletek.<br/><br/>**Megjegyzés:** Jelenleg nem használható a Logic Apps szolgáltatásban.
-[Oracle Database](app-service-logic-connector-oracle.md) | Egy helyszíni Oracle-adatbázishoz csatlakozik, és lehetőséget kínál bejegyzéseknek az adatbázistáblában történő létrehozására, frissítésére, lekérésére és törlésére.
-[POP3](app-service-logic-connector-pop3.md) (Post Office Protocol)| Ez az összekötő a POP3-kiszolgálókhoz való csatlakozásra, valamint az e-mailek és mellékleteik lekérésére szolgál.
-[SAP](app-service-logic-connector-sap.md) | Ez az összekötő egy helyszíni SAP-kiszolgálóhoz való csatlakozásra, és RFC-k, BAPI-k és tRFC-k hívására, valamint IDOC-ok küldésére szolgál.
 
 ## Eseményindítóként használható összekötők
 Számos összekötő eseményindítókat biztosít a Logic Apps szolgáltatásban való használatra. Ezek az eseményindítók két csoportba sorolhatók:
@@ -86,6 +82,6 @@ Az összekötők a logikai alkalmazásban műveletként is felhasználhatók. A 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -6,7 +6,6 @@ Ebben a forgatókönyvben társviszonyt fog létesíteni két, ugyanazon előfiz
 
 A virtuális hálózatok közötti társviszony teljes körű kapcsolatot hoz létre a társított virtuális hálózatok teljes címtere között.    
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

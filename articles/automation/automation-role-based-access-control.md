@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/20/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte;sngun"/>
+
 
 # Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -239,6 +240,6 @@ A fenti példákban cserélje ki a **bejelentkezési azonosítót**, az **előfi
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -5,7 +5,6 @@ Már használja az Azure-t? Kattintson a következő gombra egy labor létrehoz�
 
 [![GPercek alatt elsajátíthatja az Azure DevTest Labs használatát](./media/devtest-lab-try-it-out/get-started.png)](http://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -7,7 +7,6 @@ Ha nincs telepítve a Visual Studio alkalmazás, a Visual Studio 2015 hivatkozá
 >[AZURE.NOTE] Attól függően, hogy mennyi SDK-függőség van telepítve a számítógépen, az SDK telepítése hosszú időt is igénybe vehet – néhány perctől akár több mint fél óráig is tarthat.
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

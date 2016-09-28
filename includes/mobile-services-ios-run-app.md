@@ -16,7 +16,6 @@ Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futta
     </div>
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
     ms.date="07/06/2016"
     ms.author="iainfou"/>
 
+
 # Linux virtuális gépek létrehozásának különböző módszerei a Resource Manager használatával
 
 Az Azure különböző módszereket kínál a virtuális gépek létrehozásához a Resource Manager üzembe helyezési modelljével a különböző felhasználóknak és céloknak megfelelően. Ez a cikk ezeket a különböző módszereket, illetve a Linux virtuális gépek létrehozásához választható lehetőségeket összegzi.
@@ -123,6 +124,6 @@ Ha speciális egyéni beállításokra van szüksége, meglévő Azure virtuáli
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -18,6 +18,7 @@
     ms.author="markvi"/>
 
 
+
 # Hibaelhárítás: Innen nem érheti el
 
 Hozzáférés megtagadva lapot kap, ha olyan alkalmazáshoz fért hozzá, mint például a SharePoint Online.  
@@ -142,6 +143,6 @@ Térjen vissza később az androidos telefonokra és táblagépekre vonatkozó u
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

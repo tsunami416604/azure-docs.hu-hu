@@ -16,6 +16,7 @@
     ms.date="06/01/2016"
     ms.author="piyushjo" />
 
+
 # Ismerkedés az Azure Mobile Engagement Web webalkalmazásokkal való használatával
 
 [AZURE.INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -127,6 +128,6 @@ Az alábbiakban látható az összes jelenleg elérhető, elemzési célra haszn
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

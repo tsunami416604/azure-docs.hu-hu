@@ -5,7 +5,6 @@
 > Az Azure Mobile Apps első lépéseihez tekintse át az [Azure Mobile Apps dokumentációs központját](https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/).
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

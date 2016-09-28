@@ -29,7 +29,6 @@ Hiányol bizonyos részleteket a megoldásával kapcsolatban? A [felhasználói 
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-faq.md
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

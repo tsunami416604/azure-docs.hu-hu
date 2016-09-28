@@ -14,8 +14,9 @@
     ms.tgt_pltfrm="vm-windows"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/15/2016"
+    ms.date="09/27/2016"
     ms.author="cynthn"/>
+
 
 #Tudnivalók az Azure Windows rendszerű virtuális gépeiről
 
@@ -42,6 +43,6 @@ Mivel az oktatóanyag célja segítség nyújtása egy virtuális gép gyors lé
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

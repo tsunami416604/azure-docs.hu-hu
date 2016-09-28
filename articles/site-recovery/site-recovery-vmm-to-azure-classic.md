@@ -16,6 +16,7 @@
     ms.date="05/06/2016"
     ms.author="raynew"/>
 
+
 #  VMM-felhőkben futó Hyper-V virtuális gépek replikálása az Azure-ba
 
 > [AZURE.SELECTOR]
@@ -385,6 +386,6 @@ Tájékozódjon a [helyreállítási tervek beállításáról](site-recovery-cr
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

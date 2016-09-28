@@ -34,7 +34,6 @@ Ha ezek a fájlok nem léteznek, az Azure létrehoz, majd futtat egy ideiglenes 
 [Azure parancssori felületén]: http://azure.microsoft.com/downloads/
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

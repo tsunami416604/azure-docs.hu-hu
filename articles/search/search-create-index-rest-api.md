@@ -17,6 +17,7 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
+
 # Azure Search-index létrehozása REST API használatával
 > [AZURE.SELECTOR]
 - [Áttekintés](search-what-is-an-index.md)
@@ -108,6 +109,6 @@ Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

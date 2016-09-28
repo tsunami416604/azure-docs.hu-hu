@@ -4,7 +4,6 @@ Kérdéseit felteheti az Azure fórumain. – [Látogasson el az MSDN-fórumokra
 
 Kérdéseit jelölje meg az `azure-functions` kulcsszóval. – [Látogasson el a Stack Overflow webhelyre](http://stackoverflow.com/questions/tagged/azure-functions)
 
-
-<!--HONumber=sep12_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

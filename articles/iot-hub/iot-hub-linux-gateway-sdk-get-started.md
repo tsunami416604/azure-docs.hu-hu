@@ -13,8 +13,9 @@
      ms.topic="get-started-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="04/20/2016"
-     ms.author="cstreet"/>
+     ms.date="08/25/2016"
+     ms.author="andbuc"/>
+
 
 
 # IoT-átjáró SDK (béta) – Első lépések a Linux használatával
@@ -60,6 +61,13 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
           "module path" : "./build/modules/hello_world/libhello_world_hl.so",
           "args" : null
         }
+      ],
+      "links" :
+      [
+        {
+          "source": "hello_world",
+          "sink": "logger_hl"
+        }
       ]
     }
     ```
@@ -78,6 +86,6 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,26 +1,27 @@
-<properties 
-    pageTitle="Az Azure Storage első lépéseinek rövid összefoglalása | Microsoft Azure" 
-    description="Gyorsan megismerkedhet a Microsoft Azure-blobokkal, -táblákkal és -üzenetsorokkal az Azure Storage gyors üzembe helyezés, a Visual Studio és az Azure Storage Emulator használatával. Öt percen belül lefuttathatja az első Azure Storage-alkalmazását." 
-    services="storage" 
-    documentationCenter=".net" 
-    authors="tamram" 
-    manager="carmonm" 
+<properties
+    pageTitle="Az Azure Storage első lépéseinek rövid összefoglalása | Microsoft Azure"
+    description="Gyorsan megismerkedhet a Microsoft Azure-blobokkal, -táblákkal és -üzenetsorokkal az Azure Storage gyors üzembe helyezés, a Visual Studio és az Azure Storage Emulator használatával. Öt percen belül lefuttathatja az első Azure Storage-alkalmazását."
+    services="storage"
+    documentationCenter=".net"
+    authors="tamram"
+    manager="carmonm"
     editor="tysonn"/>
 
-<tags 
-    ms.service="storage" 
-    ms.workload="storage" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="dotnet" 
-    ms.topic="get-started-article" 
-    ms.date="07/21/2016"
-    ms.author="tamram"/>
+<tags
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="get-started-article"
+    ms.date="09/20/2016"
+    ms.author="dineshm;tamram"/>
 
-# Az Azure Storage első lépéseinek rövid összefoglalása 
+
+# Az Azure Storage első lépéseinek rövid összefoglalása
 
 ## Áttekintés
 
-Az Azure Storage segítségével könnyen elkezdheti a fejlesztést. Az oktatóanyagból megtudhatja, hogyan készíthet gyorsan egy Azure Storage-alkalmazást. A folyamat során az Azure SDK for .NET-hez mellékelt gyors üzembe helyezési sablonokat fogja használni. A gyors üzembe helyezés futtatásra kész kódokat tartalmaz, amelyek bemutatnak néhány alapszintű programozási forgatókönyvet az Azure Storage-ban. 
+Az Azure Storage segítségével könnyen elkezdheti a fejlesztést. Az oktatóanyagból megtudhatja, hogyan készíthet gyorsan egy Azure Storage-alkalmazást. A folyamat során az Azure SDK for .NET-hez mellékelt gyors üzembe helyezési sablonokat fogja használni. A gyors üzembe helyezés futtatásra kész kódokat tartalmaz, amelyek bemutatnak néhány alapszintű programozási forgatókönyvet az Azure Storage-ban.
 
 Ha többet szeretne megtudni az Azure Storage-ról a kód áttekintése előtt, olvassa el a [Következő lépések](#next-steps) szakaszt.
 
@@ -28,11 +29,11 @@ Ha többet szeretne megtudni az Azure Storage-ról a kód áttekintése előtt, 
 
 A kezdéshez a következő előfeltételeknek kell teljesülniük:
 
-1. Az alkalmazás fordításához és felépítéséhez a számítógépen telepítve kell lennie a [Visual Studio](https://www.visualstudio.com/) valamelyik verziójának. 
+1. Az alkalmazás fordításához és felépítéséhez a számítógépen telepítve kell lennie a [Visual Studio](https://www.visualstudio.com/) valamelyik verziójának.
 
 2. Telepítse az [Azure SDK for .NET](https://azure.microsoft.com/downloads/) legfrissebb verzióját. Az SDK tartalmazza az Azure gyors üzembe helyezés mintaprojektjeit, az Azure Storage Emulatort, valamint a [.NET-hez készült Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-3. Győződjön meg arról, hogy számítógépén telepítve van a [.NET-keretrendszer 4.5](http://www.microsoft.com/download/details.aspx?id=30653), mivel az oktatóanyagban használt Azure gyors üzembe helyezési mintaprojektekhez szükség lesz rá. 
+3. Győződjön meg arról, hogy számítógépén telepítve van a [.NET-keretrendszer 4.5](http://www.microsoft.com/download/details.aspx?id=30653), mivel az oktatóanyagban használt Azure gyors üzembe helyezési mintaprojektekhez szükség lesz rá.
 
     Ha nem biztos benne, hogy a .NET-keretrendszer mely verziója van telepítve a számítógépén, lásd: [How to: Determine Which .NET Framework Versions Are Installed](https://msdn.microsoft.com/vstudio/hh925568.aspx) (Útmutató: A .NET-keretrendszer telepített verzióinak megállapítása). A **Start** gomb vagy a Windows billentyű lenyomása után írja be a következőt: **Vezérlőpult**. Ezután kattintson a **Programok** > **Programok és szolgáltatások** elemre, és ellenőrizze, hogy a .NET-keretrendszer 4.5-ös verziója szerepel-e a telepített programok között.
 
@@ -51,10 +52,10 @@ Ha már van fiókja, létrehozhat egy egyszerű Azure Storage-alkalmazást az eg
     a. Válasszon egyet a következő sablonok közül: **Azure Storage: Blobs** (Azure Storage: Blobok), **Azure Storage: Files** (Azure Storage: Fájlok), **Azure Storage: Queues** (Azure Storage: Üzenetsorok) és **Azure Storage: Tables** (Azure Storage: Táblák).
     b. Győződjön meg arról, hogy a **.NET-keretrendszer 4.5** van kiválasztva célkeretrendszerként.
     - 3.c. Adjon nevet a projektnek, majd az alábbiak szerint hozza létre az új Visual Studio-megoldást:
-    
+
     ![Azure gyors üzembe helyezések][Image1]
 
-Az alkalmazás futtatása előtt ajánlott felülvizsgálni a forráskódot. A kód felülvizsgálatához válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Ezután kattintson duplán a Program.cs fájlra. 
+Az alkalmazás futtatása előtt ajánlott felülvizsgálni a forráskódot. A kód felülvizsgálatához válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Ezután kattintson duplán a Program.cs fájlra.
 
 A következő lépésben futtassa a mintaalkalmazást:
 
@@ -80,22 +81,22 @@ A kipróbáláshoz hozzon létre egy egyszerű Azure Storage-alkalmazást az egy
 1. Indítsa el a Visual Studiót.
 2. Kattintson a **Fájl** az **Új projekt** elemre.
 3. Az **Új projekt** párbeszédpanelen kattintson a **Telepített** > **sablonok** > **Visual C#** > **Felhő** > **QuickStarts** (Gyors üzembe helyezések) > **Data Services** (Adatszolgáltatások) elemre.
-   a. Válasszon egyet a következő sablonok közül: **Azure Storage: Blobs** (Azure Storage: Blobok), **Azure Storage: Files** (Azure Storage: Fájlok), **Azure Storage: Queues** (Azure Storage: Üzenetsorok) és **Azure Storage: Tables** (Azure Storage: Táblák).
-   b. Győződjön meg arról, hogy a **.NET-keretrendszer 4.5** van kiválasztva célkeretrendszerként.   
+    a. Válasszon egyet a következő sablonok közül: **Azure Storage: Blobs** (Azure Storage: Blobok), **Azure Storage: Files** (Azure Storage: Fájlok), **Azure Storage: Queues** (Azure Storage: Üzenetsorok) és **Azure Storage: Tables** (Azure Storage: Táblák).
+    b. Győződjön meg arról, hogy a **.NET-keretrendszer 4.5** van kiválasztva célkeretrendszerként.
     c. Adjon nevet a projektnek, majd az alábbiak szerint hozza létre az új Visual Studio-megoldást:
-    
+
     ![Azure gyors üzembe helyezések][Image1]
 
 4.  Válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Nyissa meg az App.config fájlt, és ha már felvett egy Azure-tárfiókot, akkor tegye megjegyzésbe a kapcsolati karakterláncát. Ezután állítsa vissza az Azure Storage Emulator kapcsolati karakterláncát:
 
     `<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>`
 
-Az alkalmazás futtatása előtt ajánlott felülvizsgálni a forráskódot. A kód felülvizsgálatához válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Ezután kattintson duplán a Program.cs fájlra. 
+Az alkalmazás futtatása előtt ajánlott felülvizsgálni a forráskódot. A kód felülvizsgálatához válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Ezután kattintson duplán a Program.cs fájlra.
 
 Következő lépésben futtassa a mintaalkalmazást az Azure Storage Emulatorban:
 
 1.  A **Start** gomb vagy a Windows billentyű lenyomása után keressen rá a *Microsoft Azure Storage emulator* kifejezésre, majd indítsa el az alkalmazást. Az emulátor elindulása után a Windows Feladatnézet területén megjelenik egy ikon és egy értesítés.
-2.  A Visual Studio **Build** menüjében kattintson a **Megoldás fordítása** elemre. 
+2.  A Visual Studio **Build** menüjében kattintson a **Megoldás fordítása** elemre.
 3.  A **Hibakeresés** menüben a megoldás lépésről lépésre való futtatásához nyomja le az **F11**, vagy a teljes megoldás futtatásához az **F5** billentyűt.
 
 ## Következő lépések
@@ -114,10 +115,9 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 * [Az Azure Storage szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
- 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

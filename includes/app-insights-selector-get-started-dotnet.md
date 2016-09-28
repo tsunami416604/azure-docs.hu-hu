@@ -16,7 +16,6 @@ Telepítse az SDK-t, majd kezdje el figyelni az egyéb adatokat:
 
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

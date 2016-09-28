@@ -17,6 +17,7 @@
     ms.date="09/06/2016"
     ms.author="cynthn"/>
 
+
 # Az első Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
 Ez az oktatóanyag bemutatja, milyen könnyű akár néhány perc alatt létrehozni egy Windows virtuális gépet (VM) az Azure Portal használatával.  
@@ -119,6 +120,6 @@ Ha újra használni kívánja a virtuális gépet, az **Indítás** gombra katti
 
 
 
-<!--HONumber=sep12_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

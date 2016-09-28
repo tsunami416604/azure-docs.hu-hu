@@ -16,6 +16,7 @@
     ms.date="07/07/2016"
     ms.author="wesmc;ricksal"/>
 
+
 # Azure Mobile Engagement – Első lépések útmutató ajánlott eljárásokkal
 
 ## Áttekintés
@@ -409,6 +410,6 @@ Miután szert tett némi tapasztalatra, vegye fontolóra a bevonási programok b
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

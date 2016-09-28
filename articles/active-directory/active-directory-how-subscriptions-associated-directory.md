@@ -16,6 +16,7 @@
     ms.date="08/15/2016"
     ms.author="curtand"/>
 
+
 # How Azure subscriptions are associated with Active Directory? (Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?)
 
 Ez a témakör a Microsoft Azure-ba történő bejelentkezésről és a kapcsolódó problémákról, például az Azure-előfizetések és az Azure Active Directory (Azure AD) közötti kapcsolatról tartalmaz információt.
@@ -141,6 +142,6 @@ Ha mindkét címtárat a klasszikus Azure portálon szeretné kezelni, végezze 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

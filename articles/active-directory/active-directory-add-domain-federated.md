@@ -16,6 +16,7 @@
     ms.date="07/18/2016"
     ms.author="curtand;jeffsta"/>
 
+
 # Egyéni tartománynév hozzáadása az Azure Active Directoryhoz
 
 Konfigurálhat egyéni tartománynevet (például: „contoso.com”), így a contoso.com felhasználóinak összevont egyszeri bejelentkezési élményben lehet részük a vállalati hálózatról. Ha már rendelkezik Active Directory összevonási szolgáltatásokkal (AD FS), vagy egy másik összevonási kiszolgáló fut a vállalati hálózatán, beállíthatja az Azure AD-t az Azure AD Connect eszköz segítségével úgy, hogy az egyéni tartománynevét használja. Azure AD Connectet is használhat egy új AD FS-környezet üzembe helyezéséhez, és beállíthatja azt összevont egyszeri bejelentkezéshez az Azure AD-be.
@@ -77,6 +78,6 @@ Ha a szervezete több tartománynevet használ (például: „contoso.com” és
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

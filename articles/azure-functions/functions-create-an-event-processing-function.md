@@ -18,6 +18,7 @@
    ms.date="06/05/2016"
    ms.author="glenga"/>
    
+
 # Eseményfeldolgozó Azure-függvény létrehozása
 
 Az Azure Functions egy eseményvezérelt, számítási igények szerint működtethető szolgáltatás, amelynek a segítségével ütemezett és aktivált kódegységek hozhatók létre, különböző programnyelveken megvalósítva. További információk az Azure Functions szolgáltatásról: [Azure Functions Overview](functions-overview.md) (Az Azure Storage áttekintése).
@@ -86,6 +87,6 @@ Részletezi az Azure Functions szolgáltatáshoz elérhető szolgáltatáscsomag
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

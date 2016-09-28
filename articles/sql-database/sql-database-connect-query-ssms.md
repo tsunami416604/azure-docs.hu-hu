@@ -18,6 +18,7 @@
     ms.date="08/17/2016"
     ms.author="sstein;carlrab" />
 
+
 # Csatlakozás az SQL Database-hez az SQL Server Management Studio segítségével, és T-SQL-mintalekérdezés futtatása
 
 > [AZURE.SELECTOR]
@@ -67,6 +68,6 @@ További tudnivalók az SSMS-ről: [Use SQL Server Management Studio](https://ms
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

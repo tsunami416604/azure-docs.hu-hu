@@ -17,6 +17,7 @@
     ms.date="02/10/2016" 
     ms.author="yochay"/>
 
+
 # Az App Service működése
 
 Az Azure App Service egy felhőszolgáltatás, amely a mérnökök számára napi kihívást jelentő gyakorlati problémákat hivatott megoldani. Az App Service rendkívül hatékony fejlesztést tesz lehetővé anélkül, hogy ehhez kompromisszumokat kellene kötni az alkalmazások felhőhöz méretezett szolgáltatásában. Az App Service emellett biztosítja a vállalati szintű üzletági alkalmazások létrehozásához szükséges szolgáltatásokat és kereteket, miközben a legnépszerűbb fejlesztési nyelvekkel (.NET, Java, PHP, Node.JS és Python) támogatja a fejlesztőket.
@@ -42,6 +43,6 @@ Az App Service tehát lehetővé teszi a fejlesztőknek, hogy a kódra összpont
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

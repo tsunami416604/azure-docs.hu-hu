@@ -25,7 +25,6 @@ Ellenőrizze, hogy már létrehozott-e Service Bus-névteret, az[itt][namespace-
 [namespace-how-to]: ../articles/service-bus/service-bus-create-namespace-portal.md
 [azure-portal]: https://portal.azure.com
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

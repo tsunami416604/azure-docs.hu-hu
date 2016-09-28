@@ -3,8 +3,8 @@
     description="Az Azure Blob Storage tárolási rétegei objektumadatok költséghatékony tárolását teszik lehetővé hozzáférési minták alapján. A ritkán használt adatok tárolási rétege olyan adatokra van optimalizálva, amelyeknél kisebb a hozzáférés gyakorisága."
     services="storage"
     documentationCenter=""
-    authors="sribhat-msft"
-    manager=""
+    authors="michaelhauss"
+    manager="vamshik"
     editor="tysonn"/>
 
 <tags
@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/05/2016"
-    ms.author="sribhat"/>
+    ms.date="09/20/2016"
+    ms.author="mihauss;robinsh"/>
+
 
 
 # Azure Blob Storage: a gyakran és a ritkán használt adatok tárolási rétegei
@@ -355,6 +356,6 @@ További részletekért lásd: [Ismerkedés az Azure Blob Storage szolgáltatás
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

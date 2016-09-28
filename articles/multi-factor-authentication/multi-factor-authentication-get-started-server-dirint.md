@@ -1,24 +1,25 @@
 <properties 
-    pageTitle="Címtár-integráció az Azure Multi-Factor Authentication és az Active Directory között" 
-    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan integrálható az Azure Multi-Factor Authentication-kiszolgáló az Active Directoryval a címtárak szinkronizálása érdekében." 
-    services="multi-factor-authentication" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="stevenpo" 
+    pageTitle="Címtár-integráció az Azure Multi-Factor Authentication és az Active Directory között"
+    description="Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan integrálható az Azure Multi-Factor Authentication-kiszolgáló az Active Directoryval a címtárak szinkronizálása érdekében."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtand"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/04/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
+
 
 # Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
 
-A Címtár-integráció szakaszban konfigurálhatja a kiszolgálót az Active Directoryval vagy egy másik LDAP-címtárral való integrációhoz.  Konfigurálhatja az attribútumokat, hogy azok megfeleljenek a címtársémának, illetve beállíthatja a felhasználók automatikus szinkronizálását. 
+A Címtár-integráció szakaszban konfigurálhatja a kiszolgálót az Active Directoryval vagy egy másik LDAP-címtárral való integrációhoz.  Konfigurálhatja az attribútumokat, hogy azok megfeleljenek a címtársémának, illetve beállíthatja a felhasználók automatikus szinkronizálását.
 
 ## Beállítások
 Alapértelmezés szerint az Azure Multi-Factor Authentication-kiszolgáló úgy van konfigurálva, hogy a felhasználókat az Active Directoryból importálja vagy szinkronizálja.  Ezen a lapon felülírhatja az alapértelmezett viselkedést, illetve kötést hozhat létre egy másik LDAP-címtárhoz, egy ADAM-címtárhoz vagy egy adott Active Directory-tartományvezérlőhöz.  Ezenkívül lehetővé teszi LDAP-hitelesítés használatát proxy LDAP-hoz vagy LDAP-kötés használatát RADIUS célként, előhitelesítéshez IIS-hitelesítésnél vagy elsődleges hitelesítéshez a felhasználói portálon.  A következő táblázat ismerteti az egyes beállításokat.
@@ -126,7 +127,7 @@ Az **Eltávolítás** gombbal a rendszergazda törölhet egy vagy több szinkron
 
 >[AZURE.WARNING]Ha egy szinkronizált elem rekordját eltávolítja, az nem állítható vissza. Ha véletlenül törölte egy szinkronizált elem rekordját, újra hozzá kell adnia azt.
 
-A szinkronizált elemet vagy elemeket a rendszer eltávolította a Multi-Factor Auth-kiszolgálóról.  A Multi-Factor Auth-kiszolgáló szolgáltatás a továbbiakban nem dolgozza fel a szinkronizált elemeket. 
+A szinkronizált elemet vagy elemeket a rendszer eltávolította a Multi-Factor Auth-kiszolgálóról.  A Multi-Factor Auth-kiszolgáló szolgáltatás a továbbiakban nem dolgozza fel a szinkronizált elemeket.
 
 A Feljebb és Lejjebb gombbal a rendszergazda módosíthatja a szinkronizált elemek sorrendjét.  A sorrend azért fontos, mert ugyanaz a felhasználó több szinkronizált elemnek is tagja lehet (például egy tárolónak és egy biztonsági csoportnak).  A felhasználóra a szinkronizálás során alkalmazott beállítások a felhasználóhoz társított listának az első szinkronizált eleméből származnak.  Ezért a szinkronizált elemeket prioritási sorrendben kell elhelyezni.
 
@@ -139,6 +140,6 @@ További Multi-Factor Auth-kiszolgálókat beállíthat úgy, hogy tartalék RAD
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

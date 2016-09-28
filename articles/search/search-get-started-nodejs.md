@@ -16,6 +16,7 @@
     ms.date="07/14/2016"
     ms.author="evboyle"/>
 
+
 # Bevezetés az Azure Search használatába NodeJS nyelven
 > [AZURE.SELECTOR]
 - [Portál](search-get-started-portal.md)
@@ -122,6 +123,6 @@ Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóany
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

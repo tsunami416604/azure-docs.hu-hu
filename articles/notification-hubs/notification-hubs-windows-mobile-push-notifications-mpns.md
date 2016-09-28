@@ -17,6 +17,7 @@
     ms.date="06/29/2016"
     ms.author="wesmc"/>
 
+
 # Leküldéses értesítések küldése az Azure Notification Hubs használatával Windows Phone rendszerű eszközökre
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -224,6 +225,6 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

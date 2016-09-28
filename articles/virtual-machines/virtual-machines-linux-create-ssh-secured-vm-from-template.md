@@ -17,6 +17,7 @@
     ms.date="08/17/2016"
     ms.author="v-livech"/>
 
+
 # Linux virtuális gép létrehozása Azure-sablon alapján
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépet az Azure-ban Azure-sablon használatával.  A cikkben foglaltak végrehajtásához Azure-fiókra ([ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/)) van szükség, és be kell jelentkezni [az Azure parancssori felületre](../xplat-cli-install.md) (`azure login`) erőforrás-kezelő módban (`azure config mode arm`).  Linux virtuális gépet az [Azure Portallal](virtual-machines-linux-quick-create-portal.md) vagy az [Azure parancssori felülettel](virtual-machines-linux-quick-create-cli.md) is gyorsan üzembe helyezhet.
@@ -76,6 +77,6 @@ A [sablontárban](https://azure.microsoft.com/documentation/templates/) indítot
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -39,7 +39,6 @@ A megosztások, könyvtárak és fájlok elnevezésére vonatkozó részleteket 
 
 [files-concepts]: ./media/storage-file-concepts-include/files-concepts.png
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

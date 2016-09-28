@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/07/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
+
 
 # Az Azure Data Lake Store használatának első lépései az Azure parancssori felülettel
 
@@ -37,7 +38,6 @@ Az Azure parancssori felület implementálva van a Node.js-ben. Használható b�
 A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 - **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-- **Az Azure-előfizetés engedélyezése** a Data Lake Store nyilvános előzetes verziójához. Lásd az [utasításokat](data-lake-store-get-started-portal.md#signup).
 - **Azure parancssori felület** – A telepítésre és konfigurálásra vonatkozó információkért lásd: [Install and configure the Azure CLI](../xplat-cli-install.md) (Az Azure parancssori felület telepítése és konfigurálása). Győződjön meg róla, hogy újraindította a számítógépét a parancssori felület telepítése után.
 
 ##Bejelentkezés az Azure-előfizetésbe
@@ -191,6 +191,6 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

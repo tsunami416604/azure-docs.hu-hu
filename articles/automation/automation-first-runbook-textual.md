@@ -16,6 +16,7 @@
     ms.date="07/19/2016"
     ms.author="magoedte;bwren"/>
 
+
 # Az első PowerShell-alapú munkafolyamat-forgatókönyvem
 
 > [AZURE.SELECTOR] - [Grafikus](automation-first-runbook-graphical.md) - [PowerShell](automation-first-runbook-textual-PowerShell.md) - [PowerShell munkafolyamat](automation-first-runbook-textual.md)
@@ -165,6 +166,6 @@ A forgatókönyvünk jelenleg elindítja a forgatókönyvben szoftveresen rögz�
 -  További információk a PowerShell-parancsprogramok támogatásáról: [PowerShell-parancsprogramok natív támogatása az Azure Automationben](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -16,6 +16,7 @@
     ms.date="08/22/2016"
     ms.author="marsma"/>
 
+
 # Az Azure Batch alapjai
 
 Az Azure Batch lehetővé teszi, hogy hatékonyan futtasson nagyméretű párhuzamos és nagy teljesítményű feldolgozási (HPC) alkalmazásokat a felhőben. A platformszolgáltatás számításigényes munkák futtatását ütemezi virtuális gépek felügyelt gyűjteményében, és automatikusan képes méretezni a számítási erőforrásokat a feladatok igényeinek megfelelően.
@@ -163,6 +164,6 @@ Most, hogy nagy vonalakban áttekintette a Batch szolgáltatás jellemzőit, ide
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

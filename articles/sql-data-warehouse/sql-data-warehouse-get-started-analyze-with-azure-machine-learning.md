@@ -3,7 +3,7 @@
    description="Az Azure Machine Learning segítségével létrehozhat egy prediktív gépi tanulási modellt, amely az Azure SQL Data Warehouse-ban tárolt adatokon alapul."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="shivaniguptamsft"
+   authors="kevinvngo"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/16/2016"
-   ms.author="shigu;barbkess;sonyama"/>
+   ms.date="09/14/2016"
+   ms.author="kevin;barbkess;sonyama"/>
+
 
 # Adatok elemzése Azure Machine Learning segítségével
 
@@ -32,7 +33,7 @@ Ebben az oktatóanyagban az Azure Machine Learning segítségével hozunk létre
 ## Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-- Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW mintaadataival. Ennek létrehozásához olvassa el az [SQL Data Warehouse létrehozása][] című cikket, és válassza a mintaadatok betöltését. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [ezeket manuálisan is betöltheti][].
+- Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW mintaadataival. Ennek létrehozásához olvassa el az [SQL Data Warehouse létrehozása][] című cikket, és válassza a mintaadatok betöltését. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti][].
 
 ## 1. Adatok lekérése
 Az adatok az AdventureWorksDW adatbázis dbo.vTargetMail nézetében találhatók. Az adatok olvasása:
@@ -143,11 +144,11 @@ A prediktív gépi tanulási modellek létrehozásával kapcsolatos további tud
 <!--Article references-->
 [Azure Machine Learning Studio]:https://studio.azureml.net/
 [Az Azure Machine Learning bemutatása]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[ezeket manuálisan is betöltheti]: sql-data-warehouse-load-sample-databases.md
+[a mintaadatokat manuálisan is betöltheti]: sql-data-warehouse-load-sample-databases.md
 [SQL Data Warehouse létrehozása]: sql-data-warehouse-get-started-provision.md
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

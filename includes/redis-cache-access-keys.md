@@ -14,7 +14,6 @@ A elérési kulcsok lekéréséhez kattintson az **Access keys** (Elérési kulc
 
 ![A Redis Cache-gyorsítótár elérési kulcsai](media/redis-cache-access-keys/redis-cache-access-keys.png)
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

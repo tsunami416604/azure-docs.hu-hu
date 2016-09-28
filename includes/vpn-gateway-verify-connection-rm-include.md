@@ -46,7 +46,6 @@ Az Azure Portalon a kapcsolatra lépve tekintheti meg a kapcsolat állapotát. E
 
     ![Kapcsolat ellenőrzése](./media/vpn-gateway-verify-connection-rm-include/connectionverify450.png)
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

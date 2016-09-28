@@ -17,6 +17,7 @@
    ms.author="guscatal;elizapo"/>
 
 
+
 # Azonos Office 365-élmény bármely Azure RemoteApp szolgáltatást használó eszközön
 
 > [AZURE.IMPORTANT]
@@ -72,6 +73,6 @@ Ha bármelyik alkalmazásra kattint, az alkalmazás elindul az Azure virtuális 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

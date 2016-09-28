@@ -1,7 +1,6 @@
 > [AZURE.IMPORTANT]
 Erre a célra nem használhatók az [Azure felügyeleti portál](https://manage.windowsazure.com/) **Alkalmazások** lapján regisztrált alkalmazások.
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

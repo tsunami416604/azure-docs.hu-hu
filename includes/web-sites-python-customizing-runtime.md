@@ -1,7 +1,7 @@
 Az Azure határozza meg, hogy a Python melyik verzióját kell használni a virtuális környezethez, a következő prioritásokkal:
 
 1. a gyökérmappa runtime.txt fájljában megadott verzió
-1. a Python-beállítás által a webalkalmazás-konfigurációban megadott verzió (a webalkalmazása **Settings**(Beállítások)  > **App Settings** (Alkalmazásbeállítások) paneljén, az Azure portálon)
+1. a Python-beállítás által a webalkalmazás-konfigurációban megadott verzió (a webalkalmazása **Settings**(Beállítások)  > **App Settings** (Alkalmazásbeállítások) paneljén, az Azure Portalon)
 1. ha a fentiek egyike sincs megadva, a Python-2.7 az alapértelmezett verzió
 
 Érvényes értékek a 
@@ -16,7 +16,6 @@ tartalmához:
 A megadott mikroverziót (harmadik számjegy) a rendszer figyelmen kívül hagyja.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

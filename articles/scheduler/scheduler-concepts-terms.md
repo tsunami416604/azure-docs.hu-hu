@@ -15,6 +15,7 @@
  ms.date="08/18/2016"
  ms.author="krisragh"/>
 
+
 # A Scheduler alapfogalmai, entitáshierarchiája és terminológiája
 
 ## A Scheduler entitáshierarchiája
@@ -220,6 +221,6 @@ A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbó
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -69,7 +69,6 @@ Javasoljuk, hogy törölje a létező virtuális környezetet az alkalmazásban,
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

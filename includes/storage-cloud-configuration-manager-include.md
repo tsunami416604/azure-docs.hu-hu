@@ -13,7 +13,6 @@ A következő példa bemutatja, hogyan kérhető le egy kapcsolati karakterlánc
 Az Azure Configuration Manager használata nem kötelező. Használhat egy API-t is, például a .NET-keretrendszer [ConfigurationManager osztályát](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx).
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

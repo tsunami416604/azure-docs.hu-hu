@@ -15,6 +15,7 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
+
 # A helyszíni StorSimple eszköz (1. frissítés) üzembe helyezése
 
 > [AZURE.SELECTOR]
@@ -292,6 +293,6 @@ Az MPIO Linux-állomáshoz csatlakoztatott StorSimple eszközre való telepíté
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -16,6 +16,7 @@
    ms.date="07/27/2016"
    ms.author="danlep"/>
 
+
 # Batch- és HPC-megoldások az Azure-felhőben | Microsoft Azure
 
 Az Azure hatékony, méretezhető felhőbeli megoldásokat nyújt a Batch- és nagy teljesítményű feldolgozási (HPC), más néven *Big Compute*-forgatókönyvekhez. Ebben a részben többet tudhat meg a Big Compute számítási feladatokról és az azokat támogató Azure-szolgáltatásokról, a cikk későbbi részében pedig [megoldás-forgatókönyveket](#scenarios) találhat. Ez a cikk elsősorban a technikai döntéshozóknak, informatikai vezetőknek és független szoftverkereskedőknek szól, de más informatikai szakemberek és fejlesztők is használhatják a megoldások megismeréséhez.
@@ -159,6 +160,6 @@ A Big Compute-megoldása más Azure-szolgáltatásokat is igényelhet ahhoz, hog
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

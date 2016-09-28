@@ -1,6 +1,6 @@
-Az alábbi lépésekkel hozhat létre egy VNetet az Azure portállal. Vegye figyelembe, hogy a képernyőképek csak példaként szolgálnak. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. További információ a virtuális hálózatok használatáról: [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md) (Virtuális hálózatok áttekintése).
+Az alábbi lépésekkel hozhat létre egy VNetet az Azure Portallal. Vegye figyelembe, hogy a képernyőképek csak példaként szolgálnak. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. További információ a virtuális hálózatok használatáról: [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md) (Virtuális hálózatok áttekintése).
 
-1. Egy böngészőből keresse fel az [Azure portált](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+1. Egy böngészőből keresse fel az [Azure Portalt](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
 
 2. Kattintson az **Új** **>** **Hálózatkezelés** **>** **Virtuális hálózat** elemre.
 
@@ -30,7 +30,6 @@ Az alábbi lépésekkel hozhat létre egy VNetet az Azure portállal. Vegye figy
 
     ![Virtuális hálózat csempéjének létrehozása](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png)
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

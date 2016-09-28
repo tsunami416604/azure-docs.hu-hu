@@ -17,6 +17,7 @@
     ms.date="07/14/2016"
     ms.author="arluca"/>
 
+
 # Az Azure AD Connect Health használata az AD DS szolgáltatással
 Az alábbi dokumentáció az Active Directory tartományi szolgáltatások Azure AD Connect Health használatával történő figyelésére vonatkozik. Ez kiterjed a Windows Server 2008 R2, Windows Server 2012 vagy Windows Server 2012 R2 rendszerre telepített AD DS-re is.
 
@@ -62,6 +63,6 @@ Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de be
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

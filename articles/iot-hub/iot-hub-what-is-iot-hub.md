@@ -16,6 +16,7 @@
  ms.date="08/25/2016"
  ms.author="dobett"/>
 
+
 # Mi az Azure IoT Hub?
 
 Üdvözli az Azure IoT Hub. Ez a cikk áttekintést nyújt az Azure IoT Hubról, és leírja, hogy miért érdemes ezt a szolgáltatást használnia az Eszközök internetes hálózata- (IoT-) megoldások megvalósításához.
@@ -125,6 +126,6 @@ Bevetés a kódírásba és a példák futtatásába: [Bevezetés az IoT Hub has
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

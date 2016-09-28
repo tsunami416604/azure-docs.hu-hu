@@ -18,7 +18,6 @@ A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás számára szüksé
 
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

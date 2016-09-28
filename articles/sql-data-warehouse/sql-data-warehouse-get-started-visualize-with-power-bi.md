@@ -16,6 +16,7 @@
    ms.date="06/16/2016"
    ms.author="lodipalm;barbkess;sonyama" />
 
+
 # Adatok megjelenítése Power BI használatával
 
 > [AZURE.SELECTOR]
@@ -123,6 +124,6 @@ Most, hogy ízelítőt kapott a mintaadatok kezeléséből, megismerkedhet a [fe
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

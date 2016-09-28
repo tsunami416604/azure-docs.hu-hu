@@ -16,6 +16,7 @@
     ms.date="07/06/2016"
     ms.author="magoedte;bwren"/>
 
+
 # Az első grafikus forgatókönyvem
 
 > [AZURE.SELECTOR] - [Grafikus](automation-first-runbook-graphical.md) - [PowerShell](automation-first-runbook-textual-PowerShell.md) - [PowerShell munkafolyamat](automation-first-runbook-textual.md)
@@ -218,6 +219,6 @@ Most úgy fogjuk módosítani a forgatókönyvet, hogy csak akkor próbálja meg
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

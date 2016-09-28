@@ -16,6 +16,7 @@
    ms.date="08/11/2016"
    ms.author="yurid"/>
 
+
 # Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikusok, megoldástervezők, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák számára készült, akik az Azure Security Center egész vállalatra kiterjedő bevezetését tervezik.
 
@@ -244,6 +245,6 @@ Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Sec
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

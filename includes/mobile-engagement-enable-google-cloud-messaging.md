@@ -32,7 +32,6 @@
 8. Jegyezze fel az **API KEY** (API-KULCS) értékét. A későbbiekben ezzel az API-kulccsal konfigurálhatja a „Natív leküldés” (Native Push) szakaszt. Kattintson a **Done** (Kész) gombra.
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

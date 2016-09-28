@@ -1,7 +1,6 @@
 > [AZURE.NOTE] Habár ez a cikk a webalkalmazásokra vonatkozik, az API-alkalmazásokra és mobilalkalmazásokra egyaránt érvényes.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
    ms.date="03/15/2016"
    ms.author="jdial"/>
 
+
 # Virtuális hálózat létrehozása az Azure Portallal
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
@@ -31,6 +32,6 @@
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-pportal-include](../../includes/virtual-networks-create-vnet-arm-pportal-include.md)]
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

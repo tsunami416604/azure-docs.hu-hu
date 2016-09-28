@@ -6,7 +6,6 @@
 
 - Kattintson a **Törlés** elemre, és válassza a virtuális gép összes lemezének törlésére vonatkozó lehetőséget.
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

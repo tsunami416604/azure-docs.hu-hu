@@ -16,6 +16,7 @@
     ms.date="08/17/2016"
     ms.author="sethm"/>
 
+
 # Mi az Azure Event Hubs?
 
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs a „bejárati ajtó” funkcióját látja el egy eseményfolyamat számára, az adatoknak egy eseményközpontba való összegyűjtését követően az adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez. További információk és műszaki részletek: [Event Hubs – áttekintés](event-hubs-overview.md).
@@ -29,8 +30,6 @@ Az Event Hubs egy eseményfeldolgozási szolgáltatás, amely nagy léptékű es
 - az eszközök internetes hálózatát (IoT) érintő forgatókönyvek.
 
 Az Event Hubs további fontos képességei közé tartozik például a viselkedéskövetés a mobilalkalmazásokban, a forgalmi információk gyűjtése a webfarmokról, a játékbeli események rögzítése a konzolos játékokban, vagy az ipari gépekről vagy csatlakoztatott járművekről gyűjtött telemetriaadatok.
-
-A [Service Bus-üzenetsorokkal és témakörökkel](../service-bus/service-bus-messaging-overview.md) ellentétben az Event Hubs arra összpontosít, hogy nagy léptékben kínáljon üzenetstream-kezelést. Az Event Hubs képességei eltérnek a Service Bus-témaköröktől, például abban, hogy kimondottan a nagy mennyiségre és eseményfeldolgozási forgatókönyvekre vannak optimalizálva. Az Event Hubs így nem valósít meg bizonyos üzenetkezelési képességeket, amelyek a [témakörök](../service-bus/service-bus-fundamentals-hybrid-solutions.md#topics) esetén elérhetők. Amennyiben szüksége van ezekre a képességekre, továbbra is a témakörök használata az optimális választás.
 
 ## Következő lépések
 
@@ -47,6 +46,6 @@ Az Event Hubs szolgáltatásról az alábbi témakörökben talál részletes in
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
      ms.date="08/09/2016"
      ms.author="dobett"/>
 
+
 # Mi az Azure IoT Suite?
 
 Az Azure eszközök internetes hálózata (IoT) szolgáltatások a képességek széles választékát nyújtják. Ezekkel a vállalati szintű szolgáltatásokkal a következőket teheti:
@@ -67,6 +68,6 @@ Most, hogy áttekintette az IoT Suite képességeit és fő összetevőit, több
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

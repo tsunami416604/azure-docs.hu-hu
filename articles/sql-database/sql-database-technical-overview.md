@@ -17,6 +17,7 @@
    ms.date="08/16/2016"
    ms.author="shkurhek"/>
 
+
 # Mi az SQL Database? Bevezetés az SQL Database-be
 
 Az SQL Database a piacvezető Microsoft SQL Server motoron alapuló, felhőalapú relációs adatbázis-szolgáltatás, amely az üzletmenet szempontjából kritikus funkciókkal rendelkezik. Az SQL Database minimális felügyelet mellett megbízható teljesítményt, leállási idő nélküli skálázhatóságot, az üzletmenet folytonosságát és adatvédelmet kínál. Így a virtuális gépek és infrastruktúra kezelése helyett az alkalmazások gyors fejlesztésére és forgalomba hozásának felgyorsítására összpontosíthat. Az SQL Database az [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) motoron alapul, így támogatja az SQL Serverhez készült meglévő eszközöket, könyvtárakat és API-alkalmazásokat, megkönnyítve ezáltal a felhőbe történő áthelyezést és kiterjesztést.
@@ -61,6 +62,6 @@ Most, hogy elolvasta az SQL Database-be történő bevezetést, és választ kap
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

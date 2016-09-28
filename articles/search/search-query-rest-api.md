@@ -15,6 +15,7 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
+
 # Az Azure Search-index lekérdezése a REST API használatával
 > [AZURE.SELECTOR]
 - [Áttekintés](search-query-overview.md)
@@ -161,6 +162,6 @@ További segítségért tekintse meg a [Dokumentumok keresése](https://msdn.mic
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

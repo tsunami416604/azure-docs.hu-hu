@@ -21,7 +21,6 @@ Kövesse az alábbi lépéseket egy új mobilszolgáltatás létrehozásához.
 Ezzel létrehozott egy új mobilszolgáltatást, amelyet használhat a mobilalkalmazásaival.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

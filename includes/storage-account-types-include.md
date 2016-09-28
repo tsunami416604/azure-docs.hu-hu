@@ -5,7 +5,7 @@ Kétféle tárfióktípus létezik:
 Egy általános célú tárfiók olyan Azure Storage-szolgáltatásokhoz biztosít hozzáférést egyetlen fiókban, mint a Tables, a Queues, a Files, a Blobs és az Azure virtuális gép lemezei. Ez a tárfióktípus két teljesítményszinttel rendelkezik:
 
 - Egy standard tárolási teljesítményszinttel, amely a táblák, üzenetsorok, fájlok, blobok és Azure virtuálisgép-lemezek tárolását teszi lehetővé.
-- Egy prémium szintű Storage teljesítményszinttel, amely jelenleg csak az Azure virtuális gépek lemezeit támogatja. A Prémium storage részletesebb áttekintéséért lásd: [Premium Storage: High-performance Storage for Azure Virtual Machine Workloads](../articles/storage/storage-premium-storage.md) (Prémium szintű Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
+- Egy prémium szintű Storage teljesítményszinttel, amely jelenleg csak az Azure virtuális gépek lemezeit támogatja. A Premium Storage részletesebb áttekintéséért lásd: [Premium Storage: High-performance Storage for Azure Virtual Machine Workloads](../articles/storage/storage-premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
 
 ### Blob Storage-fiókok
 
@@ -27,7 +27,6 @@ Ahhoz, hogy létrehozhasson egy tárfiókot, Azure-előfizetéssel kell rendelke
 A tárfiók létrehozásával kapcsolatos részleteket lásd: [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása). Akár 100 egyedi névvel ellátott tárfiókot is létrehozhat egyetlen előfizetéssel. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménykorlátai).
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

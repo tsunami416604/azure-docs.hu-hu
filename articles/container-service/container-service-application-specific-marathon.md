@@ -18,6 +18,7 @@
    ms.date="04/12/2016"
    ms.author="rogardle"/>
 
+
 # Alkalmazás- vagy felhasználóspecifikus Marathon-szolgáltatás létrehozása
 
 Az Azure tárolószolgáltatás előkonfigurált Apache Mesos és Marathon rendszerű főkiszolgálókat biztosít. Ezek képesek ugyan az alkalmazások hangolására a fürtön, de jobb, ha erre a célra nem a főkiszolgálókat használja. A Marathon konfigurációjának finomhangolásához például magukra a főkiszolgálókra történő bejelentkezésre, illetve módosításokra van szükség. Így könnyen létrejöhetnek a szabványostól eltérő, egyedi főkiszolgálók, amelyeket emiatt függetlenül kell kezelni és felügyelni. Ezenkívül az is előfordulhat, hogy az egyik csapat által igényelt konfiguráció nem optimális megoldás egy másik csapat számára.
@@ -60,6 +61,6 @@ A `dcos config show` paranccsal ellenőrizheti, hogy a Marathon melyik példány
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

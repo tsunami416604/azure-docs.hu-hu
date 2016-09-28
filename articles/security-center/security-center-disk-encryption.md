@@ -16,12 +16,13 @@
    ms.date="05/27/2016"
    ms.author="tomsh"/>
 
+
 # Azure virtuális gép titkosítása
 Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes virtuális gépek nincsenek titkosítva. Ezek a riasztások magas súlyossági szinttel jelennek meg. A rendszer ilyenkor javasolja, hogy titkosítsa az érintett virtuális gépeket.
 
 ![Lemeztitkosításra vonatkozó javaslat](./media/security-center-disk-encryption\security-center-disk-encryption-fig1.png)
 
-> [AZURE.NOTE] A dokumentumban szereplő információk az Azure Security Center előzetes verziójára vonatkoznak.
+> [AZURE.NOTE] A jelen dokumentumban szereplő információk az Azure Security Center előzetes verziójára vonatkoznak.
 
 Az Azure Security Center által azonosított Azure virtuális gépek titkosításához a következő lépéseket javasoljuk:
 
@@ -148,7 +149,7 @@ Második módszer: kattintson a parancssori panelbe (azaz a PowerShell ISE fels�
 
 Akármelyik módszert használja, megjelenik egy párbeszédpanel, amely tájékoztatja, hogy a művelet elvégzéséhez 10–15 perc szükséges. Kattintson a **Yes** (Igen) gombra.
 
-A titkosítási folyamat lefolyása közben visszatérhet az Azure portálra, és megtekintheti a virtuális gép állapotát. A lap bal oldalán kattintson a **Virtuális gépek** elemre, majd a **Virtuális gépek** panelen kattintson annak a virtuális gépnek a nevére, amelyet épp titkosít. A megjelenő panelen láthatja, hogy az **Állapot** mező értéke **Frissítés**. Ez azt mutatja, hogy a titkosítás folyamatban van.
+A titkosítási folyamat lefolyása közben visszatérhet az Azure Portalra, és megtekintheti a virtuális gép állapotát. A lap bal oldalán kattintson a **Virtuális gépek** elemre, majd a **Virtuális gépek** panelen kattintson annak a virtuális gépnek a nevére, amelyet épp titkosít. A megjelenő panelen láthatja, hogy az **Állapot** mező értéke **Frissítés**. Ez azt mutatja, hogy a titkosítás folyamatban van.
 
 ![A virtuális gép további adatai](./media/security-center-disk-encryption\security-center-disk-encryption-fig9.png)
 
@@ -156,7 +157,7 @@ Térjen vissza a PowerShell ISE-hez. A parancsprogram befejezését követően a
 
 ![A PowerShell eredménye](./media/security-center-disk-encryption\security-center-disk-encryption-fig10.png)
 
-A virtuális gép titkosításának ellenőrzéséhez térjen vissza az Azure portálra, majd kattintson a lap bal oldalán található **Virtual Machines** elemre. Kattintson a korábban titkosított virtuális gép nevére. A **Beállítások** panelen kattintson a **Lemezek** elemre.
+A virtuális gép titkosításának ellenőrzéséhez térjen vissza az Azure Portalra, majd kattintson a lap bal oldalán található **Virtual Machines** elemre. Kattintson a korábban titkosított virtuális gép nevére. A **Beállítások** panelen kattintson a **Lemezek** elemre.
 
 ![Beállítások](./media/security-center-disk-encryption\security-center-disk-encryption-fig11.png)
 
@@ -171,11 +172,11 @@ Ebből a dokumentumból megtanulta, hogyan lehet Azure virtuális gépeket titko
 
 - [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – A cikkből megismerheti az Azure-erőforrások állapotfigyelésének módját.
 - [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben) – Ebből az írásból megtanulhatja a biztonsági riasztások kezelésének és megoldásának módját.
-- [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – A szolgáltatás használatára vonatkozó gyakran ismételt kérdések.
+- [Azure Security Center: GYIK](security-center-faq.md) – Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 - [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

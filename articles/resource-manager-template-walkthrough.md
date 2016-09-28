@@ -16,6 +16,7 @@
    ms.date="08/04/2016"
    ms.author="navale;tomfitz"/>
    
+
 # Útmutató Resource Manager sablonokhoz
 
 A sablonok létrehozásakor feltett első kérdések egyike az, hogy „hogyan is kezdjünk bele”. Elkezdheti egy üres sablonból is a [Sablonok készítése](resource-group-authoring-templates.md#template-format) című cikkben leírt alapszintű struktúrát követve, és hozzáadhatja az erőforrásokat, valamint a megfelelő paramétereket és változókat. Az is jó megoldás, ha először átnézi a [gyorsindítási galériát](https://github.com/Azure/azure-quickstart-templates), és keres olyan forgatókönyveket, amelyek hasonlóak a létrehozni kívánt forgatókönyvhöz. Egyesíthet több sablont is, vagy szerkeszthet egy már létezőt, hogy az megfeleljen saját forgatókönyvének. 
@@ -583,6 +584,6 @@ A sablont újból telepítheti a tárfiók telepítésénél használt parancsok
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

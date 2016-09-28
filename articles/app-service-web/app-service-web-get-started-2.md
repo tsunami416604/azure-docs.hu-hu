@@ -18,6 +18,7 @@
     ms.author="cephalin"
 />
 
+
 # Funkciók hozzáadása az első webalkalmazáshoz
 
 A [Webalkalmazás üzembe helyezése az Azure-on 5 perc alatt](app-service-web-get-started.md) fejezetben egy egyszerű webalkalmazást telepített az [Azure App Service-be](../app-service/app-service-value-prop-what-is.md). Ebben a cikkben megtudhatja, hogyan adhat gyorsan hozzá remek funkciókat az üzembe helyezett webalkalmazáshoz. Néhány perc alatt:
@@ -157,6 +158,6 @@ Tudjon meg többet arról, hogyan tehet még többet az üzembe helyezett alkalm
 - [Ismerje meg az App Service működését](../app-service/app-service-how-works-readme.md) 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
     ms.author="wesmc"/>
 
 
+
 #Azure Notification Hubs
 
 ##Áttekintés
@@ -171,12 +172,12 @@ A megfelelő .NET által felügyelt API-hivatkozások a leküldéses értesíté
   [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
   [App Service Mobile Apps]: https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/
-  [sablonok]: notification-hubs-templates.md
+  [sablonok]: notification-hubs-templates-cross-platform-push-messages.md
   [Azure Portal]: https://portal.azure.com
   [címkét]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

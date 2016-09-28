@@ -15,8 +15,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="09/13/2016"
    ms.author="rogardle"/>
+
 
 # Azure  tárolószolgáltatás-fürt üzembe helyezése
 
@@ -115,8 +116,6 @@ Hozzon létre egy Azure-erőforráscsoportot és egy tárolószolgáltatás-für
 > [AZURE.NOTE] A parancs futtatásakor a rendszerhéj kérni fogja az üzembe helyezési paraméterek értékeit.
 
 ```bash
-# sample deployment
-
 azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri TEMPLATE_URI
 ```
 
@@ -125,18 +124,14 @@ azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri 
 Ebben a parancsverzióban a paramétereket interaktív módon kell megadni. Ha paramétereket szeretne megadni, például egy JSON-formátumú karakterláncot, akkor használja a `-p` kapcsolót. Példa:
 
  ```bash
- # sample deployment
-
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -p '{ "param1": "value1" … }'
- ```
+```
 
 Másik megoldásként megadhat egy JSON-formátumú paraméterfájlt is az `-e` kapcsoló használatával:
 
- ```bash
- # sample deployment
-
+```bash
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -e PATH/FILE.JSON
- ```
+```
 
 Ha szeretne megtekinteni egy példát a paraméterfájlra, keresse meg az `azuredeploy.parameters.json` nevű fájlt a GitHubon az Azure tárolószolgáltatás-sablonokkal.
 
@@ -170,10 +165,8 @@ New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
 Miután létrehozott egy erőforráscsoport, a fürtöt az alábbi paranccsal hozhatja létre. A kívánt sablonhoz tartozó URI-t a `-TemplateUri` paraméterben kell megadni. A parancs futtatásakor a rendszerhéj kérni fogja az üzembe helyezési paramétereket.
 
 ```powershell
-# sample deployment
-
 New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
- ```
+```
 
 ### A sablon paramétereinek megadása
 
@@ -182,8 +175,6 @@ Ha már használta a PowerShellt, biztosan tudja, hogy a parancsmag elérhető p
 Az alábbiakban a teljes parancs látható paraméterekkel együtt. Az erőforrások neveinél saját értékeket is megadhat.
 
 ```powershell
-# sample deployment
-
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....
 ```
 
@@ -197,6 +188,6 @@ Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsol
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

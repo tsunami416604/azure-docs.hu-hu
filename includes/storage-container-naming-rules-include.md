@@ -12,7 +12,6 @@ A tároló nevének egy érvényes DNS-névnek kell lennie, amely megfelel az al
 
 > [AZURE.IMPORTANT] Ne feledje, hogy a tároló nevének minden esetben kisbetűsnek kell lennie. Ha a tárolónévbe nagybetűt ír, vagy más módon megsérti a tároló elnevezési szabályait, akkor a rendszer 400-as hibát adhat vissza (Hibás kérés). 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

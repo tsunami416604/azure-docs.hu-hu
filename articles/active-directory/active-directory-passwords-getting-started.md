@@ -17,6 +17,7 @@
     ms.date="07/12/2016"
     ms.author="asteen"/>
 
+
 # A jelszókezelés első lépései
 
 > [AZURE.IMPORTANT] **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
@@ -361,6 +362,6 @@ Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokument�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

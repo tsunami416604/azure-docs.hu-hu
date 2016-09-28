@@ -17,6 +17,7 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
+
 # Adatfeltöltés az Azure Search szolgáltatásba
 > [AZURE.SELECTOR]
 - [Áttekintés](search-what-is-data-import.md)
@@ -47,6 +48,6 @@ Az indexelő funkció az [Azure portálon](search-import-data-portal.md) és a [
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

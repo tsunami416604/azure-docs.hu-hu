@@ -16,6 +16,7 @@
     ms.date="06/27/2016"
     ms.author="douglasl"/>
 
+
 # A Stretch Database áttekintése
 
 A Stretch Database a ritkán használt adatokat átlátható módon és biztonságosan telepíti át a Microsoft Azure felhőbe.
@@ -82,6 +83,6 @@ Használja az SQL Server 2016 Upgrade Advisor eszközének Stretch Database Advi
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

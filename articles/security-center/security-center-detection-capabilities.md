@@ -16,6 +16,7 @@
    ms.date="08/25/2016"
    ms.author="yurid"/>
 
+
 # Az Azure Security Center észlelési funkciói
 Ez a dokumentum az Azure Security Center speciális észlelési funkciót ismerteti, amelyek segítségével azonosíthatja a Microsoft Azure-erőforrásokra irányuló aktív fenyegetéseket, és betekintést nyújt a gyors reagálás lehetőségeibe.
 
@@ -90,6 +91,6 @@ Ebben a dokumentumban megismerkedhetett az Azure Security Center észlelési fun
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

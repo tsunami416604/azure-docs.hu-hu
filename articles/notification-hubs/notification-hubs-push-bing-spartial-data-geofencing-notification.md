@@ -17,6 +17,7 @@
     ms.date="05/31/2016"
     ms.author="dendeli"/>
     
+
 # Geokerítéses leküldéses értesítések az Azure Notification Hubs és a Bing térbeli adatainak használatával
  
  > [AZURE.NOTE] Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02).
@@ -384,6 +385,6 @@ A Notification Hubs képességeiről a [dokumentációs portálon](https://azure
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

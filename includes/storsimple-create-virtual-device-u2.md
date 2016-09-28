@@ -1,6 +1,6 @@
 #### Virtuális eszköz létrehozása
 
-1.  Az Azure portálon lépjen a **StorSimple Manager** szolgáltatáshoz.
+1.  Az Azure Portalon lépjen a **StorSimple Manager** szolgáltatáshoz.
 
 2. Lépjen az **Eszközök** oldalra. Kattintson az **Eszközök** oldal alján található **Virtuális eszköz létrehozása** lehetőségre.
 
@@ -11,7 +11,7 @@
     1. **Név** – A virtuális eszköz egyedi neve.
 
 
-    2. **Modell** – Válassza ki a virtuális eszköz modelljét. Ez a mező csak akkor jelenik meg, ha a 2. frissítést vagy újabb verziót futtat. Egy 8010-es eszközmodell 30 TB Standard szintű, míg egy 8020-as modell 64 TB Prémium szintű tárhelyet biztosít. Ha biztonsági mentésekből szeretne elemszintű lekérési forgatókönyveket telepíteni, a 8010-es
+    2. **Modell** – Válassza ki a virtuális eszköz modelljét. Ez a mező csak akkor jelenik meg, ha a 2. frissítést vagy újabb verziót futtat. Egy 8010-es eszközmodell 30 TB Standard szintű, míg egy 8020-as modell 64 TB Premium Storage tárhelyet biztosít. Ha biztonsági mentésekből szeretne elemszintű lekérési forgatókönyveket telepíteni, a 8010-es
     3.   modellt adja meg. A 8020-as modellel magas teljesítményű, alacsony késleltetésű munkaterheléseket telepíthet, vagy használhatja vészhelyreállítási másodlagos eszközként.
      
     4. **Verzió** – Válassza ki a virtuális eszköz verzióját. Ha a 8020-as modellt választja, akkor a Verzió mező nem jelenik meg a felhasználó számára. Ez a lehetőség akkor hiányzik, ha a szolgáltatáshoz regisztrált összes fizikai eszköz az 1. frissítést (vagy a rendszer újabb verzióját) futtatja. A mező csak akkor jelenik meg, ha a szolgáltatáshoz regisztrált az 1. frissítés előtti verziót és az 1. frissítést futtató fizikai eszközöket is. Mivel a virtuális eszköz verziója határozza meg, hogy melyik fizikai eszköz használható feladatátvételhez vagy klónozáshoz, fontos, hogy a virtuális eszköz megfelelő verzióját hozza létre. A következők szerint válasszon:
@@ -20,9 +20,9 @@
        - Válassza az 1. frissítést futtató verziót, ha 1. vagy újabb verziójú fizikai eszközről hajt végre feladatátvételt vagy klónozást. 
        
     
-    5. **Virtuális hálózat** – Adja meg a virtuális eszközzel használni kívánt virtuális hálózatot. Ha Prémium szintű Storage tárolást használ (2. frissítés vagy újabb), olyan virtuális hálózatot válasszon, amelyet a Premium szintű Storage-fiók támogat. A nem támogatott virtuális hálózatok szürkén jelennek meg a legördülő listában. Ha nem támogatott virtuális hálózatot választ ki, a rendszer figyelmezteti. 
+    5. **Virtuális hálózat** – Adja meg a virtuális eszközzel használni kívánt virtuális hálózatot. Ha Premium Storage tárolást használ (2. frissítés vagy újabb), olyan virtuális hálózatot válasszon, amelyet a Premium szintű Storage-fiók támogat. A nem támogatott virtuális hálózatok szürkén jelennek meg a legördülő listában. Ha nem támogatott virtuális hálózatot választ ki, a rendszer figyelmezteti. 
 
-    5. **Tárfiók a virtuális eszköz létrehozásához** – Válassza ki, hogy melyik tárfiókban kívánja tárolni a virtuális eszköz rendszerképét a kiépítés alatt. Ennek a tárfióknak ugyanabban a régióban kell lennie, ahol a virtuális eszköz és a virtuális hálózat is található. A tárfiókot sem fizikai, sem virtuális eszköz nem használhatja adattároláshoz. Alapértelmezés szerint erre a célra létrejön egy új tárfiók. Ha azonban tudja, hogy már van egy tárfiókja, amely alkalmas erre a célra, kiválaszthatja a listából. Ha létrehoz egy prémium szintű virtuális eszközt, a legördülő lista csak a Prémium szintű Storage-fiókokat jeleníti meg. 
+    5. **Tárfiók a virtuális eszköz létrehozásához** – Válassza ki, hogy melyik tárfiókban kívánja tárolni a virtuális eszköz rendszerképét a kiépítés alatt. Ennek a tárfióknak ugyanabban a régióban kell lennie, ahol a virtuális eszköz és a virtuális hálózat is található. A tárfiókot sem fizikai, sem virtuális eszköz nem használhatja adattároláshoz. Alapértelmezés szerint erre a célra létrejön egy új tárfiók. Ha azonban tudja, hogy már van egy tárfiókja, amely alkalmas erre a célra, kiválaszthatja a listából. Ha létrehoz egy prémium szintű virtuális eszközt, a legördülő lista csak a Premium Storage-fiókokat jeleníti meg. 
 
         >[AZURE.NOTE] A virtuális eszköz csak az Azure-tárfiókokkal működik. Az egyéb felhőszolgáltatók, mint például az Amazon, a HP és az OpenStack (amelyek fizikai eszközön támogatottak), a StorSimple virtuális eszközön nem támogatottak.
     
@@ -36,7 +36,6 @@
     
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

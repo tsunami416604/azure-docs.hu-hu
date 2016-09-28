@@ -4,7 +4,7 @@
     services="search" 
     documentationCenter="" 
     authors="HeidiSteen" 
-    manager="paulettm" 
+    manager="jhubbard" 
     editor=""
     tags="azure-portal"/>
 
@@ -14,8 +14,9 @@
     ms.workload="search" 
     ms.topic="hero-article" 
     ms.tgt_pltfrm="na" 
-    ms.date="05/17/2016" 
+    ms.date="08/29/2016" 
     ms.author="heidist"/>
+
 
 # Bevezetés az Azure Search használatába a portálon
 
@@ -29,7 +30,7 @@ Az oktatóanyag feltételezi, hogy Ön rendelkezik egy [minta Azure DocumentDB-a
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Nyissa meg az Azure Search szolgáltatás szolgáltatási irányítópultját. Íme néhány módszer az irányítópult megkereséséhez.
+2. Nyissa meg az Azure Search szolgáltatás irányítópultját. Íme néhány módszer az irányítópult megkereséséhez.
     - Az ugrósávon kattintson a **Keresési szolgáltatások** elemre. Az ugrósáv felsorolja az előfizetésében biztosított összes szolgáltatást. Ha definiálva van egy keresési szolgáltatás, a listában megjelenik a **Keresési szolgáltatások** elem.
     - Az ugrósávon kattintson **Tallózás** elemre, majd a majd keresőmezőbe írja be a „search” kifejezést, hogy elkészüljön az előfizetéseiben létrehozott összes keresőszolgáltatást tartalmazó lista.
 
@@ -186,6 +187,6 @@ JSON kimeneti adatokat kell visszakapnia, a 386. számú dokumentummal kezdődő
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

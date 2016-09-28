@@ -15,6 +15,7 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
+
 # A helyszíni StorSimple eszköz üzembe helyezése
 
 > [AZURE.SELECTOR]
@@ -296,6 +297,6 @@ Ha szeretne egy azonnali manuális mentést létrehozni a StorSimple eszköze eg
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

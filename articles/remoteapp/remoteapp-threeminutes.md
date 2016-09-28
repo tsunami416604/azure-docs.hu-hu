@@ -18,6 +18,7 @@
 
 
 
+
 # Az Azure RemoteApp kipróbálása az eszközén kevesebb mint 3 perc alatt
 
 > [AZURE.IMPORTANT]
@@ -40,6 +41,6 @@ Számít a véleménye. Minden munkamenet végén egy párbeszédablak jelenik m
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

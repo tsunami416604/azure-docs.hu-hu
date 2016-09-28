@@ -13,8 +13,9 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="na"
     ms.workload="big-compute"
-    ms.date="08/17/2016"
+    ms.date="09/08/2016"
     ms.author="marsma"/>
+
 
 # Ismerkedés az Azure Batch Python-ügyféllel
 
@@ -23,8 +24,6 @@
 - [Python](batch-python-tutorial.md)
 
 Ebben a cikkben megismerheti az [Azure Batch][azure_batch] alapjait és a [Batch Python][py_azure_sdk]-ügyfelet egy Pythonban írt kisméretű Batch-alkalmazás részletes ismertetésén keresztül. Áttekintjük, hogyan használja ez a két mintául szolgáló parancsfájl a Batch szolgáltatást párhuzamos számítási feladat feldolgozásához Linux virtuális gépeken a felhőben, valamint hogyan használják az [Azure Storage-ot](./../storage/storage-introduction.md) a fájlok előkészítéséhez és lekéréséhez. Megismerheti a Batch-alkalmazások általános munkafolyamatát, és a Batch fő összetevőivel, például a tevékenységekkel, feladatokkal, készletekkel és számítási csomópontokkal kapcsolatos alapvető ismereteket is elsajátíthatja.
-
-> [AZURE.NOTE] A Batch Linux-támogatása jelenleg előzetes verzióban üzemel. A szolgáltatás néhány itt tárgyalt szempontja változhat a nyilvános rendelkezésre állás előtt. Az [alkalmazáscsomagok](batch-application-packages.md) **jelenleg nem támogatottak** a linuxos számítási csomópontokon.
 
 ![Batch-megoldás munkafolyamata (alapszintű)][11]<br/>
 
@@ -680,6 +679,6 @@ Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch sz
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

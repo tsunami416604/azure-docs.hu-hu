@@ -16,6 +16,7 @@
    ms.date="07/28/2016"
    ms.author="narayan" />
 
+
 # Társviszony létesítése virtuális hálózatok között
 
 A virtuális hálózatok közötti társviszony olyan technikai lehetőség, amellyel az Azure gerinchálózatán keresztül összekapcsolható két – azonos régión belüli – virtuális hálózat. A társviszony kialakítását követően a két virtuális hálózat a csatlakozás minden szempontjából egyetlen hálózatnak látszik. A kezelésük továbbra is külön erőforrásként történik, de az ezekbe a virtuális hálózatokba tartozó virtuális gépek közvetlenül, magánhálózati IP-címekkel kommunikálhatnak egymással.
@@ -90,6 +91,6 @@ Az előzetes verzió idején ingyen lehet virtuális társhálózati viszonyt ki
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

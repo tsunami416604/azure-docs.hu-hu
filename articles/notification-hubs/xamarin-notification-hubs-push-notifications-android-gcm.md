@@ -16,6 +16,7 @@
     ms.date="06/29/2016"
     ms.author="wesmc"/>
 
+
 # Ismerkedés a Notification Hubs Xamarin Android-alkalmazásokkal való használatával
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -522,6 +523,6 @@ Ebben az egyszerű példában értesítéseket küldött az összes Android-eszk
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

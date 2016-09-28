@@ -16,6 +16,7 @@
     ms.date="08/03/2016"
     ms.author="tomfitz"/>
 
+
 # Azure Resource Manager-sablonok exportálása létező erőforrásokból
 
 A Resource Manager lehetővé teszi az előfizetéshez tartozó meglévő erőforrások Resource Manager-sablonjainak exportálását. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését.
@@ -306,6 +307,6 @@ Gratulálunk! Megtanulta, hogyan exportálhat sablonokat a portálon létrehozot
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

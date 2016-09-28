@@ -17,6 +17,7 @@
  ms.date="08/17/2016"
  ms.author="araguila"/>
 
+
 # A prediktív karbantartási előre konfigurált megoldás bemutatója
 
 ## Bevezetés
@@ -135,6 +136,6 @@ Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltat�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -19,7 +19,6 @@ Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futta
 
     ![](./media/mobile-services-javascript-backend-run-app/mobile-data-browse.png)
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

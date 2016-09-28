@@ -16,6 +16,7 @@
     ms.date="07/06/2016" 
     ms.author="raynew"/>
 
+
 # Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 
 
@@ -152,6 +153,6 @@ A Site Recovery segítségével a következőkkel védheti SAP üzemelő példá
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

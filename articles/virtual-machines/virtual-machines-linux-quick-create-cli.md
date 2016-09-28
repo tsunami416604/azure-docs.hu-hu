@@ -17,6 +17,7 @@
    ms.author="v-livech"/>
 
 
+
 # Linux virtuális gép létrehozása az Azure-ban a parancssori felülettel
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépet (VM) az Azure-ban az Azure parancssori felület (CLI) `azure vm quick-create` parancsának használatával. A `quick-create` parancs egy alapvető, biztonságos infrastruktúrában lévő virtuális gépet helyez üzembe, amelyet prototípusként vagy egy elgondolás gyors teszteléséhez használhat. A cikkben foglaltak végrehajtásához
@@ -207,6 +208,6 @@ Az `azure vm quick-create` parancs a virtuális gépek gyors üzembe helyezésé
 
 
 
-<!--HONumber=sep12_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

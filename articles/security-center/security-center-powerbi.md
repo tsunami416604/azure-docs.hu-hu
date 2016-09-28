@@ -13,8 +13,9 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/11/2016"
+   ms.date="09/22/2016"
    ms.author="yurid"/>
+
 
 # Mélyebb betekintés az Azure Security Center adataiba a Power BI segítségével
 Az Azure Security Center [Power BI irányítópultja](http://aka.ms/azure-security-center-power-bi) lehetővé teszi a javaslatok és biztonsági riasztások megjelenítését, elemzését és szűrését bárhonnan, akár a mobileszközökről is. A Power BI irányítópult segítségével feltárhatja a trendeket és támadási mintákat - tekintse meg a biztonsági riasztásokat az erőforrás vagy a forrás IP-címe szerint, a cím nélküli biztonsági kockázatokat pedig erőforrás vagy kor szerint. 
@@ -26,7 +27,7 @@ Az Azure Security Center irányítópultjának használatával is elérheti a Po
 
 1. Az **Azure Security Center** irányítópultján kattintson a **Power BI: böngészés** gombra.
 
-    ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-new1.png) 
+    ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-new10.png) 
 
 2. A **Kezelés a Power BI-ban** panel a jobb oldalon nyílik meg, ahogy az alábbi képernyőn látható:
 
@@ -117,6 +118,6 @@ Ebben a dokumentumban megismerkedhetett az Azure Security Center Power BI irány
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

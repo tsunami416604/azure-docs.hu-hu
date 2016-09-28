@@ -18,6 +18,7 @@
    ms.date="05/18/2016"
    ms.author="vybavar"/>
 
+
 # Bevezetés a magánsablonok használatába az Azure portálon
 
 Az [Azure Resource Manager](../resource-group-authoring-templates.md) sablonjai olyan deklaratív sablonok, amelyek az üzemelő példány definiálására használatosak. Meghatározhatja az adott megoldáshoz üzembe helyezendő erőforrásokat, valamint megadhatja azokat a paramétereket és változókat, amelyek segítségével beviheti a különböző környezetekhez tartozó értékeket. A sablon JSON-okból és kifejezésekből áll, amelyek segítségével kialakíthatja az üzemelő példány értékeit.
@@ -136,6 +137,6 @@ Kattintson a **Kijelölés**, majd az **OK** gombra. A megjelenő képernyőn l�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

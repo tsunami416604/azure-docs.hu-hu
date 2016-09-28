@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/21/2016"
-    ms.author="curtand;viviali"/>
+    ms.date="09/22/2016"
+    ms.author="curtand"/>
+
 
 # Új felhasználók vagy Microsoft-fiókkal rendelkező felhasználók hozzáadása az Azure Active Directoryhoz
 
@@ -88,6 +89,6 @@ Ezután szerkesztheti a vendégfelhasználók hozzáférés-vezérlésének lehe
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

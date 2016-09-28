@@ -16,6 +16,7 @@
     ms.date="08/31/2016" 
     ms.author="sethm"/>
 
+
 # Azure Service Bus
 
 Függetlenül attól, hogy egy alkalmazás vagy szolgáltatás a felhőben vagy a helyszínen fut, gyakran kell más alkalmazásokkal vagy szolgáltatásokkal interakcióba lépnie. A Microsoft Azure ehhez a Service Bus révén kínál széles körben használható megoldást. Ez a cikk ezt a technológiát mutatja be, ismerteti, hogy mi is ez pontosan, és miért érdemes használnia.
@@ -122,6 +123,6 @@ Most, hogy megismerte az Azure Service Bus alapjait, az alábbi hivatkozásokat 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

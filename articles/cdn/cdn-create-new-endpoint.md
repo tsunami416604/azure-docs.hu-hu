@@ -15,6 +15,7 @@
      ms.date="07/28/2016" 
      ms.author="casoper"/>
 
+
 # Az Azure CDN szolgáltatás használata  
 
 Ez a témakör egy új CDN-profil és -végpont létrehozásán keresztül vezeti Önt végig az Azure CDN aktiválásán.
@@ -99,6 +100,6 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

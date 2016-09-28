@@ -16,6 +16,7 @@
     ms.date="07/06/2016"
     ms.author="maheshu"/>
 
+
 # Azure AD tartományi szolgáltatások *(előzetes kiadás)* – Az Azure virtuális hálózat DNS-beállításainak frissítése
 
 ## 4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése
@@ -53,6 +54,6 @@ A következő konfigurációs feladat a [jelszavak szinkronizálásának engedé
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

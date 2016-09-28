@@ -16,6 +16,7 @@
     ms.date="08/19/2016"
     ms.author="piyushjo" />
 
+
 # Azure Mobile Engagement – fogalmak
 
 A Mobile Engagement néhány általános, minden támogatott platform esetén érvényes fogalmat használ. Ez a cikk röviden ismerteti ezen fogalmakat.
@@ -87,6 +88,6 @@ A kulcs/érték párok teljes fájának tárolása JSON-objektumként történik
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

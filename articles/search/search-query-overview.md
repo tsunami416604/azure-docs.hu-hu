@@ -15,6 +15,7 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
+
 # Az Azure Search-index lekérdezése
 > [AZURE.SELECTOR]
 - [Áttekintés](search-query-overview.md)
@@ -60,6 +61,6 @@ Az Azure Search szolgáltatás `highlight`, `highlightPreTag` és `highlightPost
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

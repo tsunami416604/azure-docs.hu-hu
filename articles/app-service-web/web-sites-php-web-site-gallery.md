@@ -16,6 +16,7 @@
     ms.date="08/11/2016"
     ms.author="robmcm"/>
 
+
 # WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban
 
 [AZURE.INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
@@ -130,6 +131,6 @@ Az App Service Web Apps használatával kapcsolatos további információért l�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

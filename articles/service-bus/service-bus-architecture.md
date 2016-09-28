@@ -15,6 +15,7 @@
     ms.date="07/11/2016"
     ms.author="sethm" />
 
+
 # Service Bus-architektúra
 
 Ez a cikk ismerteti az Azure Service Bus üzenet- és továbbításfeldolgozási architektúráját.
@@ -61,6 +62,6 @@ Most, hogy elolvasta a Service Bus architektúrájának áttekintését, a kezd�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

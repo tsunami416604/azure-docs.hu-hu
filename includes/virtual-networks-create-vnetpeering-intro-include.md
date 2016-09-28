@@ -7,7 +7,6 @@ A virtuális hálózatok közötti társviszony-létesítés jelenleg nyilvános
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
  
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

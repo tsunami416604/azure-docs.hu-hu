@@ -17,6 +17,7 @@
     ms.author="juliako"/>
 
 
+
 # Igény szerinti tartalomtovábbítás az Azure Portal használatával
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -234,6 +235,6 @@ Tekintse át a Media Services képzési terveket.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

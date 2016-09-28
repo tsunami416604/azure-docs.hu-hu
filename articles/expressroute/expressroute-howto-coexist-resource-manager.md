@@ -16,6 +16,7 @@
    ms.date="07/19/2016"
    ms.author="charleywen"/>
 
+
 # ExpressRoute- és helyek közötti egyidejű kapcsolatok konfigurálása a Resource Manager-alapú üzemi modellben
 
 > [AZURE.SELECTOR]
@@ -196,6 +197,6 @@ További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakor
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

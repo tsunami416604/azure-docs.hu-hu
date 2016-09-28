@@ -19,7 +19,6 @@ Ebben a szakaszban tesztelni fogja az új alkalmazást a helyileg futó mobilszo
 
     Ez egy POST kérést küld a helyi mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek az alkalmazás második oszlopában jelennek meg.
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

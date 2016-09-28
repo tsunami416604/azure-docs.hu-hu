@@ -16,6 +16,7 @@
  ms.date="07/19/2016"
  ms.author="dobett"/>
 
+
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## Következő lépések
@@ -38,6 +39,6 @@ Az [Azure IoT Suite][lnk-iot-suite] is hasznos lehet, amely egy előre konfigur�
 [lnk-device-management]: iot-hub-device-management-overview.md
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

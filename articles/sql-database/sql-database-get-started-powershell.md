@@ -17,6 +17,7 @@
     ms.date="08/19/2016"
     ms.author="sstein"/>
 
+
 # SQL-adatbázis létrehozása és általános adatbázis-beállítási feladatok elvégzése PowerShell-parancsmagokkal
 
 
@@ -142,6 +143,6 @@ Az SQL-adatbázis létrehozása és az általános adatbázis-beállítási fela
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

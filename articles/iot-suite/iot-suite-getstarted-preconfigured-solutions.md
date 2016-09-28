@@ -17,6 +17,7 @@
      ms.date="08/16/2016"
      ms.author="dobett"/>
 
+
 # Oktatóprogram: Az előre konfigurált megoldások bemutatása
 
 ## Bevezetés
@@ -251,6 +252,6 @@ Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a kö
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -16,6 +16,7 @@
    ms.date="08/15/2016"
    ms.author="elizapo"/>
 
+
 # OneDrive Vállalati verzió és Azure RemoteApp
 
 > [AZURE.IMPORTANT]
@@ -26,6 +27,6 @@ A OneDrive Vállalati verzió szinkronizálási ügynökének használatát az A
 A OneDrive Vállalati verzióját hozzáadhatja az Office 365-tel használt gyűjteményhez. 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

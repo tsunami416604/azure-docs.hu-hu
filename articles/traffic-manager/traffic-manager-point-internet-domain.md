@@ -15,6 +15,7 @@
    ms.date="03/17/2016"
    ms.author="sewhee" />
 
+
 # Vállalati internetes tartomány átirányítása Azure Traffic Manager-tartományra
 
 Ahhoz, hogy a vállalata tartománynevét átirányítsa egy Traffic Manager szolgáltatásbeli tartománynévre, módosítsa az internetes DNS-kiszolgálón lévő DNS-erőforrásrekordot úgy, hogy a CNAME rekordtípust használja, amely a vállalata tartománynevét leképezi a Traffic Manager-profilja tartománynevére. A Traffic Manager tartományneve a Traffic Manager-profil Konfiguráció oldalának **Általános** részében tekinthető meg.
@@ -37,6 +38,6 @@ A rendszer ezentúl a *www.contoso.com* tartományhoz érkező összes forgalomk
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

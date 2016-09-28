@@ -16,6 +16,7 @@
    ms.date="08/25/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
+
 # SQL Data Warehouse létrehozása PowerShell használatával
 
 > [AZURE.SELECTOR]
@@ -27,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan hozható létre az SQL Data Warehouse a Po
 
 ## Előfeltételek
 
-Az oktatóanyag megkezdéséhez az alábbiak szükségesek:
+A kezdéshez a következők szükségesek:
 
 - **Azure-fiók**: A fiók létrehozásával kapcsolatban lásd: [Ingyenes Azure-fiók létrehozása][] vagy [Havi Azure-kredit a Visual Studio-előfizetőknek][].
 - **Azure SQL-kiszolgáló**: További részletes információ: [Create an Azure SQL Database logical server with the Azure Portal][] vagy [Azure SQL Database logikai kiszolgáló létrehozása a PowerShell használatával][].
@@ -109,6 +110,6 @@ Ha érdekli az SQL Data Warehouse programozott módon való kezelése, tekintse 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

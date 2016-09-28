@@ -29,7 +29,6 @@ Befejezte az eszköz konfigurálását.
 
 A StorSimple-kötet biztonsági mentését bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/).
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
     ms.date="08/29/2016"
     ms.author="jroth"/>
 
+
 # Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés
 
 Ez a témakör az SQL Server Azure virtuális gépeken történő futtatásának lehetőségeit írja le, [hivatkozásokat tartalmaz a portálon elérhető rendszerképekhez](#option-1-deploy-a-sql-vm-per-minute-licensing), valamint tartalmazza a [gyakori feladatok](#manage-your-sql-vm) áttekintését.
@@ -96,6 +97,6 @@ További kérdései vannak? Először tekintse át [Az SQL Server használatána
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

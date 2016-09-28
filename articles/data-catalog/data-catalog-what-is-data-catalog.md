@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/26/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
+
 
 # Mi az az Azure Data Catalog?
 
@@ -76,6 +77,6 @@ A Data Catalog képességeinek bővebb megismeréséhez lásd a következő tém
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
     ms.author="piyushjo"/>
 
 
+
 # Azure Mobile Engagement-alkalmazás létrehozása
 
 Ez a cikk bemutatja, hogyan használható a **Gyors létrehozás** módszer új **Azure Mobile Engagement**-alkalmazás létrehozására. A cikk azt is ismerteti, hogyan nyithatja meg a **Mobile Engagement** portált az alkalmazások figyelésének és kezelésének megkezdéséhez. 
@@ -50,6 +51,6 @@ Miután belépett a Mobile Engagement portálra, elemezheti, létrehozhatja és 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

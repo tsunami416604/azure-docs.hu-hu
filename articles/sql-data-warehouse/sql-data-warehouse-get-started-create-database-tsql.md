@@ -17,6 +17,7 @@
    ms.date="08/24/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
+
 # SQL Data Warehouse-adatbázis létrehozása a Transact-SQL (TSQL) használatával
 
 > [AZURE.SELECTOR]
@@ -85,6 +86,6 @@ Miután az SQL Data Warehouse befejezte a kiépítést, [mintaadatokat tölthet 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

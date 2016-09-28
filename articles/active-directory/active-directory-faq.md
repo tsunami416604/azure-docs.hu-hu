@@ -16,6 +16,7 @@
     ms.date="08/16/2016"
     ms.author="markusvi"/>
 
+
 # Azure Active Directory – gyakori kérdések
 
 Az Azure Active Directory egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -207,6 +208,6 @@ További információ: [A felhasználókiépítés és -megszüntetés automatiz
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

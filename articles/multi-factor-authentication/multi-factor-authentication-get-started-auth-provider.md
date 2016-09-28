@@ -1,32 +1,33 @@
-<properties 
-    pageTitle="Első lépések a Microsoft Azure Multi-Factor Auth szolgáltatóval" 
-    description="Megtudhatja, hogyan hozhat létre Azure Multi-Factor Auth szolgáltatót." 
-    services="multi-factor-authentication" 
-    documentationCenter="" 
-    authors="billmath" 
-    manager="stevenpo" 
+<properties
+    pageTitle="Első lépések a Microsoft Azure Multi-Factor Auth szolgáltatóval"
+    description="Megtudhatja, hogyan hozhat létre Azure Multi-Factor Auth szolgáltatót."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
     editor="curtand"/>
 
-<tags 
-    ms.service="multi-factor-authentication" 
-    ms.workload="identity" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/04/2016" 
-    ms.author="billmath"/>
+<tags
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
+
 
 
 
 # Első lépések az Azure Multi-Factor Auth szolgáltatóval
-A Multi-Factor Authentication alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](multi-factor-authentication-whats-next.md), az Azure MFA teljes verzióját meg kell vásárolnia. 
+A Multi-Factor Authentication alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](multi-factor-authentication-whats-next.md), az Azure MFA teljes verzióját meg kell vásárolnia.
 
-> [AZURE.NOTE]  Az Azure Multi-Factor Auth szolgáltatókkal kihasználhatja az Azure MFA teljes verziója által nyújtott szolgáltatásokat. Ez olyan felhasználóknak készült, akik **nem rendelkeznek Azure MFA, Azure AD Prémium vagy EMS licenccel**.  Az Azure MFA, az Azure AD Prémium és az EMS alapértelmezés szerint tartalmazza az Azure MFA teljes verzióját.  Ha rendelkezik licencekkel, akkor nincs szüksége Azure Multi-Factor Auth szolgáltatóra. 
+> [AZURE.NOTE]  Az Azure Multi-Factor Auth szolgáltatókkal kihasználhatja az Azure MFA teljes verziója által nyújtott szolgáltatásokat. Ez olyan felhasználóknak készült, akik **nem rendelkeznek Azure MFA, Azure AD Prémium vagy EMS licenccel**.  Az Azure MFA, az Azure AD Prémium és az EMS alapértelmezés szerint tartalmazza az Azure MFA teljes verzióját.  Ha rendelkezik licencekkel, akkor nincs szüksége Azure Multi-Factor Auth szolgáltatóra.
 
 Az SDK letöltéséhez egy Azure Multi-Factor Auth szolgáltató szükséges.
 
 > [AZURE.IMPORTANT]  Ha le szeretné tölteni az SDK-t, akkor létre kell hoznia egy Azure Multi-Factor Auth szolgáltatót, akkor is, ha rendelkezik Azure MFA, AAD Premium vagy EMS licencekkel.  Ha e célból létrehoz egy Azure Multi-Factor Auth szolgáltatót, és már rendelkezik licencekkel, akkor a szolgáltatót az **Engedélyezett felhasználónként** modellel kell létrehoznia, és össze kell kötnie azzal a könyvtárral, amely az Azure MFA, Azure AD Premium vagy EMS licenceket tartalmazza.  Így biztosítható, hogy csak akkor számlázzunk Önnek, amikor több egyedi felhasználója használja az SDK-t, mint ahány licenccel rendelkezik.
- 
+
 A következő lépésekkel hozhat létre Azure Multi-Factor Auth szolgáltatót.
 
 ## Multi-Factor Auth szolgáltató létrehozása
@@ -50,13 +51,13 @@ A következő lépésekkel hozhat létre Azure Multi-Factor Auth szolgáltatót.
     2. **Címtár** – Az Azure Active Directory-bérlő, amelyhez a többtényezős hitelesítésszolgáltató társítva van. Vegye figyelembe a következőket:
         - Nincs szüksége Azure AD-címtárra Multi-Factor Auth szolgáltató létrehozásához.  Egyszerűen hagyja üresen a mezőt, ha csak az Azure Multi-Factor Authentication-kiszolgálót vagy az SDK-t szeretne használni.
         - A Multi-Factor Auth szolgáltatót Azure AD-címtárral kell társítani a speciális szolgáltatások kihasználása érdekében.
-        - Az Azure AD Connect, az AAD Sync vagy a DirSync csak akkor követelmény, ha a helyszíni Active Directory-környezetet Azure AD-címtárral szinkronizálja.  Ha csak nem szinkronizált Azure AD-címtárat használ, akkor erre nincs szükség. 
-![MFA-szolgáltató létrehozása](./media/multi-factor-authentication-get-started-auth-provider/authprovider5.png)    
+        - Az Azure AD Connect, az AAD Sync vagy a DirSync csak akkor követelmény, ha a helyszíni Active Directory-környezetet Azure AD-címtárral szinkronizálja.  Ha csak nem szinkronizált Azure AD-címtárat használ, akkor erre nincs szükség.
+![MFA-szolgáltató létrehozása](./media/multi-factor-authentication-get-started-auth-provider/authprovider5.png)
 5. Ha a Létrehozás gombra kattint, létrejön a többtényezős hitelesítésszolgáltató, és megjelenik a következő üzenet: **Sikeresen létrejött a többtényezős hitelesítésszolgáltató**. Kattintson az **OK** gombra.
-![MFA-szolgáltató létrehozása](./media/multi-factor-authentication-get-started-auth-provider/authprovider6.png)    
+![MFA-szolgáltató létrehozása](./media/multi-factor-authentication-get-started-auth-provider/authprovider6.png)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

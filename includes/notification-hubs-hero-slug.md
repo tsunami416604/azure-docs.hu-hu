@@ -6,7 +6,6 @@ Ha már ismeri a Notification Hubs funkcióit, választhat egy témakört a bal 
 Visszajelzéseit komolyan vesszük. Ha bármilyen nehézségbe ütközik a témakör elvégzése közben, vagy javaslatai vannak, hogyan tehetjük jobbá a tartalmat, örömmel fogadjuk visszajelzéseit az oldal alján.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

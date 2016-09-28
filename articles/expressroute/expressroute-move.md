@@ -15,6 +15,7 @@
    ms.date="06/20/2016"
    ms.author="ganesr"/>
 
+
 # ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
 
 Ez a cikk azt tekinti át, hogy az Azure ExpressRoute-kapcsolatcsoportok hogyan helyezhetők át a klasszikusból az Azure Resource Manager-alapú üzemi modellbe.
@@ -112,6 +113,6 @@ Kövesse az [ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Re
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

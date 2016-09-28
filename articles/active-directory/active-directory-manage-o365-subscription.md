@@ -16,6 +16,7 @@
    ms.date="08/23/2016"
    ms.author="curtand"/>
 
+
 # Manage the directory for your Office 365 subscription in Azure (Office 365-előfizetéshez tartozó címtár kezelése az Azure-ban)
 
 Ez a cikk ismerteti, hogyan kezelheti az Office 365-előfizetéshez létrehozott címtárakat a klasszikus Azure portál használatával. Az Azure-előfizetés szolgáltatás-rendszergazdájának vagy társadminisztrátorának kell lennie, hogy bejelentkezhessen a klasszikus Azure Portalra. Ha még nem rendelkezik Azure-előfizetéssel, regisztrálhat egy [30 napos ingyenes próbaverzióra](https://azure.microsoft.com/trial/get-started-active-directory/), és kevesebb mint 5 perc alatt üzembe helyezheti az első felhőalapú megoldást ezen hivatkozás használatával. Azt a munkahelyi vagy iskolai fiókot használja, amelyet az Office 365-ba történő bejelentkezéshez használ.
@@ -63,6 +64,6 @@ Az előfizetések és a címtárak közötti kapcsolatról további információ
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

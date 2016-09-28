@@ -27,7 +27,6 @@ Felhasználhatja a Microsoft által fenntartott és a közösség számára elé
 
     ![VNet létrehozása a betekintő portálon](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

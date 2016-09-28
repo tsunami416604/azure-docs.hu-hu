@@ -16,6 +16,7 @@
     ms.date="08/17/2016"
     ms.author="magoedte"/>
 
+
 # Forgatókönyvek hitelesítése Azure-beli futtató fiókkal
 
 Ez a témakör bemutatja, hogyan lehet Automation-fiókot konfigurálni az Azure Portal webhelyről az új futtató fiók funkció használatával, amely az Azure Resource Managerben vagy az Azure Service Managerben erőforrásokat kezelő forgatókönyvek hitelesítésére szolgál.
@@ -388,6 +389,6 @@ Ha a klasszikus futtató fiókkal szeretne hitelesítést végezni a klasszikus 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

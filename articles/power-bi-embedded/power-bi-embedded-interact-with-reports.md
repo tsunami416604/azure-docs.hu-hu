@@ -3,7 +3,7 @@
    description="Power BI Embedded, jelentések kezelése a JavaScript API használatával"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="jocaplan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,8 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="08/26/2016"
-   ms.author="jocaplan"/>
+   ms.author="mblythe"/>
+
 
 # Power BI-jelentések kezelése a JavaScript API használatával
 
@@ -139,6 +140,6 @@ Az alábbi hivatkozásokra kattintva további információkhoz juthat a Power BI
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

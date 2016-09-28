@@ -16,6 +16,7 @@
     ms.date="07/21/2016"
     ms.author="glenga"/>
 
+
 # A Mobile Services használatának első lépéseit
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
@@ -93,6 +94,6 @@ Most, hogy végzett a gyors üzembe helyezéssel, megismerheti a [HTML-hez/JavaS
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

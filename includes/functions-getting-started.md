@@ -2,7 +2,6 @@ Az Azure Functions egy eseményvezérelt, számítási igények szerint működt
 
 Ez a bevezető videó bemutatja a függvényalkalmazások létrehozásának, a kódmódosításnak, valamint az eseményindítók és kötések kezelésének módját.
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

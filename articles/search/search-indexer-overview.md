@@ -4,7 +4,7 @@
     services="search"
     documentationCenter=""
     authors="HeidiSteen"
-    manager="paulettm"
+    manager="jhubbard"
     editor=""
     tags="azure-portal"/>
 
@@ -16,6 +16,7 @@
     ms.tgt_pltfrm="na"
     ms.date="08/08/2016"
     ms.author="heidist"/>
+
 
 # Indexelők az Azure Search szolgáltatásban
 > [AZURE.SELECTOR]
@@ -79,6 +80,6 @@ Az alapok megismerése után következő lépés a követelmények és az egyes 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

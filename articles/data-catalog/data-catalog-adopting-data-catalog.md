@@ -16,6 +16,7 @@
     ms.date="07/25/2016"
     ms.author="spelluru"/>
 
+
 # Az Azure Data Catalog bevezetése
 Ez a cikk segít bevezetni az **Azure Data Catalog** szolgáltatást a szervezetében. Az **Azure Data Catalog** sikeres bevezetéséhez három kulcsfontosságú dologra kell összpontosítani: a stratégiai célok kitűzésére, a fő üzleti alkalmazási esetek azonosítására és egy kísérleti projekt kiválasztására.
 
@@ -175,6 +176,6 @@ Ez a cikk arról szólt, hogyan vezetheti be az **Azure Data Catalog** szolgált
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

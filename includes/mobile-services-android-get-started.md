@@ -40,7 +40,6 @@ Az alkalmazást futtathatja emulátorral, vagy tényleges eszközön.
     ![](./media/mobile-services-android-get-started/mobile-data-browse.png)
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

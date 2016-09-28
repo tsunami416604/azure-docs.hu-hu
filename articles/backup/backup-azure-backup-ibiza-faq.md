@@ -17,6 +17,7 @@
      ms.date="08/21/2016"
      ms.author="trinadhk; markgal; jimpark;"/>
 
+
 # Recovery Services-tároló – gyakori kérdések
 
 > [AZURE.SELECTOR]
@@ -45,6 +46,6 @@ A klasszikus virtuális gépek biztonsági másolatai a Backup tárolóból nem 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

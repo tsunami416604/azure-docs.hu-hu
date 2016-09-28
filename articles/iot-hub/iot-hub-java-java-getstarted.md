@@ -16,6 +16,7 @@
      ms.date="08/11/2016"
      ms.author="dobett"/>
 
+
 # Ismerkedés az Azure IoT Hub for Java szolgáltatással
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
@@ -496,6 +497,6 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

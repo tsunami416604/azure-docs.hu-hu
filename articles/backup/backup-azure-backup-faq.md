@@ -17,6 +17,7 @@
      ms.date="08/29/2016"
      ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
 
+
 # Azure Backup szolgáltatás – GYIK
 
 > [AZURE.SELECTOR]
@@ -262,6 +263,6 @@ Sem a gyorsítótármappának, sem a metaadatok virtuális merevlemez-meghajtój
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

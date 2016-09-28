@@ -4,7 +4,6 @@
 2. Jelentkezzen be Azure hitelesítő adataival, és válassza ki a szolgáltatását az **Existing Mobile Services** (Létező mobilalkalmazások) listából. A Visual Studio közvetlenül az Azure-ból tölti le a közzétételi beállításokat. Végül kattintson a **Publish** (Közzététel) gombra.
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

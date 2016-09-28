@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="billmath"
-    manager="stevenpo"
+    manager="femila"
     editor="curtand"/>
 
 <tags
@@ -15,6 +15,7 @@
     ms.topic="get-started-article"
     ms.date="08/08/2016"
     ms.author="billmath"/>
+
 
 # Hibrid identitás: a címtár-integrációs eszközök összehasonlítása
 
@@ -98,6 +99,6 @@ További információ: [Helyszíni identitások integrálása az Azure Active Di
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

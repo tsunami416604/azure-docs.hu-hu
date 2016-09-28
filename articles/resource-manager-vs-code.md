@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/29/2016"
+   ms.date="09/26/2016"
    ms.author="chmatsk;tomfitz"/>
+
 
 # Az Azure Resource Manager-sablonok használata a Visual Studio Code kódszerkesztőben
 
@@ -138,6 +139,6 @@ Amikor a sablon elkészült, az alábbi utasítások szerint helyezheti üzembe 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

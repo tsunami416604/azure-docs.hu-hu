@@ -17,6 +17,7 @@
     ms.author="juliako"/>
 
 
+
 # Fájlok feltöltése Media Services-fiókba az Azure Portal használatával 
 
 > [AZURE.SELECTOR]
@@ -61,6 +62,6 @@ Most már kódolhatja a feltöltött adategységeket. További információ: [En
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

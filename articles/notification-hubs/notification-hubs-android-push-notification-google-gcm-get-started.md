@@ -16,6 +16,7 @@
     ms.date="07/05/2016"
     ms.author="wesmc"/>
 
+
 # Leküldéses értesítések küldése Androidra az Azure Notification Hubs használatával
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -723,12 +724,12 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [Kódtárprojekt hivatkozása]: http://go.microsoft.com/fwlink/?LinkId=389800
 [klasszikus Azure portál]: https://manage.windowsazure.com/
 [Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
-[A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-android-notify-users.md
-[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-aspnet-backend-android-breaking-news.md
+[A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
+[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -16,6 +16,7 @@
     ms.date="08/19/2016"
     ms.author="piyushjo" />
 
+
 # Ismerkedés az Azure Mobile Engagement Unity Android üzemelő példánnyal való használatával
 
 [AZURE.INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -154,6 +155,6 @@ Ellenőrizze, hogy az Android SDK telepítve van-e a gépén, mielőtt a Unity-a
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

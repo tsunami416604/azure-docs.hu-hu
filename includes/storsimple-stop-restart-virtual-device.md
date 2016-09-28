@@ -21,7 +21,6 @@ Az alábbi parancsmag segítségével indítsa újra a virtuális eszközt.
 
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

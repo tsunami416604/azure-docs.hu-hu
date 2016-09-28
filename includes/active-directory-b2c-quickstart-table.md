@@ -6,7 +6,6 @@
 |  | [Webes API-hívás .NET-webalkalmazásból](active-directory-b2c-devquickstarts-web-api-dotnet.md) |  |
 | | [Regisztráció és bejelentkezés hozzáadása egy ASP.NET-magalkalmazáshoz](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c) | |
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 
