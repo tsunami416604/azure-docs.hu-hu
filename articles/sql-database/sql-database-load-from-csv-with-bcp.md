@@ -1,7 +1,7 @@
 <properties
    pageTitle="Adatok betöltése CSV-fájlból az Azure SQL Database-be (bcp) | Microsoft Azure"
    description="Kisebb adatméret esetén a bcp segítségével importálhatja az adatokat az Azure SQL Database-be."
-   services="sql-data-warehouse"
+   services="sql-database"
    documentationCenter="NA"
    authors="CarlRabeler"
    manager="jhubbard"
@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="09/13/2016"
    ms.author="carlrab"/>
+
 
 
 # Adatok betöltése CSV-fájlból az Azure SQL Data Warehouse-ba (egybesimított fájlok)
@@ -37,12 +38,9 @@ A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letölt
 
 Ha a saját adataival próbálja használni ezt az oktatóanyagot, az adatoknak ASCII vagy UTF-16 kódolást kell használniuk, mert a bcp nem támogatja az UTF-8 formátumot. 
 
-A PolyBase támogatja az UTF-8 formátumot, de az UTF-16 formátumot még nem. Ügyeljen arra, hogy ha a bcp-t és a PolyBase-t együtt kívánja használni, az adatokat az SQL Serverből való exportálás után UTF-8 formátumra kell alakítania. 
-
-
 ## 1. Céltábla létrehozása
 
-Adjon meg egy táblát az SQL Data Warehouse-ban a betöltés céltáblájául. A tábla oszlopainak meg kell felelnie az adatfájl egyes soraiban szereplő adatoknak.
+Adjon meg egy táblát az SQL Database-ben céltáblaként. A tábla oszlopainak meg kell felelnie az adatfájl egyes soraiban szereplő adatoknak.
 
 Tábla létrehozásához nyisson meg egy parancssort, és az sqlcmd.exe segítségével futtassa a következő parancsot:
 
@@ -129,6 +127,6 @@ Az SQL Server-adatbázisok áttelepítésével kapcsolatban tekintse meg az [SQL
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

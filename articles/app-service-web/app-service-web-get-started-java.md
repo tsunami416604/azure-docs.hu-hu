@@ -18,6 +18,7 @@
     ms.author="cephalin"
 />
     
+
 # Helyezze üzembe az első Java-webalkalmazását öt perc alatt az Azure-ban
 
 Ez az oktatóanyag segítséget nyújt egy egyszerű Java-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
@@ -27,14 +28,14 @@ Az alábbiakat fogja elvégezni:
 
 - Webalkalmazás létrehozása az Azure App Service használatával.
 - Java-mintaalkalmazás üzembe helyezése.
-- A kód üzemi környezetben való futtatása.
+- A kód élőben, üzemi környezetben való futtatása.
 
 ## Előfeltételek
 
 - Szerezzen be egy FTP-/FTPS-ügyfelet, például a [FileZillát](https://filezilla-project.org/).
-- Szerezzen be egy Microsoft Azure-fiókot. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio-előfizetésével járó előnyöket](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+- Szerezzen be egy Microsoft Azure-fiókot. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
->[AZURE.NOTE] Az [App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyaadatok megadására, és nem jár semmilyen kötelezettségekkel.
+>[AZURE.NOTE] Az [App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
 <a name="create"></a>
 ## Webalkalmazás létrehozása
@@ -47,15 +48,15 @@ Az alábbiakat fogja elvégezni:
 
 3. Az alkalmazás-létrehozási panelen használja az alábbi beállításokat az új alkalmazásához:
 
-    - **Alkalmazás neve:** Írjon be egy egyedi nevet.
-    - **Erőforráscsoport:** Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
-    - **App Service-csomag/hely:** Kattintson rá a konfiguráláshoz, majd kattintson az **Új létrehozása** lehetőségre az App Service-csomag nevének, helyének és tarifacsomagjának beállításához. Nyugodtan használhatja az **Ingyenes** tarifacsomagot.
+    - **Alkalmazás neve**: Írjon be egy egyedi nevet.
+    - **Erőforráscsoport**: Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
+    - **App Service-csomag/Hely**: Kattintson rá a konfiguráláshoz, majd kattintson az **Új létrehozása** lehetőségre az App Service-csomag nevének, helyének és tarifacsomagjának beállításához. Nyugodtan használhatja az **Ingyenes** tarifacsomagot.
 
     Amikor elkészült, az alkalmazás-létrehozási panelnek az alábbihoz hasonlóan kell kinéznie:
 
     ![](./media/app-service-web-get-started-languages/create-web-app-settings.png)
 
-3. Kattintson az alul lévő **Létrehozás** parancsra. A felül lévő **Értesítés** ikonra kattintva megtekintheti a folyamat állapotát.
+3. Kattintson az alul lévő **Létrehozás** lehetőségre. A felül lévő **Értesítés** ikonra kattintva megtekintheti a folyamat állapotát.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-started.png)
 
@@ -83,7 +84,7 @@ Ideje egy Java-alkalmazást üzembe helyezni az Azure-ban az FTPS-sel.
 
 7. Térjen vissza a webalkalmazás panelére, görgessen le, vagy keressen rá az **Üzembehelyezési hitelesítő adatok** elemre, majd kattintson rá.
 
-8. Adja meg az üzembehelyezési hitelesítő adatokat, majd kattintson a **Mentés** parancsra.
+8. Adja meg az üzembehelyezési hitelesítő adatokat, majd kattintson a **Mentés** gombra.
 
 7. A webalkalmazás panelére visszatérve kattintson az **Áttekintés** elemre. Az **FTP-/üzembehelyezési felhasználónév** és az **FTPS-állomásnév** elem mellett kattintson a **Másolás** gombra az értékek másolásához.
 
@@ -107,9 +108,9 @@ Ideje egy Java-alkalmazást üzembe helyezni az Azure-ban az FTPS-sel.
 
     A fájl Azure-ban való felülírásához kattintson az **OK** gombra.
 
-    >[AZURE.NOTE] A Tomcat alapértelmezett viselkedésének megfelelően a /site/wwwroot/webapps **ROOT.war** fájlneve megadja a gyökér webalkalmazást (http://*&lt;alkalmazásnév>*.azurewebsites.net), a ***&lt;bármely_név>*.war** fájlnév pedig egy elnevezett webalkalmazást (http://*&lt;alkalmazásnév>*.azurewebsites.net/*&lt;bármely_név>*) ad meg.
+    >[AZURE.NOTE] A Tomcat alapértelmezett viselkedésének megfelelően a /site/wwwroot/webapps **ROOT.war** fájlneve megadja a gyökér webalkalmazást (http://*&lt;alkalmazásnév>*.azurewebsites.net), a ***&lt;bármely_név>*.war** fájlnév pedig egy elnevezett webalkalamzást (http://*&lt;alkalmazásnév>*.azurewebsites.net/*&lt;bármely_név>*) ad meg.
 
-És készen is van! A Java-alkalmazás mostantól élesben fut az Azure-ban. A böngészőjéből keresse fel a http://*&lt;alkalmazásnév>*.azurewebsites.net webhelyet, hogy működés közben is láthassa. 
+Ennyi az egész! A Java-alkalmazás mostantól élesben fut az Azure-ban. A böngészőjéből keresse fel a http://*&lt;alkalmazásnév>*.azurewebsites.net webhelyet, hogy működés közben láthassa. 
 
 ## Frissítések készítése az alkalmazáshoz
 
@@ -121,14 +122,14 @@ Amikor csak frissítésre van szüksége, csak töltse fel az új WAR-fájlt ugy
 
 Az Azure-webalkalmazáson elvégezheti a hibakeresést közvetlenül az [IntelliJ](app-service-web-debug-java-web-app-in-intellij.md) vagy az [Eclipse](app-service-web-debug-java-web-app-in-eclipse.md) használatával.
 
-Vagy még többet is kihozhat az első webalkalmazásából. Például:
+Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 - Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](../app-service-web/web-sites-deploy.md). Ha például az egyik GitHub-adattárból szeretné elvégezni a telepítést, egyszerűen válassza a **GitHub** lehetőséget a **Helyi git-tárház** helyett az **Üzembehelyezési lehetőségek** területen.
-- Új szintre emelheti Azure-alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti az alkalmazást. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazáshoz](app-service-web-get-started-2.md).
+- Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
 
 
 
 
-<!---HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO4-->
 
 

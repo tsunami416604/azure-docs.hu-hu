@@ -1,33 +1,51 @@
 ## Eseményközpont létrehozása
 
-1. Jelentkezzen be a [klasszikus Azure portálra][], és kattintson a **NEW** (ÚJ) lehetőségre a képernyő alján.
+1. Jelentkezzen be az [Azure Portal][], és kattintson az **Új** gombra a képernyő bal felső részén.
 
-2. Kattintson az **Alkalmazásszolgáltatások**, majd a **Service Bus**, az **Eseményközpont**, végül pedig a **Gyorslétrehozás** elemre.
+2. Kattintson az **Adatok + analitika**, majd az **Event Hubs** elemre.
 
-    ![][1]
+    ![](./media/event-hubs-create-event-hub/create-event-hub9.png)
 
-3. Adjon meg egy nevet az Eseményközpont számára, válassza ki a kívánt régiót, majd kattintson az **Új eseményközpont létrehozása** gombra.
+3. A **Névtér létrehozása** panelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
 
-    ![][2]
+    ![](./media/event-hubs-create-event-hub/create-event-hub1.png)
 
-4. Ha nem választott ki egy már létező névteret egy adott régióban, a portál létrehoz egyet (általában a következők szerint: ***eseményközpont neve*-ns**). Kattintson a névtérre (ebben a példában: **eventhub-ns**).
+4. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic vagy Standard). Valamint válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni. 
 
-    ![][3]
+2. A névtér létrehozásához kattintson a **Létrehozás** parancsra.
 
-5. Kattintson a lap alján található **Kapcsolatadatok** gombra. Kattintson (az alábbi ábrán kiemelt) másolás gombra, hogy a **RootManageSharedAccessKey** kapcsolati karakterláncot a vágólapra másolja. Mentse el ezt a kapcsolati karakterláncot a jelen oktatóprogramban való későbbi használat céljából.
+6. Az Event Hubs névtérlistájában kattintson az újonnan létrehozott névtérre.      
 
-    ![][4]
+    ![](./media/event-hubs-create-event-hub/create-event-hub2.png)
+
+7. A névtér panelen kattintson az **Event Hubs** elemre.
+
+    ![](./media/event-hubs-create-event-hub/create-event-hub3.png)
+
+8. A panel tetején kattintson az **Eseményközpont felvétele** parancsra.
+
+    ![](./media/event-hubs-create-event-hub/create-event-hub4.png)
+
+3. Adjon egy nevet az Eseményközpontnak, majd kattintson a **Létrehozás** parancsra.
+
+    ![](./media/event-hubs-create-event-hub/create-event-hub5.png)
+
+4. Az eseményközpontok listájában kattintson az újonnan létrehozott eseményközpont nevére. 
+
+    ![](./media/event-hubs-create-event-hub/create-event-hub6.png)
+
+5. Térjen vissza a névtér panelre (nem az adott eseményközpont panelére), kattintson a **Megosztott elérési házirendek**, majd a **RootManageSharedAccessKey** elemre.
+
+    ![](./media/event-hubs-create-event-hub/create-event-hub7.png)
+
+5. Kattintson a másolás gombra, hogy a **RootManageSharedAccessKey** kapcsolati karakterláncot a vágólapra másolja. Mentse el ezt a kapcsolati karakterláncot a jelen oktatóprogramban való későbbi használat céljából.
+
+    ![](./media/event-hubs-create-event-hub/create-event-hub8.png)
 
 Létrejött az Eseményközpont, és most már rendelkezik az események küldéséhez és fogadásához szükséges kapcsolati karakterlánccal.
 
-[1]: ./media/event-hubs-create-event-hub/create-event-hub1.png
-[2]: ./media/event-hubs-create-event-hub/create-event-hub2.png
-[3]: ./media/event-hubs-create-event-hub/create-event-hub3.png
-[4]: ./media/event-hubs-create-event-hub/create-conn-str1.png
+[Azure Portal]: https://portal.azure.com/
 
-[klasszikus Azure portálra]: https://manage.windowsazure.com/
-
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/30/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.date="09/06/2016"
+   ms.author="barbkess;sonyama"/>
+
 
 # Az Azure SQL Data Warehouse lekérdezése (sqlcmd)
 
@@ -32,9 +33,12 @@ Az [sqlcmd][] használatának megkezdéséhez nyissa meg a parancssort, és írj
 
 + **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
 + **Database (-d):** Az adatbázis neve.
++ **Enable Quoted Identifiers (-I):** Az SQL Data Warehouse-példányokhoz való csatlakozáshoz engedélyezni kell a határolójeles azonosítókat.
+
+Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/jelszó paramétereit:
+
 + **User (-U):** A kiszolgálói felhasználó neve `<`felhasználó formátumban.`>`
 + **Password (-P):** A felhasználóhoz tartozó jelszó.
-+ **Enable Quoted Identifiers (-I):** A SQL Data Warehouse-példányokhoz való csatlakozáshoz engedélyezni kell a határolójeles azonosítókat.
 
 A kapcsolati karakterlánc például a következőképpen nézhet ki:
 
@@ -42,7 +46,17 @@ A kapcsolati karakterlánc például a következőképpen nézhet ki:
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-> [AZURE.NOTE] Az -I kapcsoló, amely a határolójeles azonosítókat engedélyezi, jelenleg szükséges az SQL Data Warehouse-hoz való kapcsolódáshoz.
+Az Azure Active Directory beépített hitelesítés használatához meg kell adnia az Azure Active Directory paramétereit:
+
++ **Azure Active Directory Authentication (-G):** az Azure Active Directory használata a hitelesítéshez
+
+A kapcsolati karakterlánc például a következőképpen nézhet ki:
+
+```sql
+C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
+```
+
+> [AZURE.NOTE] Az Active Directory használatával történő hitelesítéshez [engedélyeznie kell az Azure Active Directory-hitelesítést](sql-data-warehouse-authentication.md).
 
 ## 2. Lekérdezés
 
@@ -81,6 +95,6 @@ Az sqlcmd-ben elérhető további lehetőségek részleteit az [sqlcmd dokument�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

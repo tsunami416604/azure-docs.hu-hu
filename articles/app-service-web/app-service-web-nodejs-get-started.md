@@ -16,6 +16,7 @@
     ms.date="07/01/2016"
     ms.author="cephalin"/>
 
+
 # Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben
 
 [AZURE.INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
@@ -58,8 +59,9 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js][NOD
 
     A böngészőben navigáljon a <http://localhost:3000> helyre, hogy meggyőződjön arról, hogy látja az Express kezdőlapot. Ha ellenőrizte, hogy az alkalmazás megfelelően fut-e, állítsa le a `Ctrl-C` segítségével.
     
-1. Jelentkezzen be az Azure-ba így (ehhez az [Azure CLI](#prereq) szükséges):
+1. Váltson ASM módra, és jelentkezzen be az Azure-ba (ehhez az [Azure CLI](#prereq) szükséges):
 
+        azure config mode asm
         azure login
 
     A felszólítást követve folytassa a böngészőbe való bejelentkezést egy Azure-előfizetéssel rendelkező Microsoft-fiókkal.
@@ -245,6 +247,6 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

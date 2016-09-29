@@ -13,8 +13,9 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="vm-windows-sql-server"
     ms.workload="infrastructure-services"
-    ms.date="06/21/2016"
+    ms.date="09/20/2016"
     ms.author="jroth" />
+
 
 # SQL Server rendszerű virtuális gép létrehozása az Azure portálon
 
@@ -125,6 +126,7 @@ Az **SQL Server beállításai** panelen konfigurálhatja az SQL Server adott be
 | [Automatikus javítás](#automated-patching) |
 | [Automatikus biztonsági mentés](#automated-backup)             |
 | [Azure Key Vault-integráció](#azure-key-vault-integration)             |
+| [R-szolgáltatások](#r-services) |
 
 ### Kapcsolatok
 Az **SQL kapcsolatok** alatt adja meg, milyen típusú hozzáférést szeretne az ezen a virtuális gépen futó SQL Server-példányhoz. A jelen oktatóanyag esetén válassza a **Nyilvános (internet)** lehetőséget, hogy az SQL Serverhez csatlakozhassanak gépek vagy szolgáltatások az interneten keresztül. Ha ezt a lehetőséget választja, az Azure automatikusan úgy konfigurálja a tűzfalat és a hálózati biztonsági csoportot, hogy az 1433-as porton engedélyezve legyen a forgalom.  
@@ -141,6 +143,8 @@ Ha nem szeretné engedélyezni az adatbázis-alrendszerhez az interneten kereszt
 - A **Magánjellegű (virtuális hálózaton belül)** beállítással az SQL Serverhez az azonos virtuális hálózaton található gépek és szolgáltatások csatlakozhatnak.
 
 Általánosságban elmondható, hogy a forgatókönyv által lehetővé tett legszigorúbb kapcsolódási korlátozás kiválasztásával növelhető a biztonság. Hálózati biztonsági csoportszabályok és SQL-/Windows-hitelesítés használatával azonban mindegyik lehetőség biztosítható.
+
+>[AZURE.NOTE] Az SQL Server Express és Developer kiadásainak virtuálisgép-rendszerképei nem engedélyezik automatikusan a TCP/IP-protokollt. Ez megakadályozza a távoli csatlakozást még akkor is, ha a portálon a Nyilvános vagy Privát lehetőségek lettek kiválasztva. Az Express és Developer kiadások esetében a virtuális gép létrehozása után az SQL Server Configuration Manager használatával, [manuálisan kell engedélyezni a TCP/IP-protokollt](virtual-machines-windows-sql-connect.md#configure-sql-server-to-listen-on-the-tcp-protocol).
 
 A **Port** alapértelmezett beállítás 1433. Megadhat eltérő portszámot is.
 További információ: [Csatlakozás SQL Server rendszerű virtuális géphez (Resource Manager) | Microsoft Azure](virtual-machines-windows-sql-connect.md).
@@ -178,7 +182,7 @@ Az **Automatikus javítás** alapértelmezés szerint engedélyezve van. Az auto
 
 ![SQL automatikus javítás](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png)
 
-További információk: [Automated Patching for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-patching.md) (Az SQL Server automatikus javítása Azure virtuális gépeken).
+További információk: [Automated Patching for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-patching.md) (Az SQL Server automatikus javítása Azure virtuális gépeken).
 
 ### Automatikus biztonsági mentés
 Az **Automatikus biztonsági mentés** területen engedélyezheti az összes adatbázis automatikus mentését. Az automatikus biztonsági mentés alapértelmezés szerint le van tiltva.
@@ -193,7 +197,7 @@ A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre.
 
 ![SQL automatikus biztonsági mentés](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
 
- További információk: [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-backup.md) (Az SQL Server automatikus biztonsági mentése Azure virtuális gépeken).
+ További információk: [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md) (Az SQL Server automatikus biztonsági mentése Azure virtuális gépeken).
 
 ### Azure Key Vault-integráció
 Ha biztonsági titkokat az Azure-ban szeretne titkosítva tárolni, kattintson az **Azure key vault integration** (Azure Key Vault-integráció) elemre, majd az **Enable** (Engedélyezés) elemre.
@@ -209,9 +213,16 @@ A következő táblázat tartalmazza az Azure Key Vault-integráció konfigurál
 | **Egyszerű titok**|Az Azure Active Directory szolgáltatás egyszerű titka. Ezt a titkot ügyféltitoknak is hívják. | 9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=|
 |**Hitelesítő adat neve**|**Hitelesítő adat neve**: Az AKV-integráció létrehoz egy hitelesítő adatot az SQL Serverben, amely hozzáférést biztosít a virtuális gépnek a Key Vaulthoz. Válasszon egy nevet ennek a hitelesítő adatnak.| mycred1|
 
-További információkért lásd: [Configure Azure Key Vault Integration for SQL Server on Azure VMs](virtual-machines-windows-classic-ps-sql-keyvault.md) Az Azure Key Vault-integráció konfigurálása az SQL Serverhez Azure virtuális gépeken.
+További információkért lásd: [Configure Azure Key Vault Integration for SQL Server on Azure VMs](virtual-machines-windows-ps-sql-keyvault.md) Az Azure Key Vault-integráció konfigurálása az SQL Serverhez Azure virtuális gépeken.
 
 Amikor végzett az SQL Server beállításainak konfigurálásával, kattintson az **OK** gombra.
+
+### R-szolgáltatások
+Az SQL Server 2016 Enterprise kiadása lehetőséget biztosít az [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) engedélyezésére. Ez lehetőséget nyújt az SQL Server 2016 továbbfejlesztett elemzéseinek használatára. Kattintson az **Engedélyezés** elemre az **SQL Server beállításai** panelen.
+
+![Az SQL Server R Services engedélyezése](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
+
+>[AZURE.NOTE] A nem 2016 Enterprise kiadású SQL Server-rendszerképek esetében az R Services engedélyezésének lehetősége le van tiltva.
 
 ## 5. Összegzés áttekintése
 Az **Összefoglalás** panelen tekintse át az összefoglalást, majd kattintson az **OK** gombra a virtuális géphez megadott SQL Server, erőforráscsoport és erőforrások létrehozásához.
@@ -257,6 +268,6 @@ Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése]
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

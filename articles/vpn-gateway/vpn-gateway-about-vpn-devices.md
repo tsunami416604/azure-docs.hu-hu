@@ -1,10 +1,10 @@
 <properties 
    pageTitle="Információk az Azure Virtual Network hálózatokhoz használható, helyek közötti VPN Gateway-kapcsolatok VPN-eszközeiről | Microsoft Azure"
-   description="Megismerkedhet a helyek közötti S2S VPN Gateway-kapcsolatok VPN-eszközeivel és IPsec paramétereivel. A helyek közötti kapcsolatok hibrid konfigurációk esetében is alkalmazhatók. A jelen cikk hivatkozásokat tartalmaz a VPN Gateway-eszközök konfigurációs utasításaihoz és mintáihoz."
+   description="Ez a cikk ismerteti a helyek közötti S2S VPN Gateway-kapcsolatok VPN-eszközeit és IPsec paramétereit, valamint hivatkozásokat tartalmaz a konfigurációs utasításokhoz és mintákhoz."
    services="vpn-gateway"
    documentationCenter="na"
-   authors="cherylmc"
-   manager="carmonm"
+   authors="yushwang"
+   manager="rossort"
    editor=""
   tags="azure-resource-manager, azure-service-management"/>
 <tags 
@@ -13,12 +13,15 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/10/2016"
-   ms.author="cherylmc" />
+   ms.date="09/13/2016"
+   ms.author="yushwang;cherylmc" />
+
 
 # Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeiről
 
-Helyek közötti (S2S) VPN-kapcsolat konfigurálásához egy VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja. Vegye figyelembe, hogy helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára nyilvános IPv4 IP-címre van szükség.                                                                                                                                                                                
+Helyek közötti (S2S) VPN-kapcsolat konfigurálásához egy VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja. 
+
+>[AZURE.NOTE] Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.                                                                                                                                                                               
 
 Ha az adott eszköz nem szerepel az [Ellenőrzött VPN-eszközök](#devicetable) táblában, tekintse meg a jelen cikk [Nem ellenőrzött VPN-eszközök](#additionaldevices) című szakaszát. Lehetséges, hogy az eszköz mégis kompatibilis az Azure-ral. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
 
@@ -26,7 +29,7 @@ Ha az adott eszköz nem szerepel az [Ellenőrzött VPN-eszközök](#devicetable)
 
 - A statikus és a dinamikus útválasztás esetében terminológiai változás történt. Nagy valószínűséggel mindkét kifejezéssel találkozni fog. A funkció nem, csak a nevek változtak.
     - Statikus útválasztás = Házirendalapú
-    - Dinamikus útválasztás = Útvonalalapú 
+    - Dinamikus útválasztás = Útvonalalapú
 - A Nagy teljesítményű és az útvonalalapú VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök az Azure Nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek. 
 
 
@@ -34,7 +37,7 @@ Ha az adott eszköz nem szerepel az [Ellenőrzött VPN-eszközök](#devicetable)
 
 Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis az Azure VPN-átjárókkal. A konfigurálni kívánt megoldáshoz létrehozandó átjárótípus ellenőrzésének lépéseit az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk ismerteti. 
 
-A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat. 
+A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
 
 
 
@@ -46,11 +49,11 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 | Brocade                         | Vyatta 5400 vRouter                                      | Virtual Router 6.6R3 GA                            | [Konfigurációs utasítások](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html)                                       | Nem kompatibilis                                                                                                                                                                                               |
 | Ellenőrzőpont                     | Biztonsági átjáró                                         | R75.40, R75.40VS                                     | [Konfigurációs utasítások](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275)                                         | [Konfigurációs utasítások](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco                           | ASA                                                      | 8.3                                                | [Cisco-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA)                                                                                                                                                                        | Nem kompatibilis                                                                                                                                                                                               |
-| Cisco                           | ASR                                                      | iOS 15.1 (házirendalapú), iOS 15.2 (útvonalalapú)                | [Cisco-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR)                                                                                                                                                                        | [Cisco-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR)                                                                                                                                 |
-| Cisco                           | ISR                                                      | iOS 15.0 (házirendalapú), iOS 15.1 (útvonalalapú*)               | [Cisco-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR)                                                                                                                                                                        | [Cisco-minták*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR)                                                                                                                                |
+| Cisco                           | ASR                                                      | IOS 15.1 (házirendalapú), IOS 15.2 (útvonalalapú)                | [Cisco-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR)                                                                                                                                                                        | [Cisco-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR)                                                                                                                                 |
+| Cisco                           | ISR                                                      | IOS 15.0 (házirendalapú), IOS 15.1 (útvonalalapú*)               | [Cisco-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR)                                                                                                                                                                        | [Cisco-minták*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR)                                                                                                                                |
 | Citrix                          | NetScaler MPX, SDX, VPX      |10.1-es vagy újabb verzió                                           | [Integrációs utasítások](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html)                                                                                                                                                                            | Nem kompatibilis                                                                                                                                                                                               |
 | Dell SonicWALL                  | TZ sorozat, NSA sorozat, SuperMassive sorozat, E-Class NSA sorozat | SonicOS 5.8.x, [SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850), [SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646 )          | [Utasítások – SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Utasítások – SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850)                                                                                                                                   | [Utasítások – SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Utasítások – SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850)                                                                                                                                                                                      |
-| F5                              | BIG-IP sorozat                                            | N/A                                                | [Konfigurációs utasítások](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip)                                                                                                                                                                          | Nem kompatibilis                                                                                                                                                                                               |
+| F5                              | BIG-IP sorozat                                 |           12.0                                            | [Konfigurációs utasítások](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip)                                                                                                                                                                          | [Konfigurációs utasítások](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling)                                                                                                                                                                                         |
 | Fortinet                        | FortiGate                                                | FortiOS 5.2.7                                      | [Konfigurációs utasítások](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure)                                                                                                                                                                          | [Konfigurációs utasítások](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure)                                                                                                                                  |
 | Internet Initiative Japan (IIJ) | SEIL sorozat                                              | SEIL/X 4.60, SEIL/B1 4.60, SEIL/x86 3.20            | [Konfigurációs utasítások](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf)                                                                                                                                                                   | Nem kompatibilis                                                                                                                                                                                               |
 | Juniper                         | SRX                                                      | JunOS 10.2 (házirendalapú), JunOS 11.4 (útvonalalapú)            | [Juniper-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX)                                                                                                                                                                      | [Juniper-minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX)                                                                                                                              |
@@ -120,8 +123,10 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | 2. fázisú biztonsági társítás (SA) Élettartam (idő)                        | 3 600 másodperc                                  | 3 600 másodperc                                                                  |
 | 2. fázisú biztonsági társítás (SA) Élettartam (teljesítmény)                  | 102 400 000 kB                                 | -                                                                  |
 | IPsec SA titkosítási és hitelesítési ajánlatok (sorrendben) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/A | Lásd: *Útvonalalapú átjárókra vonatkozó IPsec-biztonsági társítási (SA) ajánlatok* (alább) |
-| Sérülés utáni titkosságvédelem (PFS)                                            | Nem                                             | Igen (1., 2., 5., 14., 24. DH-csoport)                                                    |
+| Sérülés utáni titkosságvédelem (PFS)                                            | Nem                                             | Nem (*)|
 | Kapcsolat megszakadásának észlelése                                                      | Nem támogatott                                  | Támogatott                                                          |
+
+(*) az IKE-válaszadóként szolgáló Azure-átjáró az 1., 2., 5., 14., 24. PFS DH-csoportokat fogadja el.
 
 ### Útvonalalapú átjárókra vonatkozó IPsec-biztonsági társítási (SA) ajánlatok
 
@@ -146,7 +151,7 @@ Az alábbi táblázat felsorolja az IPsec SA titkosítási és hitelesítési aj
 | 15                                                | AH SHA1, ESP DES SHA1-gyel, nincs élettartam                      | ESP SHA, nincs élettartam                                        |
 | 16                                                | AH MD5, ESP DES MD5-tel, nincs élettartam                       | ESP MD5, nincs élettartam                                        |
 | 17                                                | -                                                            | AH SHA, nincs élettartam                                         |
-| 18                                                | -                                                            | AH MD5, nincs élettartam                                         |
+| 18                                                | -                                                            | AH MD5, nincs élettartam                                        |
 
 
 - Az IPsec ESP NULL titkosítás útvonalalapú és Nagy teljesítményű VPN-átjárók segítségével adható meg. A nullalapú titkosítás nem biztosít védelmet az adatok számára az átvitel során, ezért használata csak abban az esetben indokolt, ha maximális átviteli sebességre és minimális késleltetésre van szükség.  Az ügyfelek virtuális hálózatok közötti kapcsolatoknál dönthetnek ennek használata mellett, vagy ha más helyen a rendszer titkosítást alkalmaz.
@@ -160,6 +165,6 @@ Az alábbi táblázat felsorolja az IPsec SA titkosítási és hitelesítési aj
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/10/2016"
-   ms.author="ryanwi"/>
+   ms.date="09/09/2016"
+   ms.author="ryanwi;mikhegn"/>
+
 
 # A helyi fürtön lévő alkalmazások üzembe helyezésének és frissítésének elsajátítása
 Az Azure Service Fabric SDK teljes helyi fejlesztőkörnyezetet tartalmaz, amely segítségével gyorsan megismerkedhet a helyi fürtön lévő alkalmazások üzembe helyezésével és kezelésével. Ebben a cikkben létrehoz egy helyi fürtöt, üzembe helyez rajta egy meglévő alkalmazást, majd új verzióra frissíti, és mindezt a Windows PowerShellből fogja elvégezni.
@@ -193,7 +194,37 @@ A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. Az alka
 
 3. A fürt leállításához, ugyanakkor az alkalmazás adatainak és nyomkövetéseinek megtartásához a rendszertálca alkalmazásban kattintson a **Stop Local Cluster** (Helyi fürt leállítása) parancsra.
 
-4. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Vegye figyelembe, hogy ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A helyi fürtöt csak abban az esetben távolítsa el, ha egy ideig nem kívánja azt használni, vagy ha erőforrásokat kíván felszabadítani.
+4. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A helyi fürtöt csak abban az esetben távolítsa el, ha egy ideig nem kívánja azt használni, vagy ha erőforrásokat kíván felszabadítani.
+
+## 1 csomópontos és 5 csomópontos fürt üzemmód
+
+Amikor az alkalmazások fejlesztéséhez a helyi fürtöt használja, gyakran elvégzi a következő műveletsorok gyors ismétlését: kódírás, hibakeresés, kódmódosítás, hibakeresés stb. A folyamat optimalizálása érdekében a helyi fürt két üzemmódban futtatható: 1 csomópontos vagy 5 csomópontos üzemmódban. Mindkét fürt üzemmódnak megvannak az előnyei.
+Az 5 csomópontos fürt üzemmód lehetővé teszi egy valós fürt használatát. Tesztelheti a feladatátvételi forgatókönyveket, a szolgáltatások több példányát és replikáját használhatja.
+Az 1 csomópontos fürt üzemmód a szolgáltatások gyors üzembe helyezésére és regisztrációjára van optimalizálva, és segít a Service Fabric futtatókörnyezetével történő gyors kódérvényesítésben.
+
+Sem az 1 csomópontos, sem az 5 csomópontos fürt üzemmód nem emulátor vagy szimulátor. Ugyanazt a platformkódot futtatja, mint ami a több számítógépes fürtökön található.
+
+> [AZURE.NOTE] Ez a funkció csak az SDK 5.2-es vagy újabb verziójában érhető el.
+
+Ha a fürt üzemmódot 1 csomópontos fürtre szeretné módosítani, használja a Service Fabric Local Cluster Manager vagy a PowerShell alkalmazást a következő módon:
+
+1. Nyisson meg egy új PowerShell-ablakot rendszergazdaként.
+
+2. Futtassa a fürtbeállítási parancsfájlt az SDK-mappából:
+
+    ```powershell
+    & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
+    ```
+
+    A fürt beállítása hosszabb időt vehet igénybe. A beállítást követően a következőhöz hasonló kimenetnek kell megjelennie:
+    
+    ![A fürtbeállítás kimenete][cluster-setup-success-1-node]
+
+Ha a Service Fabric Local Cluster Managert használja:
+
+![Fürt üzemmód átkapcsolása][switch-cluster-mode]
+
+> [AZURE.WARNING] Fürt üzemmód módosításakor az aktuális fürt törlődik a rendszerből, és új fürt jön létre. Fürt üzemmód módosításakor a fürtben tárolt adatok törlődnek.
 
 ## Következő lépések
 - Most, hogy már üzembe helyezett és frissített néhány előre létrehozott alkalmazást, [megpróbálhatja felépíteni a saját alkalmazását a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md).
@@ -217,9 +248,11 @@ A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. Az alka
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 [sfe-delete-application]: ./media/service-fabric-get-started-with-a-local-cluster/sfe-delete-application.png
+[cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
+[switch-cluster-mode]: ./media/service-fabric-get-started-with-a-local-cluster/switch-cluster-mode.png
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

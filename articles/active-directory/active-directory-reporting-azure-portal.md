@@ -1,0 +1,225 @@
+<properties
+   pageTitle="Jelentéskészítés az Azure Active Directory előzetes kiadásában | Microsoft Azure"
+   description="Ez a dokumentum az Azure Active Directory előzetes kiadásában elérhető különféle jelentéseket sorolja fel"
+   services="active-directory"
+   documentationCenter=""
+   authors="markusvi"
+   manager="femila"
+   editor=""/>
+
+<tags
+   ms.service="active-directory"
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="09/12/2016"
+   ms.author="markvi"/>
+
+
+# Jelentéskészítés az Azure Active Directory előzetes kiadásában
+
+*Ez a dokumentáció az [Azure Active Directory Reporting-útmutató](active-directory-reporting-guide.md) része.*
+
+Az Azure Active Directory előzetes kiadásában elérhető jelentéskészítéssel minden szükséges információhoz hozzájuthat a környezetével kapcsolatban. [Mit tartalmaz az előzetes kiadás?](active-directory-preview-explainer.md)
+
+A jelentéskészítés két fő területe:
+
+- **Bejelentkezési tevékenységek** – A felügyelt alkalmazások használatával és a felhasználók bejelentkezési tevékenységeivel kapcsolatos információk
+
+- **Rendszertevékenységek** – A felhasználó- és csoportfelügyelet, valamint a felügyelt alkalmazások és a címtártevékenységek naplózási információi
+
+A keresett adatok hatókörétől függően a jelentésekhez úgy férhet hozzá, ha a **Felhasználók és csoportok** vagy a **Vállalati alkalmazások** elemre kattint az [Azure Portal](https://portal.azure.com) szolgáltatáslistájában.
+
+## Bejelentkezési tevékenységek
+
+### Felhasználók bejelentkezési tevékenységei
+
+A felhasználók bejelentkezési jelentésében szereplő információkból az alábbi kérdésekre kaphat választ:
+
+- Milyen egy adott felhasználó bejelentkezési mintázata?
+- Hány felhasználó jelentkezett be egy adott héten?
+- Milyen állapotúak ezek a bejelentkezések?
+
+Az adatok megtekintését a felhasználók bejelentkezési grafikonjával kezdheti, amely az **Áttekintés** szakaszban, a **Felhasználók és csoportok** területen.
+
+ ![Jelentéskészítés](./media/active-directory-reporting-azure-portal/05.png "Reporting")
+
+A felhasználók bejelentkezési grafikonja az összes felhasználó bejelentkezéseinek összesítését ábrázolja egy adott időszakban. Az alapértelmezett időszak 30 nap.
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/02.png "Reporting")
+
+A bejelentkezési grafikon egyik napjára kattintva részletes listát kap a bejelentkezési tevékenységekről.
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/03.png "Reporting")
+
+A bejelentkezési tevékenységek listájának minden sora részletes információkat tartalmaz a kijelölt bejelentkezésről:
+
+- Ki jelentkezett be?
+
+- Mi volt a kapcsolódó egyszerű felhasználónév?
+
+- Melyik alkalmazás volt a bejelentkezés célja?
+
+- Mi a bejelentkezéshez tartozó IP-cím?
+
+- Mi volt a bejelentkezés állapota?
+
+### Felügyelt alkalmazások használati adatai
+
+A bejelentkezési információk alkalmazás-központú nézetével az alábbi kérdésekre kaphat választ:
+
+- Ki használja az alkalmazásaimat?
+
+- Melyik a szervezet 3 legnépszerűbb alkalmazása?
+
+- Nemrégiben új alkalmazást adtam ki. Mennyire sikeres?
+
+
+Az adatok megtekintését a szervezet az elmúlt 30 nap alatt legnépszerűbb 3 alkalmazásáról szóló jelentéssel kezdheti az **Áttekintés** szakaszban, a **Vállalati alkalmazások** területen.
+
+ ![Jelentéskészítés](./media/active-directory-reporting-azure-portal/06.png "Reporting")
+
+
+A 3 legnépszerűbb alkalmazásba való bejelentkezések heti összesítő grafikonja egy adott időszak során. Az alapértelmezett időszak 30 nap.
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/78.png "Reporting")
+
+Igény esetén egy adott alkalmazást is kiemelhet.
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/single_spp_usage_graph.png "Reporting")
+
+
+Az alkalmazáshasználati grafikon egyik napjára kattintva részletes listát kap a bejelentkezési tevékenységekről.
+
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/top_app_sign_ins.png "Reporting")
+
+
+
+A **Bejelentkezések** lehetőség az alkalmazások összes bejelentkezési eseményének teljes körű áttekintését biztosítja.
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/85.png "Reporting")
+
+Az oszlopválasztóval kiválaszthatja a megjelenítendő adatmezőket.
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/column_chooser.png "Reporting")
+
+
+
+### Bejelentkezések szűrése
+
+A megjelenített adatok korlátozása érdekében időintervallum szerint szűrheti a bejelentkezéseket.
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/927.png "Reporting")
+
+
+A bejelentkezési tevékenységek bejegyzéseit konkrét bejegyzések keresésével is szűrheti.
+Ezzel a keresési módszerrel konkrét **felhasználókra**, **csoportokra** vagy **alkalmazásokra** szűkítheti a bejelentkezések hatókörét.
+
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/84.png "Reporting")
+
+## Rendszertevékenységek
+
+Az Azure Active Directory naplói a rendszertevékenységek rekordjait tartalmazzák megfelelőségi célokból.
+
+Az Azure Portalon három fő kategóriája van a kapcsolódó tevékenységek naplózásának:
+
+- Felhasználók és csoportok   
+
+- Alkalmazások
+
+- Címtár   
+
+
+A naplózási jelentési tevékenységek teljes listáját [a naplózási jelentési események listájában](active-directory-reporting-audit-events.md#list-of-audit-report-events) tekintheti meg.
+
+
+A naplózási adatok áttekintését a **Naplók** használatával kezdheti meg, az **Azure Active Directory** **Műveletek** szakaszában található.
+
+
+![Naplózás](./media/active-directory-reporting-azure-portal/61.png "Auditing")
+
+
+Az auditnapló olyan listanézetet is tartalmaz, amely az aktorokat (ki), a tevékenységeket (mit) és a célokat is megjeleníti.
+
+
+![Naplózás](./media/active-directory-reporting-azure-portal/345.png "Auditing")
+
+
+Részletes információk a listanézet elemeire kattintva érhetők el.
+
+![Naplózás](./media/active-directory-reporting-azure-portal/873.png "Auditing")
+
+
+
+
+### Felhasználók és csoportok auditnaplói
+
+
+A felhasználó- és csoportalapú naplózási jelentésekkel az alábbi kérdésekre kaphat választ:
+
+- Milyen típusú frissítéseket telepítettek a felhasználók?
+
+- Hány felhasználó lett módosítva?
+
+- Hány jelszó lett módosítva?
+
+- Mit csinált a rendszergazda egy adott címtárban?
+
+- Mely csoportok lettek hozzáadva?
+
+- Történt-e tagsági változás valamelyik csoportban?
+
+- Változtak-e a csoportok tulajdonosai?
+
+- Milyen licencek lettek hozzárendelve egy adott csoporthoz vagy felhasználóhoz?
+
+
+Ha csak át szeretné tekinteni a felhasználókhoz és csoportokhoz kapcsolódó naplózási adatokat, megnyithat egy szűrt nézetet az **Auditnaplók** menüpontból, amely a **Felhasználók és csoportok** **Tevékenység** szakaszában található.
+
+
+![Naplózás](./media/active-directory-reporting-azure-portal/93.png "Auditing")
+
+
+### Alkalmazások auditnaplói
+
+Az alkalmazásalapú naplózási jelentésekkel az alábbi kérdésekre kaphat választ:
+
+- Mely alkalmazások lettek hozzáadva vagy frissítve?
+
+- Mely alkalmazások lettek eltávolítva?
+
+- Megváltozott valamelyik alkalmazás egyszerű szolgáltatásneve?
+
+- Történt változás az alkalmazások nevében?
+
+- Ki hagyott jóvá egy adott alkalmazást?
+
+
+Ha csak át szeretné tekinteni az alkalmazásokhoz kapcsolódó naplózási adatokat, megnyithat egy szűrt nézetet az **Auditnaplók** menüpontból, amely a **Vállalati alkalmazások** **Tevékenység** szakaszában található.
+
+
+![Naplózás](./media/active-directory-reporting-azure-portal/134.png "Auditing")
+
+
+### Auditnaplók szűrése
+
+A megjelenített adatok korlátozása érdekében időintervallum szerint szűrheti az auditnaplókat.
+
+![Naplózás](./media/active-directory-reporting-azure-portal/324.png "Auditing")
+
+Az auditnaplók bejegyzéseit konkrét bejegyzések keresésével is szűrheti.
+
+![Naplózás](./media/active-directory-reporting-azure-portal/237.png "Auditing")
+
+## Következő lépések
+
+Lásd az [Azure Active Directory Reporting-útmutatót](active-directory-reporting-guide.md).
+
+
+
+<!--HONumber=Sep16_HO4-->
+
+

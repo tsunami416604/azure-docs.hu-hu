@@ -12,8 +12,9 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/09/2016"
    ms.author="gwallace"/>
+
 
 # Application Gateway konfigurálása SSL-alapú kiszervezéshez az Azure Resource Manager használatával
 
@@ -44,14 +45,14 @@
 
 Az SSL-tanúsítványok konfigurálásához *Https*-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Az **SslCertificate** elemet hozzá kell adni a **HttpListener** elemhez az SSL-tanúsítvány számára konfigurált változóértékkel. Az előtérbeli portot frissíteni kell 443-ra.
 
-**A cookie-alapú affinitás engedélyezése**: Egy Application Gateway konfigurálható úgy, hogy egy ügyfélmunkamenetből érkező kérelmet mindig a webfarm ugyanazon virtuális gépére irányítsa. Ez egy munkameneti cookie beszúrásával történik, amely lehetővé teszi az átjáró számára a forgalom megfelelő irányítását. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen *Enabled* a **BackendHttpSettings** elemen belül.
+**A cookie-alapú affinitás engedélyezése**: Egy Application Gateway konfigurálható úgy, hogy egy ügyfélmunkamenetből érkező kérelmet mindig a webfarm ugyanazon virtuális gépére irányítsa. Ez a forgatókönyv egy munkameneti cookie beszúrásával lesz végrehajtva, amely lehetővé teszi az átjáró számára a forgalom megfelelő irányítását. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen *Enabled* a **BackendHttpSettings** elemen belül.
 
 
 ## Application Gateway létrehozása
 
 A klasszikus Azure üzembe helyezési modell és az Azure Resource Manager használata abban tér el egymástól, hogy más sorrendben kell létrehoznia az Application Gateway-t és a konfigurálást igénylő elemeket.
 
-A Resource Managerrel az Application Gateway összes alkotóelemét külön kell konfigurálni, és csak utána kell őket összeállítani az Application Gateway-erőforrás létrehozásához.
+A Resource Managerrel az Application Gateway összes összetevőjét külön kell konfigurálni, és csak utána kell őket összeállítani az Application Gateway-erőforrás létrehozásához.
 
 
 Egy Application Gateway létrehozásához a következő lépéseket kell végrehajtania:
@@ -69,8 +70,6 @@ Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShe
 ### 1. lépés
 
     Login-AzureRmAccount
-
-
 
 ### 2. lépés
 
@@ -106,9 +105,10 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy virtuális hálózatot a R
 
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
-Ez hozzárendeli a 10.0.0.0/24 címtartományt a virtuális hálózat létrehozásához használni kívánt egyik alhálózati változóhoz.
+Ez a példa hozzárendeli a 10.0.0.0/24 címtartományt a virtuális hálózat létrehozásához használni kívánt egyik alhálózati változóhoz.
 
 ### 2. lépés
+
     $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 Ez létrehoz egy „appgwvnet” nevű virtuális hálózatot az „appgw-rg” erőforráscsoportban az USA nyugati régiója számára, amely a 10.0.0.0/16 előtagot használja a 10.0.0.0/24 alhálózattal.
@@ -117,13 +117,13 @@ Ez létrehoz egy „appgwvnet” nevű virtuális hálózatot az „appgw-rg” 
 
     $subnet = $vnet.Subnets[0]
 
-Ez hozzárendeli az alhálózat objektumot a $subnet változóhoz a következő lépésekre.
+Ez a példa hozzárendeli az alhálózati objektumot a $subnet változóhoz a következő lépésekhez.
 
 ## Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
 
     $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
 
-Ez létrehoz egy „publicIP01” nevű, nyilvános IP-címhez tartozó erőforrást az „appgw-rg” nevű erőforráscsoportban az USA nyugati régiója számára.
+Ez a példa egy „publicIP01” nevű, nyilvános IP-címhez tartozó erőforrást hoz létre az „appgw-rg” nevű erőforráscsoportban az USA nyugati régiója számára.
 
 
 ## Hozzon létre egy Application Gateway konfigurációs objektumot
@@ -132,13 +132,13 @@ Ez létrehoz egy „publicIP01” nevű, nyilvános IP-címhez tartozó erőforr
 
     $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
-Ez létrehoz egy „gatewayIP01” nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
+Ez a példa egy „gatewayIP01” nevű Application Gateway IP-konfigurációt hoz létre. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
 ### 2. lépés
 
     $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
-Ez a „pool01” nevű háttérbeli IP-címkészletet konfigurálja az alábbi IP-címekkel: „134.170.185.46, 134.170.188.221,134.170.185.50”. Ezek az IP-címek fogadják az előtérbeli IP-végpontból érkező hálózati forgalmat. Cserélje le a fenti példában szereplő IP-címeket a webalkalmazás végpontjainak IP-címeire.
+Ez a példa konfigurálja a „pool01” nevű háttérbeli IP-címkészletet az alábbi IP-címekkel: „134.170.185.46, 134.170.188.221, 134.170.185.50”. Ezek az értékek azok az IP-címek, amelyek fogadják majd az előtérbeli IP-végpontból érkező hálózati forgalmat. Cserélje le az előző példában szereplő IP-címeket a webalkalmazás végpontjainak IP-címeire.
 
 ### 3. lépés
 
@@ -150,13 +150,13 @@ Ez a „poolsetting01” nevű Application Gateway-beállítást konfigurálja a
 
     $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 443
 
-Ez a „frontendport01” nevű előtérbeli IP-portot konfigurálja a nyilvános IP-cím végponthoz.
+Ez a példa konfigurálja a „frontendport01” nevű előtérbeli IP-portot a nyilvános IP-címvégponthoz.
 
 ### 5. lépés
 
     $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path for certificate file> -Password ‘<password>’
 
-Ez az SSL-kapcsolathoz használt tanúsítványt konfigurálja. A tanúsítványnak .pfx formátumúnak, a jelszónak pedig 4 és 12 karakter közötti hosszúságúnak kell lennie.
+Ez a példa az SSL-kapcsolathoz használt tanúsítványt konfigurálja. A tanúsítványnak .pfx formátumúnak, a jelszónak pedig 4 és 12 karakter közötti hosszúságúnak kell lennie.
 
 ### 6. lépés
 
@@ -181,7 +181,7 @@ Ez létrehozza a „rule01” nevű terheléselosztási útválasztási szabály
 
     $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-Ez konfigurálja az Application Gateway példányméretét.
+Ez az Application Gateway példányméretét konfigurálja.
 
 >[AZURE.NOTE]  Az *InstanceCount* alapértelmezett értéke 2, a maximális értéke pedig 10. A *GatewaySize* alapértelmezett értéke Közepes. A Standard_Small, Standard_Medium és a Standard_Large lehetőségek közül választhat.
 
@@ -189,7 +189,7 @@ Ez konfigurálja az Application Gateway példányméretét.
 
     $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert
 
-Ez létrehoz egy Application Gateway-t a fenti lépések konfigurációs elemeivel. Ebben a példában az Application Gateway neve „appgwtest”.
+Ez létrehoz egy Application Gateway-t az előző lépések konfigurációs elemeivel. Ebben a példában az Application Gateway neve „appgwtest”.
 
 ## Következő lépések
 
@@ -202,6 +202,6 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

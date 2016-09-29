@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
     tags="azure-portal"/>
 
@@ -16,6 +16,7 @@
    ms.workload="big-data"
    ms.date="08/30/2016"
    ms.author="larryfr"/>
+
 
 #Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Windows rendszerben
 
@@ -141,7 +142,7 @@ További információk a parancs használatáról: [Provision Hadoop Linux clust
 
 6. Amikor a rendszer erre kéri, adja meg a fürt létrehozásakor megadott felhasználónevet. Ha a felhasználónévhez jelszót adott meg, a rendszer ezt is elkéri.
 
-> [AZURE.NOTE] A fenti lépések azt feltételezik, hogy a 22-es portot használja, amely a HDInsight-fürt 0. átjárócsomópontjához csatlakozik. A 23-as port használata esetén az 1. átjárócsomóponthoz fog csatlakozni. Az átjárócsomópontokkal kapcsolatos további információkat lásd: [Availability and reliability of Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md) (A Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsightban).
+> [AZURE.NOTE] A fenti lépések azt feltételezik, hogy a 22-es portot használja, és ezzel a HDInsight-fürt elsődleges átjárócsomópontjával létesít kapcsolatot. A 23-as port használata esetén a másodlagos átjárócsomóponthoz fog csatlakozni. Az átjárócsomópontokkal kapcsolatos további információkat lásd: [Availability and reliability of Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md) (A Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsightban).
 
 ###Csatlakozás a munkavégző csomópontokhoz
 
@@ -185,9 +186,9 @@ Ha megadott egy SSH-kulcsot a felhasználói fiók létrehozásakor, a következ
 
     > [AZURE.NOTE] Ha jelszóval hitelesíti az SSH-munkamenetet, a rendszer ismét elkéri a jelszót. Ha SSH-kulcsot használ, a kapcsolat további kérések nélkül létrejön.
 
-9. A munkamenet létrehozása után a PuTTY-munkamenet parancssora `username@hn0-clustername` értékről `username@wn0-clustername` értékre változik annak jelzéséhez, hogy a munkavégző csomópont csatlakoztatva van. Innentől a futtatott parancsok a munkavégző csomóponton fognak futni.
+9. A munkamenet létrehozása után a PuTTY-munkamenet parancssora `username@hn#-clustername` értékről `username@wn#-clustername` értékre változik annak jelzéséhez, hogy a munkavégző csomópont csatlakoztatva van. Innentől a futtatott parancsok a munkavégző csomóponton fognak futni.
 
-10. Amikor már nem szeretne több műveletet végrehajtani a munkavégző csomóponton, az `exit` paranccsal zárja be a munkamenetét. Ezzel visszatér a `username@hn0-clustername` parancssorhoz.
+10. Amikor már nem szeretne több műveletet végrehajtani a munkavégző csomóponton, az `exit` paranccsal zárja be a munkamenetét. Ezzel visszatér a `username@hn#-clustername` parancssorhoz.
 
 ##További fiókok hozzáadása
 
@@ -239,6 +240,6 @@ Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

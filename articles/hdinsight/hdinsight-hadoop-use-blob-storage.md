@@ -6,7 +6,7 @@
     documentationCenter=""
     tags="azure-portal"
     authors="mumian"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -15,8 +15,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/10/2016"
+    ms.date="09/06/2016"
     ms.author="jgao"/>
+
 
 
 # A HDFS-kompatibilis Azure Blob Storage és a Hadoop együttes használata a HDInsightban
@@ -49,7 +50,7 @@ Emellett a HDInsight lehetővé teszi az Azure Blob Storage tárolóban tárolt 
 
 A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight létrehozási folyamata alatt egy Azure Storage-fiók és a fiók adott Azure Blob Storage tárolója lesz kijelölve az alapértelmezett fájlrendszerként.
 
-Ezen tárfiók mellett további tárfiókokat adhat hozzá ugyanazon Azure-előfizetésből vagy másik Azure-előfizetésekből a létrehozási folyamat során. A további tárfiókok hozzáadásáról útmutatásért lásd: [Create HDInsight clusters][hdinsight-creation] (HDInsight-fürtök létrehozása).
+Ezen a tárfiókon kívül további tárfiókokat vehet fel ugyanabból az Azure-előfizetésből vagy más Azure-előfizetésekből a létrehozási folyamat során vagy a fürt létrehozása után. A további tárfiókok hozzáadásáról útmutatásért lásd: [Create HDInsight clusters][hdinsight-creation] (HDInsight-fürtök létrehozása).
 
 - **Fürthöz csatlakozó tárolók a tárfiókokban:** Mivel a fiók neve és kulcsa társítva van a fürttel a létrehozás során, teljes hozzáféréssel rendelkezik a tárolókban lévő összes blobhoz.
 
@@ -301,6 +302,6 @@ További információkért lásd:
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

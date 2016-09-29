@@ -17,6 +17,7 @@
     ms.author="kgremban"/>
 
 
+
 # Alkalmazások közzététele az Azure AD-alkalmazásproxyval
 
 Az Azure AD alkalmazásproxy segít a távoli feldolgozók támogatásában azáltal, hogy közzétesz helyszíni alkalmazásokat, és ezek elérhetővé válnak az interneten keresztül. Ennél a pontnál, már [engedélyezte az alkalmazásproxyt a klasszikus Azure-portálon](active-directory-application-proxy-enable.md). Ez a cikk végigvezeti a helyi hálózaton futó alkalmazások közzétételének és távoli, hálózaton kívüli biztonságos hozzáférésük kiépítésének lépésein. Miután befejezte a cikkben leírtakat, készen áll az alkalmazás személyre szabott információkkal vagy biztonsági követelményekkel történő konfigurálására.
@@ -75,7 +76,7 @@ Az előhitelesítést igénylő alkalmazások esetében ezzel jogosultságot is 
 
 ## A közzétett alkalmazás tesztelése
 
-Miután közzétette az alkalmazást, tesztelheti azt úgy, hogy a közzétett URL-t megnyitja. Győződjön meg róla, hogy eléri az alkalmazást, az megfelelően jelenik meg, és minden a vártak szerint működik. Ha problémája van, vagy hibaüzenetet kap, próbálja meg a [hibaelhárítási útmutató](active-directory-application-proxy-troubleshoot.md) használatát.
+Miután közzétette az alkalmazást, tesztelheti azt úgy, hogy a közzétett URL-t megnyitja. Győződjön meg róla, hogy az alkalmazás elérhető, megfelelően jelenik meg, és minden a vártak szerint működik. Ha problémája van, vagy hibaüzenetet kap, próbálja meg a [hibaelhárítási útmutató](active-directory-application-proxy-troubleshoot.md) használatát.
 
 ## Az alkalmazás konfigurálása
 
@@ -103,6 +104,6 @@ A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](h
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

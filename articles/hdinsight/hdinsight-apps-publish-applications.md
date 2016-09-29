@@ -4,7 +4,7 @@
     services="hdinsight"
     documentationCenter=""
     authors="mumian"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"
     tags="azure-portal"/>
 
@@ -16,6 +16,7 @@
     ms.workload="big-data"
     ms.date="06/29/2016"
     ms.author="jgao"/>
+
 
 # HDInsight-alkalmazások közzététele az Azure Piactéren
 
@@ -79,7 +80,7 @@ Hozzon létre egy zip fájlt, amely tartalmazza a HDInsight-alkalmazások telep�
 
 - Minden kötelező parancsfájl.
 
-> [AZURE.NOTE] Az alkalmazás fájljai (ideértve a webes alkalmazások fájljait, ha vannak ilyenek) bármely nyilvánosan elérhető végponton lehetnek.
+> [AZURE.NOTE] Az alkalmazás fájljai (köztük az esetleges webalkalmazások fájljai) bármilyen nyilvánosan elérhető végponton lehetnek.
 
 ## Az alkalmazás közzététele
 
@@ -99,8 +100,11 @@ A HDInsight-alkalmazások közzétételéhez kövesse az alábbi lépéseket:
 - [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Egyéni HDInsight-alkalmazások telepítése): megtudhatja, hogyan helyezhet üzembe a HDInsight szolgáltatásban egy olyan HDInsight-alkalmazást, amely nincs közzétéve.
 - [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md) (Linux-alapú HDInsight-fürtök testreszabása parancsfájlműveletek segítségével): megtudhatja, hogyan telepíthet további alkalmazásokat parancsfájlműveletek használatával.
 - [Create Linux-based Hadoop clusters in HDInsight using Azure Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban Azure Resource Manager-sablonok segítségével): Megtudhatja, hogyan hívhat meg Resource Manager-sablonokat HDInsight-fürtök létrehozásához.
+- [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md) (Üres élcsomópontok használata a HDInsightban): a cikk bemutatja, hogyan lehet üres élcsomópontot használni egy HDInsight-fürt elérésére, HDInsight-alkalmazások tesztelésére és HDInsight-alkalmazások üzemeltetésére.
 
 
-<!--HONumber=sep16_HO1-->
+
+
+<!--HONumber=Sep16_HO4-->
 
 

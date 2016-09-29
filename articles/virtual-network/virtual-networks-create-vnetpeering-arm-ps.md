@@ -14,8 +14,9 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/02/2016"
-   ms.author="narayanannamalai"/>
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai; annahar"/>
+
 
 # Társviszony-létesítés virtuális hálózatok között PowerShell-parancsmagok használatával
 
@@ -29,18 +30,18 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
 1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 
-        Note: PowerShell cmdlet for managing VNet peering is shipped with [Azure PowerShell 1.6.](http://www.powershellgallery.com/packages/Azure/1.6.0)
+        > [AZURE.NOTE] Az [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) tartalmazza a virtuális hálózatok közötti társviszonyok kezeléséhez szükséges PowerShell-parancsmagot.
 
 2. Virtuális objektumok olvasása:
 
         $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
         $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet2
-    
+
 3. A virtuális hálózatok közötti társviszony-létesítéshez két hivatkozást kell létrehoznia, egyet-egyet mindkét irányban. A következő lépés először a VNet1 felől a VNet2 felé hozza létre a virtuális hálózatok közötti társviszony-létesítési csatolást:
 
-        Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.id 
+        Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.id
 
-        Output shows:
+    A kimenetben a következő látható:
 
         Name            : LinkToVNet2
         Id: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
@@ -60,9 +61,9 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
 4. Ez a lépés a VNet2 felől a VNet1 felé hoz létre egy virtuális hálózatok közötti társviszony-létesítési csatolást:
 
-        Add-AzureRmVirtualNetworkPeering -name LinkToVNet1 -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.id 
+        Add-AzureRmVirtualNetworkPeering -name LinkToVNet1 -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.id
 
-        Output shows:
+    A kimenetben a következő látható:
 
         Name            : LinkToVNet1
         Id              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2/virtualNetworkPeerings/LinkToVNet1
@@ -84,7 +85,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
         Get-AzureRmVirtualNetworkPeering -VirtualNetworkName vnet1 -ResourceGroupName vnet101 -Name linktovnet2
 
-        Output shows:
+    A kimenetben a következő látható:
 
         Name            : LinkToVNet2
         Id              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
@@ -117,7 +118,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
         $LinktoVNet2.AllowForwardedTraffic = $true
         Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinktoVNet2
 
-        You can run Get-AzureRmVirtualNetworkPeering to double check the property value after the change.  From the output, you can see AllowForwardedTraffic changes set to True after running the above cmdlets. 
+    Az Get-AzureRmVirtualNetworkPeering futtatásával duplán ellenőrizheti a tulajdonság értékét a módosítás után.  A fenti parancsmagok futtatása után a kimenetben látható, hogy az AllowForwardedTraffic értéke True (Igaz) lesz.
 
         Name            : LinkToVNet2
         Id          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
@@ -143,13 +144,13 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
 1. Jelentkezzen be az Azure-ba az A előfizetés rendszergazdai engedéllyel rendelkező User-A felhasználói fiókjával, és futtassa a következő parancsmagot:
 
-        New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
+        New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetworks/VNet5
 
-        This is not a requirement, peering can be established even if users individually raise peering requests for thier respective Vnets as long as the requests match. Adding a privileged user of the other VNet as a user in the local VNet makes it easier to do the setup. 
+    Ez nem követelmény, társviszony akkor is létesíthető, ha a felhasználók önállóan adnak ki társviszony-létesítési kérelmet a megfelelő virtuális hálózataikra, és a kérések megegyeznek. Ha a helyi virtuális hálózat felhasználóihoz hozzáadja a másik virtuális hálózat egy rendszergazdai engedéllyel rendelkező felhasználóját, azzal leegyszerűsítheti a beállítást.
 
 2. Jelentkezzen be az Azure-ba a B előfizetés rendszergazdai engedéllyel rendelkező User-B felhasználói fiókjával, és futtassa a következő parancsmagot:
 
-        New-AzureRmRoleAssignment -SignInName <UserA ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-B-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet3
+        New-AzureRmRoleAssignment -SignInName <UserA ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-B-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetworks/VNet3
 
 3. A User-A felhasználó bejelentkezési munkamenetében futtassa az alábbi parancsmagot:
 
@@ -167,7 +168,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
 
-1. Ebben a forgatókönyvben az alábbi PowerShell-parancsmagok futtatásával létesíthet virtuális hálózatok közötti társviszonyt.  Az AllowForwardedTraffic tulajdonságot True értékűre kell állítania a VNET1 és a HubVnet között, ami engedélyezi a társított virtuális hálózati címtéren kívülről érkező bejövő forgalmat. 
+1. Ebben a forgatókönyvben az alábbi PowerShell-parancsmagok futtatásával létesíthet virtuális hálózatok közötti társviszonyt.  Az AllowForwardedTraffic tulajdonságot True értékűre kell állítania a VNET1 és a HubVnet között, ami engedélyezi a társított virtuális hálózati címtéren kívülről érkező bejövő forgalmat.
 
         $hubVNet = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name HubVNet
         $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
@@ -188,21 +189,54 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
         Set-AzureRmVirtualNetwork -VirtualNetwork $vnet1
 
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
+
+Az alábbi lépésekkel hozhat létre társviszonyt egy klasszikus virtuális hálózat és egy Azure Resource Manager-virtuálishálózat között:
+
+1. A **VNET1**-hez, az Azure Resource Manager-virtuális hálózathoz tartozó objektum a következő:       $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
+
+2. Ebben a forgatókönyvben a virtuális hálózatok társviszonyának létrehozásához csak egyetlen hivatkozás szükséges, mégpedig egy hivatkozás a **VNET1**-ről a **VNET2**-re. Ehhez a lépéshez ismerni kell a klasszikus virtuális hálózat erőforrás-azonosítóját. Az erőforráscsoport-azonosító formátuma a következő: /subscriptions/SubscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.ClassicNetwork/virtualNetworks/VirtualNetworkName
+
+    Ne felejtse el a SubscriptionID, ResourceGroupName és VirtualNetworkName elemeket a megfelelő nevekkel behelyettesíteni.
+
+    Ezt a következőképp teheti meg:
+
+        Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId /subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.ClassicNetwork/virtualNetworks/VNET2
+
+3. Miután létrejött a virtuális hálózatok közötti társviszony-létesítési csatolás, a csatolás állapotát az alábbi kimenetben láthatja:
+
+        Name                             : LinkToVNet2
+        Id                               : /subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/VNET1/virtualNetworkPeerings/LinkToVNet2
+        Etag                             : W/"acecbd0f-766c-46be-aa7e-d03e41c46b16"
+        ResourceGroupName                : MyResourceGroup
+        VirtualNetworkName               : VNET1
+        PeeringState                     : Connected
+        ProvisioningState                : Succeeded
+        RemoteVirtualNetwork             : {
+                                         "Id": "/subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.ClassicNetwork/virtualNetworks/VNET2"
+                                       }
+        AllowVirtualNetworkAccess        : True
+        AllowForwardedTraffic            : False
+        AllowGatewayTransit              : False
+        UseRemoteGateways                : False
+        RemoteGateways                   : null
+        RemoteVirtualNetworkAddressSpace : null
+
 ## Virtuális hálózatok közötti társviszony eltávolítása
 
-1.  A virtuális hálózatok közötti társviszony eltávolításához a következő parancsmagot kell futtatnia: 
+1.  A virtuális hálózatok közötti társviszony eltávolításához a következő parancsmagot kell futtatnia:
 
         Remove-AzureRmVirtualNetworkPeering  
-    
+
         remove both links, as shown below:
 
-        Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2 
-        Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2 
+        Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2
+        Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2
 
-2. Miután eltávolított egy csatolást a virtuális hálózatok közötti társviszonyban, a társviszony-csatolás állapota leválasztottra változik. Ebben az állapotban addig nem hozhatja létre újra a csatolást, amíg a társviszony-csatolás állapota Kezdeményezettre nem változik. Javasoljuk, hogy mindkét csatolást távolítsa el, mielőtt újra létrehozza a virtuális hálózatok közötti társviszonyt. 
+2. Miután eltávolított egy csatolást a virtuális hálózatok közötti társviszonyban, a társviszony-csatolás állapota leválasztottra változik. Ebben az állapotban addig nem hozhatja létre újra a csatolást, amíg a társviszony-csatolás állapota Kezdeményezettre nem változik. Javasoljuk, hogy mindkét csatolást távolítsa el, mielőtt újra létrehozza a virtuális hálózatok közötti társviszonyt.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

@@ -1,9 +1,9 @@
 <properties
-    pageTitle="A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata"
+    pageTitle="PlayReady és/vagy Widevine Dynamic Common Encryption használata | Microsoft Azure"
     description="A Microsoft Azure Media Services lehetővé teszi, hogy MPEG-DASH, Smooth Streaming vagy HTTP-Live-Streaming (HLS) típusú streamjeit Microsoft PlayReady DRM-védelemmel lássa el. Ezenfelül Widevine DRM-védelemmel ellátott DASH-továbbítást is kínál. Ez a témakör bemutatja, hogyan állíthat be dinamikus titkosítást a PlayReady vagy a Widevine DRM segítségével."
     services="media-services"
     documentationCenter=""
-    authors="Juliako,Mingfeiy"
+    authors="juliako"
     manager="erikre"
     editor=""/>
 
@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article" 
-    ms.date="06/22/2016"
+    ms.date="09/27/2016"
     ms.author="juliako"/>
+
 
 
 #A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata
@@ -37,7 +38,7 @@ A dinamikus titkosítás által nyújtott előnyök kihasználásához többszö
 
 Ez a témakör azon fejlesztők számára lehet hasznos, akik többféle DRM-mel (például PlayReady és Widevine) védett médiafájlok továbbításával foglalkoznak. A témakör leírja, hogyan konfigurálhatja a PlayReady-licenctovábbítási szolgáltatásra vonatkozó szabályzatokat úgy, hogy csak az arra jogosult ügyfelek kaphassák meg a PlayReady- és Widevine-licenceket. Ezenfelül azt is bemutatja, hogyan használja a dinamikus titkosítás funkciót a PlayReady vagy a Widevine DRM-mel a DASH-en keresztül.
 
->[AZURE.NOTE]A dinamikus titkosítás használatának megkezdéséhez be kell szereznie legalább egy skálázási egységet (avagy streamelési egységet). További információk: [How to Scale a Media Service](media-services-manage-origins.md#scale_streaming_endpoints) (Médiaszolgáltatás skálázása).
+>[AZURE.NOTE]A dinamikus titkosítás használatának megkezdéséhez be kell szereznie legalább egy skálázási egységet (avagy streamelési egységet). További információk: [How to Scale a Media Service](media-services-portal-manage-streaming-endpoints.md) (Médiaszolgáltatás skálázása).
 
 
 ##Minta letöltése
@@ -48,15 +49,15 @@ A cikkben leírt mintát [innen](https://github.com/Azure-Samples/media-services
 
 A következőkben általános lépéseket olvashat, amelyeket el kell végeznie ahhoz, hogy PlayReady-védelemmel lássa el objektumait a Media Services licenctovábbítási szolgáltatása, valamint a dinamikus titkosítás használata mellett.
 
-1. Hozzon létre egy objektumot, és töltse fel a fájlokat az objektumba. 
+1. Hozzon létre egy objektumot, és töltse fel a fájlokat az objektumba.
 1. Kódolja a fájlt tartalmazó objektumot az adaptív sávszélességű MP4 típusú beállításkészlettel.
-1. Hozzon létre egy tartalomkulcsot, majd társítsa a kódolt objektumhoz. A Media Services szolgáltatásban a tartalomkulcs tartalmazza az objektum titkosítási kulcsát. 
+1. Hozzon létre egy tartalomkulcsot, majd társítsa a kódolt objektumhoz. A Media Services szolgáltatásban a tartalomkulcs tartalmazza az objektum titkosítási kulcsát.
 1. Konfigurálja a tartalomkulcs hitelesítési szabályzatát. Ahhoz, hogy az ügyfél megkaphassa a tartalomkulcsot, Önnek be kell állítania a tartalomkulcs-hitelesítési szabályzatot, amelynek az ügyfélnek meg kell felelnie.
 
-    A tartalomkulcs-hitelesítési szabályzat létrehozásakor a következőket kell beállítania: továbbítási módszer (PlayReady vagy Widevine), korlátozások (nyitott vagy token), valamint azon információk, amelyek azt határozzák meg, hogy a rendszer hogyan továbbítja a kulcsot az ügyfélnek ([PlayReady-](media-services-playready-license-template-overview.md) vagy [Widevine-](media-services-widevine-license-template-overview.md)licencsablon). 
-1. Konfigurálja az objektum továbbítási szabályzatát. A továbbítási szabályzat konfigurációjához a következők tartoznak: továbbítási protokoll (lehet például MPEG DASH, HLS, HDS, Smooth Streaming vagy mindegyik), a dinamikus titkosítás típusa (lehet például Common Encryption) és a PlayReady- vagy Widevine-licenckérési URL-cím. 
- 
-    Az adott objektum különböző protokolljaira akár eltérő szabályzatokat is alkalmazhat. Beállíthatja például, hogy a PlayReady-titkosítás csak a Smooth/DASH-re vonatkozzon, az AES Envelope pedig csak a HLS-re. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
+A tartalomkulcs-hitelesítési szabályzat létrehozásakor a következőket kell beállítania: továbbítási módszer (PlayReady vagy Widevine), korlátozások (nyitott vagy token), valamint azon információk, amelyek azt határozzák meg, hogy a rendszer hogyan továbbítja a kulcsot az ügyfélnek ([PlayReady-](media-services-playready-license-template-overview.md) vagy [Widevine-](media-services-widevine-license-template-overview.md)licencsablon).
+1. Konfigurálja az objektum továbbítási szabályzatát. A továbbítási szabályzat konfigurációjához a következők tartoznak: továbbítási protokoll (lehet például MPEG DASH, HLS, HDS, Smooth Streaming vagy mindegyik), a dinamikus titkosítás típusa (lehet például Common Encryption) és a PlayReady- vagy Widevine-licenckérési URL-cím.
+
+Az adott objektum különböző protokolljaira akár eltérő szabályzatokat is alkalmazhat. Beállíthatja például, hogy a PlayReady-titkosítás csak a Smooth/DASH-re vonatkozzon, az AES Envelope pedig csak a HLS-re. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
 1. Hozzon létre egy OnDemand-lokátort a streamelési URL-cím lekéréséhez.
 
 A témakör végén teljes .NET típusú példát talál.
@@ -65,17 +66,17 @@ Az alábbi képen a fentiekben leírt munkafolyamatot láthatja. Itt a tokenes h
 
 ![Védelem biztosítása a PlayReadyvel](./media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
 
-A témakör további részében részletes magyarázatokat, kódmintákat és olyan témakörökre mutató hivatkozásokat talál, amelyek segítenek elérni a fent leírt célokat. 
+A témakör további részében részletes magyarázatokat, kódmintákat és olyan témakörökre mutató hivatkozásokat talál, amelyek segítenek elérni a fent leírt célokat.
 
 ##Aktuális korlátozások
 
 Objektumtovábbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell az ahhoz tartozó lokátort (ha van), majd létre kell hoznia egy új lokátort.
 
-Az Azure Media Services szolgáltatással végzett Widevine-titkosításra vonatkozó korlátozások: a funkció jelenleg nem támogatja több tartalomkulcs használatát. 
+Az Azure Media Services szolgáltatással végzett Widevine-titkosításra vonatkozó korlátozások: a funkció jelenleg nem támogatja több tartalomkulcs használatát.
 
 ##Objektum létrehozása, majd fájlok feltöltése az objektumba
 
-A videók kezeléséhez, kódolásához és streameléséhez először fel kell töltenie tartalmait a Microsoft Azure Media Services szolgáltatásba. A feltöltést követően tartalmai a biztonságos felhőtárhelyre kerülnek további feldolgozás és streamelés céljából. 
+A videók kezeléséhez, kódolásához és streameléséhez először fel kell töltenie tartalmait a Microsoft Azure Media Services szolgáltatásba. A feltöltést követően tartalmai a biztonságos felhőtárhelyre kerülnek további feldolgozás és streamelés céljából.
 
 További információk: [Upload Files into a Media Services account](media-services-dotnet-upload-files.md) (Fájlok feltöltése a Media Services-fiókba).
 
@@ -84,7 +85,7 @@ További információk: [Upload Files into a Media Services account](media-servi
 A dinamikus titkosítás segítségével mindössze egy többszörös sávszélességű MP4-fájlokat vagy Smooth Streaming-forrásfájlokat tartalmazó objektumot kell létrehoznia. Ezt követően az igényalapú streamelési kiszolgáló a jegyzékfájlban és a töredékkérésben megadott formátumnak megfelelően gondoskodik arról, hogy a rendszer a kiválasztott protokollal biztosítsa a streamet az Ön számára. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ. További információkért lásd a [Dynamic Packaging Overview](media-services-dynamic-packaging-overview.md) (A dinamikus becsomagolás áttekintése) című témakört.
 
 A kódolással kapcsolatos utasításokért lásd: [How to encode an asset using Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) (Objektum kódolása a Media Encoder Standard használatával).
-    
+
 
 ##<a id="create_contentkey"></a>Tartalomkulcs létrehozása, majd a kódolt objektumhoz való társítása
 
@@ -329,7 +330,7 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
         
                 static public IContentKey CreateCommonTypeContentKey(IAsset asset)
                 {
-                    // Create envelope encryption content key
+                    
                     Guid keyId = Guid.NewGuid();
                     byte[] contentKey = GetRandomBuffer(16);
         
@@ -544,6 +545,8 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
         
                         };
         
+                    // In this case we only specify Dash streaming protocol in the delivery policy,
+                    // All other protocols will be blocked from streaming.
                     var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
                             "AssetDeliveryPolicy",
                         AssetDeliveryPolicyType.DynamicCommonEncryption,
@@ -609,7 +612,9 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
         }
 
 
-##Media Services képzési tervek
+## Következő lépés
+
+Tekintse át a Media Services képzési terveket.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -628,6 +633,6 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -20,13 +20,13 @@
 
 1. A névterek listájában kattintson az újonnan létrehozott névtér nevére.
  
-3. A **Service Bus-névtér** panelen kattintson a **Megosztott elérési házirendek** elemre.
+3. A névtér panelen kattintson a **Megosztott elérési házirendek** elemre.
 
 4. A **Megosztott elérési házirendek** panelen kattintson a **RootManageSharedAccessKey** elemre.
 
     ![connection-info][connection-info]
 
-5. A **Házirend: RootManageSharedAccessKey** panelen a **Kapcsolati karakterlánc – elsődleges kulcs** melletti másolás gombra kattintva másolja a kapcsolati karakterláncot a vágólapra későbbi használatra.
+5. A **Házirend: RootManageSharedAccessKey** panelen a **Kapcsolati karakterlánc – elsődleges kulcs** melletti másolás gombra kattintva másolja a kapcsolati karakterláncot a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
 
     ![connection-string][connection-string]
 
@@ -39,7 +39,6 @@
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [Azure Portal]: https://portal.azure.com
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

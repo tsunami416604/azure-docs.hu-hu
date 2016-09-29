@@ -12,8 +12,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/29/2016"
+   ms.date="09/20/2016"
    ms.author="cherylmc" />
+
 
 # ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -31,7 +32,7 @@ Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, 
 |---|---|---|
 |**Észak-Amerika**|USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, Közép-Kanada, Kelet-Kanada|Atlanta, Chicago, Dallas, Las Vegas, Los Angeles, New York, Seattle, Szilícium-völgy, Washington, D.C., Montréal+, Québec város+, Toronto|
 |**Dél-Amerika**|Dél-Brazília|Sao Paulo|
-|**Európa**|Észak-Európa, Nyugat-Európa|Amszterdam, Dublin, London, Newport (Wales)+, Párizs|
+|**Európa**|Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati része, az Egyesült Királyság déli része|Amszterdam, Dublin, London, Newport (Wales)+, Párizs|
 |**Ázsia**|Kelet-Ázsia, Délkelet-Ázsia|Hongkong, Szingapúr|
 |**Japán**|Nyugat-Japán, Kelet-Japán|Oszaka, Tokió|
 |**Ausztrália**|Délkelet-Ausztrália, Kelet-Ausztrália|Melbourne, Sydney|
@@ -43,9 +44,9 @@ Az alábbi tábla a régiók és az országos felhők geopolitikai határainak i
 
 |**Geopolitikai régió**|**Azure-régiók**|**ExpressRoute-helyek**|
 |---|---|---|---|
-|**Az Egyesült Államok kormányának felhője**|USA-beli államigazgatás – Iowa, USA-beli államigazgatás – Virginia|Chicago, Dallas+, New York, Washington, D.C.|
+|**Az Egyesült Államok kormányának felhője**|USA-beli államigazgatás – Iowa, USA-beli államigazgatás – Virginia|Chicago, Dallas, New York, Washington|
 |**Kína**|Észak-Kína, Kelet-Kína|Peking, Sanghaj|
-|**Németország**|Közép-Németország, Kelet-Németország|Berlin, Frankfurt|
+|**Németország**|Közép-Németország, Kelet-Németország|Berlin+, Frankfurt|
 
 
 A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard ExpressRoute-termékváltozatokban. A globális kapcsolatok támogatásához engedélyeznie kell az ExpressRoute prémium bővítményt. Az országos felhőkörnyezetekhez való kapcsolódás nem támogatott. Igény esetén tájékozódjon kapcsolatszolgáltatójánál a lehetőségekről.
@@ -64,8 +65,8 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **Atlanta** | Equinix |
 | **Csennai** | Tata Communications |
 | **Chicago** | AT&T NetBond, Comcast, Equinix, Level 3 Communications, Zayo Group |
-| **Dallas** | AT&T NetBond, Equinix, Level 3 Communications, Megaport |
-| **Dublin** | Colt |
+| **Dallas** | AT&T NetBond, Cologix, Equinix, Level 3 Communications, Megaport |
+| **Dublin** | Colt, Telecity Group |
 | **Hongkong** | British Telecom, China Telecom Global, Equinix, Megaport, Orange, PCCW Global Limited, Tata Communications, Verizon |
 | **London** | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc+, Level 3 Communications, MTN, NTT Communications, Orange, Tata Communications, Telecity Group, Telenor, Verizon, Vodafone |
 | **Las Vegas** | Level 3 Communications+, Megaport
@@ -80,7 +81,7 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **Seattle** | Equinix, Level 3 Communications, Megaport |
 | **Szilícium-völgy** | Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink+, Comcast, Equinix, Level 3 Communications, Orange, Tata Communications, Verizon, Zayo Group |
 | **Szingapúr** | Aryaka Networks, AT&T NetBond, British Telecom, Equinix, InterCloud, Megaport, Orange, SingTel, Tata Communications, Verizon |
-| **Sydney** | AT&T NetBond, British Telecom, Equinix, Megaport, NEXTDC, Telstra Corporation, Verizon |
+| **Sydney** | AT&T NetBond, British Telecom, Equinix, Megaport, NEXTDC, Orange, Telstra Corporation, Verizon |
 | **Tokió** | Aryaka Networks, British Telecom, Colt, Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, Softbank, Verizon |
 | **Toronto** | Cologix, Equinix, Zayo Group |
 | **Washington DC** | Aryaka Networks, AT&T NetBond, British Telecom, Comcast, Equinix, InterCloud, Level 3 Communications, Megaport, Orange, Tata Communications, Verizon, Zayo Group |
@@ -94,7 +95,7 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **Hely**  |**Szolgáltatók** |
 |---------------|--------------------|
 | **Chicago** | AT&T NetBond, Equinix, Level 3 Communications, Verizon |
-| **Dallas** |  Equinix+, Verizon+ |
+| **Dallas** |  Equinix, Verizon+ |
 | **New York** | Equinix, Level 3 Communications+, Verizon |
 | **Washington DC** | AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 
@@ -158,6 +159,6 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

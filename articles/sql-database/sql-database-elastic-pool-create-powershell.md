@@ -16,19 +16,20 @@
     ms.date="05/27/2016"
     ms.author="srinia"/>
 
+
 # Új rugalmas adatbáziskészlet létrehozása a PowerShell használatával
 
 > [AZURE.SELECTOR]
-- [Azure-portál](sql-database-elastic-pool-create-portal.md)
+- [Azure Portal](sql-database-elastic-pool-create-portal.md)
 - [PowerShell](sql-database-elastic-pool-create-powershell.md)
-- [C#](sql-database-elastic-pool-create-csharp.md)
+- [C##](sql-database-elastic-pool-create-csharp.md)
 
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre [rugalmas adatbáziskészletet](sql-database-elastic-pool.md) PowerShell-parancsmagok használatával. 
 
 A gyakori hibakódokat megtalálja az [SQL error codes for SQL Database client applications: Database connection error and other issues](sql-database-develop-error-messages.md) (SQL Database-ügyfélalkalmazások SQL-hibakódjai: adatbázis-kapcsolati és más hibák) című cikkben.
 
-> [AZURE.NOTE] A rugalmas adatbáziskészletek jelenleg előzetes kiadásban érhetők el, és csak SQL Database V12-es verziójú kiszolgálókkal használhatók. Ha SQL Database V11-es verziószámú kiszolgálóval rendelkezik, [használhatja a PowerShellt a V12-es verzióra való frissítéshez és készlet létrehozásához](sql-database-upgrade-server-portal.md) egyetlen lépésben.
+> [AZURE.NOTE] A rugalmas készletek minden Azure-régióban általánosan elérhetők, kivéve az USA északi középső régióját és Nyugat-Indiát, ahol a szolgáltatás jelenleg előzetes verzióként érhető el.  A rugalmas készletek általános elérhetősége ezekben a régiókban a lehető leghamarabb bevezetésre kerül. Emellett a rugalmas készletek jelenleg nem támogatják a [memóriában végzett OLTP-feldolgozást és elemzéseket](sql-database-in-memory.md) használó adatbázisokat.
 
 
 Az Azure PowerShell 1.0-s vagy újabb verziójának kell futnia. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](../powershell-install-configure.md).
@@ -83,6 +84,6 @@ Ez a parancsfájl egy új Azure-erőforráscsoportot és egy új kiszolgálót h
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

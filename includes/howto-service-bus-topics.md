@@ -12,57 +12,50 @@ A Service Bus-üzenettémák és -előfizetések lehetővé teszik a számos fel
 
 ## Névtér létrehozása
 
-A Service Bus-üzenettémák és -előfizetések Azure-ban való használatához először létre kell hoznia egy *szolgáltatásnévteret*. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak kezeléséhez az alkalmazáson belül.
+A Service Bus-üzenettémák és -előfizetések Azure-ban való használatához először létre kell hoznia egy *szolgáltatásnévteret*. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
 Névtér létrehozása:
 
-1.  Jelentkezzen be a [klasszikus Azure portálra][].
+1. Jelentkezzen be az [Azure Portal][].
 
-2.  A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre.
+2. A portál bal oldali navigációs paneljén kattintson az **Új**, majd a **Enterprise Integration** (Vállalati integráció), végül a **Service Bus** elemre.
 
-3.  A portál alsó panelén kattintson a **Létrehozás** elemre.   
-    ![][0]
+4. A **Névtér létrehozása** párbeszédpanelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
 
-4.  Az **Új névtér hozzáadása** párbeszédpanelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.   
-    ![][2]
+5. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic, Standard vagy Prémium).
 
-5.  Miután meggyőződött arról, hogy a név elérhető, válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz (ugyanazt azt az országot/régiót kell használnia, amelyben a számítási erőforrásokat üzembe helyezi).
+7. Az **Előfizetés** mezőben válassza ki azt az Azure-előfizetést, amelyben a névteret létre kívánja hozni.
 
-    > [AZURE.IMPORTANT] **Ugyanazt a régiót** válassza, amelyet az alkalmazás telepítéséhez kíván használni. Ez biztosítja a legjobb teljesítményt.
+9. Az **Erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, amelynek a névtér a része lesz, vagy hozzon létre egy újat.      
 
-6.  A párbeszédpanelen lévő többi mezőt hagyja az alapértelmezett értékükön (**Üzenetküldés** és **Standard csomag**), majd kattintson az OK pipára. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
+8. A **Hely** mezőben válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz.
 
-    ![][6]
+    ![Névtér létrehozása][create-namespace]
 
-## Az alapértelmezett felügyeleti hitelesítő adatok beszerzése a névtérhez
+6. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
+ 
+### Hitelesítő adatok beszerzése
 
-Ha kezelési műveleteket szeretne végrehajtani az új névtéren, például egy üzenettémakört vagy előfizetést szeretne létrehozni, be kell szereznie a névtérhez tartozó felügyeleti hitelesítő adatokat. Ezeket a hitelesítő adatokat a portálról szerezheti be.
+1. A névterek listájában kattintson az újonnan létrehozott névtér nevére.
+ 
+3. A **Service Bus-névtér** panelen kattintson a **Megosztott elérési házirendek** elemre.
 
-### A felügyeleti hitelesítő adatok beszerzése a portálról
+4. A **Megosztott elérési házirendek** panelen kattintson a **RootManageSharedAccessKey** elemre.
 
-1.  A bal oldali navigációs panelen kattintson a **Service Bus** csomópontra az elérhető névterek listájának megjelenítéséhez.   
-    ![][0]
+    ![connection-info][connection-info]
 
-2.  A megjelenő listában válassza ki az imént létrehozott névteret:   
-    ![][3]
+5. A **Házirend: RootManageSharedAccessKey** panelen a **Kapcsolati karakterlánc – elsődleges kulcs** melletti másolás gombra kattintva másolja a kapcsolati karakterláncot a vágólapra későbbi használatra.
 
-3.  Kattintson a **Kapcsolatadatok** gombra.   
-    ![][4]
+    ![connection-string][connection-string]
 
-4.  Az **Access connection information** (Kapcsolatadatok hozzáférése) párbeszédablakban keresse meg azt a kapcsolati karakterláncot, amely tartalmazza az SAS-kulcsot és annak nevét. Jegyezze fel ezeket az értékeket, mert később szüksége lesz rájuk a névtérrel kapcsolatos műveletek végrehajtásához. 
-
-
-  [klasszikus Azure portálra]: http://manage.windowsazure.com
-  [0]: ./media/howto-service-bus-topics/sb-queues-13.png
-  [2]: ./media/howto-service-bus-topics/sb-queues-04.png
-  [3]: ./media/howto-service-bus-topics/sb-queues-09.png
-  [4]: ./media/howto-service-bus-topics/sb-queues-06.png
-  
-  [6]: ./media/howto-service-bus-topics/getting-started-multi-tier-27.png
+[Azure Portal]: https://portal.azure.com
+[create-namespace]: ./media/howto-service-bus-topics/create-namespace.png
+[connection-info]: ./media/howto-service-bus-topics/connection-info.png
+[connection-string]: ./media/howto-service-bus-topics/connection-string.png
 
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

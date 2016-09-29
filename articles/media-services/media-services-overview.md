@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Az Azure Media Services áttekintése és gyakori alkalmazási esetei" 
+    pageTitle="Az Azure Media Services áttekintése és gyakori alkalmazási esetei | Microsoft Azure" 
     description="Ezen témakör áttekintést nyújt az Azure Media Services szolgáltatásairól" 
     services="media-services" 
     documentationCenter="" 
@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="hero-article" 
-    ms.date="08/07/2016"
+    ms.date="09/19/2016"
     ms.author="juliako;anilmur"/>
+
 
 #Az Azure Media Services áttekintése és gyakori alkalmazási esetei
 
@@ -24,19 +25,19 @@ A Media Services használatával teljes, átfogó munkafolyamatokat hozhat létr
 
 A tartalmakat továbbíthatja élő adásban, illetve az ügyfelek igénye szerint is. Ezen témakör a tartalmak [élő](media-services-overview.md#live_scenarios) vagy [igény szerinti](media-services-overview.md#vod_scenarios) továbbításának leggyakoribb eseteit mutatja be. Emellett a témakör hivatkozásokat is tartalmaz egyéb, kapcsolódó témakörökre.
 
-## SDK-k és eszközök 
+## SDK-k és eszközök
 
 A Media Services-megoldások létrehozásához a következőket használhatja:
 
 - [Media Services REST API-k](https://msdn.microsoft.com/library/azure/hh973617.aspx)
-- Az elérhető ügyféloldali SDK-k valamelyike: 
-    - [.NET-keretrendszerhez készült Azure Media Services SDK](https://github.com/Azure/azure-sdk-for-media-services), 
-    - [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java), 
-    - [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php), 
-    - [Node.js-hez készült Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Ez a Node.js SDK nem Microsoft által készített verziója. Ennek a karbantartását egy közösség végzi, és jelenleg nem fedi le 100%-osan az AMS API-k tartalmát.) 
-- Meglévő eszközök: 
-    - [Klasszikus Azure portál](http://manage.windowsazure.com/) 
-    - [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Az Azure Media Services Explorer (AMSE) egy Winforms/C#-alkalmazás Windows rendszerre)
+- Az elérhető ügyféloldali SDK-k valamelyike:
+- [.NET-keretrendszerhez készült Azure Media Services SDK](https://github.com/Azure/azure-sdk-for-media-services),
+- [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java),
+- [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
+- [Node.js-hez készült Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Ez a Node.js SDK nem Microsoft által készített verziója. Ennek a karbantartását egy közösség végzi, és jelenleg nem fedi le 100%-osan az AMS API-k tartalmát.)
+- Meglévő eszközök:
+- [Klasszikus Azure portál](http://manage.windowsazure.com/)
+- [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Az Azure Media Services Explorer (AMSE) egy Winforms/C#-alkalmazás Windows rendszerre)
 
 ##Media Services képzési tervek
 
@@ -48,13 +49,13 @@ Az AMS képzési terveket itt tekintheti meg:
 ##Előfeltételek
 
 Az Azure Media Services használatának megkezdéséhez rendelkeznie kell a következőkkel:
- 
+
 3. Egy Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com).
 2. Egy Azure Media Services-fiók. Azure Media Services-fiókot a klasszikus Azure portál, a .NET vagy a REST API használatával hozhat létre. További információ: [Fiók létrehozása](media-services-create-account.md)
-3. (Lehetőség:) A fejlesztési környezet beállítása Válassza ki, hogy a .NET vagy a REST API fejlesztési környezetet kívánja-e használni. További információ: [Környezet beállítása](media-services-dotnet-how-to-use.md) 
+3. (Lehetőség:) A fejlesztési környezet beállítása Válassza ki, hogy a .NET vagy a REST API fejlesztési környezetet kívánja-e használni. További információ: [Környezet beállítása](media-services-dotnet-how-to-use.md)
 
-    Emellett ismerje meg a programozott [csatlakozást](media-services-dotnet-connect-programmatically.md).
-4. (Ajánlott:) Foglaljon le egy vagy több skálázási egységet. Javasolt lefoglalni egy vagy több skálázási egységet az éles környezetben futó alkalmazások számára.   További információ: [Streamvégpontok felügyelete](media-services-manage-origins.md)
+Emellett ismerje meg a programozott [csatlakozást](media-services-dotnet-connect-programmatically.md).
+4. (Ajánlott:) Foglaljon le egy vagy több skálázási egységet. Javasolt lefoglalni egy vagy több skálázási egységet az éles környezetben futó alkalmazások számára.   További információ: [Streamvégpontok felügyelete](media-services-portal-manage-streaming-endpoints.md)
 
 ##Alapfogalmak és áttekintés
 
@@ -135,14 +136,14 @@ Az élő adatfolyam-továbbításban általában a következő összetevők ját
 - Egy kamera, amely az eseményt közvetíti.
 - Egy élő videókódoló, amely a kamera jeleit adatfolyammá alakítja, amelyek aztán továbbítódnak egy élő adatfolyam-szolgáltatásra.
 
-    Esetlegesen több, szinkronizált idejű élő kódoló. A kiemelt, magas rendelkezésre állást és minőséget megkövetelő eseményekhez javasolt szinkronizált idejű aktív-aktív redundáns kódolókat alkalmazni az adatvesztés nélküli, zökkenőmentes feladatátvétel érdekében.
+Esetlegesen több, szinkronizált idejű élő kódoló. A kiemelt, magas rendelkezésre állást és minőséget megkövetelő eseményekhez javasolt szinkronizált idejű aktív-aktív redundáns kódolókat alkalmazni az adatvesztés nélküli, zökkenőmentes feladatátvétel érdekében.
 - Egy élő adatfolyam-szolgáltatás, amely lehetővé teszi a következőket:
-    
-    - élő tartalmak feldolgozása különböző élő adatfolyam-továbbítási protokollok használatával (például RTMP vagy Smooth Streaming)
-    - az adatfolyam adaptív sávszélességűvé kódolása (opcionális)
-    - az élő adatfolyam-továbbítás előnézete
-    - a feldolgozott tartalmak rögzítése és tárolása a későbbi továbbítás érdekében (Video-on-Demand)
-    - a tartalom továbbítása gyakori adatfolyam-továbbítási protokollok (például MPEG DASH, Smooth, HLS, HDS) használatával közvetlenül az ügyfelek részére, vagy egy Content Delivery Network (CDN) tartalomkézbesítési hálózatra későbbi terjesztés céljából.
+
+- élő tartalmak feldolgozása különböző élő adatfolyam-továbbítási protokollok használatával (például RTMP vagy Smooth Streaming)
+- az adatfolyam adaptív sávszélességűvé kódolása (opcionális)
+- az élő adatfolyam-továbbítás előnézete
+- a feldolgozott tartalmak rögzítése és tárolása a későbbi továbbítás érdekében (Video-on-Demand)
+- a tartalom továbbítása gyakori adatfolyam-továbbítási protokollok (például MPEG DASH, Smooth, HLS, HDS) használatával közvetlenül az ügyfelek részére, vagy egy Content Delivery Network (CDN) tartalomkézbesítési hálózatra későbbi terjesztés céljából.
 
 
 **Microsoft Azure Media Services** (AMS) lehetőséget nyújt az élő adatfolyam-tartalmak feldolgozására, kódolására, előnézetére, tárolására és továbbítására is.
@@ -155,8 +156,8 @@ A **csatorna** egy olyan folyamatot jelent, amely az élő adatfolyamok tartalm�
 
 - A helyszíni élő kódolók többféle sávszélességű **RTMP** vagy **Smooth Streaming** (töredékes MP4) tartalmakat küldenek a csatornának, amely **áteresztő** továbbításra van konfigurálva. Az **áteresztő** továbbítás azt jelenti, hogy a feldolgozott adatfolyamok további feldolgozás nélkül haladnak át a **csatornán**. Többféle sávszélességű Smooth Streaming-kimenetre a következő élő kódolók képesek: Elemental, Envivo, Cisco.  RTMP-kimenetre a következő élő kódolók képesek: Adobe Flash Live, Telestream Wirecast és Tricaster átkódolók.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
-    >[AZURE.NOTE] Valamely áteresztő módszer használata a leggazdaságosabb megoldás, ha hosszú időn át több eseményt is közvetít élő adatfolyamként, és már befektetett helyszíni kódolókba. További információt a [díjszabás](/pricing/details/media-services/) nyújt.
-    
+>[AZURE.NOTE] Valamely áteresztő módszer használata a leggazdaságosabb megoldás, ha hosszú időn át több eseményt is közvetít élő adatfolyamként, és már befektetett helyszíni kódolókba. További információt a [díjszabás](/pricing/details/media-services/) nyújt.
+
 - Egy helyszíni élő kódoló egy egyfajta sávszélességű adatfolyamot küld a csatornának, amelyen engedélyezve van a Media Services használatával történő élő kódolás a következő formátumok egyikében: RTP (MPEG-TS), RTMP vagy Smooth Streaming (töredékes MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
 
@@ -185,7 +186,7 @@ Az Azure Media Services biztosította eszközökkel részletes, dinamikus ügyf�
 
 ##Az Azure CDN engedélyezése
 
-A Media Services támogatja az Azure CDN-integrációt. További információk az Azure CDN engedélyezéséről: [Adatfolyam-továbbítási végpontok kezelése egy Media Services-fiókban](media-services-manage-origins.md#enable_cdn)
+A Media Services támogatja az Azure CDN-integrációt. További információk az Azure CDN engedélyezéséről: [Adatfolyam-továbbítási végpontok kezelése egy Media Services-fiókban](media-services-portal-manage-streaming-endpoints.md)
 
 ##Media Services-fiók méretezése
 
@@ -193,7 +194,7 @@ A **Media Services** méretezése oly módon lehetséges, ha megadja a **folyama
 
 A Media Services-fiókját tárfiókok hozzáadásával is méretezheti. Minden tárfiók legfeljebb 500 TB kapacitású lehet. Ha a tárolót az alapértelmezett határérték fölé szeretné bővíteni, több tárfiókot is társíthat ugyanahhoz a Media Services-fiókhoz.
 
-[Ez a témakör](media-services-how-to-scale.md) hivatkozásokat tartalmaz a kapcsolódó témakörökre.
+[Ez a témakör](media-services-portal-scale-streaming-endpoints.md) hivatkozásokat tartalmaz a kapcsolódó témakörökre.
 
 ##Támogatás
 
@@ -222,6 +223,6 @@ További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

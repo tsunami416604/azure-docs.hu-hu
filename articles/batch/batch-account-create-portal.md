@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/26/2016"
+    ms.date="09/21/2016"
     ms.author="marsma"/>
+
 
 # Azure Batch-fiókok létrehozása az Azure Portalon
 
@@ -22,13 +23,13 @@
 - [Azure Portal](batch-account-create-portal.md)
 - [Batch Management .NET](batch-management-dotnet.md)
 
-Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az [Azure Portalon][azure_portal], és hol találja a legfontosabb fióktulajdonságokat, például a hívóbetűket és a fiókok URL-címeit. A Batch díjszabását is ismertetjük, valamint azt, hogyan csatolhat Azure Storage-fiókot a Batch-fiókjához, hogy [alkalmazáscsomagokat](batch-application-packages.md) használhasson, és [megőrizhesse a feladatok és tevékenységek kimenetét](batch-task-output.md).
+Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az [Azure Portalon][azure_portal], és hol találja a legfontosabb fióktulajdonságokat, például a hozzáférési kulcsokat és a fiókok URL-címeit. A Batch díjszabását is ismertetjük, valamint azt, hogyan csatolhat Azure Storage-fiókot a Batch-fiókjához, hogy [alkalmazáscsomagokat](batch-application-packages.md) használhasson, és [megőrizhesse a feladatok és tevékenységek kimenetét](batch-task-output.md).
 
 ## Batch-fiók létrehozása
 
 1. Jelentkezzen be az [Azure Portalra][azure_portal].
 
-2. Kattintson az **Új** > **Virtuális gépek** > **Batch-szolgáltatás** elemre.
+2. Kattintson az **Új** > **Számítás** > **Batch-szolgáltatás** elemre.
 
     ![Batch a Piactéren][marketplace_portal]
 
@@ -62,7 +63,7 @@ A fiók létrehozása után megnyithatja a **Batch-fiók panelt** a beállítás
 
 ![A Batch-fiók URL-címe a portálon][account_url]
 
-* **Hívóbetűk**: Az alkalmazásainak hívóbetűre is szüksége van, amikor a Batch-fiókban található erőforrásokkal dolgozik. A Batch-fiók hívóbetűinek megtekintéséhez vagy újbóli létrehozásához írja be a `keys` kifejezést a bal oldali menü **Keresés** mezőjébe a Batch-fiók panelen, majd válassza a **Kulcsok** lehetőséget.
+* **Hozzáférési kulcsok**: Az alkalmazásainak hozzáférési kulcsra is szüksége van, amikor a Batch-fiókban található erőforrásokkal dolgozik. A Batch-fiók hozzáférési kulcsainak megtekintéséhez vagy újbóli létrehozásához írja be a `keys` kifejezést a bal oldali menü **Keresés** mezőjébe a Batch-fiók panelen, majd válassza a **Kulcsok** lehetőséget.
 
     ![A Batch-fiók kulcsai az Azure Portalon][account_keys]
 
@@ -80,9 +81,9 @@ A Batch jelenleg *csak* az **Általános célú** tárfióktípust támogatja, a
 
 Érdemes létrehozni egy Storage-fiókot kifejezetten a Batch-fiók általi használatra.
 
->[AZURE.WARNING] Körültekintően járjon el, amikor újból létrehozza a társított Storage-fiók hívóbetűit. Csak egy tárfiók-hívóbetűt hozzon létre ismét, és kattintson a társított tárfiók panelén a **Kulcsok szinkronizálása** gombra. Várjon öt percet, hogy a rendszer feltöltse hívóbetűkkel a készletekben található számítási csomópontokat, majd szükség esetén hozza létre újra és szinkronizálja a másik hívóbetűt. Ha mindkét hívóbetűt egyszerre hozza létre újra, a számítási csomópontok nem tudják szinkronizálni egyiket sem, és elveszítik a Storage-fiókhoz való hozzáférést.
+>[AZURE.WARNING] Körültekintően járjon el, amikor újból létrehozza a társított Storage-fiók hozzáférési kulcsait. A Storage-fiókhoz csak egy hozzáférési kulcsot hozzon létre ismét, és kattintson a társított tárfiók panelén a **Kulcsok szinkronizálása** gombra. Várjon öt percet, hogy a rendszer propagálja a hozzáférési kulcsokat a készletekben található számítási csomópontokra, majd szükség esetén hozza létre újra és szinkronizálja a másik hozzáférési kulcsot. Ha mindkét hozzáférési kulcsot egyszerre hozza létre újra, a számítási csomópontok nem tudják szinkronizálni egyiket sem, és elveszítik a Storage-fiókhoz való hozzáférést.
 
-  ![A tárfiók hívóbetűinek újbóli létrehozása][4]
+  ![A tárfiók hozzáférési kulcsainak ismételt létrehozása][4]
 
 ## A Bach szolgáltatás kvótái és korlátozásai
 
@@ -116,7 +117,7 @@ Az Azure Portal használata mellett a következőkkel is létrehozhat és kezelh
 [azure_portal]: https://portal.azure.com
 [batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
 
-[4]: ./media/batch-account-create-portal/batch_acct_04.png "A tárfiók hívóbetűinek újbóli létrehozása"
+[4]: ./media/batch-account-create-portal/batch_acct_04.png "A tárfiók hozzáférési kulcsainak ismételt létrehozása"
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace_batch.PNG
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
@@ -127,6 +128,6 @@ Az Azure Portal használata mellett a következőkkel is létrehozhat és kezelh
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

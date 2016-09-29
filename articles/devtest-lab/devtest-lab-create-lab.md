@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Labor létrehozása a DevTest Labs szolgáltatásban | Microsoft Azure"
-    description="Új labor létrehozása a DevTest Labs szolgáltatásban virtuális gépekhez"
+    pageTitle="Labor létrehozása az Azure DevTest Labs szolgáltatásban | Microsoft Azure"
+    description="Labor létrehozása virtuális gépekhez az Azure DevTest Labs szolgáltatásban"
     services="devtest-lab,virtual-machines"
     documentationCenter="na"
     authors="tomarcher"
@@ -13,25 +13,25 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/25/2016"
+    ms.date="09/12/2016"
     ms.author="tarcher"/>
+
 
 # Labor létrehozása az Azure DevTest Labs szolgáltatásban
 
 ## Előfeltételek
 
-Labor létrehozásához a következőkre lesz szüksége:
+Labor létrehozásához a következőkre van szüksége:
 
 - Azure-előfizetés. Az Azure megvásárlási lehetőségeinek ismertetése: [Az Azure megvásárlása](https://azure.microsoft.com/pricing/purchase-options/) vagy [Ingyenes egy hónapos próbaverzió](https://azure.microsoft.com/pricing/free-trial/). Az előfizetés tulajdonosának kell lennie a labor létrehozásához.
-- Azure-erőforráscsoport a laborhoz. Lásd: [Az Azure Resource Manager áttekintése](../resource-group-overview.md) és [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
 
-## Labor létrehozása
+## A labor létrehozásának lépései az Azure DevTest Labs szolgáltatásban
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor létrehozására az Azure DevTest Labs szolgáltatásban. 
 
-1. Válassza a **Tallózás** lehetőséget.
+1. Jelentkezzen be az [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **DevTest Labs** elemet a listából.
+1. Válassza a **További szolgáltatások**, majd a **DevTest Labs** elemet a listából.
 
 1. A **DevTest Labs** panelen válassza a **Hozzáadás** lehetőséget.
 
@@ -40,8 +40,15 @@ Labor létrehozásához a következőkre lesz szüksége:
 1. A **Fejlesztési és tesztelési labor létrehozása** panelen:
 
     1. Adja meg a **Labor nevét**.
+    
     1. Válassza ki a laborhoz társítani kívánt **Előfizetést**.
+    
     1. Válassza ki a labor tárolásának **Helyét**.
+    
+    1. Válassza az **Automatikus leállítás** elemet annak megadásához, hogy engedélyezi-e az automatikus leállítást a labor összes virtuális gépénél (valamint az automatikus leállítás paramétereit is megadhatja).
+    
+    1. Válassza a **Tárolótípus** elemet a labor virtuális gépéhez tartozó tárolólemez típusának jelöléséhez. 
+    
     1. Kattintson a **Létrehozás** gombra.
 
     ![Laborpanel létrehozása](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
@@ -63,6 +70,6 @@ A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
 - [Összetevőkkel rendelkező virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm-with-artifacts.md).
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

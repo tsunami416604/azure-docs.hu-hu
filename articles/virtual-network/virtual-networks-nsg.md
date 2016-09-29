@@ -15,6 +15,7 @@
    ms.date="02/11/2016"
    ms.author="jdial" />
 
+
 # Mi az a hálózati biztonsági csoport (NSG)?
 
 A hálózati biztonsági csoport (NSG) tartalmaz egy hozzáférés-vezérlési listát (ACL) a szabályokról, amelyek egy virtuális hálózaton belül engedélyezik vagy megtagadják a virtuálisgép-példányokra irányuló hálózati forgalmat. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Amikor egy NSG-t hozzárendelnek egy alhálózathoz, az ACL szabályok érvényessé válnak az alhálózat összes virtuálisgép-példányára. Emellett egy adott virtuális gépre irányuló forgalmat tovább is lehet korlátozni azzal hogy egy NSG-t közvetlenül ahhoz a virtuális géphez rendelnek.
@@ -42,8 +43,8 @@ Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák.
 |**Protocol (Protokoll)**|A szabálynak megfelelő protokoll|TCP, UDP vagy \*|A \* protokollként történő használata tartalmazza az ICMP-t (csak kelet–nyugat irányú forgalom), valamint az UDP-t és a TCP-t, és csökkentheti a szükséges szabályok számát<br/>A \* használata azonban túl széles körű lehet, ezért ügyeljen arra, hogy csak szükség esetén használja|
 |**Forrásporttartomány**|A szabálynak megfelelő forrásporttartomány|Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65635) vagy \* (minden porthoz)|A forrásportok rövid élettartamúak is lehetnek. Ha az ügyfélprogram nem egy adott portot használ, a legtöbb esetben a „*” jelet használja.<br/>A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani
 |**Célporttartomány**|A szabálynak megfelelő célporttartomány|Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65535) vagy \* (minden porthoz)|A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani
-|**Forráscímelőtag**|A szabálynak megfelelő forráscím-előtag vagy címke|Egyetlen IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#Default-Tags) vagy * (minden címhez)|Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez|
-|**Célcím-előtag**|A szabálynak megfelelő célcím-előtag vagy címke|Egyetlen IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#Default-Tags) vagy * (minden címhez)|Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez|
+|**Forráscímelőtag**|A szabálynak megfelelő forráscím-előtag vagy címke|Egyetlen IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez)|Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez|
+|**Célcím-előtag**|A szabálynak megfelelő célcím-előtag vagy címke|Egyetlen IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez)|Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez|
 |**Irány**|A forgalom szabálynak megfelelő iránya|bejövő vagy kimenő|A bejövő vagy kimenő szabályokat a rendszer külön dolgozza fel, az irány alapján|
 |**Prioritás**|A szabályokat a rendszer prioritás szerinti sorrendben ellenőrzi, és amint talál egy érvényes szabályt, nem vizsgálja, hogy a többi szabálynak megfelel-e a forgalom|100 és 4096 közötti szám|A prioritások meghatározásakor érdemes 100-zas lépésközt használni, hogy az új szabályoknak is legyen hely a meglévő szabályok között|
 |**Hozzáférés**|Az alkalmazandó hozzáférés típusa, ha a csomag megfelel a szabálynak|engedélyezés vagy megtagadás|Ne feledje, hogy ha egy csomag egyik szabálynak sem felel meg, akkor a rendszer eldobja a csomagot|
@@ -124,13 +125,13 @@ Az NSG-ket a hagyományos és a Resource Manager üzembe helyezési modellel is 
 
 |Üzembe helyezési eszköz|Klasszikus|Resource Manager|
 |---|---|---|
-|klasszikus portál|![Nem][red]|![Nem][red]|
-|Azure Portal|![Igen][green]|[](virtual-networks-create-nsg-arm-pportal.md)![Igen][green]|
-|PowerShell|[](virtual-networks-create-nsg-classic-ps.md)![Igen][green]|[](virtual-networks-create-nsg-arm-ps.md)![Igen][green]|
-|Azure CLI|[](virtual-networks-create-nsg-classic-cli.md)![Igen][green]|[](virtual-networks-create-nsg-arm-cli.md)![Igen][green]|
-|ARM-sablon|![Nem][red]|[](virtual-networks-create-nsg-arm-template.md)![Igen][green]|
+|klasszikus portál|![Nem](./media/virtual-network-nsg-overview/red.png)|![Nem](./media/virtual-network-nsg-overview/red.png)|
+|Azure Portal|![Igen](./media/virtual-network-nsg-overview/green.png)|[![Yes][green]](virtual-networks-create-nsg-arm-pportal.md)|
+|PowerShell|[![Yes][green]](virtual-networks-create-nsg-classic-ps.md)|[![Yes][green]](virtual-networks-create-nsg-arm-ps.md)|
+|Azure CLI|[![Yes][green]](virtual-networks-create-nsg-classic-cli.md)|[![Yes][green]](virtual-networks-create-nsg-arm-cli.md)|
+|ARM-sablon|![Nem](./media/virtual-network-nsg-overview/red.png)|[![Yes][green]](virtual-networks-create-nsg-arm-template.md)|
 
-|**Kulcs**|![Igen][green] Támogatott. A cikk megtekintéséhez kattintson ide.|![Nem][red] Nem támogatott.|
+|**Kulcs**|![Igen](./media/virtual-network-nsg-overview/green.png) Támogatott.|![Nem](./media/virtual-network-nsg-overview/red.png) Nem támogatott.|
 |---|---|---|
 
 ## Tervezés
@@ -278,12 +279,12 @@ Mivel a fenti NSG-k közül néhányat különálló hálózati adapterekhez kel
 - [Deploy NSGs in Resource Manager](virtual-networks-create-nsg-arm-pportal.md) (NSG-k üzembe helyezése a Resource Manager eszközzel).
 - [Manage NSG logs](virtual-network-nsg-manage-log.md) (NSG-naplók kezelése).
 
-[zöld]: ./media/virtual-network-nsg-overview/green.png
+[green]: ./media/virtual-network-nsg-overview/green.png
 [sárga]: ./media/virtual-network-nsg-overview/yellow.png
 [vörös]: ./media/virtual-network-nsg-overview/red.png
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -14,8 +14,9 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/02/2016"
-   ms.author="narayanannamalai"/>
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai;annahar"/>
+
 
 # Virtuális hálózatok közötti társviszony létrehozása Resource Manager-sablonok használatával
 
@@ -29,7 +30,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
 1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 
-    Megjegyzés: Az [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) tartalmazza a virtuális hálózatok közötti társviszonyok kezeléséhez szükséges PowerShell-parancsmagot.
+    > [AZURE.NOTE] Az [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) tartalmazza a virtuális hálózatok közötti társviszonyok kezeléséhez szükséges PowerShell-parancsmagot.
 
 2. Az alábbi szöveg tartalmazza a VNet1 felől a VNet2 felé irányuló virtuális hálózatok közötti társviszony-létesítési csatolás definícióját a fenti forgatókönyv alapján. Másolja az alábbi szöveget, és mentse azt egy VNetPeeringVNet1.json nevű fájlba.
 
@@ -58,7 +59,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
             }
         ]
         }
-    
+
 3. Az alábbi szakasz tartalmazza a VNet2 felől a VNet1 felé irányuló virtuális hálózatok közötti társviszony-létesítési csatolás definícióját a fenti forgatókönyv alapján.  Másolja az alábbi szöveget, és mentse azt egy VNetPeeringVNet2.json nevű fájlba.
 
         {
@@ -96,14 +97,14 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
   	|AllowGatewayTransit|Lehetővé teszi a társ virtuális hálózat számára a virtuális hálózat átjárójának használatát.|Nem|
   	|UseRemoteGateways|A társ virtuális hálózat átjárójának használata. A társ virtuális hálózatnak rendelkeznie kell konfigurált átjáróval, és be kell jelölni az AllowGatewayTransit tulajdonságot. Nem használhatja ezt a beállítást, ha konfigurált átjárót.|Nem|
 
-    A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik a fenti tulajdonságokkal. Az AllowVirtualNetworkAccess értékét beállíthatja például True értékűre a VNet1 felől a VNet2 felé irányuló virtuális hálózatok közötti társviszony-létesítési csatolásra vonatkozóan, illetve beállíthatja False értékűre a másik irányba mutató társviszony-létesítési csatolásra vonatkozóan. 
+    A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik a fenti tulajdonságokkal. Az AllowVirtualNetworkAccess értékét beállíthatja például True értékűre a VNet1 felől a VNet2 felé irányuló virtuális hálózatok közötti társviszony-létesítési csatolásra vonatkozóan, illetve beállíthatja False értékűre a másik irányba mutató társviszony-létesítési csatolásra vonatkozóan.
 
 
 4. A sablonfájl üzembe helyezéséhez futtathatja a New-AzureRmResourceGroupDeployment parancsmagot, amely létrehozza vagy frissíti az üzemelő példányt. A Resource Manager-sablonok használatával kapcsolatos információkért tekintse meg ezt a [cikket](../resource-group-template-deploy.md).
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName <resource group name> -TemplateFile <template file path> -DeploymentDebugLogLevel all
 
-    > [AZURE.NOTE] Az erőforráscsoport nevét és a sablonfájlt szükség szerint cserélje le. 
+    > [AZURE.NOTE] Az erőforráscsoport nevét és a sablonfájlt szükség szerint cserélje le.
 
     Az alábbiakban egy példát láthat a fenti forgatókönyv alapján:
 
@@ -167,7 +168,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
         New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
 
-    Ez nem követelmény, társviszony akkor is létesíthető, ha a felhasználók önállóan adnak ki társviszony-létesítési kérelmet a megfelelő virtuális hálózataikra, és a kérések megegyeznek. Ha a helyi virtuális hálózat felhasználóihoz hozzáadja a másik virtuális hálózat rendszergazdai engedéllyel rendelkező felhasználóit, azzal leegyszerűsítheti a beállítást. 
+    Ez nem követelmény, társviszony akkor is létesíthető, ha a felhasználók önállóan adnak ki társviszony-létesítési kérelmet a megfelelő virtuális hálózataikra, és a kérések megegyeznek. Ha a helyi virtuális hálózat felhasználóihoz hozzáadja a másik virtuális hálózat rendszergazdai engedéllyel rendelkező felhasználóit, azzal leegyszerűsítheti a beállítást.
 
 2. Jelentkezzen be az Azure-ba a B előfizetés rendszergazdai engedéllyel rendelkező User-B felhasználói fiókjával, és futtassa a következő parancsmagot:
 
@@ -178,7 +179,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet3.json -DeploymentDebugLogLevel all
 
     Itt látható a JSON-fájl definiálásának módja.  
-    
+
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
@@ -204,11 +205,11 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
             }
         ]
         }
-   
+
 4. A User-B felhasználó bejelentkezési munkamenetében futtassa az alábbi parancsmagot:
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet5.json -DeploymentDebugLogLevel all
-   
+
     Itt látható a JSON-fájl definiálásának módja:
 
         {
@@ -236,8 +237,8 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
             }
         ]
         }
- 
-    Miután létrejött a társviszony a forgatókönyv szerint, mindkét virtuális hálózaton képesnek kell lennie arra, hogy kapcsolatot kezdeményezzen bármelyik virtuális gépről bármelyik virtuális gépre az egyes előfizetésekben. 
+
+    Miután létrejött a társviszony a forgatókönyv szerint, mindkét virtuális hálózaton képesnek kell lennie arra, hogy kapcsolatot kezdeményezzen bármelyik virtuális gépről bármelyik virtuális gépre az egyes előfizetésekben.
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
 
@@ -272,7 +273,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
         ]
         }
 
-2. Az alábbiakban látható a VNet1 felől a HubVNet felé irányuló virtuális hálózatok közötti társviszony létrehozásához használható sablon. Vegye figyelembe, hogy az AllowForwardedTraffic True értékűre van beállítva. 
+2. Az alábbiakban látható a VNet1 felől a HubVNet felé irányuló virtuális hálózatok közötti társviszony létrehozásához használható sablon. Vegye figyelembe, hogy az AllowForwardedTraffic True értékűre van beállítva.
 
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -303,7 +304,61 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
 3. Miután létrejött a társviszony, ezen [cikk](virtual-network-create-udr-arm-ps.md) alapján meghatározhat felhasználó által megadott útvonalat a VNet1 forgalmának egy virtuális készüléken történő átirányításához a készülék képességeinek használata érdekében. Amikor meghatározza a következő ugrás címét az útvonalban, a címet beállíthatja a virtuális készülék IP-címére a társ HubVNet virtuális hálózatban.
 
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
 
-<!--HONumber=sep16_HO1-->
+Ha szeretne társviszonyt létrehozni különböző üzembe helyezési modelleken alapuló virtuális hálózatok között, kövesse az alábbi lépéseket:
+1. Az alábbi szöveg a VNET1 felől a VNET2 felé irányuló, virtuális hálózatok közötti társviszony-létesítési csatolás ezen forgatókönyv szerinti definícióját tartalmazza. Egy klasszikus virtuális hálózat Azure Resource Manager-alapú virtuális hálózathoz társításához csak egyetlen csatolás szükséges.
+
+    Meg kell adnia az előfizetése azonosítóját, amelyben a klasszikus virtuális hálózat vagy VNET2 található, és a MyResourceGroup rész helyére be kell helyettesítenie a megfelelő erőforráscsoport nevét.
+
+    {  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",  "contentVersion": "1.0.0.0",  "parameters": {  },  "variables": {  },  "resources": [      {      "apiVersion": "2016-06-01",      "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",      "name": "VNET1/LinkToVNET2",      "location": "[resourceGroup().location]",      "properties": {      "allowVirtualNetworkAccess": true,      "allowForwardedTraffic": false,      "allowGatewayTransit": false,      "useRemoteGateways": false,          "remoteVirtualNetwork": {          "id": "[resourceId('Microsoft.ClassicNetwork/virtualNetworks', 'VNET2')]"  }      }      }  ]  }
+
+2. A sablonfájl üzembe helyezéséhez futtassa a következő parancsmagot, amely létrehozza vagy frissíti az üzemelő példányt.
+
+        New-AzureRmResourceGroupDeployment -ResourceGroupName MyResourceGroup -TemplateFile .\VnetPeering.json -DeploymentDebugLogLevel all
+
+        Output shows:
+
+        DeploymentName          : VnetPeering
+        ResourceGroupName       : MyResourceGroup
+        ProvisioningState       : Succeeded
+        Timestamp               : XX/XX/YYYY 5:42:33 PM
+        Mode                    : Incremental
+        TemplateLink            :
+        Parameters              :
+        Outputs                 :
+        DeploymentDebugLogLevel : RequestContent, ResponseContent
+
+3. Az üzembe helyezés sikeres elvégzése után a társviszony állapotának megtekintéséhez futtathatja az alábbi parancsmagot:
+
+        Get-AzureRmVirtualNetworkPeering -VirtualNetworkName VNET1 -ResourceGroupName MyResourceGroup -Name LinkToVNET2
+
+        Output shows:
+
+        Name                             : LinkToVNET2
+        Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResource
+                                   Group/providers/Microsoft.Network/virtualNetworks/VNET1/virtualNetworkPeering
+                                   s/LinkToVNET2
+        Etag                             : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ResourceGroupName                : MyResourceGroup
+        VirtualNetworkName               : VNET1
+        PeeringState                     : Connected
+        ProvisioningState                : Succeeded
+        RemoteVirtualNetwork             : {
+                                     "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/M
+                                   yResourceGroup/providers/Microsoft.ClassicNetwork/virtualNetworks/VNET2"
+                                   }
+        AllowVirtualNetworkAccess        : True
+        AllowForwardedTraffic            : False
+        AllowGatewayTransit              : False
+        UseRemoteGateways                : False
+        RemoteGateways                   : null
+        RemoteVirtualNetworkAddressSpace : null
+
+Miután létrejött a társviszony a klasszikus virtuális hálózat és a Resource Manager-alapú virtuális hálózat között, a VNET1 bármely virtuális gépéről kapcsolatot kell, hogy tudjon kezdeményezni a VNET2 bármelyik virtuális gépére, illetve fordítva.
+
+
+
+<!--HONumber=Sep16_HO4-->
 
 

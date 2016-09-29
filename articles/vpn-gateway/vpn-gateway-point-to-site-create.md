@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Pont–hely VPN-kapcsolat konfigurálása Azure Virtual Networkhöz a klasszikus portál használatával | Microsoft Azure"
-   description="Biztonságosan csatlakozhat az Azure Virtual Networkhöz pont–hely VPN-kapcsolat létrehozásával."
+   pageTitle="Pont–hely VPN-átjárókapcsolat konfigurálása Azure Virtual Networkhöz a klasszikus portál használatával | Microsoft Azure"
+   description="Biztonságosan csatlakozhat az Azure Virtual Networkhöz pont–hely VPN Gateway-kapcsolat létrehozásával."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -17,15 +17,16 @@
    ms.date="08/31/2016"
    ms.author="cherylmc"/>
 
+
 # Pont–hely kapcsolat konfigurálása virtuális hálózat számára a klasszikus portálon
 
 > [AZURE.SELECTOR]
-- [PowerShell – Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
-- [Portál – Klasszikus](vpn-gateway-point-to-site-create.md)
+- [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [Klasszikus – Klasszikus portál](vpn-gateway-point-to-site-create.md)
 
-A pont–hely konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy konferenciáról, vagy akkor, ha csak néhány ügyfelet kíván csatlakoztatni a virtuális hálózathoz.
+A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy konferenciáról, vagy akkor, ha csak néhány ügyfelet kíván csatlakoztatni a virtuális hálózathoz.
 
-Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre virtuális hálózat pont–hely kapcsolattal a **klasszikus üzemi modellben** a klasszikus portál használatával. Jelenleg nem hozható létre ez a konfiguráció végpontok között az Azure Portalon a klasszikus üzemi modell esetén.
+Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre virtuális hálózat pont–hely kapcsolattal a **klasszikus üzemi modellben** a **klasszikus portál** használatával. Jelenleg nem hozható létre ez a konfiguráció végpontok között az Azure Portalon a klasszikus üzemi modell esetén. Néhány lépés az Azure Portalon is elvégezhető, de a VPN-ügyfél konfigurációjának letöltéséhez mindenképp szükség van a PowerShellre.
 
 A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet a működéshez. VPN-kapcsolat létesítéséhez manuálisan kell kezdeményezni a kapcsolatot az ügyfélszámítógépről. További információk a pont–hely kapcsolatokról: [VPN Gateway – gyakori kérdések](vpn-gateway-vpn-faq.md#point-to-site-connections) és [Tervezés és kialakítás](vpn-gateway-plan-design.md).
 
@@ -144,16 +145,30 @@ A virtuális hálózathoz való csatlakozáshoz emellett konfigurálnia kell a V
 
 3. Miután létrehozta és letöltötte a VPN-ügyfélcsomagot a klasszikus Azure portálról, telepítheti az ügyfélcsomagot azon az ügyfélszámítógépen, amelyet csatlakoztatni kíván a virtuális hálózathoz. Ha több ügyfélszámítógépen kívánja telepíteni a VPN-ügyfélcsomagot, ügyeljen arra, hogy mindegyiken telepítve legyen ügyféltanúsítvány.
 
-### 2. rész: A VPN-konfigurációs csomag telepítése az ügyfélen, és a kapcsolat elindítása
+### 2. rész: A VPN-konfigurációs csomag telepítése az ügyfélen
 
-1. Másolja a konfigurációs fájlt helyileg a virtuális hálózathoz csatlakoztatni kívánt számítógépre, és kattintson az .exe fájlra. Miután megtörtént a csomag telepítése, elindíthatja a VPN-kapcsolatot. A konfigurációs csomagot nem írta alá a Microsoft. Aláírhatja a csomagot a szervezete aláírószolgáltatásával, vagy saját kezűleg a [SignTool]( http://go.microsoft.com/fwlink/p/?LinkId=699327) használatával, de használhatja aláírás nélkül is. Ha azonban a csomag nincs aláírva, a telepítésekor megjelenik egy figyelmeztetés.
-2. Az ügyfélszámítógépen navigáljon a VPN-kapcsolatokhoz és keresse meg a létrehozott VPN-kapcsolatot. Ennek a neve megegyezik a virtuális hálózata nevével. Kattintson a **Connect** (Csatlakozás) gombra.
-3. Megjelenik egy előugró üzenet, amelyben létrehozható egy önaláírt tanúsítvány az átjáró végpontjához. Kattintson a **Folytatás** gombra emelt szintű jogosultságok használatához.
-4. A csatlakozás megkezdéséhez a **Kapcsolat** állapotlapon kattintson a **Csatlakozás** gombra.
-5. Ha megjelenik a **Tanúsítvány kiválasztása** képernyő, ellenőrizze, hogy az a csatlakozáshoz használni kívánt ügyféltanúsítványt mutatja-e. Ha nem, kattintson a legördülő nyílra, válassza ki a helyes tanúsítványt, majd kattintson az **OK** gombra.
-6. Ekkor csatlakozik a virtuális hálózathoz, és hozzáférhet a hálózaton elérhető összes szolgáltatáshoz és virtuális géphez.
+1. Másolja a konfigurációs fájlt helyileg a virtuális hálózathoz csatlakoztatni kívánt számítógépre, és kattintson az .exe fájlra. 
 
-### 3. rész: A VPN-kapcsolat ellenőrzése
+2. Miután megtörtént a csomag telepítése, elindíthatja a VPN-kapcsolatot. A konfigurációs csomagot nem írta alá a Microsoft. Aláírhatja a csomagot a szervezete aláírószolgáltatásával, vagy saját kezűleg a [SignTool]( http://go.microsoft.com/fwlink/p/?LinkId=699327) használatával, de használhatja aláírás nélkül is. Ha azonban a csomag nincs aláírva, a telepítésekor megjelenik egy figyelmeztetés.
+
+3. Nyissa meg az ügyfélszámítógépen a **Hálózati beállítások** eszközt, és kattintson a **VPN** elemre. A listán láthatja a kapcsolatot. Annak a virtuális hálózatnak a nevét mutatja, amellyel kapcsolatot létesít, és következőre hasonlít: 
+
+    ![VPN-ügyfél](./media/vpn-gateway-point-to-site-create/vpn.png "VPN client")
+
+
+### 3. rész – Csatlakozás az Azure-hoz
+
+1. Csatlakozzon a virtuális hálózathoz. Ehhez navigáljon az ügyfélszámítógépen a VPN-kapcsolatokhoz, és keresse meg a létrehozott VPN-kapcsolatot. Ugyanaz a neve, mint a virtuális hálózatnak. Kattintson a **Connect** (Csatlakozás) gombra. Megjelenhet egy előugró üzenet, amely a tanúsítvány használatára utal. Ilyen esetében kattintson a **Folytatás** gombra emelt szintű jogosultságok használatához. 
+
+2. A csatlakozás megkezdéséhez a **Kapcsolat** állapotlapon kattintson a **Csatlakozás** gombra. Ha megjelenik a **Tanúsítvány kiválasztása** képernyő, ellenőrizze, hogy az a csatlakozáshoz használni kívánt ügyféltanúsítványt mutatja-e. Ha nem, kattintson a legördülő nyílra, válassza ki a helyes tanúsítványt, majd kattintson az **OK** gombra.
+
+    ![2. VPN-ügyfél](./media/vpn-gateway-point-to-site-create/clientconnect.png "VPN client connection")
+
+3. Ekkor létre kell jönnie a kapcsolatnak.
+
+    ![3. VPN-ügyfél](./media/vpn-gateway-point-to-site-create/connected.png "VPN client connection 2")
+
+### 4. rész: A VPN-kapcsolat ellenőrzése
 
 1. Annak ellenőrzéséhez, hogy a VPN-kapcsolat aktív-e, nyisson meg egy rendszergazda jogú parancssort, és futtassa az *ipconfig/all* parancsot.
 2. Tekintse meg az eredményeket. A kapott IP-cím a virtuális hálózat létrehozásakor megadott pont–hely kapcsolati címtartományba tartozó valamelyik cím. Az eredmények a következőhöz hasonlóak:
@@ -181,6 +196,6 @@ További információ a virtuális hálózatokról a [Virtual Network-dokumentá
 
 
 
-<!---HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

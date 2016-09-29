@@ -5,7 +5,7 @@
     services="hdinsight"
     documentationCenter=""
     authors="mumian"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -16,6 +16,7 @@
     ms.topic="get-started-article"
     ms.date="07/25/2016"
     ms.author="jgao"/>
+
 
 
 
@@ -39,9 +40,9 @@ Ezen HBase oktatóanyag elkezdéséhez a következőkkel kell rendelkeznie:
 
 ## HBase-fürt létrehozása
 
-A következő eljárás Azure ARM sablonnal hoz létre HBase-fürtöt. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban).
+A következő eljárás Azure Resource Manager-sablonnal hoz létre egy HBase-fürtöt. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban).
 
-1. Az alábbi képre kattintva megnyithat egy ARM-sablont az Azure portálon. Az ARM-sablon a nyilvános blobtárolóban található. 
+1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon egy nyilvános blobtárolóban található. 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -188,7 +189,7 @@ A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ez a szaka
     * **-u** - A kérés hitelesítéséhez használt felhasználónév és jelszó.
     * **-G** - Jelzi, hogy ez egy GET kérés.
 
-2. Használja az alábbi parancsot a meglévő HBase táblák listázásához:
+2. Használja az alábbi parancsot a meglévő HBase-táblák listázásához:
 
         curl -u <UserName>:<Password> \
         -G https://<ClusterName>.azurehdinsight.net/hbaserest/
@@ -247,7 +248,7 @@ Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezh
 4. A PuTTY munkamenet képernyőjén lévő Basic (Alapszintű) beállításokban adja meg a következő értékeket:
 
     - **Host Name** (Állomásnév): a HDInsight-kiszolgáló SSH-címe a Host Name (Állomásnév) (vagy IP-cím) mezőben. Az SSH-cím a fürtnév, majd **-ssh.azurehdinsight.net**. Például: *mycluster-ssh.azurehdinsight.net*.
-    - **Port**: 22. A 0 átjárócsomóponton az ssh port a 22.  
+    - **Port**: 22. Az elsődleges átjárócsomóponton a 22-es port az SSH-port.  
 5. A párbeszédpanel bal oldalán lévő **Category** (Kategória) szakaszban bontsa ki a **Connection** (Kapcsolat), majd az **SSH** elemet, majd kattintson a **Tunnels** (Alagutak) lehetőségre.
 6. Adja meg a következő információkat az SSH-porttovábbító űrlapot vezérlő beállításokban:
 
@@ -327,6 +328,6 @@ További tudnivalókért lásd:
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

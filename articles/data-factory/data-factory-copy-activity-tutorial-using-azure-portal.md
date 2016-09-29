@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Editor használatával | Microsoft Azure" 
+    pageTitle="Oktatóanyag: Másolási tevékenységet tartalmazó folyamat létrehozása az Azure Portallal | Microsoft Azure" 
     description="Ez az oktatóanyag bemutatja, hogyan hozhat létre Másolási tevékenységgel rendelkező Azure Data Factory-folyamatot az Azure Portal Data Factory Editor eszközével." 
     services="data-factory" 
     documentationCenter="" 
@@ -13,32 +13,35 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="08/01/2016" 
+    ms.date="09/16/2016" 
     ms.author="spelluru"/>
 
-# Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Editor használatával
+
+# Oktatóanyag: Másolási tevékenységet tartalmazó folyamat létrehozása az Azure Portallal
 > [AZURE.SELECTOR]
-- [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [A Data Factory Editor használata](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [A PowerShell használata](data-factory-copy-activity-tutorial-using-powershell.md)
-- [A Visual Studio használata](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [A REST API használata](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [A .NET API használata](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [A Másolás varázsló használata](data-factory-copy-data-wizard-tutorial.md)
+- [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 
 
-Ez az oktatóanyag a következő lépéseket tartalmazza:
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg Azure data factoryt az Azure Portallal. Az adat-előállítóban szereplő adatcsatorna másolási tevékenységgel másolja az adatokat az Azure Blob Storage-ből az Azure SQL Database-be.
+
+Az oktatóanyag során a következő lépéseket fogja elvégezni:
 
 Lépés | Leírás
 -----| -----------
 [Azure data factory létrehozása](#create-data-factory) | Ebben a lépésben egy Azure data factoryt hoz létre **ADFTutorialDataFactory** néven.  
 [Társított szolgáltatások létrehozása](#create-linked-services) | Ebben a lépésben létrehozza a következő két társított szolgáltatást: **AzureStorageLinkedService** és **AzureSqlLinkedService**. Az AzureStorageLinkedService az Azure-tárolót, az AzureSqlLinkedService pedig az Azure SQL Database-t társítja az ADFTutorialDataFactory data factoryhez. A folyamat bemeneti adatai az Azure Blob Storage egyik blobtárolójában, a kimeneti adatok pedig az Azure SQL Database egyik táblájában találhatók. Ezért ezt a két adattárat társított szolgáltatásként kell hozzáadnia a data factoryhez.      
-[Bemeneti és kimeneti adatkészletek létrehozása](#create-datasets) | Az előző lépésben társított szolgáltatásokat hozott létre, amelyek a bemeneti/kimeneti adatokat tartalmazó adattárakra hivatkoznak. Ebben a lépésben két data factory-táblát határoz meg – az **EmpTableFromBlob** és az **EmpSQLTable** táblát –, amelyek az adattárakban tárolt bemeneti/kimeneti adatokat képviselik. Az EmpTableFromBlob táblához megadja a forrásadatokkal rendelkező blobot tároló blobtárolót, az EmpSQLTable táblához pedig megadja a kimeneti adatokat tároló SQL-táblát. Egyéb tulajdonságokat is megad, például a szerkezetet, rendelkezésre állást és egyebeket. 
+[Bemeneti és kimeneti adatkészletek létrehozása](#create-datasets) | Az előző lépésben társított szolgáltatásokat hozott létre, amelyek a bemeneti/kimeneti adatokat tartalmazó adattárakra hivatkoznak. Ebben a lépésben két data factory-táblát határoz meg – az **EmpTableFromBlob** és az **EmpSQLTable** táblát –, amelyek az adattárakban tárolt bemeneti/kimeneti adatokat képviselik. Az EmpTableFromBlob táblához megadja a forrásadatokkal rendelkező blobot tároló blobtárolót, az EmpSQLTable táblához pedig megadja a kimeneti adatokat tároló SQL-táblát. Egyéb tulajdonságokat is megad, például a szerkezetet, rendelkezésre állást és a szabályzatot. 
 [Folyamat létrehozása](#create-pipeline) | Ebben a lépésben létrehozza az **ADFTutorialPipeline** nevű folyamatot az ADFTutorialDataFactory elemben. A folyamat része egy **Másolási tevékenység**, amely bemeneti adatokat másol az Azure-blobból a kimeneti Azure SQL-táblába. A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban. Egy olyan, globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és méretezhető módon másolja át az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket. 
 [Folyamat figyelése](#monitor-pipeline) | Ebben a lépésben a bemeneti és kimeneti táblák szeleteit figyeli az Azure Portal használatával.
 
 > [AZURE.IMPORTANT] 
-> Tekintse meg [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és az oktatóanyag elvégzése előtt hajtsa végre az előfeltételként felsorolt lépéseket.
+> Olvassa el [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, és az oktatóanyag elvégzése előtt hajtsa végre az **előfeltételként** felsorolt lépéseket.
 
 ## Data factory létrehozása
 Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialDataFactory** nevű Azure data factoryt.
@@ -51,7 +54,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
     1. A**Name** (Név) mezőbe írja be a következőt: **ADFTutorialDataFactory**. 
     
         ![A New data factory (Új data factory) panel][image-data-factory-getstarted-new-data-factory-blade]
-    2. Kattintson a **RESOURCE GROUP NAME** (ERŐFORRÁSCSOPORT NEVE) elemre, és tegye a következőket:
+    2. Kattintson a **RESOURCE GROUP NAME** (ERŐFORRÁSCSOPORT NEVE) elemre, és végezze el a következő lépéseket:
         1. Kattintson a **Create a new resource group** (Új erőforráscsoport létrehozása) elemre.
         2. A **Create resource group** (Erőforráscsoport létrehozása) panelen az erőforráscsoport **neveként** adja meg az **ADFTutorialResourceGroup** kifejezést, és kattintson az **OK** gombra. 
 
@@ -151,7 +154,7 @@ A tábla egy sémával rendelkező, téglalap alakú adatkészlet. Ebben a lép�
         }
 
         
-     Vegye figyelembe a következőket: 
+     Vegye figyelembe a következő szempontokat: 
     
     - Az adatkészlet **típusa** **AzureBlob** értékre van állítva.
     - A **linkedServiceName** tulajdonság **AzureStorageLinkedService** értékre van állítva. Ezt a társított szolgáltatást a 2. lépésben hozta létre.
@@ -182,7 +185,7 @@ A tábla egy sémával rendelkező, téglalap alakú adatkészlet. Ebben a lép�
 2. Kattintson az eszköztár **Deploy** (Üzembe helyezés) gombjára az **EmpTableFromBlob** tábla létrehozásához és üzembe helyezéséhez. Győződjön meg arról, hogy a szerkesztő címsorában megjelenik a **TABLE CREATED SUCCESSFULLY** (A TÁBLA SIKERESEN LÉTREJÖTT) üzenet.
 
 ### Kimeneti adatkészlet létrehozása
-A lépés ezen részében egy kimeneti adatkészletet hoz létre **EmpSQLTable** néven. Ez az adatkészlet egy SQL-táblára mutat az Azure SQL Database-ben, amelyet az **AzureSqlLinkedService** jelöl. 
+A lépés ezen részében egy kimeneti adatkészletet hoz létre **EmpSQLTable** néven. Ez az adathalmaz egy SQL-táblára mutat abban az Azure SQL Database-adatbázisban, amelyet az **AzureSqlLinkedService** jelöl. 
 
 1. A Data Factory **szerkesztőjében** kattintson az eszköztár **New dataset** (Új adatkészlet) gombjára, és a legördülő menüben válassza az **Azure SQL table** (Azure SQL-tábla) lehetőséget. 
 2. A jobb oldali panelen cserélje le a JSON-t a következő JSON-kódrészletre:
@@ -213,10 +216,10 @@ A lépés ezen részében egy kimeneti adatkészletet hoz létre **EmpSQLTable**
         }
 
         
-     Vegye figyelembe a következőket: 
+     Vegye figyelembe a következő szempontokat: 
     
     * Az adatkészlet **type** (típus) tulajdonsága **AzureSQLTable** értékre van állítva.
-    * A **linkedServiceName** tulajdonság **AzureSqlLinkedService** értékre van állítva (ezt a társított szolgáltatást a 2. lépésben hozta létre).
+    * A **linkedServiceName** tulajdonság az **AzureSqlLinkedService** értékre van állítva (ezt a társított szolgáltatást a 2. lépésben hozta létre).
     * A **tablename** tulajdonság **emp** értékre van állítva.
     * Az adatbázis emp táblájában három oszlop van – **ID**, **FirstName** és **LastName**. Az ID azonosítóoszlop, ezért itt csak a **FirstName** és **LastName** tulajdonságokat kell megadnia.
     * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
@@ -276,7 +279,7 @@ Ebben a lépésben létrehoz egy **Másolási tevékenységgel** rendelkező fol
           }
         } 
 
-    Vegye figyelembe a következőket:
+    Vegye figyelembe a következő szempontokat:
 
     - A tevékenységek szakaszban csak egyetlen olyan tevékenység van, amelynek a **type** (típus) tulajdonsága **CopyActivity** értékre van állítva.
     - A tevékenység bemenetének beállítása **EmpTableFromBlob**, a kimeneté pedig **EmpSQLTable**.
@@ -303,7 +306,7 @@ Ebben a lépésben létrehoz egy **Másolási tevékenységgel** rendelkező fol
 
     ![Data Factory panel – Diagram csempe][image-datafactoryblade-diagramtile]
 
-2. Az alábbihoz hasonló diagramnak kell megjelennie: 
+2. Az alábbi képhez hasonló diagramnak kell megjelennie: 
 
     ![Diagramnézet][image-data-factory-get-started-diagram-blade]
 
@@ -330,7 +333,7 @@ Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factor
     ![A Datasets (Adatkészletek) panel az EmpTableFromBlob tábla kijelölésével][image-data-factory-get-started-datasets-emptable-selected]   
 5. Figyelje meg, hogy az aktuális időpontig már létrejöttek az adatszeletek, és hogy **Ready** (Kész) állapotúak, mert az **emp.txt** fájl folyamatosan megtalálható a következő blobtárolóban: **adftutorial\input**. Győződjön meg arról, hogy a panel alsó részén található **Recently failed slices** (Legutóbbi sikertelen szeletek) részben egy szelet sem jelenik meg.
 
-    Mind a **Recently updated slices** (A legutóbb frissített szeletek), mind pedig a **Recently failed slices** (Legutóbbi sikertelen szeletek) lista a **LAST UPDATE TIME** (LEGUTÓBBI FRISSÍTÉS IDŐPONTJA) szerint van rendezve. A szelet frissítési időpontja az alábbi esetekben változik. 
+    Mind a **Recently updated slices** (A legutóbb frissített szeletek), mind pedig a **Recently failed slices** (Legutóbbi sikertelen szeletek) lista a **LAST UPDATE TIME** (LEGUTÓBBI FRISSÍTÉS IDŐPONTJA) szerint van rendezve. A szelet frissítési időpontja az alábbi esetekben változik: 
     
     Kattintson a listák címére vagy a folytatást jelző pontokra **(...)** a szeletek hosszabb listájának megtekintéséhez. A szeletek szűréséhez kattintson az eszköztár **Filter** (Szűrés) elemére.  
     
@@ -462,6 +465,6 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
  
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

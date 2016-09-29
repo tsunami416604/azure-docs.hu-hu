@@ -6,15 +6,16 @@
    authors="MGoedtel"
    manager="jwhit"
    editor="tysonn"
-   keywords="azure active directory user, azure service management, azure ad user account" />
+   keywords="azure active directory felhasználó, azure szolgáltatás kezelése, azure ad és felhasználói fiók" />
 <tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/10/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte" />
+
 
 # Forgatókönyvek hitelesítése Azure szolgáltatásfelügyelet és Resource Manager használatával
 
@@ -89,6 +90,6 @@ A forgatókönyv minden [ellenőrzőpontja](http://technet.microsoft.com/library
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

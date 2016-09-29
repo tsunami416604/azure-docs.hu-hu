@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
     tags="azure-portal"/>
 
@@ -14,8 +14,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/30/2016"
+   ms.date="09/13/2016"
    ms.author="larryfr"/>
+
 
 #Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben
 
@@ -43,7 +44,7 @@ VAGY
 
 ##Mi az az SSH?
 
-Az SSH egy olyan eszköz, amellyel beléphet egy távoli kiszolgálóra, és távolról parancsokat hajthat rajta végre. Az SSH a Linux-alapú HDInsight segítségével titkosított kapcsolatot hoz létre a fürt átjárócsomópontjával, és megjelenít egy parancssort, amelybe parancsokat írhat. A parancsok végrehajtására közvetlenül a kiszolgálón kerül sor.
+Az SSH egy olyan eszköz, amellyel beléphet egy távoli kiszolgálóra, és távolról parancsokat hajthat rajta végre. Az SSH a Linux-alapú HDInsight segítségével titkosított kapcsolatot hoz létre a fürt átjárócsomópontjával, és megjelenít egy parancssort, amelybe be lehet írni a parancsokat. A parancsok végrehajtására közvetlenül a kiszolgálón kerül sor.
 
 ###SSH-felhasználónév
 
@@ -118,7 +119,7 @@ További információk a parancs használatáról: [Provision Hadoop Linux clust
 
 ##Csatlakozás egy Linux-alapú HDInsight-fürthöz
 
-Egy terminál-munkamenetben az SSH parancs segítségével, a cím és a felhasználónév megadásával csatlakozhat az átjárócsomóponthoz:
+Egy terminál-munkamenetben az SSH paranccsal, a cím és a felhasználónév megadásával csatlakozhat az átjárócsomóponthoz:
 
 * **SSH-cím** – A fürtökhöz kétféle címmel lehet csatlakozni az SSH segítségével:
 
@@ -128,7 +129,7 @@ Egy terminál-munkamenetben az SSH parancs segítségével, a cím és a felhasz
 
 * **Felhasználónév** – A fürt létrehozásakor megadott SSH-felhasználónév.
 
-Az alábbi példa a **mycluster** 0. átjárócsomópontjához csatlakozik, mint **me** felhasználó:
+A következő példa **me** felhasználóként csatlakozik a **mycluster** elsődleges átjárócsomóponthoz:
 
     ssh me@mycluster-ssh.azurehdinsight.net
 
@@ -140,11 +141,11 @@ Ha egy hozzáférési kóddal védett SSH-kulcsot használt, a rendszer a hozzá
 >
 > `ssh -i ~/.ssh/id_rsa me@mycluster-ssh.azurehdinsight.net`
 
-Ha az átjárócsomópont címének megadásával csatlakozik, és nincs megadott port, az SSH alapértelmezés szerint a 22-es portot használja, amely a HDInsight-fürt 0. átjárócsomópontjához csatlakozik. A 23-as port használata esetén az 1. átjárócsomóponthoz fog csatlakozni. Az átjárócsomópontokkal kapcsolatos további információkat lásd: [Availability and reliability of Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md) (A Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsightban).
+Ha az átjárócsomópont címének megadásával csatlakozik, és nincs megadva a port, az SSH alapértelmezés szerint a 22-es portot használja, és ezzel a HDInsight-fürt elsődleges átjárócsomópontjával létesít kapcsolatot. A 23-as port használata esetén a másodlagos átjárócsomóponthoz fog csatlakozni. Az átjárócsomópontokkal kapcsolatos további információkat lásd: [Availability and reliability of Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md) (A Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsightban).
 
 ###Csatlakozás a munkavégző csomópontokhoz
 
-A munkavégző csomópontok az Azure adatközponton kívülről nem érhetők el közvetlenül, de SSH-n keresztül hozzáférhetők a fürt átjárócsomópontjából.
+A munkavégző csomópontok az Azure adatközponton kívülről nem érhetők el közvetlenül, de SSH-val elérhetők a fürt átjárócsomópontjából.
 
 Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, az alábbi lépéseket kell végrehajtania az ügyfélen:
 
@@ -195,9 +196,9 @@ A következő lépésekkel csatlakozzon a fürt munkavégző csomópontjaihoz.
 
     > [AZURE.NOTE] Ha jelszóval hitelesíti az SSH-munkamenetet, a rendszer ismét elkéri a jelszót. Ha SSH-kulcsot használ, a kapcsolat további kérések nélkül létrejön.
 
-4. A munkamenet létrehozása után a terminál parancssora `username@hn0-clustername` értékről `username@wk0-clustername` értékre változik annak jelzéséhez, hogy a munkavégző csomópont csatlakoztatva van. Innentől a futtatott parancsok a munkavégző csomóponton fognak futni.
+4. A munkamenet létrehozása után a terminál parancssora `username@hn#-clustername` értékről `username@wk#-clustername` értékre változik annak jelzéséhez, hogy a munkavégző csomópont csatlakoztatva van. Innentől a futtatott parancsok a munkavégző csomóponton fognak futni.
 
-4. Amikor már nem szeretne több műveletet végrehajtani a munkavégző csomóponton, az `exit` paranccsal zárja be a munkamenetét. Ezzel visszatér a `username@hn0-clustername` parancssorhoz.
+4. Amikor már nem szeretne több műveletet végrehajtani a munkavégző csomóponton, az `exit` paranccsal zárja be a munkamenetét. Ezzel visszatér a `username@hn#-clustername` parancssorhoz.
 
 ##További fiókok hozzáadása
 
@@ -249,6 +250,6 @@ Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

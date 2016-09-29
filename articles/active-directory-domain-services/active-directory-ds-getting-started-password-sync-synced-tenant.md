@@ -13,43 +13,42 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/06/2016"
+    ms.date="09/20/2016"
     ms.author="maheshu"/>
 
-# Azure AD tartományi szolgáltatások *(előzetes verzió)* – Jelszó-szinkronizálás engedélyezése az Azure AD tartományi szolgáltatásokra
 
-## 5. feladat: Jelszó-szinkronizálás engedélyezése AAD tartományi szolgáltatásokra szinkronizált Azure AD bérlő esetén
-Miután engedélyezte az Azure AD tartományi szolgáltatásokat az Azure AD-címtárhoz, a következő feladat a jelszó-szinkronizálás engedélyezése az Azure AD tartományi szolgáltatásokra. Ez lehetővé teszi a felhasználók számára a tartományba történő bejelentkezést a vállalati hitelesítő adatok használatával.
+# Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra
+Az előző feladatokban engedélyezte az Azure AD tartományi szolgáltatásokat az Azure AD-bérlő számára. A következő feladat az Azure AD tartományi szolgáltatásokkal való jelszó-szinkronizálás engedélyezése. Ha a bejelentkezési adatok szinkronizálása be van állítva, a felhasználók a vállalati hitelesítői adataikkal jelentkezhetnek be a felügyelt tartományra.
 
 Az ehhez szükséges lépések eltérőek aszerint, hogy a szervezet csak felhőalapú Azure AD-címtárral rendelkezik-e, vagy be van állítva az Azure AD Connect használatával a helyszíni címtárral történő szinkronizálás.
 
 <br>
 
 > [AZURE.SELECTOR]
-- [Kizárólag felhőalapú Azure AD-címtár](active-directory-ds-getting-started-password-sync.md)
-- [Szinkronizált Azure AD-címtár](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+- [Kizárólag felhőalapú Azure AD-bérlő](active-directory-ds-getting-started-password-sync.md)
+- [Szinkronizált Azure AD-bérlő](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 
 <br>
 
-### Szinkronizált bérlők – NTLM és Kerberos hitelesítő kivonatok Azure AD-hoz történő szinkronizálásának engedélyezése
-Ha a szervezet Azure AD bérlője be van állítva az Azure AD Connect használatával a helyszíni címtárral történő szinkronizálásra, akkor az Azure AD Connectet úgy kell konfigurálni, hogy szinkronizálja az NTLM és Kerberos hitelesítéshez szükséges hitelesítő kivonatokat. Ezek a kivonatok alapértelmezés szerint nincsenek szinkronizálva az Azure AD-hoz, és az alábbi lépésekkel engedélyezheti a kivonatok szinkronizálását az Azure AD bérlőhöz.
 
-#### Azure AD Connect telepítése vagy frissítése
+## 5. feladat: Jelszó-szinkronizálás engedélyezése AAD tartományi szolgáltatásokra szinkronizált Azure AD bérlő esetén
+A szinkronizált Azure AD-bérlő a szervezet helyi címtárával való szinkronizálásra van beállítva az Azure AD Connect használatával. Az Azure AD Connect alapértelmezés szerint nem szinkronizálja az NTLM és Kerberos hitelesítő adatok kivonatait az Azure AD-val. Az Azure AD tartományi szolgáltatások használatához az Azure AD Connectet úgy kell konfigurálni, hogy szinkronizálja az NTLM- és Kerberos-hitelesítéshez szükséges hitelesítőadat-kivonatokat. Az alábbi lépésekkel engedélyezheti a kivonatok az Azure AD-bérlővel való szinkronizálását.
 
-Telepítse az Azure AD Connect legújabb ajánlott verzióját a tartományhoz csatlakoztatott számítógépre. Ha az Azure AD Connect egy példánya már telepítve van, frissítse úgy, hogy az Azure AD Connect GA változatot használja. A már ismert és esetleg már javított problémák/hibák elkerülése érdekében győződjön meg arról, hogy az Azure AD Connect legújabb verzióját használja.
+
+### Azure AD Connect telepítése vagy frissítése
+Telepítse az Azure AD Connect legújabb ajánlott kiadását egy tartományhoz csatlakoztatott számítógépre. Ha az Azure AD Connect egy példánya már telepítve van, frissítse az Azure AD Connect legújabb verziójára. A már ismert és esetleg már javított problémák/hibák elkerülése érdekében győződjön meg arról, hogy az Azure AD Connect legújabb verzióját használja.
 
 **[Az Azure AD Connect letöltése](http://www.microsoft.com/download/details.aspx?id=47594)**
 
-Ajánlott verzió: **1.1.189.0** – közzététel dátuma: 2016. június 3.
+Ajánlott verzió: **1.1.281.0** – közzététel dátuma: 2016. szeptember 7.
 
-  > [AZURE.WARNING] Az Azure AD Connect legújabb ajánlott verzióját FELTÉTLENÜL telepítenie kell  ahhoz, hogy az örökölt (NTLM és Kerberos hitelesítéshez szükséges) jelszavas hitelesítő adatokat szinkronizálni lehessen az Azure AD bérlőhöz. Ez a funkció nem érhető el az Azure AD Connect korábbi verzióiban vagy az örökölt DirSync eszközzel.
+  > [AZURE.WARNING] Az Azure AD Connect legújabb ajánlott verzióját FELTÉTLENÜL telepítenie kell ahhoz, hogy az örökölt (NTLM és Kerberos hitelesítéshez szükséges) jelszavas hitelesítő adatokat szinkronizálni lehessen az Azure AD bérlőhöz. Ez a funkció nem érhető el az Azure AD Connect korábbi verzióiban vagy az örökölt DirSync eszközzel.
 
 Az Azure AD Connect telepítési utasításai a következő cikkben érhetők el: [Ismerkedés az Azure AD Connecttel](../active-directory/active-directory-aadconnect.md)
 
 
-#### Teljes jelszó-szinkronizálás Azure AD-hoz
-
-A teljes jelszó-szinkronizálás és a helyszíni felhasználók jelszókivonatainak (beleértve az NTLM/Kerberos-hitelesítéshez szükséges hitelesítő kivonatokat) Azure AD bérlővel való szinkronizálásának engedélyezése érdekében hajtsa végre a következő PowerShell parancsfájlt minden AD-erdőben.
+### NTLM és Kerberos hitelesítőadat-kivonatok Azure AD-val történő szinkronizálásának engedélyezése
+A teljes jelszó-szinkronizálás és a helyszíni felhasználók jelszókivonatainak Azure AD-bérlővel való szinkronizálásának engedélyezéséhez hajtsa végre a következő PowerShell-parancsfájlt minden AD-erdőben. A parancsfájl engedélyezi az NTLM-/Kerberos-hitelesítéshez szükséges hitelesítő adatok szinkronizálását az Azure AD-bérlővel.
 
 ```
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"  
@@ -65,7 +64,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true  
 ```
 
-A címtár méretétől (felhasználók, csoportok stb. száma) függ, hogy a hitelesítő adatok Azure AD-hoz történő szinkronizálása mennyi időt vesz igénybe. A jelszavak a hitelesítő kivonatok Azure AD-hoz történő szinkronizálását követően rövid időn belül használhatóvá válnak az Azure AD tartományi szolgáltatások által kezelt tartományban.
+A címtár méretétől (felhasználók, csoportok stb. száma) függ, hogy a jelszókivonatok Azure AD-val történő szinkronizálása mennyi időt vesz igénybe. A jelszavak a hitelesítő kivonatok Azure AD-hoz történő szinkronizálását követően rövid időn belül használhatóvá válnak az Azure AD tartományi szolgáltatások által kezelt tartományban.
 
 
 <br>
@@ -82,6 +81,6 @@ A címtár méretétől (felhasználók, csoportok stb. száma) függ, hogy a hi
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

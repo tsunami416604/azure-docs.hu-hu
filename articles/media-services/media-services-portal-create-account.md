@@ -13,11 +13,17 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/29/2016"
+    ms.date="09/07/2016"
     ms.author="juliako"/>
 
 
+
 # Azure Media Services-fiók létrehozása az Azure Portal használatával
+
+> [AZURE.SELECTOR]
+- [Portál](media-services-portal-create-account.md)
+- [PowerShell](media-services-manage-with-powershell.md)
+- [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
 > [AZURE.NOTE] Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
 
@@ -36,7 +42,7 @@ A Media Services szolgáltatásainak eléréséhez két kapcsolódó fiók szük
     Az AMS már a következő adatközpontokban is elérhető: Dél-Brazília, Nyugat-India, Dél-India és Közép-India. Az Azure Portalt már Media Services-fiókok létrehozására és az itt leírt különböző feladatok elvégzésére is használhatja. Azonban ezekben az adatközpontokban a Live Encoding nem támogatott. Emellett ezekben az adatközpontokban a kódoláshoz fenntartott egységeknek sem minden típusa érhető el.
     
     - Dél-Brazília: Csak a standard és alapszintű kódoláshoz fenntartott egységek érhetők el.
-    - Nyugat-India, Dél-India: médiafájlokhoz, és ugyanabban a földrajzi régióban kell lennie, ahol a Media Services-fiók. Egy Media Services-fiók létrehozásakor választhat, hogy egy ugyanabban a régióban található, meglévő tárfiókot használ, vagy létrehoz egy újat ugyanabban a régióban. Egy Media Services-fiók törlésekor a kapcsolódó tárfiókban található blobok nem törlődnek.
+    - Nyugat-India, Dél-India: biztosítson tároló blobokat a médiafájlokhoz; a tárfiókoknak ugyanabban a földrajzi régióban kell lenniük, ahol a Media Services-fiók van. Egy Media Services-fiók létrehozásakor választhat, hogy egy ugyanabban a régióban található, meglévő tárfiókot használ, vagy létrehoz egy újat ugyanabban a régióban. Egy Media Services-fiók törlésekor a kapcsolódó tárfiókban található blobok nem törlődnek.
 
 ## AMS-fiók létrehozása
 
@@ -102,6 +108,6 @@ Most már feltölthet fájlokat AMS-fiókjába. További információk: [Fájlok
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

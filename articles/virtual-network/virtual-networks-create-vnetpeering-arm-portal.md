@@ -14,8 +14,9 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/02/2016"
-   ms.author="narayanannamalai"/>
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai;annahar"/>
+
 
 # Társviszony-létesítés virtuális hálózatok között az Azure Portal használatával
 
@@ -28,7 +29,7 @@
 Ha a fenti forgatókönyv alapján kíván létrehozni társviszonyt virtuális hálózatok között az Azure Portal használatával, kövesse az alábbi lépéseket.
 
 1. Egy böngészőből keresse fel a http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
-2. A virtuális hálózatok közötti társviszony-létesítéshez két hivatkozást kell létrehoznia a két virtuális hálózat között, egyet-egyet mindkét irányban. Először a VNET1-től a VNET2 felé irányuló virtuális hálózatok közötti társviszonyt hozhatja létre. A portálon kattintson a **Tallózás** elemre > **válassza a Virtuális hálózatok** elemet. 
+2. A virtuális hálózatok közötti társviszony-létesítéshez két hivatkozást kell létrehoznia a két virtuális hálózat között, egyet-egyet mindkét irányban. Először a VNET1-től a VNET2 felé irányuló virtuális hálózatok közötti társviszonyt hozhatja létre. A portálon kattintson a **Tallózás** elemre > **válassza a Virtuális hálózatok** elemet.
 
     ![Társviszony-létesítés virtuális hálózatok között az Azure Portalon](./media/virtual-networks-create-vnetpeering-arm-portal/figure01.png)
 
@@ -44,7 +45,7 @@ Ha a fenti forgatókönyv alapján kíván létrehozni társviszonyt virtuális 
 
     ![Csatolás állapota](./media/virtual-networks-create-vnetpeering-arm-portal/figure04.png)
 
-6. Ezután hozza létre a VNET2-től a VNET1 felé irányuló virtuális hálózatok közötti társviszony-létesítési csatolást. A Virtuális hálózatok panelen válassza ki a VNET2 hálózatot, kattintson a Társviszonyok elemre, majd kattintson a Hozzáadás parancsra. 
+6. Ezután hozza létre a VNET2-től a VNET1 felé irányuló virtuális hálózatok közötti társviszony-létesítési csatolást. A Virtuális hálózatok panelen válassza ki a VNET2 hálózatot, kattintson a Társviszonyok elemre, majd kattintson a Hozzáadás parancsra.
 
     ![Társ másik virtuális hálózatból](./media/virtual-networks-create-vnetpeering-arm-portal/figure05.png)
 
@@ -60,7 +61,7 @@ Ha a fenti forgatókönyv alapján kíván létrehozni társviszonyt virtuális 
 
     ![Végső csatolás állapota 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure08.png)
 
-10. MEGJEGYZÉS: A virtuális hálózatok közötti társviszony csak akkor jön létre, ha mindkét csatolás csatlakoztatva van. 
+    > [AZURE.NOTE] A virtuális hálózatok közötti társviszony csak akkor jön létre, ha mindkét csatolás csatlakoztatva van.
 
 Mindegyik csatolás rendelkezik néhány konfigurálható tulajdonsággal:
 
@@ -85,13 +86,13 @@ A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik
 
     ![RBAC](./media/virtual-networks-create-vnetpeering-arm-portal/figure10.png)
 
-    Ez nem követelmény, társviszony akkor is létesíthető, ha a felhasználók önállóan adnak ki társviszony-létesítési kérelmet a megfelelő virtuális hálózataikra, és a kérések megegyeznek. Ha a helyi virtuális hálózat felhasználóihoz hozzáadja a másik virtuális hálózat rendszergazdai engedéllyel rendelkező felhasználóit, azzal leegyszerűsítheti a portálon történő beállítást. 
+    Ez nem követelmény, társviszony akkor is létesíthető, ha a felhasználók önállóan adnak ki társviszony-létesítési kérelmet a megfelelő virtuális hálózataikra, és a kérések megegyeznek. Ha a helyi virtuális hálózat felhasználóihoz hozzáadja a másik virtuális hálózat rendszergazdai engedéllyel rendelkező felhasználóit, azzal leegyszerűsítheti a portálon történő beállítást.
 
 5. Ezután jelentkezzen be az Azure portálon a FelhasználóB felhasználóval, aki a B előfizetés rendszergazdai engedéllyel rendelkező felhasználója. Kövesse a fenti lépéseket a FelhasználóA Hálózati közreműködőként történő hozzáadásához.
 
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
 
-    MEGJEGYZÉS: Ki- és bejelentkezhet mindkét felhasználói munkamenetben a böngészőben annak ellenőrzéséhez, hogy a hitelesítést sikeresen engedélyezte.
+    > [AZURE.NOTE] Ki- és bejelentkezhet mindkét felhasználói munkamenetben a böngészőben annak ellenőrzéséhez, hogy a hitelesítést sikeresen engedélyezte.
 
 6. Jelentkezzen be a portálra a FelhasználóA felhasználóként, navigáljon a VNET3 panelre, kattintson a Társviszony elemre, jelölje be az „Ismerem az erőforrás-azonosítómat” jelölőnégyzetet, és írja be a VNET5 erőforrás-azonosítóját az alábbi formátumban.
 
@@ -99,7 +100,7 @@ A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik
 
     ![Erőforrás-azonosító](./media/virtual-networks-create-vnetpeering-arm-portal/figure12.png)
 
-7. Jelentkezzen be a portálra a FelhasználóB felhasználóként, majd kövesse a fenti lépéseket egy társviszony-létesítési csatolás létrehozásához a VNET5 és a VNET3 között. 
+7. Jelentkezzen be a portálra a FelhasználóB felhasználóként, majd kövesse a fenti lépéseket egy társviszony-létesítési csatolás létrehozásához a VNET5 és a VNET3 között.
 
     ![2. erőforrás-azonosító](./media/virtual-networks-create-vnetpeering-arm-portal/figure13.png)
 
@@ -111,16 +112,38 @@ A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik
 
     ![Alapszintű társviszony](./media/virtual-networks-create-vnetpeering-arm-portal/figure14.png)
 
-2. Következő lépésként létrehozhatók a VNET1 és a HubVnet közötti társviszony-létesítési csatolások. Figyelje meg, hogy a „Továbbított forgalom engedélyezése” beállítás be van jelölve. 
+2. Következő lépésként létrehozhatók a VNET1 és a HubVnet közötti társviszony-létesítési csatolások. Figyelje meg, hogy a Továbbított forgalom engedélyezése beállítás be van jelölve.
 
     ![Alapszintű társviszony](./media/virtual-networks-create-vnetpeering-arm-portal/figure15a.png)
 
 3. Miután létrejött a társviszony, ezen [cikk](virtual-network-create-udr-arm-ps.md) alapján meghatározhat felhasználó által megadott útvonalat a VNet1 forgalmának egy virtuális készüléken történő átirányításához a készülék képességeinek használata érdekében. Amikor meghatározza a következő ugrás címét az útvonalban, a címet beállíthatja a virtuális készülék IP-címére a társ HubVNet virtuális hálózatban.
 
+
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
+
+
+
+1. Egy böngészőből keresse fel a http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+
+2. Ebben a forgatókönyvben a VNET-társviszony létrehozásához csak egy csatolást kell létrehozni, az Azure Resource Manager-alapú virtuális hálózatról a klasszikus virtuális hálózat felé. Tehát a **VNET1**-ről a **VNET2**-re. A portálon kattintson a **Tallózás** elemre, és válassza a **Virtuális hálózatok** elemet.
+
+3. A Virtuális hálózatok panelen válassza ki a **VNET1** hálózatot. Kattintson a **Társviszonyok** elemre, majd a **Hozzáadás** parancsra.
+
+4. A Társviszony hozzáadása panelen nevezze el a kapcsolatot. Itt a következő a neve: **LinkToVNet2**. A Társ részletei területen válassza a **Klasszikus** lehetőséget.
+
+5. Ezután válassza ki az előfizetést és a társ virtuális hálózatot, a **VNET2**-t. Ezután kattintson az OK gombra.
+
+    ![A Vnet1 és a Vnet2 összekapcsolása](./media/virtual-networks-create-vnetpeering-arm-portal/figure18.png)
+
+6. Miután a virtuális hálózatok között társviszony-létesítési csatolás létrejött, a két virtuális hálózat társviszonyba kerül, és a következő lehetőségek jelennek meg:
+
+    ![Társviszony-kapcsolat ellenőrzése](./media/virtual-networks-create-vnetpeering-arm-portal/figure19.png)
+
+
 ## Virtuális hálózatok közötti társviszony eltávolítása
 
 1.  Egy böngészőből keresse fel a http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
-2.  Lépjen a Virtuális hálózat panelre, kattintson a Társviszonyok elemre, kattintson az eltávolítani kívánt csatolásra, majd kattintson a Törlés gombra. 
+2.  Lépjen a Virtuális hálózat panelre, kattintson a Társviszonyok elemre, kattintson az eltávolítani kívánt csatolásra, majd kattintson a Törlés gombra.
 
     ![1. törlés](./media/virtual-networks-create-vnetpeering-arm-portal/figure15.png)
 
@@ -128,10 +151,10 @@ A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik
 
     ![2. törlés](./media/virtual-networks-create-vnetpeering-arm-portal/figure16.png)
 
-4. Ebben az állapotban addig nem hozhatja létre újra a csatolást, amíg a társviszony-csatolás állapota Kezdeményezettre nem változik. Javasoljuk, hogy mindkét csatolást távolítsa el, mielőtt újra létrehozza a virtuális hálózatok közötti társviszonyt. 
+4. Ebben az állapotban addig nem hozhatja létre újra a csatolást, amíg a társviszony-csatolás állapota Kezdeményezettre nem változik. Javasoljuk, hogy mindkét csatolást távolítsa el, mielőtt újra létrehozza a virtuális hálózatok közötti társviszonyt.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 
