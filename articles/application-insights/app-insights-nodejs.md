@@ -12,8 +12,9 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/25/2016"
+    ms.date="08/30/2016"
     ms.author="awills"/>
+
 
 
 # Az Application Insights SDK hozzáadása a Node.js alkalmazás figyelésére
@@ -26,7 +27,7 @@ A [Visual Studio Application Insights](app-insights-overview.md) élő alkalmaz�
 
 Az SDK biztosítja a bejövő HTTP-kérelemarányok és válaszok, a teljesítményszámlálók (CPU, memória, RPS) és a nem kezelt kivételek automatikus gyűjtését. Emellett hozzá lehet adni egyéni hívásokat a függőségek, mérőszámok vagy egyéb események nyomon követéséhez.
 
-![Példa teljesítményfigyelő diagramokra](./media/app-insights-asp-net-manual/10-perf.png)
+![Példa teljesítményfigyelő diagramokra](./media/app-insights-windows-services/10-perf.png)
 
 
 #### Előkészületek
@@ -40,7 +41,7 @@ A következők szükségesek:
 
 Jelentkezzen be az [Azure portálra][portal], és hozzon létre egy új Application Insights-erőforrást. Az Azure-ban egy [erőforrás][roles] lényegében egy szolgáltatáspéldány. Az alkalmazás telemetriájának elemzése és bemutatása az erőforrásban történik.
 
-![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-asp-net-manual/01-new-asp.png)
+![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-windows-services/01-new-asp.png)
 
 Az alkalmazás típusaként válassza az Egyéb lehetőséget. A kiválasztott alkalmazástípus adja meg az erőforráspanelek alapértelmezett tartalmát, valamint a [Metrikaböngészőben][metrics] látható tulajdonságokat.
 
@@ -48,7 +49,7 @@ Az alkalmazás típusaként válassza az Egyéb lehetőséget. A kiválasztott a
 
 A kulcs azonosítja az erőforrást, és hamarosan telepíteni fogja azt az SDK-ba, hogy az adatokat az erőforrásba irányíthassa.
 
-![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-asp-net-manual/02-props-asp.png)
+![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-windows-services/02-props-asp.png)
 
 
 ## <a name="sdk"></a> Az SDK telepítése az alkalmazásban
@@ -84,7 +85,7 @@ Térjen vissza az [Azure Portalra](https://portal.azure.com), és keresse meg az
 
 Tekintse meg az adatokat az Áttekintés lapon. Először csak egy vagy két pontot lát. Példa:
 
-![Kattintson végig rajtuk a további adatokért](./media/app-insights-asp-net-manual/12-first-perf.png)
+![Kattintson végig rajtuk a további adatokért](./media/app-insights-windows-services/12-first-perf.png)
 
 Részletesebb mérőszámokért kattintson bármelyik diagramra. [További információk a metrikákról.][perf]
 
@@ -108,7 +109,7 @@ Nyissa meg ezeket a portokat a kimenő forgalom számára a kiszolgáló tűzfal
 + `f5.services.visualstudio.com:443`
 
 
-#### Probléma adódott a lemezképfájl-kiszolgálóján? 
+#### Probléma adódott a lemezképfájl-kiszolgálóján?
 
 Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
 
@@ -212,6 +213,10 @@ server.on("listening", () => {
 });
 ```
 
+## Következő lépések
+
+* [A telemetria figyelése a portálon](app-insights-dashboards.md)
+* [Analytics-lekérdezések írása a telemetrián](app-insights-analytics-tour.md)
 
 
 
@@ -226,6 +231,6 @@ server.on("listening", () => {
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -17,6 +17,7 @@
     ms.author="adegeo"/>
 
 
+
 # Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
 
 Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual Studio][] eszközben történő használatát ismerteti. Megtudhatja, hogyan hozhat létre és telepíthet egy, a Pythont használó alapszintű felhőszolgáltatást a Visual Studióval.
@@ -242,6 +243,8 @@ if (-not $is_emulated){
 
 #### A LaunchWorker.ps1 módosítása
 
+>[AZURE.NOTE] **Feldolgozói szerepkörű** projekt esetében az indítófájl végrehajtásához **LauncherWorker.ps1** fájl szükséges. **Webes szerepkörű** projekt esetében az indítófájl definiálása nem ebben a fájlban, hanem a projekt tulajdonságaiban történik.
+
 A **bin\LaunchWorker.ps1** eredetileg azért jött létre, hogy előkészítési munkákat végezzen, de nem igazán működik. Cserélje le a fájl tartalmát a következő parancsfájllal.
 
 A parancsfájl meghívja a **worker.py** fájlt a Python-projektből. Ha a **PYTHON2** környezeti változó **be** értékű, akkor a rendszer a Python 2.7-t használja. Más esetekben a Python 3.5 lesz használatban.
@@ -368,6 +371,6 @@ Ha további részletekre kíváncsi az Azure szolgáltatások használatáról w
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

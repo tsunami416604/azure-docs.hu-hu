@@ -17,9 +17,12 @@
     ms.date="08/10/2016"
     ms.author="carlrab"/>
 
+
 # Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken
 
-Az [Azure SQL Database](sql-database-technical-overview.md) több szolgáltatásszinttel rendelkezik a különböző számítási feladatok kezelésére. Az alkalmazás minimális állásideje (általában átlagosan kevesebb mint négy másodperc) mellett bármikor [módosíthatja a szolgáltatásszinteket](sql-database-scale-up.md). [Önálló adatbázist](sql-database-get-started.md) is létrehozhat meghatározott jellemzőkkel és árképzéssel. Lehetősége van több adatbázis kezelésére is [rugalmas adatbáziskészlet létrehozásával](sql-database-elastic-pool-create-portal.md). A lehetséges szolgáltatásszintek mindkét esetben a **Basic**, a **Standard** és a **Premium**. A szolgáltatásszintek adatbázis-beállításai hasonlóak a különálló adatbázisok és a rugalmas készletek esetén, de a rugalmas készleteknél további szempontokat is figyelembe kell venni. Ez a cikk az önálló adatbázisok és a rugalmas készletek szolgáltatásszintjeinek részleteit ismerteti.
+Az [Azure SQL Database](sql-database-technical-overview.md) három, különböző teljesítményszintet képviselő szolgáltatásszinttel rendelkezik a különböző számítási feladatok kezelésére. Mindegyik teljesítményszint egy növekvő erőforráskészletet nyújt az egyre növekvő adatátvitel kézbesítéséhez. Minden adatbázis a saját teljesítményszintjének megfelelő [szolgáltatásszinten](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) kezelhető. Több adatbázis együtt is kezelhető egy [rugalmas készleten](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) belül, ahol közös erőforráskészlettel rendelkeznek. Az önálló adatbázisok számára elérhető erőforrásokat Database Transaction Unitokkal (Adatbázisok tranzakciós egységeivel, DTU-kkal) fejezzük ki, a rugalmas készletek számára elérhető erőforrásokat pedig rugalmas DTU-kkal, (eDTU-kkal). További információ a DTU-król és eDTU-król: [Mi az a DTU?](sql-database-what-is-a-DTU.md) 
+
+A lehetséges szolgáltatásszintek mindkét esetben az **Alapszintű**, a **Standard** és a **Prémium**. A szolgáltatásszintek adatbázis-beállításai hasonlóak a különálló adatbázisok és a rugalmas készletek esetén, de a rugalmas készleteknél további szempontokat is figyelembe kell venni. Ez a cikk az önálló adatbázisok és a rugalmas készletek szolgáltatásszintjeinek részleteit ismerteti.
 
 ## Szolgáltatásszintek és adatbázis-beállítások
 A Basic, Standard és Premium szolgáltatásszintek egyaránt 99,99 százalékos, szolgáltatói szerződésben (SLA) garantált hasznos üzemidőt, valamint megbízható teljesítményt, rugalmas üzletmenet-folytonossági funkciókat, biztonsági szolgáltatásokat és óradíj alapú számlázást nyújtanak. Az alábbi táblázat példákat tartalmaz arra vonatkozóan, hogy a különböző alkalmazások és teljesítményprofilok esetén melyik a legmegfelelőbb szolgáltatásszint.
@@ -39,8 +42,6 @@ Az itt felsorolt teljesítményjellemzők az [SQL Database 12 verzió](sql-datab
 
 [AZURE.INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
-A DTU-kra vonatkozó további részletekért olvassa el a jelen témakörben található, a [DTU-kkal foglalkozó szakaszt](#understanding-dtus).
-
 >[AZURE.NOTE] A szolgáltatásszint táblázatának többi sorára vonatkozó részletes magyarázatokat a [Szolgáltatásszintek lehetőségei és korlátai](sql-database-performance-guidance.md#service-tier-capabilities-and-limits) részben találja.
 
 ## Rugalmas készlet szolgáltatásszintjei és teljesítménye eDTU-kban megadva
@@ -54,10 +55,6 @@ Az alábbi táblázat ismerteti az adatbáziskészlet szolgáltatásszintjeinek 
 
 A készletben lévő minden adatbázis követi az adott szinthez tartozó önálló adatbázis jellemzőit. Az Alapszintű készlet például egy készletenként maximálisan 4 800–28 800 értékű munkamenet-korláttal rendelkezik, az Alapszintű készletben lévő önálló adatbázis esetén azonban 300 munkamenet az adatbázis korlátja.
 
-## A DTU-k ismertetése
-
-[AZURE.INCLUDE [SQL DB DTU description](../../includes/sql-database-understanding-dtus.md)]
-
 ## Szolgáltatásszint kiválasztása
 
 A szolgáltatásszintre vonatkozó döntés meghozatalához először határozza meg, hogy az adatbázis egy önálló adatbázis legyen vagy egy rugalmas készlet része. 
@@ -66,7 +63,7 @@ A szolgáltatásszintre vonatkozó döntés meghozatalához először határozza
 
 Egy önálló adatbázishoz tartozó szolgáltatásszintre vonatkozó döntés meghozatalához először határozza meg az SQL Database-kiadás kiválasztásához szükséges adatbázis-jellemzőket:
 
-- Az adatbázis mérete (legfeljebb 5 GB Alapszintű, legfeljebb 250 GB Standard és legfeljebb 500 GB–1 TB Prémium szint esetén – a teljesítményszinttől függően)
+- Az adatbázis mérete (legfeljebb 2 GB Alapszintű, legfeljebb 250 GB Standard és legfeljebb 500 GB–1 TB Prémium szint esetén – a teljesítményszinttől függően)
 - Az adatbázis biztonsági másolatainak megőrzési ideje (7 nap Alapszintű, 35 nap Standard és 35 nap Prémium szint esetén)
 
 Miután eldöntötte, hogy az SQL Database melyik kiadását használja, készen áll az adatbázis teljesítményszintjének (a DTU-k számának) meghatározására. Ezt megteheti becslés alapján, majd [dinamikusan felfelé vagy lefelé méretezheti](sql-database-scale-up.md) a tényleges tapasztalatok alapján. A [DTU-kalkulátor](http://dtucalculator.azurewebsites.net/) segítségével is megbecsülheti a szükséges DTU-k számát. 
@@ -94,6 +91,6 @@ A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

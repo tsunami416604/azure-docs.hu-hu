@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="07/28/2016" 
+    ms.date="09/01/2016" 
     ms.author="mandia"/>
+
 
 # Mik azok az összekötők és a BizTalk API-alkalmazások?
 
@@ -35,7 +36,7 @@ Az [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing
 
 
 ## Hibrid összekötők 
-A hibrid összekötők a vállalati igények jobb kiszolgálását biztosítják az [SAP-](app-service-logic-connector-sap.md), [Oracle-](app-service-logic-connector-oracle.md), [DB2-](app-service-logic-connector-db2.md), [Informix-](app-service-logic-connector-informix.md) és WebSphere MQ-kapcsolatok révén. 
+A hibrid összekötők a vállalati igények jobb kiszolgálását biztosítják az [DB2-](app-service-logic-connector-db2.md), [Informix-](app-service-logic-connector-informix.md) és WebSphere MQ-kapcsolatok révén. 
 
 ## EAI- és EDI-szolgáltatások
 A vállalat szempontjából létfontosságú alkalmazások megalkotásához nem csupán a kapcsolat kialakításának lehetősége szükséges. A BizTalk Serveren, a Microsoft piacvezető integrációs platformján alapuló BizTalk API-alkalmazások fejlett integrációs funkciókat tesznek elérhetővé, amelyek könnyedén beilleszthetők webes, mobil- és logikai alkalmazásaiba. Az integrációs funkciók között a következőket találjuk: [Érvényesítés](app-service-logic-xml-validator.md), [Kinyerés](app-service-logic-xpath-extract.md), [Átalakítás](app-service-logic-transform-xml-documents.md), [Kódolók](app-service-logic-connector-jsonencoder.md), [Kereskedelmipartner-kezelés](app-service-logic-connector-tpm.md) és EDI-formátumok ([X12](app-service-logic-connector-x12.md), [EDIFACT](app-service-logic-connector-edifact.md) és [AS2](app-service-logic-connector-as2.md)) támogatása.
@@ -55,6 +56,6 @@ Az egyes kategóriákban szereplő összekötők és API-alkalmazások (köztük
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

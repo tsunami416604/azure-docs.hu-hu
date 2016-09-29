@@ -1,9 +1,8 @@
-       Now navigate to the DocumentDB account blade, and click **Keys**, as we will use these values in the web application we create next.
+  Lépjen a DocumentDB-fiók paneljére, majd kattintson a **Kulcsok** elemre, mivel ezeket az értékeket fogja használni a következőben létrehozandó webalkalmazásban.
 
-       ![Screen shot of the Azure portal, showing a DocumentDB account, with the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade](./media/documentdb-keys/keys.png)
+![Képernyőfelvétel az Azure Portalról, amely egy DocumentDB-fiókot jelenít meg, ahol a DocumentDB-fiók panelén lévő Kulcsok gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve.](./media/documentdb-keys/keys.png)
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

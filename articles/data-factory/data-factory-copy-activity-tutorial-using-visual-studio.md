@@ -16,28 +16,29 @@
     ms.date="08/01/2016" 
     ms.author="spelluru"/>
 
+
 # Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Visual Studio használatával
 > [AZURE.SELECTOR]
-- [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [A Data Factory Editor használata](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [A PowerShell használata](data-factory-copy-activity-tutorial-using-powershell.md)
-- [A Visual Studio használata](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [A REST API használata](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [A .NET API használata](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [A Másolás varázsló használata](data-factory-copy-data-wizard-tutorial.md)
+- [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 
-Az oktatóanyag során az alábbi lépéseket hajtja végre a Visual Studio 2013 használatával:
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg Azure Data Factoryt a Visual Studióval. Az adat-előállítóban szereplő adatcsatorna másolási tevékenységgel másolja az adatokat az Azure Blob Storage-ből az Azure SQL Database-be.
+
+Az oktatóanyag során a következő lépéseket fogja elvégezni:
 
 1. Létrehozza a következő két társított szolgáltatást: **AzureStorageLinkedService1** és **AzureSqlinkedService1**. Az AzureStorageLinkedService1 egy Azure Storage-ot, míg az AzureSqlLinkedService1 egy Azure SQL Database-t társít az **ADFTutorialDataFactoryVS** data factoryhoz. A folyamat bemeneti adatai az Azure Blob Storage egyik blobtárolójában, a kimeneti adatok pedig az Azure SQL Database egyik táblájában találhatók. Ezért ezt a két adattárat társított szolgáltatásként kell hozzáadnia a data factoryhez.
 2. Létrehoz két data factory-táblát: az **EmpTableFromBlob** és az **EmpSQLTable** táblát, amelyek az adattárakban tárolt bemeneti/kimeneti adatokat képviselik. Az EmpTableFromBlob táblához megadja a forrásadatokkal rendelkező blobot tároló blobtárolót. Az EmpSQLTable táblához megadja a kimeneti adatokat tároló SQL-táblát. Egyéb tulajdonságokat is megad, például a szerkezetet, rendelkezésre állást és egyebeket.
-3. Létrehozza az **ADFTutorialPipeline** nevű folyamatot az ADFTutorialDataFactoryVS data factoryban. A folyamat része egy **Másolási tevékenység**, amely bemeneti adatokat másol az Azure-blobból a kimeneti Azure SQL-táblába. A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban. A tevékenységet egy olyan, globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és méretezhető módon másolja az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket. 
+3. Létrehozza az **ADFTutorialPipeline** nevű folyamatot az ADFTutorialDataFactoryVS data factoryban. A folyamat része egy **Másolási tevékenység**, amely bemeneti adatokat másol az Azure-blobból a kimeneti Azure SQL-táblába. A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban. A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket. 
 4. Létrehoz egy data factoryt, és társított szolgáltatásokat, táblákat, valamint egy folyamatot helyez üzembe.    
 
 ## Előfeltételek
 
-1. Olvassa el [az oktatóanyagot áttekintő](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) cikket.
-    
-    > [AZURE.IMPORTANT] Mielőtt továbblépne, győződjön meg róla, hogy megfelel az előfeltételeknek. 
+1. Olvassa el [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket. 
 2. **Az Azure-előfizetés rendszergazdájának** kell lennie, hogy Data Factory-entitásokat tegyen közzé az Azure Data Factoryban.  
 3. A számítógépre a következőket kell telepíteni: 
     - Visual Studio 2013 vagy Visual Studio 2015
@@ -212,7 +213,7 @@ Eddig bemeneti/kimeneti társított szolgáltatásokat és táblákat hozott lé
 
     ![Publish (Közzététel) párbeszédpanel](./media/data-factory-copy-activity-tutorial-using-visual-studio/publish.png)
 
-21. A Configure data factory (Data factory konfigurálása) oldalon tegye a következőket: 
+21. A Data Factory konfigurálása lapon hajtsa végre a következő lépéseket: 
     1. Válassza a **Create New Data Factory** (Új data factory létrehozása) lehetőséget.
     2. A **Name** (Név) mezőbe írja be a következőt: **VSTutorialFactory**.  
     
@@ -227,7 +228,7 @@ Eddig bemeneti/kimeneti társított szolgáltatásokat és táblákat hozott lé
 24. Tekintse át az összefoglalót, és kattintson a **Tovább** gombra az üzembehelyezési folyamat elindításához, és a **Deployment Status** (Üzembehelyezési állapot) megtekintéséhez.
 25. A **Deployment Status** (Üzembehelyezési állapot) oldalon meg kell jelennie az üzembehelyezési folyamat állapotának. Miután befejeződött az üzembe helyezés, kattintson a Finish (Befejezés) gombra. 
 
-Vegye figyelembe a következőket: 
+Vegye figyelembe a következő pontokat: 
 
 - Ha a „**This subscription is not registered to use namespace Microsoft.DataFactory**” (Az előfizetés nem jogosult használni a Microsoft.DataFactory névteret) hibaüzenetet kapja, tegye a következők egyikét, és próbálkozzon újra a közzététellel: 
 
@@ -249,7 +250,7 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
 2.  **Társított szolgáltatásokat** hozott létre:
     1. Egy **Azure Storage** társított szolgáltatást a bemeneti adatokat tároló Azure Storage-fiók társításához.    
     2. Egy **Azure SQL** társított szolgáltatást a kimeneti adatokat tároló Azure SQL Database társításához. 
-3.  **Adatkészleteket** hozott létre, amelyek a folyamat bemeneti és kimeneti adatait írják le.
+3.  **Adatkészleteket** hozott létre, amelyek az adatcsatorna bemeneti és kimeneti adatait írják le.
 4.  Létrehozott egy **folyamatot** egy **Másolási tevékenységgel**, ahol a **BlobSource** a forrás, az **SqlSink** pedig a fogadó. 
 
 
@@ -281,6 +282,6 @@ A [Monitor datasets and pipeline](data-factory-copy-activity-tutorial-using-azur
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 

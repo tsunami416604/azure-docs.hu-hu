@@ -13,8 +13,9 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="06/16/2016"
+     ms.date="09/12/2016"
      ms.author="dobett"/>
+
 
 # Ismerkedés az Azure IoT Hub for .NET szolgáltatással
 
@@ -28,7 +29,7 @@ Az oktatóanyag végén három Windows-konzolalkalmazással fog rendelkezni:
 
 > [AZURE.NOTE] Különböző SDK-kat használhat az alkalmazások összeállításához, hogy eszközökön és a megoldás háttérrendszerén is fussanak. Ezekről az [IoT Hub SDK-k][lnk-hub-sdks] című témakörben talál további információt.
 
-Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 + Microsoft Visual Studio 2015.
 
@@ -40,17 +41,17 @@ Létrehozott egy IoT Hubot, és rendelkezik az oktatóanyag további részeinek 
 
 ## Eszközidentitás létrehozása
 
-Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely egy új eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az eszközidentitás-jegyzékbe. További információkért lásd az [Azure IoT Hub fejlesztői útmutató][lnk-devguide-identity] eszközidentitás-jegyzékekről szóló szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
+Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely egy eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az eszközidentitás-jegyzékbe. További információkért lásd az [Azure IoT Hub fejlesztői útmutató][lnk-devguide-identity] eszközidentitás-jegyzékekről szóló szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
 
-1. A Visual Studióban adjon hozzá egy új Visual C# Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **CreateDeviceIdentity** nevet.
+1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **CreateDeviceIdentity** nevet.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt][10]
 
-2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal az **CreateDeviceIdentity** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
+2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal az **CreateDeviceIdentity** projektre, majd kattintson a **Manage Nuget Packages** (Nuget-csomagok kezelése) parancsra.
 
-3. A **NuGet Package Manager** (NuGet-csomagkezelő) ablakban válassza a **Browse** (Tallózás) lehetőséget, keresse meg a **microsoft.azure.devices** csomagot, válassza a **Install** (Telepítés) lehetőséget a **Microsoft.Azure.Devices** csomag telepítéséhez, és fogadja el a használati feltételeket. Ez letölti és telepíti a [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk] (Microsoft Azure IoT szolgáltatás SDK) NuGet-csomagot és annak függőségeit, valamint hozzáad egy rá mutató hivatkozást is.
+3. A **Nuget Package Manager** (Nuget-csomagkezelő) ablakban válassza a **Browse** (Tallózás) lehetőséget, keresse meg a **microsoft.azure.devices** csomagot, válassza az **Install** (Telepítés) lehetőséget a **Microsoft.Azure.Devices** csomag telepítéséhez, és fogadja el a használati feltételeket. Ez az eljárás letölti és telepíti a [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk] Nuget-csomagot és függőségeit, valamint hozzáad egy rá mutató hivatkozást is.
 
-    ![NuGet Package Manager (NuGet-csomagkezelő) ablak][11]
+    ![Nuget Package Manager (Nuget-csomagkezelő) ablak][11]
 
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
 
@@ -79,7 +80,7 @@ Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely egy új
             Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
         }
 
-    Ez a metódus egy új eszközidentitást hoz létre a **myFirstDevice** azonosítóval. (Ha ez az eszköz már létezik a nyilvántartásban, a kód egyszerűen lekéri a meglévő eszközinformációkat.) Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált eszközön fogja használni az IoT Hubhoz való csatlakozáshoz.
+    Ez a metódus egy eszközidentitást hoz létre a **myFirstDevice** azonosítóval. (Ha ez az eszköz már létezik a nyilvántartásban, a kód egyszerűen lekéri a meglévő eszközinformációkat.) Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált eszközön fogja használni az IoT Hubhoz való csatlakozáshoz.
 
 7. Végül adja a következő sorokat a **Main** metódushoz:
 
@@ -95,17 +96,17 @@ Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely egy új
 
 ## Az eszközről a felhőbe irányuló üzenetek fogadása
 
-Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Azure Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. (Ez az oktatóanyag az IoT Hub Event Hubs-kompatibilis végpontokra vonatkozik.)
+Ebben a szakaszban egy Windows-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Azure Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. (Ez az oktatóanyag az IoT Hub Event Hubs-kompatibilis végpontokra vonatkozik.)
 
 > [AZURE.NOTE] Az eszközről a felhőbe irányuló üzenetek olvasásához használt Event Hubs-kompatibilis végpontok mindig az AMQPS protokollt használják.
 
-1. A Visual Studióban adjon hozzá egy új Visual C# Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **ReadDeviceToCloudMessages** nevet.
+1. A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **ReadDeviceToCloudMessages** nevet.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt][10]
 
-2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal az **ReadDeviceToCloudMessages** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
+2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal az **ReadDeviceToCloudMessages** projektre, majd kattintson a **Manage Nuget Packages** (Nuget-csomagok kezelése) parancsra.
 
-3. A **NuGet Package Manager** (NuGet-csomagkezelő) ablakban keresse meg a **WindowsAzure.ServiceBus** csomagot, válassza az **Install** (Telepítés) lehetőséget, és fogadja el a használati feltételeket. Ez letölti és telepíti az [Azure Service Bus][lnk-servicebus-nuget] (Azure szolgáltatásbusz) elemet minden függőségével, és hozzáad egy rá mutató hivatkozást is. A csomag lehetővé teszi az alkalmazás számára, hogy csatlakozzon az Event Hubs-kompatibilis végponthoz az IoT Hubon.
+3. A **Nuget Package Manager** (Nuget-csomagkezelő) ablakban keresse meg a **WindowsAzure.ServiceBus** csomagot, válassza az **Install** (Telepítés) lehetőséget, és fogadja el a használati feltételeket. Ez az eljárás letölti és telepíti az [Azure Service Bus][lnk-servicebus-nuget] elemet minden függőségével, és hozzáad egy rá mutató hivatkozást is. A csomag lehetővé teszi az alkalmazás számára, hogy csatlakozzon az Event Hubs-kompatibilis végponthoz az IoT Hubon.
 
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
 
@@ -134,7 +135,7 @@ Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely az eszk
             }
         }
 
-    Ez a metódus egy **EventHubReceiver** példánnyal fogadja az üzeneteket az IoT Hub összes eszközről a felhőbe irányuló fogadási partíciójáról. Figyelje meg, hogy az **EventHubReceiver** objektum létrehozásakor a rendszer átad egy `DateTime.Now` paramétert, így csak az elindítása után küldött üzeneteket fogja fogadni. Ez tesztkörnyezetben hasznos, mivel láthatja az üzenetek aktuális készletét, éles környezetben azonban a kódnak biztosítania kell, hogy az összes üzenetet feldolgozza. További információkért lásd az [eszközről a felhőbe irányuló IoT Hub-üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot.
+    Ez a metódus egy **EventHubReceiver** példánnyal fogadja az üzeneteket az IoT Hub összes eszközről a felhőbe irányuló fogadási partíciójáról. Figyelje meg, hogy az **EventHubReceiver** objektum létrehozásakor a rendszer átad egy `DateTime.Now` paramétert, így csak az elindítása után küldött üzeneteket fogja fogadni. Ez a szűrő tesztkörnyezetben hasznos, mivel Ön láthatja vele az aktuális üzeneteket. Éles környezetben azonban a kódnak gondoskodnia kell az összes üzenet feldolgozásáról. További információkért lásd az [eszközről a felhőbe irányuló IoT Hub-üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot.
 
 7. Végül adja a következő sorokat a **Main** metódushoz:
 
@@ -161,15 +162,15 @@ Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely az eszk
 
 ## Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
+Ebben a szakaszban egy olyan eszközt szimuláló Windows-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldi.
 
-1. A Visual Studióban adjon hozzá egy új Visual C# Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **SimulatedDevice** nevet.
+1. A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **SimulatedDevice** nevet.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt][10]
 
-2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal az **SimulatedDevice** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
+2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal az **SimulatedDevice** projektre, majd kattintson a **Manage Nuget Packages** (Nuget-csomagok kezelése) parancsra.
 
-3. A **NuGet Package Manager** (NuGet-csomagkezelő) ablakban válassza a **Browse** (Tallózás) lehetőséget, keresse meg a **Microsoft.Azure.Devices.Client** csomagot, válassza a **Install** (Telepítés) lehetőséget a **Microsoft.Azure.Devices.Client** csomag telepítéséhez, és fogadja el a használati feltételeket. Ez letölti és telepíti az [Azure IoT – Device SDK ][lnk-device-nuget] (Azure IoT – Eszköz SDK) NuGet-csomagot és annak függőségeit, valamint hozzáad egy rá mutató hivatkozást is.
+3. A **Nuget Package Manager** (Nuget-csomagkezelő) ablakban válassza a **Browse** (Tallózás) lehetőséget, keresse meg a **Microsoft.Azure.Devices.Client** csomagot, válassza a **Install** (Telepítés) lehetőséget a **Microsoft.Azure.Devices.Client** csomag telepítéséhez, és fogadja el a használati feltételeket. Ez az eljárás letölti és telepíti az [Azure IoT – Device SDK ][lnk-device-nuget] Nuget-csomagot és annak függőségeit, valamint hozzáad egy rá mutató hivatkozást is.
 
 4. Adja hozzá a következő `using` utasítást a **Program.cs** fájl elejéhez:
 
@@ -218,7 +219,7 @@ Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely az eszk
         SendDeviceToCloudMessagesAsync();
         Console.ReadLine();
 
-  A **Create** metódus alapértelmezés szerint létrehoz egy **DeviceClient** példányt, amely az AMQP protokollt használja az IoT Hubbal való kommunikációra. A HTTPS protokoll használatához használja a **Create** metódus felülírását, amely lehetővé teszi a protokoll megadását. Ha a HTTPS protokollt használja, hozzá kell adnia a **Microsoft.AspNet.WebApi.Client** NuGet-csomagot a projekthez, hogy tartalmazza a **System.Net.Http.Formatting** névteret.
+  A **Create** metódus alapértelmezés szerint létrehoz egy **DeviceClient** példányt, amely az AMQP protokollt használja az IoT Hubbal való kommunikációra. A HTTPS protokoll használatához használja a **Create** metódus felülírását, amely lehetővé teszi a protokoll megadását. Ha a HTTPS protokollt használja, hozzá kell adnia a **Microsoft.AspNet.WebApi.Client** Nuget-csomagot a projekthez, hogy tartalmazza a **System.Net.Http.Formatting** névteret.
 
 Ez az oktatóanyag végigvezeti egy IoT Hub-eszközügyfél létrehozásának lépésein. A [Connected Service for Azure IoT Hub][lnk-connected-service] (Csatlakoztatott szolgáltatás Azure IoT Hubhoz) Visual Studio-bővítmény használatával is hozzáadhatja a szükséges kódot az eszközügyfél-alkalmazáshoz.
 
@@ -244,7 +245,7 @@ Most már készen áll az alkalmazások futtatására.
 
 ## Következő lépések
 
-Ebben az oktatóanyagban egy új IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. 
+Ebben az oktatóanyagban egy IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. 
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 
@@ -284,6 +285,6 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

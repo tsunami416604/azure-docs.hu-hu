@@ -13,18 +13,19 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="08/19/2016" 
+    ms.date="09/16/2016" 
     ms.author="spelluru"/>
+
 
 # Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával
 > [AZURE.SELECTOR]
-- [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [A Data Factory Editor használata](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [A PowerShell használata](data-factory-copy-activity-tutorial-using-powershell.md)
-- [A Visual Studio használata](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [A REST API használata](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [A .NET API használata](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [A Másolás varázsló használata](data-factory-copy-data-wizard-tutorial.md)
+- [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg Azure-adatelőállítót a .NET API segítségével. Az adat-előállítóban szereplő adatcsatorna másolási tevékenységgel másolja az adatokat az Azure Blob Storage-ből az Azure SQL Database-be.
 
@@ -34,7 +35,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
 > Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. A Data Factory .NET SDK-val kapcsolatos részletes információkért olvassa el a [Data Factory .NET API Reference](https://msdn.microsoft.com/library/mt415893.aspx) (Data Factory .NET API referenciája) című cikket. 
 
 ## Előfeltételek
-- Olvassa el figyelmesen [Az oktatóanyag áttekintése és az Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, hogy képet kapjon az oktatóanyag céljáról, és tisztában legyen az előfeltételekkel. 
+- Olvassa el figyelmesen [Az oktatóanyag áttekintése és az Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, hogy képet kapjon az oktatóanyag céljáról, és tisztában legyen az **előfeltételként** elvégzendő lépésekkel. 
 - Visual Studio 2012, 2013 vagy 2015
 - Az [Azure .NET SDK](http://azure.microsoft.com/downloads/) letöltése és telepítése.
 - Azure PowerShell. Kövesse a [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Az Azure PowerShellt egy Azure Active Directory-alkalmazás létrehozására fogjuk használni.
@@ -49,7 +50,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
 2. Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
         Get-AzureRmSubscription 
-3. Futtassa a következő parancsot a kívánt előfizetés kiválasztásához. A **&lt;NameOfAzureSubscription**&gt; helyére írja be Azure-előfizetése nevét. 
+3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. A **&lt;NameOfAzureSubscription**&gt; helyére írja be Azure-előfizetése nevét. 
 
         Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
 
@@ -460,6 +461,6 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -37,7 +37,7 @@ Jelenleg nem.
 
 #### Meghirdethetem pontosan ugyanazokat az előtagokat, mint a virtuális hálózataim előtagjai?
 
-Nem, ha bármelyik virtuális hálózatának a címéhez tartozó előtagot meghirdeti, azokat az Azure platform blokkolni vagy szűrni fogja.
+Nem, ha bármelyik virtuális hálózatának a címéhez tartozó előtagot meghirdeti, azokat az Azure platform blokkolni vagy szűrni fogja. Olyan előtagot azonban meghirdethet, amelynek a virtuális hálózaton belüli állomások a részhalmazát alkotják. Ha például a virtuális hálózat a 10.10.0.0/16 címteret használja, akkor meghirdetheti a 10.0.0.0/8 előtagot.
 
 ### Használhatom a BGP-t a VNet–VNet kapcsolatokhoz?
 
@@ -80,7 +80,6 @@ Az Azure helyi hálózati átjárója adja meg a kezdeti címelőtagokat a helys
 Vegye fel a VPN-eszközén az Azure BGP-társgép IP-címének gazdaútvonalát, amely az IPsec S2S VPN-alagútra mutat. Ha például az Azure VPN-társgép IP-címe „10.12.255.30”, akkor a VPN-eszköz megfelelő IPsec alagútkapcsolatának a „10.12.255.30” címre mutató gazdaútvonalat kell megadnia egy következő ugrás felülettel.
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

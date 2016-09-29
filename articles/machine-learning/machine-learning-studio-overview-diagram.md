@@ -1,11 +1,11 @@
 <properties
     pageTitle="A Machine Learning Studio képességeit áttekintő diagram | Microsoft Azure"
     description="A Studio prediktív elemzési kísérletek kifejlesztéséhez, és azok Azure felhőben történő üzembe helyezéséhez való használatát bemutató nyomtatható diagram az Azure Machine Learning Studio képességeiről."
-    keywords="machine learning studio,overview diagram,download"
+    keywords="machine learning studio,áttekintő diagram,letöltés"
     services="machine-learning"
     documentationCenter=""
     authors="hning86"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -14,8 +14,9 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/22/2016"
+    ms.date="09/21/2016"
     ms.author="haining;garye" />
+
 
 
 # Az Azure Machine Learning Studio képességeit áttekintő diagram
@@ -50,6 +51,6 @@ Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekint
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

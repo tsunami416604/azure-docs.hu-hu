@@ -12,8 +12,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/10/2016"
+   ms.date="09/16/2016"
    ms.author="ganesr"/>
+
 
 
 # Az ExpressRoute útválasztási követelményei  
@@ -78,7 +79,7 @@ Az útválasztás cseréje az eBGP protokollon keresztül történik. Az EBGP-mu
 
 ## Autonóm rendszerek számai
 
-A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak. A társoldalon (ügyfél vagy szolgáltató) az AS nyilvános ASN lehet, ha igazolható, hogy az Ön tulajdona, illetve személyes ASN-szám lehet a privát társviszonyhoz, amely nyilvános ASN-t igényel a nyilvános és Microsoft-társviszonyokhoz. 
+A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak. A társoldalon (ügyfél vagy szolgáltató) az AS lehet nyilvános ASN (ha igazolható, hogy Ön a tulajdonosa), illetve személyes ASN-szám.
 
 Az adatátvitel szimmetriájára nem vonatkoznak követelmények az adott kapcsolatcsoportok elsődleges és másodlagos elérési útjain. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat az Önhöz tartozó kapcsolatcsoport-párok elsődleges vagy másodlagos oldaláról is meg kell hirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
 
@@ -179,6 +180,6 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

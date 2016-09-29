@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/16/2016"
+   ms.date="09/13/2016"
    ms.author="ryanwi"/>
+
 
 # A fejlesztőkörnyezet előkészítése
  Az [Azure Service Fabric-alkalmazásoknak][1] a fejlesztői gépen való létrehozásához és futtatásához telepítse a futtatókörnyezetet, az SDK-t és az eszközöket. Továbbá engedélyeznie kell az SDK-ban található Windows PowerShell-parancsfájlok végrehajtását.
@@ -32,10 +33,9 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 ## A futtatókörnyezet, az SDK és az eszközök telepítése
 
-A Webplatform-telepítő három konfigurációt kínál a Service Fabric fejlesztéséhez:
+A Webplatform-telepítő két konfigurációt kínál a Service Fabric fejlesztéséhez:
 
-- [A Service Fabric-futtatókörnyezet, az SDK és az eszközök telepítése a Visual Studio 2015 Update 2 vagy újabb verziója számára][full-bundle-vs2015]
-- [A Service Fabric-futtatókörnyezet, az SDK és az eszközök telepítése a Visual Studio 15 Preview számára][full-bundle-dev15]
+- [A Service Fabric-futtatókörnyezet, az SDK és az eszközök telepítése a Visual Studio 2015 számára (a Visual Studio 2015 2. vagy újabb frissítése szükséges)][full-bundle-vs2015]
 - [Csak a Service Fabric-futtatókörnyezet és az SDK telepítése (nincsenek Visual Studio-eszközök)][core-sdk]
 
 ## A PowerShell-parancsfájl végrehajtásának engedélyezése
@@ -58,13 +58,13 @@ Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alka
 
 [1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "A Service Fabric kampányoldala"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015-2_1 "VS 2015 WebPI-hivatkozás"
-[full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15-2_1 "Dev15 WebPI-hivatkozás"
-[core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK_2_1 "Core SDK WebPI-hivatkozás"
+[full-bundle-vs2015]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI-hivatkozás"
+[full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI-hivatkozás"
+[core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI-hivatkozás"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

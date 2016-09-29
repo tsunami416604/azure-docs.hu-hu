@@ -1,7 +1,7 @@
 <properties
     pageTitle="Az Active Directory összevonási szolgáltatások az Azure-ban | Microsoft Azure"
     description="Ebből a dokumentumból megtanulhatja, hogyan helyezze üzembe az AD FS szolgáltatást az Azure-ban, és biztosítson ezzel magas fokú rendelkezésre állást."
-    keywords="bevezetés az AD FS használatába, Azure, Azure AD Connect áttekintése, AD FS az Azure-ban, iaas, ADFS"
+    keywords="AD FS üzembe helyezése azure-ban, azure adfs üzembe helyezése, azure adfs, azure ad fs, adfs üzembe helyezése, ad fs üzembe helyezése, adfs azure-ban, adfs üzembe helyezése azure-ban, AD FS üzembe helyezése azure-ban, adfs azure, az AD FS bemutatása, Azure, AD FS az Azure-ban, iaas, ADFS, adfs áthelyezése az azure-ba"
     services="active-directory"
     documentationCenter=""
     authors="anandyadavmsft"
@@ -16,6 +16,7 @@
     ms.topic="get-started-article"
     ms.date="07/13/2016"
     ms.author="anandy;billmath"/>
+
 
 # Az AD FS üzembe helyezése az Azure-ban 
 
@@ -311,6 +312,7 @@ A sikeres bejelentkezést követően a rendszer az alább látható üzenetet je
 
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
 * [Configuring and managing your AD FS using Azure AD Connect (Az AD FS konfigurálása és felügyelete az Azure AD Connect segítségével)](active-directory-aadconnectfed-whatis.md)
+* [Az AD FS nagy rendelkezésre állású, több földrajzi régióra kiterjedő üzembe helyezése az Azure Traffic Managerrel](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 
 
 
@@ -318,7 +320,6 @@ A sikeres bejelentkezést követően a rendszer az alább látható üzenetet je
 
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -13,22 +13,21 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="08/17/2016" 
+    ms.date="09/16/2016" 
     ms.author="spelluru"/>
+
 
 # Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a REST API használatával
 > [AZURE.SELECTOR]
-- [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [A Data Factory Editor használata](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [A PowerShell használata](data-factory-copy-activity-tutorial-using-powershell.md)
-- [A Visual Studio használata](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [A REST API használata](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [A .NET API használata](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [A Másolás varázsló használata](data-factory-copy-data-wizard-tutorial.md)
+- [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg Azure-adat-előállítót a REST API segítségével. Az adat-előállítóban szereplő adatcsatorna másolási tevékenységgel másolja az adatokat az Azure Blob Storage-ből az Azure SQL Database-be.
-
-A másolási tevékenység végzi az adatok továbbítását az Azure Data Factoryban. A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket.   
 
 > [AZURE.NOTE] 
 > Ez a cikk nem tárgyalja a Data Factoryhoz használható REST API egészét. A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentációért tekintse meg a [Data Factory REST API Reference](https://msdn.microsoft.com/library/azure/dn906738.aspx) (Data Factory REST API referenciája) című cikket.
@@ -36,7 +35,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
 
 ## Előfeltételek
 
-- Olvassa el [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt.
+- Tekintse meg [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
 - Telepítse gépére a [Curl](https://curl.haxx.se/dlwiz/) eszközt. A Curl eszköz a REST-parancsokkal együtt az adat-előállító létrehozására használható. 
 - Az [ebben a cikkben](../resource-group-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket: 
     1. Hozzon létre egy **ADFCopyTutorialApp** nevű webalkalmazást az Azure Active Directoryban.
@@ -44,14 +43,14 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
     3. Szerezze be a **bérlőazonosítót**. 
     4. Rendelje az **ADFCopyTutorialApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.  
 - Telepítse az [Azure PowerShellt](../powershell-install-configure.md).  
-- Indítsa el a **PowerShellt**, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
+- Indítsa el a **PowerShellt**, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
     1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
     
             Login-AzureRmAccount   
     2. Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
             Get-AzureRmSubscription 
-    3. Futtassa a következő parancsot a kívánt előfizetés kiválasztásához. A **&lt;NameOfAzureSubscription**&gt; helyére írja be Azure-előfizetése nevét. 
+    3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. A **&lt;NameOfAzureSubscription**&gt; helyére írja be Azure-előfizetése nevét. 
 
             Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     1. Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot. Ehhez futtassa a következő parancsot a PowerShellben.  
@@ -136,7 +135,7 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
 
 A JSON-definíció az **AzureBlobInput** nevű adatkészletet határozza meg, amely az adatcsatorna adott tevékenységéhez tartozó bemeneti adatokat jelöli. Ezenfelül meghatározza, hogy a bemeneti adatok az **adftutorial** nevű Blob-tároló **emp.txt** nevű fájljában találhatóak. 
 
- Vegye figyelembe a következőket: 
+ Vegye figyelembe a következő pontokat: 
 
 - Az adatkészlet **típusa** **AzureBlob** értékre van állítva.
 - A **linkedServiceName** tulajdonság **AzureStorageLinkedService** értékre van állítva. 
@@ -192,12 +191,12 @@ Ha a **folderPath** és a **fileName** tulajdonságokat dinamikusan szeretné be
 
 A JSON-definíció az **AzureSqlOutput** nevű adatkészletet határozza meg, amely az adatcsatorna adott tevékenységéhez tartozó eredményadatokat jelöli. Ezenfelül azt is meghatározza, hogy az eredményeket az AzureSqlLinkedService által meghatározott adatbázis **emp** táblája tárolja. Az **availability** paraméter meghatározza, hogy a kimeneti adatkészlet előállítása óránként történik (frequency: hour és interval: 1 beállítás).
 
-Vegye figyelembe a következőket: 
+Vegye figyelembe a következő pontokat: 
 
 - Az adatkészlet **type** (típus) tulajdonsága **AzureSQLTable** értékre van állítva.
 - A **linkedServiceName** tulajdonság **AzureSqlLinkedService** értékre van állítva.
 - A **tablename** tulajdonság **emp** értékre van állítva.
-- Az adatbázis emp táblája három oszlopot tartalmaz, ezek az **ID**, a **FirstName** és a **LastName**. Az ID az identitást tartalmazó oszlop, ezért itt csak a **FirstName** és a **LastName** értékét kell megadnia.
+- Az adatbázis emp táblájában három oszlop van – **ID**, **FirstName** és **LastName**. Az ID azonosítóoszlop, ezért itt csak a **FirstName** és **LastName** tulajdonságokat kell megadnia.
 - Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
 
 ### pipeline.json
@@ -245,7 +244,7 @@ Vegye figyelembe a következőket:
     }
 
 
-Vegye figyelembe a következőket:
+Vegye figyelembe a következő pontokat:
 
 - A tevékenységek szakaszban csak egyetlen olyan tevékenység van, amelynek a **type** (típus) tulajdonsága **CopyActivity** értékre van állítva.
 - A tevékenység bemenetének beállítása **AzureBlobInput**, a kimeneté pedig **AzureSqlOutput**.
@@ -253,7 +252,7 @@ Vegye figyelembe a következőket:
 
 A **start** (kezdés) tulajdonság értékét cserélje az aktuális, az **end** (befejezés) tulajdonság értékét pedig a következő napra. Azt is megteheti, hogy a dátum-időpont paraméternek csak a dátum részét adja meg, az időpont részét pedig kihagyja. Megadhatja például a „2015-02-03” értéket, amely a következőnek felel meg: „2015-02-03T00:00:00Z”.
 
-Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2014-10-14T16:32:41Z. Az **end** időpont megadása opcionális, a jelen oktatóanyagban azonban használni fogjuk. 
+Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2014-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk. 
 
 Ha nem adja meg az **end** (befejezés) tulajdonság értékét, akkor a rendszer a „**kezdő időpont + 48 óra**” számítással határozza meg azt. A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz.
 
@@ -300,7 +299,7 @@ Ebben a lépésben egy **ADFCopyTutorialDF** nevű Azure-adatelőállítót fog 
 
         Write-Host $results
 
-Vegye figyelembe a következőket:
+Vegye figyelembe a következő pontokat:
  
 - Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha az eredményeknél a következő hibaüzenet jelenik meg: **A(z) „ADFCopyTutorialDF” Data factory nem érhető el**, tegye a következőket:  
     1. Módosítsa a nevet (például yournameADFCopyTutorialDF) a **datafactory.json** fájlban.
@@ -391,7 +390,7 @@ Hajtsa végre az alábbi lépéseket az Azure Blob Storage és az Azure SQL-adat
 
     Ha az SQL Server 2014 van telepítve a számítógépen: kövesse [Managing Azure SQL Database using SQL Server Management Studio] (Az Azure SQL Database szolgáltatás felügyelete az SQL Server Management Studio használatával) [sql-management-studio] című cikk Connect to SQL Database of the Managing Azure SQL Database using SQL Server Management Studio (Kapcsolódás az SQL Database-hez) című 2. lépésében foglalt utasításokat Azure SQL Server-kiszolgálóhoz való csatlakozáshoz, és futtassa az SQL-szkriptet.
 
-    Ha az ügyfél számára nem engedélyezett az Azure SQL-kiszolgáló elérése, úgy kell beállítania az Azure SQL-kiszolgáló tűzfalát, hogy engedélyezze a hozzáférést a gép (IP-cím) számára. Az Azure SQL-kiszolgáló tűzfalának konfigurálásához szükséges lépéseket [ez a cikk](../sql-database/sql-database-configure-firewall-settings.md) írja le részletesen.
+    Ha az ügyfél számára nem engedélyezett az Azure SQL-kiszolgáló elérése, úgy kell beállítania az Azure SQL-kiszolgáló tűzfalát, hogy engedélyezze a hozzáférést a gép (IP-cím) számára. Az Azure SQL Server-tűzfal konfigurálásának lépéseit lásd [ebben a cikkben](../sql-database/sql-database-configure-firewall-settings.md).
         
 ### Bemeneti adatkészlet létrehozása 
 Ebben a lépésben létrehozza az **AzureBlobInput** nevű adatkészletet, amely egy, az Azure Storage-ben található Blob-tárolóra mutat, amelyet az **AzureStorageLinkedService** társított szolgáltatás képvisel. Ez a blobtároló (**adftutorial**) tartalmazza a bemeneti adatokat az **emp.txt** fájlban. 
@@ -470,7 +469,7 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
 | :---- | :---- |
 | [Adattovábbítási tevékenységek](data-factory-data-movement-activities.md) | Ez a cikk részletes információkat tartalmaz a jelen oktatóanyagban használt Másolás tevékenységről. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) | Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
-| [Folyamatok](data-factory-create-pipelines.md) | Ennek a cikknek a segítségével megismerheti a Azure Data Factory adatcsatornáit és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
+| [Folyamatok](data-factory-create-pipelines.md) | Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adatkészletek](data-factory-create-datasets.md) | Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban.
 | [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) | Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. 
 
@@ -494,6 +493,6 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
  
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -13,8 +13,9 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="06/16/2016"
+     ms.date="09/12/2016"
      ms.author="dobett"/>
+
 
 # Ismerkedés az Azure IoT Hub for Node.js szolgáltatással
 
@@ -28,7 +29,7 @@ Az oktatóanyag végén három Node.js-konzolalkalmazással fog rendelkezni:
 
 > [AZURE.NOTE] Különböző SDK-kat használhat az alkalmazások összeállításához, hogy eszközökön és a megoldás háttérrendszerén is fussanak. Ezekről az [IoT Hub SDKs][lnk-hub-sdks] című témakörben talál további információt.
 
-Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 + A Node.js 0.12.x vagy újabb verziója. <br/> [A fejlesztési környezet előkészítése][lnk-dev-setup] leírja, hogyan telepíthető a Node.js ehhez az oktatóprogramhoz Windows vagy Linux rendszeren.
 
@@ -40,21 +41,21 @@ Ezzel létrehozta az IoT Hubot. Ezenkívül rendelkezik az oktatóanyag további
 
 ## Eszközidentitás létrehozása
 
-Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely egy új eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az eszközidentitás-jegyzékbe. További információkért lásd az [Azure IoT Hub fejlesztői útmutató][lnk-devguide-identity] **Eszközidentitás-jegyzék** című szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
+Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely egy eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az eszközidentitás-jegyzékbe. További információkért lásd az [Azure IoT Hub fejlesztői útmutató][lnk-devguide-identity] **Eszközidentitás-jegyzék** című szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
 
-1. Hozzon létre egy új, **createdeviceidentity** nevű üres mappát. A **createdeviceidentity** mappában hozzon létre egy új package.json fájlt a következő parancs beírásával a parancssorba. Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **createdeviceidentity** nevű üres mappát. A **createdeviceidentity** mappában hozzon létre egy package.json fájlt úgy, hogy beírja a következő parancsot a parancssorba. Fogadja el az összes alapértelmezett beállítást:
 
     ```
     npm init
     ```
 
-2. A **createdeviceidentity** mappában egy parancssorban futtassa a következő parancsot az **azure-iothub** csomag telepítéséhez:
+2. Telepítse az **azure-iothub** szolgáltatásoldali SDK csomagot. Ehhez futtassa egy parancssorból a következő parancsot a **createdeviceidentity** mappában:
 
     ```
     npm install azure-iothub --save
     ```
 
-3. Egy szövegszerkesztővel hozzon létre egy új **CreateDeviceIdentity.js** fájlt a **createdeviceidentity** mappában.
+3. Egy szövegszerkesztővel hozza létre a **CreateDeviceIdentity.js** fájlt a **createdeviceidentity** mappában.
 
 4. Adja hozzá a következő `require` utasítást a **CreateDeviceIdentity.js** fájl elejéhez:
 
@@ -72,7 +73,7 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely egy új
     var registry = iothub.Registry.fromConnectionString(connectionString);
     ```
 
-6. Adja hozzá a következő kódot egy új eszközdefiníció létrehozásához az IoT Hub eszközidentitás-jegyzékében. Ez a kód új eszközt hoz létre, ha az eszközazonosító nem létezik a jegyzékben, különben pedig a következő eszköz kulcsát adja vissza:
+6. A következő kód hozzáadásával hozzon létre egy eszközdefiníciót az IoT Hub eszközidentitás-jegyzékében. Ez a kód létrehozza az eszközt, ha az eszközazonosító nem létezik a jegyzékben, ellenkező esetben pedig a meglévő eszköz kulcsát adja vissza:
 
     ```
     var device = new iothub.Device(null);
@@ -102,17 +103,17 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely egy új
     node CreateDeviceIdentity.js 
     ```
 
-9. Jegyezze fel az **eszköz azonosítóját** és az **eszköz kulcsát**. Ezekre később szüksége lesz, amikor az IoT Hubhoz eszközként csatlakozó alkalmazást hoz létre.
+9. Jegyezze fel az **eszköz azonosítóját** és az **eszköz kulcsát**. Ezekre az értékekre később szüksége lesz, amikor az IoT Hubhoz eszközként csatlakozó alkalmazást hoz létre.
 
 > [AZURE.NOTE] Az IoT Hub-identitásjegyzék csak a hub biztonságos elérésének biztosításához tárolja az eszközidentitást. Az eszközazonosítókat és kulcsokat biztonsági hitelesítő adatokként tárolja, valamint tartalmaz egy engedélyezve/letiltva jelzőt, amellyel letilthatja egy adott eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. További információt az [IoT Hub fejlesztői útmutatóban][lnk-devguide-identity] talál.
 
 ## Az eszközről a felhőbe irányuló üzenetek fogadása
 
-Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs szolgáltatástól érkező üzenetek feldolgozásával kapcsolatos további információkért lásd a [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. Ez az IoT Hub Event Hub-kompatibilis végpontjaira érvényes.
+Ebben a szakaszban egy Node.js-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs szolgáltatástól érkező üzenetek feldolgozásával kapcsolatos további információkért lásd a [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. Ez az IoT Hub Event Hub-kompatibilis végpontjaira érvényes.
 
 > [AZURE.NOTE] Az eszközről a felhőbe irányuló üzenetek olvasásához használt Event Hubs-kompatibilis végpontok mindig az AMQPS protokollt használják.
 
-1. Hozzon létre egy új, **readdevicetocloudmessages** nevű üres mappát. A **readdevicetocloudmessages** mappában hozzon létre egy új package.json fájlt a következő parancs beírásával a parancssorba. Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **readdevicetocloudmessages** nevű üres mappát. A **readdevicetocloudmessages** mappában hozzon létre egy package.json fájlt úgy, hogy beírja a következő parancsot a parancssorba. Fogadja el az összes alapértelmezett beállítást:
 
     ```
     npm init
@@ -124,7 +125,7 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely az eszk
     npm install azure-event-hubs --save
     ```
 
-3. Egy szövegszerkesztővel hozzon létre egy új **ReadDeviceToCloudMessages.js** fájlt a **readdevicetocloudmessages** mappában.
+3. Egy szövegszerkesztővel hozza létre a **ReadDeviceToCloudMessages.js** nevű fájlt a **readdevicetocloudmessages** mappában.
 
 4. Adja hozzá a következő `require` utasításokat a **ReadDeviceToCloudMessages.js** fájl elejéhez:
 
@@ -154,7 +155,7 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely az eszk
     };
     ```
 
-7. Az **EventHubClient** létrehozásához adja hozzá az alábbi kódot, nyissa meg az IoT Hub kapcsolatát, majd hozzon létre fogadót minden egyes partícióhoz. Ez az alkalmazás szűrőt használ a fogadó létrehozásakor, hogy a fogadó csak a fogadó futtatásának megkezdése után az IoT Hubra küldött üzeneteket olvassa. Ez tesztkörnyezetben hasznos, mivel az üzeneteknek csak az aktuális készletét jelenítheti meg, éles környezetben azonban a kódnak biztosítania kell, hogy az összes üzenetet feldolgozza. További információért lásd az [eszközről a felhőbe irányuló IoT Hub-üzenetek feldolgozásával][lnk-process-d2c-tutorial] foglalkozó oktatóanyagot.
+7. Az **EventHubClient** létrehozásához adja hozzá az alábbi kódot, nyissa meg az IoT Hub kapcsolatát, majd hozzon létre fogadót minden egyes partícióhoz. Ez az alkalmazás szűrőt használ a fogadó létrehozásakor, hogy a fogadó csak a fogadó futtatásának megkezdése után az IoT Hubra küldött üzeneteket olvassa. Ez a szűrő tesztkörnyezetben hasznos, mert így csak az aktuális üzenetek láthatók. Éles környezetben azonban a kódnak gondoskodnia kell az összes üzenet feldolgozásáról. További információkért lásd a következő oktatóanyagot: [Eszközről a felhőbe irányuló IoT Hub-üzenetek feldolgozása][lnk-process-d2c-tutorial]:
 
     ```
     var client = EventHubClient.fromConnectionString(connectionString);
@@ -176,15 +177,15 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely az eszk
 
 ## Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
+Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
 
-1. Hozzon létre egy új, **simulateddevice** nevű üres mappát. A **simulateddevice** mappában hozzon létre egy új package.json fájlt a következő parancs beírásával a parancssorba. Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **simulateddevice** nevű üres mappát. A **simulateddevice** mappában hozza létre a package.json fájlt úgy, hogy beírja a következő parancsot a parancssorba. Fogadja el az összes alapértelmezett beállítást:
 
     ```
     npm init
     ```
 
-2. A **simulateddevice** mappában egy parancssorban futtassa a következő parancsot az **azure-iot-device-amqp** csomag telepítéséhez:
+2. Telepítse az **azure-iot-device** eszközoldali SDK csomagot és az **azure-iot-device-amqp** csomagot. Ehhez futtassa egy parancssorból a következő parancsot a **simulateddevice** mappában:
 
     ```
     npm install azure-iot-device azure-iot-device-amqp --save
@@ -201,7 +202,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely az eszköz
     var Message = require('azure-iot-device').Message;
     ```
 
-5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre eszközügyfelet. A **{youriothostname}** helyőrző értékét cserélje le az *IoT Hub létrehozása* című szakaszban létrehozott IoT Hub-névre, illetve a **{yourdevicekey}** helyőrző értékét az *Eszközidentitás létrehozása* szakaszban létrehozott eszközkulcsértékre:
+5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre eszközügyfelet. A **{youriothostname}** helyére írja be az *IoT Hub létrehozása* című szakaszban létrehozott IoT Hub nevét. A **{yourdevicekey}** helyére írja be az *Eszközidentitás létrehozása* című szakaszban generált eszközkulcsértéket:
 
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myFirstNodeDevice;SharedAccessKey={yourdevicekey}';
@@ -313,6 +314,7 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 
-<!--HONumber=sep16_HO1-->
+
+<!--HONumber=Sep16_HO4-->
 
 

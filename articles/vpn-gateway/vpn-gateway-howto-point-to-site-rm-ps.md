@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Pont–hely VPN-kapcsolat konfigurálása virtuális hálózathoz a Resource Manager üzemi modell használatával | Microsoft Azure"
-   description="Biztonságosan csatlakozhat az Azure Virtual Networkhöz pont–hely VPN-kapcsolat létrehozásával."
+   description="Biztonságosan csatlakozhat az Azure Virtual Networkhöz pont–hely VPN Gateway-kapcsolat létrehozásával."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -16,13 +16,14 @@
    ms.date="08/31/2016"
    ms.author="cherylmc" />
 
+
 # Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével
 
 > [AZURE.SELECTOR]
-- [PowerShell – Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
-- [Portál – Klasszikus](vpn-gateway-point-to-site-create.md)
+- [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [Klasszikus – Klasszikus portál](vpn-gateway-point-to-site-create.md)
 
-A pont–hely konfiguráció lehetővé, hogy az ügyfélszámítógépek külön-külön biztonságos kapcsolatot létesítsenek a virtuális hálózattal. A pont–hely kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózatához, például otthonról vagy konferenciáról, és akkor is, ha csak néhány, a virtuális hálózathoz csatlakoztatandó ügyfele van. 
+A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy konferenciáról, vagy akkor, ha csak néhány ügyfelet kíván csatlakoztatni a virtuális hálózathoz. 
 
 Ez a cikk végigkalauzolja azokon a lépéseken, amelyekkel pont–hely kapcsolatot rendelkező virtuális hálózatot hozhat létre a **Resource Manager üzemi modellen belül**. A lépésekhez a PowerShell szükséges. Ez a megoldás egyelőre nem konfigurálható teljes egészében az Azure Portal segítségével.
 
@@ -65,7 +66,7 @@ Ehhez a konfigurációhoz a következő értékeket használjuk: A változókat 
 
 - Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
     
-- Telepítse az Azure Resource Manager PowerShell-parancsmagjait (az 1.0.2-es vagy újabb verziót). A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](../powershell-install-configure.md).
+- Telepítse az Azure Resource Manager PowerShell-parancsmagjait (az 1.0.2-es vagy újabb verziót). A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](../powershell-install-configure.md). Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia. 
 
 ## <a name="declare"></a>1. rész – Bejelentkezés és a változók beállítása
 
@@ -111,7 +112,7 @@ Ez a szakasz a bejelentkezést és a konfigurációban használt értékek dekla
 
         New-AzureRmResourceGroup -Name $RG -Location $Location
 
-2. Hozza létre a virtuális hálózat alhálózatainak konfigurációit, névként a következő értékeket adja meg: *FrontEnd*, *BackEnd*, illetve *GatewaySubnet*. Ezeknek az előtagoknak a fentebb deklarált hálózati névtér részének kell lenniük.
+2. Hozza létre a virtuális hálózat alhálózatainak konfigurációit, névként a következő értékeket adja meg: *FrontEnd*, *BackEnd*, illetve *GatewaySubnet*. Ezek az előtagok a deklarált virtuális hálózati címtér részei kell, hogy legyenek.
 
         $fesub = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
         $besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
@@ -172,19 +173,28 @@ Az Azure-hoz pont–hely kapcsolattal csatlakozó ügyfelekre az ügyféltanús�
 
 3. A csomag letöltéséhez másolja a visszaadott hivatkozást, és illessze be egy böngészőbe. A csomag telepítése az ügyfélszámítógépre.
 
-4. Nyissa meg az ügyfélszámítógépen a **Hálózati beállítások** eszközt, és kattintson a **VPN** elemre. A listán láthatja a kapcsolatot. Annak a virtuális hálózatnak a nevét mutatja, amellyel kapcsolatot létesít, és következőre hasonlít: 
+4. Nyissa meg az ügyfélszámítógépen a **Hálózati beállítások** eszközt, és kattintson a **VPN** elemre. A listán láthatja a kapcsolatot. Annak a virtuális hálózatnak a nevét mutatja, amellyel kapcsolatot létesít, és következő példára hasonlít: 
 
     ![VPN-ügyfél](./media/vpn-gateway-howto-point-to-site-rm-ps/vpn.png "VPN client")
 
-## <a name="cc"></a>6. rész – Az ügyféltanúsítvány telepítése
-    
-Generálja a főtanúsítványból az ügyféltanúsítványokat (*.pfx), és telepítse őket az ügyfélszámítógépekre. Válassza azt a telepítés módszert, amelyet magabiztosan használ.
+## <a name="cc"></a>6. rész – Az ügyféltanúsítvány létrehozása
 
-Ha önaláírt tanúsítványt használ, és nem tudja, hogyan kell ügyféltanúsítványt generálni, [ebből a cikkből](vpn-gateway-certificates-point-to-site.md) tájékozódhat. Ha vállalati megoldással dolgozik, feltétlenül a „név@tartomány.com” köznapinév-formátumban állítsa ki az ügyféltanúsítványokat, és ne a „NetBIOS-tartománynév\felhasználónév” formátumot használja.
+Ezután állítsa elő az ügyféltanúsítványokat. Létrehozhat egy egyedi tanúsítványt minden csatlakozó ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfél esetén. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy szükség esetén visszavonhat egyetlen tanúsítványt. Ha azonban mindenki ugyanazt az ügyféltanúsítványt használja, és úgy találja, hogy egyetlen ügyféltől vissza kell vonnia a tanúsítványt, az összes olyan ügyfél számára elő kell állítania és telepítenie kell új tanúsítványokat, amelyek az adott tanúsítványt használják a hitelesítéshez.
 
-A .pfx fájlra duplán kattintva közvetlenül telepítheti az ügyféltanúsítványt a számítógépre.
+- Ha vállalati tanúsítványmegoldást használ, az általános „név@vállalat.com” formátumban hozza létre az ügyféltanúsítványokat a NetBIOS „TARTOMÁNY\felhasználónév” formátuma helyett. 
 
-## 7. rész – Csatlakozás az Azure-hoz
+- Ha önaláírt tanúsítványt használ, az ügyféltanúsítvány létrehozásával kapcsolatban tekintse meg a [Working with self-signed root certificates for Point-to-Site configurations](vpn-gateway-certificates-point-to-site.md) (Önaláírt főtanúsítványok használata pont–hely konfigurációk esetében).
+
+## 7. rész – Az ügyféltanúsítvány telepítése
+
+Telepítsen egy ügyféltanúsítványt minden olyan számítógépen, amelyet csatlakoztatni szeretne a virtuális hálózathoz. A hitelesítéshez ügyféltanúsítványra van szükség. Az ügyféltanúsítványt telepítheti automatikusan vagy manuálisan. A következő lépések végigvezetik az ügyféltanúsítvány manuális exportálásán és telepítésén.
+
+1. Az ügyféltanúsítványok exportálásához a *certmgr.msc* fájlt használhatja. Kattintson a jobb gombbal az exportálni kívánt ügyféltanúsítványra, majd a **minden feladat** és az **exportálás** elemre.
+2. Exportálja az ügyféltanúsítványt a titkos kulccsal. Ez egy *.pfx* fájl. Jegyezze fel vagy jegyezze meg a jelszót (kulcsot), amelyet beállított a tanúsítványhoz.
+3. Másolja a *.pfx* fájlt az ügyfélszámítógépre. Az ügyfélszámítógépen kattintson duplán a *.pfx* fájlra annak telepítéséhez. Amikor a rendszer kéri, adja meg a jelszót. Ne módosítsa a telepítés helyét.
+
+
+## 8. rész – Csatlakozás az Azure-hoz
 
 1. Csatlakozzon a virtuális hálózathoz. Ehhez navigáljon az ügyfélszámítógépen a VPN-kapcsolatokhoz, és keresse meg a létrehozott VPN-kapcsolatot. Ugyanaz a neve, mint a virtuális hálózatnak. Kattintson a **Connect** (Csatlakozás) gombra. Megjelenhet egy előugró üzenet, amely a tanúsítvány használatára utal. Ilyen esetében kattintson a **Folytatás** gombra emelt szintű jogosultságok használatához. 
 
@@ -196,7 +206,7 @@ A .pfx fájlra duplán kattintva közvetlenül telepítheti az ügyféltanúsít
 
     ![3. VPN-ügyfél](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png "VPN client connection 2")
 
-## 8. lépés – A kapcsolat ellenőrzése
+## 9. lépés – A kapcsolat ellenőrzése
 
 1. Annak ellenőrzéséhez, hogy a VPN-kapcsolat aktív-e, nyisson meg egy rendszergazda jogú parancssort, és futtassa az *ipconfig/all* parancsot.
 
@@ -217,7 +227,7 @@ A .pfx fájlra duplán kattintva közvetlenül telepítheti az ügyféltanúsít
 
 A tanúsítványok a VPN-ügyfelek hitelesítésére használatosak a pont–hely VPN-kapcsolatokban. A következő lépések végigvezetik a főtanúsítványok hozzáadásának és eltávolításának folyamatán. Amikor hozzáad egy Base64-kódolású X.509 (.cer) fájlt az Azure-hoz, arra utasítja az Azure-t, hogy bízzon meg a fájl által képviselt főtanúsítványban. 
 
-A megbízható főtanúsítvány hozzáadására és eltávolítására használhatja a PowerShellt, illetve az Azure Portal webhelyet. Ha az Azure Portal segítségével szeretné elvégezni, nyissa meg a **virtuális hálózati átjáró > beállítások > Pont-hely konfiguráció > Főtanúsítványok** területet. Az alábbi lépések a műveleteknek a PowerShell segítségével történő végrehajtását ismertetik. 
+A megbízható főtanúsítvány hozzáadására és eltávolítására használhatja a PowerShellt, illetve az Azure Portal webhelyet. Ha az Azure Portal segítségével szeretné elvégezni, nyissa meg a **virtuális hálózati átjáró > beállítások > Pont-hely konfiguráció > Főtanúsítványok** területet. A következő lépések végigvezetik ezen feladatok PowerShell használatával való elvégzésén. 
 
 ### Megbízható főtanúsítvány hozzáadása
 
@@ -229,7 +239,7 @@ Az Azure-ra legfeljebb 20 megbízható főtanúsítványt tölthet fel .cer fáj
 
     ![tanúsítvány](./media/vpn-gateway-howto-point-to-site-rm-ps/copycert.png "certificate")
     
-2. Az alábbi példában a tanúsítvány neve és a kulcsadatok vannak megadva változóként. Cserélje le őket a saját adataira.
+2. Adja meg a tanúsítvány nevét és a kulcs adatait egy változóként. Helyettesítse az adatokat a saját adataival az alábbi példában látható módon:
 
         $P2SRootCertName2 = "ARMP2SRootCert2.cer"
         $MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
@@ -306,6 +316,6 @@ Felvehet virtuális gépet a virtuális hálózatba. A lépésekért lásd: [Vir
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

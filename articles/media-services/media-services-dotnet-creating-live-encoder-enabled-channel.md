@@ -1,9 +1,9 @@
 <properties 
-    pageTitle="Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával" 
+    pageTitle="Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET-tel | Microsoft Azure" 
     description="Ez az útmutató lépésről lépésre ismerteti, hogyan hozhat létre egy csatornát, amely a fogadott egyféle sávszélességű élő adatfolyamokat a .NET SDK használatával többféle sávszélességűvé kódolja." 
     services="media-services" 
     documentationCenter="" 
-    authors="juliako,anilmur" 
+    authors="anilmur" 
     manager="erikre" 
     editor=""/>
 
@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article"
-    ms.date="06/22/2016"
-    ms.author="juliako"/>
+    ms.date="09/15/2016"
+    ms.author="juliako;anilmur"/>
+
 
 
 #Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával
@@ -518,7 +519,9 @@ Adja hozzá az appSettings szakaszt az app.config fájlhoz, és állítsa be a M
     }   
 
 
-##Következő lépések: Media Services képzési tervek
+##Következő lépés
+
+Tekintse át a Media Services képzési terveket.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -532,6 +535,6 @@ Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a t�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

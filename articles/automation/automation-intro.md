@@ -6,7 +6,7 @@
     authors="mgoedtel"
     manager="jwhit"
     editor=""
-    keywords="what is automation, azure automation, azure automation examples"/>
+    keywords="az Automation ismertetése, Azure Automation, Azure Automation példák"/>
 <tags
     ms.service="automation"
     ms.workload="tbd"
@@ -15,6 +15,7 @@
     ms.topic="get-started-article" 
     ms.date="05/10/2016"
     ms.author="magoedte;bwren"/>
+
 
 # Az Azure Automation áttekintése
 
@@ -104,6 +105,6 @@ Számos erőforrás áll rendelkezésére, hogy további információkat kapjon 
 
 
 
-<!--HONumber=jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

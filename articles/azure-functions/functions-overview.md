@@ -7,7 +7,7 @@
    manager="erikre"
    editor=""
    tags=""
-   keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture"/>
+   keywords="azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra"/>
 
 <tags
    ms.service="functions"
@@ -15,13 +15,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="08/29/2016"
    ms.author="cfowler;mahender;glenga"/>
    
    
+
 # Az Azure Functions áttekintése
 
-Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. Ezáltal még hatékonyabbá válhat a fejlesztés, amelyhez tetszőleges nyelvet használhat, legyen az akár a C#, a Node.js, a Python vagy a PHP. Csak annyi időért kell fizetnie, amennyit a kódja fut, a szükség szerinti méretezést pedig rábízhatja az Azure szolgáltatásra.
+Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. Ezáltal még hatékonyabbá válhat a fejlesztés, amelyhez tetszőleges nyelvet használhat, legyen az akár a C#, F#, a Node.js, a Python vagy a PHP. Csak annyi időért kell fizetnie, amennyit a kódja fut, a szükség szerinti méretezést pedig rábízhatja az Azure szolgáltatásra.
 
 A témakor általános áttekintést nyújt az Azure Functions szolgáltatásról. Ha szeretne rögtön az Azure Functions használatának első lépéseihez ugrani, kezdje [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md) résszel. Ha a Functions szolgáltatással kapcsolatos további műszaki információkat keres, lépjen a [fejlesztői segédanyagok](functions-reference.md) részhez.
 
@@ -29,7 +30,7 @@ A témakor általános áttekintést nyújt az Azure Functions szolgáltatásró
 
 Az Azure Functions néhány főbb jellemzője:
     
-* **Nyelvválasztás** – C#, Node.js, Python, F#, PHP, Batch, Bash, Java, vagy bármilyen végrehajtható formátum használatával írhat függvényeket.  
+* **Nyelvválasztás** – C#, F# Node.js, Python, PHP, Batch, Bash, Java vagy bármilyen végrehajtható formátum használatával írhat függvényeket.
 * **Használatalapú fizetési modell** – Csak annyi időért kell fizetnie, amennyit a kódja fut. Lásd az App Service-csomag lehetőséget lent, a [díjszabás szakaszban](#pricing).  
 * **Saját függőségek használata** – A Functions a NuGetet és az NPM-et is támogatja, így Ön a kedvenc könyvtárait használhatja.  
 * **Beépített biztonság** – a HTTP-eseményindítókkal aktivált függvényeket olyan OAuth-szolgáltatókkal védheti, mint az Azure Active Directory, a Facebook, a Google, a Twitter és a Microsoft-fiókok.  
@@ -93,6 +94,6 @@ Részletezi az Azure Functions szolgáltatáshoz elérhető szolgáltatáscsomag
 Az Azure Functions az Azure App Service platform használatával biztosítja az olyan alapvető funkciókat, mint az üzembe helyezések, a környezeti változók és a diagnosztika. 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

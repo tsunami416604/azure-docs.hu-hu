@@ -12,8 +12,9 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/02/2016"
    ms.author="gwallace"/>
+
 
 # Application Gateway létrehozása, indítása vagy törlése
 
@@ -26,10 +27,7 @@ Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvét
 - [Azure Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
 - [Azure CLI](application-gateway-create-gateway-cli.md)
 
-<BR>
-
 Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat, konfigurálhat, elindíthat és törölhet egy Application Gateway-t.
-
 
 ## Előkészületek
 
@@ -40,9 +38,7 @@ Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat, konfigu
 
 ## Mire van szükség egy Application Gateway létrehozásához?
 
-
 Amikor a **New-AzureApplicationGateway** parancsot használja az Application Gateway létrehozására, a konfigurációk még nincsenek beállítva, és az újonnan létrehozott erőforrást konfigurálni kell egy XML-fájl vagy egy konfigurációs objektum használatával.
-
 
 Az értékek a következők:
 
@@ -51,7 +47,6 @@ Az értékek a következők:
 - **Előtérbeli port:** Az Application Gateway-en megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
 - **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, a kis- és a nagybetűk megkülönböztetésével) és SSL tanúsítványnévvel rendelkezik (SSL-kiszervezés konfigurálásakor).
 - **Szabály:** A szabály összeköti a figyelőt és a háttérkiszolgáló-készletet, és meghatározza, hogy mely háttérkiszolgáló-készletre legyen átirányítva a forgalom, ha elér egy adott figyelőt.
-
 
 ## Application Gateway létrehozása
 
@@ -62,7 +57,6 @@ Application Gateway létrehozásához tegye a következőket:
 3. Véglegesítse az újonnan létrehozott Application Gateway erőforrás konfigurációját.
 
 >[AZURE.NOTE] Ha egy egyéni mintát kell konfigurálnia az Application Gateway számára: [Application Gateway létrehozása egyéni mintákkal a PowerShell használatával](application-gateway-create-probe-classic-ps.md). További információért lásd: [egyéni minták és állapotfigyelés](application-gateway-probe-overview.md).
-
 
 ### Application Gateway erőforrás létrehozása
 
@@ -82,11 +76,7 @@ Az alábbi példa egy új Application Gateway-t hoz létre egy „testvnet1” n
 
  A *Description*, az *InstanceCount* és a *GatewaySize* opcionális paraméterek.
 
-
 Az átjáró létrehozásának ellenőrzéséhez használhatja a **Get-AzureApplicationGateway** parancsmagot.
-
-
-
 
     Get-AzureApplicationGateway AppGwTest
     Name          : AppGwTest
@@ -101,8 +91,7 @@ Az átjáró létrehozásának ellenőrzéséhez használhatja a **Get-AzureAppl
 
 >[AZURE.NOTE]  Az *InstanceCount* alapértelmezett értéke 2, a maximális értéke pedig 10. A *GatewaySize* alapértelmezett értéke Közepes. A Kicsi, Közepes és a Nagy lehetőségek közül választhat.
 
-
- A *VirtualIPs* és a *DnsName* paraméterek azért üresek, mert az átjáró még nem indult el. Ezek kitöltése akkor történik, amikor az átjáró futó állapotba kerül.
+A *VirtualIPs* és a *DnsName* paraméterek azért üresek, mert az átjáró még nem indult el. Ezek kitöltése akkor történik, amikor az átjáró futó állapotba kerül.
 
 ## Az Application Gateway konfigurálása
 
@@ -234,57 +223,57 @@ Hozza létre az összes egyedi konfigurációs elemet.
 
 Hozza létre az előtérbeli IP-címet az alábbi példában látható módon.
 
-    PS C:\> $fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration
-    PS C:\> $fip.Name = "fip1"
-    PS C:\> $fip.Type = "Private"
-    PS C:\> $fip.StaticIPAddress = "10.0.0.5"
+    $fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration
+    $fip.Name = "fip1"
+    $fip.Type = "Private"
+    $fip.StaticIPAddress = "10.0.0.5"
 
 Hozza létre az előtérbeli portot az alábbi példában látható módon.
 
-    PS C:\> $fep = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort
-    PS C:\> $fep.Name = "fep1"
-    PS C:\> $fep.Port = 80
+    $fep = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort
+    $fep.Name = "fep1"
+    $fep.Port = 80
 
 Hozza létre a háttér-kiszolgálókészletet.
 
  Határozza meg a háttérkiszolgáló-készlethez hozzáadni kívánt IP-címeket a következő példában látható módon.
 
 
-    PS C:\> $servers = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendServerCollection
-    PS C:\> $servers.Add("10.0.0.1")
-    PS C:\> $servers.Add("10.0.0.2")
+    $servers = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendServerCollection
+    $servers.Add("10.0.0.1")
+    $servers.Add("10.0.0.2")
 
  Adja hozzá az értékeket a háttérkészlet objektumhoz ($pool) a $server objektum segítségével.
 
-    PS C:\> $pool = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool
-    PS C:\> $pool.BackendServers = $servers
-    PS C:\> $pool.Name = "pool1"
+    $pool = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool
+    $pool.BackendServers = $servers
+    $pool.Name = "pool1"
 
 Hozza létre a háttér-kiszolgálókészlet beállítást.
 
-    PS C:\> $setting = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings
-    PS C:\> $setting.Name = "setting1"
-    PS C:\> $setting.CookieBasedAffinity = "enabled"
-    PS C:\> $setting.Port = 80
-    PS C:\> $setting.Protocol = "http"
+    $setting = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings
+    $setting.Name = "setting1"
+    $setting.CookieBasedAffinity = "enabled"
+    $setting.Port = 80
+    $setting.Protocol = "http"
 
 Hozza létre a figyelőt.
 
-    PS C:\> $listener = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener
-    PS C:\> $listener.Name = "listener1"
-    PS C:\> $listener.FrontendPort = "fep1"
-    PS C:\> $listener.FrontendIP = "fip1"
-    PS C:\> $listener.Protocol = "http"
-    PS C:\> $listener.SslCert = ""
+    $listener = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener
+    $listener.Name = "listener1"
+    $listener.FrontendPort = "fep1"
+    $listener.FrontendIP = "fip1"
+    $listener.Protocol = "http"
+    $listener.SslCert = ""
 
 Hozza létre a szabályt.
 
-    PS C:\> $rule = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule
-    PS C:\> $rule.Name = "rule1"
-    PS C:\> $rule.Type = "basic"
-    PS C:\> $rule.BackendHttpSettings = "setting1"
-    PS C:\> $rule.Listener = "listener1"
-    PS C:\> $rule.BackendAddressPool = "pool1"
+    $rule = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule
+    $rule.Name = "rule1"
+    $rule.Type = "basic"
+    $rule.BackendHttpSettings = "setting1"
+    $rule.Listener = "listener1"
+    $rule.BackendAddressPool = "pool1"
 
 ### 2. lépés
 
@@ -292,34 +281,34 @@ Rendelje hozzá az összes egyéni konfigurációs elemeket egy Application Gate
 
 Adja hozzá az előtérbeli IP-címet a konfigurációhoz.
 
-    PS C:\> $appgwconfig = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.ApplicationGatewayConfiguration
-    PS C:\> $appgwconfig.FrontendIPConfigurations = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration]"
-    PS C:\> $appgwconfig.FrontendIPConfigurations.Add($fip)
+    $appgwconfig = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.ApplicationGatewayConfiguration
+    $appgwconfig.FrontendIPConfigurations = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration]"
+    $appgwconfig.FrontendIPConfigurations.Add($fip)
 
 Adja hozzá az előtérbeli portot a konfigurációhoz.
 
-    PS C:\> $appgwconfig.FrontendPorts = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort]"
-    PS C:\> $appgwconfig.FrontendPorts.Add($fep)
+    $appgwconfig.FrontendPorts = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort]"
+    $appgwconfig.FrontendPorts.Add($fep)
 
 Adja hozzá a háttér-kiszolgálókészletet a konfigurációhoz.
 
-    PS C:\> $appgwconfig.BackendAddressPools = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool]"
-    PS C:\> $appgwconfig.BackendAddressPools.Add($pool)  
+    $appgwconfig.BackendAddressPools = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool]"
+    $appgwconfig.BackendAddressPools.Add($pool)  
 
 Adja hozzá a háttérkészlet beállításait a konfigurációhoz.
 
-    PS C:\> $appgwconfig.BackendHttpSettingsList = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings]"
-    PS C:\> $appgwconfig.BackendHttpSettingsList.Add($setting)
+    $appgwconfig.BackendHttpSettingsList = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings]"
+    $appgwconfig.BackendHttpSettingsList.Add($setting)
 
 Adja hozzá a figyelőt a konfigurációhoz.
 
-    PS C:\> $appgwconfig.HttpListeners = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener]"
-    PS C:\> $appgwconfig.HttpListeners.Add($listener)
+    $appgwconfig.HttpListeners = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener]"
+    $appgwconfig.HttpListeners.Add($listener)
 
 Adja hozzá a szabályt a konfigurációhoz.
 
-    PS C:\> $appgwconfig.HttpLoadBalancingRules = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule]"
-    PS C:\> $appgwconfig.HttpLoadBalancingRules.Add($rule)
+    $appgwconfig.HttpLoadBalancingRules = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule]"
+    $appgwconfig.HttpLoadBalancingRules.Add($rule)
 
 ### 3. lépés
 
@@ -331,10 +320,7 @@ Véglegesítse a konfigurációs objektumot az Application Gateway erőforrásho
 
 Az átjáró konfigurálása után indítsa el az átjárót a **Start-AzureApplicationGateway** parancsmaggal. Az Application Gateway használati díjának felszámolása az átjáró sikeres indítása után kezdődik.
 
-
 > [AZURE.NOTE] A **Start-AzureApplicationGateway** parancsmag futtatása akár 15–20 percet is igénybe vehet.
-
-
 
     Start-AzureApplicationGateway AppGwTest
 
@@ -417,6 +403,6 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

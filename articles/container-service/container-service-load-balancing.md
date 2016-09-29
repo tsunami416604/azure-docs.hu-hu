@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure tárolószolgáltatási fürt terhelésének elosztása | Microsoft Azure"
-   description="Azure tárolószolgáltatási fürt terhelésének elosztása"
+   pageTitle="Tárolók terheléselosztása Azure Container Service-fürtben | Microsoft Azure"
+   description="Több tárolóra kiterjedő terheléselosztás Azure Container Service-fürtben"
    services="container-service"
    documentationCenter=""
    authors="rgardler"
@@ -18,9 +18,10 @@
    ms.date="07/11/2016"
    ms.author="rogardle"/>
 
-# Azure tárolószolgáltatási fürt terhelésének elosztása
 
-Ebben a cikkben webes kezelőfelületet állítunk be egy DC/OS által felügyelt Azure Container Service szolgáltatáson. Marathon-LB-t is konfigurálunk, hogy növelhesse az alkalmazás méretét.
+# Tárolók terheléselosztása Azure Container Service-fürtben
+
+Ebben a cikkben azt vizsgáljuk meg, hogyan lehet belső terheléselosztót létrehozni a Marathon-LB-vel egy a DC/OS által kezelt Azure Container Service szolgáltatásban. Ez lehetőséget nyújt az alkalmazások horizontális skálázására. Ezenkívül lehetővé teszi a nyilvános és a privát ügynökös fürtök használatát. Ehhez a terheléselosztókat a nyilvános fürtbe kell helyezni, az alkalmazástárolókat pedig a privát fürtbe.
 
 ## Előfeltételek
 
@@ -55,9 +56,11 @@ A DC/OS parancssori felület telepítése és annak ellenőrzése után, hogy tu
 dcos package install marathon-lb
 ```
 
+Ez a parancs automatikusan telepíti a terheléselosztót a nyilvános ügynökök fürtjébe.
+
 ## Elosztott terhelésű webalkalmazás üzembe helyezése
 
-Most, hogy már rendelkezésre áll a marathon-lb csomag, telepíthetünk egy egyszerű webkiszolgálót a következő konfiguráció használatával:
+Most, hogy már rendelkezésre áll a marathon-lb csomag, üzembe helyezhetünk egy alkalmazástárolót, amelynek el kívánjuk osztani a terhelését. Ebben a példában egy egyszerű webkiszolgálót helyezünk üzembe, a következő konfigurációval:
 
 ```json
 {
@@ -100,6 +103,8 @@ Most, hogy már rendelkezésre áll a marathon-lb csomag, telepíthetünk egy eg
   * Állítsa a `hostPort` elemet 0 értékre. Ez azt jelenti, hogy a Marathon véletlenszerűen foglal le egy elérhető portot.
   * Állítsa az `instances` elemet a létrehozni kívánt példányok számára. Az értéket később bármikor növelheti vagy csökkentheti.
 
+Megjegyzendő, hogy a Marathon alapértelmezés szerint a privát fürtöt helyezi üzembe; ez azt jelenti, hogy a fenti üzemelő példányt csak a terheléselosztón keresztül lehet elérni, ez pedig általában pontosan az a működésmód, amit szeretnénk.
+
 ### Üzembe helyezés a DC/OS webes felhasználói felületével
 
   1. Látogasson el a Marathon oldalára a http://localhost/marathon címen (az [SSH-alagút](container-service-connect.md) beállítása után), és kattintson a következőre: `Create Appliction`
@@ -141,6 +146,6 @@ A [Marathon-LB-re](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

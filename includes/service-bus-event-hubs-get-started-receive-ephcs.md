@@ -4,33 +4,37 @@ Az [EventProcessorHost][] egy .NET-osztály, amely leegyszerűsíti az eseménye
 
 Az [EventProcessorHost][] használatához egy [Azure Storage-fiók][] szükséges:
 
-1. Jelentkezzen be a [klasszikus Azure portálra][], és kattintson a **NEW** (ÚJ) lehetőségre a képernyő alján.
+1. Jelentkezzen be az [Azure Portal][], és kattintson az **Új** gombra a képernyő bal felső részén.
 
-2. Kattintson a **Data Services** (Adatszolgáltatások), a **Storage** (Tárolás), majd a **Quick Create** (Gyors létrehozás) lehetőségre, és adja meg a tárfiók nevét. Válassza ki a kívánt régiót, majd kattintson a **Create Storage Account** (Tárfiók létrehozása) lehetőségre.
+2. Kattintson az **Adatok + tárolás**, majd a **Tárfiók** elemre.
 
-    ![][11]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage1.png)
 
-3. Kattintson az imént létrehozott tárfiókra, majd a **Manage Access Keys** (Elérési kulcsok kezelése) lehetőségre:
+3. A **Tárfiókok létrehozása** panelen írja be a tárfiók nevét. Válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni. Ezt követően kattintson a **Create** (Létrehozás) gombra.
 
-    ![][12]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage2.png)
 
-    Másolja le az elsődleges elérési kulcsot – erre később lesz szükség az oktatóprogramban.
+4. A tárfiókok listáján kattintson az újonnan létrehozott tárfiókra.
+
+5. A tárfiók panelen kattintson a **Hívóbetűk** elemre. Másolja ki a **key1** értékét – erre később lesz szükség az oktatóprogramban.
+
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage3.png)
 
 4. Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek a **Receiver** (Fogadó) nevet.
 
-    ![][14]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp1.png)
 
 5. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése megoldáshoz) parancsra.
 
 6. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Ügyeljen arra, hogy a projekt neve (**Receiver**) meg legyen adva a **Version(s)** (Verzió(k)) mezőben. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
 
-    ![][13]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-eph-csharp1.png)
 
     A Visual Studio letölti és telepíti az [Azure Service Bus Event Hub - EventProcessorHost NuGet csomagot](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) minden függőségével együtt, és hozzáad egy rá mutató hivatkozást is.
 
 7. Kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az új osztályt **SimpleEventProcessor** névre, és kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához.
 
-    ![][15]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp2.png)
 
 8. Adja hozzá a következő utasításokat a SimpleEventProcessor.cs fájl elejéhez:
 
@@ -121,21 +125,10 @@ Az [EventProcessorHost][] használatához egy [Azure Storage-fiók][] szüksége
 [Event Hubs – áttekintés]: event-hubs-overview.md
 [Event Hubs programozási útmutató]: event-hubs-programming-guide.md
 [horizontálisan felskálázott eseményfeldolgozási]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure Storage-fiók]: ../storage/storage-create-storage-account-classic-portal.md
+[Azure Storage-fiók]: ../storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[klasszikus Azure portálra]: http://manage.windowsazure.com
+[Azure Portal]: https://portal.azure.com
 
-<!-- Images -->
-
-[11]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp2.png
-[12]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp3.png
-[13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
-[14]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp1.png
-[15]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp2.png
-
-
-
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

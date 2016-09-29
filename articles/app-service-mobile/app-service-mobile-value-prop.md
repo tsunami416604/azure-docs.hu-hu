@@ -4,7 +4,7 @@
     services="app-service\mobile"
     documentationCenter=""
     authors="adrianhall"
-    manager="dwrede"
+    manager="yochayk"
     editor=""/>
 
 <tags
@@ -14,7 +14,8 @@
     ms.devlang="na"
     ms.topic="hero-article"
     ms.date="05/03/2016"
-    ms.author="krisagh"/>
+    ms.author="adrianha"/>
+
 
 # <a name="getting-started"> </a>Mi a Mobile Apps szolgáltatás?
 
@@ -87,7 +88,7 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 [DocumentDB]: ../documentdb/documentdb-get-started.md
 [hitelesítési szolgáltatások]: ./app-service-mobile-auth.md
 [az adatokkal kapcsolatos funkciókkal]: ./app-service-mobile-offline-data-sync.md
-[leküldéses értesítési szolgáltatások]: ../notification-hubs/notification-hubs-overview.md
+[leküldéses értesítési szolgáltatások]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
@@ -105,6 +106,6 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

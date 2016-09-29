@@ -1,0 +1,171 @@
+<properties
+    pageTitle="Application Insights Windows-szolgáltatásokhoz és feldolgozói szerepkörökhöz | Microsoft Azure"
+    description="Adja hozzá manuálisan az Application Insights SDK-t az ASP.NET-alkalmazáshoz a használat, a rendelkezésre állás és a teljesítmény elemzése érdekében."
+    services="application-insights"
+    documentationCenter=".net"
+    authors="alancameronwills"
+    manager="douge"/>
+
+<tags
+    ms.service="application-insights"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="ibiza"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/30/2016"
+    ms.author="awills"/>
+
+
+
+# Az Application Insights manuális beállítása az ASP.NET 4-alkalmazásokhoz
+
+*Az Application Insights jelenleg még előzetes verziójú kiadásban érhető el.*
+
+[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
+
+A [Visual Studio Application Insights](app-insights-overview.md) manuálisan konfigurálható a Windows-szolgáltatások, feldolgozói szerepkörök és más ASP.NET-alkalmazások figyelésére. Webalkalmazások esetén a Visual Studio által kínált [automatikus beállítás](app-insights-asp-net.md) mellett manuális konfigurálást is választhat.
+
+Az Application Insights segítségével diagnosztizálhatja a problémákat, valamint figyelheti az élő alkalmazás teljesítményét és használatát.
+
+![Példa teljesítményfigyelő diagramokra](./media/app-insights-windows-services/10-perf.png)
+
+
+#### Előkészületek
+
+A következők szükségesek:
+
+* Egy [Microsoft Azure](http://azure.com)-előfizetés. Ha a csapata vagy a szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja a [Microsoft-fiókja](http://live.com) segítségével.
+* Visual Studio 2013 vagy újabb.
+
+
+
+## <a name="add"></a>1. Application Insights-erőforrás létrehozása
+
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/), és hozzon létre egy új Application Insights-erőforrást. Az alkalmazás típusának válassza az ASP.NET lehetőséget.
+
+![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-windows-services/01-new-asp.png)
+
+Az Azure-ban az [erőforrás](app-insights-resources-roles-access-control.md) egy szolgáltatáspéldány. Az alkalmazás telemetriájának elemzése és bemutatása az erőforrásban történik.
+
+A kiválasztott alkalmazástípus adja meg az erőforráspanelek alapértelmezett tartalmát, valamint a [Metrikaböngészőben](app-insights-metrics-explorer.md) látható tulajdonságokat.
+
+#### A kialakítási kulcs másolása
+
+A kulcs azonosítja az erőforrást, és hamarosan telepíteni fogja azt az SDK-ba, hogy az adatokat az erőforrásba irányíthassa.
+
+![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-windows-services/02-props-asp.png)
+
+Az új erőforrás létrehozásához az imént elvégzett lépések jól használhatók bármely alkalmazás figyelésének megkezdéséhez. Most már küldhet ide adatokat.
+
+## <a name="sdk"></a>2. Az SDK telepítése az alkalmazásban
+
+Az Application Insights SDK telepítése és konfigurálása a használt platformtól függően eltérő lehet. ASP.NET alkalmazásoknál ez nagyon egyszerű.
+
+1. Visual Studióban szerkessze a webalkalmazási projekt NuGet-csomagjait.
+
+    ![Kattintson a jobb gombbal a projektre, és válassza a Manage Nuget Packages (NuGet-csomagok kezelése) lehetőséget](./media/app-insights-windows-services/03-nuget.png)
+
+2. Az Application Insights SDK telepítése a webalkalmazásokhoz
+
+    ![Az „Application Insights” kifejezés keresése](./media/app-insights-windows-services/04-ai-nuget.png)
+
+    *Használhatok más csomagokat is?*
+
+    Igen. Válassza a fő API-t (Microsoft.ApplicationInsights), ha csak a saját telemetriája küldésére kívánja használni az API-t. A Windows Server-csomag automatikusan tartalmazza a fő API-t és más csomagokat, például a teljesítményszámlálót és a függőségfigyelést. 
+
+#### Frissítés a jövőbeli SDK-verziókra
+
+Időről-időre kiadunk egy új SDK-verziót.
+
+Ha frissíteni szeretne egy [új SDK-kiadásra](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/), nyissa meg ismét a NuGet-csomagkezelőt, és szűréssel keresse meg a telepített csomagokat. Jelölje ki a **Microsoft.ApplicationInsights.Web** lehetőséget, és válassza a **Frissítés** elemet.
+
+Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt, majd egyesítse a módosításait az új verzióval.
+
+
+## 3. Telemetria küldése
+
+
+**Ha csak a fő API-csomagot telepítette:**
+
+* Állítsa be a rendszerállapotkulcsot a kódban, például `main()`: 
+
+    `TelemetryConfiguration.Active.InstrumentationKey = "` *az Ön kulcsa* `";` 
+
+* [Írjon saját telemetriát az API-val](app-insights-api-custom-events-metrics.md#ikey).
+
+
+**Ha más Application Insights-csomagokat is telepített,** akkor a .config fájl segítségével igény szerint beállíthatja a rendszerállapotkulcsot:
+
+* Szerkessze az ApplicationInsights.config fájlt (ezt korábban a NuGet telepítése során adta hozzá). A címke zárása elé illessze be a következőt:
+
+    `<InstrumentationKey>` *a kimásolt kialakítási kulcs* `</InstrumentationKey>`
+
+* Győződjön meg arról, hogy az ApplicationInsights.config tulajdonságait a következőre állította a Megoldáskezelőben: **Build Action = Content, Copy to Output Directory = Copy**.
+
+
+
+
+## <a name="run"></a> A projekt futtatása
+
+Futtassa az **F5** billentyűvel az alkalmazást, és próbálja ki: nyisson meg több oldalt, hogy létrejöjjön valamennyi telemetria.
+
+A Visual Studióban láthatja az elküldött események számát.
+
+![Események száma a Visual Studióban](./media/app-insights-windows-services/appinsights-09eventcount.png)
+
+## <a name="monitor"></a> A telemetria megtekintése
+
+Térjen vissza az [Azure Portalra](https://portal.azure.com/), és keresse meg az Application Insights-erőforrást.
+
+
+Az Áttekintés diagramokon keresse meg az adatot. Először csak egy vagy két pontot lát. Példa:
+
+![Kattintson végig rajtuk a további adatokért](./media/app-insights-windows-services/12-first-perf.png)
+
+Részletesebb mérőszámokért kattintson bármelyik diagramra. [További információk a metrikákról.](app-insights-web-monitor-performance.md)
+
+#### Nincs adat?
+
+* Az alkalmazás segítségével nyisson meg különböző oldalakat, hogy létrejöjjön némi telemetria.
+* Az egyes események megtekintéséhez nyissa meg a [Keresés](app-insights-diagnostic-search.md)csempét. Események esetében kicsit tovább is eltarthat a mérőszámok folyamatain való végighaladás.
+* Várjon néhány másodpercet, és kattintson a **Frissítés** lehetőségre. A diagramok rendszeres időközönként frissülnek, de manuálisan is frissítheti őket, ha várja valamilyen adatok megjelenését.
+* Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).
+
+## Az alkalmazás közzététele
+
+Most telepítse az alkalmazását a kiszolgálóra vagy az Azure-ba, és figyelje meg, hogyan gyűlnek az adatok.
+
+![Az alkalmazás közzététele a Visual Studio segítségével](./media/app-insights-windows-services/15-publish.png)
+
+Ha hibakeresési módban futtatja az alkalmazást, az egész folyamatban szolgáltat telemetriát a rendszer, így másodperceken belül meg kell jelenniük az adatoknak. Ha Kiadás konfigurációban telepíti az alkalmazását, az adatok lassabban gyűlnek.
+
+#### Nem lát adatokat a kiszolgálón való közzététel után?
+
+Nyissa meg ezeket a portokat a kimenő forgalom számára a kiszolgáló tűzfalán:
+
++ `dc.services.visualstudio.com:443`
++ `f5.services.visualstudio.com:443`
+
+
+#### Probléma adódott a lemezképfájl-kiszolgálóján?
+
+Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
+
+> [AZURE.NOTE] Ha az alkalmazása sok telemetriát hoz létre (és az ASP.NET SDK 2.0.0-beta3 vagy újabb verzióját használja), az adaptív mintavételezési modul automatikusan csökkenti a portálra küldött kötetet, csupán az eseményeket megjelenítő töredékeket küld. Az azonos kéréshez tartozó események azonban csoportosan lesznek kijelölve, illetve így lesz törölve a jelölésük, hogy lehessen mozogni a kapcsolódó események között. 
+> [Ismerkedés a mintavételezéssel](app-insights-sampling.md).
+
+
+
+
+## Következő lépések
+
+* [További telemetriák hozzáadásával](app-insights-asp-net-more.md) az alkalmazást teljes körűen megfigyelheti.
+
+
+
+
+
+
+<!--HONumber=Sep16_HO4-->
+
+

@@ -13,8 +13,9 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/10/2016"
+   ms.date="08/26/2016"
    ms.author="ryanwi"/>
+
 
 # Az első Azure Service Fabric-alkalmazás létrehozása a Visual Studióban
 
@@ -110,6 +111,14 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
 
     ![A diagnosztikai eseménynapló a feladatátvétel után][diagnostic-events-viewer-detail-post-failover]
 
+## Fürt üzemmód átkapcsolása
+
+Alapértelmezés szerint a helyi fejlesztési fürt 5 csomópontos fürtként való futáshoz van konfigurálva, ami több csomópontra telepített szolgáltatások hibakeresésében nagyon hasznos. Azonban az alkalmazások 5 csomópontos fejlesztési fürtre való telepítése eltarthat egy ideig. Ha azt szeretné, hogy a kódmódosítások gyorsan települjenek, és nincs szükség az alkalmazás 5 csomóponton való futtatására, átválthatja a fejlesztési fürtöt 1 csomópontos üzemmódúra. Ha a kódot egy csomópontos fürtön szeretné futtatni, kattintson a jobb gombbal a tálcán található Local Cluster Manager elemre, és válassza ki a **Fürt üzemmód átkapcsolása -> 1 csomópontos** lehetőséget.  
+
+![Fürt üzemmód átkapcsolása][switch-cluster-mode]
+
+A fürt üzemmód átváltásakor a fejlesztési fürt visszaáll alaphelyzetbe, és az összes kiépített vagy a fürtön futó alkalmazás törlődik.
+
 ## Takarítás
 
   A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt nagyon is valós. A hibakereső leállításával eltávolítja az adott alkalmazáspéldányt, és törli az alkalmazástípus regisztrációját. A fürt futtatása azonban a háttérben tovább folytatódik. A fürt kezelésére számos lehetősége van:
@@ -138,9 +147,10 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
 [systray-launch-sfx]: ./media/service-fabric-create-your-first-application-in-visual-studio/launch-sfx.png
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
+[switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

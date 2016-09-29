@@ -15,15 +15,16 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="08/22/2016"
+   ms.date="09/08/2016"
    ms.author="glenga"/>
+
 
 #Az első Azure-függvény létrehozása
 
 ##Áttekintés
 Az Azure Functions egy eseményvezérelt, számítási igények szerint működtethető eszköz, amely bővíti a meglévő Azure alkalmazásplatformot, lehetővé téve események által kiváltott kód megvalósítását más Azure-szolgáltatásokban, SaaS-termékekben, valamint a helyszíni rendszerekben. Az Azure Functions segítségével alkalmazásai igény szerint méretezhetők, és Ön csak a felhasznált erőforrásokért fizet. Az Azure Functions segítségével ütemezett és aktivált kódegységek hozhatók létre, különböző programnyelveken megvalósítva. További információk az Azure Functions szolgáltatásról: [Azure Functions Overview](functions-overview.md) (Az Azure Storage áttekintése).
 
-Ez a témakör bemutatja, hogyan hozható létre az Azure Functions portálon az Azure Functions gyorsindítóval egy egyszerű „hello world” Node.js-függvény, amelyet egy HTTP-eseményindító hív meg. Az ehhez szükséges, a portálon elvégzendő lépésekről egy rövid videót is megtekinthet.
+Ez a témakör bemutatja, hogyan hozható létre az Azure Functions gyorsindítóval egy egyszerű „hello world” Node.js-függvény, amelyet egy HTTP-eseményindító hív meg. Az ehhez szükséges, a portálon elvégzendő lépésekről egy rövid videót is megtekinthet.
 
 ## Videó megtekintése
 
@@ -33,13 +34,17 @@ A következő videó bemutatja, hogyan végezheti el az ebben az oktatóprogramb
 
 ##Függvény létrehozása a gyorsindítóból
 
-A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Kövesse az alábbi lépéseket az új függvényalkalmazás és az új függvény létrehozásához. Ahhoz, hogy létrehozhassa az első függvényét, egy aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
+A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Kövesse az alábbi lépéseket az új függvényalkalmazás és az új függvény létrehozásához. Az új függvényalkalmazás alapértelmezett konfigurációval jön létre. A függvényalkalmazás tényleges létrehozására példát [az egyéb Azure Functions gyorsútmutatóban](functions-create-first-azure-function-azure-portal.md) talál.
+
+Ahhoz, hogy létrehozhassa az első függvényét, egy aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
 1. Lépjen az [Azure Functions portálra](https://functions.azure.com/signin), és jelentkezzen be az Azure-fiókjával.
 
 2. Adjon meg egy egyedi **nevet** az új függvényalkalmazásnak, vagy fogadja el az automatikusan létrehozott nevet, majd válassza ki a kívánt **régiót**, és kattintson a **Create + get started** (Létrehozás és első lépések) gombra. 
 
-3. A **Quickstart** (Gyorsindítás) lapon kattintson a **Webhook + API** > **Create a function** (Függvény létrehozása) elemre. Létrejön egy új, előre meghatározott Node.js-függvény. 
+3. Az **Első lépések** lapon kattintson a **Webhook + API** és a **JavaScript** elemre, majd kattintson a **Függvény létrehozása** parancsra. Létrejön egy új, előre meghatározott Node.js-függvény. 
+
+    ![](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
 4. (Választható lehetőség) A gyorsindító ezen pontján lehetősége van megtekinteni egy bemutatót a portál Azure Functions-szolgáltatásairól.   A bemutató megtekintése vagy kihagyása után letesztelheti az új függvényt a HTTP-eseményindítóval.
 
@@ -48,6 +53,8 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
 Mivel az Azure Functions gyorsindítók működő kódokat tartalmaznak, az új függvények azonnal tesztelhetők.
 
 1. A **Develop** (Fejlesztés) lapon tekintse át a **Code** (Kód) ablakot, és figyeljen arra, hogy ez a Node.js-kód egy olyan HTTP-kérést vár, amelyben a *name* (név) érték vagy az üzenet törzsében, vagy egy lekérdezési karakterláncban van továbbítva. Ha a függvény fut, a rendszer ezt az értéket a válaszüzenetben adja vissza.
+
+    ![](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
 2. Görgessen le a **Request body** (Kéréstörzs) szövegdobozhoz, módosítsa a *Name* (Név) tulajdonságot a saját nevére, és kattintson a **Run** (Futtatás) parancsra. Látni fogja, ahogy próba HTTP-kérés aktiválja a végrehajtást, információ íródik a streamnaplókba, és a „hello” válasz megjelenik az **Output** (Kimenet) mezőben. 
 
@@ -70,6 +77,6 @@ Az Azure Functions az Azure App Service platform használatával biztosítja az 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

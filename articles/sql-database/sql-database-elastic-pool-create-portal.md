@@ -18,6 +18,7 @@
     ms.tgt_pltfrm="NA"/>
 
 
+
 # Új rugalmas adatbáziskészlet létrehozása az Azure Portallal
 
 > [AZURE.SELECTOR]
@@ -29,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre méretezhető [rugalmas adat
 
 Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók különböző kiszolgálókról származó adatbázisok. Készlet létrehozásához egy legalább 12-es verziójú kiszolgálón üzemelő adatbázis szükséges. Ha még nem rendelkezik Azure SQL-adatbázissal, olvassa el a [Create your first Azure SQL database](sql-database-get-started.md) (Az első Azure SQL-adatbázis létrehozása) című cikket. Egyetlen adatbázissal is létrehozhatja a készletet, de a készletek több adatbázis használata esetén biztosítanak költséghatékony működést. További információk: [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md) (Rugalmas adatbáziskészletek ára és teljesítménye).
 
-> [AZURE.NOTE] A készletek funkció kizárólag a 12-es verziójú SQL Database-kiszolgálók esetén érhető el. Ha 11-es verziójú kiszolgálón találhatók az adatbázisok, [egy PowerShell-parancsprogram segítségével jelölje őket egy 12-es verziójú kiszolgálón lévő készletbe](sql-database-elastic-pool-database-assessment-powershell.md), majd a [PowerShell segítségével frissítse a 12-es verzióra, és hozza létre a készletet](sql-database-upgrade-server-powershell.md) – mindezt egy lépésben.
+> [AZURE.NOTE] A rugalmas készletek minden Azure-régióban általánosan elérhetők, kivéve az USA északi középső régióját és Nyugat-Indiát, ahol a szolgáltatás jelenleg előzetes verzióként érhető el.  A rugalmas készletek általános elérhetősége ezekben a régiókban a lehető leghamarabb bevezetésre kerül. Emellett a rugalmas készletek jelenleg nem támogatják a [memóriában végzett OLTP-feldolgozást és elemzéseket](sql-database-in-memory.md) használó adatbázisokat.
 
 ## 1. lépés: Új készlet létrehozása
 
@@ -117,6 +118,6 @@ Miután hozzáadta az adatbázisokat a készlethez, a rendszer a kiválasztott a
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

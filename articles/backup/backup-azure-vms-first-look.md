@@ -13,15 +13,16 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="07/29/2016"
+    ms.date="09/15/2016"
     ms.author="markgal; jimpark"/>
+
 
 
 # Áttekintés: Azure virtuális gépek biztonsági mentése
 
 > [AZURE.SELECTOR]
-- [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md)
-- [Áttekintés: Azure virtuális gépek védelme Backup-tárolóval](backup-azure-vms-first-look.md)
+- [Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md)
+- [Azure virtuális gépek védelme Backup-tárolóval](backup-azure-vms-first-look.md)
 
 Ez az oktatóanyag végigvezeti egy Azure virtuális gép (VM) egy Azure-beli Backup-tárolóba való biztonsági mentésének lépésein. Ez a cikk a virtuális gépek biztonsági mentésének klasszikus modelljét vagy Service Managerrel üzemi modelljét ismerteti. Ha többet szeretne tudni a virtuális gépek egy erőforráscsoporthoz tartozó Recovery Services-tárolóba való biztonsági mentéséről, olvassa el az [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikket. Az oktatóanyag sikeres elvégzéséhez a következő előfeltételek szükségesek:
 
@@ -225,6 +226,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

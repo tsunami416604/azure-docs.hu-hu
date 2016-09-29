@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával"
+    pageTitle="Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával | Microsoft Azure"
     description="Ismerje meg, hogyan használható az Azure Mobile Engagement az iOS-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében."
     services="mobile-engagement"
-    documentationCenter="ios"
+    documentationCenter="mobile"
     authors="piyushjo"
-    manager="dwrede"
+    manager="erikre"
     editor="" />
 
 <tags
@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="mobile-ios"
     ms.devlang="objective-c"
     ms.topic="hero-article"
-    ms.date="05/03/2016"
+    ms.date="09/14/2016"
     ms.author="piyushjo" />
+
 
 # Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával
 
@@ -25,7 +26,7 @@ Ebben az oktatóanyagban létrehoz egy üres iOS-alkalmazást, amely alapszintű
 
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
-+ XCode 6 vagy XCode 7, amely a MAC App Store áruházából telepíthető
++ XCode 8, amely a MAC App Store áruházából telepíthető
 + a [Mobile Engagement iOS SDK]
 
 Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkalmazásokkal kapcsolatos Mobile Engagement-oktatóanyag elvégzéséhez.
@@ -64,7 +65,7 @@ Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az int
 
 6. **XCode 7** esetén – a `libxml2.tbd` fájlt adja hozzá a `libxml2.dylib` helyett.
 
-7. Lépjen vissza az Azure portálra az alkalmazás **Connection Info** (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot.
+7. Lépjen vissza az Azure Portalra az alkalmazás **Connection Info** (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot.
 
     ![][4]
 
@@ -183,6 +184,6 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO3-->
 
 

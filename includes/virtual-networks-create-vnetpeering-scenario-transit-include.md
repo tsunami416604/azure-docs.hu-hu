@@ -5,11 +5,11 @@ Ebben a forgatókönyvben két virtuális hálózat, a HubVNet és a VNet1 talá
 
 ![NVA-átvitel](./media/virtual-networks-create-vnetpeering-scenario-transit-include/figure01.PNG)
 
-MEGJEGYZÉS: Az egyszerűség jegyében feltételezzük, hogy mindegyik virtuális hálózat ugyanabban az előfizetésben található. Ennek ellenére az átvitel az eltérő előfizetésekre vonatkozó forgatókönyv esetén is működik. 
+> [AZURE.NOTE] Az egyszerűség végett azt feltételezzük, hogy mindegyik virtuális hálózat ugyanabban az előfizetésben található. Ennek ellenére az átvitel az eltérő előfizetésekre vonatkozó forgatókönyv esetén is működik.
 
 Az átvitel útválasztásának engedélyezése a „Továbbított forgalom engedélyezése” paraméterrel lehetséges. Ez teszi lehetővé, hogy a társított virtuális hálózat adatokat fogadjon az NVA-tól és adatokat küldjön az NVA-nak.  
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -12,8 +12,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/03/2016"
+   ms.date="09/20/2016"
    ms.author="tomfitz" />
+
 
 # Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
@@ -47,7 +48,7 @@ Ebben az eljárásban egy Azure erőforráscsoport-projektet hoz létre egy **We
 
     ![csomópontok megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
 
-    Mivel a Webalkalmazás + SQL sablont választottuk ehhez a példához, az alábbi fájlok láthatóak. 
+    Mivel a Webalkalmazás + SQL sablont választottuk ehhez a példához, az alábbi fájlok láthatóak: 
 
   	|Fájlnév|Leírás|
   	|---|---|
@@ -75,7 +76,7 @@ Hozzáadhat egy új erőforrást a JSON-vázlat ablak tetején található **Er�
 
 ![erőforrás hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource.png)
 
-Ebben az oktatóanyagban válassza a **Tárfiók** lehetőséget, és adjon meg egy nevet. A tárfiók neve csak számokat és kisbetűket tartalmazhat, és nem haladhatja meg a 24 karakteres hosszúságot. A projekt hozzáad egy 13 karakterből álló egyedi karakterláncot a névhez, ezért az Ön által választott név hossza nem haladhatja meg a 11 karaktert.
+Ebben az oktatóanyagban válassza a **Tárfiók** lehetőséget, és adjon meg egy nevet. Olyan nevet adjon meg, amely nem hosszabb 11 karakternél, és csak számokat és kisbetűket tartalmaz.
 
 ![tároló hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
 
@@ -127,30 +128,37 @@ Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt tele
 
     ![Erőforráscsoport létrehozása párbeszédpanel](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-resource-group.png)
    
-1. Az üzemelő példány paramétereit a **Paraméterek szerkesztése** gombra kattintva adhatja meg. Adja meg a paraméterek értékeit, majd kattintson a **Mentés** gombot.
+1. Az üzemelő példány paramétereit a **Paraméterek szerkesztése** gombra kattintva adhatja meg.
+
+    ![Paraméterek szerkesztése gomb](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/edit-parameters.png)
+
+1. Adja meg az üres paraméterek értékeit, majd kattintson a **Mentés** gombra. Az üres paraméterek a következők: **hostingPlanName**, **administratorLogin**, **administratorLoginPassword** és **databaseName**.
+
+    A **hostingPlanName** a létrehozandó új [App Service-csomag](./app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) nevét adja meg. 
+    
+    Az **administratorLogin** az SQL Server rendszergazdájának felhasználónevét adja meg. Ne használjon olyan gyakori rendszergazdai neveket, mint az **sa** vagy az **admin**. 
+    
+    Az **administratorLoginPassword** az SQL Server rendszergazdájának jelszavát adja meg. A **Jelszavak mentése egyszerű szövegként a paraméterfájlban** lehetőség nem biztonságos, így ezt ne használja. Mivel a jelszó nem egyszerű szövegként kerül mentésre, az üzembe helyezés során újra meg kell adnia ezt a jelszót. 
+    
+    A **databasePlanName** a létrehozandó új adatbázis nevét adja meg. 
 
     ![Paraméterek szerkesztése párbeszédpanel](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/provide-parameters.png)
     
-    A **Jelszavak mentése egyszerű szövegként a paraméterfájlban** beállítás használata nem biztonságos.
-
-1. Kattintson a **Telepítés** gombra a projekt telepítéséhez az Azure szolgáltatásban. Az telepítés folyamata a **Kimenet** ablakban követhető. Az telepítés befejezése több percet is igénybe vehet a konfigurációtól függően. Amikor a rendszer kéri, adja meg az adatbázis rendszergazdai jelszavát a PowerShell-konzolon. Ha a telepítés folyamata elakad, elképzelhető, hogy a folyamat arra várakozik, hogy megadja a jelszót a PowerShell-konzolon.
+1. Kattintson a **Telepítés** gombra a projekt telepítéséhez az Azure szolgáltatásban. Megnyílik egy PowerShell-konzol a Visual Studio-példányon kívül. Amikor a rendszer kéri, adja meg az SQL Server rendszergazdai jelszavát a PowerShell-konzolon. **Lehetséges, hogy a PowerShell-konzolt egyéb elemek eltakarják, vagy kis méretben fut a tálcán.** Keresse meg és nyissa meg a konzolt a jelszó megadásához.
 
     >[AZURE.NOTE] Előfordulhat, hogy a Visual Studio megkéri, hogy telepítse az Azure PowerShell-parancsmagokat. Az erőforráscsoportok sikeres üzembe helyezéséhez szükség van az Azure PowerShell-parancsmagokra. Ha a program kéri, telepítse őket.
     
-1. Amint a telepítés véget ért, az alábbihoz hasonló üzenet jelenik meg a **Kimenet** ablakban:
+1. Az üzembe helyezés eltarthat néhány percig. A **Kimenet** ablakban követhető az üzembe helyezés állapota. Az üzembe helyezés befejeztével az utolsó üzenet jelzi az üzembe helyezés sikerességét, a következőhöz hasonló módon:
 
-        ...
-        15:19:19 - DeploymentName     : websitesqldatabase-0212-2318
-        15:19:19 - CorrelationId      : 6cb43be5-86b4-478f-9e2c-7e7ce86b26a2
-        15:19:19 - ResourceGroupName  : DemoSiteGroup
-        15:19:19 - ProvisioningState  : Succeeded
-        ...
+        ... 
+        18:00:58 - Successfully deployed template 'c:\users\user\documents\visual studio 2015\projects\azureresourcegroup1\azureresourcegroup1\templates\websitesqldatabase.json' to resource group 'DemoSiteGroup'.
+
 
 1. Egy böngészőben nyissa meg az [Azure Portalt](https://portal.azure.com/), és jelentkezzen be a fiókjával. Az erőforráscsoport megtekintéséhez válassza az **Erőforráscsoportok** lehetőséget, valamint az erőforráscsoportot, amelyiken a telepítést végezte.
 
     ![csoport kijelölése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-group.png)
 
-1. Az összes telepített erőforrás megjelenik.
+1. Az összes telepített erőforrás megjelenik. Figyeljen arra, hogy a tárfiók neve nem pontosan az, amit az erőforrás hozzáadásakor megadott. A tárfiók nevének egyedinek kell lennie. Ahhoz, hogy a név egyedi legyen, a sablon automatikusan hozzáad egy karakterláncot a megadott névhez. 
 
     ![erőforrások megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-resources.png)
 
@@ -162,7 +170,11 @@ Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt tele
 
 Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges kód azonban még nincs telepítve a projekttel. Ez a témakör a webalkalmazások és az SQL adatbázisok telepítésének módját ismerteti az telepítés során. Amennyibe webalkalmazás helyett virtuális gépet telepít, a telepítés keretében valamennyi kódot is érdemes futtatni a gépen. A kód telepítésének folyamata a webalkalmazások és a virtuális gépek telepítésénél szinte teljesen megegyezik.
 
-1. A Visual Studióban adjon hozzá egy **ASP.NET webalkalmazást**. 
+1. Adjon hozzá egy projektet a Visual Studio megoldásához. Kattintson a jobb gombbal a megoldásra, és válassza az **Add** > **New Project** (Hozzáadás – Új projekt) parancsot.
+
+    ![projekt hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-project.png)
+
+1. Adjon hozzá egy **ASP.NET webalkalmazást**. 
 
     ![webalkalmazás hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
     
@@ -170,33 +182,51 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
     ![MVC kiválasztása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-mvc.png)
     
-1. Miután a Visual Studio létrehozta a webalkalmazást, adjon hozzá egy hivatkozást az erőforráscsoport-projektben a webalkalmazás-projekthez.
+1. Miután a Visual Studio létrehozta a webalkalmazást, a megoldásban mindkét projekt megjelenik.
+
+    ![projektek megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-projects.png)
+
+1. Most győződjön meg arról, hogy az erőforráscsoport észleli az új projektet. Lépjen vissza az erőforráscsoport-projekthez (AzureResourceGroup1). Kattintson jobb gombbal a **References** (Hivatkozások) elemre és válassza az **Add Reference** (Hivatkozás hozzáadása) lehetőséget.
+
+    ![hivatkozás hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
+
+1. Válassza ki a webalkalmazás-projektet, amelyet létrehozott.
 
     ![hivatkozás hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
     
-    A hivatkozás hozzáadásával a webalkalmazás-projektet összekapcsolja az erőforráscsoport-projekttel, és automatikusan beállít három kulcsfontosságú tulajdonságot.  
+    A hivatkozás hozzáadásával a webalkalmazás-projektet összekapcsolja az erőforráscsoport-projekttel, és automatikusan beállít három kulcsfontosságú tulajdonságot. Ezek a tulajdonságok a hivatkozáshoz tartozó **Properties** (Tulajdonságok) ablakban láthatók.
+
+      ![hivatkozás megtekintése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
     
-    - A **További tulajdonságok** a webes telepítési web csomag előkészítési helyét tartalmazza, amely át lett helyezve az Azure Storage-ba. 
+    A tulajdonságok a következők:
+
+    - A **További tulajdonságok** a webes telepítési web csomag előkészítési helyét tartalmazza, amely át lett helyezve az Azure Storage-ba. Jegyezze meg a mappa (ExampleApp) és a fájl (package.zip) nevét. Ezeket az értékeket kell megadnia paraméterként az üzembe helyezés során. 
     - A **Fájl elérési útjának belefoglalása** azt az útvonalat tartalmazza, ahol a csomag létrejött. A **Célok belefoglalása** a telepítés során végrehajtott parancsot tartalmazza. 
     - Az alapértelmezett **Build;Csomag** érték egy webes telepítési csomag (package.zip) felépítését és létrehozását teszi lehetővé.  
     
     Közzétételi profil nem szükséges, mivel a telepítési folyamat a szükséges információkat a csomag létrehozásához használt tulajdonságokból meríti.
-    
-      ![hivatkozás megtekintése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
       
-1. Adjon egy erőforrást a sablonhoz, és ez alkalommal válassza a **Webalkalmazások webes telepítése** lehetőséget. 
+1. Adjon hozzá egy erőforrást a sablonhoz.
+
+    ![erőforrás hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
+
+1. Ez alkalommal válassza a **Web Deploy for Web Apps** (Webalkalmazások webes üzembe helyezése) lehetőséget. 
 
     ![webes telepítés hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
     
-1. Végezze el ismét az erőforráscsoport-projekt telepítését az erőforráscsoporton. Ez alkalommal van néhány új paraméter. Az **_artifactsLocation** vagy **_artifactsLocationSasToken** paraméterek értékét nem kell megadnia, mivel a Visual Studio ezeket automatikusan osztja ki. A mappa és a fájl nevét a telepítési csomag elérési útvonalának megfelelően adja meg.
+1. Végezze el ismét az erőforráscsoport-projekt telepítését az erőforráscsoporton. Ez alkalommal van néhány új paraméter. Az **_artifactsLocation** vagy **_artifactsLocationSasToken** paraméterek értékét nem kell megadnia, mivel a Visual Studio ezeket automatikusan osztja ki. Azonban a mappa és a fájl nevét az üzembe helyezési csomag elérési útvonalának megfelelően kell megadni (ahogy az a következő képen a **ExampleAppPackageFolder** és **ExampleAppPackageFileName** paramétereknél látható). Adja meg a korábban a hivatkozás tulajdonságai közt látott értékeket (**ExampleApp** és **package.zip**).
 
     ![webes telepítés hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/set-new-parameters.png)
     
-    Az **Összetevő tárfiókja** paraméternél használhatja az adott erőforráscsoporttal üzembe helyezett tárfiókot.
+    Az **Artifact storage account** (Összetevő tárfiókja) paraméternél válassza az adott erőforráscsoporttal üzembe helyezett tárfiókot.
     
-Miután a telepítés véget ért, a helyre ellátogatva láthatja, hogy az alapértelmezett ASP.NET-alkalmazást sikeresen telepítette.
+1. Az üzembe helyezés befejeztével válassza ki a webalkalmazást a portálon. Válassza ki az URL-t a hely böngészéséhez.
 
-![telepített alkalmazás megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
+    ![hely tallózása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/browse-site.png)
+
+1. Láthatja, hogy az alapértelmezett ASP.NET-alkalmazást sikeresen üzembe helyezte.
+
+    ![telepített alkalmazás megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
 ## Következő lépések
 
@@ -205,6 +235,6 @@ Miután a telepítés véget ért, a helyre ellátogatva láthatja, hogy az alap
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

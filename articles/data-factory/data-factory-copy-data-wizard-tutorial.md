@@ -10,24 +10,26 @@
 <tags 
     ms.service="data-factory" 
     ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
+    ms.tgt_pltfrm="na" **
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="08/01/2016" 
+    ms.date="09/16/2016" 
     ms.author="spelluru"/>
+
 
 # Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Másolás varázslója használatával
 > [AZURE.SELECTOR]
-- [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [A Data Factory Editor használata](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [A PowerShell használata](data-factory-copy-activity-tutorial-using-powershell.md)
-- [A Visual Studio használata](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [A REST API használata](data-factory-copy-activity-tutorial-using-rest-api.md) 
-- [A Másolás varázsló használata](data-factory-copy-data-wizard-tutorial.md)
+- [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 
-Az oktatóanyag során létrehoz egy másolási tevékenységgel rendelkező folyamatot egy data factoryben a Data Factory Másolás varázslójával. Először létrehoz egy data factoryt az Azure Portal használatával, majd a Másolás varázslóval létrehozza a Data Factoryval társított szolgáltatásokat, az adatkészleteket és egy folyamatot a Másolás tevékenységgel, amely adatokat másol egy Azure blobtárolóból egy Azure SQL-adatbázisba.
+Az oktatóanyag során létrehoz egy másolási tevékenységgel rendelkező folyamatot egy data factoryben a Data Factory Másolás varázslójával. Először hozza létre a data factoryt az Azure Portalon. Ezután hozza létre a Másolás varázslóval a Data Factoryhoz társított szolgáltatásokat, az adatkészleteket és egy a Másolás tevékenységet tartalmazó folyamatot, amely adatokat másol egy Azure blobtárolóból egy Azure SQL-adatbázisba. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket. 
 
-> [AZURE.IMPORTANT] Tekintse meg [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és az oktatóanyag elvégzése előtt hajtsa végre az előfeltételként felsorolt lépéseket.
+> [AZURE.IMPORTANT] Olvassa el [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, és az oktatóanyag elvégzése előtt hajtsa végre az **előfeltételként** felsorolt lépéseket.
 
 ## Data factory létrehozása
 Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialDataFactory** nevű Azure data factoryt.
@@ -40,7 +42,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
     1. A**Name** (Név) mezőbe írja be a következőt: **ADFTutorialDataFactory**. 
     
         ![A New data factory (Új data factory) panel](./media/data-factory-copy-data-wizard-tutorial/getstarted-new-data-factory.png)
-    2. Kattintson a **RESOURCE GROUP NAME** (ERŐFORRÁSCSOPORT NEVE) elemre, és tegye a következőket:
+    2. Kattintson a **RESOURCE GROUP NAME** (ERŐFORRÁSCSOPORT NEVE) elemre, és végezze el a következő lépéseket:
         1. Kattintson a **Create a new resource group** (Új erőforráscsoport létrehozása) elemre.
         2. A **Create resource group** (Erőforráscsoport létrehozása) panelen az erőforráscsoport **neveként** adja meg az **ADFTutorialResourceGroup** kifejezést, és kattintson az **OK** gombra. 
 
@@ -57,7 +59,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
     > [AZURE.NOTE] A data factory neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá válhat.  
 
 9. Kattintson a bal oldali **NOTIFICATIONS** (ÉRTESÍTÉSEK) központra, és keresse meg a létrehozási folyamat értesítéseit. Ha a **NOTIFICATIONS** (ÉRTESÍTÉSEK) panel meg van nyitva, kattintson az **X**-re a bezárásához. 
-10. A létrehozás befejezése után megjelenik a **DATA FACTORY** panel, ahogy alább látható.
+10. A létrehozás befejezése után a **DATA FACTORY** panel a következő képen látható módon jelenik meg:
 
     ![Data factory kezdőlap](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
@@ -88,7 +90,10 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
     3. Kattintson a **Tovább** gombra. 
 
     ![Copy (Másolás) eszköz – Choose the input file or folder (A bemeneti fájl vagy mappa kiválasztása) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
-7. A **File format settings** (Fájlformátum beállításai) oldalon válassza az **alapértelmezett** értékeket, és kattintson a **Next** (Tovább) gombra.
+7. A **Choose the input file or folder** (A bemeneti fájl vagy mappa kiválasztása) lapon kattintson a **Next** (Tovább) gombra. Ne jelölje be a **Binary copy** (Bináris másolat) beállítást. 
+
+    ![Copy (Másolás) eszköz – Choose the input file or folder (A bemeneti fájl vagy mappa kiválasztása) oldal](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
+8. A **File format settings** (Fájlformátum beállításai) oldalon válassza az **alapértelmezett** értékeket, és kattintson a **Next** (Tovább) gombra.
 
     ![Copy (Másolás eszköz) – File format settings (Fájlformátum beállításai) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
 8. A Destination data store (Céladattár) oldalon kattintson az **Azure SQL Database** csempére, majd kattintson a **Next** (Tovább) gombra.
@@ -102,11 +107,12 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
 
     ![Copy (Másolás) eszköz – Table mapping (Tábla-hozzárendelés) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
 10. A **Schema mapping** (Séma-hozzárendelés) oldalon kattintson a **Next** (Tovább) gombra.
-11. Tekintse át a **Summary ** (Összegzés) oldalon szereplő információkat, majd kattintson a **Finish** (Befejezés) gombra. Ezzel létrehoz két társított szolgáltatást, két adatkészletet (bemeneti és kimeneti), valamint egy folyamatot a data factoryben (ahonnét elindította a Másolás varázslót). 
-12. A **Deployment succeeded** (Sikeres üzembe helyezés) oldalon kattintson a **Click here to monitor copy pipeline** (Kattintson ide a másolási folyamat figyeléséhez) lehetőségre.
+11. A **Performance settings** (Teljesítménybeállítások) lapon kattintson a **Next** (Tovább) gombra. 
+11. Tekintse át a **Summary ** (Összegzés) oldalon szereplő információkat, majd kattintson a **Finish** (Befejezés) gombra. A varázsló létrehoz két társított szolgáltatást, két adathalmazt (bemeneti és kimeneti), valamint egy folyamatot a data factoryban (ahonnét elindította a Másolás varázslót). 
+12. A **Deployment succeeded** (Sikeres üzembe helyezés) oldalon kattintson a **Click here to monitor copy pipeline** (Kattintson ide a másolási folyamat figyeléséhez) hivatkozásra.
 
     ![Copy (Másolás) eszköz – Deployment succeeded (Sikeres üzembe helyezés) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
-13. A [Monitor and manage pipelines using Monitoring App](data-factory-monitor-manage-app.md) (Folyamatok figyelése és felügyelete a Monitoring App használatával) című cikk útmutatásaiból megtudhatja, hogyan figyelheti a létrehozott folyamatot.
+13. A [Monitor and manage pipelines using Monitoring App](data-factory-monitor-manage-app.md) (Folyamatok figyelése és felügyelete a Monitoring App használatával) című cikk útmutatásaiból megtudhatja, hogyan figyelheti a létrehozott folyamatot. A szelet megtekintéséhez kattintson a **Frissítés** ikonra az **ACTIVITY WINDOWS** (TEVÉKENYSÉGABLAKOK ) listában. 
 
     ![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png) 
  
@@ -121,6 +127,6 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
 | [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) | Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

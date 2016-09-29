@@ -17,13 +17,13 @@
    ms.date="08/31/2016"
    ms.author="cherylmc"/>
 
+
 # Virtuális hálózat létrehozása helyek közötti kapcsolattal a klasszikus Azure portál használatával
 
 > [AZURE.SELECTOR]
-- [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Klasszikus Azure portál](vpn-gateway-site-to-site-create.md)
-- [PowerShell – Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
-
+- [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Klasszikus – Klasszikus portál](vpn-gateway-site-to-site-create.md)
 
 Ez a cikk részletesen bemutatja, hogyan hozható létre egy virtuális hálózat és egy helyek közötti VPN-kapcsolat a helyszíni hálózathoz a **klasszikus üzemi modell** és a klasszikus portál használatával. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók. Jelenleg nem hozható létre végpontok közötti helyek közötti konfiguráció a klasszikus portálon a klasszikus üzemi modell esetén.
 
@@ -42,7 +42,7 @@ Ha csatlakoztatni szeretné egymáshoz a virtuális hálózatokat, tekintse meg 
 
 A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a következő elemekkel.
 
-- Egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. Lásd: [About VPN Devices](vpn-gateway-about-vpn-devices.md) (Tudnivalók a VPN-eszközökről). Ha nem jártas a VPN-eszköz konfigurálásában, vagy nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, együtt kell működnie egy olyan személlyel, aki ezeket az adatokat megadhatja Önnek.
+- Egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. Lásd: [About VPN Devices](vpn-gateway-about-vpn-devices.md) (Tudnivalók a VPN-eszközökről). Ha nem jártas a VPN-eszköz konfigurálásában, vagy nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, együtt kell működnie valakivel, aki ezeket az adatokat megadhatja Önnek.
 
 - Egy kifelé irányuló, nyilvános IP-cím a VPN-eszközhöz. Ez az IP-cím nem lehet NAT mögötti.
 
@@ -55,7 +55,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 2. Kattintson a képernyő bal alsó sarkában található **Új** gombra. A navigációs ablakban kattintson a **Hálózati szolgáltatások**, majd a **Virtuális hálózat** lehetőségre. Kattintson az **Egyéni létrehozás** lehetőségre a konfigurációs varázsló elindításához.
 
-3. Töltse ki a következő lapokon a rendszer által kért információkat a virtuális hálózat létrehozásához.
+3. A virtuális hálózat létrehozásához adja meg a konfigurációs beállításokat a következő lapokon:
 
 ## Virtuális hálózat részletei lap
 
@@ -76,7 +76,7 @@ Adja meg a következő információkat, és a továbblépéshez kattintson a job
 
 Ha egy új helyi hálózatot hoz létre, megjelenik a **Helyek közötti kapcsolat** lap. Ha egy korábban létrehozott helyi hálózatot kíván használni, ez a lap nem jelenik meg a varázslóban, így továbbléphet a következő szakaszra.
 
-Adja meg az alábbi információkat, majd kattintson a Tovább nyílra.
+Adja meg az alábbi információkat, és kattintson a Tovább nyílra.
 
 -   **Név**: A helyi (helyszíni) hálózati hely számára választott név.
 -   **VPN-eszköz IP-címe**: A helyszíni VPN-eszköz nyilvános Ipv4-címe, amelyet az Azure-hoz való csatlakozáshoz használ. A VPN-eszköz nem lehet NAT mögött.
@@ -109,6 +109,6 @@ Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális h�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

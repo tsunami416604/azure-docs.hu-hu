@@ -13,51 +13,62 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/06/2016"
+    ms.date="09/20/2016"
     ms.author="maheshu"/>
 
-# Azure AD tartományi szolgáltatások *(előzetes kiadás)* – Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra
 
-## 5. feladat – Jelszavak szinkronizálásának engedélyezése az AAD tartományi szolgáltatásokra kizárólag felhőalapú Azure AD-címtáron
-Miután engedélyezte az Azure AD tartományi szolgáltatásokat az Azure AD bérlőn, a következő konfigurációs feladat a hitelesítő adatok szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra. Így a felhasználók vállalati hitelesítői adataikkal jelentkezhetnek be a felügyelt tartományra.
+# Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra
+Az előző feladatokban engedélyezte az Azure AD tartományi szolgáltatásokat az Azure AD-bérlő számára. A következő feladat az NTLM és Kerberos hitelesítésiadat-kivonatok Azure AD tartományi szolgáltatásokkal való szinkronizálásának engedélyezése. Ha a bejelentkezési adatok szinkronizálása be van állítva, a felhasználók a vállalati hitelesítői adataikkal jelentkezhetnek be a felügyelt tartományra.
 
-Ennek a lépései eltérőek attól függően, hogy a vállalat egy kizárólag felhőalapú Azure AD-címtárral rendelkezik, vagy a szinkronizálás a helyszíni címtárra történik az Azure AD Connect használatával.
+Az ehhez szükséges lépések eltérőek aszerint, hogy a szervezet csak felhőalapú Azure AD-címtárral rendelkezik-e, vagy be van állítva az Azure AD Connect használatával a helyszíni címtárral történő szinkronizálás.
 
 <br>
 
 > [AZURE.SELECTOR]
-- [Kizárólag felhőalapú Azure AD-címtár](active-directory-ds-getting-started-password-sync.md)
-- [Szinkronizált Azure AD-címtár](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+- [Kizárólag felhőalapú Azure AD-bérlő](active-directory-ds-getting-started-password-sync.md)
+- [Szinkronizált Azure AD-bérlő](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 
 <br>
 
-### Kerberos és NTLM hitelesítő adatok kivonatai létrehozásának engedélyezése kizárólag felhőalapú Azure AD-címtáron
-Amennyiben a szervezet egy kizárólag felhőalapú Azure AD-címtárral rendelkezik, az Azure AD tartományi szolgáltatásokat használó felhasználóknak módosítaniuk kell jelszavukat. A jelszómódosítási folyamat eredményeképp az Azure AD tartományi szolgáltatások által a Kerberos- és NTLM-hitelesítéshez igényelt hitelesítő adatok kivonatait az Azure AD szolgáltatásban kell létrehozni. Hagyhatja az Azure AD tartományi szolgáltatásokat használó összes felhasználó jelszavát elévülni, vagy utasíthatja a felhasználókat, hogy módosítsák jelszavukat.
 
+## 5. feladat – Jelszavak szinkronizálásának engedélyezése az AAD tartományi szolgáltatásokra kizárólag felhőalapú Azure AD-címtáron
+Az Azure AD tartományi szolgáltatásoknak az NTLM- és Kerberos-hitelesítéshez megfelelő formátumú hitelesítőadat-kivonatokra van szükségük a felhasználók felügyelt tartományon való hitelesítéséhez. Ha nem engedélyezi az AAD tartományi szolgáltatásokat a bérlő számára, akkor az Azure AD nem az NTLM- vagy Kerberos-hitelesítéshez szükséges formátumban hozza létre a hitelesítési adatok kivonatait. Nyilvánvaló biztonsági okokból az Azure AD nem tiszta szöveges formátumban tárolja a hitelesítő adatokat. Az Azure AD ezért nem tudja létrehozni az NTLM vagy Kerberos hitelesítésiadat-kivonatokat a felhasználók meglévő hitelesítő adatai alapján.
+
+> [AZURE.NOTE] Ha a szervezet kizárólag felhőalapú Azure AD-bérlővel rendelkezik, az Azure AD tartományi szolgáltatásokat használó felhasználóknak módosítaniuk kell jelszavukat.
+
+A jelszómódosítási folyamat eredményeképp az Azure AD tartományi szolgáltatások által a Kerberos- és NTLM-hitelesítéshez igényelt hitelesítő adatok kivonatait az Azure AD szolgáltatásban kell létrehozni. Hagyhatja az Azure AD tartományi szolgáltatásokat használó összes felhasználó jelszavát elévülni, vagy utasíthatja a felhasználókat, hogy módosítsák jelszavukat.
+
+
+### Kerberos és NTLM hitelesítőadat-kivonatok létrehozásának engedélyezése egy kizárólag felhőalapú Azure AD-bérlőn
 Az alábbi utasításokat küldje el a felhasználóknak a jelszavuk módosításához:
 
-1. Lépjen a szervezet Azure AD hozzáférési panel oldalára. Ez általában a [http://myapps.microsoft.com](http://myapps.microsoft.com) oldalon érhető el.
+1. Lépjen a szervezet Azure AD hozzáférési panel oldalára a következő címen: [http://myapps.microsoft.com](http://myapps.microsoft.com).
 
 2. Válassza a **profil** lapot ezen az oldalon.
 
-3. Kattintson a **Jelszó módosítása** csempére ezen az oldalon a jelszómódosítás kezdeményezéséhez.
+3. Kattintson a **Jelszó módosítása** csempére ezen az oldalon.
 
-    ![Hozzon létre egy virtuális hálózatot az Azure AD tartományi szolgáltatásokhoz.](./media/active-directory-domain-services-getting-started/user-change-password.png)
+    ![Hozzon létre virtuális hálózatot az Azure AD tartományi szolgáltatásokhoz.](./media/active-directory-domain-services-getting-started/user-change-password.png)
 
-4. Ekkor megjelenik a **jelszómódosítás** oldal. A felhasználók létező (régi) jelszavuk beírásával léphetnek tovább a jelszó módosítására.
+    > [AZURE.NOTE] Ha a hozzáférési panel oldalon nem jelenik meg a **Jelszó módosítása** lehetőség, akkor győződjön meg róla, hogy a szervezethez be van állítva a [jelszókezelés az Azure AD-ben](../active-directory/active-directory-passwords-getting-started.md).
 
-    ![Hozzon létre egy virtuális hálózatot az Azure AD tartományi szolgáltatásokhoz.](./media/active-directory-domain-services-getting-started/user-change-password2.png)
+4. A **Jelszó módosítása** oldalon adja meg a meglévő (régi) jelszavát, majd adja meg az új jelszót, és erősítse meg. Kattintson a **Submit** (Küldés) gombra.
 
-Miután a felhasználók módosították jelszavukat, az új jelszó rövidesen használható az Azure AD tartományi szolgáltatásokban. Néhány perc múltán a felhasználók újonnan módosított jelszavukkal bejelentkezhetnek a felügyelt tartományra kapcsolódó számítógépekre.
+    ![Hozzon létre virtuális hálózatot az Azure AD tartományi szolgáltatásokhoz.](./media/active-directory-domain-services-getting-started/user-change-password2.png)
 
+Miután módosította a jelszavát, az új jelszó rövidesen használható lesz az Azure AD tartományi szolgáltatásokban. Néhány perc (átlagosan körülbelül 20 perc) múlva az új jelszavával bejelentkezhet a felügyelt tartományhoz kapcsolódó számítógépekre.
 
 <br>
 
 ## Kapcsolódó tartalom
 
-- [Jelszavak szinkronizálásának engedélyezése az AAD tartományi szolgáltatásokra szinkronizált Azure AD-címtáron](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+- [Saját jelszó frissítése](../active-directory/active-directory-passwords-update-your-own-password.md)
 
-- [Az Azure AD tartományi szolgáltatások által felügyelt tartományok adminisztrációja](active-directory-ds-admin-guide-administer-domain.md)
+- [A jelszókezelés első lépései az Azure AD-ben](../active-directory/active-directory-passwords-getting-started.md).
+
+- [Jelszó-szinkronizálás engedélyezése AAD tartományi szolgáltatásokra szinkronizált Azure AD bérlő esetén](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+
+- [Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)
 
 - [Windows virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
 
@@ -65,6 +76,6 @@ Miután a felhasználók módosították jelszavukat, az új jelszó rövidesen 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

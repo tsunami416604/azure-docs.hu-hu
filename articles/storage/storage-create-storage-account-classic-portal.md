@@ -14,7 +14,8 @@
     ms.devlang="na"
     ms.topic="get-started-article"
     ms.date="07/26/2016"
-    ms.author="robinsh"/>
+    ms.author="micurd;robinsh"/>
+
 
 
 # Tudnivalók az Azure Storage-fiókokról
@@ -113,7 +114,7 @@ Az *affinitáscsoport* az Azure szolgáltatásainak és virtuális gépeinek fö
 
 Tárfiók létrehozásakor az Azure létrehoz két 512 bites tárelérési kulcsot, amelyek a hitelesítéshez használhatóak a tárfiók elérésekor. Azáltal, hogy az Azure két tárelérési kulcsot biztosít, lehetővé teszi a kulcsok újragenerálását anélkül, hogy megszakadna a társzolgáltatás vagy az ahhoz való hozzáférés.
 
-> [AZURE.NOTE] Javasoljuk, hogy a tárelérési kulcsokat ne ossza meg senkivel. Ha a tárolási erőforrásokhoz az elérési kulcsok kiadása nélkül szeretné engedélyezni a hozzáférést, használhat *közös hozzáférésű jogosultságkódot*. A közös hozzáférésű jogosultságkód hozzáférést biztosít a fiókban lévő egyes erőforrásokhoz az Ön által meghatározott időtartamra és engedélyekkel. További információk: [Shared Access Signatures: Understanding the SAS model](storage-dotnet-shared-access-signature-part-1.md) (Közös hozzáférésű jogosultságkódok: az SAS-modell bemutatása).
+> [AZURE.NOTE] Javasoljuk, hogy a tárelérési kulcsokat ne ossza meg senkivel. Ha a tárolási erőforrásokhoz az elérési kulcsok kiadása nélkül szeretné engedélyezni a hozzáférést, használhat *közös hozzáférésű jogosultságkódot*. A közös hozzáférésű jogosultságkód hozzáférést biztosít a fiókban lévő egyes erőforrásokhoz az Ön által meghatározott időtartamra és engedélyekkel. További információk: [Using Shared Access Signatures (SAS) (Közös hozzáférésű jogosultságkód (SAS) használata)](storage-dotnet-shared-access-signature-part-1.md)
 
 A [klasszikus Azure portálon](https://manage.windowsazure.com) az irányítópult **Kulcsok kezelése** részében vagy a **Tárolás** lapon tekintheti meg, másolhatja és generálhatja újra a Blob, a Table és a Queue szolgáltatások eléréséhez használt tárelérési kulcsokat.
 
@@ -179,6 +180,6 @@ A már nem használt tárfiókok törléséhez használja a **Törlés** gombot 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 
